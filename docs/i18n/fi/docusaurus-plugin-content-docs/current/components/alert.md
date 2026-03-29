@@ -1,18 +1,22 @@
 ---
 title: Alert
 sidebar_position: 5
-_i18n_hash: d6b9cd03da84860fd2768d9633f3b38a
+_i18n_hash: 38960017df0c1f8f10c67372e8422bee
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-alert" />
 <DocChip chip='since' label='25.00' />
 <JavadocLink type="alert" location="com/webforj/component/alert/Alert" top='true'/>
 
-`Alert`-komponentti webforJ:ssä tarjoaa kontekstuaalisia palautetehtäviä käyttäjille. Se on monipuolinen tapa näyttää tärkeää tietoa, varoituksia tai ilmoituksia sovelluksessa.
+`Alert`-komponentti webforJ:ssä tarjoaa kontekstiin perustuvia palautteita käyttäjille. Se on monipuolinen tapa esittää tärkeitä tietoja, varoituksia tai ilmoituksia sovelluksessasi.
 
-Ilmoitukset auttavat kiinnittämään huomiota keskeisiin tietoihin häiritsemättä käyttäjän työskentelytapaa. Ne ovat täydellisiä järjestelmäviesteihin, lomakkeen validointipalautteeseen tai tilapäivityksiin, jotka on tarpeen näyttää selkeästi, mutta eivät häiritsevästi.
+Ilmoitukset auttavat kiinnittämään huomiota avaininformaatioon häiritsemättä käyttäjän työnkulkua. Ne sopivat erinomaisesti järjestelmätiedotteisiin, lomakevalidoinnin palautteeseen tai tilapäivityksiin, jotka on oltava selkeästi näkyvissä mutta ei häiritseviä.
 
-Tässä on esimerkki ilmoituskomponentista:
+<!-- INTRO_END -->
+
+## Hälytyksien luominen {#creating-alerts}
+
+`Alert` voi sisältää rikkaita sisältöjä, kuten tekstiä, painikkeita ja muita komponentteja. Aseta teema, jotta voit visuaalisesti erottaa näytettävän viestin tyypin.
 
 <ComponentDemo 
 path='/webforj/alert?' 
@@ -20,15 +24,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '100px'
 />
 
-## Ilmoitusten sulkeminen {#dismissing-alerts}
+## Hälytyksien sulkeminen {#dismissing-alerts}
 
-Jos haluat antaa käyttäjille mahdollisuuden sulkea `Alert`-ilmoituksen, voit tehdä siitä suljettavan kutsumalla `setClosable()`-metodia.
+Jos haluat antaa käyttäjille mahdollisuuden sulkea `Alert`:in, voit tehdä siitä suljettavan kutsumalla `setClosable()`-metodia.
 
 ```java 
-Alert alert = new Alert("Päivitys! Tämä ilmoitus voidaan sulkea.");
+Alert alert = new Alert("Huomio! Tämä hälytys voidaan sulkea.");
 closableAlert.setClosable(true);
 ```
-Ilmoitukset tekevät usein enemmän kuin vain näyttävät viestejä—ne voivat laukaista jatkotoimia, kun ne suljetaan. Käytä `AlertCloseEvent`-tapahtumaa käsitelläksesi näitä tapauksia ja reagoidaksesi, kun käyttäjä sulkee `Alert`-ilmoituksen.
+Hälytykset tekevät usein enemmän kuin vain näyttävät viestejä—ne voivat laukaista jatkotoimia, kun ne suljetaan. Käytä `AlertCloseEvent`:iä käsittelemään näitä tapauksia ja reagoimaan, kun käyttäjä sulkee `Alert`:in.
 
 <ComponentDemo 
 path='/webforj/closablealert?' 
@@ -36,16 +40,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '100px'
 />
 
-:::tip Uudelleenkäytettävä ilmoituskomponentti
-Ilmoituksen sulkeminen vain piilottaa sen—se ei tuhoa komponenttia, joten voit käyttää sitä myöhemmin, jos tarvitset.
+:::tip Uudelleenkäytettävä hälytys komponentti
+Hälytyksen sulkeminen piilottaa sen vain—se ei tuhoa komponenttia, joten voit käyttää sitä uudelleen myöhemmin tarvittaessa.
 :::
 
-
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 ### Teemat {#themes}
 
-`Alert`-komponentti tukee useita <JavadocLink type="foundation" location="com/webforj/component/Theme"> teemoja </JavadocLink>, joilla voi visuaalisesti erottaa erilaisia viestityyppejä—kuten onnistuminen, virhe, varoitus tai tieto. Nämä teemat voidaan soveltaa käyttämällä `setTheme()`-metodia tai suoraan konstruktorissa.
+`Alert`-komponentti tukee useita <JavadocLink type="foundation" location="com/webforj/component/Theme"> teemoja </JavadocLink>, joilla voidaan visuaalisesti erottaa eri tyyppisiä viestejä—esimerkiksi onnistuminen, virhe, varoitus tai tieto. Nämä teemat voidaan määrittää käyttämällä `setTheme()`-metodia tai suoraan konstruktorissa.
 
 <ComponentDemo 
 path='/webforj/alertthemes?'
@@ -53,10 +56,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '475px'
 />
 
-
 ### Laajuudet {#expanses}
 
-Laajuus määrittää `Alert`-komponentin visuaalisen koon. Voit asettaa sen käyttämällä `setExpanse()`-metodia tai siirtää sen suoraan konstruktorille. Saatavilla olevat vaihtoehdot tulevat Expanse-enumista: `XSMALL`, `SMALL`, `MEDIUM`, `LARGE` ja `XLARGE`.
+Laajuus määrittelee `Alert`-komponentin visuaalisen koon. Voit asettaa sen käyttämällä `setExpanse()`-metodia tai välittämällä sen suoraan konstruktorille. Saatavilla olevat vaihtoehdot tulevat Expanse-enumista: `XSMALL`, `SMALL`, `MEDIUM`, `LARGE` ja `XLARGE`.
 
 <ComponentDemo 
 path='/webforj/alertexpanses?' 

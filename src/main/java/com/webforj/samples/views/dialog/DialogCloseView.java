@@ -11,21 +11,21 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Close")
 public class DialogCloseView extends Composite<FlexLayout> {
-
-  private Dialog dialog = new Dialog();
-  private Button showDialog = new Button("Show Dialog");
-  private Button closeDialog = new Button("Close Dialog");
+  private final FlexLayout self = getBoundComponent();
+  private final Dialog dialog = new Dialog();
+  private final Button showDialog = new Button("Show Dialog");
+  private final Button closeDialog = new Button("Close Dialog");
 
   public DialogCloseView() {
-    getBoundComponent().add(dialog, showDialog);
+    self.add(dialog, showDialog);
     showDialog.setStyle("margin-left", "48vw")
         .setStyle("margin-top", "20px")
         .onClick(e -> dialog.open());
 
-    dialog.addToHeader(new Div("Closing the Dialog"));
-    dialog.addToContent(closeDialog);
     closeDialog.onClick(e -> dialog.close());
-    dialog.setCancelOnEscKey(true);
-    dialog.open();
+    dialog.addToHeader(new Div("Closing the Dialog"))
+        .addToContent(closeDialog)
+        .setCancelOnEscKey(true)
+        .open();
   }
 }

@@ -1,11 +1,10 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Element Composite
 sidebar_class_name: has-new-content
 slug: element_composite
 ---
 
-<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
 The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an app. Use the `ElementComposite` class when implementing Web Components for use in webforJ applications.
@@ -76,7 +75,7 @@ Register event listeners using the `addEventListener()` method:
 ```java
 // Example: Adding a click event listener
 addEventListener(ElementClickEvent.class, event -> {
-    // Handle the click event
+  // Handle the click event
 });
 ```
 
@@ -114,19 +113,19 @@ height='300px'
 
 ```java
 ElementEventOptions options = new ElementEventOptions()
-    // Collect custom data from the client
-    .addData("query", "component.value")
-    .addData("timestamp", "Date.now()")
-    .addData("isValid", "component.checkValidity()")
-    
-    // Execute JavaScript before event fires
-    .setCode("component.classList.add('processing');")
-    
-    // Only fire if conditions are met
-    .setFilter("component.value.length >= 2")
-    
-    // Delay execution until user stops typing (300ms)
-    .setDebounce(300, DebouncePhase.TRAILING);
+  // Collect custom data from the client
+  .addData("query", "component.value")
+  .addData("timestamp", "Date.now()")
+  .addData("isValid", "component.checkValidity()")
+  
+  // Execute JavaScript before event fires
+  .setCode("component.classList.add('processing');")
+  
+  // Only fire if conditions are met
+  .setFilter("component.value.length >= 2")
+  
+  // Delay execution until user stops typing (300ms)
+  .setDebounce(300, DebouncePhase.TRAILING);
 
 addEventListener("input", this::handleSearch, options);
 ```

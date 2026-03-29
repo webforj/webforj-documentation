@@ -18,15 +18,15 @@ This separation exists because different data sources speak different query lang
 ```java
 // Predicate filters for in-memory collections
 QueryableRepository<Product, Predicate<Product>> inMemoryRepo = 
-    new CollectionRepository<>(products);
+  new CollectionRepository<>(products);
 
 // Custom filter objects for REST APIs or databases  
 QueryableRepository<User, UserFilter> apiRepo = 
-    new DelegatingRepository<>(/* implementation */);
+  new DelegatingRepository<>(/* implementation */);
 
 // String queries for search engines
 QueryableRepository<Document, String> searchRepo = 
-    new DelegatingRepository<>(/* implementation */);
+  new DelegatingRepository<>(/* implementation */);
 ```
 
 `CollectionRepository` uses `Predicate<Product>` because it filters Java objects in memory. The REST API repository uses `UserFilter` - a custom class with fields like `department` and `status` that map to query parameters. The search repository uses plain strings for full-text queries.
@@ -40,12 +40,12 @@ UI components don't care about these differences. They call `setBaseFilter()` wi
 ```java
 // Complete query with all parameters
 RepositoryCriteria<Product, Predicate<Product>> criteria = 
-    new RepositoryCriteria<>(
-        20,                                       // offset - skip first 20
-        10,                                       // limit - take 10 items  
-        orderCriteria,                           // sorting rules
-        product -> product.getPrice() < 100.0    // filter condition
-    );
+  new RepositoryCriteria<>(
+    20,                                       // offset - skip first 20
+    10,                                       // limit - take 10 items  
+    orderCriteria,                           // sorting rules
+    product -> product.getPrice() < 100.0    // filter condition
+  );
 
 // Execute the query
 Stream<Product> results = repository.findBy(criteria);
@@ -59,11 +59,11 @@ You can also create criteria with just the parts you need:
 ```java
 // Filter only
 RepositoryCriteria<Product, Predicate<Product>> filterOnly = 
-    new RepositoryCriteria<>(product -> product.isActive());
+  new RepositoryCriteria<>(product -> product.isActive());
 
 // Pagination only  
 RepositoryCriteria<Product, Predicate<Product>> pageOnly = 
-    new RepositoryCriteria<>(0, 25);
+  new RepositoryCriteria<>(0, 25);
 ```
 
 ## Working with different filter types {#working-with-different-filter-types}
@@ -86,10 +86,10 @@ repository.setBaseFilter(activeProducts.and(inStock).and(affordable));
 // Dynamic filtering
 Predicate<Product> filter = product -> true;
 if (categoryFilter != null) {
-    filter = filter.and(p -> p.getCategory().equals(categoryFilter));
+  filter = filter.and(p -> p.getCategory().equals(categoryFilter));
 }
 if (maxPrice != null) {
-    filter = filter.and(p -> p.getPrice() <= maxPrice);
+  filter = filter.and(p -> p.getPrice() <= maxPrice);
 }
 repository.setBaseFilter(filter);
 ```
@@ -101,11 +101,11 @@ External data sources can't execute Java predicates. Instead, you create filter 
 
 ```java
 public class ProductFilter {
-    private String category;
-    private BigDecimal maxPrice;
-    private Boolean inStock;
-    
-    // getters and setters...
+  private String category;
+  private BigDecimal maxPrice;
+  private Boolean inStock;
+  
+  // getters and setters...
 }
 
 // Use with custom repository
@@ -115,7 +115,7 @@ filter.setMaxPrice(new BigDecimal("99.99"));
 filter.setInStock(true);
 
 RepositoryCriteria<Product, ProductFilter> criteria = 
-    new RepositoryCriteria<>(filter);
+  new RepositoryCriteria<>(filter);
 
 Stream<Product> results = customRepository.findBy(criteria);
 ```
@@ -134,7 +134,7 @@ The `Repository` implementation should handle this translation, keeping your UI 
 ```java
 // Single field sorting
 OrderCriteria<Employee, String> byName = 
-    new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC);
+  new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC);
 
 // Multi-level sorting - department first, then salary, then name
 OrderCriteriaList<Employee> sorting = new OrderCriteriaList<>();
@@ -144,7 +144,7 @@ sorting.add(new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC))
 
 // Use in criteria
 RepositoryCriteria<Employee, Predicate<Employee>> criteria = 
-    new RepositoryCriteria<>(0, 50, sorting, employee -> employee.isActive());
+  new RepositoryCriteria<>(0, 50, sorting, employee -> employee.isActive());
 ```
 
 The value provider (`Employee::getName`) works for in-memory sorting. But external data sources can't execute Java functions. For those cases, OrderCriteria accepts a property name:
@@ -152,10 +152,10 @@ The value provider (`Employee::getName`) works for in-memory sorting. But extern
 ```java
 // For external repositories - provide both value getter and property name
 OrderCriteria<Employee, String> byName = new OrderCriteria<>(
-    Employee::getName,           // For in-memory sorting
-    Direction.ASC,
-    null,                       // Custom comparator (optional)
-    "name"                      // Property name for backend sorting
+  Employee::getName,           // For in-memory sorting
+  Direction.ASC,
+  null,                       // Custom comparator (optional)
+  "name"                      // Property name for backend sorting
 );
 ```
 
@@ -172,7 +172,7 @@ int pageSize = 20;     // items per page
 int offset = page * pageSize;
 
 RepositoryCriteria<Product, Predicate<Product>> criteria = 
-    new RepositoryCriteria<>(offset, pageSize, null, yourFilter);
+  new RepositoryCriteria<>(offset, pageSize, null, yourFilter);
 
 // Progressive loading - load more data incrementally  
 int currentlyLoaded = 50;

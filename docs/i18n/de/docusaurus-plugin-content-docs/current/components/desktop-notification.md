@@ -1,13 +1,17 @@
 ---
 title: DesktopNotification
 sidebar_position: 29
-_i18n_hash: 16e95136d6067cafa258ef513f9e757f
+_i18n_hash: 79d5ddb69e13f8536439346d8d4ee85d
 ---
 <DocChip chip='since' label='25.00' />
 <DocChip chip='experimental' />
 <JavadocLink type="desktop-notification" location="com/webforj/component/desktopnotification/DesktopNotification" top='true'/>
 
-In webforj 25.00 und höher bietet die **DesktopNotification**-Komponente eine einfache Schnittstelle zum Erstellen, Anzeigen und Verwalten von Desktopbenachrichtigungen. Mit dem Fokus auf minimale Konfiguration und integrierte Ereignisbehandlung kann die Komponente verwendet werden, um Benutzer über Echtzeite Ereignisse (wie neue Nachrichten, Warnungen oder Systemereignisse) zu benachrichtigen, während sie Ihre App durchsuchen.
+Die `DesktopNotification`-Komponente zeigt native Desktop-Benachrichtigungen außerhalb des Browserfensters an. Sie kann verwendet werden, um Benutzer über Echtzeitereignisse wie neue Nachrichten, Systembenachrichtigungen oder Statusänderungen zu informieren, während sie Ihre App verwenden.
+
+<!-- INTRO_END -->
+
+## Einrichtung und Voraussetzungen {#setup-and-prerequisites}
 
 :::warning experimentelles Feature
 Die `DesktopNotification`-Komponente befindet sich noch in der Entwicklung, und ihre API kann sich im Laufe der Zeit ändern. Um dieses Feature zu nutzen, stellen Sie sicher, dass Sie die folgende Abhängigkeit in Ihrer pom.xml einfügen.
@@ -20,50 +24,42 @@ Die `DesktopNotification`-Komponente befindet sich noch in der Entwicklung, und 
 ```
 :::
 
-:::info Voraussetzungen
-Stellen Sie sicher, dass Folgendes gegeben ist, bevor Sie die `DesktopNotification`-Komponente integrieren:
+Stellen Sie vor der Integration der `DesktopNotification`-Komponente sicher, dass:
 
-- Ihre App läuft in einem **sicheren Kontext** (HTTPS).
-- Der Browser befindet sich nicht im Inkognito- oder privaten Modus.
-- Der Benutzer hat mit der App interagiert (z. B. einen Button geklickt oder eine Taste gedrückt), da Benachrichtigungen eine Benutzerinteraktion benötigen, um angezeigt zu werden.
-- Der Benutzer hat die Berechtigung für Benachrichtigungen erteilt (dies wird bei Bedarf automatisch angefordert).
-:::
-
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/release/desktop_notifications.mp4" type="video/mp4"/>
-  </video>
-</div>
+- Ihre App in einem **sicheren Kontext** (HTTPS) ausgeführt wird.
+- Der Browser sich nicht im Inkognito- oder privaten Modus befindet.
+- Der Benutzer mit der App interagiert hat (z. B. auf eine Schaltfläche geklickt oder eine Taste gedrückt), da Benachrichtigungen eine Benutzeraktion zum Anzeigen benötigen.
+- Der Benutzer die Berechtigungen für Benachrichtigungen erteilt hat (dies wird automatisch angefordert, falls erforderlich).
 
 ## Grundlegende Verwendung {#basic-usage}
 
-Es gibt mehrere Möglichkeiten, eine Benachrichtigung zu erstellen und anzuzeigen. In den meisten Szenarien ist der einfachste Ansatz, eine der statischen `show`-Methoden aufzurufen, die den gesamten Lebenszyklus der Benachrichtigung kapseln.
+Es gibt mehrere Möglichkeiten, eine Benachrichtigung zu erstellen und anzuzeigen. In den meisten Szenarien besteht der einfachste Ansatz darin, eine der statischen `show`-Methoden aufzurufen, die den gesamten Lebenszyklus der Benachrichtigung kapseln.
 
-### Beispiel: Anzeig einer grundlegenden Benachrichtigung {#example-displaying-a-basic-notification}
+### Beispiel: Anzeigen einer grundlegenden Benachrichtigung {#example-displaying-a-basic-notification}
 
 ```java
 // Grundlegende Benachrichtigung mit Titel und Nachricht
 DesktopNotification.show("Update Verfügbar", "Ihr Download ist abgeschlossen!");
 ```
 
-Diese Einzeilige erstellt eine Benachrichtigung mit einem Titel und einem Text und versucht dann, sie anzuzeigen.
+Dieser Einzeiler erstellt eine Benachrichtigung mit einem Titel und einem Text und versucht dann, sie anzuzeigen.
 
 ## Anpassung der Benachrichtigung {#customizing-the-notification}
 
-Es gibt verschiedene Optionen zur Anpassung des Aussehens und des Inhalts der angezeigten Benachrichtigung, abhängig von den Bedürfnissen der App und dem Zweck der Benachrichtigung. 
+Es gibt verschiedene Optionen, um das Aussehen und Gefühl der angezeigten Benachrichtigung anzupassen, je nach den Bedürfnissen der App und dem Zweck der Benachrichtigung. 
 
-### Festlegen eines benutzerdefinierten `Icons` {#setting-a-custom-icon}
+### Einstellen eines benutzerdefinierten `Icons` {#setting-a-custom-icon}
 
-Standardmäßig verwendet die Benachrichtigung Ihr definiertes App-Symbol über das [icons-Protokoll](../managing-resources/assets-protocols#the-icons-protocol). Sie können ein benutzerdefiniertes Symbol mit der Methode `setIcon` festlegen. Die Komponente unterstützt verschiedene URL-Schemata:
+Standardmäßig verwendet die Benachrichtigung Ihr definiertes App-Icon über das [Icons-Protokoll](../managing-resources/assets-protocols#the-icons-protocol). Sie können ein benutzerdefiniertes Icon mit der `setIcon`-Methode festlegen. Die Komponente unterstützt verschiedene URL-Schemata:
 
-- [`context://`](../managing-resources/assets-protocols#the-context-protocol): Wird als Kontext-URL interpretiert, die auf den Ressourcenordner der App verweist; das Bild ist base64-enkodiert.
-- [`ws://`](../managing-resources/assets-protocols#the-webserver-protocol): Wird als URL eines Webservers interpretiert und gibt eine vollständig qualifizierte URL zurück.
-- [`icons://`](../managing-resources/assets-protocols#the-icons-protocol): Wird als Icons-URL interpretiert.
+- [`context://`](../managing-resources/assets-protocols#the-context-protocol): Wird als Kontext-URL auf den Ressourcenordner der App aufgelöst; das Bild wird base64-codiert.
+- [`ws://`](../managing-resources/assets-protocols#the-webserver-protocol): Wird als URL eines Webservers aufgelöst, die eine vollständig qualifizierte URL bereitstellt.
+- [`icons://`](../managing-resources/assets-protocols#the-icons-protocol): Wird als Icons-URL aufgelöst.
 
 **Beispiel:**
 
 ```java
-// Erstellen einer Benachrichtigung mit einer benutzerdefinierten Symbol-URL
+// Erstellen einer Benachrichtigung mit einer benutzerdefinierten Icon-URL
 DesktopNotification notification = new DesktopNotification(
   "Erinnerung", "Das Meeting beginnt in 10 Minuten."
 );
@@ -73,47 +69,47 @@ notification.open();
 
 ## Benachrichtigungsereignisse {#notification-events}
 
-Die `DesktopNotification` unterstützt mehrere Lebenszyklusereignisse, und es können Listener angehängt werden, um Ereignisse zu behandeln, wie z. B. wenn eine Benachrichtigung angezeigt, geschlossen, angeklickt oder ein Fehler aufgetreten ist.
+Die `DesktopNotification` unterstützt mehrere Lebenszyklusereignisse, und Listener können hinzugefügt werden, um Ereignisse zu behandeln, wie wenn eine Benachrichtigung angezeigt, geschlossen, angeklickt oder ein Fehler aufgetreten ist.
 
 | Ereignis                  | Beschreibung                                           | Wann zu verwenden                                               |
-|-----------------------------|-------------------------------------------------------|---------------------------------------------------------------|
-| **Öffnen** | Wird ausgelöst, wenn die Benachrichtigung angezeigt wird.       | Protokollieren der Anzeige von Benachrichtigungen, Aktualisieren der UI, Nachverfolgen der Interaktionen.    |
-| **Schließen**| Wird ausgelöst, wenn die Benachrichtigung geschlossen wird.         | Bereinigen von Ressourcen, Protokollieren von Ablehnungen, Ausführen von Folgeaktionen.|
-| **Fehler**| Wird ausgelöst, wenn ein Fehler bei der Benachrichtigung auftritt oder der Benutzer keine Berechtigung erteilt hat.| Fehler sanft behandeln, den Benutzer benachrichtigen, Rückfalle anwenden.  |
-| **Klick**| Wird ausgelöst, wenn der Benutzer auf die Benachrichtigung klickt. | Zu einem bestimmten Abschnitt navigieren, Interaktionen protokollieren, die App erneut fokussieren. |
+|-----------------------------|-------------------------------------------------------|-----------------------------------------------------------|
+| **Öffnen** | Ausgelöst, wenn die Benachrichtigung angezeigt wird.       | Benachrichtigungsanzeige protokollieren, UI aktualisieren, Interaktionen verfolgen.    |
+| **Schließen**| Ausgelöst, wenn die Benachrichtigung geschlossen wird.         | Ressourcen bereinigen, Abweisungen protokollieren, Folgeaktionen ausführen.|
+| **Fehler**| Ausgelöst, wenn ein Fehler mit der Benachrichtigung auftritt oder der Benutzer keine Erlaubnis erteilt hat.| Fehler elegant behandeln, den Benutzer benachrichtigen, Alternativen anwenden.  |
+| **Klick**| Ausgelöst, wenn der Benutzer auf die Benachrichtigung klickt. | Zu einem bestimmten Abschnitt navigieren, Interaktionen protokollieren, die App neu fokussieren. |
 
 
 ```java
 DesktopNotification notification = new DesktopNotification("Alarm", "Sie haben eine neue Nachricht!")
 
-// Anfügen eines Ereignis-Listeners für das Öffnen-Ereignis
+// Fügen Sie einen Ereignis-Listener für das Öffnen-Ereignis hinzu
 notification.onOpen(event -> {
   System.out.println("Benachrichtigung wurde vom Benutzer geöffnet.");
 });
 
-// Ähnlich, hören Sie auf das Klick-Ereignis
+// Hören Sie ebenfalls auf das Klick-Ereignis
 notification.onClick(event -> {
   System.out.println("Benachrichtigung angeklickt.");
 });
 ```
 
 :::warning Klickverhalten
-Die Sicherheitsrichtlinien des Browsers verhindern, dass das Klicken auf die Benachrichtigung automatisch Ihr App-Fenster oder Ihren Tab in den Vordergrund bringt. Dieses Verhalten wird vom Browser durchgesetzt und kann nicht programmgesteuert überschrieben werden. Wenn Ihre App erfordert, dass das Fenster fokussiert wird, müssen Sie die Benutzer anweisen, nach der Interaktion mit der Benachrichtigung innerhalb der App zu klicken.
+Die Sicherheitsrichtlinien des Browsers verhindern, dass das Klickereignis der Benachrichtigung das Fenster oder den Tab Ihrer App automatisch in den Vordergrund bringt. Dieses Verhalten wird vom Browser durchgesetzt und kann nicht programmgesteuert überschrieben werden. Wenn Ihre App erfordert, dass das Fenster im Vordergrund ist, müssen Sie die Benutzer anweisen, nach der Interaktion mit der Benachrichtigung innerhalb der App zu klicken.
 :::
 
 ## Sicherheits- und Kompatibilitätsüberlegungen {#security-and-compatibility-considerations}
 
-Bei der Verwendung der **DesktopNotification**-Komponente sollten Sie die folgenden Punkte beachten:
+Wenn Sie die **DesktopNotification**-Komponente verwenden, beachten Sie die folgenden Punkte:
 
-- **Sicherheitskontext:** Ihre App muss über HTTPS bereitgestellt werden, um sicherzustellen, dass Benachrichtigungen von den meisten modernen Browsern akzeptiert werden.
-- **Benutzerinteraktionsanforderung:** Benachrichtigungen werden nur nach einer benutzerinitiierten Aktion angezeigt. Einfaches Laden einer Seite löst keine Benachrichtigung aus.
-- **Browserbeschränkungen:** Nicht alle Browser behandeln benutzerdefinierte Symbole oder das Fokussierverhalten gleich. Zum Beispiel funktionieren benutzerdefinierte Symbole möglicherweise nicht in Safari, während sich das Ereignisverhalten in anderen Browsern unterscheiden kann.
-- **Berechtigungen:** Stellen Sie immer sicher, dass Ihre App die Berechtigungen für Benachrichtigungen reserviert und anfordert.
+- **Sicherheitskontext:** Ihre App muss über HTTPS bereitgestellt werden, um sicherzustellen, dass Benachrichtigungen von den meisten modernen Browsern erlaubt sind.
+- **Erfordernis einer Benutzeraktion:** Benachrichtigungen werden nur nach einer benutzerinitiierten Aktion angezeigt. Allein das Laden einer Seite löst keine Benachrichtigung aus.
+- **Browsereinschränkungen:** Nicht alle Browser handhaben benutzerdefinierte Icons oder das Fokusverhalten gleich. Beispielsweise funktionieren benutzerdefinierte Icons möglicherweise nicht in Safari, während sich das Ereignisverhalten in anderen Browsern unterscheiden kann.
+- **Berechtigungen:** Überprüfen Sie immer, ob Ihre App Benachrichtigungsberechtigungen vom Benutzer elegant anfragt.
 
-## Best Practices für die Nutzung {#usage-best-practices}
+## Beste Praktiken zur Verwendung {#usage-best-practices}
 
-Beachten Sie die folgenden Best Practices, während Sie die `DesktopNotification`-Komponente in Ihrer App verwenden:
+Berücksichtigen Sie die folgenden besten Praktiken, während Sie die `DesktopNotification`-Komponente in Ihrer App verwenden:
 
 - **Informieren Sie Ihre Benutzer:** Lassen Sie die Benutzer wissen, warum Benachrichtigungen benötigt werden und wie sie davon profitieren können.
-- **Fallbacks bereitstellen:** Da einige Browser Benachrichtigungen einschränken können, ziehen Sie alternative Möglichkeiten in Betracht, um Benutzer zu alarmieren (z. B. In-App-Nachrichten).
-- **Fehlerbehandlung:** Registrieren Sie immer einen Fehlerlistener, um Szenarien sanft zu verwalten, in denen Benachrichtigungen nicht angezeigt werden können.
+- **Bieten Sie Fallbacks an:** Da einige Browser möglicherweise Benachrichtigungen einschränken, sollten Sie alternative Möglichkeiten in Betracht ziehen, um Benutzer zu benachrichtigen (z. B. In-App-Nachrichten).
+- **Fehlerbehandlung:** Registrieren Sie immer einen Fehler-Listener, um Szenarien, in denen Benachrichtigungen nicht angezeigt werden können, elegant zu verwalten.

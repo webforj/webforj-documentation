@@ -5,18 +5,22 @@ slug: colorfield
 description: >-
   A component that provides a default browser-based color picker, allowing users
   to select a color from an input field.
-_i18n_hash: 4c7128082457a29ae8c0bf3afed1f666
+_i18n_hash: 42e1e3270076a584d052295db1602298
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-color-chooser" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/ColorField" top='true'/>
 
+`ColorField`-komponentti sallii käyttäjien valita värin selaimen natiivin värivalitsimen kautta. Koska se perustuu selaimen sisäiseen toteutukseen, sen ulkonäkö vaihtelee selainten ja alustojen välillä. Se voi näkyä yksinkertaisena tekstikenttänä, alustastandardina värivalitsimena tai mukautettuna valitsimen käyttöliittymänä. Tämä vaihtelu toimii käyttäjän eduksi, sillä ohjaus vastaa jo tuttua.
+
+<!-- INTRO_END -->
+
+## Käyttö `ColorField` {#using-colorfield}
+
 <ParentLink parent="Field" />
 
-`ColorField`-komponentti on monipuolinen työkalu, joka mahdollistaa käyttäjien värien tutkimisen ja valitsemisen interaktiivisesti sovelluksessasi. Se tarjoaa saumatonta lähestymistapaa, jotta käyttäjät voivat löytää täydellisen sävyn, kylläisyyden ja kirkkauden, jotka vastaavat heidän luovaa visiotaan.
-
-`ColorField`-komponentti on toteutettu natiivina selainominaisuutena, joten esitys voi vaihdella suuresti selaimen ja alustan mukaan. Tämä vaihtelevuus on kuitenkin hyödyllistä, sillä se vastaa käyttäjän tutun ympäristön odotuksia. Se saattaa näkyä yksinkertaisena tekstikenttänä varmistaakseen asianmukaisen muotoisen värin, alustan standardina värivalitsimena tai jopa mukautettuna värivalitsimen käyttöliittymänä.
+`ColorField` laajentaa jaettua `Field`-luokkaa, joka tarjoaa yleisiä ominaisuuksia kaikille kenttäkomponenteille. Seuraava esimerkki mahdollistaa käyttäjän valita värin ja näyttää sen tetradiset vastavärit.
 
 <ComponentDemo 
 path='/webforj/colorfield?' 
@@ -25,40 +29,38 @@ cssURL='/css/fields/colorfield/colorFieldDemo.css'
 height='300px'
 />
 
-## Käytöt {#usages}
+`ColorField` on parhaimmillaan tilanteissa, joissa värin valinta on olennaista käyttäjäliittymässä tai sovellusliittymässä. Tässä on joitakin tilanteita, joissa voit käyttää `ColorField`-komponenttia tehokkaasti:
 
-`ColorField`ia käytetään parhaiten tilanteissa, joissa värin valinta on olennainen osa käyttöliittymää tai sovelluksen käyttöliittymää. Tässä on joitain tilanteita, joissa voit käyttää `ColorField`ia tehokkaasti:
+1. **Grafiikkasuunnittelu ja kuvankäsittelytyökalut**: Värikentät ovat välttämättömiä sovelluksissa, jotka sisältävät mukauttamista värin valinnan kautta.
 
-1. **Graafinen suunnittelu ja kuvankäsittelytyökalut**: Värikentät ovat välttämättömiä sovelluksissa, jotka sisältävät mukauttamista värin valinnan kautta.
+2. **Teeman mukauttaminen**: Jos sovelluksesi sallii käyttäjien mukauttaa teemoja, värikentän käyttäminen mahdollistaa heidän valita värejä eri käyttöliittymäelementeille, kuten taustoille, tekstille, painikkeille jne.
 
-2. **Teeman mukauttaminen**: Jos sovelluksesi sallii käyttäjien mukauttaa teemoja, värikentän käyttö mahdollistaa heidän valita värejä eri käyttöliittymän elementeille, kuten taustille, tekstille, painikkeille jne.
-
-3. **Tietojen visualisointi**: Tarjoa käyttäjille värikenttä, jota käytetään värien valitsemiseen kaavioille, kaavioille, lämpökartoille ja muille visuaalisille esityksille.
+3. **Tietojen visualisointi**: Tarjoa käyttäjille värikenttä, josta he voivat valita värejä kaavioille, grafiikoille, lämpökarttoille ja muille visuaalisille esityksille.
 
 ## Arvo {#value}
 
-`ColorField` käyttää [`java.awt.Color`](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Color.html) -luokkaa värien asettamiseen ja hakemiseen `setValue()` ja `getValue()` -menetelmien kautta. Vaikka asiakaspään komponentti käsittelee yksinomaan täysin läpinäkyviä RGB-värejä heksadesimaalimuodossa, webforJ yksinkertaistaa prosessia automaattisesti muuntamalla `Color`-arvot oikeaan muotoon.
+`ColorField` käyttää [`java.awt.Color`](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Color.html) -luokkaa värien asettamiseen ja hakemiseen `setValue()` ja `getValue()` -menetelmien kautta. Vaikka asiakaspään komponentti käsittelee yksinomaan täysin läpinäkyviä RGB-värejä heksadesimaali-merkinnässä, webforJ yksinkertaistaa prosessia automaattisesti muuntamalla `Color`-arvot oikeaan muotoon.
 
-:::tip Heksadesimaalinen parsinta
-Kun käytetään `setText()`-menetelmää arvon asettamiseen, `ColorField` yrittää jäsentää syötteen heksadesimaaliseksi väriksi. Jos jäsentäminen epäonnistuu, heitetään `IllegalArgumentException`.
+:::tip Heksadesimaali-parsing
+Kun käytät `setText()`-menetelmää arvon määrittämiseen, `ColorField` yrittää analysoida syötteen heksadesimaalivärinä. Jos analysointi epäonnistuu, heitetään `IllegalArgumentException`.
 :::
 
 ## Staattiset työkalut {#static-utilities}
 
 `ColorField`-luokka tarjoaa myös seuraavat staattiset apumenetelmät:
 
-- `fromHex(String hex)`: Muunna värijono heksadesimaalimuodossa `Color`-objektiksi, jota voidaan sitten käyttää tässä luokassa tai muualla.
+- `fromHex(String hex)`: Muuntaa värimerkkijonon heksamuodossa `Color`-objektiksi, jota voidaan käyttää tässä luokassa tai muualla.
 
-- `toHex(Color color)`: Muunna annettu arvo vastaavaksi heksamuodoksi.
+- `toHex(Color color)`: Muuntaa annetun arvon vastaavaksi heksamuotoiseksi esitykseksi.
 
-- `isValidHexColor(String hex)`: Tarkista, onko annettu arvo kelvollinen 7 merkin heksadesimaaliväri.
+- `isValidHexColor(String hex)`: Tarkistaa, onko annettu arvo voimassa oleva 7 merkin heksaväri.
 
 ## Parhaat käytännöt {#best-practices}
 
-Varmistaaksesi optimaalisen käyttäjäkokemuksen `ColorField`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
+Jotta `ColorField`-komponentin käyttäjäkokemus olisi optimaalinen, harkitse seuraavia parhaita käytäntöjä:
 
-- **Kontekstuaalinen apu**: Tarjoa kontekstuaalista apua, kuten työkaluvihjeitä tai etiketti, jotta käyttäjät ymmärtävät, että he voivat valita värin ja ymmärtävät sen tarkoituksen.
+- **Kontekstuaalinen tuki**: Tarjoa kontekstuaalista tukea, kuten työkaluvihjeitä tai etiketti, selventämään, että käyttäjät voivat valita värin ja ymmärtää sen tarkoituksen.
 
-- **Tarjoa oletusväri**: Valitse oletusväri, joka on järkevä sovelluksesi kontekstissa.
+- **Tarjoa oletusväri**: Varmista, että oletusväri on järkevä sovelluksesi kontekstissa.
 
-- **Tarjoa esiasetettuja värejä**: Sisällytä pahati suosittuja tai brändivärejä värikentän oheen nopeaa valintaa varten.
+- **Tarjoa esiasetettuja värejä**: Sisällytä paletteja yleisesti käytetyistä tai brändin mukaisista väreistä värikentän viereen nopeaa valintaa varten.

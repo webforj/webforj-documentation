@@ -4,7 +4,7 @@ description: Learn how to use custom renderers to display rich, formatted conten
 slug: table-renderers-custom-cells
 date: 2025-11-25
 authors: Matthew Hawkins
-tags: [webforJ, Table, Renderers, UI Customization, Data Visualization]
+tags: [table, renderers, ui customization, data visualization, components]
 hide_table_of_contents: false
 ---
 

@@ -9,15 +9,14 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Number Field Demo")
 public class NumberFieldView extends Composite<FlexLayout> {
-  
-  NumberField numField = new NumberField("Quantity:");
+  private final FlexLayout self = getBoundComponent();
+  private final NumberField numField = new NumberField("Quantity:");
 
   public NumberFieldView() {
-    getBoundComponent().setMargin("var(--dwc-space-m)");
+    self.setMargin("var(--dwc-space-m)")
+        .add(numField);
 
     numField.setWidth("200px")
-            .setPlaceholder("Enter a number...");
-
-    getBoundComponent().add(numField);
+        .setPlaceholder("Enter a number...");
   }
 }

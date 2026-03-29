@@ -1,116 +1,116 @@
 ---
 sidebar_position: 4
 title: Evaluator Chain
-_i18n_hash: a07a90cf71f4f5ed37489e4062ff5280
+_i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
-Evaluointiketju on webforJ:n turvallisuusjärjestelmän sydän. Se on prioriteettijärjestyksessä oleva evaluoijien sekvenssi, joka tutkii reittejä ja tekee pääsypäätöksiä vastuuketjun suunnittelumallin avulla. Ymmärtämällä, miten ketju toimii, voit luoda mukautettuja evaluoijia ja ratkaista odottamattomia pääsyn estämisiä.
+Evaluointiketju on webforJ:n tietoturvajärjestelmän sydän. Se on priorisoitu arvioijien sekvenssi, joka tutkii reittejä ja tekee pääsypäätöksiä vastuuketjun suunnittelumallin avulla. Ymmärtämällä, miten ketju toimii, voit luoda mukautettuja arvioijia ja ratkaista odottamattomia pääsyn evätyksiä.
 
 ## Vastuuketjun malli {#the-chain-of-responsibility-pattern}
 
-Evaluointiketju käyttää vastuuketjun mallia, jossa jokainen sekvenssin evaluoija voi joko käsitellä navigointipyyntöä tai siirtää sen seuraavalle evaluoijalle. Tämä luo järjestelmän, jossa turvallisuuslogiikka on hajautettu useille erikoistuneille evaluoijille sen sijaan, että se olisi keskitetty yhteen monoliittiseen tarkistajaan.
+Evaluointiketju hyödyntää vastuuketjun mallia, jossa jokainen sekvenssin arvioija voi joko käsitellä navigointipyyntöä tai siirtää sen seuraavalle arvioijalle. Tämä luo järjestelmän, jossa tietoturvalogiikka on hajautettu useiden erikoistuneiden arvioijien kesken sen sijaan, että se olisi keskitetty yhteen monoliittiseen tarkistimeen.
 
-Kun reittiä on arvioitava, turvallisuusjohtaja luo ketjun ja aloittaa sen ensimmäisestä evaluoijasta. Tämä evaluoija tarkastaa reitin ja tekee yhden kolmena vaihtoehtona:
+Kun reittiä on arvioitava, tietoturvajohtaja luo ketjun ja käynnistää sen ensimmäisestä arvioijasta. Tämä arvioija tutkii reitin ja tekee yhden kolmesta valinnasta:
 
-1. **Anna käyttöoikeus:** Evaluoija hyväksyy reitin ja palaa heti. Ei muita evaluoijia suoriteta.
-2. **Hylkää käyttöoikeus:** Evaluoija estää reitin ja palaa heti. Ei muita evaluoijia suoriteta.
-3. **Vahvista:** Evaluoija ei tee päätöstä ja kutsuu `chain.evaluate()` siirtääkseen kontrollin seuraavalle evaluoijalle.
+1. **Anna pääsy:** Arvioija hyväksyy reitin ja palauttaa sen heti. Tallentamattomia arvioijia ei suorita.
+2. **Evä pääsy:** Arvioija estää reitin ja palauttaa sen heti. Tallentamattomia arvioijia ei suorita.
+3. **Delegoi:** Arvioija ei tee päätöstä ja kutsuu `chain.evaluate()`, jotta se siirtää hallinnan seuraavalle arvioijalle.
 
-Tämä malli mahdollistaa evaluoijien keskittymisen erityistapauksiin. Jokainen evaluoija toteuttaa `supports(Class<?> routeClass)` ilmoittaakseen, mitkä reitit se käsittelee. Esimerkiksi `AnonymousAccessEvaluator` suoritetaan vain reiteille, jotka on merkitty `@AnonymousAccess`, ja johtaja ei koskaan kutsu sitä muille reiteille.
+Tämä malli mahdollistaa arvioijien keskittymisen erityisiin tapauksiin. Jokainen arvioija toteuttaa `supports(Class<?> routeClass)` ilmoittaakseen, mitkä reitit se käsittelee. Esimerkiksi `AnonymousAccessEvaluator` suoritetaan vain reiteille, joilla on `@AnonymousAccess`, eikä hallinnoija koskaan kutsu sitä muihin reitteihin.
 
 ## Kuinka ketju rakennetaan {#how-the-chain-is-built}
 
-Turvallisuusjohtaja ylläpitää rekisteröityjen evaluoijien luetteloa, joilla on liittyvä prioriteetti. Kun reittiä on arvioitava, johtaja lajittelee evaluoijat prioriteetin mukaan (pienemmät numerot ensin) ja luo ketjun.
+Tietoturvajohtaja ylläpitää luetteloa rekisteröidyistä arvioijista, joilla on kullekin liittyvä prioriteetti. Kun reitti tarvitsee arviointia, johtaja järjestää arvioijat prioriteetin mukaan (matalimmat numerot ensin) ja luo ketjun.
 
-Evaluoijat rekisteröidään johtajan `registerEvaluator()`-menetelmällä:
+Arvioijat rekisteröidään hallinnoijan `registerEvaluator()`-menetelmällä:
 
 ```java
-// Rekisteröi sisäänrakennetut evaluoijat
+// Rekisteröi sisäänrakennetut arvioijat
 securityManager.registerEvaluator(new DenyAllEvaluator(), 0);
 securityManager.registerEvaluator(new AnonymousAccessEvaluator(), 1);
 securityManager.registerEvaluator(new PermitAllEvaluator(), 2);
 securityManager.registerEvaluator(new RolesAllowedEvaluator(), 3);
 
-// Rekisteröi mukautetut evaluoijat
+// Rekisteröi mukautetut arvioijat
 securityManager.registerEvaluator(new SubscriptionEvaluator(), 10);
 ```
 
-Prioriteetti määrittää arviointijärjestyksen. Pienemmät prioriteetit suoritetaan ensin, jolloin niillä on ensimmäinen mahdollisuus tehdä pääsypäätöksiä. Tämä on tärkeää turvallisuuden kannalta, koska se mahdollistaa kriittisten evaluoijien estää pääsy ennen kuin sallivat evaluoijat voivat sallia sen.
+Prioriteetti määrittää arviointijärjestyksen. Matalammat prioriteetit suoritetaan ensin, jolloin niillä on ensisijainen mahdollisuus tehdä pääsypäätöksiä. Tämä on tärkeää tietoturvan kannalta, koska se mahdollistaa kriittisten arvioijien estää pääsyn ennen kuin sallivat arvioijat voivat myöntää sen.
 
-Ketju on tilaton ja luodaan uudelleen jokaiselle navigointipyynnölle niin, ettei yhden navigoinnin arviointi vaikuta toiseen.
+Ketju on tilaton ja luodaan uudelleen jokaiselle navigointipyyntöön, jotta yhden navigoinnin arviointi ei vaikuta toiseen.
 
-## Ketjun suoritusvirta {#chain-execution-flow}
+## Ketjun suoritusprosessi {#chain-execution-flow}
 
-Kun ketju alkaa, se alkaa ensimmäisestä evaluoijasta (matala prioriteetti) ja etenee kysymykseen:
+Kun ketju alkaa, se alkaa ensimmäisestä arvioijasta (matalin prioriteetti) ja etenee järjestyksessä:
 
 ```mermaid
 flowchart TD
-    Start["Johtaja aloittaa ketjun"] --> Eval["Suorita evaluoijat<br/>(prioriteettiyksikössä)"]
+  Start["Hallinnoija käynnistää ketjun"] --> Eval["Suorita arvioijat<br/>(prioriteettijärjestyksessä)"]
 
-    Eval --> Check{"Evaluoijan päätös?"}
-    Check -->|Anna| Grant["Anna pääsy<br/>PYSÄYTÄ"]
-    Check -->|Hylkää| Deny["Hylkää pääsy<br/>PYSÄYTÄ"]
-    Check -->|Vahvista| Next["Seuraava evaluoija"]
+  Eval --> Check{"Arvioijan päätös?"}
+  Check -->|Grant| Grant["Anna pääsy<br/>PYSÄYTY"]
+  Check -->|Deny| Deny["Evä pääsy<br/>PYSÄYTY"]
+  Check -->|Delegate| Next["Seuraava arvioija"]
 
-    Next --> Eval
+  Next --> Eval
 
-    Check -->|Ketju loppu| Default{"Turvallinen oletusarvo?"}
-    Default -->|Kyllä JA ei todistettu| DenyDefault["Hylkää todistus<br/>PYSÄYTÄ"]
-    Default -->|Ei TAI todistettu| GrantDefault["Anna pääsy<br/>PYSÄYTÄ"]
+  Check -->|Ketju loppu| Default{"Oletusarvoisesti turvallinen?"}
+  Default -->|Kyllä JA ei ole todennettua| DenyDefault["Evä todennus<br/>PYSÄYTY"]
+  Default -->|Ei TAI todennettua| GrantDefault["Anna pääsy<br/>PYSÄYTY"]
 ```
 
-Ketju pysähtyy heti, kun jokin evaluoija myöntää tai hylkää pääsyn. Jos kaikki evaluoijat vahvistavat, ketju loppuu ja siirtyy oletusarvoiseen turvallisuus käyttäytymiseen.
+Ketju pysähtyy heti, kun mikä tahansa arvioija myöntää tai evää pääsyn. Jos kaikki arvioijat delegoivat, ketju loppuu ja palaa oletusarvoisesti turvalliseen käyttäytymiseen.
 
-## Sisäänrakennettujen evaluoijien järjestys {#built-in-evaluator-ordering}
+## Sisäänrakennettujen arvioijien järjestys {#built-in-evaluator-ordering}
 
-Neljä sisäänrakennettua evaluoijaa käsittelee standardinotaatioita:
+Neljä sisäänrakennettua arvioijaa käsittelee vakio-annotaatioita:
 
-| Evaluoija | Annotaatiot | Käyttäytyminen | Ketjun käyttäytyminen | Tyypillinen järjestys |
-|-----------|------------|----------|----------------|---------------|
-| `DenyAllEvaluator` | `@DenyAll` | Estää aina pääsyn | Pysäyttää ketjun (terminaalinen) | Suoritetaan ensimmäisenä |
-| `AnonymousAccessEvaluator` | `@AnonymousAccess` | Sallii kaikille (todistettu tai ei) | Pysäyttää ketjun (terminaalinen) | Suoritetaan aikaisin |
-| `PermitAllEvaluator` | `@PermitAll` | Vaatii todistusta, sallii kaikki todistetut käyttäjät | Pysäyttää ketjun (terminaalinen) | Suoritetaan keskivaiheilla |
-| `RolesAllowedEvaluator` | `@RolesAllowed` | Vaatii todistusta ja tietyn roolin | **Jatkaa ketjua** (koostettavissa) | Suoritetaan myöhemmin |
+| Arvioija | Annoitus | Käyttäytyminen | Ketjun käyttäytyminen | Tyypillinen järjestys |
+|----------|----------|----------------|----------------------|----------------------|
+| `DenyAllEvaluator` | `@DenyAll` | Aina estää pääsyn | Pysäyttää ketjun (terminaalinen) | Suoritetaan ensin |
+| `AnonymousAccessEvaluator` | `@AnonymousAccess` | Sallii kaikille (todennettu tai ei) | Pysäyttää ketjun (terminaalinen) | Suoritetaan aikaisin |
+| `PermitAllEvaluator` | `@PermitAll` | Vaatimuksena todennus, sallii kaikki todennetut käyttäjät | Pysäyttää ketjun (terminaalinen) | Suoritetaan ketjun keskivaiheilla |
+| `RolesAllowedEvaluator` | `@RolesAllowed` | Vaatimuksena todennus ja erityinen rooli | **Jatkaa ketjua** (koostettavissa) | Suoritetaan myöhemmin |
 
 :::note
-Tarkat prioriteettinumerot määritellään evaluoijien rekisteröinnin aikana ja ne vaihtelevat toteutusten välillä. Katso [Spring Security](/docs/security/getting-started) tai [Mukautettu toteutus](/docs/security/architecture/custom-implementation) saadaksesi tarkkoja arvoja.
+Tarkat prioriteettinumerot määritellään arvioijien rekisteröinnin aikana ja ne vaihtelevat toteutusten välillä. Katso [Spring Security](/docs/security/getting-started) tai [Mukautettu toteutus](/docs/security/architecture/custom-implementation) tarkkoja arvoja varten.
 :::
 
-## Kuinka evaluoijat delegoivat {#how-evaluators-delegate}
+## Kuinka arvioijat delegoivat {#how-evaluators-delegate}
 
-Ennen evaluoijan kutsumista johtaja kutsuu sen `supports(Class<?> routeClass)`-menetelmää. Vain evaluoijat, jotka palauttavat `true`, kutsutaan. Tämä suodatus pakottaa evaluoijat suorittamaan vain reiteille, joita ne on suunniteltu käsittelemään.
+Ennen arvioijan kutsumista hallinnoija kutsuu sen `supports(Class<?> routeClass)`-menetelmää. Vain arvioijat, jotka palauttavat `true`, kutsutaan. Tämä suodatus pakottaa arvioijat suorittamaan vain niille suunnitelluissa reiteissä.
 
-Kun evaluoija kutsutaan, se voi joko:
-- **Tehdä päätöksen:** Palauttaa myönteiset tai kielteiset pysäyttääkseen ketjun
-- **Delegoida:** Kutsua `chain.evaluate()` siirtääkseen kontrollin seuraavalle evaluoijalle prioriteettijärjestyksessä
+Kun arvioija kutsutaan, se voi joko:
+- **Tehdä päätös:** Palauttaa hyväksynnän tai evätyksen pysäyttääkseen ketjun
+- **Delegoi:** Kutsua `chain.evaluate()` siirtääkseen hallinnan seuraavalle arvioijalle prioriteettijärjestyksessä
 
-Esimerkiksi `RolesAllowedEvaluator` tarkistaa, onko käyttäjällä vaadittu rooli. Jos on, se kutsuu `chain.evaluate()` salliakseen ylimpien prioriteettien evaluoijien tehdä lisätarkistuksia. Tämä aktiivinen delegointi mahdollistaa evaluoijien koostamisen.
+Esimerkiksi `RolesAllowedEvaluator` tarkistaa, onko käyttäjällä vaadittu rooli. Jos kyllä, se kutsuu `chain.evaluate()` jatkaakseen tarkistuksia korkeammalle prioriteetille kuuluvilta arvioijilta. Tämä aktiivinen delegointi mahdollistaa arvioijien koostamisen.
 
-Terminaaliset evaluoijat kuten `PermitAllEvaluator` tekevät lopulliset päätökset ilman ketjun kutsumista, estäen lisäarvioinnin.
+Terminaaliarvioijat, kuten `PermitAllEvaluator`, tekevät lopullisia päätöksiä ilman, että kutsuvat ketjua, estäen lisäarvioinnin.
 
 ## Kun ketju loppuu {#when-the-chain-exhausts}
 
-Jos jokainen evaluoija delegoi eikä kukaan tee päätöstä, ketju loppuu, eikä enää ole evaluoijia suoritettavana. Tällöin turvallisuusjärjestelmä soveltaa varalle jäävää toimintatapaa perustuen `isSecureByDefault()`-konfigurointiin:
+Jos jokainen arvioija delegoi eikä kukaan tee päätöstä, ketju loppuu, eikä enää ole arvioijia suoritettavaksi. Tässä vaiheessa tietoturvajärjestelmä soveltaa varautumista `isSecureByDefault()`-asetusten perusteella:
 
-**Oletuksena turvallinen käytössä** (`isSecureByDefault() == true`):
-- Jos käyttäjä on kirjautunut sisään: Anna pääsy
-- Jos käyttäjä ei ole kirjautunut: Hylkää ja vaadi todistus
+**Oletusarvoisesti turvallinen sallittu** (`isSecureByDefault() == true`):
+- Jos käyttäjä on todennettu: Anna pääsy
+- Jos käyttäjä ei ole todennettu: Evä todennus vaaditaan
 
-**Oletuksena turvallinen ei käytössä** (`isSecureByDefault() == false`):
-- Anna pääsy riippumatta todistuksesta
+**Oletusarvoisesti turvallinen estetty** (`isSecureByDefault() == false`):
+- Anna pääsy riippumatta todennuksesta
 
-Reitit, joilla ei ole turvallisuusnotaatiota, toimivat silti määriteltyjen käyttäytymiset. Oletuksena turvallinen käytössä, ilman annotaatioita olevat reitit vaativat todistuksen. Sen ollessa ei käytössä, ilman annotaatioita olevat reitit ovat julkisia.
+Reitit, joilla ei ole minkäänlaisia tietoturvaannotaatioita, käyttäytyvät silti määriteltyjen käytäntöjen mukaan. Kun oletusarvoisesti turvallinen on sallittu, annotaatiottomat reitit vaativat todennuksen. Kun se on estetty, annotaatiottomat reitit ovat julkisia.
 
-## Mukautettujen evaluoijien prioriteetit {#custom-evaluator-priorities}
+## Mukautettujen arvioijien prioriteetit {#custom-evaluator-priorities}
 
-Luoessasi mukautettuja evaluoijia valitse prioriteetit huolellisesti:
+Kun luot mukautettuja arvioijia, valitse prioriteetit huolellisesti:
 
-- **0-9**: Varattuja ydinraamisunyä evaluoijille. Vältä näiden prioriteettien käyttöä, ellei korvata sisäänrakennettuja evaluoijia.
-- **10-99**: Suositeltu mukautettujen liiketoimintalogiikan evaluoijille. Nämä suoritetaan ydin evaluoijien jälkeen mutta ennen yleisiä varareittejä.
+- **0-9**: Varattu ydintoimintakehyksen arvioijille. Vältä näiden prioriteettien käyttöä, ellet vaihda sisäänrakennettuja arvioijia.
+- **10-99**: Suositeltu mukautetuille liiketoimintalogiikan arvioijille. Nämä suoritetaan ydinarvioijien jälkeen, mutta ennen yleisiä varatoimia.
 
 Esimerkki:
 
 ```java title="SubscriptionEvaluator.java"
-// Mukautettu evaluoija tilausten pohjalta
+// Mukautettu arvioija tilauspohjaiseen pääsyyn
 @RegisteredEvaluator(priority = 10)
 public class SubscriptionEvaluator implements RouteSecurityEvaluator {
   @Override
@@ -136,51 +136,51 @@ public class SubscriptionEvaluator implements RouteSecurityEvaluator {
 }
 ```
 
-Tämä evaluoija toimii prioriteetilla 10, ydin evaluoijien jälkeen. Jos käyttäjällä on aktiivinen tilaus, se delegoi ketjulle, mikä mahdollistaa koostumisen muiden evaluoijien kanssa.
+Tämä arvioija suoritetaan prioriteetilla 10, ydinarvioijien jälkeen. Jos käyttäjällä on aktiivinen tilaus, se delegoi ketjulle, jolloin koostaminen muiden arvioijien kanssa on mahdollista.
 
-## Evaluoinnin koostaminen {#evaluator-composition}
+## Arvioijien koostaminen {#evaluator-composition}
 
-Useimmat sisäänrakennetut evaluoijat ovat **terminaalisia**, ne tekevät lopullisen päätöksen ja pysäyttävät ketjun. Vain `RolesAllowedEvaluator` jatkaa ketjua pääsyn myöntämisen jälkeen, sallien koostamisen mukautettujen evaluoijien kanssa.
+Useimmat sisäänrakennetut arvioijat ovat **terminaaleja**, ne tekevät lopullisen päätöksen ja pysäyttävät ketjun. Vain `RolesAllowedEvaluator` jatkaa ketjua pääsyn myöntämisen jälkeen, mikä mahdollistaa koostamisen mukautettujen arvioijien kanssa.
 
-**Terminaaliset evaluoijat (eivät voi olla koottuja):**
-- `@DenyAll`: Estää aina, pysäyttää ketjun
-- `@AnonymousAccess`: Sallii aina, pysäyttää ketjun
-- `@PermitAll`: Sallii todistettuille käyttäjille, pysäyttää ketjun
+**Terminaaliarvioijat (eivät voi muodostaa koostumusta):**
+- `@DenyAll`: Aina kieltää, pysäyttää ketjun
+- `@AnonymousAccess`: Aina myöntää, pysäyttää ketjun
+- `@PermitAll`: Myöntää todennetuille käyttäjille, pysäyttää ketjun
 
-**Koostettavat evaluoijat:**
-- `@RolesAllowed`: Jos käyttäjällä on rooli, **jatkaa ketjua** lisätarkistuksia varten
+**Koostettavat arvioijat:**
+- `@RolesAllowed`: Jos käyttäjällä on rooli, **jatkuu ketjua**, jolloin voidaan tehdä lisä tarkastuksia
 
-### Koostuminen, joka toimii {#composition-that-works}
+### Toimiva koostaminen {#composition-that-works}
 
-Voit koostaa `@RolesAllowed` mukautettujen evaluoijien kanssa:
+Voit koostaa `@RolesAllowed` mukautettujen arvioijien kanssa:
 
 ```java
 @Route("/premium-admin")
-@RolesAllowed("ADMIN")  // Tarkistaa roolin, sitten jatkaa ketjua
+@RolesAllowed("ADMIN")  // Tarkistaa roolin, sitten jatkuu ketjussa
 @RequiresSubscription   // Mukautettu tarkistus suoritetaan roolitarkistuksen jälkeen
 public class PremiumAdminView extends Composite<Div> {
-  // Vaatii ADMIN roolia JA aktiivisen tilauksen
+  // Vaatimuksena on ADMIN-rooli JA aktiivinen tilaus
 }
 ```
 
 Virta:
-1. `RolesAllowedEvaluator` tarkistaa, onko käyttäjällä `ADMIN`-rooli
-2. Jos on, kutsuu `chain.evaluate()` jatkaakseen
+1. `RolesAllowedEvaluator` tarkistaa, onko käyttäjällä `ADMIN` -rooli
+2. Jos kyllä, se kutsuu `chain.evaluate()` jatkaakseen
 3. `SubscriptionEvaluator` tarkistaa tilauksen tilan (suoritetaan myöhemmin ketjussa)
-4. Jos tilaus on aktiivinen, myönnetään pääsy; muuten hylätään
+4. Jos tilaus on aktiivinen, pääsy myönnetään; muuten evätään
 
-### Koostuminen, joka ei toimi {#composition-that-does-not-work}
+### Toimimaton koostaminen {#composition-that-does-not-work}
 
-Et voi yhdistää `@PermitAll` muita evaluoijia, koska se pysäyttää ketjun:
+Sinä **et voi** yhdistää `@PermitAll` muihin arvioijihin, koska se pysäyttää ketjun:
 
 ```java
 @Route("/wrong")
-@PermitAll           // Sallii heti, pysäyttää ketjun
+@PermitAll           // Myöntää heti, pysäyttää ketjun
 @RolesAllowed("ADMIN")  // EI KOSKAAN suorita!
 public class WrongView extends Composite<Div> {
-  // Tämä sallii pääsyn KENEEN tahansa todistettuun käyttäjään
-  // @RolesAllowed -tarkistus ohitetaan
+  // Tämä myöntää pääsyn KAIKEN todennetun käyttäjän
+  // @RolesAllowed jätetään huomiotta
 }
 ```
 
-`PermitAllEvaluator` suoritetaan ensin (rekisteröity alhaisemman prioriteetin mukaan), myöntää pääsyn kaikille todistetuille käyttäjille ja palaa ilman, että kutsuu `chain.evaluate()`. `RolesAllowedEvaluator` ei koskaan suoriteta.
+`PermitAllEvaluator` suoritetaan ensin (rekisteröity matalammalla prioriteetilla), myöntää pääsyn mihin tahansa todennettuun käyttäjään ja palaa ilman `chain.evaluate()` kutsumista. `RolesAllowedEvaluator` ei koskaan suoriteta.

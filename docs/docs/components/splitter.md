@@ -8,8 +8,13 @@ sidebar_position: 115
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="splitter" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
 
-
 The `Splitter` component, designed to divide and resize content within your app, encapsulates two resizable components: the master and the detail components. A divider separates these components, allowing users to dynamically adjust each component's size according to their preferences.
+
+<!-- INTRO_END -->
+
+## Creating a splitter {#creating-a-splitter}
+
+Create a `Splitter` by passing two components to its constructor. The first becomes the master panel and the second becomes the detail panel.
 
 <ComponentDemo 
 path='/webforj/splitterbasic?' 

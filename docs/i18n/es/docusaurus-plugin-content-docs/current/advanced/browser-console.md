@@ -1,16 +1,12 @@
 ---
-sidebar_position: 5
+sidebar_position: 15
 title: Browser Console
-_i18n_hash: 340e3d6f1d09c67ecc3d2d93bcd23b28
+_i18n_hash: 843587956991faa037138ce8e8563e7a
 ---
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>
 
-Usar la consola del navegador para imprimir información valiosa del programa es una parte integral del proceso de desarrollo. La clase utilitaria <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> viene con una serie de características para mejorar las capacidades de registro.
-
-<!-- :::info
-Antes de `24.10`, los métodos `App.consoleLog()` y `App.consoleError()` habilitaban este comportamiento, pero desde entonces han sido marcados para depreciación.
-::: -->
+Usar la consola del navegador para imprimir información del programa es una parte integral del proceso de desarrollo. La clase utilitaria <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> proporciona características que mejoran las capacidades de registro a través de tipos de registro y estilos.
 
 ## Instance {#instance}
 
@@ -20,7 +16,7 @@ Obtén una instancia de `BrowserConsole` utilizando el método `App.console()`. 
 import static com.webforj.App.console;
 // Tipos
 console().log("Mensaje de log");
-console().info("Mensaje de info");
+console().info("Mensaje de información");
 console().warn("Mensaje de advertencia");
 console().error("Mensaje de error");
 console().debug("Mensaje de depuración");
@@ -28,8 +24,8 @@ console().debug("Mensaje de depuración");
 
 ## Styling {#styling}
 
-Utiliza los métodos del constructor para establecer la apariencia del mensaje de log. Cada constructor tiene opciones para cambiar una propiedad específica. También es posible [mezclar múltiples estilos](#mixing-styles).
-Una vez que se imprime un mensaje de consola, cualquier estilo aplicado no se trasladará a mensajes posteriores a menos que *se redefina explícitamente*.
+Utiliza los métodos de constructor para establecer la apariencia del mensaje de registro. Cada constructor tiene opciones para cambiar una propiedad específica. También es posible [mezclar múltiples estilos](#mixing-styles).
+Una vez que se imprime un mensaje en la consola, cualquier estilo aplicado no se transferirá a mensajes subsiguientes a menos que se redefina *explícitamente*.
 
 - [`background()`](#background-color)
 - [`color()`](#text-color)
@@ -39,7 +35,7 @@ Una vez que se imprime un mensaje de consola, cualquier estilo aplicado no se tr
 - [`weight()`](#font-weight)
 
 :::tip
-Utiliza el método `setStyle` para cambiar las propiedades del log de `BrowserConsole` no especificadas por los constructores.
+Utiliza el método `setStyle` para cambiar las propiedades del registro de `BrowserConsole` que no están especificadas por los constructores.
 :::
 
 ### Background color {#background-color}
@@ -61,13 +57,13 @@ Utiliza métodos nombrados por color, como `red()`, o elige un valor específico
 ```java
 // Ejemplos de color
 console().background().red().log("Texto rojo");
-console().color().colored("#becad2").log("Texto gris claro personalizado");
+console().color().colored("#becad2").log("Texto personalizado color gris azul claro");
 ```
 
 ### Font size {#font-size}
 
-Establece el tamaño de fuente con el método `size()`, que devuelve el <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontSizeBuilder" code='true'>FontSizeBuilder</JavadocLink>.
-Utiliza métodos nombrados por tamaño, como `small()`, o elige un valor específico con `from(String value)`.
+Establece el tamaño de la fuente con el método `size()`, que devuelve el <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontSizeBuilder" code='true'>FontSizeBuilder</JavadocLink>.
+Utiliza métodos nombrados por un tamaño, como `small()`, o elige un valor específico con `from(String value)`.
 
 ```java
 // Ejemplos de tamaño
@@ -81,7 +77,7 @@ El método `from(String value)` puede aceptar otros valores de tamaño de fuente
 ### Font style {#font-style}
 
 Establece el estilo de la fuente con el método `style()`, que devuelve el <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontStyleBuilder" code='true'>FontStyleBuilder</JavadocLink>.
-Por ejemplo, utiliza el método `italic()` para hacer que el log de la consola esté en cursiva.
+Por ejemplo, utiliza el método `italic()` para hacer que el registro de la consola esté en cursiva.
 
 ```java
 // Ejemplos de estilo
@@ -92,20 +88,20 @@ console().style().normal().log("Fuente normal");
 ### Text transformation {#text-transformation}
 
 Controla la capitalización de los caracteres en un mensaje con el método `transform()`, que devuelve el <JavadocLink type="foundation" location="com/webforj/BrowserConsole.TextTransformBuilder" code='true'>TextTransformBuilder</JavadocLink>.
-Por ejemplo, utiliza el método `capitalize()` para transformar la primera letra de cada palabra en mayúscula.
+Por ejemplo, utiliza el método `capitalize()` para transformar la primera letra de cada palabra a mayúscula.
 
 ```java
 // Ejemplos de transformación
-// Transformación de texto en mayúsculas
-console().transform().capitalize().log("Transformación de texto en mayúsculas");
-// TRANSFORMACIÓN DE TEXTO EN MAYÚSCULAS 
+// Transformación de texto en mayúscula
+console().transform().capitalize().log("Transformación de texto a capital");
+ // TRANSFORMACIÓN DE TEXTO EN MAYÚSCULAS 
 console().transform().uppercase().log("Transformación de texto en mayúsculas");
 ```
 
 ### Font weight {#font-weight}
 
 Establece qué tan grueso es el texto con el método `weight()`, que devuelve el <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontWeightBuilder" code='true'>FontWeightBuilder</JavadocLink>.
-Por ejemplo, utiliza el método `ligther()` para hacer que la fuente sea más ligera que la normal.
+Por ejemplo, utiliza el método `lighter()` para hacer que la fuente sea más ligera que la normal.
 
 ```java
 // Ejemplos de peso
@@ -119,11 +115,11 @@ Es posible mezclar y combinar métodos para una visualización de registro perso
 ```java
 // Una variedad de opciones para una visualización de registro personalizada
 console()
-    .weight().bolder()
-    .size().larger()
-    .color().gray()
-    .style().italic()
-    .transform().uppercase()
-    .background().blue()
-    .warn("Mezclando estilos");
+  .weight().bolder()
+  .size().larger()
+  .color().gray()
+  .style().italic()
+  .transform().uppercase()
+  .background().blue()
+  .warn("Mezclando estilos");
 ```
