@@ -1,18 +1,20 @@
 ---
 title: Terminal
 sidebar_position: 126
-_i18n_hash: 8bc6b488ddba7e4660319f00c497321c
+_i18n_hash: a4c442c62c748f82d75133db075054af
 ---
 <DocChip chip="shadow" />  
 <DocChip chip="name" label="dwc-terminal" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
 
-De `Terminal` component biedt een interactieve terminalemulator die zich gedraagt als een traditionele systeemconsole. Het stelt applicaties in staat om een tekstgebaseerde interface weer te geven en te manipuleren, waarbij tekstuitvoer wordt afgehandeld, gebruikersinvoer wordt ontvangen, controle-sequenties worden geïnterpreteerd en schermbuffers worden onderhouden.
+De `Terminal` component is een interactieve terminalemulator die zich gedraagt als een traditionele systeemconsole. Het behandelt tekstuitvoer, gebruikersinvoer, controle-sequenties en schermbuffers, waardoor het geschikt is voor het bouwen van externe toegangshulpmiddelen, tekstdashboards, ingebedde opdracht-shells of debug-consoles.
 
-Deze terminal is ontworpen om betrouwbare prestaties te leveren in verschillende gebruiksscenario's, zoals het bouwen van tools voor externe toegang, tekstdashboards, ingebedde opdracht-shells of interactieve debug-console's.
+<!-- INTRO_END -->
 
-:::info Importeren van Terminal
+## Een terminal maken {#creating-a-terminal}
+
+:::info Het importeren van Terminal
 Om de `Terminal` component in je app te gebruiken, zorg ervoor dat je de volgende afhankelijkheid in je pom.xml opneemt.
 
 ```xml
@@ -22,6 +24,8 @@ Om de `Terminal` component in je app te gebruiken, zorg ervoor dat je de volgend
 </dependency>
 ```
 :::
+
+Het volgende voorbeeld bouwt een interactieve opdracht-shell met getypte opdrachten, geschiedenisnavigatie en aangepaste uitvoer.
 
 <ComponentDemo 
 path='/webforj/terminal?' 
@@ -40,25 +44,25 @@ height='400px'
 
 ## Hoe het werkt {#how-it-works}
 
-De terminal beheert een grid van tekstcellen, verwerkt binnenkomende karakterstromen en reageert op gebruikersacties zoals typen of tekst selecteren. Het interpreteert automatisch controlekarakters en escape-sequenties voor cursorbeweging, kleurveranderingen en schermwissen.
+De terminal beheert een rooster van tekstcellen, verwerkt binnenkomende tekenstromen en reageert op gebruikersacties zoals typen of tekstselectie. Het interpreteert automatisch controle-tekens en escape-sequenties voor cursorbeweging, kleurveranderingen en schermwissing.
 
 De kernfunctionaliteiten omvatten:
 
-- **Gegevensinvoer**: Schrijven van gegevens naar de terminal werkt het scherm bij en verwerkt zowel tekst als controle-sequenties.
-- **Gegevensuitvoer**: Vangt gebruikers toetsaanslagen en geeft deze door als gestructureerde gebeurtenissen.
-- **Schermbeheer**: Beheert een scrollbare geschiedenisbuffer en de huidige schermstatus.
-- **Cursorbeheer**: Volgt de cursorpositie voor tekstinvoer en reacties op controle-sequenties.
+- **Gegevensinvoer**: Het schrijven van gegevens naar de terminal werkt het scherm bij, waarbij zowel tekst als controle-sequenties worden behandeld.
+- **Gegevensuitvoer**: Vangt gebruikerstoetsen en geeft ze als gestructureerde gebeurtenissen af.
+- **Schermbeheer**: Onderhoudt een scrollbare geschiedenisbuffer en de huidige schermstatus.
+- **Cursorbeheer**: Houdt de cursorpositie bij voor tekstinvoer en reacties op controle-sequenties.
 
-De terminal is stateful, wat betekent dat het correct multibyte-tekens reconstrueert en continuïteit behoudt over gefragmenteerde invoer.
+De terminal is stateful, wat betekent dat het correct meervoudige bytesymbolen reconstrueert en continuïteit behoudt over gefragmenteerde invoer.
 
 ## Gegevens naar de terminal verzenden {#sending-data-to-the-terminal}
 
-Gegevens worden naar de terminal gestuurd via de `write` en `writeln` methoden:
+Gegevens worden naar de terminal gestuurd met de `write` en `writeln` methoden:
 
-- `write(Object data)`: Stuurt gegevens naar de terminalstroom.
-- `writeln(Object data)`: Stuurt gegevens gevolgd door een nieuwe regel.
+- `write(Object data)`: Stuur gegevens in de terminalstroom.
+- `writeln(Object data)`: Stuur gegevens gevolgd door een nieuwe regel.
 
-De terminal verwerkt alle binnenkomende gegevens als **UTF-16** strings. Het verwerkt automatisch multibyte-tekens, zelfs wanneer de invoer in gefragmenteerde stukken arriveert.
+De terminal verwerkt alle binnenkomende gegevens als **UTF-16** strings. Het behandelt automatisch meervoudige bytesymbolen, zelfs wanneer invoer in gefragmenteerde stukjes arriveert.
 
 ### Voorbeeld {#example}
 ```java
@@ -69,19 +73,19 @@ terminal.writeln("Klaar.");
 Je kunt ook een callback toevoegen die wordt uitgevoerd zodra het gegevenspakket is verwerkt:
 
 ```java
-terminal.write("Langere opdrachtuitvoer", e -> {
-    System.out.println("Gegevens verwerkt.");
+terminal.write("Lang opdrachtoutput", e -> {
+  System.out.println("Gegevens verwerkt.");
 });
 ```
 
 ## Ontvangen van gebruikersinvoer {#receiving-user-input}
 
-De terminal vangt door de gebruiker gegenereerde invoer via twee gebeurtenissen:
+De terminal vangt gebruikersgegenereerde invoer via twee gebeurtenissen:
 
-- **Gegevensgebeurtenis (`onData`)**: Vindt plaats wanneer tekstinvoer gebeurt, waarbij Unicode-tekens worden verzonden.
-- **Toetsgebeurtenis (`onKey`)**: Vindt plaats voor elke toetsaanslag, inclusief informatie over toetscodes en modifiers zoals <kbd>Ctrl</kbd> of <kbd>Alt</kbd>.
+- **Gegevensgebeurtenis (`onData`)**: Wordt geactiveerd wanneer er tekstinvoer plaatsvindt, verstuurt Unicode-tekens.
+- **Toetsgebeurtenis (`onKey`)**: Wordt geactiveerd voor elke toetsaanslag, inclusief informatie over toetscodes en modifiers zoals <kbd>Ctrl</kbd> of <kbd>Alt</kbd>.
 
-Deze gebeurtenissen kunnen worden gebruikt om gebruikersinvoer naar een backend door te geven, UI-elementen bij te werken of aangepaste acties te activeren.
+Deze gebeurtenissen kunnen worden gebruikt om gebruikersinvoer naar een backend door te sturen, UI-elementen bij te werken of aangepaste acties te triggeren.
 
 ### Voorbeeld {#example-1}
 ```java
@@ -97,34 +101,34 @@ terminal.onKey(event -> {
 });
 ```
 
-Alle door de terminal gevangen gebruikersinvoer (zoals van `onData` gebeurtenissen) wordt uitgezonden als UTF-16 strings.  
-Als je backend een andere codering verwacht (zoals UTF-8 bytes), moet je de gegevens handmatig transcodereren.
+Alle gebruikersinvoer die door de terminal wordt vastgelegd (zoals vanuit `onData` gebeurtenissen) wordt afgegeven als UTF-16 strings.  
+Als je backend een andere codering verwacht (zoals UTF-8 bytes), moet je de gegevens handmatig transcoderen.
 
-:::info Legacy Encodings
-De terminal **ondersteunt geen legacy coderingen** zoals `ISO-8859`.  
-Als je compatibiliteit met niet-UTF-8 systemen nodig hebt, gebruik dan een externe transcoder (bijvoorbeeld, [`luit`](https://linux.die.net/man/1/luit) of [`iconv`](https://en.wikipedia.org/wiki/Iconv)) om de gegevens te converteren voordat je ze naar de terminal schrijft of ervan leest.
+:::info Legacy encodings
+De terminal **ondersteunt geen legacy encodings** zoals `ISO-8859`.  
+Als je compatibiliteit nodig hebt met systemen die geen UTF-8 gebruiken, gebruik dan een externe transcoder (bijvoorbeeld, [`luit`](https://linux.die.net/man/1/luit) of [`iconv`](https://en.wikipedia.org/wiki/Iconv)) om de gegevens te converteren voordat je ze naar de terminal schrijft of ervan leest.
 :::
 
-## Behandelen van grote gegevensstromen {#handling-large-data-streams}
+## Omgaan met grote gegevensstromen {#handling-large-data-streams}
 
-Aangezien de terminal niet in staat is om onbeperkte invoer onmiddellijk weer te geven, behoudt het een interne invoerbuffer. Als deze buffer te groot wordt (standaard ongeveer `50MB`), kunnen nieuwe binnenkomende gegevens worden verworpen om de systeemprestaties te beschermen.
+Omdat de terminal niet onmiddellijk onbeperkte invoer kan weergeven, onderhoudt het een interne invoerbuffer. Als deze buffer te groot wordt (standaard rond de `50MB`), kunnen nieuwe binnenkomende gegevens worden verworpen om de systeemprestaties te beschermen.
 
-Om snel gegevensbronnen goed te beheren, moet je **flow control** implementeren.
+Om snel gegevensbronnen goed te beheren, moet je **flowcontrole** implementeren.
 
-### Basisflow control voorbeeld {#basic-flow-control-example}
+### Basisflowcontrolevoorbeeld {#basic-flow-control-example}
 
-Pauzeer je backend totdat de terminal klaar is met het verwerken van een gegevenspakket:
+Pauzeer je backend totdat de terminal een gegevenspakket heeft verwerkt:
 
 ```java
 pty.onData(chunk -> {
-    pty.pause();
-    terminal.write(chunk, result -> {
-        pty.resume();
-    });
+  pty.pause();
+  terminal.write(chunk, result -> {
+    pty.resume();
+  });
 });
 ```
 
-### Watermark flow control voorbeeld {#watermark-flow-control-example}
+### Watermerk-flowcontrolevoorbeeld {#watermark-flow-control-example}
 
 Voor efficiëntere controle, gebruik hoge/lage watermerken:
 
@@ -158,34 +162,34 @@ height='400px'
 
 ## Aanpassing {#customization}
 
-### Terminalopties {#terminal-options}
+### Terminal opties {#terminal-options}
 
 De `TerminalOptions` klasse stelt je in staat om het gedrag te configureren:
 
 - Cursor knipperen.
 - Lettertype-instellingen (familie, grootte, gewicht).
-- Scrollback-buffergrootte.
+- Scrollback buffer grootte.
 - Regelhoogte en letterafstand.
-- Toegankelijkheidsinstellingen (mode voor schermlezers).
+- Toegankelijkheidsinstellingen (schermlezer-modus).
 
 Voorbeeld:
 ```java
 TerminalOptions options = new TerminalOptions()
-    .setCursorBlink(true)
-    .setFontFamily("Courier New, monospace")
-    .setFontSize(13)
-    .setScrollback(5000);
+  .setCursorBlink(true)
+  .setFontFamily("Courier New, monospace")
+  .setFontSize(13)
+  .setScrollback(5000);
 
 terminal.setOptions(options);
 ```
 
 ### Terminalthema {#terminal-theme}
 
-Je kunt de terminal stylen met behulp van `TerminalTheme`, dat het volgende definieert:
+Je kunt de terminal stylen met `TerminalTheme`, die het volgende definieert:
 
-- Achtergrond- en voortgronds kleuren.
+- Achtergrond- en letterkleur.
 - Standaard `ANSI` kleurenpalet.
-- Cursor- en selectieachtergrondkleuren.
+- Cursor- en selecties achtergrondkleuren.
 
 Voorbeeld:
 ```java
@@ -202,22 +206,22 @@ height='500px'
 
 ## Ondersteunde sequenties {#supported-sequences}
 
-De terminal ondersteunt een breed scala aan standaard controle-sequenties die worden gebruikt voor cursorbeweging, schermupdates en tekstopmaak.
+De terminal ondersteunt een breed scala van standaard controle-sequenties die worden gebruikt voor cursorbeweging, schermupdates en tekstopmaak.
 
 Herkenbare groepen:
 
-- **`C0` controlecodes** (eén-byte 7-bit commando's, `\x00`, `\x1F`, zoals backspace en line feed)
-- **`C1` controlecodes** (één-byte 8-bit commando's, `\x80`, `\x9F`)
-- **`ESC` sequenties** (begonnen met `ESC` (`\x1B`), zoals cursor opslaan/herstellen, schermuitlijning)
-- **`CSI` sequenties** (Control Sequence Introducer, `ESC [` of `CSI (\x9B)`, voor bewerkingen zoals scrollen, wissen en stijlen)
+- **`C0` controlecodes** (één-byte 7-bit opdrachten, `\x00`, `\x1F`, zoals backspace en line feed)
+- **`C1` controlecodes** (één-byte 8-bit opdrachten, `\x80`, `\x9F`)
+- **`ESC` sequenties** (begint met `ESC` (`\x1B`), zoals het opslaan/herstellen van de cursor, schermuitlijning)
+- **`CSI` sequenties** (Control Sequence Introducer, `ESC [` of `CSI (\x9B)`, voor operaties zoals scrollen, wissen en stijlen)
 - **`DCS` sequenties** (Device Control Strings, `ESC P` of `DCS (\x90)`)
-- **`OSC` sequenties** (Operating System Commands, `ESC ]` of `OSC (\x9D)`, voor het instellen van venstertitels, hyperlinks en kleuren)
+- **`OSC` sequenties** (Operating System Commands, `ESC ]` of `OSC (\x9D)`, voor het instellen van windowtitel, hyperlinks en kleuren)
 
 :::info Omgaan met exotische en aangepaste sequenties
 Sommige exotische sequentietypen zoals `APC`, `PM` en `SOS` worden herkend maar stilzwijgend genegeerd.  
-Aangepaste sequenties kunnen indien nodig worden ondersteund via integraties.
+Aangepaste sequenties kunnen worden ondersteund via integraties indien nodig.
 :::
 
-## Stijling {#styling}
+## Styling {#styling}
 
 <TableBuilder name="Terminal" />

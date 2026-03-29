@@ -24,4 +24,14 @@ public interface TerminalCommand {
    * @param args the command arguments
    */
   void execute(Terminal term, String[] args);
+
+  /**
+   * Prints command information to the terminal.
+   * Can be overridden for custom formatting.
+   *
+   * @param term the terminal instance
+   */
+  default void printInfo(Terminal term) {
+    term.writeln("  \u001B[36m" + getName() + "\u001B[0m - " + getDescription());
+  }
 }

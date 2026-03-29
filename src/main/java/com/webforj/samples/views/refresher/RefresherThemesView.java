@@ -17,28 +17,31 @@ import com.webforj.router.annotation.Route;
 @Route
 @StyleSheet("ws://css/refresher/refresher.css")
 public class RefresherThemesView extends Composite<Div> {
-
-  private final List<Theme> themes = List.of(
-    Theme.PRIMARY, Theme.SUCCESS, Theme.WARNING,
-    Theme.DANGER, Theme.INFO, Theme.GRAY, Theme.DANGER
+  // Available themes for cycling
+  private static final List<Theme> THEMES = List.of(
+          Theme.PRIMARY, Theme.SUCCESS, Theme.WARNING,
+          Theme.DANGER, Theme.INFO, Theme.GRAY, Theme.DANGER
+  );
+  // Names for the item list
+  private static final List<String> NAMES = List.of(
+          "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
+          "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
   );
 
+  private final Div self = getBoundComponent();
+
+  // State for theme cycling
   private final AtomicInteger themeIndex = new AtomicInteger(0);
+  // Random generator for selecting names
   private final Random random = new Random();
-  private final String[] names = {
-    "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
-    "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
-  };
 
   public RefresherThemesView() {
-    Div self = getBoundComponent();
-
-    Div canvas = new Div().addClassName("is-canvas");
-    canvas.setAttribute("theme", Theme.INFO.name().toLowerCase());
-    self.add(canvas);
+    Div canvas = new Div()
+            .addClassName("is-canvas")
+            .setAttribute("theme", Theme.INFO.name().toLowerCase());
 
     Refresher refresher = new Refresher()
-        .setTheme(Theme.INFO);
+            .setTheme(Theme.INFO);
 
     refresher.onRefresh(e -> {
       canvas.removeAll();
@@ -46,39 +49,52 @@ public class RefresherThemesView extends Composite<Div> {
         canvas.add(new Item());
       }
 
-      int next = themeIndex.updateAndGet(i -> (i + 1) % themes.size());
-      Theme nextTheme = themes.get(next);
+      // Cycle to next theme
+      int next = themeIndex.updateAndGet(i -> (i + 1) % THEMES.size());
+      Theme nextTheme = THEMES.get(next);
       refresher.setTheme(nextTheme);
       canvas.setAttribute("theme", nextTheme.name().toLowerCase());
       refresher.finish();
     });
 
-    self.add(refresher);
-
     for (int i = 0; i < 8; i++) {
       canvas.add(new Item());
     }
+
+    self.add(canvas, refresher);
   }
 
+  /**
+   * Item component representing a single row in the refresher list.
+   */
   class Item extends Composite<Div> {
     public Item() {
-      Div self = getBoundComponent();
+      Div itemSelf = getBoundComponent();
 
-      String name = names[random.nextInt(names.length)];
+      // Select random name from the list
+      String name = NAMES.get(random.nextInt(NAMES.size()));
 
       Div nameDiv = new Div(name).addClassName("item-name");
-      Div excerpt = new Div("Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-          + "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-          .addClassName("item-excerpt");
+      Div excerpt = new Div("""
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.""")
+              .addClassName("item-excerpt");
 
-      Icon icon = FeatherIcon.ARROW_RIGHT.create();
-      icon.setMinSize("24px", "24px");
+      Icon icon = FeatherIcon.ARROW_RIGHT.create()
+              .setMinSize("24px", "24px");
 
-      self.add(FlexLayout.create(FlexLayout.create(nameDiv, excerpt).vertical().build(), icon)
-          .horizontal()
-          .justify().between()
-          .align().center()
-          .build());
+      itemSelf.add(
+              FlexLayout.create(
+                              FlexLayout.create(nameDiv, excerpt)
+                                      .vertical()
+                                      .build(),
+                              icon
+                      )
+                      .horizontal()
+                      .justify().between()
+                      .align().center()
+                      .build()
+      );
     }
   }
 }

@@ -1,37 +1,38 @@
 ---
 title: Routing
 sidebar_position: 15
-_i18n_hash: a5b11fb9cf05e74bd347faae48f167dd
+_i18n_hash: 8518a84a9c7a543b73cf4de16658f650
 ---
-Reititys webforJ:ssä Springin kanssa toimii täsmälleen samalla tavalla kuin tavallisissa webforJ-sovelluksissa. Käytät edelleen `@Route`- annotaatiota määrittääksesi reittejä, samoja navigointimalleja ja samaa reitin elinkaarikäyttäytymistä. Ainoa ero on se, että kun Spring on läsnä, reitit voivat myös vastaanottaa Springin osia konstruktori-injektioiden kautta.
+Routing in webforJ with Spring toimii samalla tavalla kuin tavallisissa webforJ-sovelluksissa. Käytät edelleen `@Route`-annotaatiota reittien määrittämiseen, samoja navigointimalleja ja samaa reittielinkaarta. Ainoa ero on se, että kun Spring on käytössä, reittisi voivat myös vastaanottaa Spring-beaneja konstruktorin injektoinnin kautta.
 
-Kun navigoit reitille, webforJ luo reitti-instanssin - mutta Springin ollessa luokkatiessä se käyttää Springin säiliötä riippuvuuksien ratkaisemiseen. Tämä tarkoittaa, että reittisi voivat hyödyntää koko Springin ekosysteemin voimaa (palvelut, varastot, mukautetut komponentit) säilyttäen samalla tutun webforJ-reitityskäyttäytymisen.
+Kun navigoit reitille, webforJ luo reitti-instanssin - mutta kun Spring on luokkapolussa, se käyttää Springin säiliötä riippuvuuksien ratkaisemiseen. Tämä tarkoittaa, että reittisi voivat hyödyntää koko Springin ekosysteemin (palvelut, repositoryt, mukautetut beanit) samalla säilyttäen tuttua webforJ-reitityskäyttäytymistä.
 
-:::tip[Opettele lisää riippuvuuksien injektoinnista]
-Saadaksesi kattavan käsityksen riippuvuuksien injektointimalleista ja Springin IoC-säiliöstä, katso [Springin virallinen riippuvuuksien injektointidokumentaatio](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html).
+:::tip[Opettele lisää riippuvuuden injektoimisesta]
+Kattavan ymmärryksen saamiseksi riippuvuuden injektoimismalleista ja Springin IoC-säiliöstä, katso [Springin virallinen riippuvuuden injektoinnin dokumentaatio](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html).
 :::
 
 ## Kuinka webforJ luo reittejä Springin kanssa {#how-webforj-creates-routes-with-spring}
 
-webforJ käsittelee reittien luomista eri tavalla, kun Spring on läsnä. Kehyksen objektin luontimekanismi tunnistaa Spring Bootin luokkatiestä ja delegoi Springin `AutowireCapableBeanFactory`:lle riippuvuuksien injektoimiseen tarvittavien instanssien luomisen.
+webforJ käsittelee reittien luomista eri tavalla, kun Spring on käytössä. Kehyksen objektin luomismekanismi havaitsee Spring Bootin luokkapolussa ja delegoi Springin `AutowireCapableBeanFactory`:lle instanssien luomiseksi riippuvuuden injektoinnilla.
 
-Luokkien, jotka löydetään `@Routify`-skannauksella, osalta webforJ luo aina uusia instansseja eikä koskaan käytä olemassa olevia Spring-komponentteja. Jokainen käyttäjän navigointi saa puhtaan reitti-instanssin ilman jaettua tilaa. Luontiprosessi:
+Luokkien, jotka löydetään `@Routify`-skannauksella, kohdalla webforJ luo aina uusia instansseja eikä koskaan käytä olemassa olevia Spring-beaneja. Jokainen käyttäjän navigointi saa puhtaan reitti-instanssin ilman jaettua tilaa. Luomisprosessi:
 
 1. Käyttäjä navigoi reitille
-2. webforJ pyytää uutta instanssia (ohittaen kaikki olemassa olevat Spring-component määritelmät)
-3. Springin tehdas luo instanssin ja injektoi konstruktorin riippuvuudet
-4. Reitti alustuu kaikki riippuvuudet tyydytettyinä
+2. webforJ pyytää uutta instanssia (jättää huomiotta olemassa olevat Spring-beani-määritelmät)
+3. Springin tehdas luo instanssin ja injektoi konstruktoririippuvuudet
+4. Reitti alustaa kaikki riippuvuudet tyydytettyinä
 
-Tämä käyttäytyminen on tarkoituksellista ja eroaa tyypillisistä Spring-komponenteista. Vaikka rekisteröisit reitin Spring-komponenttina käyttämällä `@Component`, webforJ ohittaa kyseisen komponenttimääritelmän ja luo uuden instanssin jokaiselle navigoinnille.
+Tämä käyttäytyminen on tarkoituksellista ja poikkeaa tyypillisistä Spring-beaneista. Vaikka rekisteröisit reitin Spring-beanina `@Component`-annotaatiolla, webforJ jättää kyseisen bean-määritelmän huomiotta ja luo uuden instanssin jokaiselle navigoinnille.
 
-## Spring-komponenttien käyttäminen reiteissä {#using-spring-beans-in-routes}
+## Spring-beanien käyttäminen reiteissä {#using-spring-beans-in-routes}
 
-Reittiluokkasi eivät vaadi Spring-anotaatioita. Pelkkä `@Route`-annotaatio mahdollistaa sekä reittien löytämisen että riippuvuuksien injektoimisen:
+Reittisi luokilla ei tarvitse olla Spring-annotaatioita. Pelkkä `@Route`-annotaatio mahdollistaa sekä reittien löytämisen että riippuvuuksien injektoinnin:
 
 ```java
 @Route("/dashboard")
 public class DashboardView extends Composite<Div> {
   
+  private final Div self = getBoundComponent();
   private final MetricsService metricsService;
   private final UserRepository userRepository;
   
@@ -39,27 +40,27 @@ public class DashboardView extends Composite<Div> {
     this.metricsService = metricsService;
     this.userRepository = userRepository;
     
-    // Käytä injektoituja palveluja käyttöliittymän rakentamiseen
+    // Käytä injektoituja palveluita UI:n rakentamiseksi
     Div metricsPanel = new Div();
     metricsPanel.setText(metricsService.getCurrentMetrics());
     
-    getBoundComponent().add(metricsPanel);
+    self.add(metricsPanel);
   }
 }
 ```
 
 Konstruktori voi vastaanottaa:
-- Palveluja, jotka on merkitty `@Service`, `@Repository` tai `@Component`
-- Spring Data -varastoja (`JpaRepository`, `CrudRepository`)
-- Konfiguraatioarvoja `@Value`-annotaatioiden kautta
-- Spring-infrastruktuuribeaneja (`ApplicationContext`, `Environment`)
-- Mitä tahansa bean, joka on rekisteröity Spring-kontekstiin
+- Palveluita, jotka on merkitty `@Service`, `@Repository` tai `@Component`
+- Spring Datan repositoryt (`JpaRepository`, `CrudRepository`)
+- Konfiguraation arvoja `@Value`-annotaatioiden kautta
+- Springin infrastruktuuribeaneja (`ApplicationContext`, `Environment`)
+- Mitä tahansa beania, joka on rekisteröity Springin kontekstiin
 
-## Toimiva esimerkki {#working-example}
+## Työesimerkki {#working-example}
 
-Tämä esimerkki havainnollistaa täydellistä riippuvuuksien injektoinnin skenaariota, jossa Spring-palvelu injektoidaan webforJ-reittiin. Palvelu hallinnoi liiketoimintalogiikkaa, kun taas reitti käsittelee käyttöliittymän esittämistä.
+Tämä esimerkki osoittaa täydellisen riippuvuuden injektoimisskenaarion, jossa Spring-palvelu injektoidaan webforJ-reittiin. Palvelu hallitsee liiketoimintalogiikkaa, kun taas reitti huolehtii UI-esityksestä.
 
-Ensiksi määrittele standardi Spring-palvelu käyttämällä `@Service`-annotaatiota. Tämä palvelu hallinnoi Springin säiliö ja on saatavilla injektoitavaksi:
+Ensinnäkin, määritä standardi Spring-palvelu käyttäen `@Service`-annotaatiota. Tätä palvelua hallitaan Springin säiliössä ja se on saatavilla injektoitavaksi:
 
 ```java title="RandomNumberService.java"
 @Service
@@ -75,7 +76,7 @@ public class RandomNumberService {
 @Route("/")
 public class HelloWorldView extends Composite<FlexLayout> {
 
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
   private Button btn = new Button("Generoi satunnainen numero");
 
   public HelloWorldView(RandomNumberService service) {
@@ -94,13 +95,13 @@ public class HelloWorldView extends Composite<FlexLayout> {
 }
 ```
 
-Tässä esimerkissä `RandomNumberService` on standardi Spring-palvelu-bean. `HelloWorldView`-reitti declaree sen konstruktoriparametrina, ja Spring toimittaa automaattisesti palveluinstanssin, kun webforJ luo reitin.
+Tässä esimerkissä `RandomNumberService` on standardi Spring-palvelu-bean. `HelloWorldView`-reitti ilmoittaa sen konstruktoriparametrina, ja Spring toimittaa automaattisesti palveluinstanssin, kun webforJ luo reitin.
 
-Huomaa, että reittiluokka käyttää vain `@Route`-annotaatiota - ei tarvita Springin stereotypioita kuten `@Component` tai `@Controller`. Kun käyttäjä navigoi juuripolkuun `/`, webforJ:
+Huomaa, että reittiluokka käyttää vain `@Route`-annotaatiota - ei tarvitse Springin stereotypeja, kuten `@Component` tai `@Controller`. Kun käyttäjä navigoi juuripolkuun `/`, webforJ:
 
 1. Luo uuden instanssin `HelloWorldView`:stä 
 2. Pyytää Springiä ratkaisemaan `RandomNumberService`-riippuvuuden
 3. Siirtää palvelun konstruktorille
-4. Reitti käyttää injektoitua palvelua painikkeen klikkausten käsittelemiseen
+4. Reitti käyttää injektoitua palvelua hallitakseen painikkeen klikkauksia
 
-Tämä malli toimii minkä tahansa Spring-beanin kanssa - palvelut, varastot, konfiguraatioluokat tai mukautetut komponentit. Riippuvuuksien injektointi tapahtuu läpinäkyvästi, mikä mahdollistaa sen, että voit keskittyä käyttöliittymäsi rakentamiseen, kun Spring hallinnoi liittämistä.
+Tämä malli toimii kaikkien Spring-beanien kanssa - palvelut, repositoryt, konfiguraatioluokat tai mukautetut komponentit. Riippuvuuden injektointi tapahtuu läpinäkyvästi, jolloin voit keskittyä UI:n rakentamiseen samalla kun Spring hallitsee johtamista.

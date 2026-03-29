@@ -3,6 +3,7 @@ package com.webforj.samples.pages.spinner;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class SpinnerSpeedDemoPage {
 
@@ -23,8 +24,8 @@ public class SpinnerSpeedDemoPage {
         this.pauseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getSpinner() {

@@ -8,13 +8,9 @@ sidebar_position: 90
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 
-ProgressBar is component that visually displays the progress of some task. As the task progresses towards completion, the progress bar displays the task's percentage of completion. This percentage is represented visually by a rectangle which starts out empty and gradually becomes filled in as the task progresses. In addition, the progress bar can display a textual representation of this percentage.
+The `ProgressBar` component visually represents the completion status of an operation. As work advances, a rectangle gradually fills to reflect the current percentage. The bar can also display a textual representation of its value, and supports both determinate and indeterminate states for tasks with known or unknown duration.
 
-<ComponentDemo 
-path='/webforj/progressbarbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java'
-height='150px'
-/>
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 
@@ -23,6 +19,14 @@ The `ProgressBar` component is useful for visualizing the completion status of t
 - Configurable minimum and maximum values.
 - Indeterminate mode for ongoing tasks without a definite end.
 - Options for text visibility, animation, and striped designs for better visual feedback.
+
+The following example shows a striped, animated progress bar with start, pause, and reset controls:
+
+<ComponentDemo 
+path='/webforj/progressbarbasic?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java'
+height='150px'
+/>
 
 ## Setting values {#setting-values}
 

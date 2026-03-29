@@ -11,12 +11,15 @@ import com.webforj.samples.components.SplitterBox;
 @FrameTitle("Splitter Orientation")
 public class SplitterOrientationView extends Composite<Div> {
 
+  private final Div self = getBoundComponent();
+
   public SplitterOrientationView() {
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
-    Splitter splitter = new Splitter(master, detail);
-    splitter.setOrientation(Splitter.Orientation.VERTICAL);
 
-    getBoundComponent().add(splitter);
+    Splitter splitter = new Splitter(master, detail)
+            .setOrientation(Splitter.Orientation.VERTICAL);
+
+    self.add(splitter);
   }
 }

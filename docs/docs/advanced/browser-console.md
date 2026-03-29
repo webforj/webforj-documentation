@@ -6,7 +6,8 @@ title: Browser Console
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>
 
-Using the browser's console to print valuable program information is an integral part of the development process. The <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> utility class comes with a slew of features to enhance logging capabilities.
+Using the browser's console to print program information is an integral part of the development process. 
+The <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> utility class provides features that improve logging capabilities through log types and styling.
 
 <!-- :::info
 Before `24.10`, the `App.consoleLog()` and `App.consoleError()` methods enabled this behavior, but they have since been marked for deprecation.
@@ -119,11 +120,11 @@ It's possible to mix and match methods for a custom logging display.
 ```java
 // A variety of options for custom logging display
 console()
-    .weight().bolder()
-    .size().larger()
-    .color().gray()
-    .style().italic()
-    .transform().uppercase()
-    .background().blue()
-    .warn("Mixing styles");
+  .weight().bolder()
+  .size().larger()
+  .color().gray()
+  .style().italic()
+  .transform().uppercase()
+  .background().blue()
+  .warn("Mixing styles");
 ```

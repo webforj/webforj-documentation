@@ -10,6 +10,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Login Cancel Button")
 public class LoginCancelButtonView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public LoginCancelButtonView() {
     Login login = new Login();
@@ -17,11 +18,12 @@ public class LoginCancelButtonView extends Composite<Div> {
     LoginI18n i18n = new LoginI18n();
     i18n.setCancel("Cancel");
     login.setI18n(i18n);
+
     login.onCancel(ev -> {
       // Close the login dialog and do something else
     });
-    login.open();
 
-    getBoundComponent().add(login);
+    login.open();
+    self.add(login);
   }
 }

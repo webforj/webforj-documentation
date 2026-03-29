@@ -1,10 +1,24 @@
 ---
 title: Integrating the AppLayout
-sidebar_position: 6
+sidebar_position: 7
 draft: true
+description: Step 6 - Use the AppLayout component.
 ---
 
 In this step, you will integrate the features implemented in previous steps, such as routing and views, into a cohesive app layout. This structure will provide a unified navigation system and dynamic content areas.
+
+## Running the app {#running-the-app}
+
+As you develop your app, you can use [6-integrating-an-app-layout](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout) as a comparison. To see the app in action:
+
+1. Navigate to the top-level directory containing the `pom.xml` file, this is `6-integrating-an-app-layout` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+Running the app automatically opens a new browser at `http://localhost:8080`.
 
 ## Purpose of the app Layout {#purpose-of-the-app-layout}
 
@@ -47,10 +61,10 @@ In the `MainLayout` class, the `@Route` annotation defines it as the base layout
 ```java title="MainLayout.java"
 @Route("/")
 public class MainLayout extends Composite<AppLayout> {
-    public MainLayout() {
-        setHeader();
-        setDrawer();
-    }
+  public MainLayout() {
+    setHeader();
+    setDrawer();
+  }
 }
 ```
 
@@ -60,7 +74,7 @@ The `@Route` annotation for `DemoView` specifies that it uses `MainLayout` as it
 @Route(value = "/demo", outlet = MainLayout.class)
 @FrameTitle("Demo")
 public class DemoView extends Composite<Div> {
-    // DemoView logic
+  // DemoView logic
 }
 ```
 

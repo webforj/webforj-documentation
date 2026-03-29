@@ -1,13 +1,13 @@
 ---
 sidebar_position: 2
 title: Nested Routes
-_i18n_hash: 8c3365b48d048d5bc7c4c47f253acb24
+_i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
-Geneste routes stellen het mogelijk om kindroutes binnen ouderroutes weer te geven, wat resulteert in een modulaire en herbruikbare gebruikersinterface. Ouderroutes definiëren gedeelde componenten, terwijl kindroutes worden ingevoegd in specifieke uitgangen binnen deze oudercomponenten.
+Geneste routes stellen het mogelijk om child routes te renderen binnen parent routes, waardoor een modulaire en herbruikbare UI ontstaat. Parent routes definiëren gedeelde componenten, terwijl child routes worden geïnjecteerd in specifieke uitgangen binnen deze parent componenten.
 
 ## Geneste routes definiëren {#defining-nested-routes}
 
-Geneste routes worden gemaakt met behulp van de `outlet` parameter in de `@Route` annotatie, die een ouder-kind relatie tot stand brengt. De `outlet` bepaalt waar de kindcomponent binnen de ouderroute zal worden weergegeven.
+Geneste routes worden gemaakt met de `outlet` parameter in de `@Route` annotatie, die een ouder-kind relatie tot stand brengt. De `outlet` bepaalt waar de child component zal worden gerenderd binnen de parent route.
 
 ```java
 @Route
@@ -20,15 +20,19 @@ public class MainLayout extends Composite<AppLayout> {
 
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public DashboardView() {
-    getBoundComponent().add(new H1("Dashboard Inhoud"));
+    self.add(new H1("Dashboard Inhoud"));
   }
 }
 
 @Route(outlet = DashboardView.class)
 public class SettingsView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public SettingsView() {
-    getBoundComponent().add(new H1("Instellingen Inhoud"));
+    self.add(new H1("Instellingen Inhoud"));
   }
 }
 ```
@@ -39,11 +43,10 @@ In dit voorbeeld:
 - `DashboardView` is een **[View Route](./route-types#view-routes)** genest binnen `MainLayout`.
 - `SettingsView` is een **[View Route](./route-types#view-routes)** genest binnen `DashboardView`.
 
-Bij het navigeren naar `/dashboard/settings`:
-
-1. Wordt `MainLayout` weergegeven.
-2. Wordt `DashboardView` ingevoegd in de outlet van `MainLayout`.
-3. Wordt uiteindelijk `SettingsView` ingevoegd in de outlet van `DashboardView`.
+Bij het navigeren naar `/dashboard/settings`, doet de router:
+1. Rendert `MainLayout`.
+2. Injecteert `DashboardView` in de outlet van `MainLayout`.
+3. Injecteert tenslotte `SettingsView` in de outlet van `DashboardView`.
 
 Deze hiërarchische structuur wordt weerspiegeld in de URL, waar elk segment een niveau in de componenthiërarchie vertegenwoordigt:
 
@@ -53,4 +56,4 @@ Deze hiërarchische structuur wordt weerspiegeld in de URL, waar elk segment een
   - `DashboardView`: View Route
   - `SettingsView`: View Route
 
-Deze structuur zorgt voor consistente gedeelde gebruikersinterfacecomponenten (zoals kopteksten of navigatiemenu's) terwijl de inhoud binnen die lay-outs dynamisch kan veranderen.
+Deze structuur zorgt voor consistente gedeelde UI-componenten (zoals headers of navigatiemenu's) terwijl de inhoud binnen die lay-outs dynamisch kan veranderen.
