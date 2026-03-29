@@ -3,6 +3,7 @@ package com.webforj.samples.pages.textarea;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class TextAreaPage {
 
@@ -20,9 +21,9 @@ public class TextAreaPage {
     this.donationToaster = page.getByText("Thank you for your feedback!");
   }
 
-  public static String getRoute() {
-    return ROUTE;
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public Locator getFeedbackTextarea() {
     return feedbackTextarea;
@@ -32,7 +33,7 @@ public class TextAreaPage {
     return submitButton;
   }
 
-  public Locator getDonationToaster() {
-    return donationToaster;
-  }
+    public Locator getDonationToaster() {
+        return donationToaster;
+    }
 }
