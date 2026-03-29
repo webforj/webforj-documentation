@@ -30,12 +30,12 @@ class NavigatorLayoutKotlinView: Composite<Div>() {
             Layout.entries.forEach { add(it, it.name) }
             selectIndex(2)
           }
-          navigator(totalItems = 100) {
+          val nav = navigator(totalItems = 100) {
             paginator.max = 5
             classNames + "nav"
-            navLayout.onSelect {
-              layout = it.selectedItem.key as Layout
-            }
+          }
+          navLayout.onSelect {
+            nav.layout = it.selectedItem.key as Layout
           }
         }
       }
