@@ -6,6 +6,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.field.maskedTimeField
 import com.webforj.kotlin.dsl.component.field.picker
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import java.time.LocalTime
@@ -23,7 +24,7 @@ class MaskedTimeFieldKotlinView: Composite<FlexLayout>() {
       maskedTimeField("Meeting Time") {
         mask = "%h:%mz %p"
         value = LocalTime.now()
-        maxWidth = "300px"
+        maxWidth = 300.px
         helperText = "Meeting time is formatted as %h:%mz %p."
         picker {
           isIconVisible = false;
