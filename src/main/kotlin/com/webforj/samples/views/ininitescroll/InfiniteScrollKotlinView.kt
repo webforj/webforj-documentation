@@ -34,7 +34,7 @@ class InfiniteScrollKotlinView: Composite<Div>() {
         infiniteScroll {
           height = 100.percent
           val canvas = div {
-            maxHeight = 600.px
+            maxWidth = 600.px
             classNames + "is-canvas"
           }
           var index = 0
@@ -47,7 +47,7 @@ class InfiniteScrollKotlinView: Composite<Div>() {
             for (i in 0..<8) {
               canvas.add(Item())
             }
-            index++
+            index += 8
             update()
           }
         }
