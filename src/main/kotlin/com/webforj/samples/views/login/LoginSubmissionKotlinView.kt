@@ -20,8 +20,8 @@ class LoginSubmissionKotlinView: Composite<Div>() {
         onSubmit {
           if (it.username == "admin" && it.password == "admin") {
             close()
-            this@apply.button("Logout").onClick {
-              Page.getCurrent().reload()
+            this@apply.button("Logout") {
+              onClick { Page.getCurrent().reload() }
             }
           } else {
             isError = true

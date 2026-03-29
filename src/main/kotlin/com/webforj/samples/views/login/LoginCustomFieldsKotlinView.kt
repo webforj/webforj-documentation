@@ -12,6 +12,8 @@ import com.webforj.kotlin.dsl.component.login.beforeFormSlot
 import com.webforj.kotlin.dsl.component.login.login
 import com.webforj.kotlin.dsl.component.login.loginErrorI18n
 import com.webforj.kotlin.dsl.component.login.loginI18n
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.plus
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -25,7 +27,7 @@ class LoginCustomFieldsKotlinView: Composite<Div>() {
   init {
     self.apply {
       login {
-        addClassName("login-form")
+        classNames + "login-form"
         beforeFormSlot {
           paragraph("Please enter your customer ID, email address and password to enter the customer portal.")
           customerId = textField("Customer ID") {
@@ -53,8 +55,8 @@ class LoginCustomFieldsKotlinView: Composite<Div>() {
             id == "Tesla") {
             close()
             self.apply {
-              button("Logout").onClick {
-                Page.getCurrent().reload()
+              button("Logout") {
+                onClick { Page.getCurrent().reload() }
               }
             }
           } else {

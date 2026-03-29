@@ -13,7 +13,9 @@ class LoginBasicKotlinView: Composite<Div>() {
 
   init {
       self.apply {
-        login().open()
+        login() {
+          open()
+        }
       }
   }
 
