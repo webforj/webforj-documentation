@@ -36,21 +36,21 @@ public class AvatarView extends Composite<FlexLayout> {
   private void setupPanel() {
     panel.addClassName("avatar-demo__panel");
 
-    FlexLayout projectHeader =
-        new FlexLayout()
-            .addClassName("avatar-demo__project-header")
-            .setDirection(FlexDirection.ROW)
-            .setSpacing("var(--dwc-space-m)")
-            .setAlignment(FlexAlignment.CENTER);
+    FlexLayout projectHeader = new FlexLayout()
+        .addClassName("avatar-demo__project-header")
+        .setDirection(FlexDirection.ROW)
+        .setSpacing("var(--dwc-space-m)")
+        .setAlignment(FlexAlignment.CENTER);
 
-    H4 projectName = new H4("Project Alpha").addClassName("avatar-demo__project-name");
+    H4 projectName = new H4("Project Alpha")
+        .addClassName("avatar-demo__project-name");
 
     projectHeader.add(TablerIcon.create("folder"), projectName);
 
-    Span sectionLabel = new Span("Team").addClassName("avatar-demo__section-label");
+    Span sectionLabel = new Span("Team")
+        .addClassName("avatar-demo__section-label");
 
-    panel.add(projectHeader);
-    panel.add(sectionLabel);
+    panel.add(projectHeader, sectionLabel);
   }
 
   private void addMembers() {
