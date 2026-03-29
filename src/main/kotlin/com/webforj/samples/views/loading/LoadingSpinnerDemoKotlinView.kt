@@ -4,6 +4,7 @@ import com.webforj.Interval
 import com.webforj.annotation.StyleSheet
 import com.webforj.component.Composite
 import com.webforj.component.Theme
+import com.webforj.component.html.elements.Div
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.component.spinner.SpinnerExpanse
 import com.webforj.kotlin.dsl.component.html.elements.div
@@ -16,7 +17,7 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Loading Spinners")
 @StyleSheet("ws://css/loadingstyles/loadingspinnerdemo.css")
-class LoadingSpinnerDemoKotlinView : Composite<FlexLayout>() {
+class LoadingSpinnerDemoKotlinView : Composite<Div>() {
   private val self = boundComponent
 
   init {
