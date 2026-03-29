@@ -30,8 +30,8 @@ To fetch more data when the user scrolls, use the `onScroll()` or `addScrollList
 
 ```java
 infiniteScroll.onScroll(event -> {
-    infiniteScroll.add(new Paragraph("Loaded item"));
-    infiniteScroll.update();
+  infiniteScroll.add(new Paragraph("Loaded item"));
+  infiniteScroll.update();
 });
 ```
 

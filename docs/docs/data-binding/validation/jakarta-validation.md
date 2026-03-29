@@ -14,14 +14,14 @@ It's necessary to include a compatible implementation, such as [Hibernate Valida
 
 ```xml
 <dependency>
-    <groupId>org.hibernate.validator</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>8.0.1.Final</version>
+  <groupId>org.hibernate.validator</groupId>
+  <artifactId>hibernate-validator</artifactId>
+  <version>8.0.1.Final</version>
 </dependency>
 <dependency>
-    <groupId>org.glassfish.expressly</groupId>
-    <artifactId>expressly</artifactId>
-    <version>5.0.0</version>
+  <groupId>org.glassfish.expressly</groupId>
+  <artifactId>expressly</artifactId>
+  <version>5.0.0</version>
 </dependency>
 ```
 

@@ -1,7 +1,6 @@
 ---
 sidebar_position: 4
 title: Composite Components
-sidebar_class_name: updated-content
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>

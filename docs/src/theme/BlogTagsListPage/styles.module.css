@@ -25,7 +25,7 @@
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-.tagCard:hover {
+.tagCard:hover, .tagCard:focus {
   border: 1px solid var(--dwc-color-primary);
   color: var(--dwc-color-primary);
   background-color: var(--dwc-color-primary-alt, var(--dwc-surface-3));

@@ -91,7 +91,7 @@ Exclude properties that rely on external systems or aren't relevant to the test.
 ```java
 @PropertyExclude
 private final PropertyDescriptor<String> excludedProperty =
-    PropertyDescriptor.property("excludedProperty", "Excluded");
+  PropertyDescriptor.property("excludedProperty", "Excluded");
 ```
 
 ### Customize methods with `@PropertyMethods` {#customize-methods-with-propertymethods}
@@ -101,5 +101,5 @@ Define custom getter, setter, or target class when the default naming convention
 ```java
 @PropertyMethods(getter = "retrieveValue", setter = "updateValue", target = InnerClass.class)
 private final PropertyDescriptor<String> customProperty =
-    PropertyDescriptor.property("customProperty", "Default Value");
+  PropertyDescriptor.property("customProperty", "Default Value");
 ```

@@ -1,19 +1,19 @@
 ---
 title: Getting Started
 sidebar_position: 2
-_i18n_hash: e8996d53f35e093d9ba65c54774d1935
+_i18n_hash: becd2e7bd488a077c08ef5a64dbe0f61
 ---
-Spring Security bietet Authentifizierung und Autorisierung für Spring Boot-Anwendungen. Bei der Integration mit webforJ schützt es Routen mithilfe von Annotationen, während Spring die Benutzerverwaltung und Sitzungen übernimmt.
+Spring Security bietet Authentifizierung und Autorisierung für Spring Boot-Anwendungen. Wenn es mit webforJ integriert wird, schützt es Routen mithilfe von Anmerkungen, während Spring das Benutzermanagement und die Sitzungen übernimmt.
 
-Dieser Leitfaden behandelt das Hinzufügen von Spring Security zu Ihrer webforJ-App, die Konfiguration der Authentifizierung, das Erstellen von Anmeldeseiten und den Schutz von Routen mit rollenbasierter Zugangskontrolle.
+Dieses Handbuch behandelt das Hinzufügen von Spring Security zu Ihrer webforJ-App, das Konfigurieren der Authentifizierung, das Erstellen von Anmeldeansichten und das Schützen von Routen mit rollenbasiertem Zugriff.
 
 :::tip[Erfahren Sie mehr über Spring Security]
-Für ein umfassendes Verständnis der Funktionen und Konzepte von Spring Security siehe [Spring Security-Dokumentation](https://docs.spring.io/spring-security/reference/).
+Für ein umfassendes Verständnis der Funktionen und Konzepte von Spring Security siehe die [Spring Security-Dokumentation](https://docs.spring.io/spring-security/reference/).
 :::
 
 ## Fügen Sie die Spring Security-Abhängigkeit hinzu {#add-spring-security-dependency}
 
-Fügen Sie den Spring Security-Starter zu Ihrem `pom.xml` hinzu:
+Fügen Sie den Spring Security-Starter zu Ihrer `pom.xml` hinzu:
 
 ```xml
 <dependency>
@@ -22,11 +22,11 @@ Fügen Sie den Spring Security-Starter zu Ihrem `pom.xml` hinzu:
 </dependency>
 ```
 
-Diese einzige Abhängigkeit bringt das Authentifizierungsframework von Spring Security, Passwort-Encoder und Sitzungsmanagement mit sich. Die Version wird automatisch von Ihrem Spring Boot-Eltern-POM verwaltet.
+Diese einzelne Abhängigkeit bringt das Authentifizierungsframework von Spring Security, Passwortencoder und Sitzungsmanagement mit. Die Version wird automatisch von Ihrer Spring Boot-Eltern-POM verwaltet.
 
 ## Konfigurieren Sie Spring Security {#configure-spring-security}
 
-Erstellen Sie eine Sicherheitskonfigurationsklasse, die Spring Security mit webforJ verbindet. Diese Klasse definiert, wie Benutzer authentifiziert werden und welche Seiten Anmeldungen und Zugriffsverweigerungen behandeln:
+Erstellen Sie eine Sicherheitskonfigurationsklasse, die Spring Security mit webforJ verbindet. Diese Klasse definiert, wie Benutzer authentifiziert werden und welche Seiten für Anmeldung und Zugriffsverweigerung zuständig sind:
 
 ```java title="SecurityConfig.java"
 @Configuration
@@ -79,23 +79,23 @@ public class SecurityConfig {
 
 Diese Konfiguration erstellt vier Spring-Beans, die zusammenarbeiten:
 
-**`SecurityFilterChain`** verbindet Spring Security mit dem Routingsystem von webforJ. Die Methode `WebforjSecurityConfigurer.webforj()` integriert die Spring Security-Authentifizierung mit dem Routing von webforJ. Sie geben an, welche Komponentenklassen Anmeldungen und Zugriffsverweigerungen behandeln, und Spring wird die Authentifizierung durchsetzen, bevor geschützte Routen gerendert werden.
+**`SecurityFilterChain`** verbindet Spring Security mit dem Routing-System von webforJ. Die Methode `WebforjSecurityConfigurer.webforj()` integriert die Authentifizierung von Spring Security mit dem Routing von webforJ. Sie geben an, welche Komponentenklassen für die Anmeldung und Zugriffsverweigerung zuständig sind, und Spring wird die Authentifizierung durchsetzen, bevor geschützte Routen gerendert werden.
 
-- Die Methode `loginPage()` gibt an, wo sich Benutzer authentifizieren sollten. Übergeben Sie Ihre Komponentenkassenansicht zur Anmeldung, und webforJ löst automatisch den Routenpfad aus der `@Route`-Annotation auf. Wenn nicht authentifizierte Benutzer versuchen, auf geschützte Routen zuzugreifen, werden sie hierher umgeleitet.
+- Die Methode `loginPage()` gibt an, wo sich Benutzer authentifizieren sollen. Übergeben Sie Ihre Login-Ansichtskomponentenklasse, und webforJ löst den Routenpfad automatisch aus der `@Route`-Anmerkung auf. Wenn nicht authentifizierte Benutzer versuchen, auf geschützte Routen zuzugreifen, werden sie hierher umgeleitet.
 
-- Die Methode `accessDeniedPage()` definiert, wohin authentifizierte Benutzer gehen, wenn ihnen die Berechtigung für eine Route fehlt. Beispielsweise wird ein Benutzer, der versucht, auf eine nur für Administratoren bestimmte Route zuzugreifen, auf diese Seite umgeleitet.
+- Die Methode `accessDeniedPage()` definiert, wohin authentifizierte Benutzer gehen, wenn ihnen die Berechtigung für eine Route fehlt. Beispielsweise wird ein Benutzer, der versucht, auf eine nur für Administratoren vorgesehene Route zuzugreifen, auf diese Seite umgeleitet.
 
-- Die Methode `logout()` aktiviert den Logout-Endpunkt unter `/logout`. Nach dem Abmelden werden Benutzer zurück zur Anmeldeseite umgeleitet, mit einem `?logout`-Parameter.
+- Die Methode `logout()` aktiviert den Ausstiegsendpunkt unter `/logout`. Nach dem Abmelden werden die Benutzer zurück zur Anmeldeseite mit einem `?logout`-Parameter umgeleitet.
 
 **`PasswordEncoder`** verwendet BCrypt, um Passwörter sicher zu hashen. Spring Security wendet diesen Encoder automatisch während der Anmeldung an, um das übermittelte Passwort mit dem gespeicherten Hash zu vergleichen.
 
-**`UserDetailsService`** sagt Spring Security, wo Benutzerdaten während der Authentifizierung zu finden sind. Dieses Beispiel verwendet einen In-Memory-Speicher mit zwei Benutzern: `user/password` und `admin/admin`.
+**`UserDetailsService`** sagt Spring Security, wo es Benutzerinformationen während der Authentifizierung finden kann. Dieses Beispiel verwendet einen In-Memory-Speicher mit zwei Benutzern: `user/password` und `admin/admin`.
 
-**`AuthenticationManager`** koordiniert den Authentifizierungsprozess. Es verwendet einen Anbieter, der Benutzer aus dem `UserDetailsService` lädt und Passwörter mit dem `PasswordEncoder` überprüft.
+**`AuthenticationManager`** koordiniert den Authentifizierungsprozess. Es verwendet einen Anbieter, der Benutzer aus dem `UserDetailsService` lädt und Passwörter mit dem `PasswordEncoder` verifiziert.
 
-## Erstellen Sie die Anmeldeseite {#create-login-view}
+## Erstellen Sie die Anmeldeansicht {#create-login-view}
 
-Erstellen Sie eine Ansicht, die einen Anmelde-Dialog zeigt und Anmeldeinformationen an Spring Security übermittelt. Die folgende Ansicht verwendet die [`Login`](/docs/components/login)-Komponente:
+Erstellen Sie eine Ansicht, die einen Anmelde-Dialog anzeigt und Anmeldeinformationen an Spring Security übermittelt. Die folgende Ansicht verwendet die [`Login`](/docs/components/login)-Komponente:
 
 ```java title="LoginView.java"
 @Route("/signin")
@@ -123,25 +123,25 @@ public class LoginView extends Composite<Login> implements DidEnterObserver {
 }
 ```
 
-Die Annotation `@AnonymousAccess` kennzeichnet diese Route als öffentlich, sodass nicht authentifizierte Benutzer auf die Anmeldeseite zugreifen können. Ohne diese Annotation würden Benutzer von der Anmeldeseite umgeleitet, was eine Endlosschleife erzeugen würde.
+Die Annotation `@AnonymousAccess` markiert diese Route als öffentlich, sodass nicht authentifizierte Benutzer auf die Anmeldeseite zugreifen können. Ohne diese Annotation würden Benutzer von der Anmeldeseite umgeleitet werden, was eine endlose Schleife erzeugen würde.
 
-Die Zeile `setAction("/signin")` ist entscheidend, sie konfiguriert die Login-Komponente, um die Anmeldeinformationen an den Authentifizierungspunkt von Spring zu POSTen. Spring fängt diese Übermittlung ab, überprüft die Anmeldeinformationen und gewährt entweder den Zugriff oder leitet zurück mit einem Fehlerparameter.
+Die Zeile `setAction("/signin")` ist entscheidend, da sie die Login-Komponente konfiguriert, um Anmeldeinformationen an den Authentifizierungspunkt von Spring zu POSTen. Spring unterbricht diese Übermittlung, überprüft die Anmeldeinformationen und gewährt entweder Zugriff oder leitet zurück mit einem Fehlerparameter.
 
-Der Observer `onDidEnter` überprüft die Abfrageparameter, die Spring hinzufügt, um Ergebnisse zu kommunizieren. Wenn die Authentifizierung fehlschlägt, leitet Spring zu `/signin?error` um. Nach dem Abmelden wird zu `/signin?logout` umgeleitet. Der Observer zeigt anhand dieser Parameter geeignete Nachrichten an.
+Der Beobachter `onDidEnter` überprüft auf Abfrageparameter, die Spring hinzufügt, um Ergebnisse zu kommunizieren. Wenn die Authentifizierung fehlschlägt, leitet Spring zu `/signin?error` um. Nach dem Abmelden leitet es zu `/signin?logout` um. Der Beobachter zeigt geeignete Nachrichten basierend auf diesen Parametern an.
 
-:::tip Endpunktübereinstimmung
-Der Pfad in `setAction("/signin")` muss mit Ihrem `@Route("/signin")`-Pfad übereinstimmen. Spring fängt Formularübermittlungen zu diesem genauen Pfad zur Authentifizierung ab. Wenn Sie unterschiedliche Pfade für die Anmeldeseite und die Authentifizierungsverarbeitung benötigen, konfigurieren Sie diese separat in `SecurityConfig`:
+:::tip Endpunkterfassung
+Der Pfad in `setAction("/signin")` muss mit Ihrem `@Route("/signin")`-Pfad übereinstimmen. Spring unterbricht Formularübermittlungen an diesen genauen Pfad zur Authentifizierung. Wenn Sie verschiedene Pfade für die Anmeldeseite und die Authentifizierungsverarbeitung benötigen, konfigurieren Sie sie separat in `SecurityConfig`:
 
 ```java
 .loginPage("/signin", "/authenticate")
 ```
 
-Dies zeigt die Anmeldeseite unter `/signin`, jedoch wird die Authentifizierung unter `/authenticate` verarbeitet.
+Dies zeigt die Anmeldeseite unter `/signin` an, verarbeitet die Authentifizierung jedoch unter `/authenticate`.
 :::
 
 ## Erstellen Sie die Zugriffsverweigerungsansicht {#create-access-denied-view}
 
-Erstellen Sie eine Ansicht, die angezeigt wird, wenn Benutzer nicht die Berechtigung haben, auf eine Route zuzugreifen:
+Erstellen Sie eine Ansicht, die angezeigt wird, wenn Benutzer keine Berechtigung haben, auf eine Route zuzugreifen:
 
 ```java title="AccessDenyView.java"
 @Route(value = "/access-denied", outlet = MainLayout.class)
@@ -151,26 +151,26 @@ public class AccessDenyView extends Composite<Div> {
   public AccessDenyView() {
     Paragraph message = new Paragraph("Hoppla! Dieser Bereich ist nur für VIPs.");
     Paragraph subMessage = new Paragraph(
-        "Es sieht so aus, als hätten Sie versucht, in die Lounge der Geschäftsführung zu schlüpfen! Entweder bessere Anmeldeinformationen besorgen oder zu den öffentlichen Bereichen zurückkehren, wo der Kaffee ohnehin kostenlos ist.");
+        "Es sieht so aus, als ob Sie versucht haben, in die executive Lounge zu gelangen! Entweder holen Sie sich bessere Anmeldeinformationen oder kehren Sie in die öffentlichen Bereiche zurück, wo der Kaffee kostenlos ist.");
 
     self.add(message, subMessage);
   }
 }
 ```
 
-Diese Ansicht wird gerendert, wenn authentifizierte Benutzer versuchen, auf Routen zuzugreifen, für die sie keine Berechtigung haben, z. B. ein Benutzer, der versucht, auf eine nur für Administratoren zugängliche Route zuzugreifen.
+Diese Ansicht wird gerendert, wenn authentifizierte Benutzer versuchen, auf Routen zuzugreifen, für die sie keine Berechtigung haben, z. B. ein Benutzer, der versucht, auf eine nur für Administratoren vorgesehene Route zuzugreifen.
 
 ## Schützen Sie Ihre Routen {#protect-your-routes}
 
-Mit konfiguriertem Authentifizierungssystem können Sie jetzt Ihre Routen mithilfe von Sicherheitsanmerkungen schützen. Diese Annotations sagen Spring Security, wer auf jede Ansicht zugreifen kann, und das Sicherheitssystem setzt diese Regeln automatisch durch, bevor eine Komponente gerendert wird.
+Mit konfigurierter Authentifizierung können Sie jetzt Ihre Routen mithilfe von Sicherheitsanmerkungen schützen. Diese Anmerkungen sagen Spring Security, wer auf jede Ansicht zugreifen darf, und das Sicherheitssystem durchsetzt diese Regeln automatisch, bevor eine Komponente gerendert wird.
 
-Wenn ein Benutzer zu einer Route navigiert, fängt Spring Security die Navigation ab und überprüft die Sicherheitsanmerkungen der Route. Wenn der Benutzer authentifiziert ist (mit gültigen Anmeldeinformationen angemeldet) und die erforderlichen Berechtigungen hat, wird die Ansicht normal gerendert. Andernfalls werden sie entweder zur Anmeldeseite oder zur Zugriffsverweigerungsseite umgeleitet.
+Wenn ein Benutzer auf eine Route navigiert, unterbricht Spring Security die Navigation und überprüft die Sicherheitsanmerkungen der Route. Wenn der Benutzer authentifiziert ist (mit gültigen Anmeldeinformationen angemeldet) und die erforderlichen Berechtigungen hat, wird die Ansicht normal gerendert. Andernfalls werden sie entweder zur Anmeldeseite oder zur Zugriffsverweigerungsseite umgeleitet.
 
 ```java title="InboxView.java"
-// Inbox - für alle authentifizierten Benutzer zugänglich
+// Posteingang - für alle authentifizierten Benutzer zugänglich
 @Route(value = "/", outlet = MainLayout.class)
 public class InboxView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public InboxView() {
     self.setHeight("100%");
@@ -181,11 +181,11 @@ public class InboxView extends Composite<FlexLayout> {
 ```
 
 ```java title="TeamsView.java" {3}
-// Teams - benötigt ADMIN-Rolle
+// Teams - erfordert ADMIN-Rolle
 @Route(value = "/teams", outlet = MainLayout.class)
 @RolesAllowed("ADMIN")
 public class TeamsView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public TeamsView() {
     self.setHeight("100%");
@@ -195,17 +195,17 @@ public class TeamsView extends Composite<FlexLayout> {
 }
 ```
 
-Die `InboxView` hat keine Annotation, was bedeutet, dass jeder authentifizierte Benutzer darauf zugreifen kann. Wenn ein Benutzer sich erfolgreich mit den in `UserDetailsService` definierten Anmeldeinformationen anmeldet (`user/password` oder `admin/admin`), kann er diese Route anzeigen. Nicht authentifizierte Benutzer, die versuchen, auf diese Route zuzugreifen, werden zur Anmeldeseite umgeleitet.
+Die `InboxView` hat keine Annotation, was bedeutet, dass jeder authentifizierte Benutzer darauf zugreifen kann. Wenn ein Benutzer mit den Anmeldeinformationen, die Sie im `UserDetailsService` definiert haben (`user/password` oder `admin/admin`), erfolgreich anmeldet, kann er diese Route ansehen. Nicht authentifizierte Benutzer, die versuchen, auf diese Route zuzugreifen, werden zur Anmeldeseite umgeleitet.
 
-Die `TeamsView` verwendet `@RolesAllowed("ADMIN")`, um den Zugriff auf Benutzer mit der Administratorrolle zu beschränken. Obwohl sowohl die "Benutzer"- als auch die "Administrator"-Konten authentifizierte Benutzer sind, können nur Benutzer mit der Administratorrolle auf diese Route zugreifen, da sie sowohl `USER`- als auch `ADMIN`-Rollen haben. Das Benutzerkonto hat nur die `USER`-Rolle, sodass der Versuch, auf diese Route zuzugreifen, sie zur Zugriffsverweigerungsseite umleitet.
+Die `TeamsView` verwendet `@RolesAllowed("ADMIN")`, um den Zugriff auf Benutzer mit der Administratorrolle einzuschränken. Obwohl sowohl das „Benutzer“- als auch das „Admin“-Konto authentifiziert sind, können nur Benutzer mit der Administratorrolle auf diese Route zugreifen, da sie sowohl die Rollen `USER` als auch `ADMIN` hat. Das Benutzerkonto hat nur die `USER`-Rolle, sodass der Versuch, auf diese Route zuzugreifen, sie zur Zugriffsverweigerungsseite umleitet.
 
 :::tip Sicherheitsanmerkungen
-Siehe die [Sicherheitsanmerkungsanleitung](/docs/security/annotations) für alle verfügbaren Annotationen.
+Siehe den [Leitfaden zu Sicherheitsanmerkungen](/docs/security/annotations) für alle verfügbaren Anmerkungen.
 :::
 
-## Fügen Sie die Abmeldefunktion hinzu {#add-logout-capability}
+## Fügen Sie die Ausstiegsfunktionalität hinzu {#add-logout-capability}
 
-Verwenden Sie `SpringSecurityFormSubmitter`, um eine Abmelde-Schaltfläche zu erstellen:
+Verwenden Sie `SpringSecurityFormSubmitter`, um einen Logout-Button zu erstellen:
 
 ```java
 import com.webforj.component.icons.FeatherIcon;
@@ -216,22 +216,22 @@ IconButton logout = new IconButton(FeatherIcon.LOG_OUT.create());
 logout.onClick(e -> SpringSecurityFormSubmitter.logout("/logout").submit());
 ```
 
-Bei einem Klick sendet dies ein Formular an den `/logout`-Endpunkt von Spring Security, der die Sitzung des Benutzers löscht und zur Anmeldeseite mit einer Abmeldebestätigungsnachricht umleitet.
+Beim Klicken wird ein Formular an den Ausstiegsendpunkt von Spring Security unter `/logout` übermittelt, das die Sitzung des Benutzers löscht und zur Anmeldeseite mit einer Ausstiegsbestätigungsnachricht umleitet.
 
-## Wie es zusammen funktioniert {#how-it-works-together}
+## Wie es zusammenarbeitet {#how-it-works-together}
 
-Wenn Spring Boot Ihre App startet:
+Wenn Spring Boot Ihre Anwendung startet:
 
-1. **Auto-Konfiguration erkennt** sowohl die Abhängigkeiten `webforj-spring-boot-starter` als auch `spring-boot-starter-security`.
-2. **Sicherheitsmanager wird automatisch erstellt**, um das Routing von webforJ und die Authentifizierung von Spring Security zu verbinden.
-3. **Sicherheitsbewertungsfunktionen werden registriert**, um die Annotationen `@AnonymousAccess`, `@PermitAll`, `@RolesAllowed` und `@DenyAll` zu behandeln.
-4. **Routing-Observer wird angeschlossen**, um Navigation abzufangen und Sicherheitsregeln zu evaluieren, bevor Komponenten gerendert werden.
+1. **Die automatische Konfiguration erkennt** sowohl die Abhängigkeiten `webforj-spring-boot-starter` als auch `spring-boot-starter-security`.
+2. **Ein Sicherheitsmanager wird automatisch erstellt**, um das Routing von webforJ mit der Authentifizierung von Spring Security zu verbinden.
+3. **Sicherheitsauswerter werden registriert**, um die Anmerkungen `@AnonymousAccess`, `@PermitAll`, `@RolesAllowed` und `@DenyAll` zu behandeln.
+4. **Ein Routenbeobachter wird angehängt**, um die Navigation abzufangen und Sicherheitsregeln vor dem Rendern von Komponenten zu bewerten.
 
-Sie verkabeln diese Komponenten nicht manuell - die Auto-Konfiguration von Spring Boot übernimmt die Integration. Sie definieren nur Ihre `SecurityConfig` mit Benutzerverwaltung und Seitenstandorten.
+Sie verkabeln diese Komponenten nicht manuell - die automatische Konfiguration von Spring Boot übernimmt die Integration. Sie definieren lediglich Ihre `SecurityConfig` mit dem Benutzermanagement und den Seitenstandorten.
 
 Wenn ein Benutzer navigiert:
 
-1. Der Sicherheitsbeobachter fängt die Navigation ab.
-2. Bewertungsfunktionen überprüfen die Sicherheitsanmerkungen der Route.
-3. Spring Security's `SecurityContextHolder` stellt Authentifizierungsinformationen bereit.
+1. Der Sicherheitsbeobachter unterbricht die Navigation.
+2. Die Auswerter überprüfen die Sicherheitsanmerkungen der Route.
+3. `SecurityContextHolder` von Spring Security stellt Authentifizierungsinformationen bereit.
 4. Wenn autorisiert, wird die Komponente gerendert; andernfalls wird der Benutzer umgeleitet.
