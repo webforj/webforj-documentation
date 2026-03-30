@@ -2,41 +2,50 @@ package com.webforj.samples.views.badge;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.badge.BadgeTabbedPanePage;
 import com.webforj.samples.views.BaseTest;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class BadgeTabbedPaneViewIT extends BaseTest {
 
     private BadgeTabbedPanePage badgeTabbedPanePage;
 
-    @BeforeEach
-    public void setupBadgeTabbedPane() {
-        navigateToRoute(BadgeTabbedPanePage.getRoute());
+    public void setupBadgeTabbedPane(SupportedLanguage language) {
+        navigateToRoute(BadgeTabbedPanePage.getRoute(language));
         badgeTabbedPanePage = new BadgeTabbedPanePage(page);
     }
 
-    @Test
-    public void testInboxTabIsVisible() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testInboxTabIsVisible(SupportedLanguage language) {
+        setupBadgeTabbedPane(language);
         assertThat(badgeTabbedPanePage.getInboxTab()).isVisible();
     }
 
-    @Test
-    public void testInboxTabBadgeShowsCount() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testInboxTabBadgeShowsCount(SupportedLanguage language) {
+        setupBadgeTabbedPane(language);
         assertThat(badgeTabbedPanePage.getInboxTab()
                 .locator("dwc-badge")).hasText("12");
     }
 
-    @Test
-    public void testNotificationsTabBadgeShowsCount() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testNotificationsTabBadgeShowsCount(SupportedLanguage language) {
+        setupBadgeTabbedPane(language);
         assertThat(badgeTabbedPanePage.getNotificationsTab()
                 .locator("dwc-badge")).hasText("3");
     }
 
-    @Test
-    public void testDraftsTabBadgeShowsCount() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testDraftsTabBadgeShowsCount(SupportedLanguage language) {
+        setupBadgeTabbedPane(language);
         assertThat(badgeTabbedPanePage.getDraftsTab()
                 .locator("dwc-badge")).hasText("1");
     }

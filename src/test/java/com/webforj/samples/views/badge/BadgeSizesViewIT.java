@@ -2,30 +2,35 @@ package com.webforj.samples.views.badge;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.badge.BadgeSizesPage;
 import com.webforj.samples.views.BaseTest;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class BadgeSizesViewIT extends BaseTest {
 
     private BadgeSizesPage badgeSizesPage;
 
-    @BeforeEach
-    public void setupBadgeSizes() {
-        navigateToRoute(BadgeSizesPage.getRoute());
+    public void setupBadgeSizes(SupportedLanguage language) {
+        navigateToRoute(BadgeSizesPage.getRoute(language));
         badgeSizesPage = new BadgeSizesPage(page);
     }
 
-    @Test
-    public void testAllNineSizeBadgesAreRendered() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testAllNineSizeBadgesAreRendered(SupportedLanguage language) {
+        setupBadgeSizes(language);
         // 9 size badges + 5 circular badges = 14 total
         assertThat(badgeSizesPage.getAllSizeBadges()).hasCount(14);
     }
 
-    @Test
-    public void testSizeBadgesHaveCorrectExpanses() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testSizeBadgesHaveCorrectExpanses(SupportedLanguage language) {
+        setupBadgeSizes(language);
         // Size badges are rendered in order: 3xs, 2xs, xs, s, m, l, xl, 2xl, 3xl
         assertThat(badgeSizesPage.getSizeBadgeByIndex(0)).hasAttribute("expanse", "3xs");
         assertThat(badgeSizesPage.getSizeBadgeByIndex(2)).hasAttribute("expanse", "xs");
@@ -34,8 +39,10 @@ public class BadgeSizesViewIT extends BaseTest {
         assertThat(badgeSizesPage.getSizeBadgeByIndex(8)).hasAttribute("expanse", "3xl");
     }
 
-    @Test
-    public void testCircularBadgesAreVisible() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testCircularBadgesAreVisible(SupportedLanguage language) {
+        setupBadgeSizes(language);
         assertThat(badgeSizesPage.getAllCircularBadges()).hasCount(5);
         assertThat(badgeSizesPage.getAllCircularBadges().first()).isVisible();
     }

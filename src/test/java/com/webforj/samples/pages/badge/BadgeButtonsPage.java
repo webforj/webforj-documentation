@@ -2,6 +2,7 @@ package com.webforj.samples.pages.badge;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class BadgeButtonsPage {
 
@@ -17,8 +18,8 @@ public class BadgeButtonsPage {
                 new Locator.FilterOptions().setHasText("Messages"));
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getNotificationsButton() {
