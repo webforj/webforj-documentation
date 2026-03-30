@@ -2,7 +2,7 @@
 title: "webforJ, meet Claude"
 description: Setting up the webforJ MCP server in Claude Code
 slug: mcp
-date: 2026-03-26
+date: 2026-03-31
 authors: Garrison Osteen
 tags: [ai, community]
 hide_table_of_contents: false
