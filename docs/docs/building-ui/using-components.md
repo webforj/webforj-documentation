@@ -4,7 +4,6 @@ title: Using Components
 sidebar_class_name: new-content
 ---
 
-<DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
 Components are the building blocks of webforJ applications. Whether you're using built-in components like `Button` and `TextField`, or working with custom components provided by your team, the way you interact with them follows the same consistent model: you configure properties, manage state, and compose components into layouts.
