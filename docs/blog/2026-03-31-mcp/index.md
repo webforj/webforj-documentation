@@ -95,7 +95,7 @@ If you're making a real app, you can just tell Claude which flavor you want and 
 I asked Claude to re-create the first Tabs app with the Spring Boot archetype so that they would all match.
 
 Using Claude for this was a nice convenience, but making a new webforJ app is pretty easy even without an AI assistant.
-You can use [startforJ](https://docs.webforj.com/startforj/) or the [command line](/docs/docs/introduction/getting-started#using-the-command-line) and get the same results.
+You can use [startforJ](https://docs.webforj.com/startforj/) or the [command line](/docs/introduction/getting-started#using-the-command-line) and get the same results.
 So, the more interesting test will be the other two tools.
 
 
