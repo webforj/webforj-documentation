@@ -734,35 +734,35 @@
     "description": "running in the browser text"
   },
   "chip.tooltipText.shadow": {
-    "message": "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.",
+    "message": "Ce composant se rend avec un shadow DOM, une API intégrée au navigateur qui facilite l'encapsulation.",
     "description": "Hover text for components that render with a shadow DOM (document object model)"
   },
   "chip.label.shadow": {
-    "message": "Shadow",
+    "message": "Ombre",
     "description": "Label to indicate a shadow DOM (document object model)"
   },
   "chip.tooltipText.name": {
-    "message": "This feature is available for webforJ {version} and higher.",
+    "message": "Le nom de ce composant web tel qu'il apparaît dans le DOM.",
     "description": "Hover text to explain what version of webforJ you need to use the feature."
   },
   "chip.tooltipText.webforJ.version.snapshot": {
-    "message": "This feature will be available in a future release.",
+    "message": "Cette fonctionnalité sera disponible dans une prochaine version.",
     "description": "Hover text to explain this feature is only available in a snapshot version of webforJ."
   },
   "chip.tooltipText.scoped": {
-    "message": "This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.",
+    "message": "Ce composant utilise des composants scoppés, une approche alternative au shadow DOM, une API du navigateur qui permet l'encapsulation. Ces composants restreignent leurs styles pour éviter les fuites ou les conflits au lieu de s'appuyer sur le shadow DOM natif.",
     "description": "Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model)."
   },
   "chip.label.scoped": {
-    "message": "Scoped",
+    "message": "Portée",
     "description": "Label to show this component uses scoped components."
   },
   "chip.tooltipText.experimental": {
-    "message": "This is an experimental feature and may change in future releases.",
+    "message": "Ceci est une fonctionnalité expérimentale et peut changer dans les futures versions.",
     "description": "Hover text to explain this feature is experimental and subject to change."
   },
   "chip.label.experimental": {
-    "message": "Experimental",
+    "message": "Expérimental",
     "description": "Label to show this component is experimental."
   },
   "theme.IconExternalLink.ariaLabel": {

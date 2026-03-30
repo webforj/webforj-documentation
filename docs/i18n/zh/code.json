@@ -734,35 +734,35 @@
     "description": "running in the browser text"
   },
   "chip.tooltipText.shadow": {
-    "message": "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.",
+    "message": "此组件使用 Shadow DOM 渲染，这是浏览器内置的 API，便于封装。",
     "description": "Hover text for components that render with a shadow DOM (document object model)"
   },
   "chip.label.shadow": {
-    "message": "Shadow",
+    "message": "阴影",
     "description": "Label to indicate a shadow DOM (document object model)"
   },
   "chip.tooltipText.name": {
-    "message": "This feature is available for webforJ {version} and higher.",
+    "message": "该网页组件在DOM中的名称。",
     "description": "Hover text to explain what version of webforJ you need to use the feature."
   },
   "chip.tooltipText.webforJ.version.snapshot": {
-    "message": "This feature will be available in a future release.",
+    "message": "此功能将在未来的版本中提供。",
     "description": "Hover text to explain this feature is only available in a snapshot version of webforJ."
   },
   "chip.tooltipText.scoped": {
-    "message": "This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.",
+    "message": "此组件使用作用域组件，作为一种替代影子DOM的方法，浏览器API用于实现封装。这些组件将样式作用域设置，以避免泄漏或冲突，而不是依赖于本地影子DOM。",
     "description": "Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model)."
   },
   "chip.label.scoped": {
-    "message": "Scoped",
+    "message": "范围",
     "description": "Label to show this component uses scoped components."
   },
   "chip.tooltipText.experimental": {
-    "message": "This is an experimental feature and may change in future releases.",
+    "message": "这是一个实验性功能，未来版本可能会有所更改。",
     "description": "Hover text to explain this feature is experimental and subject to change."
   },
   "chip.label.experimental": {
-    "message": "Experimental",
+    "message": "实验性",
     "description": "Label to show this component is experimental."
   },
   "theme.IconExternalLink.ariaLabel": {

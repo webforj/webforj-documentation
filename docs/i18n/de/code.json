@@ -734,35 +734,35 @@
     "description": "running in the browser text"
   },
   "chip.tooltipText.shadow": {
-    "message": "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.",
+    "message": "Diese Komponente wird mit einem Shadow-DOM gerendert, einer API, die in den Browser integriert ist und Kapselung erleichtert.",
     "description": "Hover text for components that render with a shadow DOM (document object model)"
   },
   "chip.label.shadow": {
-    "message": "Shadow",
+    "message": "Schatten",
     "description": "Label to indicate a shadow DOM (document object model)"
   },
   "chip.tooltipText.name": {
-    "message": "This feature is available for webforJ {version} and higher.",
+    "message": "Der Name dieses Webkomponenten, wie er im DOM erscheint.",
     "description": "Hover text to explain what version of webforJ you need to use the feature."
   },
   "chip.tooltipText.webforJ.version.snapshot": {
-    "message": "This feature will be available in a future release.",
+    "message": "Dieses Feature wird in einer zukünftigen Version verfügbar sein.",
     "description": "Hover text to explain this feature is only available in a snapshot version of webforJ."
   },
   "chip.tooltipText.scoped": {
-    "message": "This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.",
+    "message": "Diese Komponente verwendet Scoped Components, einen alternativen Ansatz zum Shadow DOM, einer Browser-API, die Kapselung ermöglicht. Diese Komponenten grenzen ihre Stile ein, um Leaks oder Konflikte zu vermeiden, anstatt sich auf das native Shadow DOM zu verlassen.",
     "description": "Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model)."
   },
   "chip.label.scoped": {
-    "message": "Scoped",
+    "message": "Bereichsbezogen",
     "description": "Label to show this component uses scoped components."
   },
   "chip.tooltipText.experimental": {
-    "message": "This is an experimental feature and may change in future releases.",
+    "message": "Dies ist eine experimentelle Funktion und kann in zukünftigen Versionen geändert werden.",
     "description": "Hover text to explain this feature is experimental and subject to change."
   },
   "chip.label.experimental": {
-    "message": "Experimental",
+    "message": "Experimentell",
     "description": "Label to show this component is experimental."
   },
   "theme.IconExternalLink.ariaLabel": {
