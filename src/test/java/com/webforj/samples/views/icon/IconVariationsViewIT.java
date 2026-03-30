@@ -11,8 +11,13 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Map;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import com.webforj.samples.pages.SupportedLanguage;
+
+import com.webforj.samples.pages.icon.IconVariationsPage;
+import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class IconVariationsViewIT extends BaseTest {
 
@@ -27,31 +32,35 @@ public class IconVariationsViewIT extends BaseTest {
   private final String INSTAGRAM_ICON_URL =
       "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/svgs/brands/instagram.svg";
 
-  @BeforeEach
-  public void setupIconVariations() {
-    navigateToRoute(IconVariationsPage.getRoute());
-  }
+    public void setupIconVariations(SupportedLanguage language) {
+        navigateToRoute(IconVariationsPage.getRoute(language));
+    }
 
-  @Test
-  public void testSVGsLoaded() throws IOException, InterruptedException {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testSVGsLoaded(SupportedLanguage language) throws IOException, InterruptedException {
+      setupIconVariations(language);
 
-    Map<String, String> svgIcons =
-        Map.of(
-            "calendar", CALENDAR_ICON_URL,
-            "filled_calendar", FILLED_CALENDAR_ICON_URL,
-            "envelope", ENVELOPE_ICON_URL,
-            "solid_envelope", SOLID_ENVELOPE_ICON_URL,
-            "instagram", INSTAGRAM_ICON_URL);
+        Map<String, String> svgIcons = Map.of(
+                "calendar", CALENDAR_ICON_URL,
+                "filled_calendar", FILLED_CALENDAR_ICON_URL,
+                "envelope", ENVELOPE_ICON_URL,
+                "solid_envelope", SOLID_ENVELOPE_ICON_URL,
+                "instagram", INSTAGRAM_ICON_URL);
 
-    HttpClient client = HttpClient.newHttpClient();
+        HttpClient client = HttpClient.newHttpClient();
 
-    for (Map.Entry<String, String> icon : svgIcons.entrySet()) {
-      HttpRequest request = HttpRequest.newBuilder().uri(URI.create(icon.getValue())).GET().build();
+        for (Map.Entry<String, String> icon : svgIcons.entrySet()) {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(icon.getValue()))
+                    .GET()
+                    .build();
 
-      HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-      assertEquals(200, response.statusCode());
-      assertTrue(response.body().contains("<svg"));
+            assertEquals(200, response.statusCode());
+            assertTrue(response.body().contains("<svg"));
+        }
     }
   }
 }

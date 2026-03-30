@@ -3,6 +3,7 @@ package com.webforj.samples.pages.icon;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class IconVariationsPage {
 
@@ -26,9 +27,9 @@ public class IconVariationsPage {
         page.getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("filled-calendar"));
   }
 
-  public static String getRoute() {
-    return ROUTE;
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public Locator getEnvelopeIcon() {
     return envelopeIcon;
@@ -74,7 +75,7 @@ public class IconVariationsPage {
     return calendarIcon.locator("svg");
   }
 
-  public Locator getFilledCalendarIconSvg() {
-    return filledCalendarIcon.locator("svg");
-  }
+    public Locator getFilledCalendarIconSvg() {
+        return filledCalendarIcon.locator("svg");
+    }
 }
