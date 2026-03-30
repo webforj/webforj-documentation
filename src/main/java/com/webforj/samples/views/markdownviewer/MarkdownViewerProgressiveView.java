@@ -14,6 +14,7 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Progressive Rendering Demo")
 public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
 
+  private final FlexLayout self = getBoundComponent();
   private final MarkdownViewer viewer = new MarkdownViewer();
   private final Button startButton = new Button("Start", ButtonTheme.PRIMARY);
   private final Button stopButton = new Button("Stop", ButtonTheme.DANGER);
@@ -47,12 +48,13 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
       """;
 
   public MarkdownViewerProgressiveView() {
-    FlexLayout self = getBoundComponent();
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-m)")
         .setPadding("var(--dwc-space-l)");
 
-    speedChoice.setLabel("Render Speed").setWidth("200px").setStyle("align-self", "flex-end");
+    speedChoice.setLabel("Render Speed")
+      .setWidth("200px")
+      .setStyle("align-self", "flex-end");
 
     speedChoice.add("2", "Slow (2)");
     speedChoice.add("4", "Default (4)");
