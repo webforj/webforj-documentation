@@ -3,6 +3,7 @@ package com.webforj.samples.pages.radiobutton;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class RadioButtonSwitchPage {
 
@@ -16,8 +17,8 @@ public class RadioButtonSwitchPage {
         page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Switch RadioButton"));
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator getSwitchRadio() {
