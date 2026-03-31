@@ -746,7 +746,7 @@
     "description": "Hover text to explain how the web component will appear in the DOM (document object model)"
   },
   "chip.tooltipText.since": {
-    "message": "This feature is available for webforJ {version} and higher.",
+    "message": "此功能适用于 webforJ {version} 及更高版本。",
     "description": "Hover text to explain what version of webforJ you need to use the feature."
   },
   "chip.tooltipText.webforJ.version.snapshot": {
