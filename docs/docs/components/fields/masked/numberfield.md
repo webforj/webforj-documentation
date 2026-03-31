@@ -32,7 +32,7 @@ The `MaskedNumberField` uses a mask string to control how numeric input is forma
 Each character in the mask defines a specific formatting behavior, allowing precise control over how numbers appear.
 
 :::tip Applying masks programmatically
-To format numbers with the same mask syntax outside of a field—for example, when rendering data in a [`Table`](/docs/components/table/overview)—use the [`MaskDecorator`](/docs/advanced/mask-decorator) utility class.
+To format numbers with the same mask syntax outside of a field, for example when rendering data in a [`Table`](/docs/components/table/overview), use the [`MaskDecorator`](/docs/advanced/mask-decorator) utility class.
 :::
 
 ### Mask characters {#mask-characters}
