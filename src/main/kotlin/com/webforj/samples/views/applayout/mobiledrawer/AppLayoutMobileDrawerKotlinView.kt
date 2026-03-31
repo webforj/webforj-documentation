@@ -11,18 +11,18 @@ import com.webforj.kotlin.dsl.component.html.elements.h3
 import com.webforj.kotlin.dsl.component.html.elements.paragraph
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.dsl.component.layout.applayout.appDrawerToggle
-import com.webforj.kotlin.dsl.component.layout.applayout.drawer
-import com.webforj.kotlin.dsl.component.layout.applayout.footer
-import com.webforj.kotlin.dsl.component.layout.applayout.header
+import com.webforj.kotlin.dsl.component.layout.applayout.drawerSlot
+import com.webforj.kotlin.dsl.component.layout.applayout.footerSlot
+import com.webforj.kotlin.dsl.component.layout.applayout.headerSlot
 import com.webforj.kotlin.dsl.component.layout.appnav.appNav
 import com.webforj.kotlin.dsl.component.layout.appnav.appNavItem
-import com.webforj.kotlin.dsl.component.tabbedpane.prefix
+import com.webforj.kotlin.dsl.component.tabbedpane.prefixSlot
 import com.webforj.kotlin.dsl.component.tabbedpane.tab
 import com.webforj.kotlin.dsl.component.tabbedpane.tabbedPane
-import com.webforj.kotlin.dsl.component.toolbar.start
-import com.webforj.kotlin.dsl.component.toolbar.title
+import com.webforj.kotlin.dsl.component.toolbar.startSlot
+import com.webforj.kotlin.dsl.component.toolbar.titleSlot
 import com.webforj.kotlin.dsl.component.toolbar.toolbar
-import com.webforj.kotlin.extension.prefix
+import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
@@ -38,39 +38,39 @@ class AppLayoutMobileDrawerKotlinView: Composite<AppLayout>() {
   init {
     self.apply {
       isHeaderReveal = true
-      header {
+      headerSlot {
         toolbar {
-          start {
+          startSlot {
             appDrawerToggle()
           }
-          title { h3("Application") }
+          titleSlot { h3("Application") }
         }
       }
-      drawer {
+      drawerSlot {
         div {
           addClassName("app-layout-drawer")
           drawerLogo()
           appNav {
             appNavItem("Dashboard", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Dashboard")) {
-              prefix { tablerIcon("dashboard") }
+              prefixSlot { tablerIcon("dashboard") }
             }
             appNavItem("Orders", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Orders")) {
-              prefix { tablerIcon("shopping-cart") }
+              prefixSlot { tablerIcon("shopping-cart") }
             }
             appNavItem("Customers", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Customers")) {
-              prefix { tablerIcon("user") }
+              prefixSlot { tablerIcon("user") }
             }
             appNavItem("Products", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Products")) {
-              prefix { tablerIcon("box") }
+              prefixSlot { tablerIcon("box") }
             }
             appNavItem("Documents", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Documents")) {
-              prefix { tablerIcon("files") }
+              prefixSlot { tablerIcon("files") }
             }
             appNavItem("Tasks", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Tasks")) {
-              prefix { tablerIcon("checklist") }
+              prefixSlot { tablerIcon("checklist") }
             }
             appNavItem("Analytics", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Analytics")) {
-              prefix { tablerIcon("chart-dots-2") }
+              prefixSlot { tablerIcon("chart-dots-2") }
             }
           }
         }
@@ -78,7 +78,7 @@ class AppLayoutMobileDrawerKotlinView: Composite<AppLayout>() {
       h1("Application Title")
       paragraph("Content goes here...")
       isFooterReveal = true
-      footer {
+      footerSlot {
         tabbedPane {
           isBodyHidden = true
           isBorderless = true
@@ -86,19 +86,19 @@ class AppLayoutMobileDrawerKotlinView: Composite<AppLayout>() {
           alignment = TabbedPane.Alignment.STRETCH
           expanse = Expanse.XLARGE
           tab("") {
-            prefix { tabbedPane("dashboard") }
+            prefixSlot { tabbedPane("dashboard") }
           }
           tab("") {
-            prefix { tabbedPane("shopping-cart") }
+            prefixSlot { tabbedPane("shopping-cart") }
           }
           tab("") {
-            prefix { tabbedPane("users") }
+            prefixSlot { tabbedPane("users") }
           }
           tab("") {
-            prefix { tabbedPane("box") }
+            prefixSlot { tabbedPane("box") }
           }
           tab("") {
-            prefix { tabbedPane("files") }
+            prefixSlot { tabbedPane("files") }
           }
         }
       }

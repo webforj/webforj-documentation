@@ -19,7 +19,6 @@ import org.junit.jupiter.params.provider.MethodSource;
     appLayoutPage = new AppLayoutPage(page);
   }
 
-    @Override
     protected String getRoute(SupportedLanguage language) {
         return AppLayoutPage.getRoute(language);
     }
