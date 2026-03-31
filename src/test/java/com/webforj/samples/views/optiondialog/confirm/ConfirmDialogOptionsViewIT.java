@@ -2,24 +2,30 @@ package com.webforj.samples.views.optiondialog.confirm;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.samples.views.BaseTest;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.views.BaseTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ConfirmDialogOptionsViewIT extends BaseTest {
 
-  @BeforeEach
-  public void setupConfirmDialogOptionsView() {
-    navigateToRoute("confirmdialogoptions");
-  }
+    private static final String ROUTE = "confirmdialogoptions";
 
-  @Test
-  public void testDialogConfirmationIsShownWhenDiscardButtonIsClicked() {
-    Locator dialog = page.getByRole(AriaRole.DIALOG);
-    assertThat(dialog).isVisible();
+    public void setupConfirmDialogOptionsView(SupportedLanguage language) {
+        navigateToRoute(language.getPath(ROUTE));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testDialogConfirmationIsShownWhenDiscardButtonIsClicked(SupportedLanguage language) {
+        setupConfirmDialogOptionsView(language);
+        Locator dialog = page.getByRole(AriaRole.DIALOG);
+        assertThat(dialog).isVisible();
 
     Locator confirmButton =
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Discard"));

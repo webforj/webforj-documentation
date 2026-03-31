@@ -2,24 +2,30 @@ package com.webforj.samples.views.optiondialog.input;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.samples.views.BaseTest;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.views.BaseTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class InputDialogBasicViewIT extends BaseTest {
 
-  @BeforeEach
-  public void setupInputDialogBasicView() {
-    navigateToRoute("inputdialogbasic");
-  }
+    private static final String ROUTE = "inputdialogbasic";
 
-  @Test
-  public void testInvalidInputDialogIsShownWhenDeleteButtonIsClicked() {
-    Locator dialog = page.getByRole(AriaRole.DIALOG);
-    assertThat(dialog).isVisible();
+    public void setupInputDialogBasicView(SupportedLanguage language) {
+        navigateToRoute(language.getPath(ROUTE));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testInvalidInputDialogIsShownWhenDeleteButtonIsClicked(SupportedLanguage language) {
+        setupInputDialogBasicView(language);
+        Locator dialog = page.getByRole(AriaRole.DIALOG);
+        assertThat(dialog).isVisible();
 
     Locator inputField = page.getByRole(AriaRole.TEXTBOX);
     inputField.fill("wrongCode");
@@ -36,10 +42,12 @@ public class InputDialogBasicViewIT extends BaseTest {
     okButton.click();
   }
 
-  @Test
-  public void testValidInputDialogIsShownWhenDeleteButtonIsClicked() {
-    Locator dialog = page.getByRole(AriaRole.DIALOG);
-    assertThat(dialog).isVisible();
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testValidInputDialogIsShownWhenDeleteButtonIsClicked(SupportedLanguage language) {
+        setupInputDialogBasicView(language);
+        Locator dialog = page.getByRole(AriaRole.DIALOG);
+        assertThat(dialog).isVisible();
 
     Locator inputField = page.getByRole(AriaRole.TEXTBOX);
     Locator deleteButton =
