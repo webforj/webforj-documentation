@@ -7,7 +7,7 @@ authors: Garrison Osteen
 tags: [ai, community]
 hide_table_of_contents: false
 ---
-![cover image](./blog-mcp-cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/blog-mcp-cover.png)
 <!-- vale webforJ.BeDirect = NO -->
 
 AI tools are changing the way people work, and it's easy to get left behind. 
@@ -50,7 +50,7 @@ If you're using Claude Code from the terminal, you can just run the following co
 claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
 ```
 
-![Claude: add custom connector](./mcp-add-custom-connector.png)
+![Claude: add custom connector](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-add-custom-connector.png)
 
 The webforJ MCP currently comes with three tools: 
 
@@ -62,7 +62,7 @@ You can globally toggle each of the available tools to control whether Claude ca
 By default, everything is set to **Needs Approval**, so Claude will prompt you for permission before using any of the tools.
 You can also adjust these settings on a per-chat basis, giving you very flexible control over when Claude uses any of them.
 
-![Claude: set tool permissions](./mcp-claude-permissions.png)
+![Claude: set tool permissions](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-permissions.png)
 
 
 :::important MCP Functionality in Chat mode
@@ -84,7 +84,7 @@ To start, I asked Claude to create a new project with the Tabs layout, putting i
 
 Claude gave me a good overview of the project once it finished:
 
-![Claude: create new webforJ tabs project](./mcp-claude-vibetabs-project.png)
+![Claude: create new webforJ tabs project](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-vibetabs-project.png)
 
 Next, I asked Claude to create another app for each available archetype. 
 It was able to determine which archetypes exist, and created a project for each one. 
@@ -112,17 +112,17 @@ Of course, as a budding vibe coder, I was determined to not debug this code myse
 To get started, I asked it to add some components using all the available themes so we could debug this issue. 
 This prompted the **Knowledge Search** tool, and Claude created a nice theme display for us to work with:
 
-![Claude: component theme test](./mcp-claude-default-theme.png)
+![Claude: component theme test](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-default-theme.png)
 
 This made it pretty clear that the custom theme was not being applied, but how do I tell Claude that? 
 It turns out that a picture is worth a thousand words, so I just attached a screenshot instead of explaining anything:
 
-![Claude: theme debugging](./mcp-claude-theme-debugging.png)
+![Claude: theme debugging](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-theme-debugging.png)
 
 Claude is able to see what I see, without me wasting my time checking the values and trying to explain the problem. 
 And, sure enough, it was able to get the theme loading correctly:
 
-![Claude: custom theme applied](./mcp-claude-custom-theme.png)
+![Claude: custom theme applied](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-custom-theme.png)
 
 This little exercise in problem solving was a great test of using AI tools to not just write code, but debug it as well.
 
@@ -181,7 +181,7 @@ public class UserCard extends Composite<FlexLayout> {
 ```
 The result is a very reasonable execution of my request:
 
-![Claude: user card components](./mcp-claude-user-cards.png)
+![Claude: user card components](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-user-cards.png)
 
 ## Final thoughts
 
