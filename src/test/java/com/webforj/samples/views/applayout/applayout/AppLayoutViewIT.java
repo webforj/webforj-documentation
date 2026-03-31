@@ -15,7 +15,6 @@ public class AppLayoutViewIT extends BaseTest{
 
     private AppLayoutPage appLayoutPage;
 
-    @Override
     protected String getRoute(SupportedLanguage language) {
         return AppLayoutPage.getRoute(language);
     }

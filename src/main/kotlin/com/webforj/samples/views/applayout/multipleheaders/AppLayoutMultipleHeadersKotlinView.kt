@@ -7,19 +7,19 @@ import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.html.elements.h3
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.dsl.component.layout.applayout.appDrawerToggle
-import com.webforj.kotlin.dsl.component.layout.applayout.drawer
-import com.webforj.kotlin.dsl.component.layout.applayout.header
+import com.webforj.kotlin.dsl.component.layout.applayout.drawerSlot
+import com.webforj.kotlin.dsl.component.layout.applayout.headerSlot
 import com.webforj.kotlin.dsl.component.layout.appnav.appNav
 import com.webforj.kotlin.dsl.component.layout.appnav.appNavItem
-import com.webforj.kotlin.dsl.component.tabbedpane.prefix
+import com.webforj.kotlin.dsl.component.tabbedpane.prefixSlot
 import com.webforj.kotlin.dsl.component.tabbedpane.tab
 import com.webforj.kotlin.dsl.component.tabbedpane.tabbedPane
-import com.webforj.kotlin.dsl.component.toolbar.start
-import com.webforj.kotlin.dsl.component.toolbar.title
+import com.webforj.kotlin.dsl.component.toolbar.startSlot
+import com.webforj.kotlin.dsl.component.toolbar.titleSlot
 import com.webforj.kotlin.dsl.component.toolbar.toolbar
 import com.webforj.kotlin.extension.classNames
 import com.webforj.kotlin.extension.plusAssign
-import com.webforj.kotlin.extension.prefix
+import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
@@ -37,58 +37,58 @@ class AppLayoutMultipleHeadersKotlinView: Composite<AppLayout>() {
       isDrawerHeaderVisible = false
       isDrawerFooterVisible = true
       isHeaderReveal = true
-      header {
+      headerSlot {
         toolbar {
-          start { appDrawerToggle() }
-          title { h3("Application") }
+          startSlot { appDrawerToggle() }
+          titleSlot { h3("Application") }
         }
         toolbar {
           isCompact = true
-          start {
+          startSlot {
             tabbedPane {
               isBorderless = true
               isBodyHidden = true
               tab("Sales") {
-                prefix { tabbedPane("report-money") }
+                prefixSlot { tabbedPane("report-money") }
               }
               tab("Enterprise") {
-                prefix { tabbedPane("building") }
+                prefixSlot { tabbedPane("building") }
               }
               tab("Payments") {
-                prefix { tabbedPane("credit-card") }
+                prefixSlot { tabbedPane("credit-card") }
               }
               tab("History") {
-                prefix { tabbedPane("history") }
+                prefixSlot { tabbedPane("history") }
               }
             }
           }
         }
       }
-      drawer {
+      drawerSlot {
         div {
           classNames += "app-layout-drawer"
           drawerLogo()
           appNav {
             appNavItem("Dashboard", view = AppLayoutMultipleHeaderContentKotlinView::class, routeParameters = ParametersBag.of("name=Dashboard")) {
-              prefix { tablerIcon("dashboard") }
+              prefixSlot { tablerIcon("dashboard") }
             }
             appNavItem("Orders", view = AppLayoutMultipleHeaderContentKotlinView::class, routeParameters = ParametersBag.of("name=Orders")) {
-              prefix { tablerIcon("shopping-cart") }
+              prefixSlot { tablerIcon("shopping-cart") }
             }
             appNavItem("Customers", view = AppLayoutMultipleHeaderContentKotlinView::class, routeParameters = ParametersBag.of("name=Customers")) {
-              prefix { tablerIcon("user") }
+              prefixSlot { tablerIcon("user") }
             }
             appNavItem("Products", view = AppLayoutMultipleHeaderContentKotlinView::class, routeParameters = ParametersBag.of("name=Products")) {
-              prefix { tablerIcon("box") }
+              prefixSlot { tablerIcon("box") }
             }
             appNavItem("Documents", view = AppLayoutMultipleHeaderContentKotlinView::class, routeParameters = ParametersBag.of("name=Documents")) {
-              prefix { tablerIcon("files") }
+              prefixSlot { tablerIcon("files") }
             }
             appNavItem("Tasks", view = AppLayoutMultipleHeaderContentKotlinView::class, routeParameters = ParametersBag.of("name=Tasks")) {
-              prefix { tablerIcon("checklist") }
+              prefixSlot { tablerIcon("checklist") }
             }
             appNavItem("Analytics", view = AppLayoutMultipleHeaderContentKotlinView::class, routeParameters = ParametersBag.of("name=Analytics")) {
-              prefix { tablerIcon("chart-dots-2") }
+              prefixSlot { tablerIcon("chart-dots-2") }
             }
           }
         }
