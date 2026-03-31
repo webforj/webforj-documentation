@@ -27,7 +27,7 @@ field.setMask("ZZZZ-0000")
 The `MaskedTextField` formats text input using a mask - a string that defines what characters are allowed at each position. This ensures consistent, structured input for things like phone numbers, postal codes, and ID formats.
 
 :::tip Applying masks programmatically
-To format strings with the same mask syntax outside of a field—for example, when rendering data in a [`Table`](/docs/components/table/overview)—use the [`MaskDecorator`](/docs/advanced/mask-decorator) utility class.
+To format strings with the same mask syntax outside of a field, for example when rendering data in a [`Table`](/docs/components/table/overview), use the [`MaskDecorator`](/docs/advanced/mask-decorator) utility class.
 :::
 
 ### Supported mask characters {#supported-mask-characters}
