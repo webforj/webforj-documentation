@@ -847,6 +847,10 @@
   },
   "chip.tooltipText.name": {
     "message": "The name of this web component as it appears in the DOM.",
+    "description": "Hover text to explain how the web component will appear in the DOM (document object model)"
+  },
+  "chip.tooltipText.since": {
+    "message": "This feature is available for webforJ {version} and higher.",
     "description": "Hover text to explain what version of webforJ you need to use the feature."
   },
   "chip.tooltipText.webforJ.version.snapshot": {
