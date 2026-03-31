@@ -1,9 +1,7 @@
 ---
-sidebar_position: 10
 title: File Chooser
+sidebar_position: 10
 ---
-
-# File Chooser Dialog
 
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
@@ -11,9 +9,7 @@ title: File Chooser
 
 `FileChooserDialog` is a modal dialog designed to allow the user to select a file or a directory from the server file system. The dialog blocks app execution until the user makes a selection or closes the dialog.
 
-```java
-OptionDialog.showFileChooserDialog("Select a file");
-```
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 
@@ -35,12 +31,12 @@ The resulting string will be returned from the `show()` method, or the equivalen
 
 ```java showLineNumbers
 String result = OptionDialog.showFileChooserDialog(
-    "Select a file", "/home/user", FileChooserDialog.SelectionMode.FILES);
+  "Select a file", "/home/user", FileChooserDialog.SelectionMode.FILES);
 
 if (result != null) {
-    OptionDialog.showMessageDialog("You selected: " + result, "Selection Made");
+  OptionDialog.showMessageDialog("You selected: " + result, "Selection Made");
 } else {
-    OptionDialog.showMessageDialog("No selection made", "Selection Canceled");
+  OptionDialog.showMessageDialog("No selection made", "Selection Canceled");
 }
 ```
 

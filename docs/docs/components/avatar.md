@@ -1,7 +1,6 @@
 ---
 title: Avatar
 sidebar_position: 7
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='shadow' />
@@ -10,6 +9,8 @@ sidebar_class_name: new-content
 <JavadocLink type="avatar" location="com/webforj/component/avatar/Avatar" top='true'/>
 
 The `Avatar` component provides a visual representation of a user or entity. It can display an image, auto-computed initials, custom initials, or an icon. Avatars are commonly used to identify users in comment sections, navigation menus, chat applications, and contact lists.
+
+<!-- INTRO_END -->
 
 ## Creating avatars {#creating-avatars}
 
@@ -67,7 +68,7 @@ Avatar avatar = new Avatar("Guest User", TablerIcon.create("user"));
 The `Avatar` component uses the label for accessibility and tooltip generation. The `setLabel()` and `setText()` methods are aliases that both set the accessible label for the `Avatar`.
 
 :::info Auto-computed Initials
-When you create an `Avatar` with just a label, initials are automatically computed by taking the first character of each word. For example, "John Doe" becomes "JD".
+When you create an `Avatar` with just a label, initials are automatically computed by taking the first character of each word. For example, an `Avatar` with the label "John Doe" automatically displays "JD" in the UI.
 :::
 
 ```java

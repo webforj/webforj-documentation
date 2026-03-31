@@ -1,0 +1,103 @@
+release:
+  label: Release
+  description: Version release announcements for the webforJ framework.
+
+tutorial:
+  label: Tutorial
+  description: Step-by-step guides and walkthroughs for building with webforJ.
+
+components:
+  label: Components
+  description: Deep dives into webforJ UI components and their capabilities.
+
+integrations:
+  label: Integrations
+  description: Content about integrating webforJ with third-party tools and frameworks.
+
+styling:
+  label: Styling
+  description: CSS, theming, and design guides for webforJ applications.
+
+community:
+  label: Community
+  description: Community stories, opinions, and announcements from the webforJ team.
+
+ai:
+  label: AI
+  description: Artificial intelligence and AI-assisted development with webforJ.
+
+showcase:
+  label: Showcase
+  description: Real-world examples and demos built with webforJ.
+
+annotations:
+  label: Annotations
+  description: Using Java annotations in webforJ applications.
+
+themes:
+  label: Themes
+  description: Theming and visual customization of webforJ applications.
+
+modernization:
+  label: Modernization
+  description: Modernizing legacy Java applications.
+
+webswing:
+  label: Webswing
+  description: Running Swing applications in the browser with Webswing.
+
+spring:
+  label: Spring
+  description: Integration with the Spring framework.
+
+'full-stack':
+  label: Full-Stack
+  description: Full-stack Java web development.
+
+'web development':
+  label: Web Development
+  description: General web development topics.
+
+mvc:
+  label: MVC
+  description: Model-View-Controller architecture patterns.
+
+'front end':
+  label: Front End
+  description: Front-end development with webforJ.
+
+'back end':
+  label: Back End
+  description: Back-end development topics.
+
+routing:
+  label: Routing
+  description: Navigation and routing in webforJ applications.
+
+'responsive design':
+  label: Responsive Design
+  description: Building responsive layouts with webforJ.
+
+layout:
+  label: Layout
+  description: Layout design in webforJ.
+
+table:
+  label: Table
+  description: Using the webforJ Table component.
+
+renderers:
+  label: Renderers
+  description: Custom cell renderers for webforJ Table.
+
+'ui customization':
+  label: UI Customization
+  description: Customizing the look and behavior of webforJ UI components.
+
+'data visualization':
+  label: Data Visualization
+  description: Charts, tables, and visual data presentation.
+
+performance:
+  label: Performance
+  description: Performance optimization techniques for webforJ applications.

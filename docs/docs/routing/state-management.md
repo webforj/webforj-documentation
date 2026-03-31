@@ -19,6 +19,7 @@ In this example, when the "Update URL" button is clicked, the UI is updated to s
 ```java
 @Route(value = "products")
 public class ProductView extends Composite<Div> {
+  private final Div self = getBoundComponent();
   Paragraph paragraph = new Paragraph();
   Random random = new Random();
 
@@ -28,9 +29,8 @@ public class ProductView extends Composite<Div> {
       filter("electronics", String.valueOf(random.nextInt(3) - 1));
     });
 
-    Div div = getBoundComponent();
-    div.add(update);
-    div.add(paragraph);
+    self.add(update);
+    self.add(paragraph);
   }
 
   public void filter(String category, String sort) {
@@ -75,6 +75,7 @@ In the following example, a `ProfileView` consists of several tabs (Profile, Ord
 ```java
 @Route(value = "profile")
 public class ProfileView extends Composite<Div> implements DidEnterObserver {
+  private final Div self = getBoundComponent();
   TabbedPane sections = new TabbedPane();
   int currentSection = 0;
 
@@ -89,7 +90,7 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
       updateState(currentSection);
     });
 
-    getBoundComponent().add(sections);
+    self.add(sections);
   }
 
   @Override

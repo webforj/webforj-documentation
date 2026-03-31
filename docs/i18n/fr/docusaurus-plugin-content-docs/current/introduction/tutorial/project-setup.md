@@ -1,58 +1,116 @@
 ---
 title: Project Setup
 sidebar_position: 1
-_i18n_hash: f8ad0e22acf56c824b05db580be2203b
+description: >-
+  Discover where to download the tutorial project, how to navigate it, and run
+  the apps within.
+_i18n_hash: f9a028daac660f61634ad84d00cb0130
 ---
-Dans ce tutoriel, l'application sera structurée en **quatre étapes**, chacune introduisant de nouvelles fonctionnalités à mesure que le projet progresse. En suivant, vous obtiendrez une compréhension claire de la façon dont l'application évolue et de la manière dont chaque fonctionnalité est mise en œuvre.
+Pour commencer ce tutoriel, vous avez besoin d'un emplacement pour votre projet où vous pouvez gérer vos classes et ressources. Les sections suivantes décrivent les différentes façons de créer votre projet webforJ pour ce tutoriel.
 
-Pour commencer, vous pouvez télécharger l'ensemble du projet ou le cloner depuis GitHub :
+## Utilisation du code source {#using-source-code}
+
+La façon la plus simple de suivre ce tutoriel est de se référer à son code source. Vous pouvez télécharger l'intégralité du projet ou le cloner depuis GitHub :
+
 <!-- vale off -->
-- Télécharger le ZIP : [webforj-demo-application.zip](https://github.com/webforj/webforj-demo-application/archive/refs/heads/main.zip)
-- Dépôt GitHub : Clonez le projet [directement depuis GitHub](https://github.com/webforj/webforj-demo-application)
+- Télécharger ZIP : [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
+- Répertoire GitHub : Clonez le projet [directement depuis GitHub](https://github.com/webforj/webforj-tutorial)
 <!-- vale on -->
 ```bash
-git clone https://github.com/webforj/webforj-demo-application.git
+git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
-Le fichier ZIP et le dépôt GitHub contiennent la structure complète du projet avec les quatre étapes, vous pouvez donc commencer à n'importe quel moment ou suivre étape par étape.
+### Structure du projet {#project-structure}
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
-  </video>
-</div>
-
-## Structure du projet {#project-structure}
-
-Le projet est divisé en quatre répertoires distincts, chacun représentant une étape spécifique du développement de l'application. Ces étapes vous permettent de voir comment l'application évolue d'une configuration de base à un système complet de gestion des clients.
-
-Dans le dossier du projet, vous trouverez quatre sous-répertoires, chacun correspondant à une étape du tutoriel :
+Le projet comporte cinq sous-répertoires, un pour chaque étape du tutoriel, et chacun contient une application exécutable. Suivre permet de voir comment l'application progresse d'une configuration de base à un système de gestion de clients pleinement fonctionnel.
 
 ```
-webforj-demo-application
+webforj-tutorial
 │   .gitignore
 │   LICENSE
 │   README.md
-│   tree.txt
 │
 ├───1-creating-a-basic-app  
 ├───2-working-with-data
-├───3-scaling-with-routing-and-composites
-└───4-validating-and-binding-data
+├───3-routing-and-composites
+├───4-observers-and-route-parameters
+└───5-validating-and-binding-data
 ```
 
-### Exécution de l'application {#running-the-app}
+## Utilisation de startforJ {#using-startforj}
 
-Pour voir l'application en action à n'importe quelle étape :
+Si vous préférez créer un nouveau projet, vous pouvez utiliser [startforJ](https://docs.webforj.com/startforj) pour générer un projet de démarrage minimal. Consultez [Premiers pas](/docs/introduction/getting-started) pour plus d'informations détaillées sur l'utilisation de startforJ.
 
-1) Accédez au répertoire de l'étape souhaitée. Cela devrait être le répertoire de niveau supérieur pour cette étape, contenant le `pom.xml`
+:::note Paramètres requis
+- Dans le menu déroulant **version webforJ**, choisissez la version webforJ **25.10 ou supérieure**.
+- Dans le menu déroulant **Flavor**, choisissez **webforJ + Spring Boot**. 
+:::
 
-2) Utilisez le plugin Maven Jetty pour déployer l'application localement en exécutant :
+## Utilisation de la ligne de commande {#using-command-line}
 
+Vous pouvez également générer un nouveau projet avec la commande suivante :
+
+<!-- vale off -->
+<Tabs>
+  <TabItem value="bash" label="Bash/Zsh" default>
 ```bash
-mvn jetty:run
+mvn -B archetype:generate \
+  -DarchetypeGroupId=com.webforj \
+  -DarchetypeArtifactId=webforj-archetype-hello-world \
+  -DarchetypeVersion=LATEST \
+  -DgroupId=com.webforj.tutorial \
+  -DartifactId=customer-app \
+  -Dversion=1.0-SNAPSHOT \
+  -Dflavor=webforj-spring
+```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+```powershell
+mvn -B archetype:generate `
+  -DarchetypeGroupId="com.webforj" `
+  -DarchetypeArtifactId="webforj-archetype-hello-world" `
+  -DarchetypeVersion="LATEST" `
+  -DgroupId="com.webforj.tutorial" `
+  -DartifactId="customer-app" `
+  -Dversion="1.0-SNAPSHOT" `
+  -Dflavor="webforj-spring"
+```
+  </TabItem>
+  <TabItem value="cmd" label="Invite de commandes">
+```
+mvn -B archetype:generate ^
+  -DarchetypeGroupId="com.webforj" ^
+  -DarchetypeArtifactId="webforj-archetype-hello-world" ^
+  -DarchetypeVersion="LATEST" ^
+  -DgroupId="com.webforj.tutorial" ^
+  -DartifactId="customer-app" ^
+  -Dversion="1.0-SNAPSHOT" ^
+  -Dflavor="webforj-spring"
+```
+  </TabItem>
+</Tabs>
+<!-- vale on -->
+
+## Configurations
+
+Les deux méthodes mentionnées pour créer un nouveau projet utilisent les [archétypes](/docs/building-ui/archetypes/overview) webforJ, qui ajoutent automatiquement les configurations nécessaires à votre projet, comme les [dépendances](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) Spring à votre POM et les propriétés suivantes dans `src/main/resources/application.properties` :
+
+```
+spring.application.name=CustomerApplication
+server.port=8080
+webforj.entry = com.webforj.tutorial.Application
+webforj.debug=true
 ```
 
-3) Ouvrez votre navigateur et accédez à http://localhost:8080 pour voir l'application.
+## Exécution de l'application {#running-the-app}
 
-Répétez ce processus pour chaque étape en suivant le tutoriel, ce qui vous permettra d'explorer les fonctionnalités de l'application à mesure qu'elles sont ajoutées.
+Pour voir l'application en action au fur et à mesure que vous progressez dans le tutoriel :
+
+1. Naviguez jusqu'au répertoire pour l'étape souhaitée. Cela devrait être le répertoire de premier niveau pour cette étape, contenant le `pom.xml`.
+
+2. Utilisez la commande Maven suivante pour exécuter l'application Spring Boot localement :
+    ```bash
+    mvn
+    ```
+
+L'exécution de l'application ouvre automatiquement un nouveau navigateur à `http://localhost:8080`.

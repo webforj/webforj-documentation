@@ -3,18 +3,18 @@ sidebar_position: 10
 title: Events
 slug: events
 draft: false
-_i18n_hash: 620635097d0620cc0cd4a639b0d29d97
+_i18n_hash: c5c07ac4ca0f8d88ea6ef86afd5bb408
 ---
 <JavadocLink type="foundation" location="com/webforj/component/event/Event" top='true'/>
 
-Komponenten, ob benutzerdefiniert oder Teil des Frameworks, unterstützen die Ereignisbehandlung. Sie können Ereignislistener hinzufügen, um verschiedene Arten von Ereignissen zu erfassen, wie z. B. Benutzerinteraktionen, Zustandsänderungen oder andere benutzerdefinierte Ereignisse. Diese Ereignislistener können verwendet werden, um spezifische Aktionen oder Verhaltensweisen als Reaktion auf die Ereignisse auszulösen.
+Komponenten, ob benutzerdefiniert oder Teil des Frameworks, unterstützen die Ereignisbehandlung. Sie können Ereignis-Listener hinzufügen, um verschiedene Arten von Ereignissen zu erfassen, wie zum Beispiel Benutzerinteraktionen, Änderungen im Zustand oder andere benutzerdefinierte Ereignisse. Diese Ereignis-Listener können verwendet werden, um spezifische Aktionen oder Verhaltensweisen als Reaktion auf die Ereignisse auszulösen.
 
-Im folgenden Beispiel wird ein Ereignis hinzugefügt, indem jede der drei unterstützten Methoden verwendet wird: Lambda-Ausdrücke, anonyme Klassen und Methodenreferenzen.
+Im folgenden Beispiel wird ein Ereignis mit jeder der drei unterstützten Methoden hinzugefügt: Lambda-Ausdrücke, anonyme Klassen und Methodenreferenzen.
 ## Hinzufügen von Ereignissen {#adding-events}
 
-Das Hinzufügen eines Ereignislisteners ist möglich, indem eines der folgenden Muster verwendet wird, wobei:
+Das Hinzufügen eines Ereignis-Listeners ist möglich, indem eines der folgenden Muster verwendet wird, wobei:
 
-- **`myComponent`** die Komponente ist, an die Sie den Ereignislistener anhängen möchten.
+- **`myComponent`** die Komponente ist, an die Sie den Ereignis-Listener anhängen möchten.
 
 - **`addEventListener`** durch die ereignisspezifische Methode ersetzt wird.
 
@@ -22,7 +22,7 @@ Das Hinzufügen eines Ereignislisteners ist möglich, indem eines der folgenden 
 
 ```java
 myComponent.addEventListener(e -> {
-  // Wird ausgeführt, wenn das Ereignis ausgelöst wird
+  // Ausgeführt, wenn das Ereignis ausgelöst wird
 });
 
 //ODER
@@ -30,7 +30,7 @@ myComponent.addEventListener(e -> {
 myComponent.addEventListener(new ComponentEventListener<EventListener>() {
   @Override
   public void onComponentEvent(ComponentEvent e){
-    // Wird ausgeführt, wenn das Ereignis ausgelöst wird
+    // Ausgeführt, wenn das Ereignis ausgelöst wird
   }
 });
 
@@ -39,62 +39,62 @@ myComponent.addEventListener(new ComponentEventListener<EventListener>() {
 myComponent.addEventListener(this::eventMethod);
 ```
 
-Zusätzliche syntaktische Zucker-Methoden oder Aliase wurden hinzugefügt, um die alternative Hinzufügung von Ereignissen durch Verwendung des `on`-Präfixes gefolgt vom Ereignis zu ermöglichen, wie z. B.:
+Zusätzliche syntaktische Zucker-Methoden oder Aliase wurden hinzugefügt, um eine alternative Hinzufügung von Ereignissen durch Verwendung des `on`-Präfixes gefolgt vom Ereignis zu ermöglichen, wie zum Beispiel:
 
 ```java
 myComponent.onEvent(e -> {
-  // Wird ausgeführt, wenn das Ereignis ausgelöst wird
+  // Ausgeführt, wenn das Ereignis ausgelöst wird
 });
 ```
 
 ## Entfernen eines Ereignisses {#removing-an-event}
 
-Beim Hinzufügen eines Ereignislisteners wird ein `ListenerRegistration`-Objekt zurückgegeben. Dies kann unter anderem verwendet werden, um das Ereignis später zu entfernen.
+Beim Hinzufügen eines Ereignis-Listeners wird ein `ListenerRegistration`-Objekt zurückgegeben. Dies kann unter anderem verwendet werden, um das Ereignis später zu entfernen.
 
 ```java
 // Ereignis hinzufügen
 ListenerRegistration listenerRegistration = myComponent.addEventListener(e -> {
-        // Wird ausgeführt, wenn das Ereignis ausgelöst wird
-    });
+    // Ausgeführt, wenn das Ereignis ausgelöst wird
+  });
 
 // Ereignis entfernen
 listenerRegistration.remove();
 ```
 
-## Verwenden von Ereignis-Payload {#using-event-payload}
+## Verwendung der Ereignislast {#using-event-payload}
 
-Es ist wichtig zu beachten, dass Ereignisse häufig mit einer Payload kommen, die zusätzliche Informationen zum Ereignis enthält. Sie können diese Payload effizient innerhalb des Ereignishandlers nutzen, um auf relevante Daten zuzugreifen, ohne unnötige Rundreisen zwischen Client und Server zu machen. Dadurch verbessern Sie die Leistung Ihrer Anwendung.
+Es ist wichtig zu beachten, dass Ereignisse oft mit einer Last (Payload) kommen, die zusätzliche Informationen zum Ereignis enthält. Sie können diese Last effizient innerhalb des Ereignis-Handlers nutzen, um auf relevante Daten zuzugreifen, ohne unnötige Rundreisen zwischen Client und Server zu machen. Dadurch können Sie die Leistung Ihrer Anwendung verbessern.
 
-Der folgende Codeausschnitt fragt die Komponente ab, um Informationen zu erhalten, die für unsere Demonstration bereits in der Ereignis-Payload enthalten sind, was ineffizienten Code darstellt:
+Der folgende Code-Snippet fragt die Komponente ab, um Informationen zu erhalten, die für die Zwecke unserer Demonstration bereits in der Ereignislast enthalten sind und ineffizienten Code darstellen:
 
 ```java
 myComponent.addEventListener(e -> {
-  // Daten von der Komponente abrufen
+  // Auf Daten von der Komponente zugreifen
   String componentText = e.getComponent().getText();
 
-  //ODER wenn die Komponente im Gültigkeitsbereich der Funktion zugänglich ist
+  //ODER, wenn die Komponente im Geltungsbereich der Funktion zugänglich ist
   String componentText = myComponent.getText();
 
-  // Verwenden Sie den componentText, um andere Aktionen auszuführen.
+  // Verwenden Sie componentText, um andere Aktionen auszuführen.
 });
 ```
 
-Stattdessen wird mit der Verwendung der Payload der Methode, die im Beispiel den Text der Komponente enthält, eine Rundreise vermieden:
+Stattdessen wird die Last der Methode genutzt, die der Beispiel wegen den Text der Komponente enthält, um eine Rundreise zu vermeiden:
 
 ```java
 myComponent.addEventListener(e -> {
-  // Daten aus der Ereignis-Payload abrufen
+  // Auf Daten von der Ereignislast zugreifen
   String componentText = e.getText();
   
-  // Verwenden Sie den componentText, um andere Aktionen auszuführen.
+  // Verwenden Sie componentText, um andere Aktionen auszuführen.
 });
 ```
 
-Dieser Ansatz minimiert die Notwendigkeit, die Komponente nach Informationen abzufragen, da die Daten in der Ereignis-Payload sofort verfügbar sind. Durch die Befolgung dieser effizienten Ereignisbehandlungspraktiken können Sie die Leistung und Reaktionsfähigkeit Ihrer Komponenten verbessern. Für weitere Informationen können Sie auf [Client/Server-Interaktion](../architecture/client-server) verweisen.
+Dieser Ansatz minimiert die Notwendigkeit, die Komponente nach Informationen zu fragen, da die Daten in der Ereignislast sofort verfügbar sind. Durch Befolgung dieser effizienten Ereignisbehandlungspraktik können Sie die Leistung und Reaktionsfähigkeit Ihrer Komponenten verbessern. Für weitere Informationen können Sie auf [Client/Server-Interaktion](../architecture/client-server) verweisen.
 
 ### Beispiel {#sample}
 
-Nachfolgend finden Sie eine Demonstration, die die Hinzufügung eines <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> zu einem [`Button`](#) zeigt. Dieser [`Button`](#) verwendet ebenfalls Informationen, die mit der Payload des Ereignisses kommen, um Informationen auf dem Bildschirm anzuzeigen.
+Im Folgenden finden Sie eine Demonstration, die das Hinzufügen eines <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> zu einem [`Button`](#) zeigt. Dieser [`Button`](#) verwendet auch Informationen, die mit der Ereignislast kommen, um Informationen auf dem Bildschirm anzuzeigen.
 
 <ComponentDemo 
 path='/webforj/buttonevent?' 

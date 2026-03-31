@@ -8,9 +8,11 @@ sidebar_position: 126
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
 
-The `Terminal` component provides an interactive terminal emulator that behaves much like a traditional system console. It allows applications to display and manipulate a text-based interface, handling text output, receiving user input, interpreting control sequences, and maintaining screen buffers.
+The `Terminal` component is an interactive terminal emulator that behaves like a traditional system console. It handles text output, user input, control sequences, and screen buffers, making it suitable for building remote access tools, text dashboards, embedded command shells, or debug consoles.
 
-This terminal is designed to deliver reliable behavior across a range of use cases, such as building remote access tools, text dashboards, embedded command shells, or interactive debug consoles.
+<!-- INTRO_END -->
+
+## Creating a terminal {#creating-a-terminal}
 
 :::info Importing Terminal
 To use the `Terminal` component in your app, ensure that you include the following dependency in your pom.xml.
@@ -22,6 +24,8 @@ To use the `Terminal` component in your app, ensure that you include the followi
 </dependency>
 ```
 :::
+
+The following example builds an interactive command shell with typed commands, history navigation, and custom output.
 
 <ComponentDemo 
 path='/webforj/terminal?' 
@@ -70,7 +74,7 @@ You can also attach a callback that runs once the chunk of data has been process
 
 ```java
 terminal.write("Long command output", e -> {
-    System.out.println("Data processed.");
+  System.out.println("Data processed.");
 });
 ```
 
@@ -117,10 +121,10 @@ Pause your backend until the terminal finishes processing a chunk:
 
 ```java
 pty.onData(chunk -> {
-    pty.pause();
-    terminal.write(chunk, result -> {
-        pty.resume();
-    });
+  pty.pause();
+  terminal.write(chunk, result -> {
+    pty.resume();
+  });
 });
 ```
 
@@ -171,10 +175,10 @@ The `TerminalOptions` class allows you to configure behavior:
 Example:
 ```java
 TerminalOptions options = new TerminalOptions()
-    .setCursorBlink(true)
-    .setFontFamily("Courier New, monospace")
-    .setFontSize(13)
-    .setScrollback(5000);
+  .setCursorBlink(true)
+  .setFontFamily("Courier New, monospace")
+  .setFontSize(13)
+  .setScrollback(5000);
 
 terminal.setOptions(options);
 ```
