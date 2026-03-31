@@ -53,7 +53,7 @@ public class FlexPositioningView extends Composite<Div> {
       String hue = String.valueOf(HUE * i);
       Box newBox = new Box(i);
       newBox.setStyle("background", "hsla(" + hue + ", 50%, 75%, 0.25)");
-      newBox.setStyle("border", "2px solid " + "hsl(" + hue + ", 50%, 35%)");
+      newBox.setStyle("border", "2px solid hsl(" + hue + ", 50%, 35%)");
       newBox.setStyle("color", "hsl(" + hue + ", 50%, 25%)");
       boxLayout.add(newBox);
     }
@@ -62,14 +62,12 @@ public class FlexPositioningView extends Composite<Div> {
   private ChoiceBox createHorizontalChoiceBox() {
     ChoiceBox horizontal = new ChoiceBox()
         .addClassName("flex__options")
-        .setLabel("Position Options");
+        .setLabel("Justify Options");
     horizontal.onSelect(this::onJustifySelect);
     for (FlexJustifyContent justify : FlexJustifyContent.values()) {
       String label = justify.getValue();
-      String key = justify.toString().toLowerCase();
-      String text = label.substring(0, 1).toUpperCase()
-              + label.substring(1);
-      horizontal.add("." + key + "()", text);
+      String text = justify.toString().charAt(0) + label.substring(1);
+      horizontal.add(justify, text);
     }
     horizontal.selectIndex(0);
     return horizontal;
@@ -78,24 +76,24 @@ public class FlexPositioningView extends Composite<Div> {
   private ChoiceBox createVerticalChoiceBox() {
     ChoiceBox vertical = new ChoiceBox()
         .addClassName("flex__options")
-        .setLabel("Position Options");
+        .setLabel("Alignment Options");
     vertical.onSelect(this::onAlignmentSelect);
-    for (FlexAlignment justify : FlexAlignment.values()) {
-      String label = justify.getValue();
-      String key = justify.toString().toLowerCase();
-      String text = label.substring(0, 1).toUpperCase()
-              + label.substring(1);
-      vertical.add("." + key + "()", text);
+    for (FlexAlignment alignment : FlexAlignment.values()) {
+      String label = alignment.getValue();
+      String text = alignment.toString().charAt(0) + label.substring(1);
+      vertical.add(alignment, text);
     }
     vertical.selectIndex(0);
     return vertical;
   }
 
   private void onJustifySelect(ListSelectEvent<?> ev) {
-    boxLayout.setJustifyContent(FlexJustifyContent.fromValue(ev.getSelectedItem().getText()));
+    FlexJustifyContent justify = (FlexJustifyContent) ev.getSelectedItem().getKey();
+    boxLayout.setJustifyContent(justify);
   }
 
   private void onAlignmentSelect(ListSelectEvent<?> ev) {
-    boxLayout.setAlignment(FlexAlignment.fromValue(ev.getSelectedItem().getText()));
+    FlexAlignment alignment = (FlexAlignment) ev.getSelectedItem().getKey();
+    boxLayout.setAlignment(alignment);
   }
 }
