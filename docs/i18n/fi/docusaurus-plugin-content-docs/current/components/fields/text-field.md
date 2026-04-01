@@ -3,83 +3,84 @@ sidebar_position: 35
 title: TextField
 slug: textfield
 description: A single-line input component for entering and editing text data.
-_i18n_hash: e972f03e1d4deb1802bc4f56104e61b3
+_i18n_hash: 138207c2dd99dac9837172067950ab2f
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextField" top='true'/>
 
-`TextField`-komponentti sallii käyttäjien syöttää ja muokata tekstiä yhdessä rivissä. Voit konfiguroida kentän näyttämään tietyn virtuaalinäppäimistön, kuten numeronäppäimistön, sähköpostin syötön, puhelinnumeron syötön tai URL-osoitteen syötön. Komponentti tarjoaa myös sisäänrakennetun validoinnin kyseisen tyypin standardeihin sopimattomien arvojen hylkäämiseksi.
+`TextField`-komponentti sallii käyttäjien syöttää ja muokata tekstiä yhdellä rivillä. Voit konfiguroida kentän näyttämään tietyn virtuaalinäppäimistön, kuten numeronäppäimet, sähköpostisyötteen, puhelinnumerosyötteen tai URL-syötteen. Komponentti tarjoaa myös sisäänrakennetun validoinnin, joka hylkää arvot, jotka eivät vastaa määriteltyä tyyppiä.
 
 <!-- INTRO_END -->
 
-## Käytännöt {#usages}
+## Käytöt {#usages}
 
 <ParentLink parent="Field" />
 
-`TextField` on soveltuva monenlaisiin tilanteisiin, joissa tarvitaan tekstisyöttöä tai muokkausta. Tässä on joitakin esimerkkejä, milloin käyttää `TextField`:iä:
+`TextField` on sopiva laajan valikoiman skenaarioihin, joissa tarvitaan tekstin syöttämistä tai muokkaamista. Tässä on joitakin esimerkkejä, milloin käyttää `TextField`-komponenttia:
 
-1. **Lomakesyötteet**: `TextField`-komponenttia käytetään yleisesti lomakkeissa käyttäjän syötteen tallentamiseen, kuten nimiin, osoitteisiin tai kommentteihin. On parasta käyttää `TextField`:iä sovelluksessa, kun syöte on yleensä niin lyhyt, että se mahtuu yhdelle riville.
+1. **Lomaketulot**: `TextField`-komponenttia käytetään yleisesti lomakkeissa käyttäjän syötteen tallentamiseen, kuten nimiin, osoitteisiin tai kommentteihin. On parasta käyttää `TextField`-komponenttia sovelluksessa, kun syöte on yleensä tarpeeksi lyhyt mahtuakseen yhdelle riville.
 
-2. **Haku-ominaisuus**: `TextField` voidaan käyttää hakukenttänä, joka sallii käyttäjien syöttää hakukyselyitä.
+2. **Haku-toiminnallisuus**: `TextField`-komponenttia voidaan käyttää hakukentän tarjoamiseen, jolloin käyttäjät voivat syöttää hakukyselyitä.
 
-3. **Tekstin muokkaus**: `TextField` on ihanteellinen sovelluksille, jotka vaativat tekstin muokkaamista tai sisällön luomista, kuten asiakirjamuokkausohjelmat, chat-sovellukset tai muistiinpanosovellukset.
+3. **Tekstin muokkaus**: `TextField` on ihanteellinen sovelluksille, jotka vaativat tekstin muokkaamista tai sisällön luomista, kuten asiakirjan muokkausohjelmat, keskustelusovellukset tai muistiinpano-sovellukset.
 
 ## Tyypit {#types}
 
-Voit määrittää `TextField`:in tyypin käyttämällä `setType()`-metodia. Vastaavasti voit noutaa tyypin käyttämällä `getType()`-metodia, joka palauttaa enum-arvon.
+Voit määrittää `TextField`-komponentin tyypin `setType()`-menetelmällä. Vastaavasti voit noutaa tyypin `getType()`-menetelmällä, joka palauttaa enumerointiarvon.
 
-- `Type.TEXT`: Tämä on `TextField`:in oletustyyppi ja se poistaa automaattisesti rivinvaihdot syötearvosta.
+- `Type.TEXT`: Tämä on `TextField`-komponentin oletustyyppi, joka poistaa automaattisesti rivinvaihdot syötearvosta.
 
-- `Type.EMAIL`: Tämä tyyppi on sähköpostiosoitteiden syöttämistä varten. Se validoi syötteen standardin sähköpostisyntaksin mukaan. Lisäksi se tarjoaa yhteensopiville selaimille ja laitteille dynaamisen näppäimistön, joka helpottaa kirjoittamisprosessia sisältämällä yleisesti käytettyjä näppäimiä, kuten <kbd>.com</kbd> ja <kbd>@</kbd>.
+- `Type.EMAIL`: Tämä tyyppi on tarkoitettu sähköpostiosoitteiden syöttämiseen. Se validoi syötteen standardin sähköpostisyntaksin mukaan. Lisäksi se tarjoaa yhteensopiville selaimille ja laitteille dynaamisen näppäimistön, joka helpottaa kirjoittamista sisältämällä yleisesti käytettyjä näppäimiä, kuten <kbd>.com</kbd> ja <kbd>@</kbd>.
 
   :::note
-  Vaikka tämä validointi vahvistaa sähköpostiosoitteen muodon, se ei takaa, että sähköposti on olemassa.
+  Vaikka tämä validointi vahvistaa sähköpostiosoitteen muodon, se ei takaa, että sähköposti toimii.
   :::
 
-- `Type.TEL`: Tämä tyyppi on puhelinnumeron syöttämistä varten. Kenttä näyttää joissakin laitteissa puhelin näppäimistön dynaamisilla näppäimistöillä.
+- `Type.TEL`: Tämä tyyppi on tarkoitettu puhelinnumeroiden syöttämiseen. Kenttä näyttää puhelinäppäimistön joillakin laitteilla dynaamisilla näppäimistöillä.
 
-- `Type.URL`: Tämä tyyppi on URL-osoitteiden syöttämistä varten. Se validoi, että käyttäjä syöttää URL-osoitteen, joka sisältää kaavan ja verkkotunnuksen, esimerkiksi: https://webforj.com. Lisäksi se tarjoaa yhteensopiville selaimille ja laitteille dynaamisen näppäimistön, joka helpottaa kirjoittamisprosessia sisältämällä yleisesti käytettyjä näppäimiä, kuten <kbd>:</kbd>, <kbd>/</kbd> ja <kbd>.com</kbd>.
+- `Type.URL`: Tämä tyyppi on tarkoitettu URL-osoitteiden syöttämiseen. Se validoi, että käyttäjä syöttää URL-osoitteen, joka sisältää protokollan ja verkkotunnuksen, esimerkiksi: https://webforj.com. Lisäksi se tarjoaa yhteensopiville selaimille ja laitteille dynaamisen näppäimistön, joka helpottaa kirjoittamista sisältämällä yleisesti käytettyjä näppäimiä, kuten <kbd>:</kbd>, <kbd>/</kbd> ja <kbd>.com</kbd>.
 
-- `Type.SEARCH`: Yhden rivin tekstikenttä hakusanojen syöttämistä varten. Rivinvaihdot poistetaan automaattisesti syötearvosta.
+- `Type.SEARCH`: Yhden rivin tekstikenttä hakulausekkeiden syöttämiseksi. Rivinvaihdot poistetaan automaattisesti syötearvosta.
 
 <ComponentDemo 
 path='/webforj/textfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/textfield/TextFieldView.java'
+height='225px'
 />
 
 ## Kentän arvo {#field-value}
 
-`TextField`:in arvo edustaa nykyistä käyttäjän syötteitä merkkijonona. webforJ:ssä tämä voidaan saavuttaa käyttämällä `getValue()`-metodia tai päivittämällä ohjelmallisesti `setValue(String)`-menetelmällä.
+`TextField`-komponentin arvo edustaa nykyistä käyttäjän syötettä merkkijonona. webforJ:ssa tähän pääsee käsiksi `getValue()`-menetelmällä tai päivitetään ohjelmallisesti `setValue(String)`-menetelmällä.
 
 ```java
-//Aseta alkuperäinen sisältö
+// Aseta alkuperäinen sisältö
 textField.setValue("Alkuperäinen sisältö");
 
-//Hae nykyinen arvo
+// Hae nykyinen arvo
 String text = textField.getValue();
 ```
 
-Jos `getValue()`-metodia käytetään kentällä, jolla ei ole nykyistä arvoa, se palauttaa tyhjän merkkijonon (`""`).
+Jos `getValue()`-menetelmää käytetään kentällä, jolla ei ole nykyistä arvoa, se palauttaa tyhjän merkkijonon (`""`).
 
-Tämä käyttäytyminen on johdonmukaista sen kanssa, miten HTML `<input type="text">` -elementti paljastaa arvonsa JavaScriptin kautta.
+Tämä käyttäytyminen on yhdenmukaista sen kanssa, miten HTML `<input type="text">` -elementti paljastaa arvonsa JavaScriptin kautta.
 
-:::tip Yhdistä arvon käsittely validointiin
-Käytä rajoitteita, kuten [kuvio](#pattern-matching), [minimi pituus](#setminlength), tai [maksimi pituus](#setmaxlength) määrittämään, milloin arvo katsotaan voimassa olevaksi. 
+:::tip Yhdistä arvokäsittely validointiin
+Käytä rajoitteita, kuten [kuviota](#pattern-matching), [minimipituus](#setminlength) tai [maksimipituus](#setmaxlength), määritelläksesi, milloin arvoa pidetään pätevänä. 
 :::
 
-## Paikkamerkki teksti {#placeholder-text}
+## Paikkateksti {#placeholder-text}
 
-Voit asettaa paikkamerkki tekstin `TextField`:lle käyttämällä `setPlaceholder()`-metodia. Paikkamerkki teksti näkyy, kun kenttä on tyhjällekään, auttaen ohjaamaan käyttäjää syöttämään asianmukaista tietoa `TextField`:lle.
+Voit määrittää paikkatekstin `TextField`-komponentille `setPlaceholder()`-menetelmällä. Paikkateksti näytetään, kun kenttä on tyhjö, auttaen ohjaamaan käyttäjää syöttämään asianmukaista syötettä `TextField`-komponenttiin.
 
 ## Valittu teksti {#selected-text}
 
-On mahdollista vuorovaikuttaa `TextField`-luokan kanssa käyttäjän valitun tekstin hakemiseksi ja saada tietoa käyttäjän valinnasta. Voit noutaa valitun tekstin `TextField`:issä käyttämällä `getSelectedText()`-metodia. Tätä käyttäytymistä käytetään yleisesti yhdessä tapahtuman kanssa. 
+On mahdollista vuorovaikuttaa `TextField`-luokan kanssa noutaaksesi käyttäjän valitseman tekstin ja saadaksesi tietoa käyttäjän valinnasta. Voit noutaa valitun tekstin `TextField`-komponentista `getSelectedText()`-menetelmällä. Tätä käyttäytymistä käytetään yleensä yhdessä tapahtuman kanssa.
 
 ```java
 TextField textField = new TextField("Syötä jotain...");
-Button getSelectionBtn = new Button("Hae Valittu Teksti");
+Button getSelectionBtn = new Button("Hae valittu teksti");
 
 getSelectionBtn.onClick(e -> {
   String selected = textField.getSelectedText();
@@ -87,62 +88,63 @@ getSelectionBtn.onClick(e -> {
 });
 ```
 
-Samoin on mahdollista noutaa nykyinen valintaraja `TextField`:stä käyttämällä `getSelectionRange()`-metodia. Tämä palauttaa `SelectionRange`-objektin, joka edustaa valitun tekstin aloitus- ja lopetusindeksejä.
+Samoin on mahdollista noutaa `TextField`-komponentin nykyinen valintarakenne käyttäen `getSelectionRange()`-menetelmää. Tämä palauttaa `SelectionRange`-objektin, joka edustaa valitun tekstin alkua ja loppua.
 
-:::tip Käyttäen `getSelectedText()` vs tapahtuman kuorma
-Vaikka voit kutsua `getSelectedText()` manuaalisesti tapahtumakäsittelijän sisällä, on tehokkaampaa käyttää valintatietoja, jotka toimitetaan tapahtuman kuormassa—kuten `SelectionChangeEvent`—lisätäksesi välttämättömiä hakuja.
+:::tip `getSelectedText()` vs tapahtuman lataus
+Vaikka voit kutsua `getSelectedText()`-menetelmää manuaalisesti tapahtumankäsittelijän sisällä, on tehokkaampaa käyttää tapahtuman latauksessa annettuja valintatietoja, kuten `SelectionChangeEvent`-tapahtumassa, välttääksemme lisähakuja.
 :::
 
-## Kuvion tarkistus {#pattern-matching}
+## Kuviojoukon tarkistus {#pattern-matching}
 
-Voit käyttää `setPattern()`-metodia määrittääksesi validointisäännön `TextField`:lle käyttäen säännöllistä lauseketta. Kuvion asettaminen lisää rajoitteen, joka vaatii syötearvon vastaamaan määritettyä kuvioa.
+Voit käyttää `setPattern()`-menetelmää määrittelemään validointisääntöjä `TextField`-komponentille säännöllisen lausekkeen avulla. Kuvion määrittäminen lisää rajoitevalidoinnin, joka vaatii syötearvon vastaavan määriteltyä kuviota.
 
-Kuvion on oltava voimassa oleva [JavaScript-säännöllinen lauseke](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), kuten selain tulkitsee. `u` (Unicode) lippu sovelletaan sisäisesti varmistaaksesi Unicode-koodipisteiden tarkan vastineen. Älä kääri kuvioita eteenpäin vinoviivoihin (`/`), sillä niitä ei tarvita ja niitä käsitellään kirjaimellisina merkeinä.
+Kuvion on oltava voimassa oleva [JavaScript-säännöllinen lauseke](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), kuten selaimen tulkitsema. `u` (Unicode) -lippu lisätään sisäisesti, jotta Unicode-koodipisteiden tarkka vastaavuus varmistetaan. Älä kätke kuviota vinoviivoihin (`/`), sillä niitä ei vaadita ja ne käsitellään kirjaimellisina merkkeinä.
 
 ```java
 textField.setPattern("[A-Za-z]{3}\\d{2}"); // esim. ABC12
 ```
 
-Jos mitään kuviota ei ole annettu tai syntaksi on virheellinen, validointisääntöä ei oteta huomioon.
+Jos kuvio ei ole määritetty tai syntaksi on virheellinen, validointisääntöä ei oteta huomioon.
 
 :::tip Kontekstuaalinen apu
-Kun käytät monimutkaisempia kuvioita `TextField`:ssä, harkitse yhdistelmän käyttämistä `setLabel()`, `setHelperText()` ja `setTooltipText()` -menetelmistä lisävihjeiden ja ohjeiden tarjoamiseksi.
+Kun käytät monimutkaisempia kuvioita `TextField`-komponentille, harkitse yhdistelmän käyttämistä `setLabel()`, `setHelperText()` ja `setTooltipText()` -menetelmistä
+tarjotaksesi lisävihjeitä ja ohjeita.
 :::
 
 ## Minimipituus ja maksimipituus {#minimum-and-maximum-length}
 
-`TextField`-komponentti tukee rajoitteen validaatiota käyttäjän syöttämien merkkien lukumäärän perusteella. Tähän voidaan vaikuttaa käyttämällä `setMinLength()` ja `setMaxLength()` -menetelmiä. Käytä molempia menetelmiä määrittääksesi selkeät rajat hyväksyttävien syötteiden pituudelle.
+`TextField`-komponentti tukee rajoitevalidointia, joka perustuu käyttäjän syöttämien merkkien määrään. Tätä voidaan hallita `setMinLength()` ja `setMaxLength()` -menetelmien avulla. Käytä molempia menetelmiä määritelläksesi selkeät rajat hyväksyttävälle syötteen pituudelle.
 
 :::info Pituusvaatimukset
-Oletusarvoisesti kenttä näyttää viestin, kun syötearvo on alueen ulkopuolella, ilmoittaen käyttäjälle, tarvitseeko heidän lyhentää tai pidentää syötettään. Tämä viesti voidaan ylittää `setInvalidMessage()`-menetelmällä.
+Oletusarvoisesti kenttä näyttää viestin, kun syötearvo on alueen ulkopuolella, ilmoittaen käyttäjälle, onko heidän lyhennettävä tai pidentävä syötteen. Tätä viestiä voidaan ohittaa `setInvalidMessage()` -menetelmällä.
 :::
 
 ### `setMinLength()` {#setminlength}
 
-Tämä metodi asettaa **vähimmäismäärän UTF-16-koodiyksiköitä**, jotka on syötettävä, jotta kenttä voidaan katsoa voimassa olevaksi. Arvon on oltava kokonaisluku, eikä se saa ylittää määritettyä maksimipituutta.
+Tämä metodi asettaa **minimimäärän UTF-16-koodiyksiköitä**, jotka on syötettävä, jotta kenttä on voimassa. Arvon on oltava kokonaisluku eikä se saa ylittää määritettyä maksimipituutta.
 
 ```java
 textField.setMinLength(5); // Käyttäjän on syötettävä vähintään 5 merkkiä
 ```
 
-Jos syöte sisältää vähemmän merkkejä kuin minimivaatimus, syöte epäonnistuu rajoitteen validoinnissa. Tämä sääntö soveltuu vain, kun käyttäjä muuttaa kentän arvoa.
+Jos syöte sisältää vähemmän merkkejä kuin minimivaatimus, syöte ei täytä rajoitevalidointia. Tämä sääntö koskee vain, kun käyttäjä muuttaa kentän arvoa.
 
 ### `setMaxLength()` {#setmaxlength}
 
-Tämä metodi asettaa **enimmäismäärän UTF-16-koodiyksiköitä**, jotka ovat sallittuja tekstikentässä. Arvon on oltava `0` tai suurempi. Jos sitä ei aseteta tai se asetetaan virheelliseksi arvoksi, maksimaalia ei valvota.
+Tämä metodi asettaa **maksimimäärän UTF-16-koodiyksiköitä**, joita sallitaan tekstikentässä. Arvon on oltava `0` tai suurempi. Jos ei ole asetettu tai asetettu virheelliseen arvoon, ei maksimia noudateta.
 
 ```java
 textField.setMaxLength(20); // Käyttäjä ei voi syöttää yli 20 merkkiä
 ```
 
-Kenttä epäonnistuu rajoitteen validoinnissa, jos syötteen pituus ylittää minimipituuden. Kuten `setMinLength()`:n kanssa, tämä validointi aktivoituu vain, kun arvoa muutetaan käyttäjän toimesta.
+Kenttä ei täytä rajoitevalidointia, jos syötteen pituus ylittää minimipituuden. Kuten `setMinLength()`-menetelmässä, tätä validointia laukaistaan vain, kun käyttäjä muuttaa arvoa.
 
 ## Parhaat käytännöt {#best-practices}
 
-Seuraavassa osiossa esitetään joitakin ehdotettuja parhaita käytäntöjä `TextField`:in käytölle.
+Seuraavassa osiossa esitetään joitakin ehdotettuja parhaita käytäntöjä `TextField`-komponentin käytölle.
 
-- **Tarjoa Selkeät Etiketit ja Ohjeet**: Erita `TextField`:iä selkeästi ilmoittaaksesi, minkä tyyppistä tietoa käyttäjien tulisi syöttää. Tarjoa lisäohjeita tai paikkamerkkiarvoja ohjaamaan käyttäjiä ja asettamaan odotuksia vaaditulle syötteelle.
+- **Tarjoa selkeät etiketit ja ohjeet**: Merkitse `TextField` selkeästi, jotta käyttäjät tietävät, minkälaista tietoa heidän tulisi syöttää. Tarjoa lisäohjeita tai paikkatekstejä ohjataksesi käyttäjiä ja asettaaksesi odotuksia vaaditulle syötteelle.
 
-- **Oikoluku ja Automaattinen Täydennys**: Jos mahdollista, harkitse oikoluvun käyttämistä `setSpellCheck()`-menetelmällä ja/tai automaattisen täydennyksen käyttöä `TextField`:issä. Nämä ominaisuudet voivat auttaa käyttäjiä syöttämään tietoa nopeammin ja vähentämään virheitä tarjoamalla ehdotettuja arvoja aiempien syötteiden tai ennalta määrättyjen vaihtoehtojen perusteella.
+- **Oikoluku ja automaattinen täyttö**: Kun se on mahdollista, harkitse oikoluvun käyttöä `setSpellCheck()`-menetelmällä ja/tai automaattisen täytön käyttöä `TextField`-komponentissa. Nämä ominaisuudet voivat auttaa käyttäjiä syöttämään tietoa nopeammin ja vähentämään virheitä tarjoamalla ehdotettuja arvoja aiempien syötteiden tai ennalta määritettyjen vaihtoehtojen perusteella.
 
-- **Esteettömyys**: Käytä `TextField`-komponenttia esteettömyys mielessä, noudattaen esteettömyysstandardeja, kuten oikeaa nimeämistä, näppäimistön navigaatio-tukea ja yhteensopivuutta apuvälineiden kanssa. Varmista, että vammaiset käyttäjät voivat vuorovaikuttaa `TextField`:n kanssa tehokkaasti.
+- **Esteettömyys**: Käytä `TextField`-komponenttia esteettömyys mielessä, noudattaen esteettömyysstandardeja, kuten oikeaa merkintää, näppäimistön navigointitukea ja yhteensopivuutta apuvälineiden kanssa. Varmista, että käyttäjät, joilla on esteitä, voivat vuorovaikuttaa `TextField`-komponentin kanssa tehokkaasti.
