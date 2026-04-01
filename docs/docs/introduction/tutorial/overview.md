@@ -1,7 +1,7 @@
 ---
 title: Overview
 hide_giscus_comments: true
-sidebar_class_name: updated-content
+sidebar_class_name: has-new-content
 ---
 
 This step-by-step tutorial guides you through the process of building a customer management app using webforJ and Spring Boot. It teaches you how to create a modern, user-friendly interface for viewing, adding, and editing customer data.
@@ -23,6 +23,7 @@ Each step has a corresponding runnable app available on GitHub:
 | 3 | [Routing and Composites](/docs/introduction/tutorial/routing-and-composites)                           | [Step 3 app](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites)
 | 4 | [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters)           | [Step 4 app](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters)
 | 5 | [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data)                 | [Step 5 app](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data)
+| 6 | [Integrating an App Layout](/docs/introduction/tutorial/integrating-an-app-layout)                     | [Step 6 app](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout)
 
 ## Prerequisites {#prerequisites}
 

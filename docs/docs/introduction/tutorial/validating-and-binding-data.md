@@ -345,6 +345,6 @@ With these changes, here's what `FormView` looks like. The app now supports data
 </ExpandableCode>
 <!-- vale on -->
 
-:::info Next steps
-Looking for more ways to improve your app from this tutorial? You can try using the [`AppLayout`](/docs/components/app-layout) component as a wrapper to add your customer table and add more features.
-:::
+## Next step {#next-step}
+
+The next step, [Integrating an App Layout](/docs/introduction/tutorial/inegrating-an-app-layout), focuses on using an `AppLayout` to add a side menu that’s available for users on both the customer table and customer form pages. You’ll also learn about another layout tool, the `FlexLayout` component.
