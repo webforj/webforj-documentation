@@ -40,7 +40,7 @@ class TableOlympicWinnersKotlinView : Composite<Div>() {
             }
           }
         }
-        columns.forEach { it.isSortable }
+        columns.forEach { it.isSortable = true }
         column("athlete") {
           pinDirection = Column.PinDirection.LEFT
           minWidth = 200f

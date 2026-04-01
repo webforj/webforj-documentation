@@ -21,7 +21,6 @@ import com.webforj.router.annotation.Route
     """)
 class TableRowStylingKotlinView : Composite<FlexLayout>() {
   private val self = boundComponent
-  private val table = Table<Person>()
 
   init {
     self.apply {
