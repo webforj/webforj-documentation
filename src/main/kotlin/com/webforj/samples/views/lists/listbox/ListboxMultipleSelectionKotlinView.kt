@@ -12,7 +12,7 @@ import com.webforj.router.annotation.Route
 
 @Route
 @FrameTitle("Listbox Multiple Selection")
-class ListboxMultipleSelectionKotlinView: Composite<FlexLayout>() {
+class ListboxMultipleSelectionKotlinView : Composite<FlexLayout>() {
   private val self = boundComponent
 
   init {
@@ -26,11 +26,13 @@ class ListboxMultipleSelectionKotlinView: Composite<FlexLayout>() {
           arrayOf("Marketing and Sales", "IT Support", "Management and Admin", "Finance and HR")
         insert(*departments)
       }
-      switch("Multiple Selection").onToggle {
-        listBox.selectionMode = if (it.isToggled) {
-          SelectionMode.MULTIPLE
-        } else {
-          SelectionMode.SINGLE
+      switch("Multiple Selection") {
+        onToggle {
+          listBox.selectionMode = if (it.isToggled) {
+            SelectionMode.MULTIPLE
+          } else {
+            SelectionMode.SINGLE
+          }
         }
       }
     }

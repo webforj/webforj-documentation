@@ -11,26 +11,28 @@ import com.webforj.router.annotation.Route
 
 @Route
 @FrameTitle("ComboBox Custom Value")
-class ComboBoxCustomValueKotlinView: Composite<FlexLayout>() {
+class ComboBoxCustomValueKotlinView : Composite<FlexLayout>() {
   private val self = boundComponent
 
   init {
-      boundComponent.apply {
-        direction = FlexDirection.COLUMN
-        margin = "20px 0 0 20px"
-        spacing = 20.px
-        width = 200.px
-        val customValue = comboBox("Department") {
-          val categories = arrayOf(
-            "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
-            "Pet Supplies", "Toys and Games"
-          )
-          insert(*categories)
-          isAllowCustomValue = false
-        }
-        switch("Toggle Custom Value").onToggle {
+    self.apply {
+      direction = FlexDirection.COLUMN
+      margin = "20px 0 0 20px"
+      spacing = 20.px
+      width = 200.px
+      val customValue = comboBox("Department") {
+        val categories = arrayOf(
+          "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
+          "Pet Supplies", "Toys and Games"
+        )
+        insert(*categories)
+        isAllowCustomValue = false
+      }
+      switch("Toggle Custom Value") {
+        onToggle {
           customValue.isAllowCustomValue = !customValue.isAllowCustomValue
         }
       }
+    }
   }
 }
