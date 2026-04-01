@@ -24,12 +24,12 @@ Use lifecycle listeners when you need to:
 
 ```java title="AppLifecycleListener.java"
 public interface AppLifecycleListener {
-    default void onWillCreate(Environment env) {}     // Since 25.03
-    default void onDidCreate(App app) {}              // Since 25.03
-    default void onWillRun(App app) {}
-    default void onDidRun(App app) {}
-    default void onWillTerminate(App app) {}
-    default void onDidTerminate(App app) {}
+  default void onWillCreate(Environment env) {}     // Since 25.03
+  default void onDidCreate(App app) {}              // Since 25.03
+  default void onWillRun(App app) {}
+  default void onDidRun(App app) {}
+  default void onWillTerminate(App app) {}
+  default void onDidTerminate(App app) {}
 }
 ```
 
@@ -67,29 +67,29 @@ import com.typesafe.config.ConfigFactory;
 
 public class StartupListener implements AppLifecycleListener {
 
-    @Override
-    public void onWillCreate(Environment env) {
-        // Modify configuration before app creation
-        Config additionalConfig = ConfigFactory.parseString(
-            "myapp.feature.enabled = true"
-        );
-        env.setConfig(additionalConfig);
-    }
+  @Override
+  public void onWillCreate(Environment env) {
+    // Modify configuration before app creation
+    Config additionalConfig = ConfigFactory.parseString(
+      "myapp.feature.enabled = true"
+    );
+    env.setConfig(additionalConfig);
+  }
 
-    @Override
-    public void onDidCreate(App app) {
-        System.out.println("App created: " + app.getId());
-    }
+  @Override
+  public void onDidCreate(App app) {
+    System.out.println("App created: " + app.getId());
+  }
 
-    @Override
-    public void onWillRun(App app) {
-        System.out.println("App starting: " + app.getId());
-    }
+  @Override
+  public void onWillRun(App app) {
+    System.out.println("App starting: " + app.getId());
+  }
 
-    @Override
-    public void onDidRun(App app) {
-        System.out.println("App started: " + app.getId());
-    }
+  @Override
+  public void onDidRun(App app) {
+    System.out.println("App started: " + app.getId());
+  }
 }
 ```
 
@@ -111,7 +111,7 @@ import com.google.auto.service.AutoService;
 
 @AutoService(AppLifecycleListener.class)
 public class StartupListener implements AppLifecycleListener {
-    // Implementation
+  // Implementation
 }
 ```
 :::
@@ -126,19 +126,19 @@ Priority values work in ascending order - **lower numbers execute first**. The d
 @AutoService(AppLifecycleListener.class)
 @AppListenerPriority(1)  // Executes first - critical security setup
 public class SecurityListener implements AppLifecycleListener {
-    @Override
-    public void onWillRun(App app) {
-        initializeSecurity();
-    }
+  @Override
+  public void onWillRun(App app) {
+    initializeSecurity();
+  }
 }
 
 @AutoService(AppLifecycleListener.class)
 @AppListenerPriority(10) // Default priority - general logging
 public class LoggingListener implements AppLifecycleListener {
-    @Override
-    public void onWillRun(App app) {
-        initializeLogging();
-    }
+  @Override
+  public void onWillRun(App app) {
+    initializeLogging();
+  }
 }
 ```
 
@@ -162,10 +162,10 @@ Exceptions thrown by listeners are logged but don't prevent other listeners from
 ```java title="Error handling example"
 @Override
 public void onWillRun(App app) {
-    try {
-        riskyInitialization();
-    } catch (Exception e) {
-        logger.error("Initialization failed", e);
-    }
+  try {
+    riskyInitialization();
+  } catch (Exception e) {
+    logger.error("Initialization failed", e);
+  }
 }
 ```

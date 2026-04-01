@@ -38,7 +38,7 @@ Several deprecated `App` methods are removed in 25.00. The following sections ou
 
 ### Console logging {#console-logging}
 
-The utility class [`BrowserConsole`](../advanced/browser-console.md), dedicated for creating styled logs to the browser console, replaces the `consoleLog()` and `consoleError()` methods. Get the `BrowserConsole` by using the `console()` method:
+The utility class [`BrowserConsole`](/docs/advanced/browser-console), dedicated for creating styled logs to the browser console, replaces the `consoleLog()` and `consoleError()` methods. Get the `BrowserConsole` by using the `console()` method:
 
 ```java
 public class Application extends App{
@@ -55,7 +55,7 @@ public class Application extends App{
 
 For versions prior to webforJ 25.00, the `App` class has the methods `getLocalStorage()`, `getSessionStorage()`, and `getCookieStorage()` to get instances of the `LocalStorage`, `SessionStorage` and `CookieStorage` classes respectively. Going forward, each class has a `getCurrent()` method.
 
-See [Web Storage](../advanced/web-storage.md) for more information.
+See [Web Storage](/docs/advanced/web-storage) for more information.
 
 ### `Request` class {#request-class}
 
@@ -71,17 +71,17 @@ The `getPage()` method is replaced with `Page.getCurrent()` to get the current p
 
 ### Option dialogs {#option-dialogs}
 
-Instead of using the `msgbox()` method, use [`OptionDialog.showMessageDialog()`](../components/option-dialogs/message) to create message dialogs.
+Instead of using the `msgbox()` method, use [`OptionDialog.showMessageDialog()`](/docs/components/option-dialogs/message) to create message dialogs.
 
 ### App termination {#app-termination}
 
 The `cleanup()` method has been removed. There are now two methods for terminations, `onWillTerminate()` and `onDidTerminate()`.
 
-See [Hooks for termination](../advanced/terminate-and-error-actions.md#hooks-for-termination) for more information.
+See [Hooks for termination](/docs/advanced/terminate-and-error-actions#hooks-for-termination) for more information.
 
 ## Table sorting {#table-sorting}
 
-For webforJ 25.00 and higher, tables use single-column sorting by default. Columns will only be sorted by the most recently selected column header. To make a table use multi-column sorting, invoke the [`setMultiSorting()`](../components/table/sorting#multi-sorting) method:
+For webforJ 25.00 and higher, tables use single-column sorting by default. Columns will only be sorted by the most recently selected column header. To make a table use multi-column sorting, invoke the [`setMultiSorting()`](/docs/components/table/sorting#multi-sorting) method:
 
 ```java
 table.setMultiSorting(true);
@@ -119,7 +119,7 @@ home.setText("<h1>Home</h1>");
 
 ## HTML containers {#html-containers}
 
-The `com.webforj.component.htmlcontainer` package is no longer in webforJ. Use the more feature-rich `com.webforj.component.element` package instead. For a list of webforJ classes for standard HTML Elements, go to [HTML Element Components](../building-ui/web-components/html-elements.md).
+The `com.webforj.component.htmlcontainer` package is no longer in webforJ. Use the more feature-rich `com.webforj.component.element` package instead. For a list of webforJ classes for standard HTML Elements, go to [HTML Element Components](/docs/components/html-elements).
 
 ## `Request` changes {#request-changes}
 
@@ -135,7 +135,7 @@ The `Environment` class no longer has the `getWebforjHelper()` method, so use `g
 
 ### Using the `ConfirmDialog` component for the `msgbox()` method {#using-the-confirmdialog-component-for-the-msgbox-method}
 
-Previous versions of webforJ uses strings and integers directly for the `WebforjBBjBridge` `msgbox()` method. However, messages for `WebforjBBjBridge` in webforJ 25.00 and higher use the [`ConfirmDialog`](../components/option-dialogs/confirm.md) component. This gives more control for which buttons are displayed and the message type.
+Previous versions of webforJ uses strings and integers directly for the `WebforjBBjBridge` `msgbox()` method. However, messages for `WebforjBBjBridge` in webforJ 25.00 and higher use the [`ConfirmDialog`](/docs/components/option-dialogs/confirm) component. This gives more control for which buttons are displayed and the message type.
 
 
 **Before**
@@ -152,8 +152,8 @@ Environment environment = Environment.getCurrent();
 WebforjBBjBridge bridge = environment.getBridge();
 
 ConfirmDialog dialog = new ConfirmDialog(
-      "Are you sure you want to delete this file?", "Deletion",
-      ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
+  "Are you sure you want to delete this file?", "Deletion",
+  ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
 
 int msgboxResult = bridge.msgbox(dialog);
 ```

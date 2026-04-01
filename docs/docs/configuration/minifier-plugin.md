@@ -1,7 +1,7 @@
 ---
 sidebar_position: 21
 title: Minifier Plugin
-sidebar_class_name: new-content
+sidebar_class_name: updated-content
 ---
 
 # Minifier plugin <DocChip chip='since' label='25.11' />
@@ -75,27 +75,27 @@ Add the following to your `build.gradle`:
 
 ```groovy
 buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "com.webforj:webforj-minify-gradle-plugin:${webforjVersion}"
-    }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath "com.webforj:webforj-minify-gradle-plugin:${webforjVersion}"
+  }
 }
 
 plugins {
-    id 'java'
+  id 'java'
 }
 
 apply plugin: 'com.webforj.minify'
 
 dependencies {
-    // Annotation processor for discovering assets during compilation
-    annotationProcessor "com.webforj:webforj-minify-foundation:${webforjVersion}"
+  // Annotation processor for discovering assets during compilation
+  annotationProcessor "com.webforj:webforj-minify-foundation:${webforjVersion}"
 
-    // Minifier implementations
-    add "webforjMinifier", "com.webforj:webforj-minify-phcss-css:${webforjVersion}"
-    add "webforjMinifier", "com.webforj:webforj-minify-closure-js:${webforjVersion}"
+  // Minifier implementations
+  add "webforjMinifier", "com.webforj:webforj-minify-phcss-css:${webforjVersion}"
+  add "webforjMinifier", "com.webforj:webforj-minify-closure-js:${webforjVersion}"
 }
 ```
 
@@ -180,7 +180,7 @@ mvn package -Dwebforj.minify.skip=true
 **Via build configuration:**
 ```groovy
 webforjMinify {
-    skip = true
+  skip = true
 }
 ```
 
@@ -191,8 +191,8 @@ webforjMinify {
 
 The JavaScript minifier offers several configuration options to control optimization behavior.
 
-:::info Maven Only
-JavaScript minifier options are currently only available for Maven. Gradle support uses default settings.
+:::note Gradle Support
+Starting with v25.12, the Gradle plugin supports passing JavaScript minifier options.
 :::
 
 | Option | Default | Description |
@@ -202,7 +202,10 @@ JavaScript minifier options are currently only available for Maven. Gradle suppo
 | `languageOut` | `ECMASCRIPT5` | Output JavaScript version: same as `languageIn`, plus `NO_TRANSPILE` |
 | `prettyPrint` | `false` | Set to `true` to preserve formatting for debugging |
 
-Configure these options in the `minifierConfigurations` section:
+Configure these options in the configuration section:
+
+<Tabs>
+<TabItem value="maven" label="Maven">
 
 ```xml {7-12}
 <plugin>
@@ -235,6 +238,23 @@ Configure these options in the `minifierConfigurations` section:
   </dependencies>
 </plugin>
 ```
+
+</TabItem>
+<TabItem value="gradle" label="Gradle">
+
+```groovy
+webforjMinify {
+    skip = false  // Set to true to skip minification
+    minifierConfigurations.put("closureJs", [
+      compilationLevel: "SIMPLE_OPTIMIZATIONS",
+      languageIn: "ECMASCRIPT_NEXT",
+      languageOut: "ECMASCRIPT5"
+    ])
+}
+```
+
+</TabItem>
+</Tabs>
 
 ### Minifying additional files {#minifying-additional-files}
 

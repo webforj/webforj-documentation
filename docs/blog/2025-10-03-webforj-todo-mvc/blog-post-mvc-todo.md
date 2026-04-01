@@ -4,7 +4,7 @@ description: "Building a function todo app with the model-view-controller patter
 slug: webforj-mvc
 date: 2025-10-03
 authors: Matthew Hawkins
-tags: [webforJ, MVC, Spring, Spring Boot, Front End, Back End]
+tags: [mvc, spring, front end, back end, routing, tutorial]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/webforj-todo-mvc/cover.png"
 hide_table_of_contents: true
 ---
@@ -29,7 +29,9 @@ Before diving into code, let's demystify MVC in case any of you reading this als
 
 - **Model**: Your data and business logic (the brain)
 - **View**: What users see and interact with (the face)
+<!-- vale Google.GenderBias = NO -->
 - **Controller**: The middleman coordinating between them (the nervous system)
+<!-- vale Google.GenderBias = YES -->
 
 There are all sorts of metaphors and analogies relating real-life paradigms to MVC. I'll spare you having to read through more of them here. 
 

@@ -44,6 +44,15 @@
 
     .col--9 {
       --ifm-col-width: calc(8 / 12 * 100%);
+
+      a {
+
+        &:hover,
+        &:focus {
+          border: 1px solid var(--dwc-color-primary);
+          background-color: var(--dwc-color-primary-alt, var(--dwc-surface-3));
+        }
+      }
     }
   }
 

@@ -12,9 +12,9 @@ You can process validation results to provide feedback to the user. If a validat
 ```java
 ValidationResult result = context.write(hero);
 if (!result.isValid()) {
-    displayErrors(result.getMessages());
+  displayErrors(result.getMessages());
 } else {
-    proceedWithUpdate();
+  proceedWithUpdate();
 }
 ```
 
@@ -29,7 +29,7 @@ BindingContext<User> context = new BindingContext<>(User.class);
 
 // Listen to the BindingContextValidateEvent which is fired on each user interaction.
 context.addValidateListener(event -> {
-    submit.setEnabled(event.isValid());
+  submit.setEnabled(event.isValid());
 });
 ```
 

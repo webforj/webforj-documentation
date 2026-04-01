@@ -11,18 +11,25 @@ import com.webforj.router.history.ParametersBag;
 
 @Route(value = ":id", outlet = AppNavView.class)
 public class AppNavPageView extends Composite<Div> {
-  Div self = getBoundComponent();
-  Paragraph text = new Paragraph();
+  private final Div self = getBoundComponent();
+  private final Paragraph text = new Paragraph();
 
   public AppNavPageView() {
-    self.add(new H1("Application Title"), text);
+    H1 title = new H1("Application Title");
+    self.add(title, text);
     Router.getCurrent().onNavigate(this::onNavigate);
   }
 
   private void onNavigate(NavigateEvent ev) {
     ParametersBag parameters = ev.getContext().getRouteParameters();
     parameters.get("id").ifPresent(id -> {
-      text.setHtml(String.format("Content for <strong>%s</strong> goes here", id));
+      text.setHtml("Content for <strong>%s</strong> goes here".formatted(id));
     });
+  }
+
+  @Override
+  protected void onDestroy() {
+    Router.getCurrent().removeAllListeners();
+    super.onDestroy();
   }
 }

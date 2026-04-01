@@ -24,25 +24,25 @@ public class ViewTransitionMorphView extends Composite<FlexLayout> {
   private static final String EXCERPT = "Discover techniques that transform words into compelling stories.";
   private static final String FULL_TEXT = "Writing is about connecting with readers and sharing ideas that resonate. Every sentence matters, every word carries weight. Great writers understand that clarity comes from revision, and the best stories emerge when we strip away the unnecessary. Whether crafting fiction or technical documentation, the goal remains the same: communicate with precision and purpose.";
 
-  private FlexLayout self = getBoundComponent();
-  private Div stage;
+  private final FlexLayout self = getBoundComponent();
+  private final Div stage;
   private boolean isExpanded = false;
 
   public ViewTransitionMorphView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setSpacing("var(--dwc-space-l)")
-        .setHeight("100vh");
+      .setAlignment(FlexAlignment.CENTER)
+      .setJustifyContent(FlexJustifyContent.CENTER)
+      .setSpacing("var(--dwc-space-l)")
+      .setHeight("100vh");
 
     DemoHeader header = new DemoHeader(
-        "Shared Element Morph",
-        "Click the card to expand. The image and title morph between states.",
-        "--dwc-color-info"
+      "Shared Element Morph",
+      "Click the card to expand. The image and title morph between states.",
+      "--dwc-color-info"
     );
 
-    stage = new Div();
-    stage.addClassName("morph-stage");
+    stage = new Div()
+      .addClassName("morph-stage");
 
     BlogCard card = new BlogCard(TITLE, EXCERPT, TRANSITION_NAME);
     card.onClick(e -> expand());
@@ -58,14 +58,14 @@ public class ViewTransitionMorphView extends Composite<FlexLayout> {
     detail.onClose(e -> collapse());
 
     Page.getCurrent().startViewTransition()
-        .enter(detail, ViewTransition.ZOOM)
-        .onUpdate(done -> {
-          stage.removeAll();
-          stage.add(detail);
-          isExpanded = true;
-          done.run();
-        })
-        .start();
+      .enter(detail, ViewTransition.ZOOM)
+      .onUpdate(done -> {
+        stage.removeAll();
+        stage.add(detail);
+        isExpanded = true;
+        done.run();
+      })
+      .start();
   }
 
   private void collapse() {
@@ -75,13 +75,13 @@ public class ViewTransitionMorphView extends Composite<FlexLayout> {
     card.onClick(e -> expand());
 
     Page.getCurrent().startViewTransition()
-        .enter(card, ViewTransition.ZOOM)
-        .onUpdate(done -> {
-          stage.removeAll();
-          stage.add(card);
-          isExpanded = false;
-          done.run();
-        })
-        .start();
+      .enter(card, ViewTransition.ZOOM)
+      .onUpdate(done -> {
+        stage.removeAll();
+        stage.add(card);
+        isExpanded = false;
+        done.run();
+      })
+      .start();
   }
 }

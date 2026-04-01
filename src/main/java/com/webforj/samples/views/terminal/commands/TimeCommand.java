@@ -1,30 +1,24 @@
 package com.webforj.samples.views.terminal.commands;
 
 import com.webforj.component.terminal.Terminal;
+import java.util.Date;
 
 public class TimeCommand implements TerminalCommand {
-  /**
-   * {@inheritDoc}
-   */
+  private static final String NAME = "time";
+  private static final String DESCRIPTION = "Show current time";
+
   @Override
   public String getName() {
-    return "time";
+    return NAME;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String getDescription() {
-    return "Show current time";
+    return DESCRIPTION;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void execute(Terminal term, String[] args) {
-    String time = new java.util.Date().toString();
-    term.writeln("\u001b[32mCurrent time: " + time + "\u001b[0m");
+    term.writeln("\u001b[32mCurrent time: " + new Date() + "\u001b[0m");
   }
 }

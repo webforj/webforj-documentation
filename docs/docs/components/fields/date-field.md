@@ -10,9 +10,15 @@ description: A component that provides a default browser-based date picker for s
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/DateField" top='true'/>
 
+The `DateField` component lets users input or select a date by year, month, and day. It handles validation automatically, so incorrectly formatted dates are caught before the form is submitted.
+
+<!-- INTRO_END -->
+
+## Using `DateField` {#using-datefield}
+
 <ParentLink parent="Field" />
 
-The `DateField` is a field component that allows users to input or select dates by the year, month, and day. It provides an intuitive and efficient way to handle date-related information in various apps, and offers the flexibility to validate a user's input.
+`DateField` extends the shared `Field` class, which provides common features across all field components. The following example creates departure and return DateFields that stay in sync, with min and max constraints to limit the selectable range.
 
 <ComponentDemo 
 path='/webforj/datefield?'

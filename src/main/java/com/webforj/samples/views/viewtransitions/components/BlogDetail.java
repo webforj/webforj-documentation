@@ -18,7 +18,7 @@ import com.webforj.dispatcher.ListenerRegistration;
 
 @StyleSheet("ws://css/viewtransitions/components/blog-card.css")
 public class BlogDetail extends Composite<FlexLayout> implements HasClassName<BlogDetail>, HasStyle<BlogDetail> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
   private final IconButton closeBtn;
 
   public BlogDetail(String title, String fullText, String transitionName) {
@@ -38,6 +38,7 @@ public class BlogDetail extends Composite<FlexLayout> implements HasClassName<Bl
     heading.setViewTransitionName("blog-title");
 
     closeBtn = new IconButton(FeatherIcon.X.create());
+    closeBtn.addClassName("blog-detail-close");
 
     header.add(heading, closeBtn);
 

@@ -11,23 +11,19 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Expanses")
 public class AvatarExpansesView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public AvatarExpansesView() {
-    FlexLayout self = getBoundComponent();
     self.setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.CENTER);
 
-    self.add(
-        new Avatar("John Doe").setExpanse(AvatarExpanse.XXXSMALL),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.XXSMALL),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.XSMALL),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.SMALL),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.MEDIUM),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.LARGE),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.XLARGE),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.XXLARGE),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.XXXLARGE)
-    );
+    AvatarExpanse[] expanses = AvatarExpanse.values();
+    for (int i = expanses.length - 1; i >= 0; i--) {
+      AvatarExpanse expanse = expanses[i];
+      if (expanse != AvatarExpanse.NONE) {
+        self.add(new Avatar("John Doe").setExpanse(expanse));
+      }
+    }
   }
 }

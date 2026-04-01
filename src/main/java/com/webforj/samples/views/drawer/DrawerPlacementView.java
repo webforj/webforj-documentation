@@ -11,57 +11,47 @@ import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Route
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
-
-  FlexLayout layout = getBoundComponent();
-  Drawer drawer = new Drawer();
+  private final FlexLayout self = getBoundComponent();
+  private final Drawer drawer = new Drawer();
 
   public DrawerPlacementView() {
-    layout.setMargin("var(--dwc-space-l)");
+    self.setMargin("var(--dwc-space-l)");
 
     drawer.setLabel("Drawer Placement Options");
 
-    RadioButton topOption = new RadioButton("Top");
-    RadioButton topCenterOption = new RadioButton("Top Center");
-    RadioButton bottomOption = new RadioButton("Bottom");
-    RadioButton bottomCenterOption = new RadioButton("Bottom Center");
-    RadioButton leftOption = new RadioButton("Left", true);
-    RadioButton rightOption = new RadioButton("Right");
+    List<RadioButton> radioButtons = new ArrayList<>();
+
+    for (Placement placement: Placement.values()) {
+      // Turn Enum value name into capitalized words
+      String text = Arrays.stream(placement.name().split("_"))
+              .map(s -> s.charAt(0) + s.substring(1).toLowerCase())
+              .collect(Collectors.joining(" "));
+      boolean checked = placement == Placement.LEFT;
+      RadioButton button = new RadioButton(text, checked);
+      button.setUserData("placement", placement);
+      radioButtons.add(button);
+    }
 
     RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", 
-        topOption, topCenterOption, bottomOption, bottomCenterOption, leftOption, rightOption);
+        radioButtons.toArray(RadioButton[]::new));
 
-    FlexLayout groupLayout = new FlexLayout();
-    groupLayout.setDirection(FlexDirection.COLUMN)
-            .setSpacing("var(--dwc-space-s)")
-            .add(placementGroup, topOption, topCenterOption, bottomOption, bottomCenterOption, 
-                leftOption, rightOption);
+    FlexLayout groupLayout = new FlexLayout()
+        .setDirection(FlexDirection.COLUMN)
+        .setSpacing("var(--dwc-space-s)");
+    groupLayout.add(placementGroup);
 
-    placementGroup.onValueChange(event -> {
-      RadioButton selected = placementGroup.getChecked();
+    placementGroup.onChange(e -> {
+      RadioButton selected = e.getChecked();
       if (selected != null) {
-        switch (selected.getText()) {
-          case "Top":
-            drawer.setPlacement(Placement.TOP);
-            break;
-          case "Top Center":
-            drawer.setPlacement(Placement.TOP_CENTER);
-            break;
-          case "Bottom":
-            drawer.setPlacement(Placement.BOTTOM);
-            break;
-          case "Bottom Center":
-            drawer.setPlacement(Placement.BOTTOM_CENTER);
-            break;
-          case "Right":
-            drawer.setPlacement(Placement.RIGHT);
-            break;
-          default:
-            drawer.setPlacement(Placement.LEFT);
-            break;
-        }
+        drawer.setPlacement((Drawer.Placement) selected.getUserData("placement"));
       }
     });
 
@@ -71,7 +61,8 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     Button openDrawer = new Button("Open Placement");
     openDrawer.onClick(e -> drawer.open());
 
-    layout.add(openDrawer, drawer);    
+    self.add(openDrawer, drawer);
     drawer.open();
   }
+
 }

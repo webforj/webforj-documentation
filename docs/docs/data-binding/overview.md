@@ -3,6 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
+sidebar_class_name: has-new-content
 ---
 
 <Head>
@@ -20,7 +21,7 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
- webforJ includes a data binding feature that seamlessly integrates UI components with backend data models in Java applications. This feature bridges the gap between the UI and the data layer, ensuring that changes in the UI reflect in the data model and vice versa. As a result, it enhances user experience and reduces the complexity of event handling and data synchronization.
+ webforJ includes a data binding feature that integrates UI components with backend data models in Java applications. This feature bridges the gap between the UI and the data layer so that changes in the UI reflect in the data model and vice versa, reducing the complexity of event handling and data synchronization.
 
 ## Concept {#concept}
 
@@ -28,9 +29,9 @@ The following demonstration showcases a simple webforJ app for registering super
 
 In `HeroRegistration.java`, the code configures the user interface with a `TextField` for entering the hero's name, a `ComboBox` to select a superpower, and a `Button` to submit the registration.
 
-The `Hero` class defines the data model with validation constraints on the hero's name and power, ensuring that entries are valid and adhere to specified criteria such as length and pattern.
+The `Hero` class defines the data model with validation constraints on the hero's name and power. Entries must be valid and adhere to specified criteria such as length and pattern.
 
-The app utilizes the `BindingContext` to bind UI components to the properties of the `Hero` object. When a user clicks the submit button, the app writes the data entered in the form back to the `Hero` bean if they're valid.
+The app uses the `BindingContext` to bind UI components to the properties of the `Hero` object. When a user clicks the submit button, the app writes the data entered in the form back to the `Hero` bean if they're valid.
 
 <Tabs>
 <TabItem value="HeroRegistration" label="HeroRegistration.java">
@@ -118,11 +119,11 @@ public class Hero {
 
 - **Bidirectional Binding:**  Supports bidirectional data binding, allowing changes in the data model to update the UI, and user interactions in the UI to update the data model.
 
-- **Validation Support:** Integrates comprehensive validation mechanisms that you can customize and extended. Developers can implement their own validation rules or use existing validation frameworks like Jakarta Validation to ensure data integrity before updating the model.
+- **Validation Support:** Integrates comprehensive validation mechanisms that you can customize and extend. Developers can implement their own validation rules or use existing validation frameworks like Jakarta Validation to verify data integrity before updating the model.
 
 - **Extensibility:** Can be easily extended to support different types of UI components, data transformations, and complex validation scenarios.
 
-- **Annotation-Driven Configuration:**  Utilizes annotations to minimize boilerplate code, making the bindings between UI components and data models declarative and easy to manage.
+- **Annotation-Driven Configuration:**  Uses annotations to minimize boilerplate code, making the bindings between UI components and data models declarative and easy to manage.
 
 # Topics
 

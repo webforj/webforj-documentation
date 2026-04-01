@@ -14,6 +14,7 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Date Field Demo")
 public class DateFieldView extends Composite<FlexLayout> {
 
+  private final FlexLayout self = getBoundComponent();
   private static final LocalDate TODAY = LocalDate.now();
   private static final LocalDate MAX_DATE = TODAY.plusYears(1);
 
@@ -21,8 +22,7 @@ public class DateFieldView extends Composite<FlexLayout> {
   private final DateField returnField = new DateField(TODAY);
 
   public DateFieldView() {
-    getBoundComponent()
-        .setDirection(FlexDirection.ROW)
+    self.setDirection(FlexDirection.ROW)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-m)");
 
@@ -38,7 +38,7 @@ public class DateFieldView extends Composite<FlexLayout> {
         .setMax(MAX_DATE)
         .addValueChangeListener(this::syncDates);
 
-    getBoundComponent().add(departureField, returnField);
+    self.add(departureField, returnField);
   }
 
   private void syncDates(ValueChangeEvent<LocalDate> e) {
@@ -63,8 +63,10 @@ public class DateFieldView extends Composite<FlexLayout> {
   private LocalDate clamp(LocalDate date) {
     if (date == null)
       return null;
-    return date.isBefore(TODAY) ? TODAY
-        : date.isAfter(MAX_DATE) ? MAX_DATE
+    return date.isBefore(TODAY)
+        ? TODAY
+        : date.isAfter(MAX_DATE)
+            ? MAX_DATE
             : date;
   }
 }

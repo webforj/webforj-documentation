@@ -8,9 +8,9 @@ sidebar_position: 10
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BusyIndicator" top='true'/>
 
-The `BusyIndicator` provides visual cues to ensure that users are aware of ongoing processes, preventing them from interacting with the system prematurely. It typically covers the entire app interface for global operations.
+The `BusyIndicator` is a full-screen overlay that signals an ongoing process and blocks user interaction until it completes. It covers the entire interface during operations like initialization or data syncs. While the [`Loading`](../components/loading) component focuses on specific areas within the interface, the `BusyIndicator` applies globally.
 
-While the [`Loading`](../components/loading) component focuses on specific areas or components within the app, the `BusyIndicator` handles global, app-wide processes and blocks interaction across the entire interface. This difference in scope makes the [`Loading`](../components/loading) component ideal for more localized, component-specific scenarios, such as loading data in a particular section of a page. In contrast, the `BusyIndicator` is suitable for system-wide operations that affect the entire app, such as initializing the app or performing a major data sync.
+<!-- INTRO_END -->
 
 ## Basics {#basics}
 

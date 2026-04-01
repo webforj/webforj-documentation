@@ -88,15 +88,15 @@ If you already have a parent POM, you'll need to import the Spring Boot Bill of 
 
 ```xml title="pom.xml"
 <dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>3.5.3</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-dependencies</artifactId>
+      <version>3.5.3</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
 </dependencyManagement>
 ```
 
@@ -114,25 +114,25 @@ For versions **before 25.11**, you must include both dependencies separately.
 
 ```xml title="pom.xml"
 <dependencies>
-    <!-- Add Spring Boot starter (includes webforJ transitively) -->
-    <dependency>
-        <groupId>com.webforj</groupId>
-        <artifactId>webforj-spring-boot-starter</artifactId>
-        <version>${webforj.version}</version>
-    </dependency>
+  <!-- Add Spring Boot starter (includes webforJ transitively) -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-boot-starter</artifactId>
+    <version>${webforj.version}</version>
+  </dependency>
 
-    <!-- Add devtools -->
-    <dependency>
-      <groupId>com.webforj</groupId>
-      <artifactId>webforj-spring-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+  <!-- Add devtools -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-devtools</artifactId>
+    <optional>true</optional>
+  </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+  </dependency>
 </dependencies>
 ```
 
@@ -140,32 +140,32 @@ For versions **before 25.11**, you must include both dependencies separately.
 
 ```xml title="pom.xml"
 <dependencies>
-    <!-- Explicitly add webforJ dependency -->
-    <dependency>
-        <groupId>com.webforj</groupId>
-        <artifactId>webforj</artifactId>
-        <version>${webforj.version}</version>
-    </dependency>
+  <!-- Explicitly add webforJ dependency -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj</artifactId>
+    <version>${webforj.version}</version>
+  </dependency>
     
-    <!-- Add Spring Boot starter -->
-    <dependency>
-        <groupId>com.webforj</groupId>
-        <artifactId>webforj-spring-boot-starter</artifactId>
-        <version>${webforj.version}</version>
-    </dependency>
+  <!-- Add Spring Boot starter -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-boot-starter</artifactId>
+    <version>${webforj.version}</version>
+  </dependency>
 
-    <!-- Add devtools -->
-    <dependency>
-      <groupId>com.webforj</groupId>
-      <artifactId>webforj-spring-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+  <!-- Add devtools -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-devtools</artifactId>
+    <optional>true</optional>
+  </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+  </dependency>
 </dependencies>
 ```
 
@@ -179,15 +179,15 @@ Replace the Jetty plugin with the Spring Boot Maven plugin. Remove any existing 
 
 ```xml title="pom.xml"
 <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <excludeDevtools>true</excludeDevtools>
-        </configuration>
-      </plugin>
-    </plugins>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <configuration>
+        <excludeDevtools>true</excludeDevtools>
+      </configuration>
+    </plugin>
+  </plugins>
 </build>
 ```
 
@@ -207,15 +207,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Routify(packages = "com.example.views")
 public class Application extends App {
     
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
     
-    // Keep your existing run() method if you have one
-    @Override
-    public void run() throws WebforjException {
-      // Your existing initialization code 
-    }
+  // Keep your existing run() method if you have one
+  @Override
+  public void run() throws WebforjException {
+    // Your existing initialization code 
+  }
 }
 ```
 

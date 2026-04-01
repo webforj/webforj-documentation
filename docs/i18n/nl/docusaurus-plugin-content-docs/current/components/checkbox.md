@@ -1,41 +1,41 @@
 ---
 title: CheckBox
 sidebar_position: 20
-_i18n_hash: c2be55222401962b275faf28ff6ddba3
+_i18n_hash: e5ace9c598a0892cfa456f376035c87a
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-checkbox" />
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/CheckBox" top='true'/>
 
-De `CheckBox` klasse creëert een component die geselecteerd of gedeselecteerd kan worden, en die zijn status aan de gebruiker toont. Wanneer erop geklikt wordt, verschijnt er een vinkje binnen de doos om een bevestigende keuze (aan) aan te geven. Bij een volgende klik verdwijnt het vinkje, wat een negatieve keuze (uit) aangeeft.
+Een `CheckBox` kan geselecteerd of niet geselecteerd worden en geeft zijn huidige toestand weer als een vinkje. Checkboxen werken goed voor het wisselen van individuele instellingen of het laten kiezen van meerdere opties uit een set.
 
-Door een duidelijke en eenvoudige visuele indicatie van de selectie-status te bieden, verbeteren checkboxen de gebruikersinteractie en besluitvorming, waardoor ze een essentieel element in moderne gebruikersinterfaces vormen.
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 
-De `CheckBox` is het beste te gebruiken in scenario's waar gebruikers meerdere selecties moeten maken uit een lijst met opties. Hier zijn enkele voorbeelden wanneer je de `CheckBox` moet gebruiken:
+De `CheckBox` wordt het beste gebruikt in scenario's waarbij gebruikers meerdere selecties moeten maken uit een lijst met opties. Hier zijn enkele voorbeelden wanneer je de `CheckBox` moet gebruiken:
 
-1. **Taak- of Kenmerkselectie**: Checkboxen worden vaak gebruikt wanneer gebruikers meerdere taken of kenmerken moeten selecteren om bepaalde acties of configuraties uit te voeren.
+1. **Selectie van taken of functies**: Checkboxen worden vaak gebruikt wanneer gebruikers meerdere taken of functies moeten selecteren om bepaalde acties of configuraties uit te voeren.
 
-2. **Voorkeurinstellingen**: Applicaties die voorkeur- of instellingenpanelen omvatten, gebruiken vaak checkboxen om gebruikers in staat te stellen meerdere opties uit een set keuzes te kiezen. Dit is het beste voor opties die niet wederzijds exclusief zijn. Bijvoorbeeld:
+2. **Voorkeursinstellingen**: Toepassingen die betrekking hebben op voorkeur- of instellingenpanelen gebruiken vaak checkboxen om gebruikers in staat te stellen meerdere opties uit een set keuzes te kiezen. Dit is het beste voor opties die niet onderling uitsluitend zijn. Bijvoorbeeld:
 
 > - Meldingen in- of uitschakelen
 > - Kiezen voor een donkere of lichte modus thema
 > - Selecteren van voorkeuren voor e-mailmeldingen
 
-3. **Filteren of Sorteren**: Een `CheckBox` kan worden gebruikt in applicaties die vereisen dat gebruikers meerdere filters of categorieën selecteren, zoals het filteren van zoekresultaten of het selecteren van meerdere items voor verdere acties.
+3. **Filteren of sorteren**: Een `CheckBox` kan worden gebruikt in toepassingen waarbij gebruikers meerdere filters of categorieën moeten selecteren, zoals het filteren van zoekresultaten of het selecteren van meerdere items voor verdere acties.
 
 4. **Formuliervelden**: Checkboxen worden vaak gebruikt in formulieren om gebruikers in staat te stellen meerdere opties te selecteren of binaire keuzes te maken. Bijvoorbeeld:
    > - Abonneren op een nieuwsbrief
-   > - Akkoord gaan met de voorwaarden
-   > - Selecteren van items voor aankoop of boeking
+   > - Accepteren van algemene voorwaarden
+   > - Items selecteren voor aankoop of boeking
 
 ## Text and positioning {#text-and-positioning}
 
-Checkboxen kunnen gebruikmaken van de <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String tekst)</JavadocLink> methode, die dicht bij de checkbox wordt gepositioneerd volgens de ingebouwde <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>.
+Checkboxen kunnen de <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink> methode gebruiken, die dichtbij de checkbox wordt gepositioneerd volgens de ingebouwde <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>.
 
-Checkboxen hebben ingebouwde functionaliteit om tekst weer te geven die aan de rechter- of linkerkant van de doos wordt getoond. Standaard wordt de tekst aan de rechterzijde van de component weergegeven. Het positioneren van de tekst wordt ondersteund door het gebruik van de <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Hieronder staan de twee instellingen: <br/>
+Checkboxen hebben ingebouwde functionaliteit om tekst weer te geven die ofwel rechts of links van het vak wordt weergegeven. Standaard wordt de tekst rechts van de component weergegeven. Positionering van de tekst wordt ondersteund door het gebruik van de <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Hieronder staan de twee instellingen: <br/>
 
 <ComponentDemo 
 path='/webforj/checkboxhorizontaltext?' 
@@ -47,11 +47,11 @@ height = '200px'
 
 ## Indeterminism {#indeterminism}
 
-De `CheckBox` component ondersteunt indeterminisme, wat een UI-patroon is dat vaak wordt gebruikt in formulieren en lijsten om aan te geven dat een groep checkboxen een mix van aangevinkte en niet-aangevinkte statussen heeft. Deze status wordt weergegeven door een derde visuele staat, die typisch wordt weergegeven als een gevuld vierkant of een streepje binnen de checkbox. Er zijn een paar veelvoorkomende gebruikssituaties geassocieerd met indeterminisme:
+De `CheckBox` component ondersteunt onbepaaldheid, wat een UI-patroon is dat vaak wordt gebruikt in formulieren en lijsten om aan te geven dat een groep checkboxen een mix van geselecteerde en niet-geselecteerde toestanden heeft. Deze toestand wordt weergegeven door een derde visuele staat, meestal weergegeven als een gevulde vierkant of een streep binnen de checkbox. Er zijn een paar veelvoorkomende gebruiksgevallen geassocieerd met onbepaaldheid:
 
-- **Meerdere items selecteren**: Indeterminisme is nuttig wanneer gebruikers meerdere items uit een lijst of een set opties willen selecteren. Het stelt gebruikers in staat om aan te geven dat ze sommige, maar niet alle, beschikbare keuzes willen selecteren.
+- **Meerdere items selecteren**: Onbepaaldheid is nuttig wanneer gebruikers meerdere items uit een lijst of een set opties moeten selecteren. Het stelt gebruikers in staat om aan te geven dat ze sommige, maar niet alle, beschikbare keuzes willen selecteren.
 
-- **Hiërarchische gegevens**: Indeterminisme kan worden toegepast in scenario's waarbij er een hiërarchische relatie tussen checkboxen bestaat. Bijvoorbeeld, bij het selecteren van categorieën en subcategorieën kan indeterminisme aangeven dat sommige subcategorieën zijn geselecteerd terwijl andere dat niet zijn, en de bovenliggende component zich in de onbepaalde staat bevindt.
+- **Hiërarchische gegevens**: Onbepaaldheid kan worden toegepast in scenario's waar er een hiërarchische relatie tussen checkboxen is. Bijvoorbeeld, wanneer categorieën en subcategorieën worden geselecteerd, kan onbepaaldheid vertegenwoordigen dat sommige subcategorieën zijn geselecteerd terwijl andere dat niet zijn, en de bovenliggende component in de onbepaalde staat is.
 
 <ComponentDemo 
 path='/webforj/checkboxindeterminate?' 
@@ -63,7 +63,8 @@ height = '150px'
 
 ### Expanses {#expanses}
 
-De volgende <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Expanses waarden </JavadocLink> maken snelle styling mogelijk zonder CSS te gebruiken. Expanses worden ondersteund door het gebruik van de `Expanse` enum klasse. Hieronder staan de expanses die worden ondersteund voor de checkbox component: <br/>
+De volgende <JavadocLink type="foundation" location="com/webforj/component/Expanse">Expanses waarden</JavadocLink> maken snelle styling mogelijk zonder CSS te gebruiken.
+Expanses worden ondersteund door het gebruik van de `Expanse` enum klasse. Hieronder staan de expanses die worden ondersteund voor de checkboxcomponent: <br/>
 
 <ComponentDemo 
 path='/webforj/checkboxexpanse?' 
@@ -77,12 +78,12 @@ height = '150px'
 
 ## Best practices {#best-practices}
 
-Om een optimale gebruikerservaring te waarborgen bij het gebruik van de `Checkbox` component, overweeg de volgende best practices:
+Om een optimale gebruikerservaring bij het gebruik van de `Checkbox` component te waarborgen, overweeg dan de volgende best practices:
 
-1. **Duidelijke Labels voor Opties**: Voorzie duidelijke en beknopte labels voor elke `CheckBox` optie om de keuze nauwkeurig te beschrijven. Labels moeten gemakkelijk te begrijpen en van elkaar te onderscheiden zijn.
+1. **Duidelijk labelen van opties**: Bied duidelijke en beknopte labels voor elke `CheckBox` optie om de keuze nauwkeurig te beschrijven. Labels moeten gemakkelijk te begrijpen zijn en van elkaar te onderscheiden.
 
-2. **Groep Checkboxen**: Groepeer gerelateerde checkboxen zodat hun associatie duidelijk is. Dit helpt gebruikers te begrijpen dat meerdere opties binnen een specifieke groep geselecteerd kunnen worden.
+2. **Checkboxen groeperen**: Groepeer gerelateerde checkboxen samen om hun associatie aan te geven. Dit helpt gebruikers te begrijpen dat meerdere opties binnen een specifieke groep kunnen worden geselecteerd.
 
-3. **Bied Standaardselectie Aan**: Indien van toepassing, overweeg om een standaardselectie voor checkboxen te bieden om gebruikers te begeleiden wanneer ze voor het eerst met de opties in aanraking komen. De standaardselectie moet overeenkomen met de meest voorkomende of gewenste keuze.
+3. **Standaardselectie bieden**: Indien van toepassing, overweeg dan om een standaardselectie voor checkboxen te bieden om gebruikers te begeleiden als ze de opties voor het eerst tegenkomen. De standaardselectie moet aansluiten bij de meest voorkomende of gewenste keuze.
 
-4. **Indeterminisme**: Als een bovenliggende `CheckBox` component meerdere componenten omvat waarvan sommige kunnen worden aangevinkt en andere uitgevinkt, gebruik dan de onbepaalde eigenschap om aan te geven dat niet alle `CheckBox` componenten zijn aangevinkt of niet zijn aangevinkt.
+4. **Onbepaaldheid**: Als een bovenliggende `CheckBox` component meerdere componenten heeft die eraan behoren op een manier waarop sommige kunnen worden aangevinkt en andere kunnen worden uitgevinkt, gebruik dan de onbepaalde eigenschap om aan te geven dat niet alle `CheckBox` componenten zijn aangevinkt of niet aangevinkt.

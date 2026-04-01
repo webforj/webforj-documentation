@@ -37,16 +37,16 @@ RouteRegistry registry = router.getRegistry();
 
 // Check user role and register appropriate routes
 if (user.hasRole("editor")) {
-    registry.register("/editor/dashboard", EditorDashboardView.class);
+  registry.register("/editor/dashboard", EditorDashboardView.class);
 } else if (user.hasRole("viewer")) {
-    registry.register("/viewer/dashboard", ViewerDashboardView.class);
+  registry.register("/viewer/dashboard", ViewerDashboardView.class);
 }
 
 // Navigate to the appropriate dashboard
 if (user.hasRole("editor")) {
-    router.navigate(EditorDashboardView.class);
+  router.navigate(EditorDashboardView.class);
 } else if (user.hasRole("viewer")) {
-    router.navigate(ViewerDashboardView.class);
+  router.navigate(ViewerDashboardView.class);
 }
 ```
 
@@ -108,7 +108,7 @@ In addition to manually defining routes, it's possible to dynamically register c
 ```java
 @Route("profile")
 public class ProfileView extends Composite<Div> {
-    // Profile view logic
+  // Profile view logic
 }
 
 Router router = Router.getCurrent();
