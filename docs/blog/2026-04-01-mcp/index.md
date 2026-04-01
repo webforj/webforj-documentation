@@ -2,7 +2,7 @@
 title: "webforJ, meet Claude"
 description: Setting up the webforJ MCP server in Claude Code
 slug: mcp
-date: 2026-03-31
+date: 2026-04-01
 authors: Garrison Osteen
 tags: [ai, community]
 hide_table_of_contents: false
@@ -12,45 +12,51 @@ hide_table_of_contents: false
 
 AI tools are changing the way people work, and it's easy to get left behind. 
 They can be very powerful, but require some configuration and practice to really unlock their potential.
-While you're still doing things the way you always have, your peers are excitedly talking about how their autonomous AI agents are building and testing apps, completely transforming what it means to be productive and efficient, and what it means to write code. 
+While you're still doing things the way you always have, your peers are excitedly talking about how their autonomous AI agents are building and testing apps, completely transforming what it means to be productive and efficient, and what it means to "code." 
 Maybe you occasionally use an AI as a fancy search engine or research tool, but it's certainly not doing your work *for* you.
 You might find yourself wondering: what are they doing differently?
 
 <!-- truncate -->
 
-That's more or less where I find myself: AI tools have definitely been helpful, but I haven't fully integrated them into my development workflow. 
+That's more or less where I find myself: I make some use of AI tools and have found them helpful, but I haven't fully integrated them into my development workflow. 
 So, what would that entail? 
-For starters, that would mean finally setting up Claude Code and connecting it to webforJ's MCP server.
+For starters, that would mean finally setting up [Claude Code](https://claude.com/product/claude-code) and connecting it to [webforJ's Model Context Protocol (MCP) server](/docs/integrations/ai-tooling/mcp).
 It looks like it's time to take that first step.
 
 :::tip
-I'll be using Claude Code, but you can connect webforJ's MCP server to lots of different AI coding tools. See the [MCP Server](/docs/integrations/ai-tooling/mcp) documentation for more information.
+I'll be using Claude Code, but you can connect webforJ's MCP server to lots of different AI coding tools.
+The Model Context Protocol is an open standard implemented by Claude, ChatGPT, Cursor, Windsurf, VS Code, and more.
+See the [MCP Server](/docs/integrations/ai-tooling/mcp) documentation for more information.
 :::
 
 ## Which Claude?
 
-It can be a bit confusing figuring out where to start, because you can use Claude from the Web, Desktop, or Terminal, and you can use it in Chat, Cowork, or Code mode.
-And even though the webforJ MCP instructs you to use it with Claude Code, you can technically connect and use it from any of these modes.
-This is a potentially confusing point, because even though the MCP is connected, it won't be able to fully function in every format.
-Using Claude Code, either in the terminal or the Desktop app, lets Claude create and edit files within a specified directory and execute bash commands.
-This mode is what the MCP server expects, so attempting to use it from other modes won't always work correctly, and Claude can't always tell that you're trying to use it from the wrong mode.
+There are several different "modes" for Claude: you can use Claude from the Web, Desktop, or Terminal, and you can use it in Chat, Cowork, or Code mode.
+It can be a bit confusing figuring out where to start, because you can connect and use the MCP server from any of these modes.
+However, even though the MCP is connected, it won't be able to execute its full functionality in every mode.
+
+The webforJ documentation instructs you to **use the webforJ MCP Server with Claude Code**, because this will give you the best results.
+With Claude Code, either in the terminal or the Desktop app, Claude can create and edit files within a specified directory and execute bash commands.
+This mode is what the MCP server expects, so attempting to use it from other modes may not yield the best results.
 
 ## Setting up the MCP
 
-If you don't have Claude Desktop or Code installed, you'll need to either [install Claude Desktop](https://claude.ai/) or [install Claude Code](https://code.claude.com/docs/en/overview)
+If you don't have Claude Desktop or Code installed, you'll need to either [install Claude Desktop](https://claude.ai/) or [install Claude Code](https://code.claude.com/docs/en/overview).
 You can add the webforJ MCP server from any Claude interface, and it will be available in all of them.
 I'll be using Claude Desktop.
 
 Connecting it is easy: in Claude web or desktop, choose the **Customize** section, click **Connectors**, click the plus button, then select **Add custom connector**.
-Give it a name (may I suggest "webforJ MCP?") and the URL `https://mcp.webforj.com/mcp`.
+Give it a name and the URL `https://mcp.webforj.com/mcp`.
 See [Claude's documentation on custom connectors](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp) for more details.
+
+![Claude: add custom connector](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-add-custom-connector.png)
 
 If you're using Claude Code from the terminal, you can just run the following command:
 ```bash
 claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
 ```
 
-![Claude: add custom connector](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-add-custom-connector.png)
+### Tool permissions
 
 The webforJ MCP currently comes with three tools: 
 
@@ -60,17 +66,18 @@ The webforJ MCP currently comes with three tools:
 
 You can globally toggle each of the available tools to control whether Claude can use them, choosing between **Always Allow**, **Needs Approval**, and **Blocked**. 
 By default, everything is set to **Needs Approval**, so Claude will prompt you for permission before using any of the tools.
-You can also adjust these settings on a per-chat basis, giving you very flexible control over when Claude uses any of them.
+You can also adjust these settings on a per-project basis, giving you very flexible control over when Claude uses any of them.
 
 ![Claude: set tool permissions](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-permissions.png)
-
 
 :::important MCP Functionality in Chat mode
 
 Claude has access to the MCP server in Chat mode, but can't exercise its full functionality.
-The server will improve its ability to assist with webforJ code, but because Claude can't run any code in this mode, it will only be able to provide information and downloadable code.
+The server will still improve its ability to assist with webforJ code, but because Claude can't run any commands in this mode, it will only be able to provide information and downloadable code.
 
-The **Project Generation** tool will return instructions on generating a project, the **Theme Creation** tool will create a CSS file you can download with instructions on including it in your app, and the **Knowledge Base** tool will help Claude assist you with webforJ-related questions. Use Claude Code in the terminal or the **Code** tab of Claude Desktop to let Claude help you with your actual project files!
+In Chat mode, the **Project Generation** tool will return instructions on generating a project, the **Theme Creation** tool will create a CSS file you can download with instructions on including it in your app, and the **Knowledge Base** tool will help Claude assist you with webforJ-related questions. 
+
+Use Claude Code in the terminal or the **Code** tab of Claude Desktop to let Claude help you with your actual project files!
 :::
 
 ## First steps with the webforJ MCP
@@ -80,14 +87,14 @@ The **Project Generation** tool will return instructions on generating a project
 The only way to get started with a tool like this is to just jump in.
 So, I created a dedicated project directory, cracked my knuckles, and started vibe coding for the first time.
 
-To start, I asked Claude to create a new project with the Tabs layout, putting it in a new subdirectory so we could try creating multiple projects within the same folder.
+To start, I asked Claude to create a new project called `VibeTabs` with the Tabs layout, putting it in a new subdirectory so we could try creating multiple projects within the same folder.
 
 Claude gave me a good overview of the project once it finished:
 
 ![Claude: create new webforJ tabs project](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-vibetabs-project.png)
 
 Next, I asked Claude to create another app for each available archetype. 
-It was able to determine which archetypes exist, and created a project for each one. 
+Claude was able to determine which archetypes exist, and created a project for each one. 
 As part of my testing, I didn't tell Claude which flavor (Spring Boot or standard webforJ) to use, to see what it would do. 
 Currently, it seems that this behavior isn't very deterministic, since Claude used standard webforJ for the first app but Spring Boot for the other three, and didn't ask for clarification.
 If you're making a real app, you can just tell Claude which flavor you want and it will follow your lead!
@@ -103,10 +110,11 @@ So, the more interesting test will be the other two tools.
 
 The next thing to test is **Theme Creation**. 
 I asked Claude to help me create a webforJ theme, which prompted it to ask for permission to use the `webforj-create-theme` tool.
-The only thing Claude needs for a custom theme is a base color, so I gave it `#cc0099`, a sort of pinkish-magenta color.
+The only thing Claude needs for a custom theme is a base color, so I decided on `#cc0099`, a sort of pinkish-magenta color.
 
-AI tools are non-deterministic and not always accurate, and Claude's first attempt to create a theme didn't quite work. 
-It created a CSS file with the theme definition, and linked it from the `Application.java` file, but it wasn't getting applied. 
+Claude successfully generated a CSS file with the theme definition and linked to it from the `Application.java` file.
+However, AI tools are non-deterministic and not always accurate, and Claude's first attempt to actually apply the theme didn't quite work. 
+The CSS looked good, but the app still showed the old theme.
 
 Of course, as a budding vibe coder, I was determined to not debug this code myself.
 To get started, I asked it to add some components using all the available themes so we could debug this issue. 
@@ -115,11 +123,12 @@ This prompted the **Knowledge Search** tool, and Claude created a nice theme dis
 ![Claude: component theme test](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-default-theme.png)
 
 This made it pretty clear that the custom theme was not being applied, but how do I tell Claude that? 
-It turns out that a picture is worth a thousand words, so I just attached a screenshot instead of explaining anything:
+It turns out that a picture is worth a thousand words, so I just attached a screenshot!
+I didn't even have to explain anything, I just asked what it thought:
 
 ![Claude: theme debugging](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-theme-debugging.png)
 
-Claude is able to see what I see, without me wasting my time checking the values and trying to explain the problem. 
+By just letting Claude see what I see, I avoided wasting my time checking the values and trying to explain the problem. 
 And, sure enough, it was able to get the theme loading correctly:
 
 ![Claude: custom theme applied](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-custom-theme.png)
@@ -128,10 +137,10 @@ This little exercise in problem solving was a great test of using AI tools to no
 
 ## Knowledge Search
 
-The knowledge search already came up a bit in the other sections, because Claude needed to do some research to get a theme sampler up and running.
+The knowledge search tool already came up a bit earlier, because Claude needed to do some research to get a theme sampler up and running.
 But, I wanted to give it a slightly harder challenge: creating a reusable component that combines several different webforJ components.
 
-I asked Claude to create a reusable "User Card" component for the Users tab, with an [Avatar](/docs/components/avatar) showing a user's initials, with their name and role also displayed.
+I asked Claude to create a reusable "User Card" component for the Users tab, with an [Avatar](/docs/components/avatar) showing a user's initials, and with their name and role also displayed.
 Using the webforJ **Knowledge Search** tool, Claude looked up the Avatar component to check on its usage.
 Armed with correct information, Claude was able to use the Avatar component and create a user card with no problems.
 It conformed to good webforJ practices, like extending `Composite`, creating a private `self` variable for the bound component, and using DWC variables for styling.
@@ -183,6 +192,9 @@ The result is a very reasonable execution of my request:
 
 ![Claude: user card components](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-user-cards.png)
 
+With the collaboration between webforJ's component library and Claude's ability to quickly generate code, I had the custom component almost as soon as I imagined it.
+This could provide great scaffolding for a more complex project, and massively reduces the cost of experimenting and testing out new ideas.
+
 ## Final thoughts
 
 After a brief exploration of Claude Code and the webforJ MCP server, I'm impressed with both the quality and the workflow.
@@ -191,7 +203,7 @@ But, even without complicated prompt engineering, I was able to use Claude Code 
 
 The webforJ MCP server gives Claude some direction for webforJ-specific design patterns, and increases the accuracy of its output.
 But, that's only one tool. 
-There are also [webforJ agent skills](/docs/integrations/ai-tooling/agent-skills) that give AI agents even better tools for working with webforJ.
+There are also [webforJ agent skills](/docs/integrations/ai-tooling/agent-skills) that make AI agents even more effective when working with webforJ.
 With the webforJ MCP server and the help of some AI tools, creating a new web app in Java is the easiest its ever been.
 You don't need to worry about all the project setup and boilerplate code; you can focus on the actual ideas and design.
-Give it a try, and let your imagination run wild!
+Give it a try, let your imagination run wild, and do it all in Java with webforJ!
