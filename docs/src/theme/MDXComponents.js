@@ -31,6 +31,7 @@ import TransitionBox from '@site/src/components/DWCTheme/TransitionBox/Transitio
 import GalleryCard from '@site/src/components/GalleryCard/GalleryCard';
 import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
+import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarning';
 
 
 export default {
@@ -62,6 +63,7 @@ export default {
   GalleryCard,
   GalleryGrid,
   ColorPalette,
-  table: TableWrapper
+  table: TableWrapper,
+  ExperimentalWarning
 };
 
