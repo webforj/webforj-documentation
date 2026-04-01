@@ -17,9 +17,9 @@ public class TabbedPaneBorderPage {
 
     public TabbedPaneBorderPage(Page page) {
 
-        this.hideBorderToggle = page.getByRole(AriaRole.RADIO,
+        this.hideBorderToggle = page.getByRole(AriaRole.SWITCH,
                 new Page.GetByRoleOptions().setName("Hide Border"));
-        this.hideActiveIndicatorToggle = page.getByRole(AriaRole.RADIO,
+        this.hideActiveIndicatorToggle = page.getByRole(AriaRole.SWITCH,
                 new Page.GetByRoleOptions().setName("Hide Active Indicator"));
         this.borderTabbedPane = page.locator("dwc-tabbed-pane");
         this.dashboardTab = page.getByRole(AriaRole.TAB,
