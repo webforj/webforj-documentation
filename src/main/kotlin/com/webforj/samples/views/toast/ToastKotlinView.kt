@@ -21,7 +21,6 @@ class ToastKotlinView : Composite<Div>() {
 
   init {
     toast.apply {
-      open()
       flexLayout {
         direction = FlexDirection.ROW
         alignment = FlexAlignment.CENTER
@@ -32,6 +31,7 @@ class ToastKotlinView : Composite<Div>() {
           onClick { close() }
         }
       }
+      open()
     }
   }
 }

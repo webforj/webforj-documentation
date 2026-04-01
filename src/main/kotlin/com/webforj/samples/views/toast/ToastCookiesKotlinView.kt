@@ -33,7 +33,6 @@ class ToastCookiesKotlinView : Composite<Div>() {
       duration = -1
       theme = Theme.DEFAULT
       placement = Toast.Placement.CENTER
-      open()
       flexLayout {
         vertical()
         alignment = FlexAlignment.CENTER
@@ -66,6 +65,7 @@ class ToastCookiesKotlinView : Composite<Div>() {
           }
         }
       }
+      open()
     }
   }
 }
