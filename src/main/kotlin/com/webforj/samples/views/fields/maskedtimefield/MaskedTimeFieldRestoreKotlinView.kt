@@ -33,7 +33,7 @@ class MaskedTimeFieldRestoreKotlinView: Composite<FlexLayout>() {
           isIconVisible = false
         }
       }
-      button("Reset Value", ButtonTheme.PRIMARY) {
+      button("Reset value", ButtonTheme.PRIMARY) {
         onClick { eventField.restoreValue() }
       }
     }

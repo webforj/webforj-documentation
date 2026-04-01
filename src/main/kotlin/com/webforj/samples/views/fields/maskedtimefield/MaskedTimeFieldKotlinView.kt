@@ -20,14 +20,14 @@ class MaskedTimeFieldKotlinView: Composite<FlexLayout>() {
     self.apply {
       direction = FlexDirection.COLUMN
       alignment = FlexAlignment.CENTER
-      margin = "var(--dwc-space-m)";
+      margin = "var(--dwc-space-m)"
       maskedTimeField("Meeting Time") {
         mask = "%h:%mz %p"
         value = LocalTime.now()
         maxWidth = 300.px
         helperText = "Meeting time is formatted as %h:%mz %p."
         picker {
-          isIconVisible = false;
+          isIconVisible = false
         }
       }
     }

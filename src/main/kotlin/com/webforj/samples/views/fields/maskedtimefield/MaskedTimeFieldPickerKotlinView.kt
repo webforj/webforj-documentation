@@ -20,7 +20,7 @@ class MaskedTimeFieldPickerKotlinView: Composite<FlexLayout>() {
     self.apply {
       direction = FlexDirection.COLUMN
       alignment = FlexAlignment.CENTER
-      margin = "var(--dwc-space-m)";
+      margin = "var(--dwc-space-m)"
       maskedTimeField("Meeting Time") {
         mask = "%hz:%mz %p"
         value = LocalTime.of(9, 30) // 9:30 AM
@@ -29,7 +29,7 @@ class MaskedTimeFieldPickerKotlinView: Composite<FlexLayout>() {
         isAllowCustomValue = false
         picker {
           isIconVisible = true
-          isAutoOpen = true;
+          isAutoOpen = true
         }
         whenAttached().thenAccept { picker.open() }
       }

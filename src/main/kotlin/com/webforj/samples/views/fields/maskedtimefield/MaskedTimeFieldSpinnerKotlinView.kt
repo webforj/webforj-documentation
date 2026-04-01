@@ -21,7 +21,7 @@ class MaskedTimeFieldSpinnerKotlinView: Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       alignment = FlexAlignment.CENTER
       spacing = "var(--dwc-space-m)"
-      margin = "var(--dwc-space-m)";
+      margin = "var(--dwc-space-m)"
       maskedTimeFieldSpinner("Available Time Slots") {
         spinField = SpinField.MINUTE
         mask = "%hz:%mz %p"
@@ -30,7 +30,7 @@ class MaskedTimeFieldSpinnerKotlinView: Composite<FlexLayout>() {
         max = LocalTime.of(17, 0)
         helperText = "<b>Min:</b> 09:00 AM, <b>Max:</b> 05:00 PM. Use the spinner to select a time."
         placeholder = "hh:mm AM/PM"
-        isAllowCustomValue = false;
+        isAllowCustomValue = false
         whenAttached().thenAccept { picker.open() }
       }
     }
