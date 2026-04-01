@@ -2,40 +2,49 @@ package com.webforj.samples.views.accordion;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.accordion.AccordionDisabledPage;
 import com.webforj.samples.views.BaseTest;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class AccordionDisabledViewIT extends BaseTest {
     private AccordionDisabledPage accordionDisabledPage;
 
-    @BeforeEach
-    public void setupAccordionDisabled() {
-        navigateToRoute(AccordionDisabledPage.getRoute());
+    public void setupAccordionDisabled(SupportedLanguage language) {
+        navigateToRoute(AccordionDisabledPage.getRoute(language));
         accordionDisabledPage = new AccordionDisabledPage(page);
     }
 
-    @Test
-    public void testDisabledPanelHasDisabledAttribute() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testDisabledPanelHasDisabledAttribute(SupportedLanguage language) {
+        setupAccordionDisabled(language);
         assertThat(accordionDisabledPage.getDisabledPanel()).hasAttribute("disabled", "");
     }
 
-    @Test
-    public void testDisabledOpenedPanelIsOpenedAndDisabled() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testDisabledOpenedPanelIsOpenedAndDisabled(SupportedLanguage language) {
+        setupAccordionDisabled(language);
         assertThat(accordionDisabledPage.getDisabledOpenedPanel()).hasAttribute("opened", "");
         assertThat(accordionDisabledPage.getDisabledOpenedPanel()).hasAttribute("disabled", "");
     }
 
-    @Test
-    public void testToggleButtonDisablesGroupPanels() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testToggleButtonDisablesGroupPanels(SupportedLanguage language) {
+        setupAccordionDisabled(language);
         accordionDisabledPage.getToggleButton().dispatchEvent("click");
         assertThat(accordionDisabledPage.getGroupPanelOne()).hasAttribute("disabled", "");
     }
 
-    @Test
-    public void testToggleButtonReEnablesGroupPanels() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testToggleButtonReEnablesGroupPanels(SupportedLanguage language) {
+        setupAccordionDisabled(language);
         accordionDisabledPage.getToggleButton().dispatchEvent("click");
         accordionDisabledPage.getToggleButton().dispatchEvent("click");
         assertThat(accordionDisabledPage.getGroupPanelOne()).not().hasAttribute("disabled", "");
