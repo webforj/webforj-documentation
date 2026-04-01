@@ -33,7 +33,7 @@ class TextAreaValidationKotlinView : Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       spacing = "var(--dwc-space-m)"
       margin = "50px auto"
-      maxWidth = "500px"
+      maxWidth = 500.px
       styles["padding"] = "var(--dwc-space-m)"
       styles["background-color"] = "var(--dwc-surface-3)"
       styles["border-radius"] = "var(--dwc-border-radius)"
@@ -58,7 +58,7 @@ class TextAreaValidationKotlinView : Composite<FlexLayout>() {
           styles["flex"] = "1 0 auto"
           prefixSlot { tablerIcon("ruler") }
           onValueChange { e ->
-            handleNumericChange(e.value, 1, 200) {
+            handleNumericChange(e.value, 1, 500) {
               maxLength = it
               textArea.maxLength = maxLength
             }
