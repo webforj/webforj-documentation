@@ -61,10 +61,8 @@ class TreeKotlinView: Composite<FlexLayout>() {
             treeNode("Beach.png") {
               tooltipText = "Beach photo"
             }
-            treeNode("Mountains") {
-              treeNode("Mountains.png") {
-                tooltipText = "Mountain photo"
-              }
+            treeNode("Mountains.png") {
+              tooltipText = "Mountain photo"
             }
           }
           treeNode("Events") {

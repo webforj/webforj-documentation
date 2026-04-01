@@ -77,12 +77,10 @@ class TreeIconsKotlinView: Composite<FlexLayout>() {
               setIcon(FeatherIcon.IMAGE.create())
               setSelectedIcon(FeatherIcon.IMAGE.create())
             }
-            treeNode("Mountains") {
-              treeNode("Mountains.png") {
-                tooltipText = "Mountain photo"
-                setIcon(FeatherIcon.IMAGE.create())
-                setSelectedIcon(FeatherIcon.IMAGE.create())
-              }
+            treeNode("Mountains.png") {
+              tooltipText = "Mountain photo"
+              setIcon(FeatherIcon.IMAGE.create())
+              setSelectedIcon(FeatherIcon.IMAGE.create())
             }
           }
           treeNode("Events") {
