@@ -27,9 +27,9 @@ class AccordionGroupKotlinView : Composite<FlexLayout>() {
       h3("Accordion Group (single mode)")
       paragraph("Only one panel can be open at a time.")
       accordion {
-        panel("What is webfroJ?", "webforJ is a Java framework for building web applications.", true)
-        panel("How do grouped panels work?", "Panels inside an Accordion are coordinated. By default, expanding one collapses  the others.")
-        panel("Can I have multiple groups?", "Yes, each Accordion instance manages its own set of panels indecently.")
+        panel("What is webforJ?", "webforJ is a Java framework for building web applications.", true)
+        panel("How do grouped panels work?", "Panels inside an Accordion are coordinated. By default, expanding one collapses the others.")
+        panel("Can I have multiple groups?", "Yes, each Accordion instance manages its own set of panels independently.")
       }
     }
   }
