@@ -40,9 +40,9 @@ class AccordionDisabledKotlinView : Composite<FlexLayout>() {
         isChecked = true
       }
       val accordion = accordion {
-        panel("Panel A", "This panel is opened.", true)
-        panel("Panel B", "This panel is also opened. Both can be open at the same time.")
-        panel("Panel C", "Content for panel C.")
+        panel("Panel One", "Content for panel one.", true)
+        panel("Panel Two", "Content for panel two.")
+        panel("Panel Three", "Content for panel three.")
       }
       toggle.onToggle { accordion.isEnabled = it.isToggled }
     }
