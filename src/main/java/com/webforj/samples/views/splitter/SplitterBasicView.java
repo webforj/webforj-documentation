@@ -10,12 +10,14 @@ import com.webforj.samples.components.SplitterBox;
 @Route
 @FrameTitle("Splitter Basics")
 public class SplitterBasicView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public SplitterBasicView() {
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
+
     Splitter splitter = new Splitter(master, detail);
 
-    getBoundComponent().add(splitter);
+    self.add(splitter);
   }
 }

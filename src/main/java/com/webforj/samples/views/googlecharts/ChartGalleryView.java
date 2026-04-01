@@ -9,97 +9,81 @@ import com.webforj.component.html.elements.Paragraph;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.views.googlecharts.types.*;
-import java.util.Arrays;
 import java.util.List;
 
 @StyleSheet("ws://css/googlecharts/chartGallery.css")
 @Route
 @FrameTitle("Chart Gallery")
 public class ChartGalleryView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   private static final String GITHUB_BASE_URL = "https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/";
 
   public ChartGalleryView() {
-    getBoundComponent().addClassName("chart-gallery");
+    self.addClassName("chart-gallery");
+    createCharts();
+  }
 
+  private void createCharts() {
     for (String chartKey : getChartKeys()) {
       GoogleChart chart = createChart(chartKey);
 
       if (chart != null) {
-        Div chartDiv = new Div();
-        chartDiv.addClassName("chart-div");
-
-        Paragraph chartName = new Paragraph();
-        String formattedTitle = formatTitle(chartKey);
-        chartName.setText(formattedTitle);
-        chartName.addClassName("chartname");
-        chartDiv.add(chartName);
-
-        chartDiv.add(chart);
-
-        Anchor chartLink = new Anchor();
-        chartLink.setHref(GITHUB_BASE_URL + formattedTitle.replace(" ", "") + ".java");
-        chartLink.setTarget("_blank");
-        chartLink.add(chartDiv);
-
-        getBoundComponent().add(chartLink);
+        self.add(createChartLink(chartKey, chart));
       }
     }
   }
 
+  private Anchor createChartLink(String chartKey, GoogleChart chart) {
+    String formattedTitle = formatTitle(chartKey);
+
+    Div chartDiv = new Div()
+        .addClassName("chart-div");
+
+    Paragraph chartName = new Paragraph()
+        .setText(formattedTitle)
+        .addClassName("chartname");
+
+    chartDiv.add(chartName, chart);
+
+    Anchor anchor = new Anchor();
+    anchor.setHref(GITHUB_BASE_URL + formattedTitle.replace(" ", "") + ".java");
+    anchor.setTarget("_blank");
+    anchor.add(chartDiv);
+    return anchor;
+  }
+
   private List<String> getChartKeys() {
-    return Arrays.asList("pie", "column", "bar", "line", "geo", "scatter", "histogram", "combo",
-                         "area", "stepped_area", "bubble", "org", "treemap", "table", "gauge",
-                         "candlestick", "sankey", "wordtree", "timeline", "calendar", "gantt");
+    return List.of("pie", "column", "bar", "line", "geo", "scatter", "histogram", "combo",
+        "area", "stepped_area", "bubble", "org", "treemap", "table", "gauge",
+        "candlestick", "sankey", "wordtree", "timeline", "calendar", "gantt");
   }
 
   private GoogleChart createChart(String chartKey) {
-    switch (chartKey.toLowerCase()) {
-      case "pie":
-        return new PieChart().getChart();
-      case "column":
-        return new ColumnChart().getChart();
-      case "bar":
-        return new BarChart().getChart();
-      case "line":
-        return new LineChart().getChart();
-      case "geo":
-        return new GeoChart().getChart();
-      case "scatter":
-        return new ScatterChart().getChart();
-      case "histogram":
-        return new HistogramChart().getChart();
-      case "combo":
-        return new ComboChart().getChart();
-      case "area":
-        return new AreaChart().getChart();
-      case "stepped_area":
-        return new SteppedAreaChart().getChart();
-      case "bubble":
-        return new BubbleChart().getChart();
-      case "org":
-        return new OrgChart().getChart();
-      case "treemap":
-        return new TreemapChart().getChart();
-      case "table":
-        return new TableChart().getChart();
-      case "gauge":
-        return new GaugeChart().getChart();
-      case "candlestick":
-        return new CandlestickChart().getChart();
-      case "sankey":
-        return new SankeyChart().getChart();
-      case "wordtree":
-        return new WordtreeChart().getChart();
-      case "timeline":
-        return new TimelineChart().getChart();
-      case "calendar":
-        return new CalendarChart().getChart();
-      case "gantt":
-        return new GanttChart().getChart();
-      default:
-        return null;
-    }
+    return switch (chartKey.toLowerCase()) {
+      case "pie" -> new PieChart().getChart();
+      case "column" -> new ColumnChart().getChart();
+      case "bar" -> new BarChart().getChart();
+      case "line" -> new LineChart().getChart();
+      case "geo" -> new GeoChart().getChart();
+      case "scatter" -> new ScatterChart().getChart();
+      case "histogram" -> new HistogramChart().getChart();
+      case "combo" -> new ComboChart().getChart();
+      case "area" -> new AreaChart().getChart();
+      case "stepped_area" -> new SteppedAreaChart().getChart();
+      case "bubble" -> new BubbleChart().getChart();
+      case "org" -> new OrgChart().getChart();
+      case "treemap" -> new TreemapChart().getChart();
+      case "table" -> new TableChart().getChart();
+      case "gauge" -> new GaugeChart().getChart();
+      case "candlestick" -> new CandlestickChart().getChart();
+      case "sankey" -> new SankeyChart().getChart();
+      case "wordtree" -> new WordtreeChart().getChart();
+      case "timeline" -> new TimelineChart().getChart();
+      case "calendar" -> new CalendarChart().getChart();
+      case "gantt" -> new GanttChart().getChart();
+      default -> null;
+    };
   }
 
   private String formatTitle(String title) {
@@ -110,7 +94,7 @@ public class ChartGalleryView extends Composite<Div> {
     StringBuilder formattedTitle = new StringBuilder();
 
     for (String word : words) {
-      if (word.length() > 0) {
+      if (!word.isEmpty()) {
         formattedTitle.append(Character.toUpperCase(word.charAt(0)))
                       .append(word.substring(1).toLowerCase())
                       .append(" ");

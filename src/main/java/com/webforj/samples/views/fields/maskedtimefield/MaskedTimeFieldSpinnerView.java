@@ -14,8 +14,8 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Time Field Spinner")
 public class MaskedTimeFieldSpinnerView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedTimeFieldSpinner appointmentField = new MaskedTimeFieldSpinner("Available Time Slots");
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedTimeFieldSpinner appointmentField = new MaskedTimeFieldSpinner("Available Time Slots");
 
   public MaskedTimeFieldSpinnerView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -23,8 +23,7 @@ public class MaskedTimeFieldSpinnerView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-m)");
 
-    appointmentField
-        .setSpinField(SpinField.MINUTE)
+    appointmentField.setSpinField(SpinField.MINUTE)
         .setMask("%hz:%mz %p")
         .setValue(LocalTime.of(9, 0))
         .setMin(LocalTime.of(9, 0))

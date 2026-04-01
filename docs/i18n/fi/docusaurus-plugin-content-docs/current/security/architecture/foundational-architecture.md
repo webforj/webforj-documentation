@@ -1,26 +1,26 @@
 ---
 sidebar_position: 2
 title: Foundational Architecture
-_i18n_hash: 53db76e19a5bfcf2e476ac1efaaa2c48
+_i18n_hash: 0506f859c3bd22ddca70550b6f3e368a
 ---
-WebforJ:n turvallisuusjärjestelmä perustuu ydinkäyttöliittymien pohjalle, jotka toimivat yhdessä tarjotakseen reittikohtaista pääsynhallintaa. Nämä käyttöliittymät määrittelevät turvallisuuskäyttäytymisen sopimukset, jolloin erilaiset toteutukset, olipa kyseessä sessioon perustuva, JSON Web Tokenien (JWT) käyttöön perustuva, LDAP-integroitu tai tietokannan tukema, voivat liittää itseensä samaan taustarakenteeseen.
+webforJ -turvajärjestelmä perustuu ydinliittymien perusrakenteeseen, joka toimii yhdessä tarjotakseen reittikohtaista pääsynvalvontaa. Nämä liittymät määrittelevät turvallisuuskäyttäytymiseen liittyvät sopimukset, jolloin erilaiset toteutukset, olivatpa ne istuntopohjaisia, JSON Web Tokeneihin (JWT) perustuvia, LDAP-integroituja tai tietokantapohjaisia, voivat liittää samaan perustavaan kehykseen.
 
-Tämän arkkitehtuurin ymmärtäminen auttaa sinua näkemään, miten turvallisuusannot kuten `@RolesAllowed` ja `@PermitAll` arvioidaan, miten navigoinnin keskeytys toimii ja miten voit rakentaa mukautettuja turvallisuustoteutuksia erityistarpeidesi mukaan.
+Tämän arkkitehtuurin ymmärtäminen auttaa sinua näkemään, miten turvallisuusannotaatioita, kuten `@RolesAllowed` ja `@PermitAll`, arvioidaan, miten navigoinnin keskeyttäminen toimii, ja miten voit rakentaa mukautettuja turvallisuustoteutuksia erityistarpeitasi varten.
 
-## Ydinkäyttöliittymät {#the-four-core-interfaces}
+## Ydinliittymät {#the-four-core-interfaces}
 
-Turvallisuuden perusta rakennetaan keskeisten abstrahoituneiden käsitteiden varaan, joilla jokaisella on tietty vastuualue:
+Turvallisuuden perusta rakentuu tärkeiden abstrahointien varaan, joilla jokaisella on erityinen vastuu:
 
 ### `RouteSecurityManager` {#routesecuritymanager}
 
-`RouteSecurityManager` on turvallisuusjärjestelmän keskeinen koordinaattori. Se hallinnoi turvallisuusarvioijia, ohjaa arviointiprosessia ja käsittelee pääsyn kiellon ohjaamalla käyttäjiä asianmukaisille sivuille.
+`RouteSecurityManager` on turvallisuusjärjestelmän keskeinen koordinaattori. Se hallinnoi turvallisuusarvioijia, koordinoi arviointiprosessia ja käsittelee pääsyn kieltoja ohjaamalla käyttäjiä asianmukaisille sivuille.
 
 **Vastuut:**
 
-- Rekisteröi ja hallinnoi turvallisuusarvioijia prioriteettien mukaan
-- Koordinoi arviointiprosessia, kun käyttäjä navigoi reittiä
-- Käsittele pääsyn kieltoa laukaisemalla ohjauksia kirjautumis- tai pääsy kielletään -sivuille
-- Tallenna ja hae ennakkovaatimusten sijainteja kirjautumisen jälkeisiä ohjauksia varten
+- Rekisteröi ja hallinnoi turvallisuusarvioijia prioriteeteilla
+- Koordinoi arviointiprosessia, kun käyttäjä navigoi reitille
+- Käsittelee pääsyn kieltoja käynnistämällä uudelleenohjaukset kirjautumis- tai pääsykieltosivuille
+- Tallentaa ja palauttaa ennakkovalmistellen paikkoja kirjautumisen jälkeisiin uudelleenohjauksiin
 
 ```java
 public interface RouteSecurityManager {
@@ -33,18 +33,18 @@ public interface RouteSecurityManager {
 }
 ```
 
-Johtaja ei tee turvallisuuspäätöksiä itse, vaan delegoi arvioijille ja konfiguraatioille. Se on liima, joka yhdistää kaikki turvallisuuskontaktit.
+Johtaja ei tee turvallisuuspäätöksiä itse, vaan delegoi arvioijille ja määrityksille. Se on liima, joka yhdistää kaikki turvallisuuskomponentit.
 
 ### `RouteSecurityContext` {#routesecuritycontext}
 
-`RouteSecurityContext` tarjoaa pääsyn nykyisen käyttäjän todennustilaan. Se vastaa kysymyksiin, kuten onko käyttäjä todennettu, mikä on hänen käyttäjänimensä ja onko hänellä `ADMIN`-rooli.
+`RouteSecurityContext` tarjoaa pääsyn nykyisen käyttäjän todennus-tilaan. Se vastaa kysymyksiin, kuten onko käyttäjä todennettu, mikä heidän käyttäjänimensä on, ja onko heillä `ADMIN`-rooli.
 
 **Vastuut:**
 
 - Määritä, onko nykyinen käyttäjä todennettu
-- Tarjoa käyttäjän päähenkilö (yleensä heidän käyttäjänimensä tai käyttäjäobjektinsa)
-- Tarkista, onko käyttäjällä tiettyjä rooleja tai valtuuksia
-- Tallenna ja hae mukautettuja turvallisuusattribuutteja
+- Tarjoa käyttäjän perimmäinen (tyypillisesti heidän käyttäjänimensä tai käyttäjäobjekti)
+- Tarkista, onko käyttäjällä erityisiä rooleja tai valtuuksia
+- Tallentaa ja palauttaa mukautettuja turvallisuusattribuutteja 
 
 ```java
 public interface RouteSecurityContext {
@@ -57,18 +57,18 @@ public interface RouteSecurityContext {
 }
 ```
 
-Toteutukset vaihtelevat käytettävän todennusjärjestelmän, HTTP-istunnon tallennuksen, otsikoista purettujen JWT-tokenien, tietokantakyselyjen, LDAP-hakuja tai muiden mekanismien mukaan.
+Toteutukset vaihtelevat riippuen todennusjärjestelmästä, HTTP-istuntotallennuksesta, päähakemistoista dekoodatuista JWT-tokenista, tietokantakyselyistä, LDAP-hauista tai muista mekanismeista.
 
 ### `RouteSecurityConfiguration` {#routesecurityconfiguration}
 
-`RouteSecurityConfiguration` määrittelee turvallisuuskäyttäytymisen ja ohjaussijainnit. Se kertoo turvallisuusjärjestelmälle, minne käyttäjiä lähetetään, kun todennusta vaaditaan tai pääsy on kielletty.
+`RouteSecurityConfiguration` määrittelee turvallisuuskäyttäytymisen ja uudelleenohjauspaikat. Se kertoo turvallisuusjärjestelmälle, minne käyttäjät lähetetään, kun todennusta vaaditaan tai pääsy on kielletty.
 
 **Vastuut:**
 
 - Määritä, onko turvallisuus käytössä
-- Määritä oletuksena turvallinen käyttäytyminen
-- Anna todennus sivun sijainti (yleensä `/login`)
-- Anna pääsy kielletty -sivun sijainti
+- Määritä oletusarvoinen käyttäytyminen turvallisena
+- Tarjoa todennus-sivun sijainti (tyypillisesti `/login`)
+- Tarjoa pääsykielto-sivun sijainti
 
 ```java
 public interface RouteSecurityConfiguration {
@@ -81,18 +81,18 @@ public interface RouteSecurityConfiguration {
 }
 ```
 
-Tämä käyttöliittymä erottuu turvallisuuspolitiikasta ja -valvonnasta. Voit muuttaa ohjaussijainteja tai kytkeä oletuksena turvallisen käyttäytymisen päälle ilman, että sinun tarvitsee muuttaa johtajaa tai arvioijia.
+Tämä liittymä erottaa turvallisuuspolitiikan turvallisuuden täytäntöönpanosta. Voit muuttaa uudelleenohjauspaikkoja tai kytkeä turvallisena oletusarvon ilman, että sinun tarvitsee muuttaa johtajaa tai arvioijia.
 
 ### `RouteSecurityEvaluator` {#routesecurityevaluator}
 
-`RouteSecurityEvaluator` on paikka, jossa todellisia turvallisuus sääntöjä tarkastellaan. Jokainen arvioija tutkii reittiä ja päättää, myönnetäänkö pääsy, kieltäytyminen vai siirretäänkö päätös seuraavalle arvioijalle ketjussa.
+`RouteSecurityEvaluator` on paikka, jossa varsinaiset turvallisuus säännöt tarkistetaan. Jokainen arvioija tarkastelee reittiä ja päättää, myönnetäänkö pääsy, evätäänkö pääsy vai delegoidaanko päätös seuraavalle arvioijalle ketjussa.
 
 **Vastuut:**
 
-- Määritä, käsitteleekö tämä arvioija annettua reittiä
-- Arvioi turvallisuusannot reittiluokassa
-- Myönnä pääsy, kiellä pääsy tai delegoi seuraavalle arvioijalle
-- Osallistu vastuuketjupatteriin
+- Määritä, käsittääkö tämä arvioija annetun reitin
+- Arvioi turvallisuusannotaatioita reittiluokassa
+- Myönnä pääsy, evä pääsy tai delegoi seuraavalle arvioijalle
+- Osallistu vastuuketjun malliin
 
 ```java
 public interface RouteSecurityEvaluator {
@@ -104,31 +104,31 @@ public interface RouteSecurityEvaluator {
 }
 ```
 
-Sisäänrakennetut arvioijat käsittelevät vakioanot kuten `@RolesAllowed`, `@PermitAll`, `@DenyAll`, ja `@AnonymousAccess`. Voit luoda mukautettuja arvioijia toteuttaaksesi aluekohtaisia turvallisuuslogiikoita.
+Sisäänrakennetut arvioijat käsittelevät standardiannotaatioita, kuten `@RolesAllowed`, `@PermitAll`, `@DenyAll` ja `@AnonymousAccess`. Voit luoda mukautettuja arvioijia toteuttaaksesi erityisesti tietyn alan turvallisuuslogiikkaa.
 
-## Kuinka käyttöliittymät toimivat yhdessä {#how-the-interfaces-work-together}
+## Kuinka liittymät toimivat yhdessä {#how-the-interfaces-work-together}
 
-Nämä neljä käyttöliittymää tekevät yhteistyötä navigoinnin aikana turvallissääntöjen valvomiseksi:
+Nämä neljä liittymää tekevät yhteistyötä navigoinnin aikana turvallisuussääntöjen täytäntöönpanemiseksi:
 
 ```mermaid
 flowchart TB
-    User["Käyttäjä navigoi reitille"] --> Observer["RouteSecurityObserver<br/>(keskeyttää navigoinnin)"]
-    Observer --> Manager["RouteSecurityManager<br/>(koordinoi arviointia)"]
+  User["Käyttäjä navigoi reitille"] --> Observer["RouteSecurityObserver<br/>(keskeyttää navigoinnin)"]
+  Observer --> Manager["RouteSecurityManager<br/>(koordinoi arviointia)"]
 
-    Manager --> Config["RouteSecurityConfiguration<br/>(antaa asetukset)"]
-    Manager --> Context["RouteSecurityContext<br/>(antaa käyttäjän tiedot)"]
-    Manager --> Chain["Evaluator Chain<br/>(suorittaa arvioijia prioriteettijärjestyksessä)"]
+  Manager --> Config["RouteSecurityConfiguration<br/>(antavat asetukset)"]
+  Manager --> Context["RouteSecurityContext<br/>(antavat käyttäjän tiedot)"]
+  Manager --> Chain["Arvioijaketju<br/>(suorittaa arvioijia prioriteetti järjestyksessä)"]
 
-    Chain --> Decision{"Pääsypäätös"}
-    Decision -->|"Myönnä"| Render["Renderoi komponentti"]
-    Decision -->|"Kieltäydy"| Redirect["RouteSecurityManager.onAccessDenied()<br/>Ohjaa kirjautumis- tai kiellettyyn sivuun"]
+  Chain --> Decision{"Pääsypäätös"}
+  Decision -->|"Myönnä"| Render["Renderointi komponentti"]
+  Decision -->|"Evä"| Redirect["RouteSecurityManager.onAccessDenied()<br/>Uudelleenohjaus kirjautumis- tai kieltosivulle"]
 ```
 
-Kun käyttäjä navigoi, `RouteSecurityObserver` keskeyttää navigoinnin ja pyytää `RouteSecurityManager`-yhteydessä arvioimaan pääsyä. Johtaja kuulee `RouteSecurityConfiguration`-asetuksia, saa käyttäätietori `RouteSecurityContext`-yhteydessä ja suorittaa jokaisen `RouteSecurityEvaluator`-yhteydessä prioriteetti-järjestyksessä kunnes yksi tekee päätöksen.
+Kun käyttäjä navigoi, `RouteSecurityObserver` keskeyttää navigoinnin ja pyytää `RouteSecurityManager`-toteutusta arvioimaan pääsyn. Johtaja konsultoi `RouteSecurityConfiguration`-toteutusta asetusten osalta, saa käyttäjtiedot `RouteSecurityContext`-toteutuksesta ja suorittaa jokaisen `RouteSecurityEvaluator`-toteutuksen prioriteetti-järjestyksessä, kunnes joku tekee päätöksen.
 
-## Käyttöliittymät sopimuksina {#the-interfaces-as-contracts}
+## Liittymät sopimuksina {#the-interfaces-as-contracts}
 
-Jokainen käyttöliittymä määrittelee sopimuksen, sarjan kysymyksiä, joihin turvallisuusjärjestelmän tulee saada vastaukset. **Miten** vastaat näihin kysymyksiin on toteutusvalintasi:
+Jokainen liittymä määrittelee sopimuksen, joukon kysymyksiä, joihin turvallisuusjärjestelmän tarvitaan vastauksia. **Miten** vastaat näihin kysymyksiin on sinun toteutuksesi valinta:
 
 **`RouteSecurityContext` sopimus:**
 
@@ -136,34 +136,34 @@ Jokainen käyttöliittymä määrittelee sopimuksen, sarjan kysymyksiä, joihin 
 - "Kuka on käyttäjä?" (`getPrincipal()`)
 - "Onko käyttäjällä rooli X?" (`hasRole()`)
 
-Päätät, mistä tämä tieto tulee: HTTP-istunnoista, otsikoista puretuista JWT-tokeneista, tietokantahauista, LDAP-kyselyistä tai muista todennuspalveluista.
+Päätät, mistä tämä tieto tulee: HTTP-istunnoista, päähakemistoista dekoodatuista JWT-tokenista, tietokantahauista, LDAP-hauista tai mistä tahansa muusta todennus taustasta.
 
 **`RouteSecurityConfiguration` sopimus:**
 
 - "Onko turvallisuus käytössä?" (`isEnabled()`)
-- "Pitäisikö reittien olla oletuksena turvallisia?" (`isSecureByDefault()`)
-- "Minne todennetut käyttäjät menevät?" (`getAuthenticationLocation()`)
+- "Pitäisikö reittien olla oletusarvoisesti turvallisia?" (`isSecureByDefault()`)
+- "Mihin todennetut käyttäjät pitäisi ohjata?" (`getAuthenticationLocation()`)
 
-Päätät, miten nämä arvot saadaan: kiinteinä, konfiguraatiotiedostoista, ympäristömuuttujista, tietokannasta tai laskemalla dynaamisesti.
+Päätät, miten nämä arvot saadaan: kovakoodattuina, konfiguraatiotiedostoista, ympäristömuuttujista, tietokannasta tai lasketaan dynaamisesti.
 
 **`RouteSecurityManager` sopimus:**
 
-- "Saako tämä käyttäjä käyttää tätä reittiä?" (`evaluate()`)
-- "Mitä tapahtuu, kun pääsy kielletään?" (`onAccessDenied()`)
-- "Mitkä arvioijat pitäisi suorittaa?" (`registerEvaluator()`)
+- "Pitäisikö tälle käyttäjälle myöntää pääsy tälle reitille?" (`evaluate()`)
+- "Mitä tapahtuu, kun pääsy evätään?" (`onAccessDenied()`)
+- "Mitä arvioijia pitäisi suorittaa?" (`registerEvaluator()`)
 
-Päätät todennusvirran, minne ennakkovaatimusten sijainti tallennetaan ja miten käsitellä mukautettuja kiellon skenaarioita.
+Päätät todennusprosessin, minne tallennetaan ennakkovalmistellut sijainnit ja miten käsitellään mukautettuja kieltoskenaarioita.
 
-Perusta-arkkitehtuuri määrittelee nämä sopimukset, mutta toteutus on joustavaa. Eri järjestelmät voivat toteuttaa nämä käyttöliittymät täysin eri tavoilla erityisvaatimusten mukaan.
+Perusta-arkkitehtuuri määrittelee nämä sopimukset, mutta toteutus on joustavaa. Eri järjestelmät voivat toteuttaa nämä liittymät täysin eri tavoilla erityisten vaatimusten mukaan.
 
 ## `AbstractRouteSecurityManager` perusluokka {#the-abstractroutesecuritymanager-base-class}
 
-Useimmat toteutukset eivät toteuta `RouteSecurityManager` suoraan. Sen sijaan ne laajentavat `AbstractRouteSecurityManager`, joka tarjoaa:
+Useimmat toteutukset eivät toteuta `RouteSecurityManager`-liittymää suoraan. Sen sijaan ne laajentavat `AbstractRouteSecurityManager`-luokkaa, joka tarjoaa:
 
-- Arvioijien rekisteröinti ja prioriteettipohjainen lajittelu
-- Ketjun suorituslogiikka
-- Pääsyn kieltämisen käsittely automaattisilla ohjauksilla
-- Ennakkovaatimusten sijainnin tallennus HTTP-istunnossa
-- Oletuksena turvallinen varakäyttäytyminen
+- Arvioijien rekisteröintiä ja prioriteetti-pohjaista lajittelua
+- Ketjun suorituslogiikkaa
+- Pääsyn kieltojen käsittely automaattisilla uudelleenohjauksilla
+- Ennakkovalmistellen sijaintien tallennus HTTP-istuntoon
+- Turvallisena oletusarvoisen käyttäytymisen varayhteys
 
-Perusluokka toteuttaa `RouteSecurityManager`-käyttöliittymän ja tarjoaa konkreettiset toteutukset arvioijien hallintaan, pääsyn arvioimiseen ja kiellon käsittelyyn. Alaluokkien tarvitsee vain tarjota turvallisuusyhteys ja konfiguraatio. Perusluokka hoitaa arvioijien hallinnan, ketjun suorituksen ja kiellon käsittelyn automaattisesti.
+Perusluokka toteuttaa `RouteSecurityManager`-liittymän ja tarjoaa konkreettisia toteutuksia arvioijien hallinnasta, pääsyn arvioinnista ja kieltojen käsittelyistä. Aliluokkien tarvitsee vain tarjota turvallisuuskonteksti ja -määritykset. Perusluokka käsittelee arvioijien hallintaa, ketjun suorittamista ja kieltojen käsittelyä automaattisesti.
