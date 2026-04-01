@@ -1,6 +1,7 @@
 package com.webforj.samples.views.splitter
 
 import com.webforj.component.Composite
+import com.webforj.component.html.elements.Div
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.splitter.detailSlot
 import com.webforj.kotlin.dsl.component.splitter.masterSlot
@@ -11,7 +12,7 @@ import com.webforj.samples.components.SplitterBox
 
 @Route
 @FrameTitle("Splitter Basics")
-class SplitterBasicKotlinView: Composite<FlexLayout>() {
+class SplitterBasicKotlinView: Composite<Div>() {
   private val self = boundComponent
 
   init {

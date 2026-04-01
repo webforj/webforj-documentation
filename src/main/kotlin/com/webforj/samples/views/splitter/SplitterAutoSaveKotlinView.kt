@@ -64,7 +64,7 @@ class SplitterAutoSaveKotlinView: Composite<Div>() {
           }
           detailSlot {
             splitter("bottomSplitter") {
-              positionRelative = 70.0
+              positionRelative = 75.0
               isAutosave = true
               masterSlot {
                 splitterBox("Bottom Left", SplitterBox.Theme.SUCCESS)
