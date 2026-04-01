@@ -41,7 +41,7 @@ class BadgeTabbedPaneKotlinView: Composite<FlexLayout>() {
       tab("Inbox") {
         suffixSlot { createBadge("12", BadgeTheme.PRIMARY, BadgeExpanse.XSMALL) }
         contentSlot {
-          paragraph("You have 12 messages in you inbox.")
+          paragraph("You have 12 messages in your inbox.")
         }
       }
       tab("Notifications") {
@@ -58,7 +58,7 @@ class BadgeTabbedPaneKotlinView: Composite<FlexLayout>() {
       }
       tab("Sent") {
         contentSlot {
-          paragraph("You sent messages.")
+          paragraph("Your sent messages.")
         }
       }
     }
@@ -66,7 +66,7 @@ class BadgeTabbedPaneKotlinView: Composite<FlexLayout>() {
 
   private fun FlexLayout.outlinedBadgePane() {
     tabbedPane {
-      tab("Taskes") {
+      tab("Tasks") {
         suffixSlot { createBadge("5", BadgeTheme.OUTLINED_PRIMARY, BadgeExpanse.XSMALL) }
         contentSlot {
           paragraph("Your pending tasks.")
@@ -81,7 +81,7 @@ class BadgeTabbedPaneKotlinView: Composite<FlexLayout>() {
       tab("Done") {
         suffixSlot { createBadge("24", BadgeTheme.OUTLINED_SUCCESS, BadgeExpanse.XSMALL) }
         contentSlot {
-          paragraph("Completed Items.")
+          paragraph("Completed items.")
         }
       }
     }

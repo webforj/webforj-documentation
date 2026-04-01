@@ -65,7 +65,6 @@ class BadgeIconsKotlinView: Composite<FlexLayout>() {
   private fun FlexLayout.iconOnlyRow() {
     flexLayout {
       horizontal()
-      wrap = FlexWrap.WRAP
       spacing = "var(--dwc-space-s)"
       alignment = FlexAlignment.CENTER
       badge {
