@@ -27,7 +27,7 @@ class NavigatorTableKotlinView: Composite<Div>() {
         flexLayout {
           vertical()
           table<MusicRecord> {
-            height = "400px"
+            height = 400.px
             addColumn("Number", MusicRecord::getNumber)
             addColumn("Title", MusicRecord::getTitle)
             addColumn("Artist", MusicRecord::getArtist)
