@@ -48,7 +48,7 @@ class ToolbarSlotsKotlinView: Composite<AppLayout>() {
             iconButton("settings", "tabler")
             iconButton("user", "tabler")
           }
-          h3("Toolbar Conent")
+          h3("Toolbar Content")
         }
       }
     }
