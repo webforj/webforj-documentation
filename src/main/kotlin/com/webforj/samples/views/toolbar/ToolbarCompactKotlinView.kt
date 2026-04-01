@@ -28,30 +28,30 @@ class ToolbarCompactKotlinView: Composite<AppLayout>() {
   init {
     self.apply {
       drawerPlacement = AppLayout.DrawerPlacement.HIDDEN
-      styles["--dwc-app-layout-hearer-height"] = 80.px
+      styles["--dwc-app-layout-header-height"] = 80.px
       h1("Application Title")
       paragraph("Content goes here")
       headerSlot {
         toolbar {
           titleSlot { h3("Application") }
           startSlot { appDrawerToggle() }
-          toolbar {
-            isCompact = true
-            tabbedPane {
-              isBorderless = true
-              isBodyHidden = true
-              tab("Sales") {
-                prefixSlot { tablerIcon("report-money") }
-              }
-              tab("Enterprise") {
-                prefixSlot { tablerIcon("building") }
-              }
-              tab("Payments") {
-                prefixSlot { tablerIcon("credit-card") }
-              }
-              tab("History") {
-                prefixSlot { tablerIcon("history") }
-              }
+        }
+        toolbar {
+          isCompact = true
+          tabbedPane {
+            isBorderless = true
+            isBodyHidden = true
+            tab("Sales") {
+              prefixSlot { tablerIcon("report-money") }
+            }
+            tab("Enterprise") {
+              prefixSlot { tablerIcon("building") }
+            }
+            tab("Payments") {
+              prefixSlot { tablerIcon("credit-card") }
+            }
+            tab("History") {
+              prefixSlot { tablerIcon("history") }
             }
           }
         }
