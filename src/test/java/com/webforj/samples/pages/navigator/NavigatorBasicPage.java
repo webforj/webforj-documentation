@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class NavigatorBasicPage {
 
@@ -18,15 +19,15 @@ public class NavigatorBasicPage {
 
     public NavigatorBasicPage(Page page) {
         this.page = page;
-        
+
         firstButton = page.getByLabel("Goto first page");
         prevButton = page.getByLabel("Goto previous page");
         nextButton = page.getByLabel("Goto next page");
         lastButton = page.getByLabel("Goto last page");
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public void clickFirst() {
