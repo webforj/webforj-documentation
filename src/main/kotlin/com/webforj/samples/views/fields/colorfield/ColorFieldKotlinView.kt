@@ -24,7 +24,7 @@ import java.awt.Color
 @Route
 @FrameTitle("Color Field Demo")
 class ColorFieldKotlinView: Composite<FlexLayout>() {
-  private val self = boundComponent;
+  private val self = boundComponent
   private val colorField: ColorField
   private val colors = Array<Div>(4) {
     Div().addClassName("colorDiv")
@@ -59,7 +59,7 @@ class ColorFieldKotlinView: Composite<FlexLayout>() {
     colors[0].setBackgroundColor(selected)
     val baseHue = getHue(selected)
     for (i in 1..3) {
-      val hue = (baseHue + i * 60) % 360;
+      val hue = (baseHue + i * 60) % 360
       colors[i].setBackgroundColor(Color.getHSBColor(hue / 360f, getSaturation(selected), getBrightness(selected)))
     }
   }
