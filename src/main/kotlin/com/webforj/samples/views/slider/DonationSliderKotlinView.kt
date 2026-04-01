@@ -28,7 +28,7 @@ class DonationSliderKotlinView: Composite<FlexLayout>() {
       justifyContent = FlexJustifyContent.CENTER
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-l)"
-      alignment = FlexAlignment.CENTER;
+      alignment = FlexAlignment.CENTER
       slider(max = 80, min = 0) {
         isTicksVisible = true
         majorTickSpacing = 10
@@ -54,12 +54,12 @@ class DonationSliderKotlinView: Composite<FlexLayout>() {
       }
       button("Confirm Donation", ButtonTheme.GRAY) {
         prefixSlot { tablerIcon("tip-jar-euro") }
-        onClick { showTestMessage(currentDonationValue) }
+        onClick { showToastMessage(currentDonationValue) }
       }
     }
   }
 
-  private fun showTestMessage(value: Int) {
+  private fun showToastMessage(value: Int) {
     Toast().apply {
       text = $$"Thank you for your generous contribution of $$$value!"
       placement = Toast.Placement.BOTTOM
