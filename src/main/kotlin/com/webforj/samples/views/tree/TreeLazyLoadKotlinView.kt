@@ -27,7 +27,7 @@ class TreeLazyLoadKotlinView: Composite<FlexLayout>() {
         styles["margin"] = "var(--dwc-space-l)"
         for (i in 1..4) {
           treeNode("Node $i") {
-            treeNode("<dwc-spinner></dwc-spinner") {
+            treeNode("<dwc-spinner></dwc-spinner>") {
               setUserData("spinner", true)
             }
           }

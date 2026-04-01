@@ -28,7 +28,7 @@ class TreeSelectionKotlinView: Composite<FlexLayout>() {
       styles["margin"] = "0 auto"
       styles["padding"] = "var(--dwc-space-l)"
       styles["overflow"] = "auto"
-      styles["height"] = "calc(100vh - 2 * var(--dwc-space-l)"
+      styles["height"] = "calc(100vh - 2 * var(--dwc-space-l))"
       val multiSelectToggle = switch("Enable Multi-selection", true)
       val tree = tree {
         selectionMode = Tree.SelectionMode.MULTIPLE
