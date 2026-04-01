@@ -2,6 +2,7 @@ package com.webforj.samples.pages.slider;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class SliderLabelsPage {
 
@@ -18,8 +19,8 @@ public class SliderLabelsPage {
         this.fortyDegreeOption = page.getByText("40");
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getTenDegreeOption() {
