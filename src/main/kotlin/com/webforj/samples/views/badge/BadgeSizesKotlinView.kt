@@ -1,6 +1,5 @@
 package com.webforj.samples.views.badge
 
-import com.basis.bbj.comm.w
 import com.webforj.component.Composite
 import com.webforj.component.badge.BadgeExpanse
 import com.webforj.component.badge.BadgeTheme
