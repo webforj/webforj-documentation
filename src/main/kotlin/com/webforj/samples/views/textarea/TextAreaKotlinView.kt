@@ -48,11 +48,9 @@ class TextAreaKotlinView : Composite<FlexLayout>() {
         val charCount = paragraph {
           styles["font-size"] = "12px"
           styles["color"] = "var(--dwc-color-gray-text)"
-          feedbackArea.onValueChange {
-            updateCharCount(feedbackArea.value)
-          }
           updateCharCount(feedbackArea.value)
         }
+        feedbackArea.onValueChange { charCount.updateCharCount(feedbackArea.value) }
         button("Submit Feedback", ButtonTheme.GRAY) {
           onClick {
             feedbackArea.value.trim().takeIf { it.isNotEmpty() }?.let {
