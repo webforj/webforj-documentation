@@ -14,8 +14,7 @@ import java.util.List;
 public final class TextPredictionService {
   private static final String API_URL = "https://api.datamuse.com/sug?s=";
 
-  private TextPredictionService() {
-  }
+  private TextPredictionService() {}
 
   /**
    * Fetches the best suggestion from the API.
@@ -25,45 +24,47 @@ public final class TextPredictionService {
    * @throws Exception If the API call fails
    */
   public static String predict(String input) throws Exception {
-    String urlString = API_URL + URLEncoder.encode(input, StandardCharsets.UTF_8.toString()) + "*";
+    String urlString = API_URL + URLEncoder.encode(input, StandardCharsets.UTF_8) + "*";
     URL url = new URL(urlString);
+
     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
     conn.setRequestMethod("GET");
 
-    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-    String inputLine;
-    StringBuilder content = new StringBuilder();
-    while ((inputLine = in.readLine()) != null) {
-      content.append(inputLine);
+    try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+      String content = in.lines().reduce("", String::concat);
+
+      // Parse JSON response using Gson
+      Gson gson = new Gson();
+      List<WordSuggestion> suggestions = gson.fromJson(content,
+          new TypeToken<List<WordSuggestion>>() {}.getType());
+
+      // Find the word with the highest score using Stream API
+      return suggestions.stream()
+          .map(WordSuggestion::word)
+          .max((a, b) -> Integer.compare(
+              suggestions.stream().filter(s -> s.word().equals(a)).findFirst().orElse(WordSuggestion.empty()).score(),
+              suggestions.stream().filter(s -> s.word().equals(b)).findFirst().orElse(WordSuggestion.empty()).score()))
+          .orElse("");
+    } finally {
+      conn.disconnect();
     }
-    in.close();
-    conn.disconnect();
-
-    // Parse JSON response
-    Gson gson = new Gson();
-    List<WordSuggestion> suggestions = gson.fromJson(content.toString(), new TypeToken<List<WordSuggestion>>() {
-    }.getType());
-
-    // Find the word with the highest score
-    WordSuggestion bestSuggestion = suggestions.stream()
-        .max((a, b) -> Integer.compare(a.getScore(), b.getScore())).orElse(new WordSuggestion());
-
-    return bestSuggestion.getWord();
   }
 
   /**
-   * Represents a suggestion with a score.
+   * Represents a suggestion with a word and score.
+   * Using Java record for immutable data carrier.
    */
-  public static final class WordSuggestion {
-    private String word = "";
-    private int score = 0;
-
-    public String getWord() {
-      return word;
+  public record WordSuggestion(String word, int score) {
+    // Compact record constructor with validation
+    public WordSuggestion {
+      if (word == null) {
+        word = "";
+      }
     }
 
-    public int getScore() {
-      return score;
+    // Static factory method for default empty suggestion
+    public static WordSuggestion empty() {
+      return new WordSuggestion("", 0);
     }
   }
 }

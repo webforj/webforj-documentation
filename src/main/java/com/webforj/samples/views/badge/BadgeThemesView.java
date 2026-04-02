@@ -7,9 +7,11 @@ import com.webforj.component.html.elements.H3;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 @Route
 @FrameTitle("Badge - Themes")
@@ -18,40 +20,38 @@ public class BadgeThemesView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public BadgeThemesView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+      .setSpacing("var(--dwc-space-m)")
+      .setPadding("var(--dwc-space-l)")
+      .setMargin("0 auto")
+      .setMaxWidth("700px");
 
-    self.add(new H3("Default"));
-    self.add(createRow(
-        new Badge("Default", BadgeTheme.DEFAULT),
-        new Badge("Primary", BadgeTheme.PRIMARY),
-        new Badge("Success", BadgeTheme.SUCCESS),
-        new Badge("Warning", BadgeTheme.WARNING),
-        new Badge("Danger", BadgeTheme.DANGER),
-        new Badge("Info", BadgeTheme.INFO),
-        new Badge("Gray", BadgeTheme.GRAY)));
+    FlexLayout solidRow = createBadgeRow();
+    FlexLayout outlineRow = createBadgeRow();
 
-    self.add(new H3("Outlined"));
-    self.add(createRow(
-        new Badge("Default", BadgeTheme.OUTLINED_DEFAULT),
-        new Badge("Primary", BadgeTheme.OUTLINED_PRIMARY),
-        new Badge("Success", BadgeTheme.OUTLINED_SUCCESS),
-        new Badge("Warning", BadgeTheme.OUTLINED_WARNING),
-        new Badge("Danger", BadgeTheme.OUTLINED_DANGER),
-        new Badge("Info", BadgeTheme.OUTLINED_INFO),
-        new Badge("Gray", BadgeTheme.OUTLINED_GRAY)));
+    for (BadgeTheme theme : BadgeTheme.values()) {
+      String themeName = theme.name();
+      if (themeName.startsWith("OUTLINED")) {
+        String text = themeName.split("_")[1];
+        String name = text.transform(s ->
+          s.charAt(0) + s.substring(1).toLowerCase());
+        outlineRow.add(new Badge(name, theme));
+      } else {
+        String name = themeName.transform(s ->
+          s.charAt(0) + s.substring(1).toLowerCase());
+        solidRow.add(new Badge(name, theme));
+      }
+    }
 
+    self.add(new H3("Default"), solidRow, new H3("Outlined"), outlineRow);
   }
 
-  private FlexLayout createRow(Badge... badges) {
-    FlexLayout row = FlexLayout.create().horizontal().build();
-    row.setSpacing("var(--dwc-space-s)");
-    row.setWrap(FlexWrap.WRAP);
-    row.setAlignment(FlexAlignment.CENTER);
-    row.add(badges);
-    return row;
+  private FlexLayout createBadgeRow() {
+    return FlexLayout.create()
+      .horizontal()
+      .wrap()
+      .build()
+      .setSpacing("var(--dwc-space-s)")
+      .setAlignment(FlexAlignment.CENTER);
   }
 }

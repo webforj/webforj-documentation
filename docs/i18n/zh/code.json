@@ -395,7 +395,7 @@
   },
   "theme.SearchPage.algoliaLabel": {
     "message": "通过Algolia搜索",
-    "description": "The ARIA label for Algolia mention"
+    "description": "The description label for Algolia mention"
   },
   "theme.SearchPage.noResultsText": {
     "message": "未找到结果",
@@ -423,15 +423,15 @@
   },
   "theme.SearchModal.startScreen.noRecentSearchesText": {
     "message": "没有最近的搜索",
-    "description": "The text when no recent searches"
+    "description": "The text when there are no recent searches"
   },
   "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
     "message": "保存此搜索",
-    "description": "The label for save recent search button"
+    "description": "The title for save recent search button"
   },
   "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
     "message": "从历史中移除此搜索",
-    "description": "The label for remove recent search button"
+    "description": "The title for remove recent search button"
   },
   "theme.SearchModal.startScreen.favoriteSearchesTitle": {
     "message": "收藏",
@@ -439,63 +439,63 @@
   },
   "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
     "message": "从收藏夹中移除此搜索",
-    "description": "The label for remove favorite search button"
+    "description": "The title for remove favorite search button"
   },
   "theme.SearchModal.errorScreen.titleText": {
     "message": "无法获取结果",
-    "description": "The title for error screen of search modal"
+    "description": "The title for error screen"
   },
   "theme.SearchModal.errorScreen.helpText": {
     "message": "请检查您的网络连接。",
-    "description": "The help text for error screen of search modal"
+    "description": "The help text for error screen"
   },
   "theme.SearchModal.footer.selectText": {
     "message": "选择",
-    "description": "The explanatory text of the action for the enter key"
+    "description": "The select text for footer"
   },
   "theme.SearchModal.footer.selectKeyAriaLabel": {
     "message": "确认键",
-    "description": "The ARIA label for the Enter key button that makes the selection"
+    "description": "The ARIA label for select key in footer"
   },
   "theme.SearchModal.footer.navigateText": {
     "message": "导航",
-    "description": "The explanatory text of the action for the Arrow up and Arrow down key"
+    "description": "The navigate text for footer"
   },
   "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
     "message": "向上箭头",
-    "description": "The ARIA label for the Arrow up key button that makes the navigation"
+    "description": "The ARIA label for navigate up key in footer"
   },
   "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
     "message": "向下箭头",
-    "description": "The ARIA label for the Arrow down key button that makes the navigation"
+    "description": "The ARIA label for navigate down key in footer"
   },
   "theme.SearchModal.footer.closeText": {
     "message": "关闭",
-    "description": "The explanatory text of the action for Escape key"
+    "description": "The close text for footer"
   },
   "theme.SearchModal.footer.closeKeyAriaLabel": {
     "message": "退出键",
-    "description": "The ARIA label for the Escape key button that close the modal"
+    "description": "The ARIA label for close key in footer"
   },
   "theme.SearchModal.footer.searchByText": {
     "message": "按…搜索",
-    "description": "The text explain that the search is making by Algolia"
+    "description": "The 'Powered by' text for footer"
   },
   "theme.SearchModal.noResultsScreen.noResultsText": {
     "message": "没有结果 для",
-    "description": "The text explains that there are no results for the following search"
+    "description": "The text when there are no results"
   },
   "theme.SearchModal.noResultsScreen.suggestedQueryText": {
     "message": "尝试搜索",
-    "description": "The text for the suggested query when no results are found for the following search"
+    "description": "The text for suggested query"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
     "message": "相信此查询应该返回结果？",
-    "description": "The text for the question where the user thinks there are missing results"
+    "description": "The text for reporting missing results"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
     "message": "告诉我们。",
-    "description": "The text for the link to report missing results"
+    "description": "The link text for reporting missing results"
   },
   "theme.SearchModal.placeholder": {
     "message": "搜索文档",
@@ -712,5 +712,165 @@
   "componentArchetype.finalInstruction": {
     "message": "运行该命令后，Maven 将生成运行项目所需的项目文件。",
     "description": "Final instruction about Maven generating project files"
+  },
+  "running-the-app": {
+    "message": "Running the app",
+    "description": "Running the app title"
+  },
+  "component.archetype.running.app.desc": {
+    "message": "Before running your app, install the {prerequisites} if you haven't yet. Then, navigate to the project's root directory and run the following command:",
+    "description": "Running the app description"
+  },
+  "component.archetype.mvn.shorthand.title": {
+    "message": "Full maven command",
+    "description": "Full maven command note title"
+  },
+  "component.archetype.mvn.command.desc": {
+    "message": "The shorthand mvn command works because the archetype's POM file includes a {default} configuration that automatically runs the appropriate goal for your project type. If your project doesn't have {default}, run the following:",
+    "description": "Full maven command note description"
+  },
+  "component.archetype.browser.desc": {
+    "message": "Once the server is running, open your browser and go to {localhost} to view the app.",
+    "description": "running in the browser text"
+  },
+  "chip.tooltipText.shadow": {
+    "message": "此组件使用 Shadow DOM 渲染，这是浏览器内置的 API，便于封装。",
+    "description": "Hover text for components that render with a shadow DOM (document object model)"
+  },
+  "chip.label.shadow": {
+    "message": "阴影",
+    "description": "Label to indicate a shadow DOM (document object model)"
+  },
+  "chip.tooltipText.name": {
+    "message": "该网页组件在DOM中的名称。",
+    "description": "Hover text to explain how the web component will appear in the DOM (document object model)"
+  },
+  "chip.tooltipText.since": {
+    "message": "此功能适用于 webforJ {version} 及更高版本。",
+    "description": "Hover text to explain what version of webforJ you need to use the feature."
+  },
+  "chip.tooltipText.webforJ.version.snapshot": {
+    "message": "此功能将在未来的版本中提供。",
+    "description": "Hover text to explain this feature is only available in a snapshot version of webforJ."
+  },
+  "chip.tooltipText.scoped": {
+    "message": "此组件使用作用域组件，作为一种替代影子DOM的方法，浏览器API用于实现封装。这些组件将样式作用域设置，以避免泄漏或冲突，而不是依赖于本地影子DOM。",
+    "description": "Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model)."
+  },
+  "chip.label.scoped": {
+    "message": "范围",
+    "description": "Label to show this component uses scoped components."
+  },
+  "chip.tooltipText.experimental": {
+    "message": "这是一个实验性功能，未来版本可能会有所更改。",
+    "description": "Hover text to explain this feature is experimental and subject to change."
+  },
+  "chip.label.experimental": {
+    "message": "实验性",
+    "description": "Label to show this component is experimental."
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(opens in new tab)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.SearchModal.searchBox.placeholderText": {
+    "message": "Search docs",
+    "description": "The placeholder text for the main search input field"
+  },
+  "theme.SearchModal.searchBox.placeholderTextAskAi": {
+    "message": "Ask another question...",
+    "description": "The placeholder text when in AI question mode"
+  },
+  "theme.SearchModal.searchBox.placeholderTextAskAiStreaming": {
+    "message": "Answering...",
+    "description": "The placeholder text for search box when AI is streaming an answer"
+  },
+  "theme.SearchModal.searchBox.enterKeyHint": {
+    "message": "search",
+    "description": "The hint for the search box enter key text"
+  },
+  "theme.SearchModal.searchBox.enterKeyHintAskAi": {
+    "message": "enter",
+    "description": "The hint for the Ask AI search box enter key text"
+  },
+  "theme.SearchModal.searchBox.searchInputLabel": {
+    "message": "Search",
+    "description": "The ARIA label for search input"
+  },
+  "theme.SearchModal.searchBox.backToKeywordSearchButtonText": {
+    "message": "Back to keyword search",
+    "description": "The text for back to keyword search button"
+  },
+  "theme.SearchModal.searchBox.backToKeywordSearchButtonAriaLabel": {
+    "message": "Back to keyword search",
+    "description": "The ARIA label for back to keyword search button"
+  },
+  "theme.SearchModal.startScreen.recentConversationsTitle": {
+    "message": "Recent conversations",
+    "description": "The title for recent conversations"
+  },
+  "theme.SearchModal.startScreen.removeRecentConversationButtonTitle": {
+    "message": "Remove this conversation from history",
+    "description": "The title for remove recent conversation button"
+  },
+  "theme.SearchModal.resultsScreen.askAiPlaceholder": {
+    "message": "Ask AI: ",
+    "description": "The placeholder text for Ask AI input"
+  },
+  "theme.SearchModal.askAiScreen.disclaimerText": {
+    "message": "Answers are generated with AI which can make mistakes. Verify responses.",
+    "description": "The disclaimer text for AI answers"
+  },
+  "theme.SearchModal.askAiScreen.relatedSourcesText": {
+    "message": "Related sources",
+    "description": "The text for related sources"
+  },
+  "theme.SearchModal.askAiScreen.thinkingText": {
+    "message": "Thinking...",
+    "description": "The text when AI is thinking"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonText": {
+    "message": "Copy",
+    "description": "The text for copy button"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonCopiedText": {
+    "message": "Copied!",
+    "description": "The text for copy button when copied"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonTitle": {
+    "message": "Copy",
+    "description": "The title for copy button"
+  },
+  "theme.SearchModal.askAiScreen.likeButtonTitle": {
+    "message": "Like",
+    "description": "The title for like button"
+  },
+  "theme.SearchModal.askAiScreen.dislikeButtonTitle": {
+    "message": "Dislike",
+    "description": "The title for dislike button"
+  },
+  "theme.SearchModal.askAiScreen.thanksForFeedbackText": {
+    "message": "Thanks for your feedback!",
+    "description": "The text for thanks for feedback"
+  },
+  "theme.SearchModal.askAiScreen.preToolCallText": {
+    "message": "Searching...",
+    "description": "The text before tool call"
+  },
+  "theme.SearchModal.askAiScreen.duringToolCallText": {
+    "message": "Searching for ",
+    "description": "The text during tool call"
+  },
+  "theme.SearchModal.askAiScreen.afterToolCallText": {
+    "message": "Searched for",
+    "description": "The text after tool call"
+  },
+  "theme.SearchModal.footer.submitQuestionText": {
+    "message": "Submit question",
+    "description": "The submit question text for footer"
+  },
+  "theme.SearchModal.footer.backToSearchText": {
+    "message": "Back to search",
+    "description": "The back to search text for footer"
   }
 }

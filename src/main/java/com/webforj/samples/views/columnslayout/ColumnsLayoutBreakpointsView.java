@@ -13,16 +13,16 @@ import java.util.List;
 @Route
 @FrameTitle("Columns Layout Breakpoints")
 public class ColumnsLayoutBreakpointsView extends Composite<Div> {
-  TextField firstName = new TextField("First Name");
-  TextField lastName = new TextField("Last Name");
-  TextField email = new TextField("Email");
-  PasswordField password = new PasswordField("Password");
-  PasswordField confirmPassword = new PasswordField("Confirm Password");
-  /**
-   * The layout will position the components in 3 columns by default.
-   * on medium screens, it will span 2 the email field 2 columns.
-   */
-  ColumnsLayout columnsLayout = new ColumnsLayout(
+  private final Div self = getBoundComponent();
+  private final TextField firstName = new TextField("First Name");
+  private final TextField lastName = new TextField("Last Name");
+  private final TextField email = new TextField("Email");
+  private final PasswordField password = new PasswordField("Password");
+  private final PasswordField confirmPassword = new PasswordField("Confirm Password");
+
+  // The layout will position the components in 3 columns by default.
+  // On medium screens, it will span the email field to 2 columns.
+  private final ColumnsLayout columnsLayout = new ColumnsLayout(
       List.of(
           new ColumnsLayout.Breakpoint("default", 0, 1),
           new ColumnsLayout.Breakpoint("small", "20em", 1),
@@ -33,10 +33,10 @@ public class ColumnsLayoutBreakpointsView extends Composite<Div> {
   public ColumnsLayoutBreakpointsView() {
     columnsLayout.setStyle("padding", "var(--dwc-space-xl)");
 
-    getBoundComponent().setMaxWidth("60em");
-    getBoundComponent().setStyle("margin", "0 auto");
-    getBoundComponent().setStyle("overflow", "auto");
-    getBoundComponent().setStyle("height", "100dvh");
-    getBoundComponent().add(columnsLayout);
+    self.setMaxWidth("60em")
+        .setStyle("margin", "0 auto")
+        .setStyle("overflow", "auto")
+        .setStyle("height", "100dvh")
+        .add(columnsLayout);
   }
 }
