@@ -6,7 +6,7 @@ _i18n_hash: 6d09e8327e3391cedd4e8059d9390d09
 El enrutamiento en webforJ es una herramienta opcional. Los desarrolladores pueden elegir entre la solución de enrutamiento de webforJ o un modelo tradicional con manipulación de `Frame` y sin enlaces profundos. Para habilitar el enrutamiento, se debe aplicar la anotación **`@Routify`** a nivel de la clase que implementa `App`. Esto otorga a webforJ la autoridad para gestionar el historial del navegador, responder a eventos de navegación y renderizar los componentes de la aplicación según la URL.
 
 :::info
-Para obtener más información acerca de la construcción de interfaces de usuario utilizando frames, componentes integrados y personalizados, visita la sección [Building UIs](../building-ui/basics).
+Para obtener más información acerca de la construcción de interfaces de usuario utilizando frames, componentes integrados y personalizados, visita la sección [Building UIs](/docs/building-ui/overview).
 :::
 
 ## Propósito de la Anotación `@Routify` {#purpose-of-the-routify-annotation}

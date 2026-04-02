@@ -6,7 +6,7 @@ _i18n_hash: 6d09e8327e3391cedd4e8059d9390d09
 Routing webforJ:ssä on valinnainen työkalu. Kehittäjät voivat valita webforJ-reititysrationaalin tai perinteisen mallin, jossa käytetään `Frame`-manipulaatiota ilman syvälinkitystä. Reitityksen mahdollistamiseksi **`@Routify`**-annotaatio on käytettävä luokalla, joka toteuttaa `App`. Tämä antaa webforJ:lle oikeuden hallita selainhistoriaa, reagoida navigointitapahtumiin ja renderöidä sovelluksen komponentit URL-osoitteen perusteella.
 
 :::info
-Lisätietoja käyttöliittymien rakentamisesta kehyksillä, sisäänrakennetuilla ja mukautetuilla komponenteilla saat vierailemalla [Käyttöliittymien rakentaminen](../building-ui/basics) -osiossa.
+Lisätietoja käyttöliittymien rakentamisesta kehyksillä, sisäänrakennetuilla ja mukautetuilla komponenteilla saat vierailemalla [Käyttöliittymien rakentaminen](/docs/building-ui/overview) -osiossa.
 :::
 
 ## `@Routify`-annotaation tarkoitus {#purpose-of-the-routify-annotation}

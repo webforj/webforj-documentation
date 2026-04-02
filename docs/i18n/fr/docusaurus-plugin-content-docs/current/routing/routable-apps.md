@@ -6,7 +6,7 @@ _i18n_hash: 6d09e8327e3391cedd4e8059d9390d09
 Le routage dans webforJ est un outil optionnel. Les développeurs peuvent choisir entre la solution de routage webforJ ou un modèle traditionnel avec manipulation de `Frame` et sans lien profond. Pour activer le routage, l'annotation **`@Routify`** doit être appliquée au niveau d'une classe implémentant `App`. Cela confère à webforJ l'autorité de gérer l'historique du navigateur, de répondre aux événements de navigation et de rendre les composants de l'application en fonction de l'URL.
 
 :::info
-Pour en savoir plus sur la création d'interfaces utilisateurs à l'aide de cadres, de composants intégrés et personnalisés, consultez la section [Building UIs](../building-ui/basics).
+Pour en savoir plus sur la création d'interfaces utilisateurs à l'aide de cadres, de composants intégrés et personnalisés, consultez la section [Building UIs](/docs/building-ui/overview).
 :::
 
 ## Objectif de l'annotation `@Routify` {#purpose-of-the-routify-annotation}
