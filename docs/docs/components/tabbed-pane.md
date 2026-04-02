@@ -197,7 +197,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="250px"
 />
 
-<TableBuilder name="TabbedPane" />
+<TableBuilder name={['Tab', 'TabbedPane']} />
 
 ## Best practices {#best-practices}
 
