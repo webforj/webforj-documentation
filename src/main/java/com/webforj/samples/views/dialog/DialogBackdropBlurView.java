@@ -1,6 +1,5 @@
 package com.webforj.samples.views.dialog;
 
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.dialog.Dialog;
@@ -8,25 +7,20 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.utilities.Assets;
 
-@InlineStyleSheet(id = "login-form", value = /* css */"""
-    .loginForm {
-      background-color: #263238;
-      background-image: url(https://images.pling.com/img/00/00/59/97/06/1588511/1c58fba17fc4c48cd52cf17dd3f36556396e73e34a3d37e5aec6098ccdb01f3d1867.jpg);
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-    }
-  """)
 @Route
 @FrameTitle("Dialog Backdrop Blur")
 public class DialogBackdropBlurView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Dialog dialog = new Dialog();
   private final Button backgroundBlur = new Button("Toggle Background Blur");
+  private String modalSource = Assets.resolveWebServerUrl("ws://fun.svg");
+  private String cssValue = "center / 50% no-repeat url(" + modalSource + ")";
 
   public DialogBackdropBlurView() {
     self.add(dialog);
-    dialog.addClassName("loginForm")
+    dialog.setStyle("background", cssValue)
         .addToHeader(new Div("Background Blur"))
         .addToContent(backgroundBlur)
         .setCloseable(false)

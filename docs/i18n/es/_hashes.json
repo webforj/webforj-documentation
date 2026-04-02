@@ -259,5 +259,14 @@
   "sidebar.documentationSidebar.category.Security": "2fae32629d4ef4fc6341f1751b405e45",
   "sidebar.documentationSidebar.category.security-architecture": "2d242bb36ec91b32005f9296ff03a912",
   "sidebar.documentationSidebar.category.AI Tooling": "248bcb5c702e51ab4bf63e315d0ba970",
-  "sidebar.documentationSidebar.category.Kotlin DSL": "f13c3e27af618f6ee317df130bcc1449"
+  "sidebar.documentationSidebar.category.Kotlin DSL": "f13c3e27af618f6ee317df130bcc1449",
+  "chip.tooltipText.shadow": "d2051f95118b137f37b2543eb9001c2e",
+  "chip.label.shadow": "3f39588bb19e28051d9aedfbb170025c",
+  "chip.tooltipText.name": "ed6293ec72eaeaf37695b49b2ce8670d",
+  "chip.tooltipText.webforJ.version.snapshot": "d47385da209696756efa26ecb3206ee0",
+  "chip.tooltipText.scoped": "9951d506b8a4e12e32607749c8b89e35",
+  "chip.label.scoped": "423f62fd0413b98ab4dd487ec060e628",
+  "chip.tooltipText.experimental": "85892e35f65e6e8d2472c09be46bb19f",
+  "chip.label.experimental": "704b5561562b054400f33f22cf61c5f5",
+  "chip.tooltipText.since": "4d7869037e166196f513c924d6c3f7c0"
 }
