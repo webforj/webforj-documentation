@@ -31,7 +31,7 @@ To use that snapshot version in your app, use that value as the `webforj.version
 
 ## Configure the snapshot repository {#configure-the-snapshot-repository}
 
-Because snapshots aren't published to Maven Central, you need to add the Central Portal Snapshots repository to your app's `pom.xml` so Maven can resolve them. You need two entries: a `<repository>` for webforJ's runtime artifacts, and a `<pluginRepository>` for its Maven plugins (such as the install and minify plugins), which are also released as snapshots. Both entries disable release resolution so Maven only uses this repository for snapshot artifacts.
+Because snapshots aren't published to Maven Central, you need to add the Central Portal Snapshots repository to your app's `pom.xml` so Maven can resolve them. You need two entries: a `<repository>` for webforJ's runtime artifacts, and a `<pluginRepository>` for its Maven plugins (such as the install and minify plugins), which are also released as snapshots. Both entries turn off release resolution so Maven only uses this repository for snapshot artifacts.
 
 ```xml title="pom.xml"
 <repositories>
