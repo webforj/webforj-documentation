@@ -7,24 +7,27 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.table.TableColumnComparatorPage;
 import com.webforj.samples.views.BaseTest;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class TableColumnComparatorViewIT extends BaseTest {
 
     private TableColumnComparatorPage tableColumnComparator;
 
-    @BeforeEach
-    public void setupTableColumnComparator() {
-        navigateToRoute(TableColumnComparatorPage.getRoute());
+    public void setupTableColumnComparator(SupportedLanguage language) {
+        navigateToRoute(TableColumnComparatorPage.getRoute(language));
         tableColumnComparator = new TableColumnComparatorPage(page);
     }
 
-    @Test
-    public void testComparatorFunctionalityTableColumnComparator() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testComparatorFunctionalityTableColumnComparator(SupportedLanguage language) {
+        setupTableColumnComparator(language);
         tableColumnComparator.getNumberColumnHeader().click();
 
         List<String> ascNumbersText = tableColumnComparator.getNumberCells().allTextContents();
