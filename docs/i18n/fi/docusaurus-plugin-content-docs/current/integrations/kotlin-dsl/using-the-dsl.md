@@ -1,25 +1,25 @@
 ---
 title: Using the DSL
 sidebar_position: 10
-_i18n_hash: cde3a82377e800021761e5d430328ed9
+_i18n_hash: 05d1319dd97f2d32392408b2e4ae9058
 ---
-Kotlin DSL tarjoaa rakennusfunktioita webforJ-komponenteille. Jokainen funktio luo komponentin, lisää sen vanhempaan säilöön ja suorittaa konfigurointiblokin. Tämä sivu kattaa kuvastot ja käytännöt, joita käytät rakentaessasi käyttöliittymiä DSL:n kanssa.
+Kotlin DSL tarjoaa rakentajatoimintoja webforJ-komponenteille. Kukin toiminto luo komponentin, lisää sen parentti-konttiinsa ja suorittaa konfigurointilohkon. Tämä sivu käsittelee malleja ja käytäntöjä, joita käytät rakentaessasi käyttöliittymiä DSL:llä.
 
 ## Nimeämiskäytännöt {#naming-conventions}
 
-DSL-funktioita on saatavilla kaikille vakiowebforJ-komponenteille, mukaan lukien painikkeet, kentät, asettelut, dialogit, laatikot, listat ja HTML-elementit. Jokainen funktio käyttää komponentti-luokan nimeä **camelCase**-muodossa. `Button` muuttuu `button()`, `TextField` muuttuu `textField()` ja `FlexLayout` muuttuu `flexLayout()`.
+DSL-toimintoja on saatavilla kaikille vakiowebforJ-komponenteille, mukaan lukien painikkeet, kentät, layoutit, dialogit, vetovalikot, luettelot ja HTML-elementit. Kukin toiminto käyttää komponentin luokan nimeä **camelCase**-muodossa. `Button` muuttuu `button()`:ksi, `TextField` muuttuu `textField()`:ksi, ja `FlexLayout` muuttuu `flexLayout()`:ksi.
 
 ```kotlin
 div {
   button("Klikkaa minua")
-  textField("Käyttäjänimi")
+  textField("Käyttäjätunnus")
   flexLayout {
     // sisäkkäinen sisältö
   }
 }
 ```
 
-:::important Käyttämällä `Break`-komponenttia
+:::important Käytettäessä `Break`-komponenttia
 Yksi poikkeus: `Break` käyttää takaviivoja, koska `break` on Kotlin-avainsana:
 
 ```kotlin
@@ -33,11 +33,11 @@ div {
 
 ## Komponenttien luominen {#creating-components}
 
-Luo komponentti lisäämällä sen DSL-funktio vanhempaan lohkoon yhdessä vapaaehtoisten argumenttien ja konfigurointiblokin kanssa, kuten alla on esitetty:
+Luo komponentti lisäämällä sen DSL-toiminto parentti-blokkiin yhdessä valinnaisten argumenttien ja konfigurointilohkon kanssa, kuten alla on esitetty:
 
 ```kotlin
 div {
-  // Luo Painike, lisää se tähän diviin, ja suorittaa sitten lohkon
+  // Luo Button, lisää se tähän div:iin ja suorittaa sitten lohkon
   button("Lähetä") {
     theme = ButtonTheme.PRIMARY
     onClick { handleSubmit() }
@@ -45,26 +45,26 @@ div {
 }
 ```
 
-Kun käytät komponentin DSL-funktiota, se luo komponentin, lisää sen vanhempaan ja suorittaa sitten konfigurointiblokin.
-Konfigurointiblokki saa komponentin vastaanottajakseen (`this`), joten voit käyttää ominaisuuksia ja metodeja suoraan:
+Kun käytät komponentin DSL-toimintoa, se luo komponentin, lisää sen vanhempaan ja suorittaa myöhemmin konfigurointilohkon.
+Konfigurointilohko saa komponentin vastaanottajaksi (`this`), joten voit käyttää ominaisuuksia ja metodeja suoraan:
 
 ```kotlin
 textField("Sähköposti") {
-  placeholder = "you@example.com"   // this.placeholder
-  required = true                   // this.required
-  onModify { validate() }           // this.onModify(...)
+  placeholder = "sinä@esimerkki.com"   // this.placeholder
+  required = true                        // this.required
+  onModify { validate() }                // this.onModify(...)
 }
 ```
 
 ## Komponenttien sisällyttäminen {#nesting-components}
 
-Komponentit, jotka voivat sisältää lapsia, hyväksyvät sisäkkäisiä DSL-kutsuja lohkonsa sisällä:
+Komponentit, jotka voivat sisältää lapsia, hyväksyvät sisäkkäiset DSL-kutsut niiden lohkossaan:
 
 ```kotlin
 flexLayout {
   direction = FlexDirection.COLUMN
 
-  h1("Ohjaamo")
+  h1("Koontinäyttö")
 
   div {
     paragraph("Tervetuloa takaisin!")
@@ -87,28 +87,28 @@ DSL varmistaa asianmukaisen laajuuden. Voit lisätä lapsia vain komponentteihin
 div {
   button("Lähetä") {
     // Tämä näyttää siltä, että se lisää kappaleen painikkeen sisään,
-    // mutta se lisäisi sen oikeasti ulompaan diviin.
-    // DSL havaitsisi tämän virheen käännösaikana.
+    // mutta se lisää sen oikeasti ulompaan div:iin.
+    // DSL huomaa tämän virheen käännösvaiheessa.
     paragraph("Lähetetään...") // Ei käänny
   }
 }
 ```
 
-Jos sinun tarvitsee lisätä ulkopuoliseen laajuuteen, käytä nimettyä `this`-avainsanaa, jotta aikomus tulee selväksi:
+Jos sinun tarvitsee lisätä ulompaan laajuuteen, käytä nimettyä `this`:a, jotta tarkoitus tulee selväksi:
 
 ```kotlin
 div {
   button("Lähetä") {
-    this@div.add(Paragraph("Lähetetään..."))  // Ilmoitetaan, että tämä on sallittu
+    this@div.add(Paragraph("Lähetetään..."))  // Ilmaise tarkoitus
   }
 }
 ```
 
-Tämä pitää käyttöliittymäkoodin ennakoitavana tekemällä laajuuden hypyt näkyviksi.
+Tämä pitää käyttöliittymän koodin ennakoitavana ja tekee laajuuden hyppäykset näkyviksi.
 
-## Komponenttien tyylittely {#styling-components}
+## Komponenttien tyylitys {#styling-components}
 
-Kotlin DSL tarjoaa `styles`-laajennusominaisuuden, joka antaa karttamaisen hakumahdollisuuden CSS-ominaisuuksiin, vastaavasti kuin `setStyle()` ja `getStyle()` Java:ssa:
+Kotlin DSL tarjoaa `styles`-laajennusominaisuuden, joka antaa karttamaisen hakemisen CSS-ominaisuuksiin, vastaten Java:n `setStyle()` ja `getStyle()` -toimintoja:
 
 ```kotlin
 button("Tyylitelty") {
@@ -120,18 +120,18 @@ button("Tyylitelty") {
 ```
 
 :::tip[CSS-luokat]
-Uudelleenkäytettäviä tyylejä varten lisää CSS-luokkia sen sijaan, että käyttäisit inline-tyylejä. `HasClassName`-laajennus mahdollistaa luokkien lisäämisen `+=`-operaattorilla:
+Uudelleenkäytettäviä tyylejä varten, lisää CSS-luokkia inline-tyylien sijaan. `HasClassName`-laajennus mahdollistaa luokkien lisäämisen `+=`-merkillä:
 
 ```kotlin
-button("Päätoiminto") {
+button("Ensisijainen toiminto") {
   classNames += "btn-primary"
 }
 ```
 :::
 
-## Tapahtumankäsittely {#event-handling}
+## Tapahtumien käsittely {#event-handling}
 
-Komponenttien tarvitsee lähes aina reagoida käyttäjän vuorovaikutukseen. DSL tarjoaa tiiviin tapahtumakuuntelijan syntaksin käyttämällä `on`-alkuisia metodeja, jotka hyväksyvät lambda-lausekkeet:
+Komponenttien on melkein aina reagoitava käyttäjän vuorovaikuttamiseen. DSL tarjoaa tiiviin tapahtumankuuntelijasyntaksin käyttämällä `on`-etuliitteellä varustettuja metodeja, jotka hyväksyvät lambdat:
 
 ```kotlin
 button("Tallenna") {
@@ -150,16 +150,16 @@ textField("Haku") {
 
 ## Yhteiset parametrit {#common-parameters}
 
-Konfigurointiblokkien lisäksi useimmat DSL-funktiot hyväksyvät myös yhteisiä parametrejä ennen lohkoa yleisesti käytetyille vaihtoehdoille:
+Konfigurointilohkojen lisäksi useimmat DSL-toiminnot hyväksyvät myös yleisiä parametreja lohkon eteen usein käytettävien vaihtoehtojen vuoksi:
 
 ```kotlin
-// Teksti-parametri nimilappuja/sisältöä varten
+// Teksti parametri etiketeille/sisällölle
 button("Klikkaa minua")
 h1("Sivun otsikko")
-paragraph("Kehys teksti")
+paragraph("Kehysteksti")
 
-// Nimilappu ja sijoitus kentille
-textField("Käyttäjänimi", placeholder = "Syötä käyttäjänimi")
+// Etiketit ja paikkamerkit kentille
+textField("Käyttäjätunnus", placeholder = "Syötä käyttäjätunnus")
 passwordField("Salasana", placeholder = "Syötä salasana")
 
 // Arvoparametrit syötteille
@@ -169,20 +169,22 @@ numberField("Määrä", value = 1.0) {
 }
 ```
 
-:::tip Nimillä määritellyt argumentit
-Nimelliset argumentit antavat sinun välittää parametreja missä tahansa järjestyksessä, riippumatta siitä, miten ne näkyvät funktion määrittelyssä.
+:::tip Nimettyjen argumenttien etu
+Nimetyt argumentit antavat sinun siirtää parametreja missä tahansa järjestyksessä, riippumatta siitä, kuinka ne esiintyvät funktion allekirjoituksessa.
 :::
 
 ## Kokonaisen näkymän rakentaminen {#building-a-complete-view}
 
-Näiden mallien avulla tässä on täydellinen lomake, joka kokoaa ne yhteen:
+Näitä malleja käyttäen tässä on täydellinen lomake, joka yhdistää ne:
 
-``` kotlin
+```kotlin
 @Route("contact")
 class ContactView : Composite<Div>() {
 
+  private val self = boundComponent
+
   init {
-    boundComponent.apply {
+    self.apply {
       styles["max-width"] = "400px"
       styles["padding"] = "20px"
 
@@ -193,7 +195,7 @@ class ContactView : Composite<Div>() {
         styles["margin-bottom"] = "16px"
       }
 
-      val emailField = textField("Sähköposti", placeholder = "you@example.com") {
+      val emailField = textField("Sähköposti", placeholder = "sinä@esimerkki.com") {
         styles["width"] = "100%"
       }
 
@@ -222,4 +224,4 @@ class ContactView : Composite<Div>() {
 }
 ```
 
-DSL pitää käyttöliittymän rakenteen luettavana, samalla kun se antaa sinulle täyden pääsyn komponentin konfigurointiin.
+DSL pitää käyttöliittymän rakenteen luettavana samalla, kun se antaa sinulle täydellisen pääsyn komponenttien konfigurointiin.

@@ -1,9 +1,9 @@
 ---
 title: Extending the DSL
 sidebar_position: 20
-_i18n_hash: 73b71a500428fdbc51cd490f19d1eef9
+_i18n_hash: e7878d00305e1d544efb6f9e6e8afe2e
 ---
-Die Kotlin DSL ist erweiterbar und ermöglicht das Hinzufügen von DSL-Funktionen für benutzerdefinierte Komponenten oder Drittanbieter-Bibliotheken. Sie können zusammengesetzte Komponenten erstellen, die die DSL intern verwenden.
+Die Kotlin DSL ist erweiterbar und ermöglicht die Hinzufügung von DSL-Funktionen für benutzerdefinierte Komponenten oder Drittanbieterbibliotheken. Sie können zusammengesetzte Komponenten erstellen, die die DSL intern nutzen.
 
 ## Komponenten zur DSL hinzufügen {#adding-components-to-the-dsl}
 
@@ -44,7 +44,7 @@ div {
 
 ### Parameter hinzufügen {#adding-parameters}
 
-Die meisten DSL-Funktionen akzeptieren gemeinsame Parameter vor dem Konfigurationsblock:
+Die meisten DSL-Funktionen akzeptieren gängige Parameter vor dem Konfigurationsblock:
 
 ```kotlin
 fun @WebforjDsl HasComponents.badge(
@@ -72,18 +72,19 @@ div {
 
 ## Zusammengesetzte Komponenten erstellen {#creating-composite-components}
 
-Ein `Composite` wickelt mehrere Komponenten in eine einzelne wiederverwendbare Einheit ein. Die DSL eignet sich gut zur Definition von zusammengesetzten Strukturen.
+Ein `Composite` fasst mehrere Komponenten zu einer einzelnen wiederverwendbaren Einheit zusammen. Die DSL eignet sich gut zur Definition der zusammengesetzten Struktur.
 
 ### Grundlegendes Composite {#basic-composite}
 
 ```kotlin
 class SearchBox : Composite<Div>() {
 
+  private val self = boundComponent
   val searchField: TextField
   val searchButton: Button
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["gap"] = "8px"
 
@@ -108,7 +109,7 @@ class SearchBox : Composite<Div>() {
 }
 ```
 
-Das Composite exponiert Komponentenreferenzen für den externen Zugriff und bietet praktische Methoden für häufige Operationen.
+Das Composite stellt Komponentenreferenzen für den externen Zugriff bereit und bietet Hilfsmethoden für gängige Operationen.
 
 ### DSL-Unterstützung hinzufügen {#adding-dsl-support}
 
@@ -140,11 +141,12 @@ div {
 
 ### Beispiel: Statusanzeige {#example-status-indicator}
 
-Hier ist ein vollständiges Beispiel für eine Statusanzeige:
+Hier ist ein vollständiges Beispiel für eine Statusanzeige als Composite:
 
 ```kotlin
 class StatusIndicator : Composite<Div>() {
 
+  private val self = boundComponent
   private val dot: Div
   private val label: Span
 
@@ -161,7 +163,7 @@ class StatusIndicator : Composite<Div>() {
     }
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["align-items"] = "center"
       styles["gap"] = "8px"
