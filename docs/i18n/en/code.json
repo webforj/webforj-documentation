@@ -872,5 +872,11 @@
   "chip.label.experimental": {
     "message": "Experimental",
     "description": "Label to show this component is experimental."
+  },
+  "experimentalWarning.title": {
+    "message": "Experimental feature"
+  },
+  "experimentalWarning.message": {
+    "message": "This feature is experimental and may change or be removed in a future release."
   }
 }
