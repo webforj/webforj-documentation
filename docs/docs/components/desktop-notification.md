@@ -15,7 +15,7 @@ The `DesktopNotification` component displays native desktop notifications outsid
 
 <ExperimentalWarning />
 
-To start using this feature, ensure that you include the following dependency in your pom.xml.
+To start using this feature, include the following dependency in your pom.xml:
 
 ```xml
 <dependency>
