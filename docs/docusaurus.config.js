@@ -203,7 +203,7 @@ module.exports = async function createConfig() {
     announcementBar: {
       id: `v${webforjVersion}-release`,
       content:
-        `We are excited to announce webforJ version ${webforjVersion} is live! Read more about the changes and features <a href=/blog/whats-new-v${webforjVersion}>here.</a>`,
+        `We are excited to announce webforJ version ${webforjVersion} is live! Read more about the changes and features&nbsp;<a href=/blog/whats-new-v${webforjVersion}>here.</a>`,
       isCloseable: true,
     },
     image: 'https://docs.webforj.com/img/social-cover.png',
