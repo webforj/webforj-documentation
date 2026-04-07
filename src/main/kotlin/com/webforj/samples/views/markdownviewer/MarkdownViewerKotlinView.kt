@@ -20,7 +20,7 @@ class MarkdownViewerKotlinView: Composite<Div>() {
     self.apply {
       styles["display"] = "flex"
       styles["justifyContent"] = "center"
-      styles["padding"] = "var(--dwc-sapce-l)"
+      styles["padding"] = "var(--dwc-space-l)"
       div {
         styles["maxWidth"] = 600.px
         styles["width"] = 100.percent
