@@ -9,6 +9,7 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H4;
 import com.webforj.component.html.elements.Img;
 import com.webforj.component.html.elements.Span;
+import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -53,8 +54,7 @@ public class AvatarView extends Composite<FlexLayout> {
     Span sectionLabel = new Span("Team")
         .addClassName("avatar-demo__section-label");
 
-    panel.add(projectHeader);
-    panel.add(sectionLabel);
+    panel.add(projectHeader, sectionLabel);
   }
 
   private void addMembers() {

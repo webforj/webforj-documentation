@@ -136,9 +136,9 @@ public class FlexContainerBuilderView extends Composite<Div> {
     ChoiceBox alignments = new ChoiceBox()
         .setLabel("Alignment Options");
     alignments.onSelect(this::onAlignmentSelect);
-    for (FlexAlignment justify : FlexAlignment.values()) {
-      String label = justify.getValue().replaceAll(REGEX, "");
-      String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
+    for (FlexAlignment alignment : FlexAlignment.values()) {
+      String label = alignment.getValue().replaceAll(REGEX, "");
+      String key = alignment.toString().toLowerCase().replaceAll(REGEX, "");
       String text = label.substring(0, 1).toUpperCase() + label.substring(1);
       alignments.add(".align()." + key + "()", text);
     }
@@ -150,9 +150,9 @@ public class FlexContainerBuilderView extends Composite<Div> {
     ChoiceBox contentAlignments = new ChoiceBox()
         .setLabel("Content-Alignment Options");
     contentAlignments.onSelect(this::onAlignContentSelect);
-    for (FlexContentAlignment justify : FlexContentAlignment.values()) {
-      String label = justify.getValue().replaceAll(REGEX, "");
-      String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
+    for (FlexContentAlignment alignment : FlexContentAlignment.values()) {
+      String label = alignment.getValue().replaceAll(REGEX, "");
+      String key = alignment.toString().toLowerCase().replaceAll(REGEX, "");
       String text = label.substring(0, 1).toUpperCase() + label.substring(1);
       contentAlignments.add(".contentAlign()." + key + "()", text);
     }
@@ -164,9 +164,9 @@ public class FlexContainerBuilderView extends Composite<Div> {
     ChoiceBox wraps = new ChoiceBox()
         .setLabel("Wrap Options");
     wraps.onSelect(this::onWrapSelect);
-    for (FlexWrap justify : FlexWrap.values()) {
-      String label = justify.getValue().replaceAll(REGEX, "");
-      String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
+    for (FlexWrap wrap : FlexWrap.values()) {
+      String label = wrap.getValue().replaceAll(REGEX, "");
+      String key = wrap.toString().toLowerCase().replaceAll(REGEX, "");
       String text = label.substring(0, 1).toUpperCase() + label.substring(1);
       wraps.add(".wrap()." + key + "()", text);
     }
@@ -210,7 +210,7 @@ public class FlexContainerBuilderView extends Composite<Div> {
       String hue = String.valueOf(HUE * numBoxes);
       Box newBox = new Box(numBoxes);
       newBox.setStyle("background", "hsla(" + hue + ", 50%, 75%, 0.25)");
-      newBox.setStyle("border", "2px solid " + "hsl(" + hue + ", 50%, 35%)");
+      newBox.setStyle("border", "2px solid hsl(" + hue + ", 50%, 35%)");
       newBox.setStyle("color", "hsl(" + hue + ", 50%, 25%)");
       boxes.add(newBox);
       boxLayout.add(newBox);

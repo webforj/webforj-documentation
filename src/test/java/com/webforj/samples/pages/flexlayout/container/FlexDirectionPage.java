@@ -3,6 +3,7 @@ package com.webforj.samples.pages.flexlayout.container;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class FlexDirectionPage {
 
@@ -19,8 +20,8 @@ public class FlexDirectionPage {
         this.flexDirectionContainer = page.locator(".button__container--single-row");
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getFlexDirectionDropdown() {

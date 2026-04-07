@@ -47,7 +47,7 @@ public class FlexDirectionView extends Composite<Div> {
       String hue = String.valueOf(HUE * i);
       Box newBox = new Box(i);
       newBox.setStyle("background", "hsla(" + hue + ", 50%, 75%, 0.25)");
-      newBox.setStyle("border", "2px solid " + "hsl(" + hue + ", 50%, 35%)");
+      newBox.setStyle("border", "2px solid hsl(" + hue + ", 50%, 35%)");
       newBox.setStyle("color", "hsl(" + hue + ", 50%, 25%)");
       boxLayout.add(newBox);
     }
@@ -58,18 +58,17 @@ public class FlexDirectionView extends Composite<Div> {
         .addClassName("flex__options")
         .setLabel("Direction Options");
     directions.onSelect(this::selectDirection);
-    for (FlexDirection justify : FlexDirection.values()) {
-      String label = justify.getValue();
-      String key = justify.toString().toLowerCase();
-      String text = label.substring(0, 1).toUpperCase()
-              + label.substring(1);
-      directions.add("." + key + "()", text);
+    for (FlexDirection direction : FlexDirection.values()) {
+      String label = direction.getValue();
+      String text = direction.toString().charAt(0) + label.substring(1);
+      directions.add(direction, text);
     }
     directions.selectIndex(0);
     return directions;
   }
 
   private void selectDirection(ListSelectEvent<?> ev) {
-    boxLayout.setDirection(FlexDirection.fromValue(ev.getSelectedItem().getText()));
+    FlexDirection direction = (FlexDirection) ev.getSelectedItem().getKey();
+    boxLayout.setDirection(direction);
   }
 }
