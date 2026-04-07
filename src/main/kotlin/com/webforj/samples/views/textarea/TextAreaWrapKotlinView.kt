@@ -27,7 +27,7 @@ class TextAreaWrapKotlinView : Composite<FlexLayout>() {
       spacing = "var(--dwc-space-m)"
       margin = "50px auto"
       maxWidth = 300.px
-      val styles = choiceBox("Select a word wrap style") {
+      val wrapStylesBox = choiceBox("Select a word wrap style") {
         width = 100.percent
         items(
           TextArea.WrapStyle.WORD_BOUNDARIES to "Word Boundaries",
@@ -44,7 +44,7 @@ class TextAreaWrapKotlinView : Composite<FlexLayout>() {
         height = 200.px
         isLineWrap = true
         wrapStyle = TextArea.WrapStyle.CHARACTER_BOUNDARIES
-        styles.onSelect {
+        wrapStylesBox.onSelect {
           wrapStyle = it.selectedItem.key as TextArea.WrapStyle
         }
       }
