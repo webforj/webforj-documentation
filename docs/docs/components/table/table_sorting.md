@@ -113,7 +113,7 @@ Server sorting is a performance-oriented strategy for dealing with datasets that
 
 ### Column property name {#column-property-name}
 
-By default, the `Table` uses a column's ID as the property name when building sort criteria for a backend repository. When a column's display ID doesn't match the underlying data property—or when the column displays a computed value—use `setPropertyName()` to explicitly tell the `Table` which property to sort by.
+By default, the `Table` uses a column's ID as the property name when building sort criteria for a backend repository. When a column's display ID doesn't match the underlying data property, or when the column displays a computed value, use `setPropertyName()` to explicitly tell the `Table` which property to sort by.
 
 ```java
 // Column ID is "Full Name", but the backend property is "fullName"
