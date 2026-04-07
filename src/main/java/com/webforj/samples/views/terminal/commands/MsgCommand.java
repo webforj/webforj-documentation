@@ -5,25 +5,19 @@ import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
 import com.webforj.component.terminal.Terminal;
 
 public class MsgCommand implements TerminalCommand {
-  /**
-   * {@inheritDoc}
-   */
+  private static final String NAME = "msg";
+  private static final String DESCRIPTION = "Show a message dialog";
+
   @Override
   public String getName() {
-    return "msg";
+    return NAME;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String getDescription() {
-    return "Show a message dialog";
+    return DESCRIPTION;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void execute(Terminal term, String[] args) {
     if (args.length < 2) {

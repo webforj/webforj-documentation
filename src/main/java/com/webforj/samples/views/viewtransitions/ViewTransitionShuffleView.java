@@ -25,8 +25,7 @@ public class ViewTransitionShuffleView extends Composite<FlexLayout> {
   private final FlexLayout listContainer;
   private final List<CardData> items;
 
-  record CardData(String id, String title, String subtitle, String color, FeatherIcon icon) {
-  }
+  record CardData(String id, String title, String subtitle, String color, FeatherIcon icon) { }
 
   public ViewTransitionShuffleView() {
     self.setDirection(FlexDirection.COLUMN)

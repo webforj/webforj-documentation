@@ -144,7 +144,7 @@ The `AppLayout` component allows you to place custom components such as buttons 
 
 ```java
 layout.addToDrawerHeaderActions(
-    new IconButton(TablerIcon.create("bell")),
+  new IconButton(TablerIcon.create("bell")),
 );
 ```
 
@@ -152,8 +152,8 @@ It's possible to pass multiple components as arguments:
 
 ```java
 layout.addToDrawerHeaderActions(
-    new IconButton(TablerIcon.create("bell")),
-    new Button("Profile")
+  new IconButton(TablerIcon.create("bell")),
+  new Button("Profile")
 );
 ```
 

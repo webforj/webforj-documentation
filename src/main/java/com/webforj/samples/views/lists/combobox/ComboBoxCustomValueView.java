@@ -11,21 +11,29 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("ComboBox Custom Value")
 public class ComboBoxCustomValueView extends Composite<FlexLayout> {
+  // Categories for the ComboBox
+  private static final String[] CATEGORIES = {
+      "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
+      "Pet Supplies", "Toys and Games"
+  };
 
-  ComboBox customValue = new ComboBox("Department");
-  RadioButton toggle = RadioButton.Switch("Toggle Custom Value");
+  private final FlexLayout self = getBoundComponent();
+  // UI Components
+  private final ComboBox customValue = new ComboBox("Department");
+  private final RadioButton toggle = RadioButton.Switch("Toggle Custom Value");
 
   public ComboBoxCustomValueView() {
-    getBoundComponent().setDirection(FlexDirection.COLUMN).setMargin("20px 0 0 20px").setSpacing("20px").setWidth(200);
-    getBoundComponent().add(customValue, toggle);
+    self.setDirection(FlexDirection.COLUMN)
+        .setMargin("20px 0 0 20px")
+        .setSpacing("20px")
+        .setWidth(200);
 
-    String[] categories = { "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
-        "Pet Supplies", "Toys and Games" };
-
-    customValue.insert(categories);
-    customValue.setAllowCustomValue(false);
+    // Insert categories and disable custom values by default
+    customValue.insert(CATEGORIES)
+        .setAllowCustomValue(false);
 
     toggle.onToggle(e -> customValue.setAllowCustomValue(!customValue.isAllowCustomValue()));
 
+    self.add(customValue, toggle);
   }
 }

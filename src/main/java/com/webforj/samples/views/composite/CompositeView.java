@@ -20,10 +20,10 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("To-Do List")
 @StyleSheet("ws://composite/composite.css")
 public class CompositeView extends Composite<Div> {
-
-  private TextField taskInput;
-  private FlexLayout taskContainer;
-  private H1 title = new H1("To-do List");
+  private final Div self = getBoundComponent();
+  private final TextField taskInput = new TextField();
+  private final FlexLayout taskContainer = new FlexLayout();
+  private final H1 title = new H1("To-do List");
 
   public CompositeView() {
     initializeComponents();
@@ -33,27 +33,25 @@ public class CompositeView extends Composite<Div> {
   }
 
   private void initializeComponents() {
-    taskInput = new TextField()
-        .setPlaceholder("Enter a new task and press Enter...")
+    taskInput.setPlaceholder("Enter a new task and press Enter...")
         .setExpanse(Expanse.XLARGE);
-        
-    taskContainer = FlexLayout.create()
-        .vertical()
-        .build()
+
+    taskContainer
+        .setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-s)")
         .addClassName("todo--display");
   }
 
   private void setupLayout() {
-    getBoundComponent()
-        .addClassName("frame")
+    self.addClassName("frame")
         .add(title, taskInput, taskContainer);
   }
 
   private void setupEventHandlers() {
     taskInput.onKeypress(e -> {
-      if (e.getKeyCode().equals(KeypressEvent.Key.ENTER) && !taskInput.getText().trim().isEmpty()) {
-        taskContainer.add(new SimpleTaskItem(taskInput.getText().trim()));
+      String task = taskInput.getText().trim();
+      if (e.getKeyCode() == KeypressEvent.Key.ENTER && !task.isEmpty()) {
+        taskContainer.add(new SimpleTaskItem(task));
         taskInput.setText("");
       }
     });
@@ -66,10 +64,10 @@ public class CompositeView extends Composite<Div> {
   }
 
   public static class SimpleTaskItem extends Composite<FlexLayout> {
-    
-    private RadioButton toggleButton;
-    private Div taskText;
-    private Button deleteButton;
+    private final FlexLayout self = getBoundComponent();
+    private final RadioButton toggleButton = RadioButton.Switch();
+    private final Div taskText = new Div();
+    private final Button deleteButton = new Button("Delete", ButtonTheme.DANGER);
 
     public SimpleTaskItem(String text) {
       initializeComponents(text);
@@ -78,21 +76,17 @@ public class CompositeView extends Composite<Div> {
     }
 
     private void initializeComponents(String text) {
-      toggleButton = RadioButton.Switch();
-      taskText = new Div(text).addClassName("todo-text");
-      deleteButton = new Button("Delete", ButtonTheme.DANGER);
+      taskText.setText(text)
+          .setStyle("flex-grow", "1")
+          .addClassName("todo-text");
     }
 
     private void setupLayout() {
-      getBoundComponent()
-          .setDirection(FlexDirection.ROW)
+      self.setDirection(FlexDirection.ROW)
           .setAlignment(FlexAlignment.CENTER)
           .setSpacing("var(--dwc-space-s)")
           .addClassName("item__todo--display")
-          .add(toggleButton, taskText);
-      
-      taskText.setStyle("flex-grow", "1");
-      getBoundComponent().add(deleteButton);
+          .add(toggleButton, taskText, deleteButton);
     }
 
     private void setupEventHandlers() {
@@ -105,7 +99,7 @@ public class CompositeView extends Composite<Div> {
       });
 
       deleteButton.onClick(e -> {
-        getBoundComponent().setVisible(false);
+        self.setVisible(false);
       });
     }
   }

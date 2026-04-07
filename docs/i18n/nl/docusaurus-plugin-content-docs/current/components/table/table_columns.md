@@ -2,12 +2,12 @@
 sidebar_position: 5
 title: Columns
 slug: columns
-_i18n_hash: 59dc1d0f2eff7880d818123654e8febf
+_i18n_hash: 19fe294c57ad6b7d105039c25aedab11
 ---
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Column" top='true'/>
 
-De `Table` class gebruikt kolominstantie om te definiëren en aan te passen hoe data wordt weergegeven. Kolommen bepalen welke data wordt getoond, hoe het eruitziet en hoe gebruikers ermee kunnen interageren. Deze pagina behandelt kolomidentiteit, presentatie, formaten, gebruikersinteracties en gerelateerde evenementen.
+De `Table` klasse gebruikt kolominstellingen om te definiëren en aan te passen hoe gegevens worden weergegeven. Kolommen bepalen welke gegevens worden getoond, hoe ze eruitzien, en hoe gebruikers ermee kunnen interageren. Deze pagina behandelt kolomidentiteit, presentatie, sizing, gebruikersinteracties en gerelateerde evenementen.
 
 ## Kolomidentiteit {#column-identity}
 
@@ -15,43 +15,42 @@ De identiteit van een kolom definieert hoe deze wordt herkend in de `Table`. Dit
 
 ### Label {#label}
 
-Het label van een kolom is de publieke identificator, die helpt om weergegeven data te verduidelijken.  
+Het label van een kolom is zijn publiek toegankelijke identifier, wat helpt om weergegeven gegevens te verduidelijken.  
 
 Gebruik `setLabel()` om het label in te stellen of te wijzigen.
 
 :::tip
-Standaard zal het label hetzelfde zijn als de kolom-ID.
+Standaard is het label hetzelfde als de kolom-ID.
 :::
 
 ```java
 table.addColumn("Product ID", Product::getProductId).setLabel("ID");
 ```
 
-### Waardeproviders {#value-providers}
+### Waarde providers {#value-providers}
 
-Een waardeprovider is een functie die verantwoordelijk is voor het vertalen van ruwe data uit de onderliggende dataset naar een formaat dat geschikt is voor weergave binnen een specifieke kolom. De functie, die je definieert, neemt een instantie van het rijdatatype (T) en retourneert de waarde die in de bijbehorende kolom voor die specifieke rij moet worden getoond.
+Een waarde provider is een functie die verantwoordelijk is voor het vertalen van ruwe gegevens uit de onderliggende dataset naar een geschikt formaat voor weergave binnen een specifieke kolom. De functie, die je definieert, neemt een instantie van het rijdatatype (T) en retourneert de waarde die in de bijbehorende kolom voor die specifieke rij moet worden weergegeven.
 
-Om een waardeprovider op een kolom in te stellen, gebruik je een van de `addColumn()` methoden van de `Table` component.
+Om een waarde provider aan een kolom in te stellen, gebruik je een van de `addColumn()` methoden van de `Table` component.
 
-In de volgende snippet zal een kolom proberen gegevens toegankelijk te maken vanuit een JSON-object, en het alleen weergeven als de gegevens niet null zijn.
+In de volgende snippet zal een kolom proberen gegevens uit een JSON-object te halen, deze alleen weer te geven als de gegevens niet null zijn.
 
 ```java
-    List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
-
-    for (String column : columnsList) {
-      table.addColumn(column, (JsonObject person) -> {
-        JsonElement element = person.get(column);
-        if (!element.isJsonNull()) {
-          return element.getAsString();
-        }
-        return "";
-      });
+List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
+for (String column : columnsList) {
+  table.addColumn(column, (JsonObject person) -> {
+    JsonElement element = person.get(column);
+    if (!element.isJsonNull()) {
+      return element.getAsString();
     }
+    return "";
+  });
+}
 ```
 
 ### Zichtbaarheid {#visibility}
 
-Het is mogelijk om de zichtbaarheid van een kolom in te stellen, waarmee je bepaalt of deze wel of niet zal worden weergegeven binnen de `Table`. Dit kan nuttig zijn bij het bepalen of gevoelige informatie moet worden getoond of niet.
+Het is mogelijk om de zichtbaarheid van een kolom in te stellen, wat bepaalt of deze wel of niet wordt getoond binnen de `Table`. Dit kan nuttig zijn, onder andere, bij het bepalen of gevoelige informatie moet worden weergegeven.
 
 ```java
 table.addColumn("Credit Card", Customer::getCreditCardNumber).setHidden(true);
@@ -59,19 +58,19 @@ table.addColumn("Credit Card", Customer::getCreditCardNumber).setHidden(true);
 
 ### Navigeerbaar {#navigable}
 
-De navigeerbare eigenschap bepaalt of gebruikers met een kolom kunnen interageren tijdens de navigatie. Door `setSuppressNavigable()` op true in te stellen, wordt de interactie van de gebruiker met de kolom beperkt, wat een alleen-lezen ervaring biedt.
+De navigeerbare eigenschap bepaalt of gebruikers kunnen interageren met een kolom tijdens navigatie. Het instellen van `setSuppressNavigable()` op true beperkt de interactie van gebruikers met de kolom, wat een alleen-lezen ervaring biedt.
 
 ```java
 table.addColumn("ReadOnly Column", Product::getDescription).setSuppressNavigable(true);
 ```
 
-## Lay-out en opmaak {#layout-and-formatting}
+## Indeling en opmaak {#layout-and-formatting}
 
-Nadat de identiteit van een kolom is vastgesteld, is de volgende stap om te bepalen hoe de inhoud voor gebruikers verschijnt. Lay-outopties zoals uitlijning en vastzetten bepalen waar gegevens zich bevinden en hoe ze zichtbaar blijven terwijl je met een `Table` werkt.
+Nadat de identiteit van een kolom is vastgesteld, is de volgende stap om te controleren hoe de inhoud aan gebruikers verschijnt. Indelingsopties zoals uitlijning en vastpinnen bepalen waar gegevens zich bevinden en hoe deze zichtbaar blijven terwijl je met een `Table` werkt.
 
 ### Uitlijning {#alignment}
 
-Het instellen van de uitlijning van een kolom stelt je in staat om georganiseerde tabellen te maken, wat kan helpen gebruikers de verschillende secties in de `Table` te laten identificeren.
+Het instellen van de uitlijning van een kolom laat je georganiseerde tabellen maken, wat kan helpen gebruikers te laten identificeren welke secties er in de `Table` zijn.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -85,15 +84,15 @@ height='600px'
 
 De `Table` Component ondersteunt drie uitlijningsopties:
 
-- `Column.Alignment.LEFT`: Geschikt voor tekstuele of beschrijvende gegevens waarbij een linkse stroom intuïtief is. Nuttig wanneer de start van de inhoud moet worden benadrukt.
-- `Column.Alignment.CENTER`: Centraal uitgelijnde kolommen zijn ideaal voor kortere waarden, zoals een lettertype, status, of iets anders dat een uitgebalanceerde presentatie heeft.
-- `Column.Alignment.RIGHT`: Overweeg een rechts uitgelijnde kolom voor numerieke waarden die handig zijn om snel door te bladeren, zoals datums, bedragen en percentages.
+- `Column.Alignment.LEFT`: Geschikt voor tekstuele of beschrijvende gegevens waarbij een linker richting intuïtief is. Handig bij het benadrukken van het startpunt van de inhoud.
+- `Column.Alignment.CENTER`: Centraal uitgelijnde kolommen zijn ideaal voor kortere waarden, zoals een tekenreeks, status, of iets anders met een evenwichtige presentatie.
+- `Column.Alignment.RIGHT`: Overweeg een rechts uitgelijnde kolom voor numerieke waarden die snel doorzocht moeten worden, zoals data, bedragen en percentages.
 
-In het voorgaande voorbeeld is de laatste kolom voor `Kosten` rechts uitgelijnd voor een duidelijker visueel onderscheid.
+In het voorgaande voorbeeld is de laatste kolom voor `Kosten` rechts uitgelijnd om een duidelijker visueel onderscheid te bieden.
 
-### Vastzetten {#pinning}
+### Vastpinnen {#pinning}
 
-Kolomvastzetten is een functie waarmee gebruikers een kolom aan een specifieke kant van de `Table` kunnen bevestigen of "vastzetten". Dit is nuttig wanneer bepaalde kolommen, zoals identificatoren of essentiële informatie, zichtbaar moeten blijven terwijl er horizontaal door een tabel wordt gescrold.
+Het vastpinnen van kolommen is een functie die gebruikers toestaat een kolom aan een specifieke kant van de `Table` te bevestigen of "vast te pinnen". Dit is nuttig wanneer bepaalde kolommen, zoals identificatoren of essentiële informatie, zichtbaar moeten blijven terwijl je horizontaal door een tabel scrollt.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -105,40 +104,40 @@ height='600px'
 />
 <!-- vale on -->
 
-Er zijn drie beschikbare richtingen voor het vastzetten van een kolom:
+Er zijn drie beschikbare richtingen voor het vastpinnen van een kolom:
 
-- `PinDirection.LEFT`: Zet de kolom aan de linkerkant vast.
-- `PinDirection.RIGHT`: Zet de kolom aan de rechterkant vast.
-- `PinDirection.AUTO`: Kolom verschijnt op basis van de invoerorde.
+- `PinDirection.LEFT`: Pinnen de kolom aan de linkerkant.
+- `PinDirection.RIGHT`: Pinnen de kolom aan de rechterkant.
+- `PinDirection.AUTO`: De kolom verschijnt op basis van de volgorde van invoegen.
 
-Vastzetten kan programmatisch worden ingesteld, waardoor je de pinrichting kunt wijzigen op basis van gebruikersinteracties of de logica van de app.
+Vastpinnen kan programmatologisch worden ingesteld, zodat je de pinnarichting kunt wijzigen op basis van gebruikersinteracties of volgens de logica van de app.
 
-## Kolomformaten <DocChip chip='since' label='25.03' /> {#column-sizing} 
+## Kolom sizing <DocChip chip='since' label='25.03' /> {#column-sizing} 
 
 ### Vaste breedte {#fixed-width}
 
-Stel een exacte breedte voor een kolom in met de methode `setWidth()`, waarbij de gewenste breedte in pixels wordt gespecificeerd:
+Stel een exacte breedte in voor een kolom met de methode `setWidth()`, waarbij je de gewenste breedte in pixels opgeeft:
 
 ```java
 table.addColumn("ID", Product::getId).setWidth(80f);
 ```
 
-De breedte-eigenschap definieert de gewenste initiële breedte voor de kolom. Hoe deze breedte wordt gebruikt, hangt af van andere eigenschappen en kolomtype:
+De breedte-eigenschap definieert de gewenste initiële breedte voor de kolom. Hoe deze breedte wordt gebruikt, hangt af van andere eigenschappen en kolomtypes:
 
-- **Reguliere kolommen**: Met alleen de breedte ingesteld, wordt de kolom weergegeven op de opgegeven breedte, maar kan deze proportioneel klein worden als de container te klein is. De oorspronkelijke breedte fungeert als de gewenste breedte, maar zonder expliciete minimumbeperkingen kan de kolom kleiner worden weergegeven dan de ingestelde breedte.
-- [**Vastgezette kolommen**](#pinning): Handhaven altijd hun exacte breedte en nemen nooit deel aan responsief verkleinen.
-- [**Flex kolommen**](#flex-sizing): Breedte instellen is onverenigbaar met flex. Gebruik ofwel breedte (vast) of flex (proportioneel), niet beide.
+- **Reguliere kolommen**: Met alleen de breedte ingesteld, wordt de kolom weergegeven op de opgegeven breedte, maar kan proportioneel krimpen wanneer de container te klein is. De originele breedte dient als de gewenste breedte, maar zonder expliciete minimum beperkingen kan de kolom kleiner weergeven dan de ingestelde breedte.
+- [**Vastgepinde kolommen**](#pinning): Behouden altijd hun exacte breedte, nemen nooit deel aan responsieve krimp.
+- [**Flex kolommen**](#flex-sizing): Het instellen van de breedte is incompatibel met flex. Gebruik ofwel breedte (vast) of flex (proportioneel), niet beide.
 
-Als niet gespecificeerd, gebruikt de kolom zijn geschatte breedte op basis van contentanalyse van de eerste paar rijen.
+Als niet gespecificeerd, gebruikt de kolom zijn geschatte breedte op basis van inhoudsanalyse van de eerste paar rijen.
 
 ```java
-// Huidige breedte ophalen
+// Verkrijg huidige breedte
 float currentWidth = column.getWidth();
 ```
 
 ### Minimale breedte {#minimum-width}
 
-Met de methode `setMinWidth()` kun je de minimale breedte van een kolom definiëren. Als de minimale breedte niet wordt opgegeven, berekent de `Table` de minimale breedte op basis van de kolominhoud.
+De methode `setMinWidth()` stelt je in staat om de minimale breedte van een kolom te definiëren. Als de minimale breedte niet is opgegeven, berekent de `Table` de minimale breedte op basis van de kolominhoud.
 
 ```java
 table.addColumn("Prijs", Product::getPrice).setMinWidth(100f);
@@ -148,47 +147,47 @@ De waarde die wordt doorgegeven, vertegenwoordigt de minimale breedte in pixels.
 
 De minimale breedte-eigenschap controleert de kleinste breedte die een kolom kan hebben:
 
-- **Reguliere kolommen**: Met alleen de minimale breedte ingesteld, gebruikt de kolom de minimale breedte als zowel de gewenste als de minimale breedte. Met breedte + minimale breedte kan de kolom worden verkleind van de breedte tot de minimale breedte, maar niet verder.
-- [**Vastgezette kolommen**](#pinning): Als alleen de minimale breedte is ingesteld (geen breedte), wordt het de vaste breedte.
-- [**Flex kolommen**](#flex-sizing): Voorkomt dat de kolom onder deze breedte krimpt, zelfs wanneer de containerspace beperkt is.
+- **Reguliere kolommen**: Met alleen minimale breedte ingesteld, gebruikt de kolom de minimale breedte als zowel de gewenste als de minimale breedte. Met breedte + minimale breedte kan de kolom krimpen van de breedte naar de minimale breedte, maar niet verder.
+- [**Vastgepinde kolommen**](#pinning): Als alleen de minimale breedte is ingesteld (geen breedte), wordt deze de vaste breedte.
+- [**Flex kolommen**](#flex-sizing): Voorkomt dat de kolom onder deze breedte krimpt, zelfs wanneer de ruimte in de container beperkt is.
 
 ```java
-// Huidige minimale breedte ophalen
+// Verkrijg huidige minimale breedte
 float minWidth = column.getMinWidth();
 ```
 
 ### Maximale breedte {#maximum-width}
 
-De methode `setMaxWidth()` beperkt hoe breed een kolom kan groeien, zodat kolommen met lange inhoud niet te breed worden en de leesbaarheid niet aantasten:
+De methode `setMaxWidth()` beperkt hoe breed een kolom kan groeien, waardoor voorkomt dat kolommen met lange inhoud te breed worden en de leesbaarheid beïnvloeden:
 
 ```java
 table.addColumn("Beschrijving", Product::getDescription)
-    .setMinWidth(100f)
-    .setMaxWidth(300f);
+  .setMinWidth(100f)
+  .setMaxWidth(300f);
 ```
 
-De `maxWidth` eigenschap beperkt de groei van kolommen voor alle kolomtypes en zal nooit worden overschreden, ongeacht de inhoud, de containergrootte of flexinstellingen.
+De `maxWidth` eigenschap beperkt de groei van kolommen voor alle kolomtypes en zal nooit worden overschreden, ongeacht de inhoud, de grootte van de container of flex-instellingen.
 
 ```java
-// Huidige maximale breedte ophalen
+// Verkrijg huidige maximale breedte
 float maxWidth = column.getMaxWidth();
 ```
 
 ### Flex sizing {#flex-sizing}
 
-De methode `setFlex()` stelt proportionele kolomformaten in, waardoor kolommen beschikbare ruimte delen nadat vaste breedte kolommen zijn toegewezen:
+De methode `setFlex()` maakt proportionele kolom sizing mogelijk, waardoor kolommen beschikbare ruimte delen nadat vaste breedte kolommen zijn toegewezen:
 
 ```java
-// Titelkolom krijgt tweemaal de ruimte van de Artiestkolom
+// Titelkolom krijgt tweemaal de ruimte van de Artiest kolom
 table.addColumn("Titel", Product::getTitle).setFlex(2f);
 table.addColumn("Artiest", Product::getArtist).setFlex(1f);
 ```
 
-Belangrijke flex-gedragingen:
+Belangrijke flex gedragingen:
 
-- **Flexwaarde**: Bepaalt de proportie van beschikbare ruimte. Een kolom met flex=2 krijgt tweemaal de ruimte van een kolom met flex=1.
-- **Incompatibel met breedte**: Kan niet samen worden gebruikt met de breedte-eigenschap. Wanneer flex groter is dan nul, komt dit boven de breedte-instelling.
-- **Respecteert beperkingen**: Werkt met minimum- en maximum breedtebeperkingen. Zonder een minimum breedte kunnen flexkolommen krimpen tot 0.
+- **Flexwaarde**: Bepaalt het aandeel van de beschikbare ruimte. Een kolom met flex=2 krijgt tweemaal de ruimte van een kolom met flex=1.
+- **Incompatibel met breedte**: Kan niet samen met de breedte-eigenschap worden gebruikt. Wanneer flex groter is dan nul, heeft het effect op de breedte-instelling.
+- **Respecteert beperkingen**: Werkt met minimum breedte/maximale breedte beperkingen. Zonder minimum breedte kunnen flex kolommen tot 0 krimpen.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -201,21 +200,21 @@ height='550px'
 <!-- vale on -->
 
 :::info Breedte vs Flex
-Breedte en flex eigenschappen zijn wederzijds exclusief. Het instellen van de een wist automatisch de andere. Gebruik breedte voor nauwkeurige controle of flex voor responsief gedrag.
+Breedte- en flex-eigenschappen zijn wederzijds exclusief. Het instellen van de een wist automatisch de ander. Gebruik breedte voor precieze controle of flex voor responsief gedrag.
 :::
 
 ### Automatische sizing {#automatic-sizing}
 
-Naast handmatige breedte- en flexinstellingen kunnen kolommen ook automatisch worden geformateerd. Automatische sizing laat de `Table` de optimale breedtes bepalen door ofwel de inhoud te analyseren ofdoor de ruimte proportioneel te verdelen.
+Naast handmatige breedte- en flexinstellingen, kunnen kolommen ook automatisch worden gepositioneerd. Automatische sizing laat de `Table` optimale breedtes bepalen, hetzij door de inhoud te analyseren of door ruimte proportioneel te verdelen.
 
-#### Inhoudsgebaseerde auto-sizing {#content-based-auto-sizing}
+#### Inhoudsgebaseerde automatische sizing {#content-based-auto-sizing}
 
-Automatisch kolommen op basis van hun inhoud formateren. De `Table` analyseert de gegevens in elke kolom en berekent de optimale breedte om de inhoud zonder afbreking weer te geven.
+Automatisch kolommen positioneren op basis van hun inhoud. De `Table` analyseert de gegevens in elke kolom en berekent de optimale breedte om de inhoud zonder afbreking weer te geven.
 
 ```java
 // Auto-size alle kolommen om inhoud te passen
 table.setColumnsToAutoSize().thenAccept(c -> {
-    // Sizing compleet - kolommen passen nu bij hun inhoud
+  // sizing compleet - kolommen passen nu bij hun inhoud
 });
 
 // Auto-size specifieke kolom
@@ -224,17 +223,17 @@ table.setColumnToAutoSize("description");
 
 #### Proportionele auto-fit {#proportional-auto-fit}
 
-Verdeel alle kolommen proportioneel over de beschikbare `Table` breedte. Deze bewerking zet elke kolom op flex=1, zodat ze de totale `Table` breedte gelijk delen, ongeacht hun inhoudlengte. Kolommen zullen uitbreiden of inkrimpen om perfect in de exacte afmetingen van de `Table` te passen, met geen overige ruimte.
+Verdeel alle kolommen proportioneel over de beschikbare breedte van de `Table`. Deze operatie stelt elke kolom in op flex=1, waardoor ze de totale `Table` breedte gelijk delen, ongeacht de lengte van hun inhoud. Kolommen zullen uitbreiden of krimpen om de exacte dimensies van de `Table` in te vullen zonder overgebleven ruimte.
 
 ```java
-// Pas kolommen aan de tafelbreedte aan (equivalent aan het instellen van flex=1 op alle)
+// Pas kolommen aan de tabelbreedte aan (gelijk aan het instellen van flex=1 op alle)
 table.setColumnsToAutoFit().thenAccept(ignored -> {
-    // Alle kolommen delen nu de ruimte gelijk
+  // Alle kolommen delen nu op gelijke wijze ruimte
 });
 ```
 
-:::info Asynchrone bewerkingen
-Auto-sizing methoden retourneren `PendingResult<Void>` omdat ze client-side berekeningen vereisen. Gebruik `thenAccept()` om code uit te voeren nadat de sizing compleet is. Als je niet hoeft te wachten op voltooiing, kun je de methoden zonder `thenAccept()` aanroepen
+:::info Asynchrone Operaties
+Auto-sizing methoden retourneren `PendingResult<Void>` omdat ze client-side berekeningen vereisen. Gebruik `thenAccept()` om code uit te voeren nadat de sizing is voltooid. Als je niet hoeft te wachten op voltooiing, kun je de methoden zonder `thenAccept()` aanroepen.
 :::
 
 <!-- vale off -->
@@ -249,102 +248,102 @@ height='550px'
 
 ## Gebruikersinteracties <DocChip chip='since' label='25.03' /> {#user-interactions}
 
-### Kolomvergroting {#column-resizing}
+### Kolom resizing {#column-resizing}
 
-Kolomvergroting geeft gebruikers controle over hoeveel ruimte elke kolom in beslag neemt door aan de kolomranden te slepen.
+Kolom resizing geeft gebruikers controle over hoeveel ruimte elke kolom in beslag neemt door aan de randen van de kolom te slepen.
 
-Je kunt het resizing gedrag op individuele kolommen controleren bij het bouwen van je tabel:
+Je kunt de resizinggedraging op individuele kolommen regelen bij het bouwen van je tabel:
 
 ```java
-// Schakel gebruikersvergroting voor deze kolom in
+// Sta gebruikers toe deze kolom te resizing
 table.addColumn("Titel", Product::getTitle).setResizable(true);
 
-// Verhinderen van vergroting
+// Uitschakelen van resizing
 table.addColumn("ID", Product::getId).setResizable(false);
 
 // Controleer huidige staat
 boolean canResize = column.isResizable();
 ```
 
-Voor tabellen waarin je consistente gedragingen wilt voor meerdere kolommen, gebruik de bulk configuratiemethoden:
+Voor tabellen waarbij je een consistente gedraging over meerdere kolommen wilt, gebruik je de bulkconfiguratie methoden:
 
 ```java
-// Maak alle bestaande kolommen vergrootbaar
+// Maak alle bestaande kolommen resizebaar
 table.setColumnsToResizable(true);
 
-// Vergrendel alle bestaande kolommen tegen vergroting
+// Vergrendel alle bestaande kolommen tegen resizing
 table.setColumnsToResizable(false);
 ```
 
-### Kolomherordening {#column-reordering}
+### Kolom herschikken {#column-reordering}
 
-Kolomherordening stelt gebruikers in staat om kolommen te slepen en neer te zetten in hun voorkeur volgorde, waardoor de indeling van de `Table` gepersonaliseerd wordt voor hun workflow.
+Kolom herschikken stelt gebruikers in staat om kolommen te slepen en neer te zetten in hun voorkeursgeschiedenis, waardoor ze de lay-out van de `Table` kunnen personaliseren voor hun workflow.
 
-Configureer kolombewegingstoestemmingen bij het instellen van je tabel:
+Configureer kolombewegingstoestemmingen bij het opzetten van je tabel:
 
 ```java
-// Sta gebruikers toe om deze kolom te verplaatsen
+// Sta gebruikers toe deze kolom te verplaatsen
 table.addColumn("Titel", Product::getTitle).setMovable(true);
 
-// Voorkom kolomverplaatsing (nuttig voor ID- of actie kolommen)
+// Voorkom kolombeweging (handig voor ID of actie kolommen)
 table.addColumn("ID", Product::getId).setMovable(false);
 
 // Controleer huidige staat
 boolean canMove = column.isMovable();
 ```
 
-Pas bewegingsinstellingen gelijktijdig toe op meerdere kolommen:
+Pas bewegingsinstellingen tegelijk toe op meerdere kolommen:
 
 ```java
-// Sta herordening voor alle bestaande kolommen toe
+// Sta herschikken toe voor alle bestaande kolommen
 table.setColumnsToMovable(true);
 
-// Voorkom herordening voor alle bestaande kolommen  
+// Voorkom herschikken voor alle bestaande kolommen  
 table.setColumnsToMovable(false);
 ```
 
-:::note Bulk Bewerking
-De methoden `setColumnsToResizable()` en `setColumnsToMovable()` hebben alleen invloed op bestaande kolommen op het moment van aanroep. Ze stellen geen standaardwaarden in voor toekomstige kolommen.
+:::note Bulk Operaties
+De methoden `setColumnsToResizable()` en `setColumnsToMovable()` beïnvloeden alleen bestaande kolommen op het moment van aanroep. Ze stellen geen standaardwaarden in voor toekomstige kolommen.
 :::
 
-### Programmatische kolombeweging {#programmatic-column-movement} 
+### Programmatic kolombeweging {#programmatic-column-movement} 
 
-Naast slepen en neerzetten kun je kolommen ook programmatisch verplaatsen op basis van index of ID. Houd er rekening mee dat de index alleen is gebaseerd op zichtbare kolommen; verborgen kolommen worden genegeerd bij het berekenen van posities.
+Naast slepen en neerzetten, kun je kolommen ook programmatig verplaatsen op basis van index of ID. Houd er rekening mee dat de index alleen is gebaseerd op zichtbare kolommen; verborgen kolommen worden genegeerd bij het berekenen van posities.
 
 ```java
 // Verplaats kolom naar eerste positie
-table.moveColumn("titel", 0);
+table.moveColumn("title", 0);
 
 // Verplaats kolom naar laatste positie
 table.moveColumn(titleColumn, table.getColumns().size() - 1);
 
 // Asynchrone beweging met callback
 table.moveColumn("description", 2).thenAccept(c -> {
-    // Kolom succesvol verplaatst
+  // Kolom succesvol verplaatst
 });
 ```
 
-## Evenementafhandeling {#event-handling}
+## Evenementverwerking {#event-handling}
 
-De `Table` component genereert evenementen wanneer gebruikers interactie hebben met kolommen, zodat je kunt reageren op lay-outwijzigingen en de voorkeuren van gebruikers kunt opslaan.
+De `Table` component geeft evenementen af wanneer gebruikers interageren met kolommen, waardoor je kunt reageren op layoutwijzigingen en gebruikersvoorkeuren opslaan.
 
 Ondersteunde evenementen:
 
-- `TableColumnResizeEvent`: Geactiveerd wanneer een gebruiker een kolom vergroot door aan de rand te slepen.
-- `TableColumnMoveEvent`: Geactiveerd wanneer een gebruiker een kolom herordeert door de kop te slepen.
+- `TableColumnResizeEvent`: Afgevuurd wanneer een gebruiker een kolom resize door de rand te slepen.
+- `TableColumnMoveEvent`: Afgevuurd wanneer een gebruiker een kolom herschikt door de kop te slepen.
 
-Je kunt luisteraars aan de `Table` bevestigen om te reageren wanneer gebruikers de tabelindeling wijzigen.
+Je kunt luisteraars aan de `Table` koppelen om te reageren wanneer gebruikers de tabelindeling wijzigen.
 
 ```java
 Table<Product> table = new Table<>();
 
 table.onColumnResize(event -> {
-  // Behandel kolomvergroting evenement
+  // Verwerk kolom resize evenement
   // Toegang: event.getColumn(), event.getOldWidth(), event.getNewWidth()
 });
 
 table.onColumnMove(event -> {
-  // Behandel kolomverplaatsing evenement  
+  // Verwerk kolom verplaats evenement  
   // Toegang: event.getColumn(), event.getOldIndex(), event.getNewIndex()
 });
 ```

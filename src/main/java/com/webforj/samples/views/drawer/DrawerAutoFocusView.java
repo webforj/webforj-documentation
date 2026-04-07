@@ -13,15 +13,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Drawer AutoFocus")
 public class DrawerAutoFocusView extends Composite<FlexLayout> {
-
-  FlexLayout layout = getBoundComponent();
-  Drawer drawer = new Drawer();
+  private final FlexLayout self = getBoundComponent();
+  private final Drawer drawer = new Drawer();
 
   public DrawerAutoFocusView() {
-    layout.setMargin("var(--dwc-space-m)");
-
-    drawer.setAutoFocus(true);
-
     CheckBox emailNotifications = new CheckBox("Email Notifications");
     CheckBox smsNotifications = new CheckBox("SMS Notifications");
     CheckBox pushNotifications = new CheckBox("Push Notifications");
@@ -34,15 +29,16 @@ public class DrawerAutoFocusView extends Composite<FlexLayout> {
         .setTheme(ButtonTheme.PRIMARY)
         .setWidth("100%");
 
-    drawer.add(checkBoxContainer);
-    drawer.addToFooter(saveButton);
+    drawer.addToFooter(saveButton)
+        .setLabel("Notification Preferences")
+        .setAutoFocus(true)
+        .open()
+        .add(checkBoxContainer);
 
     Button openDrawerButton = new Button("Open Preferences");
     openDrawerButton.onClick(e -> drawer.open());
 
-    layout.add(openDrawerButton, drawer);
-
-    drawer.setLabel("Notification Preferences");
-    drawer.open();
+    self.setMargin("var(--dwc-space-m)")
+        .add(openDrawerButton, drawer);
   }
 }
