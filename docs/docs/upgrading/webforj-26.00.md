@@ -2,6 +2,7 @@
 title: Upgrade to 26.00
 description: Upgrade from 25.00 to 26.00
 pagination_next: null
+sidebar_class_name: new-content
 ---
 
 This documentation serves as a guide to upgrade webforJ apps from 25.00 to 26.00.
