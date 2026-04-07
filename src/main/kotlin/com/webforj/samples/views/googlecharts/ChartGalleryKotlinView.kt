@@ -39,7 +39,7 @@ class ChartGalleryKotlinView: Composite<Div>() {
     chart(chartKey)?.let {
       val formattedTitle = formatTitle(chartKey)
       anchor {
-        href = GITHUB_BASE_URL + formattedTitle.replace(" ", "") + ".java"
+        href = "$GITHUB_BASE_URL${formattedTitle.replace(" ", "")}.java"
         target = "_blank"
         div {
           classNames + "chart-div"
