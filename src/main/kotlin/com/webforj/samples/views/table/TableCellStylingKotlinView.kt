@@ -35,7 +35,9 @@ class TableCellStylingKotlinView : Composite<FlexLayout>() {
         val ageCol = addColumn("Age", Person::getAge).apply {
           isSortable = true
         }
-        addColumn("City", Person::getCity)
+        addColumn("City", Person::getCity).apply {
+          isSortable = true
+        }
         items = listOf(
           Person("Alice", 28, "New York"),
           Person("Bob", 35, "Chicago"),
