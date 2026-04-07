@@ -12,16 +12,18 @@ hide_table_of_contents: false
 
 There's something about native mobile apps that's hard to copy on the web: things move. Tap a photo and it expands. Go back and it shrinks to where it came from. The browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) has been closing that gap, and webforJ 25.11 brings it to Java.
 
-> **Note:** The Transitions API is marked experimental as of 25.11. The API signature, behavior, and performance characteristics may change in future releases.
-
-To see what this looks like in practice, I threw together a quick demo app: a travel destinations browser with a card grid and detail pages. It shows two things at once: slide animations between routes via `@RouteTransition`, and a shared element morph where the card thumbnail expands into the full hero image on the detail page.
-
 <!-- truncate -->
 
+:::note
+The Transitions API is marked experimental as of 25.11. The API signature, behavior, and performance characteristics may change in future releases.
+:::
+
+To see what this looks like in practice, I threw together a quick travel destinations app with a card grid and detail pages to browse through. It shows two things at once: slide animations between routes via `@RouteTransition`, and a shared element morph where the card thumbnail expands into the full hero image on the detail page.
+
 <div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/blogs/2026-04-03-view-transitions/view-transitions.mp4" type="video/mp4"/>
-  </video>
+<video controls preload="metadata">
+  <source src="https://cdn.webforj.com/webforj-documentation/blogs/2026-04-03-view-transitions/view-transitions.mp4" type="video/mp4"/>
+</video>
 </div>
 
 ## How it works
@@ -32,7 +34,7 @@ The tricky part for server-side frameworks is timing. DOM mutations happen on th
 
 ## Basic usage
 
-Start with `Page.getCurrent().startViewTransition()`, which returns a builder. The only method you need to call before `start()` is `onUpdate()`, where you make your actual component changes:
+Start with `Page.getCurrent().startViewTransition()`, which returns a transition builder, [`ViewTransition`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/ViewTransition.html). The only method you need to call before `start()` is `onUpdate()`, where you make your actual component changes:
 
 ```java
 Page.getCurrent().startViewTransition()
@@ -48,9 +50,23 @@ Page.getCurrent().startViewTransition()
 
 Without any extra configuration, you get a crossfade. That's already a big improvement over a snap cut, and it only takes a few lines to set up.
 
+## Declarative route transitions
+
+For most navigation scenarios, you don't need any of the above. `@RouteTransition` on a route class is enough; the router handles the animation lifecycle automatically:
+
+```java
+@Route
+@RouteTransition(enter = ViewTransition.ZOOM, exit = ViewTransition.FADE)
+public class DashboardView extends Composite<FlexLayout> {
+  // view implementation
+}
+```
+
+Set `enter` and `exit`, and you're done. It accepts the same `ViewTransition` constants, or a custom string if you've defined your own CSS. Reach for `startViewTransition()` directly when you need to animate non-navigation changes, combine enter and exit on different components, or work with shared element morphing.
+
 ## Predefined transition types
 
-The demo relies on `@RouteTransition` for its slide animations, but if you need more control over individual components, `enter()` and `exit()` let you target specific elements:
+If you need more control over individual components, `enter()` and `exit()` let you target specific elements:
 
 ```java
 // Sliding in a detail panel
@@ -101,7 +117,9 @@ Here's the full list of built-in types:
 
 ## Shared element transitions (morphing)
 
-Click a product thumbnail and it expands into the hero image on the detail page, no jarring cut, just a continuous motion between the two states. That's a shared element transition, and it's the one I found most satisfying to wire up in the demo.
+Click a product thumbnail and it expands into the full-width hero image (the large featured image at the top of the detail page) with no jarring cut, just a continuous motion between the two states. That's a shared element transition, and it's the one I found most satisfying to wire up in the travel app.
+
+One thing to watch out for with lists: every repeating element needs a unique name. If two visible components share the same transition name, behavior is undefined. Append the item ID, or whatever uniquely identifies each row.
 
 Give the same element in both views a matching name using `setViewTransitionName()`, available on any component that implements `HasStyle`. When the transition runs, the browser finds the matching names and animates between them automatically:
 
@@ -123,11 +141,9 @@ Page.getCurrent().startViewTransition()
 
 The browser handles the rest on its own.
 
-One thing to watch out for with lists: every repeating element needs a unique name. If two visible components share the same transition name, behavior is undefined. Append the item ID, or whatever uniquely identifies each row.
-
 ## Custom CSS animations
 
-I didn't go this far in the demo, but the API supports fully custom keyframe animations if the built-in types don't cover your use case. webforJ automatically appends `-enter` or `-exit` to whatever name you pass into `enter()` or `exit()`, which you target in CSS using the `::view-transition-new` and `::view-transition-old` pseudo-elements:
+The API supports fully custom keyframe animations if the built-in types don't cover your use case. webforJ automatically appends `-enter` or `-exit` to whatever name you pass into `enter()` or `exit()`, which you target in CSS using the `::view-transition-new` and `::view-transition-old` pseudo-elements:
 
 ```css
 @keyframes flip-enter {
@@ -142,7 +158,7 @@ I didn't go this far in the demo, but the API supports fully custom keyframe ani
 }
 
 ::view-transition-new(flip-in-enter) {
-  animation: flip-enter 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: flip-enter 450ms var(--dwc-ease-outBack);
   transform-origin: top center;
 }
 
@@ -163,6 +179,8 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
+To load the CSS, annotate the view that calls `startViewTransition()` with `@StyleSheet` or `@InlineStyleSheet`. Because `::view-transition-*` pseudo-elements are painted at the document level, the stylesheet only needs to be present on the page that triggers the transition — you don't need to add it to every route.
+
 You don't have to go fully custom to get some CSS control. Targeting the built-in pseudo-elements is enough to adjust timing or easing:
 
 ```css
@@ -175,19 +193,7 @@ You don't have to go fully custom to get some CSS control. Targeting the built-i
 }
 ```
 
-## Declarative route transitions
-
-For most navigation scenarios, you don't need any of the above. `@RouteTransition` on a route class is enough; the router handles the animation lifecycle automatically:
-
-```java
-@Route
-@RouteTransition(enter = ViewTransition.ZOOM, exit = ViewTransition.FADE)
-public class DashboardView extends Composite<FlexLayout> {
-  // view implementation
-}
-```
-
-Set `enter` and `exit`, and you're done. It accepts the same `ViewTransition` constants, or a custom string if you've defined your own CSS. This is actually where I started in the demo before layering in the programmatic API for the morph. Reach for `startViewTransition()` directly when you need to animate non-navigation changes, combine enter and exit on different components, or work with shared element morphing.
+For all available easing variables, see [Transitions & Easing](/docs/styling/transitions-easing).
 
 ## Wrapping up
 
