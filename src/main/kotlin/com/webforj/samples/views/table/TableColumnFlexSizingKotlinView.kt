@@ -1,10 +1,8 @@
 package com.webforj.samples.views.table
 
 import com.webforj.component.Composite
-import com.webforj.component.button.Button
 import com.webforj.component.button.ButtonTheme
 import com.webforj.component.field.NumberField
-import com.webforj.component.html.elements.Paragraph
 import com.webforj.component.layout.flexlayout.FlexAlignment
 import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
@@ -17,11 +15,7 @@ import com.webforj.kotlin.dsl.component.html.elements.paragraph
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.table.column
 import com.webforj.kotlin.dsl.component.table.table
-import com.webforj.kotlin.extension.percent
-import com.webforj.kotlin.extension.px
-import com.webforj.kotlin.extension.set
-import com.webforj.kotlin.extension.styles
-import com.webforj.kotlin.extension.vh
+import com.webforj.kotlin.extension.*
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -52,7 +46,7 @@ class TableColumnFlexSizingKotlinView : Composite<FlexLayout>() {
         flexControl("Genre", 1.0) {
           updateColumnFlex(it, "Genre")
         }
-        button("Rest to Defaults", ButtonTheme.OUTLINED_PRIMARY) {
+        button("Reset to Defaults", ButtonTheme.OUTLINED_PRIMARY) {
           onClick { resetToDefaults() }
         }
         button("Equal Flex", ButtonTheme.OUTLINED_PRIMARY) {
@@ -106,13 +100,14 @@ class TableColumnFlexSizingKotlinView : Composite<FlexLayout>() {
         styles["font-weight"] = "bold"
         styles["font-size"] = 14.px
       }
-      numberField(value = defaultValue) {
+      val field = numberField(value = defaultValue) {
         min = 0.1
         max = 10.0
         step = 0.1
         width = 100.px
         onModify { onChange(value.toFloat()) }
-      }.also { fields[label] = it }
+      }
+      fields[label] = field
     }
   }
 
