@@ -30,7 +30,7 @@ class ColumnsLayoutSpanColumnKotlinView: Composite<Div>() {
         ColumnsLayout.Breakpoint("medium", 40.em, 2),
         ColumnsLayout.Breakpoint("large", 60.em, 3),
       ) {
-        styles["padding"] = "var(--dwc-space-sl)"
+        styles["padding"] = "var(--dwc-space-xl)"
         textField("First Name")
         textField("Last Name")
         setSpan(textField("Email"), "medium", 2)
