@@ -1,5 +1,6 @@
 package com.webforj.samples.views.table;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.table.DataTablePage;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,9 @@ import com.webforj.samples.views.BaseTest;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
 public class DataTableViewIT extends BaseTest {
 
     private static final String ATHLETE_NAME = "Michael Phelps";
@@ -17,14 +21,15 @@ public class DataTableViewIT extends BaseTest {
 
     private DataTablePage dataTable;
 
-    @BeforeEach
-    public void setupDataTable() {
-        navigateToRoute(DataTablePage.getRoute());
+    public void setupDataTable(SupportedLanguage language) {
+        navigateToRoute(DataTablePage.getRoute(language));
         dataTable = new DataTablePage(page);
     }
 
-    @Test
-    public void testEntriesPerPageAndPaginator() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testEntriesPerPageAndPaginator(SupportedLanguage language) {
+        setupDataTable(language);
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesTen().click();
         assertThat(dataTable.getTableRows()).hasCount(10);
@@ -38,14 +43,18 @@ public class DataTableViewIT extends BaseTest {
         assertThat(dataTable.getPaginationText("Showing 1 to 100 of 8618")).isVisible();
     }
 
-    @Test
-    public void testSearchButtonFilterOnTable() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testSearchButtonFilterOnTable(SupportedLanguage language) {
+        setupDataTable(language);
         dataTable.searchAthlete(ATHLETE_NAME);
         assertThat(dataTable.getTableRows()).hasCount(3);
     }
 
-    @Test
-    public void testFilteringNonLatinAlphabetCharacters() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testFilteringNonLatinAlphabetCharacters(SupportedLanguage language) {
+        setupDataTable(language);
         dataTable.searchAthlete(ATHLETE_WITH_DIACRITICS_LATIN);
         assertThat(dataTable.getPaginationText("Showing 1 to 2 of 2 entries")).isVisible();
 
@@ -53,8 +62,10 @@ public class DataTableViewIT extends BaseTest {
         assertThat(dataTable.getTableRows()).hasCount(0);
     }
 
-    @Test
-    public void testPaginatorDisplaysCorrectly() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testPaginatorDisplaysCorrectly(SupportedLanguage language) {
+        setupDataTable(language);
         dataTable.getPaginatorLastPage().click();
         assertThat(dataTable.goToSpecificPage(862)).isVisible();
 
@@ -71,14 +82,18 @@ public class DataTableViewIT extends BaseTest {
         assertThat(dataTable.goToSpecificPage(87)).isVisible();
     }
 
-    @Test
-    public void testPaginatorNavigatesCorrectly() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testPaginatorNavigatesCorrectly(SupportedLanguage language) {
+        setupDataTable(language);
         dataTable.getPaginatorNextPage().click();
         assertThat(dataTable.getPaginationText("Showing 11 to 20 of 8618")).isVisible();
     }
 
-    @Test
-    public void testPaginatorUpdatesCorrectlyBySearchFilter() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testPaginatorUpdatesCorrectlyBySearchFilter(SupportedLanguage language) {
+        setupDataTable(language);
         dataTable.searchAthlete(ATHLETE_NAME);
         assertThat(dataTable.getPaginationText("Showing 1 to 3 of 3 entries")).isVisible();
         assertThat(dataTable.getPaginatorPreviousPage()).isDisabled();
@@ -87,8 +102,10 @@ public class DataTableViewIT extends BaseTest {
         assertThat(dataTable.getPaginatorLastPage()).isDisabled();
     }
 
-    @Test
-    public void testPaginatorNavigatesCorrectlyToSpecificPage() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testPaginatorNavigatesCorrectlyToSpecificPage(SupportedLanguage language) {
+        setupDataTable(language);
         dataTable.goToSpecificPage(4).click();
         assertThat(dataTable.getPaginationText("Showing 31 to 40 of 8618")).isVisible();
     }
