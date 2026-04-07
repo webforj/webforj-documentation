@@ -33,7 +33,7 @@ class TableRichContentKotlinView : Composite<Div>() {
           flex = 1f
           minWidth = 200f
         }
-        getColumnById("Genre").apply { pinDirection = Column.PinDirection.RIGHT }
+        addColumn("Genre", MusicRecord::getMusicType).apply { pinDirection = Column.PinDirection.RIGHT }
         addColumn("Cost", MusicRecord::getCost).apply {
           setRenderer(BadgeRenderer())
           pinDirection = Column.PinDirection.RIGHT
