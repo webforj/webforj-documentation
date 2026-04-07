@@ -1,0 +1,64 @@
+// Code background - surface-3 both modes (flat design)
+:root { --dwc-code-bg: var(--dwc-surface-3); }
+
+// Token colors - light mode (steps 50-60 for vivid colors)
+:root {
+  --dwc-code-text:        var(--dwc-color-default-text);
+  --dwc-code-comment:     var(--dwc-color-gray-60);
+  --dwc-code-keyword:     var(--dwc-color-primary-50);
+  --dwc-code-string:      var(--dwc-color-success-50);
+  --dwc-code-number:      var(--dwc-color-warning-50);
+  --dwc-code-function:    var(--dwc-color-info-50);
+  --dwc-code-class:       var(--dwc-color-warning-55);
+  --dwc-code-variable:    var(--dwc-color-primary-60);
+  --dwc-code-punctuation: var(--dwc-color-gray-55);
+  --dwc-code-operator:    var(--dwc-color-gray-55);
+  --dwc-code-control:     var(--dwc-color-danger-50);
+  --dwc-code-regex:       var(--dwc-color-danger-55);
+}
+
+// Token colors - dark mode
+[data-theme='dark'] {
+  --dwc-code-comment:     var(--dwc-color-gray-60);
+  --dwc-code-keyword:     var(--dwc-color-primary-75);
+  --dwc-code-string:      var(--dwc-color-success-70);
+  --dwc-code-number:      var(--dwc-color-warning-70);
+  --dwc-code-function:    var(--dwc-color-info-75);
+  --dwc-code-class:       var(--dwc-color-warning-75);
+  --dwc-code-variable:    var(--dwc-color-primary-80);
+  --dwc-code-punctuation: var(--dwc-color-gray-55);
+  --dwc-code-operator:    var(--dwc-color-gray-55);
+  --dwc-code-control:     var(--dwc-color-danger-70);
+  --dwc-code-regex:       var(--dwc-color-danger-70);
+}
+
+// Code block container - flat, no shadow
+.theme-code-block {
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-xl);
+  overflow: hidden;
+  box-shadow: none !important;
+}
+
+// Filename title bar
+[class*='codeBlockTitle'] {
+  background-color: var(--dwc-surface-3) !important;
+  border-bottom: 1px solid var(--dwc-border-color) !important;
+  color: var(--dwc-color-gray-55) !important;
+  font-size: var(--dwc-font-size-s) !important;
+  padding: var(--dwc-space-s) var(--dwc-space-m) !important;
+}
+
+// Code body
+pre.prism-code {
+  background-color: var(--dwc-code-bg) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: 'JetBrains Mono', var(--ifm-font-family-monospace);
+  font-size: 15px;
+}
+
+// Inline code
+code {
+  font-family: 'JetBrains Mono', var(--ifm-font-family-monospace);
+}

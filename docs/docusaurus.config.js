@@ -1,6 +1,5 @@
 // @ts-check
-const lightCodeTheme = require('prism-react-renderer').themes.github;
-const darkCodeTheme = require('prism-react-renderer').themes.dracula;
+const codeTheme = require('./src/theme/prism-dwc-theme');
 
 /** Resolves the webforJ version, fetching from GitHub if the build version is a SNAPSHOT. */
 async function resolveWebforjVersion() {
@@ -89,7 +88,29 @@ module.exports = async function createConfig() {
       tagName: 'link',
       attributes: {
         rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/gh/webforj/dwc-dist@latest/dwc-ui.css',
+        href: 'https://cdn.webforj.com/next/dwc-ui.css',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap',
       },
     },
   ],
@@ -324,8 +345,8 @@ module.exports = async function createConfig() {
       ],
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
+      theme: codeTheme,
+      darkTheme: codeTheme,
       additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy']
     },
   }
