@@ -84,14 +84,17 @@ class TableDynamicStylingKotlinView : Composite<FlexLayout>() {
         }
         update.onClick {
           val alice = data.first()
-          val (age, text) = if (toggleAge) {
-            28 to "Decrease Alice Age"
+          alice.age = if (toggleAge) {
+            28
           } else {
-            31 to "Increase Alice Age"
+            31
           }
-          alice.age = age
-          update.text = text
           toggleAge = !toggleAge
+          update.text = if (toggleAge) {
+            "Decrease Alice Age"
+          } else {
+            "Increase Alice Age"
+          }
           repository.commit(alice)
         }
       }
