@@ -135,7 +135,7 @@ LocalDate d = LocalDate.of(2025, 3, 5);
 MaskDecorator.forDate(d, "%Mz/%Dz/%Yl");  // → "03/05/2025"
 MaskDecorator.forDate(d, "%Dz.%Mz.%Yz");  // → "05.03.25"
 MaskDecorator.forDate(d, "%Dl, %Ml %Dz");  // → "Wednesday, March 05"
-MaskDecorator.forDate(d, "%Yl-%Mz-%Dz");  // → "25-03-05"
+MaskDecorator.forDate(d, "%Yl-%Mz-%Dz");  // → "2025-03-05"
 ```
 
 ## Masking times {#masking-times}
@@ -181,7 +181,7 @@ Time masks use the same modifiers as date masks. See [Date modifiers](#date-modi
 LocalTime t = LocalTime.of(9, 5, 30);
 
 MaskDecorator.forTime(t, "%Hz:%mz:%sz");  // → "09:05:30"
-MaskDecorator.forTime(t, "%hz:%mz %p");   // → " 9:05 AM"
+MaskDecorator.forTime(t, "%hz:%mz %p");   // → "09:05 AM"
 MaskDecorator.forTime(t, "%Hz%mz");       // → "0905"
 ```
 
@@ -210,7 +210,7 @@ LocalDateTime dt = LocalDateTime.of(2025, 7, 4, 14, 30, 0);
 
 MaskDecorator.forDateTime(dt, "%Mz/%Dz/%Yl %Hz:%mz");      // → "07/04/2025 14:30"
 MaskDecorator.forDateTime(dt, "%Mz/%Dz/%Yl %Hz:%mz:%sz");  // → "07/04/2025 14:30:00"
-MaskDecorator.forDateTime(dt, "%Dz.%Mz.%Yz %hz:%mz %p");  // → "04.07.25  2:30 PM"
+MaskDecorator.forDateTime(dt, "%Dz.%Mz.%Yz %hz:%mz %p");  // → "04.07.25 02:30 PM"
 ```
 
 ## Handling null results {#handling-null-results}
