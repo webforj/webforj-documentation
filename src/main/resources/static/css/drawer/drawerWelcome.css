@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-html[data-app-theme="dark"] .webforJ-logo{
+html[data-app-theme="dark"] .webforJ-logo {
   filter: brightness(0) invert(1);
 }
 
