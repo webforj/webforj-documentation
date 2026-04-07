@@ -40,7 +40,7 @@ class BadgeSizesKotlinView: Composite<FlexLayout>() {
       horizontal()
       wrap = FlexWrap.WRAP
       spacing = "var(--dwc-space-s)"
-      alignment = FlexAlignment.CENTER;
+      alignment = FlexAlignment.CENTER
       createBadge("3xs", BadgeExpanse.XXXSMALL)
       createBadge("2xs", BadgeExpanse.XXSMALL)
       createBadge("xs", BadgeExpanse.XSMALL)
@@ -57,7 +57,7 @@ class BadgeSizesKotlinView: Composite<FlexLayout>() {
     flexLayout {
       horizontal()
       spacing = "var(--dwc-space-s)"
-      alignment = FlexAlignment.CENTER;
+      alignment = FlexAlignment.CENTER
       createBadge("5", BadgeExpanse.XSMALL)
       createBadge("5", BadgeExpanse.SMALL)
       createBadge("5", BadgeExpanse.MEDIUM)
