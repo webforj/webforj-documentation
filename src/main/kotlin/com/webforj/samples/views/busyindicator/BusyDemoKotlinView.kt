@@ -33,6 +33,14 @@ class BusyDemoKotlinView: Composite<FlexLayout>() {
         }
         button("Submit") {
           theme = ButtonTheme.PRIMARY
+          onClick {
+            App.getBusyIndicator().apply {
+              text = "Submitting form... Please wait."
+              isBackdropVisible = true
+              open()
+              spinner.apply { theme = Theme.PRIMARY }
+            }
+          }
         }
       }
     }
@@ -40,9 +48,8 @@ class BusyDemoKotlinView: Composite<FlexLayout>() {
       text = "Submitting form... Please wait."
       isBackdropVisible = true
       open()
-      spinner.apply {
-        theme = Theme.PRIMARY
-      }
+      spinner.apply { theme = Theme.PRIMARY }
     }
   }
+
 }
