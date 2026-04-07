@@ -91,10 +91,10 @@ class ColumnsLayoutFormKotlinView : Composite<Div>() {
         }
         textField("Zip")
         button("Cancel", ButtonTheme.OUTLINED_PRIMARY) {
-          styles["margin"] = "var(--dwc-space-l)"
+          styles["margin-top"] = "var(--dwc-space-l)"
         }
         button("Submit", ButtonTheme.PRIMARY) {
-          styles["margin"] = "var(--dwc-space-l)"
+          styles["margin-top"] = "var(--dwc-space-l)"
         }
       }
     }
