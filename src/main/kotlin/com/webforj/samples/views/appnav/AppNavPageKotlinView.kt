@@ -27,4 +27,10 @@ class AppNavPageKotlinView: Composite<Div>() {
       paragraph.html = "Content for <strong>$it</strong> goes here"
     }
   }
+
+  override fun onDestroy() {
+    Router.getCurrent().removeAllListeners()
+    super.destroy()
+  }
+
 }
