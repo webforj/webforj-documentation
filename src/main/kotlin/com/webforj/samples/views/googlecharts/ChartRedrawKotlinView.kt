@@ -96,13 +96,13 @@ class ChartRedrawKotlinView: Composite<Div>() {
                 allValuesValid = false
                 break
               }
+            }
 
-              if (!allValuesValid) {
-                Toast.show("Enter a valid number between 1 and $maxAllowed", 3000, Theme.DANGER)
-              } else {
-                chart.data = data
-                chart.redraw()
-              }
+            if (!allValuesValid) {
+              Toast.show("Enter a valid number between 1 and $maxAllowed", 3000, Theme.DANGER)
+            } else {
+              chart.data = data
+              chart.redraw()
             }
           }
         }
