@@ -53,7 +53,7 @@ class TableDynamicStylingKotlinView : Composite<FlexLayout>() {
       val update = button("Increase Alice Age", ButtonTheme.GRAY) {
         maxWidth = 200.px
       }
-      table {
+      val table = table {
         items = data
         width = 100.percent
         height = 400.px
@@ -82,21 +82,21 @@ class TableDynamicStylingKotlinView : Composite<FlexLayout>() {
             } ?: listOf("cell-junior")
           } ?: listOf()
         }
-        update.onClick {
-          val alice = data.first()
-          alice.age = if (toggleAge) {
-            28
-          } else {
-            31
-          }
-          toggleAge = !toggleAge
-          update.text = if (toggleAge) {
-            "Decrease Alice Age"
-          } else {
-            "Increase Alice Age"
-          }
-          repository.commit(alice)
+      }
+      update.onClick {
+        val alice = data.first()
+        alice.age = if (toggleAge) {
+          28
+        } else {
+          31
         }
+        toggleAge = !toggleAge
+        update.text = if (toggleAge) {
+          "Decrease Alice Age"
+        } else {
+          "Increase Alice Age"
+        }
+        table.repository.commit(alice)
       }
     }
   }
