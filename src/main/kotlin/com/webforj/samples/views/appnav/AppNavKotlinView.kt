@@ -70,7 +70,7 @@ class AppNavKotlinView: Composite<AppLayout>() {
           }
           appNavItem("About") {
             prefixSlot { tablerIcon("info-circle") }
-            appNavItem("webforj", "https://webforj.com/") {
+            appNavItem("webforJ", "https://webforj.com/") {
               prefixSlot { tablerIcon("external-link") }
             }
             appNavItem("GitHub", "https://github.com/webforj/webforj") {
