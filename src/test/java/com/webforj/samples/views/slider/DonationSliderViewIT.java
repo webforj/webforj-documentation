@@ -2,24 +2,25 @@ package com.webforj.samples.views.slider;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.slider.DonationSliderPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class DonationSliderViewIT extends BaseTest {
 
     private DonationSliderPage sliderPage;
 
-    @BeforeEach
-    public void setupDonationSlider() {
-        navigateToRoute(DonationSliderPage.getRoute());
+    public void setupDonationSlider(SupportedLanguage language) {
+        navigateToRoute(DonationSliderPage.getRoute(language));
         sliderPage = new DonationSliderPage(page);
     }
 
-    @Test
-    public void testDonationSlider() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testDonationSlider(SupportedLanguage language) {
+        setupDonationSlider(language);
         sliderPage.getTwentyDollarsOption().click();
         assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "20.0");
 
