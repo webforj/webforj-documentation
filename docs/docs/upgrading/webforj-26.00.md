@@ -159,3 +159,22 @@ Use the following table to see the deprecated repository methods and what method
 | `size(RetrievalCriteria<T>)` | `size(RepositoryCriteria<T, F>)` |
 | `getIndex(T)` | `find(key)` or `findBy(criteria)` |
 | `findByIndex(int)` | `find(key)` or `findBy(criteria)` |
+
+## Removal of `WebforjBBjBridge` {#removal-of-webforjbbjbridge`}
+
+Starting with webforJ 25.11, WebforjBBjBridge and all of its APIs have been removed. Instead of accessing the bridge, webforJ now uses the direct Java API to communicate with and access any required BBj APIs.
+
+**Before**
+
+```java
+Environment environment = Environment.getCurrent();
+WebforjBBjBridge bridge = environment.getBridge();
+```
+
+**After**
+
+```java
+Environment environment = Environment.getCurrent();
+BBjAPI api = environment.getBBjAPI();
+BBjSysGui sysGui = environment.getSysGui();
+```
