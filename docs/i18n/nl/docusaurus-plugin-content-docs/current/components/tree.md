@@ -1,14 +1,14 @@
 ---
 title: Tree
 sidebar_position: 150
-_i18n_hash: 280fb07f73ba1172b33bd0617ded7876
+_i18n_hash: 2302136423928266f164623de9a234b4
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-tree" />
 <DocChip chip='since' label='25.01' />
 <JavadocLink type="foundation" location="com/webforj/component/tree/Tree" top='true'/>
 
-De `Tree` component organiseert gegevens als een hiërarchie van knooppunten. Elk knooppunt heeft een unieke sleutel en een label. Knooppunten verbinden zich om ouder-kindrelaties te vormen. Je kunt knooppunten uitbreiden of inkrimpen om hun kinderen weer te geven of te verbergen. Pictogrammen verduidelijken wat voor soort knooppunt je bekijkt en of het geselecteerd is. Selectie ondersteunt het kiezen van één knooppunt of meerdere tegelijk.
+De `Tree`-component organiseert gegevens als een hiërarchie van knopen. Elke knoop heeft een unieke sleutel en een label. Knopen verbinden om ouders-kindrelaties te vormen. Je kunt knopen uitvouwen of samentrekken om hun kinderen te tonen of te verbergen. Pictogrammen verduidelijken met welk type knoop je te maken hebt en of deze is geselecteerd. Selectie ondersteunt het kiezen van één knoop of meerdere tegelijk.
 
 <!-- INTRO_END -->
 
@@ -16,15 +16,15 @@ De `Tree` component organiseert gegevens als een hiërarchie van knooppunten. El
 
 ### De rol van `TreeNode` {#the-role-of-treenode}
 
-Elk stuk gegevens in de boom is verpakt in een `TreeNode`. Dit object bevat de sleutel, het tekstlabel en links naar de ouder- en kindknooppunten. Het wortelknooppunt is speciaal: het bestaat in elke boom maar is niet zichtbaar. Het dient als de container voor alle top-level knooppunten, waardoor de boomstructuur gemakkelijker intern te beheren is.
+Elke gegevensstuk in de boom is verpakt in een `TreeNode`. Dit object bevat de sleutel, het tekstlabel en links naar de ouder- en kindknopen. De wortelknoop is speciaal: deze bestaat in elke boom maar is niet zichtbaar. Het dient als de container voor alle knopen op het hoogste niveau, waardoor de boomstructuur gemakkelijker intern te beheren is.
 
-Omdat knooppunten verwijzingen naar hun ouders en kinderen behouden, is het doorlopen van de boom eenvoudig. Of je nu omhoog, omlaag wilt bewegen of een specifiek knooppunt op sleutel wilt vinden, de verbindingen zijn altijd toegankelijk.
+Omdat knopen referenties naar hun ouders en kinderen behouden, is het doorlopen van de boom eenvoudig. Of je nu omhoog, omlaag wilt bewegen of een specifieke knoop op sleutel wilt vinden, de verbindingen zijn altijd toegankelijk.
 
-### Knooppunt creatie en beheer {#node-creation-and-management}
+### Het maken en beheren van knopen {#node-creation-and-management}
 
-Knooppunten worden gemaakt met behulp van eenvoudige fabrieksmethoden, hetzij door een sleutel en tekst te verstrekken of alleen tekst (die dubbel fungeert als de sleutel). Dit garandeert dat elk knooppunt geldig en uniek identificeerbaar is.
+Knopen worden gemaakt met behulp van eenvoudige fabrieksmethoden, hetzij door een sleutel en tekst te geven of alleen tekst (die ook de sleutel is). Dit garandeert dat elke knoop geldig en uniek identificeerbaar is.
 
-Knooppunten aan de boom toevoegen houdt in dat je `add()` of `insert()` op een ouderknooppunt aanroept. Deze methoden regelen het toewijzen van de ouderreferentie en melden de boom om zijn UI bij te werken.
+Knopen aan de boom toevoegen omvat het aanroepen van `add()` of `insert()` op een ouderknoop. Deze methoden regelen het toewijzen van de ouderreferentie en informeren de boom om de UI bij te werken.
 
 Voorbeeld:
 
@@ -36,7 +36,7 @@ tree.add(parent);
 ```
 
 :::info Enkelvoudige ouder alleen
-Proberen om hetzelfde knooppunt aan meer dan één ouder toe te wijzen, zal resulteren in een uitzondering. Deze beveiliging zorgt ervoor dat de boom een goede hiërarchie behoudt door te voorkomen dat knooppunten meerdere ouders hebben, wat de integriteit van de structuur zou breken en onverwacht gedrag zou veroorzaken.
+Proberen om dezelfde knoop aan meer dan één ouder toe te wijzen resulteert in een uitzondering. Deze bescherming zorgt ervoor dat de boom een juiste hiërarchie behoudt door te voorkomen dat knopen meerdere ouders hebben, wat de integriteit van de structuur zou verbreken en onverwacht gedrag zou veroorzaken.
 :::
 
 <ComponentDemo 
@@ -45,18 +45,18 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-### Knooppunten wijzigen {#modifying-nodes}
+### Knopen wijzigen {#modifying-nodes}
 
-Je kunt het label van een knooppunt bijwerken door `setText(String text)` aan te roepen. Deze methode verandert de tekst die voor het knooppunt in de boom wordt weergegeven.
+Je kunt het label van een knoop bijwerken door `setText(String text)` aan te roepen. Deze methode verandert de tekst die voor de knoop in de boom wordt getoond.
 
-Om een specifiek kindknooppunt te verwijderen, gebruik je `remove(TreeNode child)`. Dit koppelt het kind los van zijn ouder en verwijdert het uit de boomstructuur. Het wis ook de ouderreferentie.
+Om een specifieke kindknop te verwijderen, gebruik je `remove(TreeNode child)`. Dit ontkoppelt het kind van zijn ouder en verwijdert het uit de boomstructuur. Het wist ook de ouderreferentie.
 
-Als je alle kinderen van een knooppunt wilt wissen, roep je `removeAll()` aan. Dit verwijdert elk kindknooppunt, wist hun ouderreferenties en leegt de lijst met kinderen.
+Als je alle kinderen van een knoop wilt wissen, roep je `removeAll()` aan. Dit verwijdert elke kindknop, wist hun ouderreferenties en leegt de kinderlijst.
 
-Elk knooppunt ondersteunt het opslaan van extra informatie aan de serverside met `setUserData(Object key, Object data)`. Dit stelt je in staat om willekeurige metadata of referenties aan het knooppunt te koppelen, zonder deze gegevens bloot te stellen aan de client of de UI.
+Elke knoop ondersteunt het opslaan van aanvullende informatie aan de serverzijde met `setUserData(Object key, Object data)`. Hiermee kun je willekeurige metadata of referenties aan de knoop koppelen, zonder deze gegevens aan de client of de UI bloot te stellen.
 
-:::tip Gebruik de demo om de tekst van een knooppunt te bewerken
-In de demo, dubbelklik op een knooppunt om een editor voor de tekst te openen. Voer de nieuwe tekst in en sla deze op om het label van het knooppunt in de boom bij te werken.
+:::tip De demo gebruiken om knooptekst te bewerken
+In de demo, dubbelklik op een knoop om een editor voor de tekst te openen. Voer de nieuwe tekst in en sla deze op om het label van de knoop in de boom bij te werken.
 :::
 
 <ComponentDemo 
@@ -67,9 +67,9 @@ height='320px'
 
 ## Pictogrammen {#icons}
 
-Pictogrammen bieden visuele aanwijzingen over waar knooppunten voor staan en hun status. Ze verbeteren de leesbaarheid door knooppunttypes en selectie-status in één oogopslag te onderscheiden. De `Tree` component ondersteunt het instellen van standaardpictogrammen globaal, het aanpassen van pictogrammen per knooppunt, en het toggelen van de zichtbaarheid van pictogrammen.
+Pictogrammen bieden visuele aanwijzingen over wat knopen vertegenwoordigen en hun status. Ze verbeteren de leesbaarheid door knoopsoorten en selectiestatus snel te onderscheiden. De `Tree`-component ondersteunt het wereldwijd instellen van standaardpictogrammen, het aanpassen van pictogrammen per knoop en het schakelen van pictogramzichtbaarheid.
 
-### Globale pictogrammen {#global-icons}
+### Standaardpictogrammen {#global-icons}
 
 De boom laat je standaardpictogrammen instellen voor ingeklapte groepen, uitgeklapte groepen, bladknopen en geselecteerde bladeren.
 
@@ -83,12 +83,12 @@ tree.setLeafSelectedIcon(TablerIcon.create("file-checked"));
 ```
 
 :::tip Pictogrambronnen
-Een pictogram kan elke geldige webforJ [pictogram](./icon) definitie zijn of een hulpbestand dat via een webforJ [ondersteunde middelenprotocollen](../managing-resources/assets-protocols) is geladen.
+Een pictogram kan elke geldige webforJ [pictogram](./icon) definitie zijn of een hulpbronbestand dat is geladen via een webforJ [ondersteunde hulpbronnenprotocollen](../managing-resources/assets-protocols).
 :::
 
-### Per-knooppunt pictogrammen {#per-node-icons}
+### Per-knoop pictogrammen {#per-node-icons}
 
-Je kunt globale standaarden overschrijven door pictogrammen aan individuele knooppunten toe te wijzen. Dit is nuttig wanneer bepaalde knooppunten verschillende concepten vertegenwoordigen, zoals "project" mappen of speciale bestanden.
+Je kunt wereldwijde standaardinstellingen overschrijven door pictogrammen toe te wijzen aan individuele knopen. Dit is nuttig wanneer bepaalde knopen verschillende concepten vertegenwoordigen, zoals “project” mappen of speciale bestanden.
 
 Voorbeeld:
 
@@ -97,9 +97,9 @@ node.setIcon(TablerIcon.create("project"));
 node.setSelectedIcon(TablerIcon.create("project-selected"));
 ```
 
-### Pictogram zichtbaarheidsinstellingen {#icon-visibility}
+### Pictogramzichtbaarheid {#icon-visibility}
 
-Soms wil je misschien pictogrammen voor groepen of bladeren verbergen om rommel te verminderen. De component laat je de zichtbaarheid globaal voor deze categorieën toggelen, waardoor je de uitstraling van de boom kunt vereenvoudigen zonder de structuur te verliezen.
+Soms wil je pictogrammen voor groepen of bladeren verbergen om rommel te verminderen. De component laat je de zichtbaarheid wereldwijd voor deze categorieën schakelen, zodat je de uitstraling van de boom kunt vereenvoudigen zonder de structuur te verliezen.
 
 Voorbeeld:
 
@@ -114,15 +114,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='320px'
 />
 
-## Knooppuntuitbreiding en -inkrimping {#node-expansion-and-collapse}
+## Knoopuitvouwen en -samenvouwen {#node-expansion-and-collapse}
 
-Knooppunten kunnen worden uitgebreid of ingekrompen om te bepalen welke delen van de boom zichtbaar zijn. Dit maakt het mogelijk om je te concentreren op relevante secties en ondersteunt scenario's zoals lazy loading of dynamische gegevensupdates.
+Knopen kunnen worden uitgeklapt of samengevouwen om te bepalen welke delen van de boom zichtbaar zijn. Dit stelt je in staat om je te concentreren op relevante secties en ondersteunt scenario's zoals lazy loading of dynamische gegevensupdates.
 
-### Uitbreidings- en inkrompingoperaties {#expand-and-collapse-operations}
+### Uitklap- en samenvouwoperaties {#expand-and-collapse-operations}
 
-De boom ondersteunt het uitbreiden en inkrompen van individuele knooppunten op basis van hun sleutel of directe referentie. Je kunt ook alle afgeleiden van een knooppunt in één keer uitbreiden of inkrompen.
+De boom ondersteunt het uitvouwen en samenvouwen van individuele knopen op basis van hun sleutel of directe referentie. Je kunt ook alle afstammelingen van een knoop in één keer uitklappen of samenvouwen.
 
-Deze operaties stellen je in staat te bepalen hoeveel van de boom zichtbaar is en ondersteunen lazy-loading van data of focus op gebieden van belang.
+Deze operaties stellen je in staat om te controleren hoeveel van de boom zichtbaar is en ondersteunen het lazy-loading van gegevens of focus op gebieden van belang.
 
 Voorbeeld:
 
@@ -130,20 +130,20 @@ Voorbeeld:
 tree.expand(node);
 tree.collapse(key);
 
-// subbomen inkrompen
+// samenvouwen sub-bomen
 tree.expandFrom(node);
 tree.collapseFrom(node);
 ```
 
-:::info Het inkrompen van de wortel
-Het wortelknooppunt verankert de boom maar blijft verborgen. Het inkrompen van de wortel zou normaal gesproken alles verbergen, waardoor de boom leeg lijkt. Om dit te voorkomen, verkleint het inkrompen van de wortel eigenlijk al zijn kinderen, maar houdt de wortel intern uitgebreid, zodat de boom nog steeds zijn inhoud correct weergeeft.
+:::info Het samenvouwen van de wortel
+De wortelknoop verankert de boom maar blijft verborgen. Het samenvouwen van de wortel zou normaal gesproken alles verbergen, waardoor de boom leeg lijkt. Om dit te vermijden, zorgt het samenvouwen van de wortel ervoor dat alle kinderen worden samengevouwen maar de wortel intern wordt uitgeklapt, zodat de boom zijn inhoud correct blijft tonen.
 :::
 
-### Lazy loading van knooppunten {#lazy-loading-nodes}
+### Lazy loading van knopen {#lazy-loading-nodes}
 
-De boom ondersteunt lazy loading van kindknopen door te reageren op uitbreidingsgebeurtenissen. Wanneer een gebruiker een knooppunt uitbreidt, kan je app de kinderen van dat knooppunt dynamisch laden of genereren. Dit verbetert de prestaties door alleen zichtbare delen van de boom op aanvraag te laden.
+De boom ondersteunt lazy loading van kindknopen door te reageren op uitvouwgebeurtenissen. Wanneer een gebruiker een knoop uitklapt, kan jouw app de kinderen van die knoop dynamisch laden of genereren. Dit verbetert de prestaties door alleen zichtbare delen van de boom op aanvraag te laden.
 
-Gebruik de `onExpand` gebeurtenis om te detecteren wanneer een knooppunt wordt uitgebreid. Controleer in de handler of de kinderen van het knooppunt plaatsvervangers zijn (bijvoorbeeld een spinner of leeg knooppunt) en vervang ze door actuele gegevens zodra ze zijn geladen.
+Gebruik de `onExpand`-gebeurtenis om te detecteren wanneer een knoop wordt uitgeklapt. Binnen de handler, controleer of de kinderen van de knoop plekhouders zijn (bijvoorbeeld een spinner of lege knoop) en vervang ze door daadwerkelijke gegevens zodra ze zijn geladen.
 
 <ComponentDemo 
 path='/webforj/treelazyload?'
@@ -153,11 +153,11 @@ height='250px'
 
 ## Selectie {#selection}
 
-Selectie regelt welke knooppunten door de gebruiker zijn gekozen. De `Tree` component ondersteunt flexibele modi en API's om knooppunten te selecteren, deselecteren en op te vragen.
+Selectie bestuurt welke knopen door de gebruiker zijn gekozen. De `Tree`-component ondersteunt flexibele modi en API's om knopen te selecteren, deselecteren en op te vragen.
 
 ### Selectiemodi {#selection-modes}
 
-Je kunt kiezen of de boom het selecteren van één knooppunt tegelijk of meerdere knooppunten tegelijkertijd toestaat. Overschakelen van meerdere selectie naar enkele selectie deselecteert automatisch alle, behalve het eerste geselecteerde knooppunt.
+Je kunt kiezen of de boom het selecteren van een enkele knoop tegelijk of meerdere knopen tegelijkertijd toestaat. Overstappen van meerdere naar enkele selectie deselecteert automatisch alle knopen behalve de eerste geselecteerde knoop.
 
 Voorbeeld:
 
@@ -165,43 +165,43 @@ Voorbeeld:
 tree.setSelectionMode(Tree.SelectionMode.SINGLE);
 ```
 
-:::tip Multi-selectie-interactie
-Wanneer de boom is ingesteld op meerdere selectiemodus, kunnen gebruikers meer dan één knooppunt tegelijk selecteren. De manier waarop dit werkt, hangt af van het apparaat:
+:::tip Multi-selectie interactie
+Wanneer de boom is ingesteld op de modus voor meerdere selecties, kunnen gebruikers meer dan één knoop tegelijk selecteren. Hoe dit werkt, hangt af van het apparaat:
 
-* **Desktop (muisklik en toetsenbord):** Gebruikers houden de **Ctrl**-toets (of de **Cmd**-toets op macOS) ingedrukt en klikken op knooppunten om ze aan de huidige selectie toe te voegen of te verwijderen. Dit maakt het mogelijk om meerdere individuele knooppunten te selecteren zonder anderen te deselecteren.
-* **Mobiele en aanraakapparaten:** Aangezien modifier-toetsen niet beschikbaar zijn, tikken gebruikers eenvoudig op knooppunten om ze te selecteren of deselecteren. Elke tik schakelt de selectiestatus van dat knooppunt om, waardoor eenvoudige multi-selectie door middel van simpele tikken mogelijk is.
+* **Desktop (muis en toetsenbord):** Gebruikers houden de **Ctrl**-toets (of **Cmd**-toets op macOS) ingedrukt en klikken op knopen om ze aan de huidige selectie toe te voegen of uit deze te verwijderen. Dit maakt het mogelijk om meerdere afzonderlijke knopen te selecteren zonder andere te deselecteren.
+* **Mobiele apparaten en touch apparaten:** Aangezien modifier-toetsen niet beschikbaar zijn, tikken gebruikers eenvoudig op knopen om deze te selecteren of deselecteren. Elke tik schakelt de selectiestatus van die knoop om, waardoor gemakkelijke multi-selectie mogelijk is door middel van eenvoudige tikken.
 :::
 
 ### Selecteren en deselecteren {#selecting-and-deselecting}
 
-Knooppunten kunnen worden geselecteerd of gedeselecteerd op basis van referentie, sleutel, individueel of in batches. Je kunt ook alle kinderen van een knooppunt in één oproep selecteren of deselecteren.
+Knopen kunnen worden geselecteerd of gedeselecteerd op referentie, sleutel, individueel of in batches. Je kunt ook alle kinderen van een knoop in één oproep selecteren of deselecteren.
 
 Voorbeeld:
 
 ```java
-// selecteer knooppunt op referentie of sleutel
+// selecteer knoop op referentie of sleutel
 tree.select(node);
 tree.selectKey(key);
 
-// deselecteer knooppunt op referentie of sleutel
+// deselecteer knoop op referentie of sleutel
 tree.deselect(node);
 tree.deselectAll();
 
-// kiezen of deselecteren van kinderen van knooppunten
+// selecteren of deselecteren van kinderen van knopen
 tree.selectChildren(parentNode);
 tree.deselectChildren(parentNode);
 ```
 
-### Selectiestatus ophalen {#selection-state-retrieval}
+### Selectiestaat ophalen {#selection-state-retrieval}
 
-Je kunt de huidige selectie verkrijgen door gebruik te maken van de onderstaande code:
+Je kunt de huidige selectie krijgen door gebruik te maken van de onderstaande code:
 
 ```java
-// haal de referentie van het geselecteerde knooppunt op
+// verkrijg de referentie van de geselecteerde knoop
 TreeNode selected = tree.getSelected();
 List<TreeNode> selectedItems = tree.getSelectedItems();
 
-// haal de sleutel van het geselecteerde knooppunt op
+// verkrijg de sleutel van de geselecteerde knoop
 Object selectedKey = tree.getSelectedKey();
 List<Object> selectedKeys = tree.getSelectedKeys();
 ```
@@ -212,6 +212,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='400px'
 />
 
-## Styling {#styling}
+## Stijlen {#styling}
 
-<TableBuilder name="Tree" />
+<TableBuilder name={['Tree', 'TreeNode']} />

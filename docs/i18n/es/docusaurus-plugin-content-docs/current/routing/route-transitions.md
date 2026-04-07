@@ -1,27 +1,24 @@
 ---
 sidebar_position: 12
 title: Route Transitions
-sidebar_class_name: new-content
-_i18n_hash: 34159c78405282a71774c6148a31f18a
+_i18n_hash: 98050ac6a061f4dc3728af3888aa44b0
 ---
 <JavadocLink type="foundation" location="com/webforj/router/annotation/RouteTransition" top='true'/>
 
 <DocChip chip='since' label='25.11' />
 <DocChip chip='experimental' />
 
-Las transiciones de ruta proporcionan transiciones animadas declarativas al navegar entre rutas. Basándose en la API de [Transiciones de Vista](/docs/advanced/view-transitions), añadir la anotación `@RouteTransition` a sus componentes de ruta permite que el enrutador maneje automáticamente el ciclo de vida de la animación durante la navegación.
+Las transiciones de ruta proporcionan transiciones animadas declarativas al navegar entre rutas. Basado en la API de [View Transitions](/docs/advanced/view-transitions), agregar la anotación `@RouteTransition` a tus componentes de ruta permite que el enrutador maneje automáticamente el ciclo de vida de la animación durante la navegación.
 
-:::warning API Experimental
-Esta API está marcada como experimental desde el 25.11 y puede cambiar en futuras versiones. La firma de la API, el comportamiento y las características de rendimiento están sujetos a modificación.
-:::
+<ExperimentalWarning />
 
 :::info Control programático
-Para escenarios de transición más complejos o control programático, utilice la API de [Transiciones de Vista](/docs/advanced/view-transitions) directamente.
+Para escenarios de transición más complejos o control programático, utiliza la API de [View Transitions](/docs/advanced/view-transitions) directamente.
 :::
 
 ## La anotación `@RouteTransition` {#the-routetransition-annotation}
 
-La anotación `@RouteTransition` define cómo un componente de ruta anima al entrar o salir de la vista:
+La anotación `@RouteTransition` define cómo un componente de ruta se anima al entrar o salir de la vista:
 
 ```java
 @Route
@@ -36,55 +33,55 @@ La anotación acepta las siguientes propiedades:
 | Propiedad | Descripción |
 |-----------|-------------|
 | `enter`   | Animación aplicada cuando esta vista aparece |
-| `exit`    | Animación aplicada cuando esta vista se deja |
+| `exit`    | Animación aplicada cuando esta vista se va |
 
 Ambas propiedades aceptan cualquiera de los tipos de transición predefinidos o un valor de cadena personalizado:
 
-| Constante                     | Efecto                                                      |
-|-------------------------------|-------------------------------------------------------------|
-| `ViewTransition.NONE`         | Sin animación                                              |
-| `ViewTransition.FADE`         | Transición cruzada entre contenido antiguo y nuevo       |
-| `ViewTransition.SLIDE_LEFT`   | El contenido fluye a la izquierda (como navegación hacia adelante) |
-| `ViewTransition.SLIDE_RIGHT`  | El contenido fluye a la derecha (como navegación hacia atrás) |
-| `ViewTransition.SLIDE_UP`     | El contenido fluye hacia arriba                           |
-| `ViewTransition.SLIDE_DOWN`   | El contenido fluye hacia abajo                           |
-| `ViewTransition.ZOOM`         | El contenido antiguo se reduce, el nuevo contenido crece |
-| `ViewTransition.ZOOM_OUT`     | El contenido antiguo crece, el nuevo contenido se reduce |
+| Constante                  | Efecto                                      |
+|---------------------------|---------------------------------------------|
+| `ViewTransition.NONE`     | Sin animación                               |
+| `ViewTransition.FADE`     | Transición cruzada entre contenido viejo y nuevo |
+| `ViewTransition.SLIDE_LEFT` | El contenido fluye hacia la izquierda (como navegación hacia adelante) |
+| `ViewTransition.SLIDE_RIGHT`| El contenido fluye hacia la derecha (como navegación hacia atrás) |
+| `ViewTransition.SLIDE_UP` | El contenido fluye hacia arriba            |
+| `ViewTransition.SLIDE_DOWN`| El contenido fluye hacia abajo            |
+| `ViewTransition.ZOOM`     | El contenido viejo se encoge, el nuevo contenido crece |
+| `ViewTransition.ZOOM_OUT` | El contenido viejo crece, el nuevo contenido se encoge |
 
 ## Uso básico {#basic-usage}
 
-Agregue la anotación a cualquier componente de ruta para habilitar transiciones:
+Agrega la anotación a cualquier componente de ruta para habilitar transiciones:
 
 ```java title="InboxView.java"
 @Route(value = "inbox", outlet = MainLayout.class)
 @RouteTransition(enter = ViewTransition.ZOOM, exit = ViewTransition.SLIDE_RIGHT)
-@FrameTitle("Inbox")
+@FrameTitle("Bandeja de entrada")
 public class InboxView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public InboxView() {
-    self.add(new H1("Inbox"));
+    self.add(new H1("Bandeja de entrada"));
     // ...
   }
 }
 ```
 
 En este ejemplo:
-- Al navegar a `InboxView`, el componente entra con una animación de zoom.
-- Al navegar lejos de `InboxView`, el componente sale con el contenido fluyendo hacia la derecha.
+- Al navegar a `InboxView`, el componente entra con una animación de zoom
+- Al navegar fuera de `InboxView`, el componente sale con el contenido fluyendo hacia la derecha
 
 ## Flujo de navegación {#navigation-flow}
 
 Al navegar entre dos rutas, el enrutador coordina la secuencia de transición:
 
-1. Comienza la animación de `exit` del componente que sale.
-2. Ocurren cambios en el [DOM](/docs/glossary#dom) (la vista antigua se elimina, la nueva vista se agrega).
-3. Se reproduce la animación de `enter` del componente que entra.
+1. Comienza la animación de salida del componente que se está saliendo
+2. Ocurren cambios en el [DOM](/docs/glossary#dom) (vista antigua eliminada, nueva vista añadida)
+3. Se reproduce la animación de entrada del componente que está entrando
 
-Si se navega hacia la misma vista que ya está mostrada, se omite la transición para evitar animaciones innecesarias.
+Si se navega a la misma vista que ya se muestra, se omite la transición para evitar animaciones innecesarias.
 
 :::tip Animaciones de salida consistentes
-Usar la misma animación de salida en todas las vistas crea consistencia direccional. Por ejemplo, configurar todas las vistas para salir con `SLIDE_RIGHT` establece un patrón de movimiento "hacia atrás" uniforme, haciendo que el comportamiento de navegación sea predecible sin importar la vista de origen.
+Usar la misma animación de salida en todas las vistas crea consistencia direccional. Por ejemplo, configurar todas las vistas para que salgan con `SLIDE_RIGHT` establece un patrón de movimiento "hacia atrás" uniforme, haciendo que el comportamiento de navegación sea predecible sin importar la vista de origen.
 :::
 
 ## Herencia de transiciones {#transition-inheritance}
@@ -109,11 +106,11 @@ public class SubView extends Composite<FlexLayout> {
 }
 ```
 
-Todas las rutas hijas heredan el mismo estilo de animación sin repetir la anotación.
+Todas las rutas secundarias heredan el mismo estilo de animación sin repetir la anotación.
 
 ### Sobrescribiendo transiciones heredadas {#overriding-inherited-transitions}
 
-Las rutas hijas pueden sobrescribir la transición heredada definiendo su propio `@RouteTransition`:
+Las rutas secundarias pueden sobrescribir la transición heredada definiendo su propio `@RouteTransition`:
 
 ```java
 @Route
@@ -134,7 +131,7 @@ public class SettingsView extends Composite<FlexLayout> {
 
 ## Transiciones de componentes compartidos {#shared-component-transitions}
 
-Puede combinar transiciones de ruta con animaciones de componentes compartidos para crear experiencias conectadas. Los componentes con valores de `view-transition-name` coincidentes se transforman entre vistas. Use el método `setViewTransitionName()`, disponible en cualquier componente que implemente la interfaz <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink>.
+Puedes combinar las transiciones de ruta con las animaciones de componentes compartidos para crear experiencias conectadas. Los componentes con valores coincidentes de `view-transition-name` se transforman entre vistas. Usa el método `setViewTransitionName()`, disponible en cualquier componente que implemente la interfaz <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink>.
 
 ```java title="ProductListView.java"
 @Route(value = "products", outlet = MainLayout.class)

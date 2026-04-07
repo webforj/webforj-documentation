@@ -214,4 +214,4 @@ While there are many use cases for each of the various themes, some examples use
 - `GRAY`: Good for subtle actions, such as minor settings or actions that are more supplementary to a page, and not part of the main functionality.
 - `INFO`: Good for providing additional clarifying information to a user.
 
-<TableBuilder name="Icon" />
+<TableBuilder name={['Icon', 'IconButton']} />
