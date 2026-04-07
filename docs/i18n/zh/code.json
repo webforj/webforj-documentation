@@ -743,6 +743,10 @@
   },
   "chip.tooltipText.name": {
     "message": "该网页组件在DOM中的名称。",
+    "description": "Hover text to explain how the web component will appear in the DOM (document object model)"
+  },
+  "chip.tooltipText.since": {
+    "message": "此功能适用于 webforJ {version} 及更高版本。",
     "description": "Hover text to explain what version of webforJ you need to use the feature."
   },
   "chip.tooltipText.webforJ.version.snapshot": {
@@ -868,5 +872,11 @@
   "theme.SearchModal.footer.backToSearchText": {
     "message": "Back to search",
     "description": "The back to search text for footer"
+  },
+  "experimentalWarning.title": {
+    "message": "实验性功能"
+  },
+  "experimentalWarning.message": {
+    "message": "此功能为实验性，未来版本可能会改变或删除。"
   }
 }

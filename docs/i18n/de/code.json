@@ -743,6 +743,10 @@
   },
   "chip.tooltipText.name": {
     "message": "Der Name dieses Webkomponenten, wie er im DOM erscheint.",
+    "description": "Hover text to explain how the web component will appear in the DOM (document object model)"
+  },
+  "chip.tooltipText.since": {
+    "message": "Dieses Feature ist für webforJ {version} und höher verfügbar.",
     "description": "Hover text to explain what version of webforJ you need to use the feature."
   },
   "chip.tooltipText.webforJ.version.snapshot": {
@@ -868,5 +872,11 @@
   "theme.SearchModal.footer.backToSearchText": {
     "message": "Zurück zur Suche",
     "description": "The back to search text for footer"
+  },
+  "experimentalWarning.title": {
+    "message": "Experimentelles Feature"
+  },
+  "experimentalWarning.message": {
+    "message": "Dieses Feature ist experimentell und kann sich in einer zukünftigen Version ändern oder entfernt werden."
   }
 }

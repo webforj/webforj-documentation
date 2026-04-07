@@ -8,9 +8,8 @@ title: Interval
 
 The <JavadocLink type="foundation" location="com/webforj/Interval" code='true' >Interval</JavadocLink> class represents a timer that triggers an [event](../building-ui/events) with a fixed time delay between each triggering.
 
-The `Interval` class provides a straightforward way to trigger events after a specified delay. It's possible to start, stop, and restart an `Interval` as needed. 
-In webforJ, an `Interval` has better performance compared to a standard Java timer or Swing timer.
-It also supports multiple listeners for the elapsed event.
+You can [start, stop, and restart](#managing-interval-states-starting-stopping-and-restart) an `Interval` as needed and add multiple [listeners](#adding-listeners) for the elapsed event.
+In webforJ, an `Interval` has [better performance](#performance) compared to a standard Java timer or Swing timer.
 
 ## Usages {#usages}
 The `Interval` class triggers events at a fixed time delay. By using Intervals creatively, you can create dynamic and interesting experiences in your app:
@@ -59,3 +58,13 @@ EventListener<Interval.ElapsedEvent> secondListener = (e -> {
 
 interval.addElapsedListener(secondListener);
 ```
+
+## Performance {#performance}
+
+The `Interval` class is specifically designed to provide better performance and reliability for the large loads encountered by web apps.
+In Java Swing, the same behavior can be sufficiently managed by a `Timer` or a new thread, but that approach doesn't scale well for web apps.
+Web apps are likely to have many concurrent users, and if each user creates a new Timer or thread, the system can quickly break when it runs out of threads.
+
+There are several viable options that work at this scale: [**virtual threads**](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html), [**Spring TaskExecutor and TaskScheduler**](https://docs.spring.io/spring-framework/reference/integration/scheduling.html), and **`Interval`**.
+Depending on your app and use-case, any of these may be the best option for you.
+As a default, `Interval` is a reliable choice specifically designed to work with webforJ, and requires no additional configuration.

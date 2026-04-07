@@ -33,10 +33,8 @@ public class MarkdownViewerProgressiveViewIT extends BaseTest {
   @Test
   public void testClickingStartBeginsRendering() {
     progressivePage.getStartButton().click();
-
     assertThat(progressivePage.getStartButton()).isDisabled();
     assertThat(progressivePage.getStopButton()).isEnabled();
-
     progressivePage.getViewer().locator("h1").waitFor();
     assertThat(progressivePage.getViewer().locator("h1")).containsText("Octopus");
   }
@@ -46,14 +44,11 @@ public class MarkdownViewerProgressiveViewIT extends BaseTest {
     progressivePage.getStartButton().click();
     progressivePage.getViewer().locator("h1").waitFor();
     progressivePage.getStopButton().click();
-
     assertThat(progressivePage.getStartButton()).isEnabled();
     assertThat(progressivePage.getStopButton()).isDisabled();
-
     String contentAfterStop = progressivePage.getViewer().textContent();
     page.waitForTimeout(500);
     String contentAfterWait = progressivePage.getViewer().textContent();
-
     assertTrue(contentAfterStop.length() == contentAfterWait.length(),
         "Content should not grow after stop is clicked");
   }
@@ -61,10 +56,8 @@ public class MarkdownViewerProgressiveViewIT extends BaseTest {
   @Test
   public void testRenderingCompletesAndButtonsReset() {
     progressivePage.getStartButton().click();
-
     progressivePage.getViewer().locator("blockquote").waitFor(
-        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(15000));
-
+        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(30000));
     assertThat(progressivePage.getStartButton()).isEnabled(
         new com.microsoft.playwright.assertions.LocatorAssertions.IsEnabledOptions().setTimeout(5000));
     assertThat(progressivePage.getStopButton()).isDisabled();

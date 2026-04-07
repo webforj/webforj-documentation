@@ -1,14 +1,16 @@
 ---
 sidebar_position: 40
 title: View Transitions
-_i18n_hash: 4c19f96d864f10e742350b16ffd54981
+_i18n_hash: 95d65a391ac0b11d6976acfc43691754
 ---
+<!-- vale Google.Units = NO -->
+
 <JavadocLink type="foundation" location="com/webforj/ViewTransition" top='true'/>
 
 <DocChip chip='since' label='25.11' />
 <DocChip chip='experimental' />
 
-视图过渡在[DOM](/docs/glossary#dom)发生变化时提供动画过渡，减少视觉冲击并在导航或内容更新时保持空间上下文。webforJ与浏览器的[视图过渡 API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)集成，以处理协调旧状态和新状态之间动画的复杂性。
+视图过渡在[DOM](/docs/glossary#dom)变化时提供动画过渡，减少视觉上的突兀，并在导航或内容更新过程中保持空间上下文。webforJ与浏览器的[视图过渡API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)集成，处理新旧状态之间动画协调的复杂性。
 
 <ComponentDemo
   path='/webforj/viewtransitionchat?'
@@ -17,11 +19,9 @@ _i18n_hash: 4c19f96d864f10e742350b16ffd54981
   height='450px'
 />
 
-:::warning 实验性 API
-此 API 自 25.11 以来被标记为实验性，可能会在未来版本中发生变化。API 签名、行为和性能特性可能会被修改。
-:::
+<ExperimentalWarning />
 
-## 基本使用 {#basic-usage}
+## 基本用法 {#basic-usage}
 
 要创建视图过渡，请使用 `Page.getCurrent().startViewTransition()`，该方法返回一个用于配置过渡的构建器：
 
@@ -35,31 +35,31 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
-过渡过程捕获当前状态的快照，在 `onUpdate` 回调中应用您的 DOM 更改，然后从旧快照动画到新内容。您必须调用 `done.run()` 来指示您的更改何时完成。
+过渡过程捕获当前状态的快照，在 `onUpdate` 回调中应用您的DOM更改，然后从旧快照动画到新内容。您必须调用 `done.run()` 来信号您的更改已完成。
 
 :::warning `onUpdate` 回调是必需的
-在未设置更新回调的情况下调用 `start()` 将抛出 `IllegalStateException`。
+如果在未设置更新回调的情况下调用 `start()`，将抛出 `IllegalStateException`。
 :::
 
 ## 应用过渡 {#applying-transitions}
 
-webforJ 提供了预定义的过渡类型，您可以将其应用于进入或退出 DOM 的组件：
+webforJ提供预定义的过渡类型，您可以将其应用于进入或退出DOM的组件：
 
 | 常量 | 效果 |
 |----------|--------|
 | `ViewTransition.NONE` | 无动画 |
 | `ViewTransition.FADE` | 旧内容和新内容之间的交叉淡入淡出 |
-| `ViewTransition.SLIDE_LEFT` | 内容向左流动（如前进导航） |
-| `ViewTransition.SLIDE_RIGHT` | 内容向右流动（如后退导航） |
+| `ViewTransition.SLIDE_LEFT` | 内容向左流动（类似向前导航） |
+| `ViewTransition.SLIDE_RIGHT` | 内容向右流动（类似返回导航） |
 | `ViewTransition.SLIDE_UP` | 内容向上流动 |
 | `ViewTransition.SLIDE_DOWN` | 内容向下流动 |
 | `ViewTransition.ZOOM` | 旧内容缩小，新内容放大 |
 | `ViewTransition.ZOOM_OUT` | 旧内容放大，新内容缩小 |
 
-使用 `enter()` 动画一个正在添加的组件，使用 `exit()` 动画正在移除的组件：
+使用 `enter()` 来为添加的组件动画，使用 `exit()` 为被移除的组件动画：
 
 ```java
-// 动画一个进入 DOM 的组件
+// 为进入DOM的组件动画
 Page.getCurrent().startViewTransition()
   .enter(chatPanel, ViewTransition.ZOOM)
   .onUpdate(done -> {
@@ -68,7 +68,7 @@ Page.getCurrent().startViewTransition()
   })
   .start();
 
-// 动画一个退出 DOM 的组件
+// 为退出DOM的组件动画
 Page.getCurrent().startViewTransition()
   .exit(chatPanel, ViewTransition.FADE)
   .onUpdate(done -> {
@@ -80,20 +80,20 @@ Page.getCurrent().startViewTransition()
 
 ## 共享组件过渡 {#shared-component-transitions}
 
-共享组件过渡创建一个形变效果，在这种效果中，组件似乎从旧视图中的位置转变为新视图中的位置。这是通过使用 `setViewTransitionName()` 方法为组件提供相同的过渡名称来实现的，该方法可在实现 <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink> 接口的任何组件上找到。
+共享组件过渡创建一种变形效果，其中组件似乎从旧视图中的位置转变为新视图中的位置。这是通过使用 `setViewTransitionName()` 方法为组件提供相同的过渡名称来实现的，该方法在任何实现了 <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink> 接口的组件上可用。
 
 ```java
 // 在卡片视图中
 image.setViewTransitionName("blog-image");
 
-// 在详细视图中 - 相同名称创建形变
+// 在详情视图中 - 相同名称创建变形
 image.setViewTransitionName("blog-image");
 ```
 
-在这些视图之间过渡时，浏览器在位置之间动画组件，创建一个连接的视觉体验。
+在这些视图之间过渡时，浏览器在位置之间动画化组件，创建一个连接的视觉体验。
 
 :::tip 使用唯一名称
-在处理列表或重复组件时，请在过渡名称中包含唯一标识符。每个组件需要自己独特的名称，以便正确形变到新视图中的对应组件。对多个可见组件使用相同名称会导致未定义行为。
+在处理列表或重复组件时，在过渡名称中包含唯一标识符。每个组件都需要自己独特的名称，以便正确变形到新视图中的相应组件。对多个可见组件使用相同的名称会导致未定义行为。
 :::
 
 <ComponentDemo
@@ -107,15 +107,15 @@ image.setViewTransitionName("blog-image");
   height='650px'
 />
 
-### 列表重新排序 {#list-reordering}
+### 列表排序 {#list-reordering}
 
-共享组件过渡的一个常见用例是当列表项的顺序发生变化时对其进行动画。通过为每个项分配一个唯一的 `view-transition-name`，浏览器会自动将组件动画到它们的新位置：
+共享组件过渡的一个常见用例是当其顺序更改时为列表项动画。通过为每个项目分配唯一的 `view-transition-name`，浏览器会自动将组件动画到其新位置：
 
 ```java
-// 每个卡片根据其 ID 获取唯一的过渡名称
+// 每个卡片根据其ID获取一个唯一的过渡名称
 card.setViewTransitionName("card-" + item.id());
 
-// 在洗牌时，只需更新 DOM - 浏览器处理动画
+// 当洗牌时，只需更新DOM - 浏览器处理动画
 Page.getCurrent().startViewTransition()
   .onUpdate(done -> {
     renderList();
@@ -134,9 +134,9 @@ Page.getCurrent().startViewTransition()
   height='550px'
 />
 
-## 自定义 CSS 动画 {#custom-css-animations}
+## 自定义CSS动画 {#custom-css-animations}
 
-为了全面控制动画，您可以定义自定义 CSS 关键帧。webforJ 在您的过渡名称后追加 `-enter` 或 `-exit` 后缀，您可以使用这些后缀来定位视图过渡伪元素：
+为了对动画进行完全控制，您可以定义自定义CSS关键帧。webforJ在您的过渡名称后附加 `-enter` 或 `-exit` 后缀，您可以使用这些后缀来定位视图过渡伪元素：
 
 ```css
 /* 定义进入组件的关键帧 */
@@ -151,7 +151,7 @@ Page.getCurrent().startViewTransition()
   }
 }
 
-/* 应用到视图过渡伪元素 */
+/* 应用于视图过渡伪元素 */
 ::view-transition-new(flip-in-enter) {
   animation: flip-enter 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-origin: top center;
@@ -174,7 +174,7 @@ Page.getCurrent().startViewTransition()
   })
   .start();
 
-// 使用 "blur-out" 进行退出 - webforJ 添加 "-exit" 后缀
+// 使用 "blur-out" 进行退出 - webforJ 自动添加 "-exit" 后缀
 Page.getCurrent().startViewTransition()
   .exit(notification, "blur-out")
   .onUpdate(done -> {
@@ -186,14 +186,14 @@ Page.getCurrent().startViewTransition()
 
 <ComponentDemo
   path='/webforj/viewtransitionenterexit?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java'
+  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java'
   cssURL='/css/viewtransitions/enterexit.css'
   height='400px'
 />
 
-## CSS 自定义 {#css-customization}
+## CSS自定义 {#css-customization}
 
-每个预定义的过渡类型都公开 CSS 自定义属性，以进行微调：
+每种预定义的过渡类型都公开CSS自定义属性以进行微调：
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -279,14 +279,14 @@ Page.getCurrent().startViewTransition()
       |----------|---------|-------------|
       | `--vt-zoom-duration` | `200ms` | 动画持续时间 |
       | `--vt-zoom-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | 缓动函数 |
-      | `--vt-zoom-scale` | `0.8` | 缩放因子（旧内容缩小到该值，新内容从该值放大） |
+      | `--vt-zoom-scale` | `0.8` | 缩放因子（旧内容缩小到此，新内容从此放大） |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>缩放出去</strong>
+    <strong>缩放退出</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -294,18 +294,18 @@ Page.getCurrent().startViewTransition()
       |----------|---------|-------------|
       | `--vt-zoom-out-duration` | `200ms` | 动画持续时间 |
       | `--vt-zoom-out-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | 缓动函数 |
-      | `--vt-zoom-out-scale` | `1.2` | 缩放因子（旧内容从该值放大，新内容缩小到该值） |
+      | `--vt-zoom-out-scale` | `1.2` | 缩放因子（旧内容放大到此，新内容从此缩小） |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>覆盖变量</strong>
+    <strong>重写变量</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      要自定义，请在您的 CSS 中覆盖这些变量：
+      要自定义，请在您的CSS中重写这些变量：
 
       ```css
       :root {
@@ -314,7 +314,7 @@ Page.getCurrent().startViewTransition()
       }
       ```
 
-      对于高级自定义，直接定位到视图过渡伪元素：
+      对于高级自定义，直接定位视图过渡伪元素：
 
       ```css
       ::view-transition-old(vt-slide-left-exit) {

@@ -1,17 +1,17 @@
 ---
 title: Extending the DSL
 sidebar_position: 20
-_i18n_hash: 73b71a500428fdbc51cd490f19d1eef9
+_i18n_hash: e7878d00305e1d544efb6f9e6e8afe2e
 ---
-Kotlin DSL on laajennettavissa, mikä mahdollistaa DSL-funktioiden lisäämisen mukautetuille komponenteille tai kolmannen osapuolen kirjastoille. Voit rakentaa yhdistelmäkomponentteja, jotka käyttävät DSL:ää sisäisesti.
+Kotlin DSL on laajennettavissa, mikä mahdollistaa DSL-funktioiden lisäämisen mukautetuille komponenteille tai kolmannen osapuolen kirjastoille. Voit rakentaa yhdistettyjä komponentteja, jotka käyttävät DSL: ää sisäisesti.
 
 ## Komponenttien lisääminen DSL:ään {#adding-components-to-the-dsl}
 
-Jotta mikä tahansa komponentti olisi saatavilla DSL:ssä, luo laajennusfunktio `HasComponents`:lle, joka käyttää `init`-aputoimintoa.
+Jotta mikä tahansa komponentti olisi saatavilla DSL:ssä, luo laajennustoiminto `HasComponents`:lle, joka käyttää `init` apufunktiota.
 
-### Perus DSL-funktio {#basic-dsl-function}
+### Perus DSL-toiminto {#basic-dsl-function}
 
-Tässä on malli yksinkertaiselle komponentille. Tämä esimerkki oletetaan, että sinulla on mukautettu `Badge`-komponentti:
+Tässä on malli yksinkertaiselle komponentille. Tämä esimerkki olettaa, että sinulla on mukautettu `Badge`-komponentti:
 
 ```kotlin
 import com.webforj.concern.HasComponents
@@ -26,10 +26,10 @@ fun @WebforjDsl HasComponents.badge(
 }
 ```
 
-`init`-toiminto tekee kolme asiaa:
-1. Lisää komponentin vanhempaan säiliöön
-2. Suorittaa konfigurointilohkon
-3. Palauttaa konfiguroidun komponentin
+`init`-funktio tekee kolme asiaa:
+1. Lisää komponentin pääsäiliöön
+2. Suorittaa konfiguraatioblokin
+3. Palauttaa konfiguroitavan komponentin
 
 Nyt voit käyttää komponenttia DSL-koodissa:
 
@@ -44,7 +44,7 @@ div {
 
 ### Parametrien lisääminen {#adding-parameters}
 
-Useimmat DSL-funktiot hyväksyvät yleisiä parametreja ennen konfigurointilohkoa:
+Useimmat DSL-funktiot hyväksyvät yleiset parametrit ennen konfiguraatioblokkia:
 
 ```kotlin
 fun @WebforjDsl HasComponents.badge(
@@ -59,7 +59,7 @@ fun @WebforjDsl HasComponents.badge(
 }
 ```
 
-Käyttö on tiivistynyt:
+Käyttö tulee tiiviimmäksi:
 
 ```kotlin
 div {
@@ -70,20 +70,21 @@ div {
 }
 ```
 
-## Yhdistelmäkomponenttien luominen {#creating-composite-components}
+## Yhdistettyjen komponenttien luominen {#creating-composite-components}
 
-`Composite` kääri useita komponentteja yhteen uudelleenkäytettävään yksikköön. DSL toimii hyvin yhdistelmän rakenteen määrittämisessä.
+`Composite` käärii useita komponentteja yhteen uudelleenkäytettävään yksikköön. DSL toimii hyvin yhdistetyn rakenteen määrittämiseen.
 
 ### Perusyhdistelmä {#basic-composite}
 
 ```kotlin
 class SearchBox : Composite<Div>() {
 
+  private val self = boundComponent
   val searchField: TextField
   val searchButton: Button
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["gap"] = "8px"
 
@@ -108,11 +109,11 @@ class SearchBox : Composite<Div>() {
 }
 ```
 
-Yhdistelmä altistaa komponentti viittauksia ulkoista käyttöä varten ja tarjoaa käteviä menetelmiä yleisiin toimintoihin.
+Yhdistelmä altistaa komponentin viittaukset ulkoista pääsyä varten ja tarjoaa kätevät menetelmät yleisiin toimiin.
 
 ### DSL-tuen lisääminen {#adding-dsl-support}
 
-Luo DSL-funktio, jotta yhdistelmä voidaan käyttää kuin sisäänrakennettuja komponentteja:
+Luo DSL-toiminto niin, että yhdistelmää voidaan käyttää kuten sisäänrakennettuja komponentteja:
 
 ```kotlin
 fun @WebforjDsl HasComponents.searchBox(
@@ -138,13 +139,14 @@ div {
 }
 ```
 
-### Esimerkki: Tilaindikaattori {#example-status-indicator}
+### Esimerkki: Tilannenohtaja {#example-status-indicator}
 
-Tässä on täydellinen esimerkki tilaindikaattorin yhdistelmästä:
+Tässä on täydellinen esimerkki tilanteen näyttää yhdistelmälle:
 
 ```kotlin
 class StatusIndicator : Composite<Div>() {
 
+  private val self = boundComponent
   private val dot: Div
   private val label: Span
 
@@ -161,7 +163,7 @@ class StatusIndicator : Composite<Div>() {
     }
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["align-items"] = "center"
       styles["gap"] = "8px"
@@ -190,7 +192,7 @@ class StatusIndicator : Composite<Div>() {
   enum class Status { ACTIVE, WARNING, ERROR, INACTIVE }
 }
 
-// DSL-funktio
+// DSL-toiminto
 fun @WebforjDsl HasComponents.statusIndicator(
   text: String? = null,
   status: StatusIndicator.Status? = null,
@@ -208,7 +210,7 @@ Käyttö:
 ```kotlin
 div {
   statusIndicator("Tietokanta", StatusIndicator.Status.ACTIVE)
-  statusIndicator("Cache", StatusIndicator.Status.WARNING)
-  statusIndicator("Ulkoisen API", StatusIndicator.Status.ERROR)
+  statusIndicator("Välimuisti", StatusIndicator.Status.WARNING)
+  statusIndicator("Ulkoapi", StatusIndicator.Status.ERROR)
 }
 ```

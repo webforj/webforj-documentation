@@ -52,12 +52,7 @@ The DSL takes advantage of Kotlin extension functions, lambdas with receivers, a
 
 ## Setup {#setup}
 
-:::warning experimental feature
-This feature is still under active development.
-The API may change in future versions, including possible breaking changes.
-
-You're welcome to try it and share feedback. Your input will help shape the final design.
-:::
+<ExperimentalWarning />
 
 No separate Kotlin installation is required. Maven handles compilation through the Kotlin Maven plugin, so any project that already builds with Maven can add Kotlin support with dependency and plugin configuration alone.
 
