@@ -56,16 +56,7 @@
   --chip-border-radius: var(--dwc-border-radius-pill);
 
   /* Announcement */
-  --announcement-background: linear-gradient(
-    90deg,
-    #00164f,
-    #002596 25%,
-    #000 50%,
-    #002596 75%,
-    #00164f
-  );
-  --announcement-bar-height: 3.5rem;
-  --announcement-color: #fff;
+  --announcement-bar-height: 2.25rem;
 
   /* Menus */
   --menu-level-indicator-color: var(--dwc-color-default);
