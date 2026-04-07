@@ -47,7 +47,7 @@ class BadgeButtonsKotlinView: Composite<FlexLayout>() {
       horizontal()
       wrap = FlexWrap.WRAP
       spacing = "var(--dwc-space-l)"
-      alignment = FlexAlignment.CENTER;
+      alignment = FlexAlignment.CENTER
       button("Notifications") {
         theme = ButtonTheme.PRIMARY
         prefixSlot { featherIcon(FeatherIcon.BELL) }
@@ -66,7 +66,7 @@ class BadgeButtonsKotlinView: Composite<FlexLayout>() {
       horizontal()
       wrap = FlexWrap.WRAP
       spacing = "var(--dwc-space-l)"
-      alignment = FlexAlignment.CENTER;
+      alignment = FlexAlignment.CENTER
       Expanse.entries.forEach {
         val size = it.name.lowercase().let { s ->
           if (s.startsWith("x")) {
