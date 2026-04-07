@@ -4,7 +4,7 @@ sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: new-content
-_i18n_hash: 36366a03c9784b451033e5161bdc7359
+_i18n_hash: 4198ef6392f249bd21d0395c55b5817d
 ---
 <Head>
   <style>{`
@@ -17,7 +17,7 @@ _i18n_hash: 36366a03c9784b451033e5161bdc7359
 <DocChip chip='since' label='25.12' />
 <DocChip chip='experimental' />
 
-webforJ 提供了一种 [Kotlin](https://kotlinlang.org/) *特定领域语言*，简称 DSL，让您能够使用简洁、类型安全的语法构建用户界面。您编写的是声明式代码，类似于您 UI 结构的描述，而不是命令式的 Java 代码。
+webforJ 提供了一种 [Kotlin](https://kotlinlang.org/) *领域特定语言*，或称为 DSL，使您能够使用简洁的、类型安全的语法构建用户界面。您写的不是命令式 Java 代码，而是像描述用户界面结构一样的声明性代码。
 
 <!-- INTRO_END -->
 
@@ -48,26 +48,21 @@ flexLayout {
 }
 ```
 
-该 DSL 利用 Kotlin 扩展函数、带接收者的 lambda 和默认参数来创建自然的构建器语法。组件嵌套在一起，配置在块中进行，编译器在运行时之前捕捉结构性错误。
+该 DSL 利用了 Kotlin 扩展函数、带接收者的 lambda 和默认参数来创建自然的构建器语法。组件相互嵌套，配置在块中进行，而且编译器会在运行时之前捕捉结构错误。
 
-## Setup {#setup}
+## 设置 {#setup}
 
-:::warning experimental feature
-该功能仍在积极开发中。
-API 可能在未来版本中发生变化，包括可能的重大更改。
+<ExperimentalWarning />
 
-欢迎您尝试并分享反馈。您的意见将帮助塑造最终设计。
-:::
-
-不需要单独的 Kotlin 安装。Maven 通过 Kotlin Maven 插件处理编译，因此任何已经使用 Maven 构建的项目只需要添加依赖关系和插件配置便可以添加 Kotlin 支持。
+不需要单独安装 Kotlin。Maven 通过 Kotlin Maven 插件处理编译，因此任何已经使用 Maven 构建的项目都可以仅通过依赖项和插件配置添加对 Kotlin 的支持。
 
 :::tip 快速开始
-要快速启动一个使用 Kotlin 的 webforJ 项目，并具备所有必要的配置，请参见 [这一部分关于使用 webforJ Kotlin 启动器](#kotlin-starter-project)。
+要快速启动一个使用 Kotlin 的 webforJ 项目并运行所需的所有配置，请参见 [使用 webforJ Kotlin 启动器的相关章节](#kotlin-starter-project)。
 :::
 
-### Dependencies {#dependencies}
+### 依赖 {#dependencies}
 
-将 webforJ Kotlin DSL 模块和 Kotlin 标准库添加到您的 `pom.xml` 中：
+将 webforJ Kotlin DSL 模块和 Kotlin 标准库添加到您的 `pom.xml`：
 
 ```xml
 <dependency>
@@ -83,7 +78,7 @@ API 可能在未来版本中发生变化，包括可能的重大更改。
 </dependency>
 ```
 
-如果您计划用 Kotlin 编写测试，还需添加 Kotlin 测试依赖项。它与 JUnit 集成：
+如果您计划在 Kotlin 中编写测试，还请添加 Kotlin 测试依赖项。它与 JUnit 集成：
 
 ```xml
 <dependency>
@@ -94,9 +89,9 @@ API 可能在未来版本中发生变化，包括可能的重大更改。
 </dependency>
 ```
 
-### Kotlin Maven plugin {#kotlin-maven-plugin}
+### Kotlin Maven 插件 {#kotlin-maven-plugin}
 
-添加 Kotlin Maven 插件以编译 Kotlin 和 Java 源代码。下面的 `sourceDirs` 配置允许 Kotlin 和 Java 文件共存于同一项目中：
+添加 Kotlin Maven 插件以编译您的 Kotlin 和 Java 源代码。下面的 `sourceDirs` 配置允许 Kotlin 和 Java 文件在同一项目中共存：
 
 ```xml
 <plugin>
@@ -139,18 +134,18 @@ API 可能在未来版本中发生变化，包括可能的重大更改。
 </plugin>
 ```
 
-通过这些添加，`mvn compile` 将与 Java 代码一起编译 Kotlin 源文件。Kotlin 文件可以放在 `src/main/kotlin` 或 `src/main/java`，插件会处理两者。
+通过这些补充，`mvn compile` 将 Kotlin 源文件与 Java 一起编译。Kotlin 文件可以放在 `src/main/kotlin` 或 `src/main/java` 中，插件会处理这两者。
 
 :::tip[Java 互操作性]
-Kotlin 编译为 JVM 字节码，因此可以与现有的 Java 代码一起工作。您可以从 Java 类中使用 DSL 构建的 Kotlin 组件，将标准 Java 组件嵌套在 DSL 块中并使用 `add()`，以及在同一项目中混合使用 Kotlin 和 Java 文件。
+Kotlin 编译为 JVM 字节码，因此可以与现有 Java 代码协同工作。您可以从 Java 类使用 DSL 构建的 Kotlin 组合，使用 `add()` 将标准 Java 组件嵌套在 DSL 块中，并在同一项目中混合 Kotlin 和 Java 文件。
 :::
 
-### Kotlin starter project {#kotlin-starter-project}
+### Kotlin 启动项目 {#kotlin-starter-project}
 
-如果您想要跳过手动设置， [webforJ Kotlin 启动器](https://github.com/webforj/webforj-kotlin-starter) 仓库提供了一个即用的项目，已经包含了所有依赖项和插件配置。克隆它并立即开始使用 DSL 构建。
+如果您宁愿跳过手动设置， [webforJ Kotlin 启动器](https://github.com/webforj/webforj-kotlin-starter) 仓库提供了一个现成可运行的项目，所有依赖项和插件配置已经到位。克隆它并立即开始使用 DSL 构建。
 
-## Topics {#topics}
+## 主题 {#topics}
 
-以下主题涵盖了使用 DSL 的内容，以及扩展到您创建的任何自定义组件或综合体的内容。
+以下主题涵盖使用 DSL 以及扩展到您创建的任何自定义组件或组合。 
 
 <DocCardList className="topics-section" />

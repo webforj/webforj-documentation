@@ -874,9 +874,9 @@
     "description": "The back to search text for footer"
   },
   "experimentalWarning.title": {
-    "message": "Experimental feature"
+    "message": "Característica experimental"
   },
   "experimentalWarning.message": {
-    "message": "This feature is experimental and may change or be removed in a future release."
+    "message": "Esta función es experimental y puede cambiar o eliminarse en una versión futura."
   }
 }
