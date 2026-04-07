@@ -1,12 +1,12 @@
 package com.webforj.samples.views.columnslayout
 
-import com.basis.startup.b
 import com.webforj.component.Composite
 import com.webforj.component.button.ButtonTheme
 import com.webforj.component.html.elements.Div
 import com.webforj.component.layout.columnslayout.ColumnsLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.field.dateField
+import com.webforj.kotlin.dsl.component.field.textArea
 import com.webforj.kotlin.dsl.component.field.textField
 import com.webforj.kotlin.dsl.component.layout.columnslayout.columnsLayout
 import com.webforj.kotlin.dsl.component.optioninput.checkBox
@@ -34,7 +34,7 @@ class ColumnsLayoutAlignmentKotlinView: Composite<Div>() {
         textField("Last Name")
         textField("Email")
         dateField("Date of Birth")
-        setSpan(textField("Bio"), 2)
+        setSpan(textArea("Bio"), 2)
         setSpan(checkBox("I agree to the terms and conditions"), 2)
         val submit = button("Submit", ButtonTheme.PRIMARY)
         setColumn(submit, 2)
