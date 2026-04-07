@@ -40,7 +40,7 @@ class FlexBasisKotlinView: Composite<FlexLayout>() {
             tooltipText = "Set the flex basis width (in pixels)"
             isRequired = true
           }
-          basisButton = button("Set Basis") {
+          basisButton = button("Set basis") {
             tooltipText = "Select a box item first"
             onClick {
               numberField.value?.let {
