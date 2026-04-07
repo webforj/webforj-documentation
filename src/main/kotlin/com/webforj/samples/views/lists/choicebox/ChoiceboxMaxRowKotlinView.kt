@@ -40,16 +40,16 @@ class ChoiceboxMaxRowKotlinView: Composite<FlexLayout>() {
           isRequired = true
           value = choiceBox.maxRowCount.toDouble()
         }
-        button("Apply", ButtonTheme.PRIMARY) {
-          numberField.onValueChange {
-            isEnabled = !numberField.isInvalid
-          }
+        val applyButton = button("Apply", ButtonTheme.PRIMARY) {
           onClick {
             choiceBox.takeUnless { numberField.isInvalid }
               ?.let {
                 choiceBox.maxRowCount = numberField.value.toInt()
               } ?: numberField.focus()
           }
+        }
+        numberField.onValueChange {
+          applyButton.isEnabled = !numberField.isInvalid
         }
       }
   }
