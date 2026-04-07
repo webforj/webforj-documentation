@@ -2,6 +2,7 @@ package com.webforj.samples.pages.markdownviewer;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class MarkdownViewerProgressivePage {
 
@@ -21,8 +22,8 @@ public class MarkdownViewerProgressivePage {
     this.speedChoice = page.locator("dwc-choicebox");
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator getViewer() {
