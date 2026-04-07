@@ -36,7 +36,7 @@ class FlexOrderKotlinView: Composite<FlexLayout>() {
         flexLayout {
           vertical()
           alignment = FlexAlignment.STRETCH
-          classNames + "flex_options"
+          classNames + "flex__options"
           val order = maskedNumberField("5") {
             label = "Order:"
             width = 100.percent

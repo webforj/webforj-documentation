@@ -30,7 +30,7 @@ class FlexSelfAlignKotlinView: Composite<FlexLayout>() {
         horizontal()
         choiceBox {
           classNames + "flex__options"
-          label = "Self ALignment Options"
+          label = "Self Alignment Options"
           FlexAlignment.entries.forEach {
             val label = it.value
             val text = label.uppercase()[0]+ label.substring(1)
