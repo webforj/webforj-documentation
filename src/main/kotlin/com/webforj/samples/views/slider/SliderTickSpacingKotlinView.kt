@@ -41,30 +41,30 @@ class SliderTickSpacingKotlinView : Composite<FlexLayout>() {
         isLabelsVisible = true
         isTooltipVisibleOnSlideOnly = true
         styles["padding"] = "var(--dwc-space-m) 0"
+      }
+      flexLayout {
+        vertical()
+        majorTickInput = numberField("Major Tick", 20.0) {
+          min = 1.0
+          max = 100.0
+          invalidMessage = "Must be between 1 and 100"
+          placeholder = "Enter major tick spacing (e.g., 10)"
+          onValueChange(::updateTickSpacing)
+        }
+        minorTickInput = numberField("Minor Tick", 10.0) {
+          min = 1.0
+          max = 100.0
+          invalidMessage = "Must be between 1 and 100"
+          placeholder = "Enter minor tick spacing (e.g., 2)"
+          onValueChange(::updateTickSpacing)
+        }
         flexLayout {
-          vertical()
-          majorTickInput = numberField("Major Tick", 20.0) {
-            min = 1.0
-            max = 100.0
-            invalidMessage = "Must be between 1 and 100"
-            placeholder = "Enter major tick spacing (e.g., 10)"
-            onValueChange(::updateTickSpacing)
+          horizontal()
+          switch("Snap to Ticks", false) {
+            onToggle { slider.isSnapToTicks = it.isToggled }
           }
-          minorTickInput = numberField("Minor Tick", 10.0) {
-            min = 1.0
-            max = 100.0
-            invalidMessage = "Must be between 1 and 100"
-            placeholder = "Enter minor tick spacing (e.g., 2)"
-            onValueChange(::updateTickSpacing)
-          }
-          flexLayout {
-            horizontal()
-            switch("Snap to Ticks", false) {
-              onToggle { slider.isSnapToTicks = it.isToggled }
-            }
-            switch("Show Ticks", true) {
-              onToggle { slider.isTicksVisible = it.isToggled }
-            }
+          switch("Show Ticks", true) {
+            onToggle { slider.isTicksVisible = it.isToggled }
           }
         }
       }
