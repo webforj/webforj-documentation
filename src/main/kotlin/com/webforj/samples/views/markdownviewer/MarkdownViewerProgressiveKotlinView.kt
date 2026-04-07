@@ -72,7 +72,7 @@ class MarkdownViewerProgressiveKotlinView : Composite<FlexLayout>() {
         styles["padding"] = "var(--dwc-space-m)"
         styles["background"] = "var(--dwc-surface-3)"
         styles["border"] = "1px solid var(--dwc-color-default)"
-        styles["borderRadius"] = "var(--dwc-border-radius-l)"
+        styles["borderRadius"] = "var(--dwc-border-radius-m)"
       }
       speedChoice.onSelect {
         viewer.renderSpeed = it.selectedItem.key.toString().toInt()
@@ -82,6 +82,11 @@ class MarkdownViewerProgressiveKotlinView : Composite<FlexLayout>() {
         val startButton = button("Start", ButtonTheme.PRIMARY)
         val stopButton = button("Stop", ButtonTheme.DANGER) {
           isEnabled = false
+          onClick {
+            viewer.stop()
+            startButton.isEnabled = true
+            isEnabled =  false
+          }
         }
         startButton.onClick {
           viewer.clear()
@@ -93,11 +98,6 @@ class MarkdownViewerProgressiveKotlinView : Composite<FlexLayout>() {
             startButton.isEnabled = true
             stopButton.isEnabled =  false
           }
-        }
-        stopButton.onClick {
-          viewer.stop()
-          startButton.isEnabled = true
-          stopButton.isEnabled =  false
         }
       }
     }
