@@ -4,16 +4,17 @@
   }
 
   .navbar--dark {
-    --ifm-navbar-background-color: var(--navbar-dark-background-color);
-    --ifm-navbar-link-hover-color: hsl(211, 100%, 60%);
+    --ifm-navbar-link-hover-color: var(--navbar-dark-link-hover-color);
     --ifm-menu-color-background-active: var(--navbar-dark-background-active);
-    --ifm-menu-color-background-hover: transparent;
-    --ifm-menu-color-active: hsl(211, 100%, 60%);
+    --ifm-menu-color-background-hover: var(--navbar-dark-background-active);
+    --ifm-menu-color-active: var(--navbar-dark-link-hover-color);
     --ifm-navbar-search-input-color: var(--ifm-color-white);
     --menu-level-indicator-color: var(--navbar-dark-sidebar-level-indicator-color);
 
-    .navbar__link--active {
-      color: hsl(211, 100%, 60%);
+    .navbar__link--active,
+    .navbar__link:hover,
+    .dropdown--show > .navbar__link {
+      color: var(--navbar-dark-link-hover-color) !important;
     }
   }
 
@@ -26,7 +27,7 @@
   }
 
   .separator {
-    background: hsl(360, 0%, 40%);
+    background: var(--dwc-color-default);
     height: 1.75rem;
     width: 1px;
   }
@@ -47,7 +48,7 @@
 
   .DocSearch-Button {
     background: var(--docsearch-searchbox-background) !important;
-    border: solid 1.75px hsla(211, 100%, 60%, 0%);
+    border: solid 1.75px transparent;
     border-radius: 40px !important;
     font-weight: 500;
     & .DocSearch-Search-Icon{
@@ -55,7 +56,7 @@
     }
     &:hover,
     &:focus {
-      border: solid 1.75px hsl(211, 100%, 60%);
+      border-color: var(--dwc-color-primary-65);
       .DocSearch-Button-Placeholder {
         color: var(--ifm-color-secondary-lightest);
       }
@@ -70,14 +71,12 @@
 
   .dropdown__menu {
     border: thin solid var(--dwc-border-color);
-    --ifm-dropdown-hover-background-color: var(--dwc-color-primary-alt);
   }
 
   #webforj-version-badge {
-    display: inline-block;
-    min-width: 76px;
-    height: 34px;
-    border: solid 1px #2f3b49;
+    border: solid 1px var(--dwc-color-default-50);
+    border-radius: var(--dwc-border-radius-pill);
+    transition: border-color var(--dwc-transition-x-fast), color var(--dwc-transition-x-fast);
 
     svg {
       display: none;
@@ -85,9 +84,10 @@
 
     &:hover,
     &:focus {
-      background-color: hsl(211, 100%, 15%);
-      color: white;
-      border: solid 1px hsl(211, 100%, 60%);
+      // border-color: var(--dwc-color-default-65);
+      // color: var(--navbar-dark-link-hover-color);
+      background-color: var(--dwc-color-primary-alt);
+      color: var(--dwc-color-primary-70) !important;
     }
   }
 
@@ -108,11 +108,11 @@
     transition: border .65s;
     width: 125px;
     height: 34px;
-    background-color: hsl(211, 100%, 35%);
+    background-color: var(--dwc-color-primary-dark);
 
     &:hover {
       color: white;
-      border: solid 1px hsl(211, 100%, 60%);
+      border: solid 1px var(--dwc-color-primary-65);
 
       .startforj-idle-text {
         animation: .1s 1s reverse forwards reveal;
@@ -130,7 +130,7 @@
 
     &:focus {
       color: white;
-      border: solid 1px hsl(211, 100%, 60%);
+      border: solid 1px var(--dwc-color-primary-65);
 
       .startforj-idle-text {
         opacity: 0;
@@ -152,13 +152,13 @@
   }
 
   .startforj-hover-text {
-    color: hsl(211, 100%, 35%);
+    color: var(--dwc-color-primary-dark);
   }
 
   @keyframes reveal {
     0% {
       opacity: 0;
-      color: hsl(211, 100%, 35%);
+      color: var(--dwc-color-primary-dark);
     }
 
     100% {
@@ -173,7 +173,7 @@
     position: relative;
     text-wrap: nowrap;
     overflow: hidden;
-    border: solid 0px hsl(211, 100%, 30%);
+    border: solid 0px var(--dwc-color-primary-25);
   }
 
   @keyframes starforj-animation {
@@ -187,7 +187,7 @@
       width: 0px;
       border-radius: 400px;
       border-width: 0px 18px 0px;
-      border-color: hsl(211, 100%, 85%);
+      border-color: var(--dwc-color-primary-85);
     }
 
     75% {
@@ -231,6 +231,18 @@
     #webforj-version-badge {
       display: none;
     }
+  }
+
+  [class*="toggleButton"] [class*="toggleIcon"] {
+    transition: transform 0.4s var(--dwc-ease-outQuad);
+  }
+
+  [class*="toggleButton"]:active [class*="lightToggleIcon"] {
+    transform: scale(0.8);
+  }
+
+  [class*="toggleButton"]:active [class*="darkToggleIcon"] {
+    transform: rotate(180deg) scale(0.8);
   }
 
 }
