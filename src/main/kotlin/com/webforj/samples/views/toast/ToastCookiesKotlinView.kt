@@ -50,7 +50,7 @@ class ToastCookiesKotlinView : Composite<Div>() {
         }
         flexLayout {
           horizontal()
-          spacing = "var(--dwc-space-l)";
+          spacing = "var(--dwc-space-l)"
           button("Accept all cookies", ButtonTheme.PRIMARY) {
             onClick {
               close()
