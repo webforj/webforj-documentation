@@ -70,10 +70,10 @@ export default function DocChip({ chip, label, href, exclude, tooltipText, color
       break;
     // A "Version" chip
     case 'since':
-      let versionText = (
+      const versionText = (
         <React.Fragment>
           <Translate
-            id='chip.tooltipText.name'
+            id='chip.tooltipText.since'
             description='Hover text to explain what version of webforJ you need to use the feature.'
             values={{
               version: label
@@ -83,7 +83,7 @@ export default function DocChip({ chip, label, href, exclude, tooltipText, color
           </Translate>
         </React.Fragment>
       );
-      let snapshotText = translate({
+      const snapshotText = translate({
         id: 'chip.tooltipText.webforJ.version.snapshot',
         message: 'This feature will be available in a future release.',
         description: 'Hover text to explain this feature is only available in a snapshot version of webforJ.'

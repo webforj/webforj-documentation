@@ -214,4 +214,4 @@ height='400px'
 
 ## Styling {#styling}
 
-<TableBuilder name="Tree" />
+<TableBuilder name={['Tree', 'TreeNode']} />

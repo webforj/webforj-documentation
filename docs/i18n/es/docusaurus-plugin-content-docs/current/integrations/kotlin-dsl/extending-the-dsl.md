@@ -1,7 +1,7 @@
 ---
 title: Extending the DSL
 sidebar_position: 20
-_i18n_hash: 73b71a500428fdbc51cd490f19d1eef9
+_i18n_hash: e7878d00305e1d544efb6f9e6e8afe2e
 ---
 El DSL de Kotlin es extensible, lo que permite la adición de funciones DSL para componentes personalizados o bibliotecas de terceros. Puedes construir componentes compuestos que utilicen el DSL internamente.
 
@@ -9,7 +9,7 @@ El DSL de Kotlin es extensible, lo que permite la adición de funciones DSL para
 
 Para hacer que cualquier componente esté disponible en el DSL, crea una función de extensión en `HasComponents` que use la función auxiliar `init`.
 
-### Función básica de DSL {#basic-dsl-function}
+### Función DSL básica {#basic-dsl-function}
 
 Aquí está el patrón para un componente simple. Este ejemplo asume que tienes un componente `Badge` personalizado:
 
@@ -27,9 +27,9 @@ fun @WebforjDsl HasComponents.badge(
 ```
 
 La función `init` hace tres cosas:
-1. Agrega el componente al contenedor padre.
-2. Ejecuta el bloque de configuración.
-3. Devuelve el componente configurado.
+1. Agrega el componente al contenedor padre
+2. Ejecuta el bloque de configuración
+3. Devuelve el componente configurado
 
 Ahora puedes usar el componente en el código DSL:
 
@@ -72,18 +72,19 @@ div {
 
 ## Crear componentes compuestos {#creating-composite-components}
 
-Un `Composite` envuelve múltiples componentes en una sola unidad reutilizable. El DSL funciona bien para definir la estructura compuesta.
+Un `Composite` envuelve múltiples componentes en una sola unidad reutilizable. El DSL funciona bien para definir una estructura compuesta.
 
 ### Compuesto básico {#basic-composite}
 
 ```kotlin
 class SearchBox : Composite<Div>() {
 
+  private val self = boundComponent
   val searchField: TextField
   val searchButton: Button
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["gap"] = "8px"
 
@@ -108,11 +109,11 @@ class SearchBox : Composite<Div>() {
 }
 ```
 
-El compuesto expone referencias de componente para acceso externo y proporciona métodos de conveniencia para operaciones comunes.
+El compuesto expone referencias de componentes para acceso externo y proporciona métodos de conveniencia para operaciones comunes.
 
 ### Agregar soporte DSL {#adding-dsl-support}
 
-Crea una función DSL para que el compuesto pueda utilizarse como componentes integrados:
+Crea una función DSL para que el compuesto pueda ser utilizado como componentes integrados:
 
 ```kotlin
 fun @WebforjDsl HasComponents.searchBox(
@@ -145,6 +146,7 @@ Aquí hay un ejemplo completo de un indicador de estado compuesto:
 ```kotlin
 class StatusIndicator : Composite<Div>() {
 
+  private val self = boundComponent
   private val dot: Div
   private val label: Span
 
@@ -161,7 +163,7 @@ class StatusIndicator : Composite<Div>() {
     }
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["align-items"] = "center"
       styles["gap"] = "8px"
@@ -207,7 +209,7 @@ Uso:
 
 ```kotlin
 div {
-  statusIndicator("Base de Datos", StatusIndicator.Status.ACTIVE)
+  statusIndicator("Base de datos", StatusIndicator.Status.ACTIVE)
   statusIndicator("Cache", StatusIndicator.Status.WARNING)
   statusIndicator("API Externa", StatusIndicator.Status.ERROR)
 }

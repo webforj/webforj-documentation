@@ -233,4 +233,4 @@ panel.onClose(e -> {
 
 ## Styling {#styling}
 
-<TableBuilder name="AccordionPanel" />
+<TableBuilder name={['Accordion', 'AccordionPanel']} />
