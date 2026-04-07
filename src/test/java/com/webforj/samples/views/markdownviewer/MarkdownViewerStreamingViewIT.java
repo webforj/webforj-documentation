@@ -35,6 +35,7 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   @Test
   public void testSendingMessageShowsThinkingIndicator() {
     streamingPage.sendMessage("Test message");
+    streamingPage.getThinkingIndicator().waitFor();
     assertThat(streamingPage.getThinkingIndicator()).isVisible();
     assertThat(streamingPage.getThinkingIndicator()).containsText("Thinking...");
   }
@@ -42,10 +43,8 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   @Test
   public void testStopButtonAppearsWhileStreaming() {
     streamingPage.sendMessage("Generate response");
-
     streamingPage.getStopButton().waitFor(
         new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(3000));
-
     assertThat(streamingPage.getStopButton()).isVisible();
     assertThat(streamingPage.getSendButton()).not().isVisible();
   }
@@ -53,12 +52,9 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   @Test
   public void testStopButtonStopsStreaming() {
     streamingPage.sendMessage("Generate response");
-
     streamingPage.getStopButton().waitFor(
         new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(3000));
-
     streamingPage.getStopButton().click();
-
     assertThat(streamingPage.getSendButton()).isVisible();
     assertThat(streamingPage.getStopButton()).not().isVisible();
   }
@@ -82,5 +78,4 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
     streamingPage.getSendButton().click();
     assertThat(streamingPage.getThinkingIndicator()).not().isVisible();
   }
-
 }
