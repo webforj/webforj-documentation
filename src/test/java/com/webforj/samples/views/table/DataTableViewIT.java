@@ -77,4 +77,14 @@ public class DataTableViewIT extends BaseTest {
         dataTable.searchAthlete(ATHLETE_NAME);
         assertThat(dataTable.getPaginationText("Showing 1 to 3 of 3 entries")).isVisible();
         assertThat(dataTable.getPaginatorPreviousPage()).isDisabled();
-        assertThat(dataTable.getPaginatorFirstPa
+        assertThat(dataTable.getPaginatorFirstPage()).isDisabled();
+        assertThat(dataTable.getPaginatorNextPage()).isDisabled();
+        assertThat(dataTable.getPaginatorLastPage()).isDisabled();
+    }
+
+    @Test
+    public void testPaginatorNavigatesCorrectlyToSpecificPage() {
+        dataTable.goToSpecificPage(4).click();
+        assertThat(dataTable.getPaginationText("Showing 31 to 40 of 8618")).isVisible();
+    }
+}
