@@ -2,23 +2,28 @@ package com.webforj.samples.views.optiondialog.input;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.samples.views.BaseTest;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class InputDialogTypeViewIT extends BaseTest {
 
-    @BeforeEach
-    public void setupInputDialogTypeView() {
-        navigateToRoute("inputdialogtype");
+    private static final String ROUTE = "inputdialogtype";
+
+    public void setupInputDialogTypeView(SupportedLanguage language) {
+        navigateToRoute(language.getPath(ROUTE));
     }
 
-    @Test
-    public void testInputDialogTypeIsShownWhenContinueButtonIsClicked() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testInputDialogTypeIsShownWhenContinueButtonIsClicked(SupportedLanguage language) {
+        setupInputDialogTypeView(language);
         Locator dialog = page.getByRole(AriaRole.DIALOG);
         assertThat(dialog).isVisible();
 
