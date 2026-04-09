@@ -3,16 +3,9 @@ sidebar_position: 7
 title: Shadows
 ---
 
-The shadow properties are used to add shadow effects around an element's frame. You can set multiple effects separated by commas. In most cases, shadows are utilized to signify items that are layered on top of each other in the user interface.
+The shadow properties add shadow effects around an element's frame. Shadows signify items that are layered on top of each other in the user interface.
 
-<Head>
-  <style>{`
-  table {
-    width: 100%;
-    display: table;
-  }
-  `}</style>
-</Head>
+Shadows adapt automatically to both light and dark modes, appearing stronger in dark mode for better visibility.
 
 ### Example {#example}
 
@@ -22,18 +15,16 @@ The shadow properties are used to add shadow effects around an element's frame. 
 }
 ```
 
-:::tip Shadow Color
-You control the shadow color by setting the `--dwc-shadow-color` variable. By default the shadow color is gray tinted with the primary color.
-:::
-
 ### Variables {#variables}
 
-| **Variable**       | **Example**                             |
-|--------------------|------------------------------------------|
-| `--dwc-shadow-xs`  | <ShadowBox shadow="--dwc-shadow-xs" />  |
-| `--dwc-shadow-s`   | <ShadowBox shadow="--dwc-shadow-s" />   |
-| `--dwc-shadow-m`   | <ShadowBox shadow="--dwc-shadow-m" />   |
-| `--dwc-shadow-l`   | <ShadowBox shadow="--dwc-shadow-l" />   |
-| `--dwc-shadow-xl`  | <ShadowBox shadow="--dwc-shadow-xl" />  |
-| `--dwc-shadow-2xl` | <ShadowBox shadow="--dwc-shadow-2xl" /> |
-| `--dwc-shadow`     | <ShadowBox shadow="--dwc-shadow" />     |
+| **Variable**       | **Description**                      |
+|--------------------|---------------------------------------|
+| `--dwc-shadow-xs`  | Extra small shadow (1 layer)         |
+| `--dwc-shadow-s`   | Small shadow (2 layers)              |
+| `--dwc-shadow-m`   | Medium shadow (3 layers, default)    |
+| `--dwc-shadow-l`   | Large shadow (4 layers)              |
+| `--dwc-shadow-xl`  | Extra large shadow (5 layers)        |
+| `--dwc-shadow-2xl` | Double extra large shadow (6 layers) |
+| `--dwc-shadow`     | `var(--dwc-shadow-m)`                |
+
+<dwc-doc-shadows></dwc-doc-shadows>

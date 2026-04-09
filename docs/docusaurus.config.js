@@ -81,7 +81,8 @@ module.exports = async function createConfig() {
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
     { src: '/js/link-decorator.js' },
-    { src: '/js/style-startforj.js', defer: true}
+    { src: '/js/style-startforj.js', defer: true},
+    { src: '/js/dwc-doc-components.js', defer: true },
   ],
   headTags: [
     {
@@ -89,6 +90,13 @@ module.exports = async function createConfig() {
       attributes: {
         rel: 'stylesheet',
         href: 'https://cdn.webforj.com/next/dwc-ui.css',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: '/css/dwc-doc-components.css',
       },
     },
     {
@@ -272,18 +280,6 @@ module.exports = async function createConfig() {
           label: 'Developers',
           position: 'right',
           items: [
-            {
-              label: "DWC HueCraft",
-              href: 'https://webforj.github.io/huecraft/',
-              target: '_blank',
-              rel: null,
-            },
-            {
-              label: "DWC Design Kit",
-              href: 'https://www.figma.com/community/file/1144573845612007198/dwc-design-kit',
-              target: '_blank',
-              rel: null,
-            },
             {
               label: "JavaDocs",
               href: 'https://javadoc.io/doc/com.webforj',
