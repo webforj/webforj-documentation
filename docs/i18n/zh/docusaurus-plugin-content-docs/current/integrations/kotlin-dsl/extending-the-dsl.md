@@ -1,78 +1,78 @@
 ---
 title: Extending the DSL
 sidebar_position: 20
-_i18n_hash: e7878d00305e1d544efb6f9e6e8afe2e
+_i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---
-Kotlin DSL是可扩展的，允许为自定义组件或第三方库添加DSL函数。您可以构建在内部使用DSL的复合组件。
+Kotlin DSL 是可扩展的，允许为自定义组件或第三方库添加 DSL 函数。您可以构建在内部使用 DSL 的复合组件。
 
-## 将组件添加到DSL {#adding-components-to-the-dsl}
+## 添加组件到 DSL {#adding-components-to-the-dsl}
 
-要使任何组件在DSL中可用，请在`HasComponents`上创建一个扩展函数，该函数使用`init`辅助函数。
+要使任何组件在 DSL 中可用，请在 `HasComponents` 上创建一个扩展函数，该函数使用 `init` 辅助函数。
 
-### 基本DSL函数 {#basic-dsl-function}
+### 基本 DSL 函数 {#basic-dsl-function}
 
-这是一个简单组件的模式。这个例子假设您有一个自定义的`Badge`组件：
+这是一个简单组件的模式。此示例使用自定义 `StarRating` 组件：
 
 ```kotlin
 import com.webforj.concern.HasComponents
 import com.webforj.kotlin.dsl.WebforjDsl
 import com.webforj.kotlin.dsl.init
-import com.example.component.Badge
+import com.example.component.StarRating
 
-fun @WebforjDsl HasComponents.badge(
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  return init(Badge(), block)
+fun @WebforjDsl HasComponents.starRating(
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  return init(StarRating(), block)
 }
 ```
 
-`init`函数执行三项操作：
+`init` 函数执行三项操作：
 1. 将组件添加到父容器
-2. 执行配置块
-3. 返回配置好的组件
+2. 运行配置块
+3. 返回配置后的组件
 
-现在您可以在DSL代码中使用该组件：
+现在您可以在 DSL 代码中使用该组件：
 
 ```kotlin
 div {
-  badge {
-    text = "New"
-    variant = Badge.Variant.PRIMARY
+  starRating {
+    value = 4
+    max = 5
   }
 }
 ```
 
 ### 添加参数 {#adding-parameters}
 
-大多数DSL函数在配置块之前接受常见参数：
+大多数 DSL 函数在配置块之前接受公共参数：
 
 ```kotlin
-fun @WebforjDsl HasComponents.badge(
-  text: String? = null,
-  variant: Badge.Variant? = null,
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  val badge = Badge()
-  text?.let { badge.text = it }
-  variant?.let { badge.variant = it }
-  return init(badge, block)
+fun @WebforjDsl HasComponents.starRating(
+  value: Int? = null,
+  max: Int? = null,
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  val rating = StarRating()
+  value?.let { rating.value = it }
+  max?.let { rating.max = it }
+  return init(rating, block)
 }
 ```
 
-用法变得更简洁：
+用法变得更加简洁：
 
 ```kotlin
 div {
-  badge("New", Badge.Variant.PRIMARY)
-  badge("Sale") {
-    styles["font-size"] = "12px"
+  starRating(value = 4, max = 5)
+  starRating(value = 3) {
+    styles["color"] = "gold"
   }
 }
 ```
 
 ## 创建复合组件 {#creating-composite-components}
 
-`Composite`将多个组件包装成一个可重用的单元。DSL非常适合定义复合结构。
+`Composite` 将多个组件封装成一个可重用的单元。 DSL 非常适合定义复合结构。
 
 ### 基本复合 {#basic-composite}
 
@@ -88,11 +88,11 @@ class SearchBox : Composite<Div>() {
       styles["display"] = "flex"
       styles["gap"] = "8px"
 
-      searchField = textField(placeholder = "Search...") {
+      searchField = textField(placeholder = "搜索...") {
         styles["flex"] = "1"
       }
 
-      searchButton = button("Search") {
+      searchButton = button("搜索") {
         theme = ButtonTheme.PRIMARY
       }
     }
@@ -109,11 +109,11 @@ class SearchBox : Composite<Div>() {
 }
 ```
 
-复合组件对外暴露组件引用，并提供常见操作的便利方法。
+复合组件公开组件引用以供外部访问，并提供方便的常用操作方法。
 
-### 添加DSL支持 {#adding-dsl-support}
+### 添加 DSL 支持 {#adding-dsl-support}
 
-创建一个DSL函数，以便复合组件可以像内置组件一样使用：
+创建一个 DSL 函数，使复合组件可以像内置组件一样使用：
 
 ```kotlin
 fun @WebforjDsl HasComponents.searchBox(
@@ -123,11 +123,11 @@ fun @WebforjDsl HasComponents.searchBox(
 }
 ```
 
-现在它自然而然地集成：
+现在它可以自然地集成：
 
 ```kotlin
 div {
-  h1("Product Catalog")
+  h1("产品目录")
 
   searchBox {
     onSearch { query ->
@@ -141,7 +141,7 @@ div {
 
 ### 示例：状态指示器 {#example-status-indicator}
 
-以下是状态指示器复合组件的完整示例：
+这是一个状态指示器复合组件的完整示例：
 
 ```kotlin
 class StatusIndicator : Composite<Div>() {
@@ -192,7 +192,7 @@ class StatusIndicator : Composite<Div>() {
   enum class Status { ACTIVE, WARNING, ERROR, INACTIVE }
 }
 
-// DSL函数
+// DSL 函数
 fun @WebforjDsl HasComponents.statusIndicator(
   text: String? = null,
   status: StatusIndicator.Status? = null,
@@ -209,8 +209,8 @@ fun @WebforjDsl HasComponents.statusIndicator(
 
 ```kotlin
 div {
-  statusIndicator("Database", StatusIndicator.Status.ACTIVE)
-  statusIndicator("Cache", StatusIndicator.Status.WARNING)
-  statusIndicator("External API", StatusIndicator.Status.ERROR)
+  statusIndicator("数据库", StatusIndicator.Status.ACTIVE)
+  statusIndicator("缓存", StatusIndicator.Status.WARNING)
+  statusIndicator("外部 API", StatusIndicator.Status.ERROR)
 }
 ```
