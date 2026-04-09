@@ -25,15 +25,6 @@ To support more advanced styling, webforJ leverages CSS Shadow Parts, allowing c
 
 DWC also includes a customizable color palette and defaults to a clean, light visual theme, but every aspect can be adapted to your brand or product style.
 
-## Figma Design Kit {#figma-design-kit}
-
-The [DWC Figma library](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) is the official design resource for creating modern, enterprise-grade web applications. It includes a comprehensive set of components, typography styles, and color tokens that align with the DWC design system. With this library, designers and developers can build visually consistent, user-friendly interfaces that balance functionality with a refined user experience.
-
-<img src="/img/dwc.png" alt="Figma Design Kit" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
-
->  
-<!-- > ![Figma Design Kit Screenshot](./path-to-your-screenshot.png) -->
-
 ## Topics {#topics}
 
 <DocCardList className="topics-section" />
