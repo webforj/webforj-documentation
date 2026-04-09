@@ -104,100 +104,26 @@
   }
 
   #startforj-link {
-    border: none;
-    transition: border .65s;
-    width: 125px;
     height: 34px;
-    background-color: var(--dwc-color-primary-dark);
+    padding: 0 var(--dwc-space-m);
+    background-color: var(--dwc-color-primary);
+    color: var(--dwc-color-on-primary-text) !important;
+    border: none;
+    border-radius: var(--dwc-border-radius-m);
+    font-weight: var(--dwc-font-weight-medium);
+    text-decoration: none;
+    transition: background-color var(--dwc-transition-fast) var(--dwc-ease),
+                transform var(--dwc-transition-fast) var(--dwc-ease);
 
     &:hover {
-      color: white;
-      border: solid 1px var(--dwc-color-primary-65);
-
-      .startforj-idle-text {
-        animation: .1s 1s reverse forwards reveal;
-      }
-
-      .startforj-hover-text {
-        animation: .1s 1s forwards reveal;
-      }
-
-      .startforj-container {
-        animation: 1.7s var(--dwc-ease-inOutExpo) .5s forwards starforj-animation;
-      }
-
+      background-color: var(--dwc-color-primary-light);
+      color: var(--dwc-color-on-primary-text-light) !important;
     }
 
-    &:focus {
-      color: white;
-      border: solid 1px var(--dwc-color-primary-65);
-
-      .startforj-idle-text {
-        opacity: 0;
-      }
-
-      .startforj-hover-text {
-        opacity: 1;
-        color: white;
-      }
-    }
-  }
-
-  .startforj-hover-text,
-  .startforj-idle-text {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-  }
-
-  .startforj-hover-text {
-    color: var(--dwc-color-primary-dark);
-  }
-
-  @keyframes reveal {
-    0% {
-      opacity: 0;
-      color: var(--dwc-color-primary-dark);
-    }
-
-    100% {
-      opacity: 1;
-      color: white;
-    }
-  }
-
-  .startforj-container {
-    width: 125px;
-    height: 34px;
-    position: relative;
-    text-wrap: nowrap;
-    overflow: hidden;
-    border: solid 0px var(--dwc-color-primary-25);
-  }
-
-  @keyframes starforj-animation {
-    0% {
-      width: 125px;
-      border-width: 0 5px 0;
-      border-color: var(--dwc-color-primary-50);
-    }
-
-    65% {
-      width: 0px;
-      border-radius: 400px;
-      border-width: 0px 18px 0px;
-      border-color: var(--dwc-color-primary-85);
-    }
-
-    75% {
-      border-width: 0px 8px 0px;
-    }
-
-    100% {
-      width: 125px;
-      border-radius: 0px;
-      border-width: 0px;
+    &:active {
+      background-color: var(--dwc-color-primary-dark);
+      color: var(--dwc-color-on-primary-text-dark) !important;
+      transform: scale(var(--dwc-scale-press));
     }
   }
 
