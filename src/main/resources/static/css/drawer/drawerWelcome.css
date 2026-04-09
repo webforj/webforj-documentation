@@ -13,7 +13,6 @@ html[data-app-theme="dark"] .webforJ-logo {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--dwc-space-2xl);
 }
 
 .welcome__drawer::part(header) {
