@@ -15,8 +15,9 @@
     color: var(--ifm-color-white);
     font-size: 1rem;
     font-weight: 400;
-    height: var(--announcement-bar-height);
+    min-height: var(--announcement-bar-height);
     letter-spacing: 0.01em;
+    padding: var(--dwc-space-xs) var(--dwc-space-m);
 
     div[class*="content_"] {
       align-items: center;
@@ -35,6 +36,16 @@
         letter-spacing: 0.1em;
         margin-right: 0.6em;
         padding: 0.2em 0.65em;
+      }
+
+      @media (max-width: 768px) {
+        display: block;
+        text-align: center;
+
+        &::before {
+          display: inline;
+          vertical-align: middle;
+        }
       }
     }
 
