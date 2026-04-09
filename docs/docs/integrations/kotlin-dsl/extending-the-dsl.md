@@ -11,18 +11,18 @@ To make any component available in the DSL, create an extension function on `Has
 
 ### Basic DSL function {#basic-dsl-function}
 
-Here's the pattern for a simple component. This example assumes you have a custom `Badge` component:
+Here's the pattern for a simple component. This example uses a custom `StarRating` component:
 
 ```kotlin
 import com.webforj.concern.HasComponents
 import com.webforj.kotlin.dsl.WebforjDsl
 import com.webforj.kotlin.dsl.init
-import com.example.component.Badge
+import com.example.component.StarRating
 
-fun @WebforjDsl HasComponents.badge(
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  return init(Badge(), block)
+fun @WebforjDsl HasComponents.starRating(
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  return init(StarRating(), block)
 }
 ```
 
@@ -35,9 +35,9 @@ Now you can use the component in DSL code:
 
 ```kotlin
 div {
-  badge {
-    text = "New"
-    variant = Badge.Variant.PRIMARY
+  starRating {
+    value = 4
+    max = 5
   }
 }
 ```
@@ -47,15 +47,15 @@ div {
 Most DSL functions accept common parameters before the configuration block:
 
 ```kotlin
-fun @WebforjDsl HasComponents.badge(
-  text: String? = null,
-  variant: Badge.Variant? = null,
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  val badge = Badge()
-  text?.let { badge.text = it }
-  variant?.let { badge.variant = it }
-  return init(badge, block)
+fun @WebforjDsl HasComponents.starRating(
+  value: Int? = null,
+  max: Int? = null,
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  val rating = StarRating()
+  value?.let { rating.value = it }
+  max?.let { rating.max = it }
+  return init(rating, block)
 }
 ```
 
@@ -63,9 +63,9 @@ Usage becomes more concise:
 
 ```kotlin
 div {
-  badge("New", Badge.Variant.PRIMARY)
-  badge("Sale") {
-    styles["font-size"] = "12px"
+  starRating(value = 4, max = 5)
+  starRating(value = 3) {
+    styles["color"] = "gold"
   }
 }
 ```
@@ -79,11 +79,12 @@ A `Composite` wraps multiple components into a single reusable unit. The DSL wor
 ```kotlin
 class SearchBox : Composite<Div>() {
 
+  private val self = boundComponent
   val searchField: TextField
   val searchButton: Button
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["gap"] = "8px"
 
@@ -145,6 +146,7 @@ Here's a complete example of a status indicator composite:
 ```kotlin
 class StatusIndicator : Composite<Div>() {
 
+  private val self = boundComponent
   private val dot: Div
   private val label: Span
 
@@ -161,7 +163,7 @@ class StatusIndicator : Composite<Div>() {
     }
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["align-items"] = "center"
       styles["gap"] = "8px"

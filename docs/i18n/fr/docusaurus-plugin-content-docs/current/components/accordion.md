@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Accordion
 sidebar_class_name: new-content
-_i18n_hash: 560172f4743427476d9ecaadebd1d61d
+_i18n_hash: 99f4482faa552334ce209b3f9296f4f5
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-accordion" />
@@ -10,24 +10,24 @@ _i18n_hash: 560172f4743427476d9ecaadebd1d61d
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="accordion" location="com/webforj/component/accordion/Accordion" top='true'/>
 
-Le composant `Accordion` fournit un ensemble empilé verticalement de panneaux collapsibles. Chaque panneau a un en-tête cliquable qui bascule la visibilité de son contenu. Un `AccordionPanel` peut être utilisé comme une section de divulgation autonome ou regroupé à l'intérieur d'un `Accordion` pour coordonner le comportement d'expansion et de contraction à travers plusieurs panneaux.
+Le composant `Accordion` fournit un ensemble empilé verticalement de panneaux collapsibles. Chaque panneau a un en-tête cliquable qui bascule la visibilité de son contenu. Un `AccordionPanel` peut être utilisé comme une section de divulgation autonome ou groupé à l'intérieur d'un `Accordion` pour coordonner le comportement d'expansion et de contraction entre plusieurs panneaux.
 
 <!-- INTRO_END -->
 
 :::tip Quand utiliser un accordéon
-Les accordéons fonctionnent bien pour les FAQ, les pages de paramètres et les flux étape par étape où révéler tout le contenu à la fois créerait une mise en page écrasante. Si les sections sont également importantes et que les utilisateurs bénéficient de les voir simultanément, envisagez des [onglets](/docs/components/tabbedpane) à la place.
+Les accordéons fonctionnent bien pour les FAQs, les pages de paramètres et les flux étape par étape où révéler tout le contenu en même temps créerait une mise en page écrasante. Si les sections sont également importantes et que les utilisateurs bénéficient de les voir simultanément, envisagez plutôt des [onglets](/docs/components/tabbedpane).
 :::
 
 ## `AccordionPanel` {#accordion-panel}
 
-`AccordionPanel` est le bloc de construction principal du système d'accordéon. Passez une chaîne de label au constructeur pour définir le texte de l'en-tête, puis ajoutez des composants enfants pour remplir le corps. Un panneau fonctionne de manière autonome sans aucun groupe `Accordion` entourant, ce qui en fait un widget de divulgation léger utile lorsque vous avez juste besoin d'une seule section collapsible. Le constructeur sans argument est également disponible lorsque vous préférez configurer le panneau entièrement après sa création.
+`AccordionPanel` est le bloc de construction principal du système d'accordéon. Passez une chaîne de texte d'étiquette au constructeur pour définir le texte de l'en-tête, puis ajoutez des composants enfants pour peupler le corps. Un panneau fonctionne de manière autonome sans groupe `Accordion` autour, ce qui en fait un widget de divulgation léger utile lorsque vous avez juste besoin d'une seule section collapsible. Le constructeur sans argument est également disponible si vous préférez configurer le panneau entièrement après la construction.
 
 ```java
-// Label uniquement - ajout de contenu corporel séparément
-AccordionPanel panel = new AccordionPanel("Titre de section");
+// Étiquette seulement - ajoutez le contenu du corps séparément
+AccordionPanel panel = new AccordionPanel("Titre de la section");
 panel.add(new Paragraph("Le contenu du corps va ici."));
 
-// Label et contenu du corps passés directement dans le constructeur
+// Étiquette et contenu du corps passés directement au constructeur
 AccordionPanel panel = new AccordionPanel("Titre", new Paragraph("Contenu du corps."));
 ```
 
@@ -41,30 +41,30 @@ height='500px'
 
 ### Ouverture et fermeture {#opening-and-closing}
 
-Contrôlez l'état ouvert/fermé par programmation à tout moment. `isOpened()` est utile lorsque vous devez lire l'état actuel avant de décider quoi faire. Par exemple, vous pourriez basculer un panneau vers l'état opposé ou afficher ou masquer conditionnellement d'autres parties de l'interface utilisateur.
+Contrôlez l'état ouvert/fermé par programmation à tout moment. `isOpened()` est utile lorsque vous avez besoin de lire l'état actuel avant de décider quoi faire. Par exemple, vous pourriez basculer un panneau à l'état opposé ou afficher ou masquer conditionnellement d'autres parties de l'interface utilisateur.
 
 ```java
-// Déployer le panneau
+// Développer le panneau
 panel.open();
 
 // Réduire le panneau
 panel.close();                    
 
-// Retourne vrai si actuellement déployé
+// Retourne vrai si actuellement développé
 boolean isOpen = panel.isOpened();
 ```
 
-Utilisez `setLabel()` pour mettre à jour le texte de l'en-tête après construction. `setText()` est un alias pour la même opération, donc le label peut être synchronisé avec des données dynamiques :
+Utilisez `setLabel()` pour mettre à jour le texte de l'en-tête après construction. `setText()` est un alias pour la même opération, donc l'étiquette peut être synchronisée avec des données dynamiques :
 
 ```java
-panel.setLabel("Label mis à jour");
+panel.setLabel("Étiquette mise à jour");
 ```
 
-## Groupes d'accordéon {#accordion-groups}
+## Groupes d'accordéons {#accordion-groups}
 
-Enveloppant plusieurs instances de `AccordionPanel` à l'intérieur d'un `Accordion` crée un groupe coordonné. Par défaut, le groupe utilise le **mode simple** : ouvrir un panneau réduit automatiquement tous les autres, gardant une seule section visible à la fois. Ce défaut est intentionnel, il garde l'utilisateur concentré sur un morceau de contenu et empêche la page de devenir visuellement écrasante lorsque les panneaux ont un contenu corporel substantiel.
+Envelopper plusieurs instances `AccordionPanel` à l'intérieur d'un `Accordion` crée un groupe coordonné. Par défaut, le groupe utilise le **mode unique** : ouvrir un panneau réduit automatiquement tous les autres, ne gardant qu'une seule section visible à la fois. Ce paramètre par défaut est intentionnel, il garde l'utilisateur concentré sur un seul élément de contenu et évite que la page ne devienne visuellement écrasante lorsque les panneaux ont un contenu substantiel.
 
-Les panneaux sont construits indépendamment et passés au `Accordion`, vous pouvez donc configurer chacun avant de les regrouper. Plusieurs instances séparées d'`Accordion` peuvent également exister sur la même page — chaque groupe gère son propre état de manière indépendante, donc développer un panneau dans un groupe n'a pas d'effet sur un autre.
+Les panneaux sont construits indépendamment et passés au `Accordion`, vous pouvez donc configurer chacun avant de les regrouper. Plusieurs instances `Accordion` séparées peuvent également exister sur la même page—chaque groupe gère son propre état indépendamment, donc développer un panneau dans un groupe n'a aucun effet sur un autre.
 
 ```java
 AccordionPanel panel1 = new AccordionPanel("Qu'est-ce que webforJ ?");
@@ -84,19 +84,19 @@ height='400px'
 
 ### Mode multiple {#multiple-mode}
 
-Le mode multiple permet à n'importe quel nombre de panneaux de rester déployés simultanément. Cela est utile lorsque les utilisateurs ont besoin de comparer le contenu de plusieurs sections à la fois ou lorsque chaque panneau est assez court pour que l'expansion de plusieurs à la fois ne crée pas une mise en page encombrée.
+Le mode multiple permet à un nombre quelconque de panneaux de rester développés simultanément. Cela est utile lorsque les utilisateurs doivent comparer le contenu de plusieurs sections en même temps, ou lorsque chaque panneau est assez court pour que l'expansion de plusieurs à la fois ne crée pas une mise en page encombrée.
 
 ```java
 accordion.setMultiple(true);
 ```
 
-Avec le mode multiple actif, tous les panneaux du groupe peuvent être déployés ou réduits à la fois à l'aide des méthodes de masse :
+Avec le mode multiple actif, tous les panneaux dans le groupe peuvent être développés ou réduits en une seule fois en utilisant les méthodes de groupe :
 
 ```java
-// Déployer chaque panneau dans le groupe
+// Développez chaque panneau du groupe
 accordion.openAll();
 
-// Réduire chaque panneau dans le groupe
+// Réduisez chaque panneau du groupe
 accordion.closeAll();   
 ```
 
@@ -108,21 +108,21 @@ height='500px'
 />
 <!-- vale on -->
 
-:::info Restriction du mode simple
-`openAll()` n'est disponible que lorsque le mode multiple est activé. L'appeler en mode simple n'a aucun effet. `closeAll()` fonctionne dans les deux modes.
+:::info Restriction du mode unique
+`openAll()` n'est disponible que lorsque le mode multiple est activé. L'appeler en mode unique n'a aucun effet. `closeAll()` fonctionne dans les deux modes.
 :::
 
 <!-- vale off -->
 ## État désactivé {#disabled-state}
 <!-- vale on -->
 
-Les panneaux individuels peuvent être désactivés pour empêcher l'interaction utilisateur tout en restant visibles. Cela est pratique pendant les états de chargement ou lorsque certaines sections ne sont pas disponibles de manière conditionnelle, montrant la structure du panneau sans permettre une interaction prématurée. Un panneau désactivé qui était déjà ouvert reste déployé, mais son en-tête ne peut plus être cliqué pour le réduire. Désactiver le groupe `Accordion` applique l'état désactivé à tous les panneaux contenus en même temps, donc vous n'avez pas besoin de parcourir les panneaux individuellement.
+Les panneaux individuels peuvent être désactivés pour empêcher l'interaction de l'utilisateur tout en restant visibles. Cela est pratique pendant les états de chargement ou lorsque certaines sections sont conditionnellement indisponibles, montrant la structure du panneau sans permettre une interaction prématurée. Un panneau désactivé qui était déjà ouvert reste développé, mais son en-tête ne peut plus être cliqué pour le réduire. Désactiver le groupe `Accordion` applique l'état désactivé à tous les panneaux contenus en même temps, de sorte que vous n'ayez pas besoin de passer en boucle à travers les panneaux individuellement.
 
 ```java
 // Désactiver un seul panneau
 panel.setEnabled(false);
 
-// Désactiver tous les panneaux dans le groupe
+// Désactiver tous les panneaux du groupe
 accordion.setEnabled(false);
 ```
 
@@ -140,7 +140,7 @@ Au-delà des étiquettes et du comportement d'ouverture/fermeture de base, chaqu
 
 ### En-tête personnalisé {#custom-header}
 
-L'en-tête d'un panneau rend son label sous forme de texte brut par défaut. Utilisez `addToHeader()` pour remplacer ce texte par n'importe quel composant ou combinaison de composants, facilitant ainsi l'inclusion d'icônes, de badges, d'indicateurs d'état ou d'autres balises riches à côté du label du panneau. Cela est particulièrement utile dans les tableaux de bord ou les panneaux de paramètres où chaque en-tête de section doit transmettre un contexte supplémentaire d'un coup d'œil, comme un compte d'éléments, un badge d'avertissement ou un état de complétion, sans nécessiter que l'utilisateur étende d'abord le panneau.
+L'en-tête d'un panneau affiche son étiquette en tant que texte brut par défaut. Utilisez `addToHeader()` pour remplacer ce texte par n'importe quel composant ou combinaison de composants, rendant simple l'inclusion d'icônes, de badges, d'indicateurs de statut, ou d'autres balisages riches aux côtés de l'étiquette du panneau. Ceci est particulièrement utile dans les tableaux de bord ou les panneaux de paramètres où chaque en-tête de section doit transmettre un contexte supplémentaire d'un coup d'œil, comme un compte d'éléments, un badge d'avertissement, ou un état de réalisation, sans nécessiter que l'utilisateur développe d'abord le panneau.
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
@@ -153,7 +153,7 @@ panel.addToHeader(headerContent);
 ```
 
 :::info Remplacement de l'étiquette
-Le contenu ajouté via `addToHeader()` remplace complètement le texte de label par défaut. `setLabel()` et `setText()` continuent de fonctionner avec `addToHeader()`, mais puisque l'emplacement de l'en-tête prend une prépondérance visuelle, le texte du label ne sera pas affiché à moins que vous ne l'incluiez explicitement dans votre contenu nommé.
+Le contenu ajouté via `addToHeader()` remplace complètement le texte d'étiquette par défaut. `setLabel()` et `setText()` continuent de fonctionner aux côtés de `addToHeader()`, mais puisque le slot d'en-tête prend la priorité visuelle, le texte de l'étiquette ne sera pas affiché à moins que vous ne l'incluez explicitement dans votre contenu slotted.
 :::
 
 <!-- vale off -->
@@ -166,13 +166,13 @@ height='300px'
 
 ### Icône personnalisée {#custom-icon}
 
-L'indicateur d'expansion/contraction par défaut est une chevron qui est visible à la fois dans les états ouvert et fermé. `setIcon()` le remplace par n'importe quel composant [`Icon`](/docs/components/icon), utile pour l'iconographie de marque ou lorsque une métaphore visuelle différente convient mieux au contenu. Passer `null` restaure le chevron par défaut. `getIcon()` retourne l'icône actuellement définie, ou `null` si le chevron par défaut est en cours d'utilisation.
+L'indicateur d'expansion/contraction est par défaut un chevron qui est visible dans les états ouvert et fermé. `setIcon()` le remplace par n'importe quel composant [`Icon`](/docs/components/icon), utile pour une iconographie de marque ou lorsque une métaphore visuelle différente convient mieux au contenu. Passer `null` restaure le chevron par défaut. `getIcon()` retourne l'icône actuellement définie, ou `null` si le chevron par défaut est utilisé.
 
 ```java
 // Remplacer le chevron par défaut par une icône plus
 panel.setIcon(FeatherIcon.PLUS.create());
 
-// Restaurer le chevron par défaut
+// Rétablir le chevron par défaut
 panel.setIcon(null);
 ```
 
@@ -186,7 +186,7 @@ height='200px'
 
 ## Accordéons imbriqués {#nested-accordions}
 
-Les accordéons peuvent être imbriqués à l'intérieur d'autres panneaux d'accordéon, ce qui est utile pour représenter un contenu hiérarchique tel que des paramètres catégorisés ou une navigation à plusieurs niveaux. Ajoutez un `Accordion` intérieur à un `AccordionPanel` extérieur comme n'importe quel autre composant enfant. Gardez l'imbrication peu profonde. Une ou deux niveaux sont généralement suffisants. Des hiérarchies plus profondes ont tendance à être plus difficiles à naviguer et signalent souvent que la structure du contenu elle-même a besoin d'être repensée.
+Les accordéons peuvent être imbriqués à l'intérieur d'autres panneaux d'accordéon, ce qui est utile pour représenter un contenu hiérarchique tel que des paramètres catégorisés ou une navigation multi-niveaux. Ajoutez un `Accordion` intérieur à un `AccordionPanel` extérieur comme n'importe quel autre composant enfant. Gardez l'imbrication peu profonde. Un ou deux niveaux sont généralement suffisants. Des hiérarchies plus profondes tendent à être plus difficiles à naviguer et signalent souvent que la structure du contenu elle-même doit être réexaminée.
 
 ```java
 AccordionPanel innerA = new AccordionPanel("Panneau intérieur A");
@@ -209,28 +209,28 @@ height='550px'
 
 `AccordionPanel` déclenche des événements à chaque étape du cycle de basculement. Les trois types d'événements couvrent différents moments, donc choisissez en fonction de quand votre logique doit s'exécuter :
 
-| Événement | Se déclenche |
-|-----------|--------------|
-| `AccordionPanelToggleEvent` | Avant que l'état ne change |
-| `AccordionPanelOpenEvent` | Après que le panneau soit entièrement ouvert |
-| `AccordionPanelCloseEvent` | Après que le panneau soit entièrement fermé |
+| Événement | Se produit |
+|-------|-------|
+| `AccordionPanelToggleEvent` | Avant que l'état change |
+| `AccordionPanelOpenEvent` | Après que le panneau soit complètement ouvert |
+| `AccordionPanelCloseEvent` | Après que le panneau soit complètement fermé |
 
 ```java
 panel.onToggle(e -> {
-    // Se déclenche avant que le panneau change d'état.
-    // e.isOpened() reflète l'état vers lequel on se transforme, et non l'état actuel.
+    // Se produit avant que le panneau change d'état.
+    // e.isOpened() reflète l'état vers lequel on passe, pas l'état actuel.
     String direction = e.isOpened() ? "ouverture" : "fermeture";
 });
 
 panel.onOpen(e -> {
-    // Se déclenche après que le panneau soit entièrement ouvert — bon pour charger du contenu paresseusement.
+    // Se produit après que le panneau est complètement ouvert — bon pour charger du contenu paresseux.
 });
 
 panel.onClose(e -> {
-    // Se déclenche après que le panneau soit entièrement fermé — bon pour le nettoyage ou les mises à jour de résumé.
+    // Se produit après que le panneau est complètement fermé — bon pour le nettoyage ou les mises à jour de résumé.
 });
 ```
 
 ## Style {#styling}
 
-<TableBuilder name="AccordionPanel" />
+<TableBuilder name={['Accordion', 'AccordionPanel']} />

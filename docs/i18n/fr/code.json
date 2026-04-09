@@ -872,5 +872,11 @@
   "theme.SearchModal.footer.backToSearchText": {
     "message": "Retour à la recherche",
     "description": "The back to search text for footer"
+  },
+  "experimentalWarning.title": {
+    "message": "Fonctionnalité expérimentale"
+  },
+  "experimentalWarning.message": {
+    "message": "Cette fonctionnalité est expérimentale et peut changer ou être supprimée dans une future version."
   }
 }

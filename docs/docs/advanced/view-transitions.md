@@ -19,9 +19,7 @@ View transitions provide animated transitions when the [DOM](/docs/glossary#dom)
   height='450px'
 />
 
-:::warning Experimental API
-This API is marked as experimental since 25.11 and may change in future releases. The API signature, behavior, and performance characteristics are subject to modification.
-:::
+<ExperimentalWarning />
 
 ## Basic usage {#basic-usage}
 
