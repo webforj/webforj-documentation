@@ -14,10 +14,6 @@ There's something about native mobile apps that's hard to copy on the web: thing
 
 <!-- truncate -->
 
-:::note
-The Transitions API is marked experimental as of 25.11. The API signature, behavior, and performance characteristics may change in future releases.
-:::
-
 To see what this looks like in practice, I threw together a quick travel destinations app with a card grid and detail pages to browse through. It shows two things at once: slide animations between routes via `@RouteTransition`, and a shared element morph where the card thumbnail expands into the full hero image on the detail page.
 
 <div class="videos-container">
@@ -28,7 +24,7 @@ To see what this looks like in practice, I threw together a quick travel destina
 
 ## How it works
 
-Before getting into the Java API, it's worth knowing what the browser is actually doing. When a view transition fires, the browser takes a screenshot of the current page, applies your DOM changes, then animates between the old screenshot and the new live content. The browser handles all of that on its own.
+Before getting into the Java API, it's worth knowing what the browser is actually doing. When a view transition fires, the browser takes a snapshot of the current page, applies your DOM changes, then animates between the old screenshot and the new live content. The browser handles all of that on its own.
 
 The tricky part for server-side frameworks is timing. DOM mutations happen on the server, not instantly in the browser, so the browser needs a way to know when your changes are done. webforJ handles this by wrapping your component updates in a callback and signaling the browser once the server-side work is complete.
 
