@@ -6,7 +6,7 @@ _i18n_hash: 6d09e8327e3391cedd4e8059d9390d09
 在webforJ中，路由是一个可选工具。开发者可以选择使用webforJ路由解决方案或一个传统模型，该模型通过`Frame`操作且不支持深度链接。要启用路由，必须在实现`App`的类级别应用**`@Routify`**注解。这赋予了webforJ管理浏览器历史记录、响应导航事件并根据URL渲染应用组件的权利。
 
 :::info
-要了解有关使用框架、内置和自定义组件构建用户界面的更多信息，请访问[构建用户界面](../building-ui/basics)部分。
+要了解有关使用框架、内置和自定义组件构建用户界面的更多信息，请访问[构建用户界面](/docs/building-ui/overview)部分。
 :::
 
 ## `@Routify`注解的目的 {#purpose-of-the-routify-annotation}

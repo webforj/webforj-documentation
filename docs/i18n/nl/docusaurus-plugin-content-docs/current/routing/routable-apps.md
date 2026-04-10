@@ -6,7 +6,7 @@ _i18n_hash: 6d09e8327e3391cedd4e8059d9390d09
 Routing in webforJ is een optioneel hulpmiddel. Ontwikkelaars kunnen kiezen tussen de webforJ routingoplossing of een traditioneel model met `Frame` manipulatie en zonder deep linking. Om routing in te schakelen, moet de **`@Routify`** annotatie worden toegepast op het niveau van een klasse die `App` implementeert. Hierdoor krijgt webforJ de bevoegdheid om de browsergeschiedenis te beheren, te reageren op navigatie-evenementen en de componenten van de app weer te geven op basis van de URL.
 
 :::info
-Om meer te leren over het bouwen van UI's met behulp van frames, ingebouwde en aangepaste componenten, bezoek de sectie [Building UIs](../building-ui/basics).
+Om meer te leren over het bouwen van UI's met behulp van frames, ingebouwde en aangepaste componenten, bezoek de sectie [Building UIs](/docs/building-ui/overview).
 :::
 
 ## Doel van de `@Routify` Annotatie {#purpose-of-the-routify-annotation}
