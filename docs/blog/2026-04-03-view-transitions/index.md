@@ -1,5 +1,5 @@
 ---
-title: "Animated Transitions in webforJ, No JavaScript Required"
+title: "Animated Transitions, No JavaScript Required"
 description: How webforJ's new Transitions API brings the browser's View Transition API to Java, with zero JavaScript required.
 slug: view-transitions
 date: 2026-04-03
@@ -8,6 +8,7 @@ tags: [transitions, animations, routing, navigation]
 hide_table_of_contents: false
 ---
 <!-- TODO: Add cover image once uploaded to CDN -->
+![cover image](./blog-view-transitions-cover.png)
 <!-- vale webforJ.BeDirect = NO -->
 
 There's something about native mobile apps that's hard to copy on the web: things move. Tap a photo and it expands. Go back and it shrinks to where it came from. The browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) has been closing that gap, and webforJ 25.11 brings it to Java.
