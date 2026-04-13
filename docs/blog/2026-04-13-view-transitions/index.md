@@ -1,17 +1,17 @@
 ---
 title: "Animated Transitions, No JavaScript Required"
-description: How webforJ's new Transitions API brings the browser's View Transition API to Java, with zero JavaScript required.
+description: How webforJ's Transitions API brings the browser's View Transition API to Java, with zero JavaScript required.
 slug: view-transitions
-date: 2026-04-03
+date: 2026-04-13
 authors: Lauren Alamo
-tags: [transitions, animations, routing, navigation]
+tags: [front end, integrations, layout, styling, routing]
 hide_table_of_contents: false
 ---
-<!-- TODO: Add cover image once uploaded to CDN -->
-![cover image](./blog-view-transitions-cover.png)
+
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-03-view-transitions/blog-view-transitions-cover.png)
 <!-- vale webforJ.BeDirect = NO -->
 
-There's something about native mobile apps that's hard to copy on the web: things move. Tap a photo and it expands. Go back and it shrinks to where it came from. The browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) has been closing that gap, and webforJ 25.11 brings it to Java.
+There's something about native mobile apps that's hard to copy on the web: things move. Tap a photo and it expands. Go back and it shrinks to where it came from. The browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) has been closing that gap, and webforJ 25.11 brings it to Java with [webforJ View Transitions](/docs/advanced/view-transitions).
 
 <!-- truncate -->
 
@@ -25,7 +25,7 @@ To see what this looks like in practice, I threw together a quick travel destina
 
 ## How it works
 
-Before getting into the Java API, it's worth knowing what the browser is actually doing. When a view transition fires, the browser takes a snapshot of the current page, applies your DOM changes, then animates between the old screenshot and the new live content. The browser handles all of that on its own.
+Before getting into the Java API, it's worth knowing what the browser is actually doing. When a view transition fires, the browser takes a snapshot of the current page, applies your DOM changes, then animates between the old snapshot and the new live content. The browser handles all of that on its own.
 
 The tricky part for server-side frameworks is timing. DOM mutations happen on the server, not instantly in the browser, so the browser needs a way to know when your changes are done. webforJ handles this by wrapping your component updates in a callback and signaling the browser once the server-side work is complete.
 
@@ -59,7 +59,7 @@ public class DashboardView extends Composite<FlexLayout> {
 }
 ```
 
-Set `enter` and `exit`, and you're done. It accepts the same `ViewTransition` constants, or a custom string if you've defined your own CSS. Reach for `startViewTransition()` directly when you need to animate non-navigation changes, combine enter and exit on different components, or work with shared element morphing.
+Set `enter` and `exit`, and you're done. It accepts `ViewTransition` constants, or a custom string if you've defined your own CSS. Reach for `startViewTransition()` directly when you need to animate non-navigation changes, combine enter and exit on different components, or work with shared element morphing.
 
 ## Predefined transition types
 
@@ -114,9 +114,7 @@ Here's the full list of built-in types:
 
 ## Shared element transitions (morphing)
 
-Click a product thumbnail and it expands into the full-width hero image (the large featured image at the top of the detail page) with no jarring cut, just a continuous motion between the two states. That's a shared element transition, and it's the one I found most satisfying to wire up in the travel app.
-
-One thing to watch out for with lists: every repeating element needs a unique name. If two visible components share the same transition name, behavior is undefined. Append the item ID, or whatever uniquely identifies each row.
+Click a product thumbnail and it expands into a full-width hero image (the large featured image at the top of a detail page) with no jarring cut, just a continuous motion between the two states. That's a shared element transition, and it's the one I found most satisfying to wire up in the travel app.
 
 Give the same element in both views a matching name using `setViewTransitionName()`, available on any component that implements `HasStyle`. When the transition runs, the browser finds the matching names and animates between them automatically:
 
@@ -137,6 +135,8 @@ Page.getCurrent().startViewTransition()
 ```
 
 The browser handles the rest on its own.
+
+One thing to watch out for with lists: every repeating element needs a unique name. If two visible components share the same transition name, behavior is undefined. Append the item ID, or whatever uniquely identifies each row.
 
 ## Custom CSS animations
 
@@ -176,7 +176,7 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
-To load the CSS, annotate the view that calls `startViewTransition()` with `@StyleSheet` or `@InlineStyleSheet`. Because `::view-transition-*` pseudo-elements are painted at the document level, the stylesheet only needs to be present on the page that triggers the transition — you don't need to add it to every route.
+To load the CSS, annotate the view that calls `startViewTransition()` with `@StyleSheet` or `@InlineStyleSheet`. Because `::view-transition-*` pseudo-elements are painted at the document level, the stylesheet only needs to be present on the page that triggers the transition—you don't need to add it to every route.
 
 You don't have to go fully custom to get some CSS control. Targeting the built-in pseudo-elements is enough to adjust timing or easing:
 

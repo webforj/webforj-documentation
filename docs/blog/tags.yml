@@ -101,15 +101,3 @@ renderers:
 performance:
   label: Performance
   description: Performance optimization techniques for webforJ applications.
-  
-transitions:
-  label: Transitions
-  description: View transitions and animated navigation in webforJ applications.
-
-animations:
-  label: Animations
-  description: CSS and programmatic animations in webforJ applications.
-
-navigation:
-  label: Navigation
-  description: User navigation patterns and history management in webforJ.
