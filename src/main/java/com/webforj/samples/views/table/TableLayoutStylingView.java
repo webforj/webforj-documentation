@@ -39,5 +39,6 @@ public class TableLayoutStylingView extends Composite<FlexLayout> {
       .setSize("100%", "260px")
       .setStriped(true)
       .setBordersVisible(EnumSet.of(Border.AROUND, Border.ROWS, Border.COLUMNS));
+    table.setColumnsToAutoFit();
   }
 }

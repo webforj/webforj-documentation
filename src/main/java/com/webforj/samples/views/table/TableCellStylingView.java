@@ -51,6 +51,7 @@ public class TableCellStylingView extends Composite<FlexLayout> {
         }
         return parts;
       });
-
+    
+    table.setColumnsToAutoFit();
   }
 }

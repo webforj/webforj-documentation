@@ -39,7 +39,7 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
   public TableDynamicStylingView() {
     self.setDirection(FlexDirection.COLUMN)
       .setMaxWidth(760)
-      .setStyle("margin", "1em auto")
+      .setMargin("var(--dwc-space-xl)")
       .add(update, table);
 
     List<Person> data = List.of(
@@ -78,6 +78,8 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
         }
         return parts;
       });
+    
+    table.setColumnsToAutoFit();
 
     update.setMaxWidth(200)
       .onClick(e -> {
