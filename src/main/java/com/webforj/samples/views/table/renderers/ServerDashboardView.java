@@ -30,7 +30,8 @@ public class ServerDashboardView extends Composite<Div> {
 
     table.addColumn("hostname", Server::getHostname)
         .setLabel("Hostname")
-        .setWidth(160f);
+        .setMinWidth(160f) 
+        .setFlex(1f);
 
     table.addColumn("online", Server::isOnline)
         .setLabel("Online")
