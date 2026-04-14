@@ -1,6 +1,7 @@
 ---
 sidebar_position: 16
 title: MaskDecorator
+sidebar_class_name: new-content
 ---
 
 <DocChip chip='since' label='24.10' />
@@ -47,7 +48,7 @@ MaskDecorator.forString("1234",       "ZZZZ-0000");        // → "1234-    " (p
 Use `forNumber()` to format a numeric value using a number mask:
 
 ```java
-String result = MaskDecorator.forNumber(1234567.89, "###,##0.00");
+String result = MaskDecorator.forNumber(1234567.89, "#,###,##0.00");
 // → "1,234,567.89"
 ```
 
@@ -71,8 +72,8 @@ String result = MaskDecorator.forNumber(1234567.89, "###,##0.00");
 
 The characters `-`, `+`, `$`, and `(` can float: the first occurrence is moved to the last position where a `#` or `,` was replaced by the fill character.
 
-:::info No automatic rounding
-`forNumber()` does **not** round values. For example, `MaskDecorator.forNumber(12.34567, "###0.00")` produces `"  12.34"`, not `"  12.35"`.
+:::info Rounding behavior
+`forNumber()` rounds values to match the decimal precision in the mask. For example, `MaskDecorator.forNumber(12.34567, "###0.00")` produces `"  12.35"`.
 :::
 
 ### Examples {#number-examples}
@@ -158,7 +159,7 @@ LocalTime time = MaskDecorator.parseTime("14:30", "%Hz:%mz");
 A locale-aware overload is available when parsing strings that contain localized AM/PM values:
 
 ```java
-LocalTime time = MaskDecorator.parseTime("02:30 PM", "%hz:%mz %p", Locale.US);
+LocalTime time = MaskDecorator.parseTime("02:30 pm", "%hz:%mz %p", Locale.US);
 ```
 
 ### Time format indicators {#time-format-indicators}
@@ -169,7 +170,7 @@ LocalTime time = MaskDecorator.parseTime("02:30 PM", "%hz:%mz %p", Locale.US);
 | `%h`   | Hour (12-hour clock) |
 | `%m`   | Minute               |
 | `%s`   | Second               |
-| `%p`   | AM/PM                |
+| `%p`   | am/pm                |
 
 ### Modifiers {#time-modifiers}
 
@@ -181,7 +182,7 @@ Time masks use the same modifiers as date masks. See [Date modifiers](#date-modi
 LocalTime t = LocalTime.of(9, 5, 30);
 
 MaskDecorator.forTime(t, "%Hz:%mz:%sz");  // → "09:05:30"
-MaskDecorator.forTime(t, "%hz:%mz %p");   // → "09:05 AM"
+MaskDecorator.forTime(t, "%hz:%mz %p");   // → "09:05 am"
 MaskDecorator.forTime(t, "%Hz%mz");       // → "0905"
 ```
 
@@ -210,7 +211,7 @@ LocalDateTime dt = LocalDateTime.of(2025, 7, 4, 14, 30, 0);
 
 MaskDecorator.forDateTime(dt, "%Mz/%Dz/%Yl %Hz:%mz");      // → "07/04/2025 14:30"
 MaskDecorator.forDateTime(dt, "%Mz/%Dz/%Yl %Hz:%mz:%sz");  // → "07/04/2025 14:30:00"
-MaskDecorator.forDateTime(dt, "%Dz.%Mz.%Yz %hz:%mz %p");  // → "04.07.25 02:30 PM"
+MaskDecorator.forDateTime(dt, "%Dz.%Mz.%Yz %hz:%mz %p");  // → "04.07.25 02:30 pm"
 ```
 
 ## Handling null results {#handling-null-results}
