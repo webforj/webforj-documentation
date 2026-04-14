@@ -1,76 +1,74 @@
 ---
 title: Spinner
 sidebar_position: 110
-_i18n_hash: c60e7d3c3604a39de7f659f169d973a6
+_i18n_hash: bb61c6f2d3cf7073ca2d1c6fc6e1c0c4
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-spinner" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="spinner" location="com/webforj/component/spinner/Spinner" top='true'/>
 
-`Spinner`-komponentti tarjoaa visuaalisen indikaattorin, joka osoittaa käynnissä olevaa prosessia tai ladattavaa taustalla. Sitä käytetään usein osoittamaan, että järjestelmä noutaa tietoja tai kun prosessi vie aikaa valmistua. `Spinner` antaa käyttäjälle palautetta, mikä merkitsee, että järjestelmä työskentelee aktiivisesti.
+`Spinner`-komponentti tarjoaa visuaalisen indikaattorin, joka osoittaa taustalla olevan prosessin tai lataamisen. Sitä käytetään usein näyttämään, että järjestelmä hakee tietoja tai kun prosessin viimeistely vie aikaa. `Spinner` tarjoaa käyttäjäpalautteen, merkitsemällä, että järjestelmä toimii aktiivisesti.
 
 <!-- INTRO_END -->
 
 ## Perusteet {#basics}
 
-Luodaksesi `Spinner`, voit määrittää teeman ja koon. Perussyntaksi sisältää `Spinner`-instanssin luomisen ja sen ulkonäön ja käyttäytymisen määrittämisen menetelmien, kuten `setTheme()` ja `setExpanse()`, avulla.
+Luoaksesi `Spinner`, voit määrittää teeman ja laajuuden. Perussyntaksi sisältää `Spinner`-instanssin luomisen ja sen ulkoasun sekä käyttäytymisen määrittämisen menetelmien, kuten `setTheme()` ja `setExpanse()`, kautta.
 
 <ComponentDemo 
 path='/webforj/spinnerdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerDemoView.java'
-cssURL='/css/spinnerstyles/spinnerdemo.css'
 height = '225px'
 />
 
-## Nopeuden ja tauon hallinta {#managing-speed-and-pausing}
+## Nopeuden hallinta ja tauko {#managing-speed-and-pausing}
 
-On mahdollista asettaa nopeus millisekunteina `Spinner`-komponentille sekä keskeyttää/aloittaa animointi helposti. 
+On mahdollista asettaa `Spinner`:n nopeus millisekunteina ja keskeyttää/jatkaa animaatiota helposti.
 
-Käyttötapauksia nopeuden asettamiseen ovat esimerkiksi latausprosessien erottaminen. Esimerkiksi nopeammat `Spinners` soveltuvat pienille tehtäville, kun taas hitaammat `Spinners` ovat parempia suuremmille tehtäville. Taukoaminen on hyödyllistä, kun käyttäjän toiminta tai vahvistus on tarpeen prosessin jatkamiseksi.
+Käyttötapauksia nopeuden asettamiselle ovat erottaminen latausprosessien välillä. Esimerkiksi nopeammat `Spinnerit` sopivat pienille tehtäville, kun taas hitaammat `Spinnerit` ovat parempia suuremmille tehtäville. Taukoaminen on hyödyllistä, kun tarvitaan käyttäjän toimenpiteitä tai vahvistusta ennen prosessin jatkamista.
 
 ### Nopeuden säätäminen {#adjusting-speed}
 
-Voit säädellä, kuinka nopeasti `Spinner` pyörii säätämällä sen nopeutta millisekunneissa käyttäen `setSpeed()`-menetelmää. Alhaisempi arvo saa `Spinner`-komponentin pyörimään nopeammin, kun taas korkeammat arvot hidastavat sitä.
+Voit hallita kuinka nopeasti `Spinner` pyörii säätämällä sen nopeutta millisekunteina käyttäen `setSpeed()`-menetelmää. Alhaisempi arvo saa `Spinner`- komponentin pyörimään nopeammin, kun taas korkeammat arvot hidastavat sitä.
 
 ```java
 spinner.setSpeed(500); // Pyörii nopeammin
 ```
 
 :::info Oletusnopeus
-Oletuksena `Spinner` vie 1000 millisekuntia yhden täydellisen kierroksen suorittamiseen.
+Oletuksena `Spinner` vie 1000 millisekuntia suorittaakseen yhden täydellisen kierroksen.
 :::
 
 ### Taukoaminen ja jatkaminen {#pausing-and-resuming}
 
-`Spinner`-komponentin taukoaminen on hyödyllistä, kun ohjelma on tilapäisesti keskeytetty tai odottaa käyttäjän syötettä. Se ilmoittaa käyttäjille, että ohjelma on pidätetty, eikä aktiivisesti toimi, mikä parantaa selkeyttä monivaiheisissa prosesseissa.
+`Spinner`:n taukoaminen on hyödyllistä, kun ohjelma on tilapäisesti keskeytetty tai odottaa käyttäjän syötettä. Se ilmoittaa käyttäjille, että ohjelma on pysähdyksissä, eikä aktiivisesti suoritettuna, mikä parantaa selkeyttä monivaiheisissa prosesseissa.
 
-Keskeyttääksesi ja jatkaaksesi `Spinner`-komponenttia, käytä `setPaused()`-menetelmää. Tämä on erityisen hyödyllistä, kun tarvitset tilapäisesti pysäyttää pyörimisanimoinnin.      
+Taukoamisen ja jatkamisen toteuttamiseksi käytä `setPaused()`-menetelmää. Tämä on erityisen hyödyllistä, kun on tarpeen tilapäisesti pysäyttää pyörivä animaatio.
 
 ```java
-spinner.setPaused(true);  // Keskeytä spinner
-spinner.setPaused(false); // Jatka spinner
+spinner.setPaused(true);  // Pysäytä spinneri
+spinner.setPaused(false); // Jatka spinneriä
 ```
 
-Tämä esimerkki näyttää kuinka asettaa nopeus ja kuinka keskeyttää/jatkaa `Spinneriä`:
+Tässä esimerkissä näytetään, kuinka asetetaan nopeus ja kuinka taukoaa/jatkaa `Spinner`:ä:
 
 <ComponentDemo 
 path='/webforj/spinnerspeeddemo?'  
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerSpeedDemoView.java'
-cssURL='/css/spinnerstyles/spinnerspeeddemo.css'
 height = '150px'
 />
 
 ## Pyörimissuunta {#spin-direction}
 
-`Spinner`-komponentin suuntaa voidaan ohjata pyörimään **myötäpäivään** tai **vastapäivään**. Voit määrittää tämän käyttäytymisen `setClockwise()`-menetelmällä.
+`Spinner`:n suuntaa voidaan hallita, jotta se pyörii **myötäpäivään** tai **vastapäivään**. Voit määrittää tämän käyttäytymisen käyttäen `setClockwise()`-menetelmää.
 
 ```java
 spinner.setClockwise(false);  // Pyörii vastapäivään
 spinner.setClockwise(true);   // Pyörii myötäpäivään
 ```
 
-Tämä vaihtoehto osoittaa visuaalisesti erityistä tilaa tai toimii ainutlaatuisena muotoiluvaihtoehtona. Pyörimissuunnan muuttaminen voi auttaa erottamaan prosessityyppejä, kuten edistymisen ja kääntämisen, tai tarjota selkeän visuaalisen vihjeen tietyissä konteksteissa.
+Tämä vaihtoehto ilmaisee visuaalisesti erityistilan tai toimii ainutlaatuisena suunnitteluratkaisuna. Pyörimissuunnan muuttaminen voi auttaa erottamaan erilaisia prosesseja, kuten edistyminen vs. kääntäminen tai tarjoamaan erottuvan visuaalisen vihjeen tietyissä konteksteissa.
 
 <ComponentDemo 
 path='/webforj/spinnerdirectiondemo?' 
@@ -78,45 +76,43 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '150px'
 />
 
-## Muotoilu {#styling}
+## Tyylit {#styling}
 
 ### Teemat {#themes}
 
-`Spinner`-komponentti sisältää useita sisäänrakennettuja teemoja, jotka mahdollistavat tyylien nopean soveltamisen ilman räätälöityä CSS:ää. Nämä teemat muuttavat spinnin visuaalista ilmettä, jolloin se on sopiva eri käyttötarkoituksiin ja konteksteihin. Näiden ennalta määrättyjen teemojen käyttäminen varmistaa johdonmukaisuuden tyylissä sovelluksesi koko laajuudessa.
+`Spinner`-komponentilla on useita sisäänrakennettuja teemoja, jotka mahdollistavat tyylin nopean soveltamisen ilman tarvetta mukautetulle CSS:lle. Nämä teemat muuttavat spinnerin visuaalista ulkoasua, tehden siitä sopivan erilaisiin käyttötapoihin ja konteksteihin. Näiden ennalta määriteltyjen teemojen käyttö varmistaa tyylin johdonmukaisuuden koko sovelluksessa.
 
-Vaikka spinnereitä käytetään erilaisissa tilanteissa, tässä on joitakin esimerkkikäyttötilanteita eri teemoille:
+Vaikka spinnerit palvelevat erilaisia tilanteita, tässä on joitakin esimerkkejä eri teemojen käyttötapauksista:
 
-- **Pääteema**: Ihanteellinen korostamaan lataustilaa, joka on keskeinen osa käyttäjäprosessia, kuten lomakkeen lähettämisen tai tärkeän toiminnan käsittelyn aikana.
+- **Pääteema**: Ihanteellinen korostamaan lataustilaa, joka on keskeinen osa käyttäjävirtaa, kuten lomakkeen lähettämisessä tai tärkeän toimenpiteen käsittelyssä.
   
-- **Onnistuminen**: Käytännöllinen esittämään onnistuneita taustaprosesseja, kuten kun käyttäjä lähettää lomakkeen ja sovellus suorittaa prosessin viimeisiä vaiheita.
+- **Onnistuminen**: Hyödyllinen edustamaan onnistuneita taustaprosesseja, kuten silloin, kun käyttäjä lähettää lomakkeen ja sovellus suorittaa prosessin viimeiset vaiheet.
   
-- **Vaara**: Käytä tätä riskialttiissa tai tärkeissä operaatioissa, kuten tärkeän datan poistamisessa tai peruuttamattomien muutosten tekemisessä, joissa visuaalinen kiireellisyyden tai varovaisuuden indikaattori on tarpeen.
+- **Vaara**: Käytä tätä riskialttiissa tai korkeiden panosten toiminnoissa, kuten tärkeiden tietojen poistamisessa tai peruuttamattomien muutosten tekemisessä, missä visuaalinen hälytys tai varoitus on tarpeen.
   
-- **Varoitus**: Käytä tätä varoittamaan varovaisesta tai vähemmän kiireellisestä prosessista, kuten kun käyttäjä odottaa tietojen vahvistamista, mutta ei vaadi välitöntä toimintaa.
+- **Varoitus**: Käytä tätä ilmoittaaksesi varoittavasta tai vähemmän kiireellisestä prosessista, kuten silloin, kun käyttäjä odottaa tietojen vahvistusta, mutta ei vaadi välitöntä toimintaa.
 
-- **Harmaa**: Toimii hyvin hienovaraisille taustaprosesseille, kuten vähäprioriteettisille tai passiivisille lataustehtäville, kuten lisätietojen hakemiselle, joka ei suoraan vaikuta käyttäjäkokemukseen.
+- **Harmaa**: Toimii hyvin hienovaraisissa taustaprosesseissa, kuten alhaisen prioriteetin tai passiivisten lataustehtävien, kuten lisätietojen hakemisen, yhteydessä, mikä ei suoraan vaikuta käyttäjäkokemukseen.
   
-- **Tietoa**: Sopii lataustilanteisiin, joissa tarjoat käyttäjälle lisätietoa tai selvennystä, kuten näyttää spinnin yhdessä viestin kanssa, joka selittää meneillään olevaa prosessia.
+- **Info**: Sopii lataustilanteisiin, jolloin tarjoat käyttäjälle lisätietoja tai selvennystä, kuten spinnerin näyttäminen viestin rinnalla, joka selittää käynnissä olevaa prosessia.
 
-Voit soveltaa näitä teemoja ohjelmallisesti spinnereille, tarjoten visuaalisia vihjeitä, jotka vastaavat toiminnan kontekstia ja tärkeyttä.
+Voit soveltaa näitä teemoja ohjelmallisesti spinneriin, tarjoten visuaalisia vihjeitä, jotka vastaavat toiminnan kontekstia ja tärkeyttä.
 
 Voit määrittää tämän käyttäytymisen käyttäen `setTheme()`-menetelmää.
 
 <ComponentDemo 
 path='/webforj/spinnerthemedemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerThemeDemoView.java'
-cssURL='/css/spinnerstyles/spinnerthemedemo.css'
 height = '100px'
 />
 
-### Koot {#expanses}
+### Laajuudet {#expanses}
 
-Voit säätää spinnin kokoa, jota kutsutaan **kooksi**, jotta se sopisi tarvittavaan visuaaliseen tilaan. Spinner tukee useita eri kokoja, mukaan lukien `Expanse.SMALL`, `Expanse.MEDIUM` ja `Expanse.LARGE`.
+Voit säätää spinnerin kokoa, joka tunnetaan nimellä **laajuus**, sopimaan tarvitsemaasi visuaaliseen tilaan. Spinner tukee erilaisia kokoja, mukaan lukien `Expanse.SMALL`, `Expanse.MEDIUM` ja `Expanse.LARGE`.
 
 <ComponentDemo 
 path= '/webforj/spinnerexpansedemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerExpanseDemoView.java'
-cssURL='/css/spinnerstyles/spinnerexpansedemo.css'
 height = '100px'
 />
 

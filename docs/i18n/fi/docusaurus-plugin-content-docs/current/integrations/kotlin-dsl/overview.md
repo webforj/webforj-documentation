@@ -4,7 +4,7 @@ sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: new-content
-_i18n_hash: 36366a03c9784b451033e5161bdc7359
+_i18n_hash: 4198ef6392f249bd21d0395c55b5817d
 ---
 <Head>
   <style>{`
@@ -17,7 +17,7 @@ _i18n_hash: 36366a03c9784b451033e5161bdc7359
 <DocChip chip='since' label='25.12' />
 <DocChip chip='experimental' />
 
-webforJ tarjoaa [Kotlin](https://kotlinlang.org/) *Domäänikohtaisen kielin*, eli DSL:n, joka mahdollistaa käyttöliittymien rakentamisen tiiviillä ja tyypitetyllä syntaksilla. Imperatiivisen Java-koodin sijaan kirjoitat deklaratiivista koodia, joka lukee kuin kuvaus käyttöliittymän rakenteesta.
+webforJ tarjoaa [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, eli DSL:n, jonka avulla voit rakentaa käyttöliittymiä tiiviillä, tyyppi-turvallisella syntaksilla. Sen sijaan, että kirjoitat imperatiivista Java-koodia, kirjoitat deklaraatiokoodia, joka lukee kuin kuvaus käyttöliittymäsi rakenteesta.
 
 <!-- INTRO_END -->
 
@@ -48,24 +48,19 @@ flexLayout {
 }
 ```
 
-DSL hyödyntää Kotlinin laajennusfunktioita, vastaanottajalla varustettuja lambdoja ja oletusparametreja luonnollisen rakennussyntaksin luomiseksi. Komponentit upotetaan toisiinsa, konfigurointi tapahtuu lohkoissa, ja kääntäjä tunnistaa rakenteelliset virheet ennen ajonaikaa.
+DSL hyödyntää Kotlinin laajennusfunktioita, vastaanottajalla varustettuja lambdaja ja oletusparametreja luodakseen luonnollisen rakennussyntaksin. Komponentit pesiytyvät toistensa sisälle, konfigurointi tapahtuu lohkossa, ja kääntäjä havaitsee rakenteelliset virheet ennen suorittamista.
 
 ## Setup {#setup}
 
-:::warning experimental feature
-Tämä ominaisuus on edelleen aktiivisessa kehityksessä.
-API saattaa muuttua tulevissa versioissa, mukaan lukien mahdollisia taaksepäin yhteensopimattomia muutoksia.
+<ExperimentalWarning />
 
-Olet tervetullut kokeilemaan sitä ja jakamaan palautetta. Palaute auttaa muokkaamaan lopullista suunnittelua.
+Erillistä Kotlin-asennusta ei tarvita. Maven huolehtii käännöksestä Kotlin Maven -lisäosan kautta, joten mikä tahansa projekti, joka jo kääntää Mavenilla, voi lisätä Kotlin-tuen riippuvuus- ja lisäosasäätöjen avulla.
+
+:::tip Nopea aloitus
+Jos haluat käynnistää webforJ-projektin käyttäen Kotlinia kaikilla tarvittavilla kokoonpanoilla valmiiksi, katso [tämä osio webforJ Kotlin -aloitusprojektin käytöstä](#kotlin-starter-project).
 :::
 
-Erillistä Kotlin-asennusta ei tarvita. Maven hoitaa käännön Kotlin Maven -laajennuksen kautta, joten mikä tahansa projekti, joka jo kääntää Mavenilla, voi lisätä Kotlin-tuen riippuvuuden ja laajennuksen konfiguroinnin avulla.
-
-:::tip Quick start
-Jos haluat saada webforJ-projektin, joka käyttää Kotlinia, käynnistettäväksi kaikkine tarvittavine konfiguraatioineen suoraan, katso [tätä osiota webforJ Kotlin -käynnistyksestä](#kotlin-starter-project).
-:::
-
-### Dependencies {#dependencies}
+### Riippuvuudet {#dependencies}
 
 Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`-tiedostoon:
 
@@ -83,7 +78,7 @@ Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`-tied
 </dependency>
 ```
 
-Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin-testiriippuvuus. Se integroituu JUnitin kanssa:
+Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin-testiriippuvuus. Se integroituu JUnit:iin:
 
 ```xml
 <dependency>
@@ -94,9 +89,9 @@ Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin-testiriippuvuus. S
 </dependency>
 ```
 
-### Kotlin Maven plugin {#kotlin-maven-plugin}
+### Kotlin Maven -lisäosa {#kotlin-maven-plugin}
 
-Lisää Kotlin Maven -laajennus, jotta voit kääntää sekä Kotlin- että Java-lähdekoodisi. Alla oleva `sourceDirs`-konfiguraatio sallii Kotlin- ja Java-tiedostojen esiintyä samassa projektissa:
+Lisää Kotlin Maven -lisäosa kääntämään sekä Kotlin- että Java-lähdekoodisi. Alla oleva `sourceDirs`-konfiguraatio sallii Kotlin- ja Java-tiedostojen elää samassa projektissa:
 
 ```xml
 <plugin>
@@ -139,18 +134,18 @@ Lisää Kotlin Maven -laajennus, jotta voit kääntää sekä Kotlin- että Java
 </plugin>
 ```
 
-Näiden lisäysten myötä `mvn compile` kääntää Kotlin-lähdekoodit yhdessä Javankaltaisten kanssa. Kotlin-tiedostot voivat olla `src/main/kotlin` tai `src/main/java`, ja laajennus hoitaa molemmat.
+Näiden lisäysten myötä `mvn compile` kääntää Kotlin-lähteet yhdessä Java-lähteiden kanssa. Kotlin-tiedostot voivat olla `src/main/kotlin` tai `src/main/java` -kansiossa, ja lisäosa huolehtii molemmista.
 
-:::tip[Java interoperability]
-Kotlin käännetään JVM-bittikoodiksi, joten se toimii yhdessä olemassa olevan Java-koodin kanssa. Voit käyttää DSL:llä rakennettuja Kotlin-komposiitteja Java-luokista, upottaa standardi Java-komponentteja DSL-lohkoihin `add()`-menetelmällä ja sekoittaa Kotlin- ja Java-tiedostoja samassa projektissa.
+:::tip[Java-yhteensopivuus]
+Kotlin kääntyy JVM-tavukoodiksi, joten se toimii yhdessä olemassa olevan Java-koodin kanssa. Voit käyttää DSL- rakennettuja Kotlin-kokoonpanoja Java-luokista, pesiyttää standardeja Java-komponentteja DSL-lohkoihin `add()`-metodilla, ja sekoittaa Kotlin- ja Java-tiedostoja samassa projektissa.
 :::
 
-### Kotlin starter project {#kotlin-starter-project}
+### Kotlin aloitusprojekti {#kotlin-starter-project}
 
-Jos haluat ohittaa manuaalisen asennuksen, [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) -rekisteri tarjoaa valmiiksi toimivan projektin, jossa kaikki riippuvuudet ja laajennuskokoonpanot on jo paikallaan. Klonaa se ja ala rakentaa DSL:ää heti.
+Jos haluat ohittaa manuaalisen asetuksen, [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) -repo tarjoaa valmiin projektin kaikilla riippuvuuksilla ja lisäosasäätöillä jo paikallaan. Kloonaa se ja ala rakentaa DSL:n kanssa heti.
 
-## Topics {#topics}
+## Aiheita {#topics}
 
-Seuraavat aiheet käsittelevät DSL:n käyttöä sekä sen laajentamista kaikilla mukautetuilla komponenteilla tai komposiiteilla, joita luot.
+Seuraavat aiheet käsittelevät DSL:n käyttöä sekä sen laajentamista kaikkiin muokattuihin komponentteihin tai yhdistelmiin, joita luot.
 
 <DocCardList className="topics-section" />

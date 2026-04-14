@@ -111,6 +111,31 @@ Developers have more control over the logic of server sorting. This allows for t
 Server sorting is a performance-oriented strategy for dealing with datasets that exceed the capabilities of efficient client-side processing, and is the default method used by the `Table`.
 :::
 
+### Column property name {#column-property-name}
+
+By default, the `Table` uses a column's ID as the property name when building sort criteria for a backend repository. When a column's display ID doesn't match the underlying data property, or when the column displays a computed value, use `setPropertyName()` to explicitly tell the `Table` which property to sort by.
+
+```java
+// Column ID is "Full Name", but the backend property is "fullName"
+table.addColumn("Full Name", Person::getFullName)
+     .setSortable(true)
+     .setPropertyName("fullName");
+```
+
+The property name is forwarded to the `OrderCriteria` when a sort event fires, allowing backend repositories such as Spring Data JPA or REST adapters to build the correct `ORDER BY` clause.
+
+:::warning
+Without `setPropertyName()`, the `Table` falls back to the column ID. If this doesn't match a valid backend property, sorting will fail silently or return incorrectly ordered data.
+:::
+
+Nested property paths are also supported using dot notation:
+
+```java
+table.addColumn("City", Person::getCity)
+     .setSortable(true)
+     .setPropertyName("address.city");
+```
+
 #### Comparators {#comparators}
 
 The `Column` component allows developers to use Java `Comparators` for dynamic and custom sorting. A `Comparator` is a mechanism used to order two objects of the same class, even if that class is user-defined. This functionality provides developers with the flexibility to customize how data is sorted, providing higher control over the default sorting behavior based on natural ordering.

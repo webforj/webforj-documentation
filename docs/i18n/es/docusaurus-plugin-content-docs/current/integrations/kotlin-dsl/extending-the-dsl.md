@@ -1,33 +1,33 @@
 ---
 title: Extending the DSL
 sidebar_position: 20
-_i18n_hash: e7878d00305e1d544efb6f9e6e8afe2e
+_i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---
 El DSL de Kotlin es extensible, lo que permite la adición de funciones DSL para componentes personalizados o bibliotecas de terceros. Puedes construir componentes compuestos que utilicen el DSL internamente.
 
 ## Agregar componentes al DSL {#adding-components-to-the-dsl}
 
-Para hacer que cualquier componente esté disponible en el DSL, crea una función de extensión en `HasComponents` que use la función auxiliar `init`.
+Para hacer que cualquier componente esté disponible en el DSL, crea una función de extensión en `HasComponents` que utilice la función auxiliar `init`.
 
 ### Función DSL básica {#basic-dsl-function}
 
-Aquí está el patrón para un componente simple. Este ejemplo asume que tienes un componente `Badge` personalizado:
+Este es el patrón para un componente simple. Este ejemplo usa un componente personalizado `StarRating`:
 
 ```kotlin
 import com.webforj.concern.HasComponents
 import com.webforj.kotlin.dsl.WebforjDsl
 import com.webforj.kotlin.dsl.init
-import com.example.component.Badge
+import com.example.component.StarRating
 
-fun @WebforjDsl HasComponents.badge(
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  return init(Badge(), block)
+fun @WebforjDsl HasComponents.starRating(
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  return init(StarRating(), block)
 }
 ```
 
 La función `init` hace tres cosas:
-1. Agrega el componente al contenedor padre
+1. Agrega el componente al contenedor principal
 2. Ejecuta el bloque de configuración
 3. Devuelve el componente configurado
 
@@ -35,9 +35,9 @@ Ahora puedes usar el componente en el código DSL:
 
 ```kotlin
 div {
-  badge {
-    text = "Nuevo"
-    variant = Badge.Variant.PRIMARY
+  starRating {
+    value = 4
+    max = 5
   }
 }
 ```
@@ -47,15 +47,15 @@ div {
 La mayoría de las funciones DSL aceptan parámetros comunes antes del bloque de configuración:
 
 ```kotlin
-fun @WebforjDsl HasComponents.badge(
-  text: String? = null,
-  variant: Badge.Variant? = null,
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  val badge = Badge()
-  text?.let { badge.text = it }
-  variant?.let { badge.variant = it }
-  return init(badge, block)
+fun @WebforjDsl HasComponents.starRating(
+  value: Int? = null,
+  max: Int? = null,
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  val rating = StarRating()
+  value?.let { rating.value = it }
+  max?.let { rating.max = it }
+  return init(rating, block)
 }
 ```
 
@@ -63,16 +63,16 @@ El uso se vuelve más conciso:
 
 ```kotlin
 div {
-  badge("Nuevo", Badge.Variant.PRIMARY)
-  badge("Venta") {
-    styles["font-size"] = "12px"
+  starRating(value = 4, max = 5)
+  starRating(value = 3) {
+    styles["color"] = "gold"
   }
 }
 ```
 
 ## Crear componentes compuestos {#creating-composite-components}
 
-Un `Composite` envuelve múltiples componentes en una sola unidad reutilizable. El DSL funciona bien para definir una estructura compuesta.
+Un `Composite` envuelve múltiples componentes en una única unidad reutilizable. El DSL funciona bien para definir estructuras compuestas.
 
 ### Compuesto básico {#basic-composite}
 
@@ -113,7 +113,7 @@ El compuesto expone referencias de componentes para acceso externo y proporciona
 
 ### Agregar soporte DSL {#adding-dsl-support}
 
-Crea una función DSL para que el compuesto pueda ser utilizado como componentes integrados:
+Crea una función DSL para que el compuesto pueda usarse como componentes incorporados:
 
 ```kotlin
 fun @WebforjDsl HasComponents.searchBox(
@@ -141,7 +141,7 @@ div {
 
 ### Ejemplo: Indicador de estado {#example-status-indicator}
 
-Aquí hay un ejemplo completo de un indicador de estado compuesto:
+Aquí hay un ejemplo completo de un composite de indicador de estado:
 
 ```kotlin
 class StatusIndicator : Composite<Div>() {
@@ -172,7 +172,7 @@ class StatusIndicator : Composite<Div>() {
         styles["width"] = "10px"
         styles["height"] = "10px"
         styles["border-radius"] = "50%"
-        styles["background"] = "gris"
+        styles["background"] = "gray"
       }
 
       label = span()
@@ -209,7 +209,7 @@ Uso:
 
 ```kotlin
 div {
-  statusIndicator("Base de datos", StatusIndicator.Status.ACTIVE)
+  statusIndicator("Base de Datos", StatusIndicator.Status.ACTIVE)
   statusIndicator("Cache", StatusIndicator.Status.WARNING)
   statusIndicator("API Externa", StatusIndicator.Status.ERROR)
 }

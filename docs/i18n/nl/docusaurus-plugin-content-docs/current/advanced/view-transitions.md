@@ -1,14 +1,14 @@
 ---
 sidebar_position: 40
 title: View Transitions
-_i18n_hash: 4c19f96d864f10e742350b16ffd54981
+_i18n_hash: 95d65a391ac0b11d6976acfc43691754
 ---
 <JavadocLink type="foundation" location="com/webforj/ViewTransition" top='true'/>
 
 <DocChip chip='since' label='25.11' />
 <DocChip chip='experimental' />
 
-View-transities bieden geanimeerde overgangen wanneer de [DOM](/docs/glossary#dom) verandert, waardoor visuele schokken verminderd worden en de ruimtelijke context behouden blijft tijdens navigatie of contentupdates. webforJ integreert met de [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) van de browser om de complexiteit van het coördineren van animaties tussen oude en nieuwe staten te beheren.
+Weergave-overgangen bieden geanimeerde overgangen wanneer de [DOM](/docs/glossary#dom) verandert, waardoor visuele schokken worden verminderd en de ruimtelijke context tijdens navigatie of inhoudsupdates behouden blijft. webforJ integreert met de [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) van de browser om de complexiteit van het coördineren van animaties tussen oude en nieuwe staten te beheren.
 
 <ComponentDemo
   path='/webforj/viewtransitionchat?'
@@ -17,13 +17,11 @@ View-transities bieden geanimeerde overgangen wanneer de [DOM](/docs/glossary#do
   height='450px'
 />
 
-:::warning Experimentele API
-Deze API is gemarkeerd als experimenteel sinds 25.11 en kan in toekomstige versies veranderen. De API-handtekening, het gedrag en de prestatiekenmerken zijn onderhevig aan wijziging.
-:::
+<ExperimentalWarning />
 
 ## Basisgebruik {#basic-usage}
 
-Om een view-transitie te maken, gebruik `Page.getCurrent().startViewTransition()`, dat een builder retourneert voor het configureren van de transitie:
+Om een weergave-overgang te creëren, gebruikt u `Page.getCurrent().startViewTransition()`, dat een builder retourneert voor het configureren van de overgang:
 
 ```java
 Page.getCurrent().startViewTransition()
@@ -35,24 +33,24 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
-Het transitieproces legt een momentopname van de huidige staat vast, past je DOM-wijzigingen toe in de `onUpdate` callback, en animeert vervolgens van de oude momentopname naar de nieuwe inhoud. Je moet `done.run()` aanroepen om aan te geven wanneer je wijzigingen compleet zijn.
+Het overgangsproces legt een momentopname van de huidige toestand vast, past uw DOM-wijzigingen toe in de `onUpdate` callback en animeert vervolgens van de oude momentopname naar de nieuwe inhoud. U moet `done.run()` aanroepen om te signaleren wanneer uw wijzigingen zijn voltooid.
 
-:::warning De `onUpdate` callback is verplicht
-Het aanroepen van `start()` zonder een update callback in te stellen gooit een `IllegalStateException`.
+:::warning De `onUpdate` callback is vereist
+Het aanroepen van `start()` zonder het instellen van een update callback gooit een `IllegalStateException`.
 :::
 
 ## Overgangen toepassen {#applying-transitions}
 
-webforJ biedt vooraf gedefinieerde overgangstypen die je kunt toepassen op componenten die de DOM betreden of verlaten:
+webforJ biedt vooraf gedefinieerde overgangstypen die u kunt toepassen op componenten die de DOM binnenkomen of verlaten:
 
-| Constante | Effect |
+| Constant | Effect |
 |----------|--------|
 | `ViewTransition.NONE` | Geen animatie |
 | `ViewTransition.FADE` | Crossfade tussen oude en nieuwe inhoud |
 | `ViewTransition.SLIDE_LEFT` | Inhoud stroomt naar links (zoals voorwaartse navigatie) |
-| `ViewTransition.SLIDE_RIGHT` | Inhoud stroomt naar rechts (zoals terug navigatie) |
-| `ViewTransition.SLIDE_UP` | Inhoud stroomt omhoog |
-| `ViewTransition.SLIDE_DOWN` | Inhoud stroomt omlaag |
+| `ViewTransition.SLIDE_RIGHT` | Inhoud stroomt naar rechts (zoals achterwaartse navigatie) |
+| `ViewTransition.SLIDE_UP` | Inhoud stroomt naar boven |
+| `ViewTransition.SLIDE_DOWN` | Inhoud stroomt naar beneden |
 | `ViewTransition.ZOOM` | Oude inhoud krimpt weg, nieuwe inhoud groeit in |
 | `ViewTransition.ZOOM_OUT` | Oude inhoud groeit weg, nieuwe inhoud krimpt in |
 
@@ -80,7 +78,7 @@ Page.getCurrent().startViewTransition()
 
 ## Gedeelde componentovergangen {#shared-component-transitions}
 
-Gedeelde componentovergangen creëren een morfingseffect waarbij een component lijkt te transformeren van zijn positie in het oude beeld naar zijn positie in het nieuwe beeld. Dit wordt bereikt door componenten dezelfde overgangsnaam te geven met de `setViewTransitionName()` methode, beschikbaar op elk component dat de <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink> interface implementeert.
+Gedeelde componentovergangen creëren een vervormings effect waarbij een component lijkt te transformeren van zijn positie in de oude weergave naar zijn positie in de nieuwe weergave. Dit wordt bereikt door componenten dezelfde overgangsnaam te geven met behulp van de `setViewTransitionName()` methode, die beschikbaar is op elk component dat de <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink> interface implementeert.
 
 ```java
 // In de kaartweergave
@@ -90,10 +88,10 @@ image.setViewTransitionName("blog-image");
 image.setViewTransitionName("blog-image");
 ```
 
-Bij het overgaan tussen deze weergaven, animeert de browser de component tussen posities, waardoor een verbonden visuele ervaring ontstaat.
+Wanneer u tussen deze weergaven overgaat, animeert de browser de component tussen de posities, waardoor een verbonden visuele ervaring ontstaat.
 
 :::tip Gebruik unieke namen
-Wanneer je met lijsten of herhaalde componenten werkt, moet je een unieke identificatie opnemen in de overgangsnaam. Elke component vereist zijn eigen unieke naam om correct te morph naar de overeenkomstige component in de nieuwe weergave. Het gebruik van dezelfde naam voor meerdere zichtbare componenten veroorzaakt ongedefinieerd gedrag.
+Wanneer u werkt met lijsten of herhaalde componenten, voeg een unieke identifier toe aan de overgangsnaam. Elke component heeft een unieke naam nodig om correct naar de bijbehorende component in de nieuwe weergave te morph. Het gebruik van dezelfde naam voor meerdere zichtbare componenten veroorzaakt onvoorspelbaar gedrag.
 :::
 
 <ComponentDemo
@@ -107,15 +105,15 @@ Wanneer je met lijsten of herhaalde componenten werkt, moet je een unieke identi
   height='650px'
 />
 
-### Lijstherordening {#list-reordering}
+### Lijst opnieuw ordenen {#list-reordering}
 
-Een veelvoorkomende gebruikssituatie voor gedeelde componentovergangen is het animeren van lijstitems wanneer hun volgorde verandert. Door een unieke `view-transition-name` aan elk item toe te wijzen, animeert de browser automatisch componenten naar hun nieuwe posities:
+Een veelvoorkomend gebruik van gedeelde componentovergangen is het animeren van lijstitems wanneer hun volgorde verandert. Door elke item een unieke `view-transition-name` toe te wijzen, animeert de browser automatisch componenten naar hun nieuwe posities:
 
 ```java
 // Elke kaart krijgt een unieke overgangsnaam op basis van zijn ID
 card.setViewTransitionName("card-" + item.id());
 
-// Bij het schudden, werk gewoon de DOM bij - de browser doet de animatie
+// Bij het schudden, update alleen de DOM - de browser handelt de animatie af
 Page.getCurrent().startViewTransition()
   .onUpdate(done -> {
     renderList();
@@ -136,7 +134,7 @@ Page.getCurrent().startViewTransition()
 
 ## Aangepaste CSS-animaties {#custom-css-animations}
 
-Voor volledige controle over animaties, kun je aangepaste CSS-keyframes definiëren. webforJ voegt `-enter` of `-exit` suffixen toe aan je overgangsnamen, die je gebruikt om de pseudo-elementen van de view-transitie te targeten:
+Voor volledige controle over animaties kunt u aangepaste CSS-keyframes definiëren. webforJ voegt `-enter` of `-exit` suffixen toe aan uw overgangsnaam, die u gebruikt om de pseudo-elementen van de weergave-overgang te targeten:
 
 ```css
 /* Definieer keyframes voor binnenkomende componenten */
@@ -151,7 +149,7 @@ Voor volledige controle over animaties, kun je aangepaste CSS-keyframes definië
   }
 }
 
-/* Toepassen op het pseudo-element van de view-transitie */
+/* Toepassen op het pseudo-element van de weergave-overgang */
 ::view-transition-new(flip-in-enter) {
   animation: flip-enter 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-origin: top center;
@@ -162,7 +160,7 @@ Voor volledige controle over animaties, kun je aangepaste CSS-keyframes definië
 }
 ```
 
-Verwijs naar je aangepaste animatie door de naam (zonder de suffix) door te geven aan `enter()` of `exit()`:
+Verwijs naar uw aangepaste animatie door de naam (zonder het suffix) door te geven aan `enter()` of `exit()`:
 
 ```java
 // Gebruik "flip-in" - webforJ voegt automatisch de "-enter" suffix toe
@@ -193,7 +191,7 @@ Page.getCurrent().startViewTransition()
 
 ## CSS-aanpassing {#css-customization}
 
-Elk vooraf gedefinieerd overgangstype geeft CSS aangepaste eigenschappen bloot voor fine-tuning:
+Elk vooraf gedefinieerd overgangstype stelt CSS-aangepaste eigenschappen bloot voor verdere afstemming:
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -204,67 +202,67 @@ Elk vooraf gedefinieerd overgangstype geeft CSS aangepaste eigenschappen bloot v
       | Variabele | Standaard | Beschrijving |
       |----------|---------|-------------|
       | `--vt-fade-duration` | `200ms` | Animatieduur |
-      | `--vt-fade-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-functie |
+      | `--vt-fade-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easingfunctie |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Links schuiven</strong>
+    <strong>Slide naar links</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variabele | Standaard | Beschrijving |
       |----------|---------|-------------|
       | `--vt-slide-left-duration` | `200ms` | Animatieduur |
-      | `--vt-slide-left-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-functie |
-      | `--vt-slide-left-distance` | `30%` | Schuifafstand |
+      | `--vt-slide-left-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easingfunctie |
+      | `--vt-slide-left-distance` | `30%` | Slide-afstand |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Rechts schuiven</strong>
+    <strong>Slide naar rechts</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variabele | Standaard | Beschrijving |
       |----------|---------|-------------|
       | `--vt-slide-right-duration` | `200ms` | Animatieduur |
-      | `--vt-slide-right-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-functie |
-      | `--vt-slide-right-distance` | `30%` | Schuifafstand |
+      | `--vt-slide-right-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easingfunctie |
+      | `--vt-slide-right-distance` | `30%` | Slide-afstand |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Omhoog schuiven</strong>
+    <strong>Slide omhoog</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variabele | Standaard | Beschrijving |
       |----------|---------|-------------|
       | `--vt-slide-up-duration` | `200ms` | Animatieduur |
-      | `--vt-slide-up-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-functie |
-      | `--vt-slide-up-distance` | `30%` | Schuifafstand |
+      | `--vt-slide-up-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easingfunctie |
+      | `--vt-slide-up-distance` | `30%` | Slide-afstand |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Omlaag schuiven</strong>
+    <strong>Slide omlaag</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variabele | Standaard | Beschrijving |
       |----------|---------|-------------|
       | `--vt-slide-down-duration` | `200ms` | Animatieduur |
-      | `--vt-slide-down-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-functie |
-      | `--vt-slide-down-distance` | `30%` | Schuifafstand |
+      | `--vt-slide-down-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easingfunctie |
+      | `--vt-slide-down-distance` | `30%` | Slide-afstand |
     </div>
   </AccordionDetails>
 </Accordion>
@@ -278,8 +276,8 @@ Elk vooraf gedefinieerd overgangstype geeft CSS aangepaste eigenschappen bloot v
       | Variabele | Standaard | Beschrijving |
       |----------|---------|-------------|
       | `--vt-zoom-duration` | `200ms` | Animatieduur |
-      | `--vt-zoom-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-functie |
-      | `--vt-zoom-scale` | `0.8` | Schaalfactor (oude zoomt uit naar dit, nieuwe zoomt in vanaf dit) |
+      | `--vt-zoom-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easingfunctie |
+      | `--vt-zoom-scale` | `0.8` | Schaalfactor (oude zoomt uit naar dit, nieuwe zoomt in vanuit dit) |
     </div>
   </AccordionDetails>
 </Accordion>
@@ -293,8 +291,8 @@ Elk vooraf gedefinieerd overgangstype geeft CSS aangepaste eigenschappen bloot v
       | Variabele | Standaard | Beschrijving |
       |----------|---------|-------------|
       | `--vt-zoom-out-duration` | `200ms` | Animatieduur |
-      | `--vt-zoom-out-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-functie |
-      | `--vt-zoom-out-scale` | `1.2` | Schaalfactor (oude zoomt in naar dit, nieuwe zoomt uit van dit) |
+      | `--vt-zoom-out-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easingfunctie |
+      | `--vt-zoom-out-scale` | `1.2` | Schaalfactor (oude zoomt in naar dit, nieuwe zoomt uit vanuit dit) |
     </div>
   </AccordionDetails>
 </Accordion>
@@ -305,7 +303,7 @@ Elk vooraf gedefinieerd overgangstype geeft CSS aangepaste eigenschappen bloot v
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Om aan te passen, overschrijf deze variabelen in je CSS:
+      Om aan te passen, overschrijft u deze variabelen in uw CSS:
 
       ```css
       :root {
@@ -314,7 +312,7 @@ Elk vooraf gedefinieerd overgangstype geeft CSS aangepaste eigenschappen bloot v
       }
       ```
 
-      Voor geavanceerde aanpassing, target de pseudo-elementen van de view-transitie direct:
+      Voor geavanceerde aanpassing, target de pseudo-elementen van de weergave-overgang direct:
 
       ```css
       ::view-transition-old(vt-slide-left-exit) {

@@ -268,5 +268,7 @@
   "chip.label.scoped": "423f62fd0413b98ab4dd487ec060e628",
   "chip.tooltipText.experimental": "85892e35f65e6e8d2472c09be46bb19f",
   "chip.label.experimental": "704b5561562b054400f33f22cf61c5f5",
-  "chip.tooltipText.since": "4d7869037e166196f513c924d6c3f7c0"
+  "chip.tooltipText.since": "4d7869037e166196f513c924d6c3f7c0",
+  "experimentalWarning.title": "0cc04b5feae6f05f1687fb4fb7cf3f9a",
+  "experimentalWarning.message": "da6dabd97ac9ad023b3f2a209ed54248"
 }
