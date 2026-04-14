@@ -1,6 +1,6 @@
 package com.webforj.samples.views.tabbedpane;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.Theme;
@@ -14,14 +14,7 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet(/*css */"""
-          .window {
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            margin: 20px;
-          }
-        """)
+@StyleSheet("ws://css/tabbedpane/window.css")
 @Route
 @FrameTitle("Tabbed Pane Expanses and Themes")
 public class TabbedPaneExpanseThemeView extends Composite<Div> {

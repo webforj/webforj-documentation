@@ -1,0 +1,6 @@
+dwc-toolbar {
+  --dwc-toolbar-background: hsl(265, 100%, 47%);
+  --dwc-toolbar-color: white;
+  --dwc-icon-button-hover-color: var(--dwc-toolbar-color);
+  --dwc-icon-button-active-color: var(--dwc-toolbar-color);
+}

@@ -1,6 +1,6 @@
 package com.webforj.samples.views.tabbedpane;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.Icon;
@@ -12,14 +12,7 @@ import com.webforj.component.tabbedpane.TabbedPane.Activation;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet(/*css */"""
-  .window {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    margin: 20px;
-  }
-""")
+@StyleSheet("ws://css/tabbedpane/window.css")
 @Route
 @FrameTitle("Tabbed Pane Activation")
 public class TabbedPaneActivationView extends Composite<Div> {
