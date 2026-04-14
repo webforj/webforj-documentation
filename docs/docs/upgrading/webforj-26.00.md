@@ -85,7 +85,7 @@ The following string-based constructors are removed in 26.00; use `IconDefinitio
 
 ### Deprecated selection methods {#deprecated-selection-methods}
 
-Starting in webforJ 26.00, instead of selecting items in a `Table` based on indices, select items in a `Table` using the item directory, or with its key. You can use the `setKeyProvider()` method to provide custom keys for the items in the table.
+Starting in webforJ 26.00, instead of selecting items in a `Table` based on indices, select items in a Table using the item key. You can use the `setKeyProvider()` method to provide custom keys for the items in the table.
 
 | v25 | v26 |
 |---|---|
@@ -105,7 +105,7 @@ To further reinforce the shift in how to select items in a `Table`, `TableItemSe
 
 ## Unsupported Webswing bootstrap options {#unsupported-webswing-bootstrap-options}
 
-The following `WebswingOptions` methods are deprecated and will be removed because they're no longer supported by the Webswing API.
+The following `WebswingOptions` methods are deprecated and removed in 26.00 because they're no longer supported by the Webswing API.
 
 - `getAutoReconnect()` / `setAutoReconnect(Integer)`
 - `isDisableLogout()` / `setDisableLogout(boolean)`
@@ -163,18 +163,3 @@ Use the following table to see the deprecated repository methods and what method
 ## Removal of `WebforjBBjBridge` {#removal-of-webforjbbjbridge`}
 
 Starting with webforJ 25.11, WebforjBBjBridge and all of its APIs have been removed. Instead of accessing the bridge, webforJ now uses the direct Java API to communicate with and access any required BBj APIs.
-
-**Before**
-
-```java
-Environment environment = Environment.getCurrent();
-WebforjBBjBridge bridge = environment.getBridge();
-```
-
-**After**
-
-```java
-Environment environment = Environment.getCurrent();
-BBjAPI api = environment.getBBjAPI();
-BBjSysGui sysGui = environment.getSysGui();
-```
