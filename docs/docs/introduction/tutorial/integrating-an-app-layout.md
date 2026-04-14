@@ -5,7 +5,7 @@ description: Step 6 - Using the AppLayout and FlexLayout components.
 sidebar_class_name: new-content
 ---
 
-In this step, you'll pull all the parts of your app into a cohesive app layout. By the end of this step, your app’s structure will closely resemble the [SideMenu archetype](https://docs.webforj.com/docs/building-ui/archetypes/sidemenu), and you’ll have a better understanding of how the following components and concepts work:
+In this step, you'll pull all the parts of your app into a cohesive app layout. By the end of this step, your app’s structure will closely resemble the [SideMenu archetype](/docs/building-ui/archetypes/sidemenu), and you’ll have a better understanding of how the following components and concepts work:
 
 - [`FlexLayout`](/docs/components/flex-layout)
 - [Route Outlets](/docs/routing/route-hierarchy/route-outlets)
@@ -199,6 +199,8 @@ Like the view routes, `MainLayout` needs a `@Route` annotation. However, because
 public class MainLayout {
 
   public MainLayout() {
+
+  }
 }
 ```
 
@@ -298,7 +300,7 @@ private AppLayout appLayout = new AppLayout();
 private Toolbar toolbar = new Toolbar();
 
 // Add the Toolbar to the AppLayout header
-appLayout.self.addToHeader(toolbar);
+appLayout.addToHeader(toolbar);
 
 // Add the AppDrawerToggle to the toolbar
 toolbar.addToStart(new AppDrawerToggle());
@@ -398,7 +400,7 @@ As mentioned previously, the only change to `FormView` was to the `@Route` annot
   @Route(value = "customer/:id?<[0-9]+>", outlet = MainLayout.class)
   ```
 
-## Updating `MainView` {#updating--view}
+## Updating `MainView` {#updating-main-view}
 
 For `MainView`, you’ll change the bound component from a `Div` to a `FlexLayout`. This allows you to center the table, while also moving specific components inside the layout. Using the `setItemAlignment()` method lets you pick a component in the layout and move it, so you can keep the table centered while anchoring the add customer button to the top right of the layout.
 
@@ -410,21 +412,22 @@ private FlexLayout self = getBoundComponent();
 self.setItemAlignment(FlexAlignment.END, addCustomer);
 ```
 
-Another improvement you can make here is the table's size. Using methods from the `Table` component, you can set it to always show all rows without scrolling, unless it’s larger than the FlexLayout it’s in.
+Another improvement you can make here is the table's width. Instead of a fixed width, you can set it to match its parent container, the `FlexLayout`. Then that `FlexLayout` can have a maximum width so it doesn't overstretch on larger screens. 
 
 ```java 
-double headerHeight = table.getHeaderHeight();
-double rowHeight = table.getRowHeight();
-double tableHeight = rowHeight * customerService.getTotalCustomersCount() + headerHeight;
-table.setWidth("100%");
-table.setHeight((float) tableHeight);
-table.setMaxHeight("100%");
+private FlexLayout self = getBoundComponent();
+private Table<Customer> table = new Table<>();
+
+self.setSize("100%", "100%");
+self.setMaxWidth(2000);
+
+table.setSize("100%", "294px");
 ```
 
 Putting these together and making another method to get the `FlexLayout` centered like the previous ones makes `MainView` with the highlighted changes:
 
 <!-- vale off -->
-<ExpandableCode title="MainLayout.java" language="java">
+<ExpandableCode title="MainView.java" language="java">
 {`@Route(value = "/", outlet = MainLayout.class)
   @FrameTitle("Customer Table")
   // highlight-next-line
@@ -450,17 +453,7 @@ Putting these together and making another method to get the `FlexLayout` centere
 
     private void buildTable() {
       // highlight-next-line
-      double headerHeight = table.getHeaderHeight();
-      // highlight-next-line
-      double rowHeight = table.getRowHeight();
-      // highlight-next-line
-      double tableHeight = rowHeight * customerService.getTotalCustomersCount() + headerHeight;
-      // highlight-next-line
-      table.setWidth("100%");
-      // highlight-next-line
-      table.setHeight((float) tableHeight);
-      // highlight-next-line
-      table.setMaxHeight("100%");
+      table.setSize("100%", "294px");
       table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
       table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
       table.addColumn("company", Customer::getCompany).setLabel("Company");
