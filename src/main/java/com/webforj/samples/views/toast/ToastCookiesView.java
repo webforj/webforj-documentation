@@ -27,7 +27,8 @@ public class ToastCookiesView extends Composite<Div> {
     Toast cookiesToast = new Toast();
     cookiesToast.setDuration(-1)
       .setTheme(Theme.DEFAULT)
-      .setPlacement(Placement.CENTER);
+      .setPlacement(Placement.BOTTOM)
+      .setStyle("--dwc-toast-minWidth", "400px");
 
     Icon cookieIcon = TablerIcon.create("cookie")
       .setStyle("width", "100px")
