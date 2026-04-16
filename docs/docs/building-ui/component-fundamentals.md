@@ -216,6 +216,42 @@ If the underlying component doesn't support the interface capability, you'll get
 
 For a complete list of available concern interfaces, see the [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
+## Component identifiers {#component-identifiers}
+
+webforJ components have internal identifiers that the framework uses for tracking and managing components. Understanding these identifiers helps explain how the framework works under the hood.
+
+### Server-side component ID {#server-side-component-id}
+
+Every component is assigned a server-side identifier automatically when created. This identifier is used internally by the framework for tracking components. Retrieve it with `getComponentId()`:
+
+```java
+Button button = new Button("Click Me");
+String serverId = button.getComponentId();
+```
+
+The server-side ID is useful when you need to query for specific components within a container or implement custom component tracking logic.
+
+### Client-side component ID {#client-side-component-id}
+
+The client-side component ID provides access to the underlying web component from JavaScript. This allows you to interact directly with the client-side component when needed:
+
+```java
+Button btn = new Button("Click me");
+btn.onClick(e -> {
+  OptionDialog.showMessageDialog("The button was clicked", "An event occurred");
+});
+
+btn.whenAttached().thenAccept(e -> {
+  Page.getCurrent().executeJs("objects.get('" + btn.getClientComponentId() + "').click()");
+});
+```
+
+Use `getClientComponentId()` with `objects.get()` in JavaScript to access the web component instance.
+
+:::important
+The client-side component ID is not the HTML `id` attribute of the DOM element. For setting HTML IDs for testing or CSS targeting, see [Using Components](using-components).
+:::
+
 ## Component lifecycle overview {#component-lifecycle-overview}
 
 webforJ manages the component lifecycle automatically. The framework handles component creation, attachment, and destruction without requiring manual intervention.
