@@ -218,7 +218,13 @@ For a complete list of available concern interfaces, see the [webforJ JavaDoc](h
 
 ## Component identifiers {#component-identifiers}
 
-webforJ components have internal identifiers that the framework uses for tracking and managing components. Understanding these identifiers helps explain how the framework works under the hood.
+webforJ components have three distinct types of identifiers that serve different purposes:
+
+- **Server-side component ID** (`getComponentId()`) - Automatically assigned by the framework for internal component tracking. Use this when you need to query for specific components or implement custom component registries.
+- **Client-side component ID** (`getClientComponentId()`) - Provides access to the underlying web component from JavaScript. Use this when you need to call native web component methods or integrate with client-side libraries.
+- **HTML `id` attribute** (`setAttribute("id", "...")`) - Standard DOM identifier. Use this for CSS targeting, test automation selectors, and linking form labels to inputs.
+
+Understanding these differences helps you choose the right identifier for your use case.
 
 ### Server-side component ID {#server-side-component-id}
 
