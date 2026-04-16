@@ -15,8 +15,6 @@ As always, see the [GitHub release overview](https://github.com/webforj/webforj/
 
 ## POM file changes {#pom-file-changes}
 
-## Filters for `Repository`
-
 ### Java 21 and 25 {#java-21-and-25}
 
 webforJ 25.12 is the last version that works with Java 17.
