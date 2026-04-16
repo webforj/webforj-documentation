@@ -255,7 +255,7 @@ btn.whenAttached().thenAccept(e -> {
 Use `getClientComponentId()` with `objects.get()` in JavaScript to access the web component instance.
 
 :::important
-The client-side component ID is not the HTML `id` attribute of the DOM element. For setting HTML IDs for testing or CSS targeting, see [Using Components](using-components).
+The client-side component ID isn't the HTML `id` attribute of the DOM element. For setting HTML IDs for testing or CSS targeting, see [Using Components](using-components).
 :::
 
 ## Component lifecycle overview {#component-lifecycle-overview}
