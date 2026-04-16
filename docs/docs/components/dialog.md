@@ -111,6 +111,16 @@ height = '550px'
 
 The `Dialog` can be set to enter full screen mode. When full screen is enabled, the `Dialog` cannot be moved or positioned. This mode can be manipulated with the breakpoint attribute of the `Dialog`. The breakpoint is a media query which components when the `Dialog` will automatically flip to full screen mode. When the query matches, the `Dialog` changes to full screen - otherwise it is positioned.
 
+### Auto width {#auto-width}
+
+By default, the `Dialog` stretches to fill the available horizontal space. When auto width is enabled via `setAutoWidth(true)`, the `Dialog` sizes itself based on its content width instead. Auto width can be combined with other `Dialog` properties such as `setMaxWidth()` to set an upper bound, ensuring the dialog never exceeds a given size even when content varies.
+
+<ComponentDemo 
+path='/webforj/dialogautowidth?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogAutoWidthView.java'
+height = '350px'
+/>
+
 ## Styling {#styling}
 
 ### Themes {#themes}

@@ -185,6 +185,16 @@ Individual `Tab` elements can be set to be closable. Closable tabs will have a c
 
 - **`Auto`**: Alternatively, `AUTO` can be used which will fire the event, and also remove the `Tab` from the component for the developer, removing the need for the developer to implement this behavior manually. 
 
+### Segment control {#segment-control}
+
+The `TabbedPane` can be rendered as a segment control by enabling the `segment` property with `setSegment(true)`. In this mode, tabs are displayed with a sliding pill indicator that highlights the active selection, providing a compact alternative to the standard tabbed interface. 
+
+<ComponentDemo 
+path='/webforj/tabbedpanesegment?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneSegmentView.java'
+height="250px"
+/>
+
 ## Styling {#styling}
 
 ### Expanse and theme {#expanse-and-theme}
