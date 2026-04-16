@@ -111,7 +111,6 @@ Once the data is prepared, it can be applied to the GoogleChart using the setDat
 <ComponentDemo 
 path='/webforj/chartsettingdata?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java'
-cssURL='/css/googlecharts/chart-setting-data-view.css'
 height='300px'
 />
 
