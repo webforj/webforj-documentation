@@ -34,7 +34,7 @@ The component implements `HasText`, so `setText()` and `getText()` work as alias
 <ComponentDemo 
 path='/webforj/markdownviewer?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java'
-height='600px'
+height='650px'
 />
 
 ## Appending content {#appending-content}
