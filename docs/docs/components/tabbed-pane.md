@@ -128,6 +128,7 @@ The `Tabs` within a `TabbedPane` can be placed in various positions within the c
 <ComponentDemo 
 path='/webforj/tabbedpaneplacement?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPanePlacementView.java'
+cssURL='/css/tabbedpane/window.css'
 height="400px"
 />
 
@@ -140,6 +141,7 @@ The other options are `START`, `END`, `CENTER`, and `STRETCH`. The first three d
 <ComponentDemo 
 path='/webforj/tabbedpanealignment?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneAlignmentView.java'
+cssURL='/css/tabbedpane/window.css'
 height="250px"
 />
 
@@ -160,6 +162,7 @@ To set the visibility of the active indicator, the `setHideActiveIndicator(boole
 <ComponentDemo 
 path='/webforj/tabbedpaneborder?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneBorderView.java'
+cssURL='/css/tabbedpane/window.css'
 height="300px"
 />
 
@@ -174,6 +177,7 @@ For more fine-grained control over how the `TabbedPane` behaves when being navig
 <ComponentDemo 
 path='/webforj/tabbedpaneactivation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneActivationView.java'
+cssURL='/css/tabbedpane/window.css'
 height="250px"
 />
 
@@ -194,6 +198,7 @@ The `TabbedPane` comes with built-in `Expanse` and `Theme` options similar to ot
 <ComponentDemo 
 path='/webforj/tabbedpaneexpansetheme?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneExpanseThemeView.java'
+cssURL='/css/tabbedpane/window.css'
 height="250px"
 />
 

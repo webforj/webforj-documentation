@@ -19,6 +19,7 @@ Create a `Splitter` by passing two components to its constructor. The first beco
 <ComponentDemo 
 path='/webforj/splitterbasic?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterBasicView.java'
+cssURL='/css/splitter-box.css'
 height='300px'
 />
 
@@ -35,6 +36,7 @@ You can specify sizes using any valid CSS units, as shown below:
 <ComponentDemo 
 path='/webforj/splitterminmax?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterMinMaxView.java'
+cssURL='/css/splitter-box.css'
 height='300px'
 />
 
@@ -47,6 +49,7 @@ To configure the orientation, use the supported orientations Enum to specify whe
 <ComponentDemo 
 path='/webforj/splitterorientation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterOrientationView.java'
+cssURL='/css/splitter-box.css'
 height='300px'
 />
 
@@ -57,6 +60,7 @@ To set the initial position of the divider bar in the `Splitter` component, use 
 <ComponentDemo 
 path='/webforj/splitterposition?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterPositionView.java'
+cssURL='/css/splitter-box.css'
 height='300px'
 />
 
@@ -69,6 +73,7 @@ To nest Splitter components, instantiate new `Splitter` instances and add them a
 <ComponentDemo 
 path='/webforj/splitternested?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterNestedView.java'
+cssURL='/css/splitter-box.css'
 height='300px'
 />
 
@@ -85,6 +90,7 @@ To programmatically revert the `Splitter` back to default settings and dimension
 <ComponentDemo 
 path='/webforj/splitterautosave?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterAutoSaveView.java'
+cssURL='/css/splitter-box.css'
 height='400px'
 />
 
