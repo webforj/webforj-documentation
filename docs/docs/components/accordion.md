@@ -35,7 +35,7 @@ AccordionPanel panel = new AccordionPanel("Title", new Paragraph("Body content."
 <ComponentDemo
 path='/webforj/accordionbasic'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionBasicView.java'
-height='500px'
+height='550px'
 />
 <!-- vale on -->
 
@@ -104,7 +104,7 @@ accordion.closeAll();
 <ComponentDemo
 path='/webforj/accordionmultiple'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionMultipleView.java'
-height='500px'
+height='575px'
 />
 <!-- vale on -->
 
@@ -130,7 +130,7 @@ accordion.setEnabled(false);
 <ComponentDemo
 path='/webforj/accordiondisabled'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionDisabledView.java'
-height='600px'
+height='650px'
 />
 <!-- vale on -->
 

@@ -54,7 +54,7 @@ The `Alert` component supports multiple <JavadocLink type="foundation" location=
 <ComponentDemo 
 path='/webforj/alertthemes?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertThemesView.java' 
-height = '475px'
+height = '650px'
 />
 
 
@@ -65,7 +65,7 @@ The expanse defines the visual size of the `Alert` component. You can set it usi
 <ComponentDemo 
 path='/webforj/alertexpanses?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertExpansesView.java'
-height = '400px'
+height = '600px'
 />
 
 <TableBuilder name="Alert" />
