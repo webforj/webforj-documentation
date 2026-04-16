@@ -1,0 +1,3 @@
+dwc-textarea::part(input) {
+  text-transform: capitalize;
+}

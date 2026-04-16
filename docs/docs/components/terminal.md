@@ -39,6 +39,7 @@ urls={[
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java'
 ]}
+cssURL='/css/terminal/terminal-view.css'
 height='400px'
 />
 

@@ -97,6 +97,7 @@ This predictive behavior enhances both speed and accuracy, especially in repetit
 <ComponentDemo 
 path='/webforj/textareapredictedtext?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java'
+cssURL='/css/textarea/text-area-predicted-text-view.css'
 height = '400px'
 />
 

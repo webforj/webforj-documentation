@@ -29,6 +29,7 @@ To read more about implementing toolbars within an `AppLayout`, see [Sticky tool
 <AppLayoutViewer
 path='/webforj/toolbarslots?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java'
+cssURL='/css/toolbar/toolbar-slots-view.css'
 height='300px'
 />
 
