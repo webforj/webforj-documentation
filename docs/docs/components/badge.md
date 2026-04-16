@@ -94,7 +94,7 @@ Add a `Badge` as a suffix on a `Tab` using `setSuffixComponent()`. This is a nat
 <ComponentDemo
 path='/webforj/badgetabbedpane?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java'
-height='325px'
+height='350px'
 />
 <!-- vale on -->
 
