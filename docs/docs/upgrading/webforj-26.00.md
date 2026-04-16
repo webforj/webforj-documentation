@@ -9,6 +9,10 @@ This documentation serves as a guide to upgrade webforJ apps from 25.00 to 26.00
 Here are the changes needed for existing apps to continue running smoothly.
 As always, see the [GitHub release overview](https://github.com/webforj/webforj/releases) for a more comprehensive list of changes between releases.
 
+<!-- INTRO_END -->
+
+<AutomatedUpgradeTip />
+
 ## POM file changes {#pom-file-changes}
 
 ### Java 21 and 25 {#java-21-and-25}
