@@ -38,6 +38,7 @@ class TextAreaValidationKotlinView : Composite<FlexLayout>() {
       styles["background-color"] = "var(--dwc-surface-3)"
       styles["border-radius"] = "var(--dwc-border-radius)"
       styles["border"] = "1px solid var(--dwc-color-default)"
+
       textArea = textArea("Validation Playground") {
         value = "The quick brown fox jumps over the lazy dog."
         this.maxLength = this@TextAreaValidationKotlinView.maxLength
@@ -50,6 +51,7 @@ class TextAreaValidationKotlinView : Composite<FlexLayout>() {
         horizontal()
         justifyContent = FlexJustifyContent.BETWEEN
         wrap = FlexWrap.WRAP
+
         numberField("Max Length") {
           tooltipText = "Sets the maximum number of characters allowed across all text."
           min = 1.0

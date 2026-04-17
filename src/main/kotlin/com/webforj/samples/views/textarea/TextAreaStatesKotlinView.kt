@@ -24,6 +24,7 @@ class TextAreaStatesKotlinView: Composite<FlexLayout>() {
       styles["padding"] = "var(--dwc-space-m)"
       margin = "50px auto"
       maxWidth = 600.px
+
       textArea("Read-Only", "Value") {
         isReadOnly = true
       }

@@ -21,6 +21,7 @@ class TextAreaPredictedTextKotlinView: Composite<FlexLayout>() {
       spacing = "var(--dwc-space-m)"
       margin = "50px auto"
       maxWidth = 400.px
+
       textArea("Predicted Text") {
         height = 200.px
         placeholder = "Start typing to see suggestions..."

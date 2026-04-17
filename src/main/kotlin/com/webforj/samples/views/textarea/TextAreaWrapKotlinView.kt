@@ -27,6 +27,7 @@ class TextAreaWrapKotlinView : Composite<FlexLayout>() {
       spacing = "var(--dwc-space-m)"
       margin = "50px auto"
       maxWidth = 300.px
+
       val wrapStylesBox = choiceBox("Select a word wrap style") {
         width = 100.percent
         items(
