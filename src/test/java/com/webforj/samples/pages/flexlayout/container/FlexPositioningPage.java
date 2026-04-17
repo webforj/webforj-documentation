@@ -2,6 +2,7 @@ package com.webforj.samples.pages.flexlayout.container;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class FlexPositioningPage {
 
@@ -22,8 +23,8 @@ public class FlexPositioningPage {
         listBox = shadowRootListBox.locator("li");
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getFlexPositioningContainer() {

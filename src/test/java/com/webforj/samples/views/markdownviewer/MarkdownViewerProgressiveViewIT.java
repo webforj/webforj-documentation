@@ -3,35 +3,42 @@ package com.webforj.samples.views.markdownviewer;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.markdownviewer.MarkdownViewerProgressivePage;
 import com.webforj.samples.views.BaseTest;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class MarkdownViewerProgressiveViewIT extends BaseTest {
 
   private MarkdownViewerProgressivePage progressivePage;
 
-  @BeforeEach
-  public void setup() {
-    navigateToRoute(MarkdownViewerProgressivePage.getRoute());
+  public void setup(SupportedLanguage language) {
+    navigateToRoute(MarkdownViewerProgressivePage.getRoute(language));
     progressivePage = new MarkdownViewerProgressivePage(page);
   }
 
-  @Test
-  public void testInitialState() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testInitialState(SupportedLanguage language) {
+    setup(language);
     assertThat(progressivePage.getStartButton()).isEnabled();
     assertThat(progressivePage.getStopButton()).isDisabled();
   }
 
-  @Test
-  public void testSpeedChoiceHasOptions() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSpeedChoiceHasOptions(SupportedLanguage language) {
+    setup(language);
     assertThat(progressivePage.getSpeedChoice()).containsText("Default (4)");
   }
 
-  @Test
-  public void testClickingStartBeginsRendering() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testClickingStartBeginsRendering(SupportedLanguage language) {
+    setup(language);
     progressivePage.getStartButton().click();
 
     assertThat(progressivePage.getStartButton()).isDisabled();
@@ -41,8 +48,10 @@ public class MarkdownViewerProgressiveViewIT extends BaseTest {
     assertThat(progressivePage.getViewer().locator("h1")).containsText("Octopus");
   }
 
-  @Test
-  public void testClickingStopHaltsRendering() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testClickingStopHaltsRendering(SupportedLanguage language) {
+    setup(language);
     progressivePage.getStartButton().click();
     progressivePage.getViewer().locator("h1").waitFor();
     progressivePage.getStopButton().click();
@@ -58,8 +67,10 @@ public class MarkdownViewerProgressiveViewIT extends BaseTest {
         "Content should not grow after stop is clicked");
   }
 
-  @Test
-  public void testRenderingCompletesAndButtonsReset() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testRenderingCompletesAndButtonsReset(SupportedLanguage language) {
+    setup(language);
     progressivePage.getStartButton().click();
 
     progressivePage.getViewer().locator("blockquote").waitFor(
