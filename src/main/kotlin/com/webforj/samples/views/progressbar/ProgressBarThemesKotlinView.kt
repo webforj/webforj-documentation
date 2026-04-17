@@ -24,6 +24,7 @@ class ProgressBarThemesKotlinView: Composite<Div>() {
           maxWidth = 320.px
           styles["margin"] = "0 auto"
           styles["padding"] = 20.px
+
           Theme.entries.forEach {
             progressBar {
               isAnimated = true

@@ -34,8 +34,10 @@ class ProgressBarOrientationKotlinView: Composite<Div>() {
           styles["max-width"] = 320.px
           styles["margin"] = "0 auto"
           styles["padding"] = 20.px
+
           flexLayout {
             vertical()
+
             start = button("Start") {
               prefixSlot { tablerIcon("player-play") }
             }

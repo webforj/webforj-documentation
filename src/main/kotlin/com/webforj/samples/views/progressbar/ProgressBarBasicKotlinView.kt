@@ -31,6 +31,7 @@ class ProgressBarBasicKotlinView: Composite<Div>() {
           maxWidth = 320.px
           styles["margin"] = "0 auto"
           styles["padding"] = 20.px
+
           flexLayout {
             start = button("Start") {
               prefixSlot { tablerIcon("player-play") }
