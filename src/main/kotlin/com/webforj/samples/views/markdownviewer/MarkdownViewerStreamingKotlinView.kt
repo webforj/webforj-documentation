@@ -95,8 +95,10 @@ class MarkdownViewerStreamingKotlinView : Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       classNames + "chat"
       styles["overflow"] = "hidden"
+
       div {
         classNames + "chat__header"
+
         tablerIcon("message-chatbot")
         span("AI Chat Demo")
       }
@@ -104,6 +106,7 @@ class MarkdownViewerStreamingKotlinView : Composite<FlexLayout>() {
         vertical()
         classNames + "chat__messages"
         styles["overflowY"] = "auto"
+
         viewer = markdownViewer {
           isProgressiveRender = true
           isAutoScroll = true
@@ -113,6 +116,7 @@ class MarkdownViewerStreamingKotlinView : Composite<FlexLayout>() {
       setItemGrow(1.0, messageArea)
       div {
         classNames + "chat__input-area"
+
         input = textField {
           placeholder = "Type a message..."
           width = 100.percent
@@ -121,10 +125,12 @@ class MarkdownViewerStreamingKotlinView : Composite<FlexLayout>() {
               sendMessage()
             }
           }
+
           suffixSlot {
             flexLayout {
               styles["gap"] = "var(--dwc-space-s)"
               styles["padding"] = "0 var(--dwc-space-xs)"
+
               sendButton = iconButton("send", "tabler") {
                 classNames + "chat__send-button"
                 onClick { input.sendMessage() }
@@ -204,6 +210,7 @@ class MarkdownViewerStreamingKotlinView : Composite<FlexLayout>() {
   private fun FlexLayout.showThinking() {
     thinkingIndicator = div {
       classNames + "chat__thinking"
+
       tablerIcon("loader-2")
       span("Thinking...")
     }
