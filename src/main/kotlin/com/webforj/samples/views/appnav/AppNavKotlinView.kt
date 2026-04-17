@@ -34,7 +34,7 @@ class AppNavKotlinView: Composite<AppLayout>() {
           titleSlot { h1("Application") }
         }
       }
-      drawerSlot{
+      drawerSlot {
         appNav {
           isAutoOpen = true
           appNavItem("Inbox") {
