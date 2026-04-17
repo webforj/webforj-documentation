@@ -2,45 +2,54 @@ package com.webforj.samples.views.markdownviewer;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.markdownviewer.MarkdownViewerStreamingPage;
 import com.webforj.samples.views.BaseTest;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class MarkdownViewerStreamingViewIT extends BaseTest {
 
   private MarkdownViewerStreamingPage streamingPage;
 
-  @BeforeEach
-  public void setup() {
-    navigateToRoute(MarkdownViewerStreamingPage.getRoute());
+  public void setup(SupportedLanguage language) {
+    navigateToRoute(MarkdownViewerStreamingPage.getRoute(language));
     streamingPage = new MarkdownViewerStreamingPage(page);
   }
 
-  @Test
-  public void testInitialState() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testInitialState(SupportedLanguage language) {
+    setup(language);
     assertThat(streamingPage.getHeader()).containsText("AI Chat Demo");
     assertThat(streamingPage.getInputField()).isVisible();
     assertThat(streamingPage.getSendButton()).isVisible();
     assertThat(streamingPage.getStopButton()).not().isVisible();
   }
 
-  @Test
-  public void testSendingMessageShowsUserMessage() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSendingMessageShowsUserMessage(SupportedLanguage language) {
+    setup(language);
     streamingPage.sendMessage("Hello AI");
     assertThat(streamingPage.getViewer()).containsText("Hello AI");
   }
 
-  @Test
-  public void testSendingMessageShowsThinkingIndicator() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSendingMessageShowsThinkingIndicator(SupportedLanguage language) {
+    setup(language);
     streamingPage.sendMessage("Test message");
     assertThat(streamingPage.getThinkingIndicator()).isVisible();
     assertThat(streamingPage.getThinkingIndicator()).containsText("Thinking...");
   }
 
-  @Test
-  public void testStopButtonAppearsWhileStreaming() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testStopButtonAppearsWhileStreaming(SupportedLanguage language) {
+    setup(language);
     streamingPage.sendMessage("Generate response");
 
     streamingPage.getStopButton().waitFor(
@@ -50,8 +59,10 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
     assertThat(streamingPage.getSendButton()).not().isVisible();
   }
 
-  @Test
-  public void testStopButtonStopsStreaming() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testStopButtonStopsStreaming(SupportedLanguage language) {
+    setup(language);
     streamingPage.sendMessage("Generate response");
 
     streamingPage.getStopButton().waitFor(
@@ -63,22 +74,28 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
     assertThat(streamingPage.getStopButton()).not().isVisible();
   }
 
-  @Test
-  public void testInputFieldClearsAfterSending() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testInputFieldClearsAfterSending(SupportedLanguage language) {
+    setup(language);
     streamingPage.getInputField().fill("Test message");
     streamingPage.getSendButton().click();
     assertThat(streamingPage.getInputField()).hasValue("");
   }
 
-  @Test
-  public void testEnterKeySendsMessage() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testEnterKeySendsMessage(SupportedLanguage language) {
+    setup(language);
     streamingPage.getInputField().fill("Enter key test");
     streamingPage.getInputField().press("Enter");
     assertThat(streamingPage.getViewer()).containsText("Enter key test");
   }
 
-  @Test
-  public void testEmptyMessageDoesNotSend() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testEmptyMessageDoesNotSend(SupportedLanguage language) {
+    setup(language);
     streamingPage.getSendButton().click();
     assertThat(streamingPage.getThinkingIndicator()).not().isVisible();
   }
