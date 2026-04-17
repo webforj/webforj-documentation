@@ -30,7 +30,7 @@ class AppNavPageKotlinView: Composite<Div>() {
 
   override fun onDestroy() {
     Router.getCurrent().removeAllListeners()
-    super.destroy()
-  }
+    super.onDestroy()
+}
 
 }
