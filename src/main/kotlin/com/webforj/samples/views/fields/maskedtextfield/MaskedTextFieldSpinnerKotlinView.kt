@@ -18,6 +18,7 @@ class MaskedTextFieldSpinnerKotlinView: Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       alignment = FlexAlignment.CENTER
       margin = "var(--dwc-space-m)"
+
       maskedTextFieldSpinner("Project Code:") {
         options = listOf(
           "PRJ001", "PRJ002", "PRJ003", "PRJ004"

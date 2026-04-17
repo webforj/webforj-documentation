@@ -22,6 +22,7 @@ class MaskedTextFieldKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       spacing = "var(--dwc-space-m)"
       margin = "var(--dwc-space-m)"
+
       maskedTextField("Coupon Code", placeholder = "ZZZZ-0000") {
         mask = "ZZZZ-0000"
         value = "SAVE2025"
