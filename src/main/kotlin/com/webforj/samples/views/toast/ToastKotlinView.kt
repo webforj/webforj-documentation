@@ -25,6 +25,7 @@ class ToastKotlinView : Composite<Div>() {
         direction = FlexDirection.ROW
         alignment = FlexAlignment.CENTER
         spacing = "var(--dwc-space-m)"
+
         spinner()
         paragraph("System update failed. Restoring to the previous state.")
         button("Stop", ButtonTheme.DANGER) {

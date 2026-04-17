@@ -19,6 +19,7 @@ class ToastThemeKotlinView: Composite<FlexLayout>() {
   init {
     self.apply {
       margin = "var(--dwc-space-l)"
+
       toast("The application has a new update available", -1, Theme.DEFAULT) {
         classNames + "custom-theme"
         open()
