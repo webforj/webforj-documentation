@@ -32,6 +32,7 @@ class TextAreaKotlinView : Composite<FlexLayout>() {
       width = 100.percent
       margin = "50px auto"
       maxWidth = 400.px
+
       val feedbackArea = textArea("What do you think about this demo?") {
         placeholder = "Enter your feedback here..."
         width = 100.percent
@@ -45,6 +46,7 @@ class TextAreaKotlinView : Composite<FlexLayout>() {
         justifyContent = FlexJustifyContent.BETWEEN
         alignContent = FlexContentAlignment.CENTER
         width = 100.percent
+
         val charCount = paragraph {
           styles["font-size"] = "12px"
           styles["color"] = "var(--dwc-color-gray-text)"
