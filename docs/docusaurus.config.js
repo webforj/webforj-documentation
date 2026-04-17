@@ -94,13 +94,6 @@ module.exports = async function createConfig() {
     {
       tagName: 'link',
       attributes: {
-        rel: 'stylesheet',
-        href: '/css/dwc-doc-components.css',
-      },
-    },
-    {
-      tagName: 'link',
-      attributes: {
         rel: 'preconnect',
         href: 'https://fonts.googleapis.com',
       },
