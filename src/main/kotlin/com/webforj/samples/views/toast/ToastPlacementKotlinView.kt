@@ -27,6 +27,7 @@ class ToastPlacementKotlinView : Composite<FlexLayout>() {
       justifyContent = FlexJustifyContent.CENTER
       height = 100.vh
       spacing = "var(--dwc-space-m)"
+
       val placementChoiceBox = choiceBox {
         minWidth = 160.px
         val placements = listOf(

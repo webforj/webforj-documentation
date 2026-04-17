@@ -33,10 +33,12 @@ class ToastCookiesKotlinView : Composite<Div>() {
       duration = -1
       theme = Theme.DEFAULT
       placement = Toast.Placement.CENTER
+
       flexLayout {
         vertical()
         alignment = FlexAlignment.CENTER
         spacing = "var(--dwc-space-m)"
+
         tablerIcon("cookie") {
           styles["width"] = 100.px
           styles["height"] = 100.px
@@ -51,6 +53,7 @@ class ToastCookiesKotlinView : Composite<Div>() {
         flexLayout {
           horizontal()
           spacing = "var(--dwc-space-l)"
+
           button("Accept all cookies", ButtonTheme.PRIMARY) {
             onClick {
               close()
