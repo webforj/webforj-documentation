@@ -21,6 +21,7 @@ class MarkdownViewerKotlinView: Composite<Div>() {
       styles["display"] = "flex"
       styles["justifyContent"] = "center"
       styles["padding"] = "var(--dwc-space-l)"
+
       div {
         styles["maxWidth"] = 600.px
         styles["width"] = 100.percent
@@ -28,6 +29,7 @@ class MarkdownViewerKotlinView: Composite<Div>() {
         styles["background"] = "var(--dwc-surface-3)"
         styles["border"] = "1px solid var(--dwc-color-default)"
         styles["borderRadius"] = "var(--dwc-border-radius-l)"
+
         markdownViewer("""
         # Welcome to MarkdownViewer
 

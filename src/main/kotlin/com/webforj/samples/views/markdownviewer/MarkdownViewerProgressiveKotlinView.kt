@@ -53,6 +53,7 @@ class MarkdownViewerProgressiveKotlinView : Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       spacing = "var(--dwc-space-m)"
       padding = "var(--dwc-space-l)"
+
       val speedChoice = choiceBox {
         label = "Render Speed"
         width = 200.px
@@ -79,6 +80,7 @@ class MarkdownViewerProgressiveKotlinView : Composite<FlexLayout>() {
       }
       flexLayout {
         spacing = "var(--dwc-space-s)"
+
         val startButton = button("Start", ButtonTheme.PRIMARY)
         val stopButton = button("Stop", ButtonTheme.DANGER) {
           isEnabled = false
