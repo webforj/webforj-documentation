@@ -126,7 +126,7 @@ export default function TableWrapper({ children, title, ...props }) {
                         p: 0
                     }}
                 >
-                    <div style={{ overflowX: 'auto', padding: '1rem', display: 'flex', justifyContent: 'center' }}>
+                    <div className="table-container" style={{ overflowX: 'auto', margin: '1rem', display: 'flex', justifyContent: 'center' }}>
                         <table {...props} style={{ width: 'fit-content', margin: '0 auto' }}>
                             {children}
                         </table>
