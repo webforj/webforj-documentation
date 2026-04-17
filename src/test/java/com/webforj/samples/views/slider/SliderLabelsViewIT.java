@@ -2,25 +2,25 @@ package com.webforj.samples.views.slider;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.slider.SliderLabelsPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class SliderLabelsViewIT extends BaseTest {
 
     private SliderLabelsPage sliderPage;
 
-    @BeforeEach
-    public void setupSliderLabels() {
-        navigateToRoute(SliderLabelsPage.getRoute());
+    public void setupSliderLabels(SupportedLanguage language) {
+        navigateToRoute(SliderLabelsPage.getRoute(language));
         sliderPage = new SliderLabelsPage(page);
     }
 
-
-    @Test
-    public void testLabelsThemesSlider() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testLabelsThemesSlider(SupportedLanguage language) {
+        setupSliderLabels(language);
         sliderPage.getTenDegreeOption().click();
         assertThat(sliderPage.getSliderLabel()).hasAttribute("theme", "primary");
 
