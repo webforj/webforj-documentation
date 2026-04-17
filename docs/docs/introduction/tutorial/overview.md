@@ -29,7 +29,7 @@ Each step has a corresponding runnable app available on GitHub:
 
 You should have the following tools/resources on your development machine:
 
-- Java 21 or 25
+- Java 17 or 21
 - Maven
 - A Java IDE
 - Git (recommended but not required)

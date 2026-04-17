@@ -49,7 +49,7 @@ webforj-tutorial
 If you’d prefer to create a new project, you can use [startforJ](https://docs.webforj.com/startforj) to generate a minimal starter project. See [Getting Started](/docs/introduction/getting-started) for more detailed information about using startforJ.
 
 :::note Required settings
-- In the **webforJ version** dropdown, choose webforJ version **26.00 or higher**.
+- In the **webforJ version** dropdown, choose webforJ version **25.10 or higher**.
 - In the **Flavor** dropdown, choose **webforJ + Spring Boot**. 
 :::
 

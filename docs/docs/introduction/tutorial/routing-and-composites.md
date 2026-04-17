@@ -426,7 +426,7 @@ for (Country countryItem : Customer.Country.values()) {
 country.insert(listCountries);
 
 //Makes the first `ListItem` the default when the form loads
-country.selectKey(Customer.Country.UNKNOWN);
+country.selectIndex(0);
 ```
 
 Then, when the user selects an option in the `ChoiceBox`, the `Customer` instance should update with the key of the selected item, which is a `Customer.Country` value.
@@ -463,7 +463,7 @@ public class FormView extends Composite<Div> {
       listCountries.add(new ListItem(countryItem, countryItem.toString()));
     }
     country.insert(listCountries);
-    country.selectKey(Customer.Country.UNKNOWN);
+    country.selectIndex(0);
   }
 
 }
@@ -609,7 +609,7 @@ After adding a `Customer` instance, the interactive components, and the `Columns
         listCountries.add(new ListItem(countryItem, countryItem.toString()));
       }
       country.insert(listCountries);
-      country.selectKey(Customer.Country.UNKNOWN);
+      country.selectIndex(0);
     }
 
     private void submitCustomer() {
