@@ -27,7 +27,7 @@ class ColorFieldKotlinView: Composite<FlexLayout>() {
   private val self = boundComponent
   private val colorField: ColorField
   private val colors = Array<Div>(4) {
-    Div().addClassName("colorDiv")
+    Div().apply { classNames += "colorDiv" }
   }
 
   init {
@@ -37,6 +37,7 @@ class ColorFieldKotlinView: Composite<FlexLayout>() {
       justifyContent = FlexJustifyContent.CENTER
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-m)"
+
       colorField = colorField("Choose a color:") {
         width = 200.px
         value = Color.RED
@@ -48,6 +49,7 @@ class ColorFieldKotlinView: Composite<FlexLayout>() {
         justifyContent = FlexJustifyContent.CENTER
         alignment = FlexAlignment.CENTER
         spacing = 20.px
+
         add(*colors)
       }
     }

@@ -15,6 +15,7 @@ class NumberFieldKotlinView: Composite<FlexLayout>() {
   init {
     self.apply {
       margin = "var(--dwc-space-m)"
+
       numberField("Quantity:", placeholder = "Enter a number...") {
         width = 200.px
       }

@@ -15,6 +15,7 @@ class PasswordFieldKotlinView: Composite<FlexLayout>() {
   init {
     self.apply {
       margin = "var(--dwc-space-m)"
+
       passwordField("Enter your Password:", placeholder = "Password") {
         width = 200.px
       }

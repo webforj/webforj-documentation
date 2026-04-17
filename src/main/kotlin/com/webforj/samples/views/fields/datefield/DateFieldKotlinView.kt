@@ -29,6 +29,7 @@ class DateFieldKotlinView: Composite<FlexLayout>() {
       direction = FlexDirection.ROW
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-m)"
+
       departureField = dateField("Departure Date:", TODAY) {
         width = 200.px
         min = TODAY

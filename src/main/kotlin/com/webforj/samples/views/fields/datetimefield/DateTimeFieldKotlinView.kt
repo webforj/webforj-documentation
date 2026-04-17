@@ -15,6 +15,7 @@ class DateTimeFieldKotlinView: Composite<FlexLayout>() {
   init {
     self.apply {
       margin = "var(--dwc-space-m)"
+
       dateTimeField("Departure Date and Time:") {
         width = 200.px
       }
