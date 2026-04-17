@@ -14,7 +14,6 @@ import GiscusComments from '@site/src/components/DocsTools/GiscusComments';
 import AskMenu from '@site/src/components/DocsTools/AskMenu';
 import TableWrapper from '@site/src/components/DocsTools/TableWrapper';
 import AccordionGroup from '@site/src/components/DocsTools/AccordionGroup';
-import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarning';
 import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -45,14 +44,12 @@ export default {
   GiscusComments,
   AskMenu,
   AccordionGroup,
-  ExperimentalWarning,
   Accordion,
   AccordionSummary,
   AccordionDetails,
   ExpandMoreIcon,
   GalleryCard,
   GalleryGrid,
-  ColorPalette,
   table: TableWrapper,
   ExperimentalWarning,
   AutomatedUpgradeTip
