@@ -27,6 +27,7 @@ class ChartSettingDataKotlinView: Composite<Div>() {
   init {
     self.apply {
       classNames + "window"
+
       googleChart(GoogleChart.Type.PIE) {
         styles["width"] = 100.vw
         styles["height"] = 100.vh

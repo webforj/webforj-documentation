@@ -23,6 +23,7 @@ class ChartKotlinView: Composite<Div>() {
   init {
     self.apply {
       classNames + "chart-frame"
+
       googleChart(GoogleChart.Type.GEO) {
         styles["width"] = 100.vw
         styles["height"] = 100.vh

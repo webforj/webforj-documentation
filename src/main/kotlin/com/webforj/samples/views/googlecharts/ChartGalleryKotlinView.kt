@@ -25,6 +25,7 @@ class ChartGalleryKotlinView: Composite<Div>() {
   init {
     self.apply {
       classNames + "chart-gallery"
+
       getChartKeys().forEach { chartLink(it) }
     }
   }
@@ -41,9 +42,13 @@ class ChartGalleryKotlinView: Composite<Div>() {
       anchor {
         href = "$GITHUB_BASE_URL${formattedTitle.replace(" ", "")}.java"
         target = "_blank"
+
         div {
           classNames + "chart-div"
-          paragraph(formattedTitle)
+
+          paragraph(formattedTitle) {
+            classNames + "chartname"
+          }
           add(it)
         }
       }

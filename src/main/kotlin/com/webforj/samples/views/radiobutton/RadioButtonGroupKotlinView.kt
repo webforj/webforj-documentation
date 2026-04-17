@@ -18,16 +18,19 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Radio Button Group")
 class RadioButtonGroupKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         direction = FlexDirection.COLUMN
         spacing = 1.em
         margin = 20.px
+
         flexLayout {
           vertical()
           wrap = FlexWrap.WRAP
           classNames + "layout"
+
           radioButtonGroup {
             radioButton("Strongly Disagree")
             radioButton("Disagree")
