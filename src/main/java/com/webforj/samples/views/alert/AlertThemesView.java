@@ -37,7 +37,7 @@ public class AlertThemesView extends Composite<FlexLayout> {
               .build())
           .setTheme(theme)
           .setClosable(false)
-          .setWidth("325px");
+          .setWidth("350px");
 
       self.add(alert);
     }

@@ -21,7 +21,7 @@ An `Alert` can hold rich content like text, buttons, and other components. Set a
 <ComponentDemo 
 path='/webforj/alert?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertView.java'
-height = '100px'
+height = '110px'
 />
 
 ## Dismissing alerts {#dismissing-alerts}
