@@ -3,7 +3,7 @@ package com.webforj.samples.pages.googlecharts;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import java.util.regex.Pattern;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class ChartRedrawPage {
 
@@ -51,8 +51,9 @@ public class ChartRedrawPage {
     valueForFacebook.fill(String.valueOf(facebook));
     valueForLinkedIn.fill(String.valueOf(linkedIn));
 
-    redrawChartButton.click();
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public static String getRoute() {
     return ROUTE;
