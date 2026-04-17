@@ -1,0 +1,13 @@
+dwc-table::part(row-even) {
+  background-color: var(--dwc-color-gray-alt);
+}
+
+dwc-table::part(cell-senior) {
+  background-color: var(--dwc-color-success-alt);
+  color: var(--dwc-color-success-text);
+}
+
+dwc-table::part(cell-junior) {
+  background-color: var(--dwc-color-danger-alt);
+  color: var(--dwc-color-danger-text);
+}

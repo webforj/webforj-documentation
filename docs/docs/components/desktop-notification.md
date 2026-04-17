@@ -13,8 +13,9 @@ The `DesktopNotification` component displays native desktop notifications outsid
 
 ## Setup and prerequisites {#setup-and-prerequisites}
 
-:::warning experimental feature
-The `DesktopNotification` component is still evolving, and its API may experience changes as it matures. To start using this feature, ensure that you include the following dependency in your pom.xml.
+<ExperimentalWarning />
+
+To start using this feature, include the following dependency in your pom.xml:
 
 ```xml
 <dependency>
@@ -22,7 +23,6 @@ The `DesktopNotification` component is still evolving, and its API may experienc
   <artifactId>webforj-desktop-notification</artifactId>
 </dependency>
 ```
-:::
 
 Before integrating the `DesktopNotification` component, ensure that:
 

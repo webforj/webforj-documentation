@@ -74,7 +74,7 @@ Make the following changes to your POM file:
    <parent>
        <groupId>org.springframework.boot</groupId>
        <artifactId>spring-boot-starter-parent</artifactId>
-       <version>3.5.3</version>
+       <version>4.0.5</version>
        <relativePath/>
    </parent>
    ```
@@ -92,7 +92,7 @@ If you already have a parent POM, you'll need to import the Spring Boot Bill of 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-dependencies</artifactId>
-      <version>3.5.3</version>
+      <version>4.0.5</version>
       <type>pom</type>
       <scope>import</scope>
     </dependency>

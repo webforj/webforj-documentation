@@ -10,20 +10,19 @@ import com.webforj.samples.views.BaseTest;
 
 public class SliderViewIT extends BaseTest {
 
-    private SliderPage sliderPage;
+  private SliderPage sliderPage;
 
-    @BeforeEach
-    public void setupSliderView() {
-        navigateToRoute(SliderPage.getRoute());
-        sliderPage = new SliderPage(page);
-    }
+  @BeforeEach
+  public void setupSliderView() {
+    navigateToRoute(SliderPage.getRoute());
+    sliderPage = new SliderPage(page);
+  }
 
-    @Test
-    public void testVolumeSlider() {
-        sliderPage.getVolumeOffButton().click();
-        assertThat(sliderPage.getLowerHandle()).hasAttribute("aria-valuenow", "0.0");
-
-        sliderPage.getVolumeOnButton().click();
-        assertThat(sliderPage.getLowerHandle()).hasAttribute("aria-valuenow", "100.0");
-    }
+  @Test
+  public void testVolumeSlider() {
+    sliderPage.getVolumeOffButton().click();
+    assertThat(sliderPage.getLowerHandle()).hasAttribute("aria-valuenow", "0.0");
+    sliderPage.getVolumeOnButton().click();
+    assertThat(sliderPage.getLowerHandle()).hasAttribute("aria-valuenow", "100.0");
+  }
 }

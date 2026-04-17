@@ -23,7 +23,8 @@ public class TableColumnAlignmentView extends Composite<Div> {
     table.addColumn("Genre", MusicRecord::getMusicType);
     table.addColumn("Cost", record -> String.format("$%.2f", record.getCost()))
       .setAlignment(Column.Alignment.RIGHT);
-
+    
+    table.setColumnsToAutoFit();
 
     self.add(table);
   }

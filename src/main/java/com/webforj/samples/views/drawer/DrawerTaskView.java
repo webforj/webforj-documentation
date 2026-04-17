@@ -1,6 +1,6 @@
 package com.webforj.samples.views.drawer;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -18,12 +18,7 @@ import java.util.List;
 
 @Route
 @FrameTitle("Task Manager Drawer")
-@InlineStyleSheet(/*css */"""
-    dwc-checkbox[checked]::part(label) {
-      text-decoration: line-through;
-      opacity: 0.6;
-    }
-""")
+@StyleSheet("ws://css/drawer/drawer-task-view.css")
 public class DrawerTaskView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Drawer drawer = new Drawer();

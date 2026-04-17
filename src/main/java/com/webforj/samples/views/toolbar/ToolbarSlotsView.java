@@ -2,7 +2,7 @@ package com.webforj.samples.views.toolbar;
 
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
@@ -14,15 +14,7 @@ import com.webforj.component.layout.toolbar.Toolbar;
 
 @Route
 @FrameTitle("Toolbar Slots")
-@InlineStyleSheet(
-/* css */"""
-    dwc-toolbar {
-      --dwc-toolbar-background: hsl(265, 100%, 47%);
-      --dwc-toolbar-color: white;
-      --dwc-icon-button-hover-color: var(--dwc-toolbar-color);
-      --dwc-icon-button-active-color: var(--dwc-toolbar-color);
-    }
-    """)
+@StyleSheet("ws://css/toolbar/toolbar-slots-view.css")
 public class ToolbarSlotsView extends Composite<AppLayout> {
   private final AppLayout self = getBoundComponent();
 

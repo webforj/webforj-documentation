@@ -872,5 +872,23 @@
   "theme.SearchModal.footer.backToSearchText": {
     "message": "Back to search",
     "description": "The back to search text for footer"
+  },
+  "experimentalWarning.title": {
+    "message": "实验性功能"
+  },
+  "experimentalWarning.message": {
+    "message": "此功能为实验性，未来版本可能会改变或删除。"
+  },
+  "automatedUpgradeTip.title": {
+    "message": "Automated upgrade available",
+    "description": "The title for the tip admonition for OpenRewrite"
+  },
+  "automatedUpgradeTip.message": {
+    "message": "OpenRewrite recipes are available for this version to automatically update deprecated and removed APIs. See {articleLink} for setup instructions.",
+    "description": "The message of a tip indicating that you can use OpenRewrite to make updating easier"
+  },
+  "automatedUpgradeTip.automatedUpgradeLink": {
+    "message": "Using OpenRewrite",
+    "description": "The text that links to the automated upgrade article"
   }
 }

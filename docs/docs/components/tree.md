@@ -62,6 +62,7 @@ In the demo, double-click a node to open an editor for its text. Enter the new t
 <ComponentDemo 
 path='/webforj/treemodify?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tree/TreeModifyView.java'
+cssURL='/css/tree/tree-modify-view.css'
 height='320px'
 />
 
@@ -214,4 +215,4 @@ height='400px'
 
 ## Styling {#styling}
 
-<TableBuilder name="Tree" />
+<TableBuilder name={['Tree', 'TreeNode']} />

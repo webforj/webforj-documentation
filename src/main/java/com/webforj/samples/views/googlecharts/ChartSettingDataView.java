@@ -1,31 +1,26 @@
 package com.webforj.samples.views.googlecharts;
 
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.googlecharts.GoogleChart;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 import java.util.List;
 import java.util.Map;
 
-@InlineStyleSheet(/*css*/ """
-    .window {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    """)
 @Route
 @FrameTitle("Chart Setting Data")
-public class ChartSettingDataView extends Composite<Div> {
-  private final Div self = getBoundComponent();
+public class ChartSettingDataView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.PIE);
 
   public ChartSettingDataView() {
-    self.addClassName("window");
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER);
 
     setupChart();
     self.add(chart);

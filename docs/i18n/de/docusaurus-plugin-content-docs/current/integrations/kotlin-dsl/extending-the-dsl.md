@@ -1,28 +1,28 @@
 ---
 title: Extending the DSL
 sidebar_position: 20
-_i18n_hash: 73b71a500428fdbc51cd490f19d1eef9
+_i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---
-Die Kotlin DSL ist erweiterbar und ermöglicht das Hinzufügen von DSL-Funktionen für benutzerdefinierte Komponenten oder Drittanbieter-Bibliotheken. Sie können zusammengesetzte Komponenten erstellen, die die DSL intern verwenden.
+Die Kotlin DSL ist erweiterbar und ermöglicht das Hinzufügen von DSL-Funktionen für benutzerdefinierte Komponenten oder Bibliotheken von Drittanbietern. Sie können zusammengesetzte Komponenten erstellen, die die DSL intern verwenden.
 
 ## Komponenten zur DSL hinzufügen {#adding-components-to-the-dsl}
 
-Um eine Komponente in der DSL verfügbar zu machen, erstellen Sie eine Erweiterungsfunktion auf `HasComponents`, die die `init`-Helferfunktion verwendet.
+Um eine Komponente in der DSL verfügbar zu machen, erstellen Sie eine Erweiterungsfunktion für `HasComponents`, die die Hilfsfunktion `init` verwendet.
 
 ### Grundlegende DSL-Funktion {#basic-dsl-function}
 
-Hier ist das Muster für eine einfache Komponente. Dieses Beispiel geht davon aus, dass Sie eine benutzerdefinierte `Badge`-Komponente haben:
+Hier ist das Muster für eine einfache Komponente. Dieses Beispiel verwendet eine benutzerdefinierte `StarRating`-Komponente:
 
 ```kotlin
 import com.webforj.concern.HasComponents
 import com.webforj.kotlin.dsl.WebforjDsl
 import com.webforj.kotlin.dsl.init
-import com.example.component.Badge
+import com.example.component.StarRating
 
-fun @WebforjDsl HasComponents.badge(
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  return init(Badge(), block)
+fun @WebforjDsl HasComponents.starRating(
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  return init(StarRating(), block)
 }
 ```
 
@@ -35,59 +35,60 @@ Jetzt können Sie die Komponente im DSL-Code verwenden:
 
 ```kotlin
 div {
-  badge {
-    text = "Neu"
-    variant = Badge.Variant.PRIMARY
+  starRating {
+    value = 4
+    max = 5
   }
 }
 ```
 
 ### Parameter hinzufügen {#adding-parameters}
 
-Die meisten DSL-Funktionen akzeptieren gemeinsame Parameter vor dem Konfigurationsblock:
+Die meisten DSL-Funktionen akzeptieren gängige Parameter vor dem Konfigurationsblock:
 
 ```kotlin
-fun @WebforjDsl HasComponents.badge(
-  text: String? = null,
-  variant: Badge.Variant? = null,
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  val badge = Badge()
-  text?.let { badge.text = it }
-  variant?.let { badge.variant = it }
-  return init(badge, block)
+fun @WebforjDsl HasComponents.starRating(
+  value: Int? = null,
+  max: Int? = null,
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  val rating = StarRating()
+  value?.let { rating.value = it }
+  max?.let { rating.max = it }
+  return init(rating, block)
 }
 ```
 
-Die Verwendung wird prägnanter:
+Die Verwendung wird damit prägnanter:
 
 ```kotlin
 div {
-  badge("Neu", Badge.Variant.PRIMARY)
-  badge("Verkauf") {
-    styles["font-size"] = "12px"
+  starRating(value = 4, max = 5)
+  starRating(value = 3) {
+    styles["color"] = "gold"
   }
 }
 ```
 
 ## Zusammengesetzte Komponenten erstellen {#creating-composite-components}
 
-Ein `Composite` wickelt mehrere Komponenten in eine einzelne wiederverwendbare Einheit ein. Die DSL eignet sich gut zur Definition von zusammengesetzten Strukturen.
+Ein `Composite` fasst mehrere Komponenten in einer einzigen wiederverwendbaren Einheit zusammen. Die DSL eignet sich gut zur Definition der zusammengesetzten Struktur.
 
 ### Grundlegendes Composite {#basic-composite}
 
 ```kotlin
 class SearchBox : Composite<Div>() {
 
+  private val self = boundComponent
   val searchField: TextField
   val searchButton: Button
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["gap"] = "8px"
 
-      searchField = textField(placeholder = "Suchen...") {
+      searchField = textField(placeholder = "Suche...") {
         styles["flex"] = "1"
       }
 
@@ -108,11 +109,11 @@ class SearchBox : Composite<Div>() {
 }
 ```
 
-Das Composite exponiert Komponentenreferenzen für den externen Zugriff und bietet praktische Methoden für häufige Operationen.
+Das Composite stellt Komponentenreferenzen für den externen Zugriff bereit und bietet Hilfsmethoden für häufige Operationen.
 
 ### DSL-Unterstützung hinzufügen {#adding-dsl-support}
 
-Erstellen Sie eine DSL-Funktion, damit das Composite wie integrierte Komponenten verwendet werden kann:
+Erstellen Sie eine DSL-Funktion, damit das Composite wie eingebaute Komponenten verwendet werden kann:
 
 ```kotlin
 fun @WebforjDsl HasComponents.searchBox(
@@ -122,7 +123,7 @@ fun @WebforjDsl HasComponents.searchBox(
 }
 ```
 
-Jetzt integriert es sich nahtlos:
+Jetzt integriert es sich natürlich:
 
 ```kotlin
 div {
@@ -138,13 +139,14 @@ div {
 }
 ```
 
-### Beispiel: Statusanzeige {#example-status-indicator}
+### Beispiel: Statusindikator {#example-status-indicator}
 
-Hier ist ein vollständiges Beispiel für eine Statusanzeige:
+Hier ist ein komplettes Beispiel für ein Composite des Statusindikators:
 
 ```kotlin
 class StatusIndicator : Composite<Div>() {
 
+  private val self = boundComponent
   private val dot: Div
   private val label: Span
 
@@ -161,7 +163,7 @@ class StatusIndicator : Composite<Div>() {
     }
 
   init {
-    boundComponent.apply {
+    self.apply {
       styles["display"] = "flex"
       styles["align-items"] = "center"
       styles["gap"] = "8px"

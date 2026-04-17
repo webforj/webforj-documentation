@@ -25,6 +25,7 @@ For more on how shadow parts work and how to define and target them, see the [St
 <ComponentDemo 
 path='/webforj/tablerowstyling?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableRowStylingView.java'
+cssURL='/css/table/table-row-styling-view.css'
 height='300px'
 />
 
@@ -37,6 +38,7 @@ Like row parts, cell parts are defined by a name and targeted using the `::part(
 <ComponentDemo 
 path='/webforj/tablecellstyling?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java'
+cssURL='/css/table/table-cell-styling-view.css'
 height='300px'
 />
 
@@ -49,6 +51,7 @@ In this demo, cells in the Age column are styled based on a threshold: ages over
 <ComponentDemo 
 path='/webforj/tabledynamicstyling?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableDynamicStylingView.java'
+cssURL='/css/table/table-dynamic-styling-view.css'
 height='475px'
 />
 

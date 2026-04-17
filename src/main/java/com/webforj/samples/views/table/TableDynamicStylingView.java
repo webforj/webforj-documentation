@@ -3,7 +3,7 @@ package com.webforj.samples.views.table;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -14,21 +14,7 @@ import com.webforj.component.table.Table;
 import com.webforj.router.annotation.Route;
 
 @Route
-@InlineStyleSheet(/* css */ """
-  dwc-table::part(row-even) {
-    background-color: var(--dwc-color-gray-alt);
-  }
-
-  dwc-table::part(cell-senior) {
-    background-color: var(--dwc-color-success-alt);
-    color: var(--dwc-color-success-text);
-  }
-
-  dwc-table::part(cell-junior) {
-    background-color: var(--dwc-color-danger-alt);
-    color: var(--dwc-color-danger-text);
-  }
-  """)
+@StyleSheet("ws://css/table/table-dynamic-styling-view.css")
 
 public class TableDynamicStylingView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
@@ -39,7 +25,7 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
   public TableDynamicStylingView() {
     self.setDirection(FlexDirection.COLUMN)
       .setMaxWidth(760)
-      .setStyle("margin", "1em auto")
+      .setMargin("var(--dwc-space-xl)")
       .add(update, table);
 
     List<Person> data = List.of(
@@ -78,6 +64,8 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
         }
         return parts;
       });
+    
+    table.setColumnsToAutoFit();
 
     update.setMaxWidth(200)
       .onClick(e -> {

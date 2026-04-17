@@ -1,27 +1,24 @@
 ---
 sidebar_position: 12
 title: Route Transitions
-sidebar_class_name: new-content
-_i18n_hash: 34159c78405282a71774c6148a31f18a
+_i18n_hash: 98050ac6a061f4dc3728af3888aa44b0
 ---
 <JavadocLink type="foundation" location="com/webforj/router/annotation/RouteTransition" top='true'/>
 
 <DocChip chip='since' label='25.11' />
 <DocChip chip='experimental' />
 
-Reittisiirtymät tarjoavat deklaratiivisia animaatioita reittejä navigoitaessa. [View Transitions](/docs/advanced/view-transitions) API:ta käyttäen, lisäämällä `@RouteTransition` -annotaatio reittikomponentteihisi, reititin voi automaattisesti käsitellä animaation elinkaaren navigoinnin aikana.
+Reittisiirtymät tarjoavat deklaratiivisia animoituja siirtymiä, kun navigoidaan reittien välillä. Perustuu [View Transitions](/docs/advanced/view-transitions) API:in, lisäämällä `@RouteTransition`-annotaatio reittikomponentteihisi, reititin voi automaattisesti käsitellä animaation elinkaaren navigoinnin aikana.
 
-:::warning Kokeellinen API
-Tämä API merkitään kokeelliseksi versiosta 25.11 ja saattaa muuttua tulevissa julkaisuissa. API:n allekirjoitus, käyttäytyminen ja suorituskyky voivat vaihdella.
-:::
+<ExperimentalWarning />
 
 :::info Ohjelmallinen hallinta
-Monimutkaisempia siirtymän skenaarioita tai ohjelmallista hallintaa varten, käytä [View Transitions](/docs/advanced/view-transitions) API:ta suoraan.
+Monimutkaisempia siirtymätilanteita tai ohjelmallista hallintaa varten käytä [View Transitions](/docs/advanced/view-transitions) API:ta suoraan.
 :::
 
-## `@RouteTransition` -annotaatio {#the-routetransition-annotation}
+## `@RouteTransition` annotaatio {#the-routetransition-annotation}
 
-`@RouteTransition` -annotaatio määrittelee, miten reittikomponentti animaatioidaan näkymään saapumisen tai sieltä poistumisen aikana:
+`@RouteTransition` annotaatio määrittelee, miten reittikomponentti animoidaan, kun se tulee tai poistuu näkymästä:
 
 ```java
 @Route
@@ -34,22 +31,22 @@ public class DashboardView extends Composite<Div> {
 Annotaatio hyväksyy seuraavat ominaisuudet:
 
 | Ominaisuus | Kuvaus |
-|----------|-------------|
-| `enter` | Animaatio, joka sovelletaan kun tämä näkymä ilmestyy |
-| `exit` | Animaatio, joka sovelletaan kun tämä näkymä poistuu |
+|------------|--------|
+| `enter` | Animaatio, joka sovelletaan, kun tämä näkymä ilmestyy |
+| `exit` | Animaatio, joka sovelletaan, kun tämä näkymä poistuu |
 
-Molemmat ominaisuudet hyväksyvät kaikki ennalta määritellyt siirtymätyypit tai mukautetun merkkijonon arvon:
+Molemmat ominaisuudet hyväksyvät minkä tahansa esimäärätyn siirtymatyypin tai mukautetun merkkijonon arvon:
 
 | Vakio | Vaikutus |
-|----------|--------|
+|-------|----------|
 | `ViewTransition.NONE` | Ei animaatiota |
-| `ViewTransition.FADE` | Ristiinfade vanhan ja uuden sisällön välillä |
-| `ViewTransition.SLIDE_LEFT` | Sisältö virtaa vasemmalle (kuten eteenpäin navigoitaessa) |
-| `ViewTransition.SLIDE_RIGHT` | Sisältö virtaa oikealle (kuten taaksepäin navigoitaessa) |
+| `ViewTransition.FADE` | Risteävä häivytys vanhan ja uuden sisällön välillä |
+| `ViewTransition.SLIDE_LEFT` | Sisältö virtaa vasemmalle (kuin eteenpäin navigointi) |
+| `ViewTransition.SLIDE_RIGHT` | Sisältö virtaa oikealle (kuin taaksepäin navigointi) |
 | `ViewTransition.SLIDE_UP` | Sisältö virtaa ylöspäin |
 | `ViewTransition.SLIDE_DOWN` | Sisältö virtaa alaspäin |
-| `ViewTransition.ZOOM` | Vanha sisältö pienenee, uusi sisältö kasvaa |
-| `ViewTransition.ZOOM_OUT` | Vanha sisältö kasvaa, uusi sisältö pienenee |
+| `ViewTransition.ZOOM` | Vanha sisältö kutistuu, uusi sisältö kasvaa sisään |
+| `ViewTransition.ZOOM_OUT` | Vanha sisältö kasvaa pois, uusi sisältö kutistuu sisään |
 
 ## Peruskäyttö {#basic-usage}
 
@@ -70,50 +67,50 @@ public class InboxView extends Composite<FlexLayout> {
 ```
 
 Tässä esimerkissä:
-- Kun navigoidaan `InboxView`:hin, komponentti saapuu zoom-animaatiolla
-- Kun navigoidaan pois `InboxView`:sta, komponentti poistuu sisällön virratessa oikealle
+- Siirryttäessä `InboxView`-näkymään, komponentti tulee zoom-animaatiolla
+- Siirryttäessä pois `InboxView`-näkymästä, komponentti poistuu sisällön virratessa oikealle
 
 ## Navigointivirta {#navigation-flow}
 
-Kun navigoidaan kahden reitin välillä, reititin koordinoi siirtymäsarjan:
+Kun navigoidaan kahden reitin välillä, reititin koordinoi siirtymäsarjaa:
 
 1. Poistuvan komponentin `exit` animaatio alkaa
 2. [DOM](/docs/glossary#dom) muutokset tapahtuvat (vanha näkymä poistetaan, uusi näkymä lisätään)
-3. Saapuvan komponentin `enter` animaatio soitetaan
+3. Tulevan komponentin `enter` animaatio pyörii
 
-Jos navigoidaan samaan näkymään, joka jo on näytössä, siirtymä skipataan tarpeettomien animaatioiden välttämiseksi.
+Jos navigoidaan samaan näkymään, joka on jo esillä, siirtymä ohitetaan tarpeettomien animaatioiden välttämiseksi.
 
-:::tip Johdonmukaiset poistumisanimaatiot
-Saman poistumisanimaation käyttäminen kaikissa näkymissä luo suuntaa antavaa johdonmukaisuutta. Esimerkiksi, määrittämällä kaikki näkymät poistumaan `SLIDE_RIGHT` -animaatiolla luo yhtenäisen "takaisin" liikkeen mallin, mikä tekee navigointikäyttäytymisestä ennakoitavaa riippumatta alkuperäisestä näkymästä.
+:::tip Johdonmukaiset poistumis-animaatiot
+Saman poistumis-animaation käyttäminen kaikilla näkymillä luo suunnallista johdonmukaisuutta. Esimerkiksi, konfiguroimalla kaikki näkymät poistumaan `SLIDE_RIGHT`-animaatiolla luodaan yhtenäinen "taakse" liikemalli, mikä tekee navigointikäyttäytymisestä ennustettavaa riippumatta lähtönäkymästä.
 :::
 
-## Siirtymän perintä {#transition-inheritance}
+## Siirtymäperintö {#transition-inheritance}
 
-Reitit perivät siirtymiä vanhemmilta reiteiltään. Kun reitillä ei ole `@RouteTransition` -annotaatiota, reititin kävelee hierarkiassa ylöspäin löytääkseen sellaisen.
+Reitit perivät siirtymät vanhemmilta reiteiltään. Kun reitillä ei ole `@RouteTransition`, reititin kulkee ylöspäin hierarkiassa löytääkseen sen.
 
 ```java
 @Route
 @RouteTransition(enter = ViewTransition.ZOOM)
 public class MainLayout extends Composite<AppLayout> {
-  // Vanhempi asettelu siirtymän kanssa
+  // Vanhempi asettelu siirtymällä
 }
 
 @Route(value = "/inbox", outlet = MainLayout.class)
 public class InboxView extends Composite<FlexLayout> {
-  // Perii ZOOM:in MainLayout:ilta
+  // Perii ZOOM:in MainLayout:ista
 }
 
 @Route(value = "/sub", outlet = InboxView.class)
 public class SubView extends Composite<FlexLayout> {
-  // Perii ZOOM:in MainLayout:ilta (InboxView:n kautta)
+  // Perii ZOOM:in MainLayout:ista (InboxView:n kautta)
 }
 ```
 
 Kaikki lapsireitit perivät saman animaatiotyylin toistamatta annotaatiota.
 
-### Perittyjen siirtymien ylittäminen {#overriding-inherited-transitions}
+### Perittyjen siirtymien korvaaminen {#overriding-inherited-transitions}
 
-Lapsireitit voivat ylittää perityn siirtymän määrittelemällä oman `@RouteTransition` -annotaationsa:
+Lapsireitit voivat korvata perityn siirtymän määrittelemällä oman `@RouteTransition`-annotaation:
 
 ```java
 @Route
@@ -128,13 +125,13 @@ public class InboxView extends Composite<FlexLayout> {
 @Route(value = "/settings", outlet = MainLayout.class)
 @RouteTransition(enter = ViewTransition.SLIDE_UP, exit = ViewTransition.SLIDE_DOWN)
 public class SettingsView extends Composite<FlexLayout> {
-  // Ylittää SLIDE_UP/SLIDE_DOWN:lla
+  // Korvataan SLIDE_UP/SLIDE_DOWN:lla
 }
 ```
 
-## Jaettujen komponenttien siirtymät {#shared-component-transitions}
+## Jaetun komponentin siirtymät {#shared-component-transitions}
 
-Voit yhdistää reittisiirtymiä ja jaettujen komponenttien animaatioita luodaksesi yhteyksiä kokemuksia. Komponentit, joilla on vastaavat `view-transition-name` arvot, muotoutuvat näkymien välillä. Käytä `setViewTransitionName()` metodia, joka on saatavilla kaikille komponenteille, jotka toteuttavat <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink> -rajapinnan.
+Voit yhdistää reittisiirtymiä ja jaettuja komponenttianimaatioita luodaksesi yhteensopivia kokemuksia. Komponentit, joilla on samat `view-transition-name` arvot, muuntuvat näkymien välillä. Käytä `setViewTransitionName()`-metodia, joka on saatavilla kaikilla komponenteilla, jotka implementoivat <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink> -rajapinnan.
 
 ```java title="ProductListView.java"
 @Route(value = "products", outlet = MainLayout.class)
@@ -165,4 +162,4 @@ public class ProductDetailView extends Composite<FlexLayout> implements DidEnter
 }
 ```
 
-Kun navigoidaan listasta yksityiskohtanäkymään, tuotteen pienkuva muotoontuu sankarikuvan paikkaan samalla kun muu sisältö siirtyy fade-animaatiolla.
+Kun navigoidaan listasta yksityiskohtanäkymään, tuote pieni kuva muuntuu sankarikuvan paikaksi samalla kun muu sisältö siirtyy häivytysanimaatiolla.
