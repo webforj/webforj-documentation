@@ -21,6 +21,7 @@ class MaskedTextFieldRestoreKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       justifyContent = FlexJustifyContent.CENTER
       margin = "var(--dwc-space-m) auto"
+
       val usernameField = maskedTextField("Postal Code", "85001 PHX", "ex: 85001 PHX") {
         width = 250.px
         restoreValue = "85001 PHX"
