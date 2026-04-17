@@ -302,7 +302,7 @@ With these changes, here's what `FormView` looks like. The app now supports data
         listCountries.add(new ListItem(countryItem, countryItem.toString()));
       }
       country.insert(listCountries);
-      country.selectIndex(0);
+      country.selectKey(Customer.Country.UNKNOWN);
     }
 
     private void submitCustomer() {

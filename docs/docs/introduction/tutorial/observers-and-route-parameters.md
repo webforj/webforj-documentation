@@ -279,7 +279,7 @@ Here’s how `FormView` should look, now that it can handle editing existing cus
         listCountries.add(new ListItem(countryItem, countryItem.toString()));
       }
       country.insert(listCountries);
-      country.selectIndex(0);
+      country.selectKey(Customer.Country.UNKNOWN);
     }
 
     private void submitCustomer() {
