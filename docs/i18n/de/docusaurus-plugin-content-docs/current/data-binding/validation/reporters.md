@@ -1,29 +1,32 @@
 ---
 sidebar_position: 3
 title: Reporters
-_i18n_hash: c563479cec7e1fe29d483bcd121bb5fc
+_i18n_hash: 0cb57295142e37eff340531d120b3566
 ---
-Validation Reporter werden verwendet, um Feedback über den Validierungsprozess an die Benutzeroberfläche bereitzustellen. Diese Funktion ist entscheidend, um die Benutzer über die Ergebnisse ihrer Eingabevalidierung zu informieren, insbesondere in komplexen Formularen oder datenintensiven Anwendungen.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-## Was ist ein Validation Reporter? {#whats-a-validation-reporter}
+Validation reporters werden verwendet, um Feedback über den Validierungsprozess an die Benutzeroberfläche zu geben. Diese Funktion ist entscheidend, um die Benutzer über die Ergebnisse ihrer Eingabever validation zu informieren, insbesondere in komplexen Formularen oder datensatzintensiven Anwendungen.
 
-Ein Validation Reporter ist eine Komponente, die die Ergebnisse von Validierungen verarbeitet und den Benutzern anzeigt. Er fungiert als Brücke zwischen der Validierungslogik und der Benutzeroberfläche und sorgt dafür, dass die Validierungsergebnisse effektiv und klar kommuniziert werden.
+## Was ist ein Validierungsreporter? {#whats-a-validation-reporter}
 
-:::tip Kernkomponenten Standard-Reporter
-webforJ enthält den `DefaultBindingReporter`, einen standardmäßigen Bindungsreporter, der nahtlos mit allen Kernkomponenten von webforJ funktioniert. Dieser integrierte Reporter zeigt automatisch Validierungsfehler an, wodurch in vielen Fällen die Notwendigkeit einer benutzerdefinierten Implementierung entfällt. Abhängig von der Konfiguration der Komponente zeigt der `DefaultBindingReporter` Validierungsfehler direkt als Popover oder inline direkt unterhalb der Komponente an. Diese Funktion vereinfacht den Prozess der Fehlerberichterstattung erheblich, sorgt für eine klare und direkte Kommunikation von Validierungsfehlern und verbessert die Benutzererfahrung, indem sie sofortiges, kontextsensitive Feedback zur Eingabevalidierung bereitstellt.
+Ein Validierungsreporter ist eine Komponente, die die Ergebnisse von Validierungen verarbeitet und anzeigt. Er fungiert als Brücke zwischen der Validierungslogik und der Benutzeroberfläche und stellt sicher, dass Validierungsergebnisse effektiv und klar kommuniziert werden.
+
+:::tip Kernkomponenten Standardreporter
+webforJ beinhaltet den `DefaultBindingReporter`, einen standardmäßigen Bindungsreporter, der nahtlos mit allen Kernkomponenten von webforJ funktioniert. Dieser integrierte Reporter zeigt automatisch Validierungsfehler an und beseitigt die Notwendigkeit einer benutzerdefinierten Implementierung in vielen Fällen. Abhängig von der Konfiguration der Komponente zeigt der `DefaultBindingReporter` Validierungsfehler direkt als Popover oder inline, direkt unterhalb der Komponente an. Diese Funktion vereinfacht den Fehlerberichtsprozess erheblich, stellt eine klare und direkte Kommunikation von Validierungsfehlern sicher und verbessert das Benutzererlebnis, indem sofortiges, kontextsensibles Feedback zur Eingabever validation gegeben wird.
 :::
 
-## Konfigurieren von Validation Reportern {#configuring-validation-reporters}
+## Konfigurieren von Validierungsreportern {#configuring-validation-reporters}
 
-Sie können Validation Reporter innerhalb des Bindungskontexts konfigurieren, um anzupassen, wie Nachrichten präsentiert werden. Typischerweise würden Sie einen Validation Reporter implementieren, um die Validierungsergebnisse zu aggregieren und diese dann benutzerfreundlich anzuzeigen, z. B. durch Hervorheben falscher Felder, Anzeigen von Fehlermeldungen oder Aktualisieren von Statusanzeigen.
+Sie können Validierungsreporter im Bindungskontext konfigurieren, um anzupassen, wie Nachrichten präsentiert werden. Typischerweise würden Sie einen Validierungsreporter implementieren, um Validierungsergebnisse zu aggregieren und sie dann benutzerfreundlich darzustellen, wie das Hervorheben von falschen Feldern, das Anzeigen von Fehlermeldungen oder das Aktualisieren von Statusindikatoren.
 
-Hier ist ein Beispiel, wie Sie einen Validation Reporter für ein Feld einrichten können:
+Hier ist ein Beispiel, wie Sie einen Validierungsreporter für ein Feld einrichten können:
 
 <Tabs>
 <TabItem value="UserRegistration" label="UserRegistration.java">
 
 ```java showLineNumbers
-@InlineStyleSheet("context://styles.css")
+@StyleSheet("ws://css/styles.css")
 public class UserRegistration extends App {
   Div errors = new Div();
   TextField emailField = new TextField("E-Mail-Adresse");
@@ -112,4 +115,4 @@ public class User {
 </TabItem>
 </Tabs>
 
-In dem obigen Code integriert die E-Mail-Bindung einen benutzerdefinierten Reporter, der Validierungsnachrichten direkt unter dem Eingabefeld anzeigt. Diese Einrichtung nutzt die Methode `useReporter`, die konfiguriert, wie die Bindung Validierungsergebnisse behandelt und präsentiert. Diese Methode verbindet die Validierungslogik effektiv mit der Benutzeroberfläche und stellt sicher, dass Validierungsprobleme dem Benutzer sofort sichtbar sind, wodurch die Interaktivität und Benutzererfahrung des Formulars verbessert werden.
+Im obigen Code enthält die E-Mail-Bindung einen benutzerdefinierten Reporter, der Validierungsnachrichten direkt unter dem Eingabefeld anzeigt. Diese Einrichtung nutzt die Methode `useReporter`, die konfiguriert, wie die Bindung mit Validierungsergebnissen umgeht und sie präsentiert. Diese Methode verknüpft effektiv die Validierungslogik mit der Benutzeroberfläche und stellt sicher, dass alle Validierungsprobleme sofort für den Benutzer sichtbar sind, wodurch die Interaktivität des Formulars und das Benutzererlebnis verbessert werden.

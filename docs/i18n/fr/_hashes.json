@@ -270,5 +270,8 @@
   "chip.label.experimental": "704b5561562b054400f33f22cf61c5f5",
   "chip.tooltipText.since": "4d7869037e166196f513c924d6c3f7c0",
   "experimentalWarning.title": "0cc04b5feae6f05f1687fb4fb7cf3f9a",
-  "experimentalWarning.message": "da6dabd97ac9ad023b3f2a209ed54248"
+  "experimentalWarning.message": "da6dabd97ac9ad023b3f2a209ed54248",
+  "automatedUpgradeTip.title": "ccb32d0f43a73a17be42b0efc107a63a",
+  "automatedUpgradeTip.message": "d24d82808d6fc7f1c23c4e2fc9ebc5a5",
+  "automatedUpgradeTip.automatedUpgradeLink": "5ff3985fbe5f6de3e8fe7f5539d606ee"
 }

@@ -1,22 +1,22 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: d0c9ff09e591673c99918aa6875af28a
+_i18n_hash: 51577f27568214c5d39e43b7e6ce42d0
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-De `Drawer` component in webforJ creëert een schuifpaneel dat verschijnt vanaf de rand van het scherm, waardoor aanvullende inhoud zichtbaar wordt zonder de huidige weergave te verlaten. Het wordt vaak gebruikt voor zij-navigatie, filtermenu's, gebruikersinstellingen of compacte meldingen die tijdelijk moeten verschijnen zonder de hoofdinterface te verstoren.
+De `Drawer` component in webforJ creëert een schuifpaneel dat verschijnt vanuit de rand van het scherm, waardoor extra inhoud zichtbaar wordt zonder de huidige weergave te verlaten. Het wordt vaak gebruikt voor zij-navigatie, filtermenu's, gebruikersinstellingen of compacte meldingen die tijdelijk moeten verschijnen zonder de hoofdinterface te verstoren.
 
 <!-- INTRO_END -->
 
 ## Stapelen {#stacking}
 
-Lades stapelen automatisch wanneer meerdere zijn geopend, wat ze een flexibele keuze maakt voor ruimtestrikte interfaces.
+Drawers stapelen automatisch wanneer er meerdere geopend zijn, waardoor ze een flexibele keuze zijn voor ruimte-beperkte interfaces.
 
-Het onderstaande voorbeeld laat dit gedrag zien binnen de [`AppLayout`](../components/app-layout) component. De navigatielade die door het hamburgermenu wordt geactiveerd, is ingebouwd in [`AppLayout`](../components/app-layout), terwijl de welkomstpopup onderaan een standalone `Drawer` instantie gebruikt. Beide bestaan naast elkaar en stapelen onafhankelijk, wat demonstreert hoe Lades kunnen worden geïntegreerd binnen lay-outcomponenten of als standalone elementen kunnen worden gebruikt.
+Het voorbeeld hieronder toont dit gedrag binnen de [`AppLayout`](../components/app-layout) component. De navigatiedrawer die door het hamburger-menu wordt geactiveerd is ingebouwd in [`AppLayout`](../components/app-layout), terwijl de welkomstpopup onderaan een standalone `Drawer` instantie gebruikt. Beide coëxisteren en stapelen onafhankelijk, wat demonstreert hoe Drawers geïntegreerd kunnen worden binnen lay-outcomponenten of als standalone elementen gebruikt kunnen worden.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
@@ -25,7 +25,7 @@ cssURL='/css/drawer/drawerWelcome.css'
 
 ## Autofocus
 
-De `Drawer` component ondersteunt autofocus, wat automatisch de focus op het eerste focusbare element instelt wanneer de `Drawer` opent. Dit verbetert de bruikbaarheid door de aandacht direct naar het eerste actie-element te brengen.
+De `Drawer` component ondersteunt autofocus, wat automatisch de focus instelt op het eerste focusbare element wanneer de `Drawer` opent. Dit verbetert de bruikbaarheid door de aandacht direct te vestigen op het eerste actie-element.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -37,22 +37,22 @@ height='600px'
 
 ## Label {#label}
 
-De `setLabel()` methode kan een betekenisvolle omschrijving van de inhoud binnen een `Drawer` geven. Wanneer een label is ingesteld, kunnen ondersteunende technologieën zoals schermlezers het aankondigen, wat gebruikers helpt de bedoeling van de `Drawer` te begrijpen zonder de visuele inhoud ervan te zien.
+De `setLabel()` methode kan een betekenisvolle beschrijving geven van de inhoud binnen een `Drawer`. Wanneer een label is ingesteld, kunnen ondersteunende technologieën zoals schermlezers het aankondigen, waardoor gebruikers het doel van de `Drawer` kunnen begrijpen zonder de visuele inhoud te zien.
 
 ```java
 Drawer drawer = new Drawer();
-drawer.setLabel("Taakbeheerder");
+drawer.setLabel("Taakbeheer");
 ```
 
 :::tip Beschrijvende Labels
-Gebruik beknopte en beschrijvende labels die de bedoeling van de `Drawer` weerspiegelen. Vermijd generieke termen zoals "Menu" of "Paneel" wanneer een specifieker naam kan worden gebruikt.
+Gebruik kernachtige en beschrijvende labels die het doel van de `Drawer` reflecteren. Vermijd algemene termen zoals “Menu” of “Paneel” wanneer een specifiekere naam kan worden gebruikt.
 :::
 
 ## Grootte
 
-Om de grootte van een `Drawer` te beheersen, stel een waarde in voor de CSS aangepaste eigenschap `--dwc-drawer-size`. Dit stelt de breedte van de `Drawer` in voor links/rechts plaatsing of hoogte voor boven/onder plaatsing.
+Om de grootte van een `Drawer` te beheersen, stel je een waarde in voor de CSS aangepaste eigenschap `--dwc-drawer-size`. Dit stelt de breedte van de `Drawer` in voor links/rechts plaatsing of hoogte voor boven/beneden plaatsing.
 
-Je kunt de waarde definiëren met behulp van elke geldige CSS-eenheid, zoals een percentage, pixels of vw/vh, met behulp van Java of CSS:
+Je kunt de waarde definiëren met elke geldige CSS-eenheid zoals een percentage, pixels of vw/vh, met Java of CSS:
 
 ```java
 // Java
@@ -66,7 +66,7 @@ dwc-drawer {
 }
 ```
 
-Om te voorkomen dat de `Drawer` te groot wordt, gebruik `--dwc-drawer-max-size` naast het volgende:
+Om te voorkomen dat de `Drawer` te groot wordt, gebruik je `--dwc-drawer-max-size` samen met deze:
 
 ```java
 // Java
@@ -84,17 +84,17 @@ dwc-drawer {
 
 ## Plaatsing {#placement}
 
-De `setPlacement()` methode bepaalt waar de `Drawer` in de viewport verschijnt.
+De `setPlacement()` methode controleert waar de `Drawer` verschijnt in de viewport.
 
 Beschikbare plaatsingsopties:
 
 <!-- vale off -->
-- **BOVEN**: Plaatst de lade aan de bovenrand van de viewport.
-- **BOVEN_CENTRAAL**: Stelt de lade horizontaal gecentreerd aan de bovenkant van de viewport.
-- **ONDER**: Plaatst de lade aan de onderkant van de viewport.
-- **ONDER_CENTRAAL**: Centrert de lade horizontaal aan de onderkant van de viewport.
-- **LINKS**: Plaatst de lade langs de linkerrand van de viewport.
-- **RECHTS**: Plaatst de lade langs de rechterrand van de viewport.
+- **BOVEN**: Plaatst de drawer aan de bovenrand van de viewport.
+- **BOVEN_CENTRAAL**: Centreert de drawer horizontaal aan de bovenkant van de viewport.
+- **ONDER**: Plaatst de drawer aan de onderkant van de viewport.
+- **ONDER_CENTRAAL**: Centreert de drawer horizontaal aan de onderkant van de viewport.
+- **LINKS**: Plaatst de drawer langs de linkerrand van de viewport.
+- **RECHTS**: Plaatst de drawer langs de rechterrand van de viewport.
 <!-- vale on -->
 
 <ComponentDemo
@@ -103,34 +103,34 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
-## Evenementafhandeling
+## Evenementverwerking
 
-De `Drawer` component genereert levenscyclusgebeurtenissen die kunnen worden gebruikt om logica in de app te activeren in reactie op wijzigingen in de open of gesloten status. 
+De `Drawer` component genereert levenscyclusgebeurtenissen die kunnen worden gebruikt om app-logica te triggeren in reactie op veranderingen in zijn open of gesloten status.
 
-Ondersteunde gebeurtenissen:
+Ondersteunde evenementen:
 
-- `DrawerOpenEvent`: Wordt geactiveerd wanneer de lade volledig is geopend.
-- `DrawerCloseEvent`: Wordt geactiveerd wanneer de lade volledig is gesloten.
+- `DrawerOpenEvent`: Geactiveerd wanneer de drawer volledig geopend is.
+- `DrawerCloseEvent`: Geactiveerd wanneer de drawer volledig gesloten is.
 
-Je kunt listeners aan deze gebeurtenissen koppelen om logica uit te voeren wanneer de status van de `Drawer` verandert.
+Je kunt luisteraars aan deze evenementen toevoegen om logica uit te voeren wanneer de status van de `Drawer` verandert.
 
 ```java
 Drawer drawer = new Drawer();
 
 drawer.addOpenListener(e -> {
-  // Verwerk evenement 'lade geopend'
+  // Verwerk geopend evenement van de drawer
 });
 
 drawer.addCloseListener(e -> {
-  // Verwerk evenement 'lade gesloten'
+  // Verwerk gesloten evenement van de drawer
 });
 ```
 
-## Voorbeeld: Contactkiezer
+## Voorbeeld: Contactpicker
 
-De `Drawer` component biedt extra inhoud zonder de huidige weergave te verstoren. Dit voorbeeld plaatst een lade in het midden onderaan, met een scrollbare contactlijst.
+De `Drawer` component toont extra inhoud zonder de huidige weergave te verstoren. Dit voorbeeld plaatst een drawer in het onderste midden, met een scrollbare contactenlijst.
 
-Elke contactpersoon toont een avatar, naam, locatie en actieknop voor snelle toegang tot details of communicatie. Deze aanpak werkt goed voor het bouwen van compacte hulpmiddelen zoals contactpickers, instellingenpanelen of meldingen.
+Elke contact toont een avatar, naam, locatie en actieknop voor snelle toegang tot details of communicatie. Deze aanpak werkt goed voor het bouwen van compacte tools zoals contactpickers, instellingenpanelen of meldingen.
 
 <ComponentDemo
 path='/webforj/drawercontact?'
@@ -141,11 +141,12 @@ height='600px'
 
 ## Voorbeeld: Taakbeheerder
 
-Dit voorbeeld gebruikt een `Drawer` als taakbeheerder. Je kunt taken toevoegen, afvinken en voltooide taken wissen. De voettekst van de `Drawer` bevat formulierbedieningen om met de takenlijst te interageren, en de “Taak Toevoegen” [`Button`](../components/button) schakelt zichzelf uit als er 50 taken zijn bereikt.
+Dit voorbeeld gebruikt een `Drawer` als taakbeheerder. Je kunt taken toevoegen, afvinken en voltooide verwijderen. De footer van de `Drawer` bevat formulierelementen om interactie te hebben met de takenlijst, en de “Taak Toevoegen” [`Button`](../components/button) schakelt zichzelf uit als er 50 taken zijn bereikt.
 
 <ComponentDemo
 path='/webforj/drawertask?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
+cssURL='/css/drawer/drawer-task-view.css'
 height='600px'
 />
 
