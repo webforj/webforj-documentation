@@ -25,6 +25,7 @@ class BusyDemoKotlinView: Composite<FlexLayout>() {
       margin = "var(--dwc-space-l)"
       flexLayout {
         vertical()
+
         textField("Name") {
           width = 500.px
         }
