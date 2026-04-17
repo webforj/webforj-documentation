@@ -26,11 +26,13 @@ class SliderKotlinView: Composite<FlexLayout>() {
         alignment = FlexAlignment.CENTER
         spacing = "var(--dwc-space-l)"
         margin = "var(--dwc-space-l)"
+
         flexLayout {
           direction = FlexDirection.ROW
           justifyContent = FlexJustifyContent.CENTER
           alignment = FlexAlignment.CENTER
           spacing = "var(--dwc-space-m)"
+
           val muteButton = iconButton("volume-off", "tabler") {
             theme = Theme.DANGER
           }

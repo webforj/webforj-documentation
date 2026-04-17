@@ -33,6 +33,7 @@ class SliderTickSpacingKotlinView : Composite<FlexLayout>() {
       maxWidth = 400.px
       spacing = "var(--dwc-space-m)"
       margin = "var(--dwc-space-m) auto"
+
       slider = slider(0, 0, 100) {
         isFilled = true
         isTicksVisible = true
@@ -44,6 +45,7 @@ class SliderTickSpacingKotlinView : Composite<FlexLayout>() {
       }
       flexLayout {
         vertical()
+
         majorTickInput = numberField("Major Tick", 20.0) {
           min = 1.0
           max = 100.0
@@ -60,6 +62,7 @@ class SliderTickSpacingKotlinView : Composite<FlexLayout>() {
         }
         flexLayout {
           horizontal()
+
           switch("Snap to Ticks", false) {
             onToggle { slider.isSnapToTicks = it.isToggled }
           }

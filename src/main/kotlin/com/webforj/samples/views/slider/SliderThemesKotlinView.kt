@@ -20,6 +20,7 @@ class SliderThemesKotlinView : Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       alignment = FlexAlignment.CENTER
       margin = "var(--dwc-space-l)"
+
       arrayOf(
         Theme.DEFAULT,
         Theme.DANGER,

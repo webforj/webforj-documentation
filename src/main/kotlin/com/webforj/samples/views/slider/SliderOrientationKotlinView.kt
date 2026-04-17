@@ -27,11 +27,13 @@ class SliderOrientationKotlinView : Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-l)"
+
       flexLayout {
         direction = FlexDirection.COLUMN
         justifyContent = FlexJustifyContent.CENTER
         alignment = FlexAlignment.CENTER
         spacing = "var(--dwc-space-m)"
+
         val maxVolumeButton = iconButton("volume-2", "tabler")
         val volumeSlider = slider(50, 0, 100) {
           isFilled = true

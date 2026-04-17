@@ -23,6 +23,7 @@ class SliderLabelsKotlinView : Composite<FlexLayout>() {
       spacing = "var(--dwc-space-m)"
       margin = "5% auto"
       alignment = FlexAlignment.CENTER
+
       slider(50, 0, 100) {
         isFilled = true
         isTicksVisible = true

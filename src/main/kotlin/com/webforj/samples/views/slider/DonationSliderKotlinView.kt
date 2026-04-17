@@ -29,6 +29,7 @@ class DonationSliderKotlinView: Composite<FlexLayout>() {
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-l)"
       alignment = FlexAlignment.CENTER
+
       slider(max = 80, min = 0) {
         isTicksVisible = true
         majorTickSpacing = 10
