@@ -38,6 +38,7 @@ class ChartRedrawKotlinView: Composite<Div>() {
   init {
     self.apply {
       classNames + "window"
+
       div {
         classNames + "chart-container"
         chart = googleChart(GoogleChart.Type.COLUMN) {
@@ -61,6 +62,7 @@ class ChartRedrawKotlinView: Composite<Div>() {
         justifyContent = FlexJustifyContent.CENTER
         wrap = FlexWrap.WRAP
         spacing = 10.px
+
         categories.forEach {
           valueFields[it] = numberField("Value for $it") {
             placeholder = ""
@@ -74,6 +76,7 @@ class ChartRedrawKotlinView: Composite<Div>() {
       }
       div {
         classNames + "redraw-button-container"
+
         button("Redraw Chart") {
           theme = ButtonTheme.PRIMARY
           classNames + "redraw-button"
