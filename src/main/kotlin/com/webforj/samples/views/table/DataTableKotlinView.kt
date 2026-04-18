@@ -54,9 +54,11 @@ class DataTableKotlinView : Composite<Div>() {
         vertical()
         alignContent = FlexContentAlignment.CENTER
         padding = "var(--dwc-space-l)"
+
         flexLayout {
           horizontal()
           justifyContent = FlexJustifyContent.BETWEEN
+
           choiceBox("Entries per page") {
             items("10", "25", "50", "100")
             selectIndex(0)
@@ -98,6 +100,7 @@ class DataTableKotlinView : Composite<Div>() {
         flexLayout {
           horizontal()
           justifyContent = FlexJustifyContent.BETWEEN
+
           navigator {
             layout = Navigator.Layout.PAGES
             paginator = this@DataTableKotlinView.paginator

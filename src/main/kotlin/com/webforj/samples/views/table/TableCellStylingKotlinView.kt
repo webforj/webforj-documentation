@@ -27,6 +27,7 @@ class TableCellStylingKotlinView : Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-xl)"
+
       table<Person> {
         size = 100.percent to 260.px
         addColumn("Name", Person::getName).apply {

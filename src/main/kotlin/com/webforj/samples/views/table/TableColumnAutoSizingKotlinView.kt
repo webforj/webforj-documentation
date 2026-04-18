@@ -27,11 +27,13 @@ class TableColumnAutoSizingKotlinView : Composite<FlexLayout>() {
       spacing = "var(--dwc-space-l)"
       height = 100.vh
       styles["box-sizing"] = "border-box"
+
       flexLayout {
         direction = FlexDirection.ROW
         styles["gap"] = 15.px
         styles["align-items"] = "center"
         styles["flex-wrap"] = "wrap"
+
         button("Auto-Size All Columns") {
           onClick { table.setColumnsToAutoSize() }
         }

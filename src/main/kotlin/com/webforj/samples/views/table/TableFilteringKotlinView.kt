@@ -26,10 +26,12 @@ class TableFilteringKotlinView : Composite<Div>() {
     }
     self.apply {
       styles["padding"] = 30.px
+
       flexLayout {
         vertical()
         alignContent = FlexContentAlignment.CENTER
         height = 500.px
+
         textField("Search", type = TextField.Type.SEARCH) {
           placeholder = "Search by title..."
           onModify {

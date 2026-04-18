@@ -50,6 +50,7 @@ class TableDynamicStylingKotlinView : Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       maxWidth = 760.px
       styles["margin"] = "1em auto"
+
       val update = button("Increase Alice Age", ButtonTheme.GRAY) {
         maxWidth = 200.px
       }

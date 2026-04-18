@@ -21,6 +21,7 @@ class TableLayoutStylingKotlinView : Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-xl)"
+
       table {
         size = 100.percent to 260.px
         isStriped = true

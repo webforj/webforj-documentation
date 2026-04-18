@@ -32,11 +32,13 @@ class TableColumnFlexSizingKotlinView : Composite<FlexLayout>() {
       padding = "var(--dwc-space-l)"
       spacing = "var(--dwc-space-l)"
       height = 100.vh
+
       flexLayout {
         direction = FlexDirection.ROW
         spacing = "var(--dwc-space-l)"
         alignment = FlexAlignment.END
         wrap = FlexWrap.WRAP
+
         flexControl("Title", 2.0) {
           updateColumnFlex(it, "Title")
         }
@@ -95,6 +97,7 @@ class TableColumnFlexSizingKotlinView : Composite<FlexLayout>() {
       direction = FlexDirection.COLUMN
       spacing = 5.px
       minWidth = 120.px
+
       paragraph("$label Flex:") {
         styles["margin"] = "0"
         styles["font-weight"] = "bold"
