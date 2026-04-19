@@ -5,8 +5,6 @@ import com.webforj.component.html.elements.Div
 import com.webforj.component.table.Column
 import com.webforj.component.table.renderer.VoidElementRenderer
 import com.webforj.kotlin.dsl.component.table.table
-import com.webforj.kotlin.extension.attributes
-import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.vh
 import com.webforj.kotlin.extension.vw
 import com.webforj.router.annotation.FrameTitle
@@ -35,7 +33,7 @@ class TableEditDataKotlinView : Composite<Div>() {
         val editRenderer = VoidElementRenderer("dwc-icon-button") {
           edit(it.item)
         }
-        editRenderer.apply { attributes["name"] = "pencil-pin" }
+        editRenderer.setAttribute("name", "pencil-pin")
         table.addColumn<MusicRecord>(editRenderer).apply {
           alignment = Column.Alignment.CENTER
           pinDirection = Column.PinDirection.RIGHT
