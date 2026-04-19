@@ -85,10 +85,13 @@ class ComboBoxMaxRowKotlinView : Composite<FlexLayout>() {
         isRequired = true
         value = comboBox.maxRowCount.toDouble()
       }
-      button("Apply", ButtonTheme.PRIMARY) {
+      val select = button("Apply", ButtonTheme.PRIMARY) {
         onClick {
           comboBox.maxRowCount = numberField.value.toInt()
         }
+      }
+      numberField.onValueChange {
+        select.isEnabled = !numberField.isInvalid
       }
     }
   }
