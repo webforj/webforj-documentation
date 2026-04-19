@@ -1,25 +1,24 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-sidebar_class_name: updated-content
-_i18n_hash: 147474b17005c532723aacd8af9391ea
+_i18n_hash: 8feae38bceaabbc49e058a8d2f56f3ba
 ---
-Spring DevTools tarjoaa automaattiset sovelluksen uudelleenkäynnistykset koodimuutosten yhteydessä. webforJ DevTools lisää automaattisen selaimen päivityksen - kun Spring käynnistää sovelluksesi uudelleen, selain päivittyy automaattisesti webforJ:n LiveReload-palvelimen kautta.
+Spring DevTools tarjoaa automaattiset sovelluksen uudelleenkäynnistykset koodin muuttuessa. webforJ DevTools lisää automaattisen selaimen päivityksen - kun Spring käynnistää sovelluksesi uudelleen, selain päivittyy automaattisesti webforJ:n LiveReload-palvelimen kautta.
 
-Eri tiedostotyypit laukaisevat erilaisia päivityskäyttäytymisiä. Java-koodimuutokset aiheuttavat täydellisen Spring-uudelleenkäynnistyksen ja selaimen päivityksen. CSS- ja kuvamuutokset päivittyvät ilman sivun uudelleenlataamista, säilyttäen lomaketiedot ja sovelluksen tilan.
+Eri tiedostotyypit laukaisevat erilaisen uudelleenlataus käyttäytymisen. Java-koodin muutokset aiheuttavat täydellisen Spring-uudelleenkäynnistyksen ja selaimen päivityksen. CSS- ja kuvamuutokset päivitetään ilman sivun uudelleenlatausta, säilyttäen lomaketiedot ja sovellustilan.
 
 ## Understanding webforJ DevTools {#understanding-webforj-devtools}
 
-webforJ laajentaa Spring DevToolseja selaimen synkronoinnilla. Kun Spring havaitsee tiedostomuutoksia ja käynnistää uudelleen, webforJ DevTools päivittää selaimesi automaattisesti.
+webforJ laajentaa Spring DevToolsia selaimen synkronoinnilla. Kun Spring havaitsee tiedostomuutoksia ja käynnistää, webforJ DevTools päivittää automaattisesti selaimesi.
 
 ### Reload behavior {#reload-behavior}
 
-Eri tiedostotyypit laukaisevat erilaisia latausstrategioita:
+Eri tiedostotyypit laukaisevat erilaisia uudelleenlatausstrategioita:
 
-- **Java-tiedostot**: Täysi selaimen sivun lataus Spring-uudelleenkäynnistyksen jälkeen
-- **JavaScript-tiedostot**: Täysi selaimen sivun lataus Spring-uudelleenkäynnistyksen jälkeen
-- **CSS-tiedostot**: Tyylipäivitykset ilman sivun uudelleenlataamista  
-- **Kuvat**: Päivitys paikalla ilman sivun uudelleenlataamista
+- **Java-tiedostot**: Täydellinen selaimen sivun uudelleenlataus Spring-uudelleenkäynnistyksen jälkeen
+- **JavaScript-tiedostot**: Täydellinen selaimen sivun uudelleenlataus Spring-uudelleenkäynnistyksen jälkeen
+- **CSS-tiedostot**: Tyylipäivitykset ilman sivun uudelleenlatausta  
+- **Kuvat**: Päivitys paikallaan ilman sivun uudelleenlatausta
 
 ## Dependencies {#dependencies}
 
@@ -27,34 +26,34 @@ Lisää sekä Spring DevTools että webforJ DevTools projektiisi:
 
 ```xml title="pom.xml"
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-devtools</artifactId>
-    <optional>true</optional>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-devtools</artifactId>
+  <optional>true</optional>
 </dependency>
 
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-spring-devtools</artifactId>
-    <version>${webforj.version}</version>
-    <optional>true</optional>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-devtools</artifactId>
+  <version>${webforj.version}</version>
+  <optional>true</optional>
 </dependency>
 ```
 
 ## Configuration {#configuration}
 
-Ota webforJ DevTools käyttöön `application.properties` -tiedostossasi:
+Ota käyttöön webforJ DevTools `application.properties`-tiedostossasi:
 
 ```Ini title="application.properties"
-# Ota webforJ-selaimen automaattinen uudelleentäyttö käyttöön
+# Ota käyttöön webforJ selaimen automaattinen uudelleenlataus
 webforj.devtools.livereload.enabled=true
 
-# Ota välitön sammutus käyttöön nopeampia uudelleenkäynnistyksiä varten
+# Ota käyttöön välitön sammutus nopeampia uudelleenkäynnistyksiä varten
 server.shutdown=immediate
 ```
 
 ### Advanced configuration {#advanced-configuration}
 
-Määritä WebSocket-yhteys ja päivityskäyttäytyminen:
+Määritä WebSocket-yhteys ja uudelleenlatauskäyttäytyminen:
 
 ```Ini title="application.properties"
 # WebSocket-palvelimen portti (oletus: 35730)
@@ -63,19 +62,19 @@ webforj.devtools.livereload.websocket-port=35730
 # WebSocket-päätepisteen polku (oletus: /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
-# Sydämenlyönnin väli millisekunneissa (oletus: 30000)
+# Sydämen lyönti väli millisekunneissa (oletus: 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
-# Ota kuuma uudelleenlataus käyttöön staattisille resursseille (oletus: true)
+# Ota käyttöön kuuma lataus staattisille resursseille (oletus: true)
 webforj.devtools.livereload.static-resources-enabled=true
 ```
 
-<DocChip chip='since' label='25.03' /> Määritä selaimen avautuminen sovelluksen käynnistyessä:
+<DocChip chip='since' label='25.03' /> Määritä selaimen avautuminen sovelluksen käynnistyksessä:
 
 ```Ini title="application.properties"
-# Ota selaimen avautuminen käyttöön (oletus: false)
+# Ota käyttöön selaimen avautuminen (oletus: false)
 webforj.devtools.browser.open=true
 
-# localhost, isäntänimi tai IP-osoite (oletus: localhost)
+# localhost, isännän nimi tai IP-osoite (oletus: localhost)
 webforj.devtools.browser.host=localhost
 ```

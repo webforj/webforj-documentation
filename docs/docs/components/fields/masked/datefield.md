@@ -1,7 +1,6 @@
 ---
 title: MaskedDateField
 sidebar_position: 5
-sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />

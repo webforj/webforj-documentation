@@ -1,187 +1,219 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
-_i18n_hash: c59ff0def84230ed79877cba3d5e5aa4
+description: Step 1 - Add components to an app.
+_i18n_hash: ac74bc5c04bce477a7407c9ff94323a4
 ---
-Tämä ensimmäinen vaihe luo perustan asiakashallintaohjelmalle luomalla yksinkertaisen, interaktiivisen käyttöliittymän. Tämä osoittaa, kuinka perustaa perus webforJ -sovellus, jossa on yksi painike, joka avaa dialogin, kun sitä napsautetaan. Tämä on yksinkertainen toteutus, joka esittelee keskeiset komponentit ja antaa sinulle käsityksen siitä, kuinka webforJ toimii.
+In [Projektin asetukset](/docs/introduction/tutorial/project-setup), loit webforJ-projektin. Nyt on aika luoda projektin pääluokka ja lisätä interaktiivinen käyttöliittymä webforJ-komponenttien avulla. Tässä vaiheessa opit:
 
-Tämä vaihe hyödyntää webforJ:n tarjoamaa perus sovelluskirjastoa määrittämään sovelluksen rakennetta ja käyttäytymistä. Seuraavat vaiheet siirtyvät kehittyneempään asetukseen, joka käyttää reititystä useiden näyttöjen hallintaan, joka esitellään kohdassa [Scaling with Routing and Composites](./scaling-with-routing-and-composites).
+- Sovellusten sisäänkäyntipiste webforJ:n ja Spring Bootin avulla
+- webforJ- ja HTML-elementtikomponentit
+- CSS:n käyttäminen komponenttien tyylittämiseen
 
-Tämän vaiheen lopuksi sinulla on toimiva sovellus, joka osoittaa perusvuorovaikutusta komponenttien ja tapahtumien käsittelyn kanssa webforJ:ssa. Suorittaaksesi sovelluksen:
+Tämän vaiheen suorittaminen luo version [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app).
 
-- Siirry `1-creating-a-basic-app` -hakemistoon
-- Suorita komento `mvn jetty:run`
+<!-- Insert video here -->
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
-  </video>
-</div>
+## Sovelluksen ajaminen {#running-the-app}
 
-## Creating a webforJ app {#creating-a-webforj-app}
+Sovellustasi kehittäessäsi voit käyttää [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) vertailukohtana. Näet sovelluksen toiminnassa:
 
-WebforJ:ssa `App` edustaa keskushubia projektisi määrittämiseksi ja hallitsemiseksi. Jokainen webforJ -sovellus alkaa luomalla yksi luokka, joka laajentaa perus `App`-luokkaa, joka toimii ydinkehykseksi:
+1. Siirry pääkansioon, joka sisältää `pom.xml` tiedoston, tämä on `1-creating-a-basic-app`, jos seuraat mukana GitHubin versiota.
 
-- Hallita sovelluksen elinkaarta, mukaan lukien alustaminen ja lopettaminen.
-- Hallita reititystä ja navigaatiota, jos se on käytössä.
-- Määrittää sovelluksen teema, alue ja muut yleiset asetukset.
-- Tarjota olennaisia työkaluja ympäristön ja komponenttien kanssa vuorovaikutukseen.
+2. Käytä seuraavaa Maven komentoa ajaaksesi Spring Boot sovellusta paikallisesti:
+    ```bash
+    mvn
+    ```
 
-### Extending the `App` class {#extending-the-app-class}
+Sovelluksen ajaminen avaa automaattisesti uuden selaimen osoitteessa `http://localhost:8080`.
 
-Tässä vaiheessa luodaan luokka nimeltä `DemoApplication.java`, joka laajentaa `App`-luokkaa.
+## Sisäänkäyntipiste {#entry-point}
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // Ydin sovelluslogiikka tulee tähän
+Jokaisessa webforJ-sovelluksessa on yksi luokka, joka laajentaa <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>. Tätä tutoriaalia ja muita julkaistuja webforJ-projekteja varten se on yleisesti nimeltään `Application`. Tämä luokka sijaitsee paketissa, joka on nimetty käyttämäsi `groupId`:n mukaan, jonka käytit [Projektin asetuksissa](/docs/introduction/tutorial/project-setup):
+
+```
+1-creating-a-basic-app 
+│   .editorconfig
+│   .gitignore
+│   pom.xml
+│   README.md
+│
+├───.vscode
+├───src/main/java
+// highlight-next-line
+│   └──com/webforj/tutorial
+// highlight-next-line
+│       └──Application.java
+└───target
+```
+
+`Application`-luokan sisällä `SpringApplication.run()`-metodi käyttää konfiguraatioita sovelluksen käynnistämiseen. Erilaiset annotaatiot ovat sovelluksen konfiguraatioita varten.
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Asiakassovellus", shortName = "Asiakassovellus")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
   }
 }
 ```
 
-:::tip Avainasetukset
+### Annotaatit {#annotations}
 
-Tässä demo-sovelluksessa `webforj.conf` -tiedosto on määritetty seuraavilla kahdella olennaisella ominaisuudella:
+[`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) on keskeinen annotaatio Spring Bootissa. Laitat tämän annotaation pääluokkaan merkitäksesi sen sovelluksesi aloituspisteeksi.
 
-- **`webforj.entry`**: Määrittää täydellisen luokan nimen, joka laajentaa `App`:ta ja toimii pääsijaintina projektillesi. Tämän oppaan vuoksi aseta se arvoon `com.webforj.demos.DemoApplication` estääksesi epäselvyyksiä alustamisen aikana.
-  ```hocon
-  webforj.entry = com.webforj.demos.DemoApplication
-  ```
-- **`webforj.debug`**: Ota käyttöön virhetilatila yksityiskohtaisia lokitietoja ja virheiden näkyvyyttä varten kehityksen aikana. Varmista, että se on asetettu `true`, kun työskentelet tämän oppaan parissa:
-  ```hocon
-  webforj.debug = true
-  ```
+`@StyleSheet`, `@AppTheme`, ja `@AppProfile` ovat vain muutamia monista <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ-annotaatioista</JavadocLink>, jotka ovat käytettävissä, kun haluat erikseen asettaa konfiguraatioita.
 
-Lisätietoja muista asetuksista löytyy [Configuration Guide](../../configuration/overview).
-:::
+- **`@StyleSheet`** upottaa CSS-tiedoston verkkosivulle. Lisätietoja siitä, kuinka vuorovaikuttaa tietyn CSS-tiedoston kanssa, on myöhemmin kohdassa [Tyylitettäessä CSS:llä](#styling-with-css).
 
-### Overriding the `run()` method {#overriding-the-run-method}
+- **`@AppTheme`** hallitsee sovelluksen visuaalista teemaa. Jos se on asetettu `system`, sovellus omaksuu automaattisesti käyttäjän suosiman teeman: `light`, `dark` tai `dark-pure`. Lisätietoja erilaisten teemojen luomisesta tai oletusteemojen ylikirjoittamisesta löytyy [Teemat](/docs/styling/themes) artikkelista.
 
-Kun projekti on oikein määritetty, `run()`-metodi `App`-luokassa ylikirjoitetaan.
+- **`@AppProfile`** auttaa konfiguroimaan, miten sovellus esitetään käyttäjälle [asennettavana sovelluksena](/docs/configuration/installable-apps). Vähimmäisvaatimuksena tällä annotaatiolla on `name` sovelluksen täydelle nimelle ja `shortName` käytettäväksi, kun tilaa on rajallisesti. `shortName` ei saisi ylittää 12 merkkiä.  
 
-`run()`-metodi on sovelluksesi ydin webforJ:ssa. Se määrittää, mitä tapahtuu sovelluksen alustamisen jälkeen, ja on pääsijainti sovelluksesi ominaisuuksille. Ylikirjoittamalla `run()`-metodin voit toteuttaa logiikan, joka luo ja hallitsee sovelluksesi käyttöliittymää ja käyttäytymistä.
+## Käyttöliittymän luominen {#creating-a-ui}
 
-:::tip Reitityksen käyttäminen
-Reitityksen toteuttaminen sovelluksessa ei vaadi `run()`-metodin ylikirjoittamista, sillä kehys käsittelee automaattisesti reittien alustamisen ja alkuperäisen `Frame`:n luomisen. `run()`-metodia kutsutaan sen jälkeen, kun perusreitti on ratkaistu, varmistaen, että sovelluksen navigointijärjestelmä on täysin alustettu ennen kuin mitään logiikkaa suoritetaan. Tämä opas syventää reitityksen toteutusta [step 3](scaling-with-routing-and-composites). Lisätietoja on myös [Reititysartikkelissa](../../routing/overview).
-:::
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    // Sovelluslogiikka
-  }
-}
-```
-
-## Adding components {#adding-components}
-
-WebforJ:ssa komponentit ovat sovelluksesi käyttöliittymän rakennuspalikoita. Nämä komponentit edustavat erillisiä osia sovelluksesi käyttöliittymästä, kuten painikkeita, tekstikenttiä, dialogueja tai taulukoita.
-
-Voit ajatella käyttöliittymää komponenttien puuna, jossa `Frame` toimii juurena. Jokainen `Frame`:en lisätty komponentti muodostaa oksan tai lehden tässä puussa, mikä vaikuttaa sovelluksesi kokonaisrakenteeseen ja käyttäytymiseen.
-
-:::tip Komponenttikatalogi
-Katso [tämä sivu](../../components/overview) saadaksesi luettelon eri komponenteista, jotka ovat käytettävissä webforJ:ssa.
-:::
-
-### App `Frame` {#app-frame}
-
-`Frame`-luokka webforJ:ssa edustaa ei-sisäkkästä, ylimmällä tasolla olevaa ikkunaa sovelluksessasi. `Frame` toimii tyypillisesti käyttöliittymäkomponenttien pääkonteinerina, joten se on olennainen rakennuspalikka käyttöliittymän rakentamisessa. Jokaisessa sovelluksessa on oltava vähintään yksi `Frame`, ja voit lisätä komponentteja, kuten painikkeita, dialogeja tai lomakkeita näihin kehyksiin.
-
-`Frame` luodaan `run()`-metodissa tässä vaiheessa - myöhemmin komponentteja lisätään tänne.
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-  }
-}
-```
-
-### Server and client side components {#server-and-client-side-components}
-
-Jokaisella palvelinpuolen komponentilla webforJ:ssa on vastaava asiakaspuolen verkkokomponentti. Palvelinpuolen komponentit käsittelevät logiikkaa ja taustatoimintoja, kun taas asiakaspuolen komponentit, kuten `dwc-button` ja `dwc-dialog`, hallitsevat etupään renderointia ja tyylitystä.
-
-:::tip Kokoavat komponentit
-
-Peruskomponenttien lisäksi, joita webforJ tarjoaa, voit suunnitella mukautettuja kokoavia komponentteja ryhmittämällä useita elementtejä yhdeksi uudelleen käytettäväksi yksiköksi. Tätä käsitettä käsitellään tämän oppaan vaiheessa. Lisätietoja on [Composite Article](../../building-ui/composite-components)
-:::
-
-Komponentit on lisättävä säilytys- luokkaan, joka toteuttaa <JavadocLink type="foundation" location="com/webforj/concern/HasComponents" code='true' >HasComponents</JavadocLink> -rajapinnan. `Frame` on yksi tällainen luokka - tässä vaiheessa lisää `Paragraph` ja `Button` `Frame`:en, jotka näkyvät käyttöliittymässä selaimessa:
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  Paragraph demo = new Paragraph("Demo Application!");
-  Button btn = new Button("Info");
-
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> showMessageDialog("This is a demo!", "Info"));
-    mainFrame.add(demo, btn);
-  }
-}
-```
-
-Tämän suorittaminen antaa sinulle yksinkertaisesti muotoillun painikkeen, joka mahdollistaa viestin näyttämisen, jossa lukee "Tämä on demo!"
-
-## Styling with CSS {#styling-with-css}
-
-Tyylittely webforJ:ssa antaa sinulle täydellisen joustavuuden suunnitella sovelluksesi ulkoasua. Vaikka kehys tukee yhtenäistä suunnittelua ja tyyliä suoraan laatikosta, se ei pakota erityistä tyylittelytapaa, mikä mahdollistaa mukautettujen tyylien soveltamisen, jotka ovat linjassa sovelluksesi vaatimusten kanssa.
-
-WebforJ:n avulla voit dynaamisesti lisätä luokkien nimiä komponentteihin ehdollista tai interaktiivista tyylittelyä varten, käyttää CSS:ää johdonmukaisen ja tehokkaan suunnittelujärjestelmän saavuttamiseksi, ja liittää kokonaisia sisäisiä tai ulkoisia tyylitiedostoja.
-
-### Adding CSS classes to components {#adding-css-classes-to-components}
-
-Voit dynaamisesti lisätä tai poistaa luokkia komponentteista käyttämällä `addClassName()` ja `removeClassName()` -menetelmiä. Nämä menetelmät mahdollistavat komponentin tyylien hallinnan sovelluksesi logiikan perusteella. Lisää `mainFrame`-luokan nimi edellisissä vaiheissa luotuun `Frame`:en lisäämällä seuraava koodi `run()`-metodiin:
+Luodaksesi käyttöliittymäsi, sinun täytyy lisätä [HTML-elementtikomponentteja](/docs/components/html-elements) ja [webforJ-komponentteja](/docs/components/overview). Tällä hetkellä sinulla on vain yksisivuinen sovellus, joten lisäät komponentit suoraan `Application`-luokkaan. 
+Tätä varten ylitse `App.run()`-metodin ja luo `Frame`, johon voit lisätä komponentteja. 
 
 ```java
-mainFrame.addClassName("mainFrame");
-```
+@Override
+public void run() throws WebforjException {
+  Frame mainFrame = new Frame();
 
-### Attaching CSS files {#attaching-css-files}
+  // Luo käyttöliittymän komponentit ja lisää ne kehykseen
 
-Tyylitelläksesi sovellustasi voit lisätä CSS-tiedostoja projektiisi joko käyttämällä resurssiannotaatioita tai hyödyntämällä webforJ <JavadocLink type="foundation" location="com/webforj/Page" >asset-API:a</JavadocLink> ajon aikana. [Katso tämä artikkeli](../../managing-resources/importing-assets) saadaksesi lisätietoja.
-
-Esimerkiksi @StyleSheet-annotaatiota käytetään tyylien lisäämiseksi resurssit/staattinen-hakemistosta. Se luo automaattisesti URL-osoitteen määritetylle tiedostolle ja liittää sen DOM:iin varmistaen, että tyylit sovelletaan sovellukseesi. Huomaa, että tiedostot, jotka sijaitsevat staattisen hakemiston ulkopuolella, eivät ole käytettävissä.
-
-```java title="DemoApplication.java"
-@StyleSheet("ws://styles/library.css")
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // Sovelluslogiikka täällä
-  }
 }
 ```
-:::tip Verkkopalvelimen URL-osoitteet
-Varmistaaksesi, että staattiset tiedostot ovat käytettävissä, ne tulee sijoittaa hakemistoon resources/static. Jotta voit liittää staattisen tiedoston, voit rakentaa sen URL-osoitteen käyttämällä verkkopalvelun protokollaa.
+
+### HTML-elementtien käyttäminen {#using-html-elements}
+
+Voit lisätä standardeja HTML-elementtejä sovellukseesi [HTML-elementtikomponenttien](/docs/components/html-elements) avulla.
+Luo uusi komponenttitapaus, ja käytä `add()`-metodia lisätäksesi sen `Frameen`:
+
+```java
+// Luo säiliö käyttöliittymän elementeille
+Frame mainFrame = new Frame();
+
+// Luo HTML-komponentti
+Paragraph tutorial = new Paragraph("Tutoriaalisovellus!");
+
+// Lisää komponentti säiliöön
+mainFrame.add(tutorial);
+```
+
+### webforJ-komponenttien käyttäminen {#webforj-components-and-html-elements}
+
+Vaikka HTML-elementit ovat hyödyllisiä rakenteen, semantiikan ja kevyiden käyttöliittymävaatimusten kohdalla, [webforJ-komponentit](/docs/components/overview) tarjoavat monimutkaisempaa ja dynaamisempaa käyttäytymistä.
+
+Alla oleva koodi lisää [Button](/docs/components/button) komponentin, muuttaa sen ulkonäköä `setTheme()`-metodilla, ja lisää tapahtumakuuntelijan luodakseen [Message Dialog](/docs/components/option-dialogs/message) komponentin, kun painiketta napsautetaan.
+Useimmat webforJ-komponenttien metodit, jotka muokkaavat komponenttia, palauttavat itse komponentin, joten voit ketjuttaa useita metodeja tiiviimpää koodia varten.
+
+```java
+// Luo säiliö käyttöliittymän elementeille
+Frame mainFrame = new Frame();
+
+// Luo webforJ-komponentti
+Button btn = new Button("Info");
+
+// Muokkaa webforJ-komponenttia ja lisää tapahtumakuuntelija
+btn.setTheme(ButtonTheme.PRIMARY)
+  .addClickListener(e -> OptionDialog.showMessageDialog("Tämä on tutoriaali!", "Info"));
+
+// Lisää komponentti säiliöön
+mainFrame.add(btn);
+```
+
+## Tyylitys CSS:llä {#styling-with-css}
+
+Useimmilla webforJ-komponenteilla on sisäänrakennettuja metodeja yleisten tyylimuutosten, kuten koon ja teeman, tekemiseen.
+
+```java
+// Aseta kehyksemittakaava CSS-avainsanan avulla
+mainFrame.setWidth("fit-content");
+
+// Aseta painikkeen maksimi leveys pikseleinä
+btn.setMaxWidth(200);
+
+// Aseta painikkeen teema PRIMARYksi
+btn.setTheme(ButtonTheme.PRIMARY);
+```
+
+Nämä menetelmät lisäksi voit tyylittää sovellustasi CSS:llä. **Tyylittely**-osiossa minkä tahansa komponentin asiakirjasivulla on tarkkoja tietoja soveltuvista CSS-ominaisuuksista.
+
+webforJ:llä on myös joukko suunniteltuja CSS-muuttujia, joita kutsutaan DWC-tokeneiksi. Katso [Tyylitys](/docs/styling/overview) asiakirjasta saadaksesi tarkkaa tietoa siitä, kuinka tyylittää webforJ-komponentteja ja kuinka käyttää tokeneja.
+
+### CSS-tiedoston viittaaminen {#referencing-a-css-file} 
+
+On parasta omistaa erillinen CSS-tiedosto, jotta kaikki pysyy järjestyksessä ja helposti ylläpidettävänä. Luo tiedosto nimeltä `card.css` sisään `src/main/resources/static/css`, seuraavalla CSS-luokkadefiniitiolla:
+
+```css title="card.css"
+.card {
+  display: grid;
+  gap: var(--dwc-space-l);
+  padding: var(--dwc-space-l);
+  margin: var(--dwc-space-l) auto;
+  border: thin solid var(--dwc-color-default);
+  border-radius: 16px;
+  background-color: var(--dwc-surface-3);
+  box-shadow: var(--dwc-shadow-xs);
+}
+```
+
+Viittaa sitten tiedostoon `Application.java` käyttämällä `@StyleSheet` annotaatiota CSS-tiedoston nimellä. Tällä vaiheella se on `@StyleSheet("ws://css/card.css")`.
+
+:::tip Verkkopalvelin protokolla
+Tässä tutoriaalissa käytetään verkkopalvelinprotokollaa CSS-tiedoston viittaamiseen. Lisätietoja siitä, kuinka tämä toimii, katso [Resurssien hallinta](/docs/managing-resources/overview).
 :::
 
-### Sample CSS code {#sample-css-code}
+### CSS-luokkien lisääminen komponentteihin {#adding-css-classes-to-components}
 
-CSS-tiedostoa käytetään projektissasi hakemistossa `resources > static > css > demoApplication.css`, ja seuraavaa CSS:ää käytetään sovelluksen perusmuotoilun soveltamiseen.
+Voit dynaamisesti lisätä tai poistaa luokkien nimiä komponentteihin käyttämällä `addClassName()` ja `removeClassName()` menetelmiä. Tässä tutoriaalissa käytetään vain yhtä CSS-luokkaa:
 
-```css
-.mainFrame {
-  display: inline-grid;
-  gap: 20px;
-  margin: 20px;
-  padding: 20px;
-  border: 1px dashed;
-  border-radius: 10px;
+```java
+mainFrame.addClassName("card");
+```
+
+## Valmis `Application` {#completed-application}
+
+`Application`-luokkasi tulisi nyt näyttää seuraavalta:
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Asiakassovellus", shortName = "Asiakassovellus")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
+
+  @Override
+  public void run() throws WebforjException {
+    Frame mainFrame = new Frame();
+    Paragraph tutorial = new Paragraph("Tutoriaalisovellus!");
+    Button btn = new Button("Info");
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+        .setMaxWidth(200)
+        .addClickListener(e -> OptionDialog.showMessageDialog("Tämä on tutoriaali!", "Info"));
+
+    mainFrame.setWidth("fit-content")
+        .addClassName("card")
+        .add(tutorial, btn);
+  }
+
 }
 ```
 
-Tämän jälkeen seuraava annotaatio tulisi lisätä `App`-luokkaasi:
+:::tip Useita sivuja
+Monimutkaisemmassa sovelluksessa voit jakaa käyttöliittymän useisiin sivuihin paremman järjestämisen vuoksi. Tämä käsite käsitellään myöhemmin tässä tutoriaalissa kohdassa [Reititys ja yhdistelmät](/docs/introduction/tutorial/routing-and-composites).
+:::
 
-```java title="DemoApplication.java"
-@StyleSheet("ws://css/demoApplication.css")
-@AppTitle("Demo Step 1")
-public class DemoApplication extends App {
-```
+## Seuraava vaihe {#next-step}
 
-CSS-tyylit sovelletaan pää `Frame`:een ja tarjoavat rakennetta järjestämällä komponentteja [verkkogalleria](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout)-asettelun avulla, ja lisäämällä marginaali-, täyttö- ja reunustyylejä, jotta käyttöliittymä näyttää visuaalisesti järjestäytyneeltä.
+Kun olet luonut toimivan sovelluksen perustason käyttöliittymällä, seuraava vaihe on lisätä tietomalli ja näyttää tulokset `Table` komponentissa kohdassa [Työskentely datan kanssa](/docs/introduction/tutorial/working-with-data).

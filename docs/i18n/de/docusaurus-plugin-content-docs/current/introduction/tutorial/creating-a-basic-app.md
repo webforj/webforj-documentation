@@ -1,187 +1,218 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
-_i18n_hash: c59ff0def84230ed79877cba3d5e5aa4
+description: Step 1 - Add components to an app.
+_i18n_hash: ac74bc5c04bce477a7407c9ff94323a4
 ---
-Dieser erste Schritt legt die Grundlage für die Kundenverwaltungs-App, indem er eine einfache, interaktive Benutzeroberfläche erstellt. Dies demonstriert, wie man eine grundlegende webforJ-App einrichtet, mit einem einzigen Button, der beim Klicken einen Dialog öffnet. Es ist eine unkomplizierte Implementierung, die wichtige Komponenten einführt und Ihnen ein Gefühl dafür gibt, wie webforJ funktioniert.
+In [Projektsetup](/docs/introduction/tutorial/project-setup) haben Sie ein webforJ-Projekt erstellt. Jetzt ist es an der Zeit, die Hauptklasse für das Projekt zu erstellen und eine interaktive Schnittstelle mit webforJ-Komponenten hinzuzufügen. In diesem Schritt erfahren Sie:
 
-Dieser Schritt nutzt die Basis-App-Klasse von webforJ, um die Struktur und das Verhalten der App zu definieren. Im weiteren Verlauf wird in späteren Schritten auf eine fortgeschrittenere Einrichtung umgestiegen, die Routing verwendet, um mehrere Bildschirme zu verwalten, wie in [Scaling with Routing and Composites](./scaling-with-routing-and-composites) eingeführt.
+- Den Einstiegspunkt für Apps, die webforJ und Spring Boot verwenden
+- webforJ- und HTML-Elementkomponenten
+- Verwendung von CSS zur Gestaltung von Komponenten
 
-Am Ende dieses Schrittes haben Sie eine funktionierende App, die die grundlegende Interaktion mit Komponenten und die Ereignisbehandlung in webforJ demonstriert. Um die App auszuführen:
+Das Abschließen dieses Schrittes erstellt eine Version von [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app).
 
-- Gehen Sie zum Verzeichnis `1-creating-a-basic-app`
-- Führen Sie den Befehl `mvn jetty:run` aus
+<!-- Video hier einfügen -->
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
-  </video>
-</div>
+## Die App ausführen {#running-the-app}
 
-## Erstellung einer webforJ-App {#creating-a-webforj-app}
+Während Sie Ihre App entwickeln, können Sie [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) als Vergleich verwenden. Um die App in Aktion zu sehen:
 
-In webforJ stellt eine `App` das zentrale Element zur Definition und Verwaltung Ihres Projekts dar. Jede webforJ-App beginnt mit der Erstellung einer Klasse, die die grundlegende `App`-Klasse erweitert, die als Kernframework dient, um:
+1. Navigieren Sie zum übergeordneten Verzeichnis, das die Datei `pom.xml` enthält, dies ist `1-creating-a-basic-app`, wenn Sie der Version auf GitHub folgen.
 
-- Den Lebenszyklus der App zu verwalten, einschließlich Initialisierung und Beendigung.
-- Routing und Navigation zu verwalten, falls aktiviert.
-- Das Thema, die Locale und andere allgemeine Konfigurationen der App festzulegen.
-- Wesentliche Hilfsfunktionen zur Interaktion mit der Umgebung und den Komponenten bereitzustellen.
+2. Verwenden Sie den folgenden Maven-Befehl, um die Spring Boot-App lokal auszuführen:
+    ```bash
+    mvn
+    ```
 
-### Erweiterung der `App`-Klasse {#extending-the-app-class}
+Das Ausführen der App öffnet automatisch einen neuen Browser unter `http://localhost:8080`.
 
-Für diesen Schritt wird eine Klasse namens `DemoApplication.java` erstellt, die die `App`-Klasse erweitert.
+## Der Einstiegspunkt {#entry-point}
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // Die Kernaudio-Logik wird hier platziert
+Jede webforJ-App enthält eine einzelne Klasse, die <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink> erweitert. Für dieses Tutorial und andere veröffentlichte webforJ-Projekte wird sie häufig `Application` genannt. Diese Klasse befindet sich in einem Paket, das nach der `groupId` benannt ist, die Sie im [Projektsetup](/docs/introduction/tutorial/project-setup) verwendet haben:
+
+```
+1-creating-a-basic-app 
+│   .editorconfig
+│   .gitignore
+│   pom.xml
+│   README.md
+│
+├───.vscode
+├───src/main/java
+// highlight-next-line
+│   └──com/webforj/tutorial
+// highlight-next-line
+│       └──Application.java
+└───target
+```
+
+Innerhalb der `Application`-Klasse verwendet die Methode `SpringApplication.run()` die Konfigurationen zum Starten der App. Die verschiedenen Annotationen sind für die Konfigurationen der App.
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Kundenanwendung", shortName = "CustomerApp")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
   }
 }
 ```
 
-:::tip Wichtige Konfigurationseigenschaften
+### Annotationen {#annotations}
 
-In dieser Demo-App ist die Datei `webforj.conf` mit den folgenden zwei wesentlichen Eigenschaften konfiguriert:
+Die [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) ist eine Kernannotation in Spring Boot. Sie setzen diese Annotation auf die Hauptklasse, um sie als Einstiegspunkt Ihrer App zu kennzeichnen.
 
-- **`webforj.entry`**: Gibt den vollqualifizierten Namen der Klasse an, die `App` erweitert und als Haupteinstiegspunkt für Ihr Projekt fungiert. Für dieses Tutorial setzen Sie sie auf `com.webforj.demos.DemoApplication`, um Mehrdeutigkeiten während der Initialisierung zu vermeiden.
-  ```hocon
-  webforj.entry = com.webforj.demos.DemoApplication
-  ```
-- **`webforj.debug`**: Aktiviert den Debug-Modus für detaillierte Protokolle und Sichtbarkeit von Fehlern während der Entwicklung. Stellen Sie sicher, dass dies während der Arbeit an diesem Tutorial auf `true` gesetzt ist:
-  ```hocon
-  webforj.debug = true
-  ```
+`@StyleSheet`, `@AppTheme` und `@AppProfile` sind nur einige der vielen <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ-Annotationen</JavadocLink>, die Ihnen zur Verfügung stehen, wenn Sie explizit Konfigurationen festlegen möchten.
 
-Für weitere Informationen zu zusätzlichen Konfigurationsoptionen siehe den [Konfigurationsleitfaden](../../configuration/overview).
-:::
+- **`@StyleSheet`** bettet eine CSS-Datei in die Webseite ein. Weitere Informationen darüber, wie Sie mit einer bestimmten CSS-Datei interagieren können, finden Sie später in [Styling mit CSS](#styling-with-css).
 
-### Überschreiben der `run()`-Methode {#overriding-the-run-method}
+- **`@AppTheme`** verwaltet das visuelle Thema der App. Wenn es auf `system` gesetzt ist, passt sich die App automatisch dem bevorzugten Thema des Benutzers an: `light`, `dark` oder `dark-pure`. Informationen zur Erstellung benutzerdefinierter Themen oder zum Überschreiben der Standardthemen finden Sie im Artikel [Themen](/docs/styling/themes).
 
-Nachdem Sie die korrekte Konfiguration für das Projekt sichergestellt haben, wird die `run()`-Methode in Ihrer `App`-Klasse überschrieben.
+- **`@AppProfile`** hilft, wie die App dem Benutzer als [installierbare App](/docs/configuration/installable-apps) präsentiert wird. Mindestens benötigt diese Annotation einen `name` für den vollständigen Namen der App und einen `shortName` für den Einsatz bei begrenztem Platz. Der `shortName` sollte nicht länger als 12 Zeichen sein.  
 
-Die `run()`-Methode ist das Herz Ihrer App in webforJ. Sie definiert, was passiert, nachdem die App initialisiert wurde, und ist der Haupteinstiegspunkt für die Funktionen Ihrer App. Durch das Überschreiben der `run()`-Methode können Sie die Logik implementieren, die die Benutzeroberfläche und das Verhalten Ihrer App erstellt und verwaltet.
+## Eine Benutzeroberfläche erstellen {#creating-a-ui}
 
-:::tip Verwendung von Routing
-Bei der Implementierung von Routing innerhalb einer App ist das Überschreiben der `run()`-Methode nicht erforderlich, da das Framework automatisch die Initialisierung der Routen und die Erstellung des anfänglichen `Frame` behandelt. Die `run()`-Methode wird aufgerufen, nachdem die Basisroute aufgelöst wurde, sodass sichergestellt wird, dass das Navigationssystem der App vollständig initialisiert ist, bevor irgendwelche Logik ausgeführt wird. Dieses Tutorial wird später näher auf die Implementierung von Routing in [Schritt 3](scaling-with-routing-and-composites) eingehen. Weitere Informationen sind auch im [Routing-Artikel](../../routing/overview) verfügbar.
-:::
+Um Ihre Benutzeroberfläche zu erstellen, müssen Sie [HTML-Elementkomponenten](/docs/components/html-elements) und [webforJ-Komponenten](/docs/components/overview) hinzufügen. Für den Anfang haben Sie nur eine Single-Page-App, also fügen Sie Komponenten direkt in die `Application`-Klasse ein. 
+Dazu überschreiben Sie die Methode `App.run()` und erstellen ein `Frame`, um Komponenten hinzuzufügen. 
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    // App-Logik
-  }
+```java
+@Override
+public void run() throws WebforjException {
+  Frame mainFrame = new Frame();
+
+  // UI-Komponenten erstellen und zum Frame hinzufügen
+
 }
 ```
 
-## Komponenten hinzufügen {#adding-components}
+### Verwendung von HTML-Elementen {#using-html-elements}
 
-In webforJ sind Komponenten die Bausteine der Benutzeroberfläche Ihrer App. Diese Komponenten repräsentieren diskrete Teile der Benutzeroberfläche Ihrer App, wie Schaltflächen, Textfelder, Dialoge oder Tabellen.
+Sie können Standard-HTML-Elemente mit [HTML-Elementkomponenten](/docs/components/html-elements) zu Ihrer App hinzufügen.
+Erstellen Sie eine neue Instanz der Komponente und verwenden Sie die Methode `add()`, um sie zum `Frame` hinzuzufügen:
 
-Sie können sich eine Benutzeroberfläche als einen Baum von Komponenten vorstellen, wobei ein `Frame` als Wurzel fungiert. Jede Komponente, die zum `Frame` hinzugefügt wird, wird zu einem Zweig oder Blatt in diesem Baum und trägt zur Gesamtstruktur und zum Verhalten Ihrer App bei.
+```java
+// Container für die UI-Elemente erstellen
+Frame mainFrame = new Frame();
 
-:::tip Komponenten-Katalog
-Siehe [diese Seite](../../components/overview) für eine Liste der verschiedenen in webforJ verfügbaren Komponenten.
-:::
+// HTML-Komponente erstellen
+Paragraph tutorial = new Paragraph("Tutorial-Anwendung!");
 
-### App `Frame` {#app-frame}
-
-Die `Frame`-Klasse in webforJ repräsentiert ein nicht verschachtelbares, oberstes Fenster in Ihrer App. Ein `Frame` fungiert typischerweise als Hauptcontainer für UI-Komponenten und ist ein wesentlicher Baustein zum Erstellen der Benutzeroberfläche. Jede App beginnt mit mindestens einem `Frame`, in den Sie Komponenten wie Schaltflächen, Dialoge oder Formulare hinzufügen können.
-
-Ein `Frame` wird in der `run()`-Methode in diesem Schritt erstellt – später werden hier Komponenten hinzugefügt.
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-  }
-}
+// Die Komponente zum Container hinzufügen
+mainFrame.add(tutorial);
 ```
 
-### Server- und clientseitige Komponenten {#server-and-client-side-components}
+### Verwendung von webforJ-Komponenten {#webforj-components-and-html-elements}
 
-Jede serverseitige Komponente in webforJ hat eine entsprechende clientseitige Webkomponente. Serverseitige Komponenten behandeln Logik und Backend-Interaktionen, während clientseitige Komponenten wie `dwc-button` und `dwc-dialog` das Frontend-Rendering und Styling verwalten.
+Während HTML-Elemente nützlich für Struktur, Semantik und leichte UI-Bedürfnisse sind, bieten [webforJ-Komponenten](/docs/components/overview) komplexeres und dynamisches Verhalten.
 
-:::tip Zusammengesetzte Komponenten
+Der folgende Code fügt eine [Schaltfläche](/docs/components/button)-Komponente hinzu, ändert ihr Aussehen mit der Methode `setTheme()` und fügt einen Ereignis-Listener hinzu, um eine [Nachrichtendialog](/docs/components/option-dialogs/message)-Komponente zu erstellen, wenn die Schaltfläche geklickt wird. Die meisten Methoden von webforJ-Komponenten, die eine Komponente ändern, geben die Komponente selbst zurück, sodass Sie mehrere Methoden für kompakteren Code aneinanderreihen können.
 
-Neben den von webforJ bereitgestellten Kernkomponenten können Sie benutzerdefinierte zusammengesetzte Komponenten entwerfen, indem Sie mehrere Elemente zu einer einzigen wiederverwendbaren Einheit gruppieren. Dieses Konzept wird in diesem Schritt des Tutorials behandelt. Weitere Informationen sind im [Artikel über zusammengesetzte Komponenten](../../building-ui/composite-components) verfügbar.
-:::
+```java
+// Container für die UI-Elemente erstellen
+Frame mainFrame = new Frame();
 
-Komponenten müssen einer Containerklasse hinzugefügt werden, die das <JavadocLink type="foundation" location="com/webforj/concern/HasComponents" code='true' >HasComponents</JavadocLink>-Interface implementiert. Der `Frame` ist eine solche Klasse - für diesen Schritt fügen Sie dem `Frame` ein `Paragraph` und einen `Button` hinzu, die in der Benutzeroberfläche im Browser gerendert werden:
+// webforJ-Komponente erstellen
+Button btn = new Button("Info");
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  Paragraph demo = new Paragraph("Demo-Anwendung!");
-  Button btn = new Button("Info");
+// Die webforJ-Komponente ändern und einen Ereignis-Listener hinzufügen
+btn.setTheme(ButtonTheme.PRIMARY)
+  .addClickListener(e -> OptionDialog.showMessageDialog("Dies ist ein Tutorial!", "Info"));
 
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> showMessageDialog("Dies ist eine Demo!", "Info"));
-    mainFrame.add(demo, btn);
-  }
-}
+// Die Komponente zum Container hinzufügen
+mainFrame.add(btn);
 ```
-
-Wenn Sie dies ausführen, sollte Ihnen eine einfach gestaltete Schaltfläche ermöglichen, eine Nachricht anzuzeigen, die sagt: "Dies ist eine Demo!"
 
 ## Styling mit CSS {#styling-with-css}
 
-Das Styling in webforJ bietet Ihnen vollständige Flexibilität, das Erscheinungsbild Ihrer App zu gestalten. Während das Framework ein kohärentes Design und Stil "out of the box" unterstützt, gibt es keinen spezifischen Stilansatz, den Sie einhalten müssen, sodass Sie benutzerdefinierte Stile anwenden können, die den Anforderungen Ihrer App entsprechen.
+Die meisten webforJ-Komponenten verfügen über integrierte Methoden, um gängige Stiländerungen vorzunehmen, z. B. Größe und Thema.
 
-Mit webforJ können Sie dynamisch Klassennamen zu Komponenten für bedingtes oder interaktives Styling hinzufügen, CSS für ein konsistentes und skalierbares Designsystem verwenden und gesamte Inline- oder externe Stylesheets einfügen.
+```java
+// Setzen Sie die Breite des Frames mit einem CSS-Schlüsselwort
+mainFrame.setWidth("fit-content");
+
+// Setzen Sie die maximale Breite der Schaltfläche in Pixel
+btn.setMaxWidth(200);
+
+// Setzen Sie das Schaltflächenthema auf PRIMARY
+btn.setTheme(ButtonTheme.PRIMARY);
+```
+
+Neben diesen Methoden können Sie Ihre App mit CSS gestalten. Der Abschnitt **Styling** auf der Dokumentationsseite jeder Komponente enthält spezifische Details zu den relevanten CSS-Eigenschaften.
+
+webforJ wird auch mit einem Satz von gestalteten CSS-Variablen geliefert, die DWC-Token genannt werden. Siehe die [Styling](/docs/styling/overview)-Dokumentation für detaillierte Informationen darüber, wie Sie webforJ-Komponenten gestalten und wie Sie die Token verwenden.
+
+### Referenzierung einer CSS-Datei {#referencing-a-css-file} 
+
+Es ist am besten, eine separate CSS-Datei zu haben, um alles organisiert und wartbar zu halten. Erstellen Sie eine Datei mit dem Namen `card.css` im Verzeichnis `src/main/resources/static/css` mit der folgenden CSS-Klassendefinition:
+
+```css title="card.css"
+.card {
+  display: grid;
+  gap: var(--dwc-space-l);
+  padding: var(--dwc-space-l);
+  margin: var(--dwc-space-l) auto;
+  border: thin solid var(--dwc-color-default);
+  border-radius: 16px;
+  background-color: var(--dwc-surface-3);
+  box-shadow: var(--dwc-shadow-xs);
+}
+```
+
+Referenzieren Sie dann die Datei in `Application.java`, indem Sie die Annotation `@StyleSheet` mit dem Namen der CSS-Datei verwenden. Für diesen Schritt lautet es `@StyleSheet("ws://css/card.css")`.
+
+:::tip Webserverprotokoll
+Dieses Tutorial verwendet das Webserverprotokoll, um auf die CSS-Datei zuzugreifen. Um mehr darüber zu erfahren, wie das funktioniert, siehe [Ressourcen verwalten](/docs/managing-resources/overview).
+:::
 
 ### Hinzufügen von CSS-Klassen zu Komponenten {#adding-css-classes-to-components}
 
-Sie können dynamisch Klassennamen zu Komponenten hinzufügen oder entfernen, indem Sie die Methoden `addClassName()` und `removeClassName()` verwenden. Diese Methoden ermöglichen es Ihnen, die Stile der Komponente basierend auf der Logik Ihrer App zu steuern. Fügen Sie den Klassennamen `mainFrame` zum vorher erstellten `Frame` hinzu, indem Sie den folgenden Code in der `run()`-Methode einfügen:
+Sie können dynamisch Klassennamen zu Komponenten mit den Methoden `addClassName()` und `removeClassName()` hinzufügen oder entfernen. Für dieses Tutorial wird nur eine CSS-Klasse verwendet:
 
 ```java
-mainFrame.addClassName("mainFrame");
+mainFrame.addClassName("card");
 ```
 
-### Anfügen von CSS-Dateien {#attaching-css-files}
+## Abgeschlossene `Application` {#completed-application}
 
-Um Ihre App zu gestalten, können Sie CSS-Dateien in Ihr Projekt einfügen, entweder durch Asset-Annotationen oder indem Sie die webforJ <JavadocLink type="foundation" location="com/webforj/Page" >Asset-API</JavadocLink> zur Laufzeit nutzen. [Siehe diesen Artikel](../../managing-resources/importing-assets) für weitere Informationen.
+Ihre `Application`-Klasse sollte nun ähnlich wie folgt aussehen:
 
-Beispielsweise wird die @StyleSheet-Annotation verwendet, um Stile aus dem Verzeichnis resources/static einzufügen. Sie generiert automatisch eine URL für die angegebene Datei und injiziert sie in das DOM, sodass sichergestellt wird, dass die Stile auf Ihre App angewendet werden. Beachten Sie, dass Dateien außerhalb des statischen Verzeichnisses nicht zugänglich sind.
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Kundenanwendung", shortName = "CustomerApp")
+public class Application extends App {
 
-```java title="DemoApplication.java"
-@StyleSheet("ws://styles/library.css")
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // App-Logik hier
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
   }
+
+  @Override
+  public void run() throws WebforjException {
+    Frame mainFrame = new Frame();
+    Paragraph tutorial = new Paragraph("Tutorial-App!");
+    Button btn = new Button("Info");
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+        .setMaxWidth(200)
+        .addClickListener(e -> OptionDialog.showMessageDialog("Dies ist ein Tutorial!", "Info"));
+
+    mainFrame.setWidth("fit-content")
+        .addClassName("card")
+        .add(tutorial, btn);
+  }
+
 }
 ```
-:::tip URLs für Webserver
-Um sicherzustellen, dass statische Dateien zugänglich sind, sollten sie im resources/static-Ordner platziert werden. Um eine statische Datei einzufügen, können Sie deren URL mithilfe des Webserver-Protokolls konstruieren.
+
+:::tip Mehrere Seiten
+Für eine komplexere App können Sie die Benutzeroberfläche in mehrere Seiten unterteilen, um eine bessere Organisation zu gewährleisten. Dieses Konzept wird später in diesem Tutorial in [Routing und Komposits](/docs/introduction/tutorial/routing-and-composites) behandelt.
 :::
 
-### Beispiel CSS-Code {#sample-css-code}
+## Nächster Schritt {#next-step}
 
-Eine CSS-Datei wird in Ihrem Projekt unter `resources > static > css > demoApplication.css` verwendet, und der folgende CSS-Code wird verwendet, um grundlegende Stile auf die App anzuwenden.
-
-```css
-.mainFrame {
-  display: inline-grid;
-  gap: 20px;
-  margin: 20px;
-  padding: 20px;
-  border: 1px dashed;
-  border-radius: 10px;
-}
-```
-
-Sobald dies erledigt ist, sollte die folgende Annotation zu Ihrer `App`-Klasse hinzugefügt werden:
-
-```java title="DemoApplication.java"
-@StyleSheet("ws://css/demoApplication.css")
-@AppTitle("Demo Schritt 1")
-public class DemoApplication extends App {
-```
-
-Die CSS-Stile werden auf den Haupt-`Frame` angewendet und sorgen für Struktur, indem sie die Komponenten mit einem [Grid-Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout) anordnen und Margin-, Padding- und Randstile hinzufügen, um die Benutzeroberfläche optisch zu organisieren.
+Nachdem Sie eine funktionale App mit einer grundlegenden Benutzeroberfläche erstellt haben, ist der nächste Schritt, ein Datenmodell hinzuzufügen und die Ergebnisse in einer `Table`-Komponente in [Arbeiten mit Daten](/docs/introduction/tutorial/working-with-data) anzuzeigen.

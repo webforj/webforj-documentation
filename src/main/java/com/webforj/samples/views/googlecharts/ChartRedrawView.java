@@ -5,6 +5,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.button.event.ButtonClickEvent;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
@@ -24,100 +25,138 @@ import java.util.Map;
 @Route
 @FrameTitle("Chart Redraw")
 public class ChartRedrawView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   private static final String COLOR = "color";
   private static final String TEXT_STYLE = "textStyle";
   private static final String TITLE = "title";
-  private static final long MAX_ALLOWED = 1_000_000L;
+  private static final long MAX_ALLOWED = 1_000L;
 
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
   private final Button redrawButton = new Button("Redraw Chart");
+  private final List<String> categories = List.of("Instagram", "Twitter", "Facebook", "LinkedIn");
+  private final Map<String, NumberField> valueFields = new HashMap<>();
 
   public ChartRedrawView() {
-    getBoundComponent().addClassName("window");
+    setupLayout();
+  }
 
-    Div chartContainer = new Div();
-    chartContainer.addClassName("chart-container");
+  private void setupLayout() {
+    self.addClassName("window");
+
+    Div chartContainer = createChartContainer();
+    FlexLayout inputContainer = createInputContainer();
+    Div buttonContainer = createButtonContainer();
+
+    self.add(chartContainer, inputContainer, buttonContainer);
+  }
+
+  private Div createChartContainer() {
+    Div chartContainer = new Div()
+        .addClassName("chart-container");
+
     chartContainer.add(chart);
+    setupChart();
 
-    Map<String, Object> options = new HashMap<>();
-    options.put(TITLE, "Social Media Following");
-    options.put("colors", List.of("#006fe6"));
-    options.put("backgroundColor", "transparent");
-    options.put("chartArea", Map.of("width", "80%", "height", "70%"));
-    options.put("hAxis", Map.of(TEXT_STYLE, Map.of(COLOR, "#333")));
-    options.put("vAxis", Map.of("minValue", 0, TEXT_STYLE, Map.of(COLOR, "#333")));
-    options.put("legend", Map.of("position", "bottom"));
+    return chartContainer;
+  }
+
+  private void setupChart() {
+    Map<String, Object> options = Map.of(
+        TITLE, "Social Media Following",
+        "colors", List.of("#006fe6"),
+        "backgroundColor", "transparent",
+        "chartArea", Map.of("width", "80%", "height", "70%"),
+        "hAxis", Map.of(TEXT_STYLE, Map.of(COLOR, "#333")),
+        "vAxis", Map.of("minValue", 0, TEXT_STYLE, Map.of(COLOR, "#333")),
+        "legend", Map.of("position", "bottom")
+    );
     chart.setOptions(options);
 
+    List<Object> data = createChartData();
+    chart.setData(data);
+  }
+
+  private List<Object> createChartData() {
     List<Object> data = new ArrayList<>();
     List<String> columns = List.of("Category", "Number of Followers in Thousands");
     data.add(columns);
 
-    FlexLayout inputContainer = new FlexLayout();
-    inputContainer.addClassName("input-container");
-    inputContainer.setJustifyContent(FlexJustifyContent.CENTER);
-    inputContainer.setWrap(FlexWrap.WRAP);
-    inputContainer.setSpacing("10px");
+    for (String category : categories) {
+      List<Object> row = List.of(category, 100);
+      data.add(row);
+    }
 
-    String[] categories = {"Instagram", "Twitter", "Facebook", "LinkedIn"};
-    Map<String, NumberField> valueFields = new HashMap<>();
+    return data;
+  }
+
+  private FlexLayout createInputContainer() {
+    FlexLayout inputContainer = new FlexLayout()
+        .addClassName("input-container")
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setWrap(FlexWrap.WRAP)
+        .setSpacing("10px");
 
     for (String category : categories) {
-      List<Object> row = new ArrayList<>();
-      row.add(category);
-      row.add(100);
-      data.add(row);
-
-      NumberField valueField = new NumberField("Value for " + category);
-      valueField.setPlaceholder("");
-      valueField.setStep(1.0);
-      valueField.setMin(1.0);
-      valueField.setMax((double) MAX_ALLOWED);
-      valueField.setText("100");
-      valueField.addClassName("number-field");
-
+      NumberField valueField = createNumberField(category);
       inputContainer.add(valueField);
       valueFields.put(category, valueField);
     }
 
-    chart.setData(data);
+    return inputContainer;
+  }
 
-    Div buttonContainer = new Div();
-    buttonContainer.addClassName("redraw-button-container");
-    buttonContainer.add(redrawButton.setTheme(ButtonTheme.PRIMARY));
+  private NumberField createNumberField(String category) {
+    return new NumberField("Value for " + category)
+        .setPlaceholder("")
+        .setStep(1.0)
+        .setMin(1.0)
+        .setMax((double) MAX_ALLOWED)
+        .setText("100")
+        .addClassName("number-field");
+  }
 
+  private Div createButtonContainer() {
+    Div buttonContainer = new Div()
+        .addClassName("redraw-button-container");
+
+    redrawButton.setTheme(ButtonTheme.PRIMARY);
     redrawButton.addClassName("redraw-button");
-    redrawButton.addClickListener(e -> {
-      List<Object> newData = new ArrayList<>();
-      newData.add(columns);
-      boolean allValuesValid = true;
+    redrawButton.onClick(this::onRedrawClick);
 
-      for (String category : categories) {
-        NumberField valueField = valueFields.get(category);
-        String fieldValue = valueField.getText();
+    buttonContainer.add(redrawButton);
 
-        try {
-          long value = Long.parseLong(fieldValue);
-          if (value <= 0 || value > MAX_ALLOWED) {
-            allValuesValid = false;
-            break;
-          }
-          newData.add(List.of(category, value));
-        } catch (NumberFormatException ex) {
+    return buttonContainer;
+  }
+
+  private void onRedrawClick(ButtonClickEvent e) {
+    List<Object> newData = new ArrayList<>();
+    List<String> columns = List.of("Category", "Number of Followers in Thousands");
+    newData.add(columns);
+    boolean allValuesValid = true;
+
+    for (String category : categories) {
+      NumberField valueField = valueFields.get(category);
+      String fieldValue = valueField.getText();
+
+      try {
+        long value = Long.parseLong(fieldValue);
+        if (value <= 0 || value > MAX_ALLOWED) {
           allValuesValid = false;
           break;
         }
+        newData.add(List.of(category, value));
+      } catch (NumberFormatException ex) {
+        allValuesValid = false;
+        break;
       }
+    }
 
-      if (!allValuesValid) {
-        Toast.show("Enter a valid number between 1 and " + MAX_ALLOWED, 3000, Theme.DANGER);
-      } else {
-        chart.setData(newData);
-        chart.redraw();
-      }
-    });
-
-    getBoundComponent().add(chartContainer, inputContainer, buttonContainer);
+    if (!allValuesValid) {
+      Toast.show("Enter a valid number between 1 and " + MAX_ALLOWED, 3000, Theme.DANGER);
+    } else {
+      chart.setData(newData);
+      chart.redraw();
+    }
   }
 }

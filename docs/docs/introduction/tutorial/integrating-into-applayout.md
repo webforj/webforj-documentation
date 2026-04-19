@@ -61,10 +61,10 @@ In the `MainLayout` class, the `@Route` annotation defines it as the base layout
 ```java title="MainLayout.java"
 @Route("/")
 public class MainLayout extends Composite<AppLayout> {
-    public MainLayout() {
-        setHeader();
-        setDrawer();
-    }
+  public MainLayout() {
+    setHeader();
+    setDrawer();
+  }
 }
 ```
 
@@ -74,7 +74,7 @@ The `@Route` annotation for `DemoView` specifies that it uses `MainLayout` as it
 @Route(value = "/demo", outlet = MainLayout.class)
 @FrameTitle("Demo")
 public class DemoView extends Composite<Div> {
-    // DemoView logic
+  // DemoView logic
 }
 ```
 

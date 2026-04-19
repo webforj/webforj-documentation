@@ -1,5 +1,6 @@
 package com.webforj.samples.views.slider;
 
+import com.webforj.component.Component;
 import com.webforj.component.Composite;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -13,12 +14,14 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Slider Major and Minor Tick Spacing Demo")
 public class SliderTickSpacingView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  Slider slider = new Slider(0, 100, 50);
-  NumberField majorTickInput = new NumberField("Major Tick", 20d);
-  NumberField minorTickInput = new NumberField("Minor Tick", 10d);
-  RadioButton snapToTicks = RadioButton.Switch("Snap to Ticks", false);
-  RadioButton showTicks = RadioButton.Switch("Show Ticks", true);
+  private final FlexLayout self = getBoundComponent();
+  // Slider component
+  private final Slider slider = new Slider(0, 100, 50);
+  // Input fields for tick spacing
+  private final NumberField majorTickInput = new NumberField("Major Tick", 20d);
+  private final NumberField minorTickInput = new NumberField("Minor Tick", 10d);
+  private final RadioButton snapToTicks = RadioButton.Switch("Snap to Ticks", false);
+  private final RadioButton showTicks = RadioButton.Switch("Show Ticks", true);
 
   public SliderTickSpacingView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -37,18 +40,16 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
         .setTooltipVisibleOnSlideOnly(true)
         .setStyle("padding", "var(--dwc-space-m) 0");
 
-    int range = slider.getMax() - slider.getMin();
+    double range = slider.getMax() - slider.getMin();
 
-    majorTickInput
-        .setMin(1d)
-        .setMax((double) range)
+    majorTickInput.setMin(1d)
+        .setMax(range)
         .setInvalidMessage("Must be between 1 and " + range)
         .setPlaceholder("Enter major tick spacing (e.g., 10)")
         .onValueChange(this::updateTickSpacing);
 
-    minorTickInput
-        .setMin(1d)
-        .setMax((double) range)
+    minorTickInput.setMin(1d)
+        .setMax(range)
         .setInvalidMessage("Must be between 1 and " + range)
         .setPlaceholder("Enter minor tick spacing (e.g., 2)")
         .onValueChange(this::updateTickSpacing);
@@ -66,6 +67,9 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
     );
   }
 
+  /**
+   * Updates tick spacing based on input field values.
+   */
   private void updateTickSpacing(ValueChangeEvent<Double> ev) {
     Double eventVal = ev.getValue();
     Object source = ev.getSource();
@@ -77,8 +81,6 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
       } else if (source == minorTickInput && !minorTickInput.isInvalid()) {
         slider.setMinorTickSpacing(spacingVal);
       }
-    } else {
-      return;
     }
   }
 }

@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
 title: Docker
-_i18n_hash: ec7566378c3ec80f071b7391742ec353
+_i18n_hash: 8cc797ca5ca7e8ba3a8cd9f3aec41d74
 ---
-# Docker-asennus
+# Dockerin asennus
 
-Tässä asiakirjan osassa käsitellään vaiheita, jotka käyttäjien on suoritettava, jos he haluavat kehittää Dockerin avulla. Muutokset koodiisi tehdään kehityskoneellasi, ja tuloksena oleva sovellus suoritetaan Dockerissa.
+Tässä asiakirjan osassa käsitellään vaiheita, jotka käyttäjien tulee käydä läpi, jos he haluavat kehittää käyttäen Dockeria. Muutokset koodissasi tehdään kehityskoneellasi, ja tuloksena oleva sovellus suoritetaan Dockerissa.
 
 ## 1. Dockerin lataaminen {#1-downloading-docker}
 
@@ -14,83 +14,83 @@ Dockerin asennusprosessi vaihtelee hieman Windows-, Mac- ja Linux-käyttäjien v
 ### Windows {#windows}
 
 :::info
-On suositeltavaa ladata uusin versio Windows Subsystem for Linuxista. Lisätietoja löytyy [tällä linkillä](https://learn.microsoft.com/en-us/windows/wsl/install)
+Suosittelemme lataamaan Windows Subsystem for Linuxin uusimman version. Lisätietoja löytyy [tästä linkistä](https://learn.microsoft.com/en-us/windows/wsl/install)
 :::
 
 **1. Lataa Docker Desktop:**
->- Vieraile Docker Desktop for Windows -lataussivulla: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+>- Siirry Docker Desktop for Windows lataussivulle: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
 >- Napsauta "Get Docker Desktop for Windows" -painiketta ladataksesi asennustiedoston.
 
 **2. Asenna Docker Desktop:**
->- Suorita lataamasi asennustiedosto.
->- Seuraa asennusohjelman ohjeita ja varmista, että otat käyttöön Hyper-V (jos kehotetaan), koska Docker Windowsille käyttää Hyper-V:tä virtualisointiin.
->- Kun asennus on valmis, Docker Desktop alkaa käynnistyä automaattisesti.
+>- Suorita ladattu asennustiedosto.
+>- Seuraa asennusvelhoa ja varmista, että Hyper-V on käytössä (jos sitä kysytään), koska Docker for Windows käyttää Hyper-V:tä virtualisointiin.
+>- Kun asennus on valmis, Docker Desktop käynnistyy automaattisesti.
 
-**3. Tarkista asennus:**
+**3. Vahvista asennus:**
 >- Avaa terminaali ja suorita komento `docker --version` varmistaaksesi, että Docker on asennettu ja toimii oikein.
 
 ### Mac {#mac}
 
 **1. Lataa Docker Desktop:**
->- Vieraile Docker Desktop for Mac -lataussivulla: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
+>- Siirry Docker Desktop for Mac lataussivulle: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
 
 **2. Asenna Docker Desktop:**
->- Suorita lataamasi asennustiedosto.
->- Kun asennus on valmis, Docker Desktop alkaa käynnistyä automaattisesti.
+>- Suorita ladattu asennustiedosto.
+>- Kun asennus on valmis, Docker Desktop käynnistyy automaattisesti.
 
-**3. Tarkista asennus:**
+**3. Vahvista asennus:**
 >- Avaa terminaali ja suorita komento `docker --version` varmistaaksesi, että Docker on asennettu ja toimii oikein.
 
 ## 2. Konfigurointi {#2-configuration}
 
-Kun Docker Desktop on ladattu, etsi uusin webforJ -image, joka on tällä hetkellä nimellä `webforj/sandbox`.
+Kun Docker Desktop on ladattu, etsi uusinta webforJ-kuvaa, joka on tällä hetkellä nimellä `webforj/sandbox`.
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_1l.png#rounded-border)
+![DWCJ Kuva Haku](/img/bbj-installation/docker/Step_1l.png#rounded-border)
 
-Napsauta tagilistaa nähdäksesi käytettävissä olevat vaihtoehdot
+Napsauta tag-listaa nähdäksesi käytettävissä olevat vaihtoehdot
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_2l.png#rounded-border)
+![DWCJ Kuva Haku](/img/bbj-installation/docker/Step_2l.png#rounded-border)
 
-Valitse "rc" uusimmalle rakennelmalle
+Valitse "rc" viimeisimmän version vuoksi
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_3l.png#rounded-border)
+![DWCJ Kuva Haku](/img/bbj-installation/docker/Step_3l.png#rounded-border)
 
-TPullaa kuva aloittaaksesi säilösi
+Hae kuva käynnistääksesi konttisi
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_4l.png#rounded-border)
+![DWCJ Kuva Haku](/img/bbj-installation/docker/Step_4l.png#rounded-border)
 
 Kun lataus on valmis, napsauta suorituspainiketta, joka avaa konfigurointiasetukset
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_5l.png#rounded-border)
+![DWCJ Kuva Haku](/img/bbj-installation/docker/Step_5l.png#rounded-border)
 
 Avaa "Valinnaiset asetukset" -valikko
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_6l.png#rounded-border)
+![DWCJ Kuva Haku](/img/bbj-installation/docker/Step_6l.png#rounded-border)
 
-Valitse haluttu isäntäsatama, josta voit nähdä sovelluksesi toimivan Dockerissa
+Valitse haluamasi isäntäportti, josta voit nähdä sovelluksesi toimivan Dockerissa
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_7l.png#rounded-border)
+![DWCJ Kuva Haku](/img/bbj-installation/docker/Step_7l.png#rounded-border)
 
-Napsauta "Suorita" aloittaaksesi säilön
+Napsauta "Suorita" käynnistääksesi kontin
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_8l.png#rounded-border)
+![DWCJ Kuva Haku](/img/bbj-installation/docker/Step_8l.png#rounded-border)
 
-:::success Tärkeä
-Muista ottaa talteen antamasi mukautettu isäntäsataman numero, sillä sitä tarvitaan myöhemmin.
+:::success Tärkeää
+Varmista, että muistat antamasi mukautetun isäntäportin numeron, koska sitä tarvitaan myöhemmin.
 :::
 
 ## 3. Sovelluksesi suorittaminen {#3-running-your-app}
 
-Kun säilö on luotu, webforJ-sovelluksia voidaan suorittaa säilössä sen sijaan, että niitä suoritettaisiin paikallisesti. Aluksi on tarpeen konfiguroida projektisi POM-tiedosto oikein. Kun tämä on tehty, siirtyminen tiettyyn URL-osoitteeseen selaimessa näyttää sovelluksen.
+Kun kontti on luotu, webforJ-sovelluksia voidaan suorittaa kontin sisällä sen sijaan, että ne suoritettaisiin paikallisesti. Ensinnäkin on tarpeen konfiguroida projektisi POM-tiedosto oikein. Kun tämä on tehty, siirtyminen tiettyyn URL-osoitteeseen selaimessa näyttää sovelluksen.
 
-### POM-tiedoston konfigurointi {#configuring-your-pom-file}
+### POM-tiedostosi konfigurointi {#configuring-your-pom-file}
 
-WebforJ-projektin suorittaminen Docker-säilössä vaatii webforJ Install -lisäosien käyttöä, joka voidaan konfiguroida POM-tiedostosi avulla:
+WebforJ-projektin suorittaminen Docker-kontissa vaatii webforJ Install Pluginin käyttöä, joka voidaan konfiguroida POM-tiedostosi avulla:
 
-Luo uusi `<plugin>`-merkintä POM-tiedoston `<plugins>`-osioon. Seuraava koodi esittää aloitusmerkinnän, jota voidaan käyttää ja muokata tarpeen mukaan projektiasi varten:
+Luo uusi `<plugin>`-merkintä `<plugins>`-osioon POM-tiedostossa. Alla oleva koodi näyttää aloitusmerkinnän, jota voidaan käyttää ja muokata tarpeen mukaan projektisi vaatimusten mukaiseksi:
 
 :::important
-Jos POM-tiedostossasi ei ole `<plugins>`-osuutta, luo sellainen.
+Jos POM-tiedostossasi ei ole `<plugins>`-osaa, luo sellainen.
 :::
 
 ```xml
@@ -99,28 +99,28 @@ Jos POM-tiedostossasi ei ole `<plugins>`-osuutta, luo sellainen.
 <artifactId>webforj-install-maven-plugin</artifactId>
 <version>${webforj.version}</version>
 <executions>
-    <execution>
-    <goals>
-        <goal>install</goal>
-    </goals>
-    </execution>
+  <execution>
+  <goals>
+    <goal>install</goal>
+  </goals>
+  </execution>
 </executions>
 <configuration>
-    <deployurl>http://localhost:8888/webforj-install</deployurl>
-    <classname>samples.HelloWorldApp</classname>
-    <publishname>hello-world</publishname>
-    <debug>true</debug>
+  <deployurl>http://localhost:8888/webforj-install</deployurl>
+  <classname>samples.HelloWorldApp</classname>
+  <publishname>hello-world</publishname>
+  <debug>true</debug>
 </configuration>
 </plugin>
 ```
 
-Kun olet luonut edellä olevan kaltaisen merkinnän, mukauta seuraavat tiedot:
+Kun yllä olevaan kaltaista merkintää on muokattu, mukauta seuraavat tiedot:
 
-- Muuta `<deployurl>`-merkintä käyttämään porttinumeroa, joka vastaa **Isäntäsatamaa**, jonka olet määrittänyt säilöllesi edellisessä vaiheessa.
+- Muuta `<deployurl>`-merkintä käyttämään porttinumeroa, joka vastaa **Isäntäporttia**, jonka konfigurointi tehtiin edellisessä vaiheessa.
 
-- Varmista, että `<classname>`-merkintä vastaa haluamasi sovelluksen nimeä.
+- Varmista, että `<classname>`-merkintä vastaa sen sovelluksen nimeä, jonka haluat suorittaa.
 
-- Jos `<username>`- ja `<password>`-tunnuksesi ovat erilaiset BBj-asennuksessasi, muuta nämä.
+- Jos `<username>` ja `<password>` -tunnuksesi ovat erilaiset BBj-asennuksellesi, muuta nämä.
 
 ### Aloitusprojektin käyttäminen {#using-the-starter-project}
 
@@ -130,8 +130,8 @@ project="bbj-hello-world"
 
 ### Sovelluksen käynnistäminen {#launching-the-app}
 
-Kun tämä on tehty, suorita `mvn install` projektikansiossasi. Tämä suorittaa webforJ-install-lisäosan ja sallii sinun käyttää sovellustasi. Näet sovelluksen menemällä seuraavaan URL-osoitteeseen:
+Kun tämä on tehty, suorita `mvn install` projektikansiossasi. Tämä suorittaa webforJ-install-pluginin ja mahdollistaa sovelluksesi käyttämisen. Näet sovelluksen siirtymällä seuraavaan URL-osoitteeseen:
 
 `http://localhost:YourHostPort/webapp/YourPublishName`
 
-Vaihda `YourHostPort` Dockerin avulla määrittämääsi isäntäsatamaan ja `YourPublishName` on vaihdettu POM-tiedoston `<publishname>`-tagin sisällä olevaan tekstiin. Jos kaikki on tehty oikein, sinun pitäisi nähdä sovelluksesi näyttävän.
+Korvaa `YourHostPort` Dockerille konfiguroimallasi isäntäportilla ja `YourPublishName` korvataan POMin `<publishname>`-tagin sisältämällä tekstillä. Jos kaikki on tehty oikein, sinun pitäisi nähdä sovelluksesi renderöityvän.
