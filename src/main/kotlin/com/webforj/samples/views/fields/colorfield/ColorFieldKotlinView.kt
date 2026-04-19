@@ -13,6 +13,8 @@ import com.webforj.kotlin.dsl.component.field.colorField
 import com.webforj.kotlin.dsl.component.html.elements.paragraph
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.horizontal
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.plusAssign
 import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
