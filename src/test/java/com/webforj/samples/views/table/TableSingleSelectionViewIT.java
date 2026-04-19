@@ -2,24 +2,27 @@ package com.webforj.samples.views.table;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.table.TableSingleSelectionPage;
 import com.webforj.samples.views.BaseTest;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class TableSingleSelectionViewIT extends BaseTest {
 
     private TableSingleSelectionPage tableSingleSelectionPage;
 
-    @BeforeEach
-    public void setupTableSingleSelection() {
-        navigateToRoute(TableSingleSelectionPage.getRoute());
+    public void setupTableSingleSelection(SupportedLanguage language) {
+        navigateToRoute(TableSingleSelectionPage.getRoute(language));
         tableSingleSelectionPage = new TableSingleSelectionPage(page);
     }
 
-    @Test
-    public void testSingleSelectionRecords() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testSingleSelectionRecords(SupportedLanguage language) {
+        setupTableSingleSelection(language);
         tableSingleSelectionPage.getFirstArtist().click();
 
         assertThat(tableSingleSelectionPage.getDialogMessage("Mississippi Blues", "John Hurt & The Ramblers"))

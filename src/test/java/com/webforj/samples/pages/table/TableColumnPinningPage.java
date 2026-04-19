@@ -3,6 +3,7 @@ package com.webforj.samples.pages.table;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class TableColumnPinningPage {
     private static final String ROUTE = "tablecolumnpinning";
@@ -16,8 +17,8 @@ public class TableColumnPinningPage {
         this.dialogBox = page.getByText("You asked to edit record number ", new Page.GetByTextOptions().setExact(false));
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getEditButton() {
