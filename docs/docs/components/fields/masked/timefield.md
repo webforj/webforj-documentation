@@ -26,6 +26,10 @@ The `MaskedTimeField` can be instantiated with or without parameters. You can de
 
 The `MaskedTimeField` uses format indicators to define how time is parsed and displayed. Each format indicator begins with a `%` followed by a letter that represents a time component.
 
+:::tip Applying masks programmatically
+To format or parse times with the same mask syntax outside of a field, use the [`MaskDecorator`](/docs/advanced/mask-decorator) utility class.
+:::
+
 ### Time format indicators {#time-format-indicators}
 
 | Format | Description         |
