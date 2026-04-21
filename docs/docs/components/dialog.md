@@ -114,7 +114,7 @@ The `Dialog` can be set to enter full screen mode. When full screen is enabled, 
 
 ### Auto width <DocChip chip='since' label='26.00' /> {#auto-width}
 
-By default, the `Dialog` stretches to fill the available horizontal space. When auto width is enabled via `setAutoWidth(true)`, the `Dialog` sizes itself based on its content width instead. Auto width can be combined with other `Dialog` properties such as `setMaxWidth()` to set an upper bound, ensuring the dialog never exceeds a given size even when content varies.
+By default, the `Dialog` stretches to fill the available horizontal space. When auto width is enabled via `setAutoWidth(true)`, the `Dialog` sizes itself based on its content width instead.
 
 <ComponentDemo 
 path='/webforj/dialogautowidth?' 
