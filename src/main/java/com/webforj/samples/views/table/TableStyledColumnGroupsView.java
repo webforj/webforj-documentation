@@ -11,7 +11,7 @@ import com.webforj.router.annotation.Route;
 
 import java.util.List;
 
-@StyleSheet("ws://css/table/tableStyledColumnGroups.css")
+@StyleSheet("ws://css/table/tablestyledcolumngroups.css")
 @Route
 @FrameTitle("Table Styled Column Groups")
 public class TableStyledColumnGroupsView extends Composite<Div> {
