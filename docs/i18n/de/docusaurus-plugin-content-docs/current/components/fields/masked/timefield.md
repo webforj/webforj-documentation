@@ -1,71 +1,75 @@
 ---
 title: MaskedTimeField
 sidebar_position: 20
-_i18n_hash: 17c5f6ce7fa234dbeb848c4bcab41e60
+_i18n_hash: bfaa13bee2b1c6dd1c88c8af989a6532
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-timefield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTimeField" top='true'/>
 
-Das `MaskedTimeField` ist ein Texteingabefeld, mit dem Benutzer Zeiten als **Zahlen** eingeben können, und formatiert die Eingabe automatisch basierend auf einer definierten Maske, wenn das Feld den Fokus verliert. Die Maske gibt das erwartete Zeitformat an, welches sowohl die Eingabe als auch die Anzeige leitet. Die Komponente unterstützt flexibles Parsen, Validierung, Lokalisierung und Wiederherstellung von Werten für eine konsistente Zeitverarbeitung.
+Das `MaskedTimeField` ist ein Texteingabefeld, das es Benutzern ermöglicht, Zeiten als **Zahlen** einzugeben, und das die Eingabe basierend auf einer definierten Maske automatisch formatiert, wenn das Feld den Fokus verliert. Die Maske gibt das erwartete Zeitformat vor und leitet sowohl die Eingabe als auch die Anzeige. Die Komponente unterstützt flexibles Parsen, Validierung, Lokalisierung und die Wiederherstellung von Werten für eine konsistente Zeitverarbeitung.
 
 <!-- INTRO_END -->
 
 ## Grundlagen {#basics}
 
 :::tip Suchen Sie ein Datumsfeld?
-Das `MaskedTimeField` ist für **nur Zeit** Eingaben konzipiert. Wenn Sie nach einer Komponente suchen, die **Daten** mit ähnlicher maskenbasierter Formatierung verarbeitet, werfen Sie einen Blick auf das [`MaskedDateField`](./datefield.md).
+Das `MaskedTimeField` ist für die Eingabe von **nur Zeiten** konzipiert. Wenn Sie eine Komponente suchen, die **Daten** mit ähnlicher maskenbasierter Formatierung verarbeitet, sehen Sie sich das [`MaskedDateField`](./datefield.md) an.
 :::
 
-Das `MaskedTimeField` kann mit oder ohne Parameter instanziiert werden. Sie können einen Anfangswert, ein Label, einen Platzhalter und einen Ereignislistener für Werteänderungen definieren.
+Das `MaskedTimeField` kann mit oder ohne Parameter instanziiert werden. Sie können einen Anfangswert, ein Label, einen Platzhalter und einen Ereignislistener für Wertänderungen definieren.
 
 <ComponentDemo path='/webforj/maskedtimefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldView.java' height='120px'/>
 
 ## Maskenregeln {#mask-rules}
 
-Das `MaskedTimeField` verwendet Formatindikatoren, um zu definieren, wie Zeiten geparst und angezeigt werden. Jeder Formatindikator beginnt mit einem `%`, gefolgt von einem Buchstaben, der eine Zeitkomponente darstellt.
+Das `MaskedTimeField` verwendet Formatindikatoren, um zu definieren, wie Zeit geparst und angezeigt wird. Jeder Formatindikator beginnt mit einem `%`, gefolgt von einem Buchstaben, der eine Zeitkomponente darstellt.
+
+:::tip Masken programmgesteuert anwenden
+Um Zeiten mit der gleichen Maskensyntax außerhalb eines Feldes zu formatieren oder zu parsen, verwenden Sie die Utility-Klasse [`MaskDecorator`](/docs/advanced/mask-decorator).
+:::
 
 ### Zeitformatindikatoren {#time-format-indicators}
 
-| Format | Beschreibung         |
+| Format | Beschreibung       |
 |--------|---------------------|
-| `%H`   | Stunde (24-Stunden)  |
-| `%h`   | Stunde (12-Stunden)  |
+| `%H`   | Stunde (24-Stunden) |
+| `%h`   | Stunde (12-Stunden) |
 | `%m`   | Minute              |
 | `%s`   | Sekunde             |
 | `%p`   | AM/PM               |
 
-### Modifizierer {#modifiers}
+### Modifikatoren {#modifiers}
 
-Modifizierer verfeinern die Anzeige von Zeitkomponenten:
+Modifikatoren verfeinern die Anzeige von Zeitkomponenten:
 
-| Modifizierer | Beschreibung               |
-|--------------|---------------------------|
-| `z`          | Nullfüllung               |
-| `s`          | Kurze Textdarstellung     |
-| `l`          | Lange Textdarstellung      |
-| `p`          | Gepackte Zahl             |
-| `d`          | Dezimal (Standardformat)  |
+| Modifikator | Beschreibung               |
+|-------------|----------------------------|
+| `z`         | Nullauffüllung             |
+| `s`         | Kurze Textdarstellung      |
+| `l`         | Lange Textdarstellung      |
+| `p`         | Gepackte Zahl              |
+| `d`         | Dezimal (Standardformat)   |
 
 Diese ermöglichen eine flexible und lokalisierungsfreundliche Zeitformatierung.
 
 ## Lokalisierung des Zeitformats {#time-format-localization}
 
-Das `MaskedTimeField` unterstützt die Lokalisierung, indem das entsprechende Gebietsschema gesetzt wird. Dies sorgt dafür, dass Eingabe und Ausgabe der Zeit mit regionalen Konventionen übereinstimmen.
+Das `MaskedTimeField` unterstützt die Lokalisierung durch Festlegung der entsprechenden Locale. Dadurch wird sichergestellt, dass die Zeit-Eingaben und -Ausgaben den regionalen Konventionen entsprechen.
 
 ```java
 field.setLocale(Locale.GERMANY);
 ```
 
-Dies beeinflusst, wie AM/PM-Indikatoren angezeigt werden, wie Trenner behandelt werden und wie Werte geparst werden.
+Dies beeinflusst, wie AM/PM-Indikatoren angezeigt werden, wie Trennzeichen behandelt werden und wie Werte geparst werden.
 
 ## Parsing-Logik {#parsing-logic}
 
-Das `MaskedTimeField` parst die Benutzereingabe basierend auf der definierten Zeitmaske. Es akzeptiert sowohl vollständige als auch abgekürzte numerische Eingaben mit oder ohne Trennzeichen und ermöglicht damit eine flexible Eingabe, wobei dennoch gültige Zeiten sichergestellt werden.
-Das Parsing-Verhalten hängt von der Formatreihenfolge ab, die durch die Maske definiert wird (z.B. `%Hz:%mz` für Stunde/Minute). Dieses Format bestimmt, wie numerische Sequenzen interpretiert werden.
+Das `MaskedTimeField` parst die Benutzereingabe basierend auf der definierten Zeitmaske. Es akzeptiert sowohl vollständige als auch abgekürzte numerische Eingaben mit oder ohne Trennzeichen, wodurch eine flexible Eingabe ermöglicht wird, während gültige Zeiten sichergestellt werden.
+Das Parsing-Verhalten hängt von der Formatordnung ab, die durch die Maske definiert ist (z. B. `%Hz:%mz` für Stunde/Minute). Dieses Format bestimmt, wie numerische Sequenzen interpretiert werden.
 
-### Beispielhafte Parsing-Szenarien {#example-parsing-scenarios}
+### Beispiel Parsing-Szenarien {#example-parsing-scenarios}
 
 | Eingabe | Maske        | Interpretiert Als |
 |---------|--------------|--------------------|
@@ -74,30 +78,30 @@ Das Parsing-Verhalten hängt von der Formatreihenfolge ab, die durch die Maske d
 | `0230`  | `%hz:%mz %p` | `02:30 AM`         |
 | `1830`  | `%hz:%mz %p` | `06:30 PM`         |
 
-## Einstellung von Min/Max-Beschränkungen {#setting-minmax-constraints}
+## Min/Max-Beschränkungen festlegen {#setting-minmax-constraints}
 
-Sie können den erlaubten Zeitrahmen in einem `MaskedTimeField` mit den Methoden `setMin()` und `setMax()` einschränken:
+Sie können den erlaubten Zeitbereich in einem `MaskedTimeField` mithilfe der Methoden `setMin()` und `setMax()` einschränken:
 
 ```java
 field.setMin(LocalTime.of(8, 0));
 field.setMax(LocalTime.of(18, 0));
 ```
 
-Beide Methoden akzeptieren Werte vom Typ [`java.time.LocalTime`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalTime.html). Eingaben außerhalb des definierten Bereichs gelten als ungültig.
+Beide Methoden akzeptieren Werte vom Typ [`java.time.LocalTime`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalTime.html). Eingaben außerhalb des definierten Bereichs werden als ungültig betrachtet.
 
-## Wiederherstellung des Wertes {#restoring-the-value}
+## Den Wert wiederherstellen {#restoring-the-value}
 
-Das `MaskedTimeField` verfügt über eine Wiederherstellungsfunktion, die den Wert des Feldes auf einen vordefinierten oder ursprünglichen Zustand zurücksetzt. Dies kann nützlich sein, um Änderungen rückgängig zu machen oder zu einer Standardzeit zurückzukehren.
+Das `MaskedTimeField` beinhaltet eine Wiederherstellungsfunktion, die den Wert des Feldes auf einen vordefinierten oder ursprünglichen Zustand zurücksetzt. Dies kann nützlich sein, um Änderungen rückgängig zu machen oder zu einer Standardzeit zurückzukehren.
 
 ```java
 field.setRestoreValue(LocalTime.of(12, 0));
 field.restoreValue();
 ```
 
-### Möglichkeiten zur Wiederherstellung des Wertes {#ways-to-restore-the-value}
+### Möglichkeiten, den Wert wiederherzustellen {#ways-to-restore-the-value}
 
-- **Programmgesteuert**, durch Aufruf von `restoreValue()`
-- **Über die Tastatur**, durch Drücken von <kbd>ESC</kbd> (dies ist der Standard-Wiederherstellungsschlüssel, es sei denn, er wird von einem Ereignislistener überschrieben)
+- **Programmgesteuert**, indem `restoreValue()` aufgerufen wird
+- **Über die Tastatur**, indem <kbd>ESC</kbd> gedrückt wird (dies ist der Standardwiederherstellungstaste, es sei denn, sie wird von einem Ereignislistener überschrieben)
 
 <ComponentDemo 
 path='/webforj/maskedtimefieldrestore?' 
@@ -106,7 +110,7 @@ height='120px'/>
 
 ## Validierungsmuster {#validation-patterns}
 
-Sie können clientseitige Validierungsregeln mithilfe von regulären Ausdrücken mit der Methode `setPattern()` anwenden:
+Sie können clientseitige Validierungsregeln mit regulären Ausdrücken mithilfe der Methode `setPattern()` anwenden:
 
 ```java
 field.setPattern("^\\d{2}:\\d{2}$");
@@ -114,18 +118,18 @@ field.setPattern("^\\d{2}:\\d{2}$");
 
 Dieses Muster stellt sicher, dass nur Werte, die dem Format `HH:mm` (zwei Ziffern, Doppelpunkt, zwei Ziffern) entsprechen, als gültig betrachtet werden.
 
-:::tip Format des Regulären Ausdrucks
-Das Muster muss der JavaScript-RegExp-Syntax entsprechen, wie [hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) dokumentiert.
+:::tip Format der regulären Ausdrücke
+Das Muster muss der JavaScript-RegExp-Syntax entsprechen, wie hier dokumentiert [hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
 :::
 
-:::warning Hinweise zur Eingabeverarbeitung
-Das Feld versucht, numerische Zeiteingaben basierend auf der aktuellen Maske zu parsen und zu formatieren. Benutzer können jedoch weiterhin manuell Werte eingeben, die nicht dem erwarteten Format entsprechen. Wenn die Eingabe syntaktisch gültig, aber semantisch inkorrekt oder nicht parsebar ist (z.B. `99:99`), kann sie die Mustertests bestehen, aber die logische Validierung fehlschlagen.
-Sie sollten den Eingabewert in Ihrer Anwendungslogik immer validieren, auch wenn ein Muster mit regulärem Ausdruck gesetzt ist, um sicherzustellen, dass die Zeit sowohl korrekt formatiert als auch sinnvoll ist.
+:::warning Hinweise zur Eingabeverwaltung
+Das Feld versucht, numerische Zeitwerte basierend auf der aktuellen Maske zu parsen und zu formatieren. Benutzer können jedoch weiterhin manuell Werte eingeben, die nicht dem erwarteten Format entsprechen. Wenn die Eingabe syntaktisch gültig, aber semantisch inkorrekt oder nicht parsebar ist (z. B. `99:99`), kann sie die Musterüberprüfung bestehen, aber die logische Validierung nicht bestehen.
+Sie sollten den Eingabewert in Ihrer App-Logik immer validieren, selbst wenn ein reguläres Ausdrucksmuster festgelegt ist, um sicherzustellen, dass die Zeit sowohl korrekt formatiert als auch aussagekräftig ist.
 :::
 
 ## Zeitpicker {#time-picker}
 
-Das `MaskedTimeField` enthält einen integrierten Zeitpicker, der es Benutzern ermöglicht, eine Zeit visuell auszuwählen, anstatt sie einzugeben. Dies verbessert die Benutzerfreundlichkeit für weniger technische Benutzer oder wenn eine präzise Eingabe erforderlich ist.
+Das `MaskedTimeField` enthält einen integrierten Zeitpicker, der es Benutzern ermöglicht, eine Zeit visuell auszuwählen, anstatt sie einzugeben. Dies verbessert die Benutzerfreundlichkeit für weniger technische Benutzer oder wenn präzise Eingaben erforderlich sind.
 
 <ComponentDemo 
 path='/webforj/maskedtimefieldpicker?' 
@@ -140,31 +144,31 @@ Sie können auf den Zeitpicker mit `getPicker()` zugreifen:
 TimePicker picker = field.getPicker();
 ```
 
-### Anzeigen/Verbergen des Picker-Icons {#showhide-the-picker-icon}
+### Picker-Symbol anzeigen/ausblenden {#showhide-the-picker-icon}
 
-Verwenden Sie `setIconVisible()`, um das Uhrenicon neben dem Feld anzuzeigen oder auszublenden:
+Verwenden Sie `setIconVisible()`, um das Uhren-Symbol neben dem Feld anzuzeigen oder auszublenden:
 
 ```java
-picker.setIconVisible(true); // zeigt das Icon an
+picker.setIconVisible(true); // zeigt das Symbol an
 ```
 
-### Auto-Öffnungs-Verhalten {#auto-open-behavior}
+### Automatisches Öffnungsverhalten {#auto-open-behavior}
 
-Sie können den Picker so konfigurieren, dass er automatisch geöffnet wird, wenn der Benutzer mit dem Feld interagiert (z. B. klickt, Enter drückt oder Pfeiltasten verwendet):
+Sie können den Picker so konfigurieren, dass er automatisch geöffnet wird, wenn der Benutzer mit dem Feld interagiert (z. B. klickt, die Eingabetaste drückt oder die Pfeiltasten verwendet):
 
 ```java
 picker.setAutoOpen(true);
 ```
 
 :::tip Auswahl über den Picker erzwingen
-Um sicherzustellen, dass Benutzer eine Zeit nur über den Picker auswählen können (und nicht manuell eingeben), kombinieren Sie die folgenden beiden Einstellungen:
+Um sicherzustellen, dass Benutzer eine Zeit nur über den Picker auswählen können (und nicht manuell eingeben können), kombinieren Sie die folgenden beiden Einstellungen:
 
 ```java
-field.getPicker().setAutoOpen(true); // Öffnet den Picker bei Benutzereingabe
+field.getPicker().setAutoOpen(true); // Öffnet den Picker bei Benutzerinteraktion
 field.setAllowCustomValue(false);    // Deaktiviert die manuelle Texteingabe
 ```
 
-Dieses Setup gewährleistet, dass alle Zeiteingaben über die Picker-Benutzeroberfläche erfolgen, was nützlich ist, wenn Sie strenge Formatkontrolle wünschen und Parsing-Probleme bei eingegebener Eingabe vermeiden möchten.
+Diese Konfiguration garantiert, dass alle Zeitwerte über die Picker-Benutzeroberfläche eingegeben werden, was nützlich ist, wenn Sie strenge Formatkontrollen wünschen und Parsing-Probleme durch eingegebene Werte vermeiden möchten.
 :::
 
 ### Manuelles Öffnen des Pickers {#manually-open-the-picker}
@@ -178,26 +182,26 @@ picker.open();
 Oder verwenden Sie das Alias:
 
 ```java
-picker.show(); // entspricht open()
+picker.show(); // gleichbedeutend mit open()
 ```
 
-### Schritt des Pickers einstellen {#setting-the-picker-step}
+### Festlegen des Picker-Schrittes {#setting-the-picker-step}
 
-Sie können das Intervall zwischen wählbaren Zeiten im Picker mit `setStep()` festlegen. Dadurch können Sie steuern, wie granular die Zeitoptionen sind – ideal für Szenarien wie die Planung in 15-Minuten-Blöcken.
+Sie können das Intervall zwischen auswählbaren Zeiten im Picker mit `setStep()` definieren. So können Sie steuern, wie granular die Zeitoptionen sind – ideal für Szenarien wie Terminplanung in 15-Minuten-Abschnitten.
 
 ```java
 field.getPicker().setStep(Duration.ofMinutes(15));
 ```
 
 :::warning Schritt-Beschränkung
-Der Schritt muss eine Stunde oder einen gesamten Tag gleichmäßig teilen. Andernfalls wird eine Ausnahme ausgelöst.
+Der Schritt muss eine Stunde oder einen ganzen Tag gleichmäßig teilen. Andernfalls wird eine Ausnahme ausgelöst.
 :::
 
-Dies sorgt dafür, dass die Dropdown-Liste vorhersehbare, gleichmäßig verteilte Werte wie `09:00`, `09:15`, `09:30` usw. enthält.
+Damit wird sichergestellt, dass die Dropdown-Liste vorhersehbare, gleichmäßig verteile Werte wie `09:00`, `09:15`, `09:30` usw. enthält.
 
 ## `MaskedTimeFieldSpinner` {#maskedtimefieldspinner}
 
-Der `MaskedTimeFieldSpinner` erweitert das [`MaskedTimeField`](#basics), indem Spinner-Steuerelemente hinzugefügt werden, mit denen Benutzer die Zeit mithilfe von Pfeiltasten oder UI-Schaltflächen erhöhen oder verringern können. Es bietet einen geführteren Interaktionsstil, der besonders nützlich in Desktop-Anwendungen ist.
+Der `MaskedTimeFieldSpinner` erweitert [`MaskedTimeField`](#basics) um Spinner-Steuerelemente, die es den Benutzern ermöglichen, die Zeit mit den Pfeiltasten oder UI-Schaltflächen zu erhöhen oder zu verringern. Dies bietet einen geführten Interaktionsstil, der besonders nützlich in desktopartigen Anwendungen ist.
 
 <ComponentDemo 
 path='/webforj/maskedtimefieldspinner?' 
@@ -206,31 +210,31 @@ height='450px'/>
 
 ### Hauptmerkmale {#key-features}
 
-- **Interaktives Zeitstepping:**  
-  Verwenden Sie die Pfeiltasten oder Drehknöpfe, um den Zeitwert zu erhöhen oder zu verringern.
+- **Interaktive Zeitschritte:**  
+  Verwenden Sie die Pfeiltasten oder Spin-Schaltflächen, um den Zeitwert zu erhöhen oder zu verringern.
 
-- **Anpassbare Dreheinheit:**  
-  Wählen Sie, welcher Teil der Zeit geändert werden soll, mit `setSpinField()`:
+- **Anpassbare Drehungseinheit:**  
+  Wählen Sie, welchen Teil der Zeit Sie modifizieren möchten, indem Sie `setSpinField()` verwenden:
 
   ```java
   spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.MINUTE);
   ```
 
-  Optionen sind `HOUR`, `MINUTE`, `SECOND` und `MILLISECOND`.
+  Optionen umfassen `HOUR`, `MINUTE`, `SECOND` und `MILLISECOND`.
 
 - **Min/Max-Grenzen:**  
-  Erbt die Unterstützung für minimale und maximale zulässige Zeiten mit `setMin()` und `setMax()`.
+  Erbt die Unterstützung für minimale und maximale erlaubte Zeiten mit `setMin()` und `setMax()`.
 
 - **Formatierte Ausgabe:**  
-  Vollständig kompatibel mit Masken- und Lokalisierungseinstellungen des `MaskedTimeField`.
+  Vollständig kompatibel mit Masken und Lokalisierungseinstellungen aus dem `MaskedTimeField`.
 
-### Beispiel: Stepping nach Stunden konfigurieren {#example-configure-stepping-by-hour}
+### Beispiel: Stepping nach Stunde konfigurieren {#example-configure-stepping-by-hour}
 
 ```java
 MaskedTimeFieldSpinner spinner = new MaskedTimeFieldSpinner();
 spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.HOUR);
 ```
 
-## Stilgestaltung {#styling}
+## Styling {#styling}
 
 <TableBuilder name="MaskedTimeField" />
