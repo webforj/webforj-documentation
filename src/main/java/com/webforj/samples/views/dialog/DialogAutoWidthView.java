@@ -27,7 +27,7 @@ public class DialogAutoWidthView extends Composite<FlexLayout> {
         .vertical()
         .align().center()
         .build()
-        .setStyle("padding", "20px")
+        .setPadding("20px")
         .setSpacing("10px");
 
     Button toggleAutoWidth = new Button("Toggle Auto Width", ButtonTheme.PRIMARY);
