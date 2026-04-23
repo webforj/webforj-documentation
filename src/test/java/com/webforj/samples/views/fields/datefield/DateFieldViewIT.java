@@ -37,8 +37,8 @@ public class DateFieldViewIT extends BaseTest {
     String departureDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
     String returnDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
     String correctedReturnDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
-    dateFieldPage.getDepartureDate().fill(departureDate);
     dateFieldPage.getReturnDate().fill(returnDate);
+    dateFieldPage.getDepartureDate().fill(departureDate);
     dateFieldPage.getDepartureDate().click();
     assertThat(dateFieldPage.getReturnDate()).hasValue(correctedReturnDate);
   }
