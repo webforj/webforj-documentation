@@ -5,7 +5,6 @@ slug: webforj-bookstore
 date: 2026-04-24
 authors: Eric Handtke
 tags: [spring, security, web development, tutorial, full-stack, showcase]
-image: "./screenshots/cover.png"
 hide_table_of_contents: false
 ---
 
