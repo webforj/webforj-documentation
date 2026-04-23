@@ -1,15 +1,15 @@
 ---
-title: Building a Bookstore App with webforJ and Spring Boot
-description: A walkthrough of the webforJ Bookstore, a full-stack inventory manager with live filtering, data binding, custom table renderers, and Spring Security
+title: Building a Full-Featured Demo with webforJ and Spring Boot
+description: A walkthrough of the webforJ Bookstore app, a full-stack inventory manager with live filtering, data binding, custom table renderers, and Spring Security
 slug: webforj-bookstore
-date: 2026-04-01
+date: 2026-04-24
 authors: Eric Handtke
-tags: [spring, spring security, web development, tutorial, full-stack]
+tags: [spring, security, web development, tutorial, full-stack, showcase]
 image: "./screenshots/cover.png"
 hide_table_of_contents: false
 ---
 
-![cover image](./screenshots/cover.png)
+![cover image](./screenshots/webforj-bookstore-cover.png)
 
 In my time working with documentation and coding for customers I have built quite the number of demo apps myself, so by now I know what the shortcuts look like. The dataset is always small, with authentication and advanced features "coming soon" or not implemented but just hardcoded in. Filtering works fast, because coincidentally there are only five rows to filter. All of that is not to say those demos are bad, after all they serve their purpose, but I wanted to see how efficiently I can build a demo that doesn't cut corners while still being small and easy to understand.
 
