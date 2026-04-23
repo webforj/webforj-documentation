@@ -68,10 +68,6 @@ The `Table` component provides programmatic selection methods, allowing you to m
 
 The `selectKey(Object... keys)` method enables you to programmatically select items using their keys. You can pass one or more keys to this method, and it will update the selection accordingly.
 
-### Select by Index {#select-by-index}
-
-Using the `selectIndex(int... indices)` method allows you to pass one or more indices to the method and updates the selected items accordingly.
-
-### Selecting entire items {#selecting-entire-items}
+### Selecting entry items {#selecting-entry-items}
 
 Finally, the `select(T... items)` method allows you to programmatically select items by passing one or more items themselves to this method to update the selection accordingly.

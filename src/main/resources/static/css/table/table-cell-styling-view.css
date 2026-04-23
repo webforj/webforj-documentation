@@ -1,0 +1,5 @@
+dwc-table::part(cell-highlight) {
+  background-color: var(--dwc-color-warning-alt);
+  color: var(--dwc-color-warning-text);
+  font-weight: bold;
+}

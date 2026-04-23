@@ -4,7 +4,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import com.microsoft.playwright.Locator;
 import com.webforj.samples.pages.debouncer.DebouncerPage;
 import com.webforj.samples.views.BaseTest;
 
@@ -22,7 +22,7 @@ public class DebouncerViewIT extends BaseTest {
     public void testTypingUpdatesHelperText() {
         assertThat(debouncerPage.getInputHelperText()).hasText("Key events: 0");
 
-        debouncerPage.getInput().pressSequentially("ab");
+        debouncerPage.getInput().pressSequentially("ab", new Locator.PressSequentiallyOptions().setDelay(300));
         assertThat(debouncerPage.getInputHelperText()).hasText("Key events: 2");
         debouncerPage.getInput().fill("b");
         assertThat(debouncerPage.getInputHelperText()).hasText("Key events: 3");
@@ -30,7 +30,7 @@ public class DebouncerViewIT extends BaseTest {
 
     @Test
     public void testDebouncerUpdatesOutputAndResetsHelper() {
-        debouncerPage.getInput().pressSequentially("world");
+        debouncerPage.getInput().pressSequentially("world", new Locator.PressSequentiallyOptions().setDelay(300));
 
         assertThat(debouncerPage.getOutput()).hasValue("");
         assertThat(debouncerPage.getOutput()).hasValue("world\n");

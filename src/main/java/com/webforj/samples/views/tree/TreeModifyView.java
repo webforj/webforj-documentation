@@ -2,7 +2,7 @@ package com.webforj.samples.views.tree;
 
 import static com.webforj.component.tree.Tree.node;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -15,11 +15,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Tree Modify View")
-@InlineStyleSheet( /* css */"""
-    :root {
-      --dwc-tree-icon-fill: var(--dwc-color-primary);
-    }
-  """)
+@StyleSheet("ws://css/tree/tree-modify-view.css")
 public class TreeModifyView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Tree tree = new Tree();

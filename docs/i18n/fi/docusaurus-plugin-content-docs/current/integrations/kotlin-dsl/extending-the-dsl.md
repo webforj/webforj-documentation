@@ -1,78 +1,78 @@
 ---
 title: Extending the DSL
 sidebar_position: 20
-_i18n_hash: e7878d00305e1d544efb6f9e6e8afe2e
+_i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---
-Kotlin DSL on laajennettavissa, mikä mahdollistaa DSL-funktioiden lisäämisen mukautetuille komponenteille tai kolmannen osapuolen kirjastoille. Voit rakentaa yhdistettyjä komponentteja, jotka käyttävät DSL: ää sisäisesti.
+Kotlin DSL on laajennettavissa, mikä mahdollistaa DSL-funktioiden lisäämisen mukautetuille komponenteille tai kolmannen osapuolen kirjastoille. Voit rakentaa yhdistettyjä komponentteja, jotka käyttävät DSL:ää sisäisesti.
 
 ## Komponenttien lisääminen DSL:ään {#adding-components-to-the-dsl}
 
-Jotta mikä tahansa komponentti olisi saatavilla DSL:ssä, luo laajennustoiminto `HasComponents`:lle, joka käyttää `init` apufunktiota.
+Jotta mikä tahansa komponentti olisi saatavilla DSL:ssä, luo laajennusfunktio `HasComponents`-rajapinnalle, joka käyttää `init`-apufunktiota.
 
-### Perus DSL-toiminto {#basic-dsl-function}
+### Perus DSL-funktio {#basic-dsl-function}
 
-Tässä on malli yksinkertaiselle komponentille. Tämä esimerkki olettaa, että sinulla on mukautettu `Badge`-komponentti:
+Tässä on malli yksinkertaiselle komponentille. Tämä esimerkki käyttää mukautettua `StarRating`-komponenttia:
 
 ```kotlin
 import com.webforj.concern.HasComponents
 import com.webforj.kotlin.dsl.WebforjDsl
 import com.webforj.kotlin.dsl.init
-import com.example.component.Badge
+import com.example.component.StarRating
 
-fun @WebforjDsl HasComponents.badge(
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  return init(Badge(), block)
+fun @WebforjDsl HasComponents.starRating(
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  return init(StarRating(), block)
 }
 ```
 
 `init`-funktio tekee kolme asiaa:
-1. Lisää komponentin pääsäiliöön
-2. Suorittaa konfiguraatioblokin
-3. Palauttaa konfiguroitavan komponentin
+1. Lisää komponentin vanhempaan säiliöön
+2. Suorittaa konfigurointiblokin
+3. Palauttaa konfiguroidun komponentin
 
 Nyt voit käyttää komponenttia DSL-koodissa:
 
 ```kotlin
 div {
-  badge {
-    text = "Uusi"
-    variant = Badge.Variant.PRIMARY
+  starRating {
+    value = 4
+    max = 5
   }
 }
 ```
 
 ### Parametrien lisääminen {#adding-parameters}
 
-Useimmat DSL-funktiot hyväksyvät yleiset parametrit ennen konfiguraatioblokkia:
+Useimmat DSL-funktiot hyväksyvät yleisiä parametreja ennen konfigurointiblokkia:
 
 ```kotlin
-fun @WebforjDsl HasComponents.badge(
-  text: String? = null,
-  variant: Badge.Variant? = null,
-  block: @WebforjDsl Badge.() -> Unit = {}
-): Badge {
-  val badge = Badge()
-  text?.let { badge.text = it }
-  variant?.let { badge.variant = it }
-  return init(badge, block)
+fun @WebforjDsl HasComponents.starRating(
+  value: Int? = null,
+  max: Int? = null,
+  block: @WebforjDsl StarRating.() -> Unit = {}
+): StarRating {
+  val rating = StarRating()
+  value?.let { rating.value = it }
+  max?.let { rating.max = it }
+  return init(rating, block)
 }
 ```
 
-Käyttö tulee tiiviimmäksi:
+Käyttö on tiiviimpää:
 
 ```kotlin
 div {
-  badge("Uusi", Badge.Variant.PRIMARY)
-  badge("Ale") {
-    styles["font-size"] = "12px"
+  starRating(value = 4, max = 5)
+  starRating(value = 3) {
+    styles["color"] = "gold"
   }
 }
 ```
 
 ## Yhdistettyjen komponenttien luominen {#creating-composite-components}
 
-`Composite` käärii useita komponentteja yhteen uudelleenkäytettävään yksikköön. DSL toimii hyvin yhdistetyn rakenteen määrittämiseen.
+`Composite` yhdistää useita komponentteja yhdeksi uudelleenkäytettäväksi yksiköksi. DSL toimii hyvin yhdistetyn rakenteen määrittämisessä.
 
 ### Perusyhdistelmä {#basic-composite}
 
@@ -109,11 +109,11 @@ class SearchBox : Composite<Div>() {
 }
 ```
 
-Yhdistelmä altistaa komponentin viittaukset ulkoista pääsyä varten ja tarjoaa kätevät menetelmät yleisiin toimiin.
+Yhdistelmä paljastaa komponentin viittaukset ulkoista käyttöä varten ja tarjoaa mukautettuja metodeja yleisiä toimintoja varten.
 
 ### DSL-tuen lisääminen {#adding-dsl-support}
 
-Luo DSL-toiminto niin, että yhdistelmää voidaan käyttää kuten sisäänrakennettuja komponentteja:
+Luo DSL-funktio, jotta yhdistelmää voidaan käyttää kuin sisäänrakennettuja komponentteja:
 
 ```kotlin
 fun @WebforjDsl HasComponents.searchBox(
@@ -139,9 +139,9 @@ div {
 }
 ```
 
-### Esimerkki: Tilannenohtaja {#example-status-indicator}
+### Esimerkki: Tilan indikaattori {#example-status-indicator}
 
-Tässä on täydellinen esimerkki tilanteen näyttää yhdistelmälle:
+Tässä on täydellinen esimerkki tilan indikaattori yhdistelmästä:
 
 ```kotlin
 class StatusIndicator : Composite<Div>() {
@@ -172,7 +172,7 @@ class StatusIndicator : Composite<Div>() {
         styles["width"] = "10px"
         styles["height"] = "10px"
         styles["border-radius"] = "50%"
-        styles["background"] = "harmaa"
+        styles["background"] = "gray"
       }
 
       label = span()
@@ -192,7 +192,7 @@ class StatusIndicator : Composite<Div>() {
   enum class Status { ACTIVE, WARNING, ERROR, INACTIVE }
 }
 
-// DSL-toiminto
+// DSL-funktio
 fun @WebforjDsl HasComponents.statusIndicator(
   text: String? = null,
   status: StatusIndicator.Status? = null,
@@ -211,6 +211,6 @@ Käyttö:
 div {
   statusIndicator("Tietokanta", StatusIndicator.Status.ACTIVE)
   statusIndicator("Välimuisti", StatusIndicator.Status.WARNING)
-  statusIndicator("Ulkoapi", StatusIndicator.Status.ERROR)
+  statusIndicator("Ulkoisen API", StatusIndicator.Status.ERROR)
 }
 ```

@@ -872,5 +872,23 @@
   "theme.SearchModal.footer.backToSearchText": {
     "message": "Back to search",
     "description": "The back to search text for footer"
+  },
+  "experimentalWarning.title": {
+    "message": "Experimental feature"
+  },
+  "experimentalWarning.message": {
+    "message": "This feature is experimental and may change or be removed in a future release."
+  },
+  "automatedUpgradeTip.title": {
+    "message": "Automaattinen päivitys saatavilla",
+    "description": "The title for the tip admonition for OpenRewrite"
+  },
+  "automatedUpgradeTip.message": {
+    "message": "OpenRewrite-reseptit ovat saatavilla tälle versiolle vanhentuneiden ja poistettujen API:en automaattiseen päivittämiseen. Katso {articleLink} asennusohjeet.",
+    "description": "The message of a tip indicating that you can use OpenRewrite to make updating easier"
+  },
+  "automatedUpgradeTip.automatedUpgradeLink": {
+    "message": "Käytä OpenRewritea",
+    "description": "The text that links to the automated upgrade article"
   }
 }

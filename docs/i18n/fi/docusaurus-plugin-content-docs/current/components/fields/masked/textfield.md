@@ -1,20 +1,20 @@
 ---
 title: MaskedTextField
 sidebar_position: 15
-_i18n_hash: b910fd6dedb911a21f3d37b17658c2cc
+_i18n_hash: c50931f8465e3be081ecfee03a3ef559
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-textfield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTextField" top='true'/>
 
-`MaskedTextField`-komponentti tarjoaa konfiguroitavan tekstikentän, joka pakottaa muotoilusääntöjä ja validoimista. Se soveltuu erinomaisesti sovelluksiin, jotka vaativat eksofomia syötettä, kuten rahoitus-, sähköinen kaupankäynti- ja terveydenhuoltojärjestelmiin.
+`MaskedTextField`-komponentti tarjoaa konfiguroitavan tekstisyötteen, joka pakottaa muotoilu- ja validointisäännöt. Se soveltuu hyvin sovelluksiin, jotka vaativat strukturoitua syöttöä, kuten talous-, verkkokauppa- ja terveydenhuoltojärjestelmiin.
 
 <!-- INTRO_END -->
 
 ## Perusteet {#basics}
 
-`MaskedTextField`-komponentin voi luoda parametreilla tai ilman. Voit määrittää alkuarvon, tunnisteen, paikkamerkkitekstin ja kuuntelijan tilanteissa, joissa arvo muuttuu.
+`MaskedTextField` voidaan luoda parametreillä tai ilman. Voit määrittää alkusarjan arvon, etiketin, paikkamerkkitekstin ja kuuntelijan, jos arvo muuttuu.
 
 ```java
 MaskedTextField field = new MaskedTextField("Tilin ID");
@@ -24,24 +24,29 @@ field.setMask("ZZZZ-0000")
 
 ## Maskisäännöt {#mask-rules}
 
-`MaskedTextField` muotoilee tekstisyötteen maskeilla - merkkijonoilla, jotka määrittävät, mitkä merkit ovat sallittuja jokaisessa kohdassa. Tämä varmistaa johdonmukaisen ja rakenteellisen syötteen esimerkiksi puhelinnumeroissa, postinumeroissa ja henkilöllisyysnumeroissa.
+`MaskedTextField` muotoilee tekstisyötteen maskin avulla - merkkijono, joka määrittää, mitkä merkit ovat sallittuja kussakin kohdassa. Tämä varmistaa johdonmukaisen ja rakenteellisen syötteen, kuten puhelinnumeroiden, postinumeroiden ja henkilöllisyysnumeroiden muodoissa.
+
+:::tip Maskin soveltaminen ohjelmallisesti
+Jos haluat muotoilla merkkijonoja samalla maskisyntaksilla kentän ulkopuolella, esimerkiksi kun renderöit tietoja [`Table`](/docs/components/table/overview), käytä [`MaskDecorator`](/docs/advanced/mask-decorator) -apuluokkaa.
+:::
 
 ### Tuetut maskimerkit {#supported-mask-characters}
 
-| Merkki    | Kuvaus                                                                                   |
-|-----------|------------------------------------------------------------------------------------------|
-| `X`       | Mikä tahansa tulostettava merkki                                                         |
-| `a`       | Mikä tahansa aakkosellinen merkki (iso tai pieni)                                       |
-| `A`       | Mikä tahansa aakkosellinen merkki; pienet kirjaimet muutetaan isoiksi                    |
-| `0`       | Mikä tahansa numero (0–9)                                                                 |
-| `z`       | Mikä tahansa numero tai kirjain (iso tai pieni)                                          |
-| `Z`       | Mikä tahansa numero tai kirjain; pienet kirjaimet muutetaan isoiksi                     |
+| Merkki    | Kuvaus                                                                                 |
+|-----------|---------------------------------------------------------------------------------------|
+| `X`       | Mikä tahansa tulostettava merkki                                                     |
+| `a`       | Mikä tahansa aakkosellinen merkki (iso tai pieni)                                     |
+| `A`       | Mikä tahansa aakkosellinen merkki; pienet kirjaimet muutetaan isoiksi                 |
+| `0`       | Mikä tahansa numero (0–9)                                                             |
+| `z`       | Mikä tahansa numero tai kirjain (iso tai pieni)                                        |
+| `Z`       | Mikä tahansa numero tai kirjain; pienet kirjaimet muutetaan isoiksi                   |
 
-Kaikkia muita merkkejä maskissa käsitellään kirjaimena, ja ne on kirjoitettava tarkasti. Esimerkiksi maski, kuten `XX@XX`, vaatii käyttäjän syöttämään `@` keskelle.
+Kaikki muut merkit maskissa käsitellään kirjaimellisesti ja ne on kirjoitettava täsmälleen. 
+Esimerkiksi maski kuten `XX@XX` vaatii käyttäjältä `@`-merkin syöttämistä keskelle.
 
-- **Virheelliset merkit** jätetään huomiotta ilman ilmoitusta.
-- **Lyhyt syöte** täydennetään välilyönneillä.
-- **Pidempi syöte** katkaistaan sopimaan m askiin.
+- **Väärät merkit** jätetään huomiotta ilman ilmoitusta.
+- **Lyhyt syöte** täytetään väleillä.
+- **Pitkä syöte** katkaistaan sopimaan maskiin.
 
 ### Esimerkkejä {#examples}
 
@@ -52,8 +57,9 @@ field.setMask("ZZZZ-0000");          // Esimerkki: ABCD-1234
 field.setMask("0000-0000-0000-0000");// Esimerkki: 1234-5678-9012-3456
 ```
 
-:::tip Täydellinen syöttö sallittu
-Jos maski sisältää vain `X`, kenttä käyttäytyy kuin tavallinen [`TextField`](../textfield), sallien kaikki tulostettavat syötteet. Tämä on hyödyllistä, kun haluat varata mahdollisuuden muotoiluun ilman tiukkoja merkkisääntöjä.
+:::tip Täydellinen syöte sallittu
+Jos maski sisältää vain `X`, kenttä käyttäytyy kuten tavallinen [`TextField`](../textfield), salliensyötteen mihin tahansa tulostettavaan syötteeseen.
+Tämä on hyödyllistä, kun haluat varata kyvyn muotoilla ilman tiukkoja merkkisääntöjä.
 :::
 
 <ComponentDemo 
@@ -62,30 +68,31 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
-## Validointimallit {#validation-patterns}
+## Validointikaaviot {#validation-patterns}
 
-Vaikka maskit määrittävät syötteen rakenteen, voit yhdistää ne validointimalleihin pakottaaksesi tarkempia syöttösääntöjä. Tämä lisää ylimääräisen kerroksen asiakaspuolen validoimista säännöllisten lausekkeiden avulla.
+Vaikka maskit määrittävät syötteen rakenteen, voit yhdistää ne validointikaavioiden kanssa pakottaaksesi tarkempia syöttösääntöjä. Tämä lisää ylimääräisen kerroksen asiakaspuolen validointia käyttöön heti.
 
 Käytä `setPattern()`-metodia soveltaaksesi mukautettua säännöllistä lauseketta:
 
 ```java
-field.setPattern("[A-Za-z0-9]{10}"); // Pakottaa 10-merkkisen alfanumeerisen koodin
+field.setPattern("[A-Za-z0-9]{10}"); // Pakottaa 10-merkkiseen alfanumeeriseen koodiin
 ```
 
-Tämä varmistaa, että syöte ei ainoastaan vastaa maskia, vaan myös täyttää määritellyn rakenteen, kuten pituuden tai sallitut merkit.
+Tämä varmistaa, että syöte vastaa ei vain maskia, vaan myös noudattaa määriteltyä rakennetta, kuten pituutta tai sallittuja merkkejä.
 
 Tämä on erityisen hyödyllistä, kun:
 
 - Maski sallii liikaa joustavuutta
-- Haluat pakottaa tarkan pituuden tai tietyn muodon (esim. heksadesimaali, Base64, UUID)
+- Haluat pakottaa tarkan pituuden tai tietyn muodon (esim. heksadesimaalinen, Base64, UUID)
 
-:::tip Säännöllisen lausekkeen muoto
-Malli on oltava voimassa oleva [JavaScriptin säännöllinen lauseke](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), kuten `RegExp`-tyypin käyttäminen. Lisätietoja löytyy [HTML:n malli-attribuutin dokumentaatiosta](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
+:::tip Säännöllinen lauseke
+Kaavan on oltava voimassa oleva [JavaScript-säännöllinen lauseke](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), kuten `RegExp`-tyypin mukaan. Löydät lisää yksityiskohtia [HTML-kaavan attribuutin asiakirjoista](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
 :::
 
 ## Arvon palauttaminen {#restoring-the-value}
 
-`MaskedTextField` sisältää palautusominaisuuden, joka nollaa kentän arvon ennalta määriteltyyn tai alkuperäiseen tilaan. Tämä voi olla hyödyllistä käyttäjän muutosten kumoamiseksi tai oletusarvoiseen syötteeseen palauttamiseksi.
+`MaskedTextField` sisältää palautustoiminnon, joka nolla poistaa kentän arvon ennalta määritettyyn tai alkuperäiseen tilaan. 
+Tämä voi olla hyödyllistä käyttäjän muutosten kumoamisessa tai palautettaessa oletusyhteyttä.
 
 ```java
 field.setRestoreValue("ABC123");
@@ -94,10 +101,10 @@ field.restoreValue();
 
 ### Tapoja palauttaa arvo {#ways-to-restore-the-value}
 
-- **Ohjelmallisesti** kutsumalla `restoreValue()`
-- **Näppäimistön kautta**, painamalla <kbd>ESC</kbd> (tämä on oletus palautusnäppäin, ellei ohitetu kielilähettäjällä)
+- **Ohjelmallisesti**, kutsumalla `restoreValue()`
+- **Näppäimistön kautta**, painamalla <kbd>ESC</kbd> (tämä on oletuspalautusavain ellei sitä ohiteta tapahtumakuuntelijalla)
 
-Voit määrittää palautettavan arvon `setRestoreValue()`-metodilla. Jos palautusarvoa ei ole asetettu, kenttä palautuu alkuperäiseen arvoon renderoinnin ajankohtana.
+Voit asettaa palautettavan arvon `setRestoreValue()`-menetelmällä. Jos palautusarvoa ei ole asetettu, kenttä palautuu alkupisteeseen syöttön hetkellä.
 
 <ComponentDemo 
 path='/webforj/maskedtextfieldrestore?' 
@@ -107,7 +114,8 @@ height='200px'
 
 ## `MaskedTextFieldSpinner` {#maskedtextfieldspinner}
 
-`MaskedTextFieldSpinner` laajentaa [`MaskedTextField`](#basics) komponenttia lisäämällä pyöräytyskontrollit, jotka mahdollistavat käyttäjien kiertoa ennalta määrittyneiden arvojen luettelossa. Tämä parantaa käyttäjäkokemusta tilanteissa, joissa syöttö pitäisi rajoittaa kiinteään joukkoon kelvollisia vaihtoehtoja.
+`MaskedTextFieldSpinner` laajentaa [`MaskedTextField`](#basics) lisäämällä spinnereitä, jotka antavat käyttäjille mahdollisuuden kiertää ennaltamääriteltyjen arvojen luetteloa. 
+Tämä parantaa käyttäjäkokemusta tilanteissa, joissa syöte tulisi rajoittaa kiinteään joukkoon hyväksyttäviä vaihtoehtoja.
 
 <ComponentDemo 
 path='/webforj/maskedtextfieldspinner?' 
@@ -115,16 +123,16 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='120px'
 />
 
-### Keskeiset ominaisuudet {#key-features}
+### Avainominaisuudet {#key-features}
 
-- **Vaihtoehtoluettelon tuki**  
-  Täytä pyöräytys luettelolla kelvollisista merkkijonoarvoista käyttämällä `setOptions()`:
+- **Vaihtoehtoluettelo**  
+  Täytä spinnereen voimassa olevat merkkijonovaihtoehdot käyttämällä `setOptions()`:
 
   ```java
   spinner.setOptions(List.of("Vaihtoehto A", "Vaihtoehto B", "Vaihtoehto C"));
   ```
 
-- **Ohjelmallinen pyöriminen**  
+- **Ohjelmallinen kierto**  
   Käytä `spinUp()` ja `spinDown()` siirtyäksesi vaihtoehtojen läpi:
 
   ```java
@@ -133,15 +141,15 @@ height='120px'
   ```
 
 - **Indeksin hallinta**  
-  Aseta tai hae nykyinen valintaindeksi:
+  Aseta tai hae nykyistä valinnanindeksiä seuraavasti:
 
   ```java
   spinner.setOptionIndex(1);
   int current = spinner.getOptionIndex();
   ```
 
-- **Maskiyhteensopivuus**  
-  Periyttää täysin kaikki muotoilut, maskisäännöt ja mallivaatimukset `MaskedTextField`:iltä.
+- **Maskin yhteensopivuus**  
+  Perii täysimääräisesti kaikki muotoilut, maskisäännöt ja kaavan validoinnin `MaskedTextField`:stä.
 
 ## Tyylittely {#styling}
 

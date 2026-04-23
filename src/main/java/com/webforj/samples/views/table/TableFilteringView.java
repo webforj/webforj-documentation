@@ -58,6 +58,7 @@ public class TableFilteringView extends Composite<Div> {
     table.addColumn("Cost", MusicRecord::getCost);
 
     table.setRepository(repository);
+    table.setColumnsToAutoFit();
 
     return table;
   }

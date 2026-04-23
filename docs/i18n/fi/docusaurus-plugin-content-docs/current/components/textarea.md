@@ -1,20 +1,20 @@
 ---
 title: TextArea
 sidebar_position: 130
-_i18n_hash: c25007720c315e5b0b26197e1fdfff61
+_i18n_hash: e8956f1a5bf39eab9a42244ff8d5ff21
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-textarea" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextArea" top='true'/>
 
-`TextArea`-komponentti tarjoaa monirivisen tekstikentän, johon käyttäjät voivat kirjoittaa ja muokata pidempiä tekstikappaleita. Se tukee maksimimerkkirajoja, kappalerakennetta, rivin katkeamista ja validointisääntöjä syötteen käsittelyn hallinnaksi.
+Komponentti `TextArea` tarjoaa monirivisen tekstikentän, johon käyttäjät voivat kirjoittaa ja muokata pidempiä tekstikappaleita. Se tukee enimmäismerkki rajoja, kappalerakennetta, rivin kääntämistä ja validointisääntöjä, jotta syöttöä voidaan hallita.
 
 <!-- INTRO_END -->
 
-## Luominen `TextArea` {#creating-a-textarea}
+## Tekeminen `TextArea` {#creating-a-textarea}
 
-Luo `TextArea` välittämällä etiketti sen konstruktorille. Ominaisuuksia, kuten paikkamerkki, merkkirajat ja rivin katkeaminen, voidaan konfiguroida asetusmenetelmien avulla.
+Luo `TextArea` välittämällä sille label-kenttä konstruktoriin. Ominaisuuksia, kuten paikkamerkki, merkkirajat ja kääntö käyttäytyminen, voidaan konfiguroida setter-metodien avulla.
 
 <ComponentDemo 
 path='/webforj/textarea?' 
@@ -24,9 +24,9 @@ height = '300px'
 
 ## Kappaleiden hallinta {#managing-paragraphs}
 
-`TextArea`-komponentti tarjoaa ominaisuuksia tekstikappaleiden käsittelemiseen, mikä tekee siitä ihanteellisen sovelluksille, jotka vaativat asiakirjojen muokkaamista tai jäsenneltyä tekstisyöttöä.
+Komponentti `TextArea` tarjoaa ominaisuuksia tekstikappaleiden käsittelyyn, mikä tekee siitä ihanteellisen sovelluksille, jotka vaativat asiakirjojen muokkausta tai jäsenneltyä tekstisyöttöä.
 
-Tässä on nopea esimerkki siitä, miten kappalekohtainen sisältö voidaan rakentaa ja manipuloida:
+Tässä on nopea esimerkki siitä, kuinka rakentaa ja manipuloida kappaleen sisältöä:
 
 ```java
 TextArea textArea = new TextArea();
@@ -34,10 +34,10 @@ TextArea textArea = new TextArea();
 // Lisää kappale alussa
 textArea.addParagraph(0, "Tämä on ensimmäinen kappale.");
 
-// Liitä toinen kappale loppuun
+// Lisää toinen kappale loppuun
 textArea.addParagraph("Tässä on toinen kappale.");
 
-// Liitä lisäsisältöä ensimmäiseen kappaleeseen
+// Lisää lisäsisältöä ensimmäiseen kappaleeseen
 textArea.appendToParagraph(0, " Tämä lause jatkaa ensimmäistä.");
 
 // Poista toinen kappale
@@ -52,33 +52,33 @@ for (int i = 0; i < paragraphs.size(); i++) {
 
 ## Validointi {#validation}
 
-`TextArea`-komponentti tukee kahta täydentävää validointityyppiä: rakenteelliset rajoitteet ja sisällön rajoitteet.
+Komponentti `TextArea` tukee kahta täydentävää validointityyppiä: rakenteellisia rajoituksia ja sisällön rajoituksia.
 
-**Rakenteelliset rajoitteet** keskittyvät siihen, miten teksti on järjestetty ja visuaalisesti asetettu. Esimerkiksi:
-- `setLineCountLimit(int maxLines)` rajoittaa sallitun rivien määrää tekstikentässä.
-- `setParagraphLengthLimit(int maxCharsPerLine)` rajoittaa merkkien määrää per kappale (tai rivi), auttaen ylläpitämään luettavuutta tai muotoilustandardeja.
+**Rakenteelliset rajoitukset** keskittyvät siihen, kuinka teksti on järjestetty ja visuaalisesti asetettu. Esimerkiksi:
+- `setLineCountLimit(int maxLines)` rajoittaa sallittujen rivien määrää tekstialueella.
+- `setParagraphLengthLimit(int maxCharsPerLine)` rajoittaa merkkien määrää per kappale (tai rivi), mikä auttaa voimaan luettavuutta tai muotoilustandardeja.
 
-**Sisällön rajoitteet** sen sijaan käsittelevät syötetyn tekstin kokonaismäärää riippumatta siitä, miten se on jaettu:
-- `setMaxLength(int maxChars)` rajoittaa kaikkien kappaleiden yhteenlasketun merkkimäärän.
-- `setMinLength(int minChars)` asettaa vähimmäispituuden, varmistaen, että riittävästi sisältöä annetaan.
+**Sisällön rajoitukset** puolestaan liittyvät syötetyn tekstin kokonaissummaan riippumatta siitä, miten se on jakautunut:
+- `setMaxLength(int maxChars)` rajoittaa sallittujen merkkien kokonaismäärää kaikissa kappaleissa.
+- `setMinLength(int minChars)` asettaa vähimmäispituuden varmistaen, että riittävästi sisältöä on annettu.
 
-Seuraava demo sallii käyttäjien säätää validointirajoja—kuten maksimimerkkimäärää, kappaleen pituutta ja rivimäärää—reaaliaikaisesti ja nähdä, miten `TextArea` reagoi.
-	
+Seuraava demo mahdollistaa käyttäjien säätää validointirajoja—kuten enimmäismerkkimäärä, kappaleen pituus ja rivien määrä—reaaliajassa ja nähdä, miten `TextArea` reagoi.
+
 <ComponentDemo 
 path='/webforj/textareavalidation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java'
 height = '550px'
 />
 
-## Sanojen kääntö ja rivin katkeaminen {#word-wrap-and-line-wrapping}
+## Sanan kääntäminen ja rivin kääntäminen {#word-wrap-and-line-wrapping}
 
-Voit hallita, kääriikö teksti vai vierittääkö se vaakasuunnassa käyttämällä `setLineWrap()`. Kun kääntö on pois päältä, rivit jatkuvat vaakasuunnassa näkyvän alueen yli, jolloin vierittäminen on tarpeen. Kun se on päällä, teksti kääntyy automaattisesti seuraavalle riville, kun se saavuttaa komponentin reunan.
+Voit hallita, kääntääkö teksti vai vierittääkö se vaaka-suunnassa käyttämällä `setLineWrap()`. Kun kääntäminen on poistettu käytöstä, rivit jatkuvat vaaka-suunnassa näkyvän alueen ulkopuolelle, jolloin vierittäminen on tarpeen. Kun se on käytössä, teksti kääntyy automaattisesti seuraavalle riville, kun se saavuttaa komponentin reunan.
 
-Kääntökäyttäytymisen hienosäätämiseksi `setWrapStyle()` antaa sinulle mahdollisuuden valita kahden tyylin välillä:
-- `WORD_BOUNDARIES` kääntää tekstiä kokonaisilla sanoilla säilyttäen luonnollisen lukemisvirran.
-- `CHARACTER_BOUNDARIES` kääntää yksittäisillä merkeillä, mikä mahdollistaa tiukemman hallinnan asettelussa, erityisesti kapeissa tai kiinteän levyisissä säiliöissä.
+Kääntämisen käyttäytymistä voi edelleen hienosäätää `setWrapStyle()` avulla, jolloin voit valita kahden tyylin välillä:
+- `WORD_BOUNDARIES` kääntää tekstiä koko sanojen kohdalla, säilyttäen luonnollisen lukemisen rytmin.
+- `CHARACTER_BOUNDARIES` kääntää yksittäisissä merkeissä, jolloin saadaan tarkempi kontrolli asettelusta, erityisesti kapeissa tai kiinteän leveyden konteissa.
 
-Nämä kääntövaihtoehdot toimivat yhdessä rakenteellisten rajoitteiden, kuten rivien ja kappaleiden pituusrajojen, kanssa. Vaikka kääntö määrittää *kuinka* teksti virtaa käytettävissä olevassa tilassa, rakenteelliset rajat määrittävät *kuinka paljon* tilaa tekstille sallitaan. Yhdessä ne auttavat ylläpitämään sekä visuaalista rakennetta että käyttäjän syöterajoja.
+Nämä kääntö vaihtoehdot toimivat käsi kädessä rakenteellisten rajoitusten, kuten rivin määrä ja kappaleen pituusrajojen kanssa. Kun kääntäminen määrittää *miten* teksti virtaa käytettävissä olevassa tilassa, rakenteelliset rajat määrittävät *kuinka paljon* tilaa tekstin on sallittua viedä. Yhdessä ne auttavat ylläpitämään sekä visuaalista rakennetta että käyttäjän syöttörajoja.
 
 <ComponentDemo 
 path='/webforj/textareawrap?' 
@@ -86,33 +86,34 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '400px'
 />
 
-## Ennakoitu teksti {#predicted-text}
+## Ennustettu teksti {#predicted-text}
 
-`TextArea`-komponentti tukee älykkäitä tekstiehdotuksia auttaen käyttäjiä kirjoittamaan nopeammin ja vähemmillä virheillä. Kun käyttäjät syöttävät tekstiä, ennakoivia ehdotuksia ilmestyy nykyisen syötteen perusteella, mahdollistaen yleisten tai odotettavien ilmausten täydentämisen.
+Komponentti `TextArea` tukee älykkäitä tekstiehdotuksia auttaakseen käyttäjiä kirjoittamaan nopeammin ja vähemmillä virheillä. Kun käyttäjät syöttävät tekstiä, ennakoivia ehdotuksia näkyy nykyisen syötteen perusteella, jolloin he voivat täydentää yleisiä tai odotettuja lauseita.
 
-Ehdotuksia voidaan hyväksyä painamalla `Tab`- tai `ArrowRight`-näppäintä, jolloin ehdotettu teksti lisätään syötteeseen vaivattomasti. Jos mitään sopivaa ennakoitavaa ei ole saatavilla tiettynä hetkenä, syöte pysyy muuttumattomana, ja käyttäjä voi jatkaa kirjoittamista keskeytyksettä—varmistamalla, että ominaisuus ei koskaan häiritse.
+Ehdotuksen voi hyväksyä painamalla `Tab` tai `ArrowRight` -näppäintä, jolloin ehdotettu teksti lisätään syötteeseen saumattomasti. Jos sopivaa ehdotusta ei ole saatavilla tietyllä hetkellä, syöte pysyy muuttumattomana, ja käyttäjä voi jatkaa kirjoittamista keskeytyksettä—varmistamalla, että toiminto ei koskaan ole tiellä.
 
-Tämä ennakoiva käyttäytyminen parantaa sekä nopeutta että tarkkuutta, erityisesti toistuvissa syöttöskenaarioissa tai sovelluksissa, joissa ilmausten johdonmukaisuus on tärkeää.
+Tämä ennakoiva käyttäytyminen parantaa sekä nopeutta että tarkkuutta, erityisesti toistuvissa syöttötilanteissa tai sovelluksissa, joissa lauserakenteen johdonmukaisuus on tärkeää.
 
 <ComponentDemo 
 path='/webforj/textareapredictedtext?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java'
+cssURL='/css/textarea/text-area-predicted-text-view.css'
 height = '400px'
 />
 
 :::info
-Tämä demo käyttää [Datamuse API:ta](https://datamuse.com/) tarjoamaan sanasuosituksia käyttäjän syötteen perusteella. Ennusteiden laatu ja merkityksellisyys riippuvat täysin API:n tietojoukosta ja arviointimekanismista. Se ei käytä tekoälymalleja tai suuria kielimalleja (LLMs); ehdotukset tuotetaan kevyestä, sääntöihin perustuvasta moottorista, joka keskittyy lexikaaliseen samankaltaisuuteen.
+Tämä demo käyttää [Datamuse API](https://datamuse.com/) tarjotakseen sanan ehdotuksia käyttäjän syötteen perusteella. Ehdotusten laatu ja merkitys riippuvat täysin API:n tietokannasta ja arviointimekanismista. Se ei käytä AI-malleja tai suuria kielimalleja (LLM); ehdotukset luodaan kevyestä, sääntöihin perustuvasta moottorista, joka keskittyy leksikaaliseen samankaltaisuuteen.
 :::
 
-## Vain luku- ja pois päältä -tila {#read-only-and-disabled-state}
+## Luku ja Poistaminen tilassa {#read-only-and-disabled-state}
 
-`TextArea`-komponenttia voidaan asettaa vain luku- tai pois päältä -tilaan käyttäjävuorovaikutuksen hallitsemiseksi.
+Komponentti `TextArea` voidaan asettaa joko vain luku- tai poistustilaan käyttäjä vuorovaikutuksen hallitsemiseksi.
 
-**Vain luku** -tekstikenttä sallii käyttäjien katsella ja valita sisältöä, mutta ei muokata sitä. Tämä on hyödyllistä dynaamisen tai esitäytetyn tiedon näyttämiseksi, jota ei pitäisi muuttaa.
+**Vain luku** tekstialue sallii käyttäjien nähdä ja valita sisältöä, mutta ei muokata sitä. Tämä on hyödyllistä dynaamisten tai esitäytettyjen tietojen esittämisessä, jotka eivät saa muuttua.
 
-**Pois päältä** -tekstikenttä puolestaan estää kaiken vuorovaikutuksen—mukaan lukien keskittymisen ja tekstin valinnan—ja se on yleensä tyylitelty inaktiiviseksi tai harmaaksi.
+**Poistettu** tekstialue estää kaikki vuorovaikutukset—mukaan lukien fokus ja tekstin valinta—ja on tyypillisesti tyylitelty inaktiiviseksi tai harmaaksi.
 
-Käytä vain luku -tilaa, kun sisältö on merkityksellistä mutta muuttumatonta, ja pois päältä -tilaa, kun syöte ei ole tällä hetkellä sovellettavaa tai sen pitäisi olla tilapäisesti inaktiivinen.
+Käytä vain luku -tilaa, kun sisältö on relevanttia, mutta muuttumatonta, ja poistettu -tilaa, kun syöttö ei ole tällä hetkellä soveltuvaa tai sen pitäisi olla tilapäisesti pois käytöstä.
 
 <ComponentDemo 
 path='/webforj/textareastates?' 

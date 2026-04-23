@@ -63,11 +63,11 @@ public class TableColumnAutoSizingView extends Composite<FlexLayout> {
   private void applyDefaultColumnSizing() {
     numberCol.setFlex(0f).setWidth(50f).setMinWidth(40f);
     titleCol.setFlex(0f).setWidth(100f).setMinWidth(80f);
-    artistCol.setFlex(0f).setWidth(200f).setMinWidth(100f);
+    artistCol.setFlex(1f).setMinWidth(100f);  
     genreCol.setFlex(0f).setWidth(80f).setMinWidth(60f);
     costCol.setFlex(0f).setWidth(60f).setMinWidth(50f);
   }
-
+  
   private void autoSizeAllColumns() {
     table.setColumnsToAutoSize();
   }

@@ -1,6 +1,5 @@
 package com.webforj.samples.views.textarea;
 
-import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.field.TextArea;
@@ -12,7 +11,6 @@ import com.webforj.router.annotation.Route;
 import java.util.List;
 
 @Route
-@StyleSheet("TextAreaValidationView.css")
 public class TextAreaValidationView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final TextArea textArea = new TextArea("Validation Playground", "The quick brown fox jumps over the lazy dog.");

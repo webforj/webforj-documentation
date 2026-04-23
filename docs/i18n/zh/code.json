@@ -878,5 +878,17 @@
   },
   "experimentalWarning.message": {
     "message": "此功能为实验性，未来版本可能会改变或删除。"
+  },
+  "automatedUpgradeTip.title": {
+    "message": "可用自动升级",
+    "description": "The title for the tip admonition for OpenRewrite"
+  },
+  "automatedUpgradeTip.message": {
+    "message": "本版本提供OpenRewrite配方，可自动更新已弃用和移除的API。请参阅{articleLink}以获取设置说明。",
+    "description": "The message of a tip indicating that you can use OpenRewrite to make updating easier"
+  },
+  "automatedUpgradeTip.automatedUpgradeLink": {
+    "message": "使用OpenRewrite",
+    "description": "The text that links to the automated upgrade article"
   }
 }

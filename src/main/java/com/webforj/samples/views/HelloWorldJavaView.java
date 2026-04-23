@@ -2,7 +2,7 @@ package com.webforj.samples.views;
 
 import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -16,14 +16,7 @@ import com.webforj.router.annotation.Route;
 /**
  * A simple HelloWorld app demonstrating basic WebForj component usage.
  */
-@InlineStyleSheet(/* css */"""
-  .mainFrame {
-    margin: 20px;
-    padding: 20px;
-    border: 1px dotted;
-    width: 150px;
-  }
-""")
+@StyleSheet("ws://css/hello-world-java-view.css")
 @Route("/")
 @FrameTitle("Hello World Java")
 public class HelloWorldJavaView extends Composite<FlexLayout> {

@@ -2,41 +2,41 @@
 sidebar_position: 10
 title: Selection
 slug: selection
-_i18n_hash: 203177b6049bc42493e3d0dbc0bf5233
+_i18n_hash: 35cb02c29edafbe9a0715b4630be56c1
 ---
-Die `Table`-Komponente bietet verschiedene Auswahlmöglichkeiten. Es gibt Methoden zum Auswählen eines einzelnen Elements, mehrerer Elemente oder zum programmgesteuerten Verwalten von Auswahlen.
+Die `Table`-Komponente bietet verschiedene Auswahlmöglichkeiten. Es gibt Methoden zur Auswahl eines einzelnen Elements, mehrerer Elemente oder zur programmgesteuerten Verwaltung von Auswahlen.
 
-:::tip Daten verwalten und abfragen
+:::tip Verwaltung und Abfrage von Daten
 Für Informationen zur Verwendung des `Repository`-Musters zur Verwaltung und Abfrage von Sammlungen siehe die [Repository-Artikel](/docs/advanced/repository/overview).
 :::
 
 ## Auswahlmodus {#selection-mode}
 
-Der Auswahlmodus in der Tabelle bestimmt, wie Elemente vom Benutzer ausgewählt werden können. Er bietet Optionen zur Konfiguration des Verhaltens der Elementauswahl. Die Table-Klasse bietet eine Methode zum Festlegen des Auswahlmodus:
+Der Auswahlmodus in der Tabelle bestimmt, wie Elemente vom Benutzer ausgewählt werden können. Er bietet Optionen zur Konfiguration des Verhaltens der Elementauswahl. Die Table-Klasse stellt eine Methode zum Festlegen des Auswahlmodus bereit:
 
 ```java
 setSelectionMode(SelectionMode selectionMode)
 ```
 
-Verfügbare Optionen für den Auswahlmodus sind:
+Verfügbare Auswahlmodus-Optionen umfassen:
 
->- `SINGLE` - (Einzelauswahl)
+>- `SINGLE` - (Einzelauswahl) 
 >- `MULTI` - (Mehrfachauswahl)
->- `NONE` - (keine Auswahl).
+>- `NONE` - (Keine Auswahl).
 
 ## Auswahlereignis {#selection-event}
 
-Das `Table`-Komponentenpaket gibt mehrere Ereignisse im Zusammenhang mit der Zeilenauswahl aus. Diese Ereignisse erfassen Änderungen im Auswahlstatus von `Table`-Zeilen. Im Folgenden sind die wichtigsten Auswahlereignisse mit ihren Beschreibungen aufgeführt:
+Das `Table`-Komponentenpaket gibt mehrere Ereignisse aus, die mit der Zeilenauswahl zusammenhängen. Diese Ereignisse erfassen Änderungen im Auswahlstatus der `Table`-Zeilen. Im Folgenden sind die wichtigsten Auswahlereignisse zusammen mit ihren Beschreibungen aufgeführt:
 
->- `TableItemSelectEvent` - Wird ausgelöst, wenn ein Tabellenitem ausgewählt wird.
->- `TableItemDeselectEvent` - Wird ausgelöst, wenn ein Tabellenitem abgewählt wird.
->- `TableItemSelectionChange` - Wird ausgelöst, wenn die Gesamtauswahl in der Tabelle geändert wird oder wenn eine zusätzliche Auswahl getroffen wird.
+>- `TableItemSelectEvent` -  Wird ausgelöst, wenn ein Tabellenelement ausgewählt wird.
+>- `TableItemDeselectEvent` - Wird ausgelöst, wenn ein Tabellenelement abgewählt wird.
+>- `TableItemSelectionChange` - Wird ausgelöst, wenn sich die Gesamtauswahl in der Tabelle ändert oder wenn eine zusätzliche Auswahl getroffen wird.
 
 :::info
-Die `TableItemSelectEvent`- und `TableItemDeselectEvent`-Ereignisse werden nicht ausgelöst, wenn der Modus für Mehrfachauswahl aktiv ist und die Auswahl über das Header-Checkbox-Feld erfolgt. In diesem Fall sollte das `TableItemSelectionChange`-Ereignis stattdessen verwendet werden.
+Die `TableItemSelectEvent`- und `TableItemDeselectEvent`-Ereignisse werden nicht ausgelöst, wenn der Mehrfachauswahlmodus aktiv ist und die Auswahl über das Kontrollkästchen in der Kopfzeile erfolgt. In diesem Fall sollte stattdessen das `TableItemSelectionChange`-Ereignis verwendet werden.
 :::
 
-Im folgenden Beispiel wird ein `TableItemSelectEvent`-Ereignis ausgelöst, sobald ein Benutzer eine Zeile auswählt. Das Ereignis kann behandelt werden, indem ein Listener zur Tabelle mit der Methode `onItemSelect()` hinzugefügt wird.
+Im folgenden Beispiel wird ein `TableItemSelectEvent`-Ereignis ausgelöst, wann immer ein Benutzer eine Zeile auswählt. Das Ereignis kann behandelt werden, indem ein Listener zur Tabelle mit der Methode `onItemSelect()` hinzugefügt wird.
 
 <ComponentDemo 
 path='/webforj/tablesingleselection?' 
@@ -48,9 +48,9 @@ height='600px'
 
 ## Checkbox-Auswahl {#checkbox-selection}
 
-Die Checkbox-Auswahl wird aktiviert, wenn der Auswahlmodus `MULTI` ist, und ermöglicht es den Benutzern, bequem ein oder mehrere Elemente mithilfe von Kontrollkästchen auszuwählen, die mit jeder Zeile verbunden sind. Diese Funktion ist besonders nützlich für Szenarien, in denen Benutzer Massnahmen für ausgewählte Elemente durchführen müssen. Die Table-Klasse bietet Methoden zum Aktivieren und Anpassen der Checkbox-Auswahl.
+Die Checkbox-Auswahl ist aktiviert, wenn der Auswahlmodus `MULTI` ist, und ermöglicht es den Benutzern, bequem ein oder mehrere Elemente mithilfe von Kontrollkästchen auszuwählen, die mit jeder Zeile verbunden sind. Diese Funktion ist besonders nützlich für Szenarien, in denen Benutzer Massenvorgänge auf ausgewählte Elemente ausführen müssen. Die Table-Klasse stellt Methoden bereit, um die Checkbox-Auswahl zu aktivieren und anzupassen.
 
-Durch die Verwendung der Methode `setCheckboxSelection(boolean checkboxSelection)` können Kontrollkästchen so konfiguriert werden, dass sie neben jeder Zeile angezeigt werden, sodass Benutzer Elemente auswählen können. Das folgende Programm zeigt, dass die Mehrfachauswahl und die Checkbox-Auswahl aktiviert sind:
+Durch die Verwendung der Methode `setCheckboxSelection(boolean checkboxSelection)` können Kontrollkästchen konfiguriert werden, die neben jeder Zeile angezeigt werden, sodass die Benutzer Elemente auswählen können. Das folgende Programm zeigt die aktivierte Mehrfachauswahl und Checkbox-Auswahl:
 
 <ComponentDemo 
 path='/webforj/tablemultiselection?' 
@@ -60,18 +60,14 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-## Programmatische Auswahl {#programatic-selection}
+## Programmgesteuerte Auswahl {#programatic-selection}
 
-Die `Table`-Komponente bietet programmatische Auswahlmethoden, die es ermöglichen, ausgewählte Elemente entweder über ihre Schlüssel oder über die gesamten Elemente zu manipulieren.
+Die `Table`-Komponente bietet programmgesteuerte Auswahlmethoden, mit denen Sie ausgewählte Elemente entweder über ihre Schlüssel oder durch die gesamten Elemente manipulieren können.
 
 ### Auswahl nach Schlüssel {#select-by-key}
 
-Die Methode `selectKey(Object... keys)` ermöglicht es, Elemente programmgesteuert anhand ihrer Schlüssel auszuwählen. Sie können ein oder mehrere Schlüssel an diese Methode übergeben, und sie wird die Auswahl entsprechend aktualisieren.
+Die Methode `selectKey(Object... keys)` ermöglicht es Ihnen, programmatisch Elemente über ihre Schlüssel auszuwählen. Sie können ein oder mehrere Schlüssel an diese Methode übergeben, und sie wird die Auswahl entsprechend aktualisieren.
 
-### Auswahl nach Index {#select-by-index}
+### Auswahl von Eintragselementen {#selecting-entry-items}
 
-Mit der Methode `selectIndex(int... indices)` können Sie ein oder mehrere Indizes an die Methode übergeben und die ausgewählten Elemente entsprechend aktualisieren.
-
-### Auswahl ganzer Elemente {#selecting-entire-items}
-
-Schließlich ermöglicht die Methode `select(T... items)`, Elemente programmgesteuert auszuwählen, indem ein oder mehrere Elemente selbst an diese Methode übergeben werden, um die Auswahl entsprechend zu aktualisieren.
+Schließlich ermöglicht die Methode `select(T... items)` die programmatische Auswahl von Elementen, indem Sie ein oder mehrere Elemente selbst an diese Methode übergeben, um die Auswahl entsprechend zu aktualisieren.

@@ -878,5 +878,17 @@
   },
   "experimentalWarning.message": {
     "message": "Esta función es experimental y puede cambiar o eliminarse en una versión futura."
+  },
+  "automatedUpgradeTip.title": {
+    "message": "Actualización automática disponible",
+    "description": "The title for the tip admonition for OpenRewrite"
+  },
+  "automatedUpgradeTip.message": {
+    "message": "Las recetas de OpenRewrite están disponibles para esta versión para actualizar automáticamente las API obsoletas y eliminadas. Consulta {articleLink} para las instrucciones de configuración.",
+    "description": "The message of a tip indicating that you can use OpenRewrite to make updating easier"
+  },
+  "automatedUpgradeTip.automatedUpgradeLink": {
+    "message": "Usando OpenRewrite",
+    "description": "The text that links to the automated upgrade article"
   }
 }
