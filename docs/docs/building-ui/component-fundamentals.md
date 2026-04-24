@@ -216,6 +216,48 @@ If the underlying component doesn't support the interface capability, you'll get
 
 For a complete list of available concern interfaces, see the [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
+## Component identifiers {#component-identifiers}
+
+webforJ components have three distinct types of identifiers that serve different purposes:
+
+- **Server-side component ID** (`getComponentId()`) - Automatically assigned by the framework for internal component tracking. Use this when you need to query for specific components or implement custom component registries.
+- **Client-side component ID** (`getClientComponentId()`) - Provides access to the underlying web component from JavaScript. Use this when you need to call native web component methods or integrate with client-side libraries.
+- **HTML `id` attribute** (`setAttribute("id", "...")`) - Standard DOM identifier. Use this for CSS targeting, test automation selectors, and linking form labels to inputs.
+
+Understanding these differences helps you choose the right identifier for your use case.
+
+### Server-side component ID {#server-side-component-id}
+
+Every component is assigned a server-side identifier automatically when created. This identifier is used internally by the framework for tracking components. Retrieve it with `getComponentId()`:
+
+```java
+Button button = new Button("Click Me");
+String serverId = button.getComponentId();
+```
+
+The server-side ID is useful when you need to query for specific components within a container or implement custom component tracking logic.
+
+### Client-side component ID {#client-side-component-id}
+
+The client-side component ID provides access to the underlying web component from JavaScript. This allows you to interact directly with the client-side component when needed:
+
+```java
+Button btn = new Button("Click me");
+btn.onClick(e -> {
+  OptionDialog.showMessageDialog("The button was clicked", "An event occurred");
+});
+
+btn.whenAttached().thenAccept(e -> {
+  Page.getCurrent().executeJs("objects.get('" + btn.getClientComponentId() + "').click()");
+});
+```
+
+Use `getClientComponentId()` with `objects.get()` in JavaScript to access the web component instance.
+
+:::important
+The client-side component ID isn't the HTML `id` attribute of the DOM element. For setting HTML IDs for testing or CSS targeting, see [Using Components](using-components).
+:::
+
 ## Component lifecycle overview {#component-lifecycle-overview}
 
 webforJ manages the component lifecycle automatically. The framework handles component creation, attachment, and destruction without requiring manual intervention.
