@@ -67,7 +67,7 @@ Use this for any visual work on a webforJ app: palette reskins, component-level 
 **When it kicks in**
 
 - *"Theme this app with a blue palette."*
-- *"Style the dwc-button to match our brand."*
+- *"Style the dwc-button with the primary palette."*
 - *"Make this layout tighter - adjust spacing and typography."*
 
 </div>

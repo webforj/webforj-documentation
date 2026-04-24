@@ -200,7 +200,7 @@ When the MCP server is connected, your AI assistant gains the following capabili
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      The assistant can list the authoritative catalog of `--dwc-*` tokens for your webforJ version - palette seeds, shades, surfaces, spacing, typography, borders - filtered by prefix or substring. It will also validate any CSS, Java, MDX, or Markdown you give it against the real token catalog and flag unknown names with suggested corrections.
+      The assistant can list the authoritative catalog of `--dwc-*` tokens for your webforJ version - palette seeds, shades, surfaces, spacing, typography, borders - filtered by prefix or substring. It will also validate any CSS, Java, or Markdown source you give it against the real token catalog and flag unknown names with suggested corrections.
 
       **Example prompts:**
       ```
@@ -230,7 +230,7 @@ If your assistant still answers without consulting the server, install the [webf
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Why isn't my AI assistant using the MCP server?</p>
+    <p>Why isn't the AI assistant using the MCP server?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
