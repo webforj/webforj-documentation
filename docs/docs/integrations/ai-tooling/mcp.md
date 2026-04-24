@@ -231,6 +231,7 @@ If your assistant still answers without consulting the server, install the [webf
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
     <p>Why isn't the AI assistant using the MCP server?</p>
+    <p>Why isn't the AI assistant using the MCP server?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -244,7 +245,7 @@ If your assistant still answers without consulting the server, install the [webf
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>How do I verify the MCP connection is working?</p>
+    <p>How to verify the MCP connection is working?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -261,7 +262,7 @@ If your assistant still answers without consulting the server, install the [webf
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>How do I report issues?</p>
+    <p>How to report issues?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>

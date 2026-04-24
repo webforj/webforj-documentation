@@ -85,6 +85,7 @@ codex plugin marketplace add webforj/webforj-ai
 Then open a Codex session, run `/plugins`, select `webforj`, and press **Space** to enable it.
 
 Codex doesn't auto-load skills by prompt match like other clients. Invoke them explicitly:
+Codex doesn't auto-load skills by prompt match like other clients. Invoke them explicitly:
 
 ```
 $webforj:webforj-styling-apps theme this app with a blue palette
