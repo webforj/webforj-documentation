@@ -3,6 +3,7 @@ on:
   pull_request:
     paths-ignore:
       - 'docs/blog/**'
+      - 'docs/cookbook/**'
 jobs:
   vale:
     name: runner / vale
