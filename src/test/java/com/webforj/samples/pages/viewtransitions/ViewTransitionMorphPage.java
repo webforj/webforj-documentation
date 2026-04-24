@@ -3,6 +3,7 @@ package com.webforj.samples.pages.viewtransitions;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import java.util.regex.Pattern;
 
 public class ViewTransitionMorphPage {
 
@@ -68,6 +69,7 @@ public class ViewTransitionMorphPage {
      */
     public static void assertThatHasTransitionName(Locator locator,
             String name) {
-        assertThat(locator).hasCSS("view-transition-name", name);
+        assertThat(locator)
+                .hasAttribute("style", Pattern.compile("view-transition-name:\\s*" + name));
     }
 }
