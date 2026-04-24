@@ -1,28 +1,28 @@
 ---
 sidebar_position: 2
 title: Understanding Components
-_i18n_hash: 7d08b900e422fb45abcd82844c266b88
+_i18n_hash: 9236dac850f1e56f91cbcada9b6d8921
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
-Bevor Sie benutzerdefinierte Komponenten in webforJ erstellen, ist es wichtig, die grundlegende Architektur zu verstehen, die prägt, wie Komponenten funktionieren. Dieser Artikel erklärt die Komponentenhierarchie, die Identität der Komponenten, Lebenszykluskonzepte und wie Schnittstellen für Belange die Fähigkeiten von Komponenten bereitstellen.
+Bevor Sie benutzerdefinierte Komponenten in webforJ erstellen, ist es wichtig, die zugrunde liegende Architektur zu verstehen, die bestimmt, wie Komponenten funktionieren. Dieser Artikel erklärt die Komponentenhierarchie, die Identität von Komponenten, Lebenszykluskonzepte und wie Concern-Schnittstellen Komponentenfähigkeiten bereitstellen.
 
 ## Verständnis der Komponentenhierarchie {#understanding-the-component-hierarchy}
 
-webforJ organisiert Komponenten in eine Hierarchie mit zwei Gruppen: interne Klassen des Frameworks, die Sie niemals erweitern sollten, und Klassen, die speziell für den Bau benutzerdefinierter Komponenten entwickelt wurden. In diesem Abschnitt wird erläutert, warum webforJ Komposition über Vererbung priorisiert und was jede Ebene der Hierarchie bietet.
+webforJ organisiert die Komponenten in eine Hierarchie mit zwei Gruppen: internen Klassen des Frameworks, die Sie niemals erweitern sollten, und Klassen, die speziell für den Bau von benutzerdefinierten Komponenten entwickelt wurden. In diesem Abschnitt wird erklärt, warum webforJ Komposition über Vererbung verwendet und welche Funktionen jede Ebene der Hierarchie bereitstellt.
 
-### Warum Komposition statt Erweiterung? {#why-composition-instead-of-extension}
+### Warum Komposition anstelle von Erweiterung? {#why-composition-instead-of-extension}
 
 In webforJ sind integrierte Komponenten wie [`Button`](../components/button) und [`TextField`](../components/fields/textfield) finale Klassen – Sie können sie nicht erweitern:
 
 ```java
-// Das funktioniert nicht in webforJ
+// Das wird nicht in webforJ funktionieren
 public class MyButton extends Button {
   // Button ist final - kann nicht erweitert werden 
 }
 ```
 
-webforJ verwendet **Komposition über Vererbung**. Anstatt vorhandene Komponenten zu erweitern, erstellen Sie eine Klasse, die `Composite` erweitert und kombiniert Komponenten darin. `Composite` fungiert als Container, der eine einzelne Komponente (die gebundene Komponente) umschließt und es Ihnen ermöglicht, Ihre eigenen Komponenten und Verhaltensweisen hinzuzufügen.
+webforJ verwendet **Komposition über Vererbung**. Anstatt vorhandene Komponenten zu erweitern, erstellen Sie eine Klasse, die `Composite` erweitert und Komponenten darin kombiniert. `Composite` fungiert als Container, der eine einzelne Komponente (die gebundene Komponente) umschließt und es Ihnen ermöglicht, eigene Komponenten und Verhaltensweisen hinzuzufügen.
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
@@ -31,7 +31,7 @@ public class SearchBar extends Composite<FlexLayout> {
   private Button searchButton;
   
   public SearchBar() {
-    searchField = new TextField("Suchen");
+    searchField = new TextField("Suche");
     searchButton = new Button("Los");
     
     self.setDirection(FlexDirection.ROW)
@@ -42,23 +42,23 @@ public class SearchBar extends Composite<FlexLayout> {
 
 ### Warum Sie integrierte Komponenten nicht erweitern können {#why-you-cant-extend-built-in-components}
 
-webforJ-Komponenten sind als final markiert, um die Integrität der zugrunde liegenden Client-seitigen Web-Komponente zu wahren. Die Erweiterung von webforJ-Komponentenklassen würde Kontrolle über die zugrunde liegende Web-Komponente gewähren, was zu ungewollten Konsequenzen führen und die Konsistenz und Vorhersehbarkeit des Verhaltens von Komponenten gefährden könnte.
+webforJ-Komponenten sind als final gekennzeichnet, um die Integrität der zugrunde liegenden clientseitigen Webkomponente aufrechtzuerhalten. Das Erweitern von webforJ-Komponentenklassen würde Kontrolle über die zugrunde liegende Webkomponente gewähren, was zu unbeabsichtigten Konsequenzen führen und die Konsistenz und Vorhersagbarkeit des Verhaltens der Komponenten beeinträchtigen könnte.
 
-Für eine detaillierte Erklärung siehe [Finale Klassen und Erweiterungsbeschränkungen](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) in der Architektur-Dokumentation.
+Für eine detaillierte Erklärung siehe [Final Classes and Extension Restrictions](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) in der Architektur-Dokumentation.
 
 ### Die Komponentenhierarchie {#the-component-hierarchy}
 
 <div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
-  A[Komponente<br/><small>Abstrakte Basis - internes Framework</small>]
+  A[Komponente<br/><small>Abstrakte Basis - Framework intern</small>]
   
-  A --> B[DwcKomponente<br/><small>Integrierte webforJ-Komponenten</small>]
-  A --> C[Composite<br/><small>Kombiniere webforJ-Komponenten</small>]
+  A --> B[DwcComponent<br/><small>Integrierte webforJ-Komponenten</small>]
+  A --> C[Composite<br/><small>Kombinieren von webforJ-Komponenten</small>]
   
   B --> E[Button, TextField,<br/>DateField, ComboBox]
   
-  C --> D[ElementComposite<br/><small>Web-Komponenten umschließen</small>]
+  C --> D[ElementComposite<br/><small>Umhüllen von Webkomponenten</small>]
   D --> F[ElementCompositeContainer<br/><small>Komponenten mit Slots</small>]
 
   classDef internal stroke-dasharray:6 4,stroke-width:1px
@@ -79,22 +79,22 @@ Interne Framework-Klassen (niemals direkt erweitern):
 - `Component`
 - `DwcComponent`
 
-:::warning[Never extend `Component` or `DwcComponent`]
+:::warning[Niemals `Component` oder `DwcComponent` direkt erweitern]
 Erweitern Sie niemals `Component` oder `DwcComponent` direkt. Alle integrierten Komponenten sind final. Verwenden Sie immer Kompositionsmuster mit `Composite` oder `ElementComposite`.
 
-Der Versuch, `DwcComponent` zu erweitern, wird eine Laufzeitausnahme auslösen.
+Der Versuch, `DwcComponent` zu erweitern, führt zu einer Laufzeitausnahme.
 :::
 
-## Belang-Schnittstellen {#concern-interfaces}
+## Concern-Schnittstellen {#concern-interfaces}
 
-Belang-Schnittstellen sind Java-Schnittstellen, die spezifische Fähigkeiten für Ihre Komponenten bereitstellen. Jede Schnittstelle fügt eine Reihe verwandter Methoden hinzu. Zum Beispiel fügt `HasSize` Methoden zur Steuerung von Breite und Höhe hinzu, während `HasFocus` Methoden zur Verwaltung des Fokusstatus hinzufügt.
+Concern-Schnittstellen sind Java-Schnittstellen, die spezifische Fähigkeiten für Ihre Komponenten bereitstellen. Jede Schnittstelle fügt eine Reihe verwandter Methoden hinzu. Zum Beispiel fügt `HasSize` Methoden zur Steuerung von Breite und Höhe hinzu, während `HasFocus` Methoden zum Verwalten des Fokusstatus hinzufügt.
 
-Wenn Sie eine Belang-Schnittstelle für Ihre Komponente implementieren, erhalten Sie Zugriff auf diese Fähigkeiten, ohne Implementierungscode schreiben zu müssen. Die Schnittstelle bietet Standardimplementierungen, die automatisch funktionieren.
+Wenn Sie eine Concern-Schnittstelle in Ihrer Komponente implementieren, erhalten Sie Zugriff auf diese Fähigkeiten, ohne Implementierungscode schreiben zu müssen. Die Schnittstelle bietet Standardimplementierungen, die automatisch funktionieren.
 
-Die Implementierung von Belang-Schnittstellen verleiht Ihren benutzerdefinierten Komponenten die gleichen APIs wie den integrierten webforJ-Komponenten:
+Die Implementierung von Concern-Schnittstellen gibt Ihren benutzerdefinierten Komponenten dieselben APIs wie integrierten webforJ-Komponenten:
 
 ```java
-// Implementieren Sie HasSize, um Breiten-/Höhenmethoden automatisch zu erhalten
+// Implementieren Sie HasSize, um Breiten- / Höhenmethoden automatisch zu erhalten
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
   private final Div self = getBoundComponent();
   
@@ -102,7 +102,7 @@ public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
     self.setText("Inhalt der Karte");
   }
   
-  // Diese müssen nicht implementiert werden - Sie erhalten sie kostenlos:
+  // Keine Notwendigkeit, diese zu implementieren - Sie erhalten sie kostenlos:
   // setWidth(), setHeight(), setSize()
 }
 
@@ -112,22 +112,22 @@ card.setWidth("300px")
   .setHeight("200px");
 ```
 
-Die Komponente leitet diese Aufrufe automatisch an das zugrunde liegende `Div` weiter. Kein zusätzlicher Code erforderlich.
+Die Composite leitet diese Aufrufe automatisch an das zugrunde liegende `Div` weiter. Kein zusätzlicher Code erforderlich.
 
 ### Erscheinungsbild {#concern-interfaces-appearance}
 
-Diese Schnittstellen steuern die visuelle Präsentation einer Komponente, einschließlich ihrer Dimensionen, Sichtbarkeit, Stil und Thema.
+Diese Schnittstellen steuern die visuelle Präsentation einer Komponente, einschließlich ihrer Abmessungen, Sichtbarkeit, Stil und Thema.
 
 | Schnittstelle | Beschreibung |
 |---|---|
-| `HasSize` | Kontrolliert Breite und Höhe, einschließlich Mindest- und Höchstgrenzen. Erweitert `HasWidth`, `HasHeight` und deren min/max Varianten. |
-| `HasVisibility` | Zeigt oder verbirgt die Komponente, ohne sie aus dem Layout zu entfernen. |
-| `HasClassName` | Verwalten von CSS-Klassennamen des Wurzelelements der Komponente. |
+| `HasSize` | Steuert Breite und Höhe, einschließlich minimaler und maximaler Einschränkungen. Erweiterungen von `HasWidth`, `HasHeight` und ihren Min/Max-Varianten. |
+| `HasVisibility` | Zeigt oder versteckt die Komponente, ohne sie aus dem Layout zu entfernen. |
+| `HasClassName` | Verwaltet CSS-Klassennamen im Wurzelelement der Komponente. |
 | `HasStyle` | Wendet Inline-CSS-Stile an und entfernt sie. |
-| `HasHorizontalAlignment` | Kontrolliert, wie der Inhalt horizontal innerhalb der Komponente ausgerichtet ist. |
-| `HasExpanse` | Setzt die Größenvariante der Komponente unter Verwendung der Standard-Expansions-Tokens (`XSMALL` bis `XLARGE`). |
+| `HasHorizontalAlignment` | Steuert, wie Inhalte horizontal innerhalb der Komponente ausgerichtet sind. |
+| `HasExpanse` | Setzt die Größenvariante der Komponente mithilfe der standardmäßigen Expansions-Tokens (`XSMALL` bis `XLARGE`). |
 | `HasTheme` | Wendet eine Themenvariante wie `DEFAULT`, `PRIMARY` oder `DANGER` an. |
-| `HasPrefixAndSuffix` | Fügt Komponenten zum Präfix- oder Suffix-Slot innerhalb der Komponente hinzu. |
+| `HasPrefixAndSuffix` | Fügt Komponenten zum Präfix- oder Suffixslot innerhalb der Komponente hinzu. |
 
 ### Inhalt {#concern-interfaces-content}
 
@@ -135,98 +135,140 @@ Diese Schnittstellen verwalten, was eine Komponente anzeigt, einschließlich Tex
 
 | Schnittstelle | Beschreibung |
 |---|---|
-| `HasText` | Setzt und ruft den reinen Textinhalt der Komponente ab. |
+| `HasText` | Setzt und ruft den einfachen Textinhalt der Komponente ab. |
 | `HasHtml` | Setzt und ruft das innere HTML der Komponente ab. |
-| `HasLabel` | Fügt ein beschreibendes Label hinzu, das mit der Komponente verbunden ist und für die Zugänglichkeit verwendet wird. |
-| `HasHelperText` | Zeigt sekundären Hinweistext unter der Komponente an. |
+| `HasLabel` | Fügt ein beschreibendes Label hinzu, das mit der Komponente verknüpft ist, das für die Barrierefreiheit verwendet wird. |
+| `HasHelperText` | Zeigt sekundären Hinweistext unterhalb der Komponente an. |
 | `HasPlaceholder` | Setzt Platzhaltertext, der angezeigt wird, wenn die Komponente keinen Wert hat. |
-| `HasTooltip` | Fügt ein Tooltip hinzu, das beim Hover erscheint. |
+| `HasTooltip` | Hängt ein Tooltip an, das beim Hover erscheint. |
 
 ### Zustand {#concern-interfaces-state}
 
-Diese Schnittstellen steuern den interaktiven Zustand einer Komponente, einschließlich, ob sie aktiviert, bearbeitbar, erforderlich oder beim Laden im Fokus ist.
+Diese Schnittstellen steuern den interaktiven Zustand einer Komponente, einschließlich ob sie aktiviert, bearbeitbar, erforderlich oder beim Laden fokussiert ist.
 
 | Schnittstelle | Beschreibung |
 |---|---|
 | `HasEnablement` | Aktiviert oder deaktiviert die Komponente. |
-| `HasReadOnly` | Versetzt die Komponente in einen schreibgeschützten Zustand, in dem der Wert sichtbar ist, aber nicht geändert werden kann. |
-| `HasRequired` | Markiert die Komponente als erforderlich, typischerweise für die Validierung von Formularen. |
-| `HasAutoFocus` | Verschiebt den Fokus beim Laden der Seite automatisch zur Komponente. |
+| `HasReadOnly` | Versetzt die Komponente in einen schreibgeschützten Zustand, in dem der Wert sichtbar, aber nicht geändert werden kann. |
+| `HasRequired` | Kennzeichnet die Komponente als erforderlich, typischerweise für die Formularvalidierung. |
+| `HasAutoFocus` | Verschiebt den Fokus automatisch auf die Komponente, wenn die Seite geladen wird. |
 
 ### Fokus {#concern-interfaces-focus}
 
-Diese Schnittstellen steuern, wie eine Komponente den Tastaturfokus erhält und darauf reagiert.
+Diese Schnittstellen verwalten, wie eine Komponente den Fokus über die Tastatur erhält und darauf reagiert.
 
 | Schnittstelle | Beschreibung |
 |---|---|
 | `HasFocus` | Verwalten des Fokusstatus und ob die Komponente den Fokus erhalten kann. |
-| `HasFocusStatus` | Überprüft, ob die Komponente derzeit den Fokus hat. Erfordert eine Rückrunde an den Client. |
-| `HasHighlightOnFocus` | Kontrolliert, ob der Inhalt der Komponente hervorgehoben wird, wenn sie den Fokus erhält, und wie (`KEY`, `MOUSE`, `KEY_MOUSE`, `ALL` usw.). |
+| `HasFocusStatus` | Überprüft, ob die Komponente derzeit den Fokus hat. Erfordert einen Round-Trip zum Client. |
+| `HasHighlightOnFocus` | Steuert, ob der Inhalt der Komponente hervorgehoben wird, wenn sie den Fokus erhält, und wie (`KEY`, `MOUSE`, `KEY_MOUSE`, `ALL` usw.). |
 
 ### Eingabebeschränkungen {#concern-interfaces-input-constraints}
 
-Diese Schnittstellen definieren, welche Werte eine Komponente akzeptiert, einschließlich des aktuellen Wertes, zulässiger Bereiche, Längenlimits, Formatmasken und lokal abhängiger Verhaltensweisen.
+Diese Schnittstellen definieren, welche Werte eine Komponente akzeptiert, einschließlich des aktuellen Wertes, erlaubter Bereiche, Längenlimits, Formatierungsmasken und lokal spezifischem Verhalten.
 
 | Schnittstelle | Beschreibung |
 |---|---|
-| `HasValue` | Erfassen und Setzen des aktuellen Wertes der Komponente. |
+| `HasValue` | Ruft den aktuellen Wert der Komponente ab und setzt ihn. |
 | `HasMin` | Setzt einen minimal zulässigen Wert. |
 | `HasMax` | Setzt einen maximal zulässigen Wert. |
 | `HasStep` | Setzt die Schrittgröße für numerische oder Bereichseingaben. |
 | `HasPattern` | Wendet ein reguläres Ausdrucksmuster an, um akzeptierte Eingaben einzuschränken. |
-| `HasMinLength` | Legt die mindestens erforderliche Anzahl von Zeichen im Wert der Komponente fest. |
-| `HasMaxLength` | Legt die maximal zulässige Anzahl von Zeichen im Wert der Komponente fest. |
+| `HasMinLength` | Setzt die minimale Anzahl von Zeichen, die im Wert der Komponente erforderlich sind. |
+| `HasMaxLength` | Setzt die maximale Anzahl von Zeichen, die im Wert der Komponente zulässig sind. |
 | `HasMask` | Wendet eine Formatmaske auf die Eingabe an. Wird von maskierten Feldkomponenten verwendet. |
-| `HasTypingMode` | Kontrolliert, ob eingegebene Zeichen eingefügt oder vorhandene Zeichen überschrieben werden (`INSERT` oder `OVERWRITE`). Wird von maskierten Feldern und `TextArea` verwendet. |
-| `HasRestoreValue` | Definiert einen Wert, auf den die Komponente zurückgesetzt wird, wenn der Benutzer die Escape-Taste drückt oder `restoreValue()` aufruft. Wird von maskierten Feldern verwendet. |
-| `HasLocale` | Speichert eine komponentenspezifische Locale für lokal abhängige Formatierung. Wird von maskierten Datum- und Uhrzeitfeldern verwendet. |
-| `HasPredictedText` | Setzt einen vorhergesagten oder Autocomplete-Textwert. Wird von `TextArea` verwendet, um Inline-Vorschläge zu unterstützen. |
+| `HasTypingMode` | Steuert, ob eingegebene Zeichen eingefügt oder vorhandene Zeichen überschreiben (`INSERT` oder `OVERWRITE`). Wird von maskierten Feldern und `TextArea` verwendet. |
+| `HasRestoreValue` | Definiert einen Wert, auf den die Komponente zurückgesetzt wird, wenn der Benutzer Escape drückt oder `restoreValue()` aufruft. Wird von maskierten Feldern verwendet. |
+| `HasLocale` | Speichert eine komponentenspezifische Lokalisierung für lokalsensitive Formatierungen. Wird von maskierten Daten- und Zeitfeldern verwendet. |
+| `HasPredictedText` | Setzt einen vorhergesagten oder automatischen Textwert. Wird von `TextArea` verwendet, um Inline-Vorschläge zu unterstützen. |
 
 ### Validierung {#concern-interfaces-validation}
 
-Diese Schnittstellen fügen clientseitiges Validierungsverhalten hinzu, einschließlich der Markierung von Komponenten als ungültig, der Anzeige von Fehlermeldungen und der Steuerung, wann die Validierung erfolgt.
+Diese Schnittstellen fügen clientseitiges Validierungsverhalten hinzu, einschließlich der Kennzeichnung von Komponenten als ungültig, der Anzeige von Fehlermeldungen und der Steuerung, wann die Validierung ausgeführt wird.
 
 | Schnittstelle | Beschreibung |
 |---|---|
-| `HasClientValidation` | Markiert eine Komponente als ungültig, setzt die Fehlermeldung und fügt einen clientseitigen Validator hinzu. |
-| `HasClientAutoValidation` | Kontrolliert, ob die Komponente automatisch validiert, während der Benutzer tippt. |
-| `HasClientAutoValidationOnLoad` | Kontrolliert, ob die Komponente validiert, wenn sie zuerst geladen wird. |
-| `HasClientValidationStyle` | Kontrolliert, wie Validierungsnachrichten angezeigt werden: `INLINE` (unterhalb der Komponente) oder `POPOVER`. |
+| `HasClientValidation` | Kennzeichnet eine Komponente als ungültig, setzt die Fehlermeldung und hängt einen clientseitigen Validator an. |
+| `HasClientAutoValidation` | Steuert, ob die Komponente automatisch validiert, während der Benutzer eingibt. |
+| `HasClientAutoValidationOnLoad` | Steuert, ob die Komponente beim ersten Laden validiert. |
+| `HasClientValidationStyle` | Steuert, wie Validierungsnachrichten angezeigt werden: `INLINE` (unterhalb der Komponente) oder `POPOVER`. |
 
 ### DOM-Zugriff {#concern-interfaces-dom-access}
 
-Diese Schnittstellen bieten einen niedrigen Zugriff auf das zugrunde liegende HTML-Element der Komponente und clientseitige Eigenschaften.
+Diese Schnittstellen bieten Low-Level-Zugriff auf das zugrunde liegende HTML-Element der Komponente und clientseitige Eigenschaften.
 
 | Schnittstelle | Beschreibung |
 |---|---|
-| `HasAttribute` | Liest und schreibt beliebige HTML-Attribute des Elements der Komponente. |
-| `HasProperty` | Liest und schreibt DWC-Komponenten Eigenschaften direkt am Client-Element. |
+| `HasAttribute` | Liest und schreibt beliebige HTML-Attribute auf dem Element der Komponente. |
+| `HasProperty` | Liest und schreibt DWC-Komponenten-Eigenschaften direkt auf dem Client-Element. |
 
 ### i18n {#concern-interfaces-i18n}
 
-Diese Schnittstelle bietet Übersetzungsunterstützung für Komponenten, die lokalisierten Text anzeigen müssen.
+Diese Schnittstelle bietet Unterstützung für Übersetzungen für Komponenten, die lokalisierten Text anzeigen müssen.
 
 | Schnittstelle | Beschreibung |
 |---|---|
-| `HasTranslation` | Bietet die `t()`-Hilfsmethode zum Auflösen von Übersetzungsschlüsseln in lokalisierte Strings unter Verwendung der aktuellen Locale der App. |
+| `HasTranslation` | Bietet die Hilfsmethode `t()` zum Auflösen von Übersetzungsschlüsseln in lokalisierte Zeichenfolgen unter Verwendung der aktuellen App-Lokalisierung. |
 
 :::warning
-Wenn die zugrunde liegende Komponente die Schnittstellenfähigkeit nicht unterstützt, erhalten Sie eine Laufzeitausnahme. Stellen Sie in diesem Fall Ihre eigene Implementierung bereit.
+Wenn die zugrunde liegende Komponente die Schnittstellenerweiterung nicht unterstützt, erhalten Sie eine Laufzeitausnahme. Stellen Sie in diesem Fall Ihre eigene Implementierung bereit.
 :::
 
-Für eine vollständige Liste der verfügbaren Belang-Schnittstellen siehe die [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
+Für eine vollständige Liste der verfügbaren Concern-Schnittstellen siehe die [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
-## Übersicht über den Komponentenlebenszyklus {#component-lifecycle-overview}
+## Komponentenidentifikatoren {#component-identifiers}
 
-webforJ verwaltet den Komponentenlebenszyklus automatisch. Das Framework behandelt die Erstellung, Anhängung und Zerstörung von Komponenten, ohne dass manuelle Eingriffe erforderlich sind.
+webforJ-Komponenten haben drei verschiedene Arten von Identifikatoren, die unterschiedlichen Zwecken dienen:
+
+- **Serverseitige Komponenten-ID** (`getComponentId()`) - Automatisch vom Framework für die interne Verfolgung von Komponenten zugewiesen. Verwenden Sie dies, wenn Sie spezifische Komponenten abfragen oder benutzerdefinierte Komponentendatenbanken implementieren müssen.
+- **Clientseitige Komponenten-ID** (`getClientComponentId()`) - Bietet Zugriff auf die zugrunde liegende Webkomponente von JavaScript aus. Verwenden Sie dies, wenn Sie native Methoden der Webkomponente aufrufen oder mit clientseitigen Bibliotheken integrieren müssen.
+- **HTML `id`-Attribut** (`setAttribute("id", "...")`) - Standard DOM-Identifikator. Verwenden Sie dies zum CSS-Zielen, für Testautomatisierungs-Selektoren und zur Verknüpfung von Formularlabels mit Eingaben.
+
+Das Verständnis dieser Unterschiede hilft Ihnen, den richtigen Identifikator für Ihren Anwendungsfall auszuwählen.
+
+### Serverseitige Komponenten-ID {#server-side-component-id}
+
+Jede Komponente wird automatisch mit einer serverseitigen Identifikation versehen, wenn sie erstellt wird. Diese Identifikation wird intern vom Framework zur Verfolgung der Komponenten verwendet. Rufen Sie sie mit `getComponentId()` ab:
+
+```java
+Button button = new Button("Klicken Sie mich");
+String serverId = button.getComponentId();
+```
+
+Die serverseitige ID ist nützlich, wenn Sie nach spezifischen Komponenten innerhalb eines Containers abfragen oder benutzerdefinierte Logik zur Verfolgung von Komponenten implementieren müssen.
+
+### Clientseitige Komponenten-ID {#client-side-component-id}
+
+Die clientseitige Komponenten-ID bietet Zugriff auf die zugrunde liegende Webkomponente von JavaScript. Dadurch können Sie direkt mit der clientseitigen Komponente interagieren, wenn es erforderlich ist:
+
+```java
+Button btn = new Button("Klicken Sie mich");
+btn.onClick(e -> {
+  OptionDialog.showMessageDialog("Der Button wurde geklickt", "Ein Ereignis ist aufgetreten");
+});
+
+btn.whenAttached().thenAccept(e -> {
+  Page.getCurrent().executeJs("objects.get('" + btn.getClientComponentId() + "').click()");
+});
+```
+
+Verwenden Sie `getClientComponentId()` mit `objects.get()` in JavaScript, um auf die Instanz der Webkomponente zuzugreifen.
+
+:::important
+Die clientseitige Komponenten-ID ist nicht das HTML `id`-Attribut des DOM-Elements. Zum Festlegen von HTML-IDs für Tests oder CSS-Ziele siehe [Verwendung von Komponenten](using-components).
+:::
+
+## Überblick über den Komponentenlebenszyklus {#component-lifecycle-overview}
+
+webforJ verwaltet den Lebenszyklus von Komponenten automatisch. Das Framework übernimmt die Erstellung, das Anhängen und das Zerstören von Komponenten, ohne dass eine manuelle Intervention erforderlich ist.
 
 **Lebenszyklus-Hooks** sind verfügbar, wenn Sie sie benötigen:
-- `onDidCreate(T container)` - Wird aufgerufen, nachdem die Komponente an das DOM angeheftet wurde
+- `onDidCreate(T container)` - Wird aufgerufen, nachdem die Komponente an das DOM angehängt wurde
 - `onDidDestroy()` - Wird aufgerufen, wenn die Komponente zerstört wird
 
-Diese Hooks sind **optional**. Verwenden Sie sie, wenn Sie müssen:
-- Ressourcen bereinigen (Intervalle stoppen, Verbindungen schließen)
-- Komponenten initialisieren, die eine DOM-Anheftung erfordern
-- Mit clientseitigem JavaScript integrieren
+Diese Hooks sind **optional**. Verwenden Sie sie, wenn Sie:
+- Ressourcen bereinigen müssen (Timer anhalten, Verbindungen schließen)
+- Komponenten initialisieren müssen, die eine DOM-Anbindung erfordern
+- Mit clientseitigem JavaScript integrieren müssen
 
-In den meisten einfachen Fällen können Sie Komponenten direkt im Konstruktor initialisieren. Verwenden Sie Lebenszyklus-Hooks wie `onDidCreate()`, um Arbeiten nach Bedarf zu verschieben.
+In den meisten einfachen Fällen können Sie Komponenten direkt im Konstruktor initialisieren. Verwenden Sie Lebenszyklus-Hooks wie `onDidCreate()`, um Arbeiten nach Bedarf zu verzögern.
