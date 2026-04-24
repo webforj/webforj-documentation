@@ -1,5 +1,9 @@
 {
   "label": "AI Tooling",
   "position": 5,
-  "className": "has-new-content"
+  "className": "has-new-content",
+  "link": {
+    "type": "doc",
+    "id": "integrations/ai-tooling/overview"
+  }
 }
