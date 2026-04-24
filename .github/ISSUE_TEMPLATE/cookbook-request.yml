@@ -1,0 +1,36 @@
+name: "🍳 Request a Cookbook Recipe"
+description: Ask for a new how-to recipe to be added to the webforJ Cookbook.
+labels: [cookbook-request]
+body:
+  - type: input
+    id: question
+    attributes:
+      label: "What do you want to accomplish?"
+      placeholder: "e.g. Filter table rows by a column value"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: "Context"
+      description: "When do you need this? What have you tried?"
+    validations:
+      required: false
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: "Expected difficulty"
+      options:
+        - Beginner
+        - Intermediate
+        - Advanced
+    validations:
+      required: false
+  - type: input
+    id: tags
+    attributes:
+      label: "Relevant tags"
+      description: "Comma-separated list from the allowed set: css, styling, routing, parameters, table, forms, layout, navigation, data-binding, validation, components, dialog, notification, grid, list, tree, toolbar, upload, chart, theme, i18n, security, spring, performance, testing"
+      placeholder: "e.g. table, data-binding"
+    validations:
+      required: false
