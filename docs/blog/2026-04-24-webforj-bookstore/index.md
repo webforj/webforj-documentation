@@ -8,7 +8,7 @@ tags: [spring, security, web development, tutorial, full-stack, showcase]
 hide_table_of_contents: false
 ---
 
-![cover image](./screenshots/webforj-bookstore-cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/webforj-bookstore-cover.png)
 
 In my time working with documentation and coding for customers I have built quite the number of demo apps myself, so by now I know what the shortcuts look like. The dataset is always small, with authentication and advanced features "coming soon" or not implemented but just hardcoded in. Filtering works fast, because coincidentally there are only five rows to filter. All of that is not to say those demos are bad, after all they serve their purpose, but I wanted to see how efficiently I can build a demo that doesn't cut corners while still being small and easy to understand.
 
@@ -16,7 +16,7 @@ The [webforJ Bookstore](https://github.com/webforj/built-with-webforj/tree/main/
 
 <!-- truncate -->
 
-![Screenshot of Bookstore app](./screenshots/02-inventory-user.png)
+![Screenshot of Bookstore app](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/02-inventory-user.png)
 
 ## The bookstore at a glance
 
@@ -95,7 +95,7 @@ repository.commit();
 Make sure to use `escapeLikePattern`. Without it, your search field is an open door into your database, and we don't want that, even in a demo.
 :::
 
-![Filtering the inventory by search term](./screenshots/03-filtered-results.png)
+![Filtering the inventory by search term](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/03-filtered-results.png)
 
 ## Custom genre chip renderer
 
@@ -167,7 +167,7 @@ private void saveBook() {
 
 If validation fails, the binding context maps the errors back to the individual fields automatically, no manual error routing required. If it passes, the book goes to the service layer and the table refreshes.
 
-![Edit drawer with a book loaded](./screenshots/04-edit-drawer.png)
+![Edit drawer with a book loaded](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/04-edit-drawer.png)
 
 <!-- vale Google.Headings = NO -->
 ## Adding Spring Security
@@ -189,7 +189,7 @@ SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 Instead of hardcoding URL strings, you can hand it your actual view classes. webforJ figures out the paths and reads the annotations to determine which roles can access which views.
 
-![Login page](./screenshots/01-login.png)
+![Login page](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/01-login.png)
 
 ### Public routes and role restrictions
 
@@ -215,7 +215,7 @@ public class ManagementView extends Composite<FlexLayout> {
 
 That's it. Spring Security handles the rest, if someone without `ADMIN` navigates to `/management`, they're redirected to the access-denied page without any further routing.
 
-![Management view, accessible only to admins](./screenshots/06-management-view.png)
+![Management view, accessible only to admins](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/06-management-view.png)
 
 ### Role-aware navigation
 
@@ -231,7 +231,7 @@ if (auth != null && auth.getAuthorities().stream()
 
 Regular users never see the Management tab. They might still try to reach it through the URL directly, which is why we made sure to keep them out earlier. The same `auth` object also supplies the username in the toolbar avatar, one source for everything session-related.
 
-![Inventory view as admin with Management tab visible in the navigation](./screenshots/05-inventory-admin.png)
+![Inventory view as admin with Management tab visible in the navigation](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/05-inventory-admin.png)
 
 Logout is a one-liner:
 
