@@ -1,3 +1,4 @@
+<!-- vale off -->
 # webforJ Cookbook
 
 A collection of focused, copy-paste Java code recipes for common webforJ tasks.  
@@ -167,3 +168,4 @@ in `docusaurus.config.js` and will never appear in the sidebar or as served page
 
 - `recipe-template.mdx` — contributor template
 - `README.md` — this file
+<!-- vale on -->
