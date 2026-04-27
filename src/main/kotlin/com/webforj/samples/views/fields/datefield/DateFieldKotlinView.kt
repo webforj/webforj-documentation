@@ -6,6 +6,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.data.event.ValueChangeEvent
 import com.webforj.kotlin.dsl.component.field.dateField
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import java.time.LocalDate
@@ -19,22 +20,24 @@ class DateFieldKotlinView: Composite<FlexLayout>() {
     private val MAX_DATE = TODAY.plusYears(1)
   }
 
+  private val self = boundComponent
   private val departureField: DateField
   private val returnField: DateField
 
   init {
-    boundComponent.apply {
+    self.apply {
       direction = FlexDirection.ROW
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-m)"
+
       departureField = dateField("Departure Date:", TODAY) {
-        width = "200px"
+        width = 200.px
         min = TODAY
         max = MAX_DATE
         onValueChange(::syncDates)
       }
-      returnField = dateField("Return Date:", MAX_DATE) {
-        width = "200px"
+      returnField = dateField("Return Date:", TODAY) {
+        width = 200.px
         min = TODAY
         max = MAX_DATE
         onValueChange(::syncDates)
@@ -46,10 +49,12 @@ class DateFieldKotlinView: Composite<FlexLayout>() {
     val dep = departureField.value.clamp()
     val ret = returnField.value.clamp()
 
-    if (ret < dep && e.source == departureField) {
-      returnField.value = dep
-    } else {
-      departureField.value = ret
+    e.source.takeIf { ret < dep }?.let {
+      if (it == departureField) {
+        returnField.value = dep
+      } else {
+        departureField.value = ret
+      }
     }
   }
 
