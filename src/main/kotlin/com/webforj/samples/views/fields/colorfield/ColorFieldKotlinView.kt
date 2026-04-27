@@ -13,6 +13,9 @@ import com.webforj.kotlin.dsl.component.field.colorField
 import com.webforj.kotlin.dsl.component.html.elements.paragraph
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.horizontal
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.plusAssign
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -23,20 +26,22 @@ import java.awt.Color
 @Route
 @FrameTitle("Color Field Demo")
 class ColorFieldKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
   private val colorField: ColorField
   private val colors = Array<Div>(4) {
-    Div().addClassName("colorDiv")
+    Div().apply { classNames += "colorDiv" }
   }
 
   init {
-    boundComponent.apply {
+    self.apply {
       direction = FlexDirection.COLUMN
       alignment = FlexAlignment.CENTER
       justifyContent = FlexJustifyContent.CENTER
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-m)"
+
       colorField = colorField("Choose a color:") {
-        width = "200px"
+        width = 200.px
         value = Color.RED
         onModify(::tetradicColor)
       }
@@ -45,7 +50,8 @@ class ColorFieldKotlinView: Composite<FlexLayout>() {
         horizontal()
         justifyContent = FlexJustifyContent.CENTER
         alignment = FlexAlignment.CENTER
-        spacing = "20px"
+        spacing = 20.px
+
         add(*colors)
       }
     }
@@ -57,7 +63,7 @@ class ColorFieldKotlinView: Composite<FlexLayout>() {
     colors[0].setBackgroundColor(selected)
     val baseHue = getHue(selected)
     for (i in 1..3) {
-      val hue = (baseHue + i * 60) % 360;
+      val hue = (baseHue + i * 60) % 360
       colors[i].setBackgroundColor(Color.getHSBColor(hue / 360f, getSaturation(selected), getBrightness(selected)))
     }
   }

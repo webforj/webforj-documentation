@@ -3,6 +3,7 @@ package com.webforj.samples.views.fields.passwordfield
 import com.webforj.component.Composite
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.field.passwordField
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -14,7 +15,10 @@ class PasswordFieldKotlinView: Composite<FlexLayout>() {
   init {
     self.apply {
       margin = "var(--dwc-space-m)"
-      passwordField("Enter your Password:", placeholder = "Password")
+
+      passwordField("Enter your Password:", placeholder = "Password") {
+        width = 200.px
+      }
     }
   }
 

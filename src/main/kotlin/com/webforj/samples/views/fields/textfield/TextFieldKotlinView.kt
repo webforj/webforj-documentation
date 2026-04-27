@@ -20,6 +20,7 @@ class TextFieldKotlinView: Composite<FlexLayout>() {
       spacing = "var(--dwc-space-l)"
       direction = FlexDirection.ROW
       wrap = FlexWrap.WRAP
+
       textField("Enter Name", "John Doe", "Name", TextField.Type.TEXT)
       textField("Enter Email", "example@email.com", "Email", TextField.Type.EMAIL)
       textField("Enter Phone Number", "(123) 456-7890", "Phone Number", TextField.Type.TEL)
