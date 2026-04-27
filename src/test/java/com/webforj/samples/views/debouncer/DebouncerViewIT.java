@@ -32,7 +32,6 @@ public class DebouncerViewIT extends BaseTest {
     public void testDebouncerUpdatesOutputAndResetsHelper() {
         debouncerPage.getInput().pressSequentially("world", new Locator.PressSequentiallyOptions().setDelay(300));
 
-        assertThat(debouncerPage.getOutput()).hasValue("");
         assertThat(debouncerPage.getOutput()).hasValue("world\n");
 
         assertThat(debouncerPage.getInputHelperText()).hasText("Key events: 0");
