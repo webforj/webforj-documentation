@@ -1,7 +1,6 @@
 ---
 sidebar_position: 12
 title: Route Transitions
-sidebar_class_name: new-content
 ---
 
 <!-- vale Google.Units = NO -->
@@ -13,9 +12,7 @@ sidebar_class_name: new-content
 
 Route transitions provide declarative animated transitions when navigating between routes. Built on the [View Transitions](/docs/advanced/view-transitions) API, adding the `@RouteTransition` annotation to your route components lets the router automatically handle the animation lifecycle during navigation.
 
-:::warning Experimental API
-This API is marked as experimental since 25.11 and may change in future releases. The API signature, behavior, and performance characteristics are subject to modification.
-:::
+<ExperimentalWarning />
 
 :::info Programmatic control
 For more complex transition scenarios or programmatic control, use the [View Transitions](/docs/advanced/view-transitions) API directly.
@@ -62,9 +59,10 @@ Add the annotation to any route component to enable transitions:
 @RouteTransition(enter = ViewTransition.ZOOM, exit = ViewTransition.SLIDE_RIGHT)
 @FrameTitle("Inbox")
 public class InboxView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public InboxView() {
-    getBoundComponent().add(new H1("Inbox"));
+    self.add(new H1("Inbox"));
     // ...
   }
 }

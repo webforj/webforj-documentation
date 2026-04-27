@@ -1,7 +1,6 @@
 ---
 title: MaskedDateField
 sidebar_position: 5
-sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -34,6 +33,10 @@ The `MaskedDateField` supports multiple date formats used around the world, whic
 Within these formats, local variations include the choice of separator (e.g., `-`, `/`, or `.`), whether years are two or four digits, and whether single-digit months or days are padded with leading zeros.
 
 To handle this diversity, the `MaskedDateField` uses format indicators, each starting with `%`, followed by a letter that represents a specific part of the date. These indicators define how input is parsed and how the date is displayed.
+
+:::tip Applying masks programmatically
+To format or parse dates with the same mask syntax outside of a field, use the [`MaskDecorator`](/docs/advanced/mask-decorator) utility class.
+:::
 
 ### Date format indicators {#date-format-indicators}
 

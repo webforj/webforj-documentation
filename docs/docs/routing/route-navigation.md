@@ -43,10 +43,11 @@ When you need to pass parameters along with the route, webforJ allows you to emb
 ```java
 @Route("user/:id")
 public class UserProfileView extends Composite<Div> implements DidEnterObserver {
+  private final Div self = getBoundComponent();
   H1 title = new H1();
 
   public UserProfileView() {
-    getBoundComponent().add(title);
+    self.add(title);
   }
 
   public void setTile(String title) {
@@ -81,12 +82,12 @@ The `navigate` method accepts a Java `Consumer` that's invoked once navigation i
 
 ```java
 Router.getCurrent().navigate(
-    UserProfileView.class,
-    ParametersBag.of("id=JohnDoe"), (component) -> {
-      component.ifPresent(view -> {
-        console().log("The new title is: " + view.getTitle());
-      });
+  UserProfileView.class,
+  ParametersBag.of("id=JohnDoe"), (component) -> {
+    component.ifPresent(view -> {
+      console().log("The new title is: " + view.getTitle());
     });
+  });
 ```
 
 :::info Null instances

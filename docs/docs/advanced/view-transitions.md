@@ -1,7 +1,6 @@
 ---
 sidebar_position: 40
 title: View Transitions
-sidebar_class_name: new-content
 ---
 
 <!-- vale Google.Units = NO -->
@@ -20,9 +19,7 @@ View transitions provide animated transitions when the [DOM](/docs/glossary#dom)
   height='450px'
 />
 
-:::warning Experimental API
-This API is marked as experimental since 25.11 and may change in future releases. The API signature, behavior, and performance characteristics are subject to modification.
-:::
+<ExperimentalWarning />
 
 ## Basic usage {#basic-usage}
 
@@ -30,12 +27,12 @@ To create a view transition, use `Page.getCurrent().startViewTransition()`, whic
 
 ```java
 Page.getCurrent().startViewTransition()
-    .onUpdate(done -> {
-        container.remove(oldView);
-        container.add(newView);
-        done.run();
-    })
-    .start();
+  .onUpdate(done -> {
+    container.remove(oldView);
+    container.add(newView);
+    done.run();
+  })
+  .start();
 ```
 
 The transition process captures a snapshot of the current state, applies your DOM changes in the `onUpdate` callback, then animates from the old snapshot to the new content. You must call `done.run()` to signal when your changes are complete.
@@ -64,21 +61,21 @@ Use `enter()` to animate a component being added and `exit()` to animate a compo
 ```java
 // Animate a component entering the DOM
 Page.getCurrent().startViewTransition()
-    .enter(chatPanel, ViewTransition.ZOOM)
-    .onUpdate(done -> {
-        container.add(chatPanel);
-        done.run();
-    })
-    .start();
+  .enter(chatPanel, ViewTransition.ZOOM)
+  .onUpdate(done -> {
+    container.add(chatPanel);
+    done.run();
+  })
+  .start();
 
 // Animate a component exiting the DOM
 Page.getCurrent().startViewTransition()
-    .exit(chatPanel, ViewTransition.FADE)
-    .onUpdate(done -> {
-        container.remove(chatPanel);
-        done.run();
-    })
-    .start();
+  .exit(chatPanel, ViewTransition.FADE)
+  .onUpdate(done -> {
+    container.remove(chatPanel);
+    done.run();
+  })
+  .start();
 ```
 
 ## Shared component transitions {#shared-component-transitions}
@@ -120,11 +117,11 @@ card.setViewTransitionName("card-" + item.id());
 
 // When shuffling, just update the DOM - the browser handles animation
 Page.getCurrent().startViewTransition()
-    .onUpdate(done -> {
-        renderList();
-        done.run();
-    })
-    .start();
+  .onUpdate(done -> {
+    renderList();
+    done.run();
+  })
+  .start();
 ```
 
 <ComponentDemo
@@ -170,21 +167,21 @@ Reference your custom animation by passing its name (without the suffix) to `ent
 ```java
 // Use "flip-in" - webforJ adds "-enter" suffix automatically
 Page.getCurrent().startViewTransition()
-    .enter(notification, "flip-in")
-    .onUpdate(done -> {
-        stage.add(notification);
-        done.run();
-    })
-    .start();
+  .enter(notification, "flip-in")
+  .onUpdate(done -> {
+    stage.add(notification);
+    done.run();
+  })
+  .start();
 
 // Use "blur-out" for exit - webforJ adds "-exit" suffix
 Page.getCurrent().startViewTransition()
-    .exit(notification, "blur-out")
-    .onUpdate(done -> {
-        stage.remove(notification);
-        done.run();
-    })
-    .start();
+  .exit(notification, "blur-out")
+  .onUpdate(done -> {
+    stage.remove(notification);
+    done.run();
+  })
+  .start();
 ```
 
 <ComponentDemo

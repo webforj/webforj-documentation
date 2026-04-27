@@ -1,51 +1,47 @@
 ---
 title: Using the DSL
 sidebar_position: 10
-sidebar_class_name: new-content
-_i18n_hash: 54b936e846c3049cd3d6528e37c864d6
+_i18n_hash: 05d1319dd97f2d32392408b2e4ae9058
 ---
 Die Kotlin DSL bietet Builder-Funktionen für webforJ-Komponenten. Jede Funktion erstellt eine Komponente, fügt sie einem übergeordneten Container hinzu und führt einen Konfigurationsblock aus. Diese Seite behandelt die Muster und Konventionen, die Sie beim Erstellen von UIs mit der DSL verwenden werden.
 
 ## Namenskonventionen {#naming-conventions}
 
-DSL-Funktionen werden für alle standardmäßigen webforJ-Komponenten bereitgestellt, einschließlich Schaltflächen, Feldern, Layouts, Dialogen, Schubladen, Listen und HTML-Elementen. Jede Funktion verwendet den Klassennamen der Komponente in **camelCase**. `Button` wird zu `button()`, `TextField` wird zu `textField()` und `FlexLayout` wird zu `flexLayout()`.
+DSL-Funktionen sind für alle standardmäßigen webforJ-Komponenten verfügbar, einschließlich Schaltflächen, Feldern, Layouts, Dialogen, Schubladen, Listen und HTML-Elementen. Jede Funktion verwendet den Namen der Komponentenklasse in **camelCase**. `Button` wird zu `button()`, `TextField` wird zu `textField()` und `FlexLayout` wird zu `flexLayout()`.
 
 ```kotlin
 div {
-    button("Klicke mich")
-    textField("Benutzername")
-    flexLayout {
-        // geschachteter Inhalt
-    }
+  button("Klicke mich")
+  textField("Benutzername")
+  flexLayout {
+    // geschachtelter Inhalt
+  }
 }
 ```
-:::important `Header` und `Footer` Methoden
-Die `header`- und `footer`-DSL-Methoden wurden in `nativeHeader` und `nativeFooter` umbenannt, um Konflikte mit Header- und Footer-Slots anderer Komponenten zu vermeiden.
-:::
 
 :::important Verwendung der `Break`-Komponente
-Eine Ausnahme: `Break` verwendet Backticks, da `break` ein Kotlin-Schlüsselwort ist:
+Eine Ausnahme: `Break` verwendet Backticks, da `break` ein Schlüsselwort in Kotlin ist:
 
 ```kotlin
 div {
-    span("Linie eins")
-    `break`()
-    span("Linie zwei")
+  span("Zeile eins")
+  `break`()
+  span("Zeile zwei")
 }
 ```
 :::
 
-## Komponenten erstellen {#creating-components}
+## Erstellen von Komponenten {#creating-components}
 
-Erstellen Sie eine Komponente, indem Sie ihre DSL-Funktion zu einem übergeordneten Block hinzufügen, zusammen mit den optionalen Argumenten und dem Konfigurationsblock, wie unten gezeigt:
+Erstellen Sie eine Komponente, indem Sie ihre DSL-Funktion zu einem Elternblock hinzufügen, zusammen mit den optionalen Argumenten und dem Konfigurationsblock, wie unten gezeigt:
 
 ```kotlin
 div {
-    // Erstellt einen Button, fügt ihn zu diesem div hinzu und führt dann den Block aus
-    button("Absenden") {
-        theme = ButtonTheme.PRIMARY
-        onClick { handleSubmit() }
-    }
+  // Erstellt eine Schaltfläche, fügt sie zu diesem div hinzu und führt dann den Block aus
+  button("Absenden") {
+    theme = ButtonTheme.PRIMARY
+    onClick { handleSubmit() }
+  }
 }
 ```
 
@@ -53,122 +49,122 @@ Wenn Sie die DSL-Funktion einer Komponente verwenden, erstellt sie die Komponent
 
 ```kotlin
 textField("E-Mail") {
-    placeholder = "you@example.com"   // this.placeholder
-    required = true                   // this.required
-    onModify { validate() }           // this.onModify(...)
+  placeholder = "you@example.com"   // this.placeholder
+  required = true                   // this.required
+  onModify { validate() }           // this.onModify(...)
 }
 ```
 
-## Komponenten schachteln {#nesting-components}
+## Geschachtelte Komponenten {#nesting-components}
 
 Komponenten, die Kinder enthalten können, akzeptieren geschachtelte DSL-Aufrufe innerhalb ihres Blocks:
 
 ```kotlin
 flexLayout {
-    direction = FlexDirection.COLUMN
+  direction = FlexDirection.COLUMN
 
-    h1("Dashboard")
+  h1("Dashboard")
 
-    div {
-        paragraph("Willkommen zurück!")
-        button("Berichte anzeigen")
-    }
+  div {
+    paragraph("Willkommen zurück!")
+    button("Berichte anzeigen")
+  }
 
-    flexLayout {
-        direction = FlexDirection.ROW
-        button("Einstellungen")
-        button("Abmelden")
-    }
+  flexLayout {
+    direction = FlexDirection.ROW
+    button("Einstellungen")
+    button("Abmelden")
+  }
 }
 ```
 
-### Umfangssicherheit {#scope-safety}
+### Geltungsbereichssicherheit {#scope-safety}
 
-Die DSL erzwingt eine korrekte Bereichseinschränkung. Sie können nur Kindern zu Komponenten hinzufügen, die sie unterstützen, und der Compiler verhindert versehentliche Verweise auf äußere Bereiche:
+Die DSL gewährleistet einen ordnungsgemäßen Geltungsbereich. Sie können nur Kinder zu Komponenten hinzufügen, die diese unterstützen, und der Compiler verhindert versehentliche Verweise auf äußere Bereiche:
 
 ```kotlin
 div {
-    button("Absenden") {
-        // Dies sieht so aus, als würde es einen Absatz innerhalb der Schaltfläche hinzufügen,
-        // aber es würde tatsächlich zum äußeren div hinzugefügt werden.
-        // Die DSL erfasst diesen Fehler zur Kompilierzeit.
-        paragraph("Absenden...") // Wird nicht kompiliert
-    }
+  button("Absenden") {
+    // Dies sieht so aus, als würde es einen Absatz innerhalb der Schaltfläche hinzufügen,
+    // aber es würde ihn tatsächlich zum äußeren div hinzufügen.
+    // Die DSL erkennt diesen Fehler zur Compile-Zeit.
+    paragraph("Wird gesendet...") // Kompiliert nicht
+  }
 }
 ```
 
-Wenn Sie zu einem äußeren Bereich hinzufügen müssen, verwenden Sie das bezeichnete `this`, um die Absicht explizit zu machen:
+Wenn Sie zu einem äußeren Geltungsbereich hinzufügen müssen, verwenden Sie das bezeichnete `this`, um die Absicht explizit zu machen:
 
 ```kotlin
 div {
-    button("Absenden") {
-        this@div.add(Paragraph("Absenden..."))  // Explizit ist erlaubt
-    }
+  button("Absenden") {
+    this@div.add(Paragraph("Wird gesendet..."))  // Explizit ist erlaubt
+  }
 }
 ```
 
-Dies hält den UI-Code vorhersehbar, indem es Bereichswechsel sichtbar macht.
+Dies hält den UI-Code vorhersehbar, indem es Geltungsbereichsübergänge sichtbar macht.
 
-## Komponenten stylen {#styling-components}
+## Styling von Komponenten {#styling-components}
 
-Die Kotlin DSL bietet eine `styles`-Erweiterungseigenschaft, die einen map-ähnlichen Zugriff auf CSS-Eigenschaften ermöglicht, der `setStyle()` und `getStyle()` in Java entspricht:
+Die Kotlin DSL bietet eine `styles`-Erweiterungseigenschaft, die einen map-ähnlichen Zugriff auf CSS-Eigenschaften bietet, der äquivalent zu `setStyle()` und `getStyle()` in Java ist:
 
 ```kotlin
-button("Stylish") {
-    styles["background-color"] = "#007bff"
-    styles["color"] = "white"
-    styles["padding"] = "12px 24px"
-    styles["border-radius"] = "4px"
+button("Stylisiert") {
+  styles["background-color"] = "#007bff"
+  styles["color"] = "weiß"
+  styles["padding"] = "12px 24px"
+  styles["border-radius"] = "4px"
 }
 ```
 
 :::tip[CSS-Klassen]
-Für wiederverwendbare Stile fügen Sie CSS-Klassen anstelle von Inline-Stilen hinzu. Die `HasClassName`-Erweiterung ermöglicht das Hinzufügen von Klassennamen mit `+=`:
+Für wiederverwendbare Stile fügen Sie CSS-Klassen anstelle von Inline-Stilen hinzu. Die `HasClassName`-Erweiterung ermöglicht es, Klassennamen mit `+=` hinzuzufügen:
 
 ```kotlin
 button("Primäre Aktion") {
-    classNames += "btn-primary"
+  classNames += "btn-primary"
 }
 ```
 :::
 
-## Ereignisbehandlung {#event-handling}
+## Ereignisverarbeitung {#event-handling}
 
-Komponenten müssen fast immer auf Nutzerinteraktionen reagieren. Die DSL bietet eine prägnante Syntax für Ereignislistener mit Methoden, die das `on`-Präfix verwenden und Lambdas akzeptieren:
+Komponenten müssen fast immer auf Benutzerinteraktionen reagieren. Die DSL bietet eine prägnante Ereignislistener-Syntax mit `on`-Präfixmethoden, die Lambdas akzeptieren:
 
 ```kotlin
 button("Speichern") {
-    onClick {
-        saveData()
-        showNotification("Gespeichert!")
-    }
+  onClick {
+    saveData()
+    showNotification("Gespeichert!")
+  }
 }
 
-textField("Suche") {
-    onModify { event ->
-        performSearch(event.text)
-    }
+textField("Suchen") {
+  onModify { event ->
+    performSearch(event.text)
+  }
 }
 ```
 
-## Gemeinsame Parameter {#common-parameters}
+## Häufige Parameter {#common-parameters}
 
-Zusätzlich zu den Konfigurationsblöcken akzeptieren die meisten DSL-Funktionen auch gemeinsame Parameter vor dem Block für häufig verwendete Optionen:
+Zusätzlich zu Konfigurationsblöcken akzeptieren die meisten DSL-Funktionen auch gängige Parameter vor dem Block für häufig verwendete Optionen:
 
 ```kotlin
 // Textparameter für Beschriftungen/Inhalte
 button("Klicke mich")
-h1("Seitenüberschrift")
-paragraph("Fließtext")
+h1("Seitetitel")
+paragraph("Textkörper")
 
 // Beschriftung und Platzhalter für Felder
-textField("Benutzername", placeholder = "Benutzername eingeben")
+textField("Benutzername", placeholder = "Benutzernamen eingeben")
 passwordField("Passwort", placeholder = "Passwort eingeben")
 
 // Werteparameter für Eingaben
 numberField("Menge", value = 1.0) {
-    min = 0.0
-    max = 100.0
+  min = 0.0
+  max = 100.0
 }
 ```
 
@@ -176,53 +172,55 @@ numberField("Menge", value = 1.0) {
 Benannte Argumente ermöglichen es Ihnen, Parameter in beliebiger Reihenfolge zu übergeben, unabhängig davon, wie sie in der Funktionssignatur erscheinen.
 :::
 
-## Erstellung einer vollständigen Ansicht {#building-a-complete-view}
+## Erstellen einer vollständigen Ansicht {#building-a-complete-view}
 
-Mit diesen Mustern im Hinterkopf ist hier ein vollständiges Formular, das sie zusammenbringt:
+Mit diesen Mustern im Hinterkopf finden Sie hier ein vollständiges Formular, das sie zusammenführt:
 
-```kotlin
+``` kotlin
 @Route("kontakt")
-class ContactView : Composite<Div>() {
+class KontaktAnsicht : Composite<Div>() {
 
-    init {
-        boundComponent.apply {
-            styles["max-width"] = "400px"
-            styles["padding"] = "20px"
+  private val self = boundComponent
 
-            h2("Kontaktieren Sie uns")
+  init {
+    self.apply {
+      styles["max-width"] = "400px"
+      styles["padding"] = "20px"
 
-            val nameField = textField("Name", placeholder = "Ihr Name") {
-                styles["width"] = "100%"
-                styles["margin-bottom"] = "16px"
-            }
+      h2("Kontaktieren Sie uns")
 
-            val emailField = textField("E-Mail", placeholder = "you@example.com") {
-                styles["width"] = "100%"
-            }
+      val nameField = textField("Name", placeholder = "Ihr Name") {
+        styles["width"] = "100%"
+        styles["margin-bottom"] = "16px"
+      }
 
-            val messageField = textArea("Nachricht", placeholder = "Wie können wir helfen?") {
-                styles["width"] = "100%"
-            }
+      val emailField = textField("E-Mail", placeholder = "you@example.com") {
+        styles["width"] = "100%"
+      }
 
-            button("Nachricht senden") {
-                theme = ButtonTheme.PRIMARY
-                styles["width"] = "100%"
+      val messageField = textArea("Nachricht", placeholder = "Wie können wir helfen?") {
+        styles["width"] = "100%"
+      }
 
-                onClick {
-                    submitForm(
-                        name = nameField.text,
-                        email = emailField.text,
-                        message = messageField.text
-                    )
-                }
-            }
+      button("Nachricht senden") {
+        theme = ButtonTheme.PRIMARY
+        styles["width"] = "100%"
+
+        onClick {
+          submitForm(
+            name = nameField.text,
+            email = emailField.text,
+            message = messageField.text
+          )
         }
+      }
     }
+  }
 
-    private fun submitForm(name: String, email: String, message: String) {
-        // Formularübermittlung verarbeiten
-    }
+  private fun submitForm(name: String, email: String, message: String) {
+    // Behandlung der Formularübermittlung
+  }
 }
 ```
 
-Die DSL hält die UI-Struktur lesbar, während Sie vollen Zugriff auf die Konfiguration der Komponenten haben.
+Die DSL hält die UI-Struktur lesbar, während sie vollen Zugriff auf die Komponenten-Konfiguration bietet.

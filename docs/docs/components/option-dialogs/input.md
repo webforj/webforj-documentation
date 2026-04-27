@@ -67,12 +67,12 @@ The resulting string will be returned from the `show()` method, or the equivalen
 
 ```java showLineNumbers
 String result = OptionDialog.showInputDialog(
-    "Please enter your age:", "Age Input", "", InputDialog.InputType.NUMBER);
+  "Please enter your age:", "Age Input", "", InputDialog.InputType.NUMBER);
 
 if (result != null) {
-    OptionDialog.showMessageDialog("You entered: " + result, "Input Received");
+  OptionDialog.showMessageDialog("You entered: " + result, "Input Received");
 } else {
-    OptionDialog.showMessageDialog("No input received", "Input Canceled");
+  OptionDialog.showMessageDialog("No input received", "Input Canceled");
 }
 ```
 
@@ -82,7 +82,7 @@ The `InputDialog` allows you to specify a default value that appears in the inpu
 
 ```java showLineNumbers
 InputDialog dialog = new InputDialog(
-    "Please enter your name:", "Name Input", "John Doe", InputDialog.InputType.TEXT);
+  "Please enter your name:", "Name Input", "John Doe", InputDialog.InputType.TEXT);
 String result = dialog.show();
 ```
 
@@ -94,12 +94,12 @@ You can configure the timeout for the dialog using the `setTimeout(int timeout)`
 
 ```java showLineNumbers
 InputDialog dialog = new InputDialog(
-    "Please enter your name:", "Name Input", "John Doe");
+  "Please enter your name:", "Name Input", "John Doe");
 dialog.setTimeout(5);
 String result = dialog.show();
 
 OptionDialog.showMessageDialog(
-    "You entered: " + result, "Input Received", "OK", MessageDialog.MessageType.INFO);
+  "You entered: " + result, "Input Received", "OK", MessageDialog.MessageType.INFO);
 ```
 
 ## Best practices {#best-practices}

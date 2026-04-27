@@ -1,42 +1,42 @@
 ---
 title: Tree
 sidebar_position: 150
-_i18n_hash: 280fb07f73ba1172b33bd0617ded7876
+_i18n_hash: 6d2decdf16e3054012a22aca28980ccf
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-tree" />
 <DocChip chip='since' label='25.01' />
 <JavadocLink type="foundation" location="com/webforj/component/tree/Tree" top='true'/>
 
-`Tree`-komponentti järjestää tiedot solmujen hierarkiana. Jokainen solmu pitää sisällään ainutlaatuisen avaimen ja etiketti. Solmut yhdistyvät muodostaen vanhempi-lapsi-suhteita. Voit laajentaa tai kutistaa solmuja lapsensa näyttämiseksi tai piilottamiseksi. Kuvakkeet selventävät, minkä tyyppisestä solmusta on kyse ja onko se valittuna. Valinta tukee yhden solmun tai useiden kerralla valitsemista.
+`Tree` komponentti järjestää tietoa solmujen hierarkiana. Jokaisella solmulla on ainutlaatuinen avain ja merkintä. Solmut yhdistyvät mu形成vanvan vanhempi-lapsisuhteita. Voit laajentaa tai supistaa solmuja näyttääkseen tai piilottaakseen niiden lapsia. Ikonit selventävät, minkä tyyppisestä solmusta on kyse ja onko se valittu. Valinta tukee yhden tai useamman solmun valitsemista samanaikaisesti.
 
 <!-- INTRO_END -->
 
-## Solmumalli ja puurakenne {#node-model-and-tree-structure}
+## Node model and tree structure {#node-model-and-tree-structure}
 
-### `TreeNode`-rooli {#the-role-of-treenode}
+### The role of `TreeNode` {#the-role-of-treenode}
 
-Jokainen tietoelementti puussa on kääritty `TreeNode`-objektiin. Tämä objekti sisältää avaimen, tekstietiketin sekä linkit sen vanhempiin ja lapsisolmuihin. Juurisolmu on erityinen: se on läsnä jokaisessa puussa, mutta ei ole näkyvissä. Se toimii säilönä kaikille ylimmille solmuille, mikä helpottaa puurakenteen hallintaa sisäisesti.
+Jokainen tietopala puussa on kääritty `TreeNode`-objektiin. Tämä objekti pitää sisällään avaimen, tekstimerkin ja linkit sen vanhempiin ja lapsisolmuihin. Juurisolmu on erityinen: se esiintyy jokaisessa puussa, mutta ei ole näkyvissä. Se toimii kaikkien ylimmän tason solmujen säiliönä, mikä tekee puurakenteen hallinnasta helpompaa sisäisesti.
 
-Koska solmut pitävät viittauksia vanhempiinsa ja lapsiinsa, puussa liikkuminen on vaivatonta. Olitpa sitten liikkumassa ylös, alas tai etsimässä tiettyä solmua avaimen mukaan, yhteydet ovat aina käytettävissä.
+Koska solmut pitävät viittauksia vanhempiinsa ja lapsiinsa, puun läpikäyminen on suoraviivaista. Riippumatta siitä, haluatko siirtää ylös, alas tai löytää tietyn solmun sen avaimen perusteella, yhteydet ovat aina käytettävissä.
 
-### Solmujen luominen ja hallinta {#node-creation-and-management}
+### Node creation and management {#node-creation-and-management}
 
-Solmuja luodaan yksinkertaisilla tehdasmenetelmillä, joko antamalla avain ja teksti tai pelkkä teksti (joka toimii myös avaimena). Tämä takaa, että jokainen solmu on kelvollinen ja yksilöllisesti tunnistettava.
+Solmut luodaan yksinkertaisilla tehdasmenetelmillä, joko antamalla avain ja teksti tai vain teksti (joka toimii myös avaimena). Tämä takaa, että jokainen solmu on voimassa ja yksilöitävissä.
 
-Solmujen lisääminen puuhun tapahtuu kutsumalla `add()` tai `insert()` vanhempasolmulle. Nämä menetelmät käsittelevät vanhemman viittauksen määrittämistä ja ilmoittavat puulle, että sen käyttöliittymä on päivitettävä.
+Solmujen lisääminen puuhun tapahtuu kutsumalla `add()` tai `insert()` vanhempi-solmulle. Nämä menetelmät hoitavat vanhempi viittauksen määrittämisen ja ilmoittavat puulle käyttöliittymän päivittämisestä.
 
 Esimerkki:
 
 ```java
-TreeNode parent = Tree.node("Parent");
-TreeNode child = Tree.node("Child");
+TreeNode parent = Tree.node("Vanhempi");
+TreeNode child = Tree.node("Lapsi");
 parent.add(child);
 tree.add(parent);
 ```
 
-:::info Vain yksi vanhempi
-Yrittäminen määrittää sama solmu useammalle vanhemmalle johtaa poikkeuksen heittämiseen. Tämä turvatoimi varmistaa, että puu ylläpitää oikeaa hierarkiaa estämällä solmuja saamasta useita vanhempia, mikä rikkoisi rakenteen eheyttä ja aiheuttaisi odottamatonta käyttäytymistä.
+:::info Single Parent Only
+Yrittäessäsi määrittää samaa solmua useammalle vanhemmalle, heittää poikkeuksen. Tämä suojatoimi varmistaa, että puu säilyttää oikean hierarkian estämällä solmuja saamasta useampaa vanhempaa, mikä rikkoisi rakenteen eheyttä ja aiheuttaisi odottamatonta käyttäytymistä.
 :::
 
 <ComponentDemo 
@@ -45,33 +45,34 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-### Solmujen muokkaaminen {#modifying-nodes}
+### Modifying nodes {#modifying-nodes}
 
-Voit päivittää solmun etikettiä kutsumalla `setText(String text)`. Tämä menetelmä muuttuu tekstin, joka näytetään solmulle puussa.
+Voit päivittää solmun merkinnän kutsumalla `setText(String text)`. Tämä menetelmä muuttaa puussa näkyvän solmun tekstin.
 
-Poistaaksesi tietyn lapsisolmun, käytä `remove(TreeNode child)`. Tämä irrottaa lapsen sen vanhemmasta ja poistaa sen puurakenteesta. Se myös tyhjentää vanhemman viittauksen.
+Poistaaksesi tietyn lapsisolmun, käytä `remove(TreeNode child)`. Tämä irrottaa lapsen sen vanhemmasta ja poistaa sen puurakenteesta. Se myös tyhjentää vanhempi viittauksen.
 
-Jos haluat tyhjentää kaikki lapset solmusta, kutsu `removeAll()`. Tämä poistaa jokaisen lapsisolmun, tyhjentää niiden vanhemmat viittaukset ja tyhjentää lasten listan.
+Jos haluat tyhjentää kaikki lapset solmusta, kutsu `removeAll()`. Tämä poistaa jokaisen lapsisolmun, tyhjentää niiden vanhempi viittaukset ja tyhjentää lapsiluettelon.
 
-Jokainen solmu tukee lisätietojen tallentamista palvelinpuolelle käyttämällä `setUserData(Object key, Object data)`. Tämä antaa sinun liittää mielivaltaista metatietoa tai viittauksia solmuun, paljastamatta näitä tietoja asiakkaalle tai käyttöliittymälle.
+Jokainen solmu tukee ylimääräisten tietojen tallentamista palvelinpuolella käyttäen `setUserData(Object key, Object data)`. Tämä antaa sinun liittää mielivaltaista metadataa tai viittauksia solmuun ilman, että tämä data paljastuu asiakkaalle tai käyttöliittymälle.
 
-:::tip Demoa käyttäen solmun tekstin muokkaaminen
-Demossa voit kaksoisklikata solmua avatakseen editorin sen tekstille. Syötä uusi teksti ja tallenna se päivittääksesi solmun etiketti puussa.
+:::tip Using the Demo to Edit Node Text
+Demoissa voit kaksinkertaisesti napsauttaa solmua avataksesi tekstieditorin sille. Syötä uusi teksti ja tallenna se päivittääksesi solmun merkintää puussa.
 :::
 
 <ComponentDemo 
 path='/webforj/treemodify?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tree/TreeModifyView.java'
+cssURL='/css/tree/tree-modify-view.css'
 height='320px'
 />
 
-## Kuvakkeet {#icons}
+## Icons {#icons}
 
-Kuvakkeet tarjoavat visuaalisia vihjeitä solmujen edustuksesta ja niiden tilasta. Ne parantavat luettavuutta erottamalla solmujen tyypit ja valintatilat yhdellä silmäyksellä. `Tree`-komponentti tukee oletuskuvakkeiden määrittämistä globaalisti, yksittäisten solmujen kuvakkeiden mukauttamista ja kuvakkeiden näkyvyyden kytkemistä.
+Ikonit tarjoavat visuaalisia vihjeitä siitä, mitä solmut edustavat ja niiden tila. Ne parantavat luettavuutta erottamalla solmutyypit ja valintatilat yhdellä silmäyksellä. `Tree` komponentti tukee oletusikonien asettamista globaalisti, mukauttamista solmukohtaisesti ja ikonien näkyvyyden vaihtamista.
 
-### Globaalit kuvakkeet {#global-icons}
+### Global icons {#global-icons}
 
-Puu antaa sinun määrittää oletuskuvakkeet kutistuneille ryhmille, laajennetuillle ryhmille, lehtisolmuille ja valituille lehdille.
+Puu antaa sinun asettaa oletusikonit suljetuille ryhmille, avatuile ryhmille, lehtisolmuille ja valituille lehtisolmuille.
 
 Esimerkki:
 
@@ -82,13 +83,13 @@ tree.setLeafIcon(TablerIcon.create("file"));
 tree.setLeafSelectedIcon(TablerIcon.create("file-checked"));
 ```
 
-:::tip Kuvake lähteet
-Kuvake voi olla mikä tahansa kelvollinen webforJ [kuvake](./icon) määritelmä tai resurssitiedosto, joka on ladattu webforJ [tuettujen resurssiprotokollien](../managing-resources/assets-protocols) kautta.
+:::tip Icon Sources
+Ikoni voi olla mikä tahansa voimassa oleva webforJ [ikoni](./icon) määrittely tai resurssitiedosto, joka on ladattu webforJ [tuettujen resurssiprotokollien](../managing-resources/assets-protocols) kautta.
 :::
 
-### Solmukohtaiset kuvakkeet {#per-node-icons}
+### Per-node icons {#per-node-icons}
 
-Voit ylikirjoittaa globaaleja oletuksia määrittämällä kuvakkeita yksittäisille solmuille. Tämä on hyödyllistä, kun tietyt solmut edustavat eri käsitteitä, kuten "projekti" kansioita tai erityisiä tiedostoja.
+Voit ohittaa globaalit oletukset määrittämällä ikoneja yksittäisille solmuille. Tämä on hyödyllistä, kun tietyt solmut edustavat erilaisia konsepteja, kuten "projekti" kansioita tai erikoistiedostoja.
 
 Esimerkki:
 
@@ -97,9 +98,9 @@ node.setIcon(TablerIcon.create("project"));
 node.setSelectedIcon(TablerIcon.create("project-selected"));
 ```
 
-### Kuvakkeiden näkyvyys {#icon-visibility}
+### Icon visibility {#icon-visibility}
 
-Joskus haluat ehkä piilottaa kuvakkeet ryhmille tai lehdille vähentääksesi häiriötekijöitä. Komponentti antaa sinun kytkeä näkyvyyden globaalisti näille kategorioille, jolloin voit yksinkertaistaa puun ulkoasua menettämättä rakennetta.
+Joskus saatat haluta piilottaa ikoneita ryhmiltä tai lehdiltä vähentääksesi kaaosta. Komponentti antaa sinun vaihtaa näkyvyyttä globaalisti näille kategorioille, mikä antaa sinun yksinkertaistaa puun ulkoasua ilman, että rakenne kärsii.
 
 Esimerkki:
 
@@ -114,15 +115,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='320px'
 />
 
-## Solmujen laajentaminen ja kutistaminen {#node-expansion-and-collapse}
+## Node expansion and collapse {#node-expansion-and-collapse}
 
-Solmuja voidaan laajentaa tai kutistaa, jotta hallitaan, mitkä osat puusta ovat näkyvissä. Tämä mahdollistaa keskittymisen relevantteihin osiin ja tukee tilanteita, kuten laiska lataus tai dynaamiset tietopäivitykset.
+Solmut voidaan laajentaa tai supistaa hallitsemaan, mitkä osat puustaa ovat näkyviä. Tämä mahdollistaa keskittymisen olennaisiin osiin ja tukee skenaarioita, kuten laiskakulutusta tai dynaamisia tietojen päivityksiä.
 
-### Laajentamis- ja kutistamistoiminnot {#expand-and-collapse-operations}
+### Expand and collapse operations {#expand-and-collapse-operations}
 
-Puu tukee yksittäisten solmujen laajentamista ja kutistamista joko niiden avaimen tai suoran viittauksen avulla. Voit myös laajentaa tai kutistaa kaikkia solmun jälkeläisiä kerralla.
+Puu tukee yksittäisten solmujen laajentamista ja supistamista joko niiden avaimen tai suoran viittauksen avulla. Voit myös laajentaa tai supistaa kaikkia lapsia solmusta kerralla.
 
-Nämä toiminnot antavat sinulle hallintaa siitä, kuinka paljon puusta on näkyvissä, ja tukevat tietojen laiskaa latausta tai keskittymistä kiinnostaviin alueisiin.
+Nämä toiminnot antavat sinulle mahdollisuuden hallita, kuinka paljon puusta on näkyvissä ja tukevat laiskalatausta tai keskittymistä kiinnostaviin alueisiin.
 
 Esimerkki:
 
@@ -130,20 +131,20 @@ Esimerkki:
 tree.expand(node);
 tree.collapse(key);
 
-// kutista alapuuta
+// supista alapuuleet
 tree.expandFrom(node);
 tree.collapseFrom(node);
 ```
 
-:::info Juurisolmun kutistaminen
-Juurisolmu kiinnittää puun, mutta pysyy piilossa. Juurisolmun kutistaminen piilottaisi normaalisti kaiken, mikä saisi puun näyttämään tyhjältä. Tämän välttämiseksi juurisolmun kutistaminen kutistaa itse asiassa kaikki sen lapset, mutta pitää juurisolmun laajennettuna sisäisesti, varmistaen, että puu näyttää edelleen sisältönsä oikein.
+:::info Collapsing root
+Juurisolmu kiinnittää puun mutta pysyy piilossa. Juuren supistaminen piilottaisi normaalisti kaiken, jolloin puu näyttäisi tyhjältä. Välttääksesi tätä, juuren supistaminen supistaa oikeastaan kaikkia sen lapsia mutta pitää juuren laajennettuna sisäisesti, varmistaen että puu näyttää silti sisältönsä oikein.
 :::
 
-### Laiska lataus solmuissa {#lazy-loading-nodes}
+### Lazy loading nodes {#lazy-loading-nodes}
 
-Puu tukee solmun lasten laiskaa latausta reagoimalla laajentamistapahtumiin. Kun käyttäjä laajentaa solmua, sovelluksesi voi ladata tai luoda kyseisen solmun lapsia dynaamisesti. Tämä parantaa suorituskykyä lataamalla vain näkyviä osia puusta tarpeen mukaan.
+Puu tukee solmujen lasten laiskakulutusta reagoimalla laajentumistapahtumiin. Kun käyttäjä laajentaa solmun, sovelluksesi voi ladata tai luoda sen lapsia dynaamisesti. Tämä parantaa suorituskykyä lataamalla vain näkyviä puun osia tarpeen mukaan.
 
-Käytä `onExpand`-tapahtumaa havaitaksesi, kun solmu laajennetaan. Käsittelijän sisällä tarkista, ovatko solmun lapset paikkamerkkejä (esimerkiksi pyörivä latauskuvake tai tyhjät solmut) ja korvata ne oikeilla tiedoilla lataamisen jälkeen.
+Käytä `onExpand` tapahtumaa havaitaksesi, kun solmu on laajennettu. Käsittelijän sisällä, tarkista onko solmun lapset paikkamerkkejä (esimerkiksi pyörivä latauskierros tai tyhjät solmut) ja korvata ne todellisilla tiedoilla, kun ne on ladattu.
 
 <ComponentDemo 
 path='/webforj/treelazyload?'
@@ -151,13 +152,13 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
-## Valinta {#selection}
+## Selection {#selection}
 
-Valinta hallitsee, mitkä solmut käyttäjä valitsee. `Tree`-komponentti tukee joustavaa tilaa ja sovellusrajapintoja solmujen valitsemiseksi, kumoamiseksi ja kysymiseksi.
+Valinta hallitsee, mitkä solmut käyttäjä valitsee. `Tree` komponentti tukee joustavia tiloja ja API:ita solmujen valintaan, poistamiseen ja kysymiseen.
 
-### Valintatilat {#selection-modes}
+### Selection modes {#selection-modes}
 
-Voit valita, sallitaanko puun valita vain yksi solmu kerralla vai useita solmuja samanaikaisesti. Siirtyminen useasta valinnasta yksittäiseen valintaan poistaa automaattisesti kaikki muut kuin ensimmäisen valitun solmun.
+Voit valita, salliiko puu valita vain yhden solmun kerrallaan vai useita solmuja samanaikaisesti. Siirtyminen useasta valinnasta yksittäiseen valintaan poistaa automaattisesti valinnasta kaikki paitsi ensimmäisen valitun solmun.
 
 Esimerkki:
 
@@ -165,43 +166,43 @@ Esimerkki:
 tree.setSelectionMode(Tree.SelectionMode.SINGLE);
 ```
 
-:::tip Monivalintakäyttäytyminen
-Kun puu on asetettu useaan valintatilaan, käyttäjät voivat valita useamman kuin yhden solmun kerralla. Tämä toimii laitteesta riippuen:
+:::tip Multi-selection interaction
+Kun puu on asetettu usean valinnan tilaan, käyttäjät voivat valita useamman kuin yhden solmun kerrallaan. Tämä toimii laitteesta riippuen:
 
-* **Työpöytä (hiiri ja näppäimistö):** Käyttäjät pitävät **Ctrl**-näppäintä (tai **Cmd**-näppäintä macOS:llä) ja napsauttavat solmuja lisätäkseen tai poistakseen ne nykyisestä valinnasta. Tämä mahdollistaa useiden yksittäisten solmujen valitsemisen ilman muiden kumoamista.
-* **Mobiili- ja kosketuslaitteet:** Koska muokkausnäppäimiä ei ole saatavilla, käyttäjät yksinkertaisesti napauttavat solmuja valitakseen tai kumotakseen niitä. Jokainen napautus vaihtaa kyseisen solmun valintatilaa, mahdollistaen helpon monivalinnan yksinkertaisilla napautuksilla.
+* **Työpöytä (hiiri ja näppäimistö):** Käyttäjät pitävät **Ctrl**-näppäintä (tai **Cmd**-näppäintä macOS:llä) ja napsauttavat solmuja lisätäkseen tai poistaakseen ne nykyisestä valinnasta. Tämä mahdollistaa useiden erillisten solmujen valitsemisen ilman muiden poistamista.
+* **Mobiili ja kosketuslaitteet:** Koska modifikaatiota ei ole saatavilla, käyttäjät napsauttavat solmuja valitakseen tai poistaakseen ne valinnasta. Jokainen napsautus vaihtaa kyseisen solmun valintatilaa, mikä mahdollistaa helpon monivalinnan yksinkertaisilla napsautuksilla.
 :::
 
-### Solmujen valitseminen ja kumoaminen {#selecting-and-deselecting}
+### Selecting and deselecting {#selecting-and-deselecting}
 
-Solmuja voidaan valita tai kumota viittauksen, avaimen, yksittäin tai joukoittain. Voit myös valita tai kumota kaikki lapset yhdellä kutsulla.
+Solmut voidaan valita tai poistaa viittauksen, avaimen, yksilöllisesti tai erissä. Voit myös valita tai poistaa jokaisen lapsen solmusta yhdellä kutsulla.
 
 Esimerkki:
 
 ```java
-// valitse solmu viittauksella tai avaimella
+// valitse solmu viittauksen tai avaimen perusteella
 tree.select(node);
 tree.selectKey(key);
 
-// kumoa solmu viittauksella tai avaimella
+// poista valinta solmusta viittauksen tai avaimen perusteella
 tree.deselect(node);
 tree.deselectAll();
 
-// valitseminen tai kumoaminen solmun lapsista
+// solmujen lasten valinta tai poistaminen
 tree.selectChildren(parentNode);
 tree.deselectChildren(parentNode);
 ```
 
-### Valintatilanteen hakeminen {#selection-state-retrieval}
+### Selection state retrieval {#selection-state-retrieval}
 
-Voit saada nykyisen valinnan käyttämällä alla olevaa koodia:
+Voit saada nykyisen valinnan hyödyntämällä alla näkyvää koodia:
 
 ```java
-// hae valitun solmun viittaus
+// saa valitun solmun viittauksen
 TreeNode selected = tree.getSelected();
 List<TreeNode> selectedItems = tree.getSelectedItems();
 
-// hae valitun solmun avain
+// saa valitun solmun avaimen
 Object selectedKey = tree.getSelectedKey();
 List<Object> selectedKeys = tree.getSelectedKeys();
 ```
@@ -212,6 +213,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='400px'
 />
 
-## Tyylitys {#styling}
+## Styling {#styling}
 
-<TableBuilder name="Tree" />
+<TableBuilder name={['Tree', 'TreeNode']} />

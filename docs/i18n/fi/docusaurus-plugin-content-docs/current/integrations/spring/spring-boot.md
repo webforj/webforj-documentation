@@ -1,11 +1,11 @@
 ---
 title: Spring Boot
 sidebar_position: 10
-_i18n_hash: 620d9c2e8df79418d1e4902b970b42c8
+_i18n_hash: 116777dbeb2e6707e2ef867f0dd6d78c
 ---
-Spring Boot on suosittu valinta Java-sovellusten rakentamiseen, ja se tarjoaa riippuvuuksien injektoinnin, automaattisen konfiguroinnin sekä upotetun palvelinmallin. Kun käytät Spring Bootia webforJ:n kanssa, voit injektoida palveluita, varastoja ja muita Springin hallinnoimia komponentteja suoraan käyttöliittymäkomponentteihisi konstruktorinjektoinnin avulla.
+Spring Boot on suosittu valinta Java-sovellusten rakentamiseen, tarjoten riippuvuuksien injektointia, automaattista konfigurointia ja upotettua palvelinmallia. Kun käytät Spring Bootia webforJ:n kanssa, voit injektoida palveluja, varastoja ja muita Springin hallinnoimia komponentteja suoraan käyttöliittymäkomponentteihisi konstruktorin injektoinnin kautta.
 
-Kun käytät Spring Bootia webforJ:n kanssa, sovelluksesi toimii suoritettavana JAR-tiedostona upotetun Tomcat-palvelimen kanssa sen sijaan, että jouduit käyttämään WAR-tiedostoa ulkoisessa sovelluspalvelimessa. Tämä pakkausmalli yksinkertaistaa käyttöönottoa ja on linjassa pilviperustaisten käyttöönoton käytäntöjen kanssa. webforJ:n komponenttimalli ja reititys toimivat yhdessä Springin sovelluskontextin kanssa riippuvuuksien ja konfiguroinnin hallitsemiseksi.
+Kun käytät Spring Bootia webforJ:n kanssa, sovelluksesi toimii suoritettavana JAR-tiedostona upotetun Tomcat-palvelimen kanssa sen sijaan, että julkaisisit WAR-tiedoston ulkoiselle sovelluspalvelimelle. Tämä pakkausmalli yksinkertaistaa käyttöönottoa ja vastaa pilvipohjaisia käyttöönotto käytäntöjä. webforJ:n komponenttimalli ja reititys toimivat yhdessä Springin sovelluskontekstin kanssa riippuvuuksien ja konfiguraation hallitsemiseksi.
 
 ## Luo Spring Boot -sovellus {#create-a-spring-boot-app}
 
@@ -15,22 +15,21 @@ Sinulla on kaksi vaihtoehtoa uuden webforJ-sovelluksen luomiseksi Spring Bootin 
 ### Vaihtoehto 1: Käyttämällä startforJ {#option-1-using-startforj}
 <!-- vale on -->
 
-Yksinkertaisin tapa luoda uusi webforJ-sovellus on [startforJ](https://docs.webforj.com/startforj), joka luo minimaalisesti lähtöprojektin valitun webforJ-archetypen perusteella. Tämä lähtöprojekti sisältää kaikki tarvittavat riippuvuudet, konfigurointitiedostot ja valmiin asettelun, joten voit aloittaa rakentamisen heti.
+Yksinkertaisin tapa luoda uusi webforJ-sovellus on [startforJ](https://docs.webforj.com/startforj), joka luo minimaalisen aloitusprojektin valitun webforJ-archetypen perusteella. Tämä aloitusprojekti sisältää kaikki tarvittavat riippuvuudet, konfiguraatiotiedostot ja valmiiksi tehdyyn asettelun, joten voit alkaa rakentaa sitä heti.
 
-Kun luot sovelluksen [startforJ:n](https://docs.webforj.com/startforj) avulla, voit mukauttaa sitä antamalla seuraavat tiedot:
+Kun luot sovelluksen [startforJ](https://docs.webforj.com/startforj) avulla, voit mukauttaa sitä antamalla seuraavat tiedot:
 
-- Perusprojektin metadata (Sovelluksen nimi, Ryhmä-ID, Artefakti-ID)  
-- webforJ-versio ja Java-versio
-- Teema väri ja kuvake
+- Perusprojektin metadata (Sovelluksen nimi, Ryhmän ID, Artefakti ID)  
+- webforJ:n versio ja Java-versio
+- Teeman väri ja kuvake
 - Archetype
 - **Maku** - Valitse **webforJ Spring** luodaksesi Spring Boot -projektin
 
-Käyttämällä näitä tietoja, startforJ luo perustason projektin valitsemastasi archetypesta, joka on konfiguroitu Spring Bootia varten.
-Voit valita projektisi lataamisen ZIP-tiedostona tai julkaisemisen suoraan GitHubiin.
+Tämän tiedon avulla startforJ luo perusprojektin valitsemastasi archetypestä, joka on konfiguroitu Spring Bootia varten. Voit valita lataamisen ZIP-tiedostona tai julkaista sen suoraan GitHubiin.
 
 ### Vaihtoehto 2: Käyttämällä komentoriviä {#option-2-using-the-command-line}
 
-Jos haluat käyttää komentoriviä, voit luoda Spring Boot -webforJ-projektin suoraan käyttämällä virallisia webforJ-archetypeja:
+Jos haluat käyttää komentoriviä, voit luoda suoraan Spring Boot webforJ -projektin virallisten webforJ-archetypejen avulla:
 
 ```bash {8}
 mvn -B archetype:generate \
@@ -43,157 +42,157 @@ mvn -B archetype:generate \
   -Dflavor=webforj-spring
 ```
 
-`flavor`-parametri kertoo archetypelle, että se luo Spring Boot -projektin standardin webforJ-projektin sijaan.
+`flavor`-parametri kertoo archetypelle, että se luo Spring Boot -projektin sen sijaan, että se luo tavanomaista webforJ-projektia.
 
-Tämä luo täydellisen Spring Boot -projektin, johon sisältyy:
-- Spring Bootin vanhempien POM-konfigurointi
+Tämä luo täydellisen Spring Boot -projektin, jossa on:
+- Spring Boot -vanhempi POM-konfigurointi
 - webforJ Spring Boot -aloitusriippuvuus
 - Pääsovellusluokka, jossa on `@SpringBootApplication` ja `@Routify`
 - Esimerkkinäkymät
-- Konfigurointitiedostot sekä Springille että webforJ:lle
+- Konfiguraatiotiedostot sekä Springille että webforJ:lle
 
 ## Lisää Spring Boot olemassa oleviin projekteihin {#add-spring-boot-to-existing-projects}
 
-Jos sinulla on olemassa oleva webforJ-sovellus, voit lisätä Spring Bootin muokkaamalla projektisi konfigurointia. Tämä prosessi sisältää Maven-konfiguraation päivittämisen, Spring-riippuvuuksien lisäämisen ja pääsovellusluokkasi muuntamisen.
+Jos sinulla on olemassa oleva webforJ-sovellus, voit lisätä Spring Bootin muokkaamalla projektin konfiguraatiota. Tämä prosessi sisältää Mavenin konfiguraation päivittämisen, Spring-riippuvuuksien lisäämisen ja pääsovellusluokan muuntamisen.
 
-:::info[Vain olemassa oleville projekteille]
-Ohita tämä osa, jos luot uuden projektin alusta alkaen. Tämä opas olettaa, että **webforJ versio 25.11 tai uudempi**.
+:::info[Olemassa oleville projekteille vain]
+Ohita tämä osio, jos luot uutta projektia alusta alkaen. Tämä opas olettaa **webforJ version 25.11 tai uudemman**.
 :::
 
-### Vaihe 1: Päivitä Maven-konfigurointi {#step-1-update-maven-configuration}
+### Vaihe 1: Päivitä Maven-konfiguraatio {#step-1-update-maven-configuration}
 
 Tee seuraavat muutokset POM-tiedostoon:
 
-1. Muuta pakkaus WAR:sta JAR:ksi:
+1. Vaihda pakkaus WAR:sta JAR:iin:
    ```xml title="pom.xml"
    <packaging>jar</packaging>
    ```
 
-2. Aseta Spring Boot vanhempana POM:ina:
+2. Aseta Spring Boot vanhemmaksi POM:iksi:
    ```xml title="pom.xml"
    <parent>
        <groupId>org.springframework.boot</groupId>
        <artifactId>spring-boot-starter-parent</artifactId>
-       <version>3.5.3</version>
+       <version>4.0.5</version>
        <relativePath/>
    </parent>
    ```
 
-3. Poista kaikki WAR-spesifiset konfiguroinnit, kuten:
+3. Poista kaikki WAR-spesifiset konfiguraatiot, kuten:
    - `maven-war-plugin`
-   - `webapp`-hakemiston viittaukset
-   - `web.xml`-liittyvät konfiguroinnit
+   - `webapp`-hakemistoreferenssit
+   - `web.xml`-liittyvä konfiguraatio
 
-Jos sinulla on jo vanhempi POM, sinun täytyy tuoda sen sijaan Spring Bootin materiaalit (BOM):
+Jos sinulla on jo vanhempi POM, sinun on importoitava Spring Boot -materiaaliluettelo (BOM) sen sijaan:
 
 ```xml title="pom.xml"
 <dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>3.5.3</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-dependencies</artifactId>
+      <version>4.0.5</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
 </dependencyManagement>
 ```
 
-### Vaihe 2: Lisää Spring-riippuvuudet {#step-2-add-spring-dependencies}
+### Vaihe 2: Lisää Spring-riippuvuuksia {#step-2-add-spring-dependencies}
 
-Lisää webforJ:n Spring Boot -aloitusriippuvuus riippuvuuksiisi:
+Lisää webforJ Spring Boot -aloitusriippuvuus riippuvuuksiisi:
 
 :::info[webforJ 25.11+ yksinkertaistus]
-Aloittaen **webforJ -version 25.11** `webforj-spring-boot-starter` sisältää kaikki ydinin webforJ -riippuvuudet transitiivisesti. Sinun ei enää tarvitse eksplisiittisesti lisätä `com.webforj:webforj` -riippuvuutta.
+Aloittamalla **webforJ version 25.11**, `webforj-spring-boot-starter` sisältää kaikki ydindependencit automaattisesti. Sinun ei enää tarvitse erikseen lisätä `com.webforj:webforj` riippuvuutta.
 
-Versioissa **ennen 25.11** sinun on ilmoitettava molemmat riippuvuudet erikseen.
+Versioille **ennen 25.11** sinun on sisällytettävä molemmat riippuvuudet erikseen.
 :::
 
-**Versioille webforJ 25.11 ja myöhemmin:**
+**webforJ 25.11 ja uudemmat:**
 
 ```xml title="pom.xml"
 <dependencies>
-    <!-- Lisää Spring Boot -aloitus (sisältää webforJ transitiivisesti) -->
-    <dependency>
-        <groupId>com.webforj</groupId>
-        <artifactId>webforj-spring-boot-starter</artifactId>
-        <version>${webforj.version}</version>
-    </dependency>
+  <!-- Lisää Spring Boot -aloitus (sisältää webforJ automaattisesti) -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-boot-starter</artifactId>
+    <version>${webforj.version}</version>
+  </dependency>
 
-    <!-- Lisää devtools -->
-    <dependency>
-      <groupId>com.webforj</groupId>
-      <artifactId>webforj-spring-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+  <!-- Lisää devtools -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-devtools</artifactId>
+    <optional>true</optional>
+  </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+  </dependency>
 </dependencies>
 ```
 
-**Versioissa ennen 25.11:**
+**Versioille ennen 25.11:**
 
 ```xml title="pom.xml"
 <dependencies>
-    <!-- Lisää eksplisiittisesti webforJ-riippuvuus -->
-    <dependency>
-        <groupId>com.webforj</groupId>
-        <artifactId>webforj</artifactId>
-        <version>${webforj.version}</version>
-    </dependency>
+  <!-- Lisää webforJ-riippuvuus erikseen -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj</artifactId>
+    <version>${webforj.version}</version>
+  </dependency>
     
-    <!-- Lisää Spring Boot -aloitus -->
-    <dependency>
-        <groupId>com.webforj</groupId>
-        <artifactId>webforj-spring-boot-starter</artifactId>
-        <version>${webforj.version}</version>
-    </dependency>
+  <!-- Lisää Spring Boot -aloitus -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-boot-starter</artifactId>
+    <version>${webforj.version}</version>
+  </dependency>
 
-    <!-- Lisää devtools -->
-    <dependency>
-      <groupId>com.webforj</groupId>
-      <artifactId>webforj-spring-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+  <!-- Lisää devtools -->
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-devtools</artifactId>
+    <optional>true</optional>
+  </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+  </dependency>
 </dependencies>
 ```
 
 :::tip[webforJ DevTools automaattiseen selainpäivitykseen]
-`webforj-spring-devtools` -riippuvuus laajentaa Spring DevToolsia automaattisella selainpäivityksellä. Kun tallennat muutoksia IDE:ssäsi, selain latautuu automaattisesti ilman manuaalista väliintuloa. Katso [Spring DevTools](/docs/configuration/deploy-reload/spring-devtools) -opas konfigurointitietoja varten.
+`webforj-spring-devtools` -riippuvuus laajentaa Spring DevToolsia automaattisella selainpäivityksellä. Kun tallennat muutoksia IDE:ssäsi, selain latautuu automaattisesti uudelleen ilman manuaalista väliintuloa. Katso [Spring DevTools](/docs/configuration/deploy-reload/spring-devtools) -opasta konfigurointitiedot.
 :::
 
-### Vaihe 3: Päivitä rakennusliittimet {#step-3-update-build-plugins}
+### Vaihe 3: Päivitä rakennuslisäosat {#step-3-update-build-plugins}
 
-Korvaa Jetty-liitin Spring Boot Maven -liittimellä. Poista olemassa olevat Jetty-konfiguraatiot ja lisää:
+Korvaa Jetty-lisäosa Spring Boot Maven -lisäosalla. Poista kaikki olemassa olevat Jetty-konfiguraatiot ja lisää:
 
 ```xml title="pom.xml"
 <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <excludeDevtools>true</excludeDevtools>
-        </configuration>
-      </plugin>
-    </plugins>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <configuration>
+        <excludeDevtools>true</excludeDevtools>
+      </configuration>
+    </plugin>
+  </plugins>
 </build>
 ```
 
 ### Vaihe 4: Muunna sovellusluokkasi {#step-4-convert-your-app-class}
 
-Muunna pää `App` -luokkasi Spring Boot -sovellukseksi lisäämällä tarvittavat Springin annotaatiot ja päämenetelmä:
+Muunna pää `App`-luokkasi Spring Boot -sovellukseksi lisäämällä tarvittavat Spring-annotaatiot ja päämenetelmä:
 
 ```java title="Application.java"
 package com.example;
@@ -207,36 +206,36 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Routify(packages = "com.example.views")
 public class Application extends App {
     
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
     
-    // Pidä olemassa oleva run() -menetelmäsi, jos sinulla on sellainen
-    @Override
-    public void run() throws WebforjException {
-      // Olemassa oleva alustuskoodisi 
-    }
+  // Säilytä olemassa oleva run() -menetelmäsi, jos sellainen on 
+  @Override
+  public void run() throws WebforjException {
+    // Olemassa oleva alustuskoodeesi 
+  }
 }
 ```
 
-`@SpringBootApplication` -annotaatio mahdollistaa Springin automaattisen konfiguroinnin ja komponenttihaun. `@Routify`-annotaatio pysyy ennallaan, ja se jatkaa näkymäpakettiesi reittien hakua.
+`@SpringBootApplication` annotaatio mahdollistaa Springin automaattisen konfiguraation ja komponenttien skannauksen. `@Routify`-annotaatio pysyy samana ja jatkaa näkymäpakettiesi reittien skannaamista.
 
-### Vaihe 5: Lisää Spring-konfigurointi {#step-5-add-spring-configuration}
+### Vaihe 5: Lisää Spring-konfiguraatio {#step-5-add-spring-configuration}
 
-Luo `application.properties` tiedosto `src/main/resources`:
+Luo `application.properties` tiedosto kansioon `src/main/resources`:
 
 ```Ini title="application.properties"
-# Täysin pätevän luokan nimi sovelluksen sisäänkäynnille
+# Täysin määritelty luokan nimi sovelluksen pääpisteelle
 webforj.entry = org.example.Application
 
 # Sovelluksen nimi
 spring.application.name=Hello World Spring
 
-# Palvelin konfigurointi
+# Palvelimen konfiguraatio
 server.port=8080
 server.shutdown=immediate
 
-# webforJ DevTools konfigurointi
+# webforJ DevTools -konfiguraatio
 spring.devtools.livereload.enabled=false
 webforj.devtools.livereload.enabled=true
 webforj.devtools.livereload.static-resources-enabled=true
@@ -244,35 +243,35 @@ webforj.devtools.livereload.static-resources-enabled=true
 
 ## Suorita Spring Boot -sovellus {#run-the-spring-boot-app}
 
-Kun olet konfiguroinut, suorita sovelluksesi käyttämällä:
+Kun konfigurointi on valmis, suorita sovelluksesi käyttäen:
 
 ```bash
 mvn spring-boot:run
 ```
 
-Sovellus käynnistyy upotetulla Tomcat-palvelimella portissa 8080 oletusarvoisesti. Olemassa olevat webforJ-näkymäsi ja reittisi toimivat täsmälleen kuten ennen, mutta nyt voit injektoida Springin komponentteja ja käyttää Springin ominaisuuksia.
+Sovellus käynnistyy upotetulla Tomcat-palvelimella oletusarvoisesti portissa 8080. Olemassa olevat webforJ-näkymät ja reitit toimivat täsmälleen kuten ennen, mutta nyt voit injektoida Spring- komponentteja ja käyttää Spring-ominaisuuksia.
 
-## Konfigurointi
+## Konfiguraatio
 
-Käytä `application.properties` -tiedostoa `src/main/resources` konfiguroidaksesi sovellustasi. 
- Katso [Property Configuration](/docs/configuration/properties) saadaksesi tietoa webforJ:n konfigurointiominaisuuksista.
+Käytä `application.properties` -tiedostoa kansiossa `src/main/resources` sovelluksesi konfiguroimiseksi. 
+Katso [Property Configuration](/docs/configuration/properties) saadaksesi tietoa webforJ:n konfiguraatio-ominaisuuksista.
 
-Seuraavat webforJ:n `application.properties` -asetukset ovat erityisiä Springille:
+Seuraavat webforJ `application.properties` asetukset ovat spesifisiä Springille:
 
-| Ominaisuus | Tyyppi | Kuvaus | Oletus|
-|------------|--------|--------|-------|
-| **`webforj.servlet-mapping`** | String | URL-reititysmalli webforJ-servletille. | `/*` |
-| **`webforj.exclude-urls`** | Lista | URL-mallit, joita ei tulisi käsitellä webforJ:n kun ne on kartoitettu juureen. Kun webforJ on kartoitettuna juurikontextiin (`/*`), nämä URL-mallit jätetään webforJ:n käsittelyn ulkopuolelle ja niitä voidaan käsitellä Spring MVC -kontrollereilla sen sijaan. Tämä sallii REST-pisteiden ja muiden Spring MVC -karttojen coexisting webforJ-reittien kanssa. | `[]` |
+| Ominaisuus | Tyyppi | Kuvaus | Oletusarvo|
+|------------|--------|--------|-----------|
+| **`webforj.servlet-mapping`** | Merkkijono | URL-mapping-malli webforJ servletille. | `/*` |
+| **`webforj.exclude-urls`** | Lista | URL-mallit, joita webforJ ei käsittele, kun se on mappattu juureen. Kun webforJ on mappattu juurikontekstiin (`/*`), nämä URL-mallit jätetään pois webforJ-käsittelystä ja ne voidaan käsitellä Spring MVC -ohjaimien toimesta. Tämä mahdollistaa REST-päätteiden ja muiden Spring MVC -mappien rinnakkaisen toiminnan webforJ-reittien kanssa. | `[]` |
 
-### Konfigurointieroja {#configuration-differences}
+### Konfiguraatioerot {#configuration-differences}
 
-Kun vaihdat Spring Bootiin, useita konfigurointiaspekteja muuttuu:
+Kun vaihdat Spring Bootiin, useat konfiguraatioasiat muuttuvat:
 
-| Aspekti | Standardi webforJ | Spring Boot webforJ |
-|---------|------------------|---------------------|
+| Ominaisuus | Tavanomainen webforJ | Spring Boot webforJ |
+|------------|---------------------|---------------------|
 | **Pakkaus** | WAR-tiedosto | Suoritettava JAR |
 | **Palvelin** | Ulkoinen (Jetty, Tomcat) | Upotettu Tomcat |
 | **Suorita komento** | `mvn jetty:run` | `mvn spring-boot:run` |
-| **Pään konfigurointi** | `webforj.conf` vain | `application.properties` + `webforj.conf`  |
-| **Profiilit** | `webforj-dev.conf`, `webforj-prod.conf` | Spring-profiilit `application-{profiili}.properties` |
-| **Portin konfigurointi** | Liitinkanavien konfiguroinnissa | `server.port` ominaisuudessa |
+| **Pääasiallinen konfigurointi** | `webforj.conf` vain | `application.properties` + `webforj.conf`  |
+| **Profiilit** | `webforj-dev.conf`, `webforj-prod.conf` | Spring-profiilit `application-{profile}.properties` |
+| **Portti-konfigurointi** | Lisäosan konfiguraatiossa | `server.port` ominaisuuksissa |

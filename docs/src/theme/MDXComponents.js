@@ -13,6 +13,7 @@ import ExpandableCode from '@site/src/components/DocsTools/ExpandableCode';
 import GiscusComments from '@site/src/components/DocsTools/GiscusComments';
 import AskMenu from '@site/src/components/DocsTools/AskMenu';
 import TableWrapper from '@site/src/components/DocsTools/TableWrapper';
+import AccordionGroup from '@site/src/components/DocsTools/AccordionGroup';
 import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -30,6 +31,8 @@ import TransitionBox from '@site/src/components/DWCTheme/TransitionBox/Transitio
 import GalleryCard from '@site/src/components/GalleryCard/GalleryCard';
 import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
+import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarning';
+import AutomatedUpgradeTip from '@site/src/components/DocsTools/AutomatedUpgradeTip';
 
 
 export default {
@@ -53,6 +56,7 @@ export default {
   SpacingBox,
   SurfaceBox,
   TransitionBox,
+  AccordionGroup,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -60,6 +64,8 @@ export default {
   GalleryCard,
   GalleryGrid,
   ColorPalette,
-  table: TableWrapper
+  table: TableWrapper,
+  ExperimentalWarning,
+  AutomatedUpgradeTip
 };
 

@@ -1,37 +1,37 @@
 ---
 title: Setup and Configuration
 sidebar_position: 2
-_i18n_hash: 76bc55d5b841ae3c06bcd2cd9e8b2632
+_i18n_hash: d948bababbedcfe831d4af62f8b6b088
 ---
-Webswingin integroiminen webforJ:hen sisältää kaksi komponenttia: Webswing-palvelimen, joka isännöi Swing-sovellustasi, ja `WebswingConnector`-komponentin webforJ-sovelluksessa, joka upottaa sen.
+Webswingin integroiminen webforJ:hin koostuu kahdesta komponentista: Webswing-palvelimesta, joka isännöi Swing-sovellustasi, ja `WebswingConnector`-komponentista webforJ-sovelluksessasi, joka upottaa sen.
 
-## Esivaatimukset {#prerequisites}
+## Edellytykset {#prerequisites}
 
-Ennen kuin aloitat, varmista, että sinulla on seuraavat esivaatimukset:
+Ennen kuin aloitat, varmista, että sinulla on seuraavat edellytykset:
 
-- **Java-työpöytäsovellus**: Swing-, JavaFX- tai SWT-sovellus pakattuna JAR-tiedostoksi
-- **Webswing-palvelin**: lataa osoitteesta [webswing.org](https://webswing.org)
-- **webforJ versio `25.10` tai uudempi**: vaatimuksena `WebswingConnector`-tuki
+- **Java-desktop-sovellus**: Swing-, JavaFX- tai SWT-sovellus, joka on pakattu JAR-tiedostoksi
+- **Webswing-palvelin**: lataa [webswing.org](https://webswing.org)
+- **webforJ versio `25.10` tai uudempi**: vaaditaan `WebswingConnector`-tuesta
 
-## Arkkitehtuurikatsaus {#architecture-overview}
+## Arkkitehtuurin yleiskatsaus {#architecture-overview}
 
 Integrointiarkkitehtuuri koostuu:
 
-1. **Webswing-palvelin**: suorittaa Swing-sovellustasi, kaappaa GUI:n renderöinnin ja käsittelee käyttäjän syötteet
-2. **webforJ-sovellus**: isännöi verkkosovellustasi upotetulla `WebswingConnector`:lla
+1. **Webswing-palvelin**: ajaa Swing-sovellustasi, tallentaa GUI:n renderoinnin ja käsittelee käyttäjän syötteen
+2. **webforJ-sovellus**: isännöi verkkosovellustasi upotetun `WebswingConnector`:in kanssa
 3. **Selaimen asiakas**: näyttää sekä webforJ-käyttöliittymän että upotetun Swing-sovelluksen
 
 :::important Porttien konfigurointi
-Webswingin ja webforJ:n on toimittava eri porteilla yhteensopimattomuuden välttämiseksi. Sekä webforJ että Webswing toimivat tyypillisesti portissa `8080`. Sinun pitäisi vaihtaa joko Webswingin portti tai webforJ:n portti.
+Webswingin ja webforJ:n on toimittava eri porteilla konfliktien välttämiseksi. Molemmat webforJ ja Webswing toimivat tyypillisesti portilla `8080`. Sinun on vaihdettava joko Webswingin portti tai webforJ:n portti.
 :::
 
 ## Webswing-palvelimen asennus {#webswing-server-setup}
 
 ### Asennus ja käynnistys {#installation-and-startup}
 
-1. **Lataa Webswing** [virallisilta verkkosivuilta](https://www.webswing.org/en/downloads)
+1. **Lataa Webswing** [viralliselta verkkosivustolta](https://www.webswing.org/en/downloads)
 2. **Pura arkisto** haluamaasi sijaintiin (esim. `/opt/webswing` tai `C:\webswing`)
-3. **Käynnistä palvelin** käyttäen alustoittain mukautettuja skriptejä:
+3. **Käynnistä palvelin** käyttöjärjestelmäkohtaisilla skripteillä:
 
 <Tabs>
       <TabItem value="Linux" label="Linux" default>
@@ -55,35 +55,37 @@ Webswingin ja webforJ:n on toimittava eri porteilla yhteensopimattomuuden vältt
 
 ### Sovelluksen konfigurointi {#application-configuration}
 
-Kun palvelin on käynnissä, pääse admin konsoliin osoitteessa `http://localhost:8080/admin` lisätäksesi ja konfiguroidaksesi Swing-sovellustasi.
+Kun palvelin on käynnissä, siirry hallintapaneeliin osoitteessa `http://localhost:8080/admin` lisätäksesi ja konfiguroidaksesi Swing-sovelluksesi.
 
-Admin konsolissa konfiguroi:
+Hallintapaneelissa määrittele:
 
-- **Sovelluksen nimi**: tulee osaksi URL-polku (esim. `myapp` → `http://localhost:8080/myapp/`)
-- **Pääluokka**: Swing-sovelluksesi lähtöpiste
-- **Classpath**: polku sovelluksesi JAR-tiedostoon ja riippuvuuksiin
-- **JVM-argumentit**: muistin asetukset, järjestelmän ominaisuudet ja muut JVM-vaihtoehdot
-- **Kotikansio**: sovelluksen työskentelyhakemisto
+- **Sovelluksen nimi**: tulee osaksi URL-osoitetta (esim. `myapp` → `http://localhost:8080/myapp/`)
+- **Pääluokka**: Swing-sovelluksesi pääsylkä
+- **Classpath**: polku sovelluksen JAR:iin ja riippuvuuksiin
+- **JVM-argumentit**: muistiasetukset, järjestelmäominaisuudet ja muut JVM-vaihtoehdot
+- **Kotihakemisto**: sovelluksen työskentelyhakemisto
 
 Konfiguraation jälkeen Swing-sovelluksesi on käytettävissä osoitteessa `http://localhost:8080/[app-name]/`
 
 ### CORS-konfigurointi {#cors-configuration}
 
-Kun Webswingiä upotetaan webforJ-sovellukseen, joka toimii eri portissa tai verkkotunnuksessa, sinun on konfiguroitava Cross-Origin Resource Sharing (CORS) Webswingissä. Tämä mahdollistaa selaimen ladata Webswing-sisältöä webforJ-sivustoltasi.
+Kun upotat Webswingin webforJ-sovellukseen, joka toimii eri portilla tai verkkotunnuksessa, sinun on konfiguroitava Cross-Origin Resource Sharing (CORS) Webswingissä. Tämä mahdollistaa selaimen ladata Webswing-sisältöä webforJ-sivultasi.
 
-Webswingin admin konsolissa siirry sovelluksesi konfiguraatioon ja aseta:
+Webswingin hallintapaneelissa siirry sovelluksesi konfigurointiin ja aseta:
 
 - **Sallitut alkuperät**: Lisää webforJ-sovelluksesi alkuperä (esim. `http://localhost:8090` tai `*` kehitystä varten)
 
-Tämä asetuksen vastaa `allowedCorsOrigins`-vaihtoehtoa Webswingin sovelluksen konfiguraatiossa.
+Tämä asetus vastaa `allowedCorsOrigins`-vaihtoehtoa Webswingin sovelluksen konfiguraatiossa.
+
 
 ## webforJ-integrointi {#webforj-integration}
 
-Kun Webswing-palvelin toimii Swing-sovelluksesi kanssa konfiguroituna ja CORS käytössä, voit integroida sen webforJ-sovellukseesi.
+Kun Webswing-palvelimesi toimii Swing-sovelluksesi kanssa konfiguroituna ja CORS aktivoitu, voit integroida sen webforJ-sovellukseesi.
 
 ### Lisää riippuvuus {#add-dependency}
 
-Webswing-integrointi riippuu webforJ:n Webswing-integraatiomoduulista, joka tarjoaa `WebswingConnector`-komponentin ja siihen liittyvät luokat. Lisää seuraava `pom.xml`-tiedostoosi:
+Webswingin integrointi riippuu webforJ:n Webswing-integrointimoduulista, joka tarjoaa `WebswingConnector`-komponentin ja siihen liittyvät luokat.
+Lisää seuraava `pom.xml`-tiedostoosi:
 
 ```xml
 <dependency>
@@ -95,7 +97,7 @@ Webswing-integrointi riippuu webforJ:n Webswing-integraatiomoduulista, joka tarj
 
 ### Perusimplementaatio {#basic-implementation}
 
-Luo näkymä, joka upottaa Swing-sovelluksesi käyttämällä `WebswingConnector`:ia:
+Luo näkymä, joka upottaa Swing-sovelluksesi käyttäen `WebswingConnector`:a:
 
 ```java title="SwingAppView.java"
 package com.example.views;
@@ -107,39 +109,40 @@ import com.webforj.component.webswing.WebswingConnector;
 
 @Route
 public class SwingAppView extends Composite<Div> {
+  private final Div self = getBoundComponent();
   private WebswingConnector connector;
 
   public SwingAppView() {
-    // Alustaa liittimen Webswing-sovelluksesi URL-osoitteella
+    // Alusta liitin Webswing-sovelluksesi URL-osoitteella
     connector = new WebswingConnector("http://localhost:8080/myapp/");
 
     // Aseta näyttömitat
     connector.setSize("100%", "600px");
 
-    // Lisää näkymäkontrolleriin
-    getBoundComponent().add(connector);
+    // Lisää näkymäastiassa
+    self.add(connector);
   }
 }
 ```
 
-Liitin luo automaattisesti yhteyden Webswing-palvelimeen, kun se lisätään DOM:iin. Swing-sovelluksen käyttöliittymä renderoidaan sitten liittimen komponentissa.
+Liitin luo automaattisesti yhteyden Webswing-palvelimeen, kun se lisätään DOM:iin. Swing-sovelluksen käyttöliittymä renderöidään sitten liitin-komponentissa.
 
-## Konfiguraatioasetukset {#configuration-options}
+## Konfigurointivaihtoehdot {#configuration-options}
 
-`WebswingOptions`-luokka mahdollistaa liittimen käyttäytymisen mukauttamisen. Oletusarvoisesti liitin käynnistyy automaattisesti, kun se luodaan ja käyttää tavanomaisia yhteysasetuksia. Voit muuttaa tätä käyttäytymistä luomalla `WebswingOptions`-instanssin ja soveltamalla sitä liittimeen.
+`WebswingOptions`-luokka mahdollistaa liittimen käyttäytymisen muokkaamisen. Oletusarvoisesti liitin käynnistyy automaattisesti, kun se luodaan, ja käyttää vakioyhteysasetuksia. Voit muuttaa tätä käyttäytymistä luomalla `WebswingOptions`-instanssin ja soveltamalla sitä liittimeen.
 
-Esimerkiksi, jos haluat piilottaa uloskirjautumispainikkeen tuotantoympäristössä, jossa hallinnoit todennusta webforJ-sovelluksesi kautta:
+Esimerkiksi, jos haluat piilottaa kirjautumispainikkeen tuotantoympäristössä, jossa hallitset todennusta webforJ-sovelluksesi kautta:
 
 ```java
 WebswingConnector connector = new WebswingConnector("http://localhost:8080/myapp/");
 
 WebswingOptions options = new WebswingOptions()
-    .setDisableLogout(true);  // Piilota uloskirjautumispainike
+  .setDisableLogout(true);  // Piilota kirjautumispainike
 
 connector.setOptions(options);
 ```
 
-Tai jos tarvitset käsin hallintaa siitä, milloin yhteys käynnistyy:
+Tai jos tarvitset manuaalista kontrollia siitä, milloin yhteys käynnistyy:
 
 ```java
 // Luo liitin ilman automaattista käynnistystä
@@ -151,4 +154,4 @@ connector.setOptions(options);
 connector.start();
 ```
 
-Asetukset kattavat yhteyden hallinnan, todennuksen, virheiden seurannan ja tarkkailun.
+Vaihtoehdot kattavat yhteydenhallinnan, todennuksen, virheenkorjauksen ja valvonnan.

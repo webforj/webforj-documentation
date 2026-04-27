@@ -1,6 +1,6 @@
 package com.webforj.samples.views.drawer;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -18,38 +18,29 @@ import java.util.List;
 
 @Route
 @FrameTitle("Task Manager Drawer")
-@InlineStyleSheet(/*css */"""
-     dwc-checkbox[checked]::part(label) {
-      text-decoration: line-through;
-      opacity: 0.6;
-     }
-""")
-
+@StyleSheet("ws://css/drawer/drawer-task-view.css")
 public class DrawerTaskView extends Composite<FlexLayout> {
-
-  FlexLayout layout = getBoundComponent();
-  Drawer drawer = new Drawer();
-  List<CheckBox> taskList = new ArrayList<>();
-  FlexLayout tasks = new FlexLayout();
-  Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
-  int taskAmount = 0;
+  private final FlexLayout self = getBoundComponent();
+  private final Drawer drawer = new Drawer();
+  private final List<CheckBox> taskList = new ArrayList<>();
+  private final FlexLayout tasks = new FlexLayout();
+  private final Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
 
   public DrawerTaskView() {
-    drawer.setLabel("Task Manager");
-
-    drawer.open();
+    drawer.setLabel("Task Manager")
+            .open();
 
     tasks.setDirection(FlexDirection.COLUMN)
-         .setSpacing("var(--dwc-space-s)")
-         .setStyle("overflow-y", "auto")
-         .setMaxHeight("60vh");
+        .setSpacing("var(--dwc-space-s)")
+        .setStyle("overflow-y", "auto")
+        .setMaxHeight("60vh");
 
     addTask("Finish project documentation");
     addTask("Call John about the meeting");
     addTask("Prepare slides for tomorrow");
 
-    TextField newTaskField = new TextField("New Task", "");
-    newTaskField.setMaxLength(50);
+    TextField newTaskField = new TextField("New Task", "")
+        .setMaxLength(50);
 
     addTaskButton.onClick(e -> {
       String taskText = newTaskField.getValue();
@@ -62,19 +53,18 @@ public class DrawerTaskView extends Composite<FlexLayout> {
     Button clearTasksButton = new Button("Clear Completed", ButtonTheme.DANGER);
     clearTasksButton.onClick(e -> clearCompletedTasks());
 
-    FlexLayout footerContainer = new FlexLayout()
-      .setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-s)");
-    footerContainer.add(newTaskField, addTaskButton, clearTasksButton);
+    FlexLayout footerContainer = new FlexLayout(newTaskField, addTaskButton, clearTasksButton)
+        .setDirection(FlexDirection.COLUMN)
+        .setSpacing("var(--dwc-space-s)");
 
-    drawer.add(tasks);
-    drawer.addToFooter(footerContainer);
+    drawer.addToFooter(footerContainer)
+        .add(tasks);
 
     Button openDrawerButton = new Button("Open Task Manager");
     openDrawerButton.onClick(e -> drawer.open());
 
-    layout.setMargin("var(--dwc-space-l)");
-    layout.add(openDrawerButton, drawer);
+    self.setMargin("var(--dwc-space-l)")
+        .add(openDrawerButton, drawer);
   }
 
   private void addTask(String taskText) {
@@ -82,7 +72,6 @@ public class DrawerTaskView extends Composite<FlexLayout> {
     
     taskList.add(task);
     tasks.add(task);
-    taskAmount = taskAmount + 1;
     checkTaskLimit();
   }
 
@@ -93,17 +82,12 @@ public class DrawerTaskView extends Composite<FlexLayout> {
       if (task.isChecked()) {
         iterator.remove();
         tasks.remove(task);
-        taskAmount = taskAmount - 1;
       }
     }
     checkTaskLimit();
   }
 
   private void checkTaskLimit() {
-    if (taskAmount >= 50) {
-      addTaskButton.setEnabled(false);
-    } else {
-      addTaskButton.setEnabled(true);
-    }
+    addTaskButton.setEnabled(taskList.size() < 50);
   }
 }

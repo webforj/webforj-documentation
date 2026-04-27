@@ -4,61 +4,78 @@ import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.html.elements.Div;
 import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @Route
+@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @FrameTitle("Flex Item Self Align")
-public class FlexSelfAlignView extends Composite<Div> {
+public class FlexSelfAlignView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
-  FlexLayout boxLayout;
-  Button alignButton;
+  private final FlexLayout boxLayout;
+  private final Button alignButton;
 
   public FlexSelfAlignView() {
+    FlexLayout mainLayout = createMainLayout();
+    this.boxLayout = createBoxLayout();
+    this.alignButton = createButtons();
+    ChoiceBox alignment = createAlignmentChoiceBox();
 
-    FlexLayout mainLayout = FlexLayout.create()
+    boxLayout.setItemAlignment(FlexAlignment.START, alignButton);
+    self.add(mainLayout);
+    mainLayout.add(alignment, boxLayout);
+  }
+
+  private FlexLayout createMainLayout() {
+    return FlexLayout.create()
         .horizontal()
         .build();
+  }
 
-    this.boxLayout = FlexLayout.create()
+  private FlexLayout createBoxLayout() {
+    return FlexLayout.create()
         .horizontal()
         .wrap()
         .build()
         .addClassName("button__container");
+  }
 
+  private Button createButtons() {
+    Button lastButton = null;
     for (int i = 1; i <= 5; i++) {
       Button newButton = new Button("Button " + i, ButtonTheme.PRIMARY);
       boxLayout.add(newButton);
       boxLayout.setItemOrder(i, newButton);
-      alignButton = newButton;
+      lastButton = newButton;
     }
-    alignButton.setTheme(ButtonTheme.DANGER).setText("Align Me!");
+    lastButton.setTheme(ButtonTheme.DANGER).setText("Align Me!");
+    return lastButton;
+  }
 
-    ChoiceBox alignment = new ChoiceBox();
-    alignment
-        .onSelect(e -> boxLayout.setItemAlignment(FlexAlignment.fromValue(e.getSelectedItem().getText()), alignButton));
-    alignment.addClassName("flex__options");
+  private ChoiceBox createAlignmentChoiceBox() {
+    ChoiceBox alignment = new ChoiceBox()
+        .addClassName("flex__options")
+        .setLabel("Self Alignment Options");
 
-    alignment.setLabel("Self Alignment Options");
+    alignment.onSelect(e -> {
+      FlexAlignment flexAlignment = FlexAlignment.fromValue(e.getSelectedItem().getText());
+      boxLayout.setItemAlignment(flexAlignment, alignButton);
+    });
+
     for (FlexAlignment align : FlexAlignment.values()) {
       String label = align.getValue();
+      String key = align.toString().toLowerCase();
+      String text = label.substring(0, 1).toUpperCase()
+              + label.substring(1);
       alignment.add(
-          "." + align.toString()
-              .toLowerCase() + "()",
-          label.substring(0, 1)
-              .toUpperCase()
-              + label
-                  .substring(1));
+              "." + key + "()", text);
     }
     alignment.selectIndex(0);
 
-    boxLayout.setItemAlignment(FlexAlignment.START, alignButton);
-    getBoundComponent().add(mainLayout);
-    mainLayout.add(alignment, boxLayout);
+    return alignment;
   }
 }

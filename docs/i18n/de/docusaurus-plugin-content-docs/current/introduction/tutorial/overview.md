@@ -1,43 +1,41 @@
 ---
 title: Overview
 hide_giscus_comments: true
-_i18n_hash: 4174ea766ba47277c5bcb607c4111e29
+sidebar_class_name: has-new-content
+_i18n_hash: 781bf0258ed2366e2125e99587cda439
 ---
-Dieses Tutorial soll Sie Schritt für Schritt durch den Prozess der Erstellung der App führen. Diese App, die zur Verwaltung von Kundeninformationen konzipiert ist, demonstriert, wie man webforJ verwendet, um eine funktionale und benutzerfreundliche Oberfläche mit Funktionen zum Anzeigen, Hinzufügen und Bearbeiten von Kundendaten zu erstellen. Jeder Abschnitt baut auf dem vorherigen auf, aber fühlen Sie sich frei, nach Bedarf vorzuspringen.
+Dieser schrittweise Leitfaden führt Sie durch den Prozess des Aufbaus einer Kundenverwaltungs-App mit webforJ und Spring Boot. Er zeigt Ihnen, wie Sie eine moderne, benutzerfreundliche Oberfläche zum Anzeigen, Hinzufügen und Bearbeiten von Kundendaten erstellen.
 
-Jeder Schritt im Tutorial führt zu einem Programm, das in eine WAR-Datei kompiliert wird, die auf jedem Java-Webanwendungsserver bereitgestellt werden kann. Für dieses Tutorial wird das Maven Jetty-Plugin verwendet, um die App lokal bereitzustellen. Dieses leichte Setup stellt sicher, dass die App schnell ausgeführt werden kann und dass Änderungen während der Entwicklung in Echtzeit sichtbar sind.
+Jeder Schritt führt neue Konzepte ein und ergibt eine ausführbare Spring Boot-App (JAR). Sie können Ihre App lokal mit Maven starten und über einen Webbrowser darauf zugreifen. Mit diesem Setup erhalten Sie einen schnellen Entwicklungszyklus und ein produktionsbereites Bereitstellungsmodell, das den eingebetteten Server von Spring Boot nutzt.
 
-## Funktionen der Tutorial-App {#tutorial-app-features}
+Es sind keine vorherigen Erfahrungen mit Spring Boot oder webforJ erforderlich, aber Sie sollten ein grundlegendes Verständnis von Java und Maven haben, um das Beste aus diesem Tutorial herauszuholen. Dieses Tutorial behandelt Spring-Konzepte, wenn sie auftreten, aber diejenigen, die ein tiefgehendes Verständnis von Spring wünschen, können die [Hauptdokumentation von Spring](https://spring.io/learn) und die Dokumentation von Spring zu [Spring Boot](https://docs.spring.io/spring-boot/index.html) besuchen.
 
- - Arbeiten mit Daten in einer Tabelle.
- - Verwendung von [`ObjectTable`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/ObjectTable.html) und Asset-Management.
- - [Routing](../../routing/overview) und [Navigation](../../routing/route-navigation)
- - [Datenbindungen](../../data-binding/overview) und [Validierung](../../data-binding/validation/overview)
+## Tutorial-Konzepte {#tutorial-concepts}
+
+Der erste Teil des Tutorials ist der [Projektsetup](/docs/introduction/tutorial/project-setup) gewidmet, um Ihre Spring Boot + webforJ-Umgebung vorzubereiten. Die folgenden Schritte führen neue Funktionen ein und entwickeln Ihr Projekt weiter. Indem Sie mitmachen, erhalten Sie ein klares Verständnis dafür, wie sich eine App entwickelt, während Sie Funktionen implementieren.
+
+Jeder Schritt hat eine entsprechende ausführbare App, die auf GitHub verfügbar ist:
+
+| Schritt | Dokumentation | GitHub |
+| ----- | ----- | ----- |
+| 1 | [Erstellen einer Basis-App](/docs/introduction/tutorial/creating-a-basic-app)                               | [Schritt 1 App](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app)
+| 2 | [Arbeiten mit Daten](/docs/introduction/tutorial/working-with-data)                                     | [Schritt 2 App](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data)
+| 3 | [Routing und Kompositionen](/docs/introduction/tutorial/routing-and-composites)                           | [Schritt 3 App](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites)
+| 4 | [Beobachter und Routenparameter](/docs/introduction/tutorial/observers-and-route-parameters)           | [Schritt 4 App](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters)
+| 5 | [Validierung und Binding von Daten](/docs/introduction/tutorial/validating-and-binding-data)                 | [Schritt 5 App](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data)
+| 6 | [Integration eines App-Layouts](/docs/introduction/tutorial/integrating-an-app-layout)                     | [Schritt 6 App](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout)
 
 ## Voraussetzungen {#prerequisites}
 
-Um das Beste aus diesem Tutorial herauszuholen, wird vorausgesetzt, dass Sie über grundlegende Kenntnisse der Java-Programmierung verfügen und mit Tools wie Maven vertraut sind. Wenn Sie neu bei webforJ sind, keine Sorge - die Grundlagen des Frameworks werden im Verlauf behandelt.
+Sie sollten die folgenden Werkzeuge/Ressourcen auf Ihrem Entwicklungsrechner haben:
 
-Die folgenden Tools/Ressourcen sollten auf Ihrem Entwicklungsrechner vorhanden sein:
-
-<!-- vale off -->
-- Java 17 oder höher
+- Java 21 oder 25
 - Maven
 - Eine Java-IDE
-- Ein Webbrowser
 - Git (empfohlen, aber nicht erforderlich)
-<!-- vale on -->
 
-:::tip webforJ Voraussetzungen
-Siehe [diesen Artikel](../prerequisites) für einen detaillierteren Überblick über die erforderlichen Tools.
-:::
-
-## Abschnitte {#sections}
-
-Das Tutorial ist in die folgenden Abschnitte unterteilt. Folgen Sie den einzelnen Schritten für eine umfassende Anleitung oder springen Sie für spezifische Informationen vor.
-
-:::tip Projektsetup
-Für diejenigen, die zu spezifischen Themen vorspringen möchten, wird empfohlen, zunächst den Abschnitt Projektsetup zu lesen, bevor Sie fortfahren.
+:::info webforJ-Voraussetzungen
+Überprüfen Sie den [Artikel zu den Voraussetzungen](/docs/introduction/prerequisites) für einen detaillierteren Überblick über die benötigten Tools für Ihre Entwicklungsumgebung.
 :::
 
 <DocCardList className="topics-section" />

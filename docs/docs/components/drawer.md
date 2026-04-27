@@ -146,6 +146,7 @@ This example uses a `Drawer` as a task manager. You can add tasks, check them of
 <ComponentDemo
 path='/webforj/drawertask?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
+cssURL='/css/drawer/drawer-task-view.css'
 height='600px'
 />
 

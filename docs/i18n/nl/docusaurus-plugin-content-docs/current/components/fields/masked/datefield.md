@@ -1,41 +1,44 @@
 ---
 title: MaskedDateField
 sidebar_position: 5
-sidebar_class_name: updated-content
-_i18n_hash: 981d5cd2686c83144433a0135b1222dc
+_i18n_hash: 6c75156564c20c2d451ebe7046213c37
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-datefield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedDateField" top='true'/>
 
-De `MaskedDateField` is een tekstinvoer waarmee gebruikers data als getallen kunnen invoeren en die automatisch de invoer opmaakt op basis van een gedefinieerde masker wanneer het veld focus verliest. Het masker specificeert het verwachte datumformaat en leidt zowel invoer als weergave. De component ondersteunt flexibele parsing, validatie, lokalisatie en waardeherstel voor consistente, regionspecifieke datumverwerking.
+De `MaskedDateField` is een tekstinvoerveld waarmee gebruikers data kunnen invoeren als nummers en het invoer automatisch opmaakt op basis van een gedefinieerde maskering wanneer het veld zijn focus verliest. De maskering specificeert het verwachte datumnotatieformat, dat zowel de invoer als de weergave begeleidt. De component ondersteunt flexibele parsing, validatie, lokalisatie en herstel van waarden voor consistente, regiogebonden datumverwerking.
 
 <!-- INTRO_END -->
 
-## Basis {#basics}
+## Basisprincipes {#basics}
 
 :::tip Op zoek naar tijdinvoer?
 De `MaskedDateField` richt zich uitsluitend op **datum** waarden. Als je een vergelijkbare component nodig hebt voor het invoeren en formatteren van **tijd**, kijk dan in de [`MaskedTimeField`](./timefield).
 :::
 
-De `MaskedDateField` kan worden geïnstantieerd met of zonder parameters. Je kunt een initiële waarde, een label, een placeholder en een gebeurtenisluisteraar voor waarde wijzigingen definiëren.
+De `MaskedDateField` kan worden geïnstalleerd met of zonder parameters. Je kunt een initiële waarde, een label, een plaatsaanduiding en een evenementlistener voor waarde wijzigingen definiëren.
 
 <ComponentDemo path='/webforj/maskeddatefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java' height='120px'/>
 
 ## Maskerregels {#mask-rules}
 
-De `MaskedDateField` ondersteunt meerdere datumformaten die wereldwijd worden gebruikt, die variëren in de volgorde van dag, maand en jaar. Gemeenschappelijke patronen zijn onder andere:
+De `MaskedDateField` ondersteunt meerdere datumnotaties die wereldwijd worden gebruikt, die variëren op basis van de volgorde van dag, maand en jaar. Veel voorkomende patronen zijn:
 
-- **Dag/Maand/Jaar** (gebruikt in de meeste Europese landen)
+- **Dag/Maand/Jaar** (gebruikt in de meeste van Europa)
 - **Maand/Dag/Jaar** (gebruikt in de Verenigde Staten)
-- **Jaar/Maand/Dag** (gebruikt in China, Japan en Korea; ook de ISO-standaard: `YYYY-MM-DD`)
+- **Jaar/Maand/Dag** (gebruikt in China, Japan en Zuid-Korea; ook de ISO-standaard: `JJJJ-MM-DD`)
 
-Binnen deze formaten omvatten lokale variaties de keuze van scheidingstekens (bijv. `-`, `/`, of `.`), of jaren uit twee of vier cijfers bestaan, en of enkelcijferige maanden of dagen worden gepad met voorloopnullen.
+Binnen deze formaten zijn er lokale variaties, waaronder de keuze van scheidingstekens (bijv. `-`, `/` of `.`), of jaren uit twee of vier cijfers bestaan, en of enkelcijferige maanden of dagen worden aangevuld met voorloopnullen.
 
-Om met deze diversiteit om te gaan, gebruikt de `MaskedDateField` formatenindicatoren, die elk beginnen met `%`, gevolgd door een letter die een specifiek deel van de datum vertegenwoordigt. Deze indicatoren definiëren hoe invoer wordt geparsed en hoe de datum wordt weergegeven.
+Om deze diversiteit aan te pakken, gebruikt de `MaskedDateField` format indicatoren, elk beginnend met `%`, gevolgd door een letter die een specifiek deel van de datum vertegenwoordigt. Deze indicatoren definiëren hoe invoer wordt geparsed en hoe de datum wordt weergegeven.
 
-### Datumformaatindicatoren {#date-format-indicators}
+:::tip Maskers programmatic toepassen
+Om datums met dezelfde masker-syntaxis buiten een veld te formatteren of te parseren, gebruik de [`MaskDecorator`](/docs/advanced/mask-decorator) utility-class.
+:::
+
+### Datumformat indicatoren {#date-format-indicators}
 
 | Formaat | Beschrijving |
 | ------- | ------------ |
@@ -45,29 +48,29 @@ Om met deze diversiteit om te gaan, gebruikt de `MaskedDateField` formatenindica
 
 ### Modifiers {#modifiers}
 
-Modifiers stellen je in staat om meer controle te hebben over hoe componenten van de datum zijn opgemaakt:
+Modifiers bieden meer controle over hoe componenten van de datum worden opgemaakt:
 
-| Modifier | Beschrijving                 |
-| -------- | ---------------------------- |
-| `z`      | Zero-fill                    |
-| `s`      | Korte tekstrepresentatie     |
-| `l`      | Lange tekstrepresentatie      |
-| `p`      | Samengevoegd getal           |
-| `d`      | Decimaal (standaardformaat)  |
+| Modifier | Beschrijving                |
+| -------- | --------------------------- |
+| `z`      | Voorloopnul                |
+| `s`      | Korte tekstrepresentatie    |
+| `l`      | Lange tekstrepresentatie     |
+| `p`      | Verpakt nummer              |
+| `d`      | Decimaal (standaardformaat) |
 
 Deze kunnen worden gecombineerd om een breed scala aan datummaskers te bouwen.
 
 ## Lokalisatie van datumformaten {#date-format-localization}
 
-De `MaskedDateField` past zich aan regionale datumformaten aan door de juiste locatie in te stellen. Dit zorgt ervoor dat datums worden weergegeven en geparsed op een manier die voldoet aan de verwachtingen van de gebruiker.
+De `MaskedDateField` past zich aan regionale datumformaten aan door de juiste locale in te stellen. Dit zorgt ervoor dat datums worden weergegeven en geparsed op een manier die overeenkomt met de verwachtingen van de gebruiker.
 
-| Regio          | Formaat     | Voorbeeld      |
-| --------------- | ----------- | -------------- |
-| Verenigde Staten| MM/DD/JJJJ | `07/04/2023`   |
-| Europa         | DD/MM/JJJJ | `04/07/2023`   |
-| ISO-standaard  | JJJJ-MM-DD | `2023-07-04`   |
+| Regio        | Formaat     | Voorbeeld      |
+| ------------ | ----------- | -------------- |
+| Verenigde Staten | MM/DD/JJJJ | `07/04/2023`  |
+| Europa       | DD/MM/JJJJ | `04/07/2023`  |
+| ISO-standaard | JJJJ-MM-DD | `2023-07-04`  |
 
-Om lokalisatie toe te passen, gebruik de methode `setLocale()`. Deze accepteert een [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html) en past automatisch zowel formattering als parsing aan:
+Om lokalisatie toe te passen, gebruik de `setLocale()` methode. Het accepteert een [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html) en past automatisch zowel opmaak als parsing aan:
 
 ```java
 dateField.setLocale(Locale.FRANCE);
@@ -75,29 +78,30 @@ dateField.setLocale(Locale.FRANCE);
 
 ## Parsinglogica {#parsing-logic}
 
-De `MaskedDateField` parseert gebruikersinvoer op basis van het gedefinieerde datummasker. Het accepteert zowel volledige als afgekorte numerieke invoer met of zonder scheidingstekens, wat flexibele invoer mogelijk maakt terwijl het geldige datums garandeert. 
-De parsinggedrag hangt af van de volgorde van het formaat dat door het masker is gedefinieerd (bijv. `%Mz/%Dz/%Yz` voor maand/dag/jaar). Dit formaat bepaalt hoe numerieke reeksen worden geïnterpreteerd.
+De `MaskedDateField` parseert gebruikersinvoer op basis van de gedefinieerde datummasker. Het accepteert zowel volledige als afgekorte numerieke invoer met of zonder scheidingstekens, waardoor flexibele invoer mogelijk is terwijl ervoor wordt gezorgd dat de datums geldig zijn.
+De parsering komt overeen met de volgorde van het formaat dat door de masker is gedefinieerd (bijv. `%Mz/%Dz/%Yz` voor maand/dag/jaar). Dit formaat bepaalt hoe numerieke reeksen worden geïnterpreteerd.
 
-Bijvoorbeeld, stel dat vandaag `15 september 2012` is, dit is hoe verschillende invoeren zouden worden geïnterpreteerd:
+Bijvoorbeeld, als vandaag `15 september 2012` is, dan zou dit zijn hoe verschillende invoeren zouden worden geïnterpreteerd:
 
-### Voorbeeld parsingscenario's {#example-parsing-scenarios}
+### Voorbeeld parsing scenario's {#example-parsing-scenarios}
 
-| Invoer                              | YMD (ISO)                                                                                                                                                                                        | MDY (VS)                                                                            | DMY (EU)                                                                                                                      |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------- |
-| <div align="center">`1`</div>      | Een enkel cijfer wordt altijd geïnterpreteerd als een dagsaantal binnen de huidige maand, dus dit zou 1 september 2012 zijn.                                                                 | Hetzelfde als YMD                                                                     | Hetzelfde als YMD                                                                                                         |
-| <div align="center">`12`</div>     | Twee cijfers worden altijd geïnterpreteerd als een dagsaantal binnen de huidige maand, dus dit zou 12 september 2012 zijn.                                                                  | Hetzelfde als YMD                                                                     | Hetzelfde als YMD                                                                                                         |
-| <div align="center">`112`</div>    | Drie cijfers worden geïnterpreteerd als een 1-cijferige maand gevolgd door een 2-cijferig dagsaantal, dus dit zou 12 januari 2012 zijn.                                                      | Hetzelfde als YMD                                                                     | Drie cijfers worden geïnterpreteerd als een 1-cijferige dag gevolgd door een 2-cijferige maand, dus dit zou 1 december 2012 zijn. |
-| <div align="center">`1004`</div>   | Vier cijfers worden geïnterpreteerd als MMDD, dus dit zou 4 oktober 2012 zijn.                                                                                                                | Hetzelfde als YMD                                                                     | Vier cijfers worden geïnterpreteerd als DDMM, dus dit zou 10 april 2012 zijn.                                            |
-| <div align="center">`020304`</div> | Zes cijfers worden geïnterpreteerd als YYMMDD, dus dit zou 4 maart 2002 zijn.                                                                                                                | Zes cijfers worden geïnterpreteerd als MMDDYY, dus dit zou 3 februari 2004 zijn.    | Zes cijfers worden geïnterpreteerd als DDMMYY, dus dit zou 2 maart 2004 zijn.                                           |
-| <div align="center">`8 cijfers`</div> | Acht cijfers worden geïnterpreteerd als YYYYMMDD. Bijvoorbeeld, `20040612` is 12 juni 2004.                                                                                                   | Acht cijfers worden geïnterpreteerd als MMDDYYYY. Bijvoorbeeld, `06122004` is 12 juni 2004. | Acht cijfers worden geïnterpreteerd als DDMMYYYY. Bijvoorbeeld, `06122004` is 6 december 2004.                            |
-| <div align="center">`12/6`</div>   | Twee getallen gescheiden door een geldige scheidingsteken worden geïnterpreteerd als MM/DD, dus dit zou 6 december 2012 zijn. <br />Opmerking: Alle tekens behalve letters en cijfers worden als geldige scheidingstekens beschouwd. | Hetzelfde als YMD                                                                     | Twee getallen gescheiden door een scheidingsteken worden geïnterpreteerd als DD/MM, dus dit zou 12 juni 2012 zijn.       |
-| <div align="center">`3/4/5`</div>   | 5 april 2012                                                                                                                                                                                  | 4 maart 2005                                                                         | 3 april 2005                                                                                                               |
+| Invoer                                | YMD (ISO)                                                                                                                                                                                          | MDY (VS)                                                                            | DMY (EU)                                                                                                                     |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| <div align="center">`1`</div>        | Een enkel cijfer wordt altijd geïnterpreteerd als een dagnummer binnen de huidige maand, dus dit zou 1 september 2012 zijn.                                                                                | Hetzelfde als YMD                                                                     | Hetzelfde als YMD                                                                                                                  |
+| <div align="center">`12`</div>       | Twee cijfers worden altijd geïnterpreteerd als een dagnummer binnen de huidige maand, dus dit zou 12 september 2012 zijn.                                                                               | Hetzelfde als YMD                                                                     | Hetzelfde als YMD                                                                                                                  |
+| <div align="center">`112`</div>      | Drie cijfers worden geïnterpreteerd als een 1-cijferige maandnummer gevolgd door een 2-cijferig dagnummer, dus dit zou 12 januari 2012 zijn.                                                                        | Hetzelfde als YMD                                                                     | Drie cijfers worden geïnterpreteerd als een 1-cijferig dagnummer gevolgd door een twee-cijferig maandnummer, dus dit zou 1 december 2012 zijn. |
+| <div align="center">`1004`</div>     | Vier cijfers worden geïnterpreteerd als MMDD, dus dit zou 4 oktober 2012 zijn.                                                                                                                              | Hetzelfde als YMD                                                                     | Vier cijfers worden geïnterpreteerd als DDMM, dus dit zou 10 april 2012 zijn.                                                         |
+| <div align="center">`020304`</div>   | Zes cijfers worden geïnterpreteerd als YYMMDD, dus dit zou 4 maart 2002 zijn.                                                                                                                              | Zes cijfers worden geïnterpreteerd als MMDDYY, dus dit zou 3 februari 2004 zijn.            | Zes cijfers worden geïnterpreteerd als DDMMYY, dus dit zou 2 maart 2004 zijn.                                                         |
+| <div align="center">`8 cijfers`</div> | Acht cijfers worden geïnterpreteerd als JJJJMMDD. Bijvoorbeeld, `20040612` is 12 juni 2004.                                                                                                                | Acht cijfers worden geïnterpreteerd als MMDDJJJJ. Bijvoorbeeld, `06122004` is 12 juni 2004. | Acht cijfers worden geïnterpreteerd als DDMMJJJJ. Bijvoorbeeld, `06122004` is 6 december 2004.                                        |
+| <div align="center">`12/6`</div>     | Twee nummers gescheiden door een geldig scheidingsteken worden geïnterpreteerd als MM/DD, dus dit zou 6 december 2012 zijn. <br />Opmerking: Alle tekens behalve letters en cijfers worden als geldige scheidingstekens beschouwd. | Hetzelfde als YMD                                                                     | Twee nummers gescheiden door een scheidingsteken worden geïnterpreteerd als DD/MM, dus dit zou 12 juni 2012 zijn.                               |
+| <div align="center">`3/4/5`</div>    | 5 april 2012                                                                                                                                                                                      | 4 maart 2005                                                                       | 3 april 2005                                                                                                                 |
+
 
 ## Tekstuele datum parsing <DocChip chip='since' label='25.11' /> {#textual-date-parsing}
 
-Standaard accepteert de `MaskedDateField` alleen numerieke invoer voor datums. Je kunt echter **tekstuele datum parsing** inschakelen om gebruikers in staat te stellen maand- en dagsnamen in hun invoer in te voeren. Deze functie is vooral handig voor een natuurlijkere datum invoer.
+Standaard accepteert de `MaskedDateField` alleen numerieke invoer voor datums. Je kunt echter **tekstuele datumparsing** inschakelen om gebruikers in staat te stellen maand- en dagnamen in hun invoer op te geven. Deze functie is bijzonder nuttig voor het creëren van natuurlijkere datuminvoer.
 
-Om tekstuele parsing in te schakelen, gebruik je de methode `setTextualDateParsing()`:
+Om tekstuele parsing in te schakelen, gebruik de `setTextualDateParsing()` methode:
 
 ```java
 dateField.setTextualDateParsing(true);
@@ -110,55 +114,55 @@ Wanneer tekstuele parsing is ingeschakeld, kun je speciale modifiers in je maske
 - **`%Ms`** - Accepteert korte maandnamen (Jan, Feb, Mar, enz.)
 - **`%Ml`** - Accepteert lange maandnamen (Januari, Februari, Maart, enz.)
 
-Maandnamen kunnen in elke positie binnen het masker voorkomen, en het veld accepteert nog steeds numerieke invoer als alternatief.
+Maandnamen kunnen op elke positie binnen het masker voorkomen, en het veld accepteert nog steeds numerieke invoer als fallback.
 
 #### Voorbeelden
 
-| Masker | Invoer             | Resultaat                         |
-| ------ | ------------------ | --------------------------------- |
-| `%Ms/%Dz/%Yz` | `Sep/01/25`       | **Geldig** - Parsed als 1 september 2025 |
-| `%Ml/%Dz/%Yz` | `September/01/25` | **Geldig** - Parsed als 1 september 2025 |
-| `%Dz/%Ml/%Yz` | `01/September/25` | **Geldig** - Parsed als 1 september 2025 |
-| `%Mz/%Dz/%Yz` | `09/01/25`       | **Geldig** - Numerieke fallback werkt nog steeds |
+| Masker | Invoer | Resultaat |
+| ------ | ----- | ------ |
+| `%Ms/%Dz/%Yz` | `Sep/01/25` | **Geldig** - Parseert als 1 september 2025 |
+| `%Ml/%Dz/%Yz` | `September/01/25` | **Geldig** - Parseert als 1 september 2025 |
+| `%Dz/%Ml/%Yz` | `01/September/25` | **Geldig** - Parseert als 1 september 2025 |
+| `%Mz/%Dz/%Yz` | `09/01/25` | **Geldig** - Numerieke fallback werkt nog steeds |
 
 :::info
-Alle 12 maanden zijn ondersteund in zowel korte (Jan, Feb, Mar, Apr, Mei, Jun, Jul, Aug, Sep, Okt, Nov, Dec) als lange (Januari, Februari, enz.) vormen.
+Alle 12 maanden worden ondersteund in zowel korte (Jan, Feb, Mar, Apr, Mei, Jun, Jul, Aug, Sep, Okt, Nov, Dec) als lange (Januari, Februari, enz.) vormen.
 :::
-### Decoratie van dagsnamen {#day-name-decoration}
+### Decoratie van dagnamen {#day-name-decoration}
 
-De namen van de dagen van de week kunnen worden opgenomen in de invoer voor betere leesbaarheid, maar ze zijn **alleen decoratief** en worden verwijderd tijdens het parseren. Ze beïnvloeden de werkelijke datuma.
+Dagen-van-de-week namen kunnen in de invoer worden opgenomen voor betere leesbaarheid, maar ze zijn **alleen decoratief** en worden verwijderd tijdens het parseren. Ze beïnvloeden de werkelijke datumwaarde niet.
 
-- **`%Ds`** - Accepteert korte dagsnamen (Ma, Di, Wo, enz.)
-- **`%Dl`** - Accepteert lange dagsnamen (Maandag, Dinsdag, Woensdag, enz.)
+- **`%Ds`** - Accepteert korte dagnamen (Ma, Di, Wo, enz.)
+- **`%Dl`** - Accepteert lange dagnamen (Maandag, Dinsdag, Woensdag, enz.)
 
-:::warning Dagsnamen vereisen een numerieke dag
-Bij gebruik van de dagsnamen (`%Ds` of `%Dl`) moet je masker **ook** `%Dz` of `%Dd` bevatten om het werkelijke dagsaantal aan te geven. Zonder een numerieke dagcomponent is de invoer ongeldig.
+:::warning Dagnamen vereisen een numerieke dag
+Wanneer je dag-van-de-week namen gebruikt (`%Ds` of `%Dl`), **moet** je masker ook `%Dz` of `%Dd` bevatten om het daadwerkelijke dagnummer op te geven. Zonder een numeriek dagcomponent is de invoer ongeldig.
 :::
 
 #### Voorbeelden
 
-| Masker | Invoer                | Resultaat                      |
-| ------ | --------------------- | ------------------------------ |
-| `%Ds %Mz/%Dz/%Yz` | `Ma 09/01/25`      | **Geldig** - Dagsnaam is decoratief |
-| `%Dl %Mz/%Dz/%Yz` | `Maandag 09/01/25` | **Geldig** - Dagsnaam is decoratief |
-| `%Mz/%Dz/%Yz %Ds` | `09/01/25 Di`      | **Geldig** - Dagsnaam aan het einde |
-| `%Dl/%Mz/%Yz`    | `Maandag/09/25`  | **Ongeldig** - %Dz ontbreekt |
-| `%Mz/%Dl/%Yz`    | `09/maandag/25`   | **Ongeldig** - %Dz ontbreekt |
+| Masker | Invoer | Resultaat |
+| ------ | ----- | ------ |
+| `%Ds %Mz/%Dz/%Yz` | `Ma 09/01/25` | **Geldig** - Dagnaam is decoratief |
+| `%Dl %Mz/%Dz/%Yz` | `Maandag 09/01/25` | **Geldig** - Dagnaam is decoratief |
+| `%Mz/%Dz/%Yz %Ds` | `09/01/25 Di` | **Geldig** - Dagnaam aan het einde |
+| `%Dl/%Mz/%Yz` | `Maandag/09/25` | **Ongeldig** - Ontbrekend `%Dz` |
+| `%Mz/%Dl/%Yz` | `09/Maandag/25` | **Ongeldig** - Ontbrekend `%Dz` |
 
-Alle 7 weekdagen zijn ondersteund in zowel korte (Ma, Di, Wo, Do, Vr, Za, Zo) als lange (Maandag, Dinsdag, enz.) vormen.
+Alle 7 weekdagen worden ondersteund in zowel korte (Ma, Di, Wo, Do, Vr, Za, Zo) als lange (Maandag, Dinsdag, enz.) vormen.
 
-### Extra parsingregels {#additional-parsing-rules}
+### Aanvullende parserregels {#additional-parsing-rules}
 
-Tekstuele datum parsing omvat verschillende nuttige functies:
+Tekstuele datumparsing omvat verschillende nuttige functies:
 
-- **Hoofdletterongevoelig:** Invoer zoals `MAANDAG 09/01/25`, `maandag 09/01/25`, of `Maandag 09/01/25` werkt allemaal op dezelfde manier.
-- **Locale-gevoelig:** Maand- en dagsnamen moeten overeenkomen met de geconfigureerde locale van het veld. Bijvoorbeeld, met een Franse locale, gebruik `septembre` en niet `September`. Engelse namen worden niet herkend tenzij de locale is ingesteld op Engels.
+- **Hoofdletterongevoelig:** Invoer zoals `MAANDAG 09/01/25`, `maandag 09/01/25` of `Maandag 09/01/25` werkt op dezelfde manier.
+- **Locale-gevoelig:** Maand- en dagnamen moeten overeenkomen met de geconfigureerde locale van het veld. Bijvoorbeeld, met een Franse locale, gebruik `septembre` en niet `September`. Engelse namen worden niet herkend tenzij de locale is ingesteld op Engels.
   - Franse locale: `septembre/01/25` wordt herkend als September
-  - Duitse locale: `Montag 09/01/25` wordt herkend met maandag als de dagsnaam
+  - Duitse locale: `Montag 09/01/25` wordt herkend met maandag als de dagnaam
 
-## Instellen van min/max beperkingen {#setting-minmax-constraints}
+## Instellen van min/max-beperkingen {#setting-minmax-constraints}
 
-Je kunt het toegestane datumbereik in een `MaskedDateField` beperken door gebruik te maken van de methoden `setMin()` en `setMax()`:
+Je kunt het toegestane datumbereik in een `MaskedDateField` beperken met de methoden `setMin()` en `setMax()`:
 
 ```java
 dateField.setMin(LocalDate.of(2020, 1, 1));
@@ -169,7 +173,7 @@ Beide methoden accepteren waarden van het type [`java.time.LocalDate`](https://d
 
 ## Herstellen van de waarde {#restoring-the-value}
 
-De `MaskedDateField` bevat een herstelfunctie die de waarde van het veld terugzet naar een vooraf gedefinieerde of oorspronkelijke staat. Dit is nuttig voor het terugdraaien van gebruikersinvoer of het resetten naar een standaarddatum.
+De `MaskedDateField` bevat een herstelfunctie die de waarde van het veld reset naar een vooraf gedefinieerde of oorspronkelijke staat. Dit is nuttig voor het terugdraaien van gebruikersinvoer of het resetten naar een standaarddatum.
 
 ```java
 dateField.setRestoreValue(LocalDate.of(2025, 1, 1));
@@ -178,10 +182,10 @@ dateField.restoreValue();
 
 ### Manieren om de waarde te herstellen {#ways-to-restore-the-value}
 
-- **Programmamatig**, door `restoreValue()` aan te roepen
-- **Via het toetsenbord**, door <kbd>ESC</kbd> in te drukken (dit is de standaardhersteltoets tenzij overschreven door een gebeurtenisluisteraar)
+- **Programmatically**, door `restoreValue()` aan te roepen
+- **Via toetsenbord**, door <kbd>ESC</kbd> in te drukken (dit is de standaard hersteltoets tenzij overschreven door een evenementlistener)
 
-Je kunt de waarde die moet worden hersteld instellen met `setRestoreValue()`, waarbij je een [`LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html) instantie doorgeeft.
+Je kunt de waarde die moet worden hersteld instellen met `setRestoreValue()`, waarbij een [`LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html) instantie wordt doorgegeven.
 
 <ComponentDemo 
 path='/webforj/maskeddatefieldrestore?' 
@@ -190,70 +194,70 @@ height='120px'/>
 
 ## Validatiepatronen {#validation-patterns}
 
-Je kunt client-side validatieregels toepassen met reguliere expressies met de methode `setPattern()`:
+Je kunt client-side validatieregels toepassen met behulp van reguliere expressies met de methode `setPattern()`:
 
 ```java
 dateField.setPattern("^\\d{2}/\\d{2}/\\d{4}$");
 ```
 
-Dit patroon zorgt ervoor dat alleen waarden die overeenkomen met het formaat `MM/DD/JJJJ` (twee cijfers, schuine streep, twee cijfers, schuine streep, vier cijfers) als geldig worden beschouwd.
+Dit patroon zorgt ervoor dat alleen waarden die overeenkomen met het `MM/DD/JJJJ` formaat (twee cijfers, slash, twee cijfers, slash, vier cijfers) als geldig worden beschouwd.
 
-:::tip Formaat Reguliere Expressie
-Het patroon moet de JavaScript RegExp-syntaxis volgen zoals gedocumenteerd [hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
+:::tip Reguliere Expressieformaat
+Het patroon moet de syntaxis van JavaScript RegExp volgen zoals gedocumenteerd [hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
 :::
 
-:::warning Aantekeningen over Invoeren
-Het veld probeert numerieke datuminputs te parseren en te formatteren op basis van het huidige masker. Gebruik kan echter nog steeds handmatig waarden invoeren die niet overeenkomen met het verwachte formaat. Als de invoer syntactisch geldig maar semantisch onjuist of niet parseerbaar is (bijv. `99/99/9999`), kan het voldoen aan de patrooncontroles, maar falen in logische validatie.
-Je moet altijd de invoerwaarde in je app-logica valideren, zelfs als er een regulier expressiepatroon is ingesteld, om te zorgen dat de datum zowel correct geformatteerd als betekenisvol is.
+:::warning Opmerkingen over invoerhandeling
+Het veld probeert numerieke datuminvoeren te parseren en op te maken op basis van de huidige masker. Gebruikers kunnen echter nog steeds handmatig waarden invoeren die niet overeenkomen met het verwachte formaat. Als de invoer syntactisch geldig is, maar semantisch onjuist of niet parseerbaar is (bijv. `99/99/9999`), kan deze patrooncontroles doorstaan, maar logische validatie mislukt.
+Je moet altijd de invoerwaarde in je app-logica valideren, zelfs als er een reguliere expressiepatroon is ingesteld, om ervoor te zorgen dat de datum zowel correct is opgemaakt als betekenisvol.
 ::::
 
-## Datumkiezer {#date-picker}
+## Datumpicker {#date-picker}
 
-De `MaskedDateField` bevat een ingebouwde kalenderkiezer waarmee gebruikers visueel een datum kunnen selecteren, in plaats van deze in te typen. Dit verbetert de bruikbaarheid voor minder technische gebruikers of wanneer nauwkeurige invoer vereist is.
+De `MaskedDateField` bevat een ingebouwde kalenderpicker waarmee gebruikers een datum visueel kunnen selecteren, in plaats van deze in te typen. Dit verbetert de bruikbaarheid voor minder technische gebruikers of wanneer nauwkeurige invoer vereist is.
 
 <ComponentDemo 
 path='/webforj/maskeddatefieldpicker?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldPickerView.java' 
 height='450px'/>
 
-### Toegang tot de kiezer {#accessing-the-picker}
+### Toegang tot de picker {#accessing-the-picker}
 
-Je kunt toegang krijgen tot de datumkiezer met `getPicker()`:
+Je kunt de datumpicker openen met `getPicker()`:
 
 ```java
 DatePicker picker = dateField.getPicker();
 ```
 
-### Toon/verberg het pickericoon {#showhide-the-picker-icon}
+### Toon/verberg het picker-pictogram {#showhide-the-picker-icon}
 
-Gebruik `setIconVisible()` om het kalendericoon naast het veld te tonen of te verbergen:
+Gebruik `setIconVisible()` om het kalenderpictogram naast het veld te tonen of te verbergen:
 
 ```java
-picker.setIconVisible(true); // toont het icoon
+picker.setIconVisible(true); // toont het pictogram
 ```
 
 ### Automatisch openen gedrag {#auto-open-behavior}
 
-Je kunt de kiezer configureren om automatisch te openen wanneer de gebruiker met het veld interacteert (bijv. klikt, op Enter drukt of pijltoetsen gebruikt):
+Je kunt de picker zo configureren dat deze automatisch opent wanneer de gebruiker met het veld interacteert (bijv. klikt, op Enter drukt of pijltjestoetsen gebruikt):
 
 ```java
 picker.setAutoOpen(true);
 ```
 
-:::tip Dwingen tot Selectie via de Kiezer
-Om ervoor te zorgen dat gebruikers alleen een datum kunnen selecteren via de kalenderkiezer (en niet handmatig een kunnen typen), combineer de volgende twee instellingen:
+:::tip Keuze Handhaven via de Picker
+Om ervoor te zorgen dat gebruikers alleen een datum kunnen selecteren met behulp van de kalenderpicker (en niet handmatig een datum kunnen invoeren), combineer de volgende twee instellingen:
 
 ```java
-dateField.getPicker().setAutoOpen(true); // opent de kiezer bij gebruiker interactie
-dateField.setAllowCustomValue(false);    // schakelt handmatige tekstinvoer uit
+dateField.getPicker().setAutoOpen(true); // Opent de picker bij gebruikersinteractie
+dateField.setAllowCustomValue(false);    // Schakelt handmatige tekstinvoer uit
 ```
 
-Deze opstelling garandeert dat alle datum invoer via de kiezer UI komt, wat nuttig is wanneer je strikte formaat controle wilt en parsingproblemen van getypte invoer wilt uitsluiten.
+Deze opstelling garandeert dat alle datuminvoer via de picker-ui komt, wat handig is wanneer je strikte formatcontrole wilt en parserproblemen van type-invoer wilt uitsluiten.
 :::
 
 ### Handmatig de kalender openen {#manually-open-the-calendar}
 
-Om de kalender programmatish te openen:
+Om de kalender programmatically te openen:
 
 ```java
 picker.open();
@@ -267,7 +271,7 @@ picker.show(); // hetzelfde als open()
 
 ### Toon weken in de kalender {#show-weeks-in-the-calendar}
 
-De kiezer kan optioneel weeknummers in de kalenderweergave weergeven:
+De picker kan optioneel weeknummers in de kalenderweergave weergeven:
 
 ```java
 picker.setShowWeeks(true);
@@ -275,17 +279,17 @@ picker.setShowWeeks(true);
 
 ## `MaskedDateFieldSpinner` {#maskeddatefieldspinner}
 
-De `MaskedDateFieldSpinner` breidt [`MaskedDateField`](#basics) uit door spinnerbedieningen toe te voegen waarmee gebruikers de datum kunnen verhogen of verlagen met behulp van pijltoetsen of UI-knoppen. Het biedt een meer geleide interactiestijl, vooral handig in desktopachtige applicaties.
+De `MaskedDateFieldSpinner` breidt de [`MaskedDateField`](#basics) uit door spincontrols toe te voegen waarmee gebruikers de datum kunnen verhogen of verlagen met behulp van pijltjestoetsen of UI-knoppen. Het biedt een meer geleide interactiestijl, vooral nuttig in desktop-gebaseerde applicaties.
 
 <ComponentDemo 
 path='/webforj/maskeddatefieldspinner?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java' 
 height='450px'/>
 
-### Belangrijkste functies {#key-features}
+### Belangrijke functies {#key-features}
 
-- **Interactief Datum Stapelen:**  
-  Gebruik pijltoetsen of spinknoppen om de datumwaarde te verhogen of te verlagen.
+- **Interactieve Datumstappen:**  
+  Gebruik pijltjestoetsen of draaiknoppen om de datumwaarde te verhogen of te verlagen.
 
 - **Aangepaste Stap Eenheid:**  
   Kies welk onderdeel van de datum je wilt wijzigen met `setSpinField()`:
@@ -294,23 +298,23 @@ height='450px'/>
   spinner.setSpinField(MaskedDateFieldSpinner.SpinField.MONTH);
   ```
 
-  Opties zijn `DAG`, `WEKEN`, `MAAND` en `JAAR`.
+  Opties zijn `DAG`, `WEEK`, `MAAND` en `JAAR`.
 
-- **Min/Max Grenzen:**  
-  Ondersteunt minimum en maximum toegestane datums met `setMin()` en `setMax()`.
+- **Min/max-grenzen:**  
+  Neemt de ondersteuning voor minimale en maximale toegestane datums over met `setMin()` en `setMax()`.
 
-- **Geformatteerde Uitvoer:**  
+- **Geformatteerde uitvoer:**  
   Volledig compatibel met maskers en lokalisatie-instellingen van `MaskedDateField`.
 
-### Voorbeeld: Configureer wekelijkse stapeling {#example-configure-weekly-stepping}
+### Voorbeeld: Configureer wekelijkse stappen {#example-configure-weekly-stepping}
 
 ```java
 MaskedDateFieldSpinner spinner = new MaskedDateFieldSpinner();
 spinner.setSpinField(MaskedDateFieldSpinner.SpinField.WEEK);
 ```
 
-Dit maakt elke spinstap om de datum met een week vooruit of achteruit te verplaatsen.
+Dit zorgt ervoor dat elke draaistap de datum met een week vooruit of achteruit gaat.
 
-## Stijling {#styling}
+## Stylen {#styling}
 
 <TableBuilder name="MaskedDateField" />

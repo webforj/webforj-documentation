@@ -39,6 +39,7 @@ urls={[
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java'
 ]}
+cssURL='/css/terminal/terminal-view.css'
 height='400px'
 />
 
@@ -74,7 +75,7 @@ You can also attach a callback that runs once the chunk of data has been process
 
 ```java
 terminal.write("Long command output", e -> {
-    System.out.println("Data processed.");
+  System.out.println("Data processed.");
 });
 ```
 
@@ -121,10 +122,10 @@ Pause your backend until the terminal finishes processing a chunk:
 
 ```java
 pty.onData(chunk -> {
-    pty.pause();
-    terminal.write(chunk, result -> {
-        pty.resume();
-    });
+  pty.pause();
+  terminal.write(chunk, result -> {
+    pty.resume();
+  });
 });
 ```
 
@@ -175,10 +176,10 @@ The `TerminalOptions` class allows you to configure behavior:
 Example:
 ```java
 TerminalOptions options = new TerminalOptions()
-    .setCursorBlink(true)
-    .setFontFamily("Courier New, monospace")
-    .setFontSize(13)
-    .setScrollback(5000);
+  .setCursorBlink(true)
+  .setFontFamily("Courier New, monospace")
+  .setFontSize(13)
+  .setScrollback(5000);
 
 terminal.setOptions(options);
 ```

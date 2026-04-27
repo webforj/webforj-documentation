@@ -1,58 +1,117 @@
 ---
 title: Project Setup
 sidebar_position: 1
-_i18n_hash: f8ad0e22acf56c824b05db580be2203b
+description: >-
+  Discover where to download the tutorial project, how to navigate it, and run
+  the apps within.
+_i18n_hash: 02dbd05d1fdaba50c25155904013471b
 ---
-In deze tutorial zal de app worden gestructureerd in **vier stappen**, die elk nieuwe functies introduceren naarmate het project vordert. Door deze stappen te volgen, krijg je een duidelijk begrip van hoe de app evolueert en hoe elke functie wordt geïmplementeerd.
+Om met deze tutorial te beginnen, heb je een locatie voor je project nodig waar je je klassen en middelen kunt beheren. De volgende secties beschrijven de verschillende manieren waarop je je webforJ-project voor deze tutorial kunt maken.
 
-Om te beginnen, kun je het hele project downloaden of het klonen van GitHub:
+## Gebruik de broncode {#using-source-code}
+
+De eenvoudigste manier om deze tutorial te volgen, is door naar de broncode te verwijzen. Je kunt het hele project downloaden of het van GitHub klonen:
+
 <!-- vale off -->
-- Download ZIP: [webforj-demo-application.zip](https://github.com/webforj/webforj-demo-application/archive/refs/heads/main.zip)
-- GitHub Repository: Clone het project [direct van GitHub](https://github.com/webforj/webforj-demo-application)
+- Download ZIP: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
+- GitHub Repository: Clone het project [direct van GitHub](https://github.com/webforj/webforj-tutorial)
 <!-- vale on -->
 ```bash
-git clone https://github.com/webforj/webforj-demo-application.git
+git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
-Zowel het ZIP-bestand als de GitHub-repository bevatten de volledige projectstructuur met alle vier stappen, zodat je op elk punt kunt beginnen of stap voor stap kunt volgen.
+### Projectstructuur {#project-structure}
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
-  </video>
-</div>
-
-## Projectstructuur {#project-structure}
-
-Het project is opgesplitst in vier afzonderlijke mappen, die elk een specifieke fase van de ontwikkeling van de app vertegenwoordigen. Deze stappen stellen je in staat om te zien hoe de app evolueert van een basisopzet naar een volledig functionerend klantenbeheersysteem.
-
-Binnen de projectmap vind je vier submappen, die elk overeenkomen met een stap in de tutorial:
+Het project heeft zes subdirectories, één voor elke stap van de tutorial, en elke bevat een uitvoerbare app. Volg along om te zien hoe de app vordert van een basisconfiguratie naar een volledig functioneel klantbeheersysteem.
 
 ```
-webforj-demo-application
+webforj-tutorial
 │   .gitignore
 │   LICENSE
 │   README.md
-│   tree.txt
 │
 ├───1-creating-a-basic-app  
 ├───2-working-with-data
-├───3-scaling-with-routing-and-composites
-└───4-validating-and-binding-data
+├───3-routing-and-composites
+├───4-observers-and-route-parameters
+├───5-validating-and-binding-data
+└───6-integrating-an-app-layout
 ```
 
-### De app draaien {#running-the-app}
+## Gebruik startforJ {#using-startforj}
 
-Om de app in actie te zien op elk moment:
+Als je liever een nieuw project wilt maken, kun je [startforJ](https://docs.webforj.com/startforj) gebruiken om een minimalistisch starterproject te genereren. Zie [Aan de slag](/docs/introduction/getting-started) voor meer gedetailleerde informatie over het gebruik van startforJ.
 
-1) Navigeer naar de map voor de gewenste stap. Dit moet de bovenste niveau map voor die stap zijn, die de `pom.xml` bevat.
+:::note Vereiste instellingen
+- Kies in de dropdown **webforJ versie** de webforJ versie **26.00 of hoger**.
+- Kies in de dropdown **Flavor** voor **webforJ + Spring Boot**. 
+:::
 
-2) Gebruik de Maven Jetty-plugin om de app lokaal te implementeren door het volgende uit te voeren:
+## Gebruik de opdrachtregel {#using-command-line}
 
+Je kunt ook een nieuw project genereren met de volgende opdracht:
+
+<!-- vale off -->
+<Tabs>
+  <TabItem value="bash" label="Bash/Zsh" default>
 ```bash
-mvn jetty:run
+mvn -B archetype:generate \
+  -DarchetypeGroupId=com.webforj \
+  -DarchetypeArtifactId=webforj-archetype-hello-world \
+  -DarchetypeVersion=LATEST \
+  -DgroupId=com.webforj.tutorial \
+  -DartifactId=customer-app \
+  -Dversion=1.0-SNAPSHOT \
+  -Dflavor=webforj-spring
+```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+```powershell
+mvn -B archetype:generate `
+  -DarchetypeGroupId="com.webforj" `
+  -DarchetypeArtifactId="webforj-archetype-hello-world" `
+  -DarchetypeVersion="LATEST" `
+  -DgroupId="com.webforj.tutorial" `
+  -DartifactId="customer-app" `
+  -Dversion="1.0-SNAPSHOT" `
+  -Dflavor="webforj-spring"
+```
+  </TabItem>
+  <TabItem value="cmd" label="Opdrachtprompt">
+```
+mvn -B archetype:generate ^
+  -DarchetypeGroupId="com.webforj" ^
+  -DarchetypeArtifactId="webforj-archetype-hello-world" ^
+  -DarchetypeVersion="LATEST" ^
+  -DgroupId="com.webforj.tutorial" ^
+  -DartifactId="customer-app" ^
+  -Dversion="1.0-SNAPSHOT" ^
+  -Dflavor="webforj-spring"
+```
+  </TabItem>
+</Tabs>
+<!-- vale on -->
+
+## Configuraties
+
+De twee genoemde manieren om een nieuw project te maken, gebruiken webforJ [archetypes](/docs/building-ui/archetypes/overview), die automatisch de benodigde configuraties aan je project toevoegen, zoals Spring [afhankelijkheden](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) aan je POM en de volgende eigenschappen in `src/main/resources/application.properties`:
+
+```
+spring.application.name=CustomerApplication
+server.port=8080
+webforj.entry = com.webforj.tutorial.Application
+webforj.debug=true
 ```
 
-3) Open je browser en navigeer naar http://localhost:8080 om de app te bekijken.
+## De app uitvoeren {#running-the-app}
 
-Herhaal dit proces voor elke stap terwijl je de tutorial volgt, zodat je de functies van de app kunt verkennen terwijl ze worden toegevoegd.
+Om de app in actie te zien terwijl je de tutorial doorloopt:
+
+1. Navigeer naar de directory voor de gewenste stap. Dit moet de bovenste level directory voor die stap zijn, waarin het `pom.xml`-bestand zich bevindt.
+
+2. Gebruik de volgende Maven-opdracht om de Spring Boot-app lokaal uit te voeren:
+    ```bash
+    mvn
+    ```
+
+De app uitvoeren opent automatisch een nieuwe browser op `http://localhost:8080`.

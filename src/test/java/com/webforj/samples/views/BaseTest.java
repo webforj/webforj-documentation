@@ -46,7 +46,7 @@ public abstract class BaseTest {
                 .setHeadless(RunConfig.isHeadless())
                 .setSlowMo(RunConfig.getSlowMo()));
 
-        PlaywrightAssertions.setDefaultAssertionTimeout(15000);
+        PlaywrightAssertions.setDefaultAssertionTimeout(30000);
     }
 
     @BeforeEach

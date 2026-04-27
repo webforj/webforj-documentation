@@ -46,7 +46,7 @@ textArea.removeParagraph(1);
 // Retrieve and print all current paragraphs
 List<String> paragraphs = textArea.getParagraphs();
 for (int i = 0; i < paragraphs.size(); i++) {
-    System.out.println("Paragraph " + i + ": " + paragraphs.get(i));
+  System.out.println("Paragraph " + i + ": " + paragraphs.get(i));
 }
 ```
 
@@ -97,6 +97,7 @@ This predictive behavior enhances both speed and accuracy, especially in repetit
 <ComponentDemo 
 path='/webforj/textareapredictedtext?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java'
+cssURL='/css/textarea/text-area-predicted-text-view.css'
 height = '400px'
 />
 

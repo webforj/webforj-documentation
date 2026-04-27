@@ -30,7 +30,7 @@ Here’s an example of how to set up a validation reporter for a field
 <TabItem value="UserRegistration" label="UserRegistration.java">
 
 ```java showLineNumbers
-@InlineStyleSheet("context://styles.css")
+@StyleSheet("ws://css/styles.css")
 public class UserRegistration extends App {
   Div errors = new Div();
   TextField emailField = new TextField("Email Address");

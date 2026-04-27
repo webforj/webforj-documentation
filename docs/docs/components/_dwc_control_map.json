@@ -1,9 +1,12 @@
 {
+"Accordion": "dwc-accordion",
+"AccordionPanel": "dwc-accordion-panel",
 "Alert": "dwc-alert",
 "AppLayout": "dwc-app-layout",
 "AppNav": "dwc-app-nav",
 "AppNavItem": "dwc-app-nav-item",
 "Avatar": "dwc-avatar",
+"Badge": "dwc-badge",
 "BusyIndicator": "dwc-loading",
 "Button" :"dwc-button",
 "CheckableMenuItem" :"dwc-menuitem",
@@ -19,10 +22,12 @@
 "FileChooser" :"dwc-file-chooser",
 "FontChooser" :"dwc-font-chooser",
 "Icon" :"dwc-icon",
+"IconButton" :"dwc-icon-button",
 "InfiniteScroll": "dwc-infinite-scroll",
 "ListBox" :"dwc-listbox",
 "Loading": "dwc-loading",
 "Login":"dwc-login",
+"MarkdownViewer": "dwc-markdown-viewer",
 "MaskedDateField": "dwc-datefield",
 "MaskedNumberField": "dwc-numberfield",
 "MaskedTextField": "dwc-textfield",
@@ -43,6 +48,7 @@
 "SpinnerNumberField" :"dwc-numberfield-spinner",
 "SplitPane" :"dwc-splitter",
 "Splitter":"dwc-splitter",
+"Tab": "dwc-tab",
 "TabbedPane" :"dwc-tabbed-pane",
 "Table": "dwc-table",
 "Terminal": "dwc-terminal",
@@ -52,5 +58,6 @@
 "TimeField": "dwc-timefield",
 "Toast": "dwc-toast",
 "Toolbar": "dwc-toolbar",
-"Tree": "dwc-tree"
+"Tree": "dwc-tree",
+"TreeNode": "dwc-tree-node"
 }

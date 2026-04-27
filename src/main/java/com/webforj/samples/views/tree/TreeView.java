@@ -16,7 +16,7 @@ public class TreeView extends Composite<FlexLayout> {
 
   public TreeView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setSize("min-content", "100vh")
+        .setSize("100%", "100vh")
         .setStyle("overflow", "auto");
 
     tree.add(

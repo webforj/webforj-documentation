@@ -16,27 +16,30 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Alert Themes")
 public class AlertThemesView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public AlertThemesView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
-          .setJustifyContent(FlexJustifyContent.CENTER)
-          .setAlignment(FlexAlignment.CENTER)
-          .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-xl) auto")
-          .setWidth("100%");
+    self.setDirection(FlexDirection.COLUMN)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setAlignment(FlexAlignment.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-xl) auto")
+        .setWidth("100%");
 
     for (Theme theme : Theme.values()) {
       Icon icon = TablerIcon.create("alert-square-rounded");
-      Paragraph text = new Paragraph("This is an alert with the " + theme.name() + " theme!");
+      Paragraph text = new Paragraph("This is an alert with the %s theme!".formatted(theme));
 
       Alert alert = new Alert()
-          .addToContent(FlexLayout.create(icon, text).horizontal().align().center().build())
+          .addToContent(FlexLayout.create(icon, text)
+              .horizontal()
+              .align().center()
+              .build())
           .setTheme(theme)
           .setClosable(false)
           .setWidth("325px");
 
-      layout.add(alert);
+      self.add(alert);
     }
   }
 }

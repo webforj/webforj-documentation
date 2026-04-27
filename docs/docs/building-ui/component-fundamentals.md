@@ -1,26 +1,24 @@
 ---
 sidebar_position: 2
 title: Understanding Components
-sidebar_class_name: new-content
 ---
 
-<DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
 Before building custom components in webforJ, it's important to understand the foundational architecture that shapes how components work. This article explains the component hierarchy, component identity, lifecycle concepts, and how concern interfaces provide component capabilities.
 
-## Understanding the component hierarchy
+## Understanding the component hierarchy {#understanding-the-component-hierarchy}
 
 webforJ organizes components into a hierarchy with two groups: framework internal classes you should never extend, and classes designed specifically for building custom components. This section explains why webforJ uses composition over inheritance and what each level of the hierarchy provides.
 
-### Why composition instead of extension?
+### Why composition instead of extension? {#why-composition-instead-of-extension}
 
 In webforJ, built-in components like [`Button`](../components/button) and [`TextField`](../components/fields/textfield) are final classes—you can't extend them:
 
 ```java
 // This won't work in webforJ
 public class MyButton extends Button {
-    // Button is final - cannot be extended 
+  // Button is final - cannot be extended 
 }
 ```
 
@@ -28,59 +26,58 @@ webforJ uses **composition over inheritance**. Instead of extending existing com
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
-    private TextField searchField;
-    private Button searchButton;
+  private final FlexLayout self = getBoundComponent();
+  private TextField searchField;
+  private Button searchButton;
+  
+  public SearchBar() {
+    searchField = new TextField("Search");
+    searchButton = new Button("Go");
     
-    public SearchBar() {
-        searchField = new TextField("Search");
-        searchButton = new Button("Go");
-        
-        getBoundComponent()
-            .setDirection(FlexDirection.ROW)
-            .add(searchField, searchButton);
-    }
+    self.setDirection(FlexDirection.ROW)
+      .add(searchField, searchButton);
+  }
 }
 ```
 
-### Why you can't extend built-in components
+### Why you can't extend built-in components {#why-you-cant-extend-built-in-components}
 
 webforJ components are marked as final to maintain the integrity of the underlying client-side web component. Extending webforJ component classes would grant control over the underlying web component, which could lead to unintended consequences and break the consistency and predictability of component behavior.
 
 For a detailed explanation, see [Final Classes and Extension Restrictions](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) in the architecture documentation.
 
-### The component hierarchy
+### The component hierarchy {#the-component-hierarchy}
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
-    A[Component<br/><small>Abstract base - framework internal</small>]
-    
-    A --> B[DwcComponent<br/><small>Built-in webforJ components</small>]
-    A --> C[Composite<br/><small>Combine webforJ components</small>]
-    A --> D[ElementComposite<br/><small>Wrap web components</small>]
-    
-    B --> E[Button, TextField,<br/>DateField, ComboBox]
-    
-    D --> F[ElementCompositeContainer<br/><small>Components with slots</small>]
-    
-    style A fill:#f5f5f5,stroke:#666
-    style B fill:#fff4e6,stroke:#ff9800
-    style C fill:#e6ffe6,stroke:#00cc00
-    style D fill:#e6f3ff,stroke:#0066cc
-    style E fill:#fff4e6,stroke:#ff9800
-    style F fill:#e6f3ff,stroke:#0066cc
-    
-    classDef userClass stroke-width:3px
-    class C,D,F userClass
+  A[Component<br/><small>Abstract base - framework internal</small>]
+  
+  A --> B[DwcComponent<br/><small>Built-in webforJ components</small>]
+  A --> C[Composite<br/><small>Combine webforJ components</small>]
+  
+  B --> E[Button, TextField,<br/>DateField, ComboBox]
+  
+  C --> D[ElementComposite<br/><small>Wrap web components</small>]
+  D --> F[ElementCompositeContainer<br/><small>Components with slots</small>]
+
+  classDef internal stroke-dasharray:6 4,stroke-width:1px
+  classDef primary stroke-width:3px
+  classDef secondary stroke-width:2px,stroke-dasharray:2 2
+  class A,B,E internal
+  class C primary
+  class D,F secondary
 ```
+</div>
 
-**Classes for developers (use these):**
-- **Composite**
-- **ElementComposite**
-- **ElementCompositeContainer**
+Classes for developers (use these):
+- `Composite`
+- `ElementComposite`
+- `ElementCompositeContainer`
 
-**Internal framework classes (never extend directly):**
-- **Component**
-- **DwcComponent**
+Internal framework classes (never extend directly):
+- `Component`
+- `DwcComponent`
 
 :::warning[Never extend `Component` or `DwcComponent`]
 Never extend `Component` or `DwcComponent` directly. All built-in components are final. Always use composition patterns with `Composite` or `ElementComposite`.
@@ -88,7 +85,7 @@ Never extend `Component` or `DwcComponent` directly. All built-in components are
 Attempting to extend `DwcComponent` will throw a runtime exception.
 :::
 
-## Concern interfaces: Adding capabilities to your components
+## Concern interfaces {#concern-interfaces}
 
 Concern interfaces are Java interfaces that provide specific capabilities to your components. Each interface adds a set of related methods. For example, `HasSize` adds methods for controlling width and height, while `HasFocus` adds methods for managing focus state.
 
@@ -99,31 +96,119 @@ Implementing concern interfaces gives your custom components the same APIs as bu
 ```java
 // Implement HasSize to get width/height methods automatically
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
-    
-    public SizedCard() {
-        getBoundComponent().setText("Card content");
-    }
-    
-    // No need to implement these - you get them for free:
-    // setWidth(), setHeight(), setSize()
+  private final Div self = getBoundComponent();
+  
+  public SizedCard() {
+    self.setText("Card content");
+  }
+  
+  // No need to implement these - you get them for free:
+  // setWidth(), setHeight(), setSize()
 }
 
 // Use it like any webforJ component
 SizedCard card = new SizedCard();
 card.setWidth("300px")
-    .setHeight("200px");
+  .setHeight("200px");
 ```
 
 The composite automatically forwards these calls to the underlying `Div`. No extra code needed.
 
-**Common concern interfaces:**
-- `HasSize` - `setWidth()`, `setHeight()`, `setSize()`
-- `HasFocus` - `focus()`, `setFocusable()`, focus events
-- `HasClassName` - `addClassName()`, `removeClassName()`
-- `HasStyle` - `setStyle()`, inline CSS management
-- `HasVisibility` - `setVisible()`, show/hide capability
-- `HasText` - `setText()`, text content management
-- `HasAttribute` - `setAttribute()`, HTML attribute management
+### Appearance {#concern-interfaces-appearance}
+
+These interfaces control the visual presentation of a component, including its dimensions, visibility, styling, and theme.
+
+| Interface | Description |
+|---|---|
+| `HasSize` | Controls width and height, including min and max constraints. Extends `HasWidth`, `HasHeight`, and their min/max variants. |
+| `HasVisibility` | Shows or hides the component without removing it from the layout. |
+| `HasClassName` | Manages CSS class names on the component's root element. |
+| `HasStyle` | Applies and removes inline CSS styles. |
+| `HasHorizontalAlignment` | Controls how content is aligned horizontally within the component. |
+| `HasExpanse` | Sets the component's size variant using the standard expanse tokens (`XSMALL` through `XLARGE`). |
+| `HasTheme` | Applies a theme variant such as `DEFAULT`, `PRIMARY`, or `DANGER`. |
+| `HasPrefixAndSuffix` | Adds components to the prefix or suffix slot inside the component. |
+
+### Content {#concern-interfaces-content}
+
+These interfaces manage what a component displays, including text, HTML, labels, hints, and other descriptive content.
+
+| Interface | Description |
+|---|---|
+| `HasText` | Sets and retrieves the component's plain text content. |
+| `HasHtml` | Sets and retrieves the component's inner HTML. |
+| `HasLabel` | Adds a descriptive label associated with the component, used for accessibility. |
+| `HasHelperText` | Displays secondary hint text below the component. |
+| `HasPlaceholder` | Sets placeholder text shown when the component has no value. |
+| `HasTooltip` | Attaches a tooltip that appears on hover. |
+
+### State {#concern-interfaces-state}
+
+These interfaces control the interactive state of a component, including whether it's enabled, editable, required, or focused on load.
+
+| Interface | Description |
+|---|---|
+| `HasEnablement` | Enables or disables the component. |
+| `HasReadOnly` | Puts the component into a read-only state where the value is visible but can't be changed. |
+| `HasRequired` | Marks the component as required, typically for form validation. |
+| `HasAutoFocus` | Moves focus to the component automatically when the page loads. |
+
+### Focus {#concern-interfaces-focus}
+
+These interfaces manage how a component receives and responds to keyboard focus.
+
+| Interface | Description |
+|---|---|
+| `HasFocus` | Manages focus state and whether the component can receive focus. |
+| `HasFocusStatus` | Checks whether the component currently has focus. Requires a round-trip to the client. |
+| `HasHighlightOnFocus` | Controls whether the component's content is highlighted when it receives focus, and how (`KEY`, `MOUSE`, `KEY_MOUSE`, `ALL`, and so on). |
+
+### Input constraints {#concern-interfaces-input-constraints}
+
+These interfaces define what values a component accepts, including the current value, allowed ranges, length limits, formatting masks, and locale-specific behavior.
+
+| Interface | Description |
+|---|---|
+| `HasValue` | Gets and sets the component's current value. |
+| `HasMin` | Sets a minimum allowed value. |
+| `HasMax` | Sets a maximum allowed value. |
+| `HasStep` | Sets the step increment for numeric or range inputs. |
+| `HasPattern` | Applies a regular expression pattern to constrain accepted input. |
+| `HasMinLength` | Sets the minimum number of characters required in the component's value. |
+| `HasMaxLength` | Sets the maximum number of characters allowed in the component's value. |
+| `HasMask` | Applies a format mask to the input. Used by masked field components. |
+| `HasTypingMode` | Controls whether typed characters are inserted or overwrite existing characters (`INSERT` or `OVERWRITE`). Used by masked fields and `TextArea`. |
+| `HasRestoreValue` | Defines a value the component resets to when the user presses Escape or calls `restoreValue()`. Used by masked fields. |
+| `HasLocale` | Stores a per-component locale for locale-sensitive formatting. Used by masked date and time fields. |
+| `HasPredictedText` | Sets a predicted or auto-complete text value. Used by `TextArea` to support inline suggestions. |
+
+### Validation {#concern-interfaces-validation}
+
+These interfaces add client-side validation behavior, including marking components invalid, displaying error messages, and controlling when validation runs.
+
+| Interface | Description |
+|---|---|
+| `HasClientValidation` | Marks a component invalid, sets the error message, and attaches a client-side validator. |
+| `HasClientAutoValidation` | Controls whether the component validates automatically as the user types. |
+| `HasClientAutoValidationOnLoad` | Controls whether the component validates when it first loads. |
+| `HasClientValidationStyle` | Controls how validation messages are displayed: `INLINE` (below the component) or `POPOVER`. |
+
+### DOM access {#concern-interfaces-dom-access}
+
+These interfaces provide low-level access to the component's underlying HTML element and client-side properties.
+
+| Interface | Description |
+|---|---|
+| `HasAttribute` | Reads and writes arbitrary HTML attributes on the component's element. |
+| `HasProperty` | Reads and writes DWC component properties directly on the client element. |
+
+### i18n {#concern-interfaces-i18n}
+
+This interface provides translation support for components that need to display localized text.
+
+| Interface | Description |
+|---|---|
+| `HasTranslation` | Provides the `t()` helper method for resolving translation keys to localized strings using the app's current locale. |
 
 :::warning
 If the underlying component doesn't support the interface capability, you'll get a runtime exception. Provide your own implementation in that case.
@@ -131,13 +216,55 @@ If the underlying component doesn't support the interface capability, you'll get
 
 For a complete list of available concern interfaces, see the [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
-## Component lifecycle overview
+## Component identifiers {#component-identifiers}
+
+webforJ components have three distinct types of identifiers that serve different purposes:
+
+- **Server-side component ID** (`getComponentId()`) - Automatically assigned by the framework for internal component tracking. Use this when you need to query for specific components or implement custom component registries.
+- **Client-side component ID** (`getClientComponentId()`) - Provides access to the underlying web component from JavaScript. Use this when you need to call native web component methods or integrate with client-side libraries.
+- **HTML `id` attribute** (`setAttribute("id", "...")`) - Standard DOM identifier. Use this for CSS targeting, test automation selectors, and linking form labels to inputs.
+
+Understanding these differences helps you choose the right identifier for your use case.
+
+### Server-side component ID {#server-side-component-id}
+
+Every component is assigned a server-side identifier automatically when created. This identifier is used internally by the framework for tracking components. Retrieve it with `getComponentId()`:
+
+```java
+Button button = new Button("Click Me");
+String serverId = button.getComponentId();
+```
+
+The server-side ID is useful when you need to query for specific components within a container or implement custom component tracking logic.
+
+### Client-side component ID {#client-side-component-id}
+
+The client-side component ID provides access to the underlying web component from JavaScript. This allows you to interact directly with the client-side component when needed:
+
+```java
+Button btn = new Button("Click me");
+btn.onClick(e -> {
+  OptionDialog.showMessageDialog("The button was clicked", "An event occurred");
+});
+
+btn.whenAttached().thenAccept(e -> {
+  Page.getCurrent().executeJs("objects.get('" + btn.getClientComponentId() + "').click()");
+});
+```
+
+Use `getClientComponentId()` with `objects.get()` in JavaScript to access the web component instance.
+
+:::important
+The client-side component ID isn't the HTML `id` attribute of the DOM element. For setting HTML IDs for testing or CSS targeting, see [Using Components](using-components).
+:::
+
+## Component lifecycle overview {#component-lifecycle-overview}
 
 webforJ manages the component lifecycle automatically. The framework handles component creation, attachment, and destruction without requiring manual intervention.
 
 **Lifecycle hooks** are available when you need them:
-- `onDidCreate()` - Called after component is attached to the DOM
-- `onDidDestroy()` - Called when component is destroyed
+- `onDidCreate(T container)` - Called after the component is attached to the DOM
+- `onDidDestroy()` - Called when the component is destroyed
 
 These hooks are **optional**. Use them when you need to:
 - Clean up resources (stop intervals, close connections)
@@ -145,5 +272,3 @@ These hooks are **optional**. Use them when you need to:
 - Integrate with client-side JavaScript
 
 For most simple cases, you can initialize components directly in the constructor. Use lifecycle hooks like `onDidCreate()` to defer work when necessary.
-
-
