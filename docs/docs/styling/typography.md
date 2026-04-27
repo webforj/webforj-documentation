@@ -9,12 +9,11 @@ Typography tokens are used to maintain a consistent set of font styles throughou
 
 The font family properties are used to specify a prioritized list of font family names.
 
-The system font stack is used by default:
+The system font stack is used by default via `system-ui`, which automatically resolves to the platform's native font:
 
+- `San Francisco` on macOS and iOS
 - `Segoe UI` on Windows
 - `Roboto` on Android and Chrome OS
-- `San Francisco` on macOS and iOS
-- On other systems, `Helvetica, Arial` are used as fallbacks.
 
 You can apply or change the font family using the `--dwc-font-family` custom property.
 
@@ -28,20 +27,18 @@ You can apply or change the font family using the `--dwc-font-family` custom pro
 
 ### Variables {#variables}
 
-<!-- vale Google.FirstPerson = NO -->
-| **Variable**             | **Default Value**                                                                                                                               | **Example**                                                           |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `--dwc-font-family-sans` | -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' | <span style={{ fontFamily: "var(--dwc-font-family-sans)" }}>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-family-mono` | Menlo, Monaco, 'Courier New', monospace                                                                                                         | <span style={{ fontFamily: "var(--dwc-font-family-mono)" }}>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-family`      | `var(--dwc-font-family-sans)`                                                                                                                   | <span style={{ fontFamily: "var(--dwc-font-family)" }}>Sphinx of black quartz, judge my vow.</span>      |
-<!-- vale Google.FirstPerson = YES -->
+| **Variable**             | **Default Value** |
+| ------------------------ | ----------------- |
+| `--dwc-font-family-sans` | system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' |
+| `--dwc-font-family-mono` | ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace |
+| `--dwc-font-family`      | `var(--dwc-font-family-sans)` |
 
 ## Font size {#font-size}
 
-The font size properties define a set of font sizes to choose from. `s` is the standard size, and is used by most components by default. All font sizes are defined in `em`.
+The font size properties define a set of font sizes to choose from. `m` is the standard size and is used by most components by default. All font sizes are defined in `rem`.
 
-:::info EM Unit
-`em` is a relative length unit. it's relative to [font size](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) of the parent, in the case of typographical properties like font-size, and font size of the element itself and in the case of other properties like [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
+:::info REM Unit
+`rem` is a relative length unit. It is relative to the [font size](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) of the root element (`<html>`), which defaults to 16px in most browsers.
 :::
 
 ### Example {#example-1}
@@ -54,17 +51,20 @@ The font size properties define a set of font sizes to choose from. `s` is the s
 
 ### Variables {#variables-1}
 
-| **Variable**          | **Default Value**        | **Example**                                                      |
-| --------------------- | ------------------------ | ---------------------------------------------------------------- |
-| `--dwc-font-size-2xs` | 0.75rem                  | <span style={{ fontSize: "var(--dwc-font-size-2xs)" }}>Aa</span> |
-| `--dwc-font-size-xs`  | 0.813rem                 | <span style={{ fontSize: "var(--dwc-font-size-xs)" }}>Aa</span>  |
-| `--dwc-font-size-s`   | 0.875rem                 | <span style={{ fontSize: "var(--dwc-font-size-s)" }}>Aa</span>   |
-| `--dwc-font-size-m`   | 1rem                     | <span style={{ fontSize: "var(--dwc-font-size-m)" }}>Aa</span>   |
-| `--dwc-font-size-l`   | 1.125rem                 | <span style={{ fontSize: "var(--dwc-font-size-l)" }}>Aa</span>   |
-| `--dwc-font-size-xl`  | 1.375rem                 | <span style={{ fontSize: "var(--dwc-font-size-xl)" }}>Aa</span>  |
-| `--dwc-font-size-2xl` | 1.75rem                  | <span style={{ fontSize: "var(--dwc-font-size-2xl)" }}>Aa</span> |
-| `--dwc-font-size-3xl` | 2.25rem                  | <span style={{ fontSize: "var(--dwc-font-size-3xl)" }}>Aa</span> |
-| `--dwc-font-size`     | `var(--dwc-font-size-s)` | <span style={{ fontSize: "var(--dwc-font-size)" }}>Aa</span>     |
+| **Variable**          | **Default Value**        | **Computed (at 16px root)** |
+| --------------------- | ------------------------ | --------------------------- |
+| `--dwc-font-size-3xs` | 0.625rem                 | 10px |
+| `--dwc-font-size-2xs` | 0.6875rem                | 11px |
+| `--dwc-font-size-xs`  | 0.75rem                  | 12px |
+| `--dwc-font-size-s`   | 0.8125rem                | 13px |
+| `--dwc-font-size-m`   | 0.875rem                 | 14px |
+| `--dwc-font-size-l`   | 1rem                     | 16px |
+| `--dwc-font-size-xl`  | 1.25rem                  | 20px |
+| `--dwc-font-size-2xl` | 1.625rem                 | 26px |
+| `--dwc-font-size-3xl` | 2.125rem                 | 34px |
+| `--dwc-font-size`     | `var(--dwc-font-size-m)` | 14px |
+
+<dwc-doc-font-sizes></dwc-doc-font-sizes>
 
 ## Font weight {#font-weight}
 
@@ -78,14 +78,20 @@ p {
 }
 ```
 
-| **Variable**                 | **Default Value** | **Example**                                                               |
-| ---------------------------- | ----------------- | ------------------------------------------------------------------------- |
-| `--dwc-font-weight-lighter`  | 200               | <span style={{ fontWeight: "var(--dwc-font-weight-lighter)" }}>Aa</span>  |
-| `--dwc-font-weight-light`    | 300               | <span style={{ fontWeight: "var(--dwc-font-weight-light)" }}>Aa</span>    |
-| `--dwc-font-weight-normal`   | 400               | <span style={{ fontWeight: "var(--dwc-font-weight-normal)" }}>Aa</span>   |
-| `--dwc-font-weight-semibold` | 500               | <span style={{ fontWeight: "var(--dwc-font-weight-semibold)" }}>Aa</span> |
-| `--dwc-font-weight-bold`     | 700               | <span style={{ fontWeight: "var(--dwc-font-weight-bold)" }}>Aa</span>     |
-| `--dwc-font-weight-bolder`   | 800               | <span style={{ fontWeight: "var(--dwc-font-weight-bolder)" }}>Aa</span>   |
+| **Variable**                 | **Default Value** |
+| ---------------------------- | ----------------- |
+| `--dwc-font-weight-thin`     | 100 |
+| `--dwc-font-weight-lighter`  | 200 |
+| `--dwc-font-weight-light`    | 300 |
+| `--dwc-font-weight-normal`   | 400 |
+| `--dwc-font-weight-medium`   | 500 |
+| `--dwc-font-weight-semibold` | 600 |
+| `--dwc-font-weight-bold`     | 700 |
+| `--dwc-font-weight-bolder`   | 800 |
+| `--dwc-font-weight-black`    | 900 |
+| `--dwc-font-weight`          | `var(--dwc-font-weight-normal)` |
+
+<dwc-doc-font-weights></dwc-doc-font-weights>
 
 ## Line height {#line-height}
 
@@ -101,15 +107,17 @@ p {
 
 ### Variables {#variables-2}
 
-<!-- vale Google.FirstPerson = NO -->
-| **Variable**                 | **Default Value**             | **Example**                                                                                                |
-| ---------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `--dwc-font-line-height-2xs` | 0.95                          | <span style={{ lineHeight: "var(--dwc-font-line-height-2xs)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-line-height-xs`  | 1.1                           | <span style={{ lineHeight: "var(--dwc-font-line-height-xs)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>  |
-| `--dwc-font-line-height-s`   | 1.25                          | <span style={{ lineHeight: "var(--dwc-font-line-height-s)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-m`   | 1.375                         | <span style={{ lineHeight: "var(--dwc-font-line-height-m)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-l`   | 1.5                           | <span style={{ lineHeight: "var(--dwc-font-line-height-l)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-xl`  | 1.75                          | <span style={{ lineHeight: "var(--dwc-font-line-height-xl)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>  |
-| `--dwc-font-line-height-2xl` | 2                             | <span style={{ lineHeight: "var(--dwc-font-line-height-2xl)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-line-height`     | var(--dwc-font-line-height-m) | <span style={{ lineHeight: "var(--dwc-font-line-height)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>     |
-<!-- vale Google.FirstPerson = YES -->
+| **Variable**                  | **Default Value**              |
+| ----------------------------- | ------------------------------ |
+| `--dwc-font-line-height-3xs`  | 1 |
+| `--dwc-font-line-height-2xs`  | 1.1 |
+| `--dwc-font-line-height-xs`   | 1.25 |
+| `--dwc-font-line-height-s`    | 1.375 |
+| `--dwc-font-line-height-m`    | 1.5 |
+| `--dwc-font-line-height-l`    | 1.625 |
+| `--dwc-font-line-height-xl`   | 1.75 |
+| `--dwc-font-line-height-2xl`  | 1.875 |
+| `--dwc-font-line-height-3xl`  | 2 |
+| `--dwc-font-line-height`      | var(--dwc-font-line-height-xs) |
+
+<dwc-doc-line-heights></dwc-doc-line-heights>

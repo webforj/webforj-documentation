@@ -1,9 +1,11 @@
 ---
 sidebar_position: 8
 title: Surfaces
-_i18n_hash: ac1f587cd1039f9bf083c610c29c27b9
+_i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
-On kolme tasoa pintoja, joita käytetään UI-hierarkian järjestämiseen, usein yhdistettynä [varjoihin](./shadows). Kaikki [palettivärit](./colors) testataan, jotta ne tarjoavat riittävän kontrastin näitä pintoja vastaan.
+DWC määrittelee kolme tasoa pintoja, joita käytetään käyttöliittymän hierarkian järjestämiseen yhdessä [varjojen](./shadows) kanssa. Kaikki [väripaletin värit](./colors) on testattu siten, että niiden ja näiden pintojen välillä on tarpeeksi kontrastia.
+
+Pinnat saavat hienovaraisen sävyn pääväristä ja mukautuvat automaattisesti vaaleisiin ja tummiin tiloihin.
 
 ### Esimerkki {#example}
 
@@ -15,8 +17,10 @@ On kolme tasoa pintoja, joita käytetään UI-hierarkian järjestämiseen, usein
 
 ### Muuttujat {#variables}
 
-| **Muuttuja**      | **Käyttö**                                                              | **Esimerkki**                             |
-|-------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| `--dwc-surface-1` | Tummenin pinta. Käytetään taustan taustana.                             | <SurfaceBox surface="--dwc-surface-1" /> |
-| `--dwc-surface-2` | Käytetään komponenteissa (esim. korteissa).                            | <SurfaceBox surface="--dwc-surface-2" /> |
-| `--dwc-surface-3` | Vaalein ja korkeimmalla oleva pinta. Käytetään valikoissa, popovereissa, dialogeissa ... | <SurfaceBox surface="--dwc-surface-3" /> |
+| **Muuttuja**      | **Käyttö**                          |
+|-------------------|------------------------------------|
+| `--dwc-surface-1` | Sivun ja kehon tausta.            |
+| `--dwc-surface-2` | Työkalurivit, valikkorivit, kortit.|
+| `--dwc-surface-3` | Ikkunat, valikot, popoverit, dialogit.|
+
+<dwc-doc-surfaces></dwc-doc-surfaces>

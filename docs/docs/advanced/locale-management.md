@@ -1,7 +1,6 @@
 ---
 sidebar_position: 11
 title: Locale Management
-sidebar_class_name: new-content
 ---
 
 # Locale management <DocChip chip='since' label='25.10' />

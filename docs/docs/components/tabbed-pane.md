@@ -2,6 +2,7 @@
 title: TabbedPane
 slug: tabbedpane
 sidebar_position: 125
+sidebar_class_name: new-content
 ---
 
 <DocChip chip='shadow' />
@@ -184,6 +185,16 @@ Individual `Tab` elements can be set to be closable. Closable tabs will have a c
 - **`Manual`**: By default, removal is set to `MANUAL`, which means that the event is fired, but it is up to the developer to handle this event in whatever way they choose.
 
 - **`Auto`**: Alternatively, `AUTO` can be used which will fire the event, and also remove the `Tab` from the component for the developer, removing the need for the developer to implement this behavior manually. 
+
+### Segment control <DocChip chip='since' label='26.00' /> {#segment-control}
+
+The `TabbedPane` can be rendered as a segment control by enabling the `segment` property with `setSegment(true)`. In this mode, tabs are displayed with a sliding pill indicator that highlights the active selection, providing a compact alternative to the standard tabbed interface. 
+
+<ComponentDemo 
+path='/webforj/tabbedpanesegment?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneSegmentView.java'
+height="250px"
+/>
 
 ## Styling {#styling}
 

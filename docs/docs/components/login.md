@@ -64,7 +64,7 @@ The titles, descriptions, labels, and messages within the `Login` component are 
 <ComponentDemo 
 path='/webforj/logininternationalization?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginInternationalizationView.java'
-height = '500px'
+height = '600px'
 />
 
 ## Custom fields {#custom-fields}

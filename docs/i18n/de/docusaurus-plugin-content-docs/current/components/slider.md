@@ -1,20 +1,20 @@
 ---
 title: Slider
 sidebar_position: 101
-_i18n_hash: 16e62c6e021597448e33a04ebfd6f201
+_i18n_hash: 77c71bf27e728d68c1e3381628b37a27
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-slider" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
-Die `Slider`-Komponente bietet den Nutzern die Möglichkeit, einen numerischen Wert auszuwählen, indem sie einen Knopf entlang einer Spur zwischen einem Minimum und Maximum ziehen. Schrittintervalle, Tickmarken und Beschriftungen können konfiguriert werden, um die Auswahl zu erleichtern.
+Die `Slider`-Komponente bietet den Benutzern die Möglichkeit, einen numerischen Wert auszuwählen, indem sie einen Knopf entlang einer Spur zwischen einem minimalen und maximalen Grenzwert ziehen. Schrittintervalle, Tickmarkierungen und Beschriftungen können konfiguriert werden, um die Auswahl zu leiten.
 
 <!-- INTRO_END -->
 
 ## Grundlagen {#basics}
 
-Der `Slider` ist so konzipiert, dass er sofort einsatzbereit ist und keine zusätzliche Einrichtung erforderlich ist, um effektiv zu funktionieren. Standardmäßig erstreckt er sich über einen Bereich von 0 bis 100 mit einem Anfangswert von 50, was ihn ideal für eine schnelle Integration in jede App macht. Für spezifischere Anwendungsfälle kann der `Slider` mit Eigenschaften wie Ausrichtung, Tickmarken, Beschriftungen und Tooltips angepasst werden.
+Der `Slider` wurde entwickelt, um sofort einsatzbereit zu sein und benötigt keine zusätzliche Konfiguration, um effektiv zu funktionieren. Standardmäßig erstreckt er sich über einen Bereich von 0 bis 100 mit einem Startwert von 50, was ihn ideal für eine schnelle Integration in jede App macht. Für spezifischere Anwendungsfälle kann der `Slider` mit Eigenschaften wie Orientierung, Tickmarkierungen, Beschriftungen und Tooltips angepasst werden.
 
 Hier ist ein Beispiel für einen `Slider`, der es den Benutzern ermöglicht, die Lautstärke innerhalb eines vordefinierten Bereichs anzupassen:
 
@@ -26,15 +26,15 @@ height = '100px'
 
 ## `Slider`-Wert {#slider-value}
 
-Der `Slider`-Wert repräsentiert die aktuelle Position des Knopfes auf dem Slider und wird als Ganzzahl innerhalb des Bereichs des `Sliders` definiert. Dieser Wert wird dynamisch aktualisiert, wenn der Benutzer mit dem Slider interagiert, wodurch er eine wesentliche Eigenschaft zur Verfolgung der Benutzereingaben darstellt.
+Der `Slider`-Wert stellt die aktuelle Position des Knopfes auf dem Slider dar und wird als Ganzzahl innerhalb des Bereichs des `Sliders` definiert. Dieser Wert wird dynamisch aktualisiert, während der Benutzer mit dem Slider interagiert, und ist eine wesentliche Eigenschaft zur Nachverfolgung der Benutzereingabe.
 
 :::tip Standardwert
-Standardmäßig beginnt der `Slider` mit einem Wert von 50, unter der Annahme, dass der Standardbereich von 0 bis 100 reicht.
+Standardmäßig beginnt der `Slider` mit einem Wert von 50, vorausgesetzt, der Standardbereich reicht von 0 bis 100.
 :::
 
-### Wert festlegen und abrufen {#setting-and-getting-the-value}
+### Wert setzen und abrufen {#setting-and-getting-the-value}
 
-Sie können den Wert des `Sliders` während der Initialisierung festlegen oder später mit der Methode `setValue()` aktualisieren. Um den aktuellen Wert abzurufen, verwenden Sie die Methode `getValue()`.
+Sie können den Wert des `Sliders` während der Initialisierung setzen oder später mit der Methode `setValue()` aktualisieren. Um den aktuellen Wert abzurufen, verwenden Sie die Methode `getValue()`.
 
 ```java
 Slider slider = new Slider();  
@@ -44,17 +44,17 @@ Integer value = slider.getValue();
 System.out.println("Aktueller Slider-Wert: " + value);
 ```
 
-## Minimale und maximale Werte {#minimum-and-maximum-values}
+## Mindest- und Höchstwerte {#minimum-and-maximum-values}
 
-Die minimalen und maximalen Werte definieren den zulässigen Bereich des `Sliders` und bestimmen die Grenzen, innerhalb derer sich der `Slider`-Knopf bewegen kann. Standardmäßig ist der Bereich von 0 bis 100 eingestellt, aber Sie können diese Werte an Ihre Bedürfnisse anpassen.
+Die Mindest- und Höchstwerte definieren den zulässigen Bereich des `Sliders` und bestimmen die Grenzen, innerhalb derer sich der Knopf des `Sliders` bewegen kann. Standardmäßig liegt der Bereich bei 0 bis 100, aber Sie können diese Werte an Ihre Bedürfnisse anpassen.
 
-Die Intervalle auf dem `Slider` haben ein Standard-Schritt von 1, was bedeutet, dass die Anzahl der Intervalle durch den Bereich bestimmt wird. Zum Beispiel:
-- Ein Slider mit einem Bereich von 0 bis 10 hat 10 Intervalle.
-- Ein Slider mit einem Bereich von 0 bis 100 hat 100 Intervalle.
+Die Intervalle auf dem `Slider` haben standardmäßig einen Schritt von 1, was bedeutet, dass die Anzahl der Intervalle durch den Bereich bestimmt wird. Beispielsweise:
+- Ein Slider mit einem Bereich von 0 bis 10 wird 10 Intervalle haben.
+- Ein Slider mit einem Bereich von 0 bis 100 wird 100 Intervalle haben.
 
-Diese Intervalle sind gleichmäßig entlang der Slider-Spur verteilt, wobei der Abstand von den Dimensionen des `Sliders` abhängt.
+Diese Intervalle sind gleichmäßig entlang des Slider-Tracks verteilt, wobei der Abstand von den Abmessungen des `Sliders` abhängt.
 
-Unten sehen Sie ein Beispiel für die Erstellung eines `Sliders` mit einem benutzerdefinierten Bereich:
+Nachfolgend ein Beispiel zur Erstellung eines `Sliders` mit einem benutzerdefinierten Bereich:
 
 <ComponentDemo 
 path='/webforj/donationslider?' 
@@ -64,39 +64,39 @@ height = '200px'
 
 ## Tick-Konfiguration {#tick-configuration}
 
-Die `Slider`-Komponente bietet eine flexible Tick-Konfiguration, die es Ihnen ermöglicht, anzupassen, wie Tickmarken angezeigt werden und wie der Slider-Knopf mit ihnen interagiert. Dazu gehört das Anpassen des Abstands zwischen großen und kleinen Tickmarken, das Anzeigen/Verstecken von Tickmarken und das Aktivieren des Snapping zu Tickmarken für eine präzise Benutzereingabe.
+Die `Slider`-Komponente bietet eine flexible Tick-Konfiguration, die es Ihnen ermöglicht, anzupassen, wie Tickmarkierungen angezeigt werden und wie der Slider-Knopf mit ihnen interagiert. Dazu gehört das Anpassen des Abstands zwischen den großen und kleinen Tickmarkierungen, das Anzeigen/Verstecken von Tickmarkierungen und das Aktivieren des Snappings zu Tickmarkierungen für präzise Benutzereingaben.
 
-### Abstände zwischen großen und kleinen Tickmarken {#major-and-minor-tick-spacing}
+### Abstand zwischen großen und kleinen Tickmarkierungen {#major-and-minor-tick-spacing}
 
-Sie können den Abstand für große und kleine Tickmarken definieren, der bestimmt, wie häufig sie auf der `Slider`-Spur erscheinen:
+Sie können den Abstand für große und kleine Tickmarkierungen festlegen, was bestimmt, wie häufig sie auf der `Slider`-Spur erscheinen:
 
-- Große Tickmarken sind größer und oft beschriftet, um Schlüsselwerte darzustellen.
-- Kleine Tickmarken sind kleiner und erscheinen zwischen großen Tickmarken, um feinere Intervalle anzubieten.
+- Große Tickmarkierungen sind größer und oft beschriftet, um wichtige Werte darzustellen.
+- Kleine Tickmarkierungen sind kleiner und erscheinen zwischen großen Tickmarkierungen, um feinere Intervalle anzubieten.
 
 Setzen Sie den Tick-Abstand mit den folgenden Methoden `setMajorTickSpacing()` und `setMinorTickSpacing()`:
 ```java
-slider.setMajorTickSpacing(10); // Große Tickmarken alle 10 Einheiten
-slider.setMinorTickSpacing(2);  // Kleine Tickmarken alle 2 Einheiten
+slider.setMajorTickSpacing(10); // Große Tickmarkierungen alle 10 Einheiten
+slider.setMinorTickSpacing(2);  // Kleine Tickmarkierungen alle 2 Einheiten
 ```
 
-### Tickmarken anzeigen oder verbergen {#show-or-hide-ticks}
+### Tickmarkierungen anzeigen oder verstecken {#show-or-hide-ticks}
 
-Sie können die Sichtbarkeit von Tickmarken mit der Methode `setTicksVisible()` umschalten. Standardmäßig sind Tickmarken verborgen.
+Sie können die Sichtbarkeit von Tickmarkierungen mit der Methode `setTicksVisible()` umschalten. Standardmäßig sind Tickmarkierungen ausgeblendet.
 
 ```java
-slider.setTicksVisible(true); // Tickmarken anzeigen
-slider.setTicksVisible(false); // Tickmarken verbergen
+slider.setTicksVisible(true); // Tickmarkierungen anzeigen
+slider.setTicksVisible(false); // Tickmarkierungen verstecken
 ```
 
 ### Snapping {#snapping}
 
-Um sicherzustellen, dass der `Slider`-Knopf während der Benutzerinteraktion mit der nächsten Tickmarke ausgerichtet ist, aktivieren Sie das Snapping mit der Methode `setSnapToTicks()`:
+Um sicherzustellen, dass der `Slider`-Knopf während der Benutzerinteraktion mit der nächstgelegenen Tickmarkierung ausgerichtet ist, aktivieren Sie das Snapping mit der Methode `setSnapToTicks()`:
 
 ```java
 slider.setSnapToTicks(true); // Snapping aktivieren
 ```
 
-Hier ist ein Beispiel für einen vollständig konfigurierten `Slider`, der die Einstellungen für große und kleine Ticks sowie die Snapping-Funktionalität für präzise Anpassungen zeigt:
+Hier ist ein Beispiel für einen vollständig konfigurierten `Slider`, der die Einstellungen für große und kleine Tickmarkierungen zusammen mit der Snapping-Funktionalität für präzise Anpassungen zeigt:
 
 <ComponentDemo 
 path='/webforj/slidertickspacing?' 
@@ -104,30 +104,30 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '350px'
 />
 
-## Ausrichtung und Umkehrung {#orientation-and-inversion}
+## Orientierung und Inversion {#orientation-and-inversion}
 
-Die `Slider`-Komponente unterstützt zwei Ausrichtungen: horizontal (Standard) und vertikal. Sie können die Ausrichtung ändern, um Ihrem UI-Layout und den Anforderungen Ihrer App gerecht zu werden.
+Die `Slider`-Komponente unterstützt zwei Orientierungen: horizontal (Standard) und vertikal. Sie können die Orientierung ändern, um Ihren UI-Layout- und App-Anforderungen gerecht zu werden.
 
-Zusätzlich zur Ausrichtung kann der `Slider` auch umgekehrt werden. Standardmäßig:
+Neben der Orientierung kann der `Slider` auch invertiert werden. Standardmäßig:
 
-- Ein horizontaler `Slider` erstreckt sich von Minimum (links) nach Maximum (rechts).
-- Ein vertikaler `Slider` erstreckt sich von Minimum (unten) nach Maximum (oben).
+- Ein horizontaler `Slider` geht von minimal (links) nach maximal (rechts).
+- Ein vertikaler `Slider` geht von minimal (unten) nach maximal (oben).
 
-Bei einer Umkehrung wird diese Richtung umgekehrt. Verwenden Sie die Methode `setInverted(true)`, um die Umkehrung zu aktivieren.
+Bei einer Inversion wird diese Richtung umgekehrt. Verwenden Sie die Methode `setInverted(true)`, um die Inversion zu aktivieren.
 
 <ComponentDemo 
 path='/webforj/sliderorientation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationView.java'
-height = '420px'
+height = '440px'
 />
 
 ## Beschriftungen {#labels}
 
-Die `Slider`-Komponente unterstützt Beschriftungen auf den Tickmarken, um den Benutzern zu helfen, die Werte leichter zu interpretieren. Sie können standardmäßige numerische Beschriftungen verwenden oder benutzerdefinierte Beschriftungen bereitstellen und deren Sichtbarkeit nach Bedarf umschalten.
+Die `Slider`-Komponente unterstützt Beschriftungen auf Tickmarkierungen, um den Benutzern zu helfen, die Werte leichter zu interpretieren. Sie können Standardnumerische Beschriftungen oder benutzerdefinierte Beschriftungen verwenden und deren Sichtbarkeit nach Bedarf umschalten.
 
 ### Standardbeschriftungen {#default-labels}
 
-Standardmäßig kann der Slider numerische Beschriftungen an großen Tickmarken anzeigen. Diese Werte werden durch die Einstellung `setMajorTickSpacing()` bestimmt. Um Standardbeschriftungen zu aktivieren, verwenden Sie:
+Standardmäßig kann der Slider numerische Beschriftungen an großen Tickmarkierungen anzeigen. Diese Werte werden durch die Einstellung `setMajorTickSpacing()` bestimmt. Um Standardbeschriftungen zu aktivieren, verwenden Sie:
 
 ```java
 slider.setLabelsVisible(true);
@@ -135,13 +135,13 @@ slider.setLabelsVisible(true);
 
 ### Benutzerdefinierte Beschriftungen {#custom-labels}
 
-Sie können die standardmäßigen numerischen Beschriftungen durch benutzerdefinierten Text mit der Methode `setLabels()` ersetzen. Dies ist hilfreich, wenn Sie bedeutungsvollere Werte (z. B. Temperatur, Währung oder Kategorien) anzeigen möchten.
+Sie können die Standardnumerischen Beschriftungen durch benutzerdefinierten Text ersetzen, indem Sie die Methode `setLabels()` verwenden. Dies ist hilfreich, wenn Sie bedeutungsvollere Werte (z. B. Temperatur, Währung oder Kategorien) anzeigen möchten.
 
 ```java
 Map<Integer, String> customLabels = Map.of(
   0, "Kalt",
   30, "Kühl",
-  50, "Mäßig",
+  50, "Gemäßigt",
   80, "Warm",
   100, "Heiß"
 );
@@ -150,9 +150,9 @@ slider.setLabels(customLabels);
 slider.setLabelsVisible(true);
 ```
 
-### Sichtbarkeit von Beschriftungen umschalten {#toggling-label-visibility}
+### Sichtbarkeit der Beschriftungen umschalten {#toggling-label-visibility}
 
-Egal, ob Sie Standard- oder benutzerdefinierte Beschriftungen verwenden, Sie können deren Sichtbarkeit mit `setLabelsVisible(true)` steuern oder sie mit `setLabelsVisible(false)` verbergen.
+Egal, ob Sie Standard- oder benutzerdefinierte Beschriftungen verwenden, Sie können deren Sichtbarkeit mit `setLabelsVisible(true)` steuern oder sie mit `setLabelsVisible(false)` ausblenden.
 
 <ComponentDemo 
 path='/webforj/sliderlabels?' 
@@ -171,33 +171,35 @@ slider.setTooltipVisible(true); // Tooltips aktivieren
 slider.setTooltipVisible(false); // Tooltips deaktivieren
 ```
 
-Tooltips können auch so konfiguriert werden, dass sie nur erscheinen, wenn der Benutzer mit dem `Slider` interagiert. Verwenden Sie die Methode `setTooltipVisibleOnSlideOnly()`, um dieses Verhalten zu aktivieren. Dies ist besonders nützlich, um visuelle Unordnung zu reduzieren und gleichzeitig hilfreiches Feedback während der Interaktion zu bieten.
+Tooltips können auch so konfiguriert werden, dass sie nur angezeigt werden, wenn der Benutzer mit dem `Slider` interagiert. Verwenden Sie die Methode `setTooltipVisibleOnSlideOnly()`, um dieses Verhalten zu aktivieren. Dies ist besonders nützlich, um visuelle Unordnung zu reduzieren und dennoch hilfreiches Feedback während der Interaktion bereitzustellen.
 
 Hier ist ein Beispiel für einen vollständig konfigurierten `Slider` mit Tooltips:
 
 ### Tooltip-Anpassung {#tooltip-customization}
 
-Standardmäßig zeigt der `Slider` einen Tooltip mit seinem aktuellen Wert an. Wenn Sie diesen Text anpassen möchten, verwenden Sie die Methode `setTooltipText()`. Dies ist nützlich, wenn der Tooltip statischen oder beschreibenden Text anstelle des Live-Wertes anzeigen soll.
+Standardmäßig zeigt der `Slider` ein Tooltip mit seinem aktuellen Wert an. Wenn Sie diesen Text anpassen möchten, verwenden Sie die Methode `setTooltipText()`. Dies ist nützlich, wenn Sie möchten, dass der Tooltip statischen oder beschreibenden Text anstelle des aktuellen Wertes anzeigt.
 
-Sie können auch einen JavaScript-Ausdruck verwenden, um den Tooltip dynamisch zu formatieren. Wenn Ihr Ausdruck das Schlüsselwort `return` enthält, wird er unverändert verwendet. Wenn nicht, wird er automatisch mit `return` und `;` umwickelt, um eine gültige Funktion zu bilden. Zum Beispiel:
+Sie können auch einen JavaScript-Ausdruck verwenden, um den Tooltip dynamisch zu formatieren. Wenn Ihr Ausdruck das Schlüsselwort `return` enthält, wird er so verwendet, wie er ist. Andernfalls wird er automatisch mit `return` und `;` umschlossen, um eine gültige Funktion zu bilden. Zum Beispiel:
 
 ```java
-// Zeigt Wert gefolgt von einem Dollarzeichen an
+// Zeigt den Wert gefolgt von einem Dollarzeichen an
 slider.setTooltipText("return x + '$'"); 
 ```
 
 Oder einfach:
 
 ```java
-// Wird interpretiert als: return x + ' Einheiten';
+// Interpretiert als: return x + ' Einheiten';
 slider.setTooltipText("x + ' Einheiten'"); 
 ```
+
 
 ## Styling {#styling}
 
 ### Themen {#themes}
 
-Der `Slider` verfügt über 6 integrierte Themen für schnelles Styling ohne den Einsatz von CSS. Das Thema wird durch die Verwendung einer integrierten Enum-Klasse unterstützt. Unten sind Slider mit jeweils aufgetragenen unterstützten Themen gezeigt:
+Der `Slider` bietet 6 integrierte Themen für eine schnelle Gestaltung ohne die Verwendung von CSS. Das Thema wird durch die Verwendung einer integrierten Enum-Klasse unterstützt.
+Nachfolgend sind Slider mit jeweils angewendeten unterstützten Themen dargestellt:
 
 <ComponentDemo 
 path='/webforj/sliderthemes?' 

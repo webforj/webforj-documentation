@@ -1,6 +1,7 @@
 ---
 title: Upgrade to 25.00
 description: Upgrade from 24.00 to 25.00
+sidebar_position: 10
 ---
 
 This documentation serves as a guide to upgrade webforJ apps from 24.00 to 25.00.

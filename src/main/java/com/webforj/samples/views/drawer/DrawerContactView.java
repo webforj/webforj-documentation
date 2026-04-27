@@ -25,9 +25,10 @@ public class DrawerContactView extends Composite<FlexLayout> {
 
   public DrawerContactView() {
     Drawer drawer = new Drawer()
-            .setLabel("Contacts")
-            .setPlacement(Placement.BOTTOM_CENTER)
-            .open();
+        .setLabel("Contacts")
+        .setPlacement(Placement.BOTTOM_CENTER)
+        .addClassName("contact-drawer")
+        .open();
 
     FlexLayout list = new FlexLayout()
             .addClassName("contact-list")

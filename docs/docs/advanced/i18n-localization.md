@@ -1,7 +1,6 @@
 ---
 sidebar_position: 12
 title: Translation
-sidebar_class_name: new-content
 ---
 
 # Translation <DocChip chip='since' label='25.12' />

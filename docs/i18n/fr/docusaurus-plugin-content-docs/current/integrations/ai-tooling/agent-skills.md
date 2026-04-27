@@ -1,138 +1,57 @@
 ---
 title: Agent Skills
 sidebar_position: 10
-sidebar_class_name: new-content
-_i18n_hash: cf22942f0e73a936bef31cf8a3a9a043
+_i18n_hash: 0458a29cc4337ff83f08afb415097a1c
 ---
-Les compétences des agents enseignent aux assistants de codage AI comment créer des applications webforJ en utilisant les APIs, les tokens de design et les modèles de composants appropriés. Au lieu de deviner les conventions de framework, un assistant AI charge une compétence et suit son workflow structuré pour produire du code qui compile et respecte les meilleures pratiques dès la première tentative.
+Les compétences des agents enseignent aux assistants de codage IA comment construire des applications webforJ en utilisant les bonnes API, les tokens de conception et les modèles de composants. Au lieu de deviner les conventions de framework, l'assistant charge une compétence et suit un flux de travail structuré pour produire du code qui se compile et respecte les meilleures pratiques dès la première tentative.
 
-Les compétences suivent la [spécification des compétences des agents](https://agentskills.io/specification) ouverte et fonctionnent avec plusieurs assistants AI, notamment Claude Code, GitHub Copilot dans VS Code et Cursor. Chaque compétence est un répertoire unique avec un fichier `SKILL.md` décrivant le but et le workflow de la compétence, ainsi que des répertoires `references/` et `scripts/` pour la documentation de support et les scripts d'aide.
+:::tip Utilisez le plugin
+Les compétences ci-dessous sont livrées dans le **[plugin IA webforJ](/docs/integrations/ai-tooling)**, avec le [serveur MCP](/docs/integrations/ai-tooling/mcp). Une installation donne à votre assistant les deux éléments.
+:::
 
-Les compétences des agents pour webforJ sont disponibles dans le dépôt GitHub [webforj/webforj-agent-skills](https://github.com/webforj/webforJ-agent-skills). Avec ces compétences installées, une AI chargera automatiquement ces fichiers lorsqu'elle détectera une tâche pertinente. Par exemple, demander à une AI de "thématiser cette application avec une palette bleue" déclenche la compétence `styling-apps`, qui guide l'AI à rechercher les tokens DWC valides, à écrire du CSS scoping et à valider chaque nom de variable avant de produire une sortie.
+Les compétences suivent la norme ouverte [Agent Skills](https://agentskills.io/specification) et fonctionnent avec de nombreux assistants IA, y compris Claude Code, GitHub Copilot, Cursor, Gemini CLI, OpenAI Codex, et plus encore. Une compétence indique à l'assistant quel type de tâche il gère ; l'assistant la charge automatiquement lorsque votre prompt correspond. Par exemple, demander "thématisez cette application avec une palette bleue" déclenche la compétence `webforj-styling-apps`, qui guide l'assistant pour rechercher des tokens DWC valides, rédiger du CSS scope, et valider chaque nom de variable avant d'écrire quoi que ce soit sur le disque.
 
 ## Pourquoi utiliser des compétences ? {#why-use-skills}
 
-Sans compétences, les assistants AI produisent souvent du code webforJ qui semble plausible mais échoue en pratique. Les problèmes courants incluent :
+Le serveur MCP met à disposition des informations précises sur webforJ à la demande, mais à lui seul, il ne dit pas à l'assistant _quand_ rechercher quelque chose, _quelle_ approche convient à la tâche, ou _dans quel ordre_ faire les choses. C'est là que les compétences entrent en jeu.
 
-- Inventer des noms de tokens `--dwc-*` qui n'existent pas (le CSS compile mais n'a pas d'effet)
-- Utiliser la mauvaise classe de base pour les wrappers de composants (`Composite` au lieu de `ElementComposite`, ou vice versa)
-- Manquer de motifs `PropertyDescriptor`, d'annotations d'événements ou d'interfaces de préoccupation
-- Coder en dur des couleurs qui cassent le mode sombre
-- Sauter des étapes de validation qui détectent des échecs silencieux
-
-Les compétences éliminent ces problèmes en donnant à l'AI des tableaux de décision exacts, des scripts de recherche et des listes de vérification pour chaque type de tâche.
+Les compétences donnent à l'assistant un manuel de jeu spécifique à la tâche : comment classifier le travail devant lui, quels modèles webforJ s'appliquent, quels outils MCP consulter à chaque étape, et comment valider la sortie avant de la remettre. Le résultat est un code webforJ cohérent et conforme aux conventions plutôt qu'une collection de snippets techniquement valides mais stylistiquement mal assortis.
 
 ## Comment les compétences diffèrent du MCP {#how-skills-differ-from-mcp}
 
-Les compétences et le [serveur MCP webforJ](./mcp) servent des rôles complémentaires. Le MCP fournit des outils en direct que l'AI peut appeler à l'exécution pour rechercher de la documentation ou générer des projets. Les compétences fournissent des connaissances statiques et des workflows étape par étape qui guident la manière dont l'AI aborde une tâche.
+Les compétences et le [serveur MCP webforJ](/docs/integrations/ai-tooling/mcp) remplissent des rôles complémentaires. Le serveur MCP fournit des outils en direct que l'assistant peut appeler pour récupérer des informations ou générer des sorties. Les compétences fournissent le flux de travail qui indique à l'assistant _quand_ saisir ces outils, dans quel ordre procéder, et comment valider le résultat.
 
 | | Serveur MCP | Compétences des agents |
 |---|---|---|
-| **Ce qu'il fournit** | Outils en direct : recherche de documentation, génération de projets, création de thèmes | Connaissances statiques : workflows, tableaux de décision, documents de référence, scripts d'aide |
-| **Quand il agit** | À la demande, lorsque l'AI appelle un outil | Automatiquement, lorsque l'AI détecte une tâche correspondante |
-| **Meilleur pour** | Rechercher des APIs spécifiques, générer des projets de démarrage, créer des palettes de thèmes | Tâches de bout en bout qui nécessitent de suivre les conventions de framework et des workflows en plusieurs étapes |
+| **Ce qu'il fournit** | Outils que l'assistant appelle à la demande (recherche de documents, scaffolding, génération de thèmes, validation des tokens) | Flux de travail et tableaux de décision qui guident la manière dont l'assistant aborde une tâche |
+| **Quand il agit** | Lorsque l'assistant décide d'appeler un outil | Automatiquement, lorsque l'assistant détecte une tâche correspondante |
+| **Meilleur pour** | Répondre à des questions spécifiques, générer des artefacts | Tâches de bout en bout qui ont besoin d'une approche webforJ cohérente |
 
-En pratique, les deux fonctionnent bien ensemble. L'outil `webforj-create-theme` du serveur MCP génère une palette valide à partir d'une seule couleur, et la compétence `styling-apps` guide ensuite l'AI à travers le stylisme au niveau des composants et la validation du mode sombre en utilisant cette palette.
-
-Les compétences sont des fichiers statiques lus à partir du disque - elles n'ajoutent pas de surcharge d'exécution ni n'effectuent d'appels d'API externes. L'AI charge le matériel de référence d'une compétence dans sa fenêtre de contexte lorsque cela est pertinent, ce qui utilise des tokens de contexte, mais la qualité de sortie résultante pour le travail spécifique au framework est significativement plus élevée.
+En pratique, les deux fonctionnent mieux ensemble - et le [plugin IA webforJ](https://github.com/webforj/webforj-ai) les livre en une seule installation.
 
 ## Installation {#installation}
 
-Clonez le [dépôt des compétences agents webforJ](https://github.com/webforj/webforJ-agent-skills), puis copiez les dossiers de compétences à l'emplacement où votre outil AI s'y attend. Chaque outil prend en charge deux scopes :
-
-- **Scope de projet** : la compétence n'est disponible que dans ce projet
-- **Scope utilisateur** : la compétence est disponible dans tous vos projets
-
-<Tabs groupId="ide">
-<TabItem value="claude-code" label="Claude Code" default>
-
-```bash
-git clone https://github.com/webforj/webforJ-agent-skills.git
-cd webforJ-agent-skills
-
-# Scope de projet
-cp -r creating-components /path/to/your/project/.claude/skills/
-cp -r styling-apps /path/to/your/project/.claude/skills/
-
-# Scope utilisateur
-cp -r creating-components ~/.claude/skills/
-cp -r styling-apps ~/.claude/skills/
-```
-
-</TabItem>
-<TabItem value="vscode" label="VS Code Copilot">
-
-```bash
-git clone https://github.com/webforj/webforJ-agent-skills.git
-cd webforJ-agent-skills
-
-# Scope de projet
-cp -r creating-components /path/to/your/project/.github/skills/
-cp -r styling-apps /path/to/your/project/.github/skills/
-
-# Scope utilisateur
-cp -r creating-components ~/.copilot/skills/
-cp -r styling-apps ~/.copilot/skills/
-```
-
-</TabItem>
-<TabItem value="cursor" label="Cursor">
-
-```bash
-git clone https://github.com/webforj/webforJ-agent-skills.git
-cd webforJ-agent-skills
-
-# Scope de projet
-cp -r creating-components /path/to/your/project/.cursor/skills/
-cp -r styling-apps /path/to/your/project/.cursor/skills/
-
-# Scope utilisateur
-cp -r creating-components ~/.cursor/skills/
-cp -r styling-apps ~/.cursor/skills/
-```
-
-</TabItem>
-</Tabs>
-
-:::tip[Quel scope utiliser]
-Utilisez le **scope de projet** lorsque vous collaborez avec une équipe afin que tous les membres du projet bénéficient des mêmes compétences. Utilisez le **scope utilisateur** lorsque vous travaillez sur plusieurs projets webforJ et souhaitez que les compétences soient disponibles partout sans les copier dans chaque dépôt.
-:::
+Installez le **[plugin IA webforJ](/docs/integrations/ai-tooling)** - il livre les deux compétences ci-dessous avec le serveur MCP. Pour les clients qui ne prennent pas en charge les plugins, le [référentiel IA webforJ](https://github.com/webforj/webforj-ai#clients) répertorie le répertoire des compétences que chaque outil lit, afin que vous puissiez copier les dossiers de compétences à la main.
 
 ## Compétences disponibles {#available-skills}
 
+<AccordionGroup>
+
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>creating-components</code></strong>: construire des composants webforJ réutilisables à partir de bibliothèques de composants web, de bibliothèques JavaScript ou de composants webforJ existants
+    <strong><code>webforj-adding-servlets</code></strong>: ajouter des points de terminaison REST, des webhooks et des servlets personnalisés
   </AccordionSummary>
   <AccordionDetails>
     <div>
 
-[Cette compétence](https://github.com/webforj/webforJ-agent-skills/tree/main/creating-components) guide un assistant AI à travers la construction de composants Java réutilisables à partir de n'importe quelle source, qu'il s'agisse d'une bibliothèque de composants web existante, d'une bibliothèque JavaScript ordinaire ou d'une composition de composants webforJ existants.
+Utilisez ceci lorsque vous avez besoin d'un chemin HTTP non-UI - un point de terminaison REST, un gestionnaire de webhook, ou un servlet tiers tel que Swagger UI ou Spring Web. L'assistant choisit la bonne approche pour votre projet (Spring `webforj.exclude-urls`, remappant `WebforjServlet` à un sous-chemin, ou proxy via `webforj.conf`) et configure le point de terminaison sans perturber le routage UI de webforJ.
 
-**Ce qu'elle couvre**
+**Quand cela s'active**
 
-La compétence définit cinq chemins pour créer des composants, et enseigne à l'AI à sélectionner le bon en fonction de la tâche :
-
-| Chemin | Quand utiliser | Classe de base |
-|---|---|---|
-| Enrober une bibliothèque d'éléments personnalisés existante | La bibliothèque expédie des éléments personnalisés (`<x-button>`, `<x-dialog>`) | `ElementComposite` / `ElementCompositeContainer` |
-| Construire un élément personnalisé, puis l'enrober | Nouveau composant visuel ou envelopper une bibliothèque JS ordinaire | `ElementComposite` / `ElementCompositeContainer` |
-| Composer des composants webforJ | Combiner des composants webforJ existants en une unité réutilisable | `Composite<T>` |
-| Étendre un élément HTML | Intégration légère ponctuelle sans Shadow DOM | `Div`, `Span`, etc. |
-| Utilitaire au niveau de la page | API du navigateur ou fonctionnalité globale sans widget DOM | Classe Java ordinaire + `EventDispatcher` |
-
-**Workflow**
-
-Pour l'enrober d'élément personnalisé (le chemin le plus commun), la compétence guide l'AI à travers un workflow structuré :
-
-1. **Configuration** : télécharger des JS/CSS tiers dans le répertoire `src/main/resources/static/libs/` du projet. La compétence ordonne à l'AI de préférer les ressources locales aux liens CDN pour une fiabilité hors ligne.
-2. **Extraire les données du composant** : utiliser le script inclus `extract_components.mjs` pour analyser un manifeste d'éléments personnalisés et produire une spécification structurée des propriétés, événements, emplacements et propriétés CSS personnalisées de chaque composant.
-3. **Écrire des wrappers Java** : créer des classes `ElementComposite` ou `ElementCompositeContainer` avec des champs `PropertyDescriptor`, des classes d'événements, des méthodes d'emplacement et des interfaces de préoccupation, le tout suivant les conventions webforJ.
-4. **Écrire des tests** : générer des tests JUnit 5 à l'aide de `PropertyDescriptorTester` et de motifs de test structurés pour les propriétés, les emplacements et les événements.
-
-**Matériel de référence**
-
-La compétence comprend huit documents de référence couvrant les motifs `ElementComposite`, la composition de composants, les descripteurs de propriété, la gestion d'événements, l'interopérabilité JavaScript, les motifs de test et les anti-motifs courants.
+- *"Ajoutez un point de terminaison REST à `/api/orders`."*
+- *"Configurez un gestionnaire de webhook pour Stripe."*
+- *"Montez Swagger UI à `/api/docs`."*
+- *"Exposez un servlet personnalisé qui fonctionne aux côtés de l'UI webforJ."*
 
 </div>
   </AccordionDetails>
@@ -140,42 +59,141 @@ La compétence comprend huit documents de référence couvrant les motifs `Eleme
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>styling-apps</code></strong>: thématiser et styliser les applications webforJ en utilisant le système de tokens de design DWC
+    <strong><code>webforj-building-forms</code></strong>: construire des formulaires avec liaison, validation et masques d'entrée
   </AccordionSummary>
   <AccordionDetails>
     <div>
 
-[Cette compétence](https://github.com/webforj/webforJ-agent-skills/tree/main/styling-apps) enseigne à un assistant AI comment styliser des applications webforJ en utilisant le système de tokens de design DWC. Le principe fondamental est que toutes les valeurs visuelles utilisent les propriétés CSS personnalisées `--dwc-*`. La compétence impose cela en fournissant des étapes de validation et des scripts de recherche qui empêchent l'AI d'inventer des noms de tokens ou de coder en dur des couleurs.
+Utilisez ceci pour tout travail de formulaire dans une application webforJ : formulaires de saisie de données, liaison bidirectionnelle avec un bean Java, validation Jakarta, composants d'entrée masqués (téléphone, devise, IBAN, dates), formatage des colonnes de table en tant que devise ou pourcentage, et mises en page multi-colonnes responsives. L'assistant passe par `BindingContext`, les composants `Masked*Field`, les rendus de masque de Table, et `ColumnsLayout`.
 
-**Ce qu'elle couvre**
+**Quand cela s'active**
 
-| Tâche | Approche que la compétence enseigne |
-|------|---------------------------|
-| Reskinning de couleur | Remplacer les tokens de teinte, de saturation et de contraste à `:root` |
-| Stylisation de composant | Rechercher d'abord les variables CSS du composant, faire appel à `::part()` seulement si nécessaire |
-| Mise en page et espacement | Utiliser des tokens `--dwc-space-*` et `--dwc-size-*` |
-| Typographie | Utiliser des tokens `--dwc-font-*` |
-| Thème complet | Configuration de palette avec remapping des tokens sémantiques |
-| Stylisation des tables | Sélecteurs `::part()` uniquement (les tables n'exposent aucune variable CSS) |
-| Graphiques Google | Fichier de thème JSON chargé via `Assets.contentOf()` et Gson |
-
-**Workflow**
-
-La compétence impose une discipline stricte de recherche avant écriture :
-
-1. **Classifiez la tâche** : déterminez s'il s'agit d'un reskinning de palette, d'une stylisation de composant, d'un travail de mise en page ou d'un thème complet.
-2. **Analysez l'application** : lisez le code source Java pour trouver chaque composant, variante de thème et espace en usage.
-3. **Recherchez chaque composant** : exécutez le script inclus `component_styles.py` pour récupérer les variables CSS exactes, les noms `::part()` et les attributs réfléchis que chaque composant prend en charge. L'AI n'écrit aucun CSS jusqu'à ce que cette étape soit terminée.
-4. **Écrivez le CSS** : produisez du CSS imbriqué et compact qui suit les conventions DWC : les tokens globaux d'abord, suivis des variables CSS des composants, puis les remplacements `::part()` en dernier recours.
-5. **Valider** : réexécutez le script de recherche et vérifiez que chaque token, nom de partie et sélecteur dans la sortie existe réellement. Corrigez tout ce qui échoue.
-
-**Règles clés que la compétence impose**
-
-- **Sept palettes seulement** : `primary`, `success`, `warning`, `danger`, `info`, `default` et `gray`. Des noms comme `secondary` ou `accent` n'existent pas dans DWC et échouent silencieusement.
-- **Pas de couleurs codées en dur** : chaque valeur de couleur doit être une référence `var()`, y compris à l'intérieur de `box-shadow` et `border`. Les valeurs codées en dur cassent le mode sombre.
-- **Variables CSS sur `::part()`** : les variables CSS des composants sont l'API de stylisation prévue. `::part()` est la sortie de secours pour les cas où aucune variable n'existe.
-- **Sélecteurs scopés** : les sélecteurs de balise nus sur des composants avec des attributs `theme` ou `expanse` remplacent toutes les variantes. La compétence exige `:not([theme])` ou `[theme~="value"]` pour le scoping.
+- *"Construisez un formulaire d'inscription lié à mon bean `User`."*
+- *"Ajoutez une entrée de numéro de téléphone avec formatage en temps réel."*
+- *"Formatez cette colonne de table en tant que devise."*
+- *"Validez ce champ avec `@NotEmpty` et un vérificateur d'email personnalisé."*
 
 </div>
   </AccordionDetails>
 </Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-creating-components</code></strong>: envelopper des composants web, des bibliothèques JS ou des compositions
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Utilisez ceci lorsque vous avez besoin d'un composant Java réutilisable enveloppé autour de n'importe quelle source - une bibliothèque d'éléments personnalisés existant, une bibliothèque JavaScript ordinaire, ou une composition de composants webforJ existants. L'assistant choisit la bonne classe de base webforJ pour le travail, connecte les propriétés, les événements, et les slots avec les bons modèles, et produit des tests qui suivent les conventions webforJ.
+
+**Quand cela s'active**
+
+- *"Enveloppez cette bibliothèque d'éléments personnalisés en tant que composants webforJ."*
+- *"Composez ces composants webforJ en une carte réutilisable."*
+- *"Intégrez cette bibliothèque JavaScript ordinaire en tant que composant webforJ."*
+- *"Exposez cette API du navigateur en tant qu'utilitaire webforJ."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-handling-timers-and-async</code></strong>: planifier des minuteries, des débounceurs et du travail asynchrone
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Utilisez ceci pour des tâches périodiques, le polling, la recherche avec débounce en temps réel, le throttling et le travail de fond de longue durée qui met à jour l'UI pendant son exécution. L'assistant choisit le bon primitif (`Interval`, `Debouncer`, `Environment.runLater`, `PendingResult`) et évite les pièges d'exécution des `java.util.Timer`, `javax.swing.Timer`, ou des threads créés en dehors de l'environnement webforJ, tous lancent une `IllegalStateException` dès qu'ils touchent un composant UI.
+
+**Quand cela s'active**
+
+- *"Rafraîchissez ce tableau de bord toutes les 30 secondes."*
+- *"Ajoutez un débounceur pour la recherche en temps réel."*
+- *"Exécutez ce travail gourmand en CPU en arrière-plan et mettez à jour la barre de progression."*
+- *"Faites un polling de ce point de terminaison REST jusqu'à ce qu'il retourne `done`."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-localizing-apps</code></strong>: ajouter le support i18n et traduction
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Utilisez ceci pour tout travail d'internationalisation : chargement de bundles de messages, changement de langue à l'exécution, détection automatique de la locale du navigateur de l'utilisateur, et traduction des étiquettes de composants. L'assistant passe par le `BundleTranslationResolver` de webforJ 25.12, la préoccupation `HasTranslation`, `LocaleObserver`, et des résolveurs personnalisables, et couvre à la fois les chemins Spring et plain webforJ.
+
+**Quand cela s'active**
+
+- *"Ajoutez un support multilingue avec l'anglais et l'espagnol."*
+- *"Détectez la locale du navigateur de l'utilisateur et appliquez-la au démarrage."*
+- *"Ajoutez un sélecteur de langue à la barre de navigation."*
+- *"Déplacez toutes les chaînes codées en dur dans un bundle de messages."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-securing-apps</code></strong>: protéger les routes avec connexion et accès basé sur les rôles
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Utilisez ceci pour tout ce qui protège les routes dans une application webforJ : connexion et déconnexion, accès basé sur les rôles, pages d'accueil publiques, sections réservées aux administrateurs, règles de propriété, et politiques sécurisées par défaut. L'assistant préfère Spring Security lorsque Spring Boot est dans le classpath et revient à l'environnement de sécurité plain webforJ sinon. Il applique les bonnes annotations (`@AnonymousAccess`, `@PermitAll`, `@RolesAllowed`, `@RouteAccess`, `@RegisteredEvaluator`) et explique lesquelles sont terminales versus composables afin que le sécurisé par défaut fasse toujours ce qu'il dit.
+
+**Quand cela s'active**
+
+- *"Protégez `/admin` afin que seuls les utilisateurs avec le rôle `ADMIN` puissent le voir."*
+- *"Ajoutez une page d'accueil publique que tout le monde peut visiter."*
+- *"Affichez le nom de l'utilisateur connecté dans l'en-tête."*
+- *"Laissez un utilisateur n'éditer qu'un enregistrement qu'il possède."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-styling-apps</code></strong>: thématiser les applications avec des tokens de design DWC
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Utilisez ceci pour tout travail visuel sur une application webforJ : re-colorations de palette, stylisation au niveau des composants, mise en page et espacement, typographie, thèmes complets, apparence des tableaux, ou couleurs coordonnées des graphiques Google. L'assistant rédige du CSS qui respecte les tokens de design DWC, scope correctement les sélecteurs, et valide chaque référence `--dwc-*` par rapport au vrai catalogue pour votre version de webforJ - de sorte que le mode sombre et le changement de thème continuent de fonctionner.
+
+**Quand cela s'active**
+
+- *"Thématisez cette application avec une palette bleue."*
+- *"Stylisez le dwc-button pour qu'il corresponde aux directives de la marque."*
+- *"Rendez cette mise en page plus compacte - ajustez l'espacement et la typographie."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-upgrading-versions</code></strong>: mise à niveau entre les versions majeures de webforJ avec OpenRewrite
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Utilisez ceci pour les mises à niveau de version majeure. L'assistant exécute la recette officielle `webforj-rewrite` OpenRewrite pour la version cible, qui met à jour `<webforj.version>` et la version Java, réécrit les API et types renommés, et insère des commentaires `TODO webforJ <major>:` à chaque méthode supprimée qui nécessite une décision manuelle. Pour les cibles plus anciennes sans recette publiée (par exemple de 24 à 25), il vous guide à travers le repli manuel.
+
+**Quand cela s'active**
+
+- *"Mettez à niveau cette application de webforJ 25 à 26."*
+- *"Exécutez la recette de réécriture et résolvez les TODO."*
+- *"Migrez de webforJ 24 à 25 manuellement car il n'y a pas de recette."*
+- *"Quelles API supprimées dois-je corriger après la mise à niveau ?"*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+</AccordionGroup>
