@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.x'
+          node-version: 'lts/*'
       - name: Check code block indentation
-        run: python scripts/check-indentation.py
+        run: node scripts/check-indentation.mjs
