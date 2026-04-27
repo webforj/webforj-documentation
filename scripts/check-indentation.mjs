@@ -29,6 +29,7 @@ const DOCS_DIR = resolve(__dirname, '..', 'docs', 'docs');
  * @param {number} blockStart
  * @param {string} lang
  * @param {Array<[number, string]>} lines
+ * @returns {Array<object>}
  */
 function checkBlock(fpath, blockStart, lang, lines) {
   const violations = [];
@@ -36,17 +37,10 @@ function checkBlock(fpath, blockStart, lang, lines) {
   const indented = lines.filter(([, l]) => l.trim() && l.length - l.trimStart().length > 0);
 
   for (const [lineno, l] of tabLines) {
-    violations.push({
-      file: fpath,
-      line: lineno,
-      blockStart,
-      lang,
-      reason: 'tab indentation',
-      content: l.slice(0, 60),
-    });
+    violations.push({ file: fpath, line: lineno, lang, reason: 'tab indentation', content: l.slice(0, 60) });
   }
 
-  if (!indented.length || tabLines.length) return violations;
+  if (!indented.length || tabLines.length > 0) return violations;
 
   const indentLevels = new Set(indented.map(([, l]) => l.length - l.trimStart().length));
   const sortedLevels = [...indentLevels].sort((a, b) => a - b);
@@ -55,7 +49,6 @@ function checkBlock(fpath, blockStart, lang, lines) {
     violations.push({
       file: fpath,
       line: blockStart,
-      blockStart,
       lang,
       reason: `4-space indentation (indent levels: ${sortedLevels})`,
       content: null,
@@ -78,16 +71,16 @@ function checkFile(fpath) {
   let blockStartLine = 0;
   let lang = '';
 
-  for (let i = 0; i < lines.length; i++) {
+  for (const [i, rawLine] of lines.entries()) {
     const lineno = i + 1;
-    const stripped = lines[i].replace(/\r$/, '');
+    const stripped = rawLine.replace(/\r$/, '');
 
     if (stripped.startsWith(FENCE)) {
       if (!inCodeBlock) {
         inCodeBlock = true;
         codeBlockLines = [];
         blockStartLine = lineno + 1;
-        lang = stripped.length > 3 ? (stripped.slice(3).trim().split(/\s+/)[0] ?? '') : '';
+        lang = stripped.length > 3 ? stripped.slice(3).trim().split(/\s+/)[0] : '';
       } else {
         violations.push(...checkBlock(fpath, blockStartLine, lang, codeBlockLines));
         inCodeBlock = false;
@@ -140,11 +133,9 @@ for (const v of allViolations) {
     console.error(`  ${rel}`);
     currentFile = rel;
   }
+  console.error(`    line ${String(v.line).padStart(4)} (${v.lang || 'no lang'}): ${v.reason}`);
   if (v.content !== null) {
-    console.error(`    line ${String(v.line).padStart(4)} (${v.lang || 'no lang'}): ${v.reason}`);
     console.error(`           ${JSON.stringify(v.content)}`);
-  } else {
-    console.error(`    line ${String(v.line).padStart(4)} (${v.lang || 'no lang'}): ${v.reason}`);
   }
 }
 
