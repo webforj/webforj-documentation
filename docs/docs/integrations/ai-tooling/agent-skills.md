@@ -35,9 +35,51 @@ Install the **[webforJ AI plugin](/docs/integrations/ai-tooling)** - it ships bo
 
 ## Available skills {#available-skills}
 
+<AccordionGroup>
+
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>webforj-creating-components</code></strong>: build reusable webforJ components from web component libraries, JavaScript libraries, or existing webforJ components
+    <strong><code>webforj-adding-servlets</code></strong>: add REST endpoints, webhooks, and custom servlets
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Use this when you need a non-UI HTTP path - a REST endpoint, a webhook handler, or a third-party servlet such as Swagger UI or Spring Web. The assistant picks the right approach for your project (Spring `webforj.exclude-urls`, remapping `WebforjServlet` to a sub-path, or proxying through `webforj.conf`) and wires the endpoint without disrupting webforJ's UI routing.
+
+**When it kicks in**
+
+- *"Add a REST endpoint at `/api/orders`."*
+- *"Wire up a webhook handler for Stripe."*
+- *"Mount Swagger UI at `/api/docs`."*
+- *"Expose a custom servlet that runs alongside the webforJ UI."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-building-forms</code></strong>: build forms with binding, validation, and input masks
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Use this for any form work in a webforJ app: data entry forms, two-way binding to a Java bean, Jakarta validation, masked input components (phone, currency, IBAN, dates), formatting Table columns as currency or percentage, and responsive multi-column layouts. The assistant routes through `BindingContext`, the `Masked*Field` components, the Table mask renderers, and `ColumnsLayout`
+
+**When it kicks in**
+
+- *"Build a registration form bound to my `User` bean."*
+- *"Add a phone number input with format-as-you-type."*
+- *"Format this Table column as currency."*
+- *"Validate this field with `@NotEmpty` and a custom email checker."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-creating-components</code></strong>: wrap web components, JS libraries, or compositions
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -57,7 +99,67 @@ Use this when you need a reusable Java component wrapped around any source - an 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>webforj-styling-apps</code></strong>: theme and style webforJ applications using the DWC design-token system
+    <strong><code>webforj-handling-timers-and-async</code></strong>: schedule timers, debouncers, and async work
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Use this for periodic tasks, polling, debounced search-as-you-type, throttling, and long-running background work that updates the UI as it runs. The assistant picks the right primitive (`Interval`, `Debouncer`, `Environment.runLater`, `PendingResult`) and avoids the runtime traps from raw `java.util.Timer`, `javax.swing.Timer`, or threads created outside the webforJ environment, all of which throw `IllegalStateException` the moment they touch a UI component.
+
+**When it kicks in**
+
+- *"Refresh this dashboard every 30 seconds."*
+- *"Add a search-as-you-type debouncer."*
+- *"Run this CPU-heavy work in the background and update the progress bar."*
+- *"Poll this REST endpoint until it returns `done`."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-localizing-apps</code></strong>: add i18n and translation support
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Use this for any internationalization work: loading message bundles, switching languages at runtime, auto-detecting the user's browser locale, and translating component labels. The assistant routes through webforJ 25.12's `BundleTranslationResolver`, the `HasTranslation` concern, `LocaleObserver`, and pluggable custom resolvers, and covers both Spring and plain webforJ paths.
+
+**When it kicks in**
+
+- *"Add multi-language support with English and Spanish."*
+- *"Detect the user's browser locale and apply it on startup."*
+- *"Add a language switcher to the navbar."*
+- *"Move all hardcoded strings into a messages bundle."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-securing-apps</code></strong>: protect routes with login and role-based access
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Use this for anything that protects routes in a webforJ app: login and logout, role-based access, public landing pages, admin-only sections, ownership rules, and secure-by-default policies. The assistant prefers Spring Security when Spring Boot is on the classpath and falls back to webforJ's plain security framework otherwise. It applies the right annotations (`@AnonymousAccess`, `@PermitAll`, `@RolesAllowed`, `@RouteAccess`, `@RegisteredEvaluator`) and explains which are terminal versus composable so secure-by-default still does what it says.
+
+**When it kicks in**
+
+- *"Protect `/admin` so only users with the `ADMIN` role can see it."*
+- *"Add a public landing page that anyone can visit."*
+- *"Show the logged-in user's name in the header."*
+- *"Only let a user edit a record they own."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-styling-apps</code></strong>: theme apps with DWC design tokens
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -73,3 +175,25 @@ Use this for any visual work on a webforJ app: palette reskins, component-level 
 </div>
   </AccordionDetails>
 </Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-upgrading-versions</code></strong>: upgrade across webforJ major versions with OpenRewrite
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Use this for major version upgrades. The assistant runs the official `webforj-rewrite` OpenRewrite recipe for the target version, which bumps `<webforj.version>` and the Java release, rewrites renamed APIs and types, and inserts `TODO webforJ <major>:` comments at every removed method that needs a manual decision. For older targets with no published recipe (for example 24 to 25), it walks you through the manual fallback.
+
+**When it kicks in**
+
+- *"Upgrade this app from webforJ 25 to 26."*
+- *"Run the rewrite recipe and resolve the TODOs."*
+- *"Migrate from webforJ 24 to 25 manually since there's no recipe."*
+- *"What removed APIs do I need to fix after upgrading?"*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+</AccordionGroup>
