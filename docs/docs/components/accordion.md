@@ -1,7 +1,6 @@
 ---
 sidebar_position: 1
 title: Accordion
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='shadow' />

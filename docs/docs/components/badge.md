@@ -1,7 +1,6 @@
 ---
 title: Badge
 sidebar_position: 8
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='shadow' />
