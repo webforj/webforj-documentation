@@ -1,34 +1,36 @@
 ---
 sidebar_position: 10
 title: Transitions & Easing
-_i18n_hash: 92afb557a2b9f0f8e7ce7ed822663c84
+_i18n_hash: 49efb98e49f030a3c09f7e629ad95eb8
 ---
-Übergangsvariablen werden verwendet, um konsistente Animationsdauern in Ihrer App bereitzustellen. Sie steuern, wie lange eine Animation benötigt, um abzuschließen.
+Übergangsvariablen werden verwendet, um konsistente Animationsdauern in Ihrer App bereitzustellen. Sie steuern, wie lange eine Animation benötigt, um abgeschlossen zu werden.
 
 ### Beispiel {#example}
 
 ```css
 .element {
-  transition: var(--dwc-transition-slow) background-color;
+  transition: background-color var(--dwc-transition-slow);
 }
 ```
 
 ### Variablen {#variables}
 
-| **Variable**              | **Standardwert** | **Beispiel**                               |
-|---------------------------|-------------------|--------------------------------------------|
-| `--dwc-transition-x-slow` | `1000ms`            | <TransitionBox speed="--dwc-transition-x-slow" /> |
-| `--dwc-transition-slow`   | `500ms`             | <TransitionBox speed="--dwc-transition-slow" />   |
-| `--dwc-transition-medium` | `250ms`             | <TransitionBox speed="--dwc-transition-medium" /> |
-| `--dwc-transition-fast`   | `150ms`             | <TransitionBox speed="--dwc-transition-fast" />   |
-| `--dwc-transition-x-fast` | `50ms`              | <TransitionBox speed="--dwc-transition-x-fast" /> |
-| `--dwc-transition`        | `var(--dwc-transition-medium)` | <TransitionBox speed="--dwc-transition" /> |
+| **Variable**              | **Standardwert**              |
+|---------------------------|--------------------------------|
+| `--dwc-transition-x-slow` | `1000ms`                      |
+| `--dwc-transition-slow`   | `300ms`                       |
+| `--dwc-transition-medium` | `250ms`                       |
+| `--dwc-transition-fast`   | `150ms`                       |
+| `--dwc-transition-x-fast` | `100ms`                       |
+| `--dwc-transition`        | `var(--dwc-transition-medium)` |
+
+<dwc-doc-transitions></dwc-doc-transitions>
 
 ---
 
 ## Easing {#easing}
 
-Easing-Variablen definieren, wie Werte sich über die Zeit ändern, wodurch Übergänge natürlicher wirken.
+Easing-Variablen definieren, wie sich Werte über die Zeit ändern, wodurch Übergänge natürlicher wirken.
 
 ### Beispiel {#example-1}
 
@@ -38,30 +40,39 @@ Easing-Variablen definieren, wie Werte sich über die Zeit ändern, wodurch Übe
 }
 ```
 
-Versuchen Sie, über jede Easing-Vorschau zu fahren, um den Animationseffekt zu sehen.
+### Standard-Easings {#standard-easings}
 
-### Variablen {#variables-1}
+Dies sind die allgemein verwendeten Easing-Kurven, die von den meisten Komponenten verwendet werden:
 
-| **Variable** | **Cubic Bezier** | **Beispiel** |
-|-------------|------------------|-------------|
-| `--dwc-ease-inQuad` | [cubic-bezier(0.55, 0.085, 0.68, 0.53)](https://cubic-bezier.com/#0.55,0.085,0.68,0.53) | <TransitionBox easing="--dwc-ease-inQuad" /> |
-| `--dwc-ease-outQuad` | [cubic-bezier(0.25, 0.46, 0.45, 0.94)](https://cubic-bezier.com/#0.25,0.46,0.45,0.94) | <TransitionBox easing="--dwc-ease-outQuad" /> |
-| `--dwc-ease-inOutQuad` | [cubic-bezier(0.455, 0.03, 0.515, 0.955)](https://cubic-bezier.com/#0.455,0.03,0.515,0.955) | <TransitionBox easing="--dwc-ease-inOutQuad" /> |
-| `--dwc-ease-inCubic` | [cubic-bezier(0.55, 0.055, 0.675, 0.19)](https://cubic-bezier.com/#0.55,0.055,0.675,0.19) | <TransitionBox easing="--dwc-ease-inCubic" /> |
-| `--dwc-ease-outCubic` | [cubic-bezier(0.215, 0.61, 0.355, 1)](https://cubic-bezier.com/#0.215,0.61,0.355,1) | <TransitionBox easing="--dwc-ease-outCubic" /> |
-| `--dwc-ease-inQutCubic` | [cubic-bezier(0.645, 0.045, 0.355, 1)](https://cubic-bezier.com/#0.645,0.045,0.355,1) | <TransitionBox easing="--dwc-ease-inQutCubic" /> |
-| `--dwc-ease-inQuart` | [cubic-bezier(0.895, 0.03, 0.685, 0.22)](https://cubic-bezier.com/#0.895,0.03,0.685,0.22) | <TransitionBox easing="--dwc-ease-inQuart" /> |
-| `--dwc-ease-outQuart` | [cubic-bezier(0.165, 0.84, 0.44, 1)](https://cubic-bezier.com/#0.165,0.84,0.44,1) | <TransitionBox easing="--dwc-ease-outQuart" /> |
-| `--dwc-ease-inQutQuart` | [cubic-bezier(0.77,0,0.175,1)](https://cubic-bezier.com/#0.77,0,0.175,1) | <TransitionBox easing="--dwc-ease-inQutQuart" /> |
-| `--dwc-ease-inQuint` | [cubic-bezier(0.755, 0.05, 0.855, 0.06)](https://cubic-bezier.com/#0.755,0.05,0.855,0.06) | <TransitionBox easing="--dwc-ease-inQuint" /> |
-| `--dwc-ease-outQuint` | [cubic-bezier(0.23, 1, 0.32, 1)](https://cubic-bezier.com/#0.23,1,0.32,1) | <TransitionBox easing="--dwc-ease-outQuint" /> |
-| `--dwc-ease-inQutQuint` | [cubic-bezier(0.86, 0, 0.07, 1)](https://cubic-bezier.com/#0.86,0,0.07,1) | <TransitionBox easing="--dwc-ease-inQutQuint" /> |
-| `--dwc-ease-inExpo` | [cubic-bezier(0.95, 0.05, 0.795, 0.035)](https://cubic-bezier.com/#0.95,0.05,0.795,0.035) | <TransitionBox easing="--dwc-ease-inExpo" /> |
-| `--dwc-ease-outExpo` | [cubic-bezier(0.19, 1, 0.22, 1)](https://cubic-bezier.com/#0.19,1,0.22,1) | <TransitionBox easing="--dwc-ease-outExpo" /> |
-| `--dwc-ease-inOutExpo` | [cubic-bezier(1, 0, 0, 1)](https://cubic-bezier.com/#1,0,0,1) | <TransitionBox easing="--dwc-ease-inOutExpo" /> |
-| `--dwc-ease-inCirc` | [cubic-bezier(0.6, 0.04, 0.98, 0.335)](https://cubic-bezier.com/#0.6,0.04,0.98,0.335) | <TransitionBox easing="--dwc-ease-inCirc" /> |
-| `--dwc-ease-outCirc` | [cubic-bezier(0.075, 0.82, 0.165, 1)](https://cubic-bezier.com/#0.075,0.82,0.165,1) | <TransitionBox easing="--dwc-ease-outCirc" /> |
-| `--dwc-ease-inOutCirc` | [cubic-bezier(0.785, 0.135, 0.15, 0.86)](https://cubic-bezier.com/#0.785,0.135,0.15,0.86) | <TransitionBox easing="--dwc-ease-inOutCirc" /> |
-| `--dwc-ease-inBack` | [cubic-bezier(0.36, 0, 0.66, -0.56)](https://cubic-bezier.com/#0.36,0,0.66,-0.56) | <TransitionBox easing="--dwc-ease-inBack" /> |
-| `--dwc-ease-outBack` | [cubic-bezier(0.34, 1.56, 0.64, 1)](https://cubic-bezier.com/#0.34,1.56,0.64,1) | <TransitionBox easing="--dwc-ease-outBack" /> |
-| `--dwc-ease-inOutBack` | [cubic-bezier(0.68, -0.6, 0.32, 1.6)](https://cubic-bezier.com/#0.68,-0.6,0.32,1.6) | <TransitionBox easing="--dwc-ease-inOutBack" /> |
+| **Variable** | **Cubic Bezier** |
+|-------------|------------------|
+| `--dwc-ease` | `cubic-bezier(0.4, 0, 0.2, 1)` |
+| `--dwc-ease-out` | `cubic-bezier(0, 0, 0.2, 1)` |
+| `--dwc-ease-in` | `cubic-bezier(0.4, 0, 1, 1)` |
+| `--dwc-ease-outGlide` | `cubic-bezier(0.32, 0.72, 0, 1)` |
+
+### Erweiterte Easings {#extended-easings}
+
+| **Variable** | **Cubic Bezier** | **Test-Link** |
+|-------------|------------------|---------------|
+| `--dwc-ease-inQuad` | `cubic-bezier(0.55, 0.085, 0.68, 0.53)` | [Testen Sie es](https://cubic-bezier.com/#0.55,0.085,0.68,0.53) |
+| `--dwc-ease-outQuad` | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | [Testen Sie es](https://cubic-bezier.com/#0.25,0.46,0.45,0.94) |
+| `--dwc-ease-inOutQuad` | `cubic-bezier(0.455, 0.03, 0.515, 0.955)` | [Testen Sie es](https://cubic-bezier.com/#0.455,0.03,0.515,0.955) |
+| `--dwc-ease-inCubic` | `cubic-bezier(0.55, 0.055, 0.675, 0.19)` | [Testen Sie es](https://cubic-bezier.com/#0.55,0.055,0.675,0.19) |
+| `--dwc-ease-outCubic` | `cubic-bezier(0.215, 0.61, 0.355, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.215,0.61,0.355,1) |
+| `--dwc-ease-inOutCubic` | `cubic-bezier(0.645, 0.045, 0.355, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.645,0.045,0.355,1) |
+| `--dwc-ease-inQuart` | `cubic-bezier(0.895, 0.03, 0.685, 0.22)` | [Testen Sie es](https://cubic-bezier.com/#0.895,0.03,0.685,0.22) |
+| `--dwc-ease-outQuart` | `cubic-bezier(0.165, 0.84, 0.44, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.165,0.84,0.44,1) |
+| `--dwc-ease-inOutQuart` | `cubic-bezier(0.77, 0, 0.175, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.77,0,0.175,1) |
+| `--dwc-ease-inQuint` | `cubic-bezier(0.755, 0.05, 0.855, 0.06)` | [Testen Sie es](https://cubic-bezier.com/#0.755,0.05,0.855,0.06) |
+| `--dwc-ease-outQuint` | `cubic-bezier(0.23, 1, 0.32, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.23,1,0.32,1) |
+| `--dwc-ease-inOutQuint` | `cubic-bezier(0.86, 0, 0.07, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.86,0,0.07,1) |
+| `--dwc-ease-inExpo` | `cubic-bezier(0.95, 0.05, 0.795, 0.035)` | [Testen Sie es](https://cubic-bezier.com/#0.95,0.05,0.795,0.035) |
+| `--dwc-ease-outExpo` | `cubic-bezier(0.19, 1, 0.22, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.19,1,0.22,1) |
+| `--dwc-ease-inOutExpo` | `cubic-bezier(1, 0, 0, 1)` | [Testen Sie es](https://cubic-bezier.com/#1,0,0,1) |
+| `--dwc-ease-inCirc` | `cubic-bezier(0.6, 0.04, 0.98, 0.335)` | [Testen Sie es](https://cubic-bezier.com/#0.6,0.04,0.98,0.335) |
+| `--dwc-ease-outCirc` | `cubic-bezier(0.075, 0.82, 0.165, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.075,0.82,0.165,1) |
+| `--dwc-ease-inOutCirc` | `cubic-bezier(0.785, 0.135, 0.15, 0.86)` | [Testen Sie es](https://cubic-bezier.com/#0.785,0.135,0.15,0.86) |
+| `--dwc-ease-inBack` | `cubic-bezier(0.36, 0, 0.66, -0.56)` | [Testen Sie es](https://cubic-bezier.com/#0.36,0,0.66,-0.56) |
+| `--dwc-ease-outBack` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | [Testen Sie es](https://cubic-bezier.com/#0.34,1.56,0.64,1) |
+| `--dwc-ease-inOutBack` | `cubic-bezier(0.68, -0.6, 0.32, 1.6)` | [Testen Sie es](https://cubic-bezier.com/#0.68,-0.6,0.32,1.6) |

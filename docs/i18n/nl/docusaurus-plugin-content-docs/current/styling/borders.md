@@ -1,32 +1,41 @@
 ---
 sidebar_position: 6
 title: Border
-_i18n_hash: 0849be23b4628a0132bffb11c88fd4f3
+_i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
-De randproperties worden gebruikt om de randstijl en -breedte van de component te regelen. Zie [beschikbare randstijlen](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
+De rand-eigenschappen worden gebruikt om de randstijl en -breedte van de component te beheersen. Zie [beschikbare randstijlen](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
 
 ### Voorbeeld {#example}
 
 ```css
 .element {
-  border: var(--dwc-border-width) var(--dwc-border-style) red;
+  border: var(--dwc-border-width) var(--dwc-border-style) var(--dwc-border-color);
 }
 ```
 
 ### Variabelen {#variables}
 
-| **Variabele**           | **Standaardwaarde** |
-|-------------------------|---------------------|
-| `--dwc-border-width`    | 1px                 |
-| `--dwc-border-style`    | solid               |
+| **Variabele**              | **Standaardwaarde** |
+|---------------------------|-------------------|
+| `--dwc-border-width`      | 1px               |
+| `--dwc-border-style`      | solid             |
+| `--dwc-border-color`      | var(--dwc-border-color-default) |
+| `--dwc-border-color-emphasis` | var(--dwc-border-color-default-emphasis) |
 
-## Randradius {#border-radius}
+### Per-palette randkleuren {#per-palette-border-colors}
 
-Randradiusvariabelen definiëren hoe afgerond de hoeken van een component zijn. Alle waarden zijn gedefinieerd in `em`, waardoor ze schalen met de lettergrootte.
+Elke kleurpalet genereert zijn eigen randkleurvariabelen:
 
-:::info EM-eenheid
-`em` is een relatieve eenheid die schaalt met de [lettergrootte](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) van de bovenliggende element.
-:::
+| Variabelepatroon | Beschrijving |
+|---|---|
+| `--dwc-border-color-{name}` | Mode-bewuste randkleur getint met de paletkleur. |
+| `--dwc-border-color-{name}-emphasis` | Sterkere variant voor hover-, focus- en actieve toestanden. |
+
+Waar `{name}` een van de volgende is: `primary`, `success`, `warning`, `danger`, `info`, `gray`, `default`.
+
+## Randstraal {#border-radius}
+
+Randstraalvariabelen definiëren hoe afgerond de hoeken van een component zijn. Alle maten schalen vanaf een enkele zaadwaarde (`--dwc-border-radius-seed`). Het wijzigen van het zaad herschaalt het hele radius systeem proportioneel.
 
 ### Voorbeeld {#example-1}
 
@@ -38,15 +47,27 @@ Randradiusvariabelen definiëren hoe afgerond de hoeken van een component zijn. 
 
 ### Variabelen {#variables-1}
 
-| **Variabele**                   | **Standaardwaarde**        | **Voorbeeld**                              |
-|----------------------------------|------------------------------|--------------------------------------------|
-| `--dwc-border-radius-2xs`       | 0.071em                     | <RadiusBox radius="--dwc-border-radius-2xs" /> |
-| `--dwc-border-radius-xs`        | 0.125em                     | <RadiusBox radius="--dwc-border-radius-xs" />  |
-| `--dwc-border-radius-s`         | 0.25em                      | <RadiusBox radius="--dwc-border-radius-s" />   |
-| `--dwc-border-radius-m`         | 0.375em                     | <RadiusBox radius="--dwc-border-radius-m" />   |
-| `--dwc-border-radius-l`         | 0.5em                       | <RadiusBox radius="--dwc-border-radius-l" />   |
-| `--dwc-border-radius-xl`        | 0.75em                      | <RadiusBox radius="--dwc-border-radius-xl" />  |
-| `--dwc-border-radius-2xl`       | 1em                         | <RadiusBox radius="--dwc-border-radius-2xl" /> |
-| `--dwc-border-radius-round`     | 50%                         | <RadiusBox radius="--dwc-border-radius-round" /> |
-| `--dwc-border-radius-pill`      | 9999px                      | <RadiusBox radius="--dwc-border-radius-pill" />  |
-| `--dwc-border-radius`           | var(--dwc-border-radius-s)  | <RadiusBox radius="--dwc-border-radius" />       |
+| **Variabele**                | **Standaardwaarde**                  | **Berekend (bij seed=8px)** |
+|-----------------------------|------------------------------------|-----------------------------|
+| `--dwc-border-radius-seed`  | 0.5rem                             | 8px                        |
+| `--dwc-border-radius-2xs`   | 0.0625rem                          | 1px (vast)                |
+| `--dwc-border-radius-xs`    | 0.125rem                           | 2px (vast)                |
+| `--dwc-border-radius-s`     | calc(seed * 0.5)                   | 4px                        |
+| `--dwc-border-radius-m`     | calc(seed * 0.75)                  | 6px                        |
+| `--dwc-border-radius-l`     | var(--dwc-border-radius-seed)      | 8px                        |
+| `--dwc-border-radius-xl`    | calc(seed * 1.5)                   | 12px                       |
+| `--dwc-border-radius-2xl`   | calc(seed * 2)                     | 16px                       |
+| `--dwc-border-radius-3xl`   | calc(seed * 3)                     | 24px                       |
+| `--dwc-border-radius-4xl`   | calc(seed * 4)                     | 32px                       |
+| `--dwc-border-radius-round` | 50%                                |                            |
+| `--dwc-border-radius-pill`  | calc(var(--dwc-size-m) / 2)        |                            |
+| `--dwc-border-radius`       | var(--dwc-border-radius-seed)      | 8px                        |
+
+<dwc-doc-radii></dwc-doc-radii>
+
+### Gebruiksrichtlijnen {#usage-guidelines}
+
+- Items binnen containers: gebruik `s` (0.5x zaad)
+- Structurele randen (tussen item en container): gebruik `m` (0.75x zaad)
+- Containers en oppervlakken: gebruik `l` (1x zaad)
+- Grote overlays: gebruik `xl` (1.5x zaad)

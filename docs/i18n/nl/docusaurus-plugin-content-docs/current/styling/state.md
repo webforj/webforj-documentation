@@ -1,14 +1,14 @@
 ---
 sidebar_position: 9
 title: State
-_i18n_hash: a6e594262709137318ed90066759b577
+_i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
-State-tokens definiëren hoe componenten visueel reageren op gebruikersinteractie—zoals wanneer ze zijn uitgeschakeld of gefocust. Deze variabelen helpen ervoor te zorgen dat gedrag en styling consistent zijn voor alle UI-elementen, en kunnen eenvoudig worden aangepast om bij je ontwerpsysteem te passen.
+State tokens definiëren hoe componenten visueel reageren op gebruikersinteractie, zoals wanneer ze zijn uitgeschakeld of gefocust. Deze variabelen helpen ervoor te zorgen dat er consistent gedrag en styling is over alle UI-elementen, en kunnen gemakkelijk worden aangepast om overeen te komen met uw ontwerpsysteem.
 
-<!-- vale off -->
-## Uitschakelde toestand {#disabled-state}
-<!-- vale on -->
-De eigenschappen van de uitgeschakelde toestand worden gebruikt om een element visueel inactief en niet-interactief te laten lijken.
+## Uitgeschakelde staat {#disabled-state}
+De eigenschappen van de uitgeschakelde staat worden gebruikt om een element visueel inactief en niet-interactief te laten lijken.
+
+De opaciteit past zich aan het huidige thema aan voor optimale zichtbaarheid in zowel lichte als donkere modus.
 
 ### Voorbeeld {#example}
 
@@ -21,21 +21,44 @@ input:disabled {
 
 ### Variabelen {#variables}
 
-| **Variabele**            | **Standaardwaarde**       |
-|--------------------------|----------------------------|
-| `--dwc-disabled-opacity` | 0.7                        |
-| `--dwc-disabled-cursor`  | var(--dwc-cursor-disabled) |
+| **Variabele**            | **Standaardwaarde**       | **Beschrijving** |
+|--------------------------|---------------------------|-----------------|
+| `--dwc-disabled-opacity` | Past zich aan lichte/donkere modus aan | Verminderde opaciteit voor uitgeschakelde elementen |
+| `--dwc-disabled-cursor`  | var(--dwc-cursor-disabled) | |
 
 ---
 
-## Focus-toestand {#focus-state}
+## Focusstaat {#focus-state}
 
-Wanneer een component focus ontvangt, wordt er een focusring rond het element weergegeven om de actieve staat aan te duiden. Je kunt het uiterlijk van de ring aanpassen met behulp van de onderstaande variabelen. Deze variabelen worden gebruikt in combinatie met de instellingen voor de focusring van het componentthema.
+Wanneer een component focus ontvangt, wordt er een focusring rond het element weergegeven om de actieve staat aan te geven. De focusring gebruikt een gap-ringpatroon met een oppervlakgekleurde binnenste ruimte en een gekleurde buitenste ring.
 
 ### Variabelen {#variables-1}
 
-| **Variabele**            | **Standaardwaarde**  |
-|---------------------------|----------------------|
-| `--dwc-focus-ring-l`      | 45%                  |
-| `--dwc-focus-ring-a`      | 0.4                  |
-| `--dwc-focus-ring-width`  | 3px                  |
+| **Variabele**            | **Standaardwaarde** | **Beschrijving** |
+|---------------------------|---------------------|-----------------|
+| `--dwc-focus-ring-a`      | 0.75                | Alpha-opaciteit van de focusring |
+| `--dwc-focus-ring-width`  | 2px                 | Dikte van de focusring |
+| `--dwc-focus-ring-gap`    | 2px                 | Ruimte tussen de rand van het component en de ring |
+
+Elke kleurenpalet genereert zijn eigen focusringvariabele:
+
+| Variabele patroon        | Beschrijving |
+|---|---|
+| `--dwc-focus-ring-{name}` | Focusring schaduw getint met de kleur van het palet. |
+
+Waar `{name}` een van de volgende is: `primary`, `success`, `warning`, `danger`, `info`, `gray`, `default`. Zie [Component Themas](./colors#theming-components-with-abstract-variables) voor details.
+
+<dwc-doc-focus-rings></dwc-doc-focus-rings>
+
+---
+
+## Schalen {#scales}
+
+Schaaltransformaties worden gebruikt voor druk/klik feedbackanimaties op interactieve elementen.
+
+| **Variabele**              | **Standaardwaarde** | **Beschrijving** |
+|---------------------------|---------------------|-----------------|
+| `--dwc-scale-press`       | 0.97                | Standaard druk schaal (3% krimp) |
+| `--dwc-scale-press-deep`  | 0.93                | Diepe druk schaal (7% krimp) |
+
+<dwc-doc-scales></dwc-doc-scales>

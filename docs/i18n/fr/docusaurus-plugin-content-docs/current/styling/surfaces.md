@@ -1,9 +1,11 @@
 ---
 sidebar_position: 8
 title: Surfaces
-_i18n_hash: ac1f587cd1039f9bf083c610c29c27b9
+_i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
-Il existe trois niveaux de surfaces utilisés pour organiser la hiérarchie de l'interface utilisateur, souvent combinés avec [des ombres](./shadows). Toutes les [couleurs de la palette](./colors) sont testées pour fournir un contraste suffisant par rapport à ces surfaces.
+DWC définit trois niveaux de surfaces qui sont utilisés pour organiser la hiérarchie de l'interface utilisateur combinée avec [shadows](./shadows). Toutes les [palette colors](./colors) sont testées pour avoir un contraste suffisant avec ces surfaces.
+
+Les surfaces prennent une teinte subtile de la couleur primaire et s'adaptent automatiquement aux modes clair et sombre.
 
 ### Exemple {#example}
 
@@ -15,8 +17,10 @@ Il existe trois niveaux de surfaces utilisés pour organiser la hiérarchie de l
 
 ### Variables {#variables}
 
-| **Variable**      | **Utilisation**                                                         | **Exemple**                               |
-|-------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| `--dwc-surface-1` | La surface la plus sombre. Utilisée pour l'arrière-plan du corps.      | <SurfaceBox surface="--dwc-surface-1" /> |
-| `--dwc-surface-2` | Utilisée pour les composants (par exemple, les cartes).                 | <SurfaceBox surface="--dwc-surface-2" /> |
-| `--dwc-surface-3` | La surface la plus claire et la plus élevée. Utilisée pour les menus, les popovers, les dialogues ... | <SurfaceBox surface="--dwc-surface-3" /> |
+| **Variable**      | **Usage**                          |
+|-------------------|------------------------------------|
+| `--dwc-surface-1` | Arrière-plan de la page et du corps.         |
+| `--dwc-surface-2` | Barres d'outils, barres de menus, cartes.        |
+| `--dwc-surface-3` | Fenêtres, menus, popovers, dialogues.|
+
+<dwc-doc-surfaces></dwc-doc-surfaces>
