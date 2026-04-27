@@ -1,9 +1,9 @@
 package com.webforj.samples.views.tabbedpane;
 
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
-import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
@@ -17,10 +17,8 @@ public class TabbedPaneSegmentView extends Composite<FlexLayout> {
   private final TabbedPane pane = new TabbedPane();
 
   public TabbedPaneSegmentView() {
-    self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("50px")
-        .setMargin("20px")
-        .add(pane);
+    pane.setMaxWidth("max-content");
+    pane.setTheme(Theme.PRIMARY);
 
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
@@ -35,5 +33,15 @@ public class TabbedPaneSegmentView extends Composite<FlexLayout> {
     pane.addTab(new Tab("Documents", documentsIcon));
 
     pane.setSegment(true);
+
+    FlexLayout container = FlexLayout.create(pane)
+        .vertical()
+        .justify().center()
+        .align().center()
+        .build()
+        .setStyle("width", "100%")
+        .setStyle("min-height", "100vh");
+
+    self.add(container);
   }
 }

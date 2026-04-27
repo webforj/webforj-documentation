@@ -6,8 +6,8 @@ import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Paragraph;
-import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -20,32 +20,32 @@ public class DialogAutoWidthView extends Composite<FlexLayout> {
   public DialogAutoWidthView() {
     self.add(dialog);
 
-    FlexLayout content = FlexLayout.create(
-        TablerIcon.create("trash").setStyle("font-size", "48px")
-            .setStyle("color", "var(--dwc-color-danger-text)"),
-        new Paragraph("Are you sure you want to delete this item?"))
+    RadioButton autoWidth = RadioButton.Switch("Auto width", true);
+    autoWidth.onToggle(e -> dialog.setAutoWidth(e.isToggled()));
+
+    Paragraph body = new Paragraph(
+        "Toggle Auto width to resize this dialog to fit its content.");
+    body.setStyle("max-width", "26ch");
+
+    FlexLayout content = FlexLayout.create(body)
         .vertical()
+        .build()
+        .setPadding("20px");
+
+    Button save = new Button("Save", ButtonTheme.PRIMARY);
+
+    FlexLayout actions = FlexLayout.create(autoWidth, save)
+        .horizontal()
+        .justify().between()
         .align().center()
         .build()
-        .setPadding("20px")
-        .setSpacing("10px");
+        .setStyle("width", "100%");
 
-    Button toggleAutoWidth = new Button("Toggle Auto Width", ButtonTheme.PRIMARY);
-    Button toggleDefault = new Button("Toggle Default Width");
-
-    toggleAutoWidth.onClick(e -> dialog.setAutoWidth(true));
-    toggleDefault.onClick(e -> dialog.setAutoWidth(false));
-
-    FlexLayout actions = FlexLayout.create(toggleDefault, toggleAutoWidth)
-        .horizontal()
-        .justify().end()
-        .build()
-        .setSpacing("10px");
-
-    dialog.addToHeader(new Div("Delete Item"))
+    dialog.addToHeader(new Div("Save changes"))
         .addToContent(content)
         .addToFooter(actions)
         .setCloseable(false)
+        .setAutoWidth(true)
         .open();
   }
 }
