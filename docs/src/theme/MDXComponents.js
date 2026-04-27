@@ -33,6 +33,7 @@ import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
 import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarning';
 import AutomatedUpgradeTip from '@site/src/components/DocsTools/AutomatedUpgradeTip';
+import AISkillTip from '@site/src/components/DocsTools/AISkillTip';
 
 
 export default {
@@ -66,6 +67,7 @@ export default {
   ColorPalette,
   table: TableWrapper,
   ExperimentalWarning,
-  AutomatedUpgradeTip
+  AutomatedUpgradeTip,
+  AISkillTip
 };
 

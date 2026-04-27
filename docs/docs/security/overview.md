@@ -21,6 +21,8 @@ This feature is in public preview and ready for production use. During the previ
 
 In modern web applications, **security** refers to controlling access to different parts of your app based on user identity and permissions. In webforJ, security provides a framework for **route-level access control**, where you can protect views, require authentication, and enforce role-based permissions.
 
+<AISkillTip skill="webforj-securing-apps" />
+
 ## Traditional VS secured routing {#traditional-vs-secured-routing}
 
 In traditional unsecured routing, all routes in your app are accessible to anyone who knows the URL. This means users can navigate to sensitive pages like admin panels or user dashboards without any authentication or authorization checks. The burden falls on developers to manually verify permissions in every component, leading to inconsistent security enforcement and potential vulnerabilities.

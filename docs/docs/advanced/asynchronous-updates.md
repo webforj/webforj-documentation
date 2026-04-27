@@ -11,6 +11,8 @@ The `Environment.runLater()` API provides a mechanism for safely updating the UI
 
 <ExperimentalWarning />
 
+<AISkillTip skill="webforj-handling-timers-and-async" />
+
 ## Understanding the thread model {#understanding-the-thread-model}
 
 webforJ enforces a strict threading model where all UI operations must occur on the `Environment` thread. This restriction exists because:
