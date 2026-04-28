@@ -34,7 +34,7 @@ The example below showcases avatars in a team panel context. Each `Avatar` displ
 path='/webforj/avatar?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarView.java'
 cssURL='/css/avatar/avatar.css'
-height = '450px'
+height = '500px'
 />
 
 ## Displaying images {#displaying-images}

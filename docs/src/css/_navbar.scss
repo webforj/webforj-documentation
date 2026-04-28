@@ -4,16 +4,17 @@
   }
 
   .navbar--dark {
-    --ifm-navbar-background-color: var(--navbar-dark-background-color);
-    --ifm-navbar-link-hover-color: hsl(211, 100%, 60%);
+    --ifm-navbar-link-hover-color: var(--navbar-dark-link-hover-color);
     --ifm-menu-color-background-active: var(--navbar-dark-background-active);
-    --ifm-menu-color-background-hover: transparent;
-    --ifm-menu-color-active: hsl(211, 100%, 60%);
+    --ifm-menu-color-background-hover: var(--navbar-dark-background-active);
+    --ifm-menu-color-active: var(--navbar-dark-link-hover-color);
     --ifm-navbar-search-input-color: var(--ifm-color-white);
     --menu-level-indicator-color: var(--navbar-dark-sidebar-level-indicator-color);
 
-    .navbar__link--active {
-      color: hsl(211, 100%, 60%);
+    .navbar__link--active,
+    .navbar__link:hover,
+    .dropdown--show > .navbar__link {
+      color: var(--navbar-dark-link-hover-color) !important;
     }
   }
 
@@ -26,7 +27,7 @@
   }
 
   .separator {
-    background: hsl(360, 0%, 40%);
+    background: var(--dwc-color-default);
     height: 1.75rem;
     width: 1px;
   }
@@ -35,49 +36,54 @@
     filter: brightness(0) invert(1);
   }
 
-  [class^="navbarSearchContainer"] {
-    --docsearch-text-color: #f5f6f7;
-    --docsearch-searchbox-background: #090a11 !important;
-    --docsearch-searchbox-focus-background: #000 !important;
-    --docsearch-muted-color: #7f8497;
-    --docsearch-key-gradient: linear-gradient(-26.5deg, #565872, #31355b);
-    --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d,
-      0 2px 2px 0 rgba(3, 4, 9, 0.3);
-  }
-
   .DocSearch-Button {
-    background: var(--docsearch-searchbox-background) !important;
-    border: solid 1.75px hsla(211, 100%, 60%, 0%);
-    border-radius: 40px !important;
-    font-weight: 500;
-    & .DocSearch-Search-Icon{
-      filter: brightness(0) invert(1);
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: var(--dwc-border-radius-pill) !important;
+    font-weight: var(--dwc-font-weight-normal);
+    color: rgba(255, 255, 255, 0.6) !important;
+    transition: border-color var(--dwc-transition-fast) var(--dwc-ease),
+                background-color var(--dwc-transition-fast) var(--dwc-ease);
+
+    & .DocSearch-Search-Icon {
+      color: rgba(255, 255, 255, 0.5) !important;
     }
-    &:hover,
-    &:focus {
-      border: solid 1.75px hsl(211, 100%, 60%);
-      .DocSearch-Button-Placeholder {
-        color: var(--ifm-color-secondary-lightest);
-      }
+
+    & .DocSearch-Button-Placeholder {
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4) !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    &:focus,
+    &:focus-visible {
+      background: rgba(0, 0, 0, 0.4) !important;
+      border-color: var(--dwc-color-primary-65) !important;
+      box-shadow:
+        0 0 0 var(--dwc-focus-ring-gap) var(--navbar-dark-background-color),
+        0 0 0 calc(var(--dwc-focus-ring-gap) + var(--dwc-focus-ring-width)) oklch(from var(--dwc-color-primary-seed) 80% c h / var(--dwc-focus-ring-a)) !important;
     }
   }
 
   .DocSearch-Button-Key {
-    border: 0 !important;
-    color: var(--ifm-color-secondary-lightest);
-    background: var(--docsearch-key-gradient);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: var(--dwc-border-radius-s) !important;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: none !important;
   }
 
   .dropdown__menu {
     border: thin solid var(--dwc-border-color);
-    --ifm-dropdown-hover-background-color: var(--dwc-color-primary-alt);
   }
 
   #webforj-version-badge {
-    display: inline-block;
-    min-width: 76px;
-    height: 34px;
-    border: solid 1px #2f3b49;
+    border: solid 1px var(--dwc-color-default-50);
+    border-radius: var(--dwc-border-radius-pill);
+    transition: border-color var(--dwc-transition-x-fast), color var(--dwc-transition-x-fast);
 
     svg {
       display: none;
@@ -85,9 +91,10 @@
 
     &:hover,
     &:focus {
-      background-color: hsl(211, 100%, 15%);
-      color: white;
-      border: solid 1px hsl(211, 100%, 60%);
+      // border-color: var(--dwc-color-default-65);
+      // color: var(--navbar-dark-link-hover-color);
+      background-color: var(--dwc-color-primary-alt);
+      color: var(--dwc-color-primary-70) !important;
     }
   }
 
@@ -104,100 +111,26 @@
   }
 
   #startforj-link {
-    border: none;
-    transition: border .65s;
-    width: 125px;
     height: 34px;
-    background-color: hsl(211, 100%, 35%);
+    padding: 0 var(--dwc-space-m);
+    background-color: var(--dwc-color-primary);
+    color: var(--dwc-color-on-primary-text) !important;
+    border: none;
+    border-radius: var(--dwc-border-radius-m);
+    font-weight: var(--dwc-font-weight-medium);
+    text-decoration: none;
+    transition: background-color var(--dwc-transition-fast) var(--dwc-ease),
+                transform var(--dwc-transition-fast) var(--dwc-ease);
 
     &:hover {
-      color: white;
-      border: solid 1px hsl(211, 100%, 60%);
-
-      .startforj-idle-text {
-        animation: .1s 1s reverse forwards reveal;
-      }
-
-      .startforj-hover-text {
-        animation: .1s 1s forwards reveal;
-      }
-
-      .startforj-container {
-        animation: 1.7s var(--dwc-ease-inOutExpo) .5s forwards starforj-animation;
-      }
-
+      background-color: var(--dwc-color-primary-light);
+      color: var(--dwc-color-on-primary-text-light) !important;
     }
 
-    &:focus {
-      color: white;
-      border: solid 1px hsl(211, 100%, 60%);
-
-      .startforj-idle-text {
-        opacity: 0;
-      }
-
-      .startforj-hover-text {
-        opacity: 1;
-        color: white;
-      }
-    }
-  }
-
-  .startforj-hover-text,
-  .startforj-idle-text {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-  }
-
-  .startforj-hover-text {
-    color: hsl(211, 100%, 35%);
-  }
-
-  @keyframes reveal {
-    0% {
-      opacity: 0;
-      color: hsl(211, 100%, 35%);
-    }
-
-    100% {
-      opacity: 1;
-      color: white;
-    }
-  }
-
-  .startforj-container {
-    width: 125px;
-    height: 34px;
-    position: relative;
-    text-wrap: nowrap;
-    overflow: hidden;
-    border: solid 0px hsl(211, 100%, 30%);
-  }
-
-  @keyframes starforj-animation {
-    0% {
-      width: 125px;
-      border-width: 0 5px 0;
-      border-color: var(--dwc-color-primary-50);
-    }
-
-    65% {
-      width: 0px;
-      border-radius: 400px;
-      border-width: 0px 18px 0px;
-      border-color: hsl(211, 100%, 85%);
-    }
-
-    75% {
-      border-width: 0px 8px 0px;
-    }
-
-    100% {
-      width: 125px;
-      border-radius: 0px;
-      border-width: 0px;
+    &:active {
+      background-color: var(--dwc-color-primary-dark);
+      color: var(--dwc-color-on-primary-text-dark) !important;
+      transform: scale(var(--dwc-scale-press));
     }
   }
 
@@ -231,6 +164,18 @@
     #webforj-version-badge {
       display: none;
     }
+  }
+
+  [class*="toggleButton"] [class*="toggleIcon"] {
+    transition: transform 0.4s var(--dwc-ease-outQuad);
+  }
+
+  [class*="toggleButton"]:active [class*="lightToggleIcon"] {
+    transform: scale(0.8);
+  }
+
+  [class*="toggleButton"]:active [class*="darkToggleIcon"] {
+    transform: rotate(180deg) scale(0.8);
   }
 
 }

@@ -1,7 +1,7 @@
 package com.webforj.samples.views.toast;
 
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.html.elements.Div;
@@ -16,10 +16,14 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Toast Basics")
+@StyleSheet("ws://css/toast/toast.css")
 public class ToastView extends Composite<Div> {
-  private final Toast toast = new Toast("", -1, Theme.GRAY);
+  private final Toast toast = new Toast("", -1);
 
   public ToastView() {
+    
+    toast.addClassName("gray-toast");
+    
     FlexLayout toastContent = new FlexLayout()
         .setDirection(FlexDirection.ROW)
         .setAlignment(FlexAlignment.CENTER)
@@ -27,7 +31,8 @@ public class ToastView extends Composite<Div> {
 
     toastContent.add(
         new Spinner(),
-        new Paragraph("System update failed. Restoring to the previous state."),
+        new Paragraph("System update failed. Restoring to the previous state.")
+          .setStyle("text-align", "center"),
         new Button("Stop", ButtonTheme.DANGER, e -> toast.close())
     );
 

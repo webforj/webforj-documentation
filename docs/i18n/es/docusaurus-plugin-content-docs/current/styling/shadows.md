@@ -1,18 +1,11 @@
 ---
 sidebar_position: 7
 title: Shadows
-_i18n_hash: 6f5378b91beaf0c663bdc9de9b67233a
+_i18n_hash: 423494230ee54caa83fec778e905871b
 ---
-Las propiedades de sombra se utilizan para agregar efectos de sombra alrededor del marco de un elemento. Puedes establecer múltiples efectos separados por comas. En la mayoría de los casos, las sombras se utilizan para significar elementos que están superpuestos en la interfaz de usuario.
+Las propiedades de sombra añaden efectos de sombra alrededor del marco de un elemento. Las sombras indican elementos que están apilados uno encima del otro en la interfaz de usuario.
 
-<Head>
-  <style>{`
-  table {
-    width: 100%;
-    display: table;
-  }
-  `}</style>
-</Head>
+Las sombras se adaptan automáticamente a los modos claro y oscuro, apareciendo más fuertes en el modo oscuro para una mejor visibilidad.
 
 ### Ejemplo {#example}
 
@@ -22,18 +15,16 @@ Las propiedades de sombra se utilizan para agregar efectos de sombra alrededor d
 }
 ```
 
-:::tip Color de Sombra
-Controlas el color de la sombra estableciendo la variable `--dwc-shadow-color`. Por defecto, el color de la sombra es gris tintado con el color primario.
-:::
-
 ### Variables {#variables}
 
-| **Variable**       | **Ejemplo**                             |
-|--------------------|------------------------------------------|
-| `--dwc-shadow-xs`  | <ShadowBox shadow="--dwc-shadow-xs" />  |
-| `--dwc-shadow-s`   | <ShadowBox shadow="--dwc-shadow-s" />   |
-| `--dwc-shadow-m`   | <ShadowBox shadow="--dwc-shadow-m" />   |
-| `--dwc-shadow-l`   | <ShadowBox shadow="--dwc-shadow-l" />   |
-| `--dwc-shadow-xl`  | <ShadowBox shadow="--dwc-shadow-xl" />  |
-| `--dwc-shadow-2xl` | <ShadowBox shadow="--dwc-shadow-2xl" /> |
-| `--dwc-shadow`     | <ShadowBox shadow="--dwc-shadow" />     |
+| **Variable**       | **Descripción**                       |
+|--------------------|---------------------------------------|
+| `--dwc-shadow-xs`  | Sombra extra pequeña (1 capa)        |
+| `--dwc-shadow-s`   | Sombra pequeña (2 capas)             |
+| `--dwc-shadow-m`   | Sombra mediana (3 capas, predeterminado) |
+| `--dwc-shadow-l`   | Sombra grande (4 capas)              |
+| `--dwc-shadow-xl`  | Sombra extra grande (5 capas)        |
+| `--dwc-shadow-2xl` | Sombra doble extra grande (6 capas)  |
+| `--dwc-shadow`     | `var(--dwc-shadow-m)`                |
+
+<dwc-doc-shadows></dwc-doc-shadows>

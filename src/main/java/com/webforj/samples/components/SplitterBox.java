@@ -6,7 +6,7 @@ import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 
-@StyleSheet("ws://css/splitter-box.css")
+@StyleSheet("ws://css/splitter/splitter-box.css")
 public class SplitterBox extends Composite<FlexLayout> {
   public enum Theme {
     INFO, SUCCESS, WARNING, PRIMARY
