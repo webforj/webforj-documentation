@@ -16,6 +16,8 @@ sidebar_class_name: has-new-content
 
 The webforJ release cycle follows a structured and predictable model to ensure stability, performance, and continuous innovation. This document provides an overview of how releases are planned, what types of releases to expect, and how users can stay informed and prepared.
 
+<AISkillTip skill="webforj-upgrading-versions" />
+
 ## Types of webforJ releases {#types-of-webforj-releases}
 
 webforJ follows a structured release model that includes the following types of releases:

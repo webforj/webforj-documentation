@@ -16,6 +16,8 @@ In some scenarios, you may need to deploy additional servlets alongside your web
 
 webforJ provides two approaches for deploying custom servlets alongside your app:
 
+<AISkillTip skill="webforj-adding-servlets" />
+
 ## Approach 1: Remapping `WebforjServlet` {#approach-1-remapping-webforjservlet}
 
 This approach remaps the `WebforjServlet` from `/*` to a specific path like `/ui/*`, freeing up the URL namespace for custom servlets. While this requires modifying `web.xml`, it gives custom servlets direct access to their URL patterns without any proxy overhead.

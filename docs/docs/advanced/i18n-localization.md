@@ -7,6 +7,8 @@ title: Translation
 
 webforJ includes a built-in translation system for looking up localized strings by key. The system consists of a translation resolver that maps keys to localized text, a `HasTranslation` concern interface that provides a convenient `t()` method, `App.getTranslation()` for direct access anywhere, automatic locale detection from the browser, and support for custom translation sources such as databases.
 
+<AISkillTip skill="webforj-localizing-apps" />
+
 ## Translation resolver {#translation-resolver}
 
 The translation resolver is the system that looks up localized strings for a given key and locale. webforJ provides a default resolver, `BundleTranslationResolver`, that loads translations from Java `ResourceBundle` property files on the classpath. This works out of the box with no additional dependencies.
