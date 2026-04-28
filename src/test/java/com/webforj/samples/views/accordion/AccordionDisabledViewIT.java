@@ -30,14 +30,14 @@ public class AccordionDisabledViewIT extends BaseTest {
 
     @Test
     public void testToggleButtonDisablesGroupPanels() {
-        accordionDisabledPage.getToggleButton().dispatchEvent("click");
+        accordionDisabledPage.getToggleButton().click();
         assertThat(accordionDisabledPage.getGroupPanelOne()).hasAttribute("disabled", "");
     }
 
     @Test
     public void testToggleButtonReEnablesGroupPanels() {
-        accordionDisabledPage.getToggleButton().dispatchEvent("click");
-        accordionDisabledPage.getToggleButton().dispatchEvent("click");
+        accordionDisabledPage.getToggleButton().click();
+        accordionDisabledPage.getToggleButton().click();
         assertThat(accordionDisabledPage.getGroupPanelOne()).not().hasAttribute("disabled", "");
     }
 }

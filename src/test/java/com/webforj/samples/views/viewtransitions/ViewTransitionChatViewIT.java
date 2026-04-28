@@ -29,13 +29,13 @@ class ViewTransitionChatViewIT extends BaseTest {
 
         page.waitForTimeout(500);
 
-        chatPage.getChatToggleBtn().dispatchEvent("click");
+        chatPage.getChatToggleBtn().click();
         assertThat(chatPage.getChatCard()).isVisible();
         assertThat(chatPage.getChatName()).hasText("Support Team");
         assertThat(chatPage.getChatStatus()).hasText("Online");
         assertThat(chatPage.getChatGreeting()).hasText("👋 Hi there!");
 
-        chatPage.getChatToggleBtn().dispatchEvent("click");
+        chatPage.getChatToggleBtn().click();
         assertThat(chatPage.getChatCard()).isHidden();
     }
 }
