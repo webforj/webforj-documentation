@@ -23,14 +23,10 @@ public class TabbedPaneSegmentView extends Composite<FlexLayout> {
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
-    Icon productsIcon = TablerIcon.create("box");
-    Icon documentsIcon = TablerIcon.create("files");
 
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
-    pane.addTab(new Tab("Products", productsIcon));
-    pane.addTab(new Tab("Documents", documentsIcon));
 
     pane.setSegment(true);
 
