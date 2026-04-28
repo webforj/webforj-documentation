@@ -1,15 +1,71 @@
 #__docusaurus {
   div[class*="announcementBar_"] {
-    background: var(--announcement-background);
-    color: var(--announcement-color);
-    height: var(--announcement-bar-height);
-    font-size: 1.04rem;
-    font-weight: 500;
-    letter-spacing: 0.01em !important;
+    background: #242526;
     border-bottom: 0;
+    border-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.12) 30%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.12) 70%,
+      transparent
+    ) 1;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    color: var(--ifm-color-white);
+    font-size: 1rem;
+    font-weight: 400;
+    min-height: var(--announcement-bar-height);
+    letter-spacing: 0.01em;
+    padding: var(--dwc-space-xs) var(--dwc-space-m);
+
+    div[class*="content_"] {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      &::before {
+        background: var(--dwc-color-primary);
+        border-radius: var(--dwc-border-radius-pill);
+        box-shadow: 0 0 12px var(--dwc-color-primary-45);
+        color: #fff;
+        content: "NEW";
+        flex-shrink: 0;
+        font-size: 0.55rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin-right: 0.6em;
+        padding: 0.2em 0.65em;
+      }
+
+      @media (max-width: 768px) {
+        display: block;
+        text-align: center;
+
+        &::before {
+          display: inline;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    a {
+      color: var(--dwc-color-primary-75);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      &:hover {
+        color: #fff;
+      }
+    }
 
     button {
-      color: inherit;
+      color: rgba(255, 255, 255, 0.5);
+
+      &:hover {
+        color: #fff;
+      }
     }
   }
 }

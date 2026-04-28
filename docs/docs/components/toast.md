@@ -31,6 +31,7 @@ toast.open();
 <ComponentDemo 
 path='/webforj/toast?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastView.java'
+cssURL='/css/toast/toastTheme.css'
 height='200px'
 />
 
@@ -95,7 +96,7 @@ toast.open();
 <ComponentDemo 
 path='/webforj/toastplacement?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java'
-height='500px'
+height='600px'
 />
 
 By customizing the placement of your `Toast` notifications, you can ensure that users receive information in a way that is appropriate for any given app, screen layout, and context.

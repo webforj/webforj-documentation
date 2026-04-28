@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Accordion
 sidebar_class_name: new-content
-_i18n_hash: 99f4482faa552334ce209b3f9296f4f5
+_i18n_hash: 2bf90130b3a767840e2604045504ee91
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-accordion" />
@@ -10,65 +10,65 @@ _i18n_hash: 99f4482faa552334ce209b3f9296f4f5
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="accordion" location="com/webforj/component/accordion/Accordion" top='true'/>
 
-`Accordion`-komponentti tarjoaa pystysuoran nipun taitettavia paneeleja. Jokaisella paneelilla on napsautettava otsikko, joka kytkee sen sisällön näkyvyyden. `AccordionPanel`-paneelia voidaan käyttää itsenäisenä paljastusosiota, tai ryhmittää `Accordion`-komponentin sisälle koordinoimaan laajentamisen ja supistamisen käyttäytymistä useiden paneelien välillä.
+`Accordion`-komponentti tarjoaa pystysuoran joukon laajennettavia paneeleja. Jokaisessa paneelissa on napsautettava otsikko, joka vaihtaa sen sisällön näkyvyyttä. `AccordionPanel`-paneelia voidaan käyttää itsenäisenä paljastusosiona tai ryhmitellä `Accordion`-komponentin sisään, jotta monien paneelien laajentamis- ja sulkemiskäyttäytyminen voidaan koordinoida.
 
 <!-- INTRO_END -->
 
-:::tip Milloin käyttää akordeonia
-Akordeonit toimivat hyvin usein kysytyissä kysymyksissä, asetussivuilla ja vaiheittaisissa prosesseissa, joissa kaiken sisällön kerralla paljastaminen luo ylivoimaisen asettelun. Jos osiot ovat yhtä tärkeitä ja käyttäjät hyötyvät niiden näkyvistä yhtä aikaa, harkitse sen sijaan [välilehtiä](/docs/components/tabbedpane).
+:::tip Milloin käyttää akkordeonia
+Akkordeonit toimivat hyvin usein kysyttävissä kysymyksissä, asetussivuilla ja vaiheittaisissa prosesseissa, joissa kaiken sisällön yhtäaikainen paljastaminen voisi luoda ylivoimaisen asettelun. Jos osiot ovat yhtä tärkeitä ja käyttäjät hyötyvät niiden näkemisestä samanaikaisesti, kannattaa harkita [välilehtiä](/docs/components/tabbedpane) sen sijaan.
 :::
 
 ## `AccordionPanel` {#accordion-panel}
 
-`AccordionPanel` on akordeonijärjestelmän ydinkomponentti. Siirrä merkkijonon otsikko konstruktorille asettaaksesi otsikkotekstin, ja lisää sitten lapsikomponentit täyttämään runko. Paneeli toimii itsenäisesti ilman ympäröivää `Accordion`-ryhmää, joten se on hyödyllinen kevyt paljastusominaisuus, kun tarvitset vain yhden taitettavan osion. Myös argumentiton konstruktori on saatavilla, kun haluat määrittää paneelin kokonaan rakennuksen jälkeen.
+`AccordionPanel` on akkordeon järjestelmän ydinrakennuspalikka. Siirrä merkkijonot otsikkotekstiin konstruktorille ja lisää sitten lapsikomponentteja täyttämään runkoa. Paneeli toimii itsenäisesti ilman ympäröivää `Accordion`-ryhmää, mikä tekee siitä hyödyllisen kevyen paljastus-widgetin, kun tarvitset vain yhden laajennettavan osion. Ilman argumentteja oleva konstruktori on myös saatavilla, kun haluat määrittää paneelin täysin sen rakentamisen jälkeen.
 
 ```java
 // Vain otsikko - lisää runkosisältö erikseen
-AccordionPanel panel = new AccordionPanel("Osion otsikko");
-panel.add(new Paragraph("Runko sisältö menee tänne."));
+AccordionPanel panel = new AccordionPanel("Otsikon nimi");
+panel.add(new Paragraph("Runko-osa tulee tänne."));
 
-// Otsikko ja runkosisältö annetaan suoraan konstruktorissa
-AccordionPanel panel = new AccordionPanel("Otsikko", new Paragraph("Runko sisältö."));
+// Otsikko ja runkosisältö viety suoraan konstruktorissa
+AccordionPanel panel = new AccordionPanel("Otsikko", new Paragraph("Runko-osa."));
 ```
 
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordionbasic'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionBasicView.java'
-height='500px'
+height='550px'
 />
 <!-- vale on -->
 
-### Avaaminen ja sulkeminen {#opening-and-closing}
+### Avoimen ja suljetun hallinta {#opening-and-closing}
 
-Ohjaa avointa/suljettua tilaa ohjelmallisesti milloin tahansa. `isOpened()` on hyödyllinen, kun sinun on luettava nykytila ennen päätöksentekoa. Esimerkiksi saatat kytkeä paneelin vastakkaiseen tilaan tai näyttö- tai piilottaa muita osia käyttöliittymässä ehtojesi mukaan.
+Ohjaa avointa/suljettua tilaa ohjelmallisesti milloin tahansa. `isOpened()` on hyödyllinen, kun sinun on luettava nykyinen tila ennen kuin päätät, mitä tehdä. Voit esimerkiksi vaihtaa paneelia vastakkaiseen tilaan tai ehdollisesti näyttää tai piilottaa muita osia käyttöliittymässä.
 
 ```java
 // Laajenna paneeli
 panel.open();
 
-// Supista paneeli
+// Sulje paneeli
 panel.close();                    
 
-// Palauttaa true, jos on tällä hetkellä laajennettu
+// Palauttaa true, jos se on nykyisin avattu
 boolean isOpen = panel.isOpened();
 ```
 
-Käytä `setLabel()` päivittääksesi otsikkotekstin rakennuksen jälkeen. `setText()` on alias samalle toiminnolle, joten etiketti voidaan pitää synkronoituna dynaamisten tietojen kanssa:
+Käytä `setLabel()`-menetelmää päivittääksesi otsikkotekstiä rakentamisen jälkeen. `setText()` on aliaksena samalle toiminnolle, joten etiketti voidaan pitää synkronoituna dynaamisten tietojen kanssa:
 
 ```java
 panel.setLabel("Päivitetty etiketti");
 ```
 
-## Akordeoniryhmät {#accordion-groups}
+## Akkordeoniryhmät {#accordion-groups}
 
-Kierittämällä useita `AccordionPanel`-instansseja `Accordion`-komponenttiin luodaan koordinoitu ryhmä. Oletusarvoisesti ryhmä käyttää **yksittäismodea**: avattaessa yksi paneeli, kaikki muut automaattisesti supistuvat, pitäen vain yhden osion näkyvissä kerrallaan. Tämä oletus on tarkoituksellinen, sillä se pitää käyttäjän keskittyneenä yhteen sisältöpalaseseen ja estää sivun näkymästä visuaalisesti ylivoimaiselta, kun paneeleilla on merkittäviä runkosisältöjä.
+Useiden `AccordionPanel`-instanssien pakkaaminen `Accordion`-komponentin sisään luo koordinoidun ryhmän. Oletusarvoisesti ryhmä käyttää **yksinkertaista tilaa**: avattaessa yksi paneeli, kaikki muut automaattisesti suljetaan, jolloin vain yksi osio on näkyvissä kerralla. Tämä oletus on tarkoituksellinen, se pitää käyttäjän keskittyneenä yhteen sisältöpalaseseen ja estää sivun näyttämästä visuaalisesti ylivoimaiselta, kun paneeleilla on merkittävää runkosisältöä.
 
-Paneelit rakennetaan itsenäisesti ja siirretään `Accordion`-komponenttiin, joten voit määrittää jokaisen erikseen ryhmittäessäsi niitä. Useita erillisiä `Accordion`-instansseja voi myös olla samassa sivussa — jokainen ryhmä hallitsee omaa tilaansa itsenäisesti, joten paneelin laajentaminen yhdessä ryhmässä ei vaikuta toiseen.
+Paneelit rakennetaan itsenäisesti ja annetaan `Accordion`:lle, joten voit määrittää jokaisen ensin ennen niiden ryhmittämistä. Useita erillisiä `Accordion`-instansseja voi myös olla samalla sivulla—jokainen ryhmä hallitsee omaa tilaansa itsenäisesti, joten paneelin laajentaminen yhdessä ryhmässä ei vaikuta toiseen.
 
 ```java
 AccordionPanel panel1 = new AccordionPanel("Mikä on webforJ?");
-AccordionPanel panel2 = new AccordionPanel("Miten ryhmitetyt paneelit toimivat?");
+AccordionPanel panel2 = new AccordionPanel("Kuinka ryhmitellyt paneelit toimivat?");
 AccordionPanel panel3 = new AccordionPanel("Voinko olla useita ryhmiä?");
 
 Accordion accordion = new Accordion(panel1, panel2, panel3);
@@ -82,21 +82,21 @@ height='400px'
 />
 <!-- vale on -->
 
-### Monimutkainen tila {#multiple-mode}
+### Moninkertainen tila {#multiple-mode}
 
-Monimutkainen tila sallii minkä tahansa määrän paneeleita olla laajennettuina samaan aikaan. Tämä on hyödyllistä, kun käyttäjät tarvitsevat verrata useiden osioiden sisältöä kerralla, tai kun jokainen paneeli on niin lyhyt, että useiden laajentaminen kerralla ei luo sotkuista asettelua.
+Moninkertainen tila sallii minkä tahansa määrän paneeleja pysyä laajennettuna samanaikaisesti. Tämä on hyödyllistä, kun käyttäjät tarvitsevat useiden osioiden sisällön vertaamista kerralla, tai kun jokainen paneeli on tarpeeksi lyhyt, jotta useiden laajentaminen ei luo sotkuista asettelua.
 
 ```java
 accordion.setMultiple(true);
 ```
 
-Kun monimutkainen tila on aktiivinen, kaikki ryhmän paneelit voidaan laajentaa tai supistaa kerralla käyttämällä massamenetelmiä:
+Moninkertaisen tilan ollessa aktiivinen, kaikki ryhmän paneelit voidaan laajentaa tai sulkea kerralla hyödyntäen massamääriä:
 
 ```java
-// Laajenna kaikki paneelit ryhmässä
+// Laajenna jokainen paneeli ryhmässä
 accordion.openAll();
 
-// Supista kaikki paneelit ryhmässä
+// Sulje jokainen paneeli ryhmässä
 accordion.closeAll();   
 ```
 
@@ -104,19 +104,19 @@ accordion.closeAll();
 <ComponentDemo
 path='/webforj/accordionmultiple'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionMultipleView.java'
-height='500px'
+height='575px'
 />
 <!-- vale on -->
 
-:::info Yksittäistilan rajoitus
-`openAll()` on saatavilla vain, kun monimutkainen tila on käytössä. Sen kutsuminen yksittäistilassa ei vaikuta. `closeAll()` toimii molemmissa tiloissa.
+:::info Yksinkertaisen tilan rajoitus
+`openAll()` on käytettävissä vain, kun moninkertainen tila on käytössä. Sen kutsuminen yksinkertaisessa tilassa ei vaikuta. `closeAll()` toimii molemmissa tiloissa.
 :::
 
 <!-- vale off -->
-## Poistettu tila {#disabled-state}
+## Poissaolotila {#disabled-state}
 <!-- vale on -->
 
-Yksittäiset paneelit voidaan poistaa käytöstä estämään käyttäjävuorovaikutus samalla, kun ne pysyvät näkyvissä. Tämä on hyödyllistä lataustiloissa tai kun tietyt osiot ovat ehtoisesti käytettävissä, näyttäen paneelirakenteen ilman aikaisempaa vuorovaikutusta. Poistettu paneeli, joka on jo avattu, pysyy laajennettuna, mutta sen otsikkoa ei enää voi napsauttaa sen supistamiseksi. Jos `Accordion`-ryhmää poistetaan käytöstä, estotila koskee kaikkia siihen liittyviä paneeleja kerralla, jolloin sinun ei tarvitse silmukoida paneeleita erikseen.
+Yksittäiset paneelit voidaan poistaa käytöstä estämään käyttäjän vuorovaikutusta, vaikka ne säilyvät näkyvinä. Tämä on kätevää lataustilanteissa tai silloin, kun tietyt osiot ovat ehdollisesti käytettävissä, näyttäen paneelin rakenteen ilman ennakoimatonta vuorovaikutusta. Poistettu paneeli, joka oli jo auki, pysyy laajennettuna, mutta sen otsikkoon ei voi enää napsauttaa sen sulkemiseksi. `Accordion`-ryhmän poistaminen käytöstä soveltaa poistettua tilaa kaikkiin sisältämiinsä paneeleihin kerralla, joten sinun ei tarvitse silmukoida paneeleja yksittäin.
 
 ```java
 // Poista käytöstä yksi paneeli
@@ -130,17 +130,17 @@ accordion.setEnabled(false);
 <ComponentDemo
 path='/webforj/accordiondisabled'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionDisabledView.java'
-height='600px'
+height='650px'
 />
 <!-- vale on -->
 
 ## Paneelien mukauttaminen {#customizing-panels}
 
-Yli etikettien ja perusavaamisen/sulkemisen käyttäytymisen, jokainen `AccordionPanel` tukee rikkaampaa mukauttamista sekä sen otsikkosisältöön että laajentamissulkuikoniin.
+Etikettien ja perus avaus/sulkemiskäyttäytymisen lisäksi jokainen `AccordionPanel` tukee rikkaampaa mukauttamista sekä otsikkosisällön että laajentamissulkeutumisen ikonille.
 
 ### Mukautettu otsikko {#custom-header}
 
-Paneelin otsikko renderöi sen etiketin tavallisena tekstinä oletusarvoisesti. Käytä `addToHeader()` korvataksesi tämän tekstin minkä tahansa komponentin tai komponenttien yhdistelmällä, jolloin on helppoa sisällyttää kuvakkeita, merkintöjä, tilanäyttäjiä tai muita rikkaita merkintöjä paneelin etiketin viereen. Tämä on erityisen hyödyllistä hallintapaneeleissa tai asetuspaneeleissa, joissa jokaisen osion otsikon on tarkoitus välittää lisäkonteksti nopeasti, kuten kohteen määrä, varoitusmerkki tai valmistumisen tila, ilman, että käyttäjän tarvitsee ensin laajentaa paneelia.
+Paneelin otsikko näkyy oletusarvoisesti pelkkänä tekstinä. Käytä `addToHeader()`-menetelmää korvataksesi tämän tekstin millä tahansa komponentilla tai komponenttien yhdistelmällä, mikä tekee siitä suoraviivaista sisällyttää kuvakkeita, merkkejä, tilanarvoja tai muuta rikasta merkintää paneelin etiketin viereen. Tämä on erityisen hyödyllistä kojelaudoissa tai asetuspaneeleissa, joissa jokaisen osion otsikon on välitettävä lisäyhteyttä yhdellä silmäyksellä, kuten kohteen määrä, varoitusmerkki tai valmistumisen tila, ilman että käyttäjän tarvitsee laajentaa paneelia ensin.
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
@@ -152,8 +152,8 @@ headerContent.add(FeatherIcon.SETTINGS.create(), new Span("Mukautettu otsikko ku
 panel.addToHeader(headerContent);
 ```
 
-:::info Etiketin korvaus
-`addToHeader()`-menetelmällä lisätty sisältö korvata täydellisesti oletusetikettitekstin. `setLabel()` ja `setText()` jatkavat toimimista yhdessä `addToHeader()`-menetelmän kanssa, mutta koska otsikkoslotilla on visuaalinen etuoikeus, etiketin teksti ei näy, ellei sitä sisällytetä erikseen slottisissältöön.
+:::info Etiketin vaihto
+`addToHeader()`-menetelmän avulla lisätty sisältö korvasi täysin oletusarvoisen etiketin tekstin. `setLabel()` ja `setText()` toimivat edelleen `addToHeader()`-menetelmän ohella, mutta koska otsikkotila on visuaalisesti ensisijainen, etikettitekstiä ei näytetä ellei sisällytä sitä nimenomaan liitettyyn sisältöön.
 :::
 
 <!-- vale off -->
@@ -166,13 +166,13 @@ height='300px'
 
 ### Mukautettu ikoni {#custom-icon}
 
-Laajentamisen/sulkemisen indikaattori oletusarvoisesti on chevron, joka on näkyvissä sekä avoimissa että suljetuissa tiloissa. `setIcon()` korvataan se millä tahansa [`Icon`](/docs/components/icon) komponentilla, mikä on hyödyllistä brändätyssä ikonografiassa tai kun eri visuaalinen metafora sopii paremmin sisältöön. Siirtäminen `null` palauttaa oletuschevronin. `getIcon()` palauttaa tällä hetkellä asetetun ikon, tai `null`, jos oletuschevron käytössä.
+Laajentamis-/sulkemisindikaattori oletusarvoisesti näkyy viisarina, joka näkyy sekä avoimissa että suljetuissa tiloissa. `setIcon()`-menetelmällä voit korvata sen millä tahansa [`Icon`](/docs/components/icon) komponentilla, mikä on hyödyllistä brändättyjä kuvastoja varten tai kun toinen visuaalinen metafora sopii sisältöön paremmin. Välittäminen `null` palauttaa oletusarvoisen viisarimallin. `getIcon()` palauttaa tällä hetkellä asetetun ikonin, tai `null`, jos oletusviisarimallia käytetään.
 
 ```java
-// Korvaa oletuschevron plus-ikonilla
+// Korvaa oletusviisari plus-ikonilla
 panel.setIcon(FeatherIcon.PLUS.create());
 
-// Palauta oletuschevron
+// Palauta oletusviisari
 panel.setIcon(null);
 ```
 
@@ -184,9 +184,9 @@ height='200px'
 />
 <!-- vale on -->
 
-## Kuoalla olevat akordeonit {#nested-accordions}
+## Upotetut akkordeonit {#nested-accordions}
 
-Akordeoneita voidaan upottaa toisten akordeonipaneelien sisään, mikä on hyödyllistä hierarkkisen sisällön esittämisessä, kuten luokitelluissa asetuksissa tai monitasoisessa navigoinnissa. Lisää sisäinen `Accordion` ulkoiseen `AccordionPanel`-komponenttiin kuten mihin tahansa muuhun lapsikomponenttiin. Säilytä upotukset matalina. Yksi tai kaksi tasoa on yleensä riittävästi. Syvemmät hierarkiat ovat yleensä vaikeampia navigoida ja usein viittaavat siihen, että sisällön rakenne itse tarvitsee uudelleenarviointia.
+Akkordeoneja voidaan upottaa muiden akkordeonipaneelien sisään, mikä on hyödyllistä hierarkkisen sisällön esittämisessä, kuten kategorisoidut asetukset tai monitasoinen navigaatio. Lisää sisäinen `Accordion` ulkoiseen `AccordionPanel`-paneeliin kuten mikä muu lapsikomponentti. Pidä upotus matalana. Yksi tai kaksi tasoa on yleensä riittävästi. Syvemmät hierarkiat ovat yleensä vaikeampia navigoida, ja usein tarkoittavat, että sisältörakenne tarvitsee uudelleenarviointia.
 
 ```java
 AccordionPanel innerA = new AccordionPanel("Sisäinen paneeli A");
@@ -207,30 +207,30 @@ height='550px'
 
 ## Tapahtumat {#events}
 
-`AccordionPanel` lähettää tapahtumia jokaisessa vaiheessa kytkentäelämässä. Kolme tapahtumatyyppiä kattaa erilaisia hetkiä, joten valitse sen mukaan, milloin logiikkasi on suoritettava:
+`AccordionPanel` laukaisee tapahtumia jokaisessa vaihtosykliensä vaiheessa. Kolme tapahtumatyyppiä kattaa eri hetket, joten valitse sen mukaan, milloin logiikkasi tarvitsee toimia:
 
-| Tapahtuma | Lähettää |
-|-----------|----------|
-| `AccordionPanelToggleEvent` | Ennen kuin tila muuttuu |
-| `AccordionPanelOpenEvent` | Kun paneeli on täysin avattu |
+| Tapahtuma | Laukaisee |
+|-------|-------|
+| `AccordionPanelToggleEvent` | Ennen tilan muutosta |
+| `AccordionPanelOpenEvent` | Kun paneeli on täysin avautunut |
 | `AccordionPanelCloseEvent` | Kun paneeli on täysin suljettu |
 
 ```java
 panel.onToggle(e -> {
-    // Lähettää ennen paneelin tilan muuttumista.
+    // Laukaisee ennen kuin paneeli muuttaa tilaa.
     // e.isOpened() heijastaa tilaa, johon siirrytään, ei nykyistä tilaa.
-    String direction = e.isOpened() ? "avataan" : "suljetaan";
+    String direction = e.isOpened() ? "avaamassa" : "sulkemassa";
 });
 
 panel.onOpen(e -> {
-    // Lähettää, kun paneeli on täysin avoinna — hyvä laiskalata sisältöä.
+    // Laukaisee, kun paneeli on täysin avattu — hyvä laiskasti ladatulle sisällölle.
 });
 
 panel.onClose(e -> {
-    // Lähettää, kun paneeli on täysin suljettu — hyvä siivoukselle tai yhteenveto päivityksille.
+    // Laukaisee, kun paneeli on täysin suljettu — hyvä puhdistamiseen tai yhteenvetoihin.
 });
 ```
 
-## Tyylittely {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name={['Accordion', 'AccordionPanel']} />

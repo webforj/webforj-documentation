@@ -2,7 +2,6 @@
 sidebar_position: 20
 title: Rendering
 slug: rendering
-sidebar_class_name: new-content
 ---
 
 <!-- vale Google.Headings = NO -->

@@ -38,8 +38,12 @@ public class DateFieldViewIT extends BaseTest {
     String returnDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
     String correctedReturnDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
     dateFieldPage.getReturnDate().fill(returnDate);
+    page.keyboard().press("Tab");
+    page.waitForTimeout(500);
+
     dateFieldPage.getDepartureDate().fill(departureDate);
     page.keyboard().press("Tab");
+
     assertThat(dateFieldPage.getReturnDate()).hasValue(correctedReturnDate);
   }
 

@@ -35,8 +35,7 @@ Example:
 :root {
   --dwc-color-primary-h: 215;
   --dwc-color-primary-s: 100%;
-  --dwc-color-primary-c: 50;
-  --dwc-font-size: var(--dwc-font-size-m);
+  --dwc-font-size: var(--dwc-font-size-l);
 }
 ```
 
@@ -44,8 +43,7 @@ To override the **dark** or **dark-pure** themes, use attribute selectors on the
 
 ```css
 html[data-app-theme="dark"] {
-  --dwc-color-primary-s: 9%;
-  --dwc-color-white: hsl(210, 17%, 82%);
+  --dwc-color-primary-s: 80%;
 }
 ```
 
@@ -57,7 +55,17 @@ You can define your own themes using the `html[data-app-theme='THEME_NAME']` sel
 html[data-app-theme="new-theme"] {
   --dwc-color-primary-h: 280;
   --dwc-color-primary-s: 100%;
-  --dwc-color-primary-c: 60;
+}
+```
+
+To make a custom theme dark, set `--dwc-dark-mode: 1` and `color-scheme: dark`:
+
+```css
+html[data-app-theme="new-dark-theme"] {
+  --dwc-dark-mode: 1;
+  --dwc-color-primary-h: 280;
+  --dwc-color-primary-s: 100%;
+  color-scheme: dark;
 }
 ```
 

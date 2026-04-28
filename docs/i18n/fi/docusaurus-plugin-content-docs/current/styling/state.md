@@ -1,12 +1,16 @@
 ---
 sidebar_position: 9
 title: State
-_i18n_hash: a6e594262709137318ed90066759b577
+_i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
-State tokens määrittelevät, miten komponentit visuaalisesti reagoivat käyttäjän vuorovaikutukseen—esimerkiksi kun ne ovat pois käytöstä tai fokusoituja. Nämä muuttujat auttavat varmistamaan johdonmukaisen käytöksen ja tyylittelyn kaikilla UI-elementeillä, ja ne ovat helposti mukautettavissa vastaamaan suunnittelujärjestelmääsi.
+State tokens määrittävät, kuinka komponentit visuaalisesti reagoivat käyttäjän vuorovaikutukseen, esimerkiksi kun ne ovat poistettu käytöstä tai fokusoitu. Nämä muuttujat auttavat varmistamaan johdonmukaisen käyttäytymisen ja tyylin kaikissa käyttöliittymäelementeissä, ja niitä voidaan helposti mukauttaa vastaamaan suunnittelujärjestelmääsi.
 
-## Poissa käytöstä oleva tila {#disabled-state}
-Poissa käytöstä olevan tilan ominaisuuksia käytetään, jotta elementti näyttää visuaalisesti inaktiiviselta ja ei-vuorovaikutteiselta.
+<!-- vale off -->
+## Poistettu käytöstä {#disabled-state}
+<!-- vale on -->
+Poistettu käytöstä -tilan ominaisuuksia käytetään elementin visuaalisen näkyvyyden ja ei-vuorovaikutteisuuden osoittamiseen.
+
+Opacity mukautuu nykyiseen teeman tilanteeseen optimaalisen näkyvyyden saavuttamiseksi sekä vaaleissa että tummissa tiloissa.
 
 ### Esimerkki {#example}
 
@@ -19,21 +23,44 @@ input:disabled {
 
 ### Muuttujat {#variables}
 
-| **Muuttuja**              | **Oletusarvo**          |
-|--------------------------|----------------------------|
-| `--dwc-disabled-opacity` | 0.7                        |
-| `--dwc-disabled-cursor`  | var(--dwc-cursor-disabled) |
+| **Muuttuja**               | **Oletusarvo**          | **Kuvaus** |
+|----------------------------|-------------------------|------------|
+| `--dwc-disabled-opacity`   | Mukautuu vaaleaan/tummaiseen tilaan | Vähennetty opacity poistetuissa käytöstä olevissa elementeissä |
+| `--dwc-disabled-cursor`    | var(--dwc-cursor-disabled) | |
 
 ---
 
-## Fokusoitu tila {#focus-state}
+## Fokustila {#focus-state}
 
-Kun komponentti saa fokuksen, sen ympärille näytetään fokuskehä, joka osoittaa sen aktiivisen tilan. Voit mukauttaa kehyksen ulkonäköä alla olevia muuttujia käyttäen. Näitä muuttujia käytetään yhdessä komponenttiteeman fokuskehän asetusten kanssa.
+Kun komponentti saa fokuksen, sen ympärille näytetään fokuskehys, joka osoittaa sen aktiivisen tilan. Fokuskehys käyttää gap-ring -kuviota, jossa on pinta-värinen sisäkatko ja värillinen ulkokehys.
 
 ### Muuttujat {#variables-1}
 
-| **Muuttuja**              | **Oletusarvo** |
-|---------------------------|-------------------|
-| `--dwc-focus-ring-l`      | 45%               |
-| `--dwc-focus-ring-a`      | 0.4               |
-| `--dwc-focus-ring-width`  | 3px               |
+| **Muuttuja**               | **Oletusarvo** | **Kuvaus** |
+|----------------------------|-----------------|------------|
+| `--dwc-focus-ring-a`       | 0.75            | Fokuskehyksen alfa-opasiteetti |
+| `--dwc-focus-ring-width`   | 2px             | Fokuskehyksen paksuus |
+| `--dwc-focus-ring-gap`     | 2px             | Kuopan väli komponentin reunan ja kehyksen välillä |
+
+Jokainen väri-paletista tuottaa oman fokuskehyksen muuttujan:
+
+| Muuttujamalli             | Kuvaus |
+|---------------------------|--------|
+| `--dwc-focus-ring-{name}` | Fokuskehyksen varjo, joka on sävytetty paletinvärillä. |
+
+Missä `{name}` on yksi seuraavista: `primary`, `success`, `warning`, `danger`, `info`, `gray`, `default`. Katso [Komponenttiteemat](./colors#theming-components-with-abstract-variables) lisätietoja varten.
+
+<dwc-doc-focus-rings></dwc-doc-focus-rings>
+
+---
+
+## Skaalat {#scales}
+
+Skaala-Transformaatioita käytetään painallus/klikkaus-palautteena vuorovaikutteisille elementeille.
+
+| **Muuttuja**              | **Oletusarvo** | **Kuvaus** |
+|---------------------------|-----------------|------------|
+| `--dwc-scale-press`       | 0.97            | Vakio painallusskaala (3% kutistus) |
+| `--dwc-scale-press-deep`  | 0.93            | Syvä painallusskaala (7% kutistus) |
+
+<dwc-doc-scales></dwc-doc-scales>

@@ -3,7 +3,6 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
 ---
 
 <Head>

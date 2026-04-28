@@ -1,7 +1,6 @@
 ---
 sidebar_position: 4
 title: Transformation
-sidebar_class_name: updated-content
 ---
 
 Data transformations convert between the data types used in UI components and those in your data model. This keeps data types compatible and appropriately formatted when moving data between the frontend and backend of your applications.

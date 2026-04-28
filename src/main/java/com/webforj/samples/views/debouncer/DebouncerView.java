@@ -15,7 +15,7 @@ public class DebouncerView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final TextField input = new TextField();
   private final TextArea output = new TextArea();
-  private final Debouncer debouncer = new Debouncer(0.5f);
+  private final Debouncer debouncer = new Debouncer(1.0f);
   private int count = 0;
 
   public DebouncerView() {
