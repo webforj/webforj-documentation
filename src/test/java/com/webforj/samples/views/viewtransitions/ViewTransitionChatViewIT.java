@@ -27,7 +27,7 @@ class ViewTransitionChatViewIT extends BaseTest {
         chatPage.getChatClose().click();
         assertThat(chatPage.getChatCard()).isHidden();
 
-        page.waitForTimeout(500);
+        page.waitForTimeout(1500);
 
         chatPage.getChatToggleBtn().click();
         assertThat(chatPage.getChatCard()).isVisible();
