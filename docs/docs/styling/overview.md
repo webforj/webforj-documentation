@@ -27,9 +27,9 @@ DWC also includes a customizable color palette and defaults to a clean, light vi
 
 <AISkillTip skill="webforj-styling-apps" />
 
-## Figma Design Kit {#figma-design-kit}
+## Figma design kit {#figma-design-kit}
 
-The [DWC Figma library](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) is the official design resource for creating modern, enterprise-grade web applications. It includes a comprehensive set of components, typography styles, and color tokens that align with the DWC design system. With this library, designers and developers can build visually consistent, user-friendly interfaces that balance functionality with a refined user experience.
+The [DWC Figma library](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) is the official design resource for creating modern, enterprise-grade web applications. It includes a comprehensive set of components, typography styles, and color tokens that align with the DWC design system. Designers and developers can use this library to build visually consistent, user-friendly interfaces with predictable component behavior, precise spacing, and accessible color contrast.
 
 <img src="/img/dwc.png" alt="Figma Design Kit" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
 
