@@ -20,6 +20,13 @@ public class DebouncerViewIT extends BaseTest {
     }
 
     @Test
+    @DisabledIfEnvironmentVariable(
+        named = "CI",
+        matches = "true",
+        disabledReason = "Slow CI assertion roundtrips exceed the 1s debounce window, so the counter "
+            + "resets to 0 mid-test (observed on WebKit). Test is reliable in dev environments. "
+            + "Re-enable when webforJ guarantees event ordering or the debouncer behavior changes."
+    )
     public void testTypingUpdatesHelperText() {
         assertThat(debouncerPage.getInputHelperText()).hasText("Key events: 0");
 
