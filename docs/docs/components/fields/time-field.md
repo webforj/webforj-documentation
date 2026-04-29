@@ -81,3 +81,5 @@ The `TimeField` class also provides the following static utility methods:
 - **Accessibility**: Utilize the `TimeField` component with accessibility in mind, ensuring it meets accessibility standards such as providing proper labels, sufficient color contrast, and compatibility with assistive technologies.
 
 - **Reset Option**: Provide a way for users to easily clear the `TimeField` to an empty or default state.
+
+<FieldCommonFeatures />
