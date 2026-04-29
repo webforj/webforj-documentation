@@ -29,7 +29,7 @@ public class ButtonExpansesView extends Composite<FlexLayout> {
     }
 
     expanses.selectIndex(0)
-        .setWidth("100px")
+        .setWidth(125)
         .addSelectListener(event -> {
           Expanse selectedValue = (Expanse) expanses.getSelectedKey();
           if (selectedValue != null) {
