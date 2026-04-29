@@ -48,10 +48,9 @@ public class AnalyticsCardCompositeView extends Composite<Div> {
   }
 
   private FlexLayout buildChangeRow() {
-    Span changeText =
-        new Span("12% from last month")
-            .setStyle("color", "var(--dwc-color-success-600)")
-            .setStyle("font-size", "0.9rem");
+    Span changeText = new Span("12% from last month")
+        .setStyle("color", "var(--dwc-color-success-60)")
+        .setStyle("font-size", "0.9rem");
 
     Icon upArrow = TablerIcon.create("arrow-up");
 
