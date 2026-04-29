@@ -1,6 +1,9 @@
+dwc-toolbar::part(control) {
+  background: hsl(265, 100%, 47%);
+  color: white;
+}
+
 dwc-toolbar {
-  --dwc-toolbar-background: hsl(265, 100%, 47%);
-  --dwc-toolbar-color: white;
-  --dwc-icon-button-hover-color: var(--dwc-toolbar-color);
-  --dwc-icon-button-active-color: var(--dwc-toolbar-color);
+  --dwc-icon-button-hover-color: white;
+  --dwc-icon-button-active-color: white;
 }
