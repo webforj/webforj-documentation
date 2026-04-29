@@ -20,8 +20,8 @@ public class TreeIconsView extends Composite<FlexLayout> {
         .setHeight("100vh")
         .setStyle("overflow", "auto");
 
-    tree.setCollapsedIcon(FeatherIcon.CHEVRON_RIGHT.create());
-    tree.setExpandedIcon(FeatherIcon.CHEVRON_DOWN.create());
+    tree.setCollapsedIcon(FeatherIcon.FOLDER_PLUS.create());
+    tree.setExpandedIcon(FeatherIcon.FOLDER_MINUS.create());
 
     tree.add(
         node("Documents")

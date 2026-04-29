@@ -15,6 +15,8 @@ If you need to integrate web components from another source, use specialized alt
 - [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): For web components with type-safe property management
 - [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): For web components that accept slotted content
 
+<AISkillTip skill="webforj-creating-components" />
+
 ## Usage {#usage}
 
 To define a `Composite` component, extend the `Composite` class and specify the type of component it manages. This becomes your bound component, which is the root container that holds your internal structure:

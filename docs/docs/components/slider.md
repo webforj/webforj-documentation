@@ -118,7 +118,7 @@ When inverted, this direction is reversed. Use the `setInverted(true)` method to
 <ComponentDemo 
 path='/webforj/sliderorientation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationView.java'
-height = '420px'
+height = '440px'
 />
 
 ## Labels {#labels}

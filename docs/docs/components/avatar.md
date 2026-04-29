@@ -34,7 +34,7 @@ The example below showcases avatars in a team panel context. Each `Avatar` displ
 path='/webforj/avatar?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarView.java'
 cssURL='/css/avatar/avatar.css'
-height = '450px'
+height = '500px'
 />
 
 ## Displaying images {#displaying-images}
@@ -98,7 +98,7 @@ Avatars can be displayed as circles or squares. The default shape is `CIRCLE`, w
 
 <ComponentDemo
 path='/webforj/avatarshapes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java'
 height='100px'
 />
 
@@ -120,7 +120,7 @@ Each theme also has an outlined variant for a lighter visual treatment:
 
 <ComponentDemo
 path='/webforj/avatarthemes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java'
 height='120px'
 />
 
@@ -130,7 +130,7 @@ Control the avatar size using the `setExpanse()` method. The component supports 
 
 <ComponentDemo
 path='/webforj/avatarexpanses?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java'
 height='100px'
 />
 

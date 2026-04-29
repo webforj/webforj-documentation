@@ -3,14 +3,14 @@ sidebar_position: 35
 title: TextField
 slug: textfield
 description: A single-line input component for entering and editing text data.
-_i18n_hash: 138207c2dd99dac9837172067950ab2f
+_i18n_hash: 51fe8b136580a1fca9e5a918389f33bf
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextField" top='true'/>
 
-`TextField` 组件允许用户在单行中输入和编辑文本。您可以配置字段以显示特定的虚拟键盘，例如数字键盘、电子邮件输入、电话输入或URL输入。该组件还提供内置验证，以拒绝不符合指定类型的值。
+`TextField` 组件允许用户在单行中输入和编辑文本。您可以配置该字段以显示特定的虚拟键盘，例如数字键盘、电子邮件输入、电话输入或URL输入。该组件还提供内置验证，以拒绝不符合指定类型的值。
 
 <!-- INTRO_END -->
 
@@ -18,68 +18,68 @@ _i18n_hash: 138207c2dd99dac9837172067950ab2f
 
 <ParentLink parent="Field" />
 
-`TextField` 适用于需要文本输入或编辑的广泛场景。以下是一些使用 `TextField` 的例子：
+`TextField` 适用于需要文本输入或编辑的各种场景。以下是一些使用 `TextField` 的示例：
 
-1. **表单输入**：`TextField` 通常用于表单中捕获用户输入，例如姓名、地址或评论。当输入通常足够短以适合一行时，在应用中最好使用 `TextField`。
+1. **表单输入**：`TextField` 通常用于表单中捕获用户输入，例如姓名、地址或评论。当输入通常短到可以放在一行时，在应用程序中使用 `TextField` 最为合适。
 
-2. **搜索功能**：`TextField` 可用来提供搜索框，允许用户输入搜索查询。
+2. **搜索功能**：`TextField` 可以用于提供搜索框，允许用户输入搜索查询。
 
-3. **文本编辑**：`TextField` 非常适合需要文本编辑或内容创建的应用，例如文档编辑器、聊天应用或记笔记的应用。
+3. **文本编辑**：`TextField` 非常适合需要文本编辑或内容创建的应用程序，例如文档编辑器、聊天应用或笔记应用。
 
 ## 类型 {#types}
 
-您可以使用 `setType()` 方法指定 TextField 的类型。同样，您可以使用 `getType()` 方法检索该类型，该方法将返回一个枚举值。
+您可以使用 `setType()` 方法指定 `TextField` 的类型。类似地，您可以使用 `getType()` 方法检索类型，该方法将返回一个枚举值。
 
-- `Type.TEXT`：这是 `TextField` 的默认类型，并自动从输入值中删除换行符。
+- `Type.TEXT`：这是 `TextField` 的默认类型，自动会从输入值中去除换行符。
 
-- `Type.EMAIL`：此类型用于输入电子邮件地址。它根据标准电子邮件语法验证输入。此外，它为兼容的浏览器和设备提供动态键盘，通过包含常用键（如 <kbd>.com</kbd> 和 <kbd>@</kbd>）简化输入过程。
+- `Type.EMAIL`：此类型用于输入电子邮件地址。它根据标准电子邮件语法验证输入。此外，它向兼容的浏览器和设备提供动态键盘，通过包含常用键如 <kbd>.com</kbd> 和 <kbd>@</kbd> 来简化输入过程。
 
   :::note
-  虽然此验证确认电子邮件地址的格式，但无法保证该电子邮件存在。
+  虽然该验证确认电子邮件地址的格式，但并不能保证该电子邮件存在。
   :::
 
-- `Type.TEL`：此类型用于输入电话号码。在某些设备上，字段将显示电话键盘，具有动态键盘。
+- `Type.TEL`：此类型用于输入电话号码。在某些设备上，字段将显示电话键盘，并且具备动态键盘。
 
-- `Type.URL`：此类型用于输入URL。它验证用户输入的URL是否包含方案和域名，例如：https://webforj.com。此外，它为兼容的浏览器和设备提供动态键盘，通过包含常用键（如 <kbd>:</kbd>、<kbd>/</kbd> 和 <kbd>.com</kbd>）简化输入过程。
+- `Type.URL`：此类型用于输入URL。它验证用户输入的URL是否包含方案和域名，例如 https://webforj.com。此外，它向兼容的浏览器和设备提供动态键盘，通过包含常用键如 <kbd>:</kbd>、<kbd>/</kbd> 和 <kbd>.com</kbd> 来简化输入过程。
 
-- `Type.SEARCH`：用于输入搜索字符串的单行文本字段。输入值中的换行符会自动删除。
+- `Type.SEARCH`：用于输入搜索字符串的单行文本字段。输入值中的换行符将自动移除。
 
 <ComponentDemo 
 path='/webforj/textfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/textfield/TextFieldView.java'
-height='225px'
+height='250px'
 />
 
 ## 字段值 {#field-value}
 
-`TextField` 的值表示当前用户输入的字符串。在 webforJ 中，可以使用 `getValue()` 方法访问此值，或使用 `setValue(String)` 方法以编程方式更新。
+`TextField` 的值表示当前用户输入的字符串。在 webforJ 中，可以使用 `getValue()` 方法访问该值，或使用 `setValue(String)` 方法以编程方式更新。
 
 ```java
 //设置初始内容
 textField.setValue("初始内容");
 
-//检索当前值
+//获取当前值
 String text = textField.getValue();
 ```
 
 如果在没有当前值的字段上使用 `getValue()` 方法，它将返回一个空字符串 (`""`)。
 
-此行为与 HTML `<input type="text">` 元素通过 JavaScript 暴露其值的方式一致。
+此行为与 HTML `<input type="text">` 元素通过 JavaScript 公开其值的方式是一致的。
 
 :::tip 结合值处理与验证
-应用约束，如 [pattern](#pattern-matching)、[最小长度](#setminlength) 或 [最大长度](#setmaxlength)，以定义何时视值为有效。 
+应用诸如 [pattern](#pattern-matching)、[minimum length](#setminlength) 或 [maximum length](#setmaxlength) 的约束，定义何时认为值是有效的。
 :::
 
 ## 占位符文本 {#placeholder-text}
 
-您可以使用 `setPlaceholder()` 方法为 `TextField` 设置占位符文本。当字段为空时，会显示占位符文本，帮助提示用户在 `TextField` 中输入适当的值。
+您可以使用 `setPlaceholder()` 方法为 `TextField` 设置占位符文本。当字段为空时，将显示占位符文本，以帮助提示用户在 `TextField` 中输入适当的内容。
 
 ## 选定文本 {#selected-text}
 
-可以与 `TextField` 类交互，以检索用户所选的文本，并获取有关用户选择的信息。您可以使用 `getSelectedText()` 方法检索 `TextField` 中的选定文本。此行为通常与事件一起使用。
+可以与 `TextField` 类互动，以检索用户的选定文本，并获取有关用户选择的信息。您可以使用 `getSelectedText()` 方法检索 `TextField` 中的选定文本。此行为通常与事件结合使用。
 
 ```java
-TextField textField = new TextField("输入内容...");
+TextField textField = new TextField("请输入内容...");
 Button getSelectionBtn = new Button("获取选定文本");
 
 getSelectionBtn.onClick(e -> {
@@ -88,62 +88,62 @@ getSelectionBtn.onClick(e -> {
 });
 ```
 
-类似地，可以使用 `getSelectionRange()` 方法检索 `TextField` 的当前选择范围。这将返回一个 `SelectionRange` 对象，表示所选文本的起始和结束索引。
+同样，可以使用 `getSelectionRange()` 方法检索 `TextField` 的当前选择范围。该方法返回一个 `SelectionRange` 对象，表示选定文本的起始和结束索引。
 
 :::tip 使用 `getSelectedText()` 与事件负载
-虽然您可以在事件处理程序中手动调用 `getSelectedText()`，但使用事件负载中提供的选择数据（例如在 `SelectionChangeEvent` 中）更高效，以避免额外的查找。
+虽然您可以在事件处理程序中手动调用 `getSelectedText()`，但使用事件负载中提供的选择数据（例如在 `SelectionChangeEvent` 中）更有效，以避免额外的查找。
 :::
 
 ## 模式匹配 {#pattern-matching}
 
-您可以使用 `setPattern()` 方法使用正则表达式定义 `TextField` 的验证规则。设置模式会添加一个约束验证，要求输入值符合指定的模式。
+您可以使用 `setPattern()` 方法通过正则表达式定义 `TextField` 的验证规则。设置模式将添加一个约束验证，要求输入值与指定模式匹配。
 
-模式必须是有效的 [JavaScript 正则表达式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)，由浏览器解释。内部应用 `u`（Unicode）标记，以确保 Unicode 代码点的准确匹配。不要用正斜杠 (`/`) 包裹模式，因为这些不是必需的，并将被视为字面字符。
+该模式必须是有效的 [JavaScript 正则表达式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)，由浏览器解释。内部应用了 `u`（Unicode）标志以确保 Unicode 码点的准确匹配。请勿将模式包装在正斜杠 (`/`) 中，因为这些不是必需的，并将被视为字面字符。
 
 ```java
 textField.setPattern("[A-Za-z]{3}\\d{2}"); // 例如 ABC12
 ```
 
-如果未提供模式或语法无效，则验证规则将被忽略。
+如果未提供模式或语法无效，则忽略该验证规则。
 
 :::tip 上下文帮助
-在为 `TextField` 使用复杂模式时，考虑使用 `setLabel()`、`setHelperText()` 和 `setTooltipText()` 方法的组合，提供额外的提示和指导。
+在为 `TextField` 使用复杂模式时，请考虑结合使用 `setLabel()`、`setHelperText()` 和 `setTooltipText()` 方法来提供额外的提示和指导。
 :::
 
 ## 最小和最大长度 {#minimum-and-maximum-length}
 
-`TextField` 组件支持基于用户输入的字符数量的约束验证。这可以使用 `setMinLength()` 和 `setMaxLength()` 方法控制。使用这两种方法定义可接受输入长度的明确边界。
+`TextField` 组件支持基于用户输入的字符数量的约束验证。这可以通过使用 `setMinLength()` 和 `setMaxLength()` 方法进行控制。使用这两种方法定义可接受输入长度的明确边界。
 
 :::info 长度要求
-默认情况下，当输入值超出范围时，字段会显示一条消息，指示用户是否需要缩短或延长输入。此消息可以通过 `setInvalidMessage()` 方法覆盖。
+默认情况下，当输入值超出范围时，将显示一条消息，指示用户是否需要缩短或延长输入。此消息可以通过 `setInvalidMessage()` 方法被覆盖。
 :::
 
 ### `setMinLength()` {#setminlength}
 
-此方法设置字段被视为有效所需输入的**最小 UTF-16 代码单位数量**。该值必须为整数，并且不得超过配置的最大长度。
+此方法设置字段被视为有效所需输入的 **最小 UTF-16 码单元数**。该值必须是整数，并且不应超过配置的最大长度。
 
 ```java
-textField.setMinLength(5); // 用户必须至少输入 5 个字符
+textField.setMinLength(5); // 用户必须输入至少 5 个字符
 ```
 
-如果输入少于最小要求的字符数，输入将不符合约束验证。此规则仅在用户更改字段值时适用。
+如果输入的字符少于最小要求的字符数，则输入将无法通过约束验证。此规则仅在用户更改字段值时适用。
 
 ### `setMaxLength()` {#setmaxlength}
 
-此方法设置文本字段中允许的**最大 UTF-16 代码单位数**。该值必须为 `0` 或更大。如果未设置，或设置为无效值，则不强制执行最大值。
+此方法设置文本字段中允许的 **最大 UTF-16 码单元数**。该值必须为 `0` 或更大。如果未设置或设置为无效值，则不强制最大限制。
 
 ```java
 textField.setMaxLength(20); // 用户不能输入超过 20 个字符
 ```
 
-如果输入长度超过最小长度，字段将不符合约束验证。与 `setMinLength()` 一样，此验证仅在用户更改值时触发。
+如果输入长度超过最小长度，字段将无法通过约束验证。与 `setMinLength()` 一样，该验证仅在用户更改值时触发。
 
 ## 最佳实践 {#best-practices}
 
 以下部分概述了使用 `TextField` 的一些建议最佳实践。
 
-- **提供清晰的标签和说明**：清晰标记 `TextField` 以指示用户应输入的信息类型。提供额外的说明文本或占位符值以指导用户并设定对所需输入的期望。
+- **提供清晰的标签和说明**：清晰标记 `TextField` 以指示用户应输入的信息类型。提供额外的说明文本或占位符值以指导用户，并设定对所需输入的期望。
 
-- **拼写检查和自动完成**：在适用时，考虑使用 `setSpellCheck()` 实现拼写检查和/或在 `TextField` 中使用自动完成。这些功能可以帮助用户更快地输入信息，并通过提供基于先前输入或预定义选项的建议值来减少错误。
+- **拼写检查和自动完成**：在适用时，考虑利用 `setSpellCheck()` 进行拼写检查和/或在 `TextField` 中使用自动完成。这些功能可以帮助用户更快地输入信息，并通过提供基于先前输入或预定义选项的建议值来减少错误。
 
-- **可访问性**：考虑在使用 `TextField` 组件时遵循可访问性标准，如适当的标签、键盘导航支持和与辅助技术的兼容性。确保残疾用户能够有效与 `TextField` 交互。
+- **可访问性**：在考虑可访问性的情况下使用 `TextField` 组件，遵循可访问性标准，如适当标记、键盘导航支持和与辅助技术的兼容性。确保残疾用户能够有效地与 `TextField` 交互。
