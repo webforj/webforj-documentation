@@ -1,7 +1,7 @@
 :root{
-  --dwc-list-item-color: #393D48;
-  /* --dwc-list-button-label-hover-color: var(--dwc-color-primary-text) */
-  --dwc-list-selected-color: white !important;
+  --dwc-listbox-color: #393D48;
+  /* --dwc-listbox-label-hover-color: var(--dwc-color-primary-text) */
+  --dwc-listbox-selected-color: white !important;
 }
 
 .frame {
