@@ -15,11 +15,12 @@ public class ConfirmDialogOptionsView extends Composite<Div> {
   private final ConfirmDialog dialog;
 
   public ConfirmDialogOptionsView() {
-    dialog = new ConfirmDialog(
-            "There are unsaved changes. Do you want to discard or save them?",
-            "Unsaved changes",
-            ConfirmDialog.OptionType.CUSTOM,
-            ConfirmDialog.MessageType.WARNING)
+    dialog =
+        new ConfirmDialog(
+                "There are unsaved changes. Do you want to discard or save them?",
+                "Unsaved changes",
+                ConfirmDialog.OptionType.CUSTOM,
+                ConfirmDialog.MessageType.WARNING)
             .setFirstButtonText("Discard")
             .setFirstButtonTheme(ButtonTheme.WARNING)
             .setSecondButtonText("Save")
@@ -27,9 +28,7 @@ public class ConfirmDialogOptionsView extends Composite<Div> {
     show();
   }
 
-  /**
-   * Shows the confirm dialog and handles the result.
-   */
+  /** Shows the confirm dialog and handles the result. */
   private void show() {
     ConfirmDialog.Result result = dialog.show();
 

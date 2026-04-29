@@ -13,9 +13,7 @@ import com.webforj.samples.views.terminal.commands.MsgCommand;
 import com.webforj.samples.views.terminal.commands.PromptCommand;
 import com.webforj.samples.views.terminal.commands.TerminalCommand;
 import com.webforj.samples.views.terminal.commands.TimeCommand;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,26 +30,26 @@ public class TerminalView extends Composite<Terminal> {
 
   public TerminalView() {
     self.setAutoFit(true)
-      .setSize("95%", "95%")
-      .setStyle("margin", "var(--dwc-space-m)")
-      .writeln("\u001B[1;32mWelcome 👋  to the webforJ terminal!\u001B[0m")
-      .writeln("Type \u001B[1;33m`help`\u001B[0m to see a list of supported commands.")
-      .write("$ ")
-      .addDataListener(this::onData);
-
+        .setSize("95%", "95%")
+        .setStyle("margin", "var(--dwc-space-m)")
+        .writeln("\u001B[1;32mWelcome 👋  to the webforJ terminal!\u001B[0m")
+        .writeln("Type \u001B[1;33m`help`\u001B[0m to see a list of supported commands.")
+        .write("$ ")
+        .addDataListener(this::onData);
 
     registerCommands();
     self.focus();
   }
 
   private void registerCommands() {
-    List<TerminalCommand> commandList = List.of(
-      new TimeCommand(),
-      new DateCommand(),
-      new PromptCommand(),
-      new MsgCommand(),
-      new ClearCommand(),
-      new HelpCommand(commands));
+    List<TerminalCommand> commandList =
+        List.of(
+            new TimeCommand(),
+            new DateCommand(),
+            new PromptCommand(),
+            new MsgCommand(),
+            new ClearCommand(),
+            new HelpCommand(commands));
 
     for (TerminalCommand command : commandList) {
       commands.put(command.getName(), command);

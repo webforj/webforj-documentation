@@ -2,11 +2,10 @@ package com.webforj.samples.views.markdownviewer;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.markdownviewer.MarkdownViewerStreamingPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class MarkdownViewerStreamingViewIT extends BaseTest {
 
@@ -43,8 +42,9 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   @Test
   public void testStopButtonAppearsWhileStreaming() {
     streamingPage.sendMessage("Generate response");
-    streamingPage.getStopButton().waitFor(
-        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(3000));
+    streamingPage
+        .getStopButton()
+        .waitFor(new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(3000));
     assertThat(streamingPage.getStopButton()).isVisible();
     assertThat(streamingPage.getSendButton()).not().isVisible();
   }
@@ -52,8 +52,9 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   @Test
   public void testStopButtonStopsStreaming() {
     streamingPage.sendMessage("Generate response");
-    streamingPage.getStopButton().waitFor(
-        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(3000));
+    streamingPage
+        .getStopButton()
+        .waitFor(new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(3000));
     streamingPage.getStopButton().click();
     assertThat(streamingPage.getSendButton()).isVisible();
     assertThat(streamingPage.getStopButton()).not().isVisible();

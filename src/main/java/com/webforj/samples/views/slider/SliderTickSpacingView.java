@@ -1,6 +1,5 @@
 package com.webforj.samples.views.slider;
 
-import com.webforj.component.Component;
 import com.webforj.component.Composite;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -29,7 +28,8 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-m) auto");
 
-    slider.setMin(0)
+    slider
+        .setMin(0)
         .setMax(100)
         .setValue(0)
         .setFilled(true)
@@ -42,13 +42,15 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
 
     double range = slider.getMax() - slider.getMin();
 
-    majorTickInput.setMin(1d)
+    majorTickInput
+        .setMin(1d)
         .setMax(range)
         .setInvalidMessage("Must be between 1 and " + range)
         .setPlaceholder("Enter major tick spacing (e.g., 10)")
         .onValueChange(this::updateTickSpacing);
 
-    minorTickInput.setMin(1d)
+    minorTickInput
+        .setMin(1d)
         .setMax(range)
         .setInvalidMessage("Must be between 1 and " + range)
         .setPlaceholder("Enter minor tick spacing (e.g., 2)")
@@ -60,16 +62,14 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
     self.add(
         slider,
         FlexLayout.create(
-            majorTickInput,
-            minorTickInput,
-            FlexLayout.create(snapToTicks, showTicks).horizontal().build()
-        ).vertical().build()
-    );
+                majorTickInput,
+                minorTickInput,
+                FlexLayout.create(snapToTicks, showTicks).horizontal().build())
+            .vertical()
+            .build());
   }
 
-  /**
-   * Updates tick spacing based on input field values.
-   */
+  /** Updates tick spacing based on input field values. */
   private void updateTickSpacing(ValueChangeEvent<Double> ev) {
     Double eventVal = ev.getValue();
     Object source = ev.getSource();

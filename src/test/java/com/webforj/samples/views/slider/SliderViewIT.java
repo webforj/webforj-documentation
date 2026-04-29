@@ -2,11 +2,10 @@ package com.webforj.samples.views.slider;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.slider.SliderPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class SliderViewIT extends BaseTest {
 

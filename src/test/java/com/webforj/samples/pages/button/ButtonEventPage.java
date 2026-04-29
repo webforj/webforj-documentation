@@ -6,25 +6,25 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class ButtonEventPage {
 
-    private static final String ROUTE = "buttonevent";
+  private static final String ROUTE = "buttonevent";
 
-    private final Locator button;
-    private final Page page;
+  private final Locator button;
+  private final Page page;
 
-    public ButtonEventPage(Page page) {
-        this.button = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Click Me!"));
-        this.page = page;
-    }
+  public ButtonEventPage(Page page) {
+    this.button = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Click Me!"));
+    this.page = page;
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getButton() {
-        return button;
-    }
+  public Locator getButton() {
+    return button;
+  }
 
-    public Locator getCounterText(String text) {
-        return page.getByText("Current Counter: " + text);
-    }
+  public Locator getCounterText(String text) {
+    return page.getByText("Current Counter: " + text);
+  }
 }

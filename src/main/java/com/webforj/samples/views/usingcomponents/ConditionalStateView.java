@@ -78,9 +78,10 @@ public class ConditionalStateView extends Composite<FlexLayout> {
     usernameField.addValueChangeListener(event -> checkFieldsAndUpdateButton());
     passwordField.addValueChangeListener(event -> checkFieldsAndUpdateButton());
 
-    submitButton.onClick(e -> {
-      Toast.show("Signed in as " + usernameField.getValue());
-    });
+    submitButton.onClick(
+        e -> {
+          Toast.show("Signed in as " + usernameField.getValue());
+        });
   }
 
   private void checkFieldsAndUpdateButton() {

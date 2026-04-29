@@ -1,12 +1,12 @@
 package com.webforj.samples.views.flexlayout.container;
 
 import com.webforj.annotation.StyleSheet;
-import com.webforj.component.list.ChoiceBox;
-import com.webforj.component.list.event.ListSelectEvent;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.list.ChoiceBox;
+import com.webforj.component.list.event.ListSelectEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.Box;
@@ -30,16 +30,11 @@ public class FlexDirectionView extends Composite<Div> {
   }
 
   private FlexLayout createMainLayout() {
-    return FlexLayout.create()
-        .horizontal()
-        .build();
+    return FlexLayout.create().horizontal().build();
   }
 
   private FlexLayout createBoxLayout() {
-    return FlexLayout.create()
-        .horizontal()
-        .build()
-        .addClassName("button__container--single-row");
+    return FlexLayout.create().horizontal().build().addClassName("button__container--single-row");
   }
 
   private void createBoxes() {
@@ -54,15 +49,13 @@ public class FlexDirectionView extends Composite<Div> {
   }
 
   private ChoiceBox createDirectionsChoiceBox() {
-    ChoiceBox directions = new ChoiceBox()
-        .addClassName("flex__options")
-        .setLabel("Direction Options");
+    ChoiceBox directions =
+        new ChoiceBox().addClassName("flex__options").setLabel("Direction Options");
     directions.onSelect(this::selectDirection);
     for (FlexDirection justify : FlexDirection.values()) {
       String label = justify.getValue();
       String key = justify.toString().toLowerCase();
-      String text = label.substring(0, 1).toUpperCase()
-              + label.substring(1);
+      String text = label.substring(0, 1).toUpperCase() + label.substring(1);
       directions.add("." + key + "()", text);
     }
     directions.selectIndex(0);

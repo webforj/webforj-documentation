@@ -16,24 +16,25 @@ public class TableEditDataView extends Composite<Div> {
   Table<MusicRecord> table = new Table<>();
 
   public TableEditDataView() {
-    table.setWidth("100vw")
-      .setHeight("100vh")
-      .setRepository(Service.getMusicRecords())
-      .setRowHeight(42);
+    table
+        .setWidth("100vw")
+        .setHeight("100vh")
+        .setRepository(Service.getMusicRecords())
+        .setRowHeight(42);
 
-    table.addColumn("Number", MusicRecord::getNumber)
-      .setPinDirection(Column.PinDirection.LEFT);
+    table.addColumn("Number", MusicRecord::getNumber).setPinDirection(Column.PinDirection.LEFT);
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);
     table.addColumn("Genre", MusicRecord::getMusicType);
 
-    VoidElementRenderer<MusicRecord> editRenderer = new VoidElementRenderer<>("dwc-icon-button",
-      ev -> editor.edit(ev.getItem()));
+    VoidElementRenderer<MusicRecord> editRenderer =
+        new VoidElementRenderer<>("dwc-icon-button", ev -> editor.edit(ev.getItem()));
     editRenderer.setAttribute("name", "pencil-pin");
 
-    table.addColumn(editRenderer)
-      .setAlignment(Column.Alignment.CENTER)
-      .setPinDirection(Column.PinDirection.RIGHT);
+    table
+        .addColumn(editRenderer)
+        .setAlignment(Column.Alignment.CENTER)
+        .setPinDirection(Column.PinDirection.RIGHT);
 
     editor.onSave(ev -> table.getRepository().commit(ev.getItem()));
 

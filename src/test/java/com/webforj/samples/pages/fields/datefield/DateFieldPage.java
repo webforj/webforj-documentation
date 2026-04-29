@@ -6,27 +6,28 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class DateFieldPage {
 
-    private static final String ROUTE = "datefield";
+  private static final String ROUTE = "datefield";
 
-    private final Locator departureDate;
-    private final Locator returnDate;
+  private final Locator departureDate;
+  private final Locator returnDate;
 
-    public DateFieldPage(Page page) {
-        
-        this.departureDate = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Departure Date"));
-        this.returnDate = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Return Date"));
-        
-    }
+  public DateFieldPage(Page page) {
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+    this.departureDate =
+        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Departure Date"));
+    this.returnDate =
+        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Return Date"));
+  }
 
-    public Locator getDepartureDate() {
-        return departureDate;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getReturnDate() {
-        return returnDate;
-    }
+  public Locator getDepartureDate() {
+    return departureDate;
+  }
+
+  public Locator getReturnDate() {
+    return returnDate;
+  }
 }

@@ -17,33 +17,24 @@ public class CheckboxIndeterminateView extends Composite<FlexLayout> {
   private final CheckBox child2 = new CheckBox("Child 2");
 
   public CheckboxIndeterminateView() {
-    indeterminate.setIndeterminate(true)
-            .addToggleListener(this::indeterminateToggle);
+    indeterminate.setIndeterminate(true).addToggleListener(this::indeterminateToggle);
 
-    FlexLayout firstRow = FlexLayout.create(indeterminate)
-            .horizontal()
-            .build();
+    FlexLayout firstRow = FlexLayout.create(indeterminate).horizontal().build();
 
-    child1.setChecked(false)
-            .addToggleListener(this::onCheck);
+    child1.setChecked(false).addToggleListener(this::onCheck);
 
-    FlexLayout secondRow = FlexLayout.create(child1)
-            .horizontal()
-            .build()
-            .setStyle("margin-left", "30px");
+    FlexLayout secondRow =
+        FlexLayout.create(child1).horizontal().build().setStyle("margin-left", "30px");
 
-    child2.setChecked(true)
-            .addToggleListener(this::onCheck);
+    child2.setChecked(true).addToggleListener(this::onCheck);
 
-    FlexLayout thirdRow = FlexLayout.create(child2)
-            .horizontal()
-            .build()
-            .setStyle("margin-left", "30px");
+    FlexLayout thirdRow =
+        FlexLayout.create(child2).horizontal().build().setStyle("margin-left", "30px");
     ;
 
     self.setDirection(FlexDirection.COLUMN)
-            .setMargin("var(--dwc-space-l)")
-            .add(firstRow, secondRow, thirdRow);
+        .setMargin("var(--dwc-space-l)")
+        .add(firstRow, secondRow, thirdRow);
   }
 
   private void onCheck(ToggleEvent e) {

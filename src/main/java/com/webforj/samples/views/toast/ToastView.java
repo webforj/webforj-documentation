@@ -21,20 +21,20 @@ public class ToastView extends Composite<Div> {
   private final Toast toast = new Toast("", -1);
 
   public ToastView() {
-    
+
     toast.addClassName("gray-toast");
-    
-    FlexLayout toastContent = new FlexLayout()
-        .setDirection(FlexDirection.ROW)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)");
+
+    FlexLayout toastContent =
+        new FlexLayout()
+            .setDirection(FlexDirection.ROW)
+            .setAlignment(FlexAlignment.CENTER)
+            .setSpacing("var(--dwc-space-m)");
 
     toastContent.add(
         new Spinner(),
         new Paragraph("System update failed. Restoring to the previous state.")
-          .setStyle("text-align", "center"),
-        new Button("Stop", ButtonTheme.DANGER, e -> toast.close())
-    );
+            .setStyle("text-align", "center"),
+        new Button("Stop", ButtonTheme.DANGER, e -> toast.close()));
 
     toast.add(toastContent);
     toast.open();

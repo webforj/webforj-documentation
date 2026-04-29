@@ -23,25 +23,25 @@ public class DialogAutoWidthView extends Composite<FlexLayout> {
     RadioButton autoWidth = RadioButton.Switch("Auto width", true);
     autoWidth.onToggle(e -> dialog.setAutoWidth(e.isToggled()));
 
-    Paragraph body = new Paragraph(
-        "Toggle Auto width to resize this dialog to fit its content.");
+    Paragraph body = new Paragraph("Toggle Auto width to resize this dialog to fit its content.");
     body.setStyle("max-width", "26ch");
 
-    FlexLayout content = FlexLayout.create(body)
-        .vertical()
-        .build()
-        .setPadding("20px");
+    FlexLayout content = FlexLayout.create(body).vertical().build().setPadding("20px");
 
     Button save = new Button("Save", ButtonTheme.PRIMARY);
 
-    FlexLayout actions = FlexLayout.create(autoWidth, save)
-        .horizontal()
-        .justify().between()
-        .align().center()
-        .build()
-        .setStyle("width", "100%");
+    FlexLayout actions =
+        FlexLayout.create(autoWidth, save)
+            .horizontal()
+            .justify()
+            .between()
+            .align()
+            .center()
+            .build()
+            .setStyle("width", "100%");
 
-    dialog.addToHeader(new Div("Save changes"))
+    dialog
+        .addToHeader(new Div("Save changes"))
         .addToContent(content)
         .addToFooter(actions)
         .setCloseable(false)

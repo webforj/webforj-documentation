@@ -1,11 +1,11 @@
 package com.webforj.samples.views.spinner;
 
-import java.util.List;
-
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.icons.Icon;
+import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.columnslayout.ColumnsLayout;
 import com.webforj.component.layout.columnslayout.ColumnsLayout.Alignment;
 import com.webforj.component.layout.columnslayout.ColumnsLayout.Breakpoint;
@@ -13,8 +13,7 @@ import com.webforj.component.spinner.Spinner;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.component.icons.Icon;
-import com.webforj.component.icons.TablerIcon;
+import java.util.List;
 
 @Route
 @FrameTitle("Spinner Basics")
@@ -40,9 +39,6 @@ public class SpinnerDemoView extends Composite<ColumnsLayout> {
         .setWidth("fit-content")
         .add(title, position, positionText, location, locationText, spinner, resume);
 
-    self.setSpan(title, 10)
-        .setSpan(positionText, 9)
-        .setSpan(locationText, 9)
-        .setSpan(resume, 9);
+    self.setSpan(title, 10).setSpan(positionText, 9).setSpan(locationText, 9).setSpan(resume, 9);
   }
 }

@@ -20,12 +20,13 @@ public class ProgressBarThemesView extends Composite<FlexLayout> {
         .setStyle("padding", "20px");
 
     for (Theme theme : Theme.values()) {
-      ProgressBar bar = new ProgressBar()
-          .setAnimated(true)
-          .setValue(50)
-          .setStriped(true)
-          .setText(theme.name() + " {{x}}%")
-          .setTheme(theme);
+      ProgressBar bar =
+          new ProgressBar()
+              .setAnimated(true)
+              .setValue(50)
+              .setStriped(true)
+              .setText(theme.name() + " {{x}}%")
+              .setTheme(theme);
 
       self.add(bar);
     }

@@ -30,13 +30,16 @@ public class TabbedPaneSegmentView extends Composite<FlexLayout> {
 
     pane.setSegment(true);
 
-    FlexLayout container = FlexLayout.create(pane)
-        .vertical()
-        .justify().center()
-        .align().center()
-        .build()
-        .setStyle("width", "100%")
-        .setStyle("min-height", "100vh");
+    FlexLayout container =
+        FlexLayout.create(pane)
+            .vertical()
+            .justify()
+            .center()
+            .align()
+            .center()
+            .build()
+            .setStyle("width", "100%")
+            .setStyle("min-height", "100vh");
 
     self.add(container);
   }

@@ -1,5 +1,3 @@
 package com.webforj.samples.pages.drawer;
 
-public class DrawerAutoFocusPage {
-    
-}
+public class DrawerAutoFocusPage {}
