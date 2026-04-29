@@ -2,7 +2,7 @@
 title: Styling
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 04ddb356576ffb59456111d5b45fd4da
+_i18n_hash: abb693dec702e4a253cf4e1228fb2d7e
 ---
 <Head>
   <style>{`
@@ -17,13 +17,24 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ toimittaa kattavan suunnittelujärjestelmän nimeltä **DWC**. Se on enemmän kuin vain teema; se on jäsennelty, laajennettavissa oleva järjestelmä, joka ohjaa sovelluksesi visuaalista kieltä. DWC on rakennettu auttamaan kehittäjiä ja suunnittelijoita luomaan johdonmukaisia, brändin mukaisia käyttöliittymiä nopeasti ja luottavaisesti.
+webforJ toimitetaan kattavan suunnittelujärjestelmän kanssa nimeltä **DWC**. Se on enemmän kuin vain teema, se on rakennettu, laajennettavissa oleva järjestelmä, joka hallitsee sovelluksesi visuaalista kieltä. DWC on suunniteltu auttamaan kehittäjiä ja suunnittelijoita luomaan johdonmukaisia, brändin mukaisia käyttöliittymiä nopeasti ja varmasti.
 
-DWC:n ytimessä on kokoelma huolellisesti suunniteltuja CSS-muuttujia (suunnittelutokeneita), jotka kattavat keskeiset visuaaliset elementit, kuten värit, typografian, reunat ja väliin. Nämä tokenit toimivat kaikkien komponenttityylien perustana ja mahdollistavat globaaleja mukautuksia vähäisellä vaivalla.
+DWC:n ytimessä on joukko huolellisesti suunniteltuja CSS-muuttujia (suunnittelutunnisteita), jotka kattavat keskeiset visuaaliset elementit, kuten värit, typografian, reunat ja väliyhteydet. Nämä tunnisteet toimivat kaikkien komponenttityylien perustavanlaatuisina rakennuspalikoina ja mahdollistavat globaalin mukauttamisen vähällä vaivalla.
 
-Tukeakseen edistyneempiä tyylittelyjä webforJ hyödyntää CSS Shadow Parts -ominaisuutta, jonka avulla komponenttien sisäosat voidaan valikoivasti tyylittää ilman kapseloinnin rikkomista. Tämä antaa tiimeille tarkkaa hallintaa siitä, miltä komponentit näyttävät, jopa laajemmissa sovelluksissa.
+Edistyneemmän tyylittelyn tukemiseksi webforJ hyödyntää CSS Shadow Partsia, mikä mahdollistaa komponenttien sisäisten osien valikoidun tyylittelyn ilman kapseloinnin rikkomista. Tämä antaa tiimeille tarkkaa hallintaa siitä, kuinka komponentit näkyvät, jopa suuremmissa sovelluksissa.
 
-DWC:ssä on myös mukautettava väripaletti, ja se käyttää oletuksena puhdasta, vaaleaa visuaalista teemaa, mutta jokainen osa voidaan mukauttaa brändisi tai tuotteesi tyyliin.
+DWC sisältää myös muokattavan väri-kartan ja oletuksena puhtaan, vaalean visuaalisen teeman, mutta jokaista aspektia voidaan mukauttaa brändisi tai tuotteesi tyyliin.
+
+<AISkillTip skill="webforj-styling-apps" />
+
+## Figma design kit {#figma-design-kit}
+
+[DWC Figma -kirjasto](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) on virallinen suunnitteluresurssi modernien, yritystasojen verkkosovellusten luomiseen. Se sisältää kattavan joukon komponentteja, typografiatyylejä ja väritunnisteita, jotka ovat linjassa DWC:n suunnittelujärjestelmän kanssa. Suunnittelijat ja kehittäjät voivat käyttää tätä kirjastoa rakentaakseen visuaalisesti johdonmukaisia, käyttäjäystävällisiä käyttöliittymiä ennakoitavalla komponenttikäytöksellä, tarkalla väliyhteydellä ja saavutettavalla väri-eron kanssa.
+
+<img src="/img/dwc.png" alt="Figma Design Kit" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
+
+>  
+<!-- > ![Figma Design Kit Screenshot](./path-to-your-screenshot.png) -->
 
 ## Topics {#topics}
 

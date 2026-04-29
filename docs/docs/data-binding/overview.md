@@ -22,6 +22,8 @@ import DocCardList from '@theme/DocCardList';
 
  webforJ includes a data binding feature that integrates UI components with backend data models in Java applications. This feature bridges the gap between the UI and the data layer so that changes in the UI reflect in the data model and vice versa, reducing the complexity of event handling and data synchronization.
 
+<AISkillTip skill="webforj-building-forms" />
+
 ## Concept {#concept}
 
 The following demonstration showcases a simple webforJ app for registering superheroes using webforJ data binding. The app consists of two main parts: `HeroRegistration.java` and `Hero.java`. 
