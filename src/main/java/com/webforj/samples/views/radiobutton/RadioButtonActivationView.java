@@ -14,17 +14,13 @@ public class RadioButtonActivationView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public RadioButtonActivationView() {
-    self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("1em")
-        .setMargin("20px");
+    self.setDirection(FlexDirection.COLUMN).setSpacing("1em").setMargin("20px");
 
     // Auto-activated radio buttons (select on click)
-    RadioButton autoActivateOne = new RadioButton("Auto Activated")
-        .setActivation(Activation.AUTO)
-        .focus();
+    RadioButton autoActivateOne =
+        new RadioButton("Auto Activated").setActivation(Activation.AUTO).focus();
 
-    RadioButton autoActivateTwo = new RadioButton("Auto Activated")
-        .setActivation(Activation.AUTO);
+    RadioButton autoActivateTwo = new RadioButton("Auto Activated").setActivation(Activation.AUTO);
 
     // Manual activation radio buttons
     RadioButton manualActivateOne = new RadioButton("Manually Activated");

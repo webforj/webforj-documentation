@@ -27,30 +27,35 @@ public class ProgressBarOrientationView extends Composite<Div> {
   private final Icon resetIcon = TablerIcon.create("refresh");
 
   private final ProgressBar bar = new ProgressBar(15, "Reactor Heating Up: {{x}}%");
-  private final FlexLayout buttonContainer = FlexLayout.create(start, pause, reset).vertical().build();
-  private final FlexLayout layout = FlexLayout.create(buttonContainer, bar)
-      .horizontal()
-      .build()
-      .setStyle("max-width", "320px")
-      .setStyle("margin", "0 auto")
-      .setStyle("padding", "20px");
+  private final FlexLayout buttonContainer =
+      FlexLayout.create(start, pause, reset).vertical().build();
+  private final FlexLayout layout =
+      FlexLayout.create(buttonContainer, bar)
+          .horizontal()
+          .build()
+          .setStyle("max-width", "320px")
+          .setStyle("margin", "0 auto")
+          .setStyle("padding", "20px");
 
   public ProgressBarOrientationView() {
     start.setPrefixComponent(startIcon);
     pause.setPrefixComponent(pauseIcon);
     reset.setPrefixComponent(resetIcon);
 
-    Interval interval = new Interval(0.1f, event -> {
-      Integer progress = bar.getValue() + 1;
-      bar.setValue(progress);
+    Interval interval =
+        new Interval(
+            0.1f,
+            event -> {
+              Integer progress = bar.getValue() + 1;
+              bar.setValue(progress);
 
-      if (progress >= bar.getMax()) {
-        event.getInterval().stop();
-        start.setEnabled(false);
-        pause.setEnabled(false);
-        bar.setAnimated(false);
-      }
-    });
+              if (progress >= bar.getMax()) {
+                event.getInterval().stop();
+                start.setEnabled(false);
+                pause.setEnabled(false);
+                bar.setAnimated(false);
+              }
+            });
 
     bar.setStyle("--dwc-progressbar-width", "160px")
         .setStyle("--dwc-progressbar-height", "125px")
@@ -61,42 +66,46 @@ public class ProgressBarOrientationView extends Composite<Div> {
         .setAnimated(true);
 
     // Change theme based on progress value
-    bar.onValueChange(e -> {
-      int value = e.getValue();
-      if (value >= 75) {
-        bar.setTheme(Theme.DANGER);
-      } else if (value >= 25) {
-        bar.setTheme(Theme.WARNING);
-      } else {
-        bar.setTheme(Theme.SUCCESS);
-      }
-    });
+    bar.onValueChange(
+        e -> {
+          int value = e.getValue();
+          if (value >= 75) {
+            bar.setTheme(Theme.DANGER);
+          } else if (value >= 25) {
+            bar.setTheme(Theme.WARNING);
+          } else {
+            bar.setTheme(Theme.SUCCESS);
+          }
+        });
 
     // Start button click handler
-    start.onClick(e -> {
-      bar.setAnimated(true);
-      start.setEnabled(false);
-      pause.setEnabled(true);
-      interval.start();
-    });
+    start.onClick(
+        e -> {
+          bar.setAnimated(true);
+          start.setEnabled(false);
+          pause.setEnabled(true);
+          interval.start();
+        });
 
     // Pause button - initially disabled
     pause.setEnabled(false);
-    pause.onClick(e -> {
-      bar.setAnimated(false);
-      start.setEnabled(true);
-      pause.setEnabled(false);
-      interval.stop();
-    });
+    pause.onClick(
+        e -> {
+          bar.setAnimated(false);
+          start.setEnabled(true);
+          pause.setEnabled(false);
+          interval.stop();
+        });
 
     // Reset button click handler
-    reset.onClick(e -> {
-      bar.setValue(0);
-      bar.setAnimated(true);
-      start.setEnabled(false);
-      pause.setEnabled(true);
-      interval.restart();
-    });
+    reset.onClick(
+        e -> {
+          bar.setValue(0);
+          bar.setAnimated(true);
+          start.setEnabled(false);
+          pause.setEnabled(true);
+          interval.restart();
+        });
 
     self.add(layout);
   }

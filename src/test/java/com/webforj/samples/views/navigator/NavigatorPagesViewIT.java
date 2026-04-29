@@ -2,26 +2,25 @@ package com.webforj.samples.views.navigator;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.navigator.NavigatorPagesPage;
+import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.webforj.samples.pages.navigator.NavigatorPagesPage;
-import com.webforj.samples.views.BaseTest;
-
 public class NavigatorPagesViewIT extends BaseTest {
 
-    private NavigatorPagesPage navigator;
+  private NavigatorPagesPage navigator;
 
-    @BeforeEach
-    public void setupNavigatorPage() {
-        navigateToRoute(NavigatorPagesPage.getRoute());
-        navigator = new NavigatorPagesPage(page);
-    }
+  @BeforeEach
+  public void setupNavigatorPage() {
+    navigateToRoute(NavigatorPagesPage.getRoute());
+    navigator = new NavigatorPagesPage(page);
+  }
 
-    @Test
-    public void testVerifyEllipsis() {
-        navigator.navigatorValue(4).click();
+  @Test
+  public void testVerifyEllipsis() {
+    navigator.navigatorValue(4).click();
 
-        assertThat(navigator.showingRange(31,40)).isVisible();
-    }
+    assertThat(navigator.showingRange(31, 40)).isVisible();
+  }
 }

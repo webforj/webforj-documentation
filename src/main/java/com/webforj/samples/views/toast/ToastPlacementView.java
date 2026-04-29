@@ -13,7 +13,6 @@ import com.webforj.component.toast.Toast;
 import com.webforj.component.toast.Toast.Placement;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import java.util.ArrayList;
 import java.util.List;
 
 @Route
@@ -30,22 +29,26 @@ public class ToastPlacementView extends Composite<FlexLayout> {
 
     ChoiceBox placementChoiceBox = new ChoiceBox();
 
-    placementChoiceBox.insert(List.of(
-        new ListItem(Placement.TOP, "TOP"),
-        new ListItem(Placement.TOP_LEFT, "TOP_LEFT"),
-        new ListItem(Placement.TOP_RIGHT, "TOP_RIGHT"),
-        new ListItem(Placement.CENTER, "CENTER"),
-        new ListItem(Placement.BOTTOM, "BOTTOM"),
-        new ListItem(Placement.BOTTOM_LEFT, "BOTTOM_LEFT"),
-        new ListItem(Placement.BOTTOM_RIGHT, "BOTTOM_RIGHT")
-    ));
+    placementChoiceBox.insert(
+        List.of(
+            new ListItem(Placement.TOP, "TOP"),
+            new ListItem(Placement.TOP_LEFT, "TOP_LEFT"),
+            new ListItem(Placement.TOP_RIGHT, "TOP_RIGHT"),
+            new ListItem(Placement.CENTER, "CENTER"),
+            new ListItem(Placement.BOTTOM, "BOTTOM"),
+            new ListItem(Placement.BOTTOM_LEFT, "BOTTOM_LEFT"),
+            new ListItem(Placement.BOTTOM_RIGHT, "BOTTOM_RIGHT")));
     placementChoiceBox.selectIndex(4);
     placementChoiceBox.setMinWidth(160);
 
-    Button showToastButton = new Button("Show Toast", ButtonTheme.PRIMARY, e -> {
-      Placement selectedPlacement = Placement.valueOf(placementChoiceBox.getText());
-      Toast.show("This is a toast notification", selectedPlacement);
-    });
+    Button showToastButton =
+        new Button(
+            "Show Toast",
+            ButtonTheme.PRIMARY,
+            e -> {
+              Placement selectedPlacement = Placement.valueOf(placementChoiceBox.getText());
+              Toast.show("This is a toast notification", selectedPlacement);
+            });
 
     self.add(placementChoiceBox, showToastButton);
   }

@@ -12,37 +12,37 @@ public class BubbleChart {
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.BUBBLE);
 
   public BubbleChart() {
-    Map<String, Object> options = Map.of(
-        TITLE, "Investment vs. Profit",
-        "hAxis", Map.of(
-            TITLE, "Potential Investment",
-            TEXT_STYLE, Map.of(
-                "bold", true,
-                FONT_SIZE, 12,
-                "color", "#4d4d4d"
-            )
-        ),
-        "vAxis", Map.of(
-            TITLE, "Potential Profit",
-            TEXT_STYLE, Map.of(
-                "bold", true,
-                FONT_SIZE, 12,
-                "color", "#4d4d4d"
-            )
-        ),
-        "bubble", Map.of(TEXT_STYLE, Map.of(FONT_SIZE, 11)),
-        "colorAxis", Map.of("colors", List.of("#d4c5f9", "#495057")),
-        "backgroundColor", "transparent"
-    );
+    Map<String, Object> options =
+        Map.of(
+            TITLE,
+            "Investment vs. Profit",
+            "hAxis",
+            Map.of(
+                TITLE,
+                "Potential Investment",
+                TEXT_STYLE,
+                Map.of("bold", true, FONT_SIZE, 12, "color", "#4d4d4d")),
+            "vAxis",
+            Map.of(
+                TITLE,
+                "Potential Profit",
+                TEXT_STYLE,
+                Map.of("bold", true, FONT_SIZE, 12, "color", "#4d4d4d")),
+            "bubble",
+            Map.of(TEXT_STYLE, Map.of(FONT_SIZE, 11)),
+            "colorAxis",
+            Map.of("colors", List.of("#d4c5f9", "#495057")),
+            "backgroundColor",
+            "transparent");
     chart.setOptions(options);
 
-    List<Object> data = List.of(
-        List.of("ID", "X", "Y", "Temperature"),
-        List.of("1", 80, 167, 120),
-        List.of("2", 79, 136, 130),
-        List.of("3", 78, 184, 50),
-        List.of("4", 72, 278, 230)
-    );
+    List<Object> data =
+        List.of(
+            List.of("ID", "X", "Y", "Temperature"),
+            List.of("1", 80, 167, 120),
+            List.of("2", 79, 136, 130),
+            List.of("3", 78, 184, 50),
+            List.of("4", 72, 278, 230));
     chart.setData(data);
   }
 
@@ -50,5 +50,3 @@ public class BubbleChart {
     return chart;
   }
 }
-
-

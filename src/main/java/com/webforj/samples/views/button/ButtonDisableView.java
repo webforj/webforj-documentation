@@ -17,14 +17,15 @@ public class ButtonDisableView extends Composite<FlexLayout> {
   private final TextField email = new TextField();
 
   public ButtonDisableView() {
-    Button submit = new Button("Submit", ButtonTheme.PRIMARY)
-        .setEnabled(false);
+    Button submit = new Button("Submit", ButtonTheme.PRIMARY).setEnabled(false);
 
-    email.setType(Type.EMAIL)
+    email
+        .setType(Type.EMAIL)
         .setLabel("Enter an email")
-        .onModify(e -> {
-          submit.setEnabled(e.getText().contains("@"));
-        });
+        .onModify(
+            e -> {
+              submit.setEnabled(e.getText().contains("@"));
+            });
 
     self.setAlignment(FlexAlignment.END)
         .setMargin("var(--dwc-space-l)")

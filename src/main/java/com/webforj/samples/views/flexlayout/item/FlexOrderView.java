@@ -25,21 +25,20 @@ public class FlexOrderView extends Composite<FlexLayout> {
     MaskedNumberField order = createOrderField();
     Button submit = createSubmitButton(order);
 
-    FlexLayout optionLayout = FlexLayout.create(order, submit)
-        .vertical()
-        .align().stretch()
-        .build()
-        .addClassName("flex__options");
+    FlexLayout optionLayout =
+        FlexLayout.create(order, submit)
+            .vertical()
+            .align()
+            .stretch()
+            .build()
+            .addClassName("flex__options");
 
     self.add(mainLayout);
     mainLayout.add(optionLayout, boxLayout);
   }
 
   private FlexLayout createMainLayout() {
-    return FlexLayout.create()
-        .horizontal()
-        .align().start()
-        .build();
+    return FlexLayout.create().horizontal().align().start().build();
   }
 
   private FlexLayout createBoxLayout() {
@@ -71,9 +70,9 @@ public class FlexOrderView extends Composite<FlexLayout> {
   }
 
   private Button createSubmitButton(MaskedNumberField order) {
-    Button button = new Button("Set Order")
-        .setSize("100%", "34px");
-    button.onClick(e -> {
+    Button button = new Button("Set Order").setSize("100%", "34px");
+    button.onClick(
+        e -> {
           if (order.getText().isEmpty()) {
             order.setInvalid(true);
           } else {

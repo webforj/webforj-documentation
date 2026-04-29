@@ -14,9 +14,7 @@ public class RadioButtonGroupView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public RadioButtonGroupView() {
-    self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("1em")
-        .setMargin("20px");
+    self.setDirection(FlexDirection.COLUMN).setSpacing("1em").setMargin("20px");
 
     RadioButton sDisagree = new RadioButton("Strongly Disagree");
     RadioButton disagree = new RadioButton("Disagree");

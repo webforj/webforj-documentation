@@ -29,7 +29,10 @@ public class BusyIndicatorView extends Composite<Div> {
   private void handleElapsedEvent(Interval.ElapsedEvent event) {
     switch (retry) {
       case 1 -> {
-        indicator.getSpinner().setTheme(Theme.WARNING).setSpeed(200)
+        indicator
+            .getSpinner()
+            .setTheme(Theme.WARNING)
+            .setSpeed(200)
             .setExpanse(SpinnerExpanse.LARGE);
         indicator.setText(
             "Attempt 1: Still trying to bend the spoon... It's trickier than it looks!, Trying harder...");

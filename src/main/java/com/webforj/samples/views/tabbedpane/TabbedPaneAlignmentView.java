@@ -41,8 +41,9 @@ public class TabbedPaneAlignmentView extends Composite<FlexLayout> {
     for (Alignment alignment : Alignment.values()) {
       alignments.add(alignment.toString());
     }
-    alignments.setWidth("200px")
-            .selectIndex(0)
-            .onSelect(e -> pane.setAlignment(Alignment.valueOf(e.getSelectedItem().getText())));
+    alignments
+        .setWidth("200px")
+        .selectIndex(0)
+        .onSelect(e -> pane.setAlignment(Alignment.valueOf(e.getSelectedItem().getText())));
   }
 }

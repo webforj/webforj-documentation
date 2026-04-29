@@ -21,9 +21,8 @@ public class NavigatorTableView extends Composite<Div> {
   public NavigatorTableView() {
     Repository<MusicRecord> repo = Service.getMusicRecords();
 
-    Navigator nav = new Navigator(repo, Layout.PAGES)
-    .setAutoDisable(true)
-    .setStyle("margin-right", "20px");
+    Navigator nav =
+        new Navigator(repo, Layout.PAGES).setAutoDisable(true).setStyle("margin-right", "20px");
     nav.getPaginator().setMax(5);
 
     Table<MusicRecord> table = new Table<>();
@@ -36,9 +35,7 @@ public class NavigatorTableView extends Composite<Div> {
     table.addColumn("Cost", MusicRecord::getCost);
     table.setRepository(repo);
 
-    FlexLayout layout = FlexLayout.create(table, nav)
-        .vertical()
-        .build();
+    FlexLayout layout = FlexLayout.create(table, nav).vertical().build();
     layout.setItemAlignment(FlexAlignment.END, nav);
 
     self.add(layout);

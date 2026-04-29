@@ -6,10 +6,8 @@ import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.button.event.ButtonClickEvent;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +42,8 @@ public class FlexBasisView extends Composite<FlexLayout> {
     List<Button> buttonList = new ArrayList<>();
     for (int i = 1; i <= 5; i++) {
       Button button = new Button("Box " + i, ButtonTheme.OUTLINED_PRIMARY, this::onButtonSelect);
-      button.setStyle("transition", "flex-basis var(--dwc-transition-medium) var(--dwc-ease-inOutExpo)");
+      button.setStyle(
+          "transition", "flex-basis var(--dwc-transition-medium) var(--dwc-ease-inOutExpo)");
       buttonList.add(button);
     }
     return buttonList;
@@ -59,12 +58,13 @@ public class FlexBasisView extends Composite<FlexLayout> {
   }
 
   private FlexLayout createBoxLayout() {
-    FlexLayout layout = FlexLayout.create()
-        .horizontal()
-        .wrap()
-        .build()
-        .setPadding("20px")
-        .setStyle("border", "1px solid var(--dwc-color-default)");
+    FlexLayout layout =
+        FlexLayout.create()
+            .horizontal()
+            .wrap()
+            .build()
+            .setPadding("20px")
+            .setStyle("border", "1px solid var(--dwc-color-default)");
 
     for (Button button : buttons) {
       layout.add(button);
@@ -82,8 +82,7 @@ public class FlexBasisView extends Composite<FlexLayout> {
   }
 
   private Button createBasisButton() {
-    return new Button("Set basis", this::onSetBasis)
-        .setTooltipText("Select a box item first");
+    return new Button("Set basis", this::onSetBasis).setTooltipText("Select a box item first");
   }
 
   private Button createResetButton() {
@@ -91,9 +90,7 @@ public class FlexBasisView extends Composite<FlexLayout> {
   }
 
   private FlexLayout createOptionLayout() {
-    return FlexLayout.create(numberField, basisButton, reset)
-        .vertical()
-        .build();
+    return FlexLayout.create(numberField, basisButton, reset).vertical().build();
   }
 
   private void setupMainLayout() {

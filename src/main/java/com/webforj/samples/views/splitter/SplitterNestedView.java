@@ -15,8 +15,8 @@ public class SplitterNestedView extends Composite<Div> {
   public SplitterNestedView() {
     SplitterBox top = new SplitterBox("Top", SplitterBox.Theme.WARNING);
     SplitterBox bottom = new SplitterBox("Bottom", SplitterBox.Theme.SUCCESS);
-    Splitter verticalSplitter = new Splitter(top, bottom)
-            .setOrientation(Splitter.Orientation.VERTICAL);
+    Splitter verticalSplitter =
+        new Splitter(top, bottom).setOrientation(Splitter.Orientation.VERTICAL);
 
     SplitterBox master = new SplitterBox("Start", SplitterBox.Theme.INFO);
     Splitter horizontalSplitter = new Splitter(master, verticalSplitter);
