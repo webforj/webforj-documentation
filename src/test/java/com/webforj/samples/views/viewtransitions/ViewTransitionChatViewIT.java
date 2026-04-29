@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.viewtransitions.ViewTransitionChatPage;
+import com.webforj.samples.utils.WaitUtils;
 import com.webforj.samples.views.BaseTest;
 
 class ViewTransitionChatViewIT extends BaseTest {
@@ -16,6 +17,7 @@ class ViewTransitionChatViewIT extends BaseTest {
     @BeforeEach
     void setupChatDemo() {
         navigateToRoute(ViewTransitionChatPage.getRoute());
+        WaitUtils.disableAnimations(page);
         chatPage = new ViewTransitionChatPage(page);
     }
 
@@ -26,8 +28,6 @@ class ViewTransitionChatViewIT extends BaseTest {
 
         chatPage.getChatClose().click();
         assertThat(chatPage.getChatCard()).isHidden();
-
-        page.waitForTimeout(1500);
 
         chatPage.getChatToggleBtn().click();
         assertThat(chatPage.getChatCard()).isVisible();

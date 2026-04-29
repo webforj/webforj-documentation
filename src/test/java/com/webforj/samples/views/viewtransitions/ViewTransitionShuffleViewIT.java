@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.viewtransitions.ViewTransitionShufflePage;
+import com.webforj.samples.utils.WaitUtils;
 import com.webforj.samples.views.BaseTest;
 
 class ViewTransitionShuffleViewIT extends BaseTest {
@@ -19,6 +20,7 @@ class ViewTransitionShuffleViewIT extends BaseTest {
     @BeforeEach
     void setupShuffleDemo() {
         navigateToRoute(ViewTransitionShufflePage.getRoute());
+        WaitUtils.disableAnimations(page);
         shufflePage = new ViewTransitionShufflePage(page);
     }
 

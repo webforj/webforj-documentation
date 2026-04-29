@@ -121,4 +121,26 @@ public class WaitUtils {
 
         assertTrue(exception.getMessage().contains("Timeout"));
     }
+
+    /**
+     * Disables CSS animations and transitions on the current page.
+     *
+     * <p>
+     * Useful for tests that interact with elements during or shortly after animations,
+     * where the moving bounding box can cause Playwright's actionability checks to time
+     * out. Tests that rely on this helper are verifying logic and end states, not
+     * animation playback — visual regression of animations belongs in a separate
+     * screenshot-based suite.
+     * </p>
+     */
+    public static void disableAnimations(Page page) {
+        page.addStyleTag(new Page.AddStyleTagOptions().setContent(
+            "*, *::before, *::after {" +
+            "  animation-duration: 0s !important;" +
+            "  animation-delay: 0s !important;" +
+            "  transition-duration: 0s !important;" +
+            "  transition-delay: 0s !important;" +
+            "}"
+        ));
+    }
 }

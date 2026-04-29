@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.viewtransitions.ViewTransitionEnterExitPage;
+import com.webforj.samples.utils.WaitUtils;
 import com.webforj.samples.views.BaseTest;
 
 class ViewTransitionEnterExitViewIT extends BaseTest {
@@ -16,6 +17,7 @@ class ViewTransitionEnterExitViewIT extends BaseTest {
     @BeforeEach
     void setupEnterExitDemo() {
         navigateToRoute(ViewTransitionEnterExitPage.getRoute());
+        WaitUtils.disableAnimations(page);
         enterExitPage = new ViewTransitionEnterExitPage(page);
     }
 

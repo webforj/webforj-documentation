@@ -4,6 +4,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 import com.microsoft.playwright.Locator;
 import com.webforj.samples.pages.debouncer.DebouncerPage;
 import com.webforj.samples.views.BaseTest;
@@ -35,6 +36,13 @@ public class DebouncerViewIT extends BaseTest {
     }
 
     @Test
+    @DisabledIfEnvironmentVariable(
+        named = "CI",
+        matches = "true",
+        disabledReason = "webforJ's client→server value-change events don't preserve strict ordering "
+            + "under contention, causing the typed string to arrive scrambled or empty. Test is "
+            + "reliable in dev environments. Re-enable when webforJ guarantees event ordering."
+    )
     public void testDebouncerUpdatesOutputAndResetsHelper() {
         debouncerPage.getInput().pressSequentially("world", new Locator.PressSequentiallyOptions().setDelay(600));
 

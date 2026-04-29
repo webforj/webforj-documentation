@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.config.RunConfig;
 import com.webforj.samples.pages.viewtransitions.ViewTransitionMorphPage;
+import com.webforj.samples.utils.WaitUtils;
 import com.webforj.samples.views.BaseTest;
 
 class ViewTransitionMorphViewIT extends BaseTest {
@@ -18,6 +19,7 @@ class ViewTransitionMorphViewIT extends BaseTest {
     @BeforeEach
     void setupMorphDemo() {
         navigateToRoute(ViewTransitionMorphPage.getRoute());
+        WaitUtils.disableAnimations(page);
         morphPage = new ViewTransitionMorphPage(page);
     }
 
