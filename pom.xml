@@ -138,6 +138,7 @@
         <version>3.4.0</version>
         <configuration>
           <java>
+            <lineEndings>UNIX</lineEndings>
             <googleJavaFormat />
             <includes>
               <include>src/main/java/**/*.java</include>
