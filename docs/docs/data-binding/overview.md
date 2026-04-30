@@ -126,6 +126,6 @@ public class Hero {
 
 - **Annotation-Driven Configuration:**  Uses annotations to minimize boilerplate code, making the bindings between UI components and data models declarative and easy to manage.
 
-# Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />
