@@ -65,7 +65,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 <ComponentDemo 
 path='/webforj/toolbartheme?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java' 
-height = '475px'
+height = '600px'
 />
 
 <TableBuilder name="Toolbar" />
