@@ -1,0 +1,29 @@
+---
+title: "Navigate to another view programmatically"
+description: "Trigger programmatic navigation to a view class using Router.getCurrent().navigate()."
+tags: [routing, navigation]
+components: []
+difficulty: beginner
+---
+
+Call `Router.getCurrent().navigate()` from anywhere in your Java code, such as from a button click handler. Passing the view class is preferred over a raw URL string so the router handles URL generation automatically.
+
+```java
+import com.webforj.component.Composite;
+import com.webforj.component.button.Button;
+import com.webforj.component.html.elements.Div;
+import com.webforj.router.Router;
+import com.webforj.router.annotation.Route;
+
+@Route
+public class HomeView extends Composite<Div> {
+
+  public HomeView() {
+    Button goToDashboard = new Button("Go to Dashboard");
+    goToDashboard.onClick(e -> Router.getCurrent().navigate(DashboardView.class));
+    getBoundComponent().add(goToDashboard);
+  }
+}
+```
+
+To navigate with route parameters, pass a `ParametersBag` as the second argument: `Router.getCurrent().navigate(UserView.class, ParametersBag.of("id=42"))`.

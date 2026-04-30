@@ -1,0 +1,42 @@
+{
+  "generated": "2026-04-30T18:34:53.875Z",
+  "count": 3,
+  "recipes": [
+    {
+      "slug": "css/inject-inline-css",
+      "url": "/cookbook/css/inject-inline-css",
+      "title": "Inject inline CSS into the page from Java",
+      "description": "Use @InlineStyleSheet to add CSS class definitions directly from a Java component without a separate stylesheet file.",
+      "tags": [
+        "css",
+        "styling"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "routing/navigate-programmatically",
+      "url": "/cookbook/routing/navigate-programmatically",
+      "title": "Navigate to another view programmatically",
+      "description": "Trigger programmatic navigation to a view class using Router.getCurrent().navigate().",
+      "tags": [
+        "routing",
+        "navigation"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "routing/read-query-parameter",
+      "url": "/cookbook/routing/read-query-parameter",
+      "title": "Read a query parameter from a route",
+      "description": "Access URL query parameters inside a webforJ view using DidEnterObserver and ParametersBag.",
+      "tags": [
+        "routing",
+        "parameters"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    }
+  ]
+}
