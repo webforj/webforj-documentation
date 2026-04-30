@@ -6,12 +6,13 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import Tooltip from '@mui/material/Tooltip';
-import Box from '@mui/material/Box';
 
 
 export default function TableWrapper({ children, title, ...props }) {
     const [open, setOpen] = useState(false);
     const [resolvedTitle, setResolvedTitle] = useState(title);
+    const [isHovered, setIsHovered] = useState(false);
+    const [isButtonHovered, setIsButtonHovered] = useState(false);
 
     const tableRef = useRef(null);
 
@@ -51,34 +52,53 @@ export default function TableWrapper({ children, title, ...props }) {
     }, [title]);
 
     return (
-        <div className="table-wrapper" ref={tableRef} style={{ position: 'relative', marginBottom: '2rem', maxWidth: 'fit-content' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
-                <IconButton
-                    onClick={handleClickOpen}
-                    size="small"
-                    aria-label="Expand table"
-                    sx={{
-                        ...iconButtonSx,
-                        disableRipple: true,
-                        gap: '4px',
-                        paddingLeft: '8px',
-                        paddingRight: '8px',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        letterSpacing: '0.05em',
-                        textTransform: 'uppercase',
-                    }}
-                >
-                    <OpenInFullIcon fontSize="small" />
-                    Expand
-                </IconButton>
-            </Box>
-
+        <div
+            className="table-wrapper"
+            ref={tableRef}
+            style={{ position: 'relative', marginBottom: '2rem', maxWidth: 'fit-content' }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => { setIsHovered(false); setIsButtonHovered(false); }}
+        >
             <div className="table-container" style={{ overflowX: 'auto' }}>
                 <table {...props}>
                     {children}
                 </table>
             </div>
+
+            <IconButton
+                onClick={handleClickOpen}
+                size="small"
+                aria-label="Expand table"
+                onMouseEnter={() => setIsButtonHovered(true)}
+                onMouseLeave={() => setIsButtonHovered(false)}
+                sx={{
+                    ...iconButtonSx,
+                    position: 'absolute',
+                    top: '6px',
+                    right: '6px',
+                    opacity: isHovered ? 1 : 0,
+                    transition: 'opacity 0.2s ease',
+                    pointerEvents: isHovered ? 'auto' : 'none',
+                    gap: '4px',
+                    paddingLeft: '8px',
+                    paddingRight: '8px',
+                    fontSize: '0.75rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                }}
+            >
+                <OpenInFullIcon fontSize="small" />
+                <span style={{
+                    maxWidth: isButtonHovered ? '60px' : '0',
+                    overflow: 'hidden',
+                    transition: 'max-width 0.2s ease',
+                    whiteSpace: 'nowrap',
+                    display: 'inline-block',
+                }}>
+                    Expand
+                </span>
+            </IconButton>
 
             <Dialog
                 maxWidth="fit-content"
