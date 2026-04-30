@@ -23,9 +23,7 @@ public class FlexWrappingView extends Composite<Div> {
   }
 
   private Div createContainer() {
-    return new Div()
-        .setWidth("200px")
-        .setStyle("border", "1px black dotted");
+    return new Div().setWidth("200px").setStyle("border", "1px black dotted");
   }
 
   private Button[] createButtons() {
@@ -40,9 +38,6 @@ public class FlexWrappingView extends Composite<Div> {
   }
 
   private FlexLayout createButtonsLayout(Button[] buttons) {
-    return FlexLayout.create(buttons)
-        .horizontal()
-        .wrap()
-        .build();
+    return FlexLayout.create(buttons).horizontal().wrap().build();
   }
 }

@@ -1,10 +1,10 @@
 package com.webforj.samples.views.dialog;
 
-import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.Composite;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.list.ChoiceBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -21,10 +21,12 @@ public class DialogAlignmentsView extends Composite<FlexLayout> {
     options.add(Dialog.Alignment.CENTER, "Center");
     options.add(Dialog.Alignment.BOTTOM, "Bottom");
     options.setLabel("Select Alignment");
-    options.selectIndex(1)
+    options
+        .selectIndex(1)
         .onSelect(e -> dialog.setAlignment((Dialog.Alignment) e.getSelectedItem().getKey()));
 
-    dialog.addToHeader(new Div("Alignments"))
+    dialog
+        .addToHeader(new Div("Alignments"))
         .addToContent(options)
         .setStyle("display", "flex")
         .setStyle("justify-content", "center")

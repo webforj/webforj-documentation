@@ -20,12 +20,14 @@ public class DialogBackdropBlurView extends Composite<FlexLayout> {
 
   public DialogBackdropBlurView() {
     self.add(dialog);
-    dialog.setStyle("background", cssValue)
+    dialog
+        .setStyle("background", cssValue)
         .addToHeader(new Div("Background Blur"))
         .addToContent(backgroundBlur)
         .setCloseable(false)
         .open();
-    backgroundBlur.setStyle("display", "flex")
+    backgroundBlur
+        .setStyle("display", "flex")
         .setStyle("justify-content", "center")
         .onClick(e -> dialog.setBlurred(!dialog.isBlurred()));
   }

@@ -18,12 +18,14 @@ public class DialogCloseView extends Composite<FlexLayout> {
 
   public DialogCloseView() {
     self.add(dialog, showDialog);
-    showDialog.setStyle("margin-left", "48vw")
+    showDialog
+        .setStyle("margin-left", "48vw")
         .setStyle("margin-top", "20px")
         .onClick(e -> dialog.open());
 
     closeDialog.onClick(e -> dialog.close());
-    dialog.addToHeader(new Div("Closing the Dialog"))
+    dialog
+        .addToHeader(new Div("Closing the Dialog"))
         .addToContent(closeDialog)
         .setCancelOnEscKey(true)
         .open();

@@ -2,7 +2,7 @@
 title: Styling
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 4e709dc1db793a4ae1ed6f944375b512
+_i18n_hash: abb693dec702e4a253cf4e1228fb2d7e
 ---
 <Head>
   <style>{`
@@ -17,20 +17,25 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ toimittaa kattavan suunnittelujärjestelmän nimeltä **DWC**. Se on enemmän kuin vain teema, se on rakenteellinen, laajennettavissa oleva järjestelmä, joka hallitsee sovelluksesi visuaalista kieltä. DWC on suunniteltu auttamaan kehittäjiä ja suunnittelijoita luomaan nopeasti ja varmasti johdonmukaisia, brändiin sidottuja käyttöliittymiä.
+webforJ toimitetaan kattavan suunnittelujärjestelmän kanssa nimeltä **DWC**. Se on enemmän kuin vain teema, se on rakennettu, laajennettavissa oleva järjestelmä, joka hallitsee sovelluksesi visuaalista kieltä. DWC on suunniteltu auttamaan kehittäjiä ja suunnittelijoita luomaan johdonmukaisia, brändin mukaisia käyttöliittymiä nopeasti ja varmasti.
 
-DWC:n ytimessä on joukko huolellisesti suunniteltuja CSS-muuttujia (suunnittelutokeneita), jotka kattavat keskeiset visuaaliset elementit, kuten värit, typografian, reunat ja välistykset. Nämä tokenit toimivat kaikille komponenttityyleille perustavanlaatuisina rakennuspalikoina ja mahdollistavat globaalin mukauttamisen vähällä vaivalla.
+DWC:n ytimessä on joukko huolellisesti suunniteltuja CSS-muuttujia (suunnittelutunnisteita), jotka kattavat keskeiset visuaaliset elementit, kuten värit, typografian, reunat ja väliyhteydet. Nämä tunnisteet toimivat kaikkien komponenttityylien perustavanlaatuisina rakennuspalikoina ja mahdollistavat globaalin mukauttamisen vähällä vaivalla.
 
-Tukeakseen edistyneempää tyylittelyä, webforJ hyödyntää CSS Shadow Parts -tekniikkaa, mikä mahdollistaa komponenttien sisäisten osien valikoivan tyylittelyn ilman kapseloinnin rikkomista. Tämä antaa tiimeille tarkkaa hallintaa siitä, miltä komponentit näyttävät, jopa suuremmissa sovelluksissa.
+Edistyneemmän tyylittelyn tukemiseksi webforJ hyödyntää CSS Shadow Partsia, mikä mahdollistaa komponenttien sisäisten osien valikoidun tyylittelyn ilman kapseloinnin rikkomista. Tämä antaa tiimeille tarkkaa hallintaa siitä, kuinka komponentit näkyvät, jopa suuremmissa sovelluksissa.
 
-DWC sisältää myös mukautettavan väriportfolion ja perustuu puhtaaseen, vaaleaan visuaaliseen teemaan, mutta jokainen osa voidaan mukauttaa brändisi tai tuotteesi tyyliin.
+DWC sisältää myös muokattavan väri-kartan ja oletuksena puhtaan, vaalean visuaalisen teeman, mutta jokaista aspektia voidaan mukauttaa brändisi tai tuotteesi tyyliin.
 
-## Figma Design Kit {#figma-design-kit}
+<AISkillTip skill="webforj-styling-apps" />
 
-[DWC Figma -kirjasto](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) on virallinen suunnitteluresurssi nykyaikaisten, yritysluokan web-sovellusten luomiseen. Se sisältää kattavan joukon komponentteja, typografiastylejä ja väritokeneita, jotka ovat linjassa DWC-suunnittelujärjestelmän kanssa. Tämän kirjaston avulla suunnittelijat ja kehittäjät voivat rakentaa visuaalisesti johdonmukaisia, käyttäjäystävällisiä käyttöliittymiä, jotka tasapainottavat toiminnallisuuden hienostuneen käyttäjäkokemuksen kanssa.
+## Figma design kit {#figma-design-kit}
+
+[DWC Figma -kirjasto](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) on virallinen suunnitteluresurssi modernien, yritystasojen verkkosovellusten luomiseen. Se sisältää kattavan joukon komponentteja, typografiatyylejä ja väritunnisteita, jotka ovat linjassa DWC:n suunnittelujärjestelmän kanssa. Suunnittelijat ja kehittäjät voivat käyttää tätä kirjastoa rakentaakseen visuaalisesti johdonmukaisia, käyttäjäystävällisiä käyttöliittymiä ennakoitavalla komponenttikäytöksellä, tarkalla väliyhteydellä ja saavutettavalla väri-eron kanssa.
 
 <img src="/img/dwc.png" alt="Figma Design Kit" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
 
-## Aihealueet {#topics}
+>  
+<!-- > ![Figma Design Kit Screenshot](./path-to-your-screenshot.png) -->
+
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

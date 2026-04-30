@@ -26,7 +26,8 @@ public class PromptCommand implements TerminalCommand {
       return;
     }
     String promptText = String.join(" ", args).substring(6);
-    String answer = showInputDialog(promptText, "Terminal Prompt", InputDialog.MessageType.QUESTION);
+    String answer =
+        showInputDialog(promptText, "Terminal Prompt", InputDialog.MessageType.QUESTION);
     term.writeln("\u001b[32mUser responded: " + answer + "\u001b[0m");
   }
 }

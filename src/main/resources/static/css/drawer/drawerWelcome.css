@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-html[data-app-theme="dark"] .webforJ-logo{
+html[data-app-theme="dark"] .webforJ-logo {
   filter: brightness(0) invert(1);
 }
 
@@ -13,7 +13,6 @@ html[data-app-theme="dark"] .webforJ-logo{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--dwc-space-2xl);
 }
 
 .welcome__drawer::part(header) {

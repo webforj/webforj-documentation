@@ -22,17 +22,11 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GLOBALS from '../../siteConfig';
-import RadiusBox from '@site/src/components/DWCTheme/RadiusBox/RadiusBox';
-import ShadowBox from '@site/src/components/DWCTheme/ShadowBox/ShadowBox';
-import SizingBox from '@site/src/components/DWCTheme/SizingBox/SizingBox';
-import SpacingBox from '@site/src/components/DWCTheme/SpacingBox/SpacingBox';
-import SurfaceBox from '@site/src/components/DWCTheme/SurfaceBox/SurfaceBox';
-import TransitionBox from '@site/src/components/DWCTheme/TransitionBox/TransitionBox';
 import GalleryCard from '@site/src/components/GalleryCard/GalleryCard';
 import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
-import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
 import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarning';
 import AutomatedUpgradeTip from '@site/src/components/DocsTools/AutomatedUpgradeTip';
+import AISkillTip from '@site/src/components/DocsTools/AISkillTip';
 
 
 export default {
@@ -50,12 +44,6 @@ export default {
   ExpandableCode,
   GiscusComments,
   AskMenu,
-  RadiusBox,
-  ShadowBox,
-  SizingBox,
-  SpacingBox,
-  SurfaceBox,
-  TransitionBox,
   AccordionGroup,
   Accordion,
   AccordionSummary,
@@ -63,9 +51,8 @@ export default {
   ExpandMoreIcon,
   GalleryCard,
   GalleryGrid,
-  ColorPalette,
   table: TableWrapper,
   ExperimentalWarning,
-  AutomatedUpgradeTip
+  AutomatedUpgradeTip,
+  AISkillTip
 };
-

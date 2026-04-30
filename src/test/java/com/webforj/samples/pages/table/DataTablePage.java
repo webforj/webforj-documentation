@@ -5,106 +5,115 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
 public class DataTablePage {
-    private static final String ROUTE = "datatable";
+  private static final String ROUTE = "datatable";
 
-    private final Page page;
-    private final Locator searchInput;
-    private final Locator tableRows;
-    private final Locator entriesDropdown;
-    private final Locator entriesTen;
-    private final Locator entriesTwentyfive;
-    private final Locator entriesFifty;
-    private final Locator entriesHundred;
-    private final Locator firstButton;
-    private final Locator prevButton;
-    private final Locator nextButton;
-    private final Locator lastButton;
+  private final Page page;
+  private final Locator searchInput;
+  private final Locator tableRows;
+  private final Locator entriesDropdown;
+  private final Locator entriesTen;
+  private final Locator entriesTwentyfive;
+  private final Locator entriesFifty;
+  private final Locator entriesHundred;
+  private final Locator firstButton;
+  private final Locator prevButton;
+  private final Locator nextButton;
+  private final Locator lastButton;
 
-    public DataTablePage(Page page) {
+  public DataTablePage(Page page) {
 
-        this.page = page;
-        
-        this.searchInput = page.getByRole(AriaRole.SEARCHBOX, new Page.GetByRoleOptions().setName("Search"));
-        this.tableRows = page.getByRole(AriaRole.TABLE).filter().locator("[data-row]");
+    this.page = page;
 
-        this.entriesDropdown = page.locator("dwc-dropdown");
+    this.searchInput =
+        page.getByRole(AriaRole.SEARCHBOX, new Page.GetByRoleOptions().setName("Search"));
+    this.tableRows = page.getByRole(AriaRole.TABLE).filter().locator("[data-row]");
 
-        this.entriesTen = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("10").setExact(true));
-        this.entriesTwentyfive = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("25").setExact(true));
-        this.entriesFifty = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("50").setExact(true));
-        this.entriesHundred = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("100").setExact(true));
+    this.entriesDropdown = page.locator("dwc-dropdown");
 
-        this.firstButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto first page"));
-        this.prevButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto previous page"));
-        this.nextButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto next page"));
-        this.lastButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto last page"));
-    }
+    this.entriesTen =
+        page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("10").setExact(true));
+    this.entriesTwentyfive =
+        page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("25").setExact(true));
+    this.entriesFifty =
+        page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("50").setExact(true));
+    this.entriesHundred =
+        page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("100").setExact(true));
 
-    public void searchAthlete(String athleteName) {
-        searchInput.fill(athleteName);
-    }
+    this.firstButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto first page"));
+    this.prevButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto previous page"));
+    this.nextButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto next page"));
+    this.lastButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto last page"));
+  }
 
-    public int getRowCount() {
-        return tableRows.count();
-    }
+  public void searchAthlete(String athleteName) {
+    searchInput.fill(athleteName);
+  }
 
-    public Locator getSearchInput() {
-        return searchInput;
-    }
+  public int getRowCount() {
+    return tableRows.count();
+  }
 
-    public Locator getTableRows() {
-        return tableRows;
-    }
+  public Locator getSearchInput() {
+    return searchInput;
+  }
 
-    public Locator getEntriesDropdown() {
-        return entriesDropdown;
-    }
+  public Locator getTableRows() {
+    return tableRows;
+  }
 
-    public Locator getEntriesTen() {
-        return entriesTen;
-    }
+  public Locator getEntriesDropdown() {
+    return entriesDropdown;
+  }
 
-    public Locator getEntriesTwentyfive() {
-        return entriesTwentyfive;
-    }
+  public Locator getEntriesTen() {
+    return entriesTen;
+  }
 
-    public Locator getEntriesFifty() {
-        return entriesFifty;
-    }
+  public Locator getEntriesTwentyfive() {
+    return entriesTwentyfive;
+  }
 
-    public Locator getEntriesHundred() {
-        return entriesHundred;
-    }
+  public Locator getEntriesFifty() {
+    return entriesFifty;
+  }
 
-    public Locator getPaginatorLastPage() {
-        return lastButton;
-    }
+  public Locator getEntriesHundred() {
+    return entriesHundred;
+  }
 
-    public Locator getPaginatorNextPage() {
-        return nextButton;
-    }
+  public Locator getPaginatorLastPage() {
+    return lastButton;
+  }
 
-    public Locator getPaginatorFirstPage() {
-        return firstButton;
-    }
+  public Locator getPaginatorNextPage() {
+    return nextButton;
+  }
 
-    public Locator getPaginatorPreviousPage() {
-        return prevButton;
-    }
+  public Locator getPaginatorFirstPage() {
+    return firstButton;
+  }
 
-    public Locator getPaginationText(String text) {
-        return page.getByText(text);
-    }
+  public Locator getPaginatorPreviousPage() {
+    return prevButton;
+  }
 
-    public Locator getAthleteCells(String athlete) {
-        return page.getByText(athlete);
-    }
+  public Locator getPaginationText(String text) {
+    return page.getByText(text);
+  }
 
-    public Locator goToSpecificPage(int n) {
-        return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto page " + n));
-    }
+  public Locator getAthleteCells(String athlete) {
+    return page.getByText(athlete);
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public Locator goToSpecificPage(int n) {
+    return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto page " + n));
+  }
+
+  public static String getRoute() {
+    return ROUTE;
+  }
 }

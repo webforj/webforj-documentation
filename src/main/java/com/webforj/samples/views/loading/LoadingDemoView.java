@@ -15,9 +15,7 @@ import com.webforj.component.loading.Loading;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-/**
- * Demo to show Loading basics.
- */
+/** Demo to show Loading basics. */
 @Route
 @FrameTitle("Loading Basics")
 @StyleSheet("ws://css/loadingstyles/loadingdemo.css")
@@ -33,29 +31,21 @@ public class LoadingDemoView extends Composite<FlexLayout> {
   private final Loading loading;
 
   public LoadingDemoView() {
-    self.setDirection(FlexDirection.ROW)
-            .setMargin("var(--dwc-space-l)");
+    self.setDirection(FlexDirection.ROW).setMargin("var(--dwc-space-l)");
 
-    card1 = new Div()
-            .addClassName("card");
+    card1 = new Div().addClassName("card");
 
-    guideIcon = FeatherIcon.BOOK.create()
-            .addClassName("icon");
+    guideIcon = FeatherIcon.BOOK.create().addClassName("icon");
 
-    buyButton1 = new Button("Buy")
-            .setTheme(ButtonTheme.PRIMARY);
+    buyButton1 = new Button("Buy").setTheme(ButtonTheme.PRIMARY);
 
-    card2 = new Div()
-            .addClassName("card");
+    card2 = new Div().addClassName("card");
 
-    videoIcon = FeatherIcon.YOUTUBE.create()
-            .addClassName("icon");
+    videoIcon = FeatherIcon.YOUTUBE.create().addClassName("icon");
 
-    buyButton2 = new Button("Buy")
-            .setTheme(ButtonTheme.PRIMARY);
+    buyButton2 = new Button("Buy").setTheme(ButtonTheme.PRIMARY);
 
-    loading = new Loading("Loading... Please wait.")
-            .addClassName("loading-overlay");
+    loading = new Loading("Loading... Please wait.").addClassName("loading-overlay");
     loading.getSpinner().setTheme(Theme.PRIMARY);
 
     card1.add(new Paragraph("User Guide"), guideIcon, buyButton1);
@@ -65,4 +55,3 @@ public class LoadingDemoView extends Composite<FlexLayout> {
     self.add(card1, card2);
   }
 }
-

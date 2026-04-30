@@ -3,7 +3,6 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
 ---
 
 <Head>
@@ -22,6 +21,8 @@ import DocCardList from '@theme/DocCardList';
 <!-- vale on -->
 
  webforJ includes a data binding feature that integrates UI components with backend data models in Java applications. This feature bridges the gap between the UI and the data layer so that changes in the UI reflect in the data model and vice versa, reducing the complexity of event handling and data synchronization.
+
+<AISkillTip skill="webforj-building-forms" />
 
 ## Concept {#concept}
 

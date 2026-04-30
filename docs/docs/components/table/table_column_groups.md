@@ -1,7 +1,6 @@
 ---
 title: Column Groups
 sidebar_position: 7
-sidebar_class_name: new-content
 ---
 <DocChip chip='since' label='25.12' />
 

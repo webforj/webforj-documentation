@@ -5,20 +5,21 @@ import com.microsoft.playwright.Page;
 
 public class AccordionCustomIconPage {
 
-    private static final String ROUTE = "accordioncustomicon";
+  private static final String ROUTE = "accordioncustomicon";
 
-    private final Locator customIconPanel;
+  private final Locator customIconPanel;
 
-    public AccordionCustomIconPage(Page page) {
-        this.customIconPanel = page.locator("dwc-accordion-panel").filter(
-                new Locator.FilterOptions().setHasText("Plus Icon Panel"));
-    }
+  public AccordionCustomIconPage(Page page) {
+    this.customIconPanel =
+        page.locator("dwc-accordion-panel")
+            .filter(new Locator.FilterOptions().setHasText("Plus Icon Panel"));
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getCustomIconPanel() {
-        return customIconPanel;
-    }
+  public Locator getCustomIconPanel() {
+    return customIconPanel;
+  }
 }

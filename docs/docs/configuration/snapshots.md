@@ -1,7 +1,6 @@
 ---
 title: Snapshots
 sidebar_position: 35
-sidebar_class_name: new-content
 ---
 
 Every webforJ version release is accompanied by detailed [release notes](https://github.com/webforj/webforj/releases) and a [release blog article](/blog/tags/release).

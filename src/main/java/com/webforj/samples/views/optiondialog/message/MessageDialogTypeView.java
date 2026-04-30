@@ -13,9 +13,8 @@ public class MessageDialogTypeView extends Composite<Div> {
 
   public MessageDialogTypeView() {
     OptionDialog.showMessageDialog(
-            "Your session will expire in 5 minutes due to inactivity. Save your work now to prevent any data loss.",
-            "Session is expiring",
-            MessageDialog.MessageType.WARNING);
-
+        "Your session will expire in 5 minutes due to inactivity. Save your work now to prevent any data loss.",
+        "Session is expiring",
+        MessageDialog.MessageType.WARNING);
   }
 }

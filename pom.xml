@@ -9,11 +9,11 @@
   <packaging>war</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <webforj.version>25.12</webforj.version>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <webforj.version>26.00</webforj.version>
     <warFileName>${project.artifactId}-${project.version}</warFileName>
-    <jetty.version>12.0.14</jetty.version>
+    <jetty.version>12.1.2</jetty.version>
     <playwright.version>1.50.0</playwright.version>
     <threadCount>8</threadCount>
 
@@ -132,6 +132,30 @@
   <build>
     <finalName>${warFileName}</finalName>
     <plugins>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <java>
+            <lineEndings>UNIX</lineEndings>
+            <googleJavaFormat />
+            <includes>
+              <include>src/main/java/**/*.java</include>
+              <include>src/test/java/**/*.java</include>
+            </includes>
+          </java>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

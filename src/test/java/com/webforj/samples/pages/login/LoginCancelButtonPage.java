@@ -6,26 +6,26 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class LoginCancelButtonPage {
 
-    private static final String ROUTE = "logincancelbutton";
+  private static final String ROUTE = "logincancelbutton";
 
-    private final Locator cancelButton;
-    private final Locator signInButton;
+  private final Locator cancelButton;
+  private final Locator signInButton;
 
-    public LoginCancelButtonPage(Page page) {
-        
-        cancelButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Cancel"));
-        signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
-    }
+  public LoginCancelButtonPage(Page page) {
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+    cancelButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Cancel"));
+    signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
+  }
 
-    public Locator getCancelButton() {
-        return cancelButton;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getSignInButton() {
-        return signInButton;
-    }
+  public Locator getCancelButton() {
+    return cancelButton;
+  }
+
+  public Locator getSignInButton() {
+    return signInButton;
+  }
 }

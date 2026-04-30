@@ -1,7 +1,5 @@
 package com.webforj.samples.views.fields.maskedtimefield;
 
-import java.time.LocalTime;
-
 import com.webforj.component.Composite;
 import com.webforj.component.field.MaskedTimeField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
@@ -9,6 +7,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.time.LocalTime;
 
 @Route
 @FrameTitle("Masked Time Field")
@@ -21,7 +20,8 @@ public class MaskedTimeFieldView extends Composite<FlexLayout> {
         .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-m)");
 
-    field.setMask("%h:%mz %p")
+    field
+        .setMask("%h:%mz %p")
         .setValue(LocalTime.now())
         .setMaxWidth("300px")
         .setHelperText("Meeting time is formatted as %h:%mz %p.")

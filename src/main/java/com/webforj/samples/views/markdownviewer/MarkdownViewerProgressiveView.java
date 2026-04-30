@@ -19,7 +19,8 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
   private final Button stopButton = new Button("Stop", ButtonTheme.DANGER);
   private final ChoiceBox speedChoice = new ChoiceBox();
 
-  private static final String SAMPLE_CONTENT = """
+  private static final String SAMPLE_CONTENT =
+      """
       # The Octopus: Nature's Escape Artist
 
       Octopuses are **incredibly intelligent** creatures with some remarkable abilities.
@@ -51,21 +52,21 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setPadding("var(--dwc-space-l)");
 
-    speedChoice.setLabel("Render Speed")
-      .setWidth("200px")
-      .setStyle("align-self", "flex-end");
-    
+    speedChoice.setLabel("Render Speed").setWidth("200px").setStyle("align-self", "flex-end");
+
     speedChoice.add("2", "Slow (2)");
     speedChoice.add("4", "Default (4)");
     speedChoice.add("6", "Fast (6)");
     speedChoice.add("10", "Very Fast (10)");
     speedChoice.selectIndex(1);
-    speedChoice.onSelect(e -> {
-      int speed = Integer.parseInt(speedChoice.getSelected().getKey().toString());
-      viewer.setRenderSpeed(speed);
-    });
+    speedChoice.onSelect(
+        e -> {
+          int speed = Integer.parseInt(speedChoice.getSelected().getKey().toString());
+          viewer.setRenderSpeed(speed);
+        });
 
-    viewer.setProgressiveRender(true)
+    viewer
+        .setProgressiveRender(true)
         .setRenderSpeed(4)
         .setMinHeight("350px")
         .setStyle("background", "var(--dwc-surface-3)")
@@ -79,23 +80,28 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
 
     stopButton.setEnabled(false);
 
-    startButton.onClick(e -> {
-      viewer.clear();
-      viewer.setContent(SAMPLE_CONTENT);
-      startButton.setEnabled(false);
-      stopButton.setEnabled(true);
+    startButton.onClick(
+        e -> {
+          viewer.clear();
+          viewer.setContent(SAMPLE_CONTENT);
+          startButton.setEnabled(false);
+          stopButton.setEnabled(true);
 
-      viewer.whenRenderComplete().thenAccept(v -> {
-        startButton.setEnabled(true);
-        stopButton.setEnabled(false);
-      });
-    });
+          viewer
+              .whenRenderComplete()
+              .thenAccept(
+                  v -> {
+                    startButton.setEnabled(true);
+                    stopButton.setEnabled(false);
+                  });
+        });
 
-    stopButton.onClick(e -> {
-      viewer.stop();
-      startButton.setEnabled(true);
-      stopButton.setEnabled(false);
-    });
+    stopButton.onClick(
+        e -> {
+          viewer.stop();
+          startButton.setEnabled(true);
+          stopButton.setEnabled(false);
+        });
 
     self.add(speedChoice, viewer, buttons);
   }

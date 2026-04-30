@@ -1,12 +1,13 @@
 ---
 sidebar_position: 12
 title: Translation
-sidebar_class_name: new-content
 ---
 
 # Translation <DocChip chip='since' label='25.12' />
 
 webforJ includes a built-in translation system for looking up localized strings by key. The system consists of a translation resolver that maps keys to localized text, a `HasTranslation` concern interface that provides a convenient `t()` method, `App.getTranslation()` for direct access anywhere, automatic locale detection from the browser, and support for custom translation sources such as databases.
+
+<AISkillTip skill="webforj-localizing-apps" />
 
 ## Translation resolver {#translation-resolver}
 

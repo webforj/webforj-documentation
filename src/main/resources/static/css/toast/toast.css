@@ -1,0 +1,9 @@
+.gray-toast::part(control) {
+  background: var(--dwc-color-gray-dark);
+  color: var(--dwc-color-white);
+  column-gap: 0;
+}
+
+.gray-toast::part(buttons) {
+  margin-top: 0;
+}

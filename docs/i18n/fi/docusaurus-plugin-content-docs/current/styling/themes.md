@@ -1,15 +1,15 @@
 ---
 sidebar_position: 2
 title: Themes
-_i18n_hash: afb80b03bfe243ffa93d6f72a05809e2
+_i18n_hash: afbc96c2eb0da1c5e0eb2e24a69827c2
 ---
 webforJ sisältää kolme sisäänrakennettua sovellusteemaa ja tukee omien mukautettujen teemojen määrittämistä. Oletusteemat ovat:
 
-- **light**: Kirkas teema, jossa on vaalea taustaväri (oletus).
-- **dark**: Tumma tausta, jossa on pääväriä.
-- **dark-pure**: Täysin neutraali tumma teema, joka perustuu harmaisiin sävyihin.
+- **light**: Kirkas teema, jossa on vaalea tausta (oletusarvo).
+- **dark**: Tumma tausta, jossa on päävärin sävy.
+- **dark-pure**: Täysin neutraali tumma teema, joka perustuu harmaan sävyihin.
 
-Teeman käyttämiseksi sovelluksessasi, käytä `@AppTheme` -annotaatiota tai `App.setTheme()` -metodia. Teeman nimen on oltava yksi seuraavista: `system`, `light`, `dark`, `dark-pure` tai mukautettu teeman nimi.
+Teeman soveltamiseksi sovelluksessa käytä `@AppTheme`-annotaatiota tai `App.setTheme()`-metodia. Teeman nimen on oltava yksi seuraavista: `system`, `light`, `dark`, `dark-pure` tai mukautetun teeman nimi.
 
 ```java
 @AppTheme("dark-pure")
@@ -23,10 +23,10 @@ App.setTheme("dark-pure");
 
 ## Oletusteemojen ylikirjoittaminen {#overriding-default-themes}
 
-Voit ylikirjoittaa **light**-teeman määrittelemällä CSS-mukautettuja muuttujia `:root`-valitsimessa.
+Voit ylikirjoittaa **light**-teeman määrittämällä CSS-mukautettuja ominaisuuksia `:root`-valitsimessa.
 
-:::info `:root` -pseudo-luokka
-`:root` CSS -pseudo-luokka kohdistaa asiakirjan juurielementtiin. HTML: ssä se edustaa `<html>`-elementtiä ja sillä on suurempi tarkkuus kuin pelkällä `html`-valitsimella.
+:::info `:root` pseudoluokka
+`:root` CSS-pseudoluokka kohdistuu asiakirjan juurielementtiin. HTML:ssä se edustaa `<html>`-elementtiä ja sillä on suurempi spesifisyys kuin tavallisella `html`-valitsimella.
 :::
 
 Esimerkki:
@@ -35,29 +35,37 @@ Esimerkki:
 :root {
   --dwc-color-primary-h: 215;
   --dwc-color-primary-s: 100%;
-  --dwc-color-primary-c: 50;
-  --dwc-font-size: var(--dwc-font-size-m);
+  --dwc-font-size: var(--dwc-font-size-l);
 }
 ```
 
-Voit ylikirjoittaa **dark**- tai **dark-pure**-teeman käyttämällä attribuuttivalitsimia `<html>`-elementissä:
+Voit ylikirjoittaa **dark** tai **dark-pure** teemoja käyttämällä attribuuttivalitsimia `<html>`-elementissä:
 
 ```css
 html[data-app-theme="dark"] {
-  --dwc-color-primary-s: 9%;
-  --dwc-color-white: hsl(210, 17%, 82%);
+  --dwc-color-primary-s: 80%;
 }
 ```
 
 ## Mukautettujen teemojen luominen {#creating-custom-themes}
 
-Voit määrittää omia teemoja käyttämällä valitsinta `html[data-app-theme='THEME_NAME']`. Mukautetut teemat voivat olla rinnakkain oletusteemojen kanssa, ja voit vaihtaa niiden välillä dynaamisesti ajonaikana.
+Voit määrittää omat teemasi käyttämällä `html[data-app-theme='THEME_NAME']`-valitsinta. Mukautetut teemat voivat elää rinnakkain oletusteemojen kanssa, ja voit vaihtaa niiden välillä dynaamisesti ajonaikaisesti.
 
 ```css
 html[data-app-theme="new-theme"] {
   --dwc-color-primary-h: 280;
   --dwc-color-primary-s: 100%;
-  --dwc-color-primary-c: 60;
+}
+```
+
+Tehdäksesi mukautetusta teemasta tumman, aseta `--dwc-dark-mode: 1` ja `color-scheme: dark`:
+
+```css
+html[data-app-theme="new-dark-theme"] {
+  --dwc-dark-mode: 1;
+  --dwc-color-primary-h: 280;
+  --dwc-color-primary-s: 100%;
+  color-scheme: dark;
 }
 ```
 
@@ -75,6 +83,6 @@ App.setTheme("new-theme");
 
 ## Komponenttiteemat {#component-themes}
 
-Sovellustason teemojen lisäksi webforJ-komponentit tukevat joukkoa **komponenttiteemoja**, jotka perustuvat oletusväriasteikkoihin: `default`, `primary`, `success`, `warning`, `danger`, `info` ja `gray`.
+Sovellustason teemojen lisäksi webforJ-komponentit tukevat joukkoa **komponenttiteemoja**, jotka perustuvat oletusväripaletteihin: `default`, `primary`, `success`, `warning`, `danger`, `info` ja `gray`.
 
-Jokainen komponentti dokumentoi tukemansa teemat **Styling → Teemat** -osiossa.
+Jokainen komponentti dokumentoi tukemansa teemat **Styling → Themes**-osiolla.

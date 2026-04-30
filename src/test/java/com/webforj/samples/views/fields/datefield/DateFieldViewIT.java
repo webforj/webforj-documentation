@@ -2,14 +2,12 @@ package com.webforj.samples.views.fields.datefield;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.fields.datefield.DateFieldPage;
 import com.webforj.samples.views.BaseTest;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class DateFieldViewIT extends BaseTest {
 
@@ -38,8 +36,12 @@ public class DateFieldViewIT extends BaseTest {
     String returnDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
     String correctedReturnDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
     dateFieldPage.getReturnDate().fill(returnDate);
+    page.keyboard().press("Tab");
+    page.waitForTimeout(500);
+
     dateFieldPage.getDepartureDate().fill(departureDate);
-    dateFieldPage.getDepartureDate().click();
+    page.keyboard().press("Tab");
+
     assertThat(dateFieldPage.getReturnDate()).hasValue(correctedReturnDate);
   }
 

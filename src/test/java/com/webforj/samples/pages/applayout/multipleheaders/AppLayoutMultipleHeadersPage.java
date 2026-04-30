@@ -5,20 +5,19 @@ import com.microsoft.playwright.Page;
 
 public class AppLayoutMultipleHeadersPage {
 
-    private static final String ROUTE = "applayoutmultipleheaders";
+  private static final String ROUTE = "applayoutmultipleheaders";
 
-    private final Locator dwcToolbar;
+  private final Locator dwcToolbar;
 
-    public AppLayoutMultipleHeadersPage(Page page) {
-        this.dwcToolbar = page.locator("dwc-toolbar");
-    }
+  public AppLayoutMultipleHeadersPage(Page page) {
+    this.dwcToolbar = page.locator("dwc-toolbar");
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getDwcToolbar() {
-        return dwcToolbar;
-    }
-
+  public Locator getDwcToolbar() {
+    return dwcToolbar;
+  }
 }

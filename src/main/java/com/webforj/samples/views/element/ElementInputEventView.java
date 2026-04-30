@@ -19,20 +19,22 @@ public class ElementInputEventView extends Composite<Div> {
   private final Element input = new Element("input");
 
   public ElementInputEventView() {
-    self.setStyle("margin", "20px")
-        .addClassName("frame")
-        .add(label, input);
+    self.setStyle("margin", "20px").addClassName("frame").add(label, input);
 
     label.addClassName("element--label");
     input.addClassName("element--input");
 
-    ElementEventOptions options = new ElementEventOptions()
-        .addData("theValue", "component.value")
-        .setFilter("event.key == 'Enter'")
-        .setCode("event.preventDefault();");
+    ElementEventOptions options =
+        new ElementEventOptions()
+            .addData("theValue", "component.value")
+            .setFilter("event.key == 'Enter'")
+            .setCode("event.preventDefault();");
 
-    input.addEventListener("keypress", e -> {
-      showMessageDialog(e.getEventMap().get("theValue"), "Input Event");
-    }, options);
+    input.addEventListener(
+        "keypress",
+        e -> {
+          showMessageDialog(e.getEventMap().get("theValue"), "Input Event");
+        },
+        options);
   }
 }
