@@ -16,7 +16,7 @@ integrations:
 
 styling:
   label: Styling
-  description: CSS, theming, and design guides for webforJ applications.
+  description: CSS, theming, and design guides for webforJ apps.
 
 community:
   label: Community
@@ -32,19 +32,19 @@ showcase:
 
 annotations:
   label: Annotations
-  description: Using Java annotations in webforJ applications.
+  description: Using Java annotations in webforJ apps.
 
 themes:
   label: Themes
-  description: Theming and visual customization of webforJ applications.
+  description: Theming and visual customization of webforJ apps.
 
 modernization:
   label: Modernization
-  description: Modernizing legacy Java applications.
+  description: Modernizing legacy Java apps.
 
 webswing:
   label: Webswing
-  description: Running Swing applications in the browser with Webswing.
+  description: Running Swing apps in the browser with Webswing.
 
 spring:
   label: Spring
@@ -72,7 +72,7 @@ mvc:
 
 routing:
   label: Routing
-  description: Navigation and routing in webforJ applications.
+  description: Navigation and routing in webforJ apps.
 
 'responsive design':
   label: Responsive Design
@@ -100,4 +100,8 @@ renderers:
 
 performance:
   label: Performance
-  description: Performance optimization techniques for webforJ applications.
+  description: Performance optimization techniques for webforJ apps.
+
+security:
+  label: Security
+  description: Security in webforJ apps.
