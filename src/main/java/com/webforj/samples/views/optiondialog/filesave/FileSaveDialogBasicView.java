@@ -21,9 +21,7 @@ public class FileSaveDialogBasicView extends Composite<Div> {
     show();
   }
 
-  /**
-   * Shows the file save dialog and displays the result.
-   */
+  /** Shows the file save dialog and displays the result. */
   private void show() {
     String path = dialog.show();
 
@@ -31,9 +29,7 @@ public class FileSaveDialogBasicView extends Composite<Div> {
       OptionDialog.showMessageDialog("Saved file to: " + path, "Path Selected");
     } else {
       OptionDialog.showMessageDialog(
-          "No path is selected",
-          "Path Selected",
-          MessageDialog.MessageType.ERROR);
+          "No path is selected", "Path Selected", MessageDialog.MessageType.ERROR);
     }
   }
 }

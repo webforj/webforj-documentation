@@ -6,32 +6,33 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class TextAreaPage {
 
-    private static final String ROUTE = "textarea";
+  private static final String ROUTE = "textarea";
 
-    private final Locator feedbackTextarea;
-    private final Locator submitButton;
-    private final Locator donationToaster;
+  private final Locator feedbackTextarea;
+  private final Locator submitButton;
+  private final Locator donationToaster;
 
-    public TextAreaPage(Page page) {
+  public TextAreaPage(Page page) {
 
-        this.feedbackTextarea = page.getByLabel("What do you think about this demo?");
-        this.submitButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit Feedback"));
-        this.donationToaster = page.getByText("Thank you for your feedback!");
-    }
+    this.feedbackTextarea = page.getByLabel("What do you think about this demo?");
+    this.submitButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit Feedback"));
+    this.donationToaster = page.getByText("Thank you for your feedback!");
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getFeedbackTextarea() {
-        return feedbackTextarea;
-    }
+  public Locator getFeedbackTextarea() {
+    return feedbackTextarea;
+  }
 
-    public Locator getSubmitButton() {
-        return submitButton;
-    }
+  public Locator getSubmitButton() {
+    return submitButton;
+  }
 
-    public Locator getDonationToaster() {
-        return donationToaster;
-    }
+  public Locator getDonationToaster() {
+    return donationToaster;
+  }
 }

@@ -5,20 +5,20 @@ import com.microsoft.playwright.Page;
 
 public class ElementInputDemoPage {
 
-    private static final String ROUTE = "elementinputdemo";
+  private static final String ROUTE = "elementinputdemo";
 
-    private final Locator inputField;
+  private final Locator inputField;
 
-    public ElementInputDemoPage(Page page) {
+  public ElementInputDemoPage(Page page) {
 
-        inputField = page.getByPlaceholder("Enter some text");
-    }
+    inputField = page.getByPlaceholder("Enter some text");
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getInputField() {
-        return inputField;
-    }
+  public Locator getInputField() {
+    return inputField;
+  }
 }

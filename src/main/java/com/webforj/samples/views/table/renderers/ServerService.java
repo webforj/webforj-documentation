@@ -11,8 +11,10 @@ public final class ServerService {
 
   public static CollectionRepository<Server> getServers() {
     List<Server> data =
-        new Gson().fromJson(Assets.contentOf(Assets.resolveContextUrl("context://data/servers.json")),
-            new TypeToken<List<Server>>() {});
+        new Gson()
+            .fromJson(
+                Assets.contentOf(Assets.resolveContextUrl("context://data/servers.json")),
+                new TypeToken<List<Server>>() {});
     return new CollectionRepository<>(data);
   }
 }

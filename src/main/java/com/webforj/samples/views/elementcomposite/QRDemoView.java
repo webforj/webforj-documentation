@@ -1,7 +1,6 @@
 package com.webforj.samples.views.elementcomposite;
 
 import com.webforj.annotation.Attribute;
-
 import com.webforj.annotation.JavaScript;
 import com.webforj.component.Composite;
 import com.webforj.component.element.ElementComposite;
@@ -24,17 +23,15 @@ public class QRDemoView extends Composite<FlexLayout> {
     self.setMargin("20px").add(code);
   }
 
-  /**
-   * QRCode Generator using Shoelace QRCode component.
-   */
-  @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js", attributes = {
-    @Attribute(name = "type", value = "module") })
+  /** QRCode Generator using Shoelace QRCode component. */
+  @JavaScript(
+      value =
+          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js",
+      attributes = {@Attribute(name = "type", value = "module")})
   @NodeName("sl-qr-code")
   public static final class QRCode extends ElementComposite {
 
-    /**
-     * Create a new QRCode.
-     */
+    /** Create a new QRCode. */
     public QRCode() {
       super();
     }

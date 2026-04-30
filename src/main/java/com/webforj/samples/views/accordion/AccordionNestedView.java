@@ -18,13 +18,15 @@ public class AccordionNestedView extends Composite<FlexLayout> {
 
   public AccordionNestedView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-m)")
-      .setPadding("var(--dwc-space-l)")
-      .setMargin("0 auto")
-      .setMaxWidth("700px")
-      .add(new H3("Nested Accordions"),
-        new Paragraph("Accordions can be nested inside other accordion panels."),
-        createOuterPanel(), createSiblingPanel());
+        .setSpacing("var(--dwc-space-m)")
+        .setPadding("var(--dwc-space-l)")
+        .setMargin("0 auto")
+        .setMaxWidth("700px")
+        .add(
+            new H3("Nested Accordions"),
+            new Paragraph("Accordions can be nested inside other accordion panels."),
+            createOuterPanel(),
+            createSiblingPanel());
   }
 
   private AccordionPanel createOuterPanel() {
@@ -35,19 +37,16 @@ public class AccordionNestedView extends Composite<FlexLayout> {
   }
 
   private AccordionPanel createSiblingPanel() {
-    return new AccordionPanel("Sibling Panel",
-      new Paragraph("This is a sibling of the outer panel."));
+    return new AccordionPanel(
+        "Sibling Panel", new Paragraph("This is a sibling of the outer panel."));
   }
 
   private Accordion createInnerAccordion() {
-    AccordionPanel innerA = new AccordionPanel("Inner Panel A",
-      new Paragraph("Nested content A"));
+    AccordionPanel innerA = new AccordionPanel("Inner Panel A", new Paragraph("Nested content A"));
 
-    AccordionPanel innerB = new AccordionPanel("Inner Panel B",
-      new Paragraph("Nested content B"));
+    AccordionPanel innerB = new AccordionPanel("Inner Panel B", new Paragraph("Nested content B"));
 
-    AccordionPanel innerC = new AccordionPanel("Inner Panel C",
-      new Paragraph("Nested content C"));
+    AccordionPanel innerC = new AccordionPanel("Inner Panel C", new Paragraph("Nested content C"));
 
     return new Accordion(innerA, innerB, innerC);
   }

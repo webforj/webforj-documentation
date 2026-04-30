@@ -27,21 +27,20 @@ public class MaskedNumberFieldView extends Composite<FlexLayout> {
         .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-m)");
 
-    billAmountField.setMask("$######.##")
+    billAmountField
+        .setMask("$######.##")
         .setValue(300d)
         .setWidth(250)
         .setPrefixComponent(TablerIcon.create("file-invoice"));
-    tipPercentageField.setMask("###%")
+    tipPercentageField
+        .setMask("###%")
         .setValue(15d)
         .setWidth(250)
         .setPrefixComponent(TablerIcon.create("circle-percentage"));
 
-    Button calculateTipButton = new Button(
-        "Calculate Tip",
-        ButtonTheme.PRIMARY,
-        event -> handleCalculation());
-    calculateTipButton.setPrefixComponent(
-        TablerIcon.create("calculator"));
+    Button calculateTipButton =
+        new Button("Calculate Tip", ButtonTheme.PRIMARY, event -> handleCalculation());
+    calculateTipButton.setPrefixComponent(TablerIcon.create("calculator"));
 
     self.add(billAmountField, tipPercentageField, calculateTipButton);
   }

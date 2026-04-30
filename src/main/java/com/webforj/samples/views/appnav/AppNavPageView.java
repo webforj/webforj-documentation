@@ -22,9 +22,12 @@ public class AppNavPageView extends Composite<Div> {
 
   private void onNavigate(NavigateEvent ev) {
     ParametersBag parameters = ev.getContext().getRouteParameters();
-    parameters.get("id").ifPresent(id -> {
-      text.setHtml("Content for <strong>%s</strong> goes here".formatted(id));
-    });
+    parameters
+        .get("id")
+        .ifPresent(
+            id -> {
+              text.setHtml("Content for <strong>%s</strong> goes here".formatted(id));
+            });
   }
 
   @Override

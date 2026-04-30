@@ -17,24 +17,28 @@ public class AccordionCustomHeaderView extends Composite<FlexLayout> {
 
   public AccordionCustomHeaderView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-m)")
-      .setPadding("var(--dwc-space-l)")
-      .setMargin("0 auto")
-      .setMaxWidth("700px")
-      .add(createCustomHeaderPanel(FeatherIcon.SETTINGS, "Custom Header with Icon",
-          "The header slot lets you fully customize the header content."),
-        createCustomHeaderPanel(FeatherIcon.USER, "User Settings",
-          "Another panel with a custom header using the user icon.")
-      );
+        .setSpacing("var(--dwc-space-m)")
+        .setPadding("var(--dwc-space-l)")
+        .setMargin("0 auto")
+        .setMaxWidth("700px")
+        .add(
+            createCustomHeaderPanel(
+                FeatherIcon.SETTINGS,
+                "Custom Header with Icon",
+                "The header slot lets you fully customize the header content."),
+            createCustomHeaderPanel(
+                FeatherIcon.USER,
+                "User Settings",
+                "Another panel with a custom header using the user icon."));
   }
 
   private AccordionPanel createCustomHeaderPanel(FeatherIcon icon, String title, String content) {
-    FlexLayout headerContent = new FlexLayout(icon.create(), new Span(title))
-      .setDirection(FlexDirection.ROW)
-      .setSpacing("var(--dwc-space-s)");
+    FlexLayout headerContent =
+        new FlexLayout(icon.create(), new Span(title))
+            .setDirection(FlexDirection.ROW)
+            .setSpacing("var(--dwc-space-s)");
 
-    AccordionPanel panel = new AccordionPanel()
-      .addToHeader(headerContent);
+    AccordionPanel panel = new AccordionPanel().addToHeader(headerContent);
     panel.add(new Paragraph(content));
 
     return panel;

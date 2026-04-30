@@ -20,32 +20,33 @@ public class AccordionMultipleView extends Composite<FlexLayout> {
 
   public AccordionMultipleView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-m)")
-      .setPadding("var(--dwc-space-l)")
-      .setMargin("0 auto")
-      .setMaxWidth("700px");
+        .setSpacing("var(--dwc-space-m)")
+        .setPadding("var(--dwc-space-l)")
+        .setMargin("0 auto")
+        .setMaxWidth("700px");
 
     accordion = createMultipleAccordion();
 
-    self.add(new H3("Accordion Group (multiple mode)"),
-      new Paragraph("Multiple panels can be open simultaneously."),
-      createButtons(), accordion);
+    self.add(
+        new H3("Accordion Group (multiple mode)"),
+        new Paragraph("Multiple panels can be open simultaneously."),
+        createButtons(),
+        accordion);
   }
 
   private Accordion createMultipleAccordion() {
-    AccordionPanel panelA = new AccordionPanel("Panel A",
-      new Paragraph("This panel is opened."));
+    AccordionPanel panelA = new AccordionPanel("Panel A", new Paragraph("This panel is opened."));
     panelA.open();
 
-    AccordionPanel panelB = new AccordionPanel("Panel B",
-      new Paragraph("This panel is also opened. Both can be open at the same time."));
+    AccordionPanel panelB =
+        new AccordionPanel(
+            "Panel B",
+            new Paragraph("This panel is also opened. Both can be open at the same time."));
     panelB.open();
 
-    AccordionPanel panelC = new AccordionPanel("Panel C",
-      new Paragraph("Content for panel C."));
+    AccordionPanel panelC = new AccordionPanel("Panel C", new Paragraph("Content for panel C."));
 
-    return new Accordion(panelA, panelB, panelC)
-      .setMultiple(true);
+    return new Accordion(panelA, panelB, panelC).setMultiple(true);
   }
 
   private FlexLayout createButtons() {
@@ -55,8 +56,8 @@ public class AccordionMultipleView extends Composite<FlexLayout> {
     Button closeAll = new Button("Close All", e -> accordion.closeAll());
 
     return FlexLayout.create(openAll, closeAll)
-      .horizontal()
-      .build()
-      .setSpacing("var(--dwc-space-s)");
+        .horizontal()
+        .build()
+        .setSpacing("var(--dwc-space-s)");
   }
 }

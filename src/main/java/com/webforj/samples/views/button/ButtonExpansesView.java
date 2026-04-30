@@ -17,9 +17,7 @@ public class ButtonExpansesView extends Composite<FlexLayout> {
   private final Button demoButton = new Button("None");
 
   public ButtonExpansesView() {
-    self.setSpacing("var(--dwc-space-l)")
-        .setMargin("var(--dwc-space-l)")
-        .add(expanses, demoButton);
+    self.setSpacing("var(--dwc-space-l)").setMargin("var(--dwc-space-l)").add(expanses, demoButton);
 
     for (int i = Expanse.values().length - 1; i >= 0; i--) {
       Expanse expanse = Expanse.values()[i];
@@ -28,14 +26,16 @@ public class ButtonExpansesView extends Composite<FlexLayout> {
       }
     }
 
-    expanses.selectIndex(0)
+    expanses
+        .selectIndex(0)
         .setWidth("100px")
-        .addSelectListener(event -> {
-          Expanse selectedValue = (Expanse) expanses.getSelectedKey();
-          if (selectedValue != null) {
-            demoButton.setExpanse(selectedValue);
-            demoButton.setText(selectedValue.name());
-          }
-        });
+        .addSelectListener(
+            event -> {
+              Expanse selectedValue = (Expanse) expanses.getSelectedKey();
+              if (selectedValue != null) {
+                demoButton.setExpanse(selectedValue);
+                demoButton.setText(selectedValue.name());
+              }
+            });
   }
 }

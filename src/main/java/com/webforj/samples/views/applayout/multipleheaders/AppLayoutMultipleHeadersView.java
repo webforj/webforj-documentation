@@ -17,7 +17,6 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
-import com.webforj.samples.views.applayout.fullnavbar.AppLayoutFullNavbarContentView;
 
 @Route
 @StyleSheet("ws://css/applayout/applayout.css")
@@ -32,18 +31,16 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
 
   public AppLayoutMultipleHeadersView() {
     self.setDrawerHeaderVisible(false)
-            .setDrawerFooterVisible(true)
-            .setHeaderReveal(true)
-            .addToHeader(header, secondToolbar)
-            .addToDrawer(drawer);
+        .setDrawerFooterVisible(true)
+        .setHeaderReveal(true)
+        .addToHeader(header, secondToolbar)
+        .addToDrawer(drawer);
 
     // Header
-    header.addToStart(new AppDrawerToggle())
-            .addToTitle(new H3("Application"));
+    header.addToStart(new AppDrawerToggle()).addToTitle(new H3("Application"));
 
     // Drawer's Menu
-    drawer.addClassName("app-layout-drawer")
-            .add(new DrawerLogo(), drawerMenu);
+    drawer.addClassName("app-layout-drawer").add(new DrawerLogo(), drawerMenu);
 
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
@@ -53,19 +50,19 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(createItem("Dashboard", dashboardIcon))
-            .addItem(createItem("Orders", ordersIcon))
-            .addItem(createItem("Customers", customersIcon))
-            .addItem(createItem("Products", productsIcon))
-            .addItem(createItem("Documents", documentsIcon))
-            .addItem(createItem("Tasks", tasksIcon))
-            .addItem(createItem("Analytics", analyticsIcon));
+    drawerMenu
+        .addItem(createItem("Dashboard", dashboardIcon))
+        .addItem(createItem("Orders", ordersIcon))
+        .addItem(createItem("Customers", customersIcon))
+        .addItem(createItem("Products", productsIcon))
+        .addItem(createItem("Documents", documentsIcon))
+        .addItem(createItem("Tasks", tasksIcon))
+        .addItem(createItem("Analytics", analyticsIcon));
 
     secondToolbar.setCompact(true);
 
     secondToolbar.addToStart(secondMenu);
-    secondMenu.setBorderless(true)
-            .setBodyHidden(true);
+    secondMenu.setBorderless(true).setBodyHidden(true);
 
     Icon salesIcon = TablerIcon.create("report-money");
     Icon enterpriseIcon = TablerIcon.create("building");
@@ -79,6 +76,7 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
   }
 
   private AppNavItem createItem(String text, Icon icon) {
-    return new AppNavItem(text, AppLayoutMultipleHeaderContentView.class, ParametersBag.of("name=" + text), icon);
+    return new AppNavItem(
+        text, AppLayoutMultipleHeaderContentView.class, ParametersBag.of("name=" + text), icon);
   }
 }

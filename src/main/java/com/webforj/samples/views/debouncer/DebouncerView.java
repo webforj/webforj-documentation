@@ -20,28 +20,30 @@ public class DebouncerView extends Composite<FlexLayout> {
 
   public DebouncerView() {
     self.setDirection(FlexDirection.COLUMN)
-            .setMaxWidth("400px")
-            .setMargin("var(--dwc-space-xl) auto")
-            .setPadding("var(--dwc-space-l)")
-            .setSpacing("var(--dwc-space-l)")
-            .add(input, output);
+        .setMaxWidth("400px")
+        .setMargin("var(--dwc-space-xl) auto")
+        .setPadding("var(--dwc-space-l)")
+        .setSpacing("var(--dwc-space-l)")
+        .add(input, output);
 
-    input.setLabel("Type something")
-            .setPlaceholder("Start typing...")
-            .setHelperText("Key events: 0")
-            .onModify(e -> {
+    input
+        .setLabel("Type something")
+        .setPlaceholder("Start typing...")
+        .setHelperText("Key events: 0")
+        .onModify(
+            e -> {
               count++;
               input.setHelperText("Key events: " + count);
 
-              debouncer.run(() -> {
-                output.setValue(e.getText());
-                input.setHelperText("Key events: 0");
-                count = 0;
-              });
+              debouncer.run(
+                  () -> {
+                    output.setValue(e.getText());
+                    input.setHelperText("Key events: 0");
+                    count = 0;
+                  });
             });
 
-    output.setLabel("Debounced output")
-            .setReadOnly(true);
+    output.setLabel("Debounced output").setReadOnly(true);
   }
 
   @Override

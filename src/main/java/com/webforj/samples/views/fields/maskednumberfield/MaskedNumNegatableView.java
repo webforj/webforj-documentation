@@ -22,13 +22,12 @@ public class MaskedNumNegatableView extends Composite<FlexLayout> {
         .setMaxWidth(300)
         .setMargin("var(--dwc-space-m) auto");
 
-    field.setMask("-$###,###,##0.00")
-        .setNegateable(true)
-        .setValue(123d);
+    field.setMask("-$###,###,##0.00").setNegateable(true).setValue(123d);
 
-    negateable.onToggle(event -> {
-      field.setNegateable(event.isToggled());
-    });
+    negateable.onToggle(
+        event -> {
+          field.setNegateable(event.isToggled());
+        });
 
     self.add(field, negateable);
   }

@@ -2,7 +2,6 @@ package com.webforj.samples;
 
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +10,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
 import org.apache.commons.io.FileUtils;
 
 public class InitializerListener implements ServletContextListener {
@@ -29,7 +27,8 @@ public class InitializerListener implements ServletContextListener {
 
   private void setupFilechooserFiles() {
     try {
-      InputStream zipStream = getClass().getClassLoader().getResourceAsStream("filechooser-files.zip");
+      InputStream zipStream =
+          getClass().getClassLoader().getResourceAsStream("filechooser-files.zip");
       if (zipStream == null) {
         throw new IOException("filechooser-files.zip not found in resources");
       }

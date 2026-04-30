@@ -16,17 +16,20 @@ public class AccordionBasicView extends Composite<FlexLayout> {
 
   public AccordionBasicView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-m)")
-      .setPadding("var(--dwc-space-l)")
-      .setMargin("0 auto")
-      .setMaxWidth("700px")
-      .add(
-        new H3("Standalone Panels"),
-        new Paragraph("Each panel works independently without a group wrapper."),
-        createPanel("Section One", "This panel starts opened. Each panel operates independently.", true),
-        createPanel("Section Two", "Content for section two. Click the header to expand.", false),
-        createPanel("Section Three", "Content for section three.", false)
-      );
+        .setSpacing("var(--dwc-space-m)")
+        .setPadding("var(--dwc-space-l)")
+        .setMargin("0 auto")
+        .setMaxWidth("700px")
+        .add(
+            new H3("Standalone Panels"),
+            new Paragraph("Each panel works independently without a group wrapper."),
+            createPanel(
+                "Section One",
+                "This panel starts opened. Each panel operates independently.",
+                true),
+            createPanel(
+                "Section Two", "Content for section two. Click the header to expand.", false),
+            createPanel("Section Three", "Content for section three.", false));
   }
 
   private AccordionPanel createPanel(String label, String content, boolean opened) {

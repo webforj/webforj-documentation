@@ -23,13 +23,10 @@ public class TabbedPaneExpanseThemeView extends Composite<FlexLayout> {
   private final ChoiceBox expanses = new ChoiceBox("Expanses");
 
   public TabbedPaneExpanseThemeView() {
-    self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("50px")
-        .setMargin("20px");
+    self.setDirection(FlexDirection.COLUMN).setSpacing("50px").setMargin("20px");
 
     FlexLayout options = new FlexLayout();
-    options.setSpacing("50px")
-            .add(themes, expanses);
+    options.setSpacing("50px").add(themes, expanses);
 
     self.add(options, pane);
 
@@ -48,15 +45,17 @@ public class TabbedPaneExpanseThemeView extends Composite<FlexLayout> {
     for (Theme theme : Theme.values()) {
       themes.add(theme.toString());
     }
-    themes.setWidth("200px")
-            .selectIndex(1)
-            .onSelect(e -> pane.setTheme(Theme.valueOf(e.getSelectedItem().getText())));
+    themes
+        .setWidth("200px")
+        .selectIndex(1)
+        .onSelect(e -> pane.setTheme(Theme.valueOf(e.getSelectedItem().getText())));
 
     for (Expanse expanse : Expanse.values()) {
       expanses.add(expanse.toString());
     }
-    expanses.setWidth("200px")
-            .selectIndex(5)
-            .onSelect(e -> pane.setExpanse(Expanse.valueOf(e.getSelectedItem().getText())));
+    expanses
+        .setWidth("200px")
+        .selectIndex(5)
+        .onSelect(e -> pane.setExpanse(Expanse.valueOf(e.getSelectedItem().getText())));
   }
 }

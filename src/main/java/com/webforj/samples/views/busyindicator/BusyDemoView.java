@@ -12,9 +12,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-/**
- * Demo to show BusyIndicator basics.
- */
+/** Demo to show BusyIndicator basics. */
 @Route
 @FrameTitle("Busy Basics")
 public class BusyDemoView extends Composite<FlexLayout> {
@@ -29,24 +27,20 @@ public class BusyDemoView extends Composite<FlexLayout> {
     emailField.setWidth("500px");
     submitButton.setTheme(ButtonTheme.PRIMARY);
 
-    FlexLayout form = FlexLayout.create(nameField, emailField, submitButton)
-        .vertical()
-        .build();
+    FlexLayout form = FlexLayout.create(nameField, emailField, submitButton).vertical().build();
 
-    self.setJustifyContent(FlexJustifyContent.CENTER)
-        .setMargin("var(--dwc-space-l)")
-        .add(form);
+    self.setJustifyContent(FlexJustifyContent.CENTER).setMargin("var(--dwc-space-l)").add(form);
 
     busyIndicator = App.getBusyIndicator();
     showBusyIndicator();
   }
 
   private void showBusyIndicator() {
-    busyIndicator.setText("Submitting form... Please wait.")
+    busyIndicator
+        .setText("Submitting form... Please wait.")
         .setBackdropVisible(true)
         .open()
         .getSpinner()
         .setTheme(Theme.PRIMARY);
   }
 }
-

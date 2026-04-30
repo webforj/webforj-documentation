@@ -1,11 +1,12 @@
 package com.webforj.samples.views.tree;
 
 import static com.webforj.component.tree.Tree.node;
+
 import com.webforj.component.Composite;
+import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.tree.Tree;
-import com.webforj.component.icons.FeatherIcon;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -16,9 +17,7 @@ public class TreeIconsView extends Composite<FlexLayout> {
   private final Tree tree = new Tree();
 
   public TreeIconsView() {
-    self.setDirection(FlexDirection.COLUMN)
-        .setHeight("100vh")
-        .setStyle("overflow", "auto");
+    self.setDirection(FlexDirection.COLUMN).setHeight("100vh").setStyle("overflow", "auto");
 
     tree.setCollapsedIcon(FeatherIcon.FOLDER_PLUS.create());
     tree.setExpandedIcon(FeatherIcon.FOLDER_MINUS.create());

@@ -5,33 +5,33 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
 public class ElementInputEventPage {
-    private static final String ROUTE = "elementinputevent";
+  private static final String ROUTE = "elementinputevent";
 
-    private final Locator inputField;
-    private final Locator OKButton;
-    private final Locator dialogMessage;
+  private final Locator inputField;
+  private final Locator OKButton;
+  private final Locator dialogMessage;
 
-    public ElementInputEventPage(Page page) {
+  public ElementInputEventPage(Page page) {
 
-        inputField = page.getByRole(AriaRole.TEXTBOX);
+    inputField = page.getByRole(AriaRole.TEXTBOX);
 
-        dialogMessage = page.locator("section");
-        OKButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("OK"));
-    }
+    dialogMessage = page.locator("section");
+    OKButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("OK"));
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getInputField() {
-        return inputField;
-    }
+  public Locator getInputField() {
+    return inputField;
+  }
 
-    public Locator getDialogMessage() {
-        return dialogMessage;
-    }
+  public Locator getDialogMessage() {
+    return dialogMessage;
+  }
 
-    public Locator getOKButton() {
-        return OKButton;
-    }
+  public Locator getOKButton() {
+    return OKButton;
+  }
 }

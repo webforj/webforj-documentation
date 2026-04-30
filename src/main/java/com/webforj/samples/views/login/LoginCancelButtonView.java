@@ -19,9 +19,10 @@ public class LoginCancelButtonView extends Composite<Div> {
     i18n.setCancel("Cancel");
     login.setI18n(i18n);
 
-    login.onCancel(ev -> {
-      // Close the login dialog and do something else
-    });
+    login.onCancel(
+        ev -> {
+          // Close the login dialog and do something else
+        });
 
     login.open();
     self.add(login);
