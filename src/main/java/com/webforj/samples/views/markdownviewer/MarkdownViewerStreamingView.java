@@ -1,22 +1,20 @@
 package com.webforj.samples.views.markdownviewer;
 
+import com.webforj.Interval;
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
-import com.webforj.component.icons.IconButton;
+import com.webforj.component.event.KeypressEvent;
+import com.webforj.component.field.TextField;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Span;
+import com.webforj.component.icons.IconButton;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.markdown.MarkdownViewer;
-import com.webforj.component.field.TextField;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.Interval;
-
-import com.webforj.component.event.KeypressEvent;
-
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -26,8 +24,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @StyleSheet("ws://css/markdownviewer/markdownviewerstreaming.css")
 public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
 
-  private static final List<String> RESPONSES = List.of(
-      """
+  private static final List<String> RESPONSES =
+      List.of(
+          """
       ## Quick Pasta Recipe 🍝
 
       Here's a simple **aglio e olio** you can make in 15 minutes:
@@ -39,7 +38,7 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
 
       > Pro tip: Save some pasta water to make the sauce silky!
       """,
-      """
+          """
       ### Random Facts About Space
 
       The universe is **wild**. Consider this:
@@ -55,7 +54,7 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
       | Saturn | Could float in water |
       | Mars | Home to the tallest volcano |
       """,
-      """
+          """
       Here's a quick **productivity tip**:
 
       The **Pomodoro Technique** works like this:
@@ -70,14 +69,14 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
       It's simple but effective for maintaining focus throughout the day!
 
       > "Focus is more about saying no than saying yes." - Steve Jobs
-      """
-  );
+      """);
 
   private final FlexLayout messagesArea;
   private final MarkdownViewer viewer = new MarkdownViewer();
   private final TextField input = new TextField();
   private final IconButton sendButton = new IconButton(TablerIcon.create("send"));
-  private final IconButton stopButton = new IconButton(TablerIcon.create("square", TablerIcon.Variate.FILLED));
+  private final IconButton stopButton =
+      new IconButton(TablerIcon.create("square", TablerIcon.Variate.FILLED));
 
   private Div thinkingIndicator;
   private Interval streamInterval;
@@ -86,9 +85,7 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
 
   public MarkdownViewerStreamingView() {
     FlexLayout self = getBoundComponent();
-    self.setDirection(FlexDirection.COLUMN)
-        .addClassName("chat")
-        .setStyle("overflow", "hidden");
+    self.setDirection(FlexDirection.COLUMN).addClassName("chat").setStyle("overflow", "hidden");
 
     messagesArea = createMessagesArea();
 
@@ -108,9 +105,7 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
     area.addClassName("chat__messages");
     area.setStyle("overflowY", "auto");
 
-    viewer.setProgressiveRender(true)
-        .setAutoScroll(true)
-        .setRenderSpeed(6);
+    viewer.setProgressiveRender(true).setAutoScroll(true).setRenderSpeed(6);
 
     return area;
   }
@@ -121,11 +116,12 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
 
     input.setPlaceholder("Type a message...");
     input.setWidth("100%");
-    input.onKeypress(e -> {
-      if (e.getKeyCode().equals(KeypressEvent.Key.ENTER)) {
-        sendMessage();
-      }
-    });
+    input.onKeypress(
+        e -> {
+          if (e.getKeyCode().equals(KeypressEvent.Key.ENTER)) {
+            sendMessage();
+          }
+        });
 
     sendButton.onClick(e -> sendMessage());
     sendButton.addClassName("chat__send-button");
@@ -153,19 +149,24 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
     if (!viewer.getContent().isEmpty()) {
       viewer.append("\n\n---\n\n");
     }
-    viewer.append("""
+    viewer.append(
+        """
         <p style="text-align:right;color:var(--dwc-color-primary);font-weight:500">%s</p>
 
-        """.formatted(message.trim()));
+        """
+            .formatted(message.trim()));
 
     input.setText("");
     showThinking();
 
-    delayInterval = new Interval(0.6f, e -> {
-      delayInterval.stop();
-      hideThinking();
-      startStreaming();
-    });
+    delayInterval =
+        new Interval(
+            0.6f,
+            e -> {
+              delayInterval.stop();
+              hideThinking();
+              startStreaming();
+            });
     delayInterval.start();
   }
 
@@ -176,21 +177,27 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
     String response = RESPONSES.get(random.nextInt(RESPONSES.size()));
     AtomicInteger index = new AtomicInteger(0);
 
-    streamInterval = new Interval(0.04f, e -> {
-      int current = index.get();
-      if (current < response.length()) {
-        int end = Math.min(current + 4 + random.nextInt(4), response.length());
-        viewer.append(response.substring(current, end));
-        index.set(end);
-      } else {
-        streamInterval.stop();
-        viewer.whenRenderComplete().thenAccept(v -> {
-          sendButton.setVisible(true);
-          stopButton.setVisible(false);
-          input.focus();
-        });
-      }
-    });
+    streamInterval =
+        new Interval(
+            0.04f,
+            e -> {
+              int current = index.get();
+              if (current < response.length()) {
+                int end = Math.min(current + 4 + random.nextInt(4), response.length());
+                viewer.append(response.substring(current, end));
+                index.set(end);
+              } else {
+                streamInterval.stop();
+                viewer
+                    .whenRenderComplete()
+                    .thenAccept(
+                        v -> {
+                          sendButton.setVisible(true);
+                          stopButton.setVisible(false);
+                          input.focus();
+                        });
+              }
+            });
     streamInterval.start();
   }
 

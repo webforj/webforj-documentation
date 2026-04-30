@@ -43,11 +43,8 @@ public class RunConfig {
   }
 
   /**
-   * Get a configuration value checking in order:
-   * 1. System property (-Dkey=value)
-   * 2. Environment variable (KEY=value, with dots replaced by underscores and
-   * uppercase)
-   * 3. Default value
+   * Get a configuration value checking in order: 1. System property (-Dkey=value) 2. Environment
+   * variable (KEY=value, with dots replaced by underscores and uppercase) 3. Default value
    */
   private static String getConfig(String key, String defaultValue) {
     // First check system property
@@ -123,5 +120,4 @@ public class RunConfig {
   public static int getPort() {
     return getConfigInt("port", DEFAULT_PORT);
   }
-
 }

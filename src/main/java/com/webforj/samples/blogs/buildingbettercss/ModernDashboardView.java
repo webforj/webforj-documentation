@@ -1,21 +1,21 @@
 package com.webforj.samples.blogs.buildingbettercss;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.layout.applayout.AppLayout;
-import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.H4;
 import com.webforj.component.icons.TablerIcon;
+import com.webforj.component.layout.applayout.AppLayout;
+import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.Route;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Route("blogs/building-better-css")
 @StyleSheet("ws://blogs/buildingbettercss/dashboard.css")

@@ -1,6 +1,6 @@
 package com.webforj.samples.views.slider;
 
-import java.util.Map;
+import static java.util.Map.entry;
 
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
@@ -13,8 +13,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
-import static java.util.Map.entry;
+import java.util.Map;
 
 @Route
 @FrameTitle("Temperature Selector Demo")
@@ -30,40 +29,48 @@ public class SliderTempView extends Composite<FlexLayout> {
         .setMargin("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.CENTER);
 
-    temperatureSlider.setMin(60)
+    temperatureSlider
+        .setMin(60)
         .setMax(90)
         .setValue(72)
         .setTicksVisible(true)
         .setMajorTickSpacing(10)
         .setMinorTickSpacing(5)
-        .setLabels(Map.ofEntries(
-            entry(60, "60&deg;F"),
-            entry(70, "70&deg;F"),
-            entry(80, "80&deg;F"),
-            entry(90, "90&deg;F")
-        ))
+        .setLabels(
+            Map.ofEntries(
+                entry(60, "60&deg;F"),
+                entry(70, "70&deg;F"),
+                entry(80, "80&deg;F"),
+                entry(90, "90&deg;F")))
         .setLabelsVisible(true)
         .setTooltipVisibleOnSlideOnly(true)
         .setWidth("300px");
 
     IconButton snowflakeButton = new IconButton(TablerIcon.create("snowflake"));
-    snowflakeButton.setTheme(Theme.PRIMARY)
+    snowflakeButton
+        .setTheme(Theme.PRIMARY)
         .setStyle("font-size", "1.5rem")
-        .onClick(e -> {
-          temperatureSlider.setValue(60);
-        });
+        .onClick(
+            e -> {
+              temperatureSlider.setValue(60);
+            });
 
     IconButton sunButton = new IconButton(TablerIcon.create("sun"));
-    sunButton.setTheme(Theme.DANGER)
+    sunButton
+        .setTheme(Theme.DANGER)
         .setStyle("font-size", "1.5rem")
-        .onClick(e -> {
-          temperatureSlider.setValue(90);
-        });
+        .onClick(
+            e -> {
+              temperatureSlider.setValue(90);
+            });
 
-    FlexLayout sliderContainer = FlexLayout.create(snowflakeButton, temperatureSlider, sunButton)
+    FlexLayout sliderContainer =
+        FlexLayout.create(snowflakeButton, temperatureSlider, sunButton)
             .horizontal()
-            .justify().between()
-            .align().center()
+            .justify()
+            .between()
+            .align()
+            .center()
             .build()
             .setSpacing("var(--dwc-space-m)");
 

@@ -6,38 +6,41 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class ProgressBarBasicPage {
 
-    private static final String ROUTE = "progressbarbasic";
+  private static final String ROUTE = "progressbarbasic";
 
-    private final Locator progressBar;
-    private final Locator startButton;
-    private final Locator pauseButton;
-    private final Locator resetButton;
+  private final Locator progressBar;
+  private final Locator startButton;
+  private final Locator pauseButton;
+  private final Locator resetButton;
 
-    public ProgressBarBasicPage(Page page) {
-        
-        this.progressBar = page.locator("dwc-progressbar");
-        this.startButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Start"));
-        this.pauseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
-        this.resetButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Reset"));
-    }
+  public ProgressBarBasicPage(Page page) {
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+    this.progressBar = page.locator("dwc-progressbar");
+    this.startButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Start"));
+    this.pauseButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
+    this.resetButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Reset"));
+  }
 
-    public Locator getProgressBar() {
-        return progressBar;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getStartButton() {
-        return startButton;
-    }
+  public Locator getProgressBar() {
+    return progressBar;
+  }
 
-    public Locator getPauseButton() {
-        return pauseButton;
-    }
+  public Locator getStartButton() {
+    return startButton;
+  }
 
-    public Locator getResetButton() {
-        return resetButton;
-    }
+  public Locator getPauseButton() {
+    return pauseButton;
+  }
+
+  public Locator getResetButton() {
+    return resetButton;
+  }
 }

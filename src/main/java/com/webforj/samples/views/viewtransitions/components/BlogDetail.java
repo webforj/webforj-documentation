@@ -17,7 +17,8 @@ import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
 
 @StyleSheet("ws://css/viewtransitions/components/blog-card.css")
-public class BlogDetail extends Composite<FlexLayout> implements HasClassName<BlogDetail>, HasStyle<BlogDetail> {
+public class BlogDetail extends Composite<FlexLayout>
+    implements HasClassName<BlogDetail>, HasStyle<BlogDetail> {
   private final FlexLayout self = getBoundComponent();
   private final IconButton closeBtn;
 
@@ -27,11 +28,8 @@ public class BlogDetail extends Composite<FlexLayout> implements HasClassName<Bl
         .setPadding("var(--dwc-space-m)")
         .addClassName("blog-detail");
 
-    FlexLayout header = FlexLayout.create()
-        .horizontal()
-        .align().center()
-        .justify().between()
-        .build();
+    FlexLayout header =
+        FlexLayout.create().horizontal().align().center().justify().between().build();
 
     H4 heading = new H4(title);
     heading.addClassName("blog-detail-title");

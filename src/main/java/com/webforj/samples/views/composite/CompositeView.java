@@ -33,8 +33,7 @@ public class CompositeView extends Composite<Div> {
   }
 
   private void initializeComponents() {
-    taskInput.setPlaceholder("Enter a new task and press Enter...")
-        .setExpanse(Expanse.XLARGE);
+    taskInput.setPlaceholder("Enter a new task and press Enter...").setExpanse(Expanse.XLARGE);
 
     taskContainer
         .setDirection(FlexDirection.COLUMN)
@@ -43,18 +42,18 @@ public class CompositeView extends Composite<Div> {
   }
 
   private void setupLayout() {
-    self.addClassName("frame")
-        .add(title, taskInput, taskContainer);
+    self.addClassName("frame").add(title, taskInput, taskContainer);
   }
 
   private void setupEventHandlers() {
-    taskInput.onKeypress(e -> {
-      String task = taskInput.getText().trim();
-      if (e.getKeyCode() == KeypressEvent.Key.ENTER && !task.isEmpty()) {
-        taskContainer.add(new SimpleTaskItem(task));
-        taskInput.setText("");
-      }
-    });
+    taskInput.onKeypress(
+        e -> {
+          String task = taskInput.getText().trim();
+          if (e.getKeyCode() == KeypressEvent.Key.ENTER && !task.isEmpty()) {
+            taskContainer.add(new SimpleTaskItem(task));
+            taskInput.setText("");
+          }
+        });
   }
 
   private void addSampleTasks() {
@@ -76,9 +75,7 @@ public class CompositeView extends Composite<Div> {
     }
 
     private void initializeComponents(String text) {
-      taskText.setText(text)
-          .setStyle("flex-grow", "1")
-          .addClassName("todo-text");
+      taskText.setText(text).setStyle("flex-grow", "1").addClassName("todo-text");
     }
 
     private void setupLayout() {
@@ -90,17 +87,19 @@ public class CompositeView extends Composite<Div> {
     }
 
     private void setupEventHandlers() {
-      toggleButton.onToggle(e -> {
-        if (e.isToggled()) {
-          taskText.setStyle("text-decoration", "line-through");
-        } else {
-          taskText.setStyle("text-decoration", "none");
-        }
-      });
+      toggleButton.onToggle(
+          e -> {
+            if (e.isToggled()) {
+              taskText.setStyle("text-decoration", "line-through");
+            } else {
+              taskText.setStyle("text-decoration", "none");
+            }
+          });
 
-      deleteButton.onClick(e -> {
-        self.setVisible(false);
-      });
+      deleteButton.onClick(
+          e -> {
+            self.setVisible(false);
+          });
     }
   }
 }

@@ -1,7 +1,5 @@
 package com.webforj.samples.views.fields.maskeddatefield;
 
-import java.time.LocalDate;
-
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -11,6 +9,7 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.time.LocalDate;
 
 @Route
 @FrameTitle("Masked Date Field with Restore")
@@ -23,7 +22,8 @@ public class MaskedDateFieldRestoreView extends Composite<FlexLayout> {
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setMargin("var(--dwc-space-m) auto");
 
-    eventField.setMask("%Yl-%Mz-%Dz")
+    eventField
+        .setMask("%Yl-%Mz-%Dz")
         .setValue(LocalDate.now())
         .setRestoreValue(LocalDate.now().minusDays(1))
         .setHelperText("Press <kbd>ESC</kbd> to restore the value to yesterday.")
@@ -31,10 +31,8 @@ public class MaskedDateFieldRestoreView extends Composite<FlexLayout> {
         .getPicker()
         .setIconVisible(false);
 
-    Button restoreButton = new Button(
-        "Reset value",
-        ButtonTheme.PRIMARY,
-        event -> eventField.restoreValue());
+    Button restoreButton =
+        new Button("Reset value", ButtonTheme.PRIMARY, event -> eventField.restoreValue());
 
     self.add(eventField, restoreButton);
   }

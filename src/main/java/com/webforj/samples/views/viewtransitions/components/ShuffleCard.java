@@ -12,7 +12,8 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 public class ShuffleCard extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
-  public ShuffleCard(String id, String title, String subtitle, String colorClass, FeatherIcon icon, int position) {
+  public ShuffleCard(
+      String id, String title, String subtitle, String colorClass, FeatherIcon icon, int position) {
     self.setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-m)")
         .addClassName("shuffle-card", colorClass);
@@ -26,8 +27,7 @@ public class ShuffleCard extends Composite<FlexLayout> {
     iconComponent.addClassName("shuffle-card-icon");
 
     FlexLayout content = FlexLayout.create().vertical().build();
-    content.setSpacing("0px")
-        .setStyle("flex", "1");
+    content.setSpacing("0px").setStyle("flex", "1");
 
     Div heading = new Div();
     heading.addClassName("shuffle-card-title");

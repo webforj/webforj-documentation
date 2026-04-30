@@ -22,8 +22,10 @@ public class TextAreaPredictedTextView extends Composite<FlexLayout> {
         .setMargin("50px auto")
         .setMaxWidth("400px");
 
-    textArea.setHeight("200px")
-        .setHelperText("""
+    textArea
+        .setHeight("200px")
+        .setHelperText(
+            """
             Type something to see suggestions, for instance, type 'Sky is'.
             Then wait for a few seconds to see the suggestions. You can insert the suggestion
             by pressing Tab or ArrowRight key or simply ignore it by typing further.""")
@@ -44,9 +46,10 @@ public class TextAreaPredictedTextView extends Composite<FlexLayout> {
     try {
       String bestSuggestion = TextPredictionService.predict(input);
       // Only show suggestion if it extends the input
-      String predictedValue = !bestSuggestion.isEmpty() && bestSuggestion.length() >= input.length()
-          ? input + bestSuggestion.substring(input.length())
-          : "";
+      String predictedValue =
+          !bestSuggestion.isEmpty() && bestSuggestion.length() >= input.length()
+              ? input + bestSuggestion.substring(input.length())
+              : "";
       textArea.setPredictedText(predictedValue);
     } catch (Exception e) {
       textArea.setPredictedText("");

@@ -17,7 +17,6 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
-import com.webforj.samples.views.applayout.fullnavbar.AppLayoutFullNavbarContentView;
 
 @Route
 @StyleSheet("ws://css/applayout/applayout.css")
@@ -32,15 +31,14 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
 
   public AppLayoutStickyToolbarView() {
     self.setDrawerHeaderVisible(false)
-            .addClassName("layout--collapse")
-            .addToHeader(header, secondToolbar)
-            .setHeaderFixed(false)
-            .setHeaderReveal(true)
-            .addToDrawer(new DrawerLogo(), drawer);
+        .addClassName("layout--collapse")
+        .addToHeader(header, secondToolbar)
+        .setHeaderFixed(false)
+        .setHeaderReveal(true)
+        .addToDrawer(new DrawerLogo(), drawer);
 
     // Header
-    header.addToStart(new AppDrawerToggle())
-            .addToTitle(new H3("Application"));
+    header.addToStart(new AppDrawerToggle()).addToTitle(new H3("Application"));
 
     // Drawer's Menu
     drawer.add(drawerMenu);
@@ -53,19 +51,18 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(createItem("Dashboard", dashboardIcon))
-            .addItem(createItem("Orders", ordersIcon))
-            .addItem(createItem("Customers", customersIcon))
-            .addItem(createItem("Products", productsIcon))
-            .addItem(createItem("Documents", documentsIcon))
-            .addItem(createItem("Tasks", tasksIcon))
-            .addItem(createItem("Analytics", analyticsIcon));
+    drawerMenu
+        .addItem(createItem("Dashboard", dashboardIcon))
+        .addItem(createItem("Orders", ordersIcon))
+        .addItem(createItem("Customers", customersIcon))
+        .addItem(createItem("Products", productsIcon))
+        .addItem(createItem("Documents", documentsIcon))
+        .addItem(createItem("Tasks", tasksIcon))
+        .addItem(createItem("Analytics", analyticsIcon));
 
-    secondToolbar.setCompact(true)
-            .addToStart(secondMenu);
+    secondToolbar.setCompact(true).addToStart(secondMenu);
 
-    secondMenu.setBorderless(true)
-            .setBodyHidden(true);
+    secondMenu.setBorderless(true).setBodyHidden(true);
 
     Icon salesIcon = TablerIcon.create("report-money");
     Icon enterpriseIcon = TablerIcon.create("building");
@@ -79,6 +76,7 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
   }
 
   private AppNavItem createItem(String text, Icon icon) {
-    return new AppNavItem(text, AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=" + text), icon);
+    return new AppNavItem(
+        text, AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=" + text), icon);
   }
 }

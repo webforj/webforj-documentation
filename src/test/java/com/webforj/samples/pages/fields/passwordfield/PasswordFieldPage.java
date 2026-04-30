@@ -6,26 +6,26 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class PasswordFieldPage {
 
-    private static final String ROUTE = "passwordfield";
+  private static final String ROUTE = "passwordfield";
 
-    private final Locator passwordField;
-    private final Locator eyeOffIcon;
+  private final Locator passwordField;
+  private final Locator eyeOffIcon;
 
-    public PasswordFieldPage(Page page) {
-        
-        passwordField = page.getByPlaceholder("Password");
-        eyeOffIcon = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("eye"));
-    }
+  public PasswordFieldPage(Page page) {
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+    passwordField = page.getByPlaceholder("Password");
+    eyeOffIcon = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("eye"));
+  }
 
-    public Locator getPasswordField() {
-        return passwordField;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getEyeOffIcon() {
-        return eyeOffIcon;
-    }
+  public Locator getPasswordField() {
+    return passwordField;
+  }
+
+  public Locator getEyeOffIcon() {
+    return eyeOffIcon;
+  }
 }

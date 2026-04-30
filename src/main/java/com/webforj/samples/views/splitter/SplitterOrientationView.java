@@ -17,8 +17,7 @@ public class SplitterOrientationView extends Composite<Div> {
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
 
-    Splitter splitter = new Splitter(master, detail)
-            .setOrientation(Splitter.Orientation.VERTICAL);
+    Splitter splitter = new Splitter(master, detail).setOrientation(Splitter.Orientation.VERTICAL);
 
     self.add(splitter);
   }

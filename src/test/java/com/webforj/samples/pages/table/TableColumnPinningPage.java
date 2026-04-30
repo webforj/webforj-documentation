@@ -5,26 +5,30 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
 public class TableColumnPinningPage {
-    private static final String ROUTE = "tablecolumnpinning";
+  private static final String ROUTE = "tablecolumnpinning";
 
-    private final Locator editButton;
-    private final Locator dialogBox;
+  private final Locator editButton;
+  private final Locator dialogBox;
 
-    public TableColumnPinningPage(Page page) {
+  public TableColumnPinningPage(Page page) {
 
-        this.editButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Edit").setExact(true)).nth(0);
-        this.dialogBox = page.getByText("You asked to edit record number ", new Page.GetByTextOptions().setExact(false));
-    }
+    this.editButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Edit").setExact(true))
+            .nth(0);
+    this.dialogBox =
+        page.getByText(
+            "You asked to edit record number ", new Page.GetByTextOptions().setExact(false));
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getEditButton() {
-        return editButton;
-    }
+  public Locator getEditButton() {
+    return editButton;
+  }
 
-    public Locator getDialogBox() {
-        return dialogBox;
-    }
+  public Locator getDialogBox() {
+    return dialogBox;
+  }
 }

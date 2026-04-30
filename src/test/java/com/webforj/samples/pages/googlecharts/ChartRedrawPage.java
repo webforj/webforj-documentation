@@ -1,81 +1,90 @@
 package com.webforj.samples.pages.googlecharts;
 
-import java.util.regex.Pattern;
-
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import java.util.regex.Pattern;
 
 public class ChartRedrawPage {
 
-    private final Page page;
-    
-    private final Locator valueForInstagram;
-    private final Locator valueForTwitter;
-    private final Locator valueForFacebook;
-    private final Locator valueForLinkedIn;
-    private final Locator redrawChartButton;
-    private final Locator warningToast;
+  private final Page page;
 
-    private static final String ROUTE = "chartredraw";
+  private final Locator valueForInstagram;
+  private final Locator valueForTwitter;
+  private final Locator valueForFacebook;
+  private final Locator valueForLinkedIn;
+  private final Locator redrawChartButton;
+  private final Locator warningToast;
 
-    public ChartRedrawPage(Page page) {
-        this.page = page;
+  private static final String ROUTE = "chartredraw";
 
-        this.valueForInstagram = page.getByRole(AriaRole.SPINBUTTON,
-                new Page.GetByRoleOptions().setName("Value for Instagram"));
-        this.valueForTwitter = page.getByRole(AriaRole.SPINBUTTON,
-                new Page.GetByRoleOptions().setName("Value for Twitter"));
-        this.valueForFacebook = page.getByRole(AriaRole.SPINBUTTON,
-                new Page.GetByRoleOptions().setName("Value for Facebook"));
-        this.valueForLinkedIn = page.getByRole(AriaRole.SPINBUTTON,
-                new Page.GetByRoleOptions().setName("Value for LinkedIn"));
-        this.redrawChartButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Redraw Chart"));
+  public ChartRedrawPage(Page page) {
+    this.page = page;
 
-        this.warningToast = page.getByRole(AriaRole.ALERT, new Page.GetByRoleOptions()
-                .setName(Pattern.compile("^Enter a valid number between 1 and 1000000", Pattern.CASE_INSENSITIVE)));
-    }
+    this.valueForInstagram =
+        page.getByRole(
+            AriaRole.SPINBUTTON, new Page.GetByRoleOptions().setName("Value for Instagram"));
+    this.valueForTwitter =
+        page.getByRole(
+            AriaRole.SPINBUTTON, new Page.GetByRoleOptions().setName("Value for Twitter"));
+    this.valueForFacebook =
+        page.getByRole(
+            AriaRole.SPINBUTTON, new Page.GetByRoleOptions().setName("Value for Facebook"));
+    this.valueForLinkedIn =
+        page.getByRole(
+            AriaRole.SPINBUTTON, new Page.GetByRoleOptions().setName("Value for LinkedIn"));
+    this.redrawChartButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Redraw Chart"));
 
-    public void updateChart(int instagram, int twitter, int facebook, int linkedIn) {
-        valueForInstagram.fill(String.valueOf(instagram));
-        valueForTwitter.fill(String.valueOf(twitter));
-        valueForFacebook.fill(String.valueOf(facebook));
-        valueForLinkedIn.fill(String.valueOf(linkedIn));
+    this.warningToast =
+        page.getByRole(
+            AriaRole.ALERT,
+            new Page.GetByRoleOptions()
+                .setName(
+                    Pattern.compile(
+                        "^Enter a valid number between 1 and 1000000", Pattern.CASE_INSENSITIVE)));
+  }
 
-        redrawChartButton.click();
-    }
+  public void updateChart(int instagram, int twitter, int facebook, int linkedIn) {
+    valueForInstagram.fill(String.valueOf(instagram));
+    valueForTwitter.fill(String.valueOf(twitter));
+    valueForFacebook.fill(String.valueOf(facebook));
+    valueForLinkedIn.fill(String.valueOf(linkedIn));
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+    redrawChartButton.click();
+  }
 
-    public Locator getValueForInstagram() {
-        return valueForInstagram;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getValueForTwitter() {
-        return valueForTwitter;
-    }
+  public Locator getValueForInstagram() {
+    return valueForInstagram;
+  }
 
-    public Locator getValueForFacebook() {
-        return valueForFacebook;
-    }
+  public Locator getValueForTwitter() {
+    return valueForTwitter;
+  }
 
-    public Locator getValueForLinkedIn() {
-        return valueForLinkedIn;
-    }
+  public Locator getValueForFacebook() {
+    return valueForFacebook;
+  }
 
-    public Locator getRedrawChartButton() {
-        return redrawChartButton;
-    }
+  public Locator getValueForLinkedIn() {
+    return valueForLinkedIn;
+  }
 
-    public Locator getWarningToast() {
-        return warningToast;
-    }
+  public Locator getRedrawChartButton() {
+    return redrawChartButton;
+  }
 
-    public void cleanField(Locator locator) {
-        locator.click();
-        page.keyboard().press("Control+A");
-        page.keyboard().press("Backspace");
-    }
+  public Locator getWarningToast() {
+    return warningToast;
+  }
+
+  public void cleanField(Locator locator) {
+    locator.click();
+    page.keyboard().press("Control+A");
+    page.keyboard().press("Backspace");
+  }
 }

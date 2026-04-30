@@ -13,8 +13,13 @@ import com.webforj.router.annotation.Route;
 public class ChoiceboxDropdownTypeView extends Composite<Div> {
   // Categories for the ChoiceBox
   private static final String[] CATEGORIES = {
-      "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
-      "Pet Supplies", "Toys and Games"
+    "Electronics",
+    "Health and Beauty",
+    "Fashion",
+    "Kitchen",
+    "Furniture",
+    "Pet Supplies",
+    "Toys and Games"
   };
 
   private final Div self = getBoundComponent();
@@ -22,11 +27,9 @@ public class ChoiceboxDropdownTypeView extends Composite<Div> {
   private final ChoiceBox demoBox = new ChoiceBox("Department");
 
   public ChoiceboxDropdownTypeView() {
-    self.addClassName("frame")
-        .add(demoBox);
+    self.addClassName("frame").add(demoBox);
 
     demoBox.setDropdownType("demo-dropdown-type");
-    demoBox.insert(CATEGORIES)
-        .selectIndex(0);
+    demoBox.insert(CATEGORIES).selectIndex(0);
   }
 }

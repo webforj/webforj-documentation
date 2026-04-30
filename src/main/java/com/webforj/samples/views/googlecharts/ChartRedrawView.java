@@ -15,7 +15,6 @@ import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +51,7 @@ public class ChartRedrawView extends Composite<Div> {
   }
 
   private Div createChartContainer() {
-    Div chartContainer = new Div()
-        .addClassName("chart-container");
+    Div chartContainer = new Div().addClassName("chart-container");
 
     chartContainer.add(chart);
     setupChart();
@@ -62,15 +60,22 @@ public class ChartRedrawView extends Composite<Div> {
   }
 
   private void setupChart() {
-    Map<String, Object> options = Map.of(
-        TITLE, "Social Media Following",
-        "colors", List.of("#006fe6"),
-        "backgroundColor", "transparent",
-        "chartArea", Map.of("width", "80%", "height", "70%"),
-        "hAxis", Map.of(TEXT_STYLE, Map.of(COLOR, "#333")),
-        "vAxis", Map.of("minValue", 0, TEXT_STYLE, Map.of(COLOR, "#333")),
-        "legend", Map.of("position", "bottom")
-    );
+    Map<String, Object> options =
+        Map.of(
+            TITLE,
+            "Social Media Following",
+            "colors",
+            List.of("#006fe6"),
+            "backgroundColor",
+            "transparent",
+            "chartArea",
+            Map.of("width", "80%", "height", "70%"),
+            "hAxis",
+            Map.of(TEXT_STYLE, Map.of(COLOR, "#333")),
+            "vAxis",
+            Map.of("minValue", 0, TEXT_STYLE, Map.of(COLOR, "#333")),
+            "legend",
+            Map.of("position", "bottom"));
     chart.setOptions(options);
 
     List<Object> data = createChartData();
@@ -93,11 +98,12 @@ public class ChartRedrawView extends Composite<Div> {
   private Map<String, NumberField> createValueFields() {
     Map<String, NumberField> fields = new java.util.HashMap<>();
 
-    FlexLayout inputContainer = new FlexLayout()
-        .addClassName("input-container")
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setWrap(FlexWrap.WRAP)
-        .setSpacing("10px");
+    FlexLayout inputContainer =
+        new FlexLayout()
+            .addClassName("input-container")
+            .setJustifyContent(FlexJustifyContent.CENTER)
+            .setWrap(FlexWrap.WRAP)
+            .setSpacing("10px");
 
     for (String category : categories) {
       NumberField valueField = createNumberField(category);
@@ -119,11 +125,12 @@ public class ChartRedrawView extends Composite<Div> {
   }
 
   private FlexLayout createInputContainer() {
-    FlexLayout inputContainer = new FlexLayout()
-        .addClassName("input-container")
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setWrap(FlexWrap.WRAP)
-        .setSpacing("10px");
+    FlexLayout inputContainer =
+        new FlexLayout()
+            .addClassName("input-container")
+            .setJustifyContent(FlexJustifyContent.CENTER)
+            .setWrap(FlexWrap.WRAP)
+            .setSpacing("10px");
 
     for (NumberField field : valueFields.values()) {
       inputContainer.add(field);
@@ -133,8 +140,7 @@ public class ChartRedrawView extends Composite<Div> {
   }
 
   private Div createButtonContainer() {
-    Div buttonContainer = new Div()
-        .addClassName("redraw-button-container");
+    Div buttonContainer = new Div().addClassName("redraw-button-container");
 
     redrawButton.setTheme(ButtonTheme.PRIMARY);
     redrawButton.addClassName("redraw-button");

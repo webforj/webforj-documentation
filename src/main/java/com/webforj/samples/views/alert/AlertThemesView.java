@@ -30,14 +30,12 @@ public class AlertThemesView extends Composite<FlexLayout> {
       Icon icon = TablerIcon.create("alert-square-rounded");
       Paragraph text = new Paragraph("This is an alert with the %s theme!".formatted(theme));
 
-      Alert alert = new Alert()
-          .addToContent(FlexLayout.create(icon, text)
-              .horizontal()
-              .align().center()
-              .build())
-          .setTheme(theme)
-          .setClosable(false)
-          .setWidth("350px");
+      Alert alert =
+          new Alert()
+              .addToContent(FlexLayout.create(icon, text).horizontal().align().center().build())
+              .setTheme(theme)
+              .setClosable(false)
+              .setWidth("350px");
 
       self.add(alert);
     }

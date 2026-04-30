@@ -1,68 +1,67 @@
 package com.webforj.samples.pages.navigator;
 
-import java.util.regex.Pattern;
-
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import java.util.regex.Pattern;
 
 public class NavigatorBasicPage {
 
-    private static final String ROUTE = "navigatorbasic";
+  private static final String ROUTE = "navigatorbasic";
 
-    private final Page page;
+  private final Page page;
 
-    private final Locator firstButton;
-    private final Locator prevButton;
-    private final Locator nextButton;
-    private final Locator lastButton;
+  private final Locator firstButton;
+  private final Locator prevButton;
+  private final Locator nextButton;
+  private final Locator lastButton;
 
-    public NavigatorBasicPage(Page page) {
-        this.page = page;
-        
-        firstButton = page.getByLabel("Goto first page");
-        prevButton = page.getByLabel("Goto previous page");
-        nextButton = page.getByLabel("Goto next page");
-        lastButton = page.getByLabel("Goto last page");
-    }
+  public NavigatorBasicPage(Page page) {
+    this.page = page;
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+    firstButton = page.getByLabel("Goto first page");
+    prevButton = page.getByLabel("Goto previous page");
+    nextButton = page.getByLabel("Goto next page");
+    lastButton = page.getByLabel("Goto last page");
+  }
 
-    public void clickFirst() {
-        firstButton.click();
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public void clickPrev() {
-        prevButton.click();
-    }
+  public void clickFirst() {
+    firstButton.click();
+  }
 
-    public void clickNext() {
-        nextButton.click();
-    }
+  public void clickPrev() {
+    prevButton.click();
+  }
 
-    public void clickLast() {
-        lastButton.click();
-    }
+  public void clickNext() {
+    nextButton.click();
+  }
 
-    public Locator getFirstButton() {
-        return firstButton;
-    }
+  public void clickLast() {
+    lastButton.click();
+  }
 
-    public Locator getPrevButton() {
-        return prevButton;
-    }
+  public Locator getFirstButton() {
+    return firstButton;
+  }
 
-    public Locator getNextButton() {
-        return nextButton;
-    }
+  public Locator getPrevButton() {
+    return prevButton;
+  }
 
-    public Locator getLastButton() {
-        return lastButton;
-    }
+  public Locator getNextButton() {
+    return nextButton;
+  }
 
-    public Locator navigatorValue(int n) {
-        Pattern exact = Pattern.compile("^\\s*Value:\\s*" + n + "\\s*$");
-        return page.getByText(exact);
-    }
+  public Locator getLastButton() {
+    return lastButton;
+  }
+
+  public Locator navigatorValue(int n) {
+    Pattern exact = Pattern.compile("^\\s*Value:\\s*" + n + "\\s*$");
+    return page.getByText(exact);
+  }
 }

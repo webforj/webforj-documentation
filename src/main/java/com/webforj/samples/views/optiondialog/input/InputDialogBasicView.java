@@ -16,7 +16,8 @@ public class InputDialogBasicView extends Composite<Div> {
   private static final String CONFIRMATION_CODE = "7ANfB";
 
   public InputDialogBasicView() {
-    String message = """
+    String message =
+        """
         <dwc-alert theme='warning'>
           <b style='color: inherit'>Unexpected bad things will happen if you don't read this!</b>
         </dwc-alert>
@@ -24,12 +25,15 @@ public class InputDialogBasicView extends Composite<Div> {
         This will permanently delete the repository, wiki, issues,
         comments, packages, secrets, workflow runs, and remove all collaborator associations.
         <br/><br/>
-        To confirm, type <b>""" + CONFIRMATION_CODE + "</b> in the box below";
+        To confirm, type <b>"""
+            + CONFIRMATION_CODE
+            + "</b> in the box below";
 
-    InputDialog dialog = new InputDialog(message, "Delete Repository", InputDialog.MessageType.ERROR)
-    .setMessageType(InputDialog.MessageType.PLAIN)
-        .setFirstButtonText("Delete Repository")
-        .setSecondButtonTheme(ButtonTheme.OUTLINED_GRAY);
+    InputDialog dialog =
+        new InputDialog(message, "Delete Repository", InputDialog.MessageType.ERROR)
+            .setMessageType(InputDialog.MessageType.PLAIN)
+            .setFirstButtonText("Delete Repository")
+            .setSecondButtonTheme(ButtonTheme.OUTLINED_GRAY);
 
     // Loop until correct code is entered or dialog is cancelled
     String input;

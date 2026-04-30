@@ -2,14 +2,12 @@ package com.webforj.samples.views.fields.datefield;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.fields.datefield.DateFieldPage;
 import com.webforj.samples.views.BaseTest;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class DateFieldViewIT extends BaseTest {
 
