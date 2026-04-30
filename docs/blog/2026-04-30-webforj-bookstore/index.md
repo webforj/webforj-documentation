@@ -2,7 +2,7 @@
 title: Building a Full-Featured Demo with webforJ and Spring Boot
 description: A walkthrough of the webforJ Bookstore app, a full-stack inventory manager with live filtering, data binding, custom table renderers, and Spring Security
 slug: webforj-bookstore
-date: 2026-04-24
+date: 2026-04-30
 authors: Eric Handtke
 tags: [spring, security, web development, tutorial, full-stack, showcase]
 hide_table_of_contents: false
