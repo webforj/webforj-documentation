@@ -10,7 +10,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/webforj-bookstore-cover.png)
 
-In my time working with documentation and coding for customers I have built quite the number of demo apps myself, so by now I know what the shortcuts look like. The dataset is always small, with authentication and advanced features "coming soon" or not implemented but just hardcoded in. Filtering works fast, because coincidentally there are only five rows to filter. All of that is not to say those demos are bad, after all they serve their purpose, but I wanted to see how efficiently I can build a demo that doesn't cut corners while still being small and easy to understand.
+In my time working with documentation and coding for customers I have built quite the number of demo apps myself, so by now I know what the shortcuts look like. The dataset is always small, with authentication and advanced features "coming soon" or hardcoded in instead of properly implemented. Filtering works fast, because coincidentally there are only five rows to filter. All of that isn't to say those demos are bad, after all they serve their purpose, but I wanted to see how efficiently I could build a demo that doesn't cut corners while still being small and easy to understand.
 
 The [webforJ Bookstore](https://github.com/webforj/built-with-webforj/tree/main/webforj-bookstore) is my attempt at that. It's a book inventory manager built on webforJ and Spring Boot with live table filtering, colored genre chips, a data-bound edit drawer, and Spring Security handling who can do what. This post covers the pieces I found most worth writing about.
 
@@ -131,7 +131,7 @@ bookTable.addColumn("Genres", book -> GSON.toJson(
     .setRenderer(new GenreChipRenderer<>());
 ```
 
-The interesting bit here is the type boundary: genres are serialized to JSON on the Java side, then parsed and rendered client-side in the template. Passing structured data into a renderer this way worked cleanly, despite me half expecting to spend time fighting the boundary.
+The interesting bit here is the type boundary: genres are serialized to JSON on the Java side, then parsed and rendered client-side in the template. Passing structured data into a renderer this way worked cleanly, despite me half-expecting to spend time fighting the boundary.
 
 ## Data binding in the edit drawer
 
