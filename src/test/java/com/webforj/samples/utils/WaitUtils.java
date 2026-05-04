@@ -111,6 +111,18 @@ public class WaitUtils {
     return waitUntil(condition, DEFAULT_TIMEOUT, 100);
   }
 
+  public static void disableAnimations(Page page) {
+    page.addStyleTag(
+        new Page.AddStyleTagOptions()
+            .setContent(
+                "*, *::before, *::after {"
+                    + "  animation-duration: 0s !important;"
+                    + "  animation-delay: 0s !important;"
+                    + "  transition-duration: 0s !important;"
+                    + "  transition-delay: 0s !important;"
+                    + "}"));
+  }
+
   public static void assertClickTimeout(Locator locator) {
     PlaywrightException exception =
         assertThrows(

@@ -6,6 +6,7 @@ import com.webforj.samples.pages.markdownviewer.MarkdownViewerStreamingPage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 
 public class MarkdownViewerStreamingViewIT extends BaseTest {
 
@@ -32,6 +33,14 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   }
 
   @Test
+  @DisabledIfEnvironmentVariable(
+      named = "CI",
+      matches = "true",
+      disabledReason =
+          "Thinking indicator is only visible for 600ms before the demo's delayInterval "
+              + "fires and removes it. Slow CI round trips can exceed that window, causing the "
+              + "indicator to be gone before Playwright observes it. Test is reliable in dev "
+              + "environments.")
   public void testSendingMessageShowsThinkingIndicator() {
     streamingPage.sendMessage("Test message");
     streamingPage.getThinkingIndicator().waitFor();
