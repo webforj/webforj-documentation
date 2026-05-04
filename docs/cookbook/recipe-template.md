@@ -29,8 +29,8 @@ Brief 1–2 sentence context if the code alone isn't self-explanatory. Otherwise
   FILE PLACEMENT
   ──────────────
   Save this file in the matching category folder:
-    docs/cookbook/css/your-recipe.mdx
-    docs/cookbook/routing/your-recipe.mdx
+    docs/cookbook/css/your-recipe.md
+    docs/cookbook/routing/your-recipe.md
     ...
 
   CHECKLIST before opening a PR
