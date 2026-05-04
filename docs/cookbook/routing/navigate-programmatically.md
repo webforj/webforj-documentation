@@ -17,11 +17,12 @@ import com.webforj.router.annotation.Route;
 
 @Route
 public class HomeView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+  private final Button goToDashboard = new Button("Go to Dashboard");
 
   public HomeView() {
-    Button goToDashboard = new Button("Go to Dashboard");
     goToDashboard.onClick(e -> Router.getCurrent().navigate(DashboardView.class));
-    getBoundComponent().add(goToDashboard);
+    self.add(goToDashboard);
   }
 }
 ```
