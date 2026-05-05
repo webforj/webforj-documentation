@@ -1,6 +1,6 @@
 ---
 title: "Inject inline CSS into a page from Java"
-description: "Use @InlineStyleSheet to add CSS class definitions directly from a Java component without a separate stylesheet file."
+description: "Use @InlineStyleSheet to add CSS class definitions directly from a Java component without a separate style sheet file."
 tags: [css, styling]
 components: []
 difficulty: beginner
@@ -28,4 +28,4 @@ public class MyView extends Composite<Div> {
 }
 ```
 
-Setting `once = true` ensures the style block is injected only once even when multiple instances of the component are on the page at the same time.
+With `once = true`, the style block is injected a single time, regardless of how many instances of the component are on the page at the same time.
