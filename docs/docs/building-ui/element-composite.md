@@ -7,15 +7,15 @@ slug: element_composite
 
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an app. Use the `ElementComposite` class when implementing Web Components for use in webforJ applications.
+The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ apps. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an app. Use the `ElementComposite` class when implementing Web Components for use in webforJ apps.
 
-While using the `ElementComposite` class, using the `getElement()` method will give you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
+While using the `ElementComposite` class, the `getElement()` method gives you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
 
 :::tip
-it's possible to do everything with the `Element` class itself, without using `ElementComposite` class. However, the provided methods in the `ElementComposite` give users a way to reuse the work that's being done. 
+It's possible to do everything with the `Element` class itself, without using the `ElementComposite` class. However, the methods in `ElementComposite` give you a way to reuse your work. 
 :::
 
-This guide demonstrates how to implement the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
+The examples on this page demonstrate how to implement the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
 
 <ComponentDemo 
 path='/webforj/qrdemo?' 
@@ -25,12 +25,12 @@ height='175px'
 
 ## Property and attribute descriptors {#property-and-attribute-descriptors}
 
-Properties and attributes in web components represent the state of the component. they're often used to manage data or configuration. The `ElementComposite` class provides a convenient way to work with properties and attributes.
+Properties and attributes in web components represent the state of the component. They're often used to manage data or configuration. The `ElementComposite` class provides a convenient way to work with properties and attributes.
 
 Properties and attributes can be declared and initialized as `PropertyDescriptor` members of the `ElementComposite` class being written, and then used in the code. To define properties and attributes, use the `set()` method to set the value of a property. For example, `set(PropertyDescriptor<V> property, V value)` sets a property to a specified value. 
 
 :::info
-Properties are accessed and manipulated internally within the component's code and do not reflect in the DOM. Attributes on the other hand are part of the component's external interface and can be used to pass information into a component from the outside, providing a way for external elements or scripts to configure the component.
+Properties are accessed and manipulated internally within the component's code and don't reflect in the DOM. Attributes, on the other hand, are part of the component's external interface and can be used to pass information into a component from the outside, providing a way for external elements or scripts to configure the component.
 :::
 
 ```java
@@ -43,9 +43,9 @@ set(TITLE, "My Title");
 set(VALUE, "My Value");
 ```
 
-In addition to setting a property, use the `get()` method in the `ElementComposite` class to access and read properties. The `get()` method can be passed an optional `boolean` value, which is false by default, to dictate whether the method should make a trip to the client to retrieve the value. This impacts performance, but might be necessary if the property can be modified purely in the client. 
+Use the `get()` method in the `ElementComposite` class to access and read properties. The `get()` method can accept an optional `boolean` value, which is false by default, to dictate whether the method should make a trip to the client to retrieve the value. This impacts performance, but might be necessary if the property can be modified purely in the client. 
 
-A `Type` can also be passed to the method, which dictates what to cast retrieved result to.
+A `Type` can also be passed to the method, which dictates what to cast the retrieved result to.
 
 :::tip
 This `Type` isn't overtly necessary, and adds an extra layer of specification as the data is retrieved.
@@ -80,7 +80,7 @@ addEventListener(ElementClickEvent.class, event -> {
 ```
 
 :::info
-The `ElementComposite` events are different than `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
+The `ElementComposite` events are different than `Element` events, in that they don't allow any class, but only specified `Event` classes.
 :::
 
 ### Built-in event classes {#built-in-event-classes}
@@ -170,6 +170,6 @@ Web components often use slots to allow developers to define the structure of a 
 
 3. **`getFirstComponentInSlot()`**: This method is designed to fetch the first component assigned to the slot. Optionally pass a specific class type to filter the results of this method.
 
-it's also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
+It's also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
 
 These interactions allow developers to harness the power of web components by providing a clean and straightforward API for manipulating slots, properties, and handling events within the `ElementComposite` class.
