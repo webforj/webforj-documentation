@@ -4,6 +4,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.webforj.samples.pages.viewtransitions.ViewTransitionShufflePage;
+import com.webforj.samples.utils.WaitUtils;
 import com.webforj.samples.views.BaseTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ class ViewTransitionShuffleViewIT extends BaseTest {
   @BeforeEach
   void setupShuffleDemo() {
     navigateToRoute(ViewTransitionShufflePage.getRoute());
+    WaitUtils.disableAnimations(page);
     shufflePage = new ViewTransitionShufflePage(page);
   }
 

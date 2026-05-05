@@ -5,6 +5,7 @@ import static com.webforj.samples.pages.viewtransitions.ViewTransitionMorphPage.
 
 import com.webforj.samples.config.RunConfig;
 import com.webforj.samples.pages.viewtransitions.ViewTransitionMorphPage;
+import com.webforj.samples.utils.WaitUtils;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +18,7 @@ class ViewTransitionMorphViewIT extends BaseTest {
   @BeforeEach
   void setupMorphDemo() {
     navigateToRoute(ViewTransitionMorphPage.getRoute());
+    WaitUtils.disableAnimations(page);
     morphPage = new ViewTransitionMorphPage(page);
   }
 
