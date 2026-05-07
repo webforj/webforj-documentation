@@ -27,10 +27,10 @@ The `FileUploadDialog` returns an `UploadedFile` object that contains informatio
 The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
 :::
 
-<ComponentDemo 
-path='/webforj/fileuploaddialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java'
-height = '400px'
+<ComponentDemo
+path='/webforj/fileuploaddialogbasic?'
+files={['src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java']}
+height='400px'
 />
 
 ### Moving uploaded files {#moving-uploaded-files}

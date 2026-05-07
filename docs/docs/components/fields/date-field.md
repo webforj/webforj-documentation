@@ -20,9 +20,9 @@ The `DateField` component lets users input or select a date by year, month, and 
 
 `DateField` extends the shared `Field` class, which provides common features across all field components. The following example creates departure and return DateFields that stay in sync, with min and max constraints to limit the selectable range.
 
-<ComponentDemo 
+<ComponentDemo
 path='/webforj/datefield?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.java'
+files={['src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.java']}
 />
 
 ## Field value (`LocalDate`) {#field-value-localdate}

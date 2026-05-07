@@ -18,12 +18,13 @@ When users reach the bottom of scrollable content, `InfiniteScroll` triggers an 
 
 The `InfiniteScroll` component emits events and maintains internal state to help manage how and when content is loaded.
 
-<AppLayoutViewer
-path='/webforj/infinitescroll?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollView.java'
-cssURL='/css/infinitescroll/infinitescroll.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/infinitescroll?'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollView.java',
+  'src/main/resources/static/css/infinitescroll/infinitescroll.css',
+]}
 />
 
 To fetch more data when the user scrolls, use the `onScroll()` or `addScrollListener()` method to register a listener. Inside the listener, you typically load additional content and call `update()` to refresh the `InfiniteScroll` state.
@@ -59,12 +60,13 @@ infiniteScroll.setText("Loading more items...");
 
 Similarly, you can customize the [`Icon`](../components/icon) displayed during loading by using `setIcon()`.
 
-<AppLayoutViewer
-path='/webforj/infinitescrollloading?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollLoadingView.java'
-cssURL='/css/infinitescroll/infinitescroll.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/infinitescrollloading?'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollLoadingView.java',
+  'src/main/resources/static/css/infinitescroll/infinitescroll.css',
+]}
 />
 
 ### Full customization {#full-customization}
@@ -74,12 +76,13 @@ you can add content directly into the special content slot using `addToContent()
 
 When you populate the content slot, it replaces the default loading layout entirely.
 
-<AppLayoutViewer
-path='/webforj/infinitescrollcustomloading?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollCustomLoadingView.java'
-cssURL='/css/infinitescroll/infinitescrollcustom.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/infinitescrollcustomloading?'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollCustomLoadingView.java',
+  'src/main/resources/static/css/infinitescroll/infinitescrollcustom.css',
+]}
 />
 
 ## Styling {#styling}

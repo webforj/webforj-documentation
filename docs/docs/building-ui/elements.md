@@ -12,10 +12,12 @@ webforJ developers have the option of choosing not only from the rich library of
 The `Element` component cannot be extended, and is not the base component for all components within webforJ. To read more about webforJ's component hierarchy, read [this article](../architecture/controls-components.md).
 :::
 
-<ComponentDemo 
-path='/webforj/elementinputdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java'
-cssURL='/css/element/elementInput.css'
+<ComponentDemo
+path='/webforj/elementinputdemo?'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java',
+  'src/main/resources/static/css/element/elementInput.css',
+]}
 />
 
 ## Adding events {#adding-events}
@@ -24,10 +26,12 @@ In order to utilize events that may come with your element, you can use the `Ele
 
 There are also additional options to further customize events by using the Event Options configurations.
 
-<ComponentDemo 
-path='/webforj/elementinputevent?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputEventView.java'
-cssURL='/css/element/elementInputEvent.css'
+<ComponentDemo
+path='/webforj/elementinputevent?'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementInputEventView.java',
+  'src/main/resources/static/css/element/elementInputEvent.css',
+]}
 height='240px'
 />
 
@@ -47,10 +51,12 @@ The `Element` component supports the composition of child components. Developers
 3. **`setText(String text)`**: This method behaves similarly to the `setHtml()` method, but injects literal text into the `Element`.
 
 
-<ComponentDemo 
-path='/webforj/elementinputtext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputTextView.java'
-cssURL='/css/element/elementInput.css'
+<ComponentDemo
+path='/webforj/elementinputtext?'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementInputTextView.java',
+  'src/main/resources/static/css/element/elementInput.css',
+]}
 height='175px'
 />
 
@@ -97,10 +103,12 @@ Both synchronous and asynchronous function calling will wait to call a method un
 
 In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> is then used to create another message box once the asynchronous function has been completed.
 
-<ComponentDemo 
-path='/webforj/elementinputfunction?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java'
-cssURL='/css/element/elementInput.css'
+<ComponentDemo
+path='/webforj/elementinputfunction?'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java',
+  'src/main/resources/static/css/element/elementInput.css',
+]}
 height='240px'
 />
 

@@ -20,9 +20,9 @@ description: A component that provides a default browser-based time picker for s
 
 `TimeField` extends the shared `Field` class, which provides common features across all field components. The following example creates a reminder `TimeField` initialized to the current time.
 
-<ComponentDemo 
-path='/webforj/timefield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.java'
+<ComponentDemo
+path='/webforj/timefield?'
+files={['src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.java']}
 />
 
 ## Usages {#usages}

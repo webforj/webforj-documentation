@@ -2,7 +2,6 @@ import React from 'react';
 // Import Components here and add to the export list to include in global scope
 
 import MDXComponents from '@theme-original/MDXComponents';
-import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
@@ -31,7 +30,6 @@ import AISkillTip from '@site/src/components/DocsTools/AISkillTip';
 
 export default {
   ...MDXComponents,
-  AppLayoutViewer,
   ComponentDemo,
   DocCardList,
   DocChip,

@@ -73,11 +73,13 @@ After establishing a column’s identity, the next step is to control how its co
 Setting a column’s alignment lets you create organized tables, which can help users identify the different sections in the `Table`.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnalignment?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnalignment?'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -95,11 +97,13 @@ In the preceding example, the final column for `Cost` has been right-aligned to 
 Column pinning is a feature that allows users to affix or "pin" a column to a specific side of the `Table`. This is useful when certain columns, such as identifiers or essential information, need to remain visible while scrolling horizontally through a table.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnpinning?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnpinning?'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -190,11 +194,13 @@ Key flex behaviors:
 - **Respects constraints**: Works with minimum width/maximum width constraints. Without minimum width, flex columns can shrink to 0.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnflexsizing?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnFlexSizingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnflexsizing?'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnFlexSizingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='550px'
 />
 <!-- vale on -->
@@ -237,11 +243,13 @@ Auto-sizing methods return `PendingResult<Void>` because they require client-sid
 :::
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnautosizing?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnAutoSizingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnautosizing?'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnAutoSizingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='550px'
 />
 <!-- vale on -->

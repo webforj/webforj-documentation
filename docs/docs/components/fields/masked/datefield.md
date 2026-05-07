@@ -20,7 +20,11 @@ The `MaskedDateField` is focused solely on **date** values. If you need a simila
 
 The `MaskedDateField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
 
-<ComponentDemo path='/webforj/maskeddatefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java' height='120px'/>
+<ComponentDemo
+path='/webforj/maskeddatefield?'
+files={['src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java']}
+height='120px'
+/>
 
 ## Mask rules {#mask-rules}
 
@@ -187,10 +191,11 @@ dateField.restoreValue();
 
 You can set the value to restore with `setRestoreValue()`, passing a [`LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html) instance.
 
-<ComponentDemo 
-path='/webforj/maskeddatefieldrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java' 
-height='120px'/>
+<ComponentDemo
+path='/webforj/maskeddatefieldrestore?'
+files={['src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java']}
+height='120px'
+/>
 
 ## Validation patterns {#validation-patterns}
 
@@ -215,10 +220,11 @@ You should always validate the input value in your app logic, even if a regular 
 
 The `MaskedDateField` includes a built-in calendar picker that lets users select a date visually, rather than typing it. This enhances usability for less technical users or when precise input is required.
 
-<ComponentDemo 
-path='/webforj/maskeddatefieldpicker?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldPickerView.java' 
-height='450px'/>
+<ComponentDemo
+path='/webforj/maskeddatefieldpicker?'
+files={['src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldPickerView.java']}
+height='450px'
+/>
 
 ### Accessing the picker {#accessing-the-picker}
 
@@ -281,10 +287,11 @@ picker.setShowWeeks(true);
 
 The `MaskedDateFieldSpinner` extends [`MaskedDateField`](#basics) by adding spinner controls that let users increment or decrement the date using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
-<ComponentDemo 
-path='/webforj/maskeddatefieldspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java' 
-height='450px'/>
+<ComponentDemo
+path='/webforj/maskeddatefieldspinner?'
+files={['src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java']}
+height='450px'
+/>
 
 ### Key features {#key-features}
 

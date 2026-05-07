@@ -18,10 +18,10 @@ The `BusyIndicator` in webforJ displays as a simple spinner, making it easy to u
 
 In this example, the `BusyIndicator` prevents any user actions across the entire interface until the operation completes.
 
-<ComponentDemo 
-path='/webforj/busydemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/busyindicator/BusyDemoView.java'
-height = '300px'
+<ComponentDemo
+path='/webforj/busydemo?'
+files={['src/main/java/com/webforj/samples/views/busyindicator/BusyDemoView.java']}
+height='300px'
 />
 
 ## Backdrops {#backdrops}
@@ -45,10 +45,10 @@ The `BusyIndicator` component in webforJ includes a `Spinner` that visually indi
 
 Here's an example of how you can customize the spinner within a `BusyIndicator` component:
 
-<ComponentDemo 
-path='/webforj/busyspinnerdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/busyindicator/BusySpinnerDemoView.java'
-height = '200px'
+<ComponentDemo
+path='/webforj/busyspinnerdemo?'
+files={['src/main/java/com/webforj/samples/views/busyindicator/BusySpinnerDemoView.java']}
+height='200px'
 />
 
 ## Use cases {#use-cases}

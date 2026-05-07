@@ -18,10 +18,10 @@ The `Slider` is designed to work right out of the box, requiring no additional s
 
 Here’s an example of a `Slider` that allows users to adjust volume levels within a predefined range:
 
-<ComponentDemo 
-path='/webforj/slider?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderView.java'
-height = '100px'
+<ComponentDemo
+path='/webforj/slider?'
+files={['src/main/java/com/webforj/samples/views/slider/SliderView.java']}
+height='100px'
 />
 
 ## `Slider` value {#slider-value}
@@ -56,10 +56,10 @@ These intervals are evenly distributed along the slider track, with their spacin
 
 Below is an example of creating a `Slider` with a custom range:
 
-<ComponentDemo 
-path='/webforj/donationslider?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/DonationSliderView.java'
-height = '200px'
+<ComponentDemo
+path='/webforj/donationslider?'
+files={['src/main/java/com/webforj/samples/views/slider/DonationSliderView.java']}
+height='200px'
 />
 
 ## Tick configuration {#tick-configuration}
@@ -98,10 +98,10 @@ slider.setSnapToTicks(true); // Enable snapping
 
 Here’s an example of a fully configured `Slider` showing major and minor tick settings along with the snapping capability for precise adjustments:
 
-<ComponentDemo 
-path='/webforj/slidertickspacing?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickSpacingView.java'  
-height = '350px'
+<ComponentDemo
+path='/webforj/slidertickspacing?'
+files={['src/main/java/com/webforj/samples/views/slider/SliderTickSpacingView.java']}
+height='350px'
 />
 
 ## Orientation and inversion {#orientation-and-inversion}
@@ -115,10 +115,10 @@ In addition to orientation, the `Slider` can also be inverted. By default:
 
 When inverted, this direction is reversed. Use the `setInverted(true)` method to enable inversion.
 
-<ComponentDemo 
-path='/webforj/sliderorientation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationView.java'
-height = '440px'
+<ComponentDemo
+path='/webforj/sliderorientation?'
+files={['src/main/java/com/webforj/samples/views/slider/SliderOrientationView.java']}
+height='440px'
 />
 
 ## Labels {#labels}
@@ -154,10 +154,10 @@ slider.setLabelsVisible(true);
 
 Whether you're using default or custom labels, you can control their visibility with `setLabelsVisible(true)` or hide them with `setLabelsVisible(false)`.
 
-<ComponentDemo 
-path='/webforj/sliderlabels?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderLabelsView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/sliderlabels?'
+files={['src/main/java/com/webforj/samples/views/slider/SliderLabelsView.java']}
+height='150px'
 />
 
 ## Tooltips {#tooltips}
@@ -202,10 +202,10 @@ slider.setTooltipText("x + ' units'");
 The `Slider` comes with 6 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
 Shown below are sliders with each of the supported Themes applied:
 
-<ComponentDemo 
-path='/webforj/sliderthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderThemesView.java'
-height = '460px'
+<ComponentDemo
+path='/webforj/sliderthemes?'
+files={['src/main/java/com/webforj/samples/views/slider/SliderThemesView.java']}
+height='460px'
 />
 
 <TableBuilder name="Slider" />

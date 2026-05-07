@@ -6,10 +6,12 @@ slug: refreshing
 
 Editing data within the `Table` works via interaction with the `Repository` containing the data for the `Table`. The `Repository` serves as a bridge between the `Table` and the underlying dataset, offering methods for data retrieval, modification, and refreshing. Below is an example which implements behavior to edit the "Title" of a desired row based.
 
-<ComponentDemo 
-path='/webforj/tableeditdata?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableEditDataView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TitleEditorComponent.java']}
+<ComponentDemo
+path='/webforj/tableeditdata?'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableEditDataView.java',
+  'src/main/java/com/webforj/samples/views/table/TitleEditorComponent.java',
+]}
 height='600px'
 />
 

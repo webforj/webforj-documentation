@@ -20,9 +20,9 @@ The `PasswordField` component allows users to input a password securely. It's di
 
 `PasswordField` extends the shared `Field` class, which provides common features across all field components. The following example creates a `PasswordField` with a label and placeholder text.
 
-<ComponentDemo 
-path='/webforj/passwordfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
+<ComponentDemo
+path='/webforj/passwordfield?'
+files={['src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java']}
 />
 
 ## Field value {#field-value}

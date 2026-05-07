@@ -37,10 +37,13 @@ If you want the group header to trigger a custom action (such as opening externa
 :::
 
 <!--vale off-->
-<AppLayoutViewer 
-path='/webforj/appnav/Social?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavPageView.java']}
+<ComponentDemo
+path='/webforj/appnav/Social?'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/appnav/AppNavView.java',
+  'src/main/java/com/webforj/samples/views/appnav/AppNavPageView.java',
+]}
 />
 <!--vale on-->
 

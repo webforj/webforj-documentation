@@ -28,11 +28,13 @@ The `FlexLayout` adds components next to one another according to its direction,
 
 To set the direction on an existing `FlexLayout` object, use the `setDirection()` method. The horizontal options are `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). 
 
-<ComponentDemo 
-path='/webforj/flexdirection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="275px"
+<ComponentDemo
+path='/webforj/flexdirection?'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='275px'
 />
 
 ### Positioning {#positioning}
@@ -47,11 +49,13 @@ The `setAlignment()` method controls how items will display along the cross axis
 The `setAlignContent()` method controls the space around the cross axis, and will take effect only when a layout has multiple lines.
 :::
 
-<ComponentDemo 
-path='/webforj/flexpositioning?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="375px"
+<ComponentDemo
+path='/webforj/flexpositioning?'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='375px'
 />
 
 ### Wrapping {#wrapping}
@@ -78,11 +82,13 @@ use the `.vertical().wrap()` combination.
 
 The following demo allows you to build a container with the desired flex properties selected from the various menus. This tool can be used not only to create a visual example of the various methods, but also to create your own layouts with your desired properties. To use a layout you customize, simply copy the output code and add your desired elements for use in your program.
 
-<ComponentDemo 
-path='/webforj/flexcontainerbuilder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="600px"
+<ComponentDemo
+path='/webforj/flexcontainerbuilder?'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='600px'
 />
 
 
@@ -101,11 +107,13 @@ This property accepts a unitless integer value that specifies the relative order
 It's important to note that the order property only affects the visual order of the items within the container, not their actual position in the DOM. This means that screen readers and other assistive technologies will still read the items in the order they appear in the source code, not in the visual order.
 :::
 
-<ComponentDemo 
-path='/webforj/flexorder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="320px"
+<ComponentDemo
+path='/webforj/flexorder?'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='320px'
 />
 
 ### Self alignment {#self-alignment}
@@ -120,11 +128,13 @@ Self alignment uses the same values as content alignment.
 
 This property is especially useful when you need to align a specific item differently from the other items in the container. See the sample below for an example of aligning a single item:
 
-<ComponentDemo 
-path='/webforj/flexselfalign?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="350px"
+<ComponentDemo
+path='/webforj/flexselfalign?'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='350px'
 />
 
 ### Flex basis {#flex-basis}
@@ -139,10 +149,10 @@ By default, the `Item Basis` property is set to `auto`, which means that the siz
 
 The following demo allows you to select one or more boxes and change the `Item Basis` for the selected items.
 
-<ComponentDemo 
-path='/webforj/flexbasis?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java'
-height="300px"
+<ComponentDemo
+path='/webforj/flexbasis?'
+files={['src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java']}
+height='300px'
 />
 
 ### Flex grow and shrink {#flex-grow--shrink}
@@ -164,9 +174,11 @@ The form below demonstrates how `FlexLayout` organizes input fields into a struc
 If you prefer a column-based structure, look at the `ColumnsLayout` version of this form in the [`ColumnsLayout`](../components/columns-layout) article to see how it compares.
 :::
 
-<ComponentDemo 
-path='/webforj/flexlayout?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java'
-cssURL='/css/flexlayout/flexLayout.css'
-height="620px"
+<ComponentDemo
+path='/webforj/flexlayout?'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java',
+  'src/main/resources/static/css/flexlayout/flexLayout.css',
+]}
+height='620px'
 />

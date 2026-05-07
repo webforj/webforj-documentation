@@ -27,19 +27,19 @@ To use the `Terminal` component in your app, ensure that you include the followi
 
 The following example builds an interactive command shell with typed commands, history navigation, and custom output.
 
-<ComponentDemo 
-path='/webforj/terminal?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/TerminalView.java'
-urls={[
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/TerminalCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/ClearCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/DateCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/HelpCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java'
+<ComponentDemo
+path='/webforj/terminal?'
+files={[
+  'src/main/java/com/webforj/samples/views/terminal/TerminalView.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/TerminalCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/ClearCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/DateCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/HelpCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java',
+  'src/main/resources/static/css/terminal/terminal-view.css',
 ]}
-cssURL='/css/terminal/terminal-view.css'
 height='400px'
 />
 
@@ -155,9 +155,9 @@ pty.onData(chunk -> {
 });
 ```
 
-<ComponentDemo 
-path='/webforj/serverlogs?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/ServerLogsView.java'
+<ComponentDemo
+path='/webforj/serverlogs?'
+files={['src/main/java/com/webforj/samples/views/terminal/ServerLogsView.java']}
 height='400px'
 />
 
@@ -199,9 +199,9 @@ theme.setBackground("#1e1e1e");
 theme.setForeground("#cccccc");
 terminal.setTheme(theme);
 ```
-<ComponentDemo 
-path='/webforj/terminalthemepicker?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/TerminalThemePickerView.java'
+<ComponentDemo
+path='/webforj/terminalthemepicker?'
+files={['src/main/java/com/webforj/samples/views/terminal/TerminalThemePickerView.java']}
 height='500px'
 />
 
