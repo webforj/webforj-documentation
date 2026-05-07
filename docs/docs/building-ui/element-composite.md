@@ -7,12 +7,12 @@ slug: element_composite
 
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an app. Use the `ElementComposite` class when implementing Web Components for use in webforJ applications.
+The `ElementComposite` class wraps a custom HTML element or web component. It binds your Java class to the underlying `Element` and lets you work with that element's properties, attributes, and events through Java. Use it when integrating Web Components into a webforJ app.
 
-While using the `ElementComposite` class, using the `getElement()` method will give you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
+Inside a subclass, `getElement()` returns the underlying `Element`, and `getNodeName()` returns its DOM tag name. 
 
 :::tip
-it's possible to do everything with the `Element` class itself, without using `ElementComposite` class. However, the provided methods in the `ElementComposite` give users a way to reuse the work that's being done. 
+Everything `ElementComposite` does is also doable directly through the `Element` class. The wrapper exists so you can encapsulate the work and reuse it.
 :::
 
 This guide demonstrates how to implement the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
@@ -23,42 +23,91 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='175px'
 />
 
+## Class annotations {#class-annotations}
+
+Three annotations commonly appear at the top of an `ElementComposite` subclass: `@NodeName` declares the HTML tag the component wraps, and `@JavaScript` and `@StyleSheet` load any client-side assets the underlying web component depends on. `@NodeName` is required and specific to `ElementComposite`. `@JavaScript` and `@StyleSheet` are general webforJ asset annotations and work on any class, including views, components, or the `App` class.
+
+### `@NodeName` {#nodename}
+
+The `@NodeName` annotation declares the HTML tag the component wraps. webforJ uses this name when creating the underlying element in the DOM.
+
+```java
+@NodeName("sl-qr-code")
+public class QRCode extends ElementComposite {
+  // ...
+}
+```
+
+The tag name must match the custom element registered on the client. Without this annotation, the framework cannot determine which element to create.
+
+### `@JavaScript` {#javascript}
+
+The `@JavaScript` annotation loads the script that defines or registers the underlying web component. Place it on the class so the script loads only when the component is used.
+
+```java
+@NodeName("sl-qr-code")
+@JavaScript("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/components/qr-code/qr-code.js")
+public class QRCode extends ElementComposite {
+  // ...
+}
+```
+
+Multiple `@JavaScript` annotations are allowed, and webforJ deduplicates loads automatically. The same script won't load twice if several components depend on it.
+
+See [Importing JavaScript files](../managing-resources/importing-assets#importing-javascript-files) for the full set of options, including `top`, `attributes`, and load timing.
+
+### `@StyleSheet` {#stylesheet}
+
+The `@StyleSheet` annotation loads a CSS file the component depends on. it's useful for third-party components that ship a separate stylesheet, or for bundling component-specific styling alongside the wrapper.
+
+```java
+@StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/light.css")
+```
+
+For locally bundled assets, use the `ws://` prefix to reference files in `resources/static`:
+
+```java
+@StyleSheet("ws://components/qr-code.css")
+```
+
+See [Importing CSS files](../managing-resources/importing-assets#importing-css-files) for the full set of options.
+
 ## Property and attribute descriptors {#property-and-attribute-descriptors}
 
-Properties and attributes in web components represent the state of the component. they're often used to manage data or configuration. The `ElementComposite` class provides a convenient way to work with properties and attributes.
+Properties and attributes represent the state of a web component, typically holding data or configuration. `ElementComposite` exposes both through `PropertyDescriptor`.
 
-Properties and attributes can be declared and initialized as `PropertyDescriptor` members of the `ElementComposite` class being written, and then used in the code. To define properties and attributes, use the `set()` method to set the value of a property. For example, `set(PropertyDescriptor<V> property, V value)` sets a property to a specified value. 
+Declare a `PropertyDescriptor` field, then use `set()` to assign a value. The signature is `set(PropertyDescriptor<V> property, V value)`.
 
 :::info
-Properties are accessed and manipulated internally within the component's code and do not reflect in the DOM. Attributes on the other hand are part of the component's external interface and can be used to pass information into a component from the outside, providing a way for external elements or scripts to configure the component.
+Properties are internal state on the DOM node and don't reflect in the markup. Attributes are HTML markup, visible to external scripts and CSS.
 :::
 
 ```java
-// Example property called TITLE in an ElementComposite class
-private final PropertyDescriptor<String> TITLE = PropertyDescriptor.property("title", "");
-// Example attribute called VALUE in an ElementComposite class
-private final PropertyDescriptor<String> VALUE = PropertyDescriptor.attribute("value", "");
+// Example property called "title" in an ElementComposite class
+private final PropertyDescriptor<String> title = PropertyDescriptor.property("title", "");
+// Example attribute called "value" in an ElementComposite class
+private final PropertyDescriptor<String> value = PropertyDescriptor.attribute("value", "");
 //...
-set(TITLE, "My Title");
-set(VALUE, "My Value");
+set(title, "My Title");
+set(value, "My Value");
 ```
 
-In addition to setting a property, use the `get()` method in the `ElementComposite` class to access and read properties. The `get()` method can be passed an optional `boolean` value, which is false by default, to dictate whether the method should make a trip to the client to retrieve the value. This impacts performance, but might be necessary if the property can be modified purely in the client. 
+Use `get()` to read a property. An optional `boolean` parameter (false by default) controls whether the read goes to the client. Reading from the client adds a network round trip but is necessary when the value can change purely on the client side.
 
-A `Type` can also be passed to the method, which dictates what to cast retrieved result to.
+The third parameter, a `Type`, controls how the result is cast.
 
 :::tip
-This `Type` isn't overtly necessary, and adds an extra layer of specification as the data is retrieved.
+The `Type` parameter is rarely needed. The descriptor's generic type usually carries enough information for the cast.
 :::
 
 ```java
-// Example property called TITLE in an ElementComposite class
-private final PropertyDescriptor<String> TITLE = PropertyDescriptor.property("title", "");
+// Example property called "title" in an ElementComposite class
+private final PropertyDescriptor<String> title = PropertyDescriptor.property("title", "");
 //...
-String title = get(TITLE, false, String);
+String currentTitle = get(title, false, String.class);
 ```
 
-In the demo below, properties have been added for the QR code based on the documentation for the web component. Methods have then been implemented which allow users to get and set the various properties that have been implemented.
+The demo below adds properties for the QR code based on the web component's docs and exposes them through getters and setters.
 
 <ComponentDemo 
 path='/webforj/qrproperties?' 
@@ -66,9 +115,139 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
+### Properties versus attributes {#properties-versus-attributes}
+
+Although `PropertyDescriptor.property()` and `PropertyDescriptor.attribute()` look interchangeable, they target different parts of the underlying element. Choosing the wrong one results in values that silently fail to apply.
+
+Properties are JavaScript object properties on the DOM node. they can hold any type, including strings, booleans, numbers, objects, and arrays, and they represent the element's current runtime state. Setting a property is a direct JavaScript assignment.
+
+Attributes are HTML markup. they live on the element's opening tag, are always strings, and represent the element's initial configuration. Setting an attribute triggers a DOM mutation and a string conversion.
+
+For some cases the two stay in sync. For others they diverge. The `value` of an `<input>` is the classic example: the `value` attribute is the initial value, while the `value` property is the current value the user has typed. Reading the attribute after the user types gives back the original markup, but reading the property gives back the current contents of the field.
+
+Use **properties** for:
+
+- **Frequently changing runtime state**: counters, current selections, typed values
+- **Non-string types**: booleans, numbers, objects, arrays
+- **Performance-sensitive updates**: properties skip the string conversion required for attributes
+
+Use **attributes** for:
+
+- **Initial configuration**: settings the component reads once when it connects
+- **CSS selectors**: values you want to target with selectors like `[disabled]` or `[variant="danger"]`
+- **Accessibility hooks**: `aria-label`, `role`, and other ARIA attributes
+- **String-like settings that rarely change**
+
+When wrapping a third-party web component, check the component's documentation to confirm which name maps to a property and which to an attribute. Using `PropertyDescriptor.attribute()` for something the component exposes only as a property won't work, and the same is true in reverse. The component will silently ignore the value.
+
+### Typing properties {#typing-properties}
+
+The generic parameter on `PropertyDescriptor<T>` declares the value's Java type. webforJ uses this information to serialize and deserialize values when communicating with the client.
+
+```java
+private final PropertyDescriptor<String> label =
+    PropertyDescriptor.property("label", "");
+
+private final PropertyDescriptor<Boolean> disabled =
+    PropertyDescriptor.property("disabled", false);
+
+private final PropertyDescriptor<Integer> max =
+    PropertyDescriptor.property("max", 100);
+
+private final PropertyDescriptor<Double> step =
+    PropertyDescriptor.property("step", 1.0);
+```
+
+Serialization is automatic for primitives, their boxed equivalents, and `String`. For complex types, the value is serialized as JSON before it's assigned to the property on the client.
+
+### Validating values {#validating-values}
+
+Validate values in the setter before calling `set()`. The setter is the natural enforcement point because every mutation flows through it.
+
+```java
+private final PropertyDescriptor<Integer> max =
+    PropertyDescriptor.property("max", 100);
+
+public Slider setMax(int value) {
+  if (value < 0) {
+    throw new IllegalArgumentException("max must be non-negative");
+  }
+  set(max, value);
+  return this;
+}
+```
+
+For nullable references, use `Objects.requireNonNull()` so the failure surfaces at the boundary rather than later in the rendering pipeline.
+
+```java
+public Card setHeading(String value) {
+  Objects.requireNonNull(value, "heading cannot be null");
+  set(heading, value);
+  return this;
+}
+```
+
+Avoid validating in `get()`. Reads should stay cheap and consistent.
+
+### Enum-style properties {#enum-style-properties}
+
+Most web components expect lowercase or kebab-case string values for enum-like properties (`theme="primary"`, `expanse="xs"`). webforJ uses Gson to serialize enums, but Gson's default representation is the constant name in caps. Annotate each constant with `@SerializedName` so the serialized value matches what the web component expects.
+
+```java
+import com.google.gson.annotations.SerializedName;
+
+public enum Variant {
+  @SerializedName("primary")
+  PRIMARY,
+
+  @SerializedName("secondary")
+  SECONDARY,
+
+  @SerializedName("danger")
+  DANGER
+}
+```
+
+Declare the descriptor with the enum type and use the enum directly in the setter and getter.
+
+```java
+private final PropertyDescriptor<Variant> variant =
+    PropertyDescriptor.property("variant", Variant.PRIMARY);
+
+public MyButton setVariant(Variant value) {
+  set(variant, value);
+  return this;
+}
+
+public Variant getVariant() {
+  return get(variant);
+}
+```
+
+This is the same pattern webforJ's built-in components use for `Theme`, `Expanse`, and similar enums. The public Java API stays type-safe, and the value the web component receives is the string from `@SerializedName`.
+
+## Concern interfaces {#concern-interfaces}
+
+Concern interfaces give an `ElementComposite` subclass component capabilities without writing the implementation yourself. The interfaces forward calls to the underlying element. Implement the ones the component should support, parameterized with the subclass type so chaining returns the component:
+
+```java
+@NodeName("my-badge")
+public class MyBadge extends ElementComposite
+    implements HasText<MyBadge>, HasClassName<MyBadge>, HasStyle<MyBadge> {
+  // No implementation needed.
+}
+
+MyBadge badge = new MyBadge()
+    .setText("New")
+    .addClassName("highlight")
+    .setStyle("color", "var(--dwc-color-primary)");
+```
+
+For the full set of available interfaces and what each one provides, see [Concern interfaces](./component-fundamentals#concern-interfaces) in the Understanding Components article. If a default forwarding doesn't match what the wrapped element exposes, override the method in the subclass.
+
 ## Event registration {#event-registration}
 
-Events enable communication between different parts of your webforJ app. The `ElementComposite` class provides event handling with support for debouncing, throttling, filtering, and custom event data collection.
+`ElementComposite` supports debouncing, throttling, filtering, and custom event data on registered listeners.
 
 Register event listeners using the `addEventListener()` method:
 
@@ -80,26 +259,26 @@ addEventListener(ElementClickEvent.class, event -> {
 ```
 
 :::info
-The `ElementComposite` events are different than `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
+`ElementComposite` only accepts event classes annotated with `@EventName`, unlike `Element`, which accepts any string event name.
 :::
 
 ### Built-in event classes {#built-in-event-classes}
 
 webforJ provides pre-built event classes with typed data access:
 
-- **ElementClickEvent**: Mouse click events with coordinates (`getClientX()`, `getClientY()`), button information (`getButton()`), and modifier keys (`isCtrlKey()`, `isShiftKey()`, etc.)
-- **ElementDefinedEvent**: Fired when a custom element is defined in the DOM and ready for use
-- **ElementEvent**: Base event class providing access to raw event data, event type (`getType()`), and event ID (`getId()`)
+- **`ElementClickEvent`**: Mouse click events with coordinates (`getClientX()`, `getClientY()`), button information (`getButton()`), and modifier keys (`isCtrlKey()`, `isShiftKey()`, etc.). Register through `addEventListener(ElementClickEvent.class, ...)`.
+- **`ElementDefinedEvent`**: Fired when a custom element is defined in the DOM and ready for use. This event is dispatched on the underlying `Element`, so listen for it through `getElement()`.
+- **`ElementEvent`**: The framework's raw event payload class, carrying the event type (`getType()`), event ID (`getId()`), and options. You typically work with `ElementClickEvent` or a custom event class instead of subscribing to `ElementEvent` directly.
 
 ### Event payloads {#event-payloads}
 
-Events carry data from the client to your Java code. Access this data through `getData()` for raw event data or use typed methods when available on built-in event classes. For more details on efficiently using event payloads, see the [Events guide](../building-ui/events).
+Events carry data from the client to your Java code. Access this data through `getData()` for raw event data or use typed methods when available on built-in event classes. See the [Events guide](../building-ui/events) for more on efficient payload handling.
 
 ## Custom event classes {#custom-event-classes}
 
-For specialized event handling, create custom event classes with configured payloads using `@EventName` and `@EventOptions` annotations.
+Define custom event classes with `@EventName` and `@EventOptions` to capture client-side data in a typed Java event.
 
-In the example below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it's displayed in the app.
+The example below adds a click event to the QR code that captures the mouse's `clientX` coordinate. The event class exposes that coordinate through a typed accessor, which the demo displays.
 
 <ComponentDemo 
 path='/webforj/qrevent?' 
@@ -107,9 +286,17 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
+The product review form below applies the same pattern. The custom `ChangeEvent` carries the rating value as a typed `double`, and the listener uses it to enable the submit button:
+
+<ComponentDemo 
+path='/webforj/rating?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/RatingView.java'
+height='220px'
+/>
+
 ## `ElementEventOptions` {#elementeventoptions}
 
-`ElementEventOptions` lets you customize event behavior by configuring what data to collect, when events fire, and how they're processed. Here's a comprehensive code snippet showing all the configuration options:
+`ElementEventOptions` configures the event payload, debounce or throttle timing, filter expressions, and pre-execution code. The snippet below shows the options:
 
 ```java
 ElementEventOptions options = new ElementEventOptions()
@@ -127,12 +314,16 @@ ElementEventOptions options = new ElementEventOptions()
   // Delay execution until user stops typing (300ms)
   .setDebounce(300, DebouncePhase.TRAILING);
 
-addEventListener("input", this::handleSearch, options);
+// Apply these options when registering a listener for a custom event class
+// (see [Custom event classes](#custom-event-classes) for how to define one):
+addEventListener(InputEvent.class, this::handleSearch, options);
 ```
 
-### Performance control {#performance-control}
+:::info
+`ElementComposite` exposes only the class-based form `addEventListener(Class, listener, options)`. Use it with an event class annotated with `@EventName`. To register against a string event name directly, call `getElement().addEventListener("input", listener, options)`.
+:::
 
-Control when and how often events fire:
+### Performance control {#performance-control}
 
 **Debouncing** delays execution until activity stops:
 
@@ -154,7 +345,7 @@ Available debounce phases:
 
 ## Options merging {#options-merging}
 
-Combine event configurations from different sources using `mergeWith()`. Base options provide common data for all events, while specific options add specialized configuration. Later options override conflicting settings.
+Use `mergeWith()` to combine event configurations. Later options override conflicting settings.
 
 ```java
 ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
@@ -162,14 +353,89 @@ ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
 
 ## Interacting with slots {#interacting-with-slots}
 
-Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component. In the context of the `ElementComposite` class, slots provide a way to customize the content within a component. The following methods are provided to allow developers to interact with and manipulate slots:
+Slots are placeholders inside a web component that consumers fill with content. The following methods on the underlying `Element` (accessed through `getElement()`) work with slots:
 
-1. **`findComponentSlot()`**: This method is used to search for a specific component across all slots in a component system. It returns the name of the slot where the component is located. If the component is not found in any slot, an empty string is returned.
+1. **`findComponentSlot()`**: Searches all slots for a specific component and returns the name of the slot containing it. Returns an empty string if the component isn't in any slot.
 
-2. **`getComponentsInSlot()`**: This method retrieves the list of components assigned to a given slot in a component system. Optionally, pass a specific class type to filter the results of the method.
+2. **`getComponentsInSlot()`**: Returns the list of components assigned to a given slot. Optionally pass a class type to filter the results.
 
-3. **`getFirstComponentInSlot()`**: This method is designed to fetch the first component assigned to the slot. Optionally pass a specific class type to filter the results of this method.
+3. **`getFirstComponentInSlot()`**: Returns the first component assigned to a slot. Optionally pass a class type to filter.
 
-it's also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
+The `add()` method also accepts a `String` slot name as its first argument.
 
-These interactions allow developers to harness the power of web components by providing a clean and straightforward API for manipulating slots, properties, and handling events within the `ElementComposite` class.
+### `ElementCompositeContainer` {#elementcompositecontainer}
+
+`ElementComposite` is the right base class when the component is a leaf node like a button or a badge. When the component should accept child components into named or default slots, extend `ElementCompositeContainer` instead. It carries the same property and attribute machinery plus the methods needed to add children.
+
+```java
+@NodeName("my-dialog")
+public class Dialog extends ElementCompositeContainer {
+
+  private final PropertyDescriptor<String> heading =
+      PropertyDescriptor.property("heading", "");
+
+  public Dialog setHeading(String value) {
+    set(heading, value);
+    return this;
+  }
+
+  public Dialog addToFooter(Component... components) {
+    getElement().add("footer", components);
+    return this;
+  }
+}
+```
+
+Children added through `add()` go into the default slot. Children added through `getElement().add(slotName, components)` go into the named slot. The web component declares its slots the same way any custom element does, with `<slot name="footer">` in its template.
+
+The demo below shows two pricing cards built with `sl-card`, populating the `header`, default, and `footer` slots from Java:
+
+<ComponentDemo 
+path='/webforj/card?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/CardView.java'
+height='400px'
+/>
+
+## Testing properties {#testing-properties}
+
+`PropertyDescriptorTester` validates that every `PropertyDescriptor` in a component is wired correctly. It scans the class for descriptor fields, calls each setter with the default value, and compares the result against what the getter returns. The tester catches integration mistakes before they reach a running app: a setter that writes to the wrong descriptor, a getter that reads a different property, a default value that doesn't round-trip, or a missing accessor for a declared descriptor.
+
+A baseline test for a component looks like this:
+
+```java
+import com.webforj.component.element.PropertyDescriptorTester;
+import org.junit.jupiter.api.Test;
+
+class CardTest {
+
+  @Test
+  void validateProperties() {
+    Card component = new Card();
+    PropertyDescriptorTester.run(Card.class, component);
+  }
+}
+```
+
+### Excluding properties {#excluding-properties}
+
+Some descriptors don't follow standard getter and setter conventions, or they rely on external state the test can't satisfy. Annotate them with `@PropertyExclude` to skip them.
+
+```java
+@PropertyExclude
+private final PropertyDescriptor<String> internal =
+    PropertyDescriptor.property("internal", "");
+```
+
+### Custom getter and setter names {#custom-getter-and-setter-names}
+
+If a descriptor uses non-standard accessor names, declare them with `@PropertyMethods`.
+
+```java
+@PropertyMethods(getter = "retrieveValue", setter = "updateValue")
+private final PropertyDescriptor<String> custom =
+    PropertyDescriptor.property("custom", "default");
+```
+
+The `target` parameter accepts a class when the accessors live somewhere other than the component itself.
+
+For more detail on the testing surface, see [PropertyDescriptorTester](../testing/property-descriptor-tester).
