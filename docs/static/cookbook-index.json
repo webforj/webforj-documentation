@@ -1,12 +1,12 @@
 {
-  "generated": "2026-05-04T08:42:05.721Z",
+  "generated": "2026-05-05T12:28:13.504Z",
   "count": 3,
   "recipes": [
     {
       "slug": "css/inject-inline-css",
       "url": "/cookbook/css/inject-inline-css",
       "title": "Inject inline CSS into a page from Java",
-      "description": "Use @InlineStyleSheet to add CSS class definitions directly from a Java component without a separate stylesheet file.",
+      "description": "Use @InlineStyleSheet to add CSS class definitions directly from a Java component without a separate style sheet file.",
       "tags": [
         "css",
         "styling"

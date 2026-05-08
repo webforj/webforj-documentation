@@ -41,9 +41,9 @@ function toSlug(filePath) {
 }
 
 async function main() {
-  const files = await fg('**/*.mdx', {
+  const files = await fg('**/*.{md,mdx}', {
     cwd: cookbookDir,
-    ignore: ['index.mdx', 'recipe-template.mdx'],
+    ignore: ['index.mdx', 'recipe-template.md', 'recipe-template.mdx', 'README.md'],
     absolute: true,
   });
 
