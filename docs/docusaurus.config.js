@@ -344,7 +344,7 @@ module.exports = async function createConfig() {
     prism: {
       theme: codeTheme,
       darkTheme: codeTheme,
-      additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy']
+      additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy', 'scss', 'javascript', 'ruby']
     },
   }
 };
