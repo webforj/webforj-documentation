@@ -42,6 +42,7 @@
     "@docusaurus/types": "^3.9.1",
     "@types/md5": "^2.3.5",
     "commander": "^11.1.0",
+    "docusaurus-plugin-llms": "^0.4.0",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
     "gray-matter": "^4.0.3",
