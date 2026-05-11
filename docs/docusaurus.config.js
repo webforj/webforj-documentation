@@ -151,6 +151,18 @@ module.exports = async function createConfig() {
         editUrl: 'https://github.com/webforj/webforj-documentation/edit/main/docs/',
         exclude: ['recipe-template.mdx', 'README.md'],
       },
+      'docusaurus-plugin-llms',
+      {
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        generateMarkdownFiles: false,
+        docsDir: 'docs',
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+        includeBlog: false,
+        title: 'webforJ Documentation',
+        description: 'Java framework for building modern web UIs imperatively.',
+      },
     ],
     [
       '@docusaurus/plugin-client-redirects',
