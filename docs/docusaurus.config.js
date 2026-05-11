@@ -151,6 +151,8 @@ module.exports = async function createConfig() {
         editUrl: 'https://github.com/webforj/webforj-documentation/edit/main/docs/',
         exclude: ['recipe-template.mdx', 'README.md'],
       },
+    ],
+    [
       'docusaurus-plugin-llms',
       {
         generateLLMsTxt: true,
