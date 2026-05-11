@@ -2,6 +2,7 @@ package com.webforj.samples.views.elementcomposite;
 
 import com.webforj.annotation.Attribute;
 import com.webforj.annotation.JavaScript;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Component;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
@@ -100,11 +101,11 @@ public class CardView extends Composite<FlexLayout> {
     return new ListEntry(check, new Span(text));
   }
 
-  /** Wrapper for the Shoelace card web component. */
   @JavaScript(
       value =
-          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js",
+          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js",
       attributes = {@Attribute(name = "type", value = "module")})
+  @StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css")
   @NodeName("sl-card")
   public static final class Card extends ElementCompositeContainer
       implements HasClassName<Card>, HasStyle<Card> {

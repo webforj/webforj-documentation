@@ -9,18 +9,18 @@ slug: element_composite
 
 The `ElementComposite` class wraps a custom HTML element or web component. It binds your Java class to the underlying `Element` and lets you work with that element's properties, attributes, and events through Java. Use it when integrating Web Components into a webforJ app.
 
-Inside a subclass, `getElement()` returns the underlying `Element`, and `getNodeName()` returns its DOM tag name. 
+Inside a subclass, `getElement()` returns the underlying `Element`, and `getNodeName()` returns its DOM tag name.
 
-:::tip
-Everything `ElementComposite` does is also doable directly through the `Element` class. The wrapper exists so you can encapsulate the work and reuse it.
+:::tip When to use `ElementComposite`
+Reach for `ElementComposite` when wrapping a third-party web component that webforJ doesn't already provide. If a built-in webforJ component covers the use case (`TextField`, `ColorField`, `Button`, and so on), use that instead. For one-off DOM work that doesn't need to be reused, the `Element` class can be used directly without a wrapper.
 :::
 
-This guide demonstrates how to implement the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
+This guide demonstrates how to implement the [Shoelace relative-time web component](https://shoelace.style/components/relative-time) using the `ElementComposite` class.
 
 <ComponentDemo 
-path='/webforj/qrdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QRDemoView.java'
-height='175px'
+path='/webforj/relativetime?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimeView.java'
+height='150px'
 />
 
 ## Class annotations {#class-annotations}
@@ -32,8 +32,8 @@ Three annotations commonly appear at the top of an `ElementComposite` subclass: 
 The `@NodeName` annotation declares the HTML tag the component wraps. webforJ uses this name when creating the underlying element in the DOM.
 
 ```java
-@NodeName("sl-qr-code")
-public class QRCode extends ElementComposite {
+@NodeName("sl-relative-time")
+public class RelativeTime extends ElementComposite {
   // ...
 }
 ```
@@ -45,9 +45,9 @@ The tag name must match the custom element registered on the client. Without thi
 The `@JavaScript` annotation loads the script that defines or registers the underlying web component. Place it on the class so the script loads only when the component is used.
 
 ```java
-@NodeName("sl-qr-code")
-@JavaScript("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/components/qr-code/qr-code.js")
-public class QRCode extends ElementComposite {
+@NodeName("sl-relative-time")
+@JavaScript("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js")
+public class RelativeTime extends ElementComposite {
   // ...
 }
 ```
@@ -58,16 +58,16 @@ See [Importing JavaScript files](../managing-resources/importing-assets#importin
 
 ### `@StyleSheet` {#stylesheet}
 
-The `@StyleSheet` annotation loads a CSS file the component depends on. it's useful for third-party components that ship a separate stylesheet, or for bundling component-specific styling alongside the wrapper.
+The `@StyleSheet` annotation loads a CSS file the component depends on. It's useful for third-party components that ship a separate stylesheet, or for bundling component-specific styling alongside the wrapper.
 
 ```java
-@StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/light.css")
+@StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css")
 ```
 
 For locally bundled assets, use the `ws://` prefix to reference files in `resources/static`:
 
 ```java
-@StyleSheet("ws://components/qr-code.css")
+@StyleSheet("ws://components/relative-time.css")
 ```
 
 See [Importing CSS files](../managing-resources/importing-assets#importing-css-files) for the full set of options.
@@ -107,21 +107,21 @@ private final PropertyDescriptor<String> title = PropertyDescriptor.property("ti
 String currentTitle = get(title, false, String.class);
 ```
 
-The demo below adds properties for the QR code based on the web component's docs and exposes them through getters and setters.
+The demo below adds properties for relative-time based on the web component's docs and exposes them through getters and setters. Each row in the activity feed uses different `format` and `numeric` values to show how the same component renders under varied configurations.
 
 <ComponentDemo 
-path='/webforj/qrproperties?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QRPropertiesView.java'
-height='250px'
+path='/webforj/relativetimeproperties?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimePropertiesView.java'
+height='450px'
 />
 
 ### Properties versus attributes {#properties-versus-attributes}
 
 Although `PropertyDescriptor.property()` and `PropertyDescriptor.attribute()` look interchangeable, they target different parts of the underlying element. Choosing the wrong one results in values that silently fail to apply.
 
-Properties are JavaScript object properties on the DOM node. they can hold any type, including strings, booleans, numbers, objects, and arrays, and they represent the element's current runtime state. Setting a property is a direct JavaScript assignment.
+Properties are JavaScript object properties on the DOM node. They can hold any type, including strings, booleans, numbers, objects, and arrays, and they represent the element's current runtime state. Setting a property is a direct JavaScript assignment.
 
-Attributes are HTML markup. they live on the element's opening tag, are always strings, and represent the element's initial configuration. Setting an attribute triggers a DOM mutation and a string conversion.
+Attributes are HTML markup. They live on the element's opening tag, are always strings, and represent the element's initial configuration. Setting an attribute triggers a DOM mutation and a string conversion.
 
 For some cases the two stay in sync. For others they diverge. The `value` of an `<input>` is the classic example: the `value` attribute is the initial value, while the `value` property is the current value the user has typed. Reading the attribute after the user types gives back the original markup, but reading the property gives back the current contents of the field.
 
@@ -278,15 +278,7 @@ Events carry data from the client to your Java code. Access this data through `g
 
 Define custom event classes with `@EventName` and `@EventOptions` to capture client-side data in a typed Java event.
 
-The example below adds a click event to the QR code that captures the mouse's `clientX` coordinate. The event class exposes that coordinate through a typed accessor, which the demo displays.
-
-<ComponentDemo 
-path='/webforj/qrevent?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QREventView.java'
-height='300px'
-/>
-
-The product review form below applies the same pattern. The custom `ChangeEvent` carries the rating value as a typed `double`, and the listener uses it to enable the submit button:
+The product review form below uses this pattern with [`sl-rating`](https://shoelace.style/components/rating). The custom `ChangeEvent` carries the rating value as a typed `double`, and the listener uses it to enable the submit button:
 
 <ComponentDemo 
 path='/webforj/rating?' 
@@ -388,7 +380,7 @@ public class Dialog extends ElementCompositeContainer {
 
 Children added through `add()` go into the default slot. Children added through `getElement().add(slotName, components)` go into the named slot. The web component declares its slots the same way any custom element does, with `<slot name="footer">` in its template.
 
-The demo below shows two pricing cards built with `sl-card`, populating the `header`, default, and `footer` slots from Java:
+The demo below shows two pricing cards built with [`sl-card`](https://shoelace.style/components/card), populating the `header`, default, and `footer` slots from Java:
 
 <ComponentDemo 
 path='/webforj/card?' 
