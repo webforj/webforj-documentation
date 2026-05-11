@@ -3,6 +3,7 @@ package com.webforj.samples.views.viewtransitions;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.webforj.samples.pages.viewtransitions.ViewTransitionEnterExitPage;
+import com.webforj.samples.utils.WaitUtils;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +16,7 @@ class ViewTransitionEnterExitViewIT extends BaseTest {
   @BeforeEach
   void setupEnterExitDemo() {
     navigateToRoute(ViewTransitionEnterExitPage.getRoute());
+    WaitUtils.disableAnimations(page);
     enterExitPage = new ViewTransitionEnterExitPage(page);
   }
 

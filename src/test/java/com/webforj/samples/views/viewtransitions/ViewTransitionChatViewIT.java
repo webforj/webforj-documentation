@@ -3,6 +3,7 @@ package com.webforj.samples.views.viewtransitions;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.webforj.samples.pages.viewtransitions.ViewTransitionChatPage;
+import com.webforj.samples.utils.WaitUtils;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +16,7 @@ class ViewTransitionChatViewIT extends BaseTest {
   @BeforeEach
   void setupChatDemo() {
     navigateToRoute(ViewTransitionChatPage.getRoute());
+    WaitUtils.disableAnimations(page);
     chatPage = new ViewTransitionChatPage(page);
   }
 
@@ -25,8 +27,6 @@ class ViewTransitionChatViewIT extends BaseTest {
 
     chatPage.getChatClose().click();
     assertThat(chatPage.getChatCard()).isHidden();
-
-    page.waitForTimeout(1500);
 
     chatPage.getChatToggleBtn().click();
     assertThat(chatPage.getChatCard()).isVisible();
