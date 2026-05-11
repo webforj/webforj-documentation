@@ -1,7 +1,7 @@
 package com.webforj.samples.views.toolbar;
 
-import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Paragraph;
@@ -14,7 +14,6 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Toolbar Slots")
-@StyleSheet("ws://css/toolbar/toolbar-slots-view.css")
 public class ToolbarSlotsView extends Composite<AppLayout> {
   private final AppLayout self = getBoundComponent();
 
@@ -26,6 +25,7 @@ public class ToolbarSlotsView extends Composite<AppLayout> {
     Toolbar toolbar =
         new Toolbar()
             .addToTitle(new H3("Application"))
+            .setTheme(Theme.INFO)
             .addToStart(new IconButton(TablerIcon.create("menu-2")))
             .addToEnd(
                 new IconButton(TablerIcon.create("settings")),

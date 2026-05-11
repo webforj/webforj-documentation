@@ -191,7 +191,7 @@ In this contact form, the name field must not be empty, the email must contain a
 
 <ComponentDemo 
 path='/webforj/formvalidation?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/usingcomponents/formvalidation.css'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/resources/static/usingcomponents/formvalidation.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java'
 height='500px'
 />
