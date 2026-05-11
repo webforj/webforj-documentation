@@ -149,6 +149,17 @@ module.exports = async function createConfig() {
   plugins: [
     'docusaurus-plugin-sass',
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'cookbook',
+        path: 'cookbook',
+        routeBasePath: 'cookbook',
+        sidebarPath: require.resolve('./cookbook-sidebars.js'),
+        editUrl: 'https://github.com/webforj/webforj-documentation/edit/main/docs/',
+        exclude: ['recipe-template.mdx', 'README.md'],
+      },
+    ],
+    [
       'docusaurus-plugin-llms',
       {
         generateLLMsTxt: true,
@@ -160,15 +171,6 @@ module.exports = async function createConfig() {
         includeBlog: false,
         title: 'webforJ Documentation',
         description: 'Java framework for building modern web UIs imperatively.',
-      },
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'cookbook',
-        path: 'cookbook',
-        routeBasePath: 'cookbook',
-        sidebarPath: require.resolve('./cookbook-sidebars.js'),
-        editUrl: 'https://github.com/webforj/webforj-documentation/edit/main/docs/',
-        exclude: ['recipe-template.mdx', 'README.md'],
       },
     ],
     [
