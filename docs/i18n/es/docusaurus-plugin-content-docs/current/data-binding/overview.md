@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: dba8cbb47257595c025bb893bb2b4d39
+_i18n_hash: b05f45d2f2725defb3d5fba7cb0fb622
 ---
 <Head>
   <style>{`
@@ -20,7 +20,7 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ incluye una función de enlace de datos que integra componentes de UI con modelos de datos del backend en aplicaciones Java. Esta función cierra la brecha entre la interfaz de usuario y la capa de datos, de modo que los cambios en la UI se reflejan en el modelo de datos y viceversa, reduciendo la complejidad del manejo de eventos y la sincronización de datos.
+ webforJ incluye una función de enlace de datos que integra componentes de UI con modelos de datos de backend en aplicaciones Java. Esta característica cierra la brecha entre la UI y la capa de datos, de modo que los cambios en la UI se reflejan en el modelo de datos y viceversa, reduciendo la complejidad de la gestión de eventos y la sincronización de datos.
 
 <AISkillTip skill="webforj-building-forms" />
 
@@ -30,9 +30,9 @@ La siguiente demostración muestra una aplicación simple de webforJ para regist
 
 En `HeroRegistration.java`, el código configura la interfaz de usuario con un `TextField` para ingresar el nombre del héroe, un `ComboBox` para seleccionar un superpoder y un `Button` para enviar el registro.
 
-La clase `Hero` define el modelo de datos con restricciones de validación sobre el nombre y el poder del héroe. Las entradas deben ser válidas y cumplir con criterios específicos como longitud y patrón.
+La clase `Hero` define el modelo de datos con restricciones de validación sobre el nombre y el poder del héroe. Las entradas deben ser válidas y cumplir criterios específicos como longitud y patrón.
 
-La aplicación utiliza el `BindingContext` para vincular componentes de UI a las propiedades del objeto `Hero`. Cuando un usuario hace clic en el botón de envío, la aplicación escribe los datos ingresados en el formulario de regreso al bean `Hero` si son válidos.
+La aplicación utiliza el `BindingContext` para enlazar los componentes de UI a las propiedades del objeto `Hero`. Cuando un usuario hace clic en el botón de enviar, la aplicación escribe los datos introducidos en el formulario nuevamente en el bean `Hero` si son válidos.
 
 <Tabs>
 <TabItem value="HeroRegistration" label="HeroRegistration.java">
@@ -40,28 +40,28 @@ La aplicación utiliza el `BindingContext` para vincular componentes de UI a las
 ```java showLineNumbers
 public class HeroRegistration extends App {
     
-  private TextField name = new TextField("Text Field");
-  private ComboBox power = new ComboBox("Power");
-  private Button submit = new Button("Submit Application");
+  private TextField name = new TextField("Campo de Texto");
+  private ComboBox power = new ComboBox("Poder");
+  private Button submit = new Button("Enviar Solicitud");
   private FlexLayout layout = FlexLayout.create(name, power, submit).vertical().build()
       .setStyle("margin", "20px auto").setMaxWidth("400px");
 
   @Override
   public void run() throws WebforjException {
-    power.insert("Fly", "Invisible", "LaserVision", "Speed", "Teleportation");
+    power.insert("Volador", "Invisible", "VisiónLaser", "Velocidad", "Teletransportación");
 
     BindingContext<Hero> context = BindingContext.of(this, Hero.class, true);
-    Hero bean = new Hero("Superman", "Fly");
+    Hero bean = new Hero("Superman", "Volador");
 
-    // reflect the bean data in the form
+    // reflejar los datos del bean en el formulario
     context.read(bean);
 
     submit.onClick(e -> {
-      // write the form data back to the bean
+      // escribir los datos del formulario de vuelta en el bean
       ValidationResult results = context.write(bean);
 
       if (results.isValid()) {
-        // do something with the bean
+        // hacer algo con el bean
         // repository.persist(bean)
       }
     });
@@ -78,12 +78,12 @@ public class HeroRegistration extends App {
 ```java showLineNumbers
 public class Hero {
 
-  @NotEmpty(message = "Name cannot be empty")
+  @NotEmpty(message = "El nombre no puede estar vacío")
   @Length(min = 3, max = 20)
   private String name;
 
-  @NotEmpty(message = "Unspecified power")
-  @Pattern(regexp = "Fly|Invisible|LaserVision|Speed|Teleportation", message = "Invalid power")
+  @NotEmpty(message = "Poder no especificado")
+  @Pattern(regexp = "Volador|Invisible|VisiónLaser|Velocidad|Teletransportación", message = "Poder invalido")
   private String power;
 
   public Hero(String name, String power) {
@@ -108,7 +108,7 @@ public class Hero {
   }
 
   public String toString() {
-    return "Name: " + name + ", Power: " + power;
+    return "Nombre: " + name + ", Poder: " + power;
   }
 }
 ```
@@ -118,14 +118,14 @@ public class Hero {
 
 ## Características clave {#key-features}
 
-- **Vinculación Bidireccional:** Soporta vinculación de datos bidireccional, permitiendo que los cambios en el modelo de datos actualicen la interfaz de usuario, y las interacciones del usuario en la interfaz de usuario actualicen el modelo de datos.
+- **Enlace Bidireccional:**  Soporta enlace de datos bidireccional, permitiendo que los cambios en el modelo de datos actualicen la UI, y las interacciones del usuario en la UI actualicen el modelo de datos.
 
-- **Soporte de Validación:** Integra mecanismos de validación exhaustivos que puedes personalizar y extender. Los desarrolladores pueden implementar sus propias reglas de validación o usar marcos de validación existentes como Jakarta Validation para verificar la integridad de los datos antes de actualizar el modelo.
+- **Soporte de Validación:** Integra mecanismos de validación completos que se pueden personalizar y extender. Los desarrolladores pueden implementar sus propias reglas de validación o usar marcos de validación existentes como Jakarta Validation para verificar la integridad de los datos antes de actualizar el modelo.
 
 - **Extensibilidad:** Puede extenderse fácilmente para soportar diferentes tipos de componentes de UI, transformaciones de datos y escenarios de validación complejos.
 
-- **Configuración Basada en Anotaciones:** Utiliza anotaciones para minimizar el código repetitivo, haciendo que las vinculaciones entre componentes de UI y modelos de datos sean declarativas y fáciles de gestionar.
+- **Configuración Basada en Anotaciones:**  Utiliza anotaciones para minimizar el código repetitivo, haciendo que los enlaces entre los componentes de UI y los modelos de datos sean declarativos y fáciles de gestionar.
 
-# Temas
+## Temas {#topics}
 
 <DocCardList className="topics-section" />
