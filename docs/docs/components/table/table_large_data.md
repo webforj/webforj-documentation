@@ -25,7 +25,7 @@ The main advantage of virtual scrolling is improved performance, especially when
 The below `Table` shows all olympic winners - a large dataset that benefits greatly from the table's virtual scrolling functionality:
 
 <ComponentDemo
-path='/webforj/tableolympicwinners?'
+path='/webforj/tableolympicwinners'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',

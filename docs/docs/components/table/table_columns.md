@@ -74,7 +74,7 @@ Setting a column’s alignment lets you create organized tables, which can help 
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablecolumnalignment?'
+path='/webforj/tablecolumnalignment'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -98,7 +98,7 @@ Column pinning is a feature that allows users to affix or "pin" a column to a sp
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablecolumnpinning?'
+path='/webforj/tablecolumnpinning'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -195,7 +195,7 @@ Key flex behaviors:
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablecolumnflexsizing?'
+path='/webforj/tablecolumnflexsizing'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableColumnFlexSizingView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -244,7 +244,7 @@ Auto-sizing methods return `PendingResult<Void>` because they require client-sid
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablecolumnautosizing?'
+path='/webforj/tablecolumnautosizing'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableColumnAutoSizingView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',

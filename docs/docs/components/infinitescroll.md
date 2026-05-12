@@ -19,7 +19,7 @@ When users reach the bottom of scrollable content, `InfiniteScroll` triggers an 
 The `InfiniteScroll` component emits events and maintains internal state to help manage how and when content is loaded.
 
 <ComponentDemo
-path='/webforj/infinitescroll?'
+path='/webforj/infinitescroll'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollView.java',
@@ -61,7 +61,7 @@ infiniteScroll.setText("Loading more items...");
 Similarly, you can customize the [`Icon`](../components/icon) displayed during loading by using `setIcon()`.
 
 <ComponentDemo
-path='/webforj/infinitescrollloading?'
+path='/webforj/infinitescrollloading'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollLoadingView.java',
@@ -77,7 +77,7 @@ you can add content directly into the special content slot using `addToContent()
 When you populate the content slot, it replaces the default loading layout entirely.
 
 <ComponentDemo
-path='/webforj/infinitescrollcustomloading?'
+path='/webforj/infinitescrollcustomloading'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollCustomLoadingView.java',

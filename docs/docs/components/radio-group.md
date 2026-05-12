@@ -20,7 +20,7 @@ The `RadioButtonGroup` component doesn't render an HTML element. It only provide
 Create individual `RadioButton` components and pass them to the `RadioButtonGroup` constructor. Only one button in the group can be selected at a time.
 
 <ComponentDemo
-path='/webforj/radiobuttongroup?'
+path='/webforj/radiobuttongroup'
 files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java']}
 height='200px'
 />
@@ -72,7 +72,7 @@ group.onChange(e -> changeEvent());
 The following sample from [Drawer Placement](/docs/components/drawer#placement) uses the `RadioButtonGroupChangeEvent` to automatically change the placement of the `Drawer` component:
 
 <ComponentDemo
-path='/webforj/drawerplacement?'
+path='/webforj/drawerplacement'
 files={['src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java']}
 height='600px'
 />

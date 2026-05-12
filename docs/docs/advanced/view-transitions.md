@@ -13,7 +13,7 @@ title: View Transitions
 View transitions provide animated transitions when the [DOM](/docs/glossary#dom) changes, reducing visual jarring and maintaining spatial context during navigation or content updates. webforJ integrates with the browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) to handle the complexity of coordinating animations between old and new states.
 
 <ComponentDemo
-path='/webforj/viewtransitionchat?'
+path='/webforj/viewtransitionchat'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
   'src/main/resources/static/css/viewtransitions/chat.css',
@@ -99,7 +99,7 @@ When working with lists or repeated components, include a unique identifier in t
 :::
 
 <ComponentDemo
-path='/webforj/viewtransitionmorph?'
+path='/webforj/viewtransitionmorph'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
@@ -127,7 +127,7 @@ Page.getCurrent().startViewTransition()
 ```
 
 <ComponentDemo
-path='/webforj/viewtransitionshuffle?'
+path='/webforj/viewtransitionshuffle'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
@@ -187,7 +187,7 @@ Page.getCurrent().startViewTransition()
 ```
 
 <ComponentDemo
-path='/webforj/viewtransitionenterexit?'
+path='/webforj/viewtransitionenterexit'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
   'src/main/resources/static/css/viewtransitions/enterexit.css',

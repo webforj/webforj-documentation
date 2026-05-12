@@ -156,7 +156,7 @@ public class InteractiveMap extends Composite<Div> {
 The following example demonstrates a Todo app where each item is a `Composite` component consisting of a [`RadioButton`](../components/radiobutton) styled as a switch and a Div with text: 
 
 <ComponentDemo
-path='/webforj/composite?'
+path='/webforj/composite'
 files={[
   'src/main/java/com/webforj/samples/views/composite/CompositeView.java',
   'src/main/resources/static/composite/composite.css',
@@ -169,7 +169,7 @@ height='500px'
 Sometimes you may want to use a `Composite` to group related components together into a single unit, even when reusability isn't the main concern:
 
 <ComponentDemo
-path='/webforj/analyticscardcomposite?'
+path='/webforj/analyticscardcomposite'
 files={[
   'src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java',
   'src/main/resources/static/composite/analyticscomposite.css',

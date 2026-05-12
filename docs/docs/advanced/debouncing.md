@@ -10,7 +10,7 @@ slug: debouncing
 Debouncing is a technique that delays executing an action until a specified time has elapsed since the last call. Each new call resets the timer. This is useful for scenarios like search-as-you-type, where you want to wait until the user stops typing before executing a search query.
 
 <ComponentDemo
-path='/webforj/debouncer?'
+path='/webforj/debouncer'
 files={['src/main/java/com/webforj/samples/views/debouncer/DebouncerView.java']}
 height='265px'
 />

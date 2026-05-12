@@ -16,7 +16,7 @@ An `InputDialog` is a modal dialog designed to prompt the user for input. The di
 The `InputDialog` prompts users for input, such as text, numbers, or other data. Because the dialog is modal, the app waits for the user to respond before continuing:
 
 <ComponentDemo
-path='/webforj/inputdialogbasic?'
+path='/webforj/inputdialogbasic'
 files={['src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogBasicView.java']}
 height='500px'
 />
@@ -52,7 +52,7 @@ In the following sample, The user is prompted to enter its password to access th
 again.
 
 <ComponentDemo
-path='/webforj/inputdialogtype?'
+path='/webforj/inputdialogtype'
 files={['src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogTypeView.java']}
 height='350px'
 />

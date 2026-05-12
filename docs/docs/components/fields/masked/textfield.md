@@ -63,7 +63,7 @@ This is useful when you want to reserve the ability to format without applying s
 :::
 
 <ComponentDemo
-path='/webforj/maskedtextfield?'
+path='/webforj/maskedtextfield'
 files={['src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldView.java']}
 height='250px'
 />
@@ -107,7 +107,7 @@ field.restoreValue();
 You can set the value to restore with `setRestoreValue()`. If no restore value is set, the field will revert to the initial value at the time it was rendered.
 
 <ComponentDemo
-path='/webforj/maskedtextfieldrestore?'
+path='/webforj/maskedtextfieldrestore'
 files={['src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldRestoreView.java']}
 height='200px'
 />
@@ -118,7 +118,7 @@ The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#basics) by adding spin
 This improves the user experience in situations where the input should be constrained to a fixed set of valid options.
 
 <ComponentDemo
-path='/webforj/maskedtextfieldspinner?'
+path='/webforj/maskedtextfieldspinner'
 files={['src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldSpinnerView.java']}
 height='120px'
 />

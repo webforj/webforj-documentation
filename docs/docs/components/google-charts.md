@@ -31,7 +31,7 @@ To create a chart, specify a chart type, configure its visual options, and provi
 This example creates a geo chart that maps revenue data across different countries, with custom colors, legend positioning, and chart area sizing:
 
 <ComponentDemo
-path='/webforj/chart?'
+path='/webforj/chart'
 files={[
   'src/main/java/com/webforj/samples/views/googlecharts/ChartView.java',
   'src/main/resources/static/css/googlecharts/chart.css',
@@ -44,7 +44,7 @@ height='300px'
 The `GoogleChart` addon offers a comprehensive array of chart types to suit various data visualization requirements. Selecting the appropriate chart type is essential for effectively communicating the data's story. See the gallery below for examples of common charts that can be used in a webforJ app.
 
 <ComponentDemo
-path='/webforj/chartgallery?'
+path='/webforj/chartgallery'
 files={[
   'src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java',
   'src/main/resources/static/css/googlecharts/chartGallery.css',
@@ -113,7 +113,7 @@ chart.setData(data);
 Once the data is prepared, it can be applied to the GoogleChart using the setData method.
 
 <ComponentDemo
-path='/webforj/chartsettingdata?'
+path='/webforj/chartsettingdata'
 files={['src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java']}
 height='300px'
 />
@@ -150,7 +150,7 @@ Invoke `redraw()` in scenarios such as:
 - **For Responsive Adjustments**: Adjusts the chart's layout or size when the container's dimensions change, ensuring optimal display across devices.
 
 <ComponentDemo
-path='/webforj/chartredraw?'
+path='/webforj/chartredraw'
 files={[
   'src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java',
   'src/main/resources/static/css/googlecharts/chartRedraw.css',

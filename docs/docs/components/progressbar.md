@@ -23,7 +23,7 @@ The `ProgressBar` component is useful for visualizing the completion status of t
 The following example shows a striped, animated progress bar with start, pause, and reset controls:
 
 <ComponentDemo
-path='/webforj/progressbarbasic?'
+path='/webforj/progressbarbasic'
 files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java']}
 height='150px'
 />
@@ -44,7 +44,7 @@ bar.setValue(50);
 The `ProgressBar` can be oriented horizontally or vertically.
 
 <ComponentDemo
-path='/webforj/progressbarorientation?'
+path='/webforj/progressbarorientation'
 files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientationView.java']}
 height='175px'
 />
@@ -54,7 +54,7 @@ height='175px'
 The `ProgressBar` supports an indeterminate state for tasks with unknown completion time.
 
 <ComponentDemo
-path='/webforj/progressbardeterminate?'
+path='/webforj/progressbardeterminate'
 files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarDeterminateView.java']}
 height='25px'
 />
@@ -76,7 +76,7 @@ The `ProgressBar` component comes with <JavadocLink type="foundation" location="
 They offer a quick and consistent way to customize the look of ProgressBars throughout an app. 
 
 <ComponentDemo
-path='/webforj/progressbarthemes?'
+path='/webforj/progressbarthemes'
 files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarThemesView.java']}
 height='320px'
 />

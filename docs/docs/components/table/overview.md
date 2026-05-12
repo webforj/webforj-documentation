@@ -17,7 +17,7 @@ The `Table` class is a versatile component designed for presenting tabular infor
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/datatable?'
+path='/webforj/datatable'
 files={['src/main/java/com/webforj/samples/views/table/DataTableView.java']}
 height='600px'
 />
@@ -84,7 +84,7 @@ Below is an example of the above steps implemented to create a basic `Table` com
 
 
 <ComponentDemo
-path='/webforj/tablebasic?'
+path='/webforj/tablebasic'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableBasicView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',

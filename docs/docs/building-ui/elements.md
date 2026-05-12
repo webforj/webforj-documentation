@@ -13,7 +13,7 @@ The `Element` component cannot be extended, and is not the base component for al
 :::
 
 <ComponentDemo
-path='/webforj/elementinputdemo?'
+path='/webforj/elementinputdemo'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java',
   'src/main/resources/static/css/element/elementInput.css',
@@ -27,7 +27,7 @@ In order to utilize events that may come with your element, you can use the `Ele
 There are also additional options to further customize events by using the Event Options configurations.
 
 <ComponentDemo
-path='/webforj/elementinputevent?'
+path='/webforj/elementinputevent'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputEventView.java',
   'src/main/resources/static/css/element/elementInputEvent.css',
@@ -52,7 +52,7 @@ The `Element` component supports the composition of child components. Developers
 
 
 <ComponentDemo
-path='/webforj/elementinputtext?'
+path='/webforj/elementinputtext'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputTextView.java',
   'src/main/resources/static/css/element/elementInput.css',
@@ -104,7 +104,7 @@ Both synchronous and asynchronous function calling will wait until the `Element`
 In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> is then used to create another message box once the asynchronous function has been completed.
 
 <ComponentDemo
-path='/webforj/elementinputfunction?'
+path='/webforj/elementinputfunction'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java',
   'src/main/resources/static/css/element/elementInput.css',

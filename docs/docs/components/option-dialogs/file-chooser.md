@@ -16,7 +16,7 @@ sidebar_position: 10
 The `FileChooserDialog` provides a way to select files or directories from the file system, enabling users to choose directories for saving data, or perform file operations.
 
 <ComponentDemo
-path='/webforj/filechooserdialogbasic?'
+path='/webforj/filechooserdialogbasic'
 files={['src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogBasicView.java']}
 height='600px'
 />
@@ -72,7 +72,7 @@ dialog.show();
 When the seletion mode is `FILES`, The `FileChooserDialog` allows you to set filters to limit the types of files that listed. You can configure filters using the `setFilters(List<FileChooserFilter> filters)` method.
 
 <ComponentDemo
-path='/webforj/filechooserdialogfilters?'
+path='/webforj/filechooserdialogfilters'
 files={['src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogFiltersView.java']}
 height='600px'
 />

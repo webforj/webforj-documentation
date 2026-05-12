@@ -110,7 +110,7 @@ It also works well for numeric thresholds. This server dashboard uses `Condition
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/serverdashboard?'
+path='/webforj/serverdashboard'
 files={[
   'src/main/java/com/webforj/samples/views/table/renderers/ServerDashboardView.java',
   'src/main/java/com/webforj/samples/views/table/renderers/Server.java',
@@ -164,7 +164,7 @@ The employee directory below uses a `CompositeRenderer` on the *Employee* column
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/employeedirectory?'
+path='/webforj/employeedirectory'
 files={['src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java']}
 height='600px'
 />
@@ -272,7 +272,7 @@ When `setLazyRender(true)` is set on a column, cells display a lightweight anima
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/lazyrender?'
+path='/webforj/lazyrender'
 files={['src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java']}
 height='600px'
 />
@@ -290,7 +290,7 @@ webforJ ships with a comprehensive set of renderers for the most common use case
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/productcatalog?'
+path='/webforj/productcatalog'
 files={[
   'src/main/java/com/webforj/samples/views/table/renderers/ProductCatalogView.java',
   'src/main/java/com/webforj/samples/views/table/renderers/Product.java',

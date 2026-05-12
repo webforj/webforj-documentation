@@ -29,7 +29,7 @@ The `FlexLayout` adds components next to one another according to its direction,
 To set the direction on an existing `FlexLayout` object, use the `setDirection()` method. The horizontal options are `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). 
 
 <ComponentDemo
-path='/webforj/flexdirection?'
+path='/webforj/flexdirection'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java',
   'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
@@ -50,7 +50,7 @@ The `setAlignContent()` method controls the space around the cross axis, and wil
 :::
 
 <ComponentDemo
-path='/webforj/flexpositioning?'
+path='/webforj/flexpositioning'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java',
   'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
@@ -83,7 +83,7 @@ use the `.vertical().wrap()` combination.
 The following demo allows you to build a container with the desired flex properties selected from the various menus. This tool can be used not only to create a visual example of the various methods, but also to create your own layouts with your desired properties. To use a layout you customize, simply copy the output code and add your desired elements for use in your program.
 
 <ComponentDemo
-path='/webforj/flexcontainerbuilder?'
+path='/webforj/flexcontainerbuilder'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java',
   'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
@@ -108,7 +108,7 @@ It's important to note that the order property only affects the visual order of 
 :::
 
 <ComponentDemo
-path='/webforj/flexorder?'
+path='/webforj/flexorder'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java',
   'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
@@ -129,7 +129,7 @@ Self alignment uses the same values as content alignment.
 This property is especially useful when you need to align a specific item differently from the other items in the container. See the sample below for an example of aligning a single item:
 
 <ComponentDemo
-path='/webforj/flexselfalign?'
+path='/webforj/flexselfalign'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java',
   'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
@@ -150,7 +150,7 @@ By default, the `Item Basis` property is set to `auto`, which means that the siz
 The following demo allows you to select one or more boxes and change the `Item Basis` for the selected items.
 
 <ComponentDemo
-path='/webforj/flexbasis?'
+path='/webforj/flexbasis'
 files={['src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java']}
 height='300px'
 />
@@ -175,7 +175,7 @@ If you prefer a column-based structure, look at the `ColumnsLayout` version of t
 :::
 
 <ComponentDemo
-path='/webforj/flexlayout?'
+path='/webforj/flexlayout'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java',
   'src/main/resources/static/css/flexlayout/flexLayout.css',

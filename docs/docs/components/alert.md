@@ -19,7 +19,7 @@ Alerts help draw attention to key information without disrupting the user's work
 An `Alert` can hold rich content like text, buttons, and other components. Set a theme to visually distinguish the type of message being displayed.
 
 <ComponentDemo
-path='/webforj/alert?'
+path='/webforj/alert'
 files={['src/main/java/com/webforj/samples/views/alert/AlertView.java']}
 height='110px'
 />
@@ -35,7 +35,7 @@ closableAlert.setClosable(true);
 Alerts often do more than display messages—they can trigger follow-up actions when dismissed. Use the `AlertCloseEvent` to handle these cases and respond when the user dismisses the `Alert`.
 
 <ComponentDemo
-path='/webforj/closablealert?'
+path='/webforj/closablealert'
 files={['src/main/java/com/webforj/samples/views/alert/ClosableAlertView.java']}
 height='100px'
 />
@@ -52,7 +52,7 @@ Closing the alert only hides it—it doesn’t destroy the component, so you can
 The `Alert` component supports multiple <JavadocLink type="foundation" location="com/webforj/component/Theme"> themes </JavadocLink> to visually distinguish different types of messages—such as success, error, warning, or info. These themes can be applied using the `setTheme()` method or directly in the constructor.
 
 <ComponentDemo
-path='/webforj/alertthemes?'
+path='/webforj/alertthemes'
 files={['src/main/java/com/webforj/samples/views/alert/AlertThemesView.java']}
 height='650px'
 />
@@ -63,7 +63,7 @@ height='650px'
 The expanse defines the visual size of the `Alert` component. You can set it using the `setExpanse()` method or pass it directly to the constructor. The available options come from the Expanse enum: `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, and `XLARGE`.
 
 <ComponentDemo
-path='/webforj/alertexpanses?'
+path='/webforj/alertexpanses'
 files={['src/main/java/com/webforj/samples/views/alert/AlertExpansesView.java']}
 height='600px'
 />

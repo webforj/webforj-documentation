@@ -40,7 +40,7 @@ The `Button` class is a versatile component that is commonly used in various sit
 The following example demonstrates buttons used for form submission and clearing input:
 
 <ComponentDemo
-path='/webforj/button?'
+path='/webforj/button'
 files={['src/main/java/com/webforj/samples/views/button/ButtonView.java']}
 height='300px'
 />
@@ -61,7 +61,7 @@ By default, an `Icon` inherits the button's theme and expanse.
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
 <ComponentDemo
-path='/webforj/buttonicon?'
+path='/webforj/buttonicon'
 files={['src/main/java/com/webforj/samples/views/button/ButtonIconView.java']}
 height='200px'
 />
@@ -75,7 +75,7 @@ The `Button` component utilizes naming, which is used for accessibility. When a 
 Button components, like many others, can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will decrease the opacity of the button, and is available for all button themes and expanses.
 
 <ComponentDemo
-path='/webforj/buttondisable?'
+path='/webforj/buttondisable'
 files={['src/main/java/com/webforj/samples/views/button/ButtonDisableView.java']}
 />
 
@@ -106,7 +106,7 @@ While there are many use cases for each of the various themes, some examples use
 Shown below are example buttons with each of the supported Themes applied: <br/>
 
 <ComponentDemo
-path='/webforj/buttonthemes?'
+path='/webforj/buttonthemes'
 files={['src/main/java/com/webforj/samples/views/button/ButtonThemesView.java']}
 height='175px'
 />
@@ -122,7 +122,7 @@ Different sizes are often appropriate for different uses:
 Below are the various expanses supported for the `Button` component: <br/>
 
 <ComponentDemo
-path='/webforj/buttonexpanses?'
+path='/webforj/buttonexpanses'
 files={['src/main/java/com/webforj/samples/views/button/ButtonExpansesView.java']}
 height='200px'
 />

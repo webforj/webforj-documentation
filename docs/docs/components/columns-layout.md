@@ -17,7 +17,7 @@ The `ColumnsLayout` component arranges items into a responsive column-based layo
 By default, a `ColumnsLayout` arranges items in two columns and takes the full width of its parent. The display can be further adjusted with breakpoints and alignment settings, covered in the sections below.
 
 <ComponentDemo
-path='/webforj/columnslayout?'
+path='/webforj/columnslayout'
 files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView.java']}
 height='450px'
 />
@@ -72,7 +72,7 @@ layout.setBreakpoints(breakpoints);
 The demonstration below shows an example of setting multiple breakpoints at construction, using breakpoints to configure the [`Span`](#column-span-and-spans-per-breakpoint) of a component, and demonstrates the resizing capabilities of the `ColumnsLayout` when the app is resized:
 
 <ComponentDemo
-path='/webforj/columnslayoutbreakpoints?'
+path='/webforj/columnslayoutbreakpoints'
 files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutBreakpointsView.java']}
 height='375px'
 />
@@ -152,7 +152,7 @@ columnsLayout.setColumn(email, "medium", 2);
 In the following demonstration, notice that when the `"medium"` breakpoint is triggered, the `email` field spans both columns, and the `confirmPassword` field is placed into the first column, rather than its default placement in the second column:
 
 <ComponentDemo
-path='/webforj/columnslayoutspancolumn?'
+path='/webforj/columnslayoutspancolumn'
 files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutSpanColumnView.java']}
 height='375px'
 />
@@ -179,7 +179,7 @@ Available `Alignment` options include:
 - `AUTO`: Auto alignment.
 
 <ComponentDemo
-path='/webforj/columnslayoutalignment?'
+path='/webforj/columnslayoutalignment'
 files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutAlignmentView.java']}
 height='500px'
 />
@@ -213,7 +213,7 @@ You can use an integer to define the minimum width in pixels or use a `String` t
 Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex-layout) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex-layout#example-form) article, but using a `ColumnLayout` scheme instead:
 
 <ComponentDemo
-path='/webforj/columnslayoutform?'
+path='/webforj/columnslayoutform'
 files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java']}
 height='700px'
 />

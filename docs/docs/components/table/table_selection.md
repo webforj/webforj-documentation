@@ -39,7 +39,7 @@ The `TableItemSelectEvent` and `TableItemDeselectEvent` are not triggered when m
 In the example below, a `TableItemSelectEvent` event will be fired whenever a user selects a row. The event can be handled by adding a listener to the table using the `onItemSelect()` method.
 
 <ComponentDemo
-path='/webforj/tablesingleselection?'
+path='/webforj/tablesingleselection'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableSingleSelectionView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -55,7 +55,7 @@ Checkbox selection is enabled when the selection mode is `MULTI`, and allows use
 By using the `setCheckboxSelection(boolean checkboxSelection)` method, checkboxes can be configured to be displayed next to each row, allowing users to select items. The program below shows multiple selection and checkbox selection enabled:
 
 <ComponentDemo
-path='/webforj/tablemultiselection?'
+path='/webforj/tablemultiselection'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableMultiSelectionView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',

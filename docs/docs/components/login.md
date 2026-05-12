@@ -17,7 +17,7 @@ The `Login` component simplifies user authentication by providing a ready-to-use
 Create a `Login` dialog by instantiating the component and calling `open()` to display it. The dialog includes username and password fields, input validation, and a sign-in button by default.
 
 <ComponentDemo
-path='/webforj/loginbasic?'
+path='/webforj/loginbasic'
 files={['src/main/java/com/webforj/samples/views/login/LoginBasicView.java']}
 height='450px'
 />
@@ -29,7 +29,7 @@ When users enter their username and password, the `Login` component validates th
 The following illustrates a basic `Login` component. If the username and password are both set to `"admin"` respectively, the login dialog closes, and a [Logout] button appears. If the credentials don't match, the default error message is displayed.
 
 <ComponentDemo
-path='/webforj/loginsubmission?'
+path='/webforj/loginsubmission'
 files={['src/main/java/com/webforj/samples/views/login/LoginSubmissionView.java']}
 height='450px'
 />
@@ -62,7 +62,7 @@ If no action URL is set, form submission is handled through the `LoginSubmitEven
 The titles, descriptions, labels, and messages within the `Login` component are fully customizable using the `LoginI18n` class. This flexibility allows you to tailor the login interface to meet specific localization requirements or personalization preferences.
 
 <ComponentDemo
-path='/webforj/logininternationalization?'
+path='/webforj/logininternationalization'
 files={['src/main/java/com/webforj/samples/views/login/LoginInternationalizationView.java']}
 height='600px'
 />
@@ -74,7 +74,7 @@ The `Login` component includes several slots that allow you to add extra fields 
 The following login has a custom field added for a customer ID. This can help you manage companies or departments with shared content across multiple users.
 
 <ComponentDemo
-path='/webforj/logincustomfields?'
+path='/webforj/logincustomfields'
 files={[
   'src/main/java/com/webforj/samples/views/login/LoginCustomFieldsView.java',
   'src/main/resources/static/css/login/loginCustomFields.css',
@@ -93,7 +93,7 @@ Custom fields must have a name set using `setName()` to be included in the form 
 To make the cancel button visible, provide a label for it. You can also listen to cancel events to handle the cancellation appropriately.
 
 <ComponentDemo
-path='/webforj/logincancelbutton?'
+path='/webforj/logincancelbutton'
 files={['src/main/java/com/webforj/samples/views/login/LoginCancelButtonView.java']}
 height='450px'
 />

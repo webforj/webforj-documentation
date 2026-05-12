@@ -122,7 +122,7 @@ nameField.addValueChangeListener(e -> submitButton.setEnabled(!e.getValue().isBl
 The following login form demonstrates `setEnabled()` in practice. The sign-in button stays disabled until both fields have content, making it clear to the user that input is required before proceeding:
 
 <ComponentDemo
-path='/webforj/conditionalstate?'
+path='/webforj/conditionalstate'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java',
   'src/main/resources/static/usingcomponents/conditionalstate.css',
@@ -161,7 +161,7 @@ A common use of `setVisible()` in containers is revealing additional UI only whe
 The following settings panel demonstrates this: basic notification preferences are always visible, and a section of advanced options only appears when the user asks for it. The save button activates as soon as any setting is changed:
 
 <ComponentDemo
-path='/webforj/progressivedisclosure?'
+path='/webforj/progressivedisclosure'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ProgressiveDisclosureView.java',
   'src/main/resources/static/usingcomponents/progressivedisclosure.css',
@@ -194,7 +194,7 @@ This is preferable to showing validation errors only after the user clicks submi
 In this contact form, the name field must not be empty, the email must contain an `@` symbol, and the message must be at least 10 characters long:
 
 <ComponentDemo
-path='/webforj/formvalidation?'
+path='/webforj/formvalidation'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java',
   'src/main/resources/static/usingcomponents/formvalidation.css',

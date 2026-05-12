@@ -11,7 +11,7 @@ For information on how to use the `Repository` pattern to manage and query colle
 :::
 
 <ComponentDemo
-path='/webforj/tablesorting?'
+path='/webforj/tablesorting'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableSortingView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -41,7 +41,7 @@ table.setMultiSorting(true);
 With multi-sorting enabled, clicking multiple column headers will sort them sequentially. The sorting priority is visually indicated in the table UI.
 
 <ComponentDemo
-path='/webforj/tablemultisorting?'
+path='/webforj/tablemultisorting'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -63,7 +63,7 @@ Unless `setSortOrder()` is used, the table defaults to sorting by the order in w
 :::
 
 <ComponentDemo
-path='/webforj/tablesortorder?'
+path='/webforj/tablesortorder'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -149,7 +149,7 @@ The `Column` component allows developers to use Java `Comparators` for dynamic a
 To leverage `Comparator` sorting in a `Column`, you can use the `setComparator()` method. This method allows you to define a custom `Comparator` function that dictates the sorting logic.
 
 <ComponentDemo
-path='/webforj/tablecolumncomparator?'
+path='/webforj/tablecolumncomparator'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableColumnComparatorView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',

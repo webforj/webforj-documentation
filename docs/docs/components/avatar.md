@@ -31,7 +31,7 @@ Avatar avatar = new Avatar("John Doe", "J");
 The example below showcases avatars in a team panel context. Each `Avatar` displays either a profile image or auto-generated initials based on the user's name. Clicking an `Avatar` opens a dialog with an enlarged view.
 
 <ComponentDemo
-path='/webforj/avatar?'
+path='/webforj/avatar'
 files={[
   'src/main/java/com/webforj/samples/views/avatar/AvatarView.java',
   'src/main/resources/static/css/avatar/avatar.css',
@@ -99,7 +99,7 @@ avatar.onClick(event -> {
 Avatars can be displayed as circles or squares. The default shape is `CIRCLE`, which is standard for user avatars. Use `SQUARE` for entities like teams, companies, or applications.
 
 <ComponentDemo
-path='/webforj/avatarshapes?'
+path='/webforj/avatarshapes'
 files={['src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java']}
 height='100px'
 />
@@ -121,7 +121,7 @@ The following themes are available:
 Each theme also has an outlined variant for a lighter visual treatment:
 
 <ComponentDemo
-path='/webforj/avatarthemes?'
+path='/webforj/avatarthemes'
 files={['src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java']}
 height='120px'
 />
@@ -131,7 +131,7 @@ height='120px'
 Control the avatar size using the `setExpanse()` method. The component supports nine size options ranging from `XXXSMALL` to `XXXLARGE`.
 
 <ComponentDemo
-path='/webforj/avatarexpanses?'
+path='/webforj/avatarexpanses'
 files={['src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java']}
 height='100px'
 />

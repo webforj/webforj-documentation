@@ -28,7 +28,7 @@ To use the `Terminal` component in your app, ensure that you include the followi
 The following example builds an interactive command shell with typed commands, history navigation, and custom output.
 
 <ComponentDemo
-path='/webforj/terminal?'
+path='/webforj/terminal'
 files={[
   'src/main/java/com/webforj/samples/views/terminal/TerminalView.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/TerminalCommand.java',
@@ -156,7 +156,7 @@ pty.onData(chunk -> {
 ```
 
 <ComponentDemo
-path='/webforj/serverlogs?'
+path='/webforj/serverlogs'
 files={['src/main/java/com/webforj/samples/views/terminal/ServerLogsView.java']}
 height='400px'
 />
@@ -200,7 +200,7 @@ theme.setForeground("#cccccc");
 terminal.setTheme(theme);
 ```
 <ComponentDemo
-path='/webforj/terminalthemepicker?'
+path='/webforj/terminalthemepicker'
 files={['src/main/java/com/webforj/samples/views/terminal/TerminalThemePickerView.java']}
 height='500px'
 />

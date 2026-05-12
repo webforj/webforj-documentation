@@ -21,7 +21,7 @@ To activate the `Refresher`, **click and drag downward** from the top of the scr
 :::
 
 <ComponentDemo
-path='/webforj/refresher?'
+path='/webforj/refresher'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/refresher/RefresherView.java',
@@ -42,7 +42,7 @@ Each state label can also be localized using the `RefresherI18n` object. The thr
 This allows multilingual support and branding adjustments as needed.
 
 <ComponentDemo
-path='/webforj/refresheri18n?'
+path='/webforj/refresheri18n'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java',
@@ -55,7 +55,7 @@ files={[
 You can change the [`Icons`](../components/icon) used for the `pull`/`release` and `refreshing` stages using either a predefined [`Icon`](../components/icon) or an [Icon URL](../managing-resources/assets-protocols). These are useful when you want to apply branding or a custom animation.
 
 <ComponentDemo
-path='/webforj/refreshericon?'
+path='/webforj/refreshericon'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java',
@@ -113,7 +113,7 @@ The `Refresher` component supports multiple themes to visually distinguish diffe
 The following sample cycles through all available themes each time you pull to refresh, giving you a live preview of how the `Refresher` looks across different themes:
 
 <ComponentDemo
-path='/webforj/refresherthemes?'
+path='/webforj/refresherthemes'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java',

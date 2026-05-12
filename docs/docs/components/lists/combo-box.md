@@ -37,7 +37,7 @@ The ComboBox component is a versatile input element that combines the features o
 Changing the custom value property allows control over whether or not a user is able to change the value in the `ComboBox` component's input field. If `true`, which is the default, then a user can change the value. If set to `false`, the user won't be able to change the value. This can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> method.
 
 <ComponentDemo
-path='/webforj/comboboxcustomvalue?'
+path='/webforj/comboboxcustomvalue'
 files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomValueView.java']}
 height='200px'
 />
@@ -47,7 +47,7 @@ height='200px'
 A placeholder can be set for a `ComboBox` which will display in the text field of the component when it is empty to prompt users for the desired entry in the field. This can be done using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> method.
 
 <ComponentDemo
-path='/webforj/comboboxplaceholder?'
+path='/webforj/comboboxplaceholder'
 files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlaceholderView.java']}
 height='200px'
 />
@@ -62,7 +62,7 @@ dropdown using CSS or shadow part selectors from the parent component becomes ch
 In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
 
 <ComponentDemo
-path='/webforj/comboboxdropdowntype?'
+path='/webforj/comboboxdropdowntype'
 files={[
   'src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java',
   'src/main/resources/static/css/lists/combobox/comboBoxDropDownType.css',
@@ -79,7 +79,7 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 :::
 
 <ComponentDemo
-path='/webforj/comboboxmaxrow?'
+path='/webforj/comboboxmaxrow'
 files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java']}
 height='450px'
 />

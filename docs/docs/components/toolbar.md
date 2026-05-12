@@ -27,7 +27,7 @@ The following demo shows how to add a `Toolbar` to an [AppLayout](./app-layout) 
 To read more about implementing toolbars within an `AppLayout`, see [Sticky toolbars](./app-layout#sticky-toolbars) and [Mobile navigation layout](./app-layout#mobile-navigation-layout).
 
 <ComponentDemo
-path='/webforj/toolbarslots?'
+path='/webforj/toolbarslots'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java',
@@ -45,7 +45,7 @@ toolbar.setCompact(true);
 ```
 
 <ComponentDemo
-path='/webforj/toolbarcompact?'
+path='/webforj/toolbarcompact'
 frame='desktop'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java']}
 />
@@ -57,7 +57,7 @@ A `ProgressBar` serves as a visual indicator for ongoing processes, such as load
 You can combine it with other components in the toolbar like buttons or labels without disrupting the layout.
 
 <ComponentDemo
-path='/webforj/toolbarprogressbar?'
+path='/webforj/toolbarprogressbar'
 frame='desktop'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.java']}
 />
@@ -69,7 +69,7 @@ files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.
 `Toolbar` components include <JavadocLink type="foundation" location="com/webforj/component/Theme">seven built-in themes</JavadocLink> for quick visual customization:
 
 <ComponentDemo
-path='/webforj/toolbartheme?'
+path='/webforj/toolbartheme'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java']}
 height='475px'
 />

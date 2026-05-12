@@ -10,7 +10,7 @@ The following example uses a user-defined criteria from the search field and the
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablefiltering?'
+path='/webforj/tablefiltering'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableFilteringView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',

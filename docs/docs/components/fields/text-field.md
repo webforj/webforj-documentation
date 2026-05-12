@@ -45,7 +45,7 @@ You can specify the type of the TextField using the `setType()` method. Similarl
 - `Type.SEARCH`: A single-line text field for entering search strings. Line-breaks are automatically removed from the input value.
 
 <ComponentDemo
-path='/webforj/textfield?'
+path='/webforj/textfield'
 files={['src/main/java/com/webforj/samples/views/fields/textfield/TextFieldView.java']}
 height='250px'
 />

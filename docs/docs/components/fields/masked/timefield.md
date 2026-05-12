@@ -21,7 +21,7 @@ The `MaskedTimeField` is built for **time-only** input. If you’re looking for 
 The `MaskedTimeField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
 
 <ComponentDemo
-path='/webforj/maskedtimefield?'
+path='/webforj/maskedtimefield'
 files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldView.java']}
 height='120px'
 />
@@ -108,7 +108,7 @@ field.restoreValue();
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
 
 <ComponentDemo
-path='/webforj/maskedtimefieldrestore?'
+path='/webforj/maskedtimefieldrestore'
 files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldRestoreView.java']}
 height='120px'
 />
@@ -137,7 +137,7 @@ You should always validate the input value in your app logic, even if a regular 
 The `MaskedTimeField` includes a built-in time picker that lets users select a time visually, rather than typing it. This enhances usability for less technical users or when precise input is required.
 
 <ComponentDemo
-path='/webforj/maskedtimefieldpicker?'
+path='/webforj/maskedtimefieldpicker'
 files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldPickerView.java']}
 height='450px'
 />
@@ -210,7 +210,7 @@ This ensures the dropdown list contains predictable, evenly spaced values like `
 The `MaskedTimeFieldSpinner` extends [`MaskedTimeField`](#basics) by adding spinner controls that let users increment or decrement the time using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
 <ComponentDemo
-path='/webforj/maskedtimefieldspinner?'
+path='/webforj/maskedtimefieldspinner'
 files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldSpinnerView.java']}
 height='450px'
 />

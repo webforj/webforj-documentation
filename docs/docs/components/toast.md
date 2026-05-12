@@ -29,7 +29,7 @@ toast.open();
 ```
 
 <ComponentDemo
-path='/webforj/toast?'
+path='/webforj/toast'
 files={[
   'src/main/java/com/webforj/samples/views/toast/ToastView.java',
   'src/main/resources/static/css/toast/toastTheme.css',
@@ -96,7 +96,7 @@ toast.open();
 ```
 
 <ComponentDemo
-path='/webforj/toastplacement?'
+path='/webforj/toastplacement'
 files={['src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java']}
 height='600px'
 />
@@ -112,7 +112,7 @@ The `Toast` component can display multiple notifications simultaneously, stackin
 Although `Toast` notifications don't require user interaction by default, webforJ allows you to add buttons or other interactive elements to make them more useful than simple notifications. 
 
 <ComponentDemo
-path='/webforj/toastcookies?'
+path='/webforj/toastcookies'
 files={['src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java']}
 height='350px'
 />
@@ -143,7 +143,7 @@ Since the `Toast` isn't located in a specific position in the DOM, you can targe
 :::
 
 <ComponentDemo
-path='/webforj/toasttheme?'
+path='/webforj/toasttheme'
 files={[
   'src/main/java/com/webforj/samples/views/toast/ToastThemeView.java',
   'src/main/resources/static/css/toast/toastTheme.css',

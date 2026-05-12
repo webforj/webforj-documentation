@@ -40,7 +40,7 @@ Attempting to assign the same node to more than one parent will result in an exc
 :::
 
 <ComponentDemo
-path='/webforj/tree?'
+path='/webforj/tree'
 files={['src/main/java/com/webforj/samples/views/tree/TreeView.java']}
 height='300px'
 />
@@ -60,7 +60,7 @@ In the demo, double-click a node to open an editor for its text. Enter the new t
 :::
 
 <ComponentDemo
-path='/webforj/treemodify?'
+path='/webforj/treemodify'
 files={[
   'src/main/java/com/webforj/samples/views/tree/TreeModifyView.java',
   'src/main/resources/static/css/tree/tree-modify-view.css',
@@ -112,7 +112,7 @@ tree.setLeafIconsVisible(false);
 ```
 
 <ComponentDemo
-path='/webforj/treeicons?'
+path='/webforj/treeicons'
 files={['src/main/java/com/webforj/samples/views/tree/TreeIconsView.java']}
 height='320px'
 />
@@ -149,7 +149,7 @@ The tree supports lazy loading of node children by reacting to expand events. Wh
 Use the `onExpand` event to detect when a node is expanded. Inside the handler, check if the node’s children are placeholders (for example, a spinner or empty node) and replace them with actual data once loaded.
 
 <ComponentDemo
-path='/webforj/treelazyload?'
+path='/webforj/treelazyload'
 files={['src/main/java/com/webforj/samples/views/tree/TreeLazyLoadView.java']}
 height='250px'
 />
@@ -210,7 +210,7 @@ List<Object> selectedKeys = tree.getSelectedKeys();
 ```
 
 <ComponentDemo
-path='/webforj/treeselection?'
+path='/webforj/treeselection'
 files={['src/main/java/com/webforj/samples/views/tree/TreeSelectionView.java']}
 height='400px'
 />

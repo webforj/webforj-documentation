@@ -18,7 +18,7 @@ The `Dialog` component displays a popup window that overlays the current view, d
 The `Dialog` is organized into three sections: a header, a content area, and a footer. Components can be added to each section using `addToHeader()`, `addToContent()`, and `addToFooter()`.
 
 <ComponentDemo
-path='/webforj/dialogsections?'
+path='/webforj/dialogsections'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java']}
 height='225px'
 />
@@ -45,7 +45,7 @@ height='225px'
 By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
 
 <ComponentDemo
-path='/webforj/dialogbackdropblur?'
+path='/webforj/dialogbackdropblur'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java']}
 height='300px'
 />
@@ -60,7 +60,7 @@ After creating a new `Dialog` object, use the `open()` method to display the dia
 Developers can choose which interactions close the `Dialog` with `setCancelOnEscKey()` and `setCancelOnOutsideClick()`. Additionally, the `setClosable()` method can prevent or allow both hitting the <kbd>ESC</kbd> key and clicking outside the `Dialog` to close the component.
 
 <ComponentDemo
-path='/webforj/dialogclose?'
+path='/webforj/dialogclose'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogCloseView.java']}
 height='350px'
 />
@@ -70,7 +70,7 @@ height='350px'
 When enabled, auto-focus will automatically give focus to the first element within the dialog that can be focused. This is useful in helping to direct the attention of users, and is customizable via the `setAutoFocus()` method.
 
 <ComponentDemo
-path='/webforj/dialogautofocus?'
+path='/webforj/dialogautofocus'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java']}
 height='350px'
 />
@@ -83,7 +83,7 @@ The `Dialog` has built in functionality to be draggable, allowing the user to re
 It is also possible to calibrate this behavior to snap to the edge of the screen, meaning the `Dialog` will automatically align itself with the edge of the display when released from its drag and drop date. Snapping can be changed via the `setSnapToEdge()` method. The `setSnapThreshold()` takes a number of pixels, which will set how far the `Dialog` should be from the sides of the screen before it will automatically snap to the edges.  
 
 <ComponentDemo
-path='/webforj/dialogdraggable?'
+path='/webforj/dialogdraggable'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogDraggableView.java']}
 height='350px'
 />
@@ -93,7 +93,7 @@ height='350px'
 The dialog's position can be manipulated using the built-in `setPosx()` and `setPosy()` methods. These methods take a string argument which can represent any applicable CSS unit of length, such as pixels or view height/width. A list of these measurements [can be found at this link](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages).
 
 <ComponentDemo
-path='/webforj/dialogpositioning?'
+path='/webforj/dialogpositioning'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogPositioningView.java']}
 height='350px'
 />
@@ -103,7 +103,7 @@ height='350px'
 In addition to manual assignment of a dialog's X and Y position, it is possible to use the dialog's built-in enum class to align the `Dialog`. There are three possible values, `TOP`, `CENTER` and `BOTTOM`, each of which can be used with the `setAlignment()` method. 
 
 <ComponentDemo
-path='/webforj/dialogalignments?'
+path='/webforj/dialogalignments'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.java']}
 height='550px'
 />
@@ -117,7 +117,7 @@ The `Dialog` can be set to enter full screen mode. When full screen is enabled, 
 By default, the `Dialog` stretches to fill the available horizontal space. When auto width is enabled via `setAutoWidth(true)`, the `Dialog` sizes itself based on its content width instead.
 
 <ComponentDemo
-path='/webforj/dialogautowidth?'
+path='/webforj/dialogautowidth'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAutoWidthView.java']}
 height='350px'
 />
@@ -139,7 +139,7 @@ While there are many use cases for each of the various themes, some examples use
   - **Info**: The Info theme is a good choice to provide clarifying, additional information to a user when pushed.
 
 <ComponentDemo
-path='/webforj/dialogthemes?'
+path='/webforj/dialogthemes'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogThemesView.java']}
 height='500px'
 />

@@ -21,7 +21,7 @@ The `DateTimeField` component lets users input both a date and a time in a singl
 `DateTimeField` extends the shared `Field` class, which provides common features across all field components. The following example creates a labeled `DateTimeField` for selecting a departure date and time.
 
 <ComponentDemo
-path='/webforj/datetimefield?'
+path='/webforj/datetimefield'
 files={['src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldView.java']}
 />
 

@@ -166,7 +166,7 @@ The `::part()` pseudo-element is like having a key to specific rooms in an other
 Here's a dashboard I put together that uses most of the stuff I've mentioned - CSS Grid, DWC tokens, and component-specific styling:
 
 <ComponentDemo
-path='/webforj/blogs/building-better-css?'
+path='/webforj/blogs/building-better-css'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/blogs/buildingbettercss/ModernDashboardView.java',

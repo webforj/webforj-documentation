@@ -38,7 +38,7 @@ If you want the group header to trigger a custom action (such as opening externa
 
 <!--vale off-->
 <ComponentDemo
-path='/webforj/appnav/Social?'
+path='/webforj/appnav/Social'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/appnav/AppNavView.java',

@@ -23,7 +23,7 @@ For more on how shadow parts work and how to define and target them, see the [St
 
 
 <ComponentDemo
-path='/webforj/tablerowstyling?'
+path='/webforj/tablerowstyling'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableRowStylingView.java',
   'src/main/resources/static/css/table/table-row-styling-view.css',
@@ -38,7 +38,7 @@ The `setCellPartProvider()` method styles individual cells based on both the dat
 Like row parts, cell parts are defined by a name and targeted using the `::part()` selector.
 
 <ComponentDemo
-path='/webforj/tablecellstyling?'
+path='/webforj/tablecellstyling'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java',
   'src/main/resources/static/css/table/table-cell-styling-view.css',
@@ -53,7 +53,7 @@ If your app modifies data programmatically, such as updating a user's age, the t
 In this demo, cells in the Age column are styled based on a threshold: ages over 30 appear green, while ages 30 and under appear red. Clicking the button toggles Alice's age between 28 and 31, triggering the `setCellPartProvider` to reapply the appropriate style when the data is committed.
 
 <ComponentDemo
-path='/webforj/tabledynamicstyling?'
+path='/webforj/tabledynamicstyling'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableDynamicStylingView.java',
   'src/main/resources/static/css/table/table-dynamic-styling-view.css',
@@ -85,7 +85,7 @@ table.setBordersVisible(EnumSet.noneOf(Table.Border.class));
 The demo below showcases a simple way to align your `Table's` visual appearance with the rest of your app using `setStriped()` and `setBordersVisible()`.
 
 <ComponentDemo
-path='/webforj/tablelayoutstyling?'
+path='/webforj/tablelayoutstyling'
 files={['src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java']}
 height='300px'
 />

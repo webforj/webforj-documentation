@@ -12,7 +12,7 @@ Create a group with the `ColumnGroup.of()` factory method, then chain `add()` ca
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablecolumngroups?'
+path='/webforj/tablecolumngroups'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableColumnGroupsView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -26,7 +26,7 @@ When groups are set, the `Table` renders a multi-row header where each group lab
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablenestedcolumngroups?'
+path='/webforj/tablenestedcolumngroups'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableNestedColumnGroupsView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -69,7 +69,7 @@ The following demo illustrates this behavior. `Number` and `Label` aren't refere
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablecolumngroupordering?'
+path='/webforj/tablecolumngroupordering'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableColumnGroupOrderingView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -118,7 +118,7 @@ Ungrouped columns retain their own pin direction from their column definition.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablepinnedcolumngroups?'
+path='/webforj/tablepinnedcolumngroups'
 files={[
   'src/main/java/com/webforj/samples/views/table/TablePinnedColumnGroupsView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -153,7 +153,7 @@ Group headers and columns expose CSS parts for styling via `::part()`. The follo
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablestyledcolumngroups?'
+path='/webforj/tablestyledcolumngroups'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableStyledColumnGroupsView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
@@ -208,7 +208,7 @@ Hidden columns are excluded from the visual order and the header layout. If a gr
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablehiddencolumngroups?'
+path='/webforj/tablehiddencolumngroups'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableHiddenColumnGroupsView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',

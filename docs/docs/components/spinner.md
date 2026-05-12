@@ -17,7 +17,7 @@ The `Spinner` component provides a visual indicator that indicates ongoing proce
 To create a `Spinner`, you can specify the theme and expanse. The basic syntax involves creating a `Spinner` instance and defining its appearance and behavior through methods such as `setTheme()` and `setExpanse()`.
 
 <ComponentDemo
-path='/webforj/spinnerdemo?'
+path='/webforj/spinnerdemo'
 files={['src/main/java/com/webforj/samples/views/spinner/SpinnerDemoView.java']}
 height='225px'
 />
@@ -54,7 +54,7 @@ spinner.setPaused(false); // Resume the spinner
 This example shows how to go about setting the speed and how to pause/resume the `Spinner`:
 
 <ComponentDemo
-path='/webforj/spinnerspeeddemo?'
+path='/webforj/spinnerspeeddemo'
 files={['src/main/java/com/webforj/samples/views/spinner/SpinnerSpeedDemoView.java']}
 height='150px'
 />
@@ -71,7 +71,7 @@ spinner.setClockwise(true);   // Rotates clockwise
 This option visually indicates a special state or serves as a unique design choice. Changing the spin direction can help differentiate between types of processes, such as progress vs. reversal, or provide a distinct visual cue in specific contexts.
 
 <ComponentDemo
-path='/webforj/spinnerdirectiondemo?'
+path='/webforj/spinnerdirectiondemo'
 files={['src/main/java/com/webforj/samples/views/spinner/SpinnerDirectionDemoView.java']}
 height='150px'
 />
@@ -101,7 +101,7 @@ You can apply these themes programmatically to the spinner, providing visual cue
 You can specify this behavior using the `setTheme()` method.
 
 <ComponentDemo
-path='/webforj/spinnerthemedemo?'
+path='/webforj/spinnerthemedemo'
 files={['src/main/java/com/webforj/samples/views/spinner/SpinnerThemeDemoView.java']}
 height='100px'
 />
@@ -111,7 +111,7 @@ height='100px'
 You can adjust the size of the spinner, known as **expanse**, to fit the visual space you need. The spinner supports various sizes including `Expanse.SMALL`, `Expanse.MEDIUM`, and `Expanse.LARGE`.
 
 <ComponentDemo
-path='/webforj/spinnerexpansedemo?'
+path='/webforj/spinnerexpansedemo'
 files={['src/main/java/com/webforj/samples/views/spinner/SpinnerExpanseDemoView.java']}
 height='100px'
 />

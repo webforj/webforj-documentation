@@ -17,7 +17,7 @@ The `TextArea` component provides a multi-line text input field where users can 
 Create a `TextArea` by passing a label to its constructor. Properties like placeholder text, character limits, and wrapping behavior can be configured through setter methods.
 
 <ComponentDemo
-path='/webforj/textarea?'
+path='/webforj/textarea'
 files={['src/main/java/com/webforj/samples/views/textarea/TextAreaView.java']}
 height='300px'
 />
@@ -65,7 +65,7 @@ The `TextArea` component supports two complementary types of validation: structu
 The following demo allows users to adjust validation limits—such as maximum character count, paragraph length, and line count—in real time and see how the `TextArea` responds.
 	
 <ComponentDemo
-path='/webforj/textareavalidation?'
+path='/webforj/textareavalidation'
 files={['src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java']}
 height='550px'
 />
@@ -81,7 +81,7 @@ To further refine how wrapping behaves, `setWrapStyle()` lets you choose between
 These wrapping options work hand-in-hand with structural constraints like line count and paragraph length limits. While wrapping determines *how* text flows within the available space, the structural limits define *how much* space text is allowed to occupy. Together, they help maintain both visual structure and user input boundaries.
 
 <ComponentDemo
-path='/webforj/textareawrap?'
+path='/webforj/textareawrap'
 files={['src/main/java/com/webforj/samples/views/textarea/TextAreaWrapView.java']}
 height='400px'
 />
@@ -95,7 +95,7 @@ Predictions can be accepted by pressing the `Tab` or `ArrowRight` key, inserting
 This predictive behavior enhances both speed and accuracy, especially in repetitive input scenarios or applications where consistency of phrasing is important.
 
 <ComponentDemo
-path='/webforj/textareapredictedtext?'
+path='/webforj/textareapredictedtext'
 files={[
   'src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java',
   'src/main/resources/static/css/textarea/text-area-predicted-text-view.css',
@@ -118,7 +118,7 @@ A **disabled** text area, on the other hand, blocks all interaction—including 
 Use read-only mode when the content is relevant but immutable, and disabled mode when the input isn't currently applicable or should be temporarily inactive.
 
 <ComponentDemo
-path='/webforj/textareastates?'
+path='/webforj/textareastates'
 files={['src/main/java/com/webforj/samples/views/textarea/TextAreaStatesView.java']}
 height='300px'
 />

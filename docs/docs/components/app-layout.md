@@ -37,7 +37,7 @@ The following code sample will result in an app with a collapsible sidebar that 
 
 <!--vale off-->
 <ComponentDemo
-path='/webforj/applayout/content/Dashboard?'
+path='/webforj/applayout/content/Dashboard'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java',
@@ -61,7 +61,7 @@ myApp.setFooterOffscreen(false);
 
 <!--vale off-->
 <ComponentDemo
-path='/webforj/applayoutfullnavbar/content/Dashboard?'
+path='/webforj/applayoutfullnavbar/content/Dashboard'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java',
@@ -80,7 +80,7 @@ The following demo shows how to use two toolbars, The first one houses the drawe
 
 <!--vale off-->
 <ComponentDemo
-path='/webforj/applayoutmultipleheaders/content/Dashboard?'
+path='/webforj/applayoutmultipleheaders/content/Dashboard'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java',
@@ -104,7 +104,7 @@ With the help of the CSS custom property `--dwc-app-layout-header-collapse-heigh
 
 <!--vale off-->
 <ComponentDemo
-path='/webforj/applayoutstickytoolbar/content/Dashboard?'
+path='/webforj/applayoutstickytoolbar/content/Dashboard'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java',
@@ -128,7 +128,7 @@ By default, when the screen width is 800px or less , the drawer will be switched
 
 <!--vale off-->
 <ComponentDemo
-path='/webforj/applayoutmobiledrawer/?'
+path='/webforj/applayoutmobiledrawer/'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java',
@@ -186,7 +186,7 @@ Drawer actions appear in the **right-aligned section** of the drawer’s header.
 
 <!--vale off-->
 <ComponentDemo
-path='/webforj/applayoutdrawerutility/content/Dashboard/?'
+path='/webforj/applayoutdrawerutility/content/Dashboard/'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java',
