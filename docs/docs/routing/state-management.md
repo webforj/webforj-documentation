@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: State Management
+description: Reflect app state in the URL with BrowserHistory pushState and replaceState to support bookmarks and back-button navigation.
 ---
 
 Creating seamless, dynamic user experiences often requires that the state of your web app be reflected in the URL and retained across browser navigation events. You can achieve this without reloading the page by leveraging URL parameter updates and browser history state management. This ensures that users can share, bookmark, or return to specific views with the app fully aware of their prior interactions.

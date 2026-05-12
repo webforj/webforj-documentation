@@ -1,6 +1,7 @@
 ---
 title: TextArea
 sidebar_position: 130
+description: Capture multi-line input with the TextArea component, including paragraph management, character limits, wrapping, and validation.
 ---
 
 <DocChip chip="shadow" />

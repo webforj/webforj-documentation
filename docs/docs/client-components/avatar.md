@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-avatar>
 sidebar_class_name: sidebar--item__hidden
 slug: avatar
-description: A user guide article for the avatar
+description: Customize the dwc-avatar client component using CSS variables and shadow parts to style size, background, initials, and image rendering.
 // pagination_prev: null
 // pagination_next: null
 ---

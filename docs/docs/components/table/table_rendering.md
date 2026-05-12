@@ -2,6 +2,7 @@
 sidebar_position: 20
 title: Rendering
 slug: rendering
+description: Transform Table cells into text, badges, icons, links, or custom HTML with built-in renderers and the setRenderer method.
 ---
 
 <!-- vale Google.Headings = NO -->

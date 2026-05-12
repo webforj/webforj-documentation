@@ -1,6 +1,7 @@
 ---
 title: Tree
 sidebar_position: 150
+description: Display hierarchical data with the Tree component, using TreeNode parent-child links, expand or collapse, icons, and selection.
 ---
 
 <DocChip chip="shadow" />

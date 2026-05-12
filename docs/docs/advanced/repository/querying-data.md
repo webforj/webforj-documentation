@@ -1,6 +1,7 @@
 ---
 title: Querying data
 sidebar_position: 3
+description: Build typed filters, sorting, and pagination with QueryableRepository and RepositoryCriteria for in-memory collections or external sources.
 ---
 
 <!-- vale off -->

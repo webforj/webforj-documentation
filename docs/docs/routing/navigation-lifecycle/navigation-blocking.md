@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Navigation Blocking
+description: Intercept navigation with WillLeaveObserver veto handlers and the beforeunload event to guard unsaved changes.
 ---
 
 Navigation blocking adds one or more layers of control to the entire underlying router API. If any blocking handlers are present, navigation will be prevented as follows:

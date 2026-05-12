@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Route Types
+description: Distinguish webforJ view routes that map to URL segments from layout routes that wrap shared UI without affecting the path.
 ---
 
 Routes are classified into two main types, **View Routes** and **Layout Routes**. The choice of route type determines how components are mapped to URLs and how they interact with other parts of your app.

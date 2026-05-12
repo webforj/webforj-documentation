@@ -1,6 +1,7 @@
 ---
 title: Drawer
 sidebar_position: 35
+description: Slide panels in from any screen edge with the Drawer component, ideal for side navigation, filter menus, settings, and stackable popovers.
 ---
 
 <DocChip chip="shadow" />

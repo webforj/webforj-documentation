@@ -1,6 +1,7 @@
 ---
 title: BusyIndicator
 sidebar_position: 10
+description: Block the entire interface during long-running operations using the BusyIndicator overlay with a customizable spinner, message, and backdrop.
 ---
 
 <DocChip chip="shadow" />

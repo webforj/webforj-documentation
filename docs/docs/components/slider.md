@@ -1,6 +1,7 @@
 ---
 title: Slider
 sidebar_position: 101
+description: Let users pick a numeric value with the Slider component, with configurable range, step, tick marks, labels, and orientation.
 ---
 
 <DocChip chip="shadow" />

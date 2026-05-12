@@ -2,6 +2,7 @@
 sidebar_position: 5
 title: Columns
 slug: columns
+description: Define Table columns with labels, value providers, visibility, navigability, sizing, and user-interaction events.
 ---
 
 <DocChip chip='since' label='24.00' />

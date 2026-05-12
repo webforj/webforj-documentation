@@ -1,6 +1,7 @@
 ---
 title: MaskedTimeField
 sidebar_position: 20
+description: Capture time input with the MaskedTimeField, applying 12 or 24-hour masks, format indicators, locale-aware parsing, and validation.
 ---
 
 <DocChip chip='shadow' />

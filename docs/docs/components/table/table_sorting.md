@@ -2,6 +2,7 @@
 sidebar_position: 15
 title: Sorting
 slug: sorting
+description: Enable per-column sorting on the Table, configure multi-column sorting, and set sort priority programmatically.
 ---
 
 Sorting lets users arrange data in columns by order, making information easier to read and analyze. This is useful when users need to quickly find the highest or lowest values in a particular column.

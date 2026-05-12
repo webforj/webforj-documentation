@@ -1,6 +1,7 @@
 ---
 sidebar_position: 40
 title: View Transitions
+description: Animate DOM changes with the browser View Transition API, applying fade, slide, zoom, and shared morph effects between component states.
 ---
 
 <!-- vale Google.Units = NO -->

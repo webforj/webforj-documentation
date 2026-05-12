@@ -2,6 +2,7 @@
 title: RadioButton
 slug: radiobutton
 sidebar_position: 95
+description: Add a single-choice RadioButton with text positioning, activation modes, and grouping for mutually exclusive selections.
 ---
 
 <DocChip chip='shadow' />

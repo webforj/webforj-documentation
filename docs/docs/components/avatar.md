@@ -1,6 +1,7 @@
 ---
 title: Avatar
 sidebar_position: 7
+description: Represent users with the Avatar component, showing profile images, auto-computed initials, custom initials, or icons for identification.
 ---
 
 <DocChip chip='shadow' />

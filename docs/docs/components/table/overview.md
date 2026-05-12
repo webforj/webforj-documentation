@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Table
 hide_giscus_comments: true
+description: Display tabular data with the Table component, binding entity classes to a Repository to populate columns and render rows.
 ---
 
 <DocChip chip='shadow' />

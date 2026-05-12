@@ -1,5 +1,6 @@
 ---
 title: Tabs
+description: Scaffold a webforJ project from the Tabs archetype to organize multiple views or sections behind a clean tabbed interface.
 sidebar_position: 2
 hide_table_of_contents: true
 ---

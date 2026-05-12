@@ -1,6 +1,7 @@
 ---
 title: ColumnsLayout
 sidebar_position: 25
+description: Arrange child components into a responsive multi-column grid with the ColumnsLayout component using configurable breakpoints and alignment.
 ---
 
 <DocChip chip="shadow" />

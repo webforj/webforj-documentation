@@ -1,6 +1,7 @@
 ---
 title: Navigator
 sidebar_position: 75
+description: Add pagination controls with the Navigator component, binding to a Paginator or Repository to drive page size, navigation, and labels.
 ---
 
 <DocChip chip='shadow' />

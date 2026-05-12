@@ -1,6 +1,7 @@
 ---
 title: Splitter
 sidebar_position: 115
+description: Divide a layout into resizable master and detail panels with the Splitter component, with min and max sizes and orientation control.
 ---
 
 <DocChip chip='shadow' />

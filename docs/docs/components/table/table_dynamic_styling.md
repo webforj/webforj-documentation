@@ -2,6 +2,7 @@
 sidebar_position: 21
 title: Dynamic Styling
 slug: styling
+description: Apply data-driven CSS to Table rows and cells using setRowPartProvider and setCellPartProvider with shadow part selectors.
 ---
 <!-- vale off -->
 # Dynamic Styling <DocChip chip='since' label='25.00' />

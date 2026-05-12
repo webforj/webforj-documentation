@@ -1,6 +1,7 @@
 ---
 title: Input Dialog
 sidebar_position: 25
+description: Prompt users for text, numbers, dates, colors, or other typed values with the modal InputDialog and message-type styling.
 ---
 
 <DocChip chip='shadow' />

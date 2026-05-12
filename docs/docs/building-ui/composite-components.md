@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Composite Components
+description: Combine webforJ components into reusable units by extending Composite, configuring the bound component, and overriding initBoundComponent.
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>

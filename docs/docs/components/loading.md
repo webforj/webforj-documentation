@@ -1,6 +1,7 @@
 ---
 title: Loading
 sidebar_position: 65
+description: Overlay a parent container with the Loading component to block interaction during async tasks, with backdrop and spinner customization.
 ---
 
 <DocChip chip="shadow" />

@@ -1,6 +1,7 @@
 ---
 title: Spinner
 sidebar_position: 110
+description: Indicate background activity with the Spinner component, configuring theme, expanse, rotation speed, and pause or resume.
 ---
 
 <DocChip chip="shadow" />

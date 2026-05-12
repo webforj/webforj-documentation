@@ -1,6 +1,7 @@
 ---
 title: Icon
 sidebar_position: 55
+description: Render scalable SVG icons with the Icon component from Tabler, Feather, Font Awesome, or custom pools loaded on demand from a CDN.
 ---
 
 <DocChip chip="shadow" />

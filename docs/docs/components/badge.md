@@ -1,6 +1,7 @@
 ---
 title: Badge
 sidebar_position: 8
+description: Surface counts, statuses, or short labels with the Badge component, including themes, slotted icons, and attachment to buttons or tabs.
 ---
 
 <DocChip chip='shadow' />

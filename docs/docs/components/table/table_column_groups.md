@@ -1,6 +1,7 @@
 ---
 title: Column Groups
 sidebar_position: 7
+description: Group Table columns under shared, nestable multi-row headers using ColumnGroup.of and setColumnGroups for complex layouts.
 ---
 <DocChip chip='since' label='25.12' />
 

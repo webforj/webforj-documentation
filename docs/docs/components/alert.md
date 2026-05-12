@@ -1,6 +1,7 @@
 ---
 title: Alert
 sidebar_position: 5
+description: Display contextual feedback messages with the Alert component, including themes, expanses, dismissible close events, and rich content.
 ---
 
 <DocChip chip='shadow' />

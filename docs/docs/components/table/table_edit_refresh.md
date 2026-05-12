@@ -2,6 +2,7 @@
 sidebar_position: 30
 title: Editing and Refreshing
 slug: refreshing
+description: Edit Table rows by mutating the bound Repository and call commit to refresh the UI through RepositoryCommitEvent.
 ---
 
 Editing data within the `Table` works via interaction with the `Repository` containing the data for the `Table`. The `Repository` serves as a bridge between the `Table` and the underlying dataset, offering methods for data retrieval, modification, and refreshing. Below is an example which implements behavior to edit the "Title" of a desired row based.

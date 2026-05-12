@@ -1,6 +1,7 @@
 ---
 title: File Chooser
 sidebar_position: 10
+description: Open a blocking FileChooserDialog to let users pick files or directories from the server, with selection modes and initial paths.
 ---
 
 <DocChip chip='shadow' />

@@ -1,6 +1,7 @@
 ---
 title: Terminal
 sidebar_position: 126
+description: Embed an interactive terminal emulator with the Terminal component for shells, dashboards, debug consoles, and remote access tools.
 ---
 
 <DocChip chip="shadow" />  

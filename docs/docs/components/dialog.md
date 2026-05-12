@@ -2,6 +2,7 @@
 title: Dialog
 sidebar_position: 30
 sidebar_class_name: new-content
+description: Open modal popups with the Dialog component, including header, content, and footer sections, backdrop blur, and configurable close behavior.
 ---
 
 <DocChip chip='shadow' />

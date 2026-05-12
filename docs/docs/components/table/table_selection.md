@@ -2,6 +2,7 @@
 sidebar_position: 10
 title: Selection
 slug: selection
+description: Configure single, multi, or no-selection modes on the Table and respond to row selection events with appropriate listeners.
 ---
 
 The `Table` component provides various selection capabilities. There are methods for selecting a single item, multiple items, or programmatically managing selections.
