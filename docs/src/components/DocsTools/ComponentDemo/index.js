@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { css } from "@emotion/react";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-import GLOBALS from "../../../../siteConfig";
 import DemoFrame from "./DemoFrame";
 import CodePanel from "./CodePanel";
 
@@ -30,18 +30,18 @@ function basename(url) {
 
 // Repo-relative paths get the GitHub raw-content base prepended; absolute
 // http(s) URLs are an escape hatch and are used as-is.
-function resolveUrl(url) {
+function resolveUrl(url, rawContentBase) {
   if (/^https?:\/\//.test(url)) return url;
-  return GLOBALS.RAW_CONTENT_BASE + url.replace(/^\//, '');
+  return rawContentBase + url.replace(/^\//, '');
 }
 
 // Accepts the `files` prop (array of strings or objects) and returns a
 // uniform list of { url, label, language, highlight } records, in input order.
-function normalizeFiles(files) {
+function normalizeFiles(files, rawContentBase) {
   if (!files) return [];
   return files.map((entry) => {
     const raw = typeof entry === 'string' ? { url: entry } : entry;
-    const url = resolveUrl(raw.url);
+    const url = resolveUrl(raw.url, rawContentBase);
     return {
       url,
       label: raw.label ?? basename(url),
@@ -128,7 +128,8 @@ const mainStyles = css`
  *   `'desktop'` renders a 100%x600 phone-shaped preview for desktop app layouts.
  */
 export default function ComponentDemo({ path, files, height, frame = 'resizable' }) {
-  const normalized = normalizeFiles(files);
+  const { siteConfig } = useDocusaurusContext();
+  const normalized = normalizeFiles(files, siteConfig.customFields.rawContentBase);
   const filesKey = normalized.map((f) => f.url).join('|');
   const loadedFiles = useRemoteFiles(filesKey, normalized);
 

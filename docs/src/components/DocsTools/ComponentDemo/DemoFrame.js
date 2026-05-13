@@ -4,9 +4,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { css } from "@emotion/react";
 import { translate } from '@docusaurus/Translate';
 import { useColorMode } from "@docusaurus/theme-common";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 import openInNewIcon from "../../../../static/img/window-maximize.png";
-import GLOBALS from "../../../../siteConfig";
 
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
@@ -70,6 +70,16 @@ function applyScrollPatches(iframe) {
   } catch (error) {
     // Silently ignore cross-origin errors
   }
+}
+
+// Resolves the iframe `src` URL for the current environment. In local dev,
+// uses `iframeSrcDev` from customFields (which honors the WEBFORJ_PORT env
+// var, default 8080). In production, uses `iframeSrcLive` (empty string, so
+// the iframe src becomes a relative path on the docs domain).
+function useIframeSrc(path) {
+  const { siteConfig } = useDocusaurusContext();
+  const { iframeSrcDev, iframeSrcLive } = siteConfig.customFields;
+  return (isLocalhost ? iframeSrcDev : iframeSrcLive) + path;
 }
 
 // Theme-application + scroll-patches lifecycle for an iframe. Re-applies the
@@ -324,7 +334,7 @@ function ResizableFrame({ path, height }) {
   } = useResizable();
   const handleIframeLoad = useIframeBehavior(iframeRef);
 
-  const iframeSrc = (isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path;
+  const iframeSrc = useIframeSrc(path);
 
   const iframeStyles = css`
     min-height: 100px;
@@ -357,7 +367,7 @@ function PhoneFrame({ path, variant }) {
   const iframeRef = useRef(null);
   const handleIframeLoad = useIframeBehavior(iframeRef);
 
-  const iframeSrc = (isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path;
+  const iframeSrc = useIframeSrc(path);
   const sizeStyles = variant === 'mobile' ? phoneMobileSize : phoneDesktopSize;
 
   return (
