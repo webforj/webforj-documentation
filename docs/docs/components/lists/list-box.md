@@ -42,10 +42,10 @@ On touch devices, when multiple selection is enabled, users can select multiple 
 
 Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a letter key while the `ListBox` has focus will select the option that begins with that letter, or cycle through the options beginning with that letter should multiple options exist.
 
-<ComponentDemo 
-path='/webforj/listboxmultipleselection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java'
-height = '250px'
+<ComponentDemo
+path='/webforj/listboxmultipleselection'
+files={['src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java']}
+height='250px'
 />
 
 ## Styling {#styling}

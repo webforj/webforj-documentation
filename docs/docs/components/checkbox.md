@@ -37,10 +37,10 @@ Check boxes can utilize the <JavadocLink type="foundation" location="com/webforj
 
 Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the text is supported by use of the <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Show below are the two settings: <br/>
 
-<ComponentDemo 
-path='/webforj/checkboxhorizontaltext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxHorizontalTextView.java'
-height = '200px'
+<ComponentDemo
+path='/webforj/checkboxhorizontaltext'
+files={['src/main/java/com/webforj/samples/views/checkbox/CheckboxHorizontalTextView.java']}
+height='200px'
 />
 
 <br/>
@@ -53,10 +53,10 @@ The `CheckBox` component supports indeterminism, which is a UI pattern commonly 
 
 - **Hierarchical data**: Indeterminism can be employed in scenarios where there is a hierarchical relationship between CheckBoxes. For example, when selecting categories and subcategories, indeterminism can represent that some subcategories are selected while others are not, and the parent component is in the indeterminate state.
 
-<ComponentDemo 
-path='/webforj/checkboxindeterminate?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/checkboxindeterminate'
+files={['src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java']}
+height='150px'
 />
 
 ## Styling {#styling}
@@ -66,10 +66,10 @@ height = '150px'
 The following <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS.
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
-<ComponentDemo 
-path='/webforj/checkboxexpanse?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/checkboxexpanse'
+files={['src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java']}
+height='150px'
 />
 
 <br/>

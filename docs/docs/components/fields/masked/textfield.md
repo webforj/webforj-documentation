@@ -62,9 +62,9 @@ If the mask only contains `X`, the field behaves like a standard [`TextField`](.
 This is useful when you want to reserve the ability to format without applying strict character rules.
 :::
 
-<ComponentDemo 
-path='/webforj/maskedtextfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldView.java'
+<ComponentDemo
+path='/webforj/maskedtextfield'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldView.java']}
 height='250px'
 />
 
@@ -106,9 +106,9 @@ field.restoreValue();
 
 You can set the value to restore with `setRestoreValue()`. If no restore value is set, the field will revert to the initial value at the time it was rendered.
 
-<ComponentDemo 
-path='/webforj/maskedtextfieldrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldRestoreView.java'
+<ComponentDemo
+path='/webforj/maskedtextfieldrestore'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldRestoreView.java']}
 height='200px'
 />
 
@@ -117,9 +117,9 @@ height='200px'
 The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#basics) by adding spinner controls that let users cycle through a list of predefined values. 
 This improves the user experience in situations where the input should be constrained to a fixed set of valid options.
 
-<ComponentDemo 
-path='/webforj/maskedtextfieldspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldSpinnerView.java'
+<ComponentDemo
+path='/webforj/maskedtextfieldspinner'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldSpinnerView.java']}
 height='120px'
 />
 

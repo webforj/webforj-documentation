@@ -28,10 +28,12 @@ Toast toast = new Toast("Operation completed successfully!", 3000, Theme.SUCCESS
 toast.open();
 ```
 
-<ComponentDemo 
-path='/webforj/toast?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastView.java'
-cssURL='/css/toast/toastTheme.css'
+<ComponentDemo
+path='/webforj/toast'
+files={[
+  'src/main/java/com/webforj/samples/views/toast/ToastView.java',
+  'src/main/resources/static/css/toast/toastTheme.css',
+]}
 height='200px'
 />
 
@@ -93,9 +95,9 @@ toast.setPlacement(Toast.Placement.TOP_LEFT);
 toast.open();
 ```
 
-<ComponentDemo 
-path='/webforj/toastplacement?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java'
+<ComponentDemo
+path='/webforj/toastplacement'
+files={['src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java']}
 height='600px'
 />
 
@@ -109,9 +111,9 @@ The `Toast` component can display multiple notifications simultaneously, stackin
 
 Although `Toast` notifications don't require user interaction by default, webforJ allows you to add buttons or other interactive elements to make them more useful than simple notifications. 
 
-<ComponentDemo 
-path='/webforj/toastcookies?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java'
+<ComponentDemo
+path='/webforj/toastcookies'
+files={['src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java']}
 height='350px'
 />
 
@@ -140,10 +142,12 @@ To add a custom theme to a `Toast`, you can define custom CSS variables, which m
 Since the `Toast` isn't located in a specific position in the DOM, you can target it using CSS variables. These variables make it easy to apply consistent custom styles across all Toast notifications.
 :::
 
-<ComponentDemo 
-path='/webforj/toasttheme?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeView.java'
-cssURL='/css/toast/toastTheme.css'
+<ComponentDemo
+path='/webforj/toasttheme'
+files={[
+  'src/main/java/com/webforj/samples/views/toast/ToastThemeView.java',
+  'src/main/resources/static/css/toast/toastTheme.css',
+]}
 height='200px'
 />
 

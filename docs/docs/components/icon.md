@@ -20,9 +20,9 @@ Additionally, `Icon` components are loaded on demand from a content delivery net
 When creating an `Icon`, you'll need to identify a specific pool and the name of the icon itself.
 Some icons also offer the choice between an outlined or a filled version via [variations](#variations).
 
-<ComponentDemo 
-path='/webforj/iconbasics?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconBasicsView.java'
+<ComponentDemo
+path='/webforj/iconbasics'
+files={['src/main/java/com/webforj/samples/views/icon/IconBasicsView.java']}
 height='100px'
 />
 
@@ -87,9 +87,9 @@ Icon music = FontAwesomeIcon.create("user", FontAwesomeIcon.Variate.SOLID);
 
 The following demo illustrates how to use icons from different pools, apply variations, and seamlessly integrate them into components.
 
-<ComponentDemo 
-path='/webforj/iconvariations?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconVariationsView.java'
+<ComponentDemo
+path='/webforj/iconvariations'
+files={['src/main/java/com/webforj/samples/views/icon/IconVariationsView.java']}
 height='100px'
 />
 
@@ -112,9 +112,9 @@ Icons after a component's text is ideal for components that either offer supplem
 
 Ultimately, consistency is key. Once you choose a style, maintain it across your site for a cohesive and user-friendly design.
    
-<ComponentDemo 
-path='/webforj/iconprefixsuffix?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java'
+<ComponentDemo
+path='/webforj/iconprefixsuffix'
+files={['src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java']}
 height='100px'
 />️
 

@@ -10,10 +10,12 @@ The following example uses a user-defined criteria from the search field and the
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/tablefiltering?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableFilteringView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+path='/webforj/tablefiltering'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableFilteringView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->

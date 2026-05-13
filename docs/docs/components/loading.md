@@ -18,11 +18,13 @@ The simplest way to create a `Loading` component is by initializing it without a
 
 Here's an example of creating a `Loading` component with a message:
 
-<ComponentDemo 
-path='/webforj/loadingdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java'
-cssURL='/css/loadingstyles/loadingdemo.css'
-height = '300px'
+<ComponentDemo
+path='/webforj/loadingdemo'
+files={[
+  'src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java',
+  'src/main/resources/static/css/loadingstyles/loadingdemo.css',
+]}
+height='300px'
 />
 
 ## Scoping {#scoping}
@@ -60,11 +62,13 @@ The `Loading` component in webforJ includes a `Spinner` that visually indicates 
 
 Here's an example of how you can customize the spinner within a `Loading` component:
 
-<ComponentDemo 
-path='/webforj/loadingspinnerdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java'
-cssURL='/css/loadingstyles/loadingspinnerdemo.css'
-height = '300px'
+<ComponentDemo
+path='/webforj/loadingspinnerdemo'
+files={[
+  'src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java',
+  'src/main/resources/static/css/loadingstyles/loadingspinnerdemo.css',
+]}
+height='300px'
 />
 
 ## Use cases {#use-cases}

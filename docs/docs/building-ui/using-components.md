@@ -121,10 +121,12 @@ nameField.addValueChangeListener(e -> submitButton.setEnabled(!e.getValue().isBl
 
 The following login form demonstrates `setEnabled()` in practice. The sign-in button stays disabled until both fields have content, making it clear to the user that input is required before proceeding:
 
-<ComponentDemo 
-path='/webforj/conditionalstate?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/usingcomponents/conditionalstate.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java'
+<ComponentDemo
+path='/webforj/conditionalstate'
+files={[
+  'src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java',
+  'src/main/resources/static/usingcomponents/conditionalstate.css',
+]}
 height='400px'
 />
 
@@ -158,10 +160,12 @@ A common use of `setVisible()` in containers is revealing additional UI only whe
 
 The following settings panel demonstrates this: basic notification preferences are always visible, and a section of advanced options only appears when the user asks for it. The save button activates as soon as any setting is changed:
 
-<ComponentDemo 
-path='/webforj/progressivedisclosure?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/usingcomponents/progressivedisclosure.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/usingcomponents/ProgressiveDisclosureView.java'
+<ComponentDemo
+path='/webforj/progressivedisclosure'
+files={[
+  'src/main/java/com/webforj/samples/views/usingcomponents/ProgressiveDisclosureView.java',
+  'src/main/resources/static/usingcomponents/progressivedisclosure.css',
+]}
 height='450px'
 />
 
@@ -189,10 +193,12 @@ This is preferable to showing validation errors only after the user clicks submi
 
 In this contact form, the name field must not be empty, the email must contain an `@` symbol, and the message must be at least 10 characters long:
 
-<ComponentDemo 
-path='/webforj/formvalidation?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/usingcomponents/formvalidation.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java'
+<ComponentDemo
+path='/webforj/formvalidation'
+files={[
+  'src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java',
+  'src/main/resources/static/usingcomponents/formvalidation.css',
+]}
 height='500px'
 />
 

@@ -32,10 +32,10 @@ Use a [`RadioButtonGroup`](/docs/components/radiobuttongroup) to manage a set of
 Radio buttons can utilize the ```setText(String text)``` method, which will be positioned near the radio button according to the built-in `Position`.
 Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
-<ComponentDemo 
-path='/webforj/radiobuttontext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonTextView.java'
-height="120px"
+<ComponentDemo
+path='/webforj/radiobuttontext'
+files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonTextView.java']}
+height='120px'
 />
 
 
@@ -43,10 +43,10 @@ height="120px"
 
 Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
 
-<ComponentDemo 
-path='/webforj/radiobuttonactivation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonActivationView.java'
-height="175px"
+<ComponentDemo
+path='/webforj/radiobuttonactivation'
+files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonActivationView.java']}
+height='175px'
 />
 
 ### Manual activation {#manual-activation}
@@ -72,10 +72,10 @@ The default activation value is **`MANUAL`** activation.
 
 A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. 
 
-<ComponentDemo 
-path='/webforj/radiobuttonswitch?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchView.java'
-height="120px"
+<ComponentDemo
+path='/webforj/radiobuttonswitch'
+files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchView.java']}
+height='120px'
 />
 
 A `RadioButton` can be transformed into a switch that resembles a toggle switch or slider using one of two methods:

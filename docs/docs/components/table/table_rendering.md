@@ -97,9 +97,11 @@ The following example shows conditional rendering applied to an invoice status c
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/invoicelist'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/InvoiceListView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/Invoice.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/InvoiceService.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/InvoiceListView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Invoice.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/InvoiceService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -108,10 +110,12 @@ It also works well for numeric thresholds. This server dashboard uses `Condition
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/serverdashboard?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/ServerDashboardView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/Server.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/ServerService.java']}
+path='/webforj/serverdashboard'
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/ServerDashboardView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Server.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/ServerService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -160,8 +164,8 @@ The employee directory below uses a `CompositeRenderer` on the *Employee* column
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/employeedirectory?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java'
+path='/webforj/employeedirectory'
+files={['src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java']}
 height='600px'
 />
 <!-- vale on -->
@@ -268,8 +272,8 @@ When `setLazyRender(true)` is set on a column, cells display a lightweight anima
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/lazyrender?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java'
+path='/webforj/lazyrender'
+files={['src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java']}
 height='600px'
 />
 <!-- vale on -->
@@ -286,10 +290,12 @@ webforJ ships with a comprehensive set of renderers for the most common use case
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/productcatalog?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/ProductCatalogView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/Product.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/renderers/ProductService.java']}
+path='/webforj/productcatalog'
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/ProductCatalogView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Product.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/ProductService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
