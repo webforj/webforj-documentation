@@ -1,25 +1,24 @@
 ---
 title: Badge
 sidebar_position: 8
-sidebar_class_name: new-content
-_i18n_hash: 83dfb4c5ec1d554fc78e7e860128fb46
+_i18n_hash: 1f599f2c8a833e09f2d945ed0ead5447
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-badge" />
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="badge" location="com/webforj/component/badge/Badge" top='true'/>
 
-Ein `Badge` ist ein kompaktes, visuell unterscheidbares Etikett, das verwendet wird, um Status, Zählungen oder kurze Stücke kontextbezogener Informationen zu übermitteln. Egal, ob Sie eine Benachrichtigungsanzahl kennzeichnen, ein Element als "Neu" markieren oder auf eine Warnung aufmerksam machen möchten, Badges bieten Ihnen eine leichte Möglichkeit, diese Informationen direkt in der Benutzeroberfläche anzuzeigen.
+Ein `Badge` ist ein kompaktes, visuell markantes Label, das verwendet wird, um Status, Zähler oder kurze kontextuelle Informationen zu vermitteln. Egal, ob Sie einen Benachrichtigungszähler kennzeichnen, ein Element als "Neu" markieren oder auf eine Warnung aufmerksam machen möchten, Badges bieten Ihnen eine leichte Möglichkeit, diese Informationen direkt in der Benutzeroberfläche anzuzeigen.
 
 <!-- INTRO_END -->
 
 :::tip Verwendung eines `Badge`
-Badges eignen sich gut für Benachrichtigungsanzahlen, Statusetiketten und kurze Metadaten wie Versionsmarkierungen oder Veröffentlichungszustände. Halten Sie den Badge-Text auf ein oder zwei Wörter beschränkt, damit das Etikett auf einen Blick lesbar ist.
+Badges eignen sich gut für Benachrichtigungszähler, Statuslabels und kurze Metadaten wie Versionsbezeichnungen oder Veröffentlichungszustände. Halten Sie den Badge-Text auf ein oder zwei Wörter, damit das Label auf einen Blick lesbar ist.
 :::
 
-## Erstellung eines Badges {#creating-a-badge}
+## Erstellen eines Badges {#creating-a-badge}
 
-Das einfachste `Badge` nimmt einen Textstring. Sie können auch direkt im Konstruktor ein `BadgeTheme` übergeben, um den visuellen Stil sofort festzulegen. Der Konstruktor ohne Argumente ist verfügbar, wenn Sie ein Badge dynamisch erstellen und es nach der Erstellung konfigurieren müssen.
+Das einfachste `Badge` nimmt eine Textzeichenfolge entgegen. Sie können auch ein `BadgeTheme` direkt im Konstruktor übergeben, um den visuellen Stil sofort festzulegen. Der Konstruktor ohne Argumente ist verfügbar, wenn Sie ein Badge dynamisch erstellen und es nach der Erstellung konfigurieren müssen.
 
 ```java
 Badge badge = new Badge("Neu");
@@ -35,7 +34,7 @@ status.setTheme(BadgeTheme.WARNING);
 
 ## Label {#label}
 
-Sie können den Textinhalt eines Badges jederzeit mit `setLabel()` setzen oder aktualisieren. Die Methode `setText()` ist ein Alias für denselben Vorgang; verwenden Sie, was im Kontext natürlicher klingt. Beide haben entsprechende Getter, `getLabel()` und `getText()`, falls Sie den aktuellen Wert zurücklesen müssen.
+Sie können den Textinhalt eines Badges jederzeit mit `setLabel()` festlegen oder aktualisieren. Die Methode `setText()` ist ein Alias für denselben Vorgang; verwenden Sie die, die im Kontext natürlicher wirkt. Beide haben entsprechende Getter, `getLabel()` und `getText()`, wenn Sie den aktuellen Wert zurücklesen müssen.
 
 ```java
 Badge badge = new Badge();
@@ -44,27 +43,27 @@ badge.setLabel("Aktualisiert");
 // Entsprechend
 badge.setText("Aktualisiert");
 
-// Den Wert zurücklesen
+// Wert zurücklesen
 String current = badge.getLabel();
 ```
 
 ## Icons {#icons}
 
-Manchmal ist ein visuelleren Ansatz nützlich, um Informationen mit einem `Badge` zu übermitteln. Badges unterstützen eingestellte Icon-Inhalte. Übergeben Sie ein Icon zusammen mit dem Text mit dem Konstruktor `Badge(String, Component...)` oder übergeben Sie nur ein Icon, um ein Icon-Only-Badge zu erstellen. Wenn es mit Text kombiniert wird, wird das Icon links vom Label gerendert.
+Manchmal ist ein visuellerer Ansatz nützlich, um Informationen mit einem `Badge` zu vermitteln. Badges unterstützen slot-in Icon-Inhalte. Übergeben Sie ein Icon zusammen mit dem Text unter Verwendung des `Badge(String, Component...)`-Konstruktors oder übergeben Sie nur ein Icon, um ein ikon-only Badge zu erstellen. In Kombination mit Text wird das Icon links vom Label angezeigt.
 
-Icon-only Badges eignen sich besonders gut für kompakte Statusanzeigen in dichten Layouts, wo ein kurzes Wort überladen wirken würde. Die Kombination eines Icons mit Text ist ein guter Mittelweg, wenn das Icon allein mehrdeutig sein könnte. Ein Statusymbol wird alleine weithin verstanden, aber das Hinzufügen eines kurzen Textlabels beseitigt Rätselraten für Erstnutzer. Sie können mehrere Komponenten an den Konstruktor übergeben, wenn Sie einen reichhaltigeren Präfix erstellen müssen, obwohl in der Praxis ein einzelnes Icon das häufigste Muster ist.
+Icon-only Badges eignen sich besonders gut für kompakte Statusanzeigen in dichten Layouts, in denen ein kurzes Wort überladen wirken würde. Die Kombination eines Icons mit Text ist ein guter Mittelweg, wenn das Icon allein möglicherweise mehrdeutig ist. Ein Statussymbol wird für sich genommen allgemein verstanden, aber das Hinzufügen eines kurzen Textlabels beseitigt das Raten für Erstbenutzer. Sie können mehrere Komponenten an den Konstruktor übergeben, wenn Sie einen reichhaltigeren Präfix komposieren müssen, obwohl in der Praxis ein einzelnes Icon das häufigste Muster ist.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgeicons?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeIconsView.java'
+path='/webforj/badgeicons'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeIconsView.java']}
 height='345px'
 />
 <!-- vale on -->
 
 ```java
 // Icon mit Text
-Badge done = new Badge("Fertig", FeatherIcon.CHECK_CIRCLE.create());
+Badge done = new Badge("Erledigt", FeatherIcon.CHECK_CIRCLE.create());
 done.setTheme(BadgeTheme.SUCCESS);
 
 // Nur Icon
@@ -76,51 +75,51 @@ check.setTheme(BadgeTheme.SUCCESS);
 
 ### Schaltflächen {#buttons}
 
-Fügen Sie einem `Button` ein `Badge` mithilfe von `setBadge()` hinzu. Das Badge erscheint in der oberen rechten Ecke des Buttons und überlappt die Kante des Buttons. Dies ist ein gängiges Muster für Benachrichtigungsanzahlen bei Toolbar-Aktionen oder Symbolschaltflächen. Da das Badge eine eigenständige Komponente ist, ist es völlig unabhängig vom Thema und der Größe des Buttons. Sie können eine primäre Schaltfläche mit einem Gefahren-Badge oder eine Geisterschaltfläche mit einem Erfolgsbadge kombinieren, und jede Seite der Kombination stylt sich selbstständig ohne Konflikte. Die Aktualisierung der Zahl später ist so einfach wie das Aufrufen von `badge.setLabel()` mit einem neuen Wert; der Button muss nicht berührt werden.
+Hängen Sie ein `Badge` an eine `Button` mit `setBadge()`. Das Badge erscheint in der oberen rechten Ecke der Schaltfläche und überlappt die Kante der Schaltfläche. Dies ist ein gängiges Muster für Benachrichtigungszähler bei Toolbar-Aktionen oder Iconschaltflächen. Da das Badge eine eigenständige Komponente ist, ist es vollständig unabhängig vom eigenen Thema und der Größe der Schaltfläche. Sie können eine primäre Schaltfläche mit einem Gefahren-Badge oder eine Geister-Schaltfläche mit einem Erfolg-Badge kombinieren, und jede Seite der Kombination gestaltet sich ohne Konflikte selbst. Die Aktualisierung der Zähler ist so einfach wie das Aufrufen von `badge.setLabel()` mit einem neuen Wert; die Schaltfläche muss nicht berührt werden.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgebuttons?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeButtonsView.java'
+path='/webforj/badgebuttons'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeButtonsView.java']}
 height='290px'
 />
 <!-- vale on -->
 
 ### Tabbed Pane {#tabbed-pane}
 
-Fügen Sie ein `Badge` als Suffix auf einem `Tab` mit `setSuffixComponent()` hinzu. Dies passt natürlich zu Zählungen oder Statusanzeigen im Stil eines Posteingangs auf jedem Tab. Es ist das Muster, das man bei E-Mail-Clients oder Aufgabenmanagern sieht, wo es wichtig ist, Aktivitäten in jedem Abschnitt auf einen Blick zu signalisieren. Das Badge befindet sich an der hinteren Kante des Tab-Labels, nach allen Präfix-Inhalten, und bleibt sichtbar, unabhängig davon, welcher Tab gerade aktiv ist. Diese Persistenz ist absichtlich: das Verstecken des Badges auf inaktiven Tabs würde es schwieriger machen zu wissen, welche Abschnitte Aufmerksamkeit benötigen, ohne zu jedem zu wechseln.
+Fügen Sie ein `Badge` als Suffix zu einem `Tab` mit `setSuffixComponent()` hinzu. Dies passt gut zu Zählern im Inbox-Stil oder Statusanzeigen auf jedem Tab. Es ist das Muster, das Sie in E-Mail-Clients oder Aufgabenmanagern sehen, wo es wichtig ist, Aktivitäten auf jedem Abschnitt auf einen Blick zu signalisieren. Das Badge sitzt am hinteren Ende des Tab-Labels, nach jedem Präfixinhalt, und bleibt sichtbar, unabhängig davon, welcher Tab gerade aktiv ist. Diese Persistenz ist Absicht: Das Verstecken des Badges auf inaktiven Tabs würde es schwieriger machen zu wissen, welche Abschnitte Aufmerksamkeit benötigen, ohne zu jedem zu wechseln.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgetabbedpane?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java'
+path='/webforj/badgetabbedpane'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java']}
 height='360px'
 />
 <!-- vale on -->
 
 ## Styling {#styling}
 
-Badges unterstützen mehrere Stilrichtungen: Themenfarben zur Übermittlung von Bedeutungen, einen Expansionsmaßstab zur Steuerung der Größe und CSS-Eigenschaften für eine feinere Anpassung.
+Badges unterstützen mehrere Styling-Dimensionen: Themenfarben zur Übermittlung von Bedeutungen, eine Expansionsskala zur Steuerung der Größe und CSS-Eigenschaften für eine feinkörnige Anpassung.
 
 ### Themen {#themes}
 
-Wie bei vielen Komponenten in webforJ, kommt das `Badge` in vierzehn Themen: sieben gefüllte und sieben umrandete Varianten.
+Wie bei vielen Komponenten in webforJ gibt es das `Badge` in vierzehn Themen: sieben gefüllte und sieben umrissene Varianten.
 
-Gefüllte Themen verwenden einen soliden Hintergrund und berechnen automatisch eine Textfarbe, die den Kontrastanforderungen entspricht. Umrandete Varianten verwenden stattdessen einen getönten Hintergrund mit einem farbigen Rand, was sie zu einer subtileren Option macht, wenn das Badge den umliegenden Inhalten ergänzen und nicht dominieren soll.
+Gefüllte Themen verwenden einen soliden Hintergrund und berechnen automatisch eine Textfarbe, die den Kontrastanforderungen entspricht. Umrissene Varianten verwenden stattdessen einen getönten Hintergrund mit einem farbigen Rand und bieten eine subtilere Option, wenn Sie möchten, dass das Badge die umgebenden Inhalte ergänzt, anstatt sie zu dominieren.
 
 Wenden Sie ein Thema mit `setTheme()` oder über den Konstruktor an.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgethemes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeThemesView.java'
+path='/webforj/badgethemes'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeThemesView.java']}
 height='260px'
 />
 <!-- vale on -->
 
 ### Benutzerdefinierte Farbe {#custom-color}
 
-Wenn die integrierten Themen nicht zu Ihrer Farbpalette passen, setzen Sie eine benutzerdefinierte Seedfarbe mit der CSS-Eigenschaft `--dwc-badge-seed`. Aus diesem einzelnen Wert leitet das Badge automatisch die Hintergrund-, Text- und Randfarben ab, sodass jede Kombination lesbar bleibt, ohne dass Sie jede einzeln angeben müssen. Das bedeutet, dass Sie ein Badge in jeder Farbe Ihres Designs mit Vertrauen gestalten können. Farbton, Sättigung und Helligkeit (HSL)-Werte sind hier besonders praktisch; das alleinige Tauschen des Farbtons reicht aus, um eine völlig andere Farbfamilie zu erzeugen, während der Kontrast intakt bleibt.
+Wenn die integrierten Themen nicht zu Ihrer Farbpalette passen, setzen Sie eine benutzerdefinierte Grundfarbe mit der CSS-Eigenschaft `--dwc-badge-seed`. Aus diesem einzelnen Wert leitet das Badge automatisch die Hintergrund-, Text- und Randfarben ab, sodass jede Kombination lesbar bleibt, ohne dass Sie jede individuell festlegen müssen. Das bedeutet, dass Sie ein Badge in jeder Farbe Ihres Designs mit Sicherheit gestalten können. Farbton, Sättigung und Helligkeit (HSL)-Werte sind hier besonders praktisch; das Wechseln des Farbtons allein reicht aus, um eine völlig andere Farbpalette zu erzeugen, während der Kontrast intakt bleibt.
 
 ```java
 Badge badge = new Badge("Benutzerdefiniert");
@@ -129,12 +128,12 @@ badge.setStyle("--dwc-badge-seed", "hsl(262, 52%, 47%)");
 
 ### Größen {#sizing}
 
-Verwenden Sie `setExpanse()`, um die Badge-Größe zu steuern. Neun Größen sind verfügbar, von `XXXSMALL` bis `XXXLARGE`, und die Standardeinstellung ist `SMALL`.
+Verwenden Sie `setExpanse()`, um die Badge-Größe zu steuern. Neun Größen sind verfügbar, die von `XXXSMALL` bis `XXXLARGE` reichen, und die Standardgröße ist `SMALL`.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgesizes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeSizesView.java'
+path='/webforj/badgesizes'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeSizesView.java']}
 height='300px'
 />
 <!-- vale on -->

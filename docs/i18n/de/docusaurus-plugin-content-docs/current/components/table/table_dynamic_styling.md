@@ -2,57 +2,63 @@
 sidebar_position: 21
 title: Dynamic Styling
 slug: styling
-_i18n_hash: 03c0fb81b4bcabef5db6dfb9785eef3d
+_i18n_hash: 8f910c729d1108faeaba860a2e0f3546
 ---
 <!-- vale off -->
 # Dynamisches Styling <DocChip chip='since' label='25.00' />
 <!-- vale on -->
 
-In webforJ 25 und höher ist es möglich, einzelne Zeilen und Zellen in der Tabelle mit benutzerdefinierten Teilnamen zu stylen. Diese Namen können dynamisch basierend auf der Logik Ihrer Anwendung zugewiesen werden, wodurch Sie eine präzise Kontrolle über das Erscheinungsbild der Tabelle erhalten.
+In webforJ 25 und höher ist es möglich, einzelne Zeilen und Zellen in der Tabelle mit benutzerdefinierten Teilnamen zu stylen. Diese Namen können dynamisch basierend auf der Logik Ihrer Anwendung zugewiesen werden, wodurch Sie eine feine Kontrolle über das Erscheinungsbild der Tabelle erhalten.
 
 ## Zeilenstyling {#row-styling}
 
-Die Methode `setRowPartProvider()` weist Teilnamen an ganze Zeilen basierend auf dem enthaltenen Datenobjekt zu. Dadurch können Sie vollständige Zeilen hervorheben, die bestimmte Bedingungen erfüllen – zum Beispiel abwechselnde Hintergrundfarben für gerade Zeilen.
+Die Methode `setRowPartProvider()` weist ganzen Zeilen basierend auf dem Datenelement, das sie enthalten, Teilnamen zu. Dies ermöglicht es Ihnen, vollständige Zeilen hervorzuheben, die bestimmten Bedingungen entsprechen—zum Beispiel abwechselnde Hintergrundfarben für gerade Zeilen.
 
-Diese Stilenamen können mit dem `::part()`-Selector in Ihrem CSS angesprochen werden.
+Diese Stilenamen können in Ihrem CSS mit dem `::part()`-Selektor angesprochen werden.
 
-:::tip Schattenparts
-Der `::part()`-Selector ist ein spezielles CSS-Feature, das es Ihnen ermöglicht, Elemente im Shadow DOM eines Components zu stylen – solange diese Elemente ein `part`-Attribut bereitstellen. Dies ist besonders nützlich, um interne Teile von webforJ-Komponenten, wie Zeilen oder Zellen in einer Tabelle, zu stylen.
+:::tip Schattenteile
+Der `::part()`-Selektor ist ein spezielles CSS-Feature, das es Ihnen ermöglicht, Elemente im Schatten-DOM eines Komponents zu stylen—solange diese Elemente ein `part`-Attribut exponieren. Dies ist besonders nützlich für das Styling interner Teile von webforJ-Komponenten, wie Zeilen oder Zellen in einer Tabelle.
 
-Für weitere Informationen darüber, wie Schattenparts funktionieren und wie Sie sie definieren und gezielt ansprechen, siehe den Abschnitt [Styling](../../styling/shadow-parts).
+Für weitere Informationen darüber, wie Schattenteile funktionieren und wie man sie definiert und anspricht, siehe den Abschnitt [Styling](../../styling/shadow-parts).
 :::
 
 
-<ComponentDemo 
-path='/webforj/tablerowstyling?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableRowStylingView.java'
-cssURL='/css/table/table-row-styling-view.css'
+<ComponentDemo
+path='/webforj/tablerowstyling'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableRowStylingView.java',
+  'src/main/resources/static/css/table/table-row-styling-view.css',
+]}
 height='300px'
 />
 
-## Zellstylings {#cell-styling}
+## Zellenstyling {#cell-styling}
 
-Die Methode `setCellPartProvider()` stylt einzelne Zellen basierend auf dem Datenobjekt und der zugehörigen Spalte. Dies ist ideal, um spezifische Werte hervorzuheben, wie das Hervorheben von Altersangaben, die einen Schwellenwert überschreiten, oder ungültigen Einträgen.
+Die Methode `setCellPartProvider()` stylt einzelne Zellen basierend sowohl auf dem Datenelement als auch auf der Spalte, zu der sie gehören. Dies macht es ideal, um spezifische Werte hervorzuheben, wie zum Beispiel Alter, die einen Schwellenwert überschreiten oder ungültige Einträge.
 
-Ähnlich wie bei Zeilenparts werden Zellparts durch einen Namen definiert und mit dem `::part()`-Selector angesprochen.
+Wie bei Zeilenpartien sind Zellteile durch einen Namen definiert und werden mit dem `::part()`-Selektor angesprochen.
 
-<ComponentDemo 
-path='/webforj/tablecellstyling?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java'
-cssURL='/css/table/table-cell-styling-view.css'
+<ComponentDemo
+path='/webforj/tablecellstyling'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java',
+  'src/main/resources/static/css/table/table-cell-styling-view.css',
+]}
 height='300px'
 />
 
-## Reaktion auf Datenaktualisierungen {#reacting-to-data-updates}
+## Reagieren auf Datenaktualisierungen {#reacting-to-data-updates}
 
-Wenn Ihre Anwendung Daten programmgesteuert ändert, wie beispielsweise das Aktualisieren des Alters eines Benutzers, wird die Tabelle automatisch neu bewertet und alle zugehörigen Zeilen- oder Zellstylings erneut angewendet, sobald das aktualisierte Element im Repository übergeben wird.
+Wenn Ihre Anwendung Daten programmgesteuert ändert, wie zum Beispiel das Alter eines Benutzers aktualisiert, wird die Tabelle automatisch neu bewertet und alle zugehörigen Zeilen- oder Zellstile erneut angewendet, sobald das aktualisierte Element im Repository gespeichert ist.
 
-In diesem Demo werden die Zellen in der Alters-Spalte basierend auf einem Schwellenwert gestylt: Altersangaben über 30 erscheinen grün, während Altersangaben von 30 und darunter rot erscheinen. Das Klicken auf die Schaltfläche wechselt das Alter von Alice zwischen 28 und 31, wodurch `setCellPartProvider` ausgelöst wird, um den entsprechenden Stil nach der Datenübergabe erneut anzuwenden.
+In dieser Demo werden die Zellen in der Alters-Spalte basierend auf einem Schwellenwert gestylt: Alter über 30 erscheint grün, während Alter 30 und darunter rot erscheinen. Durch Klicken auf die Schaltfläche wird Alices Alter zwischen 28 und 31 umgeschaltet, wodurch `setCellPartProvider` aufgefordert wird, den entsprechenden Stil erneut anzuwenden, wenn die Daten gespeichert werden.
 
-<ComponentDemo 
-path='/webforj/tabledynamicstyling?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableDynamicStylingView.java'
-cssURL='/css/table/table-dynamic-styling-view.css'
+<ComponentDemo
+path='/webforj/tabledynamicstyling'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableDynamicStylingView.java',
+  'src/main/resources/static/css/table/table-dynamic-styling-view.css',
+]}
 height='475px'
 />
 
@@ -61,27 +67,27 @@ height='475px'
 Aktivieren Sie abwechselnde Hintergrundfarben für Zeilen, um die Lesbarkeit zu verbessern:
 
 ```java
-// Gestreifte Zeilen-Styling anwenden
+// Gestreifte Zeilen-Darstellung anwenden
 table.setStriped(true);
 ```
 
-## Grenzen {#borders}
+## Rahmen {#borders}
 
-Konfigurieren Sie, welche Grenzen um die `Tabelle`, Spalten und Zeilen angezeigt werden:
+Konfigurieren Sie, welche Rahmen um die `Tabelle`, Spalten und Zeilen angezeigt werden:
 
 ```java
-// Alle Grenzen aktivieren
+// Alle Rahmen aktivieren
 table.setBordersVisible(EnumSet.of(Table.Border.AROUND, Table.Border.COLUMNS, Table.Border.ROWS));
 
-// Alle Grenzen entfernen
+// Alle Rahmen entfernen
 table.setBordersVisible(EnumSet.noneOf(Table.Border.class));
 ```
 
-Die folgende Demo zeigt eine einfache Möglichkeit, das visuelle Erscheinungsbild Ihrer `Tabelle` mit dem Rest Ihrer Anwendung abzugleichen, indem Sie `setStriped()` und `setBordersVisible()` verwenden.
+Die folgende Demo zeigt eine einfache Möglichkeit, das visuelle Erscheinungsbild Ihrer `Tabelle` mit dem Rest Ihrer Anwendung mithilfe von `setStriped()` und `setBordersVisible()` abzugleichen.
 
-<ComponentDemo 
-path='/webforj/tablelayoutstyling?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java'
+<ComponentDemo
+path='/webforj/tablelayoutstyling'
+files={['src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java']}
 height='300px'
 />
 
