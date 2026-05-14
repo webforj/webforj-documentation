@@ -3,19 +3,19 @@ sidebar_position: 6
 title: Element Composite
 sidebar_class_name: has-new-content
 slug: element_composite
-_i18n_hash: 1fc82a7db864ec48118fb611a94a57fc
+_i18n_hash: c64ec386d273ab7facb974f5577afecf
 ---
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-`ElementComposite`-luokka toimii monipuolisena perustana yhdistelementtien hallintaan webforJ-sovelluksissa. Sen ensisijainen tarkoitus on helpottaa HTML-elementtien, joita edustaa `Element`-luokka, välistä vuorovaikutusta tarjoamalla jäsennellyn lähestymistavan ominaisuuksien, attribuuttien ja tapahtumakuuntelijoiden käsittelyyn. Se mahdollistaa elementtien toteuttamisen ja uudelleenkäytön sovelluksessa. Käytä `ElementComposite`-luokkaa, kun toteutat Web-komponentteja webforJ-sovelluksissa.
+`ElementComposite`-luokka toimii monipuolisena perustana yhdistettyjen elementtien hallintaan webforJ-sovelluksissa. Sen ensisijainen tarkoitus on helpottaa vuorovaikutusta HTML-elementtien kanssa, joita edustaa `Element`-luokka, tarjoamalla rakenteellisen lähestymistavan ominaisuuksien, attribuuttien ja tapahtumakuuntelijoiden käsittelyyn. Se mahdollistaa elementtien toteuttamisen ja uudelleenkäytön sovelluksessa. Käytä `ElementComposite`-luokkaa Web-komponenttien toteuttamiseen, joita käytetään webforJ-sovelluksissa.
 
-Käytettäessä `ElementComposite`-luokkaa `getElement()`-metodi antaa pääsyn taustalla olevaan `Element`-komponenttiin. Samoin `getNodeName()`-metodi antaa nimen tälle solmulle DOM:ssa.
+`ElementComposite`-luokkaa käytettäessä `getElement()`-metodi antaa sinulle pääsyn taustalla olevaan `Element`-komponenttiin. Vastaavasti `getNodeName()`-metodi antaa sinulle kyseisen solmun nimen DOM:issa.
 
 :::tip
-On mahdollista tehdä kaikki `Element`-luokan itsensä avulla ilman `ElementComposite`-luokan käyttöä. Kuitenkin `ElementComposite`-luokassa tarjotut menetelmät antavat käyttäjille mahdollisuuden uudelleenkäyttää jo tehtyä työtä.
+On mahdollista tehdä kaikki `Element`-luokan itsensä kanssa, ilman `ElementComposite`-luokan käyttöä. Kuitenkin `ElementComposite`-luokan metodit tarjoavat sinulle tavan käyttää uudelleen työtäsi.
 :::
 
-Tämä opas näyttää, miten toteuttaa [Shoelace QR-koodi web-komponentti](https://shoelace.style/components/qr-code) käyttäen `ElementComposite`-luokkaa.
+Tämän sivun esimerkit osoittavat, kuinka toteuttaa [Shoelace QR-koodi web-komponentti](https://shoelace.style/components/qr-code) käyttäen `ElementComposite`-luokkaa.
 
 <ComponentDemo 
 path='/webforj/qrdemo?' 
@@ -25,40 +25,40 @@ height='175px'
 
 ## Ominaisuudet ja attribuuttikuvastot {#property-and-attribute-descriptors}
 
-Ominaisuudet ja attribuutit web-komponenteissa edustavat komponentin tilaa. Niitä käytetään usein datan tai konfiguraation hallintaan. `ElementComposite`-luokka tarjoaa kätevän tavan työskennellä ominaisuuksien ja attribuuttien kanssa.
+Ominaisuudet ja attribuutit web-komponenteissa kuvaavat komponentin tilaa. Niitä käytetään usein datan tai konfiguraation hallintaan. `ElementComposite`-luokka tarjoaa kätevän tavan työskennellä ominaisuuksien ja attribuuttien kanssa.
 
-Ominaisuudet ja attribuutit voidaan määritellä ja alustaa `PropertyDescriptor`-jäseninä kirjoitettavassa `ElementComposite`-luokassa ja käyttää sitten koodissa. Määritä ominaisuudet ja attribuutit käyttämällä `set()`-metodia arvon asettamiseksi ominaisuudelle. Esimerkiksi `set(PropertyDescriptor<V> property, V value)` asettaa ominaisuuden tiettyyn arvoon.
+Ominaisuudet ja attribuutit voidaan määrittää ja alustaa `PropertyDescriptor`-jäseninä kirjoitettavassa `ElementComposite`-luokassa ja niitä voidaan käyttää koodissa. Ominaisuuksien ja attribuuttien määrittämiseksi käytä `set()`-metodia ominaisuuden arvon asettamiseen. Esimerkiksi, `set(PropertyDescriptor<V> property, V value)` asettaa ominaisuuden määritettyyn arvoon.
 
 :::info
-Ominaisuuksiin pääsee käsiksi ja niitä muokataan komponentin sisäisessä koodissa, eivätkä ne heijastu DOM:ssa. Toisaalta, attribuutit ovat osa komponentin ulkoista rajapintaa ja niitä voidaan käyttää tietojen siirtämiseen komponenttiin ulkopuolelta, tarjoten tavan ulkoisille elementeille tai skripteille konfiguroida komponenttia.
+Ominaisuuksia päästään käsittelemään ja manipuloimaan komponentin sisäisessä koodissa, eivätkä ne heijastu DOM:iin. Toisaalta attribuutit ovat osa komponentin ulkoista rajapintaa ja niitä voidaan käyttää tiedon siirtämiseen komponenttiin ulkopuolelta, mikä tarjoaa tavan ulkoisille elementeille tai skripteille konfiguroida komponenttia.
 :::
 
 ```java
-// Esimerkillinen ominaisuus nimeltä TITLE ElementComposite-luokassa
+// Esimerkki ominaisuudesta nimeltä TITLE ElementComposite-luokassa
 private final PropertyDescriptor<String> TITLE = PropertyDescriptor.property("title", "");
-// Esimerkillinen attribuutti nimeltä VALUE ElementComposite-luokassa
+// Esimerkki attribuutista nimeltä VALUE ElementComposite-luokassa
 private final PropertyDescriptor<String> VALUE = PropertyDescriptor.attribute("value", "");
 //...
-set(TITLE, "My Title");
-set(VALUE, "My Value");
+set(TITLE, "Otsikkoni");
+set(VALUE, "Arvoni");
 ```
 
-Ominaisuuden asettamisen lisäksi käytä `get()`-metodia `ElementComposite`-luokassa pääsyyn ja ominaisuuksien lukemiseen. `get()`-metodille voidaan antaa valinnainen `boolean`-arvo, joka on oletusarvoisesti epätosi, määräämään, saako metodi tehdä matkan asiakkaalle arvon hakemiseksi. Tämä vaikuttaa suorituskykyyn, mutta voi olla tarpeellista, jos ominaisuutta voidaan muokata pelkästään asiakkaalla.
+Käytä `get()`-metodia `ElementComposite`-luokassa pääsyyn ominaisuuksiin ja niiden lukemiseen. `get()`-metodi voi hyväksyä valinnaisen `boolean`-arvon, joka on oletuksena false, joka määrää, tekeekö metodi matkan asiakkaalle arvon hakemiseksi. Tämä vaikuttaa suorituskykyyn, mutta voi olla tarpeen, jos ominaisuutta voidaan muuttaa vain asiakkaalla.
 
-Metodille voidaan myös antaa `Type`, joka määrää, mihin haettu tulos muunnetaan.
+`Type`-tyyppi voidaan myös välittää metodille, joka määrää, mihin tulosta tulee käsittää.
 
 :::tip
-Tämä `Type` ei ole välttämätön, ja se lisää ylimääräisen tason spesifikaatiota, kun dataa haetaan.
+Tämä `Type` ei ole ilmeisesti välttämätön, ja lisää ylimääräisen määrittelyn kerroksen, kun dataa haetaan.
 :::
 
 ```java
-// Esimerkillinen ominaisuus nimeltä TITLE ElementComposite-luokassa
+// Esimerkki ominaisuudesta nimeltä TITLE ElementComposite-luokassa
 private final PropertyDescriptor<String> TITLE = PropertyDescriptor.property("title", "");
 //...
 String title = get(TITLE, false, String);
 ```
 
-Alla olevassa demon esimerkissä ominaisuudet on lisätty QR-koodille web-komponentin dokumentaation perusteella. Menetelmiä on sitten toteutettu, jotka mahdollistavat käyttäjien saada ja asettaa toteutettuja erilaisia ominaisuuksia.
+Alla olevassa demossa ominaisuuksia on lisätty QR-koodille dokumentaation perusteella web-komponentille. Menetelmiä on sitten toteutettu, mikä mahdollistaa käyttäjien saada ja asettaa erilaisia ominaisuuksia, joita on toteutettu.
 
 <ComponentDemo 
 path='/webforj/qrproperties?' 
@@ -68,38 +68,38 @@ height='250px'
 
 ## Tapahtumien rekisteröinti {#event-registration}
 
-Tapahtumat mahdollistavat viestinnän eri osien välillä webforJ-sovelluksessa. `ElementComposite`-luokka tarjoaa tapahtumien käsittelyä, jossa on tukea debounce-, throttle-, suodatus- ja mukautetulle tapahtumatietojen keruulle.
+Tapahtumat mahdollistavat viestinnän eri osien välillä webforJ-sovelluksessa. `ElementComposite`-luokka tarjoaa tapahtumien käsittelyn, joka tukee debounce-toimintoa, throttlingia, suodatusta, ja mukautetun tapahtumatiedon keräämistä.
 
 Rekisteröi tapahtumakuuntelijat käyttämällä `addEventListener()`-metodia:
 
 ```java
-// Esimerkki: Lisää hiiren napsautustapahtumakuuntelija
+// Esimerkki: Klikkaustapahtuman kuuntelijan lisääminen
 addEventListener(ElementClickEvent.class, event -> {
-  // Käsittele napsautustapahtuma
+  // Käsittele klikkauksen tapahtuma
 });
 ```
 
 :::info
-`ElementComposite`-tapahtumat ovat erilaisia kuin `Element`-tapahtumat siten, että tämä ei salli mitä tahansa luokkaa, vaan vain määriteltyjä `Event`-luokkia.
+`ElementComposite`-tapahtumat poikkeavat `Element`-tapahtumista siten, että ne eivät salli mitä tahansa luokkaa, vaan vain määritettyjä `Event`-luokkia.
 :::
 
 ### Valmiit tapahtumaluokat {#built-in-event-classes}
 
-webforJ tarjoaa valmiit tapahtumaluokat, joihin on tyypitetty pääsy datalle:
+webforJ tarjoaa valmiiksi rakennettuja tapahtumaluokkia, joilla on tyypitettyä datan käyttöä:
 
-- **ElementClickEvent**: Hiiren napsautustapahtumat koordinaateilla (`getClientX()`, `getClientY()`), painetietoja (`getButton()`) ja modifier-näppäimiä (`isCtrlKey()`, `isShiftKey()`, jne.)
-- **ElementDefinedEvent**: Laukaisee, kun mukautettu elementti määritellään DOM:ssa ja on valmis käytettäväksi
-- **ElementEvent**: Perustapahtumaluokka, joka tarjoaa pääsyn raakadatasiin, tapahtumatyyppiin (`getType()`) ja tapahtuma-ID:hen (`getId()`)
+- **ElementClickEvent**: Hiiren klikkaustapahtumat koordinaateilla (`getClientX()`, `getClientY()`), painiketuototiedot (`getButton()`), ja modifier-näppäimet (`isCtrlKey()`, `isShiftKey()`, jne.)
+- **ElementDefinedEvent**: Laukaisee, kun mukautettu elementti määritellään DOM:issa ja on valmis käytettäväksi
+- **ElementEvent**: Perustapahtumaluokka, joka tarjoaa pääsyn raakaan tapahtumatietoon, tapahtuman tyyppiin (`getType()`) ja tapahtuman ID:hen (`getId()`)
 
-### Tapahtumatietopaketit {#event-payloads}
+### Tapahtuman payloadit {#event-payloads}
 
-Tapahtumat kuljettavat tietoa asiakkaalta Java-koodillesi. Pääset käsiksi tähän dataan käyttämällä `getData()` raakadatalle tai käytä tyypitettyjä metodeja, kun niitä on käytettävissä valmiissa tapahtumaluokissa. Lisätietoja tapahtumatietopaketin tehokkaasta käytöstä löytyy [Tapahtumat-oppaasta](../building-ui/events).
+Tapahtumat kuljettavat dataa asiakkaalta Java-koodillesi. Pääset tähän dataan käsiksi `getData()`-metodin avulla raakojen tapahtumatietojen osalta tai käytä tyypitettyjä menetelmiä silloin, kun ne ovat saatavilla valmiiksi rakennetuissa tapahtumaluokissa. Lisätietoja tapahtuman payloadien tehokkaasta käytöstä löydät [Tapahtumat-oppaasta](../building-ui/events).
 
 ## Mukautetut tapahtumaluokat {#custom-event-classes}
 
-Erityistä tapahtumakäsittelyä varten luo mukautettuja tapahtumaluokkia, joissa on konfiguroidut tietopaketit käyttämällä `@EventName` ja `@EventOptions` -annotaatioita.
+Erityisiä tapahtumien käsittelyä varten luo mukautettuja tapahtumaluokkia, joissa on määritetyt payloadit käyttämällä `@EventName` ja `@EventOptions` -annotaatioita.
 
-Alla olevassa esimerkissä on luotu napsautustapahtuma, joka on sitten lisätty QR-koodikomponenttiin. Tämä tapahtuma, kun se laukaistaan, näyttää hiiren "X"-koordinaatin napsautettaessa komponenttia, joka annetaan Java-tapahtumalle datana. Menetelmä on sitten toteutettu, jotta käyttäjä voi käyttää tätä dataa, mikä on tapa, jolla se näytetään sovelluksessa.
+Alla olevassa esimerkissä on luotu klikkaustapahtuma, joka on sitten lisätty QR-koodikomponenttiin. Tämä tapahtuma, kun se laukaistaan, näyttää hiiren "X" koordinaatin klikkauksen aikana komponentin, joka annetaan Java-tapahtumalle datana. Toteutetaan sitten menetelmä, joka mahdollistaa käyttäjän päästä tähän dataan käsiksi, mikä on se, kuinka se näytetään sovelluksessa.
 
 <ComponentDemo 
 path='/webforj/qrevent?' 
@@ -109,22 +109,22 @@ height='300px'
 
 ## `ElementEventOptions` {#elementeventoptions}
 
-`ElementEventOptions` antaa sinun mukauttaa tapahtumien käyttäytymistä konfiguroimalla, mitä dataa kerätään, milloin tapahtumat laukaistaan ja miten niitä käsitellään. Tässä on kattava koodipala, joka näyttää kaikki konfigurointivaihtoehdot:
+`ElementEventOptions` antaa sinun mukauttaa tapahtumakäyttäytymistä määrittämällä, mitä dataa kerätään, milloin tapahtumat laukaistaan ja miten niitä käsitellään. Tässä on kattava koodinäyte, joka näyttää kaikki konfigurointivaihtoehdot:
 
 ```java
 ElementEventOptions options = new ElementEventOptions()
-  // Kerää mukautettuja tietoja asiakkaalta
+  // Kerää mukautettua dataa asiakkaalta
   .addData("query", "component.value")
   .addData("timestamp", "Date.now()")
   .addData("isValid", "component.checkValidity()")
   
-  // Suorita JavaScript ennen kuin tapahtuma laukaistaan
+  // Suorita JavaScript ennen tapahtuman tulemista
   .setCode("component.classList.add('processing');")
   
-  // Laukaise vain, jos olosuhteet täyttyvät
+  // Laukaise vain, jos ehdot täyttyvät
   .setFilter("component.value.length >= 2")
   
-  // Viivytä suoritus, kunnes käyttäjä lakkaa kirjoittamasta (300ms)
+  // Viivästytä suorittamista, kunnes käyttäjä lopettaa kirjoittamisen (300ms)
   .setDebounce(300, DebouncePhase.TRAILING);
 
 addEventListener("input", this::handleSearch, options);
@@ -134,42 +134,42 @@ addEventListener("input", this::handleSearch, options);
 
 Hallitse, milloin ja kuinka usein tapahtumat laukaistaan:
 
-**Viivästys (Debouncing)** viivästyttää suorittamista, kunnes toiminta lakkaa:
+**Debouncing** viivyttää suorittamista, kunnes toiminta loppuu:
 
 ```java
 options.setDebounce(300, DebouncePhase.TRAILING); // Odota 300ms viimeisen tapahtuman jälkeen
 ```
 
-**Rajoitus (Throttling)** rajoittaa suorittamisen taajuutta:
+**Throttling** rajoittaa suoritusrajoituksia:
 
 ```java
-options.setThrottle(100); // Laukaise korkeintaan kerran 100ms välein
+options.setThrottle(100); // Laukaise enintään kerran 100ms aikana
 ```
 
-Saatavilla olevat viivästysvaiheet:
+Saatavilla olevat debounce-vaiheet:
 
 - `LEADING`: Laukaise heti, odota sitten
-- `TRAILING`: Odota rauhallista jaksoa, sitten laukaise (oletus)
-- `BOTH`: Laukaise heti ja rauhallisen jakson jälkeen
+- `TRAILING`: Odota hiljaista jaksoa, laukaise sitten (oletusarvo)
+- `BOTH`: Laukaise heti ja hiljaista jaksoa myöhemmin
 
 ## Asetusten yhdistäminen {#options-merging}
 
-Yhdistä tapahtumakonfiguraatioita eri lähteistä käyttämällä `mergeWith()`. Perusasetukset tarjoavat yhteisiä tietoja kaikille tapahtumille, kun taas erityiset asetukset lisäävät erikoiskonfiguraatioita. Myöhemmät asetukset ohittavat ristiriitaiset asetukset.
+Yhdistä tapahtumakonfiguraatiot eri lähteistä käyttäen `mergeWith()`. Perusasetukset tarjoavat yhteiset tiedot kaikille tapahtumille, kun taas erityiset asetukset lisäävät erikoistuneen konfiguraation. Myöhemmät asetukset korvaavat ristiriitaiset asetukset.
 
 ```java
 ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
 ```
 
-## Vuorovaikutus slotien kanssa {#interacting-with-slots}
+## Vuorovaikutus slotit {#interacting-with-slots}
 
-Web-komponentit käyttävät usein slotteja, jotta kehittäjät voivat määrittää komponentin rakenteen ulkopuolelta. Slotti on paikka web-komponentin sisällä, joka voidaan täyttää sisällöllä komponenttia käytettäessä. `ElementComposite`-luokan yhteydessä slotit tarjoavat tavan mukauttaa sisältöä komponentin sisällä. Seuraavat metodit on tarjottu, jotta kehittäjät voivat vuorovaikuttaa ja manipuloida slotteja:
+Web-komponentit käyttävät usein slotteja, jotta kehittäjät voivat määritellä komponentin rakenteen ulkopuolelta. Slot on paikka, joka on määritetty web-komponentin sisälle, ja joka voidaan täyttää sisällöllä komponentin käytön yhteydessä. `ElementComposite`-luokan yhteydessä slotit tarjoavat tavan mukauttaa sisältöä komponentissa. Seuraavat metodit mahdollistavat kehittäjille vuorovaikutuksen ja slotien manipuloinnin:
 
-1. **`findComponentSlot()`**: Tätä metodia käytetään etsimään tiettyä komponenttia kaikista slotteista komponenttijärjestelmässä. Se palauttaa slotin nimen, johon komponentti on sijoitettu. Jos komponenttia ei löydy mistään slotista, palautuu tyhjää merkkijonoa.
+1. **`findComponentSlot()`**: Tätä metodia käytetään etsimään tiettyä komponenttia kaikkien slotien väliltä komponenttijärjestelmässä. Se palauttaa slotin nimen, jossa komponentti sijaitsee. Jos komponenttia ei löydy mistään slotista, palautetaan tyhjää merkkijonoa.
 
-2. **`getComponentsInSlot()`**: Tämä metodi hakee luettelon annetuista komponenteista, jotka on määritetty tiettyyn slottiin komponenttijärjestelmässä. Valinnaisesti voit antaa tietyn luokkatyypin suodattaaksesi metodin tuloksia.
+2. **`getComponentsInSlot()`**: Tämä metodi noutaa luettelon komponenteista, jotka on määritetty tiettyyn slottiin komponenttijärjestelmässä. Valinnaisesti voit välittää tietyn luokkatyypin suodattaaksesi metodin tulokset.
 
-3. **`getFirstComponentInSlot()`**: Tämä metodi on suunniteltu hakemaan ensimmäinen komponentti, joka on määritetty slottiin. Valinnaisesti voit antaa tietyn luokkatyypin suodattaaksesi tämän metodin tuloksia.
+3. **`getFirstComponentInSlot()`**: Tämä metodi on suunniteltu hakemaan ensimmäinen komponentti, joka on määritetty slotille. Valinnaisesti voit välittää tietyn luokkatyypin suodattaaksesi tämän metodin tulokset.
 
-On myös mahdollista käyttää `add()`-metodia, jossa on `String`-parametri, määrittämään haluttu slotti, johon lisätä annettu komponentti.
+On myös mahdollista käyttää `add()`-metodia, jossa on `String`-parametri, määrittämään haluttu slot, johon lisätään välitetty komponentti.
 
-Nämä vuorovaikutukset antavat kehittäjille mahdollisuuden hyödyntää web-komponenttien voimaa tarjoamalla puhtaan ja suoraviivaisen API:n slotien, ominaisuuksien ja tapahtumien käsittelyyn `ElementComposite`-luokassa.
+Nämä vuorovaikutukset mahdollistavat kehittäjille web-komponenttien voiman hyödyntämisen tarjoamalla puhtaan ja yksinkertaisen API:n slotien, ominaisuuksien ja tapahtumien käsittelyyn `ElementComposite`-luokassa.
