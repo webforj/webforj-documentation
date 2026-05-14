@@ -38,7 +38,7 @@ public class RelativeTime extends ElementComposite {
 }
 ```
 
-The tag name must match the custom element registered on the client. Without this annotation, the framework cannot determine which element to create.
+The tag name must match the custom element registered on the client. Without this annotation, the framework can't determine which element to create.
 
 ### `@JavaScript` {#javascript}
 
@@ -58,7 +58,7 @@ See [Importing JavaScript files](../managing-resources/importing-assets#importin
 
 ### `@StyleSheet` {#stylesheet}
 
-The `@StyleSheet` annotation loads a CSS file the component depends on. It's useful for third-party components that ship a separate stylesheet, or for bundling component-specific styling alongside the wrapper.
+The `@StyleSheet` annotation loads a CSS file the component depends on. It's useful for third-party components that ship a separate style sheet, or for bundling component-specific styling alongside the wrapper.
 
 ```java
 @StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css")
