@@ -1,6 +1,7 @@
 ---
 title: File Upload
 sidebar_position: 20
+description: Capture client uploads with the FileUploadDialog, returning an UploadedFile that you can filter, move, and process server-side.
 ---
 
 <DocChip chip='shadow' />

@@ -1,6 +1,7 @@
 ---
 title: AppLayout
 sidebar_position: 5
+description: Build dashboards and admin shells with the AppLayout component, providing a fixed header, footer, sliding drawer, and scrollable content area.
 ---
 
 <DocChip chip='shadow' />

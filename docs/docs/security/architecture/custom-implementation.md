@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: Custom Implementation Example
+description: Build a session-based security stack by implementing SecurityConfiguration, SecurityContext, SecurityManager, and SecurityRegistrar.
 ---
 
 This guide walks through building a complete custom security implementation using session-based authentication. You'll learn how the four core interfaces work together by implementing them from scratch.

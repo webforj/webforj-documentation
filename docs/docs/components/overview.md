@@ -4,6 +4,7 @@ sidebar_position: 85
 hide_table_of_contents: true
 sidebar_class_name: has-new-content
 hide_giscus_comments: true
+description: Browse the webforJ UI component catalog covering layouts, data entry, navigation, feedback, and visualization components.
 ---
 
 <Head>

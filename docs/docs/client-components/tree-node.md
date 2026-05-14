@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-tree-node>
 sidebar_class_name: sidebar--item__hidden
 slug: tree-node
-description: A user guide article for the tree-node
+description: Style the dwc-tree-node label, icon, and expand toggle with CSS variables and shadow parts for selection and hover states.
 // pagination_prev: null
 // pagination_next: null
 ---

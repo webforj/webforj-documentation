@@ -1,6 +1,7 @@
 ---
 title: MaskedTextField
 sidebar_position: 15
+description: Enforce formatted text entry with the MaskedTextField, supporting mask characters for digits, letters, and literals for IDs and codes.
 ---
 
 <DocChip chip='shadow' />

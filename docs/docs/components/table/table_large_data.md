@@ -2,6 +2,7 @@
 sidebar_position: 25
 title: Large Data Sets
 slug: data
+description: Handle large Table datasets efficiently with virtual scrolling, dynamic row loading, DOM recycling, and overscan tuning.
 ---
 
 ## Virtual scrolling {#virtual-scrolling}

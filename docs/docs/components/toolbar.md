@@ -1,6 +1,7 @@
 ---
 title: Toolbar
 sidebar_position: 145
+description: Lay out action controls with the Toolbar component, placing components into Start, Title, Content, and End slots with compact mode.
 ---
 
 <DocChip chip="shadow" />

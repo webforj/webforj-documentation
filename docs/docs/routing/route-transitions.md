@@ -1,6 +1,7 @@
 ---
 sidebar_position: 12
 title: Route Transitions
+description: Animate route changes with the @RouteTransition annotation using fades, slides, and zooms powered by the View Transitions API.
 ---
 
 <!-- vale Google.Units = NO -->

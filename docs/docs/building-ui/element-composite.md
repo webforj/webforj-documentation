@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: Element Composite
+description: Wrap third-party web components in Java with ElementComposite using PropertyDescriptor, attribute mapping, and typed event listeners.
 sidebar_class_name: has-new-content
 slug: element_composite
 ---

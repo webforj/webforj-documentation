@@ -1,6 +1,7 @@
 ---
 title: Refresher
 sidebar_position: 101
+description: Enable pull-to-refresh on scrollable areas with the Refresher component, with pull, release, and refreshing states and i18n labels.
 ---
 
 <DocChip chip="shadow" />

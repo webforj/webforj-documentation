@@ -1,6 +1,7 @@
 ---
 title: Browser History
 sidebar_position: 30
+description: Navigate, push, and replace browser history entries from Java to control back, forward, and URL state without page reloads.
 ---
 
 <DocChip chip='since' label='24.12' />

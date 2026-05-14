@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-accordion-panel>
 sidebar_class_name: sidebar--item__hidden
 slug: accordion-panel
-description: A user guide article for the dwc-accordion-panel
+description: Style the dwc-accordion-panel client component using CSS variables, shadow parts, and slots for header, icon, and content customization.
 // pagination_prev: null
 // pagination_next: null
 ---

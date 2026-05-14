@@ -2,6 +2,7 @@
 sidebar_position: 15
 title: ListBox
 slug: listbox
+description: Show a scrollable, always-visible list with the ListBox component, supporting single or multiple selection and keyboard navigation.
 ---
 
 <DocChip chip='shadow' />

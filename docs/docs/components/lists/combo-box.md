@@ -2,6 +2,7 @@
 sidebar_position: 10
 title: ComboBox
 slug: combobox
+description: Combine a dropdown list with a text input in the ComboBox to let users select preset items or type custom values with placeholder support.
 ---
 
 <DocChip chip='shadow' />

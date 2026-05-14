@@ -2,6 +2,7 @@
 sidebar_position: 5
 title: ChoiceBox
 slug: choicebox
+description: Pick a single value from a fixed set with the ChoiceBox dropdown, including dropdown type styling, max row count, and keyboard navigation.
 ---
 
 <DocChip chip='shadow' />

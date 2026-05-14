@@ -1,6 +1,7 @@
 ---
 title: Login
 sidebar_position: 70
+description: Display an authentication dialog with the Login component, handling submission, validation, custom fields, and form action URLs.
 ---
 
 <DocChip chip='shadow' />

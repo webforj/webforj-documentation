@@ -3,6 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Connect webforJ UI components to Java backend models with two-way synchronization, validation, and transformation through BindingContext.
 ---
 
 <Head>

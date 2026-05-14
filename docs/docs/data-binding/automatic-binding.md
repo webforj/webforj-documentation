@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Automatic Binding
+description: Bind UI fields to bean properties automatically with BindingContext.of using UseProperty, BindingExclude, and UseValidator annotations.
 ---
 
 webforJ offers several features that streamline the configuration and automatic binding process for developers. This section demonstrates how to use these features effectively.

@@ -1,6 +1,7 @@
 ---
 title: InfiniteScroll
 sidebar_position: 60
+description: Load more content as users scroll with the InfiniteScroll component, emitting scroll events and showing a customizable loading spinner.
 ---
 
 <DocChip chip="shadow" />

@@ -1,6 +1,7 @@
 ---
 title: Accessing User
 sidebar_position: 4
+description: Read the current user, roles, and authorities from Spring Security's SecurityContextHolder inside webforJ views.
 ---
 
 Spring Security stores authenticated user information in the `SecurityContextHolder`, providing access to username, roles, and authorities throughout your app. This section shows how to retrieve and use this information in webforJ views and components.

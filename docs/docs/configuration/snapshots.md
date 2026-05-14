@@ -1,6 +1,7 @@
 ---
 title: Snapshots
 sidebar_position: 35
+description: Locate the latest webforJ snapshot version and add the Central Portal Snapshots repository to consume pre-release builds.
 ---
 
 Every webforJ version release is accompanied by detailed [release notes](https://github.com/webforj/webforj/releases) and a [release blog article](/blog/tags/release).

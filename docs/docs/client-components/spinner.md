@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: spinner
-description: A user guide article for the spinner
+description: Customize the dwc-spinner loading indicator with CSS variables and shadow parts for size, color, and animation speed.
 // pagination_prev: null
 // pagination_next: null
 ---

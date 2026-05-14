@@ -2,6 +2,7 @@
 title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
+description: Coordinate mutually exclusive RadioButton selections with RadioButtonGroup, including nested containers and dynamic membership.
 ---
 
 <DocChip chip='since' label='23.01' />

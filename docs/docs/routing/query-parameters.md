@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6  
 title: Query Parameters
+description: Read, type-cast, and iterate URL query string values in webforJ views using the ParametersBag and Location APIs.
 ---
 
 Query parameters allow you to pass additional data through URLs, using the format `?key1=value1&key2=value2`. While route parameters are used to pass required data within the URL path, query parameters provide a flexible mechanism for passing optional or additional data. They're especially useful when filtering content, sorting, or handling multiple values for the same key.

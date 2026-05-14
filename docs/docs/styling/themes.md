@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Themes
+description: Apply built-in light, dark, and dark-pure themes with @AppTheme or define custom themes through data-app-theme selectors.
 ---
 
 webforJ includes three built-in app themes and supports defining your own custom themes. The default themes are:

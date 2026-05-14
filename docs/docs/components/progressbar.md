@@ -1,6 +1,7 @@
 ---
 title: ProgressBar
 sidebar_position: 90
+description: Visualize task completion with the ProgressBar component, supporting determinate and indeterminate modes, orientation, and themes.
 ---
 
 <DocChip chip='shadow' />

@@ -1,6 +1,7 @@
 ---
 title: File Save
 sidebar_position: 15
+description: Prompt users for a save location with the FileSaveDialog, configuring initial path, default filename, and overwrite behavior.
 ---
 
 <DocChip chip='shadow' />

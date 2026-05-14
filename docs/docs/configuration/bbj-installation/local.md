@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+description: Install BBj locally and use the Plugin Manager to configure the webforJ plugin for running apps against a local BBjServices instance.
 ---
 
 # Local Installation

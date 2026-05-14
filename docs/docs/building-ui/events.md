@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 title: Events
+description: Attach event listeners to webforJ components with lambdas, anonymous classes, or method references and reuse the event payload server-side.
 slug: events
 draft: false
 ---

@@ -3,6 +3,7 @@ title: TabbedPane
 slug: tabbedpane
 sidebar_position: 125
 sidebar_class_name: new-content
+description: Organize content into switchable Tab sections with the TabbedPane component, supporting icons, keys, and customizable tab properties.
 ---
 
 <DocChip chip='shadow' />

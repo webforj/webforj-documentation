@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-field-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: field-spinner
-description: A user guide article for the field-spinner
+description: Customize the dwc-field-spinner client component via CSS variables and shadow parts to theme the input field and increment controls.
 // pagination_prev: null
 // pagination_next: null
 ---

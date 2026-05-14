@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-textfield>
 sidebar_class_name: sidebar--item__hidden
 slug: textfield
-description: A user guide article for the textfield
+description: Customize the dwc-textfield input with CSS variables and shadow parts targeting label, border, prefix, suffix, and clear button.
 // pagination_prev: null
 // pagination_next: null
 ---
