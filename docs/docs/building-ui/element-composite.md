@@ -325,17 +325,17 @@ addEventListener(InputEvent.class, this::handleSearch, options);
 options.setDebounce(300, DebouncePhase.TRAILING); // Wait 300ms after last event
 ```
 
-**Throttling** limits execution frequency:
-
-```java
-options.setThrottle(100); // Fire at most once per 100ms
-```
-
 Available debounce phases:
 
 - `LEADING`: Fire immediately, then wait
 - `TRAILING`: Wait for quiet period, then fire (default)
 - `BOTH`: Fire immediately and after quiet period
+
+**Throttling** limits execution frequency:
+
+```java
+options.setThrottle(100); // Fire at most once per 100ms
+```
 
 ## Options merging {#options-merging}
 
@@ -359,7 +359,7 @@ The `add()` method also accepts a `String` slot name as its first argument.
 
 ### `ElementCompositeContainer` {#elementcompositecontainer}
 
-`ElementComposite` is the right base class when the component is a leaf node like a button or a badge. When the component should accept child components into named or default slots, extend `ElementCompositeContainer` instead. It carries the same property and attribute machinery plus the methods needed to add children.
+`ElementComposite` is the right base class when the component is a leaf node with no children, like a button or a badge. When the component should accept child components into named or default slots, extend `ElementCompositeContainer` instead. It carries the same property and attribute machinery plus the methods needed to add children.
 
 ```java
 @NodeName("my-dialog")
