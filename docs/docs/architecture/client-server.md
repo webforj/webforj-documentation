@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Client/Server Interaction
+description: Understand how webforJ batches server-to-client calls, avoids costly round trips, and uses caching and on-demand chunks for performance.
 ---
 
 The following section discussed various performance qualities and best practices for webforJ, as well as implementation details for the framework.

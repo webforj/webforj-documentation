@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: Border
+description: Control component border width, style, color, and radius scale through the DWC border CSS custom properties.
 ---
 
 The border properties are used to control the component border style and width. See [available border styles](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).

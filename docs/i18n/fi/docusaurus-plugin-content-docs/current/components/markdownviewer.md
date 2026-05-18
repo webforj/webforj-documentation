@@ -1,23 +1,23 @@
 ---
 title: MarkdownViewer
 sidebar_position: 74
-_i18n_hash: dcbc11ba7581a82ae6857abfe11a62c1
+_i18n_hash: e50beb488f343e35da80b6d4f9ceddf5
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-markdown-viewer" />
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="markdown-viewer" location="com/webforj/component/markdown/MarkdownViewer" top='true'/>
 
-`MarkdownViewer` -komponentti renderoi markdown-tekstin HTML-muotoon. Se tukee standardia markdown-syntaksia, mukaan lukien otsikot, luettelot, koodilohkot, linkit, kuvat ja emojien renderöinti. Komponentti tarjoaa myös progressiivisen renderöinnin, joka näyttää sisällön merkki kerrallaan kirjoituskoneefektiä varten.
+`MarkdownViewer`-komponentti renderöi markdown-tekstiä HTML:ksi. Se tukee vakiomerkintäsynntaksia, mukaan lukien otsikot, luettelot, koodilohkot, linkit, kuvat ja emojit. Komponentti tarjoaa myös progressiivisen renderöinnin, joka näyttää sisällön merkki kerrallaan kirjoituskoneefektin aikaansaamiseksi.
 
 ## Sisällön asettaminen {#setting-content}
 
-Luo `MarkdownViewer` joko ilman tai aloitussisällöllä, ja päivitä sitten se `setContent()`-menetelmällä:
+Luo `MarkdownViewer` alkuperäisellä sisällöllä tai ilman, ja päivitä se käyttämällä `setContent()`-metodia:
 
 ```java
-MarkdownViewer viewer = new MarkdownViewer("# Hei Maailma");
+MarkdownViewer viewer = new MarkdownViewer("# Hei maailma");
 
-// Korvataan sisältö kokonaan
+// Korvataan sisältö täysin
 viewer.setContent("""
     ## Uusi sisältö
 
@@ -25,32 +25,32 @@ viewer.setContent("""
     - Kohde 2
     """);
 
-// Hanki nykyinen sisältö
+// Hae nykyinen sisältö
 String content = viewer.getContent();
 ```
 :::tip
-Komponentti toteuttaa `HasText`, joten `setText()` ja `getText()` toimivat synonyymeina sisällön menetelmille.
+Komponentti toteuttaa `HasText`, joten `setText()` ja `getText()` toimivat synonyymeinä sisällön metodeille.
 :::
-<ComponentDemo 
-path='/webforj/markdownviewer?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java'
+<ComponentDemo
+path='/webforj/markdownviewer'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java']}
 height='650px'
 />
 
-## Sisällön lisääminen {#appending-content}
+## Sisältöön lisääminen {#appending-content}
 
-`append()`-metodi lisää sisältöä asteittain ilman, että se korvataan jo olemassa olevalla sisällöllä:
+`append()`-metodi lisää sisältöä vähitellen ilman, että se korvataan jo olemassaolevalla sisällöllä:
 
 ```java
 viewer.append("## Uusi osio\n\n");
-viewer.append("Lisää sisältöä tänne...");
+viewer.append("Lisää sisältöä tähän...");
 ```
 
-Oletusarvoisesti lisätty sisältö näkyy heti. Kun [progressiivinen renderöinti](#progressive-rendering) on käytössä, lisätty sisältö menee puskuriin ja näkyy merkki kerrallaan sen sijaan.
+Oletuksena lisätty sisältö näkyy heti. Kun [progressiivinen renderöinti](#progressive-rendering) on käytössä, lisätty sisältö siirtyy välimuistiin ja näkyy merkki kerrallaan sen sijaan.
 
-## Autoskrollaus {#auto-scroll}
+## Auto-scroll {#auto-scroll}
 
-Ota autoscrollaus käyttöön, jotta näkymä pysyy alareunassa sisällön kasvaessa. Tämä toimii kaikilla sisällön lisäämismenetelmillä, olipa kyseessä `setContent()`, `append()` tai progressiivinen renderöinti. Jos käyttäjä vierittää manuaalisesti ylöspäin tarkistaakseen aikaisempaa sisältöä, autoscrollaus pysähtyy ja jatkuu, kun hän vierittää takaisin alas.
+Ota automaattinen vieritys käyttöön, jotta näkymä pysyy alareunassa, kun sisältö kasvaa. Tämä toimii kaikilla sisällön lisäämiskeinoilla, olipa se sitten `setContent()`, `append()` tai progressiivinen renderöinti. Jos käyttäjä vierittää manuaalisesti ylös tarkastellakseen aikaisempaa sisältöä, automaattinen vieritys keskeytyy ja jatkuu, kun hän vierittää takaisin alas.
 
 ```java
 viewer.setAutoScroll(true);
@@ -58,26 +58,26 @@ viewer.setAutoScroll(true);
 
 ## Progressiivinen renderöinti {#progressive-rendering}
 
-Progressiivinen renderöinti näyttää sisällön merkki kerrallaan eikä kaikkea kerralla, luoden kirjoituskoneefektiä. AI-keskusteluliittymät käyttävät tätä yleensä näyttääksesi vastauksia, jotka ilmestyvät asteittain:
+Progressiivinen renderöinti näyttää sisältöä merkki kerrallaan sen sijaan, että koko sisältö näkyisi kerralla, luoden kirjoituskoneefektin. AI-keskusteluliitännät käyttävät usein tätä vastausten näyttämiseen vähitellen:
 
 ```java
 MarkdownViewer viewer = new MarkdownViewer();
 viewer.setProgressiveRender(true);
 ```
 
-Kun se on käytössä, `setContent()` tai `append()` -menetelmällä lisätty sisältö menee puskuriin ja näkyy asteittain. Kun se on pois päältä, sisältö näkyy heti.
+Kun se on käytössä, `setContent()` tai `append()` -metodilla lisätty sisältö siirtyy välimuistiin ja näkyy vähitellen. Kun se ei ole käytössä, sisältö näkyy heti.
 
-<ComponentDemo 
-path='/webforj/markdownviewerprogressive?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerProgressiveView.java'
+<ComponentDemo
+path='/webforj/markdownviewerprogressive'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerProgressiveView.java']}
 height='650px'
 />
 
 ### Renderöintinopeus {#render-speed}
 
-`setRenderSpeed()`-metodi ohjaa kuinka monta merkkiä renderöidään animaatioskeemalla. Korkeammat arvot tarkoittavat nopeampaa renderöintiä. 60 fps:llä oletusnopeus 4 tarkoittaa noin 240 merkkiä sekunnissa:
+`setRenderSpeed()`-metodi kontrolloi, kuinka monta merkkiä renderöidään per animaatiokehys. Korkeammat arvot tarkoittavat nopeampaa renderöintiä. 60fps:llä oletusnopeus 4 tarkoittaa noin 240 merkkiä sekunnissa:
 
-| Nopeus | Merkkejä/Sekunnissa |
+| Nopeus | Merkit/Sekunnissa |
 |-------|-------------------|
 | 4 (oletus) | ~240 |
 | 6 | ~360 |
@@ -87,13 +87,13 @@ height='650px'
 viewer.setRenderSpeed(6);
 ```
 
-:::tip Vastaa tietovirtaasi
-Jos palvelimesi lähettää sisältöä nopeammin kuin katselija renderöi, puskuri kasvaa ja näkyvä sisältö jää jälkeen. Lisää `renderSpeed`-arvoa pysyäksesi tahdissa tai kutsu `flush()`, kun kaikki sisältö on vastaanotettu näyttääksesi jäljellä olevan sisällön heti.
+:::tip Tietovirrasta vastaaminen
+Jos palvelimesi lähettää sisältöä nopeammin kuin katselija renderöi, välimuisti kasvaa ja näkyvä sisältö myöhästyy. Lisää `renderSpeed` pitämään vauhtia, tai kutsu `flush()`, kun kaikki sisältö on vastaanotettu, jotta jäljelle jäävä sisältö näytetään heti.
 :::
 
 ### Renderöintitila {#render-state}
 
-Kun progressiivinen renderöinti on käytössä, `isRendering()`-metodi palauttaa `true`, kun komponentti näyttää aktiivisesti puskuroitua sisältöä. Keskusteluliittymät käyttävät usein tätä näyttääkseen tai piilottaakseen pysäytyspainikkeen:
+Kun progressiivinen renderöinti on käytössä, `isRendering()`-metodi palauttaa `true`, kun komponentti näyttää aktiivisesti välimuistissa olevaa sisältöä. Keskustelu liitännät käyttävät usein tätä näyttämään tai piilottamaan pysäytyspainiketta:
 
 ```java
 if (viewer.isRendering()) {
@@ -101,28 +101,28 @@ if (viewer.isRendering()) {
 }
 ```
 
-Tämä metodi palauttaa aina `false`, kun progressiivinen renderöinti on pois päältä.
+Tämä metodi palauttaa aina `false`, kun progressiivinen renderöinti on pois käytöstä.
 
-### Renderöinnin ohjaaminen {#controlling-rendering}
+### Renderöinnin hallinta {#controlling-rendering}
 
-Kaksi metodia ohjaa, kuinka progressiivinen renderöinti pysähtyy:
+Kaksi metodia hallitsevat, miten progressiivinen renderöinti pysähtyy:
 
-- **`stop()`** keskeyttää renderöinnin ja hylkää kaikki puskuroitua sisältöä, jota ei ole vielä näytetty. Kutsu tätä, kun käyttäjä peruuttaa.
-- **`flush()`** keskeyttää renderöinnin, mutta näyttää heti kaiken jäljellä olevan puskuroitua sisällön. Kutsu tätä, kun kaikki sisältö on vastaanotettu ja haluat näyttää sen ilman odottamista.
+- **`stop()`** pysäyttää renderöinnin ja hylkää kaikki välimuistissa olevat näyttämättömät sisällöt. Kutsu tätä, kun käyttäjä peruu.
+- **`flush()`** pysäyttää renderöinnin mutta näyttää heti kaikki jäljellä olevat välimuistissa olevat sisällöt. Kutsu tätä, kun kaikki sisältö on vastaanotettu ja haluat näyttää sen ilman odottamista.
 
 ```java
-// Käyttäjä napsautti "Pysäytä tuottaminen"
+// Käyttäjä napsautti "Pysäytä generointi"
 viewer.stop();
 
 // Kaikki sisältö vastaanotettu, näytä kaikki nyt
 viewer.flush();
 ```
 
-Näillä metodeilla ei ole vaikutusta, kun progressiivinen renderöinti on pois päältä.
+Nämä menetelmät eivät vaikuta, kun progressiivinen renderöinti on pois käytöstä.
 
-### Odottaminen valmistumiseen {#waiting-for-completion}
+### Valmis odottaminen {#waiting-for-completion}
 
-`whenRenderComplete()`-metodi palauttaa `PendingResult`-objektin, joka valmistuu, kun progressiivinen renderöinti lopettaa kaiken puskuroidun sisällön näyttämisen:
+`whenRenderComplete()`-metodi palauttaa `PendingResult`-objektin, joka valmistuu, kun progressiivinen renderöinti on lopettanut kaiken välimuistissa olevan sisällön näyttämisen:
 
 ```java
 viewer.whenRenderComplete().thenAccept(v -> {
@@ -131,17 +131,17 @@ viewer.whenRenderComplete().thenAccept(v -> {
 });
 ```
 
-Jos progressiivinen renderöinti ei ole käytössä tai mitään sisältöä ei renderöidä, `PendingResult` valmistuu heti.
+Jos progressiivista renderöintiä ei ole otettu käyttöön tai mitään sisältöä ei renderöidä, `PendingResult` valmistuu heti.
 
-:::tip Käyttöliittymän koordinointi
-Kun käytetään progressiivista renderöintiä, älä ota syöttökenttiä uudelleen käyttöön pelkästään sen perusteella, kun olet puhelut `append()`. Renderöijä saattaa vielä näyttää puskuroitua sisältöä. Odota `whenRenderComplete()` niin, että kaikki sisältö näkyy ennen kuin käyttäjät voivat olla vuorovaikutuksessa uudelleen.
+:::tip UI-yhteensopivuus
+Kun käytät progressiivista renderöintiä, älä ota syöttökenttiä takaisin käyttöön pelkästään sen perusteella, kun olet lopettanut `append()`-kutsumisen. Renderöijä saattaa silti näyttää välimuistissa olevaa sisältöä. Odota `whenRenderComplete()` -metodin valmistumista, jotta kaikki sisältö näkyy ennen kuin käyttäjät voivat jälleen olla vuorovaikutuksessa.
 :::
 
-Seuraava demo simuloi AI-keskusteluliittymää käyttäen `append()`-menetelmää progressiivinen renderöinti käytössä:
+Seuraava demo simulaoi AI-keskusteluliittymää käyttäen `append()`-metodia progressiivisen renderöinnin ollessa käytössä:
 
-<ComponentDemo 
-path='/webforj/markdownviewerstreaming?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerStreamingView.java'
+<ComponentDemo
+path='/webforj/markdownviewerstreaming'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerStreamingView.java']}
 height='700px'
 />
 
@@ -153,11 +153,11 @@ Poista kaikki sisältö `clear()`-metodilla:
 viewer.clear();
 ```
 
-Jos progressiivinen renderöinti on aktiivinen, `clear()` myös keskeyttää renderöinnin ja valmistaa kaikki odottavat `whenRenderComplete()`-tulokset.
+Jos progressiivinen renderöinti on aktiivinen, `clear()` pysäyttää myös renderöinnin ja viimeistelee kaikki odottavat `whenRenderComplete()`-tulokset.
 
-## Syntaksin korostaminen {#syntax-highlighting}
+## Koodin korostus {#syntax-highlighting}
 
-`MarkdownViewer` tukee syntaksin korostamista koodilohkoille, kun [Prism.js](https://prismjs.com/) on käytettävissä. Lisää Prism.js sovellukseesi käyttämällä `@JavaScript` ja `@StyleSheet` -annotaatioita:
+`MarkdownViewer` tukee syntaksin korostamista koodilohkoissa, kun [Prism.js](https://prismjs.com/) on käytettävissä. Lisää Prism.js sovellukseesi käyttämällä `@JavaScript` ja `@StyleSheet` -annotaatioita:
 
 ```java
 @StyleSheet("https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css")
@@ -170,6 +170,6 @@ public class Application extends App {
 }
 ```
 
-Autoloader-laajennus lataa kielimäärityksiä tarpeen mukaan, joten koodilohkot, joissa on kielivihjeitä kuten ` ```java ` tai ` ```python ` saavat korostuksen automaattisesti.
+Autoloader-laajennus lataa kielimääritykset tarpeen mukaan, joten koodilohkot, joissa on kielivihjeitä, kuten ` ```java ` tai ` ```python `, korostuvat automaattisesti.
 
 <TableBuilder name="MarkdownViewer" />

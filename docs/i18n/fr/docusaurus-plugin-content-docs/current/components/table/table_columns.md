@@ -2,16 +2,16 @@
 sidebar_position: 5
 title: Columns
 slug: columns
-_i18n_hash: 19fe294c57ad6b7d105039c25aedab11
+_i18n_hash: fbae9063370715e9f6dc2cb490a27511
 ---
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Column" top='true'/>
 
-La classe `Table` utilise des instances de colonne pour définir et personnaliser comment les données sont affichées. Les colonnes contrôlent quelles données sont affichées, comment elles apparaissent et comment les utilisateurs peuvent interagir avec elles. Cette page couvre l'identité de la colonne, la présentation, la dimension, les interactions utilisateur et les événements associés.
+La classe `Table` utilise des instances de colonne pour définir et personnaliser l'affichage des données. Les colonnes contrôlent quelles données sont affichées, leur apparence et comment les utilisateurs peuvent interagir avec elles. Cette page couvre l'identité de la colonne, la présentation, les dimensions, les interactions utilisateur et les événements liés.
 
 ## Identité de la colonne {#column-identity}
 
-L'identité d'une colonne définit comment elle est reconnue dans la `Table`. Cela inclut son étiquette, la valeur qu'elle fournit et si elle est visible ou navigable.
+L'identité d'une colonne définit comment elle est reconnue dans la `Table`. Cela inclut son étiquette, la valeur qu'elle fournit, et si elle est visible ou navigable.
 
 ### Étiquette {#label}
 
@@ -29,11 +29,11 @@ table.addColumn("Product ID", Product::getProductId).setLabel("ID");
 
 ### Fournisseurs de valeur {#value-providers}
 
-Un fournisseur de valeur est une fonction responsable de la traduction des données brutes provenant du jeu de données sous-jacent dans un format approprié pour l'affichage dans une colonne spécifique. La fonction, que vous définissez, prend une instance du type de données de la ligne (T) et retourne la valeur à mettre en avant dans la colonne associée pour cette ligne particulière.
+Un fournisseur de valeur est une fonction responsable de la traduction des données brutes du jeu de données sous-jacent en un format approprié pour l'affichage dans une colonne spécifique. La fonction que vous définissez prend une instance du type de données de la ligne (T) et renvoie la valeur à mettre en avant dans la colonne associée pour cette ligne particulière.
 
-Pour définir un fournisseur de valeur sur une colonne, utilisez l'une des méthodes `addColumn()` du composant `Table`.
+Pour définir un fournisseur de valeur sur une colonne, utilisez l'une des méthodes `addColumn()` à partir du composant `Table`.
 
-Dans l'extrait suivant, une colonne tentera d'accéder aux données d'un objet JSON, les rendant visibles seulement si les données ne sont pas nulles.
+Dans le fragment suivant, une colonne tentera d'accéder à des données d'un objet JSON, ne les rendant que si les données ne sont pas nulles.
 
 ```java
 List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
@@ -50,7 +50,7 @@ for (String column : columnsList) {
 
 ### Visibilité {#visibility}
 
-Il est possible de définir la visibilité d'une colonne, déterminant si elle sera affichée ou non dans la `Table`. Cela peut être utile, entre autres, pour déterminer si des informations sensibles doivent être affichées.
+Il est possible de définir la visibilité d'une colonne, déterminant si elle sera affichée ou non dans la `Table`. Cela peut être utile, entre autres, pour déterminer s'il faut afficher des informations sensibles.
 
 ```java
 table.addColumn("Credit Card", Customer::getCreditCardNumber).setHidden(true);
@@ -58,7 +58,7 @@ table.addColumn("Credit Card", Customer::getCreditCardNumber).setHidden(true);
 
 ### Navigable {#navigable}
 
-L'attribut navigable détermine si les utilisateurs peuvent interagir avec une colonne lors de la navigation. Fixer `setSuppressNavigable()` à true restreint l'interaction de l'utilisateur avec la colonne, offrant une expérience en lecture seule.
+L'attribut navigable détermine si les utilisateurs peuvent interagir avec une colonne pendant la navigation. En réglant `setSuppressNavigable()` sur true, vous restreignez l'interaction des utilisateurs avec la colonne, offrant une expérience en lecture seule.
 
 ```java
 table.addColumn("ReadOnly Column", Product::getDescription).setSuppressNavigable(true);
@@ -66,69 +66,73 @@ table.addColumn("ReadOnly Column", Product::getDescription).setSuppressNavigable
 
 ## Mise en page et formatage {#layout-and-formatting}
 
-Après avoir établi l'identité d'une colonne, l'étape suivante consiste à contrôler comment son contenu apparaît pour les utilisateurs. Les options de mise en page, telles que l'alignement et le pinning, déterminent où les données se trouvent et comment elles restent visibles pendant que vous travaillez avec une `Table`.
+Après avoir établi l'identité d'une colonne, la prochaine étape consiste à contrôler comment son contenu apparaît aux utilisateurs. Les options de mise en page telles que l'alignement et le plafonnement déterminent où les données se situent et comment elles restent visibles lorsque vous travaillez avec une `Table`.
 
 ### Alignement {#alignment}
 
 Définir l'alignement d'une colonne vous permet de créer des tables organisées, ce qui peut aider les utilisateurs à identifier les différentes sections dans la `Table`.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnalignment?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnalignment'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
 
 Le composant `Table` prend en charge trois options d'alignement :
 
-- `Column.Alignment.LEFT` : Convient pour des données textuelles ou descriptives où le maintien d'un flux vers la gauche est intuitif. Utile lorsque l'on souhaite mettre en avant le point de départ du contenu.
-- `Column.Alignment.CENTER` : Les colonnes centrées sont idéales pour des valeurs plus courtes, comme une clé de caractère, un statut, ou tout autre chose ayant une présentation équilibrée.
-- `Column.Alignment.RIGHT` : Envisagez d'utiliser une colonne alignée à droite pour des valeurs numériques qu'il est utile de parcourir rapidement, telles que des dates, des montants ou des pourcentages.
+- `Column.Alignment.LEFT`: Convient aux données textuelles ou descriptives où le maintien d'un flux vers la gauche est intuitif. Utile pour mettre l'accent sur le point de départ du contenu.
+- `Column.Alignment.CENTER`: Les colonnes centrées sont idéales pour les valeurs plus courtes, comme une clé de caractère, un statut, ou toute autre chose qui a une présentation équilibrée.
+- `Column.Alignment.RIGHT`: Envisagez d'utiliser une colonne alignée à droite pour des valeurs numériques utiles à un examen rapide, comme des dates, des montants et des pourcentages.
 
-Dans l'exemple précédent, la dernière colonne pour `Cost` a été alignée à droite pour fournir une distinction visuelle plus évidente.
+Dans l'exemple précédent, la colonne finale pour `Cost` a été alignée à droite pour fournir une distinction visuelle plus évidente.
 
-### Pincement {#pinning}
+### Plafonnement {#pinning}
 
-Le pincement de colonne est une fonctionnalité qui permet aux utilisateurs de fixer ou "pincer" une colonne à un côté spécifique de la `Table`. Cela est utile lorsque certaines colonnes, comme des identifiants ou des informations essentielles, doivent rester visibles lors du défilement horizontal à travers une table.
+Le plafonnement de colonne est une fonctionnalité qui permet aux utilisateurs de fixer ou de "pinner" une colonne à un côté spécifique de la `Table`. Cela est utile lorsque certaines colonnes, telles que les identifiants ou les informations essentielles, doivent rester visibles lors du défilement horizontal à travers une table.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnpinning?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnpinning'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
 
-Il existe trois directions disponibles pour le pincement d'une colonne :
+Il existe trois directions disponibles pour pinner une colonne :
 
-- `PinDirection.LEFT` : Pince la colonne du côté gauche.
-- `PinDirection.RIGHT` : Pince la colonne du côté droit.
-- `PinDirection.AUTO` : La colonne apparaît en fonction de l'ordre d'insertion.
+- `PinDirection.LEFT`: Pince la colonne à gauche.
+- `PinDirection.RIGHT`: Pince la colonne à droite.
+- `PinDirection.AUTO`: La colonne apparaît en fonction de l'ordre d'insertion.
 
-Le pincement peut être défini par programmation, vous permettant de changer la direction du pincement en fonction des interactions des utilisateurs ou de la logique de l'application.
+Le plafonnement peut être défini par programmation, vous permettant de changer la direction de plafonnement en fonction des interactions des utilisateurs ou par la logique de l'application.
 
-## Dimensionnement de la colonne <DocChip chip='since' label='25.03' /> {#column-sizing} 
+## Dimensions de la colonne <DocChip chip='since' label='25.03' /> {#column-sizing} 
 
 ### Largeur fixe {#fixed-width}
 
-Définissez une largeur exacte pour une colonne en utilisant la méthode `setWidth()`, spécifiant la largeur souhaitée en pixels :
+Définissez une largeur exacte pour une colonne en utilisant la méthode `setWidth()`, en spécifiant la largeur souhaitée en pixels :
 
 ```java
 table.addColumn("ID", Product::getId).setWidth(80f);
 ```
 
-La propriété de largeur définit la largeur initiale souhaitée pour la colonne. La manière dont cette largeur est utilisée dépend d'autres propriétés et du type de colonne :
+La propriété de largeur définit la largeur initiale souhaitée pour la colonne. Comment cette largeur est utilisée dépend d'autres propriétés et du type de colonne :
 
-- **Colonnes régulières** : Avec seulement la largeur définie, la colonne s'affiche à la largeur spécifiée mais peut se réduire proportionnellement lorsque le conteneur est trop petit. La largeur d'origine sert de largeur souhaitée, mais sans contraintes minimales explicites, la colonne peut s'afficher plus petite que la largeur définie.
-- [**Colonnes épinglées**](#pinning) : Maintiennent toujours leur largeur exacte, ne participant jamais à la réduction responsive.
-- [**Colonnes flexibles**](#flex-sizing) : Définir une largeur est incompatible avec le flex. Utilisez soit la largeur (fixe) soit le flex (proportionnel), pas les deux.
+- **Colonnes régulières** : Avec seulement la largeur définie, la colonne s'affiche à la largeur spécifiée mais peut rétrécir proportionnellement si le conteneur est trop petit. La largeur d'origine sert de largeur souhaitée, mais sans contraintes minimales explicites, la colonne peut s'afficher plus petite que la largeur réglée.
+- [**Colonnes pinées**](#pinning) : Maintiennent toujours leur largeur exacte, sans participer au rétrécissement réactif.
+- [**Colonnes flexibles**](#flex-sizing) : Définir la largeur est incompatible avec flex. Utilisez soit la largeur (fixe), soit flex (proportionnel), pas les deux.
 
-Si non spécifié, la colonne utilisera sa largeur estimée basée sur l'analyse du contenu des quelques premières lignes.
+Si non spécifié, la colonne utilisera sa largeur estimée en fonction de l'analyse du contenu des premières lignes.
 
 ```java
 // Obtenir la largeur actuelle
@@ -147,9 +151,9 @@ La valeur passée représente la largeur minimale en pixels.
 
 La propriété de largeur minimale contrôle la plus petite largeur qu'une colonne peut avoir :
 
-- **Colonnes régulières** : Avec seulement la largeur minimale définie, la colonne utilise la largeur minimale comme largeur souhaitée et minimale. Avec la largeur + largeur minimale, la colonne peut se rétrécir de la largeur jusqu'à la largeur minimale mais pas davantage.
-- [**Colonnes épinglées**](#pinning) : Si seule la largeur minimale est définie (pas de largeur), elle devient la largeur fixe.
-- [**Colonnes flexibles**](#flex-sizing) : Empêche la colonne de se rétrécir en dessous de cette largeur, même lorsque l'espace du conteneur est limité.
+- **Colonnes régulières** : Avec seulement une largeur minimale définie, la colonne utilise la largeur minimale comme largeur souhaitée et minimale. Avec largeur + largeur minimale, la colonne peut rétrécir de la largeur jusqu'à la largeur minimale mais pas plus loin.
+- [**Colonnes pinées**](#pinning) : Si seule la largeur minimale est définie (pas de largeur), elle devient la largeur fixe.
+- [**Colonnes flexibles**](#flex-sizing) : Empêche la colonne de rétrécir en dessous de cette largeur même lorsque l'espace du conteneur est limité.
 
 ```java
 // Obtenir la largeur minimale actuelle
@@ -158,7 +162,7 @@ float minWidth = column.getMinWidth();
 
 ### Largeur maximale {#maximum-width}
 
-La méthode `setMaxWidth()` limite la largeur à laquelle une colonne peut croître, empêchant les colonnes avec un contenu long de devenir trop larges et de nuire à la lisibilité :
+La méthode `setMaxWidth()` limite à quel point une colonne peut grandir, empêchant les colonnes avec un contenu long de devenir trop larges et d'affecter la lisibilité :
 
 ```java
 table.addColumn("Description", Product::getDescription)
@@ -166,16 +170,16 @@ table.addColumn("Description", Product::getDescription)
   .setMaxWidth(300f);
 ```
 
-La propriété `maxWidth` limite la croissance de la colonne pour tous les types de colonnes et ne sera jamais dépassée indépendamment du contenu, de la taille du conteneur ou des paramètres flex.
+La propriété `maxWidth` limite la croissance des colonnes pour tous les types de colonnes et ne sera jamais dépassée quelle que soit la taille du contenu, du conteneur ou des paramètres flex.
 
 ```java
 // Obtenir la largeur maximale actuelle
 float maxWidth = column.getMaxWidth();
 ```
 
-### Dimensionnement flex {#flex-sizing}
+### Dimensionnement flexible {#flex-sizing}
 
-La méthode `setFlex()` permet un dimensionnement proportionnel des colonnes, faisant en sorte que les colonnes partagent l'espace disponible après que les colonnes à largeur fixe ont été allouées :
+La méthode `setFlex()` permet un dimensionnement proportionnel des colonnes, permettant aux colonnes de partager l'espace disponible une fois que les colonnes à largeur fixe sont allouées :
 
 ```java
 // La colonne de titre obtient deux fois l'espace de la colonne d'artiste
@@ -183,24 +187,26 @@ table.addColumn("Title", Product::getTitle).setFlex(2f);
 table.addColumn("Artist", Product::getArtist).setFlex(1f);
 ```
 
-Comportements clés du flex :
+Comportements clés de flex :
 
-- **Valeur du flex** : Détermine la proportion de l'espace disponible. Une colonne avec flex=2 obtient deux fois l'espace d'une colonne avec flex=1.
-- **Incompatible avec la largeur** : Ne peut pas être utilisée en même temps que la propriété de largeur. Lorsque le flex est supérieur à zéro, il prend effet sur le paramètre de largeur.
-- **Respecte les contraintes** : Fonctionne avec des contraintes de largeur minimale/largeur maximale. Sans largeur minimale, les colonnes flex peuvent se réduire à 0.
+- **Valeur de flex** : Détermine la proportion de l'espace disponible. Une colonne avec flex=2 obtient deux fois l'espace d'une colonne avec flex=1.
+- **Incompatible avec la largeur** : Ne peut pas être utilisé en même temps que la propriété largeur. Lorsque flex est supérieur à zéro, il prend effet sur le paramètre de largeur.
+- **Respecte les contraintes** : Fonctionne avec les contraintes de largeur minimale/largeur maximale. Sans largeur minimale, les colonnes flexibles peuvent rétrécir jusqu'à 0.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnflexsizing?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnFlexSizingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnflexsizing'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnFlexSizingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='550px'
 />
 <!-- vale on -->
 
 :::info Largeur vs Flex
-Les propriétés de largeur et de flex sont mutuellement exclusives. Définir l'une efface automatiquement l'autre. Utilisez la largeur pour un contrôle précis ou le flex pour un comportement réactif.
+Les propriétés de largeur et de flex sont mutuellement exclusives. Définir l'une vide automatiquement l'autre. Utilisez la largeur pour un contrôle précis ou le flex pour un comportement réactif.
 :::
 
 ### Dimensionnement automatique {#automatic-sizing}
@@ -209,53 +215,55 @@ Au-delà des paramètres manuels de largeur et de flex, les colonnes peuvent ég
 
 #### Dimensionnement automatique basé sur le contenu {#content-based-auto-sizing}
 
-Dimensionnez automatiquement les colonnes en fonction de leur contenu. La `Table` analyse les données dans chaque colonne et calcule la largeur optimale pour afficher le contenu sans troncature.
+Dimensionnez automatiquement les colonnes en fonction de leur contenu. La `Table` analyse les données de chaque colonne et calcule la largeur optimale pour afficher le contenu sans troncature.
 
 ```java
-// Auto-dimensionner toutes les colonnes pour s'adapter au contenu
+// Dimensionner automatiquement toutes les colonnes pour s'adapter au contenu
 table.setColumnsToAutoSize().thenAccept(c -> {
   // Dimensionnement terminé - les colonnes s'adaptent maintenant à leur contenu
 });
 
-// Auto-dimensionner une colonne spécifique
+// Dimensionner automatiquement une colonne spécifique
 table.setColumnToAutoSize("description");
 ```
 
 #### Ajustement proportionnel automatique {#proportional-auto-fit}
 
-Distribuez toutes les colonnes proportionnellement sur la largeur disponible de la `Table`. Cette opération définit chaque colonne à flex=1, leur permettant de partager la largeur totale de la `Table` de manière égale, quelle que soit la longueur de leur contenu. Les colonnes s'étendront ou se contracteront pour remplir exactement les dimensions de la `Table` sans espace restant.
+Distribuez toutes les colonnes proportionnellement à travers la largeur disponible de la `Table`. Cette opération définit chaque colonne à flex=1, les faisant partager la largeur totale de la `Table` également, indépendamment de la longueur de leur contenu. Les colonnes s'étendront ou se contracteront pour remplir exactement les dimensions de la `Table` sans espace restant.
 
 ```java
 // Ajuster les colonnes à la largeur de la table (équivalent à définir flex=1 sur toutes)
 table.setColumnsToAutoFit().thenAccept(ignored -> {
-  // Toutes les colonnes partagent maintenant l'espace de manière égale
+  // Toutes les colonnes partagent maintenant l'espace également
 });
 ```
 
-:::info Opérations Asynchrones
-Les méthodes de dimensionnement automatique retournent `PendingResult<Void>` car elles nécessitent des calculs côté client. Utilisez `thenAccept()` pour exécuter du code après la fin du dimensionnement. Si vous n'avez pas besoin d'attendre la fin, vous pouvez appeler les méthodes sans `thenAccept()`.
+:::info Opérations asynchrones
+Les méthodes de dimensionnement automatique retournent `PendingResult<Void>` car elles nécessitent des calculs côté client. Utilisez `thenAccept()` pour exécuter le code après l'achèvement du dimensionnement. Si vous n'avez pas besoin d'attendre la fin, vous pouvez appeler les méthodes sans `thenAccept()`
 :::
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnautosizing?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnAutoSizingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnautosizing'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnAutoSizingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='550px'
 />
 <!-- vale on -->
 
-## Interactions utilisateur <DocChip chip='since' label='25.03' /> {#user-interactions}
+## Interactions des utilisateurs <DocChip chip='since' label='25.03' /> {#user-interactions}
 
-### Redimensionnement de colonne {#column-resizing}
+### Redimensionnement des colonnes {#column-resizing}
 
-Le redimensionnement de colonne donne aux utilisateurs le contrôle sur la quantité d'espace que chaque colonne occupe en faisant glisser les bordures des colonnes.
+Le redimensionnement des colonnes donne aux utilisateurs le contrôle sur la quantité d'espace qu'occupe chaque colonne en faisant glisser les bords des colonnes.
 
-Vous pouvez contrôler le comportement de redimensionnement des colonnes individuelles lors de la construction de votre table :
+Vous pouvez contrôler le comportement de redimensionnement sur des colonnes individuelles lors de la création de votre table :
 
 ```java
-// Activer le redimensionnement par l'utilisateur pour cette colonne
+// Activer le redimensionnement des utilisateurs pour cette colonne
 table.addColumn("Title", Product::getTitle).setResizable(true);
 
 // Désactiver le redimensionnement
@@ -265,7 +273,7 @@ table.addColumn("ID", Product::getId).setResizable(false);
 boolean canResize = column.isResizable();
 ```
 
-Pour les tables où vous souhaitez un comportement cohérent sur plusieurs colonnes, utilisez les méthodes de configuration en bloc :
+Pour les tables où vous souhaitez un comportement cohérent sur plusieurs colonnes, utilisez les méthodes de configuration en masse :
 
 ```java
 // Rendre toutes les colonnes existantes redimensionnables
@@ -275,17 +283,17 @@ table.setColumnsToResizable(true);
 table.setColumnsToResizable(false);
 ```
 
-### Réorganisation de colonnes {#column-reordering}
+### Réorganisation des colonnes {#column-reordering}
 
-La réorganisation des colonnes permet aux utilisateurs de faire glisser et de déposer des colonnes dans l'ordre qu'ils préfèrent, personnalisant ainsi la mise en page de la `Table` pour leur flux de travail.
+La réorganisation des colonnes permet aux utilisateurs de faire glisser et déposer des colonnes dans leur ordre préféré, personnalisant la mise en page de la `Table` pour leur flux de travail.
 
-Configurez les autorisations de mouvement des colonnes lors de la création de votre table :
+Configurez les permissions de mouvement des colonnes lors de la configuration de votre table :
 
 ```java
 // Autoriser les utilisateurs à déplacer cette colonne
 table.addColumn("Title", Product::getTitle).setMovable(true);
 
-// Empêcher le mouvement de la colonne (utile pour les colonnes d'ID ou d'action)
+// Empêcher le mouvement de la colonne (utile pour les colonnes ID ou action)
 table.addColumn("ID", Product::getId).setMovable(false);
 
 // Vérifier l'état actuel
@@ -302,13 +310,13 @@ table.setColumnsToMovable(true);
 table.setColumnsToMovable(false);
 ```
 
-:::note Opérations en bloc
+:::note Opérations en masse
 Les méthodes `setColumnsToResizable()` et `setColumnsToMovable()` n'affectent que les colonnes existantes au moment de l'invocation. Elles ne définissent pas de valeurs par défaut pour les colonnes futures.
 :::
 
-### Mouvement de colonne programmatique {#programmatic-column-movement} 
+### Mouvement programmatique des colonnes {#programmatic-column-movement} 
 
-En plus du glisser-déposer, vous pouvez également repositionner les colonnes de manière programmatique par index ou ID. Gardez à l'esprit que l'index est basé uniquement sur les colonnes visibles ; toute colonne masquée est ignorée lors du calcul des positions.
+En plus du glisser-déposer, vous pouvez également repositionner les colonnes par programmation par index ou ID. Gardez à l'esprit que l'index est basé uniquement sur les colonnes visibles ; toutes les colonnes cachées sont ignorées lors du calcul des positions.
 
 ```java
 // Déplacer la colonne à la première position
@@ -325,25 +333,25 @@ table.moveColumn("description", 2).thenAccept(c -> {
 
 ## Gestion des événements {#event-handling}
 
-Le composant `Table` émet des événements lorsque les utilisateurs interagissent avec les colonnes, vous permettant de répondre aux changements de mise en page et de sauvegarder les préférences utilisateur.
+Le composant `Table` émet des événements lorsque les utilisateurs interagissent avec les colonnes, vous permettant de répondre aux modifications de mise en page et de sauvegarder les préférences des utilisateurs.
 
 Événements pris en charge :
 
-- `TableColumnResizeEvent` : Déclenché lorsqu'un utilisateur redimensionne une colonne en faisant glisser sa bordure.
-- `TableColumnMoveEvent` : Déclenché lorsqu'un utilisateur réorganise une colonne en faisant glisser son en-tête.
+- `TableColumnResizeEvent`: Déclenché lorsqu'un utilisateur redimensionne une colonne en faisant glisser sa bordure.
+- `TableColumnMoveEvent`: Déclenché lorsqu'un utilisateur réorganise une colonne en faisant glisser son en-tête.
 
-Vous pouvez attacher des écouteurs au `Table` pour répondre lorsque les utilisateurs modifient la mise en page de la table.
+Vous pouvez attacher des écouteurs à la `Table` pour répondre lorsque les utilisateurs modifient la mise en page de la table.
 
 ```java
 Table<Product> table = new Table<>();
 
 table.onColumnResize(event -> {
-  // Traiter l'événement de redimensionnement de colonne
-  // Accéder à : event.getColumn(), event.getOldWidth(), event.getNewWidth()
+  // Gérer l'événement de redimensionnement de colonne
+  // Accéder : event.getColumn(), event.getOldWidth(), event.getNewWidth()
 });
 
 table.onColumnMove(event -> {
-  // Traiter l'événement de mouvement de colonne  
-  // Accéder à : event.getColumn(), event.getOldIndex(), event.getNewIndex()
+  // Gérer l'événement de déplacement de colonne  
+  // Accéder : event.getColumn(), event.getOldIndex(), event.getNewIndex()
 });
 ```

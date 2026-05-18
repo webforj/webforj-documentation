@@ -1,6 +1,7 @@
 ---
 title: Background Jobs
 sidebar_position: 25
+description: Run Spring @Async services from webforJ views and marshal progress and results back to the UI thread with Environment.runLater.
 ---
 
 When users click a button to generate a report or process data, they expect the interface to remain responsive. Progress bars should animate, buttons should react to hover, and the app shouldn't freeze. Spring's `@Async` annotation makes this possible by moving long-running operations to background threads.

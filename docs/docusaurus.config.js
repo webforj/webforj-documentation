@@ -23,6 +23,10 @@ async function resolveWebforjVersion() {
 /** @returns {Promise<import('@docusaurus/types').Config>} */
 module.exports = async function createConfig() {
   const webforjVersion = await resolveWebforjVersion();
+  // Demo iframes load from the Maven/Jetty server on this port in local dev.
+  // Mirrors the `-Dport=...` Maven flag from PR #754. Production builds use an
+  // empty base so the iframe `src` becomes a relative path on the docs domain.
+  const webforjPort = process.env.WEBFORJ_PORT || '8080';
 
   return {
   title: 'webforJ Documentation',
@@ -36,6 +40,9 @@ module.exports = async function createConfig() {
   trailingSlash: false,
   customFields: {
     webforjVersion: `${webforjVersion}`,
+    iframeSrcDev: `http://localhost:${webforjPort}`,
+    iframeSrcLive: '',
+    rawContentBase: 'https://raw.githubusercontent.com/webforj/webforj-documentation/main/',
   },
   i18n: {
     defaultLocale: 'en',
@@ -361,7 +368,7 @@ module.exports = async function createConfig() {
     prism: {
       theme: codeTheme,
       darkTheme: codeTheme,
-      additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy']
+      additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy', 'scss', 'javascript', 'ruby']
     },
   }
 };

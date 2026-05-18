@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: Element Composite
+description: Wrap third-party web components in Java with ElementComposite using PropertyDescriptor, attribute mapping, and typed event listeners.
 sidebar_class_name: has-new-content
 slug: element_composite
 ---
@@ -17,9 +18,9 @@ It's possible to do everything with the `Element` class itself, without using th
 
 The examples on this page demonstrate how to implement the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
 
-<ComponentDemo 
-path='/webforj/qrdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QRDemoView.java'
+<ComponentDemo
+path='/webforj/qrdemo'
+files={['src/main/java/com/webforj/samples/views/elementcomposite/QRDemoView.java']}
 height='175px'
 />
 
@@ -60,9 +61,9 @@ String title = get(TITLE, false, String);
 
 In the demo below, properties have been added for the QR code based on the documentation for the web component. Methods have then been implemented which allow users to get and set the various properties that have been implemented.
 
-<ComponentDemo 
-path='/webforj/qrproperties?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QRPropertiesView.java'
+<ComponentDemo
+path='/webforj/qrproperties'
+files={['src/main/java/com/webforj/samples/views/elementcomposite/QRPropertiesView.java']}
 height='250px'
 />
 
@@ -101,9 +102,9 @@ For specialized event handling, create custom event classes with configured payl
 
 In the example below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it's displayed in the app.
 
-<ComponentDemo 
-path='/webforj/qrevent?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QREventView.java'
+<ComponentDemo
+path='/webforj/qrevent'
+files={['src/main/java/com/webforj/samples/views/elementcomposite/QREventView.java']}
 height='300px'
 />
 

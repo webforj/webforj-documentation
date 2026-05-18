@@ -3,6 +3,7 @@ sidebar_position: 1
 title: Security
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Protect webforJ routes with declarative annotations and centralized authentication and authorization enforcement.
 ---
 
 <Head>

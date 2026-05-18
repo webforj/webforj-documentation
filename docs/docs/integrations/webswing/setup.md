@@ -1,6 +1,7 @@
 ---
 title: Setup and Configuration
 sidebar_position: 2
+description: Install the Webswing server, register a Swing app in the admin console, and configure CORS so webforJ can embed it with WebswingConnector.
 ---
 
 Integrating Webswing with webforJ involves two components: the Webswing server that hosts your Swing app, and the `WebswingConnector` component in your webforJ app that embeds it.

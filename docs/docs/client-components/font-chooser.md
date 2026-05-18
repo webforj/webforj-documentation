@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-font-chooser>
 sidebar_class_name: sidebar--item__hidden
 slug: font-chooser
-description: A user guide article for the font-chooser
+description: Customize the dwc-font-chooser client component via CSS variables and shadow parts to theme the font list, preview area, and controls.
 // pagination_prev: null
 // pagination_next: null
 ---

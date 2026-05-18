@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-infinite-scroll>
 sidebar_class_name: sidebar--item__hidden
 slug: infinite-scroll
-description: A user guide article for the infinite-scroll
+description: Customize the dwc-infinite-scroll client component via CSS variables and shadow parts to theme the loader, sentinel, and scroll container.
 // pagination_prev: null
 // pagination_next: null
 ---

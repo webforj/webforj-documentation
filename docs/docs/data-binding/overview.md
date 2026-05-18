@@ -3,6 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Connect webforJ UI components to Java backend models with two-way synchronization, validation, and transformation through BindingContext.
 ---
 
 <Head>
@@ -126,6 +127,6 @@ public class Hero {
 
 - **Annotation-Driven Configuration:**  Uses annotations to minimize boilerplate code, making the bindings between UI components and data models declarative and easy to manage.
 
-# Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

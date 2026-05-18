@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-dropdown>
 sidebar_class_name: sidebar--item__hidden
 slug: dropdown
-description: A user guide article for the dropdown
+description: Style the dwc-dropdown client component using CSS variables and shadow parts to theme trigger, panel surface, and positioning.
 // pagination_prev: null
 // pagination_next: null
 ---

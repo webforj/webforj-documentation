@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-datefield>
 sidebar_class_name: sidebar--item__hidden
 slug: datefield
-description: A user guide article for the datefield
+description: Customize the dwc-datefield client component using CSS variables and shadow parts to theme the date input, calendar trigger, and label.
 // pagination_prev: null
 // pagination_next: null
 ---

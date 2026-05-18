@@ -2,6 +2,7 @@
 sidebar_position: 10
 title: Selection
 slug: selection
+description: Configure single, multi, or no-selection modes on the Table and respond to row selection events with appropriate listeners.
 ---
 
 The `Table` component provides various selection capabilities. There are methods for selecting a single item, multiple items, or programmatically managing selections.
@@ -38,11 +39,13 @@ The `TableItemSelectEvent` and `TableItemDeselectEvent` are not triggered when m
 
 In the example below, a `TableItemSelectEvent` event will be fired whenever a user selects a row. The event can be handled by adding a listener to the table using the `onItemSelect()` method.
 
-<ComponentDemo 
-path='/webforj/tablesingleselection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableSingleSelectionView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablesingleselection'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableSingleSelectionView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
@@ -52,11 +55,13 @@ Checkbox selection is enabled when the selection mode is `MULTI`, and allows use
 
 By using the `setCheckboxSelection(boolean checkboxSelection)` method, checkboxes can be configured to be displayed next to each row, allowing users to select items. The program below shows multiple selection and checkbox selection enabled:
 
-<ComponentDemo 
-path='/webforj/tablemultiselection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableMultiSelectionView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablemultiselection'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableMultiSelectionView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 

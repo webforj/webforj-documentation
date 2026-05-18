@@ -1,5 +1,6 @@
 ---
 title: HelloWorld
+description: Generate a minimal greeting app from the HelloWorld archetype to see how a basic webforJ UI, layout, and event handler fit together.
 sidebar_position: 4
 hide_table_of_contents: true
 ---

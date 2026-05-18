@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-menu>
 sidebar_class_name: sidebar--item__hidden
 slug: menu
-description: A user guide article for the menu
+description: Customize the dwc-menu component appearance through CSS variables and shadow parts for surface, spacing, and item styling.
 // pagination_prev: null
 // pagination_next: null
 ---

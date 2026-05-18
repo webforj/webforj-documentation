@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 title: Navigational Frame Titles
+description: Set browser frame titles per route with the @FrameTitle annotation or generate them dynamically using HasFrameTitle.
 ---
 
 In webforJ, all routes are rendered within a Frame, which serves as a top-level container responsible for displaying the content of the current route. As users navigate between different routes, the Frame Title is updated dynamically to reflect the active view, helping provide clear context on the user's current location within the app.

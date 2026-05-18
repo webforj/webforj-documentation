@@ -1,6 +1,7 @@
 ---
 title: MCP Server
 sidebar_position: 5
+description: Connect AI assistants to the webforJ MCP server for live documentation lookup, project scaffolding, theme generation, and token validation.
 ---
 
 The webforJ Model Context Protocol (MCP) server plugs AI coding assistants into webforJ's documentation, APIs, design tokens, and scaffolding tools. Instead of guessing at framework conventions, the assistant asks the server and gets answers grounded in the real webforJ.

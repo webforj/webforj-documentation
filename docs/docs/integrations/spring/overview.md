@@ -3,6 +3,7 @@ title: Spring
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Combine webforJ UI components with Spring Boot for dependency injection, Spring Data repositories, custom scopes, and live reload.
 ---
 
 <Head>

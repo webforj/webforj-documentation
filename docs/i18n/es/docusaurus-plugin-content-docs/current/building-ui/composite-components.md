@@ -1,18 +1,18 @@
 ---
 sidebar_position: 4
 title: Composite Components
-_i18n_hash: fb15eb19cfe0ca1aebb77a67b10c9ecd
+_i18n_hash: 7e40c0b9a2feae4f8e56829bb2c8889b
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-El componente `Composite` combina componentes existentes de webforJ en componentes reutilizables y autónomos con comportamiento personalizado. Úsalo para envolver componentes internos de webforJ en unidades de lógica de negocio reutilizables, reutilizar patrones de componentes en toda tu aplicación y combinar múltiples componentes sin exponer detalles de implementación.
+El componente `Composite` combina componentes existentes de webforJ en componentes reutilizables y autónomos con comportamiento personalizado. Úsalo para envolver componentes internos de webforJ en unidades de lógica empresarial reutilizables, reutilizar patrones de componentes en toda tu aplicación y combinar múltiples componentes sin exponer los detalles de implementación.
 
-Un componente `Composite` tiene una fuerte asociación con un componente subyacente vinculado. Esto te da control sobre qué métodos y propiedades pueden acceder los usuarios, a diferencia de la herencia tradicional donde todo está expuesto.
+Un componente `Composite` tiene una fuerte asociación con un componente vinculado subyacente. Esto te da control sobre qué métodos y propiedades pueden acceder los usuarios, a diferencia de la herencia tradicional donde todo está expuesto.
 
 Si necesitas integrar componentes web de otra fuente, utiliza alternativas especializadas:
 
 - [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): Para componentes web con gestión de propiedades tipo segura
-- [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): Para componentes web que aceptan contenido con ranuras
+- [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): Para componentes web que aceptan contenido en ranuras
 
 <AISkillTip skill="webforj-creating-components" />
 
@@ -35,13 +35,13 @@ public class BasicComposite extends Composite<FlexLayout> {
 
 El método `getBoundComponent()` proporciona acceso a tu componente subyacente, permitiéndote configurar sus propiedades, agregar componentes hijos y gestionar su comportamiento directamente.
 
-El componente vinculado puede ser cualquier [componente de webforJ](/docs/components/overview) o [elemento de componente HTML](/docs/components/html-elements). Para diseños flexibles, considera usar [`FlexLayout`](/docs/components/flex-layout) o [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) como tu componente vinculado.
+El componente vinculado puede ser cualquier [componente de webforJ](/docs/components/overview) o [componente de elemento HTML](/docs/components/html-elements). Para diseños flexibles, considera usar [`FlexLayout`](/docs/components/flex-layout) o [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) como tu componente vinculado.
 
 :::note Extensión de Componente
-Nunca extiendas `Component` o `DwcComponent` directamente. Siempre utiliza patrones de composición con `Composite` para construir componentes personalizados.
+Nunca extiendas directamente `Component` o `DwcComponent`. Siempre utiliza patrones de composición con `Composite` para construir componentes personalizados.
 :::
 
-Sobrescribe `initBoundComponent()` cuando necesites mayor flexibilidad en la creación y gestión del componente vinculado, como usar constructores parametrizados en lugar del constructor por defecto sin argumentos. Usa este patrón cuando el componente vinculado requiera que los componentes sean pasados a su constructor en lugar de añadirse posteriormente.
+Sobrepasa `initBoundComponent()` cuando necesites mayor flexibilidad en la creación y gestión del componente vinculado, como usar constructores parametrizados en lugar del constructor por defecto sin argumentos. Usa este patrón cuando el componente vinculado requiera que se pasen componentes a su constructor en lugar de agregarlos después.
 
 ```java title="CustomFormLayout.java"
 public class CustomFormLayout extends Composite<FlexLayout> {
@@ -66,7 +66,7 @@ public class CustomFormLayout extends Composite<FlexLayout> {
 
 ## Ciclo de vida del componente {#component-lifecycle}
 
-webforJ maneja automáticamente toda la gestión del ciclo de vida para los componentes `Composite`. Al utilizar el método `getBoundComponent()`, la mayor parte del comportamiento personalizado se puede manejar en el constructor, incluyendo agregar componentes hijos, establecer propiedades, configuración básica del diseño y registro de eventos.
+webforJ gestiona automáticamente todo el manejo del ciclo de vida para los componentes `Composite`. Al usar el método `getBoundComponent()`, la mayoría del comportamiento personalizado se puede manejar en el constructor, incluyendo la adición de componentes hijos, la configuración de propiedades, la configuración básica del diseño y el registro de eventos.
 
 ```java
 public class UserDashboard extends Composite<FlexLayout> {
@@ -107,7 +107,7 @@ public class UserDashboard extends Composite<FlexLayout> {
 }
 ```
 
-Si tienes requisitos específicos adicionales de configuración o limpieza, es posible que necesites utilizar los ganchos de ciclo de vida opcionales `onDidCreate()` y `onDidDestroy()`:
+Si tienes requisitos específicos adicionales de configuración o limpieza, puedes necesitar usar los ganchos de ciclo de vida opcionales `onDidCreate()` y `onDidDestroy()`:
 
 ```java
 public class DataVisualizationPanel extends Composite<Div> {
@@ -115,14 +115,14 @@ public class DataVisualizationPanel extends Composite<Div> {
 
  @Override
  protected void onDidCreate(Div container) {
-   // Inicializar componentes que requieren adjunto al DOM
+   // Inicializa componentes que requieren adjuntos DOM
    refreshInterval = new Interval(5.0, event -> updateData());
    refreshInterval.start();
  }
 
  @Override
  protected void onDidDestroy() {
-   // Limpiar recursos
+   // Limpia recursos
    if (refreshInterval != null) {
      refreshInterval.stop();
    }
@@ -134,7 +134,7 @@ public class DataVisualizationPanel extends Composite<Div> {
 }
 ```
 
-Si necesitas realizar alguna acción después de que el componente esté adjunto al DOM, utiliza el método `whenAttached()`:
+Si necesitas realizar acciones después de que el componente esté adjunto al DOM, utiliza el método `whenAttached()`:
 
 ```java title="InteractiveMap.java"
 public class InteractiveMap extends Composite<Div> {
@@ -151,12 +151,14 @@ public class InteractiveMap extends Composite<Div> {
 
 ## Ejemplo de componente `Composite` {#example-composite-component}
 
-El siguiente ejemplo demuestra una aplicación de Todo donde cada ítem es un componente `Composite` que consiste en un [`RadioButton`](../components/radiobutton) estilizado como un interruptor y un Div con texto:
+El siguiente ejemplo demuestra una aplicación Todo donde cada ítem es un componente `Composite` que consiste en un [`RadioButton`](../components/radiobutton) estilizado como un interruptor y un Div con texto:
 
-<ComponentDemo 
-path='/webforj/composite?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeView.java'
+<ComponentDemo
+path='/webforj/composite'
+files={[
+  'src/main/java/com/webforj/samples/views/composite/CompositeView.java',
+  'src/main/resources/static/composite/composite.css',
+]}
 height='500px'
 />
 
@@ -165,8 +167,10 @@ height='500px'
 A veces puedes querer usar un `Composite` para agrupar componentes relacionados en una sola unidad, incluso cuando la reutilización no es la principal preocupación:
 
 <ComponentDemo
-path='/webforj/analyticscardcomposite?'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/analyticscomposite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java'
+path='/webforj/analyticscardcomposite'
+files={[
+  'src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java',
+  'src/main/resources/static/composite/analyticscomposite.css',
+]}
 height='500px'
 />

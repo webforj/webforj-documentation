@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: Event Options
+description: Configure element events with ElementEventOptions to attach payload data, filter, debounce, throttle, and run client-side code before firing.
 ---
 <!-- sidebar_class_name: sidebar--item__hidden -->
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
