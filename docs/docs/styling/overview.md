@@ -2,6 +2,7 @@
 title: Styling
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Style webforJ apps with the DWC design system using CSS custom properties, palettes, shadow parts, and the Figma kit.
 ---
 
 <Head>

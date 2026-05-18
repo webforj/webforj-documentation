@@ -1,5 +1,6 @@
 ---
 title: SideMenu
+description: Scaffold a webforJ multi-page app from the SideMenu archetype with a sidebar navigation layout and routed content area.
 sidebar_position: 3
 hide_table_of_contents: true
 ---

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 21
 title: Minifier Plugin
+description: Discover and minify CSS and JavaScript assets referenced by webforJ annotations during the Maven or Gradle production build.
 ---
 
 # Minifier plugin <DocChip chip='since' label='25.11' />

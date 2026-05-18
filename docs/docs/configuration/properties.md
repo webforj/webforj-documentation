@@ -1,6 +1,7 @@
 ---
 title: Property Configuration
 sidebar_position: 30
+description: Set webforJ entry points, debug mode, locales, file upload limits, and servlet mappings through webforj.conf and web.xml.
 ---
 
 # Configuring webforJ properties

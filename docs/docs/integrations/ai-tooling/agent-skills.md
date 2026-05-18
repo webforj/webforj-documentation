@@ -1,6 +1,7 @@
 ---
 title: Agent Skills
 sidebar_position: 10
+description: Install Agent Skills so AI coding assistants follow webforJ workflows for building forms, adding servlets, styling apps, and creating components.
 ---
 
 Agent Skills teach AI coding assistants how to build webforJ applications using the correct APIs, design tokens, and component patterns. Instead of guessing at framework conventions, the assistant loads a skill and follows a structured workflow to produce code that compiles and follows best practices on the first attempt.

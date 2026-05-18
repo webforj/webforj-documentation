@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Table
 hide_giscus_comments: true
+description: Display tabular data with the Table component, binding entity classes to a Repository to populate columns and render rows.
 ---
 
 <DocChip chip='shadow' />
@@ -16,9 +17,9 @@ The `Table` class is a versatile component designed for presenting tabular infor
 ## Creating a `Table` {#creating-a-table}
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/datatable?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/DataTableView.java'
+<ComponentDemo
+path='/webforj/datatable'
+files={['src/main/java/com/webforj/samples/views/table/DataTableView.java']}
 height='600px'
 />
 <!-- vale on -->
@@ -83,11 +84,13 @@ Alternatively, the `setItems()` method can be passed any valid Java collection, 
 Below is an example of the above steps implemented to create a basic `Table` component:
 
 
-<ComponentDemo 
-path='/webforj/tablebasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableBasicView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablebasic'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableBasicView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 

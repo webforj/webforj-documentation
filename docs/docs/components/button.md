@@ -1,6 +1,7 @@
 ---
 title: Button
 sidebar_position: 15
+description: Trigger click actions in webforJ with the Button component, including themes, expanses, prefix and suffix icons, and disabled state.
 ---
 
 <DocChip chip="shadow" />
@@ -39,9 +40,9 @@ The `Button` class is a versatile component that is commonly used in various sit
   
 The following example demonstrates buttons used for form submission and clearing input:
 
-<ComponentDemo 
-path='/webforj/button?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonView.java'
+<ComponentDemo
+path='/webforj/button'
+files={['src/main/java/com/webforj/samples/views/button/ButtonView.java']}
 height='300px'
 />
 
@@ -60,10 +61,10 @@ By default, an `Icon` inherits the button's theme and expanse.
 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
-<ComponentDemo 
-path='/webforj/buttonicon?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonIconView.java'
-height="200px"
+<ComponentDemo
+path='/webforj/buttonicon'
+files={['src/main/java/com/webforj/samples/views/button/ButtonIconView.java']}
+height='200px'
 />
 
 ### Names {#names}
@@ -74,9 +75,9 @@ The `Button` component utilizes naming, which is used for accessibility. When a 
 
 Button components, like many others, can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will decrease the opacity of the button, and is available for all button themes and expanses.
 
-<ComponentDemo 
-path='/webforj/buttondisable?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonDisableView.java'
+<ComponentDemo
+path='/webforj/buttondisable'
+files={['src/main/java/com/webforj/samples/views/button/ButtonDisableView.java']}
 />
 
 Disabling a button can be done at any time in the code by using the <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> function. For added convenience, a button can also be disabled when clicked using the built-in <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> function.
@@ -105,9 +106,9 @@ While there are many use cases for each of the various themes, some examples use
 
 Shown below are example buttons with each of the supported Themes applied: <br/>
 
-<ComponentDemo 
-path='/webforj/buttonthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonThemesView.java'
+<ComponentDemo
+path='/webforj/buttonthemes'
+files={['src/main/java/com/webforj/samples/views/button/ButtonThemesView.java']}
 height='175px'
 />
 
@@ -121,9 +122,9 @@ Different sizes are often appropriate for different uses:
 
 Below are the various expanses supported for the `Button` component: <br/>
 
-<ComponentDemo 
-path='/webforj/buttonexpanses?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonExpansesView.java'
+<ComponentDemo
+path='/webforj/buttonexpanses'
+files={['src/main/java/com/webforj/samples/views/button/ButtonExpansesView.java']}
 height='200px'
 />
 

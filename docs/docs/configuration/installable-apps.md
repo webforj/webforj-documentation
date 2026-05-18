@@ -1,6 +1,7 @@
 ---
 title: Installable Apps
 sidebar_position: 10
+description: Annotate a webforJ app with AppProfile to generate a Web App Manifest with icons, screenshots, and metadata for device installation.
 ---
 
 <DocChip chip='since' label='24.21' />

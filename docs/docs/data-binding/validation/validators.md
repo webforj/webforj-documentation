@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Validators
 sidebar_class_name: updated-content
+description: Attach validators to bindings with useValidator, implement reusable Validator classes, and override messages per UI field.
 ---
 
 Validators validate data within your UI components against defined constraints before committing this data to the data model. You can apply validators to verify that data meets certain criteria, such as being within a specified range, matching a pattern, or not being empty.

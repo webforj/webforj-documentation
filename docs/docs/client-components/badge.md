@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-badge>
 sidebar_class_name: sidebar--item__hidden
 slug: badge
-description: A user guide article for the badge
+description: Customize the dwc-badge client component via CSS variables and shadow parts to theme color, size, radius, and label placement.
 // pagination_prev: null
 // pagination_next: null
 ---

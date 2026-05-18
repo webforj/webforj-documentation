@@ -1,6 +1,7 @@
 ---
 title: Events and updates
 sidebar_position: 5
+description: React to repository commits with RepositoryCommitEvent listeners, choose single-entity or bulk updates, and manage listener registrations.
 ---
 
 <!-- vale off -->

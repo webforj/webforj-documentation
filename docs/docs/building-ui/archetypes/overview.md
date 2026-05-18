@@ -1,6 +1,7 @@
 ---
 sidebar_position: 0
 title: Archetypes
+description: Pick a starter archetype such as SideMenu, Tabs, Blank, or HelloWorld to scaffold a webforJ project with prebuilt structure and dependencies.
 hide_table_of_contents: true
 hide_giscus_comments: true
 ---

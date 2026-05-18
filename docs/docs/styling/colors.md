@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Colors
+description: Configure DWC color palettes through hue and saturation seeds that generate consistent shades for primary, status, and neutral tones.
 ---
 
 webforJ provides a color system built on CSS custom properties. These color variables keep consistent visual style across your app while giving you full control to customize palettes according to your design needs.

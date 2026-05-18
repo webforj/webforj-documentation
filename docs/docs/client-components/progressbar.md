@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-progressbar>
 sidebar_class_name: sidebar--item__hidden
 slug: progressbar
-description: A user guide article for the progressbar
+description: Customize the dwc-progressbar track, indicator, and label through CSS variables and shadow parts for color and sizing.
 // pagination_prev: null
 // pagination_next: null
 ---

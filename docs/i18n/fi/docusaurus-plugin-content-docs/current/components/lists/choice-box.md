@@ -2,104 +2,106 @@
 sidebar_position: 5
 title: ChoiceBox
 slug: choicebox
-_i18n_hash: 1da4824585c11423d72c2b75b451a6db
+_i18n_hash: 6e04ceea1fadc5f159b8d4dd9645e014
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-choicebox" />
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ChoiceBox" top='true'/>
 
-`ChoiceBox` -komponentti esittelee alasvetoluettelon, josta käyttäjät valitsevat yhden vaihtoehdon. Kun valinta on tehty, valittu arvo näytetään painikkeessa. Tämä on hyvä vaihtoehto, kun käyttäjien on valittava kiinteä joukko ennalta määriteltyjä vaihtoehtoja, ja nuolinäppäimiä voidaan käyttää luettelon navigointiin.
+`ChoiceBox`-komponentti esittää avattavan luettelon, josta käyttäjät valitsevat yhden vaihtoehdon. Kun valinta on tehty, valittu arvo näkyy painikkeessa. Se on hyvä valinta, kun käyttäjien on valittava kiinteä joukko ennalta määriteltyjä vaihtoehtoja, ja nuolinäppäimiä voidaan käyttää luettelon selaamiseen.
 
 <!-- INTRO_END -->
 
-## Käyttötarkoitukset {#usages}
+## Käytännöt {#usages}
 
 <ParentLink parent="List" />
 
-`ChoiceBox` -komponentteja käytetään erilaisiin tarkoituksiin, kuten valintojen tekemiseen valikosta, luokkien valitsemiseen tai ennalta määritettyjen joukkojen vaihtoehtojen valitsemiseen. Ne tarjoavat järjestelmällisen ja visuaalisesti miellyttävän tavan käyttäjien tehdä valintoja, erityisesti silloin, kun vaihtoehtoja on useita. Yleisiä käyttötarkoituksia ovat:
+`ChoiceBox`-komponentteja käytetään eri tarkoituksiin, kuten valintojen tekemiseen valikosta, kategorioista valitsemiseen tai vaihtoehtojen valitsemiseen ennalta määritellyistä aineistoista. Ne tarjoavat käyttäjille järjestäytyneen ja visuaalisesti miellyttävän tavan tehdä valintoja, erityisesti kun vaihtoehtoja on paljon. Yleisiä käyttötapoja ovat:
 
-1. **Käyttäjän valintojen tekeminen**: `ChoiceBox` -komponentin pääasiallinen tarkoitus on antaa käyttäjien valita yksi vaihtoehto luettelosta. Tämä on arvokasta sovelluksissa, jotka vaativat käyttäjiltä valintoja, kuten:
-    - Valitseminen luokkien luettelosta
-    - Valitsemalla vaihtoehtoja ennalta määritetyistä joukoista
+1. **Käyttäjän valintojen tekeminen**: `ChoiceBox`-komponentin ensisijainen tarkoitus on sallia käyttäjien valita yksi vaihtoehto luettelosta. Tämä on arvokasta sovelluksissa, joissa käyttäjiltä vaaditaan valintoja, kuten:
+    - Valitseminen kategorioista
+    - Ennalta määriteltyjen vaihtoehtojen valitseminen
 
-2. **Lomakekentät**: Kun suunnitellaan lomakkeita, jotka vaativat käyttäjiltä tiettyjen vaihtoehtojen syöttämistä, `ChoiceBox` yksinkertaistaa valintaprosessia. Olipa kyseessä maan, osavaltion tai minkä tahansa muun vaihtoehdon valitseminen ennalta määritetystä luettelosta, `ChoiceBox` virtaviivaistaa syöttöprosessia.
+2. **Lomakekentät**: Kun suunnitellaan lomakkeita, jotka vaativat käyttäjiä syöttämään tiettyjä vaihtoehtoja, `ChoiceBox` yksinkertaistaa valintaprosessia. Olipa kyseessä maan, osavaltion tai minkä tahansa muun vaihtoehdon valitseminen ennalta määritellystä luettelosta, `ChoiceBox` sujuvoittaa syöttöprosessia.
 
-3. **Suodatus ja lajittelu**: `ChoiceBox` voidaan käyttää suodatus- ja lajittelutehtävissä sovelluksissa. Käyttäjät voivat valita suodatuskriteereitä tai lajittelupreferenssejä luettelosta, joka helpottaa datan organisointia ja navigointia.
+3. **Suodatus ja lajittelu**: `ChoiceBox`-komponenttia voidaan käyttää suodatus- ja lajittelutehtävissä sovelluksissa. Käyttäjät voivat valita suodatuskriteerit tai lajitteluvaihtoehdot luettelosta, mikä helpottaa tietojen järjestämistä ja selaamista.
 
-4. **Määritykset ja asetukset**: Kun sovelluksessasi on asetuksia tai määrittelyvaihtoehtoja, `ChoiceBox` tarjoaa intuitiivisen tavan käyttäjien säätää mieltymyksiä. Käyttäjät voivat valita asetuksia luettelosta, mikä helpottaa sovelluksen räätälöintiä heidän tarpeidensa mukaan.
+4. **Konfigurointi ja asetukset**: Kun sovelluksesi sisältää asetuksia tai konfigurointivaihtoehtoja, `ChoiceBox` tarjoaa intuitiivisen tavan käyttäjien säätää mieltymyksiään. Käyttäjät voivat valita asetuksia luettelosta, mikä helpottaa sovelluksen mukauttamista tarpeidensa mukaan.
 
 :::tip
-`ChoiceBox` on tarkoitettu käytettäväksi silloin, kun ennalta määrätty numero vaihtoehtoja on saatavilla, eikä mukautettuja vaihtoehtoja tulisi sallia tai sisällyttää. Jos käyttäjiltä halutaan sallia mukautettujen arvojen syöttäminen, käytä sen sijaan [`ComboBox`](./combo-box.md).
+`ChoiceBox` on tarkoitettu käytettäväksi, kun käytettävissä on ennalta määritetty määrä vaihtoehtoja, eikä käytön aikana tulisi sallia tai sisällyttää mukautettuja vaihtoehtoja. Jos haluat sallia käyttäjien syöttävän mukautettuja arvoja, käytä [`ComboBox`](./combo-box.md) -komponenttia sen sijaan.
 :::
 
-## Alasvetotyyppi {#dropdown-type}
+## Avattavan tyyppi {#dropdown-type}
 
-Käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> -metodia määritetään arvo `type`-attribuutille `ChoiceBox`-komponentissa, ja vastaava arvo attribuutille `data-dropdown-for` `ChoiceBox`-alasvetovalikossa. Tämä on hyödyllistä tyyliä varten, koska alasvetovalikko otetaan pois nykyisestä sijainnistaan DOM:issa ja siirretään sivun rungon loppuun avattaessa.
+Käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink>-metodia määritetään arvo `type`-attribuutille `ChoiceBox`-komponentissa, ja vastaava arvo `data-dropdown-for`-attribuutille `ChoiceBox`-komponentin avattavassa. Tämä on hyödyllistä tyylittelyn kannalta, sillä avattava siirretään pois nykyiseltä sijainniltaan DOM:ssa ja sijoitetaan sivun rungon loppuun avattaessa.
 
-<!-- ![example type](/img/components/_images/choicebox/type.png)
-![example type](/img/components/_images/choicebox/type_zoomed.png) -->
+<!-- ![esimerkkityyppi](/img/components/_images/choicebox/type.png)
+![esimerkkityyppi](/img/components/_images/choicebox/type_zoomed.png) -->
 
-Tämä irrottaminen luo tilanteen, jossa alasvetovalikon suora kohdistaminen CSS:llä tai varjopuolen valitsimilla vanhempikomponentista on haastavaa, ellei käytetä alasvetotyypin attribuuttia.
+Tämä irrottaminen luo tilanteen, jossa avattavaa on vaikeaa kohdistaa suoraan CSS:n tai varjopartioiden valitsimien avulla vanhempi komponentti, ellei käytetä avattavan tyyppiattribuuttia.
 
-Alla olevassa demoissa alasvetotyypin asettaminen ja käyttäminen CSS-tiedostossa alasvetovalikon valitsemiseksi ja taustavärin muuttamiseksi.
+Alla olevassa demossa avattavan tyyppi asetetaan ja sitä käytetään CSS-tiedostossa avattavan valitsemiseksi ja taustavärin muuttamiseksi.
 
-<ComponentDemo 
-path='/webforj/choiceboxdropdowntype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxDropdownTypeView.java'
-cssURL='/css/lists/combobox/comboBoxDropDownType.css'
+<ComponentDemo
+path='/webforj/choiceboxdropdowntype'
+files={[
+  'src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxDropdownTypeView.java',
+  'src/main/resources/static/css/lists/combobox/comboBoxDropDownType.css',
+]}
 height='250px'
 />
 
 ## Maksimi rivimäärä {#max-row-count}
 
-Oletusarvoisesti alasvetovalikossa näkyvien rivien määrä kasvatetaan sisällön mukaiseksi. Kuitenkin käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> -metodia voidaan hallita näyttävien kohteiden määrää.
+Oletuksena `ChoiceBox`-komponentin avattavassa näkyvien rivien määrä kasvaa sisällön mukaan. Kuitenkin <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink>-metodin avulla voidaan hallita, kuinka monta kohdetta näytetään.
 
 :::tip
-Jos käytetään numeroa, joka on pienempi tai yhtä suuri kuin 0, tämä ominaisuus poistetaan käytöstä.
+Numero, joka on pienempi tai yhtä suuri kuin 0, johtaa tämän ominaisuuden poistamiseen käytöstä.
 :::
 
-<ComponentDemo 
-path='/webforj/choiceboxmaxrow?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxMaxRowView.java'
+<ComponentDemo
+path='/webforj/choiceboxmaxrow'
+files={['src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxMaxRowView.java']}
 height='450px'
 />
 
 ## Avaaminen ja sulkeminen {#opening-and-closing}
 
-`ChoiceBox` -komponentin vaihtoehtojen näkyvyyttä voidaan hallita ohjelmallisesti `open()`- ja `close()`-metodien avulla. Nämä metodit mahdollistavat vaihtoehtoluettelon näyttämisen valintaa varten tai sen piilottamisen tarpeen mukaan, mikä tarjoaa enemmän joustavuutta `ChoiceBox` -komponentin käytön hallinnassa.
+`ChoiceBox`-komponentin vaihtoehtojen näkyvyyttä voidaan ohjelmallisesti hallita `open()`- ja `close()`-metodien avulla. Nämä metodit sallivat valintaluettelon näyttämisen tai piilottamisen tarpeen mukaan, mikä tarjoaa suurempaa joustavuutta `ChoiceBox`-komponentin käytön hallintaan.
 
-Lisäksi webforJ:llä on tapahtumakuuntelijat, kun `ChoiceBox` on suljettu ja kun se on avattu, antaen sinulle enemmän hallintaa erityisten toimintojen laukaisemiseksi.
+Lisäksi webforJ:llä on tapahtuman kuuntelijat, joita käytetään, kun `ChoiceBox` suljetaan tai avataan, jolloin voit paremmin hallita erityisten toimintojen laukaisemista.
 
 ```Java
-//Siirrä tai avaa seuraava komponentti lomakkeessa
+// Keskity tai avaa seuraava komponentti lomakkeessa
 ChoiceBox yliopisto = new ChoiceBox("Yliopisto");
 ChoiceBox pääaine = new ChoiceBox("Pääaine");
-Button lähettää = new Button("Lähetä");
+Button lähetä = new Button("Lähetä");
 
-//... Lisää yliopistojen ja pääaineiden luettelot
+//... Lisää yliopistojen ja pääaineiden luettelo
 
-yliopisto.onClose(e -> {
+yliopisto.onClose( e ->{
   pääaine.focus();
 });
 
-pääaine.onClose(e -> {
-  lähettää.focus();
+pääaine.onClose( e ->{
+  lähetä.focus();
 });
 ```
 
-## Avoimet mitat {#opening-dimensions}
+## Avaamisen mitat {#opening-dimensions}
 
-`ChoiceBox` -komponentilla on menetelmiä, jotka mahdollistavat alasvetovalikon mittojen muokkaamisen. **Maksimikorkeus** ja **minimileveys** alasvetovalikolle voidaan määrittää käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> ja <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> -metodeja.
+`ChoiceBox`-komponentilla on metodeja, jotka mahdollistavat avattavan mittojen muokkaamisen. Avattavan **maksimi korkeus** ja **minimi leveys** voidaan määrittää käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink>- ja <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink>-metodeja.
 
 :::tip
-Jos molemmille menetelmille annetaan `String`-arvo, voidaan soveltaa [mikä tahansa pätevä CSS-yksikkö](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units), kuten pikselit, näkymämitat tai muut pätevät säännöt. Kokonaisluvun antaminen asettaa arvon pikseleinä.
+Mikäli näille metodeille annetaan `String`-arvo, voidaan käyttää [mikä tahansa voimassaoleva CSS-yksikkö](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units), kuten pikselit, näkymämitat tai muut voimassaolevat säännöt. Jos annetaan `int`, tämä asettaa arvon pikseleinä.
 :::
 
-## Prefiksi ja suffiksi {#prefix-and-suffix}
+## Etuliite ja jälkiliite {#prefix-and-suffix}
 
-Paikat tarjoavat joustavia vaihtoehtoja `ChoiceBox` -komponentin kyvykkyyden parantamiseksi. Voit lisätä kuvakkeita, etikettejä, latauspyöröitä, tyhjennys/nollausmahdollisuuden, avatar/profiilikuvia ja muita hyödyllisiä komponentteja `ChoiceBox` -komponentin sisään tarkentaaksesi käyttäjän tarkoittamia merkityksiä.
-`ChoiceBox` -komponentilla on kaksi paikkaa: `prefix` ja `suffix`. Käytä `setPrefixComponent()` ja `setSuffixComponent()` -menetelmiä erilaisten komponenttien lisäämiseksi näytetyn vaihtoehdon eteen ja taakse `ChoiceBox` -komponentissa.
+Slotit tarjoavat joustavia vaihtoehtoja `ChoiceBox`-komponentin kykyjen parantamiseksi. Voit lisätä kuvakkeita, etikettejä, latauspyöröitä, tyhjennys/palautusmahdollisuuksia, avatar/profiilikuvaa ja muita hyödyllisiä komponentteja `ChoiceBox`-komponentin sisään, jotta käyttäjille voidaan selventää tarkoitettua merkitystä.
+`ChoiceBox`-komponentilla on kaksi slottia: `prefix` ja `suffix`. Käytä `setPrefixComponent()`- ja `setSuffixComponent()`-metodeja sisällyttääksesi erilaisia komponentteja ennen ja jälkeen näytetyn vaihtoehdon `ChoiceBox`-komponentissa.
 
 ```java
 ComboBox choiceBox = new ChoiceBox());
@@ -107,20 +109,20 @@ ComboBox choiceBox = new ChoiceBox());
   choiceBox.setSuffixComponent(TablerIcon.create("box"));
 ```
 
-## Tyylittäminen {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="ChoiceBox" />
 
 ## Parhaat käytännöt {#best-practices}
 
-Jotta `ChoiceBox` -komponentin käytössä saavutettaisiin optimaalinen käyttäjäkokemus, harkitse seuraavia parhaita käytäntöjä:
+Varmistaaksesi optimaaliset käyttäjäkokemukset `ChoiceBox`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
 
-1. **Selkeät ja rajalliset vaihtoehdot**: Pidä valintaluettelo tiiviinä niin paljon kuin mahdollista, ja varmista, että se on relevantti käyttäjän tehtävälle. `ChoiceBox` on ihanteellinen, kun halutaan esittää selkeä luettelo vaihtoehdoista.
+1. **Selkeät ja rajalliset vaihtoehdot**: Pidä vaihtoehtoluettelo tiiviinä, kun se on mahdollista, ja relevanttina käyttäjän tehtävän kannalta. `ChoiceBox` on ihanteellinen esittämään selkeä luettelo vaihtoehdoista.
 
-2. **Käyttäjäystävälliset etiketit**: Varmista, että jokaisen vaihtoehdon näytettävät etiketit ovat käyttäjäystävällisiä ja itse selittäviä. Varmista, että käyttäjät voivat helposti ymmärtää kunkin valinnan tarkoituksen.
+2. **Käyttäjäystävälliset etiketit**: Varmista, että jokaisen vaihtoehdon näytetyt etiketit ovat käyttäjäystävällisiä ja itse selittäviä. Varmista, että käyttäjät voivat helposti ymmärtää kunkin valinnan tarkoituksen.
 
-3. **Oletusvalinta**: Aseta oletusvalinta, kun `ChoiceBox` näytetään aluksi. Tämä varmistaa, että valittu vaihtoehto on esivalittu, jolloin valinnan tekemiseen tarvittavien vuorovaikutusten määrä vähenee.
+3. **Oletusvalinta**: Aseta oletusvalinta, kun `ChoiceBox` esitetään ensimmäisen kerran. Tämä takaa ennakkovalinnan, vähentäen valintaan tarvittavien vuorovaikutusten määrää.
 
-4. **ChoiceBox vs. muut luettelokomponentit**: `ChoiceBox` on paras valinta, jos haluat rajoittaa käyttäjän syötteen yhteen valintaan ennalta määrättyjen vaihtoehtojen luettelosta. Toinen luettelokomponentti voi olla parempi, jos tarvitset seuraavia käyttäytymismalleja:
-    - Usean valinnan ja kaikkien kohteiden näyttäminen kerralla: [`ListBox`](./list-box.md)
-    - Anna mukautettu syöttö: [`ComboBox`](./combo-box.md)
+4. **ChoiceBox vs. muut luettelo- komponentit**: `ChoiceBox` on paras valinta, jos tarvitset käyttäjäsyötteen rajoittamista yhteen valintaan ennalta määrättyjen vaihtoehtojen luettelosta. Toinen luettelokomponentti saattaa olla parempi, jos tarvitset seuraavia käyttäytymisiä:
+    - Useita valintoja ja kaikkien kohteiden näyttäminen kerralla: [`ListBox`](./list-box.md)
+    - Sallia mukautettu syöttö: [`ComboBox`](./combo-box.md)

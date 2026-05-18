@@ -1,6 +1,7 @@
 ---
 title: Input Dialog
 sidebar_position: 25
+description: Prompt users for text, numbers, dates, colors, or other typed values with the modal InputDialog and message-type styling.
 ---
 
 <DocChip chip='shadow' />
@@ -15,10 +16,10 @@ An `InputDialog` is a modal dialog designed to prompt the user for input. The di
 
 The `InputDialog` prompts users for input, such as text, numbers, or other data. Because the dialog is modal, the app waits for the user to respond before continuing:
 
-<ComponentDemo 
-path='/webforj/inputdialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogBasicView.java'
-height = '500px'
+<ComponentDemo
+path='/webforj/inputdialogbasic'
+files={['src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogBasicView.java']}
+height='500px'
 />
 
 ## Types {#types}
@@ -51,10 +52,10 @@ The `InputDialog` supports the following message types. When you configures a ty
 In the following sample, The user is prompted to enter its password to access the app. If login fails, the user will prompted
 again.
 
-<ComponentDemo 
-path='/webforj/inputdialogtype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogTypeView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/inputdialogtype'
+files={['src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogTypeView.java']}
+height='350px'
 />
 
 ## Result {#result}

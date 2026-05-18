@@ -1,119 +1,131 @@
 ---
 title: Splitter
 sidebar_position: 115
-_i18n_hash: 9eb7b2aa3890f16f8fe8a2d4c303b227
+_i18n_hash: 340bcd9862027e6bfb967c0e6a9b5ec1
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-splitter" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="splitter" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
 
-`Splitter`-komponentti, joka on suunniteltu jakamaan ja koon muuttamaan sisältöä sovelluksessasi, kapseloi kaksi kokoa muunneltavaa komponenttia: pää- ja yksityiskohtakomponentit. Jakaja erottaa nämä komponentit, jolloin käyttäjät voivat dynaamisesti säätää kummankin komponentin kokoa omien mieltymystensä mukaan.
+`Splitter`-komponentti, joka on suunniteltu jakamaan ja säätämään sisältöä sovelluksessasi, kapseloi kaksi säädettävää komponenttia: pää- ja yksityiskohta-komponentit. Jakaja erottaa nämä komponentit, jolloin käyttäjät voivat dynaamisesti säätää jokaisen komponentin kokoa mieltymystensä mukaan.
 
 <!-- INTRO_END -->
 
 ## Luodaan jakaja {#creating-a-splitter}
 
-Luo `Splitter` siirtämällä kaksi komponenttia sen konstruktorille. Ensimmäinen muuttuu pääpaneeliksi ja toinen yksityiskohtapaneeliksi.
+Luo `Splitter` välittämällä kaksi komponenttia sen konstruktorille. Ensimmäisestä tulee pääpaneeli ja toisesta yksityiskohtapaneeli.
 
-<ComponentDemo 
-path='/webforj/splitterbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterBasicView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/components/SplitterBox.java',]}
-cssURL='/css/splitter-box.css'
+<ComponentDemo
+path='/webforj/splitterbasic'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterBasicView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
-## Minimi- ja maksimi koko {#min-and-max-size}
+## Minimi- ja maksimikoko {#min-and-max-size}
 
-`Splitter`-komponentti tarjoaa menetelmiä asetettavaksi minimiksi ja maksimi kokoiksi sen paneeleille, jolloin voit hallita komponenttien koon muutoskäyttäytymistä `Splitter`-komponentin sisällä. Kun käyttäjät yrittävät muuttaa paneeleita yli määrättyjen minimien tai maksimi kokojen, jakajakomponentti pakottaa nämä rajoitukset, varmistaen että paneelit pysyvät määritellyissä rajoissa.
+`Splitter`-komponentti tarjoaa menetelmiä asetettavaksi paneelien minimikokoja ja maksimikokoja, jolloin voit hallita komponenttien säätö käyttäytymistä `Splitter`-komponentin sisällä. Kun käyttäjät pyrkivät säätämään paneeleja yli määritettyjen minimi- tai maksimikokojen, jakajakomponentti pakottaa nämä rajoitukset, varmistaen, että paneelit pysyvät määritettyjen rajojen sisällä.
 
 ### Kokojen asettaminen {#setting-sizes}
 
-`setMasterMinSize(String masterMinSize)`-menetelmä määrittelee minimikoon jakajan pääpaneelille. Vastaavasti `setMasterMaxSize(String masterMaxSize)`-menetelmä määrittelee maksimikoon pääpaneelille.
+`setMasterMinSize(String masterMinSize)`-metodi määrittää minimikoon jakajan pääpaneelille. Samoin `setMasterMaxSize(String masterMaxSize)`-metodi määrittää maksimikoon pääpaneelille.
 
-Voit määrittää koot käyttäen mitä tahansa kelvollisia CSS-yksiköitä, kuten on esitetty alla:
+Voit määrittää kokoja käyttäen mitä tahansa voimassa olevaa CSS-yksikköä, kuten alla on esitetty:
 
-<ComponentDemo 
-path='/webforj/splitterminmax?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterMinMaxView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/components/SplitterBox.java',]}
-cssURL='/css/splitter-box.css'
+<ComponentDemo
+path='/webforj/splitterminmax'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterMinMaxView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
 ## Suunta {#orientation}
 
-Voit konfiguroida suunnan `Splitter`-komponentissa, jolloin voit luoda asetteluja, jotka on räätälöity erityisiin suunnittelutarpeisiin. Määrittämällä suunnan komponentti järjestää paneelit vaaka- tai pystysuoraan, mikä tarjoaa joustavuutta asettelun suunnittelussa.
+Voit konfiguroida suuntaa `Splitter`-komponentissa, jolloin voit luoda asetteluja, jotka on mukautettu erityisiin suunnittelutarpeisiin. Määrittämällä suunnan komponentti asettaa paneelit vaakasuoriksi tai pystysuoriksi, mikä tarjoaa monipuolisuutta asettelusuunnittelussa.
 
-Konfiguroidaksesi suuntaa, käytä tuettuja suuntia Enumia määrittämään, pitäisikö `Splitter`-komponentin renderöidä vaakasuoraan vai pystysuoraan:
+Voit määrittää suunnan käyttämällä tuetut suunnat enumia määrittääksesi, tulisiko `Splitter`-komponentin renderöidä vaakasuoraan vai pystysuoraan:
 
-<ComponentDemo 
-path='/webforj/splitterorientation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterOrientationView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/components/SplitterBox.java',]}
-cssURL='/css/splitter-box.css'
+<ComponentDemo
+path='/webforj/splitterorientation'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterOrientationView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
 ## Suhteellinen sijainti {#relative-position}
 
-Aseta jakajan alun perin sijainti `Splitter`-komponentissa käyttämällä `setPositionRelative`. Tämä menetelmä ottaa numeerisen arvon, joka vaihtelee välillä `0`–`100`, mikä edustaa prosenttiosuutta annettavasta tilasta `Splitter`-komponentissa, ja näyttää jakajan annettuna prosenttiosuutena kokonaisleveyksistä:
+Aseta jakajapalkin alkuperäinen sijainti `Splitter`-komponentissa käyttämällä `setPositionRelative`. Tämä metodi hyväksyy numeerisen arvon arvojen `0` ja `100` välillä, joka edustaa prosenttiosuutta annetusta tilasta `Splitter`-komponentissa, ja näyttää jakajan määritellyssä prosenttiosuudessa kokonaisleveyden mukaan:
 
-<ComponentDemo 
-path='/webforj/splitterposition?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterPositionView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/components/SplitterBox.java',]}
-cssURL='/css/splitter-box.css'
+<ComponentDemo
+path='/webforj/splitterposition'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterPositionView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
-## Pesiminen {#nesting}
+## Kiemurointi {#nesting}
 
-Jakajien pesiminen mahdollistaa monimutkaisten asetteluiden luomisen muunneltavien paneelien tasoilla. Se mahdollistaa monimutkaisten käyttöliittymien luomisen, joissa on yhteensopivat säätömahdollisuudet sisällön järjestelylle ja koon muuttamiselle.
+Jakajan kiemurointi mahdollistaa monimutkaisten asettelujen luomisen säädettävien paneelien tasoilla. Se mahdollistaa monimutkaisten käyttöliittymien luomisen, joissa on yksityiskohtainen hallinta sisällön asettelusta ja koosta.
 
-Jotta voit pesiä Splitter-komponentteja, luo uusia `Splitter`-instansseja ja lisää ne lapsina olemassa oleviin `Splitter`-komponentteihin. Tämä hierarkkinen rakenne mahdollistaa monitasoisten asetteluiden luomisen joustavilla koon muutosmahdollisuuksilla. Alla oleva ohjelma havainnollistaa tätä:
+Nostaaksesi jakaja-komponentteja, luo uusia `Splitter`-instansseja ja lisää niitä lapsina olemassa oleviin `Splitter`-komponentteihin. Tämä hierarkkinen rakenne mahdollistaa monitasoisten asettelujen luomisen joustavilla säätömahdollisuuksilla. Seuraava ohjelma havainnollistaa tätä:
 
-<ComponentDemo 
-path='/webforj/splitternested?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterNestedView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/components/SplitterBox.java',]}
-cssURL='/css/splitter-box.css'
+<ComponentDemo
+path='/webforj/splitternested'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterNestedView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
-## Automaattinen tallennus {#auto-save}
+## Automaatiosäästö {#auto-save}
 
-`Splitter`-komponentti sisältää automaattisen tallennuksen vaihtoehdon, joka tallentaa paneelikohtaiset koot paikalliseen tallennustilaan, jotta mitat pysyvät johdonmukaisina latausten välillä.
+`Splitter`-komponentti sisältää automaatiosäästö-option, joka tallentaa paneelikoordinaatit paikalliseen tallennustilaan pitääkseen mitat johdonmukaisina uudelleenlatausten välillä.
 
-Kun asetat automaattisen tallennuksen konfiguraation, `Splitter`-komponentti tallentaa automaattisesti paneelikohtaiset koot verkkoselaimen paikalliseen tallennustilaan. Tämä varmistaa, että paneelit valitsemat koot säilyvät sivun latauksen tai selaimen istuntojen välillä, vähentäen manuaalisten säädösten tarvetta.
+Kun asetat automaatiosäästökonfiguraation, `Splitter`-komponentti tallentaa automaattisesti paneelikoordinaatit verkkoselaimen paikalliseen tallennustilaan. Tämä varmistaa, että käyttäjien valitsemat paneelikoot säilyvät sivun uudelleenlatausten tai selainistuntojen aikana, mikä vähentää manuaalisten säätöjen tarvetta.
 
-### Tilanteen puhdistaminen {#cleaning-the-state}
+### Tilan puhdistaminen {#cleaning-the-state}
 
-Voit ohjelmallisesti palauttaa `Splitter`-komponentin oletusasetuksiin ja mittoihin kutsumalla `cleanState()`-menetelmää, joka poistaa kaiken tallennetun tiladatapadon `Splitter`-komponentin osalta verkkoselaimen paikallisesta tallennustilasta.
+Palauttaaksesi `Splitter`-komponentin oletusasetuksiin ja -mittoihin ohjelmallisesti, kutsu `cleanState()`-metodia poistaaksesi kaikki tallennetut tilatiedot, jotka liittyvät `Splitter`-komponenttiin verkkoselaimen paikallisesta tallennustilasta.
 
-<ComponentDemo 
-path='/webforj/splitterautosave?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterAutoSaveView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/components/SplitterBox.java',]}
-cssURL='/css/splitter-box.css'
+<ComponentDemo
+path='/webforj/splitterautosave'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterAutoSaveView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='400px'
 />
 
-Edellisessä demossa jokainen Splitter-instanssi aktivoi automaattisen tallennuksen käyttämällä `setAutosave`-menetelmää. Tämä varmistaa, että paneelikohtaiset koot tallennetaan automaattisesti paikalliseen tallennustilaan. Näin ollen, kun selain ladataan uudelleen, näiden jakajien koot pysyvät samoina.
+Edellisessä esimerkkissä jokainen Splitter-instanssi aktivoi Automaatiosäästö-ominaisuuden kutsumalla `setAutosave`-metodin. Tämä varmistaa, että paneelikoot tallennetaan automaattisesti paikalliseen tallennustilaan. Näin ollen, kun selain ladataan, näiden jakajien koot pysyvät samoina.
 
-"Tyhjennä tila" -painikkeen napsauttaminen kutsuu `cleanState()`-menetelmää ja päivitää selainikkunan näyttämään alkuperäiset mitat.
+"Nollaa tila" -painikkeen napsauttaminen kutsuu `cleanState()`-metodia ja päivittää selaimen ikkunan näyttämään alkuperäiset mitat.
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="Splitter" />
 
 ## Parhaat käytännöt {#best-practices}
 
-Optimaalisen käyttökokemuksen varmistamiseksi `Splitter`-komponentin käytön aikana, harkitse seuraavia parhaita käytäntöjä:
+Varmistaaksesi optimaalisen käyttäjäkokemuksen `Splitter`-komponentin käytön aikana, ota huomioon seuraavat parhaat käytännöt:
 
-- **Säädä sisällön perusteella**: Kun päätät paneelien suuntaa ja aloituskokoja, ota huomioon sisällön tärkeys. Esimerkiksi asettelussa, jossa on navigointipalkki ja pääsisältöalue, navigointipalkin tulisi yleensä pysyä kapeampana, ja sille tulisi asettaa minimikoko selkeän navigoinnin varmistamiseksi.
+- **Säädä sisällön mukaan**: Kun päätät paneelien suuntauksen ja alkuperäiskoot, ota huomioon sisällön prioriteetti. Esimerkiksi asettelussa, jossa on navigointipaneeli ja pääsisältöalue, navigointipaneelin tulisi yleensä pysyä kapeampana, ja sille tulisi asettaa minimikoko selkeää navigointia varten.
 
-- **Strateginen pesiminen**: Jakajien pesiminen voi luoda monipuolisia asetteluja, mutta se voi myös monimutkaistaa käyttöliittymää ja vaikuttaa suorituskykyyn. Suunnittele pesityt asettelut varmistaaksesi, että ne ovat intuitiivisia ja parantavat käyttökokemusta.
+- **Strateginen Kiemurointi**: Kiemurointi jakajissa voi luoda monipuolisia asetteluja, mutta se voi monimutkaistaa käyttöliittymää ja vaikuttaa suorituskykyyn. Suunnittele liitännäiset asettelusi varmistaaksesi, että ne ovat intuitiivisia ja parantavat käyttäjäkokemusta.
 
-- **Muista käyttäjän mieltymykset**: Käytä automaattisen tallennuksen toimintoa muistaaksesi käyttäjän säädöt istuntojen välillä, mikä parantaa käyttökokemusta. Tarjoa mahdollisuus, joka sallii käyttäjille palauttaa oletusasetukset.
+- **Muista käyttäjän mieltymykset**: Käytä Automaatiosäästö-ominaisuutta muistaaksesi käyttäjän säätöjä istuntojen välillä, parantaen käyttäjäkokemusta. Tarjoa vaihtoehto, joka mahdollistaa käyttäjille oletusasetuksiin palauttamisen.
