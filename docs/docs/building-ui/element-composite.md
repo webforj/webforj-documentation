@@ -1,8 +1,7 @@
 ---
 sidebar_position: 6
 title: Element Composite
-sidebar_class_name: has-new-content
-slug: element_composite
+sidebar_class_name: new-content
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
@@ -18,8 +17,8 @@ Reach for `ElementComposite` when wrapping a third-party web component that webf
 This guide demonstrates how to implement the [Shoelace relative-time web component](https://shoelace.style/components/relative-time) using the `ElementComposite` class.
 
 <ComponentDemo 
-path='/webforj/relativetime?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimeView.java'
+path='/webforj/relativetime' 
+files={['src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimeView.java']}
 height='150px'
 />
 
@@ -110,8 +109,11 @@ String currentTitle = get(title, false, String.class);
 The demo below adds properties for relative-time based on the web component's docs and exposes them through getters and setters. Each row in the activity feed uses different `format` and `numeric` values to show how the same component renders under varied configurations.
 
 <ComponentDemo 
-path='/webforj/relativetimeproperties?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimePropertiesView.java'
+path='/webforj/relativetimeproperties' 
+files={[
+  'src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimePropertiesView.java',
+  'src/main/resources/static/css/elementcomposite/activity-feed.css',
+]}
 height='450px'
 />
 
@@ -281,8 +283,8 @@ Define custom event classes with `@EventName` and `@EventOptions` to capture cli
 The product review form below uses this pattern with [`sl-rating`](https://shoelace.style/components/rating). The custom `ChangeEvent` carries the rating value as a typed `double`, and the listener uses it to enable the submit button:
 
 <ComponentDemo 
-path='/webforj/rating?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/RatingView.java'
+path='/webforj/rating' 
+files={['src/main/java/com/webforj/samples/views/elementcomposite/RatingView.java']}
 height='220px'
 />
 
@@ -383,10 +385,11 @@ Children added through `add()` go into the default slot. Children added through 
 The demo below shows two pricing cards built with [`sl-card`](https://shoelace.style/components/card), populating the `header`, default, and `footer` slots from Java:
 
 <ComponentDemo 
-path='/webforj/card?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/CardView.java'
+path='/webforj/card' 
+files={['src/main/java/com/webforj/samples/views/elementcomposite/CardView.java']}
 height='400px'
 />
+ 
 
 ## Testing properties {#testing-properties}
 
