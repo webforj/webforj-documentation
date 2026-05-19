@@ -1,6 +1,7 @@
 ---
 sidebar_position: 12
 title: Translation
+description: Resolve localized strings from resource bundles or custom sources with the t() method, MessageFormat placeholders, and browser locale detection.
 ---
 
 # Translation <DocChip chip='since' label='25.12' />

@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-backdrop>
 sidebar_class_name: sidebar--item__hidden
 slug: backdrop
-description: A user guide article for the backdrop
+description: Style the dwc-backdrop client component with CSS variables to control overlay color, opacity, blur, and transition timing.
 // pagination_prev: null
 // pagination_next: null
 ---

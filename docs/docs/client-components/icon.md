@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-icon>
 sidebar_class_name: sidebar--item__hidden
 slug: icon
-description: A user guide article for the icon
+description: Style the dwc-icon client component using CSS variables and shadow parts to theme size, color, and stroke for embedded icons.
 // pagination_prev: null
 // pagination_next: null
 ---

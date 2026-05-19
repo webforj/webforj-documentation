@@ -1,6 +1,7 @@
 ---
 title: Message
 sidebar_position: 30
+description: Show a blocking MessageDialog with an OK button, configurable message types, alignment, blur, and timeout.
 ---
 
 <DocChip chip='shadow' />
@@ -41,10 +42,10 @@ The `MessageDialog` supports the following message types. When you configures a 
 
 In the following sample, The code configures a message dialog of type `WARNING`. with a custom title and message.
 
-<ComponentDemo 
-path='/webforj/messagedialogtype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/message/MessageDialogTypeView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/messagedialogtype'
+files={['src/main/java/com/webforj/samples/views/optiondialog/message/MessageDialogTypeView.java']}
+height='350px'
 />
 
 :::tip Dialog & Button Theme

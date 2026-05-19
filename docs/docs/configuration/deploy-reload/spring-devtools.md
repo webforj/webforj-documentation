@@ -1,6 +1,7 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
+description: Pair Spring DevTools with webforJ DevTools to auto-restart the app and refresh the browser when Java, CSS, or asset files change.
 ---
 
 Spring DevTools provides automatic app restarts when code changes. webforJ DevTools adds automatic browser refresh - when Spring restarts your app, the browser refreshes automatically through webforJ's LiveReload server.

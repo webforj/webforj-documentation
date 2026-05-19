@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Sizing and Spacing
+description: Apply a consistent component sizing and spacing scale across layouts using DWC rem-based size and space CSS variables.
 ---
 
 Spacing and sizing tokens are used to provide consistent spacing and sizing in your app. All sizing and spacing properties are defined in `rem`.

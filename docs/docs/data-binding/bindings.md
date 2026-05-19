@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Bindings
+description: Link Java Bean properties to webforJ UI components through BindingContext to synchronize reads and writes between model and view.
 ---
 
 A binding in webforJ links a specific property of a Java Bean to a UI component. This linkage enables automatic updates between the UI and the backend model. Each binding can handle data synchronization, validation, transformation, and event management.

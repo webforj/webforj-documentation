@@ -2,21 +2,21 @@
 sidebar_position: 3
 title: Using Components
 sidebar_class_name: new-content
-_i18n_hash: 3ffe2e3b31ea278e434f7319f8019637
+_i18n_hash: cf47b1c83e67cb4c4998c149a7696701
 ---
-<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
-Komponentit ovat webforJ-sovellusten rakennuspalikoita. Käytitpä sitten sisäänrakennettuja komponentteja kuten `Button` ja `TextField` tai työtiimisi tarjoamia mukautettuja komponentteja, vuorovaikutuksesi niiden kanssa noudattaa samaa johdonmukaista mallia: määrität ominaisuuksia, hallitset tilaa ja koostet komponentteja asetteluiksi.
+Komponentit ovat webforJ-sovellusten rakennuspalikoita. Käytitpä sisäänrakennettuja komponentteja, kuten `Button` ja `TextField`, tai työsi mukautettavia komponentteja tiimiltäsi, tapasi käyttää niitä seuraa samaa johdonmukaista mallia: määritä ominaisuuksia, hallitse tilaa ja yhdistä komponentteja asetteluiksi.
 
-Tässä oppaassa keskitytään päivittäisiin toimiin: ei komponenttien sisäisiin toimintatapoihin, vaan siihen, kuinka asioita tehdään niiden kanssa käytännössä.
+Tämä opas keskittyy päivittäisiin toimiin: ei komponenttien sisäisiin toimintoihin, vaan siihen, miten asioita tehdään käytännössä.
 
 ## Component properties {#component-properties}
 
-Jokainen komponentti paljastaa ominaisuuksia, jotka kontrolloivat sen sisältöä, ulkonäköä ja käyttäytymistä. Suurin osa näistä omaa omat, tyypitetyt Java-menetelmät (`setText()`, `setTheme()`, `setExpanse()` jne.), mikä on ensisijainen tapa, jolla määrität komponentteja webforJ:ssä. Alla olevat osiot käsittelevät ominaisuuksia ja menetelmiä, jotka pätevät laajalti komponenttityypeille.
+Jokainen komponentti tarjoaa ominaisuuksia, jotka kontrolloivat sen sisältöä, ulkoasua ja käyttäytymistä. Suurin osa näistä sisältää erityisiä, tyypitettyjä Java-menetelmiä (`setText()`, `setTheme()`, `setExpanse()`, ja niin edelleen), jotka ovat ensisijainen tapa määrittää komponentteja webforJ:ssä. Alla olevat osiot käsittelevät laajasti komponenttityyppeihin soveltuvia ominaisuuksia ja menetelmiä.
 
-### Text content {#text-content}
+### Tekstisisältö {#text-content}
 
-`setText()`-menetelmä asettaa komponentin näkyvän tekstin, kuten kuvauksen `Button`-painikkeessa tai sisällön `Label`:issa. Syöttökomponenteissa kuten `TextField` kannattaa käyttää `setValue()`-menetelmää asettaaksesi kentän nykyisen arvon.
+`setText()`-menetelmä asettaa komponentin näkyvän tekstin, kuten `Button`-painikkeen otsikon tai `Label`-komponentin sisällön. Syöttökomponenteissa, kuten `TextField`, käytä sen sijaan `setValue()`-menetelmää kentän nykyisen arvon asettamiseen.
 
 ```java
 Button button = new Button();
@@ -26,31 +26,31 @@ Label label = new Label();
 label.setText("Tila: valmis");
 
 TextField field = new TextField();
-field.setValue("Alkuperäinen arvo");
+field.setValue("Alkuarvo");
 ```
 
-Jotkut komponentit tukevat myös `setHtml()`-menetelmää, kun tarvitaan inline HTML-merkintää sisällössä:
+Joissakin komponenteissa tuetaan myös `setHtml()`-menetelmää, kun tarvitset inline HTML-muotoilua sisällössä:
 
 ```java
 Div container = new Div();
-container.setHtml("<strong>Rohkeaa tekstiä</strong> ja <em>kursivoitua tekstiä</em>");
+container.setHtml("<strong>Rohkea teksti</strong> ja <em>kursivoitu teksti</em>");
 ```
 
-### HTML attributes {#html-attributes}
+### HTML-ominaisuudet {#html-attributes}
 
-Suurin osa konfiguraatiosta webforJ:ssä tehdään tyypitetyillä Java-menetelmillä, ei raakoilla HTML-ominaisuuksilla. Kuitenkin `setAttribute()` on hyödyllinen, kun halutaan antaa saavutettavuusominaisuuksia, joille ei ole omistettu APIa:
+Suurin osa konfiguraatiosta webforJ:ssä tapahtuu tyypitettyjen Java-menetelmien kautta, eikä raakamuotoisten HTML-ominaisuuksien avulla. Kuitenkin `setAttribute()` on hyödyllinen saavutettavuusominaisuuksien välittämiseen, joille ei ole erillistä API:a:
 
 ```java
 Button button = new Button("Lähetä");
 button.setAttribute("aria-label", "Lähetä lomake");
-button.setAttribute("aria-describedby", "lomake-vinkki");
+button.setAttribute("aria-describedby", "lomake-vihje");
 ```
 
-:::note Tarkista komponenttituen
-Kaikki komponentit eivät tue mielivaltaisia ominaisuuksia. Tämä riippuu taustalla olevasta komponenttiversiosta.
+:::note Tarkista komponentin tuki
+Kaikki komponentit eivät tue satunnaisia ominaisuuksia. Tämä riippuu taustalla olevan komponentin toteutuksesta.
 :::
 
-### Component IDs {#component-ids}
+### Komponentti-ID:t {#component-ids}
 
 Voit määrittää ID:n komponentin HTML-elementille käyttämällä `setAttribute()`:
 
@@ -62,20 +62,20 @@ TextField emailField = new TextField("Sähköposti");
 emailField.setAttribute("id", "email-input");
 ```
 
-DOM ID:itä käytetään yleisesti testivalitsijoina ja CSS- kohdistuksina tyylitiedostoissasi.
+DOM ID:itä käytetään yleisesti testivalitsimissa ja CSS-tyyleissä.
 
-:::tip Suosi luokkia monen komponentin kohdistuksessa
-Toisin kuin CSS-luokat, ID:t tulisi olla ainutlaatuisia sovelluksessasi. Jos sinun on kohdistettava useita komponentteja, käytä `addClassName()`-menetelmää sen sijaan.
+:::tip Suosi luokkia monikomponenttiselle kohdistamiselle
+Toisin kuin CSS-luokat, ID:t tulisi olla ainutlaatuisia sovelluksessasi. Jos sinun täytyy kohdistaa useisiin komponentteihin, käytä `addClassName()`-menetelmää sen sijaan.
 :::
 
 :::info Kehyksen hallinnoimat ID:t
-webforJ myös määrittää automaattiset tunnisteet komponentteihin sisäisesti. Palvelinpuolen ID (johon pääsee `getComponentId()`-menetelmällä) käytetään kehyksen seurantaan, kun taas asiakaspuolen ID (johon pääsee `getClientComponentId()`-menetelmällä) on käytössä asiakaspalvelinviestintään. Nämä ovat erillisiä DOM- `id`-ominaisuudesta, jonka määrität `setAttribute()`-menetelmällä.
+webforJ määrittää myös automaattisia tunnisteita komponenteille sisäisesti. Palvelinpuolen ID (johon pääsee käsiksi `getComponentId()`-menetelmällä) käytetään kehyksen seurannassa, kun taas asiakaspuolen ID (johon pääsee käsiksi `getClientComponentId()`-menetelmällä) käytetään asiakas-palvelin -viestinnässä. Nämä eroavat DOM `id`-attribuuttista, jonka asetat `setAttribute()`-menetelmällä.
 :::
 
-### Styling {#styling}
+### Muotoilu {#styling}
 
-Kolme menetelmää kattaa useimmat tyylitarpeet: `setStyle()` yksittäisiä CSS-ominaisuusarvoja varten, ja `addClassName()` sekä `removeClassName()` CSS-luokkien soveltamiseksi tai poistamiseksi, jotka on määritelty tyylitiedostoissasi. 
-Käytä `setStyle()`-menetelmää pienille tai kertakäyttöisille tyylimuutoksille, ja käytä CSS-luokkia suurempien tai toistuvien tyylityylien soveltamiseksi.
+Kolme menetelmää kattaa suurimman osan muotoilutarpeista: `setStyle()` yksittäisille CSS-ominaisuuksille, ja `addClassName()` ja `removeClassName()` CSS-luokkien lisäämiseen tai poistamiseen, jotka on määritelty tyylitiedostoissasi. 
+Käytä `setStyle()`-menetelmää pieniin tai kertaluonteisiin muotoilumuutoksiin ja käytä CSS-luokkia laajempien tai uudelleenkäytettävien muotoilujen tekemiseen.
 
 ```java
 Div container = new Div();
@@ -93,22 +93,22 @@ if (isLoading) {
 }
 ```
 
-:::note Perinteinen lähestymistapa
-[`@InlineStyleSheet`](/docs/managing-resources/importing-assets#injecting-css) on vanha lähestymistapa, eikä sitä yleensä suositella uusille projekteille. Useimmissa tapauksissa pidä tyylisi erillisissä CSS-tiedostoissa.
+:::note Vanha lähestymistapa
+[`@InlineStyleSheet`](/docs/managing-resources/importing-assets#injecting-css) on vanha lähestymistapa, eikä sitä yleisesti suositella uusille projekteille. Useimmissa tapauksissa pidä tyylisi erillisissä CSS-tiedostoissa.
 :::
 
-## Component state {#component-state}
+## Komponentin tila {#component-state}
 
-Sisällön ja ulkonäön lisäksi komponenteilla on tilaominaisuuksia, jotka määrittävät, ovatko ne näkyvissä ja vastaavatko ne käyttäjävuorovaikutukseen. Kaksi yleisimmin käytettyä ovat `setVisible()` ja `setEnabled()`.
+Sisällön ja ulkoasun lisäksi komponenteilla on tilan ominaisuuksia, jotka määrittävät, ovatko ne näkyviä ja vastaavatko ne käyttäjän vuorovaikutukseen. Kaksi yleisimmin käytettyä ovat `setVisible()` ja `setEnabled()`.
 
-`setVisible()` ohjaa, näkyykö komponentti ylipäänsä käyttöliittymässä. `setEnabled()` ohjaa, hyväksyykö se syötteitä tai vuorovaikutuksia samalla kun se pysyy näkyvissä. Useimmissa tapauksissa hylkääminen on suositeltavaa piilottamisen sijaan: poistettu painike viestittää, että toiminto on olemassa mutta ei ole vielä käytettävissä, mikä on vähemmän hämmentävää kuin sen ilmestyminen ja katoaminen.
+`setVisible()` ohjaa, onko komponentti renderoitu käyttöliittymässä lainkaan. `setEnabled()` ohjaa, hyväksyykö komponentti syötettä tai vuorovaikutusta ollessaan näkyvissä. Useimmissa tapauksissa on parempi poistaa käytöstä kuin piilottaa: poistettu käyttöönottopainike viestii silti, että toiminta on olemassa, mutta ei ole vielä saatavilla, mikä on vähemmän hämmentävää kuin sen näkyminen ja katoaminen.
 
 ```java
-// Paljasta lisäkenttä, kun valintaruutu on valittu
-TextField advancedField = new TextField("Lisäasetukset");
+// Näytä lisäkenttä, kun valintaruutu on valittu
+TextField advancedField = new TextField("Edistynyt asetukset");
 advancedField.setVisible(false);
 
-CheckBox enableAdvanced = new CheckBox("Näytä lisäasetukset");
+CheckBox enableAdvanced = new CheckBox("Näytä kehittyneet asetukset");
 enableAdvanced.addValueChangeListener(e -> advancedField.setVisible(e.getValue()));
 
 // Ota painike käyttöön vain, kun vaadittu kenttä on täytetty
@@ -119,22 +119,24 @@ TextField nameField = new TextField("Nimi");
 nameField.addValueChangeListener(e -> submitButton.setEnabled(!e.getValue().isBlank()));
 ```
 
-Seuraava kirjautumislomake demonstroi `setEnabled()`-menetelmän käytön käytännössä. Kirjautumispainike pysyy pois päältä, kunnes molemmat kentät sisältävät sisältöä, mikä tekee käyttäjälle selväksi, että syötteet ovat pakollisia ennen jatkamista:
+Seuraava kirjautumislomake havainnollistaa `setEnabled()` käytännössä. Kirjaudu-painike pysyy käyttökelvottomana, kunnes molemmissa kentissä on sisältöä, mikä tekee käyttäjälle selväksi, että syötteitä vaaditaan ennen etenemistä:
 
-<ComponentDemo 
-path='/webforj/conditionalstate?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/usingcomponents/conditionalstate.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java'
+<ComponentDemo
+path='/webforj/conditionalstate'
+files={[
+  'src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java',
+  'src/main/resources/static/usingcomponents/conditionalstate.css',
+]}
 height='400px'
 />
 
-## Working with containers {#working-with-containers}
+## Työskentely säiliöiden kanssa {#working-with-containers}
 
-webforJ:ssä asettelua hallitsevat säilöt, jotka ovat komponentteja, jotka sisältävät muita komponentteja ja ohjaavat, kuinka ne järjestetään. Et sijoita lapsikomponentteja käsin; sen sijaan lisäät ne säilöön ja määrität sen asetteluominaisuudet.
+webforJ:ssä asettelu hoidetaan säiliöiden avulla, jotka ovat komponentteja, jotka pitävät muita komponentteja ja kontrolloivat, miten ne on järjestetty. Et aseta lapsikomponentteja manuaalisesti; sen sijaan lisäät ne säiliöön ja määrität sen asetteluominaisuudet.
 
-### Adding components {#adding-components}
+### Komponenttien lisääminen {#adding-components}
 
-Kaikki säilöt tarjoavat `add()`-menetelmän. Voit välittää komponentteja yksi kerrallaan tai kaikki kerralla:
+Kaikki säiliöt tarjoavat `add()`-menetelmän. Voit välittää komponentteja yksi kerrallaan tai kaikki kerralla:
 
 ```java
 FlexLayout container = new FlexLayout();
@@ -148,26 +150,28 @@ Button submitButton = new Button("Lähetä");
 container.add(nameField, emailField, submitButton);
 ```
 
-### Layout options {#layout-options}
+### Asetteluvaihtoehdot {#layout-options}
 
-`FlexLayout` on pääasiallinen asettelu säilö webforJ:ssä ja kattaa valtaosan käyttötapauksista: rivit, sarakkeet, tasaus, väli ja kääntäminen. Monimutkaisempia järjestelyjä, kuten CSS-ruudukkoa tai mukautettua sijoittelua varten, voit soveltaa CSS:ää suoraan `setStyle()`- tai `addClassName()`-menetelmällä mihin tahansa säilökomponenttiin. Katso [FlexLayout](/docs/components/flex-layout) -dokumentaatio täydelle asettelu vaihtoehtojen kattavuudelle.
+`FlexLayout` on webforJ:n ensisijainen asettelu-säiliö ja kattaa suurimman osan käyttötilanteista: rivit, sarakkeet, tasaus, väli ja kääntäminen. Monimutkaisemmille järjestelyille, kuten CSS Grid tai mukautettu sijoittelu, voit soveltaa CSS:ää suoraan `setStyle()` tai `addClassName()` avulla mille tahansa säiliökomponentille. Katso [FlexLayout](/docs/components/flex-layout) dokumentaatio täydelliselle asetteluvaihtoehtojen valikoimalle.
 
-### Showing and hiding sections {#showing-hiding-sections}
+### Osioiden näyttäminen ja piilottaminen {#showing-hiding-sections}
 
-Yksi yleinen käyttötapa `setVisible()`-menetelmälle säilöissä on paljastaa lisäkäyttöliittymä vain, kun se on relevanttia. Tämä pitää käyttöliittymän keskittyneenä ja vähentää visuaalista häiriötä. Sen sijaan, että siirtyisit uuteen näkymään, voit näyttää osion nykyisestä asetelmasta suoraan käyttäjän syötteen perusteella.
+Yleinen käyttö `setVisible()`-menetelmälle säiliöissä on lisä-käyttöliittymän näyttäminen vain, kun se on relevanttia. Tämä pitää käyttöliittymän keskittyneenä ja vähentää visuaalista hälinää. Sen sijaan, että navigoisit uuteen näkymään, voit näyttää nykyisen asettelun osan suoraan käyttäjän syötteen perusteella.
 
-Seuraava asetuspaneeli demonstroi tätä: perusilmoitustiedot ovat aina näkyvissä, ja edistyneitä asetuksia koskeva osio ilmestyy vain, kun käyttäjä pyytää sitä. Tallenna-painike aktivoituu heti, kun mikään asetus muuttuu:
+Seuraava asetuspaneeli osoittaa tämän: perustason ilmoitusasetukset ovat aina näkyvissä, ja edistyksellisten vaihtoehtojen osio ilmestyy vain, kun käyttäjä pyytää sitä. Tallenna-painike aktivoituu heti, kun mikä tahansa asetus muuttuu:
 
-<ComponentDemo 
-path='/webforj/progressivedisclosure?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/usingcomponents/progressivedisclosure.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/usingcomponents/ProgressiveDisclosureView.java'
+<ComponentDemo
+path='/webforj/progressivedisclosure'
+files={[
+  'src/main/java/com/webforj/samples/views/usingcomponents/ProgressiveDisclosureView.java',
+  'src/main/resources/static/usingcomponents/progressivedisclosure.css',
+]}
 height='450px'
 />
 
-### Container management {#container-management}
+### Säiliöhallinta {#container-management}
 
-Käytä `remove()` ja `removeAll()` poistaaksesi komponentteja säilöstä ajon aikana:
+Käytä `remove()` ja `removeAll()` ottamaan komponentteja ulos säiliöstä ajonaikana:
 
 ```java
 FlexLayout container = new FlexLayout();
@@ -179,26 +183,28 @@ container.remove(tempButton);
 container.removeAll();
 ```
 
-Tämä on hyödyllistä, kun sinun on vaihdettava sisältö kokonaan, esimerkiksi vaihtamalla latausindikaattori ladattuun tietoon.
+Tämä on hyödyllistä, kun sinun täytyy korvata sisältö kokonaisuudessaan, kuten vaihtaa latausindikaattori ladattuihin tietoihin.
 
-## Form validation {#form-validation}
+## Lomakevalidointi {#form-validation}
 
-Useiden komponenttien koordinointi lähettämistoiminnan rajaamiseksi on yksi yleisimmistä malleista webforJ-käyttöliittymissä. Perusidea on yksinkertainen: jokainen syöttökenttä rekisteröi kuuntelijan, ja aina kun jokin arvo muuttuu, lomake arvioi uudelleen, onko kaikki kriteerit täytetty ja päivittää lähetyspainikkeen vastaavasti.
+Useiden komponenttien koordinointi lähetys-toimintoa varten on yksi yleisimmistä kuvioista webforJ-käyttöliittymissä. Ydinidea on yksinkertainen: jokainen syöttökenttä rekisteröi kuuntelijan, ja aina kun mikä tahansa arvo muuttuu, lomake arvioi uudelleen, täyttyvätkö kaikki kriteerit, ja päivittää lähetyspainikkeen vastaavasti.
 
-Tämä on suositeltavaa verrattuna virheiden näyttämiseen vasta sen jälkeen, kun käyttäjä on napsauttanut lähetä, koska se antaa jatkuvaa palautetta ja estää tarpeettomia lähetyksiä. Lähetyspainike toimii indikaattorina: pois päältä tarkoittaa, että lomake ei ole valmis, päällä tarkoittaa, että se on valmis.
+Tämä on suositeltavaa verrattuna siihen, että näyttäisit validointivirheitä vasta, kun käyttäjä napsauttaa lähetyspainiketta, koska se antaa jatkuvaa palautetta ja estää tarpeettomia lähetyksiä. Lähetyspainike toimii indikaattorina: käyttökelvoton tarkoittaa, että lomake ei ole valmis, käyttökelpoinen tarkoittaa, että se on.
 
-Tässä yhteystietolomakkeessa nimen kenttä ei saa olla tyhjää, sähköpostin on sisällettävä `@`-merkki ja viestin on oltava vähintään 10 merkkiä pitkä:
+Tässä yhteydenottolomakkeessa nimen kenttä ei saa olla tyhjää, sähköpostin tulee sisältää `@`-merkki, ja viestin pitää olla vähintään 10 merkkiä pitkä:
 
-<ComponentDemo 
-path='/webforj/formvalidation?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/usingcomponents/formvalidation.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java'
+<ComponentDemo
+path='/webforj/formvalidation'
+files={[
+  'src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java',
+  'src/main/resources/static/usingcomponents/formvalidation.css',
+]}
 height='500px'
 />
 
-## Dynamic content updates {#dynamic-content-updates}
+## Dynaamiset sisältöpäivitykset {#dynamic-content-updates}
 
-Komponentit eivät tarvitse pysyä kiinteässä tilassa niiden luomisen jälkeen. Voit päivittää tekstiä, vaihtaa CSS-luokkia ja vaihtaa käyttötilaa milloin tahansa sovellustapahtumien seurauksena. Yksi yleinen esimerkki on palautteen antaminen pitkäkestoisissa tehtävissä:
+Komponenttien ei tarvitse pysyä kiinteässä tilassa niiden luomisen jälkeen. Voit päivittää tekstiä, vaihtaa CSS-luokkia ja vaihtaa käyttöönottotilaa mihin tahansa aikaan sovellustapahtumien reaktioina. Yleinen esimerkki on palautteen antaminen pitkään kestävän tehtävän aikana:
 
 ```java
 Label statusLabel = new Label("Valmis");
@@ -218,18 +224,18 @@ startButton.onClick(event -> {
 });
 ```
 
-Painikkeen poistaminen käytöstä tehtävän aikana estää kaksoiselle lähetykselle, ja tarran päivittäminen pitää käyttäjän tietoisena siitä, mitä tapahtuu.
+Painikkeen poistaminen käytöstä, kun tehtävä on käynnissä, estää kaksoislähetykset, ja etiketin päivittäminen pitää käyttäjän tietoisena siitä, mitä tapahtuu.
 
 ## `ComponentLifecycleObserver` {#componentlifecycleobserver}
 
-`ComponentLifecycleObserver`-rajapinta antaa sinun tarkkailla komponentin elinkaaritapahtumia komponentin ulkopuolelta. Tämä on hyödyllistä, kun sinun on reagoitava komponentin luomiseen tai tuhoamiseen ilman, että muokkaat sen toteutusta. Esimerkiksi voit käyttää sitä ylläpitääksesi aktiivisten komponenttien rekisteriä tai vapauttaaksesi ulkoisia resursseja, kun komponentti poistetaan.
+`ComponentLifecycleObserver`-rajapinta antaa sinun tarkkailla komponenttien elinkaaritapahtumia komponentin ulkopuolelta. Tämä on hyödyllistä, kun sinun tarvitsee reagoida komponentin luomiseen tai tuhoamiseen ilman, että muokkaat sen toteutusta. Esimerkiksi voit käyttää sitä ylläpitääksesi aktiivisten komponenttien rekisteriä tai vapauttaaksesi ulkoisia resursseja, kun komponentti poistetaan.
 
-### Basic usage {#basic-usage}
+### Peruskäyttö {#basic-usage}
 
-Kutsu `addLifecycleObserver()` minkä tahansa komponentin kohdalla rekisteröidäksesi palautteen. Palautteen saa komponentti ja elinkaaritapahtuma:
+Kutsu `addLifecycleObserver()`-menetelmää mille tahansa komponentille rekisteröidäksesi palautteen. Palautteen saa komponentti ja elinkaaritapahtuma:
 
 ```java
-Button button = new Button("Katso minua");
+Button button = new Button("Tarkkaile minua");
 
 button.addLifecycleObserver((component, event) -> {
     switch (event) {
@@ -237,15 +243,15 @@ button.addLifecycleObserver((component, event) -> {
             System.out.println("Painike luotiin");
             break;
         case DESTROY:
-            System.out.println("Painike tuhottiin");
+            System.out.println("Painike tuhotaan");
             break;
     }
 });
 ```
 
-### Pattern: Resource registry {#pattern-resource-registry}
+### Kaavio: Resurssirekisteri {#pattern-resource-registry}
 
-DESTROY-tapahtuma on erityisen hyödyllinen rekisterin automaattisessa synkronoinnissa. Sen sijaan, että poistaisit komponentteja manuaalisesti, kun niitä ei enää tarvita, annat komponentin ilmoittaa rekisterille itsestään:
+DESTROY-tapahtuma on erityisen hyödyllinen pitämään rekisterin automaattisesti synkronoituna. Sen sijaan, että poistaisit komponentteja manuaalisesti, kun niitä ei enää tarvita, annat komponentin ilmoittaa rekisterille itselleen:
 
 ```java
 public class ResourceRegistry {
@@ -263,9 +269,9 @@ public class ResourceRegistry {
 }
 ```
 
-### Pattern: Component coordination {#pattern-component-coordination}
+### Kaavio: Komponenttikoordinointi {#pattern-component-coordination}
 
-Koordinaattori, joka hallitsee sarjaa toisiinsa liittyviä komponentteja, voi käyttää samaa lähestymistapaa ylläpitääkseen sisäistä luetteloaan tarkkana:
+Koordinointiluokka, joka hallitsee joukkoa toisiaan liittyviä komponentteja, voi hyödyntää samaa lähestymistapaa pitääkseen sisäisen luettelonsa tarkkana:
 
 ```java
 public class FormCoordinator {
@@ -287,28 +293,28 @@ public class FormCoordinator {
 }
 ```
 
-### When to use {#when-to-use}
+### Milloin käyttää {#when-to-use}
 
-Käytä `ComponentLifecycleObserver`-rajapintaa:
-- Rakentaaksesi komponenttirekistereitä
-- Toteuttaaksesi lokitusta tai seurantaa
-- Koordinoidaksesi useita komponentteja
-- Siivotaksesi ulkoisia resursseja
+Käytä `ComponentLifecycleObserver`-menetelmää:
+- Rakentamalla komponenttirekistereitä
+- Toteuttamalla lokitusta tai seurantaa
+- Koordinoimaan useita komponentteja
+- Siivoamaan ulkoisia resursseja
 
-Koodin suorittamiseen komponentti siirteessä DOM:iin, katso [`whenAttached()`](/docs/building-ui/composite-components) Composite Components -oppaan kohdasta.
+Jos tarvitset suorittaa koodia sen jälkeen, kun komponentti on liitetty DOM:iin, katso [`whenAttached()`](/docs/building-ui/composite-components) Composite Components -oppaasta.
 
-## User data {#user-data}
+## Käyttäjätiedot {#user-data}
 
-Komponentit voivat kuljettaa mielivaltaisia palvelinpuolen tietoja `setUserData()` ja `getUserData()`-menetelmien avulla. Molemmat menetelmät ottavat avaimen määrittääkseen tiedot. Tämä on hyödyllistä, kun sinun on liitettävä aluetta tai kontekstiä komponenttiin ilman erillistä hakurakennetta.
+Komponentit voivat kantaa satunnaista palvelinpuolen dataa `setUserData()` ja `getUserData()`-menetelmien avulla. Molemmat menetelmät hyväksyvät avaimen tiedon tunnistamiseksi. Tämä on hyödyllistä, kun tarvitset liittää domain-objekteja tai kontekstia komponenttiin ilman, että hallitset erillistä hakurakennetta.
 
 ```java
-Button button = new Button("Käsittele");
-button.setUserData("konteksti", new ProcessingContext(userId, taskId));
+Button button = new Button("Prosessi");
+button.setUserData("context", new ProcessingContext(userId, taskId));
 
 button.onClick(event -> {
-    ProcessingContext context = (ProcessingContext) button.getUserData("konteksti");
+    ProcessingContext context = (ProcessingContext) button.getUserData("context");
     processTask(context.getUserId(), context.getTaskId());
 });
 ```
 
-Koska käyttäjätieto ei koskaan lähetetä asiakkaalle, voit turvallisesti tallentaa arkaluonteisia tietoja tai suuria objekteja ilman, että se vaikuttaa verkkoliikenteeseen.
+Koska käyttäjätiedot eivät koskaan siirry asiakkaalle, voit turvallisesti tallentaa arkaluontoisia tietoja tai suuria objekteja vaikuttamatta verkkoliikenteeseen.

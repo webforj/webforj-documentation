@@ -2,6 +2,7 @@
 title: Install Plugin
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
+description: Configure the webforJ install Maven plugin with deploy URL, class name, publish name, and debug flags for BBjServices deployments.
 ---
 
 You can configure webforJ using a project's POM file, which is designed to make deploying an app easy. The following sections outline the various options you can change to achieve a desired result.

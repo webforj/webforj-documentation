@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-login>
 sidebar_class_name: sidebar--item__hidden
 slug: login
-description: A user guide article for the login
+description: Style the dwc-login client component using CSS variables, shadow parts, and slots to theme the form surface, fields, and action buttons.
 // pagination_prev: null
 // pagination_next: null
 ---

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: Shadows
+description: Layer elements with the DWC box-shadow scale from xs to 2xl, with shadows that adapt automatically to light and dark modes.
 ---
 
 The shadow properties add shadow effects around an element's frame. Shadows signify items that are layered on top of each other in the user interface.

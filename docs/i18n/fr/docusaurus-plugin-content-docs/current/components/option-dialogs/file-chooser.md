@@ -1,7 +1,7 @@
 ---
 title: File Chooser
 sidebar_position: 10
-_i18n_hash: c8d1ebc420bc1e1749c5c98a9fd3284c
+_i18n_hash: 3fb68fdcc1fc0d263114babc2a64a6f4
 ---
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
@@ -13,15 +13,15 @@ _i18n_hash: c8d1ebc420bc1e1749c5c98a9fd3284c
 
 ## Usages {#usages}
 
-Le `FileChooserDialog` fournit un moyen de sélectionner des fichiers ou des répertoires à partir du système de fichiers, permettant aux utilisateurs de choisir des répertoires pour enregistrer des données ou d'effectuer des opérations sur des fichiers.
+Le `FileChooserDialog` fournit un moyen de sélectionner des fichiers ou des répertoires à partir du système de fichiers, permettant aux utilisateurs de choisir des répertoires pour enregistrer des données ou effectuer des opérations sur des fichiers.
 
-<ComponentDemo 
-path='/webforj/filechooserdialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogBasicView.java'
-height = '600px'
+<ComponentDemo
+path='/webforj/filechooserdialogbasic'
+files={['src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogBasicView.java']}
+height='600px'
 />
 
-## Resultat {#result}
+## Résultat {#result}
 
 Le `FileChooserDialog` retourne le fichier ou le répertoire sélectionné sous forme de chaîne. Si l'utilisateur ferme la boîte de dialogue sans faire de sélection, le résultat sera `null`.
 
@@ -44,13 +44,13 @@ if (result != null) {
 
 Le `FileChooserDialog` prend en charge différents modes de sélection, vous permettant d'adapter la méthode de sélection à vos besoins spécifiques :
 
-1. **FILES** : Permet la sélection uniquement de fichiers.
-2. **DIRECTORIES** : Permet la sélection uniquement de répertoires.
+1. **FILES** : Permet la sélection de fichiers uniquement.
+2. **DIRECTORIES** : Permet la sélection de répertoires uniquement.
 3. **FILES_AND_DIRECTORIES** : Permet la sélection à la fois de fichiers et de répertoires.
 
 ## Chemin initial {#initial-path}
 
-Le `FileChooserDialog` vous permet de spécifier un chemin initial que la boîte de dialogue ouvrira lorsqu'elle sera affichée. Cela peut fournir aux utilisateurs un point de départ pour leur sélection de fichiers.
+Le `FileChooserDialog` vous permet de spécifier un chemin initial vers lequel la boîte de dialogue s'ouvrira lorsqu'elle sera affichée. Cela peut fournir aux utilisateurs un point de départ pour leur sélection de fichiers.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Sélectionner un fichier", "/home/user");
@@ -69,17 +69,17 @@ dialog.show();
 
 ## Filtres {#filters}
 
-Lorsque le mode de sélection est `FILES`, le `FileChooserDialog` vous permet de définir des filtres pour limiter les types de fichiers répertoriés. Vous pouvez configurer des filtres en utilisant la méthode `setFilters(List<FileChooserFilter> filters)`.
+Lorsque le mode de sélection est `FILES`, Le `FileChooserDialog` vous permet de définir des filtres pour limiter les types de fichiers affichés. Vous pouvez configurer des filtres en utilisant la méthode `setFilters(List<FileChooserFilter> filters)`.
 
-<ComponentDemo 
-path='/webforj/filechooserdialogfilters?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogFiltersView.java'
-height = '600px'
+<ComponentDemo
+path='/webforj/filechooserdialogfilters'
+files={['src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogFiltersView.java']}
+height='600px'
 />
 
 ### Filtres personnalisés {#custom-filters}
 
-Vous pouvez permettre aux utilisateurs d'ajouter des filtres personnalisés en activant la fonction de filtres personnalisés avec la méthode `setCustomFilters(boolean customFilters)`. Les filtres personnalisés seront enregistrés dans le stockage local du navigateur par défaut et restaurés lorsque la boîte de dialogue sera affichée à nouveau.
+Vous pouvez autoriser les utilisateurs à ajouter des filtres personnalisés en activant la fonctionnalité de filtres personnalisés à l'aide de la méthode `setCustomFilters(boolean customFilters)`. Les filtres personnalisés seront enregistrés dans le stockage local du navigateur par défaut et restaurés lorsque la boîte de dialogue sera affichée à nouveau.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Sélectionner un fichier", "/home/user");
@@ -89,19 +89,19 @@ String result = dialog.show();
 
 ## Internationalisation (i18n) {#internationalization-i18n}
 
-Les titres, descriptions, étiquettes et messages au sein du composant sont entièrement personnalisables en utilisant la classe `FileChooserI18n`. Cette flexibilité vous permet d'adapter l'interface de la boîte de dialogue pour répondre à des exigences de localisation spécifiques ou à des préférences de personnalisation.
+Les titres, descriptions, étiquettes et messages au sein du composant sont entièrement personnalisables à l'aide de la classe `FileChooserI18n`. Cette flexibilité vous permet d’adapter l'interface de la boîte de dialogue pour répondre à des exigences de localisation spécifiques ou à des préférences de personnalisation.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Sélectionner un fichier", "/Users/habof/bbx");
 FileChooserI18n i18n = new FileChooserI18n();
-i18n.setChoose("Choisir");
+i18n.setChoose("Sélectionner");
 i18n.setCancel("Annuler");
 dialog.setI18n(i18n);
 ```
 
 ## Meilleures pratiques {#best-practices}
 
-1. **Incitations claires et concises** : Assurez-vous que le message d'invite explique clairement ce que l'on demande à l'utilisateur de sélectionner.
-2. **Modes de sélection appropriés** : Choisissez des modes de sélection qui correspondent à l'action requise par l'utilisateur pour garantir des sélections précises et pertinentes.
-3. **Chemins initiaux logiques** : Définissez des chemins initiaux qui fournissent aux utilisateurs un point de départ utile pour leur sélection.
-4. **Restreindre la navigation dans les répertoires** : Restreindre la boîte de dialogue à un répertoire spécifique si nécessaire pour empêcher les utilisateurs de naviguer vers des zones non autorisées.
+1. **Invitations claires et concises** : Assurez-vous que le message d'invite explique clairement ce que l'on demande à l'utilisateur de sélectionner.
+2. **Modes de sélection appropriés** : Choisissez des modes de sélection qui correspondent à l'action requise de l'utilisateur pour garantir des sélections précises et pertinentes.
+3. **Chemins initiaux logiques** : Définissez des chemins initiaux qui offrent aux utilisateurs un point de départ utile pour leur sélection.
+4. **Restreindre la navigation dans les répertoires** : Restreignez la boîte de dialogue à un répertoire spécifique lorsque cela est nécessaire pour empêcher les utilisateurs de naviguer vers des zones non autorisées.

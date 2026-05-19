@@ -1,6 +1,7 @@
 ---
 sidebar_position: 20
 title: Interval
+description: Schedule recurring events at a fixed delay using the Interval class to refresh data, rotate content, or detect inactivity efficiently.
 ---
 
 <DocChip chip='since' label='24.02' />

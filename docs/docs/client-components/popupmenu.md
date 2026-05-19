@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-popupmenu>
 sidebar_class_name: sidebar--item__hidden
 slug: popupmenu
-description: A user guide article for the popupmenu
+description: Style the dwc-popupmenu floating surface with CSS variables and shadow parts for elevation, padding, and item appearance.
 // pagination_prev: null
 // pagination_next: null
 ---

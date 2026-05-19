@@ -2,6 +2,7 @@
 sidebar_position: 15
 title: Sorting
 slug: sorting
+description: Enable per-column sorting on the Table, configure multi-column sorting, and set sort priority programmatically.
 ---
 
 Sorting lets users arrange data in columns by order, making information easier to read and analyze. This is useful when users need to quickly find the highest or lowest values in a particular column.
@@ -10,11 +11,13 @@ Sorting lets users arrange data in columns by order, making information easier t
 For information on how to use the `Repository` pattern to manage and query collections, see the [Repository articles](/docs/advanced/repository/overview).
 :::
 
-<ComponentDemo 
-path='/webforj/tablesorting?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableSortingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablesorting'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
@@ -38,11 +41,13 @@ table.setMultiSorting(true);
 
 With multi-sorting enabled, clicking multiple column headers will sort them sequentially. The sorting priority is visually indicated in the table UI.
 
-<ComponentDemo 
-path='/webforj/tablemultisorting?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablemultisorting'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
@@ -58,11 +63,13 @@ ageColumn.setSortOrder(2);
 Unless `setSortOrder()` is used, the table defaults to sorting by the order in which columns are declared.
 :::
 
-<ComponentDemo 
-path='/webforj/tablesortorder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablesortorder'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
@@ -142,11 +149,13 @@ The `Column` component allows developers to use Java `Comparators` for dynamic a
 
 To leverage `Comparator` sorting in a `Column`, you can use the `setComparator()` method. This method allows you to define a custom `Comparator` function that dictates the sorting logic.
 
-<ComponentDemo 
-path='/webforj/tablecolumncomparator?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnComparatorView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumncomparator'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnComparatorView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 

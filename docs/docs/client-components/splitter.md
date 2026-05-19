@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-splitter>
 sidebar_class_name: sidebar--item__hidden
 slug: splitter
-description: A user guide article for the splitter
+description: Style the dwc-splitter divider and panes through CSS variables and shadow parts for handle color, width, and hover effects.
 // pagination_prev: null
 // pagination_next: null
 ---

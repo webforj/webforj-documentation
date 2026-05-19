@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-drawer>
 sidebar_class_name: sidebar--item__hidden
 slug: drawer
-description: A user guide article for the drawer
+description: Customize the dwc-drawer client component with CSS variables and shadow parts to theme placement, size, surface, and backdrop overlay.
 // pagination_prev: null
 // pagination_next: null
 ---

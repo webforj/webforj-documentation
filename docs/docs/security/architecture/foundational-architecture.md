@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Foundational Architecture
+description: Understand the core RouteSecurityManager, Context, Configuration, and Evaluator interfaces that power webforJ access control.
 ---
 
 The webforJ security system is built on a foundation of core interfaces that work together to provide route-level access control. These interfaces define the contracts for security behavior, allowing different implementations, whether session-based, based on JSON Web Tokens (JWT), LDAP-integrated, or database-backed, to plug into the same underlying framework.

@@ -3,14 +3,14 @@ sidebar_position: 30
 title: PasswordField
 slug: passwordfield
 description: A single-line input component for securely entering and masking password data.
-_i18n_hash: 7bdcafe322080112206dd70e6a2146c7
+_i18n_hash: b0641475acf187af7c45d6786506010d
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/PasswordField" top='true'/>
 
-Die `PasswordField`-Komponente ermöglicht es Benutzern, ein Passwort sicher einzugeben. Sie wird als einzeiliger Texteditor angezeigt, in dem der eingegebene Text verdeckt wird, typischerweise ersetzt durch Symbole wie Sternchen ("*") oder Punkte ("•"). Das genaue Symbol kann je nach Browser und Betriebssystem variieren.
+Die `PasswordField`-Komponente ermöglicht es Benutzern, ein Passwort sicher einzugeben. Es wird als einzeiliges Texteingabefeld dargestellt, in dem der eingegebene Text obscuriert wird, typischerweise ersetzt durch Symbole wie Sternchen ("*") oder Punkte ("•"). Das genaue Symbol kann je nach Browser und Betriebssystem variieren.
 
 <!-- INTRO_END -->
 
@@ -18,56 +18,56 @@ Die `PasswordField`-Komponente ermöglicht es Benutzern, ein Passwort sicher ein
 
 <ParentLink parent="Field" />
 
-`PasswordField` erweitert die gemeinsame `Field`-Klasse, die gemeinsame Funktionen über alle Feldkomponenten hinweg bereitstellt. Das folgende Beispiel erstellt ein `PasswordField` mit einem Label und Platzhaltertext.
+`PasswordField` erweitert die gemeinsame `Field`-Klasse, die gemeinsame Funktionen für alle Feldkomponenten bereitstellt. Das folgende Beispiel erstellt ein `PasswordField` mit einem Label und Platzhaltertext.
 
-<ComponentDemo 
-path='/webforj/passwordfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
+<ComponentDemo
+path='/webforj/passwordfield'
+files={['src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java']}
 />
 
 ## Feldwert {#field-value}
 
-Die `PasswordField`-Komponente speichert und ruft ihren Wert als einfachen `String` ab, ähnlich wie ein `TextField`, jedoch mit verdeckter visueller Darstellung, um die Zeichen aus der Sicht zu verstecken.
+Die `PasswordField`-Komponente speichert und ruft ihren Wert als einfachen `String` ab, ähnlich wie ein `TextField`, jedoch mit einer obscurierten visuellen Darstellung, um die Zeichen vor dem Blick zu verbergen.
 
-Sie können den aktuellen Wert mit folgendem Befehl abrufen:
+Sie können den aktuellen Wert mit folgender Methode abrufen:
 
 ```java
 passwordField.getValue();
 ```
 
 :::warning sensible Daten
-Obwohl das Feld den Inhalt visuell maskiert, ist der zurückgegebene Wert von `getValue()` immer noch ein einfacher String. Seien Sie sich dessen bewusst, wenn Sie mit sensiblen Daten umgehen, und verschlüsseln oder transformieren Sie diese vor der Speicherung.
+Obwohl das Feld den Inhalt visuell maskiert, ist der zurückgegebene Wert von `getValue()` weiterhin ein einfacher String. Seien Sie sich dessen bewusst, wenn Sie mit sensiblen Daten umgehen und verschlüsseln oder transformieren Sie diese vor der Speicherung.
 :::
 
-Um den Wert programmgesteuert zu setzen oder zurückzusetzen:
+Um den Wert programmgesteuert festzulegen oder zurückzusetzen:
 
 ```java
-passwordField.setValue("MeinGeheimnis123!");
+passwordField.setValue("MySecret123!");
 ```
 
-Wenn kein Wert vom Benutzer eingegeben wurde und kein Standardwert festgelegt ist, gibt das Feld einen leeren String (`""`) zurück.
+Wenn der Benutzer keinen Wert eingegeben hat und kein Standardwert festgelegt ist, gibt das Feld einen leeren String (`""`) zurück.
 
-Dieses Verhalten ahmt das des nativen HTML `<input type="password">` nach, bei dem die `value`-Eigenschaft den aktuellen Eingang speichert.
+Dieses Verhalten ähnelt dem des nativen HTML `<input type="password">`, bei dem die `value`-Eigenschaft die derzeitige Eingabe enthält.
 
 ## Verwendungen {#usages}
 
-Das `PasswordField` eignet sich am besten für Szenarien, in denen die Erfassung oder Verarbeitung sensibler Informationen, wie Passwörter oder andere vertrauliche Daten, für Ihre App wesentlich ist. Hier sind einige Beispiele, wann das `PasswordField` verwendet werden sollte:
+Das `PasswordField` ist am besten geeignet für Szenarien, in denen die Erfassung oder Verarbeitung sensibler Informationen, wie Passwörter oder andere vertrauliche Daten, für Ihre App von entscheidender Bedeutung ist. Hier sind einige Beispiele, wann das `PasswordField` zu verwenden ist:
 
-1. **Benutzerauthentifizierung und -registrierung**: Passwortfelder sind entscheidend in Apps, die Benutzerauthentifizierungs- oder Registrierungsprozesse beinhalten, bei denen eine sichere Passworteingabe erforderlich ist.
+1. **Benutzerauthentifizierung und Registrierung**: Passwortfelder sind entscheidend für Apps, die Benutzerauthentifizierungs- oder Registrierungsprozesse beinhalten, bei denen eine sichere Passworteingabe erforderlich ist.
 
-2. **Sichere Formulareingaben**: Bei der Gestaltung von Formularen, die die Eingabe sensibler Informationen wie Kreditkartendaten oder persönliche Identifikationsnummern (PINs) erfordern, gewährleistet die Verwendung eines `PasswordField` die Sicherheit der Daten.
+2. **Sichere Formulareingaben**: Bei der Gestaltung von Formularen, die die Eingabe sensibler Informationen erfordern, wie Kreditkartendaten oder persönliche Identifikationsnummern (PINs), sorgt die Verwendung eines `PasswordField` für die Sicherheit der Eingabe solcher Daten.
 
-3. **Kontoverwaltung und Profileinstellungen**: Passwortfelder sind wertvoll in Apps, die die Kontoverwaltung oder Profileinstellungen beinhalten, da Benutzer ihre Passwörter sicher ändern oder aktualisieren können.
+3. **Kontoverwaltung und Profileinstellungen**: Passwortfelder sind wertvoll in Apps, die Kontoverwaltung oder Profileinstellungen beinhalten und es Benutzern ermöglichen, ihre Passwörter sicher zu ändern oder zu aktualisieren.
 
 ## Passwortsichtbarkeit {#password-visibility}
 
-Benutzer können den Wert der `PasswordField`-Komponente anzeigen, indem sie auf das Anzeige-Symbol klicken. Dies ermöglicht es Benutzern, zu überprüfen, was sie eingegeben haben, oder die Informationen in ihre Zwischenablage zu kopieren. Für hochsichere Umgebungen können Sie jedoch `setPasswordReveal()` verwenden, um das Anzeige-Symbol zu entfernen und zu verhindern, dass Benutzer den Wert sehen. Sie können mit der Methode `isPasswordReveal()` überprüfen, ob ein Benutzer das Anzeige-Symbol verwenden kann, um den Wert anzuzeigen.
+Benutzer können den Wert des `PasswordField` anzeigen, indem sie auf das Anzeige-Symbol klicken. Dies ermöglicht es den Benutzern, zu überprüfen, was sie eingegeben haben, oder die Informationen in ihre Zwischenablage zu kopieren. Für Umgebungen mit hoher Sicherheit können Sie jedoch `setPasswordReveal()` verwenden, um das Anzeige-Symbol zu entfernen und zu verhindern, dass Benutzer den Wert sehen. Sie können überprüfen, ob ein Benutzer das Anzeige-Symbol verwenden kann, um den Wert mit der Methode `isPasswordReveal()` anzuzeigen.
 
 ## Musterabgleich {#pattern-matching}
 
-Es wird dringend empfohlen, ein reguläres Ausdrucksmuster auf das `PasswordField` mit der Methode `setPattern()` anzuwenden. Dies ermöglicht es Ihnen, Zeichenregeln und strukturelle Anforderungen durchzusetzen und die Benutzer zu zwingen, sichere und konforme Anmeldedaten zu erstellen. Musterabgleich ist besonders nützlich, wenn starke Passwortregeln durchgesetzt werden, z. B. die Anforderung einer Kombination aus Groß- und Kleinbuchstaben, Zahlen und Symbolen.
+Es wird dringend empfohlen, ein reguläres Ausdrucksmuster auf das `PasswordField` mithilfe der Methode `setPattern()` anzuwenden. Dies ermöglicht es Ihnen, Regeln für Zeichen und strukturelle Anforderungen durchzusetzen und Benutzer zu zwingen, sichere und konforme Anmeldeinformationen zu erstellen. Der Musterabgleich ist besonders nützlich, wenn es darum geht, strenge Passwortregeln durchzusetzen, wie das Erfordern von einer Mischung aus Groß- und Kleinbuchstaben, Zahlen und Symbolen.
 
-Das Muster muss der Syntax eines [JavaScript-regulären Ausdrucks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) entsprechen, wie sie vom Browser interpretiert wird. Das interne `u` (Unicode) Flag wird verwendet, um die Validierung über alle Unicode-Codepunkte hinweg zu gewährleisten. Fügen Sie **keine** Schrägstriche (`/`) um das Muster ein.
+Das Muster muss der Syntax eines [JavaScript-Regulären Ausdrucks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) entsprechen, wie vom Browser interpretiert. Das `u` (Unicode)-Flag wird intern verwendet, um eine Validierung über alle Unicode-Codepunkte hinweg zu garantieren. Fügen Sie **keine** Schrägstriche (`/`) um das Muster ein.
 
 Im folgenden Snippet erfordert das Muster mindestens einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und eine Mindestlänge von 8 Zeichen.
 
@@ -75,48 +75,46 @@ Im folgenden Snippet erfordert das Muster mindestens einen Kleinbuchstaben, eine
 passwordField.setPattern("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}");
 ```
 
-Wenn das Muster fehlt oder ungültig ist, wird keine Validierung angewendet.
+Fehlt das Muster oder ist es ungültig, wird keine Validierung angewendet.
 
 :::tip
-Verwenden Sie `setLabel()`, um ein klares Label bereitzustellen, das den Zweck des Passwortfelds beschreibt. Um den Benutzern zu helfen, die Anforderungen an Passwörter zu verstehen, verwenden Sie `setHelperText()`, um Hinweise oder Regeln direkt unter dem Feld anzuzeigen.
+Verwenden Sie `setLabel()`, um ein klares Label bereitzustellen, das den Zweck des Passwortfelds beschreibt. Um den Benutzern zu helfen, die Passwortanforderungen zu verstehen, verwenden Sie `setHelperText()`, um Ratschläge oder Regeln direkt unter dem Feld anzuzeigen.
 :::
-
 
 ## Minimale und maximale Länge {#minimum-and-maximum-length}
 
-Sie können die zulässige Länge der Passwort-Eingabe steuern, indem Sie `setMinLength()` und `setMaxLength()` auf dem `PasswordField` verwenden.
+Sie können die zulässige Länge der Passworteingabe steuern, indem Sie `setMinLength()` und `setMaxLength()` am `PasswordField` verwenden.
 
-Die Methode `setMinLength()` definiert die Mindestanzahl von Zeichen, die ein Benutzer in das Feld eingeben muss, um die Validierung zu bestehen. Dieser Wert muss eine nicht negative Ganzzahl sein und darf die maximale Länge nicht überschreiten, wenn diese festgelegt ist.
-
-```java
-passwordField.setMinLength(8); // Mindestanzahl 8 Zeichen
-```
-
-Wenn der Benutzer weniger Zeichen als die Mindestanzahl eingibt, schlägt die Eingabe die validierungsbeschränkung fehl. Diese Validierung wird nur angewendet, wenn der Wert des Feldes vom Benutzer verändert wird.
-
-Die Methode `setMaxLength()` legt die maximale Anzahl von Zeichen fest, die im Feld zulässig sind. Der Wert muss 0 oder mehr betragen. Wenn er nicht definiert ist oder auf einen ungültigen Wert gesetzt ist, hat das Feld kein oberes Zeichenlimit.
+Die Methode `setMinLength()` definiert die Mindestanzahl von Zeichen, die ein Benutzer in das Feld eingeben muss, um die Validierung zu bestehen. Dieser Wert muss eine nicht negative Ganzzahl sein und darf die maximale Länge nicht überschreiten, wenn eine solche festgelegt ist.
 
 ```java
-passwordField.setMaxLength(20); // Maximal 20 Zeichen
+passwordField.setMinLength(8); // Mindestlänge 8 Zeichen
 ```
 
-Wenn die Eingabe die maximale Zeichenbeschränkung überschreitet, schlägt das Feld die Validierungsbeschränkung fehl. Wie bei der Mindestanzahl gilt diese Regel nur, wenn der Benutzer den Wert des Feldes aktualisiert.
+Gibt der Benutzer weniger Zeichen als die Mindestanzahl ein, schlägt die Eingabe bei der Antragstellung der Validierungsbedingungen fehl. Diese Validierung wird nur angewendet, wenn der Wert des Feldes vom Benutzer geändert wird.
+
+Die Methode `setMaxLength()` legt die maximale Anzahl von Zeichen fest, die im Feld erlaubt sind. Der Wert muss 0 oder größer sein. Wenn er nicht definiert oder auf einen ungültigen Wert gesetzt ist, hat das Feld keine obere Zeichenbegrenzung.
+
+```java
+passwordField.setMaxLength(20); // Maximale Länge 20 Zeichen
+```
+
+Überschreitet die Eingabe die maximale Zeichenanzahl, schlägt das Feld bei der Antragstellung der Validierungsbedingungen fehl. Wie bei der Mindestanzahl gilt diese Regel nur, wenn der Benutzer den Wert des Feldes aktualisiert.
 
 :::tip
-Verwenden Sie sowohl `setMinLength()` als auch `setMaxLength()`, um effektive Eingabebeschränkungen zu schaffen. Weitere Informationen finden Sie in der [HTML-Dokumentation zu Längenbeschränkungen](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength).
+Verwenden Sie sowohl `setMinLength()` als auch `setMaxLength()` zusammen, um effektive Eingabengrenzen zu schaffen. Siehe die [HTML-Längenbeschränkungen Dokumentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength) für weitere Referenz.
 :::
-
 
 ## Beste Praktiken {#best-practices}
 
-Da die `PasswordField`-Komponente häufig mit sensiblen Informationen assoziiert wird, sollten Sie die folgenden bewährten Verfahren bei der Verwendung des `PasswordField` berücksichtigen:
+Da die `PasswordField`-Komponente häufig mit sensiblen Informationen in Verbindung gebracht wird, berücksichtigen Sie die folgenden bewährten Methoden, wenn Sie das `PasswordField` verwenden:
 
-- **Bereitstellung von Rückmeldungen zur Passwortstärke**: Integrieren Sie Passwortstärkeindikatoren oder Rückmeldemechanismen, um Benutzern zu helfen, starke und sichere Passwörter zu erstellen. Bewerten Sie Faktoren wie Länge, Komplexität sowie eine Mischung aus Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen.
+- **Geben Sie Passwortstärke-Feedback**: Integrieren Sie Passwortstärke-Indikatoren oder Feedback-Mechanismen, um Benutzern zu helfen, starke und sichere Passwörter zu erstellen. Bewerten Sie Faktoren wie Länge, Komplexität und eine Mischung aus Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen.
 
-- **Durchsetzung der Passwortspeicherung**: Speichern Sie niemals Passwörter im Klartext. Implementieren Sie stattdessen angemessene Sicherheitsmaßnahmen, um Passwörter in Ihrer App sicher zu verarbeiten und zu speichern. Verwenden Sie branchenübliche Verschlüsselungsalgorithmen für Passwörter und andere sensible Daten.
+- **Durchsetzung der Passwortspeicherung**: Speichern Sie Passwörter niemals im Klartext. Implementieren Sie stattdessen geeignete Sicherheitsmaßnahmen, um Passwörter in Ihrer App sicher zu handhaben und zu speichern. Verwenden Sie branchenübliche Verschlüsselungsalgorithmen für Passwörter und andere sensible Daten.
 
-- **Passwortbestätigung**: Fügen Sie ein zusätzliches Bestätigungsfeld hinzu, wenn ein Benutzer ein Passwort ändert oder erstellt. Diese Maßnahme hilft, die Wahrscheinlichkeit von Tippfehlern zu minimieren und sicherzustellen, dass Benutzer ihr gewünschtes Passwort korrekt eingeben.
+- **Passwortbestätigung**: Fügen Sie ein zusätzliches Bestätigungsfeld hinzu, wenn ein Benutzer ein Passwort ändert oder erstellt. Diese Maßnahme hilft, die Wahrscheinlichkeit von Tippfehlern zu minimieren und stellt sicher, dass die Benutzer ihr gewünschtes Passwort genau eingeben.
 
-- **Passwortzurücksetzung zulassen**: Wenn Ihre App Benutzerkonten umfasst, bieten Sie eine Option für Benutzer an, ihr Passwort zurückzusetzen. Dies könnte in Form einer Funktion "Passwort vergessen" geschehen, die einen Passwortwiederherstellungsprozess einleitet.
+- **Erlauben Sie die Passwortzurücksetzung**: Wenn Ihre App Benutzerkonten umfasst, bieten Sie eine Option für Benutzer, ihr Passwort zurückzusetzen. Dies könnte in Form einer "Passwort vergessen"-Funktion erfolgen, die einen Passwortwiederherstellungsprozess initiiert.
 
-- **Barrierefreiheit**: Richten Sie das `PasswordField` mit Blick auf die Barrierefreiheit ein, damit es die Barrierefreiheitsstandards erfüllt, z. B. durch Bereitstellung angemessener Labels und Kompatibilität mit unterstützenden Technologien.
+- **Zugänglichkeit**: Richten Sie das `PasswordField` mit der Zugänglichkeit im Hinterkopf ein, sodass es die Zugänglichkeitsstandards erfüllt, wie die Bereitstellung geeigneter Label und die Kompatibilität mit unterstützenden Technologien.

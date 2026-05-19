@@ -1,58 +1,62 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: 51577f27568214c5d39e43b7e6ce42d0
+_i18n_hash: 7edd08525f20625cb8d891316111ebb3
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-Le composant `Drawer` dans webforJ crée un panneau coulissant qui apparaît sur le bord de l'écran, révélant un contenu supplémentaire sans quitter la vue actuelle. Il est couramment utilisé pour la navigation latérale, les menus de filtre, les réglages des utilisateurs ou les notifications compactes qui doivent apparaître temporairement sans perturber l'interface principale.
+Le composant `Drawer` dans webforJ crée un panneau coulissant qui apparaît depuis le bord de l'écran, révélant du contenu supplémentaire sans quitter la vue actuelle. Il est couramment utilisé pour la navigation latérale, les menus de filtre, les paramètres utilisateur ou les notifications compactes qui doivent apparaître temporairement sans perturber l'interface principale.
 
 <!-- INTRO_END -->
 
-## Stacking {#stacking}
+## Empilement {#stacking}
 
-Les tiroirs s'empilent automatiquement lorsque plusieurs sont ouverts, ce qui en fait un choix flexible pour les interfaces à espace restreint.
+Les tiroirs s'empilent automatiquement lorsque plusieurs sont ouverts, ce qui en fait un choix flexible pour les interfaces où l'espace est limité.
 
-L'exemple ci-dessous montre ce comportement au sein du composant [`AppLayout`](../components/app-layout). Le tiroir de navigation déclenché par le menu hamburger est intégré dans [`AppLayout`](../components/app-layout), tandis que le popup de bienvenue en bas utilise une instance de `Drawer` autonome. Les deux coexistent et s'empilent indépendamment, démontrant comment les tiroirs peuvent être intégrés dans des composants de mise en page ou utilisés comme éléments autonomes.
+L'exemple ci-dessous montre ce comportement au sein du composant [`AppLayout`](../components/app-layout). Le tiroir de navigation déclenché par le menu hamburger est intégré dans [`AppLayout`](../components/app-layout), tandis que le pop-up de bienvenue en bas utilise une instance de `Drawer` autonome. Les deux coexistent et s'empilent indépendamment, démontrant comment les tiroirs peuvent être intégrés au sein de composants de mise en page ou utilisés comme des éléments autonomes.
 
-<AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
-cssURL='/css/drawer/drawerWelcome.css'
+<ComponentDemo
+path='/webforj/drawerwelcome'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java',
+  'src/main/resources/static/css/drawer/drawerWelcome.css',
+]}
 />
 
 ## Autofocus
 
-Le composant `Drawer` prend en charge l'autofocus, ce qui place automatiquement le focus sur le premier élément focalisable lorsque le `Drawer` s'ouvre. Cela améliore l'ergonomie en attirant l'attention directement sur le premier élément actionnable.
+Le composant `Drawer` prend en charge l'autofocus, qui place automatiquement le focus sur le premier élément focalisable lorsque le `Drawer` s'ouvre. Cela améliore l'utilisabilité en attirant directement l'attention sur le premier élément actionnable.
 
 <ComponentDemo
-path='/webforj/drawerautofocus?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java'
+path='/webforj/drawerautofocus'
+files={['src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java']}
 height='600px'
 />
 
 <!-- Exemple -->
 
-## Label {#label}
+## Étiquette {#label}
 
-La méthode `setLabel()` peut fournir une description significative du contenu à l'intérieur d'un `Drawer`. Lorsqu'une étiquette est définie, les technologies d'assistance telles que les lecteurs d'écran peuvent l'annoncer, aidant les utilisateurs à comprendre le but du `Drawer` sans voir son contenu visuel.
+La méthode `setLabel()` peut fournir une description significative du contenu à l'intérieur d'un `Drawer`. Lorsqu'une étiquette est définie, les technologies d'assistance comme les lecteurs d'écran peuvent l'annoncer, aidant les utilisateurs à comprendre le but du `Drawer` sans voir son contenu visuel.
 
 ```java
 Drawer drawer = new Drawer();
-drawer.setLabel("Gestionnaire de Tâches");
+drawer.setLabel("Gestionnaire de tâches");
 ```
 
-:::tip Étiquettes Descriptives
-Utilisez des étiquettes concises et descriptives qui reflètent le but du `Drawer`. Évitez les termes génériques comme "Menu" ou "Panneau" lorsque un nom plus spécifique peut être utilisé.
+:::tip Étiquettes descriptives
+Utilisez des étiquettes concises et descriptives qui reflètent le but du `Drawer`. Évitez les termes génériques comme « Menu » ou « Panneau » lorsqu'un nom plus spécifique peut être utilisé.
 :::
 
-## Size
+## Taille
 
-Pour contrôler la taille d'un `Drawer`, définissez une valeur pour la propriété CSS personnalisée `--dwc-drawer-size`. Cela définit la largeur du `Drawer` pour un placement gauche/droit ou la hauteur pour un placement haut/bas.
+Pour contrôler la taille d'un `Drawer`, définissez une valeur pour la propriété CSS personnalisée `--dwc-drawer-size`. Cela définit la largeur du `Drawer` pour un placement à gauche/droite ou la hauteur pour un placement en haut/en bas.
 
-Vous pouvez définir la valeur en utilisant n'importe quelle unité CSS valide, comme un pourcentage, des pixels ou vw/vh, en utilisant soit Java ou CSS :
+Vous pouvez définir la valeur en utilisant n'importe quelle unité CSS valide, telle qu'un pourcentage, des pixels ou vw/vh, en utilisant Java ou CSS :
 
 ```java
 // Java
@@ -66,7 +70,7 @@ dwc-drawer {
 }
 ```
 
-Pour empêcher le `Drawer` de devenir trop grand, utilisez `--dwc-drawer-max-size` à côté :
+Pour empêcher le `Drawer` de devenir trop grand, utilisez `--dwc-drawer-max-size` en conjonction :
 
 ```java
 // Java
@@ -89,28 +93,28 @@ La méthode `setPlacement()` contrôle où le `Drawer` apparaît dans la fenêtr
 Options de placement disponibles :
 
 <!-- vale off -->
-- **TOP** : Positionne le tiroir en haut de la fenêtre d'affichage.
-- **TOP_CENTER** : Centre horizontalement le tiroir en haut de la fenêtre d'affichage.
-- **BOTTOM** : Place le tiroir en bas de la fenêtre d'affichage.
-- **BOTTOM_CENTER** : Centre horizontalement le tiroir en bas de la fenêtre d'affichage.
-- **LEFT** : Positionne le tiroir sur le bord gauche de la fenêtre d'affichage.
-- **RIGHT** : Positionne le tiroir sur le bord droit de la fenêtre d'affichage.
+- **HAUT** : Positionne le tiroir au bord supérieur de la fenêtre d'affichage.
+- **HAUT_CENTRÉ** : Center horizontalement le tiroir en haut de la fenêtre d'affichage.
+- **BAS** : Place le tiroir en bas de la fenêtre d'affichage.
+- **BAS_CENTRÉ** : Center horizontalement le tiroir en bas de la fenêtre d'affichage.
+- **GAUCHE** : Positionne le tiroir le long du bord gauche de la fenêtre d'affichage.
+- **DROITE** : Positionne le tiroir le long du bord droit de la fenêtre d'affichage.
 <!-- vale on -->
 
 <ComponentDemo
-path='/webforj/drawerplacement?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
+path='/webforj/drawerplacement'
+files={['src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java']}
 height='600px'
 />
 
 ## Gestion des événements
 
-Le composant `Drawer` émet des événements de cycle de vie qui peuvent être utilisés pour déclencher la logique de l'application en réponse aux changements de son état ouvert ou fermé.
+Le composant `Drawer` émet des événements de cycle de vie qui peuvent être utilisés pour déclencher la logique d'application en réponse aux changements de son état ouvert ou fermé.
 
 Événements pris en charge :
 
-- `DrawerOpenEvent` : Déclenché lorsque le tiroir est complètement ouvert.
-- `DrawerCloseEvent` : Déclenché lorsque le tiroir est complètement fermé.
+- `DrawerOpenEvent` : Déclenché lorsque le tiroir est entièrement ouvert.
+- `DrawerCloseEvent` : Déclenché lorsque le tiroir est entièrement fermé.
 
 Vous pouvez attacher des écouteurs à ces événements pour exécuter une logique lorsque l'état du `Drawer` change.
 
@@ -128,28 +132,32 @@ drawer.addCloseListener(e -> {
 
 ## Exemple : Sélecteur de contacts
 
-Le composant `Drawer` expose un contenu supplémentaire sans perturber la vue actuelle. Cet exemple place un tiroir au bas centre, contenant une liste de contacts défilable.
+Le composant `Drawer` expose du contenu supplémentaire sans perturber la vue actuelle. Cet exemple place un tiroir au bas au centre, contenant une liste de contacts défilable.
 
-Chaque contact affiche un avatar, un nom, un emplacement et un bouton d'action pour un accès rapide aux détails ou à la communication. Cette approche fonctionne bien pour créer des outils compacts comme des sélecteurs de contacts, des panneaux de réglages ou des notifications.
+Chaque contact affiche un avatar, un nom, un emplacement et un bouton d'action pour un accès rapide aux détails ou à la communication. Cette approche fonctionne bien pour construire des outils compacts comme des sélecteurs de contacts, des panneaux de paramètres ou des notifications.
 
 <ComponentDemo
-path='/webforj/drawercontact?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerContact.css'
+path='/webforj/drawercontact'
+files={[
+  'src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java',
+  'src/main/resources/css/drawer/drawerContact.css',
+]}
 height='600px'
 />
 
 ## Exemple : Gestionnaire de tâches
 
-Cet exemple utilise un `Drawer` comme gestionnaire de tâches. Vous pouvez ajouter des tâches, les cocher et effacer celles qui sont complètes. Le pied de page du `Drawer` inclut des contrôles de formulaire pour interagir avec la liste des tâches, et le bouton "Ajouter une tâche" [`Button`](../components/button) se désactive si 50 tâches sont atteintes.
+Cet exemple utilise un `Drawer` comme gestionnaire de tâches. Vous pouvez ajouter des tâches, les cocher et les supprimer. Le pied de page du `Drawer` comprend des contrôles de formulaire pour interagir avec la liste des tâches, et le bouton « Ajouter une tâche » [`Button`](../components/button) se désactive si 50 tâches sont atteintes.
 
 <ComponentDemo
-path='/webforj/drawertask?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
-cssURL='/css/drawer/drawer-task-view.css'
+path='/webforj/drawertask'
+files={[
+  'src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java',
+  'src/main/resources/static/css/drawer/drawer-task-view.css',
+]}
 height='600px'
 />
 
-## Styling {#styling}
+## Stylisation {#styling}
 
 <TableBuilder name="Drawer" />

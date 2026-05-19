@@ -1,6 +1,7 @@
 ---
 title: Column Groups
 sidebar_position: 7
+description: Group Table columns under shared, nestable multi-row headers using ColumnGroup.of and setColumnGroups for complex layouts.
 ---
 <DocChip chip='since' label='25.12' />
 
@@ -11,11 +12,13 @@ Column groups let you organize related columns under shared, multi-row headers. 
 Create a group with the `ColumnGroup.of()` factory method, then chain `add()` calls to populate it with column references, other groups, or a mix of both. Apply the groups to a `Table` with `setColumnGroups()`.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumngroups?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnGroupsView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumngroups'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnGroupsView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -23,11 +26,13 @@ height='600px'
 When groups are set, the `Table` renders a multi-row header where each group label spans across its child columns. The nesting depth determines how many header rows appear. A flat group adds one extra row, while a two-level nesting adds two, and so on.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablenestedcolumngroups?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableNestedColumnGroupsView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablenestedcolumngroups'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableNestedColumnGroupsView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -64,11 +69,13 @@ Visual order:   Number, Title, Artist, Genre, Label, Cost
 The following demo illustrates this behavior. `Number` and `Label` aren't referenced in any group, but they retain their natural positions based on the order they were added to the `Table`.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumngroupordering?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnGroupOrderingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumngroupordering'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnGroupOrderingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -111,11 +118,13 @@ ColumnGroup idInfo = ColumnGroup.of("id-info", "ID Info")
 Ungrouped columns retain their own pin direction from their column definition.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablepinnedcolumngroups?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TablePinnedColumnGroupsView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablepinnedcolumngroups'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TablePinnedColumnGroupsView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -144,12 +153,14 @@ Group headers and columns expose CSS parts for styling via `::part()`. The follo
 | `cell-label-group-{ID}` | Label within a group header |
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablestyledcolumngroups?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableStyledColumnGroupsView.java'
-cssURL='/css/table/tablestyledcolumngroups.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablestyledcolumngroups'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableStyledColumnGroupsView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+  'src/main/resources/static/css/table/tablestyledcolumngroups.css',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -197,11 +208,13 @@ dwc-table::part(cell-group-depth-1) {
 Hidden columns are excluded from the visual order and the header layout. If a group contains a mix of visible and hidden columns, only the visible ones appear and the group `colspan` adjusts accordingly. If every column in a group is hidden, the group header isn't rendered at all.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablehiddencolumngroups?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableHiddenColumnGroupsView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablehiddencolumngroups'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableHiddenColumnGroupsView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Triggers
+description: Control when webforJ validates bindings by toggling auto-validate, using ValueChangeMode, and triggering revalidation manually.
 ---
 
 <!-- vale off -->

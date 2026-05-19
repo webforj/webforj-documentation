@@ -2,6 +2,7 @@
 sidebar_position: 20
 title: Lists
 hide_giscus_comments: true
+description: Manage shared list features across ChoiceBox, ComboBox, and ListBox, including ListItem objects, adding, removing, and selection APIs.
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList"/>

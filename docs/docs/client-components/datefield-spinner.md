@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-datefield-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: datefield-spinner
-description: A user guide article for the datefield-spinner
+description: Style the dwc-datefield-spinner client component with CSS variables and shadow parts to theme date input, spinner buttons, and surface.
 // pagination_prev: null
 // pagination_next: null
 ---

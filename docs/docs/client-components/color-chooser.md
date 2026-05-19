@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-color-chooser>
 sidebar_class_name: sidebar--item__hidden
 slug: color-chooser
-description: A user guide article for the color-chooser
+description: Customize the dwc-color-chooser client component using CSS variables and shadow parts to theme swatches, sliders, and preview surfaces.
 // pagination_prev: null
 // pagination_next: null
 ---

@@ -2,6 +2,7 @@
 sidebar_position: 20
 title: Fields
 hide_giscus_comments: true
+description: Share common field properties across webforJ input components, including labels, helper text, required state, spellcheck, and prefix or suffix slots.
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/field/AbstractField"/>
