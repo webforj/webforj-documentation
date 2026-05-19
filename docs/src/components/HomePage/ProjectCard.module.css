@@ -1,0 +1,101 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-2xl);
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: var(--dwc-font-weight-semibold);
+  line-height: 1.3;
+}
+
+.trophy {
+  margin-right: 0.25rem;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--chip-border-radius);
+  background-color: var(--dwc-color-default-alt);
+  color: var(--ifm-color-content);
+  font-size: 0.72rem;
+  border: 1px solid var(--dwc-border-color);
+}
+
+.links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+.linkDemo,
+.linkSource {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--dwc-border-radius-m);
+  font-size: 0.8rem;
+  font-weight: var(--dwc-font-weight-semibold);
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.linkDemo::after,
+.linkSource::after {
+  content: none !important;
+}
+
+.linkDemo {
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.linkDemo:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+.linkSource {
+  border: 1px solid var(--dwc-border-color);
+  color: inherit;
+}
+
+.linkSource:hover {
+  border-color: var(--dwc-border-color-primary);
+  background-color: var(--dwc-color-primary-alt);
+  color: inherit;
+  text-decoration: none;
+}

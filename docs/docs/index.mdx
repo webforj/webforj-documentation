@@ -1,0 +1,134 @@
+---
+title: Home
+description: webforJ is a Java framework for building modern, reactive web UIs without writing JavaScript.
+sidebar_position: 0
+hide_table_of_contents: true
+hide_giscus_comments: true
+---
+
+import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
+import Translate from '@docusaurus/Translate';
+import NavCard from '@site/src/components/HomePage/NavCard';
+import BlogCard from '@site/src/components/HomePage/BlogCard';
+import ProjectCard from '@site/src/components/HomePage/ProjectCard';
+import { recentPosts, builtWithProjects, recentDocs } from '@site/src/pages/homePageData';
+import styles from '@site/src/components/HomePage/HomePageLayout.module.css';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import WidgetsIcon from '@mui/icons-material/Widgets';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import UpgradeIcon from '@mui/icons-material/Upgrade';
+
+<Head>
+  <style>{`
+    .container { max-width: 65em !important; }
+  `}</style>
+</Head>
+
+<div className={styles.homeIntro}>
+  <p className={styles.homeVersion}>
+    <Link to="/blog/whats-new-v26.00">What's new in v26.00</Link>
+  </p>
+  <h1 className={styles.homeTitle}>Welcome to webforJ</h1>
+  <p className={styles.homeTagline}>
+    Build modern, reactive web applications with Java — no HTML, no CSS, no JavaScript required.
+  </p>
+  <div className={styles.homeCtas}>
+    <Link className="button button--primary button--lg" to="/docs/introduction/getting-started">
+      <Translate id="homepage.hero.cta.start">Get Started</Translate>
+    </Link>
+    <Link className="button button--outline button--secondary button--lg" to="/docs/components/overview">
+      <Translate id="homepage.hero.cta.components">Browse Components</Translate>
+    </Link>
+  </div>
+</div>
+
+---
+
+## Find Your Path
+
+<div className={styles.navGrid}>
+  <NavCard
+    icon={<RocketLaunchIcon />}
+    title={<Translate id="homepage.nav.start.title">New to webforJ?</Translate>}
+    description={<Translate id="homepage.nav.start.desc">Set up your environment and build your first app.</Translate>}
+    to="/docs/introduction/getting-started"
+  />
+  <NavCard
+    icon={<WidgetsIcon />}
+    title={<Translate id="homepage.nav.components.title">Browse Components</Translate>}
+    description={<Translate id="homepage.nav.components.desc">Explore the full library of UI components with live demos.</Translate>}
+    to="/docs/components/overview"
+  />
+  <NavCard
+    icon={<AccountTreeIcon />}
+    title={<Translate id="homepage.nav.routing.title">Routing & Layouts</Translate>}
+    description={<Translate id="homepage.nav.routing.desc">Define routes, navigate between views, and build complex layouts.</Translate>}
+    to="/docs/routing/overview"
+  />
+  <NavCard
+    icon={<UpgradeIcon />}
+    title={<Translate id="homepage.nav.upgrade.title">Upgrade Your App</Translate>}
+    description={<Translate id="homepage.nav.upgrade.desc">Migration guides, changelogs, and automated upgrade tooling.</Translate>}
+    to="/docs/upgrading/overview"
+  />
+</div>
+
+---
+
+## From the Blog
+
+<div className={styles.sectionHeader}>
+  <span />
+  <Link className={styles.seeAll} to="/blog">
+    <Translate id="homepage.blog.seeAll">View all posts</Translate>
+  </Link>
+</div>
+
+<div className={styles.blogGrid}>
+  {recentPosts.map((post) => (
+    <BlogCard key={post.slug} {...post} />
+  ))}
+</div>
+
+---
+
+## Built with webforJ
+
+<div className={styles.sectionHeader}>
+  <span />
+  <a
+    className={styles.seeAll}
+    href="https://github.com/webforj/built-with-webforj"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Translate id="homepage.projects.seeAll">View all on GitHub</Translate>
+  </a>
+</div>
+
+<div className={styles.projectGrid}>
+  {builtWithProjects.map((project) => (
+    <ProjectCard key={project.name} {...project} />
+  ))}
+</div>
+
+---
+
+## Latest in Docs
+
+<div className={styles.sectionHeader}>
+  <span />
+  <Link className={styles.seeAll} to="/docs/components/overview">
+    <Translate id="homepage.docs.seeAll">Browse all components</Translate>
+  </Link>
+</div>
+
+<ul className={styles.docsList}>
+  {recentDocs.map((doc) => (
+    <li key={doc.path} className={styles.docsItem}>
+      <Link to={doc.path} className={styles.docsLink}>{doc.title}</Link>
+      <span className={styles.docsSection}>{doc.section}</span>
+    </li>
+  ))}
+</ul>
