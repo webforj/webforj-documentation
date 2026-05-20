@@ -150,7 +150,7 @@ repository.setBaseFilter((CustomerRecord r) -> {
   });
 ```
 
-### Deprecated repository methods
+### Deprecated repository methods {#deprecated-repository-methods}
 
 Use the following table to see the deprecated repository methods and what methods to use going forward.
 
@@ -166,7 +166,7 @@ Use the following table to see the deprecated repository methods and what method
 | `getIndex(T)` | `find(key)` or `findBy(criteria)` |
 | `findByIndex(int)` | `find(key)` or `findBy(criteria)` |
 
-## Removal of `WebforjBBjBridge` {#removal-of-webforjbbjbridge`}
+## Removal of `WebforjBBjBridge` {#removal-of-webforjbbjbridge}
 
 Starting with webforJ 25.11, WebforjBBjBridge and all of its APIs have been removed. Instead of accessing the bridge, webforJ now uses the direct Java API to communicate with and access any required BBj APIs.
 
