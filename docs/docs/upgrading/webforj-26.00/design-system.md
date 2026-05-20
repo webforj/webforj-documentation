@@ -247,7 +247,7 @@ Components feel rounder out of the box. If a component nested inside larger text
 
 ## Easings {#easings}
 
-The easing catalog is mostly the same, with new shortcut tokens for the common cases: `--dwc-ease`, `--dwc-ease-in`, `--dwc-ease-out`, `--dwc-ease-outGlide`. See the [Transitions](/docs/styling/transitions-easing) page for the full list.
+The easing catalog is mostly the same, with new shortcut tokens for the common cases: `--dwc-ease`, `--dwc-ease-in`, `--dwc-ease-out`, `--dwc-ease-outGlide`. See the [Transitions and Easing](/docs/styling/transitions-easing) page for the full list.
 
 ## Transitions {#transitions}
 
