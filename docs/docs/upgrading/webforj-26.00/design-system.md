@@ -6,17 +6,17 @@ sidebar_position: 2
 
 DWC 26 introduces a refreshed design system. The update is incremental rather than a full rewrite: most v25 CSS variables remain available, the public API of the theme engine is preserved, and existing customizations continue to work without changes.
 
-This guide documents what changed, where the visual output differs, and the upgrade steps required when an application depends on a specific v25 behavior.
+This guide documents what changed, where the visual output differs, and the upgrade steps required when an app depends on a specific v25 behavior.
 
 ## Quick verdict {#quick-verdict}
 
-| If your app... | What to expect |
+| Scenario | What to expect |
 | --- | --- |
-| Uses default styling | Visual refresh. Default palette hues were retuned (e.g. primary moved from `h: 211 / s: 100%` to `h: 223 / s: 91%`), shadows look more layered, and components feel rounder. No code change needed, but the brand-default colors shift. |
+| Uses default styling | Visual refresh. Default palette hues were retuned (for example primary moved from `h: 211 / s: 100%` to `h: 223 / s: 91%`), shadows look more layered, and components feel rounder. No code change needed, but the brand-default colors shift. |
 | Overrides `--dwc-color-{name}-h` and `-s` | Still works. The HSL seed path is preserved. |
-| Overrides individual palette steps (e.g. `--dwc-color-primary-40`) | Numbers may resolve to different colors. See [Color palette](#color-palette-step-5-is-always-darkest). |
+| Overrides individual palette steps (for example `--dwc-color-primary-40`) | Numbers may resolve to different colors. See [Color palette](#color-palette-step-5-is-always-darkest). |
 | Relies on `--dwc-color-{name}-c` | Remove. The light/dark text flip is now computed automatically per shade. |
-| References named font-size tokens (`--dwc-font-size-m`, `-l`...) | The scale shifted down one bucket. `m` is now 14px instead of 16px. See [Typography](#typography). |
+| References named font-size tokens (`--dwc-font-size-m`, `-l`, and so on) | The scale shifted down one bucket. `m` is now 14px instead of 16px. See [Typography](#typography). |
 | Uses `--dwc-font-weight-semibold` to get 500-weight | `semibold` is now 600. Switch to the new `--dwc-font-weight-medium` for 500. |
 | Reserves padding around focusable elements with `--dwc-focus-ring-width` | The ring now has a gap. Add `--dwc-focus-ring-gap` to that padding, or the ring will overflow. See [Focus ring](#focus-ring). |
 | Customized button hover / ripple effects | Ripples are gone. Press feedback is now a small scale-down. |
@@ -28,7 +28,7 @@ If none of those apply, you can stop reading here. Your upgrade is done.
 - **Modern color engine.** Palettes are generated in OKLCH instead of HSL. Lightness steps are perceptually uniform (so adjacent steps look like adjacent steps), and dark mode no longer flips the palette.
 - **Dark mode via one variable.** `--dwc-dark-mode: 1` flips the whole UI. Mode adaptation happens in the variation layer, not by remapping every step.
 - **Automatic `on-text` colors.** Every palette step gets a `--dwc-color-on-{name}-text-{step}` companion clamped for WCAG AA contrast on that shade. You don't have to compute contrast manually.
-- **Direct seed override.** Pass any CSS color (hex, `rgb()`, `oklch()`, `lab()`...) into `--dwc-color-{name}-seed` and the whole palette regenerates from it.
+- **Direct seed override.** Pass any CSS color (hex, `rgb()`, `oklch()`, `lab()`, and so on) into `--dwc-color-{name}-seed` and the whole palette regenerates from it.
 - **Retuned shadows.** The same six levels (`xs` through `2xl`), now with realistic layer falloff and an automatic dark-mode strength boost via `--dwc-shadow-strength`.
 - **Surfaces and `default` use their own lightness curve.** Both now adapt to light/dark via `--dwc-dark-mode` and a small primary tint, instead of redefining surfaces in the dark theme and aliasing `default` to palette steps.
 - **Scale press feedback.** Ripples are replaced by a small scale-down on press. Tokens: `--dwc-scale-press`, `--dwc-scale-press-deep`.
@@ -69,7 +69,7 @@ In v25, the palette flipped in dark mode (step 5 darkest in light, lightest in d
 --dwc-color-primary-light: var(--dwc-color-primary-55);
 ```
 
-| If you... | What changes |
+| Scenario | What changes |
 | --- | --- |
 | Use `--dwc-color-primary` (or `-dark`, `-light`, `-text`) | Nothing. Variations still behave the same across modes. |
 | Hardcoded a step like `--dwc-color-primary-40` | That step now resolves to the same OKLCH lightness in both modes. The color you saw in dark mode came from a different step. Switch to the variation token if you want mode-aware behavior. |
@@ -78,7 +78,7 @@ In v25, the palette flipped in dark mode (step 5 darkest in light, lightest in d
 ### Colors are derived, not promised {#colors-are-derived-not-promised}
 
 :::info Heads up
-The hue you set is a **seed**, not a target. The color you pass via `--dwc-color-{name}-h` / `-s` (or `-seed`) will not necessarily appear at step 50.
+The hue you set is a **seed**, not a target. The color you pass via `--dwc-color-{name}-h` / `-s` (or `-seed`) won't necessarily appear at step 50.
 :::
 
 Because the palette uses absolute OKLCH lightness per step, where your seed lands depends on its natural lightness. Bright hues (cyan, yellow) have high OKLCH lightness and end up around step 80-85. Darker hues (blue) sit near step 50 by coincidence.
@@ -137,7 +137,7 @@ html[data-app-theme='my-dark-theme'] {
 
 It participates in `calc()` expressions throughout the system, which is how mode adaptation propagates to surfaces, shadows, borders, and text colors.
 
-In v25, the built-in `dark` and `dark-pure` themes had to redefine surfaces, shadows, and many palette variations manually. In v26, all of that is derived from `--dwc-dark-mode` and the seed colors. A typical custom dark theme that used to be a 20-line override block becomes:
+In v25, the built-in `dark` and `dark-pure` themes had to redefine surfaces, shadows, and many palette variations manually. In v26, all of that's derived from `--dwc-dark-mode` and the seed colors. A typical custom dark theme that used to be a 20-line override block becomes:
 
 ```css
 html[data-app-theme='my-dark-theme'] {
@@ -255,10 +255,10 @@ Transition durations were rebalanced for a snappier feel:
 
 | Variable | v25 | v26 |
 | --- | --- | --- |
-| `--dwc-transition-slow` | 500ms | 300ms |
-| `--dwc-transition-medium` | 250ms | 250ms |
-| `--dwc-transition-fast` | 150ms | 150ms |
-| `--dwc-transition-x-fast` | 50ms | 100ms |
+| `--dwc-transition-slow` | 500&nbsp;ms | 300&nbsp;ms |
+| `--dwc-transition-medium` | 250&nbsp;ms | 250&nbsp;ms |
+| `--dwc-transition-fast` | 150&nbsp;ms | 150&nbsp;ms |
+| `--dwc-transition-x-fast` | 50&nbsp;ms | 100&nbsp;ms |
 
 If you depend on a specific duration, override it in `:root`.
 
@@ -298,7 +298,7 @@ The `ripple` SCSS mixin and the `--dwc-ripple-color` CSS variable still exist in
 
 ## Browser support {#browser-support}
 
-The new system uses two CSS features whose browser compatibility tables you can check on MDN:
+The new system uses two CSS features whose browser compatibility tables you can see on MDN:
 
 - [OKLCH color space](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch#browser_compatibility), includes relative color syntax (`oklch(from ...)`)
 - [`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix#browser_compatibility)
@@ -310,7 +310,7 @@ Both have shipped in evergreen Chrome, Edge, Firefox, and Safari.
 1. Search for `--dwc-color-*-c` and delete those declarations.
 2. Search for `hsla(var(--dwc-shadow-color)` and replace with a shadow token (`var(--dwc-shadow-m)`) or rewrite as `oklch(from ...)`.
 3. Search for direct palette step references (`--dwc-color-{name}-{number}`). If any feed dark-mode-specific styling, switch to variation tokens (`--dwc-color-{name}`, `-dark`, `-light`).
-4. Search for named font-size references (`--dwc-font-size-m`, `-l`, ...). If you want the v25 size, step up one bucket.
+4. Search for named font-size references (`--dwc-font-size-m`, `-l`, and so on). If you want the v25 size, step up one bucket.
 5. Search for `--dwc-font-weight-semibold`. If you wanted 500, switch to `--dwc-font-weight-medium`.
 6. If you reserve space around focusable elements with `--dwc-focus-ring-width`, add `--dwc-focus-ring-gap` to the padding.
 7. Open the app, click around. Most apps need nothing else.

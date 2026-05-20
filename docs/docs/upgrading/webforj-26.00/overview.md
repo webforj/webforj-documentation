@@ -178,13 +178,13 @@ This section lists the breaking changes you may need to act on. For the conceptu
 
 ### Quick verdict {#design-system-quick-verdict}
 
-| If your app... | What to expect |
+| Scenario | What to expect |
 |---|---|
 | Uses default styling | Visual refresh. Default palette hues were retuned (primary moved from `h: 211 / s: 100%` to `h: 223 / s: 91%`), shadows look more layered, and components feel rounder. No code change needed. |
 | Overrides `--dwc-color-{name}-h` and `-s` | Still works. The HSL seed path is preserved. |
-| Overrides individual palette steps (e.g. `--dwc-color-primary-40`) | Step numbers may resolve to different colors. See [Color palette mechanics](/docs/upgrading/webforj-26.00/design-system#color-palette). |
+| Overrides individual palette steps (for example `--dwc-color-primary-40`) | Step numbers may resolve to different colors. See [Color palette mechanics](/docs/upgrading/webforj-26.00/design-system#color-palette). |
 | Relies on `--dwc-color-{name}-c` | Remove. The light/dark text flip is now computed automatically per shade. |
-| References named font-size tokens (`--dwc-font-size-m`, `-l`, ...) | The scale shifted down one bucket. `m` is now `14px` instead of `16px`. See [Typography](#design-system-typography). |
+| References named font-size tokens (`--dwc-font-size-m`, `-l`, and so on) | The scale shifted down one bucket. `m` is now `14px` instead of `16px`. See [Typography](#design-system-typography). |
 | Uses `--dwc-font-weight-semibold` to get `500`-weight | `semibold` is now `600`. Switch to the new `--dwc-font-weight-medium` for `500`. |
 | Reserves padding around focusable elements with `--dwc-focus-ring-width` | The ring now has a gap. Add `--dwc-focus-ring-gap`. See [Focus ring](#design-system-focus-ring). |
 | Customized button hover / ripple effects | Ripples are gone. Press feedback is now a small scale-down. |
@@ -310,7 +310,7 @@ If you depend on a specific duration, override it in `:root`.
 1. Search for `--dwc-color-*-c` and delete those declarations.
 2. Search for `hsla(var(--dwc-shadow-color)` and replace with a shadow token (`var(--dwc-shadow-m)`) or rewrite as `oklch(from ...)`.
 3. Search for direct palette step references (`--dwc-color-{name}-{number}`). If any feed dark-mode-specific styling, switch to variation tokens (`--dwc-color-{name}`, `-dark`, `-light`).
-4. Search for named font-size references (`--dwc-font-size-m`, `-l`, ...). If you want the v25 size, step up one bucket.
+4. Search for named font-size references (`--dwc-font-size-m`, `-l`, and so on). If you want the v25 size, step up one bucket.
 5. Search for `--dwc-font-weight-semibold`. If you wanted `500`, switch to `--dwc-font-weight-medium`.
 6. If you reserve space around focusable elements with `--dwc-focus-ring-width`, add `--dwc-focus-ring-gap` to the padding.
 7. Open the app, click around. Most apps need nothing else.

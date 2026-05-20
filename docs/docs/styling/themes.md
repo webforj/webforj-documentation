@@ -9,7 +9,7 @@ A theme in webforJ is a named set of CSS custom properties (design tokens) that 
 
 ## Built-in themes {#built-in-themes}
 
-webforJ ships three application themes out of the box:
+webforJ ships three app themes out of the box:
 
 | Theme       | Background      | Tint                       |
 |-------------|-----------------|----------------------------|
@@ -33,7 +33,7 @@ class MyApp extends App {
 App.setTheme("dark-pure");
 ```
 
-Calling `App.setTheme()` again at any time switches the application to a different theme.
+Calling `App.setTheme()` again at any time switches the app to a different theme.
 
 ## Color scheme {#color-scheme}
 
@@ -48,7 +48,7 @@ html[data-app-theme="brand-dark"] {
 }
 ```
 
-If you skip it, scrollbars and autofill rectangles stay light-mode by default and look out of place over your dark surfaces. Light themes don't need the declaration, browsers default to light.
+If you skip it, scrollbars, and autofill rectangles stay light-mode by default and look out of place over your dark surfaces. Light themes don't need the declaration, browsers default to light.
 
 ## Following the user's preference {#following-the-users-preference}
 
@@ -176,7 +176,7 @@ Hardcoded color literals (`#3b82f6`, `rgb(59 130 246)`, `oklch(0.6 0.18 250)`) d
 
 ### Prefer variation tokens over raw step numbers {#prefer-variation-tokens-over-raw-step-numbers}
 
-Variation tokens (`--dwc-color-primary`, `-dark`, `-light`, `-text`, `-alt`) resolve to a different step in light versus dark mode automatically. Raw step numbers (`--dwc-color-primary-50`) do not.
+Variation tokens (`--dwc-color-primary`, `-dark`, `-light`, `-text`, `-alt`) resolve to a different step in light versus dark mode automatically. Raw step numbers (`--dwc-color-primary-50`) don't.
 
 ```css
 /* avoid - frozen at step 50 in both modes */
@@ -246,7 +246,7 @@ Hardcoded values bypass user-preference font-size scaling, lock you into a fixed
 
 ### Use `::part(...)` to reach into components {#use-part-to-reach-into-components}
 
-webforJ components are Shadow DOM. Their internal markup is hidden from outside selectors, so a rule like `.dwc-button-label { ... }` will not match anything. To style internal pieces, target the exposed parts:
+webforJ components are Shadow DOM. Their internal markup is hidden from outside selectors, so a rule like `.dwc-button-label { ... }` won't match anything. To style internal pieces, target the exposed parts:
 
 ```css
 /* style the label inside every primary button */
@@ -279,6 +279,6 @@ It escapes the cascade and makes every future override harder. If a rule isn't w
 
 ## Component themes {#component-themes}
 
-In addition to app-level themes, webforJ components support a set of **component themes** based on the default color palettes: `default`, `primary`, `success`, `warning`, `danger`, `info`, and `gray`. This is independent of the active application theme.
+In addition to app-level themes, webforJ components support a set of **component themes** based on the default color palettes: `default`, `primary`, `success`, `warning`, `danger`, `info`, and `gray`. This is independent of the active app theme.
 
 Each component documents its supported themes under the **Styling → Themes** section.
