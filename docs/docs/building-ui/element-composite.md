@@ -6,9 +6,7 @@ sidebar_class_name: new-content
 
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-The `ElementComposite` class wraps a custom HTML element or web component. It binds your Java class to the underlying `Element` and lets you work with that element's properties, attributes, and events through Java. Use it when integrating Web Components into a webforJ app.
-
-Inside a subclass, `getElement()` returns the underlying `Element`, and `getNodeName()` returns its DOM tag name.
+The `ElementComposite` class wraps a custom HTML element or [web component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). It binds your Java class to the underlying `Element` and lets you work with that element's properties, attributes, and events through Java. Use it when integrating web components into a webforJ app.
 
 :::tip When to use `ElementComposite`
 Reach for `ElementComposite` when wrapping a third-party web component that webforJ doesn't already provide. If a built-in webforJ component covers the use case (`TextField`, `ColorField`, `Button`, and so on), use that instead. For one-off DOM work that doesn't need to be reused, the `Element` class can be used directly without a wrapper.
@@ -38,6 +36,8 @@ public class RelativeTime extends ElementComposite {
 ```
 
 The tag name must match the custom element registered on the client. Without this annotation, the framework can't determine which element to create.
+
+Inside a subclass, `getNodeName()` reads back the declared tag, and `getElement()` returns the underlying `Element` so you can call DOM-level methods on it directly.
 
 ### `@JavaScript` {#javascript}
 
@@ -245,9 +245,13 @@ MyBadge badge = new MyBadge()
     .setStyle("color", "var(--dwc-color-primary)");
 ```
 
+The three interfaces above cover everything `MyBadge` needs without any method bodies in the class. `HasText` exposes `setText()` and writes to the element's text content. `HasClassName` exposes `addClassName()`, which lets the badge be targeted from CSS. `HasStyle` exposes `setStyle()` for inline styling.
+
 For the full set of available interfaces and what each one provides, see [Concern interfaces](./component-fundamentals#concern-interfaces) in the Understanding Components article. If a default forwarding doesn't match what the wrapped element exposes, override the method in the subclass.
 
 ## Event registration {#event-registration}
+
+Web components dispatch DOM events when something happens in the browser. To react from Java, listen for those events with `addEventListener()`. The set of events a component dispatches varies, so check the component's own docs for the names and payloads available.
 
 `ElementComposite` supports debouncing, throttling, filtering, and custom event data on registered listeners.
 
@@ -278,7 +282,9 @@ Events carry data from the client to your Java code. Access this data through `g
 
 ## Custom event classes {#custom-event-classes}
 
-Define custom event classes with `@EventName` and `@EventOptions` to capture client-side data in a typed Java event.
+Define custom event classes with `@EventName` and `@EventOptions` to capture client-side data in a typed Java event. Use this when the Java handler needs values from the browser.
+
+`@EventName` binds the Java class to the event the component dispatches in the browser, so a class annotated `@EventName("sl-change")` fires whenever the underlying element emits `sl-change`. `@EventOptions` controls what travels back with that event. Each `@EventData` inside it pairs a key with a JavaScript expression evaluated against the DOM event. The result is available in the Java event class through `getData().get(key)`.
 
 The product review form below uses this pattern with [`sl-rating`](https://shoelace.style/components/rating). The custom `ChangeEvent` carries the rating value as a typed `double`, and the listener uses it to enable the submit button:
 
@@ -309,7 +315,7 @@ ElementEventOptions options = new ElementEventOptions()
   .setDebounce(300, DebouncePhase.TRAILING);
 
 // Apply these options when registering a listener for a custom event class
-// (see [Custom event classes](#custom-event-classes) for how to define one):
+// (see the Custom event classes section above for how to define one):
 addEventListener(InputEvent.class, this::handleSearch, options);
 ```
 
@@ -339,7 +345,7 @@ options.setThrottle(100); // Fire at most once per 100ms
 
 ## Options merging {#options-merging}
 
-Use `mergeWith()` to combine event configurations. Later options override conflicting settings.
+Use `mergeWith()` to combine event configurations. Each instance passed in updates the receiver with its non-empty values, so values on the argument override anything set on the receiver. When multiple instances are passed, the last non-empty value across them wins.
 
 ```java
 ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
