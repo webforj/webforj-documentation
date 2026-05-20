@@ -182,7 +182,7 @@ This section lists the breaking changes you may need to act on. For the conceptu
 |---|---|
 | Uses default styling | Visual refresh. Default palette hues were retuned (primary moved from `h: 211 / s: 100%` to `h: 223 / s: 91%`), shadows look more layered, and components feel rounder. No code change needed. |
 | Overrides `--dwc-color-{name}-h` and `-s` | Still works. The HSL seed path is preserved. |
-| Overrides individual palette steps (for example `--dwc-color-primary-40`) | Step numbers may resolve to different colors. See [Color palette mechanics](/docs/upgrading/webforj-26.00/design-system#color-palette). |
+| Overrides individual palette steps (for example `--dwc-color-primary-40`) | Step numbers may resolve to different colors. See [Color palette mechanics](/docs/upgrading/webforj-26.00/design-system#the-color-system). |
 | Relies on `--dwc-color-{name}-c` | Remove. The light/dark text flip is now computed automatically per shade. |
 | References named font-size tokens (`--dwc-font-size-m`, `-l`, and so on) | The scale shifted down one bucket. `m` is now `14px` instead of `16px`. See [Typography](#design-system-typography). |
 | Uses `--dwc-font-weight-semibold` to get `500`-weight | `semibold` is now `600`. Switch to the new `--dwc-font-weight-medium` for `500`. |
