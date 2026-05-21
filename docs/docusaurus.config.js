@@ -156,7 +156,7 @@ module.exports = async function createConfig() {
         routeBasePath: 'cookbook',
         sidebarPath: require.resolve('./cookbook-sidebars.js'),
         editUrl: 'https://github.com/webforj/webforj-documentation/edit/main/docs/',
-        exclude: ['recipe-template.mdx', 'README.md'],
+        exclude: ['recipe-template.md', 'README.md'],
       },
     ],
     [

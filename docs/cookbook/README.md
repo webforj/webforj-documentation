@@ -10,14 +10,14 @@ This document explains how the cookbook is built and how to add new recipes.
 
 ```
 docs/
-├── cookbook/                        ← Recipe source files (MDX)
+├── cookbook/                        ← Recipe source files (MD)
 │   ├── index.mdx                    ← Landing page: renders CookbookIndex
-│   ├── recipe-template.mdx          ← Contributor template (excluded from build)
+│   ├── recipe-template.md          ← Contributor template (excluded from build)
 │   ├── css/
-│   │   └── inject-inline-css.mdx
+│   │   └── inject-inline-css.md
 │   ├── routing/
-│   │   ├── navigate-programmatically.mdx
-│   │   └── read-query-parameter.mdx
+│   │   ├── navigate-programmatically.md
+│   │   └── read-query-parameter.md
 │   └── ...
 ├── tools/
 │   ├── generate-cookbook-index.mjs  ← Build-time index generator
@@ -32,7 +32,7 @@ docs/
 
 ### How it works
 
-1. **Build time**: `generate-cookbook-index.mjs` scans every recipe `.mdx` file,
+1. **Build time**: `generate-cookbook-index.mjs` scans every recipe `.md` file,
    reads its frontmatter, and writes `static/cookbook-index.json`.  
    The script runs automatically via the `prebuild` and `prestart` npm hooks.
 
@@ -43,7 +43,7 @@ docs/
    - **Difficulty select**: filter by beginner / intermediate / advanced
 
 3. **Routing**: the cookbook is served by a second `@docusaurus/plugin-content-docs`
-   instance (id `cookbook`, `routeBasePath: 'cookbook'`).  Each recipe `.mdx` file
+   instance (id `cookbook`, `routeBasePath: 'cookbook'`).  Each recipe `.md` file
    becomes a standalone page at `/cookbook/<category>/<slug>`.
 
 4. **CI validation**: `.github/workflows/validate-cookbook.yml` runs
@@ -57,7 +57,7 @@ docs/
 ### 1. Copy the template
 
 ```bash
-cp docs/cookbook/recipe-template.mdx docs/cookbook/<category>/<your-recipe-slug>.mdx
+cp docs/cookbook/recipe-template.md docs/cookbook/<category>/<your-recipe-slug>.md
 ```
 
 Use an existing category folder (`css`, `routing`, `table`, `forms`, `layout`) or
@@ -97,14 +97,14 @@ theme, i18n, security, spring, performance, testing
 ```
 
 > To add a new tag, update the `ALLOWED_TAGS` set in `tools/validate-cookbook.mjs`
-> and the `tags` list in `recipe-template.mdx` in the same PR.
+> and the `tags` list in `recipe-template.md` in the same PR.
 
 ### 3. Write the recipe body
 
 Keep it minimal: a short 1–2 sentence intro (if the code alone isn't self-explanatory)
 followed by one Java code block.
 
-````mdx
+````md
 Brief context sentence if needed.
 
 ```java
@@ -142,7 +142,7 @@ All recipes must report ✅ before the PR can be merged.
 ## Modifying the allowed tag list
 
 1. Add the new value to `ALLOWED_TAGS` in `tools/validate-cookbook.mjs`.
-2. Add it to the `tags` comment block in `recipe-template.mdx`.
+2. Add it to the `tags` comment block in `recipe-template.md`.
 3. If it maps to a new category, add `_category_.json` in the new folder.
 4. Regenerate the index and commit.
 
@@ -166,6 +166,6 @@ Styles use the DWC design-token system (`--dwc-color-primary`, `--dwc-color-defa
 The following files are excluded from the Docusaurus build via the `exclude` option
 in `docusaurus.config.js` and will never appear in the sidebar or as served pages:
 
-- `recipe-template.mdx`: contributor template
+- `recipe-template.md`: contributor template
 - `README.md`: this file
 <!-- vale on -->
