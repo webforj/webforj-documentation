@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-05T12:28:13.504Z",
-  "count": 3,
+  "generated": "2026-05-21T20:32:22.036Z",
+  "count": 4,
   "recipes": [
     {
       "slug": "css/inject-inline-css",
@@ -36,6 +36,21 @@
         "parameters"
       ],
       "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "theme/AppThemeToggle",
+      "url": "/cookbook/theme/AppThemeToggle",
+      "title": "Add a toggle for the app's theme",
+      "description": "Have a toggle component that switches the app's theme between a light and a dark mode.",
+      "tags": [
+        "styling",
+        "components",
+        "theme"
+      ],
+      "components": [
+        "IconButton"
+      ],
       "difficulty": "beginner"
     }
   ]
