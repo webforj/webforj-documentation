@@ -107,7 +107,7 @@ export default function CookbookIndex() {
           placeholder = {translate({
             id: 'cookbook.search.placeholder',
             message: 'Search recipes…',
-            description: 'Placeholder text for the cookbookrecipe search input'
+            description: 'Placeholder text for the cookbook recipe search input'
           })}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
