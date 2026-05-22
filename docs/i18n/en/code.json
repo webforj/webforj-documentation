@@ -1060,6 +1060,6 @@
   },
   "cookbook.search.placeholder": {
     "message": "Search recipes…",
-    "description": "Placeholder text for the cookbookrecipe search input"
+    "description": "Placeholder text for the cookbook recipe search input"
   }
 }
