@@ -3,15 +3,42 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
 import CookbookCard from './CookbookCard';
 import styles from './CookbookIndex.module.css';
+import Translate, { translate } from '@docusaurus/Translate';
 
 /** Sentinel value used for "no filter applied" selects and buttons. */
 const ALL = 'all';
 
 const DIFFICULTY_OPTIONS = [
-  { value: ALL, label: 'All levels' },
-  { value: 'beginner', label: 'Beginner' },
-  { value: 'intermediate', label: 'Intermediate' },
-  { value: 'advanced', label: 'Advanced' },
+  {
+    value: ALL,
+    label: translate({
+      id: 'cookbook.difficulty.all',
+      message: 'All levels',
+      description: 'Cookbook filter option to show every recipe'
+    })
+  },
+  {
+    value: 'beginner',
+    label: translate({
+      id: 'cookbook.difficulty.beginner',
+      message: 'Beginner',
+      description: 'Cookbook filter option to show beginner-level recipes'
+    })
+  },
+  {
+    value: 'intermediate', label: translate({
+      id: 'cookbook.difficulty.intermediate',
+      message: 'Intermediate',
+      description: 'Cookbook filter option to show intermediate-level recipes'
+    })
+  },
+  {
+    value: 'advanced', label: translate({
+      id: 'cookbook.difficulty.advanced',
+      message: 'Advanced',
+      description: 'Cookbook filter option to show advanced-level recipes'
+    })
+  },
 ];
 
 /**
@@ -67,7 +94,7 @@ export default function CookbookIndex() {
     });
   }, [recipes, search, activeTag, difficulty]);
 
-  if (loading) return <p className={styles.status}>Loading recipes…</p>;
+  if (loading) return <p className={styles.status}><Translate>Loading recipes…</Translate></p>;
   if (error) return <p className={styles.status}>⚠️ {error}</p>;
 
   return (
@@ -77,7 +104,11 @@ export default function CookbookIndex() {
         <input
           type="search"
           className={styles.searchInput}
-          placeholder="Search recipes…"
+          placeholder = {translate({
+            id: 'cookbook.search.placeholder',
+            message: 'Search recipes…',
+            description: 'Placeholder text for the cookbookrecipe search input'
+          })}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           aria-label="Search cookbook recipes"
