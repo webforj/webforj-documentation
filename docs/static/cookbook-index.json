@@ -1,7 +1,32 @@
 {
-  "generated": "2026-05-21T20:32:22.036Z",
-  "count": 4,
+  "generated": "2026-05-22T14:25:21.019Z",
+  "count": 9,
   "recipes": [
+    {
+      "slug": "components/card-with-slots",
+      "url": "/cookbook/components/card-with-slots",
+      "title": "Build a reusable card with title, body, and action slots",
+      "description": "Create a Composite card component with header, body, and footer regions you fill from any view.",
+      "tags": [
+        "components",
+        "layout",
+        "styling"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "css/hide-on-small-screens",
+      "url": "/cookbook/css/hide-on-small-screens",
+      "title": "Hide a component on small screens with a media query",
+      "description": "Use a sidecar CSS file with a media query to hide a region of the UI below a breakpoint.",
+      "tags": [
+        "css",
+        "layout"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
     {
       "slug": "css/inject-inline-css",
       "url": "/cookbook/css/inject-inline-css",
@@ -15,10 +40,45 @@
       "difficulty": "beginner"
     },
     {
+      "slug": "forms/debounced-email-validation",
+      "url": "/cookbook/forms/debounced-email-validation",
+      "title": "Validate an email field as the user types, debounced",
+      "description": "Combine the Debouncer with a text field's modify event so validation runs once typing pauses, not on every keystroke.",
+      "tags": [
+        "forms",
+        "validation"
+      ],
+      "components": [],
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "javascript/call-dom-method",
+      "url": "/cookbook/javascript/call-dom-method",
+      "title": "Call a DOM method (like scrollIntoView) from Java",
+      "description": "Use executeJs and the component keyword to invoke any DOM method on a component's underlying HTML element.",
+      "tags": [
+        "javascript"
+      ],
+      "components": [],
+      "difficulty": "intermediate"
+    },
+    {
       "slug": "routing/navigate-programmatically",
       "url": "/cookbook/routing/navigate-programmatically",
       "title": "Navigate to another view programmatically",
       "description": "Trigger programmatic navigation to a view class using Router.getCurrent().navigate().",
+      "tags": [
+        "routing",
+        "navigation"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "routing/open-in-new-tab",
+      "url": "/cookbook/routing/open-in-new-tab",
+      "title": "Open a route in a new browser tab",
+      "description": "Construct a route URL with the router and open it via Page.open so paths aren't hard-coded.",
       "tags": [
         "routing",
         "navigation"

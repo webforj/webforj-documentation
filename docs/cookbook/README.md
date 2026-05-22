@@ -93,7 +93,8 @@ difficulty: beginner
 css, styling, routing, parameters, table, forms, layout,
 navigation, data-binding, validation, components, dialog,
 notification, grid, list, tree, toolbar, upload, chart,
-theme, i18n, security, spring, performance, testing
+theme, i18n, security, spring, performance, testing,
+javascript
 ```
 
 > To add a new tag, update the `ALLOWED_TAGS` set in `tools/validate-cookbook.mjs`
