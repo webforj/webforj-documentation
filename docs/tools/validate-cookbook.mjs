@@ -31,6 +31,7 @@ const ALLOWED_TAGS = new Set([
   'navigation', 'data-binding', 'validation', 'components', 'dialog',
   'notification', 'grid', 'list', 'tree', 'toolbar', 'upload', 'chart',
   'theme', 'i18n', 'security', 'spring', 'performance', 'testing',
+  'javascript',
 ]);
 
 const ALLOWED_DIFFICULTIES = new Set(['beginner', 'intermediate', 'advanced']);

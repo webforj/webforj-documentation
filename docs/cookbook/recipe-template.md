@@ -21,7 +21,8 @@ Brief 1–2 sentence context if the code alone isn't self-explanatory. Otherwise
                 css, styling, routing, parameters, table, forms, layout,
                 navigation, data-binding, validation, components, dialog,
                 notification, grid, list, tree, toolbar, upload, chart,
-                theme, i18n, security, spring, performance, testing
+                theme, i18n, security, spring, performance, testing,
+                javascript
   components  – array of component names, e.g. [Button, TextField]
                 use [] if not component-specific (required)
   difficulty  – beginner | intermediate | advanced (required)
