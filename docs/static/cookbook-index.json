@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-22T14:25:21.019Z",
-  "count": 9,
+  "generated": "2026-05-22T21:51:18.703Z",
+  "count": 10,
   "recipes": [
     {
       "slug": "components/card-with-slots",
@@ -61,6 +61,19 @@
       ],
       "components": [],
       "difficulty": "intermediate"
+    },
+    {
+      "slug": "layout/centered-layout",
+      "url": "/cookbook/layout/centered-layout",
+      "title": "Center content in a FlexLayout",
+      "description": "Use the FlexLayout component to center components horizontally and vertically",
+      "tags": [
+        "layout"
+      ],
+      "components": [
+        "FlexLayout"
+      ],
+      "difficulty": "beginner"
     },
     {
       "slug": "routing/navigate-programmatically",
