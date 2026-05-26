@@ -6,7 +6,7 @@ components: [Button]
 difficulty: beginner
 ---
 
-Disable the button at the start of the click handler and re-enable it in a `finally` block so it is always restored, even if the operation throws.
+Disable the button at the start of the click handler and re-enable it in a `finally` block so it's always restored, even if the operation throws.
 
 ```java
 Button save = new Button("Save");
