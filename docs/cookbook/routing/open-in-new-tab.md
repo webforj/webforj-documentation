@@ -32,4 +32,4 @@ public class OpenInNewTabView extends Composite<Div> {
 }
 ```
 
-`getUri` returns an `Optional<String>` — if the class isn't registered as a route, the optional is empty and nothing happens. The second argument to `Page.open` accepts any standard browser window-name token (`_blank`, `_self`, `_parent`, `_top`) or a custom name to reuse a named tab on subsequent clicks.
+`getUri` returns an `Optional<String>`. If the class isn't registered as a route, the optional is empty and nothing happens. The second argument to `Page.open` accepts any standard browser window-name token (`_blank`, `_self`, `_parent`, `_top`) or a custom name to reuse a named tab on subsequent clicks.

@@ -6,7 +6,7 @@ components: []
 difficulty: beginner
 ---
 
-Add a CSS class to any region you want to hide responsively, then let the sidecar stylesheet handle the breakpoint with `@media (max-width: ...)`. Java stays declarative — no resize listeners, no JavaScript glue.
+Add a CSS class to any region you want to hide responsively, then let the sidecar style sheet handle the breakpoint with `@media (max-width: ...)`. Java stays declarative with no resize listeners or JavaScript glue.
 
 ```java
 import com.webforj.annotation.StyleSheet;
@@ -80,4 +80,4 @@ The sidecar lives at `src/main/resources/static/cookbook-static/responsive-hide.
 }
 ```
 
-Pick the breakpoint to match your layout's natural collapse point — `768px` is a common tablet/mobile threshold, but the technique works for any width. Use `min-width` instead if you'd rather progressively reveal the region as the viewport grows.
+Pick the breakpoint to match your layout's natural collapse point. `768px` is a common device breakpoint, but the technique works for any width. Use `min-width` instead if you'd rather progressively reveal the region as the viewport grows.
