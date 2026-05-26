@@ -6,7 +6,7 @@ components: [Table]
 difficulty: beginner
 ---
 
-`BooleanRenderer` accepts two icon arguments — one for `true`, one for `false`. Pass any `Icon` instance and theme it with `setTheme` to match your design system.
+`BooleanRenderer` accepts two icon arguments, one for `true`, one for `false`. Pass any `Icon` instance and theme it with `setTheme` to match your design system.
 
 ```java
 Table<Task> table = new Table<>();
