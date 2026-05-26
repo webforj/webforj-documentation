@@ -72,7 +72,7 @@ files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.
 <ComponentDemo
 path='/webforj/toolbartheme'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java']}
-height='475px'
+height='590px'
 />
 
 <TableBuilder name="Toolbar" />
