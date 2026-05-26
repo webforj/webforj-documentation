@@ -49,7 +49,7 @@ public class Card extends Composite<Div> {
 }
 ```
 
-Pair it with a sidecar stylesheet at `src/main/resources/static/cookbook-static/card.css` (a path outside `/cookbook/*` because the docs site reserves that namespace):
+Pair it with a sidecar style sheet at `src/main/resources/static/cookbook-static/card.css` (a path outside `/cookbook/*` because the docs site reserves that namespace):
 
 ```css
 .cookbook-card {

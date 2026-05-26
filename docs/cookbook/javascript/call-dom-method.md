@@ -6,7 +6,7 @@ components: []
 difficulty: intermediate
 ---
 
-`getElement()` returns the underlying `Element` for any HTML component. Call `executeJs` on it and reference `component` inside the JavaScript string — that name is bound to the underlying DOM node, so any method on it (`scrollIntoView`, `focus`, `requestFullscreen`, `select`, `play`, etc.) is available.
+`getElement()` returns the underlying `Element` for any HTML component. Call `executeJs` on it and reference `component` inside the JavaScript string; that name is bound to the underlying DOM node, so any method on it (`scrollIntoView`, `focus`, `requestFullscreen`, `select`, `play`, etc.) is available.
 
 ```java
 import com.webforj.component.Composite;

@@ -6,7 +6,7 @@ components: []
 difficulty: intermediate
 ---
 
-Wire `onModify` to a `Debouncer` so the regex check only runs after the user pauses typing. `setInvalid` plus `setInvalidMessage` toggle the field's built-in error state.
+Wire `onModify` to a `Debouncer` so the regular expression check only runs after the user pauses typing. `setInvalid` plus `setInvalidMessage` toggle the field's built-in error state.
 
 ```java
 import com.webforj.Debouncer;
@@ -59,4 +59,4 @@ public class DebouncedEmailView extends Composite<FlexLayout> {
 }
 ```
 
-The `Debouncer` constructor takes seconds as a float (`0.5f` = 500 ms). Each `onModify` keystroke calls `debouncer.run(...)`, which cancels the previous pending action and restarts the timer — so the regex check fires only once typing settles. Always cancel the debouncer in `onDidDestroy` so a pending action can't fire against a destroyed view.
+The `Debouncer` constructor takes seconds as a float (`0.5f` = 500 ms). Each `onModify` keystroke calls `debouncer.run(...)`, which cancels the previous pending action and restarts the timer, so the regular expression check fires only once typing settles. Always cancel the debouncer in `onDidDestroy` so a pending action can't fire against a destroyed view.
