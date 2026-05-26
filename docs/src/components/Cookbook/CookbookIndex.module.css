@@ -145,15 +145,17 @@
 }
 
 .cardTitle {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0 0 0.4rem;
-  line-height: 1.4;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  line-height: 1.35;
+  color: var(--ifm-font-color-base);
 }
 
 .cardDescription {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--ifm-color-content-secondary);
+  opacity: 0.8;
   margin: 0;
   line-height: 1.5;
   display: -webkit-box;
