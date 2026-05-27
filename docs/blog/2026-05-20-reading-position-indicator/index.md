@@ -8,7 +8,7 @@ tags: [components, styling, showcase, tutorial, javascript]
 hide_table_of_contents: true
 ---
 
-![cover image](./blog-reading-progress-cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-reading-position-indicator/blog-reading-progress-cover.png)
 
 Recently, I was browsing articles on [CSS Tricks](https://css-tricks.com) and came across *[Reading Position Indicator](https://css-tricks.com/reading-position-indicator/)* by Pankaj Parashar.
 I've seen this type of indicator in articles, blogs, and in lengthy terms and conditions that I've definitely read through thoroughly. I wanted to try recreating a reading position indicator using webforJ, and see if I could build it in less than 100 lines of code. 
@@ -17,7 +17,7 @@ I've seen this type of indicator in articles, blogs, and in lengthy terms and co
 
 Including import statements, I managed to keep this project contained within 76 lines of code. Here's how I did it, piece by piece.
 
-![gif showcasing the webforJ reading position indicator](./tempReadingPositionIndicator.gif)
+![gif showcasing the webforJ reading position indicator](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-reading-position-indicator/tempReadingPositionIndicator.gif)
 
 ## The visuals
 
@@ -122,7 +122,7 @@ self.getElement().addEventListener("element-resize", e -> updateProgressBar());
 
 Finally, I had to write a section of code that calculates the article's current progress, then use that value to update the `ProgressBar`. Looking at the following figure can help visualize how three element properties can be used for the calculation.
 
-![Figure displaying scrollTop, scrollHeight, and clientHeight relations](/img/heightsTempBlogImg.png)
+![Figure displaying scrollTop, scrollHeight, and clientHeight relations](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-reading-position-indicator/heightsTempBlogImg.png)
 
 The [`scrollHeight`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight) is the total height of an element's content, which includes the non-visible portions hidden by overflow. The visible portion of the element’s content is the [`clientHeight`](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight), and [`scrollTop`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop) is the distance scrolled from the top of the `scrollHeight`.
 
