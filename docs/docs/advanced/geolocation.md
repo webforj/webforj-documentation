@@ -152,7 +152,7 @@ public class MainView extends Composite<FlexLayout> {
 
   public MainView() {
     self.setDirection(FlexDirection.COLUMN).setSpacing("1em");
-    self.setStyle("max-width", "24em").setStyle("margin", "4em auto");
+    self.setMaxWidth("24em").setMargin("4em auto");
 
     self.add(
         new H2("Geolocation"),
@@ -209,7 +209,7 @@ public class MainView extends Composite<FlexLayout> {
 
   private static FlexLayout row(String label, Span value) {
     Span labelSpan = new Span(label);
-    labelSpan.setStyle("min-width", "6em");
+    labelSpan.setMinWidth("6em");
 
     return new FlexLayout(labelSpan, value);
   }
