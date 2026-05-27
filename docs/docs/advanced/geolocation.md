@@ -7,7 +7,7 @@ description: Request and watch the device's geographic position using the Geoloc
 
 # Geolocation <DocChip chip='since' label='26.01' />
 
-The <JavadocLink type="foundation" location="com/webforj/Geolocation" code='true'>Geolocation</JavadocLink> class provides an interface to the browser's geolocation subsystem. Use it to request the device's current position once, or to watch the position for continuous updates.
+The <JavadocLink type="foundation" location="com/webforj/geolocation/Geolocation" code='true'>Geolocation</JavadocLink> class provides an interface to the browser's geolocation subsystem. Use it to request the device's current position once, or to watch the position for continuous updates.
 
 <!-- INTRO_END -->
 
@@ -25,7 +25,7 @@ When the subsystem isn't available, accessing it throws a `WebforjRuntimeExcepti
 Get the geolocation instance for the current environment:
 
 ```java
-import com.webforj.Geolocation;
+import com.webforj.geolocation.Geolocation;
 
 Geolocation geo = Geolocation.getCurrent();
 
@@ -40,7 +40,7 @@ Geolocation.ifPresent(g -> {
 
 ## Requesting a position {#requesting-a-position}
 
-Call `getCurrentPosition()` to request the device's current geographic position. The returned <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> completes with the reported <JavadocLink type="foundation" location="com/webforj/event/geolocation/GeolocationPosition" code='true'>GeolocationPosition</JavadocLink>, or exceptionally with a <JavadocLink type="foundation" location="com/webforj/exceptions/WebforjGeolocationException" code='true'>WebforjGeolocationException</JavadocLink> when the browser is unable to obtain a position.
+Call `getCurrentPosition()` to request the device's current geographic position. The returned <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> completes with the reported <JavadocLink type="foundation" location="com/webforj/geolocation/GeolocationPosition" code='true'>GeolocationPosition</JavadocLink>, or exceptionally with a <JavadocLink type="foundation" location="com/webforj/geolocation/exception/WebforjGeolocationException" code='true'>WebforjGeolocationException</JavadocLink> when the browser is unable to obtain a position.
 
 ```java
 PendingResult<GeolocationPosition> request = Geolocation.getCurrent().getCurrentPosition();
@@ -82,7 +82,7 @@ ListenerRegistration<GeolocationWatchEvent> registration =
 registration.remove();
 ```
 
-A <JavadocLink type="foundation" location="com/webforj/event/geolocation/GeolocationWatchEvent" code='true'>GeolocationWatchEvent</JavadocLink> fires for every update, successful or not. Check `isSuccess()` before reading the position.
+A <JavadocLink type="foundation" location="com/webforj/geolocation/event/GeolocationWatchEvent" code='true'>GeolocationWatchEvent</JavadocLink> fires for every update, successful or not. Check `isSuccess()` before reading the position.
 
 ## Configuring requests {#configuring-requests}
 
@@ -114,7 +114,7 @@ The maximum age attribute indicates that the app is willing to accept a cached p
 
 ## Failure status {#failure-status}
 
-For a one shot request the failure is delivered as a <JavadocLink type="foundation" location="com/webforj/exceptions/WebforjGeolocationException" code='true'>WebforjGeolocationException</JavadocLink> on the `PendingResult`. For a watch update the failure is delivered as a `GeolocationWatchEvent` with `isSuccess()` returning `false`. The outcome is reported through <JavadocLink type="foundation" location="com/webforj/event/geolocation/GeolocationStatus" code='true'>GeolocationStatus</JavadocLink>.
+For a one shot request the failure is delivered as a <JavadocLink type="foundation" location="com/webforj/geolocation/exception/WebforjGeolocationException" code='true'>WebforjGeolocationException</JavadocLink> on the `PendingResult`. For a watch update the failure is delivered as a `GeolocationWatchEvent` with `isSuccess()` returning `false`. The outcome is reported through <JavadocLink type="foundation" location="com/webforj/geolocation/GeolocationStatus" code='true'>GeolocationStatus</JavadocLink>.
 
 ## Complete example {#complete-example}
 
@@ -123,7 +123,6 @@ The view below renders three labeled rows for latitude, longitude, and altitude,
 ```java
 package com.example;
 
-import com.webforj.Geolocation;
 import com.webforj.PendingResult;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
@@ -134,8 +133,9 @@ import com.webforj.component.html.elements.Span;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.toast.Toast;
-import com.webforj.event.geolocation.GeolocationPosition;
-import com.webforj.exceptions.WebforjGeolocationException;
+import com.webforj.geolocation.Geolocation;
+import com.webforj.geolocation.GeolocationPosition;
+import com.webforj.geolocation.exception.WebforjGeolocationException;
 import com.webforj.router.annotation.Route;
 import java.util.Locale;
 
