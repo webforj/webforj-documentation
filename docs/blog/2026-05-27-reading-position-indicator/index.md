@@ -2,9 +2,9 @@
 title: "Creating a webforJ Reading Position Indicator"
 description: A short walkthrough of creating a reading position indicator using webforJ.
 slug: reading-position-indicator
-date: 2026-05-20
+date: 2026-05-27
 authors: Ben Brennan
-tags: [components, styling, showcase, tutorial, javascript]
+tags: [components, showcase, tutorial, javascript]
 hide_table_of_contents: true
 ---
 
@@ -120,7 +120,7 @@ self.getElement().addEventListener("element-resize", e -> updateProgressBar());
 
 ### Updating the `ProgressBar` value
 
-Finally, I had to write a section of code that calculates the article's current progress, then use that value to update the `ProgressBar`. Looking at the following figure can help visualize how three element properties can be used for the calculation.
+Finally, I had to write a section of code that calculates the article's current progress, then use that value to update the `ProgressBar`. The following figure helps visualize how three element properties can be used for the calculation.
 
 ![Figure displaying scrollTop, scrollHeight, and clientHeight relations](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-reading-position-indicator/heightsTempBlogImg.png)
 
