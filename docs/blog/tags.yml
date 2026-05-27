@@ -105,3 +105,7 @@ performance:
 security:
   label: Security
   description: Security in webforJ apps.
+
+javascript:
+  label: JavaScript
+  description: Integrating JavaScript with webforJ apps.
