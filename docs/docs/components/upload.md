@@ -53,10 +53,6 @@ upload.setSelectionMode(Upload.SelectionMode.SINGLE);
 upload.setSelectionMode(Upload.SelectionMode.MULTIPLE);
 ```
 
-:::tip Single-file fields
-Model a single-file field with `SINGLE`, not with `setMaxFiles(1)`. The two diverge when the user picks a second file: `SINGLE` replaces the existing pick, while `maxFiles` rejects the new one. For profile photos and similar fields, replacement is almost always the right behavior.
-:::
-
 ### Picker source {#picker-source}
 
 The picker source determines what the user can select from the local filesystem. The default, `FILES`, opens a standard file dialog. `DIRECTORY` lets the user pick a folder and uploads its top-level files. `DIRECTORY_RECURSIVE` walks the entire tree and uploads every file inside.
@@ -79,7 +75,7 @@ upload.setActiveFilter("Images");
 
 A few related settings shape how the filter dropdown behaves: `setFiltersVisible(false)` hides the dropdown while keeping the filters active, `setMultiFilterSelection(true)` lets the user combine filters, and `setAllFilesFilterEnabled(false)` removes the implicit "All Files" option.
 
-Filters behave differently between the native and standard pickers. The standard dialog shows the active filter as a dropdown inside the dialog. The native dialog may not show a filter dropdown at all, so for filter-heavy fields the standard picker often gives a more consistent experience across browsers.
+A couple of these settings only apply to the standard picker. When the File System Access API is in use, the native OS picker manages filter selection itself, so `setFiltersVisible(false)` is ignored and `setMultiFilterSelection(true)` has no effect (the native picker accepts only one filter at a time). Disable the File System Access API with `setFileSystemAccess(false)` to make those settings reliable across browsers.
 
 ### Drop zone {#drop-zone}
 
@@ -128,7 +124,11 @@ height='650px'
 ### Auto clear {#auto-clear}
  
 When the user picks a new batch, auto clear decides what to do with the entries already in the list. Clearing happens at the moment of the next pick, not on upload completion, so finished uploads stay visible until the user picks again.
- 
+
+:::warning Auto clear has subtle triggers
+Auto clear only runs when the user picks files through the dialog or by drop. Selecting files programmatically doesn't trigger it. It also requires that previously picked files have actually started uploading or finished. Without an upload between picks, no file matches the filter and the list keeps growing.
+:::
+
 - **`COMPLETED`** clears successfully uploaded entries.
 - **`IN_PROGRESS`** cancels and clears entries still transferring.
 - **`ALL`** clears everything.
@@ -187,7 +187,7 @@ The component is built from five visible parts: the picker button, the drop labe
 
 Presets bundle several part visibility settings into named picker shapes. They're a faster way to reach a common configuration than toggling parts individually.
 
-- **`FULL`**: Every part visible. The default.
+- **`FULL`**: Picker button, drop label, file list, and upload button. The default.
 - **`INLINE`**: Picker button and drop label, with the current selection rendered as text next to the picker. Useful for compact form fields.
 - **`BUTTON_ONLY`**: The picker button on its own. Useful when the surrounding UI already shows the selected files.
 - **`DROPZONE`**: Drop label and file list, no picker button. Useful when drag-and-drop should be the only way to add files.
@@ -239,11 +239,11 @@ upload.setTheme(UploadTheme.SUCCESS);
 upload.setTheme(UploadTheme.OUTLINED_GRAY);
 ```
 
-# Events {#events}
+## Events {#events}
  
 `Upload` emits events at three levels: things the user does to the whole component, the transfer state of a single file, and the lifecycle of the batch as a whole. Most apps register a couple of listeners across these tiers depending on what they need to react to. A form might only need `onUpload` to know when files reach the server; an uploader with a progress UI needs `onListProgress` and `onComplete`; a dropzone that has to surface rejections needs `onReject`.
  
-Every event that carries files exposes both `getFile()` (the first or only file in the payload) and `getFiles()` (the full list). Use `getFile()` for single-file events like `onReject` and `getFiles()` when you expect a batch.
+Most events that carry files expose both `getFile()` (the first or only file in the payload) and `getFiles()` (the full list). Use `getFile()` for single-file events like `onReject`, and `getFiles()` when you expect a batch. `UploadCompleteEvent` is the exception; it has its own `getUploadedFiles()` and `getFailedFiles()` accessors since the batch result is split between successes and failures.
  
 ### User actions {#user-actions}
  
@@ -263,7 +263,7 @@ upload.onChange(e -> {
 });
  
 upload.onUpload(e -> {
-    // Fires once the upload completes; good for persisting files.
+    // Fires when the upload is triggered; files have reached the server.
 });
 ```
  
@@ -282,7 +282,7 @@ These fire once per file, while a transfer is happening or right after it fails.
 ```java
 upload.onProgress(e -> {
     // Fires repeatedly during a single file's transfer.
-    int percent = e.getProgress();
+    int percent = (int) e.getProgress();
 });
  
 upload.onReject(e -> {
@@ -291,7 +291,7 @@ upload.onReject(e -> {
 });
 ```
  
-`UploadRejectEvent` is the only event that doesn't represent a transfer in flight. It fires before any bytes move when a file fails a client-side check, like `setMaxFileSize` or `setMaxFiles`. `UploadErrorEvent`, by contrast, fires after the transfer started and something went wrong on the way to the server.
+Within this group, `UploadRejectEvent` is the odd one out. It fires before any bytes move, when a file fails a client-side check like `setMaxFileSize` or `setMaxFiles`. `UploadErrorEvent`, by contrast, fires after the transfer started and something went wrong on the way to the server.
  
 ### Whole batch {#whole-batch}
  
