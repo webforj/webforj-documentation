@@ -1,43 +1,54 @@
 /**
  * Single source of truth for all curated content on the webforJ docs home page.
- * Update this file when new blog posts, projects, or recent docs are added.
+ * Update this file when new announcements, projects, or recent docs are added.
  *
  * No React or JSX — plain data only. Content authors only need to edit this file.
  */
 
-export const recentPosts = [
+export const announcements = [
   {
-    title: 'A year of webforJ, in one video',
-    slug: 'webforj-2025-highlights',
+    date: 'May 2026',
+    title: 'webforJ 26.00 — Design System 2.0',
     description:
-      'A short walkthrough of the biggest features from the 25.x cycle and the Design System 2.0 refresh in 26.00.',
-    date: 'May 7, 2026',
-    tags: ['community', 'release'],
-    image:
-      'https://cdn.webforj.com/webforj-documentation/blogs/webforj-v26.00/video-cover.jpg',
-    author: 'Matthew Hawkins',
+      'New design tokens, View Transitions API, MCP Server integration, and over 40 component improvements.',
+    link: '/docs/upgrading/webforj-26.00',
   },
   {
-    title: 'Building a Full-Featured Demo with webforJ and Spring Boot',
-    slug: 'webforj-bookstore',
+    date: 'Nov 2025',
+    title: 'webforJ 25.11 — Spring AI & MarkdownViewer',
     description:
-      'A walkthrough of the webforJ Bookstore — a full-stack inventory manager with live filtering, data binding, and Spring Security.',
-    date: 'April 30, 2026',
-    tags: ['showcase'],
-    image:
-      'https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/webforj-bookstore-cover.png',
-    author: 'Eric Handtke',
+      'Built-in Spring AI integration, streaming MarkdownViewer, and chat memory support.',
+    link: '/docs/upgrading/overview',
   },
   {
-    title: 'Animated Transitions, No JavaScript Required',
-    slug: 'view-transitions',
+    date: 'Oct 2025',
+    title: 'webforJ 25.10 — PWA Support',
     description:
-      "How webforJ's Transitions API brings the browser's View Transition API to Java, with zero JavaScript required.",
-    date: 'April 13, 2026',
-    tags: ['tutorial'],
-    image:
-      'https://cdn.webforj.com/webforj-documentation/blogs/2026-04-03-view-transitions/blog-view-transitions-cover.png',
-    author: 'Lauren Alamo',
+      'Installable PWA apps, desktop notifications, and App Badge API — all from pure Java.',
+    link: '/docs/upgrading/overview',
+  },
+];
+
+export const componentShowcase = [
+  {
+    name: 'Table',
+    description: 'High-performance data grid with sorting, filtering, and custom cell renderers.',
+    path: '/docs/components/table/overview',
+  },
+  {
+    name: 'Dialog',
+    description: 'Accessible modal dialogs with configurable footers and drag-to-move support.',
+    path: '/docs/components/dialog',
+  },
+  {
+    name: 'MarkdownViewer',
+    description: 'Render and stream Markdown with syntax highlighting — perfect for AI interfaces.',
+    path: '/docs/components/markdownviewer',
+  },
+  {
+    name: 'Tree',
+    description: 'Hierarchical tree with lazy loading, multi-select, and expand/collapse.',
+    path: '/docs/components/tree',
   },
 ];
 
@@ -46,73 +57,100 @@ export const builtWithProjects = [
     name: 'PingPal',
     winner: true,
     description:
-      'A Postman-inspired REST API tester built entirely in Java — no JavaScript, no build tools required.',
-    tags: ['REST client', 'Hackathon Winner'],
-    demoUrl: 'https://www.pingpal.dev/',
-    sourceUrl: 'https://github.com/hyyan/pingpal',
-  },
-  {
-    name: 'webforj-bookstore',
-    winner: false,
-    description:
-      'A full-stack book inventory manager with live table filtering, column renderers, and Spring Security auth.',
-    tags: ['Spring Boot', 'Spring Security', 'data binding'],
+      'A Postman-inspired API testing tool built by Rick van Baalen. Features authentication support, custom headers, formatted responses, and request history.',
+    tags: ['API testing', 'developer tools'],
     demoUrl: null,
-    sourceUrl: 'https://github.com/webforj/webforj-bookstore',
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/pingpal',
   },
   {
     name: 'webforj-ghostai',
     winner: false,
     description:
-      'An AI-powered chat interface using MarkdownViewer and Spring AI for real-time streaming responses.',
+      'An AI chat demo built with Spring AI and webforJ. Features streaming markdown rendering, predictive text input, chat memory, and MCP integration with Google Gemini.',
     tags: ['Spring AI', 'MarkdownViewer', 'streaming'],
     demoUrl: null,
-    sourceUrl: 'https://github.com/webforj/webforj-ghostai',
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-ghostai',
+  },
+  {
+    name: 'webforj-bookstore',
+    winner: false,
+    description:
+      'A book inventory manager with role-based access control via Spring Security, genre chips, full-text search, and sortable tables with custom renderers.',
+    tags: ['Spring Boot', 'Spring Security', 'CRUD'],
+    demoUrl: null,
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-bookstore',
   },
   {
     name: 'webforj-dashboard',
     winner: false,
     description:
-      'A live cryptocurrency dashboard with real-time price charts powered by the Google Charts integration.',
-    tags: ['Google Charts', 'data visualization', 'real-time'],
-    demoUrl: 'https://docs.webforj.com/dashboard/',
-    sourceUrl: 'https://github.com/webforj/webforj-dashboard',
-  },
-  {
-    name: 'webforj-crud',
-    winner: false,
-    description:
-      'A Spring Boot + JPA CRUD application showcasing form binding, validation, and dialog-based editing.',
-    tags: ['Spring Boot', 'JPA', 'CRUD'],
-    demoUrl: null,
-    sourceUrl: 'https://github.com/webforj/webforj-crud',
+      'A cryptocurrency dashboard showcasing the Google Charts integration with dark/light theme support, portfolio analytics, and a live news feed.',
+    tags: ['Google Charts', 'data visualization'],
+    demoUrl: 'https://docs.webforj.com/dashboard',
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-dashboard',
   },
   {
     name: 'webforj-focustracker',
     winner: false,
     description:
-      'A PWA-enabled Pomodoro focus timer with desktop notifications built on the webforJ component library.',
+      'A focus timer demonstrating PWA capabilities: installable app support, desktop notifications, and dynamic app icon badges — all from pure Java.',
     tags: ['PWA', 'desktop notifications'],
-    demoUrl: 'https://docs.webforj.com/focustracker/',
-    sourceUrl: 'https://github.com/webforj/webforj-focustracker',
+    demoUrl: null,
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-focustracker',
+  },
+  {
+    name: 'webforj-explorer',
+    winner: false,
+    description:
+      'A minimal code viewer mimicking the VSCode layout — file tree on the left, Monaco editor on the right — showing how to integrate third-party components.',
+    tags: ['Monaco editor', 'layout system'],
+    demoUrl: null,
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-explorer',
+  },
+  {
+    name: 'webforj-rest',
+    winner: false,
+    description:
+      'Side-by-side comparison of CollectionRepository and DelegatingRepository patterns for paginated REST data, with a customer management interface.',
+    tags: ['REST', 'Spring Boot', 'pagination'],
+    demoUrl: null,
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-rest',
+  },
+  {
+    name: 'webforj-crud',
+    winner: false,
+    description:
+      'A music artist management system demonstrating Spring Data repositories, JPA entities, validation, and automatic data binding with webforJ.',
+    tags: ['Spring Boot', 'JPA', 'CRUD'],
+    demoUrl: null,
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-crud',
   },
   {
     name: 'webforj-todo',
     winner: false,
     description:
-      'A clean MVC todo application demonstrating Spring Boot integration and first-class routing patterns.',
-    tags: ['MVC', 'Spring Boot', 'routing'],
-    demoUrl: 'https://docs.webforj.com/todo/',
-    sourceUrl: 'https://github.com/webforj/webforj-todo',
+      'A todo app built with Spring Boot and MVC architecture. Features full CRUD, smart filtering, real-time state updates, and H2 database persistence.',
+    tags: ['Spring Boot', 'MVC'],
+    demoUrl: null,
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-todo',
   },
   {
-    name: 'startforJ',
+    name: 'webforj-tictactoe',
     winner: false,
     description:
-      'An in-browser project scaffolder that generates new webforJ applications from configurable templates.',
-    tags: ['scaffolding', 'developer tooling'],
-    demoUrl: 'https://docs.webforj.com/startforj/',
-    sourceUrl: 'https://github.com/webforj/startforJ',
+      'A two-player Tic-Tac-Toe game using webforJ namespaces to share game state between running instances — no WebSockets or REST API needed.',
+    tags: ['namespaces', 'real-time'],
+    demoUrl: 'https://docs.webforj.com/tictactoe/',
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-tictactoe',
+  },
+  {
+    name: 'webforj-howdy',
+    winner: false,
+    description:
+      'A demonstration project showcasing routing, Google Charts integration, and a responsive UI — a practical starting point for learning webforJ core concepts.',
+    tags: ['routing', 'Google Charts'],
+    demoUrl: 'https://docs.webforj.com/howdy/you',
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-howdy',
   },
 ];
 
@@ -139,5 +177,36 @@ export const recentDocs = [
     title: 'View Transitions',
     path: '/docs/advanced/view-transitions',
     section: 'Advanced',
+  },
+];
+
+/** @type {typeof builtWithProjects} Three hand-picked projects shown on the homepage. */
+export const featuredProjects = [
+  {
+    name: 'PingPal',
+    winner: true,
+    description:
+      'A Postman-inspired API testing tool built by Rick van Baalen. Features authentication support, custom headers, formatted responses, and request history.',
+    tags: ['API testing', 'developer tools'],
+    demoUrl: null,
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/pingpal',
+  },
+  {
+    name: 'webforj-ghostai',
+    winner: false,
+    description:
+      'An AI chat demo built with Spring AI and webforJ. Features streaming markdown rendering, predictive text input, chat memory, and MCP integration with Google Gemini.',
+    tags: ['Spring AI', 'MarkdownViewer', 'streaming'],
+    demoUrl: null,
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-ghostai',
+  },
+  {
+    name: 'webforj-dashboard',
+    winner: false,
+    description:
+      'A cryptocurrency dashboard showcasing the Google Charts integration with dark/light theme support, portfolio analytics, and a live news feed.',
+    tags: ['Google Charts', 'data visualization'],
+    demoUrl: 'https://docs.webforj.com/dashboard',
+    sourceUrl: 'https://github.com/webforj/built-with-webforj/tree/main/webforj-dashboard',
   },
 ];

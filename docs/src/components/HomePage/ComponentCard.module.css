@@ -1,0 +1,34 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-xl);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.card::after {
+  content: none !important;
+}
+
+.card:hover {
+  border-color: var(--ifm-color-primary);
+  background-color: var(--dwc-color-primary-alt);
+  text-decoration: none;
+  color: inherit;
+}
+
+.name {
+  font-size: 0.95rem;
+  font-weight: var(--dwc-font-weight-semibold);
+  color: var(--ifm-heading-color);
+}
+
+.description {
+  font-size: 0.82rem;
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.5;
+}

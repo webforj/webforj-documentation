@@ -10,14 +10,15 @@ import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate';
 import NavCard from '@site/src/components/HomePage/NavCard';
-import BlogCard from '@site/src/components/HomePage/BlogCard';
 import ProjectCard from '@site/src/components/HomePage/ProjectCard';
-import { recentPosts, builtWithProjects, recentDocs } from '@site/src/pages/homePageData';
+import ComponentCard from '@site/src/components/HomePage/ComponentCard';
+import { featuredProjects, recentDocs, announcements, componentShowcase } from '@site/src/pages/homePageData';
 import styles from '@site/src/components/HomePage/HomePageLayout.module.css';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 <Head>
   <style>{`
@@ -25,21 +26,36 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
   `}</style>
 </Head>
 
-<div className={styles.homeIntro}>
-  <p className={styles.homeVersion}>
-    <Link to="/blog/whats-new-v26.00">What's new in v26.00</Link>
-  </p>
-  <h1 className={styles.homeTitle}>Welcome to webforJ</h1>
-  <p className={styles.homeTagline}>
-    Build modern, reactive web applications with Java — no HTML, no CSS, no JavaScript required.
-  </p>
-  <div className={styles.homeCtas}>
-    <Link className="button button--primary button--lg" to="/docs/introduction/getting-started">
-      <Translate id="homepage.hero.cta.start">Get Started</Translate>
-    </Link>
-    <Link className="button button--outline button--secondary button--lg" to="/docs/components/overview">
-      <Translate id="homepage.hero.cta.components">Browse Components</Translate>
-    </Link>
+<div className={styles.homeTop}>
+  <div className={styles.homeIntro}>
+    <h1 className={styles.homeTitle}>Welcome to webforJ</h1>
+    <p className={styles.homeTagline}>
+      Build modern, reactive web applications with Java — no HTML, no CSS, no JavaScript required.
+    </p>
+    <div className={styles.homeCtas}>
+      <Link className="button button--primary button--lg" to="/docs/introduction/getting-started">
+        <Translate id="homepage.hero.cta.start">Get Started</Translate>
+      </Link>
+      <Link className="button button--secondary button--lg" to="/docs/integrations/jbang">
+        <Translate id="homepage.hero.cta.jbang">Try with JBang</Translate>
+      </Link>
+    </div>
+  </div>
+  <div className={styles.homeRecent}>
+    <p className={styles.homeVersion}>
+      <Link to="/blog/whats-new-v26.00">What's new in v26.00</Link>
+    </p>
+    <div className={styles.homeRecentHeader}>
+      <span className={styles.homeRecentTitle}>Latest in Docs</span>
+    </div>
+    <ul className={styles.docsList}>
+      {recentDocs.map((doc) => (
+        <li key={doc.path} className={styles.docsItem}>
+          <Link to={doc.path} className={styles.docsLink}>{doc.title}</Link>
+          <span className={styles.docsSection}>{doc.section}</span>
+        </li>
+      ))}
+    </ul>
   </div>
 </div>
 
@@ -51,7 +67,7 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
   <NavCard
     icon={<RocketLaunchIcon />}
     title={<Translate id="homepage.nav.start.title">New to webforJ?</Translate>}
-    description={<Translate id="homepage.nav.start.desc">Set up your environment and build your first app.</Translate>}
+    description={<Translate id="homepage.nav.start.desc">Set up your first project in minutes with the quickstart guide.</Translate>}
     to="/docs/introduction/getting-started"
   />
   <NavCard
@@ -59,6 +75,12 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
     title={<Translate id="homepage.nav.components.title">Browse Components</Translate>}
     description={<Translate id="homepage.nav.components.desc">Explore the full library of UI components with live demos.</Translate>}
     to="/docs/components/overview"
+  />
+  <NavCard
+    icon={<AutoAwesomeIcon />}
+    title={<Translate id="homepage.nav.ai.title">AI Plugins</Translate>}
+    description={<Translate id="homepage.nav.ai.desc">Connect Claude, Copilot, Cursor, and more to webforJ in one step.</Translate>}
+    to="/docs/integrations/ai-tooling"
   />
   <NavCard
     icon={<AccountTreeIcon />}
@@ -76,18 +98,42 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 
 ---
 
-## From the Blog
-
-<div className={styles.sectionHeader}>
-  <span />
-  <Link className={styles.seeAll} to="/blog">
-    <Translate id="homepage.blog.seeAll">View all posts</Translate>
-  </Link>
+<div className={styles.jbangSection}>
+  <div className={styles.jbangContent}>
+    <div className={styles.jbangText}>
+      <p className={styles.jbangTitle}>Get started in one minute</p>
+      <p className={styles.jbangSubtitle}>No Maven, no project setup — just Java and JBang.</p>
+      <Link className="button button--primary button--sm" to="/docs/integrations/jbang">
+        <Translate id="homepage.jbang.cta">Learn more</Translate>
+      </Link>
+    </div>
+    <pre className={styles.jbangCode}><code>{`jbang init -t app@webforj/webforj Hello.java\njbang Hello.java`}</code></pre>
+  </div>
 </div>
 
-<div className={styles.blogGrid}>
-  {recentPosts.map((post) => (
-    <BlogCard key={post.slug} {...post} />
+---
+
+## Components
+
+<div className={styles.componentGrid}>
+  {componentShowcase.map((comp) => (
+    <ComponentCard key={comp.name} {...comp} />
+  ))}
+</div>
+
+---
+
+## Announcements
+
+<div className={styles.announcementList}>
+  {announcements.map((item) => (
+    <div key={item.title} className={styles.announcementItem}>
+      <span className={styles.announcementDate}>{item.date}</span>
+      <div className={styles.announcementBody}>
+        <Link to={item.link} className={styles.announcementTitle}>{item.title}</Link>
+        <p className={styles.announcementDesc}>{item.description}</p>
+      </div>
+    </div>
   ))}
 </div>
 
@@ -97,38 +143,14 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 
 <div className={styles.sectionHeader}>
   <span />
-  <a
-    className={styles.seeAll}
-    href="https://github.com/webforj/built-with-webforj"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Translate id="homepage.projects.seeAll">View all on GitHub</Translate>
-  </a>
+  <Link className={styles.seeAll} to="/built-with-webforj">
+    <Translate id="homepage.projects.seeAll">View all projects →</Translate>
+  </Link>
 </div>
 
 <div className={styles.projectGrid}>
-  {builtWithProjects.map((project) => (
+  {featuredProjects.map((project) => (
     <ProjectCard key={project.name} {...project} />
   ))}
 </div>
 
----
-
-## Latest in Docs
-
-<div className={styles.sectionHeader}>
-  <span />
-  <Link className={styles.seeAll} to="/docs/components/overview">
-    <Translate id="homepage.docs.seeAll">Browse all components</Translate>
-  </Link>
-</div>
-
-<ul className={styles.docsList}>
-  {recentDocs.map((doc) => (
-    <li key={doc.path} className={styles.docsItem}>
-      <Link to={doc.path} className={styles.docsLink}>{doc.title}</Link>
-      <span className={styles.docsSection}>{doc.section}</span>
-    </li>
-  ))}
-</ul>

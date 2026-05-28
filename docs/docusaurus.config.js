@@ -130,6 +130,9 @@ module.exports = async function createConfig() {
           editUrl:
             'https://github.com/webforj/webforj-documentation/tree/main/docs/',
         },
+        pages: {
+          exclude: ['**/homePageData.js'],
+        },
         blog: {
           postsPerPage: 12
         },
@@ -270,10 +273,6 @@ module.exports = async function createConfig() {
               href: 'https://webforj.com/events/',
               target: '_blank',
               rel: null,
-            },
-            {
-              to: 'blog',
-              label: 'Blog'
             },
             {
               label: "Report Issue",
