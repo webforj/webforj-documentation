@@ -239,57 +239,69 @@ upload.setTheme(UploadTheme.SUCCESS);
 upload.setTheme(UploadTheme.OUTLINED_GRAY);
 ```
 
-## Events {#events}
-
-`Upload` fires events at three levels: actions the user takes on the component as a whole, the transfer state of a single file, and the lifecycle of the batch.
-
+# Events {#events}
+ 
+`Upload` emits events at three levels: things the user does to the whole component, the transfer state of a single file, and the lifecycle of the batch as a whole. Most apps register a couple of listeners across these tiers depending on what they need to react to. A form might only need `onUpload` to know when files reach the server; an uploader with a progress UI needs `onListProgress` and `onComplete`; a dropzone that has to surface rejections needs `onReject`.
+ 
+Every event that carries files exposes both `getFile()` (the first or only file in the payload) and `getFiles()` (the full list). Use `getFile()` for single-file events like `onReject` and `getFiles()` when you expect a batch.
+ 
 ### User actions {#user-actions}
-
+ 
+These fire in response to something the user does on the component as a whole. They don't say anything about transfer progress, just that the user has done something the app might want to react to.
+ 
 | Event | Fires |
 | --- | --- |
 | `UploadChangeEvent` | When the list of picked files changes |
-| `UploadEvent` | When the user clicks **Upload** and files reach the server |
+| `UploadEvent` | When the user clicks **Upload** and the files reach the server |
 | `UploadCancelEvent` | When the user clicks **Cancel** |
 | `UploadFilterChangeEvent` | When the active filter changes |
-
+ 
 ```java
 upload.onChange(e -> {
     // Fires whenever the picked file list changes.
     List<UploadedFile> files = e.getFiles();
 });
-
+ 
 upload.onUpload(e -> {
     // Fires once the upload completes; good for persisting files.
 });
 ```
-
+ 
+`UploadEvent` and `UploadCompleteEvent` look similar at a glance, but they answer different questions. `UploadEvent` fires when the user explicitly triggers the upload (or `setAutoUpload()` triggers it on their behalf), and is the natural place to persist or hand off the uploaded files. `UploadCompleteEvent` fires once the transfer of every queued file has finished, and is the right hook for "the batch is done" UI updates.
+ 
 ### Per-file transfer {#per-file-transfer}
-
+ 
+These fire once per file, while a transfer is happening or right after it fails. Use them when the UI needs to reflect the state of individual files rather than the batch.
+ 
 | Event | Fires |
 | --- | --- |
 | `UploadProgressEvent` | While a single file is being transferred |
 | `UploadErrorEvent` | When a single file transfer fails |
 | `UploadRejectEvent` | When a picked or dropped file doesn't meet the configured constraints |
-
+ 
 ```java
 upload.onProgress(e -> {
     // Fires repeatedly during a single file's transfer.
     int percent = e.getProgress();
 });
-
+ 
 upload.onReject(e -> {
     // Fires when a file is rejected for size, count, or filter reasons.
     String reason = e.getMessage();
 });
 ```
-
+ 
+`UploadRejectEvent` is the only event that doesn't represent a transfer in flight. It fires before any bytes move when a file fails a client-side check, like `setMaxFileSize` or `setMaxFiles`. `UploadErrorEvent`, by contrast, fires after the transfer started and something went wrong on the way to the server.
+ 
 ### Whole batch {#whole-batch}
-
+ 
+These fire on the batch rather than on any one file. Use them for aggregate UI like an overall progress bar or a "done" message that summarizes the whole pick.
+ 
 | Event | Fires |
 | --- | --- |
 | `UploadListProgressEvent` | Alongside `UploadProgressEvent`, with the whole list state |
 | `UploadCompleteEvent` | Once per batch, when every file has finished transferring |
-
+ 
 ```java
 upload.onComplete(e -> {
     // Fires once when the whole batch is done.
@@ -297,8 +309,11 @@ upload.onComplete(e -> {
     List<UploadedFile> failed = e.getFailedFiles();
 });
 ```
+ 
+`onProgress` and `onListProgress` cover the same transfer from two angles. `onProgress` is per-file, and is the right hook when each file has its own progress UI. `onListProgress` fires alongside it with aggregate counters (`getListTotal`, `getListRemaining`, `getListProgress`) for a single batch-wide indicator.
+ 
 In the example below, `onChange`, `onListProgress`, and `onComplete` drive a progress bar and status line that update as the file list changes and as files transfer.
-
+ 
 <ComponentDemo
 path='/webforj/uploadevents'
 files={['src/main/java/com/webforj/samples/views/upload/UploadEventsView.java']}
