@@ -1,0 +1,13 @@
+.upload-events {
+  margin: var(--dwc-space-l) auto;
+  max-width: 560px;
+  padding: var(--dwc-space-m);
+  border: 1px solid var(--dwc-color-default-border);
+  border-radius: var(--dwc-border-radius-m);
+  background: var(--dwc-surface-2);
+}
+
+.upload-events__status {
+  color: var(--dwc-color-default-text-shade);
+  font-size: var(--dwc-font-size-s);
+}
