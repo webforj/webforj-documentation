@@ -2,7 +2,7 @@
 sidebar_position: 35
 sidebar_class_name: new-content
 title: Geolocation
-description: Request and watch the device's geographic position using the Geolocation class, with high accuracy, timeout, and maximum age controls.
+description: Request and watch the device's geographic position using the Geolocation class, with high-accuracy, timeout, and maximum age controls.
 ---
 
 # Geolocation <DocChip chip='since' label='26.01' />
@@ -94,7 +94,7 @@ Three setters configure subsequent requests for geolocation information.
 Geolocation.getCurrent().useHighAccuracy(true);
 ```
 
-The high accuracy attribute provides a hint that the app would like to receive the best possible results. This may result in slower response times or increased power consumption. The user might also deny this capability, or the device might not be able to provide more accurate results than if the flag wasn't specified. The intended purpose of this attribute is to allow apps to inform the browser that they don't require high accuracy geolocation fixes and, therefore, the browser can avoid using geolocation providers that consume a significant amount of power. This is especially useful for apps running on battery powered devices, such as mobile phones.
+The high accuracy attribute provides a hint that the app would like to receive the best possible results. This may result in slower response times or increased power consumption. The user might also deny this capability, or the device might not be able to provide more accurate results than if the flag wasn't specified. The intended purpose of this attribute is to allow apps to inform the browser that they don't require high accuracy geolocation fixes and, therefore, the browser can avoid using geolocation providers that consume a significant amount of power. This is especially useful for apps running on battery-powered devices, such as mobile phones.
 
 ### Timeout {#timeout}
 
@@ -114,7 +114,7 @@ The maximum age attribute indicates that the app is willing to accept a cached p
 
 ## Failure status {#failure-status}
 
-For a one shot request the failure is delivered as a <JavadocLink type="foundation" location="com/webforj/geolocation/exception/WebforjGeolocationException" code='true'>WebforjGeolocationException</JavadocLink> on the `PendingResult`. For a watch update the failure is delivered as a `GeolocationWatchEvent` with `isSuccess()` returning `false`. The outcome is reported through <JavadocLink type="foundation" location="com/webforj/geolocation/GeolocationStatus" code='true'>GeolocationStatus</JavadocLink>.
+For a one-shot request the failure is delivered as a <JavadocLink type="foundation" location="com/webforj/geolocation/exception/WebforjGeolocationException" code='true'>WebforjGeolocationException</JavadocLink> on the `PendingResult`. For a watch update the failure is delivered as a `GeolocationWatchEvent` with `isSuccess()` returning `false`. The outcome is reported through <JavadocLink type="foundation" location="com/webforj/geolocation/GeolocationStatus" code='true'>GeolocationStatus</JavadocLink>.
 
 ## Complete example {#complete-example}
 
