@@ -37,7 +37,7 @@ class InfiniteScrollCustomLoadingKotlinView: Composite<Div>() {
             classNames + "is-canvas"
           }
           div {
-            addClassName("custom-loading")
+            classNames + "custom-loading"
             featherIcon(FeatherIcon.CLOUD) {
               size = 32.px to 32.px
               classNames + "loading-icon"
