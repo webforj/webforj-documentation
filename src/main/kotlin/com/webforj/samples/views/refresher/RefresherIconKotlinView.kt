@@ -18,13 +18,11 @@ import com.webforj.kotlin.extension.minSize
 import com.webforj.kotlin.extension.plus
 import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.Route
-import java.util.*
 
 @Route
 @StyleSheet("ws://css/refresher/refresher.css")
 class RefresherIconKotlinView : Composite<Div>() {
   private val self = boundComponent
-  private val random = Random()
   private val names = arrayOf(
     "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
     "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
@@ -56,7 +54,7 @@ class RefresherIconKotlinView : Composite<Div>() {
     private val self = boundComponent
 
     init {
-      val name = names[random.nextInt(names.size)]
+      val name = names.random()
       self.apply {
         flexLayout {
           horizontal()

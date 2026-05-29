@@ -6,7 +6,6 @@ import com.webforj.component.html.elements.Div
 import com.webforj.component.icons.FeatherIcon
 import com.webforj.component.layout.flexlayout.FlexAlignment
 import com.webforj.component.layout.flexlayout.FlexJustifyContent
-import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.icons.featherIcon
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
@@ -18,13 +17,11 @@ import com.webforj.kotlin.extension.minSize
 import com.webforj.kotlin.extension.plus
 import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.Route
-import java.util.*
 
 @Route
 @StyleSheet("ws://css/refresher/refresher.css")
 class RefresherKotlinView: Composite<Div>() {
   private val self = boundComponent
-  private val random = Random()
   private val names = arrayOf<String?>(
     "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
     "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
@@ -53,7 +50,7 @@ class RefresherKotlinView: Composite<Div>() {
   inner class Item : Composite<Div>() {
     private val self = boundComponent
     init {
-      val name = names[random.nextInt(names.size)]
+      val name = names.random()
       self.apply {
         flexLayout {
           horizontal()

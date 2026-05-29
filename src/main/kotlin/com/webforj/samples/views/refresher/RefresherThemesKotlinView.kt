@@ -20,7 +20,6 @@ import com.webforj.kotlin.extension.plus
 import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.router.annotation.Route
-import java.util.*
 
 @Route
 @StyleSheet("ws://css/refresher/refresher.css")
@@ -31,7 +30,6 @@ class RefresherThemesKotlinView : Composite<Div>() {
     Theme.DANGER, Theme.INFO, Theme.GRAY, Theme.DANGER
   )
   private var themeIndex = 0
-  private val random = Random()
   private val names = arrayOf(
     "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
     "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
@@ -67,7 +65,7 @@ class RefresherThemesKotlinView : Composite<Div>() {
     private val self = boundComponent
 
     init {
-      val name = names[random.nextInt(names.size)]
+      val name = names.random()
       self.apply {
         flexLayout {
           horizontal()
