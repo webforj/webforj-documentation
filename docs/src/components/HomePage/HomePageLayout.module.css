@@ -3,49 +3,50 @@
    Component-level styles (cards) live in their own modules.
    ───────────────────────────────────────────────────────────── */
 
-/* ── Intro / Hero ─────────────────────────────────────────── */
+/* ── Hero ─────────────────────────────────────────────────── */
 
-.homeTop {
-  display: grid;
-  grid-template-columns: 1fr minmax(240px, 300px);
-  gap: 3rem;
-  align-items: start;
-  padding: 2rem 0 2.5rem;
+.heroSection {
+  padding: 3rem 0 2.75rem;
   border-bottom: 1px solid var(--dwc-border-color);
   margin-bottom: 2rem;
-}
-
-.homeIntro {
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 1rem;
+  max-width: 640px;
 }
 
-.homeVersion {
-  margin: 0;
-  font-size: 1rem;
+.heroVersionBadge {
+  margin: 0 0 0.25rem;
 }
 
-.homeVersion a {
+.heroVersionBadge a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.35rem 0.9rem;
+  padding: 0.3rem 0.85rem;
   border-radius: var(--chip-border-radius);
   background-color: var(--chip-background);
   border: var(--chip-border);
   color: var(--chip-text);
   font-weight: var(--chip-font-weight);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   text-decoration: none;
   transition: background-color 0.2s ease;
 }
 
-.homeVersion a::after {
+.heroVersionBadge a::after {
   content: none !important;
 }
 
-.homeVersion a:hover {
+.heroVersionBadge a:hover {
   background-color: var(--chip-background-hover);
   text-decoration: none;
 }
@@ -64,46 +65,78 @@
   line-height: 1.65;
   max-width: 560px;
   margin: 0;
+  text-align: center;
 }
 
 .homeCtas {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }
 
-/* ── Latest in Docs (right of intro) ─────────────────────── */
-
-.homeRecent {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  padding-top: 0.5rem;
-}
-
-.homeRecentHeader {
-  display: flex;
+/* Match the navbar "Start your app" button height for all hero CTAs */
+.homeCtas :global(.button),
+.jbangText :global(.button) {
+  height: 34px;
+  padding: 0 var(--dwc-space-m);
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
+  justify-content: center;
+  text-align: center;
 }
 
-.homeRecentTitle {
+/* Suppress external-link arrow icon injected by _reset.scss */
+.homeCtas :global(.button)::after,
+.jbangText :global(.button)::after {
+  content: none !important;
+}
+
+
+/* Match the navbar "Start your app" button color for primary CTAs */
+.homeCtas :global(.button--primary),
+.jbangText :global(.button--primary) {
+  background-color: var(--dwc-color-primary) !important;
+  border-color: var(--dwc-color-primary) !important;
+  color: var(--dwc-color-on-primary-text) !important;
+  transition: background-color var(--dwc-transition-fast) var(--dwc-ease),
+              border-color var(--dwc-transition-fast) var(--dwc-ease);
+}
+
+.homeCtas :global(.button--primary):hover,
+.jbangText :global(.button--primary):hover {
+  background-color: var(--dwc-color-primary-light) !important;
+  border-color: var(--dwc-color-primary-light) !important;
+  color: var(--dwc-color-on-primary-text-light) !important;
+}
+
+.homeCtas :global(.button--primary):active,
+.jbangText :global(.button--primary):active {
+  background-color: var(--dwc-color-primary-dark) !important;
+  border-color: var(--dwc-color-primary-dark) !important;
+  color: var(--dwc-color-on-primary-text-dark) !important;
+  transform: scale(var(--dwc-scale-press));
+}
+
+/* ── Section intros ────────────────────────────────────────── */
+
+.sectionTagline {
   font-size: 0.95rem;
-  font-weight: var(--dwc-font-weight-semibold);
-  color: var(--ifm-heading-color);
+  color: var(--ifm-color-content-secondary);
+  margin: -0.75rem 0 1.25rem;
+  line-height: 1.6;
 }
 
 /* ── Section header (title + "see all" link row) ─────────── */
 
 .sectionHeader {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
   margin-top: -1rem;
   margin-bottom: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .seeAll {
@@ -122,7 +155,7 @@
   color: var(--ifm-color-primary-dark);
 }
 
-/* ── Nav cards grid (3 columns) ───────────────────────────── */
+/* ── Nav cards grid ───────────────────────────────────────── */
 
 .navGrid {
   display: grid;
@@ -143,12 +176,15 @@
 .jbangContent {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2.5rem;
 }
 
 .jbangText {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 0.6rem;
   min-width: 220px;
 }
@@ -243,15 +279,6 @@
   line-height: 1.5;
 }
 
-/* ── Blog grid (3 columns) ────────────────────────────────── */
-
-.blogGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  align-items: start;
-}
-
 /* ── Project grid ─────────────────────────────────────────── */
 
 .projectGrid {
@@ -261,63 +288,9 @@
   align-items: start;
 }
 
-/* ── Recent docs list (2-column) ─────────────────────────── */
-
-.docsList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-}
-
-.docsItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--dwc-border-color);
-}
-
-.docsLink {
-  font-size: 0.9rem;
-  color: inherit;
-  text-decoration: none;
-}
-
-.docsLink::after {
-  content: none !important;
-}
-
-.docsLink:hover {
-  color: var(--ifm-color-primary);
-  text-decoration: none;
-}
-
-.docsSection {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--chip-border-radius);
-  background-color: var(--chip-background);
-  color: var(--chip-text);
-  white-space: nowrap;
-  font-weight: var(--chip-font-weight);
-  flex-shrink: 0;
-}
-
 /* ── Responsive ───────────────────────────────────────────── */
 
 @media screen and (max-width: 996px) {
-  .homeTop {
-    grid-template-columns: 1fr;
-  }
-
-  .blogGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .projectGrid {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
@@ -338,10 +311,6 @@
     grid-template-columns: 1fr;
   }
 
-  .blogGrid {
-    grid-template-columns: 1fr;
-  }
-
   .projectGrid {
     grid-template-columns: 1fr;
   }
@@ -350,3 +319,4 @@
     grid-template-columns: 1fr;
   }
 }
+
