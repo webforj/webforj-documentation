@@ -3,7 +3,8 @@ sidebar_position: 1
 title: Upgrading Guides
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 6adbad314378e90356ad6602cc52de5a
+sidebar_class_name: has-new-content
+_i18n_hash: 31ec5b4108bae52597797c3add587e4c
 ---
 <Head>
   <style>{`
@@ -13,57 +14,59 @@ _i18n_hash: 6adbad314378e90356ad6602cc52de5a
   `}</style>
 </Head>
 
-Der webforJ Veröffentlichungszyklus folgt einem strukturierten und vorhersagbaren Modell, um Stabilität, Leistung und kontinuierliche Innovation zu gewährleisten. Dieses Dokument bietet einen Überblick darüber, wie Releases geplant werden, welche Arten von Releases zu erwarten sind und wie Benutzer informiert und vorbereitet bleiben können.
+Der webforJ Freigabzyklus folgt einem strukturierten und vorhersehbaren Modell, um Stabilität, Leistung und kontinuierliche Innovation zu gewährleisten. Dieses Dokument bietet einen Überblick darüber, wie die Releases geplant werden, welche Arten von Releases zu erwarten sind und wie Benutzer informiert und vorbereitet bleiben können.
 
-## Arten von webforJ Releases {#types-of-webforj-releases}
+<AISkillTip skill="webforj-upgrading-versions" />
 
-webforJ folgt einem strukturierten Veröffentlichungsmodell, das die folgenden Arten von Releases umfasst:
+## Arten von webforJ-Releases {#types-of-webforj-releases}
+
+webforJ folgt einem strukturierten Freigabemodell, das die folgenden Arten von Releases umfasst:
 
 ### 1. Hauptversionen {#1-major-releases}
-- Finden jährlich statt.
-- Führen bedeutende neue Funktionen, Verbesserungen und Erweiterungen ein.
+- Treten jährlich auf.
+- Bringen bedeutende neue Funktionen, Verbesserungen und Erweiterungen.
 - Können Konfigurationsänderungen oder Anpassungen bestehender Apps erfordern.
-- Identifiziert mit Versionierung wie **webforJ 20.00, webforJ 21.00 usw.**
+- Werden mit Versionierung wie **webforJ 20.00, webforJ 21.00 usw.** gekennzeichnet.
 
 ### 2. Nebenversionen {#2-minor-releases}
-- Finden mehrmals im Jahr statt (etwa alle sechs bis acht Wochen).
+- Treten mehrmals im Jahr auf (ungefähr alle sechs bis acht Wochen).
 - Bieten inkrementelle Verbesserungen, Optimierungen und kleinere neue Funktionen.
-- Identifiziert mit Versionierung wie **webforJ 20.01, webforJ 20.02 usw.**
+- Werden mit Versionierung wie **webforJ 20.01, webforJ 20.02 usw.** gekennzeichnet.
 
-### 3. Patches und Bugfix-Releases {#3-patches-and-bug-fix-releases}
+### 3. Patches und Fehlerbehebungen {#3-patches-and-bug-fix-releases}
 - Werden bei Bedarf veröffentlicht.
 - Beheben kritische Fehler, Leistungsprobleme und Sicherheitsanfälligkeiten.
-- Identifiziert mit zusätzlichen Nummerierungen wie **webforJ 20.01.1, webforJ 20.01.2 usw.**
+- Werden mit zusätzlicher Nummerierung wie **webforJ 20.01.1, webforJ 20.01.2 usw.** gekennzeichnet.
 
-## Was man mit jedem Release erwarten kann {#what-to-expect-with-each-release}
+## Was mit jeder Freigabe zu erwarten ist {#what-to-expect-with-each-release}
 
 ### Funktionserweiterungen {#feature-enhancements}
 - Haupt- und Nebenversionen führen neue Funktionen, Optimierungen und Integrationen ein.
-- Funktions-Roadmaps werden in den Release-Notizen geteilt, um Benutzern zu helfen, im Voraus zu planen.
+- Fahrpläne für Funktionen werden in den Versionshinweisen geteilt, um Benutzern zu helfen, im Voraus zu planen.
 
-:::info Abwärtskompatibilität
-Während Anstrengungen unternommen werden, um die Kompatibilität aufrechtzuerhalten, können Hauptversionen Änderungen enthalten, die Anpassungen an Apps erfordern. Benutzer werden ermutigt, die Release-Notizen auf veraltete Funktionen zu überprüfen.
+:::info Rückwärtskompatibilität
+Obwohl Anstrengungen unternommen werden, um die Kompatibilität zu gewährleisten, können Hauptversionen Änderungen enthalten, die Anpassungen an Apps erfordern. Benutzer werden ermutigt, die Versionshinweise auf veraltete Funktionen zu überprüfen.
 :::
 
 ### Sicherheitsupdates {#security-updates}
-- Sicherheit hat Priorität, und kritische Schwachstellen werden in Patch-Releases so schnell wie möglich behoben.
+- Sicherheit hat oberste Priorität, und kritische Anfälligkeiten werden in Patch-Releases so schnell wie möglich behoben.
 
 :::tip Snapshot-Bauten
-Snapshot-Bauten sind vor den meisten Releases verfügbar. Benutzer werden ermutigt, diese zu testen, um frühzeitig Probleme zu identifizieren und Feedback zu geben.
+Snapshot-Bauten sind vor den meisten Releases verfügbar. Benutzer werden ermutigt, gegen diese zu testen, um frühzeitig Probleme zu identifizieren und Feedback zu geben. Siehe den Artikel [Snapshots](/docs/configuration/snapshots), um zu erfahren, wie man webforJ-Snapshots verwendet und wo man sie bekommt.
 :::
 
 ## Wie man auf dem Laufenden bleibt {#how-to-stay-updated}
 
-### Release-Notizen und Ankündigungen {#release-notes-and-announcements}
-- Jeder Release wird von detaillierten [Release-Notizen](https://github.com/webforj/webforj/releases) begleitet, die neue Funktionen, Bugfixes und erforderliche Maßnahmen umreißen.
-- Benutzer sollten den webforJ [Blog](../../blog) abonnieren, um rechtzeitig informiert zu bleiben.
+### Versionshinweise und Ankündigungen {#release-notes-and-announcements}
+- Jede Freigabe wird von detaillierten [Versionshinweisen](https://github.com/webforj/webforj/releases) begleitet, die neue Funktionen, Bugfixes und alle erforderlichen Maßnahmen umreißen.
+- Benutzer sollten den webforJ [Blog](../../blog) abonnieren, um rechtzeitige Updates zu erhalten.
 
 :::tip Upgrade-Empfehlungen
-Kunden sollten Upgrades basierend auf den geschäftlichen Anforderungen und Stabilitätsanforderungen planen. Benutzer werden ermutigt, auf der neuesten Version zu bleiben, um von Leistungsverbesserungen und neuen Funktionen zu profitieren.
+Kunden sollten Upgrades basierend auf geschäftlichen Anforderungen und Stabilitätsbedürfnissen planen. Benutzer werden ermutigt, auf der neuesten Version zu bleiben, um von Leistungsverbesserungen und neuen Funktionen zu profitieren.
 :::
 
 ### Unterstützung und Kompatibilität {#support-and-compatibility}
-- webforJ bietet Dokumentation und Upgrade-Leitfäden für Hauptversionen.
-- Community-Foren und Kundensupport-Kanäle stehen für Problemlösungen und Unterstützung zur Verfügung.
+- webforJ bietet Dokumentationen und Upgrade-Anleitungen für Hauptversionen.
+- Community-Foren und Kundensupportkanäle sind für Fehlersuche und Unterstützung verfügbar.
 
 <DocCardList className="topics-section" />

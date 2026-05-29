@@ -2,27 +2,28 @@ package com.webforj.samples.views.table;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.table.TableSingleSelectionPage;
+import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.webforj.samples.pages.table.TableSingleSelectionPage;
-import com.webforj.samples.views.BaseTest;
-
 public class TableSingleSelectionViewIT extends BaseTest {
 
-    private TableSingleSelectionPage tableSingleSelectionPage;
+  private TableSingleSelectionPage tableSingleSelectionPage;
 
-    @BeforeEach
-    public void setupTableSingleSelection() {
-        navigateToRoute(TableSingleSelectionPage.getRoute());
-        tableSingleSelectionPage = new TableSingleSelectionPage(page);
-    }
+  @BeforeEach
+  public void setupTableSingleSelection() {
+    navigateToRoute(TableSingleSelectionPage.getRoute());
+    tableSingleSelectionPage = new TableSingleSelectionPage(page);
+  }
 
-    @Test
-    public void testSingleSelectionRecords() {
-        tableSingleSelectionPage.getFirstArtist().click();
+  @Test
+  public void testSingleSelectionRecords() {
+    tableSingleSelectionPage.getFirstArtist().click();
 
-        assertThat(tableSingleSelectionPage.getDialogMessage("Mississippi Blues", "John Hurt & The Ramblers"))
-                .isVisible();
-    }
+    assertThat(
+            tableSingleSelectionPage.getDialogMessage(
+                "Mississippi Blues", "John Hurt & The Ramblers"))
+        .isVisible();
+  }
 }

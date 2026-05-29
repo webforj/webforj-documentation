@@ -2,6 +2,7 @@
 sidebar_position: 40
 title: Interactivity
 slug: Interactivity
+description: Reference the keyboard shortcuts that move focus, select rows, and navigate cells in the Table component.
 ---
 
 The `Table` component will respond to various keyboard inputs from users to allow for more fine-grained interaction. The following list outlines the various behaviors when the designated key is pressed:

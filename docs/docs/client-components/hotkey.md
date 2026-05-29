@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-hotkey>
 sidebar_class_name: sidebar--item__hidden
 slug: hotkey
-description: A user guide article for the hotkey
+description: Style the dwc-hotkey client component with CSS variables and shadow parts to theme key cap surfaces, separators, and typography.
 // pagination_prev: null
 // pagination_next: null
 ---

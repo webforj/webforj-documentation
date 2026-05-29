@@ -1,6 +1,7 @@
 ---
 title: MaskedNumberField
 sidebar_position: 10
+description: Format numeric input with the MaskedNumberField using configurable mask characters, grouping, decimal separators, and locale settings.
 ---
 
 <DocChip chip='shadow' />
@@ -20,16 +21,20 @@ The `MaskedNumberField` can be instantiated with or without parameters. It suppo
 
 This demo showcases a **Tip Calculator** that uses `MaskedNumberField` for intuitive numeric input. One field is configured to accept a formatted bill amount, while the other captures a whole-number tip percentage. Both fields apply numeric masks to ensure consistent and predictable formatting.
 
-<ComponentDemo 
-path='/webforj/maskednumberfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldView.java'
-height = '270px'
+<ComponentDemo
+path='/webforj/maskednumberfield'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldView.java']}
+height='270px'
 />
 
 ## Mask rules {#mask-rules}
 
 The `MaskedNumberField` uses a mask string to control how numeric input is formatted and displayed. 
 Each character in the mask defines a specific formatting behavior, allowing precise control over how numbers appear.
+
+:::tip Applying masks programmatically
+To format numbers with the same mask syntax outside of a field, for example when rendering data in a [`Table`](/docs/components/table/overview), use the [`MaskDecorator`](/docs/advanced/mask-decorator) utility class.
+:::
 
 ### Mask characters {#mask-characters}
 
@@ -91,10 +96,10 @@ field.setNegateable(false);
 
 When `negatable` is set to `false`, the field blocks any attempts to enter a minus sign or otherwise input negative values.
 
-<ComponentDemo 
-path='/webforj/maskednumnegatable/?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumNegatableView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/maskednumnegatable/'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumNegatableView.java']}
+height='150px'
 />
 
 ## Min and max values {#min-and-max-values}
@@ -140,10 +145,10 @@ numberField.restoreValue();
 
 The restore value must be explicitly set. If not defined, the feature will not revert the field.
 
-<ComponentDemo 
-path='/webforj/maskednumrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumRestoreView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/maskednumrestore'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumRestoreView.java']}
+height='150px'
 />
 
 ## `MaskedNumberFieldSpinner` {#maskednumberfieldspinner}
@@ -151,10 +156,10 @@ height = '150px'
 The `MaskedNumberFieldSpinner` extends [`MaskedNumberField`](#basics) by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys. 
 This is ideal for inputs like quantities, pricing adjustments, rating controls, or any scenario where users make incremental changes.
 
-<ComponentDemo 
-path='/webforj/maskednumspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumSpinnerView.java'
-height = '120px'
+<ComponentDemo
+path='/webforj/maskednumspinner'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumSpinnerView.java']}
+height='120px'
 />
 
 ### Key features {#key-features}

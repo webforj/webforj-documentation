@@ -1,6 +1,7 @@
 ---
 title: Confirm
 sidebar_position: 5
+description: Show a blocking ConfirmDialog with up to three options, configurable button sets, message types, and timeout behavior.
 ---
 
 <DocChip chip='shadow' />
@@ -15,10 +16,10 @@ A `ConfirmDialog` is a modal dialog designed to allow the user to choose one of 
 
 The `ConfirmDialog` provides a way to ask users for confirmation or to choose between multiple options, such as `Yes/No` or `OK/Cancel`, ensuring that they acknowledge and confirm their actions.
 
-<ComponentDemo 
-path='/webforj/confirmdialogconstructor?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/confirm/ConfirmDialogConstructorView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/confirmdialogconstructor'
+files={['src/main/java/com/webforj/samples/views/optiondialog/confirm/ConfirmDialogConstructorView.java']}
+height='350px'
 />
 
 ## Types {#types}
@@ -47,10 +48,10 @@ The `ConfirmDialog` supports the following message types. When you configures a 
 
 In the following sample, the code configures a confirm dialog of type `CUSTOM` with a custom title and message.
 
-<ComponentDemo 
-path='/webforj/confirmdialogoptions?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/confirm/ConfirmDialogOptionsView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/confirmdialogoptions'
+files={['src/main/java/com/webforj/samples/views/optiondialog/confirm/ConfirmDialogOptionsView.java']}
+height='350px'
 />
 
 ## Result {#result}
@@ -78,10 +79,10 @@ The `ConfirmDialog.Result` enum includes the following possible results:
 
 ```java showLineNumbers
 if (result == ConfirmDialog.Result.FIRST_CUSTOM_BUTTON) {
-    OptionDialog.showMessageDialog("Changes discarded", "Discarded", "Got it");
+  OptionDialog.showMessageDialog("Changes discarded", "Discarded", "Got it");
 } else {
-    OptionDialog.showMessageDialog(
-        "Changes saved", "Saved", "Got it", MessageDialog.MessageType.INFO);
+  OptionDialog.showMessageDialog(
+    "Changes saved", "Saved", "Got it", MessageDialog.MessageType.INFO);
 }
 ```
 
@@ -91,7 +92,7 @@ The `ConfirmDialog` allows you to specify a default button that is preselected w
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
-    "Are you sure?", "Confirm", ConfirmDialog.OptionType.YES_NO);
+  "Are you sure?", "Confirm", ConfirmDialog.OptionType.YES_NO);
 dialog.setDefaultButton(Button.SECOND); // second button
 dialog.show();
 ```
@@ -102,7 +103,7 @@ You can configure the text of the buttons using the `setButtonText(ConfirmDialog
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
-    "Are you sure?", "Confirm", ConfirmDialog.OptionType.CUSTOM);
+  "Are you sure?", "Confirm", ConfirmDialog.OptionType.CUSTOM);
 dialog.setButtonText(ConfirmDialog.Button.FIRST, "Absolutely");
 dialog.setButtonText(ConfirmDialog.Button.SECOND, "Nope");
 dialog.show();
@@ -114,8 +115,8 @@ By default, the confirm dialog processes and renders HTML content. You can turn 
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
-    "<b>Are you sure?</b>", "Confirm",
-    ConfirmDialog.OptionType.YES_NO, ConfirmDialog.MessageType.QUESTION);
+  "<b>Are you sure?</b>", "Confirm",
+  ConfirmDialog.OptionType.YES_NO, ConfirmDialog.MessageType.QUESTION);
 dialog.setRawText(true);
 dialog.show();
 ```

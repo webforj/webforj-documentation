@@ -1,30 +1,31 @@
 ---
 sidebar_position: 35
 title: Deploying Additional Servlets
-sidebar_class_name: new-content
-_i18n_hash: 95695a68854d595e78a58904d7214208
+_i18n_hash: e7f1a0bcf3986ff50dcfd89281ab3339
 ---
 <!-- vale off -->
 # Lisäservlettien käyttöönotto <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-webforJ ohjaa kaikki pyynnöt `WebforjServlet`:in kautta, joka on oletuksena määritetty `/*` web.xml-tiedostossa. Tämä servletti hallitsee komponenttien elinkaarta, reititystä ja käyttöliittymän päivityksiä, jotka tukevat webforJ-sovellustasi.
+webforJ reitittää kaikki pyynnöt `WebforjServletin` kautta, joka on oletuksena kartoitettu `/*` web.xml:ssä. Tämä servletti hallitsee komponenttien elinkaarta, reititystä ja käyttöliittymän päivityksiä, jotka voimaannuttavat webforJ-sovellustasi.
 
-Tietyissä scenaarioissa saatat tarvita lisäservlettejä webforJ-sovelluksesi rinnalla:
-- Kolmansien osapuolien kirjastojen integrointi, jotka tarjoavat omat servlettinsä
-- REST API:en tai webhookkien toteuttaminen
+Joissakin skenaarioissa saatat tarvita lisäservlettejä webforJ-sovelluksen rinnalle:
+- Kolmansien osapuolien kirjastojen integroiminen, jotka tarjoavat omia servlettejä
+- REST API:en tai webhookien toteuttaminen
 - Tiedostojen latausten käsittely mukautetulla käsittelyllä
-- Perinteisen servlet-pohjaisen koodin tukeminen
+- Legacy-servlet-pohjaisen koodin tukeminen
 
-webforJ tarjoaa kaksi lähestymistapaa mukautettujen servlettien käyttöönottoon sovelluksesi rinnalla:
+webforJ tarjoaa kaksi lähestymistapaa mukautettujen servlettien käyttöönottoon sovelluksen rinnalla:
 
-## Lähestymistapa 1: `WebforjServlet`:in uudelleenreittaus {#approach-1-remapping-webforjservlet}
+<AISkillTip skill="webforj-adding-servlets" />
 
-Tässä lähestymistavassa `WebforjServlet` uudelleenreitetään `/*`:sta erityiseen polkuun, kuten `/ui/*`, vapauttaen URL-namespace mukautetuille servleteille. Vaikka tämä vaatii web.xml-tiedoston muokkaamista, se antaa mukautetuille servleteille suoran pääsyn niiden URL-malleihin ilman mitään proxy-ylikuormitusta.
+## Lähestymistapa 1: `WebforjServletin` uudelleenreititys {#approach-1-remapping-webforjservlet}
+
+Tässä lähestymistavassa `WebforjServlet` uudelleenreititetään `/*` -polusta tiettyyn polkuun, kuten `/ui/*`, vapauttaen URL-nimensivälin mukautetuille servleteille. Vaikka tämä vaatii `web.xml`:n muokkaamista, se antaa mukautetuille servleteille suoran pääsyn omiin URL-malleihinsa ilman mitään välikäsiä.
 
 ```xml
 <web-app>
-  <!-- WebforjServlet uudelleenreitetty käsittelemään vain /ui/* -->
+  <!-- WebforjServlet on uudelleenreititetty käsittelemään vain /ui/* -->
   <servlet>
     <servlet-name>WebforjServlet</servlet-name>
     <servlet-class>com.webforj.servlet.WebforjServlet</servlet-class>
@@ -35,7 +36,7 @@ Tässä lähestymistavassa `WebforjServlet` uudelleenreitetään `/*`:sta erityi
     <url-pattern>/ui/*</url-pattern>
   </servlet-mapping>
   
-  <!-- Mukautettu servletti omalla URL-mallillaan -->
+  <!-- Mukautettu servletti omalla URL-mallilla -->
   <servlet>
     <servlet-name>HelloWorldServlet</servlet-name>
     <servlet-class>com.example.HelloWorldServlet</servlet-class>
@@ -47,24 +48,24 @@ Tässä lähestymistavassa `WebforjServlet` uudelleenreitetään `/*`:sta erityi
 </web-app>
 ```
 
-Tällä asetuksella:
-- webforJ-komponentit ovat saatavilla polulla `/ui/`
-- Mukautettu servletti käsittelee pyyntöjä polkuun `/hello-world`
-- Ei ole käytössä proxy-mekanismia - suora reititys servlet-kontissa
+Tällä konfiguraatiolla:
+- webforJ-komponentit ovat käytettävissä osoitteessa `/ui/`
+- Mukautettu servletti käsittelee pyyntöjä `/hello-world`
+- Ei välikäsiä - suora servlettikonttorin reititys
 
 :::tip Spring Boot -konfiguraatio
-Kun käytät webforJ:ta Spring Bootin kanssa, ei ole `web.xml`-tiedostoa. Sen sijaan määritä servletti-reititys `application.properties`-tiedostossa:
+Kun käytät webforJ:ta Spring Bootin kanssa, ei ole `web.xml` -tiedostoa. Sen sijaan konfiguroi servlettireititys `application.properties`-tiedostossa:
 
 ```Ini
 webforj.servlet-mapping=/ui/*
 ```
 
-Tämä ominaisuus uudelleenreittaa `WebforjServlet`:in oletus `/*`:sta `/ui/*`:een, vapauttaen URL-namespacen mukautetuille servleteille. Älä sisällytä lainausmerkkejä arvon ympärille - ne tulkitaan osaksi URL-mallia.
+Tämä ominaisuus uudelleenreitittää `WebforjServletin` oletus `/*` -sarjasta `/ui/*` -sarjaan, vapauttaen URL-nimensivälin mukautetuille servleteille. Älä sisällytä lainausmerkkejä arvon ympärille - niitä tulkitaan osana URL-mallia.
 :::
 
-## Lähestymistapa 2: `WebforjServlet`:in proxy-konfiguraatio {#approach-2-webforjservlet-proxy-configuration}
+## Lähestymistapa 2: `WebforjServletin` proxy-konfiguraatio {#approach-2-webforjservlet-proxy-configuration}
 
-Tässä lähestymistavassa `WebforjServlet` pidetään kohdassa `/*` ja mukautetut servletit konfiguroidaan `webforj.conf`:issa. `WebforjServlet` sieppaa kaikki pyynnöt ja proxy-kohtaavat mallit mukautetuille servleteillesi.
+Tässä lähestymistavassa `WebforjServlet` pysyy `/*` -polussa ja mukautetut servleteet konfiguroidaan `webforj.conf`:ssa. `WebforjServlet` keskeyttää kaikki pyynnöt ja proxytoi vastaavat mallit mukautetuille servleteille.
 
 ### Vakio web.xml -konfiguraatio {#standard-webxml-configuration}
 
@@ -79,7 +80,7 @@ Tässä lähestymistavassa `WebforjServlet` pidetään kohdassa `/*` ja mukautet
   <url-pattern>/*</url-pattern>
 </servlet-mapping>
 
-<!-- Mukautettu servletti omalla URL-mallillaan -->
+<!-- Mukautettu servletti omalla URL-mallilla -->
 <servlet>
   <servlet-name>HelloWorldServlet</servlet-name>
   <servlet-class>com.example.HelloWorldServlet</servlet-class>
@@ -106,7 +107,7 @@ servlets: [
 ]
 ```
 
-Tällä asetuksella:
+Tällä konfiguraatiolla:
 - `WebforjServlet` käsittelee kaikki pyynnöt
-- Pyyntöjä polkuun `/hello-world` ohjataan `HelloWorldServlet`:ille
-- Valinnainen `config`-avain tarjoaa nimi/arvo-pareja servlettien alustamista varten
+- Pyyntöjä `/hello-world` proksataan `HelloWorldServletille`
+- Valinnainen `config` -avain tarjoaa nimi/arvo-pareja servletin alustamisparametreiksi

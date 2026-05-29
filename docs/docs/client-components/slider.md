@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-slider>
 sidebar_class_name: sidebar--item__hidden
 slug: slider
-description: A user guide article for the slider
+description: Theme the dwc-slider track, thumb, tick marks, and labels through CSS variables and shadow parts for visual customization.
 // pagination_prev: null
 // pagination_next: null
 ---

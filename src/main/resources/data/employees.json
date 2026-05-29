@@ -1,0 +1,227 @@
+[
+  {
+    "name": "Alice Martin",
+    "title": "Senior Engineer",
+    "department": "Engineering",
+    "email": "alice@example.com",
+    "phone": "+1 555 0101",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Bob Chen",
+    "title": "UX Designer",
+    "department": "Design",
+    "email": "bob@example.com",
+    "phone": "+1 555 0102",
+    "status": "Remote",
+    "fullTime": true
+  },
+  {
+    "name": "Carol Smith",
+    "title": "HR Manager",
+    "department": "HR",
+    "email": "carol@example.com",
+    "phone": "+1 555 0103",
+    "status": "On Leave",
+    "fullTime": false
+  },
+  {
+    "name": "David Lee",
+    "title": "Backend Developer",
+    "department": "Engineering",
+    "email": "david@example.com",
+    "phone": "+1 555 0104",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Eva Brown",
+    "title": "Marketing Lead",
+    "department": "Marketing",
+    "email": "eva@example.com",
+    "phone": "+1 555 0105",
+    "status": "Remote",
+    "fullTime": true
+  },
+  {
+    "name": "Frank White",
+    "title": "Junior Developer",
+    "department": "Engineering",
+    "email": "frank@example.com",
+    "phone": "+1 555 0106",
+    "status": "Active",
+    "fullTime": false
+  },
+  {
+    "name": "Grace Kim",
+    "title": "Financial Analyst",
+    "department": "Finance",
+    "email": "grace@example.com",
+    "phone": "+1 555 0107",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Henry Davis",
+    "title": "Visual Designer",
+    "department": "Design",
+    "email": "henry@example.com",
+    "phone": "+1 555 0108",
+    "status": "Remote",
+    "fullTime": true
+  },
+  {
+    "name": "Isla Thompson",
+    "title": "DevOps Engineer",
+    "department": "Engineering",
+    "email": "isla@example.com",
+    "phone": "+1 555 0109",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Jack Wilson",
+    "title": "Content Strategist",
+    "department": "Marketing",
+    "email": "jack@example.com",
+    "phone": "+1 555 0110",
+    "status": "Active",
+    "fullTime": false
+  },
+  {
+    "name": "Karen Moore",
+    "title": "Senior Accountant",
+    "department": "Finance",
+    "email": "karen@example.com",
+    "phone": "+1 555 0111",
+    "status": "On Leave",
+    "fullTime": true
+  },
+  {
+    "name": "Liam Johnson",
+    "title": "Frontend Developer",
+    "department": "Engineering",
+    "email": "liam@example.com",
+    "phone": "+1 555 0112",
+    "status": "Remote",
+    "fullTime": true
+  },
+  {
+    "name": "Mia Garcia",
+    "title": "Recruiter",
+    "department": "HR",
+    "email": "mia@example.com",
+    "phone": "+1 555 0113",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Noah Martinez",
+    "title": "Graphic Designer",
+    "department": "Design",
+    "email": "noah@example.com",
+    "phone": "+1 555 0114",
+    "status": "Active",
+    "fullTime": false
+  },
+  {
+    "name": "Olivia Adams",
+    "title": "QA Engineer",
+    "department": "Engineering",
+    "email": "olivia@example.com",
+    "phone": "+1 555 0115",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Paul Rivera",
+    "title": "SEO Specialist",
+    "department": "Marketing",
+    "email": "paul@example.com",
+    "phone": "+1 555 0116",
+    "status": "Remote",
+    "fullTime": true
+  },
+  {
+    "name": "Quinn Foster",
+    "title": "Platform Engineer",
+    "department": "Engineering",
+    "email": "quinn@example.com",
+    "phone": "+1 555 0117",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Rachel Scott",
+    "title": "Budget Analyst",
+    "department": "Finance",
+    "email": "rachel@example.com",
+    "phone": "+1 555 0118",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Sam Torres",
+    "title": "Motion Designer",
+    "department": "Design",
+    "email": "sam@example.com",
+    "phone": "+1 555 0119",
+    "status": "On Leave",
+    "fullTime": false
+  },
+  {
+    "name": "Tara Nguyen",
+    "title": "HR Coordinator",
+    "department": "HR",
+    "email": "tara@example.com",
+    "phone": "+1 555 0120",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Uma Patel",
+    "title": "Security Engineer",
+    "department": "Engineering",
+    "email": "uma@example.com",
+    "phone": "+1 555 0121",
+    "status": "Remote",
+    "fullTime": true
+  },
+  {
+    "name": "Victor Hayes",
+    "title": "Brand Strategist",
+    "department": "Marketing",
+    "email": "victor@example.com",
+    "phone": "+1 555 0122",
+    "status": "Active",
+    "fullTime": false
+  },
+  {
+    "name": "Wendy Clark",
+    "title": "ML Engineer",
+    "department": "Engineering",
+    "email": "wendy@example.com",
+    "phone": "+1 555 0123",
+    "status": "Active",
+    "fullTime": true
+  },
+  {
+    "name": "Xander Brooks",
+    "title": "UI Designer",
+    "department": "Design",
+    "email": "xander@example.com",
+    "phone": "+1 555 0124",
+    "status": "Remote",
+    "fullTime": true
+  },
+  {
+    "name": "Yara Simmons",
+    "title": "Tax Analyst",
+    "department": "Finance",
+    "email": "yara@example.com",
+    "phone": "+1 555 0125",
+    "status": "Active",
+    "fullTime": true
+  }
+]

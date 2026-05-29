@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 title: Events
+description: Attach event listeners to webforJ components with lambdas, anonymous classes, or method references and reuse the event payload server-side.
 slug: events
 draft: false
 ---
@@ -54,8 +55,8 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 ```java
 //Adding the event
 ListenerRegistration listenerRegistration = myComponent.addEventListener(e -> {
-        //Executed when the event fires
-    });
+    //Executed when the event fires
+  });
 
 //Removing the event
 listenerRegistration.remove();
@@ -96,8 +97,8 @@ This approach minimizes the need to query the component for information, as the 
 
 Below is a demonstration showing the addition of a <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> to a [`Button`](#). This  [`Button`](#) also uses information coming with the event's payload to display information on the screen.
 
-<ComponentDemo 
-path='/webforj/buttonevent?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonEventView.java'
+<ComponentDemo
+path='/webforj/buttonevent'
+files={['src/main/java/com/webforj/samples/views/button/ButtonEventView.java']}
 height='100px'
 />

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Security Annotations
+description: Restrict webforJ routes declaratively with @AnonymousAccess, @PermitAll, @RolesAllowed, and @DenyAll annotations.
 ---
 
 Security annotations provide a declarative way to control access to routes in your webforJ app. By adding annotations to your route components, you define who can access each view without writing manual permission checks. The security system automatically enforces these rules before any component is rendered.

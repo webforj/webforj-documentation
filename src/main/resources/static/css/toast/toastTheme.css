@@ -1,6 +1,6 @@
 .custom-theme {
   --dwc-toast-background: linear-gradient(to right, hsl(203, 100%, 48%), hsl(1, 89%, 51%));
   --dwc-toast-color: white;
-  --dwc-toast-border-color: hsl(0, 0%, 73%);
+  --dwc-toast-border-color: var(--dwc-border-color);
 }
 

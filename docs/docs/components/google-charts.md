@@ -1,6 +1,7 @@
 ---
 title: Google Charts
 sidebar_position: 50
+description: Render bar, line, pie, geo, and other Google Charts in webforJ using the GoogleChart component with a typed Java options map and data API.
 ---
 
 <DocChip chip='shadow' />
@@ -19,9 +20,9 @@ To use the `GoogleChart` class in your app, use the following XML in your POM fi
 
 ```xml
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-googlecharts</artifactId>
-    <version>${webforj.version}</version>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-googlecharts</artifactId>
+  <version>${webforj.version}</version>
 </dependency>
 ```
 :::
@@ -30,10 +31,12 @@ To create a chart, specify a chart type, configure its visual options, and provi
 
 This example creates a geo chart that maps revenue data across different countries, with custom colors, legend positioning, and chart area sizing:
 
-<ComponentDemo 
-path='/webforj/chart?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartView.java'
-cssURL='/css/googlecharts/chart.css'
+<ComponentDemo
+path='/webforj/chart'
+files={[
+  'src/main/java/com/webforj/samples/views/googlecharts/ChartView.java',
+  'src/main/resources/static/css/googlecharts/chart.css',
+]}
 height='300px'
 />
 
@@ -41,10 +44,12 @@ height='300px'
 
 The `GoogleChart` addon offers a comprehensive array of chart types to suit various data visualization requirements. Selecting the appropriate chart type is essential for effectively communicating the data's story. See the gallery below for examples of common charts that can be used in a webforJ app.
 
-<ComponentDemo 
-path='/webforj/chartgallery?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java'
-cssURL='/css/googlecharts/chartGallery.css'
+<ComponentDemo
+path='/webforj/chartgallery'
+files={[
+  'src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java',
+  'src/main/resources/static/css/googlecharts/chartGallery.css',
+]}
 height='600px'
 />
 
@@ -108,13 +113,11 @@ chart.setData(data);
 
 Once the data is prepared, it can be applied to the GoogleChart using the setData method.
 
-<ComponentDemo 
-path='/webforj/chartsettingdata?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java'
+<ComponentDemo
+path='/webforj/chartsettingdata'
+files={['src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java']}
 height='300px'
 />
-
-<!-- tabs={['ChartDemoSettingData.java']} -->
 
 ### Loading data and options from JSON {#loading-data-and-options-from-json}
 
@@ -131,8 +134,8 @@ data.add(Arrays.asList("2016", 1030, 540));
 chart.setData(data);
 
 Map<String, Object> options = new Gson().fromJson(
-    Assets.contentOf("options.json"),
-    new TypeToken<Map<String, Object>>() {}.getType()
+  Assets.contentOf("options.json"),
+  new TypeToken<Map<String, Object>>() {}.getType()
 );
 chart.setOptions(options);
 ```
@@ -147,14 +150,14 @@ Invoke `redraw()` in scenarios such as:
 - **Upon Changing Options**: Applies new styling or configuration changes to the chart.
 - **For Responsive Adjustments**: Adjusts the chart's layout or size when the container's dimensions change, ensuring optimal display across devices.
 
-<ComponentDemo 
-path='/webforj/chartredraw?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java'
-cssURL='/css/googlecharts/chartRedraw.css'
+<ComponentDemo
+path='/webforj/chartredraw'
+files={[
+  'src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java',
+  'src/main/resources/static/css/googlecharts/chartRedraw.css',
+]}
 height='650px'
 />
-
-<!-- tabs={['ChartDemoRedraw.java', 'redrawchart_styles.css']} -->
 
 ## Exporting charts as images {#exporting-charts-as-images}
 
@@ -164,8 +167,8 @@ Call `getImageUri()` on your chart instance after the chart has been fully rende
 
 ```java
 chart.addReadyListener(e -> {
-    String imageUri = chart.getImageUri();
-    // Now you can use the imageUri, for example, as the src attribute of an img tag
+  String imageUri = chart.getImageUri();
+  // Now you can use the imageUri, for example, as the src attribute of an img tag
 });
 ```
 
@@ -180,14 +183,14 @@ GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
 
 // Add the selected listener to the chart
 chart.addSelectedListener(event -> {
-    // Get the selection
-    List<Object> selection = chart.getSelection();
-    
-    // Handle the selected event
-    if (!selection.isEmpty()) {
-        System.out.println("Selected Row: " + selection.get(0));
-        // Further processing based on the row/column of selection
-    }
+  // Get the selection
+  List<Object> selection = chart.getSelection();
+  
+  // Handle the selected event
+  if (!selection.isEmpty()) {
+    System.out.println("Selected Row: " + selection.get(0));
+    // Further processing based on the row/column of selection
+  }
 });
 ```
 

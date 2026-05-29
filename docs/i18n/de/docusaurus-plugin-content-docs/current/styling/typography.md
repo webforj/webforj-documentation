@@ -1,22 +1,21 @@
 ---
 sidebar_position: 4
 title: Typography
-_i18n_hash: 86ea072dd194053c5a0195a6e7b7200e
+_i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
-Typografie-Token werden verwendet, um eine konsistente Reihe von Schriftstilen in Ihrer App beizubehalten.
+Typografietokens werden verwendet, um einen konsistenten Satz von Schriftstilen in Ihrer Anwendung beizubehalten.
 
 ## Schriftfamilie {#font-family}
 
-Die Eigenschaften der Schriftfamilie werden verwendet, um eine priorisierte Liste von Schriftfamiliennamen anzugeben.
+Die Eigenschaften der Schriftfamilie werden verwendet, um eine priorisierte Liste von Schriftfamilien zu spezifizieren.
 
-Der Systemschriftstapel wird standardmäßig verwendet:
+Der Standardsystemschriftstapel wird standardmäßig über `system-ui` verwendet, der automatisch zur nativen Schriftart der Plattform aufgelöst wird:
 
-- `Segoe UI` unter Windows
-- `Roboto` unter Android und Chrome OS
-- `San Francisco` unter macOS und iOS
-- Auf anderen Systemen werden `Helvetica, Arial` als Fallbacks verwendet.
+- `San Francisco` auf macOS und iOS
+- `Segoe UI` auf Windows
+- `Roboto` auf Android und Chrome OS
 
-Sie können die Schriftfamilie mithilfe der benutzerdefinierten Eigenschaft `--dwc-font-family` anwenden oder ändern.
+Sie können die Schriftfamilie anwenden oder ändern, indem Sie die benutzerdefinierte Eigenschaft `--dwc-font-family` verwenden.
 
 ### Beispiel {#example}
 
@@ -28,20 +27,18 @@ Sie können die Schriftfamilie mithilfe der benutzerdefinierten Eigenschaft `--d
 
 ### Variablen {#variables}
 
-<!-- vale Google.FirstPerson = NO -->
-| **Variable**             | **Standardwert**                                                                                                                               | **Beispiel**                                                           |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `--dwc-font-family-sans` | -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' | <span style={{ fontFamily: "var(--dwc-font-family-sans)" }}>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-family-mono` | Menlo, Monaco, 'Courier New', monospace                                                                                                         | <span style={{ fontFamily: "var(--dwc-font-family-mono)" }}>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-family`      | `var(--dwc-font-family-sans)`                                                                                                                   | <span style={{ fontFamily: "var(--dwc-font-family)" }}>Sphinx of black quartz, judge my vow.</span>      |
-<!-- vale Google.FirstPerson = YES -->
+| **Variable**               | **Standardwert** |
+| -------------------------- | ----------------- |
+| `--dwc-font-family-sans`   | system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' |
+| `--dwc-font-family-mono`   | ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace |
+| `--dwc-font-family`        | `var(--dwc-font-family-sans)` |
 
 ## Schriftgröße {#font-size}
 
-Die Eigenschaften der Schriftgröße definieren eine Reihe von Schriftgrößen zur Auswahl. `s` ist die Standardgröße und wird von den meisten Komponenten standardmäßig verwendet. Alle Schriftgrößen sind in `em` definiert.
+Die Eigenschaften der Schriftgröße definieren eine Reihe von Schriftgrößen, aus denen gewählt werden kann. `m` ist die Standardgröße und wird von den meisten Komponenten standardmäßig verwendet. Alle Schriftgrößen sind in `rem` definiert.
 
-:::info EM-Einheit
-`em` ist eine relative Längeneinheit. Sie bezieht sich auf die [Schriftgröße](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) des übergeordneten Elements im Fall typografischer Eigenschaften wie font-size und die Schriftgröße des Elements selbst im Fall anderer Eigenschaften wie [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
+:::info REM-Einheit
+`rem` ist eine relative Längeneinheit. Sie ist relativ zur [Schriftgröße](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) des root-Elements (`<html>`), die in den meisten Browsern standardmäßig 16px beträgt.
 :::
 
 ### Beispiel {#example-1}
@@ -54,21 +51,24 @@ Die Eigenschaften der Schriftgröße definieren eine Reihe von Schriftgrößen z
 
 ### Variablen {#variables-1}
 
-| **Variable**          | **Standardwert**        | **Beispiel**                                                      |
-| --------------------- | ------------------------ | ---------------------------------------------------------------- |
-| `--dwc-font-size-2xs` | 0.75rem                  | <span style={{ fontSize: "var(--dwc-font-size-2xs)" }}>Aa</span> |
-| `--dwc-font-size-xs`  | 0.813rem                 | <span style={{ fontSize: "var(--dwc-font-size-xs)" }}>Aa</span>  |
-| `--dwc-font-size-s`   | 0.875rem                 | <span style={{ fontSize: "var(--dwc-font-size-s)" }}>Aa</span>   |
-| `--dwc-font-size-m`   | 1rem                     | <span style={{ fontSize: "var(--dwc-font-size-m)" }}>Aa</span>   |
-| `--dwc-font-size-l`   | 1.125rem                 | <span style={{ fontSize: "var(--dwc-font-size-l)" }}>Aa</span>   |
-| `--dwc-font-size-xl`  | 1.375rem                 | <span style={{ fontSize: "var(--dwc-font-size-xl)" }}>Aa</span>  |
-| `--dwc-font-size-2xl` | 1.75rem                  | <span style={{ fontSize: "var(--dwc-font-size-2xl)" }}>Aa</span> |
-| `--dwc-font-size-3xl` | 2.25rem                  | <span style={{ fontSize: "var(--dwc-font-size-3xl)" }}>Aa</span> |
-| `--dwc-font-size`     | `var(--dwc-font-size-s)` | <span style={{ fontSize: "var(--dwc-font-size)" }}>Aa</span>     |
+| **Variable**            | **Standardwert**        | **Berechnet (bei 16px root)** |
+| ----------------------- | ----------------------- | ------------------------------ |
+| `--dwc-font-size-3xs`   | 0.625rem                | 10px |
+| `--dwc-font-size-2xs`   | 0.6875rem               | 11px |
+| `--dwc-font-size-xs`    | 0.75rem                 | 12px |
+| `--dwc-font-size-s`     | 0.8125rem               | 13px |
+| `--dwc-font-size-m`     | 0.875rem                | 14px |
+| `--dwc-font-size-l`     | 1rem                    | 16px |
+| `--dwc-font-size-xl`    | 1.25rem                 | 20px |
+| `--dwc-font-size-2xl`   | 1.625rem                | 26px |
+| `--dwc-font-size-3xl`   | 2.125rem                | 34px |
+| `--dwc-font-size`       | `var(--dwc-font-size-m)` | 14px |
 
-## Schriftgewicht {#font-weight}
+<dwc-doc-font-sizes></dwc-doc-font-sizes>
 
-Die CSS-Eigenschaft [font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) legt das Gewicht (oder die Fettigkeit) der Schrift fest.
+## Schriftstärke {#font-weight}
+
+Die CSS-Eigenschaft [font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) legt die Stärke (oder Fettheit) der Schrift fest.
 
 ### Beispiel {#example-2}
 
@@ -78,18 +78,24 @@ p {
 }
 ```
 
-| **Variable**                 | **Standardwert** | **Beispiel**                                                               |
-| ---------------------------- | ----------------- | ------------------------------------------------------------------------- |
-| `--dwc-font-weight-lighter`  | 200               | <span style={{ fontWeight: "var(--dwc-font-weight-lighter)" }}>Aa</span>  |
-| `--dwc-font-weight-light`    | 300               | <span style={{ fontWeight: "var(--dwc-font-weight-light)" }}>Aa</span>    |
-| `--dwc-font-weight-normal`   | 400               | <span style={{ fontWeight: "var(--dwc-font-weight-normal)" }}>Aa</span>   |
-| `--dwc-font-weight-semibold` | 500               | <span style={{ fontWeight: "var(--dwc-font-weight-semibold)" }}>Aa</span> |
-| `--dwc-font-weight-bold`     | 700               | <span style={{ fontWeight: "var(--dwc-font-weight-bold)" }}>Aa</span>     |
-| `--dwc-font-weight-bolder`   | 800               | <span style={{ fontWeight: "var(--dwc-font-weight-bolder)" }}>Aa</span>   |
+| **Variable**                 | **Standardwert** |
+| ---------------------------- | ----------------- |
+| `--dwc-font-weight-thin`     | 100 |
+| `--dwc-font-weight-lighter`  | 200 |
+| `--dwc-font-weight-light`    | 300 |
+| `--dwc-font-weight-normal`   | 400 |
+| `--dwc-font-weight-medium`   | 500 |
+| `--dwc-font-weight-semibold` | 600 |
+| `--dwc-font-weight-bold`     | 700 |
+| `--dwc-font-weight-bolder`   | 800 |
+| `--dwc-font-weight-black`    | 900 |
+| `--dwc-font-weight`          | `var(--dwc-font-weight-normal)` |
+
+<dwc-doc-font-weights></dwc-doc-font-weights>
 
 ## Zeilenhöhe {#line-height}
 
-Die CSS-Eigenschaft line-height legt die Höhe eines Zeilenbox fest. Sie wird häufig verwendet, um den Abstand zwischen Zeilen von Text festzulegen.
+Die CSS-Eigenschaft line-height legt die Höhe eines Zeilenbereichs fest. Sie wird häufig verwendet, um den Abstand zwischen Zeilen von Text festzulegen.
 
 ### Beispiel {#example-3}
 
@@ -101,15 +107,17 @@ p {
 
 ### Variablen {#variables-2}
 
-<!-- vale Google.FirstPerson = NO -->
-| **Variable**                 | **Standardwert**             | **Beispiel**                                                                                                |
-| ---------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `--dwc-font-line-height-2xs` | 0.95                          | <span style={{ lineHeight: "var(--dwc-font-line-height-2xs)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-line-height-xs`  | 1.1                           | <span style={{ lineHeight: "var(--dwc-font-line-height-xs)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>  |
-| `--dwc-font-line-height-s`   | 1.25                          | <span style={{ lineHeight: "var(--dwc-font-line-height-s)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-m`   | 1.375                         | <span style={{ lineHeight: "var(--dwc-font-line-height-m)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-l`   | 1.5                           | <span style={{ lineHeight: "var(--dwc-font-line-height-l)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-xl`  | 1.75                          | <span style={{ lineHeight: "var(--dwc-font-line-height-xl)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>  |
-| `--dwc-font-line-height-2xl` | 2                             | <span style={{ lineHeight: "var(--dwc-font-line-height-2xl)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-line-height`     | var(--dwc-font-line-height-m) | <span style={{ lineHeight: "var(--dwc-font-line-height)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>     |
-<!-- vale Google.FirstPerson = YES -->
+| **Variable**                    | **Standardwert**            |
+| ------------------------------- | ---------------------------- |
+| `--dwc-font-line-height-3xs`    | 1 |
+| `--dwc-font-line-height-2xs`    | 1.1 |
+| `--dwc-font-line-height-xs`     | 1.25 |
+| `--dwc-font-line-height-s`      | 1.375 |
+| `--dwc-font-line-height-m`      | 1.5 |
+| `--dwc-font-line-height-l`      | 1.625 |
+| `--dwc-font-line-height-xl`     | 1.75 |
+| `--dwc-font-line-height-2xl`    | 1.875 |
+| `--dwc-font-line-height-3xl`    | 2 |
+| `--dwc-font-line-height`        | var(--dwc-font-line-height-xs) |
+
+<dwc-doc-line-heights></dwc-doc-line-heights>

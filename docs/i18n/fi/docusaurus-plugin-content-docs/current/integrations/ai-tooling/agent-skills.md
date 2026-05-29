@@ -1,141 +1,57 @@
 ---
 title: Agent Skills
 sidebar_position: 10
-sidebar_class_name: new-content
-_i18n_hash: cf22942f0e73a936bef31cf8a3a9a043
+_i18n_hash: 0458a29cc4337ff83f08afb415097a1c
 ---
-Agenttitaidot opettavat tekoälykoodausassistentteja rakentamaan webforJ-sovelluksia oikeita API:ita, suunnittelutunnuksia ja komponenttimalleja käyttäen. Sen sijaan, että ohjelmistokehykseen liittyviä konventioita arvuuteltaisiin, tekoälyassistentti lataa taidon ja seuraa sen jäsenneltyä työprosessia tuottaakseen koodia, joka kääntyy ja noudattaa parhaita käytäntöjä ensimmäisellä yrityksellä.
+Agent Skills opettaa AI-koodausassistentteja rakentamaan webforJ-sovelluksia käyttäen oikeita API:ita, design-tokeneita ja komponenttimalleja. Sen sijaan, että arvaat kehyksen käytäntöjä, assistentti lataa taidon ja seuraa strukturoitua työnkulkua tuottaakseen koodia, joka kääntyy ja noudattaa parhaita käytäntöjä ensimmäisellä yrityksellä.
 
-Taidoilla on avoin [Agent Skills](https://agentskills.io/specification) -standardi ja ne toimivat useilla tekoälyassistenttipohjilla, mukaan lukien Claude Code, GitHub Copilot VS Code:ssa ja Cursorissa. 
-Jokainen taito on yksittäinen hakemisto, jossa on `SKILL.md`-tiedosto, joka kuvaa taidon tarkoitusta ja työprosessia, sekä `references/`- ja `scripts/`-hakemistot tukidokumentaatiota ja apuskiptejä varten.
+:::tip Käytä liitintä
+Alla olevat taidot toimitetaan **[webforJ AI liitännäinen](/docs/integrations/ai-tooling)** yhdessä [MCP palvelimen](/docs/integrations/ai-tooling/mcp) kanssa. Yksi asennus antaa assistentillesi molemmat osat.
+:::
 
-Agenttitaidot webforJ:lle ovat saatavilla GitHub-repossa [webforj/webforj-agent-skills](https://github.com/webforj/webforJ-agent-skills). 
-Näiden taitojen asennuksen jälkeen tekoäly lataa nämä tiedostot automaattisesti, kun se tunnistaa relevantin tehtävän. 
-Esimerkiksi, kun pyydät tekoälyä "teeman asettamista tälle sovellukselle sinisessä värimaailmassa", se aktivoi `styling-apps`-taidon, joka ohjaa tekoälyä etsimään voimassa olevia DWC-tunnuksia, kirjoittamaan rajattua CSS:ää ja validoimaan jokaisen muuttujan nimen ennen tulostamista.
+Taidoissa noudatetaan avointa [Agent Skills](https://agentskills.io/specification) -standardia, ja ne toimivat monilla AI-assistenteilla, mukaan lukien Claude Code, GitHub Copilot, Cursor, Gemini CLI, OpenAI Codex ja monet muut. Taito kertoo assistentille, minkä tyyppisestä tehtävästä on kyse; assistentti lataa sen automaattisesti, kun kehotteesi vastaa. Esimerkiksi kysyessäsi "teemaa tämä sovellus sinisellä paletilla" laukaisee `webforj-styling-apps` -taidon, joka ohjaa assistenttia etsimään voimassa olevia DWC-tokeneita, kirjoittamaan rajattua CSS:ää ja validoimaan jokaisen muuttujan nimen ennen kuin kirjoitetaan mitään levytilalle.
 
 ## Miksi käyttää taitoja? {#why-use-skills}
 
-Ilman taitoja tekoälyassistentit tuottavat usein webforJ-koodia, joka näyttää uskottavalta mutta epäonnistuu käytännössä. Yleisimmät ongelmat ovat:
+MCP-palvelin tekee tarkan webforJ-tiedon saataville tarvittaessa, mutta yksinään se ei kerro assistentille, _milloin_ etsiä jotain, _mikä_ lähestymistapa sopii tehtävään tai _missä järjestyksessä_ asiat tulisi tehdä. Siihen jäsenet tulevat mukaan.
 
-- Keksiminen `--dwc-*` -tunnusten nimiä, joita ei ole (CSS kääntyy mutta ei vaikuta)
-- Väärän perusluokan käyttö komponenttien kääreissä (`Composite` sijaan `ElementComposite` tai päinvastoin)
-- Puuttuvat `PropertyDescriptor`-mallit, tapahtumaannotaatiot tai huolenaiheiden rajapinnat
-- Kovakoodattujen värien käyttö, jotka rikkoo tummaa tilaa
-- Validointivaiheiden ohittaminen, jotka tunnistavat hiljaisia virheitä
+Taidot antavat assistentille tehtäväkohtaisen pelikirjan: kuinka luokitella edessä oleva työ, mitkä webforJ-mallit sopivat, mitä MCP-työkaluja on käytettävä jokaisessa vaiheessa ja kuinka validoida tulos ennen sen palauttamista. Tuloksena on johdonmukainen, käytäntöjä noudattava webforJ-koodi sen sijaan, että se olisi kokoelma teknisesti kelvollisia mutta tyylillisesti epäsopivia pätkiä.
 
-Taidot poistavat nämä ongelmat antamalla tekoälylle tarkat päätöstasot, hakemistuskiptejä ja validoimislistoja kutakin tehtävätyyppiä varten.
+## Kuinka taidot eroavat MCP:stä {#how-skills-differ-from-mcp}
 
-## Miten taidot eroavat MCP:stä {#how-skills-differ-from-mcp}
+Taidot ja [webforJ MCP palvelin](/docs/integrations/ai-tooling/mcp) palvelevat täydentäviä rooleja. MCP-palvelin tarjoaa live-työkaluja, joita assistentti voi kutsua tietojen hakemiseen tai tuloksen tuottamiseen. Taidot tarjoavat työnkulun, joka kertoo assistentille _milloin_ kutsua näitä työkaluja, missä järjestyksessä asiat tulisi tehdä ja kuinka validoida tulos.
 
-Taidot ja [webforJ MCP -palvelin](./mcp) palvelevat toisiaan täydentäviä rooleja. MCP tarjoaa live-työkaluja, joita tekoäly voi kutsua suoritusajossa asiakirjojen etsimiseksi tai projektien generoimiseksi. Taidot tarjoavat staattista tietoa ja vaiheittaisia työprosesseja, jotka ohjaavat tekoälyä tehtävän lähestymisessä.
-
-| | MCP-palvelin | Agenttitaidot |
+| | MCP palvelin | Agent-taidot |
 |---|---|---|
-| **Mitä se tarjoaa** | Live-työkalut: asiakirjojen haku, projektin suunnittelu, teeman luominen | Staattinen tieto: työprosessit, päätöstasot, viitetiedostot, apuskiptit |
-| **Milloin se toimii** | Tarpeen mukaan, kun tekoäly kutsuu työkalua | Automaattisesti, kun tekoäly tunnistaa vastaavan tehtävän |
-| **Paras käyttöön** | Tiettyjen API:iden etsimiseen, aloitusprojektien luomiseen, teema-värimaailmojen luomiseen | Päätepisteet, jotka vaativat kehyksen konventioiden noudattamista ja monivaiheisia työprosesseja |
+| **Mitä se tarjoaa** | Työkalut, joita assistentti kutsuu tarvittaessa (asiakirjahaku, kehystys, teeman luonti, token-validation) | Työnkulut ja päätöstaulukot, jotka ohjaavat sitä, kuinka assistentti lähestyy tehtävää |
+| **Milloin se toimii** | Kun assistentti päättää kutsua työkalua | Automaattisesti, kun assistentti havaitsee vastaavan tehtävän |
+| **Parasta** | Spesifisiin kysymyksiin vastaaminen, artefaktien generointi | Päästä päähän -tehtävät, jotka tarvitsevat johdonmukaisen webforJ-lähestymistavan |
 
-Käytännössä molemmat toimivat hyvin yhdessä. MCP-palvelimen `webforj-create-theme` -työkalu tuottaa kelvollisen värimaailman yhdestä väristä, ja `styling-apps` -taito ohjaa tekoälyä komponenttitasoiseen tyylittelyyn ja tumman tilan validointiin tämän värimaailman avulla.
-
-Taidot ovat staattisia tiedostoja, jotka luetaan levyltä - ne eivät lisää suoritusajan ylikuormitusta tai tee ulkoisia API-pyyntöjä. Tekoäly lataa taidon viitemateriaalin kontekstiikkaluokkaansa, kun se on asiaankuuluva, mikä käyttää osaa kontekstin tokeneista, mutta lopullisen tuloksen laatu kehykselle spesifisissä töissä on merkittävästi korkeampi.
+Käytännössä molemmat toimivat parhaiten yhdessä - ja [webforJ AI -liitännäinen](https://github.com/webforj/webforj-ai) toimitetaan yhdessä asennuksessa.
 
 ## Asennus {#installation}
 
-Kloonaa [webforJ agenttitaidot -repositorio](https://github.com/webforj/webforJ-agent-skills), ja kopioi sitten taitohakemistot siihen paikkaan, jota tekoälytyökalusi odottaa. Jokainen työkalu tukee kahta laajuutta:
-
-- **Projektin laajuus**: taito on käytettävissä vain tässä projektissa
-- **Käyttäjän laajuus**: taito on käytettävissä kaikissa projekteissasi
-
-<Tabs groupId="ide">
-<TabItem value="claude-code" label="Claude Code" default>
-
-```bash
-git clone https://github.com/webforj/webforJ-agent-skills.git
-cd webforJ-agent-skills
-
-# Projektin laajuus
-cp -r creating-components /path/to/your/project/.claude/skills/
-cp -r styling-apps /path/to/your/project/.claude/skills/
-
-# Käyttäjän laajuus
-cp -r creating-components ~/.claude/skills/
-cp -r styling-apps ~/.claude/skills/
-```
-
-</TabItem>
-<TabItem value="vscode" label="VS Code Copilot">
-
-```bash
-git clone https://github.com/webforj/webforJ-agent-skills.git
-cd webforJ-agent-skills
-
-# Projektin laajuus
-cp -r creating-components /path/to/your/project/.github/skills/
-cp -r styling-apps /path/to/your/project/.github/skills/
-
-# Käyttäjän laajuus
-cp -r creating-components ~/.copilot/skills/
-cp -r styling-apps ~/.copilot/skills/
-```
-
-</TabItem>
-<TabItem value="cursor" label="Cursor">
-
-```bash
-git clone https://github.com/webforj/webforJ-agent-skills.git
-cd webforJ-agent-skills
-
-# Projektin laajuus
-cp -r creating-components /path/to/your/project/.cursor/skills/
-cp -r styling-apps /path/to/your/project/.cursor/skills/
-
-# Käyttäjän laajuus
-cp -r creating-components ~/.cursor/skills/
-cp -r styling-apps ~/.cursor/skills/
-```
-
-</TabItem>
-</Tabs>
-
-:::tip[Millä laajuudella pitäisi käyttää]
-Käytä **projektin laajuutta** työskentelemisessä tiimissä, jotta kaikki projektissa hyötyvät samoista taidoista. Käytä **käyttäjän laajuutta**, kun työskentelet useiden webforJ-projektien parissa ja haluat, että taidot ovat käytettävissä kaikkialla ilman, että niitä tarvitsee kopioida jokaiseen repositorioon.
-:::
+Asenna **[webforJ AI liitännäinen](/docs/integrations/ai-tooling)** - se sisältää alla olevat taidot MCP-palvelimen ohella. Asiakkaille, jotka eivät tue liitännäisiä, [webforJ AI -varasto](https://github.com/webforj/webforj-ai#clients) luettelee taitohakemiston, josta jokainen työkalu lukee, joten voit kopioida taidonkansiot käsin.
 
 ## Saatavilla olevat taidot {#available-skills}
 
+<AccordionGroup>
+
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>creating-components</code></strong>: rakenna uudelleenkäytettäviä webforJ-komponentteja web-komponenttikirjastoista, JavaScript-kirjastoista tai olemassa olevista webforJ-komponenteista
+    <strong><code>webforj-adding-servlets</code></strong>: lisää REST-päätteitä, webhookkeja ja mukautettuja servletteja
   </AccordionSummary>
   <AccordionDetails>
     <div>
 
-[Tämä taito](https://github.com/webforj/webforJ-agent-skills/tree/main/creating-components) ohjaa tekoälyassistenttia rakentamaan uudelleenkäytettäviä Java-komponentteja mistä tahansa lähteestä, olipa se sitten olemassa oleva web-komponenttikirjasto, pelkkä JavaScript-kirjasto tai olemassa olevien webforJ-komponenttien yhdistelmä.
+Käytä tätä, kun tarvitset ei-Käyttöliittymä HTTP-reittiä - REST-päätettä, webhook-käsittelijää tai kolmannen osapuolen servlettia, kuten Swagger UI tai Spring Web. Assistentti valitsee oikean lähestymistavan projektiisi (Spring `webforj.exclude-urls`, reittauksen `WebforjServlet` alikansioon tai proxyttamisen `webforj.conf`in kautta) ja kytkee päätteet ilman, että webforJ:n käyttöliittymän reititys häiriintyy.
 
-**Mitä se kattaa**
+**Milloin se aktivoituu**
 
-Taito määrittelee viisi polkua komponenttien luomiseen, ja opettaa tekoälyä valitsemaan oikean sen mukaan, mitä tehtävää ollaan suorittamassa:
-
-| Polku | Milloin käytetään | Perusluokka |
-|---|---|---|
-| Kääri olemassa oleva Custom Element -kirjasto | Kirjastossa on Custom Elementit (`<x-button>`, `<x-dialog>`) | `ElementComposite` / `ElementCompositeContainer` |
-| Rakenna Custom Element, sitten kääri se | Uusi visuaalinen komponentti tai yksinkertaisen JS-kirjaston kääntäminen | `ElementComposite` / `ElementCompositeContainer` |
-| Yhdistä webforJ-komponentteja | Olemassa olevien webforJ-komponenttien yhdistäminen uudelleenkäytettäväksi yksiköksi | `Composite<T>` |
-| Laajenna HTML-elementtiä | Kevyt kertaluonteinen integrointi ilman Shadow DOM:ia | `Div`, `Span` jne. |
-| Sivutason työkalu | Selaimen API tai globaali ominaisuus ilman DOM-widgettiä | Tavanomainen Java-luokka + `EventDispatcher` |
-
-**Työprosessi**
-
-Custom Elementin kääretyyli (yleisin polku) ohjeistaa tekoälyä jäsennellyssä työprosessissa:
-
-1. **Asetus**: lataa kolmannen osapuolen JS/CSS projektin `src/main/resources/static/libs/` -hakemistoon. Taito ohjeistaa tekoälyä suosimaan paikallisia resursseja CDN-linkkien sijaan offline-turvallisuuden vuoksi.
-2. **Hae komponenttidata**: käytä mukana olevaa `extract_components.mjs` -skriptiä purkamaan Custom Elements Manifest ja tuottamaan jäsennelty erittely kunkin komponentin ominaisuuksista, tapahtumista, slotista ja CSS-muokattavista ominaisuuksista.
-3. **Kirjoita Java-kääreet**: luo `ElementComposite` tai `ElementCompositeContainer` -luokkia `PropertyDescriptor`-kentillä, tapahtumaluokilla, slot-menetelmillä ja huolenaiheiden rajapinnoilla, kaikki seuraavat webforJ-konventioita.
-4. **Kirjoita testit**: luo JUnit 5 -testejä käyttäen `PropertyDescriptorTester` ja jäsenneltyjä testimalleja ominaisuuksia, slotteja ja tapahtumia varten.
-
-**Viitemateriaali**
-
-Taito sisältää kahdeksan viitetiedostoa, jotka kattavat `ElementComposite`-mallit, komponenttien koostamisen, ominaisuuksien kuvaajat, tapahtumankäsittelyn, JavaScript-integraation, testausmallit ja yleiset antipatternit.
+- *"Lisää REST-pääte `/api/orders`."*
+- *"Liitä webhook-käsittelijä Stripe:lle."*
+- *"Asenna Swagger UI kohteeseen `/api/docs`."*
+- *"Altista mukautettu servletti, joka toimii rinnakkain webforJ:n käyttöliittymän kanssa."*
 
 </div>
   </AccordionDetails>
@@ -143,42 +59,141 @@ Taito sisältää kahdeksan viitetiedostoa, jotka kattavat `ElementComposite`-ma
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>styling-apps</code></strong>: teema ja tyyli webforJ-sovelluksia DWC-suunnittelu-token-järjestelmää käyttäen
+    <strong><code>webforj-building-forms</code></strong>: rakenna lomakkeita sitomenetelmällä, validoinnilla ja syötemaskilla
   </AccordionSummary>
   <AccordionDetails>
     <div>
 
-[Tämä taito](https://github.com/webforj/webforJ-agent-skills/tree/main/styling-apps) opettaa tekoälyassistenttia tyylittämään webforJ-sovelluksia DWC-suunnittelu-token-järjestelmää käyttäen. Keskeinen periaate on, että kaikki visuaaliset arvot käyttävät `--dwc-*` CSS-muokattavia ominaisuuksia. Taito valvoo tätä tarjoamalla validointivaiheita ja hakuskriptejä, jotka estävät tekoälyä keksimästä tunnusten nimiä tai kovakoodattuja värejä.
+Käytä tätä kaikessa lomatyössä webforJ-sovelluksessa: tietojen syöttölomakkeet, kaksisuuntainen sitominen Java-beaniin, Jakarta-validointi, maskatut syöttökohteet (puhelin, valuutta, IBAN, päivämäärät), Taulukon sarakkeiden muotoileminen valuutaksi tai prosenttina, ja responsiiviset monisarakkeet. Assistentti reitittää `BindingContext`:in, `Masked*Field` -komponenttien, taulukon maskintuottajien ja `ColumnsLayout`:n kautta.
 
-**Mitä se kattaa**
+**Milloin se aktivoituu**
 
-| Tehtävä | Lähestymistapa, jonka taito opettaa |
-|------|---------------------------|
-| Värin muutos | Ylikirjoita paletin sävyt, kylläisyys ja kontrasti `:root`-elementissä |
-| Komponentin tyylitys | Etsi ensin komponentin CSS-muuttujat, siirry sitten `::part()`-menetelmään vain tarvittaessa |
-| Asettelu ja väli | Käytä `--dwc-space-*` ja `--dwc-size-*` tunnuksia |
-| Typografia | Käytä `--dwc-font-*` tunnuksia |
-| Täysi teema | Palettikoostumus semanttisen tunnusten uudelleenmäärittelyn avulla |
-| Taulukon tyylitys | Vain `::part()`-valitsijat (taulukot eivät paljasta CSS-muuttujia) |
-| Google Charts | JSON-teeman tiedosto, joka ladataan `Assets.contentOf()` -menetelmän ja Gsonin kautta |
-
-**Työprosessi**
-
-Taito valvoo tiukkaa hakua ennen kirjoittamista:
-
-1. **Luokittele tehtävä**: määritä, onko kyseessä paletin muutos, komponentin tyylitys, asettelu tai täydellinen teema.
-2. **Skannaa sovellus**: lue Java-lähdekoodi löytääksesi jokainen komponentti, teemavariantti ja käytössä oleva laajennus.
-3. **Etsi jokainen komponentti**: suorita mukana oleva `component_styles.py` -skripti, jotta saat tarkat CSS-muuttujat, `::part()`-nimet ja peilatut attribuutit, joita kukin komponentti tukee. Tekoäly ei kirjoita CSS:ää ennen tämän vaiheen saamista valmiiksi.
-4. **Kirjoita CSS**: tuota sisäkkäisiä, tiiviitä CSS:itä, jotka noudattavat DWC-konventioita: ensin globaalit tunnukset, sitten komponentin CSS-muuttujat, ja lopuksi `::part()`-ylikirjaukset viimeisenä keinona.
-5. **Validointi**: suorita hakuskripti uudelleen ja varmista, että jokainen tunnus, osa-nimi ja valitsin tulostuksessa todella existoi. Korjaa kaikki, mikä epäonnistuu.
-
-**Taidon valvomat avain säännöt**
-
-- **Seitsemän palettia vain**: `primary`, `success`, `warning`, `danger`, `info`, `default`, ja `gray`. Nimet kuten `secondary` tai `accent` eivät ole DWC:ssä ja epäonnistuvat hiljaa.
-- **Ei kovakoodattuja värejä**: jokaisen värin on oltava `var()`-viite, myös `box-shadow` ja `border` -malleissa. Kovakoodatut arvot rikkovat tumman tilan.
-- **CSS-muuttujat `::part()` yli**: komponentin CSS-muuttujat ovat tarkoitettu tyylittämisen API. `::part()` on pelastushatch, kun mikään muuttuja ei ole saatavilla.
-- **Rajoitetut valitsijat**: paljaat tag-valitsijat komponentteille, joilla on `theme` tai `expanse` attribuutit, ylittävät kaikki variantit. Taito vaatii `:not([theme])` tai `[theme~="value"]` -rajoittamisen.
+- *"Rakenna rekisteröintilomake sidottuna `User` beanini."*
+- *"Lisää puhelinnumerosyöttö, jossa muotoillaan kirjoittaessasi."*
+- *"Muotoile tämä taulukon sarake valuutaksi."*
+- *"Vahvista tämä kenttä `@NotEmpty`:llä ja mukautetulla sähköpostitarkistimella."*
 
 </div>
   </AccordionDetails>
 </Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-creating-components</code></strong>: kääri web-komponentit, JS-kirjastot tai koostumukset
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Käytä tätä, kun tarvitset uudelleenkäytettävän Java-komponentin, joka on kääritty minkä tahansa lähteen ympärille - olemassa olevan Mukautetun Elementin kirjaston, tavanomaisen JavaScript-kirjaston tai olemassa olevien webforJ-komponenttien koostumuksen. Assistentti valitsee työn kannalta oikean webforJ-perusluokan, kytkee ominaisuudet, tapahtumat ja slotit oikeilla malleilla ja tuottaa testejä, jotka noudattavat webforJ:n käytäntöjä.
+
+**Milloin se aktivoituu**
+
+- *"Kääri tämä Mukautettu Elementtiin kirjasto webforJ-komponenteiksi."*
+- *"Koosta nämä webforJ-komponentit uudelleenkäytettäväksi kortiksi."*
+- *"Integroi tämä tavallinen JavaScript-kirjasto webforJ-komponentiksi."*
+- *"Altista tämä Selaimen API webforJ-apuna."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-handling-timers-and-async</code></strong>: aikatauluta ajastimia, debounceja ja asynkronista työtä
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Käytä tätä kausiluonteisiin tehtäviin, kyselyyn, viipaloituun hakuun kirjoittaessa, throttlingiin ja pitkiin taustatöihin, jotka päivittävät käyttöliittymää niiden kulkiessa. Assistentti valitsee oikean alkion (`Interval`, `Debouncer`, `Environment.runLater`, `PendingResult`) ja välttää ajonaikaiset ansat, jotka johtuvat raakojen `java.util.Timer`, `javax.swing.Timer` tai webforJ-ympäristön ulkopuolella luoduista säikeistä, jotka kaikki heittävät `IllegalStateException` heti, kun he koskettavat käyttöliittymäkomponenttia.
+
+**Milloin se aktivoituu**
+
+- *"Päivitä tämä ohjaamo 30 sekunnin välein."*
+- *"Lisää haku kirjoittaessasi debounce."*
+- *"Suorita tämä CPU:ta rasittava työ taustalla ja päivitä edistymispalkki."*
+- *"Kysy tätä REST-päätettä, kunnes se palauttaa `done`."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-localizing-apps</code></strong>: lisää i18n ja käännöstuki
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Käytä tätä kaikessa internationalisaatiotyössä: viestikokoelmien lataus, kielenvaihto ajonaikaisesti, käyttäjän selainlokalisoinnin automaattinen havaitseminen ja komponenttilabelien kääntäminen. Assistentti reitittää webforJ 25.12:n `BundleTranslationResolver`:n, `HasTranslation` -huolen, `LocaleObserver`:in ja liitettäviä mukautettuja resolvereita käyttäen, ja kattaa sekä Spring- että tavalliset webforJ-polut.
+
+**Milloin se aktivoituu**
+
+- *"Lisää monikielinen tuki englannille ja espanjalle."*
+- *"Havaitse käyttäjän selainlokalisointi ja sovella se käynnistyksen yhteydessä."*
+- *"Lisää kielenvaihtaja navigointipalkkiin."*
+- *"Siirrä kaikki kovakoodatut merkit viestikokoelmaan."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-securing-apps</code></strong>: suojaa reitit kirjautumisella ja roolipohjaisella pääsyllä
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Käytä tätä kaikessa, mikä suojaa reittejä webforJ-sovelluksessa: kirjautuminen ja uloskirjautuminen, roolipohjainen pääsy, julkiset laskeutumis sivut, admin-kohteet, omistajuus säännöt ja oletusarvoisesti turvalliset käytännöt. Assistentti suosii Spring Securityä, kun Spring Boot on luokkatunnisteessa, ja siirtyy webforJ:n tavanomaiseen turvallisuuskehykseen muissa tapauksissa. Se soveltaa oikeita annotaatioita (`@AnonymousAccess`, `@PermitAll`, `@RolesAllowed`, `@RouteAccess`, `@RegisteredEvaluator`) ja selittää, mitkä ovat päätöksentekovelvoitteita ja mitkä ovat koostettavissa, joten oletusarvoisesti turvallinen toiminta tekee sen, mitä se sanoo.
+
+**Milloin se aktivoituu**
+
+- *"Suojaa `/admin`, jotta vain käyttäjät, joilla on `ADMIN`-rooli, voivat nähdä sen."*
+- *"Lisää julkinen laskeutumis sivu, jota kuka tahansa voi vierailla."*
+- *"Näytä kirjautuneen käyttäjän nimi yläpalkissa."*
+- *"Anna käyttäjän muokata vain omaa rekisteriään."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-styling-apps</code></strong>: teema sovellukset DWC design-tokeneilla
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Käytä tätä kaikessa visuaalisessa työssä webforJ-sovelluksessa: palettimuutokset, komponenttikohtainen tyylittely, asettelu ja väli, typografia, täydet teemat, taulukon ulkoasu tai koordinoidut Google Charts -värit. Assistentti kirjoittaa CSS:ää, joka noudattaa DWC design-tokeneita, rajaa valitsimia oikein ja validoi jokaisen `--dwc-*` viittauksen todelliseen luetteloon webforJ-versiollesi - joten tumman tilan ja teeman vaihtaminen toimii edelleen.
+
+**Milloin se aktivoituu**
+
+- *"Teemaa tämä sovellus sinisellä paletilla."*
+- *"Tyyli dwc-painike brändiohjeiden mukaisesti."*
+- *"Tee tämä asettelu tiukemmaksi - säädä väliä ja typografiaa."*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong><code>webforj-upgrading-versions</code></strong>: päivitä webforJ-pääversioiden yli OpenRewrite
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+
+Käytä tätä pääversiopäivityksiin. Assistentti suorittaa virallisen `webforj-rewrite` OpenRewrite-reseptin kohdeversion latauksessa, joka nostaa `<webforj.version>` ja Java-julkaisun, kirjoittaa nimettyjä API:ita ja tyyppejä ja lisää `TODO webforJ <major>:` kommentteja jokaiseen poistettuun menetelmään, joka tarvitsee manuaalisen päätöksen. Vanhemmille kohteille, joilla ei ole julkaistua reseptiä (esimerkiksi 24:stä 25:teen), se ohjaa sinua manuaalisessa vaihtoehdossa.
+
+**Milloin se aktivoituu**
+
+- *"Päivitä tämä sovellus webforJ 25:stä 26:een."*
+- *"Suorita uudelleenkirjoitusresepti ja ratkaise TODOt."*
+- *"Siirrä webforJ 24:stä 25:een manuaalisesti, sillä reseptiä ei ole."*
+- *"Mitä poistettuja API:ita minun pitää korjata päivityksen jälkeen?"*
+
+</div>
+  </AccordionDetails>
+</Accordion>
+
+</AccordionGroup>

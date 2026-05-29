@@ -2,6 +2,7 @@
 title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
+description: Combine automatic redeployment with live browser reload so code changes appear in a running webforJ app without manual restarts.
 ---
 
 Efficient development workflows rely on tools that detect code changes and automatically update the app in real time. Continuous Deployment and Dynamic Reload work together to simplify the development process by reducing manual steps, allowing you to see your changes quickly without needing to manually restart the server.

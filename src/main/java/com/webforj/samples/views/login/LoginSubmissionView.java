@@ -11,26 +11,26 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Login Submission")
 public class LoginSubmissionView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public LoginSubmissionView() {
-
     Login login = new Login();
-    getBoundComponent().add(login);
+
+    login.onSubmit(
+        ev -> {
+          String username = ev.getUsername();
+          String password = ev.getPassword();
+
+          // Validate credentials (admin/admin)
+          if (username.equals("admin") && password.equals("admin")) {
+            login.close();
+            self.add(new Button("Logout", e -> Page.getCurrent().reload()));
+          } else {
+            login.setError(true).setEnabled(true);
+          }
+        });
 
     login.open();
-
-    login.onSubmit(ev -> {
-      String username = ev.getUsername();
-      String password = ev.getPassword();
-
-      if (username.equals("admin") &&
-          password.equals("admin")) {
-        login.close();
-        getBoundComponent().add(new Button("Logout", e -> Page.getCurrent().reload()));
-      } else {
-        login.setError(true);
-        login.setEnabled(true);
-      }
-    });
+    self.add(login);
   }
 }

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 15
 title: Browser Console
+description: Log messages from Java to the browser console with typed levels and styled output using the BrowserConsole utility.
 ---
 
 <DocChip chip='since' label='24.10' />
@@ -120,11 +121,11 @@ It's possible to mix and match methods for a custom logging display.
 ```java
 // A variety of options for custom logging display
 console()
-    .weight().bolder()
-    .size().larger()
-    .color().gray()
-    .style().italic()
-    .transform().uppercase()
-    .background().blue()
-    .warn("Mixing styles");
+  .weight().bolder()
+  .size().larger()
+  .color().gray()
+  .style().italic()
+  .transform().uppercase()
+  .background().blue()
+  .warn("Mixing styles");
 ```

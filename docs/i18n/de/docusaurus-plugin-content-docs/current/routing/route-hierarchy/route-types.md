@@ -1,20 +1,21 @@
 ---
 sidebar_position: 1
 title: Route Types
-_i18n_hash: ff067ccd8461640c772c1f8fa0dcc856
+_i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
-Routen werden in zwei Haupttypen unterteilt, **Ansichts-Routen** und **Layout-Routen**. Die Wahl des Routentyps bestimmt, wie Komponenten den URLs zugeordnet werden und wie sie mit anderen Teilen Ihrer App interagieren.
+Routen werden in zwei Haupttypen unterteilt: **Ansichts-Routen** und **Layout-Routen**. Die Wahl des Routentyps bestimmt, wie Komponenten den URLs zugeordnet werden und wie sie mit anderen Teilen Ihrer App interagieren.
 
 ## Ansichts-Routen {#view-routes}
 
-Ansichts-Routen werden direkt einem URL-Segment zugeordnet und repräsentieren spezifische Seiten in Ihrer App. Diese Routen spiegeln sich in der URL des Browsers wider und werden typischerweise für verschiedene Ansichten oder Seiten verwendet.
+Ansichts-Routen werden direkt einem URL-Segment zugeordnet und repräsentieren spezifische Seiten in Ihrer App. Diese Routen spiegeln sich in der URL des Browsers wider und werden typischerweise für unterschiedliche Ansichten oder Seiten verwendet.
 
 ```java
 @Route(value = "home")
 public class HomeView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public HomeView() {
-    Div content = getBoundComponent();
-    content.add(new H1("Startseite"));
+    self.add(new H1("Startseite"));
   }
 }
 ```
@@ -22,11 +23,11 @@ public class HomeView extends Composite<Div> {
 - **URL**: `/home`
 - **Gerenderte Komponente**: `HomeView`
 
-In diesem Beispiel wird beim Navigieren zu `/home` die `HomeView`-Komponente gerendert.
+In diesem Beispiel rendert das Navigieren zu `/home` die Komponente `HomeView`.
 
 ## Layout-Routen {#layout-routes}
 
-Layout-Routen umschließen Kinderansichten, ohne zur URL beizutragen. Layouts bieten gemeinsam genutzte UI-Elemente wie Kopfzeilen oder Seitenleisten, die in mehreren Ansichten konsistent sind. Kinder-Routen werden im Inhaltsbereich des Layouts gerendert.
+Layout-Routen umschließen untergeordnete Ansichten, ohne zur URL beizutragen. Layouts bieten gemeinsame UI-Elemente wie Köpfe oder Seitenleisten, die in mehreren Ansichten konsistent sind. Untergeordnete Routen werden im Inhaltsbereich des Layouts gerendert.
 
 ```java
 @Route(type = Route.Type.LAYOUT)
@@ -38,16 +39,16 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-In diesem Fall ist `MainLayout` eine Layout-Route, die um Kinderansichten gewickelt ist. Es definiert gemeinsame UI-Elemente wie eine Kopfzeile und Schublade. Kinder-Routen, die mit diesem Layout verbunden sind, werden in den Inhaltsbereich der `AppLayout`-Komponente eingefügt.
+In diesem Fall ist `MainLayout` eine Layout-Route, die um untergeordnete Ansichten herum gewickelt ist. Es definiert gemeinsame UI-Elemente wie einen Kopf und eine Schublade. Untergeordnete Routen, die mit diesem Layout verbunden sind, werden in den Inhaltsbereich der Komponente `AppLayout` injiziert.
 
 ## Automatische Erkennung der Routentypen {#auto-detection-of-route-types}
 
-Standardmäßig wird der Routentyp automatisch erkannt, ob die Route eine **Ansicht** oder ein **Layout** ist, basierend auf dem Klassennamen:
+Standardmäßig wird der Routentyp automatisch erkannt, ob es sich um eine **Ansicht** oder **Layout** handelt, basierend auf dem Klassennamen:
 
 - Klassen, die auf `Layout` enden, werden als **Layout-Routen** behandelt.
 - Klassen, die auf `View` enden, werden als **Ansichts-Routen** behandelt.
 
-Alternativ können Entwickler den Routentyp manuell festlegen, indem sie `Route.Type` in der `@Route`-Annotation setzen.
+Alternativ können Entwickler den Routentyp manuell angeben, indem sie `Route.Type` in der `@Route`-Annotation festlegen.
 
 ```java
 // Automatisch als Layout erkannt
@@ -64,9 +65,10 @@ public class MainLayout extends Composite<AppLayout> {
 // Automatisch als Ansicht erkannt
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public DashboardView() {
-    Div content = getBoundComponent();
-    content.add(new H1("Dashboard-Inhalt"));
+    self.add(new H1("Inhalt des Dashboards"));
   }
 }
 ```

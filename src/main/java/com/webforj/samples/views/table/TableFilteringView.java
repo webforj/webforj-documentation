@@ -1,12 +1,11 @@
 package com.webforj.samples.views.table;
 
-import com.webforj.component.table.Table;
-
 import com.webforj.component.Composite;
 import com.webforj.component.field.TextField;
 import com.webforj.component.field.TextField.Type;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.table.Table;
 import com.webforj.data.repository.CollectionRepository;
 import com.webforj.data.repository.Repository;
 import com.webforj.router.annotation.FrameTitle;
@@ -15,15 +14,14 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Filtering")
 public class TableFilteringView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   private String searchTerm = "";
 
   public TableFilteringView() {
     CollectionRepository<MusicRecord> repository = Service.getMusicRecords();
 
-    repository.setBaseFilter((MusicRecord r) -> {
-      String title = r.getTitle();
-      return title.toLowerCase().contains(this.searchTerm);
-    });
+    repository.setBaseFilter(r -> r.getTitle().toLowerCase().contains(searchTerm));
 
     TextField searchField = buildSearchField(repository);
     Table<MusicRecord> table = buildTable(repository);
@@ -32,16 +30,16 @@ public class TableFilteringView extends Composite<Div> {
         FlexLayout.create().vertical().contentAlign().center().build().setHeight("500px");
     layout.add(searchField, table);
 
-    getBoundComponent().setStyle("padding", "30px").add(layout);
+    self.setStyle("padding", "30px").add(layout);
   }
 
   TextField buildSearchField(Repository<MusicRecord> repository) {
-    TextField search = new TextField(Type.SEARCH, "Search");
-    search.setPlaceholder("Search by title...");
-    search.onModify(ev -> {
-      this.searchTerm = ev.getText().toLowerCase();
-      repository.commit();
-    });
+    TextField search = new TextField(Type.SEARCH, "Search").setPlaceholder("Search by title...");
+    search.onModify(
+        ev -> {
+          searchTerm = ev.getText().toLowerCase();
+          repository.commit();
+        });
 
     return search;
   }
@@ -55,6 +53,7 @@ public class TableFilteringView extends Composite<Div> {
     table.addColumn("Cost", MusicRecord::getCost);
 
     table.setRepository(repository);
+    table.setColumnsToAutoFit();
 
     return table;
   }

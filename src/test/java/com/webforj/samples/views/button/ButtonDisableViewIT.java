@@ -37,4 +37,9 @@ public class ButtonDisableViewIT extends BaseTest {
     assertThat(buttonDisable.getSubmitButton()).isEnabled();
   }
 
+  @Test
+  public void testSubmitButtonIsEnabledWhenEmailInputIsValid() {
+    buttonDisable.getEmailInput().fill("valid-email@example.com");
+    assertThat(buttonDisable.getSubmitButton()).isEnabled();
+  }
 }

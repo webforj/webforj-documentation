@@ -1,170 +1,181 @@
 ---
 title: FlexLayout
 sidebar_position: 45
-_i18n_hash: ddb7d5ef1e583af6e3a7072d91329c7b
+_i18n_hash: cf7ba76f1e13488c6fa3a419ba6ceaca
 ---
 <JavadocLink type="flexlayout" location="com/webforj/component/layout/flexlayout/FlexLayout" top='true'/>
 <DocChip chip='since' label='24.00' />
 
-`FlexLayout` -komponentti järjestää lapsikomponentit riviin tai sarakkeeseen käyttämällä CSS Flexbox -mallia. Se antaa sinulle hallintaa kohdistamisesta, välistä, kääntöön ja siitä, kuinka kohteet kasvavat tai kutistuvat täyttämään käytettävissä olevan tilan.
+`FlexLayout` -komponentti asettaa lapsikomponentteja riviin tai sarakkeeseen CSS Flexbox -mallin avulla. Se antaa sinulle hallinnan kohdistuksessa, väleissä, kääntämisessä ja siinä, miten elementit kasvavat tai kutistuvat täyttääkseen käytettävissä olevan tilan.
 
 <!-- INTRO_END -->
 
 ## `FlexLayout` ominaisuudet {#flex-layout-properties}
 
-`FlexLayout` -ominaisuudet voidaan jakaa kahteen kategoriaan: ominaisuudet, jotka koskevat elementtejä, jotka ovat asettuneet asetteluun, ja ominaisuudet, jotka koskevat itse asettelua. `FlexLayout`, eli vanhelementti, on laatikko/asti, joka voi sisältää yhden tai useamman komponentin. Kaikkea `FlexLayoutin` sisällä kutsutaan kohteeksi tai lapsielementiksi. `FlexLayout` tarjoaa joitakin kohdistusmahdollisuuksia, jotka voidaan saavuttaa joko astiapropertyjen tai kohdepropertyjen avulla.
+`FlexLayout`-ominaisuudet voidaan jakaa kahteen kategoriaan: ominaisuudet, jotka koskevat elementtejä, jotka sijaitsevat asettelun sisällä, ja ominaisuudet, jotka koskevat itse asettelua. `FlexLayout` tai vanhelementti on laatikko/säiliö, joka voi sisältää yhden tai useamman komponentin. Kaikkea `FlexLayout`:n sisällä kutsutaan item- tai lapsielemetiksi. `FlexLayout` tarjoaa joitain kohdistusmahdollisuuksia, jotka voidaan saavuttaa joko säiliö- tai item-ominaisuuksien avulla.
 
 :::tip
-`FlexLayout` -komponentti noudattaa [CSS:n flexbox-asettelu](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) -mallia. Kuitenkin, `FlexLayout` on tarkoitettu käytettäväksi kokonaan Javassa, eikä se vaadi CSS:n käyttöä Java API -menetelmien ulkopuolella.
+`FlexLayout` komponentti seuraa [CSS:n flexbox-asettelun](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) kaaviota. Kuitenkin, `FlexLayout` on suunniteltu käytettäväksi täysin Javassa, eikä se vaadi CSS:n käyttöä Java API -menetelmien ulkopuolella.
 :::
 
-## Astia ominaisuudet {#container-properties}
+## Säiliöominaisuudet {#container-properties}
 
-Astiaominaisuudet kohdistuvat kaikkiin komponentteihin asettelun sisällä, eivätkä itse asetteluun. Ne eivät vaikuta vanhemman suuntaan tai sijoitteluun, vain lapsikomponentteihin sisällä.
+Säiliöominaisuudet vaikuttavat kaikkiin komponentteihin, jotka sijaitsevat komponentin sisällä, eivätkä itse asetteluun. Ne eivät vaikuta vanhemman suuntaan tai sijaintiin, vaan vain lapsikomponentteihin sisällä.
 
 ### Suunta {#direction}
 
-`FlexLayout` lisää komponentteja vierekkäin sen suunnan mukaan, joko vaaka- tai pystysuunnassa. Käytettäessä rakentajaa, yhdistä `horizontal()`, `horizontalReverse()`, `vertical()`, tai `verticalReverse()` -menetelmät `FlexLayout.create()` -menetelmään asettelun määrittämiseksi objektin luomisen yhteydessä.
+`FlexLayout` lisää komponentteja vierekkäin sen suunnan mukaan, joka voi olla vaaka- tai pystysuuntainen. Rakentajaa käytetään ketjuttamalla `horizontal()`, `horizontalReverse()`, `vertical()` tai `verticalReverse()` menetelmiä `FlexLayout.create()` -menetelmän kanssa, jotta asettelua voidaan määrittää objektin luontivaiheessa.
 
-Asettaaksesi suunnan olemassa olevalle `FlexLayout` -kohteelle, käytä `setDirection()` -menetelmää. Vaaka-suuntavaihtoehdot ovat `FlexDirection.ROW` (vasemmalta oikealle) tai `FlexDirection.ROW_REVERSE` (oikealta vasemmalle), ja pystysuuntavaihtoehdot ovat `FlexDirection.COLUMN` (ylhäältä alas) tai `FlexDirection.COLUMN_REVERSE` (alhaalta ylös). 
+Asettaaksesi suunnan olemassa olevaan `FlexLayout` -objektiin, käytä `setDirection()` -menetelmää. Vaakasuunnat ovat `FlexDirection.ROW` (vasemmalta oikealle) tai `FlexDirection.ROW_REVERSE` (oikealta vasemmalle), ja pystysuunnat ovat `FlexDirection.COLUMN` (ylhäältä alas) tai `FlexDirection.COLUMN_REVERSE` (alhaalta ylös). 
 
-<ComponentDemo 
-path='/webforj/flexdirection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="275px"
+<ComponentDemo
+path='/webforj/flexdirection'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='275px'
 />
 
 ### Sijoittaminen {#positioning}
 
-Vaakasuoraan lisättyjä komponentteja voidaan myös sijoittaa sekä vaaka- että pystysuunnassa. Käytä `FlexLayout` -rakentajan `justify()`, `align()` ja `contentAlign()` -menetelmiä sijoittelun määrittämiseksi uuden `FlexLayout` -asettelun luomisen yhteydessä.
+Vaakasuoraan lisättyjä komponentteja voidaan myös sijoittaa sekä vaaka- että pystysuunnassa. Käytä `justify()`, `align()` ja `contentAlign()` -menetelmiä `FlexLayout`-rakentajassa määrittääksesi sijoittamisen, kun luot uuden `FlexLayout`-objektin.
 
-Vaihtoehtoisesti itse `FlexLayout` -kohteessa voit käyttää `setJustifyContent()` -menetelmää kohteiden sijoittamiseen vaaka suunnassa ja `setAlignment()` -menetelmää pystysuuntaiseen sijoitteluun. Muuttaaksesi alueen ympärillä komponentteja poikkisuunnassa (y-akselilla vaakasuorissa asetteluissa), käytä `setAlignContent()` -menetelmää.
+Vaihtoehtoisesti, varsinaisessa `FlexLayout` -objektissa voit käyttää `setJustifyContent()` -menetelmää sijoittaaksesi elementtejä vaakasuoraan ja `setAlignment()` -menetelmää pystysijoituksen määrittämiseksi. Muuttaaksesi aluetta komponenttien ympärillä poikkisuunnassa (y-akseli vaakasuorissa asetteluissa), käytä `setAlignContent()` -menetelmää.
 
 :::tip
-`setAlignment()` -menetelmä hallitsee, kuinka kohteet tulevat näkyviin poikkisuunnassa kokonaisuutena astiassa, ja se on tehokas yksirivisissä asetteluissa.
+`setAlignment()` -menetelmä ohjaa, kuinka elementit näyttäytyvät poikkisuunnassa kokonaisuutena säiliössä, ja se on tehokas yksirivisissä asetteluissa.
 
-`setAlignContent()` -menetelmä hallitsee tilaa poikkisuunnassa, ja se vaikuttaa vain silloin, kun asettelu sisältää useita rivejä.
+`setAlignContent()` -menetelmä ohjaa tilaa poikkisuunnassa, ja se astuu voimaan vain, kun asettelulla on useita rivejä.
 :::
 
-<ComponentDemo 
-path='/webforj/flexpositioning?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="375px"
+<ComponentDemo
+path='/webforj/flexpositioning'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='375px'
 />
 
 ### Kääntäminen {#wrapping}
 
-`FlexLayout` -komponentin mukauttamiseksi voit määrittää sen käyttäytymisen, kun komponentit lisätään, jotka eivät enää mahdu näyttöön. Määrittääksesi tämän käyttäen rakentajaa, käytä `nowrap()` (oletus), `wrap()`, ja `wrapReverse()` -menetelmiä kääntämiseksi. Määrittääksesi tämän olemassa olevalle `FlexLayout` -kohteelle, käytä `setWrap()` -menetelmää.
+`FlexLayout` -komponentin käyttäytymistä voidaan muokata, kun komponentteja lisätään, jotka eivät enää mahdu näyttöön. Voit määrittää tämän rakennettaessa `nowrap()` (oletus), `wrap()` ja `wrapReverse()` -menetelmillä. Olemassa olevaan `FlexLayout` -objektiin voidaan määrittää tämä käyttämällä `setWrap()` -menetelmää.
 
 ### Väli {#spacing}
 
-Kohteiden väli-ominaisuuden määrittämiseksi voit asettaa `gap` -ominaisuuden. Se soveltaa tätä väliä vain kohteiden välillä, ei ulkoreunoilla. 
+Välin asettamiseksi elementtien välille voit määrittää `gap` -ominaisuuden. Se soveltuu vain elementtien väliin, ei ulkoreunoille. 
 
-Väliomaisuuden käyttäytyminen voidaan ymmärtää minimietäisyytenä, joten se tulee voimaan vain, jos se on suurin lasketun tilan väli kohteiden välillä. Jos tilan väli kohteiden välillä olisi muuten suurempi toisen lasketun ominaisuuden vuoksi, kuten `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, niin väliomaisuus ohitetaan.
+Gap-ominaisuuden toimintaa voidaan ajatella vähimmäisetäisyytenä, joten se astuu voimaan vain, jos se on suurin laskettu etäisyys elementtien välillä. Jos elementtien välinen etäisyys olisi muutoin suurempi toisen lasketun ominaisuuden vuoksi, kuten `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, silloin gap-ominaisuutta ei oteta huomioon.
 
 ### Virta {#flow}
 
-Flex-virta, joka on yhdistelmä sekä suunta että kääntöominaisuudet, voidaan asettaa käyttämällä `setFlow()` -menetelmää `FlexLayout` -kohteessa. 
+Flex-virta, joka on yhdistelmä suunta- ja wrap-ominaisuuksia, voidaan asettaa käyttämällä `setFlow()` -menetelmää `FlexLayout` -objektissa. 
 
 :::info
-Määrittääksesi tämän ominaisuuden asettelun luomisen yhteydessä, käytä oikeita suunta- ja kääntömenetelmiä. Esimerkiksi, luodaksesi pystysuoran kääntövirran, käytä `.vertical().wrap()` yhdistelmää.
+Voit määrittää tämän ominaisuuden luotaessa asettelua käyttämällä oikeita suunta- ja wrap-menetelmiä. Esimerkiksi, luodaksesi pystysuuntaisen kääntövirran, käytä `.vertical().wrap()` -yhdistelmää.
 :::
 
-### Astiarakentaja {#container-builder}
+### Säiliörakentaja {#container-builder}
 
-Seuraava demo mahdollistaa astian rakentamisen halutuilla flex-ominaisuuksilla, jotka on valittu eri valikoista. Tätä työkalua voidaan käyttää ei vain luomaan visuaalista esimerkkiä eri menetelmistä, vaan myös luomaan omia asetteluja haluamillasi ominaisuuksilla. Käyttääksesi mukautettua asettelua, kopioi vain tuotokoodin ja lisää haluamasi elementit käytettäväksi ohjelmassasi.
+Seuraava demo mahdollistaa säiliön rakentamisen valituista flex-ominaisuuksista eri valikoista. Tätä työkalua voidaan käyttää paitsi visuaalisen esimerkin luomiseen eri menetelmistä myös omien asettelujen luomiseen haluamistasi ominaisuuksista. Käytä mukautettua asettelua kopioimalla vain tuotokoodia ja lisäämällä haluamasi elementit käyttöön ohjelmassasi.
 
-<ComponentDemo 
-path='/webforj/flexcontainerbuilder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="600px"
+<ComponentDemo
+path='/webforj/flexcontainerbuilder'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='600px'
 />
 
+<!-- ISOSSA KOODIPALAA NÄYTETÄÄN SÄILIÖ -->
+## Item-ominaisuudet {#item-properties}
 
-<!-- BIG CODE SNIPPET SHOWING CONTAINER -->
-## Kohde ominaisuudet {#item-properties}
-
-Kohdeominaisuudet eivät vaikuta mihinkään lapsielementteihin `FlexLayout` -yhteydessä, vaan vaikuttavat itse asetteluun. Tämä on hyödyllistä, kun haluat muotoilla yksittäisen `FlexLayout` -elementin, joka on suuremman `FlexLayout` -elementin lapsi eristyksissä tyyleistä, jotka koskevat kaikkia lapsia.
+Item-ominaisuudet eivät vaikuta mihinkään lapsielementteihin `FlexLayout`:ssa, vaan vaikuttavat itse asetteluun. Tämä on hyödyllistä, kun haluat tyylitellä yksittäistä `FlexLayout`-elementtiä, joka on suuremman `FlexLayout`-elementin lapsi eristyksissä muista lapsista sovellettavista tyyleistä.
 
 ### Järjestys {#order}
 
-`ItemOrder` -ominaisuus määrittää järjestyksen, jossa komponentit näytetään `FlexLayout` -sivustolla, ja kun sitä käytetään `FlexLayout` -kohteessa, se määrittää kohteelle erityisen järjestysnumeron. Tämä ohittaa jokaisen kohteen oletus "lähdejärjestyksen", ja tarkoittaa, että se näytetään ennen kohteita, joilla on korkeampi järjestys, ja jälkeen kohteita, joilla on matalampi järjestys.
+`ItemOrder` -ominaisuus määrittää järjestyksen, jossa komponentit näytetään `FlexLayout`:ssa, ja käytettäessä `FlexLayout`-objektissa antaa itemille tämän asettelun spesifisen järjestysnumeron. Tämä ohittaa oletus "lähdejärjestyksen", joka on rakennettu jokaiselle itemille (se järjestys, jossa komponentti lisätään sen vanhempaan), ja tarkoittaa, että se näytetään ennen korkeamman järjestyksen omaavia itemtejä ja alempiarvoisten järjestyksellä.
 
-Tämä ominaisuus hyväksyy yksittäisen kokonaislukuarvon, joka määrittää flex-kohteen suhteellisen järjestyksen astiassa. Mitä matalampi arvo, sitä aikaisemmin kohde ilmestyy järjestyksessä. Esimerkiksi, kohde, jonka järjestysarvo on 1, ilmestyy ennen kohdetta, jonka järjestysarvo on 2.
+Tämä ominaisuus hyväksyy kokonaisluvun, joka määrittää joustavan itemin suhteellisen järjestyksen säiliössä. Mitä pienempi arvo, sitä aikaisemmin itemi ilmestyy järjestyksessä. Esimerkiksi item, jolla on järjestysarvo 1, ilmestyy ennen itemiä, jolla on järjestysarvo 2.
 
 :::caution
-On tärkeää huomata, että järjestysominaisuus vaikuttaa vain kohteiden näkyvään järjestykseen astiassa, ei niiden todelliseen sijaintiin DOM:ssa. Tämä tarkoittaa, että ruudunlukijat ja muut apuvälineet lukevat edelleen kohteet järjestyksessä, jossa ne ilmestyvät lähdekoodissa, eivät näkyvässä järjestyksessä.
+On tärkeää huomata, että järjestysominaisuus vaikuttaa vain elementtien visuaaliseen järjestykseen säiliössä, ei niiden todelliseen sijaintiin DOM:issa. Tämä tarkoittaa, että näytönlukijat ja muut apuvälineet lukevat silti elementit siinä järjestyksessä, johon ne ilmestyvät lähdekoodissa, eikä visuaalisessa järjestyksessä.
 :::
 
-<ComponentDemo 
-path='/webforj/flexorder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="320px"
+<ComponentDemo
+path='/webforj/flexorder'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='320px'
 />
 
-### Itsensä kohdistaminen {#self-alignment}
+### Itse kohdistaminen {#self-alignment}
 
-`FlexLayout`'n itsensä kohdistaminen viittaa siihen, kuinka yksittäinen `FlexLayout` -kohde kohdistuu sen vanhempaan flex-astiaan poikkisuunnassa, joka on kohtisuorassa pääakselia vastaan. Poikkisuunnan kohdistamista ohjataan `Alignment` -ominaisuudella.
+`FlexLayout` -tekijän itse kohdistaminen viittaa siihen, miten yksittäinen `FlexLayout` -objekti on kohdistettu sen vanhempaan joustaviin säiliöihin poikkisuunnassa, joka on pystysuoraa pääakselia vastaan. Poikkisuuntainen kohdistus ohjataan `Alignment` -ominaisuudella.
 
-Align-self -ominaisuus määrittää yksittäisen flex-kohteen kohdistamisen poikkisuunnassa, ohittaen oletuskohdistamisen, joka on asetettu `AlignContent` -ominaisuuden mukaan `FlexLayout` -kohteessa. Tämä mahdollistaa yksittäisten `FlexLayout` -kohteiden kohdistamisen eri tavalla kuin muut astiassa olevat.
+Align-self-ominaisuus määrittää yksittäisen joustavan itemin kohdistuksen poikkisuunnassa, ohittaen `AlignContent` -ominaisuuden asetetun oletuskohtauksen `FlexLayout` -objektissa. Tämä sallii yksittäisten `FlexLayout` -objektien kohdistamisen eri tavalla kuin muut säiliössä.
 
 :::info
-Itsensä kohdistaminen käyttää samoja arvoja kuin sisällön kohdistaminen.
+Itsekohdistamisessa käytetään samoja arvoja kuin sisällön kohdistamisessa.
 :::
 
-Tämä ominaisuus on erityisen hyödyllinen, kun sinun on kohdistettava tietty kohde eri tavalla kuin muut kohteet astiassa. Katso alla oleva esimerkki yksittäisen kohteen kohdistamisesta:
+Tämä ominaisuus on erityisen hyödyllinen, kun sinun on kohdistettava tietty item eri tavalla kuin muut itemit säiliössä. Katso alla olevaa esimerkkiä yksittäisen kohdistetun itemin kohdistamisesta:
 
-<ComponentDemo 
-path='/webforj/flexselfalign?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="350px"
+<ComponentDemo
+path='/webforj/flexselfalign'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='350px'
 />
 
-### Flex-basis {#flex-basis}
+### Flex-perusta {#flex-basis}
 
-`Item Basis` on ominaisuus, jota käytetään yhdessä `FlexLayout`'n suunnan kanssa määrittämään flex-kohteen aloituskoko ennen kuin jäljelle jäävä tila jaetaan.
+`Item Basis` on ominaisuus, jota käytetään yhdessä `FlexLayout` -suunnan kanssa asettaaksesi joustavan itemin alkukoon ennen kuin mitään jäljellä olevaa tilaa jaetaan.
 
-`Item Basis` -ominaisuus määrittää flex-kohteen oletuskoko pääakselin suuntaan, joka on joko vaakasuora (rivin suunta) tai pystysuora (sarakkeen suunta). Tämä ominaisuus asettaa flex-kohteen leveyden tai korkeuden riippuen flex-suunta -ominaisuuden arvosta.
+`Item Basis` -ominaisuus määrittää joustavan itemin oletuskooltaan pääakselilla, joka voi olla vaaka (rivin suunta) tai pystysuunnassa (sarakkeen suunta). Tämä ominaisuus asettaa joustavan itemin leveyden tai korkeuden riippuen joustavan suuntaparametrin arvosta.
 
 :::info
-Oletuksena `Item Basis` -ominaisuus asetetaan `auto`, mikä tarkoittaa, että kohteen koko määräytyy sen sisällön mukaan. Voit kuitenkin myös asettaa tarkasti koon kohteelle käyttämällä erilaisia yksiköitä, kuten pikseleitä (px), em-yksiköitä (em), prosenttia (%) tai mitä tahansa muuta CSS-pituusyksikköä.
+Oletusarvoisesti `Item Basis` -ominaisuus on asetettu `autoksi`, mikä tarkoittaa, että itemin koko määräytyy sen sisällön mukaan. Voit kuitenkin myös määrittää itemille tietyn koon käyttämällä erilaisia yksiköitä, kuten pikseleitä (px), em(-yksiköitä) (em), prosentteja (%) tai muitakin CSS-pituusmittayksiköitä.
 :::
 
-Seuraava demo mahdollistaa valita yksi tai useampi laatikko ja muuttaa `Item Basis` -arvoa valituille kohteille.
+Seuraava demo mahdollistaa yhden tai useamman laatikon valinnan ja `Item Basis` -arvon muuttamisen valituille itemeille.
 
-<ComponentDemo 
-path='/webforj/flexbasis?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java'
-height="300px"
+<ComponentDemo
+path='/webforj/flexbasis'
+files={['src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java']}
+height='300px'
 />
 
-### Flex-kasvu ja -kutistus {#flex-grow--shrink}
+### Flex kasvu ja kutistus {#flex-grow--shrink}
 
-`Item Grow` ja `Item Shrink` ovat kaksi ominaisuutta, jotka työskentelevät yhdessä toistensa sekä `Item Basis` -ominaisuuden kanssa määrittääkseen, kuinka flex-kohteet kasvavat tai kutistuvat täyttämään käytettävissä olevan tilan `FlexLayout` -kohteessa.
+`Item Grow` ja `Item Shrink` ovat kaksi ominaisuutta, jotka toimivat yhdessä ja `Item Basis` -ominaisuuden kanssa määrittämään, miten joustavat itemit kasvavat tai kutistuvat täyttääkseen käytettävissä olevan tilan `FlexLayout` -objektissa.
 
-`Item Grow` -ominaisuus määrittää, kuinka paljon flex-kohde voi kasvaa suhteessa muihin kohteisiin astiassa. Se ottaa yksikköarvon, joka edustaa osaa käytettävissä olevasta tilasta, joka tulisi varata kohteelle. Esimerkiksi, jos yhdellä kohteella on `Item Grow` -arvo 1 ja toisella arvo 2, toinen kohde kasvaa kaksi kertaa enemmän kuin ensimmäinen.
+`Item Grow` -ominaisuus määrittää, kuinka paljon joustava item voi kasvaa suhteessa muihin itemeihin säiliössä. Se ottaa yksikköä ilman arvoa, joka edustaa osuutta käytettävissä olevasta tilasta, joka tulee varata itemille. Esimerkiksi, jos yhdellä itemillä on `Item Grow` -arvo 1 ja toisella arvo 2, toinen item kasvaa kaksinkertaisesti ensimmäiseen verrattuna.
 
-`Item Shrink` -ominaisuus puolestaan määrittää, kuinka paljon flex-kohde voi kutistua suhteessa muihin kohteisiin astiassa. Se ottaa myös yksikköarvon, joka edustaa osaa käytettävissä olevasta tilasta, joka tulisi varata kohteelle. Esimerkiksi, jos yhdellä kohteella on `Item Shrink` -arvo 1 ja toisella arvo 2, toinen kohde kutistuu kaksi kertaa enemmän kuin ensimmäinen.
+`Item Shrink` -ominaisuus puolestaan määrittää, kuinka paljon joustava item voi kutistua suhteessa muihin itemeihin säiliössä. Se ottaa myös yksikköä ilman arvoa, joka edustaa osuutta käytettävissä olevasta tilasta, joka tulee varata itemille. Esimerkiksi, jos yhdellä itemillä on `Item Shrink` -arvo 1 ja toisella arvo 2, toinen item kutistuu kaksinkertaisesti ensimmäiseen verrattuna.
 
-Kun astiassa on enemmän tilaa kuin on tarpeen sen sisältöjen mahtumiseksi, flex-kohteet, joilla on `Item Grow` -arvo suurempi kuin 0, laajenevat täyttämään käytettävissä olevan tilan. Kukin kohteen saama tila määräytyy sen `Item Grow` -arvon ja kaikkien astiassa olevien kohteiden yhteenlasketun `Item Grow` -arvon suhteessa.
+Kun säiliöllä on enemmän tilaa kuin sen sisältöä varten on tarpeen, joustavat itemit, joiden `Item Grow` -arvo on suurempi kuin 0, laajenevat täyttämään käytettävissä olevan tilan. Tavoitteena on käyttää suhde `Item Grow` -arvoa suhteessa kaikkien säiliöelementtien kokonaisarvoon.
 
-Vastaavasti, kun astiassa ei ole tarpeeksi tilaa sen sisältöjen mahtumiseksi, flex-kohteet, joilla on `Item Shrink` -arvo suurempi kuin 0, kutistuvat mahtumaan käytettävissä olevaan tilaan. Kukin kohteen luopuma tila määräytyy sen `Item Shrink` -arvon ja kaikkien astiassa olevien kohteiden yhteenlasketun `Item Shrink` -arvon suhteessa.
+Vastaavasti, kun säiliöllä ei ole tarpeeksi tilaa mukaansa sisältöään, joustavat itemit, joiden `Item Shrink` -arvo on suurempi kuin 0, kutistuvat mahtuakseen käytettävissä olevaan tilaan. Tavoitteena on käyttää suhde `Item Shrink` -arvoa suhteessa kaikkien säiliöelementtien kokonaisarvoon.
 
 ## Esimerkkilomake {#example-form}
-Alla oleva lomake havainnollistaa, kuinka `FlexLayout` järjestää syötteet rakenteelliseksi asetteluksi.
+Alla oleva lomake osoittaa, kuinka `FlexLayout` järjestää syöttökentät rakenteelliseen asetteluun. 
 
 :::tip
-Jos suosittelet sarakkeisiin perustuvaa rakennetta, tutustu lomakkeen `ColumnsLayout` -versioon [`ColumnsLayout`](../components/columns-layout) artikkelissa nähdäksesi, miten se vertautuu.
+Jos preferoit sarakepohjaista rakennetta, tarkista lomakkeen `ColumnsLayout` -versio [`ColumnsLayout`](../components/columns-layout) artikkelissa nähdäksesi kuinka se vertautuu.
 :::
 
-<ComponentDemo 
-path='/webforj/flexlayout?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java'
-cssURL='/css/flexlayout/flexLayout.css'
-height="620px"
+<ComponentDemo
+path='/webforj/flexlayout'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java',
+  'src/main/resources/static/css/flexlayout/flexLayout.css',
+]}
+height='620px'
 />

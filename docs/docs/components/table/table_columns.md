@@ -2,6 +2,7 @@
 sidebar_position: 5
 title: Columns
 slug: columns
+description: Define Table columns with labels, value providers, visibility, navigability, sizing, and user-interaction events.
 ---
 
 <DocChip chip='since' label='24.00' />
@@ -36,17 +37,16 @@ To set a value provider on a column, use one of the `addColumn()` methods from t
 In the following snippet, a column will attempt to access data from a JSON object, rendering it only if the data isn't null.
 
 ```java
-    List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
-
-    for (String column : columnsList) {
-      table.addColumn(column, (JsonObject person) -> {
-        JsonElement element = person.get(column);
-        if (!element.isJsonNull()) {
-          return element.getAsString();
-        }
-        return "";
-      });
+List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
+for (String column : columnsList) {
+  table.addColumn(column, (JsonObject person) -> {
+    JsonElement element = person.get(column);
+    if (!element.isJsonNull()) {
+      return element.getAsString();
     }
+    return "";
+  });
+}
 ```
 
 ### Visibility {#visibility}
@@ -74,11 +74,13 @@ After establishing a column’s identity, the next step is to control how its co
 Setting a column’s alignment lets you create organized tables, which can help users identify the different sections in the `Table`.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnalignment?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnalignment'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -96,11 +98,13 @@ In the preceding example, the final column for `Cost` has been right-aligned to 
 Column pinning is a feature that allows users to affix or "pin" a column to a specific side of the `Table`. This is useful when certain columns, such as identifiers or essential information, need to remain visible while scrolling horizontally through a table.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnpinning?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnpinning'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -163,8 +167,8 @@ The `setMaxWidth()` method limits how wide a column can grow, preventing columns
 
 ```java
 table.addColumn("Description", Product::getDescription)
-    .setMinWidth(100f)
-    .setMaxWidth(300f);
+  .setMinWidth(100f)
+  .setMaxWidth(300f);
 ```
 
 The `maxWidth` property limits column growth for all column types and will never be exceeded regardless of content, container size, or flex settings.
@@ -191,11 +195,13 @@ Key flex behaviors:
 - **Respects constraints**: Works with minimum width/maximum width constraints. Without minimum width, flex columns can shrink to 0.
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnflexsizing?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnFlexSizingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnflexsizing'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnFlexSizingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='550px'
 />
 <!-- vale on -->
@@ -215,7 +221,7 @@ Automatically size columns based on their content. The `Table` analyzes the data
 ```java
 // Auto-size all columns to fit content
 table.setColumnsToAutoSize().thenAccept(c -> {
-    // Sizing complete - columns now fit their content
+  // Sizing complete - columns now fit their content
 });
 
 // Auto-size specific column
@@ -229,7 +235,7 @@ Distribute all columns proportionally across the available `Table` width. This o
 ```java
 // Fit columns to table width (equivalent to setting flex=1 on all)
 table.setColumnsToAutoFit().thenAccept(ignored -> {
-    // All columns now share space equally
+  // All columns now share space equally
 });
 ```
 
@@ -238,11 +244,13 @@ Auto-sizing methods return `PendingResult<Void>` because they require client-sid
 :::
 
 <!-- vale off -->
-<ComponentDemo 
-path='/webforj/tablecolumnautosizing?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnAutoSizingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumnautosizing'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnAutoSizingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='550px'
 />
 <!-- vale on -->
@@ -320,7 +328,7 @@ table.moveColumn(titleColumn, table.getColumns().size() - 1);
 
 // Async movement with callback
 table.moveColumn("description", 2).thenAccept(c -> {
-    // Column moved successfully
+  // Column moved successfully
 });
 ```
 
