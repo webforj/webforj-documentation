@@ -3,6 +3,7 @@ title: Integrations
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: has-new-content
+description: Combine webforJ with Spring Boot, Spring Data, Kotlin DSL, Webswing, JBang, and AI tooling while keeping your backend stack independent.
 ---
 
 <Head>

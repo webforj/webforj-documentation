@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Route Types
+description: Distinguish webforJ view routes that map to URL segments from layout routes that wrap shared UI without affecting the path.
 ---
 
 Routes are classified into two main types, **View Routes** and **Layout Routes**. The choice of route type determines how components are mapped to URLs and how they interact with other parts of your app.
@@ -12,9 +13,10 @@ View routes map directly to a URL segment and represent specific pages in your a
 ```java
 @Route(value = "home")
 public class HomeView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public HomeView() {
-    Div content = getBoundComponent();
-    content.add(new H1("Home Page"));
+    self.add(new H1("Home Page"));
   }
 }
 ```
@@ -64,9 +66,10 @@ public class MainLayout extends Composite<AppLayout> {
 // Automatically detected as View
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public DashboardView() {
-    Div content = getBoundComponent();
-    content.add(new H1("Dashboard Content"));
+    self.add(new H1("Dashboard Content"));
   }
 }
 ```

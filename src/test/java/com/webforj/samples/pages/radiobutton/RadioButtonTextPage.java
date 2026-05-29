@@ -7,14 +7,15 @@ import com.webforj.samples.pages.SupportedLanguage;
 
 public class RadioButtonTextPage {
 
-    private static final String ROUTE = "radiobuttontext";
+  private static final String ROUTE = "radiobuttontext";
 
-    private final Locator leftAlignedRB;
+  private final Locator leftAlignedRB;
 
-    public RadioButtonTextPage(Page page) {
+  public RadioButtonTextPage(Page page) {
 
-        this.leftAlignedRB = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Left aligned"));
-    }
+    this.leftAlignedRB =
+        page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Left aligned"));
+  }
 
     public static String getRoute(SupportedLanguage language) {
         return language.getPath(ROUTE);

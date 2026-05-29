@@ -1,13 +1,13 @@
 ---
 sidebar_position: 3
 title: HTML Element Components
-_i18n_hash: 86c5e2ee07360ad502e8857eb68cebe2
+_i18n_hash: 9b4589a970d529d60503af3b502742ac
 ---
-Vaikka webforJ:n `Element`-luokka antaa käyttäjille mahdollisuuden luoda HTML-elementtejä sovelluksissaan, webforJ:n ydinkomponenttien mukana on mukana joukko vakio-HTML-elementtejä helppokäyttöisyyden vuoksi.
+Vaikka webforJ:n `Element`-luokka sallii käyttäjien luoda HTML-elementtejä sovelluksissaan, webforJ:n ydinkomponenttien mukana on tarjoiltu joukko standardeja HTML-elementtejä käyttömukavuuden vuoksi.
 
 Seuraavia komponentteja voidaan käyttää, ja ne vastaavat vastaavia HTML-elementtejä:
 
-|webforJ-luokka|HTML-elementti|Voiko lisätä komponentteja?|
+|webforJ-luokka|HTML-elementti|Voi lisätä komponentteja?|
 |:--:|:--:|:--:|
 |`Anchor`|`<a>`| ✔️ |
 |`Article`|`<article>`| ✔️ |
@@ -34,6 +34,6 @@ Seuraavia komponentteja voidaan käyttää, ja ne vastaavat vastaavia HTML-eleme
 |`Strong`|`<strong>`| ✔️ |
 |`UnorderedList`|`<ul>`| ✔️ |
 
-Näitä komponentteja on toteutettu tarjoamaan API, jonka avulla voidaan käyttää erilaisia ominaisuuksia, attribuutteja ja toimintoja, joita näiltä elementeiltä odotetaan.
+Nämä komponentit on toteutettu tarjoamaan API vuorovaikutukseen eri ominaisuuksien, attribuuttien ja toiminnallisuuksien kanssa, joita näiltä elementeiltä odotetaan.
 
-Menetelmiä on myös tarjottu komponenttien lisäämiseen, poistamiseen ja käyttämiseen, kuten on esitetty [`Element`](../elements.md#component-interaction) -luokan tässä osassa.
+Menetelmiä on myös tarjolla komponenttien lisäämiseen, poistamiseen ja käyttöön, kuten on kuvattu tämän [`Element`](../elements.md#component-interaction) -luokan osassa.

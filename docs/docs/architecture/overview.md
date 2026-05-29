@@ -2,6 +2,7 @@
 title: Architecture
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Explore the webforJ architecture, covering client and server interaction, BBj control mapping, and the DwcComponent foundation.
 ---
 
 <Head>

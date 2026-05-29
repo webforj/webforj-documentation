@@ -1,0 +1,33 @@
+.settings-container {
+    min-height: 100vh;
+    padding: var(--dwc-space-xl);
+}
+
+.settings-card {
+    background: var(--dwc-surface-3);
+    border-radius: var(--dwc-border-radius-l);
+    border: 1px solid var(--dwc-border-color);
+    padding: var(--dwc-space-m);
+    max-width: 400px;
+    width: 100%;
+}
+
+.settings-title {
+    margin: 0 0 var(--dwc-space-xs) 0;
+}
+
+.section-title {
+    margin: var(--dwc-space-m) 0 var(--dwc-space-s) 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.advanced-settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dwc-space-s);
+    padding: var(--dwc-space-s);
+    border-radius: var(--dwc-border-radius-m);
+    border: 1px solid var(--dwc-border-color);
+    margin-top: var(--dwc-space-xs);
+}

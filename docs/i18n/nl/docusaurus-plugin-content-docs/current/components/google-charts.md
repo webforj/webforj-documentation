@@ -1,52 +1,62 @@
 ---
 title: Google Charts
 sidebar_position: 50
-_i18n_hash: b477c90cfb24a59329f3047d7ae7d24c
+_i18n_hash: 31a5912850ae78f116c6738b99910d25
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="google-chart" exclude= 'true' />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="googlecharts" location="com/webforj/component/googlecharts/GoogleChart" top='true'/>
 
-<!-- Korte overzicht van de component en wat het is/doet -->
+De `GoogleChart` component integreert de [Google Charts](https://developers.google.com/chart) bibliotheek in webforJ, waardoor je toegang krijgt tot grafiektypes zoals staafdiagram, lijndiagram, cirkeldiagram, geografische kaarten en meer. Grafieken worden geconfigureerd met Java door een type, een dataset en een opties kaart die het uiterlijk en de functionaliteit beheert.
 
-:::info Importeren van Google Charts
-Om de `GoogleChart`-klasse in uw app te gebruiken, gebruikt u de volgende XML in uw POM-bestand:
+<!-- INTRO_END -->
+
+## Een grafiek maken {#creating-a-chart}
+
+:::info Google Charts importeren
+Om de `GoogleChart` klasse in je app te gebruiken, gebruik je de volgende XML in je POM-bestand:
 
 ```xml
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-googlecharts</artifactId>
-    <version>${webforj.version}</version>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-googlecharts</artifactId>
+  <version>${webforj.version}</version>
 </dependency>
 ```
 :::
 
-De `GoogleChart`-klasse is een uitgebreide oplossing voor het inbedden van rijke, interactieve grafieken binnen webapplicaties. Deze klasse fungeert als een brug naar de [Google Charts](https://developers.google.com/chart) bibliotheek, die een breed scala aan grafiektypen biedt die geschikt zijn voor elke datavisualisatietaak.
+Om een grafiek te maken, specificeer je een grafiektype, configureer je de visuele opties en geef je de data op die weergegeven moet worden.
 
-<ComponentDemo 
-path='/webforj/chart?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartView.java'
-cssURL='/css/googlecharts/chart.css'
+Dit voorbeeld maakt een geografische grafiek die de omzetdata over verschillende landen in kaart brengt, met aangepaste kleuren, legendepositie en sizing van de grafiek:
+
+<ComponentDemo
+path='/webforj/chart'
+files={[
+  'src/main/java/com/webforj/samples/views/googlecharts/ChartView.java',
+  'src/main/resources/static/css/googlecharts/chart.css',
+]}
 height='300px'
 />
 
-## Grafiektypen {#chart-types}
+## Grafiektypes {#chart-types}
 
-De `GoogleChart`-plugin biedt een uitgebreide reeks grafiektypen om aan verschillende behoeften voor datavisualisatie te voldoen. Het selecteren van het juiste grafiektype is essentieel voor het effectief communiceren van het verhaal van de gegevens. Zie de galerij hieronder voor voorbeelden van veelvoorkomende grafieken die kunnen worden gebruikt in een webforJ-app.
+De `GoogleChart` addon biedt een uitgebreide reeks grafiektypes om aan verschillende vereisten voor datavisualisatie te voldoen. Het selecteren van het juiste grafiektype is essentieel voor het effectief communiceren van het verhaal van de data. Zie de galerij hieronder voor voorbeelden van veelvoorkomende grafieken die in een webforJ-app kunnen worden gebruikt.
 
-<ComponentDemo 
-path='/webforj/chartgallery?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java'
-cssURL='/css/googlecharts/chartGallery.css'
+<ComponentDemo
+path='/webforj/chartgallery'
+files={[
+  'src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java',
+  'src/main/resources/static/css/googlecharts/chartGallery.css',
+]}
 height='600px'
 />
 
 ## Opties {#options}
 
-De `GoogleChart`-plugin maakt uitgebreide aanpassing mogelijk via verschillende opties. Deze opties stellen u in staat om het uiterlijk en de functionaliteit van uw grafieken aan te passen aan de behoeften van uw app. Opties worden doorgegeven als een `Map<String, Object>` aan de `setOptions()`-methode van de grafiek. 
+De `GoogleChart` addon maakt uitgebreide aanpassing mogelijk via een verscheidenheid aan opties. Deze opties stellen je in staat om de uitstraling en functionaliteit van je grafieken aan te passen aan de behoeften van je app. Opties worden doorgegeven als een `Map<String, Object>` aan de `setOptions()` methode van de grafiek.
 
-Hier is een voorbeeld van het instellen van de opties van een grafiek:
+Hier is een voorbeeld voor het instellen van de opties van een grafiek:
 
 ```java
 Map<String, Object> options = new HashMap<>();
@@ -57,22 +67,22 @@ options.put("backgroundColor", "#EFEFEF");
 chart.setOptions(options);
 ```
 
-Voor meer informatie over de beschikbare opties voor specifieke grafieken, zie de [Google Visualization API-referentie (Grafiekgalerie)](https://developers.google.com/chart/interactive/docs/gallery).
+Voor meer informatie over de beschikbare opties voor specifieke grafieken, zie de [Google Visualization API reference (Chart Gallery)](https://developers.google.com/chart/interactive/docs/gallery).
 
 ## Gegevens instellen {#setting-data}
 
-Het visualiseren van gegevens met `GoogleChart` vereist een juiste structuur en instelling van de gegevens. Deze gids helpt u bij het voorbereiden van uw gegevens en het toepassen ervan op uw grafieken.
+Het visualiseren van gegevens met `GoogleChart` vereist een goede structuur en instelling van de gegevens. Deze gids helpt je bij het voorbereiden van je gegevens en het toepassen ervan op je grafieken.
 
-### Basis gegevensinstelling {#basic-data-setup}
+### Basisgegevensstructuur {#basic-data-setup}
 
-De eenvoudigste manier om de gegevens te definiëren is door gebruik te maken van `List<Object>`, waarbij elke rij een lijst van waarden is.
+De meest eenvoudige manier om de gegevens te definiëren is door `List<Object>` te gebruiken, waarbij elke rij een lijst van waarden is.
 
 ```java
 List<Object> data = new ArrayList<>();
 data.add(Arrays.asList("Taak", "Uren per Dag"));
 data.add(Arrays.asList("Werk", 11));
 data.add(Arrays.asList("Eten", 2));
-data.add(Arrays.asList("Vervoer", 2));
+data.add(Arrays.asList("Verhuizen", 2));
 data.add(Arrays.asList("TV Kijken", 2));
 data.add(Arrays.asList("Slapen", 7));
 chart.setData(data);
@@ -80,15 +90,15 @@ chart.setData(data);
 
 ### Gebruik van kaarten voor complexere structuren {#using-maps-for-more-complex-structures}
 
-Voor complexere datastructuren kunt u kaarten gebruiken om rijen voor te stellen en deze vervolgens om te zetten in het vereiste formaat.
+Voor complexere datastructuren kun je kaarten gebruiken om rijen voor te stellen en deze vervolgens om te zetten naar het vereiste formaat.
 
 ```java
 List<Object> data = new ArrayList<>();
 
-// Headerrij
+// Koprij
 data.add(Arrays.asList("Land", "Omzet"));
 
-// Gegevensrijen
+// Data rijen
 Map<String, Object> row1 = Map.of("Land", "Duitsland", "Omzet", 1000);
 Map<String, Object> row2 = Map.of("Land", "Verenigde Staten", "Omzet", 1170);
 Map<String, Object> row3 = Map.of("Land", "Brazilië", "Omzet", 660);
@@ -100,23 +110,21 @@ data.add(new ArrayList<>(row3.values()));
 chart.setData(data);
 ```
 
-Zodra de gegevens zijn voorbereid, kunnen ze op de GoogleChart worden toegepast met de setData-methode.
+Zodra de gegevens zijn voorbereid, kunnen ze op de GoogleChart worden toegepast met de `setData` methode.
 
-<ComponentDemo 
-path='/webforj/chartsettingdata?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java'
+<ComponentDemo
+path='/webforj/chartsettingdata'
+files={['src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java']}
 height='300px'
 />
 
-<!-- tabs={['ChartDemoSettingData.java']} -->
-
 ### Gegevens en opties laden vanuit JSON {#loading-data-and-options-from-json}
 
-U kunt ook gegevens en opties laden vanuit JSON-bestanden met behulp van Gson voor eenvoudigere beheersbaarheid. Deze benadering helpt om uw gegevens en opties georganiseerd en eenvoudig bij te werken.
+Je kunt ook gegevens en opties laden vanuit JSON-bestanden met Gson voor een gemakkelijkere beheersing. Deze aanpak helpt om je gegevens en opties georganiseerd en eenvoudig te onderhouden.
 
 ```java
 List<Object> data = new ArrayList<>();
-data.add(Arrays.asList("Jaar", "Verkopen", "Uitgaven"));
+data.add(Arrays.asList("Jaar", "Verkoop", "Uitgaven"));
 data.add(Arrays.asList("2013", 1000, 400));
 data.add(Arrays.asList("2014", 1170, 460));
 data.add(Arrays.asList("2015", 660, null)); 
@@ -124,84 +132,84 @@ data.add(Arrays.asList("2016", 1030, 540));
 chart.setData(data);
 
 Map<String, Object> options = new Gson().fromJson(
-    Assets.contentOf("options.json"),
-    new TypeToken<Map<String, Object>>() {}.getType()
+  Assets.contentOf("options.json"),
+  new TypeToken<Map<String, Object>>() {}.getType()
 );
 chart.setOptions(options);
 ```
 
-## Bijwerken van grafiekvisualisaties {#updating-chart-visuals}
+## Grafische weergaves bijwerken {#updating-chart-visuals}
 
-Het vernieuwen of bijwerken van het uiterlijk van uw grafieken als reactie op gegevenswijzigingen, gebruikersinteracties of aanpassingen van visuele opties is eenvoudig met de `redraw()`-methode. Deze methode zorgt ervoor dat uw grafieken accuraat blijven en visueel overeenkomen met de onderliggende gegevens of wijzigingen in hun instellingen.
+Het vernieuwen of bijwerken van het uiterlijk van je grafieken als reactie op gegevenswijzigingen, gebruikersinteracties of aanpassingen van visuele opties is eenvoudig met de `redraw()` methode. Deze methode zorgt ervoor dat je grafieken accuraat blijven en visueel overeenkomen met de onderliggende gegevens of wijzigingen in hun instellingen.
 
 Roep `redraw()` aan in scenario's zoals:
 
-- **Na Gegevenswijzigingen**: Zorgt ervoor dat de grafiek eventuele updates aan de gegevensbron reflecteert.
-- **Bij Wijzigen van Opties**: Past nieuwe styling of configuratiewijzigingen toe op de grafiek.
-- **Voor Responsieve Aanpassingen**: Past de lay-out of grootte van de grafiek aan wanneer de afmetingen van de container veranderen, zodat een optimale weergave op verschillende apparaten wordt gegarandeerd.
+- **Na Gegevenswijzigingen**: Zorgt ervoor dat de grafiek eventuele updates van de gegevensbron weerspiegelt.
+- **Bij Wijziging van Opties**: Past nieuwe styling of configuratiewijzigingen toe op de grafiek.
+- **Voor Responsieve Aanpassingen**: Past de lay-out of grootte van de grafiek aan wanneer de afmetingen van de container veranderen, wat zorgt voor een optimale weergave op apparaten.
 
-<ComponentDemo 
-path='/webforj/chartredraw?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java'
-cssURL='/css/googlecharts/chartRedraw.css'
+<ComponentDemo
+path='/webforj/chartredraw'
+files={[
+  'src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java',
+  'src/main/resources/static/css/googlecharts/chartRedraw.css',
+]}
 height='650px'
 />
 
-<!-- tabs={['ChartDemoRedraw.java', 'redrawchart_styles.css']} -->
-
 ## Grafieken exporteren als afbeeldingen {#exporting-charts-as-images}
 
-De `getImageUri()`-methode biedt een manier om uw Google Charts als base64-gecodeerde PNG-afbeeldingen te exporteren. Deze methode is bijzonder nuttig voor het delen van grafieken buiten de webomgeving, het inbedden ervan in e-mails of documenten, of simpelweg voor archiveringsdoeleinden.
+De `getImageUri()` methode biedt een manier om je Google Charts te exporteren als base64-gecodeerde PNG-afbeeldingen. Deze methode is bijzonder nuttig voor het delen van grafieken buiten de webomgeving, het inbedden ervan in e-mails of documenten, of simpelweg voor archiveringsdoeleinden.
 
-Roep `getImageUri()` aan op uw grafiekinstantie nadat de grafiek volledig is weergegeven. Gewoonlijk wordt deze methode gebruikt binnen een "ready"-evenementlistener om ervoor te zorgen dat de grafiek klaar is voor export:
+Roep `getImageUri()` aan op je graafinstantie nadat de grafiek volledig is weergegeven. Gewoonlijk wordt deze methode gebruikt binnen een "ready" evenementlistener om ervoor te zorgen dat de grafiek klaar is voor export:
 
 ```java
 chart.addReadyListener(e -> {
-    String imageUri = chart.getImageUri();
-    // Nu kunt u de imageUri gebruiken, bijvoorbeeld als de src-attribuut van een img-tag
+  String imageUri = chart.getImageUri();
+  // Nu kun je de imageUri gebruiken, bijvoorbeeld als de src-attribuut van een img-tag
 });
 ```
 
 ## `GoogleChartSelectedEvent` {#googlechartselectedevent}
 
-De `GoogleChartSelectedEvent` wordt geactiveerd wanneer een gebruiker een datapunt of segment in een Google Chart-component selecteert. Dit evenement maakt interactie met de geselecteerde grafiekgegevens mogelijk, met details over wat is geselecteerd. Het evenement kan worden beluisterd door de `addSelectedListener()`-methode op de `GoogleChart`-instantie te gebruiken.
+De `GoogleChartSelectedEvent` wordt getriggerd wanneer een gebruiker een datapunt of segment selecteert in een Google Chart component. Dit evenement maakt interactie mogelijk met de geselecteerde grafiekgegevens en biedt details over wat er is geselecteerd. Het evenement kan worden beluisterd met de `addSelectedListener()` methode op de `GoogleChart` instantie.
 
-De `GoogleChartSelectedEvent` is nuttig in applicaties waar gebruikersinteractie met de grafiek noodzakelijk is. 
+De `GoogleChartSelectedEvent` is nuttig in toepassingen waar gebruikersinteractie met de grafiek noodzakelijk is. 
 
 ```java
 GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
 
-// Voeg de geselecteerde listener toe aan de grafiek
+// Voeg de geselecteerde listener aan de grafiek toe
 chart.addSelectedListener(event -> {
-    // Verkrijg de selectie
-    List<Object> selection = chart.getSelection();
-    
-    // Verwerk het geselecteerde evenement
-    if (!selection.isEmpty()) {
-        System.out.println("Geselecteerde Rij: " + selection.get(0));
-        // Verdere verwerking op basis van de rij/kolom van de selectie
-    }
+  // Verkrijg de selectie
+  List<Object> selection = chart.getSelection();
+  
+  // Verwerk het geselecteerde evenement
+  if (!selection.isEmpty()) {
+    System.out.println("Geselecteerde Rij: " + selection.get(0));
+    // Verdere verwerking op basis van de rij/kolom van selectie
+  }
 });
 ```
 
 ### Payload {#payload}
-De `GoogleChartSelectedEvent` biedt toegang tot de selectiegegevens, die kunnen worden opgehaald met de `getSelection()`-methode op het grafiekobject. Deze methode retourneert een lijst met objecten, waarbij elk object de volgende eigenschappen bevat:
+De `GoogleChartSelectedEvent` geeft toegang tot de selectiedata, die kan worden opgehaald met de `getSelection()` methode op het grafiekobject. Deze methode retourneert een lijst van objecten, waarbij elk object de volgende eigenschappen bevat:
 
-- **row**: De index van de rij in de gegevens tabel van de grafiek die is geselecteerd.
-- **column**: De index van de kolom in de gegevens tabel, die optioneel is en geldt voor grafieken die de selectie van individuele cellen toestaan, zoals een tabelgrafiek.
+- **row**: De index van de rij in de datatabel van de grafiek die is geselecteerd.
+- **column**: De index van de kolom in de datatabel, die optioneel is en van toepassing is op grafieken die de selectie van individuele cellen toestaan, zoals een tabelgrafiek.
   
-Voor grafieken zoals taartgrafieken of staafgrafieken wordt meestal alleen de `row` verstrekt, die het geselecteerde datapunt aangeeft.
+Voor grafieken zoals cirkeldiagrammen of staafdiagrammen wordt doorgaans alleen de `row` opgegeven, wat de geselecteerde datapunten aangeeft.
 
 Hier is een voorbeeld van de payload:
 ```java
 [
   {
-    "row": 3,  // De geselecteerde rij-index in de gegevens
-    "column": 2  // (Optioneel) De geselecteerde kolomindex
+    "row": 3,  // De geselecteerde rij index in de data
+    "column": 2  // (Optioneel) De geselecteerde kolom index
   }
 ]
 ```
 
 :::info Meerdere Datapunten Selecteren
-Als de gebruiker meerdere datapunten selecteert, retourneert de `getSelection()`-methode een array van objecten, waarvan er elke een geselecteerd element vertegenwoordigt. De payload kan variëren op basis van het grafiektype en de interactie die de gebruiker uitvoert.
+Als de gebruiker meerdere datapunten selecteert, retourneert de `getSelection()` methode een array van objecten, elk die een geselecteerd element vertegenwoordigt. De payload kan variëren afhankelijk van het grafiektype en de interactie die de gebruiker uitvoert.
 :::

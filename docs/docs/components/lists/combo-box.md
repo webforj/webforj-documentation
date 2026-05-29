@@ -2,6 +2,7 @@
 sidebar_position: 10
 title: ComboBox
 slug: combobox
+description: Combine a dropdown list with a text input in the ComboBox to let users select preset items or type custom values with placeholder support.
 ---
 
 <DocChip chip='shadow' />
@@ -9,11 +10,13 @@ slug: combobox
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" top='true'/>
 
-<ParentLink parent="List" />
+The `ComboBox` component combines a dropdown list with a text input, so users can either select from predefined options or type in a custom value. When custom entries need to be allowed alongside a set of suggested options, it fills the gap that `ChoiceBox` doesn't cover.
 
-The `ComboBox` component is a user interface element designed to present users with a list of options or choices, as well as a field for entering their own custom values. Users can select a single option from this list, typically by clicking the `ComboBox`, which triggers the display of a dropdown list containing available choices, or type in a custom value. Users can also interact with the `ComboBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ComboBox`. 
+<!-- INTRO_END -->
 
 ## Usages {#usages}
+
+<ParentLink parent="List" />
 
 The ComboBox component is a versatile input element that combines the features of both a dropdown list and a text input field. It allows users to select items from a predefined list or enter custom values as needed. This section explores common usages of the ComboBox component in various scenarios:
 
@@ -34,20 +37,20 @@ The ComboBox component is a versatile input element that combines the features o
 
 Changing the custom value property allows control over whether or not a user is able to change the value in the `ComboBox` component's input field. If `true`, which is the default, then a user can change the value. If set to `false`, the user won't be able to change the value. This can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> method.
 
-<ComponentDemo 
-path='/webforj/comboboxcustomvalue?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomValueView.java'
-height = '200px'
+<ComponentDemo
+path='/webforj/comboboxcustomvalue'
+files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomValueView.java']}
+height='200px'
 />
 
 ## Placeholder {#placeholder}
 
 A placeholder can be set for a `ComboBox` which will display in the text field of the component when it is empty to prompt users for the desired entry in the field. This can be done using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> method.
 
-<ComponentDemo 
-path='/webforj/comboboxplaceholder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlaceholderView.java'
-height = '200px'
+<ComponentDemo
+path='/webforj/comboboxplaceholder'
+files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlaceholderView.java']}
+height='200px'
 />
 
 ## Dropdown type {#dropdown-type}
@@ -59,10 +62,12 @@ dropdown using CSS or shadow part selectors from the parent component becomes ch
 
 In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
 
-<ComponentDemo 
-path='/webforj/comboboxdropdowntype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java'
-cssURL='/css/lists/combobox/comboBoxDropDownType.css'
+<ComponentDemo
+path='/webforj/comboboxdropdowntype'
+files={[
+  'src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java',
+  'src/main/resources/static/css/lists/combobox/comboBoxDropDownType.css',
+]}
 height='250px'
 />
 
@@ -74,9 +79,9 @@ By default, the number of rows displayed in the dropdown of a `ComboBox` will be
 Using a number that is less than or equal to 0 will result in unsetting this property.
 :::
 
-<ComponentDemo 
-path='/webforj/comboboxmaxrow?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java'
+<ComponentDemo
+path='/webforj/comboboxmaxrow'
+files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java']}
 height='450px'
 />
 

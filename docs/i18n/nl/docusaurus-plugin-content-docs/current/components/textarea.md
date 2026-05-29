@@ -1,40 +1,44 @@
 ---
 title: TextArea
 sidebar_position: 130
-_i18n_hash: f109f006fcd252bf81b6cccb83d38a50
+_i18n_hash: 5e61ae2b47786f23e6f1f6eba317ed54
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-textarea" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextArea" top='true'/>
 
-De `TextArea`-component in webforJ biedt een oplossing voor invoer van meerregels tekst. Eindgebruikers kunnen vrij typen en tekst bewerken, terwijl ontwikkelaars redelijke grenzen kunnen stellen met functies zoals maximaal aantal tekens, paragraafstructuur en validatieregels.
+De `TextArea` component biedt een meerregelige tekstinvoerveld waar gebruikers langere tekstblokken kunnen typen en bewerken. Het ondersteunt maximale tekentalen, paragraafstructuur, regelomsluiting en validatieregels om te bepalen hoe invoer wordt behandeld.
 
-Hier is een voorbeeld van een `TextArea` voor het invoeren van meerregels tekst:
+<!-- INTRO_END -->
 
-<ComponentDemo 
-path='/webforj/textarea?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaView.java'
-height = '300px'
+## Aanmaken van een `TextArea` {#creating-a-textarea}
+
+Maak een `TextArea` door een label naar zijn constructor te sturen. Eigenschappen zoals opmaak tekst, tekenlimieten en omhulgedrag kunnen worden geconfigureerd via setter-methoden.
+
+<ComponentDemo
+path='/webforj/textarea'
+files={['src/main/java/com/webforj/samples/views/textarea/TextAreaView.java']}
+height='300px'
 />
 
-## Beheren van paragrafen {#managing-paragraphs}
+## Het beheren van paragrafen {#managing-paragraphs}
 
-De `TextArea`-component biedt functies voor het omgaan met tekstparagrafen, waardoor het ideaal is voor toepassingen die documentbewerkingen of gestructureerde tekstinvoer vereisen.
+De `TextArea` component biedt functies voor het omgaan met tekstparagrafen, waardoor het ideaal is voor toepassingen die documentbewerking of gestructureerde tekstinvoer vereisen.
 
-Hier is een snel voorbeeld van hoe u paragraafinhoud kunt opbouwen en manipuleren:
+Hier is een snel voorbeeld van hoe je paragraafinhoud kunt opbouwen en manipuleren:
 
 ```java
 TextArea textArea = new TextArea();
 
-// Voeg een paragraaf aan het begin toe
+// Voeg een paragraaf toe aan het begin
 textArea.addParagraph(0, "Dit is de eerste paragraaf.");
 
-// Voeg een andere paragraaf aan het einde toe
-textArea.addParagraph("Hier is een tweede paragraaf.");
+// Voeg een andere paragraaf toe aan het einde
+textArea.addParagraph("Dit is een tweede paragraaf.");
 
 // Voeg extra inhoud toe aan de eerste paragraaf
-textArea.appendToParagraph(0, " Deze zin vervolgt de eerste.");
+textArea.appendToParagraph(0, " Deze zin gaat verder met de eerste.");
 
 // Verwijder de tweede paragraaf
 textArea.removeParagraph(1);
@@ -42,78 +46,81 @@ textArea.removeParagraph(1);
 // Haal alle huidige paragrafen op en print ze
 List<String> paragraphs = textArea.getParagraphs();
 for (int i = 0; i < paragraphs.size(); i++) {
-    System.out.println("Paragraaf " + i + ": " + paragraphs.get(i));
+  System.out.println("Paragraaf " + i + ": " + paragraphs.get(i));
 }
 ```
 
 ## Validatie {#validation}
 
-De `TextArea`-component ondersteunt twee aanvullende soorten validatie: structurele beperkingen en inhoudelijke beperkingen.
+De `TextArea` component ondersteunt twee complementaire soorten validatie: structurele beperkingen en inhoudsbeperkingen.
 
-**Structurele beperkingen** richten zich op hoe de tekst is georganiseerd en visueel is ingedeeld. Bijvoorbeeld:
+**Structurele beperkingen** richten zich op hoe de tekst is georganiseerd en visueel is weergegeven. Bijvoorbeeld:
 - `setLineCountLimit(int maxLines)` beperkt het aantal regels dat is toegestaan in het tekstgebied.
-- `setParagraphLengthLimit(int maxCharsPerLine)` beperkt het aantal tekens per paragraaf (of regel), wat helpt om leesbaarheid of opmaakstandaarden te handhaven.
+- `setParagraphLengthLimit(int maxCharsPerLine)` beperkt het aantal tekens per paragraaf (of regel), wat helpt bij het handhaven van leesbaarheid of opmaakstandaarden.
 
-**Inhoudelijke beperkingen** hebben daarentegen betrekking op de totale hoeveelheid tekst die is ingevoerd, ongeacht hoe deze is verdeeld:
-- `setMaxLength(int maxChars)` stelt een maximum aantal tekens vast dat is toegestaan over alle paragrafen.
-- `setMinLength(int minChars)` handhaaft een minimumlengte, zodat er voldoende inhoud wordt geleverd.
+**Inhoudsbeperkingen** daarentegen hebben betrekking op de totale hoeveelheid tekst die is ingevoerd, ongeacht hoe deze is verdeeld:
+- `setMaxLength(int maxChars)` beperkt het totale aantal toegestane tekens over alle paragrafen.
+- `setMinLength(int minChars)` stelt een minimale lengte in, zodat er voldoende inhoud wordt geleverd.
 
-De volgende demo stelt gebruikers in staat om validatiegrenzen aan te passen—zoals maximaal aantal tekens, paragraaflengte en regel aantal—in realtime en te zien hoe de `TextArea` reageert.
+De volgende demo stelt gebruikers in staat om validatielimieten aan te passen—zoals maximaal aantal tekens, paragraaflengte en regelcount—en te zien hoe de `TextArea` hierop reageert.
 
-<ComponentDemo 
-path='/webforj/textareavalidation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java'
-height = '550px'
+<ComponentDemo
+path='/webforj/textareavalidation'
+files={['src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java']}
+height='550px'
 />
 
-## Woordomsluiting en Regeloмsluiting {#word-wrap-and-line-wrapping}
+## Woordomsluiting en Regelomsluiting {#word-wrap-and-line-wrapping}
 
-U kunt controleren of tekst omgevouwen of horizontaal scrolt met behulp van `setLineWrap()`. Wanneer omvouwen is uitgeschakeld, blijven regels horizontaal doorgaan buiten het zichtbare gebied, wat scrollen vereist. Wanneer het is ingeschakeld, wordt tekst automatisch omgevouwen naar de volgende regel wanneer deze de rand van de component bereikt.
+Je kunt controleren of tekst omsluit of horizontaal scrollt met `setLineWrap()`. Wanneer omsluiting is uitgeschakeld, blijven regels horizontaal doorgaan buiten het zichtbare gebied, met scrollen als gevolg. Wanneer ingeschakeld, wikkelt tekst automatisch naar de volgende regel wanneer deze de rand van de component bereikt.
 
-Om verder te verfijnen hoe omvouwen werkt, laat `setWrapStyle()` u kiezen tussen twee stijlen:
-- `WORD_BOUNDARIES` vouwt tekst bij hele woorden om, waardoor de natuurlijke leesflow wordt behouden.
-- `CHARACTER_BOUNDARIES` vouwt bij individuele tekens om, wat een strakkere controle over het ontwerp mogelijk maakt, vooral in smalle of vaste breedte containers.
+Om verder te verfijnen hoe omsluiting gedraagt, laat `setWrapStyle()` je kiezen tussen twee stijlen:
+- `WORD_BOUNDARIES` wikkelt tekst bij hele woorden, wat de natuurlijke leesstroom behoudt.
+- `CHARACTER_BOUNDARIES` wikkelt bij individuele tekens, waardoor strakkere controle over de lay-out mogelijk is, vooral in smalle of vastgeconfigureerde containers.
 
-Deze omvouwopties werken hand in hand met structurele beperkingen zoals lijn- en paragraaflengte-limieten. Terwijl omvouwen bepaalt *hoe* tekst binnen de beschikbare ruimte stroomt, definiëren de structurele limieten *hoeveel* ruimte tekst mag innemen. Samen helpen ze zowel visuele structuur als grenzen van gebruikersinvoer te behouden.
+Deze omsluitingsopties werken hand in hand met structurele beperkingen zoals regelcount en paragrafenlengte limieten. Terwijl omsluiting bepaalt *hoe* tekst stroomt binnen de beschikbare ruimte, definiëren de structurele limieten *hoeveel* ruimte tekst mag innemen. Samen helpen ze zowel visuele structuur als gebruikersinvoerlijnen te behouden.
 
-<ComponentDemo 
-path='/webforj/textareawrap?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaWrapView.java'
-height = '400px'
+<ComponentDemo
+path='/webforj/textareawrap'
+files={['src/main/java/com/webforj/samples/views/textarea/TextAreaWrapView.java']}
+height='400px'
 />
 
 ## Voorspelde tekst {#predicted-text}
 
-De `TextArea`-component ondersteunt slimme tekstsuggesties om gebruikers te helpen sneller en met minder fouten te typen. Terwijl gebruikers tekst invoeren, verschijnen voorspellende suggesties op basis van de huidige invoer, waardoor ze veelvoorkomende of verwachte zinnen kunnen voltooien.
+De `TextArea` component ondersteunt slimme tekstsuggesties om gebruikers te helpen sneller en met minder fouten te typen. Terwijl gebruikers tekst invoeren, verschijnen voorspellende suggesties op basis van de huidige invoer, waardoor ze gebruik kunnen maken van veelvoorkomende of verwachte zinnen.
 
-Voorspellingen kunnen worden geaccepteerd door op de `Tab`- of `ArrowRight`-toets te drukken, waardoor de voorgestelde tekst naadloos in de invoer wordt geplaatst. Als er op dat moment geen geschikte voorspelling beschikbaar is, blijft de invoer onveranderd en kan de gebruiker doorgaan met typen zonder onderbreking—wat ervoor zorgt dat de functie nooit in de weg staat.
+Voorspellingen kunnen worden geaccepteerd door op de `Tab` of `ArrowRight` toets te drukken, waardoor de voorgestelde tekst naadloos in de invoer wordt ingevoegd. Als er op dat moment geen passende voorspelling beschikbaar is, blijft de invoer onveranderd en kan de gebruiker blijven typen zonder onderbreking—zorgend dat de functie nooit in de weg staat.
 
-Dit voorspellende gedrag verbetert zowel de snelheid als de nauwkeurigheid, vooral in repetitieve invoerscenario's of toepassingen waar consistentie van formulering belangrijk is.
+Dit voorspellende gedrag verhoogt zowel de snelheid als de nauwkeurigheid, vooral in situaties met herhaalde invoer of toepassingen waar consistentie van formulering belangrijk is.
 
-<ComponentDemo 
-path='/webforj/textareapredictedtext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java'
-height = '400px'
+<ComponentDemo
+path='/webforj/textareapredictedtext'
+files={[
+  'src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java',
+  'src/main/resources/static/css/textarea/text-area-predicted-text-view.css',
+]}
+height='400px'
 />
 
 :::info
-Deze demo maakt gebruik van de [Datamuse API](https://datamuse.com/) om woord suggesties te bieden op basis van de invoer van de gebruiker. De kwaliteit en relevantie van de voorspellingen zijn volledig afhankelijk van de dataset en scoringmechanisme van de API. Het maakt geen gebruik van AI-modellen of grote taalmodellen (LLM); de suggesties worden gegenereerd vanuit een lichtgewicht, op regels gebaseerde engine gericht op lexicale gelijkenis.
+Deze demo gebruikt de [Datamuse API](https://datamuse.com/) om woordsuggesties te bieden op basis van de invoer van de gebruiker. De kwaliteit en relevantie van de voorspellingen zijn volledig afhankelijk van de dataset en het beoordelingsmechanisme van de API. Het gebruikt geen AI-modellen of grote taalmodellen (LLM's); de suggesties worden gegenereerd vanuit een lichte, op regels gebaseerde motor die zich richt op lexicale gelijkenis.
 :::
 
-## Alleen-lezen en gedeactiveerde status {#read-only-and-disabled-state}
+## Alleen-lezen en Deactiveren staat {#read-only-and-disabled-state}
 
-De `TextArea`-component kan zo worden ingesteld dat deze alleen-lezen of gedeactiveerd is om de gebruikersinteractie te beheersen.
+De `TextArea` component kan worden ingesteld op alleen-lezen of gedeactiveerd om gebruikersinteractie te beheersen.
 
 Een **alleen-lezen** tekstgebied stelt gebruikers in staat om de inhoud te bekijken en te selecteren, maar niet te bewerken. Dit is nuttig voor het weergeven van dynamische of vooraf ingevulde informatie die onveranderd moet blijven.
 
-Een **gedeactiveerd** tekstgebied blokkeert daarentegen alle interactie—waaronder focus en tekstselectie—en is doorgaans gestyled als inactief of vervaagd.
+Een **gedeactiveerd** tekstgebied daarentegen blokkeert alle interactie—including focus en tekstselectie—en is typisch opgemaakt als inactief of grijs weergegeven.
 
 Gebruik de alleen-lezen modus wanneer de inhoud relevant maar onveranderlijk is, en de gedeactiveerde modus wanneer de invoer momenteel niet van toepassing is of tijdelijk inactief moet zijn.
 
-<ComponentDemo 
-path='/webforj/textareastates?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaStatesView.java'
-height = '300px'
+<ComponentDemo
+path='/webforj/textareastates'
+files={['src/main/java/com/webforj/samples/views/textarea/TextAreaStatesView.java']}
+height='300px'
 />
 
 ## Styling {#styling}

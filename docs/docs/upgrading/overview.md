@@ -1,8 +1,10 @@
 ---
 sidebar_position: 1
 title: Upgrading Guides
+description: Understand the webforJ release cadence for major, minor, and patch versions and find guidance for upgrading apps between releases.
 hide_table_of_contents: true
 hide_giscus_comments: true
+sidebar_class_name: has-new-content
 ---
 
 <Head>
@@ -14,6 +16,8 @@ hide_giscus_comments: true
 </Head>
 
 The webforJ release cycle follows a structured and predictable model to ensure stability, performance, and continuous innovation. This document provides an overview of how releases are planned, what types of releases to expect, and how users can stay informed and prepared.
+
+<AISkillTip skill="webforj-upgrading-versions" />
 
 ## Types of webforJ releases {#types-of-webforj-releases}
 
@@ -49,7 +53,7 @@ While efforts are made to maintain compatibility, major releases may include cha
 - Security is a priority, and critical vulnerabilities are addressed in patch releases as soon as possible.
 
 :::tip Snapshot builds
-Snapshot builds are available before most releases. Users are encouraged to test against them to identify issues early and provide feedback.
+Snapshot builds are available before most releases. Users are encouraged to test against them to identify issues early and provide feedback. See the [Snapshots](/docs/configuration/snapshots) article to learn how to use webforJ snapshots and where to get them.
 :::
 
 ## How to stay updated {#how-to-stay-updated}

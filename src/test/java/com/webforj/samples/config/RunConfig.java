@@ -6,12 +6,13 @@ public class RunConfig {
   private static final boolean DEFAULT_HEADLESS = true;
   private static final int DEFAULT_TIMEOUT = 30000;
   private static final int DEFAULT_SLOW_MO = 0;
+  private static final int DEFAULT_PORT = 8080;
   private static final boolean IS_CI = "true".equalsIgnoreCase(System.getenv("CI"));
 
   static {
     // Parse webforj.e2e if provided
     String e2eProps = System.getProperty("webforj.e2e");
-    if (e2eProps != null && !e2eProps.isEmpty()) { 
+    if (e2eProps != null && !e2eProps.isEmpty()) {
       parseE2EProps(e2eProps);
     }
   }
@@ -42,11 +43,8 @@ public class RunConfig {
   }
 
   /**
-   * Get a configuration value checking in order:
-   * 1. System property (-Dkey=value)
-   * 2. Environment variable (KEY=value, with dots replaced by underscores and
-   * uppercase)
-   * 3. Default value
+   * Get a configuration value checking in order: 1. System property (-Dkey=value) 2. Environment
+   * variable (KEY=value, with dots replaced by underscores and uppercase) 3. Default value
    */
   private static String getConfig(String key, String defaultValue) {
     // First check system property
@@ -119,4 +117,7 @@ public class RunConfig {
     return getConfigInt("slowmo", DEFAULT_SLOW_MO);
   }
 
+  public static int getPort() {
+    return getConfigInt("port", DEFAULT_PORT);
+  }
 }

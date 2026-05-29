@@ -2,6 +2,7 @@
 title: RadioButton
 slug: radiobutton
 sidebar_position: 95
+description: Add a single-choice RadioButton with text positioning, activation modes, and grouping for mutually exclusive selections.
 ---
 
 <DocChip chip='shadow' />
@@ -9,14 +10,9 @@ sidebar_position: 95
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButton" top='true'/>
 
-The `RadioButton` class creates an object that can be selected or deselected, and which displays its state to the user. By convention, only one radio button in a group can be selected at a time. Radio buttons are commonly used when mutually exclusive options are available, allowing the user to choose a single option from a set of choices.
+The `RadioButton` component represents a single option that can be selected or deselected. Radio buttons are typically grouped together so that selecting one automatically deselects the others, letting users make a single choice from a set of mutually exclusive options.
 
-
-<ComponentDemo 
-path='/webforj/radiobuttongroup?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
-height="200px"
-/>
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 
@@ -28,15 +24,19 @@ The `RadioButton` is best used in scenarios where users need to make a single se
 
 3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
 
+:::tip Grouping `RadioButton` components
+Use a [`RadioButtonGroup`](/docs/components/radiobuttongroup) to manage a set of radio buttons when you want users to pick a single option.
+:::
+
 ## Text and positioning {#text-and-positioning}
 
 Radio buttons can utilize the ```setText(String text)``` method, which will be positioned near the radio button according to the built-in `Position`.
 Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
-<ComponentDemo 
-path='/webforj/radiobuttontext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonTextView.java'
-height="120px"
+<ComponentDemo
+path='/webforj/radiobuttontext'
+files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonTextView.java']}
+height='120px'
 />
 
 
@@ -44,10 +44,10 @@ height="120px"
 
 Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
 
-<ComponentDemo 
-path='/webforj/radiobuttonactivation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonActivationView.java'
-height="175px"
+<ComponentDemo
+path='/webforj/radiobuttonactivation'
+files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonActivationView.java']}
+height='175px'
 />
 
 ### Manual activation {#manual-activation}
@@ -73,10 +73,10 @@ The default activation value is **`MANUAL`** activation.
 
 A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. 
 
-<ComponentDemo 
-path='/webforj/radiobuttonswitch?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchView.java'
-height="120px"
+<ComponentDemo
+path='/webforj/radiobuttonswitch'
+files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchView.java']}
+height='120px'
 />
 
 A `RadioButton` can be transformed into a switch that resembles a toggle switch or slider using one of two methods:

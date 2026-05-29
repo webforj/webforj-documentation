@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Navigation Lifecycle
 hide_giscus_comments: true
+description: Coordinate validation, data loading, and cleanup during route transitions with the webforJ navigation lifecycle events.
 ---
 
 <!-- vale off -->

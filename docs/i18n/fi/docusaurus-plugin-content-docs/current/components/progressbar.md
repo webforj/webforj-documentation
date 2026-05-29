@@ -1,32 +1,36 @@
 ---
 title: ProgressBar
 sidebar_position: 90
-_i18n_hash: 9b2f9ec23124d60ab5f8fca18e561acb
+_i18n_hash: 6acac582ce905eb255ee09e499fd561f
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-progressbar" />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 
-ProgressBar on komponentti, joka näyttää visuaalisesti jonkin tehtävän edistymisen. Kun tehtävä etenee kohti valmistumista, edistymispalkki näyttää tehtävän valmistumisprosentin. Tämä prosenttiosuus esitetään visuaalisesti suorakulmiona, joka alkaa tyhjänä ja täyttyy vähitellen, kun tehtävä etenee. Lisäksi edistymispalkki voi näyttää tekstimuotoisen esityksen tästä prosentista.
+`ProgressBar` komponentti esittää visuaalisesti toiminnan valmistumisen tilan. Työn edetessä suorakulmio täyttyy vähitellen heijastamaan nykyistä prosenttia. Baarissa voidaan myös näyttää tekstimuotoinen esitys sen arvosta, ja se tukee sekä määritettyjä että määrittämättömiä tiloja tunnetuilla tai tuntemattomilla kestolla.
 
-<ComponentDemo 
-path='/webforj/progressbarbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java'
+<!-- INTRO_END -->
+
+## Käytöt {#usages}
+
+`ProgressBar` komponentti on hyödyllinen tehtävien valmistumisen tilan visualisoimiseksi. Se tukee:
+
+- Konfiguroitavia vähimmäis- ja enimmäisarvoja.
+- Määrittämätöntä tilaa jatkuville tehtäville, joilla ei ole tarkkaa loppua.
+- Vaihtoehtoja tekstin näkyvyyteen, animaatioon ja raidoitettuihin suunnitteluihin paremman visuaalisen palautteen saamiseksi.
+
+Seuraava esimerkki näyttää raidallisen, animaatiolla varustetun edistymispalkin, jossa on käynnistys-, tauko- ja nollausohjaimet:
+
+<ComponentDemo
+path='/webforj/progressbarbasic'
+files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java']}
 height='150px'
 />
 
-## Käyttötavat {#usages}
-
-`ProgressBar`-komponentti on hyödyllinen tehtävien valmistumisasteen visualisoimiseksi. Se tukee:
-
-- Konfiguroitavia vähimmäis- ja enimmäisarvoja.
-- Määrittelemätöntä tilaa jatkuville tehtäville, joilla ei ole määritellyt loppua.
-- Mahdollisuuksia tekstin näkyvyydelle, animaatiolle ja raidallisille muotoiluille paremman visuaalisen palautteen saamiseksi.
-
 ## Arvojen asettaminen {#setting-values}
 
-ProgressBar-komponentilla voi asettaa ja saada sen nykyisen arvon, vähimmäis- ja enimmäisrajat.
+ProgressBar komponentti sallii nykyisen arvonsa, vähimmäis- ja enimmäisrajat asettamisen ja saamisen.
 
 ```java showLineNumbers
 ProgressBar bar = new ProgressBar();
@@ -35,44 +39,45 @@ bar.setMax(100);
 bar.setValue(50);
 ```
 
-## Suuntaus {#orientation}
+## Suunta {#orientation}
 
 `ProgressBar` voidaan suunnata vaakasuoraan tai pystysuoraan.
 
-<ComponentDemo 
-path='/webforj/progressbarorientation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientationView.java'
+<ComponentDemo
+path='/webforj/progressbarorientation'
+files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientationView.java']}
 height='175px'
 />
 
-## Määrittelemätön tila {#indeterminate-state}
+## Määrittämätön tila {#indeterminate-state}
 
-`ProgressBar` tukee määrittelemätöntä tilaa tehtäville, joiden valmistumisaikaa ei tiedetä.
+`ProgressBar` tukee määrittämätöntä tilaa tehtäville, joiden valmistumisaika on tuntematon.
 
-<ComponentDemo 
-path='/webforj/progressbardeterminate?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarDeterminateView.java'
+<ComponentDemo
+path='/webforj/progressbardeterminate'
+files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarDeterminateView.java']}
 height='25px'
 />
 
 ## Teksti ja tekstin näkyvyys {#text-and-text-visibility}
 
-Oletuksena, kun se luodaan, edistymispalkki näyttää prosenttiosuuden valmiina muodossa `XX%`. Käyttämällä `setText()`-metodia voit käyttää paikkaa `{{x}}` saadaksesi nykyisen arvon prosentteina. Lisäksi voit käyttää paikkaa `{{value}}` saadaksesi raakamuotoisen nykyarvon.
+Oletuksena, kun progress bar luodaan, se näyttää prosenttiosuuden valmistumisesta muodossa `XX%`. Käyttämällä `setText()` menetelmää voit käyttää paikkamerkkiä `{{x}}` saadaksesi nykyisen arvon prosentteina. Lisäksi voit käyttää paikkamerkkiä 
+`{{value}}` saadaksesi raakamuotoisen nykyarvon.
 
 ```java
 ProgressBar bar = new ProgressBar(15, "Lataus: {{x}}%");
 ```
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 ### Teemat {#themes}
 
-`ProgressBar`-komponentti sisältää <JavadocLink type="foundation" location="com/webforj/component/Theme"> teemoja </JavadocLink>, jotka on rakennettu nopeaa tyylittelyä varten ilman CSS:n käyttöä. Nämä teemat ovat ennalta määriteltyjä tyylejä, joita voidaan soveltaa painikkeisiin niiden ulkonäön ja visuaalisen esityksen muuttamiseksi. 
+`ProgressBar` komponentti tulee mukana <JavadocLink type="foundation" location="com/webforj/component/Theme"> teemoja </JavadocLink>, jotka on sisällytetty nopeaan tyylittelyyn ilman CSS:ää. Nämä teemat ovat ennalta määritettyjä tyylejä, joita voidaan soveltaa painikkeisiin niiden ulkoasun ja visuaalisen esityksen muuttamiseksi. 
 Ne tarjoavat nopean ja johdonmukaisen tavan mukauttaa ProgressBarien ulkoasua sovelluksessa.
 
-<ComponentDemo 
-path='/webforj/progressbarthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarThemesView.java'
+<ComponentDemo
+path='/webforj/progressbarthemes'
+files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarThemesView.java']}
 height='320px'
 />
 
@@ -80,7 +85,7 @@ height='320px'
 
 ## Parhaat käytännöt {#best-practices}
 
-- **Käytä asianmukaisia vähimmäis- ja enimmäisarvoja**: Aseta vähimmäis- ja enimmäisarvot tarkasti heijastamaan tehtävän rajaa.
-- **Päivitä edistymistä säännöllisesti**: Jatkuvasti päivitä edistymisarvoa tarjotaksesi reaaliaikaista palautetta käyttäjille.
-- **Hyödynnä määrittelemätöntä tilaa tuntemattomille kestolle**: Käytä määrittelemätöntä tilaa tehtäville, joiden kesto on ennakoimaton, osoittaaksesi jatkuvaa edistymistä.
-- **Näytä tekstiä parempaa käyttäjäpalautetta varten**: Näytä teksti edistymispalkissa tarjotaksesi lisäkontekstia tehtävän edistymiselle.
+- **Käytä sopivia vähimmäis- ja enimmäisarvoja**: Aseta vähimmäis- ja enimmäisarvot tarkasti tehtävän alueen heijastamiseksi.
+- **Päivitä edistystä säännöllisesti**: Päivitä jatkuvasti edistyksen arvoa antaaksesi käyttäjille reaaliaikaista palautetta.
+- **Hyödynnä määrittämätöntä tilaa tuntemattomille kestolle**: Käytä määrittämätöntä tilaa tehtäville, joilla on arvaamaton kesto, osoittaaksesi jatkuvaa edistystä.
+- **Näytä tekstiä paremman käyttäjäpalautteen saamiseksi**: Näytä tekstiä edistymispalkissa tarjotaksesi lisäkonseptia tehtävän edistymisestä.

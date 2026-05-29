@@ -1,6 +1,7 @@
 ---
 title: ColumnsLayout
 sidebar_position: 25
+description: Arrange child components into a responsive multi-column grid with the ColumnsLayout component using configurable breakpoints and alignment.
 ---
 
 <DocChip chip="shadow" />
@@ -8,21 +9,23 @@ sidebar_position: 25
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="columnslayout" location="com/webforj/component/layout/columnslayout/ColumnsLayout" top='true'/>
 
-The `ColumnsLayout` component in webforJ allows developers to create layouts using a flexible and responsive vertical layout. This layout provides dynamic columns that adjust based on the available width. This component simplifies the creation of multi-column layouts by automatically managing breakpoints and alignments.
+The `ColumnsLayout` component arranges items into a responsive column-based layout that adjusts based on available width. Breakpoints and alignments are managed automatically, so building multi-column forms and content grids doesn't require custom responsive logic.
+
+<!-- INTRO_END -->
+
+## Default behavior {#default-behavior}
+
+By default, a `ColumnsLayout` arranges items in two columns and takes the full width of its parent. The display can be further adjusted with breakpoints and alignment settings, covered in the sections below.
+
+<ComponentDemo
+path='/webforj/columnslayout'
+files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView.java']}
+height='450px'
+/>
 
 :::info Horizontal Layouts 
 This can be used in place of, or in combination with, the [`FlexLayout`](./flex-layout) component - an equally powerful tool for horizontal layouts.
 :::
-
-## Basics {#basics}
-
-When first instantiated, the `ColumnsLayout` uses two columns to display items added to the layout. By default, it takes the full width of its parent elements and grows as needed to fit additional content. The display of added items can be further calibrated with the use of [`Breakpoint`](./columns-layout#breakpoints) and [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) settings, which are discussed in the following sections in more detail.
-
-<ComponentDemo 
-path='/webforj/columnslayout?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView.java'
-height="450px"
-/>
 
 ## Breakpoints {#breakpoints}
 
@@ -57,22 +60,22 @@ Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construc
 ColumnsLayout layout = new ColumnsLayout();
 
 List<Breakpoint> breakpoints = List.of(
-    // One column at widths >= 0px
-    new Breakpoint(0, 1),
-    // Two columns at widths >= 600px
-    new Breakpoint(600, 2),
-    // Four columns at widths >= 1200px
-    new Breakpoint(1200, 4));
+  // One column at widths >= 0px
+  new Breakpoint(0, 1),
+  // Two columns at widths >= 600px
+  new Breakpoint(600, 2),
+  // Four columns at widths >= 1200px
+  new Breakpoint(1200, 4));
 
 layout.setBreakpoints(breakpoints);
 ```
 
 The demonstration below shows an example of setting multiple breakpoints at construction, using breakpoints to configure the [`Span`](#column-span-and-spans-per-breakpoint) of a component, and demonstrates the resizing capabilities of the `ColumnsLayout` when the app is resized:
 
-<ComponentDemo 
-path='/webforj/columnslayoutbreakpoints?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutBreakpointsView.java'
-height="375px"
+<ComponentDemo
+path='/webforj/columnslayoutbreakpoints'
+files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutBreakpointsView.java']}
+height='375px'
 />
 
 ## Column `Span` and spans per `Breakpoint` {#column-span-and-spans-per-breakpoint}
@@ -149,10 +152,10 @@ columnsLayout.setColumn(email, "medium", 2);
 
 In the following demonstration, notice that when the `"medium"` breakpoint is triggered, the `email` field spans both columns, and the `confirmPassword` field is placed into the first column, rather than its default placement in the second column:
 
-<ComponentDemo 
-path='/webforj/columnslayoutspancolumn?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutSpanColumnView.java'
-height="375px"
+<ComponentDemo
+path='/webforj/columnslayoutspancolumn'
+files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutSpanColumnView.java']}
+height='375px'
 />
 
 :::tip Avoid collisions
@@ -176,10 +179,10 @@ Available `Alignment` options include:
 - `BASELINE`: Aligns based on the text or content inside the column, aligning items to the text baseline rather than other alignment options.
 - `AUTO`: Auto alignment.
 
-<ComponentDemo 
-path='/webforj/columnslayoutalignment?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutAlignmentView.java'
-height="500px"
+<ComponentDemo
+path='/webforj/columnslayoutalignment'
+files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutAlignmentView.java']}
+height='500px'
 />
 
 In the demo above, the `Submit` button has been given `ColumnsLayout.Alignment.END` to ensure that it appears at the end, or in this case to the right, of its column.
@@ -210,10 +213,10 @@ You can use an integer to define the minimum width in pixels or use a `String` t
 
 Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex-layout) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex-layout#example-form) article, but using a `ColumnLayout` scheme instead:
 
-<ComponentDemo 
-path='/webforj/columnslayoutform?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java'
-height="700px"
+<ComponentDemo
+path='/webforj/columnslayoutform'
+files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java']}
+height='700px'
 />
 
 ## Styling {#styling}

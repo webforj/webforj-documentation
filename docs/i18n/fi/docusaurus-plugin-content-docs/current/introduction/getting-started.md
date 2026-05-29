@@ -1,52 +1,46 @@
 ---
 title: Getting Started
 sidebar_position: 2
-_i18n_hash: 5a051bf7c5a9494b21ba5df3629c35b4
+_i18n_hash: e0271a7db26a5c4b3fdc29508119aade
 ---
-Tässä artikkelissa kuvataan vaiheet uuden webforJ-sovelluksen luomiseksi käyttäen webforJ [archetypseja](../building-ui/archetypes/overview.md). Archetypit tarjoavat esikonfiguroituja projektiarkkitehtuureja ja aloituskoodia, jotta voit saada projektin nopeasti toimintaan.
-Uuden webforJ-sovelluksen luomiseksi archetypestä voit käyttää [startforJ](#using-startforj) tai [komentorivikäskyä](#using-the-command-line).
+Tämä artikkeli kuvaa vaiheet uuden webforJ-sovelluksen luomiseksi käyttämällä webforJ [archetypes](../building-ui/archetypes/overview.md). Archetypes tarjoavat esikonfiguroituja projektirakenteita ja aloituskoodia, jotta voit saada projektin nopeasti toimimaan.
+Uuden webforJ-sovelluksen luomiseksi archetypesta voit käyttää [startforJ](#using-startforj) tai [komentoriviä](#using-the-command-line). 
 
-:::tip Edellytykset
-Ennen kuin aloitat, tarkista tarvittavat [edellytykset](./prerequisites) webforJ:n määritykselle ja käytölle.
+:::tip Esivaatimukset
+Ennen kuin aloitat, tarkista tarvittavat [esivaatimukset](./prerequisites) webforJ:n asentamiseen ja käyttöön.
 :::
 
 
-## Käyttäminen startforJ {#using-startforj}
+## Käyttäen startforJ {#using-startforj}
 
-Yksinkertaisin tapa luoda uusi webforJ-sovellus on [startforJ](https://docs.webforj.com/startforj), joka luo minimaalisen aloitusprojektin valitun webforJ-archetyypin perusteella. Tämä aloitusprojekti sisältää kaikki vaatimukset, määritystiedostot ja valmiiksi tehdyn asettelun, jotta voit alkaa työstämään sitä heti.
+Yksinkertaisin tapa luoda uusi webforJ-sovellus on [startforJ](https://docs.webforj.com/startforj), joka luo minimaalisen aloitusprojektin valitun webforJ archetypen perusteella. Tämä aloitusprojekti sisältää kaikki vaadittavat riippuvuudet, konfiguraatiotiedostot ja valmiin asettelun, jotta voit aloittaa rakentamisen heti.
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/archetypes/startforj.mp4" type="video/mp4" />
-  </video>
-</div>
+### Mukauttaminen startforJ:llä {#customizing-with-startforj}
 
+Kun luot sovelluksen [startforJ](https://docs.webforj.com/startforj) avulla, voit mukauttaa sitä antamalla seuraavat tiedot:
 
-### Mukauttaminen startforJ:n avulla {#customizing-with-startforj}
-
-Kun luot sovellusta [startforJ](https://docs.webforj.com/startforj) avulla, voit mukauttaa sitä antamalla seuraavat tiedot:
-
-- Perusprojekti metadata (Sovelluksen nimi, Ryhmä ID, Artefakti ID)  
+- Perusprojektin metatiedot (Sovelluksen nimi, Ryhmän tunnus, Artefaktin tunnus)  
 - webforJ-versio ja Java-versio
-- Teeman väri ja ikoni
+- Teeman väri ja kuvake
 - Archetype
 - Flavor
 
-Valittavana on kaksi flavor-vaihtoehtoa, joista "webforJ Only" on oletus:
-  - **webforJ Only**: Standardi webforJ-sovellus
-  - **webforJ + Spring Boot**: webforJ-sovellus Spring Boot -tuella
+Valittavana on kaksi makuvaihtoehtoa, joista "webforJ Only" on oletus:
+  - **webforJ Only**: Vakioprojekti webforJ:llä
+  - **webforJ + Spring Boot**: webforJ-sovellus Spring Boot -tukea varten
 
-:::tip Saatavilla olevat Archetypet
-webforJ:ssä on useita ennakkoon määriteltyjä archetyyppejä, joiden avulla pääset käynnistämään nopeasti. Täydellisen luettelon saatavilla olevista archetypeista löydät [archetypes-katalogista](../building-ui/archetypes/overview).
+:::tip Saatavilla olevat archetypet
+webforJ tulee useiden ennalta määriteltyjen archetyppien kanssa auttaakseen sinua pääsemään nopeasti alkuun. Täydellisen luettelon saatavilla olevista archetyypeistä katso [archetypes-katalogista](../building-ui/archetypes/overview).
 :::
 
-Näiden tietojen avulla startforJ luo perusprojektin valitsemastasi archetypestä valitsemillasi mukautuksilla. Voit valita projektisi lataamisen ZIP-tiedostona tai julkaista sen suoraan GitHubiin.
+Tämän tiedon avulla startforJ luo perustason projektin valitsemastasi archetypesta valitsemillasi mukautuksilla.
+Voit valita ladattavaksi projektisi ZIP-tiedostona tai julkaista sen suoraan GitHubiin.
 
 Kun olet ladannut projektisi, avaa projektikansio IDE:ssäsi.
 
-## Käyttäminen komentoriviltä {#using-the-command-line}
+## Käyttäen komentoriviä {#using-the-command-line}
 
-Jos suosittelet komentorivipohjaista työskentelyä, voit luoda projektin suoraan käyttämällä Maven-archetypeta:
+Jos haluat käyttää komentoriviä, voit luoda projektin suoraan käyttämällä Maven archetypea:
 
 <ComponentArchetype
 project="hello-world"

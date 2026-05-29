@@ -2,51 +2,81 @@
 title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
-_i18n_hash: 91d753e882e3d6d59deef5044ee7bc4c
+_i18n_hash: 5716356b99e40dc53cfdf82a87fd9b3c
 ---
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButtonGroup" top='true'/>
 
-`RadioButtonGroup`-luokkaa käytetään ryhmittämään toisiinsa liittyviä radiopainikkeita, mikä auttaa luomaan vaihtoehtojen keskinäistä eksklusiivisuutta kyseisessä ryhmässä. Käyttäjät voivat valita vain yhden radiopainikkeen tietyssä radioryhmässä. Kun käyttäjä valitsee radiopainikkeen ryhmästä, aiemmin valittu radiopainike samassa ryhmässä poistuu automaattisesti valinnasta. Tämä varmistaa, että vain yksi vaihtoehto voidaan valita kerrallaan.
+`RadioButtonGroup` hallitsee kokoelmaa [`RadioButton`](/docs/components/radiobutton) -komponentteja. Ainoastaan yksi `RadioButton` voi olla valittuna `RadioButtonGroup` -ryhmässä. Kun käyttäjä valitsee uuden radio painikkeen, aiemmin valittu painike ryhmässä poistuu automaattisesti valinnasta.
 
-:::tip
-`RadioButton`-komponentti tallentaa ryhmän, johon se kuuluu, ja tämä voidaan saavuttaa `getButtonGroup()`-metodin avulla.
+<!-- INTRO_END -->
+
+## Luominen `RadioButtonGroup` {#creating-a-radiobuttongroup}
+
+:::important `RadioButtonGroup` renderointi
+`RadioButtonGroup` komponentti ei renderoi HTML-elementtiä. Se tarjoaa vain logiikan, joka saa `RadioButton` komponentit toimimaan ryhmänä sen sijaan, että ne toimisivat erikseen.
 :::
 
-<ComponentDemo 
-path='/webforj/radiobuttongroup?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
-height="200px"
+Luo yksittäiset `RadioButton` komponentit ja siirrä ne `RadioButtonGroup` konstruktorille. Ainoastaan yksi painike ryhmässä voi olla valittuna kerrallaan.
+
+<ComponentDemo
+path='/webforj/radiobuttongroup'
+files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java']}
+height='200px'
 />
 
-:::important
-`RadioButtonGroup`-komponentti ei renderöi HTML-elementtiä sivulle. Sen sijaan se on vain logiikka, joka varmistaa, että ryhmä Radiopainikkeita käyttäytyy ryhmänä sen sijaan, että ne käyttäytyisivät yksittäin.
+
+## `RadioButton` komponenttien lisääminen ja poistaminen {#adding-and-removing-radiobuttons}
+
+Voit sisällyttää `RadioButton` komponentteja `RadioButtonGroup` konstruktorille luodaksesi ryhmän annetuista komponenteista.
+Jos haluat lisätä tai poistaa `RadioButton` olemassa olevasta `RadioButtonGroup`:sta, käytä `add()` tai `remove()` metodeja.
+
+:::tip Saadaksesi `RadioButton` ryhmän
+`RadioButton` komponentilla on `getButtonGroup()` metodi, joka palauttaa `RadioButtonGroup`:n, johon se kuuluu, tai `null`, jos sillä ei ole ryhmää.
 :::
 
-## Käyttötapaukset {#usages}
+## Nester <DocChip chip='since' label='25.11' /> {#nesting}
 
-`RadioButtonGroup`-komponenttia käytetään parhaiten tilanteissa, joissa käyttäjä tarvitsee tehdä yksittäisen valinnan ennalta määritetystä vaihtoehtojen joukosta, joka esitetään radiopainikkeina. Tässä on joitakin esimerkkejä, milloin `RadioButtonGroup`-komponenttia kannattaa käyttää:
+Kuten muut komponentit, voit sisällyttää `RadioButtonGroup` containeriin, joten sinun ei tarvitse suoraan lisätä jokaista yksittäistä `RadioButton` -painiketta.
 
-1. **Kyselyt tai Lomakkeet**: `RadioButtonGroup`-komponentteja käytetään yleisesti kyselyissä tai lomakkeissa, joissa käyttäjien on valittava yksi vastaus vaihtoehtojen luettelosta.
+```java
+RadioButton agree = new RadioButton("Samaa mieltä");
+RadioButton neutral = new RadioButton("Neutraali");
+RadioButton disagree = new RadioButton("Eri mieltä");
 
-2. **Asetteluasetukset**: Sovelluksissa, jotka sisältävät asetuksiin liittyviä paneeleja, käytetään usein RadioButtonGroup-komponenttia, jotta käyttäjät voivat valita yhden vaihtoehdon keskenään poissulkevista vaihtoehdoista.
+RadioButtonGroup group = new RadioButtonGroup("valinnat", agree, neutral, disagree);
 
-3. **Suodatus tai Lajittelu**: `RadioButton`-komponenttia voidaan käyttää sovelluksissa, joissa vaaditaan käyttäjien valitsevan yksittäinen suodatus- tai lajitteluvaihtoehto, kuten erilaisten kriteerien mukaan lajittelemalla tavaraluetteloa.
+Fieldset fieldset = new Fieldset("Vaihtoehdot");
+fieldset.add(group);
+```
 
-<!-- vale off -->
-## Radiopainikkeiden lisääminen ja poistaminen {#adding-and-removing-radiobuttons}
-<!-- vale on -->
+## `RadioButtonGroupChangeEvent` käyttöönotto {#using-radiobuttongroupchangeevent}
 
-On mahdollista lisätä ja poistaa yksittäisiä tai useita `RadioButton`-objekteja ryhmään varmistaen, että ne käyttäytyvät keskenään poissulkevalla tavalla ja liittyvät mihin tahansa nimeen, joka voi kuulua ryhmään.
+Jokaisella `RadioButton`:lla voi olla oma tapahtumakuuntelijansa havaitakseen, kun käyttäjä kytkee sen. Yksi `RadioButtonGroup`:n etu on, että voit käyttää yhtä tapahtumakuuntelijaa, joka reagoi kaikkiin ryhmän radio painikkeisiin [`RadioButtonGroupChangeEvent`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/optioninput/event/RadioButtonGroupChangeEvent.html) -tapahtumassa.
 
-## Nimeäminen {#naming}
+**Tapahtumakuuntelijoiden lisääminen jokaiselle `RadioButton`:lle**
 
-`RadioButtonGroup`-komponentin nimi-attribuutti ryhmittelee liittyvät Radiopainikkeet yhteen, jolloin käyttäjät voivat tehdä yksittäisen valinnan tarjotuista vaihtoehdoista ja varmistaa eksklusiivisuuden Radiopainikkeiden välillä. Ryhmän nimeä ei heijasteta DOM:iin, ja se on kuitenkin kätevä työkalu Java-kehittäjälle.
+```java 
+agree.onValueChange(e -> changeEvent());
+neutral.onValueChange(e -> changeEvent());
+disagree.onValueChange(e -> changeEvent());
+```
 
-## Parhaat käytännöt {#best-practices}
+**Yhden tapahtumakuuntelijan lisääminen `RadioButtonGroup`:lle**
 
-Varmistaaksesi optimaalisen käyttäjäkokemuksen RadioButton-komponenttia käytettäessä, harkitse seuraavia parhaita käytäntöjä:
+```java
+RadioButtonGroup group = new RadioButtonGroup("valinnat", agree, neutral, disagree);
+group.onChange(e -> changeEvent());
+```
 
-1. **Selkeät Merkit**: Anna selkeät ja ytimekkäät nimet jokaiselle `RadioButton`-vaihtoehdolle, jotta valinta voidaan kuvata tarkasti. Nimien tulisi olla helposti ymmärrettäviä ja erottua toisistaan.
+Seuraava esimerkki [Drawer Placement](/docs/components/drawer#placement) käyttää `RadioButtonGroupChangeEvent`:ia automaattisesti muuttamaan `Drawer` komponentin sijaintia:
 
-2. **Tarjoa Oletusvalinta**: Jos mahdollista, harkitse oletusvalinnan tarjoamista Radiopainikkeille ohjataksesi käyttäjiä, kun he kohtaavat vaihtoehdot ensimmäisen kerran. Oletusvalinnan tulisi vastata yleisintä tai suosituimpaa valintaa.
+<ComponentDemo
+path='/webforj/drawerplacement'
+files={['src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java']}
+height='600px'
+/>
+
+## Nimettömyys {#naming}
+
+`name` attribuutti `RadioButtonGroup`:ssa ryhmittelee related RadioButtons yhteen, jolloin käyttäjät voivat tehdä yhden valinnan tarjotuista vaihtoehdoista ja valvovat eksklusiivisuutta RadioButtonien kesken. Ryhmän nimeä ei heijasteta DOM:ssa, vaan se on kätevä työkalu Java-kehittäjälle.

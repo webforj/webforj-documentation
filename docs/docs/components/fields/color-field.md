@@ -10,20 +10,24 @@ description: A component that provides a default browser-based color picker, all
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/ColorField" top='true'/>
 
+The `ColorField` component lets users select a color through the browser's native color picker. Because it relies on the browser's built-in implementation, its appearance varies across browsers and platforms. It may show as a simple text input, a platform-standard color picker, or a custom picker interface. This variation works in the user's favor, since the control matches what they're already familiar with.
+
+<!-- INTRO_END -->
+
+## Using `ColorField` {#using-colorfield}
+
 <ParentLink parent="Field" />
 
-The `ColorField` component is a versatile tool that allows users to explore and select colors interactively within your app. It offers a seamless approach so users can find the perfect hue, saturation, and brightness to match their creative vision.
+`ColorField` extends the shared `Field` class, which provides common features across all field components. The following example lets the user pick a color and displays its tetradic complements.
 
-The `ColorField` component is implemented as a native browser feature, so the presentation can differ greatly depending on the browser and platform. However, this variation is beneficial, as it aligns with the user’s familiar environment. It might appear as a simple text input to ensure a properly formatted color value, a platform-standard color picker, or even a custom color picker interface.
-
-<ComponentDemo 
-path='/webforj/colorfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/colorfield/ColorFieldView.java'
-cssURL='/css/fields/colorfield/colorFieldDemo.css'
+<ComponentDemo
+path='/webforj/colorfield'
+files={[
+  'src/main/java/com/webforj/samples/views/fields/colorfield/ColorFieldView.java',
+  'src/main/resources/static/css/fields/colorfield/colorFieldDemo.css',
+]}
 height='300px'
 />
-
-## Usages {#usages}
 
 The `ColorField` is best used in scenarios where color selection is a crucial part of the user interface or app interface. Here are some scenarios where you can use a `ColorField` effectively:
 

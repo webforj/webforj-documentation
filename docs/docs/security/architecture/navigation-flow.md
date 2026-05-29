@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Navigation Flow
+description: Trace how RouteSecurityObserver intercepts navigation, runs evaluators, and redirects users before any view renders.
 ---
 
 Security enforcement in webforJ happens automatically during navigation. When a user clicks a link or navigates to a route, the security system intercepts the navigation, evaluates access rules, and either allows the navigation to proceed or redirects the user to an appropriate page. This interception is invisible to users and requires no manual security checks in your component code.
@@ -32,27 +33,27 @@ When a user navigates to a route, the following sequence occurs:
 
 ```mermaid
 sequenceDiagram
-    participant User
-    participant Router
-    participant Observer as RouteSecurityObserver
-    participant Manager as RouteSecurityManager
-    participant Component as Route Component
+  participant User
+  participant Router
+  participant Observer as RouteSecurityObserver
+  participant Manager as RouteSecurityManager
+  participant Component as Route Component
 
-    User->>Router: Navigate to /admin
-    Router->>Observer: onRouteRendererLifecycleEvent(BEFORE_CREATE)
-    Observer->>Manager: evaluate(routeClass, context)
-    Manager->>Manager: Run evaluators by priority
-    Manager-->>Observer: RouteAccessDecision
+  User->>Router: Navigate to /admin
+  Router->>Observer: onRouteRendererLifecycleEvent(BEFORE_CREATE)
+  Observer->>Manager: evaluate(routeClass, context)
+  Manager->>Manager: Run evaluators by priority
+  Manager-->>Observer: RouteAccessDecision
 
-    alt Access Granted
-        Observer-->>Router: Allow rendering
-        Router->>Component: Create component
-        Component-->>User: Display view
-    else Access Denied
-        Observer->>Manager: onAccessDenied(decision, context)
-        Manager->>Router: Redirect to login/deny page
-        Router-->>User: Show login page
-    end
+  alt Access Granted
+    Observer-->>Router: Allow rendering
+    Router->>Component: Create component
+    Component-->>User: Display view
+  else Access Denied
+    Observer->>Manager: onAccessDenied(decision, context)
+    Manager->>Router: Redirect to login/deny page
+    Router-->>User: Show login page
+  end
 ```
 
 This flow shows that security evaluation happens before any sensitive route code executes. If access is denied, the component never instantiates, preventing unauthorized users from triggering business logic or accessing protected data.

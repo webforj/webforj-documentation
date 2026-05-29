@@ -1,6 +1,7 @@
 ---
 title: Button
 sidebar_position: 15
+description: Trigger click actions in webforJ with the Button component, including themes, expanses, prefix and suffix icons, and disabled state.
 ---
 
 <DocChip chip="shadow" />
@@ -8,17 +9,9 @@ sidebar_position: 15
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/button/Button" top='true'/>
 
-A `Button` component is a fundamental user interface element used in application development to create interactive elements that trigger actions or events when clicked or activated. It serves as a clickable element that users can interact with to perform various actions within an application or website. 
+A `Button` is a clickable element that triggers an action when pressed. It can display text, icons, or a combination of both. Buttons support multiple visual themes and sizes, and can be disabled to prevent interaction during long-running operations or when certain conditions aren't met.
 
-The primary purpose of the `Button` component is to provide a clear and intuitive call-to-action for users, guiding them to perform specific tasks such as submitting a form, navigating to another page, triggering a function, or initiating a process. Buttons are essential for enhancing user interactions, improving accessibility, and creating a more engaging user experience.
-
-<ComponentDemo 
-path='/webforj/button?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonView.java'
-height='300px'
-/>
-
-<!-- tabs={['ButtonDemo.java', 'demo_styles.css']} -->
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 
@@ -44,6 +37,14 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - "Next" - Takes the user to the next page or section of the current application or page.
   > - "Previous" - Returns the user to the previous page of the application or section they're in.
   > - "Back" Returns the user to the first part of the application or page they're in.
+  
+The following example demonstrates buttons used for form submission and clearing input:
+
+<ComponentDemo
+path='/webforj/button'
+files={['src/main/java/com/webforj/samples/views/button/ButtonView.java']}
+height='300px'
+/>
 
 ## Adding icons to buttons <DocChip chip='since' label='24.11' /> {#adding-icons-to-buttons-docchip-chipsince-label2411-}
 
@@ -60,10 +61,10 @@ By default, an `Icon` inherits the button's theme and expanse.
 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
-<ComponentDemo 
-path='/webforj/buttonicon?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonIconView.java'
-height="200px"
+<ComponentDemo
+path='/webforj/buttonicon'
+files={['src/main/java/com/webforj/samples/views/button/ButtonIconView.java']}
+height='200px'
 />
 
 ### Names {#names}
@@ -74,16 +75,14 @@ The `Button` component utilizes naming, which is used for accessibility. When a 
 
 Button components, like many others, can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will decrease the opacity of the button, and is available for all button themes and expanses.
 
-<ComponentDemo 
-path='/webforj/buttondisable?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonDisableView.java'
+<ComponentDemo
+path='/webforj/buttondisable'
+files={['src/main/java/com/webforj/samples/views/button/ButtonDisableView.java']}
 />
-
-<br />
 
 Disabling a button can be done at any time in the code by using the <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> function. For added convenience, a button can also be disabled when clicked using the built-in <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> function.
 
-In some applications, clicking a button triggers a long-running action. In most cases, the application might want to ensure that only a single click is processed.  This can be an issue in high-latency environments when the user clicks the button multiple times before the application has had a chance to start processing the resulting action. 
+In some cases, clicking a button triggers a long-running action. Disabling the button until your app process the action prevents the user from clicking the button multiple times, especially in high-latency environments.
 
 :::tip
 Disabling on click not only helps optimize the processing of actions, but also prevents the developer from needing to implement this behavior on their own, as this method has been optimized to reduce round trip communications.
@@ -107,10 +106,9 @@ While there are many use cases for each of the various themes, some examples use
 
 Shown below are example buttons with each of the supported Themes applied: <br/>
 
-<ComponentDemo 
-path='/webforj/buttonthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonThemesView.java'
-cssURL='/css/button/buttonThemes.css'
+<ComponentDemo
+path='/webforj/buttonthemes'
+files={['src/main/java/com/webforj/samples/views/button/ButtonThemesView.java']}
 height='175px'
 />
 
@@ -119,14 +117,14 @@ The following <JavadocLink type="foundation" location="com/webforj/component/Exp
 
 Different sizes are often appropriate for different uses:
   - **Larger** expanse values are suited to buttons which should grab attention, emphasize functionality or are integral to the core functionality of an application or page.
-  - **Medium** expanse buttons, the default size, should be utilized as a "standard size", when a button's behavior is no more or less important than other similar components.
+  - **Medium** expanse buttons, the default size, should be the standard size of buttons. These button’s functions should  be neither more nor less critical than similar components.
   - **Smaller** expanse values should be used for buttons that do not have integral behaviors in the application, and serve a more supplementary or utilitarian role, rather than play an important part in user interaction. This includes `Button` components being used only with icons for utilitarian purposes.
 
 Below are the various expanses supported for the `Button` component: <br/>
 
-<ComponentDemo 
-path='/webforj/buttonexpanses?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonExpansesView.java'
+<ComponentDemo
+path='/webforj/buttonexpanses'
+files={['src/main/java/com/webforj/samples/views/button/ButtonExpansesView.java']}
 height='200px'
 />
 

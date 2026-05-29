@@ -5,20 +5,20 @@ import com.microsoft.playwright.Page;
 
 public class NumberFieldPage {
 
-    private static final String ROUTE = "numberfield";
+  private static final String ROUTE = "numberfield";
 
-    private final Locator numberField;
+  private final Locator numberField;
 
-    public NumberFieldPage(Page page) {
+  public NumberFieldPage(Page page) {
 
-        numberField = page.getByLabel("Quantity");
-    }
+    numberField = page.getByLabel("Quantity");
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getNumberField() {
-        return numberField;
-    }
+  public Locator getNumberField() {
+    return numberField;
+  }
 }

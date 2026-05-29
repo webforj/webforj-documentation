@@ -1,16 +1,21 @@
 ---
 title: DesktopNotification
 sidebar_position: 29
-_i18n_hash: 16e95136d6067cafa258ef513f9e757f
+_i18n_hash: b7e4651594dee824d6bcdf1ac32e1998
 ---
 <DocChip chip='since' label='25.00' />
 <DocChip chip='experimental' />
 <JavadocLink type="desktop-notification" location="com/webforj/component/desktopnotification/DesktopNotification" top='true'/>
 
-WebforJ-version 25.00 ja uudemmat, **DesktopNotification**-komponentti tarjoaa yksinkertaisen käyttöliittymän työpöytäilmoitusten luomiseen, näyttämiseen ja hallintaan. Keskityttäessä minimaaliseen konfigurointiin ja sisäänrakennettuun tapahtumankäsittelyyn, komponenttia voidaan käyttää, kun käyttäjille on tarpeen ilmoittaa reaaliaikaisista tapahtumista (kuten uusista viesteistä, ilmoituksista tai järjestelmäntapahtumista) samalla kun he selaavat sovellustasi.
+`DesktopNotification`-komponentti näyttää natiivin työpöydän ilmoituksia selainikkunan ulkopuolella. Sitä voidaan käyttää käyttäjien hälyttämiseen reaaliaikaisista tapahtumista, kuten uusista viesteistä, järjestelmäilmoituksista tai tilan muutoksista, kun he käyttävät sovellustasi.
 
-:::warning kokeellinen ominaisuus
-`DesktopNotification`-komponentti on vielä kehittymässä, ja sen API voi kokea muutoksia kehittyessään. Aloittaaksesi tämän ominaisuuden käytön, varmista, että lisäät seuraavan riippuvuuden pom.xml-tiedostoon.
+<!-- INTRO_END -->
+
+## Asennus ja ennakkoedellytykset {#setup-and-prerequisites}
+
+<ExperimentalWarning />
+
+Aloita tämän ominaisuuden käyttäminen lisäämällä seuraava riippuvuus pom.xml-tiedostoosi:
 
 ```xml
 <dependency>
@@ -18,26 +23,17 @@ WebforJ-version 25.00 ja uudemmat, **DesktopNotification**-komponentti tarjoaa y
   <artifactId>webforj-desktop-notification</artifactId>
 </dependency>
 ```
-:::
 
-:::info Esivaatimukset
 Ennen `DesktopNotification`-komponentin integroimista varmista, että:
 
 - Sovelluksesi toimii **turvallisessa kontekstissa** (HTTPS).
-- Selain ei ole yksityisessä tai incognito-tilassa.
-- Käyttäjä on ollut vuorovaikutuksessa sovelluksen kanssa (esim. painanut painiketta tai näppäintä), sillä ilmoitukset vaativat käyttäjän eleen näyttämiseksi.
-- Käyttäjä on myöntänyt ilmoitusluvat (tämä pyydetään automaattisesti, jos tarpeen).
-:::
-
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/release/desktop_notifications.mp4" type="video/mp4"/>
-  </video>
-</div>
+- Selain ei ole incognito- tai yksityisessä selaustilassa.
+- Käyttäjä on vuorovaikuttanut sovelluksen kanssa (esim. napsauttamalla painiketta tai painamalla näppäintä), koska ilmoitukset vaativat käyttäjän eleen näyttääkseen.
+- Käyttäjä on myöntänyt ilmoitusoikeudet (tämä pyydetään automaattisesti, jos tarpeen).
 
 ## Peruskäyttö {#basic-usage}
 
-Ilmoituksen luomiseen ja näyttämiseen on useita tapoja. Useimmissa tilanteissa yksinkertaisin lähestymistapa on kutsua yhtä staattisista `show`-menetelmistä, jotka kapseloivat koko ilmoituksen elinkaaren.
+On useita tapoja luoda ja näyttää ilmoitus. Useimmissa skenaarioissa yksinkertaisin lähestymistapa on kutsua yhtä staattisista `show`-menetelmistä, jotka kapseloivat koko ilmoituselinkaaren.
 
 ### Esimerkki: Perusilmoituksen näyttäminen {#example-displaying-a-basic-notification}
 
@@ -46,24 +42,24 @@ Ilmoituksen luomiseen ja näyttämiseen on useita tapoja. Useimmissa tilanteissa
 DesktopNotification.show("Päivitys saatavilla", "Latauksesi on valmis!");
 ```
 
-Tämä yksirivinen koodi luo ilmoituksen, jossa on otsikko ja sisältö, ja yrittää sitten näyttää sen.
+Tämä yksirivinen komento luo ilmoituksen, jossa on otsikko ja sisältö, ja yrittää sitten näyttää sen.
 
 ## Ilmoituksen mukauttaminen {#customizing-the-notification}
 
-Ilmoituksen ulkonäön ja tunteen mukauttamiseen on useita vaihtoehtoja, riippuen sovelluksen tarpeista ja ilmoituksen tarkoituksesta.
+On olemassa useita vaihtoehtoja ilmoituksen ulkoasun ja tuntuman mukauttamiseen sovelluksen tarpeiden ja ilmoituksen tarkoituksen mukaan.
 
 ### Mukautetun `Icon`-asetuksen asettaminen {#setting-a-custom-icon}
 
-Oletusarvoisesti ilmoitus käyttää määrittelemääsi sovellusikonia [ikoni-protokollan](../managing-resources/assets-protocols#the-icons-protocol) kautta. Voit asettaa mukautetun ikonin käyttämällä `setIcon`-menetelmää. Komponentti tukee eri URL-protokollia:
+Oletuksena ilmoitus käyttää määriteltyä sovelluskuvaketta [ikoni-protokollan](../managing-resources/assets-protocols#the-icons-protocol) kautta. Voit asettaa mukautetun kuvakkeen käyttämällä `setIcon`-menetelmää. Komponentti tukee erilaisia URL-skeemoja:
 
-- [`context://`](../managing-resources/assets-protocols#the-context-protocol): Ratkaisee kontekstin URL:ksi, joka osoittaa sovelluksen resurssikansioon; kuva on base64-koodattu.
-- [`ws://`](../managing-resources/assets-protocols#the-webserver-protocol): Ratkaisee verkkopalvelimen URL:ksi, joka antaa täysin määritellyn URL-osoitteen.
-- [`icons://`](../managing-resources/assets-protocols#the-icons-protocol): Ratkaisee ikonien URL-osoitteeksi.
+- [`context://`](../managing-resources/assets-protocols#the-context-protocol): Ratkaistaan konteksti-URL:ksi, joka osoittaa sovelluksen resurssikansioon; kuva on base64-koodattu.
+- [`ws://`](../managing-resources/assets-protocols#the-webserver-protocol): Ratkaistaan verkkopalvelimen URL-osoitteeksi, mikä antaa täysin kelvollisen URL:n.
+- [`icons://`](../managing-resources/assets-protocols#the-icons-protocol): Ratkaistaan ikoni-URL:ksi.
 
 **Esimerkki:**
 
 ```java
-// Luodaan ilmoitus mukautetulla ikonu URL-osoitteella
+// Luodaan ilmoitus mukautetulla kuvake-URL:lla
 DesktopNotification notification = new DesktopNotification(
   "Muistutus", "Kokous alkaa 10 minuutin kuluttua."
 );
@@ -73,47 +69,46 @@ notification.open();
 
 ## Ilmoitustapahtumat {#notification-events}
 
-`DesktopNotification` tukee useita elinkaaritapahtumia, ja kuuntelijoita voidaan liittää käsittelemään tapahtumia, kuten kun ilmoitus näytetään, suljetaan, klikataan tai syntyy virhe.
+`DesktopNotification` tukee useita elinkaaren tapahtumia, ja kuuntelijoita voidaan liittää käsittelemään tapahtumia, kuten kun ilmoitus on näytetty, suljettu, klikattu tai kun siihen liittyy virhe.
 
-| Tapahtuma              | Kuvaus                                               | Milloin käyttää                                            |
-|------------------------|------------------------------------------------------|----------------------------------------------------------|
-| **Avaa**               | Käynnistyy, kun ilmoitus näytetään.                 | Ilmoituksen näyttämisen lokittaminen, käyttöliittymän päivittäminen, sitoutumisen seuraaminen. |
-| **Sulje**              | Käynnistyy, kun ilmoitus suljetaan.                 | Resurssien puhdistaminen, hylkäysten lokittaminen, seurantatoimien suorittaminen. |
-| **Virhe**              | Käynnistyy, kun ilmoituksessa syntyy virhe tai käyttäjä ei myöntänyt lupia. | Virheiden käsitteleminen sujuvasti, käyttäjän ilmoittaminen, varajärjestelmien soveltaminen. |
-| **Klikkaus**           | Käynnistyy, kun käyttäjä klikkaa ilmoitusta.        | Siirtyminen tiettyyn osioon, vuorovaikutusten lokittaminen, sovelluksen fokusoiminen. |
-
+| Tapahtuma      | Kuvaus                                            | Milloin käyttää                                           |
+|-----------------|---------------------------------------------------|----------------------------------------------------------|
+| **Avaa** | Käynnistyy, kun ilmoitus on näytetty.            | Kirjaa ilmoituksen näyttämisen, päivitä UI, seuraa sitoutumista. |
+| **Sulje**| Käynnistyy, kun ilmoitus on suljettu.           | Siivoa resursseja, kirjaa hylkäämiset, suorita seurantatoimenpiteitä. |
+| **Virhe**| Käynnistyy, kun virhe tapahtuu ilmoituksessa tai käyttäjä ei myöntänyt lupaa.| Käsittele virheitä sujuvasti, ilmoita käyttäjälle, käytä varatoimenpiteitä.  |
+| **Napsauta**| Käynnistyy, kun käyttäjä napsauttaa ilmoitusta. | Siirry tiettyyn osioon, kirjaa vuorovaikutukset, keskity sovellukseen. |
 
 ```java
 DesktopNotification notification = new DesktopNotification("Ilmoitus", "Sinulla on uusi viesti!")
 
-// Liitetään tapahtumakuuntelija avautumisen tapahtumalle
+// Liitä tapahtumakuuntelija avaus-tapahtumalle
 notification.onOpen(event -> {
-  System.out.println("Ilmoitus avattiin käyttäjän toimesta.");
+  System.out.println("Käyttäjä avasi ilmoituksen.");
 });
 
-// Vastaavasti, kuunnellaan klikkaustapahtumaa
+// Vastaavasti, kuuntele napsautustapahtumaa
 notification.onClick(event -> {
   System.out.println("Ilmoitus klikattu.");
 });
 ```
 
-:::warning Klikkauskäyttäytyminen
-Selaimen turvallisuuspolitiikat estävät ilmoituksen klikkaustapahtuman automaattisesti tuomasta sovelluksesi ikkunaa tai välilehteä fokukseen. Tämä käyttäytyminen on selaimen täytäntöönpanema eikä sitä voida ohittaa ohjelmallisesti. Jos sovelluksesi vaatii ikkunan fokusoimista, sinun on kehotettava käyttäjiä klikkaamaan sovelluksessa ilmoituksen vuorovaikutuksen jälkeen.
+:::warning Napsautuskäyttäytyminen
+Selain turvallisuuspolitiikat estävät ilmoituksen napsautustapahtuman automaattisesti tuomasta sovellusikkunaasi tai -välilehteä näkyviin. Tämä käyttäytyminen on selaimen pakottamaa eikä sitä voida ohittaa ohjelmallisesti. Jos sovelluksesi tarvitsee ikkunan keskittymistä, sinun on ohjeistettava käyttäjiä napsauttamaan sovelluksessa ilmoituksen vuorovaikutuksen jälkeen.
 :::
 
-## Turvallisuus- ja yhteensopivuusnäkökohtia {#security-and-compatibility-considerations}
+## Tietoturva- ja yhteensopivuusharkinnat {#security-and-compatibility-considerations}
 
-Käyttäessäsi **DesktopNotification**-komponenttia, pidä mielessä seuraavat seikat:
+Käyttäessäsi **DesktopNotification**-komponenttia pidä seuraavat seikat mielessä:
 
-- **Turvallisuuskonteksti:** Sovelluksesi on tarjottava HTTPS:n kautta, jotta ilmoitukset ovat sallittuja useimmissa moderneissa selaimissa.
-- **Käyttäjän elevaatimus:** Ilmoitukset näytetään vain käyttäjän aiheuttaman toiminnan jälkeen. Pelkkä sivun lataaminen ei laukaise ilmoitusta.
-- **Selaimen rajoitukset:** Kaikki selaimet eivät käsittele mukautettuja ikoneita tai fokusoimiskäyttäytymistä samalla tavalla. Esimerkiksi mukautetut ikonit eivät välttämättä toimi Safarissa, kun taas tapahtumakäyttäytyminen voi vaihdella muissa selaimissa.
-- **Luvat:** Varmista aina, että sovelluksesi tarkistaa ja pyytää ilmoituslupia käyttäjältä sujuvasti.
+- **Turvallisuuskonteksti:** Sovelluksesi on toimitettava HTTPS:n kautta varmistaaksesi, että ilmoitukset sallitaan useimmissa moderneissa selaimissa.
+- **Käyttäjän eleen vaatimus:** Ilmoitukset näytetään vain käyttäjän käynnistämän toiminnan jälkeen. Pelkkä sivun lataaminen ei laukaise ilmoitusta.
+- **Selaimen rajoitukset:** Kaikki selaimet eivät käsittele mukautettuja kuvakkeita tai keskittymiskäyttäytymistä samalla tavalla. Esimerkiksi mukautetut kuvakkeet eivät välttämättä toimi Safarissa, kun taas tapahtumakäyttäytyminen saattaa vaihdella muissa selaimissa.
+- **Luvat:** Varmista, että sovelluksesi tarkistaa ja pyytää ilmoitusoikeudet käyttäjältä sujuvasti.
 
-## Käyttöparhaat käytännöt {#usage-best-practices}
+## Käytön parhaat käytännöt {#usage-best-practices}
 
-Pidä mielessä seuraavat parhaat käytännöt käyttäessäsi `DesktopNotification`-komponenttia sovelluksessasi:
+Pidä seuraavat parhaat käytännöt mielessä käyttäessäsi `DesktopNotification`-komponenttia sovelluksessasi:
 
-- **Tiedota käyttäjiä:** Kerro käyttäjille, miksi ilmoituksia tarvitaan ja miten niistä voi olla hyötyä.
-- **Tarjoa varajärjestelmiä:** Koska jotkut selaimet saattavat rajoittaa ilmoituksia, harkitse vaihtoehtoisia tapoja varoittaa käyttäjiä (esimerkiksi sovelluksen sisäiset viestit).
-- **Virheiden käsittely:** Rekisteröi aina virhekuuntelija hallitaksesi sujuvasti tilanteita, joissa ilmoitusten näyttäminen epäonnistuu.
+- **Tietäkö käyttäjäsi:** Kerro käyttäjille, miksi ilmoituksia tarvitaan ja miten ne voivat hyödyttää heitä.
+- **Tarjoa varatoimenpiteitä:** Koska jotkin selaimet saattavat rajoittaa ilmoituksia, harkitse vaihtoehtoisia tapoja hälyttää käyttäjiä (esim. sisäiset viestit).
+- **Virheiden käsittely:** Rekisteröi aina virhekuuntelija käsittelemään sujuvasti tilanteita, joissa ilmoitukset eivät näy.

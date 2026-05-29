@@ -12,14 +12,18 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Checkbox Expanses")
 public class CheckboxExpanseView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public CheckboxExpanseView() {
-    getBoundComponent().setWrap(FlexWrap.WRAP).setMargin("var(--dwc-space-l)").setSpacing("50px")
-    .setJustifyContent(FlexJustifyContent.CENTER).setWidth("100%");
+    self.setWrap(FlexWrap.WRAP)
+        .setMargin("var(--dwc-space-l)")
+        .setSpacing("50px")
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setWidth("100%");
 
     for (int i = Expanse.values().length - 1; i >= 0; i--) {
-      CheckBox expanseCheckBox = new CheckBox(Expanse.values()[i].name());
-      getBoundComponent().add(expanseCheckBox.setExpanse(Expanse.values()[i]));
+      Expanse expanse = Expanse.values()[i];
+      self.add(new CheckBox(expanse.name()).setExpanse(expanse));
     }
   }
 }
