@@ -3,6 +3,7 @@ package com.webforj.samples.pages.login;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class LoginCustomFieldsPage {
 
@@ -30,9 +31,9 @@ public class LoginCustomFieldsPage {
     logoutButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Logout"));
   }
 
-  public static String getRoute() {
-    return ROUTE;
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public Locator getUsername() {
     return username;
@@ -50,7 +51,7 @@ public class LoginCustomFieldsPage {
     return logoutButton;
   }
 
-  public Locator getCustomderID() {
-    return customerID;
-  }
+    public Locator getCustomderID() {
+        return customerID;
+    }
 }

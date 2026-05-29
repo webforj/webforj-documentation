@@ -30,7 +30,6 @@ class RadioButtonGroupKotlinView: Composite<FlexLayout>() {
           vertical()
           wrap = FlexWrap.WRAP
           classNames + "layout"
-
           radioButtonGroup {
             radioButton("Strongly Disagree")
             radioButton("Disagree")

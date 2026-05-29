@@ -3,6 +3,7 @@ package com.webforj.samples.pages.slider;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class SliderPage {
 
@@ -21,9 +22,9 @@ public class SliderPage {
     this.lowerHandle = page.getByRole(AriaRole.SLIDER);
   }
 
-  public static String getRoute() {
-    return ROUTE;
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public Locator getVolumeOffButton() {
     return volumeOffButton;
@@ -33,7 +34,7 @@ public class SliderPage {
     return volumeOnButton;
   }
 
-  public Locator getLowerHandle() {
-    return lowerHandle;
-  }
+    public Locator getLowerHandle() {
+        return lowerHandle;
+    }
 }
