@@ -3,6 +3,7 @@ package com.webforj.samples.pages.table;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class TableFilteringPage {
 
@@ -15,10 +16,9 @@ public class TableFilteringPage {
   public TableFilteringPage(Page page) {
     this.page = page;
 
-    this.titleFilterInput =
-        page.getByRole(AriaRole.SEARCHBOX, new Page.GetByRoleOptions().setName("Search"));
-    this.tableRows = page.getByRole(AriaRole.TABLE).locator("tbody tr[part*='row']");
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public static String getRoute() {
     return ROUTE;

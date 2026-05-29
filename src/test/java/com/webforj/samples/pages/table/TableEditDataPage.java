@@ -3,6 +3,7 @@ package com.webforj.samples.pages.table;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class TableEditDataPage {
   private static final String ROUTE = "tableeditdata";
@@ -21,9 +22,9 @@ public class TableEditDataPage {
     this.saveButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save"));
   }
 
-  public static String getRoute() {
-    return ROUTE;
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public Locator getEditButton() {
     return editButton;

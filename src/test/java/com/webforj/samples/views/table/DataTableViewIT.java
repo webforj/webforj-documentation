@@ -1,11 +1,17 @@
 package com.webforj.samples.views.table;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.table.DataTablePage;
-import com.webforj.samples.views.BaseTest;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.webforj.samples.views.BaseTest;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class DataTableViewIT extends BaseTest {
   private static final String ATHLETE_NAME = "Michael Phelps";
@@ -20,15 +26,18 @@ public class DataTableViewIT extends BaseTest {
     dataTable = new DataTablePage(page);
   }
 
-  @Test
-  public void testEntriesPerPageAndPaginator() {
-    dataTable.getEntriesDropdown().click();
-    dataTable.getEntriesTen().click();
-    assertThat(dataTable.getTableRows()).hasCount(10);
+    public void setupDataTable(SupportedLanguage language) {
+        navigateToRoute(DataTablePage.getRoute(language));
+        dataTable = new DataTablePage(page);
+    }
 
-    dataTable.getEntriesDropdown().click();
-    dataTable.getEntriesTwentyfive().click();
-    assertThat(dataTable.getPaginationText("Showing 1 to 25 of 8618")).isVisible();
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testEntriesPerPageAndPaginator(SupportedLanguage language) {
+        setupDataTable(language);
+        dataTable.getEntriesDropdown().click();
+        dataTable.getEntriesTen().click();
+        assertThat(dataTable.getTableRows()).hasCount(10);
 
     dataTable.getEntriesDropdown().click();
     dataTable.getEntriesHundred().click();
@@ -41,26 +50,31 @@ public class DataTableViewIT extends BaseTest {
     assertThat(dataTable.getTableRows()).hasCount(3);
   }
 
-  @Test
-  public void testFilteringNonLatinAlphabetCharacters() {
-    dataTable.searchAthlete(ATHLETE_WITH_DIACRITICS_LATIN);
-    assertThat(dataTable.getPaginationText("Showing 1 to 2 of 2 entries")).isVisible();
-    dataTable.searchAthlete(ATHLETE_NAME_CYRILLIC);
-    assertThat(dataTable.getTableRows()).hasCount(0);
-  }
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testSearchButtonFilterOnTable(SupportedLanguage language) {
+        setupDataTable(language);
+        dataTable.searchAthlete(ATHLETE_NAME);
+        assertThat(dataTable.getTableRows()).hasCount(3);
+    }
 
-  @Test
-  public void testPaginatorDisplaysCorrectly() {
-    dataTable.getPaginatorLastPage().click();
-    assertThat(dataTable.goToSpecificPage(862)).isVisible();
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testFilteringNonLatinAlphabetCharacters(SupportedLanguage language) {
+        setupDataTable(language);
+        dataTable.searchAthlete(ATHLETE_WITH_DIACRITICS_LATIN);
+        assertThat(dataTable.getPaginationText("Showing 1 to 2 of 2 entries")).isVisible();
 
     dataTable.getEntriesDropdown().click();
     dataTable.getEntriesTwentyfive().click();
     assertThat(dataTable.goToSpecificPage(345)).isVisible();
 
-    dataTable.getEntriesDropdown().click();
-    dataTable.getEntriesFifty().click();
-    assertThat(dataTable.goToSpecificPage(173)).isVisible();
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testPaginatorDisplaysCorrectly(SupportedLanguage language) {
+        setupDataTable(language);
+        dataTable.getPaginatorLastPage().click();
+        assertThat(dataTable.goToSpecificPage(862)).isVisible();
 
     dataTable.getEntriesDropdown().click();
     dataTable.getEntriesHundred().click();
@@ -83,9 +97,31 @@ public class DataTableViewIT extends BaseTest {
     assertThat(dataTable.getPaginatorLastPage()).isDisabled();
   }
 
-  @Test
-  public void testPaginatorNavigatesCorrectlyToSpecificPage() {
-    dataTable.goToSpecificPage(4).click();
-    assertThat(dataTable.getPaginationText("Showing 31 to 40 of 8618")).isVisible();
-  }
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testPaginatorNavigatesCorrectly(SupportedLanguage language) {
+        setupDataTable(language);
+        dataTable.getPaginatorNextPage().click();
+        assertThat(dataTable.getPaginationText("Showing 11 to 20 of 8618")).isVisible();
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testPaginatorUpdatesCorrectlyBySearchFilter(SupportedLanguage language) {
+        setupDataTable(language);
+        dataTable.searchAthlete(ATHLETE_NAME);
+        assertThat(dataTable.getPaginationText("Showing 1 to 3 of 3 entries")).isVisible();
+        assertThat(dataTable.getPaginatorPreviousPage()).isDisabled();
+        assertThat(dataTable.getPaginatorFirstPage()).isDisabled();
+        assertThat(dataTable.getPaginatorNextPage()).isDisabled();
+        assertThat(dataTable.getPaginatorLastPage()).isDisabled();
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testPaginatorNavigatesCorrectlyToSpecificPage(SupportedLanguage language) {
+        setupDataTable(language);
+        dataTable.goToSpecificPage(4).click();
+        assertThat(dataTable.getPaginationText("Showing 31 to 40 of 8618")).isVisible();
+    }
 }

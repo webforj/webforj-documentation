@@ -3,6 +3,7 @@ package com.webforj.samples.pages.table;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class TableColumnComparatorPage {
   private static final String ROUTE = "tablecolumncomparator";
@@ -12,13 +13,9 @@ public class TableColumnComparatorPage {
 
   public TableColumnComparatorPage(Page page) {
 
-    this.numberColumnHeader =
-        page.getByRole(AriaRole.TABLE).filter(new Locator.FilterOptions().setHasText("Number"));
-    this.numberCells =
-        page.getByRole(AriaRole.TABLE)
-            .locator("td[data-column='Number']")
-            .locator("div[part='cell-label']");
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public static String getRoute() {
     return ROUTE;
