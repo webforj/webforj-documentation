@@ -1,186 +1,219 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
-_i18n_hash: c59ff0def84230ed79877cba3d5e5aa4
+description: Step 1 - Add components to an app.
+_i18n_hash: ac74bc5c04bce477a7407c9ff94323a4
 ---
-这第一步为客户管理应用程序奠定了基础，通过创建一个简单的交互界面。 这演示了如何设置一个基本的webforJ应用程序，该应用程序具有一个单一按钮，单击后会打开一个对话框。 这是一个简单明了的实现，介绍了关键组件，并让您感受到webforJ的工作方式。
+在[项目设置](/docs/introduction/tutorial/project-setup)中，您生成了一个 webforJ 项目。现在是时候为项目创建主类并使用 webforJ 组件添加交互式界面。 在此步骤中，您将了解：
 
-这一步骤利用了webforJ提供的基础应用程序类来定义应用程序的结构和行为。 持续进行后面的步骤将转向使用路由管理多个屏幕的更高级设置，具体介绍见[使用路由和复合组件进行扩展](./scaling-with-routing-and-composites)。
+- 使用 webforJ 和 Spring Boot 的应用程序入口点
+- webforJ 和 HTML 元素组件
+- 使用 CSS 样式化组件
 
-到这一步结束时，您将拥有一个正常工作的应用程序，演示了与组件和事件处理的基本交互。 要运行应用程序：
+完成此步骤将创建 [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) 的版本。
 
-- 转到`1-creating-a-basic-app`目录
-- 运行`mvn jetty:run`命令
+<!-- 在此插入视频 -->
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
-  </video>
-</div>
+## 运行应用程序 {#running-the-app}
 
-## 创建一个webforJ应用 {#creating-a-webforj-app}
+在开发您的应用程序时，您可以将 [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) 作为比较。要查看应用程序的运行情况：
 
-在webforJ中，`App`代表了定义和管理您项目的中心枢纽。每个webforJ应用程序都始于创建一个类，该类扩展了基础的`App`类，后者作为核心框架来：
+1. 导航到包含 `pom.xml` 文件的顶级目录，如果您是跟随 GitHub 上的版本，则为 `1-creating-a-basic-app`。
 
-- 管理应用程序生命周期，包括初始化和终止。
-- 处理路由和导航（如果启用）。
-- 定义应用程序的主题、区域设置和其他整体配置。
-- 提供与环境和组件交互的基本实用工具。
+2. 使用以下 Maven 命令在本地运行 Spring Boot 应用程序：
+    ```bash
+    mvn
+    ```
 
-### 扩展`App`类 {#extending-the-app-class}
+运行应用程序会自动在 `http://localhost:8080` 打开一个新浏览器。
 
-在此步骤中，创建一个名为`DemoApplication.java`的类，并扩展`App`类。
+## 入口点 {#entry-point}
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // 核心应用程序逻辑将在此处进行
+每个 webforJ 应用程序包含一个单一的类，该类扩展了 <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>。对于本教程以及其他已发布的 webforJ 项目，通常称为 `Application`。该类位于一个以您在 [项目设置](/docs/introduction/tutorial/project-setup) 中使用的 `groupId` 命名的包内：
+
+```
+1-creating-a-basic-app 
+│   .editorconfig
+│   .gitignore
+│   pom.xml
+│   README.md
+│
+├───.vscode
+├───src/main/java
+// highlight-next-line
+│   └──com/webforj/tutorial
+// highlight-next-line
+│       └──Application.java
+└───target
+```
+
+在 `Application` 类内部，`SpringApplication.run()` 方法使用配置来启动应用程序。各种注释用于应用程序的配置。
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Customer Application", shortName = "CustomerApp")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
   }
 }
 ```
 
-:::tip 关键配置属性
+### 注释 {#annotations}
 
-在此演示应用程序中，`webforj.conf`文件配置了以下两个基本属性：
+[`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) 是 Spring Boot 的核心注释。您将此注释放在主类上，以将其标记为应用程序的起始点。
 
-- **`webforj.entry`**：指定扩展`App`的类的完全限定名称，该类充当您项目的主要入口点。 对于本教程，将其设置为`com.webforj.demos.DemoApplication`以避免初始化时的歧义。
-  ```hocon
-  webforj.entry = com.webforj.demos.DemoApplication
-  ```
-- **`webforj.debug`**：启用调试模式，以便在开发过程中获得详细日志和错误可见性。 在进行此教程时，请确保将其设置为`true`：
-  ```hocon
-  webforj.debug = true
-  ```
+`@StyleSheet`、`@AppTheme` 和 `@AppProfile` 只是您想要明确设置配置时可用的众多 <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ 注释</JavadocLink> 中的一部分。
 
-有关其他配置选项的更多详细信息，请参见[配置指南](../../configuration/overview)。
-:::
+- **`@StyleSheet`** 将 CSS 文件嵌入到网页中。有关如何与特定 CSS 文件交互的更多详细信息，请参阅稍后的 [使用 CSS 样式化](#styling-with-css)。
 
-### 重写`run()`方法 {#overriding-the-run-method}
+- **`@AppTheme`** 管理应用程序的视觉主题。如果设置为 `system`，则应用程序将自动采用用户的首选主题：`light`、`dark` 或 `dark-pure`。有关创建自定义主题或覆盖默认主题的信息，请参阅 [主题](/docs/styling/themes) 文章。
 
-在确保项目的正确配置后，重写`App`类中的`run()`方法。
+- **`@AppProfile`** 有助于配置应用程序向用户呈现的方式，作为[可安装的应用程序](/docs/configuration/installable-apps)。至少，这个注释需要一个应用程序的 `name`（全名）和一个 `shortName`（当空间有限时使用）。`shortName` 不应超过 12 个字符。  
 
-`run()`方法是webforJ中应用程序的核心。 它定义了应用程序初始化后发生的事情，并且是应用程序功能的主要入口点。 通过重写`run()`方法，您可以实现创建和管理应用程序用户界面及其行为的逻辑。
+## 创建用户界面 {#creating-a-ui}
 
-:::tip 使用路由
-在应用程序中实现路由时，不需要重写`run()`方法，因为框架会自动处理路由的初始化以及初始`Frame`的创建。 在解析基础路由后调用`run()`方法，确保在执行任何逻辑之前，应用程序的导航系统已完全初始化。 本教程将在[第3步](scaling-with-routing-and-composites)中进一步深入探讨实现路由。 [路由文章](../../routing/overview)中也提供了更多信息。
-:::
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    // 应用程序逻辑
-  }
-}
-```
-
-## 添加组件 {#adding-components}
-
-在webforJ中，组件是应用程序用户界面的构建模块。 这些组件代表应用程序UI的离散部分，例如按钮、文本字段、对话框或表格。
-
-您可以将UI视为组件树，`Frame`作为根。 每个添加到`Frame`的组件都成为这棵树中的一个分支或叶子，构成了应用程序的整体结构和行为。
-
-:::tip 组件目录
-请参见[此页面](../../components/overview)，获取webforJ中提供的各种组件的列表。
-:::
-
-### 应用程序`Frame` {#app-frame}
-
-webforJ中的`Frame`类表示应用程序中的一个不可嵌套的顶层窗口。`Frame`通常充当UI组件的主要容器，使其成为构建用户界面的基本构件。每个应用程序至少以一个`Frame`开始，您可以向这些框架添加按钮、对话框或表单等组件。
-
-在此步骤中，在`run()`方法中创建了一个`Frame`——稍后将在这里添加组件。
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-  }
-}
-```
-
-### 服务器端和客户端组件 {#server-and-client-side-components}
-
-在webforJ中，每个服务器端组件都有一个匹配的客户端网页组件。 服务器端组件处理逻辑和后端交互，而客户端组件如`dwc-button`和`dwc-dialog`则管理前端渲染和样式。
-
-:::tip 复合组件
-除了webforJ提供的核心组件外，您还可以通过将多个元素组合成一个可重用的单元来设计自定义复合组件。 本步骤中的教程将涵盖这个概念。 有关更多信息，请参见[复合文章](../../building-ui/composite-components)。
-:::
-
-组件需要添加到实现了<JavadocLink type="foundation" location="com/webforj/concern/HasComponents" code='true' >HasComponents</JavadocLink>接口的容器类。`Frame`就是一个这样的类——在此步骤中，向`Frame`添加一个`Paragraph`和一个`Button`，它们将在浏览器的UI中渲染：
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  Paragraph demo = new Paragraph("演示应用程序！");
-  Button btn = new Button("信息");
-
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> showMessageDialog("这是一个演示！", "信息"));
-    mainFrame.add(demo, btn);
-  }
-}
-```
-
-运行此代码，您应该会看到一个简单的样式按钮，弹出消息说“这是一个演示！”。
-
-## 使用CSS进行样式设计 {#styling-with-css}
-
-在webforJ中，样式设计为您提供了完全的灵活性，以设计应用程序的外观。 虽然框架支持开箱即用的一致设计和样式，但并没有强制特定的样式方法，允许您应用符合应用程序需求的自定义样式。
-
-使用webforJ，您可以动态地为组件应用类名，实现条件或交互样式，使用CSS创建一致且可扩展的设计系统，注入整个内联或外部样式表。
-
-### 向组件添加CSS类 {#adding-css-classes-to-components}
-
-您可以使用`addClassName()`和`removeClassName()`方法动态添加或移除组件的类名。 这些方法允许您根据应用程序逻辑控制组件的样式。 通过在`run()`方法中包括以下代码，将`mainFrame`类名添加到先前创建的`Frame`中：
+要创建您的用户界面，您需要添加 [HTML 元素组件](/docs/components/html-elements) 和 [webforJ 组件](/docs/components/overview)。目前，您只有一个单页应用程序，因此您将组件直接添加到 `Application` 类中。 
+为此，重写 `App.run()` 方法并创建一个 `Frame` 来添加组件。
 
 ```java
-mainFrame.addClassName("mainFrame");
-```
+@Override
+public void run() throws WebforjException {
+  Frame mainFrame = new Frame();
 
-### 附加CSS文件 {#attaching-css-files}
+  // 创建 UI 组件并添加到框架中
 
-要为应用程序添加样式，您可以通过使用资产注释或在运行时利用webforJ的<JavadocLink type="foundation" location="com/webforj/Page">资产API</JavadocLink>来在项目中包含CSS文件。 [参见此文章](../../managing-resources/importing-assets)以获取更多信息。
-
-例如，@StyleSheet注解用于从resources/static目录包含样式。 它会自动生成指定文件的URL并将其注入到DOM中，确保样式应用于您的应用程序。 请注意，静态目录外的文件无法访问。
-
-```java title="DemoApplication.java"
-@StyleSheet("ws://styles/library.css")
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // 应用程序逻辑在此处执行
-  }
 }
 ```
-:::tip Web服务器URLs
-要确保静态文件可以访问，它们应放在resources/static文件夹中。 要包含静态文件，您可以使用Web服务器协议构造其URL。
+
+### 使用 HTML 元素 {#using-html-elements}
+
+您可以使用 [HTML 元素组件](/docs/components/html-elements) 将标准 HTML 元素添加到您的应用程序中。
+创建一个组件的新实例，然后使用 `add()` 方法将其添加到 `Frame`：
+
+```java
+// 创建 UI 元素的容器
+Frame mainFrame = new Frame();
+
+// 创建 HTML 组件
+Paragraph tutorial = new Paragraph("Tutorial Application!");
+
+// 将组件添加到容器中
+mainFrame.add(tutorial);
+```
+
+### 使用 webforJ 组件 {#webforj-components-and-html-elements}
+
+虽然 HTML 元素非常有用于结构、语义和轻量级 UI 需求，但 [webforJ 组件](/docs/components/overview) 提供了更复杂和动态的行为。
+
+下面的代码添加了一个 [Button](/docs/components/button) 组件，使用 `setTheme()` 方法更改其外观，并添加一个事件监听器，在点击该按钮时创建一个 [Message Dialog](/docs/components/option-dialogs/message) 组件。
+大多数修改组件的 webforJ 组件方法都返回组件本身，因此您可以链接多个方法以实现更紧凑的代码。
+
+```java
+// 创建 UI 元素的容器
+Frame mainFrame = new Frame();
+
+// 创建 webforJ 组件
+Button btn = new Button("Info");
+
+// 修改 webforJ 组件，并添加事件监听器
+btn.setTheme(ButtonTheme.PRIMARY)
+  .addClickListener(e -> OptionDialog.showMessageDialog("This is a tutorial!", "Info"));
+
+// 将组件添加到容器中
+mainFrame.add(btn);
+```
+
+## 使用 CSS 样式化 {#styling-with-css}
+
+大多数 webforJ 组件都有内置的方法，可以进行常见的样式更改，例如大小和主题。
+
+```java
+// 使用 CSS 关键字设置 Frame 的宽度
+mainFrame.setWidth("fit-content");
+
+// 使用像素设置 Button 的最大宽度
+btn.setMaxWidth(200);
+
+// 将 Button 主题设置为 PRIMARY
+btn.setTheme(ButtonTheme.PRIMARY);
+```
+
+除了这些方法，您还可以使用 CSS 样式化应用程序。任何组件文档页面的 **样式** 部分都有有关相关 CSS 属性的具体细节。
+
+webforJ 还附带了一组设计 CSS 变量，称为 DWC 令牌。有关如何样式化 webforJ 组件以及如何使用令牌的详细信息，请参阅 [样式](/docs/styling/overview) 文档。
+
+### 引用 CSS 文件 {#referencing-a-css-file}
+
+最好有一个单独的 CSS 文件，以保持一切组织和可维护。创建一个名为 `card.css` 的文件，放在 `src/main/resources/static/css` 中，并添加以下 CSS 类定义：
+
+```css title="card.css"
+.card {
+  display: grid;
+  gap: var(--dwc-space-l);
+  padding: var(--dwc-space-l);
+  margin: var(--dwc-space-l) auto;
+  border: thin solid var(--dwc-color-default);
+  border-radius: 16px;
+  background-color: var(--dwc-surface-3);
+  box-shadow: var(--dwc-shadow-xs);
+}
+```
+
+然后，通过使用 `@StyleSheet` 注释和 CSS 文件名在 `Application.java` 中引用该文件。对于此步骤，它是 `@StyleSheet("ws://css/card.css")`。
+
+:::tip Web 服务器协议
+本教程使用 Web 服务器协议来引用 CSS 文件。要了解更多关于此如何工作的知识，请参阅[管理资源](/docs/managing-resources/overview)。
 :::
 
-### 示例CSS代码 {#sample-css-code}
+### 将 CSS 类添加到组件 {#adding-css-classes-to-components}
 
-在您的项目中使用CSS文件位于`resources > static > css > demoApplication.css`，以下CSS用于为应用程序应用一些基本样式。
+您可以使用 `addClassName()` 和 `removeClassName()` 方法动态添加或删除组件的类名。在本教程中，只有一个 CSS 类被使用：
 
-```css
-.mainFrame {
-  display: inline-grid;
-  gap: 20px;
-  margin: 20px;
-  padding: 20px;
-  border: 1px dashed;
-  border-radius: 10px;
+```java
+mainFrame.addClassName("card");
+```
+
+## 完成的 `Application` {#completed-application}
+
+您的 `Application` 类现在应类似于以下内容：
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Customer Application", shortName = "CustomerApp")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
+
+  @Override
+  public void run() throws WebforjException {
+    Frame mainFrame = new Frame();
+    Paragraph tutorial = new Paragraph("Tutorial App!");
+    Button btn = new Button("Info");
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+        .setMaxWidth(200)
+        .addClickListener(e -> OptionDialog.showMessageDialog("This is a tutorial!", "Info"));
+
+    mainFrame.setWidth("fit-content")
+        .addClassName("card")
+        .add(tutorial, btn);
+  }
+
 }
 ```
 
-完成后，应将以下注解添加到您的`App`类中：
+:::tip 多个页面
+对于一个复杂的应用程序，您可以将 UI 分成多个页面以便更好地组织。此概念将在本教程后面的[路由和组合](/docs/introduction/tutorial/routing-and-composites)中涵盖。
+:::
 
-```java title="DemoApplication.java"
-@StyleSheet("ws://css/demoApplication.css")
-@AppTitle("演示步骤 1")
-public class DemoApplication extends App {
-```
+## 下一步 {#next-step}
 
-CSS样式应用于主`Frame`，通过使用[网格布局](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout)对组件进行安排，并添加边距、内边距及边框样式，以使UI视觉上井然有序。
+在创建具有基本用户界面的功能应用后，下一步是添加数据模型并在 [处理数据](/docs/introduction/tutorial/working-with-data) 中的 `Table` 组件中显示结果。

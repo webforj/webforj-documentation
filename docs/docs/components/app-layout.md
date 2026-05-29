@@ -1,6 +1,7 @@
 ---
 title: AppLayout
 sidebar_position: 5
+description: Build dashboards and admin shells with the AppLayout component, providing a fixed header, footer, sliding drawer, and scrollable content area.
 ---
 
 <DocChip chip='shadow' />
@@ -36,11 +37,16 @@ Each part of the layout is a `Div`, which can contain any valid webforJ control.
 The following code sample will result in an app with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the dwc-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the DwcAppLayout to listen to click events coming from that component to toggle the drawer state.
 
 <!--vale off-->
-<AppLayoutViewer path='/webforj/applayout/content/Dashboard?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java'
-cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<ComponentDemo
+path='/webforj/applayout/content/Dashboard'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java',
+  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
+  'src/main/resources/static/css/applayout/applayout.css',
+]}
+/>
 <!--vale on-->
 
 ## Full width navbar {#full-width-navbar}
@@ -55,11 +61,16 @@ myApp.setFooterOffscreen(false);
 ```
 
 <!--vale off-->
-<AppLayoutViewer path='/webforj/applayoutfullnavbar/content/Dashboard?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java'
-cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<ComponentDemo
+path='/webforj/applayoutfullnavbar/content/Dashboard'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java',
+  'src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarContentView.java',
+  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
+  'src/main/resources/static/css/applayout/applayout.css',
+]}
+/>
 <!--vale on-->
 
 ## Multiple toolbars {#multiple-toolbars}
@@ -69,12 +80,17 @@ The navbar has no limit to the number of toolbars you can add. A `Toolbar` is a 
 The following demo shows how to use two toolbars, The first one houses the drawer's toggle button and the app's title. The second toolbar houses a secondary navigation menu.
 
 <!--vale off-->
-<AppLayoutViewer path='/webforj/applayoutmultipleheaders/content/Dashboard?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java'
-cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeaderContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<ComponentDemo
+path='/webforj/applayoutmultipleheaders/content/Dashboard'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java',
+  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+  'src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeaderContentView.java',
+  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
+  'src/main/resources/static/css/applayout/applayout.css',
+]}
+/>
 <!--vale on-->
 
 ## Sticky toolbars {#sticky-toolbars}
@@ -88,12 +104,17 @@ When `AppLayout.setHeaderReveal(true)` is set called, the header will be visible
 With the help of the CSS custom property `--dwc-app-layout-header-collapse-height` it's possible to control how much of the header navbar will be hidden.
 
 <!--vale off-->
-<AppLayoutViewer path='/webforj/applayoutstickytoolbar/content/Dashboard?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java'
-cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<ComponentDemo
+path='/webforj/applayoutstickytoolbar/content/Dashboard'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java',
+  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+  'src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarContentView.java',
+  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
+  'src/main/resources/static/css/applayout/applayout.css',
+]}
+/>
 <!--vale on-->
 
 ## Mobile navigation layout {#mobile-navigation-layout}
@@ -107,12 +128,17 @@ Same as `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` is supporte
 By default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It's possible to configure the breakpoint by using the `setDrawerBreakpoint()` method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
 <!--vale off-->
-<AppLayoutViewer path='/webforj/applayoutmobiledrawer/?' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
-cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<ComponentDemo
+path='/webforj/applayoutmobiledrawer/'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java',
+  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+  'src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerContentView.java',
+  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
+  'src/main/resources/static/css/applayout/applayout.css',
+]}
+/>
 <!--vale on-->
 
 ## Drawer utilities {#drawer-utilities}
@@ -144,7 +170,7 @@ The `AppLayout` component allows you to place custom components such as buttons 
 
 ```java
 layout.addToDrawerHeaderActions(
-    new IconButton(TablerIcon.create("bell")),
+  new IconButton(TablerIcon.create("bell")),
 );
 ```
 
@@ -152,20 +178,25 @@ It's possible to pass multiple components as arguments:
 
 ```java
 layout.addToDrawerHeaderActions(
-    new IconButton(TablerIcon.create("bell")),
-    new Button("Profile")
+  new IconButton(TablerIcon.create("bell")),
+  new Button("Profile")
 );
 ```
 
 Drawer actions appear in the **right-aligned section** of the drawer’s header.
 
 <!--vale off-->
-<AppLayoutViewer path='/webforj/applayoutdrawerutility/content/Dashboard/?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java'
-cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<ComponentDemo
+path='/webforj/applayoutdrawerutility/content/Dashboard/'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java',
+  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+  'src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityContentView.java',
+  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
+  'src/main/resources/static/css/applayout/applayout.css',
+]}
+/>
 <!--vale on-->
 
 

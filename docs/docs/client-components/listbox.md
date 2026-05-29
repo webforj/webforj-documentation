@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-listbox>
 sidebar_class_name: sidebar--item__hidden
 slug: listbox
-description: A user guide article for the listbox
+description: Style the dwc-listbox client component using CSS variables and shadow parts to theme the list surface, items, selection, and scrollbars.
 // pagination_prev: null
 // pagination_next: null
 ---

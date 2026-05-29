@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Importing Assets
+description: Attach JavaScript and CSS to webforJ components or the app using JavaScript, InlineJavaScript, StyleSheet, and InlineStyleSheet annotations.
 ---
 
 Assets annotations provide a declarative approach to embedding external and inline resources such as JavaScript and CSS within an app statically. These annotations streamline resource management by ensuring dependencies are loaded at the appropriate execution phase, reducing manual configuration and enhancing maintainability.
@@ -25,7 +26,7 @@ The annotation accepts a relative or full path to be loaded in the app. This wil
 
 ```java
 @JavaScript(value = "ws://my-component.js",
-    attributes = {@Attribute(name = "type", value = "module")})
+  attributes = {@Attribute(name = "type", value = "module")})
 ```
 
 :::info
@@ -69,7 +70,7 @@ Declarative CSS inclusion is supported through the `@StyleSheet` annotation, ena
 
 ```java
 @StyleSheet(value = "ws://my-component.css",
-    attributes = {@Attribute(name = "media", value = "screen")})
+  attributes = {@Attribute(name = "media", value = "screen")})
 ```
 
 :::info

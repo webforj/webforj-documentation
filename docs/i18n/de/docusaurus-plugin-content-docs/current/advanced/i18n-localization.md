@@ -1,20 +1,21 @@
 ---
 sidebar_position: 12
 title: Translation
-sidebar_class_name: new-content
-_i18n_hash: 57626c2969592f2378a55eff0dd01d48
+_i18n_hash: 276130dcd9ff26441b844042d4cdc5dd
 ---
 # Übersetzung <DocChip chip='since' label='25.12' />
 
-webforJ enthält ein integriertes Übersetzungssystem, um lokalisierten Text anhand von Schlüsseln zu suchen. Das System besteht aus einem Übersetzungs-Resolver, der Schlüssel auf lokalisierten Text abbildet, einer `HasTranslation`-Schnittstelle, die eine praktische `t()`-Methode bereitstellt, `App.getTranslation()` für den direkten Zugriff überall, automatischer Spracherkennung durch den Browser und Unterstützung für benutzerdefinierte Übersetzungsquellen wie Datenbanken.
+webforJ enthält ein integriertes Übersetzungssystem zum Abrufen lokalisierter Zeichenfolgen über Schlüssel. Das System besteht aus einem Übersetzungsresolver, der Schlüssel auf lokalisierte Texte abbildet, einem `HasTranslation` Concern-Interface, das eine bequeme `t()`-Methode bereitstellt, `App.getTranslation()` für den direkten Zugriff überall, automatischer Erkennung der Regionaleinstellung aus dem Browser und Unterstützung für benutzerdefinierte Übersetzungsquellen wie Datenbanken.
 
-## Übersetzungs-Resolver {#translation-resolver}
+<AISkillTip skill="webforj-localizing-apps" />
 
-Der Übersetzungs-Resolver ist das System, das lokalisierten Text für einen bestimmten Schlüssel und eine bestimmte Sprache sucht. webforJ bietet einen Standard-Resolver, `BundleTranslationResolver`, der Übersetzungen aus Java `ResourceBundle`-Eigenschaftsdateien im Klassenpfad lädt. Dies funktioniert sofort ohne zusätzliche Abhängigkeiten.
+## Übersetzungsresolver {#translation-resolver}
 
-### Ressourcendateien
+Der Übersetzungsresolver ist das System, das lokalisierte Zeichenfolgen für einen gegebenen Schlüssel und eine Regionaleinstellung nachschlägt. webforJ bietet einen Standardresolver, `BundleTranslationResolver`, der Übersetzungen aus Java `ResourceBundle`-Eigenschaftsdateien im Klassenpfad lädt. Dies funktioniert sofort ohne zusätzliche Abhängigkeiten.
 
-Legen Sie Ihre Übersetzungsdateien im Verzeichnis `src/main/resources` ab. Der Standard-Resolver sucht nach Dateien mit dem Namen `messages`, die die lokale Endung gemäß der Standardbenennungskonvention von Java `ResourceBundle` haben:
+### Ressourcenbündeldateien
+
+Platzieren Sie Ihre Übersetzungsdateien im Verzeichnis `src/main/resources`. Der Standardresolver sucht nach Dateien mit dem Namen `messages`, die den Standardbenennungsrichtlinien für Java `ResourceBundle` folgen:
 
 ```text
 messages.properties        # Standard-/Fallback-Übersetzungen
@@ -23,7 +24,7 @@ messages_de.properties     # Deutsch
 messages_fr_CA.properties  # Französisch (Kanada)
 ```
 
-Jede Datei enthält Schlüssel-Wert-Paare. Schlüssel sind Bezeichner, die Sie im Code verwenden, und Werte sind die übersetzten Strings. Sie können [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) Platzhalter wie `{0}`, `{1}` für dynamische Werte einfügen:
+Jede Datei enthält Schlüssel-Wert-Paare. Schlüssel sind Bezeichner, die Sie im Code verwenden, und Werte sind die übersetzten Zeichenfolgen. Sie können [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) Platzhalter wie `{0}`, `{1}` für dynamische Werte einfügen:
 
 ```properties title="messages.properties"
 app.title=Mailbox
@@ -39,19 +40,19 @@ menu.outbox=Postausgang
 greeting=Hallo {0}, Sie haben {1} neue Nachrichten
 ```
 
-Der Resolver delegiert an die Standard-[`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) Auflösungskette von Java, die die Übereinstimmung der Sprache und den Fallback automatisch verwaltet.
+Der Resolver delegiert an die standardmäßige [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) Auflösungskette von Java, die die Sprachübereinstimmung und den Fallback automatisch behandelt.
 
-### Unterstützte Sprachen konfigurieren {#configuring-supported-locales}
+### Unterstützte Regionen einstellen {#configuring-supported-locales}
 
-Die Einstellung `supported-locales` teilt webforJ mit, welche Sprachen Ihre App unterstützt. Diese Liste wird von der automatischen Erkennung verwendet, um die Sprache des Browsers des Benutzers mit den verfügbaren Übersetzungen abzugleichen. Die erste Sprache in der Liste wird als Standard-Fallback verwendet, wenn keine bessere Übereinstimmung gefunden wird. Der Eigenschaftsschlüssel ist `webforj.i18n.supported-locales` und akzeptiert eine Liste von [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) Sprach-Tags, z. B. `en, de`.
+Die Einstellung `supported-locales` sagt webforJ, welche Regionen Ihre App unterstützt. Diese Liste wird von der automatischen Erkennung verwendet, um die Regionaleinstellung des Browsers des Benutzers mit den verfügbaren Übersetzungen abzugleichen. Die erste Region in der Liste wird als Standardfallback verwendet, wenn keine bessere Übereinstimmung gefunden wird. Der Eigenschaftsschlüssel ist `webforj.i18n.supported-locales` und akzeptiert eine Liste von [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) Sprach-Tags, zum Beispiel `en, de`.
 
-:::info Weitere Informationen
-Siehe den Abschnitt [Konfiguration](/docs/configuration/properties), um zu lernen, wie man Eigenschaften für verschiedene Umgebungen festlegt.
+:::info Mehr Informationen
+Siehe den Abschnitt [Konfiguration](/docs/configuration/properties), um zu erfahren, wie Eigenschaften für verschiedene Umgebungen festgelegt werden.
 :::
 
 ## Die `t()`-Methode {#the-t-method}
 
-Komponenten, die die `HasTranslation`-Schnittstelle implementieren, erhalten Zugriff auf die `t()`-Methode zum Übersetzen von Text. Die Methode nimmt einen Übersetzungsschlüssel und gibt den lokalisierten String für die aktuelle App-Sprache zurück:
+Komponenten, die das `HasTranslation` Concern-Interface implementieren, erhalten Zugriff auf die `t()`-Methode zur Übersetzung von Texten. Die Methode nimmt einen Übersetzungsschlüssel und gibt die lokalisierte Zeichenfolge für die aktuelle App-Regionaleinstellung zurück:
 
 ```java
 public class MainLayout extends Composite<AppLayout> implements HasTranslation {
@@ -63,32 +64,32 @@ public class MainLayout extends Composite<AppLayout> implements HasTranslation {
     // Übersetzung mit MessageFormat-Parametern
     String greeting = t("greeting", userName, messageCount);
 
-    // Übersetzung für eine bestimmte Sprache
+    // Übersetzung für eine bestimmte Region
     String germanTitle = t(Locale.GERMAN, "app.title");
   }
 }
 ```
 
-Sie können auch `App.getTranslation()` direkt überall verwenden, ohne die Schnittstelle zu implementieren:
+Sie können auch `App.getTranslation()` direkt überall verwenden, ohne das Interface zu implementieren:
 
 ```java
 String title = App.getTranslation("app.title");
 ```
 
-:::info Schöner Fallback
-Wenn ein Übersetzungsschlüssel nicht gefunden wird, gibt `t()` den Schlüssel selbst zurück, anstatt eine Ausnahme auszulösen. Das bedeutet, dass Ihre App nicht abstürzt, wenn eine Übersetzung fehlt. Der Schlüssel wird unverändert angezeigt, und eine Warnung wird protokolliert, damit Sie fehlende Übersetzungen während der Entwicklung nachverfolgen können.
+:::info Sanfter Fallback
+Wenn ein Übersetzungsschlüssel nicht gefunden wird, gibt `t()` den Schlüssel selbst zurück, anstatt eine Ausnahme auszulösen. Das bedeutet, dass Ihre App nicht abstürzt, wenn eine Übersetzung fehlt. Der Schlüssel wird so angezeigt, wie er ist, und eine Warnung wird protokolliert, damit Sie fehlende Übersetzungen während der Entwicklung verfolgen können.
 :::
 
-## Implementierung von übersetzten Komponenten {#implementing-translated-components}
+## Implementierung übersetzter Komponenten {#implementing-translated-components}
 
-Eine übersetzte Komponente kombiniert typischerweise `HasTranslation` mit [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Verwenden Sie `t()`, wenn Sie UI-Elemente erstellen, um den initialen übersetzten Text festzulegen. Um die Unterstützung für das Umschalten der Sprache zur Laufzeit zu ermöglichen, implementieren Sie `LocaleObserver` und aktualisieren Sie den gleichen Text in `onLocaleChange()`.
+Ein übersetzter Bestandteil kombiniert typischerweise `HasTranslation` mit [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Verwenden Sie `t()`, wenn Sie UI-Elemente erstellen, um den initialen übersetzten Text festzulegen. Um die Sprachen zur Laufzeit zu wechseln, implementieren Sie `LocaleObserver` und aktualisieren denselben Text in `onLocaleChange()`.
 
 ```java title="MainLayout.java"
 @Route
 public class MainLayout extends Composite<AppLayout>
     implements HasTranslation, LocaleObserver {
 
-  private AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
   private AppNavItem inboxItem;
   private AppNavItem outboxItem;
 
@@ -112,12 +113,12 @@ public class MainLayout extends Composite<AppLayout>
 ```
 
 :::tip Datenbindung
-Das Datenbindungssystem unterstützt übersetzte Validierungs- und Transformationsnachrichten mithilfe von `Supplier<String>` mit `t()`. Siehe [dynamische Validierungsnachrichten](/docs/data-binding/validation/validators#dynamic-validation-messages), [dynamische Transformationsnachrichten](/docs/data-binding/transformation#dynamic-transformer-error-messages) und [lokalisierte Jakarta-Validierung](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
+Das Datenbindungssystem unterstützt übersetzte Validierungs- und Transformationsnachrichten mit `Supplier<String>` zusammen mit `t()`. Siehe [dynamische Validierungsnachrichten](/docs/data-binding/validation/validators#dynamic-validation-messages), [dynamische Transformatornachrichten](/docs/data-binding/transformation#dynamic-transformer-error-messages) und [locale-bewusste Jakarta-Validierung](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
 :::
 
-## Benutzerdefinierte Übersetzungs-Resolver {#custom-translation-resolvers}
+## Benutzerdefinierte Übersetzungsresolver {#custom-translation-resolvers}
 
-Der Standard-Resolver lädt Übersetzungen aus Java `ResourceBundle`-Eigenschaftsdateien. Um Übersetzungen aus einer anderen Quelle, wie einer Datenbank oder einem entfernten Dienst, zu laden, implementieren Sie `TranslationResolver`:
+Der Standardresolver lädt Übersetzungen aus Java `ResourceBundle`-Eigenschaftsdateien. Um Übersetzungen aus einer anderen Quelle zu laden, wie z. B. einer Datenbank oder einem Remote-Dienst, implementieren Sie `TranslationResolver`:
 
 ```java title="DatabaseTranslationResolver.java"
 public class DatabaseTranslationResolver implements TranslationResolver {
@@ -151,9 +152,9 @@ public class DatabaseTranslationResolver implements TranslationResolver {
 }
 ```
 
-### Registrieren eines benutzerdefinierten Resolvers {#registering-a-custom-resolver}
+### Registrierung eines benutzerdefinierten Resolvers {#registering-a-custom-resolver}
 
-In einer normalen webforJ-App setzen Sie den Resolver, bevor die App startet, z. B. mithilfe eines [App-Lebenszyklus-Listeners](/docs/advanced/lifecycle-listeners):
+In einer einfachen webforJ-App setzen Sie den Resolver vor dem Start der App, beispielsweise mit einem [App-Lebenszyklus-Listener](/docs/advanced/lifecycle-listeners):
 
 ```java
 App.setTranslationResolver(new DatabaseTranslationResolver(repository, supportedLocales));
@@ -176,6 +177,6 @@ public class MessageSourceConfig {
 }
 ```
 
-:::info Standard-Resolver in Spring Boot
-Wenn kein benutzerdefinierter `TranslationResolver`-Bean definiert ist, bietet die Spring-Auto-Konfiguration einen Standard-`BundleTranslationResolver`, der mit den unterstützten Sprachen aus `application.properties` konfiguriert ist.
+:::info Standardresolver in Spring Boot
+Wenn keine benutzerdefinierte `TranslationResolver`-Bean definiert ist, stellt die Spring-Auto-Konfiguration einen Standard-`BundleTranslationResolver` bereit, der mit den unterstützten Regionen aus `application.properties` konfiguriert ist.
 :::

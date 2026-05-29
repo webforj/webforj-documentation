@@ -1,6 +1,7 @@
 ---
 title: Routing  
 sidebar_position: 15
+description: Inject Spring services and repositories into webforJ @Route classes through constructor injection while keeping a fresh instance per navigation.
 ---
 
 Routing in webforJ with Spring works exactly the same way as in plain webforJ applications. You still use the `@Route` annotation to define routes, the same navigation patterns, and the same route lifecycle. The only difference is that when Spring is present, your routes can also receive Spring beans through constructor injection.

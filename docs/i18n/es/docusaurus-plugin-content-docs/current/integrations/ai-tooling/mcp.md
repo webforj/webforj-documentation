@@ -1,45 +1,49 @@
 ---
 title: MCP Server
 sidebar_position: 5
-_i18n_hash: a45888cf39bbbce0002177da8fe95eba
+_i18n_hash: eea9d8f962b10512151bf7c6935f25e0
 ---
-El servidor del Protocolo de Contexto de Modelo webforJ (MCP) proporciona a los asistentes de IA acceso directo a la documentación oficial de webforJ, ejemplos de código verificados y patrones específicos del marco, permitiendo respuestas con respuestas más precisas y generación automatizada de proyectos específicamente para el desarrollo de webforJ.
+El servidor del Protocolo de Contexto del Modelo (MCP) de webforJ conecta asistentes de codificación AI a la documentación, APIs, tokens de diseño y herramientas de scaffolding de webforJ. En lugar de adivinar las convenciones del marco, el asistente consulta al servidor y obtiene respuestas basadas en el verdadero webforJ.
 
-## ¿Qué es un MCP?
-
-El Protocolo de Contexto de Modelo es un estándar abierto que permite a los asistentes de IA conectarse con herramientas externas y documentación. El servidor MCP de webforJ implementa este protocolo para proporcionar:
-
-- **Búsqueda de Conocimiento** - Búsqueda en lenguaje natural a través de la documentación de webforJ, ejemplos de código y patrones
-- **Generación de Proyectos** - Crear aplicaciones webforJ a partir de plantillas oficiales con la estructura adecuada
-- **Creación de Temas** - Generar temas CSS accesibles siguiendo los patrones de diseño de webforJ
-
-## ¿Por qué usar MCP?
-
-Si bien los asistentes de codificación de IA son excelentes para responder preguntas básicas, tienen dificultades con consultas complejas específicas de webforJ que abarcan múltiples secciones de documentación. Sin acceso directo a fuentes oficiales, pueden:
-
-- Generar métodos que no existen en webforJ
-- Hacer referencia a patrones de API obsoletos o incorrectos  
-- Proporcionar código que no compilará
-- Confundir la sintaxis de webforJ con otros marcos de Java
-- Malinterpretar patrones específicos de webforJ
-
-Con la integración de MCP, las respuestas de IA están ancladas a la documentación real de webforJ, ejemplos de código y patrones del marco, proporcionando respuestas verificables con enlaces directos a fuentes oficiales para una exploración más profunda.
-
-:::warning La IA aún puede cometer errores
-Si bien MCP mejora significativamente la precisión al proporcionar acceso a recursos oficiales de webforJ, no garantiza una generación de código perfecta. Los asistentes de IA pueden seguir cometiendo errores en escenarios complejos. Siempre verifica el código generado y prueba a fondo antes de usarlo en producción.
+:::tip Usa el plugin
+A menos que sepas que solo quieres el servidor MCP, instala el **[plugin AI de webforJ](/docs/integrations/ai-tooling)** en su lugar: agrupa este servidor con las [Habilidades del Agente](/docs/integrations/ai-tooling/agent-skills) correspondientes en una sola instalación.
 :::
 
-## Instalación
+## ¿Qué es un MCP? {#whats-an-mcp}
 
-El servidor MCP de webforJ se aloja en `https://mcp.webforj.com` con dos puntos finales:
+El Protocolo de Contexto del Modelo es un estándar abierto que permite a los asistentes de AI llamar herramientas externas bajo demanda. El servidor MCP de webforJ implementa este protocolo para que tu asistente pueda:
 
-- **Punto final MCP** (`/mcp`) - Para Claude, VS Code, Cursor
-- **Punto final SSE** (`/sse`) - Para clientes legados
+- Consultar en la documentación de webforJ en lugar de inventar nombres de métodos
+- Crear nuevos proyectos de webforJ a partir de arquetipos oficiales de Maven
+- Generar temas DWC accesibles a partir de un color de marca
+- Leer la verdadera superficie de estilos de un componente DWC y validar cualquier token `--dwc-*` antes de que llegue a tu CSS
+
+:::warning La AI aún puede cometer errores
+El servidor MCP mejora significativamente la precisión, pero los asistentes de AI aún pueden producir código incorrecto en escenarios complejos. Siempre revisa y prueba el código generado antes de enviarlo.
+:::
+
+## Instalación {#installation}
+
+Para la experiencia completa, instala el **[plugin AI de webforJ](/docs/integrations/ai-tooling)**: configura este servidor junto con las Habilidades del Agente que tu asistente necesita utilizarlo bien.
+
+Si solo deseas el servidor MCP (sin habilidades), apunta tu cliente a `https://mcp.webforj.com/mcp`:
 
 <Tabs groupId="ide">
-<TabItem value="vscode" label="VS Code">
+<TabItem value="claude-code" label="Claude Code" default>
 
-Agrega esta configuración a tu archivo settings.json de VS Code:
+```bash
+claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
+```
+
+</TabItem>
+<TabItem value="copilot-cli" label="GitHub Copilot CLI">
+
+El camino recomendado en Copilot CLI es el **[plugin AI de webforJ](/docs/integrations/ai-tooling)**: registra el servidor MCP para ti en un solo paso. Para una configuración solo de MCP, consulta las instrucciones por cliente en el [repositorio AI de webforJ](https://github.com/webforj/webforj-ai#clients).
+
+</TabItem>
+<TabItem value="vscode" label="VS Code + Copilot">
+
+Agrega a tu configuración de VS Code:
 
 ```json
 "mcp": {
@@ -52,82 +56,67 @@ Agrega esta configuración a tu archivo settings.json de VS Code:
 ```
 
 </TabItem>
-<TabItem value="cursor" label="Cursor">
+<TabItem value="gemini" label="Gemini CLI">
 
-Agrega esta configuración a tus ajustes de Cursor:
-
-```json
-"mcpServers": {
-  "webforj-mcp": {
-    "url": "https://mcp.webforj.com/mcp"
-  }
-}
-```
-
-</TabItem>
-<TabItem value="claude-code" label="Claude Code" default>
-
-Usa el comando CLI de Claude para registrar el servidor:
-
-```bash
-claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
-```
-
-Esto configurará automáticamente el servidor MCP en tu entorno de Claude Code.
-
-</TabItem>
-<TabItem value="claude-desktop" label="Claude Desktop">
-
-Agrega este servidor usando el panel de Integraciones en la configuración de Claude Desktop:
-
-1. Abre Claude Desktop y ve a Configuraciones
-2. Haz clic en "Integraciones" en la barra lateral
-3. Haz clic en "Agregar Integración" y pega la URL: `https://mcp.webforj.com/mcp`
-4. Sigue el asistente de configuración para completar la configuración
-
-Para obtener instrucciones detalladas, consulta la [guía de integración oficial](https://support.anthropic.com/en/articles/11175166-about-custom-integrations-using-remote-mcp).
-
-</TabItem>
-<TabItem value="windsurf" label="Windsurf">
-
-Agrega esta configuración del servidor a tus ajustes de Windsurf MCP:
+Agrega a `~/.gemini/settings.json`:
 
 ```json
 {
   "mcpServers": {
     "webforj-mcp": {
-      "serverUrl": "https://mcp.webforj.com/sse"
+      "httpUrl": "https://mcp.webforj.com/mcp"
     }
   }
 }
 ```
 
 </TabItem>
+<TabItem value="codex" label="OpenAI Codex CLI">
+
+Agrega a `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.webforj-mcp]
+url = "https://mcp.webforj.com/mcp"
+```
+
+</TabItem>
 </Tabs>
 
-## Herramientas disponibles
+### Otros clientes {#other-clients}
 
-Las herramientas son funciones especializadas que el servidor MCP proporciona a los asistentes de IA. Cuando haces una pregunta o realizas una solicitud, la IA puede llamar a estas herramientas para buscar documentación, generar proyectos o crear temas. Cada herramienta acepta parámetros específicos y devuelve datos estructurados que ayudan a la IA a proporcionar asistencia precisa y contextual.
+Cursor, Kiro, Goose, Junie, Antigravity y cualquier otro cliente MCP sobre HTTP también funciona: solo utilizan su propio formato de configuración. Consulta la [guía de instalación por cliente](https://github.com/webforj/webforj-ai#clients) para el fragmento exacto para cada uno.
+
+## Lo que el servidor puede hacer {#capabilities}
+
+Cuando el servidor MCP está conectado, tu asistente AI gana las siguientes capacidades. Cualquiera de ellas puede ser activada por una solicitud en lenguaje natural: el asistente selecciona la correcta automáticamente.
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>webforj-knowledge-base</code></strong> - Buscar documentación y ejemplos
+    <strong>Apuntar a la versión correcta de webforJ</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Esta herramienta proporciona capacidades de búsqueda semántica en todo el ecosistema de documentación de webforJ. Entiende el contexto y las relaciones entre diferentes conceptos del marco, devolviendo secciones relevantes de documentación, referencias de API y ejemplos de código funcional.
+      Antes de responder preguntas sensibles a la versión (cualquier cosa específica de estilo o API), el asistente determina qué versión de webforJ estás utilizando. Lee `pom.xml` cuando está disponible y, de lo contrario, te pregunta. Cada respuesta subsiguiente se limita a esa versión.
+    </div>
+  </AccordionDetails>
+</Accordion>
 
-      **Consultas de ejemplo:**
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong>Buscar en la base de conocimientos de webforJ</strong>
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+      El asistente puede consultar toda la base de conocimientos de webforJ para respuestas basadas en el marco real. Los resultados están limitados a lo que preguntas: una pregunta de API, una guía, un ejemplo de código o el DSL de Kotlin.
+
+      **Ejemplos de solicitudes:**
       ```
-      "Buscar documentación de webforJ para el componente Button con ejemplos de iconos"
+      "Encuentra los ejemplos de manejo de eventos del componente Button de webforJ"
 
-      "Encontrar patrones de validación de formularios de webforJ en la documentación más reciente"
+      "¿Cómo configuro el enrutamiento con @Route en webforJ?"
 
-      "Muéstrame la configuración actual de enrutamiento de webforJ con la anotación @Route"
-
-      "Buscar en la documentación de webforJ patrones de diseño responsive de FlexLayout"
-
-      "Encontrar integración de componentes web de webforJ en la documentación oficial"
+      "Muéstrame un ejemplo de validación de formulario de webforJ"
       ```
     </div>
   </AccordionDetails>
@@ -135,39 +124,31 @@ Las herramientas son funciones especializadas que el servidor MCP proporciona a 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>webforj-create-project</code></strong> - Generar nuevos proyectos webforJ  
+    <strong>Crear un nuevo proyecto de webforJ</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Esquematiza aplicaciones completas de webforJ utilizando arquetipos de Maven oficiales. La herramienta crea una disposición estándar de directorios de proyectos e incluye código inicial basado en la plantilla seleccionada. Los proyectos generados incluyen un sistema de construcción listo para usar, carpetas de recursos y archivos de configuración para desarrollo y despliegue inmediatos.
+      El asistente genera el comando correcto de arquetipo de Maven para una nueva aplicación webforJ a partir de tus requisitos (arquetipo, integración de Spring, nombre, grupo).
 
-      **Prompts de ejemplo:**
+      **Arquetipos:**
+      - `hello-world` - aplicación inicial con componentes de ejemplo
+      - `blank` - estructura de proyecto mínima
+      - `tabs` - diseño de interfaz de pestañas
+      - `sidemenu` - diseño de navegación lateral
+
+      **Sabores:**
+      - `webforj` - aplicación webforJ estándar
+      - `webforj-spring` - webforJ integrado con Spring Boot
+
+      **Ejemplos de solicitudes:**
       ```
-      "Crea un proyecto webforJ llamado CustomerPortal usando el arquetipo hello-world"
+      "Crea un proyecto webforJ llamado CustomerPortal utilizando el arquetipo sidemenu"
 
-      "Genera un proyecto webforJ Spring Boot con diseño de pestañas llamado Dashboard"
-
-      "Crea una nueva aplicación webforJ con el arquetipo de menú lateral para el proyecto AdminPanel"
-
-      "Genera un proyecto webforJ en blanco llamado TestApp con groupId com.example"
-
-      "Crea un proyecto webforJ llamado InventorySystem usando el arquetipo de menú lateral con Spring Boot"
+      "Genera un proyecto webforJ Spring Boot con el diseño de pestañas llamado Dashboard"
       ```
 
-      Al usar esta herramienta, puedes elegir entre varias plantillas de proyecto:
-
-      **Arquetipos** (plantillas de proyecto):
-      - `hello-world` - Aplicación básica con componentes de muestra para demostrar las características de webforJ
-      - `blank` - Estructura mínima de proyecto para comenzar desde cero
-      - `tabs` - Diseño de interfaz con pestañas preconstruido para aplicaciones de múltiples vistas
-      - `sidemenu` - Diseño de menú de navegación lateral para paneles de administrador o tableros
-
-      **Sabores** (integración del marco):
-      - `webforj` - Aplicación webforJ estándar
-      - `webforj-spring` - webforJ integrado con Spring Boot para inyección de dependencias y características empresariales
-
-      :::tip Arquetipos disponibles
-      webforJ viene con varios arquetipos predefinidos para ayudarte a comenzar rápidamente. Para una lista completa de arquetipos disponibles, consulta el [catálogo de arquetipos](/docs/building-ui/archetypes/overview).
+      :::tip Arquetipos Disponibles
+      Para ver la lista completa de arquetipos, consulta el [catálogo de arquetipos](/docs/building-ui/archetypes/overview).
       :::
     </div>
   </AccordionDetails>
@@ -175,253 +156,116 @@ Las herramientas son funciones especializadas que el servidor MCP proporciona a 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>webforj-create-theme</code></strong> - Crear temas CSS accesibles
+    <strong>Generar un tema DWC</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Genera configuraciones de temas de webforJ utilizando [DWC HueCraft](https://huecraft.dwc.style/). La herramienta crea conjuntos completos de propiedades CSS personalizadas con variantes de color primario, secundario, éxito, advertencia, peligro y neutro.
+      A partir de un solo color de marca, el asistente produce un tema DWC completo: paletas de colores primarios, de éxito, de advertencia, de peligro, de información, predeterminada y gris con contraste de texto automático. La salida incluye la hoja de estilo más el cableado de `@AppTheme` / `@StyleSheet`.
 
-      **Solicitudes de ejemplo:**
+      **Ejemplos de solicitudes:**
       ```
-      "Generar un tema de webforJ con HSL 220, 70, 50 como color primario para nuestra marca corporativa"
+      "Genera un tema de webforJ a partir del color de marca #6366f1"
 
-      "Crea un tema accesible de webforJ llamado 'ocean' con color primario #0066CC"
-
-      "Generar un tema de webforJ utilizando nuestro color de marca #FF5733"
-
-      "Crea un tema de webforJ con HSL 30, 100, 50 llamado 'sunset' para nuestra aplicación"
-
-      "Genera un tema accesible de webforJ con color primario RGB 44, 123, 229"
+      "Crea un tema accesible con HSL 220, 70, 50 como primario"
       ```
     </div>
   </AccordionDetails>
 </Accordion>
 
-## Prompts disponibles {#available-prompts}
-
-Los prompts son instrucciones preconfiguradas de IA que combinan múltiples herramientas y flujos de trabajo para tareas comunes. Guían a la IA a través de pasos y parámetros específicos para entregar resultados confiables y repetibles para cada flujo de trabajo admitido.
-
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>create-app</code></strong> - Crear y ejecutar una aplicación webforJ
+    <strong>Estilizar correctamente los componentes DWC</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      **Argumentos:**
-      - `appName` (requerido) - Nombre de la aplicación (por ejemplo, MyApp, TodoList, Dashboard)
-      - `archetype` (requerido) - Elige entre: `blank`, `hello-world`, `tabs`, `sidemenu`
-      - `runServer` (opcional) - Ejecutar automáticamente el servidor de desarrollo (sí/no)
+      El asistente lee la verdadera superficie de estilos de cada componente DWC: propiedades CSS personalizadas, partes del shadow, atributos reflejados y slots, antes de escribir cualquier CSS. También puede enumerar cada etiqueta DWC y resolver los nombres de clase de Java de webforJ (`Button`, `TextField`) a sus equivalentes en DWC.
+
+      **Ejemplos de solicitudes:**
+      ```
+      "¿Qué variables CSS y partes expone dwc-button?"
+
+      "Muéstrame cada slot disponible en dwc-dialog"
+
+      "¿Qué etiqueta DWC asigna la clase TextField de webforJ?"
+      ```
+
+      Combina esto con la [habilidad del agente de aplicaciones de estilo](/docs/integrations/ai-tooling/agent-skills) para flujos de trabajo de estilo de extremo a extremo.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>create-theme</code></strong> - Generar un tema webforJ a partir de un color primario
+    <strong>Trabajar con tokens de diseño DWC</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      **Argumentos:**
-      - `primaryColor` (requerido) - Color en formato hex (#FF5733), rgb (255,87,51) o hsl (9,100,60)
+      El asistente puede listar el catálogo autorizado de tokens `--dwc-*` para tu versión de webforJ: semillas de paleta, tonos, superficies, espaciado, tipografía, bordes, filtrados por prefijo o subcadena. También validará cualquier CSS, Java o Markdown que le des contra el catálogo real de tokens y marcará nombres desconocidos con sugerencias de corrección.
+
+      **Ejemplos de solicitudes:**
+      ```
+      "Lista todos los tokens --dwc-space-*"
+
+      "Valida app.css en busca de tokens --dwc-* desconocidos"
+
+      "¿Qué tonos de paleta primaria están disponibles?"
+      ```
+
+      La validación captura errores tipográficos y tokens inventados antes de que se envíen como CSS que falla silenciosamente.
+    </div>
+  </AccordionDetails>
+</Accordion>
+
+## Escribiendo buenas solicitudes {#writing-good-prompts}
+
+El servidor MCP solo se consulta cuando tu asistente piensa que es relevante. Algunos hábitos mantienen su uso:
+
+- **Nombra el marco.** Menciona "webforJ" en la solicitud para que el asistente consulte el servidor MCP en lugar de su conocimiento general de Java.
+- **Sé específico.** `"Crea un proyecto webforJ llamado InventorySystem utilizando el arquetipo sidemenu y Spring Boot"` es mejor que `"haz una aplicación"`.
+- **Pide verificación.** Frases como `"verifica en la documentación de webforJ"` o `"revisa este CSS por malos tokens --dwc-*"` animan al asistente a utilizar las herramientas en lugar de adivinar.
+
+Si tu asistente aún responde sin consultar al servidor, instala el [plugin AI de webforJ](https://github.com/webforj/webforj-ai): incluye Habilidades de Agente coincidentes que anima al asistente a usar automáticamente las herramientas MCP para tareas de webforJ.
+
+## Preguntas Frecuentes {#faq}
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <p>¿Por qué el asistente AI no utiliza el servidor MCP?</p>
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+      La mayoría de los asistentes solo buscan el MCP cuando creen que la pregunta lo necesita. Dos soluciones:
+
+      1. **Instala el [plugin AI de webforJ](https://github.com/webforj/webforj-ai)**, que empareja el servidor con las Habilidades del Agente que indican al asistente usar el MCP para tareas de webforJ.
+      2. **Sé explícito en tu solicitud**: incluye "webforJ" en la pregunta, y para casos obstinados di "usa el servidor MCP de webforJ para responder".
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>search-webforj</code></strong> - Búsqueda avanzada con resolución de problemas autónoma
+    <p>¿Cómo verificar que la conexión MCP está funcionando?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      El prompt configura a la IA para:
-
-      1. Buscar en la base de conocimiento extensivamente
-      2. Escribir código completo listo para producción
-      3. Compilar el proyecto usando `mvn compile` para verificar que no haya errores de construcción
-      4. Corregir errores de manera iterativa hasta que todo funcione
-    </div>
-  </AccordionDetails>
-</Accordion>
-
-### Cómo usar prompts
-
-<Tabs groupId="ide">
-<TabItem value="vscode" label="VS Code y Claude Code">
-
-1. Escribe <kbd>/</kbd> en el chat para ver los prompts disponibles
-2. Selecciona un prompt del menú desplegable
-3. Completa los parámetros requeridos cuando te lo soliciten
-
-</TabItem>
-<TabItem value="claude-desktop" label="Claude Desktop">
-
-1. Haz clic en el ícono **+** (más) en el área de entrada de prompts
-2. Selecciona **"Agregar desde webforJ"** del menú
-3. Elige el prompt deseado (por ejemplo, `create-app`, `create-theme`, `search-webforj`)
-4. Claude te pedirá que ingreses los argumentos requeridos
-5. Completa los parámetros según se solicite
-
-:::tip Verifica que el MCP esté conectado
-Busca el ícono de herramientas en la esquina inferior del área de entrada para confirmar que el servidor MCP de webforJ esté conectado.
-:::
-
-</TabItem>
-</Tabs>
-
-## Mejores prácticas
-
-Para obtener la asistencia más precisa y actualizada de webforJ, sigue estas pautas para aprovechar al máximo las características del servidor MCP.
-
-### Asegurando el uso del servidor MCP
-
-Los modelos de IA pueden omitir el servidor MCP si creen que ya conocen la respuesta. Para asegurarte de que se utilice el servidor MCP:
-
-- **Sé explícito sobre webforJ**: Siempre menciona "webforJ" en tu consulta para activar búsquedas específicas del marco
-- **Solicita información actual**: Incluye frases como "documentación más reciente de webforJ" o "patrones actuales de webforJ"
-- **Pide ejemplos verificados**: Solicita "ejemplos de código webforJ en funcionamiento" para forzar la búsqueda en la documentación
-- **Referencia versiones específicas**: Menciona tu versión de webforJ (por ejemplo, "webforJ `25.02`") para obtener resultados precisos
-
-### Redacción de prompts específicos
-
-**Ejemplos buenos:**
-```
-"Buscar documentación de webforJ para el manejo de eventos del componente Button con ejemplos"
-
-"Crea un proyecto webforJ llamado InventorySystem usando el arquetipo de menú lateral con Spring Boot"
-
-"Generar un tema de webforJ con HSL 220, 70, 50 como color primario para la marca corporativa"
-```
-
-**Ejemplos pobres:**
-```
-"¿Cómo funcionan los botones?"
-
-"Haz una app"
-
-"Hazlo azul"
-```
-
-### Forzar el uso de herramientas MCP
-
-Si la IA proporciona respuestas genéricas sin usar el servidor MCP:
-
-1. **Solicita explícitamente**: "Usa el servidor MCP de webforJ para buscar `[consulta]`"
-2. **Preguntar por referencias de documentación**: "Encuentra en la documentación de webforJ cómo `[consulta]`"
-3. **Solicitar verificación**: "Verifica esta solución contra la documentación de webforJ"
-4. **Sé específico del marco**: Siempre incluye "webforJ" en tus consultas
-
-## Personalización de IA {#ai-customization}
-
-Configura a tus asistentes de IA para que utilizan automáticamente el servidor MCP y sigan las mejores prácticas de webforJ. Agrega instrucciones específicas del proyecto para que tus asistentes de IA siempre usen el servidor MCP, sigan los estándares de documentación de webforJ y proporcionen respuestas precisas y actualizadas que coincidan con los requisitos de tu equipo.
-
-### Archivos de configuración del proyecto
-
-- Para **VS Code y Copilot**, crea `.github/copilot-instructions.md`
-- Para **Claude Code**, crea `CLAUDE.md` en la raíz de tu proyecto
-
-Agrega lo siguiente al archivo markdown creado:
-```markdown
-## Usa el servidor MCP de webforJ para responder cualquier pregunta sobre webforJ
-
-- Siempre llama a la herramienta "webforj-knowledge-base" para obtener documentación relevante a la pregunta
-- Verifica todas las firmas de la API contra la documentación oficial
-- Nunca supongas que los nombres o parámetros de los métodos existen sin comprobar
-
-Siempre verifica que el código compile con `mvn compile` antes de sugerir.
-```
-
-## Preguntas frecuentes
-
-<Accordion disableGutters>
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>¿Por qué la IA no está utilizando el servidor MCP de webforJ?</p>
-  </AccordionSummary>
-  <AccordionDetails>
-    <div>
-      La mayoría de los asistentes de IA requieren instrucciones explícitas para usar los servidores MCP. Configura tu cliente de IA con las instrucciones de la sección [Personalización de IA](#ai-customization). Sin estas instrucciones, los asistentes de IA pueden recurrir a su datos de entrenamiento en lugar de consultar el servidor MCP.
-
-      **Solución rápida:**
-      Incluye "usar webforJ MCP" en tu prompt o crea el archivo de configuración apropiado (`.github/copilot-instructions.md` o `CLAUDE.md`).
-    </div>
-  </AccordionDetails>
-</Accordion>
-
-<Accordion disableGutters>
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>¿Cómo verificar que la conexión MCP esté funcionando?</p>
-  </AccordionSummary>
-  <AccordionDetails>
-    <div>
-      Usa el inspector MCP para depurar conexiones:
+      Usa el inspector MCP:
 
       ```bash
       npx @modelcontextprotocol/inspector
       ```
 
-      Espera el mensaje: `🔍 MCP Inspector está en funcionamiento en http://127.0.0.1:6274` (el puerto puede variar)
-
-      Luego en el inspector:
-      1. Ingresa la URL del servidor MCP: `https://mcp.webforj.com/mcp`
-      2. Haz clic en "Conectar" para establecer conexión
-      3. Visualiza las herramientas disponibles y prueba consultas
-      4. Monitorea los registros de solicitudes/respuestas para depurar
+      Luego, en el inspector, conéctate a `https://mcp.webforj.com/mcp` y explora las herramientas disponibles.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>¿Cuál es la diferencia entre los puntos finales MCP y SSE?</p>
+    <p>¿Cómo reportar problemas?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      El servidor MCP de webforJ proporciona dos puntos finales:
-
-      - **Punto final MCP** (`/mcp`) - Protocolo moderno para Claude, VS Code, Cursor
-      - **Punto final SSE** (`/sse`) - Eventos enviados por el servidor para clientes legados como Windsurf
-
-      La mayoría de los usuarios deben usar el punto final MCP. Solo usa SSE si tu cliente no soporta el protocolo estándar MCP.
-    </div>
-  </AccordionDetails>
-</Accordion>
-
-<Accordion disableGutters>
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>¿Es posible usar el servidor MCP sin archivos de configuración?</p>
-  </AccordionSummary>
-  <AccordionDetails>
-    <div>
-      Sí, pero no se recomienda. Sin archivos de configuración, debes solicitar manualmente a la IA que utilice el servidor MCP en cada conversación. Los archivos de configuración instruyen automáticamente a la IA para usar el servidor MCP en cada interacción, por lo que no tienes que repetir las instrucciones cada vez.
-
-      **Enfoque manual:**
-      Comienza los prompts con: "Usa el servidor MCP de webforJ para..."
-
-      **Alternativa: Usa prompts preconfigurados**
-      El servidor MCP proporciona prompts que funcionan sin archivos de configuración:
-      - `/create-app` - Generar nuevas aplicaciones webforJ
-      - `/create-theme` - Crear temas CSS accesibles
-      - `/search-webforj` - Búsqueda avanzada de documentación
-
-      Consulta [Prompts disponibles](#available-prompts) para obtener detalles.
-    </div>
-  </AccordionDetails>
-</Accordion>
-
-<Accordion disableGutters>
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>¿Cómo contribuir o reportar problemas?</p>
-  </AccordionSummary>
-  <AccordionDetails>
-    <div>
-      **Reportar problemas:** [Plantilla de Problemas MCP de webforJ](https://github.com/webforj/webforj/issues/new?template=mcp_report.yml)
-      
-      **Problemas comunes para reportar:**
-      - Documentación desactualizada en los resultados de búsqueda
-      - Métodos de API o componentes faltantes
-      - Ejemplos de código incorrectos
-      - Errores de ejecución de herramientas
-
-      Incluye tu consulta, resultado esperado y resultado real al reportar problemas.
+      Abre un ticket usando la [plantilla de issues de MCP de webforJ](https://github.com/webforj/webforj/issues/new?template=mcp_report.yml). Incluye la solicitud, el resultado esperado y lo que obtuviste.
     </div>
   </AccordionDetails>
 </Accordion>

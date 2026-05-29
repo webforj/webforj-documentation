@@ -28,4 +28,9 @@ public class ButtonEventViewIT extends BaseTest {
     assertThat(buttonEventPage.getCounterText("1")).isVisible();
   }
 
+  @Test
+  public void testButtonEventIsTriggeredWhenButtonIsClicked() {
+    buttonEventPage.getButton().click();
+    assertThat(buttonEventPage.getCounterText("1")).isVisible();
+  }
 }

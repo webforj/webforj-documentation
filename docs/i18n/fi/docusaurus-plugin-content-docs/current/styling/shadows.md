@@ -1,18 +1,11 @@
 ---
 sidebar_position: 7
 title: Shadows
-_i18n_hash: 6f5378b91beaf0c663bdc9de9b67233a
+_i18n_hash: 423494230ee54caa83fec778e905871b
 ---
-Varjostusominaisuuksia käytetään varjostusvaikutusten lisäämiseen elementin reunoille. Voit asettaa useita vaikutuksia erottamalla ne pilkuilla. Useimmissa tapauksissa varjoja käytetään merkkaamaan elementtejä, jotka ovat päällekkäin käyttäjäliittymässä.
+Varjostusominaisuudet lisäävät varjotehosteita elementin kehän ympärille. Varjostukset merkitsevät käyttöliittymässä päällekkäin olevia kohteita.
 
-<Head>
-  <style>{`
-  table {
-    width: 100%;
-    display: table;
-  }
-  `}</style>
-</Head>
+Varjostukset sopeutuvat automaattisesti sekä vaaleisiin että tummiin teemoihin, ja ne näyttävät voimakkaammilta tummassa tilassa paremman näkyvyyden saavuttamiseksi.
 
 ### Esimerkki {#example}
 
@@ -22,18 +15,16 @@ Varjostusominaisuuksia käytetään varjostusvaikutusten lisäämiseen elementin
 }
 ```
 
-:::tip Varjon väri
-Ohjaat varjon väriä asettamalla `--dwc-shadow-color` -muuttujan. Oletusarvoisesti varjon väri on harmaa, johon on sekoitettu pääväri.
-:::
-
 ### Muuttujat {#variables}
 
-| **Muuttuja**       | **Esimerkki**                             |
-|--------------------|------------------------------------------|
-| `--dwc-shadow-xs`  | <ShadowBox shadow="--dwc-shadow-xs" />  |
-| `--dwc-shadow-s`   | <ShadowBox shadow="--dwc-shadow-s" />   |
-| `--dwc-shadow-m`   | <ShadowBox shadow="--dwc-shadow-m" />   |
-| `--dwc-shadow-l`   | <ShadowBox shadow="--dwc-shadow-l" />   |
-| `--dwc-shadow-xl`  | <ShadowBox shadow="--dwc-shadow-xl" />  |
-| `--dwc-shadow-2xl` | <ShadowBox shadow="--dwc-shadow-2xl" /> |
-| `--dwc-shadow`     | <ShadowBox shadow="--dwc-shadow" />     |
+| **Muuttuja**       | **Kuvaus**                           |
+|--------------------|---------------------------------------|
+| `--dwc-shadow-xs`  | Erittäin pieni varjo (1 kerros)      |
+| `--dwc-shadow-s`   | Pieni varjo (2 kerrosta)             |
+| `--dwc-shadow-m`   | Keskikokoinen varjo (3 kerrosta, oletus) |
+| `--dwc-shadow-l`   | Suuri varjo (4 kerrosta)             |
+| `--dwc-shadow-xl`  | Erittäin suuri varjo (5 kerrosta)   |
+| `--dwc-shadow-2xl` | Kaksois-erittäin suuri varjo (6 kerrosta) |
+| `--dwc-shadow`     | `var(--dwc-shadow-m)`                |
+
+<dwc-doc-shadows></dwc-doc-shadows>

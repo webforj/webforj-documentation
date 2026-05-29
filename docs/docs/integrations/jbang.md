@@ -1,7 +1,7 @@
 ---
 title: JBang
-sidebar_position: 15
-sidebar_class_name: new-content
+sidebar_position: 10
+description: Run webforJ apps as single-file JBang scripts with no Maven, Gradle, or project structure for rapid prototyping and demos.
 ---
 
 # JBang <DocChip chip='since' label='25.11' />

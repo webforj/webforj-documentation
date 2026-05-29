@@ -85,7 +85,7 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
         </CodeBlock>
       </TabItem>
     </Tabs>
-    <TableWrapper>
+    <TableWrapper title="Maven properties">
       <thead>
         <th>{translate({
           id: 'component.archetype.table.argument',

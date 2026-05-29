@@ -1,6 +1,7 @@
 ---
 title: Terminate and Error Actions
 sidebar_position: 25
+description: Customize app shutdown and error behavior with AppCloseAction implementations like MessageAction, RedirectAction, and NoneAction.
 ---
 <!-- vale off -->
 # Terminate and Error Actions <DocChip chip='since' label='23.06' />

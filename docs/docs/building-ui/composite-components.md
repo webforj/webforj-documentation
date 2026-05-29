@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Composite Components
-sidebar_class_name: updated-content
+description: Combine webforJ components into reusable units by extending Composite, configuring the bound component, and overriding initBoundComponent.
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
@@ -15,6 +15,8 @@ If you need to integrate web components from another source, use specialized alt
 
 - [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): For web components with type-safe property management
 - [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): For web components that accept slotted content
+
+<AISkillTip skill="webforj-creating-components" />
 
 ## Usage {#usage}
 
@@ -154,10 +156,12 @@ public class InteractiveMap extends Composite<Div> {
 
 The following example demonstrates a Todo app where each item is a `Composite` component consisting of a [`RadioButton`](../components/radiobutton) styled as a switch and a Div with text: 
 
-<ComponentDemo 
-path='/webforj/composite?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeView.java'
+<ComponentDemo
+path='/webforj/composite'
+files={[
+  'src/main/java/com/webforj/samples/views/composite/CompositeView.java',
+  'src/main/resources/static/composite/composite.css',
+]}
 height='500px'
 />
 
@@ -166,8 +170,10 @@ height='500px'
 Sometimes you may want to use a `Composite` to group related components together into a single unit, even when reusability isn't the main concern:
 
 <ComponentDemo
-path='/webforj/analyticscardcomposite?'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/analyticscomposite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java'
+path='/webforj/analyticscardcomposite'
+files={[
+  'src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java',
+  'src/main/resources/static/composite/analyticscomposite.css',
+]}
 height='500px'
 />

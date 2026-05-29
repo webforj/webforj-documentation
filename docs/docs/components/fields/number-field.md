@@ -20,9 +20,9 @@ The `NumberField` component accepts numeric input and rejects invalid values aut
 
 `NumberField` extends the shared `Field` class, which provides common features across all field components. The following example creates a `NumberField` with a label and placeholder text.
 
-<ComponentDemo 
-path='/webforj/numberfield?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldView.java'
+<ComponentDemo
+path='/webforj/numberfield'
+files={['src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldView.java']}
 />
 
 ## Field value {#field-value}

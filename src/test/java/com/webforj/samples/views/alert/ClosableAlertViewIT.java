@@ -29,10 +29,10 @@ public class ClosableAlertViewIT extends BaseTest {
         setupClosableAlert(language);
         Locator alert = page.getByRole(AriaRole.ALERT);
 
-        assertThat(alert).isVisible();
+    assertThat(alert).isVisible();
 
-        Locator closeButton = page.getByRole(AriaRole.BUTTON).filter().getByLabel("icon x");
-        closeButton.click();
-        assertThat(alert).not().isVisible();
-    }
+    Locator closeButton = page.getByRole(AriaRole.BUTTON).filter().getByLabel("icon x");
+    closeButton.click();
+    assertThat(alert).not().isVisible();
+  }
 }

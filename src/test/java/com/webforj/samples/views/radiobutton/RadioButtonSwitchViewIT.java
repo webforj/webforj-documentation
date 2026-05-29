@@ -2,26 +2,25 @@ package com.webforj.samples.views.radiobutton;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.radiobutton.RadioButtonSwitchPage;
+import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.webforj.samples.pages.radiobutton.RadioButtonSwitchPage;
-import com.webforj.samples.views.BaseTest;
-
 public class RadioButtonSwitchViewIT extends BaseTest {
 
-    private RadioButtonSwitchPage radioButton;
+  private RadioButtonSwitchPage radioButton;
 
-    @BeforeEach
-    public void setupRadioButtonSwitch() {
-        navigateToRoute(RadioButtonSwitchPage.getRoute());
-        radioButton = new RadioButtonSwitchPage(page);
-    }
+  @BeforeEach
+  public void setupRadioButtonSwitch() {
+    navigateToRoute(RadioButtonSwitchPage.getRoute());
+    radioButton = new RadioButtonSwitchPage(page);
+  }
 
-    @Test
-    public void testSwitchRadioButtonStyleIsChecked() {
-        radioButton.getSwitchRadio().check();
+  @Test
+  public void testSwitchRadioButtonStyleIsChecked() {
+    radioButton.getSwitchRadio().check();
 
-        assertThat(radioButton.getSwitchRadio()).isChecked();
-    }
+    assertThat(radioButton.getSwitchRadio()).isChecked();
+  }
 }

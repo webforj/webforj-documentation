@@ -1,12 +1,12 @@
 ---
 sidebar_position: 6
 title: Custom Implementation Example
-_i18n_hash: c0e3b67ebd80f907848594a5586ad644
+_i18n_hash: a04a98c0b17ef9b210aa856eb9e18a87
 ---
-本指南讲解如何构建一个完整的自定义安全实现，使用基于会话的身份验证。您将学习四个核心接口如何通过从头开始实现它们相互协作。
+本指南演示了如何构建一个完整的自定义安全实现，使用基于会话的身份验证。通过从头开始实现四个核心接口，您将学习它们如何协同工作。
 
 :::tip[大多数应用程序应使用 Spring Security]
-[Spring Security 集成](/docs/security/getting-started) 会自动配置此处显示的所有内容。仅在您有特定需求或未使用 Spring Boot 时构建自定义安全。
+[Spring Security 集成](/docs/security/getting-started) 会自动配置此处所示的所有内容。仅在您有特定需求或不使用 Spring Boot 时才构建自定义安全功能。
 :::
 
 ## 您将构建的内容 {#what-youll-build}
@@ -14,51 +14,51 @@ _i18n_hash: c0e3b67ebd80f907848594a5586ad644
 一个包含四个类的工作安全系统：
 
 - **SecurityConfiguration** - 定义安全行为和重定向位置
-- **SecurityContext** - 通过 HTTP 会话跟踪谁已登录
+- **SecurityContext** - 使用 HTTP 会话跟踪谁已登录
 - **SecurityManager** - 协调安全检查并提供登录/注销功能
-- **SecurityRegistrar** - 在应用启动时将所有内容连接在一起
+- **SecurityRegistrar** - 在应用程序启动时将所有内容连接在一起
 
-此示例使用基于会话的存储，但您也可以使用数据库查询、LDAP 或其他身份验证后端来实现相同的接口。
+此示例使用基于会话的存储，但您可以使用数据库查询、LDAP 或任何其他身份验证后端实现相同的接口。
 
-## 各组件如何协作 {#how-the-pieces-work-together}
+## 各部分如何协同工作 {#how-the-pieces-work-together}
 
 ```mermaid
 sequenceDiagram
-    box 启动阶段
-    participant Registrar as SecurityRegistrar
-    end
-    box 运行时阶段
-    participant Observer as RouteSecurityObserver
-    participant Manager as SecurityManager
-    participant Evaluators
-    participant Context as SecurityContext
-    participant Config as SecurityConfiguration
-    end
+  box 启动阶段
+  participant Registrar as SecurityRegistrar
+  end
+  box 运行时阶段
+  participant Observer as RouteSecurityObserver
+  participant Manager as SecurityManager
+  participant Evaluators
+  participant Context as SecurityContext
+  participant Config as SecurityConfiguration
+  end
 
-    Note over Registrar: 应用启动
-    Registrar->>Manager: 创建
-    Registrar->>Evaluators: 注册
-    Registrar->>Observer: 附加到路由
+  Note over Registrar: 应用程序启动
+  Registrar->>Manager: 创建
+  Registrar->>Evaluators: 注册
+  Registrar->>Observer: 附加到路由
 
-    Note over Observer,Config: 用户导航到路由
-    Observer->>Manager: 请求决策
-    Manager->>Evaluators: 运行评估器
-    Evaluators->>Context: 检查用户
-    Evaluators->>Config: 获取重定向
-    Evaluators-->>Manager: 决策
-    Manager-->>Observer: 授予或拒绝
+  Note over Observer,Config: 用户导航到路由
+  Observer->>Manager: 请求决定
+  Manager->>Evaluators: 运行评估器
+  Evaluators->>Context: 检查用户
+  Evaluators->>Config: 获取重定向
+  Evaluators-->>Manager: 决定
+  Manager-->>Observer: 允许或拒绝
 ```
 
 **流程：**
-1. **`SecurityRegistrar`** 在启动时运行，创建管理器，注册评估器，并附加观察者
-2. **`SecurityManager`** 协调所有操作 - 提供上下文和配置给评估器
-3. **`SecurityContext`** 通过读取 HTTP 会话来回答“谁已登录？”
-4. **`SecurityConfiguration`** 回答“重定向到哪里？”用于登录和访问被拒绝页面
+1. **`SecurityRegistrar`** 在启动时运行，创建管理器，注册评估器并附加观察者
+2. **`SecurityManager`** 协调所有内容 - 它为评估器提供上下文和配置
+3. **`SecurityContext`** 通过读取 HTTP 会话回答“谁已登录？”
+4. **`SecurityConfiguration`** 为登录和拒绝访问页面回答“在哪里重定向？”
 5. **`Evaluators`** 使用上下文和配置做出访问决策
 
 ## 第一步：定义安全配置 {#step-1-define-security-configuration}
 
-配置告诉安全系统如何执行和在哪里重定向用户：
+该配置告诉安全系统如何行为以及在哪里重定向用户：
 
 ```java title="SecurityConfiguration.java"
 package com.securityplain.security;
@@ -98,10 +98,10 @@ public class SecurityConfiguration implements RouteSecurityConfiguration {
 }
 ```
 
-- `isEnabled() = true` - 安全处于活动状态
-- `isSecureByDefault() = false` - 路由为公共路由，除非有注释（使用 `true` 可默认要求所有路由身份验证）
-- `/login` - 未认证用户的去处
-- `/access-denied` - 有权限但未认证用户的去处
+- `isEnabled() = true` - 安全功能处于活动状态
+- `isSecureByDefault() = false` - 路由为公共，除非注释（使用 `true` 在默认情况下要求所有路由进行身份验证）
+- `/login` - 未经过身份验证的用户去的地方
+- `/access-denied` - 已经过身份验证但没有权限的用户去的地方
 
 ## 第二步：实现安全上下文 {#step-2-implement-security-context}
 
@@ -123,7 +123,7 @@ import java.util.Set;
  * 简单的基于会话的安全上下文。
  *
  * <p>
- * 在 HTTP 会话中存储用户主体和角色。这是一个最小实现，供教学使用。
+ * 在 HTTP 会话中存储用户主体和角色。这是一个用于教学目的的最小实现。
  * </p>
  */
 public class SecurityContext implements RouteSecurityContext {
@@ -166,7 +166,7 @@ public class SecurityContext implements RouteSecurityContext {
    */
   @Override
   public boolean hasAuthority(String authority) {
-    // 在这个简单实现中，权限与角色相同
+    // 在这个简单实现中，权威与角色相同
     return hasRole(authority);
   }
 
@@ -225,13 +225,13 @@ public class SecurityContext implements RouteSecurityContext {
 
 - `isAuthenticated()` 检查会话中是否存在用户主体
 - `getPrincipal()` 从会话存储中检索用户名
-- `hasRole()` 检查用户的角色集合是否包含指定的角色
+- `hasRole()` 检查用户的角色集是否包含指定角色
 - `getAttribute()` / `setAttribute()` 管理自定义安全属性
 - `Environment.getSessionAccessor()` 提供线程安全的会话访问
 
 ## 第三步：创建安全管理器 {#step-3-create-security-manager}
 
-管理器协调安全决策。它扩展了 `AbstractRouteSecurityManager`，后者处理评估器链和访问拒绝：
+管理器协调安全决策。它扩展了 `AbstractRouteSecurityManager`，后者处理评估器链和拒绝访问：
 
 <!-- vale off -->
 
@@ -252,7 +252,7 @@ import java.util.Set;
  * 简单的安全管理器实现。
  *
  * <p>
- * 提供静态方法以进行登录/注销并管理安全上下文。
+ * 提供登录/注销的静态方法并管理安全上下文。
  * </p>
  */
 public class SecurityManager extends AbstractRouteSecurityManager {
@@ -343,14 +343,14 @@ public class SecurityManager extends AbstractRouteSecurityManager {
 
 - 扩展 `AbstractRouteSecurityManager` 以继承评估器链逻辑
 - 提供 `getConfiguration()` 和 `getSecurityContext()` 的实现
-- 增加 `login()` 以验证用户并将凭据存储在会话中
-- 增加 `logout()` 以清除会话并重定向到登录页面
+- 添加 `login()` 以验证用户并存储会话中的凭据
+- 添加 `logout()` 以清除会话并重定向到登录页面
 - 使用 [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) 进行简单的会话存储
-- 将自身存储在 [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) 中，以便于全局访问
+- 将自身存储在 [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) 中以便于全局访问
 
-## 第四步：在启动时连接所有组件 {#step-4-wire-everything-at-startup}
+## 第四步：在启动时连接所有内容 {#step-4-wire-everything-at-startup}
 
-注册器在应用启动时连接所有组件：
+注册程序在应用程序启动时连接所有部分：
 
 ```java title="SecurityRegistrar.java"
 package com.securityplain.security;
@@ -366,10 +366,10 @@ import com.webforj.router.security.evaluator.PermitAllEvaluator;
 import com.webforj.router.security.evaluator.RolesAllowedEvaluator;
 
 /**
- * 在应用启动时注册路由安全组件。
+ * 在应用程序启动期间注册路由安全组件。
  *
  * <p>
- * 与路由设置安全管理器和评估器。
+ * 设置安全管理器和评估器与路由器一起工作。
  * </p>
  */
 @AppListenerPriority(1)
@@ -390,7 +390,7 @@ public class SecurityRegistrar implements AppLifecycleListener {
     securityManager.registerEvaluator(new PermitAllEvaluator(), 2);
     securityManager.registerEvaluator(new RolesAllowedEvaluator(), 3);
 
-    // 创建安全观察者并附加到路由
+    // 创建安全观察者并附加到路由器
     RouteSecurityObserver securityObserver = new RouteSecurityObserver(securityManager);
     Router router = Router.getCurrent();
     if (router != null) {
@@ -402,23 +402,23 @@ public class SecurityRegistrar implements AppLifecycleListener {
 
 **注册监听器：**
 
-在 `src/main/resources/META-INF/services/com.webforj.AppLifecycleListener` 中创建：
+创建 `src/main/resources/META-INF/services/com.webforj.AppLifecycleListener`，内容为：
 
 ```text
 com.securityplain.security.SecurityRegistrar
 ```
 
-这将注册您的 [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners)，以便在应用启动时运行。
+这会注册您的 [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners)，以便它在应用程序启动时运行。
 
 **工作原理：**
 
-- 运行较早（`@AppListenerPriority(1)`），以在路由加载之前设置安全
+- 运行较早（`@AppListenerPriority(1)`）以在路由加载之前设置安全性
 - 创建安全管理器并全局存储
-- 按优先级顺序注册内置评估器（较小的数字先运行）
-- 创建会拦截导航的观察者
-- 将观察者附加到路由，以便自动进行安全检查
+- 按优先级顺序注册内置评估器（数字越小，优先级越高，先运行）
+- 创建拦截导航的观察者
+- 将观察者附加到路由器，以便安全检查自动发生
 
-在此运行之后，所有导航的安全性将处于活动状态。
+在此运行后，所有导航的安全性均处于活动状态。
 
 ## 使用您的实现 {#using-your-implementation}
 
@@ -442,7 +442,7 @@ import com.webforj.router.security.annotation.AnonymousAccess;
 @FrameTitle("登录")
 @AnonymousAccess
 public class LoginView extends Composite<Login> {
-  private Login self = getBoundComponent();
+  private final Login self = getBoundComponent();
 
   public LoginView() {
     self.onSubmit(e -> {

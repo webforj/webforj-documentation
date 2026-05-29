@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-numberfield>
 sidebar_class_name: sidebar--item__hidden
 slug: numberfield
-description: A user guide article for the numberfield
+description: Theme the dwc-numberfield component through CSS variables and shadow parts targeting input, label, prefix, and suffix areas.
 // pagination_prev: null
 // pagination_next: null
 ---

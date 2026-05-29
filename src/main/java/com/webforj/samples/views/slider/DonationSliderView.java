@@ -1,5 +1,7 @@
 package com.webforj.samples.views.slider;
 
+import static java.util.Map.entry;
+
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
@@ -15,14 +17,29 @@ import com.webforj.component.toast.Toast.Placement;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import java.util.Map;
-import static java.util.Map.entry;
 
 @Route
 @FrameTitle("Donation Slider Demo")
 public class DonationSliderView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  Slider donationSlider = new Slider();
-  Integer currentDonationValue = 50;
+  // Donation amount labels
+  private static final Map<Integer, String> LABELS =
+      Map.ofEntries(
+          entry(0, "$0"),
+          entry(10, "$10"),
+          entry(20, "$20"),
+          entry(30, "$30"),
+          entry(40, "$40"),
+          entry(50, "$50"),
+          entry(60, "$60"),
+          entry(70, "$70"),
+          entry(80, "$80"));
+
+  private final FlexLayout self = getBoundComponent();
+  // Donation slider component
+  private final Slider donationSlider = new Slider();
+
+  // Current donation value
+  private Integer currentDonationValue = 50;
 
   public DonationSliderView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -40,37 +57,25 @@ public class DonationSliderView extends Composite<FlexLayout> {
         .setLabelsVisible(true)
         .setSnapToTicks(true)
         .setTheme(Theme.GRAY)
-        .setWidth("500px");
+        .setWidth("500px")
+        .setLabels(LABELS)
+        .addValueChangeListener(event -> currentDonationValue = event.getValue());
 
-    Map<Integer, String> labels = Map.ofEntries(
-        entry(0, "$0"),
-        entry(10, "$10"),
-        entry(20, "$20"),
-        entry(30, "$30"),
-        entry(40, "$40"),
-        entry(50, "$50"),
-        entry(60, "$60"),
-        entry(70, "$70"),
-        entry(80, "$80"));
-
-    donationSlider.setLabels(labels);
-    donationSlider.addValueChangeListener(event -> currentDonationValue = event.getValue());
-
-    Button confirmButton = new Button(
-        "Confirm Donation",
-        ButtonTheme.GRAY,
-        e -> showToastMessage(currentDonationValue));
-    confirmButton.setPrefixComponent(TablerIcon.create("tip-jar-euro"));
+    Button confirmButton =
+        new Button(
+                "Confirm Donation", ButtonTheme.GRAY, e -> showToastMessage(currentDonationValue))
+            .setPrefixComponent(TablerIcon.create("tip-jar-euro"));
 
     self.add(donationSlider, confirmButton);
   }
 
+  /** Shows a toast message with the donation amount. */
   private void showToastMessage(Integer value) {
-    Toast toast = new Toast();
-    toast.setText("Thank you for your generous contribution of $" + value + "!")
+    new Toast()
+        .setText("Thank you for your generous contribution of $" + value + "!")
         .setPlacement(Placement.BOTTOM)
         .setTheme(Theme.SUCCESS)
-        .setDuration(1000);
-    toast.open();
+        .setDuration(1000)
+        .open();
   }
 }

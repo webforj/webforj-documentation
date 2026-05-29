@@ -1,32 +1,32 @@
 ---
 sidebar_position: 15
 title: Browser Console
-_i18n_hash: fd0e46761a5fd8b887a39b7a51e9b66b
+_i18n_hash: 843587956991faa037138ce8e8563e7a
 ---
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>
 
-Die Verwendung der Konsole des Browsers zum Drucken von Programminformationen ist ein integraler Bestandteil des Entwicklungsprozesses. 
-Die <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink>-Hilfsklasse bietet Funktionen, die die Protokollierungsfähigkeiten durch Protokoltypen und Styling verbessern.
+Die Verwendung der Konsole des Browsers zum Drucken von Programminformationen ist ein wesentlicher Bestandteil des Entwicklungsprozesses. 
+Die <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> Hilfsklasse bietet Funktionen, die die Protokollierungsfähigkeiten durch Protokolltypen und Stile verbessern.
 
 ## Instanz {#instance}
 
-Holen Sie sich eine Instanz von `BrowserConsole` mit der Methode `App.console()`. Drucken Sie jedes gewünschte `Object` als einen der fünf Protokoltypen: log, info, warn, error oder debug.
+Holen Sie sich eine Instanz von `BrowserConsole` mit der Methode `App.console()`. Drucken Sie jedes gewünschte `Object` als einen der fünf Protokolltypen: log, info, warn, error oder debug.
 
 ```java
 import static com.webforj.App.console;
 // Typen
 console().log("Protokollnachricht");
-console().info("Infomeldung");
-console().warn("Warnmeldung");
+console().info("Informationsnachricht");
+console().warn("Warnnachricht");
 console().error("Fehlermeldung");
-console().debug("Debugnachricht");
+console().debug("Debug-Nachricht");
 ```
 
-## Styling {#styling}
+## Stil {#styling}
 
-Verwenden Sie die Builder-Methoden, um das Erscheinungsbild der Protokollnachricht festzulegen. Jeder Builder hat Optionen, um eine bestimmte Eigenschaft zu ändern. Es ist auch möglich, [mehrere Stile zu mischen](#mixing-styles).
-Sobald eine Konsolenmeldung ausgegeben wird, werden alle angewendeten Stile nicht auf nachfolgende Nachrichten übertragen, es sei denn, sie werden *ausdrücklich* neu definiert.
+Verwenden Sie die Builder-Methoden, um das Aussehen der Protokollnachricht festzulegen. Jeder Builder hat Optionen zur Änderung eines bestimmten Attributs. Es ist auch möglich, [mehrere Stile zu mischen](#mixing-styles).
+Sobald eine Konsolenmeldung gedruckt wird, werden alle angewendeten Stile nicht auf nachfolgende Nachrichten übertragen, es sei denn, sie werden *explizit* neu definiert.
 
 - [`background()`](#background-color)
 - [`color()`](#text-color)
@@ -36,91 +36,91 @@ Sobald eine Konsolenmeldung ausgegeben wird, werden alle angewendeten Stile nich
 - [`weight()`](#font-weight)
 
 :::tip
-Verwenden Sie die Methode `setStyle`, um die Eigenschaften des `BrowserConsole`-Protokolls zu ändern, die nicht von den Buildern festgelegt wurden.
+Verwenden Sie die Methode `setStyle`, um die Eigenschaften des `BrowserConsole`-Protokolls zu ändern, die nicht von den Build-Methoden angegeben sind.
 :::
 
 ### Hintergrundfarbe {#background-color}
 
-Stellen Sie die Hintergrundfarbe mit der Methode `background()` ein, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.BackgroundColorBuilder" code='true'>BackgroundColorBuilder</JavadocLink> zurückgibt.
+Setzen Sie die Hintergrundfarbe mit der Methode `background()`, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.BackgroundColorBuilder" code='true'>BackgroundColorBuilder</JavadocLink> zurückgibt.
 Verwenden Sie Methoden, die nach Farben benannt sind, wie `blue()`, oder wählen Sie einen bestimmten Wert mit `colored(String color)`.
 
 ```java
-// Beispiele für den Hintergrund
+// Hintergrundbeispiele
 console().background().blue().log("Blauer Hintergrund");
 console().background().colored("#031f8f").log("Benutzerdefinierter blauer Hintergrund");
 ```
 
 ### Textfarbe {#text-color}
 
-Stellen Sie die Textfarbe mit der Methode `color()` ein, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.ColorBuilder" code='true'>ColorBuilder</JavadocLink> zurückgibt.
+Setzen Sie die Textfarbe mit der Methode `color()`, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.ColorBuilder" code='true'>ColorBuilder</JavadocLink> zurückgibt.
 Verwenden Sie Methoden, die nach Farben benannt sind, wie `red()`, oder wählen Sie einen bestimmten Wert mit `colored(String color)`.
 
 ```java
-// Beispiele für Farben
+// Farbbeispiele
 console().background().red().log("Roter Text");
-console().color().colored("#becad2").log("Benutzerdefinierter hellbläulicher grauer Text");
+console().color().colored("#becad2").log("Benutzerdefinierter hellbläulich-grauer Text");
 ```
 
 ### Schriftgröße {#font-size}
 
-Stellen Sie die Schriftgröße mit der Methode `size()` ein, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontSizeBuilder" code='true'>FontSizeBuilder</JavadocLink> zurückgibt.
+Setzen Sie die Schriftgröße mit der Methode `size()`, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontSizeBuilder" code='true'>FontSizeBuilder</JavadocLink> zurückgibt.
 Verwenden Sie Methoden, die nach einer Größe benannt sind, wie `small()`, oder wählen Sie einen bestimmten Wert mit `from(String value)`.
 
 ```java
-// Beispiele für Größen
+// Größenbeispiele
 console().size().small().log("Kleine Schrift");
 console().size().from("30px").log("30px Schrift");
 ```
 :::tip
-Die Methode `from(String value)` kann andere Schriftgrößenwerte wie rem und vw akzeptieren.
+Die Methode `from(String value)` kann auch andere Schriftgrößenwerte akzeptieren, wie rem und vw.
 :::
 
 ### Schriftstil {#font-style}
 
-Stellen Sie den Schriftstil mit der Methode `style()` ein, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontStyleBuilder" code='true'>FontStyleBuilder</JavadocLink> zurückgibt.
-Verwenden Sie beispielsweise die Methode `italic()`, um die Protokollausgabe kursiv zu machen.
+Setzen Sie den Schriftstil mit der Methode `style()`, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontStyleBuilder" code='true'>FontStyleBuilder</JavadocLink> zurückgibt.
+Zum Beispiel können Sie die Methode `italic()` verwenden, um das Konsolenprotokoll kursiv zu gestalten.
 
 ```java
-// Beispiele für Stile
-console().style().italic().log("Kursivschrift");
+// Stilbeispiele
+console().style().italic().log("Kursive Schrift");
 console().style().normal().log("Normale Schrift");
 ```
 
 ### Texttransformation {#text-transformation}
 
 Steuern Sie die Großschreibung der Zeichen in einer Nachricht mit der Methode `transform()`, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.TextTransformBuilder" code='true'>TextTransformBuilder</JavadocLink> zurückgibt.
-Verwenden Sie beispielsweise die Methode `capitalize()`, um den ersten Buchstaben jedes Wortes in Großbuchstaben umzuwandeln.
+Verwenden Sie beispielsweise die Methode `capitalize()`, um den ersten Buchstaben jedes Wortes in Großbuchstaben zu verwandeln.
 
 ```java
-// Beispiele für Transformation
-// Texttransformation in Großbuchstaben
-console().transform().capitalize().log("Texttransformation in Großbuchstaben");
-// GROSSBUCHSTABENTEXTTRANSFORMATION 
-console().transform().uppercase().log("Texttransformation in Großbuchstaben");
+// Transformationsbeispiele
+// Textveränderung Großschreibung
+console().transform().capitalize().log("Textveränderung Großschreibung");
+// TEXTVERÄNDERUNG GROSSSCHRIFT 
+console().transform().uppercase().log("Textveränderung Großschrift");
 ```
 
 ### Schriftgewicht {#font-weight}
 
 Stellen Sie ein, wie dick der Text ist, mit der Methode `weight()`, die den <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontWeightBuilder" code='true'>FontWeightBuilder</JavadocLink> zurückgibt.
-Verwenden Sie beispielsweise die Methode `ligther()`, um die Schrift leichter als normal zu machen.
+Verwenden Sie beispielsweise die Methode `lighter()`, um die Schrift leichter als normal zu machen.
 
 ```java
-// Beispiele für Gewicht
+// Gewichtbeispiele
 console().weight().bold().log("Fette Schrift");
 console().weight().lighter().log("Leichtere Schrift");
 ```
 
 ## Stile mischen {#mixing-styles}
-Es ist möglich, Methoden zu mischen und anzupassen für eine benutzerdefinierte Protokollaussicht.
+Es ist möglich, Methoden zu mischen und anzupassen für eine benutzerdefinierte Protokollanzeige.
 
 ```java
-// Eine Vielzahl von Optionen für eine benutzerdefinierte Protokollaussicht
+// Eine Vielzahl von Optionen für die benutzerdefinierte Protokollanzeige
 console()
-    .weight().bolder()
-    .size().larger()
-    .color().gray()
-    .style().italic()
-    .transform().uppercase()
-    .background().blue()
-    .warn("Stile mischen");
+  .weight().bolder()
+  .size().larger()
+  .color().gray()
+  .style().italic()
+  .transform().uppercase()
+  .background().blue()
+  .warn("Stile mischen");
 ```
