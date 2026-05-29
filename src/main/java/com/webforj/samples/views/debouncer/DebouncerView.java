@@ -12,11 +12,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Debouncer Demo")
 public class DebouncerView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
   private final TextField input = new TextField();
   private final TextArea output = new TextArea();
-  private final Debouncer debouncer = new Debouncer(0.5f);
+  private final Debouncer debouncer = new Debouncer(1.0f);
   private int count = 0;
 
   public DebouncerView() {
@@ -24,26 +23,27 @@ public class DebouncerView extends Composite<FlexLayout> {
         .setMaxWidth("400px")
         .setMargin("var(--dwc-space-xl) auto")
         .setPadding("var(--dwc-space-l)")
-        .setSpacing("var(--dwc-space-l)");
+        .setSpacing("var(--dwc-space-l)")
+        .add(input, output);
 
-    input.setLabel("Type something");
-    input.setPlaceholder("Start typing...");
-    input.setHelperText("Key events: 0");
-    input.onModify(e -> {
-      count++;
-      input.setHelperText("Key events: " + count);
+    input
+        .setLabel("Type something")
+        .setPlaceholder("Start typing...")
+        .setHelperText("Key events: 0")
+        .onModify(
+            e -> {
+              count++;
+              input.setHelperText("Key events: " + count);
 
-      debouncer.run(() -> {
-        output.setValue(e.getText());
-        input.setHelperText("Key events: 0");
-        count = 0;
-      });
-    });
+              debouncer.run(
+                  () -> {
+                    output.setValue(e.getText());
+                    input.setHelperText("Key events: 0");
+                    count = 0;
+                  });
+            });
 
-    output.setLabel("Debounced output");
-    output.setReadOnly(true);
-
-    self.add(input, output);
+    output.setLabel("Debounced output").setReadOnly(true);
   }
 
   @Override

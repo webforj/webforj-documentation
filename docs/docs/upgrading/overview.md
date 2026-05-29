@@ -1,8 +1,10 @@
 ---
 sidebar_position: 1
 title: Upgrading Guides
+description: Understand the webforJ release cadence for major, minor, and patch versions and find guidance for upgrading apps between releases.
 hide_table_of_contents: true
 hide_giscus_comments: true
+sidebar_class_name: has-new-content
 ---
 
 <Head>
@@ -14,6 +16,8 @@ hide_giscus_comments: true
 </Head>
 
 The webforJ release cycle follows a structured and predictable model to ensure stability, performance, and continuous innovation. This document provides an overview of how releases are planned, what types of releases to expect, and how users can stay informed and prepared.
+
+<AISkillTip skill="webforj-upgrading-versions" />
 
 ## Types of webforJ releases {#types-of-webforj-releases}
 

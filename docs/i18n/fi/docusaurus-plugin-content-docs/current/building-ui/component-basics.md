@@ -1,28 +1,27 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 title: Component Basics
 slug: basics
 draft: false
-_i18n_hash: e4d0cb9dd9f53dabda8bebe6664bf0d3
+_i18n_hash: 0a9127dc9219a32aeb1eef280b386d77
 ---
-<DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
 
-Komponentit ovat perustavanlaatuisia rakennuspalikoita, jotka voidaan lisätä ikkunaan, tarjoten käyttäjäliittymän toiminnallisuutta ja mukautettua käyttäytymistä. webforJ:ssä `Component`-luokka toimii kaikkien moottorin komponenttien perustana.
+Komponentit ovat perusrakennuspalikoita, joita voidaan lisätä ikkunaan, ja ne tarjoavat käyttöliittymätoimintoja ja mukautettua käyttäytymistä. webforJ:ssa `Component`-luokka toimii kaikkien moottorin komponenttien perustana.
 
 ## Elinkaaren hallinta {#lifecycle-management}
 
-Komponenttien elinkaaren ymmärtäminen on välttämätöntä komponenttien tehokkaalle luomiselle, hallinnalle ja hyödyntämiselle. Seuraavissa kahdessa elinkaarivaiheessa on menetelmiä, joilla voidaan manipuloida niiden käyttäytymistä. Näitä menetelmiä ei tulisi kutsua suoraan käyttäjän toimesta.
+Ymmärtäminen komponentin elinkaaresta on olennaista komponenttien luomiseksi, hallitsemiseksi ja käyttämiseksi tehokkaasti. Seuraavilla kahdella elinkaaren tilalla on menetelmiä, joilla niiden käyttäytymistä voidaan manipuloida. Näitä metodeja ei pitäisi käyttäjän kutsua suoraan.
 
 ### Luo ja tuhoa koukut {#create-and-destroy-hooks}
 
-Kaikkien `Component`-luokkaa laajentavien luokkien on toteutettava toiminnallisuus, joka suoritetaan, kun `Component` luodaan ja kun se tuhotaan. Tämä tapahtuu korvaamalla `onCreate()` ja `onDestroy()` -menetelmät vastaavasti.
+Kaikkien luokkien, jotka laajentavat `Component`-luokkaa, vastuulla on toteuttaa toiminnallisuus, joka suoritetaan, kun `Component` luodaan ja kun se tuhotaan. Tämä tapahtuu ylikirjoittamalla `onCreate()` ja `onDestroy()` -menetelmät vastaavasti.
 
 #### `onCreate()` {#oncreate}
 
-`onCreate()`-menetelmää kutsutaan, kun komponentti lisätään ikkunaan. Komponenttien luominen sisältää niiden alkuperäisen tilan ja toiminnallisuuden määrittämisen. Tässä määritellään, mitä komponentin tulisi tehdä sen ensimmäisellä luomisella. Olipa kyseessä muuttujien alustaminen, tapahtumakuuntelijoiden asettaminen tai muu asetus, `onCreate()`-menetelmä on sisäänkäyntisi komponentin käyttäytymisen mukauttamiseen. 
+`onCreate()`-metodi kutsutaan, kun komponentti lisätään ikkunaan. Komponenttien luominen sisältää niiden alkuperäisen tilan ja toiminnallisuuden asetuksen. Tässä määritellään, mitä komponentin tulisi tehdä, kun se ensimmäisen kerran luodaan. Oli kyseessä muuttujien alustus, tapahtumakuuntelijoiden asettaminen tai muu valmistelu, `onCreate()`-metodi on sisäänkäynnin piste räätälöidä komponentin käyttäytymistä.
 
-Tämä koukku vastaanottaa ikkunahypoteesin, joka mahdollistaa komponenttien lisäämisen, jotka sijaitsevat komponentin sisällä.
+Tämä koukku saa ikkunan instanssin, joka mahdollistaa komponenttien lisäämisen komponentin sisälle.
 
 ```java
 @Override
@@ -35,23 +34,23 @@ protected void onCreate(Window window) {
 ```
 
 :::tip
-`onCreate()`-menetelmässä komponentti ja kaikki sen osat tulisi lisätä ikkunaan.
+`onCreate()`-metodi on se, jossa komponentti ja kaikki sen osat tulisi lisätä ikkunaan.
 :::
 
 #### `onDestroy()` {#ondestroy}
 
-Komponenttien tuhoaminen on olennainen osa resurssien hallintaa ja asianmukaisen siivouksen varmistamista. Komponentin tuhoaminen on tarpeen, kun sitä ei enää tarvita tai kun halutaan vapauttaa siihen liittyvät resurssit. Se mahdollistaa kehittäjän suorittaa siivoustehtäviä, kuten ajastinten pysäyttämistä, muistin vapauttamista tai tapahtumakuuntelijoiden irrottamista. Se myös mahdollistaa `destroy()`-menetelmän kutsumisen mihin tahansa osakomponentteihin.
+Komponenttien tuhoaminen on olennaista resurssien hallinnan ja asianmukaisen siivouksen varmistamiseksi. Komponentin tuhoaminen on tarpeellista, kun sitä ei enää tarvita tai kun halutaan vapauttaa siihen liittyvät resurssit. Tämä antaa kehittäjälle mahdollisuuden suorittaa siivoustehtäviä, kuten ajastimien pysäyttämistä, muistin vapauttamista tai tapahtumakuuntelijoiden irrottamista. Se myös sallii `destroy()`-metodin kutsumisen kaikille osakompONENTeille.
 
 :::tip
-`onDestroy()`-menetelmä on vastuussa `destroy()`-menetelmän kutsumisesta mihin tahansa osakomponentteihin. Muutoin nämä komponentit jäävät edelleen olemassa DOM:iin, mutta niitä ei voida saavuttaa API:n kautta.
+`onDestroy()`-metodi on vastuussa `destroy()`-metodin kutsumisesta kaikille osakompONENTeille. Muuten nämä komponentit jäävät edelleen olemassa DOM:iin, mutta niitä ei voi saavuttaa API:n kautta.
 :::
 
 ### Asynkroninen liittäminen {#asynchronous-attachment}
 
-`whenAttached()`-menetelmä mahdollistaa toiminnallisuuden suorittamisen sen jälkeen, kun komponentti on lisätty ikkunaan. Tämä menetelmä palauttaa <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, joka mahdollistaa lisättyä määriteltyä käyttäytymistä suorittamaan asynkronisesti, kun komponentti on liitetty DOM:iin. 
+`whenAttached()`-metodi mahdollistaa toiminnallisuuden suorittamisen sen jälkeen, kun komponentti on lisätty ikkunaan. Tämä metodi palauttaa <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, joka mahdollistaa lisätyön asynkronisen suorittamisen, kun komponentti on kiinnitetty DOM:iin.
 
 :::tip
-Toisin kuin edellisessä kolmessa menetelmässä, `whenAttached()` on tarkoitettu käyttäjän nimenomaan kutsuttavaksi.
+Toisin kuin kolme edellistä metodia, `whenAttached()` on tarkoitettu käyttäjän kutsuttavaksi suoraan.
 :::
 
 ```java
@@ -62,29 +61,29 @@ public class Demo extends App {
 
     Button button = new Button(); 
 
-    /* Suora kutsu whenAttached(), joka näyttää 
-    viestiruudun, kun painike on liitetty Frameen.*/
+    /* Suora kutsu whenAttached()-metodiin, joka näyttää 
+    viestiruudun, kun nappi on kiinnitetty Frameen.*/
     button.whenAttached().thenAccept( e -> {
-      showMessageDialog("Olen liitetty!", "Asynkroninen liittäminen");
+      showMessageDialog("Olen kiinnitetty!", "Asynkroninen liittäminen");
     });
   
-    // onCreate() -menetelmää kutsutaan
+    // onCreate()-metodi kutsutaan
     window.add(button); 
   }
 }
 ```
 
-### Tarkkailijat {#observers}
+### Observerit {#observers}
 
-Tarkkailijat ovat keskeisessä asemassa komponenttien elinkaaritapahtumien seuraamisessa. Tarkkailijoita voidaan lisätä ja poistaa käyttäen `addLifecycleObserver()` ja `removeLifecycleObserver()` -menetelmiä, ja ne saavat ilmoituksia tapahtumista, kuten komponenttien luomisesta ja tuhoamisesta.
+Observerit näyttelevät keskeistä roolia komponentin elinkaaritapahtumien seuraamisessa. Observereita voidaan lisätä ja poistaa käyttämällä `addLifecycleObserver()` ja `removeLifecycleObserver()` -menetelmiä, ja ne saavat ilmoituksia tapahtumista, kuten komponenttien luomisesta ja tuhoamisesta.
 
-Lisäämällä tarkkailijoita voit tehdä toimia, kun komponentti luodaan tai tuhotaan. Tämä on erityisen hyödyllistä mukautetun logiikan toteuttamisessa tai erityisten skenaarioiden käsittelemisessä komponenttitapahtumien perusteella.
+Lisäämällä observeereita voit toimia, kun komponentti luodaan tai tuhotaan. Tämä on erityisen hyödyllistä mukautetun logiikan toteuttamisessa tai erityisten skenaarioiden käsittelemisessä komponenttitapahtumien perusteella.
 
 ```java
 Button button = new Button();
 button.addLifecycleObserver((button, lifecycleEvent) -> {
   if (lifecycleEvent == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
-    // toteutettu logiikka, joka suoritetaan, kun painike tuhotaan
+    // toteutettu logiikka, joka suoritetaan, kun nappi tuhotaan
   }
 });
 ```
@@ -93,31 +92,31 @@ button.addLifecycleObserver((button, lifecycleEvent) -> {
 
 ### Komponentin tunnisteet {#component-identifiers}
 
-Komponenttien ID:t toimivat ainutlaatuisina tunnisteina komponenteille, mikä mahdollistaa niiden hallinnan ja tilan tehokkaan käsittelyn.
+Komponentti-ID:t toimivat ainutkertaisina tunnisteina komponenteille, mikä mahdollistaa niiden vuorovaikutuksen ja tilan hallinnan tehokkaasti.
 
 #### Palvelinpuolen komponentin ID {#server-side-component-id}
 
-Jokaiselle `Component`-luokasta luodulle komponentille annetaan automaattisesti palvelinpuolen tunniste. Palvelinpuolen ID:t ovat olennaisia sisäiseen seurantaan ja komponenttien tunnistamiseen viitekehyksessä. Voit palauttaa palvelinpuolen komponentin ID:n käyttämällä `getComponentId()`-menetelmää.
+Jokaiselle `Component`-luokasta luodulle komponentille annetaan automaattisesti palvelinpuolen tunniste. Palvelinpuolen ID:t ovat olennaisia sisäiseen seurantaan ja komponenttien tunnistamiseen keh框uksessa. Voit palauttaa palvelinpuolen komponentin ID:n käyttämällä `getComponentId()`-metodia.
 
-Tämä voi olla hyödyllistä monissa tilanteissa, joissa ainutlaatuinen, palvelinpuolen tunniste on tarpeen, kuten tietyistä komponenteista kysyttäessä säiliössä.
+Tämä voi olla hyödyllistä monissa tilanteissa, joissa ainutkertaisen, palvelinpuolen tunnisteen saaminen on tarpeen, esimerkiksi kyselyssä tietyn komponentin löytämiseksi säiliöstä.
 
 #### Asiakaspuolen komponentin ID {#client-side-component-id}
 
-Asiakaspuolen ID:t mahdollistavat käyttäjän saada asiakasedustuksen palvelinpuolen komponentista, joka on luotu Javalla. Kaikilla tarjotuilla webforJ-komponenteilla on tämän ID:n toteutus. Jos haluat saada pääsyn ja käyttää asiakaspuolen komponenttia, voit suorittaa `object.get()` asiakas-ID:llä saadaksesi halutun asiakaspuolen komponentin.
+Asiakaspuolen ID:t mahdollistavat käyttäjän saada asiakaspuolen esityksen palvelinpuolen komponentista, joka on luotu Javassa. Kaikilla tarjotuilla webforJ-komponenteilla on tämän ID:n toteutus. Jos haluat saada pääsyn ja käyttää asiakaspuolen komponenttia, voit suorittaa `object.get()` asiakas-ID:n kanssa saadaksesi halutun asiakas komponentin.
 
 :::important
-Tämä ID **ei** ole elementin ID-attribuutti DOM:ssa.
+Tämä ID ei ole **DOM:n elementin ID-attribuutti**.
 :::
 
-Alla olevassa esimerkissä `onClick`-tapahtuma lisätään painikkeelle, joka sitten laukaistaan kutsumalla menetelmää asiakaspuolen komponentilla sen jälkeen, kun se on saatu käyttämällä `object.get()`-menetelmää.
+Alla olevassa esimerkissä `onClick`-tapahtuma lisätään napille, joka laukaistaan kutsumalla menetelmää asiakas komponentille sen jälkeen, kun se on saatu `object.get()`-menetelmällä.
 
 ```java
 @Override
 public void run() throws WebforjException {
   Frame frame = new Frame();
-  Button btn = new Button("Napsauta minua");
+  Button btn = new Button("Klikkaa minua");
   btn.onClick(e -> {
-    showMessageDialog("Painiketta napsautettiin", "Tapahtuma tapahtui");
+    showMessageDialog("Nappia klikattiin", "Tapahtuma tapahtui");
   });
 
   btn.whenAttached().thenAccept(e -> {
@@ -127,8 +126,8 @@ public void run() throws WebforjException {
 }
 ```
 
-### Käyttäjädata {#user-data}
+### Käyttäjätiedot {#user-data}
 
-`Component`-luokka mahdollistaa lisätietojen sisällyttämisen komponenttiin käyttämällä `setUserData()`-menetelmää. Nämä tiedot ovat käytettävissä vain komponentin palvelinpuolella `getUserData()`-menetelmän kautta, eikä niitä lähetetä asiakkaalle. 
+`Component`-luokka mahdollistaa lisätietojen sisällyttämisen komponenttiin käyttämällä `setUserData()`-metodia. Tämä tieto on käytettävissä vain komponentin palvelinpuolella `getUserData()`-metodin kautta, eikä sitä lähetetä asiakkaalle.
 
-Tämä on varsin hyödyllistä, kun on tietoa, joka tulisi sisällyttää komponenttiin ja kun tämän tiedon pitäisi olla käytettävissä ilman, että siihen tarvitsisi siirtyä asiakkaalle sen hakemiseksi.
+Tämä on erittäin hyödyllistä, kun on tietoa, joka tulisi sisällyttää komponenttiin ja joka tulisi olla saatavilla ilman, että asiakkaalle on tehtävä matkaa.

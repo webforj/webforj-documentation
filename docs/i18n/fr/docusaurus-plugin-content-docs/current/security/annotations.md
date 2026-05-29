@@ -1,17 +1,17 @@
 ---
 sidebar_position: 3
 title: Security Annotations
-_i18n_hash: af9997b8bee96bfa4005a65998fddaf5
+_i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
-Les annotations de sécurité fournissent un moyen déclaratif de contrôler l'accès aux routes dans votre application webforJ. En ajoutant des annotations à vos composants de route, vous définissez qui peut accéder à chaque vue sans écrire de vérifications de permissions manuelles. Le système de sécurité applique automatiquement ces règles avant que tout composant ne soit rendu.
+Les annotations de sécurité fournissent un moyen déclaratif de contrôler l'accès aux routes dans votre application webforJ. En ajoutant des annotations à vos composants de route, vous définissez qui peut accéder à chaque vue sans écrire de vérifications de permission manuelles. Le système de sécurité applique automatiquement ces règles avant que tout composant ne soit rendu.
 
 :::info Note de mise en œuvre
-Ce guide fonctionne avec n'importe quelle implémentation de sécurité. Les exemples présentés fonctionnent avec Spring Security et des implémentations personnalisées. Si vous n'utilisez pas Spring Boot, consultez le [guide d'architecture de sécurité](/docs/security/architecture/overview) pour comprendre les bases et mettre en œuvre une sécurité personnalisée.
+Ce guide fonctionne avec n'importe quelle mise en œuvre de sécurité. Les exemples présentés fonctionnent à la fois avec Spring Security et des mises en œuvre personnalisées. Si vous n'utilisez pas Spring Boot, consultez le [guide d'Architecture de Sécurité](/docs/security/architecture/overview) pour comprendre la fondation et mettre en œuvre une sécurité personnalisée.
 :::
 
 ## `@AnonymousAccess` - routes publiques {#anonymousaccess-public-routes}
 
-L'annotation `@AnonymousAccess` marque une route comme accessible publiquement. Les utilisateurs n'ont pas besoin d'être authentifiés pour accéder à ces routes. Cette annotation est généralement utilisée pour les pages de connexion, les pages d'accueil publiques ou d'autres contenus qui doivent être disponibles pour tout le monde.
+L'annotation `@AnonymousAccess` marque une route comme accessible publiquement. Les utilisateurs n'ont pas besoin d'être authentifiés pour accéder à ces routes. Cette annotation est généralement utilisée pour les pages de connexion, les pages d'accueil publiques ou tout autre contenu qui devrait être disponible pour tous.
 
 ```java title="LoginView.java"
 @Route("/login")
@@ -26,25 +26,25 @@ public class LoginView extends Composite<Login> {
 
 Dans cet exemple :
 - Tout utilisateur, authentifié ou non, peut accéder à la route `/login`.
-- Lorsqu'`@AnonymousAccess` est présent, les utilisateurs non authentifiés sont autorisés à accéder à cette page sans être redirigés.
+- Lorsque `@AnonymousAccess` est présent, les utilisateurs non authentifiés sont autorisés à accéder à cette page sans être redirigés.
 
 :::tip Cas d'utilisation courants
-Utilisez `@AnonymousAccess` pour les pages de connexion, les pages d'inscription, les pages d'accueil publiques, les conditions de service, les politiques de confidentialité et tout autre contenu qui doit être accessible sans authentification.
+Utilisez `@AnonymousAccess` pour les pages de connexion, les pages d'inscription, les pages d'accueil publiques, les conditions de service, les politiques de confidentialité, et tout autre contenu qui doit être accessible sans authentification.
 :::
 
 ## `@PermitAll` - routes authentifiées {#permitall-authenticated-routes}
 
-L'annotation `@PermitAll` nécessite que les utilisateurs soient authentifiés mais n'impose pas d'exigences de rôle spécifiques. Tout utilisateur connecté peut accéder à ces routes, quel que soit son rôle ou ses permissions.
+L'annotation `@PermitAll` exige que les utilisateurs soient authentifiés mais n'impose aucune exigence de rôle spécifique. Tout utilisateur connecté peut accéder à ces routes, quels que soient ses rôles ou permissions.
 
 ```java title="InboxView.java"
 @Route(value = "/", outlet = MainLayout.class)
 @PermitAll
 public class InboxView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public InboxView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setHeight("100%");
-    layout.add(new Explore("Boîte de Réception"));
+    self.setHeight("100%");
+    self.add(new Explore("Inbox"));
   }
 }
 ```
@@ -55,30 +55,30 @@ Dans cet exemple :
 - Les utilisateurs non authentifiés sont redirigés vers la page de connexion.
 
 :::info Mode sécurisé par défaut
-Lorsque le mode sécurisé par défaut est activé, les routes sans aucune annotation de sécurité se comportent de la même manière que `@PermitAll`— elles nécessitent une authentification. Consultez la [section sur le mode sécurisé par défaut](#secure-by-default) pour plus de détails.
+Lorsque le mode sécurisé par défaut est activé, les routes sans annotation de sécurité se comportent comme `@PermitAll` : elles nécessitent une authentification. Voir la [section sécurisé par défaut](#secure-by-default) pour plus de détails.
 :::
 
 ## `@RolesAllowed` - routes basées sur les rôles {#rolesallowed-role-based-routes}
 
-L'annotation `@RolesAllowed` restreint l'accès aux utilisateurs avec des rôles spécifiques. Vous pouvez spécifier un ou plusieurs rôles, et les utilisateurs doivent avoir au moins un des rôles listés pour accéder à la route.
+L'annotation `@RolesAllowed` restreint l'accès aux utilisateurs ayant des rôles spécifiques. Vous pouvez spécifier un ou plusieurs rôles, et les utilisateurs doivent avoir au moins l'un des rôles listés pour accéder à la route.
 
-### Exigence d'un rôle unique {#single-role-requirement}
+### Exigence d'un seul rôle {#single-role-requirement}
 
 ```java title="TrashView.java"
 @Route(value = "/trash", outlet = MainLayout.class)
 @RolesAllowed("ADMIN")
 public class TrashView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public TrashView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setHeight("100%");
-    layout.add(new Explore("Corbeille"));
+    self.setHeight("100%");
+    self.add(new Explore("Trash"));
   }
 }
 ```
 
 Dans cet exemple :
-- Seuls les utilisateurs avec le rôle `ADMIN` peuvent accéder à la vue de la corbeille.
+- Seuls les utilisateurs avec le rôle `ADMIN` peuvent accéder à la vue des déchets.
 - Les utilisateurs sans le rôle `ADMIN` sont redirigés vers la page d'accès refusé.
 
 ### Exigences de plusieurs rôles {#multiple-role-requirements}
@@ -87,20 +87,20 @@ Dans cet exemple :
 @Route(value = "/settings", outlet = MainLayout.class)
 @RolesAllowed({"ADMIN", "MANAGER"})
 public class SettingsView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public SettingsView() {
-    FlexLayout layout = getBoundComponent();
-    layout.add(new Explore("Paramètres"));
+    self.add(new Explore("Settings"));
   }
 }
 ```
 
 Dans cet exemple :
-- Les utilisateurs ayant soit le rôle `ADMIN` soit le rôle `MANAGER` peuvent accéder aux paramètres.
-- L'utilisateur n'a besoin que d'un des rôles listés, pas de tous.
+- Les utilisateurs avec le rôle `ADMIN` ou `MANAGER` peuvent accéder aux paramètres.
+- L'utilisateur a seulement besoin d'un des rôles listés, pas de tous.
 
 :::tip Conventions de nommage des rôles
-Utilisez des noms de rôles en majuscules (comme `ADMIN`, `USER`, `MANAGER`) pour la cohérence. Cela correspond aux conventions courantes des frameworks de sécurité et rend votre code plus lisible.
+Utilisez des noms de rôles en majuscules (comme `ADMIN`, `USER`, `MANAGER`) pour la cohérence. Cela correspond aux conventions communes des frameworks de sécurité et rend votre code plus lisible.
 :::
 
 ## `@DenyAll` - routes bloquées {#denyall-blocked-routes}
@@ -111,10 +111,10 @@ L'annotation `@DenyAll` bloque l'accès à une route pour tous les utilisateurs,
 @Route(value = "/maintenance", outlet = MainLayout.class)
 @DenyAll
 public class MaintenanceView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public MaintenanceView() {
-    FlexLayout layout = getBoundComponent();
-    layout.add(new Paragraph("Cette page est en maintenance."));
+    self.add(new Paragraph("Cette page est en maintenance."));
   }
 }
 ```
@@ -124,10 +124,10 @@ Dans cet exemple :
 - Toutes les tentatives d'accès aboutissent à une redirection vers la page d'accès refusé.
 
 :::warning Utilisation temporaire
-`@DenyAll` est généralement utilisé temporairement pendant le développement ou la maintenance. Pour les applications en production, envisagez de retirer complètement la route ou d'utiliser des restrictions de rôle appropriées à la place.
+`@DenyAll` est généralement utilisé temporairement pendant le développement ou la maintenance. Pour les applications de production, envisagez de supprimer complètement la route ou d'utiliser des restrictions de rôle appropriées à la place.
 :::
 
-## Que se passe-t-il lorsqu'un accès est refusé {#what-happens-when-access-is-denied}
+## Que se passe-t-il lorsque l'accès est refusé {#what-happens-when-access-is-denied}
 
 Lorsqu'un utilisateur tente d'accéder à une route qu'il n'est pas autorisé à voir, le système de sécurité gère le refus automatiquement :
 
@@ -135,7 +135,7 @@ Lorsqu'un utilisateur tente d'accéder à une route qu'il n'est pas autorisé à
 2. **Utilisateurs authentifiés sans rôles requis** : redirigés vers la page d'accès refusé.
 3. **Tous les utilisateurs sur les routes `@DenyAll`** : redirigés vers la page d'accès refusé.
 
-Vous pouvez personnaliser ces emplacements de redirection pour correspondre à la structure de navigation de votre application afin que les refus d'accès et les demandes d'authentification mènent aux pages prévues. Consultez [Configurer Spring Security](/docs/security/getting-started#configure-spring-security) pour les détails de configuration.
+Vous pouvez personnaliser ces emplacements de redirection pour correspondre à la structure de navigation de votre application afin que les refus d'accès et les demandes d'authentification mènent aux pages prévues. Voir [Configurer Spring Security](/docs/security/getting-started#configure-spring-security) pour les détails de configuration.
 
 ## Sécurisé par défaut {#secure-by-default}
 
@@ -150,7 +150,7 @@ webforj.security.secure-by-default=true
 ```
 
 Avec le mode sécurisé par défaut activé :
-- Les routes sans annotations nécessitent une authentification (la même chose que `@PermitAll`).
+- Les routes sans annotations nécessitent une authentification (même que `@PermitAll`).
 - Seules les routes `@AnonymousAccess` sont accessibles publiquement.
 - Vous devez explicitement marquer les routes publiques, réduisant le risque d'exposer accidentellement du contenu protégé.
 
@@ -188,5 +188,5 @@ public class DashboardView extends Composite<Div> { }
 ```
 
 :::tip Meilleure pratique
-Activez `secure-by-default` pour les applications de production. Avec ce paramètre, les routes protégées ne sont pas exposées à moins d'être explicitement marquées comme publiques, réduisant le risque d'exposition accidentelle due à des annotations manquantes. Ne désactivez cette option que pendant le développement initial si vous trouvez que les annotations supplémentaires sont encombrantes.
+Activez `secure-by-default` pour les applications de production. Avec ce paramètre, les routes protégées ne sont pas exposées à moins d'être explicitement marquées comme publiques, réduisant ainsi le risque d'exposition accidentelle due à des annotations manquantes. Ne le désactivez que pendant le développement initial si vous trouvez que les annotations supplémentaires sont envahissantes.
 :::

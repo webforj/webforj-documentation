@@ -1,9 +1,11 @@
 ---
 sidebar_position: 8
 title: Surfaces
-_i18n_hash: ac1f587cd1039f9bf083c610c29c27b9
+_i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
-Es gibt drei Ebenen von Oberflächen, die verwendet werden, um die UI-Hierarchie zu organisieren, oft kombiniert mit [Schatten](./shadows). Alle [Palette-Farben](./colors) werden getestet, um einen ausreichenden Kontrast zu diesen Oberflächen zu bieten.
+DWC definiert drei Ebenen von Flächen, die verwendet werden, um die UI-Hierarchie zu organisieren, kombiniert mit [shadows](./shadows). Alle [palette colors](./colors) sind getestet, um sicherzustellen, dass sie ausreichend Kontrast mit diesen Flächen bieten.
+
+Flächen nehmen einen subtilen Farbton aus dem primären Farbton auf und passen sich automatisch an helle und dunkle Modi an.
 
 ### Beispiel {#example}
 
@@ -15,8 +17,10 @@ Es gibt drei Ebenen von Oberflächen, die verwendet werden, um die UI-Hierarchie
 
 ### Variablen {#variables}
 
-| **Variable**      | **Verwendung**                                                          | **Beispiel**                              |
-|-------------------|-------------------------------------------------------------------------|-------------------------------------------|
-| `--dwc-surface-1` | Die dunkelste Oberfläche. Wird für den Hintergrund des Körpers verwendet. | <SurfaceBox surface="--dwc-surface-1" /> |
-| `--dwc-surface-2` | Wird für Komponenten (z. B. Karten) verwendet.                         | <SurfaceBox surface="--dwc-surface-2" /> |
-| `--dwc-surface-3` | Die hellste und höchste Oberfläche. Wird für Menüs, Popovers, Dialoge ... | <SurfaceBox surface="--dwc-surface-3" /> |
+| **Variable**      | **Verwendung**                          |
+|-------------------|----------------------------------------|
+| `--dwc-surface-1` | Hintergrund von Seite und Body.       |
+| `--dwc-surface-2` | Toolbars, Menübars, Karten.           |
+| `--dwc-surface-3` | Fenster, Menüs, Popovers, Dialoge.    |
+
+<dwc-doc-surfaces></dwc-doc-surfaces>

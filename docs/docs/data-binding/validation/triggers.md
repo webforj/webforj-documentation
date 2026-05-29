@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Triggers
+description: Control when webforJ validates bindings by toggling auto-validate, using ValueChangeMode, and triggering revalidation manually.
 ---
 
 <!-- vale off -->
@@ -15,10 +16,10 @@ By default, bindings automatically revalidate components when users modify their
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(emailField, "email")
-    .useValidator(
-        Validator.from(new EmailValidator(), "Custom message for invalid email address"))
-    .autoValidate(false)
-    .add();
+  .useValidator(
+    Validator.from(new EmailValidator(), "Custom message for invalid email address"))
+  .autoValidate(false)
+  .add();
 ```
 
 It's also possible to turn of the auto-validations for the whole context.

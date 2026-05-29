@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-menuitem>
 sidebar_class_name: sidebar--item__hidden
 slug: menuitem
-description: A user guide article for the menuitem
+description: Style the dwc-menuitem component via CSS variables and shadow parts for label, icon, indicator, and selection states.
 // pagination_prev: null
 // pagination_next: null
 ---

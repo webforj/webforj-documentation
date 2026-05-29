@@ -1,8 +1,7 @@
 ---
 title: Avatar
 sidebar_position: 7
-sidebar_class_name: new-content
-_i18n_hash: 928db2bff36515d2d9a41aeca9a233e0
+_i18n_hash: 77ac4a1373803d1d68a45968175050e0
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-avatar" />
@@ -13,34 +12,36 @@ Die `Avatar`-Komponente bietet eine visuelle Darstellung eines Benutzers oder ei
 
 <!-- INTRO_END -->
 
-## Avatare erstellen {#creating-avatars}
+## Erstellen von Avataren {#creating-avatars}
 
-Um einen `Avatar` zu erstellen, übergeben Sie ein Label, das als zugänglicher Name dient. Die Komponente berechnet automatisch die Initialen, indem sie den ersten Buchstaben jedes Wortes im Label extrahiert.
+Um einen `Avatar` zu erstellen, übergeben Sie ein Label, das als barrierefreier Name dient. Die Komponente berechnet automatisch die Initialen, indem sie den ersten Buchstaben jedes Wortes im Label extrahiert.
 
 ```java
 // Erstellt einen Avatar, der "JD" aus dem Label anzeigt
 Avatar avatar = new Avatar("John Doe");
 ```
 
-Sie können auch explizite Initialen angeben, wenn Sie mehr Kontrolle über die Anzeige wünschen:
+Sie können auch explizite Initialen angeben, wenn Sie mehr Kontrolle über das Angezeigte wünschen:
 
 ```java
 // Erstellt einen Avatar mit benutzerdefinierten Initialen
 Avatar avatar = new Avatar("John Doe", "J");
 ```
 
-Das folgende Beispiel zeigt Avatare im Kontext eines Team-Panels. Jeder `Avatar` zeigt entweder ein Profilbild oder automatisch generierte Initialen basierend auf dem Benutzernamen. Ein Klick auf einen `Avatar` öffnet einen Dialog mit einer vergrößerten Ansicht.
+Das folgende Beispiel zeigt Avatare im Kontext eines Team-Panels. Jeder `Avatar` zeigt entweder ein Profilbild oder automatisch generierte Initialen basierend auf dem Namen des Benutzers an. Ein Klick auf einen `Avatar` öffnet einen Dialog mit einer vergrößerten Ansicht.
 
-<ComponentDemo 
-path='/webforj/avatar?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarView.java'
-cssURL='/css/avatar/avatar.css'
-height = '450px'
+<ComponentDemo
+path='/webforj/avatar'
+files={[
+  'src/main/java/com/webforj/samples/views/avatar/AvatarView.java',
+  'src/main/resources/static/css/avatar/avatar.css',
+]}
+height='500px'
 />
 
-## Bilder anzeigen {#displaying-images}
+## Anzeigen von Bildern {#displaying-images}
 
-Die `Avatar`-Komponente kann anstelle von Initialen ein Bild anzeigen, indem sie eine `Img`-Komponente als Kind einfügt. Wenn ein Bild bereitgestellt wird, hat es Vorrang vor den Initialen.
+Die `Avatar`-Komponente kann ein Bild anstelle von Initialen anzeigen, indem sie ein `Img`-Komponente als Kind einfügt. Wenn ein Bild bereitgestellt wird, hat es Vorrang vor Initialen.
 
 ```java
 import com.webforj.component.html.elements.Img;
@@ -50,26 +51,26 @@ Avatar avatar = new Avatar("John Doe", new Img("path/to/profile.png"));
 ```
 
 :::tip Bildgröße
-Das Bild wird automatisch skaliert, um in die Dimensionen des Avatars basierend auf der aktuellen Expanse-Einstellung zu passen.
+Das Bild wird automatisch skaliert, um in die Dimensionen des Avatars basierend auf der aktuellen Expansions-Einstellung zu passen.
 :::
 
-## Symbole anzeigen {#displaying-icons}
+## Anzeigen von Symbolen {#displaying-icons}
 
-Sie können ein Symbol im `Avatar` anzeigen, indem Sie eine `Icon`-Komponente als Kind hinzufügen:
+Sie können ein Symbol innerhalb des `Avatar` anzeigen, indem Sie eine `Icon`-Komponente als Kind hinzufügen:
 
 ```java
 import com.webforj.component.icons.TablerIcon;
 
 // Avatar mit einem Symbol
-Avatar avatar = new Avatar("Gastbenutzer", TablerIcon.create("user"));
+Avatar avatar = new Avatar("Gast Benutzer", TablerIcon.create("user"));
 ```
 
 ## Label und Initialen {#label-and-initials}
 
-Die `Avatar`-Komponente verwendet das Label für die Barrierefreiheit und die Tooltip-Generierung. Die Methoden `setLabel()` und `setText()` sind Aliase, die beide das zugängliche Label für den `Avatar` festlegen.
+Die `Avatar`-Komponente verwendet das Label für Barrierefreiheit und Tooltip-Generierung. Die Methoden `setLabel()` und `setText()` sind Aliase, die beide das barrierefreie Label für den `Avatar` setzen.
 
 :::info Automatisch berechnete Initialen
-Wenn Sie einen `Avatar` nur mit einem Label erstellen, werden die Initialen automatisch berechnet, indem der erste Buchstabe jedes Wortes genommen wird. Ein `Avatar` mit dem Label "John Doe" zeigt automatisch "JD" in der Benutzeroberfläche an.
+Wenn Sie einen `Avatar` nur mit einem Label erstellen, werden die Initialen automatisch berechnet, indem das erste Zeichen jedes Wortes genommen wird. Ein `Avatar` mit dem Label "John Doe" zeigt automatisch "JD" im UI an.
 :::
 
 ```java
@@ -79,17 +80,17 @@ avatar.setInitials("JS");       // Überschreibt die automatisch berechneten Ini
 ```
 
 :::tip Automatischer Tooltip
-Die Komponente generiert automatisch einen Tooltip aus dem Label, sodass der vollständige Name beim Überfahren angezeigt wird. Dieses Verhalten ist deaktiviert, wenn das Standardlabel `"Avatar"` verwendet wird.
+Die Komponente generiert automatisch einen Tooltip aus dem Label, sodass es einfach ist, den vollständigen Namen beim Hover anzuzeigen. Dieses Verhalten ist deaktiviert, wenn das Standardlabel „Avatar“ verwendet wird.
 :::
 
 ## Klickereignisse {#click-events}
 
-Die `Avatar`-Komponente implementiert `HasElementClickListener`, was es Ihnen ermöglicht, auf Benutzerklicks zu reagieren. Dies ist nützlich, um Aktionen wie das Öffnen eines Benutzerprofils oder das Anzeigen eines Menüs auszulösen.
+Die `Avatar`-Komponente implementiert `HasElementClickListener`, sodass Sie auf Benutzerklicks reagieren können. Dies ist nützlich, um Aktionen wie das Öffnen eines Benutzerprofils oder das Anzeigen eines Menüs auszulösen.
 
 ```java
 avatar.onClick(event -> {
-  // Behandelt den Klick auf den Avatar - z.B. Benutzerprofil öffnen
-  System.out.println("Avatar angeklickt!");
+  // Behandeln des Avatar-Klicks - z.B. Benutzerprofil öffnen
+  System.out.println("Avatar geklickt!");
 });
 ```
 
@@ -98,43 +99,42 @@ avatar.onClick(event -> {
 Avatare können als Kreise oder Quadrate angezeigt werden. Die Standardform ist `CIRCLE`, die für Benutzeravatare üblich ist. Verwenden Sie `SQUARE` für Entitäten wie Teams, Unternehmen oder Anwendungen.
 
 <ComponentDemo
-path='/webforj/avatarshapes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java'
+path='/webforj/avatarshapes'
+files={['src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java']}
 height='100px'
 />
 
 ## Themen {#themes}
 
-Themen vermitteln Bedeutung oder Status; Sie können sie verwenden, um die Verfügbarkeit anzuzeigen, wichtige Benutzer hervorzuheben oder das Design Ihrer Anwendung abzustimmen.
+Themen vermitteln eine Bedeutung oder einen Status; Sie können sie verwenden, um die Verfügbarkeit anzuzeigen, wichtige Benutzer hervorzuheben oder das Design Ihrer App anzupassen.
 
 Die folgenden Themen sind verfügbar:
 
 - `DEFAULT`: Standardaussehen
-- `GRAY`: Neutrales, zurückhaltendes Aussehen
+- `GRAY`: Neutrales, gedämpftes Aussehen
 - `PRIMARY`: Betont primäre Aktionen oder Benutzer
-- `SUCCESS`: Gibt einen positiven Status an (z. B. online)
-- `WARNING`: Weist auf Vorsicht hin (z. B. abwesend)
-- `DANGER`: Weist auf Fehler oder beschäftigten Status hin
+- `SUCCESS`: Gibt einen positiven Status an (z.B. online)
+- `WARNING`: Gibt Vorsicht an (z.B. abwesend)
+- `DANGER`: Gibt Fehler- oder Beschäftigungsstatus an
 - `INFO`: Bietet informativen Kontext
 
-Jedes Thema hat auch eine umrandete Variante für eine hellere visuelle Darstellung:
+Jedes Thema hat auch eine umrissene Variante für eine hellere visuelle Behandlung:
 
 <ComponentDemo
-path='/webforj/avatarthemes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java'
+path='/webforj/avatarthemes'
+files={['src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java']}
 height='120px'
 />
 
-## Expanse {#expanses}
+## Expansitionen {#expanses}
 
 Steuern Sie die Größe des Avatars mit der Methode `setExpanse()`. Die Komponente unterstützt neun Größenoptionen von `XXXSMALL` bis `XXXLARGE`.
 
 <ComponentDemo
-path='/webforj/avatarexpanses?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java'
+path='/webforj/avatarexpanses'
+files={['src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java']}
 height='100px'
 />
-
 
 ## Styling {#styling}
 

@@ -1,65 +1,63 @@
 package com.webforj.samples.views.fields.datefield;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.fields.datefield.DateFieldPage;
 import com.webforj.samples.views.BaseTest;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class DateFieldViewIT extends BaseTest {
 
-    private DateFieldPage dateFieldPage;
-    LocalDate today = LocalDate.now();
+  private DateFieldPage dateFieldPage;
+  LocalDate today = LocalDate.now();
 
-    @BeforeEach
-    public void setupDateField() {
-        navigateToRoute(DateFieldPage.getRoute());
-        dateFieldPage = new DateFieldPage(page);
-    }
-    
-    @Test
-    public void testValidDatesEntered() {
-        String departureDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
-        String returnDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
+  @BeforeEach
+  public void setupDateField() {
+    navigateToRoute(DateFieldPage.getRoute());
+    dateFieldPage = new DateFieldPage(page);
+  }
 
-        dateFieldPage.getDepartureDate().fill(departureDate);
-        dateFieldPage.getReturnDate().fill(returnDate);
+  @Test
+  public void testValidDatesEntered() {
+    String departureDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
+    String returnDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
+    dateFieldPage.getDepartureDate().fill(departureDate);
+    dateFieldPage.getReturnDate().fill(returnDate);
+    assertThat(dateFieldPage.getDepartureDate()).not().hasAttribute("invalid", "");
+    assertThat(dateFieldPage.getReturnDate()).not().hasAttribute("invalid", "");
+  }
 
-        assertThat(dateFieldPage.getDepartureDate()).not().hasAttribute("invalid", "");
-        assertThat(dateFieldPage.getReturnDate()).not().hasAttribute("invalid", "");
-    }
+  @Test
+  public void testEarlierReturnDateCorrected() {
+    String departureDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
+    String returnDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
+    String correctedReturnDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
+    dateFieldPage.getReturnDate().fill(returnDate);
+    page.keyboard().press("Tab");
+    page.waitForTimeout(500);
 
-    @Test
-    public void testEarlierReturnDateCorrected() {
-        String departureDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
-        String returnDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
-        String correctedReturnDateISOFormat = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
+    dateFieldPage.getDepartureDate().fill(departureDate);
+    page.keyboard().press("Tab");
 
-        dateFieldPage.getDepartureDate().fill(departureDate);
-        dateFieldPage.getReturnDate().fill(returnDate);
+    assertThat(dateFieldPage.getReturnDate()).hasValue(correctedReturnDate);
+  }
 
-        assertThat(dateFieldPage.getDepartureDate()).hasValue(correctedReturnDateISOFormat);
-    }
+  @Test
+  public void testInvalidStringIgnored() {
+    dateFieldPage.getDepartureDate().click();
+    dateFieldPage.getDepartureDate().press("Control+A");
+    dateFieldPage.getDepartureDate().pressSequentially("abcd");
+    assertThat(dateFieldPage.getDepartureDate()).hasValue(today.toString());
+  }
 
-    @Test
-    public void testInvalidStringIgnored() {
-        dateFieldPage.getDepartureDate().click();
-        dateFieldPage.getDepartureDate().press("Control+A");
-        dateFieldPage.getDepartureDate().pressSequentially("abcd");
-
-        assertThat(dateFieldPage.getDepartureDate()).hasValue(today.toString());
-    }
-
-    @Test
-    public void testSpecialCharsIgnored() {
-        page.keyboard().press("Tab");
-        page.keyboard().press("Tab");
-        dateFieldPage.getDepartureDate().pressSequentially("#$%&");
-
-        assertThat(dateFieldPage.getDepartureDate()).hasValue(today.toString());
-    }
+  @Test
+  public void testSpecialCharsIgnored() {
+    page.keyboard().press("Tab");
+    page.keyboard().press("Tab");
+    dateFieldPage.getDepartureDate().pressSequentially("#$%&");
+    assertThat(dateFieldPage.getDepartureDate()).hasValue(today.toString());
+  }
 }

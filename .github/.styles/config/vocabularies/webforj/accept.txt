@@ -60,3 +60,6 @@ Maven
 Java
 DSL
 DOM
+OpenRewrite
+OKLCH
+HSL

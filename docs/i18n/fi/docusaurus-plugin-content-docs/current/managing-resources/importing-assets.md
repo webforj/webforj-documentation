@@ -1,145 +1,145 @@
 ---
 sidebar_position: 1
 title: Importing Assets
-_i18n_hash: a2aecab2ea12370f1e494703c2ec05af
+_i18n_hash: 0256f553c96c490015f9e19b1eeea533
 ---
-Asset-annotaatioilla on julkinen lähestymistapa upottaa ulkoisia ja sisäisiä resursseja, kuten JavaScriptiä ja CSS:ää, applikaatioon statisesti. Nämä annotaatiot tehostavat resurssien hallintaa varmistaen, että riippuvuudet ladataan oikeassa suoritusvaiheessa, mikä vähentää manuaalista konfigurointia ja parantaa kunnossapidettävyyttä.
+Assets annotations tarjoavat deklaratiivisen lähestymistavan ulkoisten ja sisäisten resurssien, kuten JavaScriptin ja CSS:n, upottamiseen sovellukseen staattisesti. Nämä annotaatiot virtaviivaistavat resurssien hallintaa varmistamalla, että riippuvuudet ladataan asianmukaisessa suoritusvaiheessa, mikä vähentää manuaalista konfigurointia ja parantaa ylläpidettävyyttä.
 
-## JavaScript-tiedostojen tuonti {#importing-javascript-files}
+## JavaScript-tiedostojen tuominen {#importing-javascript-files}
 
-Deklaratiivinen JavaScriptin sisällyttäminen on mahdollista `@JavaScript`-annotaation kautta, joka mahdollistaa automaattisen riippuvuuksien lataamisen. Annotaatioita voidaan käyttää sekä komponenttitasolla että sovelluskohtaisesti.
+Deklaratiivinen JavaScriptin sisällyttäminen on tuettu `@JavaScript`-annotaation kautta, mikä mahdollistaa automaattisen riippuvuuksien lataamisen. Annotaatio voidaan soveltaa sekä komponenttitasolla että sovellustasolla.
 
 ```java
 @JavaScript("ws://js/app.js")
 @JavaScript("https://cdn.example.com/library.js")
 ```
 
-Annotaatio hyväksyy suhteellisen tai täydellisen polun, joka ladataan applikaatioon. Tämä lisätään DOM:iin [`<script>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)-tagina. Lisäksi annotaatio tukee seuraavia ominaisuuksia:
+Annotaatio hyväksyy suhteellisen tai täydellisen polun, joka ladataan sovellukseen. Tämä lisätään DOM:iin [`<script>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) -tagina. Lisäksi annotaatio tukee seuraavia ominaisuuksia:
 
 | Ominaisuus   | Tyyppi   | Kuvaus                                                                                                                                       | Oletus  |
-| ------------ | -------  | ------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `top`        | Boolean  | Määrittää, tuleeko skriptin olla injektoitu ylä-tason ikkunaan                                                                              | `false` |
-| `attributes` | Object   | Aseta <JavadocLink type="foundation" location="com/webforj/annotation/Attribute" code='true'>attribuutit</JavadocLink> skriptille.         | `{}`    |
+| ------------ | -------  | ---------------------------------------------------------------------------------------------------------------------------------------------| ------- |
+| `top`        | Boolean  | Määrittää, tulisiko skripti injektoida ylimmälle tasolle                                                                                   | `false` |
+| `attributes` | Object   | Setti <JavadocLink type="foundation" location="com/webforj/annotation/Attribute" code='true'>atribuutteja</JavadocLink>, jotka sovelletaan skriptiin. | `{}`    |
 
 #### Esimerkki: {#example}
 
 ```java
 @JavaScript(value = "ws://my-component.js",
-    attributes = {@Attribute(name = "type", value = "module")})
+  attributes = {@Attribute(name = "type", value = "module")})
 ```
 
 :::info
-Tiedostot ladataan vain silloin, kun annotaatiota julistava komponentti on liitetty konttiin. Jos useat komponentit lataavat saman tiedoston, tiedosto injektoidaan vain kerran.
+Tiedostot ladataan vain, kun komponentti, joka määrittelee annotaation, on liitetty säiliöön. Jos useat komponentit lataavat saman tiedoston, tiedosto injektoidaan vain kerran.
 :::
 
-## JavaScriptin injektointi {#injecting-javascript}
+## JavaScriptin injektoiminen {#injecting-javascript}
 
-Joissakin tapauksissa saatat haluta injektoida JavaScript-koodia suoraan DOM:iin sen sijaan, että tarjoaisit JavaScript-polun. `InlineJavaScript`-annotaatio sallii JavaScript-sisällön injektoimisen.
+Jossakin tapauksessa saatat haluta injektoida JavaScript-koodia suoraan DOM:iin sen sijaan, että tarjoaisit JavaScript-polun. `InlineJavaScript` -annotaatio mahdollistaa JavaScript-sisällön injektoimisen.
 
 ```java
-@InlineJavaScript("alert('Olen inline-skripti!');")
+@InlineJavaScript("alert('Olen sisäinen skripti!');")
 @JavaScript("context://js/app.js")
 ```
 
-| Ominaisuus   | Tyyppi    | Kuvaus                                                                | Oletus  |
-| ------------ | -------   | ----------------------------------------------------------------------| ------- |
-| `top`        | `Boolean` | Määrittää, tuleeko skriptin olla injektoitu ylä-tason ikkunaan      | `false` |
-| `attributes` | `Object`  | Attribuutit, joita sovelletaan skriptiin                              | `{}`    |
-| `id`         | `String`  | Yksilöllinen resurssi-ID varmistaaksesi ainutlaatuisen injektoinnin  | `""`    |
+| Ominaisuus   | Tyyppi    | Kuvaus                                                               | Oletus  |
+| ------------ | -------   | ---------------------------------------------------------------------| -------  |
+| `top`        | `Boolean` | Määrittää, tulisiko skripti injektoida ylimmälle tasolle           | `false` |
+| `attributes` | `Object`  | Atribuutit, jotka sovelletaan skriptiin                              | `{}`    |
+| `id`         | `String`  | Ainulaatuinen resurssi-ID, joka varmistaa yhden injektion            | `""`    |
 
 :::warning
-Skriptejä voidaan injektoida useita kertoja `InlineJavaScript`:n avulla, ellei erityistä ID:tä ole annettu `id`-ominaisuuden avulla.
+Skriptejä voidaan injektoida useita kertoja `InlineJavaScript`-annotaation avulla, ellei erityistä ID:tä ole määritetty käyttämällä `id`-ominaisuutta.
 :::
 
-## CSS-tiedostojen tuonti {#importing-css-files}
+## CSS-tiedostojen tuominen {#importing-css-files}
 
-Deklaratiivinen CSS:n sisällyttäminen on mahdollista `@StyleSheet`-annotaation kautta, joka mahdollistaa automaattisen riippuvuuksien lataamisen. Annotaatioita voidaan käyttää sekä komponenttitasolla että sovelluskohtaisesti.
+Deklaratiivinen CSS:n sisällyttäminen on tuettu `@StyleSheet` -annotaation kautta, mikä mahdollistaa automaattisen riippuvuuksien lataamisen. Annotaatio voidaan soveltaa sekä komponenttitasolla että sovellustasolla.
 
 ```java
 @StyleSheet("ws://css/app.css")
 @StyleSheet("https://cdn.example.com/library.css")
 ```
 
-| Ominaisuus   | Tyyppi    | Kuvaus                                                                     | Oletus  |
-| ------------ | -------   |---------------------------------------------------------------------------| ------- |
-| `top`        | Boolean   | Määrittää, tuleeko StyleSheetin olla injektoitu ylä-tason ikkunaan      | `false` |
-| `attributes` | Object    | Attribuutit, joita sovelletaan StyleSheetiin                              | `{}`    |
+| Ominaisuus   | Tyyppi   | Kuvaus                                                                   | Oletus  |
+| ------------ | -------  | ------------------------------------------------------------------------- | ------- |
+| `top`        | Boolean  | Määrittää, tulisiko StyleSheet injektoida ylimmälle tasolle            | `false` |
+| `attributes` | Object   | Atribuutit, jotka sovelletaan StyleSheetille                             | `{}`    |
 
 #### Esimerkki: {#example-1}
 
 ```java
 @StyleSheet(value = "ws://my-component.css",
-    attributes = {@Attribute(name = "media", value = "screen")})
+  attributes = {@Attribute(name = "media", value = "screen")})
 ```
 
 :::info
-Tiedostot ladataan vain silloin, kun annotaatiota julistava komponentti on liitetty konttiin. Jokainen tiedosto ladataan vain kerran.
+Tiedostot ladataan vain, kun komponentti, joka määrittelee annotaation, on liitetty säiliöön. Jokainen tiedosto ladataan vain kerran.
 :::
 
-## CSS:n injektointi {#injecting-css}
+## CSS:n injektoiminen {#injecting-css}
 
-`InlineStyleSheet`-annotaatio mahdollistaa CSS-sisällön suoran injektoimisen verkkosivulle sekä komponenttitasolla että sovelluskohtaisesti.
+`InlineStyleSheet` -annotaatio mahdollistaa CSS-sisällön injektoimisen suoraan verkkosivulle sekä komponenttitasolla että sovellustasolla.
 
 ```java
 @InlineStyleSheet("body { background-color: lightblue; }")
 @InlineStyleSheet(value = "h1 { color: red; }", id = "headingStyles", once = true)
 ```
 
-| Ominaisuus   | Tyyppi    | Kuvaus                                                                                                             | Oletus  |
-| ------------ | -------   |-------------------------------------------------------------------------------------------------------------------| ------- |
-| `top`        | Boolean   | Määrittää, tuleeko StyleSheetin olla injektoitu sivun ylä-tason ikkunaan.                                       | `false` |
-| `attributes` | Object    | Aseta [attribuutit](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style), jotka sovelletaan tyyli-elementtiin. | `{}`    |
-| `id`         | String    | Yksilöllinen resurssi-ID. Jos useilla resursseilla on sama ID, ne yhdistetään yhteen tyyli-elementtiin.            | `""`    |
-| `once`       | Boolean   | Määrittää, tuleeko StyleSheetin olla injektoitu sivulle vain kerran riippumatta useista komponentti-instansseista. | `true`  |
+| Ominaisuus   | Tyyppi   | Kuvaus                                                                                                               | Oletus  |
+| ------------ | -------  | --------------------------------------------------------------------------------------------------------------------- | ------- |
+| `top`        | Boolean  | Määrittää, tulisiko StyleSheet injektoida verkkosivun ylimmälle tasolle.                                            | `false` |
+| `attributes` | Object   | Setti [attribuutteja](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style), jotka sovelletaan tyyli elementtiin. | `{}`    |
+| `id`         | String   | Ainulaatuinen resurssi-ID. Jos useat resurssit sisältävät saman ID:n, ne yhdistetään yhteen tyyli elementtiin.       | `""`    |
+| `once`       | Boolean  | Määrittää, injektoidaanko StyleSheet sivulle vain kerran, riippumatta useista komponenttiinstansseista.             | `true`  |
 
 :::tip 
-Parhaan syntaksin korostuksen saavuttamiseksi inline CSS:ää kirjoitettaessa komponenttisi varten voit käyttää webforJ VS Code -laajennusta: [Java HTML CSS Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=BEU.vscode-java-html).
+Parempaa syntaksin korostusta inline-CSS:n kirjoittamiselle komponenteillesi varten voit käyttää webforJ VS Code -laajennusta: [Java HTML CSS Syntaksin korostus](https://marketplace.visualstudio.com/items?itemName=BEU.vscode-java-html).
 :::
 
-## Dynaamiset resurssit ajonaikana {#dynamic-assets-at-runtime}
+## Dynaamiset resurssit ajon aikana {#dynamic-assets-at-runtime}
 
-Dynaaminen resurssien hallinta on mahdollista ohjelmallisen JavaScriptin ja CSS:n injektoinnin avulla ajonaikana. Voit ladata tai injektoida resursseja ajonaikaisen kontekstin mukaan.
+Dynaaminen resurssien hallinta on mahdollista JavaScriptin ja CSS:n ohjelmallisen injektoinnin avulla ajon aikana. Voit ladata tai injektoida resursseja ajon aikaisesta kontekstista riippuen.
 
-### JavaScriptin lataaminen ja injektointi {#loading-and-injecting-javascript}
+### JavaScriptin lataaminen ja injektoiminen {#loading-and-injecting-javascript}
 
-Lataa tai injektoi JavaScriptiä dynaamisesti ajonaikana käyttämällä <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page API</JavadocLink>:tä. Tämä mahdollistaa skriptien lataamisen URL-osoitteista tai inline-skriptien injektoimisen suoraan DOM:iin.
+Lataa tai injektoi JavaScript ajon aikana käyttämällä <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page API</JavadocLink>:ta. Tämä mahdollistaa skriptien lataamisen URL-osoitteista tai inline-skriptien injektoimisen suoraan DOM:iin.
 
 ```java
 Page page = Page.getCurrent();
 
-// JavaScript-tiedostojen lataaminen
+// Lataaminen JavaScript-tiedostoja
 page.addJavaScript("ws://js/app.js");
 page.addJavaScript("https://cdn.example.com/library.js");
 
-// Inline JavaScriptin injektointi
-page.addInlineJavaScript("console.log('Ajon aikana injektointi');");
-page.addInlineJavaScript("alert('Tämä skripti toimii inline');");
+// Inline JavaScriptin injektoiminen
+page.addInlineJavaScript("console.log('Ajon aikainen injektio');");
+page.addInlineJavaScript("alert('Tämä skripti suoritetaan inline');");
 ```
 
-| Parametri    | Kuvaus                                                                                                             |
-| ------------ | ----------------------------------------------------------------------------------------------------------------- |
-| `script`     | URL-osoite tai inline-skripti, jota injektoidaan. URL-osoitteet, jotka alkavat `context://`, viittaavat applikaation juuresresurssikansioon. |
-| `top`        | Määrittää, tuleeko skriptin olla injektoitu sivun ylle.                                                             |
-| `attributes` | Aseta attribuuttien kartta skriptille.                                                                              |
+| Parametri    | Kuvaus                                                                                                               |
+| ------------ | --------------------------------------------------------------------------------------------------------------------- |
+| `script`     | URL-osoite tai inline-skripti-in sisältö, joka injektoidaan. URL-osoitteet, jotka alkavat `context://`, viittaavat sovelluksen juuresresurssikansioon. |
+| `top`        | Määrittää, tulisiko skripti injektoida sivun yläosaan.                                                              |
+| `attributes` | Map-a attribuuteista, jotka asetetaan skriptille.                                                                    |
 
-### CSS:n lataaminen ja injektointi {#loading-and-injecting-css}
+### CSS:n lataaminen ja injektoiminen {#loading-and-injecting-css}
 
-Lataa tai injektoi CSS:ää dynaamisesti ajonaikana käyttämällä <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page API</JavadocLink>:tä. Tämä mahdollistaa tyylitiedostojen lataamisen URL-osoitteista tai inline-tyylien injektoimisen suoraan DOM:iin.
+Lataa tai injektoi CSS ajon aikana käyttämällä <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page API</JavadocLink>:ta. Tämä mahdollistaa tyylitiedostojen lataamisen URL-osoitteista tai inline-tyylien injektoimisen suoraan DOM:iin.
 
 ```java
 Page page = Page.getCurrent();
 
-// CSS-tiedostojen lataaminen
+// Lataaminen CSS-tiedostoja
 page.addStyleSheet("ws://css/app.css");
 page.addStyleSheet("https://cdn.example.com/library.css");
 
-// Inline CSS:n injektointi
+// Inline CSS:n injektoiminen
 page.addInlineStyleSheet("body { background-color: lightblue; }");
 page.addInlineStyleSheet("h1 { font-size: 24px; color: navy; }");
 ```
 
 | Parametri    | Kuvaus                                                                                                                 |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| `stylesheet` | URL-osoite tai inline-StyleSheetin sisältö, jota injektoidaan. URL-osoitteet, jotka alkavat `context://`, viittaavat applikaation juuresresurssikansioon. |
-| `top`        | Määrittää, tuleeko StyleSheetin olla injektoitu sivun ylle.                                                                |
-| `attributes` | Aseta attribuuttien kartta StyleSheetille.                                                                               |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `stylesheet` | URL-osoite tai inline StyleSheet -sisältö, joka injektoidaan. URL-osoitteet, jotka alkavat `context://`, viittaavat sovelluksen juuresresurssikansioon. |
+| `top`        | Määrittää, tulisiko StyleSheet injektoida sivun yläosaan.                                                              |
+| `attributes` | Map-a attribuuteista, jotka asetetaan StyleSheetille.                                                                  |

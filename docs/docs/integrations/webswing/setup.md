@@ -1,6 +1,7 @@
 ---
 title: Setup and Configuration
 sidebar_position: 2
+description: Install the Webswing server, register a Swing app in the admin console, and configure CORS so webforJ can embed it with WebswingConnector.
 ---
 
 Integrating Webswing with webforJ involves two components: the Webswing server that hosts your Swing app, and the `WebswingConnector` component in your webforJ app that embeds it.
@@ -138,7 +139,7 @@ For example, to hide the logout button in a production environment where you man
 WebswingConnector connector = new WebswingConnector("http://localhost:8080/myapp/");
 
 WebswingOptions options = new WebswingOptions()
-    .setDisableLogout(true);  // Hide the logout button
+  .setDisableLogout(true);  // Hide the logout button
 
 connector.setOptions(options);
 ```

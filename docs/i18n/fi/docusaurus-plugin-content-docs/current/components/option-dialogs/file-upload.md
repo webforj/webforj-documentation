@@ -1,81 +1,81 @@
 ---
 title: File Upload
 sidebar_position: 20
-_i18n_hash: 70bfb275a09a977cf365a14535aaf02e
+_i18n_hash: fc6515e16590085708ed61b3aedff9f1
 ---
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileUploadDialog" top='true'/>
 
-`FileUploadDialog` on modaalinen dialogi, joka on suunniteltu sallimaan käyttäjän ladata tiedostoja paikalliselta tiedostojärjestelmältään. Dialogi estää sovelluksen suorittamisen, kunnes käyttäjä valitsee ladattavat tiedostot tai sulkee dialogin.
+`FileUploadDialog` on muotoiltu modaalinen dialogi, joka on suunniteltu mahdollistamaan käyttäjän ladata tiedostoja paikalliselta tiedostojärjestelmältä. Dialogi estää sovelluksen suorittamisen, kunnes käyttäjä valitsee ladattavat tiedostot tai sulkee dialogin.
 
 <!-- INTRO_END -->
 
-## Käyttötarkoitukset {#usages}
+## Käyttötilanteet {#usages}
 
-`FileUploadDialog` tarjoaa tavan valita ja ladata tiedostoja, mahdollistaen käyttäjien lähettää asiakirjoja, kuvia tai muita tiedostotyyppejä, joita sovellus vaatii. Käytä `showFileUploadDialog()`-metodia näyttämään dialogi ja tallentamaan ladattu tiedosto.
+`FileUploadDialog` tarjoaa tavan valita ja ladata tiedostoja, jolloin käyttäjät voivat lähettää asiakirjoja, kuvia tai muita sovelluksen vaatimuksia vastaavia tiedostotyyppejä. Käytä `showFileUploadDialog()` näyttämään dialogi ja tallentamaan ladattu tiedosto.
 
 ```java
 UploadedFile result = OptionDialog.showFileUploadDialog("Lataa tiedosto");
 ```
 
-## Tulos {#result}
+## Tulokset {#result}
 
-`FileUploadDialog` palauttaa `UploadedFile`-objektin, joka sisältää tietoja ladatusta tiedostosta, kuten sen nimen, koon ja sisällön. Jos käyttäjä sulkee dialogin ilman tiedoston valitsemista, tulos on `null`.
+`FileUploadDialog` palauttaa `UploadedFile`-objektin, joka sisältää tietoja ladatusta tiedostosta, kuten sen nimi, koko ja sisältö. Jos käyttäjä sulkee dialogin ilman, että tiedostoa on valittu, tulos on `null`.
 
 :::important
-Tuloksena oleva merkkijono palautetaan `show()`-metodista tai vastaavasta `OptionDialog`-metodista, kuten alla on esitetty. 
+Palautettu merkkijono lähetetään `show()`-menetelmästä tai vastaavasta `OptionDialog`-menetelmästä, kuten alla on esitetty.
 :::
 
-<ComponentDemo 
-path='/webforj/fileuploaddialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java'
-height = '400px'
+<ComponentDemo
+path='/webforj/fileuploaddialogbasic'
+files={['src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java']}
+height='400px'
 />
 
 ### Ladattujen tiedostojen siirtäminen {#moving-uploaded-files}
 
-Oletusarvoisesti webforJ tallentaa ladatut tiedostot tilapäiseen hakemistoon, jota siivotaan säännöllisesti. Jos et siirrä tiedostoa muualle, se poistetaan. Siirtääksesi tiedoston, käytä `move`-metodia ja määritä kohdepolku.
+Oletusarvoisesti webforJ tallentaa ladatut tiedostot tilapäiseen kansioon, jota siivotaan säännöllisesti. Jos et siirrä tiedostoa muualle, se poistetaan. Siirtääksesi tiedoston, käytä `move`-menetelmää ja määritä kohdepaino.
 
 ```java showLineNumbers
-UploadedFile uploadedFile = OptionDialog.showFileUploadDialog("Valitse tiedosto ladattavaksi");
+UploadedFile uploadedFile = OptionDialog.showFileUploadDialog("Valitse ladattava tiedosto");
 try {
-    File file = uploadedFile.move("my/full/path/" + uploadedFile.getSanitizedClientName());
-    // ... tee jotain tiedoston kanssa
+  File file = uploadedFile.move("my/full/path/" + uploadedFile.getSanitizedClientName());
+  // ... tee jotakin tiedoston kanssa
 } catch (IOException e) {
-    // käsittele poikkeus
+  // käsittele poikkeus
 }
 ```
-:::tip Puhtaat asiakastiedostonimen
-Käytä `getSanitizedClientName`-metodia saadaksesi puhtaan version ladatun tiedoston nimestä. Tämä metodi auttaa estämään turvallisuusriskejä, kuten hakemustason läpäisyn tai virheelliset merkit tiedostonimissä, varmistaen tiedostojärjestelmäsi eheyden ja turvallisuuden.
+:::tip Puhdistettu asiakastieto
+Käytä `getSanitizedClientName`-menetelmää saadaksesi puhdistetun version ladatun tiedoston nimestä. Tämä menetelmä auttaa estämään turvallisuusriskejä, kuten hakemistorakenteen kiertohyökkäykset tai virheelliset merkit tiedostonnimissä, varmistaen tiedostojärjestelmäsi eheys ja turvallisuus.
 :::
 
 ## Suodattimet {#filters}
 
-`FileUploadDialog` sallii sinun asettaa suodattimia rajoittaaksesi ladattavien tiedostojen tyyppejä. Voit konfiguroida suodattimia käyttämällä `setFilters(List<FileChooserFilter> filters)`-metodia.
+`FileUploadDialog` mahdollistaa suodattimien asettamisen rajatakseen ladattavien tiedostojen tyyppejä. Voit konfiguroida suodattimia käyttäen menetelmää `setFilters(List<FileChooserFilter> filters)`.
 
 ```java showLineNumbers
 FileUploadDialog dialog = new FileUploadDialog(
-    "Lataa tiedosto", 
-    Arrays.asList(new FileChooserFilter("Tekstitiedostot", "*.txt")));
+  "Lataa tiedosto", 
+  Arrays.asList(new FileChooserFilter("Tekstitiedostot", "*.txt")));
 UploadedFile result = dialog.show();
 ```
 
 :::warning Suodattimien validointi
-Palvelin ei validoi ladattua tiedostoa suodattimien mukaan. Suodattimia sovelletaan vain käyttöliittymässä, jotta käyttäjän valintaa ohjataan. Sinun on toteutettava palvelinpuolen validointi varmistaaksesi, että ladatut tiedostot täyttävät sovelluksesi vaatimukset.
+Palvelin ei validoi ladattua tiedostoa suodattimien mukaan. Suodattimia sovelletaan vain käyttöliittymässä käyttäjän valinnan ohjaamiseksi. Sinun on toteutettava palvelinpuolen validointi varmistaaksesi, että ladatut tiedostot täyttävät sovelluksesi vaatimukset.
 :::
 
 ## Maksimikoko {#max-size}
 
-On mahdollista asettaa ladattavien tiedostojen maksimikoko varmistaaksesi, että käyttäjät eivät lataa tiedostoja, jotka ovat liian suuria sovelluksesi käsiteltäväksi. Tämä voidaan konfiguroida käyttämällä `setMaxFileSize(long maxSize)`-metodia, jossa maxSize määritetään tavuina.
+On mahdollista asettaa ladattavien tiedostojen maksimikoko varmistaaksesi, että käyttäjät eivät lataa tiedostoja, jotka ovat liian suuria sovelluksesi käsiteltäväksi. Tämä voidaan määrittää `setMaxFileSize(long maxSize)`-menetelmän avulla, jossa maxSize ilmoitetaan tavuina.
 
 ```java
-dialog.setMaxFileSize(2 * 1024 * 1024); // Aseta maksimi koko 2 MB
+dialog.setMaxFileSize(2 * 1024 * 1024); // Aseta maksimikoko 2 MB
 ```
 
 ## Kansainvälistäminen (i18n) {#internationalization-i18n}
 
-Komponentin otsikot, kuvaukset, labelit ja viestit ovat täysin mukautettavissa käyttämällä `FileUploadI18n`-luokkaa. Tämä joustavuus mahdollistaa dialogin käyttöliittymän räätälöimisen tiettyjen lokalisointivaatimusten tai personointimieltymysten täyttämiseksi.
+Komponentin sisällä olevat otsikot, kuvaukset, etiketit ja viestit ovat täysin mukautettavissa käyttämällä `FileUploadI18n`-luokkaa. Tämä joustavuus mahdollistaa dialogin käyttöliittymän räätälöimisen tiettyjen lokalisointivaatimusten tai personoinnin mieltymysten mukaan.
 
 ```java showLineNumbers
 FileUploadDialog dialog = new FileUploadDialog("Lataa tiedosto");
@@ -88,9 +88,9 @@ UploadedFile result = dialog.show();
 
 ## Parhaat käytännöt {#best-practices}
 
-1. **Selkeät ja ytimekkäät kehotteet**: Varmista, että kehotteessa selvästi kerrotaan, mitä käyttäjältä pyydetään lataamaan.
-2. **Sopivat suodattimet**: Aseta tiedostosuodattimet, jotka vastaavat vaadittuja tiedostotyyppejä varmistaaksesi, että käyttäjät lataavat asiaankuuluvia tiedostoja.
-3. **Loogiset alkuperäiset polut**: Aseta alkuperäiset polut, jotka tarjoavat käyttäjille hyödyllisen lähtöpisteen tiedostovalintojaan varten.
-4. **Rajoita hakemistorajapintaa**: Rajoita dialogi tiettyyn hakemistoon tarvittaessa estääksesi käyttäjiä navigoimasta luvattomiin alueisiin.
-5. **Johdonmukainen teema**: Yhdistä dialogin ja latauskentän teemat sovelluksesi suunnittelun kanssa yhtenäisen käyttäjäkokemuksen saavuttamiseksi.
-6. **Vältä liiallista käyttöä**: Käytä tiedostojen latausdialogeja säästeliäästi estääksesi käyttäjien turhautumista. Varaudu käyttämään niitä vain toimissa, jotka vaativat erityisiä käyttäjän tiedostojen latauksia.
+1. **Selkeät ja ytimekkäät kehotukset**: Varmista, että kehotusviesti selkeästi selittää, mitä käyttäjältä kysytään ladattavaksi.
+2. **Sopivat suodattimet**: Aseta tiedostosuodattimet, jotka vastaavat tarvittavia tiedostotyyppejä varmistaaksesi, että käyttäjät lataavat asiaankuuluvia tiedostoja.
+3. **Loogiset aloituspolut**: Aseta aloituspolut, jotka tarjoavat käyttäjille hyödyllisen lähtöpohjan tiedostovalinnalle.
+4. **Rajoita hakemiston navigointia**: Rajoita dialogi tiettyyn hakemistoon tarvittaessa estääksesi käyttäjiä navigoimasta valtuuttamattomiin alueisiin.
+5. **Johdonmukainen teema**: Yhdistä dialogin ja latauskentän teemat sovelluksesi muotoiluun yhtenäisen käyttäjäkokemuksen luomiseksi.
+6. **Vähennä liiallista käyttöä**: Käytä tiedoston latausdialogeja säästeliäästi välttääksesi käyttäjien turhautumista. Varaudu niihin toimiin, jotka vaativat tiettyjen käyttäjän tiedostojen lataamista.

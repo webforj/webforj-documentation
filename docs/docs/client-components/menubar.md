@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-menubar>
 sidebar_class_name: sidebar--item__hidden
 slug: menubar
-description: A user guide article for the menubar
+description: Theme the dwc-menubar component with CSS variables and shadow parts that control background, item spacing, and hover states.
 // pagination_prev: null
 // pagination_next: null
 ---

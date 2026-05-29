@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class SpinnerSpeedDemoViewIT extends BaseTest {
 
-    private SpinnerSpeedDemoPage spinnerPage;
+  private SpinnerSpeedDemoPage spinnerPage;
 
     public void setupSpinnerSpeeds(SupportedLanguage language) {
         navigateToRoute(SpinnerSpeedDemoPage.getRoute(language));
@@ -23,19 +23,16 @@ public class SpinnerSpeedDemoViewIT extends BaseTest {
     public void testSpinnerSpeedIsSet(SupportedLanguage language) {
         setupSpinnerSpeeds(language);
 
-        spinnerPage.getPauseButton().click();
-        assertThat(spinnerPage.getSpinner()).hasAttribute("paused", "");
+    spinnerPage.getPauseButton().click();
+    assertThat(spinnerPage.getSpinner()).hasAttribute("paused", "");
 
-        spinnerPage.getFastButton().click();
-        assertThat(spinnerPage.getSpinner())
-                .hasAttribute("style", "--_dwc-spinner-speed: 200ms;");
+    spinnerPage.getFastButton().click();
+    assertThat(spinnerPage.getSpinner()).hasAttribute("style", "--_dwc-spinner-speed: 200ms;");
 
-        spinnerPage.getMediumButton().click();
-        assertThat(spinnerPage.getSpinner())
-                .hasAttribute("style", "--_dwc-spinner-speed: 500ms;");
+    spinnerPage.getMediumButton().click();
+    assertThat(spinnerPage.getSpinner()).hasAttribute("style", "--_dwc-spinner-speed: 500ms;");
 
-        spinnerPage.getSlowButton().click();
-        assertThat(spinnerPage.getSpinner())
-                .hasAttribute("style", "--_dwc-spinner-speed: 1000ms;");
-    }
+    spinnerPage.getSlowButton().click();
+    assertThat(spinnerPage.getSpinner()).hasAttribute("style", "--_dwc-spinner-speed: 1000ms;");
+  }
 }

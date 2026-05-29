@@ -1,5 +1,7 @@
 package com.webforj.samples.views.slider;
 
+import static java.util.Map.entry;
+
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.icons.IconButton;
@@ -11,66 +13,67 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.Map;
-
-import static java.util.Map.entry;
 
 @Route
 @FrameTitle("Temperature Selector Demo")
 public class SliderTempView extends Composite<FlexLayout> {
-
-  Slider temperatureSlider = new Slider();
-  Integer currentTemperature = 72;
-  FlexLayout layout = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
+  // Temperature slider component
+  private final Slider temperatureSlider = new Slider();
 
   public SliderTempView() {
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.CENTER);
 
-    temperatureSlider.setMin(60)
+    temperatureSlider
+        .setMin(60)
         .setMax(90)
-        .setValue(currentTemperature)
+        .setValue(72)
         .setTicksVisible(true)
         .setMajorTickSpacing(10)
         .setMinorTickSpacing(5)
-        .setLabels(Map.ofEntries(
-            entry(60, "60&deg;F"),
-            entry(70, "70&deg;F"),
-            entry(80, "80&deg;F"),
-            entry(90, "90&deg;F")
-        ))
+        .setLabels(
+            Map.ofEntries(
+                entry(60, "60&deg;F"),
+                entry(70, "70&deg;F"),
+                entry(80, "80&deg;F"),
+                entry(90, "90&deg;F")))
         .setLabelsVisible(true)
         .setTooltipVisibleOnSlideOnly(true)
         .setWidth("300px");
 
     IconButton snowflakeButton = new IconButton(TablerIcon.create("snowflake"));
-    snowflakeButton.setTheme(Theme.PRIMARY)
+    snowflakeButton
+        .setTheme(Theme.PRIMARY)
         .setStyle("font-size", "1.5rem")
-        .onClick(e -> {
-          currentTemperature = 60;
-          temperatureSlider.setValue(60);
-        });
+        .onClick(
+            e -> {
+              temperatureSlider.setValue(60);
+            });
 
     IconButton sunButton = new IconButton(TablerIcon.create("sun"));
-    sunButton.setTheme(Theme.DANGER)
+    sunButton
+        .setTheme(Theme.DANGER)
         .setStyle("font-size", "1.5rem")
-        .onClick(e -> {
-          currentTemperature = 90;
-          temperatureSlider.setValue(90);
-        });
+        .onClick(
+            e -> {
+              temperatureSlider.setValue(90);
+            });
 
-    FlexLayout sliderContainer = new FlexLayout();
-    sliderContainer.setDirection(FlexDirection.ROW)
-        .setJustifyContent(FlexJustifyContent.BETWEEN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)");
+    FlexLayout sliderContainer =
+        FlexLayout.create(snowflakeButton, temperatureSlider, sunButton)
+            .horizontal()
+            .justify()
+            .between()
+            .align()
+            .center()
+            .build()
+            .setSpacing("var(--dwc-space-m)");
 
-    sliderContainer.add(snowflakeButton, temperatureSlider, sunButton);
-
-    layout.add(sliderContainer);
+    self.add(sliderContainer);
   }
 }

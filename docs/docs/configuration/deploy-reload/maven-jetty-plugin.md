@@ -1,5 +1,6 @@
 ---
 title: Maven Jetty plugin
+description: Tune the Maven Jetty plugin scan interval and webforJ reload properties to enable hot redeployment during webforJ development.
 ---
 
 The Maven Jetty plugin is a popular tool that allows developers to run Java web apps within an embedded Jetty server directly from their Maven projects. 

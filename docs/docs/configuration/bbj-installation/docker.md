@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Docker
+description: Install Docker Desktop on Windows or Mac, pull the webforj/sandbox image, and run BBjServices in a container for webforJ development.
 ---
 
 # Docker installation
@@ -119,17 +120,17 @@ If your POM file does not have a `<plugins>` section, create one.
 <artifactId>webforj-install-maven-plugin</artifactId>
 <version>${webforj.version}</version>
 <executions>
-    <execution>
-    <goals>
-        <goal>install</goal>
-    </goals>
-    </execution>
+  <execution>
+  <goals>
+    <goal>install</goal>
+  </goals>
+  </execution>
 </executions>
 <configuration>
-    <deployurl>http://localhost:8888/webforj-install</deployurl>
-    <classname>samples.HelloWorldApp</classname>
-    <publishname>hello-world</publishname>
-    <debug>true</debug>
+  <deployurl>http://localhost:8888/webforj-install</deployurl>
+  <classname>samples.HelloWorldApp</classname>
+  <publishname>hello-world</publishname>
+  <debug>true</debug>
 </configuration>
 </plugin>
 ```

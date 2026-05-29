@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Testing with Playwright
+description: Drive a webforJ app from JUnit using the Playwright Java bindings to fill fields, click buttons, and assert rendered output in the browser.
 ---
 
 This documentation outlines the process for testing webforJ applications using Playwright, specifically focusing on the `HelloWorldView` from the `webforj-archetype-hello-world`.

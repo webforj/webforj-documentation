@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Assets Protocols
+description: Reference app resources with the webforJ ws, context, and icons protocols to load static files, classpath content, and dynamic icons.
 ---
 
 webforJ supports custom assets protocols that enable structured and efficient resource access. These protocols abstract the complexities of static and dynamic resource retrieval, ensuring that assets are fetched and integrated seamlessly within the app.

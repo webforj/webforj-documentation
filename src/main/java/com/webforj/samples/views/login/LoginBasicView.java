@@ -9,11 +9,12 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Login Basics")
 public class LoginBasicView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public LoginBasicView() {
     Login login = new Login();
     login.open();
 
-    getBoundComponent().add(login);
+    self.add(login);
   }
 }

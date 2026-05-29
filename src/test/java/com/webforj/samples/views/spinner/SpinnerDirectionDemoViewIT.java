@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class SpinnerDirectionDemoViewIT extends BaseTest {
 
-    private SpinnerDirectionDemoPage spinnerPage;
+  private SpinnerDirectionDemoPage spinnerPage;
 
     public void setupSpinnerDirection(SupportedLanguage language) {
         navigateToRoute(SpinnerDirectionDemoPage.getRoute(language));
@@ -25,7 +25,7 @@ public class SpinnerDirectionDemoViewIT extends BaseTest {
         spinnerPage.getClockwiseButton().click();
         assertThat(spinnerPage.getSpinner()).hasAttribute("clockwise", "");
 
-        spinnerPage.getCounterClockwiseButton().click();
-        assertThat(spinnerPage.getSpinner()).not().hasAttribute("clockwise", "");
-    }
+    spinnerPage.getCounterClockwiseButton().click();
+    assertThat(spinnerPage.getSpinner()).not().hasAttribute("clockwise", "");
+  }
 }

@@ -1,22 +1,21 @@
 ---
 sidebar_position: 4
 title: Typography
-_i18n_hash: 86ea072dd194053c5a0195a6e7b7200e
+_i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
-Typografie-tokens worden gebruikt om een consistente set van letterstijl door je app te handhaven.
+Typografie tokens worden gebruikt om een consistente set van letterstijlletjes door je app heen te handhaven.
 
-## Lettertypefamilie {#font-family}
+## Lettertype familie {#font-family}
 
-De lettertypefamilie-eigenschappen worden gebruikt om een geprioriteerde lijst van lettertype-namen op te geven.
+De lettertype familie eigenschappen worden gebruikt om een prioriteitenlijst van lettertypen te specificeren.
 
-Standaard wordt de systeemlettertype-stapel gebruikt:
+De systeemlettertype stapel wordt standaard gebruikt via `system-ui`, wat automatisch wordt opgelost naar het native lettertype van het platform:
 
+- `San Francisco` op macOS en iOS
 - `Segoe UI` op Windows
 - `Roboto` op Android en Chrome OS
-- `San Francisco` op macOS en iOS
-- Op andere systemen worden `Helvetica, Arial` als fallback gebruikt.
 
-Je kunt de lettertypefamilie toepassen of wijzigen met de aangepaste eigenschap `--dwc-font-family`.
+Je kunt de lettertype familie toepassen of wijzigen met behulp van de aangepaste eigenschap `--dwc-font-family`.
 
 ### Voorbeeld {#example}
 
@@ -28,20 +27,18 @@ Je kunt de lettertypefamilie toepassen of wijzigen met de aangepaste eigenschap 
 
 ### Variabelen {#variables}
 
-<!-- vale Google.FirstPerson = NO -->
-| **Variabele**             | **Standaardwaarde**                                                                                                                                          | **Voorbeeld**                                                           |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `--dwc-font-family-sans`  | -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'          | <span style={{ fontFamily: "var(--dwc-font-family-sans)" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span> |
-| `--dwc-font-family-mono`  | Menlo, Monaco, 'Courier New', monospace                                                                                                                   | <span style={{ fontFamily: "var(--dwc-font-family-mono)" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span> |
-| `--dwc-font-family`       | `var(--dwc-font-family-sans)`                                                                                                                              | <span style={{ fontFamily: "var(--dwc-font-family)" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span>      |
-<!-- vale Google.FirstPerson = YES -->
+| **Variabele**              | **Standaardwaarde**                                           |
+| -------------------------- | ----------------------------------------------------------- |
+| `--dwc-font-family-sans`   | system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' |
+| `--dwc-font-family-mono`   | ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace |
+| `--dwc-font-family`        | `var(--dwc-font-family-sans)`                              |
 
 ## Lettergrootte {#font-size}
 
-De lettergrootte-eigenschappen definieëren een set van lettergroottes om uit te kiezen. `s` is de standaardgrootte en wordt standaard door de meeste componenten gebruikt. Alle lettergroottes zijn gedefinieerd in `em`.
+De lettergrootte eigenschappen definiëren een set lettergroottes om uit te kiezen. `m` is de standaardgrootte en wordt door de meeste componenten standaard gebruikt. Alle lettergroottes zijn gedefinieerd in `rem`.
 
-:::info EM Eenheid
-`em` is een relatieve lengte-eenheid. Het is relatief aan de [lettergrootte](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) van de ouder, in het geval van typografische eigenschappen zoals lettergrootte, en de lettergrootte van het element zelf en in het geval van andere eigenschappen zoals [breedte](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
+:::info REM Eenheid
+`rem` is een relatieve lengte-eenheid. Het is relatief aan de [lettergrootte](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) van het rootelement (`<html>`), wat in de meeste browsers standaard op 16px staat.
 :::
 
 ### Voorbeeld {#example-1}
@@ -54,21 +51,24 @@ De lettergrootte-eigenschappen definieëren een set van lettergroottes om uit te
 
 ### Variabelen {#variables-1}
 
-| **Variabele**           | **Standaardwaarde** | **Voorbeeld**                                                      |
-| ----------------------- | --------------------| ------------------------------------------------------------------ |
-| `--dwc-font-size-2xs`  | 0.75rem             | <span style={{ fontSize: "var(--dwc-font-size-2xs)" }}>Aa</span> |
-| `--dwc-font-size-xs`   | 0.813rem            | <span style={{ fontSize: "var(--dwc-font-size-xs)" }}>Aa</span>  |
-| `--dwc-font-size-s`    | 0.875rem            | <span style={{ fontSize: "var(--dwc-font-size-s)" }}>Aa</span>   |
-| `--dwc-font-size-m`    | 1rem                | <span style={{ fontSize: "var(--dwc-font-size-m)" }}>Aa</span>   |
-| `--dwc-font-size-l`    | 1.125rem            | <span style={{ fontSize: "var(--dwc-font-size-l)" }}>Aa</span>   |
-| `--dwc-font-size-xl`   | 1.375rem            | <span style={{ fontSize: "var(--dwc-font-size-xl)" }}>Aa</span>  |
-| `--dwc-font-size-2xl`  | 1.75rem             | <span style={{ fontSize: "var(--dwc-font-size-2xl)" }}>Aa</span> |
-| `--dwc-font-size-3xl`  | 2.25rem             | <span style={{ fontSize: "var(--dwc-font-size-3xl)" }}>Aa</span> |
-| `--dwc-font-size`      | `var(--dwc-font-size-s)` | <span style={{ fontSize: "var(--dwc-font-size)" }}>Aa</span>     |
+| **Variabele**             | **Standaardwaarde**     | **Berekenend (bij 16px root)** |
+| ------------------------- | ----------------------- | ------------------------------- |
+| `--dwc-font-size-3xs`    | 0.625rem                | 10px                            |
+| `--dwc-font-size-2xs`    | 0.6875rem               | 11px                            |
+| `--dwc-font-size-xs`     | 0.75rem                 | 12px                            |
+| `--dwc-font-size-s`      | 0.8125rem               | 13px                            |
+| `--dwc-font-size-m`      | 0.875rem                | 14px                            |
+| `--dwc-font-size-l`      | 1rem                    | 16px                            |
+| `--dwc-font-size-xl`     | 1.25rem                 | 20px                            |
+| `--dwc-font-size-2xl`    | 1.625rem                | 26px                            |
+| `--dwc-font-size-3xl`    | 2.125rem                | 34px                            |
+| `--dwc-font-size`        | `var(--dwc-font-size-m)`| 14px                            |
+
+<dwc-doc-font-sizes></dwc-doc-font-sizes>
 
 ## Lettergewicht {#font-weight}
 
-De [lettergewicht](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) CSS-eigenschap stelt het gewicht (of de vetheid) van het lettertype in.
+De [font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) CSS eigenschap stelt het gewicht (of vetheid) van het lettertype in.
 
 ### Voorbeeld {#example-2}
 
@@ -78,18 +78,24 @@ p {
 }
 ```
 
-| **Variabele**               | **Standaardwaarde** | **Voorbeeld**                                                               |
-| --------------------------- | --------------------| --------------------------------------------------------------------------- |
-| `--dwc-font-weight-lighter` | 200                  | <span style={{ fontWeight: "var(--dwc-font-weight-lighter)" }}>Aa</span>  |
-| `--dwc-font-weight-light`   | 300                  | <span style={{ fontWeight: "var(--dwc-font-weight-light)" }}>Aa</span>    |
-| `--dwc-font-weight-normal`  | 400                  | <span style={{ fontWeight: "var(--dwc-font-weight-normal)" }}>Aa</span>   |
-| `--dwc-font-weight-semibold` | 500                  | <span style={{ fontWeight: "var(--dwc-font-weight-semibold)" }}>Aa</span> |
-| `--dwc-font-weight-bold`    | 700                  | <span style={{ fontWeight: "var(--dwc-font-weight-bold)" }}>Aa</span>     |
-| `--dwc-font-weight-bolder`  | 800                  | <span style={{ fontWeight: "var(--dwc-font-weight-bolder)" }}>Aa</span>   |
+| **Variabele**                  | **Standaardwaarde** |
+| ------------------------------- | ------------------- |
+| `--dwc-font-weight-thin`        | 100                 |
+| `--dwc-font-weight-lighter`     | 200                 |
+| `--dwc-font-weight-light`       | 300                 |
+| `--dwc-font-weight-normal`      | 400                 |
+| `--dwc-font-weight-medium`      | 500                 |
+| `--dwc-font-weight-semibold`    | 600                 |
+| `--dwc-font-weight-bold`        | 700                 |
+| `--dwc-font-weight-bolder`      | 800                 |
+| `--dwc-font-weight-black`       | 900                 |
+| `--dwc-font-weight`             | `var(--dwc-font-weight-normal)` |
+
+<dwc-doc-font-weights></dwc-doc-font-weights>
 
 ## Regelhoogte {#line-height}
 
-De regelhoogte CSS-eigenschap stelt de hoogte van een regelbox in. Het wordt vaak gebruikt om de afstand tussen tekstregels in te stellen.
+De lijnhoogte CSS eigenschap stelt de hoogte van een lijnbox in. Het wordt vaak gebruikt om de afstand tussen regels tekst in te stellen.
 
 ### Voorbeeld {#example-3}
 
@@ -101,15 +107,17 @@ p {
 
 ### Variabelen {#variables-2}
 
-<!-- vale Google.FirstPerson = NO -->
-| **Variabele**                  | **Standaardwaarde**         | **Voorbeeld**                                                                                                |
-| ------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `--dwc-font-line-height-2xs`   | 0.95                        | <span style={{ lineHeight: "var(--dwc-font-line-height-2xs)", display: "block" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.<br/>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span> |
-| `--dwc-font-line-height-xs`    | 1.1                         | <span style={{ lineHeight: "var(--dwc-font-line-height-xs)", display: "block" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.<br/>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span>  |
-| `--dwc-font-line-height-s`     | 1.25                        | <span style={{ lineHeight: "var(--dwc-font-line-height-s)", display: "block" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.<br/>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span>   |
-| `--dwc-font-line-height-m`     | 1.375                       | <span style={{ lineHeight: "var(--dwc-font-line-height-m)", display: "block" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.<br/>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span>   |
-| `--dwc-font-line-height-l`     | 1.5                         | <span style={{ lineHeight: "var(--dwc-font-line-height-l)", display: "block" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.<br/>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span>   |
-| `--dwc-font-line-height-xl`    | 1.75                        | <span style={{ lineHeight: "var(--dwc-font-line-height-xl)", display: "block" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.<br/>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span>  |
-| `--dwc-font-line-height-2xl`   | 2                           | <span style={{ lineHeight: "var(--dwc-font-line-height-2xl)", display: "block" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.<br/>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span> |
-| `--dwc-font-line-height`        | var(--dwc-font-line-height-m) | <span style={{ lineHeight: "var(--dwc-font-line-height)", display: "block" }}>Sphinx van zwarte kwarts, oordeel over mijn belofte.<br/>Sphinx van zwarte kwarts, oordeel over mijn belofte.</span>     |
-<!-- vale Google.FirstPerson = YES -->
+| **Variabele**                   | **Standaardwaarde**       |
+| --------------------------------| ------------------------- |
+| `--dwc-font-line-height-3xs`    | 1                         |
+| `--dwc-font-line-height-2xs`    | 1.1                       |
+| `--dwc-font-line-height-xs`     | 1.25                      |
+| `--dwc-font-line-height-s`      | 1.375                     |
+| `--dwc-font-line-height-m`      | 1.5                       |
+| `--dwc-font-line-height-l`      | 1.625                     |
+| `--dwc-font-line-height-xl`     | 1.75                      |
+| `--dwc-font-line-height-2xl`    | 1.875                     |
+| `--dwc-font-line-height-3xl`    | 2                         |
+| `--dwc-font-line-height`        | var(--dwc-font-line-height-xs) |
+
+<dwc-doc-line-heights></dwc-doc-line-heights>

@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-upload>
 sidebar_class_name: sidebar--item__hidden
 slug: upload
-description: A user guide article for the upload
+description: Customize the dwc-upload drop zone, file list, and progress through CSS variables and shadow parts for visual theming.
 // pagination_prev: null
 // pagination_next: null
 ---

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 40
 title: View Transitions
-sidebar_class_name: new-content
+description: Animate DOM changes with the browser View Transition API, applying fade, slide, zoom, and shared morph effects between component states.
 ---
 
 <!-- vale Google.Units = NO -->
@@ -14,15 +14,15 @@ sidebar_class_name: new-content
 View transitions provide animated transitions when the [DOM](/docs/glossary#dom) changes, reducing visual jarring and maintaining spatial context during navigation or content updates. webforJ integrates with the browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) to handle the complexity of coordinating animations between old and new states.
 
 <ComponentDemo
-  path='/webforj/viewtransitionchat?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java'
-  cssURL='/css/viewtransitions/chat.css'
-  height='450px'
+path='/webforj/viewtransitionchat'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
+  'src/main/resources/static/css/viewtransitions/chat.css',
+]}
+height='450px'
 />
 
-:::warning Experimental API
-This API is marked as experimental since 25.11 and may change in future releases. The API signature, behavior, and performance characteristics are subject to modification.
-:::
+<ExperimentalWarning />
 
 ## Basic usage {#basic-usage}
 
@@ -30,12 +30,12 @@ To create a view transition, use `Page.getCurrent().startViewTransition()`, whic
 
 ```java
 Page.getCurrent().startViewTransition()
-    .onUpdate(done -> {
-        container.remove(oldView);
-        container.add(newView);
-        done.run();
-    })
-    .start();
+  .onUpdate(done -> {
+    container.remove(oldView);
+    container.add(newView);
+    done.run();
+  })
+  .start();
 ```
 
 The transition process captures a snapshot of the current state, applies your DOM changes in the `onUpdate` callback, then animates from the old snapshot to the new content. You must call `done.run()` to signal when your changes are complete.
@@ -64,21 +64,21 @@ Use `enter()` to animate a component being added and `exit()` to animate a compo
 ```java
 // Animate a component entering the DOM
 Page.getCurrent().startViewTransition()
-    .enter(chatPanel, ViewTransition.ZOOM)
-    .onUpdate(done -> {
-        container.add(chatPanel);
-        done.run();
-    })
-    .start();
+  .enter(chatPanel, ViewTransition.ZOOM)
+  .onUpdate(done -> {
+    container.add(chatPanel);
+    done.run();
+  })
+  .start();
 
 // Animate a component exiting the DOM
 Page.getCurrent().startViewTransition()
-    .exit(chatPanel, ViewTransition.FADE)
-    .onUpdate(done -> {
-        container.remove(chatPanel);
-        done.run();
-    })
-    .start();
+  .exit(chatPanel, ViewTransition.FADE)
+  .onUpdate(done -> {
+    container.remove(chatPanel);
+    done.run();
+  })
+  .start();
 ```
 
 ## Shared component transitions {#shared-component-transitions}
@@ -100,14 +100,14 @@ When working with lists or repeated components, include a unique identifier in t
 :::
 
 <ComponentDemo
-  path='/webforj/viewtransitionmorph?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java'
-  urls={[
-    'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
-    'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java'
-  ]}
-  cssURL='/css/viewtransitions/morph.css'
-  height='650px'
+path='/webforj/viewtransitionmorph'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
+  'src/main/resources/static/css/viewtransitions/morph.css',
+]}
+height='650px'
 />
 
 ### List reordering {#list-reordering}
@@ -120,21 +120,21 @@ card.setViewTransitionName("card-" + item.id());
 
 // When shuffling, just update the DOM - the browser handles animation
 Page.getCurrent().startViewTransition()
-    .onUpdate(done -> {
-        renderList();
-        done.run();
-    })
-    .start();
+  .onUpdate(done -> {
+    renderList();
+    done.run();
+  })
+  .start();
 ```
 
 <ComponentDemo
-  path='/webforj/viewtransitionshuffle?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java'
-  urls={[
-    'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java'
-  ]}
-  cssURL='/css/viewtransitions/shuffle.css'
-  height='550px'
+path='/webforj/viewtransitionshuffle'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
+  'src/main/resources/static/css/viewtransitions/shuffle.css',
+]}
+height='550px'
 />
 
 ## Custom CSS animations {#custom-css-animations}
@@ -170,28 +170,30 @@ Reference your custom animation by passing its name (without the suffix) to `ent
 ```java
 // Use "flip-in" - webforJ adds "-enter" suffix automatically
 Page.getCurrent().startViewTransition()
-    .enter(notification, "flip-in")
-    .onUpdate(done -> {
-        stage.add(notification);
-        done.run();
-    })
-    .start();
+  .enter(notification, "flip-in")
+  .onUpdate(done -> {
+    stage.add(notification);
+    done.run();
+  })
+  .start();
 
 // Use "blur-out" for exit - webforJ adds "-exit" suffix
 Page.getCurrent().startViewTransition()
-    .exit(notification, "blur-out")
-    .onUpdate(done -> {
-        stage.remove(notification);
-        done.run();
-    })
-    .start();
+  .exit(notification, "blur-out")
+  .onUpdate(done -> {
+    stage.remove(notification);
+    done.run();
+  })
+  .start();
 ```
 
 <ComponentDemo
-  path='/webforj/viewtransitionenterexit?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java'
-  cssURL='/css/viewtransitions/enterexit.css'
-  height='400px'
+path='/webforj/viewtransitionenterexit'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
+  'src/main/resources/static/css/viewtransitions/enterexit.css',
+]}
+height='400px'
 />
 
 ## CSS customization {#css-customization}

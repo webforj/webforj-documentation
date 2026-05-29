@@ -1,7 +1,7 @@
 ---
 title: Upgrade to 25.00
 description: Upgrade from 24.00 to 25.00
-pagination_next: null
+sidebar_position: 10
 ---
 
 This documentation serves as a guide to upgrade webforJ apps from 24.00 to 25.00.
@@ -152,8 +152,8 @@ Environment environment = Environment.getCurrent();
 WebforjBBjBridge bridge = environment.getBridge();
 
 ConfirmDialog dialog = new ConfirmDialog(
-      "Are you sure you want to delete this file?", "Deletion",
-      ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
+  "Are you sure you want to delete this file?", "Deletion",
+  ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
 
 int msgboxResult = bridge.msgbox(dialog);
 ```

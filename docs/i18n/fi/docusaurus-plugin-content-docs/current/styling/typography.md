@@ -1,22 +1,21 @@
 ---
 sidebar_position: 4
 title: Typography
-_i18n_hash: 86ea072dd194053c5a0195a6e7b7200e
+_i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
-Typografiakuviot käytetään yhtenäisten fonttityylien ylläpitämiseen sovelluksessa.
+Typografia-tokeneita käytetään säilyttämään johdonmukainen fontti-estetiikka sovelluksessasi.
 
-## Fontti-perhe {#font-family}
+## Fonttiperhe {#font-family}
 
-Fontti-perheominaisuuksia käytetään määrittämään priorisoitu luettelo fontti-perheiden nimistä.
+Fonttiperheominaisuudet määrittävät priorisoidun luettelon fonttiperhenimistä.
 
-Oletuksena käytetään järjestelmän fonttikekoa:
+Järjestelmän fonttipinoa käytetään oletuksena `system-ui`, joka automaattisesti ratkaisee alustan natiivin fontin:
 
+- `San Francisco` macOS:llä ja iOS:llä
 - `Segoe UI` Windowsissa
 - `Roboto` Androidissa ja Chrome OS:ssä
-- `San Francisco` macOS:ssa ja iOS:ssä
-- Muilla järjestelmillä käytetään varavaihtoehtoina `Helvetica, Arial`.
 
-Voit soveltaa tai muuttaa fontti-perhettä käyttämällä `--dwc-font-family` -kustomoitua ominaisuutta.
+Voit soveltaa tai muuttaa fonttiperhettä käyttämällä `--dwc-font-family` mukautettua ominaisuutta.
 
 ### Esimerkki {#example}
 
@@ -28,20 +27,18 @@ Voit soveltaa tai muuttaa fontti-perhettä käyttämällä `--dwc-font-family` -
 
 ### Muuttujat {#variables}
 
-<!-- vale Google.FirstPerson = NO -->
-| **Muuttuja**              | **Oletusarvo**                                                                                                                            | **Esimerkki**                                                          |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `--dwc-font-family-sans`  | -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' | <span style={{ fontFamily: "var(--dwc-font-family-sans)" }}>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-family-mono`  | Menlo, Monaco, 'Courier New', monospace                                                                                                   | <span style={{ fontFamily: "var(--dwc-font-family-mono)" }}>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-family`       | `var(--dwc-font-family-sans)`                                                                                                             | <span style={{ fontFamily: "var(--dwc-font-family)" }}>Sphinx of black quartz, judge my vow.</span>      |
-<!-- vale Google.FirstPerson = YES -->
+| **Muuttuja**                  | **Oletusarvo** |
+| ----------------------------- | ----------------- |
+| `--dwc-font-family-sans`     | system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' |
+| `--dwc-font-family-mono`     | ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace |
+| `--dwc-font-family`          | `var(--dwc-font-family-sans)` |
 
-## Fontin koko {#font-size}
+## Fonttikoko {#font-size}
 
-Fonttikoko-ominaisuudet määrittävät joukon fonttikokoja valittavaksi. `s` on vakio koko, jota useimmat komponentit käyttävät oletuksena. Kaikki fonttikoot on määritetty `em`-yksiköissä.
+Fonttikoko-ominaisuudet määrittävät valittavissa olevan fonttikokojen joukon. `m` on vakio koko ja sitä käytetään useimmissa komponenteissa oletuksena. Kaikki fonttikoot on määritelty `rem`-yksikköinä.
 
-:::info EM-yksikkö
-`em` on suhteellinen pituusyksikkö, joka on suhteessa [fontin kokoon](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) vanhempana, tyypillisesti typografisissa ominaisuuksissa kuten fontti-koko, ja elementin omaan fonttikokoon muissa ominaisuuksissa kuten [leveys](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
+:::info REM-yksikkö
+`rem` on suhteellinen pituusyksikkö. Se on suhteessa [fonttikokoon](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) juurielementissä (`<html>`), joka oletusarvoisesti on 16px useimmissa selaimissa.
 :::
 
 ### Esimerkki {#example-1}
@@ -54,21 +51,24 @@ Fonttikoko-ominaisuudet määrittävät joukon fonttikokoja valittavaksi. `s` on
 
 ### Muuttujat {#variables-1}
 
-| **Muuttuja**            | **Oletusarvo**       | **Esimerkki**                                                     |
-| ----------------------- | --------------------- | --------------------------------------------------------------- |
-| `--dwc-font-size-2xs`  | 0.75rem               | <span style={{ fontSize: "var(--dwc-font-size-2xs)" }}>Aa</span> |
-| `--dwc-font-size-xs`   | 0.813rem              | <span style={{ fontSize: "var(--dwc-font-size-xs)" }}>Aa</span>  |
-| `--dwc-font-size-s`    | 0.875rem              | <span style={{ fontSize: "var(--dwc-font-size-s)" }}>Aa</span>   |
-| `--dwc-font-size-m`    | 1rem                  | <span style={{ fontSize: "var(--dwc-font-size-m)" }}>Aa</span>   |
-| `--dwc-font-size-l`    | 1.125rem              | <span style={{ fontSize: "var(--dwc-font-size-l)" }}>Aa</span>   |
-| `--dwc-font-size-xl`   | 1.375rem              | <span style={{ fontSize: "var(--dwc-font-size-xl)" }}>Aa</span>  |
-| `--dwc-font-size-2xl`  | 1.75rem               | <span style={{ fontSize: "var(--dwc-font-size-2xl)" }}>Aa</span> |
-| `--dwc-font-size-3xl`  | 2.25rem               | <span style={{ fontSize: "var(--dwc-font-size-3xl)" }}>Aa</span> |
-| `--dwc-font-size`      | `var(--dwc-font-size-s)` | <span style={{ fontSize: "var(--dwc-font-size)" }}>Aa</span>     |
+| **Muuttuja**               | **Oletusarvo**                 | **Laskettu (16px juurella)** |
+| -------------------------- | ------------------------------- | ----------------------------- |
+| `--dwc-font-size-3xs`     | 0.625rem                        | 10px                          |
+| `--dwc-font-size-2xs`     | 0.6875rem                       | 11px                          |
+| `--dwc-font-size-xs`      | 0.75rem                         | 12px                          |
+| `--dwc-font-size-s`       | 0.8125rem                       | 13px                          |
+| `--dwc-font-size-m`       | 0.875rem                        | 14px                          |
+| `--dwc-font-size-l`       | 1rem                            | 16px                          |
+| `--dwc-font-size-xl`      | 1.25rem                         | 20px                          |
+| `--dwc-font-size-2xl`     | 1.625rem                        | 26px                          |
+| `--dwc-font-size-3xl`     | 2.125rem                        | 34px                          |
+| `--dwc-font-size`         | `var(--dwc-font-size-m)`       | 14px                          |
 
-## Fontin paino {#font-weight}
+<dwc-doc-font-sizes></dwc-doc-font-sizes>
 
-[font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) CSS-ominaisuus asettaa fontin painon (tai paksuuden).
+## Fonttipaino {#font-weight}
+
+[Fonttipaino](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) CSS-ominaisuus asettaa fontin painon (tai paksuuden).
 
 ### Esimerkki {#example-2}
 
@@ -78,18 +78,24 @@ p {
 }
 ```
 
-| **Muuttuja**                   | **Oletusarvo** | **Esimerkki**                                                              |
-| ------------------------------- | ---------------- | ------------------------------------------------------------------------- |
-| `--dwc-font-weight-lighter`     | 200              | <span style={{ fontWeight: "var(--dwc-font-weight-lighter)" }}>Aa</span>  |
-| `--dwc-font-weight-light`       | 300              | <span style={{ fontWeight: "var(--dwc-font-weight-light)" }}>Aa</span>    |
-| `--dwc-font-weight-normal`      | 400              | <span style={{ fontWeight: "var(--dwc-font-weight-normal)" }}>Aa</span>   |
-| `--dwc-font-weight-semibold`    | 500              | <span style={{ fontWeight: "var(--dwc-font-weight-semibold)" }}>Aa</span> |
-| `--dwc-font-weight-bold`        | 700              | <span style={{ fontWeight: "var(--dwc-font-weight-bold)" }}>Aa</span>     |
-| `--dwc-font-weight-bolder`      | 800              | <span style={{ fontWeight: "var(--dwc-font-weight-bolder)" }}>Aa</span>   |
+| **Muuttuja**                 | **Oletusarvo** |
+| ---------------------------- | ----------------- |
+| `--dwc-font-weight-thin`     | 100 |
+| `--dwc-font-weight-lighter`  | 200 |
+| `--dwc-font-weight-light`    | 300 |
+| `--dwc-font-weight-normal`   | 400 |
+| `--dwc-font-weight-medium`   | 500 |
+| `--dwc-font-weight-semibold` | 600 |
+| `--dwc-font-weight-bold`     | 700 |
+| `--dwc-font-weight-bolder`   | 800 |
+| `--dwc-font-weight-black`    | 900 |
+| `--dwc-font-weight`          | `var(--dwc-font-weight-normal)` |
+
+<dwc-doc-font-weights></dwc-doc-font-weights>
 
 ## Rivikorkeus {#line-height}
 
-Line-height CSS-ominaisuus asettaa rivikehyksen korkeuden. Sitä käytetään yleisesti tekstirivien välin asettamiseen.
+Rivikorkeus CSS-ominaisuus asettaa riviboksin korkeuden. Sitä käytetään yleisesti tekstirivien välimatkan asettamiseen.
 
 ### Esimerkki {#example-3}
 
@@ -101,15 +107,17 @@ p {
 
 ### Muuttujat {#variables-2}
 
-<!-- vale Google.FirstPerson = NO -->
-| **Muuttuja**                 | **Oletusarvo**             | **Esimerkki**                                                                                                |
-| ---------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `--dwc-font-line-height-2xs` | 0.95                        | <span style={{ lineHeight: "var(--dwc-font-line-height-2xs)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-line-height-xs`  | 1.1                         | <span style={{ lineHeight: "var(--dwc-font-line-height-xs)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>  |
-| `--dwc-font-line-height-s`   | 1.25                        | <span style={{ lineHeight: "var(--dwc-font-line-height-s)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-m`   | 1.375                       | <span style={{ lineHeight: "var(--dwc-font-line-height-m)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-l`   | 1.5                         | <span style={{ lineHeight: "var(--dwc-font-line-height-l)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>   |
-| `--dwc-font-line-height-xl`  | 1.75                        | <span style={{ lineHeight: "var(--dwc-font-line-height-xl)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>  |
-| `--dwc-font-line-height-2xl` | 2                           | <span style={{ lineHeight: "var(--dwc-font-line-height-2xl)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span> |
-| `--dwc-font-line-height`     | var(--dwc-font-line-height-m) | <span style={{ lineHeight: "var(--dwc-font-line-height)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>     |
-<!-- vale Google.FirstPerson = YES -->
+| **Muuttuja**                   | **Oletusarvo**                |
+| ------------------------------ | ------------------------------ |
+| `--dwc-font-line-height-3xs`   | 1                              |
+| `--dwc-font-line-height-2xs`   | 1.1                            |
+| `--dwc-font-line-height-xs`    | 1.25                           |
+| `--dwc-font-line-height-s`     | 1.375                          |
+| `--dwc-font-line-height-m`     | 1.5                            |
+| `--dwc-font-line-height-l`     | 1.625                          |
+| `--dwc-font-line-height-xl`    | 1.75                           |
+| `--dwc-font-line-height-2xl`   | 1.875                          |
+| `--dwc-font-line-height-3xl`   | 2                              |
+| `--dwc-font-line-height`       | var(--dwc-font-line-height-xs) |
+
+<dwc-doc-line-heights></dwc-doc-line-heights>

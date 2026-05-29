@@ -1,6 +1,7 @@
 {
     "label": "Styling",
     "position": 70,
+    "className": "has-new-content",
     "link": {
       "type": "doc",
       "id": "overview"

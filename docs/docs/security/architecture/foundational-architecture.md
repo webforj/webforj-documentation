@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Foundational Architecture
+description: Understand the core RouteSecurityManager, Context, Configuration, and Evaluator interfaces that power webforJ access control.
 ---
 
 The webforJ security system is built on a foundation of core interfaces that work together to provide route-level access control. These interfaces define the contracts for security behavior, allowing different implementations, whether session-based, based on JSON Web Tokens (JWT), LDAP-integrated, or database-backed, to plug into the same underlying framework.
@@ -112,16 +113,16 @@ These four interfaces collaborate during navigation to enforce security rules:
 
 ```mermaid
 flowchart TB
-    User["User navigates to route"] --> Observer["RouteSecurityObserver<br/>(intercepts navigation)"]
-    Observer --> Manager["RouteSecurityManager<br/>(orchestrates evaluation)"]
+  User["User navigates to route"] --> Observer["RouteSecurityObserver<br/>(intercepts navigation)"]
+  Observer --> Manager["RouteSecurityManager<br/>(orchestrates evaluation)"]
 
-    Manager --> Config["RouteSecurityConfiguration<br/>(provides settings)"]
-    Manager --> Context["RouteSecurityContext<br/>(provides user info)"]
-    Manager --> Chain["Evaluator Chain<br/>(runs evaluators in priority order)"]
+  Manager --> Config["RouteSecurityConfiguration<br/>(provides settings)"]
+  Manager --> Context["RouteSecurityContext<br/>(provides user info)"]
+  Manager --> Chain["Evaluator Chain<br/>(runs evaluators in priority order)"]
 
-    Chain --> Decision{"Access Decision"}
-    Decision -->|"Grant"| Render["Render component"]
-    Decision -->|"Deny"| Redirect["RouteSecurityManager.onAccessDenied()<br/>Redirect to login or deny page"]
+  Chain --> Decision{"Access Decision"}
+  Decision -->|"Grant"| Render["Render component"]
+  Decision -->|"Deny"| Redirect["RouteSecurityManager.onAccessDenied()<br/>Redirect to login or deny page"]
 ```
 
 When a user navigates, the `RouteSecurityObserver` intercepts the navigation and asks the `RouteSecurityManager` to evaluate access. The manager consults the `RouteSecurityConfiguration` for settings, gets user information from the `RouteSecurityContext`, and runs each `RouteSecurityEvaluator` in priority order until one makes a decision.
