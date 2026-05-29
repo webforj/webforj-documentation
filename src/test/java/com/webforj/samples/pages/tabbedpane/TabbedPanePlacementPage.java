@@ -3,6 +3,7 @@ package com.webforj.samples.pages.tabbedpane;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class TabbedPanePlacementPage {
 
@@ -21,9 +22,9 @@ public class TabbedPanePlacementPage {
     this.placementTabbedPane = page.locator("dwc-tabbed-pane");
   }
 
-  public static String getRoute() {
-    return ROUTE;
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public Locator getPlacementDropdown() {
     return placementDropdown;
@@ -33,7 +34,7 @@ public class TabbedPanePlacementPage {
     return placementTabbedPane;
   }
 
-  public Locator getAlignmentDropdownButton() {
-    return alignmentDropdownButton;
-  }
+    public Locator getAlignmentDropdownButton() {
+        return alignmentDropdownButton;
+    }
 }
