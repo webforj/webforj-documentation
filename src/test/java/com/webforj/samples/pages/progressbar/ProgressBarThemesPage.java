@@ -2,6 +2,7 @@ package com.webforj.samples.pages.progressbar;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class ProgressBarThemesPage {
 
@@ -26,9 +27,9 @@ public class ProgressBarThemesPage {
     warningBar = page.locator("dwc-progressbar[theme='warning']");
   }
 
-  public static String getRoute() {
-    return ROUTE;
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public Locator getDangerBar() {
     return dangerBar;
@@ -54,7 +55,7 @@ public class ProgressBarThemesPage {
     return successBar;
   }
 
-  public Locator getWarningBar() {
-    return warningBar;
-  }
+    public Locator getWarningBar() {
+        return warningBar;
+    }
 }

@@ -2,23 +2,28 @@ package com.webforj.samples.views.progressbar;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import com.webforj.samples.pages.progressbar.ProgressBarBasicPage;
-import com.webforj.samples.views.BaseTest;
+import com.webforj.samples.pages.SupportedLanguage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.webforj.samples.pages.progressbar.ProgressBarBasicPage;
+import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ProgressBarBasicViewIT extends BaseTest {
 
   private ProgressBarBasicPage progressBar;
 
-  @BeforeEach
-  public void setupProgressBarBasics() {
-    navigateToRoute(ProgressBarBasicPage.getRoute());
+  public void setupProgressBarBasics(SupportedLanguage language) {
+    navigateToRoute(ProgressBarBasicPage.getRoute(language));
     progressBar = new ProgressBarBasicPage(page);
   }
 
-  @Test
-  public void testResetReturnsToInitialStateAfterPausing() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testResetReturnsToInitialStateAfterPausing(SupportedLanguage language) {
+    setupProgressBarBasics(language);
     progressBar.getStartButton().click();
     assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
 
@@ -27,5 +32,6 @@ public class ProgressBarBasicViewIT extends BaseTest {
 
     progressBar.getResetButton().click();
     assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
+
   }
 }
