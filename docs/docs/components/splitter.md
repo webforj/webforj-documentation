@@ -1,6 +1,7 @@
 ---
 title: Splitter
 sidebar_position: 115
+description: Divide a layout into resizable master and detail panels with the Splitter component, with min and max sizes and orientation control.
 ---
 
 <DocChip chip='shadow' />
@@ -8,12 +9,21 @@ sidebar_position: 115
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="splitter" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
 
-
 The `Splitter` component, designed to divide and resize content within your app, encapsulates two resizable components: the master and the detail components. A divider separates these components, allowing users to dynamically adjust each component's size according to their preferences.
 
-<ComponentDemo 
-path='/webforj/splitterbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterBasicView.java'
+<!-- INTRO_END -->
+
+## Creating a splitter {#creating-a-splitter}
+
+Create a `Splitter` by passing two components to its constructor. The first becomes the master panel and the second becomes the detail panel.
+
+<ComponentDemo
+path='/webforj/splitterbasic'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterBasicView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
@@ -27,9 +37,13 @@ The `setMasterMinSize(String masterMinSize)` method specifies the minimum size f
 
 You can specify sizes using any valid CSS units, as shown below:
 
-<ComponentDemo 
-path='/webforj/splitterminmax?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterMinMaxView.java'
+<ComponentDemo
+path='/webforj/splitterminmax'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterMinMaxView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
@@ -39,9 +53,13 @@ You can configure orientation in the `Splitter` component, allowing you to creat
 
 To configure the orientation, use the supported orientations Enum to specify whether the `Splitter` should render horizontally or vertically:
 
-<ComponentDemo 
-path='/webforj/splitterorientation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterOrientationView.java'
+<ComponentDemo
+path='/webforj/splitterorientation'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterOrientationView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
@@ -49,9 +67,13 @@ height='300px'
 
 To set the initial position of the divider bar in the `Splitter` component, use `setPositionRelative`. This method takes a numeric value from `0` to `100` representing the percentage of the given space in the `Splitter`, and displays the divider at the given percentage of total width:
 
-<ComponentDemo 
-path='/webforj/splitterposition?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterPositionView.java'
+<ComponentDemo
+path='/webforj/splitterposition'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterPositionView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
@@ -61,9 +83,13 @@ Splitter nesting allows you to create complex layouts with levels of resizable p
 
 To nest Splitter components, instantiate new `Splitter` instances and add them as children to existing `Splitter` components. This hierarchical structure allows for the creation of multi-level layouts with flexible resizing capabilities. The program below demonstrates this:
 
-<ComponentDemo 
-path='/webforj/splitternested?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterNestedView.java'
+<ComponentDemo
+path='/webforj/splitternested'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterNestedView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='300px'
 />
 
@@ -77,9 +103,13 @@ When you set the auto-save configuration, the `Splitter` component automatically
 
 To programmatically revert the `Splitter` back to default settings and dimensions, call the `cleanState()` method to remove any saved state data related to the `Splitter` component from the local storage of the web browser.
 
-<ComponentDemo 
-path='/webforj/splitterautosave?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/splitter/SplitterAutoSaveView.java'
+<ComponentDemo
+path='/webforj/splitterautosave'
+files={[
+  'src/main/java/com/webforj/samples/views/splitter/SplitterAutoSaveView.java',
+  'src/main/java/com/webforj/samples/components/SplitterBox.java',
+  'src/main/resources/static/css/splitter-box.css',
+]}
 height='400px'
 />
 

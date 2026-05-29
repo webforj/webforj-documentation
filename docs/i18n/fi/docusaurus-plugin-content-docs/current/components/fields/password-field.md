@@ -3,117 +3,120 @@ sidebar_position: 30
 title: PasswordField
 slug: passwordfield
 description: A single-line input component for securely entering and masking password data.
-sidebar_class_name: updated-content
-_i18n_hash: ca055ca343a756152533eb1ab3ec5c8c
+_i18n_hash: b0641475acf187af7c45d6786506010d
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/PasswordField" top='true'/>
 
+`PasswordField`-komponentti mahdollistaa käyttäjien syöttää salasanoja turvallisesti. Se näytetään yksirivisenä tekstieditorina, jossa syötetty teksti on peitetty, yleensä korvattu symboleilla kuten tähti ("*") tai pisteet ("•"). Tarkka symboli voi vaihdella selaimen ja käyttöjärjestelmän mukaan.
+
+<!-- INTRO_END -->
+
+## Using `PasswordField` {#using-passwordfield}
+
 <ParentLink parent="Field" />
 
-`PasswordField`-komponentti sallii käyttäjien syöttää salasanan turvallisesti. Se näytetään yksirivisenä tekstieditorina, jossa syötetty teksti on peitetty, tyypillisesti vaihdettuna symboleihin, kuten tähden (“*”) tai pisteen (“•”). Tarkka symboli voi vaihdella selaimen ja käyttöjärjestelmän mukaan.
+`PasswordField` laajentaa jaettua `Field`-luokkaa, joka tarjoaa yhteisiä ominaisuuksia kaikille kenttäkomponenteille. Seuraava esimerkki luo `PasswordField`-komponentin, jossa on etiketti ja paikkamerkkiteksti.
 
-<ComponentDemo 
-path='/webforj/passwordfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
+<ComponentDemo
+path='/webforj/passwordfield'
+files={['src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java']}
 />
 
 ## Kentän arvo {#field-value}
 
-`PasswordField`-komponentti tallentaa ja hakee arvonsa tavallisena `String`-muotoisena, samaan tapaan kuin `TextField`, mutta visuaalinen esitys peittää merkit näkyvistä.
+`PasswordField`-komponentti tallentaa ja palauttaa arvonsa tavallisena `String`-arvona, samanlaisena kuin `TextField`, mutta peitettynä visuaalisesti piilottamaan merkit.
 
-
-Voit noutaa nykyisen arvon seuraavasti:
+Voit palauttaa nykyisen arvon käyttämällä:
 
 ```java
 passwordField.getValue();
 ```
 
-:::warning herkkä tieto
-Vaikka kenttä peittää sisällön visuaalisesti, `getValue()`-metodista palautettu arvo on silti tavallinen merkkijono. Ole tietoinen tästä käsitellessäsi arkaluontoista tietoa ja salaa tai muunna se ennen tallennusta.
+:::warning arkaluontoiset tiedot
+Vaikka kenttä visuaalisesti peittää sisällön, `getValue()`-kutsusta palautettu arvo on edelleen tavallinen merkkijono. Ole tietoinen tästä, kun käsittelet arkaluontoisia tietoja ja salaa tai muunna se ennen tallentamista.
 :::
 
-Aseta tai nollaa arvo ohjelmallisesti:
+Voit asettaa tai nollata arvon ohjelmallisesti:
 
 ```java
 passwordField.setValue("MySecret123!");
 ```
 
-Jos käyttäjä ei ole syöttänyt arvoa eikä oletusarvoa ole asetettu, kenttä palauttaa tyhjää merkkijonoa (`""`).
+Jos käyttäjä ei ole syöttänyt arvoa eikä oletusarvoa ole asetettu, kenttä palauttaa tyhjän merkkijonon (`""`).
 
-Tämä käyttäytyminen jäljittelee HTML:n natiivin `<input type="password">`-elementin toimintaa, jossa `value`-ominaisuus sisältää nykyisen syötteen.
+Tämä käyttäytyminen jäljittelee natiivin HTML `<input type="password">`-kentän toimintaa, jossa `value`-ominaisuus pitää nykyistä syötettä.
 
+## Käytöt {#usages}
 
-## Käytännöt {#usages}
+`PasswordField`-komponentti on parhaiten käytettävissä skenaarioissa, joissa on tärkeää tallentaa tai käsitellä arkaluontoisia tietoja, kuten salasanoja tai muita luottamuksellisia tietoja. Tässä on joitakin esimerkkejä siitä, milloin käyttää `PasswordField`-komponenttia:
 
-`PasswordField`-komponenttia kannattaa käyttää tilanteissa, joissa arkaluontoisten tietojen, kuten salasanojen tai muiden luottamuksellisten tietojen, tallentaminen tai käsittely on tärkeää sovelluksessasi. Tässä on joitakin esimerkkejä, milloin käyttää `PasswordField`-komponenttia:
+1. **Käyttäjän tunnistus ja rekisteröinti**: Salasanakentät ovat välttämättömiä sovelluksissa, jotka liittyvät käyttäjän tunnistamiseen tai rekisteröintiprosesseihin, joissa tarvitaan turvallista salasanan syöttöä.
 
-1. **Käyttäjän tunnistaminen ja rekisteröinti**: Salasanakentät ovat elintärkeitä sovelluksissa, jotka liittyvät käyttäjän tunnistamiseen tai rekisteröintiprosesseihin, joissa vaaditaan turvallista salasanan syöttämistä.
+2. **Turvalliset lomakeinputit**: Suunniteltaessa lomakkeita, jotka vaativat arkaluontoisten tietojen syöttämistä, kuten luottokorttitietoja tai henkilöllisyysnumerot (PIN), `PasswordField`-komponentin käyttö suojaa näiden tietojen syöttämistä.
 
-2. **Turvalliset lomakekentät**: Kun suunnittelet lomakkeita, jotka vaativat arkaluontoisten tietojen syöttämistä, kuten luottokorttitietoja tai henkilöllisyysnumeroita (PIN), `PasswordField`-komponentin käyttö varmistaa sellaisten tietojen syöttämisen turvallisesti.
-
-3. **Tilin hallinta ja profiiliasetukset**: Salasanakentät ovat arvokkaita sovelluksissa, jotka liittyvät tilin hallintaan tai profiiliasetuksiin, jolloin käyttäjät voivat muuttaa tai päivittää salasanojaan turvallisesti.
+3. **Tilinhallinta ja profiiliasetukset**: Salasanakentät ovat arvokkaita sovelluksissa, jotka liittyvät tilinhallintaan tai profiiliasetuksiin, mikä mahdollistaa käyttäjien vaihtaa tai päivittää salasanojaan turvallisesti.
 
 ## Salasanan näkyvyys {#password-visibility}
 
-Käyttäjät voivat paljastaa `PasswordField`-kentän arvon napsauttamalla paljastuskuvaketta. Tämä mahdollistaa käyttäjien tarkistaa mitä he ovat syöttäneet tai kopioida tiedon leikepöydälle. Kuitenkin korkeaturvallisuuskäyttöympäristöissä voit käyttää `setPasswordReveal()`-metodia poistaaksesi paljastuskuvakkeen ja estääksesi käyttäjiä näkemästä arvoa. Voit tarkistaa, voivatko käyttäjät käyttää paljastuskuvaketta näyttääkseen arvon `isPasswordReveal()`-metodilla.
+Käyttäjät voivat paljastaa `PasswordField`-kentän arvon napsauttamalla paljastusikonia. Tämä mahdollistaa käyttäjien tarkistaa, mitä he ovat syöttäneet, tai kopioida tiedot leikepöydälle. Kuitenkin korkean turvallisuuden ympäristöissä voit käyttää `setPasswordReveal()`-menetelmää poistaaksesi paljastusikoni ja estääksesi käyttäjiä näkemästä arvoa. Voit tarkistaa, voiko käyttäjä käyttää paljastusikonia arvon näyttämiseen `isPasswordReveal()`-menetelmällä.
 
-## Mallin tarkistaminen {#pattern-matching}
+## Mallin vastaavuus {#pattern-matching}
 
-On vahvasti suositeltavaa soveltaa säännöllistä lauseketta `PasswordField`-komponenttiin `setPattern()`-metodin avulla. Tämä antaa sinun pakottaa merkki- ja rakennevaatimuksia, jotka pakottavat käyttäjiä luomaan turvallisia ja vaatimusten mukaisia tunnuksia. Mallin tarkistaminen on erityisen hyödyllistä, kun pakotetaan vahvoja salasanasääntöjä, kuten vaaditaan sekoitus isoja ja pieniä kirjaimia, numeroita ja symboleita. 
+Säännöllisen lausekkeen mallin soveltaminen `PasswordField`-komponenttiin `setPattern()`-menetelmän avulla on vahvasti suositeltavaa. Tämä mahdollistaa merkkisääntöjen ja rakenteellisten vaatimusten noudattamisen, pakottaen käyttäjiä luomaan turvallisia ja vaatimusten mukaisia tunnuksia. Mallinvastaavuus on erityisen hyödyllistä, kun noudatetaan vahvoja salasanasääntöjä, kuten vaaditaan sekoitus suurista ja pienistä kirjaimista, numeroista ja symboleista.
 
-Malli on oltava [JavaScriptin säännöllisen lausekkeen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) syntaksin mukainen, kuten selain tulkitsee sen. `u` (Unicode) -lippua käytetään sisäisesti varmistamaan validointi kaikkien Unicode-koodipisteiden osalta. Älä sisällytä etu- tai takasuoria viivoja (`/`) mallin ympärille.
+Mallin on noudatettava [JavaScriptin säännöllisten lausekkeiden](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) syntaksia selaimen tulkitsemana. `u` (Unicode) -lippua käytetään sisäisesti varmistaamaan voimassaolon kaikilla Unicode-koodipisteillä. Älä **lisää** eteen tai taakse vinoviivoja (`/`) mallin ympärille.
 
-Seuraavassa pätkässä malli vaatii vähintään yhden pienen kirjaimen, yhden ison kirjaimen, yhden numeron ja vähimmäispituuden 8 merkkiä.
+Seuraavassa koodinäytteessä malli vaatii vähintään yhden pienen kirjaimen, yhden suuren kirjaimen, yhden numeron ja vähintään 8 merkin pituuden.
 
 ```java
 passwordField.setPattern("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}");
 ```
 
-Jos malli on puuttuva tai virheellinen, mitään validointia ei sovelleta.
+Jos mallia ei ole tai se on virheellinen, voimassaoloa ei sovelleta.
 
 :::tip
-Käytä `setLabel()`-metodia tarjotaksesi selkeä etiketti, joka kuvaa salasanakentän tarkoitusta. Auttaaksesi käyttäjiä ymmärtämään salasanavaatimuksia, käytä `setHelperText()`-metodia näyttämään ohjeita tai sääntöjä suoraan kentän alapuolella.
+Käytä `setLabel()`-menetelmää tarjotaksesi selkeä etiketti, joka kuvaa salasanakentän tarkoitusta. Auttaaksesi käyttäjiä ymmärtämään salasana vaatimuksia, käytä `setHelperText()`-menetelmää antaaksesi ohjeita tai sääntöjä suoraan kentän alle.
 :::
 
 
 ## Vähimmäis- ja enimmäispituus {#minimum-and-maximum-length}
 
-Voit hallita salasanasyötteen sallittua pituutta käyttämällä `setMinLength()`- ja `setMaxLength()`-metodeja `PasswordField`-komponentissa.
+Voit hallita salasanan syötteen sallittua pituutta käyttämällä `setMinLength()` ja `setMaxLength()`-menetelmiä `PasswordField`-komponentille.
 
-`setMinLength()`-metodi määrittelee vähimmäismäärän merkkejä, jotka käyttäjän on syötettävä kentässä hyväksymiseksi. Tämän arvon on oltava ei-negatiivinen kokonaisluku, eikä se saa ylittää enimmäispituutta, jos sellainen on asetettu.
+`setMinLength()`-menetelmä määrittää vähimmäismäärän merkkejä, jotka käyttäjän on syötettävä kenttään tullakseen hyväksytyksi. Tämän arvon on oltava ei-negatiivinen kokonaisluku, eikä sen tulisi ylittää asetettua enimmäispituutta.
 
 ```java
 passwordField.setMinLength(8); // Vähintään 8 merkkiä
 ```
 
-Jos käyttäjä syöttää vähemmän merkkejä kuin vähimmäismäärä, syöte epäonnistuu rajoitusvalidoinnissa. Tätä validointia sovelletaan vain, kun kentän arvoa muokataan käyttäjän toimesta.
+Jos käyttäjä syöttää vähemmän merkkejä kuin vähimmäismäärä, syöte epäonnistuu rajoitusvalidoinnissa. Tämä validointi sovelletaan vain silloin, kun kentän arvoa muokkaa käyttäjä.
 
-`setMaxLength()`-metodi asettaa kentässä sallitut enimmäismerkkimäärät. Arvon on oltava 0 tai suurempi. Jos sitä ei määritellä tai se asetetaan virheelliseksi arvoksi, kentällä ei ole ylärajaa merkeille.
+`setMaxLength()`-menetelmä määrittää kentässä sallitun enimmäismäärän merkkejä. Arvon on oltava 0 tai suurempi. Jos sitä ei ole määritelty tai se on asetettu virheelliseen arvoon, kentällä ei ole ylärajaa merkkimäärälle.
 
 ```java
 passwordField.setMaxLength(20); // Enintään 20 merkkiä
 ```
 
-Jos syöte ylittää enimmäismerkkirajan, kenttä epäonnistuu rajoitusvalidoinnissa. Kuten minimimäärä, tätä sääntöä sovelletaan vain, kun käyttäjä päivittää kentän arvoa.
+Jos syöte ylittää enimmäismerkki rajan, kenttä epäonnistuu rajoitusvalidoinnissa. Kuten vähimmäismäärä, tämä sääntö sovelletaan vain, kun käyttäjä päivittää kentän arvoa.
 
 :::tip
-Käytä sekä `setMinLength()` että `setMaxLength()` yhdessä luodaksesi tehokkaita syötearvoja. Katso [HTML-pituusrajoitteiden dokumentaatio](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength) lisää tietoa varten.
+Käytä sekä `setMinLength()` että `setMaxLength()` yhdessä luodaksesi tehokkaita syöterajoja. Katso [HTML-pituusrajojen asiakirjat](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength) lisää viitteitä varten.
 :::
 
 
 ## Parhaat käytännöt {#best-practices}
 
-Koska `PasswordField`-komponentti liittyy usein arkaluontoisiin tietoihin, ota huomioon seuraavat parhaat käytännöt käytettäessä `PasswordField`-komponenttia:
+Koska `PasswordField`-komponentti liittyy usein arkaluontoisiin tietoihin, harkitse seuraavia parhaita käytäntöjä, kun käytät `PasswordField`-komponenttia:
 
-- **Tarjoa salasanan vahvuuden palautetta**: Sisällytä salasanan vahvuuden indikaattoreita tai palautemekanismeja auttaaksesi käyttäjiä luomaan vahvoja ja turvallisia salasanoja. Arvioi tekijöitä, kuten pituus, monimutkaisuus ja isoilla sekä pienillä kirjaimilla, numeroilla ja erikoisilla merkeillä sekoittaminen.
+- **Tarjoa salasana vahvuuspalautetta**: Sisällytä salasana vahvuuden indikaattoreita tai palautemechanismeja auttaaksesi käyttäjiä luomaan vahvoja ja turvallisia salasanoja. Arvioi tekijöitä, kuten pituus, monimutkaisuus ja sekoitus suuresta ja pienestä kirjaimesta, numeroista ja erikoismerkeistä.
 
-- **Pakota salasanan tallennus**: Älä koskaan tallenna salasanoja tavallisessa tekstimuodossa. Sen sijaan toteuta asianmukaiset turvallisuustoimenpiteet hallitaksesi ja tallentaaksesi salasanoja turvallisesti sovelluksessasi. Käytä alan standardin mukaista salausalgoritmia salasanojen ja muiden arkaluontoisten tietojen tallentamiseen.
+- **Pakota salasanan tallennus**: Älä koskaan tallenna salasanoja selkokirjana. Sen sijaan toteuta asianmukaisia turvallisuustoimenpiteitä salasanan turvallista käsittelyä ja tallentamista varten sovelluksessasi. Käytä alan standardsalasanayksiköitä salasanoille ja muille arkaluontoisille tiedoille.
 
-- **Salasanan vahvistus**: Sisällytä lisävahvistuskenttä, kun käyttäjä vaihtaa tai luo salasanoja. Tämä toimenpide auttaa vähentämään kirjoitusvirheiden todennäköisyyttä ja varmistaa, että käyttäjät syöttävät haluamansa salasanan tarkasti.
+- **Salasanan vahvistaminen**: Sisällytä lisävahvistuskenttä, kun käyttäjä vaihtaa tai luo salasanan. Tämä toimenpide auttaa vähentämään kirjoitusvirheiden todennäköisyyttä ja varmistaa, että käyttäjät syöttävät haluamansa salasanan tarkasti.
 
-- **Salli salasanan palautus**: Jos sovelluksesi sisältää käyttäjätilit, tarjoa käyttäjille mahdollisuus palauttaa salasanansa. Tämä voi olla "Unohditko salasanan" -toimintona, joka käynnistää salasanan palautusprosessin.
+- **Mahdollista salasanan nollaaminen**: Jos sovelluksesi liittyy käyttäjätiliin, tarjoa vaihtoehto käyttäjien salasanan nollaamiseen. Tämä voi olla "Unohditko salasanasi" -toiminto, joka käynnistää salasanan palautusprosessin.
 
-- **Saavutettavuus**: Määrittele `PasswordField`-komponentti saavutettavuus mielessä pitäen, jotta se täyttää saavutettavuusstandardit, kuten asianmukaiset etiketit ja yhteensopivuus apuvälineiden kanssa.
+- **Esteettömyys**: Aseta `PasswordField` esteettömyys mielessä, jotta se täyttää esteettömyysstandardit, kuten asianmukaiset etikettit ja yhteensopivuuden apuvälineiden kanssa.

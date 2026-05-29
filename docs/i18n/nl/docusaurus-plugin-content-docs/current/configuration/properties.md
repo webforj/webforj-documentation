@@ -1,25 +1,24 @@
 ---
 title: Property Configuration
 sidebar_position: 30
-sidebar_class_name: updated-content
-_i18n_hash: fe000276baa9ac8b0773e5c4372d8463
+_i18n_hash: 668649d2e0f92ebc4012e0c58cd1b706
 ---
 # Configureren van webforJ-eigenschappen
 
-Om een webforJ-app succesvol te implementeren en uit te voeren, zijn enkele belangrijke configuratiebestanden vereist: `webforj.conf` en `web.xml`. Elk van deze bestanden bestuurt verschillende aspecten van het gedrag van de app, van toegangspunten en debuginstellingen tot servlet-mappingen.
+Om een webforJ-app met succes te implementeren en uit te voeren, zijn een paar belangrijke configuratiebestanden vereist: `webforj.conf` en `web.xml`. Elk van deze bestanden regelt verschillende aspecten van het gedrag van de app, van toegangspunten en debuginstellingen tot servlet-mappingen.
 
 ## Configureren van `webforj.conf` {#configuring-webforjconf}
 
-Het `webforj.conf`-bestand is een kernconfiguratiebestand in webforJ, waarin app-instellingen zoals toegangspunten, debugmodus en client-server-interactie zijn gespecificeerd. Het bestand bevindt zich in [HOCON-formaat](https://github.com/lightbend/config/blob/master/HOCON.md) en zou in de map `resources` moeten staan.
+Het `webforj.conf`-bestand is een kernconfiguratiebestand in webforJ, waarin app-instellingen zoals toegangspunten, debugmodus en interactie tussen cliënt en server worden gespecificeerd. Het bestand is in [HOCON-indeling](https://github.com/lightbend/config/blob/master/HOCON.md) en moet zich bevinden in de `resources`-map.
 
 :::tip
-Als je integreert met [Spring](../integrations/spring/overview.md), kun je deze `webforj.conf`-eigenschappen instellen in het bestand `application.properties`.
+Als je integreert met [Spring](../integrations/spring/overview.md), kun je deze `webforj.conf`-eigenschappen instellen in het `application.properties`-bestand.
 :::
 
-### Voorbeeld `webforj.conf`-bestand {#example-webforjconf-file}
+### Voorbeeld van `webforj.conf`-bestand {#example-webforjconf-file}
 
 ```Ini
-# Dit configuratiebestand is in HOCON-formaat:
+# Dit configuratiebestand is in HOCON-indeling:
 # https://github.com/lightbend/config/blob/master/HOCON.md
 
 webforj.entry = com.webforj.samples.Application
@@ -30,37 +29,39 @@ webforj.clientHeartbeatRate = 1s
 
 ### Configuratieopties {#configuration-options}
 
-| Eigenschap                           | Type    | Uitleg                                                          | Standaard               |
-|--------------------------------------|---------|------------------------------------------------------------------|-------------------------|
-| **`webforj.assetsCacheControl`**     | String  | Cache-Control header voor statische bronnen.                     | `null`                  |
-| **`webforj.assetsDir`**              | String  | De routenaam die wordt gebruikt om statische bestanden te serveren, terwijl de daadwerkelijke mapnaam `static` blijft. Deze configuratie is nuttig als de standaard `static`-route conflicteert met een route die in jouw app is gedefinieerd, zodat je de routenaam kunt wijzigen zonder de map zelf te hernoemen. | `null`                  |
-| **`webforj.assetsExt`**              | String  | Standaardbestandsextensie voor statische bestanden.              | `null`                  |
-| **`webforj.assetsIndex`**            | String  | Standaardbestand dat wordt geserveerd voor directoryverzoeken (bijv. index.html). | `null`                  |
-| **`webforj.clientHeartbeatRate`**    | String  | Het interval waarop de client de server pingt om te controleren of deze nog actief is. Stel dit in op een kortere interval, bijvoorbeeld `8s`, voor ontwikkeling, om serverbeschikbaarheid snel te detecteren. Stel het in op 50 seconden of langer in productie om overmatige verzoeken te voorkomen. | `50s`                  |
-| **`webforj.components`**             | String  | Wanneer gespecificeerd, bepaalt het basispad waar DWC-componenten worden geladen. Standaard worden componenten geladen van de server die de app host. Het instellen van een aangepast basispad stelt componenten in staat om van een alternatieve server of CDN te worden geladen. Bijvoorbeeld, om componenten van jsdelivr.com te laden, stel je het basispad in op: https://cdn.jsdelivr.net/gh/webforj/dwc-dist@1.0.0-${webforj.version} Het is belangrijk dat de geladen componenten compatibel zijn met de versie van het webforJ-framework dat in gebruik is; anders functioneert de app mogelijk niet zoals verwacht. Deze instelling wordt genegeerd wanneer een standaard BBj-installatie zonder de engine wordt gebruikt. Voor een standaard BBj-installatie kan de instelling worden beheerd met de `!COMPONENTS` STBL. | `null`                  |
-| **`webforj.debug`**                  | Boolean | Schakelt de debugmodus in. In de debugmodus zal webforJ extra informatie naar de console afdrukken en alle uitzonderingen in de browser tonen. Debugmodus is standaard uitgeschakeld. | `null`                  |
-| **`webforj.entry`**                  | String  | Definieert het toegangspunt van de app door de volledig gekwalificeerde naam van de klasse op te geven die `webforj.App` uitbreidt. Als er geen toegangspunt is gedefinieerd, zal webforJ automatisch de classpath scannen op klassen die `webforj.App` uitbreiden. Als er meerdere klassen worden gevonden, treedt er een fout op. Wanneer een package meer dan één potentieel toegangspunt bevat, is het nodig om dit expliciet in te stellen om ambiguïteit te voorkomen, of alternatieven kan de annotatie `AppEntry` worden gebruikt om het toegangspunt tijdens runtime op te geven. | `null`                  |
-| **`webforj.fileUpload.accept`**      | List    | De toegestane bestandstypen voor bestand uploads. Standaard zijn alle bestandstypen toegestaan. Ondersteunde indelingen omvatten MIME-types zoals `image/*`, `application/pdf`, `text/plain`, of bestandsextensies zoals `*.txt`. Bij gebruik van een standaard BBj-installatie wordt deze instelling genegeerd en beheerd via `fileupload-accept.txt`. | `[]`                    |
-| **`webforj.fileUpload.maxSize`**     | Long    | De maximale bestandsgrootte die is toegestaan voor bestand uploads, in bytes. Standaard is er geen limiet. Bij gebruik van een standaard BBj-installatie wordt deze instelling genegeerd en beheerd via `fileupload-accept.txt`. | `null`                  |
-| **`webforj.iconsDir`**               | String  | URL-eindpunt voor de iconenmap (standaard vanaf `resources/icons/` serven). | `icons/`                |
-| **`webforj.license.cfg`**            | String  | De map voor de licentieconfiguratie. Standaard is het dezelfde als de configuratiemap van webforJ, maar dit kan indien nodig gepersonaliseerd worden. | `"."`                   |
-| **`webforj.license.startupTimeout`** | Integer | Licentie opstarttimeout in seconden. | `null`                  |
-| **`webforj.locale`**                 | String  | De lokale instelling voor de app, die de taal, regionale instellingen en formaten voor datums, tijden en getallen bepaalt. | `null`                  |
-| **`webforj.quiet`**                  | Boolean | Schakelt de laadafbeelding uit tijdens het opstarten van de applicatie. | `false`                 |
-| **`webforj.reloadOnServerError`**    | Boolean | **Alleen voor ontwikkelomgevingen.** In een ontwikkelomgeving, auto-herladen van de pagina bij fouten gerelateerd aan hot redeployment, maar niet andere fouttypes. Bij het gebruik van hot redeploy, als de client een verzoek naar de server stuurt terwijl deze opnieuw opstart, kan er een fout optreden terwijl het WAR-bestand wordt verwisseld. Omdat de server waarschijnlijk snel weer online is, stelt deze instelling de client in staat om automatisch een pagina-herlaadpoging te doen. | `false`                 |
-| **`webforj.servlets[n].name`**       | String  | Servletnaam (gebruik de klassenaam als deze niet is gespecificeerd). | `null`                  |
-| **`webforj.servlets[n].className`**  | String  | Volledig gekwalificeerde klassenaam van de servlet. | `null`                  |
-| **`webforj.servlets[n].config.<key>`** | `Map<String,String>` | Initialisatieparameters voor de servlet. | `null`                  |
-| **`webforj.sessionTimeout`**         | Integer | Sessietimeoutduur in seconden. | `60`                    |
-| **`webforj.stringTable`**            | `Map<String,String>` | Een kaart van sleutel-waarde-paren die worden gebruikt om strings op te slaan voor gebruik in de app. Nuttig voor het opslaan van app-berichten of labels. Meer informatie over `StringTable` is te vinden [hier](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/StringTable.html). | `{}`                    |
-| **`webforj.mime.extensions`**        | `Map<String,String>` | Aangepaste MIME-type mappings voor bestandsextensies bij het serveren van statische bestanden. Hiermee kun je standaard MIME-types overschrijven of MIME-types voor aangepaste extensies definiëren. De sleutel van de map is de bestandsextensie (zonder de punt), en de waarde is het MIME-type. | `{}`                    |
+| Eigenschap                             | Type    | Uitleg                                                       | Standaard                |
+|---------------------------------------|---------|--------------------------------------------------------------|--------------------------|
+| **`webforj.assetsCacheControl`**     | String  | Cache-Control-header voor statische bronnen.                 | `null`                   |
+| **`webforj.assetsDir`**              | String  | De routenaam die wordt gebruikt om statische bestanden te serveren, terwijl de werkelijke mapnaam `static` blijft. Deze configuratie is handig als de standaard `static`-route conflicteert met een in jouw app gedefinieerde route, zodat je de routenaam kunt wijzigen zonder de map zelf te hernoemen.       | `null`                   |
+| **`webforj.assetsExt`**              | String  | Standaard bestandsextensie voor statische bestanden.         | `null`                   |
+| **`webforj.assetsIndex`**            | String  | Standaard bestand dat wordt geserveerd voor directory-aanvragen (bijv. index.html). | `null`                   |
+| **`webforj.clientHeartbeatRate`**    | String  | Het interval waarin de cliënt de server pingt om te controleren of deze nog alive is. Stel dit tijdens de ontwikkeling in op een kortere interval, bijvoorbeeld `8s`, om de beschikbaarheid van de server snel te detecteren. Stel dit in op 50 seconden of meer in productie om overmatige verzoeken te vermijden. | `50s`                   |
+| **`webforj.components`**              | String  | Wanneer gespecificeerd, bepaalt het basispad waar DWC-componenten worden geladen. Standaard worden componenten geladen van de server die de app host. Het instellen van een aangepast basispad maakt het mogelijk componenten te laden van een alternatieve server of CDN. Bijvoorbeeld, om componenten van jsdelivr.com te laden, stel je het basispad in op: https://cdn.jsdelivr.net/gh/webforj/dwc-dist@1.0.0-${webforj.version}. Het is belangrijk dat de geladen componenten compatibel zijn met de versie van het webforJ-framework dat in gebruik is; anders functioneert de app mogelijk niet zoals verwacht. Deze instelling wordt genegeerd bij gebruik van een standaard BBj-installatie zonder de engine. Voor een standaard BBj-installatie kan de instelling worden beheerd met de `!COMPONENTS` STBL. | `null`                   |
+| **`webforj.debug`**                  | Boolean | Zet de debugmodus aan. In debugmodus zal webforJ extra informatie naar de console afdrukken en alle uitzonderingen in de browser tonen. De debugmodus is standaard uitgeschakeld. | `null`                   |
+| **`webforj.entry`**                  | String  | Definieert het toegangspunt van de app door de volledig gekwalificeerde naam van de klasse op te geven die `webforj.App` uitbreidt. Als er geen toegangspunt is gedefinieerd, scant webforJ automatisch het classpath op klassen die `webforj.App` uitbreiden. Als er meerdere klassen worden gevonden, zal er een fout optreden. Wanneer een pakket meer dan één potentieel toegangspunt bevat, is het expliciet instellen hiervan vereist om ambiguïteit te voorkomen, of alternatief kan de annotatie `AppEntry` worden gebruikt om het toegangspunt tijdens runtime op te geven. | `null`                   |
+| **`webforj.i18n.supported-locales`**&nbsp;<DocChip chip='since' label='25.12' /> | Lijst | Lijst van ondersteunde locaties als BCP 47-taal-tags (bijv. `"en"`, `"en-US"`, `"fr"`, `"de-DE"`). Wanneer automatische detectie is ingeschakeld, worden de voorkeurslocaties van de browser vergeleken met deze lijst. De eerste locatie in de lijst wordt gebruikt als de standaardfallback. Zie [Vertaling](../advanced/i18n-localization.md). | `[]`                     |
+| **`webforj.i18n.auto-detect`**&nbsp;<DocChip chip='since' label='25.12' /> | Boolean | Wanneer `true`, wordt de applicatielocatie automatisch ingesteld op basis van de voorkeurs taal van de browser bij opstarten. De locatie wordt opgelost door de voorkeurslocaties van de browser te matchen met de lijst `supported-locales`. Wanneer `false` of wanneer `supported-locales` leeg is, gebruikt de applicatie `webforj.locale`. Zie [Vertaling](../advanced/i18n-localization.md). | `false`                  |
+| **`webforj.fileUpload.accept`**      | Lijst    | De toegestane bestandstypen voor bestand uploads. Standaard zijn alle bestandstypen toegestaan. Ondersteunde formaten omvatten MIME-typen zoals `image/*`, `application/pdf`, `text/plain`, of bestandsextensies zoals `*.txt`. Bij gebruik van een standaard BBj-installatie wordt deze instelling genegeerd en beheerd via `fileupload-accept.txt`. | `[]`                     |
+| **`webforj.fileUpload.maxSize`**     | Long    | De maximale bestandsgrootte die is toegestaan voor bestand uploads, in bytes. Standaard is er geen limiet. Bij gebruik van een standaard BBj-installatie wordt deze instelling genegeerd en beheerd via `fileupload-accept.txt`. | `null`                   |
+| **`webforj.iconsDir`**               | String  | URL-eindpunt voor het pictogrammenmap (standaard bedient vanuit `resources/icons/`). | `icons/`                  |
+| **`webforj.license.cfg`**            | String  | De map voor de licentieconfiguratie. Standaard is dit dezelfde als de webforJ-configuratiemap, maar dit kan indien nodig worden aangepast. | `"."`                    |
+| **`webforj.license.startupTimeout`** | Integer | Licentie opstarttimeout in seconden. | `null`                   |
+| **`webforj.locale`**                 | String  | De locatie voor de app, die taal, regiovoorwaarden en opmaak voor data, tijden en getallen bepaalt. | `null`                   |
+| **`webforj.quiet`**                  | Boolean | Schakelt de laad afbeelding uit tijdens de opstart van de applicatie. | `false`                  |
+| **`webforj.reloadOnServerError`**    | Boolean | **Alleen ontwikkelingsomgevingen.** In een ontwikkelingsomgeving, herlaad automatisch de pagina bij fouten gerelateerd aan hot redeployment, maar niet bij andere fouttypen. Bij gebruik van hot redeploy, kan er een fout optreden als de cliënt een verzoek naar de server stuurt terwijl deze opnieuw opstart. Aangezien de server waarschijnlijk snel weer online is, laat deze instelling de cliënt automatisch proberen de pagina opnieuw te laden. | `false`                  |
+| **`webforj.servlets[n].name`**       | String  | Servlets naam (gebruikt classnaam als niet gespecificeerd). | `null`                   |
+| **`webforj.servlets[n].className`**  | String | Volledig gekwalificeerde classnaam van de servlet. | `null`                   |
+| **`webforj.servlets[n].config.<key>`** | `Map<String,String>` | Servlet-initialisatieparameters. | `null`                   |
+| **`webforj.sessionTimeout`**         | Integer | Sessietimeoutduur in seconden. | `60`                     |
+| **`webforj.stringTable`**            | `Map<String,String>` | Een kaart van sleutel-waardeparen die worden gebruikt om strings op te slaan voor gebruik in de app. Nuttig voor het opslaan van app-berichten of labels. Meer informatie over `StringTable` is te vinden [hier](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/StringTable.html). | `{}`                     |
+| **`webforj.mime.extensions`**            | `Map<String,String>` | Aangepaste MIME-type mappingen voor bestandsextensies bij het serveren van statische bestanden. Maakt het mogelijk om standaard MIME-typen te overschrijven of MIME-typen voor aangepaste extensies te definiëren. De sleutel van de kaart is de bestandsextensie (zonder de punt), en de waarde is het MIME-type. | `{}`                     |
 
 ## Configureren van `web.xml` {#configuring-webxml}
 
-Het `web.xml`-bestand is een essentieel configuratiebestand voor Java-webapps, en in webforJ definieert het belangrijke instellingen zoals de servletconfiguratie, URL-patronen en welkomstpagina's. Dit bestand moet zich in de map `WEB-INF` van de implementatiestructuur van jouw project bevinden.
+Het `web.xml`-bestand is een essentieel configuratiebestand voor Java-webapps, en in webforJ definieert het belangrijke instellingen zoals de servletconfiguratie, URL-patronen en welkomstpagina's. Dit bestand moet zich bevinden in de `WEB-INF`-map van de implementatiestructuur van jouw project.
 
-| Instelling                            | Uitleg                                                                                                                                                                  | Standaardwaarde           |
-|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| **`<display-name>`**                  | Stelt de weergavenaam in voor de webapp, meestal afgeleid van de projectnaam. Deze naam verschijnt in het beheersconsole van de appservers.                             | `${project.name}`         |
-| **`<servlet>` en `<servlet-mapping>`** | Definieert de `WebforjServlet`, de kernservlet voor het afhandelen van webforJ-verzoeken. Deze servlet is gemapt naar alle URL's (`/*`), waardoor het de belangrijkste toegangspunt voor webverzoeken is. | `WebforjServlet`          |
-| **`<load-on-startup>`**               | Geeft aan dat `WebforjServlet` moet worden geladen wanneer de app start. Door dit in te stellen op `1`, wordt de servlet onmiddellijk geladen, wat de initiale verzoekverwerking verbetert. | `1`                       |
+| Instelling                             | Uitleg                                                                                                                                                                                        | Standaardwaarde            |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| **`<display-name>`**                  | Stelt de weergeefnaam in voor de webapp, meestal afgeleid van de projectnaam. Deze naam verschijnt in de beheerconsoles van app-servers.                                                     | `${project.name}`           |
+| **`<servlet>` en `<servlet-mapping>`** | Definieert de `WebforjServlet`, de kernservlet voor het afhandelen van webforJ-verzoeken. Deze servlet is gemapt op alle URL's (`/*`), waardoor het de belangrijkste toegangspunt voor webverzoeken is. | `WebforjServlet`            |
+| **`<load-on-startup>`**               | Specificeert dat `WebforjServlet` moet worden geladen wanneer de app start. Het instellen van dit op `1` zorgt ervoor dat de servlet onmiddellijk laadt, wat de afhandeling van het eerste verzoek verbetert. | `1`                         |

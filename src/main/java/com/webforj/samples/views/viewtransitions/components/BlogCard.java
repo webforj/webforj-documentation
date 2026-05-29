@@ -14,8 +14,9 @@ import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
 
 @StyleSheet("ws://css/viewtransitions/components/blog-card.css")
-public class BlogCard extends Composite<FlexLayout> implements HasClassName<BlogCard>, HasStyle<BlogCard> {
-  private FlexLayout self = getBoundComponent();
+public class BlogCard extends Composite<FlexLayout>
+    implements HasClassName<BlogCard>, HasStyle<BlogCard> {
+  private final FlexLayout self = getBoundComponent();
 
   public BlogCard(String title, String excerpt, String transitionName) {
     self.setDirection(FlexDirection.COLUMN)

@@ -12,11 +12,9 @@ import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.stream.Stream;
-
 public class AlertExpansesViewIT extends BaseTest {
 
-    private AlertExpansesPage alertExpansesPage;
+  private AlertExpansesPage alertExpansesPage;
 
     public void setupAlertExpanses(SupportedLanguage language) {
         navigateToRoute(AlertExpansesPage.getRoute(language));
@@ -31,4 +29,5 @@ public class AlertExpansesViewIT extends BaseTest {
         assertThat(alertExpansesPage.getAlertMedium()).hasAttribute("expanse", "m");
         assertThat(alertExpansesPage.getAlertXLarge()).hasAttribute("expanse", "xl");
     }
+
 }

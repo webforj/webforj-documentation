@@ -1,70 +1,73 @@
 ---
 title: Refresher
 sidebar_position: 101
-_i18n_hash: 77c3e72a5a59a55d61a7dba79efb7324
+_i18n_hash: 99793e9f95d4c5a052014f677aa8a6cb
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-refresher" />
 <DocChip chip='since' label='25.00' />
 <JavadocLink type="refresher" location="com/webforj/component/refresher/Refresher" top='true'/>
 
-De `Refresher` component in webforJ maakt een pull-to-refresh interactie mogelijk binnen scrollbare containers—ideaal voor het dynamisch laden van gegevens op mobiele of touch-vriendelijke interfaces. Terwijl gebruikers naar beneden vegen voorbij een configureerbare drempel, doorloopt de refresher visuele toestanden: `pull`, `release` en `refreshing`. Elke toestand presenteert een aanpasbaar pictogram en gelokaliseerde tekst om duidelijk feedback te communiceren.
+Pull-to-refresh is een veelvoorkomend patroon in mobiele en tap-vriendelijke interfaces, en de `Refresher`-component brengt het naar scrollbare containers in webforJ. Terwijl gebruikers naar beneden vegen voorbij een instelbare drempel, schakelt het tussen visuele toestanden: `pull`, `release` en `refreshing`, elk met een aanpasbaar pictogram en gelokaliseerde tekst. Het werkt goed samen met [`InfiniteScroll`](../components/infinitescroll) voor het herladen of opnieuw instellen van inhoud via gebaar-gebaseerde invoer.
 
-Je kunt `Refresher` gebruiken in combinatie met componenten zoals [`InfiniteScroll`](../components/infinitescroll) om inhoud opnieuw te laden of de staat te resetten via eenvoudige gebaargebaseerde invoer. De component is volledig configureerbaar wat betreft interactiegedrag, uiterlijk, lokalisatie en integratie met de rest van je gebruikersinterface.
+<!-- INTRO_END -->
 
-## Instantiatie en internationalisatie {#instantiation-and-internationalization}
+## Instantiatie en internationalisering {#instantiation-and-internationalization}
 
-Voeg een `Refresher` toe door deze te instantiëren en een refresh listener te registreren. Wanneer de refreshbewerkingen zijn voltooid, roep je `finish()` aan om de component opnieuw naar zijn idle-toestand te resetten.
+Voeg een `Refresher` toe door deze te instantiëren en een refresh listener te registreren. Wanneer de refresh-operaties zijn voltooid, roep dan `finish()` aan om de component weer in zijn inactieve staat te zetten.
 
-:::info Hoe je de `Refresher` activeert
-Om de `Refresher` te activeren, **klik en sleep naar beneden** vanaf de bovenkant van het scrollbare gebied. Hoewel deze gebaar bekend is op mobiele apparaten, is het minder gebruikelijk op desktop—zorg ervoor dat je met de muis vasthoudt en trekt.
+:::info Hoe de `Refresher` te activeren
+Om de `Refresher` te activeren, **klik en sleep naar beneden** vanaf de bovenkant van het scrollbare gebied. Hoewel deze gebaar bekend is op mobiel, is het minder gebruikelijk op desktop—zorg ervoor dat je met je muis vasthoudt en trekt.
 :::
 
-<AppLayoutViewer
-path='/webforj/refresher?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresher'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
-Deze aanpak wordt vaak gebruikt om gepagineerde lijsten te vernieuwen of het oneindige scrollen opnieuw te starten.
+Deze aanpak wordt vaak gebruikt om gepagineerde lijsten te vernieuwen of de laadfunctie van oneindig scrollen te herstarten.
 
-### Internationalisatie {#internationalization}
+### Internationalisering {#internationalization}
 
-Elke statuslabel kan ook gelokaliseerd worden met behulp van het `RefresherI18n` object. De drie staten zijn:
+Elk statuslabel kan ook worden gelokaliseerd met behulp van het `RefresherI18n`-object. De drie staten zijn:
 
-- Pull: Initiële gebaartekst (bijv. "Trek naar beneden om te verversen")
-- Release: Triggerdrempel bereikt (bijv. "Laat los om te verversen")
-- Refresh: Laadstatus (bijv. "Verfrissen")
+- Pull: Initiële gebaartekst (bijv. "Trek naar beneden om te vernieuwen")
+- Release: Activeringsdrempel bereikt (bijv. "Laat los om te vernieuwen")
+- Refresh: Laadtoestand (bijv. "Bezig met vernieuwen")
 
-Dit maakt meertalig ondersteuning en aanpassingen aan branding mogelijk indien nodig.
+Dit zorgt voor meertalige ondersteuning en aanpassingen voor branding indien nodig.
 
-<AppLayoutViewer 
-path='/webforj/refresheri18n?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresheri18n'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
 ## Pictogramaanpassing {#icon-customization}
 
-Je kunt de [`Icons`](../components/icon) die worden gebruikt voor de `pull`/`release` en `refreshing` fasen wijzigen met behulp van een vooraf gedefinieerde [`Icon`](../components/icon) of een [Icon-URL](../managing-resources/assets-protocols). Deze zijn nuttig wanneer je branding of een aangepaste animatie wilt toepassen.
+Je kunt de gebruikte [`Icons`](../components/icon) voor de `pull`/`release` en `refreshing` stadia wijzigen met behulp van een vooraf gedefinieerde [`Icon`](../components/icon) of een [Icon URL](../managing-resources/assets-protocols). Deze zijn nuttig wanneer je branding of een aangepaste animatie wilt toepassen.
 
-<AppLayoutViewer 
-path='/webforj/refreshericon?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refreshericon'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
-## Pull-gedrag configuratie {#pull-behavior-configuration}
+## Pullgedrag configuratie {#pull-behavior-configuration}
 
 ### Drempel {#threshold}
 
-Stel in hoe ver de gebruiker naar beneden moet trekken (in pixels) voordat de refresh wordt geactiveerd:
+Stel in hoe ver de gebruiker moet trekken (in pixels) voordat de refresh wordt geactiveerd:
 
 ```java
 refresher.setThreshold(80); // standaard: 80px
@@ -72,49 +75,50 @@ refresher.setThreshold(80); // standaard: 80px
 
 ### Maximale drempel {#threshold-maximum}
 
-Om de maximale pull-afstand die is toegestaan te definiëren, gebruik de `setThresholdMax()` methode:
+Om de maximale trekafstand te definiëren die is toegestaan, gebruik de methode `setThresholdMax()`:
 
 ```java
 refresher.setThresholdMax(160);
 ```
 
-Deze drempels bepalen de gevoeligheid van de gebaren en de weerstandscurve.
+Deze drempels regelen de gevoeligheid van de gebaren en de weerstandscurve.
 
-## Statusbeheer {#state-management}
+## Toestandbeheer {#state-management}
 
-De `Refresher` component behoudt zijn eigen interne status en communiceert statuswijzigingen via evenementen. Wanneer een gebruiker naar beneden trekt voorbij de gedefinieerde drempel, genereert de `Refresher` een vernieuwingsevenement waar je op kunt reageren door een `onRefresh()` listener te registreren.
+De `Refresher`-component behoudt zijn eigen interne toestand en communiceert toestandwijzigingen via gebeurtenissen. Wanneer een gebruiker naar beneden trekt voorbij de gedefinieerde drempel, stoot de `Refresher` een refreshgebeurtenis uit waarop je kunt reageren door een `onRefresh()`-listener te registreren.
 
-Binnen deze listener wordt van je verwacht dat je de benodigde bewerking uitvoert—zoals het ophalen van nieuwe gegevens of het resetten van een lijst—en vervolgens expliciet aanroept:
+Binnen deze listener wordt van je verwacht dat je de benodigde operatie uitvoert—zoals het ophalen van nieuwe gegevens of het opnieuw instellen van een lijst—en vervolgens expliciet aanroept:
 
 ```java
 refresher.finish();
 ```
 :::warning Ontbrekende `finish()`
-Als je vergeet `finish()` aan te roepen, blijft de refresher eindeloos in de laadstatus.
+Als je vergeet `finish()` aan te roepen, blijft de refresher in de laadtoestand.
 :::
 
-Je kunt de `Refresher` ook op elk moment programmatisch uitschakelen om te voorkomen dat de gebruiker de refresh-gedraging activeert:
+Je kunt de `Refresher` ook programmatisch op elk moment uitschakelen om te voorkomen dat de gebruiker refresh-gedrag activeert:
 
 ```java
 refresher.setEnabled(false);
 ```
 
-Dit is nuttig wanneer refreshen tijdelijk niet is toegestaan—bijvoorbeeld tijdens een laadscherm of terwijl een ander kritisch proces actief is.
+Dit is handig wanneer vernieuwingen tijdelijk niet zijn toegestaan—bijvoorbeeld tijdens een laadscherm of terwijl een ander kritisch proces wordt uitgevoerd.
 
-## Stijlgeving {#styling}
+## Styling {#styling}
 
 ### Thema's {#themes}
 
-De `Refresher` component ondersteunt meerdere thema's om verschillende staten visueel te onderscheiden of om aan te sluiten bij de uitstraling van je app. Thema's kunnen worden toegepast met behulp van de `setTheme()` methode.
+De `Refresher`-component ondersteunt meerdere thema's om verschillende toestanden visueel te onderscheiden of om aan de look en feel van je app te voldoen. Thema's kunnen worden toegepast met de methode `setTheme()`.
 
-Het volgende voorbeeld doorloopt alle beschikbare thema's elke keer dat je trekt om te verversen, waardoor je een live voorbeeld krijgt van hoe de `Refresher` eruitziet in verschillende thema's:
+Het volgende voorbeeld doorloopt alle beschikbare thema's elke keer als je trekt om te vernieuwen, zodat je een live voorbeeld krijgt van hoe de `Refresher` eruit ziet in verschillende thema's:
 
-<AppLayoutViewer 
-path='/webforj/refresherthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresherthemes'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
 <TableBuilder name="Refresher" />

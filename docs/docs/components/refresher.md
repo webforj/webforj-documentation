@@ -1,6 +1,7 @@
 ---
 title: Refresher
 sidebar_position: 101
+description: Enable pull-to-refresh on scrollable areas with the Refresher component, with pull, release, and refreshing states and i18n labels.
 ---
 
 <DocChip chip="shadow" />
@@ -8,9 +9,9 @@ sidebar_position: 101
 <DocChip chip='since' label='25.00' />
 <JavadocLink type="refresher" location="com/webforj/component/refresher/Refresher" top='true'/>
 
-The `Refresher` component in webforJ enables a pull-to-refresh interaction within scrollable containers—ideal for dynamic data loading in mobile or tap-friendly interfaces. As users swipe downward past a configurable threshold, the refresher transitions through visual states: `pull`, `release`, and `refreshing`. Each state presents a customizable icon and localized text to clearly communicate feedback.
+Pull-to-refresh is a common pattern in mobile and tap-friendly interfaces, and the `Refresher` component brings it to scrollable containers in webforJ. As users swipe downward past a configurable threshold, it transitions through visual states: `pull`, `release`, and `refreshing`, each with a customizable icon and localized text. It pairs well with [`InfiniteScroll`](../components/infinitescroll) for reloading or resetting content through gesture-based input.
 
-You can use `Refresher` in tandem with components like [`InfiniteScroll`](../components/infinitescroll) to reload content or reset state via simple gesture-based input. The component is fully configurable in terms of interaction behavior, appearance, localization, and integration with the rest of your UI.
+<!-- INTRO_END -->
 
 ## Instantiation and internationalization {#instantiation-and-internationalization}
 
@@ -20,12 +21,13 @@ Add a `Refresher` by instantiating it and registering a refresh listener. When r
 To activate the `Refresher`, **click and drag downward** from the top of the scrollable area. While this gesture is familiar on mobile, it's less common on desktop—make sure to hold and pull with your mouse.
 :::
 
-<AppLayoutViewer
-path='/webforj/refresher?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresher'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
 This approach is commonly used to refresh paginated lists or restart infinite scroll loading.
@@ -40,24 +42,26 @@ Each state label can also be localized using the `RefresherI18n` object. The thr
 
 This allows multilingual support and branding adjustments as needed.
 
-<AppLayoutViewer 
-path='/webforj/refresheri18n?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresheri18n'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
 ## Icon customization {#icon-customization}
 
 You can change the [`Icons`](../components/icon) used for the `pull`/`release` and `refreshing` stages using either a predefined [`Icon`](../components/icon) or an [Icon URL](../managing-resources/assets-protocols). These are useful when you want to apply branding or a custom animation.
 
-<AppLayoutViewer 
-path='/webforj/refreshericon?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refreshericon'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
 ## Pull behavior configuration {#pull-behavior-configuration}
@@ -109,12 +113,13 @@ The `Refresher` component supports multiple themes to visually distinguish diffe
 
 The following sample cycles through all available themes each time you pull to refresh, giving you a live preview of how the `Refresher` looks across different themes:
 
-<AppLayoutViewer 
-path='/webforj/refresherthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresherthemes'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
 <TableBuilder name="Refresher" />

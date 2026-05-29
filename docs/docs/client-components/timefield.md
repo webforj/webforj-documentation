@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-timefield>
 sidebar_class_name: sidebar--item__hidden
 slug: timefield
-description: A user guide article for the timefield
+description: Theme the dwc-timefield input through CSS variables and shadow parts for label, border, segments, and picker affordance.
 // pagination_prev: null
 // pagination_next: null
 ---

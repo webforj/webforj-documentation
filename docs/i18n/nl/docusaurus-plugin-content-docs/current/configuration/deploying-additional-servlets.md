@@ -1,30 +1,31 @@
 ---
 sidebar_position: 35
 title: Deploying Additional Servlets
-sidebar_class_name: new-content
-_i18n_hash: 95695a68854d595e78a58904d7214208
+_i18n_hash: e7f1a0bcf3986ff50dcfd89281ab3339
 ---
 <!-- vale off -->
-# Implementatie van Extra Servlets <DocChip chip='since' label='25.02' />
+# Het implementeren van Extra Servlets <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-webforJ leidt alle aanvragen via `WebforjServlet`, dat standaard in web.xml is gekoppeld aan `/*`. Deze servlet beheert de levenscyclus van componenten, routering en UI-updates die uw webforJ-app aansteken.
+webforJ leidt alle verzoeken via `WebforjServlet`, dat standaard is toegewezen aan `/*` in web.xml. Deze servlet beheert de levenscyclus van componenten, routering en UI-updates die uw webforJ-app aandrijven.
 
-In sommige scenario's heeft u mogelijk behoefte aan het implementeren van extra servlets naast uw webforJ-app:
-- Integratie van derde partijen bibliotheken die hun eigen servlets aanbieden
-- Implementatie van REST API's of webhooks
-- Verwerking van bestandsuploads met aangepaste verwerking
-- Ondersteuning van legacy servlet-gebaseerde code
+In sommige scenario's moet u mogelijk extra servlets implementeren naast uw webforJ-app:
+- Integreren van externe bibliotheken die hun eigen servlets bieden
+- Implementeren van REST-API's of webhooks
+- Afhandelen van bestand uploads met aangepaste verwerking
+- Ondersteunen van legacy servlet-gebaseerde code
 
-webforJ biedt twee manieren om aangepaste servlets naast uw app te implementeren:
+webforJ biedt twee benaderingen voor het implementeren van aangepaste servlets naast uw app:
 
-## Aanpak 1: Remapping van `WebforjServlet` {#approach-1-remapping-webforjservlet}
+<AISkillTip skill="webforj-adding-servlets" />
 
-Deze aanpak remapt de `WebforjServlet` van `/*` naar een specifieke route zoals `/ui/*`, waardoor de URL-namespace vrij komt voor aangepaste servlets. Terwijl dit het wijzigen van `web.xml` vereist, geeft het aangepaste servlets directe toegang tot hun URL-patronen zonder enige proxy-overhead.
+## Benadering 1: Herverdeling van `WebforjServlet` {#approach-1-remapping-webforjservlet}
+
+Deze benadering herverdeel de `WebforjServlet` van `/*` naar een specifieke pad zoals `/ui/*`, waardoor de URL-namespace vrijkomt voor aangepaste servlets. Hoewel dit vereist dat `web.xml` wordt gewijzigd, geeft het aangepaste servlets directe toegang tot hun URL-patronen zonder enige overhead van een proxy.
 
 ```xml
 <web-app>
-  <!-- WebforjServlet geremappt om alleen /ui/* te verwerken -->
+  <!-- WebforjServlet herverdeeld om alleen /ui/* af te handelen -->
   <servlet>
     <servlet-name>WebforjServlet</servlet-name>
     <servlet-class>com.webforj.servlet.WebforjServlet</servlet-class>
@@ -49,24 +50,24 @@ Deze aanpak remapt de `WebforjServlet` van `/*` naar een specifieke route zoals 
 
 Met deze configuratie:
 - webforJ-componenten zijn toegankelijk onder `/ui/`
-- Aangepaste servlet verwerkt aanvragen naar `/hello-world`
-- Geen proxymechanisme betrokken - directe routering naar de servletcontainer
+- Aangepaste servlet verwerkt verzoeken naar `/hello-world`
+- Geen proxymechanisme betrokken - directe routering door de servletcontainer
 
 :::tip Spring Boot-configuratie
-Bij gebruik van webforJ met Spring Boot, is er geen `web.xml`-bestand. In plaats daarvan configureert u de servletmapping in `application.properties`:
+Bij gebruik van webforJ met Spring Boot, is er geen `web.xml`-bestand. Configureer in plaats daarvan de servlet-mapping in `application.properties`:
 
 ```Ini
 webforj.servlet-mapping=/ui/*
 ```
 
-Deze eigenschap remapt `WebforjServlet` van de standaard `/*` naar `/ui/*`, waardoor de URL-namespace vrij komt voor uw aangepaste servlets. Voeg geen aanhalingstekens rond de waarde toe - deze worden geïnterpreteerd als onderdeel van het URL-patroon.
+Deze eigenschap herverdeelt `WebforjServlet` van de standaard `/*` naar `/ui/*`, waardoor de URL-namespace vrijkomt voor uw aangepaste servlets. Voeg geen aanhalingstekens rond de waarde toe - deze worden geïnterpreteerd als onderdeel van het URL-patroon.
 :::
 
-## Aanpak 2: `WebforjServlet` proxyconfiguratie {#approach-2-webforjservlet-proxy-configuration}
+## Benadering 2: `WebforjServlet` proxyconfiguratie {#approach-2-webforjservlet-proxy-configuration}
 
-Deze aanpak houdt `WebforjServlet` bij `/*` en configureert aangepaste servlets in `webforj.conf`. De `WebforjServlet` onderschept alle aanvragen en proxy's bijpassende patronen naar uw aangepaste servlets.
+Deze benadering houdt `WebforjServlet` op `/*` en configureert aangepaste servlets in `webforj.conf`. De `WebforjServlet` onderschept alle verzoeken en proxy's overeenkomstige patronen naar uw aangepaste servlets.
 
-### Standaard web.xml configuratie {#standard-webxml-configuration}
+### Standaard web.xml-configuratie {#standard-webxml-configuration}
 
 ```xml
 <servlet>
@@ -91,7 +92,7 @@ Deze aanpak houdt `WebforjServlet` bij `/*` en configureert aangepaste servlets 
 </web-app>
 ```
 
-### webforJ.conf configuratie {#webforjconf-configuration}
+### webforJ.conf-configuratie {#webforjconf-configuration}
 
 ```hocon
 servlets: [
@@ -107,6 +108,6 @@ servlets: [
 ```
 
 Met deze configuratie:
-- `WebforjServlet` verwerkt alle aanvragen
-- Aanvragen naar `/hello-world` worden naar `HelloWorldServlet` gepyproxy'd
-- De optionele `config` sleutel biedt naam/waarde-paren als initialisatieparameters voor de servlet
+- `WebforjServlet` behandelt alle verzoeken
+- Verzoeken naar `/hello-world` worden geproxied naar `HelloWorldServlet`
+- De optionele `config`-sleutel biedt naam/waardeparen als initiële parameters voor de servlet

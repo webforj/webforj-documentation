@@ -1,140 +1,149 @@
 ---
 title: MaskedTimeField
 sidebar_position: 20
-_i18n_hash: e50a52f19876f98eec1bd825ca82cd6a
+_i18n_hash: 97e5bc068e72cfd770c26fed4ceca434
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-timefield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTimeField" top='true'/>
 
-`MaskedTimeField` on tekstikenttä, joka on suunniteltu tarkkaa ja jäsenneltyä aikasyöttöä varten. Se antaa käyttäjille mahdollisuuden syöttää aikoja **numeroina** ja muotoilee syötteen automaattisesti määritetyn maskin perusteella, kun kenttä menettää fokuksen. Maski on merkkijono, joka määrittelee odotetun aikamuodon, ohjaten sekä syöttöä että näyttöä.
+`MaskedTimeField` on tekstikenttä, joka antaa käyttäjien syöttää aikoja **numeroina** ja muotoilee syötteen automaattisesti määritellyn maskin mukaan, kun kenttä menettää fokuksen. Maski määrittää odotettavan aikamuodon, ohjaten sekä syöttöä että näyttöä. Komponentti tukee joustavaa analysointia, validointia, lokalisointia sekä arvon palauttamista johdonmukaista aikakäsittelyä varten.
 
-Tämä komponentti tukee joustavaa jäsentämistä, validoimista, lokalisointia ja arvon palauttamista. Se on erityisen hyödyllinen aikaherkkissä lomakkeissa, kuten aikatauluissa, työaikapapereissa ja varauksissa.
-
-:::tip Etsitkö päivämääräsyöttöä?
-`MaskedTimeField` on rakennettu vain **aika** syöttöä varten. Jos etsit komponenttia, joka käsittelee **päivämääriä** vastaavalla maskiperusteisella muotoilulla, tutustu [`MaskedDateField`](./datefield.md).
-:::
+<!-- INTRO_END -->
 
 ## Perusteet {#basics}
 
-`MaskedTimeField` voidaan alustaa parametreilla tai ilman. Voit määrittää alkusarvoa, etiketin, paikkaohjaimen ja tapahtumakuuntelijan arvon muutoksille.
+:::tip Etsitkö päivämääräsyöttöä?
+`MaskedTimeField` on rakennettu **vain ajan** syöttöön. Jos etsit komponenttia, joka käsittelee **päivämääriä** vastaavalla maskipohjaisella muotoilulla, katso [`MaskedDateField`](./datefield.md).
+:::
 
-<ComponentDemo path='/webforj/maskedtimefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldView.java' height='120px'/>
+`MaskedTimeField` voidaan instansioida parametreilla tai ilman. Voit määrittää alkuarvon, etiketti, paikkamerkin ja tapahtumakuuntelijan arvojen muutoksille.
+
+<ComponentDemo
+path='/webforj/maskedtimefield'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldView.java']}
+height='120px'
+/>
 
 ## Maskisäännöt {#mask-rules}
 
-`MaskedTimeField` käyttää formaattinäyttöjä määrittääkseen, kuinka aikaa jäsennetään ja näytetään. Jokainen formaattinäyttö alkaa prosenttimerkillä `%` ja sitä seuraa kirjain, joka edustaa aikakomponenttia.
+`MaskedTimeField` käyttää formaatti-indikaattoreita määrittämään, miten aikaa analysoidaan ja näytetään. Jokainen formaatti-indikaattori alkaa `%`-merkillä, jota seuraa kirjain, joka edustaa aikaosaa.
 
-### Aikamuotoilunäyttöjä {#time-format-indicators}
+:::tip Maskien soveltaminen ohjelmallisesti
+Jos haluat muotoilla tai analysoida aikoja samalla maskisynteksillä kentän ulkopuolella, käytä [`MaskDecorator`](/docs/advanced/mask-decorator) hyötyluokkaa.
+:::
+
+### Aikamuotoindikaattorit {#time-format-indicators}
 
 | Formaatti | Kuvaus              |
 |-----------|---------------------|
 | `%H`      | Tunti (24-tuntinen) |
 | `%h`      | Tunti (12-tuntinen) |
-| `%m`      | Minuutti           |
-| `%s`      | Sekunti            |
-| `%p`      | AM/PM              |
+| `%m`      | Minuutti            |
+| `%s`      | Sekunti             |
+| `%p`      | AM/PM               |
 
-### Modifierit {#modifiers}
+### Muokkaimet {#modifiers}
 
-Modifierit hienosäätävät aikakomponenttien näyttämistä:
+Muokkaimet tarkentavat aikakomponenttien näyttöä:
 
-| Modifier | Kuvaus                          |
-|----------|----------------------------------|
-| `z`      | Nollatäyttö                     |
-| `s`      | Lyhyt tekstimuoto               |
-| `l`      | Pitkä tekstimuoto                |
-| `p`      | Pakattu numero                   |
-| `d`      | Desimaali (oletusmuoto)         |
+| Muokain | Kuvaus                      |
+|---------|-----------------------------|
+| `z`     | Nollalla täyttö             |
+| `s`     | Lyhyt tekstiesitys          |
+| `l`     | Pitkä tekstiesitys          |
+| `p`     | Pakattu numero              |
+| `d`     | Desimaali (oletusmuoto)    |
 
 Nämä mahdollistavat joustavan ja paikallisystävällisen aikamuotoilun.
 
 ## Aikamuodon lokalisointi {#time-format-localization}
 
-`MaskedTimeField` tukee lokalisointia määrittämällä sopivan paikallisen asetuksen. Tämä varmistaa, että aikasyöttö ja -tuotto vastaavat alueellisia käytäntöjä.
+`MaskedTimeField` tukee lokalisointia asettamalla sopivan paikallisen asetuksen. Tämä varmistaa, että aikasyöttö ja -tulo vastaavat aluetasoisia käytäntöjä.
 
 ```java
 field.setLocale(Locale.GERMANY);
 ```
 
-Tämä vaikuttaa siihen, kuinka AM/PM-indikaattorit näytetään, miten erotinmerkkejä käsitellään ja kuinka arvot jäsennetään.
+Tämä vaikuttaa siihen, miten AM/PM-indikaattorit näytetään, miten erottimia käsitellään ja miten arvot analysoidaan.
 
-## Jäsentämislogiikka {#parsing-logic}
+## Analysointilogiikka {#parsing-logic}
 
-`MaskedTimeField` jäsentää käyttäjän syötteen määritetyn aikamaskin perusteella. Se hyväksyy sekä täydellisiä että lyhennettyjä numeerisia syötteitä erottimilla tai ilman, mahdollistaen joustavan syötön varmistaen samalla, että ajat ovat voimassa.
-Jäsentäminen riippuu maskin määrittämästä formaattijärjestyksestä (esim. `%Hz:%mz` tunnille/minuutille). Tämä formaatti määrittää, kuinka numeerisia sekvenssejä tulkitaan.
+`MaskedTimeField` analysoi käyttäjän syötteen määritetyn aikamaskin perusteella. Se hyväksyy sekä täydelliset että lyhennetyt numeeriset syötteet, joissa on tai ei ole erottimia, mahdollistaen joustavan syötön samalla varmistaen voimassa olevat ajat. Analysointikäyttäytyminen riippuu maskin määrittämästä formaattijärjestyksestä (esim. `%Hz:%mz` tunti/minuutti). Tämä formaatti määrää, miten numeerisia sekvenssejä tulkitaan.
 
-### Esimerkit jäsentämisestä {#example-parsing-scenarios}
+### Esimerkit analysointitilanteista {#example-parsing-scenarios}
 
-| Syöte  | Maski         | Tulkitaan                       |
-|--------|---------------|---------------------------------|
-| `900`  | `%Hz:%mz`    | `09:00`                         |
-| `1345` | `%Hz:%mz`    | `13:45`                         |
-| `0230` | `%hz:%mz %p` | `02:30 AM`                     |
-| `1830` | `%hz:%mz %p` | `06:30 PM`                     |
+| Syöte  | Maski        | Tulkitsee Muuna |
+|--------|--------------|------------------|
+| `900`  | `%Hz:%mz`    | `09:00`          |
+| `1345` | `%Hz:%mz`    | `13:45`          |
+| `0230` | `%hz:%mz %p` | `02:30 AM`       |
+| `1830` | `%hz:%mz %p` | `06:30 PM`       |
 
-## Min/Max-rajojen asettaminen {#setting-minmax-constraints}
+## Min/max-rajoitusten asettaminen {#setting-minmax-constraints}
 
-Voit rajoittaa sallitun aikavälin `MaskedTimeField`-komponentissa käyttämällä `setMin()` ja `setMax()` -menetelmiä:
+Voit rajoittaa sallitun aikavälin `MaskedTimeField`-komponentissa käyttäen `setMin()`- ja `setMax()`-menetelmiä:
 
 ```java
 field.setMin(LocalTime.of(8, 0));
 field.setMax(LocalTime.of(18, 0));
 ```
 
-Molemmat menetelmät hyväksyvät [`java.time.LocalTime`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalTime.html) -tyypin arvoja. Määritellyn alueen ulkopuoliset syötteet katsotaan virheellisiksi.
+Molemmat menetelmät hyväksyvät `java.time.LocalTime`-tyyppisiä arvoja. Määritetyn aikavälin ulkopuoliset syötteet katsotaan virheellisiksi.
 
 ## Arvon palauttaminen {#restoring-the-value}
 
-`MaskedTimeField` sisältää palautustoiminnon, joka palauttaa kentän arvon ennaltamääritettyyn tai alkuperäiseen tilaan. Tämä voi olla hyödyllistä muutosten kumoamiseksi tai oletusaikaan palaamiseksi.
+`MaskedTimeField` sisältää palautusominaisuuden, joka nollaa kentän arvon ennalta määrättyyn tai alkuperäiseen tilaan. Tämä voi olla hyödyllistä muutosten peruuttamiseen tai takaisin oletusaikaan.
 
 ```java
 field.setRestoreValue(LocalTime.of(12, 0));
 field.restoreValue();
 ```
 
-### Tavat palauttaa arvo {#ways-to-restore-the-value}
+### Tapoja palauttaa arvo {#ways-to-restore-the-value}
 
-- **Ohjelmallisesti** kutsumalla `restoreValue()`
-- **Näppäimistön kautta**, painamalla <kbd>ESC</kbd> (tämä on oletuspalausnäppäin, ellei sitä ohitettaisi tapahtumakuuntelijalla)
+- **Ohjelmallisesti**, kutsumalla `restoreValue()`
+- **Näppäimistön kautta**, painamalla <kbd>ESC</kbd> (tämä on oletuspalautusavain, ellei tapahtumakuuntelijalla määritellä toisin)
 
-<ComponentDemo 
-path='/webforj/maskedtimefieldrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldRestoreView.java' 
-height='120px'/>
+<ComponentDemo
+path='/webforj/maskedtimefieldrestore'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldRestoreView.java']}
+height='120px'
+/>
 
-## Validointikaaviot {#validation-patterns}
+## Validointikaavat {#validation-patterns}
 
-Voit soveltaa asiakaspohjaisia validointisääntöjä käyttämällä säännöllisiä lausekkeita `setPattern()` -menetelmällä:
+Voit soveltaa asiakaspuolen validointisääntöjä käyttämällä säännöllisiä lausekkeita `setPattern()`-menetelmällä:
 
 ```java
 field.setPattern("^\\d{2}:\\d{2}$");
 ```
 
-Tämä kaavio varmistaa, että vain `HH:mm` -muotoiset arvot (kaksi numeroa, päällekkäin, kaksi numeroa) katsotaan voimassa oleviksi.
+Tämä kaava varmistaa, että vain arvot, jotka vastaavat `HH:mm`-muotoa (kaksi numeroa, kaksoispiste, kaksi numeroa), katsotaan voimassa oleviksi.
 
 :::tip Säännöllisen lausekkeen muoto
-Kaavan on noudatettava JavaScriptin RegExp-syntaksia, kuten on dokumentoitu [tässä](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
+Kaavan on noudatettava JavaScriptin RegExp-syntaksia, kuten on dokumentoitu [täällä](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
 :::
 
 :::warning Huomautuksia syötteen käsittelystä
-Kenttä yrittää jäsentää ja muotoilla numeerisia aikasyötteitä nykyisen maskin mukaan. Kuitenkin käyttäjät voivat silti syöttää manuaalisesti arvoja, jotka eivät vastaa odotettua muotoa. Jos syöte on syntaktisesti voimassa, mutta semanttisesti virheellinen tai jäsentämätön (esim. `99:99`), se voi läpäistä kaaviotarkastukset, mutta epäonnistua loogisessa validoinnissa.
-Sinun tulee aina validoida syötearvo sovelluksesi logiikassa, vaikka säännöllinen lauseke olisi asetettu, varmistaaksesi, että aika on sekä oikein muotoiltu että merkityksellinen.
+Kenttä yrittää analysoida ja muotoilla numeerisia aikasyötteitä nykyisen maskin perusteella. Kuitenkin käyttäjät voivat silti syöttää arvoja, jotka eivät vastaa odotettua muotoa. Jos syöte on syntaktisesti validi mutta semanttisesti virheellinen tai analysoimaton (esim. `99:99`), se voi läpäistä kaavavalvonnan mutta epäonnistua loogisessa validoinnissa.
+Sinun tulisi aina validoida syötearvo sovelluksen logiikassasi, vaikka säännöllinen lauseke on asetettu, jotta voit varmistaa, että aika on sekä kunnolla muotoiltu että merkityksellinen.
 :::
 
 ## Aikavalitsin {#time-picker}
 
-`MaskedTimeField` sisältää sisäänrakennetun aikavalitsimen, joka antaa käyttäjille mahdollisuuden valita aikansa visuaalisesti sen sijaan, että kirjoittaisivat sen. Tämä parantaa käytettävyyttä vähemmän teknisille käyttäjille tai kun tarkkaa syöttöä tarvitaan.
+`MaskedTimeField` sisältää sisäänrakennetun aikavalitsimen, joka antaa käyttäjien valita ajan visuaalisesti sen sijaan, että he kirjoittaisivat sen. Tämä parantaa käytettävyyttä vähemmän teknisille käyttäjille tai silloin, kun tarkka syöttö on tarpeen.
 
-<ComponentDemo 
-path='/webforj/maskedtimefieldpicker?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldPickerView.java' 
-height='450px'/>
+<ComponentDemo
+path='/webforj/maskedtimefieldpicker'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldPickerView.java']}
+height='450px'
+/>
 
-### Pääsy valitsimeen {#accessing-the-picker}
+### Aikavalitsimen käyttö {#accessing-the-picker}
 
-Voit käyttää aikavalitsinta kutsumalla `getPicker()`:
+Voit käyttää aikavalitsinta `getPicker()`-menetelmällä:
 
 ```java
 TimePicker picker = field.getPicker();
@@ -142,34 +151,34 @@ TimePicker picker = field.getPicker();
 
 ### Valitsimen ikonin näyttäminen/piilottaminen {#showhide-the-picker-icon}
 
-Käytä `setIconVisible()` -menetelmää valitsemaan, näytetäänkö vai piilotetaanko kelloikoni kentän vieressä:
+Käytä `setIconVisible()`-menetelmää näyttääksesi tai piilottaaksesi kellon ikonin kentän vieressä:
 
 ```java
-picker.setIconVisible(true); // näyttää ikonin
+picker.setIconVisible(true); // näyttää ikon
 ```
 
-### Automaattinen avauskäyttäytyminen {#auto-open-behavior}
+### Automaattisesti avautuva käyttäytyminen {#auto-open-behavior}
 
-Voit määrittää valitsimen avautuvan automaattisesti, kun käyttäjä vuorovaikuttaa kentän kanssa (esim. napsauttaa, painaa Enteriä tai nuolinäppäimiä):
+Voit määrittää valitsimen avautumaan automaattisesti, kun käyttäjä vuorovaikuttaa kentän kanssa (esim. napsauttamalla, painamalla Enter tai nuolinäppäimiä):
 
 ```java
 picker.setAutoOpen(true);
 ```
 
-:::tip Vahvista valinta valitsimella
-Varmistaaksesi, että käyttäjät voivat valita ajan vain valitsimen kautta (eivätkä syöttämällä manuaalisesti), yhdistä seuraavat kaksi asetusta:
+:::tip Pakota valinta aikavalitsimen kautta
+Varmistaaksesi, että käyttäjät voivat valita ajan vain valitsimen avulla (eikä manuaalisesti kirjoittamalla), yhdistä seuraavat kaksi asetusta:
 
 ```java
-field.getPicker().setAutoOpen(true); // Avaa valitsimen käyttäjän vuorovaikutuksen aikana
-field.setAllowCustomValue(false);    // Estää manuaalisen tekstisyötön
+field.getPicker().setAutoOpen(true); // Avataan valitsin käyttäjän vuorovaikutuksessa
+field.setAllowCustomValue(false);    // Poistaa manuaalisen tekstisyötön
 ```
 
-Tämä asetelma varmistaa, että kaikki aikasyöttö tulee valitsin-käyttäjäliittymän kautta, mikä on hyödyllistä tiukan formaattikontrollin ja syöttövirheiden poistamisen käsittelyssä.
+Tämä asettelu varmistaa, että kaikki aikasyöte tulee valitsimen käyttöliittymän kautta, mikä on hyödyllistä, kun haluat tiukan muotoilun hallinnan ja poistaa opiskeluprosesseista kirjoitettuja syötteitä. 
 :::
 
-### Valitsimen avaaminen manuaalisesti {#manually-open-the-picker}
+### Aikavalitsimen avaaminen manuaalisesti {#manually-open-the-picker}
 
-Aukaisemaan aikavalitsin ohjelmallisesti:
+Avaa aikavalitsin ohjelmallisesti:
 
 ```java
 picker.open();
@@ -181,56 +190,57 @@ Tai käytä aliasia:
 picker.show(); // sama kuin open()
 ```
 
-### Valitsimen välin asettaminen {#setting-the-picker-step}
+### Valitsimen askeleen määrittäminen {#setting-the-picker-step}
 
-Voit määrittää valitsimessa valittavien aikavälisten aikojen välin käyttämällä `setStep()`. Tämä mahdollistaa sen, että voit hallita, kuinka suuria aikavalinnan vaihtoehdot ovat—ihanteellinen tilanteisiin, joissa aikataulutetaan 15 minuutin välein.
+Voit määrittää valittavien aikojen välin valitsimessa käyttäen `setStep()`. Tämä mahdollistaa aikavaihtoehtojen kontrolloinnin—ihanteellinen skenaarioissa kuten aikataulutuksissa 15 minuutin välein.
 
 ```java
 field.getPicker().setStep(Duration.ofMinutes(15));
 ```
 
-:::warning Askeleen rajoite
-Askeleen on jaettava täsmällisesti tunti tai koko päivä. Muuten poikkeus heitetään.
+:::warning Askelrajoitus
+Askel täytyy jakaa tasan tunnille tai koko päivälle. Muuten poikkeus heitetään.
 :::
 
-Tämä varmistaa, että alasvetoluettelossa on ennakoitavia ja tasaisesti sijoitettuja arvoja kuten `09:00`, `09:15`, `09:30` jne.
+Tämä varmistaa, että alasvetoluettelossa on ennustettavia, tasaisesti jaettuja arvoja kuten `09:00`, `09:15`, `09:30` jne.
 
 ## `MaskedTimeFieldSpinner` {#maskedtimefieldspinner}
 
-`MaskedTimeFieldSpinner` laajentaa [`MaskedTimeField`](#basics) -komponenttia lisäämällä kelausohjaimia, jotka antavat käyttäjille mahdollisuuden lisätä tai vähentää aikaa käyttämällä nuolinäppäimiä tai käyttöliittymäpainikkeita. Se tarjoaa ohjaavampaa vuorovaikutustyyliä, erityisen hyödyllistä työpöytätyylisissä sovelluksissa.
+`MaskedTimeFieldSpinner` laajentaa [`MaskedTimeField`](#basics) lisäämällä spinni-ohjaimia, jotka antavat käyttäjien lisätä tai vähentää aikaa nuolinäppäimillä tai käyttöliittymän painikkeilla. Se tarjoaa ohjatumman vuorovaikutustyylin, mikä on erityisen hyödyllistä työpöytämallisissa sovelluksissa.
 
-<ComponentDemo 
-path='/webforj/maskedtimefieldspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldSpinnerView.java' 
-height='450px'/>
+<ComponentDemo
+path='/webforj/maskedtimefieldspinner'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldSpinnerView.java']}
+height='450px'
+/>
 
-### Avaintoiminnot {#key-features}
+### Keskeiset ominaisuudet {#key-features}
 
-- **Vuorovaikutteinen aikaskaalautuminen:**  
-  Käytä nuolinäppäimiä tai kelanäppäimiä aikarvojen lisäämiseksi tai vähentämiseksi.
+- **Vuorovaikutteinen aikaskaalaminen:**  
+  Käytä nuolinäppäimiä tai pyörityspainikkeita aikamuutoksen lisäämiseen tai vähentämiseen.
 
-- **Mukautettava kiertoyksikkö:**  
-  Valitse, mikä aikakomponentti on säädettävissä käyttämällä `setSpinField()`:
+- **Mukautettava pyörimisyksikkö:**  
+  Valitse, mitä osaa ajasta haluat muuttaa käyttäen `setSpinField()`:
 
   ```java
   spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.MINUTE);
   ```
 
-  Vaihtoehtoja ovat `HOUR`, `MINUTE`, `SECOND` ja `MILLISECOND`.
+  Vaihtoehtoina ovat `HOUR`, `MINUTE`, `SECOND` ja `MILLISECOND`.
 
-- **Min/Max-rajoitukset:**  
-  Perii vähimmäis- ja enimmäisaikatuen käyttämällä `setMin()` ja `setMax()`.
+- **Min./Max. rajat:**  
+  Perii tuen minimien ja maksimiarvojen asettamiselle käyttäen `setMin()` ja `setMax()`.
 
-- **Muotoiltu tuotto:**  
-  Täydellinen yhteensopivuus `MaskedTimeField`-komponentin maskien ja lokalisointiasetusten kanssa.
+- **Muotoiltu ulostulo:**  
+  Täysin yhteensopiva maskien ja lokalisointiasetusten kanssa `MaskedTimeField`-komponentista.
 
-### Esimerkki: Ajan säätämisen konfigurointi tunnin mukaan {#example-configure-stepping-by-hour}
+### Esimerkki: Aikaskaalauksen määrittäminen tunnin mukaan {#example-configure-stepping-by-hour}
 
 ```java
 MaskedTimeFieldSpinner spinner = new MaskedTimeFieldSpinner();
 spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.HOUR);
 ```
 
-## Tyylittely {#styling}
+## Tyylitys {#styling}
 
 <TableBuilder name="MaskedTimeField" />

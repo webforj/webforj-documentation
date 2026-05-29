@@ -13,7 +13,7 @@ views_dir = r"../src/main/java/com/webforj/samples/views"
 # Markdown file output
 output_file = "../generated_urls.md"
 
-# Base URLs
+# Base URLs from the published site and the default Jetty port
 base_urls = [
     "https://docs.webforj.com/webforj/",
     "http://localhost:8080/webforj/"

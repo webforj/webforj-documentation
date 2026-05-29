@@ -3,6 +3,7 @@ sidebar_position: 1000
 title: Glossary
 sidebar_class_name: sidebar--item__hidden
 slug: glossary
+description: Definitions for terms used across webforJ documentation, including DOM, Shadow DOM, and other web platform and framework concepts.
 ---
 
 ## DOM {#dom}

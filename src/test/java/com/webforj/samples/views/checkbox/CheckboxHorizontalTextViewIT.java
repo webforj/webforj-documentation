@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class CheckboxHorizontalTextViewIT extends BaseTest {
 
-    private CheckboxHorizontalTextPage checkboxHorizontalTextPage;
+  private CheckboxHorizontalTextPage checkboxHorizontalTextPage;
 
     public void setupCheckboxHorizontalText(SupportedLanguage language) {
         navigateToRoute(CheckboxHorizontalTextPage.getRoute(language));
@@ -25,7 +25,7 @@ public class CheckboxHorizontalTextViewIT extends BaseTest {
       setupCheckboxHorizontalText(language);
         assertThat(checkboxHorizontalTextPage.getDailyCheckbox()).isChecked();
 
-        checkboxHorizontalTextPage.getDailyCheckbox().click();
-        assertThat(checkboxHorizontalTextPage.getDailyCheckbox()).not().isChecked();
-    }
+    checkboxHorizontalTextPage.getDailyCheckbox().click();
+    assertThat(checkboxHorizontalTextPage.getDailyCheckbox()).not().isChecked();
+  }
 }

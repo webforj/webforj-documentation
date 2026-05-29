@@ -1,7 +1,5 @@
 package com.webforj.samples.views.fields.maskedtimefield;
 
-import java.time.LocalTime;
-
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -11,12 +9,13 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.time.LocalTime;
 
 @Route
 @FrameTitle("Masked Time Field Restore")
 public class MaskedTimeFieldRestoreView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedTimeField eventField = new MaskedTimeField("Meeting Time:");
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedTimeField eventField = new MaskedTimeField("Meeting Time:");
 
   public MaskedTimeFieldRestoreView() {
     self.setAlignment(FlexAlignment.CENTER)
@@ -32,10 +31,8 @@ public class MaskedTimeFieldRestoreView extends Composite<FlexLayout> {
         .getPicker()
         .setIconVisible(false);
 
-    Button restoreButton = new Button(
-        "Reset value",
-        ButtonTheme.PRIMARY,
-        event -> eventField.restoreValue());
+    Button restoreButton =
+        new Button("Reset value", ButtonTheme.PRIMARY, event -> eventField.restoreValue());
 
     self.add(eventField, restoreButton);
   }

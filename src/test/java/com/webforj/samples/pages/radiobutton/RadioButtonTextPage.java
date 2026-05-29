@@ -6,20 +6,21 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class RadioButtonTextPage {
 
-    private static final String ROUTE = "radiobuttontext";
+  private static final String ROUTE = "radiobuttontext";
 
-    private final Locator leftAlignedRB;
+  private final Locator leftAlignedRB;
 
-    public RadioButtonTextPage(Page page) {
+  public RadioButtonTextPage(Page page) {
 
-        this.leftAlignedRB = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Left aligned"));
-    }
+    this.leftAlignedRB =
+        page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Left aligned"));
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getLeftAlignedInput() {
-        return leftAlignedRB;
-    }
+  public Locator getLeftAlignedInput() {
+    return leftAlignedRB;
+  }
 }

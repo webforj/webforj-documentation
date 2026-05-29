@@ -2,6 +2,7 @@
 title: Install Plugin
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
+description: Configure the webforJ install Maven plugin with deploy URL, class name, publish name, and debug flags for BBjServices deployments.
 ---
 
 You can configure webforJ using a project's POM file, which is designed to make deploying an app easy. The following sections outline the various options you can change to achieve a desired result.
@@ -32,22 +33,22 @@ Tags within the `<configuration>` tag can be changed to configure your app. Edit
 
 ```xml {13-16} showLineNumbers
 <plugin>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-install-maven-plugin</artifactId>
-    <version>${webforj.version}</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>install</goal>
-            </goals>
-    </execution>
-    </executions>
-    <configuration>
-        <deployurl>http://localhost:8888/webforj-install</deployurl>
-        <classname>samples.HelloWorldApp</classname>
-        <publishname>hello-world</publishname>
-        <debug>true</debug>
-    </configuration>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-install-maven-plugin</artifactId>
+  <version>${webforj.version}</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>install</goal>
+      </goals>
+  </execution>
+  </executions>
+  <configuration>
+    <deployurl>http://localhost:8888/webforj-install</deployurl>
+    <classname>samples.HelloWorldApp</classname>
+    <publishname>hello-world</publishname>
+    <debug>true</debug>
+  </configuration>
 </plugin>
 ```
 

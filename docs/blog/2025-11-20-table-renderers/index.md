@@ -4,7 +4,7 @@ description: Learn how to use custom renderers to display rich, formatted conten
 slug: table-renderers-custom-cells
 date: 2025-11-25
 authors: Matthew Hawkins
-tags: [webforJ, Table, Renderers, UI Customization, Data Visualization]
+tags: [table, renderers, ui customization, data visualization, components]
 hide_table_of_contents: false
 ---
 
@@ -168,7 +168,7 @@ table.addColumn("Actions", new ButtonRenderer<>("Delete", event -> {
 
 **IconRenderer** - Displays icons from webforJ's icon library:
 ```java
-table.addColumn("Status", new IconRenderer<>("tabler-check"));
+table.addColumn("Status", new IconRenderer<>(TablerIcon.create("check")));
 ```
 
 **ElementRenderer and VoidElementRenderer** - Base classes for creating renderers that wrap HTML elements. Use `ElementRenderer` for tags with content (like `<div>`) and `VoidElementRenderer` for those without content (like `<img>`).

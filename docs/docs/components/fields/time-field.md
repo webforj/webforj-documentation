@@ -10,13 +10,19 @@ description: A component that provides a default browser-based time picker for s
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TimeField" top='true'/>
 
-<ParentLink parent="Field" />
-
 `TimeField` is a user interface component that allows users to input or select times in hours, minutes, and optionally seconds. It provides an intuitive and efficient way to handle time-related information in various applications.
 
-<ComponentDemo 
-path='/webforj/timefield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.java'
+<!-- INTRO_END -->
+
+## Using the `TimeField` {#using-timefield}
+
+<ParentLink parent="Field" />
+
+`TimeField` extends the shared `Field` class, which provides common features across all field components. The following example creates a reminder `TimeField` initialized to the current time.
+
+<ComponentDemo
+path='/webforj/timefield'
+files={['src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.java']}
 />
 
 ## Usages {#usages}

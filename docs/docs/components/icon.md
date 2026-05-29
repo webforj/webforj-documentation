@@ -1,6 +1,7 @@
 ---
 title: Icon
 sidebar_position: 55
+description: Render scalable SVG icons with the Icon component from Tabler, Feather, Font Awesome, or custom pools loaded on demand from a CDN.
 ---
 
 <DocChip chip="shadow" />
@@ -8,15 +9,9 @@ sidebar_position: 55
 <DocChip chip='since' label='24.11' />
 <JavadocLink type="icons" location="com/webforj/component/icons/Icon" top='true'/>
 
-The webforJ `Icon` component allows you to include icons effortlessly in your user interface
-Icons are a fundamental part of enhancing the design of the user interface, making it faster for users to scan the screen for actionable items.
-Using icons in your app creates visual cues for navigation and actions, which can reduce the amount of text needed and simplify the user interface. You can choose from three existing icon pools and webforJ also gives you the option to create new ones from scratch.
+The `Icon` component displays icons that scale to any size without losing quality. You can choose from three built-in icon pools or create custom ones. Icons serve as visual cues for navigation and actions, reducing the need for text labels in your interface.
 
-:::tip Did you know?
-
-Some components, like `PasswordField` and `TimeField`, have built-in icons to help convey meaning to end users.
-
-:::
+<!-- INTRO_END -->
 
 ## Basics {#basics}
 
@@ -26,11 +21,15 @@ Additionally, `Icon` components are loaded on demand from a content delivery net
 When creating an `Icon`, you'll need to identify a specific pool and the name of the icon itself.
 Some icons also offer the choice between an outlined or a filled version via [variations](#variations).
 
-<ComponentDemo 
-path='/webforj/iconbasics?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconBasicsView.java'
+<ComponentDemo
+path='/webforj/iconbasics'
+files={['src/main/java/com/webforj/samples/views/icon/IconBasicsView.java']}
 height='100px'
 />
+
+:::tip Did you know?
+Some components, like `PasswordField` and `TimeField`, have built-in icons to help convey meaning to end users.
+:::
 
 ### Pools {#pools}
 
@@ -89,9 +88,9 @@ Icon music = FontAwesomeIcon.create("user", FontAwesomeIcon.Variate.SOLID);
 
 The following demo illustrates how to use icons from different pools, apply variations, and seamlessly integrate them into components.
 
-<ComponentDemo 
-path='/webforj/iconvariations?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconVariationsView.java'
+<ComponentDemo
+path='/webforj/iconvariations'
+files={['src/main/java/com/webforj/samples/views/icon/IconVariationsView.java']}
 height='100px'
 />
 
@@ -114,9 +113,9 @@ Icons after a component's text is ideal for components that either offer supplem
 
 Ultimately, consistency is key. Once you choose a style, maintain it across your site for a cohesive and user-friendly design.
    
-<ComponentDemo 
-path='/webforj/iconprefixsuffix?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java'
+<ComponentDemo
+path='/webforj/iconprefixsuffix'
+files={['src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java']}
 height='100px'
 />️
 
@@ -216,4 +215,4 @@ While there are many use cases for each of the various themes, some examples use
 - `GRAY`: Good for subtle actions, such as minor settings or actions that are more supplementary to a page, and not part of the main functionality.
 - `INFO`: Good for providing additional clarifying information to a user.
 
-<TableBuilder name="Icon" />
+<TableBuilder name={['Icon', 'IconButton']} />

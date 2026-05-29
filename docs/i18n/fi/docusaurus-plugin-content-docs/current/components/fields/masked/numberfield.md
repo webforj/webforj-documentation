@@ -1,127 +1,133 @@
 ---
 title: MaskedNumberField
 sidebar_position: 10
-_i18n_hash: 626c7e147632731dfdc761116a8abdc9
+_i18n_hash: a2b0a5275077beea1c053993d47aa861
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-numberfield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedNumberField" top='true'/>
 
-`MaskedNumberField` on tekstiä syöttävä kenttä, joka on suunniteltu strukturoituun numeeriseen syöttöön. Se varmistaa, että numerot muotoillaan johdonmukaisesti määritetyn maskin perusteella, mikä tekee siitä erityisen hyödyllisen talouslomakkeissa, hintakentissä tai missä tahansa syötteessä, jossa tarkkuus ja luettavuus ovat tärkeitä.
+`MaskedNumberField` on tekstikenttä, joka on suunniteltu jäsennellyn numeerisen syötteen vastaanottamiseen. Se varmistaa, että numerot muotoillaan johdonmukaisesti määritetyn maskin perusteella, mikä tekee siitä erityisen hyödyllisen talouslomakkeissa, hinnoittelukentissä tai missä tahansa syötteessä, jossa tarkkuus ja luettavuus ovat tärkeitä.
 
-Tämä komponentti tukee numeroiden muotoilua, desimaali- ja ryhmittelymerkkejä sekä valinnaisia arvorajoja, kuten minimi- tai maksimiarvoja.
+Tämä komponentti tukee numeromuotoilua, desimaali- ja ryhmittelymerkkejä sekä valinnaisia arvorajoja, kuten vähimmäis- tai enimmäisarvoja.
 
-## Perusasiat {#basics}
+<!-- INTRO_END -->
 
-`MaskedNumberField` voidaan instansioida parametreilla tai ilman. Se tukee alkuarvon, labelin, paikkamerkin ja tapahtumakuuntelijan asettamista, joka reagoi arvojen muutoksiin.
+## Perusteet {#basics}
 
-Tässä demossa esitellään **Vihje Laskin**, joka käyttää `MaskedNumberField` -komponenttia intuitiiviseen numeeriseen syöttöön. Yksi kenttä on määritetty hyväksymään muotoiltu laskutusmäärä, kun taas toinen tallentaa kokonaislukuisen tipin prosenttiosuuden. Molemmat kentät soveltavat numeerisia maskseja varmistaakseen johdonmukaisen ja ennustettavan muotoilun.
+`MaskedNumberField` voidaan alustaa parametreilla tai ilman. Se tukee aloitusarvon, etiketin, paikkamerkin ja tapahtumakuuntelijan asettamista reagoimaan arvomuutoksiin.
 
-<ComponentDemo 
-path='/webforj/maskednumberfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldView.java'
-height = '270px'
+Tässä demossa esitellään **Vinkkilaskuri**, joka käyttää `MaskedNumberField` intuitiivista numeerista syöttöä varten. Yksi kenttä on määritetty hyväksymään muotoiltu laskutusmäärä, kun taas toinen tallentaa kokonaisluvuksi vinkin prosenttiosuuden. Molemmat kentät soveltavat numeromaskia varmistaakseen johdonmukaisen ja ennakoitavan muotoilun.
+
+<ComponentDemo
+path='/webforj/maskednumberfield'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldView.java']}
+height='270px'
 />
 
 ## Maskisäännöt {#mask-rules}
 
-`MaskedNumberField` käyttää maskijonoa ohjaamaan, kuinka numeerinen syöttö muotoillaan ja näytetään. 
-Jokainen merkki maskissa määrittää erityisen muotoilukäyttäytymisen, mikä mahdollistaa tarkkaa hallintaa numeroiden näkyvyydestä.
+`MaskedNumberField` käyttää maskimerkkijonoa hallitsemaan, miten numeerinen syöte muotoillaan ja näytetään. 
+Jokainen merkki maskissa määrittää erityisen muotoilukäyttäytymisen, jolloin käyttäjällä on tarkka hallinta numeroiden ulkonäköön.
+
+:::tip Maskin soveltaminen ohjelmallisesti
+Jos haluat muotoilla numeroita samalla maskisynntaksilla kentän ulkopuolella, esimerkiksi tietojen renduroidessa [`Table`](/docs/components/table/overview), käytä [`MaskDecorator`](/docs/advanced/mask-decorator) -apuluokkaa.
+:::
 
 ### Maskimerkit {#mask-characters}
 
-| Merkki   | Kuvaus |
-|----------|--------|
-| `0`      | Korvataan aina numerolla (0–9). |
-| `#`      | Estää etunollat. Korvataan täyttömerkillä desimaalipisteen vasemmalla puolella. Viimeisten numeroiden kohdalla korvataan tilalla tai nollalla. Muuten korvataan numerolla. |
-| `,`      | Käytetään ryhmittelyerottimena (esim. tuhannet). Korvataan täyttömerkillä, jos edellä ei ole numeroita. Muuten näkyy pilkku. |
-| `-`      | Näyttää miinusmerkin (`-`), jos numero on negatiivinen. Korvataan täyttömerkillä, jos positiivinen. |
-| `+`      | Näyttää `+` positiivisille tai `-` negatiivisille numeroille. |
-| `$`      | Tuottaa aina dollarimerkin. |
-| `(`      | Liittää vasemman sulkumerkin `(` negatiivisille arvoille. Korvataan täyttömerkillä, jos positiivinen. |
-| `)`      | Liittää oikean sulkumerkin `)` negatiivisille arvoille. Korvataan täyttömerkillä, jos positiivinen. |
-| `CR`     | Näyttää `CR` negatiivisille numeroille. Näyttää kaksi tyhjää tilaa, jos numero on positiivinen. |
-| `DR`     | Näyttää `CR` negatiivisille numeroille. Näyttää `DR` positiivisille numeroille. |
-| `*`      | Liittää asteriskin `*`. |
-| `.`      | Merkitsee desimaalipistettä. Jos tulosteessa ei esiinny numeroita, korvataan täyttömerkillä. Desimaaleiden jälkeen täyttömerkit käsitellään tiloina. |
-| `B`      | Muuttuu aina tilaksi. Mikä tahansa muu kirjainmerkitään sellaisenaan. |
+| Merkki  | Kuvaus |
+|---------|--------|
+| `0`     | Korvataan aina numerolla (0–9). |
+| `#`     | Estää ylimääräiset nollat. Korvataan täyttömerkillä desimaalipisteen vasemmalla puolella. Jatkuville numeroille korvataan tilalla tai nollalla. Muuten korvataan numerolla. |
+| `,`     | Käytetään ryhmittelyerottimena (esim. tuhansille). Korvataan täyttömerkillä, jos sen edessä ei ole numeroita. Muussa tapauksessa näkyy pilkkuna. |
+| `-`     | Näyttää miinusmerkin (`-`), jos numero on negatiivinen. Korvataan täyttömerkillä, jos positiivinen. |
+| `+`     | Näyttää `+` positiivisille tai `-` negatiivisille numeroille. |
+| `$`     | Aina tuloksena dollari. |
+| `(`     | Lisää vasemman sulkumerkin `(` negatiivisille arvoille. Korvataan täyttömerkillä, jos positiivinen. |
+| `)`     | Lisää oikean sulkumerkin `)` negatiivisille arvoille. Korvataan täyttömerkillä, jos positiivinen. |
+| `CR`    | Näyttää `CR` negatiivisille numeroille. Näyttää kaksi välilyöntiä, jos numero on positiivinen. |
+| `DR`    | Näyttää `CR` negatiivisille numeroille. Näyttää `DR` positiivisille numeroille. |
+| `*`     | Lisää tähden `*`. |
+| `.`     | Merkitsee desimaalipistettä. Jos tulosteessa ei näy numeroita, se korvataan täyttömerkillä. Desimaalin jälkeen täyttömerkit käsitellään välilyönteinä. |
+| `B`     | Aina muuttuu välilyönniksi. Kaikki muut kirjaimelliset merkit näytetään sellaisenaan. |
 
-Joitakin yllä mainituista merkkeistä voi esiintyä useammin maskissa muotoilua varten. Näitä ovat `-`, `+`, `$` ja
-`(`. Jos jokin näistä merkeistä on läsnä maskissa, ensimmäinen, jota kohdellaan, siirretään viimeiseen paikkaan, jossa `#` tai `,` korvattiin täyttömerkillä. Jos ei tällaista paikkaa ole, kaksoismerkki jää paikalleen.
+Joidenkin edellä mainittujen merkkien voi esiintyä useammin kuin kerran maskissa muotoilua varten. Näitä ovat `-`, `+`, `$`, ja
+`(`. Jos mitään näistä merkeistä on läsnä maskissa, ensimmäinen tavattu siirretään viimeiseen paikkaan, jossa `#` tai `,` oli korvattu täyttömerkillä. Jos tällaista paikkaa ei ole, kaksinkertainen merkki jätetään paikalleen.
 
 :::info Ei automaattista pyöristystä
-Maski kentässä ei **PYÖRISTÄ**. Esimerkiksi, jos asetat arvon `12.34567`
+Maski kentässä ei **PYÖRISTÄ**. Esimerkiksi, kun sijoitat arvon kuten `12.34567`
 kenttään, joka on maskattu `###0.00`, saat `12.34`.
 :::
 
-## Ryhmittely- ja desimaalierottimet {#group-and-decimal-separators}
+## Ryhmitys- ja desimaalierottimet {#group-and-decimal-separators}
 
-`MaskedNumberField` tukee **ryhmittely**- ja **desimaalimerkkien** mukauttamista, mikä helpottaa numeroiden muotoilua eri paikallisiin vaatimuksiin tai liiketoimintakäytäntöihin.
+`MaskedNumberField` tukee **ryhmittely-** ja **desimaalimerkkien** mukauttamista, mikä tekee numeeristen muotoilujen sovittamisesta eri paikallisiin tai liiketoimintakäytäntöihin helppoa.
 
-- **Ryhmittelyerotin** käytetään visuaalisena erottimena tuhansille (esim. `1,000,000`).
-- **Desimaalierotin** osoittaa numeroiden murtoluvun osan (esim. `123.45`).
+- **Ryhmittelyerotin** käytetään visuaalisesti erottamaan tuhansia (esim. `1,000,000`).
+- **Desimaalierotin** osoittaa numeerisen osan (esim. `123.45`).
 
 Tämä on hyödyllistä kansainvälisissä sovelluksissa, joissa eri alueet käyttävät erilaisia merkkejä (esim. `.` vs `,`).
 
 ```java
-field.setGroupCharacter(".");   // esimerkki: 1.000.000
-field.setDecimalCharacter(","); // esimerkki: 123,45
+field.setGroupCharacter(".");   // e.g. 1.000.000
+field.setDecimalCharacter(","); // e.g. 123,45
 ```
 
 :::tip Oletuskäyttäytyminen
-Oletuksena `MaskedNumberField` soveltaa ryhmittely- ja desimaalierottimia sovelluksen nykyisen paikallisuuden mukaan. Voit ohittaa niitä milloin tahansa tarjoamiesi asetusten avulla.
+Oletuksena `MaskedNumberField` soveltaa ryhmittely- ja desimaalierottimia sovelluksen nykyisen paikallisuuden perusteella. Voit koko ajan ylittää ne käyttämällä tarjottuja asettajia.
 :::
 
-## Negatiivinen {#negateable}
+## Negatiiviset arvot {#negateable}
 
-`MaskedNumberField` tukee vaihtoehtoa, jolla voidaan hallita, sallitaanko negatiiviset numerot.
+`MaskedNumberField` tukee vaihtoehtoa hallita, sallitaanko negatiivisten arvojen syöttäminen.
 
-Oletuksena negatiiviset arvot, kuten `-123.45`, ovat sallittuja. Estääksesi tämän, käytä `setNegateable(false)` rajoittaaksesi syötteen vain positiivisiin arvoihin.
+Oletuksena negatiiviset arvot kuten `-123.45` ovat sallittuja. Estääksesi tämän, käytä `setNegateable(false)` rajoittaaksesi syötteitä vain positiivisiin arvoihin.
 
-Tämä on hyödyllistä liiketoimintaskenaarioissa, joissa arvot, kuten määrät, yhteismäärät tai prosenttiosuudet, on aina oltava ei-negatiivisia.
+Tämä on hyödyllistä liiketoimintaskenaarioissa, joissa arvot kuten määrät, yhteensä tai prosentit on aina oltava ei-negatiivisia.
 
 ```java
 field.setNegateable(false);
 ```
 
-Kun `negatable` asetetaan arvoon `false`, kenttä estää kaikki yrittämät syöttää miinusmerkkiä tai muuten syöttää negatiivisia arvoja.
+Kun `negatable` on asetettu `false`, kenttä estää kaikki yritykset syöttää miinusmerkkiä tai muuten syöttää negatiivisia arvoja.
 
-<ComponentDemo 
-path='/webforj/maskednumnegatable/?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumNegatableView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/maskednumnegatable/'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumNegatableView.java']}
+height='150px'
 />
 
-## Minimi- ja maksimiarvot {#min-and-max-values}
+## Minimum- ja maksimumarvot {#min-and-max-values}
 
-`MaskedNumberField` tukee numeeristen raja-arvojen asettamista `setMin()` ja `setMax()` avulla. 
-Nämä rajoitukset auttavat varmistamaan, että käyttäjän syöte pysyy voimassa olevassa ja odotetussa alueessa.
+`MaskedNumberField` tukee numeeristen rajojen asettamista käyttämällä `setMin()` ja `setMax()`. 
+Nämä rajoitukset auttavat varmistamaan, että käyttäjän syöte pysyy voimassa olevassa, odotetussa alueessa.
 
 - **Minimiarvo**  
-  Käytä `setMin()` määrittääksesi alin hyväksyttävä numero:
+  Käytä `setMin()` määrittääksesi alhaisimman hyväksyttävän arvon:
 
   ```java
   field.setMin(10.0); // Minimiarvo: 10
   ```
 
-  Jos käyttäjä syöttää numeron tämän rajan alapuolelle, se katsotaan voimattomaksi.
+  Jos käyttäjä syöttää arvon, joka on tämän rajan alapuolella, se katsotaan virheelliseksi.
 
 - **Maksimiarvo**  
-  Käytä `setMax()` määrittääksesi korkein hyväksyttävä numero:
+  Käytä `setMax()` määrittääksesi korkeimman hyväksyttävän arvon:
 
   ```java
   field.setMax(100.0); // Maksimiarvo: 100
   ```
 
-  Arvot, jotka ylittävät tämän rajan, merkitään voimattomiksi.
+  Arvot, jotka ovat tämän rajan yläpuolella, merkitään virheellisiksi.
 
 ## Arvon palauttaminen {#restoring-the-value}
 
-`MaskedNumberField` tukee palautustointa, joka nollaa kentän arvon ennalta määritettyyn tilaan. 
-Tämä on hyödyllistä, kun käyttäjät tarvitsevat muutosten kumoamista, vahingossa tehtyjen muokkausten palauttamista tai paluuta tunnettuun oletusarvoon.
+`MaskedNumberField` tukee palautusominaisuutta, joka palauttaa kentän arvon esimäärättyyn tilaan. 
+Tämä voi olla hyödyllistä, kun käyttäjät tarvitsevat peruuttaa muutoksia, palauttaa vahingossa tehtyjä muokkauksia tai palata tunnettuihin oletusarvoihin.
 
-Ota tämä käyttäytyminen käyttöön määrittämällä kohdearvo `setRestoreValue()` avulla. 
+Tämän käyttäytymisen mahdollistamiseksi määritä tavoitearvo käyttäen `setRestoreValue()`. 
 Tarvittaessa kenttä voidaan palauttaa ohjelmallisesti käyttämällä `restoreValue()`.
 
 ```java
@@ -132,41 +138,41 @@ numberField.restoreValue();
 ### Tavat palauttaa arvo {#ways-to-restore-the-value}
 
 - **Ohjelmallisesti** käyttäen `restoreValue()`
-- **Näppäimistön kautta**, painamalla <kbd>ESC</kbd> (tämä on oletuspalautusnäppäin, ellei sitä ole ylikirjoitettu)
+- **Näppäimistön kautta**, painamalla <kbd>ESC</kbd> (tämä on oletuksena palautusnäppäin, ellei se ole ylitettu)
 
-Palautusarvo on asetettava nimenomaisesti. Jos sitä ei määritetä, toiminto ei palauta kenttää.
+Palautusarvon on oltava määritelty selkeästi. Jos sitä ei ole määritetty, ominaisuus ei peruuta kenttää.
 
-<ComponentDemo 
-path='/webforj/maskednumrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumRestoreView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/maskednumrestore'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumRestoreView.java']}
+height='150px'
 />
 
 ## `MaskedNumberFieldSpinner` {#maskednumberfieldspinner}
 
-`MaskedNumberFieldSpinner` laajentaa [`MaskedNumberField`](#basics) lisäämällä spinneriohjaimet, jotka antavat käyttäjille mahdollisuuden lisätä tai vähentää arvoa käyttämällä askelpainikkeita tai nuolinäppäimiä. 
-Tämä on ihanteellinen syötteissä, kuten määrät, hinnoittelusäätö, arviointiohjaimet tai missä tahansa tilanteessa, jossa käyttäjät tekevät vähittäismuutoksia.
+`MaskedNumberFieldSpinner` laajentaa [`MaskedNumberField`](#basics) lisäämällä spinnereitä, jotka antavat käyttäjille mahdollisuuden lisätä tai vähentää arvoa käyttämällä vaihepainikkeita tai nuolinäppäimiä. 
+Tämä on ihanteellinen syötteille, kuten määrille, hinnoittelusäätöille, arviointikontrolleille tai mihin tahansa skenaarioon, jossa käyttäjät tekevät asteittaisia muutoksia.
 
-<ComponentDemo 
-path='/webforj/maskednumspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumSpinnerView.java'
-height = '120px'
+<ComponentDemo
+path='/webforj/maskednumspinner'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumSpinnerView.java']}
+height='120px'
 />
 
 ### Avainominaisuudet {#key-features}
 
-- **Askelveloitukset**  
-  Käytä `setStep()` määrittääksesi, kuinka paljon arvon tulee muuttua jokaisen pyörityksen myötä:
+- **Askelinjektiot**  
+  Käytä `setStep()` määrittääksesi, kuinka paljon arvon pitäisi muuttua jokaisella spinnillä:
 
   ```java
-  spinner.setStep(5.0); // Jokainen pyöritys lisää tai vähentää 5
+  spinner.setStep(5.0); // Jokainen spin lisää tai vähentää 5
   ```
 
 - **Interaktiiviset ohjaimet**  
-  Käyttäjät voivat napsauttaa spinner-painikkeita tai käyttää näppäimistösyöttöä arvon säätämiseen.
+  Käyttäjät voivat napsauttaa spinner-painikkeita tai käyttää näppäimistösisältöä arvon säätämiseen.
 
-- **Kaikki ominaisuudet MaskedNumberFieldista**  
-  Täydellinen tuki maskeille, muotoilulle, ryhmittely-/desimaalimerkeille, min/max-rajoituksille ja palautuslogiikalle.
+- **Kaikki ominaisuudet MaskedNumberFieldistä**  
+  Täysin tukee maskeja, muotoilua, ryhmittely- ja desimaalimerkkejä, minimi- ja maksimi-rajoja sekä palautuslogiikkaa.
 
 ## Tyylittely {#styling}
 

@@ -1,32 +1,36 @@
 ---
 title: ProgressBar
 sidebar_position: 90
-_i18n_hash: 9b2f9ec23124d60ab5f8fca18e561acb
+_i18n_hash: 6acac582ce905eb255ee09e499fd561f
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-progressbar" />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 
-ProgressBar is een component dat visueel de voortgang van een taak weergeeft. Naarmate de taak dichter bij voltooiing komt, toont de voortgangsbalk het percentage van de voltooiing van de taak. Dit percentage wordt visueel weergegeven door een rechthoek die in het begin leeg is en geleidelijk gevuld raakt naarmate de taak vordert. Bovendien kan de voortgangsbalk een tekstuele weergave van dit percentage tonen.
+De `ProgressBar` component vertegenwoordigt visueel de voltooiingsstatus van een bewerking. Terwijl het werk vordert, vullen rechthoeken geleidelijk om het huidige percentage weer te geven. De balk kan ook een tekstuele weergave van zijn waarde tonen en ondersteunt zowel bepaalde als onbepaaldeStatussen voor taken met bekende of onbekende duur.
 
-<ComponentDemo 
-path='/webforj/progressbarbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java'
-height='150px'
-/>
+<!-- INTRO_END -->
 
-## Usages {#usages}
+## Gebruiken {#usages}
 
 De `ProgressBar` component is nuttig voor het visualiseren van de voltooiingsstatus van taken. Het ondersteunt:
 
-- Configureerbare minimum- en maximumwaarden.
+- Instelbare minimum- en maximumwaarden.
 - Onbepaalde modus voor lopende taken zonder definitief einde.
 - Opties voor tekstzichtbaarheid, animatie en gestreepte ontwerpen voor betere visuele feedback.
 
-## Setting values {#setting-values}
+Het volgende voorbeeld toont een gestreepte, geanimeerde voortgangsbalk met start-, pauze- en resetknoppen:
 
-De ProgressBar-component maakt het mogelijk om de huidige waarde, minimum- en maximumlimieten in te stellen en op te halen.
+<ComponentDemo
+path='/webforj/progressbarbasic'
+files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java']}
+height='150px'
+/>
+
+## Waarden instellen {#setting-values}
+
+De ProgressBar component maakt het mogelijk om de huidige waarde, minimum- en maximumlimieten in te stellen en op te halen.
 
 ```java showLineNumbers
 ProgressBar bar = new ProgressBar();
@@ -35,53 +39,53 @@ bar.setMax(100);
 bar.setValue(50);
 ```
 
-## Orientation {#orientation}
+## Oriëntatie {#orientation}
 
 De `ProgressBar` kan horizontaal of verticaal worden georiënteerd.
 
-<ComponentDemo 
-path='/webforj/progressbarorientation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientationView.java'
+<ComponentDemo
+path='/webforj/progressbarorientation'
+files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientationView.java']}
 height='175px'
 />
 
-## Indeterminate state {#indeterminate-state}
+## Onbepaalde staat {#indeterminate-state}
 
-De `ProgressBar` ondersteunt een onbepaalde staat voor taken met onbekende voltooiingstijd.
+De `ProgressBar` ondersteunt een onbepaalde staat voor taken met een onbekende voltooiingstijd.
 
-<ComponentDemo 
-path='/webforj/progressbardeterminate?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarDeterminateView.java'
+<ComponentDemo
+path='/webforj/progressbardeterminate'
+files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarDeterminateView.java']}
 height='25px'
 />
 
-## Text and text visibility {#text-and-text-visibility}
+## Tekst en tekstzichtbaarheid {#text-and-text-visibility}
 
-Standaard toont de voortgangsbalk bij het aanmaken het percentage dat voltooid is in de indeling `XX%`. Met de `setText()`-methode kun je de tijdelijke aanduiding `{{x}}` gebruiken om de huidige waarde als percentage te krijgen. Bovendien kun je de tijdelijke aanduiding 
-`{{value}}` gebruiken om de ruwe huidige waarde te krijgen.
+Standaard toont de voortgangsbalk bij het aanmaken het percentage voltooid in het formaat `XX%`. Met de `setText()` methode kun je de placeholder `{{x}}` gebruiken om de huidige waarde als percentage te krijgen. Daarnaast kun je de placeholder 
+`{{value}}` gebruiken om de rauwe huidige waarde te verkrijgen.
 
 ```java
-ProgressBar bar = new ProgressBar(15, "Downloading: {{x}}%");
+ProgressBar bar = new ProgressBar(15, "Downloaden: {{x}}%");
 ```
 
 ## Styling {#styling}
 
-### Themes {#themes}
+### Thema's {#themes}
 
-De `ProgressBar` component wordt geleverd met <JavadocLink type="foundation" location="com/webforj/component/Theme"> thema's </JavadocLink> die ingebouwd zijn voor snelle styling zonder gebruik van CSS. Deze thema's zijn vooraf gedefinieerde stijlen die op knoppen kunnen worden toegepast om hun uiterlijk en visuele presentatie te veranderen. 
-Ze bieden een snelle en consistente manier om de uitstraling van ProgressBars in een app aan te passen. 
+De `ProgressBar` component wordt geleverd met <JavadocLink type="foundation" location="com/webforj/component/Theme"> thema's </JavadocLink> ingebouwd voor snelle styling zonder het gebruik van CSS. Deze thema's zijn vooraf gedefinieerde stijlen die op knoppen kunnen worden toegepast om hun uiterlijk en visuele presentatie te wijzigen. 
+Ze bieden een snelle en consistente manier om de uitstraling van ProgressBars in een app te personaliseren. 
 
-<ComponentDemo 
-path='/webforj/progressbarthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarThemesView.java'
+<ComponentDemo
+path='/webforj/progressbarthemes'
+files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarThemesView.java']}
 height='320px'
 />
 
 <TableBuilder name="ProgressBar" />
 
-## Best practices {#best-practices}
+## Beste praktijken {#best-practices}
 
-- **Gebruik geschikte minimum- en maximumwaarden**: Stel de minimum- en maximumwaarden in om de actierange van de taak nauwkeurig weer te geven.
-- **Werk voortgang regelmatig bij**: Update continu de voortgangswaarde om realtime feedback aan gebruikers te bieden.
-- **Gebruik onbepaalde staat voor onvoorspelbare duur**: Gebruik de onbepaalde staat voor taken met onvoorspelbare duur om voortgang aan te geven.
-- **Toon tekst voor betere gebruikersfeedback**: Toon tekst op de voortgangsbalk om extra context over de voortgang van de taak te bieden.
+- **Gebruik geschikte minimum- en maximumwaarden**: Stel de minimum- en maximumwaarden in om het bereik van de taak nauwkeurig weer te geven.
+- **Werk de voortgang regelmatig bij**: Werk de voortgangswaarde continu bij om realtime feedback aan gebruikers te geven.
+- **Maak gebruik van onbepaalde staat voor onbekende duur**: Gebruik de onbepaalde staat voor taken met onvoorspelbare duur om aan te geven dat de voortgang aan de gang is.
+- **Toon tekst voor betere gebruikersfeedback**: Toon tekst op de voortgangsbalk om extra context te bieden over de voortgang van de taak.

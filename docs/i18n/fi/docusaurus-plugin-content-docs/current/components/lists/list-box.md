@@ -2,64 +2,66 @@
 sidebar_position: 15
 title: ListBox
 slug: listbox
-_i18n_hash: 7bd48c55ca5607255c1d6503c500a25d
+_i18n_hash: 48b12429da76fbbe3a7961a0eac4efa9
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-listbox" />
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" top='true'/>
 
-<ParentLink parent="Lista" />
+`ListBox`-komponentti näyttää vieritettävän luettelon kohteista, joka pysyy näkyvissä ilman, että dropdownia tarvitsee avata. Se tukee sekä yksittäistä että useaa valintaa, ja se toimii hyvin, kun käyttäjät tarvitsevat nähdä kaikki käytettävissä olevat vaihtoehdot kerralla.
 
-`ListBox` komponentti on käyttöliittymäelementti, joka on suunniteltu näyttämään vieritettävä lista objekteista ja sallii käyttäjien valita yksittäisiä tai useita kohteita listalta. Käyttäjät voivat myös käyttää `ListBox`ia nuolinäppäimillä.
+<!-- INTRO_END -->
 
 ## Käytännöt {#usages}
 
-1. **Käyttäjän roolien määrittäminen**: Sovelluksissa, joissa on käyttäjäoikeus hallinta, järjestelmänvalvojat voivat käyttää `ListBox`ia roolien ja oikeuksien määrittämiseen käyttäjille. Käyttäjiä valitaan listalta, ja roolit tai oikeudet määritellään valinnan perusteella. Tämä varmistaa tarkan ja hallitun pääsyn eri ominaisuuksiin ja tietoihin sovelluksessa.
+<ParentLink parent="List" />
 
-2. **Projektitehtävien määrittäminen**: Projektinhallintaohjelmistoissa `ListBox` komponentit ovat hyödyllisiä tehtävien määrittämisessä tiimin jäsenille. Käyttäjät voivat valita tehtäviä listalta ja määrittää ne eri tiimin jäsenille. Tämä yksinkertaistaa tehtävien jakamista ja varmistaa, että vastuut ovat selkeästi määriteltyjä tiimissä.
+1. **Käyttäjäroolien määrittäminen**: Sovelluksissa, joissa on käyttäjäoikeuksien hallinta, ylläpitäjät voivat käyttää `ListBox`-komponenttia määrittääkseen rooleja ja oikeuksia käyttäjille. Käyttäjät valitaan luettelosta, ja roolit tai oikeudet määritetään valinnan perusteella. Tämä varmistaa tarkkuuden ja hallitun pääsyn erilaisiin ominaisuuksiin ja tietoihin sovelluksessa.
 
-3. **Monikategorinen suodatus**: Hakusovelluksessa käyttäjät tarvitsevat usein hakutulosten suodattamista useiden kriteerien perusteella. `ListBox` voi näyttää erilaisia suodatinvaihtoehtoja, kuten
->- Tuotteen ominaisuudet
+2. **Projektitehtävien määrittäminen**: Projektinhallintaohjelmistoissa `ListBox`-komponentit ovat hyödyllisiä tehtävien jakamisessa tiimin jäsenille. Käyttäjät voivat valita tehtäviä luettelosta ja määrittää ne eri tiimin jäsenille. Tämä yksinkertaistaa tehtävien jakamista ja varmistaa, että vastuut on selkeästi määritelty tiimissä.
+
+3. **Monikategorinen suodatus**: Hakusovelluksessa käyttäjät tarvitsevat usein suodattaa hakutuloksia useiden kriteerien perusteella. `ListBox` voi näyttää erilaisia suodatusvaihtoehtoja, kuten 
+>- Tuoteominaisuudet
 >- Hintaluokat
->- Merkit.
+>- Brändit. 
 
- Käyttäjät voivat valita kohteita jokaisesta suodatinluokasta, jolloin he voivat tarkentaa hakutuloksia ja löytää täsmälleen mitä he etsivät.
+  Käyttäjät voivat valita kohteita jokaisesta suodatuskategoriasta, mikä auttaa heitä tarkentamaan hakutuloksia ja löytämään tarkalleen mitä he etsivät.
 
-4. **Sisällön luokittelu**: Sisällönhallintajärjestelmissä `ListBox` komponentit auttavat artikkeleiden, kuvien tai tiedostojen luokittelussa. Käyttäjät voivat valita yhden tai useamman kategorian yhdistääkseen ne sisältönsä kanssa, mikä helpottaa sisältöelementtien järjestämistä ja hakemista järjestelmässä.
+4. **Sisällön luokittelu**: Sisällönhallintajärjestelmissä `ListBox`-komponentit auttavat artikkeleiden, kuvien tai tiedostojen luokittelussa. Käyttäjät voivat valita yhden tai useamman kategorian yhdistettäväksi sisältöönsä, mikä helpottaa sisällön järjestämistä ja etsimistä järjestelmässä.
 
 ## Valintavaihtoehdot {#selection-options}
 
-Oletusarvoisesti lista-aitta on määritetty sallimaan yhden kohteen valinta kerrallaan. `ListBox` toteuttaa kuitenkin <JavadocLink type="foundation" location="com/webforj/component/list/MultipleSelectableList" code='true'>MultipleSelectableList</JavadocLink> -rajapinnan, joka voidaan määrittää sisäänrakennetun menetelmän avulla, joka sallii käyttäjien valita useita kohteita ***käyttämällä `Shift`-näppäintä*** peräkkäisten valintojen valitsemiseksi ja ***`Control` (Windows) tai `Command` (Mac) näppäintä*** erillisten, useiden kohteiden valitsemiseksi.
+Oletusarvoisesti valintaruutu on konfiguroitu sallimaan vain yhden kohteen valinta kerrallaan. Kuitenkin `ListBox` toteuttaa <JavadocLink type="foundation" location="com/webforj/component/list/MultipleSelectableList" code='true'>MultipleSelectableList</JavadocLink> -rajapinnan, joka voidaan määrittää sisäänrakennetun menetelmän avulla, joka sallii käyttäjien valita useita kohteita ***käyttäen `Shift`-näppäintä*** vierekkäisten valintojen valitsemiseksi ja ***`Control` (Windows) tai `Command` (Mac) näppäintä*** erillisten, moninkertaisten kohteiden valitsemiseksi.
 
-Käytä <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> -toimintoa muuttaaksesi tätä ominaisuutta. Tämä menetelmä hyväksyy joko `SelectionMode.SINGLE` tai `SelectionMode.MULTIPLE`.
+Käytä <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> -toimintoa tämän ominaisuuden muuttamiseksi. Tämä menetelmä hyväksyy joko `SelectionMode.SINGLE` tai `SelectionMode.MULTIPLE`.
 
 :::info Kosketuslaitteen käyttäytyminen
-Kosketuslaitteilla, kun monivalinta on käytössä, käyttäjät voivat valita useita kohteita ilman, että heidän tarvitsee pitää shift-näppäintä alhaalla.
+Kosketuslaitteilla, kun monivalinta on käytössä, käyttäjät voivat valita useita kohteita ilman, että shift-näppäintä tarvitaan.
 :::
 
-Lisäksi nuolinäppäimiä voidaan käyttää `ListBox`-elementissä navigoimiseen, ja kirjainnäppäimen kirjoittaminen, kun `ListBox` on aktiivinen, valitsee vaihtoehdon, joka alkaa sillä kirjaimella, tai kiertää vaihtoehtoja, jotka alkavat sillä kirjaimella, jos useita vaihtoehtoja on olemassa.
+Lisäksi nuolinäppäimiä voidaan käyttää `ListBox`-ruudussa navigoimiseen, ja kirjaimen kirjoittaminen, kun `ListBox` on aktiivinen, valitsee vaihtoehdon, joka alkaa sillä kirjaimella, tai kiertää vaihtoehtoja, jotka alkavat sillä kirjaimella, jos useita vaihtoehtoja on saatavilla.
 
-<ComponentDemo 
-path='/webforj/listboxmultipleselection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java'
-height = '250px'
+<ComponentDemo
+path='/webforj/listboxmultipleselection'
+files={['src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java']}
+height='250px'
 />
 
-## Tyylittely {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="ListBox" />
 
 ## Parhaat käytännöt {#best-practices}
 
-Jotta `ChoiceBox` komponentin käyttäjäkokemus olisi optimaalinen, harkitse seuraavia parhaita käytäntöjä:
+Varmistaaksesi optimaalisen käyttäjäkokemuksen `ChoiceBox`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
 
-1. **Tiedon hierarkian priorisointi**: `ListBox`ia käytettäessä varmista, että kohteet on järjestetty loogiseen ja hierarkkiseen järjestykseen. Aseta tärkeimmät ja yleisimmin käytetyt vaihtoehdot listan yläosaan. Tämä helpottaa käyttäjien löytää tarvitsemaansa ilman liiallista vieritystä.
+1. **Tietohierarkian priorisoiminen**: Kun käytät `ListBox`-komponenttia, varmista, että kohteet on järjestetty loogiseen ja hierarkkiseen järjestykseen. Aseta tärkeimmät ja eniten käytetyt vaihtoehdot luettelon yläosaan. Tämä helpottaa käyttäjien löytämistä tarvitsemansa ilman liiallista vierittämistä.
 
-2. **Listan pituuden rajoittaminen**: Vältä käyttäjien yliherkistämistä liiallisesti pitkällä `ListBox`:lla. Jos näyttämistä varten on suuri määrä kohteita, harkitse sivutusta, hakua tai suodatusvaihtoehtoja auttaaksesi käyttäjiä löytämään kohteita nopeasti. Alternatiivisesti voit ryhmitellä kohteita kategorioihin listan pituuden vähentämiseksi.
+2. **Luettelon pituuden rajoittaminen**: Vältä käyttäjien ylivoimaamista liian pitkällä `ListBox`:lla. Jos näytettävänä on suuri määrä kohteita, harkitse sivutusta, hakua tai suodatusvaihtoehtoja auttaaksesi käyttäjiä löytämään kohteita nopeasti. Voit myös ryhmitellä kohteita kategorioihin vähentääksesi luettelon pituutta.
 
-3. **Selkeät ja kuvaavat nimilaput**: Anna selkeät ja kuvaavat nimilaput jokaiselle `ListBox`:n kohteelle. Käyttäjien tulisi ymmärtää jokaisen vaihtoehdon tarkoitus ilman epäselvyyksiä. Käytä tiivistä ja merkityksellistä kohdenimien nimeämistä.
+3. **Selkeät ja kuvailevat tunnisteet**: Tarjoa selkeitä ja kuvailevia tunnisteita jokaiselle `ListBox`-komponentin kohteelle. Käyttäjien tulisi ymmärtää kunkin vaihtoehdon tarkoitus ilman epäselvyyksiä. Käytä tiiviitä ja merkityksellisiä kohteen tunnisteita.
 
-4. **Monivalinnan palaute**: Jos `ListBox`:si sallii monivalintoja, tarjoa visuaalista tai tekstimuotoista palautetta, joka osoittaa, että useita kohteita voidaan valita listalta.
+4. **Monivalintapalautteen tarjoaminen**: Jos `ListBox`-komponentti sallii useita valintoja, tarjoa visuaalista tai tekstillistä palautetta, joka osoittaa, että luettelosta voidaan valita useita kohteita.
 
-5. **Oletusvalinta**: Harkitse oletusvalinnan asettamista `ListBox`:lle, erityisesti jos jokin vaihtoehto on yleisemmin käytetty kuin muut. Tämä voi sujuvoittaa käyttäjäkokemusta esivalitsemalla todennäköisimman valinnan.
+5. **Oletusvalinta**: Harkitse oletusvalinnan asettamista `ListBox`:lle, erityisesti jos yksi vaihtoehto on muita yleisemmin käytetty. Tämä voi sujuvoittaa käyttäjäkokemusta valitsemalla ennakkoon todennäköisimmän vaihtoehdon.
