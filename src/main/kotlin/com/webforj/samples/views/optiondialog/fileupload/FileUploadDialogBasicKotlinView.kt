@@ -2,6 +2,7 @@ package com.webforj.samples.views.optiondialog.fileupload
 
 import com.webforj.component.Composite
 import com.webforj.component.html.elements.Div
+import com.webforj.component.optiondialog.DwcPromptMsgBox
 import com.webforj.component.optiondialog.FileUploadDialog
 import com.webforj.component.optiondialog.MessageDialog
 import com.webforj.component.optiondialog.OptionDialog
@@ -34,7 +35,7 @@ class FileUploadDialogBasicKotlinView : Composite<Div?>() {
       OptionDialog.showMessageDialog(
         "No file selected",
         "File Selection Failed",
-        MessageDialog.MessageType.ERROR
+        DwcPromptMsgBox.MessageType.ERROR
       )
     }
   }

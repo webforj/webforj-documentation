@@ -3,6 +3,7 @@ package com.webforj.samples.views.optiondialog.input
 import com.webforj.component.Composite
 import com.webforj.component.button.ButtonTheme
 import com.webforj.component.html.elements.Div
+import com.webforj.component.optiondialog.DwcPromptMsgBox
 import com.webforj.component.optiondialog.InputDialog
 import com.webforj.component.optiondialog.MessageDialog
 import com.webforj.component.optiondialog.OptionDialog
@@ -25,7 +26,7 @@ class InputDialogBasicKotlinView : Composite<Div?>() {
         """.trimIndent()
 
     val dialog: InputDialog = InputDialog(message, "Delete Repository", /*InputDialog.MessageType.ERROR*/).apply {
-      messageType = InputDialog.MessageType.PLAIN
+      messageType = DwcPromptMsgBox.MessageType.PLAIN
       firstButtonText = "Delete Repository"
       setSecondButtonTheme(ButtonTheme.OUTLINED_GRAY)
     }
@@ -40,7 +41,7 @@ class InputDialogBasicKotlinView : Composite<Div?>() {
             OptionDialog.showMessageDialog(
               "Aborted repository deletion.",
               "Repository Deletion Aborted",
-              MessageDialog.MessageType.ERROR
+              DwcPromptMsgBox.MessageType.ERROR
             )
           }
           CONFIRMATION_CODE -> {
@@ -48,7 +49,7 @@ class InputDialogBasicKotlinView : Composite<Div?>() {
             OptionDialog.showMessageDialog(
               "Repository was deleted successfully",
               "Repository Deleted",
-              MessageDialog.MessageType.INFO
+              DwcPromptMsgBox.MessageType.INFO
             )
           }
           else -> {
@@ -56,7 +57,7 @@ class InputDialogBasicKotlinView : Composite<Div?>() {
             OptionDialog.showMessageDialog(
               "Failed to delete the repository. Code entered is incorrect",
               "Repository Deletion Failed",
-              MessageDialog.MessageType.ERROR
+              DwcPromptMsgBox.MessageType.ERROR
             )
           }
       }

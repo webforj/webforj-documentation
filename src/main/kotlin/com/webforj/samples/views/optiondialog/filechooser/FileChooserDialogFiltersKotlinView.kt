@@ -2,6 +2,7 @@ package com.webforj.samples.views.optiondialog.filechooser
 
 import com.webforj.component.Composite
 import com.webforj.component.html.elements.Div
+import com.webforj.component.optiondialog.DwcPromptMsgBox
 import com.webforj.component.optiondialog.FileChooserDialog
 import com.webforj.component.optiondialog.FileChooserFilter
 import com.webforj.component.optiondialog.OptionDialog
@@ -43,7 +44,7 @@ class FileChooserDialogFiltersKotlinView: Composite<Div>() {
     } ?: OptionDialog.showMessageDialog(
       "No file selected",
       "File Selection Failed",
-      // MessageType.ERROR
+      DwcPromptMsgBox.MessageType.ERROR
     )
   }
 }

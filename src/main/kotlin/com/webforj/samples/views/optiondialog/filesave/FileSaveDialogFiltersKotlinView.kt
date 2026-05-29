@@ -2,9 +2,9 @@ package com.webforj.samples.views.optiondialog.filesave
 
 import com.webforj.component.Composite
 import com.webforj.component.html.elements.Div
+import com.webforj.component.optiondialog.DwcPromptMsgBox
 import com.webforj.component.optiondialog.FileChooserFilter
 import com.webforj.component.optiondialog.FileSaveDialog
-import com.webforj.component.optiondialog.MessageDialog
 import com.webforj.component.optiondialog.OptionDialog
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -36,7 +36,7 @@ class FileSaveDialogFiltersKotlinView: Composite<Div>() {
     } ?: OptionDialog.showMessageDialog(
       "No path is selected",
       "Path Selected",
-//      MessageDialog.MessageType.ERROR
+      DwcPromptMsgBox.MessageType.ERROR
     )
   }
 }

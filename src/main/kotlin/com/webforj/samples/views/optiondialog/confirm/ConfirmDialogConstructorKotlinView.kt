@@ -5,6 +5,7 @@ import com.webforj.component.Theme
 import com.webforj.component.button.ButtonTheme
 import com.webforj.component.html.elements.Div
 import com.webforj.component.optiondialog.ConfirmDialog
+import com.webforj.component.optiondialog.DwcPromptMsgBox
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -17,7 +18,7 @@ class ConfirmDialogConstructorKotlinView: Composite<Div>() {
       "Are you sure you want to delete this file? This action cannot be reverted.",
       "Deletion",
       ConfirmDialog.OptionType.OK_CANCEL,
-      // MessageType.QUESTION
+      DwcPromptMsgBox.MessageType.QUESTION
     ).apply {
       theme = Theme.DANGER
       setButtonTheme(ConfirmDialog.Button.FIRST, ButtonTheme.DANGER)

@@ -4,6 +4,7 @@ import com.webforj.component.Composite
 import com.webforj.component.button.ButtonTheme
 import com.webforj.component.html.elements.Div
 import com.webforj.component.optiondialog.ConfirmDialog
+import com.webforj.component.optiondialog.DwcPromptMsgBox
 import com.webforj.component.optiondialog.OptionDialog
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -18,7 +19,7 @@ class ConfirmDialogOptionsKotlinView: Composite<Div>() {
       "There are unsaved changes. Do you want to discard or save them?",
       "Unsaved changes",
       ConfirmDialog.OptionType.CUSTOM,
-      // MessageType.WARNING
+      DwcPromptMsgBox.MessageType.WARNING
     ).apply {
       firstButtonText = "Discard"
       setFirstButtonTheme(ButtonTheme.WARNING)

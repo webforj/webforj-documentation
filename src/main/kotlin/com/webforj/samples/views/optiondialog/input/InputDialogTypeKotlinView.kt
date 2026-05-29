@@ -3,6 +3,7 @@ package com.webforj.samples.views.optiondialog.input
 import com.webforj.component.Composite
 import com.webforj.component.button.ButtonTheme
 import com.webforj.component.html.elements.Div
+import com.webforj.component.optiondialog.DwcPromptMsgBox
 import com.webforj.component.optiondialog.InputDialog
 import com.webforj.component.optiondialog.MessageDialog
 import com.webforj.component.optiondialog.OptionDialog
@@ -13,7 +14,7 @@ import com.webforj.router.annotation.Route
 @FrameTitle("Input Dialog Type")
 class InputDialogTypeKotlinView: Composite<Div>() {
   // Input dialog for password entry
-  private val dialog: InputDialog? = null
+  private val dialog: InputDialog
 
   init {
     dialog = InputDialog(
@@ -40,7 +41,7 @@ class InputDialogTypeKotlinView: Composite<Div>() {
         "Access granted",
         "Welcome",
         "Got it",
-        MessageDialog.MessageType.INFO
+        DwcPromptMsgBox.MessageType.INFO
       )
     } else {
       // Access denied - retry
@@ -48,7 +49,7 @@ class InputDialogTypeKotlinView: Composite<Div>() {
         "Access denied",
         "Access denied",
         "Try again",
-        MessageDialog.MessageType.ERROR
+        DwcPromptMsgBox.MessageType.ERROR
       )
     }
   }
