@@ -8,8 +8,10 @@ import com.webforj.component.layout.flexlayout.FlexAlignment
 import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.component.terminal.TerminalTheme
+import com.webforj.kotlin.dsl.build
 import com.webforj.kotlin.dsl.component.list.choiceBox
 import com.webforj.kotlin.dsl.component.list.items
+import com.webforj.kotlin.dsl.component.terminal.terminal
 import com.webforj.kotlin.extension.percent
 import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.rem
@@ -30,7 +32,7 @@ class TerminalThemePickerKotlinView: Composite<FlexLayout>() {
   }
 
   init {
-    self.apply {
+    self.build {
       direction = FlexDirection.COLUMN
       alignment = FlexAlignment.CENTER
       styles["margin"] = "var(--dwc-space-m) auto"

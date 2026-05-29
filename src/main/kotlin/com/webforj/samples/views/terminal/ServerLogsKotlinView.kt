@@ -8,8 +8,10 @@ import com.webforj.component.layout.flexlayout.FlexAlignment
 import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.component.terminal.Terminal
+import com.webforj.kotlin.dsl.build
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
+import com.webforj.kotlin.dsl.component.terminal.terminal
 import com.webforj.kotlin.extension.*
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -20,8 +22,8 @@ import java.util.*
 @FrameTitle("Server Logs Stream")
 class ServerLogsKotlinView : Composite<FlexLayout>() {
   private val self = boundComponent
-  private val terminal: Terminal
-  private val startButton: Button
+  private lateinit var terminal: Terminal
+  private lateinit var startButton: Button
   private lateinit var interval: Interval
   private var isStreaming = false
   private var bufferedLines = 0
@@ -31,7 +33,7 @@ class ServerLogsKotlinView : Composite<FlexLayout>() {
   private val logLevels = arrayOf("INFO", "WARN", "DEBUG", "ERROR")
 
   init {
-    self.apply {
+    self.build {
       direction = FlexDirection.COLUMN
       alignment = FlexAlignment.END
       styles["background-color"] = "#1e1e1e"

@@ -4,6 +4,7 @@ import com.webforj.annotation.InlineStyleSheet
 import com.webforj.component.Composite
 import com.webforj.component.terminal.Terminal
 import com.webforj.component.terminal.event.TerminalDataEvent
+import com.webforj.kotlin.dsl.build
 import com.webforj.kotlin.extension.percent
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.size
@@ -30,7 +31,7 @@ class TerminalKotlinVIew: Composite<Terminal>() {
   private var historyIndex = -1
 
   init {
-    self.apply {
+    self.build {
       isAutoFit = true
       size = 95.percent to 95.percent
       styles["margin"] = "var(--dwc-space-m)"
