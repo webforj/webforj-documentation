@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-tab-panel>
 sidebar_class_name: sidebar--item__hidden
 slug: tab-panel
-description: A user guide article for the tab-panel
+description: Customize the dwc-tab-panel content surface with CSS variables and shadow parts for padding, background, and borders.
 // pagination_prev: null
 // pagination_next: null
 ---

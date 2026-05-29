@@ -1,6 +1,7 @@
 ---
 title: TextArea
 sidebar_position: 130
+description: Capture multi-line input with the TextArea component, including paragraph management, character limits, wrapping, and validation.
 ---
 
 <DocChip chip="shadow" />
@@ -8,14 +9,18 @@ sidebar_position: 130
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextArea" top='true'/>
 
-The `TextArea` component in webforJ offers a solution for multi-line text input. End-users can freely type and edit text, while developers can set reasonable boundaries using features like maximum character limits, paragraph structure, and validation rules.
+The `TextArea` component provides a multi-line text input field where users can type and edit longer blocks of text. It supports maximum character limits, paragraph structure, line wrapping, and validation rules to control how input is handled.
 
-Here's an example of a `TextArea` for entering multi-line text:
+<!-- INTRO_END -->
 
-<ComponentDemo 
-path='/webforj/textarea?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaView.java'
-height = '300px'
+## Creating a `TextArea` {#creating-a-textarea}
+
+Create a `TextArea` by passing a label to its constructor. Properties like placeholder text, character limits, and wrapping behavior can be configured through setter methods.
+
+<ComponentDemo
+path='/webforj/textarea'
+files={['src/main/java/com/webforj/samples/views/textarea/TextAreaView.java']}
+height='300px'
 />
 
 ## Managing paragraphs {#managing-paragraphs}
@@ -42,7 +47,7 @@ textArea.removeParagraph(1);
 // Retrieve and print all current paragraphs
 List<String> paragraphs = textArea.getParagraphs();
 for (int i = 0; i < paragraphs.size(); i++) {
-    System.out.println("Paragraph " + i + ": " + paragraphs.get(i));
+  System.out.println("Paragraph " + i + ": " + paragraphs.get(i));
 }
 ```
 
@@ -60,10 +65,10 @@ The `TextArea` component supports two complementary types of validation: structu
 
 The following demo allows users to adjust validation limits—such as maximum character count, paragraph length, and line count—in real time and see how the `TextArea` responds.
 	
-<ComponentDemo 
-path='/webforj/textareavalidation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java'
-height = '550px'
+<ComponentDemo
+path='/webforj/textareavalidation'
+files={['src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java']}
+height='550px'
 />
 
 ## Word wrap and Line wrapping {#word-wrap-and-line-wrapping}
@@ -76,10 +81,10 @@ To further refine how wrapping behaves, `setWrapStyle()` lets you choose between
 
 These wrapping options work hand-in-hand with structural constraints like line count and paragraph length limits. While wrapping determines *how* text flows within the available space, the structural limits define *how much* space text is allowed to occupy. Together, they help maintain both visual structure and user input boundaries.
 
-<ComponentDemo 
-path='/webforj/textareawrap?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaWrapView.java'
-height = '400px'
+<ComponentDemo
+path='/webforj/textareawrap'
+files={['src/main/java/com/webforj/samples/views/textarea/TextAreaWrapView.java']}
+height='400px'
 />
 
 ## Predicted text {#predicted-text}
@@ -90,10 +95,13 @@ Predictions can be accepted by pressing the `Tab` or `ArrowRight` key, inserting
 
 This predictive behavior enhances both speed and accuracy, especially in repetitive input scenarios or applications where consistency of phrasing is important.
 
-<ComponentDemo 
-path='/webforj/textareapredictedtext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java'
-height = '400px'
+<ComponentDemo
+path='/webforj/textareapredictedtext'
+files={[
+  'src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java',
+  'src/main/resources/static/css/textarea/text-area-predicted-text-view.css',
+]}
+height='400px'
 />
 
 :::info
@@ -110,10 +118,10 @@ A **disabled** text area, on the other hand, blocks all interaction—including 
 
 Use read-only mode when the content is relevant but immutable, and disabled mode when the input isn't currently applicable or should be temporarily inactive.
 
-<ComponentDemo 
-path='/webforj/textareastates?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaStatesView.java'
-height = '300px'
+<ComponentDemo
+path='/webforj/textareastates'
+files={['src/main/java/com/webforj/samples/views/textarea/TextAreaStatesView.java']}
+height='300px'
 />
 
 ## Styling {#styling}

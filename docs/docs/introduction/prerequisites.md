@@ -1,5 +1,6 @@
 ---
 title: Prerequisites
+description: Set up a webforJ development environment with JDK 21, Apache Maven, and a supported Java IDE such as IntelliJ, VS Code, or NetBeans.
 sidebar_position: 1
 ---
 

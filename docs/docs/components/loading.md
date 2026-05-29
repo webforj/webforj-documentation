@@ -1,6 +1,7 @@
 ---
 title: Loading
 sidebar_position: 65
+description: Overlay a parent container with the Loading component to block interaction during async tasks, with backdrop and spinner customization.
 ---
 
 <DocChip chip="shadow" />
@@ -8,7 +9,9 @@ sidebar_position: 65
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="loading" location="com/webforj/component/loading/Loading" top='true'/>
 
-The `Loading` component in webforJ displays an overlay that signals the processing of an operation, temporarily preventing user interaction until the task is complete. This feature improves the user experience, especially in situations where tasks like data loading, computations, or background processes may take some time. For global, app-wide processes, consider using the [`BusyIndicator`](../components/busyindicator) component, which blocks interaction across the entire interface.
+The `Loading` component displays an overlay on a specific component or area, signaling that an operation is in progress and temporarily blocking interaction. It works well for tasks like data loading, computations, or background processes. For global, app-wide processes, the [`BusyIndicator`](../components/busyindicator) component covers the entire interface instead.
+
+<!-- INTRO_END -->
 
 ## Basics {#basics}
 
@@ -16,11 +19,13 @@ The simplest way to create a `Loading` component is by initializing it without a
 
 Here's an example of creating a `Loading` component with a message:
 
-<ComponentDemo 
-path='/webforj/loadingdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java'
-cssURL='/css/loadingstyles/loadingdemo.css'
-height = '300px'
+<ComponentDemo
+path='/webforj/loadingdemo'
+files={[
+  'src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java',
+  'src/main/resources/static/css/loadingstyles/loadingdemo.css',
+]}
+height='300px'
 />
 
 ## Scoping {#scoping}
@@ -58,11 +63,13 @@ The `Loading` component in webforJ includes a `Spinner` that visually indicates 
 
 Here's an example of how you can customize the spinner within a `Loading` component:
 
-<ComponentDemo 
-path='/webforj/loadingspinnerdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java'
-cssURL='/css/loadingstyles/loadingspinnerdemo.css'
-height = '300px'
+<ComponentDemo
+path='/webforj/loadingspinnerdemo'
+files={[
+  'src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java',
+  'src/main/resources/static/css/loadingstyles/loadingspinnerdemo.css',
+]}
+height='300px'
 />
 
 ## Use cases {#use-cases}

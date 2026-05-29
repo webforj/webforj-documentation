@@ -13,8 +13,8 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Number Field with Restore Value")
 public class MaskedNumRestoreView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedNumberField field = new MaskedNumberField("Project Budget:");
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedNumberField field = new MaskedNumberField("Project Budget:");
 
   public MaskedNumRestoreView() {
     self.setAlignment(FlexAlignment.CENTER)
@@ -25,14 +25,11 @@ public class MaskedNumRestoreView extends Composite<FlexLayout> {
         .setMask("$###,###,##0.00")
         .setValue(1234567d)
         .setRestoreValue(1234567d)
-        .setRestoreValue(1234567d)
         .setHelperText("Press <kbd>ESC</kbd> to restore the value to default.")
         .setMaxWidth("300px");
 
-    Button restoreButton = new Button(
-        "Reset value",
-        ButtonTheme.PRIMARY,
-        event -> field.restoreValue());
+    Button restoreButton =
+        new Button("Reset value", ButtonTheme.PRIMARY, event -> field.restoreValue());
 
     self.add(field, restoreButton);
   }

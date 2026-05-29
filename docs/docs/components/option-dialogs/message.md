@@ -1,9 +1,8 @@
 ---
-sidebar_position: 30
 title: Message
+sidebar_position: 30
+description: Show a blocking MessageDialog with an OK button, configurable message types, alignment, blur, and timeout.
 ---
-
-# Message Dialog
 
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
@@ -11,17 +10,21 @@ title: Message
 
 A `MessageDialog` is a modal dialog designed to display a message to the user with an `OK` button to dismiss the dialog. It blocks app execution until the user interacts with it or it closes due to a timeout.
 
+<!-- INTRO_END -->
+
+## Usages {#usages}
+
+Use the static `showMessageDialog` method to display a basic message.
+
 ```java
 OptionDialog.showMessageDialog("Hello World!");
 ```
 
-## Usages {#usages}
-
-The Message Dialog provides a way to display informational alerts, such as notifications, updates, or simple messages that only require the user to acknowledge them without providing any input.
+For more control over the dialog's appearance and behavior, create a `MessageDialog` instance directly.
 
 ```java showLineNumbers
 MessageDialog dialog = new MessageDialog(
-    "Hello World", "Hello World", MessageDialog.MessageType.INFO);
+  "Hello World", "Hello World", MessageDialog.MessageType.INFO);
 dialog.setBlurred(true);
 dialog.setAlignment(MessageDialog.Alignment.TOP);
 dialog.show();
@@ -39,10 +42,10 @@ The `MessageDialog` supports the following message types. When you configures a 
 
 In the following sample, The code configures a message dialog of type `WARNING`. with a custom title and message.
 
-<ComponentDemo 
-path='/webforj/messagedialogtype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/message/MessageDialogTypeView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/messagedialogtype'
+files={['src/main/java/com/webforj/samples/views/optiondialog/message/MessageDialogTypeView.java']}
+height='350px'
 />
 
 :::tip Dialog & Button Theme
@@ -63,7 +66,7 @@ By default, the message dialog processes and renders HTML content. You can turn 
 
 ```java showLineNumbers
 MessageDialog dialog = new MessageDialog(
-    "<b>Hello World</b>", "Hello World", MessageDialog.MessageType.INFO);
+  "<b>Hello World</b>", "Hello World", MessageDialog.MessageType.INFO);
 dialog.setRawText(true);
 dialog.show();
 ```

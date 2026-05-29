@@ -1,0 +1,4 @@
+dwc-checkbox[checked]::part(label) {
+  text-decoration: line-through;
+  opacity: 0.6;
+}

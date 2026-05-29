@@ -1,18 +1,11 @@
 ---
 sidebar_position: 7
 title: Shadows
-_i18n_hash: 6f5378b91beaf0c663bdc9de9b67233a
+_i18n_hash: 423494230ee54caa83fec778e905871b
 ---
-Les propriétés d'ombre sont utilisées pour ajouter des effets d'ombre autour du cadre d'un élément. Vous pouvez définir plusieurs effets séparés par des virgules. Dans la plupart des cas, les ombres sont utilisées pour signifier des éléments qui sont superposés dans l'interface utilisateur.
+Les propriétés d'ombre ajoutent des effets d'ombre autour du cadre d'un élément. Les ombres signifient des éléments qui sont superposés les uns aux autres dans l'interface utilisateur.
 
-<Head>
-  <style>{`
-  table {
-    width: 100%;
-    display: table;
-  }
-  `}</style>
-</Head>
+Les ombres s'adaptent automatiquement aux modes clair et sombre, apparaissant plus fortes en mode sombre pour une meilleure visibilité.
 
 ### Exemple {#example}
 
@@ -22,18 +15,16 @@ Les propriétés d'ombre sont utilisées pour ajouter des effets d'ombre autour 
 }
 ```
 
-:::tip Couleur d'Ombre
-Vous contrôlez la couleur de l'ombre en définissant la variable `--dwc-shadow-color`. Par défaut, la couleur de l'ombre est grise teintée de la couleur primaire.
-:::
-
 ### Variables {#variables}
 
-| **Variable**       | **Exemple**                             |
-|--------------------|------------------------------------------|
-| `--dwc-shadow-xs`  | <ShadowBox shadow="--dwc-shadow-xs" />  |
-| `--dwc-shadow-s`   | <ShadowBox shadow="--dwc-shadow-s" />   |
-| `--dwc-shadow-m`   | <ShadowBox shadow="--dwc-shadow-m" />   |
-| `--dwc-shadow-l`   | <ShadowBox shadow="--dwc-shadow-l" />   |
-| `--dwc-shadow-xl`  | <ShadowBox shadow="--dwc-shadow-xl" />  |
-| `--dwc-shadow-2xl` | <ShadowBox shadow="--dwc-shadow-2xl" /> |
-| `--dwc-shadow`     | <ShadowBox shadow="--dwc-shadow" />     |
+| **Variable**       | **Description**                      |
+|--------------------|---------------------------------------|
+| `--dwc-shadow-xs`  | Ombre extra petite (1 couche)        |
+| `--dwc-shadow-s`   | Ombre petite (2 couches)             |
+| `--dwc-shadow-m`   | Ombre moyenne (3 couches, par défaut)|
+| `--dwc-shadow-l`   | Ombre grande (4 couches)             |
+| `--dwc-shadow-xl`  | Ombre extra grande (5 couches)       |
+| `--dwc-shadow-2xl` | Ombre double extra grande (6 couches)|
+| `--dwc-shadow`     | `var(--dwc-shadow-m)`                |
+
+<dwc-doc-shadows></dwc-doc-shadows>

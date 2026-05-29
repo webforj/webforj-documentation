@@ -1,6 +1,5 @@
 package com.webforj.samples.views.textarea;
 
-import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.field.TextArea;
@@ -8,19 +7,22 @@ import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
-
 import java.util.List;
 
 @Route
-@StyleSheet("TextAreaValidationView.css")
 public class TextAreaValidationView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private TextArea textArea = new TextArea("Validation Playground", "The quick brown fox jumps over the lazy dog.");
-  private TextArea status = new TextArea("Current Status");
+  private final FlexLayout self = getBoundComponent();
+  private final TextArea textArea =
+      new TextArea("Validation Playground", "The quick brown fox jumps over the lazy dog.");
+  private final TextArea status = new TextArea("Current Status");
 
-  int maxLength = 256;
-  int maxParagraphLength = 64;
-  int maxLines = 10;
+  private static final int MAX_LENGTH = 256;
+  private static final int MAX_PARAGRAPH_LENGTH = 64;
+  private static final int MAX_LINES = 10;
+
+  private int maxLength = MAX_LENGTH;
+  private int maxParagraphLength = MAX_PARAGRAPH_LENGTH;
+  private int maxLines = MAX_LINES;
 
   public TextAreaValidationView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -32,11 +34,10 @@ public class TextAreaValidationView extends Composite<FlexLayout> {
         .setStyle("border-radius", "var(--dwc-border-radius)")
         .setStyle("border", "1px solid var(--dwc-color-default)");
 
-    status
-        .setHeight("120px")
-        .setReadOnly(true);
+    status.setHeight("120px").setReadOnly(true);
 
-    textArea.setMaxLength(maxLength)
+    textArea
+        .setMaxLength(maxLength)
         .setParagraphLengthLimit(maxParagraphLength)
         .setLineCountLimit(maxLines)
         .setHeight("200px")
@@ -50,30 +51,35 @@ public class TextAreaValidationView extends Composite<FlexLayout> {
         .setMax(500.0)
         .setValue((double) maxLength)
         .setStyle("flex", "1 0 auto")
-        .onValueChange(e -> {
-          Double val = e.getValue();
-          if (val != null && val >= 1 && val <= 500) {
-            maxLength = val.intValue();
-            textArea.setMaxLength(maxLength);
-            updateStatus();
-          }
-        });
+        .onValueChange(
+            e ->
+                handleNumericChange(
+                    e.getValue(),
+                    1,
+                    500,
+                    val -> {
+                      maxLength = val;
+                      textArea.setMaxLength(maxLength);
+                    }));
 
     NumberField maxLinesField = new NumberField("Max Lines");
-    maxLinesField.setMin(1.0)
+    maxLinesField
+        .setMin(1.0)
         .setPrefixComponent(TablerIcon.create("list-numbers"))
         .setTooltipText("Restricts how many lines the text area can contain.")
         .setMax(20.0)
         .setValue((double) maxLines)
         .setStyle("flex", "1 0 auto")
-        .onValueChange(e -> {
-          Double val = e.getValue();
-          if (val != null && val >= 1 && val <= 20) {
-            maxLines = val.intValue();
-            textArea.setLineCountLimit(maxLines);
-            updateStatus();
-          }
-        });
+        .onValueChange(
+            e ->
+                handleNumericChange(
+                    e.getValue(),
+                    1,
+                    20,
+                    val -> {
+                      maxLines = val;
+                      textArea.setLineCountLimit(maxLines);
+                    }));
 
     NumberField maxParagraphSizeField = new NumberField("Max Paragraph Length");
     maxParagraphSizeField
@@ -83,40 +89,59 @@ public class TextAreaValidationView extends Composite<FlexLayout> {
         .setMax(200.0)
         .setValue((double) maxParagraphLength)
         .setStyle("flex", "1 0 auto")
-        .onValueChange(e -> {
-          Double val = e.getValue();
-          if (val != null && val >= 1 && val <= 200) {
-            maxParagraphLength = val.intValue();
-            textArea.setParagraphLengthLimit(maxParagraphLength);
-            updateStatus();
-          }
-        });
+        .onValueChange(
+            e ->
+                handleNumericChange(
+                    e.getValue(),
+                    1,
+                    200,
+                    val -> {
+                      maxParagraphLength = val;
+                      textArea.setParagraphLengthLimit(maxParagraphLength);
+                    }));
 
-    FlexLayout controlRow = FlexLayout.create(maxLengthField, maxLinesField, maxParagraphSizeField)
-        .horizontal()
-        .justify().between()
-        .wrap()
-        .build();
+    FlexLayout controlRow =
+        FlexLayout.create(maxLengthField, maxLinesField, maxParagraphSizeField)
+            .horizontal()
+            .justify()
+            .between()
+            .wrap()
+            .build();
 
-    self.add(
-        textArea,
-        controlRow,
-        status);
+    self.add(textArea, controlRow, status);
 
     whenAttached().thenAccept(e -> updateStatus());
+  }
+
+  private void handleNumericChange(Double value, int min, int max, IntConsumer updater) {
+    if (value != null && value >= min && value <= max) {
+      updater.accept(value.intValue());
+      updateStatus();
+    }
+  }
+
+  @FunctionalInterface
+  private interface IntConsumer {
+    void accept(int value);
   }
 
   private void updateStatus() {
     String text = textArea.getValue();
     List<String> paragraphs = textArea.getParagraphs();
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < paragraphs.size(); i++) {
-      sb.append("[").append(i).append("=").append(paragraphs.get(i).length()).append("]");
-    }
 
-    String paragraphSizes = sb.toString();
-    status.setValue("Current Length (including \n): " + text.length() +
-        "\nCurrent Line Count: " + paragraphs.size() +
-        "\nParagraph Sizes: " + (paragraphSizes.isEmpty() ? "[]" : paragraphSizes));
+    String paragraphSizes =
+        paragraphs.isEmpty()
+            ? "[]"
+            : paragraphs.stream()
+                .map(p -> "[" + paragraphs.indexOf(p) + "=" + p.length() + "]")
+                .reduce("", String::concat);
+
+    status.setValue(
+        """
+        Current Length (including \\n): %d
+        Current Line Count: %d
+        Paragraph Sizes: %s
+        """
+            .formatted(text.length(), paragraphs.size(), paragraphSizes));
   }
 }

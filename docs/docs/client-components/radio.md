@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-radio>
 sidebar_class_name: sidebar--item__hidden
 slug: radio
-description: A user guide article for the radio
+description: Style the dwc-radio control, dot, and label via CSS variables and shadow parts for checked, hover, and disabled states.
 // pagination_prev: null
 // pagination_next: null
 ---

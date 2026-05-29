@@ -1,71 +1,46 @@
 ---
 sidebar_position: 3
 title: Colors
-_i18n_hash: d82a6a563267933d08c081faeddf2cc0
+_i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
-webforJ fournit un système de couleurs basé sur des propriétés CSS personnalisées. Ces variables de couleur garantissent un style visuel constant dans votre application tout en vous offrant un contrôle total pour personnaliser les palettes selon vos besoins en matière de design.
+webforJ fournit un système de couleurs basé sur les propriétés CSS personnalisées. Ces variables de couleur maintiennent un style visuel cohérent à travers votre application tout en vous donnant un contrôle total pour personnaliser les palettes selon vos besoins en design.
 
-Vous pouvez référencer n'importe quelle couleur en utilisant la syntaxe `--dwc-color-{palette}-{shade}`, où `{palette}` est le nom du groupe de couleurs (par exemple, `primary`, `danger`, ..) et `{shade}` est un chiffre de `5` à `95` par intervalles de `5`, représentant la luminosité de la couleur.
+Vous pouvez référencer n'importe quelle couleur en utilisant la syntaxe `--dwc-color-{palette}-{step}`, où `{palette}` est le nom du groupe de couleurs (par exemple, `primary`, `danger`, ..) et `{step}` est un nombre allant de `5` à `95` par paliers de `5`, représentant la clarté de la couleur.
 
 ```css
 .element {
-  background-color: var(--dwc-color-primary-40);
-  color: var(--dwc-color-primary-text-40);
+  background-color: var(--dwc-color-primary-50);
+  color: var(--dwc-color-on-primary-text-50);
 }
 ```
 
-:::tip Échelle de valeur d'ombre
-Les valeurs d'ombre vont de `5` (le plus sombre) à `95` (le plus clair), augmentant par intervalles de `5`.
+:::tip Échelle des valeurs de teinte
+Les valeurs des étapes vont de `5` (le plus sombre) à `95` (le plus clair), augmentant par paliers de `5`. L'étape 5 est toujours la plus sombre et l'étape 95 est toujours la plus claire, qu'il s'agisse du mode clair ou sombre.
 :::
 
 ## Palettes de couleurs {#color-palettes}
 
-Il existe plusieurs palettes de couleurs intégrées, chacune conçue pour des cas d'utilisation sémantiques tels que le branding, les messages de succès, les avertissements, etc. Chaque palette est composée de teintes et d'ombres générées dynamiquement sur la base de trois propriétés clés : `hue`, `saturation` et `contrast-threshold`.
+DWC configure sept palettes plus la palette `noir/blanc` où chaque palette est un ensemble de variations (nuances et teintes) d'une couleur sémantique.
 
 ### Palettes disponibles {#available-palettes}
 
-- **default** : Une palette neutre à base de gris teintée de la couleur primaire, utilisée pour la plupart des composants.
-- **primary** : Représente généralement la couleur principale de votre marque.
+- **default** : Une palette neutre teintée de la couleur primaire, utilisée pour la plupart des arrière-plans de composants, bordures et éléments d'interface utilisateur neutres.
+- **primary** : Représente généralement la couleur primaire de votre marque.
 - **success**, **warning**, **danger** : Palettes sémantiques utilisées pour des indicateurs de statut appropriés.
-- **info** : Une palette complémentaire optionnelle pour un second accent.
-- **gray** : Une palette en niveaux de gris véritable, non teintée.
-- **black/white** : Valeurs de couleur statiques
+- **info** : Une palette complémentaire pour une emphase secondaire.
+- **gray** : Une palette de niveaux de gris pur, non teintée.
+- **black/white** : Couleurs dynamiques conscientes du mode qui s'adaptent au thème actuel. Le presque noir en mode clair devient presque blanc en mode sombre, et vice versa.
 
-<ColorPalette></ColorPalette>
+<dwc-doc-palettes></dwc-doc-palettes>
 
-<br/>
+### Semences de palette {#palette-seeds}
 
-:::tip DWC HueCraft
-Pour simplifier le processus de génération de palettes conformes aux normes WCAG pour vos applications webforJ, vous pouvez utiliser l'outil [DWC HueCraft](https://webforj.github.io/huecraft/). Il prend en charge la création de palettes basées sur les couleurs ou logos de marque et permet une exportation CSS rapide.
-:::
+Chaque palette est générée à partir de deux variables de semence : `hue` et `saturation`. En définissant ces deux valeurs, toutes les 19 étapes sont générées automatiquement.
 
-
-### Comportement en mode sombre {#dark-mode-behavior}
-
-webforJ prend en charge une stratégie de couleur inversée en mode sombre. Au lieu d'utiliser des palettes de couleurs entièrement séparées, il inverse la façon dont les valeurs de luminosité sont interprétées.
-
-Cela signifie que dans **les thèmes sombres**, les valeurs d'ombre inférieures (par exemple, `--dwc-color-primary-5`) deviennent claires et les valeurs supérieures (par exemple, `--dwc-color-primary-95`) deviennent sombres. La logique est inversée afin d’assurer un contraste optimal et une lisibilité à travers les arrière-plans.
-
-Votre code de composant reste le même, peu importe le thème. Par exemple :
-
-```css
-.button {
-  background-color: var(--dwc-color-primary-40);
-  color: var(--dwc-color-primary-text-40);
-}
-```
-
-En mode clair, cela donne un fond de tonalité intermédiaire. En mode sombre, cela donne également une tonalité intermédiaire, mais inversée visuellement pour fonctionner sur des surfaces sombres. Cette approche évite la duplication, maintient vos styles cohérents et conserve des transitions visuelles fluides lors du passage entre les thèmes clairs et sombres.
-
-### Variables de configuration de palette {#palette-configuration-variables}
-
-Chaque palette est générée sur la base des variables suivantes :
-
-| Variable               | Description |
-|------------------------|-------------|
-| `hue`                  | L’angle (en degrés) sur la roue des couleurs. Les valeurs sans unité sont interprétées comme des degrés. |
-| `saturation`           | Un pourcentage indiquant l'intensité de la couleur. `100%` est entièrement saturé ; `0%` est en niveaux de gris. |
-| `contrast-threshold`   | Une valeur comprise entre `0` et `100` qui détermine si le texte doit être clair ou foncé en fonction de la luminosité de l'arrière-plan. |
+| Variable de semence | Description |
+|---|---|
+| `--dwc-color-{name}-h` | L'angle de teinte de la couleur de semence (0-360). |
+| `--dwc-color-{name}-s` | Le pourcentage de saturation. `100%` est complètement saturé, `0%` est complètement désaturé (gris). |
 
 Vous pouvez ajuster une palette en redéfinissant ces variables dans vos styles racine. Par exemple, pour modifier la palette primaire :
 
@@ -73,282 +48,322 @@ Vous pouvez ajuster une palette en redéfinissant ces variables dans vos styles 
 :root {
   --dwc-color-primary-h: 225;
   --dwc-color-primary-s: 100%;
-  --dwc-color-primary-c: 60;
 }
 ```
 
-## Thématisation des composants avec des variables abstraites {#theming-components-with-abstract-variables}
-
-Pour simplifier le style et la cohérence à travers les composants, webforJ introduit une couche d'abstraction sur les palettes de couleurs de base. Cette couche est basée sur **des variables de thème abstraites** - des propriétés CSS personnalisées qui se réfèrent à des teintes spécifiques au sein d'une palette de couleurs.
-
-Ces variables facilitent l'application de thèmes à tous les composants sans faire directement référence aux valeurs ou échantillons de couleur bruts. Vous pouvez les considérer comme *des raccourcis de style sémantiques* qui reflètent l’intention de votre application plutôt que ses détails d'implémentation.
-
-### Groupes de variables {#variable-groups}
-
-Les variables de thème abstraites sont organisées en quatre groupes :
-
-1. [Normal](#normal-state) Utilisé pour l'apparence par défaut, comme les arrière-plans et le texte sur les composants inactifs.
-2. [Dark](#darker-variant) Utilisé pour les états actifs ou sélectionnés.
-3. [Light](#lighter-variant) Utilisé pour les états de survol et de focus.
-4. [Alt](#alt-variant) Utilisé pour les mises en évidence secondaires, telles que le focus du clavier ou les accents d'interface utilisateur subtils.
-
-Chaque groupe définit :
-
-- Une couleur d'arrière-plan
-- Une couleur de premier plan (texte)
-- Une couleur de bordure (pour les états focus/hover/actif)
-- Un anneau de focus (utilisé lorsque le composant reçoit un style de focus visible)
-
-Chaque onglet ci-dessous montre les variables abstraites définies pour une palette spécifique (`primary`, `success`, `danger`, etc.). Ces variables tirent des valeurs de la palette sous-jacente (par exemple, `--dwc-color-primary-40`) et les rendent réutilisables dans votre application.
-
-Par exemple, au lieu d'utiliser directement `--dwc-color-primary-40`, vous pouvez appliquer `--dwc-color-primary`, qui abstrait le rôle de cette couleur en tant que *arrière-plan par défaut* pour un composant de style primaire.
-
-Changer les valeurs de la palette à un seul endroit mettra à jour l'apparence de tous les composants qui dépendent de ces variables abstraites.
-
-### État normal {#normal-state}
-
-Utilisé pour l'apparence neutre de base d'un composant—lorsqu’il est inactif et non interagi avec.
-
-| Variable                           | Description                                                             |
-| ---------------------------------- | ----------------------------------------------------------------------- |
-| `--dwc-color-${name}`              | La couleur d’arrière-plan par défaut. Utilisée également pour les bordures dans de nombreux composants. |
-| `--dwc-color-on-${name}-text`      | La couleur du texte affichée au-dessus du fond par défaut.             |
-| `--dwc-color-${name}-text`         | La couleur du texte lorsque le composant est placé sur le fond de surface. |
-| `--dwc-border-color-${name}`       | Couleur de la bordure, principalement utilisée pour les états de survol, focus et actif. |
-| `--dwc-focus-ring-${name}`         | Ombre de l'anneau de focus lorsque le composant reçoit un style de focus-visible. |
-
----
-
-### Variante plus sombre {#darker-variant}
-
-Utilisé pour les états sélectionnés ou actifs—généralement une tonalité plus profonde pour un contraste et une emphase plus forts.
-
-| Variable                                | Description                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-dark`              | Une version plus sombre de la couleur de base. Souvent utilisée pour les états pressés ou sélectionnés. |
-| `--dwc-color-on-${name}-text-dark`      | Couleur du texte lorsqu'il est utilisé sur un fond sombre.               |
-| `--dwc-color-${name}-text-dark`         | Une alternative de texte légèrement plus sombre lorsqu'elle est affichée sur la surface. |
-
----
-
-### Variante plus claire {#lighter-variant}
-
-Utilisé pour les états de survol, de focus et les indices visuels moins dominants. Ce sont des tonalités douces conçues pour un retour d'interaction subtil.
-
-| Variable                                | Description                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-light`             | Une version plus claire de la couleur de base. Typiquement utilisée pour les arrière-plans de survol/focus. |
-| `--dwc-color-on-${name}-text-light`     | Couleur du texte lorsqu'elle est affichée sur un fond clair.            |
-| `--dwc-color-${name}-text-light`        | Une tonalité de texte plus claire pour une utilisation dans des états moins proéminents. |
-
----
-
-### Variante alternative {#alt-variant}
-
-Utilisé pour une emphase secondaire ou des surbrillances d'interface utilisateur—comme les contours de navigation au clavier ou les indicateurs auxiliaires.
-
-| Variable                                | Description                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-alt`               | Une version très claire de la couleur, principalement utilisée pour les surlignements ou les lueurs d'arrière-plan. |
-| `--dwc-color-on-${name}-text-alt`       | Couleur du texte lorsque le fond est la couleur alternative (`alt`).    |
-
 <Tabs>
-
-<TabItem value="Default / Tone">
-
-```css
---dwc-color-default-dark: var(--dwc-color-default-85);
---dwc-color-on-default-text-dark: var(--dwc-color-default-text-85);
---dwc-color-default-text-dark: var(--dwc-color-default-35);
-
---dwc-color-default: var(--dwc-color-default-90);
---dwc-color-on-default-text: var(--dwc-color-default-text-90);
---dwc-color-default-text: var(--dwc-color-default-40);
-
---dwc-color-default-light: var(--dwc-color-default-95);
---dwc-color-on-default-text-light: var(--dwc-color-default-text-95);
---dwc-color-default-text-light: var(--dwc-color-default-45);
-
---dwc-color-default-alt: var(--dwc-color-primary-alt);
---dwc-color-on-default-text-alt: var(--dwc-color-on-primary-text-alt);
-
---dwc-border-color-default: var(--dwc-border-color-primary);
---dwc-focus-ring-default: var(--dwc-focus-ring-primary);
-```
-
-</TabItem>
 
 <TabItem value="Primary">
 
+| Variable | Valeur par défaut |
+|---|---|
+| `--dwc-color-primary-h` | 223 |
+| `--dwc-color-primary-s` | 91% |
+
+</TabItem>
+
+<TabItem value="Success">
+
+| Variable | Valeur par défaut |
+|---|---|
+| `--dwc-color-success-h` | 153 |
+| `--dwc-color-success-s` | 60% |
+
+</TabItem>
+
+<TabItem value="Warning">
+
+| Variable | Valeur par défaut |
+|---|---|
+| `--dwc-color-warning-h` | 35 |
+| `--dwc-color-warning-s` | 90% |
+
+</TabItem>
+
+<TabItem value="Danger">
+
+| Variable | Valeur par défaut |
+|---|---|
+| `--dwc-color-danger-h` | 4 |
+| `--dwc-color-danger-s` | 90% |
+
+</TabItem>
+
+<TabItem value="Info">
+
+| Variable | Valeur par défaut |
+|---|---|
+| `--dwc-color-info-h` | 262 |
+| `--dwc-color-info-s` | 65% |
+
+</TabItem>
+
+<TabItem value="Gray">
+
+| Variable | Valeur par défaut |
+|---|---|
+| `--dwc-color-gray-h` | 0 |
+| `--dwc-color-gray-s` | 0% |
+
+</TabItem>
+
+<TabItem value="Default / Tone">
+
+| Variable | Valeur par défaut |
+|---|---|
+| `--dwc-color-default-h` | var(--dwc-color-primary-h) |
+| `--dwc-color-default-s` | 3% |
+
+</TabItem>
+
+</Tabs>
+
+### Surcharge directe de semence {#direct-seed-override}
+
+Chaque palette expose également une variable `--dwc-color-{name}-seed`. Par défaut, celle-ci est construite à partir des valeurs de teinte et de saturation, mais vous pouvez la remplacer directement par n'importe quelle couleur CSS valide pour contourner entièrement le système de teinte/saturation.
+
 ```css
---dwc-color-primary-dark: var(--dwc-color-primary-35);
---dwc-color-on-primary-text-dark: var(--dwc-color-primary-text-35);
---dwc-color-primary-text-dark: var(--dwc-color-primary-30);
+:root {
+  --dwc-color-primary-seed: #6366f1;
+}
+```
 
---dwc-color-primary: var(--dwc-color-primary-40);
---dwc-color-on-primary-text: var(--dwc-color-primary-text-40);
---dwc-color-primary-text: var(--dwc-color-primary-35);
+### Rotation des teintes {#hue-rotation}
 
---dwc-color-primary-light: var(--dwc-color-primary-45);
---dwc-color-on-primary-text-light: var(--dwc-color-primary-text-45);
---dwc-color-primary-text-light: var(--dwc-color-primary-40);
+Le générateur de palettes applique une légère rotation des teintes à travers les étapes pour créer des palettes d'apparence plus naturelle. Les nuances plus sombres se déplacent légèrement vers le chaud tandis que les nuances plus claires se déplacent légèrement vers le frais. Cela imite le comportement des pigments réels et empêche les palettes de sembler plates ou synthétiques.
 
---dwc-color-primary-alt: var(--dwc-color-primary-95);
---dwc-color-on-primary-text-alt: var(--dwc-color-primary-text-95);
+| Variable | Valeur par défaut | Description |
+|---|---|---|
+| `--dwc-color-hue-rotate` | 3 | Degrés de décalage de teinte à travers la palette. Réglez sur 0 pour désactiver. |
 
---dwc-border-color-primary: var(--dwc-color-primary);
---dwc-focus-ring-primary: 0 0 0 var(--dwc-focus-ring-width) hsla(
-    var(--dwc-color-primary-h),
-    var(--dwc-color-primary-s),
-    var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
-  );
+<dwc-doc-hue-rotate name="primary"></dwc-doc-hue-rotate>
+
+### Variables générées par étape {#generated-variables-per-step}
+
+Chaque palette génère 19 étapes (de 5 à 95). Pour chaque étape, les variables suivantes sont produites :
+
+| Modèle de variable | Description |
+|---|---|
+| `--dwc-color-{name}-{step}` | La nuance de la palette à cette étape. |
+| `--dwc-color-{name}-text-{step}` | Une couleur de texte sûre pour la surface dérivée de cette étape (conforme à WCAG AA). |
+| `--dwc-color-on-{name}-text-{step}` | Couleur de texte à utiliser SUR la nuance comme fond (inverse automatiquement clair/foncé). |
+
+:::tip Accessibilité
+Toutes les couleurs de texte générées respectent automatiquement les exigences de contraste WCAG AA. Vous n'avez pas besoin de calculer les rapports de contraste vous-même.
+:::
+
+La première ligne montre la nuance avec sa couleur `on-text` (pour le texte placé directement sur cette nuance). La ligne du bas montre la couleur `text` sur un fond de surface :
+
+<dwc-doc-step-vars name="primary"></dwc-doc-step-vars>
+
+### Variables supplémentaires générées {#additional-generated-variables}
+
+| Modèle de variable | Description |
+|---|---|
+| `--dwc-color-{name}-tint` | La couleur de semence à 12% d'opacité, pour des fonds de surbrillance subtils. |
+| `--dwc-border-color-{name}` | Couleur de bordure consciente du mode teintée avec la teinte de la palette. |
+| `--dwc-border-color-{name}-emphasis` | Couleur de bordure plus forte consciente du mode pour les états hover, focus et actifs. |
+| `--dwc-focus-ring-{name}` | Ombre d'anneau de focus pour la palette. |
+
+## Couleurs globales {#global-colors}
+
+Ce sont des couleurs conscientes du mode qui s'adaptent automatiquement aux thèmes clairs et sombres.
+
+| Variable | Description |
+|---|---|
+| `--dwc-color-black` | Presque noir en mode clair, presque blanc en mode sombre. |
+| `--dwc-color-white` | Presque blanc en mode clair, presque noir en mode sombre. |
+| `--dwc-color-body-text` | Couleur du texte par défaut du corps (utilise `--dwc-color-black`). |
+
+## Thèmes de composants {#theming-components-with-abstract-variables}
+
+DWC abstrait l'utilisation des palettes disponibles avec un ensemble de variables de variation sémantique de niveau supérieur. Les composants utilisent ces variations plutôt que les numéros d'étape bruts, car les variations s'adaptent automatiquement aux modes clairs et sombres.
+
+Les variations sont divisées en trois groupes : `normal`, `dark` et `light`.
+
+1. Les variables `normal` sont la couleur de base, utilisées pour les arrière-plans et les éléments d'interface utilisateur principaux.
+2. Les variables `dark` sont principalement utilisées pour les états `actif/appuyé`.
+3. Les variables `light` sont principalement utilisées pour les états `hover/focus`.
+
+<Tabs>
+
+<TabItem value="Primary">
+
+<dwc-doc-variations name="primary"></dwc-doc-variations>
+
+```css
+--dwc-color-primary-dark: var(--dwc-color-primary-45)
+--dwc-color-primary: var(--dwc-color-primary-50)
+--dwc-color-primary-light: var(--dwc-color-primary-55)
+--dwc-color-primary-alt: var(--dwc-color-primary-tint)
+
+--dwc-color-primary-text-dark: var(--dwc-color-primary-text-40)
+--dwc-color-primary-text: var(--dwc-color-primary-text-45)
+--dwc-color-primary-text-light: var(--dwc-color-primary-text-50)
+
+--dwc-color-on-primary-text-dark: var(--dwc-color-on-primary-text-45)
+--dwc-color-on-primary-text: var(--dwc-color-on-primary-text-50)
+--dwc-color-on-primary-text-light: var(--dwc-color-on-primary-text-55)
+--dwc-color-on-primary-text-alt: var(--dwc-color-primary-text)
 ```
 
 </TabItem>
 
 <TabItem value="Success">
 
+<dwc-doc-variations name="success"></dwc-doc-variations>
+
 ```css
---dwc-color-success-dark: var(--dwc-color-success-20);
---dwc-color-on-success-text-dark: var(--dwc-color-success-text-20);
---dwc-color-success-text-dark: var(--dwc-color-success-15);
+--dwc-color-success-dark: var(--dwc-color-success-45)
+--dwc-color-success: var(--dwc-color-success-50)
+--dwc-color-success-light: var(--dwc-color-success-55)
+--dwc-color-success-alt: var(--dwc-color-success-tint)
 
---dwc-color-success: var(--dwc-color-success-25);
---dwc-color-on-success-text: var(--dwc-color-success-text-25);
---dwc-color-success-text: var(--dwc-color-success-20);
+--dwc-color-success-text-dark: var(--dwc-color-success-text-40)
+--dwc-color-success-text: var(--dwc-color-success-text-45)
+--dwc-color-success-text-light: var(--dwc-color-success-text-50)
 
---dwc-color-success-light: var(--dwc-color-success-30);
---dwc-color-on-success-text-light: var(--dwc-color-success-text-30);
---dwc-color-success-text-light: var(--dwc-color-success-25);
-
---dwc-color-success-alt: var(--dwc-color-success-95);
---dwc-color-on-success-text-alt: var(--dwc-color-success-text-95);
-
---dwc-border-color-success: var(--dwc-color-success);
---dwc-focus-ring-success: 0 0 0 var(--dwc-focus-ring-width) hsla(
-    var(--dwc-color-success-h),
-    var(--dwc-color-success-s),
-    var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
-  );
+--dwc-color-on-success-text-dark: var(--dwc-color-on-success-text-45)
+--dwc-color-on-success-text: var(--dwc-color-on-success-text-50)
+--dwc-color-on-success-text-light: var(--dwc-color-on-success-text-55)
+--dwc-color-on-success-text-alt: var(--dwc-color-success-text)
 ```
 
 </TabItem>
 
 <TabItem value="Warning">
 
+<dwc-doc-variations name="warning"></dwc-doc-variations>
+
 ```css
---dwc-color-warning-dark: var(--dwc-color-warning-35);
---dwc-color-on-warning-text-dark: var(--dwc-color-warning-text-35);
---dwc-color-warning-text-dark: var(--dwc-color-warning-15);
+--dwc-color-warning-dark: var(--dwc-color-warning-45)
+--dwc-color-warning: var(--dwc-color-warning-50)
+--dwc-color-warning-light: var(--dwc-color-warning-55)
+--dwc-color-warning-alt: var(--dwc-color-warning-tint)
 
---dwc-color-warning: var(--dwc-color-warning-40);
---dwc-color-on-warning-text: var(--dwc-color-warning-text-40);
---dwc-color-warning-text: var(--dwc-color-warning-20);
+--dwc-color-warning-text-dark: var(--dwc-color-warning-text-40)
+--dwc-color-warning-text: var(--dwc-color-warning-text-45)
+--dwc-color-warning-text-light: var(--dwc-color-warning-text-50)
 
---dwc-color-warning-light: var(--dwc-color-warning-45);
---dwc-color-on-warning-text-light: var(--dwc-color-warning-text-45);
---dwc-color-warning-text-light: var(--dwc-color-warning-25);
-
---dwc-color-warning-alt: var(--dwc-color-warning-95);
---dwc-color-on-warning-text-alt: var(--dwc-color-warning-text-95);
-
---dwc-border-color-warning: var(--dwc-color-warning);
---dwc-focus-ring-warning: 0 0 0 var(--dwc-focus-ring-width) hsla(
-    var(--dwc-color-warning-h),
-    var(--dwc-color-warning-s),
-    var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
-  );
+--dwc-color-on-warning-text-dark: var(--dwc-color-on-warning-text-45)
+--dwc-color-on-warning-text: var(--dwc-color-on-warning-text-50)
+--dwc-color-on-warning-text-light: var(--dwc-color-on-warning-text-55)
+--dwc-color-on-warning-text-alt: var(--dwc-color-warning-text)
 ```
 
 </TabItem>
 
 <TabItem value="Danger">
 
+<dwc-doc-variations name="danger"></dwc-doc-variations>
+
 ```css
---dwc-color-danger-dark: var(--dwc-color-danger-35);
---dwc-color-on-danger-text-dark: var(--dwc-color-danger-text-35);
---dwc-color-danger-text-dark: var(--dwc-color-danger-30);
+--dwc-color-danger-dark: var(--dwc-color-danger-45)
+--dwc-color-danger: var(--dwc-color-danger-50)
+--dwc-color-danger-light: var(--dwc-color-danger-55)
+--dwc-color-danger-alt: var(--dwc-color-danger-tint)
 
---dwc-color-danger: var(--dwc-color-danger-40);
---dwc-color-on-danger-text: var(--dwc-color-danger-text-40);
---dwc-color-danger-text: var(--dwc-color-danger-35);
+--dwc-color-danger-text-dark: var(--dwc-color-danger-text-40)
+--dwc-color-danger-text: var(--dwc-color-danger-text-45)
+--dwc-color-danger-text-light: var(--dwc-color-danger-text-50)
 
---dwc-color-danger-light: var(--dwc-color-danger-45);
---dwc-color-on-danger-text-light: var(--dwc-color-danger-text-45);
---dwc-color-danger-text-light: var(--dwc-color-danger-40);
-
---dwc-color-danger-alt: var(--dwc-color-danger-95);
---dwc-color-on-danger-text-alt: var(--dwc-color-danger-text-95);
-
---dwc-border-color-danger: var(--dwc-color-danger);
---dwc-focus-ring-danger: 0 0 0 var(--dwc-focus-ring-width) hsla(
-    var(--dwc-color-danger-h),
-    var(--dwc-color-danger-s),
-    var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
-  );
+--dwc-color-on-danger-text-dark: var(--dwc-color-on-danger-text-45)
+--dwc-color-on-danger-text: var(--dwc-color-on-danger-text-50)
+--dwc-color-on-danger-text-light: var(--dwc-color-on-danger-text-55)
+--dwc-color-on-danger-text-alt: var(--dwc-color-danger-text)
 ```
 
 </TabItem>
 
 <TabItem value="Info">
 
+<dwc-doc-variations name="info"></dwc-doc-variations>
+
 ```css
---dwc-color-info-dark: var(--dwc-color-info-35);
---dwc-color-on-info-text-dark: var(--dwc-color-info-text-35);
---dwc-color-info-text-dark: var(--dwc-color-info-35);
+--dwc-color-info-dark: var(--dwc-color-info-45)
+--dwc-color-info: var(--dwc-color-info-50)
+--dwc-color-info-light: var(--dwc-color-info-55)
+--dwc-color-info-alt: var(--dwc-color-info-tint)
 
---dwc-color-info: var(--dwc-color-info-40);
---dwc-color-on-info-text: var(--dwc-color-info-text-40);
---dwc-color-info-text: var(--dwc-color-info-40);
+--dwc-color-info-text-dark: var(--dwc-color-info-text-40)
+--dwc-color-info-text: var(--dwc-color-info-text-45)
+--dwc-color-info-text-light: var(--dwc-color-info-text-50)
 
---dwc-color-info-light: var(--dwc-color-info-45);
---dwc-color-on-info-text-light: var(--dwc-color-info-text-45);
---dwc-color-info-text-light: var(--dwc-color-info-45);
+--dwc-color-on-info-text-dark: var(--dwc-color-on-info-text-45)
+--dwc-color-on-info-text: var(--dwc-color-on-info-text-50)
+--dwc-color-on-info-text-light: var(--dwc-color-on-info-text-55)
+--dwc-color-on-info-text-alt: var(--dwc-color-info-text)
+```
 
---dwc-color-info-alt: var(--dwc-color-info-95);
---dwc-color-on-info-text-alt: var(--dwc-color-info-text-95);
+</TabItem>
 
---dwc-border-color-info: var(--dwc-color-info);
---dwc-focus-ring-info: 0 0 0 var(--dwc-focus-ring-width) hsla(
-    var(--dwc-color-info-h),
-    var(--dwc-color-info-s),
-    var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
-  );
+<TabItem value="Default / Tone">
+
+<dwc-doc-variations name="default"></dwc-doc-variations>
+
+La variation par défaut est utilisée pour des éléments d'interface utilisateur neutres tels que les arrière-plans et les bordures des composants. Elle hérite de sa teinte de la palette primaire avec une saturation très faible. Contrairement aux palettes chromatiques, la valeur par défaut utilise ses propres calculs de clarté OKLCH au lieu des étapes de palette.
+
+```css
+--dwc-color-default-dark
+--dwc-color-default
+--dwc-color-default-light
+--dwc-color-default-alt: var(--dwc-color-primary-alt)
+
+--dwc-color-default-text-dark: var(--dwc-color-default-text-40)
+--dwc-color-default-text: var(--dwc-color-default-text-45)
+--dwc-color-default-text-light: var(--dwc-color-default-text-50)
+
+--dwc-color-on-default-text-dark
+--dwc-color-on-default-text
+--dwc-color-on-default-text-light
+--dwc-color-on-default-text-alt: var(--dwc-color-primary-text)
+
+--dwc-focus-ring-default: var(--dwc-focus-ring-primary)
 ```
 
 </TabItem>
 
 <TabItem value="Gray">
 
+<dwc-doc-variations name="gray"></dwc-doc-variations>
+
+La variation grise utilise des nuances de gris pur et est consciente du mode, choisissant parmi les étapes foncées en mode clair et les étapes claires en mode sombre.
+
 ```css
---dwc-color-gray-dark: var(--dwc-color-gray-10);
---dwc-color-on-gray-text-dark: var(--dwc-color-gray-text-10);
---dwc-color-gray-text-dark: var(--dwc-color-gray-15);
+--dwc-color-gray-dark
+--dwc-color-gray
+--dwc-color-gray-light
+--dwc-color-gray-alt: var(--dwc-color-gray-tint)
 
---dwc-color-gray: var(--dwc-color-gray-15);
---dwc-color-on-gray-text: var(--dwc-color-gray-text-15);
---dwc-color-gray-text: var(--dwc-color-gray-20);
+--dwc-color-gray-text-dark: var(--dwc-color-gray-text-40)
+--dwc-color-gray-text: var(--dwc-color-gray-text-45)
+--dwc-color-gray-text-light: var(--dwc-color-gray-text-50)
 
---dwc-color-gray-light: var(--dwc-color-gray-20);
---dwc-color-on-gray-text-light: var(--dwc-color-gray-text-20);
---dwc-color-gray-text-light: var(--dwc-color-gray-25);
-
---dwc-color-gray-alt: var(--dwc-color-gray-95);
---dwc-color-on-gray-text-alt: var(--dwc-color-gray-text-95);
-
---dwc-border-color-gray: var(--dwc-color-gray);
---dwc-focus-ring-gray: 0 0 0 var(--dwc-focus-ring-width) hsla(
-    var(--dwc-color-gray-h),
-    var(--dwc-color-gray-s),
-    var(--dwc-focus-ring-l),
-    var(--dwc-color-gray-a)
-  );
+--dwc-color-on-gray-text-dark
+--dwc-color-on-gray-text
+--dwc-color-on-gray-text-light
+--dwc-color-on-gray-text-alt: var(--dwc-color-gray-text)
 ```
+
 </TabItem>
 
 </Tabs>
+
+### Référence des variations {#variation-reference}
+
+| Variable | Description |
+|---|---|
+| `--dwc-color-{name}` | La couleur de base. Utilisée pour les arrière-plans, remplissages et bordures. |
+| `--dwc-color-{name}-dark` | Une version plus sombre. Utilisée pour les états actifs/appuyés. |
+| `--dwc-color-{name}-light` | Une version plus claire. Utilisée pour les états hover/focus. |
+| `--dwc-color-{name}-alt` | La couleur de semence à 12% d'opacité. Utilisée pour des états de surbrillance subtils. |
+| `--dwc-color-{name}-text` | Couleur de texte sûre sur les surfaces de l'application (WCAG AA). |
+| `--dwc-color-{name}-text-dark` | Variation de texte plus sombre. |
+| `--dwc-color-{name}-text-light` | Variation de texte plus claire. |
+| `--dwc-color-on-{name}-text` | Couleur de texte à utiliser SUR `--dwc-color-{name}` comme fond. |
+| `--dwc-color-on-{name}-text-dark` | Couleur de texte à utiliser SUR `--dwc-color-{name}-dark`. |
+| `--dwc-color-on-{name}-text-light` | Couleur de texte à utiliser SUR `--dwc-color-{name}-light`. |
+| `--dwc-color-on-{name}-text-alt` | Couleur de texte à utiliser SUR `--dwc-color-{name}-alt`. |
+| `--dwc-border-color-{name}` | Couleur de bordure consciente du mode. |
+| `--dwc-border-color-{name}-emphasis` | Couleur de bordure plus forte consciente du mode. |
+| `--dwc-focus-ring-{name}` | Ombre de l'anneau de focus. |

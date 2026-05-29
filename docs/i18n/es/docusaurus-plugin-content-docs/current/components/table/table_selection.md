@@ -2,17 +2,17 @@
 sidebar_position: 10
 title: Selection
 slug: selection
-_i18n_hash: 203177b6049bc42493e3d0dbc0bf5233
+_i18n_hash: 46e92f0b5b3f1dafbf040176711ae5ac
 ---
-El componente `Table` proporciona diversas capacidades de selección. Hay métodos para seleccionar un solo elemento, múltiples elementos o gestionar las selecciones programáticamente.
+El componente `Table` proporciona diversas capacidades de selección. Existen métodos para seleccionar un solo ítem, varios ítems o gestionar selecciones de manera programática.
 
 :::tip Gestión y consulta de datos
-Para obtener información sobre cómo utilizar el patrón `Repository` para gestionar y consultar colecciones, consulta los [artículos de Repository](/docs/advanced/repository/overview).
+Para obtener información sobre cómo utilizar el patrón `Repository` para gestionar y consultar colecciones, consulte los [artículos de Repository](/docs/advanced/repository/overview).
 :::
 
 ## Modo de selección {#selection-mode}
 
-El modo de selección en la tabla determina cómo los elementos pueden ser seleccionados por el usuario. Proporciona opciones para configurar el comportamiento de la selección de elementos. La clase Table proporciona un método para establecer el modo de selección:
+El modo de selección en la tabla determina cómo los ítems pueden ser seleccionados por el usuario. Proporciona opciones para configurar el comportamiento de la selección de ítems. La clase Table proporciona un método para establecer el modo de selección:
 
 ```java
 setSelectionMode(SelectionMode selectionMode)
@@ -26,52 +26,52 @@ Las opciones de SelectionMode disponibles incluyen:
 
 ## Evento de selección {#selection-event}
 
-El paquete del componente `Table` emite varios eventos relacionados con la selección de filas. Estos eventos capturan los cambios en el estado de selección de las filas de `Table`. A continuación se presentan los eventos de selección clave junto con sus descripciones:
+El paquete del componente `Table` emite varios eventos relacionados con la selección de filas. Estos eventos capturan cambios en el estado de selección de las filas de `Table`. A continuación se presentan los eventos de selección clave junto con sus descripciones:
 
->- `TableItemSelectEvent` - Emitido cuando se selecciona un elemento de la tabla.
->- `TableItemDeselectEvent` - Emitido cuando se deselecciona un elemento de la tabla.
->- `TableItemSelectionChange` - Emitido cuando la selección general en la tabla cambia, o cuando se elige una selección adicional.
+>- `TableItemSelectEvent` - Emitido cuando un ítem de la tabla es seleccionado.
+>- `TableItemDeselectEvent` - Emitido cuando un ítem de la tabla es deseleccionado.
+>- `TableItemSelectionChange` - Emitido cuando la selección general en la tabla cambia o cuando se elige una selección adicional.
 
 :::info
-Los eventos `TableItemSelectEvent` y `TableItemDeselectEvent` no se activan cuando el modo de selección múltiple está activo y la selección se realiza a través de la casilla de verificación del encabezado. En este caso, se debe utilizar en su lugar `TableItemSelectionChange`.
+El `TableItemSelectEvent` y `TableItemDeselectEvent` no se activan cuando el modo de selección múltiple está activo y la selección se realiza a través de la casilla de verificación del encabezado. En este caso, se debe utilizar el `TableItemSelectionChange`.
 :::
 
-En el ejemplo que se muestra a continuación, se disparará un evento `TableItemSelectEvent` cada vez que un usuario seleccione una fila. El evento puede ser manejado agregando un listener a la tabla utilizando el método `onItemSelect()`.
+En el ejemplo a continuación, se disparará un evento `TableItemSelectEvent` cada vez que un usuario seleccione una fila. El evento se puede manejar agregando un listener a la tabla utilizando el método `onItemSelect()`.
 
-<ComponentDemo 
-path='/webforj/tablesingleselection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableSingleSelectionView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablesingleselection'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableSingleSelectionView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
-## Selección con casillas de verificación {#checkbox-selection}
+## Selección por casillas de verificación {#checkbox-selection}
 
-La selección con casillas de verificación se habilita cuando el modo de selección es `MULTI`, y permite a los usuarios seleccionar cómodamente uno o más elementos utilizando casillas de verificación asociadas con cada fila. Esta característica es particularmente útil en escenarios en los que los usuarios necesitan realizar acciones masivas sobre elementos seleccionados. La clase Table proporciona métodos para habilitar y personalizar la selección con casillas de verificación.
+La selección por casillas de verificación se habilita cuando el modo de selección es `MULTI`, y permite a los usuarios seleccionar cómodamente uno o más ítems utilizando las casillas de verificación asociadas a cada fila. Esta función es particularmente útil para escenarios en los que los usuarios necesitan realizar acciones en lotes sobre los ítems seleccionados. La clase Table proporciona métodos para habilitar y personalizar la selección por casillas de verificación.
 
-Al utilizar el método `setCheckboxSelection(boolean checkboxSelection)`, se pueden configurar las casillas de verificación para que se muestren junto a cada fila, permitiendo a los usuarios seleccionar elementos. El programa a continuación muestra la selección múltiple y la selección con casillas de verificación habilitadas:
+Al utilizar el método `setCheckboxSelection(boolean checkboxSelection)`, se pueden configurar las casillas de verificación para mostrarse junto a cada fila, permitiendo a los usuarios seleccionar ítems. El programa a continuación muestra la selección múltiple y la selección por casillas de verificación habilitadas:
 
-<ComponentDemo 
-path='/webforj/tablemultiselection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableMultiSelectionView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablemultiselection'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableMultiSelectionView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
 ## Selección programática {#programatic-selection}
 
-El componente `Table` proporciona métodos de selección programática, lo que permite manipular elementos seleccionados ya sea por sus claves o por los elementos completos. 
+El componente `Table` proporciona métodos de selección programática, permitiéndote manipular los ítems seleccionados ya sea por sus claves o por los ítems completos. 
 
 ### Seleccionar por clave {#select-by-key}
 
-El método `selectKey(Object... keys)` te permite seleccionar programáticamente elementos utilizando sus claves. Puedes pasar una o más claves a este método, y actualizará la selección en consecuencia.
+El método `selectKey(Object... keys)` te permite seleccionar programáticamente ítems utilizando sus claves. Puedes pasar una o más claves a este método, y actualizará la selección en consecuencia.
 
-### Seleccionar por índice {#select-by-index}
+### Seleccionar ítems de entrada {#selecting-entry-items}
 
-Utilizar el método `selectIndex(int... indices)` te permite pasar uno o más índices al método y actualizar los elementos seleccionados en consecuencia.
-
-### Seleccionando elementos completos {#selecting-entire-items}
-
-Finalmente, el método `select(T... items)` te permite seleccionar programáticamente elementos pasando uno o más elementos en sí mismos a este método para actualizar la selección en consecuencia.
+Finalmente, el método `select(T... items)` te permite seleccionar programáticamente ítems al pasar uno o más ítems a este método para actualizar la selección en consecuencia.

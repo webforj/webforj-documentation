@@ -1,6 +1,7 @@
 ---
 title: Setup and Configuration
 sidebar_position: 2
+description: Install the Webswing server, register a Swing app in the admin console, and configure CORS so webforJ can embed it with WebswingConnector.
 ---
 
 Integrating Webswing with webforJ involves two components: the Webswing server that hosts your Swing app, and the `WebswingConnector` component in your webforJ app that embeds it.
@@ -85,12 +86,14 @@ Once your Webswing server is running with your Swing app configured and CORS ena
 
 ### Add dependency {#add-dependency}
 
-Add the Webswing integration module to your webforJ project. This provides the `WebswingConnector` component and related classes.
+Webswing integration depends on webforJ's Webswing integration module, which provides the `WebswingConnector` component and related classes.
+Add the following to your `pom.xml` file:
 
 ```xml
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-webswing</artifactId>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-webswing</artifactId>
+  <version>${webforj.version}</version>
 </dependency>
 ```
 
@@ -108,6 +111,7 @@ import com.webforj.component.webswing.WebswingConnector;
 
 @Route
 public class SwingAppView extends Composite<Div> {
+  private final Div self = getBoundComponent();
   private WebswingConnector connector;
 
   public SwingAppView() {
@@ -118,7 +122,7 @@ public class SwingAppView extends Composite<Div> {
     connector.setSize("100%", "600px");
 
     // Add to the view container
-    getBoundComponent().add(connector);
+    self.add(connector);
   }
 }
 ```
@@ -135,7 +139,7 @@ For example, to hide the logout button in a production environment where you man
 WebswingConnector connector = new WebswingConnector("http://localhost:8080/myapp/");
 
 WebswingOptions options = new WebswingOptions()
-    .setDisableLogout(true);  // Hide the logout button
+  .setDisableLogout(true);  // Hide the logout button
 
 connector.setOptions(options);
 ```

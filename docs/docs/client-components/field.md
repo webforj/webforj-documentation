@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-field>
 sidebar_class_name: sidebar--item__hidden
 slug: field
-description: A user guide article for the field
+description: Style the dwc-field client component using CSS variables, shadow parts, and slots to theme inputs, labels, helper text, and prefixes.
 // pagination_prev: null
 // pagination_next: null
 ---

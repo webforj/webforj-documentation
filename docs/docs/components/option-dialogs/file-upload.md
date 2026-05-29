@@ -1,9 +1,8 @@
 ---
-sidebar_position: 20
 title: File Upload
+sidebar_position: 20
+description: Capture client uploads with the FileUploadDialog, returning an UploadedFile that you can filter, move, and process server-side.
 ---
-
-# File Upload Dialog
 
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
@@ -11,13 +10,15 @@ title: File Upload
 
 A `FileUploadDialog` is a modal dialog designed to allow the user to upload files from their local file system. The dialog blocks app execution until the user selects files to upload or closes the dialog.
 
-```java
-UploadedFile result = OptionDialog.showFileUploadDialog("Upload a file");
-```
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 
-The `FileUploadDialog` provides a way to select and upload files, enabling users to submit documents, images, or other file types required by the app.
+The `FileUploadDialog` provides a way to select and upload files, enabling users to submit documents, images, or other file types required by the app. Use `showFileUploadDialog()` to display the dialog and capture the uploaded file.
+
+```java
+UploadedFile result = OptionDialog.showFileUploadDialog("Upload a file");
+```
 
 ## Result {#result}
 
@@ -27,10 +28,10 @@ The `FileUploadDialog` returns an `UploadedFile` object that contains informatio
 The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
 :::
 
-<ComponentDemo 
-path='/webforj/fileuploaddialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java'
-height = '400px'
+<ComponentDemo
+path='/webforj/fileuploaddialogbasic'
+files={['src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java']}
+height='400px'
 />
 
 ### Moving uploaded files {#moving-uploaded-files}
@@ -40,10 +41,10 @@ By default, webforJ stores uploaded files in a temporary folder which is regular
 ```java showLineNumbers
 UploadedFile uploadedFile = OptionDialog.showFileUploadDialog("Select a file to upload");
 try {
-    File file = uploadedFile.move("my/full/path/" + uploadedFile.getSanitizedClientName());
-    // ... do something with the file
+  File file = uploadedFile.move("my/full/path/" + uploadedFile.getSanitizedClientName());
+  // ... do something with the file
 } catch (IOException e) {
-    // handle the exception
+  // handle the exception
 }
 ```
 :::tip Sanitized Client Name
@@ -56,8 +57,8 @@ The `FileUploadDialog` allows you to set filters to limit the types of files tha
 
 ```java showLineNumbers
 FileUploadDialog dialog = new FileUploadDialog(
-    "Upload a file", 
-    Arrays.asList(new FileChooserFilter("Text Files", "*.txt")));
+  "Upload a file", 
+  Arrays.asList(new FileChooserFilter("Text Files", "*.txt")));
 UploadedFile result = dialog.show();
 ```
 

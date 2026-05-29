@@ -2,30 +2,30 @@
 title: Route Registry Provider
 sidebar_position: 60
 sidebar_class_name: new-content
-_i18n_hash: bb5bae3f60aa681bc30e2f317ac2c2d6
+_i18n_hash: 03f86cbc79737ca141cc9d2e1ad2e28f
 ---
-# Reitinhallinnan tarjoaja <DocChip chip='since' label='25.11' />
+# Reittirekisterin tarjoaja <DocChip chip='since' label='25.11' />
 
-`RouteRegistryProvider` on palveluntarjoajaliittymä (SPI), joka mahdollistaa integraalikehyksille omien reitin löytämismekanismien tarjoamisen. Tämä mahdollistaa kehysten integroimisen omien luokkahaun ja riippuvuuksien injektiojärjestelmien kanssa webforJ:n reititysinfrastruktuuriin.
+`RouteRegistryProvider` on palveluntarjoajaliittymä (SPI), joka mahdollistaa integra Frameworkien tarjoamaan mukautettuja reitin löytämismekanismeja. Tämä mahdollistaa Frameworkien integroimisen omien luokkakannan skannausten ja riippuvuuden injektointijärjestelmien kanssa webforJ:n reititysinfrastruktuuriin.
 
-## Yleiskatsaus {#overview}
+## Yhteenveto {#overview}
 
-webforJ löytää reitit skannaamalla paketteja `@Route`-annotoituja komponentteja varten. `RouteRegistryProvider` SPI mahdollistaa kehyksille tämän oletuskäytöksen ylittämisen omalla löytämismekanismilla.
+webforJ löytää reittejä skannaamalla paketteja `@Route`-annotoiduista komponenteista. `RouteRegistryProvider` SPI mahdollistaa Frameworkien ohittaa tämän oletuskäyttäytymisen omalla löytämismekanismillaan.
 
 Käytä tätä SPI:tä, kun:
 
-- Integroit riippuvuuksien injektiojärjestelmiin (Spring, CDI, ...)
-- Tuet erikoistuneita ympäristöjä (OSGi, mukautetut luokkakuormittimet, GraalVM)
-- Rakennat kehysadaptereita, jotka tarvitsevat hallita reitti-komponenttien elinkaarta
-- Hyödynnät olemassa olevia luokkahaun tuloksia käynnistysajan optimointiin
+- Integroidaan riippuvuuden injektointikehyksiin, kuten Spring, tai konteksteihin ja riippuvuuden injektointiin (CDI)
+- Tuetaan erikoistuneita ympäristöjä (OSGi, mukautetut luokkakuormaajat, GraalVM)
+- Rakennetaan kehysadaptereita, jotka tarvitsevat hallita reittikomponenttien elinkaaren
+- Hyödynnetään olemassa olevia luokkakannan skannauksia käynnistysaikojen optimointiin
 
-## Toimintaperiaate {#how-it-works}
+## Miten se toimii {#how-it-works}
 
-Kun `RouteRegistry.ofPackage()` kutsutaan, webforJ tarkistaa rekisteröidyt tarjoajat Java:n `ServiceLoader`-mekanismin kautta. Jos tarjoaja löytyy, reitin löytämistoiminto delegoidaan tuolle tarjoajalle. Muussa tapauksessa oletuskäytänne skannausmekanismi on käytössä.
+Kun `RouteRegistry.ofPackage()` kutsutaan, webforJ tarkistaa rekisteröidyt tarjoajat Java:n `ServiceLoader` avulla. Jos tarjoaja löytyy, reitin löytämiseen delegoidaan tälle tarjoajalle. Muuten käytetään oletusskannausta.
 
-## Tarjoajan luominen {#building-your-provider}
+## Rakentaminen omalle tarjoajalle {#building-your-provider}
 
-Luodaksesi mukautetun reitin löytämistarjoajan, toteuta SPI-liittymä ja rekisteröi se Java:n ServiceLoader-mekanismin kautta.
+Luodaksesi mukautetun reitin löytämistarjoajan, toteuta SPI-rajapinta ja rekisteröi se Java:n ServiceLoader-mekanismilla.
 
 ### Toteuta SPI {#implement-the-spi}
 
@@ -36,14 +36,14 @@ public class CustomRouteRegistryProvider implements RouteRegistryProvider {
 
   @Override
   public void registerRoutes(String[] packages, RouteRegistry registry) {
-    // Skannaa paketteja ja rekisteröi @Route-komponentit
+    // Skannaa paketit ja rekisteröi @Route-komponentit
   }
 }
 ```
 
-### Aktivoi löytö {#enable-discovery}
+### Ota löytämiseen käyttöön {#enable-discovery}
 
-Lisää tarjoajan täysin kvalifioitu luokan nimi tiedostoon `META-INF/services/com.webforj.router.RouteRegistryProvider`:
+Lisää tarjoajasi täydellinen luokan nimi tiedostoon `META-INF/services/com.webforj.router.RouteRegistryProvider`:
 
 ```text title="src/main/resources/META-INF/services/com.webforj.router.RouteRegistryProvider"
 com.example.framework.CustomRouteRegistryProvider

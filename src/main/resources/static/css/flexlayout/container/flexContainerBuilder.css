@@ -42,14 +42,6 @@ dwc-button {
   width: calc(100% - 40px);
 }
 
-dwc-list-button {
-  width: 250px;
-}
-
-dwc-numberfield::part(input-wrapper) {
-  height: unset;
-}
-
 .demo__box {
   display: flex;
   justify-content: center;

@@ -1,0 +1,7 @@
+# Include all CSS and JS assets
+**/*.css
+**/*.js
+
+# Exclude already-minified files
+!**/*.min.css
+!**/*.min.js

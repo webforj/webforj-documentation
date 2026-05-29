@@ -1,6 +1,7 @@
 ---
 title: AppNav
 sidebar_position: 6
+description: Build hierarchical side navigation menus with AppNav and AppNavItem, linking to routes, registered views, or external URLs.
 ---
 
 <DocChip chip="shadow" />
@@ -9,7 +10,9 @@ sidebar_position: 6
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/> 
 
-The `AppNav` component in webforJ provides a flexible and organized side navigation menu with support for both flat and hierarchical structures. Each entry is an `AppNavItem`, which can represent a simple link or a group containing sub-items. Items can be linked to internal views or external resources, enhanced with icons, badges, or other components.
+The `AppNav` component creates a side navigation menu out of `AppNavItem` entries. Items can link to internal views or external resources, nest under parent items to form hierarchical menus, and carry icons, badges, or other components to give users more context at a glance.
+
+<!-- INTRO_END -->
 
 ## Adding and nesting items {#adding-and-nesting-items}
 
@@ -35,10 +38,13 @@ If you want the group header to trigger a custom action (such as opening externa
 :::
 
 <!--vale off-->
-<AppLayoutViewer 
-path='/webforj/appnav/Social?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavPageView.java']}
+<ComponentDemo
+path='/webforj/appnav/Social'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/appnav/AppNavView.java',
+  'src/main/java/com/webforj/samples/views/appnav/AppNavPageView.java',
+]}
 />
 <!--vale on-->
 

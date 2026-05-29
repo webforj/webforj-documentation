@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-textarea>
 sidebar_class_name: sidebar--item__hidden
 slug: textarea
-description: A user guide article for the textarea
+description: Theme the dwc-textarea multiline input with CSS variables and shadow parts for label, border, padding, and resize handle.
 // pagination_prev: null
 // pagination_next: null
 ---

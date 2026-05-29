@@ -1,10 +1,9 @@
 ---
 sidebar_position: 4
 title: Composite Components
-sidebar_class_name: updated-content
+description: Combine webforJ components into reusable units by extending Composite, configuring the bound component, and overriding initBoundComponent.
 ---
 
-<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
 
@@ -17,17 +16,19 @@ If you need to integrate web components from another source, use specialized alt
 - [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): For web components with type-safe property management
 - [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): For web components that accept slotted content
 
+<AISkillTip skill="webforj-creating-components" />
+
 ## Usage {#usage}
 
 To define a `Composite` component, extend the `Composite` class and specify the type of component it manages. This becomes your bound component, which is the root container that holds your internal structure:
 
 ```java title="BasicComposite.java"
 public class BasicComposite extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public BasicComposite() {
     // Access the bound component to configure it
-    getBoundComponent()
-      .setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
       .setSpacing("3px")
       .add(new TextField(), new Button("Submit"));
   }
@@ -36,7 +37,7 @@ public class BasicComposite extends Composite<FlexLayout> {
 
 The `getBoundComponent()` method provides access to your underlying component, allowing you to configure its properties, add child components, and manage its behavior directly.
 
-The bound component can be any [webforJ component](../components/overview) or [HTML element component](/docs/building-ui/web-components/html-elements). For flexible layouts, consider using [`FlexLayout`](../components/flex-layout) or [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) as your bound component.
+The bound component can be any [webforJ component](/docs/components/overview) or [HTML element component](/docs/components/html-elements). For flexible layouts, consider using [`FlexLayout`](/docs/components/flex-layout) or [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) as your bound component.
 
 :::note Component Extension
 Never extend `Component` or `DwcComponent` directly. Always use composition patterns with `Composite` to build custom components.
@@ -72,6 +73,7 @@ webforJ handles all lifecycle management for `Composite` components automaticall
 
 ```java
 public class UserDashboard extends Composite<FlexLayout> {
+ private final FlexLayout self = getBoundComponent();
  private TextField searchField;
  private Button searchButton;
  private Div resultsContainer;
@@ -154,10 +156,12 @@ public class InteractiveMap extends Composite<Div> {
 
 The following example demonstrates a Todo app where each item is a `Composite` component consisting of a [`RadioButton`](../components/radiobutton) styled as a switch and a Div with text: 
 
-<ComponentDemo 
-path='/webforj/composite?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeView.java'
+<ComponentDemo
+path='/webforj/composite'
+files={[
+  'src/main/java/com/webforj/samples/views/composite/CompositeView.java',
+  'src/main/resources/static/composite/composite.css',
+]}
 height='500px'
 />
 
@@ -166,8 +170,10 @@ height='500px'
 Sometimes you may want to use a `Composite` to group related components together into a single unit, even when reusability isn't the main concern:
 
 <ComponentDemo
-path='/webforj/analyticscardcomposite?'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/analyticscomposite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java'
+path='/webforj/analyticscardcomposite'
+files={[
+  'src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java',
+  'src/main/resources/static/composite/analyticscomposite.css',
+]}
 height='500px'
 />

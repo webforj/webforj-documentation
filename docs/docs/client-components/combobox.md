@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-combobox>
 sidebar_class_name: sidebar--item__hidden
 slug: combobox
-description: A user guide article for the combobox
+description: Customize the dwc-combobox client component via CSS variables and shadow parts to theme the input, dropdown, and option items.
 // pagination_prev: null
 // pagination_next: null
 ---

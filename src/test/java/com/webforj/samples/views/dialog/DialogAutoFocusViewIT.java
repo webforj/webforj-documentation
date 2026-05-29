@@ -26,4 +26,8 @@ public class DialogAutoFocusViewIT extends BaseTest {
     assertThat(dialogAutoFocusPage.getTextField()).isFocused();
   }
 
+  @Test
+  public void testAutoFocusIsEnabled() {
+    assertThat(dialogAutoFocusPage.getTextField()).isFocused();
+  }
 }

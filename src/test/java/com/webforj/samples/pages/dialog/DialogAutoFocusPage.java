@@ -7,19 +7,21 @@ import com.webforj.samples.pages.SupportedLanguage;
 
 public class DialogAutoFocusPage {
 
-    private static final String ROUTE = "dialogautofocus";
+  private static final String ROUTE = "dialogautofocus";
 
-    private final Locator textField;
+  private final Locator textField;
 
-    public DialogAutoFocusPage(Page page) {
-        this.textField = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("This Box is Auto Focused"));
-    }
+  public DialogAutoFocusPage(Page page) {
+    this.textField =
+        page.getByRole(
+            AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("This Box is Auto Focused"));
+  }
 
     public static String getRoute(SupportedLanguage language) {
         return language.getPath(ROUTE);
     }
 
-    public Locator getTextField() {
-        return textField;
-    }
+  public Locator getTextField() {
+    return textField;
+  }
 }

@@ -21,12 +21,11 @@ import com.webforj.dispatcher.ListenerRegistration;
 
 @StyleSheet("ws://css/viewtransitions/components/chat-card.css")
 public class ChatCard extends Composite<Div> implements HasClassName<ChatCard>, HasStyle<ChatCard> {
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
   private final IconButton closeBtn;
 
   public ChatCard() {
-    self.setWidth("320px")
-        .addClassName("chat-card");
+    self.setWidth("320px").addClassName("chat-card");
 
     // Header
     FlexLayout header = FlexLayout.create().horizontal().build();

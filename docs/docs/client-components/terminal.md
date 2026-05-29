@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-terminal>
 sidebar_class_name: sidebar--item__hidden
 slug: terminal
-description: A user guide article for the terminal
+description: Customize the dwc-terminal console appearance with CSS variables and shadow parts for background, text, cursor, and font.
 // pagination_prev: null
 // pagination_next: null
 ---

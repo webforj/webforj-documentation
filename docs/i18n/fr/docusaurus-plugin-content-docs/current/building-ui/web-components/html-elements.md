@@ -1,11 +1,11 @@
 ---
 sidebar_position: 3
 title: HTML Element Components
-_i18n_hash: 86c5e2ee07360ad502e8857eb68cebe2
+_i18n_hash: 9b4589a970d529d60503af3b502742ac
 ---
-Bien que la classe `Element` de webforJ permette aux utilisateurs de créer des éléments HTML dans leurs applications, une suite d'éléments HTML standard a été incluse avec les composants principaux de webforJ pour faciliter leur utilisation.
+Bien que la classe `Element` de webforJ permette aux utilisateurs de créer des éléments HTML dans leurs applications, un ensemble d'éléments HTML standard a été inclus avec les composants principaux de webforJ pour faciliter leur utilisation.
 
-Les composants suivants peuvent être utilisés et correspondent aux éléments HTML correspondants :
+Les composants suivants peuvent être utilisés et correspondent aux éléments HTML suivants :
 
 |Classe webforJ|Élément HTML|Peut ajouter des composants ?|
 |:--:|:--:|:--:|
@@ -34,6 +34,6 @@ Les composants suivants peuvent être utilisés et correspondent aux éléments 
 |`Strong`|`<strong>`| ✔️ |
 |`UnorderedList`|`<ul>`| ✔️ |
 
-Ces composants ont été mis en œuvre pour fournir une API permettant d'interagir avec les différentes propriétés, attributs et fonctionnalités attendus de ces éléments.
+Ces composants ont été mis en œuvre pour fournir une API pour interagir avec les différentes propriétés, attributs et fonctionnalités attendus de ces éléments.
 
 Des méthodes sont également fournies pour ajouter, supprimer et accéder aux composants, comme indiqué dans cette section de la classe [`Element`](../elements.md#component-interaction).
