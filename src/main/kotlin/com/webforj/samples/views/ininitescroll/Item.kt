@@ -14,11 +14,9 @@ import com.webforj.kotlin.extension.classNames
 import com.webforj.kotlin.extension.minSize
 import com.webforj.kotlin.extension.plus
 import com.webforj.kotlin.extension.px
-import kotlin.random.Random
 
 class Item: Composite<Div>() {
   private val self = boundComponent
-  private val random = Random.Default
   private val names = arrayOf(
     "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
     "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
@@ -37,8 +35,8 @@ class Item: Composite<Div>() {
             }
             div {
               classNames + "item-excerpt"
-              text = ("Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-                + "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+              text =
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             }
           }
           featherIcon(FeatherIcon.ARROW_RIGHT) {
