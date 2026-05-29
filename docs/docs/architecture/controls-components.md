@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 title: BBj Controls and webforJ Components
+description: See how webforJ components map one-to-one to BBj controls through the DwcComponent base class and why composition replaces inheritance.
 ---
 
 

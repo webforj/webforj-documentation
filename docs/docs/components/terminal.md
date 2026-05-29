@@ -1,6 +1,7 @@
 ---
 title: Terminal
 sidebar_position: 126
+description: Embed an interactive terminal emulator with the Terminal component for shells, dashboards, debug consoles, and remote access tools.
 ---
 
 <DocChip chip="shadow" />  
@@ -8,9 +9,11 @@ sidebar_position: 126
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
 
-The `Terminal` component provides an interactive terminal emulator that behaves much like a traditional system console. It allows applications to display and manipulate a text-based interface, handling text output, receiving user input, interpreting control sequences, and maintaining screen buffers.
+The `Terminal` component is an interactive terminal emulator that behaves like a traditional system console. It handles text output, user input, control sequences, and screen buffers, making it suitable for building remote access tools, text dashboards, embedded command shells, or debug consoles.
 
-This terminal is designed to deliver reliable behavior across a range of use cases, such as building remote access tools, text dashboards, embedded command shells, or interactive debug consoles.
+<!-- INTRO_END -->
+
+## Creating a terminal {#creating-a-terminal}
 
 :::info Importing Terminal
 To use the `Terminal` component in your app, ensure that you include the following dependency in your pom.xml.
@@ -23,17 +26,20 @@ To use the `Terminal` component in your app, ensure that you include the followi
 ```
 :::
 
-<ComponentDemo 
-path='/webforj/terminal?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/TerminalView.java'
-urls={[
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/TerminalCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/ClearCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/DateCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/HelpCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java'
+The following example builds an interactive command shell with typed commands, history navigation, and custom output.
+
+<ComponentDemo
+path='/webforj/terminal'
+files={[
+  'src/main/java/com/webforj/samples/views/terminal/TerminalView.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/TerminalCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/ClearCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/DateCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/HelpCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java',
+  'src/main/resources/static/css/terminal/terminal-view.css',
 ]}
 height='400px'
 />
@@ -70,7 +76,7 @@ You can also attach a callback that runs once the chunk of data has been process
 
 ```java
 terminal.write("Long command output", e -> {
-    System.out.println("Data processed.");
+  System.out.println("Data processed.");
 });
 ```
 
@@ -117,10 +123,10 @@ Pause your backend until the terminal finishes processing a chunk:
 
 ```java
 pty.onData(chunk -> {
-    pty.pause();
-    terminal.write(chunk, result -> {
-        pty.resume();
-    });
+  pty.pause();
+  terminal.write(chunk, result -> {
+    pty.resume();
+  });
 });
 ```
 
@@ -150,9 +156,9 @@ pty.onData(chunk -> {
 });
 ```
 
-<ComponentDemo 
-path='/webforj/serverlogs?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/ServerLogsView.java'
+<ComponentDemo
+path='/webforj/serverlogs'
+files={['src/main/java/com/webforj/samples/views/terminal/ServerLogsView.java']}
 height='400px'
 />
 
@@ -171,10 +177,10 @@ The `TerminalOptions` class allows you to configure behavior:
 Example:
 ```java
 TerminalOptions options = new TerminalOptions()
-    .setCursorBlink(true)
-    .setFontFamily("Courier New, monospace")
-    .setFontSize(13)
-    .setScrollback(5000);
+  .setCursorBlink(true)
+  .setFontFamily("Courier New, monospace")
+  .setFontSize(13)
+  .setScrollback(5000);
 
 terminal.setOptions(options);
 ```
@@ -194,9 +200,9 @@ theme.setBackground("#1e1e1e");
 theme.setForeground("#cccccc");
 terminal.setTheme(theme);
 ```
-<ComponentDemo 
-path='/webforj/terminalthemepicker?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/TerminalThemePickerView.java'
+<ComponentDemo
+path='/webforj/terminalthemepicker'
+files={['src/main/java/com/webforj/samples/views/terminal/TerminalThemePickerView.java']}
 height='500px'
 />
 

@@ -2,13 +2,13 @@
 title: Install Plugin
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
-_i18n_hash: 1a3e48999554631e4f15a67c80385111
+_i18n_hash: f6ca2e9ca82e9592c4e0c8b7726164ce
 ---
-Voit konfiguroida webforJ:n projektin POM-tiedoston avulla, joka on suunniteltu helpottamaan sovelluksen käyttöönottoa. Seuraavat osiot kuvaavat erilaisia vaihtoehtoja, joita voit muuttaa halutun tuloksen saavuttamiseksi.
+Voit konfiguroida webforJ:n projektin POM-tiedoston avulla, joka on suunniteltu helpottamaan sovelluksen käyttöönottoa. Seuraavissa osioissa on esitelty erilaisia vaihtoehtoja, joita voit muuttaa halutun tuloksen saavuttamiseksi.
 
 ## Moottorin poissulkeminen {#engine-exclusion}
 
-Kun käytät `BBjServices`:ia, `webforj-engine`-riippuvuus tulisi jättää pois, koska moottorin tarjoamat toiminnot ovat jo saatavilla.
+Kun käytetään `BBjServices`:ia, `webforj-engine`-riippuvuus tulisi sulkea pois, koska moottorin tarjoamat ominaisuudet ovat jo saatavilla.
 
 ```xml
 <dependencies>
@@ -26,66 +26,67 @@ Kun käytät `BBjServices`:ia, `webforj-engine`-riippuvuus tulisi jättää pois
 </dependencies>
 ```
 
-## POM-tiedoston tagit {#pom-file-tags}
+## POM-tiedoston tunnisteet {#pom-file-tags}
 
-Tagsit `<configuration>`-tagin sisällä voidaan muuttaa sovelluksesi konfiguroimiseksi. Muokkaamalla seuraavia rivejä oletus POM-tiedostossa, joka tulee [`HelloWorldJava`](https://github.com/webforj/HelloWorldJava) -aloitusrepositoriosta, saat aikaan seuraavat muutokset:
+`<configuration>`-tunnisteen sisällä olevia tunnisteita voidaan muuttaa sovelluksesi konfiguroimiseksi. Muokkaamalla seuraavia rivejä oletus POM-tiedostossa, joka tulee [`HelloWorldJava`](https://github.com/webforj/HelloWorldJava) aloitustallennuksesta, saat aikaan seuraavat muutokset:
 
 ```xml {13-16} showLineNumbers
 <plugin>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-install-maven-plugin</artifactId>
-    <version>${webforj.version}</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>install</goal>
-            </goals>
-    </execution>
-    </executions>
-    <configuration>
-        <deployurl>http://localhost:8888/webforj-install</deployurl>
-        <classname>samples.HelloWorldApp</classname>
-        <publishname>hello-world</publishname>
-        <debug>true</debug>
-    </configuration>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-install-maven-plugin</artifactId>
+  <version>${webforj.version}</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>install</goal>
+      </goals>
+  </execution>
+  </executions>
+  <configuration>
+    <deployurl>http://localhost:8888/webforj-install</deployurl>
+    <classname>samples.HelloWorldApp</classname>
+    <publishname>hello-world</publishname>
+    <debug>true</debug>
+  </configuration>
 </plugin>
 ```
 
-- **`<deployurl>`** Tämä tagi on URL, jossa webforJ:n päätepiste projektin asennusta varten voidaan saavuttaa. Paikallisesti sovellustaan ajavat käyttäjät käyttävät oletusporttia 8888. Dockeria käyttävien käyttäjien on vaihdettava portti siihen, joka syötettiin [Docker-konttia konfiguroidessa](./docker#2-configuration).
+- **`<deployurl>`** Tämä tunniste on URL-osoite, josta webforJ:n päätepiste projektin asennusta varten voidaan saavuttaa. Paikallisesti sovellustaan ajavat käyttäjät käyttävät oletusporttia 8888. Dockeria käytettäessä porttia tulisi muuttaa porttiin, joka syötettiin [Docker-kontin konfiguroinnissa](./docker#2-configuration).
 
-- **`<classname>`** Tämä tagi sisältää paketin ja luokan nimen sovelluksesta, jota haluat suorittaa. Tämä on ainut luokka projektissasi, joka laajentaa `App`-luokkaa ja käynnistyy perus-URL:stä.
+- **`<classname>`** Tämä tunniste sisältää paketin ja luokan nimen sovelluksesta, jonka haluat suorittaa. Tämä on ainoa luokka projektissasi, joka laajentaa `App`-luokkaa ja käynnistyy perus-URL-osoitteesta.
 
-- **`<publishname>`** Tämä tagi määrittää sovelluksen nimen julkaistussa URL:ssä. Yleensä ohjelmasi suorittamiseksi navigoit URL-osoitteeseen, joka on samanlainen kuin `http://localhost:8888/webapp/<publishname>`, korvaten `<publishname>`-tagin arvolla. Tällöin `<classname>`-tagissa ilmoitettu ohjelma suoritetaan.
+- **`<publishname>`** Tämä tunniste määrittää sovelluksen nimen julkaistussa URL-osoitteessa. Yleisesti ottaen, jotta voit suorittaa ohjelmasi, siirryt URL-osoitteeseen, joka muistuttaa `http://localhost:8888/webapp/<publishname>`, korvaten `<publishname>` tunnisteen arvolla. Tällöin `<classname>`-tunnisteella määritelty ohjelma suoritetaan.
 
-- **`<debug>`** Debug-tagia voidaan asettaa arvoon tosi tai epätosi, ja se määrittää, näytetäänkö selaimen konsolissa virheviestejä, joita ohjelmasi heittää. 
+- **`<debug>`** Debug-tunniste voidaan asettaa arvoksi tosi tai epätosi, ja se määrää, näytetäänkö selaimen konsolissa ohjelmasi heittämiä virheviestejä.
 
 ## Tietyn ohjelman suorittaminen {#running-a-specific-program}
 
 On kaksi tapaa suorittaa tietty ohjelma sovelluksessasi:
 
-1. Aseta ohjelma `run()`-metodiin luokassa, joka laajentaa `App`.
-2. Hyödynnä [reititystä](../../routing/overview) webforJ-sovelluksessasi antaaksesi ohjelmalle omistetun URL: n.
+1. Aseta ohjelma `run()`-menetelmään luokassa, joka laajentaa `App`.
+2. Hyödynnä [reititystä](../../routing/overview) webforJ-sovelluksessasi antaa ohjelmalle oma URL-osoitteensa.
 
-## Kuinka webforJ valitsee aloituspisteen {#how-webforj-selects-an-entry-point}
+## Kuinka webforJ valitsee sisääntulopisteen {#how-webforj-selects-an-entry-point}
 
-Sovelluksen aloituspiste määräytyy POM-tiedostossa määritetyn `<classname>`-tagin mukaan. Jos aloituspistettä ei ole määritetty POM-tiedostossa, järjestelmä aloittaa aloituspisteen haun.
+Sovelluksen sisääntulopiste määritetään POM-tiedostossa määritellyn `<classname>`:n avulla. 
+Jos POM-tiedostossa ei ole määritelty sisääntulopistettä, järjestelmä aloittaa sisääntulopisteen haun.
 
-### Aloituspisteen haku {#entry-point-search}
+### Sisääntulopisteen haku {#entry-point-search}
 
-1. Jos on olemassa yksi luokka, joka laajentaa `App`-luokkaa, siitä tulee aloituspiste.
-2. Jos useat luokat laajentavat `App`:a, järjestelmä tarkistaa, onko jollain niistä `com.webforj.annotation.AppEntry`-annotaatio. Ainut annotaatio, jolla on `@AppEntry`, tulee aloituspisteeksi.
+1. Jos on olemassa yksi luokka, joka laajentaa `App`-luokkaa, siitä tulee sisääntulopiste.
+2. Jos useat luokat laajentavat `App`-luokkaa, järjestelmä tarkistaa, onko jollain niistä `com.webforj.annotation.AppEntry`-annotaatio. Yksi annotaatioon merkitty luokka `@AppEntry` tulee sisääntulopisteeksi.
     :::warning
-    Jos usealla luokalla on `@AppEntry`-annotaatio, poikkeus heitetään, ja kaikki löydetyt luokat luetellaan.
+    Jos useat luokat on merkitty `@AppEntry`:llä, heitetään poikkeus, joka luettelee kaikki löytyneet luokat.
     :::
 
-Jos on useita luokkia, jotka laajentavat `App`:a eikä yksikään niistä ole merkitty `@AppEntry`, heitetään poikkeus, jossa kerrotaan jokaisesta aliluokasta.
+Jos on useita luokkia, jotka laajentavat `App`-luokkaa eikä kukaan niistä ole merkitty `@AppEntry`:llä, heitetään poikkeus, jossa kerrotaan jokaisesta aliluokasta.
 
 ## Debug-tila {#debug-mode}
 
-On myös mahdollista suorittaa sovellustasi debug-tilassa, joka sallii konsolin tulostaa kattavia virheviestejä.
+On myös mahdollista suorittaa sovelluksesi debug-tilassa, joka mahdollistaa konsolin tulostaa yksityiskohtaisia virheviestejä.
 
-Ensimmäinen vaihtoehto on muokata `config.bbx`-tiedostoa, joka löytyy BBj-asennuksesi `cfg/`-kansiosta. Lisää tiedostoon rivi `SET DEBUG=1` ja tallenna muutoksesi.
+Ensimmäinen vaihtoehto on muuttaa `config.bbx`-tiedostoa, joka löytyy BBj-asennuksesi `cfg/`-hakemistosta. Lisää tiedostoon rivi `SET DEBUG=1` ja tallenna muutoksesi.
 
-Lisäksi Enterprise Managerissa voit lisätä seuraavan ohjelmaargumenttina: `DEBUG`
+Lisäksi Enterprise Managerissa voit lisätä seuraavan ohjelman argumenttina: `DEBUG`
 
-Molempien näiden tekeminen mahdollistaa selaimen konsolin tulostaa virheviestejä.
+Molempien vaihtoehtojen toteuttaminen mahdollistaa selaimen konsolin tulostaa virheviestejä.

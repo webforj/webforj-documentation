@@ -1,24 +1,25 @@
 ---
 sidebar_position: 7
 title: State Management
-_i18n_hash: e10d155e02722ea38419a79813a2f5af
+_i18n_hash: 0766f2c08642792af2fe62e832b4fa1a
 ---
-Luodaan saumatonta, dynaamista käyttäjäkokemusta vaativat usein sen, että verkkosovelluksen tila heijastuu URL-osoitteeseen ja säilyy selainviestinnän aikana. Voit saavuttaa tämän lataamatta sivua uudelleen hyödyntämällä URL-parametrien päivityksiä ja selainhistorian hallintaa. Tämä varmistaa, että käyttäjät voivat jakaa, merkitä kirjanmerkkeihin tai palata tiettyihin näkymiin sovelluksen ollessa täysin tietoinen heidän aiemmista vuorovaikutuksistaan.
+Luodakseen saumattomia, dynaamisia käyttäjäkokemuksia, vaaditaan usein, että verkkosovelluksen tila heijastuu URL-osoitteessa ja säilyy selaimen navigointitapahtumien aikana. Voit saavuttaa tämän ilman sivun lataamista hyödyntämällä URL-parametrien päivityksiä ja selaushistorian tilan hallintaa. Tämä varmistaa, että käyttäjät voivat jakaa, lisätä kirjanmerkkejä tai palata tiettyihin näkymiin, joista sovellus on täysin tietoinen heidän aiemmista vuorovaikutuksistaan.
 
-## URL-osoitteen päivittäminen {#updating-the-url}
+## URL:n päivittäminen {#updating-the-url}
 
-Kun verkkosivun tila muuttuu, kuten tuotteiden luettelon suodattamisen tai eri näkymien selaamisen yhteydessä, sinun on usein varmistettava, että URL-osoite heijastaa näitä muutoksia. Voit käyttää `replaceState` tai `pushState` -menetelmiä, joita `BrowserHistory`-luokka tarjoaa, manipuloidaksesi URL-osoitetta lataamatta sivua uudelleen:
+Kun verkkosivun tila muuttuu, kuten tuotteiden listauksen suodattamisessa tai eri näkymien välillä navigoimassa, tarvitset usein, että URL heijastaa näitä muutoksia. Voit käyttää `replaceState` tai `pushState` -menetelmiä, joita `BrowserHistory`-luokka tarjoaa, muokataksesi URL:ia ilman sivun lataamista:
 
-- **`pushState`**: Lisää uuden merkinnän selainhistorian pinoon lataamatta sivua uudelleen. Tämä on hyödyllistä eri näkymien tai dynaamisen sisällön välillä navigoimisessa.
-- **`replaceState`**: Päivittää nykyisen merkinnän selainhistorian ilman uuden merkinnän lisäämistä. Tämä on ihanteellinen tilan päivittämiseen samalla näkymällä.
+- **`pushState`**: Lisää uuden merkinnän selaimen historiakärryyn ilman sivun lataamista. Tämä on hyödyllistä, kun navigoidaan erilaisten näkymien tai dynaamisen sisällön välillä.
+- **`replaceState`**: Päivittää nykyisen merkinnän selaimen historiassa lisäämättä uutta merkintää. Tämä on ihanteellinen tilan päivittämiseen samalla näkymällä.
 
-### Esimerkki: URL-osoitteen päivittäminen kyselyparametrien kanssa {#example-updating-the-url-with-query-parameters}
+### Esimerkki: URL:n päivittäminen kyselyparametrien avulla {#example-updating-the-url-with-query-parameters}
 
-Tässä esimerkissä, kun "Päivitä URL" -painiketta napsautetaan, käyttäjäliittymä päivitetään näyttämään valittu kategoria ja lajittelu, ja URL-osoitetta päivitetään uusilla kyselyparametreilla `category` ja `sort`:
+Tässä esimerkissä, kun "Päivitä URL" -painiketta napsautetaan, käyttöliittymä päivitetään näyttämään valittu kategoria ja lajittelu, ja URL päivitetään uusilla kyselyparametreilla `category` ja `sort`:
 
 ```java
 @Route(value = "products")
 public class ProductView extends Composite<Div> {
+  private final Div self = getBoundComponent();
   Paragraph paragraph = new Paragraph();
   Random random = new Random();
 
@@ -28,21 +29,20 @@ public class ProductView extends Composite<Div> {
       filter("electronics", String.valueOf(random.nextInt(3) - 1));
     });
 
-    Div div = getBoundComponent();
-    div.add(update);
-    div.add(paragraph);
+    self.add(update);
+    self.add(paragraph);
   }
 
   public void filter(String category, String sort) {
-    // päivitä UI
+    // päivittää käyttöliittymän
     updateUI(category, sort);
 
-    // päivitä URL
+    // päivittää URL:n
     updateUrl(category, sort);
   }
 
   private void updateUI(String category, String sort) {
-    paragraph.setText("Näytetään kategoria: " + category + " ja lajittelu: " + sort);
+    paragraph.setText("Näytetään kategoria: " + category + " ja lajitellaan: " + sort);
   }
 
   private void updateUrl(String category, String sort) {
@@ -52,7 +52,7 @@ public class ProductView extends Composite<Div> {
 
     Location newLocation = new Location("/products?" + queryParameters.getQueryString());
     Router.getCurrent().getHistory()
-        // Päivitä URL ilman sivun uudelleenlatausta
+        // Päivittää URL:n ilman sivun lataamista
         .replaceState(null, newLocation);
   }
 }
@@ -60,28 +60,29 @@ public class ProductView extends Composite<Div> {
 
 ### Selitys: {#explanation}
 
-- **`filter`-metodi**: Metodi käsittelee sekä UI:n että URL-osoitteen päivittämistä valitun `category` ja `sort` perusteella.
-- **`updateUrl`-metodi**: Tämä metodi luo uuden `ParametersBag`-kyselyparametreille, rakentaa uuden URL-osoitteen ja käyttää sitten `replaceState`-menetelmää päivittääkseen selaimen URL-osoitetta lataamatta sivua uudelleen.
-- **`replaceState`**: Tämä metodi vaihtaa URL-osoitteen uuteen sijaintiin säilyttäen nykyisen tilan ilman sivun lataamista.
+- **`filter`-metodi**: Metodi käsittelee sekä käyttöliittymän että URL:n päivittämistä valitun `category` ja `sort` mukaan.
+- **`updateUrl`-metodi**: Tämä metodi luo uuden `ParametersBag` kyselyparametreille, rakentaa uuden URL:n ja käyttää sitten `replaceState`-menetelmää päivittääkseen selaimen URL:n ilman sivun lataamista.
+- **`replaceState`**: Tämä metodi muuttaa URL:n uudeksi sijainniksi säilyttäen nykyisen tilan ilman sivun uudelleen lataamista.
 
-## Tilanteen tallentaminen ja palauttaminen selainhistoriassa {#saving-and-restoring-state-in-browser-history}
+## Tilanteen tallentaminen ja palauttaminen selaimen historiassa {#saving-and-restoring-state-in-browser-history}
 
-URL-osoitteen päivittämisen lisäksi on mahdollista tallentaa satunnaisia tiloja selaimen historiaan. Tämä tarkoittaa, että voit säilyttää lisätietoja nykyisestä näkymästä (esimerkiksi: lomakekentät, suodattimet jne.) ilman, että tallennat niitä suoraan URL-osoitteeseen.
+URL:n päivittämisen lisäksi on mahdollista tallentaa mielivaltaisia tiloja selaimen historiaan. Tämä tarkoittaa, että voit säilyttää lisätietoja nykyisestä näkymästä (esimerkiksi lomakekentät, suodattimet jne.) ilman, että niitä upotetaan suoraan URL:iin.
 
 ### Esimerkki: Valinnan tilan tallentaminen {#example-saving-selection-state}
 
-Seuraavassa esimerkissä `ProfileView` koostuu useista välilehdistä (Profiili, Tilaukset ja Asetukset). Kun käyttäjä vaihtaa välilehtien välillä, valitun välilehden tila tallennetaan selaimen historiaan käyttäen `replaceState`-menetelmää. Tämä mahdollistaa sovelluksen muistavan viimeksi aktiivisen välilehden, jos käyttäjä navigoi takaisin tähän näkymään tai päivittää sivun.
+Seuraavassa esimerkissä `ProfileView` koostuu useista väliotsikoista (Profiili, Tilaukset ja Asetukset). Kun käyttäjä vaihtaa välilehtiä, valitun välilehden tila tallennetaan selaimen historiaan käyttäen `replaceState`-menetelmää. Tämä mahdollistaa sovelluksen muistavan viimeksi aktiivisen välilehden, jos käyttäjä navigoi takaisin tähän näkymään tai päivittää sivun.
 
 ```java
 @Route(value = "profile")
 public class ProfileView extends Composite<Div> implements DidEnterObserver {
+  private final Div self = getBoundComponent();
   TabbedPane sections = new TabbedPane();
   int currentSection = 0;
 
   public ProfileView() {
-    sections.addTab("Profiili");
-    sections.addTab("Tilaukset");
-    sections.addTab("Asetukset");
+    sections.addTab("Profile");
+    sections.addTab("Orders");
+    sections.addTab("Settings");
 
     sections.onSelect(ev -> {
       currentSection = ev.getTabIndex();
@@ -89,15 +90,15 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
       updateState(currentSection);
     });
 
-    getBoundComponent().add(sections);
+    self.add(sections);
   }
 
   @Override
   public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    // Yritä noutaa viimeksi tallennettu osio selaimen historia tilasta
+    // Yritetään palauttaa viimeksi tallennettu osio selaimen historiasta
     Optional<Integer> lastSavedSection = event.getState(Integer.class);
 
-    // Jos osio on tallennettu, palautetaan välilehden valinta
+    // Jos osio oli tallennettu, palautetaan välilehden valinta
     lastSavedSection.ifPresent(section -> sections.select(section));
   }
 
@@ -105,7 +106,7 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
     Router router = Router.getCurrent();
     Location currentLocation = router.getHistory().getLocation().get();
 
-    // Päivitä nykyinen tila valitun osion kanssa
+    // Päivitä nykyinen tila valittuun osioon
     Router.getCurrent().getHistory()
         .replaceState(section, currentLocation);
   }
@@ -115,5 +116,5 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
 ### Selitys: {#explanation-1}
 
 1. **TabbedPane-komponentti**: Näkymä koostuu `TabbedPane`-komponentista, jossa on kolme välilehteä: Profiili, Tilaukset ja Asetukset.
-2. **Tilanteen tallennus välilehden vaihdon yhteydessä**: Jokaisella kerralla, kun välilehti valitaan, nykyinen osioindeksi tallennetaan selaimen historiaan `replaceState`-menetelmän avulla.
-3. **Tilanteen palauttaminen navigoinnin yhteydessä**: Kun käyttäjä navigoi takaisin `ProfileView`-näkymään, sovellus noutaa tallennetun osion historiasta käyttäen `event.getState()` ja palauttaa oikean välilehden valinnan.
+2. **Tilannetta tallentaminen välilehden vaihdossa**: Joka kerta kun välilehti valitaan, nykyinen osioindeksi tallennetaan selaimen historiaan käyttäen `replaceState`-menetelmää.
+3. **Tilanteen palauttaminen navigoinnin yhteydessä**: Kun käyttäjä navigoi takaisin `ProfileView`-näkymään, sovellus palauttaa tallennetun osion historiasta käyttäen `event.getState()`-menetelmää ja palauttaa oikean välilehden valinnan.

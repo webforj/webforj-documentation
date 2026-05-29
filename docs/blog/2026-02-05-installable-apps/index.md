@@ -4,7 +4,7 @@ description: Learn how to turn your webforJ app into an installable, home-screen
 slug: installable-apps
 date: 2026-02-05
 authors: Lauren Alamo
-tags: [webforj, showcase, annotations]
+tags: [showcase, annotations, tutorial]
 hide_table_of_contents: false
 ---
 

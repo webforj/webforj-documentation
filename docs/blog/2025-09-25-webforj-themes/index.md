@@ -4,7 +4,7 @@ description: "Learn webforJ's theming system from built-in themes to custom colo
 slug: guide-webforj-themes
 date: 2025-09-25
 authors: Lauren Alamo
-tags: [webforJ, themes, styling]
+tags: [themes, styling]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/webforj-themes/cover.png"
 hide_table_of_contents: true
 ---

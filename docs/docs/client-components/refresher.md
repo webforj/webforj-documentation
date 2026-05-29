@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-refresher>
 sidebar_class_name: sidebar--item__hidden
 slug: refresher
-description: A user guide article for the refresher
+description: Customize the dwc-refresher pull-to-refresh indicator with CSS variables and shadow parts for spinner, icon, and text.
 // pagination_prev: null
 // pagination_next: null
 ---

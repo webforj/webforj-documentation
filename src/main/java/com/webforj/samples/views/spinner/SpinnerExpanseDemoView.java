@@ -14,19 +14,19 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Spinner Expanses")
 public class SpinnerExpanseDemoView extends Composite<FlexLayout> {
-  
-  Spinner smallSpinner;
-  Spinner mediumSpinner;
-  Spinner largeSpinner;
+  private final FlexLayout self = getBoundComponent();
+
+  // Spinners with different sizes
+  private final Spinner smallSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.SMALL);
+  private final Spinner mediumSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
+  private final Spinner largeSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.LARGE);
 
   public SpinnerExpanseDemoView() {
-    smallSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.SMALL);
-    mediumSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
-    largeSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.LARGE);
-    
-    getBoundComponent().setDirection(FlexDirection.ROW).setAlignment(FlexAlignment.CENTER)
-        .setJustifyContent(FlexJustifyContent.CENTER).setSpacing("var(--dwc-space-m)")
-        .setMargin("var(--dwc-space-l)");
-    getBoundComponent().add(smallSpinner, mediumSpinner, largeSpinner);
+    self.setDirection(FlexDirection.ROW)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-l)")
+        .add(smallSpinner, mediumSpinner, largeSpinner);
   }
 }

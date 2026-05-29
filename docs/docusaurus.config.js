@@ -1,10 +1,34 @@
 // @ts-check
-const lightCodeTheme = require('prism-react-renderer').themes.github;
-const darkCodeTheme = require('prism-react-renderer').themes.dracula;
-const webforjVersion = `${process.env.WEBFORJ_VERSION || 'latest'}`;
+const codeTheme = require('./src/theme/prism-dwc-theme');
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+/** Resolves the webforJ version, fetching from GitHub if the build version is a SNAPSHOT. */
+async function resolveWebforjVersion() {
+  const version = process.env.WEBFORJ_VERSION || 'latest';
+  if (!version.toLowerCase().includes('snapshot')) {
+    return version;
+  }
+
+  try {
+    const res = await fetch(
+      'https://api.github.com/repos/webforj/webforj/releases/latest',
+      { headers: { 'User-Agent': 'webforj-docs' }, signal: AbortSignal.timeout(10000) }
+    );
+    const { tag_name } = await res.json();
+    return tag_name ? tag_name.replace(/^v/, '') : version.replace(/-SNAPSHOT$/i, '');
+  } catch {
+    return version.replace(/-SNAPSHOT$/i, '');
+  }
+}
+
+/** @returns {Promise<import('@docusaurus/types').Config>} */
+module.exports = async function createConfig() {
+  const webforjVersion = await resolveWebforjVersion();
+  // Demo iframes load from the Maven/Jetty server on this port in local dev.
+  // Mirrors the `-Dport=...` Maven flag from PR #754. Production builds use an
+  // empty base so the iframe `src` becomes a relative path on the docs domain.
+  const webforjPort = process.env.WEBFORJ_PORT || '8080';
+
+  return {
   title: 'webforJ Documentation',
   tagline: 'webforJ is a robust and flexible web framework that allows you to easily create a modern and engaging user interface using Java.',
   url: 'https://docs.webforj.com/',
@@ -16,6 +40,9 @@ const config = {
   trailingSlash: false,
   customFields: {
     webforjVersion: `${webforjVersion}`,
+    iframeSrcDev: `http://localhost:${webforjPort}`,
+    iframeSrcLive: '',
+    rawContentBase: 'https://raw.githubusercontent.com/webforj/webforj-documentation/main/',
   },
   i18n: {
     defaultLocale: 'en',
@@ -61,14 +88,36 @@ const config = {
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
     { src: '/js/link-decorator.js' },
-    { src: '/js/style-startforj.js', defer: true}
+    { src: '/js/dwc-doc-components.js', defer: true },
   ],
   headTags: [
     {
       tagName: 'link',
       attributes: {
         rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/gh/webforj/dwc-dist@latest/dwc-ui.css',
+        href: 'https://cdn.webforj.com/next/dwc-ui.css',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap',
       },
     },
   ],
@@ -99,6 +148,20 @@ const config = {
   ],
   plugins: [
     'docusaurus-plugin-sass',
+    [
+      'docusaurus-plugin-llms',
+      {
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        generateMarkdownFiles: false,
+        docsDir: 'docs',
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+        includeBlog: false,
+        title: 'webforJ Documentation',
+        description: 'Java framework for building modern web UIs imperatively.',
+      },
+    ],
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -161,7 +224,7 @@ const config = {
     announcementBar: {
       id: `v${webforjVersion}-release`,
       content:
-        `We are excited to announce webforJ version ${webforjVersion} is live! Read more about the changes and features <a href=/blog/whats-new-v${webforjVersion}>here.</a>`,
+        `We are excited to announce webforJ version ${webforjVersion} is live! Read more about the changes and features&nbsp;<a href=/blog/whats-new-v${webforjVersion}>here.</a>`,
       isCloseable: true,
     },
     image: 'https://docs.webforj.com/img/social-cover.png',
@@ -231,18 +294,6 @@ const config = {
           position: 'right',
           items: [
             {
-              label: "DWC HueCraft",
-              href: 'https://webforj.github.io/huecraft/',
-              target: '_blank',
-              rel: null,
-            },
-            {
-              label: "DWC Design Kit",
-              href: 'https://www.figma.com/community/file/1144573845612007198/dwc-design-kit',
-              target: '_blank',
-              rel: null,
-            },
-            {
               label: "JavaDocs",
               href: 'https://javadoc.io/doc/com.webforj',
               rel: null,
@@ -263,12 +314,7 @@ const config = {
           position: 'right',
           type: 'html',
           value: `
-          <a aria-label="Start your app with startforJ" id="startforj-link" target="_blank" href="https://docs.webforj.com/startforj/" class="navbar__link">
-            <div div aria-hidden="true" class="startforj-container">
-              <span class="startforj-hover-text">startforJ</span>
-              <span class="startforj-idle-text">Start your app</span>
-           </div>
-          </a>
+          <a id="startforj-link" target="_blank" href="https://docs.webforj.com/startforj/" class="navbar__link">Start your app</a>
           `,
         },
         {
@@ -303,11 +349,10 @@ const config = {
       ],
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
-      additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy']
+      theme: codeTheme,
+      darkTheme: codeTheme,
+      additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy', 'scss', 'javascript', 'ruby']
     },
   }
 };
-
-module.exports = config;
+};

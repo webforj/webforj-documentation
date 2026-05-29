@@ -1,18 +1,17 @@
 ---
 title: Repository
 sidebar_position: 1
-sidebar_class_name: has-new-content
-_i18n_hash: b9a08226a8ace111beea4ab2a03ff79f
+_i18n_hash: 455b667132d3c9693257eb74671412c5
 ---
 <!-- vale off -->
-# Répository <DocChip chip='since' label='24.00' />
+# Répertoire <DocChip chip='since' label='24.00' />
 <!-- vale on -->
 
-Le modèle `Repository` dans webforJ fournit une manière standardisée de gérer et de requêter des collections d'entités. Il agit comme une couche d'abstraction entre vos composants UI et les données, facilitant le travail avec différentes sources de données tout en maintenant un comportement cohérent.
+Le modèle `Repository` dans webforJ fournit un moyen standardisé pour gérer et interroger des collections d'entités. Il agit comme une couche d'abstraction entre vos composants UI et les données, facilitant ainsi le travail avec différentes sources de données tout en maintenant un comportement cohérent.
 
-## Pourquoi utiliser un repository {#why-use-repository}
+## Pourquoi utiliser un répertoire {#why-use-repository}
 
-`Repository` élimine les mises à jour manuelles tout en gardant vos données originales intactes :
+Le `Repository` élimine les mises à jour manuelles tout en gardant vos données originales intactes :
 
 ```java
 // Sans Repository - mises à jour manuelles
@@ -22,7 +21,7 @@ table.setItems(customers);
 
 // Ajouter nécessite un rechargement complet
 customers.add(newCustomer);
-table.setItems(customers); // Doit tout recharger
+table.setItems(customers); // Doit recharger tout
 ```
 
 ```java
@@ -32,32 +31,32 @@ CollectionRepository<Customer> repository = new CollectionRepository<>(customers
 Table<Customer> table = new Table<>();
 table.setRepository(repository);
 
-// Ajouter se synchronise automatiquement
+// Ajouter synchronise automatiquement
 customers.add(newCustomer);
 repository.commit(newCustomer); // Met à jour seulement ce qui a changé
 ```
 
-## Collection repository {#collection-repository}
+## Répertoire de collection {#collection-repository}
 
-Le <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> est l'implémentation la plus courante, et enveloppe toute Collection Java :
+Le <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> est l'implémentation la plus courante et enveloppe n'importe quelle Collection Java :
 
 ```java
-// Depuis ArrayList
+// À partir d'ArrayList
 List<Customer> customers = new ArrayList<>();
 CollectionRepository<Customer> customerRepo = new CollectionRepository<>(customers);
 
-// Depuis HashSet  
+// À partir de HashSet  
 Set<String> tags = new HashSet<>();
 CollectionRepository<String> tagRepo = new CollectionRepository<>(tags);
 
-// Depuis n'importe quelle Collection
+// À partir de n'importe quelle Collection
 Collection<Employee> employees = getEmployeesFromHR();
 CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employees);
 ```
 
 ## Synchronisation des données {#data-synchronization}
 
-Le `Repository` agit comme un pont entre vos données et les composants UI. Lorsque les données changent, vous notifiez le repository via la méthode `commit()` :
+Le `Repository` agit comme un pont entre vos données et les composants UI. Lorsque les données changent, vous informez le répertoire via la méthode `commit()` :
 
 ```java
 List<Product> products = new ArrayList<>();
@@ -70,27 +69,27 @@ repository.commit(); // Tous les composants connectés se mettent à jour
 
 // Mettre à jour un produit existant  
 products.get(0).setPrice(89.99);
-repository.commit(products.get(0)); // Met à jour seulement cette ligne spécifique
+repository.commit(products.get(0)); // Met uniquement à jour cette ligne spécifique
 
 // Supprimer un produit
 products.remove(2);
-repository.commit(); // Rafraîchit la vue
+repository.commit(); // Actualise la vue
 ```
 
 La méthode commit a deux signatures :
-- `commit()` - Indique au repository de rafraîchir tout. Cela déclenche un `RepositoryCommitEvent` avec toutes les données actuelles
-- `commit(entity)` - Cible une entité spécifique. Le repository trouve cette entité par sa clé et met à jour seulement les éléments UI affectés
+- `commit()` - Indique au répertoire de rafraîchir tout. Elle déclenche un `RepositoryCommitEvent` avec toutes les données actuelles
+- `commit(entity)` - Cible une entité spécifique. Le répertoire trouve cette entité par sa clé et met à jour uniquement les éléments UI concernés
 
-:::important Engagement d'entités uniques
-Cette distinction est importante pour la performance. Lorsque vous mettez à jour un champ dans un tableau de 1000 lignes, `commit(entity)` met à jour seulement cette cellule alors que `commit()` rafraîchirait toutes les lignes.
+:::important Engagement des entités uniques
+Cette distinction est importante pour les performances. Lorsque vous mettez à jour un champ dans un tableau de 1000 lignes, `commit(entity)` ne met à jour que cette cellule tandis que `commit()` rafraîchirait toutes les lignes.
 :::
 
 ## Filtrage des données {#filtering-data}
 
-Le filtre du repository contrôle quelles données sont transmises aux composants connectés. Votre collection sous-jacente reste inchangée car le filtre agit comme une lentille :
+Le filtre du répertoire contrôle quelles données sont transmises aux composants connectés. Votre collection sous-jacente reste inchangée car le filtre agit comme une lentille :
 
 ```java
-// Filtrer par disponibilité des stocks
+// Filtrer par disponibilité de stock
 repository.setBaseFilter(product -> product.getStock() > 0);
 
 // Filtrer par catégorie
@@ -98,9 +97,9 @@ repository.setBaseFilter(product -> "Électronique".equals(product.getCategory()
 
 // Combiner plusieurs conditions
 repository.setBaseFilter(product -> 
-    product.getCategory().equals("Électronique") && 
-    product.getStock() > 0 && 
-    product.getPrice() < 100.0
+  product.getCategory().equals("Électronique") && 
+  product.getStock() > 0 && 
+  product.getPrice() < 100.0
 );
 
 // Effacer le filtre
@@ -116,24 +115,24 @@ Le filtre persiste jusqu'à ce que vous le changiez. Les nouveaux éléments ajo
 
 ## Travailler avec les clés d'entité {#working-with-entity-keys}
 
-Le repository a besoin d'identifier les entités de manière unique pour prendre en charge des opérations telles que `find()` et `commit(entity)`. Il y a deux manières de définir comment les entités sont identifiées :
+Le répertoire doit identifier les entités de manière unique pour soutenir des opérations comme `find()` et `commit(entity)`. Il existe deux façons de définir comment les entités sont identifiées :
 
-### Utilisation de l'interface HasEntityKey {#using-hasentitykey}
+### Utilisation de l'interface `HasEntityKey` {#using-hasentitykey}
 
-Implémentez <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> dans votre classe d'entité :
+Implémentez <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> sur votre classe d'entité :
 
 ```java
 public class Customer implements HasEntityKey {
-    private String customerId;
-    private String name;
-    private String email;
+  private String customerId;
+  private String name;
+  private String email;
 
-    @Override
-    public Object getEntityKey() {
-        return customerId;
-    }
+  @Override
+  public Object getEntityKey() {
+    return customerId;
+  }
 
-    // Constructeur et getters/setters...
+  // Constructeur et getters/setters...
 }
 
 // Trouver par clé
@@ -141,27 +140,27 @@ Optional<Customer> customer = repository.find("C001");
 
 // Mettre à jour un client spécifique
 customer.ifPresent(c -> {
-    c.setEmail("newemail@example.com");
-    repository.commit(c); // Seule la ligne de ce client se met à jour
+  c.setEmail("newemail@example.com");
+  repository.commit(c); // Seulement la ligne de ce client se met à jour
 });
 ```
 
-### Utilisation d'un fournisseur de clé personnalisé <DocChip chip='since' label='25.10' /> {#using-custom-key-provider}
+### Utilisation du fournisseur de clé personnalisée <DocChip chip='since' label='25.10' /> {#using-custom-key-provider} 
 
-Pour les entités où vous ne pouvez pas ou ne voulez pas implémenter `HasEntityKey` (comme les entités JPA), utilisez `setKeyProvider()` :
+Pour les entités où vous ne pouvez pas ou ne souhaitez pas implémenter `HasEntityKey` (comme les entités JPA), utilisez `setKeyProvider()` :
 
 ```java
 @Entity
 public class Product {
-    @Id
-    private Long id;
-    private String name;
-    private double price;
+  @Id
+  private Long id;
+  private String name;
+  private double price;
 
-    // Entité gérée par JPA
+  // Entité gérée par JPA
 }
 
-// Configurez le repository pour utiliser la méthode getId()
+// Configurez le répertoire pour utiliser la méthode getId()
 CollectionRepository<Product> repository = new CollectionRepository<>(products);
 repository.setKeyProvider(Product::getId);
 
@@ -171,22 +170,22 @@ Optional<Product> product = repository.find(123L);
 
 ### Choisir une approche {#choosing-approach}
 
-Les deux approches fonctionnent, mais `setKeyProvider()` est préférée lorsque :
+Les deux approches fonctionnent, mais `setKeyProvider()` est préféré lorsque :
 - Vous travaillez avec des entités JPA qui ont des champs `@Id`
 - Vous ne pouvez pas modifier la classe d'entité
-- Vous avez besoin de différentes stratégies de clé pour différents repositories
+- Vous avez besoin de différentes stratégies clés pour différents répertoires
 
 Utilisez `HasEntityKey` lorsque :
 - Vous contrôlez la classe d'entité
-- La logique d'extraction de clé est complexe
+- La logique d'extraction de clés est complexe
 - Vous voulez que l'entité définisse sa propre identité
 
 ## Intégration UI {#ui-integration}
 
-`Repository` s'intègre avec des composants conscients des données :
+Le `Repository` s'intègre avec des composants sensibles aux données :
 
 ```java
-// Créer repository et table
+// Créer un répertoire et une table
 List<Customer> customers = new ArrayList<>();
 CollectionRepository<Customer> repository = new CollectionRepository<>(customers);
 

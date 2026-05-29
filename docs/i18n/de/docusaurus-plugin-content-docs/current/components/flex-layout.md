@@ -1,169 +1,182 @@
 ---
 title: FlexLayout
 sidebar_position: 45
-_i18n_hash: bd3f6177603a98c20d4958a9c40dd49f
+_i18n_hash: cf7ba76f1e13488c6fa3a419ba6ceaca
 ---
 <JavadocLink type="flexlayout" location="com/webforj/component/layout/flexlayout/FlexLayout" top='true'/>
 <DocChip chip='since' label='24.00' />
 
-webforJ bietet Entwicklern eine effiziente und intuitive Möglichkeit, ihre verschiedenen Anwendungen und Komponenten zu layouten - das Flex Layout. Dieses Toolset ermöglicht es, Elemente entweder vertikal oder horizontal anzuzeigen.
+Die `FlexLayout`-Komponente ordnet Kindkomponenten in einer Reihe oder Spalte unter Verwendung des CSS Flexbox-Modells an. Sie gibt Ihnen Kontrolle über Ausrichtung, Abstände, Umbrüche und darüber, wie Elemente wachsen oder schrumpfen, um den verfügbaren Platz auszufüllen.
 
-## Flex-layout-Eigenschaften {#flex-layout-properties}
+<!-- INTRO_END -->
 
-Die Eigenschaften des Flex Layouts können in zwei Kategorien unterteilt werden: Eigenschaften, die auf die Elemente innerhalb eines Layouts angewendet werden, und Eigenschaften, die auf das Layout selbst angewendet werden. Das Flex Layout, oder das übergeordnete Element, ist ein Container, der ein oder mehrere Komponenten enthalten kann. Alles in einem Flex Layout wird als Element oder Kind-Element bezeichnet. Das Flex Layout bietet einige robuste Ausrichtungsfähigkeiten, die mit Hilfe von Container- oder Elementeigenschaften erreicht werden können.
+## `FlexLayout` Eigenschaften {#flex-layout-properties}
+
+Die `FlexLayout`-Eigenschaften können in zwei Kategorien unterteilt werden: Eigenschaften, die auf die Elemente innerhalb eines Layouts angewendet werden, und Eigenschaften, die auf das Layout selbst angewendet werden. Das `FlexLayout` oder das Elternelement ist eine Box/Container, die ein oder mehrere Komponenten enthalten kann. Alles innerhalb eines `FlexLayout` wird als Element oder Kind-Element bezeichnet. Das `FlexLayout` bietet einige Ausrichtungsfähigkeiten, die entweder mit Hilfe von Container- oder Elementeigenschaften erreicht werden können.
 
 :::tip
-Die Layout-Komponente von webforJ folgt dem Muster von [CSSs Flexbox-Layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). Diese Werkzeuge sollen jedoch vollständig in Java verwendet werden und erfordern die Anwendung von CSS außerhalb der bereitgestellten Java-API-Methoden nicht.
+Die `FlexLayout`-Komponente folgt dem Muster des [CSS-Flexbox-Layouts](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). Allerdings ist `FlexLayout` so gestaltet, dass es vollständig in Java verwendet werden kann und die Verwendung von CSS außerhalb der bereitgestellten Java-API-Methoden nicht erforderlich ist.
 :::
 
 ## Container-Eigenschaften {#container-properties}
 
-Container-Eigenschaften gelten für alle Komponenten innerhalb eines Containers und nicht für das Layout selbst. Sie beeinflussen nicht die Orientierung oder Platzierung des übergeordneten Elements - nur die Kind-Komponenten innerhalb.
+Container-Eigenschaften gelten für alle Komponenten innerhalb eines Containers und nicht für das Layout selbst. Sie beeinflussen nicht die Orientierung oder Platzierung des Elternteils, sondern nur die Kindkomponenten.
 
 ### Richtung {#direction}
 
-Das Flex Layout fügt Komponenten nebeneinander entsprechend der vom Entwickler gewählten Richtung hinzu - entweder horizontal oder vertikal. Beim Verwenden des Builders nutzen Sie entweder die Methoden `horizontal()`, `horizontalReverse()`, `vertical()` oder `verticalReverse()`, wenn Sie die Methode `create()` für ein `FlexLayout`-Objekt aufrufen, um dieses Layout beim Erstellen des Objekts zu konfigurieren.
+Das `FlexLayout` fügt Komponenten entsprechend seiner Richtung, entweder horizontal oder vertikal, nebeneinander hinzu. Beim Verwenden des Builders verketten Sie die Methoden `horizontal()`, `horizontalReverse()`, `vertical()` oder `verticalReverse()` mit der Methode `FlexLayout.create()`, um das Layout beim Erstellen des Objekts zu konfigurieren.
 
-Alternativ können Sie die Methode `setDirection()` verwenden. Die horizontalen Optionen sind entweder `FlexDirection.ROW` (von links nach rechts) oder `FlexDirection.ROW_REVERSE` (von rechts nach links), und die vertikalen Optionen sind entweder `FlexDirection.COLUMN` (von oben nach unten) oder `FlexDirection.COLUMN_REVERSE` (von unten nach oben). Dies geschieht mit dem FlexLayout-Objekt und nicht mit dem Builder.
+Um die Richtung für ein vorhandenes `FlexLayout`-Objekt festzulegen, verwenden Sie die Methode `setDirection()`. Die horizontalen Optionen sind `FlexDirection.ROW` (von links nach rechts) oder `FlexDirection.ROW_REVERSE` (von rechts nach links), und die vertikalen Optionen sind `FlexDirection.COLUMN` (von oben nach unten) oder `FlexDirection.COLUMN_REVERSE` (von unten nach oben).
 
-<ComponentDemo 
-path='/webforj/flexdirection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="275px"
+<ComponentDemo
+path='/webforj/flexdirection'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='275px'
 />
 
 ### Positionierung {#positioning}
 
-Komponenten, die horizontal hinzugefügt werden, können sowohl horizontal als auch vertikal positioniert werden. Verwenden Sie die Methoden `justify()`, `align()` und `contentAlign()` aus dem Flex Layout Builder, um die Positionierung beim Erstellen eines neuen Flex Layouts zu konfigurieren.
+Horizontal hinzugefügte Komponenten können sowohl horizontal als auch vertikal positioniert werden. Verwenden Sie die Methoden `justify()`, `align()` und `contentAlign()` des `FlexLayout`-Builders, um die Positionierung beim Erstellen eines neuen `FlexLayout` zu konfigurieren.
 
-Alternativ können Sie auf dem tatsächlichen FlexLayout-Objekt die Methode `setJustifyContent()` verwenden, um Elemente horizontal zu positionieren, und die Methode `setAlignment()`, um die vertikale Positionierung zu konfigurieren. Um den Bereich um die Komponenten entlang der Querachse (y-Achse für horizontale Layouts) zu ändern, verwenden Sie die Methode `setAlignContent()`.
+Alternativ können Sie an dem tatsächlichen `FlexLayout`-Objekt die Methode `setJustifyContent()` verwenden, um Elemente horizontal zu positionieren, und die Methode `setAlignment()`, um die vertikale Positionierung zu konfigurieren. Um den Bereich um Komponenten entlang der Querachse (y-Achse für horizontale Layouts) zu ändern, verwenden Sie die Methode `setAlignContent()`.
 
 :::tip
-Die Methode `setAlignment()` beeinflusst, wie Elemente entlang der Querachse als Ganzes innerhalb des Containers angezeigt werden, und ist effektiv für Layouts mit einer einzigen Zeile.
+Die Methode `setAlignment()` steuert, wie die Elemente entlang der Querachse insgesamt innerhalb des Containers angezeigt werden, und ist wirksam für einzeilige Layouts.
 
-Die Methoden `setAlignContent()` beeinflussen den Raum um die Querachse und wirken sich nur aus, wenn ein Layout mehrere Zeilen hat.  
+Die Methode `setAlignContent()` steuert den Raum um die Querachse und tritt nur in Kraft, wenn ein Layout mehrere Linien hat.
 :::
 
-<ComponentDemo 
-path='/webforj/flexpositioning?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="375px"
+<ComponentDemo
+path='/webforj/flexpositioning'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='375px'
 />
 
 ### Umbruch {#wrapping}
 
-Um das Flex Layout weiter anzupassen, können Sie das Verhalten des Flex Layouts angeben, wenn hinzugefügte Komponenten nicht mehr in die Anzeige passen. Um dies mithilfe des Builders zu konfigurieren, verwenden Sie die Methoden `nowrap()` (Standard), `wrap()` und `wrapReverse()`, um den Umbruch zu konfigurieren.
-
-Alternativ, wenn Ihr Layout bereits existiert, verwenden Sie die Methode `setWrap()`, um festzulegen, wie sich Komponenten verhalten, wenn sie nicht mehr in eine einzige Zeile passen.
+Um die `FlexLayout`-Komponente weiter anzupassen, können Sie ihr Verhalten angeben, wenn Komponenten hinzugefügt werden, die nicht mehr in die Anzeige passen. Um dies mit dem Builder zu konfigurieren, verwenden Sie die Methoden `nowrap()` (Standard), `wrap()` und `wrapReverse()`, um den Umbruch zu konfigurieren. Um dies an einem vorhandenen `FlexLayout`-Objekt zu konfigurieren, verwenden Sie die Methode `setWrap()`.
 
 ### Abstände {#spacing}
 
-Um minimale Abstände zwischen Elementen anzuwenden, können Sie die Gap-Eigenschaft festlegen. Sie wird nur zwischen den Elementen, nicht an den äußeren Rändern, angewendet.
+Um Mindestabstände zwischen Elementen anzuwenden, können Sie die `gap`-Eigenschaft festlegen. Sie wendet diesen Abstand nur zwischen Elementen an, nicht an den äußeren Kanten.
 
-Das Verhalten der Gap-Eigenschaft kann als minimale Distanz zwischen Elementen betrachtet werden – diese Eigenschaft hat nur dann Wirkung, wenn sie der größte berechnete Abstand zwischen den Elementen ist. Wenn der Abstand zwischen den Elementen aufgrund einer anderen berechneten Eigenschaft, wie zum Beispiel aufgrund von `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, größer wäre, wird die Gap-Eigenschaft ignoriert.
+Das Verhalten der Gap-Eigenschaft kann als Mindestabstand zwischen den Elementen betrachtet werden, sodass sie nur wirksam wird, wenn sie der größte berechnete Abstand zwischen den Elementen ist. Wenn der Abstand zwischen den Elementen aus anderen berechneten Eigenschaften, wie z. B. `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, andernfalls größer wäre, wird die Gap-Eigenschaft ignoriert.
 
 ### Fluss {#flow}
 
-Der Flex-Fluss, der eine Kombination aus den Richtungs- und Umbrucheigenschaften ist, kann mithilfe der Methode `setFlow()` auf einem Flex Layout-Objekt festgelegt werden.
+Flex-Fluss, der eine Kombination aus den Richtungs- und Umbruch-Eigenschaften ist, kann mit der Methode `setFlow()` an einem `FlexLayout`-Objekt festgelegt werden.
 
 :::info
-Um diese Eigenschaft beim Erstellen des Layouts zu konfigurieren, verwenden Sie die entsprechenden Richtungs- und Umbruchmethoden. Beispielsweise verwenden Sie die Kombination `.vertical().wrap()` um einen Spaltenumbruchfluss zu erstellen.
+Um diese Eigenschaft beim Erstellen des Layouts zu konfigurieren, verwenden Sie die entsprechenden Richtungs- und Umbruchmethoden. Zum Beispiel, um einen Spaltenumbruchfluss zu erstellen, verwenden Sie die Kombination `.vertical().wrap()`.
 :::
 
 ### Container-Builder {#container-builder}
 
-Die folgende Demo ermöglicht es Ihnen, einen Container mit den gewünschten Flex-Eigenschaften aus verschiedenen Menüs zu erstellen. Dieses Werkzeug kann nicht nur verwendet werden, um ein visuelles Beispiel der verschiedenen Methoden zu erstellen, sondern auch, um Ihre eigenen Layouts mit Ihren gewünschten Eigenschaften zu erstellen. Um ein Layout zu verwenden, das Sie angepasst haben, kopieren Sie einfach den Ausgabe-Code und fügen Sie Ihre gewünschten Elemente zur Verwendung in Ihrem Programm hinzu.
+Die folgende Demo ermöglicht es Ihnen, einen Container mit den gewünschten flex-Eigenschaften aus den verschiedenen Menüs auszuwählen. Dieses Tool kann nicht nur verwendet werden, um ein visuelles Beispiel der verschiedenen Methoden zu erstellen, sondern auch, um Ihre eigenen Layouts mit den gewünschten Eigenschaften zu erstellen. Um ein von Ihnen angepasstes Layout zu verwenden, kopieren Sie einfach den Ausgabecode und fügen Sie Ihre gewünschten Elemente zur Verwendung in Ihrem Programm hinzu.
 
-<ComponentDemo 
-path='/webforj/flexcontainerbuilder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="600px"
+<ComponentDemo
+path='/webforj/flexcontainerbuilder'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='600px'
 />
 
-<!-- GROßES CODE-SNIPPET, DAS DEN CONTAINER ANZEIGT -->
-## Eigenschaften der Elemente {#item-properties}
 
-Die Eigenschaften der Elemente beeinflussen keine untergeordneten Elemente innerhalb des Flex Layouts, sondern das eigentliche Layout selbst. Dies ist nützlich zum Stylen eines einzelnen Flex Layout-Elements, das ein Kind eines größeren Flex Layout-Elements ist, unabhängig von den Stilen, die auf alle Kinder angewendet werden.
+<!-- BIG CODE SNIPPET SHOWING CONTAINER -->
+## Elementeigenschaften {#item-properties}
+
+Die Elementeigenschaften wirken sich nicht auf die Kind-Elemente innerhalb des `FlexLayout` aus, sondern beeinflussen das Layout selbst. Dies ist nützlich, um ein einzelnes `FlexLayout`-Element zu stylen, das ein Kind eines größeren `FlexLayout`-Elements ist, unabhängig von den Stilen, die auf alle Kinder angewendet werden.
 
 ### Reihenfolge {#order}
 
-Die Eigenschaft `ItemOrder` bestimmt, wie Komponenten innerhalb des Flex Layouts angezeigt werden. Wenn sie auf ein Flex Layout angewendet wird, weist sie einem Element die spezifische Bestellnummer dieses Layouts zu. Dies überschreibt die standardmäßige "Quellreihenfolge", die in jedes Element eingebaut ist (die Reihenfolge, in der eine Komponente ihrem Elternteil hinzugefügt wird), und bedeutet, dass es vor Elementen mit einer höheren Reihenfolge und nach Elementen mit einer niedrigeren Reihenfolge angezeigt wird.
+Die `ItemOrder`-Eigenschaft bestimmt die Reihenfolge, in der Komponenten innerhalb des `FlexLayout` angezeigt werden. Wenn sie auf ein `FlexLayout` angewendet wird, wird einem Element die spezifische Ordnungsnummer dieses Layouts zugewiesen. Dies überschreibt die standardmäßige "Quellreihenfolge", die in jedes Element integriert ist (die Reihenfolge, in der ein Element zu seinem Elternteil hinzugefügt wird), und bedeutet, dass es vor Elementen mit einer höheren Reihenfolge und nach Elementen mit einer niedrigeren Reihenfolge angezeigt wird.
 
-Diese Eigenschaft akzeptiert einen wertlosen ganzzahligen Wert, der die relative Reihenfolge des Flex-Elements innerhalb des Containers angibt. Je niedriger der Wert, desto früher erscheint das Element in der Reihenfolge. Zum Beispiel wird ein Element mit einem Reihenfolge-Wert von 1 vor einem Element mit einem Reihenfolge-Wert von 2 angezeigt.
+Diese Eigenschaft akzeptiert einen ganzzahligen Wert ohne Einheit, der die relative Reihenfolge des Flex-Elements innerhalb des Containers angibt. Je niedriger der Wert, desto früher erscheint das Element in der Reihenfolge. Ein Element mit einem Reihenwert von 1 wird beispielsweise vor einem Element mit einem Reihenwert von 2 erscheinen.
 
 :::caution
-Es ist wichtig zu beachten, dass die Reihenfolge-Eigenschaft nur die visuelle Reihenfolge der Elemente innerhalb des Containers beeinflusst, nicht ihre tatsächliche Position im DOM. Das bedeutet, dass Bildschirmleser und andere Hilfstechnologien die Elemente weiterhin in der Reihenfolge lesen, in der sie im Quellcode erscheinen, und nicht in der visuellen Reihenfolge.
+Es ist wichtig zu beachten, dass die Reihenfolge-Eigenschaft nur die visuelle Reihenfolge der Elemente innerhalb des Containers beeinflusst, nicht ihre tatsächliche Position im DOM. Das bedeutet, dass Bildschirmleser und andere unterstützende Technologien die Elemente weiterhin in der Reihenfolge lesen, in der sie im Quellcode erscheinen, nicht in der visuellen Reihenfolge.
 :::
 
-<ComponentDemo 
-path='/webforj/flexorder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="320px"
+<ComponentDemo
+path='/webforj/flexorder'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='320px'
 />
 
 ### Selbst-Ausrichtung {#self-alignment}
 
-Die Selbst-Ausrichtung des Flex Layouts bezieht sich auf die Ausrichtung eines einzelnen Flex Layout-Objekts innerhalb seines übergeordneten Flex-Containers entlang der Querachse, die senkrecht zur Hauptachse steht. Die Ausrichtung der Querachse wird durch die Eigenschaft `Alignment` gesteuert.
+Die Selbst-Ausrichtung von `FlexLayout` bezieht sich darauf, wie ein einzelnes `FlexLayout`-Objekt innerhalb seines übergeordneten Flex-Containers entlang der Querachse ausgerichtet ist, die senkrecht zur Hauptachse verläuft. Die Ausrichtung der Querachse wird durch die `Alignment`-Eigenschaft gesteuert.
 
-Die `align-self`-Eigenschaft gibt die Ausrichtung eines einzelnen Flex-Elements entlang der Querachse an und überschreibt die standardmäßige Ausrichtung, die durch die Eigenschaft `AlignContent` in einem Flex Layout-Objekt festgelegt wurde. Dies ermöglicht es Ihnen, einzelne Flex Layout-Objekte anders auszurichten als die anderen im Container.
+Die align-self-Eigenschaft gibt die Ausrichtung eines einzelnen Flex-Elements entlang der Querachse an und überschreibt die standardmäßige Ausrichtung, die von der `AlignContent`-Eigenschaft in einem `FlexLayout`-Objekt festgelegt wurde. Dadurch können Sie einzelne `FlexLayout`-Objekte anders ausrichten als die anderen im Container.
 
 :::info
-Die Selbst-Ausrichtung verwendet dieselben Werte wie die Inhaltsausrichtung.
+Die Selbst-Ausrichtung verwendet die gleichen Werte wie die Inhaltsausrichtung.
 :::
 
-Diese Eigenschaft ist besonders nützlich, wenn Sie ein bestimmtes Element anders als die anderen Elemente im Container ausrichten möchten. Siehe das folgende Beispiel zum Ausrichten eines einzelnen Elements:
+Diese Eigenschaft ist besonders nützlich, wenn Sie ein bestimmtes Element anders ausrichten müssen als die anderen Elemente im Container. Siehe das Beispiel unten für ein Beispiel zur Ausrichtung eines einzelnen Elements:
 
-<ComponentDemo 
-path='/webforj/flexselfalign?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java'
-cssURL='/css/flexlayout/container/flexContainerBuilder.css'
-height="350px"
+<ComponentDemo
+path='/webforj/flexselfalign'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java',
+  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+]}
+height='350px'
 />
 
 ### Flex-Basis {#flex-basis}
 
-`Item Basis` ist eine Eigenschaft, die in Verbindung mit der Richtung des Flex Layouts verwendet wird, um die anfängliche Größe eines Flex-Elements festzulegen, bevor der verbleibende Platz verteilt wird.
+`Item Basis` ist eine Eigenschaft, die in Verbindung mit der Richtung von `FlexLayout` verwendet wird, um die Anfangsgröße eines Flex-Elements festzulegen, bevor der verbleibende Platz verteilt wird.
 
-Die `Item Basis`-Eigenschaft gibt die Standardgröße eines Flex-Elements entlang der Hauptachse an, die entweder horizontal (für eine Zeilenrichtung) oder vertikal (für eine Spaltenrichtung) ist. Diese Eigenschaft legt die Breite oder Höhe eines Flex-Elements fest, abhängig vom Wert der flex-direction-Eigenschaft.
+Die `Item Basis`-Eigenschaft gibt die Standardgröße eines Flex-Elements entlang der Hauptachse an, die entweder horizontal (für eine Reihenrichtung) oder vertikal (für eine Spaltenrichtung) ist. Diese Eigenschaft legt die Breite oder Höhe eines Flex-Elements fest, abhängig vom Wert der flex-direction-Eigenschaft.
 
 :::info
-Standardmäßig ist die `Item Basis`-Eigenschaft auf auto gesetzt, was bedeutet, dass die Größe des Elements durch seinen Inhalt bestimmt wird. Sie können jedoch auch eine spezifische Größe für das Element mit verschiedenen Einheiten wie Pixel (px), ems (em), Prozent (%) oder einer anderen CSS-Längeneinheit festlegen.
+Standardmäßig ist die `Item Basis`-Eigenschaft auf `auto` eingestellt, was bedeutet, dass die Größe des Elements durch seinen Inhalt bestimmt wird. Sie können jedoch auch eine bestimmte Größe für das Element mit verschiedenen Einheiten wie Pixel (px), ems (em), Prozent (%) oder jede andere CSS-Längeneinheit festlegen.
 :::
 
-Die folgende Demo ermöglicht es Ihnen, eine oder mehrere Boxen auszuwählen und die `Item Basis` für die ausgewählten Elemente zu ändern.
+Die folgende Demo ermöglicht es Ihnen, ein oder mehrere Kästen auszuwählen und die `Item Basis` für die ausgewählten Elemente zu ändern.
 
-<ComponentDemo 
-path='/webforj/flexbasis?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java'
-height="300px"
+<ComponentDemo
+path='/webforj/flexbasis'
+files={['src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java']}
+height='300px'
 />
 
-### Flex wachsen / schrumpfen {#flex-grow--shrink}
+### Flex-Wachstum und -Schrumpfung {#flex-grow--shrink}
 
-`Item Grow` und `Item Shrink` sind zwei Eigenschaften, die in Verbindung miteinander und mit der `Item Basis`-Eigenschaft arbeiten, um zu bestimmen, wie Flex-Elemente wachsen oder schrumpfen, um den verfügbaren Platz innerhalb eines Flex Layout-Objekts zu füllen.
+`Item Grow` und `Item Shrink` sind zwei Eigenschaften, die zusammenarbeiten und mit der `Item Basis`-Eigenschaft dazu dienen, wie Flex-Elemente wachsen oder schrumpfen, um den verfügbaren Platz innerhalb eines `FlexLayout`-Objekts zu füllen.
 
-Die `Item Grow`-Eigenschaft gibt an, wie viel das Flex-Element im Verhältnis zu den anderen Elementen im Container wachsen kann. Sie nimmt einen wertlosen Wert an, der einen Anteil des verfügbaren Platzes darstellt, der diesem Element zugewiesen werden soll. Wenn ein Element beispielsweise einen `Item Grow`-Wert von 1 hat und ein anderes einen Wert von 2 hat, wird das zweite Element doppelt so viel wachsen wie das erste Element.
+Die `Item Grow`-Eigenschaft gibt an, wie viel das Flex-Element relativ zu den anderen Elementen im Container wachsen kann. Sie akzeptiert einen wertlosen Wert, der einen Anteil des verfügbaren Platzes darstellt, der dem Element zugewiesen werden sollte. Wenn beispielsweise ein Element einen `Item Grow`-Wert von 1 hat und ein anderes einen Wert von 2, dann wird das zweite Element doppelt so viel wachsen wie das erste Element.
 
-Die `Item Shrink`-Eigenschaft hingegen gibt an, wie viel das Flex-Element im Verhältnis zu den anderen Elementen im Container schrumpfen kann. Sie nimmt ebenfalls einen wertlosen Wert an, der einen Anteil des verfügbaren Platzes darstellt, der diesem Element zugewiesen werden soll. Wenn ein Element beispielsweise einen `Item Shrink`-Wert von 1 hat und ein anderes einen Wert von 2 hat, wird das zweite Element doppelt so viel schrumpfen wie das erste Element.
+Die `Item Shrink`-Eigenschaft hingegen gibt an, wie viel das Flex-Element relativ zu den anderen Elementen im Container schrumpfen kann. Sie nimmt ebenfalls einen wertlosen Wert an, der einen Anteil des verfügbaren Platzes darstellt, der dem Element zugewiesen werden sollte. Wenn beispielsweise ein Element einen `Item Shrink`-Wert von 1 hat und ein anderes einen Wert von 2, wird das zweite Element doppelt so viel schrumpfen wie das erste Element.
 
-Wenn ein Container mehr Platz hat, als benötigt wird, um seinen Inhalt unterzubringen, werden Flex-Elemente mit einem `Item Grow`-Wert größer als 0 den verfügbaren Platz ausfüllen. Der Betrag des Platzes, den jedes Element erhält, wird durch das Verhältnis seines `Item Grow`-Wertes zu dem gesamten `Item Grow`-Wert aller Elemente im Container bestimmt.
+Wenn ein Container mehr Platz hat, als benötigt wird, um seinen Inhalt unterzubringen, werden die Flex-Elemente mit einem `Item Grow`-Wert größer als 0, um den verfügbaren Platz auszufüllen. Der Betrag des Platzes, den jedes Element erhält, wird durch das Verhältnis seines `Item Grow`-Wertes zum gesamten `Item Grow`-Wert aller Elemente im Container bestimmt.
 
-Ebenso, wenn ein Container nicht genügend Platz hat, um seinen Inhalt unterzubringen, werden Flex-Elemente mit einem `Item Shrink`-Wert größer als 0 schrumpfen, um den verfügbaren Platz zu nutzen. Der Betrag des Platzes, den jedes Element aufgibt, wird durch das Verhältnis seines `Item Shrink`-Wertes zu dem gesamten `Item Shrink`-Wert aller Elemente im Container bestimmt.
+Ebenso, wenn ein Container nicht genügend Platz hat, um seinen Inhalt unterzubringen, werden Flex-Elemente mit einem `Item Shrink`-Wert größer als 0 schrumpfen, um in den verfügbaren Platz zu passen. Der Betrag des Platzes, den jedes Element aufgibt, wird durch das Verhältnis seines `Item Shrink`-Wertes zum gesamten `Item Shrink`-Wert aller Elemente im Container bestimmt.
 
-## Beispiel-Formular {#example-form}
-Das Formular unten demonstriert, wie `FlexLayout` Eingabefelder in einem strukturierten Layout organisiert.
+## Beispielformular {#example-form}
+Das folgende Formular demonstriert, wie `FlexLayout` Eingabefelder in einem strukturierten Layout organisiert.
 
 :::tip
-Wenn Sie eine spaltenbasierte Struktur bevorzugen, sehen Sie sich die ColumnsLayout-Version dieses Formulars im Artikel [`ColumnsLayout`](../components/columns-layout) an, um zu sehen, wie es sich verhält.
+Wenn Sie eine spaltenbasierte Struktur bevorzugen, sehen Sie sich die `ColumnsLayout`-Version dieses Formulars im Artikel [`ColumnsLayout`](../components/columns-layout) an, um zu sehen, wie sie sich vergleicht.
 :::
 
-<ComponentDemo 
-path='/webforj/flexlayout?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java'
-cssURL='/css/flexlayout/flexLayout.css'
-height="620px"
+<ComponentDemo
+path='/webforj/flexlayout'
+files={[
+  'src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java',
+  'src/main/resources/static/css/flexlayout/flexLayout.css',
+]}
+height='620px'
 />

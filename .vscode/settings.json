@@ -30,5 +30,6 @@
     "webforJ",
     "Pprod",
     "frontmatter"
-  ]
+  ],
+  "java.dependency.syncWithFolderExplorer": true
 }

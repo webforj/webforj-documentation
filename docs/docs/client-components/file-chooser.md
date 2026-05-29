@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-file-chooser>
 sidebar_class_name: sidebar--item__hidden
 slug: file-chooser
-description: A user guide article for the file-chooser
+description: Customize the dwc-file-chooser client component with CSS variables and shadow parts to theme the picker dialog, breadcrumbs, and list.
 // pagination_prev: null
 // pagination_next: null
 ---

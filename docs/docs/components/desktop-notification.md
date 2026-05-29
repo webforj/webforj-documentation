@@ -1,16 +1,22 @@
 ---
 title: DesktopNotification
 sidebar_position: 29
+description: Send native OS notifications outside the browser window with the DesktopNotification component for real-time messages, alerts, and status changes.
 ---
 
 <DocChip chip='since' label='25.00' />
 <DocChip chip='experimental' />
 <JavadocLink type="desktop-notification" location="com/webforj/component/desktopnotification/DesktopNotification" top='true'/>
 
-In webforj 25.00 and higher, The **DesktopNotification** component provides a simple interface for creating, displaying, and managing desktop notifications. With a focus on minimal configuration and built-in event handling, the component can be used when needing to notify users about real-time events (such as new messages, alerts, or system events) while they're browsing your app.
+The `DesktopNotification` component displays native desktop notifications outside the browser window. It can be used to alert users about real-time events like new messages, system alerts, or status changes while they're using your app.
 
-:::warning experimental feature
-The `DesktopNotification` component is still evolving, and its API may experience changes as it matures. To start using this feature, ensure that you include the following dependency in your pom.xml.
+<!-- INTRO_END -->
+
+## Setup and prerequisites {#setup-and-prerequisites}
+
+<ExperimentalWarning />
+
+To start using this feature, include the following dependency in your pom.xml:
 
 ```xml
 <dependency>
@@ -18,22 +24,13 @@ The `DesktopNotification` component is still evolving, and its API may experienc
   <artifactId>webforj-desktop-notification</artifactId>
 </dependency>
 ```
-:::
 
-:::info Prerequisites
 Before integrating the `DesktopNotification` component, ensure that:
 
 - Your app runs in a **secure context** (HTTPS).
 - The browser isn't in incognito or private browsing mode.
 - The user has interacted with the app (e.g., clicked a button or pressed a key), since notifications require a user gesture to be displayed.
 - The user has granted permissions for notifications (this will be requested automatically if needed).
-:::
-
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/release/desktop_notifications.mp4" type="video/mp4"/>
-  </video>
-</div>
 
 ## Basic usage {#basic-usage}
 

@@ -1,74 +1,74 @@
 ---
 title: CheckBox
 sidebar_position: 20
-_i18n_hash: c2be55222401962b275faf28ff6ddba3
+_i18n_hash: 7946f6753a03194ecdcf7e20a7053012
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-checkbox" />
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/CheckBox" top='true'/>
 
-`CheckBox`-luokka luo komponentin, joka voidaan valita tai kytkeä pois, ja joka näyttää tilansa käyttäjälle. Kun komponenttia napsautetaan, ruudussa näkyy rasti, joka indikoi myönteistä valintaa (päällä). Kun sitä napsautetaan jälleen, rasti katoaa, mikä osoittaa kielteistä valintaa (pois).
+`CheckBox` voi olla valittuna tai poistettuna, ja se näyttää nykyisen tilansa rastin muodossa. Valintaruudut toimivat hyvin yksittäisten asetusten kytkemisessä tai käyttäjien valitessa useita vaihtoehtoja joukosta.
 
-Antamalla selkeän ja yksinkertaisen visuaalisen osoituksen valintatilasta, valintaruutu parantaa käyttäjävuorovaikutusta ja päätöksentekoa, mikä tekee siitä olennaisen osan nykyaikaisia käyttöliittymiä.
+<!-- INTRO_END -->
 
 ## Käytöt {#usages}
 
-`CheckBox`-komponenttia käytetään parhaiten tilanteissa, joissa käyttäjät tarvitsevat useita valintoja vaihtoehtoista luetteloa. Tässä on joitain esimerkkejä siitä, milloin `CheckBox`-komponenttia tulisi käyttää:
+`CheckBox` on parasta käyttää tilanteissa, joissa käyttäjien on tehtävä useita valintoja vaihtoehtoluettelosta. Tässä on joitakin esimerkkejä siitä, milloin `CheckBox`-komponenttia kannattaa käyttää:
 
-1. **Tehtävä- tai ominaisuusvalinta**: Valintaruutujaa käytetään yleisesti, kun käyttäjät tarvitsevat useiden tehtävien tai ominaisuuksien valitsemista tiettyjen toimien tai asetusten suorittamiseksi.
+1. **Tehtävän tai ominaisuuden valinta**: Valintaruutuja käytetään yleisesti, kun käyttäjien on valittava useita tehtäviä tai ominaisuuksia tiettyjen toimien tai asetusten suorittamiseksi.
 
-2. **Asetusvalinnat**: Sovellukset, jotka sisältävät asetuksia tai suosikki-paneeleja, käyttävät usein valintaruutuja mahdollistamaan käyttäjille useiden vaihtoehtojen valitsemisen valintojen joukosta. Tämä sopii parhaiten vaihtoehdoille, jotka eivät ole keskenään pois sulkevia. Esimerkiksi:
+2. **Asetusten määrittäminen**: Sovelluksissa, jotka sisältävät asetusten tai mieltymysten paneeleja, käytetään usein valintaruuduilta, jotta käyttäjät voivat valita useita vaihtoehtoja joukosta. Tämä on parasta vaihtoehdoille, jotka eivät sulje toisiaan pois. Esimerkiksi:
 
-> - Ilmoitusten salliminen tai estäminen
+> - Ilmoitusten kytkeminen päälle tai pois päältä
 > - Tumma tai vaalea teema
-> - Sähköpostihälytysten valitseminen
+> - Sähköposti-ilmoitusasetusten valinta
 
-3. **Suodatus tai lajittelu**: `CheckBox`-komponenttia voidaan käyttää sovelluksissa, joissa käyttäjät tarvitsevat useiden suodattimien tai kategorioiden valitsemista, kuten hakutulosten suodattaminen tai useiden kohteiden valitseminen jatkotoimia varten.
+3. **Suodatus tai lajittelu**: `CheckBox`-komponenttia voidaan käyttää sovelluksissa, joissa käyttäjien on valittava useita suodattimia tai kategorioita, kuten hakutulosten suodattaminen tai useiden kohteiden valinta jatotoimia varten.
 
-4. **Lomakekentät**: Valintaruutujaa käytetään yleisesti lomakkeissa antamaan käyttäjille mahdollisuus valita useita vaihtoehtoja tai tehdä binäärisiä valintoja. Esimerkiksi:
+4. **Lomakekentät**: Valintaruutuja käytetään yleisesti lomakkeissa, jotta käyttäjät voivat valita useita vaihtoehtoja tai tehdä binaarisia valintoja. Esimerkiksi:
    > - Tilaa uutiskirje
    > - Hyväksy käyttöehdot
    > - Valitse ostettavat tai varattavat kohteet
 
 ## Teksti ja sijoittelu {#text-and-positioning}
 
-Valintaruudut voivat hyödyntää <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink>-metodia, joka sijoitetaan valintaruudun läheisyyteen sisäänrakennetun <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Sijoitus</JavadocLink> periaatteen mukaan.
+Valintaruudut voivat hyödyntää <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink>-metodia, joka sijoitetaan valintaruudun vierelle sisäänrakennetun <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Sijoitus</JavadocLink>-säännön mukaisesti.
 
-Valintaruuduissa on sisäänrakennettu toiminnallisuus asettaa teksti näytettäväksi joko ruudun oikealla tai vasemmalla puolella. Oletuksena teksti näytetään komponentin oikealla puolella. Texin sijoittaminen on tuettu <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Sijoitus</JavadocLink>-enumeroinnilla. Alla on kaksi asetusta: <br/>
+Valintaruuduilla on sisäänrakennettu toiminto tekstin asettamiseksi, joka näytetään joko oikealla tai vasemmalla puolella ruutua. Oletuksena teksti näytetään komponentin oikealla puolella. Tekstin sijoittamista tuetaan käyttämällä <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>-enumia. Alla on kaksi asetusta: <br/>
 
-<ComponentDemo 
-path='/webforj/checkboxhorizontaltext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxHorizontalTextView.java'
-height = '200px'
+<ComponentDemo
+path='/webforj/checkboxhorizontaltext'
+files={['src/main/java/com/webforj/samples/views/checkbox/CheckboxHorizontalTextView.java']}
+height='200px'
 />
 
 <br/>
 
-## Epätietoisuus {#indeterminism}
+## Epävarmuus {#indeterminism}
 
-`CheckBox`-komponentti tukee epätietoisuutta, joka on käyttöliittymäkuvio, jota käytetään usein lomakkeissa ja luetteloissa osoittamaan, että ryhmällä valintaruutuja on yhdistelmä valittuja ja valitsemattomia tiloja. Tämä tila esitetään kolmannessa visuaalisessa tilassa, joka yleensä näkyy täytettynä neliönä tai viivana valintaruutu sisällä. Epätietoisuuteen liittyy useita yleisiä käyttötarkoituksia:
+`CheckBox`-komponentti tukee epävarmuutta, joka on käyttöliittymämalli, jota käytetään yleisesti lomakkeissa ja luetteloissa osoittamaan, että ryhmässä valintaruudut on sekoitettu valittuja ja valitsemattomia tiloja. Tämä tila esitetään kolmannella visuaalisella tilalla, joka tyypillisesti näytetään täytettynä neliönä tai viivana valintaruudussa. Epävarmuudella on joitakin yleisiä käyttötapauksia:
 
-- **Useiden kohteiden valitseminen**: Epätietoisuus on hyödyllistä, kun käyttäjien on tarkoitus valita useita kohteita luettelosta tai vaihtoehtojen joukosta. Se mahdollistaa käyttäjät osoittamaan, että he haluavat valita joitain, mutta ei kaikkia, käytettävissä olevista vaihtoehdoista.
+- **Useiden kohtien valitseminen**: Epävarmuus on hyödyllinen, kun käyttäjien on valittava useita kohtia luettelosta tai vaihtoehtojoukosta. Se antaa käyttäjille mahdollisuuden osoittaa, että he haluavat valita joitakin, mutta ei kaikkia saatavilla olevia vaihtoehtoja.
 
-- **Hierarkkinen data**: Epätietoisuutta voidaan käyttää skenaarioissa, joissa on hierarkkinen suhde valintaruudun välillä. Esimerkiksi, kun valitaan kategorioita ja alikategorioita, epätietoisuus voi osoittaa, että jotkut alikategoriat on valittu ja toiset eivät, ja vanhempi komponentti on epätietoinen tila.
+- **Hierarkkinen data**: Epävarmuutta voidaan käyttää tilanteissa, joissa on hierarkkinen suhde valintaruudun välillä. Esimerkiksi, kun valitaan kategorioita ja alakategorioita, epävarmuus voi edustaa sitä, että jotkut alakategoriat on valittu, kun taas toisia ei ole, ja vanhempi komponentti on epävarmassa tilassa.
 
-<ComponentDemo 
-path='/webforj/checkboxindeterminate?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/checkboxindeterminate'
+files={['src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java']}
+height='150px'
 />
 
-## Tyylit {#styling}
+## Tyylitteleminen {#styling}
 
 ### Laajuudet {#expanses}
 
-Seuraavat <JavadocLink type="foundation" location="com/webforj/component/Expanse">Laajuusarvot</JavadocLink> mahdollistavat nopean tyylin ilman CSS:ää. Laajuuksia tuetaan `Expanse`-enumeroinnin avulla. Alla on laajuudet, jotka ovat tuettu valintaruutu komponentille: <br/>
+Seuraavat <JavadocLink type="foundation" location="com/webforj/component/Expanse">Laajuudet-arvot</JavadocLink> sallivat nopean tyylittelyn ilman CSS:n käyttöä. Laajuudet tukevat `Expanse`-enum-luokan käyttöä. Alla ovat laajuudet, joita tuetaan valintaruudukkomponentille: <br/>
 
-<ComponentDemo 
-path='/webforj/checkboxexpanse?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/checkboxexpanse'
+files={['src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java']}
+height='150px'
 />
 
 <br/>
@@ -77,12 +77,12 @@ height = '150px'
 
 ## Parhaat käytännöt {#best-practices}
 
-Varmistaaksesi optimaalisen käyttäjäkokemuksen `Checkbox`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
+Jotta voit varmistaa optimaalisen käyttäjäkokemuksen `Checkbox`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
 
-1. **Selkeästi merkitse vaihtoehtoja**: Anna selkeät ja ytimekkäät etiketit jokaiselle `CheckBox`-vaihtoehdolle kuvastaaksesi oikein valintaa. Etiketit tulisi olla helppo ymmärtää ja erottaa toisistaan.
+1. **Selkeät vaihtoehtojen merkit**: Tarjoa selkeät ja ytimekkäät merkit kullekin `CheckBox`-vaihtoehdolle, jotta valinta kuvataan tarkasti. Merkit tulisi olla helppo ymmärtää ja erottua toisistaan.
 
-2. **Ryhmittele valintaruudut**: Ryhmittele liittyvät valintaruudut yhdessä osoittaaksesi niiden yhteyden. Tämä auttaa käyttäjiä ymmärtämään, että useita vaihtoehtoja voidaan valita tietyssä ryhmässä.
+2. **Ryhmittele valintaruudut**: Ryhmittele samankaltaiset valintaruudut yhteen osoittamaan niiden yhteys. Tämä auttaa käyttäjiä ymmärtämään, että useita vaihtoehtoja voidaan valita tietyssä ryhmässä.
 
-3. **Tarjoa oletusvalinta**: Jos mahdollista, harkitse oletusvalinnan tarjoamista valintaruuduille ohjataksesi käyttäjiä, kun he kohtaavat vaihtoehtoja ensimmäisen kerran. Oletusvalinnan tulisi olla linjassa yleisimpien tai haluttujen valintojen kanssa.
+3. **Tarjoa oletusvalinta**: Jos mahdollista, harkitse oletusvalinnan tarjoamista valintaruuduille ohjaamaan käyttäjiä, kun he kohtaavat vaihtoehdot ensimmäistä kertaa. Oletusvalinnan tulee olla linjassa yleisimmän tai mieluisimman valinnan kanssa.
 
-4. **Epätietoisuus**: Jos vanhempi `CheckBox`-komponentti sisältää useita siihen kuuluvia komponentteja, joissa osa voidaan valita päälle ja osa pois, käytä epätietoista ominaisuutta osoittaaksesi, että kaikkia `CheckBox`-komponentteja ei ole valittu tai poistettu.
+4. **Epävarmuus**: Jos vanhempi `CheckBox`-komponentti sisältää useita siihen kuuluvia komponentteja siten, että osia voidaan valita päälle ja toisia pois, käytä epävarmaa ominaisuutta osoittamaan, että kaikki `CheckBox`-komponentit eivät ole valittuja tai poissa valinnasta.

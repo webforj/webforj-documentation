@@ -3,47 +3,50 @@ package com.webforj.samples.pages.spinner;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class SpinnerSpeedDemoPage {
 
-    private static final String ROUTE = "spinnerspeeddemo";
+  private static final String ROUTE = "spinnerspeeddemo";
 
-    private final Locator spinner;
-    private final Locator slowButton;
-    private final Locator mediumButton;
-    private final Locator fastButton;
-    private final Locator pauseButton;
+  private final Locator spinner;
+  private final Locator slowButton;
+  private final Locator mediumButton;
+  private final Locator fastButton;
+  private final Locator pauseButton;
 
-    public SpinnerSpeedDemoPage(Page page) {
+  public SpinnerSpeedDemoPage(Page page) {
 
-        this.spinner = page.locator("dwc-spinner");
-        this.slowButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Slow"));
-        this.mediumButton =page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Medium"));
-        this.fastButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Fast"));
-        this.pauseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
+    this.spinner = page.locator("dwc-spinner");
+    this.slowButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Slow"));
+    this.mediumButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Medium"));
+    this.fastButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Fast"));
+    this.pauseButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
+  }
+
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public Locator getSpinner() {
+    return spinner;
+  }
 
-    public Locator getSpinner() {
-        return spinner;
-    }
+  public Locator getSlowButton() {
+    return slowButton;
+  }
 
-    public Locator getSlowButton() {
-        return slowButton;
-    }
+  public Locator getMediumButton() {
+    return mediumButton;
+  }
 
-    public Locator getMediumButton() {
-        return mediumButton;
-    }
+  public Locator getFastButton() {
+    return fastButton;
+  }
 
-    public Locator getFastButton() {
-        return fastButton;
-    }
-
-    public Locator getPauseButton() {
-        return pauseButton;
-    }
+  public Locator getPauseButton() {
+    return pauseButton;
+  }
 }

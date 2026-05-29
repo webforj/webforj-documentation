@@ -4,7 +4,7 @@ sidebar_position: 85
 hide_table_of_contents: true
 sidebar_class_name: has-new-content
 hide_giscus_comments: true
-_i18n_hash: 80950952d9226a7a35503663c4155da7
+_i18n_hash: 2af867ffb7bb39ed4624efa14b81d452
 ---
 <Head>
   <style>{`
@@ -15,242 +15,254 @@ _i18n_hash: 80950952d9226a7a35503663c4155da7
 </Head>
 
 <Head>
-  <title>UI-komponentit | Käyttöliittymä Sovellusrakentamisen Komponentit</title>
+  <title>Käyttöliittymäkomponentit | Käyttöliittymäohjelmoinnin komponentit</title>
 </Head>
 
-In webforJ, sovelluksia luodaan modulaaristen yksiköiden, eli komponenttien, avulla, jotka helpottavat nopeaa ja tehokasta käyttöliittymän kehittämistä. Kehys tarjoaa joukon olennaisia komponentteja, kuten painikkeita, syötekenttiä ja asettelukontteja. Perusteiden hallinnan jälkeen voit tutustua [JavaDocs](https://javadoc.io/doc/com.webforj) -sivustoon saadaksesi yksityiskohtaisen yleiskatsauksen kaikista komponenteista ja niiden toiminnoista.
+webforJ:ssä sovelluksia luodaan moduulimaisista yksiköistä, joita kutsutaan komponenteiksi, jotka helpottavat nopeaa ja tehokasta käyttöliittymän kehittämistä. Kehys tarjoaa valikoiman olennaisia komponentteja, kuten painikkeita, syöteelementtejä ja asettelukontteja. Perusteet hallittuasi voit katsastaa [JavaDocs](https://javadoc.io/doc/com.webforj) saadaksesi yksityiskohtaisen yleiskatsauksen kaikista komponenteista ja niiden toiminnallisuudesta.
 
 ## Asettelu {#layouts}
 
-Asettelukomponentit tarjoavat perustan käyttöliittymien rakenteelle, mahdollistaen kehittäjien järjestää sisältöä tehokkaasti. Nämä komponentit tarjoavat erilaisia tapoja hallita lapsikomponenttien järjestystä, olipa kyseessä yksinkertainen tai monimutkainen asettelu.
+Asettelukomponentit tarjoavat perustan käyttöliittymien jäsentämiselle, jolloin kehittäjät voivat organisoida sisältöä tehokkaasti. Nämä komponentit tarjoavat erilaisia tapoja hallita lapsikomponenttien järjestämistä, olipa kyseessä yksinkertaiset tai monimutkaiset asettelut.
 
 Seuraavat asettelukomponentit on suunniteltu käsittelemään laaja valikoima käyttötapauksia, responsiivisesta suunnittelusta edistyneeseen sisällönhallintaan.
 
 <GalleryGrid>
-  <GalleryCard header="AppLayout" href="app-layout" image="/img/components/AppLayout.png">
-    <p>Konttikomponentti, joka tarjoaa rakenteellisen asettelun ensisijaiselle sovelluksen navigoinnille ja sisällön järjestämiselle.</p>
+  <GalleryCard header="AppLayout" href="app-layout" image="/img/components/light/AppLayout.webp" imageDark="/img/components/dark/AppLayout.webp">
+    <p>Säiliökomponentti, joka tarjoaa jäsennellyn asettelun sovelluksen ylimmän tason navigaatiolle ja sisällön organisoinnille.</p>
   </GalleryCard>
 
-  <GalleryCard header="Työkalupalkki" href="toolbar" image="/img/components/Toolbar.png">
-    <p>Vaakasuuntainen konttikomponentti, joka sisältää joukon toimintopainikkeita, kuvakkeita tai muita ohjaimia, joita käytetään yleensä suorittamaan tehtäviä nykyisessä kontekstissa.</p>
+  <GalleryCard header="Työkalupalkki" href="toolbar" image="/img/components/light/Toolbar.webp" imageDark="/img/components/dark/Toolbar.webp">
+    <p>Vaakasuuntainen säiliökomponentti, joka sisältää joukon toimintopainikkeita, ikoneita tai muita ohjaimia, joita käytetään tyypillisesti nykyiseen kontekstiin liittyvien tehtävien suorittamiseen.</p>
   </GalleryCard>
 
-  <GalleryCard header="FlexLayout" href="flex-layout" image="/img/components/FlexLayout.png">
-    <p>Asettelukomponentti, joka järjestää lapsensa joustavan laatikon (flexbox) sääntöjen mukaan responsiivista suunnittelua ja kohdistamista varten.</p>
+  <GalleryCard header="FlexLayout" href="flex-layout" image="/img/components/light/FlexLayout.webp" imageDark="/img/components/dark/FlexLayout.webp">
+    <p>Asettelu komponentti, joka järjestää lapsensa käyttämällä joustavia laatikoita (flexbox) säännöksiä responsiivista suunnittelua ja kohdistusta varten.</p>
   </GalleryCard>
 
-  <GalleryCard header="ColumnsLayout" href="columns-layout" image="/img/components/ColumnsLayout.png">
-    <p>Asettelukomponentti, joka järjestää lapsensa useisiin pystysuoriin sarakkeisiin, hyödyllinen lomakkeiden ja ruudukkojen kaltaisten rakenteiden luomiseen.</p>
+  <GalleryCard header="ColumnsLayout" href="columns-layout" image="/img/components/light/ColumnsLayout.webp" imageDark="/img/components/dark/ColumnsLayout.webp">
+    <p>Asettelu komponentti, joka järjestää lapsensa useisiin pystysuoriin sarakkeisiin, hyödyllinen lomakkeiden ja ruudukkomaisen rakenteen luomiseksi.</p>
   </GalleryCard>
 
-  <GalleryCard header="Splitter" href="splitter" image="/img/components/Splitter.png" effect="slideLeftRightScale">
-    <p>Asettelukomponentti, joka jakaa käytettävissä olevan tilan kahden lapsikomponentin välillä, mikä sallii käyttäjien muuttaa niiden kokoa vetämällä jakopalkkia.</p>
+  <GalleryCard header="Splitter" href="splitter" image="/img/components/light/Splitter.webp" imageDark="/img/components/dark/Splitter.webp">
+    <p>Asettelu komponentti, joka jakaa käytettävissä olevan tilan kahden lapsikomponentin välillä, mahdollistaen käyttäjien koon muuttamisen vetämällä jakopalkkia.</p>
   </GalleryCard>
 
-  <GalleryCard header="Piirros" href="drawer" image="/img/components/Drawer.png" effect="slideUp">
-    <p>Liukuva paneelikomponentti, jota käytetään yleensä sivunavigaatiossa tai lisäsisällön majoittamisessa, joka voidaan näyttää tai piilottaa.</p>
+  <GalleryCard header="Drawer" href="drawer" image="/img/components/light/Drawer.webp" imageDark="/img/components/dark/Drawer.webp">
+    <p>Liukuva paneelikomponentti, jota käytetään yleensä sivu navigaatioon tai lisäsisällön tarjoamiseen, jota voidaan näyttää tai piilottaa.</p>
   </GalleryCard>
 
-  <GalleryCard header="Dialogi" href="dialog" image="/img/components/Dialog.png">
-    <p>Modaalinen ikkunakomponentti, joka peittää sisällön näyttääkseen tärkeitä tietoja tai pyytääkseen käyttäjän vuorovaikutusta, usein vaaditaan käyttäjän toimintoa sulkemiseksi.</p>
+  <GalleryCard header="Dialogi" href="dialog" image="/img/components/light/Dialog.webp" imageDark="/img/components/dark/Dialog.webp">
+    <p>Modaalinen ikkunakomponentti, joka peittää sisällön tärkeän tiedon näyttämiseksi tai käyttäjän vuorovaikutuksen pyytämiseksi, usein vaatimalla käyttäjän toimintaa sulkeakseen.</p>
   </GalleryCard>
 
-  <GalleryCard header="Kirjautuminen" href="login" image="/img/components/Login.png">
-    <p>Komponentti, joka tarjoaa valmiiksi rakennettua käyttöliittymää käyttäjäautentikointia varten, sisältäen yleensä kentät käyttäjänimelle ja salasanalle sekä lähetyspainikkeen.</p>
+  <GalleryCard header="Kirjautuminen" href="login" image="/img/components/light/Login.webp" imageDark="/img/components/dark/Login.webp">
+    <p>Komponentti, joka tarjoaa valmiiksi rakennettujen käyttöliittymien käyttäjäntunnistukseen, tyypillisesti sisältäen kentät käyttäjänimen ja salasanan syöttämiseksi yhdessä lähetyspainikkeen kanssa.</p>
   </GalleryCard>
 
-  <GalleryCard header="TabulaarinenPaneeli" href="tabbedpane" image="/img/components/TabbedPane.png">
-    <p>Konttikomponentti, joka järjestää sisällön useisiin välilehtiin, mahdollistaen käyttäjien siirtyä eri näkymien tai osien välillä.</p>
+  <GalleryCard header="Accordion" href="accordion" image="/img/components/light/Accordion.webp" imageDark="/img/components/dark/Accordion.webp">
+    <p>Pystysuunnassa pinottu joustava paneelisetti, joissa jokaisessa on napsautettava otsikko, joka vaihtaa näkyvyyden sen sisällön välillä.</p>
+  </GalleryCard>
+
+  <GalleryCard header="TabbedPane" href="tabbedpane" image="/img/components/light/TabbedPane.webp" imageDark="/img/components/dark/TabbedPane.webp">
+    <p>Säiliökomponentti, joka organisoi sisällön useisiin välilehtiin, mahdollistaen käyttäjien vaihtaa eri näkymiä tai osioita.</p>
   </GalleryCard>
 </GalleryGrid>
 
 ## Tietojen syöttö {#data-entry}
 
-Tietojen syöttökomponentit tarjoavat olennaisia työkaluja käyttäjän syötteen kaappaamiseen ja vuorovaikutusten hallintaan sovelluksessasi. Nämä komponentit ovat monipuolisia, mikä helpottaa interaktiivisten lomakkeiden rakentamista ja erilaisten tietotyyppien keräämistä.
+Tietojen syöttökomponentit tarjoavat olennaisia työkaluja käyttäjäsyötteen tallentamiseen ja vuorovaikutusten hallintaan sovelluksessasi. Nämä komponentit ovat monikäyttöisiä, mikä helpottaa interaktiivisten lomakkeiden luomista ja erilaisten tietotyyppien keräämistä.
 
 <GalleryGrid>
-  <GalleryCard header="Tekstikenttä" href="fields/textfield" image="/img/components/TextField.png">
-    <p>Yhden rivin syötekenttä tekstidatan syöttämiseen ja muokkaamiseen.</p>
+  <GalleryCard header="Tekstikenttä" href="fields/textfield" image="/img/components/light/TextField.webp" imageDark="/img/components/dark/TextField.webp">
+    <p>Yhden rivin syöttökomponentti tekstidatan syöttämiseksi ja muokkaamiseksi.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Maskattu</span>Tekstikenttä" href="fields/masked/textfield" image="/img/components/MaskedTextField.png">
-    <p>Tekstisyötekenttä, joka rajoittaa käyttäjän syötteen tiettyyn muotoon tai malliin, käytetään yleensä kentissä kuten puhelinnumerot, päivämäärät tai luottokorttinumerot.</p>
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Maskattu</span>Tekstikenttä" href="fields/masked/textfield" image="/img/components/light/MaskedTextField.webp" imageDark="/img/components/dark/MaskedTextField.webp">
+    <p>Tekstisyöttökomponentti, joka rajoittaa käyttäjän syötettä tiettyyn muotoon tai kaavaan, tyypillisesti käytetään kentissä kuten puhelinnumerot, päivämäärät tai luottokortin numerot.</p>
   </GalleryCard>
 
-  <GalleryCard header="Numerokenttä" href="fields/numberfield" image="/img/components/NumberField.png">
-    <p>Komponentti, joka tarjoaa oletusselaimen syötekentän numerovarojen syöttämiseen, sisäänrakennetuilla ohjaimilla arvon lisäämiseksi tai vähentämiseksi.</p>
+  <GalleryCard header="Numerokenttä" href="fields/numberfield" image="/img/components/light/NumberField.webp" imageDark="/img/components/dark/NumberField.webp">
+    <p>Komponentti, joka tarjoaa oletusarvoisen selainpohjaisen syöttökentän numerovarojen syöttämiseen, built-in-ohjaimilla arvon lisäämiseksi tai vähentämiseksi.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Maskattu</span>Numerokenttä" href="fields/masked/numberfield" image="/img/components/MaskedNumberField.png">
-    <p>Numeroidun syötekenttä, joka rajoittaa käyttäjän syötteen tiettyyn numeeriseen muotoon tai malliin, varmistaen kelvollisen numeron syötön, kuten valuutalle, prosenteille tai muille muotoilluille numeroille.</p>
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Maskattu</span>Numerokenttä" href="fields/masked/numberfield" image="/img/components/light/MaskedNumberField.webp" imageDark="/img/components/dark/MaskedNumberField.webp">
+    <p>Numerosyytekomponentti, joka rajoittaa käyttäjän syötettä tiettyyn numeromuotoon tai kaavaan, varmistaen sallitun numeron syöttämisen kuten valuutoille, prosentuille tai muille muotoilluille numeroille.</p>
   </GalleryCard>
 
-  <GalleryCard header="Salasanakenttä" href="fields/passwordfield" image="/img/components/PasswordField.png">
-    <p>Yhden rivin syötekenttä salasanadatan turvalliseen syöttämiseen ja peittämiseen.</p>
+  <GalleryCard header="Salasanakenttä" href="fields/passwordfield" image="/img/components/light/PasswordField.webp" imageDark="/img/components/dark/PasswordField.webp">
+    <p>Yhden rivin syöttökomponentti salasanadatan turvalliseen syöttämiseen ja naamioimiseen.</p>
   </GalleryCard>
 
-  <GalleryCard header="Päivämääräkenttä" href="fields/datefield" image="/img/components/DateField.png">
-    <p>Komponentti, joka tarjoaa oletusselaimen päivämäärävalitsimen päivämäärän valitsemiseksi syötekentän kautta.</p>
+  <GalleryCard header="Päivämääräkenttä" href="fields/datefield" image="/img/components/light/DateField.webp" imageDark="/img/components/dark/DateField.webp">
+    <p>Komponentti, joka tarjoaa oletusarvoisen selainpohjaisen päivämäärävalitsimen, jolla voidaan valita päivämäärä syöttökentän kautta.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Maskattu</span>Päivämääräkenttä" href="fields/masked/datefield" image="/img/components/MaskedDateField.png">
-    <p>Päivämääräsyötekenttä, joka pakottaa tiettyyn päivämäärämuotoon tai malliin, varmistaen, että käyttäjä syöttää kelvollisen päivämäärän määriteltyjen maskien mukaan.</p>
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Maskattu</span>Päivämääräkenttä" href="fields/masked/datefield" image="/img/components/light/MaskedDateField.webp" imageDark="/img/components/dark/MaskedDateField.webp">
+    <p>Päivämääräsyöttökomponentti, joka pakottaa tiettyyn päivämäärämuotoon tai kaavaan, varmistaen, että käyttäjä syöttää voimassa olevan päivämäärän määritetyn maskin mukaan.</p>
   </GalleryCard>
 
-  <GalleryCard header="Aikakenttä" href="fields/timefield" image="/img/components/TimeField.png">
-    <p>Komponentti, joka tarjoaa oletusselaimen aikavalitsimen ajan arvon valitsemiseksi syötekentän kautta.</p>
+  <GalleryCard header="Aikakenttä" href="fields/timefield" image="/img/components/light/TimeField.webp" imageDark="/img/components/dark/TimeField.webp">
+    <p>Komponentti, joka tarjoaa oletusarvoisen selainpohjaisen aikavalitsimen aikarajan valitsemiseksi syöttökentän kautta.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Maskattu</span>Aikakenttä" href="fields/masked/timefield" image="/img/components/MaskedTimeField.png">
-    <p>Aikasyötekenttä, joka pakottaa tiettyyn aikamuotoon tai malliin, varmistaen, että käyttäjä syöttää kelvollisen ajan määriteltyjen maskien mukaan.</p>
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Maskattu</span>Aikakenttä" href="fields/masked/timefield" image="/img/components/light/MaskedTimeField.webp" imageDark="/img/components/dark/MaskedTimeField.webp">
+    <p>Aikasyöttökomponentti, joka pakottaa tiettyyn aikamuotoon tai kaavaan, varmistaen, että käyttäjä syöttää voimassa olevan ajan määritetyn maskin mukaan.</p>
   </GalleryCard>
 
-  <GalleryCard header="PäivämääräAikakenttä" href="fields/datetimefield" image="/img/components/DateTimeField.png">
-    <p>Komponentti, joka tarjoaa oletusselaimen päivämäärä- ja aikavalitsimen sekä päivämäärän että ajan valitsemiseksi yhdellä syötekentällä.</p>
+  <GalleryCard header="PäivämääräAikaKenttä" href="fields/datetimefield" image="/img/components/light/DateTimeField.webp" imageDark="/img/components/dark/DateTimeField.webp">
+    <p>Komponentti, joka tarjoaa oletusarvoisen selainpohjaisen päivämäärä- ja aikavalitsimen, joka mahdollistaa sekä päivämäärän että ajan valitsemisen yhdestä syöttökentästä.</p>
   </GalleryCard>
 
-  <GalleryCard header="VäriKenttä" href="fields/colorfield" image="/img/components/ColorField.png">
-    <p>Komponentti, joka tarjoaa oletusselaimen väriä valitsevan työkalun, antaen käyttäjien valita väri syötekentästä.</p>
+  <GalleryCard header="VäriKenttä" href="fields/colorfield" image="/img/components/light/ColorField.webp" imageDark="/img/components/dark/ColorField.webp">
+    <p>Komponentti, joka tarjoaa oletusarvoisen selainpohjaisen väri valitsimen, joka mahdollistaa käyttäjien valita väri syöttökentästä.</p>
   </GalleryCard>
 
-  <GalleryCard header="Tekstialue" href="textarea" image="/img/components/TextArea.png">
-    <p>Monirivinen tekstisyötekenttä, joka sallii käyttäjien syöttää tai muokata suurempia tekstikappaleita.</p>
+  <GalleryCard header="Tekstialue" href="textarea" image="/img/components/light/TextArea.webp" imageDark="/img/components/dark/TextArea.webp">
+    <p>Monirivinen syöttökomponentti, joka mahdollistaa käyttäjien syöttää tai muokata suurempia tekstikappaleita.</p>
   </GalleryCard>
 
-  <GalleryCard header="Ruutu" href="checkbox" image="/img/components/CheckBox.png">
-    <p>Komponentti, joka edustaa binäärivaihtoehtoa, mahdollistaen käyttäjien vaihtaa valittua (totta) tai valitsematonta (epätotta) tilaa.</p>
+  <GalleryCard header="Valintaruutu" href="checkbox" image="/img/components/light/CheckBox.webp" imageDark="/img/components/dark/CheckBox.webp">
+    <p>Komponentti, joka edustaa binaarista vaihtoehtoa, mahdollistaen käyttäjien kytkeä päälle tai pois (tosi/epätosi) tilan.</p>
   </GalleryCard>
 
-  <GalleryCard header="Radiopainike" href="radiobutton" image="/img/components/RadioButton.png">
-    <p>Komponentti, joka sallii käyttäjien valita yhden vaihtoehdon joukosta keskenään poissulkevista valinnoista.</p>
+  <GalleryCard header="Radiopainike" href="radiobutton" image="/img/components/light/RadioButton.webp" imageDark="/img/components/dark/RadioButton.webp">
+    <p>Komponentti, joka mahdollistaa käyttäjien valita yhden vaihtoehdon joukosta toisiinsa liittyviä valintoja.</p>
   </GalleryCard>
 
-  <GalleryCard header="Kytkin" href="radiobutton#switches" image="/img/components/Switch.png">
-    <p>Vaihteen komponentti, joka sallii käyttäjien siirtyä kahden tilan, kuten päällä/pois tai totta/epätotta, välillä liukusäätimen avulla.</p>
+  <GalleryCard header="Vaihtoehto" href="radiobutton#switches" image="/img/components/light/Switch.webp" imageDark="/img/components/dark/Switch.webp">
+    <p>Kytkin komponentti, joka mahdollistaa käyttäjien vaihtaa kahden tilan, kuten päällä/pois tai tosi/epätosi, liukuvan toiminnon avulla.</p>
   </GalleryCard>
 
-  <GalleryCard header="Valintaruutu" href="lists/choicebox" image="/img/components/ChoiceBox.png">
-    <p>Komponentti, joka tarjoaa alasvetovalikon ennalta määrättyjä vaihtoehtoja, mahdollistaen käyttäjien valita yhden vaihtoehdon listalta.</p>
+  <GalleryCard header="Valintalaatikko" href="lists/choicebox" image="/img/components/light/ChoiceBox.webp" imageDark="/img/components/dark/ChoiceBox.webp">
+    <p>Komponentti, joka tarjoaa pudotusvalikon määritellyistä vaihtoehdoista, mahdollistaen käyttäjien valita yksi vaihtoehto listalta.</p>
   </GalleryCard>
 
-  <GalleryCard header="Yhdistelmäruutu" href="lists/combobox" image="/img/components/ComboBox.png">
-    <p>Komponentti, joka yhdistää alasvetovalikon muokattavaan tekstisyötekenttään, mahdollistaen käyttäjien valita joko vaihtoehdon listalta tai syöttää mukautetun arvon.</p>
+  <GalleryCard header="Yhdistelmälaatikko" href="lists/combobox" image="/img/components/light/ComboBox.webp" imageDark="/img/components/dark/ComboBox.webp">
+    <p>Komponentti, joka yhdistää pudotuslistan muokattavaan tekstisyöttöön, mahdollistaen käyttäjien valita joko vaihtoehto listalta tai syöttää mukautettu arvo.</p>
   </GalleryCard>
 
-  <GalleryCard header="Luetteloruutu" href="lists/listbox" image="/img/components/ListBox.png">
-    <p>Komponentti, joka näyttää vieritettävän listan vaihtoehdoista, mahdollistaen käyttäjien valita yhden tai useamman kohteen listalta.</p>
+  <GalleryCard header="Listalaatikko" href="lists/listbox" image="/img/components/light/ListBox.webp" imageDark="/img/components/dark/ListBox.webp">
+    <p>Komponentti, joka näyttää vieritettävän luettelon vaihtoehdoista, mahdollistaen käyttäjien valita yksi tai useampi kohde listalta.</p>
   </GalleryCard>
 </GalleryGrid>
 
 ## Vaihtoehtodialogit {#option-dialogs}
 
-Vaihtoehtodialogit tarjoavat tavan esittää käyttäjille valintoja tai pyytää heitä vahvistamaan ennen kuin toiminta jatkuu. Nämä komponentit ovat olennaisia luotaessa interaktiivista, päätöksentekoon perustuvaa työnkulkua, mahdollistaen käyttäjien vahvistaa, peruuttaa tai valita eri vaihtoehdoista selkeällä ja jäsennellyllä tavalla.
+Vaihtoehtodialogit tarjoavat tavan esittää käyttäjille vaihtoehtoja tai pyytää heiltä vahvistusta ennen toiminnan jatkumista. Nämä komponentit ovat olennaisia interaktiivisten, päätöksentekopohjaisten työprosessien luomiseksi, mahdollistaen käyttäjien vahvistaa, peruuttaa tai valita erilaisista vaihtoehdoista selkeästi ja jäsennellysti.
 
 <GalleryGrid>
-  <GalleryCard header="ViestiDialogi" href="option-dialogs/message" image="/img/components/MessageDialog.png">
-    <p>Dialogikomponentti, jota käytetään näyttämään tietoja tai varoituksia käyttäjälle, yleensä yhdellä `OK` -painikkeella, jolla vahvistetaan viesti.</p>
+  <GalleryCard header="ViestiDialogi" href="option-dialogs/message" image="/img/components/light/MessageDialog.webp" imageDark="/img/components/dark/MessageDialog.webp">
+    <p>Dialogikomponentti, jota käytetään tiedollisten viestien tai ilmoitusten näyttämiseen käyttäjälle, tyypillisesti yhdessä `OK`-painikkeen kanssa viestin hyväksymiseksi.</p>
   </GalleryCard>
 
-  <GalleryCard header="VahvistusDialogi" href="option-dialogs/confirm" image="/img/components/ConfirmDialog.png">
-    <p>Dialogikomponentti, joka kysyy käyttäjältä vahvistusta tai peruuttaako toiminnan, yleensä tarjoamalla `Kyllä` ja `Ei` tai `OK` ja `Peruuta` -painikkeita.</p>
+  <GalleryCard header="VahvistusDialogi" href="option-dialogs/confirm" image="/img/components/light/ConfirmDialog.webp" imageDark="/img/components/dark/ConfirmDialog.webp">
+    <p>Dialogikomponentti, joka pyytää käyttäjältä vahvistusta tai peruutusta toiminnalla, tyypillisesti tarjoamalla `Kyllä` ja `Ei` tai `OK` ja `Peruuta` -painikkeet.</p>
   </GalleryCard>
   
-  <GalleryCard header="SyöttöDialogi" href="option-dialogs/input" image="/img/components/InputDialog.png">
-    <p>Dialogikomponentti, joka kehottaa käyttäjää syöttämään tekstiä tai tietoa, yleensä tarjoten syötekentän sekä toimintopainikkeet kuten `OK` ja `Peruuta`.</p>
+  <GalleryCard header="SyöttöDialogi" href="option-dialogs/input" image="/img/components/light/InputDialog.webp" imageDark="/img/components/dark/InputDialog.webp">
+    <p>Dialogikomponentti, joka pyytää käyttäjältä tekstin tai datan syöttämistä, tyypillisesti tarjoamalla syöttökentän yhdessä toimintopainikkeiden, kuten `OK` ja `Peruuta`, kanssa.</p>
   </GalleryCard>
 
-  <GalleryCard header="TiedostonValitsijaDialogi" href="option-dialogs/file-chooser" image="/img/components/FileChooserDialog.png">
-    <p>Dialogikomponentti, joka sallii käyttäjien selata ja valita tiedostoja palvelimen tiedostojärjestelmästä.</p>
+  <GalleryCard header="TiedostonValitsijaDialogi" href="option-dialogs/file-chooser" image="/img/components/light/FileChooserDialog.webp" imageDark="/img/components/dark/FileChooserDialog.webp">
+    <p>Dialogikomponentti, joka mahdollistaa käyttäjien selata ja valita tiedostoja palvelimen tiedostojärjestelmästä.</p>
   </GalleryCard>
 
-  <GalleryCard header="TiedostonLatausDialogi" href="option-dialogs/file-upload" image="/img/components/FileUploadDialog.png">
-    <p>Dialogikomponentti, joka mahdollistaa käyttäjien ladata tiedostoja heidän paikalliselta tiedostojärjestelmältään sovellukseen.</p>
+  <GalleryCard header="TiedostonLähetysDialogi" href="option-dialogs/file-upload" image="/img/components/light/FileUploadDialog.webp" imageDark="/img/components/dark/FileUploadDialog.webp">
+    <p>Dialogikomponentti, joka mahdollistaa käyttäjille tiedostojen lataamisen paikalliselta tiedostojärjestelmältä sovellukseen.</p>
   </GalleryCard>
 
-  <GalleryCard header="TiedostonTallennusDialogi" href="option-dialogs/file-save" image="/img/components/FileSaveDialog.png">
-    <p>Dialogikomponentti, joka sallii käyttäjien tallentaa tiedoston määritettyyn sijaintiin palvelimen tiedostojärjestelmässä.</p>
+  <GalleryCard header="TiedostonTallennusDialogi" href="option-dialogs/file-save" image="/img/components/light/FileSaveDialog.webp" imageDark="/img/components/dark/FileSaveDialog.webp">
+    <p>Dialogikomponentti, joka mahdollistaa käyttäjille tiedostojen tallentamisen määritettyyn sijaintiin palvelimen tiedostojärjestelmään.</p>
   </GalleryCard>
 </GalleryGrid>
 
 ## Vuorovaikutus ja näyttö {#interaction-and-display}
 
-Tämä kategoria sisältää komponentteja, jotka helpottavat käyttäjävuorovaikutuksia ja visuaalisesti näyttävät tietoja tai sovellustiloja. Nämä komponentit auttavat käyttäjiä navigoimaan sovelluksessa, käynnistämään toimintoja ja ymmärtämään edistymistä tai tuloksia dynaamisten visuaalisten elementtien kautta.
+Tämä kategoria sisältää komponentteja, jotka helpottavat käyttäjävuorovaikutuksia ja visuaalisesti näyttävät tietoja tai sovellustiloja. Nämä komponentit auttavat käyttäjiä navigoimaan sovelluksessa, laukaisevat toimintoja ja ymmärtämään edistystä tai tuloksia dynaamisten visuaalisten elementtien avulla.
 
 <GalleryGrid>
-  <GalleryCard header="Taulukko" href="table/overview" image="/img/components/Table.png">
-    <p>Komponentti, jota käytetään tietojen näyttämiseen rakenteellisessa, taulukkomuotoisessa muodossa riveillä ja sarakkeilla, tukien ominaisuuksia kuten lajittelua ja sivutusta.</p>
+  <GalleryCard header="Taulukko" href="table/overview" image="/img/components/light/Table.webp" imageDark="/img/components/dark/Table.webp">
+    <p> Komponentti, jota käytetään tietojen näyttämiseen jäsennellyssä, taulukkomuodossa riveineen ja sarakkeineen, tukee ominaisuuksia kuten lajittelua ja sivuttamista.</p>
   </GalleryCard>
 
-  <GalleryCard header="GoogleCharts" href="google-charts" image="/img/components/GoogleCharts.png">
-    <p>Komponentti, joka integroituu Google Charts -palvelun kanssa näyttämään erilaisia kaavioita ja visuaalisia tietoesityksiä sovelluksessa.</p>
+  <GalleryCard header="GoogleCharts" href="google-charts" image="/img/components/light/GoogleCharts.webp" imageDark="/img/components/dark/GoogleCharts.webp">
+    <p>Komponentti, joka integroituu Google Chartsiin näyttämään erilaisia kaavioita ja visuaalisia tietoesityksiä sovelluksessa.</p>
   </GalleryCard>
 
-  <GalleryCard header="Painike" href="button" image="/img/components/Button.png">
-    <p>Klikattava komponentti, joka käynnistää toiminnon tai tapahtuman, kun sitä painetaan.</p>
+  <GalleryCard header="Painike" href="button" image="/img/components/light/Button.webp" imageDark="/img/components/dark/Button.webp">
+    <p>Napsautettava komponentti, joka laukaisee toiminnon tai tapahtuman painettaessa.</p>
   </GalleryCard>
 
-  <GalleryCard header="Toast" href="toast" image="/img/components/Toast.png" effect="slideUp">
-    <p>Kevyt, ei-estävä ilmoituskomponentti, joka näyttää lyhyesti viestin käyttäjälle ennen automaattista häipymistä.</p>
+  <GalleryCard header="Toast" href="toast" image="/img/components/light/Toast.webp" imageDark="/img/components/dark/Toast.webp">
+    <p>Kevyt, ei-estävä ilmoituskomponentti, joka näyttää viestin käyttäjälle lyhyeksi aikaa ennen automaattista häipymistä.</p>
   </GalleryCard>
 
-  <GalleryCard header="Varoitus" href="alert" image="/img/components/Alert.png">
-    <p>Komponentti, joka näyttää tärkeitä viestejä tai varoituksia erottuvassa muodossa käyttäjän huomion vangitsemiseksi.</p>
+  <GalleryCard header="Ilmoitus" href="alert" image="/img/components/light/Alert.webp" imageDark="/img/components/dark/Alert.webp">
+    <p>Komponentti, joka näyttää tärkeitä viestejä tai varoituksia huomattavassa muodossa käyttäjän huomion saamiseksi.</p>
   </GalleryCard>
 
-  <GalleryCard header="TyöpöytäIlmoitus" href="desktop-notification" image="/img/components/DesktopNotification.png">
-    <p>Komponentti, joka hyödyntää selaimen natiivia Ilmoitus-API:a varoittaakseen käyttäjiä mukautetuilla työpöytäilmoituksilla.</p>
+  <GalleryCard header="Merkkilappu" href="badge" image="/img/components/light/Badge.webp" imageDark="/img/components/dark/Badge.webp">
+    <p>Pieni merkki komponentti laskujen, tilojen tai lyhyiden metatietojen näyttämiseksi, tukee teemoja, kokoja ja ikoneita.</p>
+  </GalleryCard>
+
+  <GalleryCard header="TyöpöydänIlmoitus" href="desktop-notification" image="/img/components/light/DesktopNotification.webp" imageDark="/img/components/dark/DesktopNotification.webp">
+    <p>Komponentti, joka hyödyntää selaimen natiivin Ilmoitus-API:a varoittamaan käyttäjiä mukautetuilla työpöydän ilmoituksilla.</p>
   </GalleryCard>
   
-  <GalleryCard header="Navigaattori" href="navigator" image="/img/components/Navigator.png">
-    <p>Muokattava sivutuskomponentti tietojoukkojen selaamiseen, tukien asetteluja, joissa on ensimmäinen, viimeinen, seuraava, edellinen painike ja nopeat hyppy-kentät.</p>
+  <GalleryCard header="Navigaattori" href="navigator" image="/img/components/light/Navigator.webp" imageDark="/img/components/dark/Navigator.webp">
+    <p>Muokattava sivutuskomponentti datakokonaisuuksien navigoimiseen, tukee asetteluja ensimmäiselle, viimeiselle, seuraavalle, edelliselle painikkeelle ja nopealle hyppykentälle.</p>
   </GalleryCard>
 
-  <GalleryCard header="Edistymispalkki" href="progressbar" image="/img/components/ProgressBar.png">
-    <p>Komponentti, joka visuaalisesti esittää tehtävän tai prosessin edistymistä, yleensä esitetty vaakasuorassa palkissa, joka täyttyy edistymisen mukaan.</p>
+  <GalleryCard header="Edistyspalkki" href="progressbar" image="/img/components/light/ProgressBar.webp" imageDark="/img/components/dark/ProgressBar.webp">
+    <p>Komponentti, joka visuaalisesti esittää tehtävän tai prosessin edistystä, tyypillisesti esitetään vaakasuorana palkkina, joka täyttyy edistyessä.</p>
   </GalleryCard>
 
-  <GalleryCard header="Liukusäädin" href="slider" image="/img/components/Slider.png">
-    <p>Komponentti, joka sallii käyttäjien valita arvon määritellyltä alueelta vetämällä kahvaa pitkin rataa.</p>
+  <GalleryCard header="Liukusäädin" href="slider" image="/img/components/light/Slider.webp" imageDark="/img/components/dark/Slider.webp">
+    <p>Komponentti, joka mahdollistaa käyttäjien valita arvon määritellyltä alueelta vetämällä kahvaa radalla.</p>
   </GalleryCard>
 
-  <GalleryCard header="Kiireindikaattori" href="busyindicator" image="/img/components/BusyIndicator.png">
-    <p>Yleinen visuaalinen indikaattori sovelluksessa, yleensä pyörivä animaatio, joka merkitsee, että globaali prosessi on käynnissä.</p>
+  <GalleryCard header="TyössäOlemisenIlmaisin" href="busyindicator" image="/img/components/light/BusyIndicator.webp" imageDark="/img/components/dark/BusyIndicator.webp">
+    <p> Sovelluksen laajuinen visuaalinen indikaattori, tyypillisesti pyörivä, joka ilmoittaa, että globaali prosessi on käynnissä.</p>
   </GalleryCard>
 
-  <GalleryCard header="Lataus" href="loading" image="/img/components/Loading.png">
-    <p>Rajoitettu latausindikaattori, joka näkyy tietyssä vanhemmassa komponentissa, mikä ilmoittaa, että sisältöä tai tietoja ladataan kyseisellä alueella.</p>
+  <GalleryCard header="Lataus" href="loading" image="/img/components/light/Loading.webp" imageDark="/img/components/dark/Loading.webp">
+    <p>Rajattu latausilmaisin, joka näkyy tietyssä vanhemmassa komponentissa, ilmoittaen että sisältöä tai dataa ladataan kyseisessä osassa.</p>
   </GalleryCard>
 
-  <GalleryCard header="Pyörijä" href="spinner" image="/img/components/Spinner.png">
-    <p>Komponentti, joka näyttää pyörivän animaation, jota käytetään tyypillisesti osoittamaan, että prosessi tai toiminta on käynnissä.</p>
+  <GalleryCard header="Pyörijä" href="spinner" image="/img/components/light/Spinner.webp" imageDark="/img/components/dark/Spinner.webp">
+    <p>Komponentti, joka näyttää pyörivän animaation, tyypillisesti käytetään ilmoittamaan, että prosessi tai toiminta on käynnissä.</p>
   </GalleryCard>
 
-  <GalleryCard header="SovellusNavigaatio" href="appnav" image="/img/components/AppNav.png" effect="slideFromLeft">
-    <p>Komponentti, joka tarjoaa navigointivalikon sovellukselle, käytetään tyypillisesti linkkien tai navigointiesineiden luetteloimiseen, jotta voidaan vaihtaa eri osien tai näkymien välillä.</p>
+  <GalleryCard header="SovellusNavigointi" href="appnav" image="/img/components/light/AppNav.webp" imageDark="/img/components/dark/AppNav.webp">
+    <p>Komponentti, joka tarjoaa navigointimenun sovellukselle, tyypillisesti käytetään linkkien tai navigointikohteiden listaamiseen, joilla voidaan vaihtaa eri osioiden tai näkymien välillä.</p>
   </GalleryCard>
 
-  <GalleryCard header="Kuvake" href="icon" image="/img/components/Icons.png">
-    <p>Komponentti, joka näyttää graafisen symbolin tai kuvan, jota käytetään usein toiminnan, tilan tai kategorian kuvaamiseen käyttöliittymässä.</p>
+  <GalleryCard header="Ikoni" href="icon" image="/img/components/light/Icon.webp" imageDark="/img/components/dark/Icon.webp">
+    <p>Komponentti, joka näyttää graafisen symbolin tai kuvan, jota käytetään usein toiminnan, tilan tai kategorian esittämiseen käyttöliittymässä.</p>
   </GalleryCard>
 
-  <GalleryCard header="Pääte" href="terminal" image="/img/components/Terminal.png">
-    <p>Komponentti, joka simuloi komento-rivi käyttöliittymää (CLI) sovelluksessa, sallien käyttäjien syöttää ja suorittaa tekstipohjaisia komentoja.</p>
+  <GalleryCard header="Pääte" href="terminal" image="/img/components/light/Terminal.webp" imageDark="/img/components/dark/Terminal.webp">
+    <p>Komponentti, joka simuloi komentoriviliittymää (CLI) sovelluksessa, mahdollistaen käyttäjien syöttää ja suorittaa tekstipohjaisia komentoja.</p>
   </GalleryCard>
   
-  <GalleryCard header="InfiniteScroll" href="infinitescroll" image="/img/components/InfiniteScroll.png">
-    <p>Komponentti, joka lataa lisää kohteita vieritettäessä, näyttää latausilmaisimen ja seuraa, kun kaikki sisältö on haettu.</p>
+  <GalleryCard header="ÄärettömänRullaaminen" href="infinitescroll" image="/img/components/light/InfiniteScroll.webp" imageDark="/img/components/dark/InfiniteScroll.webp">
+    <p>Komponentti, joka lataa lisää kohteita vierittäessä, näyttää lataajan ja seuraa, milloin kaikki sisältö on haettu.</p>
   </GalleryCard>
 
-  <GalleryCard header="Päivittäjä" href="refresher" image="/img/components/Refresher.png">
-    <p>Komponentti, joka mahdollistaa pyyhkäisemällä päivän päivitystoiminnon vieritettävissä kontteissa—ihanteellinen dynaamiselle tietojen lataamiselle.</p>
+  <GalleryCard header="Päivitys" href="refresher" image="/img/components/light/Refresher.webp" imageDark="/img/components/dark/Refresher.webp">
+    <p>Komponentti, joka mahdollistaa kaikkeuttamisen vetämällä päivitysarvoa vieritettävissä säiliöissä, ideaalinen dynaamisen datan lataamiseen.</p>
   </GalleryCard>
 
-  <GalleryCard header="Puu" href="tree" image="/img/components/Tree.png">
-    <p>Komponentti hierarkkisten tietojen näyttämiseen, antaen käyttäjien laajentaa, supistaa ja vuorovaikuttaa sisäkkäisten kohteiden kanssa.</p>
+  <GalleryCard header="Puu" href="tree" image="/img/components/light/Tree.webp" imageDark="/img/components/dark/Tree.webp">
+    <p>Komponentti hierarkisten tietojen näyttämiseen, mahdollistaen käyttäjille laajentaa, kutistaa ja vuorovaikuttaa sisäkkäisten kohteiden kanssa.</p>
   </GalleryCard>
   
-  <GalleryCard header="Avatar" href="avatar" image="/img/components/Avatar.png">
-    <p>Komponentti käyttäjäprofiilikuva tai alkukirjainten näyttämiseen, tukien erilaisia kokoja, muotoja ja teemoja.</p>
+  <GalleryCard header="Profiilikuva" href="avatar" image="/img/components/light/Avatar.webp" imageDark="/img/components/dark/Avatar.webp">
+    <p>Komponentti, joka näyttää käyttäjäprofiilikuvia tai alkukirjaimia, tukee erilaisia kokoja, muotoja ja teemoja.</p>
+  </GalleryCard>
+  
+  <GalleryCard header="MarkdownNäkymä" href="markdownviewer" image="/img/components/light/MarkdownViewer.webp" imageDark="/img/components/dark/MarkdownViewer.webp">
+    <p>Komponentti, joka näyttää markdown-sisältöä edistyksellisellä merkki kerrallaan renderoinnilla, ihanteellinen tekoäly-chattiliittymille ja striimattavalle tekstille.</p>
   </GalleryCard>
   
 </GalleryGrid>

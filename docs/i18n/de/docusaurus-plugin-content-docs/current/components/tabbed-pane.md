@@ -2,59 +2,62 @@
 title: TabbedPane
 slug: tabbedpane
 sidebar_position: 125
-_i18n_hash: ebf6bff550fd69aeb6ab8e4dfefd2323
+sidebar_class_name: new-content
+_i18n_hash: 0b623c02434c6f0d140de0ade3a22c5d
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-tabbed-pane" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/tabbedpane/TabbedPane" top='true'/>
 
-Die `TabbedPane`-Klasse bietet eine kompakte und organisierte Möglichkeit, Inhalte anzuzeigen, die in mehrere Sektionen unterteilt sind, wobei jede mit einem `Tab` verknüpft ist. Benutzer können zwischen diesen Sektionen wechseln, indem sie auf die entsprechenden Registerkarten klicken, die oft mit Text und/oder Symbolen beschriftet sind. Diese Klasse vereinfacht die Erstellung vielschichtiger Benutzeroberflächen, bei denen unterschiedliche Inhalte oder Formulare zugänglich sein müssen, jedoch nicht gleichzeitig sichtbar sind.
+Mehrere Inhaltsabschnitte können unter einem einzelnen `TabbedPane` organisiert werden, wobei jeder Abschnitt an einen klickbaren `Tab` gebunden ist. Nur ein Abschnitt ist zur gleichen Zeit sichtbar, und Tabs können Text, Symbole oder beides anzeigen, um den Benutzern bei der Navigation zu helfen.
 
-## Verwendungen {#usages}
+<!-- INTRO_END -->
 
-Die `TabbedPane`-Klasse bietet Entwicklern ein leistungsfähiges Werkzeug zur Organisation und Präsentation mehrerer Registerkarten oder Sektionen innerhalb einer Benutzeroberfläche. Hier sind einige typische Szenarien, in denen Sie eine `TabbedPane` in Ihrer Anwendung nutzen könnten:
+## Usages {#usages}
 
-1. **Dokumentenbetrachter**: Implementierung eines Dokumentenbetrachters, bei dem jede Registerkarte ein anderes Dokument oder eine andere Datei darstellt. Benutzer können problemlos zwischen geöffneten Dokumenten wechseln, um effizient multitasking zu betreiben.
+Die Klasse `TabbedPane` bietet Entwicklern ein leistungsstarkes Werkzeug zum Organisieren und Präsentieren mehrerer Tabs oder Abschnitte innerhalb einer Benutzeroberfläche. Hier sind einige typische Szenarien, in denen Sie ein `TabbedPane` in Ihrer Anwendung verwenden könnten:
 
-2. **Datenmanagement**: Nutzen Sie eine `TabbedPane`, um Datenmanagementaufgaben zu organisieren, zum Beispiel:
-    >- Unterschiedliche Datensätze, die in einer Anwendung angezeigt werden
-    >- Verschiedene Benutzerprofile können in separaten Registerkarten angezeigt werden
+1. **Dokumentenbetrachter**: Implementierung eines Dokumentenbetrachters, wobei jeder Tab ein anderes Dokument oder eine Datei darstellt. Benutzer können einfach zwischen offenen Dokumenten hin- und herschalten, um effizient Multitasking zu betreiben.
+
+2. **Datenverwaltung:** Nutzen Sie ein `TabbedPane`, um Datenverwaltungsaufgaben zu organisieren, zum Beispiel:
+    >- Verschiedene Datensätze, die in einer Anwendung angezeigt werden
+    >- Verschiedene Benutzerprofile können innerhalb separater Tabs angezeigt werden
     >- Unterschiedliche Profile in einem Benutzermanagementsystem
 
-3. **Modulwahl**: Eine `TabbedPane` kann verschiedene Module oder Sektionen darstellen. Jede Registerkarte kann die Funktionen eines bestimmten Moduls kapseln, sodass Benutzer sich jeweils auf einen Aspekt der Anwendung konzentrieren können.
+3. **Modulauswahl**: Ein `TabbedPane` kann verschiedene Module oder Abschnitte darstellen. Jeder Tab kann die Funktionen eines bestimmten Moduls kapseln, sodass Benutzer sich jeweils auf einen Aspekt der Anwendung konzentrieren können.
 
-4. **Aufgabenverwaltung**: Aufgabenverwaltungsanwendungen können eine `TabbedPane` nutzen, um verschiedene Projekte oder Aufgaben darzustellen. Jede Registerkarte könnte einem bestimmten Projekt entsprechen, sodass Benutzer Aufgaben separat verwalten und verfolgen können.
+4. **Aufgabenverwaltung**: Anwendungen zur Aufgabenverwaltung können ein `TabbedPane` verwenden, um verschiedene Projekte oder Aufgaben darzustellen. Jeder Tab könnte einem bestimmten Projekt entsprechen, sodass Benutzer Aufgaben separat verwalten und verfolgen können.
 
-5. **Programmnavigation**: In einer Anwendung, die verschiedene Programme ausführen muss, könnte eine `TabbedPane`:
-    >- Als Seitenleisten dienen, die es ermöglichen, verschiedene Anwendungen oder Programme innerhalb einer einzigen Anwendung auszuführen, wie im [`AppLayout`](./app-layout.md)-Template gezeigt
-    >- Eine obere Leiste erstellen, die einen ähnlichen Zweck erfüllen oder Unteranwendungen innerhalb einer bereits ausgewählten Anwendung darstellen kann. 
+5. **Programmnavigation**: In einer Anwendung, die verschiedene Programme ausführen muss, könnte ein `TabbedPane`:
+    >- Als Sidebar dienen, die es ermöglicht, verschiedene Anwendungen oder Programme innerhalb einer einzelnen Anwendung zu verwenden, wie im [`AppLayout`](./app-layout.md) -Template gezeigt
+    >- Eine obere Leiste erstellen, die einen ähnlichen Zweck erfüllen oder Unteranwendungen innerhalb einer bereits ausgewählten Anwendung darstellen kann.
+  
+## Tabs {#tabs}
 
-## Registerkarten {#tabs}
-
-Registerkarten sind UI-Elemente, die zu Registerkarten-Panels hinzugefügt werden können, um zwischen verschiedenen Inhaltsansichten zu organisieren und zu wechseln.
+Tabs sind UI-Elemente, die zu Tabbed-Panes hinzugefügt werden können, um zwischen verschiedenen Inhaltsansichten zu organisieren und zu wechseln.
 
 :::important
-Registerkarten sind nicht als eigenständige Komponenten gedacht. Sie sollen in Verbindung mit Registerkarten-Panels verwendet werden. Diese Klasse ist kein `Component` und sollte nicht als solche verwendet werden.
+Tabs sind nicht dafür gedacht, als eigenständige Komponenten verwendet zu werden. Sie sind dazu gedacht, in Verbindung mit Tabbed-Panes verwendet zu werden. Diese Klasse ist kein `Component` und sollte nicht als solche verwendet werden.
 :::
 
 ### Eigenschaften {#properties}
 
-Registerkarten bestehen aus den folgenden Eigenschaften, die verwendet werden, wenn sie in einer `TabbedPane` hinzugefügt werden. Diese Eigenschaften verfügen über Getter und Setter, um die Anpassung innerhalb einer `TabbedPane` zu erleichtern.
+Tabs bestehen aus den folgenden Eigenschaften, die verwendet werden, wenn sie in einem `TabbedPane` hinzugefügt werden. Diese Eigenschaften haben Getter und Setter, um die Anpassung innerhalb eines `TabbedPane` zu erleichtern.
 
-1. **Key(`Object`)**: Stellt den eindeutigen Bezeichner für die `Tab` dar.
+1. **Key(`Object`)**: Repräsentiert die eindeutige Kennung für den `Tab`.
 
-2. **Text(`String`)**: Der Text, der als Titel für die `Tab` innerhalb der `TabbedPane` angezeigt wird. Dies wird auch als Titel über die Methoden `getTitle()` und `setTitle(String title)` bezeichnet.
+2. **Text(`String`)**: Der Text, der als Titel für den `Tab` im `TabbedPane` angezeigt wird. Dies wird auch über die Methoden `getTitle()` und `setTitle(String title)` als Titel bezeichnet.
 
-3. **Tooltip(`String`)**: Der Tooltip-Text, der mit der `Tab` verknüpft ist und angezeigt wird, wenn der Cursor über die `Tab` fährt.
+3. **Tooltip(`String`)**: Der Tooltip-Text, der mit dem `Tab` verknüpft ist und angezeigt wird, wenn der Cursor über den `Tab` schwebt.
 
-4. **Enabled(`boolean`)**: Gibt an, ob die `Tab` derzeit aktiviert ist oder nicht. Kann mit der Methode `setEnabled(boolean enabled)` geändert werden.
+4. **Enabled(`boolean`)**: Gibt an, ob der `Tab` derzeit aktiviert ist oder nicht. Kann mit der Methode `setEnabled(boolean enabled)` geändert werden.
 
-5. **Closeable(`boolean`)**: Gibt an, ob die `Tab` geschlossen werden kann. Kann mit der Methode `setCloseable(boolean enabled)` geändert werden. Dies fügt einen Schließen-Button auf der `Tab` hinzu, auf den der Benutzer klicken kann, und löst ein Entfernevent aus. Die `TabbedPane`-Komponente diktiert, wie das Entfernen behandelt wird.
+5. **Closeable(`boolean`)**: Gibt an, ob der `Tab` geschlossen werden kann. Kann mit der Methode `setCloseable(boolean enabled)` geändert werden. Dies fügt dem `Tab` einen Schließen-Button hinzu, der vom Benutzer angeklickt werden kann und ein Ereignis zur Entfernung auslöst. Die Komponente `TabbedPane` bestimmt, wie mit der Entfernung umzugehen ist.
 
 6. **Slot(`Component`)**: 
-    Slots bieten flexible Optionen zur Verbesserung der Funktionalität einer `Tab`. Sie können Symbole, Beschriftungen, Ladekreise, Löschen/Rücksetzen-Fähigkeiten, Avatare/Profilbilder und andere nützliche Komponenten innerhalb einer `Tab` einfügen, um die beabsichtigte Bedeutung für Benutzer weiter zu verdeutlichen.
-    Sie können eine Komponente während der Erstellung in den `prefix` Slot einer `Tab` hinzufügen. Alternativ können Sie die Methoden `setPrefixComponent()` und `setSuffixComponent()` verwenden, um verschiedene Komponenten vor und nach der angezeigten Option innerhalb einer `Tab` einzufügen.
+    Slots bieten vielseitige Optionen zur Verbesserung der Funktionalität eines `Tabs`. Sie können Symbole, Beschriftungen, Ladeanimationen, Klär-/Zurücksetzmöglichkeiten, Avatare/Profilbilder und andere nützliche Komponenten innerhalb eines `Tabs` einfügen, um die beabsichtigte Bedeutung für die Benutzer weiter zu verdeutlichen.
+    Sie können ein Komponenten im `prefix`-Slot eines `Tabs` während der Konstruktion hinzufügen. Alternativ können Sie die Methoden `setPrefixComponent()` und `setSuffixComponent()` verwenden, um verschiedene Komponenten vor und nach der angezeigten Option innerhalb eines `Tabs` einzufügen.
 
         ```java
         TabbedPane pane = new TabbedPane();
@@ -63,153 +66,163 @@ Registerkarten bestehen aus den folgenden Eigenschaften, die verwendet werden, w
 
 ## `Tab`-Manipulation {#tab-manipulation}
 
-Es gibt verschiedene Methoden, mit denen Entwickler `Tab`-Elemente innerhalb der `TabbedPane` hinzufügen, einfügen, entfernen und verschiedene Eigenschaften manipulieren können.
+Es gibt verschiedene Methoden, die es Entwicklern ermöglichen, `Tab`-Elemente innerhalb des `TabbedPane` hinzuzufügen, einzufügen, zu entfernen und verschiedene Eigenschaften zu manipulieren.
 
-### Hinzufügen einer `Tab` {#adding-a-tab}
+### Hinzufügen eines `Tabs` {#adding-a-tab}
 
-Die Methoden `addTab()` und `add()` existieren in verschiedenen überladenen Varianten, um Entwicklern Flexibilität beim Hinzufügen neuer Registerkarten zur `TabbedPane` zu ermöglichen. Das Hinzufügen einer `Tab` platziert sie nach allen zuvor vorhandenen Tabs.
+Die Methoden `addTab()` und `add()` existieren in verschiedenen überladenen Versionen, um Entwicklern Flexibilität beim Hinzufügen neuer Tabs zu geben. Das Hinzufügen eines `Tabs` platziert diesen nach allen zuvor vorhandenen Tabs.
 
-1. **`addTab(String text)`** - Fügt der `TabbedPane` eine `Tab` mit dem angegebenen `String` als Text der `Tab` hinzu.
-2. **`addTab(Tab tab)`** - Fügt die als Parameter bereitgestellte `Tab` zur `TabbedPane` hinzu.
-3. **`addTab(String text, Component component)`** - Fügt eine `Tab` mit dem angegebenen `String` als Text der `Tab` hinzu, und die bereitgestellte `Component` wird im Inhaltsbereich der `TabbedPane` angezeigt.
-4. **`addTab(Tab tab, Component component)`** - Fügt die bereitgestellte `Tab` hinzu und zeigt die bereitgestellte `Component` im Inhaltsbereich der `TabbedPane` an.
-5. **`add(Component... component)`** - Fügt ein oder mehrere `Component`-Instanzen zur `TabbedPane` hinzu, wobei für jede einen diskrete `Tab` erstellt wird, deren Text auf den Namen der `Component` gesetzt wird.
+1. **`addTab(String text)`** - Fügt einen `Tab` zum `TabbedPane` mit dem angegebenen `String` als Text des `Tabs` hinzu.
+2. **`addTab(Tab tab)`** - Fügt den `Tab`, der als Parameter übergeben wird, zum `TabbedPane` hinzu.
+3. **`addTab(String text, Component component)`** - Fügt einen `Tab` mit dem gegebenen `String` als Text des `Tabs` hinzu und dem bereitgestellten `Component`, der im Inhaltsbereich des `TabbedPane` angezeigt wird.
+4. **`addTab(Tab tab, Component component)`** - Fügt den bereitgestellten `Tab` hinzu und zeigt die bereitgestellte `Komponente` im Inhaltsbereich des `TabbedPane` an.
+5. **`add(Component... component)`** - Fügt ein oder mehrere `Component`-Instanzen zum `TabbedPane` hinzu, wobei für jede ein separater `Tab` erstellt wird, dessen Text auf den Namen des `Components` gesetzt wird.
 
 :::info
-Die `add(Component... component)` bestimmt den Namen der übergebenen `Component`, indem `component.getName()` auf das übergebene Argument aufgerufen wird.
+Die Methode `add(Component... component)` bestimmt den Namen des übergebenen `Components`, indem sie `component.getName()` auf dem übergebenen Argument aufruft.
 :::
 
-### Einfügen einer `Tab` {#inserting-a-tab}
+### Einfügen eines `Tabs` {#inserting-a-tab}
 
-Neben dem Hinzufügen einer `Tab` am Ende der vorhandenen Registerkarten ist es auch möglich, eine neue an einer bestimmten Position zu erstellen. Dazu gibt es mehrere überladene Versionen von `insertTab()`:
+Neben dem Hinzufügen eines `Tabs` am Ende der vorhandenen Tabs ist es auch möglich, einen neuen an einer bestimmten Position zu erstellen. Dazu gibt es mehrere überladene Versionen von `insertTab()`.
 
-1. **`insertTab(int index, String text)`** - Fügt eine `Tab` in die `TabbedPane` an der angegebenen Stelle mit dem angegebenen `String` als Text der `Tab` ein.
-2. **`insertTab(int index, Tab tab)`** - Fügt die als Parameter angegebene `Tab` an der angegebenen Stelle in die `TabbedPane` ein.
-3. **`insertTab(int index, String text, Component component)`** - Fügt eine `Tab` mit dem angegebenen `String` als Text der `Tab` ein und die angegebene `Component` wird im Inhaltsbereich der `TabbedPane` angezeigt.
-4. **`insertTab(int index, Tab tab, Component component)`** - Fügt die bereitgestellte `Tab` hinzu und zeigt die bereitgestellte `Component` im Inhaltsbereich der `TabbedPane` an.
+1. **`insertTab(int index, String text)`** - Fügt einen `Tab` an der gegebenen Indexposition im `TabbedPane` mit dem angegebenen `String` als Text des `Tabs` ein.
+2. **`insertTab(int index, Tab tab)`** - Fügt den als Parameter übergebenen `Tab` an der angegebenen Indexposition im `TabbedPane` ein.
+3. **`insertTab(int index, String text, Component component)`** - Fügt einen `Tab` mit dem angegebenen `String` als Text des `Tabs` ein und der bereitgestellte `Component`, der im Inhaltsbereich des `TabbedPane` angezeigt wird.
+4. **`insertTab(int index, Tab tab, Component component)`** - Fügt den bereitgestellten `Tab` ein und zeigt den bereitgestellten `Component` im Inhaltsbereich des `TabbedPane` an.
 
-### Entfernen einer `Tab` {#removing-a-tab}
+### Entfernen eines `Tabs` {#removing-a-tab}
 
-Um eine einzelne `Tab` aus der `TabbedPane` zu entfernen, verwenden Sie eine der folgenden Methoden:
+Um einen einzelnen `Tab` aus dem `TabbedPane` zu entfernen, verwenden Sie eine der folgenden Methoden:
 
-1. **`removeTab(Tab tab)`** - Entfernt eine `Tab` aus der `TabbedPane`, indem die zu entfernende Tab-Instanz übergeben wird.
-2. **`removeTab(int index)`** - Entfernt eine `Tab` aus der `TabbedPane`, indem der Index der zu entfernenden `Tab` angegeben wird.
+1. **`removeTab(Tab tab)`** - Entfernt einen `Tab` aus dem `TabbedPane`, indem die Instanz des zu entfernenden Tabs übergeben wird.
+2. **`removeTab(int index)`** - Entfernt einen `Tab` aus dem `TabbedPane`, indem der Index des zu entfernenden `Tabs` angegeben wird.
 
-Neben den beiden obigen Methoden zum Entfernen einer einzelnen `Tab` kann die Methode **`removeAllTabs()`** verwendet werden, um die `TabbedPane` von allen Registerkarten zu leeren.
+Zusätzlich zu diesen beiden Methoden zum Entfernen eines einzelnen `Tabs` kann die Methode **`removeAllTabs()`** verwendet werden, um das `TabbedPane` von allen Tabs zu leeren.
 
 :::info
 Die Methoden `remove()` und `removeAll()` entfernen keine Tabs innerhalb der Komponente.
 :::
 
-### Tab/Component-Zuordnung {#tabcomponent-association}
+### Tab/Komponentenassoziation {#tabcomponent-association}
 
-Um die `Component`, die für eine gegebene `Tab` angezeigt wird, zu ändern, rufen Sie die Methode `setComponentFor()` auf und übergeben entweder die Instanz der `Tab` oder den Index dieser Tab innerhalb der `TabbedPane`.
+Um die `Komponente`, die für einen bestimmten `Tab` angezeigt werden soll, zu ändern, rufen Sie die Methode `setComponentFor()` auf und übergeben entweder die Instanz des `Tabs` oder den Index dieses Tabs innerhalb des `TabbedPane`.
 
 :::info
-Wenn diese Methode für eine `Tab` verwendet wird, die bereits mit einer `Component` verknüpft ist, wird die zuvor verknüpfte `Component` zerstört.
+Wenn diese Methode bei einem `Tab` verwendet wird, der bereits mit einer `Komponente` assoziiert ist, wird die zuvor assoziierte `Komponente` zerstört.
 :::
 
 ## Konfiguration und Layout {#configuration-and-layout}
 
-Die `TabbedPane`-Klasse hat zwei Bestandteile: eine `Tab`, die an einem bestimmten Ort angezeigt wird, und eine Komponente, die angezeigt wird. Dies kann eine einzelne Komponente oder eine [`Composite`](../building-ui/composite-components)-Komponente sein, die es ermöglicht, komplexere Komponenten innerhalb des Inhaltsbereichs einer Registerkarte anzuzeigen.
+Die Klasse `TabbedPane` hat zwei wesentliche Teile: einen `Tab`, der an einem bestimmten Ort angezeigt wird, und eine Komponente, die angezeigt werden soll. Dies kann eine einzelne Komponente oder eine [`Composite`](../building-ui/composite-components) Komponente sein, die die Anzeige komplexerer Komponenten im Inhaltsbereich eines Tabs ermöglicht.
 
 ### Wischen {#swiping}
 
-Die `TabbedPane` unterstützt die Navigation durch die verschiedenen Registerkarten über Wischen. Dies ist ideal für eine mobile Anwendung, kann jedoch auch über eine integrierte Methode konfiguriert werden, um Mausklicks zu unterstützen. Sowohl das Wischen als auch das Mausklicken sind standardmäßig deaktiviert, können jedoch mittels der Methoden `setSwipable(boolean)` und `setSwipableWithMouse(boolean)` aktiviert werden.
+Das `TabbedPane` unterstützt die Navigation durch die verschiedenen Tabs durch Wischen. Dies ist ideal für eine mobile Anwendung, kann aber auch über eine integrierte Methode konfiguriert werden, um das Wischen mit der Maus zu unterstützen. Sowohl Wischen als auch Wischen mit der Maus sind standardmäßig deaktiviert, können jedoch mit den Methoden `setSwipable(boolean)` und `setSwipableWithMouse(boolean)` aktiviert werden.
 
-### Positionierung der Registerkarten {#tab-placement}
+### Tab-Platzierung {#tab-placement}
 
-Die `Tabs` innerhalb einer `TabbedPane` können je nach Vorliebe des Anwendungsentwicklers an verschiedenen Positionen innerhalb der Komponente platziert werden. Die bereitgestellten Optionen werden mit Hilfe der bereitgestellten Enum festgelegt, der die Werte `TOP`, `BOTTOM`, `LEFT`, `RIGHT` oder `HIDDEN` hat. Die Standardeinstellung ist `TOP`.
+Die `Tabs` innerhalb eines `TabbedPane` können an verschiedenen Positionen innerhalb der Komponente basierend auf der Präferenz der Anwendungsentwickler platziert werden. Die bereitgestellten Optionen werden unter Verwendung des bereitgestellten Enums festgelegt, das die Werte `TOP`, `BOTTOM`, `LEFT`, `RIGHT` oder `HIDDEN` hat. Die Standardeinstellung ist `TOP`.
 
-<ComponentDemo 
-path='/webforj/tabbedpaneplacement?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPanePlacementView.java'
-height="400px"
+<ComponentDemo
+path='/webforj/tabbedpaneplacement'
+files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPanePlacementView.java']}
+height='400px'
 />
 
 ### Ausrichtung {#alignment}
 
-Zusätzlich zur Änderung der Platzierung der `Tab`-Elemente innerhalb der `TabbedPane` ist es auch möglich, zu konfigurieren, wie die Registerkarten innerhalb der Komponente ausgerichtet werden. Standardmäßig ist die Einstellung `AUTO` aktiv, die es ermöglicht, dass die Platzierung der Registerkarten deren Ausrichtung diktiert.
+Neben der Änderung der Platzierung der `Tab`-Elemente innerhalb des `TabbedPane` ist es auch möglich, zu konfigurieren, wie die Tabs innerhalb der Komponente ausgerichtet werden. Standardmäßig ist die Einstellung `AUTO` aktiv, wodurch die Platzierung der Tabs deren Ausrichtung bestimmt.
 
-Die anderen Optionen sind `START`, `END`, `CENTER` und `STRETCH`. Die ersten drei beschreiben die Position relativ zur Komponente, wobei `STRETCH` die Registerkarten den verfügbaren Platz füllen lässt.
+Die anderen Optionen sind `START`, `END`, `CENTER` und `STRETCH`. Die ersten drei beschreiben die Position relativ zur Komponente, wobei `STRETCH` die Tabs den verfügbaren Platz ausfüllen lässt.
 
-<ComponentDemo 
-path='/webforj/tabbedpanealignment?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneAlignmentView.java'
-height="250px"
+<ComponentDemo
+path='/webforj/tabbedpanealignment'
+files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneAlignmentView.java']}
+height='250px'
 />
 
-### Rand und Aktivitätsindikator {#border-and-activity-indicator}
+### Rahmen und Aktivitätsanzeige {#border-and-activity-indicator}
 
-Die `TabbedPane` zeigt standardmäßig einen Rand für die Registerkarten innerhalb von ihr an, der je nach festgelegter `Placement` platziert wird. Dieser Rand hilft, den Raum zu visualisieren, den die verschiedenen Registerkarten innerhalb des Panels einnehmen.
+Das `TabbedPane` hat standardmäßig einen Rahmen, der für die darin befindlichen Tabs angezeigt wird und abhängig von der festgelegten `Placement` platziert ist. Dieser Rahmen hilft, den Bereich zu visualisieren, den die verschiedenen Tabs innerhalb des Paneels einnehmen.
 
-Wenn auf eine `Tab` geklickt wird, wird standardmäßig ein Aktivitätsindikator in der Nähe dieser `Tab` angezeigt, um zu helfen, darzustellen, welche die aktuell ausgewählte `Tab` ist.
+Wenn ein `Tab` angeklickt wird, wird standardmäßig ein Aktivitätsindikator in der Nähe dieses `Tabs` angezeigt, um hervorzuheben, welcher der aktuell ausgewählte `Tab` ist.
 
-Beide Optionen können von einem Entwickler angepasst werden, indem die booleschen Werte mithilfe der entsprechenden Setter-Methoden geändert werden. Um festzulegen, ob der Rand angezeigt wird oder nicht, kann die Methode `setBorderless(boolean)` verwendet werden, wobei `true` den Rand ausblendet und `false`, der Standardwert, den Rand anzeigt.
+Beide Optionen können von einem Entwickler angepasst werden, indem die booleschen Werte mit den entsprechenden Setter-Methoden geändert werden. Um zu ändern, ob der Rahmen angezeigt wird oder nicht, kann die Methode `setBorderless(boolean)` verwendet werden, wobei `true` den Rahmen ausblendet und `false`, der Standardwert, den Rahmen anzeigt.
 
 :::info
-Dieser Rand gilt nicht für die gesamte `TabbedPane`-Komponente und dient lediglich als Trennlinie zwischen den Registerkarten und dem Inhalt der Komponente.
+Dieser Rahmen gilt nicht für das gesamte `TabbedPane`-Komponente und dient lediglich als Trennlinie zwischen den Tabs und dem Inhalt der Komponente.
 :::
 
-Um die Sichtbarkeit des aktiven Indikators festzulegen, kann die Methode `setHideActiveIndicator(boolean)` verwendet werden. Wenn `true` an diese Methode übergeben wird, wird der aktive Indikator unter einer aktiven `Tab` ausgeblendet, während `false`, der Standardwert, den Indikator angezeigt lässt.
+Um die Sichtbarkeit des aktiven Indikators festzulegen, kann die Methode `setHideActiveIndicator(boolean)` verwendet werden. Das Übergeben von `true` an diese Methode blendet den aktiven Indikator unter einem aktiven `Tab` aus, während `false`, der Standardwert, den Indikator angezeigt bleibt.
 
-<ComponentDemo 
-path='/webforj/tabbedpaneborder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneBorderView.java'
-height="300px"
+<ComponentDemo
+path='/webforj/tabbedpaneborder'
+files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneBorderView.java']}
+height='300px'
 />
 
 ### Aktivierungsmodi {#activation-modes}
 
-Für eine präzisere Kontrolle darüber, wie die `TabbedPane` navigiert wird, kann der `Activation`-Modus festgelegt werden, um anzugeben, wie die Komponente sich verhalten soll.
+Für mehr Kontrolle darüber, wie das `TabbedPane` beim Navigieren mit der Tastatur funktioniert, kann der `Aktivierungs`-Modus festgelegt werden, um zu spezifizieren, wie sich die Komponente verhalten soll.
 
-- **`Auto`**: Wenn auf Auto gesetzt, werden die entsprechenden Tab-Komponenten beim Navigieren mit den Pfeiltasten sofort angezeigt.
+- **`Auto`**: Wenn auf Auto gesetzt, wird das Navigieren der Tabs mit den Pfeiltasten die entsprechende Tab-Komponente sofort anzeigen.
 
-- **`Manual`**: Wenn auf manuell gesetzt, erhält die Tab den Fokus, wird jedoch nicht angezeigt, bis der Benutzer die Leertaste oder Eingabetaste drückt.
+- **`Manual`**: Wenn auf manuell gesetzt, erhält der Tab den Fokus, wird jedoch nicht angezeigt, bis der Benutzer die Leertaste oder Eingabetaste drückt.
 
-<ComponentDemo 
-path='/webforj/tabbedpaneactivation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneActivationView.java'
-height="250px"
+<ComponentDemo
+path='/webforj/tabbedpaneactivation'
+files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneActivationView.java']}
+height='250px'
 />
 
-### Entfernungsoptionen {#removal-options}
+### Entfernungsmöglichkeiten {#removal-options}
 
-Einzelne `Tab`-Elemente können so festgelegt werden, dass sie schließbar sind. Schließbare Registerkarten haben einen Schließen-Button, der zur Registerkarte hinzugefügt wird und ein Schließevent auslöst, wenn er angeklickt wird. Die `TabbedPane` diktiert, wie dieses Verhalten gehandhabt wird.
+Einzelne `Tab`-Elemente können so konfiguriert werden, dass sie schließbar sind. Schließbare Tabs haben einen Schließen-Button, der zum Tab hinzugefügt wird, und ein Schließereignis auslöst, wenn er angeklickt wird. Das `TabbedPane` bestimmt, wie dieses Verhalten behandelt wird.
 
-- **`Manual`**: Standardmäßig ist das Entfernen auf `MANUAL` eingestellt, was bedeutet, dass das Ereignis ausgelöst wird, es aber in der Verantwortung des Entwicklers liegt, dieses Ereignis auf die von ihm gewählte Weise zu behandeln.
+- **`Manual`**: Standardmäßig ist die Entfernung auf `MANUAL` eingestellt, was bedeutet, dass das Ereignis ausgelöst wird, es jedoch den Entwicklern überlassen bleibt, dieses Ereignis auf die gewünschte Weise zu behandeln.
 
-- **`Auto`**: Alternativ kann `AUTO` verwendet werden, was das Ereignis auslöst und auch die `Tab` von der Komponente entfernt, wodurch es für den Entwickler nicht mehr erforderlich ist, dieses Verhalten manuell zu implementieren.
+- **`Auto`**: Alternativ kann `AUTO` verwendet werden, das das Ereignis auslöst und auch den `Tab` für den Entwickler aus der Komponente entfernt, wodurch die Notwendigkeit entfällt, dieses Verhalten manuell zu implementieren.
+
+### Segmentsteuerung <DocChip chip='since' label='26.00' /> {#segment-control}
+
+Das `TabbedPane` kann als Segmentsteuerung dargestellt werden, indem die `segment`-Eigenschaft mit `setSegment(true)` aktiviert wird. In diesem Modus werden Tabs mit einem rutschenden Pillenindikator angezeigt, der die aktive Auswahl hervorhebt und eine kompakte Alternative zur Standard-Tab-Interface bietet.
+
+<ComponentDemo
+path='/webforj/tabbedpanesegment'
+files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneSegmentView.java']}
+height='250px'
+/>
 
 ## Styling {#styling}
 
-### Expanse und Thema {#expanse-and-theme}
+### Ausdehnung und Thema {#expanse-and-theme}
 
-Die `TabbedPane` verfügt über integrierte Optionen für `Expanse` und `Theme`, die anderen webforJ-Komponenten ähnlich sind. Diese können verwendet werden, um schnell Stile hinzuzufügen, die verschiedene Bedeutungen für den Endbenutzer vermitteln, ohne die Komponente mit CSS zu gestalten.
+Das `TabbedPane` bietet integrierte `Expanse`- und `Theme`-Optionen, die anderen webforJ-Komponenten ähnlich sind. Diese können verwendet werden, um schnell ein Styling hinzuzufügen, das verschiedene Bedeutungen für den Endbenutzer vermittelt, ohne die Komponente mit CSS zu gestalten.
 
-<ComponentDemo 
-path='/webforj/tabbedpaneexpansetheme?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneExpanseThemeView.java'
-height="250px"
+<ComponentDemo
+path='/webforj/tabbedpaneexpansetheme'
+files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneExpanseThemeView.java']}
+height='250px'
 />
 
-<TableBuilder name="TabbedPane" />
+<TableBuilder name={['Tab', 'TabbedPane']} />
 
-## Beste Praktiken {#best-practices}
+## Best Practices {#best-practices}
 
-Die folgenden Praktiken werden empfohlen für die Nutzung der `TabbedPane` innerhalb von Anwendungen:
+Die folgenden Praktiken werden empfohlen, um das `TabbedPane` innerhalb von Anwendungen zu nutzen:
 
-- **Logische Gruppierung**: Verwenden Sie Registerkarten, um verwandte Inhalte logisch zu gruppieren
-    >- Jede Registerkarte sollte eine deutliche Kategorie oder Funktionalität innerhalb Ihrer Anwendung darstellen
-    >- Gruppieren Sie ähnliche oder logische Registerkarten nahe beieinander
+- **Logische Gruppierung**: Verwenden Sie Tabs, um verwandte Inhalte logisch zu gruppieren.
+    >- Jeder Tab sollte eine DISTINCTE Kategorie oder Funktionalität innerhalb Ihrer Anwendung darstellen. 
+    >- Gruppieren Sie ähnliche oder logische Tabs nahe beieinander.
 
-- **Begrenzte Registerkarten**: Vermeiden Sie es, Benutzer mit zu vielen Registerkarten zu überfordern. Überlegen Sie, eine hierarchische Struktur oder andere Navigationsmuster zu verwenden, wo zutreffend, für eine saubere Benutzeroberfläche
+- **Begrenzte Tabs**: Vermeiden Sie es, Benutzer mit zu vielen Tabs zu überwältigen. Ziehen Sie in Erwägung, eine hierarchische Struktur oder andere Navigationsmuster zu verwenden, wo dies für ein sauberes Interface anwendbar ist.
 
-- **Klare Beschriftungen**: Beschriften Sie Ihre Registerkarten klar für eine intuitive Verwendung
-    >- Bieten Sie klare und prägnante Beschriftungen für jede Registerkarte an
-    >- Beschriftungen sollten den Inhalt oder die Zweckmäßigkeit widerspiegeln und es Benutzern erleichtern, zu verstehen
-    >- Nutzen Sie Symbole und unterschiedliche Farben, wo zutreffend
+- **Klare Beschriftungen**: Beschriften Sie Ihre Tabs klar für intuitive Nutzung.
+    >- Bieten Sie klare und prägnante Beschriftungen für jeden Tab an. 
+    >- Beschriftungen sollten den Inhalt oder Zweck widerspiegeln, damit Benutzer es leicht verstehen können.
+    >- Nutzen Sie Symbole und unterschiedliche Farben, wo anwendbar.
 
-- **Tastaturnavigation**: Verwenden Sie die Tastaturnavigation von webforJ's `TabbedPane`, um die Interaktion mit der `TabbedPane` für den Endbenutzer nahtloser und intuitiver zu gestalten
+- **Tastaturnavigation**: Verwenden Sie die Tastaturnavigation von webforJ für das `TabbedPane`, um die Interaktion mit dem `TabbedPane` nahtloser und intuitiver für den Endbenutzer zu gestalten.
 
-- **Standardregisterkarte**: Wenn die Standardregisterkarte nicht zu Beginn der `TabbedPane` platziert ist, ziehen Sie in Betracht, diese Registerkarte als Standard für wesentliche oder häufig verwendete Informationen festzulegen.
+- **Standard-Tab**: Wenn der Standardtab nicht zu Beginn des `TabbedPane` platziert ist, ziehen Sie in Erwägung, diesen Tab als Standard für wesentliche oder häufig verwendete Informationen festzulegen.

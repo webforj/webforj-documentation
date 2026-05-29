@@ -2,23 +2,25 @@
 sidebar_position: 15
 title: Sorting
 slug: sorting
-_i18n_hash: 3c9156ad5da204816bd4ce783003cbf7
+_i18n_hash: 16c35fa416c4ebba3b680deb2d8925ef
 ---
-Lajittelu antaa käyttäjille mahdollisuuden järjestää tietoja sarakkeittain, mikä tekee tiedoista helpommin luettavia ja analysoitavia. Tämä on hyödyllistä, kun käyttäjät tarvitsevat nopeaa pääsyä tietyn sarakkeen korkeimpiin tai matalimpiin arvoihin.
+Lajittelu mahdollistaa käyttäjien järjestää tietoja sarakkeissa jonoon, mikä tekee tiedoista helpommin luettavia ja analysoitavia. Tämä on hyödyllistä, kun käyttäjät tarvitsevat nopeasti löytää tietyssä sarakkeessa korkeimmat tai matalimmat arvot.
 
-:::tip Tietojen hallinta ja kysely
-Tietoa siitä, miten käyttää `Repository`-mallia kokoelmien hallintaan ja kyselyyn, katso [Repository-artikkelit](/docs/advanced/repository/overview).
+:::tip Datan hallinta ja kysely
+Tietoa siitä, kuinka käyttää `Repository`-mallia kokoelmien hallintaan ja kyselyyn, katso [Repository-artikkelit](/docs/advanced/repository/overview).
 :::
 
-<ComponentDemo 
-path='/webforj/tablesorting?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableSortingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablesorting'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
-Oletuksena saraketta ei voi lajitella, ellet erikseen ota sitä käyttöön. Sallitaksesi lajittelun tietyssä sarakkeessa, käytä `setSortable(true)`-menetelmää:
+Oletuksena sarake ei ole lajittelukelpoinen, ellei se nimenomaisesti mahdollista. Jos haluat sallia lajittelun tietyssä sarakkeessa, käytä `setSortable(true)`-metodia:
 
 ```java 
 table.getColumn("Ikä").setSortable(true);
@@ -26,27 +28,29 @@ table.getColumn("Ikä").setSortable(true);
 
 ## Monilajittelu {#multi-sorting}
 
-:::warning Monisarakkeinen lajittelu on oletuksena pois käytöstä webforJ:ssä `25.00`
-Ennen webforj `25.00`:aa taulut tukivat monisarakkeista lajittelua oletuksena. Versiosta `25.00` alkaen tämä käyttäytyminen muuttui—kehittäjien on nyt erikseen otettava käyttöön monisarakkeinen lajittelu.
+:::warning Monisarakkeinen lajittelu pois päältä oletuksena webforJ `25.00`
+Ennen webforj `25.00`, taulukot tukivat monisarakkeista lajittelua oletuksena. Versiosta `25.00` alkaen tämä käyttäytyminen muuttui—kehittäjien täytyy nyt nimenomaisesti mahdollistaa monisarakkeinen lajittelu.
 :::
 
-Jos monilajittelu on tarpeen, `setMultiSorting(true)` on sovellettava taululle. Tämä antaa käyttäjille mahdollisuuden lajitella useita sarakkeita peräkkäin:
+Jos monilajittelua tarvitaan, `setMultiSorting(true)` täytyy soveltaa taulukkoon. Tämä sallii käyttäjien lajitella useita sarakkeita peräkkäin:
 
 ```java
 table.setMultiSorting(true);
 ```
 
-Monilajittelun ollessa käytössä useiden sarakeotsikoiden klikkaaminen lajittelee ne peräkkäin. Lajittelun prioriteetti näkyy visuaalisesti taulun käyttöliittymässä.
+Kun monilajittelu on käytössä, useiden sarakeotsikoiden napsauttaminen lajitellaan peräkkäin. Lajittelun prioriteetti näkyy visuaalisesti taulukon käyttöliittymässä.
 
-<ComponentDemo 
-path='/webforj/tablemultisorting?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablemultisorting'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
-Voit myös määrittää lajittelun prioriteetin ohjelmallisesti palvelinpuolen lajittelua varten. Käytä `setSortOrder()` haluamillesi sarakkeille lajittelun prioriteetin mukaan:
+Voit myös määritellä lajittelun prioriteetin ohjelmallisesti palvelinpuolen lajittelua varten. Käytä `setSortOrder()` sarakkeissa, jotka haluat lajitella, prioriteettijärjestyksessä:
 
 ```java
 // Palvelinpuolen lajittelujärjestys
@@ -54,80 +58,109 @@ nameColumn.setSortOrder(1);
 ageColumn.setSortOrder(2);
 ```
 
-:::info Sarakkeen järjestyksellä on merkitystä
-Ellei `setSortOrder()`-menetelmää käytetä, taulu lajittelee oletuksena sarakkeet sen mukaan, missä järjestyksessä ne on määritelty.
+:::info Sarakejärjestyksellä on merkitystä
+Ellei `setSortOrder()`-metodia käytetä, taulukko lajittelee oletuksena sarakkeiden julkaisujärjestyksen mukaan.
 :::
 
-<ComponentDemo 
-path='/webforj/tablesortorder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablesortorder'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
 ## Lajittelusuunta {#sort-direction}
 
-Sarakkeen lajittelusuunnalle on kolme saatavilla olevaa asetusta:
+Sarake voidaan lajitella kolmella eri asetuksella:
 
-- `SortDirection.ASC`: Lajittelee sarakkeen nousevassa järjestyksessä.
-- `SortDirection.DESC`: Lajittelee sarakkeen laskevassa järjestyksessä.
-- `SortDirection.NONE`: Sarakkeeseen ei ole sovellettu lajittelua.
+- `SortDirection.ASC`: Lajitellaan sarake nousevaan järjestykseen.
+- `SortDirection.DESC`: Lajitellaan sarake laskevaan järjestykseen.
+- `SortDirection.NONE`: Sarakkeeseen ei sovelleta lajittelua.
 
-Kun sarakkeella on lajittelu käytössä, voit nähdä joukon pystysuoria nuoli-indikaattoreita sarakkeen yläpäässä. Nämä nuolit mahdollistavat käyttäjän vaihdella eri lajittelusuuntien välillä.
+Kun sarakkeessa on lajittelu käytössä, näet joukon pystysuoria nuoli-ilmaisin, jotka näkyvät sarakkeen yläosassa. Nämä nuolet mahdollistavat käyttäjän vaihtaa lajittelusuuntien välillä.
 
-Kun nouseva järjestys on valittuna, näytetään `^`, kun taas laskeva järjestys näyttää `v`.
+Kun nouseva järjestys on valittu, `^` näytetään, kun taas laskeva järjestys näyttää `v`.
 
 
-## Asiakkaan vs. palvelimen puolen lajittelu {#client-vs-server-side-sorting}
+## Asiakas vs. palvelinpuolen lajittelu {#client-vs-server-side-sorting}
 
-Tietojen lajittelu voidaan laajalti luokitella kahteen päämenetelmään: **Asiakkaan lajittelu** ja **Palvelimen lajittelu**.
+Tietojen lajittelu voidaan pääasiassa jakaa kahteen päämenetelmään: **Asiakaslajittelu** ja **Palvelinlajittelu**.
 
-### Asiakkaan lajittelu {#client-sorting}
+### Asiakaslajittelu {#client-sorting}
 
-Asiakkaan lajittelu tarkoittaa tietojen järjestämistä ja näyttämistä suoraan asiakasohjelman käyttöliittymässä. Se on lajittelu, jonka kanssa käyttäjät ovat vuorovaikutuksessa napsauttaessaan sarakeotsikoita, vaikuttaen tietojen visuaaliseen esitykseen näytöllä.
+Asiakaslajittelu tarkoittaa tietojen järjestämistä ja esittämistä suoraan asiakasohjelman käyttöliittymässä. Se on lajittelu, johon käyttäjät vaikuttavat napsauttamalla sarakeotsikoita, ja se vaikuttaa tietojen visuaaliseen esitykseen näytöllä.
 
-Kehittäjällä ei ole suoraa hallintaa asiakaspuolen lajittelusta, vaan se määräytyy Javaan määritetyn saraketyypin mukaan. Seuraavat tyypit ovat tällä hetkellä tuettuja:
+Kehittäjällä ei ole suoraa kontrollia asiakaspuolen lajittelusta, vaan se määräytyy Java-ohjelmassa annettujen saraketyyppien mukaan. Seuraavat tyypit ovat tällä hetkellä tuettuina:
 
 - TEKSTI
 - NUMERO
-- BOOLEANI
+- BOOL
 - PÄIVÄ
-- PÄIVÄYS-AIKA
+- PÄIVÄMÄÄRÄ
 - AIKA
 
 :::info
-Asiakkaan lajittelu ei toimi, kun vain osa tiedoista on saatavilla asiakkaassa.
+Asiakaslajittelu ei toimi, kun vain osa tiedoista on saatavilla asiakaspuolella.
 :::
 
-### Palvelimen lajittelu {#server-sorting}
+### Palvelinlajittelu {#server-sorting}
 
-Erottaen asiakaspuolen lajittelusta, palvelimen lajittelu tarkoittaa tietojen järjestämistä ja organisoimista palvelimella ennen niiden siirtämistä asiakkaalle. Tämä lähestymistapa on erityisen hyödyllinen suurten tietojoukkojen käsittelyssä, jotka saattavat olla epäkäytännöllisiä siirtää kokonaan asiakkaalle.
+Toisin kuin asiakaspuolen lajittelu, palvelinlajittelu tarkoittaa tietojen järjestämistä ja organisointia palvelimella ennen niiden siirtämistä asiakkaalle. Tämä lähestymistapa on erityisen hyödyllinen suurten tietojoukkojen käsittelyssä, joita voi olla epäkäytännöllistä siirtää kokonaan asiakkaalle.
 
-Kehittäjillä on enemmän hallintaa palvelinpuolen lajittelun logiikasta. Tämä mahdollistaa monimutkaisempien lajittelualgoritmien ja optimointien toteuttamisen, mikä tekee siitä sopivan laajojen tietojen skenaarioihin. Tämä varmistaa, että asiakas saa esilajiteltua dataa, mikä minimoi laajan asiakaspuolen käsittelyn tarpeen.
+Kehittäjillä on enemmän kontrollia palvelinlajittelun logiikan yli. Tämä mahdollistaa monimutkaisten lajittelualgoritmien ja optimointien toteuttamisen, mikä tekee siitä sopivan laajojen tietomäärien handlaamiseen. Tämä varmistaa myös, että asiakas saa etukäteen lajiteltua dataa, mikä minimoi laajamittaisen asiakaspuolen käsittelyn tarpeen.
 
 :::info
-Palvelimen lajittelu on suorituskykyyn suuntautunut strategia tietojoukoille, jotka ylittävät tehokkaan asiakaspuolen käsittelyn kyvyt, ja se on oletusmenetelmä, jota `Table` käyttää.
+Palvelinlajittelu on suorituskykyyn keskittyvä strategia suurten tietojoukkojen käsittelemiseen, joka ylittää tehokkaan asiakaspuolen käsittelyn mahdollisuudet, ja se on `Table`:n oletusmenetelmä.
 :::
+
+### Sarakeominaisuuden nimi {#column-property-name}
+
+Oletuksena `Table` käyttää sarakkeen ID:tä ominaisuusnimenä taustatietovaraston lajitteluparametrien kokoamisessa. Kun sarakkeen näyttö ID ei vastaa taustatietovaraston ominaisuutta, tai kun sarake näyttää lasketun arvon, käytä `setPropertyName()`-metodia ilmoittaaksesi nimenomaisesti `Table`:lle, mikä ominaisuus lajitellaan.
+
+```java
+// Sarakkeen ID on "Koko Nimi", mutta taustatietovaraston ominaisuus on "fullName"
+table.addColumn("Koko Nimi", Person::getFullName)
+     .setSortable(true)
+     .setPropertyName("fullName");
+```
+
+Ominaisuuden nimi siirretään `OrderCriteria`:lle, kun lajittelu tapahtuu, jolloin taustatietovarastot, kuten Spring Data JPA tai REST-adapterit, voivat luoda oikean `ORDER BY`-lauseen.
+
+:::warning
+Ilman `setPropertyName()`, `Table` käyttää oletuksena sarakkeen ID:tä. Jos tämä ei vastaa voimassa olevaa taustatietovaraston ominaisuutta, lajittelu epäonnistuu hiljaisesti tai palauttaa väärin järjestettyjä tietoja.
+:::
+
+Myös sisennetyt ominaisuuspolut tuetaan piste-notaatiolla:
+
+```java
+table.addColumn("Kaupunki", Person::getCity)
+     .setSortable(true)
+     .setPropertyName("address.city");
+```
 
 #### Vertailijat {#comparators}
 
-`Column`-komponentti mahdollistaa kehittäjien käyttää Java `Comparators`-toimintoja dynaamiseen ja mukautettuun lajitteluun. `Comparator` on mekanismi, jota käytetään järjestämään kaksi samaan luokkaan kuuluvaa objektia, vaikka kyseinen luokka olisi käyttäjän määrittelemä. Tämä toiminnallisuus tarjoaa kehittäjille joustavuutta mukauttaa, miten tiedot lajitellaan, antaen suurempaa hallintaa oletuslajittelukäyttäytymiseen verrattuna luonnolliseen järjestykseen.
+`Column`-komponentti mahdollistaa kehittäjien käyttää Java `Comparators`-mekanismeja dynaamiseen ja mukautettuun lajitteluun. `Comparator` on mekanismi, jota käytetään järjestämään kaksi samaa luokkaa olevaa objektia, jopa jos kyseessä on käyttäjän määrittämä luokka. Tämä toiminnallisuus antaa kehittäjille joustavuutta mukauttaa, kuinka tietoja lajitellaan, tarjoten korkeamman kontrollin oletuslajittelukäyttäytymisestä luonnollisen järjestyksen mukaan.
 
-Voit hyödyntää `Comparator`-lajittelua `Column`-komponentissa käyttämällä `setComparator()`-menetelmää. Tämä menetelmä mahdollistaa mukautetun `Comparator`-funktion määrittämisen, joka ohjaa lajittelu-logiikkaa.
+Käyttääksesi `Comparator`-lajittelua `Column`:ssa, voit käyttää `setComparator()`-metodia. Tämä metodi mahdollistaa mukautetun `Comparator`-funktion määrittämisen, joka määrää lajittelulogiikan.
 
-<ComponentDemo 
-path='/webforj/tablecolumncomparator?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnComparatorView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+<ComponentDemo
+path='/webforj/tablecolumncomparator'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableColumnComparatorView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 
-Edellisessä esimerkissä on määritelty mukautettu vertailufunktio, joka ottaa kaksi elementtiä (a ja b) ja määrittää lajittelujärjestyksen `Number`-attribuutin käsiteltyjen kokonaislukuarvojen perusteella.
+Yllä olevassa esimerkissä määritellään mukautettu vertailijafunktio, joka ottaa kaksi elementtiä (a ja b) ja määrittää lajittelujärjestyksen `Number`-attribuutin jäsenneltyjen kokonaisarvojen mukaan.
 
-Vertailijoiden käyttäminen sarakkeen lajittelussa on erityisen hyödyllistä, kun käsitellään numeerisesti ei-juoksevia arvoja. Ne ovat myös hyödyllisiä monimutkaisten lajittelualgoritmien toteuttamiseen.
+Vertailijoiden käyttäminen sarakelajittelussa on erityisen hyödyllistä, kun käsitellään ei-numeerisia arvoja. Ne ovat myös hyödyllisiä monimutkaisten lajittelualgoritmien toteuttamisessa.
 
 :::info
-Oletuksena `Table` käyttää palvelinpuolen lajittelua ja lajittelee ei-primitiiviset arvot objekti`toString()`-menetelmän avulla, muuttaen ne merkkijonoarvoiksi ja lajittaen sitten ne.
+Oletuksena `Table` käyttää palvelinpuolen lajittelua ja lajittelee ei-perinteisiä arvoja Objectin `toString()`-metodin avulla, muuttaen ne merkkijonoarvoiksi ja lajitellen ne sitten.
 :::
