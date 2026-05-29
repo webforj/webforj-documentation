@@ -1,35 +1,36 @@
 ---
 sidebar_position: 4
 title: Transformation
-_i18n_hash: fe3acbd17750ab0092cbc3609b967969
+sidebar_class_name: updated-content
+_i18n_hash: e03ca3208470e53be7128ffb972c2670
 ---
-Data transformations ovat keskeinen ominaisuus, joka mahdollistaa sujuvan muuntamisen käyttöliittymäkomponenttien ja datamallisi käyttämien tietotyyppien välillä. Tämä ominaisuus varmistaa, että tietotyypit ovat yhteensopivia ja kunnolla muotoiltuja, kun siirrät tietoja sovellustesi etu- ja takapään välillä.
+Tietomuunnokset muuntavat käyttöliittymäkomponenttien käyttämät tietotyypit ja tietomallisi käyttämät tietotyypit. Tämä pitää tietotyypit yhteensopivina ja asianmukaisesti muotoiltuina, kun siirretään tietoja sovelluksesi etu- ja taustapään välillä.
 
 :::tip
-Muunnossäätö on parasta käyttää, kun bean-ominaisuuden tietotyyppi ei vastaa käyttöliittymäkomponenttien käsittelemiä tietotyyppejä. Jos tarvitset vain muuntaa saman tyyppisiä tietoja, on suositeltavaa määrittää [sidontojen getterit ja setterit](bindings#binding-getters-and-setters).
+Muunninasetusta on parasta käyttää, kun pavun ominaisuuden tietotyyppi ei vastaa käyttöliittymäkomponenttien käsittelemää tietotyyppiä. Jos tarvitset vain muuntaa samaa tietotyyppiä, on suositeltavaa konfiguroida [sidosten getterit ja setterit](bindings#binding-getters-and-setters).
 :::
 
-## Muunnosten määrittäminen {#configuring-transformers}
+## Muuntimien konfigurointi {#configuring-transformers}
 
-Voit määrittää tietomuunnoksia suoraan sidonnoissasi, jolloin voit määrittää, miten tietoja tulisi muuntaa tietosidontaprosessin aikana.
+Voit konfiguroida tietomuunnoksia suoraan sidoksissasi, jolloin voit määrittää, miten tietoja tulisi muuntaa tietosidontaprosessin aikana.
 
-Voit lisätä muunnoksia sidontaan käyttämällä `useTransformer`-metodia `BindingBuilder`:issa. Muunnosten on toteutettava `Transformer`-rajapinta, joka vaatii määrittämään menetelmät kummallekin datan suuntalle: mallista käyttöliittymään ja käyttöliittymästä malliin.
+Voit lisätä muuntimia sidokseen `useTransformer`-menetelmällä `BindingBuilder`:issa. Muuntimien on toteutettava `Transformer`-rajapinta, mikä edellyttää menetelmien määrittämistä tietovirran molempiin suuntiin: modelista käyttöliittymään ja käyttöliittymästä malliin.
 
 ```java
 context.bind(salaryField, "salary")
-    .useTransformer(new CurrencyTransformer())
-    .add();
+  .useTransformer(new CurrencyTransformer())
+  .add();
 ```
 
-Edellisessä esimerkissä koodi määrittää `CurrencyTransformer`:in käsittelemään muunnoksia mallin tietotyypin (esimerkiksi BigDecimal) ja käyttöliittymän esitysmuodon (esimerkiksi muotoiltu merkkijono) välillä.
+Edellä olevassa esimerkissä koodi konfiguroi `CurrencyTransformer`:in käsittelemään muunnoksia mallin tietotyypin (esimerkiksi BigDecimal) ja käyttöliittymän esityksen (esimerkiksi muotoiltu merkkijono) välillä.
 
 :::info
-Jokaisella sidonnalla on yksi ainoa muunnos. Jos arvon muuntaminen vaatii useita vaiheita, on suositeltavaa toteuttaa oma muunnos näitä vaiheita varten.
+Jokainen sidonta on liitetty yhteen muuntimeen. Jos arvon muuntaminen vaatii useita vaiheita, on suositeltavaa toteuttaa oma muunnin näitä vaiheita varten.
 :::
 
-## Muunnoksen toteuttaminen {#implementing-a-transformer}
+## Muuntimen toteuttaminen {#implementing-a-transformer}
 
-Tässä on esimerkki yksinkertaisesta muunnoksesta, joka muuntaa `LocalDate`-mallin ja `String`-käyttöliittymäesityksen välillä:
+Tässä on esimerkki yksinkertaisesta muuntimesta, joka muuntaa `LocalDate`-mallin ja `String`-käyttöliittymäesityksen välillä:
 
 ```java
 import java.time.LocalDate;
@@ -61,29 +62,29 @@ public class DateTransformer implements Transformer<LocalDate, String> {
 }
 ```
 
-Tämä muunnos helpottaa päivämääräkenttien käsittelyä varmistaen, että päivämäärät on oikein muotoiltu, kun ne näytetään käyttöliittymässä ja ne on oikein analysoitu takaisin malliin.
+Tämä muunnin käsittelee päivämääräkenttiä, muotoillen päivämääriä käyttöliittymässä ja jäsentäen ne takaisin malliin.
 
-## Muunnosten käyttö sidonnoissa {#using-transformers-in-bindings}
+### Muuntimien käyttäminen sidoksissa {#using-transformers-in-bindings}
 
-Kun olet määrittänyt muunnoksen, voit soveltaa sitä useisiin sidontoihin sovelluksessasi. Tämä lähestymistapa on erityisen hyödyllinen vakioiduille tietomuodoille, joiden käsittely tarvitaan johdonmukaisesti sovelluksesi eri osissa.
+Kun olet määrittänyt muuntimen, voit soveltaa sitä useisiin sidoksiin sovelluksessasi. Tämä lähestymistapa on erityisen hyödyllinen standardoiduille tietomuodoille, jotka tarvitsevat yhdenmukaista käsittelyä eri osissa sovellustasi.
 
 ```java
 BindingContext<Employee> context = new BindingContext<>(Employee.class);
 context.bind(startDateField, "startDate", String.class)
-    .useTransformer(new DateTransformer())
-    .add();
+  .useTransformer(new DateTransformer())
+  .add();
 ```
 
-:::info Bean-ominaisuuden tyypin määrittäminen
+:::info Pavun ominaisuustyypin määrittäminen
 
-`bind`-metodissa bean-ominaisuuden tyypin määrittäminen kolmannena parametrina on välttämätöntä, kun käyttöliittymäkomponentin näyttämä tietotyyppi ja mallissa käytetty tietotyyppi eivät vastaa toisiaan. Esimerkiksi, jos komponentti käsittelee `startDateField` Java `LocalDate`:na, mutta se tallennetaan mallissa `String`-tyypiksi, tyypin määrittäminen eksplisiittisesti `String.class`:ksi varmistaa, että sidontamekanismi käsittelee ja muuntaa tiedot tarkasti kahden eri tietotyypin välillä, joita komponentti ja bean käyttävät, käyttäen annettua muunnosta ja validoijia.
+`bind`-menetelmässä on tärkeää määrittää pavun ominaisuuden tyyppi kolmantena parametrina, kun käyttöliittymäkomponentin näyttämä tietotyyppi ja mallissa käytetty tietotyyppi poikkeavat. Esimerkiksi, jos komponentti käsittelee `startDateField`-kenttää Java `LocalDate`-tyyppinä, mutta se on tallennettu `String`-tyyppinä mallissa, tyyppinä määrittäminen `String.class`-muodossa kertoo sidontamekanismille, että se käsittelee ja muuntaa tiedot tarkasti kahden eri tyypin välillä, joita komponentti ja pavun muunnin käyttävät.
 :::
 
-## Muunnosten yksinkertaistaminen `Transformer.of` {#simplifying-transforms-with-transformerof}
+### Muunnosten yksinkertaistaminen `Transformer.of`-menetelmällä {#simplifying-transforms-with-transformerof}
 
-On mahdollista yksinkertaistaa tällaisen muunnoksen toteutusta käyttämällä `Transformer.of`-metodia, jota `Transformer` tarjoaa. Tämä metodi on synnin sisältöä, ja se mahdollistaa kirjoittaa menetelmän, joka käsittelee muunnoksia suoraan, sen sijaan että siirtää luokan, joka toteuttaa `Transformer`-rajapinnan.
+On mahdollista yksinkertaistaa tällaisten muunnosten toteutusta `Transformer.of`-menetelmällä, jonka `Transformer` tarjoaa. Tämä menetelmä on syntaktista sokeria, ja sen avulla voit kirjoittaa menetelmän, joka käsittelee muunnoksia inline, sen sijaan että välität `Transformer`-rajapinnan toteuttavan luokan. 
 
-Seuraavassa esimerkissä koodi käsittelee valintaruudun vuorovaikutusta matkailusovelluksessa, jossa käyttäjät voivat valita lisäpalveluita, kuten autonvuokrausta. Valintaruudun tila `boolean` on muunnettava merkkiesitykseksi `"yes"` tai `"no"`, jota taustamalli käyttää.
+Seuraavassa esimerkissä koodi käsittelee valintaruudun vuorovaikutusta matkailusovelluksessa, jossa käyttäjät voivat valita lisäpalveluja, kuten autonvuokrausta. Valintaruudun tila `boolean` on muutettava merkkijonoesitykseksi `"yes"` tai `"no"`, jota taustamalli käyttää.
 
 ```java
 CheckBox carRental = new CheckBox("Autonvuokraus");
@@ -91,15 +92,37 @@ BindingContext<Trip> context = new BindingContext<>(Trip.class, true);
 context.bind(carRental, "carRental", String.class)
   .useTransformer(
       Transformer.of(
-        // muunna komponentin arvo mallin arvoksi
+        // muunnos komponentin arvosta mallin arvoon
         bool -> Boolean.TRUE.equals(bool) ? "yes" : "no",
-        // muunna mallin arvo komponentin arvoksi
+        // muunnos mallin arvosta komponentin arvoon
         str -> str.equals("yes")
-      ), 
+      ),
 
       // jos muunnos epäonnistuu, näytä seuraava
       // viesti
-      "Valintaruutu on oltava valittuna"
+      "Valintaruutu on tarkistettava"
   )
   .add();
 ```
+
+### Dynaamiset muunninvirheviestit <DocChip chip='since' label='25.12' /> {#dynamic-transformer-error-messages}
+
+Oletuksena virheviesti, joka näytetään muunnoksen epäonnistuessa, on staattinen merkkijono. Monikielisiä sovelluksia tukevaan sovellukseen voit sen sijaan välittää `Supplier<String>`-tyyppisen, jolloin viesti ratkaistaan aina, kun muunnos epäonnistuu:
+
+```java {7}
+context.bind(quantityField, "quantity", Integer.class)
+  .useTransformer(
+    Transformer.of(
+      str -> Integer.parseInt(str),
+      val -> String.valueOf(val)
+    ),
+    () -> t("validation.quantity.invalid")
+  )
+  .add();
+```
+
+Supplieria kutsutaan vain, kun muunnos heittää `TransformationException`:in. Tämä tarkoittaa, että viesti heijastaa aina nykyistä paikallista kieltä epäonnistumisen hetkellä.
+
+#### Paikallinen tieto huomioivat muuntimet {#locale-aware-transformers}
+
+Toistuville muuntimille, jotka tarvitsevat pääsyn nykyiseen kieliversioon sisäisesti (esimerkiksi numeroiden tai päivämäärien muotoilua alueellisten käytäntöjen mukaan), toteuta `LocaleAware`-rajapinta. Kun kieliversio muuttuu `BindingContext.setLocale()`-menetelmällä, konteksti välittää automaattisesti uuden kieliversion muuntimiin, jotka toteuttavat tämän rajapinnan.

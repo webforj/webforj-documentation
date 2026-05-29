@@ -4,7 +4,7 @@ description: Design tips to create effective forms when using the webforJ TextFi
 date: 2025-08-07
 authors: Ben Brennan
 image: "https://cdn.webforj.com/webforj-documentation/blogs/using-textfield-in-forms/blogcover.png"
-tags: [webforJ, TextField, Web Development]
+tags: [web development, components]
 ---
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/using-textfield-in-forms/blogcover.png)

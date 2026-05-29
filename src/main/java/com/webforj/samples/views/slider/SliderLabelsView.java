@@ -1,8 +1,6 @@
 package com.webforj.samples.views.slider;
 
-import java.util.Map;
-
-import org.checkerframework.checker.units.qual.t;
+import static java.util.Map.entry;
 
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
@@ -13,18 +11,17 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
-import static java.util.Map.entry;
+import java.util.Map;
 
 @Route
 @FrameTitle("Slider Tick and Non-Tick Demo")
 public class SliderLabelsView extends Composite<FlexLayout> {
-
-  Slider slider = new Slider(50, 0, 100);
+  private final FlexLayout self = getBoundComponent();
+  // Slider with temperature labels
+  private final Slider slider = new Slider(50, 0, 100);
 
   public SliderLabelsView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("5% auto")
@@ -39,34 +36,31 @@ public class SliderLabelsView extends Composite<FlexLayout> {
         .setAllowMajorLabelsOverlap(true)
         .setTooltipVisible(true)
         .setTheme(Theme.SUCCESS)
-        .setLabels(Map.ofEntries(
-            entry(0, "Cold"),
-            entry(30, "Cool"),
-            entry(50, "Moderate"),
-            entry(80, "Warm"),
-            entry(100, "Hot")))
+        .setLabels(
+            Map.ofEntries(
+                entry(0, "Cold"),
+                entry(30, "Cool"),
+                entry(50, "Moderate"),
+                entry(80, "Warm"),
+                entry(100, "Hot")))
         .setSnapToTicks(true)
         .setWidth("500px")
-        .onValueChange(e -> {
-          Integer value = e.getValue();
+        .onValueChange(
+            e -> {
+              Integer value = e.getValue();
 
-          if(value > 0 && value < 30) {
-            slider.setTheme(Theme.PRIMARY);
-          }
+              // Change theme based on temperature value
+              if (value > 0 && value < 30) {
+                slider.setTheme(Theme.PRIMARY);
+              } else if (value >= 30 && value < 50) {
+                slider.setTheme(Theme.SUCCESS);
+              } else if (value >= 50 && value < 80) {
+                slider.setTheme(Theme.WARNING);
+              } else if (value >= 80 && value <= 100) {
+                slider.setTheme(Theme.DANGER);
+              }
+            });
 
-          if(value >= 30 && value < 50) {
-            slider.setTheme(Theme.SUCCESS);
-          }
-
-          if(value >= 50 && value < 80) {
-            slider.setTheme(Theme.WARNING);
-          }
-
-          if(value >= 80 && value <= 100) {
-            slider.setTheme(Theme.DANGER);
-          }
-        });
-
-    layout.add(slider);
+    self.add(slider);
   }
 }

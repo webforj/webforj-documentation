@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Route Outlets
+description: Render child routes inside parent containers using HasComponents outlets, frames, and the RouteOutlet interface.
 ---
 
 An **outlet** is a designated component, either a [route layout](./route-types#layout-routes) or a [route view](./route-types#view-routes), where child routes are dynamically rendered. It defines where the content of the child route will appear within the parent route. Outlets are fundamental to creating modular, nested UIs and flexible navigation structures.
@@ -28,8 +29,10 @@ public class MainLayout extends Composite<AppLayout> {
 
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public DashboardView() {
-    getBoundComponent().add(new H1("Dashboard Content"));
+    self.add(new H1("Dashboard Content"));
   }
 }
 ```
@@ -64,17 +67,16 @@ By implementing `RouteOutlet`, developers can control how routes are injected in
 import com.webforj.router.RouteOutlet;
 
 public class MainLayout extends Composite<AppLayout> implements RouteOutlet {
+  private final AppLayout self = getBoundComponent();
 
   @Override
   public void showRouteContent(Component component) {
-    AppLayout layout = getBoundComponent();
-    layout.addToDrawer(component);
+    self.addToDrawer(component);
   }
 
   @Override
   public void removeRouteContent(Component component) {
-    AppLayout layout = getBoundComponent();
-    layout.remove(component);
+    self.remove(component);
   }
 }
 ```

@@ -1,5 +1,6 @@
 ---
 title: Blank
+description: Scaffold a minimal webforJ project from the blank archetype to build your app structure from scratch with no predefined components.
 sidebar_position: 1
 hide_table_of_contents: true
 ---

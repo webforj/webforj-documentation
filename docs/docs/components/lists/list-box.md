@@ -2,6 +2,7 @@
 sidebar_position: 15
 title: ListBox
 slug: listbox
+description: Show a scrollable, always-visible list with the ListBox component, supporting single or multiple selection and keyboard navigation.
 ---
 
 <DocChip chip='shadow' />
@@ -9,11 +10,13 @@ slug: listbox
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" top='true'/>
 
-<ParentLink parent="List" />
+The `ListBox` component displays a scrollable list of items that stays visible without needing to open a dropdown. It supports both single and multiple selection, and works well when users need to see all available options at once.
 
-The `ListBox` component is a user interface element designed to display a scrollable list of objects and allows users to select single or multiple items from the list. Users can also interact with the `ListBox` with the arrow keys. 
+<!-- INTRO_END -->
 
 ## Usages {#usages}
+
+<ParentLink parent="List" />
 
 1. **User Role Assignment**: In applications with user access control, administrators can use a `ListBox` to assign roles and permissions to users. Users are selected from a list, and the roles or permissions are assigned based on their selection. This ensures precise and controlled access to different features and data within the application.
 
@@ -40,10 +43,10 @@ On touch devices, when multiple selection is enabled, users can select multiple 
 
 Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a letter key while the `ListBox` has focus will select the option that begins with that letter, or cycle through the options beginning with that letter should multiple options exist.
 
-<ComponentDemo 
-path='/webforj/listboxmultipleselection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java'
-height = '250px'
+<ComponentDemo
+path='/webforj/listboxmultipleselection'
+files={['src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java']}
+height='250px'
 />
 
 ## Styling {#styling}

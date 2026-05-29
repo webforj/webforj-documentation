@@ -1,6 +1,7 @@
 ---
 title: Communication
 sidebar_position: 3
+description: Exchange actions and events between a webforJ app and an embedded Swing app through WebswingConnector lifecycle and custom action handlers.
 ---
 
 The `WebswingConnector` provides bidirectional communication between your webforJ app and the embedded Swing app. This enables you to send commands to the Swing app and receive notifications when events occur within it.

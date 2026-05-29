@@ -10,11 +10,13 @@ description: A single-line input component for entering and editing text data.
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextField" top='true'/>
 
-<ParentLink parent="Field" />
-
 The `TextField` component allows users to enter and edit text in a single line. You can configure the field to display a specific virtual keyboard, such as a numeric keypad, email input, telephone input, or URL input. The component also provides built-in validation to reject values that don't adhere to the specified type.
 
+<!-- INTRO_END -->
+
 ## Usages {#usages}
+
+<ParentLink parent="Field" />
 
 The `TextField` is suitable for a wide range of scenarios where text input or editing is required. Here are some examples of when to use the `TextField`:
 
@@ -42,9 +44,10 @@ You can specify the type of the TextField using the `setType()` method. Similarl
 
 - `Type.SEARCH`: A single-line text field for entering search strings. Line-breaks are automatically removed from the input value.
 
-<ComponentDemo 
-path='/webforj/textfield?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/textfield/TextFieldView.java'
+<ComponentDemo
+path='/webforj/textfield'
+files={['src/main/java/com/webforj/samples/views/fields/textfield/TextFieldView.java']}
+height='250px'
 />
 
 ## Field value {#field-value}

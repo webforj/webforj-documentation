@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Context Results
+description: Inspect ValidationResult after a BindingContext write, react to BindingContextValidateEvent, and auto-focus the first violation.
 ---
 
 When you write data from the UI to the model, the `write` method of the `BindingContext` triggers the validations. The validation results determine whether the data is acceptable.
@@ -12,9 +13,9 @@ You can process validation results to provide feedback to the user. If a validat
 ```java
 ValidationResult result = context.write(hero);
 if (!result.isValid()) {
-    displayErrors(result.getMessages());
+  displayErrors(result.getMessages());
 } else {
-    proceedWithUpdate();
+  proceedWithUpdate();
 }
 ```
 
@@ -29,7 +30,7 @@ BindingContext<User> context = new BindingContext<>(User.class);
 
 // Listen to the BindingContextValidateEvent which is fired on each user interaction.
 context.addValidateListener(event -> {
-    submit.setEnabled(event.isValid());
+  submit.setEnabled(event.isValid());
 });
 ```
 

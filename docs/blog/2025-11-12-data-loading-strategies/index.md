@@ -4,7 +4,7 @@ description: Learn when to use different webforJ Repository types for optimally 
 slug: data-loading-strategies-rest-apis
 date: 2025-11-12
 authors: Matthew Hawkins
-tags: [webforJ, Spring Boot, REST API, Data Loading, Performance, Repository Pattern]
+tags: [spring, web development, back end, performance, tutorial, integrations]
 hide_table_of_contents: false
 ---
 

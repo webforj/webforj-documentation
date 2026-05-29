@@ -4,17 +4,16 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.webforj.component.Composite;
 import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.terminal.Terminal;
 import com.webforj.component.terminal.TerminalTheme;
 import com.webforj.data.event.ValueChangeEvent;
+import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.utilities.Assets;
-import com.webforj.router.annotation.FrameTitle;
-
 import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -65,7 +64,8 @@ public class TerminalThemePickerView extends Composite<FlexLayout> {
 
     loadThemes();
 
-    themeChoiceBox.setLabel("Select a Theme")
+    themeChoiceBox
+        .setLabel("Select a Theme")
         .setTheme(ButtonTheme.GRAY)
         .setWidth("200px")
         .setStyle("margin", "1rem")
@@ -82,25 +82,22 @@ public class TerminalThemePickerView extends Composite<FlexLayout> {
   }
 
   private void loadThemes() {
-    Type mapType = new TypeToken<Map<String, TerminalTheme>>() {
-    }.getType();
-    Map<String, TerminalTheme> loadedThemes = new Gson()
-        .fromJson(Assets.contentOf(Assets.resolveContextUrl("context://terminal-themes.json")), mapType);
+    Type mapType = new TypeToken<Map<String, TerminalTheme>>() {}.getType();
+    Map<String, TerminalTheme> loadedThemes =
+        new Gson()
+            .fromJson(
+                Assets.contentOf(Assets.resolveContextUrl("context://terminal-themes.json")),
+                mapType);
 
     themes.putAll(loadedThemes);
 
-    for (Map.Entry<String, TerminalTheme> entry : loadedThemes.entrySet()) {
-      String key = entry.getKey();
-      TerminalTheme value = entry.getValue();
-      themeChoiceBox.add(value, key);
-    }
+    loadedThemes.forEach((key, value) -> themeChoiceBox.add(value, key));
   }
 
   private void applySelectedTheme(ValueChangeEvent<Object> e) {
-    TerminalTheme selected = (TerminalTheme) e.getValue();
-    if (selected == null)
+    if (!(e.getValue() instanceof TerminalTheme selected)) {
       return;
-
+    }
     applyTheme(selected);
   }
 

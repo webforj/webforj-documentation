@@ -1,117 +1,124 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 title: Elements
 slug: element
-_i18n_hash: 749e84016c244ec7349221d00dc0de9a
+_i18n_hash: 820bed6c059dad74a523673f245f3b2a
 ---
-<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/Element" top='true'/>
 
-webforJ-ontwikkelaars hebben de mogelijkheid om niet alleen te kiezen uit de rijke bibliotheek van beschikbare componenten, maar ook componenten van elders te integreren. Om dit te vergemakkelijken kan de `Element`-component worden gebruikt om de integratie van alles, van eenvoudige HTML-elementen tot meer complexe aangepaste webcomponenten, te vereenvoudigen.
+webforJ-ontwikkelaars hebben de mogelijkheid om niet alleen te kiezen uit de rijke bibliotheek van componenten, maar ook om componenten van elders te integreren. Om dit te vergemakkelijken, kan de `Element`-component worden gebruikt om de integratie van alles te vereenvoudigen, van eenvoudige HTML-elementen tot complexere aangepaste webcomponenten. 
 
 :::important
-De `Element`-component kan niet worden uitgebreid en is niet de basisonderdeel voor alle componenten binnen webforJ. Om meer te lezen over de componentenhiërarchie van webforJ, lees [dit artikel](../architecture/controls-components.md).
+De `Element`-component kan niet worden uitgebreid en is geen basiscomponent voor alle componenten binnen webforJ. Voor meer informatie over de componenthiërarchie van webforJ, lees [dit artikel](../architecture/controls-components.md).
 :::
 
-<ComponentDemo 
-path='/webforj/elementinputdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java'
-cssURL='/css/element/elementInput.css'
+<ComponentDemo
+path='/webforj/elementinputdemo'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java',
+  'src/main/resources/static/css/element/elementInput.css',
+]}
 />
 
-## Evenementen toevoegen {#adding-events}
+## Toevoegen van gebeurtenissen {#adding-events}
 
-Om gebruik te maken van evenementen die mogelijk bij uw element horen, kunt u de `addEventListener`-methoden van de `Element`-component gebruiken. Het toevoegen van een evenement vereist op zijn minst het type/naam van het evenement dat de component verwacht, en een luisteraar die aan het evenement moet worden toegevoegd. 
+Om gebruik te maken van de gebeurtenissen die mogelijk bij uw element komen, kunt u de `addEventListener`-methoden van de `Element`-component gebruiken. Het toevoegen van een gebeurtenis vereist ten minste het type/naam van de gebeurtenis die de component verwacht, en een luisteraar die aan de gebeurtenis moet worden toegevoegd.
 
-Er zijn ook aanvullende opties om evenementen verder aan te passen door gebruik te maken van de configuraties van evenementenopties.
+Er zijn ook aanvullende opties om evenementen verder aan te passen met behulp van de configuraties voor Gebeurtenisopties.
 
-<ComponentDemo 
-path='/webforj/elementinputevent?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputEventView.java'
-cssURL='/css/element/elementInputEvent.css'
+<ComponentDemo
+path='/webforj/elementinputevent'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementInputEventView.java',
+  'src/main/resources/static/css/element/elementInputEvent.css',
+]}
 height='240px'
 />
 
-## Interactie met componenten {#component-interaction}
+## Componentinteractie {#component-interaction}
 
-De `Element`-component fungeert als een container voor andere componenten. Het biedt een manier om informatie voor kindcomponenten te organiseren en op te halen, en biedt een duidelijke set functies om deze kindcomponenten indien nodig toe te voegen of te verwijderen.
+De `Element`-component fungeert als een container voor andere componenten. Het biedt een manier om informatie voor kindcomponenten te organiseren en te verkrijgen, en biedt een duidelijke set functies om deze kindcomponenten indien nodig toe te voegen of te verwijderen.
 
-### Kindcomponenten toevoegen {#adding-child-components}
+### Toevoegen van kindcomponenten {#adding-child-components}
 
-De `Element`-component ondersteunt de samenstelling van kindcomponenten. Ontwikkelaars kunnen complexe UI-structuren organiseren en beheren door componenten als kinderen aan de `Element` toe te voegen. Er zijn drie methoden beschikbaar om inhoud binnen een `Element` in te stellen:
+De `Element`-component ondersteunt de samenstelling van kindcomponenten. Ontwikkelaars kunnen complexe UI-structuren organiseren en beheren door componenten als kinderen toe te voegen aan de `Element`. Er zijn drie methoden om inhoud binnen een `Element` in te stellen:
 
-1. **`add(Component... components)`**: Deze methode stelt één of meerdere componenten in staat om te worden toegevoegd aan een optionele `String` die een specifieke slot aangeeft wanneer deze wordt gebruikt met een Web Component. Het weglaten van de slot zal de component tussen de HTML-tags toevoegen.
+1. **`add(Component... components)`**: Deze methode stelt in staat om één of meerdere componenten toe te voegen aan een optionele `String` die een specifieke slot aangeeft bij gebruik met een Web Component. Het weglaten van de slot zal de component tussen de HTML-tags toevoegen.
 
-2. **`setHtml(String html)`**: Deze methode neemt de `String` die aan de methode is doorgegeven en injecteert het als HTML binnen de component. Afhankelijk van de `Element` kan dit op verschillende manieren worden gerenderd.
+2. **`setHtml(String html)`**: Deze methode neemt de `String` die aan de methode is doorgegeven en injecteert deze als HTML binnen de component. Afhankelijk van de `Element` kan dit op verschillende manieren worden weergegeven.
 
-3. **`setText(String text)`**: Deze methode gedraagt zich vergelijkbaar met de `setHtml()`-methode, maar voegt letterlijke tekst in de `Element` in.
+3. **`setText(String text)`**: Deze methode werkt op een vergelijkbare manier als de `setHtml()`-methode, maar injecteert letterlijke tekst in de `Element`.
 
-<ComponentDemo 
-path='/webforj/elementinputtext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputTextView.java'
-cssURL='/css/element/elementInput.css'
+<ComponentDemo
+path='/webforj/elementinputtext'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementInputTextView.java',
+  'src/main/resources/static/css/element/elementInput.css',
+]}
 height='175px'
 />
 
 :::tip
-Het aanroepen van `setHtml()` of `setText()` vervangt de inhoud die momenteel tussen de openings- en sluitingstags van het element is. 
+Het aanroepen van `setHtml()` of `setText()` vervangt de inhoud die momenteel tussen de opening en sluitingstags van het element staat.
 :::
 
-### Componenten verwijderen {#removing-components}
+### Verwijderen van componenten {#removing-components}
 
 Naast het toevoegen van componenten aan een `Element`, zijn de volgende methoden geïmplementeerd voor het verwijderen van verschillende kindcomponenten:
 
-1. **`remove(Component... components)`**: Deze methode neemt een of meer componenten en zal deze verwijderen als kindcomponenten.
+1. **`remove(Component... components)`**: Deze methode neemt één of meer componenten en verwijdert deze als kindcomponenten.
 
-2. **`removeAll()`**: Deze methode verwijdert alle kindcomponenten uit de `Element`.
+2. **`removeAll()`**: Deze methode verwijdert alle kindcomponenten van de `Element`.
 
-### Componenten toegankelijk maken {#accessing-components}
+### Toegang tot componenten {#accessing-components}
 
-Om toegang te krijgen tot de verschillende kindcomponenten die aanwezig zijn binnen een `Element`, of informatie over deze componenten, zijn de volgende methoden beschikbaar:
+Om toegang te krijgen tot de verschillende kindcomponenten die aanwezig zijn binnen een `Element`, of informatie met betrekking tot deze componenten, zijn de volgende methoden beschikbaar:
 
-1. **`getComponents()`**: Deze methode retourneert een Java `List` van alle kinderen van de `Element`.
+1. **`getComponents()`**: Deze methode retourneert een Java `List` van alle kinderen van de `Element`. 
 
-2. **`getComponents(String id)`**: Deze methode is vergelijkbaar met de bovenstaande methode, maar neemt de serverzijde ID van een specifieke component en retourneert deze wanneer gevonden.
+2. **`getComponents(String id)`**: Deze methode is vergelijkbaar met de methode hierboven, maar neemt de serverzijde ID van een specifieke component en retourneert deze wanneer gevonden.
 
-3. **`getComponentCount()`**: Retourneert het aantal kindcomponenten dat aanwezig is binnen de `Element`.
+3. **`getComponentCount()`**: Retourneert het aantal kindcomponenten dat aanwezig is binnen de `Element`. 
 
-## Het aanroepen van JavaScript-functies {#calling-javascript-functions}
+## Aanroepen van JavaScript-functies {#calling-javascript-functions}
 
-De `Element`-component biedt twee API-methoden waarmee JavaScript-functies kunnen worden aangeroepen op HTML-elementen.
+De `Element`-component biedt twee API-methoden waarmee JavaScript-functies op HTML-elementen kunnen worden aangeroepen. 
 
-1. **`callJsFunction(String functionName, Object... arguments)`**: Deze methode neemt een functienaam als een string en neemt optioneel een of meer Objecten als parameters voor de functie. Deze methode wordt synchronisch uitgevoerd, wat betekent dat de **uitvoerende thread is geblokkeerd** totdat de JS-methode retourneert, wat resulteert in een round trip. De resultaten van de functie worden geretourneerd als een `Object`, dat kan worden gecast en gebruikt in Java.
+1. **`callJsFunction(String functionName, Object... arguments)`**: Deze methode neemt een functienaam als string en optioneel één of meer Objecten als parameters voor de functie. Deze methode wordt synchronisch uitgevoerd, wat betekent dat de **uitvoerende thread wordt geblokkeerd** totdat de JS-methode terugkeert, en resulteert in een round trip. De resultaten van de functie worden geretourneerd als een `Object`, dat kan worden gecast en gebruikt in Java. 
 
-2. **`callJsFunctionAsync(String functionName, Object... arguments)`**: Net als bij de vorige methode kan een functienaam en optionele argumenten voor de functie worden doorgegeven. Deze methode wordt asynchroon uitgevoerd en **blokkeert de uitvoerende thread niet**. Het retourneert een <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, waarmee verder kan worden gecommuniceerd met de functie en de bijbehorende gegevens.
+2. **`callJsFunctionAsync(String functionName, Object... arguments)`**: Net als bij de vorige methode kan een functienaam en optionele argumenten voor de functie worden doorgegeven. Deze methode wordt asynchroon uitgevoerd en **blokkeert de uitvoerende thread niet**. Het retourneert een <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, waarmee verder interactie mogelijk is met de functie en zijn payload.
 
 ### Parameters doorgeven {#passing-parameters}
 
-Argumenten die aan deze methoden worden doorgegeven en die worden gebruikt bij de uitvoering van JS-functies, worden geserializeerd als een JSON-array. Er zijn twee opmerkelijke argumenttypes die als volgt worden behandeld:
-- `this`: Het gebruik van het sleutelwoord `this` geeft de methode een referentie naar de clientzijde versie van de oproepende component.
-- `Component`: Alle Java-componentinstanties die in een van de JsFunction-methoden worden doorgegeven, worden vervangen door de clientzijde versie van de component.
+Argumenten die aan deze methoden worden doorgegeven en die worden gebruikt bij de uitvoering van JS-functies, worden als een JSON-array seriëel. Er zijn twee opmerkelijke argumenttypen die als volgt worden behandeld:
+- `this`: Het gebruik van het sleutelwoord `this` geeft de methode een referentie naar de client-side versie van de aanroepende component.
+- `Component`: Elke Java-componentinstance die aan een van de JsFunction-methoden wordt doorgegeven, wordt vervangen door de client-side versie van de component.
 
 :::info
-Zowel synchronische als asynchronische functieaanroepen wachten om een methode aan te roepen totdat de `Element` aan de DOM is toegevoegd voordat de functie wordt uitgevoerd, maar `callJsFunction()` wacht niet op enige `component`-argumenten om te bevestigen, wat kan resulteren in falen. Omgekeerd kan het aanroepen van `callJsFunctionAsync()` nooit voltooid worden als er nooit een componentargument wordt bevestigd.
+Zowel synchronische als asynchronische functietoevoegingen wachten totdat de `Element` aan de DOM is toegevoegd voordat een functie wordt uitgevoerd, maar `callJsFunction()` wacht niet op enige `component`-argumenten om aan te sluiten, wat kan resulteren in een mislukking. Omgekeerd kan het aanroepen van `callJsFunctionAsync()` nooit voltooid worden als een componentargument nooit is aangesloten.
 :::
 
-In de onderstaande demo wordt een evenement toegevoegd aan een HTML `Button`. Dit evenement wordt vervolgens programmatig geactiveerd door de `callJsFunctionAsync()`-methode aan te roepen. De resulterende <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> wordt vervolgens gebruikt om een ander berichtvenster te maken zodra de asynchroon functie is voltooid.
+In de onderstaande demo wordt een gebeurtenis toegevoegd aan een HTML `Button`. Deze gebeurtenis wordt vervolgens programma-gewijs afgevuurd door de `callJsFunctionAsync()`-methode aan te roepen. De resulterende <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> wordt vervolgens gebruikt om een andere berichtbox te maken zodra de asynchronische functie is voltooid.
 
-<ComponentDemo 
-path='/webforj/elementinputfunction?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java'
-cssURL='/css/element/elementInput.css'
+<ComponentDemo
+path='/webforj/elementinputfunction'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java',
+  'src/main/resources/static/css/element/elementInput.css',
+]}
 height='240px'
 />
 
-## JavaScript uitvoeren {#executing-javascript}
+## Uitvoeren van JavaScript {#executing-javascript}
 
-Naast het uitvoeren van JavaScript vanuit het applicatieniveau, is het ook mogelijk om JavaScript vanuit het `Element`-niveau uit te voeren. Het uitvoeren van deze uitvoering op het `Element`-niveau maakt het mogelijk om de context van het HTML-element in de uitvoering op te nemen. Dit is een krachtig hulpmiddel dat fungeert als een conduit voor ontwikkelaars naar interactieve mogelijkheden met clientzijde omgevingen.
+Naast het uitvoeren van JavaScript vanuit het appniveau, is het mogelijk om JavaScript ook op het niveau van de `Element` uit te voeren. Deze uitvoer op het niveau van de `Element` stelt de context van het HTML-element in staat om bij de uitvoering te worden betrokken. Dit is een krachtige tool die fungeert als een conduit voor ontwikkelaars naar interactieve mogelijkheden met client-side omgevingen.
 
-Net als bij het uitvoeren van functies kan JavaScript synchronisch of asynchroon worden uitgevoerd met behulp van de volgende methoden:
+Vergelijkbaar met functiewerkzaamheden, kan het uitvoeren van JavaScript synchronisch of asynchronisch worden gedaan met de volgende methoden:
 
-1. **`executeJs(String script)`**: Deze methode neemt een `String` die wordt uitgevoerd als JavaScript-code aan de client. Dit script wordt synchronisch uitgevoerd, wat betekent dat de **uitvoerende thread is geblokkeerd** totdat de JS-uitvoering retourneert en resulteert in een round trip. De resultaten van de functie worden geretourneerd als een `Object`, dat kan worden gecast en gebruikt in Java.
+1. **`executeJs(String script)`**: Deze methode neemt een `String`, die als JavaScript-code op de client zal worden uitgevoerd. Dit script wordt synchronisch uitgevoerd, wat betekent dat de **uitvoerende thread wordt geblokkeerd** totdat de JS-uitvoering terugkeert, en resulteert in een round trip. De resultaten van de functie worden geretourneerd als een `Object`, dat kan worden gecast en gebruikt in Java.
 
-2. **`executeJsAsync(String script)`**: Net als bij de vorige methode, wordt een doorgegeven `String`-parameter uitgevoerd als JavaScript-code aan de client. Deze methode wordt asynchroon uitgevoerd en **blokkeert de uitvoerende thread niet**. Het retourneert een <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, waarmee verder kan worden gecommuniceerd met de functie en de bijbehorende gegevens.
+2. **`executeJsAsync(String script)`**: Net als bij de vorige methode, zal een doorgegeven `String`-parameter worden uitgevoerd als JavaScript-code op de client. Deze methode wordt asynchroon uitgevoerd en **blokkeert de uitvoerende thread niet**. Het retourneert een <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, waarmee verder interactie mogelijk is met de functie en zijn payload.
 
 :::tip
-Deze methoden hebben toegang tot het sleutelwoord `component`, wat de JavaScript-code toegang geeft tot de clientzijde instantie van de component die de JavaScript uitvoert.
+Deze methoden hebben toegang tot het `component`-sleutelwoord, waarmee de JavaScript-code toegang heeft tot de client-side instantie van de component die de JavaScript uitvoert.
 :::

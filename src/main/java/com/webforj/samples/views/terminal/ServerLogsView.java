@@ -1,8 +1,5 @@
 package com.webforj.samples.views.terminal;
 
-import java.time.LocalTime;
-import java.util.Random;
-
 import com.webforj.Interval;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
@@ -12,17 +9,19 @@ import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.terminal.Terminal;
-import com.webforj.router.annotation.Route;
 import com.webforj.router.annotation.FrameTitle;
+import com.webforj.router.annotation.Route;
+import java.time.LocalTime;
+import java.util.Random;
 
 @Route
 @FrameTitle("Server Logs Stream")
 public class ServerLogsView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
   private final Terminal terminal = new Terminal();
   private final Button startButton = new Button("Start Log Stream", ButtonTheme.PRIMARY);
   private final Random random = new Random();
-  private final String[] logLevels = { "INFO", "WARN", "DEBUG", "ERROR" };
+  private final String[] logLevels = {"INFO", "WARN", "DEBUG", "ERROR"};
   private Interval interval;
   private boolean isStreaming = false;
 
@@ -41,21 +40,20 @@ public class ServerLogsView extends Composite<FlexLayout> {
     setupInterval();
     printHelp();
 
-    terminal.setAutoFit(true)
-        .setStyle("margin", "0px var(--dwc-space-m)")
-        .setSize("95%", "85vh");
+    terminal.setAutoFit(true).setStyle("margin", "0px var(--dwc-space-m)").setSize("95%", "85vh");
 
     startButton
         .setMaxWidth("180px")
         .setStyle("margin", "1rem")
         .setPrefixComponent(TablerIcon.create("player-play"))
-        .onClick(e -> {
-          if (isStreaming) {
-            stopStreaming();
-          } else {
-            startStreaming();
-          }
-        });
+        .onClick(
+            e -> {
+              if (isStreaming) {
+                stopStreaming();
+              } else {
+                startStreaming();
+              }
+            });
 
     self.add(startButton, terminal);
   }
@@ -69,42 +67,43 @@ public class ServerLogsView extends Composite<FlexLayout> {
 
   private void startStreaming() {
     isStreaming = true;
-    startButton
-        .setText("Stop Log Stream")
-        .setPrefixComponent(TablerIcon.create("player-pause"));
+    startButton.setText("Stop Log Stream").setPrefixComponent(TablerIcon.create("player-pause"));
     terminal.writeln("\u001B[42;30m  Log streaming started...  \u001B[0m");
     interval.start();
   }
 
   private void stopStreaming() {
     isStreaming = false;
-    startButton
-        .setText("Start Log Stream")
-        .setPrefixComponent(TablerIcon.create("player-play"));
+    startButton.setText("Start Log Stream").setPrefixComponent(TablerIcon.create("player-play"));
     interval.stop();
     terminal.writeln("\u001B[41;37m  Log streaming stopped.  \u001B[0m");
   }
 
   private void setupInterval() {
-    interval = new Interval(0.01f, e -> {
-      if (!isStreaming) {
-        return;
-      }
+    interval =
+        new Interval(
+            0.01f,
+            e -> {
+              if (!isStreaming) {
+                return;
+              }
 
-      bufferedLines++;
+              bufferedLines++;
 
-      if (bufferedLines > HIGH_WATERMARK) {
-        interval.stop();
-      }
+              if (bufferedLines > HIGH_WATERMARK) {
+                interval.stop();
+              }
 
-      terminal.writeln(generateLog(), c -> {
-        bufferedLines--;
+              terminal.writeln(
+                  generateLog(),
+                  c -> {
+                    bufferedLines--;
 
-        if (bufferedLines < LOW_WATERMARK && isStreaming && !interval.isRunning()) {
-          interval.start();
-        }
-      });
-    });
+                    if (bufferedLines < LOW_WATERMARK && isStreaming && !interval.isRunning()) {
+                      interval.start();
+                    }
+                  });
+            });
   }
 
   private String generateLog() {
@@ -112,29 +111,29 @@ public class ServerLogsView extends Composite<FlexLayout> {
     String timestamp = LocalTime.now().toString();
     String message = "Simulated log message...";
 
-    switch (level) {
-      case "INFO":
-        return "[" + timestamp + "] [\u001B[32mINFO\u001B[0m] " + message;
-      case "WARN":
-        return "[" + timestamp + "] [\u001B[33mWARN\u001B[0m] " + message;
-      case "DEBUG":
-        return "[" + timestamp + "] [\u001B[34mDEBUG\u001B[0m] " + message;
-      case "ERROR":
-        return "[" + timestamp + "] [\u001B[31mERROR\u001B[0m] " + message;
-      default:
-        return "[" + timestamp + "] [" + level + "] " + message;
-    }
+    String coloredLevel =
+        switch (level) {
+          case "INFO" -> "\u001B[32mINFO\u001B[0m";
+          case "WARN" -> "\u001B[33mWARN\u001B[0m";
+          case "DEBUG" -> "\u001B[34mDEBUG\u001B[0m";
+          case "ERROR" -> "\u001B[31mERROR\u001B[0m";
+          default -> level;
+        };
+
+    return "[" + timestamp + "] [" + coloredLevel + "] " + message;
   }
 
   private void printHelp() {
-    terminal.writeln("\u001B[1;36mServer Log Stream Demo\u001B[0m");
-    terminal.writeln("");
-    terminal.writeln("\u001B[1;37mHow to use:\u001B[0m");
-    terminal.writeln("- Click the \u001B[32mStart\u001B[0m button to begin streaming logs.");
     terminal.writeln(
-        "- Log levels are color-coded: \u001B[32mINFO\u001B[0m, \u001B[33mWARN\u001B[0m, \u001B[34mDEBUG\u001B[0m, \u001B[31mERROR\u001B[0m.");
-    terminal.writeln("- The terminal automatically slows down if needed.");
-    terminal.writeln("");
-    terminal.writeln("\u001B[1;33mTip:\u001B[0m Watch how buffering is managed with high-speed logs.");
+        """
+        \u001B[1;36mServer Log Stream Demo\u001B[0m
+
+        \u001B[1;37mHow to use:\u001B[0m
+        - Click the \u001B[32mStart\u001B[0m button to begin streaming logs.
+        - Log levels are color-coded: \u001B[32mINFO\u001B[0m, \u001B[33mWARN\u001B[0m, \u001B[34mDEBUG\u001B[0m, \u001B[31mERROR\u001B[0m.
+        - The terminal automatically slows down if needed.
+
+        \u001B[1;33mTip:\u001B[0m Watch how buffering is managed with high-speed logs.
+        """);
   }
 }

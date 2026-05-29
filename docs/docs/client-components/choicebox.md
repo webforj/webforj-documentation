@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-choicebox>
 sidebar_class_name: sidebar--item__hidden
 slug: choicebox
-description: A user guide article for the choicebox
+description: Style the dwc-choicebox client component with CSS variables and shadow parts to theme the trigger, dropdown panel, and option list.
 // pagination_prev: null
 // pagination_next: null
 ---

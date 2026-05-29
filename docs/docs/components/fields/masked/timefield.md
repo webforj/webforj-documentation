@@ -1,6 +1,7 @@
 ---
 title: MaskedTimeField
 sidebar_position: 20
+description: Capture time input with the MaskedTimeField, applying 12 or 24-hour masks, format indicators, locale-aware parsing, and validation.
 ---
 
 <DocChip chip='shadow' />
@@ -8,23 +9,31 @@ sidebar_position: 20
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTimeField" top='true'/>
 
-The `MaskedTimeField` is a text input control designed for precise, structured time entry. It lets users enter times as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected time format, guiding both input and display.
+The `MaskedTimeField` is a text input that lets users enter times as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask specifies the expected time format, guiding both input and display. The component supports flexible parsing, validation, localization, and value restoration for consistent time handling.
 
-This component supports flexible parsing, validation, localization, and value restoration. It's especially useful in time-sensitive forms like schedules, timesheets, and reservations.
+<!-- INTRO_END -->
+
+## Basics {#basics}
 
 :::tip Looking for date input?
 The `MaskedTimeField` is built for **time-only** input. If you’re looking for a component to handle **dates** with similar mask-based formatting, take a look at the [`MaskedDateField`](./datefield.md).
 :::
 
-## Basics {#basics}
-
 The `MaskedTimeField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
 
-<ComponentDemo path='/webforj/maskedtimefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldView.java' height='120px'/>
+<ComponentDemo
+path='/webforj/maskedtimefield'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldView.java']}
+height='120px'
+/>
 
 ## Mask rules {#mask-rules}
 
 The `MaskedTimeField` uses format indicators to define how time is parsed and displayed. Each format indicator begins with a `%` followed by a letter that represents a time component.
+
+:::tip Applying masks programmatically
+To format or parse times with the same mask syntax outside of a field, use the [`MaskDecorator`](/docs/advanced/mask-decorator) utility class.
+:::
 
 ### Time format indicators {#time-format-indicators}
 
@@ -99,10 +108,11 @@ field.restoreValue();
 - **Programmatically**, by calling `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
 
-<ComponentDemo 
-path='/webforj/maskedtimefieldrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldRestoreView.java' 
-height='120px'/>
+<ComponentDemo
+path='/webforj/maskedtimefieldrestore'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldRestoreView.java']}
+height='120px'
+/>
 
 ## Validation patterns {#validation-patterns}
 
@@ -127,10 +137,11 @@ You should always validate the input value in your app logic, even if a regular 
 
 The `MaskedTimeField` includes a built-in time picker that lets users select a time visually, rather than typing it. This enhances usability for less technical users or when precise input is required.
 
-<ComponentDemo 
-path='/webforj/maskedtimefieldpicker?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldPickerView.java' 
-height='450px'/>
+<ComponentDemo
+path='/webforj/maskedtimefieldpicker'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldPickerView.java']}
+height='450px'
+/>
 
 ### Accessing the picker {#accessing-the-picker}
 
@@ -199,10 +210,11 @@ This ensures the dropdown list contains predictable, evenly spaced values like `
 
 The `MaskedTimeFieldSpinner` extends [`MaskedTimeField`](#basics) by adding spinner controls that let users increment or decrement the time using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
-<ComponentDemo 
-path='/webforj/maskedtimefieldspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldSpinnerView.java' 
-height='450px'/>
+<ComponentDemo
+path='/webforj/maskedtimefieldspinner'
+files={['src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldSpinnerView.java']}
+height='450px'
+/>
 
 ### Key features {#key-features}
 

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: Custom Evaluators
+description: Write custom RouteSecurityEvaluators for context-aware checks like ownership verification beyond role-based permissions.
 ---
 
 Custom evaluators extend webforJ's security system with specialized access control logic beyond basic authentication and role checks. Use them when you need to verify dynamic conditions that depend on request context, not just user permissions.

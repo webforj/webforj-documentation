@@ -122,5 +122,29 @@
   "sidebar.documentationSidebar.category.Client Components": {
     "message": "Asiakaskomponentit",
     "description": "The label for category Client Components in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.AI Tooling": {
+    "message": "AI Tooling",
+    "description": "The label for category AI Tooling in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Kotlin DSL": {
+    "message": "Kotlin DSL",
+    "description": "The label for category Kotlin DSL in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Spring": {
+    "message": "Spring",
+    "description": "The label for category Spring in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Webswing": {
+    "message": "Webswing",
+    "description": "The label for category Webswing in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Security": {
+    "message": "Security",
+    "description": "The label for category Security in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.security-architecture": {
+    "message": "Architecture",
+    "description": "The label for category Architecture in sidebar documentationSidebar"
   }
 }

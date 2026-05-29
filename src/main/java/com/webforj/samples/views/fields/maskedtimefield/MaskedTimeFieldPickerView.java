@@ -1,7 +1,5 @@
 package com.webforj.samples.views.fields.maskedtimefield;
 
-import java.time.LocalTime;
-
 import com.webforj.component.Composite;
 import com.webforj.component.field.MaskedTimeField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
@@ -9,12 +7,13 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.time.LocalTime;
 
 @Route
 @FrameTitle("Masked Time Field Picker")
 public class MaskedTimeFieldPickerView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedTimeField field = new MaskedTimeField("Meeting Time");
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedTimeField field = new MaskedTimeField("Meeting Time");
 
   public MaskedTimeFieldPickerView() {
     self.setDirection(FlexDirection.COLUMN)

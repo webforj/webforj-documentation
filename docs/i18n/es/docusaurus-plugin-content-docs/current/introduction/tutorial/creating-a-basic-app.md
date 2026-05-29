@@ -1,187 +1,219 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
-_i18n_hash: c59ff0def84230ed79877cba3d5e5aa4
+description: Step 1 - Add components to an app.
+_i18n_hash: ac74bc5c04bce477a7407c9ff94323a4
 ---
-Este primer paso sienta las bases para la aplicación de gestión de clientes al crear una interfaz simple e interactiva. Esto demuestra cómo configurar una aplicación básica de webforJ, con un solo botón que abre un diálogo al hacer clic. Es una implementación sencilla que presenta componentes clave y te da una idea de cómo funciona webforJ.
+En [Configuración del Proyecto](/docs/introduction/tutorial/project-setup), generaste un proyecto webforJ. Ahora es momento de crear la clase principal para el proyecto y agregar una interfaz interactiva utilizando componentes de webforJ. En este paso, aprenderás sobre:
 
-Este paso aprovecha la clase base de la aplicación proporcionada por webforJ para definir la estructura y el comportamiento de la aplicación. Seguir a los pasos posteriores llevará a una configuración más avanzada utilizando el enrutamiento para gestionar múltiples pantallas, que se introducirá en [Escalando con Enrutamiento y Compuestos](./scaling-with-routing-and-composites).
+- El punto de entrada para aplicaciones que utilizan webforJ y Spring Boot
+- Componentes de webforJ y elementos HTML
+- Uso de CSS para estilizar componentes
 
-Al final de este paso, tendrás una aplicación funcional que demuestra la interacción básica con componentes y la gestión de eventos en webforJ. Para ejecutar la aplicación:
+Completar este paso crea una versión de [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app).
 
-- Ve al directorio `1-creating-a-basic-app`
-- Ejecuta el comando `mvn jetty:run`
+<!-- Insertar video aquí -->
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
-  </video>
-</div>
+## Ejecutando la app {#running-the-app}
 
-## Creando una aplicación webforJ {#creating-a-webforj-app}
+A medida que desarrollas tu aplicación, puedes utilizar [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) como comparación. Para ver la aplicación en acción:
 
-En webforJ, una `App` representa el centro para definir y gestionar tu proyecto. Cada aplicación webforJ comienza creando una clase que extiende la clase fundamental `App`, que sirve como el marco central para:
+1. Navega al directorio de nivel superior que contiene el archivo `pom.xml`, que es `1-creating-a-basic-app` si estás siguiendo la versión en GitHub.
 
-- Gestionar el ciclo de vida de la aplicación, incluyendo inicialización y terminación.
-- Manejar el enrutamiento y la navegación si está habilitado.
-- Definir el tema, la configuración regional y otras configuraciones generales de la aplicación.
-- Proporcionar utilidades esenciales para interactuar con el entorno y los componentes.
+2. Utiliza el siguiente comando de Maven para ejecutar la aplicación de Spring Boot localmente:
+    ```bash
+    mvn
+    ```
 
-### Extendiendo la clase `App` {#extending-the-app-class}
+Ejecutar la aplicación abre automáticamente un nuevo navegador en `http://localhost:8080`.
 
-Para este paso, se crea una clase llamada `DemoApplication.java`, que extiende la clase `App`.
+## El punto de entrada {#entry-point}
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // La lógica central de la aplicación irá aquí
+Cada aplicación de webforJ contiene una sola clase que extiende <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>. Para este tutorial, y otros proyectos publicados de webforJ, comúnmente se llama `Application`. Esta clase está dentro de un paquete que lleva el nombre del `groupId` que usaste en [Configuración del Proyecto](/docs/introduction/tutorial/project-setup):
+
+```
+1-creating-a-basic-app 
+│   .editorconfig
+│   .gitignore
+│   pom.xml
+│   README.md
+│
+├───.vscode
+├───src/main/java
+// resaltar-siguiente-línea
+│   └──com/webforj/tutorial
+// resaltar-siguiente-línea
+│       └──Application.java
+└───target
+```
+
+Dentro de la clase `Application`, el método `SpringApplication.run()` utiliza las configuraciones para lanzar la aplicación. Las diversas anotaciones son para las configuraciones de la aplicación.
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Aplicación del Cliente", shortName = "ClienteApp")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
   }
 }
 ```
 
-:::tip Propiedades de configuración clave
+### Anotaciones {#annotations}
 
-En esta aplicación de demostración, el archivo `webforj.conf` se configura con las siguientes dos propiedades esenciales:
+La [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) es una anotación clave en Spring Boot. Colocas esta anotación en la clase principal para marcarla como el punto de inicio de tu aplicación.
 
-- **`webforj.entry`**: Especifica el nombre completamente calificado de la clase que extiende `App` y que actúa como el punto de entrada principal para tu proyecto. Para este tutorial, configúralo como `com.webforj.demos.DemoApplication` para evitar ambigüedades durante la inicialización.
-  ```hocon
-  webforj.entry = com.webforj.demos.DemoApplication
-  ```
-- **`webforj.debug`**: Habilita el modo de depuración para registros detallados y visibilidad de errores durante el desarrollo. Asegúrate de que esto esté configurado como `true` mientras trabajas en este tutorial:
-  ```hocon
-  webforj.debug = true
-  ```
+`@StyleSheet`, `@AppTheme` y `@AppProfile` son solo algunas de las muchas <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">anotaciones de webforJ</JavadocLink> disponibles cuando deseas establecer configuraciones de manera explícita.
 
-Para más detalles sobre opciones de configuración adicionales, consulta la [Guía de Configuración](../../configuration/overview).
-:::
+- **`@StyleSheet`** incrusta un archivo CSS en la página web. Más detalles sobre cómo interactuar con un archivo CSS específico se encuentran más adelante en [Estilizando con CSS](#styling-with-css).
 
-### Sobrescribiendo el método `run()` {#overriding-the-run-method}
+- **`@AppTheme`** gestiona el tema visual de la aplicación. Si se establece en `system`, la aplicación adopta automáticamente el tema preferido del usuario: `light`, `dark` o `dark-pure`. Para información sobre cómo crear temas personalizados o anular los temas predeterminados, consulta el artículo sobre [Temas](/docs/styling/themes).
 
-Después de asegurar la configuración correcta para el proyecto, el método `run()` en tu clase `App` es sobrescrito.
+- **`@AppProfile`** ayuda a configurar cómo la aplicación se presenta al usuario como una [aplicación instalable](/docs/configuration/installable-apps). Como mínimo, esta anotación necesita un `name` para el nombre completo de la aplicación y un `shortName` para usar cuando el espacio es limitado. El `shortName` no debe exceder los 12 caracteres.  
 
-El método `run()` es el núcleo de tu aplicación en webforJ. Define lo que sucede después de que la aplicación se inicializa y es el punto de entrada principal para las características de tu aplicación. Al sobrescribir el método `run()`, puedes implementar la lógica que crea y gestiona la interfaz de usuario y el comportamiento de tu aplicación.
+## Creando una interfaz de usuario {#creating-a-ui}
 
-:::tip Usando enrutamiento
-Al implementar enrutamiento dentro de una aplicación, no es necesario sobrescribir el método `run()`, ya que el marco maneja automáticamente la inicialización de rutas y la creación de la `Frame` inicial. El método `run()` se invoca después de que se resuelve la ruta base, asegurando que el sistema de navegación de la aplicación esté completamente inicializado antes de que se ejecute cualquier lógica. Este tutorial profundizará en la implementación de enrutamiento en [el paso 3](scaling-with-routing-and-composites). También hay más información disponible en el [artículo sobre Enrutamiento](../../routing/overview).
-:::
+Para crear tu UI, necesitarás agregar [componentes de elementos HTML](/docs/components/html-elements) y [componentes de webforJ](/docs/components/overview). Por ahora, solo tienes una aplicación de una sola página, así que agregarás componentes directamente en la clase `Application`. 
+Para hacerlo, sobreescribe el método `App.run()` y crea un `Frame` para agregar componentes.
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    // Lógica de la aplicación
-  }
+```java
+@Override
+public void run() throws WebforjException {
+  Frame mainFrame = new Frame();
+
+  // Crea componentes de UI y agrégales al frame
+
 }
 ```
 
-## Agregando componentes {#adding-components}
+### Usando elementos HTML {#using-html-elements}
 
-En webforJ, los componentes son los bloques de construcción de la interfaz de usuario de tu aplicación. Estos componentes representan piezas discretas de la interfaz de usuario de tu aplicación, como botones, campos de texto, diálogos o tablas.
+Puedes agregar elementos HTML estándar a tu aplicación con [componentes de elementos HTML](/docs/components/html-elements).
+Crea una nueva instancia del componente y utiliza el método `add()` para agregarlo al `Frame`:
 
-Puedes pensar en una interfaz de usuario como un árbol de componentes, con una `Frame` sirviendo como la raíz. Cada componente agregado a la `Frame` se convierte en una rama o hoja en este árbol, contribuyendo a la estructura y el comportamiento general de tu aplicación.
+```java
+// Crea el contenedor para los elementos de UI
+Frame mainFrame = new Frame();
 
-:::tip Catálogo de componentes
-Consulta [esta página](../../components/overview) para una lista de los diversos componentes disponibles en webforJ.
-:::
+// Crea el componente HTML
+Paragraph tutorial = new Paragraph("¡Aplicación Tutorial!");
 
-### `Frame` de la App {#app-frame}
-
-La clase `Frame` en webforJ representa una ventana de nivel superior no anidable en tu aplicación. Un `Frame` actúa típicamente como el contenedor principal para los componentes de la interfaz de usuario, lo que lo convierte en un bloque de construcción esencial para construir la interfaz de usuario. Cada aplicación comienza con al menos un `Frame`, y puedes agregar componentes como botones, diálogos o formularios a estos frames.
-
-Un `Frame` se crea dentro del método `run()` en este paso; más adelante, se agregarán componentes aquí.
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-  }
-}
+// Agrega el componente al contenedor
+mainFrame.add(tutorial);
 ```
 
-### Componentes del lado del servidor y del cliente {#server-and-client-side-components}
+### Usando componentes de webforJ {#webforj-components-and-html-elements}
 
-Cada componente del lado del servidor en webforJ tiene un componente web del lado del cliente correspondiente. Los componentes del lado del servidor manejan la lógica y las interacciones de backend, mientras que los componentes del lado del cliente como `dwc-button` y `dwc-dialog` gestionan la renderización y el estilo del frontend.
+Mientras que los elementos HTML son útiles para la estructura, la semántica y necesidades ligeras de UI, los [componentes de webforJ](/docs/components/overview) ofrecen un comportamiento más complejo y dinámico.
 
-:::tip Componentes compuestos
+El siguiente código agrega un componente [Button](/docs/components/button), cambia su apariencia con el método `setTheme()`, y agrega un listener para crear un componente [Message Dialog](/docs/components/option-dialogs/message) cuando se hace clic en el botón.
+La mayoría de los métodos de los componentes de webforJ que modifican un componente devuelven el componente mismo, por lo que puedes encadenar múltiples métodos para un código más compacto.
 
-Junto con los componentes centrales proporcionados por webforJ, puedes diseñar componentes compuestos personalizados agrupando múltiples elementos en una única unidad reutilizable. Este concepto se tratará en este paso del tutorial. Más información está disponible en el [artículo sobre Compuestos](../../building-ui/composite-components)
-:::
+```java
+// Crea el contenedor para los elementos de UI
+Frame mainFrame = new Frame();
 
-Los componentes deben ser añadidos a una clase contenedora que implemente la interfaz <JavadocLink type="foundation" location="com/webforj/concern/HasComponents" code='true' >HasComponents</JavadocLink>. La `Frame` es una de esas clases; para este paso, agrega un `Paragraph` y un `Button` a la `Frame`, que se renderizarán en la interfaz de usuario en el navegador:
+// Crea el componente de webforJ
+Button btn = new Button("Info");
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  Paragraph demo = new Paragraph("¡Aplicación Demostración!");
-  Button btn = new Button("Info");
+// Modifica el componente de webforJ y agrega un listener
+btn.setTheme(ButtonTheme.PRIMARY)
+  .addClickListener(e -> OptionDialog.showMessageDialog("¡Esto es un tutorial!", "Info"));
 
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> showMessageDialog("¡Esta es una demostración!", "Info"));
-    mainFrame.add(demo, btn);
-  }
-}
+// Agrega el componente al contenedor
+mainFrame.add(btn);
 ```
-
-Ejecutar esto debería darte un botón simple estilizado que permite que aparezca un mensaje diciendo "¡Esta es una demostración!"
 
 ## Estilizando con CSS {#styling-with-css}
 
-El estilo en webforJ te brinda total flexibilidad para diseñar la apariencia de tu aplicación. Mientras que el marco admite un diseño y estilo cohesivos desde el principio, no impone un enfoque de estilo específico, lo que te permite aplicar estilos personalizados que se alineen con los requisitos de tu aplicación.
-
-Con webforJ, puedes aplicar dinámicamente nombres de clase a los componentes para estilización condicional o interactiva, usar CSS para un sistema de diseño consistente y escalable, e inyectar hojas de estilo en línea o externas completas.
-
-### Agregando clases CSS a los componentes {#adding-css-classes-to-components}
-
-Puedes agregar o quitar dinámicamente nombres de clase a los componentes utilizando los métodos `addClassName()` y `removeClassName()`. Estos métodos te permiten controlar los estilos del componente según la lógica de tu aplicación. Agrega el nombre de clase `mainFrame` a la `Frame` creada en los pasos anteriores incluyendo el siguiente código en el método `run()`:
+La mayoría de los componentes de webforJ tienen métodos incorporados para realizar cambios de estilo comunes, como el tamaño y el tema.
 
 ```java
-mainFrame.addClassName("mainFrame");
+//Establece el ancho del Frame usando una palabra clave de CSS
+mainFrame.setWidth("fit-content");
+
+//Establece el max-width del botón usando píxeles
+btn.setMaxWidth(200);
+
+//Establece el tema del botón a PRIMARY
+btn.setTheme(ButtonTheme.PRIMARY);
 ```
 
-### Adjuntando archivos CSS {#attaching-css-files}
+Además de estos métodos, puedes estilizar tu aplicación utilizando CSS. La sección **Estilizando** de la página de documentación de cualquier componente tiene detalles específicos sobre las propiedades CSS relevantes.
 
-Para estilizar tu aplicación, puedes incluir archivos CSS en tu proyecto ya sea usando anotaciones de activos o utilizando la API de activos de webforJ <JavadocLink type="foundation" location="com/webforj/Page" >en tiempo de ejecución</JavadocLink>. [Consulta este artículo](../../managing-resources/importing-assets) para más información.
+webforJ también viene con un conjunto de variables CSS diseñadas llamadas tokens DWC. Consulta la documentación de [Estilizando](/docs/styling/overview) para obtener información detallada sobre cómo estilizar componentes de webforJ y cómo utilizar los tokens.
 
-Por ejemplo, la anotación @StyleSheet se usa para incluir estilos del directorio resources/static. Genera automáticamente una URL para el archivo especificado e inyecta en el DOM, asegurando que los estilos se apliquen a tu aplicación. Ten en cuenta que los archivos fuera del directorio estático no son accesibles.
+### Referenciando un archivo CSS {#referencing-a-css-file} 
 
-```java title="DemoApplication.java"
-@StyleSheet("ws://styles/library.css")
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // Lógica de la aplicación aquí
-  }
+Es mejor tener un archivo CSS separado para mantener todo organizado y mantenible. Crea un archivo llamado `card.css` dentro de `src/main/resources/static/css`, con la siguiente definición de clase CSS:
+
+```css title="card.css"
+.card {
+  display: grid;
+  gap: var(--dwc-space-l);
+  padding: var(--dwc-space-l);
+  margin: var(--dwc-space-l) auto;
+  border: thin solid var(--dwc-color-default);
+  border-radius: 16px;
+  background-color: var(--dwc-surface-3);
+  box-shadow: var(--dwc-shadow-xs);
 }
 ```
-:::tip URLs del servidor web
-Para asegurarte de que los archivos estáticos sean accesibles, deben colocarse en la carpeta resources/static. Para incluir un archivo estático, puedes construir su URL utilizando el protocolo del servidor web.
+
+Luego, referencia el archivo en `Application.java` utilizando la anotación `@StyleSheet` con el nombre del archivo CSS. Para este paso, es `@StyleSheet("ws://css/card.css")`.
+
+:::tip Protocolo del servidor web
+Este tutorial utiliza el protocolo del servidor web para referenciar el archivo CSS. Para aprender más sobre cómo funciona esto, consulta [Manejando Recursos](/docs/managing-resources/overview).
 :::
 
-### Ejemplo de código CSS {#sample-css-code}
+### Agregando clases CSS a componentes {#adding-css-classes-to-components}
 
-Se utiliza un archivo CSS en tu proyecto en `resources > static > css > demoApplication.css`, y se utiliza el siguiente CSS para aplicar un estilo básico a la aplicación.
+Puedes agregar o eliminar dinámicamente nombres de clases a los componentes utilizando los métodos `addClassName()` y `removeClassName()`. Para este tutorial, solo se utiliza una clase CSS:
 
-```css
-.mainFrame {
-  display: inline-grid;
-  gap: 20px;
-  margin: 20px;
-  padding: 20px;
-  border: 1px dashed;
-  border-radius: 10px;
+```java
+mainFrame.addClassName("card");
+```
+
+## `Application` completada {#completed-application}
+
+Tu clase `Application` ahora debería verse similar a lo siguiente:
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Aplicación del Cliente", shortName = "ClienteApp")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
+
+  @Override
+  public void run() throws WebforjException {
+    Frame mainFrame = new Frame();
+    Paragraph tutorial = new Paragraph("¡Aplicación Tutorial!");
+    Button btn = new Button("Info");
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+        .setMaxWidth(200)
+        .addClickListener(e -> OptionDialog.showMessageDialog("¡Esto es un tutorial!", "Info"));
+
+    mainFrame.setWidth("fit-content")
+        .addClassName("card")
+        .add(tutorial, btn);
+  }
+
 }
 ```
 
-Una vez hecho esto, la siguiente anotación debe ser agregada a tu clase `App`:
+:::tip Múltiples páginas
+Para una aplicación más compleja, puedes dividir la interfaz de usuario en múltiples páginas para una mejor organización. Este concepto se cubre más adelante en este tutorial en [Enrutamiento y Compuestos](/docs/introduction/tutorial/routing-and-composites).
+:::
 
-```java title="DemoApplication.java"
-@StyleSheet("ws://css/demoApplication.css")
-@AppTitle("Paso Demostración 1")
-public class DemoApplication extends App {
-```
+## Próximo paso {#next-step}
 
-Los estilos CSS se aplican al `Frame` principal y proporcionan estructura al organizar los componentes con un [diseño de cuadrícula](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout), además de agregar estilos de margen, padding y border para que la interfaz de usuario esté visualmente organizada.
+Después de crear una aplicación funcional con una interfaz de usuario básica, el próximo paso es agregar un modelo de datos y mostrar los resultados en un componente `Table` en [Trabajando con Datos](/docs/introduction/tutorial/working-with-data).

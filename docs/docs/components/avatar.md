@@ -1,7 +1,7 @@
 ---
 title: Avatar
 sidebar_position: 7
-sidebar_class_name: new-content
+description: Represent users with the Avatar component, showing profile images, auto-computed initials, custom initials, or icons for identification.
 ---
 
 <DocChip chip='shadow' />
@@ -10,6 +10,8 @@ sidebar_class_name: new-content
 <JavadocLink type="avatar" location="com/webforj/component/avatar/Avatar" top='true'/>
 
 The `Avatar` component provides a visual representation of a user or entity. It can display an image, auto-computed initials, custom initials, or an icon. Avatars are commonly used to identify users in comment sections, navigation menus, chat applications, and contact lists.
+
+<!-- INTRO_END -->
 
 ## Creating avatars {#creating-avatars}
 
@@ -29,11 +31,13 @@ Avatar avatar = new Avatar("John Doe", "J");
 
 The example below showcases avatars in a team panel context. Each `Avatar` displays either a profile image or auto-generated initials based on the user's name. Clicking an `Avatar` opens a dialog with an enlarged view.
 
-<ComponentDemo 
-path='/webforj/avatar?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarView.java'
-cssURL='/css/avatar/avatar.css'
-height = '450px'
+<ComponentDemo
+path='/webforj/avatar'
+files={[
+  'src/main/java/com/webforj/samples/views/avatar/AvatarView.java',
+  'src/main/resources/static/css/avatar/avatar.css',
+]}
+height='500px'
 />
 
 ## Displaying images {#displaying-images}
@@ -67,7 +71,7 @@ Avatar avatar = new Avatar("Guest User", TablerIcon.create("user"));
 The `Avatar` component uses the label for accessibility and tooltip generation. The `setLabel()` and `setText()` methods are aliases that both set the accessible label for the `Avatar`.
 
 :::info Auto-computed Initials
-When you create an `Avatar` with just a label, initials are automatically computed by taking the first character of each word. For example, "John Doe" becomes "JD".
+When you create an `Avatar` with just a label, initials are automatically computed by taking the first character of each word. For example, an `Avatar` with the label "John Doe" automatically displays "JD" in the UI.
 :::
 
 ```java
@@ -96,8 +100,8 @@ avatar.onClick(event -> {
 Avatars can be displayed as circles or squares. The default shape is `CIRCLE`, which is standard for user avatars. Use `SQUARE` for entities like teams, companies, or applications.
 
 <ComponentDemo
-path='/webforj/avatarshapes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java'
+path='/webforj/avatarshapes'
+files={['src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java']}
 height='100px'
 />
 
@@ -118,8 +122,8 @@ The following themes are available:
 Each theme also has an outlined variant for a lighter visual treatment:
 
 <ComponentDemo
-path='/webforj/avatarthemes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java'
+path='/webforj/avatarthemes'
+files={['src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java']}
 height='120px'
 />
 
@@ -128,8 +132,8 @@ height='120px'
 Control the avatar size using the `setExpanse()` method. The component supports nine size options ranging from `XXXSMALL` to `XXXLARGE`.
 
 <ComponentDemo
-path='/webforj/avatarexpanses?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java'
+path='/webforj/avatarexpanses'
+files={['src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java']}
 height='100px'
 />
 

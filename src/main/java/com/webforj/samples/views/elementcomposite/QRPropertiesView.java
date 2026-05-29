@@ -1,7 +1,5 @@
 package com.webforj.samples.views.elementcomposite;
 
-import java.awt.Color;
-
 import com.webforj.annotation.Attribute;
 import com.webforj.annotation.JavaScript;
 import com.webforj.component.Composite;
@@ -11,38 +9,34 @@ import com.webforj.component.element.annotation.NodeName;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.awt.Color;
 
 @Route
 @FrameTitle("QR Properties")
 public class QRPropertiesView extends Composite<FlexLayout> {
-
-  QRCode qrCode = new QRCode("https://www.webforj.com");
+  private final FlexLayout self = getBoundComponent();
+  private final QRCode qrCode = new QRCode("https://www.webforj.com");
 
   public QRPropertiesView() {
-    getBoundComponent().setMargin("var(--dwc-space-m)");
+    self.setMargin("var(--dwc-space-m)").add(qrCode);
 
-    getBoundComponent().add(qrCode);
-
-    /* Setting the properties */
-    qrCode.setSize(200);
-    qrCode.setColor("#0059B8");
+    qrCode.setSize(200).setColor("#0059B8");
   }
 
-  /**
-   * QRCode Generator using Shoelace QRCode component.
-   */
-  @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js", attributes = {
-      @Attribute(name = "type", value = "module") })
+  /** QRCode Generator using Shoelace QRCode component. */
+  @JavaScript(
+      value =
+          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js",
+      attributes = {@Attribute(name = "type", value = "module")})
   @NodeName("sl-qr-code")
-  public final class QRCode extends ElementComposite {
+  public static final class QRCode extends ElementComposite {
 
     private final PropertyDescriptor<String> descValue = PropertyDescriptor.property("value", "");
     private final PropertyDescriptor<Integer> descSize = PropertyDescriptor.property("size", 128);
-    private final PropertyDescriptor<String> descColor = PropertyDescriptor.property("fill", "#000000");
+    private final PropertyDescriptor<String> descColor =
+        PropertyDescriptor.property("fill", "#000000");
 
-    /**
-     * Create a new QRCode.
-     */
+    /** Create a new QRCode. */
     public QRCode() {
       super();
     }
@@ -82,7 +76,7 @@ public class QRPropertiesView extends Composite<FlexLayout> {
     }
 
     public QRCode setColor(Color color) {
-      String hex = String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+      String hex = "#%02x%02x%02x".formatted(color.getRed(), color.getGreen(), color.getBlue());
       set(descColor, hex);
       return this;
     }

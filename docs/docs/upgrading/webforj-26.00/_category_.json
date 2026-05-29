@@ -1,0 +1,9 @@
+{
+  "label": "Upgrade to 26.00",
+  "position": 5,
+  "className": "new-content",
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}

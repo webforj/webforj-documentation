@@ -10,78 +10,84 @@ import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-/**
- * Demo to showcase the different customization options for the LoadingSpinner.
- */
-
+/** Demo to showcase the different customization options for the LoadingSpinner. */
 @Route
 @FrameTitle("Loading Spinners")
 @StyleSheet("ws://css/loadingstyles/loadingspinnerdemo.css")
 public class LoadingSpinnerDemoView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+  // UI Components
+  private final Div parentDiv;
+  private final Loading loading;
+  private final Interval interval;
 
-  int state = 1;
-  Div parentDiv;
-  Loading loading;
-  Interval interval;
+  // State counter for demo progression
+  private int state = 1;
 
   public LoadingSpinnerDemoView() {
-
     parentDiv = new Div().addClassName("card");
 
     loading = new Loading("Displaying spinner with all themes...").setBackdropVisible(false);
 
-    interval = new Interval(3f, event ->  {
-      switch (state) {
-        case 1:
-          loading.getSpinner().setTheme(Theme.DEFAULT).setExpanse(SpinnerExpanse.SMALL);
-          loading.setText("Displaying default theme, small expanse");
-          break;
-        case 2:
-          loading.getSpinner().setTheme(Theme.DANGER).setExpanse(SpinnerExpanse.MEDIUM);
-          loading.setText("Displaying danger theme, medium expanse");
-          break;
-        case 3:
-          loading.getSpinner().setTheme(Theme.GRAY).setExpanse(SpinnerExpanse.LARGE);
-          loading.setText("Displaying gray theme, large expanse");
-          break;
-        case 4:
-          loading.getSpinner().setTheme(Theme.INFO).setExpanse(SpinnerExpanse.SMALL);
-          loading.setText("Displaying info theme, small expanse");
-          break;
-        case 5:
-          loading.getSpinner().setTheme(Theme.PRIMARY).setExpanse(SpinnerExpanse.MEDIUM);
-          loading.setText("Displaying primary theme, medium expanse");
-          break;
-        case 6:
-          loading.getSpinner().setTheme(Theme.SUCCESS).setExpanse(SpinnerExpanse.LARGE);
-          loading.setText("Displaying success theme, large expanse");
-          break;
-        case 7:
-          loading.getSpinner().setTheme(Theme.WARNING).setExpanse(SpinnerExpanse.SMALL);
-          loading.setText("Displaying warning theme, small expanse");
-          break;
-        case 8:
-          loading.getSpinner().setClockwise(false);
-          loading.setText("Now moving counterclockwise...");
-          break;
-        case 9:
-          loading.getSpinner().setSpeed(500);
-          loading.setText("Going faster...");
-          break;
-        default:
-          event.getInterval().stop();
-          loading.getSpinner().setTheme(Theme.PRIMARY);
-          loading.setText("Demo complete!");
-    }
-      state++;
-    });
+    interval =
+        new Interval(
+            3f,
+            event -> {
+              String text =
+                  switch (state) {
+                    case 1 -> {
+                      loading.getSpinner().setTheme(Theme.DEFAULT).setExpanse(SpinnerExpanse.SMALL);
+                      yield "Displaying default theme, small expanse";
+                    }
+                    case 2 -> {
+                      loading.getSpinner().setTheme(Theme.DANGER).setExpanse(SpinnerExpanse.MEDIUM);
+                      yield "Displaying danger theme, medium expanse";
+                    }
+                    case 3 -> {
+                      loading.getSpinner().setTheme(Theme.GRAY).setExpanse(SpinnerExpanse.LARGE);
+                      yield "Displaying gray theme, large expanse";
+                    }
+                    case 4 -> {
+                      loading.getSpinner().setTheme(Theme.INFO).setExpanse(SpinnerExpanse.SMALL);
+                      yield "Displaying info theme, small expanse";
+                    }
+                    case 5 -> {
+                      loading
+                          .getSpinner()
+                          .setTheme(Theme.PRIMARY)
+                          .setExpanse(SpinnerExpanse.MEDIUM);
+                      yield "Displaying primary theme, medium expanse";
+                    }
+                    case 6 -> {
+                      loading.getSpinner().setTheme(Theme.SUCCESS).setExpanse(SpinnerExpanse.LARGE);
+                      yield "Displaying success theme, large expanse";
+                    }
+                    case 7 -> {
+                      loading.getSpinner().setTheme(Theme.WARNING).setExpanse(SpinnerExpanse.SMALL);
+                      yield "Displaying warning theme, small expanse";
+                    }
+                    case 8 -> {
+                      loading.getSpinner().setClockwise(false);
+                      yield "Now moving counterclockwise...";
+                    }
+                    case 9 -> {
+                      loading.getSpinner().setSpeed(500);
+                      yield "Going faster...";
+                    }
+                    default -> {
+                      event.getInterval().stop();
+                      loading.getSpinner().setTheme(Theme.PRIMARY);
+                      yield "Demo complete!";
+                    }
+                  };
 
-    getBoundComponent().add(parentDiv);
+              loading.setText(text);
+              state++;
+            });
+
+    self.add(parentDiv);
     parentDiv.add(loading);
-
     loading.open();
-
     interval.start();
   }
 }
-

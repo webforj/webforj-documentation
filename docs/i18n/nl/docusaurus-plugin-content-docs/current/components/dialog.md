@@ -1,132 +1,147 @@
 ---
 title: Dialog
 sidebar_position: 30
-_i18n_hash: e0d440fddf7ad6be7a78958ae1ddde1a
+sidebar_class_name: new-content
+_i18n_hash: 750f3d1f7c1c905274eac22a90b270de
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-dialog" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="dialog" location="com/webforj/component/dialog/Dialog" top='true'/>
 
-De webforJ dialoogcomponent is ontworpen om een ontwikkelaar in staat te stellen snel en gemakkelijk een dialoog in hun applicatie weer te geven, bijvoorbeeld voor een inlogmenu of informatieve venster.
+De `Dialog` component toont een popupvenster dat de huidige weergave overschaduwt en de aandacht vestigt op gefocuste inhoud zoals formulieren, bevestigingen of informatieve berichten.
 
-De component is opgebouwd uit drie secties, die elk `Panel`-componenten zijn: de **kop**, de **inhoud** en de **voettekst**.
+<!-- INTRO_END -->
 
-<ComponentDemo 
-path='/webforj/dialogsections?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java'
-height = '225px'
+## `Dialog` structuur {#dialog-structure}
+
+De `Dialog` is georganiseerd in drie secties: een kop, een inhoudsgebied en een voettekst. Componenten kunnen aan elke sectie worden toegevoegd met `addToHeader()`, `addToContent()`, en `addToFooter()`.
+
+<ComponentDemo
+path='/webforj/dialogsections'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java']}
+height='225px'
 />
 
 ## Gebruik {#usages}
 
-1. **Gebruikersfeedback en bevestiging**: `Dialog`-componenten worden vaak gebruikt om feedback te geven of om bevestiging van de gebruiker te vragen. Ze kunnen verschillende belangrijke feedback aan een gebruiker tonen, zoals:
+1. **Gebruikersfeedback en bevestiging**: `Dialog` componenten worden vaak gebruikt om feedback te geven of om bevestiging van de gebruiker te vragen. Ze kunnen verschillende belangrijke feedback aan een gebruiker tonen, zoals:
 
-  >- Succesberichten 
+  >- Succesboodschappen 
   >- Foutmeldingen
-  >- Bevestiging van inzendingen
+  >- Bevestigen van indienen
 
-2. **Formulierinvoer en bewerking**: Je kunt dialogen gebruiken om gebruikersinvoer te verzamelen of hen in staat te stellen informatie op een gecontroleerde en gefocuste manier te bewerken. Bijvoorbeeld, een dialoog kan verschijnen om de details van het gebruikersprofiel te bewerken of om een meerfasenformulier te voltooien.
+2. **Formulierveld en bewerken**: Je kunt dialogen gebruiken om gebruikersinvoer te verzamelen of hen in staat te stellen informatie op een gecontroleerde en gerichte manier te bewerken. Bijvoorbeeld, een dialoog kan opkomen om de profielgegevens van een gebruiker te bewerken of een meertraps formulier te voltooien.
 
-3. **Contextuele informatie**: Het weergeven van aanvullende contextuele informatie of tips in een dialoog kan gebruikers helpen complexe functies of gegevens te begrijpen. Dialogen kunnen diepgaande uitleg, grafieken of helpdocumentatie bieden.
+3. **Contextuele informatie**: Het tonen van aanvullende contextuele informatie of tooltip-informatie in een dialoog kan gebruikers helpen complexe functies of gegevens te begrijpen. Dialogen kunnen diepgaande uitleg, grafieken of helpdocumentatie bieden.
 
-4. **Afbeelding- en mediavoorbeelden**: Wanneer gebruikers media moeten bekijken, kan een `Dialog` worden gebruikt om grotere voorbeelden of galerijen weer te geven, bijvoorbeeld bij interactie met:
+4. **Afbeelding- en mediavisualisaties**: Wanneer gebruikers stukken media moeten bekijken, kan een `Dialog` worden gebruikt om grotere voorvertoningen of galerijen te tonen, zoals wanneer zij interageren met:
   >- Afbeeldingen
   >- Video's
   >- Andere media
 
 ## Achtergrond en vervaging {#backdrop-and-blur}
 
-Door de achtergrondattributen van de webforJ `Dialog`-component in te schakelen, wordt er een achtergrond weergegeven achter de `Dialog`. Daarnaast zal, wanneer ingeschakeld, de vervagingseigenschap van de Dialog de achtergrond van de `Dialog` vervagen. Het aanpassen van deze instellingen kan gebruikers helpen door diepte, visuele hiërarchie en context te bieden, wat leidt tot duidelijkere begeleiding voor de gebruiker.
+Door de achtergrond-attribuut van de webforJ `Dialog` component in te schakelen, wordt er een achtergrond achter de `Dialog` weergegeven. Bovendien, wanneer ingeschakeld, zal de vervaagde eigenschap van de Dialog de achtergrond van de `Dialog` vervagen. Het aanpassen van deze instellingen kan gebruikers helpen door diepte, visuele hiërarchie en context te bieden, wat leidt tot duidelijkere begeleiding voor een gebruiker.
 
-<ComponentDemo 
-path='/webforj/dialogbackdropblur?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java'
-height = '300px'
+<ComponentDemo
+path='/webforj/dialogbackdropblur'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java']}
+height='300px'
 />
 
 ## Het openen en sluiten van de `Dialog` {#opening-and-closing-the-dialog}
 
-Nadat je een nieuw `Dialog`-object hebt gemaakt, gebruik je de `open()`-methode om de dialoog weer te geven. Vervolgens kan de `Dialog`-component sluiten door een van deze acties:
-- De `close()`-methode te gebruiken
-- De <kbd>ESC</kbd>-toets in te drukken
-- Buiten de `Dialog` te klikken
+Nadat je een nieuw `Dialog` object hebt gemaakt, gebruik je de `open()` methode om de dialoog weer te geven. Vervolgens kan de `Dialog` component sluiten door een van deze acties:
+- Gebruik de `close()` methode
+- Druk op de <kbd>ESC</kbd> toets
+- Klik buiten de `Dialog`
 
-Ontwikkelaars kunnen kiezen welke interacties de `Dialog` sluiten met `setCancelOnEscKey()` en `setCancelOnOutsideClick()`. Daarnaast kan de `setClosable()`-methode voorkomen of toestaan dat zowel het indrukken van de <kbd>ESC</kbd>-toets als het klikken buiten de `Dialog` de component sluit.
+Ontwikkelaars kunnen kiezen welke interacties de `Dialog` sluiten met `setCancelOnEscKey()` en `setCancelOnOutsideClick()`. Bovendien kan de `setClosable()` methode voorkomen of toestaan dat zowel het indrukken van de <kbd>ESC</kbd> toets als het klikken buiten de `Dialog` de component sluiten.
 
-<ComponentDemo 
-path='/webforj/dialogclose?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogCloseView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/dialogclose'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogCloseView.java']}
+height='350px'
 />
 
-## Auto-focus {#auto-focus}
+## Automatische focus {#auto-focus}
 
-Wanneer ingeschakeld, zal de auto-focus automatisch focus geven aan het eerste element binnen de dialoog dat gefocust kan worden. Dit is nuttig om de aandacht van gebruikers te richten en kan worden aangepast via de `setAutoFocus()`-methode.
+Wanneer ingeschakeld, geeft de automatische focus automatisch focus aan het eerste element binnen de dialoog dat gefocust kan worden. Dit is nuttig om de aandacht van gebruikers te richten en is aanpasbaar via de `setAutoFocus()` methode.
 
-<ComponentDemo 
-path='/webforj/dialogautofocus?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/dialogautofocus'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java']}
+height='350px'
 />
 
 ## Versleepbaar {#draggable}
 
-De `Dialog` heeft ingebouwde functionaliteit om verplaatsbaar te zijn, waardoor de gebruiker het `Dialog`-venster kan verplaatsen door te klikken en te slepen. De positie van de `Dialog` kan worden aangepast vanuit een van de velden erin: de kop, inhoud of voettekst.
+De `Dialog` heeft ingebouwde functionaliteit om versleepbaar te zijn, waardoor de gebruiker het `Dialog` venster kan verplaatsen door te klikken en te slepen. De positie van de `Dialog` kan worden gemanipuleerd vanuit elk van de velden binnenin: de kop, inhoud of voettekst.
 
-### Kleven aan de rand {#snap-to-edge}
-Het is ook mogelijk om dit gedrag te kalibreren zodat het aan de rand van het scherm kleeft, wat betekent dat de `Dialog` automatisch zal uitlijnen met de rand van het display wanneer deze wordt losgelaten van het slepen. Het kleven kan worden gewijzigd via de `setSnapToEdge()`-methode. De `setSnapThreshold()` accepteert een aantal pixels, dat bepaalt hoe ver de `Dialog` van de zijkanten van het scherm moet zijn voordat deze automatisch aan de randen kleeft.  
+### Aansluiten op de rand {#snap-to-edge}
+Het is ook mogelijk om dit gedrag te kalibreren om aan de rand van het scherm aan te sluiten, wat betekent dat de `Dialog` zichzelf automatisch uitlijnt met de rand van het display wanneer deze wordt vrijgegeven van zijn sleepdatum. Aansluiten kan worden gewijzigd via de `setSnapToEdge()` methode. De `setSnapThreshold()` neemt een aantal pixels, die zal instellen hoe ver de `Dialog` van de zijkanten van het scherm moet zijn voordat deze automatisch naar de randen zal aansluiten.
 
-<ComponentDemo 
-path='/webforj/dialogdraggable?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogDraggableView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/dialogdraggable'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogDraggableView.java']}
+height='350px'
 />
 
 ## Positionering {#positioning}
 
-De positie van de dialoog kan worden aangepast met behulp van de ingebouwde `setPosx()`- en `setPosy()`-methoden. Deze methoden accepteren een stringargument dat elke toepasselijke CSS-eenheid van lengte kan vertegenwoordigen, zoals pixels of weergavehoogte/-breedte. Een lijst van deze metingen [kan op deze link worden gevonden](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages).
+De positie van de dialoog kan worden gemanipuleerd met behulp van de ingebouwde `setPosx()` en `setPosy()` methoden. Deze methoden nemen een stringargument dat elke toepasselijke CSS-eenheid van lengte kan vertegenwoordigen, zoals pixels of weergavehoogte/-breedte. Een lijst van deze metingen [is te vinden via deze link](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages).
 
-<ComponentDemo 
-path='/webforj/dialogpositioning?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogPositioningView.java'
-height = '350px'
+<ComponentDemo
+path='/webforj/dialogpositioning'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogPositioningView.java']}
+height='350px'
 />
 
 ### Verticale uitlijning {#vertical-alignment}
 
-Naast handmatige toewijzing van de X- en Y-positie van een dialoog, is het mogelijk om de ingebouwde enum-klasse van de dialoog te gebruiken om de `Dialog` uit te lijnen. Er zijn drie mogelijke waarden: `TOP`, `CENTER` en `BOTTOM`, die allemaal met de `setAlignment()`-methode kunnen worden gebruikt. 
+Naast de handmatige toewijzing van de X- en Y-positie van een dialoog, is het mogelijk om de ingebouwde enum-klasse van de dialoog te gebruiken om de `Dialog` uit te lijnen. Er zijn drie mogelijke waarden, `TOP`, `CENTER` en `BOTTOM`, die allemaal kunnen worden gebruikt met de `setAlignment()` methode.
 
-<ComponentDemo 
-path='/webforj/dialogalignments?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.java'
-height = '550px'
+<ComponentDemo
+path='/webforj/dialogalignments'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.java']}
+height='550px'
 />
 
 ### Volledig scherm en breekpunten {#full-screen-and-breakpoints}
 
-De `Dialog` kan worden ingesteld om de volledige schermmodus in te gaan. Wanneer de volledig schermmodus is ingeschakeld, kan de `Dialog` niet worden verplaatst of gepositioneerd. Deze modus kan worden aangepast met het breekpuntattribuut van de `Dialog`. Het breekpunt is een mediaquery die aangeeft wanneer de `Dialog` automatisch naar de volledig schermmodus zal overschakelen. Wanneer de query overeenkomt, verandert de `Dialog` in volledig scherm - anders is deze gepositioneerd.
+De `Dialog` kan worden ingesteld om de volledig schermmodus in te schakelen. Wanneer de volledig schermmodus is ingeschakeld, kan de `Dialog` niet worden verplaatst of gepositioneerd. Deze modus kan worden aangepast met het breekpunt-attribuut van de `Dialog`. Het breekpunt is een media-query waarin de `Dialog` automatisch naar de volledig schermmodus zal schakelen. Wanneer de query overeenkomt, verandert de `Dialog` in volledig scherm - anders is hij gepositioneerd.
 
-## Stijl {#styling}
+### Automatische breedte <DocChip chip='since' label='26.00' /> {#auto-width}
+
+Standaard strekt de `Dialog` zich uit om de beschikbare horizontale ruimte in te vullen. Wanneer de automatische breedte is ingeschakeld via `setAutoWidth(true)`, past de `Dialog` zichzelf aan op basis van de breedte van de inhoud.
+
+<ComponentDemo
+path='/webforj/dialogautowidth'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogAutoWidthView.java']}
+height='350px'
+/>
+
+## Stijling {#styling}
 
 ### Thema's {#themes}
 
-`Dialog`-componenten worden geleverd met <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 afzonderlijke thema's </JavadocLink> die zijn ingebouwd voor snelle styling zonder het gebruik van CSS. Deze thema's zijn vooraf gedefinieerde stijlen die op knoppen kunnen worden toegepast om hun uiterlijk en visuele presentatie te veranderen. Ze bieden een snelle en consistente manier om de uitstraling van knoppen in een applicatie aan te passen.
+`Dialog` componenten worden geleverd met <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 discrete thema's</JavadocLink> die zijn ingebouwd voor snelle stijling zonder het gebruik van CSS. Deze thema's zijn vooraf gedefinieerde stijlen die kunnen worden toegepast op knoppen om hun uiterlijk en visuele presentatie te veranderen. Ze bieden een snelle en consistente manier om de uitstraling van knoppen in een applicatie aan te passen.
 
-Hoewel er veel gebruiksgevallen zijn voor elk van de verschillende thema's, zijn enkele voorbeelden van gebruik:
+Hoewel er veel gebruiksmogelijkheden zijn voor elk van de verschillende thema's, zijn hier enkele voorbeelden:
 
-  - **Danger**: Acties met ernstige consequenties, zoals het wissen van ingevulde informatie of het permanent verwijderen van een account/gegevens, zijn een goed gebruiksgeval voor dialogen met het Danger-thema.
-  - **Default**: Het standaardthema is geschikt voor acties in een applicatie die geen speciale aandacht vereisen en die generiek zijn, zoals het wijzigen van een instelling.
-  - **Primary**: Dit thema is geschikt als een belangrijkste "call-to-action" op een pagina, zoals inschrijven, wijzigingen opslaan of naar een andere pagina gaan.
-  - **Success**: Success-thema dialogen zijn uitstekend voor het visualiseren van de succesvolle voltooiing van een element in een applicatie, zoals de indiening van een formulier of de voltooiing van een aanmeldproces. Het succes-thema kan programmadig worden toegepast zodra een succesvolle actie is voltooid.
-  - **Warning**: Waarschuwingsdialogen zijn nuttig om gebruikers te wijzen op een mogelijk risicovolle actie, zoals wanneer ze zich van een pagina met onopgeslagen wijzigingen verwijderen. Deze acties zijn vaak minder ingrijpend dan die welke het Danger-thema zouden gebruiken.
-  - **Gray**: Goed voor subtiele acties, zoals kleine instellingen of acties die meer aanvullend zijn voor een pagina en niet deel uitmaken van de belangrijkste functionaliteit.
-  - **Info**: Het Info-thema is een goede keuze om verduidelijkende, aanvullende informatie aan een gebruiker te bieden wanneer dat nodig is.
+  - **Gevoeligheid**: Acties met ernstige gevolgen, zoals het wissen van ingevulde informatie of het permanent verwijderen van een account/gegevens, vertegenwoordigen een goede gebruiksfunctie voor dialogen met het Gevoeligheid-thema.
+  - **Standaard**: Het standaardthema is geschikt voor acties in een applicatie die geen bijzondere aandacht vereisen en die algemeen zijn, zoals het toggelen van een instelling.
+  - **Primair**: Dit thema is geschikt als een belangrijkste "oproep tot actie" op een pagina, zoals aanmelden, wijzigingen opslaan of doorgaan naar een andere pagina.
+  - **Succes**: Succes-thema dialogen zijn uitstekend voor het visualiseren van succesvolle voltooiing van een element in een applicatie, zoals het indienen van een formulier of het voltooien van een aanmeldproces. Het succes-thema kan programmatisch worden toegepast zodra een succesvolle actie is voltooid.
+  - **Waarschuwing**: Waarschuwingsdialogen zijn nuttig om gebruikers te wijzen op een mogelijk risicovolle actie, zoals wanneer ze een pagina met onopgeslagen wijzigingen verlaten. Deze acties zijn vaak minder impactvol dan die welke het Gevoeligheid-thema zouden gebruiken.
+  - **Grijs**: Goed voor subtiele acties, zoals kleinere instellingen of acties die meer aanvullend zijn voor een pagina, en geen deel uitmaken van de belangrijkste functionaliteit.
+  - **Informatie**: Het Informatie-thema is een goede keuze om verduidelijkende, aanvullende informatie aan een gebruiker te geven wanneer deze wordt gepushed.
 
-<ComponentDemo 
-path='/webforj/dialogthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogThemesView.java'
-height = '500px'
+<ComponentDemo
+path='/webforj/dialogthemes'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogThemesView.java']}
+height='500px'
 />
 
 <TableBuilder name="Dialog" />

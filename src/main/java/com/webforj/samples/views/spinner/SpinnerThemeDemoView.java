@@ -10,33 +10,35 @@ import com.webforj.component.spinner.Spinner;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.util.List;
 
 @Route
 @FrameTitle("Spinner Themes")
 public class SpinnerThemeDemoView extends Composite<FlexLayout> {
-  
-  Spinner defaultSpinner;
-  Spinner primarySpinner;
-  Spinner successSpinner;
-  Spinner dangerSpinner;
-  Spinner warningSpinner;
-  Spinner graySpinner;
-  Spinner infoSpinner;
+  private final FlexLayout self = getBoundComponent();
+
+  // Available themes
+  private static final List<Theme> THEMES =
+      List.of(
+          Theme.DEFAULT,
+          Theme.PRIMARY,
+          Theme.SUCCESS,
+          Theme.DANGER,
+          Theme.WARNING,
+          Theme.GRAY,
+          Theme.INFO);
 
   public SpinnerThemeDemoView() {
-    getBoundComponent().setDirection(FlexDirection.ROW).setAlignment(FlexAlignment.CENTER)
-    .setJustifyContent(FlexJustifyContent.CENTER).setSpacing("var(--dwc-space-m)")
-    .setMargin("var(--dwc-space-l)");
-    
-    defaultSpinner = new Spinner(Theme.DEFAULT, SpinnerExpanse.MEDIUM);
-    primarySpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
-    successSpinner = new Spinner(Theme.SUCCESS, SpinnerExpanse.MEDIUM);
-    dangerSpinner = new Spinner(Theme.DANGER, SpinnerExpanse.MEDIUM);
-    warningSpinner = new Spinner(Theme.WARNING, SpinnerExpanse.MEDIUM);
-    graySpinner = new Spinner(Theme.GRAY, SpinnerExpanse.MEDIUM);
-    infoSpinner = new Spinner(Theme.INFO, SpinnerExpanse.MEDIUM);
-    
-    getBoundComponent().add(defaultSpinner, primarySpinner, successSpinner, dangerSpinner, 
-        warningSpinner, graySpinner, infoSpinner);
+    self.setDirection(FlexDirection.ROW)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-l)");
+
+    THEMES.forEach(
+        theme -> {
+          Spinner spinner = new Spinner(theme, SpinnerExpanse.MEDIUM);
+          self.add(spinner);
+        });
   }
 }

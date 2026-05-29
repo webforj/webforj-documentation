@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Bindings
+description: Link Java Bean properties to webforJ UI components through BindingContext to synchronize reads and writes between model and view.
 ---
 
 A binding in webforJ links a specific property of a Java Bean to a UI component. This linkage enables automatic updates between the UI and the backend model. Each binding can handle data synchronization, validation, transformation, and event management.
@@ -39,8 +40,8 @@ When setting up a binding, you should provide the property name as a string. Thi
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
 context
-    .bind(textField, "power")
-    .add()
+  .bind(textField, "power")
+  .add()
 ```
 
 ```java
@@ -137,8 +138,8 @@ This ensures that the data remains unchanged from the UI perspective, while stil
 // Configuring a text field to be read-only in the binding context
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context.bind(nameTextField, "name")
-    .readOnly()
-    .add();
+  .readOnly()
+  .add();
 ```
 
 In this configuration, `readOnly` ensures that the `nameTextField` doesn't accept user input, effectively making the text field display 
@@ -179,11 +180,11 @@ For example, you might want to format the string, compute a value, or log certai
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context
-    .bind(textField, "power")
-    .useGetter(hero -> {
-        String name = hero.getName();
-        return name.toUpperCase(); // Custom logic: convert name to uppercase
-    });
+  .bind(textField, "power")
+  .useGetter(hero -> {
+    String name = hero.getName();
+    return name.toUpperCase(); // Custom logic: convert name to uppercase
+  });
 ```
 
 ### Using custom setters {#using-custom-setters}
@@ -194,9 +195,9 @@ like logging or notifying other parts of your app.
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context
-    .bind(textField, "power")
-    .useSetter((hero, name) -> {
-        System.out.println("Updating name from " + hero.getName() + " to " + name);
-        hero.setName(name); // Additional operation: logging
-    });
+  .bind(textField, "power")
+  .useSetter((hero, name) -> {
+    System.out.println("Updating name from " + hero.getName() + " to " + name);
+    hero.setName(name); // Additional operation: logging
+  });
 ```
