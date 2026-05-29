@@ -22,7 +22,7 @@ The API has two pieces:
 | State | Meaning |
 | --- | --- |
 | `VISIBLE` | The page content is at least partially visible. The tab is in the foreground of a non minimized window. |
-| `HIDDEN` | The page content is not visible to the user. The tab is in the background, the window is minimized, the screen is locked, or the operating system is showing a screensaver. |
+| `HIDDEN` | The page content isn't visible to the user. The tab is in the background, the window is minimized, the screen is locked, or the operating system is showing a screensaver. |
 
 ## Reading the current state {#reading-the-current-state}
 
@@ -40,7 +40,7 @@ Call it when you need a one shot answer, for example when a scheduled task wakes
 
 ## Listening for changes {#listening-for-changes}
 
-`addVisibilityChangeListener(...)` registers a listener that is notified every time the visibility state changes. The matching alias is `onVisibilityChange(...)`.
+`addVisibilityChangeListener(...)` registers a listener that's notified every time the visibility state changes. The matching alias is `onVisibilityChange(...)`.
 
 ```java
 ListenerRegistration<PageVisibilityChangeEvent> registration =
@@ -133,6 +133,6 @@ The visibility listener clears the favicon badge and dismisses the desktop notif
 ## When to use it {#when-to-use-it}
 
 - **Pause background work.** Stop polling, intervals, and animations when the page is hidden to save bandwidth and CPU. Resume them when it becomes visible again.
-- **Gate notifications.** Show a `Toast` when the user can see the tab and a `DesktopNotification` when they cannot.
+- **Gate notifications.** Show a `Toast` when the user can see the tab and a `DesktopNotification` when they can't.
 - **Refresh stale data on return.** When the page comes back from `HIDDEN`, decide whether enough time has passed to re fetch.
 - **Track engagement.** Mark a session as inactive while the tab is hidden.
