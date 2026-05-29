@@ -2,6 +2,7 @@ package com.webforj.samples.pages.splitter;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class SplitterPositionPage {
 
@@ -16,15 +17,15 @@ public class SplitterPositionPage {
     this.positionedDetailPanel = page.getByText("Detail");
   }
 
-  public static String getRoute() {
-    return ROUTE;
-  }
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
+    }
 
   public Locator getPositionedMasterPanel() {
     return positionedMasterPanel;
   }
 
-  public Locator getPositionedDetailPanel() {
-    return positionedDetailPanel;
-  }
+    public Locator getPositionedDetailPanel() {
+        return positionedDetailPanel;
+    }
 }
