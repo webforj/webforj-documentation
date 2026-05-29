@@ -14,11 +14,11 @@ public class CheckboxHorizontalTextPage {
     this.dailyCheckbox = page.getByText("Daily").nth(1);
   }
 
-        public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
-    public Locator getDailyCheckbox() {
-        return dailyCheckbox;
-    }
+  public Locator getDailyCheckbox() {
+    return dailyCheckbox;
+  }
 }

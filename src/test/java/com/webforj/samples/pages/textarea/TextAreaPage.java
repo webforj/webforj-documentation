@@ -21,9 +21,9 @@ public class TextAreaPage {
     this.donationToaster = page.getByText("Thank you for your feedback!");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getFeedbackTextarea() {
     return feedbackTextarea;
@@ -33,7 +33,7 @@ public class TextAreaPage {
     return submitButton;
   }
 
-    public Locator getDonationToaster() {
-        return donationToaster;
-    }
+  public Locator getDonationToaster() {
+    return donationToaster;
+  }
 }

@@ -3,6 +3,7 @@ package com.webforj.samples.pages.navigator;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.webforj.samples.pages.SupportedLanguage;
+import java.util.regex.Pattern;
 
 public class NavigatorPagesPage {
 
@@ -10,16 +11,21 @@ public class NavigatorPagesPage {
 
   private final Page page;
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-  public static String getRoute() {
-    return ROUTE;
+  public NavigatorPagesPage(Page page) {
+    this.page = page;
   }
 
-    public Locator showingRange(int from, int to) {
-        String regex = String.format("^\\s*Showing %d to %d of 100\\s*$", from, to);
-        return page.getByText(Pattern.compile(regex));
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
+
+  public Locator navigatorValue(int n) {
+    String regex = String.format("^\\s*Goto page %d\\s*$", n);
+    return page.getByLabel(Pattern.compile(regex));
+  }
+
+  public Locator showingRange(int from, int to) {
+    String regex = String.format("^\\s*Showing %d to %d of 100\\s*$", from, to);
+    return page.getByText(Pattern.compile(regex));
+  }
 }

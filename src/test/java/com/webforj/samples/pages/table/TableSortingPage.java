@@ -17,9 +17,9 @@ public class TableSortingPage {
     this.firstTitleCell = page.getByRole(AriaRole.ROW).nth(2).getByRole(AriaRole.CELL).nth(0);
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getTitleSorting() {
     return titleSorting;

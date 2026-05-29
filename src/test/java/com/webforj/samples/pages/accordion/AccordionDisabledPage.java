@@ -24,9 +24,9 @@ public class AccordionDisabledPage {
             .filter(new Locator.FilterOptions().setHasText("Panel One"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getDisabledPanel() {
     return disabledPanel;

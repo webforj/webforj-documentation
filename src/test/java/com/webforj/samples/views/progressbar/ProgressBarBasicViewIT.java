@@ -3,9 +3,6 @@ package com.webforj.samples.views.progressbar;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.webforj.samples.pages.SupportedLanguage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.progressbar.ProgressBarBasicPage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -32,6 +29,5 @@ public class ProgressBarBasicViewIT extends BaseTest {
 
     progressBar.getResetButton().click();
     assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
-
   }
 }

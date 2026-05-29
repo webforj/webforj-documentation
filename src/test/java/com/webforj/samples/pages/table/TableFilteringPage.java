@@ -16,12 +16,13 @@ public class TableFilteringPage {
   public TableFilteringPage(Page page) {
     this.page = page;
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+    this.titleFilterInput =
+        page.getByRole(AriaRole.SEARCHBOX, new Page.GetByRoleOptions().setName("Search"));
+    this.tableRows = page.getByRole(AriaRole.TABLE).locator("tbody tr[part*='row']");
+  }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator getTitleFilterInput() {

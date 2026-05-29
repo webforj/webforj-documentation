@@ -24,9 +24,9 @@ public class AccordionBasicPage {
             .filter(new Locator.FilterOptions().setHasText("Section Three"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getSectionOne() {
     return sectionOne;

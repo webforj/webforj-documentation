@@ -32,9 +32,9 @@ public class ButtonPage {
     this.welcomeDialog = page.getByText("Welcome to the app Jason");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getFirstName() {
     return firstName;
@@ -56,7 +56,7 @@ public class ButtonPage {
     return clearButton;
   }
 
-    public Locator getWelcomeDialog() {
-        return welcomeDialog;
-    }
+  public Locator getWelcomeDialog() {
+    return welcomeDialog;
+  }
 }

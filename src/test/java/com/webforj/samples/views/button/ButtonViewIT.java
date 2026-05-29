@@ -3,9 +3,6 @@ package com.webforj.samples.views.button;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.webforj.samples.pages.SupportedLanguage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.button.ButtonPage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,16 +17,13 @@ public class ButtonViewIT extends BaseTest {
     button = new ButtonPage(page);
   }
 
-
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testWelcomeMessageIsDisplayedWhenSubmitButtonIsClicked(SupportedLanguage language) {
     setupButtonDemo(language);
     button.getSubmitButton().click();
     assertThat(button.getWelcomeDialog()).isVisible();
-
   }
-
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
@@ -44,6 +38,5 @@ public class ButtonViewIT extends BaseTest {
     assertThat(button.getFirstName()).hasValue("");
     assertThat(button.getLastName()).hasValue("");
     assertThat(button.getEmail()).hasValue("");
-
   }
 }

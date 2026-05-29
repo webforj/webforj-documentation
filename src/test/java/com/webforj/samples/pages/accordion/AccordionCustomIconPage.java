@@ -16,9 +16,9 @@ public class AccordionCustomIconPage {
             .filter(new Locator.FilterOptions().setHasText("Plus Icon Panel"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getCustomIconPanel() {
     return customIconPanel;

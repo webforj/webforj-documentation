@@ -30,9 +30,9 @@ public class AvatarPage {
     this.dialog = page.locator("dwc-dialog");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getPanel() {
     return panel;

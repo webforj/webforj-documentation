@@ -17,15 +17,15 @@ public class SplitterPositionPage {
     this.positionedDetailPanel = page.getByText("Detail");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getPositionedMasterPanel() {
     return positionedMasterPanel;
   }
 
-    public Locator getPositionedDetailPanel() {
-        return positionedDetailPanel;
-    }
+  public Locator getPositionedDetailPanel() {
+    return positionedDetailPanel;
+  }
 }

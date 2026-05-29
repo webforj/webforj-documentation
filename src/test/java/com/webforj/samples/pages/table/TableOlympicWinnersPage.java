@@ -17,9 +17,9 @@ public class TableOlympicWinnersPage {
     this.lastRow = page.getByRole(AriaRole.TABLE).filter().locator("[data-row]").last();
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getFirstRow() {
     return firstRow;

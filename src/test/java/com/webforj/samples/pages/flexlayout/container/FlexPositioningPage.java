@@ -25,9 +25,9 @@ public class FlexPositioningPage {
     listBox = shadowRootListBox.locator("li");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getFlexPositioningContainer() {
     return flexPositioningContainer;

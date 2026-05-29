@@ -26,9 +26,9 @@ public class AvatarThemesPage {
     this.infoAvatar = page.locator("dwc-avatar[theme='info']").first();
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getDefaultAvatar() {
     return defaultAvatar;
@@ -54,7 +54,7 @@ public class AvatarThemesPage {
     return dangerAvatar;
   }
 
-    public Locator getInfoAvatar() {
-        return infoAvatar;
-    }
+  public Locator getInfoAvatar() {
+    return infoAvatar;
+  }
 }

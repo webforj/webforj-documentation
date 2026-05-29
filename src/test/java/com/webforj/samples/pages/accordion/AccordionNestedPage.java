@@ -36,9 +36,9 @@ public class AccordionNestedPage {
             .filter(new Locator.FilterOptions().setHasText("Inner Panel B"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getOuterPanel() {
     return outerPanel;

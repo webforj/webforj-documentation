@@ -20,9 +20,9 @@ public class FlexDirectionPage {
     this.flexDirectionContainer = page.locator(".button__container--single-row");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getFlexDirectionDropdown() {
     return flexDirectionDropdown;

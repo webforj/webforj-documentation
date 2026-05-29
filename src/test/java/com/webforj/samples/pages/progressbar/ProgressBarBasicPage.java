@@ -14,17 +14,20 @@ public class ProgressBarBasicPage {
   private final Locator pauseButton;
   private final Locator resetButton;
 
-    public ProgressBarBasicPage(Page page) {
+  public ProgressBarBasicPage(Page page) {
 
-        this.progressBar = page.locator("dwc-progressbar");
-        this.startButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Start"));
-        this.pauseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
-        this.resetButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Reset"));
-    }
+    this.progressBar = page.locator("dwc-progressbar");
+    this.startButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Start"));
+    this.pauseButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
+    this.resetButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Reset"));
+  }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public static String getRoute() {
     return ROUTE;
@@ -38,7 +41,11 @@ public class ProgressBarBasicPage {
     return startButton;
   }
 
-    public Locator getResetButton() {
-        return resetButton;
-    }
+  public Locator getPauseButton() {
+    return pauseButton;
+  }
+
+  public Locator getResetButton() {
+    return resetButton;
+  }
 }

@@ -21,9 +21,9 @@ public class TableColumnPinningPage {
             "You asked to edit record number ", new Page.GetByTextOptions().setExact(false));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getEditButton() {
     return editButton;

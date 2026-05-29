@@ -18,9 +18,9 @@ public class BadgeButtonsPage {
         page.locator("dwc-button").filter(new Locator.FilterOptions().setHasText("Messages"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getNotificationsButton() {
     return notificationsButton;

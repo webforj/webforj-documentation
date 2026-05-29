@@ -31,9 +31,9 @@ public class AccordionMultiplePage {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Close All"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getPanelA() {
     return panelA;

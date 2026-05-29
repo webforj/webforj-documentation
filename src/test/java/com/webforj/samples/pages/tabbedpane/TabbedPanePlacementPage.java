@@ -22,9 +22,9 @@ public class TabbedPanePlacementPage {
     this.placementTabbedPane = page.locator("dwc-tabbed-pane");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getPlacementDropdown() {
     return placementDropdown;
@@ -34,7 +34,7 @@ public class TabbedPanePlacementPage {
     return placementTabbedPane;
   }
 
-    public Locator getAlignmentDropdownButton() {
-        return alignmentDropdownButton;
-    }
+  public Locator getAlignmentDropdownButton() {
+    return alignmentDropdownButton;
+  }
 }

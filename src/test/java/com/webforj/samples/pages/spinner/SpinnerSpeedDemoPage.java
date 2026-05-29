@@ -26,9 +26,9 @@ public class SpinnerSpeedDemoPage {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getSpinner() {
     return spinner;

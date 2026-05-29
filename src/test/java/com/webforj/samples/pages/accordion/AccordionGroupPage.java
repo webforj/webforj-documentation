@@ -24,9 +24,9 @@ public class AccordionGroupPage {
             .filter(new Locator.FilterOptions().setHasText("Can I have multiple groups?"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getPanelWebforJ() {
     return panelWebforJ;

@@ -4,6 +4,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.SupportedLanguage;
+import java.util.regex.Pattern;
 
 public class ChartRedrawPage {
 
@@ -50,13 +51,10 @@ public class ChartRedrawPage {
     valueForTwitter.fill(String.valueOf(twitter));
     valueForFacebook.fill(String.valueOf(facebook));
     valueForLinkedIn.fill(String.valueOf(linkedIn));
+  }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator getValueForInstagram() {

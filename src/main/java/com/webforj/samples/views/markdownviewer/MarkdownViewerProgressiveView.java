@@ -52,9 +52,7 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setPadding("var(--dwc-space-l)");
 
-    speedChoice.setLabel("Render Speed")
-      .setWidth("200px")
-      .setStyle("align-self", "flex-end");
+    speedChoice.setLabel("Render Speed").setWidth("200px").setStyle("align-self", "flex-end");
 
     speedChoice.add("2", "Slow (2)");
     speedChoice.add("4", "Default (4)");

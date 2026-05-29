@@ -27,9 +27,9 @@ public class ProgressBarThemesPage {
     warningBar = page.locator("dwc-progressbar[theme='warning']");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getDangerBar() {
     return dangerBar;
@@ -55,7 +55,7 @@ public class ProgressBarThemesPage {
     return successBar;
   }
 
-    public Locator getWarningBar() {
-        return warningBar;
-    }
+  public Locator getWarningBar() {
+    return warningBar;
+  }
 }

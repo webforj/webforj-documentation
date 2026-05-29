@@ -27,9 +27,9 @@ public class BadgeThemesPage {
         page.locator("dwc-badge").filter(new Locator.FilterOptions().setHasText("Success")).last();
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getPrimaryBadge() {
     return primaryBadge;

@@ -2,12 +2,8 @@ package com.webforj.samples.views.splitter;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.webforj.samples.pages.SupportedLanguage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.microsoft.playwright.options.BoundingBox;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.splitter.SplitterPositionPage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;

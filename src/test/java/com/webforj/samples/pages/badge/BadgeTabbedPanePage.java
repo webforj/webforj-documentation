@@ -23,9 +23,9 @@ public class BadgeTabbedPanePage {
         page.locator("dwc-tab").filter(new Locator.FilterOptions().setHasText("Drafts")).first();
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getInboxTab() {
     return inboxTab;

@@ -3,11 +3,9 @@ package com.webforj.samples.views.button;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.webforj.samples.pages.SupportedLanguage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.button.ButtonDisablePage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -27,7 +25,6 @@ public class ButtonDisableViewIT extends BaseTest {
     buttonDisable.getEmailInput().fill("invalid-email");
     assertThat(buttonDisable.getSubmitButton()).isDisabled();
   }
-
 
   @ParameterizedTest
   @MethodSource("provideRoutes")

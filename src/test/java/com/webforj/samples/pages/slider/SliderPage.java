@@ -22,9 +22,9 @@ public class SliderPage {
     this.lowerHandle = page.getByRole(AriaRole.SLIDER);
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getVolumeOffButton() {
     return volumeOffButton;
@@ -34,7 +34,7 @@ public class SliderPage {
     return volumeOnButton;
   }
 
-    public Locator getLowerHandle() {
-        return lowerHandle;
-    }
+  public Locator getLowerHandle() {
+    return lowerHandle;
+  }
 }

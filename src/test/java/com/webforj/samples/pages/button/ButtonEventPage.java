@@ -17,15 +17,15 @@ public class ButtonEventPage {
     this.page = page;
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getButton() {
     return button;
   }
 
-    public Locator getCounterText(String text) {
-        return page.getByText("Current Counter: " + text);
-    }
+  public Locator getCounterText(String text) {
+    return page.getByText("Current Counter: " + text);
+  }
 }

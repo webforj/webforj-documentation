@@ -20,9 +20,9 @@ public class AccordionCustomHeaderPage {
             .filter(new Locator.FilterOptions().setHasText("User Settings"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getCustomHeaderPanel() {
     return customHeaderPanel;

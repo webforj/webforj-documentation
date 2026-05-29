@@ -12,21 +12,25 @@ public class LoginCancelButtonPage {
   private final Locator cancelButton;
   private final Locator signInButton;
 
-    public LoginCancelButtonPage(Page page) {
+  public LoginCancelButtonPage(Page page) {
 
-        cancelButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Cancel"));
-        signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
-    }
+    cancelButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Cancel"));
+    signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
+  }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public static String getRoute() {
     return ROUTE;
   }
 
-    public Locator getSignInButton() {
-        return signInButton;
-    }
+  public Locator getCancelButton() {
+    return cancelButton;
+  }
+
+  public Locator getSignInButton() {
+    return signInButton;
+  }
 }

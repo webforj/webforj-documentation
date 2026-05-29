@@ -3,9 +3,6 @@ package com.webforj.samples.views.avatar;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.webforj.samples.pages.SupportedLanguage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.avatar.AvatarShapesPage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,14 +17,12 @@ public class AvatarShapesViewIT extends BaseTest {
     avatarPage = new AvatarShapesPage(page);
   }
 
-
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testCircleAvatarIsVisible(SupportedLanguage language) {
     setupAvatarDemo(language);
     assertThat(avatarPage.getCircleAvatar()).isVisible();
   }
-
 
   @ParameterizedTest
   @MethodSource("provideRoutes")

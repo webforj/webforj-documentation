@@ -96,11 +96,12 @@ public class ChartRedrawView extends Composite<Div> {
   }
 
   private FlexLayout createInputContainer() {
-    FlexLayout inputContainer = new FlexLayout()
-        .addClassName("input-container")
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setWrap(FlexWrap.WRAP)
-        .setSpacing("10px");
+    FlexLayout inputContainer =
+        new FlexLayout()
+            .addClassName("input-container")
+            .setJustifyContent(FlexJustifyContent.CENTER)
+            .setWrap(FlexWrap.WRAP)
+            .setSpacing("10px");
 
     for (String category : categories) {
       NumberField valueField = createNumberField(category);

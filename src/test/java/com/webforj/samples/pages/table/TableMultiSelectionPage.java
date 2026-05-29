@@ -37,9 +37,9 @@ public class TableMultiSelectionPage {
     this.noRecordsMessage = page.getByText("There are no records selected");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getMasterCheckbox() {
     return masterCheckbox;

@@ -19,9 +19,9 @@ public class ButtonDisablePage {
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Enter an email"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getSubmitButton() {
     return submitButton;

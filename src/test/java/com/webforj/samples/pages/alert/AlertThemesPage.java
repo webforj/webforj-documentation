@@ -17,13 +17,9 @@ public class AlertThemesPage {
                 new Locator.FilterOptions().setHasText("This is an alert with the SUCCESS theme!"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-    public Locator getSuccessAlert() {
-        return successAlert;
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getSuccessAlert() {
     return successAlert;

@@ -16,15 +16,15 @@ public class AvatarShapesPage {
     this.squareAvatar = page.locator("dwc-avatar[shape='square']");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getCircleAvatar() {
     return circleAvatar;
   }
 
-    public Locator getSquareAvatar() {
-        return squareAvatar;
-    }
+  public Locator getSquareAvatar() {
+    return squareAvatar;
+  }
 }

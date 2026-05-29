@@ -3,6 +3,7 @@ package com.webforj.samples.pages.navigator;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.webforj.samples.pages.SupportedLanguage;
+import java.util.regex.Pattern;
 
 public class NavigatorBasicPage {
 
@@ -15,18 +16,18 @@ public class NavigatorBasicPage {
   private final Locator nextButton;
   private final Locator lastButton;
 
-    public NavigatorBasicPage(Page page) {
-        this.page = page;
+  public NavigatorBasicPage(Page page) {
+    this.page = page;
 
-        firstButton = page.getByLabel("Goto first page");
-        prevButton = page.getByLabel("Goto previous page");
-        nextButton = page.getByLabel("Goto next page");
-        lastButton = page.getByLabel("Goto last page");
-    }
+    firstButton = page.getByLabel("Goto first page");
+    prevButton = page.getByLabel("Goto previous page");
+    nextButton = page.getByLabel("Goto next page");
+    lastButton = page.getByLabel("Goto last page");
+  }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public static String getRoute() {
     return ROUTE;
@@ -60,8 +61,8 @@ public class NavigatorBasicPage {
     return nextButton;
   }
 
-    public Locator navigatorValue(int n) {
-        Pattern exact = Pattern.compile("^\\s*Value:\\s*" + n + "\\s*$");
-        return page.getByText(exact);
-    }
+  public Locator navigatorValue(int n) {
+    Pattern exact = Pattern.compile("^\\s*Value:\\s*" + n + "\\s*$");
+    return page.getByText(exact);
+  }
 }

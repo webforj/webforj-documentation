@@ -12,17 +12,17 @@ public class DonationSliderViewIT extends BaseTest {
 
   private DonationSliderPage sliderPage;
 
-    public void setupDonationSlider(SupportedLanguage language) {
-        navigateToRoute(DonationSliderPage.getRoute(language));
-        sliderPage = new DonationSliderPage(page);
-    }
+  public void setupDonationSlider(SupportedLanguage language) {
+    navigateToRoute(DonationSliderPage.getRoute(language));
+    sliderPage = new DonationSliderPage(page);
+  }
 
-    @ParameterizedTest
-    @MethodSource("provideRoutes")
-    public void testDonationSlider(SupportedLanguage language) {
-        setupDonationSlider(language);
-        sliderPage.getTwentyDollarsOption().click();
-        assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "20.0");
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testDonationSlider(SupportedLanguage language) {
+    setupDonationSlider(language);
+    sliderPage.getTwentyDollarsOption().click();
+    assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "20.0");
 
     sliderPage.getDonationButton().click();
     assertThat(sliderPage.getConfirmationToast()).isVisible();

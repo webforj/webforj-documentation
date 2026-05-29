@@ -2,8 +2,9 @@ package com.webforj.samples.pages.flexlayout.item;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.SupportedLanguage;
-
+import java.util.regex.Pattern;
 
 public class FlexOrderPage {
 
@@ -18,16 +19,16 @@ public class FlexOrderPage {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Set Order"));
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
-
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
 
   public Locator buttonValue(int n) {
     Pattern exact = Pattern.compile("^\\s*Order:\\s*" + n + "\\s*$");
     return page.getByText(exact);
+  }
+
+  public Locator getSetOrderButton() {
+    return setOrderButton;
   }
 }

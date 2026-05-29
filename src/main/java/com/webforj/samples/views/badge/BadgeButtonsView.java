@@ -70,10 +70,11 @@ public class BadgeButtonsView extends Composite<FlexLayout> {
               .toLowerCase()
               .transform(s -> s.startsWith("x") ? s.substring(0, 2) : s.substring(0, 1));
 
-      Button btn = new Button(size)
-        .setTheme(ButtonTheme.PRIMARY)
-        .setExpanse(expanse)
-        .setBadge(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
+      Button btn =
+          new Button(size)
+              .setTheme(ButtonTheme.PRIMARY)
+              .setExpanse(expanse)
+              .setBadge(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
       row.add(btn);
     }
 

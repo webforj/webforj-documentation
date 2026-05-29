@@ -17,9 +17,9 @@ public class DialogAutoFocusPage {
             AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("This Box is Auto Focused"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getTextField() {
     return textField;

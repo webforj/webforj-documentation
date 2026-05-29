@@ -38,9 +38,9 @@ public class AppNavPage {
     this.sidebarDocumentation = page.getByText("Documentation", new Page.GetByTextOptions());
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getTablerIcon() {
     return tablerIcon;

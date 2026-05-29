@@ -21,9 +21,9 @@ public class BadgeSizesPage {
         page.locator("dwc-badge").filter(new Locator.FilterOptions().setHasText("5"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getAllSizeBadges() {
     return allSizeBadges;

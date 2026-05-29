@@ -17,11 +17,11 @@ public class RadioButtonTextPage {
         page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Left aligned"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
-    public Locator getLeftAlignedInput() {
-        return leftAlignedRB;
-    }
+  public Locator getLeftAlignedInput() {
+    return leftAlignedRB;
+  }
 }

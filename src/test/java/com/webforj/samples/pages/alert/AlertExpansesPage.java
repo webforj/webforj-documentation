@@ -24,9 +24,9 @@ public class AlertExpansesPage {
             .filter(new Locator.FilterOptions().setHasText("This alert uses the XLARGE expanse."));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getAlertXSmall() {
     return alertXSmall;

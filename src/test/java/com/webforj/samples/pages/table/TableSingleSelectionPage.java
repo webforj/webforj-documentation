@@ -19,9 +19,13 @@ public class TableSingleSelectionPage {
     return ROUTE;
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
+
+  public Locator getFirstArtist() {
+    return firstArtist;
+  }
 
   public Locator getDialogMessage(String title, String artist) {
     return page.getByText("You have selected " + title + " by " + artist);

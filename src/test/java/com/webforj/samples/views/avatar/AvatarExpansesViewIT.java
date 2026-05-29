@@ -3,7 +3,6 @@ package com.webforj.samples.views.avatar;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.webforj.samples.pages.SupportedLanguage;
-
 import com.webforj.samples.pages.avatar.AvatarExpansesPage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,14 +24,12 @@ public class AvatarExpansesViewIT extends BaseTest {
     assertThat(avatarPage.getXxxsmallAvatar()).isVisible();
   }
 
-
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testXxsmallAvatarIsVisible(SupportedLanguage language) {
     setupAvatarDemo(language);
     assertThat(avatarPage.getXxsmallAvatar()).isVisible();
   }
-
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
@@ -41,14 +38,12 @@ public class AvatarExpansesViewIT extends BaseTest {
     assertThat(avatarPage.getXsmallAvatar()).isVisible();
   }
 
-
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testSmallAvatarIsVisible(SupportedLanguage language) {
     setupAvatarDemo(language);
     assertThat(avatarPage.getSmallAvatar()).isVisible();
   }
-
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
@@ -57,14 +52,12 @@ public class AvatarExpansesViewIT extends BaseTest {
     assertThat(avatarPage.getMediumAvatar()).isVisible();
   }
 
-
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testLargeAvatarIsVisible(SupportedLanguage language) {
     setupAvatarDemo(language);
     assertThat(avatarPage.getLargeAvatar()).isVisible();
   }
-
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
@@ -73,14 +66,12 @@ public class AvatarExpansesViewIT extends BaseTest {
     assertThat(avatarPage.getXlargeAvatar()).isVisible();
   }
 
-
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testXxlargeAvatarIsVisible(SupportedLanguage language) {
     setupAvatarDemo(language);
     assertThat(avatarPage.getXxlargeAvatar()).isVisible();
   }
-
 
   @ParameterizedTest
   @MethodSource("provideRoutes")

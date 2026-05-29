@@ -12,19 +12,19 @@ public class SliderLabelsViewIT extends BaseTest {
 
   private SliderLabelsPage sliderPage;
 
-    public void setupSliderLabels(SupportedLanguage language) {
-        navigateToRoute(SliderLabelsPage.getRoute(language));
-        sliderPage = new SliderLabelsPage(page);
-    }
+  public void setupSliderLabels(SupportedLanguage language) {
+    navigateToRoute(SliderLabelsPage.getRoute(language));
+    sliderPage = new SliderLabelsPage(page);
+  }
 
-    @ParameterizedTest
-    @MethodSource("provideRoutes")
-    public void testLabelsThemesSlider(SupportedLanguage language) {
-        setupSliderLabels(language);
-        sliderPage.getTenDegreeOption().click();
-        assertThat(sliderPage.getSliderLabel()).hasAttribute("theme", "primary");
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testLabelsThemesSlider(SupportedLanguage language) {
+    setupSliderLabels(language);
+    sliderPage.getTenDegreeOption().click();
+    assertThat(sliderPage.getSliderLabel()).hasAttribute("theme", "primary");
 
-        sliderPage.getFortyDegreeOption().click();
-        assertThat(sliderPage.getSliderLabel()).hasAttribute("theme", "success");
-    }
+    sliderPage.getFortyDegreeOption().click();
+    assertThat(sliderPage.getSliderLabel()).hasAttribute("theme", "success");
+  }
 }

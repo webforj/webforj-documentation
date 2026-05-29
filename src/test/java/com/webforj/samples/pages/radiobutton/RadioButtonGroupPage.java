@@ -23,18 +23,15 @@ public class RadioButtonGroupPage {
             AriaRole.RADIO, new Page.GetByRoleOptions().setName("Disagree").setExact(true));
   }
 
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
-    }
+  public Locator getStronglyDisagreeRB() {
+    return stronglyDisagreeRB;
+  }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-    public Locator getStronglyDisagreeRB() {
-        return stronglyDisagreeRB;
-    }
-
-    public Locator getDisagreeRB() {
-        return disagreeRB;
-    }
+  public Locator getDisagreeRB() {
+    return disagreeRB;
+  }
 }

@@ -19,9 +19,9 @@ public class SliderLabelsPage {
     this.fortyDegreeOption = page.getByText("40");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getTenDegreeOption() {
     return tenDegreeOption;

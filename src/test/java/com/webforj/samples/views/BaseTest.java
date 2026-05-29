@@ -9,11 +9,10 @@ import com.microsoft.playwright.Tracing;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.LoadState;
 import com.webforj.samples.config.RunConfig;
+import com.webforj.samples.pages.SupportedLanguage;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.stream.Stream;
-
-import com.webforj.samples.pages.SupportedLanguage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -89,25 +88,13 @@ public abstract class BaseTest {
     }
   }
 
-    @AfterAll
-    public void teardownBrowser() {
-        if (browser != null) {
-            browser.close();
-        }
-        if (playwright != null) {
-            playwright.close();
-        }
-    }
+  protected void navigateToRoute(String route) {
+    page.navigate("http://localhost:" + RunConfig.getPort() + "/" + route);
+    // Wait for the page to be fully loaded
+    page.waitForLoadState(LoadState.DOMCONTENTLOADED);
+  }
 
-    protected void navigateToRoute(String route) {
-        page.navigate("http://localhost:" + RunConfig.getPort() + "/" + route);
-        // Wait for the page to be fully loaded
-        page.waitForLoadState(LoadState.DOMCONTENTLOADED);
-
-    }
-
-    protected Stream<SupportedLanguage> provideRoutes() {
-        return Arrays.stream(SupportedLanguage.values());
-    }
-
+  protected Stream<SupportedLanguage> provideRoutes() {
+    return Arrays.stream(SupportedLanguage.values());
+  }
 }

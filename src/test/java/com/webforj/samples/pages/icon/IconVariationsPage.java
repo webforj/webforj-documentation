@@ -27,9 +27,9 @@ public class IconVariationsPage {
         page.getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("filled-calendar"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getEnvelopeIcon() {
     return envelopeIcon;
@@ -75,7 +75,7 @@ public class IconVariationsPage {
     return calendarIcon.locator("svg");
   }
 
-    public Locator getFilledCalendarIconSvg() {
-        return filledCalendarIcon.locator("svg");
-    }
+  public Locator getFilledCalendarIconSvg() {
+    return filledCalendarIcon.locator("svg");
+  }
 }

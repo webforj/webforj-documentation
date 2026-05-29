@@ -18,9 +18,9 @@ public class DialogSectionsPage {
     this.footer = page.getByText("Footer");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getHeader() {
     return header;

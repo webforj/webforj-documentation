@@ -2,16 +2,10 @@ package com.webforj.samples.views.textarea;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.textarea.TextAreaPage;
 import com.webforj.samples.views.BaseTest;
 import java.util.regex.Pattern;
-
-import com.webforj.samples.pages.SupportedLanguage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import com.webforj.samples.pages.textarea.TextAreaPage;
-import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -32,7 +26,6 @@ public class TextAreaViewIT extends BaseTest {
 
     feedbackTextAreaPage.getSubmitButton().click();
     assertThat(feedbackTextAreaPage.getDonationToaster()).isVisible();
-
   }
 
   @ParameterizedTest
@@ -45,8 +38,7 @@ public class TextAreaViewIT extends BaseTest {
       feedbackTextAreaPage.getFeedbackTextarea().pressSequentially("Hello World");
     }
     assertThat(feedbackTextAreaPage.getFeedbackTextarea())
-      .hasValue(Pattern.compile("^[\\s\\S]{200}$"));
-
+        .hasValue(Pattern.compile("^[\\s\\S]{200}$"));
   }
 
   @ParameterizedTest
@@ -55,6 +47,5 @@ public class TextAreaViewIT extends BaseTest {
     setupFeedbackTextArea(language);
     feedbackTextAreaPage.getSubmitButton().click();
     assertThat(feedbackTextAreaPage.getDonationToaster()).not().isVisible();
-
   }
 }

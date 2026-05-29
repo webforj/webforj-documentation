@@ -56,9 +56,8 @@ public class FlexPositioningView extends Composite<Div> {
   }
 
   private ChoiceBox createHorizontalChoiceBox() {
-    ChoiceBox horizontal = new ChoiceBox()
-        .addClassName("flex__options")
-        .setLabel("Justify Options");
+    ChoiceBox horizontal =
+        new ChoiceBox().addClassName("flex__options").setLabel("Justify Options");
     horizontal.onSelect(this::onJustifySelect);
     for (FlexJustifyContent justify : FlexJustifyContent.values()) {
       String label = justify.getValue();
@@ -70,9 +69,8 @@ public class FlexPositioningView extends Composite<Div> {
   }
 
   private ChoiceBox createVerticalChoiceBox() {
-    ChoiceBox vertical = new ChoiceBox()
-        .addClassName("flex__options")
-        .setLabel("Alignment Options");
+    ChoiceBox vertical =
+        new ChoiceBox().addClassName("flex__options").setLabel("Alignment Options");
     vertical.onSelect(this::onAlignmentSelect);
     for (FlexAlignment alignment : FlexAlignment.values()) {
       String label = alignment.getValue();

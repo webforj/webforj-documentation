@@ -30,9 +30,9 @@ public class AvatarExpansesPage {
     this.xxxlargeAvatar = page.locator("dwc-avatar[expanse='3xl']");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getXxxsmallAvatar() {
     return xxxsmallAvatar;

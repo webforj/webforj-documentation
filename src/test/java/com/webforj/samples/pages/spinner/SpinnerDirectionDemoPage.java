@@ -31,8 +31,8 @@ public class SpinnerDirectionDemoPage {
   }
 
   public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+    return language.getPath(ROUTE);
+  }
 
   public Locator getSpinner() {
     return spinner;

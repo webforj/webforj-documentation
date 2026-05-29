@@ -110,7 +110,11 @@ public class DataTablePage {
     return page.getByText(athlete);
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public Locator goToSpecificPage(int n) {
+    return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto page " + n));
+  }
+
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 }

@@ -31,9 +31,9 @@ public class LoginCustomFieldsPage {
     logoutButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Logout"));
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getUsername() {
     return username;
@@ -51,7 +51,7 @@ public class LoginCustomFieldsPage {
     return logoutButton;
   }
 
-    public Locator getCustomderID() {
-        return customerID;
-    }
+  public Locator getCustomderID() {
+    return customerID;
+  }
 }
