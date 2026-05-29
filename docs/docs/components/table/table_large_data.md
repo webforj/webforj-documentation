@@ -2,6 +2,7 @@
 sidebar_position: 25
 title: Large Data Sets
 slug: data
+description: Handle large Table datasets efficiently with virtual scrolling, dynamic row loading, DOM recycling, and overscan tuning.
 ---
 
 ## Virtual scrolling {#virtual-scrolling}
@@ -25,10 +26,12 @@ The main advantage of virtual scrolling is improved performance, especially when
 The below `Table` shows all olympic winners - a large dataset that benefits greatly from the table's virtual scrolling functionality:
 
 <ComponentDemo
-path='/webforj/tableolympicwinners?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+path='/webforj/tableolympicwinners'
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
+]}
 height='600px'
 />
 

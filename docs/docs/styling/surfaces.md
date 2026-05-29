@@ -1,9 +1,12 @@
 ---
 sidebar_position: 8
 title: Surfaces
+description: Layer UI hierarchy with three mode-aware DWC surface tokens for page backgrounds, cards, and popovers or dialogs.
 ---
 
-There are three levels of surfaces used to organize the UI hierarchy, often combined with [shadows](./shadows). All [palette colors](./colors) are tested to provide sufficient contrast against these surfaces.
+DWC defines three levels of surfaces which are used to organize the UI hierarchy combined with [shadows](./shadows). All [palette colors](./colors) are tested to have enough contrast with these surfaces.
+
+Surfaces pick up a subtle tint from the primary hue and adapt automatically to light and dark modes.
 
 ### Example {#example}
 
@@ -15,8 +18,10 @@ There are three levels of surfaces used to organize the UI hierarchy, often comb
 
 ### Variables {#variables}
 
-| **Variable**      | **Usage**                                                               | **Example**                               |
-|-------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| `--dwc-surface-1` | The darkest surface. Used for body background.                         | <SurfaceBox surface="--dwc-surface-1" /> |
-| `--dwc-surface-2` | Used for components (e.g. cards).                                       | <SurfaceBox surface="--dwc-surface-2" /> |
-| `--dwc-surface-3` | The lightest and highest surface. Used for menus, popovers, dialogs ... | <SurfaceBox surface="--dwc-surface-3" /> |
+| **Variable**      | **Usage**                          |
+|-------------------|------------------------------------|
+| `--dwc-surface-1` | Page and body background.         |
+| `--dwc-surface-2` | Toolbars, menubars, cards.        |
+| `--dwc-surface-3` | Windows, menus, popovers, dialogs.|
+
+<dwc-doc-surfaces></dwc-doc-surfaces>

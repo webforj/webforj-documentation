@@ -1,5 +1,6 @@
 ---
 title: Getting Started
+description: Create a new webforJ project from an archetype using either the startforJ web wizard or a Maven command-line generator.
 sidebar_position: 2
 ---
 

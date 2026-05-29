@@ -1,6 +1,7 @@
 ---
 title: Namespaces
 sidebar_position: 40
+description: Share thread-safe key-value state across sessions, thread groups, or the entire JVM using Private, Group, and Global namespaces.
 ---
 
 <DocChip chip='since' label='24.22' />

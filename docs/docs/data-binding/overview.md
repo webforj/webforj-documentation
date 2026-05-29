@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
+description: Connect webforJ UI components to Java backend models with two-way synchronization, validation, and transformation through BindingContext.
 ---
 
 <Head>
@@ -22,6 +22,8 @@ import DocCardList from '@theme/DocCardList';
 <!-- vale on -->
 
  webforJ includes a data binding feature that integrates UI components with backend data models in Java applications. This feature bridges the gap between the UI and the data layer so that changes in the UI reflect in the data model and vice versa, reducing the complexity of event handling and data synchronization.
+
+<AISkillTip skill="webforj-building-forms" />
 
 ## Concept {#concept}
 
@@ -125,6 +127,6 @@ public class Hero {
 
 - **Annotation-Driven Configuration:**  Uses annotations to minimize boilerplate code, making the bindings between UI components and data models declarative and easy to manage.
 
-# Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

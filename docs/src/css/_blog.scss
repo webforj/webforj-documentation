@@ -44,6 +44,15 @@
 
     .col--9 {
       --ifm-col-width: calc(8 / 12 * 100%);
+
+      a {
+
+        &:hover,
+        &:focus {
+          border: 1px solid var(--dwc-color-primary);
+          background-color: var(--dwc-color-primary-alt, var(--dwc-surface-3));
+        }
+      }
     }
   }
 
@@ -52,7 +61,7 @@
     article {
       background-color: var(--dwc-surface-3);
       padding: 1rem;
-      border: solid 1px var(--dwc-color-default);
+      border: solid 1px var(--dwc-border-color);
       border-radius: var(--dwc-border-radius);
       padding: 0;
     }
@@ -75,7 +84,7 @@
       margin-top: var(--dwc-space-m);
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       line-clamp: 2;
       -webkit-box-orient: vertical;
       // line-height * 2 lines

@@ -1,5 +1,6 @@
 ---
 title: App Basics
+description: Walk through the Application and HomeView classes of the hello-world archetype to see how routing, annotations, and views shape a webforJ app.
 sidebar_position: 3
 ---
 
@@ -99,17 +100,17 @@ The constructor sets up the layout and component interactions:
 
 ```java
 public HomeView() {
-    self.addClassName("home-view");
-    self.setDirection(FlexDirection.COLUMN)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("3em")
-        .setStyle("height", "100dvh");
+  self.addClassName("home-view");
+  self.setDirection(FlexDirection.COLUMN)
+    .setJustifyContent(FlexJustifyContent.CENTER)
+    .setAlignment(FlexAlignment.CENTER)
+    .setSpacing("3em")
+    .setStyle("height", "100dvh");
 
-    counter.setTheme(ButtonTheme.PRIMARY);
-    counter.onClick(e -> counter.setText("Current Count: " + (++count)));
+  counter.setTheme(ButtonTheme.PRIMARY);
+  counter.onClick(e -> counter.setText("Current Count: " + (++count)));
 
-    self.add(image, title, counter, docs);
+  self.add(image, title, counter, docs);
 }
 ```
 

@@ -2,28 +2,35 @@ package com.webforj.samples.views.table;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.microsoft.playwright.Locator;
+import com.webforj.samples.pages.table.TableRichContentPage;
+import com.webforj.samples.views.BaseTest;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.microsoft.playwright.Locator;
 
 import com.webforj.samples.pages.table.TableRichContentPage;
 import com.webforj.samples.views.BaseTest;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
 public class TableRichContentViewIT extends BaseTest {
 
-    private TableRichContentPage tableRichContent;
+  private TableRichContentPage tableRichContent;
 
-    @BeforeEach
-    public void setupTableRichContent() {
-        navigateToRoute(TableRichContentPage.getRoute());
+    public void setupTableRichContent(SupportedLanguage language) {
+        navigateToRoute(TableRichContentPage.getRoute(language));
         tableRichContent = new TableRichContentPage(page);
     }
+    tableRichContent.getMasterCheckBox().click();
 
-    @Test
-    public void testMasterCheckboxRichContent() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testMasterCheckboxRichContent(SupportedLanguage language) {
+        setupTableRichContent(language);
 
         tableRichContent.getMasterCheckBox().click();
 
@@ -38,16 +45,21 @@ public class TableRichContentViewIT extends BaseTest {
             assertThat(checkbox).not().isChecked();
         }
     }
+  }
 
-    @Test
-    public void testIndividualCheckboxRichContent() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testIndividualCheckboxRichContent(SupportedLanguage language) {
+        setupTableRichContent(language);
         tableRichContent.getMasterCheckBox().click();
 
         assertThat(tableRichContent.getFirstCheckbox()).isChecked();
     }
 
-    @Test
-    void testTableImagesRichContent() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    void testTableImagesRichContent(SupportedLanguage language) {
+        setupTableRichContent(language);
         Locator images = tableRichContent.getImages();
         int count = images.count();
 
@@ -60,4 +72,5 @@ public class TableRichContentViewIT extends BaseTest {
 
         }
     }
+  }
 }

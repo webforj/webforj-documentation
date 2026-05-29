@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-icon-button>
 sidebar_class_name: sidebar--item__hidden
 slug: icon-button
-description: A user guide article for the icon-button
+description: Customize the dwc-icon-button client component using CSS variables and shadow parts to theme color, size, hover, and focus states.
 // pagination_prev: null
 // pagination_next: null
 ---

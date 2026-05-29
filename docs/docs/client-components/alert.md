@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-alert>
 sidebar_class_name: sidebar--item__hidden
 slug: alert
-description: A user guide article for the alert
+description: Customize the dwc-alert client component using CSS variables, shadow parts, and slots to theme banner color, icon, and content.
 // pagination_prev: null
 // pagination_next: null
 ---

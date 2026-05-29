@@ -5,21 +5,19 @@ import com.microsoft.playwright.Page;
 
 public class AppLayoutFullNavbarPage {
 
+  private static final String ROUTE = "applayoutfullnavbar";
 
-    private static final String ROUTE = "applayoutfullnavbar";
+  private final Locator header;
 
-    private final Locator header;
+  public AppLayoutFullNavbarPage(Page page) {
+    this.header = page.locator("header");
+  }
 
-    public AppLayoutFullNavbarPage(Page page) {
-        this.header = page.locator("header");
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
-
-    public Locator getHeaderText() {
-        return header;
-    }
-
+  public Locator getHeaderText() {
+    return header;
+  }
 }

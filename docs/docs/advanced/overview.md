@@ -3,6 +3,7 @@ title: Advanced Topics
 hide_table_of_contents: true
 sidebar_class_name: has-new-content
 hide_giscus_comments: true
+description: Browse webforJ advanced features including async updates, repositories, namespaces, lifecycle listeners, view transitions, and web storage.
 ---
 
 

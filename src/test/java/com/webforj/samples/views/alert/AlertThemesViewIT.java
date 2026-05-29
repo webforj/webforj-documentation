@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 public class AlertThemesViewIT extends BaseTest {
 
-    private AlertThemesPage alertThemesPage;
+  private AlertThemesPage alertThemesPage;
 
     public void setupAlertThemes(SupportedLanguage language) {
         navigateToRoute(AlertThemesPage.getRoute(language));
@@ -30,4 +30,8 @@ public class AlertThemesViewIT extends BaseTest {
         assertThat(alertThemesPage.getSuccessAlert()).hasAttribute("theme", "success");
     }
 
+  @Test
+  public void testAlertThemes() {
+    assertThat(alertThemesPage.getSuccessAlert()).hasAttribute("theme", "success");
+  }
 }

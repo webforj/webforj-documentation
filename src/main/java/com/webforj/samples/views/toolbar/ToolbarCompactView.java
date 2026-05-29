@@ -1,8 +1,5 @@
 package com.webforj.samples.views.toolbar;
 
-import com.webforj.router.annotation.FrameTitle;
-import com.webforj.router.annotation.Route;
-
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
@@ -13,31 +10,25 @@ import com.webforj.component.layout.applayout.AppLayout;
 import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
+import com.webforj.router.annotation.FrameTitle;
+import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Toolbar Compact")
 public class ToolbarCompactView extends Composite<AppLayout> {
-
-  AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
 
   public ToolbarCompactView() {
-    self
-        .setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
+    self.setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
         .setStyle("--dwc-app-layout-header-height", "80px")
         .add(new H1("Application Title"), new Paragraph("Content goes here"));
 
-    Toolbar mainToolbar = new Toolbar();
-    mainToolbar
-        .addToTitle(new H3("Application"))
-        .addToStart(new AppDrawerToggle());
+    Toolbar mainToolbar =
+        new Toolbar().addToTitle(new H3("Application")).addToStart(new AppDrawerToggle());
 
-    Toolbar secondToolbar = new Toolbar();
-    secondToolbar.setCompact(true);
+    Toolbar secondToolbar = new Toolbar().setCompact(true);
 
-    TabbedPane menu = new TabbedPane();
-    menu
-        .setBorderless(true)
-        .setBodyHidden(true);
+    TabbedPane menu = new TabbedPane().setBorderless(true).setBodyHidden(true);
 
     menu.addTab(new Tab("Sales", TablerIcon.create("report-money")));
     menu.addTab(new Tab("Enterprise", TablerIcon.create("building")));

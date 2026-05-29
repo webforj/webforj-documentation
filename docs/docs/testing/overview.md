@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Testing
+description: Combine JUnit unit tests with Selenium or Playwright end-to-end tests to validate webforJ components, logic, and full user journeys.
 hide_table_of_contents: true
 hide_giscus_comments: true
 ---

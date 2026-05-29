@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: Locale Management
-sidebar_class_name: new-content
+description: Configure the app locale, auto-detect from the browser, and react to runtime language switches through the LocaleObserver interface.
 ---
 
 # Locale management <DocChip chip='since' label='25.10' />
@@ -40,7 +40,7 @@ Components that need to update their content when the locale changes should impl
 ```java title="LocaleObserver.java"
 @FunctionalInterface
 public interface LocaleObserver {
-    void onLocaleChange(LocaleEvent event);
+  void onLocaleChange(LocaleEvent event);
 }
 ```
 

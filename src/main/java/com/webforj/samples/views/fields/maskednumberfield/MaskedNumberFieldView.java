@@ -17,9 +17,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Tip Calculator")
 public class MaskedNumberFieldView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedNumberField billAmountField = new MaskedNumberField("Bill Amount");
-  MaskedNumberField tipPercentageField = new MaskedNumberField("Tip Percentage (%)");
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedNumberField billAmountField = new MaskedNumberField("Bill Amount");
+  private final MaskedNumberField tipPercentageField = new MaskedNumberField("Tip Percentage (%)");
 
   public MaskedNumberFieldView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -38,12 +38,9 @@ public class MaskedNumberFieldView extends Composite<FlexLayout> {
         .setWidth(250)
         .setPrefixComponent(TablerIcon.create("circle-percentage"));
 
-    Button calculateTipButton = new Button(
-        "Calculate Tip",
-        ButtonTheme.PRIMARY,
-        event -> handleCalculation());
-    calculateTipButton.setPrefixComponent(
-        TablerIcon.create("calculator"));
+    Button calculateTipButton =
+        new Button("Calculate Tip", ButtonTheme.PRIMARY, event -> handleCalculation());
+    calculateTipButton.setPrefixComponent(TablerIcon.create("calculator"));
 
     self.add(billAmountField, tipPercentageField, calculateTipButton);
   }
@@ -68,8 +65,7 @@ public class MaskedNumberFieldView extends Composite<FlexLayout> {
       double tipAmount = billAmount * (tipPercentage / 100);
       double totalAmount = billAmount + tipAmount;
 
-      Toast.show("Tip: $" + String.format("%.2f", tipAmount)
-          + "\nTotal: $" + String.format("%.2f", totalAmount), Theme.GRAY);
+      Toast.show("Tip: $%.2f\nTotal: $%.2f".formatted(tipAmount, totalAmount), Theme.GRAY);
     } catch (NumberFormatException e) {
       Toast.show("Please enter valid numbers.", Theme.DANGER);
     }

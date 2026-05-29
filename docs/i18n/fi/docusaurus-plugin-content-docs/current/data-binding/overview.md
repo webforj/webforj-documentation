@@ -3,8 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: ba33283588df8722a31ad0c5fb15892a
+_i18n_hash: b05f45d2f2725defb3d5fba7cb0fb622
 ---
 <Head>
   <style>{`
@@ -21,17 +20,19 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
- webforJ sisältää tietosidontatoiminnon, joka integroi käyttöliittymäkomponentit taustatietomalleihin Java-sovelluksissa. Tämä toiminto ylittää kuilun käyttöliittymän ja tietokerroksen välillä, jotta käyttöliittymässä tapahtuvat muutokset heijastuvat tietomalliin ja päinvastoin, vähentäen tapahtumien käsittelyn ja tietosynkronoinnin monimutkaisuutta.
+ webforJ sisältää tietosidontatoiminnon, joka integroi käyttöliittymäkomponentit taustakannan datamalleihin Java-sovelluksissa. Tämä toiminto ylittää rajan käyttöliittymän ja datapinnan välillä niin, että käyttöliittymän muutokset heijastuvat datamalliin ja päinvastoin, vähentäen tapahtumien käsittelyn ja datan synkronoinnin monimutkaisuutta.
+
+<AISkillTip skill="webforj-building-forms" />
 
 ## Konsepti {#concept}
 
-Seuraava esittely näyttää yksinkertaisen webforJ-sovelluksen, joka rekisteröi supersankareita hyödyntäen webforJ-tietosidontaa. Sovellus koostuu kahdesta pääosasta: `HeroRegistration.java` ja `Hero.java`.
+Seuraava esittely näyttää yksinkertaisen webforJ-sovelluksen supermiehen rekisteröimiseksi käyttäen webforJ:n tietosidontatoimintoa. Sovellus koostuu kahdesta pääosasta: `HeroRegistration.java` ja `Hero.java`.
 
-`HeroRegistration.java`-tiedostossa koodi määrittää käyttäjäliittymän, jossa on `TextField` sankarin nimen syöttämiseen, `ComboBox` supervoiman valitsemiseen ja `Button` rekisteröinnin lähettämiseen.
+`HeroRegistration.java`-tiedostossa koodi konfiguroi käyttäjäliittymän, jossa on `TextField` sankarin nimen syöttämistä varten, `ComboBox` supervoiman valitsemiseksi ja `Button` rekisteröinnin lähettämiseksi.
 
-`Hero`-luokka määrittelee tietomallin, johon liittyy vahvistusrajoituksia sankarin nimen ja voiman osalta. Syötteiden on oltava voimassa ja niiden on noudatettava määriteltyjä kriteereitä, kuten pituutta ja kaavaa.
+`Hero`-luokka määrittelee datamallin validointirajoitteilla sankarin nimen ja voiman osalta. Syötteiden on oltava voimassa ja noudatettava määriteltyjä kriteerejä, kuten pituus ja malli.
 
-Sovellus käyttää `BindingContext`-konseptia sitomaan käyttöliittymäkomponentit `Hero`-olion ominaisuuksiin. Kun käyttäjä napsauttaa lähetyspainiketta, sovellus kirjoittaa lomakkeeseen syötetyt tiedot takaisin `Hero`-beanille, jos ne ovat voimassa.
+Sovellus käyttää `BindingContext`-luokkaa sitomaan käyttöliittymäkomponentteja `Hero`-objektin ominaisuuksiin. Kun käyttäjä napsauttaa lähetyspainiketta, sovellus kirjoittaa lomakkeeseen syötetyt tiedot takaisin `Hero`-beanille, jos ne ovat voimassa.
 
 <Tabs>
 <TabItem value="HeroRegistration" label="HeroRegistration.java">
@@ -47,12 +48,12 @@ public class HeroRegistration extends App {
 
   @Override
   public void run() throws WebforjException {
-    power.insert("Lentää", "Näkymättömyys", "Laservisio", "Nopeus", "Teleportaatio");
+    power.insert("Lentää", "Näkymätön", "LaserNäkö", "Nopeus", "Teleportaatio");
 
     BindingContext<Hero> context = BindingContext.of(this, Hero.class, true);
     Hero bean = new Hero("Superman", "Lentää");
 
-    // heijastaa beanin tiedot lomakkeeseen
+    // heijasta bean-tiedot lomakkeeseen
     context.read(bean);
 
     submit.onClick(e -> {
@@ -82,7 +83,7 @@ public class Hero {
   private String name;
 
   @NotEmpty(message = "Määrittelemätön voima")
-  @Pattern(regexp = "Lentää|Näkymättömyys|Laservisio|Nopeus|Teleportaatio", message = "Virheellinen voima")
+  @Pattern(regexp = "Lentää|Näkymätön|LaserNäkö|Nopeus|Teleportaatio", message = "Virheellinen voima")
   private String power;
 
   public Hero(String name, String power) {
@@ -117,14 +118,14 @@ public class Hero {
 
 ## Keskeiset ominaisuudet {#key-features}
 
-- **Kaksisuuntainen sidonta:** Tukee kaksisuuntaista tietosidontaa, jolloin tietomallissa tapahtuvat muutokset päivittävät käyttöliittymän, ja käyttöliittymässä tapahtuvat käyttäjävuorovaikutukset päivittävät tietomallin.
+- **Kaksisuuntainen sidonta:** Tukee kaksisuuntaista datan sidontaa, jolloin datamallin muutokset päivittävät käyttöliittymää ja käyttöliittymän käyttäjävuorovaikutukset päivittävät datamallia.
 
-- **Vahvistustuki:** Integroi kattavat vahvistusmekanismit, joita voit mukauttaa ja laajentaa. Kehittäjät voivat toteuttaa omia vahvistussääntöjään tai käyttää olemassa olevia vahvistuskehyksiä, kuten Jakarta Validation, varmistaakseen tietojen eheyden ennen mallin päivittämistä.
+- **Validointituki:** Integroi kattavia validointimekanismeja, joita voit räätälöidä ja laajentaa. Kehittäjät voivat toteuttaa omia validointisääntöjään tai käyttää olemassa olevia validointikehyksiä, kuten Jakarta Validointia, vahvistamaan datan eheyttä ennen mallin päivittämistä.
 
-- **Laajennettavuus:** Voidaan helposti laajentaa tukemaan erilaisia käyttöliittymäkomponentteja, tietomuunnoksia ja monimutkaisempia vahvistustilanteita.
+- **Laajennettavuus:** Voidaan helposti laajentaa tukemaan erilaisia käyttöliittymäkomponentteja, datamuunnoksia ja monimutkaisia validointitilanteita.
 
-- **Annotaatioihin perustuva konfigurointi:** Käyttää annotaatioita vähentääkseen ylikirjoituskoodia, jolloin käyttöliittymäkomponenttien ja tietomallien välinen sidonta on deklaratiivista ja helppoa hallita.
+- **Annotaatioihin perustuva konfigurointi:** Käyttää annotaatioita minimointikoodin määrää, mikä tekee käyttöliittymäkomponenttien ja datamallien välisistä sidoksista deklaratiivisia ja helppoja hallita.
 
-# Aiheet
+## Aiheet {#topics}
 
 <DocCardList className="topics-section" />

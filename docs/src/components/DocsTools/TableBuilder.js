@@ -4,6 +4,8 @@ import Translate, { translate } from '@docusaurus/Translate';
 import controlMap from '@site/docs/components/_dwc_control_map.json';
 import exclusions from '@site/static/exclusions.json';
 import TableWrapper from './TableWrapper';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 /**
  * TableBuilder creates tables of data for webforJ components. It can create the following tables:
@@ -11,26 +13,38 @@ import TableWrapper from './TableWrapper';
  * It pulls this data from https://dwc.style/docs/dwc-components.json
  * Example usage:
  *   <TableBuilder name="Button" />
+ *   <TableBuilder name={['Tree', 'TreeNode']} />
  *   <TableBuilder name="dwc-checkbox" clientComponent />
  *   <TableBuilder name="dwc-alert" tables={["parts", "dependencies"]} />
  * @param {Object} props - Component props
- * @param {String} props.name - The name of the component
+ * @param {string | Array<string>} props.name - The name of the component(s)
  * @param {Boolean} props.clientComponent - Whether the tables are for client components, which have different default tables
  * @param {Array<string>} [props.tables] - (optional) Names of the tables to render
  * @returns {React.ReactElement} - Rendered tables of data for the component
  */
 export default function TableBuilder(props) {
-  const [componentData, setComponentData] = useState(null);
+  const [componentsData, setComponentData] = useState(null);
   const shadowDomLink = '/docs/glossary#shadow-dom';
   // headerClasses are the correct classes to give headers in Docusaurus to make sure
   // they are styled correctly and show up in the correct location when you click a 
   // TOC entry. This value may need to change sometimes.
   const headerClasses = "anchor anchorWithStickyNavbar_LWe7";
-  const componentExclusions = exclusions[props.name?.toLowerCase()];
+  const namesArray = Array.isArray(props.name) ? props.name : [props.name];
 
   // If the name isn't in the controlMap, use the name as-is. 
-  // This allows you to set the tag directly with something like name="dwc-alert"
-  const tag = controlMap[props.name] ?? props.name;
+  // This allows you to set a tag directly with something like name="dwc-alert"
+  const tags = namesArray.map(
+    componentName => controlMap[componentName] ?? componentName
+  );
+
+  // If present, maps the exclusions for the chosen components
+  const exclusionArray = namesArray.map(
+    componentName => exclusions[componentName?.toLowerCase()]
+  );
+  const exclusionMap = new Map();
+  tags.forEach((tag, index) => {
+    exclusionMap.set(tag, exclusionArray[index]);
+  });
 
   const clientComponent = props.clientComponent ? props.clientComponent : false;
 
@@ -42,72 +56,131 @@ export default function TableBuilder(props) {
   // If no tables are provided, generate the defaults. Empty tables won't render anything.
   let tables = props.tables || defaultTables;
 
-  // Load relevant data from the JSON file into componentData
   useEffect(() => {
+    // Makes an array of [tag, component details]
     fetch("https://dwc.style/docs/dwc-components.json")
       .then((response) => response.json())
       .then((data) => {
-        const selectedComponent = data.components.find(
-          (component) => component.tag === tag
+        const fullComponentData = Object.fromEntries(
+          data.components.map(component => [component.tag, component])
         );
-        setComponentData(selectedComponent);
+        const selectedComponents = tags.map(component =>
+          (fullComponentData[component])
+        );
+        setComponentData(selectedComponents);
       });
-
-  }, [tag]);
+  }, [tags]);
 
   // Shows while the fetch request happens 
-  if (!componentData) {
+  if (!componentsData) {
     return <div>Loading...</div>;
   }
 
-  // The part items aren't formatted well for the table; the first element is just "part" every time, 
-  // followed by a string like "label - The button's label", so we are splitting the string along that dash
-  const partItems = componentData.docsTags?.filter((docTag) => docTag.name === "part").map((part) => ({
-    name: part.text.split(" - ")[0],
-    desc: part.text.split(" - ")[1]
-  }));
-  const slotItems = componentData.slots?.map((slots) => ({
-    name: slots.name,
-    desc: slots.docs
-  }));
-  const styleItems = componentData.styles?.map((style) => ({
-    name: style.name,
-    desc: style.docs,
-  }));
-  const propItems = componentData.props?.map((prop) => ({
-    name: prop.name,
-    attr: prop.attr,
-    desc: prop.docs,
-    type: prop.type,
-    reflects: prop.reflectToAttr.toString(),
-    default: prop.default,
-  }));
-  const reflectItems = componentData.props?.filter(prop => prop.reflectToAttr).map((prop) => ({
-    attr: prop.attr,
-    desc: prop.docs,
-    type: prop.type,
-  }));
-  const eventItems = componentData.events?.map((events) => ({
-    event: events.event,
-    desc: events.docs,
-    type: events.detail,
-  }));
-  const methodItems = componentData.methods?.map((methods) => ({
-    signature: methods.signature,
-    desc: methods.docs,
-  }));
+  const componentsMap = new Map();
 
-  const dependents = componentData?.dependents || [];
-  const dependencies = componentData?.dependencies || [];
+  componentsData.forEach((componentData, componentKey) => {
+    // The part items aren't formatted well for the table; the first element is just "part" every time, 
+    // followed by a string like "label - The button's label", so we are splitting the string along that dash
+    const partItems = componentData.docsTags?.filter((docTag) => docTag.name === "part").map((part) => ({
+      name: part.text.split(" - ")[0],
+      desc: part.text.split(" - ")[1]
+    }));
+    const slotItems = componentData.slots?.map((slots) => ({
+      name: slots.name,
+      desc: slots.docs
+    }));
+    const styleItems = componentData.styles?.map((style) => ({
+      name: style.name,
+      desc: style.docs,
+    }));
+    const propItems = componentData.props?.map((prop) => ({
+      name: prop.name,
+      attr: prop.attr,
+      desc: prop.docs,
+      type: prop.type,
+      reflects: prop.reflectToAttr.toString(),
+      default: prop.default,
+    }));
+    const reflectItems = componentData.props?.filter(prop => prop.reflectToAttr).map((prop) => ({
+      attr: prop.attr,
+      desc: prop.docs,
+      type: prop.type,
+    }));
+    const eventItems = componentData.events?.map((events) => ({
+      event: events.event,
+      desc: events.docs,
+      type: events.detail,
+    }));
+    const methodItems = componentData.methods?.map((methods) => ({
+      signature: methods.signature,
+      desc: methods.docs,
+    }));
+    const dependents = componentData?.dependents || [];
+    const dependencies = componentData?.dependencies || [];
+    const componentName = namesArray[componentKey];
+    const items = {
+      parts: partItems,
+      slots: slotItems,
+      css: styleItems,
+      properties: propItems,
+      reflects: reflectItems,
+      events: eventItems,
+      methods: methodItems,
+      dependents: dependents,
+      dependencies: dependencies,
+      componentName: componentName
+    }
+    componentsMap.set(tags[componentKey], items);
+  });
 
   const renderTable = (table) => {
-    let items, headers, sectionHeading, sectionDescription;
-    const tableExclusions = componentExclusions?.[table] || [];
+    let isMultiTable, tableItemValues, headers, sectionHeading, componentNames,
+      singleComponentTag, componentText, sectionDescription;
+
+    let tableItems = new Map();
+    componentsMap.forEach((items, tag) => {
+      // The following cases are excluded from table items:
+      // - Empty items
+      // - Items with only one element without a name are excluded (sometimes the case with slots)
+      // - Items that are identical to what’s put in exclusions.json (individual exclusions are dealt with later)      
+      if (items[table] == null || items[table].length == 0 ||
+        items[table].length == 1 && items[table][0].name == "" ||
+        !(exclusionMap.get(tag)?.[table] == null) &&
+        JSON.stringify(items[table]) === JSON.stringify(exclusionMap.get(tag)[table])
+      ) {
+        tableItems.set(tag, undefined);
+      } else {
+        tableItems.set(tag, items[table]);
+      }
+    });
+
+    // Find what tag(s) have values for the table items. The tag becomes the first array item for the arrays in tableItemValues
+    tableItemValues = [...tableItems.entries()].filter(([tag, items]) => items !== undefined);
+    isMultiTable = tableItemValues.length > 1;
+    singleComponentTag = tableItemValues[0]?.[0];
+
+    // Get the component name(s) based on the given tag. e.g. dwc-button -> Button
+    componentNames = tableItemValues.map(tag => componentsMap.get(tag[0]).componentName);
+
+    // Lists the components in the descriptions
+    componentText = !isMultiTable
+      ? <code>{componentNames[0]}</code>
+      : <>
+        {componentNames.map((tag, i) => (
+          <>
+            {componentNames.length <= 2 && i == 0
+              ? <><code>{tag}</code> </>
+              : i <= componentNames.length - 2
+                ? <><code>{tag}</code>, </>
+                : <>and <code>{tag}</code></>
+            }
+          </>
+        ))}
+      </>
 
     // Set information depending on which table we are making
     switch (table) {
       case "parts":
-        items = partItems;
         headers = [
           translate({
             id: 'tableBuilder.headers.part',
@@ -136,7 +209,7 @@ export default function TableBuilder(props) {
                   message: 'shadow DOM',
                   description: 'Link text for shadow DOM'
                 })}</Link>,
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"These are the {shadowDomLink} parts for the {componentName} component, which are required for styling with CSS."}
@@ -145,7 +218,6 @@ export default function TableBuilder(props) {
         );
         break;
       case "slots":
-        items = slotItems;
         headers = [
           translate({
             id: 'tableBuilder.headers.slot',
@@ -169,7 +241,7 @@ export default function TableBuilder(props) {
               id="tableBuilder.descriptions.slots"
               description="Description for slots section"
               values={{
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"These are the slots available for use within the {componentName} component. These slots act as placeholders within the component that control where the children of a customized element are inserted within the shadow tree."}
@@ -178,7 +250,6 @@ export default function TableBuilder(props) {
         )
         break;
       case "css":
-        items = styleItems;
         headers = [
           translate({
             id: 'tableBuilder.headers.property',
@@ -202,7 +273,7 @@ export default function TableBuilder(props) {
               id="tableBuilder.descriptions.cssProperties"
               description="Description for CSS properties section"
               values={{
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"These are the CSS properties that are used in the {componentName} component, with a short description of their use."}
@@ -211,7 +282,6 @@ export default function TableBuilder(props) {
         )
         break;
       case "properties":
-        items = propItems;
         sectionHeading = translate({
           id: 'tableBuilder.sections.properties',
           message: 'Properties',
@@ -255,7 +325,7 @@ export default function TableBuilder(props) {
               id="tableBuilder.descriptions.properties"
               description="Description for properties section"
               values={{
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"These are the properties for the {componentName} component. Properties are JavaScript variables associated with client web components. They are useful for storing data and controlling behavior, and make web components more reusable and easier to configure.\n\nSome properties reflect their values to attributes and vice versa. This means that if you set a property, the corresponding attribute is set automatically, and if you set an attribute, the corresponding property is set automatically."}
@@ -264,7 +334,6 @@ export default function TableBuilder(props) {
         );
         break;
       case "reflects":
-        items = reflectItems;
         headers = [
           translate({
             id: 'tableBuilder.headers.attribute',
@@ -293,7 +362,7 @@ export default function TableBuilder(props) {
               id="tableBuilder.descriptions.reflectedAttributes"
               description="Description for reflected attributes section"
               values={{
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"These are the reflected attributes for the {componentName} component. Reflected attributes appear as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes."}
@@ -302,7 +371,6 @@ export default function TableBuilder(props) {
         )
         break;
       case "events":
-        items = eventItems;
         headers = [
           translate({
             id: 'tableBuilder.headers.event',
@@ -331,7 +399,7 @@ export default function TableBuilder(props) {
               id="tableBuilder.descriptions.events"
               description="Description for events section"
               values={{
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"These are the events for the {componentName} component."}
@@ -340,7 +408,6 @@ export default function TableBuilder(props) {
         )
         break;
       case "methods":
-        items = methodItems;
         headers = [
           translate({
             id: 'tableBuilder.headers.methodSignature',
@@ -364,7 +431,7 @@ export default function TableBuilder(props) {
               id="tableBuilder.descriptions.methods"
               description="Description for methods section"
               values={{
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"These are the methods for the {componentName} component."}
@@ -373,7 +440,6 @@ export default function TableBuilder(props) {
         )
         break;
       case "dependents":
-        items = dependents;
         sectionHeading = translate({
           id: 'tableBuilder.sections.dependentComponents',
           message: 'Dependent Components',
@@ -385,7 +451,7 @@ export default function TableBuilder(props) {
               id="tableBuilder.descriptions.dependentComponents"
               description="Description for dependent components section"
               values={{
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"The following components depend on the {componentName} component."}
@@ -394,7 +460,6 @@ export default function TableBuilder(props) {
         )
         break;
       case "dependencies":
-        items = dependencies;
         sectionHeading = translate({
           id: 'tableBuilder.sections.dependencies',
           message: 'Dependencies',
@@ -406,7 +471,7 @@ export default function TableBuilder(props) {
               id="tableBuilder.descriptions.dependencies"
               description="Description for dependencies section"
               values={{
-                componentName: <code>{props.name}</code>
+                componentName: <>{componentText}</>
               }}
             >
               {"The {componentName} component relies on the following client components. Client components are client-side only, and cannot be instantiated directly. See the related article for more detailed styling information."}
@@ -418,43 +483,77 @@ export default function TableBuilder(props) {
         return null;
     }
 
-    // Don't render anything if there is nothing in the table
-    // Or if there is only one element without a name (sometimes the case with slots)
-    if (items.length == 0 || items.length == 1 && items[0].name == "") {
-      // This doesn't check if all entries were excluded from the Reflected Attributes table.
-      // Exclusions are currently pretty minor, but if that ever happens this will need to be updated.
-      return null;
+    // Don't return tables if there are no items for any of the selected components
+    if ([...tableItems.values()].every(table => table == null)) {
+      return null
     }
 
     // Now that we know there is content for this section, add to the mini TOC
     addTocEntry(sectionHeading);
 
     if (table == "dependencies" || table == "dependents") {
-      return (
-        <>
-          <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
-          <p>{sectionDescription}</p>
-          <ul>
-            {items.map((dependency) => {
+
+      const renderList = (tag) => {
+        if (tableItems.get(tag) == null) {
+          return null
+        }
+        // Prevents the dependency from rendering if it's in exclusions.json or undefined
+        const excludedDeps = exclusionMap.get(tag)?.[table];
+        const filteredDeps = tableItems.get(tag).filter(dependency => {
+          return !excludedDeps?.includes(dependency);
+        });
+        return (
+          <ul key={`${tag}-${table}`}>
+            {filteredDeps?.map((dependency) => {
               const clientLink = '/docs/client-components/' +
                 dependency.replace("dwc-", "")
                   .replace(/^[a-z]/, (char) => char.toUpperCase());
               return (
-                <li key={dependency}>
+                <li key={`${tag}-${table}-${dependency}`}>
                   <Link to={clientLink}>{dependency}</Link>
                 </li>
               );
             })}
           </ul>
-        </>
-      );
-    }
+        );
+      };
 
-    return (
-      <>
-        <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
-        <p>{sectionDescription}</p>
-        <TableWrapper className="custom--table" key={table} title={sectionHeading}>
+      return (
+        <>
+          <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
+          <p>{sectionDescription}</p>
+          {isMultiTable ? (
+            <Tabs key={`tabs-${table}`}>
+              {[...tableItems].map(([component, items]) => (
+                items ? (
+                  <TabItem key={`${component}-${table}`} value={`${component}-${table}`} label={`${componentsMap.get(component)?.componentName}`}>
+                    {renderList(component)}
+                  </TabItem>
+                ) : null
+              ))}
+            </Tabs>
+          ) : (
+            <>
+              {renderList(singleComponentTag)}
+            </>
+          )}
+        </>
+      )
+    };
+
+    const renderTableValues = (tag) => {
+      if (tableItems.get(tag) == null) {
+        return null
+      }
+      // Prevents the named items in exclusions.json from rendering 
+      const excludedItems = exclusionMap.get(tag)?.[table];
+      const filteredItems = tableItems.get(tag).filter((item) =>
+        !excludedItems?.includes(item.name)
+      );
+      // Adds the component name if there are multiple of the same type of table 
+      const tableTitle = isMultiTable ? `${sectionHeading} for ${componentsMap.get(tag)?.componentName}` : sectionHeading;
+      return (
+        <TableWrapper className="custom--table" key={`${tag}-${table}`} title={tableTitle}>
           <thead>
             <tr key="header">
               {headers.map((header) => (
@@ -463,14 +562,13 @@ export default function TableBuilder(props) {
             </tr>
           </thead>
           <tbody>
-            {items?.map((item) => {
+            {filteredItems?.map((item) => {
               const [key, ...values] = Object.values(item);
-              if (tableExclusions?.includes(key)) return null;
               return (
-                <tr key={key}>
+                <tr key={`${tag}-${key}`}>
                   {key ? (<td><code>{key}</code></td>) : (<td></td>)}
                   {values.map((value, idx) => (
-                    <td key={`${key}-${idx}`}>
+                    <td key={`${tag}-${key}-${idx}`}>
                       {headers[idx + 1] === "Attribute" ? (
                         <code>{formatText(value)}</code>
                       ) : (
@@ -483,6 +581,28 @@ export default function TableBuilder(props) {
             })}
           </tbody>
         </TableWrapper>
+      )
+    };
+
+    return (
+      <>
+        <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
+        <p>{sectionDescription}</p>
+        {isMultiTable ? (
+          <Tabs key={`tabs-${table}`}>
+            {[...tableItems].map(([component, items]) => (
+              items ? (
+                <TabItem key={`${component}-${table}`} value={`${component}-${table}`} label={`${componentsMap.get(component)?.componentName}`}>
+                  {renderTableValues(component)}
+                </TabItem>
+              ) : null
+            ))}
+          </Tabs>
+        ) : (
+          <>
+            {renderTableValues(singleComponentTag)}
+          </>
+        )}
       </>
     );
   };
