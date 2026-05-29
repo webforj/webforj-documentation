@@ -1,27 +1,24 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-sidebar_class_name: updated-content
-_i18n_hash: 147474b17005c532723aacd8af9391ea
+_i18n_hash: 8feae38bceaabbc49e058a8d2f56f3ba
 ---
-Spring DevTools bietet automatische Anwendungsneustarts bei Codeänderungen. webforJ DevTools fügt eine automatische Browseraktualisierung hinzu - wenn Spring Ihre Anwendung neu startet, wird der Browser automatisch über den LiveReload-Server von webforJ aktualisiert.
+Spring DevTools bietet automatische Neustarts der Anwendung bei Codeänderungen. webforJ DevTools fügt eine automatische Aktualisierung des Browsers hinzu - wenn Spring Ihre Anwendung neu startet, wird der Browser automatisch über den LiveReload-Server von webforJ aktualisiert.
 
-Verschiedene Dateitypen lösen unterschiedliche Neuladeverhalten aus. Änderungen am Java-Code führen zu einem vollständigen Spring-Neustart und einer Browseraktualisierung. Änderungen an CSS und Bildern werden ohne Neuladen der Seite aktualisiert, wodurch Formulardaten und Anwendungsstatus beibehalten werden.
+Verschiedene Dateitypen lösen unterschiedliche Neu ladungsverhalten aus. Änderungen im Java-Code verursachen einen vollständigen Spring-Neustart und eine Browseraktualisierung. CSS- und Bildänderungen werden ohne eine Seitenaktualisierung aktualisiert, wobei Formulardaten und Anwendungszustand erhalten bleiben.
 
-<!-- vale off -->
 ## Verständnis von webforJ DevTools {#understanding-webforj-devtools}
-<!-- vale on -->
 
-webforJ erweitert Spring DevTools mit Browser-Synchronisation. Wenn Spring Dateiänderungen erkennt und neu startet, aktualisiert webforJ DevTools automatisch Ihren Browser.
+webforJ erweitert Spring DevTools mit Browser-Synchronisation. Wenn Spring Date Änderungen erkennt und neu startet, aktualisiert webforJ DevTools automatisch Ihren Browser.
 
-### Neuladeverhalten {#reload-behavior}
+### Reload-Verhalten {#reload-behavior}
 
-Verschiedene Dateitypen lösen unterschiedliche Neulademechanismen aus:
+Verschiedene Dateitypen lösen unterschiedliche Reload-Strategien aus:
 
-- **Java-Dateien**: Vollständiges Neuladen der Browserseite nach dem Spring-Neustart
-- **JavaScript-Dateien**: Vollständiges Neuladen der Browserseite nach dem Spring-Neustart
-- **CSS-Dateien**: Stilaktualisierungen ohne Neuladen der Seite  
-- **Bilder**: Aktualisierung vor Ort ohne Neuladen der Seite
+- **Java-Dateien**: Vollständige Aktualisierung der Browserseite nach dem Spring-Neustart
+- **JavaScript-Dateien**: Vollständige Aktualisierung der Browserseite nach dem Spring-Neustart
+- **CSS-Dateien**: Stiländerungen ohne Seitenaktualisierung  
+- **Bilder**: Aktualisierung vor Ort ohne Seitenaktualisierung
 
 ## Abhängigkeiten {#dependencies}
 
@@ -29,25 +26,25 @@ Fügen Sie sowohl Spring DevTools als auch webforJ DevTools zu Ihrem Projekt hin
 
 ```xml title="pom.xml"
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-devtools</artifactId>
-    <optional>true</optional>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-devtools</artifactId>
+  <optionale>true</optionale>
 </dependency>
 
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-spring-devtools</artifactId>
-    <version>${webforj.version}</version>
-    <optional>true</optional>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-devtools</artifactId>
+  <version>${webforj.version}</version>
+  <optionale>true</optionale>
 </dependency>
 ```
 
 ## Konfiguration {#configuration}
 
-Aktivieren Sie webforJ DevTools in Ihrer Datei `application.properties`:
+Aktivieren Sie webforJ DevTools in Ihrer `application.properties`-Datei:
 
 ```Ini title="application.properties"
-# Aktivieren Sie die automatische Browseraktualisierung von webforJ
+# Aktivieren Sie die automatische Aktualisierung des Browsers von webforJ
 webforj.devtools.livereload.enabled=true
 
 # Sofortiges Herunterfahren für schnellere Neustarts aktivieren
@@ -56,7 +53,7 @@ server.shutdown=immediate
 
 ### Erweiterte Konfiguration {#advanced-configuration}
 
-Konfigurieren Sie die WebSocket-Verbindung und das Neuladeverhalten:
+Konfigurieren Sie die WebSocket-Verbindung und das Reload-Verhalten:
 
 ```Ini title="application.properties"
 # WebSocket-Serverport (Standard: 35730)
@@ -65,17 +62,17 @@ webforj.devtools.livereload.websocket-port=35730
 # WebSocket-Endpunktpfad (Standard: /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
-# Herzschlagintervall in Millisekunden (Standard: 30000)
+# Heartbeat-Intervall in Millisekunden (Standard: 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
 # Hot Reload für statische Ressourcen aktivieren (Standard: true)
 webforj.devtools.livereload.static-resources-enabled=true
 ```
 
-<DocChip chip='since' label='25.03' /> Konfigurieren Sie das Öffnen des Browsers beim Anwendungsstart:
+<DocChip chip='since' label='25.03' /> Konfigurieren Sie das Öffnen des Browsers beim Start der Anwendung:
 
 ```Ini title="application.properties"
-# Öffnen des Browsers aktivieren (Standard: false)
+# Aktivieren Sie das Öffnen des Browsers (Standard: false)
 webforj.devtools.browser.open=true
 
 # localhost, Hostname oder IP-Adresse (Standard: localhost)

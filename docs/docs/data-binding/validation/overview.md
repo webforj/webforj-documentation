@@ -4,6 +4,7 @@ title: Validation
 hide_giscus_comments: true
 hide_table_of_contents: true
 sidebar_class_name: has-new-content
+description: Enforce business rules in webforJ data bindings using validators, triggers, reporters, Jakarta Validation, and context results.
 ---
 
 <Head>

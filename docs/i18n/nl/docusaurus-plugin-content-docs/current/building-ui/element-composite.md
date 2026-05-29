@@ -1,37 +1,36 @@
 ---
-sidebar_position: 1
+sidebar_position: 6
 title: Element Composite
 sidebar_class_name: has-new-content
 slug: element_composite
-_i18n_hash: 6e201040e3dfd4be12037094eb9e978e
+_i18n_hash: de075e855ba84ee82ec08c2bef771ea8
 ---
-<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-De `ElementComposite` klasse dient als een veelzijdige basis voor het beheren van samengestelde elementen in webforJ-toepassingen. Het primaire doel is om de interactie met HTML-elementen, vertegenwoordigd door de `Element` klasse, te vergemakkelijken door een gestructureerde aanpak te bieden voor het omgaan met eigenschappen, attributen en gebeurtenisluisteraars. Het stelt gebruikers in staat om elementen in een app te implementeren en te hergebruiken. Gebruik de `ElementComposite` klasse bij het implementeren van Web Components voor gebruik in webforJ-toepassingen.
+De `ElementComposite` klasse dient als een veelzijdige basis voor het beheren van samengestelde elementen in webforJ-apps. Het primaire doel is om de interactie met HTML-elementen, vertegenwoordigd door de `Element` klasse, te vergemakkelijken door een gestructureerde aanpak te bieden voor het afhandelen van eigenschappen, attributen en gebeurtenislister. Het maakt de implementatie en hergebruik van elementen in een app mogelijk. Gebruik de `ElementComposite` klasse bij het implementeren van Web Components voor gebruik in webforJ-apps.
 
-Bij het gebruik van de `ElementComposite` klasse hebt u met de `getElement()` methode toegang tot het onderliggende `Element` component. Evenzo geeft de `getNodeName()` methode de naam van die node in de DOM.
+Bij gebruik van de `ElementComposite` klasse geeft de `getElement()` methode je toegang tot de onderliggende `Element` component. Evenzo geeft de `getNodeName()` methode je de naam van die knoop in de DOM.
 
 :::tip
-Het is mogelijk om alles te doen met de `Element` klasse zelf, zonder de `ElementComposite` klasse te gebruiken. De aangeboden methoden in de `ElementComposite` geven gebruikers echter een manier om het werk dat wordt gedaan te hergebruiken.
+Het is mogelijk om alles met de `Element` klasse zelf te doen, zonder de `ElementComposite` klasse te gebruiken. De methoden in `ElementComposite` bieden echter een manier om je werk te hergebruiken.
 :::
 
-Deze gids demonstreert hoe u de [Shoelace QR-code webcomponent](https://shoelace.style/components/qr-code) kunt implementeren met behulp van de `ElementComposite` klasse.
+De voorbeelden op deze pagina demonstreren hoe je de [Shoelace QR-code webcomponent](https://shoelace.style/components/qr-code) kunt implementeren met behulp van de `ElementComposite` klasse.
 
-<ComponentDemo 
-path='/webforj/qrdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QRDemoView.java'
+<ComponentDemo
+path='/webforj/qrdemo'
+files={['src/main/java/com/webforj/samples/views/elementcomposite/QRDemoView.java']}
 height='175px'
 />
 
-## Eigenschappen en attributen beschrijvingen {#property-and-attribute-descriptors}
+## Eigenschap- en attributdescriptoren {#property-and-attribute-descriptors}
 
-Eigenschappen en attributen in webcomponenten vertegenwoordigen de staat van het component. Ze worden vaak gebruikt om gegevens of configuratie te beheren. De `ElementComposite` klasse biedt een handige manier om met eigenschappen en attributen te werken.
+Eigenschappen en attributen in webcomponenten vertegenwoordigen de toestand van de component. Ze worden vaak gebruikt om gegevens of configuratie te beheren. De `ElementComposite` klasse biedt een handige manier om met eigenschappen en attributen te werken.
 
-Eigenschappen en attributen kunnen worden verklaard en geïnitialiseerd als `PropertyDescriptor` leden van de `ElementComposite` klasse die wordt geschreven, en vervolgens in de code worden gebruikt. Om eigenschappen en attributen te definiëren, gebruikt u de `set()` methode om de waarde van een eigenschap in te stellen. Bijvoorbeeld, `set(PropertyDescriptor<V> property, V value)` stelt een eigenschap in op een opgegeven waarde.
+Eigenschappen en attributen kunnen worden gedeclareerd en geïnitialiseerd als `PropertyDescriptor` leden van de te schrijven `ElementComposite` klasse, en vervolgens in de code worden gebruikt. Om eigenschappen en attributen te definiëren, gebruik je de `set()` methode om de waarde van een eigenschap in te stellen. Bijvoorbeeld, `set(PropertyDescriptor<V> property, V value)` stelt een eigenschap in op een opgegeven waarde.
 
 :::info
-Eigenschappen worden intern binnen de code van het component benaderd en gemanipuleerd en worden niet weerspiegeld in de DOM. Attributen zijn daarentegen onderdeel van de externe interface van het component en kunnen worden gebruikt om informatie van buitenaf naar een component door te geven, waardoor externe elementen of scripts de configuratie van het component kunnen aanpassen.
+Eigenschappen worden intern binnen de code van de component benaderd en gemanipuleerd en zijn niet zichtbaar in de DOM. Attributen daarentegen maken deel uit van de externe interface van de component en kunnen worden gebruikt om informatie van buitenaf in een component door te geven, waardoor een manier wordt geboden voor externe elementen of scripts om de component te configureren.
 :::
 
 ```java
@@ -44,12 +43,12 @@ set(TITLE, "Mijn Titel");
 set(VALUE, "Mijn Waarde");
 ```
 
-Naast het instellen van een eigenschap, gebruikt u de `get()` methode in de `ElementComposite` klasse om toegang te krijgen tot en eigenschappen te lezen. De `get()` methode kan een optionele `boolean` waarde krijgen, die standaard op false staat, om te bepalen of de methode een reis naar de client moet maken om de waarde op te halen. Dit heeft invloed op de prestaties, maar kan noodzakelijk zijn als de eigenschap puur aan de client kan worden gewijzigd.
+Gebruik de `get()` methode in de `ElementComposite` klasse om toegang te krijgen tot en eigenschappen te lezen. De `get()` methode kan een optionele `boolean` waarde accepteren, die standaard false is, om te bepalen of de methode een verzoek naar de client moet doen om de waarde op te halen. Dit heeft invloed op de prestaties, maar kan noodzakelijk zijn als de eigenschap uitsluitend aan de client kan worden aangepast.
 
-Een `Type` kan ook aan de methode worden doorgegeven, wat bepaalt naar wat het opgehaalde resultaat moet worden omgezet.
+Een `Type` kan ook naar de methode worden doorgegeven, wat bepaalt naar welk type het opgehaalde resultaat moet worden geconverteerd.
 
 :::tip
-Dit `Type` is niet strikt noodzakelijk en voegt een extra laag specificatie toe wanneer de gegevens worden opgehaald.
+Dit `Type` is niet per se noodzakelijk en voegt een extra laag van specificatie toe terwijl de gegevens worden opgehaald.
 :::
 
 ```java
@@ -59,74 +58,74 @@ private final PropertyDescriptor<String> TITLE = PropertyDescriptor.property("ti
 String title = get(TITLE, false, String);
 ```
 
-In de demo hieronder zijn eigenschappen toegevoegd voor de QR-code op basis van de documentatie voor de webcomponent. Vervolgens zijn er methoden geïmplementeerd waarmee gebruikers de verschillende geïmplementeerde eigenschappen kunnen ophalen en instellen.
+In de demo hieronder zijn eigenschappen toegevoegd voor de QR-code op basis van de documentatie voor de webcomponent. Methoden zijn vervolgens geïmplementeerd waarmee gebruikers de verschillende geïmplementeerde eigenschappen kunnen ophalen en instellen.
 
-<ComponentDemo 
-path='/webforj/qrproperties?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QRPropertiesView.java'
+<ComponentDemo
+path='/webforj/qrproperties'
+files={['src/main/java/com/webforj/samples/views/elementcomposite/QRPropertiesView.java']}
 height='250px'
 />
 
-## Gebeurtenisregistratie {#event-registration}
+## Evenementregistratie {#event-registration}
 
-Gebeurtenissen maken communicatie mogelijk tussen verschillende delen van uw webforJ-app. De `ElementComposite` klasse biedt gebeurtenisafhandeling met ondersteuning voor debouncing, throttling, filtering en verzameling van aangepaste gebeurtenisgegevens.
+Evenementen stellen communicatie tussen verschillende delen van je webforJ-app mogelijk. De `ElementComposite` klasse biedt gebeurtenisafhandeling met ondersteuning voor debouncing, throttling, filtering en het verzamelen van aangepaste gebeurtenisgegevens.
 
-Registreer gebeurtenisluisteraars met behulp van de `addEventListener()` methode:
+Registreer gebeurtenislijstners met de methode `addEventListener()`:
 
 ```java
-// Voorbeeld: Een klikgebeurtenis luisteraar toevoegen
+// Voorbeeld: Een click-gebeurtenis listener toevoegen
 addEventListener(ElementClickEvent.class, event -> {
-    // Verwerk de klikgebeurtenis
+  // Verwerk de klikgebeurtenis
 });
 ```
 
 :::info
-De `ElementComposite` gebeurtenissen zijn anders dan `Element` gebeurtenissen, omdat dit geen enkele klasse toestaat, maar alleen gespecificeerde `Event` klassen.
+De `ElementComposite` evenementen zijn anders dan de `Element` evenementen, in die zin dat ze geen enkele klasse toestaan, maar alleen specifieke `Event` klassen.
 :::
 
-### Vooraf ingebouwde gebeurtenisklassen {#built-in-event-classes}
+### Ingebouwde gebeurtenisklassen {#built-in-event-classes}
 
-webforJ biedt vooraf gebouwde gebeurtenisklassen met getypeerde gegevens toegang:
+webforJ biedt vooraf gebouwde gebeurtenisklassen met getypte gegevens toegang:
 
-- **ElementClickEvent**: Muisklikgebeurtenissen met coördinaten (`getClientX()`, `getClientY()`), knop informatie (`getButton()`), en modificatietoetsen (`isCtrlKey()`, `isShiftKey()`, enz.)
-- **ElementDefinedEvent**: Vuurd wanneer een aangepast element in de DOM is gedefinieerd en klaar is voor gebruik
-- **ElementEvent**: Basisgebeurtenisklasse die toegang biedt tot ruwe gebeurtenisgegevens, gebeurtenistype (`getType()`) en gebeurtenis-ID (`getId()`)
+- **ElementClickEvent**: Muisklikgebeurtenissen met coördinaten (`getClientX()`, `getClientY()`), knopinformatie (`getButton()`), en modifier-toetsen (`isCtrlKey()`, `isShiftKey()`, enz.)
+- **ElementDefinedEvent**: Wordt geactiveerd wanneer een aangepast element in de DOM is gedefinieerd en klaar voor gebruik
+- **ElementEvent**: Basis gebeurtenisklasse die toegang biedt tot ruwe gebeurtenisgegevens, gebeurtenistype (`getType()`) en gebeurtenis-ID (`getId()`)
 
 ### Gebeurtenispayloads {#event-payloads}
 
-Gebeurtenissen dragen gegevens van de client naar uw Java-code. Toegang tot deze gegevens via `getData()` voor ruwe gebeurtenisgegevens of gebruik getypeerde methoden wanneer beschikbaar op ingebouwde gebeurtenisklassen. Voor meer details over hoe u gebeurtenispayloads efficiënt kunt gebruiken, zie de [Gids voor gebeurtenissen](../building-ui/events).
+Evenementen dragen gegevens van de client naar je Java-code. Toegang tot deze gegevens via `getData()` voor ruwe gebeurtenisgegevens of gebruik getypte methoden wanneer beschikbaar op ingebouwde gebeurtenisklassen. Voor meer details over het efficiënt gebruiken van gebeurtenispayloads, zie de [Evenementenhandleiding](../building-ui/events).
 
 ## Aangepaste gebeurtenisklassen {#custom-event-classes}
 
-Voor gespecialiseerde gebeurtenisafhandeling, maak aangepaste gebeurtenisklassen met geconfigureerde payloads met behulp van de annotaties `@EventName` en `@EventOptions`.
+Voor gespecialiseerde gebeurtenisafhandeling, maak aangepaste gebeurtenisklassen met geconfigureerde payloads met behulp van `@EventName` en `@EventOptions` annotaties.
 
-In het onderstaande voorbeeld is een klikgebeurtenis gemaakt en vervolgens toegevoegd aan de QR-codecomponent. Deze gebeurtenis, wanneer deze wordt geactiveerd, toont de "X"-coördinaat van de muis op het moment van klikken op de component, die als gegevens naar de Java-gebeurtenis wordt gestuurd. Vervolgens is er een methode geïmplementeerd om de gebruiker toegang te geven tot deze gegevens, wat laat zien hoe deze in de app wordt weergegeven.
+In het onderstaande voorbeeld is een click-gebeurtenis gemaakt en vervolgens toegevoegd aan de QR-code component. Deze gebeurtenis, wanneer geactiveerd, zal de "X" coördinaat van de muis weergeven op het moment van klikken op de component, die als gegevens aan de Java-gebeurtenis wordt verstrekt. Een methode wordt vervolgens geïmplementeerd om de gebruiker toegang te geven tot deze gegevens, wat is hoe het in de app wordt weergegeven.
 
-<ComponentDemo 
-path='/webforj/qrevent?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QREventView.java'
+<ComponentDemo
+path='/webforj/qrevent'
+files={['src/main/java/com/webforj/samples/views/elementcomposite/QREventView.java']}
 height='300px'
 />
 
 ## `ElementEventOptions` {#elementeventoptions}
 
-`ElementEventOptions` stelt u in staat om het gedrag van gebeurtenissen aan te passen door te configureren welke gegevens moeten worden verzameld, wanneer gebeurtenissen worden geactiveerd en hoe ze worden verwerkt. Hier is een uitgebreide codevoorbeeld dat alle configuratie-opties laat zien:
+`ElementEventOptions` stelt je in staat om het gedrag van gebeurtenissen aan te passen door te configureren welke gegevens te verzamelen, wanneer gebeurtenissen worden geactiveerd en hoe ze worden verwerkt. Hier is een uitgebreide codefragment met alle configuratie opties:
 
 ```java
 ElementEventOptions options = new ElementEventOptions()
-    // Verzamel aangepaste gegevens van de client
-    .addData("query", "component.value")
-    .addData("timestamp", "Date.now()")
-    .addData("isValid", "component.checkValidity()")
-    
-    // Voer JavaScript uit voordat de gebeurtenis wordt geactiveerd
-    .setCode("component.classList.add('processing');")
-    
-    // Alleen activeren als aan de voorwaarden wordt voldaan
-    .setFilter("component.value.length >= 2")
-    
-    // Uitvoering vertragen totdat de gebruiker stopt met typen (300 ms)
-    .setDebounce(300, DebouncePhase.TRAILING);
+  // Verzamel aangepaste gegevens van de client
+  .addData("query", "component.value")
+  .addData("timestamp", "Date.now()")
+  .addData("isValid", "component.checkValidity()")
+  
+  // Voer JavaScript uit voordat de gebeurtenis wordt geactiveerd
+  .setCode("component.classList.add('processing');")
+  
+  // Alleen activeren als aan voorwaarden is voldaan
+  .setFilter("component.value.length >= 2")
+  
+  // Uitvoering uitstellen totdat de gebruiker stopt met typen (300ms)
+  .setDebounce(300, DebouncePhase.TRAILING);
 
 addEventListener("input", this::handleSearch, options);
 ```
@@ -135,42 +134,42 @@ addEventListener("input", this::handleSearch, options);
 
 Beheer wanneer en hoe vaak gebeurtenissen worden geactiveerd:
 
-**Debouncing** vertraagt de uitvoering totdat de activiteit stopt:
+**Debouncing** stelt de uitvoering uit totdat de activiteit stopt:
 
 ```java
-options.setDebounce(300, DebouncePhase.TRAILING); // Wacht 300 ms na de laatste gebeurtenis
+options.setDebounce(300, DebouncePhase.TRAILING); // Wacht 300ms na de laatste gebeurtenis
 ```
 
-**Throttling** beperkt de uitvoering frequentie:
+**Throttling** beperkt de frequentie van uitvoering:
 
 ```java
-options.setThrottle(100); // Maximaal eens per 100 ms
+options.setThrottle(100); // Maximaal één keer per 100ms activeren
 ```
 
-Beschikbare debouncingsfases:
+Beschikbare debounceregio's:
 
-- `LEADING`: Activeren onmiddellijk, dan wachten
-- `TRAILING`: Wachten op een stille periode, dan activeren (standaard)
-- `BOTH`: Activeren onmiddellijk en na stille periode
+- `LEADING`: Direct activeren, dan wachten
+- `TRAILING`: Wacht op een rustige periode, dan activeren (standaard)
+- `BOTH`: Direct activeren en na een rustige periode
 
 ## Opties samenvoegen {#options-merging}
 
-Combineer gebeurtenisconfiguraties van verschillende bronnen met `mergeWith()`. Basisopties bieden gemeenschappelijke gegevens voor alle gebeurtenissen, terwijl specifieke opties gespecialiseerde configuratie toevoegen. Latere opties overschrijven conflicterende instellingen.
+Combineer gebeurtenisconfiguraties uit verschillende bronnen met `mergeWith()`. Basisopties bieden gemeenschappelijke gegevens voor alle gebeurtenissen, terwijl specifieke opties gespecialiseerde configuratie toevoegen. Latere opties overschrijven conflicterende instellingen.
 
 ```java
 ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
 ```
 
-## Interactie met slots {#interacting-with-slots}
+## Interacting with slots {#interacting-with-slots}
 
-Webcomponenten gebruiken vaak slots om ontwikkelaars in staat te stellen de structuur van een component van buitenaf te definiëren. Een slot is een tijdelijke aanduiding binnen een webcomponent die kan worden gevuld met inhoud wanneer de component wordt gebruikt. In de context van de `ElementComposite` klasse bieden slots een manier om de inhoud binnen een component aan te passen. De volgende methoden worden aangeboden om ontwikkelaars in staat te stellen met slots te interageren en deze te manipuleren:
+Webcomponenten gebruiken vaak slots om ontwikkelaars in staat te stellen de structuur van een component van buitenaf te definiëren. Een slot is een tijdelijke aanduiding binnen een webcomponent die kan worden ingevuld met inhoud bij het gebruik van de component. In de context van de `ElementComposite` klasse bieden slots een manier om de inhoud binnen een component aan te passen. De volgende methoden zijn beschikbaar om ontwikkelaars in staat te stellen om met slots te interageren en deze te manipuleren:
 
-1. **`findComponentSlot()`**: Deze methode wordt gebruikt om naar een specifiek component te zoeken in alle slots in een componentensysteem. Het retourneert de naam van de slot waar het component zich bevindt. Als het component niet in een slot wordt gevonden, wordt een lege string geretourneerd.
+1. **`findComponentSlot()`**: Deze methode wordt gebruikt om naar een specifiek component in alle slots van een componentensysteem te zoeken. Het retourneert de naam van de slot waar het component zich bevindt. Als het component niet in een slot wordt gevonden, wordt een lege string geretourneerd.
 
-2. **`getComponentsInSlot()`**: Deze methode haalt de lijst op van componenten die aan een bepaalde slot in een componentensysteem zijn toegewezen. Optioneel kan een specifieke klasse worden doorgegeven om de resultaten van de methode te filteren.
+2. **`getComponentsInSlot()`**: Deze methode haalt de lijst op van componenten die aan een bepaalde slot in een componentensysteem zijn toegekend. Optioneel kun je een specifieke klassetype doorgeven om de resultaten van de methode te filteren.
 
-3. **`getFirstComponentInSlot()`**: Deze methode is ontworpen om het eerste component op te halen dat aan de slot is toegewezen. Optioneel kan een specifieke klasse worden doorgegeven om de resultaten van deze methode te filteren.
+3. **`getFirstComponentInSlot()`**: Deze methode is ontworpen om het eerste component op te halen dat aan de slot is toegewezen. Optioneel kun je een specifieke klassetype doorgeven om de resultaten van deze methode te filteren.
 
 Het is ook mogelijk om de `add()` methode te gebruiken met een `String` parameter om de gewenste slot aan te geven waarin het doorgegeven component moet worden toegevoegd.
 
-Deze interacties stellen ontwikkelaars in staat om de kracht van webcomponenten te benutten door een schone en eenvoudige API voor het manipuleren van slots, eigenschappen en het afhandelen van gebeurtenissen binnen de `ElementComposite` klasse te bieden.
+Deze interacties stellen ontwikkelaars in staat om de kracht van webcomponenten te benutten door een schone en eenvoudige API te bieden voor het manipuleren van slots, eigenschappen en het afhandelen van gebeurtenissen binnen de `ElementComposite` klasse.

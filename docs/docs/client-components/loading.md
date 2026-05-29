@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-loading>
 sidebar_class_name: sidebar--item__hidden
 slug: loading
-description: A user guide article for the loading
+description: Customize the dwc-loading client component with CSS variables and shadow parts to theme the spinner, backdrop, and loading message.
 // pagination_prev: null
 // pagination_next: null
 ---

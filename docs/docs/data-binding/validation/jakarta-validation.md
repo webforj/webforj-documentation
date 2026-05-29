@@ -2,6 +2,7 @@
 sidebar_position: 6
 title: Jakarta Validation
 sidebar_class_name: updated-content
+description: Apply Jakarta Bean Validation annotations to bean properties and activate JakartaValidator on a BindingContext with locale-aware messages.
 ---
 
 [Java Bean Validation](https://beanvalidation.org/) is widely recognized as the standard for integrating validation logic into Java applications. It uses a uniform approach to validation by allowing developers to annotate domain model properties with declarative validation constraints. These constraints are enforced at runtime, with options for both built-in and custom-defined rules.
@@ -14,14 +15,14 @@ It's necessary to include a compatible implementation, such as [Hibernate Valida
 
 ```xml
 <dependency>
-    <groupId>org.hibernate.validator</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>8.0.1.Final</version>
+  <groupId>org.hibernate.validator</groupId>
+  <artifactId>hibernate-validator</artifactId>
+  <version>8.0.1.Final</version>
 </dependency>
 <dependency>
-    <groupId>org.glassfish.expressly</groupId>
-    <artifactId>expressly</artifactId>
-    <version>5.0.0</version>
+  <groupId>org.glassfish.expressly</groupId>
+  <artifactId>expressly</artifactId>
+  <version>5.0.0</version>
 </dependency>
 ```
 

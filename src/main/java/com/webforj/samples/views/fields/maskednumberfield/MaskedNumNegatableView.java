@@ -12,9 +12,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Number Field with Negateable Option")
 public class MaskedNumNegatableView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedNumberField field = new MaskedNumberField("Credits");
-  RadioButton negateable = RadioButton.Switch("Negateable", true);
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedNumberField field = new MaskedNumberField("Credits");
+  private final RadioButton negateable = RadioButton.Switch("Negateable", true);
 
   public MaskedNumNegatableView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -22,13 +22,12 @@ public class MaskedNumNegatableView extends Composite<FlexLayout> {
         .setMaxWidth(300)
         .setMargin("var(--dwc-space-m) auto");
 
-    field.setMask("-$###,###,##0.00")
-        .setNegateable(true)
-        .setValue(123d);
+    field.setMask("-$###,###,##0.00").setNegateable(true).setValue(123d);
 
-    negateable.onToggle(event -> {
-      field.setNegateable(event.isToggled());
-    });
+    negateable.onToggle(
+        event -> {
+          field.setNegateable(event.isToggled());
+        });
 
     self.add(field, negateable);
   }

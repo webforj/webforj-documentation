@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Transformation
-sidebar_class_name: updated-content
+description: Convert between UI and model data types in webforJ bindings by implementing the Transformer interface and wiring it via useTransformer.
 ---
 
 Data transformations convert between the data types used in UI components and those in your data model. This keeps data types compatible and appropriately formatted when moving data between the frontend and backend of your applications.
@@ -18,8 +18,8 @@ You can add transformers to a binding using the `useTransformer` method on the `
 
 ```java
 context.bind(salaryField, "salary")
-    .useTransformer(new CurrencyTransformer())
-    .add();
+  .useTransformer(new CurrencyTransformer())
+  .add();
 ```
 
 In the example above, the code configures a `CurrencyTransformer` to handle conversions between the model data type (for example, BigDecimal) and the UI representation (for example, a formatted string).
@@ -71,8 +71,8 @@ Once you have defined a transformer, you can apply it across multiple bindings w
 ```java
 BindingContext<Employee> context = new BindingContext<>(Employee.class);
 context.bind(startDateField, "startDate", String.class)
-    .useTransformer(new DateTransformer())
-    .add();
+  .useTransformer(new DateTransformer())
+  .add();
 ```
 
 :::info Specifying the Bean Property Type
@@ -111,14 +111,14 @@ By default, the error message shown when a transformation fails is a static stri
 
 ```java {7}
 context.bind(quantityField, "quantity", Integer.class)
-    .useTransformer(
-        Transformer.of(
-            str -> Integer.parseInt(str),
-            val -> String.valueOf(val)
-        ),
-        () -> t("validation.quantity.invalid")
-    )
-    .add();
+  .useTransformer(
+    Transformer.of(
+      str -> Integer.parseInt(str),
+      val -> String.valueOf(val)
+    ),
+    () -> t("validation.quantity.invalid")
+  )
+  .add();
 ```
 
 The supplier is invoked only when the transformation throws a `TransformationException`. This means the message always reflects the current locale at the time of failure.

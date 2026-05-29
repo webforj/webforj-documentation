@@ -15,7 +15,7 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.6rem 1.1rem;
-  border: 1px solid var(--dwc-color-default);
+  border: 1px solid var(--dwc-border-color);
   border-radius: var(--dwc-border-radius);
   background-color: var(--dwc-surface-3);
   color: var(--ifm-font-color-base);
@@ -25,7 +25,7 @@
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-.tagCard:hover {
+.tagCard:hover, .tagCard:focus {
   border: 1px solid var(--dwc-color-primary);
   color: var(--dwc-color-primary);
   background-color: var(--dwc-color-primary-alt, var(--dwc-surface-3));

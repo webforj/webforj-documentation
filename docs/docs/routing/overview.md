@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Routing
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
+description: Drive client-side navigation in webforJ with URL-based component mapping, deep linking, and preserved app state between views.
 ---
 
 <Head>

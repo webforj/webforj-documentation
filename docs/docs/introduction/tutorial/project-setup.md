@@ -26,7 +26,7 @@ git clone https://github.com/webforj/webforj-tutorial.git
 
 ### Project structure {#project-structure}
 
-The project has five subdirectories, one for each step of the tutorial, and each contains a runnable app. Following along allows you to see how the app progresses from a basic setup to a fully functional customer management system.
+The project has six subdirectories, one for each step of the tutorial, and each contains a runnable app. Following along allows you to see how the app progresses from a basic setup to a fully functional customer management system.
 
 ```
 webforj-tutorial
@@ -38,7 +38,8 @@ webforj-tutorial
 ├───2-working-with-data
 ├───3-routing-and-composites
 ├───4-observers-and-route-parameters
-└───5-validating-and-binding-data
+├───5-validating-and-binding-data
+└───6-integrating-an-app-layout
 ```
 
 <!-- vale off -->
@@ -48,7 +49,7 @@ webforj-tutorial
 If you’d prefer to create a new project, you can use [startforJ](https://docs.webforj.com/startforj) to generate a minimal starter project. See [Getting Started](/docs/introduction/getting-started) for more detailed information about using startforJ.
 
 :::note Required settings
-- In the **webforJ version** dropdown, choose webforJ version **25.10 or higher**.
+- In the **webforJ version** dropdown, choose webforJ version **26.00 or higher**.
 - In the **Flavor** dropdown, choose **webforJ + Spring Boot**. 
 :::
 

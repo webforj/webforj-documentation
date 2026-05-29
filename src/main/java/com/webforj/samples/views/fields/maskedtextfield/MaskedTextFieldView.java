@@ -12,12 +12,16 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Text Field")
 public class MaskedTextFieldView extends Composite<FlexLayout> {
-
-  MaskedTextField recordCode = new MaskedTextField("Record Code", "", "NE-24-0934");
-  MaskedTextField couponCode = new MaskedTextField("Coupon Code", "", "ZZZZ-0000");
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedTextField recordCode = new MaskedTextField("Record Code", "", "NE-24-0934");
+  private final MaskedTextField couponCode = new MaskedTextField("Coupon Code", "", "ZZZZ-0000");
 
   public MaskedTextFieldView() {
-    FlexLayout self = getBoundComponent();
+    self.setDirection(FlexDirection.COLUMN)
+        .setJustifyContent(FlexJustifyContent.START)
+        .setAlignment(FlexAlignment.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-m)");
 
     recordCode
         .setMask("AA-00-0000")
@@ -30,12 +34,6 @@ public class MaskedTextFieldView extends Composite<FlexLayout> {
         .setValue("SAVE2025")
         .setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025")
         .setWidth(300);
-
-    self.setDirection(FlexDirection.COLUMN)
-        .setJustifyContent(FlexJustifyContent.START)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)")
-        .setMargin("var(--dwc-space-m)");
 
     self.add(couponCode, recordCode);
   }

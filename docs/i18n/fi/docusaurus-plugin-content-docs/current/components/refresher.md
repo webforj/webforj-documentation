@@ -1,120 +1,124 @@
 ---
 title: Refresher
 sidebar_position: 101
-_i18n_hash: 763037d616f2274feb7a7ed24b9c91f0
+_i18n_hash: 99793e9f95d4c5a052014f677aa8a6cb
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-refresher" />
 <DocChip chip='since' label='25.00' />
 <JavadocLink type="refresher" location="com/webforj/component/refresher/Refresher" top='true'/>
 
-Pull-to-refresh on yleinen malli mobiili- ja napinpainalluksille suunnatuissa käyttöliittymissä, ja `Refresher`-komponentti tuo sen vieritettävälle säiliöille webforJ:ssä. Kun käyttäjät pyyhkäisevät alaspäin määritellyn kynnyksen yli, se siirtyy visuaalisten tilojen läpi: `pull`, `release` ja `refreshing`, joista jokaisella on mukautettava ikoni ja paikallistettu teksti. Se toimii hyvin yhdessä [`InfiniteScroll`](../components/infinitescroll) kanssa, jotta sisällön lataaminen tai nollaaminen tapahtuu elepohjaisesti.
+Pull-to-refresh on yleinen malli mobiili- ja napinpainamisystävällisissä käyttöliittymissä, ja `Refresher`-komponentti tuo sen rolattaviin säiliöihin webforJ:ssä. Kun käyttäjät pyyhkäisevät alaspäin määritellyn kynnyksen yli, se siirtyy visuaalisten tilojen läpi: `pull`, `release` ja `refreshing`, jokaisessa on mukautettava kuvake ja lokalisoitu teksti. Se sopii hyvin yhteen [`InfiniteScroll`](../components/infinitescroll) kanssa sisällön lataamista tai nollaamista varten elepohjaisella syötteellä.
 
 <!-- INTRO_END -->
 
-## Instansointi ja kansainvälistäminen {#instantiation-and-internationalization}
+## Instansiointi ja kansainvälistäminen {#instantiation-and-internationalization}
 
-Lisää `Refresher` instanssoimalla se ja rekisteröimällä päivityskuuntelija. Kun päivitystoimenpiteet on suoritettu, kutsu `finish()` nollataksesi komponentin lepotilaan.
+Lisää `Refresher` instansioimalla se ja rekisteröimällä päivityskuuntelija. Kun päivitystoiminnot ovat valmiit, kutsu `finish()` palauttaaksesi komponentti lepotilaan.
 
 :::info Kuinka aktivoida `Refresher`
-Aktivoidaksesi `Refresher`, **napsauta ja vedä alaspäin** vieritettävällä alueen yläosasta. Vaikka tämä ele on tuttu mobiililaitteilla, se on harvinaisempi työpöydällä—varmista, että pidät ja vedät hiirellä.
+Aktivoidaksesi `Refresher`, **napsauta ja vedä alaspäin** rullattavan alueen yläreunasta. Vaikka tämä ele on tuttu mobiililaitteilla, se ei ole yhtä yleinen työpöydällä—muista pitää ja vetää hiirellä.
 :::
 
-<AppLayoutViewer
-path='/webforj/refresher?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresher'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
-Tätä lähestymistapaa käytetään usein sivutettujen luetteloiden päivittämiseen tai äärettömän vierityksen lataamisen aloittamiseen.
+Tätä lähestymistapaa käytetään yleisesti uusiin sivuisiin luetteloihin päivittämisessä tai äärettömän vierityksen lataamisen aloittamisessa.
 
 ### Kansainvälistäminen {#internationalization}
 
-Jokaisen tilan etiketti voidaan myös paikallistaa `RefresherI18n`-objektin avulla. Kolme tilaa ovat:
+Jokaisen tilan etiketti voidaan myös lokalisoida `RefresherI18n`-objektin avulla. Kolme tilaa ovat:
 
-- Pull: Alkuperäisen eleen teksti (esim. "Vedä alaspäin päivittääksesi")
-- Release: Kynnys saavutettu (esim. "Vapauta päivittääksesi")
+- Pull: Alkuperäisen eleen teksti (esim. "Vedä alas päivittääksesi")
+- Release: Kynnysarvo saavutettu (esim. "Vapauta päivittääksesi")
 - Refresh: Lataustila (esim. "Päivitetään")
 
-Tämä mahdollistaa monikielisen tuen ja brändiä tarvittaessa säätämisen.
+Tämä mahdollistaa monikielisen tuen ja brändäyksen säädöt tarpeen mukaan.
 
-<AppLayoutViewer 
-path='/webforj/refresheri18n?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresheri18n'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
-## Ikonikustomointi {#icon-customization}
+## Kuvake mukauttaminen {#icon-customization}
 
-Voit vaihtaa [`Icons`](../components/icon) -kuvakkeita, joita käytetään `pull`/`release` ja `refreshing` -vaiheissa joko ennalta määritellyn [`Icon`](../components/icon) avulla tai [Ikoni-URL:n](../managing-resources/assets-protocols) avulla. Nämä ovat käyttökelpoisia, kun haluat soveltaa brändäystä tai mukautettua animaatiota.
+Voit vaihtaa [`Icons`](../components/icon), joita käytetään `pull`/`release` ja `refreshing` vaiheissa, käyttäen joko ennalta määriteltyä [`Icon`](../components/icon) tai [Kuvake URLia](../managing-resources/assets-protocols). Nämä ovat hyödyllisiä, kun haluat soveltaa brändäystä tai mukautettua animaatiota.
 
-<AppLayoutViewer 
-path='/webforj/refreshericon?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refreshericon'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
 ## Vedon käyttäytymisen konfigurointi {#pull-behavior-configuration}
 
-### Kynnys {#threshold}
+### Kynnysarvo {#threshold}
 
-Aseta, kuinka pitkälle käyttäjän on vedettävä alaspäin (pikseleinä) ennen päivityksen laukaamista:
+Aseta kuinka kauas käyttäjän täytyy vetää alaspäin (pikseleinä) ennen kuin päivittämistä laukaistaan:
 
 ```java
 refresher.setThreshold(80); // oletus: 80px
 ```
 
-### Kynnysmaksimi {#threshold-maximum}
+### Kynnyksen maksimi {#threshold-maximum}
 
-Määritä sallitun maksimivedon etäisyys käyttämällä `setThresholdMax()`-metodia:
+Määritä sallitun vetomatkan maksimiarseno käyttämällä `setThresholdMax()`-metodia:
 
 ```java
 refresher.setThresholdMax(160);
 ```
 
-Nämä kynnykset hallitsevat eleen herkkyyttä ja vastustuskäyrää.
+Nämä kynnykset hallitsevat eleen herkkyyttä ja vastuskäyrää.
 
-## Tilahallinta {#state-management}
+## Tilanhallinta {#state-management}
 
-`Refresher`-komponentti ylläpitää omaa sisäistä tilaansa ja kommunikoi tilamuutoksista tapahtumien kautta. Kun käyttäjä vetää alaspäin määritellyn kynnyksen yli, `Refresher` laukaisee päivitystapahtuman, johon voit reagoida rekisteröimällä `onRefresh()`-kuuntelijan.
+`Refresher`-komponentti ylläpitää omaa sisäistä tilaansa ja kommunikoi tilamuutoksia tapahtumien kautta. Kun käyttäjä vetää alaspäin määritetyn kynnyksen yli, `Refresher` lähettää päivitystapahtuman, johon voit reagoida rekisteröimällä `onRefresh()`-kuuntelijan.
 
-Tämän kuuntelijan sisällä odotetaan, että suoritat tarvittavat toimenpiteet—kuten uusien tietojen hakeminen tai luettelon nollaaminen—ja kutsut sitten nimenomaan:
+Tämän kuuntelijan sisällä sinun odotetaan toteuttavan tarvittavat toiminnot—esimerkiksi uusien tietojen hakemisen tai luettelon nollaamisen—ja sitten nimenomaan kutsuvan:
 
 ```java
 refresher.finish();
 ```
 :::warning Puuttuva `finish()`
-Jos unohdat kutsua `finish()`, refresher jää lataustilaan ikuisesti.
+Jos unohdat kutsua `finish()`, refresher pysyy lataustilassa ikuisesti.
 :::
 
-Voit myös ohjelmallisesti poistaa `Refresher`-toiminnon käytöstä milloin tahansa estääksesi käyttäjää käynnistämästä päivitystoimintoa:
+Voit myös ohjelmallisesti estää `Refresher`-toiminnan milloin tahansa estääksesi käyttäjää laukaamassa päivitys käyttäytymistä:
 
 ```java
 refresher.setEnabled(false);
 ```
 
-Tämä on hyödyllistä, kun päivityksiä tulisi tilapäisesti estää—esimerkiksi latausnäytön aikana tai kun toinen kriittinen prosessi on käynnissä.
+Tämä on hyödyllistä, kun päivitykset pitäisi estää tilapäisesti—esimerkiksi latausnäytön aikana tai kun toinen kriittinen prosessi on käynnissä.
 
-## Tyylittely {#styling}
+## Tyylit {#styling}
 
 ### Teemat {#themes}
 
-`Refresher`-komponentti tukee useita teemoja, joilla voidaan visuaalisesti erottaa eri tilat tai sovittaa sovelluksesi tyyliin. Teemoja voidaan soveltaa käyttämällä `setTheme()`-metodia.
+`Refresher`-komponentti tukee useita teemoja erottaakseen visuaalisesti erilaisia tiloja tai vastatakseen sovelluksesi ilmeen ja tunnelman. Teemoja voidaan soveltaa käyttämällä `setTheme()`-metodia.
 
-Alla oleva esimerkki kiertää kaikkia saatavilla olevia teemoja, kun vedät päivittääksesi, antaen sinulle live-esikatselun siitä, miltä `Refresher` näyttää eri teemoissa:
+Seuraava esimerkki kierrättää kaikkia saatavilla olevia teemoja aina kun vedät päivitystä varten, antaen sinulle live-esikatselun siitä, miltä `Refresher` näyttää eri teemoissa:
 
-<AppLayoutViewer 
-path='/webforj/refresherthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java'
-cssURL='/css/refresher/refresher.css'
-height = '400px'
-mobile='true'
+<ComponentDemo
+path='/webforj/refresherthemes'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java',
+  'src/main/resources/static/css/refresher/refresher.css',
+]}
 />
 
 <TableBuilder name="Refresher" />

@@ -1,6 +1,7 @@
 ---
 title: Object and String Tables
 sidebar_position: 45
+description: Store shared Java objects and string values app-wide or per HTTP session with ObjectTable, SessionObjectTable, and StringTable.
 ---
 
 The `ObjectTable`, `SessionObjectTable`, and `StringTable` provide static access to shared data in a webforJ environment. All are accessible from anywhere in your app and serve different purposes:

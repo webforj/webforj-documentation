@@ -1,17 +1,17 @@
 ---
 sidebar_position: 5
 title: Triggers
-_i18n_hash: b158a924f67b7141be94d56b9be8bba3
+_i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
-Por defecto, las vinculaciones vuelven a validar automáticamente los componentes cuando los usuarios modifican sus datos, como al ingresar nuevo texto, marcar una casilla de verificación o seleccionar una nueva opción en un botón de radio. Si prefieres desactivar las validaciones automáticas y solo reportarlas al escribir en el modelo de datos, puedes configurar la vinculación para desactivarlas. Esto te brinda control sobre cuándo y cómo ocurren las validaciones, permitiendo gestionar las validaciones según las necesidades específicas de la aplicación o las interacciones del usuario.
+Por defecto, las vinculaciones validan automáticamente los componentes cuando los usuarios modifican sus datos, como al ingresar nuevo texto, marcar una casilla de verificación o seleccionar una nueva opción en un botón de radio. Si prefieres desactivar las validaciones automáticas y solo informar sobre ellas al escribir en el modelo de datos, puedes configurar la vinculación para desactivarlas. Esto te da control sobre cuándo y cómo ocurren las validaciones, lo que te permite gestionar las validaciones según las necesidades específicas de la aplicación o las interacciones del usuario.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(emailField, "email")
-    .useValidator(
-        Validator.from(new EmailValidator(), "Mensaje personalizado para dirección de correo electrónico no válida"))
-    .autoValidate(false)
-    .add();
+  .useValidator(
+    Validator.from(new EmailValidator(), "Mensaje personalizado para dirección de correo electrónico inválida"))
+  .autoValidate(false)
+  .add();
 ```
 
 También es posible desactivar las auto-validaciones para todo el contexto.
@@ -22,7 +22,7 @@ context.setAutoValidate(false);
 ```
 
 :::tip Modo de Cambio de Valor
-Algunos componentes, como los campos, implementan la interfaz `ValueChangeModeAware`, que te permite controlar cuándo el sistema reporta un `ValueChangeEvent`. Por ejemplo, puedes configurar los campos para que reporten cambios de valor solo al perder el foco. Esta configuración reduce la frecuencia de las validaciones, optimizando el rendimiento y mejorando la experiencia del usuario al centrarse en las validaciones en momentos en que el usuario completa una sesión de entrada, en lugar de durante la escritura activa.
+Algunos componentes, como los componentes de campo, implementan la interfaz `ValueChangeModeAware`, lo que te permite controlar cuándo el sistema informa un `ValueChangeEvent`. Por ejemplo, puedes configurar los componentes de campo para informar cambios de valor solo cuando se pierde el foco. Esta configuración reduce la frecuencia de las validaciones, optimizando el rendimiento y mejorando la experiencia del usuario al centrarse en las validaciones en momentos en que el usuario completa una sesión de entrada, en lugar de durante la escritura activa.
 
 ```java
  emailField.setValueChangeMode(ValueChangeMode.ON_BLUR);
@@ -31,9 +31,9 @@ Algunos componentes, como los campos, implementan la interfaz `ValueChangeModeAw
 
 ## Revalidación {#revalidation}
 
-Si bien las validaciones generalmente se activan automáticamente durante la escritura de datos, también puedes invocarlas manualmente para verificar el estado de los datos sin intentar escribirlos en el modelo. Este enfoque manual es particularmente útil en escenarios donde deseas habilitar o desactivar características en función de la validez de los datos del formulario sin realizar una actualización.
+Si bien las validaciones normalmente se activan automáticamente durante la escritura de datos, también puedes invocarlas manualmente para verificar el estado de los datos sin intentar escribirlo en el modelo. Este enfoque manual es particularmente útil en escenarios donde deseas habilitar o desactivar características basadas en la validez de los datos del formulario sin realizar una actualización.
 
-Considera un ejemplo clásico de un Selector de Fechas de Viaje, donde un usuario debe seleccionar dos fechas: la fecha de inicio y la fecha de fin de un viaje. No es válido elegir una fecha de fin que ocurra antes de la fecha de inicio, o una fecha de inicio que ocurra después de la fecha de fin. Puedes resolver estas dependencias activando validaciones manualmente:
+Considera un ejemplo clásico de un Selector de Fechas de Viaje, donde un usuario debe seleccionar dos fechas: la fecha de inicio y la fecha de finalización de un viaje. No es válido elegir una fecha de finalización que ocurra antes de la fecha de inicio, o una fecha de inicio que ocurra después de la fecha de finalización. Puedes resolver estas dependencias activando validaciones manualmente:
 
 <Tabs>
 <TabItem value="TripBooking" label="TripBooking.java">
@@ -41,7 +41,7 @@ Considera un ejemplo clásico de un Selector de Fechas de Viaje, donde un usuari
 ```java showLineNumbers
 public class TripBooking extends App {
   DateTimeField startDateField = new DateTimeField("Fecha de Inicio");
-  DateTimeField endDateField = new DateTimeField("Fecha de Fin");
+  DateTimeField endDateField = new DateTimeField("Fecha de Finalización");
   FlexLayout layout = FlexLayout.create(startDateField, endDateField).vertical().build().setStyle("margin", "20px auto")
       .setMaxWidth("400px");
 
@@ -52,15 +52,15 @@ public class TripBooking extends App {
   public void run() throws WebforjException {
     BindingContext<Trip> context = new BindingContext<>(Trip.class);
     context.bind(startDateField, "startDate")
-        .useValidator(Objects::nonNull, "Se requiere la fecha de inicio")
+        .useValidator(Objects::nonNull, "Se requiere una fecha de inicio")
         .useValidator(value -> endDate != null && value.isBefore(endDate),
-            "La fecha de inicio debe ser anterior a la fecha de fin")
+            "La fecha de inicio debe ser anterior a la fecha de finalización")
         .add();
 
     context.bind(endDateField, "endDate")
-        .useValidator(Objects::nonNull, "Se requiere la fecha de fin")
+        .useValidator(Objects::nonNull, "Se requiere una fecha de finalización")
         .useValidator(value -> startDate != null && value.isAfter(startDate),
-            "La fecha de fin debe ser posterior a la fecha de inicio")
+            "La fecha de finalización debe ser posterior a la fecha de inicio")
         .add();
 
     startDateField.setValueChangeMode(ValueChangeMode.ON_BLUR);

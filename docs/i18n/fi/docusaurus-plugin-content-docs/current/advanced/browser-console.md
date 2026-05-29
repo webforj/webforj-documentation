@@ -1,36 +1,32 @@
 ---
 sidebar_position: 15
 title: Browser Console
-_i18n_hash: fd0e46761a5fd8b887a39b7a51e9b66b
+_i18n_hash: 843587956991faa037138ce8e8563e7a
 ---
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>
 
-Selain sela seluruhan terdalam program dari browser adalah bagian integral dari proses pengembangan. 
-Kelas utilitas <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> menyediakan fitur-fitur yang meningkatkan kemampuan pencatatan melalui jenis log dan penataan.
+Selaimen konsolin käyttö ohjelmatietojen tulostamiseen on olennainen osa kehitysprosessia. 
+<JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink>-apuluokka tarjoaa ominaisuuksia, jotka parantavat lokituksen mahdollisuuksia lokityyppien ja tyylittelyn avulla.
 
-<!-- :::info
-Sebelum `24.10`, metode `App.consoleLog()` dan `App.consoleError()` mengaktifkan perilaku ini, namun sejak saat itu telah ditandai untuk depresiasi.
-::: -->
+## Instanssi {#instance}
 
-## Instance {#instance}
-
-Dapatkan satu instance dari `BrowserConsole` menggunakan metode `App.console()`. Cetak objek `Object` yang diinginkan sebagai salah satu dari lima jenis log: log, info, warn, error, atau debug.
+Hanki `BrowserConsole`-instanssi käyttäen `App.console()`-metodia. Tulosta mikä tahansa `Object` haluttu yhdellä viidestä lokityypistä: loki, tieto, varoitus, virhe tai debug.
 
 ```java
 import static com.webforj.App.console;
-// Jenis
-console().log("Pesan log");
-console().info("Pesan info");
-console().warn("Pesan peringatan");
-console().error("Pesan kesalahan");
-console().debug("Pesan debug");
+// Tyyppit
+console().log("Loki viesti");
+console().info("Tietoviesti");
+console().warn("Varoitus viesti");
+console().error("Virhe viesti");
+console().debug("Debug viesti");
 ```
 
-## Styling {#styling}
+## Tyylittely {#styling}
 
-Gunakan metode builder untuk mengatur penampilan pesan log. Setiap builder memiliki opsi untuk mengubah properti tertentu. Juga dimungkinkan untuk [mencampur beberapa gaya](#mixing-styles).
-Setelah pesan konsol dicetak, styling apa pun yang diterapkan tidak akan dibawa ke pesan berikutnya kecuali *secara eksplisit* didefinisikan ulang.
+Käytä builder-metodeja lokiviestin ulkonäön asettamiseen. Jokaisella builderilla on vaihtoehtoja tietyn ominaisuuden muuttamiseen. On myös mahdollista [sekoittaa useita tyylejä](#mixing-styles).
+Kun konsoliviesti tulostuu, kaikki käytetyt tyylit eivät siirry seuraaviin viesteihin, ellei niitä *erityisesti* määritellä uudelleen.
 
 - [`background()`](#background-color)
 - [`color()`](#text-color)
@@ -40,91 +36,91 @@ Setelah pesan konsol dicetak, styling apa pun yang diterapkan tidak akan dibawa 
 - [`weight()`](#font-weight)
 
 :::tip
-Gunakan metode `setStyle` untuk mengubah properti dari log `BrowserConsole` yang tidak ditentukan oleh builder.
+Käytä `setStyle`-metodia muutettaaksesi `BrowserConsole`-lokin ominaisuuksia, joita builderit eivät määrittele.
 :::
 
-### Background color {#background-color}
+### Taustaväri {#background-color}
 
-Atur warna latar belakang dengan metode `background()`, yang mengembalikan <JavadocLink type="foundation" location="com/webforj/BrowserConsole.BackgroundColorBuilder" code='true'>BackgroundColorBuilder</JavadocLink>.
-Gunakan metode yang dinamai dengan warna, seperti `blue()`, atau pilih nilai tertentu dengan `colored(String color)`.
+Aseta taustaväri `background()`-metodilla, joka palauttaa <JavadocLink type="foundation" location="com/webforj/BrowserConsole.BackgroundColorBuilder" code='true'>BackgroundColorBuilder</JavadocLink>-luokan.
+Käytä väreittäin nimettyjä metodeja, kuten `blue()`, tai valitse tietty arvo `colored(String color)`-metodilla.
 
 ```java
-// Contoh Latar Belakang
-console().background().blue().log("Latar belakang biru");
-console().background().colored("#031f8f").log("Latar belakang biru kustom");
+// Taustesimerkkejä
+console().background().blue().log("Sininen tausta");
+console().background().colored("#031f8f").log("Mukautettu sininen tausta");
 ```
 
-### Text color {#text-color}
+### Tekstiväri {#text-color}
 
-Atur warna teks dengan metode `color()`, yang mengembalikan <JavadocLink type="foundation" location="com/webforj/BrowserConsole.ColorBuilder" code='true'>ColorBuilder</JavadocLink>.
-Gunakan metode yang dinamai dengan warna, seperti `red()`, atau pilih nilai tertentu dengan `colored(String color)`.
+Aseta tekstiväri `color()`-metodilla, joka palauttaa <JavadocLink type="foundation" location="com/webforj/BrowserConsole.ColorBuilder" code='true'>ColorBuilder</JavadocLink>-luokan.
+Käytä väreittäin nimettyjä metodeja, kuten `red()`, tai valitse tietty arvo `colored(String color)`-metodilla.
 
 ```java
-// Contoh Warna
-console().background().red().log("Teks merah");
-console().color().colored("#becad2").log("Teks abu-abu kebiruan kustom");
+// Väri esimerkkejä
+console().background().red().log("Punainen teksti");
+console().color().colored("#becad2").log("Mukautettu vaalean siniharmaa teksti");
 ```
 
-### Font size {#font-size}
+### Fonttikoko {#font-size}
 
-Atur ukuran font dengan metode `size()`, yang mengembalikan <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontSizeBuilder" code='true'>FontSizeBuilder</JavadocLink>.
-Gunakan metode yang dinamai dengan ukuran, seperti `small()`, atau pilih nilai tertentu dengan `from(String value)`.
+Aseta fonttikoko `size()`-metodilla, joka palauttaa <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontSizeBuilder" code='true'>FontSizeBuilder</JavadocLink>-luokan.
+Käytä kokoja nimettyjä metodeja, kuten `small()`, tai valitse tietty arvo `from(String value)`-metodilla.
 
 ```java
-// Contoh Ukuran
-console().size().small().log("Font kecil");
-console().size().from("30px").log("Font 30px");
+// Koko esimerkkejä
+console().size().small().log("Pieni fontti");
+console().size().from("30px").log("30px fontti");
 ```
 :::tip
-Metode `from(String value)` dapat mengambil nilai ukuran font lainnya, seperti rem dan vw.
+`from(String value)`-metodi voi ottaa muita fonttikokoarvoja, kuten rem ja vw.
 :::
 
-### Font style {#font-style}
+### Fonttityyli {#font-style}
 
-Atur gaya font dengan metode `style()`, yang mengembalikan <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontStyleBuilder" code='true'>FontStyleBuilder</JavadocLink>.
-Misalnya, gunakan metode `italic()` untuk membuat log konsol menjadi miring.
+Aseta fonttityyli `style()`-metodilla, joka palauttaa <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontStyleBuilder" code='true'>FontStyleBuilder</JavadocLink>-luokan.
+Esimerkiksi käytä `italic()`-metodia saadaksesi konsolilokin kursiiviseksi.
 
 ```java
-// Contoh Gaya
-console().style().italic().log("Font miring");
-console().style().normal().log("Font normal");
+// Tyyli esimerkkejä
+console().style().italic().log("Kursiivinen fontti");
+console().style().normal().log("Normaali fontti");
 ```
 
-### Text transformation {#text-transformation}
+### Tekstin muunnos {#text-transformation}
 
-Kontrol kapitalisasi karakter dalam pesan dengan metode `transform()`, yang mengembalikan <JavadocLink type="foundation" location="com/webforj/BrowserConsole.TextTransformBuilder" code='true'>TextTransformBuilder</JavadocLink>.
-Misalnya, gunakan metode `capitalize()` untuk mengubah huruf pertama dari setiap kata menjadi huruf besar.
+Hallinnoi merkkien suuria alkukirjaimia viestissä `transform()`-metodilla, joka palauttaa <JavadocLink type="foundation" location="com/webforj/BrowserConsole.TextTransformBuilder" code='true'>TextTransformBuilder</JavadocLink>-luokan.
+Esimerkiksi, käytä `capitalize()`-metodia muuttaaksesi jokaisen sanan ensimmäisen kirjaimen isoksi.
 
 ```java
-// Contoh Transformasi
-// Transformasi Kapitalisasi Teks
-console().transform().capitalize().log("Transformasi kapitalisasi teks");
-// TRANSFORMASI TEKS  BIG LETTER 
-console().transform().uppercase().log("Transformasi teks huruf besar");
+// Muunnos esimerkkejä
+// Suuraalkukirjainten tekstimuunnos
+console().transform().capitalize().log("Suuraalkukirjainten tekstimuunnos");
+// SUURIA KIRJAIMIA MUUNNOKSENA 
+console().transform().uppercase().log("SUURIA KIRJAIMIA MUUNNOKSENA");
 ```
 
-### Font weight {#font-weight}
+### Fonttipaino {#font-weight}
 
-Atur seberapa tebal teksnya dengan metode `weight()`, yang mengembalikan <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontWeightBuilder" code='true'>FontWeightBuilder</JavadocLink>.
-Misalnya, gunakan metode `lighter()` untuk membuat font lebih ringan dari normal.
+Aseta tekstin paksuus `weight()`-metodilla, joka palauttaa <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontWeightBuilder" code='true'>FontWeightBuilder</JavadocLink>-luokan.
+Esimerkiksi, käytä `ligther()`-metodia saadaksesi fontin kevyemmäksi kuin normaali.
 
 ```java
-// Contoh Berat
-console().weight().bold().log("Font tebal");
-console().weight().lighter().log("Font lebih ringan");
+// Paino esimerkkejä
+console().weight().bold().log("Lihavoitu fontti");
+console().weight().lighter().log("Keveämpi fontti");
 ```
 
-## Mixing styles {#mixing-styles}
-Dimungkinkan untuk mencampur dan mencocokkan metode untuk tampilan logging yang kustom.
+## Tyylien sekoittaminen {#mixing-styles}
+On mahdollista sekoittaa ja yhdistää metodeja räätälöityyn lokinäyttöön.
 
 ```java
-// Berbagai opsi untuk tampilan logging kustom
+// Erilaisia vaihtoehtoja mukautetulle lokinäytölle
 console()
-    .weight().bolder()
-    .size().larger()
-    .color().gray()
-    .style().italic()
-    .transform().uppercase()
-    .background().blue()
-    .warn("Mencampur gaya");
+  .weight().bolder()
+  .size().larger()
+  .color().gray()
+  .style().italic()
+  .transform().uppercase()
+  .background().blue()
+  .warn("Tyylien sekoittaminen");
 ```

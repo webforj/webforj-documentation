@@ -2,6 +2,7 @@
 sidebar_position: 35
 title: Option Dialogs
 hide_giscus_comments: true
+description: Build modal dialogs in webforJ that block server execution until the user responds, mirroring the JOptionPane pattern from Swing.
 ---
 
 <!-- vale off -->

@@ -1,45 +1,49 @@
 ---
 title: MCP Server
 sidebar_position: 5
-_i18n_hash: a45888cf39bbbce0002177da8fe95eba
+_i18n_hash: eea9d8f962b10512151bf7c6935f25e0
 ---
-Der webforJ Model Context Protocol (MCP) Server bietet KI-Assistenten direkten Zugang zu offizieller webforJ-Dokumentation, verifizierten Codebeispielen und frameworkspezifischen Mustern, sodass Antworten mit genaueren Antworten und automatisierter Projektgenerierung speziell für die webforJ-Entwicklung möglich sind.
+Der webforJ Model Context Protocol (MCP) Server integriert KI-Coding-Assistenten in die Dokumentation, APIs, Design-Tokens und Scaffold-Tools von webforJ. Anstatt Vermutungen über Framework-Konventionen anzustellen, fragt der Assistent den Server und erhält Antworten, die auf dem echten webforJ basieren.
 
-## Was ist ein MCP?
-
-Das Model Context Protocol ist ein offener Standard, der es KI-Assistenten ermöglicht, mit externen Tools und Dokumentationen zu verbinden. Der webforJ MCP-Server implementiert dieses Protokoll, um Folgendes bereitzustellen:
-
-- **Wissenssuche** - Natürliche Sprache Suche in der webforJ-Dokumentation, Codebeispielen und Mustern
-- **Projektgenerierung** - Erstellen von webforJ-Anwendungen aus offiziellen Vorlagen mit ordnungsgemäßer Struktur
-- **Theme-Erstellung** - Generierung barrierefreier CSS-Themen gemäß den webforJ-Designmustern
-
-## Warum MCP verwenden?
-
-Während KI-Coding-Assistenten darin glänzen, grundlegende Fragen zu beantworten, haben sie Schwierigkeiten mit komplexen, webforJ-spezifischen Anfragen, die mehrere Dokumentationsabschnitte umfassen. Ohne direkten Zugang zu offiziellen Quellen können sie:
-
-- Methoden generieren, die es in webforJ nicht gibt
-- Veraltete oder falsche API-Muster referenzieren  
-- Code bereitstellen, der nicht übersetzt werden kann
-- Die webforJ-Syntax mit anderen Java-Frameworks verwechseln
-- webforJ-spezifische Muster missverstehen
-
-Mit der MCP-Integration sind KI-Antworten an tatsächliche webforJ-Dokumentation, Codebeispiele und Framework-Muster verankert, was überprüfbare Antworten mit direkten Links zu offiziellen Quellen für eine tiefere Erkundung bietet.
-
-:::warning KI kann immer noch Fehler machen
-Obwohl MCP die Genauigkeit erheblich verbessert, indem es Zugang zu offiziellen webforJ-Ressourcen bietet, garantiert es keine perfekte Codegenerierung. KI-Assistenten können in komplexen Szenarien weiterhin Fehler machen. Überprüfen Sie stets den generierten Code und testen Sie gründlich, bevor Sie ihn in der Produktion verwenden.
+:::tip Plugin verwenden
+Es sei denn, Sie wissen, dass Sie nur den MCP-Server möchten, installieren Sie stattdessen das **[webforJ AI-Plugin](/docs/integrations/ai-tooling)** - es bündelt diesen Server mit den passenden [Agent Skills](/docs/integrations/ai-tooling/agent-skills) in einer einzigen Installation.
 :::
 
-## Installation
+## Was ist ein MCP? {#whats-an-mcp}
 
-Der webforJ MCP-Server wird unter `https://mcp.webforj.com` mit zwei Endpunkten gehostet:
+Das Model Context Protocol ist ein offener Standard, der es KI-Assistenten ermöglicht, externe Tools auf Abruf zu nutzen. Der webforJ MCP-Server implementiert dieses Protokoll, damit Ihr Assistent:
 
-- **MCP-Endpunkt** (`/mcp`) - Für Claude, VS Code, Cursor
-- **SSE-Endpunkt** (`/sse`) - Für Legacy-Clients
+- Dinge in den webforJ-Dokumenten nachschlagen kann, anstatt Methodenbezeichnungen zu halluzinieren
+- Neue webforJ-Projekte aus offiziellen Maven-Archetypen generieren kann
+- Zugängliche DWC-Themen aus einer Markenfarbe erstellen kann
+- Die echten Styling-Oberflächen eines DWC-Komponenten lesen und jeden `--dwc-*` Token validieren kann, bevor er in Ihrem CSS landet
+
+:::warning KI kann immer noch Fehler machen
+Der MCP-Server verbessert die Genauigkeit erheblich, aber KI-Assistenten können in komplexen Szenarien immer noch falschen Code erzeugen. Überprüfen und testen Sie den generierten Code immer, bevor Sie ihn ausliefern.
+:::
+
+## Installation {#installation}
+
+Für das volle Erlebnis installieren Sie das **[webforJ AI-Plugin](/docs/integrations/ai-tooling)** - es konfiguriert diesen Server zusammen mit den Agent Skills, die Ihr Assistent benötigt, um ihn optimal zu nutzen.
+
+Wenn Sie nur den MCP-Server (keine Skills) möchten, richten Sie Ihren Client auf `https://mcp.webforj.com/mcp`:
 
 <Tabs groupId="ide">
-<TabItem value="vscode" label="VS Code">
+<TabItem value="claude-code" label="Claude Code" default>
 
-Fügen Sie diese Konfiguration zu Ihrer VS Code settings.json-Datei hinzu:
+```bash
+claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
+```
+
+</TabItem>
+<TabItem value="copilot-cli" label="GitHub Copilot CLI">
+
+Der empfohlene Weg über Copilot CLI ist das **[webforJ AI-Plugin](/docs/integrations/ai-tooling)** - es registriert den MCP-Server für Sie in einem Schritt. Für ein reines MCP-Setup ohne Skills sehen Sie die Anweisungen pro Client im [webforJ AI-Repository](https://github.com/webforj/webforj-ai#clients).
+
+</TabItem>
+<TabItem value="vscode" label="VS Code + Copilot">
+
+Fügen Sie zu Ihren VS Code-Einstellungen hinzu:
 
 ```json
 "mcp": {
@@ -52,82 +56,67 @@ Fügen Sie diese Konfiguration zu Ihrer VS Code settings.json-Datei hinzu:
 ```
 
 </TabItem>
-<TabItem value="cursor" label="Cursor">
+<TabItem value="gemini" label="Gemini CLI">
 
-Fügen Sie diese Konfiguration zu Ihren Cursor-Einstellungen hinzu:
-
-```json
-"mcpServers": {
-  "webforj-mcp": {
-    "url": "https://mcp.webforj.com/mcp"
-  }
-}
-```
-
-</TabItem>
-<TabItem value="claude-code" label="Claude Code" default>
-
-Verwenden Sie den Claude-CLI-Befehl, um den Server zu registrieren:
-
-```bash
-claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
-```
-
-Dies konfiguriert den MCP-Server automatisch in Ihrer Claude-Code-Umgebung.
-
-</TabItem>
-<TabItem value="claude-desktop" label="Claude Desktop">
-
-Fügen Sie diesen Server über das Integrationen-Panel in den Claude-Desktop-Einstellungen hinzu:
-
-1. Öffnen Sie Claude Desktop und gehen Sie zu Einstellungen
-2. Klicken Sie in der Seitenleiste auf "Integrationen"
-3. Klicken Sie auf "Integration hinzufügen" und fügen Sie die URL ein: `https://mcp.webforj.com/mcp`
-4. Folgen Sie dem Einrichtungsassistenten, um die Konfiguration abzuschließen
-
-Für detaillierte Anweisungen siehe den [offiziellen Integrationsleitfaden](https://support.anthropic.com/en/articles/11175166-about-custom-integrations-using-remote-mcp).
-
-</TabItem>
-<TabItem value="windsurf" label="Windsurf">
-
-Fügen Sie diese Serverkonfiguration zu Ihren Windsurf-MCP-Einstellungen hinzu:
+Fügen Sie in `~/.gemini/settings.json` hinzu:
 
 ```json
 {
   "mcpServers": {
     "webforj-mcp": {
-      "serverUrl": "https://mcp.webforj.com/sse"
+      "httpUrl": "https://mcp.webforj.com/mcp"
     }
   }
 }
 ```
 
 </TabItem>
+<TabItem value="codex" label="OpenAI Codex CLI">
+
+Fügen Sie in `~/.codex/config.toml` hinzu:
+
+```toml
+[mcp_servers.webforj-mcp]
+url = "https://mcp.webforj.com/mcp"
+```
+
+</TabItem>
 </Tabs>
 
-## Verfügbare Werkzeuge
+### Andere Clients {#other-clients}
 
-Werkzeuge sind spezialisierte Funktionen, die der MCP-Server KI-Assistenten bereitstellt. Wenn Sie eine Frage stellen oder eine Anfrage machen, kann die KI diese Werkzeuge aufrufen, um Dokumentation zu durchsuchen, Projekte zu generieren oder Themen zu erstellen. Jedes Werkzeug akzeptiert spezifische Parameter und gibt strukturierte Daten zurück, die der KI helfen, genaue, kontextbezogene Unterstützung zu bieten.
+Cursor, Kiro, Goose, Junie, Antigravity und jeder andere MCP-over-HTTP-Client funktioniert ebenfalls - sie verwenden einfach ihr eigenes Konfigurationsformat. Siehe den [Installationsleitfaden pro Client](https://github.com/webforj/webforj-ai#clients) für das genaue Snippet für jeden.
+
+## Was der Server tun kann {#capabilities}
+
+Wenn der MCP-Server verbunden ist, erhält Ihr KI-Assistent die folgenden Möglichkeiten. Jede davon kann durch eine Anfrage in natürlicher Sprache ausgelöst werden - der Assistent wählt automatisch die richtige aus.
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>webforj-knowledge-base</code></strong> - Dokumentation und Beispiele durchsuchen
+    <strong>Richtige webforJ-Version anvisieren</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Dieses Werkzeug bietet semantische Suchfunktionen über das gesamte webforJ-Dokumentations-Ökosystem. Es versteht den Kontext und Beziehungen zwischen verschiedenen Framework-Konzepten und gibt relevante Dokumentationsabschnitte, API-Referenzen und funktionierende Codebeispiele zurück.
+      Bevor er versionssensible Fragen beantwortet (alles, was Stil oder API betrifft), ermittelt der Assistent, welche webforJ-Version Sie verwenden. Er liest `pom.xml`, wenn verfügbar, und fragt Sie sonst. Jedes nachfolgende Antwort bezieht sich auf diese Version.
+    </div>
+  </AccordionDetails>
+</Accordion>
 
-      **Beispielabfragen:**
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <strong>Dinge in der webforJ-Wissensdatenbank nachschlagen</strong>
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+      Der Assistent kann die gesamte webforJ-Wissensdatenbank abfragen, um Antworten zu liefern, die auf dem echten Framework basieren. Die Ergebnisse beziehen sich auf das, worüber Sie fragen - eine API-Frage, einen Leitfaden, ein Codebeispiel oder die Kotlin DSL.
+
+      **Beispielanfragen:**
       ```
-      "Durchsuche die webforJ-Dokumentation nach Button-Komponenten mit Icon-Beispielen"
+      "Finden Sie die Beispiele zur Ereignisbehandlung des webforJ Button-Komponenten"
 
-      "Finde webforJ-Formularvalidierungsmuster in der neuesten Dokumentation"
+      "Wie richte ich das Routing mit @Route in webforJ ein?"
 
-      "Zeig mir die aktuelle webforJ-Routing-Konfiguration mit der @Route-Anmerkung"
-
-      "Durchsuche die webforJ-Dokumente nach FlexLayout-Responsive-Designmustern"
-
-      "Finde die Integration von webforJ-Webkomponenten in der offiziellen Dokumentation"
+      "Zeigen Sie mir ein Beispiel zur Formularvalidierung in webforJ"
       ```
     </div>
   </AccordionDetails>
@@ -135,39 +124,31 @@ Werkzeuge sind spezialisierte Funktionen, die der MCP-Server KI-Assistenten bere
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>webforj-create-project</code></strong> - Neue webforJ-Projekte generieren  
+    <strong>Neues webforJ-Projekt scaffolden</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Erstellen Sie vollständige webforJ-Anwendungen mithilfe offizieller Maven-Archetypen. Das Werkzeug erstellt ein standardisiertes Projektverzeichnislayout und umfasst Starter-Code basierend auf der gewählten Vorlage. Generierte Projekte enthalten ein sofort einsatzbereites Build-System, Ressourcenordner und Konfigurationsdateien für die sofortige Entwicklung und Bereitstellung.
+      Der Assistent generiert den richtigen Maven-Archetyp-Befehl für eine neue webforJ-App basierend auf Ihren Anforderungen (Archetyp, Spring-Integration, Name, Gruppe).
 
-      **Beispielaufforderungen:**
+      **Archetypen:**
+      - `hello-world` - Start-App mit Beispielkomponenten
+      - `blank` - minimales Projektstrukture
+      - `tabs` - tabbed Interface Layout
+      - `sidemenu` - seitliches Navigationslayout
+
+      **Varianten:**
+      - `webforj` - Standard webforJ-App
+      - `webforj-spring` - webforJ integriert mit Spring Boot
+
+      **Beispielanfragen:**
       ```
-      "Erstelle ein webforJ-Projekt namens CustomerPortal mit dem hello-world-Archetyp"
+      "Erstellen Sie ein webforJ-Projekt mit dem Namen CustomerPortal unter Verwendung des sidemenu-Archetyps"
 
-      "Generiere ein webforJ Spring Boot-Projekt mit einem Tab-Layout namens Dashboard"
-
-      "Erstelle eine neue webforJ-App mit dem Sidemenu-Archetyp für das AdminPanel-Projekt"
-
-      "Generiere ein leeres webforJ-Projekt namens TestApp mit der groupId com.example"
-
-      "Erstelle ein webforJ-Projekt InventorySystem mit dem Sidemenu-Archetyp und Spring Boot"
+      "Generieren Sie ein webforJ Spring Boot-Projekt mit dem Tabs-Layout namens Dashboard"
       ```
-
-      Bei der Verwendung dieses Werkzeugs können Sie aus mehreren Projektvorlagen auswählen:
-
-      **Archetypen** (Projektvorlagen):
-      - `hello-world` - Grundlegende App mit Beispielkomponenten, um die Funktionen von webforJ zu demonstrieren
-      - `blank` - Minimale Projektstruktur zum Starten von Grund auf
-      - `tabs` - Vorgefertigte, registerkartenbasierte Benutzeroberflächenlayout für Anwendungen mit mehreren Ansichten
-      - `sidemenu` - Layout mit seitlicher Navigationsleiste für Administrationspanels oder Dashboards
-
-      **Flavors** (Framework-Integration):
-      - `webforj` - Standard-webforJ-App
-      - `webforj-spring` - webforj, integriert mit Spring Boot für Dependency Injection und Unternehmensfunktionen
 
       :::tip Verfügbare Archetypen
-      webforJ kommt mit mehreren vordefinierten Archetypen, um Ihnen einen schnellen Start zu ermöglichen. Für eine vollständige Liste der verfügbaren Archetypen siehe den [Archetypen-Katalog](/docs/building-ui/archetypes/overview).
+      Für die vollständige Liste der Archetypen siehe das [Archetypen-Katalog](/docs/building-ui/archetypes/overview).
       :::
     </div>
   </AccordionDetails>
@@ -175,253 +156,116 @@ Werkzeuge sind spezialisierte Funktionen, die der MCP-Server KI-Assistenten bere
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>webforj-create-theme</code></strong> - Barrierefreie CSS-Themen erstellen
+    <strong>DWC-Thema generieren</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Generiert webforJ-Themkonfigurationen mit [DWC HueCraft](https://huecraft.dwc.style/). Das Werkzeug erstellt vollständige CSS-Kategorieneigenschaften mit primären, sekundären, Erfolgs-, Warn-, Gefahren- und neutralen Farbvarianten.
+      Aus einer einzigen Markenfarbe erstellt der Assistent ein komplettes DWC-Thema: primär, erfolgreich, warnend, gefährlich, informativ, standard und graue Paletten mit automatischem Textkontrast. Die Ausgabe umfasst das Stylesheet sowie die Verkabelung `@AppTheme` / `@StyleSheet`.
 
       **Beispielanfragen:**
       ```
-      "Generiere ein webforJ-Thema mit HSL 220, 70, 50 als Hauptfarbe für unsere Unternehmensmarke"
+      "Generieren Sie ein webforJ-Thema aus der Markenfarbe #6366f1"
 
-      "Erstelle ein barrierefreies webforJ-Thema namens 'ocean' mit der Hauptfarbe #0066CC"
-
-      "Generiere ein webforJ-Thema mit unserer Markenfarbe #FF5733"
-
-      "Erstelle ein webforJ-Thema mit HSL 30, 100, 50, das 'sunset' für unsere App genannt wird"
-
-      "Generiere ein barrierefreies webforJ-Thema mit der Hauptfarbe RGB 44, 123, 229"
+      "Erstellen Sie ein zugängliches Thema mit HSL 220, 70, 50 als Primärfarbe"
       ```
     </div>
   </AccordionDetails>
 </Accordion>
 
-## Verfügbare Aufforderungen {#available-prompts}
-
-Aufforderungen sind vorkonfigurierte KI-Anweisungen, die mehrere Werkzeuge und Arbeitsabläufe für häufige Aufgaben kombinieren. Sie führen die KI durch spezifische Schritte und Parameter, um zuverlässige, wiederholbare Ergebnisse für jeden unterstützten Arbeitsablauf zu liefern.
-
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>create-app</code></strong> - Erstellen und Ausführen einer webforJ-App
+    <strong>DWC-Komponenten korrekt stylen</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      **Argumente:**
-      - `appName` (erforderlich) - Anwendungsname (z.B. MyApp, TodoList, Dashboard)
-      - `archetype` (erforderlich) - Wählen Sie aus: `blank`, `hello-world`, `tabs`, `sidemenu`
-      - `runServer` (optional) - Den Entwicklungsserver automatisch ausführen (ja/nein)
+      Der Assistent liest die echten Styling-Oberflächen jedes DWC-Komponentens - CSS-Custom-Properties, Schattenbestandteile, reflektierte Attribute und Slots - bevor er CSS schreibt. Er kann auch jeden DWC-Tag auflisten und die Java-Klassennamen von webforJ (`Button`, `TextField`) auf ihre DWC-Entsprechungen auflösen.
+
+      **Beispielanfragen:**
+      ```
+      "Welche CSS-Variablen und Teile gibt es bei dwc-button?"
+
+      "Zeigen Sie mir jeden Slot, der bei dwc-dialog verfügbar ist"
+
+      "Welchem DWC-Tag entspricht die webforJ TextField-Klasse?"
+      ```
+
+      Kombinieren Sie dies mit der [styling-apps Agent Skill](/docs/integrations/ai-tooling/agent-skills) für durchgängige Styling-Workflows.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>create-theme</code></strong> - Generiere ein webforJ-Thema aus einer Hauptfarbe
+    <strong>Mit DWC-Design-Tokens arbeiten</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      **Argumente:**
-      - `primaryColor` (erforderlich) - Farbe im Hex-Format (#FF5733), rgb (255,87,51) oder hsl (9,100,60)
+      Der Assistent kann das autoritative Katalog von `--dwc-*` Tokens für Ihre webforJ-Version auflisten - Farbpaletten, Schattierungen, Oberflächen, Abstände, Typografie, Rahmen - gefiltert nach Präfix oder Teilstring. Er wird auch jeden CSS-, Java- oder Markdown-Quellcode, den Sie ihm geben, gegen den echten Token-Katalog validieren und unbekannte Namen mit vorgeschlagenen Korrekturen kennzeichnen.
+
+      **Beispielanfragen:**
+      ```
+      "Listen Sie jeden --dwc-space-* Token auf"
+
+      "Validieren Sie app.css auf unbekannte --dwc-* Tokens"
+
+      "Welche Schattierungen der Primärpalette sind verfügbar?"
+      ```
+
+      Die Validierung findet Tippfehler und erfundene Tokens, bevor sie als lautlos fehlgeschlagenes CSS ausgeliefert werden.
+    </div>
+  </AccordionDetails>
+</Accordion>
+
+## Gute Anfragen schreiben {#writing-good-prompts}
+
+Der MCP-Server wird nur konsultiert, wenn Ihr Assistent denkt, dass es relevant ist. Einige Gewohnheiten halten ihn aktiv:
+
+- **Nennen Sie das Framework.** Erwähnen Sie "webforJ" in der Anfrage, damit der Assistent auf den MCP-Server zugreift, anstatt auf sein allgemeines Java-Wissen.
+- **Seien Sie spezifisch.** `"Erstellen Sie ein webforJ-Projekt namens InventorySystem mit dem sidemenu-Archetyp und Spring Boot"` ist besser als `"machen Sie eine App"`.
+- **Fragen Sie nach einer Überprüfung.** Phrasen wie `"überprüfen Sie anhand der webforJ-Dokumente"` oder `"überprüfen Sie dieses CSS auf schlechte --dwc-* Tokens"` bringen den Assistenten dazu, die Tools zu verwenden, anstatt zu raten.
+
+Wenn Ihr Assistent immer noch antwortet, ohne den Server zu konsultieren, installieren Sie das [webforJ AI-Plugin](https://github.com/webforj/webforj-ai) - es liefert passende Agent Skills, die den Assistenten automatisch dazu anregen, die MCP-Tools bei Aufgaben in webforJ zu nutzen.
+
+## FAQ {#faq}
+
+<Accordion disableGutters>
+  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+    <p>Warum verwendet der KI-Assistent den MCP-Server nicht?</p>
+  </AccordionSummary>
+  <AccordionDetails>
+    <div>
+      Die meisten Assistenten greifen nur auf den MCP zu, wenn sie denken, dass die Frage es benötigt. Zwei Lösungen:
+
+      1. **Installieren Sie das [webforJ AI-Plugin](https://github.com/webforj/webforj-ai)**, das den Server mit Agent Skills kombiniert, die dem Assistenten sagen, den MCP für webforJ-Aufgaben zu verwenden.
+      2. **Seien Sie explizit in Ihrer Anfrage**: Fügen Sie "webforJ" zur Frage hinzu und sagen Sie in hartnäckigen Fällen "verwenden Sie den webforJ MCP-Server, um zu antworten".
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>search-webforj</code></strong> - Erweiterte Suche mit autonomem Problemlösen
+    <p>Wie überprüfe ich, ob die MCP-Verbindung funktioniert?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Die Aufforderung konfiguriert die KI dazu:
-
-      1. Umfassend in der Wissensdatenbank zu suchen
-      2. Vollständigen, produktionsbereiten Code zu schreiben
-      3. Das Projekt mit `mvn compile` zu kompilieren, um sicherzustellen, dass es keine Build-Fehler gibt
-      4. Fehler iterativ zu beheben, bis alles funktioniert
-    </div>
-  </AccordionDetails>
-</Accordion>
-
-### Wie man Aufforderungen verwendet
-
-<Tabs groupId="ide">
-<TabItem value="vscode" label="VS Code und Claude Code">
-
-1. Geben Sie <kbd>/</kbd> im Chat ein, um verfügbare Aufforderungen zu sehen
-2. Wählen Sie eine Aufforderung aus dem Dropdown-Menü aus
-3. Füllen Sie die erforderlichen Parameter aus, wenn Sie dazu aufgefordert werden
-
-</TabItem>
-<TabItem value="claude-desktop" label="Claude Desktop">
-
-1. Klicken Sie auf das **+** (Plus)-Symbol im Aufforderungs Eingabefeld
-2. Wählen Sie **"Aus webforJ hinzufügen"** im Menü
-3. Wählen Sie die gewünschte Aufforderung (z.B. `create-app`, `create-theme`, `search-webforj`)
-4. Claude fordert Sie auf, die erforderlichen Argumente einzugeben
-5. Füllen Sie die Parameter wie angefordert aus
-
-:::tip MCP-Verbindung überprüfen
-Achten Sie auf das Werkzeugsymbol in der unteren Ecke des Eingabebereichs, um zu bestätigen, dass der webforJ MCP-Server verbunden ist.
-:::
-
-</TabItem>
-</Tabs>
-
-## Best Practices
-
-Um die genauesten und aktuellsten webforJ-Hilfen zu erhalten, befolgen Sie diese Richtlinien, um die Funktionen des MCP-Servers voll auszuschöpfen.
-
-### Sicherstellen der Nutzung des MCP-Servers
-
-KI-Modelle könnten den MCP-Server überspringen, wenn sie glauben, sie wüssten bereits die Antwort. Um sicherzustellen, dass der MCP-Server tatsächlich verwendet wird:
-
-- **Seien Sie explizit zu webforJ**: Erwähnen Sie immer "webforJ" in Ihrer Anfrage, um frameworkspezifische Suchen auszulösen
-- **Fordern Sie aktuelle Informationen an**: Fügen Sie Phrasen wie "neueste webforJ-Dokumentation" oder "aktuelle webforJ-Muster" hinzu
-- **Fragen Sie nach verifizierten Beispielen**: Fordern Sie "funktionierende webforJ-Codebeispiele" an, um die Dokumentationssuche zu erzwingen
-- **Referenzieren Sie spezifische Versionen**: Erwähnen Sie Ihre webforJ-Version (z.B. "webforJ `25.02`"), um genaue Ergebnisse zu erhalten
-
-### Schreiben spezifischer Aufforderungen
-
-**Gute Beispiele:**
-```
-"Durchsuche die webforJ-Dokumentation nach Button-Komponenten-Eventhandling mit Beispielen"
-
-"Erstelle ein webforJ-Projekt namens InventorySystem mit dem Sidemenu-Archetyp und Spring Boot"
-
-"Generiere ein webforJ-Thema mit HSL 220, 70, 50 als Hauptfarbe für die Unternehmensmarke"
-```
-
-**Schlechte Beispiele:**
-```
-"Wie funktionieren Buttons"
-
-"Mach eine App"
-
-"Mach es blau"
-```
-
-### Erzwingen der Verwendung von MCP-Tool
-
-Wenn die KI allgemeine Antworten ohne Nutzung des MCP-Servers gibt:
-
-1. **Explizit anfordern**: "Verwenden Sie den webforJ MCP-Server, um nach `[query]` zu suchen"
-2. **Nach Dokumentationsreferenzen fragen**: "Finde in der webforJ-Dokumentation heraus, wie man `[query]`"
-3. **Überprüfungen anfordern**: "Überprüfen Sie diese Lösung anhand der webforJ-Dokumentation"
-4. **Framework-spezifisch sein**: Fügen Sie immer "webforJ" in Ihre Anfragen ein
-
-## Anpassung von KI {#ai-customization}
-
-Konfigurieren Sie Ihre KI-Assistenten so, dass sie den MCP-Server automatisch verwenden und die besten Praktiken von webforJ befolgen. Fügen Sie projektspezifische Anweisungen hinzu, damit Ihre KI-Assistenten den MCP-Server stets verwenden, die Dokumentationsstandards von webforJ befolgen und genaue, aktuelle Antworten liefern, die den Anforderungen Ihres Teams entsprechen.
-
-### Projektkonfigurationsdateien
-
-- Für **VS Code und Copilot** erstellen Sie `.github/copilot-instructions.md`
-- Für **Claude Code** erstellen Sie `CLAUDE.md` im Projektstammverzeichnis
-
-Fügen Sie Folgendes zu der erstellten Markdown-Datei hinzu:
-```markdown
-## Verwenden Sie den webforJ MCP-Server, um alle Fragen zu webforJ zu beantworten
-
-- Rufen Sie immer das Werkzeug "webforj-knowledge-base" auf, um relevante Dokumente zu suchen
-- Überprüfen Sie alle API-Signaturen anhand der offiziellen Dokumentation
-- Nehmen Sie niemals an, dass Methoden- oder Parameternamen existieren, ohne dies zu überprüfen
-
-Überprüfen Sie immer, ob der Code mit `mvn compile` übersetzt wird, bevor Sie Vorschläge machen.
-```
-
-## FAQ
-
-<Accordion disableGutters>
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Warum verwendet die KI den webforJ MCP-Server nicht?</p>
-  </AccordionSummary>
-  <AccordionDetails>
-    <div>
-      Die meisten KI-Assistenten benötigen explizite Anweisungen, um MCP-Server zu verwenden. Konfigurieren Sie Ihren KI-Client mit den Anweisungen aus dem Abschnitt [KI-Anpassung](#ai-customization). Ohne diese Anweisungen verwenden KI-Assistenten möglicherweise standardmäßig ihre Trainingsdaten, anstatt den MCP-Server zu befragen.
-
-      **Schnelle Lösung:**
-      Fügen Sie "verwendet den webforJ MCP" in Ihre Aufforderung ein oder erstellen Sie die entsprechende Konfigurationsdatei (`.github/copilot-instructions.md` oder `CLAUDE.md`).
-    </div>
-  </AccordionDetails>
-</Accordion>
-
-<Accordion disableGutters>
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Wie kann ich überprüfen, ob die MCP-Verbindung funktioniert?</p>
-  </AccordionSummary>
-  <AccordionDetails>
-    <div>
-      Verwenden Sie den MCP-Inspektor, um Verbindungen zu debuggen:
+      Verwenden Sie den MCP-Inspektor:
 
       ```bash
       npx @modelcontextprotocol/inspector
       ```
 
-      Warten Sie auf die Nachricht: `🔍 MCP Inspector ist aktiv und läuft unter http://127.0.0.1:6274` (Port kann variieren)
-
-      Dann im Inspektor:
-      1. Geben Sie die MCP-Server-URL ein: `https://mcp.webforj.com/mcp`
-      2. Klicken Sie auf "Verbinden", um die Verbindung herzustellen
-      3. Sehen Sie sich verfügbare Werkzeuge an und testen Sie Anfragen
-      4. Überwachen Sie die Anforderungs-/Antwortprotokolle zur Fehlersuche
+      Verbinden Sie sich dann im Inspektor mit `https://mcp.webforj.com/mcp` und erkunden Sie die verfügbaren Tools.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Was ist der Unterschied zwischen MCP- und SSE-Endpunkten?</p>
+    <p>Wie melde ich Probleme?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Der webforJ MCP-Server bietet zwei Endpunkte:
-
-      - **MCP-Endpunkt** (`/mcp`) - Modernes Protokoll für Claude, VS Code, Cursor
-      - **SSE-Endpunkt** (`/sse`) - Server-Sent Events für Legacy-Clients wie Windsurf
-
-      Die meisten Benutzer sollten den MCP-Endpunkt verwenden. Verwenden Sie SSE nur, wenn Ihr Client das Standard-MCP-Protokoll nicht unterstützt.
-    </div>
-  </AccordionDetails>
-</Accordion>
-
-<Accordion disableGutters>
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Ist es möglich, den MCP-Server ohne Konfigurationsdateien zu verwenden?</p>
-  </AccordionSummary>
-  <AccordionDetails>
-    <div>
-      Ja, aber es wird nicht empfohlen. Ohne Konfigurationsdateien müssen Sie die KI manuell auffordern, den MCP-Server in jeder Konversation zu verwenden. Konfigurationsdateien instruieren die KI automatisch, den MCP-Server für jede Interaktion zu verwenden, sodass Sie nicht jedes Mal Anweisungen wiederholen müssen.
-
-      **Manuelle Vorgehensweise:**
-      Beginnen Sie Aufforderungen mit: "Verwenden Sie den webforJ MCP-Server, um..."
-
-      **Alternativ: Verwenden Sie vorkonfigurierte Aufforderungen**
-      Der MCP-Server bietet Aufforderungen, die ohne Konfigurationsdateien funktionieren:
-      - `/create-app` - Neue webforJ-Anwendungen generieren
-      - `/create-theme` - Barrierefreie CSS-Themen erstellen
-      - `/search-webforj` - Erweiterte Dokumentationssuche
-
-      Siehe [Verfügbare Aufforderungen](#available-prompts) für Details.
-    </div>
-  </AccordionDetails>
-</Accordion>
-
-<Accordion disableGutters>
-  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Wie kann ich beitragen oder Probleme melden?</p>
-  </AccordionSummary>
-  <AccordionDetails>
-    <div>
-      **Probleme melden:** [webforJ MCP-Issue-Vorlage](https://github.com/webforj/webforj/issues/new?template=mcp_report.yml)
-      
-      **Häufige Probleme, die gemeldet werden sollten:**
-      - Veraltete Dokumentation in den Suchergebnissen
-      - Fehlende API-Methoden oder -Komponenten
-      - Falsche Codebeispiele
-      - Werkzeugausführungsfehler
-
-      Geben Sie Ihre Anfrage, das erwartete Ergebnis und das tatsächliche Ergebnis an, wenn Sie Probleme melden.
+      Öffnen Sie ein Ticket mit der [webforJ MCP-Problemvorlage](https://github.com/webforj/webforj/issues/new?template=mcp_report.yml). Geben Sie die Anfrage, das erwartete Ergebnis und das, was Sie erhalten haben, an.
     </div>
   </AccordionDetails>
 </Accordion>

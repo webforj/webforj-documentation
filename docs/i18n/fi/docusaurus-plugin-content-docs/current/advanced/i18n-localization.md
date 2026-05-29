@@ -1,29 +1,30 @@
 ---
 sidebar_position: 12
 title: Translation
-sidebar_class_name: new-content
-_i18n_hash: 57626c2969592f2378a55eff0dd01d48
+_i18n_hash: 276130dcd9ff26441b844042d4cdc5dd
 ---
 # Käännös <DocChip chip='since' label='25.12' />
 
-webforJ sisältää sisäänrakennetun käännöksen, joka etsii paikallisia merkkijonoja avaimen mukaan. Järjestelmä koostuu käännösresoluutiosta, joka yhdistää avaimet paikallisiin teksteihin, `HasTranslation` huolen interface, joka tarjoaa kätevän `t()`-menetelmän, `App.getTranslation()` suoran käyttöön missä tahansa, automaattisesta paikallisuuden havaitsemisesta selaimesta ja tuesta mukautetuille käännöslähteille, kuten tietokannoille.
+webforJ sisältää sisäänrakennetun käännösjärjestelmän lokalisoitujen merkkijonojen etsimistä varten avaimen avulla. Järjestelmä koostuu käännösresolversista, joka yhdistää avaimet lokalisoituihin teksteihin, `HasTranslation` -huolenaiherajapinnasta, joka tarjoaa kätevän `t()`-metodin, `App.getTranslation()`-pääsyn mihin tahansa, automaattisesta paikallisen havaitsemisesta selaimesta ja tuesta mukautetuille käännöslähteille, kuten tietokannoille.
 
-## Käännösresoluutio {#translation-resolver}
+<AISkillTip skill="webforj-localizing-apps" />
 
-Käännösresoluutio on järjestelmä, joka etsii paikallisia merkkijonoja tietyllä avaimella ja paikallisuudella. webforJ tarjoaa oletusresoluution, `BundleTranslationResolver`, joka lataa käännöksiä Java `ResourceBundle` -ominaisuus tiedostoista luokkahakualueella. Tämä toimii suoraan ilman lisäriippuvuuksia.
+## Käännösresolveri {#translation-resolver}
 
-### Resurssikokoelmat
+Käännösresolveri on järjestelmä, joka etsii lokalisoituja merkkijonoja tietyn avaimen ja paikallisen mukaan. webforJ tarjoaa oletusresolverin, `BundleTranslationResolver`, joka lataa käännöksiä Java `ResourceBundle` -ominaisuus tiedostoista luokkapolussa. Tämä toimii heti ilman lisäriippuvuuksia.
 
-Aseta käännöstiedostosi `src/main/resources`-hakemistoon. Oletusresoluutiot etsii tiedostoja, jotka on nimetty `messages` paikallisuusliitteillä, jotka seuraavat Java `ResourceBundle` -nimistön standardia:
+### Ominaisuuspaketit
+
+Sijoita käännöstiedostosi `src/main/resources` -hakemistoon. Oletusresolveri etsii `messages`-nimisiä tiedostoja, joissa on paikallisliitteet noudattaen Java `ResourceBundle` -nimikointikäytäntöä:
 
 ```text
-messages.properties        # Oletus/takaisin käännökset
+messages.properties        # Oletus/varavalmisteet
 messages_en.properties     # Englanti
 messages_de.properties     # Saksa
 messages_fr_CA.properties  # Ranska (Kanada)
 ```
 
-Jokainen tiedosto sisältää avain-arvo-pareja. Avaimet ovat tunnisteita, joita käytät koodissa, ja arvot ovat käännettyjä merkkijonoja. Voit sisällyttää [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) paikkamerkkejä, kuten `{0}`, `{1}` dynaamisille arvoille:
+Jokainen tiedosto sisältää avain-arvo-parit. Avaimet ovat tunnisteita, joita käytät koodissa, ja arvot ovat käännettyjä merkkijonoja. Voit sisällyttää [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) -paikkoja, kuten `{0}`, `{1}` dynaamisille arvoille:
 
 ```properties title="messages.properties"
 app.title=Postilaatikko
@@ -39,19 +40,19 @@ menu.outbox=Postausgang
 greeting=Hallo {0}, Sie haben {1} neue Nachrichten
 ```
 
-Resoluutio delegoi Java:n standardille [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) resoluutioketjulle, joka hoitaa paikallisuuden vastaavuuden ja varat automaattisesti.
+Resolveri delegoi Java:n standardin [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) ratkaisuputkeen, joka käsittelee paikallisten vastaavuuksien ja varatäytön automaattisesti.
 
-### Tuettujen paikallisuuksien määrittäminen {#configuring-supported-locales}
+### Tuettujen lokaliteettien määrittäminen {#configuring-supported-locales}
 
-`supported-locales`-asetus kertoo webforJ:lle, mitkä paikallisuudet sovelluksesi tukee. Tätä luetteloa käytetään automaattisessa havaitsemisessa, jotta käyttäjän selaimen paikallisuus voidaan korvata käytettävissä olevilla käännöksillä. Ensimmäistä luettelon paikallisuutta käytetään oletusvarana, kun parempaa vastaavuutta ei löydy. Ominaisuusavain on `webforj.i18n.supported-locales` ja se hyväksyy luettelon [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) kielitunnisteista, esim. `en, de`.
+`supported-locales` -asetuksella kerrotaan webforJ:lle, mitkä paikalliset asetukset sovelluksesi tukee. Tämä luetteloa käytetään automaattisessa tunnistamisessa käyttäjän selaimen localea vastaan saatavilla olevien käännösten osalta. Luettelon ensimmäistä localea käytetään oletusvaratäytteenä, kun parempaa vastaavuutta ei löydy. Ominaisuusavain on `webforj.i18n.supported-locales` ja se hyväksyy luettelon [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) kielitunnisteista, esimerkiksi `en, de`.
 
 :::info Lisätietoja
-Katso [Määritykset](/docs/configuration/properties) -osio oppiaksesi, kuinka määrittää ominaisuuksia eri ympäristöille.
+Katso [Konfigurointi](/docs/configuration/properties) -osio oppiaksesi, kuinka asettaa ominaisuuksia eri ympäristöille.
 :::
 
-## `t()`-menetelmä {#the-t-method}
+## `t()`-metodi {#the-t-method}
 
-Komponentit, jotka toteuttavat `HasTranslation` huolen interface:n, saavat pääsyn `t()`-menetelmään tekstin kääntämiseen. Menetelmä ottaa käännösavaimen ja palauttaa paikallistetun merkkijonon nykyiselle sovelluksen paikallisuudelle:
+Komponentit, jotka toteuttavat `HasTranslation` -huolenaiherajapinnan, saavat pääsyn `t()`-metodiin tekstin kääntämistä varten. Metodi ottaa käännösavaimen ja palauttaa lokalisoidun merkkijonon nykyisen sovelluksen paikallisen mukaan:
 
 ```java
 public class MainLayout extends Composite<AppLayout> implements HasTranslation {
@@ -60,35 +61,35 @@ public class MainLayout extends Composite<AppLayout> implements HasTranslation {
     // Yksinkertainen käännös
     String title = t("app.title");
 
-    // Käännös MessageFormat-parametreilla
+    // Käännös MessageFormat -parametreilla
     String greeting = t("greeting", userName, messageCount);
 
-    // Käännös tietyssä paikallisuudessa
+    // Käännös tietylle paikalliselle
     String germanTitle = t(Locale.GERMAN, "app.title");
   }
 }
 ```
 
-Voit käyttää myös `App.getTranslation()` suoraan missä tahansa ilman, että toteutat rajapintaa:
+Voit myös käyttää `App.getTranslation()` suoraan missä tahansa ilman rajapinnan toteuttamista:
 
 ```java
 String title = App.getTranslation("app.title");
 ```
 
-:::info Sujuva varma
-Jos käännösavain ei löydy, `t()` palauttaa avaimen itsessään sen sijaan, että heittäisi poikkeusta. Tämä tarkoittaa, ettei sovelluksesi jumitu, jos käännös puuttuu. Avainta näytetään sellaisenaan, ja varoitus kirjataan, jotta voit seurata puuttuvia käännöksiä kehitysvaiheessa.
+:::info Sujuva varatäyttö
+Jos käännösavainta ei löydy, `t()` palauttaa avaimen itsessään sen sijaan, että heittäisi poikkeuksen. Tämä tarkoittaa, että sovelluksesi ei katkea, jos käännös puuttuu. Avain näytetään sellaisenaan ja varoitus tallennetaan, jotta voit seurata puuttuvia käännöksiä kehityksen aikana.
 :::
 
 ## Käännettyjen komponenttien toteuttaminen {#implementing-translated-components}
 
-Käännetty komponentti yhdistää tyypillisesti `HasTranslation` ja [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Käytä `t()` UI-elementtien luomisessa, jotta asetat alkuperäiset käännetyt tekstit. Tuen tarjoamiseksi käyttöaikaiselle kielenvaihdolle, toteuta `LocaleObserver` ja päivitä sama teksti `onLocaleChange()` -menetelmässä.
+Käännetty komponentti yhdistää tyypillisesti `HasTranslation` ja [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Käytä `t()` metodia, kun luot UI-elementtejä asetaksesi alkuperäisen käännetyn tekstin. Tukeaksesi aikarajan kielellistä vaihtamista, toteuta `LocaleObserver` ja päivitä sama teksti `onLocaleChange()` -metodissa.
 
 ```java title="MainLayout.java"
 @Route
 public class MainLayout extends Composite<AppLayout>
     implements HasTranslation, LocaleObserver {
 
-  private AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
   private AppNavItem inboxItem;
   private AppNavItem outboxItem;
 
@@ -111,13 +112,13 @@ public class MainLayout extends Composite<AppLayout>
 }
 ```
 
-:::tip Databindaus
-Databindausjärjestelmä tukee käännettyjä validointi- ja muunnosviestejä käyttämällä `Supplier<String>` ja `t()`. Katso [dynaamiset validointiviestit](/docs/data-binding/validation/validators#dynamic-validation-messages), [dynaamiset muuntoviestit](/docs/data-binding/transformation#dynamic-transformer-error-messages) ja [paikallisuustietoisen Jakarta Validoinnin](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
+:::tip Datan sitominen
+Datan sitomusjärjestelmä tukee käännettyjä validoitus- ja muunnosviestejä käyttäen `Supplier<String>` yhdistettynä `t()`-metodiin. Katso [dynaamiset validoitusviestit](/docs/data-binding/validation/validators#dynamic-validation-messages), [dynaamiset muuntajaviestit](/docs/data-binding/transformation#dynamic-transformer-error-messages) ja [paikallisesti tietoisa Jakarta Validointi](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
 :::
 
-## Mukautetut käännösresoluutorit {#custom-translation-resolvers}
+## Mukautetut käännösresolverit {#custom-translation-resolvers}
 
-Oletusresoluutiolataa käännöksiä Java `ResourceBundle` -ominaisuus tiedostoista. Ladata käännöksiä eri lähteistä, kuten tietokannasta tai etäpalvelusta, toteuta `TranslationResolver`:
+Oletusresolveri lataa käännöksiä Java `ResourceBundle` -ominaistiedostoista. Ladataaksesi käännöksiä erilaisista lähteistä, kuten tietokannasta tai etäpalvelusta, toteuta `TranslationResolver`:
 
 ```java title="DatabaseTranslationResolver.java"
 public class DatabaseTranslationResolver implements TranslationResolver {
@@ -153,13 +154,13 @@ public class DatabaseTranslationResolver implements TranslationResolver {
 
 ### Mukautetun resolverin rekisteröinti {#registering-a-custom-resolver}
 
-Yksinkertaisessa webforJ-sovelluksessa aseta resolver ennen sovelluksen käynnistämistä, esimerkiksi käyttäen [sovelluksen elinkaarikuuntelijaa](/docs/advanced/lifecycle-listeners):
+Yksinkertaisessa webforJ-sovelluksessa aseta resolveri ennen sovelluksen käynnistymistä, esimerkiksi käyttämällä [sovelluksen elinkaarikuuntelijaa](/docs/advanced/lifecycle-listeners):
 
 ```java
 App.setTranslationResolver(new DatabaseTranslationResolver(repository, supportedLocales));
 ```
 
-Spring Boot -sovelluksessa tuo resolver beanina:
+Spring Boot -sovelluksessa, tarjoa resolveri beanina:
 
 ```java title="MessageSourceConfig.java"
 @Configuration
@@ -176,6 +177,6 @@ public class MessageSourceConfig {
 }
 ```
 
-:::info Oletusresoluutio Spring Bootissa
-Kun mukautettua `TranslationResolver` -beania ei ole määritelty, Springin automaattinen konfigurointi tarjoaa oletus `BundleTranslationResolver` -resoluution, joka on määritetty käytettävissä olevilla paikallisuuksilla `application.properties` -tiedostosta.
+:::info Oletusresolveri Spring Bootissa
+Kun mukautettua `TranslationResolver` -beania ei ole määritelty, Springin automaattinen konfigurointi tarjoaa oletus `BundleTranslationResolver` -resolverin, joka on määritetty tuettujen lokaliteettien mukaan `application.properties`-tiedostossa.
 :::

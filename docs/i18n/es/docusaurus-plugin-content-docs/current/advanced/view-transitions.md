@@ -1,45 +1,44 @@
 ---
 sidebar_position: 40
 title: View Transitions
-sidebar_class_name: new-content
-_i18n_hash: eb57126d50375aa6da9197fa846291ff
+_i18n_hash: f906f47211e25b6b4bd659abdb1ad500
 ---
 <JavadocLink type="foundation" location="com/webforj/ViewTransition" top='true'/>
 
 <DocChip chip='since' label='25.11' />
 <DocChip chip='experimental' />
 
-Las transiciones de vista proporcionan transiciones animadas cuando el [DOM](/docs/glossary#dom) cambia, reduciendo el choque visual y manteniendo el contexto espacial durante la navegación o actualizaciones de contenido. webforJ se integra con la [API de Transición de Vista](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) del navegador para manejar la complejidad de coordinar animaciones entre estados antiguos y nuevos.
+Las transiciones de vista proporcionan transiciones animadas cuando el [DOM](/docs/glossary#dom) cambia, reduciendo el desajuste visual y manteniendo el contexto espacial durante la navegación o actualizaciones de contenido. webforJ se integra con la [API de Transición de Vista](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) del navegador para manejar la complejidad de coordinar animaciones entre los estados antiguos y nuevos.
 
 <ComponentDemo
-  path='/webforj/viewtransitionchat?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java'
-  cssURL='/css/viewtransitions/chat.css'
-  height='450px'
+path='/webforj/viewtransitionchat'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
+  'src/main/resources/static/css/viewtransitions/chat.css',
+]}
+height='450px'
 />
 
-:::warning API experimental
-Esta API está marcada como experimental desde el 25.11 y puede cambiar en futuras versiones. La firma de la API, el comportamiento y las características de rendimiento están sujetos a modificación.
-:::
+<ExperimentalWarning />
 
 ## Uso básico {#basic-usage}
 
-Para crear una transición de vista, utiliza `Page.getCurrent().startViewTransition()`, que devuelve un constructor para configurar la transición:
+Para crear una transición de vista, usa `Page.getCurrent().startViewTransition()`, que devuelve un constructor para configurar la transición:
 
 ```java
 Page.getCurrent().startViewTransition()
-    .onUpdate(done -> {
-        container.remove(oldView);
-        container.add(newView);
-        done.run();
-    })
-    .start();
+  .onUpdate(done -> {
+    container.remove(oldView);
+    container.add(newView);
+    done.run();
+  })
+  .start();
 ```
 
-El proceso de transición captura una instantánea del estado actual, aplica tus cambios en el DOM en la función de devolución de llamada `onUpdate`, y luego anima de la instantánea antigua al nuevo contenido. Debes llamar a `done.run()` para señalar cuando tus cambios están completos.
+El proceso de transición captura una instantánea del estado actual, aplica tus cambios en el DOM en la devolución de llamada `onUpdate`, y luego anima desde la instantánea antigua al nuevo contenido. Debes llamar a `done.run()` para señalizar cuándo tus cambios están completos.
 
-:::warning La función de devolución de llamada `onUpdate` es obligatoria
-Llamar a `start()` sin establecer una función de actualización lanza una `IllegalStateException`.
+:::warning La devolución de llamada `onUpdate` es obligatoria
+Llamar a `start()` sin establecer una devolución de llamada de actualización lanza un `IllegalStateException`.
 :::
 
 ## Aplicando transiciones {#applying-transitions}
@@ -47,97 +46,97 @@ Llamar a `start()` sin establecer una función de actualización lanza una `Ille
 webforJ proporciona tipos de transición predefinidos que puedes aplicar a los componentes que entran o salen del DOM:
 
 | Constante | Efecto |
-|----------|--------|
+|-----------|--------|
 | `ViewTransition.NONE` | Sin animación |
-| `ViewTransition.FADE` | Transición cruzada entre el contenido antiguo y el nuevo |
+| `ViewTransition.FADE` | Desvanecimiento entre el contenido antiguo y el nuevo |
 | `ViewTransition.SLIDE_LEFT` | El contenido fluye hacia la izquierda (como navegación hacia adelante) |
 | `ViewTransition.SLIDE_RIGHT` | El contenido fluye hacia la derecha (como navegación hacia atrás) |
 | `ViewTransition.SLIDE_UP` | El contenido fluye hacia arriba |
 | `ViewTransition.SLIDE_DOWN` | El contenido fluye hacia abajo |
-| `ViewTransition.ZOOM` | El contenido antiguo se reduce, el nuevo contenido crece |
-| `ViewTransition.ZOOM_OUT` | El contenido antiguo crece, el nuevo contenido se reduce |
+| `ViewTransition.ZOOM` | El contenido antiguo se encoge, el contenido nuevo crece |
+| `ViewTransition.ZOOM_OUT` | El contenido antiguo crece, el contenido nuevo se encoge |
 
-Utiliza `enter()` para animar un componente que se está añadiendo y `exit()` para animar un componente que se está quitando:
+Usa `enter()` para animar un componente al ser agregado y `exit()` para animar un componente al ser removido:
 
 ```java
-// Animar un componente al entrar en el DOM
+// Animar un componente que entra al DOM
 Page.getCurrent().startViewTransition()
-    .enter(chatPanel, ViewTransition.ZOOM)
-    .onUpdate(done -> {
-        container.add(chatPanel);
-        done.run();
-    })
-    .start();
+  .enter(chatPanel, ViewTransition.ZOOM)
+  .onUpdate(done -> {
+    container.add(chatPanel);
+    done.run();
+  })
+  .start();
 
-// Animar un componente al salir del DOM
+// Animar un componente que sale del DOM
 Page.getCurrent().startViewTransition()
-    .exit(chatPanel, ViewTransition.FADE)
-    .onUpdate(done -> {
-        container.remove(chatPanel);
-        done.run();
-    })
-    .start();
+  .exit(chatPanel, ViewTransition.FADE)
+  .onUpdate(done -> {
+    container.remove(chatPanel);
+    done.run();
+  })
+  .start();
 ```
 
 ## Transiciones de componentes compartidos {#shared-component-transitions}
 
-Las transiciones de componentes compartidos crean un efecto de transformación en el que un componente parece transformar su posición en la vista antigua a su posición en la vista nueva. Esto se logra al dar a los componentes el mismo nombre de transición utilizando el método `setViewTransitionName()`, disponible en cualquier componente que implemente la <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>interfaz HasStyle</JavadocLink>.
+Las transiciones de componentes compartidos crean un efecto de transformación donde un componente parece transformarse desde su posición en la vista antigua a su posición en la nueva vista. Esto se logra dando a los componentes el mismo nombre de transición utilizando el método `setViewTransitionName()`, disponible en cualquier componente que implemente la interfaz <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink>.
 
 ```java
 // En la vista de tarjeta
 image.setViewTransitionName("blog-image");
 
-// En la vista de detalles - el mismo nombre crea la morfología
+// En la vista de detalle - el mismo nombre crea la morfología
 image.setViewTransitionName("blog-image");
 ```
 
 Al transitar entre estas vistas, el navegador anima el componente entre posiciones, creando una experiencia visual conectada.
 
 :::tip Usa nombres únicos
-Al trabajar con listas o componentes repetidos, incluye un identificador único en el nombre de la transición. Cada componente requiere su propio nombre distinto para morfar correctamente a su componente correspondiente en la nueva vista. Usar el mismo nombre para múltiples componentes visibles causa un comportamiento indefinido.
+Al trabajar con listas o componentes repetidos, incluye un identificador único en el nombre de la transición. Cada componente requiere su propio nombre distinto para morfar correctamente a su componente correspondiente en la nueva vista. Usar el mismo nombre para múltiples componentes visibles causa comportamientos indefinidos.
 :::
 
 <ComponentDemo
-  path='/webforj/viewtransitionmorph?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java'
-  urls={[
-    'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
-    'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java'
-  ]}
-  cssURL='/css/viewtransitions/morph.css'
-  height='650px'
+path='/webforj/viewtransitionmorph'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
+  'src/main/resources/static/css/viewtransitions/morph.css',
+]}
+height='650px'
 />
 
-### Reordenamiento de listas {#list-reordering}
+### Reordenación de listas {#list-reordering}
 
-Un caso de uso común para las transiciones de componentes compartidos es animar los elementos de una lista cuando su orden cambia. Al asignar un `view-transition-name` único a cada artículo, el navegador anima automáticamente los componentes a sus nuevas posiciones:
+Un caso de uso común para transiciones de componentes compartidos es animar elementos de lista cuando su orden cambia. Al asignar un `view-transition-name` único a cada elemento, el navegador anima automáticamente los componentes a sus nuevas posiciones:
 
 ```java
 // Cada tarjeta recibe un nombre de transición único basado en su ID
 card.setViewTransitionName("card-" + item.id());
 
-// Al mezclar, solo actualiza el DOM - el navegador maneja la animación
+// Al barajar, solo actualiza el DOM - el navegador maneja la animación
 Page.getCurrent().startViewTransition()
-    .onUpdate(done -> {
-        renderList();
-        done.run();
-    })
-    .start();
+  .onUpdate(done -> {
+    renderList();
+    done.run();
+  })
+  .start();
 ```
 
 <ComponentDemo
-  path='/webforj/viewtransitionshuffle?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java'
-  urls={[
-    'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java'
-  ]}
-  cssURL='/css/viewtransitions/shuffle.css'
-  height='550px'
+path='/webforj/viewtransitionshuffle'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
+  'src/main/resources/static/css/viewtransitions/shuffle.css',
+]}
+height='550px'
 />
 
 ## Animaciones CSS personalizadas {#custom-css-animations}
 
-Para un control total sobre las animaciones, puedes definir keyframes CSS personalizados. webforJ añade sufijos `-enter` o `-exit` a tus nombres de transición, que utilizas para dirigirte a los pseudo-elementos de transición de vista:
+Para tener control total sobre las animaciones, puedes definir keyframes CSS personalizados. webforJ añade sufijos `-enter` o `-exit` a tus nombres de transición, que utilizas para dirigirte a los pseudo-elementos de transición de vista:
 
 ```css
 /* Definir keyframes para componentes que entran */
@@ -166,60 +165,62 @@ Para un control total sobre las animaciones, puedes definir keyframes CSS person
 Referencia tu animación personalizada pasando su nombre (sin el sufijo) a `enter()` o `exit()`:
 
 ```java
-// Usa "flip-in" - webforJ añade automáticamente el sufijo "-enter"
+// Usa "flip-in" - webforJ añade el sufijo "-enter" automáticamente
 Page.getCurrent().startViewTransition()
-    .enter(notification, "flip-in")
-    .onUpdate(done -> {
-        stage.add(notification);
-        done.run();
-    })
-    .start();
+  .enter(notification, "flip-in")
+  .onUpdate(done -> {
+    stage.add(notification);
+    done.run();
+  })
+  .start();
 
-// Usa "blur-out" para salir - webforJ añade automáticamente el sufijo "-exit"
+// Usa "blur-out" para la salida - webforJ añade el sufijo "-exit"
 Page.getCurrent().startViewTransition()
-    .exit(notification, "blur-out")
-    .onUpdate(done -> {
-        stage.remove(notification);
-        done.run();
-    })
-    .start();
+  .exit(notification, "blur-out")
+  .onUpdate(done -> {
+    stage.remove(notification);
+    done.run();
+  })
+  .start();
 ```
 
 <ComponentDemo
-  path='/webforj/viewtransitionenterexit?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java'
-  cssURL='/css/viewtransitions/enterexit.css'
-  height='400px'
+path='/webforj/viewtransitionenterexit'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
+  'src/main/resources/static/css/viewtransitions/enterexit.css',
+]}
+height='400px'
 />
 
-## Personalización CSS {#css-customization}
+## Personalización de CSS {#css-customization}
 
-Cada tipo de transición predefinido expone propiedades CSS personalizadas para afinamiento:
+Cada tipo de transición predefinido expone propiedades CSS personalizadas para ajustes finos:
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Desvanecer</strong>
+    <strong>Desvanecimiento</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variable | Predeterminado | Descripción |
-      |----------|---------|-------------|
+      |----------|----------------|-------------|
       | `--vt-fade-duration` | `200ms` | Duración de la animación |
-      | `--vt-fade-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de easing |
+      | `--vt-fade-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de suavizado |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Deslizar a la izquierda</strong>
+    <strong>Deslizar hacia la izquierda</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variable | Predeterminado | Descripción |
-      |----------|---------|-------------|
+      |----------|----------------|-------------|
       | `--vt-slide-left-duration` | `200ms` | Duración de la animación |
-      | `--vt-slide-left-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de easing |
+      | `--vt-slide-left-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de suavizado |
       | `--vt-slide-left-distance` | `30%` | Distancia de deslizamiento |
     </div>
   </AccordionDetails>
@@ -227,14 +228,14 @@ Cada tipo de transición predefinido expone propiedades CSS personalizadas para 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Deslizar a la derecha</strong>
+    <strong>Deslizar hacia la derecha</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variable | Predeterminado | Descripción |
-      |----------|---------|-------------|
+      |----------|----------------|-------------|
       | `--vt-slide-right-duration` | `200ms` | Duración de la animación |
-      | `--vt-slide-right-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de easing |
+      | `--vt-slide-right-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de suavizado |
       | `--vt-slide-right-distance` | `30%` | Distancia de deslizamiento |
     </div>
   </AccordionDetails>
@@ -247,9 +248,9 @@ Cada tipo de transición predefinido expone propiedades CSS personalizadas para 
   <AccordionDetails>
     <div>
       | Variable | Predeterminado | Descripción |
-      |----------|---------|-------------|
+      |----------|----------------|-------------|
       | `--vt-slide-up-duration` | `200ms` | Duración de la animación |
-      | `--vt-slide-up-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de easing |
+      | `--vt-slide-up-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de suavizado |
       | `--vt-slide-up-distance` | `30%` | Distancia de deslizamiento |
     </div>
   </AccordionDetails>
@@ -262,9 +263,9 @@ Cada tipo de transición predefinido expone propiedades CSS personalizadas para 
   <AccordionDetails>
     <div>
       | Variable | Predeterminado | Descripción |
-      |----------|---------|-------------|
+      |----------|----------------|-------------|
       | `--vt-slide-down-duration` | `200ms` | Duración de la animación |
-      | `--vt-slide-down-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de easing |
+      | `--vt-slide-down-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de suavizado |
       | `--vt-slide-down-distance` | `30%` | Distancia de deslizamiento |
     </div>
   </AccordionDetails>
@@ -272,14 +273,14 @@ Cada tipo de transición predefinido expone propiedades CSS personalizadas para 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Zoom</strong>
+    <strong>Aumentar</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variable | Predeterminado | Descripción |
-      |----------|---------|-------------|
+      |----------|----------------|-------------|
       | `--vt-zoom-duration` | `200ms` | Duración de la animación |
-      | `--vt-zoom-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de easing |
+      | `--vt-zoom-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de suavizado |
       | `--vt-zoom-scale` | `0.8` | Factor de escala (el antiguo se aleja a esto, el nuevo se acerca desde esto) |
     </div>
   </AccordionDetails>
@@ -287,22 +288,22 @@ Cada tipo de transición predefinido expone propiedades CSS personalizadas para 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Zoom fuera</strong>
+    <strong>Aumentar hacia fuera</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       | Variable | Predeterminado | Descripción |
-      |----------|---------|-------------|
+      |----------|----------------|-------------|
       | `--vt-zoom-out-duration` | `200ms` | Duración de la animación |
-      | `--vt-zoom-out-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de easing |
-      | `--vt-zoom-out-scale` | `1.2` | Factor de escala (el antiguo se acerca a esto, el nuevo se aleja de esto) |
+      | `--vt-zoom-out-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Función de suavizado |
+      | `--vt-zoom-out-scale` | `1.2` | Factor de escala (el antiguo se acerca a esto, el nuevo se aleja desde esto) |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Sobrescribiendo variables</strong>
+    <strong>Sobrescribir variables</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -315,7 +316,7 @@ Cada tipo de transición predefinido expone propiedades CSS personalizadas para 
       }
       ```
 
-      Para personalización avanzada, dirige los pseudo-elementos de transición de vista directamente:
+      Para personalización avanzada, dirígete a los pseudo-elementos de transición de vista directamente:
 
       ```css
       ::view-transition-old(vt-slide-left-exit) {

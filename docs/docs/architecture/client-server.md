@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Client/Server Interaction
+description: Understand how webforJ batches server-to-client calls, avoids costly round trips, and uses caching and on-demand chunks for performance.
 ---
 
 The following section discussed various performance qualities and best practices for webforJ, as well as implementation details for the framework.
@@ -27,10 +28,10 @@ It is possible to significantly improve responsiveness by avoiding the third cat
 
 ```java
 private void comboBoxSelect(ListSelectEvent ev){
-    ComboBox component = (ComboBox) ev.getComponent();
+  ComboBox component = (ComboBox) ev.getComponent();
 
-    // Goes to the client
-    int selected = component.getSelectedIndex();
+  // Goes to the client
+  int selected = component.getSelectedIndex();
 }
 ```
 
@@ -38,8 +39,8 @@ to the following:
 
 ```java
 private void comboBoxSelect(ListSelectEvent ev){
-    //Gets value from the event
-    int selected = ev.getSelectedIndex();
+  //Gets value from the event
+  int selected = ev.getSelectedIndex();
 }
 ```
 
