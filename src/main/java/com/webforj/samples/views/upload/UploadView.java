@@ -35,6 +35,7 @@ public class UploadView extends Composite<FlexLayout> {
     resume.setAutoUpload(Upload.AutoUpload.ON_SELECT);
     resume.setVisible(false, Upload.Part.UPLOAD_BUTTON);
     resume.setFileSystemAccess(false);
+    resume.setStyle("margin-bottom", "var(--dwc-space-s)");
     resume.onUpload(
         e ->
             e.getFiles()

@@ -2,7 +2,7 @@
   margin: var(--dwc-space-l) auto;
   max-width: 560px;
   padding: var(--dwc-space-m);
-  border: 1px solid var(--dwc-color-default-border);
+  border: 1px solid var(--dwc-border-color);
   border-radius: var(--dwc-border-radius-m);
   background: var(--dwc-surface-2);
 }
@@ -11,20 +11,12 @@
 
 .upload-demo__field-label {
   font-weight: var(--dwc-font-weight-semibold);
-  font-size: var(--dwc-font-size-s);
+  font-size: var(--dwc-font-size-xs);
+  padding-left: var(--dwc-space-s);
+  margin-bottom: var(--dwc-space-s);
 }
 
 .upload-demo__helper {
-  color: var(--dwc-color-default-text-shade);
+  color: var(--dwc-color-default-text-light);
   font-size: var(--dwc-font-size-xs);
-}
-
-.upload-demo__drop-title {
-  font-size: var(--dwc-font-size-m);
-  font-weight: var(--dwc-font-weight-semibold);
-}
-
-.upload-demo__drop-hint {
-  color: var(--dwc-color-default-text-shade);
-  font-size: var(--dwc-font-size-s);
 }
