@@ -29,6 +29,18 @@ public class UploadPickingFilesView extends Composite<FlexLayout> {
     upload.setSelectionMode(Upload.SelectionMode.MULTIPLE);
     upload.setMaxFiles(20d);
     upload.setMaxFileSize(10d * 1024d * 1024d);
+    upload.setFileSystemAccess(false);
+    upload.onUpload(
+        e ->
+            e.getFiles()
+                .forEach(
+                    file -> {
+                      try {
+                        file.delete();
+                      } catch (Exception ex) {
+                        // skip
+                      }
+                    }));
 
     self.add(new H3("Gallery uploader"), upload);
   }

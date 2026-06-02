@@ -7,7 +7,7 @@ import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.TextField;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.html.elements.Span;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.toast.Toast;
@@ -34,6 +34,18 @@ public class UploadView extends Composite<FlexLayout> {
     resume.setMaxFileSize(5d * 1024d * 1024d);
     resume.setAutoUpload(Upload.AutoUpload.ON_SELECT);
     resume.setVisible(false, Upload.Part.UPLOAD_BUTTON);
+    resume.setFileSystemAccess(false);
+    resume.onUpload(
+        e ->
+            e.getFiles()
+                .forEach(
+                    file -> {
+                      try {
+                        file.delete();
+                      } catch (Exception ex) {
+                        // skip
+                      }
+                    }));
 
     Button submit =
         new Button(
@@ -51,9 +63,9 @@ public class UploadView extends Composite<FlexLayout> {
   private FlexLayout fieldGroup(String label, String helperText, Upload upload) {
     FlexLayout group =
         new FlexLayout().setDirection(FlexDirection.COLUMN).setSpacing("var(--dwc-space-2xs)");
-    Paragraph fieldLabel = new Paragraph(label);
+    Span fieldLabel = new Span(label);
     fieldLabel.addClassName("upload-demo__field-label");
-    Paragraph helper = new Paragraph(helperText);
+    Span helper = new Span(helperText);
     helper.addClassName("upload-demo__helper");
     group.add(fieldLabel, upload, helper);
     return group;

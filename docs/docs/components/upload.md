@@ -1,6 +1,7 @@
 ---
 title: Upload
 sidebar_position: 160
+sidebar_class_name: new-content
 description: Select and upload one or more files from the local machine with the Upload component using drag-and-drop, filters, and per-file or batch event tracking.
 ---
 
@@ -26,7 +27,7 @@ upload.addFilter("Images", "*.png;*.jpg");
 layout.add(upload);
 ```
  
-The example below drops a resume `Upload` into a job application form, alongside a name field and submit button.
+The example below drops a resume `Upload` into a hiring form, alongside a name field and submit button.
  
 <ComponentDemo
 path='/webforj/upload'
@@ -120,12 +121,6 @@ The default mode is `NONE`, where the user clicks **Upload** to start the transf
 Auto upload pairs well with the `BUTTON_ONLY` or `INLINE` presets, where there's no Upload button for the user to click anyway. For workflows where the user needs to review the selection before sending, leave auto upload off.
 :::
  
-<ComponentDemo
-path='/webforj/uploadautoupload'
-files={['src/main/java/com/webforj/samples/views/upload/UploadAutoUploadView.java']}
-height='650px'
-/>
- 
 ### Auto clear {#auto-clear}
  
 When the user picks a new batch, auto clear decides what to do with the entries already in the list. Clearing happens at the moment of the next pick, not on upload completion, so finished uploads stay visible until the user picks again.
@@ -142,7 +137,7 @@ upload.setAutoClear(Upload.AutoClear.ALL);
 ```
 
 :::warning Auto clear has subtle triggers
-Auto clear only runs when the user picks files through the dialog or by drop. Selecting files programmatically doesn't trigger it. It also requires that previously picked files have actually started uploading or finished. Without an upload between picks, no file matches the filter and the list keeps growing.
+Auto clear only takes effect once a previously picked file has actually started uploading or finished. Without an upload between picks, no file matches the filter and the list keeps growing.
 :::
  
 Reach for `COMPLETED` in uploaders that live on screen across multiple actions, like a chat composer where every message has its own attachments, or a comment form that's reused for each reply. Without it, the list of previous successes accumulates as the user works.
@@ -175,7 +170,6 @@ Restrict selection to image extensions so the camera opens in still mode, or to 
 :::
 
 For mobile-first apps, capture pairs well with [installable apps](/docs/configuration/installable-apps), where the camera and microphone become a natural part of the home-screen experience.
- 
 
 ## Native file system access {#native-file-system-access}
 
@@ -189,7 +183,7 @@ Turn it off when every upload should start from a fresh dialog, or when consiste
 
 ## Customizing the layout {#customizing-the-layout}
 
-The component is built from five visible parts: the picker button, the drop label, the file list, the upload button, and the cancel button. By default all five are visible, but the layout can be reshaped with presets for common picker shapes, or with per-part visibility controls for finer adjustments.
+The component is built from five parts: the picker button, the drop label, the file list, the upload button, and the cancel button. The first four are visible by default; the cancel button is hidden and can be shown with `setVisible(true, Upload.Part.CANCEL_BUTTON)`. The layout can be reshaped with presets for common picker shapes, or with per-part visibility controls for finer adjustments.
 
 ### Presets {#presets}
 
@@ -229,7 +223,7 @@ upload.setPreset(Upload.Preset.HEADLESS);
 upload.add(new Table<>());
 ```
 
-Here, the `HEADLESS` preset is used to project a custom drop surface with an icon, title, and hint inside the Upload's bounds.
+In the demo below, the `HEADLESS` preset is used to project a `Table` into the Upload's bounds. Drop a CSV and its rows render directly inside the component, with columns built from the file's header row.
 
 <ComponentDemo
 path='/webforj/uploaddefaultslot'
@@ -334,10 +328,18 @@ upload.setI18n(bundle);
 
 `UploadTheme` mirrors the standard DWC theme palette and includes outlined variants for a lighter visual weight. Themes apply to the picker, upload, and cancel buttons. The list and drop area keep neutral styling regardless of the theme.
 
+```java
+upload.setTheme(UploadTheme.PRIMARY);
+upload.setTheme(UploadTheme.SUCCESS);
+upload.setTheme(UploadTheme.OUTLINED_GRAY);
+```
+
+The demo below shows the `PRIMARY` theme combined with the `INLINE` preset.
+
 <ComponentDemo
 path='/webforj/uploadthemes'
 files={['src/main/java/com/webforj/samples/views/upload/UploadThemesView.java']}
-height='875px'
+height='200px'
 />
 
 ## Styling {#styling}

@@ -31,6 +31,18 @@ public class UploadPresetsView extends Composite<FlexLayout> {
     Upload upload = new Upload();
     upload.addFilter("Files", "*.*");
     upload.setPreset(preset);
+    upload.setFileSystemAccess(false);
+    upload.onUpload(
+        e ->
+            e.getFiles()
+                .forEach(
+                    file -> {
+                      try {
+                        file.delete();
+                      } catch (Exception ex) {
+                        // skip
+                      }
+                    }));
 
     FlexLayout wrapper =
         new FlexLayout().setDirection(FlexDirection.COLUMN).setSpacing("var(--dwc-space-s)");

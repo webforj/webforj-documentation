@@ -27,6 +27,18 @@ public class UploadEventsView extends Composite<FlexLayout> {
 
     upload.setMaxFiles(25d);
     upload.setMaxFileSize(5d * 1024d * 1024d);
+    upload.setFileSystemAccess(false);
+    upload.onUpload(
+        e ->
+            e.getFiles()
+                .forEach(
+                    file -> {
+                      try {
+                        file.delete();
+                      } catch (Exception ex) {
+                        // skip
+                      }
+                    }));
 
     progress.setValue(0).setText("{{x}}%");
     status.addClassName("upload-events__status");
