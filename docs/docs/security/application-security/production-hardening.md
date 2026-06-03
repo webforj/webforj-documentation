@@ -1,10 +1,10 @@
 ---
 sidebar_position: 3
-title: Production hardening
+title: Production Hardening
 description: Practical steps for running a webforJ app safely in production, from transport encryption and dependency upkeep to server-side checks and disclosure.
 ---
 
-webforJ's [server-driven model](/docs/architecture/client-server) and [built-in safeguards](/docs/security/application-security/common-threats) cover a lot, but a secure deployment still depends on how you operate the app. The steps below round out the picture.
+webforJ's [server-driven model](/docs/architecture/client-server) and built-in safeguards against  [common threats](/docs/security/application-security/common-threats) cover a lot, but a secure deployment still depends on how you operate the app. The steps below round out the picture.
 
 ## Encrypt every connection {#encrypt-every-connection}
 
@@ -12,9 +12,9 @@ Run production traffic over HTTPS only. Terminate TLS at the container, proxy, o
 
 ## Trust nothing from the browser {#trust-nothing-from-the-browser}
 
-A manipulated client can send anything. Re-validate every value your code receives, even values your interface already constrained, before you persist or act on them. [Client and server](/docs/architecture/client-server) explains why the server is the only place a rule can truly hold.
+A manipulated client can send anything. Re-validate every value your code receives, even values your interface already constrained, before you persist or act on them. The [Client/Server Interaction](/docs/architecture/client-server) article explains why the server is the only place a rule can truly hold.
 
-webforJ's [data binding and validation](/docs/data-binding/validation/overview) helps here: because binding runs in Java on the server, the constraints you attach to a model, including [Jakarta validation](/docs/data-binding/validation/jakarta-validation), are enforced server-side rather than only in the browser. Treat that as your integrity layer, not as a defense against injection or markup attacks, which still need the handling described in [Common threats](/docs/security/application-security/common-threats).
+webforJ's [data binding and validation](/docs/data-binding/validation/overview) helps here: because binding runs in Java on the server, the constraints you attach to a model, including [Jakarta validation](/docs/data-binding/validation/jakarta-validation), are enforced server-side rather than only in the browser. Treat that as your integrity layer, not as a defense against injection or markup attacks, which still need the handling described in the [Common Threats](/docs/security/application-security/common-threats) article.
 
 ## Disabled and hidden aren't security {#disabled-and-hidden-arent-security}
 
@@ -28,7 +28,7 @@ Gate views with [route security](/docs/security/overview) so each one demands th
 
 ## Keep secrets external {#keep-secrets-external}
 
-Credentials, keys, and tokens don't belong in code or in your repository. Pull them from the environment or an external source instead, as shown in [Managing secrets](/docs/security/application-security/managing-secrets).
+Credentials, keys, and tokens don't belong in code or in your repository. Pull them from the environment or an external source instead, as shown in [Managing Secrets](/docs/security/application-security/managing-secrets).
 
 ## Stay current on dependencies {#stay-current-on-dependencies}
 
