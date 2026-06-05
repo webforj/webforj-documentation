@@ -8,6 +8,7 @@ import com.webforj.kotlin.dsl.component.tree.tree
 import com.webforj.kotlin.dsl.component.tree.treeNode
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
+import com.webforj.kotlin.extension.toQualifiedName
 import com.webforj.kotlin.extension.vh
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -24,8 +25,8 @@ class TreeIconsKotlinView: Composite<FlexLayout>() {
       styles["overflow"] = "auto"
       tree {
         styles["margin"] = "var(--dwc-space-l)"
-        setCollapsedIcon(FeatherIcon.CHEVRON_RIGHT.create())
-        setExpandedIcon(FeatherIcon.CHEVRON_DOWN.create())
+        collapsedIcon = FeatherIcon.CHEVRON_RIGHT.create().toQualifiedName()
+        expandedIcon = FeatherIcon.CHEVRON_DOWN.create().toQualifiedName()
         treeNode("Documents") {
           tooltipText = "Work and personal documents"
           treeNode("Reports") {
@@ -33,25 +34,25 @@ class TreeIconsKotlinView: Composite<FlexLayout>() {
             treeNode("2023") {
               treeNode("January.pdf") {
                 tooltipText = "January report"
-                setIcon(FeatherIcon.FILE.create())
-                setSelectedIcon(FeatherIcon.FILE_TEXT.create())
+                icon = FeatherIcon.FILE.create().toQualifiedName()
+                selectedIcon = FeatherIcon.FILE_TEXT.create().toQualifiedName()
               }
               treeNode("February.pdf") {
                 tooltipText = "February report"
-                setIcon(FeatherIcon.FILE.create())
-                setSelectedIcon(FeatherIcon.FILE_TEXT.create())
+                icon = FeatherIcon.FILE.create().toQualifiedName()
+                selectedIcon = FeatherIcon.FILE_TEXT.create().toQualifiedName()
               }
             }
             treeNode("2022") {
               treeNode("Q4.pdf") {
                 tooltipText = "Quarter 4 report"
-                setIcon(FeatherIcon.FILE.create())
-                setSelectedIcon(FeatherIcon.FILE_TEXT.create())
+                icon = FeatherIcon.FILE.create().toQualifiedName()
+                selectedIcon = FeatherIcon.FILE_TEXT.create().toQualifiedName()
               }
               treeNode("Q3.pdf") {
                 tooltipText = "Quarter 3 report"
-                setIcon(FeatherIcon.FILE.create())
-                setSelectedIcon(FeatherIcon.FILE_TEXT.create())
+                icon = FeatherIcon.FILE.create().toQualifiedName()
+                selectedIcon = FeatherIcon.FILE_TEXT.create().toQualifiedName()
               }
             }
           }
@@ -59,13 +60,13 @@ class TreeIconsKotlinView: Composite<FlexLayout>() {
             tooltipText = "Invoices and billing"
             treeNode("ClientA.pdf") {
               tooltipText = "Invoice for Client A"
-              setIcon(FeatherIcon.FILE.create())
-              setSelectedIcon(FeatherIcon.FILE_TEXT.create())
+              icon = FeatherIcon.FILE.create().toQualifiedName()
+              selectedIcon = FeatherIcon.FILE_TEXT.create().toQualifiedName()
             }
             treeNode("ClientB.pdf") {
               tooltipText = "Invoice for Client B"
-              setIcon(FeatherIcon.FILE.create())
-              setSelectedIcon(FeatherIcon.FILE_TEXT.create())
+              icon = FeatherIcon.FILE.create().toQualifiedName()
+              selectedIcon = FeatherIcon.FILE_TEXT.create().toQualifiedName()
             }
           }
         }
@@ -74,20 +75,20 @@ class TreeIconsKotlinView: Composite<FlexLayout>() {
           treeNode("Vacations") {
             treeNode("Beach.png") {
               tooltipText = "Beach photo"
-              setIcon(FeatherIcon.IMAGE.create())
-              setSelectedIcon(FeatherIcon.IMAGE.create())
+              icon = FeatherIcon.IMAGE.create().toQualifiedName()
+              selectedIcon = FeatherIcon.IMAGE.create().toQualifiedName()
             }
             treeNode("Mountains.png") {
               tooltipText = "Mountain photo"
-              setIcon(FeatherIcon.IMAGE.create())
-              setSelectedIcon(FeatherIcon.IMAGE.create())
+              icon = FeatherIcon.IMAGE.create().toQualifiedName()
+              selectedIcon = FeatherIcon.IMAGE.create().toQualifiedName()
             }
           }
           treeNode("Events") {
             treeNode("Birthday.jpg") {
               tooltipText = "Birthday party"
-              setIcon(FeatherIcon.IMAGE.create())
-              setSelectedIcon(FeatherIcon.IMAGE.create())
+              icon = FeatherIcon.IMAGE.create().toQualifiedName()
+              selectedIcon = FeatherIcon.IMAGE.create().toQualifiedName()
             }
           }
         }
