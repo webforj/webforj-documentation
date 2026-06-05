@@ -14,17 +14,9 @@ public class AppLayoutFullNavbarPage {
     this.header = page.locator("header");
   }
 
-    public AppLayoutFullNavbarPage(Page page) {
-        this.header = page.locator("header");
-    }
-
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-    public Locator getHeaderText() {
-        return header;
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getHeaderText() {
     return header;

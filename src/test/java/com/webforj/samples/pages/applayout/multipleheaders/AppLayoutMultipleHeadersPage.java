@@ -14,13 +14,9 @@ public class AppLayoutMultipleHeadersPage {
     this.dwcToolbar = page.locator("dwc-toolbar");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-    public Locator getDwcToolbar() {
-        return dwcToolbar;
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getDwcToolbar() {
     return dwcToolbar;

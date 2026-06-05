@@ -15,13 +15,9 @@ public class AppLayoutDrawerUtilityPage {
     this.headerText = page.getByText("Joe Smith");
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-    public Locator getHeaderText() {
-        return headerText;
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
   public Locator getHeaderText() {
     return headerText;

@@ -20,11 +20,11 @@ public class AppLayoutPage {
     return ROUTE;
   }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
-    public Locator getDashboardLink() {
-        return dashboardLink;
-    }
+  public Locator getDashboardLink() {
+    return dashboardLink;
+  }
 }
