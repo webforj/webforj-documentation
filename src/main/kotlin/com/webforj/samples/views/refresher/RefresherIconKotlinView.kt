@@ -17,6 +17,7 @@ import com.webforj.kotlin.extension.classNames
 import com.webforj.kotlin.extension.minSize
 import com.webforj.kotlin.extension.plus
 import com.webforj.kotlin.extension.px
+import com.webforj.kotlin.extension.toQualifiedName
 import com.webforj.router.annotation.Route
 
 @Route
@@ -34,7 +35,7 @@ class RefresherIconKotlinView : Composite<Div>() {
         classNames + "is-canvas"
       }
       refresher {
-        setArrowIcon(TablerIcon.create("arrow-down-to-arc"))
+        arrowIcon = TablerIcon.create("arrow-down-to-arc").toQualifiedName()
         refreshIcon = "ws://spinner.svg"
         onRefresh {
           canvas.removeAll()
