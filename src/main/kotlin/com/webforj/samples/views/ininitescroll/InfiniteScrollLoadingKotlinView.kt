@@ -12,6 +12,7 @@ import com.webforj.kotlin.extension.plus
 import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
+import com.webforj.kotlin.extension.toQualifiedName
 import com.webforj.kotlin.extension.vh
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -33,7 +34,7 @@ class InfiniteScrollLoadingKotlinView: Composite<Div>() {
             maxWidth = 600.px
             classNames + "is-canvas"
           }
-          setIcon(TablerIcon.create("cloud-download"))
+          icon = TablerIcon.create("cloud-download").toQualifiedName()
           var index = 0
           onScroll {
             if (index > 40) {
