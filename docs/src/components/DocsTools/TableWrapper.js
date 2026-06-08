@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import Tooltip from '@mui/material/Tooltip';
-import styles from './TableWrapper.module.css';
+import Box from '@mui/material/Box';
 
 
 export default function TableWrapper({ children, title, ...props }) {
@@ -15,18 +15,11 @@ export default function TableWrapper({ children, title, ...props }) {
 
     const tableRef = useRef(null);
 
-    const handleOpen = () => {
+    const handleClickOpen = () => {
         setOpen(true);
     };
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            handleOpen();
-        }
-    };
-
-    const handleClose = (e) => {
-        e.stopPropagation();
+    const handleClose = () => {
         setOpen(false);
     };
 
@@ -39,7 +32,7 @@ export default function TableWrapper({ children, title, ...props }) {
             color: 'var(--ifm-color-primary-lightest)',
             border: '1px solid var(--ifm-color-primary-lightest)',
         },
-        '&:focus': {
+          '&:focus': {
             color: 'var(--ifm-color-primary-lightest)',
             border: '1px solid var(--ifm-color-primary-lightest)',
         }
@@ -58,13 +51,28 @@ export default function TableWrapper({ children, title, ...props }) {
     }, [title]);
 
     return (
-        <div tabindex="0"
-            className={styles.tableWrapper}
-            ref={tableRef}
-            role="button"
-            onClick={handleOpen}
-            onKeyDown={handleKeyDown}
-            aria-label="Expand table">
+        <div className="table-wrapper" ref={tableRef} style={{ position: 'relative', marginBottom: '2rem', maxWidth: 'fit-content' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
+                <IconButton
+                    onClick={handleClickOpen}
+                    size="small"
+                    aria-label="Expand table"
+                    sx={{
+                        ...iconButtonSx,
+                        disableRipple: true,
+                        gap: '4px',
+                        paddingLeft: '8px',
+                        paddingRight: '8px',
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.05em',
+                        textTransform: 'uppercase',
+                    }}
+                >
+                    <OpenInFullIcon fontSize="small" />
+                    Expand
+                </IconButton>
+            </Box>
 
             <div className="table-container" style={{ overflowX: 'auto' }}>
                 <table {...props}>
