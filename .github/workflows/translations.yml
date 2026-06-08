@@ -105,9 +105,15 @@ jobs:
         working-directory: ./docs
         run: |
           if [ "${{ github.event.inputs.target_language }}" = "all" ] || [ -z "${{ github.event.inputs.target_language }}" ]; then
-            npm run write-translations
+            npx docusaurus write-translations -- --locale en
+            npx docusaurus write-translations -- --locale es
+            npx docusaurus write-translations -- --locale de
+            npx docusaurus write-translations -- --locale fr
+            npx docusaurus write-translations -- --locale nl
+            npx docusaurus write-translations -- --locale fi
+            npx docusaurus write-translations -- --locale zh
           else
-            npm run write-translations -- --locale ${{ github.event.inputs.target_language }}
+            npx docusaurus write-translations -- --locale ${{ github.event.inputs.target_language }}
           fi
 
       - name: Generate heading IDs
