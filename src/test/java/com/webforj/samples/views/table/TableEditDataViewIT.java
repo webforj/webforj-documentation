@@ -2,23 +2,25 @@ package com.webforj.samples.views.table;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.table.TableEditDataPage;
 import com.webforj.samples.views.BaseTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class TableEditDataViewIT extends BaseTest {
 
   private TableEditDataPage tablePage;
 
-  @BeforeEach
-  public void setupTableEditData() {
-    navigateToRoute(TableEditDataPage.getRoute());
+  public void setupTableEditData(SupportedLanguage language) {
+    navigateToRoute(TableEditDataPage.getRoute(language));
     tablePage = new TableEditDataPage(page);
   }
 
-  @Test
-  public void testEditButtonTableEditData() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testEditButtonTableEditData(SupportedLanguage language) {
+    setupTableEditData(language);
     tablePage.getEditButton().click();
 
     tablePage.getInput().clear();

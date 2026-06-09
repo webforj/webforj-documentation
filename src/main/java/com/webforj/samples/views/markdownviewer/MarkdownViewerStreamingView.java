@@ -71,6 +71,7 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
       > "Focus is more about saying no than saying yes." - Steve Jobs
       """);
 
+  private final FlexLayout self = getBoundComponent();
   private final FlexLayout messagesArea;
   private final MarkdownViewer viewer = new MarkdownViewer();
   private final TextField input = new TextField();
@@ -84,7 +85,6 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
   private final Random random = new Random();
 
   public MarkdownViewerStreamingView() {
-    FlexLayout self = getBoundComponent();
     self.setDirection(FlexDirection.COLUMN).addClassName("chat").setStyle("overflow", "hidden");
 
     messagesArea = createMessagesArea();

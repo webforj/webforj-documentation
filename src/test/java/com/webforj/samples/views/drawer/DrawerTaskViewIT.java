@@ -5,19 +5,21 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.views.BaseTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class DrawerTaskViewIT extends BaseTest {
 
-  @BeforeEach
-  public void setupDrawerTask() {
-    navigateToRoute("drawertask");
+  public void setupDrawerTask(SupportedLanguage language) {
+    navigateToRoute(language.getPath("drawertask"));
   }
 
-  @Test
-  public void testTaskAddedWhenAddTaskButtonIsClicked() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testTaskAddedWhenAddTaskButtonIsClicked(SupportedLanguage language) {
+    setupDrawerTask(language);
     Locator drawer = page.locator("dwc-drawer");
     assertThat(drawer).isVisible();
 
