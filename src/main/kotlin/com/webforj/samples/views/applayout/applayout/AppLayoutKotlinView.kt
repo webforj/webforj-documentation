@@ -17,7 +17,7 @@ import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
-import com.webforj.samples.views.applayout.AbstractContentView
+import com.webforj.samples.views.applayout.applayout.AppLayoutContentKotlinView
 import com.webforj.samples.views.applayout.drawerLogo
 
 @Route
@@ -51,7 +51,7 @@ class AppLayoutKotlinView: Composite<AppLayout>() {
   }
 
   private fun AppNav.item(text: String, icon: String) {
-    appNavItem(text, view = AppLayoutContentView::class, routeParameters = ParametersBag.of("name=$text")) {
+    appNavItem(text, view = AppLayoutContentKotlinView::class, routeParameters = ParametersBag.of("name=$text")) {
       prefixSlot {
         tablerIcon(icon)
       }

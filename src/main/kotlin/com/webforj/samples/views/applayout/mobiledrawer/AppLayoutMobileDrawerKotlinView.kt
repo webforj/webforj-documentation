@@ -4,6 +4,7 @@ import com.webforj.annotation.StyleSheet
 import com.webforj.component.Composite
 import com.webforj.component.Expanse
 import com.webforj.component.layout.applayout.AppLayout
+import com.webforj.component.layout.appnav.AppNav
 import com.webforj.component.tabbedpane.TabbedPane
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.html.elements.h1
@@ -26,7 +27,6 @@ import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
-import com.webforj.samples.views.applayout.AbstractContentView
 import com.webforj.samples.views.applayout.drawerLogo
 
 @Route
@@ -51,27 +51,13 @@ class AppLayoutMobileDrawerKotlinView: Composite<AppLayout>() {
           addClassName("app-layout-drawer")
           drawerLogo()
           appNav {
-            appNavItem("Dashboard", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Dashboard")) {
-              prefixSlot { tablerIcon("dashboard") }
-            }
-            appNavItem("Orders", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Orders")) {
-              prefixSlot { tablerIcon("shopping-cart") }
-            }
-            appNavItem("Customers", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Customers")) {
-              prefixSlot { tablerIcon("user") }
-            }
-            appNavItem("Products", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Products")) {
-              prefixSlot { tablerIcon("box") }
-            }
-            appNavItem("Documents", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Documents")) {
-              prefixSlot { tablerIcon("files") }
-            }
-            appNavItem("Tasks", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Tasks")) {
-              prefixSlot { tablerIcon("checklist") }
-            }
-            appNavItem("Analytics", view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=Analytics")) {
-              prefixSlot { tablerIcon("chart-dots-2") }
-            }
+            item("Dashboard", "dashboard")
+            item("Orders", "shopping-cart")
+            item("Customers", "user")
+            item("Products", "box")
+            item("Documents", "files")
+            item("Tasks", "checklist")
+            item("Analytics", "chart-dots-2")
           }
         }
       }
@@ -104,7 +90,12 @@ class AppLayoutMobileDrawerKotlinView: Composite<AppLayout>() {
       }
     }
   }
-}
 
-@Route(value = "/content/:name", outlet = AppLayoutMobileDrawerKotlinView::class)
-class AppLayoutMobileDrawerContentKotlinView : AbstractContentView()
+  private fun AppNav.item(text: String, icon: String) {
+    appNavItem(text, view = AppLayoutMobileDrawerContentKotlinView::class, routeParameters = ParametersBag.of("name=$text")) {
+      prefixSlot {
+        tablerIcon(icon)
+      }
+    }
+  }
+}
