@@ -11,7 +11,6 @@ Implement `DidEnterObserver` in your view and call `event.getLocation().getQuery
 ```java
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
-import com.webforj.router.RouteContext;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.event.DidEnterEvent;
 import com.webforj.router.observer.DidEnterObserver;
@@ -25,7 +24,7 @@ public class ProductView extends Composite<Div> implements DidEnterObserver {
     ParametersBag query = event.getLocation().getQueryParameters();
 
     String category = query.get("category").orElse("all");
-    String sort     = query.get("sort").orElse("default");
+    String sort = query.get("sort").orElse("default");
   }
 }
 ```

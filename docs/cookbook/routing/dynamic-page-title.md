@@ -9,6 +9,13 @@ difficulty: beginner
 Implement `HasFrameTitle` and read the route parameter from the `ParametersBag` argument. The router calls `getFrameTitle` just before updating the browser tab, so the value is always in sync with the current URL.
 
 ```java
+import com.webforj.component.Composite;
+import com.webforj.component.html.elements.Div;
+import com.webforj.router.NavigationContext;
+import com.webforj.router.annotation.Route;
+import com.webforj.router.concern.HasFrameTitle;
+import com.webforj.router.history.ParametersBag;
+
 @Route("products/:id")
 public class ProductDetailView extends Composite<Div> implements HasFrameTitle {
 
@@ -19,7 +26,7 @@ public class ProductDetailView extends Composite<Div> implements HasFrameTitle {
   @Override
   public String getFrameTitle(NavigationContext context, ParametersBag parameters) {
     String id = parameters.get("id").orElse("Unknown");
-    return "Product #" + id + " – My Shop";
+    return "Product #" + id + " - My Shop";
   }
 }
 ```

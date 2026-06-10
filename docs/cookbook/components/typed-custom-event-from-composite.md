@@ -9,6 +9,14 @@ difficulty: intermediate
 Hold an `EventDispatcher` inside the `Composite`, dispatch your event object from any internal handler, and expose `onRatingChanged` so callers register listeners without touching implementation details.
 
 ```java
+import com.webforj.component.Composite;
+import com.webforj.component.button.Button;
+import com.webforj.component.html.elements.Div;
+import com.webforj.dispatcher.EventDispatcher;
+import com.webforj.dispatcher.EventListener;
+import com.webforj.dispatcher.ListenerRegistration;
+import java.util.EventObject;
+
 public class RatingPicker extends Composite<Div> {
 
   private final EventDispatcher dispatcher = new EventDispatcher();
@@ -18,7 +26,7 @@ public class RatingPicker extends Composite<Div> {
     Div self = getBoundComponent();
     for (int i = 1; i <= 5; i++) {
       int rating = i;
-      Button star = new Button("★");
+      Button star = new Button("*");
       star.onClick(e -> setValue(rating));
       self.add(star);
     }
