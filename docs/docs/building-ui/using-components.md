@@ -17,7 +17,7 @@ Every component exposes properties that control its content, appearance, and beh
 
 ### Text content {#text-content}
 
-The `setText()` method sets a component's visible text, such as the caption on a `Button` or the content of a `Label`. For input components like `TextField`, use `setValue()` instead to set the field's current value.
+The `setText()` method sets a component's visible text as literal characters, such as the caption on a `Button` or the content of a `Label`. For input components like `TextField`, use `setValue()` instead to set the field's current value.
 
 ```java
 Button button = new Button();
@@ -30,12 +30,41 @@ TextField field = new TextField();
 field.setValue("Initial value");
 ```
 
-Some components also support `setHtml()` for cases where you need inline HTML markup in the content:
+Markup written with `setText()` appears as those characters and is never run, which keeps text that comes from user input or external data from being interpreted as live markup.
+
+```java
+// Shown as the literal characters "<b>Status: ready</b>"
+component.setText("<b>Status: ready</b>");
+```
+
+:::note Using the `<html>` tag
+Earlier versions of webforJ treated a value wrapped in `<html>` and passed to `setText()` as HTML. This behavior is deprecated and will be removed in webforJ 27.00.
+
+The first time an `<html>` wrapped value reaches `setText()`, a warning is logged that names the component and the call site, so the call can be moved to `setHtml()`.
+
+To adopt the webforJ 27.00 default ahead of time, set `webforj.legacyHtmlInText` to `false`. In a Spring app, the same value is set through `webforj.legacy-html-in-text`.
+
+```java
+// webforj.legacyHtmlInText = true (default)
+component.setText("<html><b>Status: ready</b></html>"); // renders bold
+
+// webforj.legacyHtmlInText = false
+component.setText("<html><b>Status: ready</b></html>"); // shows the characters <b>Status: ready</b>
+```
+:::
+
+### Rendering HTML {#rendering-html}
+
+Some components also support `setHtml()` for cases where you need to render inline HTML markup in the content:
 
 ```java
 Div container = new Div();
 container.setHtml("<strong>Bold text</strong> and <em>italic text</em>");
 ```
+
+:::danger Cross-site Scripting (XSS)
+As a precaution against [cross-site scripting (XSS) attacks](/docs/security/application-security/common-threats#cross-site-scripting-xss), only use `setHtml()` with content you directly control.
+:::
 
 ### HTML attributes {#html-attributes}
 
