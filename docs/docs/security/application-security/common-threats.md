@@ -71,9 +71,9 @@ Treat that as the first line rather than the only one. A browser-side limit can 
 
 ## Request flooding {#request-flooding}
 
-A manipulated client can also try to overwhelm the server outright: sending a single very large request, or starting new application sessions in quick succession until memory or other resources run out. Because the server drives every app, a flood of either kind reaches it directly.
+A manipulated client can also try to overwhelm the server outright: sending a single very large request, or starting new app sessions in quick succession until memory or other resources run out. Because the server drives every app, a flood of either kind reaches it directly.
 
-webforJ can bound both. Set `webforj.security.maxContentLength` to cap, in bytes, the size of a request the app accepts, and `webforj.security.maxInitPerMinute` to cap how many new application sessions start each minute. Both default to `0`, which leaves them off, so set them for any deployment open to untrusted traffic. See [Property Configuration](/docs/configuration/properties) for details.
+webforJ can bound both. Set `webforj.security.maxContentLength` to cap, in bytes, the size of a request the app accepts, and `webforj.security.maxInitPerMinute` to cap how many new app sessions start each minute. Both default to `0`, which leaves them off, so set them for any deployment open to untrusted traffic. See [Property Configuration](/docs/configuration/properties) for details.
 
 As with uploads, treat these as the inner layer and bound the request size at your servlet container or reverse proxy as well.
 
