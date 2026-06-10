@@ -63,12 +63,20 @@ This becomes visible in exactly one situation. [Spring Security](/docs/security/
 If you assemble a `SecurityFilterChain` without the `webforj()` helper, exclude the framework's requests from Spring's verification yourself, and leave that verification switched on for any endpoints you add.
 :::
 
-## SQL injection {#sql-injection}
-
-webforJ sits nowhere near your data layer, so resistance to SQL injection rests entirely on your query code. Use parameterized queries or prepared statements so that values are bound as parameters rather than concatenated into the statement, and never build a query by joining strings with user input. This is ordinary JDBC and persistence-layer practice, and it applies unchanged in a webforJ app.
-
 ## Unbounded file uploads {#unbounded-file-uploads}
 
 Accepting files of any size or quantity invites denial of service through exhausted memory, disk, or bandwidth. Cap what you accept on the upload components: they expose `setMaxFileSize()` to limit each file and `setMaxFiles()` to limit how many arrive at once.
 
 Treat that as the first line rather than the only one. A browser-side limit can be bypassed, so enforce a ceiling on the server as well: set `webforj.fileUpload.maxSize` in your [configuration](/docs/configuration/properties) to reject oversized uploads before they reach your code, and bound the maximum request size at your servlet container or reverse proxy.
+
+## Request flooding {#request-flooding}
+
+A manipulated client can also try to overwhelm the server outright: sending a single very large request, or starting new application sessions in quick succession until memory or other resources run out. Because the server drives every app, a flood of either kind reaches it directly.
+
+webforJ can bound both. Set `webforj.security.maxContentLength` to cap, in bytes, the size of a request the app accepts, and `webforj.security.maxInitPerMinute` to cap how many new application sessions start each minute. Both default to `0`, which leaves them off, so set them for any deployment open to untrusted traffic. See [Property Configuration](/docs/configuration/properties) for details.
+
+As with uploads, treat these as the inner layer and bound the request size at your servlet container or reverse proxy as well.
+
+## SQL injection {#sql-injection}
+
+webforJ sits nowhere near your data layer, so resistance to SQL injection rests entirely on your query code. Use parameterized queries or prepared statements so that values are bound as parameters rather than concatenated into the statement, and never build a query by joining strings with user input. This is ordinary JDBC and persistence-layer practice, and it applies unchanged in a webforJ app.

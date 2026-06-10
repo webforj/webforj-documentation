@@ -55,6 +55,8 @@ webforj.clientHeartbeatRate = 1s
 | **`webforj.locale`**                 | String  | The locale for the app, determining language, region settings, and formats for dates, times, and numbers. | `null` |
 | **`webforj.quiet`**                  | Boolean | Disables the loading image during application startup. | `false` |
 | **`webforj.reloadOnServerError`**    | Boolean | **Development environments only.** In a development environment, auto-reload the page on errors related to hot redeployment, but not other error types. When using hot redeploy, if the client sends a request to the server while it is restarting, an error can occur while the WAR file is being swapped.  Because the server will likely be back online shortly, this setting allows the client to attempt a page reload automatically.  | `false` |
+| **`webforj.security.maxContentLength`**&nbsp;<DocChip chip='since' label='25.10' /> | Integer | Largest request the app will accept, in bytes, as a safeguard against oversized requests meant to exhaust server memory. Set to `0` to disable the limit. | `0` |
+| **`webforj.security.maxInitPerMinute`**&nbsp;<DocChip chip='since' label='25.10' /> | Integer | How many new application sessions the app will start each minute, as a safeguard against rapid session creation meant to exhaust server resources. Set to `0` to disable rate limiting. | `0` |
 | **`webforj.servlets[n].name`**       | String  | Servlet name (uses class name if not specified). | `null` |
 | **`webforj.servlets[n].className`**  | String | Fully qualified class name of the servlet. | `null` |
 | **`webforj.servlets[n].config.<key>`** | `Map<String,String>` | Servlet initialization parameters. | `null` |
