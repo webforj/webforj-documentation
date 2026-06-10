@@ -25,6 +25,9 @@ public class HomeView extends Composite<Div> {
     self.add(goToDashboard);
   }
 }
+
+@Route("dashboard")
+class DashboardView extends Composite<Div> {}
 ```
 
 To navigate with route parameters, pass a `ParametersBag` as the second argument: `Router.getCurrent().navigate(UserView.class, ParametersBag.of("id=42"))`.

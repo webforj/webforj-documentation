@@ -14,12 +14,12 @@ import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 
-public class CenteredLayout extends Composite<FlexLayout>{
-  private FlexLayout self = getBoundComponent();
+public class CenteredLayout extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
-  public CenteredLayout(){
-    self.setJustifyContent(FlexJustifyContent.CENTER); // aligns the content along main axis 
-    self.setAlignment(FlexAlignment.CENTER); // aligns the content along cross axis 
+  public CenteredLayout() {
+    self.setJustifyContent(FlexJustifyContent.CENTER);
+    self.setAlignment(FlexAlignment.CENTER);
   }
 }
 ```

@@ -31,7 +31,7 @@ public class ResponsiveHideView extends Composite<Div> {
     Div main = new Div().addClassName("cookbook-responsive-hide__main");
     main.add(
         new H2("Main content"),
-        new Paragraph("Resize the window — the sidebar disappears below 768px."));
+        new Paragraph("Resize the window; the sidebar disappears below 768px."));
 
     Div sidebar = new Div().addClassName("cookbook-responsive-hide__sidebar");
     sidebar.add(

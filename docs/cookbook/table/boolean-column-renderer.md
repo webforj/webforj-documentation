@@ -6,17 +6,59 @@ components: [Table]
 difficulty: beginner
 ---
 
-`BooleanRenderer` accepts two icon arguments, one for `true`, one for `false`. Pass any `Icon` instance and theme it with `setTheme` to match your design system.
+`BooleanRenderer` expects the column's value provider to return a `Boolean`. In this example, `Task::isDone` reads the `done` property from each row and the renderer turns that value into a themed icon.
 
 ```java
-Table<Task> table = new Table<>();
-table.addColumn("name", Task::getName);
-table.addColumn("due", Task::getDueDate);
+import com.webforj.component.Composite;
+import com.webforj.component.Theme;
+import com.webforj.component.html.elements.Div;
+import com.webforj.component.icons.TablerIcon;
+import com.webforj.component.table.Table;
+import com.webforj.component.table.renderer.BooleanRenderer;
+import com.webforj.data.repository.CollectionRepository;
+import com.webforj.router.annotation.Route;
+import java.util.List;
 
-BooleanRenderer<Task> doneRenderer = new BooleanRenderer<>(
-    TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
-    TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
-);
+@Route("tasks")
+public class TasksView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
-table.addColumn("done", Task::isDone).setRenderer(doneRenderer);
+  public TasksView() {
+    Table<Task> table = new Table<>();
+    table.addColumn("title", Task::getTitle).setLabel("Task");
+
+    BooleanRenderer<Task> doneRenderer = new BooleanRenderer<>(
+        TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
+        TablerIcon.create("thumb-down").setTheme(Theme.DANGER));
+
+    table
+        .addColumn("done", Task::isDone)
+        .setLabel("Done")
+        .setRenderer(doneRenderer);
+
+    table.setRepository(new CollectionRepository<>(List.of(
+        new Task("Review invoice", true),
+        new Task("Send reminder", false))));
+
+    self.add(table);
+  }
+
+  public static class Task {
+    private final String title;
+    private final Boolean done;
+
+    public Task(String title, Boolean done) {
+      this.title = title;
+      this.done = done;
+    }
+
+    public String getTitle() {
+      return title;
+    }
+
+    public Boolean isDone() {
+      return done;
+    }
+  }
+}
 ```

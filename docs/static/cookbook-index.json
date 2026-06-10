@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-26T10:53:31.852Z",
+  "generated": "2026-06-10T12:23:56.422Z",
   "count": 20,
   "recipes": [
     {
@@ -19,7 +19,7 @@
       "slug": "components/enum-property-on-element-composite",
       "url": "/cookbook/components/enum-property-on-element-composite",
       "title": "Expose an enum property on an ElementComposite",
-      "description": "Declare a typed enum property on an ElementComposite so it serialises to the correct web-component attribute value.",
+      "description": "Declare a typed enum property on an ElementComposite so it serializes to the correct web-component attribute value.",
       "tags": [
         "components"
       ],
@@ -145,7 +145,7 @@
       "slug": "routing/block-navigation-unsaved-changes",
       "url": "/cookbook/routing/block-navigation-unsaved-changes",
       "title": "Block navigation when a form has unsaved changes",
-      "description": "Implement WillLeaveObserver to veto route changes and prompt the user with a confirm dialog before discarding edits.",
+      "description": "Implement WillLeaveObserver to prompt the user with a confirm dialog before discarding edits.",
       "tags": [
         "routing",
         "forms"

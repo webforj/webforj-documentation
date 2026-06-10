@@ -36,7 +36,7 @@ public class ScrollDemoView extends Composite<FlexLayout> {
 }
 ```
 
-For a typed call with arguments serialized from Java, use `callJsFunction(name, args...)` instead — webforJ serializes a `Map` as a JS object:
+For a typed call with arguments serialized from Java, use `callJsFunction(name, args...)` instead. webforJ serializes a `Map` as a JS object:
 
 ```java
 footer.getElement().callJsFunction(
