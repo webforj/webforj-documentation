@@ -2,6 +2,7 @@
 title: Property Configuration
 sidebar_position: 30
 description: Set webforJ entry points, debug mode, locales, file upload limits, and servlet mappings through webforj.conf and web.xml.
+sidebar_class_name: updated-content
 ---
 
 # Configuring webforJ properties
@@ -15,8 +16,6 @@ The `webforj.conf` file is a core configuration file in webforJ, specifying app 
 :::tip
 If you are integrating with [Spring](../integrations/spring/overview.md), you can set these `webforj.conf` properties in the `application.properties` file.
 :::
-
-
 
 ### Example `webforj.conf` file {#example-webforjconf-file}
 
@@ -50,6 +49,7 @@ webforj.clientHeartbeatRate = 1s
 | **`webforj.fileUpload.accept`**      | List    | The allowed file types for file uploads. By default, all file types are allowed. Supported formats include MIME types like `image/*`, `application/pdf`, `text/plain`, or file extensions like `*.txt`. When using a standard BBj installation, this setting is disregarded and managed through `fileupload-accept.txt`. | `[]`            |
 | **`webforj.fileUpload.maxSize`**     | Long    | The maximum file size allowed for file uploads, in bytes. By default, there is no limit. When using a standard BBj installation, this setting is disregarded and managed through `fileupload-accept.txt`. | `null`          |
 | **`webforj.iconsDir`**               | String  | URL endpoint for icons directory (default serves from `resources/icons/`). | `icons/` |
+| **`webforj.legacyHtmlInText`**&nbsp;<DocChip chip='since' label='26.01' /> | Boolean | When `true`, a value wrapped in `<html>` renders its content as HTML. When `false`, the same value is shown literally. | `true` |
 | **`webforj.license.cfg`**            | String  | The directory for the license configuration. By default, it's the same as the webforJ configuration directory, but this can be customized if needed. | `"."`  |
 | **`webforj.license.startupTimeout`** | Integer | License startup timeout in seconds. | `null` |
 | **`webforj.locale`**                 | String  | The locale for the app, determining language, region settings, and formats for dates, times, and numbers. | `null` |
