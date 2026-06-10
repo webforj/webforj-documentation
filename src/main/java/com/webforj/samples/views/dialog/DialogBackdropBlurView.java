@@ -1,10 +1,11 @@
 package com.webforj.samples.views.dialog;
 
 import com.webforj.component.Composite;
-import com.webforj.component.button.Button;
+import com.webforj.component.Expanse;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.utilities.Assets;
@@ -14,21 +15,32 @@ import com.webforj.utilities.Assets;
 public class DialogBackdropBlurView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Dialog dialog = new Dialog();
-  private final Button backgroundBlur = new Button("Toggle Background Blur");
+  private final RadioButton backdropToggle = RadioButton.Switch("Backdrop", true);
   private String modalSource = Assets.resolveWebServerUrl("ws://fun.svg");
   private String cssValue = "center / 50% no-repeat url(" + modalSource + ")";
+  private RadioButton blurToggle = RadioButton.Switch("Blur");
 
   public DialogBackdropBlurView() {
     self.add(dialog);
     dialog
-        .setStyle("background", cssValue)
-        .addToHeader(new Div("Background Blur"))
-        .addToContent(backgroundBlur)
+        .setStyle("--dwc-dialog-modal-background", cssValue)
+        .addToHeader(new Div("Backdrop and Blur"))
+        .addToContent(blurToggle, backdropToggle)
         .setCloseable(false)
         .open();
-    backgroundBlur
-        .setStyle("display", "flex")
-        .setStyle("justify-content", "center")
-        .onClick(e -> dialog.setBlurred(!dialog.isBlurred()));
+
+    blurToggle
+        .setExpanse(Expanse.XLARGE)
+        .onToggle(
+            e -> {
+              dialog.setBlurred(e.isToggled());
+            });
+
+    backdropToggle
+        .setExpanse(Expanse.XLARGE)
+        .onToggle(
+            e -> {
+              dialog.setBackdrop(e.isToggled());
+            });
   }
 }
