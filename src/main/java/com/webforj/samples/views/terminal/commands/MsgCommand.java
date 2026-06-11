@@ -1,8 +1,6 @@
 package com.webforj.samples.views.terminal.commands;
 
-import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
-
-import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.optiondialog.MessageDialog;
 import com.webforj.component.terminal.Terminal;
 
 public class MsgCommand implements TerminalCommand {
@@ -26,6 +24,7 @@ public class MsgCommand implements TerminalCommand {
       return;
     }
     String message = String.join(" ", args).substring(4);
-    showMessageDialog(new Paragraph(message).getText(), "Terminal Message");
+    MessageDialog messageDialog = new MessageDialog(message, "Terminal Message");
+    messageDialog.setRawText(true).show();
   }
 }
