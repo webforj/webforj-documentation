@@ -123,7 +123,7 @@ nav.setAutoOpen(true);
 
 ## Pinning {#pinning}
  
-Pinning lets a user lift the items they reach for most into a group at the top of the navigation, so a deep menu still keeps a short list of favorites within one click. It is off by default. Turn it on through the pinning configuration:
+Pinning lets a user lift the items they reach for most into a group at the top of the navigation, so a deep menu still keeps a short list of favorites within one click. It's off by default. Turn it on through the pinning configuration:
  
 ```java
 AppNav nav = new AppNav();
@@ -138,6 +138,7 @@ A few rules govern what can be pinned and how the group behaves:
 - The pinned group appears only once something is pinned, and disappears again when the last item is unpinned.
 - Unpinning returns an item to its exact original position, including items nested several levels deep inside groups.
 - The item is moved, not copied, so any prefix or suffix content and any listeners attached to it keep working while it sits in the pinned group.
+
 The demo below has pinning enabled with a custom group title and Dashboard pinned on load. Hover or focus a leaf item to reveal its pin toggle.
  
 <!--vale off-->
@@ -185,7 +186,7 @@ Set an explicit key when the path can change at runtime. A stable key keeps a pi
  
 ### Autosave to local storage {#autosave}
  
-Pins live only for the current page view unless you persist them. Autosave is the simplest option: it stores the set of pinned items in the browser's local storage and restores them on reload. It is off by default. It needs a stable `id` (or name) on the component for the storage key, and the `AppNav(String id)` constructor is the convenient way to set one:
+Pins live only for the current page view unless you persist them. Autosave is the simplest option: it stores the set of pinned items in the browser's local storage and restores them on reload. It's off by default. It needs a stable `id` (or name) on the component for the storage key, and the `AppNav(String id)` constructor is the convenient way to set one:
  
 ```java
 AppNav nav = new AppNav("main-nav"); // gives autosave a stable storage key
@@ -245,7 +246,7 @@ nav.getPinning().setTouchVisible(true);
  
 ## Search {#search}
  
-The search field filters the menu by item label as the user types. It is off by default. Show it and give it a placeholder through the search configuration:
+The search field filters the menu by item label as the user types. It's off by default. You can show it and give it a placeholder through the search configuration:
  
 ```java
 nav.getSearch().setFieldVisible(true);
