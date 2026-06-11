@@ -194,7 +194,7 @@ nav.getPinning().setAutosave(true);
 ```
  
 :::info Autosave needs an id
-With no `id` (or name) on the component, autosave silently does nothing, since it has no stable key to store under. Persistence is per browser, so pins do not follow a user to another device or browser.
+With no `id` (or name) on the component, autosave silently does nothing, since it has no stable key to store under. Persistence is per browser, so pins don't follow a user to another device or browser.
 :::
  
 ### Custom persistence {#custom-persistence}
