@@ -228,7 +228,7 @@ nav.onPin(event -> {
  
 ### Pin icons {#pin-icons}
  
-The toggle uses the built in `dwc:pin` icon while an item is unpinned and `dwc:pinned-off` while it is pinned. Swap in your own through `setUnpinnedIcon` and `setPinnedIcon`, which accept any `IconDefinition`:
+The toggle uses the built in `dwc:pin` icon while an item is unpinned and `dwc:pinned-off` while it's pinned. Swap in your own through `setUnpinnedIcon` and `setPinnedIcon`, which accept any `IconDefinition`:
  
 ```java
 nav.getPinning()
