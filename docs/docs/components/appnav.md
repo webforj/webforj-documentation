@@ -175,7 +175,7 @@ nav.getPinning().setTitle("Favorites");
  
 ### Pin keys {#pin-keys}
  
-Each pinnable item carries a key that identifies it for persistence and for the [pin event](#reacting-to-pin-changes). When you do not set one, the key falls back to the item's path, so `getPinKey()` always returns a usable value.
+Each pinnable item carries a key that identifies it for persistence and for the [pin event](#reacting-to-pin-changes). When you don't set one, the key falls back to the item's path, so `getPinKey()` always returns a usable value.
  
 ```java
 AppNavItem reports = new AppNavItem("Reports", "/reports");
