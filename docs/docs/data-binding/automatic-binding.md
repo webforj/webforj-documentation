@@ -55,17 +55,10 @@ In the example above, the UI field name is `nameField`, but the bean property is
 The annotation value can also be a dotted path to a nested bean property. This
 uses the same nested property syntax as manual binding.
 
-```java
-public class PersonForm extends App {
-  @UseProperty("address.street")
-  TextField streetField = new TextField("Street");
-
-  @UseProperty("address.city")
-  TextField cityField = new TextField("City");
-
-  // ...
-}
-```
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/PersonForm.java"
+  region="data-binding.nested.use-property"
+/>
 
 ### `BindingExclude` annotation {#bindingexclude-annotation}
 

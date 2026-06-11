@@ -62,107 +62,49 @@ to the context.
 Use dotted property paths to bind a component to a property inside a nested bean.
 Each path segment follows Java Bean getter and setter conventions.
 
-```java
-BindingContext<Person> context = new BindingContext<>(Person.class);
-context.bind(streetField, "address.street").add();
-context.bind(cityField, "address.city").add();
-context.bind(zipField, "address.zip").add();
-```
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/VerifyDataBindingNestedPropertiesSnippets.java"
+  region="data-binding.nested.manual"
+/>
 
-```java
-public class Person {
-  private String name;
-  private Address address;
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/Person.java"
+  region="data-binding.nested.person"
+/>
 
-  public Person() {}
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Address getAddress() {
-    return address;
-  }
-
-  public void setAddress(Address address) {
-    this.address = address;
-  }
-}
-```
-
-```java
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
-public class Address {
-  @NotNull
-  private String street;
-
-  @Size(min = 2)
-  private String city;
-
-  private String zip;
-
-  public Address() {}
-
-  public String getStreet() {
-    return street;
-  }
-
-  public void setStreet(String street) {
-    this.street = street;
-  }
-
-  public String getCity() {
-    return city;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
-
-  public String getZip() {
-    return zip;
-  }
-
-  public void setZip(String zip) {
-    this.zip = zip;
-  }
-}
-```
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/Address.java"
+  region="data-binding.nested.address"
+/>
 
 When reading from a bean, a `null` intermediate value returns `null` for the leaf
 property and doesn't create the nested object. For example, reading a `Person`
 whose `address` is `null` leaves `address` unchanged.
 
-```java
-Person person = new Person();
-context.read(person);
-```
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/VerifyDataBindingNestedPropertiesSnippets.java"
+  region="data-binding.nested.read-null"
+/>
 
 When writing to a bean, the binding creates missing intermediate objects through
 an accessible no-argument constructor and the parent setter before writing the
 leaf value.
 
-```java
-Person person = new Person();
-streetField.setValue("Main Street");
-
-ValidationResult result = context.write(person);
-if (result.isValid()) {
-  String street = person.getAddress().getStreet();
-}
-```
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/VerifyDataBindingNestedPropertiesSnippets.java"
+  region="data-binding.nested.write-create"
+/>
 
 Jakarta validation annotations on nested leaf properties are detected the same
-way as annotations on top-level properties. If `Address.street` has `@NotNull`,
-the binding for `"address.street"` marks the field as required. When Jakarta
-validation is enabled, nested constraints also validate during `write()` and
+way as annotations on top-level properties when Jakarta validation is enabled.
+If `Address.street` has `@NotNull`, the binding for `"address.street"` marks
+the field as required. Nested constraints also validate during `write()` and
 `validate()`.
+
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/VerifyDataBindingNestedPropertiesSnippets.java"
+  region="data-binding.nested.required"
+/>
 
 ### The bound component {#the-bound-component}
 
