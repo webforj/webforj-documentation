@@ -1,131 +1,133 @@
 ---
 title: MaskedNumberField
 sidebar_position: 10
-_i18n_hash: b528c4f1b76e02e7bd6fe132df47198c
+_i18n_hash: a2b0a5275077beea1c053993d47aa861
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-numberfield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedNumberField" top='true'/>
 
-Het `MaskedNumberField` is een tekstinvoer ontwerp voor gestructureerde numerieke invoer. Het zorgt ervoor dat getallen consistent worden opgemaakt op basis van een gedefinieerde masker, waardoor het vooral nuttig is voor financiële formulieren, prijsvelden of elke invoer waar precisie en leesbaarheid belangrijk zijn.
+Het `MaskedNumberField` is een tekstinvoerveld ontworpen voor gestructureerde numerieke invoer. Het zorgt ervoor dat nummers consistent worden opgemaakt op basis van een gedefinieerde masker, wat het bijzonder nuttig maakt voor financiële formulieren, prijsvelden of elke invoer waar precisie en leesbaarheid van belang zijn.
 
-Deze component ondersteunt nummeropmaak, lokalisatie van decimale/sgroeperingscharacters en optionele waarde beperkingen zoals minimum of maximum.
+Deze component ondersteunt nummeropmaak, lokalisatie van decimale/groeperingskarakters en optionele waarde beperkingen zoals minimums of maximums.
+
+<!-- INTRO_END -->
 
 ## Basisprincipes {#basics}
 
-Het `MaskedNumberField` kan worden geïnstantieerd met of zonder parameters. Het ondersteunt het instellen van een initiële waarde, een label, een placeholder en een eventlistener om te reageren op waarde wijzigingen.
+Het `MaskedNumberField` kan worden geïnstantieerd met of zonder parameters. Het ondersteunt het instellen van een initiële waarde, een label, een plaatsaanduiding en een gebeurtenisluisteraar om te reageren op waarde wijzigingen.
 
-Deze demo toont een **Fooien Calculator** die `MaskedNumberField` gebruikt voor intuïtieve numerieke invoer. Een veld is geconfigureerd om een geformatteerd rekenbedrag te accepteren, terwijl het andere een percentage voor fooien met gehele getallen vastlegt. Beide velden passen numerieke maskers toe om een consistente en voorspelbare opmaak te waarborgen.
+Deze demo toont een **Foatokcalculator** die `MaskedNumberField` gebruikt voor intuïtieve numerieke invoer. Één veld is geconfigureerd om een geformatteerd rekeningbedrag te accepteren, terwijl het andere een hele getal fooi percentage vastlegt. Beide velden passen numerieke maskers toe om consistente en voorspelbare opmaak te waarborgen.
 
-<ComponentDemo 
-path='/webforj/maskednumberfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldView.java'
-height = '270px'
+<ComponentDemo
+path='/webforj/maskednumberfield'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldView.java']}
+height='270px'
 />
 
-## Masker regels {#mask-rules}
+## Maskerregels {#mask-rules}
 
-Het `MaskedNumberField` gebruikt een masker string om te controleren hoe numerieke invoer wordt opgemaakt en weergegeven. 
-Elk teken in het masker definieert een specifieke opmaakgedrag, wat nauwkeurige controle mogelijk maakt over hoe getallen verschijnen.
+Het `MaskedNumberField` gebruikt een maskerstring om te controleren hoe numerieke invoer wordt opgemaakt en weergegeven. 
+Elk karakter in het masker definieert een specifieke opmaakgedrag, waardoor nauwkeurige controle over hoe cijfers verschijnen mogelijk is.
 
 :::tip Toepassen van maskers programmatisch
-Om getallen te formatteren met dezelfde maskersyntaxis buiten een veld, bijvoorbeeld bij het weergeven van gegevens in een [`Table`](/docs/components/table/overview), gebruik de [`MaskDecorator`](/docs/advanced/mask-decorator) utility klasse.
+Om cijfers met dezelfde masker syntax buiten een veld te formatteren, bijvoorbeeld bij het weergeven van gegevens in een [`Table`](/docs/components/table/overview), gebruik de [`MaskDecorator`](/docs/advanced/mask-decorator) utilityklasse.
 :::
 
-### Masker karakters {#mask-characters}
+### Maskerkarakters {#mask-characters}
 
-| Teken     | Beschrijving |
-|-----------|-------------|
-| `0`       | Altijd vervangen door een cijfer (0–9). |
-| `#`       | Onderdrukt de leidende nullen. Vervangen door het vulteken links van het decimaal. Voor opvolgende cijfers, vervangen door een spatie of nul. Anders, vervangen door een cijfer. |
-| `,`       | Wordt gebruikt als een groeperingsscheidingsteken (bijv. duizenden). Vervangen door het vulteken als er geen cijfers aan voorafgaan. Anders, weergegeven als een komma. |
-| `-`       | Toont een minteken (`-`) als het getal negatief is. Vervangen door het vulteken als positief. |
-| `+`       | Toont `+` voor positieve of `-` voor negatieve getallen. |
-| `$`       | Leidt altijd tot een dollarteken. |
-| `(`       | Voegt een linkse haakje `(` in voor negatieve waarden. Vervangen door het vulteken als positief. |
-| `)`       | Voegt een rechter haakje `)` in voor negatieve waarden. Vervangen door het vulteken als positief. |
-| `CR`      | Toont `CR` voor negatieve getallen. Toont twee spaties als het getal positief is. |
-| `DR`      | Toont `CR` voor negatieve getallen. Toont `DR` voor positieve getallen. |
-| `*`       | Voegt een asterisk `*` in. |
-| `.`       | Merkt het decimaalpunt aan. Als er geen cijfers verschijnen in de uitvoer, vervangen door het vulteken. Na het decimaal, worden vultekens behandeld als spaties. |
-| `B`       | Wordt altijd een spatie. Elk ander letterlijke teken wordt weergegeven zoals het is. |
+| Karakter | Beschrijving |
+|----------|--------------|
+| `0`      | Altijd vervangen door een cijfer (0–9). |
+| `#`      | Onderdrukt leidende nullen. Vervangen door het vulteken aan de linkerkant van het decimale punt. Voor achterliggende cijfers vervangen door een spatie of nul. Anders, vervangen door een cijfer. |
+| `,`      | Gebruik als een groeperingsscheidingsteken (bijv. duizenden). Vervangen door het vulteken als er geen cijfers aan voorafgaan. Anders, als een komma weergegeven. |
+| `-`      | Weergeven een minteken (`-`) als het getal negatief is. Vervangen door het vulteken als het positief is. |
+| `+`      | Weergeven `+` voor positieve of `-` voor negatieve getallen. |
+| `$`      | Geeft altijd een dollar teken. |
+| `(`      | Voegt een linkse haakje `(` in voor negatieve waarden. Vervangen door het vulteken als het positief is. |
+| `)`      | Voegt een rechtse haakje `)` in voor negatieve waarden. Vervangen door het vulteken als het positief is. |
+| `CR`     | Weergeven `CR` voor negatieve getallen. Weergeven twee spaties als het getal positief is. |
+| `DR`     | Weergeven `CR` voor negatieve getallen. Weergeven `DR` voor positieve getallen. |
+| `*`      | Voegt een asterisk `*` in. |
+| `.`      | Merkt het decimale punt aan. Als er geen cijfers in de uitvoer verschijnen, vervangen door het vulteken. Na het decimale punt worden vultekens als spaties behandeld. |
+| `B`      | Wordt altijd een spatie. Elk ander letterlijk karakter wordt weergegeven zoals het is. |
 
-Sommige van de bovenstaande tekens kunnen meer dan eens in het masker voorkomen voor opmaak. Deze omvatten `-`, `+`, `$`, en
-`(`. Als een van deze tekens in het masker aanwezig is, zal de eerste die tegenkomt verplaatst worden naar de laatste positie waar een `#` of `,` werd vervangen door het vulteken. Als er geen dergelijke positie bestaat, blijft het dubbele teken waar het is.
+Sommige van de bovenstaande karakters kunnen meer dan eens in het masker voorkomen voor opmaak. Dit zijn `-`, `+`, `$`, en
+`(`. Als een van deze karakters in het masker aanwezig is, wordt de eerste die wordt aangetroffen verplaatst naar de laatste positie waar een `#` of `,` door het vulteken is vervangen. Als er geen dergelijke positie bestaat, blijft het dubbele karakter waar het is.
 
-:::info Geen Automatische Afronding
-Een masker binnen een veld doet **NIET** afronden. Bijvoorbeeld, wanneer je een waarde zoals `12.34567` plaatst in een veld dat gemaskeerd is met `###0.00`, krijg je `12.34`.
+:::info Geen automatische afronding
+Een masker binnen een veld rondt **NIET** af. Bijvoorbeeld, wanneer een waarde zoals `12.34567` in een veld wordt geplaatst dat is gemaskeerd met `###0.00`, krijg je `12.34`.
 :::
 
 ## Groep en decimale scheidingstekens {#group-and-decimal-separators}
 
-Het `MaskedNumberField` ondersteunt de aanpassing van **groeperings** en **decimale** karakters, waardoor het eenvoudig is om nummeropmaak aan te passen aan verschillende locale of zakelijke conventies.
+Het `MaskedNumberField` ondersteunt aanpassing van **groeps-** en **decimale** karakters, waardoor het eenvoudig is om nummeropmaak aan te passen aan verschillende lokale of zakelijke conventies.
 
-- De **groep separator** wordt gebruikt om duizenden visueel te scheiden (bijv. `1.000.000`).
-- De **decimale separator** geeft het fractie gedeelte van een nummer aan (bijv. `123,45`).
+- De **groepscheidingsteken** wordt gebruikt om duizenden visueel te scheiden (bijv. `1.000.000`).
+- De **decimale scheidingsteken** geeft het fractionele deel van een getal aan (bijv. `123.45`).
 
-Dit is nuttig in internationale toepassingen waar verschillende regio's verschillende karakters gebruiken (bijv. `.` vs `,`).
+Dit is nuttig in internationale toepassingen waar verschillende gebieden verschillende karakters gebruiken (bijv. `.` vs `,`).
 
 ```java
 field.setGroupCharacter(".");   // bijv. 1.000.000
 field.setDecimalCharacter(","); // bijv. 123,45
 ```
 
-:::tip Standaard Gedrag
-Standaard past `MaskedNumberField` groep en decimale scheidingstekens toe op basis van de huidige locale van de app. Je kunt ze op elk moment overschrijven met de verstrekte setters.
+:::tip Standaardgedrag
+Standaard past `MaskedNumberField` groeps- en decimale scheidingstekens toe op basis van de huidige locale van de app. Je kunt ze op elk moment overschrijven met de gegeven setters.
 :::
 
-## Negateerbaar {#negateable}
+## Negatief {#negateable}
 
-Het `MaskedNumberField` ondersteunt een optie om te bepalen of negatieve getallen zijn toegestaan.
+Het `MaskedNumberField` ondersteunt een optie om te controleren of negatieve getallen zijn toegestaan.
 
-Standaard zijn negatieve waarden zoals `-123.45` toegestaan. Om dit te voorkomen, gebruik `setNegateable(false)` om invoer tot alleen positieve waarden te beperken.
+Standaard zijn negatieve waarden zoals `-123.45` toegestaan. Om dit te voorkomen, gebruik `setNegateable(false)` om invoer te beperken tot alleen positieve waarden.
 
-Dit is nuttig in zakelijke scenario's waar waarden zoals hoeveelheden, totaals of percentages altijd niet-negatief moeten zijn.
+Dit is nuttig in zakelijke scenario's waar waarden zoals hoeveelheden, totalen of percentages altijd niet-negatief moeten zijn.
 
 ```java
 field.setNegateable(false);
 ```
 
-Wanneer `negatable` is ingesteld op `false`, blokkeert het veld elke poging om een minteken in te voeren of anderszins negatieve waarden in te voeren.
+Wanneer `negatable` is ingesteld op `false`, blokkeert het veld elke poging om een minteken in te voeren of op andere wijze negatieve waarden in te voeren.
 
-<ComponentDemo 
-path='/webforj/maskednumnegatable/?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumNegatableView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/maskednumnegatable/'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumNegatableView.java']}
+height='150px'
 />
 
-## Min en max waarden {#min-and-max-values}
+## Min- en maxwaarden {#min-and-max-values}
 
 Het `MaskedNumberField` ondersteunt het instellen van numerieke grenzen met `setMin()` en `setMax()`. 
-Deze beperkingen helpen ervoor te zorgen dat gebruikersinvoer binnen een geldig, verwachte bereik blijft.
+Deze beperkingen helpen ervoor te zorgen dat invoer van de gebruiker binnen een geldig, verwacht bereik blijft.
 
 - **Minimumwaarde**  
-  Gebruik `setMin()` om het laagste aanvaardbare nummer te definiëren:
+  Gebruik `setMin()` om het laagste acceptabele nummer te definiëren:
 
   ```java
   field.setMin(10.0); // Minimumwaarde: 10
   ```
 
-  Als de gebruiker een nummer onder deze drempel invoert, wordt dit als ongeldig beschouwd.
+  Als de gebruiker een getal onder deze drempel invoert, wordt dit als ongeldig beschouwd.
 
 - **Maximumwaarde**  
-  Gebruik `setMax()` om het hoogste aanvaardbare nummer te definiëren:
+  Gebruik `setMax()` om het hoogste acceptabele nummer te definiëren:
 
   ```java
   field.setMax(100.0); // Maximumwaarde: 100
   ```
 
-  Waarden boven deze limiet zullen als ongeldig worden gemarkeerd.
+  Waarden boven deze limiet worden als ongeldig gemarkeerd.
 
 ## Herstellen van de waarde {#restoring-the-value}
 
-Het `MaskedNumberField` ondersteunt een herstel functie die de waarde van het veld terugzet naar een vooraf gedefinieerde staat. 
-Dit kan nuttig zijn wanneer gebruikers wijzigingen moeten ongedaan maken, toevallige bewerkingen moeten terugdraaien of terug moeten keren naar een bekende standaardwaarde.
+Het `MaskedNumberField` ondersteunt een herstel functie die de waarde van het veld op een vooraf gedefinieerde staat reset. 
+Dit kan nuttig zijn wanneer gebruikers wijzigingen moeten ongedaan maken, per ongeluk bewerkingen moeten terugdraaien, of naar een bekende standaardwaarde moeten terugkeren.
 
 Om dit gedrag in te schakelen, definieer de doelwaarde met `setRestoreValue()`. 
-Indien nodig kan het veld programatisch worden gereset met `restoreValue()`.
+Indien nodig kan het veld programmatisch worden gereset met `restoreValue()`.
 
 ```java
 numberField.setRestoreValue(1500.00);
@@ -134,43 +136,43 @@ numberField.restoreValue();
 
 ### Manieren om de waarde te herstellen {#ways-to-restore-the-value}
 
-- **Programatisch** met `restoreValue()`
-- **Via toetsenbord**, door op <kbd>ESC</kbd> te drukken (dit is de standaardhersteltoets tenzij overschreven)
+- **Programmatisch** met `restoreValue()`
+- **Via toetsenbord**, door op <kbd>ESC</kbd> te drukken (dit is de standaard hersteltoets, tenzij overschreven)
 
-De herstelwaarde moet expliciet worden ingesteld. Als deze niet is gedefinieerd, zal de functie het veld niet terugdraaien.
+De herstelwaarde moet expliciet worden ingesteld. Als deze niet gedefinieerd is, zal de functie het veld niet terugdraaien.
 
-<ComponentDemo 
-path='/webforj/maskednumrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumRestoreView.java'
-height = '150px'
+<ComponentDemo
+path='/webforj/maskednumrestore'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumRestoreView.java']}
+height='150px'
 />
 
 ## `MaskedNumberFieldSpinner` {#maskednumberfieldspinner}
 
-De `MaskedNumberFieldSpinner` breidt [`MaskedNumberField`](#basics) uit door spinnerschakelaars toe te voegen die gebruikers in staat stellen om de waarde te verhogen of te verlagen met stapknoppen of pijltoetsen. 
-Dit is ideaal voor invoeren zoals hoeveelheden, prijsaanpassingen, beoordelingscontroles of elke situatie waarin gebruikers incrementele wijzigingen aanbrengen.
+Het `MaskedNumberFieldSpinner` breidt [`MaskedNumberField`](#basics) uit met spindoelen waarmee gebruikers de waarde kunnen verhogen of verlagen met stapknoppen of pijltjestoetsen. 
+Dit is ideaal voor invoer zoals hoeveelheden, prijsaanpassingen, beoordelingscontroles, of elke situatie waarin gebruikers incrementele wijzigingen aanbrengen.
 
-<ComponentDemo 
-path='/webforj/maskednumspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumSpinnerView.java'
-height = '120px'
+<ComponentDemo
+path='/webforj/maskednumspinner'
+files={['src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumSpinnerView.java']}
+height='120px'
 />
 
-### Belangrijkste functies {#key-features}
+### Belangrijkste kenmerken {#key-features}
 
 - **Stapverhogingen**  
-  Gebruik `setStep()` om te definiëren hoeveel de waarde moet veranderen met elke spin:
+  Gebruik `setStep()` om te definiëren hoeveel de waarde moet veranderen met elke draai:
 
   ```java
-  spinner.setStep(5.0); // Elke spin voegt of trekt 5 af
+  spinner.setStep(5.0); // Elke draai voegt of trekt 5 af
   ```
 
-- **Interactieve Besturingselementen**  
-  Gebruikers kunnen op spinners drukken of toetsenbordinvoer gebruiken om de waarde aan te passen.
+- **Interactieve bedieningselementen**  
+  Gebruikers kunnen op spindknoppen klikken of toetsenbordinvoer gebruiken om de waarde aan te passen.
 
 - **Alle functies van MaskedNumberField**  
-  Ondersteunt volledig maskers, opmaak, groeperings-/decimale karakters, min/max beperkingen en herstelloogica.
+  Ondersteunt volledig maskers, opmaak, groeps- en decimale karakters, min/max beperkingen en herstelloogiek.
 
-## Styling {#styling}
+## Stijl {#styling}
 
 <TableBuilder name="MaskedNumberField" />

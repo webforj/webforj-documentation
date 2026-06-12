@@ -1,6 +1,7 @@
 ---
 title: MarkdownViewer
 sidebar_position: 74
+description: Render markdown as HTML with the MarkdownViewer component, supporting append, auto-scroll, and progressive typewriter rendering.
 ---
 
 <DocChip chip='shadow' />
@@ -31,9 +32,9 @@ String content = viewer.getContent();
 :::tip
 The component implements `HasText`, so `setText()` and `getText()` work as aliases for the content methods.
 :::
-<ComponentDemo 
-path='/webforj/markdownviewer?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java'
+<ComponentDemo
+path='/webforj/markdownviewer'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java']}
 height='650px'
 />
 
@@ -67,9 +68,9 @@ viewer.setProgressiveRender(true);
 
 When enabled, content added via `setContent()` or `append()` goes into a buffer and displays incrementally. When disabled, content appears immediately.
 
-<ComponentDemo 
-path='/webforj/markdownviewerprogressive?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerProgressiveView.java'
+<ComponentDemo
+path='/webforj/markdownviewerprogressive'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerProgressiveView.java']}
 height='650px'
 />
 
@@ -139,9 +140,9 @@ When using progressive rendering, don't re-enable input fields based solely on w
 
 The following demo simulates an AI chat interface using `append()` with progressive rendering enabled:
 
-<ComponentDemo 
-path='/webforj/markdownviewerstreaming?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerStreamingView.java'
+<ComponentDemo
+path='/webforj/markdownviewerstreaming'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerStreamingView.java']}
 height='700px'
 />
 

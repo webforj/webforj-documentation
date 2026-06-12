@@ -1,6 +1,7 @@
 ---
 sidebar_position: 40
 title: View Transitions
+description: Animate DOM changes with the browser View Transition API, applying fade, slide, zoom, and shared morph effects between component states.
 ---
 
 <!-- vale Google.Units = NO -->
@@ -13,10 +14,12 @@ title: View Transitions
 View transitions provide animated transitions when the [DOM](/docs/glossary#dom) changes, reducing visual jarring and maintaining spatial context during navigation or content updates. webforJ integrates with the browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) to handle the complexity of coordinating animations between old and new states.
 
 <ComponentDemo
-  path='/webforj/viewtransitionchat?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java'
-  cssURL='/css/viewtransitions/chat.css'
-  height='450px'
+path='/webforj/viewtransitionchat'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
+  'src/main/resources/static/css/viewtransitions/chat.css',
+]}
+height='450px'
 />
 
 <ExperimentalWarning />
@@ -97,14 +100,14 @@ When working with lists or repeated components, include a unique identifier in t
 :::
 
 <ComponentDemo
-  path='/webforj/viewtransitionmorph?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java'
-  urls={[
-    'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
-    'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java'
-  ]}
-  cssURL='/css/viewtransitions/morph.css'
-  height='650px'
+path='/webforj/viewtransitionmorph'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
+  'src/main/resources/static/css/viewtransitions/morph.css',
+]}
+height='650px'
 />
 
 ### List reordering {#list-reordering}
@@ -125,13 +128,13 @@ Page.getCurrent().startViewTransition()
 ```
 
 <ComponentDemo
-  path='/webforj/viewtransitionshuffle?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java'
-  urls={[
-    'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java'
-  ]}
-  cssURL='/css/viewtransitions/shuffle.css'
-  height='550px'
+path='/webforj/viewtransitionshuffle'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
+  'src/main/resources/static/css/viewtransitions/shuffle.css',
+]}
+height='550px'
 />
 
 ## Custom CSS animations {#custom-css-animations}
@@ -185,10 +188,12 @@ Page.getCurrent().startViewTransition()
 ```
 
 <ComponentDemo
-  path='/webforj/viewtransitionenterexit?'
-  javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java'
-  cssURL='/css/viewtransitions/enterexit.css'
-  height='400px'
+path='/webforj/viewtransitionenterexit'
+files={[
+  'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
+  'src/main/resources/static/css/viewtransitions/enterexit.css',
+]}
+height='400px'
 />
 
 ## CSS customization {#css-customization}

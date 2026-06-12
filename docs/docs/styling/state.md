@@ -1,6 +1,7 @@
 ---
 sidebar_position: 9
 title: State
+description: Style interactive component states with DWC tokens for disabled opacity, focus ring color, and press-feedback scales.
 ---
 
 State tokens define how components visually respond to user interaction, such as when they're disabled or focused. These variables help ensure consistent behavior and styling across all UI elements, and can be easily customized to match your design system.

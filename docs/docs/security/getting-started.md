@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 sidebar_position: 2
+description: Integrate Spring Security with webforJ to handle authentication, login views, password encoding, and protected routes.
 ---
 
 Spring Security provides authentication and authorization for Spring Boot applications. When integrated with webforJ, it protects routes using annotations while Spring handles user management and sessions.

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 35
 title: Web Storage
+description: Persist client-side data through CookieStorage, SessionStorage, and LocalStorage to retain preferences and state across requests and reloads.
 ---
 <!-- vale off -->
 # Web Storage <DocChip chip='since' label='23.06' />

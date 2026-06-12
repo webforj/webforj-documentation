@@ -1,6 +1,7 @@
 ---
 title: Drawer
 sidebar_position: 35
+description: Slide panels in from any screen edge with the Drawer component, ideal for side navigation, filter menus, settings, and stackable popovers.
 ---
 
 <DocChip chip="shadow" />
@@ -18,9 +19,13 @@ Drawers stack automatically when multiple are opened, making them a flexible cho
 
 The example below shows this behavior within the [`AppLayout`](../components/app-layout) component. The navigation drawer triggered by the hamburger menu is built into [`AppLayout`](../components/app-layout), while the welcome popup at the bottom uses a standalone `Drawer` instance. Both coexist and stack independently, demonstrating how Drawers can be integrated within layout components or used as standalone elements.
 
-<AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
-cssURL='/css/drawer/drawerWelcome.css'
+<ComponentDemo
+path='/webforj/drawerwelcome'
+frame='mobile'
+files={[
+  'src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java',
+  'src/main/resources/static/css/drawer/drawerWelcome.css',
+]}
 />
 
 ## Autofocus
@@ -28,8 +33,8 @@ cssURL='/css/drawer/drawerWelcome.css'
 The `Drawer` component supports autofocus, which automatically sets focus on the first focusable element when the `Drawer` opens. This improves usability by bringing attention directly to the first actionable element.
 
 <ComponentDemo
-path='/webforj/drawerautofocus?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java'
+path='/webforj/drawerautofocus'
+files={['src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java']}
 height='600px'
 />
 
@@ -98,8 +103,8 @@ Available placement options:
 <!-- vale on -->
 
 <ComponentDemo
-path='/webforj/drawerplacement?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
+path='/webforj/drawerplacement'
+files={['src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java']}
 height='600px'
 />
 
@@ -133,9 +138,11 @@ The `Drawer` component exposes additional content without disrupting the current
 Each contact displays an avatar, name, location, and action button for quick access to details or communication. This approach works well for building compact tools like contact pickers, settings panels, or notifications.
 
 <ComponentDemo
-path='/webforj/drawercontact?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerContact.css'
+path='/webforj/drawercontact'
+files={[
+  'src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java',
+  'src/main/resources/css/drawer/drawerContact.css',
+]}
 height='600px'
 />
 
@@ -144,9 +151,11 @@ height='600px'
 This example uses a `Drawer` as a task manager. You can add tasks, check them off, and clear completed ones. The `Drawer` footer includes form controls to interact with the task list, and the “Add Task” [`Button`](../components/button) disables itself if 50 tasks are reached.
 
 <ComponentDemo
-path='/webforj/drawertask?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
-cssURL='/css/drawer/drawer-task-view.css'
+path='/webforj/drawertask'
+files={[
+  'src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java',
+  'src/main/resources/static/css/drawer/drawer-task-view.css',
+]}
 height='600px'
 />
 

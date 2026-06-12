@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Shadow Parts
+description: Reach into webforJ component shadow DOM with the CSS ::part() selector to style internal elements while preserving encapsulation.
 ---
 
 CSS **Shadow Parts** give developers a way to style elements inside a component’s shadow DOM from the outside, while still preserving encapsulation.

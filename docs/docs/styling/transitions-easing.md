@@ -1,6 +1,8 @@
 ---
 sidebar_position: 10
 title: Transitions & Easing
+description: Animate UI changes with consistent DWC duration tokens and cubic-bezier easing curves for natural-feeling transitions.
+sidebar_class_name: updated-content
 ---
 
 Transition variables are used to provide consistent animation durations across your app. They control how long an animation takes to complete.
@@ -76,3 +78,18 @@ These are the general-purpose easing curves used by most components:
 | `--dwc-ease-inBack` | `cubic-bezier(0.36, 0, 0.66, -0.56)` | [Test it](https://cubic-bezier.com/#0.36,0,0.66,-0.56) |
 | `--dwc-ease-outBack` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | [Test it](https://cubic-bezier.com/#0.34,1.56,0.64,1) |
 | `--dwc-ease-inOutBack` | `cubic-bezier(0.68, -0.6, 0.32, 1.6)` | [Test it](https://cubic-bezier.com/#0.68,-0.6,0.32,1.6) |
+
+---
+
+## Reduced motion {#reduced-motion}
+
+webforJ respects the user's "reduce motion" accessibility preference. When enabled at the OS level, webforJ disables non-essential animations across all components automatically. No Java code is required.
+
+:::info OS-level reduced-motion settings
+Where users enable the preference:
+
+- **Windows 10/11**: Settings > Ease of Access > Display > Show animations in Windows
+- **macOS**: System Settings > Accessibility > Display > Reduce motion
+- **iOS**: Settings > Accessibility > Motion > Reduce Motion
+- **Android**: Settings > Accessibility > Remove animations
+:::

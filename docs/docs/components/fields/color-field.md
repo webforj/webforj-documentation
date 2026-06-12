@@ -20,10 +20,12 @@ The `ColorField` component lets users select a color through the browser's nativ
 
 `ColorField` extends the shared `Field` class, which provides common features across all field components. The following example lets the user pick a color and displays its tetradic complements.
 
-<ComponentDemo 
-path='/webforj/colorfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/colorfield/ColorFieldView.java'
-cssURL='/css/fields/colorfield/colorFieldDemo.css'
+<ComponentDemo
+path='/webforj/colorfield'
+files={[
+  'src/main/java/com/webforj/samples/views/fields/colorfield/ColorFieldView.java',
+  'src/main/resources/static/css/fields/colorfield/colorFieldDemo.css',
+]}
 height='300px'
 />
 

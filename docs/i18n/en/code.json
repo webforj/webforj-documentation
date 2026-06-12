@@ -1030,5 +1030,13 @@
   "aiSkillTip.skill.webforj-upgrading-versions.prompt.2": {
     "message": "What removed APIs do I need to fix after upgrading?",
     "description": "Sample prompt for the webforj-upgrading-versions skill"
+  },
+  "componentDemo.openInNewWindow": {
+    "message": "Open demo in new window",
+    "description": "Accessible label for the button that opens the demo iframe URL in a new browser tab"
+  },
+  "componentDemo.iframeTitle": {
+    "message": "Component demo",
+    "description": "Accessible title for the demo iframe"
   }
 }

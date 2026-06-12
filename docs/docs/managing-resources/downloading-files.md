@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Downloading Files
+description: Trigger client-side downloads from webforJ using the Page download methods that accept input streams, byte arrays, files, or resource paths.
 ---
 
 webforJ provides methods to initiate file downloads, making it easy to deliver files to users through the browser. The <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> class offers several ways to download files, whether they come from input streams, byte arrays, physical files, or resources.

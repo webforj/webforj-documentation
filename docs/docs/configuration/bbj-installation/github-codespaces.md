@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Github Codespaces
+description: Run the webforj-hello-world starter in a GitHub Codespace to develop and preview webforJ apps directly from the browser.
 ---
 
 [`webforj-hello-world`](https://github.com/webforj/webforj-hello-world) has been configured to run in Github Codespaces. Codespaces is a cloud-based development environment, and allows you to develop and run webforJ applications directly within your browser. To start developing with this tool, follow the steps below:

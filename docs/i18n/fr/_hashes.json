@@ -308,5 +308,9 @@
   "aiSkillTip.skill.webforj-upgrading-versions.summary": "f1f991e82e29988bd7afdf219391519b",
   "aiSkillTip.skill.webforj-upgrading-versions.prompt.0": "38ba118f6501090632fae39e77331fd1",
   "aiSkillTip.skill.webforj-upgrading-versions.prompt.1": "287b729cfffeac04ea3ee6396d1b8208",
-  "aiSkillTip.skill.webforj-upgrading-versions.prompt.2": "f1add34a796245a926a5dcc8948c2f7f"
+  "aiSkillTip.skill.webforj-upgrading-versions.prompt.2": "f1add34a796245a926a5dcc8948c2f7f",
+  "componentDemo.openInNewWindow": "a4912d637ce7bd602fe848fafb0cc185",
+  "componentDemo.iframeTitle": "802a57c9a99b0c31b115a58d4135d921",
+  "sidebar.documentationSidebar.category.Upgrade to 26.00": "35a959230718667d6e2ffd94f999c317",
+  "sidebar.documentationSidebar.category.security-application-security": "2993e06f9e34b9da0ed41173d7d56a4a"
 }

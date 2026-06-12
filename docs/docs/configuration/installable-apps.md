@@ -1,20 +1,21 @@
 ---
 title: Installable Apps
 sidebar_position: 10
+description: Annotate a webforJ app with AppProfile to generate a Web App Manifest with icons, screenshots, and metadata for device installation.
 ---
 
 <DocChip chip='since' label='24.21' />
 <JavadocLink type="foundation" location="com/webforj/annotation/AppProfile" top='true'/>
 
 The `@AppProfile` annotation in webforJ enables you to make your app installable on supported platforms. 
-Installable web apps integrate seamlessly with the device's operating system. 
+Installable web apps integrate with the device's operating system. 
 When installed, they appear on the home screen or app menu, similar to native apps. 
 To achieve this, certain metadata such as name, description, and icons must be provided. 
 These details help the operating system identify and display the app.
 
 :::info Secure Origin Requirement
 For an app to be installable, it must be served from a secure origin, such as `https`. 
-This requirement ensures that the app meets the security standards necessary for installation. However, this rule doesn't apply when serving the app locally from `localhost` during development.
+Browsers reject installation attempts on insecure origins. However, this rule doesn't apply when serving the app locally from `localhost` during development.
 
 <!-- vale off -->
 For more details about secure contexts and their importance, refer to the [Secure Contexts MDN documentation](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
@@ -26,6 +27,22 @@ For more details about secure contexts and their importance, refer to the [Secur
     <source src="/video/install-chrome.mp4" type="video/mp4"/>
   </video>
 </div>
+
+## Browser support {#browser-support}
+
+Support for installing a web app varies by browser and by platform.
+
+### Desktop {#browser-support-desktop}
+
+- **Chromium browsers** (Chrome, Edge, Opera, Brave, and others) install any app that ships a manifest file on all supported desktop operating systems.
+- **Safari** supports **File → Add to Dock** on macOS Sonoma (Safari 17) and later. The flow works for any web app, with or without a manifest file.
+- **Firefox** doesn't support installing web apps from a manifest file on desktop.
+
+### Mobile {#browser-support-mobile}
+
+- On **Android**, Chrome, Edge, Firefox, Opera, and Samsung Internet all support installing web apps.
+- On **iOS 16.3 and earlier**, web apps can be installed only from Safari (**Share → Add to Home Screen**).
+- On **iOS 16.4 and later**, web apps can be installed from the Share menu in Safari, Chrome, Edge, Firefox, and Orion.
 
 ## `@AppProfile` annotation {#appprofile-annotation}
 
@@ -87,7 +104,7 @@ Icons define the visual representation of your app in menus and home screens. Th
 | -------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------ | ----------------- |
 | `src`                                                                            | `String` | The path to the icon. This can be an absolute URL, or a `ws://` path.                                     | **Mandatory**     |
 | `sizes`                                                                          | `String` | A string that specifies one or more sizes of the image in the format `WidthxHeight` (e.g., `512x512`). | **Mandatory**     |
-| `type`                                                                           | `String` | The MIME type of the icon (e.g., `image/png`, `image/jpeg`). If not provided then it will be detected  | `""`              |
+| `type`                                                                           | `String` | The media type of the icon (e.g., `image/png`, `image/jpeg`). If not provided then it will be detected  | `""`              |
 | [`purpose`](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons#purpose) | `String` | The purpose of the icon (e.g., `any`, `maskable`, `monochrome`).                                       | `""`              |
 
 ### Example {#example}
@@ -103,7 +120,7 @@ Icons define the visual representation of your app in menus and home screens. Th
 ### `@AppProfile.DefaultIcon` properties {#appprofiledefaulticon-properties}
 
 The `DefaultIcon` annotation simplifies the configuration of app icons by generating multiple size variants from a base icon.
-This is particularly useful for ensuring compatibility across devices with varying resolutions.
+It produces icons at the resolutions devices commonly request.
 
 | **Property** | **Type** | **Description**                                                                 | **Default Value** |
 | ------------ | -------- | ------------------------------------------------------------------------------- | ----------------- |
@@ -111,12 +128,12 @@ This is particularly useful for ensuring compatibility across devices with varyi
 | `sizes`      | `int[]`  | An array of sizes to generate, specified as integers (e.g., `{144, 192, 512}`). | `{144, 192, 512}` |
 
 :::info Icon File Requirements
-This configuration does not generate the actual icon files for the app automatically. Instead, it uses the `@AppProfile.DefaultIcon` annotation to generate corresponding [`@AppProfile.Icon`](#appprofileicon-properties) entries for each specified size.
+This configuration doesn't generate the actual icon files for the app automatically. Instead, it uses the `@AppProfile.DefaultIcon` annotation to generate corresponding [`@AppProfile.Icon`](#appprofileicon-properties) entries for each specified size.
 
 #### If using the [webserver protocol](../managing-resources/assets-protocols#the-webserver-protocol) {#if-using-the-webserver-protocol}
 - You must provide a base `icon.png` file in the `static/icons` folder.
 - You are expected to include additional icon variations named `icon-144x144.png`, `icon-192x192.png`, and `icon-512x512.png`.
-- These specific sizes ensure compatibility with various devices and resolutions.
+- These specific sizes cover the resolutions devices commonly request.
 
 #### If using the [icons protocol](../managing-resources/assets-protocols#the-icons-protocol) {#if-using-the-icons-protocol}
 
@@ -132,7 +149,7 @@ Screenshots provide a preview of the app in installation dialogs or app stores. 
 | --------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- | ----------------- |
 | `src`                                                                                         | `String` | The path to the screenshot. This can be an absolute URL, or a `ws://` path.                                 | **Mandatory**     |
 | `sizes`                                                                                       | `String` | A string that specifies one or more sizes of the image in the format `WidthxHeight` (e.g., `1080x1920`).    | **Mandatory**     |
-| `type`                                                                                        | `String` | The MIME type of the screenshot (e.g., `image/png`, `image/jpeg`). If not provided then it will be detected | `""`              |
+| `type`                                                                                        | `String` | The media type of the screenshot (e.g., `image/png`, `image/jpeg`). If not provided then it will be detected | `""`              |
 | `label`                                                                                       | `String` | A descriptive label for the screenshot.                                                                     | `""`              |
 | [`formFactor`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#form_factor) | `String` | The form factor of the screenshot (e.g., `narrow`, `wide`).                                                 | `""`              |
 | [`platform`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#platform)      | `String` | The platform for which the screenshot is intended (e.g., `ios`, `android`).                                 | `""`              |

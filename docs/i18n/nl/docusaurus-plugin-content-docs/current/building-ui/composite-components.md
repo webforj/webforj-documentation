@@ -1,24 +1,24 @@
 ---
 sidebar_position: 4
 title: Composite Components
-_i18n_hash: fb15eb19cfe0ca1aebb77a67b10c9ecd
+_i18n_hash: 7e40c0b9a2feae4f8e56829bb2c8889b
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-De `Composite` component combineert bestaande webforJ componenten tot zelf-contained, herbruikbare componenten met aangepaste functionaliteit. Gebruik het om interne webforJ componenten te verpakken in herbruikbare logica-eenheden, componentpatronen door uw app heen te hergebruiken en meerdere componenten te combineren zonder implementatiedetails bloot te geven.
+De `Composite` component combineert bestaande webforJ componenten in zelf-contained, herbruikbare componenten met aangepaste functionaliteit. Gebruik het om interne webforJ componenten te verpakken in herbruikbare eenheden van bedrijfslogica, herbruik componentpatronen in je app en combineer meerdere componenten zonder implementatiedetails bloot te stellen.
 
-Een `Composite` component heeft een sterke associatie met een onderliggend gebonden component. Dit geeft u controle over welke methoden en eigenschappen gebruikers kunnen benaderen, in tegenstelling tot traditionele overerving waarbij alles blootgelegd is.
+Een `Composite` component heeft een sterke associatie met een onderliggend gebonden component. Dit geeft je controle over welke methoden en eigenschappen gebruikers kunnen benaderen, in tegenstelling tot traditionele overerving waarbij alles wordt blootgesteld.
 
-Als u webcomponenten van een andere bron wilt integreren, gebruik dan gespecialiseerde alternatieven:
+Als je webcomponenten van een andere bron moet integreren, gebruik dan gespecialiseerde alternatieven:
 
-- [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): Voor webcomponenten met type-veilige eigenschapsbeheer
-- [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): Voor webcomponenten die inhoud met slots accepteren
+- [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): Voor webcomponenten met type-veilige eigendombeheer
+- [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): Voor webcomponenten die geslotende inhoud accepteren
 
 <AISkillTip skill="webforj-creating-components" />
 
 ## Gebruik {#usage}
 
-Om een `Composite` component te definiëren, breidt u de `Composite` klasse uit en specificeert u het type component dat het beheert. Dit wordt uw gebonden component, welke de hoofdomslag is die uw interne structuur bevat:
+Om een `Composite` component te definiëren, breid je de `Composite` klasse uit en specificeer je het type component dat het beheert. Dit wordt je gebonden component, dat de hoofdcontainer is die je interne structuur bevat:
 
 ```java title="BasicComposite.java"
 public class BasicComposite extends Composite<FlexLayout> {
@@ -28,20 +28,20 @@ public class BasicComposite extends Composite<FlexLayout> {
     // Toegang tot het gebonden component om het te configureren
     self.setDirection(FlexDirection.COLUMN)
       .setSpacing("3px")
-      .add(new TextField(), new Button("Verstuur"));
+      .add(new TextField(), new Button("Verzenden"));
   }
 }
 ```
 
-De `getBoundComponent()` methode biedt toegang tot uw onderliggend component, waarmee u zijn eigenschappen kunt configureren, kindcomponenten kunt toevoegen en zijn gedrag direct kunt beheren.
+De `getBoundComponent()` methode biedt toegang tot je onderliggende component, zodat je de eigenschappen kunt configureren, kindcomponenten kunt toevoegen en het gedrag rechtstreeks kunt beheren.
 
-Het gebonden component kan elk [webforJ component](/docs/components/overview) of [HTML elementcomponent](/docs/components/html-elements) zijn. Voor flexibele lay-outs, overweeg om [`FlexLayout`](/docs/components/flex-layout) of [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) als uw gebonden component te gebruiken.
+Het gebonden component kan elke [webforJ component](/docs/components/overview) of [HTML element component](/docs/components/html-elements) zijn. Voor flexibele lay-outs kun je overwegen om [`FlexLayout`](/docs/components/flex-layout) of [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) als je gebonden component te gebruiken.
 
 :::note Componentuitbreiding
 Verleng nooit `Component` of `DwcComponent` direct. Gebruik altijd samenstellingspatronen met `Composite` om aangepaste componenten te bouwen.
 :::
 
-Overschrijf `initBoundComponent()` wanneer u meer flexibiliteit nodig heeft bij het creëren en beheren van het gebonden component, zoals het gebruik van parameterized constructors in plaats van de standaard constructor zonder argumenten. Gebruik dit patroon wanneer het gebonden component vereist dat componenten aan de constructeur worden doorgegeven in plaats van er later aan te worden toegevoegd.
+Overschrijf `initBoundComponent()` wanneer je meer flexibiliteit nodig hebt bij het creëren en beheren van het gebonden component, zoals het gebruik van geparameteriseerde constructeurs in plaats van de standaard constructor zonder argumenten. Gebruik dit patroon wanneer het gebonden component vereist dat componenten naar de constructor worden doorgegeven in plaats van later toegevoegd te worden.
 
 ```java title="CustomFormLayout.java"
 public class CustomFormLayout extends Composite<FlexLayout> {
@@ -53,7 +53,7 @@ public class CustomFormLayout extends Composite<FlexLayout> {
  protected FlexLayout initBoundComponent() {
    nameField = new TextField("Naam");
    emailField = new TextField("E-mail");
-   submitButton = new Button("Verstuur");
+   submitButton = new Button("Verzenden");
 
    FlexLayout layout = new FlexLayout(nameField, emailField, submitButton);
    layout.setDirection(FlexDirection.COLUMN);
@@ -66,7 +66,7 @@ public class CustomFormLayout extends Composite<FlexLayout> {
 
 ## Componentlevenscyclus {#component-lifecycle}
 
-webforJ beheert alle lifecycle management voor `Composite` componenten automatisch. Door gebruik te maken van de `getBoundComponent()` methode kan het meeste aangepaste gedrag in de constructor worden afgehandeld, inclusief het toevoegen van kindcomponenten, het instellen van eigenschappen, basislay-outopzet en registratie van evenementen.
+webforJ beheert automatische alle levenscyclusbeheer voor `Composite` componenten. Door de `getBoundComponent()` methode te gebruiken, kan het meeste aangepaste gedrag in de constructor worden afgehandeld, inclusief het toevoegen van kindcomponenten, het instellen van eigenschappen, basis lay-outconfiguratie en evenementregistratie.
 
 ```java
 public class UserDashboard extends Composite<FlexLayout> {
@@ -102,12 +102,12 @@ public class UserDashboard extends Composite<FlexLayout> {
  }
 
  private void performSearch() {
-   // Zoeklogica hier
+   // Zoek logica hier
  }
 }
 ```
 
-Als u aanvullende specifieke instellingen of opruimvereisten heeft, moet u mogelijk de optionele lifecycle hooks `onDidCreate()` en `onDidDestroy()` gebruiken:
+Als je aanvullende specifieke opstelling of opruimvereisten hebt, moet je mogelijk de optionele levenscyclus hooks `onDidCreate()` en `onDidDestroy()` gebruiken:
 
 ```java
 public class DataVisualizationPanel extends Composite<Div> {
@@ -115,7 +115,7 @@ public class DataVisualizationPanel extends Composite<Div> {
 
  @Override
  protected void onDidCreate(Div container) {
-   // Initialiseer componenten die DOM-hechting vereisen
+   // Initialiseer componenten die DOM-koppeling vereisen
    refreshInterval = new Interval(5.0, event -> updateData());
    refreshInterval.start();
  }
@@ -129,12 +129,12 @@ public class DataVisualizationPanel extends Composite<Div> {
  }
 
  private void updateData() {
-   // Logica voor gegevensupdate
+   // Gegevens update logica
  }
 }
 ```
 
-Als u acties moet uitvoeren nadat de component aan de DOM is gehecht, gebruik dan de `whenAttached()` methode:
+Als je acties moet uitvoeren nadat het component aan de DOM is gehecht, gebruik dan de `whenAttached()` methode:
 
 ```java title="InteractiveMap.java"
 public class InteractiveMap extends Composite<Div> {
@@ -151,22 +151,26 @@ public class InteractiveMap extends Composite<Div> {
 
 ## Voorbeeld `Composite` component {#example-composite-component}
 
-Het volgende voorbeeld demonstreert een Todo-app waarin elk item een `Composite` component is, bestaande uit een [`RadioButton`](../components/radiobutton) gestyled als een schakelaar en een Div met tekst:
+Het volgende voorbeeld demonstreert een Todo-app waarbij elk item een `Composite` component is dat bestaat uit een [`RadioButton`](../components/radiobutton) gestyled als een schakelaar en een Div met tekst:
 
-<ComponentDemo 
-path='/webforj/composite?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeView.java'
+<ComponentDemo
+path='/webforj/composite'
+files={[
+  'src/main/java/com/webforj/samples/views/composite/CompositeView.java',
+  'src/main/resources/static/composite/composite.css',
+]}
 height='500px'
 />
 
 ## Voorbeeld: Componentgroepering {#example-component-grouping}
 
-Soms wilt u misschien een `Composite` gebruiken om gerelateerde componenten samen te groeperen tot een enkele eenheid, zelfs wanneer herbruikbaarheid niet de belangrijkste zorg is:
+Soms wil je misschien een `Composite` gebruiken om gerelateerde componenten samen te groeperen in een enkele eenheid, zelfs wanneer herbruikbaarheid niet de belangrijkste zorg is:
 
 <ComponentDemo
-path='/webforj/analyticscardcomposite?'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/analyticscomposite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java'
+path='/webforj/analyticscardcomposite'
+files={[
+  'src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java',
+  'src/main/resources/static/composite/analyticscomposite.css',
+]}
 height='500px'
 />

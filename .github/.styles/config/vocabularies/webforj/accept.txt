@@ -61,3 +61,11 @@ Java
 DSL
 DOM
 OpenRewrite
+OKLCH
+HSL
+XSS
+CSRF
+SQL
+TLS
+OWASP
+JDBC

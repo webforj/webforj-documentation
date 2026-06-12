@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-popover>
 sidebar_class_name: sidebar--item__hidden
 slug: popover
-description: A user guide article for the popover
+description: Theme dwc-popover placement, surface, arrow visibility, and overlay through component-scoped CSS variables and shadow parts.
 // pagination_prev: null
 // pagination_next: null
 ---

@@ -1,0 +1,10 @@
+{
+  "label": "Application Security",
+  "position": 50,
+  "key": "security-application-security",
+  "className": "new-content",
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}

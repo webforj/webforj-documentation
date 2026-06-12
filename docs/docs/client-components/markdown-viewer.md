@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-markdown-viewer>
 sidebar_class_name: sidebar--item__hidden
 slug: markdown-viewer
-description: A user guide article for the markdown-viewer
+description: Style the dwc-markdown-viewer component with CSS variables and shadow parts to theme rendered Markdown content, typography, and code blocks.
 // pagination_prev: null
 // pagination_next: null
 ---
