@@ -1,10 +1,9 @@
 {
   "label": "Security",
   "position": 21,
-  "className": "has-new-content",
+  "className": "has-new-content cat-icon cat-icon--security",
   "link": {
     "type": "doc",
     "id": "overview"
-  },
-  "className": "cat-icon cat-icon--security"
+  }
 }
