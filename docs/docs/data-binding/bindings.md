@@ -19,7 +19,7 @@ This section introduces the basics of manually configuring bindings. Additionall
 ## Configure bindings {#configure-bindings}
 
 Start by creating a new instance of `BindingContext` which manages all bindings for a particular model.
-This context ensures that all bindings can be validated and updated collectively.
+This context validates and updates all bindings together.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
@@ -33,7 +33,7 @@ Each form should have only one `BindingContext` instance, and you should use thi
 
 A binding property is a specific field or attribute of a Java Bean that can be linked to a UI component in your app. 
 This linkage allows changes in the UI to directly affect the corresponding property of the data model, and vice versa, 
-facilitating a reactive user experience.
+so user edits and model values stay synchronized.
 
 When setting up a binding, you should provide the property name as a string. This name must match the field name in the Java Bean class. Here's a simple example:
 
@@ -41,7 +41,7 @@ When setting up a binding, you should provide the property name as a string. Thi
 BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
 context
   .bind(textField, "power")
-  .add()
+  .add();
 ```
 
 ```java
@@ -53,8 +53,58 @@ public class Hero  {
 }
 ```
 
-the `bind` methods returns a `BindingBuilder` which creates the `Binding` object and you can use to configure the binding several settings, the `add` method which
-is what actually gets the binding added to the context.
+The `bind` method returns a `BindingBuilder`, which creates the `Binding` object
+and lets you configure binding settings. Call the `add` method to add the binding
+to the context.
+
+### Nested bean properties {#nested-bean-properties}
+
+Use dotted property paths to bind a component to a property inside a nested bean.
+Each path segment follows Java Bean getter and setter conventions.
+
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/VerifyDataBindingNestedPropertiesSnippets.java"
+  region="data-binding.nested.manual"
+/>
+
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/Person.java"
+  region="data-binding.nested.person"
+/>
+
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/Address.java"
+  region="data-binding.nested.address"
+/>
+
+When reading from a bean, a `null` intermediate value returns `null` for the leaf
+property and doesn't create the nested object. For example, reading a `Person`
+whose `address` is `null` leaves `address` unchanged.
+
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/VerifyDataBindingNestedPropertiesSnippets.java"
+  region="data-binding.nested.read-null"
+/>
+
+When writing to a bean, the binding creates missing intermediate objects through
+an accessible no-argument constructor and the parent setter before writing the
+leaf value.
+
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/VerifyDataBindingNestedPropertiesSnippets.java"
+  region="data-binding.nested.write-create"
+/>
+
+Jakarta validation annotations on nested leaf properties are detected the same
+way as annotations on top-level properties when Jakarta validation is enabled.
+If `Address.street` has `@NotNull`, the binding for `"address.street"` marks
+the field as required. Nested constraints also validate during `write()` and
+`validate()`.
+
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/VerifyDataBindingNestedPropertiesSnippets.java"
+  region="data-binding.nested.required"
+/>
 
 ### The bound component {#the-bound-component}
 
@@ -126,13 +176,12 @@ All core components of webforJ have default configurations to automatically repo
 <!-- vale on -->
 
 In certain scenarios, you may want your app to display data without allowing the end-user to modify it directly through the UI. 
-This is where read-only data bindings become crucial. webforJ supports the configuration of bindings to be read-only, ensuring that 
-you can display data, but not edit it through bound UI components.
+Read-only data bindings cover this case: they display data, but don't edit it through bound UI components.
 
 ### Configuring readonly bindings {#configuring-readonly-bindings}
 
 To set up a read-only binding, you can configure the binding to turn off or ignore UI component input. 
-This ensures that the data remains unchanged from the UI perspective, while still updating programmatically if needed.
+The data remains unchanged from UI input, while still updating programmatically if needed.
 
 ```java
 // Configuring a text field to be read-only in the binding context
@@ -142,8 +191,8 @@ context.bind(nameTextField, "name")
   .add();
 ```
 
-In this configuration, `readOnly` ensures that the `nameTextField` doesn't accept user input, effectively making the text field display 
-the data without allowing modifications.
+In this configuration, `readOnly` makes the binding ignore user input from `nameTextField`. The text field displays
+the data without sending changes back to the model.
 
 :::info
 The binding can mark the component as read-only only if the UI components implements the `ReadOnlyAware` interface.
@@ -154,8 +203,8 @@ It's important to differentiate between bindings you configure as read-only and 
 When you mark a binding as read-only, it impacts how the binding manages data during the write process, not just the UI behavior.
 
 When you mark a binding as read-only, the system skips data updates. Any changes to the UI component won't transmit back to the data model. 
-This ensures that even if the UI component somehow receives user input, it won't update the underlying data model. 
-Maintaining this separation is crucial for preserving data integrity in scenarios where user actions shouldn't alter the data.
+This prevents even unexpected UI input from updating the underlying data model.
+This separation protects data in scenarios where user actions shouldn't alter the data.
 
 In contrast, setting a UI component as read-only, without configuring the binding itself as read-only, simply stops the user from making changes 
 to the UI component but doesn't stop the binding from updating the data model if changes occur programmatically or through other means.
@@ -164,7 +213,7 @@ to the UI component but doesn't stop the binding from updating the data model if
 ## Binding getters and setters {#binding-getters-and-setters}
 
 Setters and getters are methods in Java that set and get the values of properties, respectively.
-In the context of data binding, they are used to define how properties are updated and retrieved within the binding framework.
+In the context of data binding, they're used to define how properties are updated and retrieved within the binding framework.
 
 ### Customizing setters and getters {#customizing-setters-and-getters}
 

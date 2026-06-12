@@ -50,7 +50,15 @@ public class HeroRegistration extends App {
 }
 ```
 
-In the example above, the UI field name is `nameField`, but the bean property is `name`. You can annotate the UI field with the bean property name to ensure proper binding.
+In the example above, the UI field name is `nameField`, but the bean property is `name`. The annotation maps the component to `name`.
+
+The annotation value can also be a dotted path to a nested bean property. This
+uses the same nested property syntax as manual binding.
+
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/verify/PersonForm.java"
+  region="data-binding.nested.use-property"
+/>
 
 ### `BindingExclude` annotation {#bindingexclude-annotation}
 
@@ -121,7 +129,7 @@ public class UserRegistration extends App {
 
 ## Writing data automatically {#writing-data-automatically}
 
-To enhance the responsiveness and dynamism of applications, you can use the `observe` method. This method ensures that changes in UI components immediately propagate to the data model. It's particularly useful when you need continuous synchronization between the data model and the UI.
+Use the `observe` method when every valid UI change should update the data model immediately. It's particularly useful when you need continuous synchronization between the data model and the UI.
 
 The `observe` method registers a `ValueChangeEvent` listener on all bindings in the context to monitor changes made by the user then it instantly writes these changes to the bound properties of the model if they're valid. When you first invoke this method, it reflects the bean properties in the UI components.
 
@@ -163,11 +171,11 @@ When you mark a binding as required, it marks the component as required, provide
 BindingContext<User> context = new BindingContext<>(User.class, true);
 context
   .bind(emailField, "email")
-    .required()
-    .add()
+  .required()
+  .add();
 ```
 
- When utilizing [Jakarta annotations](./validation/jakarta-validation.md), the binding can be automatically detect required state based on the presence of any of the following annotations on bean properties:
+ When using [Jakarta annotations](./validation/jakarta-validation.md), the binding can automatically detect required state based on the presence of any of the following annotations on bean properties:
 
 1. `@NotNull` 
 2. `@NotEmpty` 

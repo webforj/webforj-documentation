@@ -148,6 +148,7 @@ module.exports = async function createConfig() {
   ],
   plugins: [
     'docusaurus-plugin-sass',
+    require.resolve('./plugins/source-snippets'),
     [
       'docusaurus-plugin-llms',
       {
