@@ -149,6 +149,17 @@ module.exports = async function createConfig() {
   plugins: [
     'docusaurus-plugin-sass',
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'cookbook',
+        path: 'cookbook',
+        routeBasePath: 'cookbook',
+        sidebarPath: require.resolve('./cookbook-sidebars.js'),
+        editUrl: 'https://github.com/webforj/webforj-documentation/edit/main/docs/',
+        exclude: ['recipe-template.md', 'README.md'],
+      },
+    ],
+    [
       'docusaurus-plugin-llms',
       {
         generateLLMsTxt: true,
@@ -256,6 +267,12 @@ module.exports = async function createConfig() {
           label: 'Components',
           to: '/docs/components/overview',
           activeBasePath: '/docs/components'
+        },
+        {
+          position: 'left',
+          label: 'Cookbook',
+          to: '/cookbook',
+          activeBasePath: '/cookbook',
         },
         {
           type: 'search',
