@@ -1,3 +1,5 @@
+@use "sidebar-icons";
+
   [data-theme='light'] .navbar-sidebar__item {
     --ifm-menu-link-sublist-icon-filter: none;
   }
@@ -157,5 +159,6 @@
       color: var(--dwc-color-primary-text);
     }
 
+    @include sidebar-icons.category-icons;
 
   }
