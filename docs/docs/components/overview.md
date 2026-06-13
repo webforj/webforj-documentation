@@ -145,6 +145,10 @@ Data entry components provide essential tools for capturing user input and manag
   <GalleryCard header="ListBox" href="lists/listbox" image="/img/components/light/ListBox.webp" imageDark="/img/components/dark/ListBox.webp">
     <p>A component that displays a scrollable list of options, allowing users to select one or more items from the list.</p>
   </GalleryCard>
+
+  <GalleryCard header="Upload" href="upload" image="/img/components/light/Upload.webp" imageDark="/img/components/dark/Upload.webp">
+  <p>An inline file picker that lets users select one or more files from their local machine and upload them to the server, with drag-and-drop, filters, and per-file event tracking.</p>
+</GalleryCard>
 </GalleryGrid>
 
 ## Option dialogs {#option-dialogs}
