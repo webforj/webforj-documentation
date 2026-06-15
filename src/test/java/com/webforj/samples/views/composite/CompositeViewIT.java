@@ -40,4 +40,12 @@ public class CompositeViewIT extends BaseTest {
     Locator radioButtons = page.getByRole(AriaRole.RADIO);
     assertThat(radioButtons.nth(3)).not().isVisible();
   }
+
+  @Test
+  public void testLiteralCharacters() {
+    compositePage.getToDoInput().fill("<html><b>New Task</b></html>");
+    compositePage.getToDoInput().press("Enter");
+    Locator addedItem = page.getByText("<html><b>New Task</b></html>");
+    assertThat(addedItem).isVisible();
+  }
 }
