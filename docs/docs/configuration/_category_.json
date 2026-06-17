@@ -1,6 +1,7 @@
 {
   "label": "Configuration",
   "position": 90,
+  "className": "has-new-content",
   "link": {
     "type": "doc",
     "id": "overview"

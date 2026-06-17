@@ -1,6 +1,6 @@
 ---
 title: Snapshots
-sidebar_position: 35
+sidebar_position: 30
 description: Locate the latest webforJ snapshot version and add the Central Portal Snapshots repository to consume pre-release builds.
 ---
 
