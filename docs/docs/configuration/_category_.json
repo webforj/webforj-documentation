@@ -1,10 +1,9 @@
 {
   "label": "Configuration",
   "position": 90,
-  "className": "has-new-content",
+  "className": "has-new-content cat-icon cat-icon--configuration",
   "link": {
     "type": "doc",
     "id": "overview"
-  },
-  "className": "cat-icon cat-icon--configuration"
+  }
 }
