@@ -2,19 +2,34 @@
 // To run this program and re-generate the files, navigate to the client-components
 // directory and run the following command:
 // node ./create_files.js
+//
+// Existing hand-curated `description:` frontmatter on a file is preserved across
+// regenerations; only the body and other frontmatter fields are rewritten. New
+// components (no existing file) get a generic description that should be
+// hand-edited afterward.
 
 const fs = require('fs');
 
-// Define the output directory where markdown files will be generated
 const outputDirectory = './';
 
-// Ensure the output directory exists
 if (!fs.existsSync(outputDirectory)) {
   fs.mkdirSync(outputDirectory);
 }
 
-// Sample JSON data (replace with your actual data)
 const jsonUrl = 'https://dwc.style/docs/dwc-components.json';
+
+function readExistingDescription(filePath) {
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+  const content = fs.readFileSync(filePath, 'utf8');
+  const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!fm) {
+    return null;
+  }
+  const desc = fm[1].match(/^description:\s*(.+?)\s*$/m);
+  return desc ? desc[1] : null;
+}
 
 async function fetchData() {
   try {
@@ -23,21 +38,25 @@ async function fetchData() {
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
 
-const jsonData = await response.json();
+    const jsonData = await response.json();
 
-// Iterate through the components in the JSON data
-jsonData.components.forEach((componentData) => {
-  const {  tag, encapsulation, docsTags, styles, props, dependencies } = componentData;
-  const partItems = docsTags?.filter((docTag) => docTag.name === "part");
+    jsonData.components.forEach((componentData) => {
+      const { tag, encapsulation, docsTags, styles, props, dependencies } = componentData;
+      const partItems = docsTags?.filter((docTag) => docTag.name === 'part');
 
-  const formattedTagName = tag.replace("dwc-", "");
-  // Create the markdown content for each component
-  const markdownContent = `---
+      const formattedTagName = tag.replace('dwc-', '');
+      const filePath = `${outputDirectory}${formattedTagName}.md`;
+
+      const existingDescription = readExistingDescription(filePath);
+      const description = existingDescription
+        || `Style the ${tag} client component with CSS variables, shadow parts, and slots for theming.`;
+
+      const markdownContent = `---
 sidebar_position: 0
 title: <${tag}>
 sidebar_class_name: sidebar--item__hidden
 slug: ${formattedTagName}
-description: A user guide article for the ${formattedTagName}
+description: ${description}
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -51,26 +70,24 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIENT COMPONENT
-This section outlines styling information for the **\`<${tag}>\`** component. This component is **client-side only** - it can't be instantiated on its own via the API, but may make up part of API components.
+This section outlines styling information for the **\`<${tag}>\`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="${tag}" clientComponent />
 
 `;
 
-  // Write the markdown content to a file
-  const filePath = `${outputDirectory}${formattedTagName}.md`;
-  fs.writeFileSync(filePath, markdownContent);
-  console.log(`Generated: ${filePath}`);
-});
+      fs.writeFileSync(filePath, markdownContent);
+      const status = existingDescription ? 'preserved description' : 'new component';
+      console.log(`Generated: ${filePath} (${status})`);
+    });
 
-console.log('Markdown files have been generated.');
-}
- catch (error) {
-  console.error('Error:', error.message);
-}
+    console.log('Markdown files have been generated.');
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
 }
 
-fetchData(); // Call the async function to start fetching data
+fetchData();
