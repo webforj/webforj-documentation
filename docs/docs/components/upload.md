@@ -19,7 +19,7 @@ The `Upload` component is an inline file picker that lets the user select one or
 Use `Upload` when file selection is part of a workflow the user is already in, like editing a profile or building a post. Reach for [`FileUploadDialog`](./option-dialogs/file-upload) instead when uploads should be modal, for example when a file is strictly required before the user can continue.
 :::
  
-Create an `Upload` and add it to a layout. The default configuration shows a select button, a drop area, the current file list, and upload and cancel controls.
+Create an `Upload` and add it to a layout. The default configuration shows a select button, a drop area, the current file list, and an upload button. The cancel button is hidden by default.
 
 ```java
 Upload upload = new Upload();
@@ -144,17 +144,17 @@ Reach for `COMPLETED` in uploaders that live on screen across multiple actions, 
 
 ### Programmatic actions {#programmatic-actions}
 
-Most uploads start from a user click, but the same actions are available from server code:
+Most uploads start from a user click, but the same actions are available from server code. Both operate on the files the user has already picked; there's no way to select files on the user's behalf from the server.
 
 ```java
-// Start uploading staged files
+// Upload the current selection, as if the user clicked Upload
 upload.upload();
 
 // Cancel any in-progress transfers
 upload.cancel();
 ```
 
-Call `upload()` after staging files through some other path, like a server-side selection. Call `cancel()` from a "stop" button outside the component, or from a route guard when the user navigates away mid-transfer.
+Call `upload()` to trigger the transfer from a control outside the component, such as a single submit button shared by a larger form. Call `cancel()` from a "stop" button outside the component, or from a route guard when the user navigates away mid-transfer.
 
 ## Mobile capture {#mobile-capture}
 
@@ -274,7 +274,7 @@ These fire once per file, while a transfer is happening or right after it fails.
 ```java
 upload.onProgress(e -> {
     // Fires repeatedly during a single file's transfer.
-    int percent = (int) e.getProgress();
+    double percent = e.getProgress();
 });
  
 upload.onReject(e -> {
@@ -283,7 +283,7 @@ upload.onReject(e -> {
 });
 ```
  
-Within this group, `UploadRejectEvent` is the odd one out. It fires before any bytes move, when a file fails a client-side check like `setMaxFileSize` or `setMaxFiles`. `UploadErrorEvent`, by contrast, fires after the transfer started and something went wrong on the way to the server.
+Within this group, `UploadRejectEvent` is the odd one out. It fires before any bytes move, when a file fails a client-side constraint like `setMaxFileSize` or `setMaxFiles`. `UploadErrorEvent`, by contrast, fires after the transfer started and something went wrong on the way to the server.
  
 ### Whole batch {#whole-batch}
  

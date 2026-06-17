@@ -4,6 +4,7 @@ sidebar_position: 85
 hide_table_of_contents: true
 sidebar_class_name: has-new-content
 hide_giscus_comments: true
+description: Browse the webforJ UI component catalog covering layouts, data entry, navigation, feedback, and visualization components.
 ---
 
 <Head>
@@ -146,8 +147,8 @@ Data entry components provide essential tools for capturing user input and manag
   </GalleryCard>
 
   <GalleryCard header="Upload" href="upload" image="/img/components/light/Upload.webp" imageDark="/img/components/dark/Upload.webp">
-  <p>An inline file picker that lets users select one or more files from their local machine and upload them to the server, with drag-and-drop, filters, and per-file event tracking.</p>
-</GalleryCard>
+    <p>An inline file picker that lets users select one or more files from their local machine and upload them to the server, with drag-and-drop, filters, and per-file event tracking.</p>
+  </GalleryCard>
 </GalleryGrid>
 
 ## Option dialogs {#option-dialogs}

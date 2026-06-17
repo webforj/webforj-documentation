@@ -30,11 +30,13 @@ public class UploadView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)");
 
     resume.addFilter("Resume", "*.pdf;*.docx");
+    resume.setActiveFilter("Resume");
     resume.setSelectionMode(Upload.SelectionMode.SINGLE);
     resume.setMaxFileSize(5d * 1024d * 1024d);
     resume.setAutoUpload(Upload.AutoUpload.ON_SELECT);
     resume.setVisible(false, Upload.Part.UPLOAD_BUTTON);
     resume.setFileSystemAccess(false);
+    resume.setAllFilesFilterEnabled(false);
     resume.setStyle("margin-bottom", "var(--dwc-space-s)");
     resume.onUpload(
         e ->
@@ -69,6 +71,7 @@ public class UploadView extends Composite<FlexLayout> {
     Span helper = new Span(helperText);
     helper.addClassName("upload-demo__helper");
     group.add(fieldLabel, upload, helper);
+
     return group;
   }
 }

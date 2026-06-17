@@ -4,7 +4,7 @@
   padding: var(--dwc-space-m);
   border: 1px solid var(--dwc-border-color);
   border-radius: var(--dwc-border-radius-m);
-  background: var(--dwc-surface-2);
+  background: var(--dwc-surface-3);
 }
 
 .upload-demo--narrow { max-width: 520px; }
