@@ -11,27 +11,33 @@ description: Select and upload one or more files from the local machine with the
 <JavadocLink type="foundation" location="com/webforj/component/upload/Upload" top='true'/>
 
 
-The `Upload` component is an inline file picker that lets the user select one or more files from their local machine and send them to the server. Unlike [`FileUploadDialog`](./option-dialogs/file-upload), which presents the picker in a modal that blocks the app until the user finishes, `Upload` renders directly in the page layout. It fits anywhere a file input belongs: a profile form, an attachment field next to a comment box, or a dropzone on a media management page.
+The `Upload` component is an inline file picker that lets the user select one or more files from their local machine and send them to the server. Unlike [`FileUploadDialog`](/docs/components/option-dialogs/file-upload), which presents the picker in a modal that blocks the app until the user finishes, `Upload` renders directly in the page layout. It fits anywhere a file input belongs: a profile form, an attachment field next to a comment box, or a dropzone on a media management page.
 
 <!-- INTRO_END -->
  
-:::tip When to use Upload
-Use `Upload` when file selection is part of a workflow the user is already in, like editing a profile or building a post. Reach for [`FileUploadDialog`](./option-dialogs/file-upload) instead when uploads should be modal, for example when a file is strictly required before the user can continue.
+:::tip When to use an `Upload`
+Use the `Upload` component when file selection is accompanied with other actions in a workflow, like editing a profile or building a post. Reach for [`FileUploadDialog`](/docs/components/option-dialogs/file-upload) instead when uploads should be modal, for example when a file is strictly required before the user can continue.
 :::
- 
-Create an `Upload` and add it to a layout. The default configuration shows a select button, a drop area, the current file list, and an upload button. The cancel button is hidden by default.
+
+## Creating an upload {#creating-an-upload}
+
+By default, an `Upload` component shows a select button, a drop area, the current file list, and an upload button. Next to each file in the file list are icon buttons for uploading and canceling, but the cancel icon is hidden by default. After creating an `Upload`, you can add filters, like allowable file types, and change which parts are visible.
 
 ```java
 Upload upload = new Upload();
 upload.addFilter("Images", "*.png;*.jpg");
+upload.setVisible(false, Upload.Part.LIST);
 layout.add(upload);
 ```
  
-The example below drops a resume `Upload` into a hiring form, alongside a name field and submit button.
+The following example drops a resume `Upload` into a hiring form, alongside a name field and submit button.
  
 <ComponentDemo
 path='/webforj/upload'
-files={['src/main/java/com/webforj/samples/views/upload/UploadView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/upload/UploadView.java',
+  'src/main/resources/static/css/upload/upload.css',
+]}
 height='550px'
 />
 
@@ -40,11 +46,15 @@ height='550px'
 How the picker behaves is controlled by a few independent settings: how many files the user can pick at once, what's selectable from the local filesystem, and what types are visible in the file dialog. Together they shape the picking experience to fit the field.
 
  
-Here's a gallery uploader configured with both image and video filters, multi-file selection, and a 20-file cap:
+Here's a gallery uploader configured with both image and video filters, multi-file selection, and a 20-file cap:s
 
 <ComponentDemo
 path='/webforj/uploadpickingfiles'
-files={['src/main/java/com/webforj/samples/views/upload/UploadPickingFilesView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/upload/UploadPickingFilesView.java',
+  'src/main/resources/static/css/upload/upload.css',
+]}
+
 height='450px'
 />
 
@@ -207,7 +217,7 @@ height='650px'
 
 ### Part visibility {#part-visibility}
 
-When a preset gets close but not quite to the desired shape, individual parts can be shown or hidden. This is useful for small adjustments like hiding the cancel button on a single-file picker that uploads instantly, or hiding the drop label on a button-only field that still allows drops.
+When a preset gets close but not quite to the desired shape, individual parts can be shown or hidden. This is useful for small adjustments like hiding the cancel button on a single-file picker that uploads instantly, or hiding the drop label on a button-only field that still allows drops. When using `setPreset()` and `setVisible()` together, call `setPreset()` first.
 
 ```java
 upload.setVisible(false, Upload.Part.DROP_LABEL);
@@ -223,7 +233,7 @@ upload.setPreset(Upload.Preset.HEADLESS);
 upload.add(new Table<>());
 ```
 
-In the demo below, the `HEADLESS` preset is used to project a `Table` into the Upload's bounds. Drop a CSV and its rows render directly inside the component, with columns built from the file's header row.
+In the following example, the `HEADLESS` preset is used to project a `Table` into the Upload's bounds. Drop a CSV and its rows render directly inside the component, with columns built from the file's header row.
 
 <ComponentDemo
 path='/webforj/uploaddefaultslot'
@@ -304,7 +314,7 @@ upload.onComplete(e -> {
  
 `onProgress` and `onListProgress` cover the same transfer from two angles. `onProgress` is per-file, and is the right hook when each file has its own progress UI. `onListProgress` fires alongside it with aggregate counters (`getListTotal`, `getListRemaining`, `getListProgress`) for a single batch-wide indicator.
  
-In the example below, `onChange`, `onListProgress`, and `onComplete` drive a progress bar and status line that update as the file list changes and as files transfer.
+In the following example, `onChange`, `onListProgress`, and `onComplete` drive a progress bar and status line that update as the file list changes and as files transfer.
  
 <ComponentDemo
 path='/webforj/uploadevents'
@@ -314,7 +324,7 @@ height='450px'
 
 ## Internationalization (i18n) {#internationalization-i18n}
 
-The labels and messages inside the component are customizable through the `FileUploadI18n` bundle. The bundle type keeps the `FileUploadI18n` name because it's shared with the modal [`FileUploadDialog`](./option-dialogs/file-upload).
+The labels and messages inside the component are customizable through the `FileUploadI18n` bundle. The bundle type keeps the `FileUploadI18n` name because it's shared with the modal [`FileUploadDialog`](/docs/components/option-dialogs/file-upload).
 
 ```java
 FileUploadI18n bundle = new FileUploadI18n();
