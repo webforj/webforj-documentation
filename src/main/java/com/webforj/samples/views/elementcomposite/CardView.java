@@ -6,6 +6,7 @@ import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Component;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
+import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.element.ElementCompositeContainer;
 import com.webforj.component.element.annotation.NodeName;
 import com.webforj.component.html.elements.H3;
@@ -50,10 +51,12 @@ public class CardView extends Composite<FlexLayout> {
             "Advanced analytics",
             "Custom integrations");
 
-    self.setAlignment(FlexAlignment.STRETCH)
+    self.setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-m)")
-        .setMargin("var(--dwc-space-l)")
+        .setStyle("min-height", "100vh")
+        .setStyle("padding", "var(--dwc-space-l)")
+        .setStyle("box-sizing", "border-box")
         .add(basic, pro);
   }
 
@@ -64,7 +67,7 @@ public class CardView extends Composite<FlexLayout> {
     card.addToHeader(new H3(title));
     Span taglineSpan = new Span(tagline);
     taglineSpan.setStyle("display", "block");
-    taglineSpan.setStyle("color", "var(--dwc-color-neutral-600)");
+    taglineSpan.setStyle("color", "var(--dwc-color-default-text-light)");
     card.addToHeader(taglineSpan);
 
     H4 priceH4 = new H4(price);
@@ -82,13 +85,14 @@ public class CardView extends Composite<FlexLayout> {
     card.add(ul);
 
     Button button = new Button(cta);
+    button.setTheme(ButtonTheme.PRIMARY);
     button.setStyle("width", "100%");
     card.addToFooter(button);
 
     card.setStyle("--border-color", "var(--dwc-color-default)");
     card.setStyle("--border-radius", "var(--dwc-border-radius-m)");
     card.setStyle("--padding", "var(--dwc-space-m)");
-    card.setStyle("background", "var(--dwc-surface-3)");
+    card.setStyle("--sl-panel-background-color", "var(--dwc-surface-3)");
     card.setStyle("width", "280px");
 
     return card;

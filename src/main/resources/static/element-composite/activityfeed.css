@@ -25,7 +25,7 @@
 }
 
 .activity-feed__time {
-  color: var(--dwc-color-neutral-600);
+  color: var(--dwc-color-default-text-light);
   font-size: 0.85rem;
   display: block;
 }

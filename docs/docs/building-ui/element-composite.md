@@ -75,7 +75,16 @@ See [Importing CSS files](../managing-resources/importing-assets#importing-css-f
 
 Properties and attributes represent the state of a web component, typically holding data or configuration. `ElementComposite` exposes both through `PropertyDescriptor`.
 
-Declare a `PropertyDescriptor` field, then use `set()` to assign a value. The signature is `set(PropertyDescriptor<V> property, V value)`.
+Two factory methods on `PropertyDescriptor` produce the descriptor itself, one per binding target:
+
+```java
+PropertyDescriptor<T> property  = PropertyDescriptor.property(String name, T defaultValue);
+PropertyDescriptor<T> attribute = PropertyDescriptor.attribute(String name, T defaultValue);
+```
+
+`PropertyDescriptor.property()` binds to a JavaScript property on the DOM node. `PropertyDescriptor.attribute()` binds to an HTML attribute. The first argument is the name the web component expects. The second is a default value, which also fixes the descriptor's Java type.
+
+Declare the descriptor as a private field on the component, then read and write through it with `set(PropertyDescriptor<V> property, V value)` and `get(PropertyDescriptor<V> property)`.
 
 :::info
 Properties are internal state on the DOM node and don't reflect in the markup. Attributes are HTML markup, visible to external scripts and CSS.
@@ -91,20 +100,38 @@ set(title, "My Title");
 set(value, "My Value");
 ```
 
-Use `get()` to read a property. An optional `boolean` parameter (false by default) controls whether the read goes to the client. Reading from the client adds a network round trip but is necessary when the value can change purely on the client side.
-
-The third parameter, a `Type`, controls how the result is cast.
-
-:::tip
-The `Type` parameter is rarely needed. The descriptor's generic type usually carries enough information for the cast.
-:::
+The calls above use `set()` directly to show the primitive form. In practice, `set()` and `get()` are `protected` methods on `ElementComposite`. They're the primitive layer that synchronizes Java values with the underlying element, not the public API consumers call. The intended pattern is to keep the `PropertyDescriptor` private and write public `setX()` and `getX()` methods that delegate to the primitives.
 
 ```java
-// Example property called "title" in an ElementComposite class
-private final PropertyDescriptor<String> title = PropertyDescriptor.property("title", "");
-//...
-String currentTitle = get(title, false, String.class);
+@NodeName("my-card")
+public class Card extends ElementComposite {
+
+  private final PropertyDescriptor<String> heading =
+      PropertyDescriptor.property("heading", "");
+
+  public Card setHeading(String value) {
+    set(heading, value);     // protected primitive
+    return this;
+  }
+
+  public String getHeading() {
+    return get(heading);     // protected primitive
+  }
+}
 ```
+
+A single call to `set(descriptor, value)` does three things at once. It pushes the value to the client (through `setProperty()` for properties, or `setAttribute()` for attributes, with simple types like `String`, `Boolean`, and `Number` serialized via `String.valueOf()` and everything else JSON-encoded). It stores the value in a local server-side cache, one map per component instance. And it records the runtime type alongside the value, so later `get()` calls know how to deserialize.
+
+That local cache is the reason `get()` can be cheap by default. `get(descriptor)` returns the cached value from the server-side store with no network call, because every `set()` keeps the cache in sync with the client. The optional `boolean` second argument controls whether to bypass the cache and read from the browser instead.
+
+```java
+String cached = get(heading);            // reads from the server-side cache
+String live = get(heading, true);        // forces a read from the browser
+```
+
+Set `fromClient` to true when the value can change on the client without the server's knowledge, such as a typed `<input>` value. For server-driven properties, the default avoids a round trip.
+
+The optional third argument is a `java.lang.reflect.Type` and controls how the result is deserialized. webforJ resolves the type in this order: the explicit `Type` argument if passed, then the runtime type recorded by a previous `set()` on the same descriptor, then `Object.class`. In practice the type recorded by a prior `set()` is enough, so the third argument can usually be omitted. It's needed when the recorded class loses information the deserializer depends on, such as a parameterized type like `List<String>` whose runtime class is just `ArrayList`.
 
 The demo below adds properties for relative-time based on the web component's docs and exposes them through getters and setters. Each row in the activity feed uses different `format` and `numeric` values to show how the same component renders under varied configurations.
 
@@ -144,7 +171,14 @@ When wrapping a third-party web component, check the component's documentation t
 
 ### Typing properties {#typing-properties}
 
-The generic parameter on `PropertyDescriptor<T>` declares the value's Java type. webforJ uses this information to serialize and deserialize values when communicating with the client.
+A descriptor is parameterized by the Java type of its value. The full declaration syntax is:
+
+```java
+private final PropertyDescriptor<T> name =
+    PropertyDescriptor.property(String name, T defaultValue);
+```
+
+The `<T>` generic parameter declares the value's type. The default value's runtime type also fixes `T`, so the generic argument rarely needs to be specified explicitly. webforJ uses `T` to serialize and deserialize values when communicating with the client.
 
 ```java
 private final PropertyDescriptor<String> label =
@@ -228,6 +262,50 @@ public Variant getVariant() {
 
 This is the same pattern webforJ's built-in components use for `Theme`, `Expanse`, and similar enums. The public Java API stays type-safe, and the value the web component receives is the string from `@SerializedName`.
 
+### Testing properties {#testing-properties}
+
+`PropertyDescriptorTester` validates that every `PropertyDescriptor` in a component is wired correctly. It scans the class for descriptor fields, calls each setter with the default value, and compares the result against what the getter returns. The tester catches integration mistakes before they reach a running app: a setter that writes to the wrong descriptor, a getter that reads a different property, a default value that doesn't round-trip, or a missing accessor for a declared descriptor.
+
+A baseline test for a component looks like this:
+
+```java
+import com.webforj.component.element.PropertyDescriptorTester;
+import org.junit.jupiter.api.Test;
+
+class CardTest {
+
+  @Test
+  void validateProperties() {
+    Card component = new Card();
+    PropertyDescriptorTester.run(Card.class, component);
+  }
+}
+```
+
+#### Excluding properties {#excluding-properties}
+
+Some descriptors don't follow standard getter and setter conventions, or they rely on external state the test can't satisfy. Annotate them with `@PropertyExclude` to skip them.
+
+```java
+@PropertyExclude
+private final PropertyDescriptor<String> internal =
+    PropertyDescriptor.property("internal", "");
+```
+
+#### Custom getter and setter names {#custom-getter-and-setter-names}
+
+If a descriptor uses non-standard accessor names, declare them with `@PropertyMethods`.
+
+```java
+@PropertyMethods(getter = "retrieveValue", setter = "updateValue")
+private final PropertyDescriptor<String> custom =
+    PropertyDescriptor.property("custom", "default");
+```
+
+The `target` parameter accepts a class when the accessors live somewhere other than the component itself.
+
+For more detail on the testing surface, see [PropertyDescriptorTester](../testing/property-descriptor-tester).
+
 ## Concern interfaces {#concern-interfaces}
 
 Concern interfaces give an `ElementComposite` subclass component capabilities without writing the implementation yourself. The interfaces forward calls to the underlying element. Implement the ones the component should support, parameterized with the subclass type so chaining returns the component:
@@ -249,7 +327,9 @@ The three interfaces above cover everything `MyBadge` needs without any method b
 
 For the full set of available interfaces and what each one provides, see [Concern interfaces](./component-fundamentals#concern-interfaces) in the Understanding Components article. If a default forwarding doesn't match what the wrapped element exposes, override the method in the subclass.
 
-## Event registration {#event-registration}
+## Events {#events}
+
+### Event registration {#event-registration}
 
 Web components dispatch DOM events when something happens in the browser. To react from Java, listen for those events with `addEventListener()`. The set of events a component dispatches varies, so check the component's own docs for the names and payloads available.
 
@@ -270,17 +350,31 @@ addEventListener(ElementClickEvent.class, event -> {
 
 ### Built-in event classes {#built-in-event-classes}
 
-webforJ provides pre-built event classes with typed data access:
+`ElementClickEvent` is the one built-in event class `ElementComposite` ships with. It surfaces mouse click events on the underlying element with typed accessors for coordinates (`getClientX()`, `getClientY()`), button information (`getButton()`), and modifier keys (`isCtrlKey()`, `isShiftKey()`, and so on).
 
-- **`ElementClickEvent`**: Mouse click events with coordinates (`getClientX()`, `getClientY()`), button information (`getButton()`), and modifier keys (`isCtrlKey()`, `isShiftKey()`, etc.). Register through `addEventListener(ElementClickEvent.class, ...)`.
-- **`ElementDefinedEvent`**: Fired when a custom element is defined in the DOM and ready for use. This event is dispatched on the underlying `Element`, so listen for it through `getElement()`.
-- **`ElementEvent`**: The framework's raw event payload class, carrying the event type (`getType()`), event ID (`getId()`), and options. You typically work with `ElementClickEvent` or a custom event class instead of subscribing to `ElementEvent` directly.
+To expose click handling on the public API of a subclass, implement the `HasElementClickListener<T>` concern interface. It provides default `onClick()` and `addClickListener()` methods that delegate to the protected `addEventListener()` primitive.
+
+```java
+@NodeName("my-badge")
+public class MyBadge extends ElementComposite
+    implements HasElementClickListener<MyBadge> {
+  // onClick() and addClickListener() are now available on MyBadge
+}
+
+new MyBadge().onClick(event -> {
+  if (event.isShiftKey()) {
+    // ...
+  }
+});
+```
+
+For any other event the underlying web component dispatches, define a custom event class. See [Custom event classes](#custom-event-classes).
 
 ### Event payloads {#event-payloads}
 
 Events carry data from the client to your Java code. Access this data through `getData()` for raw event data or use typed methods when available on built-in event classes. See the [Events guide](../building-ui/events) for more on efficient payload handling.
 
-## Custom event classes {#custom-event-classes}
+### Custom event classes {#custom-event-classes}
 
 Define custom event classes with `@EventName` and `@EventOptions` to capture client-side data in a typed Java event. Use this when the Java handler needs values from the browser.
 
@@ -294,7 +388,7 @@ files={['src/main/java/com/webforj/samples/views/elementcomposite/RatingView.jav
 height='220px'
 />
 
-## `ElementEventOptions` {#elementeventoptions}
+### Event options {#event-options}
 
 `ElementEventOptions` configures the event payload, debounce or throttle timing, filter expressions, and pre-execution code. The snippet below shows the options:
 
@@ -323,7 +417,7 @@ addEventListener(InputEvent.class, this::handleSearch, options);
 `ElementComposite` exposes only the class-based form `addEventListener(Class, listener, options)`. Use it with an event class annotated with `@EventName`. To register against a string event name directly, call `getElement().addEventListener("input", listener, options)`.
 :::
 
-### Performance control {#performance-control}
+#### Performance control {#performance-control}
 
 **Debouncing** delays execution until activity stops:
 
@@ -343,29 +437,11 @@ Available debounce phases:
 options.setThrottle(100); // Fire at most once per 100ms
 ```
 
-## Options merging {#options-merging}
-
-Use `mergeWith()` to combine event configurations. Each instance passed in updates the receiver with its non-empty values, so values on the argument override anything set on the receiver. When multiple instances are passed, the last non-empty value across them wins.
-
-```java
-ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
-```
-
 ## Interacting with slots {#interacting-with-slots}
 
-Slots are placeholders inside a web component that consumers fill with content. The following methods on the underlying `Element` (accessed through `getElement()`) work with slots:
+Slots are placeholders inside a web component that users fill with content. The web component declares its slots in its template with `<slot>` or `<slot name="...">`, and the wrapper exposes methods that put Java components into those slots.
 
-1. **`findComponentSlot()`**: Searches all slots for a specific component and returns the name of the slot containing it. Returns an empty string if the component isn't in any slot.
-
-2. **`getComponentsInSlot()`**: Returns the list of components assigned to a given slot. Optionally pass a class type to filter the results.
-
-3. **`getFirstComponentInSlot()`**: Returns the first component assigned to a slot. Optionally pass a class type to filter.
-
-The `add()` method also accepts a `String` slot name as its first argument.
-
-### `ElementCompositeContainer` {#elementcompositecontainer}
-
-`ElementComposite` is the right base class when the component is a leaf node with no children, like a button or a badge. When the component should accept child components into named or default slots, extend `ElementCompositeContainer` instead. It carries the same property and attribute machinery plus the methods needed to add children.
+To add content to slots, extend `ElementCompositeContainer` instead of `ElementComposite`. The container carries the same property and attribute machinery plus the methods needed to add children. Children added through `add()` go into the default slot. Children added through `getElement().add(slotName, components)` go into the named slot.
 
 ```java
 @NodeName("my-dialog")
@@ -386,8 +462,6 @@ public class Dialog extends ElementCompositeContainer {
 }
 ```
 
-Children added through `add()` go into the default slot. Children added through `getElement().add(slotName, components)` go into the named slot. The web component declares its slots the same way any custom element does, with `<slot name="footer">` in its template.
-
 The demo below shows two pricing cards built with [`sl-card`](https://shoelace.style/components/card), populating the `header`, default, and `footer` slots from Java:
 
 <ComponentDemo 
@@ -395,48 +469,12 @@ path='/webforj/card'
 files={['src/main/java/com/webforj/samples/views/elementcomposite/CardView.java']}
 height='400px'
 />
- 
 
-## Testing properties {#testing-properties}
+### Inspecting slot contents {#inspecting-slot-contents}
 
-`PropertyDescriptorTester` validates that every `PropertyDescriptor` in a component is wired correctly. It scans the class for descriptor fields, calls each setter with the default value, and compares the result against what the getter returns. The tester catches integration mistakes before they reach a running app: a setter that writes to the wrong descriptor, a getter that reads a different property, a default value that doesn't round-trip, or a missing accessor for a declared descriptor.
+The underlying `Element` (accessed through `getElement()`) provides methods for reading back what's currently assigned to slots:
 
-A baseline test for a component looks like this:
+- **`findComponentSlot()`**: searches all slots for a specific component and returns the name of the slot containing it, or an empty string if the component isn't in any slot.
+- **`getComponentsInSlot()`**: returns the list of components assigned to a given slot. Optionally takes a class type to filter the results.
+- **`getFirstComponentInSlot()`**: returns the first component assigned to a slot. Optionally takes a class type to filter.
 
-```java
-import com.webforj.component.element.PropertyDescriptorTester;
-import org.junit.jupiter.api.Test;
-
-class CardTest {
-
-  @Test
-  void validateProperties() {
-    Card component = new Card();
-    PropertyDescriptorTester.run(Card.class, component);
-  }
-}
-```
-
-### Excluding properties {#excluding-properties}
-
-Some descriptors don't follow standard getter and setter conventions, or they rely on external state the test can't satisfy. Annotate them with `@PropertyExclude` to skip them.
-
-```java
-@PropertyExclude
-private final PropertyDescriptor<String> internal =
-    PropertyDescriptor.property("internal", "");
-```
-
-### Custom getter and setter names {#custom-getter-and-setter-names}
-
-If a descriptor uses non-standard accessor names, declare them with `@PropertyMethods`.
-
-```java
-@PropertyMethods(getter = "retrieveValue", setter = "updateValue")
-private final PropertyDescriptor<String> custom =
-    PropertyDescriptor.property("custom", "default");
-```
-
-The `target` parameter accepts a class when the accessors live somewhere other than the component itself.
-
-For more detail on the testing surface, see [PropertyDescriptorTester](../testing/property-descriptor-tester).
