@@ -37,8 +37,10 @@ public class TasksView extends Composite<Div> {
         .setRenderer(doneRenderer);
 
     table.setRepository(new CollectionRepository<>(List.of(
-        new Task("Review invoice", true),
-        new Task("Send reminder", false))));
+          new Task("Review invoice", true),
+          new Task("Send reminder", false))))
+        .setWidth("100vw")
+        .setHeight("100vh");
 
     self.add(table);
   }
@@ -61,4 +63,5 @@ public class TasksView extends Composite<Div> {
     }
   }
 }
+
 ```
