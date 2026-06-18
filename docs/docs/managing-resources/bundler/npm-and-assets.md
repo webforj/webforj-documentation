@@ -112,7 +112,7 @@ public class ThemeView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public ThemeView() {
-    SELF.add(new Div("Styled by a CSS only bundle entry")
+    self.add(new Div("Styled by a CSS only bundle entry")
                  .addClassName("themed-label"));
   }
 }

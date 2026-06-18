@@ -52,9 +52,10 @@ Your existing `@StyleSheet`, `@JavaScript`, and the other asset annotations keep
 @BundlePackage(value = "lit", version = "^2.0.0")
 @BundleEntry("greeting/hello-greeting.ts")
 public class GreetingView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public GreetingView() {
-    getBoundComponent().add(new Element("hello-greeting"));
+    self.add(new Element("hello-greeting"));
   }
 }
 ```

@@ -14,12 +14,13 @@ Rather than compile a file you wrote, the Tailwind extension scans your app sour
 ```java title="TailwindView.java"
 @Route("/tailwind")
 public class TailwindView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public TailwindView() {
     Div card = new Div("Styled by compiled Tailwind utilities");
     card.addClassName("flex", "items-center", "gap-4", "p-8", "rounded-lg",
         "bg-blue-500", "text-white");
-    getBoundComponent().add(card);
+    self.add(card);
   }
 }
 ```
