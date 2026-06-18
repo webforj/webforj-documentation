@@ -48,8 +48,7 @@ public class AvatarView extends Composite<FlexLayout> {
 
     Span sectionLabel = new Span("Team").addClassName("avatar-demo__section-label");
 
-    panel.add(projectHeader);
-    panel.add(sectionLabel);
+    panel.add(projectHeader, sectionLabel);
   }
 
   private void addMembers() {

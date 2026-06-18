@@ -2,6 +2,7 @@ package com.webforj.samples.pages.navigator;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 import java.util.regex.Pattern;
 
 public class NavigatorPagesPage {
@@ -14,8 +15,8 @@ public class NavigatorPagesPage {
     this.page = page;
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator navigatorValue(int n) {
