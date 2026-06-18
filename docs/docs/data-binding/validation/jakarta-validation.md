@@ -62,6 +62,24 @@ Such constraints are as effective as those set programmatically during the bindi
 Currently, the `JakartaValidator` only recognizes constraints that are directly assigned to properties and ignores any validations not directly associated with properties.
 :::
 
+### Validating nested beans {#validating-nested-beans}
+
+Declare constraints directly on the nested bean's own fields. When you bind one of those fields through a [dotted property path](../bindings#nested-bean-properties), the constraint on that property applies to the binding the same way it does for a top-level property.
+
+```java
+public class Address {
+  @NotBlank(message = "Street is required")
+  @Size(max = 80, message = "Street is too long")
+  private String street;
+
+  // getters and setters
+}
+```
+
+Binding `address.street` validates against `@NotBlank` on `Address.street`. Each binding validates the property at the end of its path.
+
+The [nested beans example](https://github.com/webforj/built-with-webforj) binds an `Employee` with nested `Address` and `EmergencyContact` beans through a single `BindingContext` using this pattern.
+
 ### Locale-aware validation messages <DocChip chip='since' label='25.12' /> {#locale-aware-validation-messages}
 
 Jakarta Validation supports localized constraint messages through standard message interpolation. When you change the app locale, the `JakartaValidator` needs to know the new locale so it can resolve messages in the correct language.
