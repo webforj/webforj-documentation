@@ -119,6 +119,7 @@
 
 /* ── Card ────────────────────────────────────────────── */
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--dwc-border-color);
@@ -126,14 +127,11 @@
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
 }
 
 .card:hover,
 .card:focus-visible {
-  border-color: var(--dwc-color-primary);
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--dwc-color-primary) 15%, transparent);
-  transform: translateY(-2px);
+  border: 1px solid var(--dwc-border-color);
   text-decoration: none;
   color: inherit;
   outline: none;
@@ -148,6 +146,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0 0 0.5rem;
+  padding-right: 5rem;
   line-height: 1.35;
   color: var(--ifm-font-color-base);
 }
@@ -193,6 +192,10 @@
 
 /* ── Difficulty badge ────────────────────────────────── */
 .difficulty {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 1;
   font-size: 0.7rem;
   font-weight: 600;
   padding: 0.15rem 0.55rem;
