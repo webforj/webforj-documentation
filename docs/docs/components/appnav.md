@@ -1,6 +1,7 @@
 ---
 title: AppNav
 sidebar_position: 6
+sidebar_class_name: new-content
 description: Build hierarchical side navigation menus with AppNav and AppNavItem, linking to routes, registered views, or external URLs.
 ---
 
@@ -121,7 +122,7 @@ Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested
 nav.setAutoOpen(true);
 ```
 
-## Pinning {#pinning}
+## Pinning <DocChip chip='since' label='26.01' /> {#pinning} 
  
 Pinning lets a user lift the items they reach for most into a group at the top of the navigation, so a deep menu still keeps a short list of favorites within one click. It's off by default. Turn it on through the pinning configuration:
  
@@ -244,7 +245,7 @@ Touch devices have no hover to reveal the pin, so the toggle is hidden there by 
 nav.getPinning().setTouchVisible(true);
 ```
  
-## Search {#search}
+## Search <DocChip chip='since' label='26.01' /> {#search}
  
 The search field filters the menu by item label as the user types. It's off by default. You can show it and give it a placeholder through the search configuration:
  
@@ -272,12 +273,6 @@ Set the message shown when a search returns no results. Plain text is rendered a
  
 ```java
 nav.getSearch().setEmptyMessage("No items found");
-```
- 
-To render rich content, wrap the message in `<html>...</html>`:
- 
-```java
-nav.getSearch().setEmptyMessage("<html><strong>Nothing found</strong></html>");
 ```
  
 ### Driving search from your own field {#custom-search-box}

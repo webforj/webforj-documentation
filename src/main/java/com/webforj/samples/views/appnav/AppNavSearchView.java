@@ -36,10 +36,11 @@ public class AppNavSearchView extends Composite<AppLayout> {
   }
 
   private void setSearch() {
-    appNav.getSearch()
+    appNav
+        .getSearch()
         .setFieldVisible(true)
         .setPlaceholder("Search menu")
-        .setEmptyMessage("No matching items");
+        .setEmptyMessage("<html><strong>Nothing found</strong></html>");
   }
 
   private void setDrawer() {
