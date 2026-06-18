@@ -1,21 +1,24 @@
 ---
 title: Terminal
 sidebar_position: 126
-_i18n_hash: 513f4970da96e2e9f36a80739e60cd9c
+description: >-
+  Embed an interactive terminal emulator with the Terminal component for shells,
+  dashboards, debug consoles, and remote access tools.
+_i18n_hash: 8480d045ce597a8a24d6fd9760a72935
 ---
 <DocChip chip="shadow" />  
 <DocChip chip="name" label="dwc-terminal" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
 
-`Terminal`-komponentti on interaktiivinen terminaalimalline, joka käyttäytyy kuten perinteinen järjestelmäkonsoli. Se käsittelee tekstilähtöä, käyttäjän syötettä, ohjaussekvenssejä ja näyttöpuskureita, mikä tekee siitä sopivan etäyhteystyökalujen, tekstinäyttöjen, upotettujen komentokehien tai vianetsintäkonsolien rakentamiseen.
+`Terminal`-komponentti on interaktiivinen terminaaliemulaattori, joka toimii perinteisen järjestelmäkonsolin tavoin. Se käsittelee tekstilähtöä, käyttäjän syötteitä, ohjausjonoja ja näytön puskureita, mikä tekee siitä soveltuvan etäyhteistyövälineiden, tekstipohjaisten hallintapaneelien, upotettujen komentorivien tai virheenkorjaus konsolien rakentamiseen.
 
 <!-- INTRO_END -->
 
-## Luo terminaali {#creating-a-terminal}
+## Luodaan terminaali {#creating-a-terminal}
 
 :::info Terminalin tuonti
-Voit käyttää `Terminal`-komponenttia sovelluksessasi varmistamalla, että sisällytät seuraavan riippuvuuden pom.xml-tiedostoon.
+Voit käyttää `Terminal`-komponenttia sovelluksessasi, varmista, että sisällytät seuraavan riippuvuuden pom.xml-tiedostoon.
 
 ```xml
 <dependency>
@@ -25,7 +28,7 @@ Voit käyttää `Terminal`-komponenttia sovelluksessasi varmistamalla, että sis
 ```
 :::
 
-Seuraava esimerkki rakentaa interaktiivisen komentokehän kirjoitettuina komennoilla, histori navigoinnilla ja mukautetulla lähdöllä.
+Seuraava esimerkki luo interaktiivisen komentorivin kirjoitettujen komentojen, historian navigoinnin ja mukautetun lähtösyötteen kanssa.
 
 <ComponentDemo
 path='/webforj/terminal'
@@ -36,7 +39,7 @@ files={[
   'src/main/java/com/webforj/samples/views/terminal/commands/DateCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/HelpCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
-  'src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/ConfirmCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java',
   'src/main/resources/static/css/terminal/terminal-view.css',
 ]}
@@ -45,37 +48,37 @@ height='400px'
 
 ## Kuinka se toimii {#how-it-works}
 
-Terminaali hallitsee tekstisolujen ruudukkoa, käsittelee saapuvia merkistön virtoja ja reagoi käyttäjätoimiin, kuten kirjoittamiseen tai tekstin valintaan. Se tulkitsee automaattisesti ohjausmerkkejä ja pakonopeuksia suurennuslasin liikuttamiseen, värimuutoksiin ja näytön tyhjentämiseen.
+Terminaali hallitsee tekstisolujen verkkoa, käsittelee saapuvia merkkivirtoja ja reagoi käyttäjän toimiin, kuten kirjoittamiseen tai tekstin valintaan. Se tulkitsee automaattisesti ohjausmerkkejä ja pakojaksoja kohdistimen liikuttamiseksi, väri muutoksiksi ja näytön tyhjentämiseksi.
 
-Keskeiset toiminnot sisältävät:
+Ydin käyttäytymiset ovat:
 
-- **Tieto syöttö**: kirjoittamalla dataa terminaaliin, näyttö päivittyy ottaen huomioon sekä teksti- että ohjaussekvenssit.
-- **Tieto lähtö**: tallentaa käyttäjän näppäinpainallukset ja lähettää ne rakenteisina tapahtumina.
-- **Näytön hallinta**: ylläpitää vieritettävää historiapuskurointia ja nykyistä näytön tilaa.
-- **Kursori hallinta**: seuraa kursorin sijaintia tekstisyöttöä ja ohjaussekvenssien vastauksia varten.
+- **Tietojen syöttö**: Aineiston kirjoittaminen terminaaliin päivittää näyttöä, käsitellen sekä teksti- että ohjausjaksoja.
+- **Tietojen lähtö**: Taltioi käyttäjän painalluksia ja lähettää ne rakenteellisina tapahtumia.
+- **Näytön hallinta**: Säilyttää vieritettävän historian puskurin ja nykyisen näytön tilan.
+- **Kohdistimen käsittely**: Seuraa kohdistimen sijaintia tekstinsyöttöä ja ohjausjaksojen vastauksia varten.
 
-Terminaali on tilallinen, mikä tarkoittaa, että se kootaan oikein monibittiset merkit ja ylläpitää jatkuvuutta fragmentoituneessa syötteessä.
+Terminaali on tilallinen, mikä tarkoittaa, että se rakentaa oikein monibittiset merkit ja ylläpitää jatkuvuutta sirpaleisissa syötteissä.
 
-## Datan lähettäminen terminaaliin {#sending-data-to-the-terminal}
+## Tietojen lähettäminen terminaaliin {#sending-data-to-the-terminal}
 
-Data lähetetään terminaaliin käyttämällä `write` ja `writeln` -metodeja:
+Tietoja lähetetään terminaaliin käyttäen `write` ja `writeln` -menetelmiä:
 
-- `write(Object data)`: lähettää tietoa terminaalivirtaan.
-- `writeln(Object data)`: lähettää tietoa, jota seuraa uusi rivi.
+- `write(Object data)`: Lähettää tietoja terminaalivirtaan.
+- `writeln(Object data)`: Lähettää tietoja rivinvaihdon kera.
 
-Terminaali käsittelee kaiken saapuvan datan **UTF-16** -merkkijonoina. Se käsittelee automaattisesti monibittiset merkit, jopa silloin kun syöte saapuu fragmentoituneina palasina.
+Terminaali käsittelee kaikki saapuvat tiedot **UTF-16** merkkijonoina. Se käsittelee automaattisesti monibittisiä merkkejä, vaikka syöte saapuisikin sirpaleina.
 
 ### Esimerkki {#example}
 ```java
 terminal.write("echo Hello World\n");
-terminal.writeln("Valmis.");
+terminal.writeln("Ready.");
 ```
 
-Voit myös liittää palautekutsun, joka suoritetaan heti, kun datapalja on käsitelty:
+Voit myös liittää takaisinsoiton, joka suoritetaan, kun tietojakso on käsitelty:
 
 ```java
-terminal.write("Pitkä komennon lähtö", e -> {
-  System.out.println("Data käsitelty.");
+terminal.write("Pitkä komento lähtö", e -> {
+  System.out.println("Tiedot käsitelty.");
 });
 ```
 
@@ -83,10 +86,10 @@ terminal.write("Pitkä komennon lähtö", e -> {
 
 Terminaali tallentaa käyttäjän luoman syötteen kahden tapahtuman kautta:
 
-- **Datan tapahtuma (`onData`)**: lauettuaan, kun tekstisyöttö tapahtuu, lähettäen Unicode-merkkejä.
-- **Näppäintapahtuma (`onKey`)**: lauettaa jokaiselle näppäinpainallukselle, mukaan lukien tietoa näppäinkoodista ja muuntimista, kuten <kbd>Ctrl</kbd> tai <kbd>Alt</kbd>.
+- **Tietotapahtuma (`onData`)**: Käynnistyy, kun tekstisyöttö tapahtuu, ja lähettää Unicode-merkkejä.
+- **Näppäimistötapahtuma (`onKey`)**: Käynnistyy jokaiselle näppäinpainallukselle, mukaan lukien tiedot näppäinkoodista ja muokkaimista kuten <kbd>Ctrl</kbd> tai <kbd>Alt</kbd>.
 
-Näitä tapahtumia voidaan käyttää käyttäjän syötteen välittämiseen taustapalvelimeen, käyttöliittymäelementtien päivittämiseen tai mukautettujen toimintojen käynnistämiseen.
+Nämä tapahtumat voidaan käyttää välittämään käyttäjän syöte backendiin, päivittämään UI-elementtejä tai laukaisemaan mukautettuja toimintoja.
 
 ### Esimerkki {#example-1}
 ```java
@@ -102,23 +105,23 @@ terminal.onKey(event -> {
 });
 ```
 
-Kaikki terminaalin kiinniottamat käyttäjän syötteet (kuten `onData`-tapahtumista) lähetetään UTF-16-merkkeinä.  
-Jos taustapalvelimesi odottaa eri koodausta (kuten UTF-8 -tavuna), sinun on manuaalisesti muunneltava dataa.
+Kaikki terminaalin tallentama käyttäjän syöte (kuten `onData` tapahtumista) lähetetään UTF-16 merkkijonoina.  
+Jos backend odottaa erilaista koodausta (kuten UTF-8 tavuina), sinun on manuaalisesti muunnettava tiedot.
 
-:::info Vanhanajan koodaukset
-Terminaali **ei tue vanhanajan koodauksia** kuten `ISO-8859`.  
-Jos tarvitset yhteensopivuutta ei-UTF-8 -järjestelmien kanssa, käytä ulkoista muunninta (esimerkiksi [`luit`](https://linux.die.net/man/1/luit) tai [`iconv`](https://en.wikipedia.org/wiki/Iconv)) muuntaaksesi data ensin ennen sen kirjoittamista tai lukemista terminaalista.
+:::info Perintökoodaukset
+Terminaali **ei tue perintökoodauksia**, kuten `ISO-8859`.  
+Jos tarvitset yhteensopivuutta ei-UTF-8 järjestelmien kanssa, käytä ulkoista muunninta (esimerkiksi [`luit`](https://linux.die.net/man/1/luit) tai [`iconv`](https://en.wikipedia.org/wiki/Iconv)) tietojen muuntamiseksi ennen niiden kirjoittamista tai lukemista terminaalista.
 :::
 
-## Suurten datavirtojen käsittely {#handling-large-data-streams}
+## Suurten tietovirtojen käsittely {#handling-large-data-streams}
 
-Koska terminaali ei voi heti renderöidä rajatonta syötettä, se ylläpitää sisäistä syötepuskurointia. Jos tämä puskuri kasvaa liian suureksi (oletusarvo noin `50MB`), uusi saapuva data voidaan pudottaa järjestelmän suorituskyvyn suojaamiseksi.
+Koska terminaali ei voi heti renderöidä rajatonta syötettä, se ylläpitää sisäistä syöttöpuskurointia. Jos tämä puskuri kasvaa liian suureksi (oletus noin `50 MB`), uudet saapuvat tiedot saattavat jäädä huomiotta suojaamaan järjestelmän suorituskykyä.
 
-Nopeiden tietolähteiden asianmukaiseksi hallitsemiseksi sinun tulisi toteuttaa **virtaohjaus**.
+Nopeiden tietolähteiden hallitsemiseksi sinun tulisi toteuttaa **virtaohjaus**.
 
-### Perusvirran ohjausesimerkki {#basic-flow-control-example}
+### Perusvirtaohjausesimerkki {#basic-flow-control-example}
 
-Pysäytä taustapalvelin, kunnes terminaali on valmis käsittelemään paljan:
+Pysäytä backendisi, kunnes terminaali on käsitellyt tiedonjako:
 
 ```java
 pty.onData(chunk -> {
@@ -129,9 +132,9 @@ pty.onData(chunk -> {
 });
 ```
 
-### Vedenjakajavirra ohjausesimerkki {#watermark-flow-control-example}
+### Vedenjakajavirtaohjausesimerkki {#watermark-flow-control-example}
 
-Tehokkaamman hallinnan vuoksi käytä korkeaa/matalan vedenjakajaa:
+Tehokkaampaa hallintaa varten käytä korkeita/matalia vedenjakajia:
 
 ```java
 int HIGH_WATERMARK = 100_000;
@@ -163,15 +166,15 @@ height='400px'
 
 ## Mukauttaminen {#customization}
 
-### Terminaali asetukset {#terminal-options}
+### Terminaalivaihtoehdot {#terminal-options}
 
-`TerminalOptions`-luokka mahdollistaa käyttäytymisen määrittämisen:
+`TerminalOptions`-luokka mahdollistaa käyttäytymisen konfiguroinnin:
 
-- Kursorin vilkkuminen.
-- Fonttiasetukset (perhe, koko, paino).
-- Välitön puskurin koko.
-- Riviväli ja kirjamäärä.
-- Esteettömyysasetukset (näyttöruudun lukija tila).
+- Kohdistimen vilkkuminen.
+- Fonttitiedot (perhe, koko, paino).
+- Vierityspuskuri koko.
+- Rivikorkeus ja kirjaimen väli.
+- Esteettömyysasetukset (näytönluettava tila).
 
 Esimerkki:
 ```java
@@ -184,13 +187,13 @@ TerminalOptions options = new TerminalOptions()
 terminal.setOptions(options);
 ```
 
-### Terminaali teema {#terminal-theme}
+### Terminaaliteema {#terminal-theme}
 
-Voit tyylitellä terminaalia käyttämällä `TerminalTheme`, joka määrittelee:
+Voit muotoilla terminaalia käyttämällä `TerminalTheme`, joka määrittää:
 
-- Tausta- ja etu värit.
-- Standardi `ANSI` -väripaletti.
-- Kursorin ja valinnan taustavärit.
+- Taustaväri ja etualaväri.
+- Normaali `ANSI` väri palette.
+- Kohdistimen ja valinnan taustavärit.
 
 Esimerkki:
 ```java
@@ -207,22 +210,22 @@ height='500px'
 
 ## Tuetut sekvenssit {#supported-sequences}
 
-Terminaali tukee laajaa valikoimaa vakiokontrollisekvenssejä, joita käytetään kursorin liikuttamiseen, näytön päivityksiin ja tekstimuotoiluun.
+Terminaali tukee laajaa valikoimaa standardin ohjausjaksoja, joita käytetään kohdistimen liikuttamiseen, näyttöpäivityksiin ja tekstin muotoiluun.
 
-Tunnistettu ryhmät:
+Tunnistetuista ryhmistä:
 
-- **`C0` ohjauskoodit** (yksisäikeiset 7-bittiset komennot, `\x00`, `\x1F`, kuten backspace ja rivinvaihto)
-- **`C1` ohjauskoodit** (yksisäikeiset 8-bittiset komennot, `\x80`, `\x9F`)
-- **`ESC` sekvenssit** (alkavat `ESC` (`\x1B`), kuten kursorin tallentaminen/palauttaminen, näytön kohdistus)
-- **`CSI` sekvenssit** (Ohjaussekvenssin esittelijä, `ESC [` tai `CSI (\x9B)`, operaatioihin kuten vierittäminen, poistaminen ja tyylitys)
-- **`DCS` sekvenssit** (Laitteen ohjausmerkit, `ESC P` tai `DCS (\x90)`)
-- **`OSC` sekvenssit** (Käyttöjärjestelmän komennot, `ESC ]` tai `OSC (\x9D)`, kuten ikkunan otsikon, hyperlinkkien ja värien asettaminen)
+- **`C0` ohjauskoodit** (yksittäiset tavut 7-bittiset komennot, `\x00`, `\x1F`, kuten taaksepäin ja rivinvaihto)
+- **`C1` ohjauskoodit** (yksittäiset tavut 8-bittiset komennot, `\x80`, `\x9F`)
+- **`ESC` sekvenssit** (alkavat `ESC` (`\x1B`), kuten kohdistimen tallentaminen/palauttaminen, näytön kohdistaminen)
+- **`CSI` sekvenssit** (Ohjaus sekvenssin esittimen, `ESC [` tai `CSI (\x9B)`, toiminnot kuten vieritys, tyhjennys ja tyylittely)
+- **`DCS` sekvenssit** (Laiteohjausmerkit, `ESC P` tai `DCS (\x90)`)
+- **`OSC` sekvenssit** (Käyttöjärjestelmän komennot, `ESC ]` tai `OSC (\x9D)`, ikkunoiden otsikoiden, hyperlinkkien ja värien asettamiseksi)
 
-:::info Eksoottisten ja mukautettujen sekvenssien käsittely
-Jotkin eksoottiset sekvenssityypit, kuten `APC`, `PM` ja `SOS`, tunnistetaan, mutta niitä ei käsitellä.  
-Mukautettuja sekvenssejä voidaan tukea integrointien kautta tarvittaessa.
+:::info Eksoottisten ja Mukautettujen Sekvenssien Käsittely
+Jotkin eksoottiset sekvenssityypit, kuten `APC`,`PM` ja `SOS`, tunnistetaan, mutta niitä ei oteta huomioon.  
+Mukautettuja sekvenssejä voidaan tukea integroimalla, jos tarpeen.
 :::
 
-## Tyylitys {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="Terminal" />
