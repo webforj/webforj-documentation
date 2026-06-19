@@ -120,7 +120,7 @@ public class Card extends ElementComposite {
 }
 ```
 
-A single call to `set(descriptor, value)` does three things at once. It pushes the value to the client (through `setProperty()` for properties, or `setAttribute()` for attributes, with simple types like `String`, `Boolean`, and `Number` serialized via `String.valueOf()` and everything else JSON-encoded). It stores the value in a local server-side cache, one map per component instance. And it records the runtime type alongside the value, so later `get()` calls know how to deserialize.
+A single call to `set(descriptor, value)` does three things at once. It pushes the value to the client through `setProperty()` for properties, or `setAttribute()` for attributes. It stores the value in a local server-side cache, one map per component instance. And it records the runtime type alongside the value, so later `get()` calls know how to deserialize.
 
 That local cache is the reason `get()` can be cheap by default. `get(descriptor)` returns the cached value from the server-side store with no network call, because every `set()` keeps the cache in sync with the client. The optional `boolean` second argument controls whether to bypass the cache and read from the browser instead.
 
