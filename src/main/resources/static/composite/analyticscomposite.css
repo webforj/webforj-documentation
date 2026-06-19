@@ -10,17 +10,17 @@
 
 .analytics-title {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: var(--dwc-font-size-xl);
   margin-bottom: 0.25rem;
 }
 
 .analytics-value {
-  font-size: 1.8rem;
+  font-size: var(--dwc-font-size-2xl);
   font-weight: 700;
-  color: var(--dwc-color-primary);
+  color: var(--dwc-color-primary-text);
 }
 
 .analytics-description {
-  font-size: 0.9rem;
-  color: var(--dwc-color-neutral-600);
+  font-size: var(--dwc-font-size-l);
+  color: var(--dwc-color-success-text);
 } 

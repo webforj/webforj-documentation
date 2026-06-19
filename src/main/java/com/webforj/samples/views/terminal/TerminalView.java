@@ -7,10 +7,10 @@ import com.webforj.component.terminal.event.TerminalDataEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.views.terminal.commands.ClearCommand;
+import com.webforj.samples.views.terminal.commands.ConfirmCommand;
 import com.webforj.samples.views.terminal.commands.DateCommand;
 import com.webforj.samples.views.terminal.commands.HelpCommand;
 import com.webforj.samples.views.terminal.commands.MsgCommand;
-import com.webforj.samples.views.terminal.commands.PromptCommand;
 import com.webforj.samples.views.terminal.commands.TerminalCommand;
 import com.webforj.samples.views.terminal.commands.TimeCommand;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class TerminalView extends Composite<Terminal> {
         List.of(
             new TimeCommand(),
             new DateCommand(),
-            new PromptCommand(),
+            new ConfirmCommand(),
             new MsgCommand(),
             new ClearCommand(),
             new HelpCommand(commands));

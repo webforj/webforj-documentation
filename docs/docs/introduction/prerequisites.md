@@ -19,7 +19,7 @@ Java **21** is required to ensure compatibility with webforJ and access to the l
 :::tip  
 If you're using a UNIX-based operating system, it's recommended to use [SDKMAN!](https://sdkman.io/) to manage your Java environment. It lets you easily switch between different Java vendors without any extra hassle.  
 
-Alternatively, you can use [Jabba](https://github.com/shyiko/jabba), which works on both UNIX-based systems and Windows. It's a solid cross-platform solution for managing Java versions.  
+Alternatively, you can use [Jabba](https://github.com/Jabba-Team/jabba), which works on both UNIX-based systems and Windows. It's a solid cross-platform solution for managing Java versions.  
 :::
 
 - Official Oracle JDKs can be found on Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page. 

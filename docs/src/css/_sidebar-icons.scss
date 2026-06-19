@@ -1,0 +1,86 @@
+@mixin _icon($name) {
+  $url: url("../../node_modules/@tabler/icons/icons/outline/#{$name}.svg");
+  -webkit-mask-image: $url;
+  mask-image: $url;
+}
+
+@mixin category-icons {
+  .menu__list > .cat-icon > .menu__list-item-collapsible > .menu__link {
+    align-items: center;
+  }
+
+  .menu__list > .cat-icon > .menu__list-item-collapsible > .menu__link::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.5rem;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .cat-icon--introduction > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("rocket");
+  }
+
+  .cat-icon--architecture > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("sitemap");
+  }
+
+  .cat-icon--building-ui > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("layout-dashboard");
+  }
+
+  .cat-icon--components > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("components");
+  }
+
+  .cat-icon--data-binding > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("link");
+  }
+
+  .cat-icon--routing > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("route");
+  }
+
+  .cat-icon--styling > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("palette");
+  }
+
+  .cat-icon--configuration
+    > .menu__list-item-collapsible
+    > .menu__link::before {
+    @include _icon("settings");
+  }
+
+  .cat-icon--managing-resources
+    > .menu__list-item-collapsible
+    > .menu__link::before {
+    @include _icon("package");
+  }
+
+  .cat-icon--integrations > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("plug");
+  }
+
+  .cat-icon--security > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("shield-lock");
+  }
+
+  .cat-icon--testing > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("flask");
+  }
+
+  .cat-icon--advanced > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("sparkles");
+  }
+
+  .cat-icon--upgrading > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("arrow-up-circle");
+  }
+}

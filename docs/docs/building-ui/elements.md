@@ -47,10 +47,34 @@ The `Element` component supports the composition of child components. Developers
 
 1. **`add(Component... components)`**: This method allows one or multiple components to be added to an optional `String` which designates a specified slot when used with a Web Component. Omitting the slot will add the component between the HTML tags.
 
-2. **`setHtml(String html)`**: This method takes the `String` passed to the method and injects it as HTML within the component. Depending on the `Element`, this may be rendered in different ways.
+2. **`setText(String text)`**: This method behaves similarly to the `setHtml()` method, but injects literal text into the `Element`.
 
-3. **`setText(String text)`**: This method behaves similarly to the `setHtml()` method, but injects literal text into the `Element`.
+  ```java
+  // Shown as the literal characters "<b>Status: ready</b>"
+  element.setText("<b>Status: ready</b>");
+  ```
 
+  :::note Using the `<html>` tag
+  Earlier versions of webforJ treated a value wrapped in `<html>` and passed to `setText()` as HTML. This behavior is deprecated and will be removed in webforJ 27.00.
+
+  The first time an `<html>` wrapped value reaches `setText()`, a warning is logged that names the component and the call site, so the call can be moved to `setHtml()`.
+
+  To adopt the webforJ 27.00 default ahead of time, set `webforj.legacyHtmlInText` to `false`. In a Spring app, the same value is set through `webforj.legacy-html-in-text`.
+
+  ```java
+  // webforj.legacyHtmlInText = true (default)
+  element.setText("<html><b>Status: ready</b></html>"); // renders bold
+
+  // webforj.legacyHtmlInText = false
+  element.setText("<html><b>Status: ready</b></html>"); // shows the characters <b>Status: ready</b>
+  ```
+  :::
+
+3. **`setHtml(String html)`**: This method takes the `String` passed to the method and injects it as HTML within the component. Depending on the `Element`, this may be rendered in different ways.
+
+  :::danger Cross-site Scripting (XSS)
+  As a precaution against [cross-site scripting (XSS) attacks](/docs/security/application-security/common-threats#cross-site-scripting-xss), only use `setHtml()` with content you directly control.
+  :::
 
 <ComponentDemo
 path='/webforj/elementinputtext'

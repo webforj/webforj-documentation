@@ -2,6 +2,7 @@ package com.webforj.samples.views.composite;
 
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Paragraph;
@@ -48,12 +49,9 @@ public class AnalyticsCardCompositeView extends Composite<Div> {
   }
 
   private FlexLayout buildChangeRow() {
-    Span changeText =
-        new Span("12% from last month")
-            .setStyle("color", "var(--dwc-color-success-600)")
-            .setStyle("font-size", "0.9rem");
+    Span changeText = new Span("12% from last month").addClassName("analytics-description");
 
-    Icon upArrow = TablerIcon.create("arrow-up");
+    Icon upArrow = TablerIcon.create("arrow-up").setTheme(Theme.SUCCESS);
 
     return FlexLayout.create(upArrow, changeText)
         .align()
