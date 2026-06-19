@@ -21,7 +21,7 @@ Use the `Upload` component when file selection is accompanied with other actions
 
 ## Creating an upload {#creating-an-upload}
 
-By default, an `Upload` component shows a select button, a drop area, the current file list, and an upload button. Next to each file in the file list are icon buttons for uploading and canceling, but the cancel icon is hidden by default. After creating an `Upload`, you can add filters, like allowable file types, and change which parts are visible.
+By default, an `Upload` component shows a select button, a drop area, the current file list, and an upload button. The cancel button is hidden by default. After creating an `Upload`, you can add filters, like allowable file types, and change which parts are visible.
 
 ```java
 Upload upload = new Upload();
