@@ -21,7 +21,12 @@ import com.webforj.router.annotation.Route;
 public class UploadView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final TextField name = new TextField().setLabel("Full name").setRequired(true);
-  private final Upload resume = new Upload();
+  private final Upload resumeUpload = new Upload();
+  private final Button submit =
+      new Button(
+          "Submit application",
+          ButtonTheme.PRIMARY,
+          ev -> Toast.show("Application submitted", Theme.SUCCESS));
 
   public UploadView() {
     self.addClassName("upload-demo")
@@ -29,38 +34,37 @@ public class UploadView extends Composite<FlexLayout> {
         .setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-m)");
 
-    resume.addFilter("Resume", "*.pdf;*.docx");
-    resume.setActiveFilter("Resume");
-    resume.setSelectionMode(Upload.SelectionMode.SINGLE);
-    resume.setMaxFileSize(5d * 1024d * 1024d);
-    resume.setAutoUpload(Upload.AutoUpload.ON_SELECT);
-    resume.setVisible(false, Upload.Part.UPLOAD_BUTTON);
-    resume.setFileSystemAccess(false);
-    resume.setAllFilesFilterEnabled(false);
-    resume.setStyle("margin-bottom", "var(--dwc-space-s)");
-    resume.onUpload(
-        e ->
-            e.getFiles()
-                .forEach(
-                    file -> {
-                      try {
-                        file.delete();
-                      } catch (Exception ex) {
-                        // skip
-                      }
-                    }));
-
-    Button submit =
-        new Button(
-            "Submit application",
-            ButtonTheme.PRIMARY,
-            ev -> Toast.show("Application submitted", Theme.SUCCESS));
+    configUpload();
 
     self.add(
         new H3("Submit your application"),
         name,
-        fieldGroup("Resume", "PDF or DOCX, up to 5 MB.", resume),
+        fieldGroup("Resume", "PDF or DOCX, up to 5 MB.", resumeUpload),
         submit);
+  }
+
+  private void configUpload() {
+    resumeUpload
+        .addFilter("Resume", "*.pdf;*.docx")
+        .setActiveFilter("Resume")
+        .setSelectionMode(Upload.SelectionMode.SINGLE)
+        .setMaxFileSize(5d * 1024d * 1024d)
+        .setAutoUpload(Upload.AutoUpload.ON_SELECT)
+        .setVisible(false, Upload.Part.UPLOAD_BUTTON)
+        .setFileSystemAccess(false)
+        .setAllFilesFilterEnabled(false)
+        .setStyle("margin-bottom", "var(--dwc-space-s)")
+        .onUpload(
+            e ->
+                e.getFiles()
+                    .forEach(
+                        file -> {
+                          try {
+                            file.delete();
+                          } catch (Exception ex) {
+                            // skip
+                          }
+                        }));
   }
 
   private FlexLayout fieldGroup(String label, String helperText, Upload upload) {

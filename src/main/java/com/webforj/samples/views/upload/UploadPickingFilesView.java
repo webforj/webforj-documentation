@@ -21,27 +21,32 @@ public class UploadPickingFilesView extends Composite<FlexLayout> {
         .setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-m)");
 
-    upload.addFilter("Photos", "*.jpg;*.jpeg;*.png;*.heic");
-    upload.addFilter("Videos", "*.mp4;*.mov");
-    upload.setActiveFilter("Photos");
-    upload.setMultiFilterSelection(true);
-    upload.setAllFilesFilterEnabled(false);
-    upload.setSelectionMode(Upload.SelectionMode.MULTIPLE);
-    upload.setMaxFiles(20d);
-    upload.setMaxFileSize(10d * 1024d * 1024d);
-    upload.setFileSystemAccess(false);
-    upload.onUpload(
-        e ->
-            e.getFiles()
-                .forEach(
-                    file -> {
-                      try {
-                        file.delete();
-                      } catch (Exception ex) {
-                        // skip
-                      }
-                    }));
+    configUpload();
 
     self.add(new H3("Gallery uploader"), upload);
+  }
+
+  public void configUpload() {
+    upload
+        .addFilter("Photos", "*.jpg;*.jpeg;*.png;*.heic")
+        .addFilter("Videos", "*.mp4;*.mov")
+        .setActiveFilter("Photos")
+        .setMultiFilterSelection(true)
+        .setAllFilesFilterEnabled(false)
+        .setSelectionMode(Upload.SelectionMode.MULTIPLE)
+        .setMaxFiles(20d)
+        .setMaxFileSize(10d * 1024d * 1024d)
+        .setFileSystemAccess(false)
+        .onUpload(
+            e ->
+                e.getFiles()
+                    .forEach(
+                        file -> {
+                          try {
+                            file.delete();
+                          } catch (Exception ex) {
+                            // skip
+                          }
+                        }));
   }
 }
