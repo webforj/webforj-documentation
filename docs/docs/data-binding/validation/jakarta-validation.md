@@ -62,15 +62,28 @@ Such constraints are as effective as those set programmatically during the bindi
 Currently, the `JakartaValidator` only recognizes constraints that are directly assigned to properties and ignores any validations not directly associated with properties.
 :::
 
-### Validating nested beans {#validating-nested-beans}
+### Validating nested beans <DocChip chip='since' label='26.01' /> {#validating-nested-beans}
 
-Declare constraints directly on the nested bean's own fields. When you bind one of those fields through a [dotted property path](../bindings#nested-bean-properties), the constraint on that property applies to the binding the same way it does for a top-level property.
+Declare constraints directly on the nested bean's own fields. When you bind one of those fields through a [dotted property path](/docs/data-binding/bindings#nested-bean-properties), the constraint on that property applies to the binding the same way it does for a top-level property.
 
 ```java
 public class Address {
   @NotBlank(message = "Street is required")
   @Size(max = 80, message = "Street is too long")
   private String street;
+
+  // getters and setters
+}
+```
+
+```java {6-7}
+public class Hero {
+  @NotEmpty(message = "Name cannot be empty")
+  @Length(min = 3, max = 20)
+  private String name;
+
+  // A nested bean with the constraints for address.street
+  private Address address;
 
   // getters and setters
 }

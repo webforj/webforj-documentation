@@ -14,7 +14,7 @@ allowing for collective actions on multiple bindings, thereby streamlining the m
 flow within applications.
 
 :::tip Automatic Binding
-This section introduces the basics of manually configuring bindings. Additionally, you can automatically create bindings based on the UI components in your form. Once you grasp the fundamentals, learn more by reading the [Automatic Binding](./automatic-binding) section.
+This section introduces the basics of manually configuring bindings. Additionally, you can automatically create bindings based on the UI components in your form. Once you grasp the fundamentals, learn more by reading the [Automatic Binding](/docs/data-binding/automatic-binding) section.
 :::
 
 ## Configure bindings {#configure-bindings}
@@ -127,13 +127,13 @@ All core components of webforJ have default configurations to automatically repo
 A binding property can be a dotted path that points to a property inside a nested bean. Each segment in the path follows standard JavaBean getter and setter conventions, so `address.street` reads through `getAddress().getStreet()` and writes through `getAddress().setStreet()`.
 
 ```java
-BindingContext<Person> context = new BindingContext<>(Person.class);
+BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context.bind(streetField, "address.street").add();
 context.bind(cityField, "address.city").add();
 ```
 
 ```java
-public class Person {
+public class Hero {
   private String name;
   private Address address;
 
@@ -149,11 +149,11 @@ public class Address {
 }
 ```
 
-When reading, a path resolves safely even when an intermediate bean is `null`. If a `Person` has no `Address`, the components bound to `address.street` and `address.city` read as empty rather than throwing, so the form still populates.
+When reading, a path resolves safely even when an intermediate bean is `null`. If a `Hero` has no `Address`, the components bound to `address.street` and `address.city` read as empty rather than throwing, so the form still populates.
 
-When writing, the context creates any missing intermediate bean through its no-argument constructor, so writing the form into a `Person` with no `Address` produces a new, populated `Address`. An existing `Address` is reused.
+When writing, the context creates any missing intermediate bean through its no-argument constructor, so writing the form into a `Hero` with no `Address` produces a new, populated `Address`. An existing `Address` is reused.
 
-[Jakarta validation](./validation/jakarta-validation.md) annotations on a nested property are detected the same way as on a top-level property. An annotation such as `@NotNull` on `Address.street` marks the `address.street` binding as [required](./automatic-binding#required-binding-detections).
+[Jakarta validation](/docs/data-binding/validation/jakarta-validation) annotations on a nested property are detected the same way as on a top-level property. An annotation such as `@NotNull` on `Address.street` marks the `address.street` binding as [required](/docs/data-binding/automatic-binding#bindingrequired-annotation).
 
 :::info Paths are validated up front
 The full path is validated when you call `bind`. A typo in any segment, at the top level or deeper in the path, throws an `IllegalArgumentException`, so binding mistakes surface immediately instead of at read or write time.
