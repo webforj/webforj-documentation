@@ -34,6 +34,7 @@ public class BooksView extends Composite<Div> {
     table.addColumn("title", Book::title).setLabel("Title");
     table.addColumn("author", Book::author).setLabel("Author");
     table.setRepository(repository);
+    table.setSize("100vw", "100vh");
 
     emptyState.addClassName("cookbook-empty-state");
     emptyState.add(
