@@ -8,6 +8,10 @@ Spring DevTools provides automatic app restarts when code changes. webforJ DevTo
 
 Different file types trigger different reload behavior. Java code changes cause a full Spring restart and browser refresh. CSS and image changes update without a page reload, preserving form data and app state.
 
+:::tip Frontend changes
+Changes under `src/main/frontend` are handled by the [frontend watch](/docs/configuration/deploy-reload/frontend-watch), which rebuilds them and refreshes the browser alongside the server.
+:::
+
 <!-- vale off -->
 ## Understanding webforJ DevTools {#understanding-webforj-devtools}
 <!-- vale on -->

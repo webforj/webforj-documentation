@@ -6,6 +6,10 @@ description: Attach JavaScript and CSS to webforJ components or the app using Ja
 
 Assets annotations provide a declarative approach to embedding external and inline resources such as JavaScript and CSS within an app statically. These annotations streamline resource management by ensuring dependencies are loaded at the appropriate execution phase, reducing manual configuration and enhancing maintainability.
 
+:::tip The bundler is the default for npm and frameworks
+The asset annotations attach a script or stylesheet you already have, with no build step. To bring in npm packages, a component framework such as React, or a stylesheet language such as SCSS, use the [frontend bundler](/docs/managing-resources/bundler/overview). It's the default path for that work, and it does everything the annotations do.
+:::
+
 ## Importing JavaScript files {#importing-javascript-files}
 
 Declarative JavaScript inclusion is supported through the `@JavaScript` annotation, enabling automatic dependency loading. The annotation can be applied at both the component level and the app level.

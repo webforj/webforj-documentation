@@ -7,6 +7,10 @@ The Maven Jetty plugin is a popular tool that allows developers to run Java web 
 
 The Jetty Plugin launches an embedded Jetty server that monitors your app’s files, including Java classes and resources, for changes. When it detects updates, it automatically redeploys the app, which speeds up development by eliminating manual build and deployment steps. 
 
+:::tip Frontend changes
+Changes under `src/main/frontend` are handled by the [frontend watch](/docs/configuration/deploy-reload/frontend-watch), which rebuilds them and refreshes the browser alongside the server.
+:::
+
 ## Jetty configurations {#jetty-configurations}
 
 Here are some essential configurations for fine-tuning the plugin’s hot deployment and server interaction settings:
