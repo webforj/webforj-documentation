@@ -142,7 +142,6 @@ A few rules govern what can be pinned and how the group behaves:
 
 The demo below has pinning enabled with a custom group title and Dashboard pinned on load. Hover or focus a leaf item to reveal its pin toggle.
  
-<!--vale off-->
 <ComponentDemo
 path='/webforj/appnavpinning/Dashboard'
 frame='desktop'
@@ -151,7 +150,6 @@ files={[
   'src/main/java/com/webforj/samples/views/appnav/AppNavPinningPageView.java',
 ]}
 />
-<!--vale on-->
  
 ### Starting an item pinned {#starting-an-item-pinned}
  
@@ -236,10 +234,10 @@ nav.getPinning()
    .setUnpinnedIcon(TablerIcon.create("pin"))
    .setPinnedIcon(TablerIcon.create("pinned-off"));
 ```
+
+### Pin toggle on touchscreens {#pin-toggle-on-touchscreens}
  
-### Pin toggle on touch devices {#pin-toggle-on-touch}
- 
-Touch devices have no hover to reveal the pin, so the toggle is hidden there by default. Keep it visible and tappable on touch by turning on touch visibility:
+Touchscreens have no hover to reveal the pin, so the toggle is hidden there by default. Keep it visible and tappable on touchscreens with `setTouchVisible(true)`:
  
 ```java
 nav.getPinning().setTouchVisible(true);
@@ -255,8 +253,7 @@ nav.getSearch().setPlaceholder("Search");
 ```
  
 As the user types, the nav filters items by label, opens any group that contains a match, and shows an empty message when nothing matches. Pinned shortcuts stay visible while searching, so a user's favorites remain one click away even mid filter.
- 
-<!--vale off-->
+
 <ComponentDemo
 path='/webforj/appnavsearch/Dashboard'
 frame='desktop'
@@ -265,7 +262,6 @@ files={[
   'src/main/java/com/webforj/samples/views/appnav/AppNavSearchPageView.java',
 ]}
 />
-<!--vale on-->
  
 ### Empty message {#search-empty-message}
  
