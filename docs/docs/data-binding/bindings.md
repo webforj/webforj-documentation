@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Bindings
+sidebar_class_name: updated-content
 description: Link Java Bean properties to webforJ UI components through BindingContext to synchronize reads and writes between model and view.
 ---
 
@@ -13,13 +14,13 @@ allowing for collective actions on multiple bindings, thereby streamlining the m
 flow within applications.
 
 :::tip Automatic Binding
-This section introduces the basics of manually configuring bindings. Additionally, you can automatically create bindings based on the UI components in your form. Once you grasp the fundamentals, learn more by reading the [Automatic Binding](./automatic-binding) section.
+This section introduces the basics of manually configuring bindings. Additionally, you can automatically create bindings based on the UI components in your form. Once you grasp the fundamentals, learn more by reading the [Automatic Binding](/docs/data-binding/automatic-binding) section.
 :::
 
 ## Configure bindings {#configure-bindings}
 
 Start by creating a new instance of `BindingContext` which manages all bindings for a particular model.
-This context ensures that all bindings can be validated and updated collectively.
+This context validates and updates all bindings collectively.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
@@ -33,7 +34,7 @@ Each form should have only one `BindingContext` instance, and you should use thi
 
 A binding property is a specific field or attribute of a Java Bean that can be linked to a UI component in your app. 
 This linkage allows changes in the UI to directly affect the corresponding property of the data model, and vice versa, 
-facilitating a reactive user experience.
+so the UI and the data model stay in sync.
 
 When setting up a binding, you should provide the property name as a string. This name must match the field name in the Java Bean class. Here's a simple example:
 
@@ -121,18 +122,55 @@ you should handle appropriately, typically by displaying error messages to the u
 All core components of webforJ have default configurations to automatically report validation errors, either inline or through a popover. You can customize this behavior using [Reporters](./validation/reporters.md).
 :::
 
+## Nested bean properties <DocChip chip='since' label='26.01' /> {#nested-bean-properties}
+
+A binding property can be a dotted path that points to a property inside a nested bean. Each segment in the path follows standard JavaBean getter and setter conventions, so `address.street` reads through `getAddress().getStreet()` and writes through `getAddress().setStreet()`.
+
+```java
+BindingContext<Hero> context = new BindingContext<>(Hero.class);
+context.bind(streetField, "address.street").add();
+context.bind(cityField, "address.city").add();
+```
+
+```java
+public class Hero {
+  private String name;
+  private Address address;
+
+  // getters and setters
+}
+
+public class Address {
+  private String street;
+  private String city;
+  private String zip;
+
+  // getters and setters
+}
+```
+
+When reading, a path resolves safely even when an intermediate bean is `null`. If a `Hero` has no `Address`, the components bound to `address.street` and `address.city` read as empty rather than throwing, so the form still populates.
+
+When writing, the context creates any missing intermediate bean through its no-argument constructor, so writing the form into a `Hero` with no `Address` produces a new, populated `Address`. An existing `Address` is reused.
+
+[Jakarta validation](/docs/data-binding/validation/jakarta-validation) annotations on a nested property are detected the same way as on a top-level property. An annotation such as `@NotNull` on `Address.street` marks the `address.street` binding as [required](/docs/data-binding/automatic-binding#bindingrequired-annotation).
+
+:::info Paths are validated up front
+The full path is validated when you call `bind`. A typo in any segment, at the top level or deeper in the path, throws an `IllegalArgumentException`, so binding mistakes surface immediately instead of at read or write time.
+:::
+
 <!-- vale off -->
 ## ReadOnly data {#readonly-data}
 <!-- vale on -->
 
 In certain scenarios, you may want your app to display data without allowing the end-user to modify it directly through the UI. 
-This is where read-only data bindings become crucial. webforJ supports the configuration of bindings to be read-only, ensuring that 
+Read-only data bindings address this. webforJ supports configuring bindings as read-only, so 
 you can display data, but not edit it through bound UI components.
 
 ### Configuring readonly bindings {#configuring-readonly-bindings}
 
 To set up a read-only binding, you can configure the binding to turn off or ignore UI component input. 
-This ensures that the data remains unchanged from the UI perspective, while still updating programmatically if needed.
+The data then remains unchanged from the UI perspective, while still updating programmatically when needed.
 
 ```java
 // Configuring a text field to be read-only in the binding context
@@ -142,7 +180,7 @@ context.bind(nameTextField, "name")
   .add();
 ```
 
-In this configuration, `readOnly` ensures that the `nameTextField` doesn't accept user input, effectively making the text field display 
+In this configuration, `readOnly` stops the `nameTextField` from accepting user input, so the text field displays 
 the data without allowing modifications.
 
 :::info
@@ -154,8 +192,8 @@ It's important to differentiate between bindings you configure as read-only and 
 When you mark a binding as read-only, it impacts how the binding manages data during the write process, not just the UI behavior.
 
 When you mark a binding as read-only, the system skips data updates. Any changes to the UI component won't transmit back to the data model. 
-This ensures that even if the UI component somehow receives user input, it won't update the underlying data model. 
-Maintaining this separation is crucial for preserving data integrity in scenarios where user actions shouldn't alter the data.
+As a result, even if the UI component somehow receives user input, it won't update the underlying data model. 
+Maintaining this separation protects data integrity in scenarios where user actions shouldn't alter the data.
 
 In contrast, setting a UI component as read-only, without configuring the binding itself as read-only, simply stops the user from making changes 
 to the UI component but doesn't stop the binding from updating the data model if changes occur programmatically or through other means.
@@ -164,7 +202,7 @@ to the UI component but doesn't stop the binding from updating the data model if
 ## Binding getters and setters {#binding-getters-and-setters}
 
 Setters and getters are methods in Java that set and get the values of properties, respectively.
-In the context of data binding, they are used to define how properties are updated and retrieved within the binding framework.
+In the context of data binding, they're used to define how properties are updated and retrieved within the binding framework.
 
 ### Customizing setters and getters {#customizing-setters-and-getters}
 
