@@ -333,7 +333,7 @@ Utilisez `ComponentLifecycleObserver` pour :
 - Coordonner plusieurs composants
 - Nettoyer des ressources externes
 
-Pour exécuter du code après qu'un composant soit attaché au DOM, consultez [`whenAttached()`](/docs/building-ui/composite-components) dans le guide des Composants composites.
+Pour exécuter du code après qu'un composant soit attaché au DOM, consultez [`whenAttached()`](/docs/building-ui/composing-components) dans le guide des Composants composites.
 
 ## Données utilisateur {#user-data}
 

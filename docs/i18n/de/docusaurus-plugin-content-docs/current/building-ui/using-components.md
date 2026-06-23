@@ -332,7 +332,7 @@ Verwenden Sie `ComponentLifecycleObserver` für:
 - Koordination mehrerer Komponenten
 - Bereinigung von externen Ressourcen
 
-Um Code auszuführen, nachdem eine Komponente dem DOM hinzugefügt wurde, siehe [`whenAttached()`](/docs/building-ui/composite-components) im Leitfaden für Composite Components.
+Um Code auszuführen, nachdem eine Komponente dem DOM hinzugefügt wurde, siehe [`whenAttached()`](/docs/building-ui/composing-components) im Leitfaden für Composite Components.
 
 ## Benutzerdaten {#user-data}
 

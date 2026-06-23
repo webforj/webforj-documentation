@@ -9,7 +9,7 @@ Siirrät [Työskentely tiedon kanssa](/docs/introduction/tutorial/working-with-d
 Sitten yhdistät nämä sivut siten, että sovelluksesi pystyy navigoimaan niiden välillä soveltamalla näitä käsitteitä:
 
 - [Reititys](/docs/routing/overview)
-- [Yhdistelmärakenteet](/docs/building-ui/composite-components)
+- [Yhdistelmärakenteet](/docs/building-ui/composing-components)
 - [`ColumnsLayout`](/docs/components/columns-layout) komponentti
 
 Tämän vaiheen suorittaminen luo version [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
@@ -122,7 +122,7 @@ Molempien, `MainView` ja `FormView`, lisäksi molemmat ovat näkynä reittejä, 
 
 ### `Composite`-komponenttien käyttö {#using-composite-components}
 
-Kun sovellus oli yhden sivun, säilytit komponentit sisällä `Frame`. Edelleen, monitahtisessa sovelluksessa sinun on pakko kääriä nämä käyttöliittymäkomponentit [`Composite`-komponentteihin](/docs/building-ui/composite-components).
+Kun sovellus oli yhden sivun, säilytit komponentit sisällä `Frame`. Edelleen, monitahtisessa sovelluksessa sinun on pakko kääriä nämä käyttöliittymäkomponentit [`Composite`-komponentteihin](/docs/building-ui/composing-components).
 
 `Composite`-komponentit ovat kääreitä, jotka helpottavat uudelleenkäytettävien komponenttien luomista. 
 Luodaksesi `Composite`-komponentin, laajenna `Composite`-luokkaa määritellyllä sidotulla komponentilla, joka toimii luokan perustana, esim. `Composite<FlexLayout>`. 

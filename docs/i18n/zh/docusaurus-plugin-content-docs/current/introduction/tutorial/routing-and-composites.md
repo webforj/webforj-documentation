@@ -9,7 +9,7 @@ _i18n_hash: 673861b579764a7f9b81512fc0b1e576
 然后，您将连接这些页面，以便您的应用能够通过应用这些概念在它们之间导航：
 
 - [路由](/docs/routing/overview)
-- [组合组件](/docs/building-ui/composite-components)
+- [组合组件](/docs/building-ui/composing-components)
 - [`ColumnsLayout`](/docs/components/columns-layout) 组件
 
 完成此步骤将创建[3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites)的一个版本。
@@ -122,7 +122,7 @@ public class FormView {
 
 ### 使用`Composite`组件 {#using-composite-components}
 
-当应用为单页时，您将组件存储在`Frame`内部。向前发展，随着多个视图的应用，您需要将这些用户界面组件包装在[`Composite`组件](/docs/building-ui/composite-components)内。
+当应用为单页时，您将组件存储在`Frame`内部。向前发展，随着多个视图的应用，您需要将这些用户界面组件包装在[`Composite`组件](/docs/building-ui/composing-components)内。
 
 `Composite`组件是包装器，使创建可重用组件变得容易。
 要创建一个`Composite`组件，扩展`Composite`类并指定一个作为类基础的绑定组件，例如`Composite<FlexLayout>`。

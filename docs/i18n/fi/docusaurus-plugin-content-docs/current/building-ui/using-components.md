@@ -332,7 +332,7 @@ Käytä `ComponentLifecycleObserver`-menetelmää:
 - Koordinoidaksesi useita komponentteja
 - Siivoaksesi ulkoisia resursseja
 
-Koodin suorittamiseksi sen jälkeen, kun komponentti on kiinnitetty DOM:iin, katso [`whenAttached()`](/docs/building-ui/composite-components) Composite Components -oppaasta.
+Koodin suorittamiseksi sen jälkeen, kun komponentti on kiinnitetty DOM:iin, katso [`whenAttached()`](/docs/building-ui/composing-components) Composite Components -oppaasta.
 
 ## Käyttäjätiedot {#user-data}
 

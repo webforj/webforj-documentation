@@ -1,6 +1,6 @@
 .conditional-container {
     padding: var(--dwc-space-2xl);
-    min-height: 400px;
+    min-height: 100vh;
 }
 
 .conditional-card {

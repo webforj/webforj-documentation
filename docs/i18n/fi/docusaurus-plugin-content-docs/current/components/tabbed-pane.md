@@ -114,7 +114,7 @@ Jos tätä menetelmää käytetään `Tab`:lle, joka on jo liitetty `Component`:
 
 ## Konfigurointi ja asettelu {#configuration-and-layout}
 
-`TabbedPane`-luokassa on kaksi osaa: `Tab`, joka näytetään määritetyssä paikassa, ja näytettävä komponentti. Tämä voi olla yksi komponentti tai [`Composite`](../building-ui/composite-components) -komponentti, mikä mahdollistaa monimutkaisempien komponenttien esittämisen välilehden sisältöosiossa.
+`TabbedPane`-luokassa on kaksi osaa: `Tab`, joka näytetään määritetyssä paikassa, ja näytettävä komponentti. Tämä voi olla yksi komponentti tai [`Composite`](../building-ui/composing-components) -komponentti, mikä mahdollistaa monimutkaisempien komponenttien esittämisen välilehden sisältöosiossa.
 
 ### Pyyhkäisy {#swiping}
 

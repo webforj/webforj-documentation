@@ -114,7 +114,7 @@ _i18n_hash: 0b623c02434c6f0d140de0ade3a22c5d
 
 ## 配置和布局 {#configuration-and-layout}
 
-`TabbedPane` 类有两个组成部分：在指定位置显示的选项卡，以及要显示的组件。这可以是单个组件，也可以是 [`Composite`](../building-ui/composite-components) 组件，允许在选项卡的内容部分显示更复杂的组件。
+`TabbedPane` 类有两个组成部分：在指定位置显示的选项卡，以及要显示的组件。这可以是单个组件，也可以是 [`Composite`](../building-ui/composing-components) 组件，允许在选项卡的内容部分显示更复杂的组件。
 
 ### 滑动 {#swiping}
 

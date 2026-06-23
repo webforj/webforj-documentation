@@ -9,7 +9,7 @@ You'll move the UI you created in [Working with Data](/docs/introduction/tutoria
 Then, you'll connect these pages so your app is able to navigate between them by applying these concepts:
 
 - [Routing](/docs/routing/overview)
-- [Composite components](/docs/building-ui/composite-components)
+- [Composite components](/docs/building-ui/composing-components)
 - The [`ColumnsLayout`](/docs/components/columns-layout) component
 
 Completing this step creates a version of [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
@@ -122,7 +122,7 @@ Besides both being view routes, `MainView` and `FormView` share additional chara
 
 ### Using `Composite` components {#using-composite-components}
 
-When the app was single-paged, you stored the components inside a `Frame`. Moving forward, with an app with multiple views, you'll need to wrap those UI components inside [`Composite` components](/docs/building-ui/composite-components).
+When the app was single-paged, you stored the components inside a `Frame`. Moving forward, with an app with multiple views, you'll need to wrap those UI components inside [`Composite` components](/docs/building-ui/composing-components).
 
 `Composite` components are wrappers that make it easy to create reusable components. 
 To create a `Composite` component, extend the `Composite` class with a specified bound component that serves as the foundation of the class, e.g., `Composite<FlexLayout>`. 

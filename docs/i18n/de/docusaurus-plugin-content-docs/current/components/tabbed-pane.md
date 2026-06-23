@@ -114,7 +114,7 @@ Wenn diese Methode bei einem `Tab` verwendet wird, der bereits mit einer `Kompon
 
 ## Konfiguration und Layout {#configuration-and-layout}
 
-Die Klasse `TabbedPane` hat zwei wesentliche Teile: einen `Tab`, der an einem bestimmten Ort angezeigt wird, und eine Komponente, die angezeigt werden soll. Dies kann eine einzelne Komponente oder eine [`Composite`](../building-ui/composite-components) Komponente sein, die die Anzeige komplexerer Komponenten im Inhaltsbereich eines Tabs ermöglicht.
+Die Klasse `TabbedPane` hat zwei wesentliche Teile: einen `Tab`, der an einem bestimmten Ort angezeigt wird, und eine Komponente, die angezeigt werden soll. Dies kann eine einzelne Komponente oder eine [`Composite`](../building-ui/composing-components) Komponente sein, die die Anzeige komplexerer Komponenten im Inhaltsbereich eines Tabs ermöglicht.
 
 ### Wischen {#swiping}
 

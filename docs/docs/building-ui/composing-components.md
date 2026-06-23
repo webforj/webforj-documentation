@@ -175,5 +175,5 @@ files={[
   'src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java',
   'src/main/resources/static/composite/analyticscomposite.css',
 ]}
-height='500px'
+height='550px'
 />
