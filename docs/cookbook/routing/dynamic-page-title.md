@@ -11,6 +11,7 @@ Implement `HasFrameTitle` and read the route parameter from the `ParametersBag` 
 ```java
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.html.elements.H1;
 import com.webforj.router.NavigationContext;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.concern.HasFrameTitle;
@@ -20,7 +21,7 @@ import com.webforj.router.history.ParametersBag;
 public class ProductDetailView extends Composite<Div> implements HasFrameTitle {
 
   public ProductDetailView() {
-    // build view
+    getBoundComponent().add(new H1("Product details"));
   }
 
   @Override

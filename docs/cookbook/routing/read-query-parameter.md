@@ -16,7 +16,7 @@ import com.webforj.router.event.DidEnterEvent;
 import com.webforj.router.observer.DidEnterObserver;
 import com.webforj.router.history.ParametersBag;
 
-@Route(value = "products")
+@Route(value = "catalog")
 public class ProductView extends Composite<Div> implements DidEnterObserver {
 
   @Override
@@ -29,4 +29,4 @@ public class ProductView extends Composite<Div> implements DidEnterObserver {
 }
 ```
 
-For multi-value parameters such as `?tag=css&tag=routing`, use `query.getList("tag").orElse(List.of())`.
+For comma-delimited values such as `?tag=css,routing`, use `query.getList("tag").orElse(List.of())`.

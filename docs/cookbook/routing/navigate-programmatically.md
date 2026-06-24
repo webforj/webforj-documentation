@@ -24,10 +24,10 @@ public class HomeView extends Composite<Div> {
     goToDashboard.onClick(e -> Router.getCurrent().navigate(DashboardView.class));
     self.add(goToDashboard);
   }
-}
 
-@Route("dashboard")
-class DashboardView extends Composite<Div> {}
+  @Route("dashboard")
+  public static class DashboardView extends Composite<Div> {}
+}
 ```
 
 To navigate with route parameters, pass a `ParametersBag` as the second argument: `Router.getCurrent().navigate(UserView.class, ParametersBag.of("id=42"))`.

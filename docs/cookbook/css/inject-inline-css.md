@@ -16,7 +16,12 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @InlineStyleSheet(
-  value = ".highlight { background-color: yellow; font-weight: bold; }",
+  value = ".highlight {"
+      + " background-color: var(--dwc-color-warning-alt);"
+      + " color: var(--dwc-color-warning-text);"
+      + " font-weight: var(--dwc-font-weight-semibold);"
+      + " padding: var(--dwc-space-m);"
+      + " }",
   id = "highlight-styles",
   once = true
 )

@@ -42,10 +42,9 @@ public class BooksView extends Composite<Div> {
         new Paragraph("No books found"));
     emptyState.setVisible(false);
 
+    self.add(table, emptyState);
     refreshEmptyState();
     repository.addCommitListener(e -> refreshEmptyState());
-
-    self.add(table, emptyState);
   }
 
   private void refreshEmptyState() {

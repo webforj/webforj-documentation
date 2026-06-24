@@ -24,15 +24,15 @@ public class AppThemeToggle extends Composite<Div> {
     iconButton.setTheme(Theme.GRAY)
         .onClick(e -> switchAppTheme());
 
-    switch (App.getTheme()) {
+    switch (String.valueOf(App.getTheme())) {
       case "light":
-        setLightAppTheme();
+        updateButton("sun", "Switch to dark mode");
         break;
       case "dark":
-        setDarkAppTheme();
+        updateButton("moon", "Switch to light mode");
         break;
       default:
-        setLightAppTheme();
+        updateButton("device-desktop", "Switch to dark mode");
         break;
     }
 
@@ -41,25 +41,26 @@ public class AppThemeToggle extends Composite<Div> {
   }
 
   private void switchAppTheme() {
-    if (App.getTheme().equals("light")) {
-      setDarkAppTheme();
-    } else {
+    if ("dark".equals(App.getTheme())) {
       setLightAppTheme();
+    } else {
+      setDarkAppTheme();
     }
   }
 
   private void setDarkAppTheme() {
     App.setTheme("dark");
-    iconButton.setName("moon")
-        .setTooltipText("dark mode");
+    updateButton("moon", "Switch to light mode");
   }
 
   private void setLightAppTheme() {
     App.setTheme("light");
-    iconButton.setName("sun")
-        .setTooltipText("light mode");
+    updateButton("sun", "Switch to dark mode");
   }
 
+  private void updateButton(String icon, String tooltip) {
+    iconButton.setName(icon).setTooltipText(tooltip);
+  }
 }
 ```
 

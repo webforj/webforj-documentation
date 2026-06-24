@@ -56,6 +56,7 @@ public class ProductsView extends Composite<Div> {
         new Product("Keyboard", 79.99),
         new Product("Dock", 149.99))));
 
+    table.setSize("100%", "50vh");
     table.refreshColumns();
     self.add(table);
   }

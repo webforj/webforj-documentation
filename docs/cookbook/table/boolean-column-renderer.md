@@ -10,9 +10,7 @@ difficulty: beginner
 
 ```java
 import com.webforj.component.Composite;
-import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
-import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.table.Table;
 import com.webforj.component.table.renderer.BooleanRenderer;
 import com.webforj.data.repository.CollectionRepository;
@@ -27,9 +25,7 @@ public class TasksView extends Composite<Div> {
     Table<Task> table = new Table<>();
     table.addColumn("title", Task::getTitle).setLabel("Task");
 
-    BooleanRenderer<Task> doneRenderer = new BooleanRenderer<>(
-        TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
-        TablerIcon.create("thumb-down").setTheme(Theme.DANGER));
+    BooleanRenderer<Task> doneRenderer = new BooleanRenderer<>();
 
     table
         .addColumn("done", Task::isDone)
