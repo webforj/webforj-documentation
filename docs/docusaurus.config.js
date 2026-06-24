@@ -194,6 +194,10 @@ module.exports = async function createConfig() {
           {
             from: '/docs/integrations/spring/spring-devtools',
             to: '/docs/configuration/deploy-reload/spring-devtools'
+          },
+          {
+            from: '/docs/building-ui/composite-components',
+            to: '/docs/building-ui/composing-components'
           }
         ],
       },

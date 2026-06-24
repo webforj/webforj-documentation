@@ -9,7 +9,7 @@ You'll move the UI you created in [Working with Data](/docs/introduction/tutoria
 Then, you'll connect these pages so your app is able to navigate between them by applying these concepts:
 
 - [Routing](/docs/routing/overview)
-- [Composite components](/docs/building-ui/composing-components)
+- [Composing components](/docs/building-ui/composing-components)
 - The [`ColumnsLayout`](/docs/components/columns-layout) component
 
 Completing this step creates a version of [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
