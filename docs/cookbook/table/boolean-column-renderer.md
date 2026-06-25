@@ -6,11 +6,13 @@ components: [Table]
 difficulty: beginner
 ---
 
-`BooleanRenderer` expects the column's value provider to return a `Boolean`. In this example, `Task::isDone` reads the `done` property from each row and the renderer turns that value into a themed icon.
+`BooleanRenderer` turns a `Boolean` cell value into an icon. Pass a true icon and a false icon to the constructor to override the defaults (a check, a cross, and a dash for null). Here `Task::isDone` provides the value, and the renderer shows a green check for finished tasks and an amber clock for pending ones.
 
 ```java
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.table.Table;
 import com.webforj.component.table.renderer.BooleanRenderer;
 import com.webforj.data.repository.CollectionRepository;
@@ -25,7 +27,9 @@ public class TasksView extends Composite<Div> {
     Table<Task> table = new Table<>();
     table.addColumn("title", Task::getTitle).setLabel("Task");
 
-    BooleanRenderer<Task> doneRenderer = new BooleanRenderer<>();
+    BooleanRenderer<Task> doneRenderer = new BooleanRenderer<>(
+        TablerIcon.create("circle-check").setTheme(Theme.SUCCESS),
+        TablerIcon.create("clock").setTheme(Theme.WARNING));
 
     table
         .addColumn("done", Task::isDone)
@@ -59,5 +63,6 @@ public class TasksView extends Composite<Div> {
     }
   }
 }
-
 ```
+
+To customize only one state, or to show an icon for `null` values, use `setTrueIcon`, `setFalseIcon`, `setNullIcon`, and `setShowNull(true)` instead of passing both icons to the constructor.
