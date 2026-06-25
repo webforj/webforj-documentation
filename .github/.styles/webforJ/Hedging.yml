@@ -1,0 +1,13 @@
+extends: existence
+message: "Avoid hedging/filler like '%s'. Remove it or state the point directly."
+link: "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+level: warning
+ignorecase: true
+tokens:
+  - "it(?:'s| is) important to note"
+  - "it(?:'s| is) worth (?:noting|mentioning)"
+  - 'needless to say'
+  - 'at the end of the day'
+  - "in today'?s (?:fast-paced )?(?:world|digital age|era)"
+  - 'in the digital age'
+  - 'when it comes to'
