@@ -1,13 +1,25 @@
 ---
 title: Snapshots
-sidebar_position: 35
-sidebar_class_name: new-content
-_i18n_hash: 5234e12882e2652d440f8861a6341cef
+sidebar_position: 30
+hide_table_of_contents: true
+description: >-
+  Locate the latest webforJ snapshot version and add the Central Portal
+  Snapshots repository to consume pre-release builds.
+_i18n_hash: 646ace835d5ba39ed182935e8d7f33fb
 ---
-Jede Version von webforJ wird von detaillierten [Versionshinweisen](https://github.com/webforj/webforj/releases) und einem [Blogartikel zur Veröffentlichung](/blog/tags/release) begleitet. Snapshot-Versionen von webforJ ermöglichen Ihnen den Zugriff auf die neuesten Funktionen zum Testen, während die Entwicklung an der vorab veröffentlichten Version fortgesetzt wird.
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
+
+Jede Version von webforJ wird mit detaillierten [Versionshinweisen](https://github.com/webforj/webforj/releases) und einem [Blogartikel zur Veröffentlichung](/blog/tags/release) begleitet.
+Snapshot-Versionen von webforJ geben Ihnen Zugang zu den neuesten Funktionen für Tests, während die Entwicklung der voraus veröffentlichten Version fortgesetzt wird.
 
 <!-- vale Google.Acronyms = NO -->
-Während Snapshots auf öffentlichen Maven-Repository-Websites wie [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) oder [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj) nicht aufgeführt sind, ist es einfach, den Namen des Snapshots zu finden. Um die neueste Snapshot-Version zu finden, navigieren Sie zum [webforJ-Projekt](https://github.com/webforj/webforj) auf GitHub. Finden Sie von dort aus die [POM-Datei](https://github.com/webforj/webforj/blob/main/pom.xml) des Projekts und suchen Sie nach dem `version`-Tag:
+Während Snapshots auf öffentlichen Maven-Repository-Webseiten wie [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) oder [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj) nicht gelistet sind, ist es einfach, den Namen des Snapshots zu finden. Um die neueste Snapshot-Version zu finden, navigieren Sie zum [webforJ-Projekt](https://github.com/webforj/webforj) auf GitHub. Dort finden Sie die [POM-Datei](https://github.com/webforj/webforj/blob/main/pom.xml) des Projekts und suchen nach dem `version`-Tag:
 <!-- vale Google.Acronyms = YES -->
 ```xml {3} title="pom.xml"
 <groupId>com.webforj</groupId>
@@ -30,7 +42,7 @@ Um diese Snapshot-Version in Ihrer App zu verwenden, verwenden Sie diesen Wert a
 
 ## Konfigurieren Sie das Snapshot-Repository {#configure-the-snapshot-repository}
 
-Da Snapshots nicht auf Maven Central veröffentlicht werden, müssen Sie das Central Portal Snapshots-Repository zu Ihrer POM-Datei hinzufügen, damit Maven sie auflösen kann. Sie benötigen zwei Einträge: ein `<repository>` für die Laufzeitartefakte von webforJ und ein `<pluginRepository>` für die Maven-Plugins (wie die Install- und Minify-Plugins), die ebenfalls als Snapshots veröffentlicht werden. Beide Einträge deaktivieren die Veröffentlichungslösung, sodass Maven nur dieses Repository für Snapshot-Artefakte verwendet.
+Da Snapshots nicht im Maven Central veröffentlicht werden, müssen Sie das Central Portal Snapshots-Repository in das `pom.xml` Ihrer App hinzufügen, damit Maven sie auflösen kann. Sie benötigen zwei Einträge: ein `<repository>` für die Laufzeit-Artefakte von webforJ und ein `<pluginRepository>` für die Maven-Plugins (wie die Installations- und Minify-Plugins), die ebenfalls als Snapshots veröffentlicht werden. Beide Einträge deaktivieren die Release-Auflösung, sodass Maven dieses Repository nur für Snapshot-Artefakte verwendet.
 
 ```xml title="pom.xml"
 <repositories>
@@ -61,8 +73,8 @@ Da Snapshots nicht auf Maven Central veröffentlicht werden, müssen Sie das Cen
 </pluginRepositories>
 ```
 
-Alternativ, wenn Sie eine neue webforJ-App erstellen, gehen Sie zu [startforJ](https://docs.webforj.com/startforj/) und wählen Sie die webforJ-Version, die mit `(pre)` endet.
+Alternativ, wenn Sie eine neue webforJ-App erstellen, gehen Sie zu [startforJ](https://docs.webforj.com/startforj/) und wählen Sie die webforJ-Version aus, die mit `(pre)` endet.
 
 :::warning
-Snapshot-Versionen befinden sich in aktiver Entwicklung und können Änderungen unterliegen, daher werden sie nicht für den Einsatz in produktiven Anwendungen empfohlen.
+Snapshot-Versionen befinden sich in aktiver Entwicklung und können sich ändern, daher werden sie nicht empfohlen für den Einsatz in Live-Produktionsanwendungen.
 :::

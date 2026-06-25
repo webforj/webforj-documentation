@@ -312,5 +312,7 @@
   "componentDemo.openInNewWindow": "a4912d637ce7bd602fe848fafb0cc185",
   "componentDemo.iframeTitle": "802a57c9a99b0c31b115a58d4135d921",
   "sidebar.documentationSidebar.category.Upgrade to 26.00": "35a959230718667d6e2ffd94f999c317",
-  "sidebar.documentationSidebar.category.security-application-security": "2993e06f9e34b9da0ed41173d7d56a4a"
+  "sidebar.documentationSidebar.category.security-application-security": "2993e06f9e34b9da0ed41173d7d56a4a",
+  "sidebar.documentationSidebar.category.Frontend bundler": "0abbd35c99082689c5e8e2624d307090",
+  "sidebar.documentationSidebar.category.Extensions": "5e2f5f3c24ae8c6ab3eca618826b0e23"
 }

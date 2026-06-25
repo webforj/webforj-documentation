@@ -154,5 +154,13 @@
   "sidebar.documentationSidebar.category.security-application-security": {
     "message": "Application Security",
     "description": "The label for category Application Security in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Frontend bundler": {
+    "message": "Frontend bundler",
+    "description": "The label for category Frontend bundler in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Extensions": {
+    "message": "Extensions",
+    "description": "The label for category Extensions in sidebar documentationSidebar"
   }
 }
