@@ -20,11 +20,11 @@ MarkdownViewer viewer = new MarkdownViewer("# Hello World");
 
 // Replace content entirely
 viewer.setContent("""
-    ## New Content
+  ## New Content
 
-    - Item 1
-    - Item 2
-    """);
+  - Item 1
+  - Item 2
+  """);
 
 // Get current content
 String content = viewer.getContent();

@@ -183,8 +183,8 @@ In `src/main/java/com/webforj/tutorial/repository`, create a repository interfac
 ```java title="CustomerRepository.java"
 @Repository
 public interface CustomerRepository
-        extends JpaRepository<Customer, Long>,
-        JpaSpecificationExecutor<Customer> {
+  extends JpaRepository<Customer, Long>,
+  JpaSpecificationExecutor<Customer> {
 }
 ```
 
