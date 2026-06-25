@@ -10,24 +10,38 @@ Mark the form dirty on any field change, then decide whether to accept or reject
 
 ```java
 import com.webforj.component.Composite;
+import com.webforj.component.button.Button;
 import com.webforj.component.field.TextField;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optiondialog.ConfirmDialog;
 import com.webforj.component.optiondialog.OptionDialog;
+import com.webforj.router.Router;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.event.WillLeaveEvent;
+import com.webforj.router.history.Location;
 import com.webforj.router.history.ParametersBag;
 import com.webforj.router.observer.WillLeaveObserver;
 
 @Route("edit-product")
-public class EditProductView extends Composite<Div> implements WillLeaveObserver {
+public class EditProductView extends Composite<FlexLayout> implements WillLeaveObserver {
 
+  private final FlexLayout self = getBoundComponent();
   private boolean dirty = false;
+  private Button leaveButton = new Button("Leave without saving");
 
   public EditProductView() {
+    self
+      .setDirection(FlexDirection.COLUMN)
+      .setMaxWidth(300);
+
     TextField name = new TextField("Product name");
     name.onModify(e -> dirty = true);
-    getBoundComponent().add(name);
+
+    leaveButton.onClick(e -> {
+      Router.getCurrent().navigate(new Location("/"));
+    });
+    self.add(name, leaveButton);
   }
 
   @Override
