@@ -144,9 +144,9 @@ A panel's header renders its label as plain text by default. Use `addToHeader()`
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
-    .horizontal()
-    .build()
-    .setSpacing("var(--dwc-space-s)");
+  .horizontal()
+  .build()
+  .setSpacing("var(--dwc-space-s)");
 
 headerContent.add(FeatherIcon.SETTINGS.create(), new Span("Custom Header with Icon"));
 panel.addToHeader(headerContent);
@@ -217,17 +217,17 @@ height='550px'
 
 ```java
 panel.onToggle(e -> {
-    // Fires before the panel changes state.
-    // e.isOpened() reflects the state being transitioned to, not the current state.
-    String direction = e.isOpened() ? "opening" : "closing";
+  // Fires before the panel changes state.
+  // e.isOpened() reflects the state being transitioned to, not the current state.
+  String direction = e.isOpened() ? "opening" : "closing";
 });
 
 panel.onOpen(e -> {
-    // Fires after the panel is fully open — good for lazy-loading content.
+  // Fires after the panel is fully open — good for lazy-loading content.
 });
 
 panel.onClose(e -> {
-    // Fires after the panel is fully closed — good for cleanup or summary updates.
+  // Fires after the panel is fully closed — good for cleanup or summary updates.
 });
 ```
 

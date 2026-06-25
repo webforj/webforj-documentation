@@ -87,9 +87,9 @@ Pass an <JavadocLink type="foundation" location="com/webforj/IconBadgeOptions" c
 
 ```java
 IconBadgeOptions options = new IconBadgeOptions()
-    .setColor(new Color(0x2e, 0x7d, 0x32))
-    .setShape(IconBadgeOptions.Shape.SQUARE)
-    .setSize(1.25);
+  .setColor(new Color(0x2e, 0x7d, 0x32))
+  .setShape(IconBadgeOptions.Shape.SQUARE)
+  .setSize(1.25);
 
 Page.getCurrent().setIconBadge(5, options);
 ```
