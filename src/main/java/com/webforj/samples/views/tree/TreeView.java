@@ -1,6 +1,7 @@
 package com.webforj.samples.views.tree;
 
 import static com.webforj.component.tree.Tree.node;
+
 import com.webforj.component.Composite;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
@@ -15,9 +16,7 @@ public class TreeView extends Composite<FlexLayout> {
   private final Tree tree = new Tree();
 
   public TreeView() {
-    self.setDirection(FlexDirection.COLUMN)
-        .setSize("100%", "100vh")
-        .setStyle("overflow", "auto");
+    self.setDirection(FlexDirection.COLUMN).setSize("100%", "100vh").setStyle("overflow", "auto");
 
     tree.add(
         node("Documents")
@@ -28,36 +27,25 @@ public class TreeView extends Composite<FlexLayout> {
                     .add(
                         node("2023")
                             .add(
-                                node("January.pdf")
-                                    .setTooltipText("January report"),
-                                node("February.pdf")
-                                    .setTooltipText("February report")),
+                                node("January.pdf").setTooltipText("January report"),
+                                node("February.pdf").setTooltipText("February report")),
                         node("2022")
                             .add(
-                                node("Q4.pdf")
-                                    .setTooltipText("Quarter 4 report"),
-                                node("Q3.pdf")
-                                    .setTooltipText("Quarter 3 report"))),
+                                node("Q4.pdf").setTooltipText("Quarter 4 report"),
+                                node("Q3.pdf").setTooltipText("Quarter 3 report"))),
                 node("Invoices")
                     .setTooltipText("Invoices and billing")
                     .add(
-                        node("ClientA.pdf")
-                            .setTooltipText("Invoice for Client A"),
-                        node("ClientB.pdf")
-                            .setTooltipText("Invoice for Client B"))),
+                        node("ClientA.pdf").setTooltipText("Invoice for Client A"),
+                        node("ClientB.pdf").setTooltipText("Invoice for Client B"))),
         node("Pictures")
             .setTooltipText("Photos and images")
             .add(
                 node("Vacations")
                     .add(
-                        node("Beach.png")
-                            .setTooltipText("Beach photo"),
-                        node("Mountains.png")
-                            .setTooltipText("Mountain photo")),
-                node("Events")
-                    .add(
-                        node("Birthday.jpg")
-                            .setTooltipText("Birthday party"))));
+                        node("Beach.png").setTooltipText("Beach photo"),
+                        node("Mountains.png").setTooltipText("Mountain photo")),
+                node("Events").add(node("Birthday.jpg").setTooltipText("Birthday party"))));
 
     tree.setStyle("margin", "var(--dwc-space-l)")
         .expand("Documents")

@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-tab>
 sidebar_class_name: sidebar--item__hidden
 slug: tab
-description: A user guide article for the tab
+description: Style the dwc-tab label, icon, and indicator with CSS variables and shadow parts for active, hover, and disabled states.
 // pagination_prev: null
 // pagination_next: null
 ---

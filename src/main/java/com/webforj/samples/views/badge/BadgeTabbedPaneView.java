@@ -35,14 +35,17 @@ public class BadgeTabbedPaneView extends Composite<FlexLayout> {
   private TabbedPane createFilledBadgePane() {
     TabbedPane pane = new TabbedPane();
 
-    Tab inbox = new Tab("Inbox")
-      .setSuffixComponent(createBadge("12", BadgeTheme.PRIMARY, BadgeExpanse.XSMALL));
+    Tab inbox =
+        new Tab("Inbox")
+            .setSuffixComponent(createBadge("12", BadgeTheme.PRIMARY, BadgeExpanse.XSMALL));
 
-    Tab notifications = new Tab("Notifications")
-      .setSuffixComponent(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
+    Tab notifications =
+        new Tab("Notifications")
+            .setSuffixComponent(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
 
-    Tab drafts = new Tab("Drafts")
-      .setSuffixComponent(createBadge("1", BadgeTheme.GRAY, BadgeExpanse.XSMALL));
+    Tab drafts =
+        new Tab("Drafts")
+            .setSuffixComponent(createBadge("1", BadgeTheme.GRAY, BadgeExpanse.XSMALL));
 
     Tab sent = new Tab("Sent");
 
@@ -57,14 +60,18 @@ public class BadgeTabbedPaneView extends Composite<FlexLayout> {
   private TabbedPane createOutlinedBadgePane() {
     TabbedPane pane = new TabbedPane();
 
-    Tab tasks = new Tab("Tasks")
-      .setSuffixComponent(createBadge("5", BadgeTheme.OUTLINED_PRIMARY, BadgeExpanse.XSMALL));
+    Tab tasks =
+        new Tab("Tasks")
+            .setSuffixComponent(createBadge("5", BadgeTheme.OUTLINED_PRIMARY, BadgeExpanse.XSMALL));
 
-    Tab issues = new Tab("Issues")
-      .setSuffixComponent(createBadge("8", BadgeTheme.OUTLINED_DANGER, BadgeExpanse.XSMALL));
+    Tab issues =
+        new Tab("Issues")
+            .setSuffixComponent(createBadge("8", BadgeTheme.OUTLINED_DANGER, BadgeExpanse.XSMALL));
 
-    Tab done = new Tab("Done")
-      .setSuffixComponent(createBadge("24", BadgeTheme.OUTLINED_SUCCESS, BadgeExpanse.XSMALL));
+    Tab done =
+        new Tab("Done")
+            .setSuffixComponent(
+                createBadge("24", BadgeTheme.OUTLINED_SUCCESS, BadgeExpanse.XSMALL));
 
     pane.addTab(tasks, new Paragraph("Your pending tasks."));
     pane.addTab(issues, new Paragraph("Open issues that need attention."));

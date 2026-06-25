@@ -13,10 +13,8 @@ public class NumberFieldView extends Composite<FlexLayout> {
   private final NumberField numField = new NumberField("Quantity:");
 
   public NumberFieldView() {
-    self.setMargin("var(--dwc-space-m)")
-        .add(numField);
+    self.setMargin("var(--dwc-space-m)").add(numField);
 
-    numField.setWidth("200px")
-        .setPlaceholder("Enter a number...");
+    numField.setWidth("200px").setPlaceholder("Enter a number...");
   }
 }

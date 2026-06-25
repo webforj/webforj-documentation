@@ -1,6 +1,7 @@
 ---
-sidebar_position: 35
+sidebar_position: 25
 title: Deploying Additional Servlets
+description: Host REST endpoints and third-party servlets alongside a webforJ app by remapping WebforjServlet or proxying through webforj.conf.
 ---
 <!-- vale off -->
 # Deploying Additional Servlets <DocChip chip='since' label='25.02' />
@@ -15,6 +16,8 @@ In some scenarios, you may need to deploy additional servlets alongside your web
 - Supporting legacy servlet-based code
 
 webforJ provides two approaches for deploying custom servlets alongside your app:
+
+<AISkillTip skill="webforj-adding-servlets" />
 
 ## Approach 1: Remapping `WebforjServlet` {#approach-1-remapping-webforjservlet}
 

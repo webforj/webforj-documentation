@@ -1,13 +1,13 @@
 package com.webforj.samples.views.table;
 
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.table.Column;
 import com.webforj.component.table.Table;
 import com.webforj.component.table.renderer.Renderer;
-import com.webforj.annotation.StyleSheet;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.component.table.Column;
 
 @StyleSheet("ws://css/table/tableRichContent.css")
 @Route
@@ -16,21 +16,22 @@ public class TableRichContentView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public TableRichContentView() {
-    Table<MusicRecord> table = new Table<MusicRecord>()
-      .addClassName("table")
-      .setRepository(Service.getMusicRecords())
-      .setSelectionMode(Table.SelectionMode.MULTIPLE)
-      .setRowHeight(45)
-      .refreshColumns();
+    Table<MusicRecord> table =
+        new Table<MusicRecord>()
+            .addClassName("table")
+            .setRepository(Service.getMusicRecords())
+            .setSelectionMode(Table.SelectionMode.MULTIPLE)
+            .setRowHeight(45)
+            .refreshColumns();
 
     table.addColumn("Title", MusicRecord::getTitle).setHidden(true);
     table.addColumn("Artist", MusicRecord::getArtist).setHidden(true);
     table.addColumn("Title & Artist", new AvatarRenderer()).setFlex(1f).setMinWidth(200f);
-    table.addColumn("Genre", MusicRecord::getMusicType)
-      .setPinDirection(Column.PinDirection.RIGHT);
-    table.addColumn("Cost", MusicRecord::getCost)
-      .setRenderer(new BadgeRenderer())
-      .setPinDirection(Column.PinDirection.RIGHT);
+    table.addColumn("Genre", MusicRecord::getMusicType).setPinDirection(Column.PinDirection.RIGHT);
+    table
+        .addColumn("Cost", MusicRecord::getCost)
+        .setRenderer(new BadgeRenderer())
+        .setPinDirection(Column.PinDirection.RIGHT);
 
     self.add(table);
   }
@@ -39,7 +40,7 @@ public class TableRichContentView extends Composite<Div> {
   static class AvatarRenderer extends Renderer<MusicRecord> {
     @Override
     public String build() {
-      return /* html */"""
+      return /* html */ """
         <%
         const artist = cell.row.getValue('Artist');
         const title = cell.row.getValue('Title');

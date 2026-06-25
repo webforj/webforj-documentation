@@ -2,6 +2,7 @@
 sidebar_position: 5
 title: ChoiceBox
 slug: choicebox
+description: Pick a single value from a fixed set with the ChoiceBox dropdown, including dropdown type styling, max row count, and keyboard navigation.
 ---
 
 <DocChip chip='shadow' />
@@ -43,12 +44,14 @@ Using the <JavadocLink type="foundation" location="com/webforj/component/list/Dw
 This detachment creates a situation where directly targeting the
 dropdown using CSS or shadow part selectors from the parent component becomes challenging, unless you make use of the dropdown type attribute.
 
-In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
+In the demo below, the Dropdown type is set and used in the CSS file to enlarge an option when you hover over it.
 
-<ComponentDemo 
-path='/webforj/choiceboxdropdowntype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxDropdownTypeView.java'
-cssURL='/css/lists/combobox/comboBoxDropDownType.css'
+<ComponentDemo
+path='/webforj/choiceboxdropdowntype'
+files={[
+  'src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxDropdownTypeView.java',
+  'src/main/resources/static/css/lists/combobox/comboBoxDropDownType.css',
+]}
 height='250px'
 />
 
@@ -60,9 +63,9 @@ By default, the number of rows displayed in the dropdown of a `ChoiceBox` will b
 Using a number that is less than or equal to 0 will result in unsetting this property.
 :::
 
-<ComponentDemo 
-path='/webforj/choiceboxmaxrow?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxMaxRowView.java'
+<ComponentDemo
+path='/webforj/choiceboxmaxrow'
+files={['src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxMaxRowView.java']}
 height='450px'
 />
 

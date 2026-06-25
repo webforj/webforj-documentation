@@ -5,7 +5,6 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.Comparator;
 
 @Route
@@ -14,13 +13,15 @@ public class TableColumnComparatorView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public TableColumnComparatorView() {
-    Table<MusicRecord> table = new Table<MusicRecord>()
-      .setWidth("100vw")
-      .setHeight("100vh")
-      .setRepository(Service.getMusicRecords());
+    Table<MusicRecord> table =
+        new Table<MusicRecord>()
+            .setWidth("100vw")
+            .setHeight("100vh")
+            .setRepository(Service.getMusicRecords());
 
-    table.addColumn("Number", MusicRecord::getNumber)
-      .setComparator(Comparator.comparingInt(a -> Integer.parseInt(a.getNumber())));
+    table
+        .addColumn("Number", MusicRecord::getNumber)
+        .setComparator(Comparator.comparingInt(a -> Integer.parseInt(a.getNumber())));
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);
     table.addColumn("Genre", MusicRecord::getMusicType);

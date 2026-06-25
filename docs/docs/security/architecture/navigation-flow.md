@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Navigation Flow
+description: Trace how RouteSecurityObserver intercepts navigation, runs evaluators, and redirects users before any view renders.
 ---
 
 Security enforcement in webforJ happens automatically during navigation. When a user clicks a link or navigates to a route, the security system intercepts the navigation, evaluates access rules, and either allows the navigation to proceed or redirects the user to an appropriate page. This interception is invisible to users and requires no manual security checks in your component code.

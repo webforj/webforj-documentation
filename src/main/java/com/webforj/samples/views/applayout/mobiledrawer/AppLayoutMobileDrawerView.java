@@ -17,13 +17,12 @@ import com.webforj.component.layout.appnav.AppNavItem;
 import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
-import com.webforj.component.tabbedpane.TabbedPane.Placement;
 import com.webforj.component.tabbedpane.TabbedPane.Alignment;
+import com.webforj.component.tabbedpane.TabbedPane.Placement;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
-import com.webforj.samples.views.applayout.fullnavbar.AppLayoutFullNavbarContentView;
 
 @Route
 @StyleSheet("ws://css/applayout/applayout.css")
@@ -37,8 +36,7 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
 
   public AppLayoutMobileDrawerView() {
     // Header
-    header.addToStart(new AppDrawerToggle())
-            .addToTitle(new H3("Application"));
+    header.addToStart(new AppDrawerToggle()).addToTitle(new H3("Application"));
 
     self.addToHeader(header);
     self.setHeaderReveal(true);
@@ -58,26 +56,26 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(createItem("Dashboard", dashboardIcon))
-            .addItem(createItem("Orders", ordersIcon))
-            .addItem(createItem("Customers", customersIcon))
-            .addItem(createItem("Products", productsIcon))
-            .addItem(createItem("Documents", documentsIcon))
-            .addItem(createItem("Tasks", tasksIcon))
-            .addItem(createItem("Analytics", analyticsIcon));
+    drawerMenu
+        .addItem(createItem("Dashboard", dashboardIcon))
+        .addItem(createItem("Orders", ordersIcon))
+        .addItem(createItem("Customers", customersIcon))
+        .addItem(createItem("Products", productsIcon))
+        .addItem(createItem("Documents", documentsIcon))
+        .addItem(createItem("Tasks", tasksIcon))
+        .addItem(createItem("Analytics", analyticsIcon));
 
     // Content
-    self.addToContent(
-                    new H1("Application Title"),
-                    new Paragraph("Content goes here..."))
-            .addToFooter(footerMenu)
-            .setFooterReveal(true);
+    self.addToContent(new H1("Application Title"), new Paragraph("Content goes here..."))
+        .addToFooter(footerMenu)
+        .setFooterReveal(true);
 
-    footerMenu.setBodyHidden(true)
-            .setBorderless(true)
-            .setPlacement(Placement.BOTTOM)
-            .setAlignment(Alignment.STRETCH)
-            .setExpanse(Expanse.XLARGE);
+    footerMenu
+        .setBodyHidden(true)
+        .setBorderless(true)
+        .setPlacement(Placement.BOTTOM)
+        .setAlignment(Alignment.STRETCH)
+        .setExpanse(Expanse.XLARGE);
 
     footerMenu.addTab(createTab("dashboard"));
     footerMenu.addTab(createTab("shopping-cart"));
@@ -86,9 +84,9 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     footerMenu.addTab(createTab("files"));
   }
 
-
   private AppNavItem createItem(String text, Icon icon) {
-    return new AppNavItem(text, AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=" + text), icon);
+    return new AppNavItem(
+        text, AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=" + text), icon);
   }
 
   private Tab createTab(String icon) {

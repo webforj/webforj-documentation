@@ -1,6 +1,7 @@
 ---
 title: Route Registry Provider
 sidebar_position: 60
+description: Override default route scanning with a custom SPI provider to integrate Spring, CDI, OSGi, or GraalVM classloaders with webforJ routing.
 ---
 
 <!-- vale Google.Headings = NO -->

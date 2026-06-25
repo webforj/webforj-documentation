@@ -26,8 +26,7 @@ public interface TerminalCommand {
   void execute(Terminal term, String[] args);
 
   /**
-   * Prints command information to the terminal.
-   * Can be overridden for custom formatting.
+   * Prints command information to the terminal. Can be overridden for custom formatting.
    *
    * @param term the terminal instance
    */

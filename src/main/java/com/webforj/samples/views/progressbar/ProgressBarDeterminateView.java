@@ -12,15 +12,13 @@ public class ProgressBarDeterminateView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public ProgressBarDeterminateView() {
-    ProgressBar bar = new ProgressBar()
-        .setIndeterminate(true)
-        .setAnimated(true)
-        .setStriped(true)
-        .setText("Loading...");
+    ProgressBar bar =
+        new ProgressBar()
+            .setIndeterminate(true)
+            .setAnimated(true)
+            .setStriped(true)
+            .setText("Loading...");
 
-    self.setMaxWidth("320px")
-        .setStyle("margin", "0 auto")
-        .setStyle("padding", "20px")
-        .add(bar);
+    self.setMaxWidth("320px").setStyle("margin", "0 auto").setStyle("padding", "20px").add(bar);
   }
 }

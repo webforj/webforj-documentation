@@ -2,7 +2,6 @@ package com.webforj.samples.views.textarea;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -35,15 +34,25 @@ public final class TextPredictionService {
 
       // Parse JSON response using Gson
       Gson gson = new Gson();
-      List<WordSuggestion> suggestions = gson.fromJson(content,
-          new TypeToken<List<WordSuggestion>>() {}.getType());
+      List<WordSuggestion> suggestions =
+          gson.fromJson(content, new TypeToken<List<WordSuggestion>>() {}.getType());
 
       // Find the word with the highest score using Stream API
       return suggestions.stream()
           .map(WordSuggestion::word)
-          .max((a, b) -> Integer.compare(
-              suggestions.stream().filter(s -> s.word().equals(a)).findFirst().orElse(WordSuggestion.empty()).score(),
-              suggestions.stream().filter(s -> s.word().equals(b)).findFirst().orElse(WordSuggestion.empty()).score()))
+          .max(
+              (a, b) ->
+                  Integer.compare(
+                      suggestions.stream()
+                          .filter(s -> s.word().equals(a))
+                          .findFirst()
+                          .orElse(WordSuggestion.empty())
+                          .score(),
+                      suggestions.stream()
+                          .filter(s -> s.word().equals(b))
+                          .findFirst()
+                          .orElse(WordSuggestion.empty())
+                          .score()))
           .orElse("");
     } finally {
       conn.disconnect();
@@ -51,8 +60,7 @@ public final class TextPredictionService {
   }
 
   /**
-   * Represents a suggestion with a word and score.
-   * Using Java record for immutable data carrier.
+   * Represents a suggestion with a word and score. Using Java record for immutable data carrier.
    */
   public record WordSuggestion(String word, int score) {
     // Compact record constructor with validation

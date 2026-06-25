@@ -13,7 +13,6 @@ import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
-import com.webforj.samples.views.applayout.applayoutdrawerutility.AppLayoutDrawerUtilityContentView;
 
 @Route
 @StyleSheet("ws://css/applayout/applayout.css")
@@ -27,8 +26,7 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     self.setDrawerHeaderVisible(false);
     self.setDrawerFooterVisible(true);
     // Header
-    header.addToStart(new AppDrawerToggle())
-        .addToTitle(new H3(" Application"));
+    header.addToStart(new AppDrawerToggle()).addToTitle(new H3(" Application"));
     self.addToHeader(header);
     self.setHeaderOffscreen(false);
 
@@ -43,17 +41,18 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(createItem("Dashboard", dashboardIcon))
-            .addItem(createItem("Orders", ordersIcon))
-            .addItem(createItem("Customers", customersIcon))
-            .addItem(createItem("Products", productsIcon))
-            .addItem(createItem("Documents", documentsIcon))
-            .addItem(createItem("Tasks", tasksIcon))
-            .addItem(createItem("Analytics", analyticsIcon));
-
+    drawerMenu
+        .addItem(createItem("Dashboard", dashboardIcon))
+        .addItem(createItem("Orders", ordersIcon))
+        .addItem(createItem("Customers", customersIcon))
+        .addItem(createItem("Products", productsIcon))
+        .addItem(createItem("Documents", documentsIcon))
+        .addItem(createItem("Tasks", tasksIcon))
+        .addItem(createItem("Analytics", analyticsIcon));
   }
 
   private AppNavItem createItem(String text, Icon icon) {
-    return new AppNavItem(text, AppLayoutFullNavbarContentView.class, ParametersBag.of("name=" + text), icon);
+    return new AppNavItem(
+        text, AppLayoutFullNavbarContentView.class, ParametersBag.of("name=" + text), icon);
   }
 }

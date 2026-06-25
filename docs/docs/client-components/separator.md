@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-separator>
 sidebar_class_name: sidebar--item__hidden
 slug: separator
-description: A user guide article for the separator
+description: Style the dwc-separator divider line with CSS variables and shadow parts controlling thickness, color, and orientation.
 // pagination_prev: null
 // pagination_next: null
 ---

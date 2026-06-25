@@ -1,25 +1,24 @@
 ---
 title: Badge
 sidebar_position: 8
-sidebar_class_name: new-content
-_i18n_hash: 112f61dea5c6c0d434267a25ccc61b9e
+_i18n_hash: 1f599f2c8a833e09f2d945ed0ead5447
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-badge" />
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="badge" location="com/webforj/component/badge/Badge" top='true'/>
 
-`Badge` on kompakti, visuaalisesti erottuva etiketti, jota käytetään tilan, laskentojen tai lyhyiden kontekstin tietojen välittämiseen. Tarvitsetpa sitten ilmoituslaskurin merkitsemistä, tuotteen merkitsemistä "Uudeksi" tai varoituksen huomiota herättämistä, badge tarjoaa kevyen tavan tuoda kyseinen informaatio suoraan käyttöliittymään.
+`Badge` on tiivis, visuaalisesti erottuva etiketti, jota käytetään tilan, laskentojen tai lyhyiden kontekstuaalisten tietojen esittämiseen. Olitpa sitten käyttämässä sitä ilmoitusmäärien merkitsemiseen, tuotteen merkitsemiseen "Uusi" tai varoituksen huomioimiseen, badge antaa kevyen tavan tuoda nämä tiedot suoraan käyttöliittymään.
 
 <!-- INTRO_END -->
 
-:::tip Käyttämällä `Badge`
-Badge toimii hyvin ilmoituslaskureissa, tilamerkeissä ja lyhyissä metatiedoissa, kuten versiomerkeissä tai julkaisutiloissa. Pidä badge-teksti yhdessä tai kahdessa sanassa, jotta etiketti on helppo havaita yhdellä silmäyksellä.
+:::tip Käyttäminen `Badge`
+Badget toimivat hyvin ilmoituslaskentojen, tilamerkkien ja lyhyiden metatietojen, kuten versiotunnisteiden tai julkaisutilojen, yhteydessä. Pidä badge-teksti yhdessä tai kahdessa sanassa, jotta etiketti luetaan yhdellä vilkaisulla.
 :::
 
 ## Badge luominen {#creating-a-badge}
 
-Yksinkertaisin `Badge` ottaa tekstimerkkijonon. Voit myös siirtää `BadgeTheme` suoraan konstruktorissa määrittääksesi visuaalisen tyylin heti. Ilman argumentteja oleva konstruktori on käytettävissä, kun sinun tarvitsee rakentaa badge dynaamisesti ja konfiguroida se luomisen jälkeen.
+Yksinkertaisin `Badge` ottaa tekstimerkkijonon. Voit myös välittää `BadgeTheme`-tietueen suoraan konstruktoriin asettaaksesi visuaalisen tyylin heti. Ilman argumentteja oleva konstruktori on käytettävissä, kun sinun tarvitsee luoda badge dynaamisesti ja konfiguroida se luomisen jälkeen.
 
 ```java
 Badge badge = new Badge("Uusi");
@@ -35,7 +34,7 @@ status.setTheme(BadgeTheme.WARNING);
 
 ## Etiketti {#label}
 
-Voit asettaa tai päivittää badgeen tekstisisältöä milloin tahansa `setLabel()`-metodilla. `setText()`-metodi on synonyymi samalle operaatiossa; käytä kumpaa tahansa, joka tuntuu luonnolliselta asiayhteydessä. Molemmilla on vastaavat getterit, `getLabel()` ja `getText()`, jos sinun tarvitsee lukea nykyinen arvo takaisin.
+Voit asettaa tai päivittää badge-etiketin tekstisisältöä milloin tahansa käyttämällä `setLabel()`. `setText()`-metodi on alias samalle toiminnolle; käytä mikä tahansa, joka tuntuu sopivammalta asiayhteydessä. Molemmilla on vastaavat getterit, `getLabel()` ja `getText()`, jos sinun tarvitsee lukea nykyinen arvo takaisin.
 
 ```java
 Badge badge = new Badge();
@@ -44,21 +43,21 @@ badge.setLabel("Päivitetty");
 // Vastaava
 badge.setText("Päivitetty");
 
-// Lue takaisin arvo
+// Lue arvo takaisin
 String current = badge.getLabel();
 ```
 
 ## Ikonit {#icons}
 
-Joskus visuaalisempi lähestymistapa on hyödyllinen tiedon välittämiseen `Badge`-käytössä. Badget tukevat slotattua ikonisisältöä. Anna ikoni yhdessä tekstin kanssa käyttämällä `Badge(String, Component...)`-konstruktorin, tai anna ikoni yksin luodaksesi vain ikoni-badgen. Yhdistettynä tekstin kanssa ikoni renderöidään etikettin vasemmalle puolelle.
+Joskus visuaalisempi lähestymistapa on hyödyllinen tiedon välittämisessä `Badge`-merkillä. Badget tukevat slotattua ikonisisältöä. Välitä ikoni tekstin ohella käyttäen `Badge(String, Component...)`-konstruktoria tai välitä vain ikoni luodaksesi pelkästään ikonisen badge. Kun teksti yhdistetään ikoniin, ikoni renderöidään etiketin vasemmalle puolelle.
 
-Ikkunat kattavan badge-tyyppien yhdistelmät toimivat erityisen hyvin tiiviissä asetteluissa, joissa lyhyt sana saattaisi tuntua liian täyttyneeltä. Ikonin yhdistäminen tekstin kanssa on hyvä väliintulo, kun pelkkä ikoni yksin saattaisi olla epäselvä. Tilasymboli ymmärretään laajalti yksinään, mutta lyhyen tekstietiketin lisääminen poistaa arvailua ensimmäistä kertaa käyttäjiltä. Voit siirtää useita komponentteja konstruktorille, jos sinun tarvitsee koostaa rikkaampi etuliite, vaikka käytännössä vain yhden ikonin käyttäminen on yleisin malli.
+Pelkästään ikoniset badget toimivat erityisen hyvin tiheissä asetteluissa, joissa lyhyt sana olisi sotkuinen. Ikonin yhdistäminen tekstin kanssa on hyvä kompromissi, kun pelkkä ikoni saattaa olla epäselvä. Statustunnus ymmärretään laajalti itsenäisesti, mutta lyhyen tekstietiketin lisääminen poistaa arvaamisen ensimmäiseltä käyttäjältä. Voit välittää useita komponentteja konstruktorille, jos sinun tarvitsee koostaa rikkaampaa etuliitettä, mutta käytännössä yksi ikoni on yleisin kaava.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgeicons?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeIconsView.java'
-height='320px'
+path='/webforj/badgeicons'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeIconsView.java']}
+height='345px'
 />
 <!-- vale on -->
 
@@ -74,68 +73,68 @@ check.setTheme(BadgeTheme.SUCCESS);
 
 ## Käyttö muissa komponenteissa {#usage-in-other-components}
 
-### Nappulat {#buttons}
+### Painikkeet {#buttons}
 
-Liitä `Badge` nappulaan käyttämällä `setBadge()`. Badge näkyy nappulan oikeassa yläkulmassa, päällekkäin nappulan reunan kanssa. Tämä on yleinen kuvio ilmoituslaskureille työkalupalkin toiminnoissa tai ikoninappuloissa. Koska badge on itsenäinen komponentti, se on täysin riippumaton nappulan omasta teemasta ja koosta. Voit parittaa päätason nappulan vaaran badgeen, tai kummitusnappulan onnistumisen badgeen, ja jokainen yhdistelmän puoli tyylittää itsensä ilman ristiriitoja. Laskurin päivittäminen myöhemmin on yhtä yksinkertainen kuin `badge.setLabel()`-kutsuminen uuden arvon kanssa; nappulaan ei tarvitse koskea.
-
-<!-- vale off -->
-<ComponentDemo
-path='/webforj/badgebuttons?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeButtonsView.java'
-height='250px'
-/>
-<!-- vale on -->
-
-### Välilehti paneeli {#tabbed-pane}
-
-Lisää `Badge` välilehden suffix-elementiksi käyttämällä `setSuffixComponent()`. Tämä on luonnollinen sovitus postilaatikkomaiseen laskentaan tai tilamerkkeihin jokaisella välilehdellä. Tämäntyyppinen kuvio on yleinen sähköpostiohjelmissa tai tehtävienhallintatyökaluissa, joissa on tärkeää ilmoittaa toiminnasta kaikissa osissa yhdellä silmäyksellä. Badge istuu välilehden etiketin viimeisessä reunassa, kaikkien etuliiteelementtien jälkeen, ja on näkyvissä riippumatta siitä, mikä välilehti on aktiivinen. Tämä jatkuvuus on tarkoituksellista: badgejen piilottaminen inaktiivisilla välilehdillä vaikeuttaa tietää, mitkä osat tarvitsevat huomiota ilman siirtymistä kunkin päälle.
+Liitä `Badge` painikkeeseen käyttäen `setBadge()`. Badge näkyy painikkeen oikeassa yläkulmassa, peittäen painikkeen reunan. Tämä on yleinen malli ilmoitusmääriä varten työkalupalkin toimille tai kuvakepainikkeille. Koska badge on itsenäinen komponentti, se on täysin riippumaton painikkeen omasta teemasta ja koosta. Voit yhdistää ensisijaisen painikkeen vaarallisella badgeen tai aavepainikkeen onnistuneella badgeen, ja jokainen puoli tyylistää itsensä ilman ristiriitoja. Lukumäärän päivittäminen myöhemmin on yhtä yksinkertaista kuin kutsumalla `badge.setLabel()` uudella arvolla; painiketta ei tarvitse koskea.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgetabbedpane?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java'
-height='325px'
+path='/webforj/badgebuttons'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeButtonsView.java']}
+height='290px'
 />
 <!-- vale on -->
 
-## Tyylittely {#styling}
+### Välilehtipaneeli {#tabbed-pane}
 
-Badget tukevat useita tyylittelyulottuvuuksia: teeman värit merkityksen välittämiseen, laajuusasteen koon hallintaan ja CSS-ominaisuuksia hienosäätöä varten.
+Lisää `Badge` päätteeksi `Tab`:iin käyttäen `setSuffixComponent()`. Tämä on luontainen sovitus sisäänkirjautumistyyppisille laskentamäärille tai tilamerkkien esittämiseen jokaisessa välilehdessä. Tätä mallia näkee sähköpostiohjelmissa tai tehtävienhallitsijoissa, joissa on tärkeää viestiä toimintaa jokaisessa osassa yhdellä vilkaisulla. Badge sijaitsee välilehden etiketin peräpuolella, minkä tahansa ennen tulevan sisällön jälkeen, ja pysyy näkyvissä riippumatta siitä, mikä välilehti on aktiivinen. Tämä pysyvyys on tarkoituksellinen: badge piilottaminen inaktiivisilla välilehdillä vaikeuttaisi siihen liittyvien osien tiedostamista ilman, että jokaiselle vaihteelle vaihdetaan.
+
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/badgetabbedpane'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java']}
+height='360px'
+/>
+<!-- vale on -->
+
+## Tyylit {#styling}
+
+Badget tukevat useita tyylidimensioita: teeman värejä merkityksen viestittämiseen, laajuusasteikkoa koon hallintaan ja CSS-ominaisuuksia tarkkaan muokkaamiseen.
 
 ### Teemat {#themes}
 
-Kuten monet komponentit webforJ:ssa, `Badge` tulee neljätoista teemalta: seitsemän täytettyä ja seitsemän ääriviivaruokaa.
+Kuten monissa webforJ-komponenteissa, `Badge` on saatavilla neljätoista teemaa: seitsemän täytettyä ja seitsemän ääriviivaihtoehtoa.
 
-Täytetyt teemamatot käyttävät kiinteää taustaa ja laskevat automaattisesti tekstivärin, joka täyttää kontrastivaatimukset. Aäriviivamuunnelmat käyttävät sen sijaan värillistä taustaa värillä, tehden niistä hienovaraisemman vaihtoehdon, kun haluat badgeen täydentää ympäröivää sisältöä sen sijaan, että se hallitsisi sitä.
+Täytetyt teemat käyttävät kiinteää taustaa ja laskevat automaattisesti tekstivärin, joka täyttää kontrastivaatimukset. Ääriviivavalinnat sen sijaan käyttävät värillistä taustaa värillisellä reunalla, mikä tekee niistä hienovaraisemman vaihtoehdon, kun haluat, että badge täydentää ympäröivää sisältöä sen sijaan, että se hallitsisi sitä.
 
-Ota teema käyttöön `setTheme()`-metodin tai konstruktorin kautta.
+Käytä teemaa `setTheme()`-menetelmällä tai konstruktorin kautta.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgethemes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeThemesView.java'
+path='/webforj/badgethemes'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeThemesView.java']}
 height='260px'
 />
 <!-- vale on -->
 
 ### Mukautettu väri {#custom-color}
 
-Jos sisäänrakennetut teemat eivät vastaa väriäsi, aseta mukautettu siemenväri käyttämällä `--dwc-badge-seed` CSS-ominaisuutta. Tästä yhdestä arvosta badge johdetaan automaattisesti tausta-, teksti- ja reunavärit, jolloin jokainen yhdistelmä pysyy luettavana ilman, että sinun tarvitsee määrittää jokaista erikseen. Tämä tarkoittaa, että voit brändätä badgeä mille tahansa väriä suunnittelujärjestelmässäsi luottamuksen kanssa. Väri, kylläisyys ja vaaleus (HSL) -arvot ovat erityisen käteviä täällä; vain sävyn vaihtaminen riittää tuottamaan täysin erilaisen väriperheen pitäen samalla kontrastin ennallaan.
+Jos sisäänrakennetut teemat eivät vastaa palettiasi, aseta mukautettu siemenväri käyttämällä CSS-ominaisuutta `--dwc-badge-seed`. Tästä yhdestä arvosta badge johdonmukaisesti johdetaan taustan, tekstin ja reunavärin, joten jokainen yhdistelmä pysyy luettavana ilman, että sinun tarvitsee määrittää jokaista erikseen. Tämä tarkoittaa, että voit brändätä badge minkä tahansa värin suunnittelujärjestelmässäsi luottamuksella. Hue, Saturaatio ja Valoisuus (HSL) arvot ovat erityisen käteviä tässä; sävyn vaihtaminen yksin riittää tuottamaan täysin erilaisen väriperheen samalla kun kontrasti säilyy.
 
 ```java
 Badge badge = new Badge("Mukautettu");
 badge.setStyle("--dwc-badge-seed", "hsl(262, 52%, 47%)");
 ```
 
-### Koko {#sizing}
+### Kokoaminen {#sizing}
 
-Käytä `setExpanse()`-metodia hallitaksesi badgeen kokoa. Saatavilla on yhdeksän kokoa, jotka vaihtelevat `XXXSMALL`-koosta `XXXLARGE`-kokoon, ja oletus on `SMALL`.
+Käytä `setExpanse()` hallitaksesi badge-kokoa. Yhdeksän kokoa on saatavilla, vaihdellen `XXXSMALL`-kokoisesta `XXXLARGE`-kokoon, ja oletus on `SMALL`.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgesizes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeSizesView.java'
-height='260px'
+path='/webforj/badgesizes'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeSizesView.java']}
+height='300px'
 />
 <!-- vale on -->
 

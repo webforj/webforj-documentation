@@ -21,16 +21,15 @@ public class MaskedNumRestoreView extends Composite<FlexLayout> {
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setMargin("var(--dwc-space-m) auto");
 
-    field.setMask("$###,###,##0.00")
+    field
+        .setMask("$###,###,##0.00")
         .setValue(1234567d)
         .setRestoreValue(1234567d)
         .setHelperText("Press <kbd>ESC</kbd> to restore the value to default.")
         .setMaxWidth("300px");
 
-    Button restoreButton = new Button(
-        "Reset value",
-        ButtonTheme.PRIMARY,
-        event -> field.restoreValue());
+    Button restoreButton =
+        new Button("Reset value", ButtonTheme.PRIMARY, event -> field.restoreValue());
 
     self.add(field, restoreButton);
   }

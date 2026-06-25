@@ -17,7 +17,8 @@ import java.util.List;
 public class ChartGalleryView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
-  private static final String GITHUB_BASE_URL = "https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/";
+  private static final String GITHUB_BASE_URL =
+      "https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/";
 
   public ChartGalleryView() {
     self.addClassName("chart-gallery");
@@ -37,12 +38,9 @@ public class ChartGalleryView extends Composite<Div> {
   private Anchor createChartLink(String chartKey, GoogleChart chart) {
     String formattedTitle = formatTitle(chartKey);
 
-    Div chartDiv = new Div()
-        .addClassName("chart-div");
+    Div chartDiv = new Div().addClassName("chart-div");
 
-    Paragraph chartName = new Paragraph()
-        .setText(formattedTitle)
-        .addClassName("chartname");
+    Paragraph chartName = new Paragraph().setText(formattedTitle).addClassName("chartname");
 
     chartDiv.add(chartName, chart);
 
@@ -54,9 +52,28 @@ public class ChartGalleryView extends Composite<Div> {
   }
 
   private List<String> getChartKeys() {
-    return List.of("pie", "column", "bar", "line", "geo", "scatter", "histogram", "combo",
-        "area", "stepped_area", "bubble", "org", "treemap", "table", "gauge",
-        "candlestick", "sankey", "wordtree", "timeline", "calendar", "gantt");
+    return List.of(
+        "pie",
+        "column",
+        "bar",
+        "line",
+        "geo",
+        "scatter",
+        "histogram",
+        "combo",
+        "area",
+        "stepped_area",
+        "bubble",
+        "org",
+        "treemap",
+        "table",
+        "gauge",
+        "candlestick",
+        "sankey",
+        "wordtree",
+        "timeline",
+        "calendar",
+        "gantt");
   }
 
   private GoogleChart createChart(String chartKey) {
@@ -95,9 +112,10 @@ public class ChartGalleryView extends Composite<Div> {
 
     for (String word : words) {
       if (!word.isEmpty()) {
-        formattedTitle.append(Character.toUpperCase(word.charAt(0)))
-                      .append(word.substring(1).toLowerCase())
-                      .append(" ");
+        formattedTitle
+            .append(Character.toUpperCase(word.charAt(0)))
+            .append(word.substring(1).toLowerCase())
+            .append(" ");
       }
     }
     return formattedTitle.toString().trim() + " Chart";

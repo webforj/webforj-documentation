@@ -16,15 +16,12 @@ public class FileUploadDialogBasicView extends Composite<Div> {
   private final FileUploadDialog dialog;
 
   public FileUploadDialogBasicView() {
-    dialog = new FileUploadDialog("Upload a file")
-            .setFileSystemAccess(false);
+    dialog = new FileUploadDialog("Upload a file").setFileSystemAccess(false);
 
     show();
   }
 
-  /**
-   * Shows the file upload dialog and handles the result.
-   */
+  /** Shows the file upload dialog and handles the result. */
   private void show() {
     UploadedFile file = dialog.show();
 
@@ -33,9 +30,7 @@ public class FileUploadDialogBasicView extends Composite<Div> {
       OptionDialog.showMessageDialog("File uploaded successfully", "File Uploaded");
     } else {
       OptionDialog.showMessageDialog(
-              "No file selected",
-              "File Selection Failed",
-              MessageDialog.MessageType.ERROR);
+          "No file selected", "File Selection Failed", MessageDialog.MessageType.ERROR);
     }
   }
 }

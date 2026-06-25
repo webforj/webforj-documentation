@@ -1,13 +1,13 @@
 package com.webforj.samples.views.flexlayout.container;
 
 import com.webforj.annotation.StyleSheet;
-import com.webforj.component.list.ChoiceBox;
-import com.webforj.component.list.event.ListSelectEvent;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.list.ChoiceBox;
+import com.webforj.component.list.event.ListSelectEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.Box;
@@ -26,18 +26,14 @@ public class FlexPositioningView extends Composite<Div> {
     createBoxes();
     ChoiceBox horizontal = createHorizontalChoiceBox();
     ChoiceBox vertical = createVerticalChoiceBox();
-    FlexLayout choices = FlexLayout.create(horizontal, vertical)
-        .vertical()
-        .build();
+    FlexLayout choices = FlexLayout.create(horizontal, vertical).vertical().build();
 
     self.add(mainLayout);
     mainLayout.add(choices, boxLayout);
   }
 
   private FlexLayout createMainLayout() {
-    return FlexLayout.create()
-        .horizontal()
-        .build();
+    return FlexLayout.create().horizontal().build();
   }
 
   private FlexLayout createBoxLayout() {
@@ -60,15 +56,13 @@ public class FlexPositioningView extends Composite<Div> {
   }
 
   private ChoiceBox createHorizontalChoiceBox() {
-    ChoiceBox horizontal = new ChoiceBox()
-        .addClassName("flex__options")
-        .setLabel("Position Options");
+    ChoiceBox horizontal =
+        new ChoiceBox().addClassName("flex__options").setLabel("Position Options");
     horizontal.onSelect(this::onJustifySelect);
     for (FlexJustifyContent justify : FlexJustifyContent.values()) {
       String label = justify.getValue();
       String key = justify.toString().toLowerCase();
-      String text = label.substring(0, 1).toUpperCase()
-              + label.substring(1);
+      String text = label.substring(0, 1).toUpperCase() + label.substring(1);
       horizontal.add("." + key + "()", text);
     }
     horizontal.selectIndex(0);
@@ -76,15 +70,12 @@ public class FlexPositioningView extends Composite<Div> {
   }
 
   private ChoiceBox createVerticalChoiceBox() {
-    ChoiceBox vertical = new ChoiceBox()
-        .addClassName("flex__options")
-        .setLabel("Position Options");
+    ChoiceBox vertical = new ChoiceBox().addClassName("flex__options").setLabel("Position Options");
     vertical.onSelect(this::onAlignmentSelect);
     for (FlexAlignment justify : FlexAlignment.values()) {
       String label = justify.getValue();
       String key = justify.toString().toLowerCase();
-      String text = label.substring(0, 1).toUpperCase()
-              + label.substring(1);
+      String text = label.substring(0, 1).toUpperCase() + label.substring(1);
       vertical.add("." + key + "()", text);
     }
     vertical.selectIndex(0);

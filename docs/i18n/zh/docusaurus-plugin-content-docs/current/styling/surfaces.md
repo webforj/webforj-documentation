@@ -1,9 +1,11 @@
 ---
 sidebar_position: 8
 title: Surfaces
-_i18n_hash: ac1f587cd1039f9bf083c610c29c27b9
+_i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
-有三个级别的表面用于组织UI层次，通常结合[阴影](./shadows)使用。所有[调色板颜色](./colors)经过测试，以提供与这些表面之间的足够对比度。
+DWC 定义了三个表面级别，用于组织 UI 层次结构，并结合 [shadows](./shadows)。所有 [palette colors](./colors) 都经过测试，以确保与这些表面具有足够的对比度。
+
+表面从主要色调获取微妙的色彩，并自动适应明亮和暗模式。
 
 ### 示例 {#example}
 
@@ -15,8 +17,10 @@ _i18n_hash: ac1f587cd1039f9bf083c610c29c27b9
 
 ### 变量 {#variables}
 
-| **变量**             | **用法**                                                               | **示例**                                   |
-|---------------------|------------------------------------------------------------------------|--------------------------------------------|
-| `--dwc-surface-1`   | 最暗的表面。用于主体背景。                                          | <SurfaceBox surface="--dwc-surface-1" /> |
-| `--dwc-surface-2`   | 用于组件（例如卡片）。                                               | <SurfaceBox surface="--dwc-surface-2" /> |
-| `--dwc-surface-3`   | 最亮和最高的表面。用于菜单、弹出框、对话框等...                     | <SurfaceBox surface="--dwc-surface-3" /> |
+| **变量**           | **用法**                      |
+|-------------------|-------------------------------|
+| `--dwc-surface-1` | 页面和主体背景。              |
+| `--dwc-surface-2` | 工具栏、菜单栏、卡片。        |
+| `--dwc-surface-3` | 窗口、菜单、弹出框、对话框。  |
+
+<dwc-doc-surfaces></dwc-doc-surfaces>

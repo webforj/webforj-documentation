@@ -1,29 +1,31 @@
 ---
 sidebar_position: 55
 title: Asynchronous Updates
-_i18n_hash: cbdf51a80355d73a6c7f5ec85cfa198a
+_i18n_hash: 44d86e725d9228ead98794da8f6210ff
 ---
 <DocChip chip='since' label='25.02' />
 <DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(java.lang.Runnable)" top='true'/>
 
-`Environment.runLater()` -API tarjoaa mekanismin käyttöliittymän turvalliseen päivittämiseen taustasäikeistä webforJ-sovelluksissa. Tämä kokeellinen ominaisuus mahdollistaa asynkroniset toiminnot samalla pitäen käyttöliittymän muokkausten säikeiturvallisina.
+`Environment.runLater()` API tarjoaa mekanismin käyttöliittymän turvalliseen päivittämiseen taustasuorittimilta webforJ-sovelluksissa. Tämä kokeellinen ominaisuus mahdollistaa asynkroniset toiminnot samalla kun säilyttää säikeiden turvallisuuden käyttöliittymän muutoksille.
 
 <ExperimentalWarning />
 
+<AISkillTip skill="webforj-handling-timers-and-async" />
+
 ## Ymmärtäminen säikeen mallista {#understanding-the-thread-model}
 
-webforJ noudattaa tiukkaa säikeiden mallia, jossa kaikki käyttöliittymätoiminnot on suoritettava `Environment`-säikeessä. Tämä rajoite johtuu siitä, että:
+webforJ noudattaa tiukkaa säikeen mallia, jossa kaikki käyttöliittymän toiminnot on suoritettava `Environment` säikeessä. Tämä rajoitus on olemassa seuraavista syistä:
 
-1. **webforJ API -rajoitukset**: Taustalla oleva webforJ API sidotaan säikeeseen, joka loi istunnon.
-2. **Komponenttien säikesuhteet**: Käyttöliittymäkomponentit ylläpitävät tilaa, joka ei ole säikeen turvallista.
-3. **Tapahtumien käsittely**: Kaikki käyttöliittymä tapahtumat käsitellään peräkkäin yhdellä säikeellä.
+1. **webforJ API -rajoitukset**: Peruksessa oleva webforJ API sitoo säikeen, joka loi istunnon
+2. **Komponentin säikeen affiniteetti**: Käyttöliittymäkomponentit ylläpitävät tilaa, joka ei ole säikeiden turvallinen
+3. **Tapahtuman jako**: Kaikki käyttöliittymän tapahtumat käsitellään järjestyksessä yhdellä säikeellä
 
-Tämä yksisäikeinen malli estää kilpailutilanteet ja ylläpitää johdonmukaista tilaa kaikille käyttöliittymäkomponenteille, mutta luo haasteita integroitaessa asynkronisia, pitkiä laskentatehtäviä.
+Tämä yksisäikeinen malli estää kilpailutilanteet ja ylläpitää johdonmukaisen tilan kaikille käyttöliittymäkomponenteille, mutta se luo haasteita asynkronisten, pitkäkestoisten laskentatehtävien integroimisessa.
 
-## `RunLater` -API {#runlater-api}
+## `RunLater` API {#runlater-api}
 
-`Environment.runLater()` -API tarjoaa kaksi menetelmää käyttöliittymän päivitysten aikatauluttamiseen:
+`Environment.runLater()` API tarjoaa kaksi menetelmää käyttöliittymän päivitysten aikatauluttamiseen:
 
 ```java title="Environment.java"
 // Aikatauluta tehtävä ilman palautusarvoa
@@ -33,15 +35,15 @@ public static PendingResult<Void> runLater(Runnable task)
 public static <T> PendingResult<T> runLater(Supplier<T> supplier)
 ```
 
-Molemmat menetelmät palauttavat <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> -objektin, joka seuraa tehtävän valmistumista ja antaa pääsyn tulokseen tai mahdollisiin poikkeuksiin, jotka tapahtuivat.
+Molemmat menetelmät palauttavat <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, joka seuraa tehtävän suorittamista ja tarjoaa pääsyn tulokseen tai mahdollisiin poikkeuksiin.
 
-## Säikeen kontekstiin periytyminen {#thread-context-inheritance}
+## Säikeen kontekstin perintä {#thread-context-inheritance}
 
-Automaattinen kontekstitietoisuus on kriittinen ominaisuus `Environment.runLater()` -metodissa. Kun `Environment` -säikeessä toimiva säie luo lapsisäikeitä, nämä lapset perivät automaattisesti kyvyn käyttää `runLater()` -metodia.
+Automaattinen kontekstin perintä on kriittinen ominaisuus `Environment.runLater()`:ssa. Kun `Environment`-säikeessä suoritetaan lapsisäikeitä, nämä lapset perivät automaattisesti kyvyn käyttää `runLater()`.
 
-### Kuinka periytyminen toimii {#how-inheritance-works}
+### Miten perintä toimii {#how-inheritance-works}
 
-Mikä tahansa säie, joka on luotu `Environment` -säikeessä, pääsee automaattisesti siihen `Environment`-kontekstiin. Tämä periytyminen tapahtuu automaattisesti, joten konteksin siirtämistä tai mitään konfigurointia ei tarvita.
+Kaikilla säikeillä, jotka luodaan `Environment`-säikeen sisällä, on automaattisesti pääsy kyseiseen `Environment`-konseptiin. Tämä perintä tapahtuu automaattisesti, joten sinun ei tarvitse siirtää mitään kontekstia tai konfiguroida mitään.
 
 ```java
 @Route
@@ -49,13 +51,13 @@ public class DataView extends Composite<Div> {
   private final ExecutorService executor = Executors.newCachedThreadPool();
   
   public DataView() {
-    // Tämä säie saa Environment-kontekstin
+    // Tämä säie on Environment-konteksti
     
     // Lapsisäikeet perivät kontekstin automaattisesti
     executor.submit(() -> {
       String data = fetchRemoteData();
       
-      // Voi käyttää runLateria, koska konteksti on peritty
+      // Voi käyttää runLateria, koska konteksti periytyi
       Environment.runLater(() -> {
         dataLabel.setText(data);
         loadingSpinner.setVisible(false);
@@ -67,17 +69,17 @@ public class DataView extends Composite<Div> {
 
 ### Säikeet ilman kontekstia {#threads-without-context}
 
-Säikeet, jotka on luotu `Environment`-kontekstin ulkopuolella, eivät voi käyttää `runLater()` -metodia, ja ne heittävät `IllegalStateException` -poikkeuksen:
+Säikeet, jotka luodaan `Environment`-konteksti ulkopuolella, eivät voi käyttää `runLater()` ja heitetään `IllegalStateException`:
 
 ```java
-// Staattinen alustaja - ei Environment-kontekstia
+// Statistinen inicialisoija - ei Environment-konteksti
 static {
   new Thread(() -> {
     Environment.runLater(() -> {});  // Heittää IllegalStateException
   }).start();
 }
 
-// Järjestelmäajurit - ei Environment-kontekstia  
+// Järjestelmän ajastin säikeet - ei Environment-konteksti  
 Timer timer = new Timer();
 timer.schedule(new TimerTask() {
   public void run() {
@@ -85,7 +87,7 @@ timer.schedule(new TimerTask() {
   }
 }, 1000);
 
-// Ulkoiset kirjastosäikeet - ei Environment-kontekstia
+// Ulkoisen kirjaston säikeet - ei Environment-konteksti
 httpClient.sendAsync(request, responseHandler)
   .thenAccept(response -> {
     Environment.runLater(() -> {});  // Heittää IllegalStateException
@@ -94,11 +96,11 @@ httpClient.sendAsync(request, responseHandler)
 
 ## Suoritus käyttäytyminen {#execution-behavior}
 
-`runLater()` -metodin suoritus käyttäytyminen riippuu siitä, mikä säie sitä kutsuu:
+`runLater()`-menetelmän suoritus käyttäytyminen riippuu siitä, mikä säie kutsuu sitä:
 
 ### Käyttöliittymästä {#from-the-ui-thread}
 
-Kun kutsutaan `Environment` -säikeeltä itseltään, tehtävät suoritetaan **synkronisesti ja heti**:
+Kun kutsutaan suoraan `Environment` -säikeestä, tehtävät suoritetaan **synkronisesti ja heti**:
 
 ```java
 button.onClick(e -> {
@@ -113,17 +115,17 @@ button.onClick(e -> {
 });
 ```
 
-Tämän synkronisen käyttäytymisen avulla käyttöliittymän päivitykset tapahtuvat heti tapahtumakäsittelijöistä, eikä aiheuta turhaa jonottamista.
+Tämän synkronisen käyttäytymisen avulla käyttöliittymän päivitykset tapahtuvat heti tapahtumakäsittelijöistä, eivätkä ne vie turhaan jonoa.
 
 ### Taustasäikeistä {#from-background-threads}
 
-Kun kutsutaan taustasäikeestä, tehtävät **jonotetaan asynkronista suorittamista varten**:
+Kun kutsutaan taustasäikeestä, tehtävät **jonotetaan asynkroniseen suorittamiseen**:
 
 ```java
 @Override
 public void onDidCreate() {
   CompletableFuture.runAsync(() -> {
-    // Tämä suoritetaan ForkJoinPool säikeessä
+    // Tämä suoritetaan ForkJoinPool-säikeessä
     System.out.println("Tausta: " + Thread.currentThread().getName());
     
     PendingResult<Void> result = Environment.runLater(() -> {
@@ -132,17 +134,17 @@ public void onDidCreate() {
       statusLabel.setText("Käsittely valmis");
     });
     
-    // result.isDone() olisi false täällä
-    // Tehtävä on jonossa ja suoritetaan asynkronisesti
+    // result.isDone() olisi false tässä
+    // Tehtävä on jonotettu ja suoritetaan asynkronisesti
   });
 }
 ```
 
-webforJ käsittelee taustasäikeistä lähetetyt tehtävät **tiukassa FIFO-järjestyksessä**, säilyttäen operaatioiden järjestyksen, vaikka ne olisi lähetetty useilta säikeiltä samanaikaisesti. Tämän järjestyksen takuurajaamisella käyttöliittymän päivitykset toteutuvat täsmälleen siinä järjestyksessä, jossa ne ovat lähetetty. Joten jos säie A lähettää tehtävän 1, ja sitten säie B lähettää tehtävän 2, tehtävä 1 suoritetaan aina ennen tehtävää 2 käyttöliittymässä. Tehtävien käsittely FIFO-järjestyksessä estää epäjohdonmukaisuudet käyttöliittymässä.
+webforJ käsittelee taustasäikeistä lähetettyjä tehtäviä **tiukassa FIFO-järjestyksessä**, säilyttäen operaatioiden sekvenssin, vaikka ne on lähetetty useista säikeistä samanaikaisesti. Tämän järjestyksen takia käyttöliittymän päivitykset suoritetaan täsmälleen siinä järjestyksessä, jossa ne on lähetetty. Jos siis säie A lähettää tehtävän 1 ja sitten säie B lähettää tehtävän 2, tehtävä 1 suoritetaan aina ennen tehtävää 2 käyttöliittymässä. Tehtävien käsittely FIFO-järjestyksessä estää käyttöliittymän epäjärjestyksen.
 
-## Tehtävän peruuttaminen {#task-cancellation}
+## Tehtävän peruutus {#task-cancellation}
 
-<JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> -objekti, joka palautetaan `Environment.runLater()` -metodista, tukee peruuttamista, jolloin voit estää jonossa olevien tehtävien suorittamisen. Peruuttamalla odottavat tehtävät, voit välttää muistivuotoja ja estää pitkäkestoisia operaatioita päivittämästä käyttöliittymää, kun niitä ei enää tarvita.
+<JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, joka palautetaan `Environment.runLater()` -menetelmästä, tukee peruutusta, jolloin voit estää jonotettujen tehtävien suorittamisen. Peruuttamalla odottavat tehtävät voit välttää muistivuodot ja estää pitkäaikaiset toiminnot päivittämästä käyttöliittymää sen jälkeen, kun niitä ei enää tarvita.
 
 ### Perusperuutus {#basic-cancellation}
 
@@ -159,7 +161,7 @@ if (!result.isDone()) {
 
 ### Useiden päivitysten hallinta {#managing-multiple-updates}
 
-Pitkäkestoisia toimintoja, joissa on tiheitä käyttöliittymäpäivityksiä, suorittaessasi seuraa kaikkia odottavia tuloksia:
+Kun suoritat pitkäkestoisia toimintoja, joissa on usein käyttöliittymän päivityksiä, seuraa kaikkia odottavia tuloksia:
 
 ```java
 public class LongRunningTask {
@@ -176,7 +178,7 @@ public class LongRunningTask {
           progressBar.setValue(progress);
         });
         
-        // Seuraa mahdollista peruuttamista
+        // Seuraa mahdollisia peruutuksia
         pendingUpdates.add(update);
         
         Thread.sleep(100);
@@ -187,7 +189,7 @@ public class LongRunningTask {
   public void cancelTask() {
     isCancelled = true;
     
-    // Peru kaikki odottavat käyttöliittymäpäivitykset
+    // Peruuta kaikki odottavat käyttöliittymäpäivitykset
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
         pending.cancel();
@@ -200,7 +202,7 @@ public class LongRunningTask {
 
 ### Komponentin elinkaaren hallinta {#component-lifecycle-management}
 
-Kun komponentteja tuhotaan (esim. navigoinnin aikana), peruuta kaikki odottavat päivitykset estääksesi muistivuotoja:
+Kun komponentteja tuhotaan (esim. navigoinnin aikana), peruuta kaikki odottavat päivitykset estääksesi muistivuodot:
 
 ```java
 @Route
@@ -211,7 +213,7 @@ public class CleanupView extends Composite<Div> {
   protected void onDestroy() {
     super.onDestroy();
     
-    // Peruuta kaikki odottavat päivitykset estääksesi muistivuotoja
+    // Peruuta kaikki odottavat päivitykset muistivuotojen estämiseksi
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
         pending.cancel();
@@ -222,19 +224,19 @@ public class CleanupView extends Composite<Div> {
 }
 ```
 
-## Suunnittelupohdinnat {#design-considerations}
+## Suunnittelu näkökohtia {#design-considerations}
 
-1. **Kontekstivaatimus**: Säikeiden on oltava perineet `Environment`-konteksti. Ulkoiset kirjastosäikeet, järjestelmäajurit ja staattiset alustajat eivät voi käyttää tätä APIa.
+1. **Kontekstivaatimus**: Säikeillä on oltava peritty `Environment` -konteksti. Ulkoiset kirjastosäikeet, järjestelmäajastimet ja staattiset inicialisoijat eivät voi käyttää tätä API:a.
 
-2. **Muistivuotojen estäminen**: Seuraa aina `PendingResult` -objekteja komponentin elinkaarimenetelmissä. Jonotetut lambdat kaappaavat viittauksia käyttöliittymäkomponentteihin, estäen roskakeräyksen, jos niitä ei peruuteta.
+2. **Muistivuotojen estäminen**: Seuraa aina ja peruuta `PendingResult` -objekteja komponentin elinkaarimetodissa. Jonotetut lambdat vangitsevat viittauksia käyttöliittymäkomponentteihin, estäen roskat keräämisen, ellei niitä peruuteta.
 
 3. **FIFO-suoritus**: Kaikki tehtävät suoritetaan tiukassa FIFO-järjestyksessä merkityksestä riippumatta. Prioriteettijärjestelmää ei ole.
 
-4. **Peruuttamisen rajoitukset**: Peruuttaminen estää vain jonossa olevien tehtävien suorittamisen. Jo suorittavat tehtävät valmistuvat normaalisti.
+4. **Peruutusrajoitukset**: Peruuttaminen estää vain jonotettujen tehtävien suorittamisen. Jo suorittavat tehtävät suoritetaan normaalisti.
 
 ## Täydellinen tapaustutkimus: `LongTaskView` {#complete-case-study-longtaskview}
 
-Seuraava on täydellinen, tuotantovalmiiksi toteutus, joka osoittaa kaikki parhaat käytännöt asynkronisille käyttöliittymäpäivityksille:
+Seuraava on täydellinen, tuotantovalmiin toteutus, joka osoittaa kaikki parhaat käytännöt asynkronisessa käyttöliittymän päivityksessä:
 
 <!-- vale off -->
 
@@ -242,8 +244,8 @@ Seuraava on täydellinen, tuotantovalmiiksi toteutus, joka osoittaa kaikki parha
 {`
 @Route("/")
 public class LongTaskView extends Composite<FlexLayout> {
-  // Käytä yhtä säiettä estämään resurssin uupumista
-  // Tuotannossa harkitse jakaa sovelluksen laajuinen säiettä
+  // Käytä yhtä säiettä estämään resurssien loppuminen
+  // Tuotantokäyttöön harkitse käytettäväksi jaettua sovellustason säiettä
   private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
     Thread t = new Thread(r, "LongTaskView-Worker");
     t.setDaemon(true);
@@ -257,20 +259,19 @@ public class LongTaskView extends Composite<FlexLayout> {
 
   // Käyttöliittymäkomponentit
   private final FlexLayout self = getBoundComponent();
-  private H2 titleLabel = new H2("Taustakäyttöliittymän päivitykset");
+  private H2 titleLabel = new H2("Taustakäyttöliittymän päivityksien demo");
   private Paragraph descriptionPara = new Paragraph(
-      "Tämä demo näyttää, kuinka Environment.runLater() mahdollistaa turvalliset käyttöliittymäpäivitykset taustasäikeistä. " +
-          "Klikkaa 'Aloita pitkä tehtävä' suorittaa kymmenen sekunnin taustalaskentatehtävää, joka päivittää käyttöliittymän edistymistä. " +
-          "‘Testi käyttöliittymä’ -painike todistaa käyttöliittymän pysyvän reagointikykyisen taustatehtävän aikana.");
+      "Tämä demo näyttää, kuinka Environment.runLater() mahdollistaa turvalliset käyttöliittymän päivitykset taustasäikeiltä. " +
+          "Napsauta 'Aloita pitkä tehtävä' suorittaaksesi 10 sekunnin taustalaskennan, joka päivittää käyttöliittymän edistymistä. " +
+          "Testi UI -painike todistaa, että käyttöliittymä pysyy responsiivisena taustatoiminnan aikana.");
   private TextField statusField = new TextField("Tila");
   private ProgressBar progressBar = new ProgressBar();
   private TextField resultField = new TextField("Tulos");
   private Button startButton = new Button("Aloita pitkä tehtävä");
   private Button cancelButton = new Button("Peruuta tehtävä");
-  private Button testButton = new Button("Testi käyttöliittymä - Klikkaa minua!");
+  private Button testButton = new Button("Testi UI - Napsauta minua!");
   private Paragraph footerPara = new Paragraph(
-      "Huom: Tehtävän voi peruuttaa milloin tahansa, mikä osoittaa oikein siivouksen sekä " +
-          "taustasäikeelle että jonotetuille käyttöliittymäpäivityksille.");
+      "Huom: Tehtävä voidaan peruuttaa milloin tahansa, mikä osoittaa sekä taustasäikeen että jonotettujen käyttöliittymäpäivityksien asianmukaisen puhdistamisen.");
   private Toast globalToast = new Toast("", 3000, Theme.GRAY);
   private AtomicInteger clickCount = new AtomicInteger(0);
 
@@ -307,7 +308,7 @@ public class LongTaskView extends Composite<FlexLayout> {
 
     testButton.onClick(e -> {
       int count = clickCount.incrementAndGet();
-      showToast("Klikkaus #" + count + " - käyttöliittymä on reagoiva!", Theme.GRAY);
+      showToast("Napsautus #" + count + " - käyttöliittymä on responsiivinen!", Theme.GRAY);
     });
 
     // Lisää komponentit
@@ -319,13 +320,13 @@ public class LongTaskView extends Composite<FlexLayout> {
   protected void onDestroy() {
     super.onDestroy();
 
-    // Peruuta mahdollinen käynnissä oleva tehtävä ja odottavat käyttöliittymäpäivitykset
+    // Peruuta kaikki käynnissä olevat tehtävät ja odottavat käyttöliittymäpäivitykset
     cancelTask();
 
     // Tyhjennä tehtäväviittaus
     currentTask = null;
 
-    // Sammuta instanssin suorittaja rauhallisesti
+    // Sammuta instanssisäie rauhallisesti
     executor.shutdown();
   }
 
@@ -336,17 +337,17 @@ public class LongTaskView extends Composite<FlexLayout> {
     progressBar.setValue(0);
     resultField.setValue("");
 
-    // Nollaa peruutettu lippu ja tyhjennä aikaisemmat odottavat päivitykset
+    // Nollaa peruutuslippu ja tyhjennä aiemmat odottavat päivitykset
     isCancelled = false;
     pendingUIUpdates.clear();
 
-    // Käynnistä taustatehtävä erikseen suorittajalta
-    // Huom: cancel(true) keskeyttää säikeen, mistä Thread.sleep() heittää
+    // Käynnistä taustatehtävä eksplisiittisellä säikeellä
+    // Huom: cancel(true) keskeyttää säikeen, mikä saa Thread.sleep() -pytkimen heittämään
     // InterruptedException
     currentTask = CompletableFuture.runAsync(() -> {
       double result = 0;
 
-      // Simuloi pitkään tehtävää 100 vaihetta
+      // Simuloi pitkää tehtävää 100 vaiheessa
       for (int i = 0; i <= 100; i++) {
         // Tarkista, onko peruutettu
         if (isCancelled) {
@@ -356,7 +357,7 @@ public class LongTaskView extends Composite<FlexLayout> {
             resultField.setValue("");
             startButton.setEnabled(true);
             cancelButton.setEnabled(false);
-            showToast("Tehtävää on peruutettu", Theme.GRAY);
+            showToast("Tehtävä peruutettu", Theme.GRAY);
           });
           pendingUIUpdates.add(cancelUpdate);
           return;
@@ -365,16 +366,16 @@ public class LongTaskView extends Composite<FlexLayout> {
         try {
           Thread.sleep(100); // Yhteensä 10 sekuntia
         } catch (InterruptedException e) {
-          // Säie keskeytettiin - poistu heti
-          Thread.currentThread().interrupt(); // Palauta keskeytysohje
+          // Säie keskeytettiin - lopeta heti
+          Thread.currentThread().interrupt(); // Palauta keskeytetyn tila
           return;
         }
 
-        // Tee laskentaa (deterministinen demolle)
-        // Tuottaa arvoja, jotka vaihtelevat 0 ja 1 välillä
+        // Tee joitain laskelmia (deterministinen demo)
+        // Tuottaa lukuja 0 ja 1 välillä
         result += Math.sin(i) * 0.5 + 0.5;
 
-        // Päivitä edistystä taustasäikeestä
+        // Päivitä edistyminen taustasäikeestä
         final int progress = i;
         PendingResult<Void> updateResult = Environment.runLater(() -> {
           progressBar.setValue(progress);
@@ -383,8 +384,8 @@ public class LongTaskView extends Composite<FlexLayout> {
         pendingUIUpdates.add(updateResult);
       }
 
-      // Viimeinen päivitys tuloksella (tämä koodi saavutetaan vain, jos tehtävä päättyi ilman
-      // peruuttamista)
+      // Viimeinen päivitys tuloksella (tätä koodia kutsutaan vain, jos tehtävä suoritettu ilman
+      // peruutusta)
       if (!isCancelled) {
         final double finalResult = result;
         PendingResult<Void> finalUpdate = Environment.runLater(() -> {
@@ -392,7 +393,7 @@ public class LongTaskView extends Composite<FlexLayout> {
           resultField.setValue("Tulos: " + String.format("%.2f", finalResult));
           startButton.setEnabled(true);
           cancelButton.setEnabled(false);
-          showToast("Taustatehtävä on valmis!", Theme.SUCCESS);
+          showToast("Taustatehtävä valmis!", Theme.SUCCESS);
         });
         pendingUIUpdates.add(finalUpdate);
       }
@@ -401,7 +402,7 @@ public class LongTaskView extends Composite<FlexLayout> {
 
   private void cancelTask() {
     if (currentTask != null && !currentTask.isDone()) {
-      // Aseta peruutettu lippu
+      // Aseta peruutuslippu
       isCancelled = true;
 
       // Peruuta päätehtävä (keskeyttää säikeen)
@@ -415,10 +416,10 @@ public class LongTaskView extends Composite<FlexLayout> {
       }
 
       if (!statusField.isDestroyed() && !cancelButton.isDestroyed()) {
-        statusField.setValue("Peruutetaan tehtävää...");
+        statusField.setValue("Perutaan tehtävää...");
         cancelButton.setEnabled(false);
 
-        showToast("Peruutus pyydettiin", Theme.GRAY);
+        showToast("Peruutuspyyntö", Theme.GRAY);
       }
     }
   }
@@ -446,7 +447,7 @@ public class LongTaskView extends Composite<FlexLayout> {
 
 Tämä toteutus osoittaa useita kriittisiä malleja:
 
-#### 1. Säiettä hallinta {#1-thread-pool-management}
+#### 1. Säiettä hallinnointi {#1-thread-pool-management}
 ```java
 private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
   Thread t = new Thread(r, "LongTaskView-Worker");
@@ -454,33 +455,33 @@ private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> 
   return t;
 });
 ```
-- Käyttää **yhden säikeen suorittajaa** estämään resurssien uupumista
-- Luo **daemon-säikeitä**, jotka eivät estä JVM:n sammutusta
+- Käyttää **yksittäistä säidehtoa** estämään resurssien loppumisen
+- Luo **daemon-säikeitä**, jotka eivät estä JVM:n sulkemista
 
 #### 2. Odottavien päivitysten seuraaminen {#2-tracking-pending-updates}
 ```java
 private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
 ```
-Jokainen `Environment.runLater()` -kutsu seurataan, mikä mahdollistaa:
-- Peruuttamisen, kun käyttäjä napsauttaa peruuta
-- Muistivuotojen estämisen `onDestroy()`:ssa
-- Oikean puhdistuksen komponentin elinkaaren aikana
+Jokainen `Environment.runLater()` -kutsu seurataan mahdollistamaan:
+- Peruuttaminen, kun käyttäjä napsauttaa peruutusta
+- Muistivuotojen estäminen `onDestroy()`
+- Oikea puhdistus komponentin elinkaaren aikana
 
-#### 3. Yhteistyöperuuttaminen {#3-cooperative-cancellation}
+#### 3. Yhteistyöperuutus {#3-cooperative-cancellation}
 ```java
 private volatile boolean isCancelled = false;
 ```
-Taustasäie tarkistaa tämän lipun jokaisessa iteraatiossa, mikä mahdollistaa:
-- Välittömän reagoinnin peruuttamiseen
-- Siistin poistumisen silmukasta
-- Lisäämällä käyttöliittymän päivityksiä
+Taustasäie tarkistaa tämän lipun jokaisessa iteraatiossa, mahdollistaen:
+- Välittömän reagoinnin peruutukseen
+- Puhdasta poistumista silmukasta
+- Lisäkäyttöliittymäpäivitysten estämistä
 
 #### 4. Elinkaaren hallinta {#4-lifecycle-management}
 ```java
 @Override
 protected void onDestroy() {
   super.onDestroy();
-  cancelTask();  // Uudelleenkäyttää peruuttamislogiikan
+  cancelTask();  // Uudelleenkäyttää peruutuslogiikkaa
   currentTask = null;
   executor.shutdown();
 }
@@ -488,13 +489,13 @@ protected void onDestroy() {
 Kriittinen muistivuotojen estämiseksi:
 - Peruuta kaikki odottavat käyttöliittymäpäivitykset
 - Keskeytä käynnissä olevat säikeet
-- Sammuta suorittaja
+- Sulje säieterä
 
-#### 5. Käyttöliittymän reagointikyvyn testaus {#5-ui-responsiveness-testing}
+#### 5. Käyttöliittymän reagointikyvyn testaaminen {#5-ui-responsiveness-testing}
 ```java
 testButton.onClick(e -> {
   int count = clickCount.incrementAndGet();
-  showToast("Klikkaus #" + count + " - käyttöliittymä on reagoiva!", Theme.GRAY);
+  showToast("Napsautus #" + count + " - käyttöliittymä on responsiivinen!", Theme.GRAY);
 });
 ```
-Todistaa, että käyttöliittymän säie pysyy reagoivana taustatoimintojen aikana.
+Todistaa, että käyttöliittymä säie pysyy responsiivisena taustatoimintojen aikana.

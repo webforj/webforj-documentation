@@ -10,7 +10,6 @@ import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,9 +28,10 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
 
     List<RadioButton> radioButtons = new ArrayList<>();
 
-    for (Placement placement: Placement.values()) {
+    for (Placement placement : Placement.values()) {
       // Turn Enum value name into capitalized words
-      String text = Arrays.stream(placement.name().split("_"))
+      String text =
+          Arrays.stream(placement.name().split("_"))
               .map(s -> s.charAt(0) + s.substring(1).toLowerCase())
               .collect(Collectors.joining(" "));
       boolean checked = placement == Placement.LEFT;
@@ -40,20 +40,20 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
       radioButtons.add(button);
     }
 
-    RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", 
-        radioButtons.toArray(RadioButton[]::new));
+    RadioButtonGroup placementGroup =
+        new RadioButtonGroup("Placement Options", radioButtons.toArray(RadioButton[]::new));
 
-    FlexLayout groupLayout = new FlexLayout()
-        .setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-s)");
+    FlexLayout groupLayout =
+        new FlexLayout().setDirection(FlexDirection.COLUMN).setSpacing("var(--dwc-space-s)");
     groupLayout.add(placementGroup);
 
-    placementGroup.onChange(e -> {
-      RadioButton selected = e.getChecked();
-      if (selected != null) {
-        drawer.setPlacement((Drawer.Placement) selected.getUserData("placement"));
-      }
-    });
+    placementGroup.onChange(
+        e -> {
+          RadioButton selected = e.getChecked();
+          if (selected != null) {
+            drawer.setPlacement((Drawer.Placement) selected.getUserData("placement"));
+          }
+        });
 
     drawer.add(groupLayout);
     drawer.setStyle("--dwc-drawer-max-width", "fit-content");
@@ -64,5 +64,4 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     self.add(openDrawer, drawer);
     drawer.open();
   }
-
 }

@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route;
 public class ListboxMultipleSelectionView extends Composite<FlexLayout> {
   // Departments for the ListBox
   private static final String[] DEPARTMENTS = {
-      "Marketing and Sales", "IT Support", "Management and Admin", "Finance and HR"
+    "Marketing and Sales", "IT Support", "Management and Admin", "Finance and HR"
   };
 
   private final FlexLayout self = getBoundComponent();
@@ -28,16 +28,16 @@ public class ListboxMultipleSelectionView extends Composite<FlexLayout> {
         .setMargin("20px 0 0 20px")
         .setSpacing("20px");
 
-    listBox.insert(DEPARTMENTS)
-        .setLabel("Select Department(s)");
+    listBox.insert(DEPARTMENTS).setLabel("Select Department(s)");
 
-    selectionModeToggle.onToggle(e -> {
-      if (e.isToggled()) {
-        listBox.setSelectionMode(SelectionMode.MULTIPLE);
-      } else {
-        listBox.setSelectionMode(SelectionMode.SINGLE);
-      }
-    });
+    selectionModeToggle.onToggle(
+        e -> {
+          if (e.isToggled()) {
+            listBox.setSelectionMode(SelectionMode.MULTIPLE);
+          } else {
+            listBox.setSelectionMode(SelectionMode.SINGLE);
+          }
+        });
 
     self.add(listBox, selectionModeToggle);
   }

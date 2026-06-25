@@ -1,6 +1,7 @@
 ---
 title: Repository
 sidebar_position: 1
+description: Bridge data collections to UI components with CollectionRepository, commit changes for automatic sync, and apply base filters.
 ---
 
 <!-- vale off -->

@@ -25,11 +25,10 @@ public class AppNavView extends Composite<AppLayout> {
   }
 
   private void setHeader() {
-    self.setHeaderOffscreen(false)
-        .setDrawerHeaderVisible(true)
-        .addToHeader(toolbar);
+    self.setHeaderOffscreen(false).setDrawerHeaderVisible(true).addToHeader(toolbar);
 
-    toolbar.setTheme(Theme.PRIMARY)
+    toolbar
+        .setTheme(Theme.PRIMARY)
         .addToStart(new AppDrawerToggle())
         .addToTitle(new H1("Application"));
   }
@@ -37,22 +36,35 @@ public class AppNavView extends Composite<AppLayout> {
   private void setDrawer() {
     self.addToDrawer(appNav);
 
-    AppNavItem inbox = new AppNavItem("Inbox")
-        .setPrefixComponent(TablerIcon.create("inbox"))
-        .setSuffixComponent(new Strong("54"))
-        .addItem(createItem("Primary", "mailbox"))
-        .addItem(createItem("Promotions", "tag"))
-        .addItem(createItem("Social", "users"))
-        .addItem(createItem("Updates", "bell"))
-        .addItem(createItem("Forums", "message-circle"));
+    AppNavItem inbox =
+        new AppNavItem("Inbox")
+            .setPrefixComponent(TablerIcon.create("inbox"))
+            .setSuffixComponent(new Strong("54"))
+            .addItem(createItem("Primary", "mailbox"))
+            .addItem(createItem("Promotions", "tag"))
+            .addItem(createItem("Social", "users"))
+            .addItem(createItem("Updates", "bell"))
+            .addItem(createItem("Forums", "message-circle"));
 
-    AppNavItem about = new AppNavItem("About")
-        .setPrefixComponent(TablerIcon.create("info-circle"))
-        .addItem(new AppNavItem("webforJ", "https://webforj.com/", TablerIcon.create("external-link")))
-        .addItem(new AppNavItem("GitHub", "https://github.com/webforj/webforj", TablerIcon.create("brand-github")))
-        .addItem(new AppNavItem("Documentation", "https://documentation.webforj.com/", TablerIcon.create("book")));
+    AppNavItem about =
+        new AppNavItem("About")
+            .setPrefixComponent(TablerIcon.create("info-circle"))
+            .addItem(
+                new AppNavItem(
+                    "webforJ", "https://webforj.com/", TablerIcon.create("external-link")))
+            .addItem(
+                new AppNavItem(
+                    "GitHub",
+                    "https://github.com/webforj/webforj",
+                    TablerIcon.create("brand-github")))
+            .addItem(
+                new AppNavItem(
+                    "Documentation",
+                    "https://documentation.webforj.com/",
+                    TablerIcon.create("book")));
 
-    appNav.setAutoOpen(true)
+    appNav
+        .setAutoOpen(true)
         .addItem(inbox)
         .addItem(createItem("Sent", "send"))
         .addItem(createItem("Archived", "archive"))
@@ -62,6 +74,7 @@ public class AppNavView extends Composite<AppLayout> {
   }
 
   private AppNavItem createItem(String text, String icon) {
-    return new AppNavItem(text, AppNavPageView.class, ParametersBag.of("id=" + text), TablerIcon.create(icon));
+    return new AppNavItem(
+        text, AppNavPageView.class, ParametersBag.of("id=" + text), TablerIcon.create(icon));
   }
 }

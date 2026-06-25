@@ -16,10 +16,11 @@ public class InputDialogTypeView extends Composite<Div> {
   private final InputDialog dialog;
 
   public InputDialogTypeView() {
-    dialog = new InputDialog(
-            "This page is restricted. Please enter your password to continue.",
-            "Restricted access.",
-            InputDialog.InputType.PASSWORD)
+    dialog =
+        new InputDialog(
+                "This page is restricted. Please enter your password to continue.",
+                "Restricted access.",
+                InputDialog.InputType.PASSWORD)
             .setFirstButtonText("Continue")
             .setSecondButtonText("Cancel")
             .setFirstButtonTheme(ButtonTheme.PRIMARY);
@@ -27,26 +28,18 @@ public class InputDialogTypeView extends Composite<Div> {
     tryLogin();
   }
 
-  /**
-   * Attempts login by showing the password dialog.
-   */
+  /** Attempts login by showing the password dialog. */
   public void tryLogin() {
     String result = dialog.show();
 
     if (result != null && !result.isEmpty()) {
       // Access granted
       OptionDialog.showMessageDialog(
-              "Access granted",
-              "Welcome",
-              "Got it",
-              MessageDialog.MessageType.INFO);
+          "Access granted", "Welcome", "Got it", MessageDialog.MessageType.INFO);
     } else {
       // Access denied - retry
       OptionDialog.showMessageDialog(
-              "Access denied",
-              "Access denied",
-              "Try again",
-              MessageDialog.MessageType.ERROR);
+          "Access denied", "Access denied", "Try again", MessageDialog.MessageType.ERROR);
     }
   }
 }

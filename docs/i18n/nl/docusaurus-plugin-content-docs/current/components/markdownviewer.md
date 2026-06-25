@@ -1,15 +1,14 @@
 ---
 title: MarkdownViewer
 sidebar_position: 74
-sidebar_class_name: new-content
-_i18n_hash: 4583c753ac5c37b5f1c44106347f5732
+_i18n_hash: e50beb488f343e35da80b6d4f9ceddf5
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-markdown-viewer" />
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="markdown-viewer" location="com/webforj/component/markdown/MarkdownViewer" top='true'/>
 
-De `MarkdownViewer` component rendert markdown tekst als HTML. Het ondersteunt standaard markdown-syntaxis, inclusief koppen, lijsten, codeblokken, links, afbeeldingen en emoji-weergave. De component biedt ook progressieve weergave, die inhoud karakter voor karakter weergeeft voor een typemachine-effect.
+De `MarkdownViewer` component rendert markdown tekst als HTML. Het ondersteunt standaard markdown-syntax, inclusief koppen, lijsten, codeblokken, links, afbeeldingen en het weergeven van emoji's. De component biedt ook progressieve rendering, die inhoud karakter voor karakter weergeeft voor een typemachine-effect.
 
 ## Inhoud instellen {#setting-content}
 
@@ -30,56 +29,56 @@ viewer.setContent("""
 String content = viewer.getContent();
 ```
 :::tip
-De component implementeert `HasText`, zodat `setText()` en `getText()` werken als aliassen voor de inhoudsmethoden.
+De component implementeert `HasText`, zodat `setText()` en `getText()` als aliassen voor de inhoudsmethoden fungeren.
 :::
-<ComponentDemo 
-path='/webforj/markdownviewer?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java'
-height='600px'
+<ComponentDemo
+path='/webforj/markdownviewer'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java']}
+height='650px'
 />
 
 ## Inhoud toevoegen {#appending-content}
 
-De `append()` methode voegt inhoud incrementeel toe zonder het al aanwezige te vervangen:
+De `append()` methode voegt inhoud geleidelijk toe zonder wat er al is te vervangen:
 
 ```java
 viewer.append("## Nieuwe Sectie\n\n");
 viewer.append("Meer inhoud hier...");
 ```
 
-Standaard verschijnt toegevoegde inhoud onmiddellijk. Wanneer [progressieve weergave](#progressive-rendering) is ingeschakeld, gaat toegevoegde inhoud naar een buffer en wordt deze karakter voor karakter weergegeven.
+Standaard verschijnt toegevoegde inhoud onmiddellijk. Wanneer [progressieve rendering](#progressive-rendering) is ingeschakeld, gaat toegevoegde inhoud naar een buffer en wordt karakter voor karakter weergegeven.
 
-## Automatische scrollen {#auto-scroll}
+## Auto-scrollen {#auto-scroll}
 
-Schakel automatische scrolling in om het viewport onderaan te houden terwijl de inhoud groeit. Dit werkt met elk methode van het toevoegen van inhoud, of het nu `setContent()`, `append()` of progressieve weergave is. Als een gebruiker handmatig omhoog scrollt om eerdere inhoud te bekijken, pauzeert de automatische scrollfunctie en hervat deze wanneer ze weer naar beneden scrollen.
+Schakel auto-scrollen in om het viewport onderaan te houden terwijl de inhoud groeit. Dit werkt met elke methode om inhoud toe te voegen, of het nu `setContent()`, `append()` of progressieve rendering is. Als een gebruiker handmatig omhoog scrollt om eerdere inhoud te bekijken, pauzeert auto-scrollen en hervat het wanneer ze weer naar beneden scrollen.
 
 ```java
 viewer.setAutoScroll(true);
 ```
 
-## Progressieve weergave {#progressive-rendering}
+## Progressieve rendering {#progressive-rendering}
 
-Progressieve weergave toont inhoud karakter voor karakter in plaats van in één keer, waardoor een typemachine-effect ontstaat. AI-chatinterfaces gebruiken dit vaak om reacties geleidelijk weer te geven:
+Progressieve rendering toont inhoud karakter voor karakter in plaats van alles in één keer, wat een typemachine-effect creëert. AI-chatinterfaces gebruiken dit vaak om reacties geleidelijk te laten verschijnen:
 
 ```java
 MarkdownViewer viewer = new MarkdownViewer();
 viewer.setProgressiveRender(true);
 ```
 
-Wanneer ingeschakeld, gaat de inhoud die via `setContent()` of `append()` wordt toegevoegd naar een buffer en wordt deze incrementeel weergegeven. Wanneer uitgeschakeld, verschijnt de inhoud onmiddellijk.
+Wanneer ingeschakeld, gaat inhoud die via `setContent()` of `append()` is toegevoegd naar een buffer en wordt deze geleidelijk weergegeven. Wanneer uitgeschakeld, verschijnt de inhoud onmiddellijk.
 
-<ComponentDemo 
-path='/webforj/markdownviewerprogressive?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerProgressiveView.java'
+<ComponentDemo
+path='/webforj/markdownviewerprogressive'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerProgressiveView.java']}
 height='650px'
 />
 
 ### Render snelheid {#render-speed}
 
-De `setRenderSpeed()` methode bepaalt hoeveel karakters per animatiekader worden gerenderd. Hogere waarden betekenen snellere rendering. Bij 60fps vertaalt de standaard snelheid van 4 zich naar ongeveer 240 karakters per seconde:
+De `setRenderSpeed()` methode bepaalt hoeveel karakters per animatieframe worden weergegeven. Hogere waarden betekenen snellere rendering. Bij 60 fps komt de standaard snelheid van 4 overeen met ongeveer 240 karakters per seconde:
 
-| Snelheid | Karakters/Secunde |
-|----------|---------------------|
+| Snelheid | Karakters per Seconde |
+|----------|------------------------|
 | 4 (standaard) | ~240 |
 | 6 | ~360 |
 | 10 | ~600 |
@@ -88,13 +87,13 @@ De `setRenderSpeed()` methode bepaalt hoeveel karakters per animatiekader worden
 viewer.setRenderSpeed(6);
 ```
 
-:::tip Bij het afstemmen op uw gegevenssnelheid
-Als uw server inhoud sneller verzendt dan de viewer rendert, groeit de buffer en loopt de weergegeven inhoud achter. Verhoog `renderSpeed` om bij te blijven, of roep `flush()` op wanneer alle inhoud is ontvangen om de resterende inhoud onmiddellijk weer te geven.
+:::tip Uw gegevenssnelheid afstemmen
+Als uw server inhoud sneller verzendt dan de viewer rendert, groeit de buffer en loopt de weergegeven inhoud achter. Verhoog de `renderSpeed` om gelijke tred te houden, of roep `flush()` aan wanneer alle inhoud is ontvangen om de resterende inhoud onmiddellijk weer te geven.
 :::
 
 ### Render status {#render-state}
 
-Wanneer progressieve weergave is ingeschakeld, retourneert de `isRendering()` methode `true` terwijl de component actief weergegeven inhoud in de buffer weergeeft. Chatinterfaces gebruiken dit vaak om een stopknop weer te geven of te verbergen:
+Wanneer progressieve rendering is ingeschakeld, retourneert de `isRendering()` methode `true` terwijl de component actief gebufferde inhoud weergeeft. Chatinterfaces gebruiken dit vaak om een stopknop weer te geven of te verbergen:
 
 ```java
 if (viewer.isRendering()) {
@@ -102,28 +101,28 @@ if (viewer.isRendering()) {
 }
 ```
 
-Deze methode retourneert altijd `false` wanneer progressieve weergave is uitgeschakeld.
+Deze methode retourneert altijd `false` wanneer progressieve rendering is uitgeschakeld.
 
-### Het renderen beheersen {#controlling-rendering}
+### Besturing van rendering {#controlling-rendering}
 
-Twee methoden beheersen hoe progressieve weergave stopt:
+Twee methoden beheren hoe de progressieve rendering stopt:
 
-- **`stop()`** stopt de weergave en verwerpt alle gebufferde inhoud die nog niet is weergegeven. Roep dit aan wanneer de gebruiker annuleert.
-- **`flush()`** stopt de weergave maar toont onmiddellijk alle resterende gebufferde inhoud. Roep dit aan wanneer alle inhoud is ontvangen en u deze wilt tonen zonder te wachten.
+- **`stop()`** stopt de rendering en verwierpt alle gebufferde inhoud die nog niet is weergegeven. Roep dit aan wanneer de gebruiker annuleert.
+- **`flush()`** stopt de rendering maar toont onmiddellijk alle resterende gebufferde inhoud. Roep dit aan wanneer alle inhoud is ontvangen en je deze wilt tonen zonder te wachten.
 
 ```java
-// De gebruiker heeft op "Stop met genereren" geklikt
+// Gebruiker heeft op "Stop genereren" geklikt
 viewer.stop();
 
-// Alle inhoud ontvangen, toon alles nu
+// Alle inhoud ontvangen, toon nu alles
 viewer.flush();
 ```
 
-Deze methoden hebben geen effect wanneer progressieve weergave is uitgeschakeld.
+Deze methoden hebben geen effect wanneer progressieve rendering is uitgeschakeld.
 
 ### Wachten op voltooiing {#waiting-for-completion}
 
-De `whenRenderComplete()` methode retourneert een `PendingResult` dat wordt voltooid wanneer progressieve weergave is voltooid en alle gebufferde inhoud is weergegeven:
+De `whenRenderComplete()` methode retourneert een `PendingResult` die voltooit wanneer progressieve rendering is gestopt met het weergeven van alle gebufferde inhoud:
 
 ```java
 viewer.whenRenderComplete().thenAccept(v -> {
@@ -132,17 +131,17 @@ viewer.whenRenderComplete().thenAccept(v -> {
 });
 ```
 
-Als progressieve weergave niet is ingeschakeld of er geen inhoud wordt weergegeven, voltooit de `PendingResult` onmiddellijk.
+Als progressieve rendering niet is ingeschakeld of er geen inhoud wordt weergegeven, voltooit de `PendingResult` onmiddellijk.
 
 :::tip UI-coördinatie
-Wanneer u progressieve weergave gebruikt, schakelt u invoervelden niet opnieuw in uitsluitend op basis van wanneer u klaar bent met het aanroepen van `append()`. De renderer kan nog steeds gebufferde inhoud weergeven. Wacht op `whenRenderComplete()` zodat alle inhoud verschijnt voordat gebruikers opnieuw kunnen interageren.
+Wanneer je progressieve rendering gebruikt, schakel de invoervelden niet opnieuw in uitsluitend op basis van wanneer je klaar bent met het aanroepen van `append()`. De renderer kan nog steeds gebufferde inhoud weergeven. Wacht op `whenRenderComplete()` zodat alle inhoud verschijnt voordat gebruikers weer kunnen interageren.
 :::
 
-De volgende demo simuleert een AI-chatinterface met `append()` met progressieve weergave ingeschakeld:
+De volgende demo simuleert een AI-chatinterface met `append()` met ingeschakelde progressieve rendering:
 
-<ComponentDemo 
-path='/webforj/markdownviewerstreaming?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerStreamingView.java'
+<ComponentDemo
+path='/webforj/markdownviewerstreaming'
+files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerStreamingView.java']}
 height='700px'
 />
 
@@ -154,11 +153,11 @@ Verwijder alle inhoud met `clear()`:
 viewer.clear();
 ```
 
-Als progressieve weergave actief is, stopt `clear()` ook met renderen en voltooit het eventuele hangende `whenRenderComplete()` resultaten.
+Als progressieve rendering actief is, stopt `clear()` ook met renderen en voltooit het eventuele lopende `whenRenderComplete()` resultaten.
 
-## Syntax highlighting {#syntax-highlighting}
+## Syntaxhighlighting {#syntax-highlighting}
 
-De `MarkdownViewer` ondersteunt syntax highlighting voor codeblokken wanneer [Prism.js](https://prismjs.com/) beschikbaar is. Voeg Prism.js toe aan uw app met de annotaties `@JavaScript` en `@StyleSheet`:
+De `MarkdownViewer` ondersteunt syntaxhighlighting voor codeblokken wanneer [Prism.js](https://prismjs.com/) beschikbaar is. Voeg Prism.js toe aan je app met de `@JavaScript` en `@StyleSheet` annotaties:
 
 ```java
 @StyleSheet("https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css")

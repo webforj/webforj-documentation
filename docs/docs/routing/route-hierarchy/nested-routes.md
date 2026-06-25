@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Nested Routes
+description: Compose parent-child route hierarchies with the @Route outlet parameter to share layouts and reuse UI across views.
 ---
 
 Nested routes allow child routes to be rendered within parent routes, creating a modular and reusable UI. Parent routes define shared components, while child routes are injected into specific outlets within these parent components.

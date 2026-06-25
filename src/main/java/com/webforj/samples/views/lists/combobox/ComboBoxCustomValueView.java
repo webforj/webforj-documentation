@@ -13,8 +13,13 @@ import com.webforj.router.annotation.Route;
 public class ComboBoxCustomValueView extends Composite<FlexLayout> {
   // Categories for the ComboBox
   private static final String[] CATEGORIES = {
-      "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
-      "Pet Supplies", "Toys and Games"
+    "Electronics",
+    "Health and Beauty",
+    "Fashion",
+    "Kitchen",
+    "Furniture",
+    "Pet Supplies",
+    "Toys and Games"
   };
 
   private final FlexLayout self = getBoundComponent();
@@ -29,8 +34,7 @@ public class ComboBoxCustomValueView extends Composite<FlexLayout> {
         .setWidth(200);
 
     // Insert categories and disable custom values by default
-    customValue.insert(CATEGORIES)
-        .setAllowCustomValue(false);
+    customValue.insert(CATEGORIES).setAllowCustomValue(false);
 
     toggle.onToggle(e -> customValue.setAllowCustomValue(!customValue.isAllowCustomValue()));
 

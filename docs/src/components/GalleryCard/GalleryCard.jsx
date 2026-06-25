@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./GalleryCard.module.css";
 
-export default function GalleryCard({ href, header, image, effect, children }) {
+export default function GalleryCard({ href, header, image, imageDark, children }) {
   const isExternal = href ? /^https?:\/\//.test(href) : false;
 
   const content = (
@@ -14,8 +14,15 @@ export default function GalleryCard({ href, header, image, effect, children }) {
           <img
             src={useBaseUrl(image)}
             alt={header}
-            className={styles.cardImage}
+            className={clsx(styles.cardImage, { [styles.lightOnly]: imageDark })}
           />
+          {imageDark && (
+            <img
+              src={useBaseUrl(imageDark)}
+              alt={header}
+              className={clsx(styles.cardImage, styles.darkOnly)}
+            />
+          )}
         </div>
       )}
       <div className={styles.cardContent}>
@@ -31,10 +38,7 @@ export default function GalleryCard({ href, header, image, effect, children }) {
   );
 
   return (
-    <div
-      className={clsx(styles.card, { [styles.cardWithImage]: image })}
-      effect={effect || "scale"}
-    >
+    <div className={clsx(styles.card, { [styles.cardWithImage]: image })}>
       {href ? (
         isExternal ? (
           <a

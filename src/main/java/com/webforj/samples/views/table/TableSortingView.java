@@ -12,10 +12,11 @@ public class TableSortingView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public TableSortingView() {
-    Table<MusicRecord> table = new Table<MusicRecord>()
-      .setWidth("100vw")
-      .setHeight("100vh")
-      .setRepository(Service.getMusicRecords());
+    Table<MusicRecord> table =
+        new Table<MusicRecord>()
+            .setWidth("100vw")
+            .setHeight("100vh")
+            .setRepository(Service.getMusicRecords());
 
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);

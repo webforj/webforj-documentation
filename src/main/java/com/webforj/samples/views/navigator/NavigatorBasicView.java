@@ -20,22 +20,20 @@ public class NavigatorBasicView extends Composite<Div> {
 
     nav.onChange(e -> handleNavigation(e, nav));
 
-    self.setStyle("padding", "20px")
-        .add(nav);
+    self.setStyle("padding", "20px").add(nav);
   }
 
-  /**
-   * Handles navigation events by updating the counter based on direction.
-   */
+  /** Handles navigation events by updating the counter based on direction. */
   private void handleNavigation(NavigatorChangeEvent e, Navigator nav) {
     NavigatorChangeEvent.Direction direction = e.getDirection();
 
-    count = switch (direction) {
-      case NEXT -> count + 1;
-      case PREVIOUS -> count - 1;
-      case FIRST -> 0;
-      case LAST -> 10;
-    };
+    count =
+        switch (direction) {
+          case NEXT -> count + 1;
+          case PREVIOUS -> count - 1;
+          case FIRST -> 0;
+          case LAST -> 10;
+        };
 
     // Clamp count to valid range [0, 10]
     count = Math.max(0, Math.min(10, count));
@@ -43,4 +41,3 @@ public class NavigatorBasicView extends Composite<Div> {
     nav.setText("Value: " + count);
   }
 }
-

@@ -20,14 +20,13 @@ public class ColumnsLayoutView extends Composite<Div> {
   private final PasswordField password = new PasswordField("Password");
   private final PasswordField confirmPassword = new PasswordField("Confirm Password");
   private final Button submit = new Button("Submit", ButtonTheme.PRIMARY);
-  
+
   // The layout will position the components in 2 columns by default.
-  private final ColumnsLayout columnsLayout = new ColumnsLayout(firstName, lastName, email, password, confirmPassword, submit);
+  private final ColumnsLayout columnsLayout =
+      new ColumnsLayout(firstName, lastName, email, password, confirmPassword, submit);
 
   public ColumnsLayoutView() {
-    columnsLayout.setSpan(email, 2)
-        .setSpan(submit, 2)
-        .setStyle("padding", "var(--dwc-space-xl)");
+    columnsLayout.setSpan(email, 2).setSpan(submit, 2).setStyle("padding", "var(--dwc-space-xl)");
 
     submit.setStyle("margin-top", "var(--dwc-space-l)");
 

@@ -11,7 +11,6 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,10 +26,10 @@ public class DrawerTaskView extends Composite<FlexLayout> {
   private final Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
 
   public DrawerTaskView() {
-    drawer.setLabel("Task Manager")
-            .open();
+    drawer.setLabel("Task Manager").open();
 
-    tasks.setDirection(FlexDirection.COLUMN)
+    tasks
+        .setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-s)")
         .setStyle("overflow-y", "auto")
         .setMaxHeight("60vh");
@@ -39,37 +38,36 @@ public class DrawerTaskView extends Composite<FlexLayout> {
     addTask("Call John about the meeting");
     addTask("Prepare slides for tomorrow");
 
-    TextField newTaskField = new TextField("New Task", "")
-        .setMaxLength(50);
+    TextField newTaskField = new TextField("New Task", "").setMaxLength(50);
 
-    addTaskButton.onClick(e -> {
-      String taskText = newTaskField.getValue();
-      if (!taskText.isBlank() && !newTaskField.isInvalid()) {
-        addTask(taskText);
-        newTaskField.setValue("");
-      }
-    });
+    addTaskButton.onClick(
+        e -> {
+          String taskText = newTaskField.getValue();
+          if (!taskText.isBlank() && !newTaskField.isInvalid()) {
+            addTask(taskText);
+            newTaskField.setValue("");
+          }
+        });
 
     Button clearTasksButton = new Button("Clear Completed", ButtonTheme.DANGER);
     clearTasksButton.onClick(e -> clearCompletedTasks());
 
-    FlexLayout footerContainer = new FlexLayout(newTaskField, addTaskButton, clearTasksButton)
-        .setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-s)");
+    FlexLayout footerContainer =
+        new FlexLayout(newTaskField, addTaskButton, clearTasksButton)
+            .setDirection(FlexDirection.COLUMN)
+            .setSpacing("var(--dwc-space-s)");
 
-    drawer.addToFooter(footerContainer)
-        .add(tasks);
+    drawer.addToFooter(footerContainer).add(tasks);
 
     Button openDrawerButton = new Button("Open Task Manager");
     openDrawerButton.onClick(e -> drawer.open());
 
-    self.setMargin("var(--dwc-space-l)")
-        .add(openDrawerButton, drawer);
+    self.setMargin("var(--dwc-space-l)").add(openDrawerButton, drawer);
   }
 
   private void addTask(String taskText) {
     CheckBox task = new CheckBox(taskText);
-    
+
     taskList.add(task);
     tasks.add(task);
     checkTaskLimit();

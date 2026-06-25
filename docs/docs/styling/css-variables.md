@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: CSS Variables
+description: Define, scope, and consume CSS custom properties to control webforJ component styling at runtime without preprocessors.
 ---
 
 CSS Variables play a central role in customizing the appearance of webforJ components. These variables store reusable values such as colors, font sizes, and spacing, that can be applied consistently across your app.

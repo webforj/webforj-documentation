@@ -16,30 +16,34 @@ public class TableColumnPinningView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public TableColumnPinningView() {
-    Table<MusicRecord> table = new Table<MusicRecord>()
-      .setWidth("100vw")
-      .setHeight("100vh")
-      .setColumnsToMovable(false)
-      .setRepository(Service.getMusicRecords())
-      .setRowHeight(42);
+    Table<MusicRecord> table =
+        new Table<MusicRecord>()
+            .setWidth("100vw")
+            .setHeight("100vh")
+            .setColumnsToMovable(false)
+            .setRepository(Service.getMusicRecords())
+            .setRowHeight(42);
 
-
-    table.addColumn("Number", MusicRecord::getNumber)
-      .setPinDirection(Column.PinDirection.LEFT);
+    table.addColumn("Number", MusicRecord::getNumber).setPinDirection(Column.PinDirection.LEFT);
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);
     table.addColumn("Tracks Number", MusicRecord::getNumberOfTracks);
     table.addColumn("Genre", MusicRecord::getMusicType);
-    table.addColumn("Cost", record -> String.format("$%.2f", record.getCost()))
-      .setAlignment(Column.Alignment.RIGHT);
+    table
+        .addColumn("Cost", record -> String.format("$%.2f", record.getCost()))
+        .setAlignment(Column.Alignment.RIGHT);
 
-    ButtonRenderer<MusicRecord> editRenderer = new ButtonRenderer<>("Edit", e ->
-      showMessageDialog(
-        "You asked to edit record number <b>" + e.getItem().getNumber() + "</b>.",
-        "Edit Record"));
-    table.addColumn(editRenderer)
-      .setAlignment(Column.Alignment.CENTER)
-      .setPinDirection(Column.PinDirection.RIGHT);
+    ButtonRenderer<MusicRecord> editRenderer =
+        new ButtonRenderer<>(
+            "Edit",
+            e ->
+                showMessageDialog(
+                    "You asked to edit record number <b>" + e.getItem().getNumber() + "</b>.",
+                    "Edit Record"));
+    table
+        .addColumn(editRenderer)
+        .setAlignment(Column.Alignment.CENTER)
+        .setPinDirection(Column.PinDirection.RIGHT);
 
     self.add(table);
   }

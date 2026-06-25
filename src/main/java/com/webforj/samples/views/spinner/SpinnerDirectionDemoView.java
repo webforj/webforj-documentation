@@ -29,14 +29,13 @@ public class SpinnerDirectionDemoView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)");
 
-    clockwiseButton = new Button("Clockwise", e -> spinner.setClockwise(true))
-        .setWidth("200px");
+    clockwiseButton = new Button("Clockwise", e -> spinner.setClockwise(true)).setWidth("200px");
 
-    counterClockwiseButton = new Button("Counterclockwise", e -> spinner.setClockwise(false))
-        .setWidth("200px");
+    counterClockwiseButton =
+        new Button("Counterclockwise", e -> spinner.setClockwise(false)).setWidth("200px");
 
-    buttonContainer = new FlexLayout(clockwiseButton, counterClockwiseButton)
-            .setMargin("var(--dwc-space-s)");
+    buttonContainer =
+        new FlexLayout(clockwiseButton, counterClockwiseButton).setMargin("var(--dwc-space-s)");
 
     self.add(spinner, buttonContainer);
   }

@@ -11,8 +11,13 @@ import com.webforj.router.annotation.Route;
 public class ComboBoxPlaceholderView extends Composite<FlexLayout> {
   // Categories for the ComboBox
   private static final String[] CATEGORIES = {
-      "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
-      "Pet Supplies", "Toys and Games"
+    "Electronics",
+    "Health and Beauty",
+    "Fashion",
+    "Kitchen",
+    "Furniture",
+    "Pet Supplies",
+    "Toys and Games"
   };
 
   private final FlexLayout self = getBoundComponent();
@@ -20,11 +25,9 @@ public class ComboBoxPlaceholderView extends Composite<FlexLayout> {
   private final ComboBox comboBox = new ComboBox();
 
   public ComboBoxPlaceholderView() {
-    self.setMargin("20px 0 0 20px")
-        .setSpacing("20px");
+    self.setMargin("20px 0 0 20px").setSpacing("20px");
 
-    comboBox.setPlaceholder("Example Placeholder")
-        .insert(CATEGORIES);
+    comboBox.setPlaceholder("Example Placeholder").insert(CATEGORIES);
 
     self.add(comboBox);
   }

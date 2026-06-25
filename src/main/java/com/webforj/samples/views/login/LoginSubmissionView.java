@@ -16,19 +16,19 @@ public class LoginSubmissionView extends Composite<Div> {
   public LoginSubmissionView() {
     Login login = new Login();
 
-    login.onSubmit(ev -> {
-      String username = ev.getUsername();
-      String password = ev.getPassword();
+    login.onSubmit(
+        ev -> {
+          String username = ev.getUsername();
+          String password = ev.getPassword();
 
-      // Validate credentials (admin/admin)
-      if (username.equals("admin") && password.equals("admin")) {
-        login.close();
-        self.add(new Button("Logout", e -> Page.getCurrent().reload()));
-      } else {
-        login.setError(true)
-            .setEnabled(true);
-      }
-    });
+          // Validate credentials (admin/admin)
+          if (username.equals("admin") && password.equals("admin")) {
+            login.close();
+            self.add(new Button("Logout", e -> Page.getCurrent().reload()));
+          } else {
+            login.setError(true).setEnabled(true);
+          }
+        });
 
     login.open();
     self.add(login);

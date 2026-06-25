@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Route Navigation
+description: Trigger client-side navigation programmatically with Router.navigate, pass parameters, and switch views without reloads.
 ---
 
 In webforJ, navigating between routes is the core mechanism for switching views and components based on user actions or URL changes. Navigation allows users to move seamlessly between different parts of the app without refreshing the page. This client-side navigation keeps the app responsive and smooth while preserving the app's state.

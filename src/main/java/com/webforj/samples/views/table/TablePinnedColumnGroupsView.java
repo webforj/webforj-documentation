@@ -8,7 +8,6 @@ import com.webforj.component.table.ColumnGroup;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.List;
 
 @Route
@@ -29,22 +28,25 @@ public class TablePinnedColumnGroupsView extends Composite<Div> {
     table.addColumn("Artist", MusicRecord::getArtist).setMinWidth(200f);
     table.addColumn("Genre", MusicRecord::getMusicType).setMinWidth(150f);
     table.addColumn("Label", MusicRecord::getLabel).setMinWidth(150f);
-    table.addColumn("Cost", record -> {
-      return String.format("$%.2f", record.getCost());
-    }).setAlignment(Column.Alignment.RIGHT).setMinWidth(100f);
+    table
+        .addColumn(
+            "Cost",
+            record -> {
+              return String.format("$%.2f", record.getCost());
+            })
+        .setAlignment(Column.Alignment.RIGHT)
+        .setMinWidth(100f);
 
-    ColumnGroup identity = ColumnGroup.of("identity", "Identity")
-        .setPinDirection(PinDirection.LEFT)
-        .add("Number")
-        .add("Title");
+    ColumnGroup identity =
+        ColumnGroup.of("identity", "Identity")
+            .setPinDirection(PinDirection.LEFT)
+            .add("Number")
+            .add("Title");
 
-    ColumnGroup catalog = ColumnGroup.of("catalog", "Catalog")
-        .add("Artist")
-        .add("Genre")
-        .add("Label");
+    ColumnGroup catalog =
+        ColumnGroup.of("catalog", "Catalog").add("Artist").add("Genre").add("Label");
 
-    ColumnGroup pricing = ColumnGroup.of("pricing", "Pricing")
-        .add("Cost");
+    ColumnGroup pricing = ColumnGroup.of("pricing", "Pricing").add("Cost");
 
     table.setColumnGroups(List.of(identity, catalog, pricing));
     table.setRepository(Service.getMusicRecords());

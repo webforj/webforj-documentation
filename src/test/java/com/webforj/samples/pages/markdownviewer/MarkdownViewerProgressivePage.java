@@ -14,10 +14,14 @@ public class MarkdownViewerProgressivePage {
 
   public MarkdownViewerProgressivePage(Page page) {
     this.viewer = page.locator("dwc-markdown-viewer");
-    this.startButton = page.getByRole(com.microsoft.playwright.options.AriaRole.BUTTON,
-        new Page.GetByRoleOptions().setName("Start"));
-    this.stopButton = page.getByRole(com.microsoft.playwright.options.AriaRole.BUTTON,
-        new Page.GetByRoleOptions().setName("Stop"));
+    this.startButton =
+        page.getByRole(
+            com.microsoft.playwright.options.AriaRole.BUTTON,
+            new Page.GetByRoleOptions().setName("Start"));
+    this.stopButton =
+        page.getByRole(
+            com.microsoft.playwright.options.AriaRole.BUTTON,
+            new Page.GetByRoleOptions().setName("Stop"));
     this.speedChoice = page.locator("dwc-choicebox");
   }
 

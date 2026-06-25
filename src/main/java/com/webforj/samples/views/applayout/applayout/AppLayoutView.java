@@ -27,8 +27,7 @@ public class AppLayoutView extends Composite<AppLayout> {
 
   public AppLayoutView() {
     // Header
-    header.addToStart(new AppDrawerToggle())
-            .addToTitle(new H3("Application"));
+    header.addToStart(new AppDrawerToggle()).addToTitle(new H3("Application"));
     self.addToHeader(header);
 
     // Drawer
@@ -45,13 +44,14 @@ public class AppLayoutView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(createItem("Dashboard", dashboardIcon))
-            .addItem(createItem("Orders", ordersIcon))
-            .addItem(createItem("Customers", customersIcon))
-            .addItem(createItem("Products", productsIcon))
-            .addItem(createItem("Documents", documentsIcon))
-            .addItem(createItem("Tasks", tasksIcon))
-            .addItem(createItem("Analytics", analyticsIcon));
+    drawerMenu
+        .addItem(createItem("Dashboard", dashboardIcon))
+        .addItem(createItem("Orders", ordersIcon))
+        .addItem(createItem("Customers", customersIcon))
+        .addItem(createItem("Products", productsIcon))
+        .addItem(createItem("Documents", documentsIcon))
+        .addItem(createItem("Tasks", tasksIcon))
+        .addItem(createItem("Analytics", analyticsIcon));
   }
 
   private AppNavItem createItem(String text, Icon icon) {

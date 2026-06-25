@@ -20,24 +20,24 @@ public class NavigatorLayoutView extends Composite<Div> {
 
   public NavigatorLayoutView() {
     layout.setMaxWidth("400px");
-    nav.addClassName("nav")
-            .getPaginator().setMax(5);
+    nav.addClassName("nav").getPaginator().setMax(5);
 
     navLayout.insert("NONE", "PAGES", "PREVIEW", "QUICK_JUMP");
     navLayout.selectIndex(2);
 
-    navLayout.onSelect(ev -> {
-      String selected = ev.getSelectedItem().getText();
-      nav.setLayout(switch (selected) {
-        case "NONE" -> Layout.NONE;
-        case "PAGES" -> Layout.PAGES;
-        case "PREVIEW" -> Layout.PREVIEW;
-        case "QUICK_JUMP" -> Layout.QUICK_JUMP;
-        default -> nav.getLayout();
-      });
-    });
+    navLayout.onSelect(
+        ev -> {
+          String selected = ev.getSelectedItem().getText();
+          nav.setLayout(
+              switch (selected) {
+                case "NONE" -> Layout.NONE;
+                case "PAGES" -> Layout.PAGES;
+                case "PREVIEW" -> Layout.PREVIEW;
+                case "QUICK_JUMP" -> Layout.QUICK_JUMP;
+                default -> nav.getLayout();
+              });
+        });
 
-    self.setStyle("padding", "20px")
-        .add(layout);
+    self.setStyle("padding", "20px").add(layout);
   }
 }

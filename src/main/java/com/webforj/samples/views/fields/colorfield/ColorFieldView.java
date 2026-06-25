@@ -1,7 +1,5 @@
 package com.webforj.samples.views.fields.colorfield;
 
-import java.awt.Color;
-
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.event.ModifyEvent;
@@ -14,6 +12,7 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.awt.Color;
 
 @Route
 @StyleSheet("ws://css/fields/colorfield/colorFieldDemo.css")
@@ -25,9 +24,7 @@ public class ColorFieldView extends Composite<FlexLayout> {
 
   public ColorFieldView() {
     colorField = new ColorField();
-    colorField.setWidth("200px")
-        .setLabel("Choose a color:")
-        .onModify(this::tetradicColor);
+    colorField.setWidth("200px").setLabel("Choose a color:").onModify(this::tetradicColor);
 
     colors = new Div[4];
     for (int i = 0; i <= 3; i++) {
@@ -35,12 +32,15 @@ public class ColorFieldView extends Composite<FlexLayout> {
       colors[i].addClassName("colorDiv");
     }
 
-    FlexLayout colorDisplay = FlexLayout.create(colors)
-        .horizontal()
-        .justify().center()
-        .align().center()
-        .build()
-        .setSpacing("20px");
+    FlexLayout colorDisplay =
+        FlexLayout.create(colors)
+            .horizontal()
+            .justify()
+            .center()
+            .align()
+            .center()
+            .build()
+            .setSpacing("20px");
 
     Paragraph title = new Paragraph("Tetradic complementary colors:");
 
@@ -61,15 +61,16 @@ public class ColorFieldView extends Composite<FlexLayout> {
     int baseHue = getHue(selected);
     for (int i = 1; i <= 3; i++) {
       int hue = (baseHue + i * 60) % 360;
-      setBackgroundColor(colors[i], Color.getHSBColor(hue / 360.0f, getSaturation(selected), getBrightness(selected)));
+      setBackgroundColor(
+          colors[i],
+          Color.getHSBColor(hue / 360.0f, getSaturation(selected), getBrightness(selected)));
     }
   }
 
   private void setBackgroundColor(Div colorPanel, Color color) {
-    colorPanel.setStyle("background-color", "rgb(" + color.getRed() +
-            "," + color.getGreen() +
-            "," + color.getBlue() +
-            ")");
+    colorPanel.setStyle(
+        "background-color",
+        "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + ")");
   }
 
   private static int getHue(Color color) {

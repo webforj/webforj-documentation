@@ -1,6 +1,7 @@
 {
   "label": "Testing",
   "position": 60,
+  "className": "has-new-content cat-icon cat-icon--testing",
   "link": {
     "type": "doc",
     "id": "overview"

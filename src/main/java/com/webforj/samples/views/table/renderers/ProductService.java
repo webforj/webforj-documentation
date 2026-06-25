@@ -11,8 +11,10 @@ public final class ProductService {
 
   public static CollectionRepository<Product> getProducts() {
     List<Product> data =
-        new Gson().fromJson(Assets.contentOf(Assets.resolveContextUrl("context://data/products.json")),
-            new TypeToken<List<Product>>() {});
+        new Gson()
+            .fromJson(
+                Assets.contentOf(Assets.resolveContextUrl("context://data/products.json")),
+                new TypeToken<List<Product>>() {});
     return new CollectionRepository<>(data);
   }
 }

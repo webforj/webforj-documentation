@@ -23,11 +23,12 @@ public class ColumnsLayoutAlignmentView extends Composite<Div> {
   private final TextArea bio = new TextArea("Bio");
   private final CheckBox terms = new CheckBox("I agree to the terms and conditions");
   private final Button submit = new Button("Submit", ButtonTheme.PRIMARY);
-  private final ColumnsLayout columnsLayout = new ColumnsLayout(
-      firstName, lastName, email, dateOfBirth, bio, terms, submit);
+  private final ColumnsLayout columnsLayout =
+      new ColumnsLayout(firstName, lastName, email, dateOfBirth, bio, terms, submit);
 
   public ColumnsLayoutAlignmentView() {
-    columnsLayout.setSpan(bio, 2)
+    columnsLayout
+        .setSpan(bio, 2)
         .setSpan(terms, 2)
         .setColumn(submit, 2)
         .setHorizontalAlignment(submit, ColumnsLayout.Alignment.END)

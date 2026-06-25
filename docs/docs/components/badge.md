@@ -1,7 +1,7 @@
 ---
 title: Badge
 sidebar_position: 8
-sidebar_class_name: new-content
+description: Surface counts, statuses, or short labels with the Badge component, including themes, slotted icons, and attachment to buttons or tabs.
 ---
 
 <DocChip chip='shadow' />
@@ -56,9 +56,9 @@ Icon-only badges work especially well for compact status indicators in dense lay
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgeicons?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeIconsView.java'
-height='320px'
+path='/webforj/badgeicons'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeIconsView.java']}
+height='345px'
 />
 <!-- vale on -->
 
@@ -80,9 +80,9 @@ Attach a `Badge` to a `Button` using `setBadge()`. The badge appears at the top-
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgebuttons?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeButtonsView.java'
-height='250px'
+path='/webforj/badgebuttons'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeButtonsView.java']}
+height='290px'
 />
 <!-- vale on -->
 
@@ -92,9 +92,9 @@ Add a `Badge` as a suffix on a `Tab` using `setSuffixComponent()`. This is a nat
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgetabbedpane?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java'
-height='325px'
+path='/webforj/badgetabbedpane'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java']}
+height='360px'
 />
 <!-- vale on -->
 
@@ -112,8 +112,8 @@ Apply a theme using `setTheme()` or through the constructor.
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgethemes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeThemesView.java'
+path='/webforj/badgethemes'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeThemesView.java']}
 height='260px'
 />
 <!-- vale on -->
@@ -133,9 +133,9 @@ Use `setExpanse()` to control badge size. Nine sizes are available, ranging from
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/badgesizes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeSizesView.java'
-height='260px'
+path='/webforj/badgesizes'
+files={['src/main/java/com/webforj/samples/views/badge/BadgeSizesView.java']}
+height='300px'
 />
 <!-- vale on -->
 

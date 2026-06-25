@@ -25,4 +25,3 @@ public class IconBasicsView extends Composite<FlexLayout> {
     self.add(message, trash, edit);
   }
 }
-

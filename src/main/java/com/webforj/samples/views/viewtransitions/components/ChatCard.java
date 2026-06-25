@@ -25,8 +25,7 @@ public class ChatCard extends Composite<Div> implements HasClassName<ChatCard>, 
   private final IconButton closeBtn;
 
   public ChatCard() {
-    self.setWidth("320px")
-        .addClassName("chat-card");
+    self.setWidth("320px").addClassName("chat-card");
 
     // Header
     FlexLayout header = FlexLayout.create().horizontal().build();

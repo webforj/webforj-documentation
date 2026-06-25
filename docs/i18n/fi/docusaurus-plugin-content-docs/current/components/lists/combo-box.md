@@ -2,145 +2,150 @@
 sidebar_position: 10
 title: ComboBox
 slug: combobox
-_i18n_hash: b1ed30653bdca5af11b2f138a491baef
+description: >-
+  Combine a dropdown list with a text input in the ComboBox to let users select
+  preset items or type custom values with placeholder support.
+_i18n_hash: 4ef8ce7040bed877e314790f155f728a
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-combobox" />
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" top='true'/>
 
-`ComboBox`-komponentti yhdistää pudotusvalikon ja tekstikentän, jotta käyttäjät voivat joko valita ennalta määritellyistä vaihtoehdoista tai kirjoittaa mukautetun arvon. Kun mukautettuja syötteitä on sallittava ennalta määriteltyjen ehdotusten rinnalla, se täyttää aukon, jota `ChoiceBox` ei kata.
+`ComboBox`-komponentti yhdistää pudotuslistan ja tekstikentän, jotta käyttäjät voivat valita ennalta määritellyistä vaihtoehdoista tai kirjoittaa oman arvonsa. Kun mukautettujen merkintöjen käyttö on sallittua yhdessä ehdotettujen vaihtoehtojen kanssa, se täyttää sen aukon, jota `ChoiceBox` ei kata.
 
 <!-- INTRO_END -->
 
-## Käytännöt {#usages}
+## Käytöt {#usages}
 
 <ParentLink parent="List" />
 
-ComboBox-komponentti on monipuolinen syöte-elementti, joka yhdistää sekä pudotusvalikon että tekstikentän ominaisuudet. Se mahdollistaa käyttäjien valita kohteita ennalta määritellystä luettelosta tai syöttää mukautettuja arvoja tarpeen mukaan. Tässä osiossa tarkastellaan ComboBox-komponentin yleisiä käyttötapoja erilaisten tilanteiden yhteydessä:
+ComboBox-komponentti on monipuolinen syöte-elementti, joka yhdistää pudotuslistan ja tekstikentän ominaisuudet. Se tuo käyttäjille mahdollisuuden valita kohteita ennalta määritellystä luettelosta tai syöttää mukautettuja arvoja tarpeen mukaan. Tässä osiossa tutkitaan ComboBox-komponentin yleisiä käyttötapoja eri tilanteissa:
 
-1. **Tuoteselvitys ja Syöttö**: Käytä ComboBoxia tuoteselvitys- ja syöttöominaisuuden toteuttamiseen. Käyttäjät voivat joko valita tuotteen ennalta määritellystä luettelosta tai kirjoittaa mukautetun tuotteen nimen. Tämä on hyödyllistä sovelluksille, kuten verkkokauppasivustoille, joissa tuotteet ovat laajoja ja monimuotoisia.
+1. **Tuotteen haku ja syöttö**: Käytä ComboBoxia toteuttaaksesi tuotteen haku- ja syöttötoiminto. Käyttäjät voivat valita tuotteen ennalta määritellystä luettelosta tai kirjoittaa oman tuotteen nimensä. Tämä on hyödyllistä sovelluksille, kuten verkkokaupoille, joissa tuotteet ovat laajoja ja monimuotoisia.
 
-2. **Tagin Valinta ja Syöttö**: Sisältöä merkitseviin sovelluksiin ComboBox voi toimia erinomaisena valintana. Käyttäjät voivat valita olemassa olevista tageista tai lisätä mukautettuja tageja kirjoittamalla ne. Tämä on hyödyllistä sisällön organisoinnissa ja luokittelemisessa. Esimerkkejä tällaisista tageista ovat:
-    >- Projektitunnukset: Projektinhallintatyökalussa käyttäjät voivat valita tunnuksia tai tageja (esim. "Kiireellinen", "Työn alla", "Valmis") tehtävien tai projektien luokittelemiseksi, ja he voivat luoda mukautettuja tunnuksia tarvittaessa.
-    >- Reseptiaineet: Ruoka- tai resepti-sovelluksessa käyttäjät voivat valita aineksia luettelosta (esim. "Tomaatti", "Sipuli", "Kana") tai lisätä omia aineksiaan mukautettuja reseptejä varten.
-    >- Sijaintitagit: Kartta- tai geotaggingssovelluksessa käyttäjät voivat valita ennalta määriteltyjä sijaintitagteja (esim. "Ranta", "Kaupunki", "Puisto") tai luoda mukautettuja tageja merkitäkseen tiettyjä paikkoja kartalle.
+2. **Tagien valinta ja syöttö**: Sisältöjen merkitsemiseen liittyvissä sovelluksissa ComboBox voi olla erinomainen vaihtoehto. Käyttäjät voivat valita olemassa olevista tageista tai lisätä mukautettuja tageja kirjoittamalla ne. Tämä on hyödyllistä sisällön organisoimiseksi ja luokiteltavaksi. Esimerkkejä tällaisista tageista ovat:
+    >- Projektitunnukset: Projektinhallintatyökalussa käyttäjät voivat valita merkintöjä tai tageja (esim. "Kiireellinen", "Käynnissä", "Valmistunut") luokitellakseen tehtävät tai projektit, ja he voivat luoda mukautettuja merkintöjä tarpeen mukaan.
+    >- Reseptin ainekset: Ruoanlaitto- tai reseptisovelluksessa käyttäjät voivat valita aineksia luettelosta (esim. "Tomaatit", "Sipulit", "Kana") tai lisätä omia aineksiaan mukautettuihin resepteihin.
+    >- Sijaintitunnukset: Kartta- tai geotagging-sovelluksessa käyttäjät voivat valita ennalta määriteltyjä sijaintitunnuksia (esim. "Ranta", "Kaupunki", "Puisto") tai luoda mukautettuja tageja merkitäkseen tiettyjä paikkoja kartalle.
 
-3. **Tietojen Syöttö Ehdotetuilla Arvoilla**: Tietojen syöttömuodoissa ComboBoxia voidaan käyttää syötön nopeuttamiseen tarjoamalla luettelo ehdotetuista arvoista käyttäjän syötteen perusteella. Tämä auttaa käyttäjiä syöttämään tietoja tarkasti ja tehokkaasti.
+3. **Tietojen syöttö ehdotetuilla arvoilla**: Tietojen syöttölomakkeissa ComboBoxia voidaan käyttää syötteen nopeuttamiseksi tarjoamalla luettelo ehdotetuista arvoista käyttäjän syötteen perusteella. Tämä auttaa käyttäjiä syöttämään tietoa tarkasti ja tehokkaasti.
 
     :::tip
-    `ComboBoxia` tulisi käyttää, kun käyttäjille sallitaan mukautettujen arvojen syöttäminen. Jos vain ennalta määriteltyjä arvoja halutaan, käytä [`ChoiceBox`](./choice-box.md) -komponenttia sen sijaan.
+    `ComboBox`-komponenttia tulisi käyttää, kun käyttäjien sallitaan syöttää mukautettuja arvoja. Jos halutaan vain ennalta määriteltyjä arvoja, käytä [`ChoiceBox`](./choice-box.md) -komponenttia sen sijaan.
     :::
 
 ## Mukautettu arvo {#custom-value}
 
-Mukautetun arvon ominaisuuden muuttaminen antaa hallintaa siihen, voivatko käyttäjät muuttaa `ComboBox`-komponentin syötekentän arvoa. Jos arvo on `true`, joka on oletusarvo, käyttäjä voi muuttaa arvoa. Jos se on asetettu `false`:ksi, käyttäjä ei voi muuttaa arvoa. Tämä voidaan asettaa käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> -menetelmää.
+Mukautetun arvon ominaisuuden muuttaminen antaa hallita, voidaanko käyttäjän muuttaa arvona `ComboBox`-komponentin syötekentässä. Jos asetetaan `true`, mikä on oletusarvo, käyttäjä voi muuttaa arvoa. Jos asetetaan `false`, käyttäjän ei sallita muuttaa arvoa. Tämä voidaan asettaa käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> -metodia.
 
-<ComponentDemo 
-path='/webforj/comboboxcustomvalue?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomValueView.java'
-height = '200px'
+<ComponentDemo
+path='/webforj/comboboxcustomvalue'
+files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomValueView.java']}
+height='200px'
 />
 
 ## Paikkamerkki {#placeholder}
 
-`ComboBoxille` voidaan asettaa paikkamerkki, joka näkyy komponentin tekstikentässä, kun se on tyhjillään, ja kannustaa käyttäjiä syöttämään halutun arvon kenttään. Tämä voidaan tehdä käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> -menetelmää.
+ComboBoxille voidaan asettaa paikkamerkki, joka näkyy komponentin syötekentässä, kun se on tyhjillään, kehottaen käyttäjiä syöttämään halutun merkinnän kenttään. Tämä voidaan tehdä käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> -metodia.
 
-<ComponentDemo 
-path='/webforj/comboboxplaceholder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlaceholderView.java'
-height = '200px'
+<ComponentDemo
+path='/webforj/comboboxplaceholder'
+files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlaceholderView.java']}
+height='200px'
 />
 
-## Pudotusvalikon tyyppi {#dropdown-type}
+## Pudotuslistan tyyppi {#dropdown-type}
 
-Käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> -menetelmää voidaan määrittää arvo `type`-attribuutille `ComboBox`:ssä ja vastaava arvo `data-dropdown-for`-attribuutille pudotusvalikossa. Tämä on hyödyllistä tyylittelyn kannalta, kun pudotusvalikko siirretään nykyisestä paikastaan DOM-rakenteessa sivun alareunaan avatessa.
+Käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> -metodia määritetään arvo `type` -attribuutille `ComboBox`:ssa, ja vastaava arvo `data-dropdown-for` -attribuutille `ComboBox`:n pudotuslistassa. Tämä on hyödyllistä tyylittämisessä, koska pudotuslista poistetaan nykyisestä sijainnistaan DOM:ssa ja siirretään sivun rungon loppuun avattaessa.
 
-Tämä irrotus luo tilanteen, jossa pudotusvalikon suora kohdistaminen CSS- tai varjo-osavalitsijoiden avulla vanhemmasta komponentista tulee haastavaksi, ellei käytetä dropdown-tyypin attribuuttia.
+Tämä irrottaminen luo tilanteen, jossa pudotuslistan suora kohdistaminen CSS- tai shadow part -valitsimilla vanhemmasta komponentista on haastavaa, ellei hyödynnä pudotuslistan tyyppiä.
 
-Alla olevassa demon esimerkissä Pudotusvalikon tyyppi on asetettu ja käytetty CSS-tiedostossa pudotusvalikon valitsemiseen ja taustavärin muuttamiseen.
+Alla olevassa demossa pudotuslistan tyyppi on määritetty ja käytetty CSS-tiedostossa, jotta vaihtoehto suurenee sitä hoveroitaessa.
 
-<ComponentDemo 
-path='/webforj/comboboxdropdowntype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java'
-cssURL='/css/lists/combobox/comboBoxDropDownType.css'
+<ComponentDemo
+path='/webforj/comboboxdropdowntype'
+files={[
+  'src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java',
+  'src/main/resources/static/css/lists/combobox/comboBoxDropDownType.css',
+]}
 height='250px'
 />
 
 ## Maksimirivimäärä {#max-row-count}
 
-Oletusarvoisesti näkyvien rivien määrä `ComboBox`-pudotusvalikossa kasvaa sisällön mukaan. Kuitenkin <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> -menetelmän avulla voidaan hallita näkyvien kohteiden määrää.
+Oletusarvoisesti pudotuslistassa `ComboBox`-komponentissa näytetään rivimäärä, joka kasvatetaan sisällön mukaan. Kuitenkin käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> -metodia voi hallita, kuinka monta kohdetta näytetään.
 
 :::caution
-Jos käytetään numeroa, joka on pienempi tai yhtä suuri kuin 0, tämä ominaisuus poistetaan käytöstä.
+Jos käytetään numeroa, joka on alle tai yhtä suuri kuin 0, tämä ominaisuus poistetaan käytöstä.
 :::
 
-<ComponentDemo 
-path='/webforj/comboboxmaxrow?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java'
+<ComponentDemo
+path='/webforj/comboboxmaxrow'
+files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java']}
 height='450px'
 />
 
-## Avaminen ja sulkeminen {#opening-and-closing}
+## Avaaminen ja sulkeminen {#opening-and-closing}
 
-`ComboBox`:n vaihtoehtojen näkyvyyttä voidaan hallita ohjelmallisesti `open()`- ja `close()`-menetelmien avulla. Nämä menetelmät mahdollistavat vaihtoehtoluettelon näyttämisen valintaa varten tai sen piilottamisen tarpeen mukaan, tarjoten suurempaa joustavuutta `ComboBox`:n käytön hallinnassa.
+`ComboBox`:n vaihtoehtojen näkyvyyttä voidaan hallita ohjelmallisesti `open()`- ja `close()`-menetelmien avulla. Nämä menetelmät antavat mahdollisuuden näyttää tai piilottaa vaihtoehtojen lista valittavaksi tarpeen mukaan, tarjoten suuremman joustavuuden `ComboBox`:n käyttäytymisen hallinnassa.
 
-Lisäksi webforJ:llä on tapahtumakuuntelijoita `ComboBox`-komponentin sulkemiselle ja avaamiselle, mikä antaa sinulle enemmän kontrollia spottikohtaisten toimintojen laukaisemiseen.
+Lisäksi webforJ:llä on tapahtumakuuntelijat, kun `ComboBox` on suljettu ja kun se avataan, mikä antaa lisää hallintaa tiettyjen toimintojen laukaisemiseksi.
 
 ```Java
-//Siirrä fokus tai avaa seuraava komponentti muodossa
-ComboBox yliopisto = new ComboBox("Yliopisto");
-ComboBox pääaine = new ComboBox("Pääaine");
-Button lähettää = new Button("Lähetä");
+//Siirrä fokus tai avaa seuraava komponentti lomakkeessa
+ComboBox university = new ComboBox("Yliopisto");
+ComboBox major = new ComboBox("Pääaine");
+Button submit = new Button("Lähetä");
 
-//... Lisää yliopistoja ja pääaineita sisältävät luettelot
+//... Lisää listat yliopistoista ja pääaineista
 
-yliopisto.onClose( e ->{
-  pääaine.open();
+university.onClose( e ->{
+  major.open();
 });
 
-pääaine.onClose( e ->{
-  lähettää.focus();
+major.onClose( e ->{
+  submit.focus();
 });
 ```
 
 ## Avausmitat {#opening-dimensions}
 
-`ComboBox`-komponentilla on menetelmiä, jotka mahdollistavat pudotusvalikon mittojen muokkaamisen. **Maksimi korkeus** ja **minimi leveys** pudotusvalikolle voidaan määrittää käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> ja <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> -menetelmiä.
+`ComboBox`-komponentilla on menetelmiä, jotka sallivat pudotuslistan mittojen muokkaamisen. **Maksimikorkeus** ja **minimileveys** pudotuslistalle voidaan asettaa käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> ja <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> -metodeja, vastaavasti.
 
 :::tip
-Mikäli jompikumpi näistä menetelmistä saa `String`-arvon, voidaan käyttää [mikä tahansa voimassa oleva CSS-yksikkö](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units), kuten pikselit, näkymämitat tai muut voimassa olevat säännöt. `int`-arvon siirtäminen asettaa siirretyn arvon pikseleinä.
+Antamalla `String`-arvon kummallekin näistä menetelmistä voit soveltaa [mitä tahansa voimassa olevaa CSS-yksikköä](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units), kuten pikseleitä, näkymämittoja tai muita voimassa olevia sääntöjä. Jos annetaan `int`, määritetään arvo pikseleinä.
 :::
 
 ## Korostaminen {#highlighting}
 
-Kun työskennellään `ComboBoxin` kanssa, voit mukauttaa, milloin teksti korostuu sen perusteella, miten komponentti saa fokuksen. Tämä ominaisuus voi vähentää syöttövirheitä käyttäjien täyttäessä lomakkeita ja parantaa yleistä navigointikokemusta. Muuta korostuskäyttäytymistä käyttämällä `setHighlightOnFocus()`-menetelmää ja yhtä sisäänrakennetuista `HasHighlightOnFocus.Behavior` -enumista:
+Työskennellessäsi `ComboBox`:n kanssa voit mukauttaa, milloin tekstiä korostetaan sen perusteella, miten komponentti saa fokuksen. Tämä ominaisuus voi vähentää syöttövirheitä, kun käyttäjät täyttävät lomakkeita, ja parantaa yleistä navigointikokemusta. Muuta korostuskäyttäytymistä käyttämällä `setHighlightOnFocus()`-metodia yhdellä sisäänrakennetuista `HasHighlightOnFocus.Behavior`-enumerointiarvoista:
 
 - `ALL`
-Komponentin sisältö korostuu automaattisesti aina, kun komponenttiin kohdistuu fokus.
+Komponentin sisältö korostuu aina automaattisesti, kun komponentti saa fokuksen.
 - `FOCUS`
-Komponentin sisältö korostuu automaattisesti, kun komponenttiin kohdistuu fokus ohjelmallisesti.
+Komponentin sisältö korostuu automaattisesti, kun komponentti saa fokuksen ohjelmallisesti.
 - `FOCUS_OR_KEY`
-Komponentin sisältö korostuu automaattisesti, kun komponenttiin kohdistuu fokus ohjelmallisesti tai tabuloimalla siihen.
+Komponentin sisältö korostuu automaattisesti, kun komponentti saa fokuksen ohjelmallisesti tai tabuloinnin kautta.
 - `FOCUS_OR_MOUSE`
-Komponentin sisältö korostuu automaattisesti, kun komponenttiin kohdistuu fokus ohjelmallisesti tai klikkaamalla siihen hiirellä.
+Komponentin sisältö korostuu automaattisesti, kun komponentti saa fokuksen ohjelmallisesti tai hiirellä napsauttamalla.
 - `KEY`
-Komponentin sisältö korostuu automaattisesti, kun komponenttiin kohdistuu fokus tabuloimalla siihen.
+Komponentin sisältö korostuu automaattisesti, kun komponentti saa fokuksen tabuloinnin kautta.
 - `KEY_MOUSE`
-Komponentin sisältö korostuu automaattisesti, kun komponenttiin kohdistuu fokus tabuloimalla siihen tai klikkaamalla siihen hiirellä.
+Komponentin sisältö korostuu automaattisesti, kun komponentti saa fokuksen tabuloinnin tai hiirellä napsauttamisen kautta.
 - `MOUSE`
-Komponentin sisältö korostuu automaattisesti, kun komponenttiin kohdistuu fokus klikkaamalla siihen hiirellä.
+Komponentin sisältö korostuu automaattisesti, kun komponentti saa fokuksen hiirellä napsauttamalla.
 - `NONE`
-Komponentin sisältöä ei koskaan automaattisesti korosteta, kun komponenttiin kohdistuu fokus.
+Komponentin sisältöä ei koskaan automaattisesti korosteta, kun komponentti saa fokuksen.
 
 :::note
-Jos sisältö oli korostettu fokuksen menetyksen yhteydessä, se korostuu jälleen, kun fokus palautuu, riippumatta asetetusta käyttäytymisestä.
+Jos sisältöä korostettiin, kun fokus menetettiin, se korostuu jälleen, kun fokus palautuu, riippumatta asetetusta käyttäytymisestä.
 :::
 
-## Etuliite ja jälkiliite {#prefix-and-suffix}
+## Etuliite ja suffiksit {#prefix-and-suffix}
 
-Slotit tarjoavat joustavia vaihtoehtoja `ComboBoxin` kyvykkyyden parantamiseksi. Voit lisätä ikoneita, etikettejä, latauspyöröjä, tyhjennys/ palautusmahdollisuuksia, avatar/ profiilikuvaa ja muita hyödyllisiä komponentteja `ComboBoxin` sisään lisätäkseen käyttäjille tarkoitettua selkeyttä.
-`ComboBox`-komponentilla on kaksi slottia: `prefix` ja `suffix`. Käytä `setPrefixComponent()` ja `setSuffixComponent()` -menetelmiä erilaisten komponenttien lisäämiseksi ennen ja jälkeen vaihtoehtojen `ComboBoxissa`.
+Slotit tarjoavat joustavia vaihtoehtoja `ComboBox`-komponentin kykyjen parantamiseen. Voit käyttää ikoneita, merkintöjä, latauspurskeita, tyhjennys-/nollaustoimintoja, avatar-/profiilikuvia ja muita hyödyllisiä komponentteja sisäisesti `ComboBox`:ssa, jotta käyttäjille välittyisi selkeä tarkoitus.
+`ComboBox`-komponentilla on kaksi slotia: `prefix` ja `suffix`. Käytä `setPrefixComponent()`- ja `setSuffixComponent()`-menetelmiä lisätäksesi erilaisia komponentteja vaihtoehtojen eteen ja taakse `ComboBox`:ssa.
 
 ```java
 ComboBox comboBox = new ComboBox());
@@ -154,16 +159,16 @@ ComboBox comboBox = new ComboBox());
 
 ## Parhaat käytännöt {#best-practices}
 
-Jotta saat optimaalisen käyttäjäkokemuksen käyttäessäsi `ComboBox`-komponenttia, ota huomioon seuraavat parhaat käytännöt:
+Varmistaaksesi optimaalisen käyttäjäkokemuksen `ComboBox`-komponentin käytössä harkitse seuraavia parhaita käytäntöjä:
 
-1. **Esilataa Yhteiset Arvot**: Jos on yhteisiä tai usein käytettyjä kohteita, esilataa ne `ComboBox`-luetteloon. Tämä nopeuttaa yleisesti valittujen kohteiden valintaa ja kannustaa johdonmukaisuuteen.
+1. **Esilataa tavalliset arvot**: Jos on olemassa tavallisia tai usein käytettyjä kohteita, esilataa ne `ComboBox`-listalle. Tämä nopeuttaa tavallisesti valittujen kohteiden valintaa ja kannustaa johdonmukaisuuteen.
 
-2. **Käyttäjäystävälliset Etiketit**: Varmista, että jokaisen vaihtoehdon näytettävät etiketit ovat käyttäjäystävällisiä ja helposti ymmärrettäviä. Varmista, että käyttäjät ymmärtävät helposti kunkin valinnan tarkoituksen.
+2. **Käyttäjäystävälliset merkinnät**: Varmista, että jokaisen vaihtoehdon näytettävät merkinnät ovat käyttäjäystävällisiä ja itsestään selviä. Varmista, että käyttäjät ymmärtävät helposti jokaisen valinnan tarkoituksen.
 
-3. **Validointi**: Toteuta syötteen validointi mukautettujen syötteiden käsittelemiseksi. Tarkista tietojen tarkkuus ja johdonmukaisuus. Saatat haluta ehdottaa korjauksia tai vahvistuksia epäselville syötteille.
+3. **Vahvistus**: Ota käyttöön syöttövalidointi mukautettujen merkintöjen käsittelemiseksi. Tarkista tietojen tarkkuus ja johdonmukaisuus. Saatat haluta ehdottaa korjauksia tai vahvistuksia epämääräisille merkinnöille.
 
-4. **Oletusvalinta**: Aseta oletusvalinta, erityisesti jos on yleinen tai suositeltu vaihtoehto. Tämä parantaa käyttäjäkokemusta vähentämällä ylimääräisten klikkausten tarvetta.
+4. **Oletusvalinta**: Aseta oletusvalinta, erityisesti jos on olemassa yleinen tai suositeltu vaihtoehto. Tämä parantaa käyttäjäkokemusta vähentämällä ylimääräisten napsautusten tarvetta.
 
-5. **ComboBox vs. Muiden Luettelokomponenttien**: `ComboBox` on paras valinta, jos tarvitset käyttäjältä yhden syötteen ja haluat tarjota heille ennalta määrättyjä valintoja sekä mahdollisuuden mukauttaa syötteensä. Toinen luettelokomponentti voi olla parempi valinta, jos tarvitset seuraavia käyttäytymisiä:
+5. **ComboBox vs. muut luettelosovellukset**: `ComboBox` on paras valinta, jos tarvitset käyttäjältä yhden syötteen ja haluat antaa heille ennalta määrättyjä valintoja sekä mahdollisuuden mukauttaa syöttöään. Toinen luettelosovellus voi olla parempi, jos tarvitset seuraavia käyttäytymisiä:
     - Monivalinta ja kaikkien kohteiden näyttäminen kerralla: [ListBox](./list-box.md)
-    - Mukautetun syötteen estäminen: [ChoiceBox](./choice-box.md)
+    - Estä mukautettu syöttö: [ChoiceBox](./choice-box.md)

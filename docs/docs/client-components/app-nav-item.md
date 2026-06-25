@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-app-nav-item>
 sidebar_class_name: sidebar--item__hidden
 slug: app-nav-item
-description: A user guide article for the app-nav-item
+description: Customize the dwc-app-nav-item client component with CSS variables and shadow parts to style nav links, icons, and active states.
 // pagination_prev: null
 // pagination_next: null
 ---

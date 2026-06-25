@@ -1,8 +1,5 @@
 package com.webforj.samples.views.elementcomposite;
 
-import java.awt.Color;
-import java.util.Map;
-
 import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
 
 import com.webforj.annotation.Attribute;
@@ -21,6 +18,8 @@ import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.awt.Color;
+import java.util.Map;
 
 @Route
 @FrameTitle("QR Events")
@@ -36,23 +35,23 @@ public class QREventView extends Composite<FlexLayout> {
         .setDirection(FlexDirection.COLUMN)
         .add(label, qrCode);
 
-    qrCode.setSize(200)
-        .setColor("#000");
+    qrCode.setSize(200).setColor("#000");
 
     qrCode.onClick(e -> showMessageDialog("Client X:" + e.getClientX(), "You clicked the QR code"));
   }
 
-  /**
-   * QRCode Generator using Shoelace QRCode component.
-   */
-  @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js", attributes = {
-    @Attribute(name = "type", value = "module") })
+  /** QRCode Generator using Shoelace QRCode component. */
+  @JavaScript(
+      value =
+          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js",
+      attributes = {@Attribute(name = "type", value = "module")})
   @NodeName("sl-qr-code")
   public static final class QRCode extends ElementComposite {
 
     private final PropertyDescriptor<String> descValue = PropertyDescriptor.property("value", "");
     private final PropertyDescriptor<Integer> descSize = PropertyDescriptor.property("size", 128);
-    private final PropertyDescriptor<String> descColor = PropertyDescriptor.property("fill", "#000000");
+    private final PropertyDescriptor<String> descColor =
+        PropertyDescriptor.property("fill", "#000000");
 
     public QRCode() {
       super();
@@ -106,12 +105,11 @@ public class QREventView extends Composite<FlexLayout> {
     public ListenerRegistration<ClickEvent> onClick(EventListener<ClickEvent> listener) {
       return addEventListener(ClickEvent.class, listener);
     }
-
   }
 
   // Creating a click event.
   @EventName("click")
-  @EventOptions(data = { @EventOptions.EventData(key = "clientX", exp = "event.clientX") })
+  @EventOptions(data = {@EventOptions.EventData(key = "clientX", exp = "event.clientX")})
   public static class ClickEvent extends ComponentEvent<QRCode> {
 
     public ClickEvent(QRCode source, Map<String, Object> detail) {

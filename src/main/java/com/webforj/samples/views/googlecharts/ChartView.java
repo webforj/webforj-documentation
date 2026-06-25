@@ -6,7 +6,6 @@ import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,9 +22,9 @@ public class ChartView extends Composite<Div> {
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.GEO);
 
   private static final String[] COUNTRIES = {
-      "Germany", "United States", "Brazil", "Canada",
-      "France", "RU", "Australia", "South Africa",
-      "China", "Egypt"
+    "Germany", "United States", "Brazil", "Canada",
+    "France", "RU", "Australia", "South Africa",
+    "China", "Egypt"
   };
 
   public ChartView() {
@@ -38,20 +37,23 @@ public class ChartView extends Composite<Div> {
     chart.setStyle("width", "100vw");
     chart.setStyle("height", "100vh");
 
-    Map<String, Object> options = Map.of(
-        "colors", List.of("#006fe6", "#8f64e0", "#ce55ca", "#fa49ab"),
-        "backgroundColor", "#f9f9f9",
-        "chartArea", Map.of("width", "70%", "height", "80%"),
-        "hAxis", Map.of(TEXT_STYLE, Map.of(COLOR, "#333")),
-        "vAxis", Map.of("minValue", 0, TEXT_STYLE, Map.of(COLOR, "#333")),
-        "legend", Map.of(
-            "position", "top",
-            "alignment", "center",
-            TEXT_STYLE, Map.of(
-                "fontSize", 16,
-                COLOR, "#333"),
-            "maxLines", 3)
-    );
+    Map<String, Object> options =
+        Map.of(
+            "colors", List.of("#006fe6", "#8f64e0", "#ce55ca", "#fa49ab"),
+            "backgroundColor", "#f9f9f9",
+            "chartArea", Map.of("width", "70%", "height", "80%"),
+            "hAxis", Map.of(TEXT_STYLE, Map.of(COLOR, "#333")),
+            "vAxis", Map.of("minValue", 0, TEXT_STYLE, Map.of(COLOR, "#333")),
+            "legend",
+                Map.of(
+                    "position",
+                    "top",
+                    "alignment",
+                    "center",
+                    TEXT_STYLE,
+                    Map.of("fontSize", 16, COLOR, "#333"),
+                    "maxLines",
+                    3));
 
     List<Object> data = createChartData();
     chart.setOptions(options);

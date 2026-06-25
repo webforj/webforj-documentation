@@ -1,13 +1,25 @@
 ---
 title: Snapshots
-sidebar_position: 35
-sidebar_class_name: new-content
-_i18n_hash: 5234e12882e2652d440f8861a6341cef
+sidebar_position: 30
+hide_table_of_contents: true
+description: >-
+  Locate the latest webforJ snapshot version and add the Central Portal
+  Snapshots repository to consume pre-release builds.
+_i18n_hash: 646ace835d5ba39ed182935e8d7f33fb
 ---
-Jokainen webforJ-version julkaisu tulee yksityiskohtaisten [julkaisumuistiinpanojen](https://github.com/webforj/webforj/releases) ja [julkaisublogikirjoituksen](/blog/tags/release) kanssa. webforJ:n snapshot-versiot antavat sinulle mahdollisuuden testata viimeisimpiä ominaisuuksia samalla, kun kehitys jatkuu ennakkoversiolla.
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
+
+Jokainen webforJ-version julkaisu on mukana yksityiskohtaiset [julkaisumuistiinpanot](https://github.com/webforj/webforj/releases) ja [julkaisublogikirje](/blog/tags/release).
+Snapshot-versiot webforJ:stä antavat sinulle pääsyn uusimpiin ominaisuuksiin testattavaksi, kun kehitys jatkuu julkaisemattomalla versiolla.
 
 <!-- vale Google.Acronyms = NO -->
-Vaikka snapshotit eivät ole julkisesti listattuina Maven-repositorioissa kuten [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) tai [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj), on snapshotin nimen löytäminen helppoa. Löydäksesi uusin snapshot-versio, siirry [webforJ-projektiin](https://github.com/webforj/webforj) GitHubissa. Sieltä etsi projektin [POM-tiedosto](https://github.com/webforj/webforj/blob/main/pom.xml) ja etsi `version`-tagia:
+Vaikka snapshot-julkaisuja ei ole julkisesti listattu Maven-repositorioissa, kuten [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) tai [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj), on helppo löytää snapshotin nimi. Löytääksesi uusin snapshot-versio, siirry [webforJ-projektiin](https://github.com/webforj/webforj) GitHubissa. Sieltä löydät projektin [POM-tiedoston](https://github.com/webforj/webforj/blob/main/pom.xml) ja etsi `version`-tagia:
 <!-- vale Google.Acronyms = YES -->
 ```xml {3} title="pom.xml"
 <groupId>com.webforj</groupId>
@@ -17,7 +29,7 @@ Vaikka snapshotit eivät ole julkisesti listattuina Maven-repositorioissa kuten 
 <name>webforj</name>
 ```
 
-Käyttääksesi tätä snapshot-versiota sovelluksessasi, käytä tätä arvoa `webforj.version`-ominaisuutena sovelluksesi POM-tiedostossa:
+Käyttääksesi tuota snapshot-versiota sovelluksessasi, käytä sitä arvoa `webforj.version`-ominaisuutena sovelluksesi POM-tiedostossa:
 ```xml title="pom.xml" {2}
 <properties>
   <webforj.version>26.00-SNAPSHOT</webforj.version>
@@ -30,7 +42,7 @@ Käyttääksesi tätä snapshot-versiota sovelluksessasi, käytä tätä arvoa `
 
 ## Määritä snapshot-repositorio {#configure-the-snapshot-repository}
 
-Koska snapshotit eivät julkaista Maven Centraliin, sinun on lisättävä Central Portal Snapshots -repositorio sovelluksesi `pom.xml`-tiedostoon, jotta Maven voi ratkaista ne. Tarvitset kaksi merkintää: `<repository>` webforJ:n suoritustaidetta varten ja `<pluginRepository>` sen Maven-laajennuksia (kuten asennus- ja minimointi-laajennuksia) varten, jotka myös julkaistaan snapshotteina. Molemmat merkinnät poistavat julkaisujen ratkaisemisen käytöstä, joten Maven käyttää tätä repositoriat vain snapshot-taiteille.
+Koska snapshot-julkaisuja ei julkaista Maven Centralissa, sinun on lisättävä Central Portal Snapshots -repositorio sovelluksesi `pom.xml`-tiedostoon, jotta Maven voi ratkaista ne. Tarvitset kaksi merkintää: `<repository>` webforJ:n ajonaikaisille artefakteille ja `<pluginRepository>` sen Maven-laajennuksille (kuten asennus- ja minifiointilaajennuksille), jotka myös julkaistaan snapshotina. Molemmat merkinnät poistavat julkaisun ratkaisun käytöstä, jotta Maven käyttää vain tätä repositorion snapshot-artefakteille.
 
 ```xml title="pom.xml"
 <repositories>
@@ -61,8 +73,8 @@ Koska snapshotit eivät julkaista Maven Centraliin, sinun on lisättävä Centra
 </pluginRepositories>
 ```
 
-Vaihtoehtoisesti, jos luot uuden webforJ-sovelluksen, siirry [startforJ](https://docs.webforj.com/startforj/) ja valitse webforJ-versio, joka päättyy `(pre)`.
+Vaihtoehtoisesti, jos olet luomassa uutta webforJ-sovellusta, mene [startforJ](https://docs.webforj.com/startforj/) ja valitse webforJ-versio, joka päättyy `(pre)`.
 
 :::warning
-Snapshot-versiot ovat aktiivisen kehityksen alla ja voivat muuttua, joten niitä ei suositella käytettäväksi live-tuotantosovelluksissa.
+Snapshot-versiot ovat aktiivisessa kehityksessä ja voivat muuttua, joten niiden käyttöä live-tuotantosovelluksissa ei suositella.
 :::

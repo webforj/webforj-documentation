@@ -21,35 +21,22 @@ public class TreeModifyView extends Composite<FlexLayout> {
   private final Tree tree = new Tree();
 
   public TreeModifyView() {
-    self.setDirection(FlexDirection.COLUMN)
-      .setHeight("100vh")
-      .setStyle("overflow", "auto");
+    self.setDirection(FlexDirection.COLUMN).setHeight("100vh").setStyle("overflow", "auto");
 
     tree.add(
-      node("Projects")
-        .add(
-          node("Alpha")
+        node("Projects")
             .add(
-              node("Planning"),
-              node("Execution"),
-              node("Review")),
-          node("Beta")
+                node("Alpha").add(node("Planning"), node("Execution"), node("Review")),
+                node("Beta").add(node("Design"), node("Development"), node("Testing"))),
+        node("Departments")
             .add(
-              node("Design"),
-              node("Development"),
-              node("Testing"))),
-      node("Departments")
-        .add(
-          node("Engineering")
-            .add(
-              node("Software"),
-              node("Hardware")),
-          node("Marketing"),
-          node("Human Resources")));
+                node("Engineering").add(node("Software"), node("Hardware")),
+                node("Marketing"),
+                node("Human Resources")));
 
     tree.setStyle("margin", "var(--dwc-space-l)")
-      .expand("Departments")
-      .onDoubleClick(this::handleNodeDoubleClick);
+        .expand("Departments")
+        .onDoubleClick(this::handleNodeDoubleClick);
 
     self.add(tree);
   }
@@ -58,13 +45,12 @@ public class TreeModifyView extends Composite<FlexLayout> {
     var node = event.getNode();
     if (node != null) {
       String nodeText = node.getText();
-      var dialog = new InputDialog(
-        "Enter a new name for the node: " + nodeText,
-        "Modify Node")
-        .setDefaultValue(nodeText)
-        .setFirstButtonText("Modify")
-        .setSecondButtonText("Cancel")
-        .setFirstButtonTheme(ButtonTheme.PRIMARY);
+      var dialog =
+          new InputDialog("Enter a new name for the node: " + nodeText, "Modify Node")
+              .setDefaultValue(nodeText)
+              .setFirstButtonText("Modify")
+              .setSecondButtonText("Cancel")
+              .setFirstButtonTheme(ButtonTheme.PRIMARY);
 
       String result = dialog.show();
       if (result != null && !result.isEmpty()) {

@@ -10,7 +10,6 @@ import com.webforj.component.table.ColumnGroup;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.List;
 
 @Route
@@ -28,27 +27,29 @@ public class TableHiddenColumnGroupsView extends Composite<Div> {
     table.addColumn("Title", MusicRecord::getTitle).setMinWidth(120f);
     table.addColumn("Artist", MusicRecord::getArtist).setMinWidth(120f);
     table.addColumn("Genre", MusicRecord::getMusicType).setMinWidth(80f);
-    Column<MusicRecord, ?> costColumn = table.addColumn("Cost", record -> {
-      return String.format("$%.2f", record.getCost());
-    });
+    Column<MusicRecord, ?> costColumn =
+        table.addColumn(
+            "Cost",
+            record -> {
+              return String.format("$%.2f", record.getCost());
+            });
     costColumn.setAlignment(Column.Alignment.RIGHT).setMinWidth(70f);
-    Column<MusicRecord, ?> retailColumn = table.addColumn("Retail", record -> {
-      return String.format("$%.2f", record.getRetail());
-    });
+    Column<MusicRecord, ?> retailColumn =
+        table.addColumn(
+            "Retail",
+            record -> {
+              return String.format("$%.2f", record.getRetail());
+            });
     retailColumn.setAlignment(Column.Alignment.RIGHT).setMinWidth(70f);
 
     table.setColumnsToAutoFit();
 
     retailColumn.setHidden(true);
 
-    ColumnGroup catalog = ColumnGroup.of("catalog", "Catalog")
-        .add("Title")
-        .add("Artist")
-        .add("Genre");
+    ColumnGroup catalog =
+        ColumnGroup.of("catalog", "Catalog").add("Title").add("Artist").add("Genre");
 
-    ColumnGroup pricing = ColumnGroup.of("pricing", "Pricing")
-        .add("Cost")
-        .add("Retail");
+    ColumnGroup pricing = ColumnGroup.of("pricing", "Pricing").add("Cost").add("Retail");
 
     table.setColumnGroups(List.of(catalog, pricing));
 
@@ -56,10 +57,11 @@ public class TableHiddenColumnGroupsView extends Composite<Div> {
     toggleRetail.setMaxWidth("200px");
     toggleRetail.setStyle("margin-top", "1rem");
     toggleRetail.setStyle("margin-left", "1rem");
-    toggleRetail.onClick(e -> {
-      retailColumn.setHidden(!retailColumn.isHidden());
-      table.refreshColumns();
-    });
+    toggleRetail.onClick(
+        e -> {
+          retailColumn.setHidden(!retailColumn.isHidden());
+          table.refreshColumns();
+        });
 
     FlexLayout layout = FlexLayout.create(toggleRetail, table).vertical().build();
     layout.setHeight("100vh");

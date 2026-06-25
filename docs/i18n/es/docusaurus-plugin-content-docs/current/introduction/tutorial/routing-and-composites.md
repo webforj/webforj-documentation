@@ -7,7 +7,7 @@ _i18n_hash: 673861b579764a7f9b81512fc0b1e576
 Hasta ahora, este tutorial ha sido solo una aplicación de una sola página. Este paso cambia eso. Moverás la interfaz de usuario que creaste en [Trabajando con Datos](/docs/introduction/tutorial/working-with-data) a su propia página y crearás otra página para agregar nuevos clientes. Luego, conectarás estas páginas para que tu aplicación pueda navegar entre ellas aplicando estos conceptos:
 
 - [Enrutamiento](/docs/routing/overview)
-- [Componentes compuestos](/docs/building-ui/composite-components)
+- [Componentes compuestos](/docs/building-ui/composing-components)
 - El componente [`ColumnsLayout`](/docs/components/columns-layout)
 
 Completar este paso crea una versión de [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
@@ -115,7 +115,7 @@ Además de ser ambas rutas de vista, `MainView` y `FormView` comparten caracter�
 
 ### Usando componentes `Composite` {#using-composite-components}
 
-Cuando la aplicación era de una sola página, almacenabas los componentes dentro de un `Frame`. A partir de ahora, con una aplicación con múltiples vistas, necesitarás envolver esos componentes de UI dentro de componentes [`Composite`](/docs/building-ui/composite-components).
+Cuando la aplicación era de una sola página, almacenabas los componentes dentro de un `Frame`. A partir de ahora, con una aplicación con múltiples vistas, necesitarás envolver esos componentes de UI dentro de componentes [`Composite`](/docs/building-ui/composing-components).
 
 Los componentes `Composite` son envolturas que facilitan la creación de componentes reutilizables. Para crear un componente `Composite`, extiende la clase `Composite` con un componente base especificado que sirva como la base de la clase, por ejemplo, `Composite<FlexLayout>`. 
 

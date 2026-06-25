@@ -11,8 +11,10 @@ public final class InvoiceService {
 
   public static CollectionRepository<Invoice> getInvoices() {
     List<Invoice> data =
-        new Gson().fromJson(Assets.contentOf(Assets.resolveContextUrl("context://data/invoices.json")),
-            new TypeToken<List<Invoice>>() {});
+        new Gson()
+            .fromJson(
+                Assets.contentOf(Assets.resolveContextUrl("context://data/invoices.json")),
+                new TypeToken<List<Invoice>>() {});
     return new CollectionRepository<>(data);
   }
 }

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Reporters
+description: Surface validation outcomes through the DefaultBindingReporter or attach custom reporters to bindings with the useReporter callback.
 ---
 
 <!-- vale off -->

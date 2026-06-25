@@ -4,9 +4,9 @@ import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.list.ChoiceBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -31,17 +31,11 @@ public class FlexSelfAlignView extends Composite<FlexLayout> {
   }
 
   private FlexLayout createMainLayout() {
-    return FlexLayout.create()
-        .horizontal()
-        .build();
+    return FlexLayout.create().horizontal().build();
   }
 
   private FlexLayout createBoxLayout() {
-    return FlexLayout.create()
-        .horizontal()
-        .wrap()
-        .build()
-        .addClassName("button__container");
+    return FlexLayout.create().horizontal().wrap().build().addClassName("button__container");
   }
 
   private Button createButtons() {
@@ -57,22 +51,20 @@ public class FlexSelfAlignView extends Composite<FlexLayout> {
   }
 
   private ChoiceBox createAlignmentChoiceBox() {
-    ChoiceBox alignment = new ChoiceBox()
-        .addClassName("flex__options")
-        .setLabel("Self Alignment Options");
+    ChoiceBox alignment =
+        new ChoiceBox().addClassName("flex__options").setLabel("Self Alignment Options");
 
-    alignment.onSelect(e -> {
-      FlexAlignment flexAlignment = FlexAlignment.fromValue(e.getSelectedItem().getText());
-      boxLayout.setItemAlignment(flexAlignment, alignButton);
-    });
+    alignment.onSelect(
+        e -> {
+          FlexAlignment flexAlignment = FlexAlignment.fromValue(e.getSelectedItem().getText());
+          boxLayout.setItemAlignment(flexAlignment, alignButton);
+        });
 
     for (FlexAlignment align : FlexAlignment.values()) {
       String label = align.getValue();
       String key = align.toString().toLowerCase();
-      String text = label.substring(0, 1).toUpperCase()
-              + label.substring(1);
-      alignment.add(
-              "." + key + "()", text);
+      String text = label.substring(0, 1).toUpperCase() + label.substring(1);
+      alignment.add("." + key + "()", text);
     }
     alignment.selectIndex(0);
 

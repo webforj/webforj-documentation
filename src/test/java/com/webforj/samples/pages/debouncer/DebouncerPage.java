@@ -1,41 +1,40 @@
 package com.webforj.samples.pages.debouncer;
 
-import java.util.regex.Pattern;
-
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import java.util.regex.Pattern;
 
 public class DebouncerPage {
 
-    private static final String ROUTE = "debouncer/";
+  private static final String ROUTE = "debouncer/";
 
-    private final Locator input;
-    private final Locator output;
-    private final Page page;
+  private final Locator input;
+  private final Locator output;
+  private final Page page;
 
-    public DebouncerPage(Page page) {
-        this.page = page;
-        this.input = page.getByLabel("Type something");
-        this.output = page.getByLabel("Debounced output");
-    }
+  public DebouncerPage(Page page) {
+    this.page = page;
+    this.input = page.getByLabel("Type something");
+    this.output = page.getByLabel("Debounced output");
+  }
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
 
-    public Locator getInput() {
-        return input;
-    }
+  public Locator getInput() {
+    return input;
+  }
 
-    public Locator getOutput() {
-        return output;
-    }
+  public Locator getOutput() {
+    return output;
+  }
 
-    public Locator getInputHelperText() {
-        return page.getByText(Pattern.compile("Key events: \\d+"));
-    }
+  public Locator getInputHelperText() {
+    return page.getByText(Pattern.compile("Key events: \\d+"));
+  }
 
-    public void waitForTimeout(int timeout) {
-        page.waitForTimeout(timeout);
-    }
+  public void waitForTimeout(int timeout) {
+    page.waitForTimeout(timeout);
+  }
 }

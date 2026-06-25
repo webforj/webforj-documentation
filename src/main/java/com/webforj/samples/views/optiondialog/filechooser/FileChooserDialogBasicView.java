@@ -15,30 +15,25 @@ public class FileChooserDialogBasicView extends Composite<Div> {
   private final FileChooserDialog dialog;
 
   public FileChooserDialogBasicView() {
-    dialog = new FileChooserDialog(
-            "Choose Directory to save",
-            System.getProperty("filechooser-files.path"),
-            FileChooserDialog.SelectionMode.DIRECTORIES)
+    dialog =
+        new FileChooserDialog(
+                "Choose Directory to save",
+                System.getProperty("filechooser-files.path"),
+                FileChooserDialog.SelectionMode.DIRECTORIES)
             .setRestricted(true);
 
     show();
   }
 
-  /**
-   * Shows the directory chooser and displays the result.
-   */
+  /** Shows the directory chooser and displays the result. */
   private void show() {
     String directory = dialog.show();
 
     if (directory != null) {
-      OptionDialog.showMessageDialog(
-              "Directory selected: " + directory,
-              "Directory Selected");
+      OptionDialog.showMessageDialog("Directory selected: " + directory, "Directory Selected");
     } else {
       OptionDialog.showMessageDialog(
-              "No directory selected",
-              "Directory Selection Failed",
-              MessageDialog.MessageType.ERROR);
+          "No directory selected", "Directory Selection Failed", MessageDialog.MessageType.ERROR);
     }
   }
 }

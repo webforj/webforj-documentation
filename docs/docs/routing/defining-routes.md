@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3  
 title: Defining Routes
+description: Map URLs to webforJ components with the @Route annotation and define multiple paths to the same view using @RouteAlias.
 ---
 
 Defining routes is essential for mapping URLs to specific components. This allows you to control how different parts of your UI are rendered based on the URL structure. The framework uses the `@Route` annotation to make this process declarative and straightforward, reducing the need for manual configuration.

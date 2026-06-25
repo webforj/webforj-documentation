@@ -1,8 +1,5 @@
 package com.webforj.samples.views.table;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
@@ -12,10 +9,11 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.table.Column;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.Route;
+import java.util.ArrayList;
+import java.util.List;
 
 @Route
 @StyleSheet("ws://css/table/table-dynamic-styling-view.css")
-
 public class TableDynamicStylingView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Table<Person> table = new Table<>();
@@ -24,56 +22,62 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
 
   public TableDynamicStylingView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setMaxWidth(760)
-      .setMargin("var(--dwc-space-xl)")
-      .add(update, table);
+        .setMaxWidth(760)
+        .setMargin("var(--dwc-space-xl)")
+        .add(update, table);
 
-    List<Person> data = List.of(
-      new Person("Alice", 28, "New York"),
-      new Person("Tom", 32, "Chicago"),
-      new Person("Bob", 28, "Chicago"),
-      new Person("Bob", 35, "New York"),
-      new Person("Charlie", 25, "Los Angeles"),
-      new Person("Charlie", 25, "New York"),
-      new Person("David", 40, "San Francisco"),
-      new Person("Eve", 30, "Boston"),
-      new Person("Frank", 30, "Boston"),
-      new Person("Grace", 27, "Seattle"));
+    List<Person> data =
+        List.of(
+            new Person("Alice", 28, "New York"),
+            new Person("Tom", 32, "Chicago"),
+            new Person("Bob", 28, "Chicago"),
+            new Person("Bob", 35, "New York"),
+            new Person("Charlie", 25, "Los Angeles"),
+            new Person("Charlie", 25, "New York"),
+            new Person("David", 40, "San Francisco"),
+            new Person("Eve", 30, "Boston"),
+            new Person("Frank", 30, "Boston"),
+            new Person("Grace", 27, "Seattle"));
 
     table.addColumn("Name", Person::getName).setSortable(true);
     table.addColumn("City", Person::getCity).setSortable(true);
     Column<Person, Integer> ageColumn = table.addColumn("Age", Person::getAge).setSortable(true);
 
-    table.setItems(data)
-      .setWidth("100%")
-      .setHeight("400px")
-      .setRowPartProvider(p -> {
-        List<String> parts = new ArrayList<>();
-        int index = data.indexOf(p);
-        parts.add(index % 2 == 0 ? "row-even" : "row-odd");
-        return parts;
-      })
-      .setCellPartProvider((person, column) -> {
-        List<String> parts = new ArrayList<>();
-        if (column == ageColumn) {
-          if (person.getAge() > 30) {
-            parts.add("cell-senior");
-          } else {
-            parts.add("cell-junior");
-          }
-        }
-        return parts;
-      });
-    
+    table
+        .setItems(data)
+        .setWidth("100%")
+        .setHeight("400px")
+        .setRowPartProvider(
+            p -> {
+              List<String> parts = new ArrayList<>();
+              int index = data.indexOf(p);
+              parts.add(index % 2 == 0 ? "row-even" : "row-odd");
+              return parts;
+            })
+        .setCellPartProvider(
+            (person, column) -> {
+              List<String> parts = new ArrayList<>();
+              if (column == ageColumn) {
+                if (person.getAge() > 30) {
+                  parts.add("cell-senior");
+                } else {
+                  parts.add("cell-junior");
+                }
+              }
+              return parts;
+            });
+
     table.setColumnsToAutoFit();
 
-    update.setMaxWidth(200)
-      .onClick(e -> {
-        Person alice = data.get(0);
-        alice.setAge(toggleAge ? 28 : 31);
-        toggleAge = !toggleAge;
-        update.setText(toggleAge ? "Decrease Alice Age" : "Increase Alice Age");
-        table.getRepository().commit(alice);
-      });
+    update
+        .setMaxWidth(200)
+        .onClick(
+            e -> {
+              Person alice = data.get(0);
+              alice.setAge(toggleAge ? 28 : 31);
+              toggleAge = !toggleAge;
+              update.setText(toggleAge ? "Decrease Alice Age" : "Increase Alice Age");
+              table.getRepository().commit(alice);
+            });
   }
 }

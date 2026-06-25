@@ -2,6 +2,7 @@
 sidebar_position: 16
 title: MaskDecorator
 sidebar_class_name: new-content
+description: Format and parse strings, numbers, dates, and times outside input fields using the same mask syntax as webforJ masked fields.
 ---
 
 <DocChip chip='since' label='24.10' />

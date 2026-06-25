@@ -25,7 +25,8 @@ public class MarkdownViewerView extends Composite<Div> {
         .setStyle("borderRadius", "var(--dwc-border-radius-l)");
 
     MarkdownViewer viewer = new MarkdownViewer();
-    viewer.setContent("""
+    viewer.setContent(
+        """
         # Welcome to MarkdownViewer
 
         This component renders **bold**, *italic*, ~~strikethrough~~, and `inline code`.

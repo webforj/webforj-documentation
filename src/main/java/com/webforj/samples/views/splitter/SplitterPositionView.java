@@ -16,8 +16,7 @@ public class SplitterPositionView extends Composite<Div> {
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
 
-    Splitter splitter = new Splitter(master, detail)
-            .setPositionRelative(75);
+    Splitter splitter = new Splitter(master, detail).setPositionRelative(75);
 
     self.add(splitter);
   }

@@ -165,11 +165,7 @@ The `::part()` pseudo-element is like having a key to specific rooms in an other
 
 Here's a dashboard I put together that uses most of the stuff I've mentioned - CSS Grid, DWC tokens, and component-specific styling:
 
-<AppLayoutViewer 
-path='/webforj/blogs/building-better-css?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/blogs/buildingbettercss/ModernDashboardView.java'
-cssURL='/blogs/buildingbettercss/dashboard.css'
-/>
+![Screenshot of Dashboard](https://cdn.webforj.com/webforj-documentation/blogs/2025-08-21-buildingbettercss/buildingbettercss-dashboard.png)
 
 This dashboard shows how all the pieces work together in practice. The responsive layout uses CSS Grid with custom media queries for mobile optimization. All the colors and spacing come from DWC tokens, so changing the primary color at the root level updates the entire interface. The combination of external CSS and inline component styles keeps everything maintainable, which is great because I definitely needed to go back and fix things multiple times. 
 

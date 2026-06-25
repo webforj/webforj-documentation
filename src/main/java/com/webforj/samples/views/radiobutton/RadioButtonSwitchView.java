@@ -14,15 +14,11 @@ public class RadioButtonSwitchView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public RadioButtonSwitchView() {
-    self.setDirection(FlexDirection.ROW)
-        .setSpacing("1em")
-        .setMargin("20px");
+    self.setDirection(FlexDirection.ROW).setSpacing("1em").setMargin("20px");
 
-    RadioButton normalButton = new RadioButton("Normal RadioButton")
-        .setExpanse(Expanse.XLARGE);
+    RadioButton normalButton = new RadioButton("Normal RadioButton").setExpanse(Expanse.XLARGE);
 
-    RadioButton switchButton = RadioButton.Switch("Switch RadioButton")
-        .setExpanse(Expanse.XLARGE);
+    RadioButton switchButton = RadioButton.Switch("Switch RadioButton").setExpanse(Expanse.XLARGE);
 
     self.add(normalButton, switchButton);
   }

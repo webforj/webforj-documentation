@@ -1,8 +1,7 @@
 ---
 sidebar_position: 1
 title: Accordion
-sidebar_class_name: new-content
-_i18n_hash: 99f4482faa552334ce209b3f9296f4f5
+_i18n_hash: 207c70347cc18d88661a8a9279988417
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-accordion" />
@@ -10,38 +9,38 @@ _i18n_hash: 99f4482faa552334ce209b3f9296f4f5
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="accordion" location="com/webforj/component/accordion/Accordion" top='true'/>
 
-De `Accordion` component biedt een verticaal gestapelde set van inklapbare panelen. Elk paneel heeft een klikbare header die de zichtbaarheid van de inhoud van het lichaam togglet. Een `AccordionPanel` kan worden gebruikt als een standalone onthullingssectie, of gegroepeerd binnen een `Accordion` om de uitvouw- en inklapgedrag over meerdere panelen te coördineren.
+De `Accordion`-component biedt een verticaal gestapeld set van samenvouwbare panelen. Elk paneel heeft een klikbare kop die de zichtbaarheid van de inhoud van het lichaam om schakelt. Een `AccordionPanel` kan worden gebruikt als een zelfstandige openbaarmakingssectie, of gegroepeerd binnen een `Accordion` om het uitbreiden en samentrekken van meerdere panelen te coördineren.
 
 <!-- INTRO_END -->
 
 :::tip Wanneer een accordion te gebruiken
-Accordions werken goed voor FAQ's, instellingenpagina's en stap-voor-stap flows waarbij het onthullen van alle inhoud tegelijk een overweldigende lay-out zou creëren. Als secties even belangrijk zijn en gebruikers baat hebben bij het gelijktijdig zien ervan, overweeg dan in plaats daarvan [tabbladen](/docs/components/tabbedpane).
+Accordions zijn goed geschikt voor FAQ's, instellingenpagina's en stapsgewijze flows waarbij het onthullen van alle inhoud tegelijk een overweldigende lay-out zou creëren. Als secties even belangrijk zijn en gebruikers profiteren van het gelijktijdig zien ervan, overweeg dan in plaats daarvan [tabbladen](/docs/components/tabbedpane).
 :::
 
 ## `AccordionPanel` {#accordion-panel}
 
-`AccordionPanel` is de kernbouwsteen van het accordion-systeem. Geef een labelstring door aan de constructor om de headertekst in te stellen, en voeg vervolgens kindcomponenten toe om het lichaam te vullen. Een paneel werkt op zichzelf zonder enige omringende `Accordion`-groep, waardoor het een nuttige lichtgewicht onthullingswidget is wanneer je alleen een enkele inklapbare sectie nodig hebt. De constructor zonder argumenten is ook beschikbaar wanneer je het paneel volledig na de constructie wilt configureren.
+`AccordionPanel` is het kernbouwsteen van het accordion-systeem. Geef een labelstring door aan de constructor om de koptekst in te stellen, en voeg vervolgens kindcomponenten toe om de inhoud van de body te vullen. Een paneel werkt op zichzelf zonder enige omringende `Accordion`-groep, waardoor het een nuttige lichte openbaarmakingswidget is wanneer je alleen een enkele samenvouwbare sectie nodig hebt. De no-argument constructor is ook beschikbaar wanneer je de voorkeur geeft aan het volledig configureren van het paneel na constructie.
 
 ```java
-// Alleen label - voeg de inhoud van het lichaam apart toe
+// Alleen label - voeg inhoud van de body afzonderlijk toe
 AccordionPanel panel = new AccordionPanel("Sectietitel");
-panel.add(new Paragraph("Inhoud van het lichaam komt hier.")); 
+panel.add(new Paragraph("Body-inhoud komt hier."));
 
-// Label en inhoud van het lichaam direct doorgegeven in de constructor
-AccordionPanel panel = new AccordionPanel("Titel", new Paragraph("Inhoud van het lichaam."));
+// Label en inhoud van de body direct doorgegeven in de constructor
+AccordionPanel panel = new AccordionPanel("Titel", new Paragraph("Body-inhoud."));
 ```
 
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordionbasic'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionBasicView.java'
-height='500px'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionBasicView.java']}
+height='550px'
 />
 <!-- vale on -->
 
 ### Openen en sluiten {#opening-and-closing}
 
-Controleer de open/gesloten status programmatisch op elk moment. `isOpened()` is nuttig wanneer je de huidige status moet lezen voordat je beslist wat te doen. Je kunt bijvoorbeeld een paneel naar de tegengestelde staat toggelen of conditioneel andere delen van de UI tonen of verbergen.
+Bestuur de open/sluit status programmatisch op elk moment. `isOpened()` is handig wanneer je de huidige status moet lezen voordat je beslist wat te doen. Bijvoorbeeld, je kunt een paneel om schakelen naar de tegenovergestelde status of conditioneel andere delen van de UI tonen of verbergen.
 
 ```java
 // Breid het paneel uit
@@ -50,21 +49,21 @@ panel.open();
 // Verkleur het paneel
 panel.close();                    
 
-// Retourneert true als momenteel uitgebreid
+// Geeft waar terug als het momenteel uitgebreid is
 boolean isOpen = panel.isOpened();
 ```
 
-Gebruik `setLabel()` om de headertekst na de constructie bij te werken. `setText()` is een alias voor dezelfde operatie, zodat het label gesynchroniseerd kan blijven met dynamische gegevens:
+Gebruik `setLabel()` om de koptekst bij te werken na constructie. `setText()` is een alias voor dezelfde bewerking, zodat het label synchroon kan worden gehouden met dynamische gegevens:
 
 ```java
 panel.setLabel("Bijgewerkt Label");
 ```
 
-## Accordion-groepen {#accordion-groups}
+## Accordion groepen {#accordion-groups}
 
-Het wikkelen van meerdere `AccordionPanel`-instanties binnen een `Accordion` creëert een gecoördineerde groep. Standaard gebruikt de groep **enkele modus**: het openen van één paneel verkleint automatisch alle andere, waardoor slechts één sectie tegelijk zichtbaar is. Deze standaard is opzettelijk, zodat de gebruiker zich kan concentreren op één stuk inhoud en voorkomt dat de pagina visueel overweldigend wordt wanneer panelen aanzienlijke inhoud van het lichaam hebben.
+Het inpassen van meerdere `AccordionPanel`-instanties binnen een `Accordion` creëert een gecoördineerde groep. Standaard gebruikt de groep **single mode**: het openen van één paneel verkleint automatisch alle andere, waardoor slechts één sectie tegelijkertijd zichtbaar blijft. Deze standaard is opzettelijk, het houdt de gebruiker gefocust op één stuk inhoud en voorkomt dat de pagina visueel overweldigend wordt wanneer panelen aanzienlijke inhoud bevatten.
 
-Panelen worden onafhankelijk geconstrueerd en aan de `Accordion` doorgegeven, zodat je elk paneel kunt configureren voordat je ze groepeert. Meerdere afzonderlijke `Accordion`-instanties kunnen ook op dezelfde pagina bestaan—iedere groep beheert zijn eigen status onafhankelijk, zodat het uitbreiden van een paneel in één groep geen effect heeft op een andere.
+Panelen worden onafhankelijk geconstrueerd en aan de `Accordion` doorgegeven, zodat je elk afzonderlijk kunt configureren voordat je ze groepeert. Meerdere afzonderlijke `Accordion`-instanties kunnen ook op dezelfde pagina bestaan—elk groep beheert zijn eigen status onafhankelijk, zodat het uitbreiden van een paneel in de ene groep geen effect heeft op een andere.
 
 ```java
 AccordionPanel panel1 = new AccordionPanel("Wat is webforJ?");
@@ -77,20 +76,20 @@ Accordion accordion = new Accordion(panel1, panel2, panel3);
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordiongroup'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionGroupView.java'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionGroupView.java']}
 height='400px'
 />
 <!-- vale on -->
 
-### Meervoudige modus {#multiple-mode}
+### Meerdere modus {#multiple-mode}
 
-Meervoudige modus staat een onbeperkt aantal panelen toe om tegelijkertijd uitgebreid te blijven. Dit is nuttig wanneer gebruikers de inhoud van verschillende secties tegelijk moeten vergelijken, of wanneer elk paneel kort genoeg is dat het tegelijkertijd uitbreiden van meerdere geen rommelige lay-out creëert.
+Meerdere modus stelt een onbeperkt aantal panelen in staat om gelijktijdig uitgebreid te blijven. Dit is nuttig wanneer gebruikers de inhoud van verschillende secties tegelijk moeten vergelijken, of wanneer elk paneel kort genoeg is dat het gelijktijdig uitbreiden van meerdere geen rommelige lay-out creëert.
 
 ```java
 accordion.setMultiple(true);
 ```
 
-Met actieve meervoudige modus kunnen alle panelen in de groep tegelijk worden uitgebreid of ingeklapt met de bulkmethoden:
+Met actieve meerdere modus kunnen alle panelen in de groep tegelijk worden uitgebreid of verkleind met behulp van de bulkmethoden:
 
 ```java
 // Breid elk paneel in de groep uit
@@ -103,20 +102,20 @@ accordion.closeAll();
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordionmultiple'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionMultipleView.java'
-height='500px'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionMultipleView.java']}
+height='575px'
 />
 <!-- vale on -->
 
-:::info Beperkingen van de enkele modus
-`openAll()` is alleen beschikbaar wanneer de meervoudige modus is ingeschakeld. Het aanroepen ervan in de enkele modus heeft geen effect. `closeAll()` werkt in beide modi.
+:::info Beperkingen van enkele modus
+`openAll()` is alleen beschikbaar wanneer de meerdere modus is ingeschakeld. Het aanroepen in de enkele modus heeft geen effect. `closeAll()` werkt in beide modi.
 :::
 
 <!-- vale off -->
-## Uitgeschakelde staat {#disabled-state}
+## Gehandicapte staat {#disabled-state}
 <!-- vale on -->
 
-Individuele panelen kunnen worden uitgeschakeld om gebruikersinteractie te voorkomen terwijl ze nog zichtbaar blijven. Dit is handig tijdens laadstatussen of wanneer bepaalde secties conditioneel niet beschikbaar zijn, waardoor de paneelstructuur wordt getoond zonder voortijdige interactie toe te staan. Een uitgeschakeld paneel dat al open was, blijft uitgebreid, maar de header kan niet meer worden aangeklikt om het te verkleinen. Het uitschakelen van de `Accordion`-groep past de uitgeschakelde staat toe op alle opgenomen panelen tegelijk, zodat je niet door panelen individueel hoeft te lopen.
+Individuele panelen kunnen worden uitgeschakeld om interactie van de gebruiker te voorkomen terwijl ze nog steeds zichtbaar blijven. Dit is handig tijdens laadstatussen of wanneer bepaalde secties voorwaardelijk niet beschikbaar zijn, waardoor de panelstructuur wordt weergegeven zonder voortijdige interactie toe te staan. Een uitgeschakeld paneel dat al open was blijft uitgebreid, maar de kop betekent kan niet meer worden aangeklikt om het te verkleinen. Het uitschakelen van de `Accordion`-groep past de uitgeschakelde status toe op alle bijbehorende panelen tegelijk, zodat je niet door panelen individueel hoeft te lopen.
 
 ```java
 // Schakel een enkel paneel uit
@@ -129,18 +128,18 @@ accordion.setEnabled(false);
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordiondisabled'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionDisabledView.java'
-height='600px'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionDisabledView.java']}
+height='650px'
 />
 <!-- vale on -->
 
 ## Panelen aanpassen {#customizing-panels}
 
-Buiten labels en basis open/gesloten gedrag ondersteunt elk `AccordionPanel` rijkere aanpassing van zowel de inhoud van de header als het uitvouw-/inklapicoon.
+Naast labels en basis open/sluit gedrag, ondersteunt elk `AccordionPanel` rijkere aanpassing van zowel zijn kopinhoud als het uitbreid/sluit pictogram.
 
-### Aangepaste header {#custom-header}
+### Aangepaste kop {#custom-header}
 
-De header van een paneel rendert zijn label standaard als platte tekst. Gebruik `addToHeader()` om die tekst te vervangen door een willekeurige component of combinatie van componenten, waardoor het eenvoudig wordt om iconen, badges, statusindicatoren of andere rijke markup naast het paneellabel op te nemen. Dit is vooral nuttig in dashboards of instellingenpanelen waar elke sectieheader extra context moet overbrengen met een blik, zoals een itemtel, een waarschuwingsbadge of een voltooiingsstatus, zonder dat de gebruiker het paneel eerst hoeft uit te vouwen.
+De kop van een paneel geeft standaard de tekst van het label weer als platte tekst. Gebruik `addToHeader()` om die tekst te vervangen door een component of combinatie van componenten, wat het eenvoudig maakt om pictogrammen, badges, statusindicatoren of andere rijke markup naast het paneellabel op te nemen. Dit is bijzonder nuttig in dashboards of instellingenpanelen waar elke sectorkop extra context moet overbrengen in één oogopslag, zoals een item telling, een waarschuwing badge, of een voltooiing status, zonder dat de gebruiker het paneel eerst hoeft uit te vouwen.
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
@@ -148,28 +147,28 @@ FlexLayout headerContent = FlexLayout.create()
     .build()
     .setSpacing("var(--dwc-space-s)");
 
-headerContent.add(FeatherIcon.SETTINGS.create(), new Span("Aangepaste Header met Icoon"));
+headerContent.add(FeatherIcon.SETTINGS.create(), new Span("Aangepaste kop met pictogram"));
 panel.addToHeader(headerContent);
 ```
 
 :::info Vervanging van het label
-Inhoud die via `addToHeader()` wordt toegevoegd, vervangt volledig de standaard labeltekst. `setLabel()` en `setText()` blijven naast `addToHeader()` werken, maar omdat de header slot visuele prioriteit heeft, wordt de labeltekst niet weergegeven, tenzij je deze expliciet in je gesloten inhoud opneemt.
+Inhoud die via `addToHeader()` wordt toegevoegd, vervangt volledig de standaard labeltekst. `setLabel()` en `setText()` blijven werken naast `addToHeader()`, maar aangezien de kop-slot visuele prioriteit heeft, wordt de labeltekst niet weergegeven, tenzij je deze expliciet in je ingesloten inhoud opneemt.
 :::
 
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordioncustomheader'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionCustomHeaderView.java'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionCustomHeaderView.java']}
 height='300px'
 />
 <!-- vale on -->
 
-### Aangepast icoon {#custom-icon}
+### Aangepast pictogram {#custom-icon}
 
-De uitvouw-/inklapindicator is standaard een chevron die zichtbaar is in zowel de open als gesloten staten. `setIcon()` vervangt deze door een willekeurige [`Icon`](/docs/components/icon) component, nuttig voor merkiconografie of wanneer een andere visuele metafoor beter bij de inhoud past. Het doorgeven van `null` herstelt de standaard chevron. `getIcon()` retourneert het momenteel ingestelde icoon, of `null` als de standaard chevron in gebruik is.
+De uitbreid/sluit indicator geeft standaard een chevron weer dat zichtbaar is in zowel de open als gesloten staten. `setIcon()` vervangt het met elk [`Icon`](/docs/components/icon) component, nuttig voor merkiconografie of wanneer een andere visuele metafoor beter past bij de inhoud. Het doorgeven van `null` herstelt de standaard chevron. `getIcon()` retourneert het momenteel ingestelde pictogram, of `null` als de standaard chevron in gebruik is.
 
 ```java
-// Vervang de standaard chevron door een plusicoon
+// Vervang de standaard chevron door een pluspictogram
 panel.setIcon(FeatherIcon.PLUS.create());
 
 // Herstel de standaard chevron
@@ -179,58 +178,58 @@ panel.setIcon(null);
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordioncustomicon'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionCustomIconView.java'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionCustomIconView.java']}
 height='200px'
 />
 <!-- vale on -->
 
 ## Geneste accordions {#nested-accordions}
 
-Accordions kunnen binnen andere accordionpanelen worden genest, wat nuttig is voor het vertegenwoordigen van hiërarchische inhoud zoals gecategoriseerde instellingen of meerdere niveaus van navigatie. Voeg een interne `Accordion` toe aan een externe `AccordionPanel` als elke andere kindcomponent. Houd het nestelen ondiep. Eén of twee niveaus is doorgaans genoeg. Diepere hiërarchieën zijn moeilijker te navigeren en signaleren vaak dat de inhoudsstructuur zelf opnieuw moet worden doordacht.
+Accordions kunnen worden genest binnen andere accordion-panelen, wat nuttig is voor het vertegenwoordigen van hiërarchische inhoud, zoals gecategoriseerde instellingen of navigatie op meerdere niveaus. Voeg een innerlijke `Accordion` toe aan een uiterlijke `AccordionPanel` als elke andere kindcomponent. Houd de nesting ondiep. Eén of twee niveaus is meestal genoeg. Diepere hiërarchieën zijn vaak moeilijker te navigeren en wijzen vaak op dat de inhoudstructuur zelf opnieuw moet worden doordacht.
 
 ```java
-AccordionPanel innerA = new AccordionPanel("Binnen Paneel A");
-AccordionPanel innerB = new AccordionPanel("Binnen Paneel B");
+AccordionPanel innerA = new AccordionPanel("Inner Paneel A");
+AccordionPanel innerB = new AccordionPanel("Inner Paneel B");
 Accordion innerAccordion = new Accordion(innerA, innerB);
 
-AccordionPanel outer = new AccordionPanel("Buiten Paneel");
+AccordionPanel outer = new AccordionPanel("Outer Paneel");
 outer.add(innerAccordion);
 ```
 
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordionnested'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionNestedView.java'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionNestedView.java']}
 height='550px'
 />
 <!-- vale on -->
 
-## Evenementen {#events}
+## Gebeurtenissen {#events}
 
-`AccordionPanel` genereert evenementen in elke fase van de toggling levenscyclus. De drie evenementtypes dekken verschillende momenten, dus kies op basis van wanneer jouw logica moet draaien:
+`AccordionPanel` genereert gebeurtenissen in elke fase van de toggle-leven. De drie gebeurtenistypes dekken verschillende momenten, dus kies op basis van wanneer je logica moet draaien:
 
-| Evenement | Vindt plaats |
-|-----------|--------------|
-| `AccordionPanelToggleEvent` | Voordat de status verandert |
+| Gebeurtenis | Vindt plaats |
+|-------|-------|
+| `AccordionPanelToggleEvent` | Voordat de staat verandert |
 | `AccordionPanelOpenEvent` | Nadat het paneel volledig is geopend |
 | `AccordionPanelCloseEvent` | Nadat het paneel volledig is gesloten |
 
 ```java
 panel.onToggle(e -> {
-    // Vindt plaats voordat het paneel van status verandert.
-    // e.isOpened() weerspiegelt de status waarmee wordt overgestapt, niet de huidige status.
-    String direction = e.isOpened() ? "opening" : "closing";
+    // Vindt plaats voordat het paneel van staat verandert.
+    // e.isOpened() weerspiegelt de staat waarnaar overgeschakeld wordt, niet de huidige staat.
+    String direction = e.isOpened() ? "openend" : "sluitend";
 });
 
 panel.onOpen(e -> {
-    // Vindt plaats nadat het paneel volledig open is — goed voor het lazy-loaden van inhoud.
+    // Vindt plaats nadat het paneel volledig open is — goed voor lui laden van inhoud.
 });
 
 panel.onClose(e -> {
-    // Vindt plaats nadat het paneel volledig is gesloten — goed voor opruiming of samenvattingen.
+    // Vindt plaats nadat het paneel volledig gesloten is — goed voor opruimen of samenvattingsupdates.
 });
 ```
 
-## Stijling {#styling}
+## Stijlen {#styling}
 
 <TableBuilder name={['Accordion', 'AccordionPanel']} />

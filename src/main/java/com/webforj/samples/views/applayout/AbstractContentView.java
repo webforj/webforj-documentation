@@ -27,9 +27,12 @@ public abstract class AbstractContentView extends Composite<Div> {
 
   private void onNavigate(NavigateEvent ev) {
     ParametersBag parameters = ev.getContext().getRouteParameters();
-    parameters.get("name").ifPresent(n -> {
-      this.name = n;
-      contentLabel.setText(String.format("Content for %s goes here", n));
-    });
+    parameters
+        .get("name")
+        .ifPresent(
+            n -> {
+              this.name = n;
+              contentLabel.setText(String.format("Content for %s goes here", n));
+            });
   }
 }

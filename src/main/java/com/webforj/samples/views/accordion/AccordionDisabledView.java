@@ -19,27 +19,28 @@ public class AccordionDisabledView extends Composite<FlexLayout> {
 
   public AccordionDisabledView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-m)")
-      .setPadding("var(--dwc-space-l)")
-      .setMargin("0 auto")
-      .setMaxWidth("700px");
+        .setSpacing("var(--dwc-space-m)")
+        .setPadding("var(--dwc-space-l)")
+        .setMargin("0 auto")
+        .setMaxWidth("700px");
 
     accordion = createAccordionGroup();
 
-    RadioButton toggle = RadioButton.Switch("Accordion enabled")
-      .setChecked(true);
+    RadioButton toggle = RadioButton.Switch("Accordion enabled").setChecked(true);
     toggle.onToggle(e -> accordion.setEnabled(e.isToggled()));
 
-    self.add(new H3("Disabled Panels"),
-      createDisabledPanel("This panel is disabled", false),
-      createDisabledPanel("Disabled but opened", true),
-      new H3("Disable entire accordion group"),
-      toggle, accordion);
+    self.add(
+        new H3("Disabled Panels"),
+        createDisabledPanel("This panel is disabled", false),
+        createDisabledPanel("Disabled but opened", true),
+        new H3("Disable entire accordion group"),
+        toggle,
+        accordion);
   }
 
   private AccordionPanel createDisabledPanel(String title, boolean initiallyOpened) {
-    AccordionPanel panel = new AccordionPanel(title,
-      new Paragraph("You should not be able to see this content."));
+    AccordionPanel panel =
+        new AccordionPanel(title, new Paragraph("You should not be able to see this content."));
     if (initiallyOpened) {
       panel.open();
     }
@@ -48,15 +49,15 @@ public class AccordionDisabledView extends Composite<FlexLayout> {
   }
 
   private Accordion createAccordionGroup() {
-    AccordionPanel panel1 = new AccordionPanel("Panel One",
-      new Paragraph("Content for panel one."));
+    AccordionPanel panel1 =
+        new AccordionPanel("Panel One", new Paragraph("Content for panel one."));
     panel1.open();
 
-    AccordionPanel panel2 = new AccordionPanel("Panel Two",
-      new Paragraph("Content for panel two."));
+    AccordionPanel panel2 =
+        new AccordionPanel("Panel Two", new Paragraph("Content for panel two."));
 
-    AccordionPanel panel3 = new AccordionPanel("Panel Three",
-      new Paragraph("Content for panel three."));
+    AccordionPanel panel3 =
+        new AccordionPanel("Panel Three", new Paragraph("Content for panel three."));
 
     return new Accordion(panel1, panel2, panel3);
   }

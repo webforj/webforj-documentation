@@ -15,10 +15,8 @@ public class ElementInputDemoView extends Composite<Div> {
   private final Element input = new Element("input");
 
   public ElementInputDemoView() {
-    self.setStyle("margin", "20px")
-        .add(input);
+    self.setStyle("margin", "20px").add(input);
 
-    input.addClassName("element--input")
-        .setAttribute("placeholder", "Enter some text");
+    input.addClassName("element--input").setAttribute("placeholder", "Enter some text");
   }
 }

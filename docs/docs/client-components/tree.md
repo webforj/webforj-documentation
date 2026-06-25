@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-tree>
 sidebar_class_name: sidebar--item__hidden
 slug: tree
-description: A user guide article for the tree
+description: Style the dwc-tree component with CSS variables for indentation, color, and expand-icon theming, plus shadow parts for nodes.
 // pagination_prev: null
 // pagination_next: null
 ---

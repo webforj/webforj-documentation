@@ -1,6 +1,7 @@
 ---
 title: Toolbar
 sidebar_position: 145
+description: Lay out action controls with the Toolbar component, placing components into Start, Title, Content, and End slots with compact mode.
 ---
 
 <DocChip chip="shadow" />
@@ -26,11 +27,13 @@ Each slot has a method for adding components: `addToStart()`, `addToTitle()`, `a
 The following demo shows how to add a `Toolbar` to an [AppLayout](./app-layout) and utilize all supported slots effectively.
 To read more about implementing toolbars within an `AppLayout`, see [Sticky toolbars](./app-layout#sticky-toolbars) and [Mobile navigation layout](./app-layout#mobile-navigation-layout).
 
-<AppLayoutViewer
-path='/webforj/toolbarslots?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java'
-cssURL='/css/toolbar/toolbar-slots-view.css'
-height='300px'
+<ComponentDemo
+path='/webforj/toolbarslots'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java',
+  'src/main/resources/static/css/toolbar/toolbar-slots-view.css',
+]}
 />
 
 ## Compact mode {#compact-mode}
@@ -42,8 +45,10 @@ Toolbar toolbar = new Toolbar();
 toolbar.setCompact(true);
 ```
 
-<AppLayoutViewer path='/webforj/toolbarcompact?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java'
+<ComponentDemo
+path='/webforj/toolbarcompact'
+frame='desktop'
+files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java']}
 />
 
 ## `ProgressBar` in toolbars {#progressbar-in-toolbars}
@@ -52,8 +57,10 @@ A `ProgressBar` serves as a visual indicator for ongoing processes, such as load
 
 You can combine it with other components in the toolbar like buttons or labels without disrupting the layout.
 
-<AppLayoutViewer path='/webforj/toolbarprogressbar?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.java'
+<ComponentDemo
+path='/webforj/toolbarprogressbar'
+frame='desktop'
+files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.java']}
 />
 
 ## Styling {#styling}
@@ -62,10 +69,10 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 
 `Toolbar` components include <JavadocLink type="foundation" location="com/webforj/component/Theme">seven built-in themes</JavadocLink> for quick visual customization:
 
-<ComponentDemo 
-path='/webforj/toolbartheme?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java' 
-height = '475px'
+<ComponentDemo
+path='/webforj/toolbartheme'
+files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java']}
+height='590px'
 />
 
 <TableBuilder name="Toolbar" />

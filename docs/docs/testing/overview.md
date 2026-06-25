@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Testing
+description: Combine JUnit unit tests with Selenium or Playwright end-to-end tests to validate webforJ components, logic, and full user journeys.
 hide_table_of_contents: true
 hide_giscus_comments: true
 ---
@@ -15,11 +16,15 @@ hide_giscus_comments: true
 
 # webforJ Testing
 
-Testing in webforJ apps involves a combination of unit and end-to-end (E2E) testing to ensure a stable and reliable app. Each type of testing serves a distinct purpose in maintaining app quality.
+Testing in webforJ apps combines unit, frontend, and end-to-end (E2E) testing, each serving a distinct purpose in keeping the app stable and reliable.
 
 ## Unit testing {#unit-testing}
 
 Unit testing focuses on verifying individual components or backend logic in isolation. By following standard Java testing practices, such as using [JUnit](https://junit.org/junit5/), developers can efficiently validate specific app logic and ensure that each "unit" performs as expected.
+
+## Frontend testing {#frontend-testing}
+
+Frontend testing covers the sources a project authors with the [frontend bundler](/docs/managing-resources/bundler/overview). The [Bun](https://bun.sh/) test runner runs them as part of the same build that runs the Java tests, so a TypeScript component or a piece of client logic is verified the same way the backend is. See [Frontend testing](./frontend-testing).
 
 ## End-to-End (E2E) testing {#end-to-end-e2e-testing}
 

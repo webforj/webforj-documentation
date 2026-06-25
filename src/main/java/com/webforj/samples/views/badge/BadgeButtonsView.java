@@ -22,53 +22,60 @@ public class BadgeButtonsView extends Composite<FlexLayout> {
 
   public BadgeButtonsView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-m)")
-      .setPadding("var(--dwc-space-l)")
-      .setMargin("0 auto")
-      .setMaxWidth("700px")
-      .add(new H3("Badge on Buttons"),
-        createNotificationRow(),
-        new H3("Button Sizes with Badge"),
-        createButtonSizesRow());
+        .setSpacing("var(--dwc-space-m)")
+        .setPadding("var(--dwc-space-l)")
+        .setMargin("0 auto")
+        .setMaxWidth("700px")
+        .add(
+            new H3("Badge on Buttons"),
+            createNotificationRow(),
+            new H3("Button Sizes with Badge"),
+            createButtonSizesRow());
   }
 
   private FlexLayout createNotificationRow() {
-    Button notifBtn = new Button("Notifications")
-      .setPrefixComponent(FeatherIcon.BELL.create())
-      .setTheme(ButtonTheme.PRIMARY)
-      .setBadge(createBadge("5", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
+    Button notifBtn =
+        new Button("Notifications")
+            .setPrefixComponent(FeatherIcon.BELL.create())
+            .setTheme(ButtonTheme.PRIMARY)
+            .setBadge(createBadge("5", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
 
-    Button msgBtn = new Button("Messages")
-      .setPrefixComponent(FeatherIcon.MAIL.create())
-      .setTheme(ButtonTheme.DEFAULT)
-      .setBadge(createBadge("12", BadgeTheme.PRIMARY, BadgeExpanse.XSMALL));
+    Button msgBtn =
+        new Button("Messages")
+            .setPrefixComponent(FeatherIcon.MAIL.create())
+            .setTheme(ButtonTheme.DEFAULT)
+            .setBadge(createBadge("12", BadgeTheme.PRIMARY, BadgeExpanse.XSMALL));
 
     return FlexLayout.create(notifBtn, msgBtn)
-      .horizontal()
-      .wrap()
-      .build()
-      .setSpacing("var(--dwc-space-l)")
-      .setAlignment(FlexAlignment.CENTER);
+        .horizontal()
+        .wrap()
+        .build()
+        .setSpacing("var(--dwc-space-l)")
+        .setAlignment(FlexAlignment.CENTER);
   }
 
   private FlexLayout createButtonSizesRow() {
-    FlexLayout row = FlexLayout.create()
-      .horizontal()
-      .wrap()
-      .build()
-      .setSpacing("var(--dwc-space-l)")
-      .setAlignment(FlexAlignment.CENTER);
+    FlexLayout row =
+        FlexLayout.create()
+            .horizontal()
+            .wrap()
+            .build()
+            .setSpacing("var(--dwc-space-l)")
+            .setAlignment(FlexAlignment.CENTER);
 
     for (Expanse expanse : Expanse.values()) {
-      String size = expanse.name()
-        .toLowerCase()
-        .transform(s -> s.startsWith("x") ? s.substring(0, 2) : s.substring(0, 1));
+      String size =
+          expanse
+              .name()
+              .toLowerCase()
+              .transform(s -> s.startsWith("x") ? s.substring(0, 2) : s.substring(0, 1));
 
-      Button btn = new Button(size)
-        .setTheme(ButtonTheme.PRIMARY)
-        .setExpanse(expanse)
-        .setBadge(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
-      
+      Button btn =
+          new Button(size)
+              .setTheme(ButtonTheme.PRIMARY)
+              .setExpanse(expanse)
+              .setBadge(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
+
       row.add(btn);
     }
 
@@ -76,8 +83,6 @@ public class BadgeButtonsView extends Composite<FlexLayout> {
   }
 
   private Badge createBadge(String text, BadgeTheme theme, BadgeExpanse expanse) {
-    return new Badge(text)
-      .setTheme(theme)
-      .setExpanse(expanse);
+    return new Badge(text).setTheme(theme).setExpanse(expanse);
   }
 }

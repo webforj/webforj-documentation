@@ -1,7 +1,5 @@
 package com.webforj.samples.views.fields.maskedtimefield;
 
-import java.time.LocalTime;
-
 import com.webforj.component.Composite;
 import com.webforj.component.field.MaskedTimeFieldSpinner;
 import com.webforj.component.field.MaskedTimeFieldSpinner.SpinField;
@@ -10,12 +8,14 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.time.LocalTime;
 
 @Route
 @FrameTitle("Masked Time Field Spinner")
 public class MaskedTimeFieldSpinnerView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
-  private final MaskedTimeFieldSpinner appointmentField = new MaskedTimeFieldSpinner("Available Time Slots");
+  private final MaskedTimeFieldSpinner appointmentField =
+      new MaskedTimeFieldSpinner("Available Time Slots");
 
   public MaskedTimeFieldSpinnerView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -23,12 +23,14 @@ public class MaskedTimeFieldSpinnerView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-m)");
 
-    appointmentField.setSpinField(SpinField.MINUTE)
+    appointmentField
+        .setSpinField(SpinField.MINUTE)
         .setMask("%hz:%mz %p")
         .setValue(LocalTime.of(9, 0))
         .setMin(LocalTime.of(9, 0))
         .setMax(LocalTime.of(17, 0))
-        .setHelperText("<b>Min:</b> 09:00 AM, <b>Max:</b> 05:00 PM. Use the spinner to select a time.")
+        .setHelperText(
+            "<b>Min:</b> 09:00 AM, <b>Max:</b> 05:00 PM. Use the spinner to select a time.")
         .setPlaceholder("hh:mm AM/PM")
         .setAllowCustomValue(false);
 

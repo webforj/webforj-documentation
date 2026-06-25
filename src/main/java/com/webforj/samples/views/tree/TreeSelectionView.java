@@ -3,19 +3,18 @@ package com.webforj.samples.views.tree;
 import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
 import static com.webforj.component.tree.Tree.node;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
-import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.tree.Tree;
 import com.webforj.component.tree.TreeNode;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Route()
 @FrameTitle("Tree Selection Example")
@@ -35,54 +34,47 @@ public class TreeSelectionView extends Composite<FlexLayout> {
 
     buildTree();
     TreeNode colors = tree.getChildren().get(0);
-    tree.setSelectionMode(Tree.SelectionMode.MULTIPLE)
-        .expand(colors)
-        .selectChildren(colors);
+    tree.setSelectionMode(Tree.SelectionMode.MULTIPLE).expand(colors).selectChildren(colors);
 
-    multiSelectToggle.onToggle(e -> {
-      if (e.isToggled()) {
-        tree.setSelectionMode(Tree.SelectionMode.MULTIPLE);
-      } else {
-        tree.setSelectionMode(Tree.SelectionMode.SINGLE);
-      }
-    });
+    multiSelectToggle.onToggle(
+        e -> {
+          if (e.isToggled()) {
+            tree.setSelectionMode(Tree.SelectionMode.MULTIPLE);
+          } else {
+            tree.setSelectionMode(Tree.SelectionMode.SINGLE);
+          }
+        });
 
-    showSelected.onClick(e -> {
-      List<TreeNode> selectedNodes = tree.getSelectedItems();
+    showSelected.onClick(
+        e -> {
+          List<TreeNode> selectedNodes = tree.getSelectedItems();
 
-      String msg = selectedNodes.isEmpty()
-          ? "There are no node selected"
-          : """
+          String msg =
+              selectedNodes.isEmpty()
+                  ? "There are no node selected"
+                  : """
               <html> You have selected the following nodes
               %s
               </html>
-              """.formatted(
-                  selectedNodes.stream()
-                      .map(TreeNode::getText)
-                      .map(title -> "<li>" + title + "</li>")
-                      .collect(Collectors.joining("", "<ul>", "</ul>"))
-              );
+              """
+                      .formatted(
+                          selectedNodes.stream()
+                              .map(TreeNode::getText)
+                              .map(title -> "<li>" + title + "</li>")
+                              .collect(Collectors.joining("", "<ul>", "</ul>")));
 
-      showMessageDialog(msg, "Node Selection");
-    });
+          showMessageDialog(msg, "Node Selection");
+        });
 
     self.add(multiSelectToggle, tree, showSelected);
   }
 
   private void buildTree() {
-    List<TreeNode> nodes = Arrays.asList(
-        node("Colors").add(
-            node("Red"),
-            node("Green"),
-            node("Blue")),
-        node("Shapes").add(
-            node("Circle"),
-            node("Square"),
-            node("Triangle")),
-        node("Animals").add(
-            node("Dog"),
-            node("Cat"),
-            node("Bird")));
+    List<TreeNode> nodes =
+        Arrays.asList(
+            node("Colors").add(node("Red"), node("Green"), node("Blue")),
+            node("Shapes").add(node("Circle"), node("Square"), node("Triangle")),
+            node("Animals").add(node("Dog"), node("Cat"), node("Bird")));
 
     nodes.forEach(tree::add);
   }

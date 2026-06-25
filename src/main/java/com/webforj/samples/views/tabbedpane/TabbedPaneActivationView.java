@@ -1,6 +1,5 @@
 package com.webforj.samples.views.tabbedpane;
 
-
 import com.webforj.component.Composite;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
@@ -39,14 +38,16 @@ public class TabbedPaneActivationView extends Composite<FlexLayout> {
     pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
 
-    activation.onCheck(e -> {
-      activation.setText("Automatic");
-      pane.setActivation(Activation.AUTO);
-    });
+    activation.onCheck(
+        e -> {
+          activation.setText("Automatic");
+          pane.setActivation(Activation.AUTO);
+        });
 
-    activation.onUncheck(e -> {
-      activation.setText("Manual");
-      pane.setActivation(Activation.MANUAL);
-    });
+    activation.onUncheck(
+        e -> {
+          activation.setText("Manual");
+          pane.setActivation(Activation.MANUAL);
+        });
   }
 }

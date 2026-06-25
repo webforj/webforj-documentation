@@ -1,7 +1,5 @@
 package com.webforj.samples.views.table;
 
-import java.util.EventObject;
-
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -13,41 +11,36 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.dispatcher.EventDispatcher;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
+import java.util.EventObject;
 
 /**
- * A component that allows the user to edit a MusicRecord title.
- * Uses fluent API for component configuration.
+ * A component that allows the user to edit a MusicRecord title. Uses fluent API for component
+ * configuration.
  */
 public class TitleEditorComponent extends Composite<Dialog> {
   private final Dialog self = getBoundComponent();
   private final EventDispatcher dispatcher = new EventDispatcher();
   private final TextField titleField = new TextField("New Title");
-  private final FlexLayout footer = FlexLayout.create()
-    .align().end()
-    .build();
+  private final FlexLayout footer = FlexLayout.create().align().end().build();
   private MusicRecord item;
 
-  /**
-   * Creates a new TitleEditorComponent with fluent configuration.
-   */
+  /** Creates a new TitleEditorComponent with fluent configuration. */
   public TitleEditorComponent() {
-    self.setMaxWidth("400px")
-      .onOpen(ev -> titleField.focus());
+    self.setMaxWidth("400px").onOpen(ev -> titleField.focus());
 
     Button saveButton = new Button("Save", ButtonTheme.PRIMARY, ev -> save());
     Button cancelButton = new Button("Cancel", ev -> self.close());
 
     footer.add(saveButton, cancelButton);
 
-    self.addToHeader(new H3("Edit Title"))
-      .addToFooter(footer)
-      .add(titleField);
+    self.addToHeader(new H3("Edit Title")).addToFooter(footer).add(titleField);
 
-    titleField.onKeypress(ev -> {
-      if (ev.getKeyCode() == KeypressEvent.Key.ENTER) {
-        save();
-      }
-    });
+    titleField.onKeypress(
+        ev -> {
+          if (ev.getKeyCode() == KeypressEvent.Key.ENTER) {
+            save();
+          }
+        });
   }
 
   /**
@@ -77,9 +70,7 @@ public class TitleEditorComponent extends Composite<Dialog> {
     dispatcher.dispatchEvent(new SaveEvent(this));
   }
 
-  /**
-   * An event that is dispatched when the user saves the title.
-   */
+  /** An event that is dispatched when the user saves the title. */
   public static class SaveEvent extends EventObject {
 
     private final MusicRecord record;

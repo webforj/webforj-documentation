@@ -1,106 +1,110 @@
 ---
 title: MaskedDateField
 sidebar_position: 5
-_i18n_hash: 6c75156564c20c2d451ebe7046213c37
+_i18n_hash: 5bd41c7d02fb7ae0c934db0a4e2ffb60
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-datefield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedDateField" top='true'/>
 
-`MaskedDateField` on teksti-ilmaisin, joka sallii käyttäjien syöttää päivämääriä numeroina ja muotoilee syötteen automaattisesti määritellyn maskin mukaan, kun kenttä menettää fokuksen. Maski määrittelee odotetun päivämäärämuodon, joka ohjaa sekä syötettä että näyttöä. Komponentti tukee joustavaa jäsennystä, validoimista, lokalisointia ja arvon palauttamista johdonmukaiselle, aluekohtaiselle päivämäärän käsittelylle.
+`MaskedDateField` on tekstikenttä, joka sallii käyttäjien syöttävän päivämääriä numeroina ja automaattisesti muotoilee syötteen määritellyn maskin perusteella, kun kenttä menettää fokuksen. Maski määrittää odotetun päivämäärämuodon, ohjaten sekä syötettä että näyttöä. Komponentti tukee joustavaa analysointia, validointia, lokalisaatiota ja arvon palauttamista johdonmukaiselle, aluekohtaiselle päivämääränkäsittelylle.
 
 <!-- INTRO_END -->
 
 ## Perusteet {#basics}
 
 :::tip Etsitkö aikasyöttöä?
-`MaskedDateField` keskittyy pelkästään **päivämäärä**arvoihin. Jos tarvitset vastaavaa komponenttia aikojen syöttämiseen ja muotoiluun, tutustu [`MaskedTimeField`](./timefield) -komponenttiin.
+`MaskedDateField` keskittyy ainoastaan **päivämäärä**-arvoihin. Jos tarvitset samankaltaista komponenttia ajan syöttämiseen ja muotoiluun, tutustu [`MaskedTimeField`](./timefield) -komponenttiin.
 :::
 
-`MaskedDateField` voidaan alustaa parametreilla tai ilman. Voit määrittää alkuarvon, etiketin, paikkamerkin ja tapahtumakuuntelijan arvon muutoksille.
+`MaskedDateField` voidaan instanssia muodostaa parametreilla tai ilman. Voit määrittää alkusarjan, etiketin, paikkamerkin ja tapahtumakuuntelijan arvojen muutoksille.
 
-<ComponentDemo path='/webforj/maskeddatefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java' height='120px'/>
+<ComponentDemo
+path='/webforj/maskeddatefield'
+files={['src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java']}
+height='120px'
+/>
 
 ## Maskisäännöt {#mask-rules}
 
-`MaskedDateField` tukee monia päivämäärämuotoja, joita käytetään ympäri maailmaa, ja jotka vaihtelevat päivän, kuukauden ja vuosien järjestyksen mukaan. Yleisiä kaavoja ovat:
+`MaskedDateField` tukee useita maailmanlaajuisesti käytettyjä päivämäärämuotoja, jotka vaihtelevat päivän, kuukauden ja vuoden järjestyksessä. Yleisiä kaavoja ovat:
 
-- **Päivä/Kuukausi/Vuosi** (käytetään suurimmassa osassa Eurooppaa)
-- **Kuukausi/Päivä/Vuosi** (käytetään Yhdysvalloissa)
-- **Vuosi/Kuukausi/Päivä** (käytetään Kiinassa, Japanissa ja Koreassa; myös ISO-standardi: `YYYY-MM-DD`)
+- **Päivä/Kuu/Vuosi** (yleinen useimmissa Euroopan maissa)
+- **Kuu/Päivä/Vuosi** (käytetään Yhdysvalloissa)
+- **Vuosi/Kuu/Päivä** (käytetään Kiinassa, Japanissa ja Koreassa; myös ISO-standardi: `YYYY-MM-DD`)
 
-Näiden muotojen sisällä paikalliset variantit sisältävät erotinmerkin valinnan (esim. `-`, `/` tai `.`), ovatko vuodet kaksinumeroisia vai nelinumeroisia ja täytetäänkö yksinumeroiset kuukaudet tai päivät nollilla eteen.
+Näiden formaatien sisällä paikalliset variaatiot sisältävät erottimen valinnan (esim. `-`, `/` tai `.`), ovatko vuodet kahden tai neljän numeron mittaisia, ja täytetäänkö yksinumeroiset kuukaudet tai päivät johtavilla nollilla.
 
-Jotta tämä moninaisuus voitaisiin käsitellä, `MaskedDateField` käyttää muotoilunäyttöjä, jotka alkavat jokainen `%`-merkillä, jota seuraa kirjain, joka edustaa tiettyä osaa päivämäärästä. Nämä näyttöindikaattorit määrittävät, kuinka syöte jäsennetään ja kuinka päivämäärä näytetään.
+Tämän monimuotoisuuden käsittelemiseksi `MaskedDateField` käyttää formaatti-indikaattoreita, jotka alkavat `%`:llä, jota seuraa kirjain, joka edustaa tiettyä päivämäärän osaa. Nämä indikaattorit määrittävät, miten syöte analysoidaan ja miten päivämäärä näytetään.
 
-:::tip Maskien soveltaminen ohjelmallisesti
-Jos haluat muotoilla tai jäsennellä päivämäärät samalla syntaksilla ulkopuolella kenttää, käytä [`MaskDecorator`](/docs/advanced/mask-decorator) -apuluokkaa.
+:::tip Maskien käyttö ohjelmallisesti
+Voit muotoilla tai analysoida päivämääriä saman maskisynnin avulla kentän ulkopuolella käyttämällä [`MaskDecorator`](/docs/advanced/mask-decorator) -työkaluluokkaa.
 :::
 
-### Päivämäärämuotoilunäytöt {#date-format-indicators}
+### Päivämäärämuotoindikaattorit {#date-format-indicators}
 
-| Muoto | Kuvaus |
-| ------ | ----------- |
-| `%Y`   | Vuosi        |
-| `%M`   | Kuukausi       |
-| `%D`   | Päivä         |
+| Muoto | Kuvaus    |
+| ------ | --------- |
+| `%Y`   | Vuosi     |
+| `%M`   | Kuukausi  |
+| `%D`   | Päivä     |
 
 ### Modifikaattorit {#modifiers}
 
-Modifikaattorit mahdollistavat enemmän hallintaa siitä, kuinka päivämäärän osat on muotoiltu:
+Modifikaattorit antavat parempaa hallintaa siitä, miten päivämäärän osat muotoillaan:
 
-| Modifikaattori | Kuvaus               |
-| --------------- | ------------------------- |
-| `z`            | Nollata täytettävä                 |
-| `s`            | Lyhyt tekstimuoto |
-| `l`            | Pitkä tekstimuoto  |
-| `p`            | Koottu numero             |
-| `d`            | Kymmenes (oletusmuoto)  |
+| Modifikaattori | Kuvaus                       |
+| --------------- | ----------------------------- |
+| `z`             | Nollatäyttö                   |
+| `s`             | Lyhyt tekstiesitys           |
+| `l`             | Pitkä tekstiesitys           |
+| `p`             | Pakattu luku                 |
+| `d`             | Desimaalimuoto (oletus)      |
 
-Näitä voidaan yhdistää, jotta saadaan aikaan laaja valikoima päivämäärämaskeja.
+Näitä voidaan yhdistää luomaan laaja valikoima päivämäärämaskeja.
 
-## Päivämäärämuotojen lokalisointi {#date-format-localization}
+## Päivämäärämuodon lokalisaatio {#date-format-localization}
 
-`MaskedDateField` sopeutuu alueellisiin päivämäärämuotoihin oikean lokaalin asettamalla. Tämä takaa, että päivämäärät näytetään ja jäsennetään tavalla, joka vastaa käyttäjän odotuksia.
+`MaskedDateField` mukautuu alueellisiin päivämäärämuotoihin määrittämällä sopivan kieliasetuksen. Tämä varmistaa, että päivämäärät näytetään ja analysoidaan tavalla, joka vastaa käyttäjän odotuksia.
 
-| Alue         | Muoto     | Esimerkki      |
-| ------------ | ---------- | ------------ |
-| Yhdysvallat  | MM/DD/YYYY | `07/04/2023` |
-| Eurooppa     | DD/MM/YYYY | `04/07/2023` |
-| ISO-standardi | YYYY-MM-DD | `2023-07-04` |
+| Alue           | Muoto      | Esimerkki       |
+| ---------------| -----------| ----------------|
+| Yhdysvallat    | MM/DD/YYYY | `07/04/2023`    |
+| Eurooppa       | DD/MM/YYYY | `04/07/2023`    |
+| ISO-standardi  | YYYY-MM-DD | `2023-07-04`    |
 
-Lokalisoinnin soveltamiseksi käytä `setLocale()`-metodia. Se hyväksyy [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html) ja säätää automaattisesti sekä muotoilun että jäsennyksen:
+Kansainvälistämiseksi käytetään `setLocale()`-menetelmää. Se hyväksyy [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html) arvon ja säätää automaattisesti sekä muotoilua että analysointia:
 
 ```java
 dateField.setLocale(Locale.FRANCE);
 ```
 
-## Jäsentämislogiikka {#parsing-logic}
+## Analysointilogiikka {#parsing-logic}
 
-`MaskedDateField` jäsentää käyttäjän syötteen määritellyn päivämäärämaskin mukaan. Se hyväksyy sekä täydelliset että lyhennetyet numeeriset syötteet, olipa niissä erottimia tai ei, mahdollistaen joustavan syötön samalla varmistamalla, että päivämäärät ovat voimassa.
-Jäsentämiskäyttäytyminen riippuu maskin määrittelemästä järjestyksestä (esim. `%Mz/%Dz/%Yz` kuukaudelle/päivälle/vuodelle). Tämä formaatti määrittelee, kuinka numeerisia sekvenssejä tulkitaan.
+`MaskedDateField` analysoi käyttäjän syötteen määritetyn päivämäärämaskin perusteella. Se hyväksyy sekä täydelliset että lyhennetyt numeeriset syötteet erottimien kanssa tai ilman, mahdollistamalla joustavan syöttämisen samalla varmistaen voimassa olevat päivämäärät. Analysointikäyttäytyminen riippuu maskin määrittelemästä muodon järjestyksestä (esim. `%Mz/%Dz/%Yz` kuukaudelle/päivälle/vuodelle). Tämä muoto määrittää, miten numeeriset sekvenssit tulkitaan.
 
-Esimerkiksi, olettaen että tänään on `15. syyskuuta 2012`, näin erilaisia syötteitä tulkitaan:
+Esimerkiksi olettaen, että tänään on `15. syyskuuta 2012`, tämä on, miten erilaiset syötteet tulkitaan:
 
-### Esimerkit jäsentämisskenaarioista {#example-parsing-scenarios}
+### Esimerkkianalysointitapaukset {#example-parsing-scenarios}
 
-| Syöte                             | YMD (ISO)                                                                                                                                                                    | MDY (US)                                                                                     | DMY (EU)                                                                                     |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| <div align="center">`1`</div>   | Yksi numero tulkitaan aina päivänumeroksi kuluvassa kuukaudessa, joten tämä olisi 1. syyskuuta 2012.                                                       | Sama kuin YMD                                                                                | Sama kuin YMD                                                                                |
-| <div align="center">`12`</div>  | Kaksi numeroa tulkitaan aina päivänumeroksi kuluvassa kuukaudessa, joten tämä olisi 12. syyskuuta 2012.                                                      | Sama kuin YMD                                                                                | Sama kuin YMD                                                                                |
-| <div align="center">`112`</div> | Kolme numeroa tulkitaan yhdestä numerosta kuukauden numerona ja kahta numerosta päivän numerona, joten tämä olisi 12. tammikuuta 2012.                    | Sama kuin YMD                                                                                | Kolme numeroa tulkitaan yhdestä numerosta päivän numerona ja kahta numerosta kuukauden numerona, joten tämä olisi 1. joulukuuta 2012. |
-| <div align="center">`1004`</div> | Neljä numeroa tulkitaan muodossa MMDD, joten tämä olisi 4. lokakuuta 2012.                                                                                        | Sama kuin YMD                                                                                | Neljä numeroa tulkitaan muodossa DDMM, joten tämä olisi 10. huhtikuuta 2012.                |
-| <div align="center">`020304`</div> | Kuusi numeroa tulkitaan muodossa YYMMDD, joten tämä olisi 4. maaliskuuta 2002.                                                                                       | Kuusi numeroa tulkitaan muodossa MMDDYY, joten tämä olisi 3. helmikuuta 2004.               | Kuusi numeroa tulkitaan muodossa DDMMYY, joten tämä olisi 2. maaliskuuta 2004.               |
-| <div align="center">`8 digits`</div> | Kahdeksan numeroa tulkitaan muodossa YYYYMMDD. Esimerkiksi, `20040612` on 12. kesäkuuta 2004.                                                                     | Kahdeksan numeroa tulkitaan muodossa MMDDYYYY. Esimerkiksi, `06122004` on 12. kesäkuuta 2004. | Kahdeksan numeroa tulkitaan muodossa DDMMYYYY. Esimerkiksi, `06122004` on 6. joulukuuta 2004. |
-| <div align="center">`12/6`</div> | Kaksi numeroa, jotka on erotettu millä tahansa voimassa olevalla erottimella, tulkitaan muodossa MM/DD, joten tämä olisi 6. joulukuuta 2012. <br />Huom: Kaikki merkit, paitsi kirjaimet ja numerot, katsotaan voimassa oleviksi erottimiksi. | Sama kuin YMD                                                                                | Kaksi numeroa, jotka on erotettu millä tahansa erottimella, tulkitaan muodossa DD/MM, joten tämä olisi 12. kesäkuuta 2012.                |
-| <div align="center">`3/4/5`</div> | 5. huhtikuuta 2012                                                                                                                                                     | 4. maaliskuuta 2005                                                                          | 3. huhtikuuta 2005                                                                           |
+| Syöte                             | YMD (ISO)                                                                                                                                                                                 | MDY (US)                                                        | DMY (EU)                                                                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------- |
+| <div align="center">`1`</div>    | Yksi numero tulkitaan aina nykyisen kuukauden päiväksi, joten tämä olisi 1. syyskuuta 2012.                                                                                          | Sama kuin YMD                                                    | Sama kuin YMD                                                                                                           |
+| <div align="center">`12`</div>   | Kaksi numeroa tulkitaan aina nykyisen kuukauden päiväksi, joten tämä olisi 12. syyskuuta 2012.                                                                                         | Sama kuin YMD                                                    | Sama kuin YMD                                                                                                           |
+| <div align="center">`112`</div>  | Kolme numeroa tulkitaan 1-numeron kuukaudeksi ja 2-numeron päiväksi, joten tämä olisi 12. tammikuuta 2012.                                                                             | Sama kuin YMD                                                    | Kolme numeroa tulkitaan 1-numeron päiväksi ja 2-numeron kuukaudeksi, joten tämä olisi 1. joulukuuta 2012.              |
+| <div align="center">`1004`</div> | Neljä numeroa tulkitaan MMDD-muotoiseksi, joten tämä olisi 4. lokakuuta 2012.                                                                                                           | Sama kuin YMD                                                    | Neljä numeroa tulkitaan DDMM-muotoiseksi, joten tämä olisi 10. huhtikuuta 2012.                                        |
+| <div align="center">`020304`</div> | Kuusi numeroa tulkitaan YYMMDD-muotoiseksi, joten tämä olisi 4. maaliskuuta 2002.                                                                                                      | Kuusi numeroa tulkitaan MMDDYY-muotoiseksi, joten tämä olisi 3. helmikuuta 2004.                                      | Kuusi numeroa tulkitaan DDMMYY-muotoiseksi, joten tämä olisi 2. maaliskuuta 2004.                                       |
+| <div align="center">`8 numeroa`</div> | Kahdeksan numeroa tulkitaan YYYYMMDD-muotoiseksi. Esimerkiksi `20040612` on 12. kesäkuuta 2004.                                                                                         | Kahdeksan numeroa tulkitaan MMDDYYYY-muotoiseksi. Esimerkiksi `06122004` on 12. kesäkuuta 2004.                        | Kahdeksan numeroa tulkitaan DDMMYYYY-muotoiseksi. Esimerkiksi `06122004` on 6. joulukuuta 2004.                          |
+| <div align="center">`12/6`</div>  | Kaksi numeroa, jotka on eroteltu millä tahansa voimassa olevalla erottimella, tulkitaan MM/DD-muotoiseksi, joten tämä olisi 6. joulukuuta 2012. <br />Huom: Kaikki merkit, lukuun ottamatta kirjaimia ja numeroita, ovat voimassa olevia erottimia. | Sama kuin YMD                                                    | Kaksi numeroa, jotka on eroteltu millä tahansa erottimella, tulkitaan DD/MM-muotoiseksi, joten tämä olisi 12. kesäkuuta 2012. |
+| <div align="center">`3/4/5`</div>  | 5. huhtikuuta 2012                                                                                                                                                                       | 4. maaliskuuta 2005                                             | 3. huhtikuuta 2005                                                                                                       |
 
-## Tekstuaalinen päivämäärän jäsentäminen <DocChip chip='since' label='25.11' /> {#textual-date-parsing}
 
-Oletuksena `MaskedDateField` hyväksyy vain numeerista syötettä päivämäärille. Voit kuitenkin aktivoida **tekstuaalisen päivämäärän jäsentämisen** sallimaan käyttäjien syöttää kuukausi- ja päivämäärän nimiä syötteeseensä. Tämä ominaisuus on erityisen hyödyllinen luonnollisemman päivämäärän syöttämisen mahdollistamiseksi.
+## Tekstuaalinen päivämäärän analysointi <DocChip chip='since' label='25.11' /> {#textual-date-parsing}
 
-Aktivoidaksesi tekstuaalisen jäsentämisen, käytä `setTextualDateParsing()` -metodia:
+Oletuksena `MaskedDateField` hyväksyy vain numeerista syötettä päivämäärille. Voit kuitenkin sallia **tekstuaalisen päivämäärän analysoinnin** mahdollistamalla käyttäjien syöttää kuukausien ja päivien nimiä syötteessään. Tämä ominaisuus on erityisen hyödyllinen, kun halutaan luoda luonnollisempaa päivämäärän syöttöä.
+
+Aktivoidaksesi tekstuaalisen analysoinnin, käytä `setTextualDateParsing()` -menetelmää:
 
 ```java
 dateField.setTextualDateParsing(true);
@@ -108,150 +112,152 @@ dateField.setTextualDateParsing(true);
 
 ### Kuukauden nimen korvaaminen {#month-name-substitution}
 
-Kun tekstuaalinen jäsentäminen on käytössä, voit käyttää erityisiä modifikaattoreita maskissasi hyväksyäksesi kuukausinimiä numeeristen arvojen sijaan:
+Kun tekstuaalinen analysointi on aktivoitu, voit käyttää erityisiä modifikaattoreita maskissasi hyväksyäksesi kuukausien nimet numeeristen arvojen sijasta:
 
-- **`%Ms`** - Hyväksyy lyhyet kuukausinimet (tammi, helmi, maalis, jne.)
-- **`%Ml`** - Hyväksyy pitkät kuukausinimet (tammikuu, helmikuu, maaliskuu, jne.)
+- **`%Ms`** - Hyväksyy lyhyet kuukausien nimet (tammi, helmi, maalis jne.)
+- **`%Ml`** - Hyväksyy pitkät kuukausien nimet (tammikuu, helmikuu, maaliskuu jne.)
 
-Kuukauden nimet voivat esiintyä missä tahansa maskin osassa, ja kenttä hyväksyy silti numeerista syötettä varana.
+Kuukauden nimet voivat esiintyä missä tahansa paikassa maskissa, ja kenttä hyväksyy silti numeerisen syötteen varoiksi.
 
 #### Esimerkit
 
-| Maski | Syöte | Tulos |
-| ---- | ----- | ------ |
-| `%Ms/%Dz/%Yz` | `Sep/01/25` | **Kelvollinen** - Jäsentää syyskuun 1. päiväksi, 2025 |
-| `%Ml/%Dz/%Yz` | `September/01/25` | **Kelvollinen** - Jäsentää syyskuun 1. päiväksi, 2025 |
-| `%Dz/%Ml/%Yz` | `01/September/25` | **Kelvollinen** - Jäsentää syyskuun 1. päiväksi, 2025 |
-| `%Mz/%Dz/%Yz` | `09/01/25` | **Kelvollinen** - Numeerinen varatuki toimii edelleen |
+| Maski          | Syöte                | Tulos                                     |
+| -------------- | -------------------- | ----------------------------------------- |
+| `%Ms/%Dz/%Yz`  | `Sep/01/25`          | **Voimassa** - Analysoitu 1. syyskuuta 2025 |
+| `%Ml/%Dz/%Yz`  | `September/01/25`    | **Voimassa** - Analysoitu 1. syyskuuta 2025 |
+| `%Dz/%Ml/%Yz`  | `01/September/25`    | **Voimassa** - Analysoitu 1. syyskuuta 2025 |
+| `%Mz/%Dz/%Yz`  | `09/01/25`          | **Voimassa** - Numeerinen varajärjestelmä toimii edelleen |
 
 :::info
-Kaikki 12 kuukautta tuetaan sekä lyhyissä (tammi, helmi, maalis, huhti, touko, kesä, heinä, elo, syys, loka, marras, joulu) että pitkissä (tammikuu, helmikuu, jne.) muodoissa.
+Kaikki 12 kuukautta ovat tuettuja sekä lyhyessä (tammi, helmi, maalis, huhti, touko, kesä, heinä, elo, syys, loka, marras, joulu) että pitkässä (tammikuu, helmikuu jne.) muodossa.
 :::
 ### Päivän nimen koristelu {#day-name-decoration}
 
-Viikonpäivän nimiä voidaan sisällyttää syötteeseen paremman luettavuuden vuoksi, mutta ne ovat **koristeellisia vain** ja poistetaan jäsentämisen yhteydessä. Ne eivät vaikuta itse päivämääräarvoon.
+Viikonpäivän nimiä voidaan sisällyttää syötteeseen paremman luettavuuden vuoksi, mutta ne ovat **koristeellisia ainoastaan** ja ne poistetaan analysoinnin yhteydessä. Ne eivät vaikuta varsinaiseen päivämääräarvoon.
 
-- **`%Ds`** - Hyväksyy lyhyet viikonpäivän nimet (ma, ti, ke, jne.)
-- **`%Dl`** - Hyväksyy pitkät viikonpäivän nimet (maanantai, tiistai, keskiviikko, jne.)
+- **`%Ds`** - Hyväksyy lyhyet päivän nimet (ma, ti, ke jne.)
+- **`%Dl`** - Hyväksyy pitkät päivän nimet (maanantai, tiistai, keskiviikko jne.)
 
-:::warning Viikonpäivän nimet vaativat numeerisen päivän
-Kun käytetään viikonpäivän nimiä (`%Ds` tai `%Dl`), maskin **täytyy myös sisältää** `%Dz` tai `%Dd` määrittämään todellinen päivännumero. Ilman numeerista päivän osaa syöte on virheellinen.
+:::warning Päivän nimet vaativat numeerisen päivän
+Kun käytetään viikonpäivän nimiä (`%Ds` tai `%Dl`), maskin **täytyy myös sisältää** `%Dz` tai `%Dd`, jotta varsinaista päivämäärän numeroa voidaan määrittää. Ilman numeerista päivätietoa syöte on virheellinen.
 :::
 
 #### Esimerkit
 
-| Maski | Syöte | Tulos |
-| ---- | ----- | ------ |
-| `%Ds %Mz/%Dz/%Yz` | `Mon 09/01/25` | **Kelvollinen** - Päivän nimi on koristeellinen |
-| `%Dl %Mz/%Dz/%Yz` | `Monday 09/01/25` | **Kelvollinen** - Päivän nimi on koristeellinen |
-| `%Mz/%Dz/%Yz %Ds` | `09/01/25 Tue` | **Kelvollinen** - Päivän nimi lopussa |
-| `%Dl/%Mz/%Yz` | `Monday/09/25` | **Virheellinen** - Puuttuu `%Dz` |
-| `%Mz/%Dl/%Yz` | `09/Monday/25` | **Virheellinen** - Puuttuu `%Dz` |
+| Maski                | Syöte                     | Tulos                       |
+| ---------------------| ------------------------- | --------------------------- |
+| `%Ds %Mz/%Dz/%Yz`   | `Ma 09/01/25`            | **Voimassa** - Päivän nimi on koristeellinen |
+| `%Dl %Mz/%Dz/%Yz`   | `Maanantai 09/01/25`     | **Voimassa** - Päivän nimi on koristeellinen |
+| `%Mz/%Dz/%Yz %Ds`   | `09/01/25 Ti`            | **Voimassa** - Päivän nimi lopussa |
+| `%Dl/%Mz/%Yz`       | `Maanantai/09/25`        | **Virheellinen** - Puuttuu `%Dz` |
+| `%Mz/%Dl/%Yz`       | `09/Maanantai/25`        | **Virheellinen** - Puuttuu `%Dz` |
 
-Kaikki 7 viikonpäivää tuetaan sekä lyhyissä (ma, ti, ke, to, pe, la, su) että pitkissä (maanantai, tiistai, jne.) muodoissa.
+Kaikki 7 viikonpäivää ovat tuettuja sekä lyhyessä (ma, ti, ke, to, pe, la, su) että pitkässä (maanantai, tiistai jne.) muodossa.
 
-### Lisäjäsentämissäännöt {#additional-parsing-rules}
+### Lisäanalysointisäännöt {#additional-parsing-rules}
 
-Tekstuaalinen päivämäärän jäsentäminen sisältää useita hyödyllisiä ominaisuuksia:
+Tekstuaalinen päivämäärän analysointi sisältää useita hyödyllisiä ominaisuuksia:
 
-- **Isokirjaimettomuus:** Syöte kuten `MONDAY 09/01/25`, `monday 09/01/25` tai `Monday 09/01/25` toimii kaikki samalla tavalla.
-- **Paikallisesti tietoinen:** Kuukausi- ja päivämäärän nimien on vastattava kentän määritettyä lokaalia. Esimerkiksi ranskankielisellä lokaalilla käytä `septembre`, ei `Septemberia`. Englanninkielisiä nimiä ei tunnisteta, ellei lokaalia ole asetettu englanniksi.
-  - Ranskankielinen lokaali: `septembre/01/25` tunnistetaan syyskuuna
-  - Saksankielinen lokaali: `Montag 09/01/25` tunnistetaan maanantaina
+- **Kirjainkoolla ei ole väliä:** Syötteet kuten `Maanantai 09/01/25`, `maanantai 09/01/25` tai `Maanantai 09/01/25` toimivat kaikki samalla tavalla.
+- **Aluekohtaisesti tietoinen:** Kuukauden ja päivän nimien on vastattava kentän määritettyä paikallista asetusta. Esimerkiksi ranskassa käytä `septembre` etkä `September`. Englanninkielisiä nimiä ei tunnisteta, ellei kieliasetusta ole asetettu englanniksi.
+  - Ranskalainen alue: `septembre/01/25` tunnistetaan syyskuuksi
+  - Saksalainen alue: `Montag 09/01/25` tunnistetaan maanantaina olevan viikonpäivän nimeksi
 
-## Min/max-rajoitusten asettaminen {#setting-minmax-constraints}
+## Min/max-rajojen asettaminen {#setting-minmax-constraints}
 
-Voit rajoittaa sallittua päivämääräaluetta `MaskedDateField`-kentässä käyttämällä `setMin()` ja `setMax()` -menetelmiä:
+Voit rajoittaa sallitun päivämääräalueen `MaskedDateField`-komponentissa käyttämällä `setMin()` ja `setMax()` -menetelmiä:
 
 ```java
 dateField.setMin(LocalDate.of(2020, 1, 1));
 dateField.setMax(LocalDate.of(2030, 12, 31));
 ```
 
-Molemmat metodit hyväksyvät arvoja tyypiltä [`java.time.LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html). Syötteet, jotka ovat määritetyn alueen ulkopuolella, katsotaan virheellisiksi.
+Molemmat menetelmät hyväksyvät arvot tyyppiä [`java.time.LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html). Määritettyjen rajojen ulkopuolinen syöte katsotaan virheelliseksi.
 
 ## Arvon palauttaminen {#restoring-the-value}
 
-`MaskedDateField` sisältää palautusominaisuuden, joka palauttaa kentän arvon ennaltamääritettyyn tai alkuperäiseen tilaan. Tämä on hyödyllistä käyttäjän syötteen peruuttamiseksi tai oletuspäivämäärään palauttamiseksi.
+`MaskedDateField` sisältää palautusominaisuuden, joka nollaa kentän arvon ennalta määritettyyn tai alkuperäiseen tilaan. Tämä on hyödyllistä käyttäjän syötteen palauttamiseen tai oletuspäivämäärän palauttamiseen.
 
 ```java
 dateField.setRestoreValue(LocalDate.of(2025, 1, 1));
 dateField.restoreValue();
 ```
 
-### Tapoja palauttaa arvo {#ways-to-restore-the-value}
+### Tavat palauttaa arvo {#ways-to-restore-the-value}
 
-- **Ohjelmallisesti**, kutsumalla `restoreValue()`
-- **Näppäimistön kautta**, painamalla <kbd>ESC</kbd> (tämä on oletusarvoinen palautusnäppäin, ellei se ole ylikirjoitettu tapahtumakuuntelijalla)
+- **Ohjelmallisesti** kutsumalla `restoreValue()`
+- **Näppäimistön kautta** painamalla <kbd>ESC</kbd> (tämä on oletusarvoinen palautusnäppäin, ellei tapahtumakuuntelijalla ole ohitettua)
 
-Voit asettaa palautettavan arvon `setRestoreValue()`, jolloin käytetään [`LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html) -instanssia.
+Voit asettaa palautettavan arvon `setRestoreValue()`-menetelmällä, jossa siirrytään [`LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html) instanssin kanssa.
 
-<ComponentDemo 
-path='/webforj/maskeddatefieldrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java' 
-height='120px'/>
+<ComponentDemo
+path='/webforj/maskeddatefieldrestore'
+files={['src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java']}
+height='120px'
+/>
 
 ## Validointikaavat {#validation-patterns}
 
-Voit soveltaa asiakaspään validointisääntöjä käyttämällä säännöllisiä lausekkeita `setPattern()` -menetelmällä:
+Voit soveltaa asiakaspohjaisia validointisääntöjä käyttämällä säännöllisiä lausekkeita `setPattern()`-menetelmällä:
 
 ```java
 dateField.setPattern("^\\d{2}/\\d{2}/\\d{4}$");
 ```
 
-Tämä kaava varmistaa, että vain arvot, jotka vastaavat `MM/DD/YYYY` -muotoa (kaksi numeroa, vinoviiva, kaksi numeroa, vinoviiva, neljä numeroa), katsotaan kelvollisiksi.
+Tämä kaava varmistaa, että vain arvot, jotka vastaavat `MM/DD/YYYY`-muotoa (kaksi numeroa, vinoviiva, kaksi numeroa, vinoviiva, neljä numeroa), katsotaan voimassa oleviksi.
 
 :::tip Säännöllisen lausekkeen muoto
-Kaavan täytyy noudattaa JavaScript RegExp -syntaksia, kuten on asiakirjoinvissa [tässä](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
+Kaavan on noudatettava JavaScript RegExp -syntaksia, kuten on dokumentoitu [tässä](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
 :::
 
 :::warning Huomautuksia syötteen käsittelystä
-Kenttä yrittää jäsentää ja muotoilla numeerisia päivämääräsyötteitä nykyisen maskin mukaan. Käyttäjät voivat kuitenkin silti syöttää manuaalisesti arvoja, jotka eivät vastaa odotettua muotoa. Jos syöte on syntaktisesti voimassa mutta semanttisesti virheellinen tai jäsentämätön (esim. `99/99/9999`), se voi päästä kaavavalidoituksen läpi, mutta epäloogiseen validointiin.
-Sinun tulisi aina validoida syötearvo sovelluslogiikassasi, vaikka säännöllinen lausekekaava olisi asetettu, jotta voit varmistaa, että päivämäärä on sekä oikein muotoiltu että merkityksellinen.
+Kenttä yrittää analysoida ja muotoilla numeerisia päivämääräsyötteitä tämänhetkisen maskin perusteella. Käyttäjät voivat kuitenkin silti syöttää manuaalisesti arvoja, jotka eivät muodollisesti vastaa odotettua muotoa. Jos syöte on syntaktisesti voimassa, mutta semanttisesti virheellinen tai analysoimaton (esim. `99/99/9999`), se voi läpäistä kaavion tarkastukset mutta epäonnistua loogisessa validoinnissa.
+Sinun tulisi aina validoida syötearvo sovelluksesi logiikassa, vaikka säännöllinen lausekke kaavaa olisi asetettu, varmistaaksesi, että päivämäärä on sekä oikein muotoiltu että merkityksellinen.
 ::::
 
-## Päivämäärävalitsija {#date-picker}
+## Päivämäärävalitsin {#date-picker}
 
-`MaskedDateField` sisältää sisäänrakennetun kalenterivalitsijan, joka antaa käyttäjien valita päivämäärän visuaalisesti sen sijaan, että he kirjoittaisivat sen. Tämä parantaa käytettävyyttä vähemmän teknisille käyttäjille tai kun tarkka syöttö on tarpeen.
+`MaskedDateField` sisältää sisäänrakennetun kalenterivalitsimen, joka antaa käyttäjille mahdollisuuden valita päivämäärän visuaalisesti sen sijaan, että he kirjoittavat sen. Tämä parantaa käytettävyyttä vähemmän teknisille käyttäjille tai silloin, kun tarkkaa syöttöä tarvitaan.
 
-<ComponentDemo 
-path='/webforj/maskeddatefieldpicker?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldPickerView.java' 
-height='450px'/>
+<ComponentDemo
+path='/webforj/maskeddatefieldpicker'
+files={['src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldPickerView.java']}
+height='450px'
+/>
 
-### Valitsijan käyttö {#accessing-the-picker}
+### Pääsy valitsimeen {#accessing-the-picker}
 
-Voit käyttää päivämäärävalitsijaa käyttämällä `getPicker()`:
+Voit käyttää päivämäärävalitsinta `getPicker()`-menetelmällä:
 
 ```java
 DatePicker picker = dateField.getPicker();
 ```
 
-### Valitsijan kuvakkeen näyttäminen/piilottaminen {#showhide-the-picker-icon}
+### Näytä/piilota valitsimen kuvake {#showhide-the-picker-icon}
 
-Käytä `setIconVisible()` -menetelmää näyttämään tai piilottamaan kalenteri-ikoni kentän vieressä:
+Käytä `setIconVisible()`-menetelmää näyttääksesi tai piilottaaksesi kalenterikuvakkeen kentän vieressä:
 
 ```java
-picker.setIconVisible(true); // näyttää ikonin
+picker.setIconVisible(true); // näyttää kuvakkeen
 ```
 
 ### Automaattinen avauskäyttäytyminen {#auto-open-behavior}
 
-Voit määrittää valitsijan avaamaan automaattisesti, kun käyttäjä vuorovaikuttaa kentän kanssa (esim. klikkaa, painaa Enteriä tai nuolinäppäimiä):
+Voit määrittää valitsimen avautumaan automaattisesti, kun käyttäjä vuorovaikuttaa kentän kanssa (esim. klikkaamalla, painamalla Enter tai nuolinäppäimiä):
 
 ```java
 picker.setAutoOpen(true);
 ```
 
-:::tip Vahvista valinta valitsimen kautta
-Varmistaaksesi, että käyttäjät voivat vain valita päivämäärän kalenterivalitsimen avulla (eivätkä kirjoita manuaalisesti), yhdistä seuraavat kaksi asetusta:
+:::tip Pakota valinta valitsimen kautta
+Varmistaaksesi, että käyttäjät voivat valita päivämäärän vain kalenterivalitsimen kautta (eivätkä kirjoittamalla), yhdistä seuraavat kaksi asetusta:
 
 ```java
-dateField.getPicker().setAutoOpen(true); // Avataan valitsin käyttäjän vuorovaikutuksessa
-dateField.setAllowCustomValue(false);    // Poistaa manuaalisen tekstin syöttämisen käytöstä
+dateField.getPicker().setAutoOpen(true); // Avaa valitsimen käyttäjävuorovaikutuksen yhteydessä
+dateField.setAllowCustomValue(false);    // Poistaa manuaalisen tekstisyötteen käytöstä
 ```
 
-Tämä asetus varmistaa, että kaikki päivämääräsyötteet tulevat valitsin UI:sta, mikä on hyödyllistä, kun haluat tiukkaa muotoilua ja poistaa jäsentämisongelmia kirjoitetuista syötteistä.
+Tämä asetus takaa, että kaikki päivämääräsyöttö tapahtuu valitsimen käyttöliittymän kautta, mikä on hyödyllistä, kun haluat tiukkaa muotoilun hallintaa ja poistaa kirjoitettujen syötteiden analysointiongelmat.
 :::
 
 ### Avaa kalenteri manuaalisesti {#manually-open-the-calendar}
@@ -270,7 +276,7 @@ picker.show(); // sama kuin open()
 
 ### Näytä viikot kalenterissa {#show-weeks-in-the-calendar}
 
-Valitsija voi optioalisti näyttää viikon numerot kalenterinäkymässä:
+Valitsin voi valinnaisesti näyttää viikkonumerot kalenterinäkymässä:
 
 ```java
 picker.setShowWeeks(true);
@@ -278,42 +284,43 @@ picker.setShowWeeks(true);
 
 ## `MaskedDateFieldSpinner` {#maskeddatefieldspinner}
 
-`MaskedDateFieldSpinner` laajentaa [`MaskedDateField`](#basics) lisäämällä spinner-ohjausosas, jotka antavat käyttäjien lisätä tai vähentää päivämäärää nuolinäppäimillä tai käyttöliittymän painikkeilla. Se tarjoaa ohjatumman vuorovaikutustavan, erityisesti hyödyllinen työpöytätyylisissä sovelluksissa.
+`MaskedDateFieldSpinner` laajentaa [`MaskedDateField`](#basics) -komponenttia lisäämällä spinnereitä, jotka antavat käyttäjille mahdollisuuden lisätä tai vähentää päivämäärää nuolinäppäimillä tai käyttöliittymän painikkeilla. Se tarjoaa ohjatumman vuorovaikutustyylin, joka on erityisen hyödyllinen työpöytätyylisissä sovelluksissa.
 
-<ComponentDemo 
-path='/webforj/maskeddatefieldspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java' 
-height='450px'/>
+<ComponentDemo
+path='/webforj/maskeddatefieldspinner'
+files={['src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java']}
+height='450px'
+/>
 
 ### Keskeiset ominaisuudet {#key-features}
 
-- **Interaktiivinen päivämäärän askel:**  
-  Käytä nuolinäppäimiä tai kääntöpainikkeita lisätäksesi tai vähentääksesi päivämääräarvoa.
+- **Vuorovaikutteinen päivämäärän säätäminen:**  
+  Käytä nuolinäppäimiä tai kääntöpainikkeita päivämääräarvon lisäämiseksi tai vähentämiseksi.
 
-- **Mukautettava askeleen yksikkö:**  
-  Valitse, mikä osa päivämäärästä muokataan käyttämällä `setSpinField()`:
+- **Mukautettava käyttöyksikkö:**  
+  Valitse, mikä osa päivämäärästä muokata käyttämällä `setSpinField()`:
 
   ```java
   spinner.setSpinField(MaskedDateFieldSpinner.SpinField.MONTH);
   ```
 
-  Vaihtoehdot sisältävät `DAY`, `WEEK`, `MONTH` ja `YEAR`.
+  Vaihtoehtoja ovat `DAY`, `WEEK`, `MONTH` ja `YEAR`.
 
 - **Min/Max-rajoitukset:**  
-  Tukee vähimmäis- ja enimmäispäivämäärien asettamista käyttäen `setMin()` ja `setMax()`.
+  Perii tuen vähimmäis- ja enimmäispäivämäärille käyttäen `setMin()` ja `setMax()`.
 
-- **Muotoiltu tulos:**  
-  Täysin yhteensopiva maskien ja lokalisointiasetusten kanssa `MaskedDateField` -komponentista.
+- **Muotoiltu ulostulo:**  
+  Täydellinen yhteensopivuus maskien ja `MaskedDateField`-asetusten lokalisaation kanssa.
 
-### Esimerkki: Määritä viikoittainen asteittaisuus {#example-configure-weekly-stepping}
+### Esimerkki: Määritä viikottainen säätö {#example-configure-weekly-stepping}
 
 ```java
 MaskedDateFieldSpinner spinner = new MaskedDateFieldSpinner();
 spinner.setSpinField(MaskedDateFieldSpinner.SpinField.WEEK);
 ```
 
-Tämä saa jokaisen askelten muutoksen edistämään tai peruutamaan päivämäärää yhdellä viikolla.
+Tämä tekee jokaisesta käännöksestä tai taaksepäin kulkevista päivämääristä yhden viikon eteen tai taakse.
 
-## Tyylittely {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="MaskedDateField" />

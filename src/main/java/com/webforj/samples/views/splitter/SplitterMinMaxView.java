@@ -18,8 +18,7 @@ public class SplitterMinMaxView extends Composite<Div> {
 
     Splitter splitter = new Splitter(master, detail);
 
-    splitter.setMasterMinSize("200px")
-        .setMasterMaxSize("75%");
+    splitter.setMasterMinSize("200px").setMasterMaxSize("75%");
 
     self.add(splitter);
   }

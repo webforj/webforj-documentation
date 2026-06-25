@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-tabbed-pane>
 sidebar_class_name: sidebar--item__hidden
 slug: tabbed-pane
-description: A user guide article for the tabbed-pane
+description: Theme the dwc-tabbed-pane container, tab strip, and active indicator through CSS variables and shadow parts.
 // pagination_prev: null
 // pagination_next: null
 ---

@@ -26,8 +26,7 @@ public class BoundComponentDemoView extends Composite<FlexLayout> {
     private final Button submit = new Button("Submit");
 
     DefaultComposite() {
-      self.setSpacing("3px")
-          .add(nameField, submit);
+      self.setSpacing("3px").add(nameField, submit);
     }
   }
 

@@ -32,15 +32,13 @@ public class AlertExpansesView extends Composite<FlexLayout> {
       Expanse expanse = expanses[i];
       Icon icon = TablerIcon.create("alert-square-rounded");
       Paragraph text = new Paragraph("This alert uses the %s expanse.".formatted(expanse));
-      Alert alert = new Alert()
-          .addToContent(FlexLayout.create(icon, text)
-              .horizontal()
-              .align().center()
-              .build())
-          .setExpanse(expanse)
-          .setClosable(false)
-          .setTheme(Theme.SUCCESS)
-          .setWidth("380px");
+      Alert alert =
+          new Alert()
+              .addToContent(FlexLayout.create(icon, text).horizontal().align().center().build())
+              .setExpanse(expanse)
+              .setClosable(false)
+              .setTheme(Theme.SUCCESS)
+              .setWidth("380px");
       self.add(alert);
     }
   }

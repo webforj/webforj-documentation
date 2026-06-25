@@ -38,25 +38,22 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
 
     // Header
     H3 title = new H3("webforJ Application");
-    header.addToStart(new AppDrawerToggle())
-        .addToTitle(title);
+    header.addToStart(new AppDrawerToggle()).addToTitle(title);
 
-    appLayout.addToHeader(header)
-        .setHeaderReveal(true);
+    appLayout.addToHeader(header).setHeaderReveal(true);
 
-    appLayout.addToDrawer(navigation)
-        .setDrawerPlacement(DrawerPlacement.LEFT);
+    appLayout.addToDrawer(navigation).setDrawerPlacement(DrawerPlacement.LEFT);
 
     // Drawer's logo container and logo
     Toolbar drawerLogo = new Toolbar();
-    drawerLogo.addClassName("webforJ-logo")
+    drawerLogo
+        .addClassName("webforJ-logo")
         .setWidth("100%")
         .add(new Img("ws://img/webforj_icon.svg", "logo"));
     navigation.add(drawerLogo);
 
     // Drawer's Menu with AppNav
-    AppNav appNav = new AppNav()
-        .setAutoOpen(true);
+    AppNav appNav = new AppNav().setAutoOpen(true);
     navigation.add(appNav);
 
     AppNavItem dashboardItem = new AppNavItem("Dashboard", "/drawerwelcome");
@@ -79,24 +76,25 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     // Welcome Drawer
     self.add(welcomeDrawer);
 
-    welcomeDrawer.setPlacement(Placement.BOTTOM_CENTER)
-        .addClassName("welcome__drawer")
-        .open();
+    welcomeDrawer.setPlacement(Placement.BOTTOM_CENTER).addClassName("welcome__drawer").open();
 
-    Button getStarted = new Button("Get Started")
-        .setTheme(ButtonTheme.PRIMARY);
+    Button getStarted = new Button("Get Started").setTheme(ButtonTheme.PRIMARY);
     getStarted.onClick(e -> welcomeDrawer.close());
 
-    FlexLayout layout = FlexLayout.create(new Img("/fun.svg", "A gathering of people.")
-            .setSize("200px", "200px"),
-        new H2("Welcome to webforJ"),
-        new Paragraph("Lorem Ipsum is simply dummy text of the printing and typesetting industry")
-            .setStyle("text-align", "center"),
-        getStarted)
-        .vertical()
-        .align().center()
-        .justify().center()
-        .build();
+    FlexLayout layout =
+        FlexLayout.create(
+                new Img("/fun.svg", "A gathering of people.").setSize("200px", "200px"),
+                new H2("Welcome to webforJ"),
+                new Paragraph(
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry")
+                    .setStyle("text-align", "center"),
+                getStarted)
+            .vertical()
+            .align()
+            .center()
+            .justify()
+            .center()
+            .build();
 
     welcomeDrawer.add(layout);
 

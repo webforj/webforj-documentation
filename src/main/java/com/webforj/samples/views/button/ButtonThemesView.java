@@ -22,38 +22,38 @@ public class ButtonThemesView extends Composite<FlexLayout> {
         .setMargin("var(--dwc-space-l)")
         .add(scrollWrapper);
 
-    scrollWrapper.setStyle("overflow-x", "auto")
+    scrollWrapper
+        .setStyle("overflow-x", "auto")
         .setStyle("white-space", "nowrap")
         .setStyle("margin", "var(--dwc-space-l)");
 
-    FlexLayout solidRow = new FlexLayout()
-        .setDirection(FlexDirection.ROW)
-        .setWrap(FlexWrap.NOWRAP)
-        .setSpacing("var(--dwc-space-s)");
+    FlexLayout solidRow =
+        new FlexLayout()
+            .setDirection(FlexDirection.ROW)
+            .setWrap(FlexWrap.NOWRAP)
+            .setSpacing("var(--dwc-space-s)");
 
-    FlexLayout outlinedRow = new FlexLayout()
-        .setDirection(FlexDirection.ROW)
-        .setWrap(FlexWrap.NOWRAP)
-        .setSpacing("var(--dwc-space-s)")
-        .setStyle("margin-bottom", "var(--dwc-space-l)");
+    FlexLayout outlinedRow =
+        new FlexLayout()
+            .setDirection(FlexDirection.ROW)
+            .setWrap(FlexWrap.NOWRAP)
+            .setSpacing("var(--dwc-space-s)")
+            .setStyle("margin-bottom", "var(--dwc-space-l)");
 
     for (ButtonTheme theme : ButtonTheme.values()) {
       if (theme.name().startsWith("OUTLINE")) {
-        outlinedRow.add(new Button(theme.name(), theme)
-            .setMinWidth("200px")
-            .setMaxWidth("200px"));
+        outlinedRow.add(new Button(theme.name(), theme).setMinWidth("200px").setMaxWidth("200px"));
       } else {
-        solidRow.add(new Button(theme.name(), theme)
-            .setMinWidth("200px")
-            .setMaxWidth("200px"));
+        solidRow.add(new Button(theme.name(), theme).setMinWidth("200px").setMaxWidth("200px"));
       }
     }
 
-    FlexLayout scrollContent = FlexLayout.create(solidRow, outlinedRow)
-        .vertical()
-        .nowrap()
-        .build()
-        .setSpacing("var(--dwc-space-l)");
+    FlexLayout scrollContent =
+        FlexLayout.create(solidRow, outlinedRow)
+            .vertical()
+            .nowrap()
+            .build()
+            .setSpacing("var(--dwc-space-l)");
 
     scrollWrapper.add(scrollContent);
   }

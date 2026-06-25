@@ -27,52 +27,51 @@ public class InvoiceListView extends Composite<Div> {
     table.setHeight("100vh");
     table.setStriped(true);
 
-    table.addColumn("invoiceNumber", Invoice::getInvoiceNumber)
-        .setFlex(0.7f)
-        .setLabel("Invoice #");
+    table.addColumn("invoiceNumber", Invoice::getInvoiceNumber).setFlex(0.7f).setLabel("Invoice #");
 
-    table.addColumn("customer", Invoice::getCustomer)
-        .setFlex(1.5f)
-        .setLabel("Customer");
+    table.addColumn("customer", Invoice::getCustomer).setFlex(1.5f).setLabel("Customer");
 
-    table.addColumn("issueDate", Invoice::getIssueDate)
-        .setFlex(1.0f)
-        .setLabel("Issued");
+    table.addColumn("issueDate", Invoice::getIssueDate).setFlex(1.0f).setLabel("Issued");
 
-    table.addColumn("dueDate", Invoice::getDueDate)
-        .setFlex(1.0f)
-        .setLabel("Due");
+    table.addColumn("dueDate", Invoice::getDueDate).setFlex(1.0f).setLabel("Due");
 
-    table.addColumn("amount", Invoice::getAmount)
+    table
+        .addColumn("amount", Invoice::getAmount)
         .setFlex(1.0f)
         .setLabel("Amount")
         .setSortDirection(SortDirection.DESC)
         .setRenderer(new MaskedNumberRenderer<>("$###,##0.00", Locale.US));
 
-    table.addColumn("status", Invoice::getStatus)
+    table
+        .addColumn("status", Invoice::getStatus)
         .setFlex(1f)
         .setLabel("Status")
-        .setRenderer(new ConditionalRenderer<Invoice>()
-            .when("Paid",
-                new BadgeRenderer<Invoice>(BadgeTheme.SUCCESS)
-                    .setIcon(TablerIcon.create("circle-check")))
-            .when("Pending",
-                new BadgeRenderer<Invoice>(BadgeTheme.WARNING)
-                    .setIcon(TablerIcon.create("clock")))
-            .when("Overdue",
-                new BadgeRenderer<Invoice>(BadgeTheme.DANGER)
-                    .setIcon(TablerIcon.create("alert-triangle")))
-            .otherwise(new BadgeRenderer<>(BadgeTheme.DEFAULT)));
+        .setRenderer(
+            new ConditionalRenderer<Invoice>()
+                .when(
+                    "Paid",
+                    new BadgeRenderer<Invoice>(BadgeTheme.SUCCESS)
+                        .setIcon(TablerIcon.create("circle-check")))
+                .when(
+                    "Pending",
+                    new BadgeRenderer<Invoice>(BadgeTheme.WARNING)
+                        .setIcon(TablerIcon.create("clock")))
+                .when(
+                    "Overdue",
+                    new BadgeRenderer<Invoice>(BadgeTheme.DANGER)
+                        .setIcon(TablerIcon.create("alert-triangle")))
+                .otherwise(new BadgeRenderer<>(BadgeTheme.DEFAULT)));
 
-    table.addColumn("actions", i -> "")
+    table
+        .addColumn("actions", i -> "")
         .setFlex(1f)
         .setLabel("")
         .setSortable(false)
         .setResizable(false)
-        .setRenderer(new CompositeRenderer<>(
-            new IconButtonRenderer<>(TablerIcon.create("eye")),
-            new IconButtonRenderer<>(TablerIcon.create("download"))));
-
+        .setRenderer(
+            new CompositeRenderer<>(
+                new IconButtonRenderer<>(TablerIcon.create("eye")),
+                new IconButtonRenderer<>(TablerIcon.create("download"))));
 
     table.setRepository(InvoiceService.getInvoices());
     self.add(table);

@@ -5,7 +5,6 @@ import com.webforj.component.field.TimeField;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.time.LocalTime;
 
 @Route
@@ -15,7 +14,6 @@ public class TimeFieldView extends Composite<FlexLayout> {
   private final TimeField reminder = new TimeField("Set Reminder:", LocalTime.now());
 
   public TimeFieldView() {
-    self.setMargin("var(--dwc-space-m)")
-        .add(reminder);
+    self.setMargin("var(--dwc-space-m)").add(reminder);
   }
 }

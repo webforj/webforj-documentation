@@ -15,7 +15,8 @@ public class DialogSectionsView extends Composite<FlexLayout> {
 
   public DialogSectionsView() {
     self.add(dialog);
-    dialog.addToHeader(new Div("Header"))
+    dialog
+        .addToHeader(new Div("Header"))
         .addToContent(new Div("Content"))
         .addToFooter(new Div("Footer"))
         .setCloseable(false)

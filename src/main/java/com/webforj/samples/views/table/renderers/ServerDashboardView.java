@@ -28,62 +28,90 @@ public class ServerDashboardView extends Composite<Div> {
     table.setStriped(true);
     table.setBordersVisible(EnumSet.of(Border.AROUND, Border.ROWS, Border.COLUMNS));
 
-    table.addColumn("hostname", Server::getHostname)
+    table
+        .addColumn("hostname", Server::getHostname)
         .setLabel("Hostname")
-        .setMinWidth(160f) 
+        .setMinWidth(160f)
         .setFlex(1f);
 
-    table.addColumn("online", Server::isOnline)
+    table
+        .addColumn("online", Server::isOnline)
         .setLabel("Online")
         .setWidth(80f)
         .setRenderer(new BooleanRenderer<>());
 
-    table.addColumn("status", Server::getStatus)
+    table
+        .addColumn("status", Server::getStatus)
         .setLabel("Health")
         .setWidth(100f)
-        .setRenderer(new StatusDotRenderer<Server>()
-            .addMapping("Healthy",  Theme.SUCCESS)
-            .addMapping("Warning",  Theme.WARNING)
-            .addMapping("Critical", Theme.DANGER)
-            .addMapping("Offline",  Theme.DEFAULT));
+        .setRenderer(
+            new StatusDotRenderer<Server>()
+                .addMapping("Healthy", Theme.SUCCESS)
+                .addMapping("Warning", Theme.WARNING)
+                .addMapping("Critical", Theme.DANGER)
+                .addMapping("Offline", Theme.DEFAULT));
 
-    table.addColumn("cpuUsage", Server::getCpuUsage)
+    table
+        .addColumn("cpuUsage", Server::getCpuUsage)
         .setLabel("CPU %")
         .setWidth(140f)
-        .setRenderer(new ConditionalRenderer<Server>()
-            .when(Condition.greaterThanOrEqual(85),
-                new ProgressBarRenderer<Server>().setMax(100).setTheme(Theme.DANGER)
-                .setTextVisible(true))
-            .when(Condition.greaterThanOrEqual(70),
-                new ProgressBarRenderer<Server>().setMax(100).setTheme(Theme.WARNING)
-                .setTextVisible(true))
-            .otherwise(
-                new ProgressBarRenderer<Server>().setMax(100).setTheme(Theme.SUCCESS)
-                .setTextVisible(true)));
+        .setRenderer(
+            new ConditionalRenderer<Server>()
+                .when(
+                    Condition.greaterThanOrEqual(85),
+                    new ProgressBarRenderer<Server>()
+                        .setMax(100)
+                        .setTheme(Theme.DANGER)
+                        .setTextVisible(true))
+                .when(
+                    Condition.greaterThanOrEqual(70),
+                    new ProgressBarRenderer<Server>()
+                        .setMax(100)
+                        .setTheme(Theme.WARNING)
+                        .setTextVisible(true))
+                .otherwise(
+                    new ProgressBarRenderer<Server>()
+                        .setMax(100)
+                        .setTheme(Theme.SUCCESS)
+                        .setTextVisible(true)));
 
-    table.addColumn("memoryUsage", Server::getMemoryUsage)
+    table
+        .addColumn("memoryUsage", Server::getMemoryUsage)
         .setLabel("Memory %")
         .setWidth(140f)
-        .setRenderer(new ConditionalRenderer<Server>()
-            .when(Condition.greaterThanOrEqual(85),
-                new ProgressBarRenderer<Server>().setMax(100).setTheme(Theme.DANGER)
-                .setTextVisible(true))
-            .when(Condition.greaterThanOrEqual(70),
-                new ProgressBarRenderer<Server>().setMax(100).setTheme(Theme.WARNING)
-                .setTextVisible(true))
-            .otherwise(
-                new ProgressBarRenderer<Server>().setMax(100).setTheme(Theme.SUCCESS)
-                .setTextVisible(true)));
+        .setRenderer(
+            new ConditionalRenderer<Server>()
+                .when(
+                    Condition.greaterThanOrEqual(85),
+                    new ProgressBarRenderer<Server>()
+                        .setMax(100)
+                        .setTheme(Theme.DANGER)
+                        .setTextVisible(true))
+                .when(
+                    Condition.greaterThanOrEqual(70),
+                    new ProgressBarRenderer<Server>()
+                        .setMax(100)
+                        .setTheme(Theme.WARNING)
+                        .setTextVisible(true))
+                .otherwise(
+                    new ProgressBarRenderer<Server>()
+                        .setMax(100)
+                        .setTheme(Theme.SUCCESS)
+                        .setTextVisible(true)));
 
-    table.addColumn("diskUsage", Server::getDiskUsage)
+    table
+        .addColumn("diskUsage", Server::getDiskUsage)
         .setLabel("Disk %")
         .setWidth(120f)
         .setRenderer(new PercentageRenderer<>(Theme.INFO));
 
-    table.getColumns().forEach(col -> {
-      col.setSortable(true);
-      col.setResizable(true);
-    });
+    table
+        .getColumns()
+        .forEach(
+            col -> {
+              col.setSortable(true);
+              col.setResizable(true);
+            });
 
     table.setRepository(ServerService.getServers());
     self.add(table);

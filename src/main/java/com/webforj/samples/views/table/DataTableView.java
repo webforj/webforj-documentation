@@ -4,11 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import java.util.List;
-
-import com.webforj.component.table.Column.PinDirection;
-import com.webforj.component.table.Table;
-import com.webforj.component.table.Table.SelectionMode;
 import com.webforj.component.Composite;
 import com.webforj.component.field.TextField;
 import com.webforj.component.field.TextField.Type;
@@ -17,11 +12,15 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.navigator.Navigator;
 import com.webforj.component.navigator.Navigator.Layout;
+import com.webforj.component.table.Column.PinDirection;
+import com.webforj.component.table.Table;
+import com.webforj.component.table.Table.SelectionMode;
 import com.webforj.data.Paginator;
 import com.webforj.data.repository.CollectionRepository;
-import com.webforj.utilities.Assets;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.utilities.Assets;
+import java.util.List;
 
 @Route
 @FrameTitle("Data Table")
@@ -33,61 +32,59 @@ public class DataTableView extends Composite<Div> {
   private final Paginator paginator;
 
   public DataTableView() {
-    List<JsonObject> data = new Gson().fromJson(
-        Assets.contentOf(Assets.resolveContextUrl("context://data/olympic-winners.json")),
-        new TypeToken<List<JsonObject>>() {
-        });
+    List<JsonObject> data =
+        new Gson()
+            .fromJson(
+                Assets.contentOf(Assets.resolveContextUrl("context://data/olympic-winners.json")),
+                new TypeToken<List<JsonObject>>() {});
 
     repository = new CollectionRepository<>(data);
-    repository.setBaseFilter(json -> {
-      JsonElement athlete = json.get("athlete");
-      return athlete != null && !athlete.isJsonNull()
-          && athlete.getAsString().toLowerCase().contains(searchTerm);
-    });
+    repository.setBaseFilter(
+        json -> {
+          JsonElement athlete = json.get("athlete");
+          return athlete != null
+              && !athlete.isJsonNull()
+              && athlete.getAsString().toLowerCase().contains(searchTerm);
+        });
 
     paginator = new Paginator(repository);
     paginator.setMax(5);
 
-    FlexLayout layout = FlexLayout.create(buildTableHeader(), buildTable(), buildTableFooter())
-        .vertical()
-        .contentAlign()
-        .center()
-        .build()
-        .setPadding("var(--dwc-space-l)");
+    FlexLayout layout =
+        FlexLayout.create(buildTableHeader(), buildTable(), buildTableFooter())
+            .vertical()
+            .contentAlign()
+            .center()
+            .build()
+            .setPadding("var(--dwc-space-l)");
 
     self.add(layout);
   }
 
   private FlexLayout buildTableHeader() {
     // Search field with filter callback
-    TextField search = new TextField(Type.SEARCH, "Search")
-        .setPlaceholder("Search by athlete...");
-    search.onModify(ev -> {
-      searchTerm = ev.getText().toLowerCase();
-      paginator.setCurrent(1);
-      repository.commit();
-    });
+    TextField search = new TextField(Type.SEARCH, "Search").setPlaceholder("Search by athlete...");
+    search.onModify(
+        ev -> {
+          searchTerm = ev.getText().toLowerCase();
+          paginator.setCurrent(1);
+          repository.commit();
+        });
 
     // Page size selector
-    ChoiceBox pages = new ChoiceBox("Entries per page")
-      .insert("10", "25", "50", "100")
-      .selectIndex(0);
-    pages.onSelect(e ->
-        paginator.setSize(Integer.parseInt(e.getSelectedItem().getText())));
+    ChoiceBox pages =
+        new ChoiceBox("Entries per page").insert("10", "25", "50", "100").selectIndex(0);
+    pages.onSelect(e -> paginator.setSize(Integer.parseInt(e.getSelectedItem().getText())));
 
-    return FlexLayout.create(pages, search)
-        .horizontal()
-        .justify()
-        .between()
-        .build();
+    return FlexLayout.create(pages, search).horizontal().justify().between().build();
   }
 
   private Table<JsonObject> buildTable() {
-    Table<JsonObject> table = new Table<JsonObject>()
-        .setHeight("400px")
-        .setSelectionMode(SelectionMode.MULTIPLE)
-        .setHeaderCheckboxSelection(false);
-
+    Table<JsonObject> table =
+        new Table<JsonObject>()
+            .setHeight("400px")
+            .setSelectionMode(SelectionMode.MULTIPLE)
+            .setHeaderCheckboxSelection(false);
 
     List<String> columnsList = List.of("athlete", "age", "country", "year", "total");
 
@@ -97,12 +94,9 @@ public class DataTableView extends Composite<Div> {
 
     table.getColumns().forEach(column -> column.setSortable(true));
 
-    table.getColumnById("athlete")
-        .setPinDirection(PinDirection.LEFT)
-        .setMinWidth(200f);
+    table.getColumnById("athlete").setPinDirection(PinDirection.LEFT).setMinWidth(200f);
 
-    table.getColumnById("total")
-        .setPinDirection(PinDirection.RIGHT);
+    table.getColumnById("total").setPinDirection(PinDirection.RIGHT);
 
     table.setRepository(repository);
 
@@ -119,18 +113,14 @@ public class DataTableView extends Composite<Div> {
   }
 
   private FlexLayout buildTableFooter() {
-    Navigator pages = new Navigator(paginator, Layout.PAGES)
-        .setAutoDisable(true);
+    Navigator pages = new Navigator(paginator, Layout.PAGES).setAutoDisable(true);
 
-    Navigator preview = new Navigator(paginator, Layout.PREVIEW)
-        .setHideMainButtons(true)
-        .setStyle("border", "0")
-        .setText("`Showing ${startIndex + 1} to ${endIndex + 1} of ${totalItems} entries`");
+    Navigator preview =
+        new Navigator(paginator, Layout.PREVIEW)
+            .setHideMainButtons(true)
+            .setStyle("border", "0")
+            .setText("`Showing ${startIndex + 1} to ${endIndex + 1} of ${totalItems} entries`");
 
-    return FlexLayout.create(pages, preview)
-        .horizontal()
-        .justify()
-        .between()
-        .build();
+    return FlexLayout.create(pages, preview).horizontal().justify().between().build();
   }
 }

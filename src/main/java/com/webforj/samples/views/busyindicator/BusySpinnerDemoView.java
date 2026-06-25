@@ -4,16 +4,13 @@ import com.webforj.App;
 import com.webforj.BusyIndicator;
 import com.webforj.Interval;
 import com.webforj.component.Composite;
-import com.webforj.component.Expanse;
 import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-/**
- * Demo to showcase the different customization options for the spinner in the BusyIndicator.
- */
+/** Demo to showcase the different customization options for the spinner in the BusyIndicator. */
 @Route
 @FrameTitle("Busy Spinners")
 public class BusySpinnerDemoView extends Composite<Div> {
@@ -32,20 +29,25 @@ public class BusySpinnerDemoView extends Composite<Div> {
 
   private void handleElapsedEvent(Interval.ElapsedEvent event) {
     switch (state) {
-      case 1 -> updateIndicator(Theme.DEFAULT, SpinnerExpanse.SMALL,
-          "Displaying default theme, small expanse");
-      case 2 -> updateIndicator(Theme.DANGER, SpinnerExpanse.MEDIUM,
-          "Displaying danger theme, medium expanse");
-      case 3 -> updateIndicator(Theme.GRAY, SpinnerExpanse.LARGE,
-          "Displaying gray theme, large expanse");
-      case 4 -> updateIndicator(Theme.INFO, SpinnerExpanse.SMALL,
-          "Displaying info theme, small expanse");
-      case 5 -> updateIndicator(Theme.PRIMARY, SpinnerExpanse.MEDIUM,
-          "Displaying primary theme, medium expanse");
-      case 6 -> updateIndicator(Theme.SUCCESS, SpinnerExpanse.LARGE,
-          "Displaying success theme, large expanse");
-      case 7 -> updateIndicator(Theme.WARNING, SpinnerExpanse.SMALL,
-          "Displaying warning theme, small expanse");
+      case 1 ->
+          updateIndicator(
+              Theme.DEFAULT, SpinnerExpanse.SMALL, "Displaying default theme, small expanse");
+      case 2 ->
+          updateIndicator(
+              Theme.DANGER, SpinnerExpanse.MEDIUM, "Displaying danger theme, medium expanse");
+      case 3 ->
+          updateIndicator(Theme.GRAY, SpinnerExpanse.LARGE, "Displaying gray theme, large expanse");
+      case 4 ->
+          updateIndicator(Theme.INFO, SpinnerExpanse.SMALL, "Displaying info theme, small expanse");
+      case 5 ->
+          updateIndicator(
+              Theme.PRIMARY, SpinnerExpanse.MEDIUM, "Displaying primary theme, medium expanse");
+      case 6 ->
+          updateIndicator(
+              Theme.SUCCESS, SpinnerExpanse.LARGE, "Displaying success theme, large expanse");
+      case 7 ->
+          updateIndicator(
+              Theme.WARNING, SpinnerExpanse.SMALL, "Displaying warning theme, small expanse");
       case 8 -> {
         indicator.getSpinner().setClockwise(false);
         indicator.setText("Now moving counterclockwise...");
@@ -64,9 +66,6 @@ public class BusySpinnerDemoView extends Composite<Div> {
   }
 
   private void updateIndicator(Theme theme, SpinnerExpanse expanse, String text) {
-    indicator.setText(text)
-        .getSpinner()
-        .setTheme(theme)
-        .setExpanse(expanse);
+    indicator.setText(text).getSpinner().setTheme(theme).setExpanse(expanse);
   }
 }

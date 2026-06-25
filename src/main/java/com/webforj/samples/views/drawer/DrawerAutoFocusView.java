@@ -21,15 +21,16 @@ public class DrawerAutoFocusView extends Composite<FlexLayout> {
     CheckBox smsNotifications = new CheckBox("SMS Notifications");
     CheckBox pushNotifications = new CheckBox("Push Notifications");
 
-    FlexLayout checkBoxContainer = new FlexLayout(emailNotifications, smsNotifications, pushNotifications)
-        .setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-s)");
+    FlexLayout checkBoxContainer =
+        new FlexLayout(emailNotifications, smsNotifications, pushNotifications)
+            .setDirection(FlexDirection.COLUMN)
+            .setSpacing("var(--dwc-space-s)");
 
-    Button saveButton = new Button("Save Preferences")
-        .setTheme(ButtonTheme.PRIMARY)
-        .setWidth("100%");
+    Button saveButton =
+        new Button("Save Preferences").setTheme(ButtonTheme.PRIMARY).setWidth("100%");
 
-    drawer.addToFooter(saveButton)
+    drawer
+        .addToFooter(saveButton)
         .setLabel("Notification Preferences")
         .setAutoFocus(true)
         .open()
@@ -38,7 +39,6 @@ public class DrawerAutoFocusView extends Composite<FlexLayout> {
     Button openDrawerButton = new Button("Open Preferences");
     openDrawerButton.onClick(e -> drawer.open());
 
-    self.setMargin("var(--dwc-space-m)")
-        .add(openDrawerButton, drawer);
+    self.setMargin("var(--dwc-space-m)").add(openDrawerButton, drawer);
   }
 }

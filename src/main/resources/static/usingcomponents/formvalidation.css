@@ -13,10 +13,10 @@
 
 .contact-title {
     margin: 0 0 var(--dwc-space-xs) 0;
-    color: var(--dwc-color-on-default);
+    color: var(--dwc-color-on-default-text);
 }
 
 .contact-subtitle {
-    color: var(--dwc-color-on-default-variant);
+    color: var(--dwc-color-on-default-text-alt);
     font-size: 0.9rem;
 }

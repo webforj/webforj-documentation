@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-button>
 sidebar_class_name: sidebar--item__hidden
 slug: button
-description: A user guide article for the button
+description: Style the dwc-button client component with CSS variables, shadow parts, and slots for color, padding, expanse, and icon placement.
 // pagination_prev: null
 // pagination_next: null
 ---

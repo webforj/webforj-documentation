@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-app-layout>
 sidebar_class_name: sidebar--item__hidden
 slug: app-layout
-description: A user guide article for the app-layout
+description: Style the dwc-app-layout client component via CSS variables and shadow parts to theme header, drawer, footer, and content regions.
 // pagination_prev: null
 // pagination_next: null
 ---

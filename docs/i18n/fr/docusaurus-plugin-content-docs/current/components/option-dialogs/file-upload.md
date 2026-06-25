@@ -1,7 +1,7 @@
 ---
 title: File Upload
 sidebar_position: 20
-_i18n_hash: 0c52346e43f2f615464dde85f39d7cd0
+_i18n_hash: fc6515e16590085708ed61b3aedff9f1
 ---
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
@@ -21,33 +21,33 @@ UploadedFile result = OptionDialog.showFileUploadDialog("Télécharger un fichie
 
 ## Résultat {#result}
 
-Le `FileUploadDialog` retourne un objet `UploadedFile` qui contient des informations sur le fichier téléchargé, telles que son nom, sa taille et son contenu. Si l'utilisateur ferme la boîte de dialogue sans sélectionner de fichier, le résultat sera `null`.
+Le `FileUploadDialog` renvoie un objet `UploadedFile` qui contient des informations sur le fichier téléchargé, telles que son nom, sa taille et son contenu. Si l'utilisateur ferme la boîte de dialogue sans sélectionner de fichier, le résultat sera `null`.
 
 :::important
-La chaîne résultante sera retournée par la méthode `show()`, ou la méthode équivalente `OptionDialog` comme montré ci-dessous. 
+La chaîne résultante sera renvoyée par la méthode `show()`, ou la méthode équivalente `OptionDialog` comme indiqué ci-dessous. 
 :::
 
-<ComponentDemo 
-path='/webforj/fileuploaddialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java'
-height = '400px'
+<ComponentDemo
+path='/webforj/fileuploaddialogbasic'
+files={['src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java']}
+height='400px'
 />
 
-### Déplacer les fichiers téléchargés {#moving-uploaded-files}
+### Déplacement des fichiers téléchargés {#moving-uploaded-files}
 
 Par défaut, webforJ stocke les fichiers téléchargés dans un dossier temporaire qui est régulièrement nettoyé. Si vous ne déplacez pas le fichier ailleurs, il sera supprimé. Pour déplacer le fichier, utilisez la méthode `move` et spécifiez le chemin de destination.
 
 ```java showLineNumbers
-UploadedFile uploadedFile = OptionDialog.showFileUploadDialog("Sélectionnez un fichier à télécharger");
+UploadedFile uploadedFile = OptionDialog.showFileUploadDialog("Sélectionner un fichier à télécharger");
 try {
   File file = uploadedFile.move("my/full/path/" + uploadedFile.getSanitizedClientName());
-  // ... faire quelque chose avec le fichier
+  // ... faites quelque chose avec le fichier
 } catch (IOException e) {
   // gérer l'exception
 }
 ```
-:::tip Nom de Fichier Sanitisé
-Utilisez la méthode `getSanitizedClientName` pour obtenir une version sanitisée du nom du fichier téléchargé. Cette méthode aide à prévenir les risques de sécurité tels que les attaques par traversée de répertoire ou les caractères invalides dans les noms de fichiers, garantissant l'intégrité et la sécurité de votre système de stockage de fichiers.
+:::tip Nom de client assaini
+Utilisez la méthode `getSanitizedClientName` pour obtenir une version assainie du nom du fichier téléchargé. Cette méthode aide à éviter les risques de sécurité tels que les attaques par parcours de répertoire ou les caractères invalides dans les noms de fichiers, garantissant l'intégrité et la sécurité de votre système de stockage de fichiers.
 :::
 
 ## Filtres {#filters}
@@ -61,13 +61,13 @@ FileUploadDialog dialog = new FileUploadDialog(
 UploadedFile result = dialog.show();
 ```
 
-:::warning Validation des Filtres
-Le serveur ne validera pas le fichier téléchargé par rapport aux filtres. Les filtres ne sont appliqués que dans l'interface utilisateur pour guider la sélection de l'utilisateur. Vous devez mettre en œuvre une validation côté serveur pour vous assurer que les fichiers téléchargés répondent aux exigences de votre application.
+:::warning Validation des filtres
+Le serveur ne validera pas le fichier téléchargé par rapport aux filtres. Les filtres ne sont appliqués que dans l'interface utilisateur pour guider la sélection de l'utilisateur. Vous devez implémenter une validation côté serveur pour vous assurer que les fichiers téléchargés répondent aux exigences de votre application.
 :::
 
 ## Taille maximale {#max-size}
 
-Il est possible de définir la taille maximale des fichiers pour les téléchargements afin de garantir que les utilisateurs ne téléchargent pas des fichiers trop volumineux pour que votre application puisse les gérer. Cela peut être configuré en utilisant la méthode `setMaxFileSize(long maxSize)`, où maxSize est spécifié en octets.
+Il est possible de définir la taille maximale des fichiers pour les téléchargements afin de s'assurer que les utilisateurs ne téléchargent pas des fichiers trop lourds pour que votre application puisse les gérer. Cela peut être configuré en utilisant la méthode `setMaxFileSize(long maxSize)`, où maxSize est spécifié en octets.
 
 ```java
 dialog.setMaxFileSize(2 * 1024 * 1024); // Définir la taille max à 2 Mo
@@ -75,7 +75,7 @@ dialog.setMaxFileSize(2 * 1024 * 1024); // Définir la taille max à 2 Mo
 
 ## Internationalisation (i18n) {#internationalization-i18n}
 
-Les titres, descriptions, étiquettes et messages au sein du composant sont entièrement personnalisables à l'aide de la classe `FileUploadI18n`. Cette flexibilité vous permet d'adapter l'interface de la boîte de dialogue pour répondre à des exigences de localisation spécifiques ou des préférences de personnalisation.
+Les titres, descriptions, étiquettes et messages au sein du composant sont entièrement personnalisables en utilisant la classe `FileUploadI18n`. Cette flexibilité vous permet d'adapter l'interface de la boîte de dialogue pour répondre à des exigences de localisation spécifiques ou à des préférences de personnalisation.
 
 ```java showLineNumbers
 FileUploadDialog dialog = new FileUploadDialog("Télécharger un fichier");
@@ -88,9 +88,9 @@ UploadedFile result = dialog.show();
 
 ## Meilleures pratiques {#best-practices}
 
-1. **Invitations Claires et Concises** : Assurez-vous que le message d'invitation explique clairement ce que l'on demande à l'utilisateur de télécharger.
-2. **Filtres Appropriés** : Définissez des filtres de fichiers correspondant aux types de fichiers requis pour garantir que les utilisateurs téléchargent des fichiers pertinents.
-3. **Chemins Initiaux Logiques** : Définissez des chemins initiaux qui fournissent aux utilisateurs un point de départ utile pour leur sélection de fichiers.
-4. **Restreindre la Navigation dans les Répertoires** : Restreignez la boîte de dialogue à un répertoire spécifique lorsque nécessaire pour empêcher les utilisateurs de naviguer vers des zones non autorisées.
-5. **Thématiques Cohérentes** : Alignez les thèmes de la boîte de dialogue et du champ de téléchargement avec le design de votre application pour une expérience utilisateur cohérente.
-6. **Minimiser la Surutilisation** : Utilisez les boîtes de dialogue de téléchargement de fichiers avec parcimonie pour éviter la frustration des utilisateurs. Réservez-les pour les actions nécessitant des téléchargements spécifiques de fichiers par l'utilisateur.
+1. **Invitations claires et concises** : Assurez-vous que le message d'invite explique clairement ce que l'on demande à l'utilisateur de télécharger.
+2. **Filtres appropriés** : Définissez des filtres de fichiers correspondant aux types de fichiers requis pour garantir que les utilisateurs téléchargent des fichiers pertinents.
+3. **Chemins initiaux logiques** : Définissez des chemins initiaux qui offrent aux utilisateurs un point de départ utile pour leur sélection de fichiers.
+4. **Restreindre la navigation dans les répertoires** : Restreignez la boîte de dialogue à un répertoire spécifique si nécessaire pour empêcher les utilisateurs de naviguer dans des zones non autorisées.
+5. **Thématisation cohérente** : Alignez les thèmes de la boîte de dialogue et du champ de téléchargement avec le design de votre application pour une expérience utilisateur cohérente.
+6. **Minimiser l'utilisation excessive** : Utilisez les boîtes de dialogue de téléchargement de fichiers avec parcimonie pour éviter la frustration des utilisateurs. Réservez-les pour les actions nécessitant des téléchargements de fichiers spécifiques de la part de l'utilisateur.

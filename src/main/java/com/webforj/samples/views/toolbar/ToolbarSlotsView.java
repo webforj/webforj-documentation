@@ -1,9 +1,7 @@
 package com.webforj.samples.views.toolbar;
 
-import com.webforj.router.annotation.FrameTitle;
-import com.webforj.router.annotation.Route;
-import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Paragraph;
@@ -11,10 +9,11 @@ import com.webforj.component.icons.IconButton;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppLayout;
 import com.webforj.component.layout.toolbar.Toolbar;
+import com.webforj.router.annotation.FrameTitle;
+import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Toolbar Slots")
-@StyleSheet("ws://css/toolbar/toolbar-slots-view.css")
 public class ToolbarSlotsView extends Composite<AppLayout> {
   private final AppLayout self = getBoundComponent();
 
@@ -23,13 +22,15 @@ public class ToolbarSlotsView extends Composite<AppLayout> {
         .setStyle("--dwc-app-layout-header-height", "52px")
         .add(new H1("Application Title"), new Paragraph("Content goes here"));
 
-    Toolbar toolbar = new Toolbar()
-        .addToTitle(new H3("Application"))
-        .addToStart(new IconButton(TablerIcon.create("menu-2")))
-        .addToEnd(
-            new IconButton(TablerIcon.create("settings")),
-            new IconButton(TablerIcon.create("user")))
-        .addToContent(new H3("Toolbar Content"));
+    Toolbar toolbar =
+        new Toolbar()
+            .addToTitle(new H3("Application"))
+            .setTheme(Theme.INFO)
+            .addToStart(new IconButton(TablerIcon.create("menu-2")))
+            .addToEnd(
+                new IconButton(TablerIcon.create("settings")),
+                new IconButton(TablerIcon.create("user")))
+            .addToContent(new H3("Toolbar Content"));
 
     self.addToHeader(toolbar);
   }

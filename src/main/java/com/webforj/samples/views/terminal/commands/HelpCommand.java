@@ -1,7 +1,6 @@
 package com.webforj.samples.views.terminal.commands;
 
 import com.webforj.component.terminal.Terminal;
-
 import java.util.Map;
 
 public class HelpCommand implements TerminalCommand {

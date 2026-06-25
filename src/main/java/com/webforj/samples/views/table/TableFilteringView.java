@@ -1,12 +1,11 @@
 package com.webforj.samples.views.table;
 
-import com.webforj.component.table.Table;
-
 import com.webforj.component.Composite;
 import com.webforj.component.field.TextField;
 import com.webforj.component.field.TextField.Type;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.table.Table;
 import com.webforj.data.repository.CollectionRepository;
 import com.webforj.data.repository.Repository;
 import com.webforj.router.annotation.FrameTitle;
@@ -27,24 +26,20 @@ public class TableFilteringView extends Composite<Div> {
     TextField searchField = buildSearchField(repository);
     Table<MusicRecord> table = buildTable(repository);
 
-    FlexLayout layout = FlexLayout.create()
-        .vertical()
-        .contentAlign()
-        .center()
-        .build()
-        .setHeight("500px");
+    FlexLayout layout =
+        FlexLayout.create().vertical().contentAlign().center().build().setHeight("500px");
     layout.add(searchField, table);
 
     self.setStyle("padding", "30px").add(layout);
   }
 
   TextField buildSearchField(Repository<MusicRecord> repository) {
-    TextField search = new TextField(Type.SEARCH, "Search")
-        .setPlaceholder("Search by title...");
-    search.onModify(ev -> {
-      searchTerm = ev.getText().toLowerCase();
-      repository.commit();
-    });
+    TextField search = new TextField(Type.SEARCH, "Search").setPlaceholder("Search by title...");
+    search.onModify(
+        ev -> {
+          searchTerm = ev.getText().toLowerCase();
+          repository.commit();
+        });
 
     return search;
   }

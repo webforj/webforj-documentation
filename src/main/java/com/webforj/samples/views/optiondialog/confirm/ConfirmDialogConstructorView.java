@@ -15,11 +15,12 @@ public class ConfirmDialogConstructorView extends Composite<Div> {
   private final ConfirmDialog dialog;
 
   public ConfirmDialogConstructorView() {
-    dialog = new ConfirmDialog(
-            "Are you sure you want to delete this file? This action cannot be reverted.",
-            "Deletion",
-            ConfirmDialog.OptionType.OK_CANCEL,
-            ConfirmDialog.MessageType.QUESTION)
+    dialog =
+        new ConfirmDialog(
+                "Are you sure you want to delete this file? This action cannot be reverted.",
+                "Deletion",
+                ConfirmDialog.OptionType.OK_CANCEL,
+                ConfirmDialog.MessageType.QUESTION)
             .setTheme(Theme.DANGER)
             .setButtonTheme(ConfirmDialog.Button.FIRST, ButtonTheme.DANGER)
             .setButtonTheme(ConfirmDialog.Button.SECOND, ButtonTheme.OUTLINED_GRAY);

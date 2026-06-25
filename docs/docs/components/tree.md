@@ -1,6 +1,7 @@
 ---
 title: Tree
 sidebar_position: 150
+description: Display hierarchical data with the Tree component, using TreeNode parent-child links, expand or collapse, icons, and selection.
 ---
 
 <DocChip chip="shadow" />
@@ -39,9 +40,9 @@ tree.add(parent);
 Attempting to assign the same node to more than one parent will result in an exception being thrown. This safeguard ensures the tree maintains a proper hierarchy by preventing nodes from having multiple parents, which would break the integrity of the structure and cause unexpected behavior.
 :::
 
-<ComponentDemo 
-path='/webforj/tree?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tree/TreeView.java'
+<ComponentDemo
+path='/webforj/tree'
+files={['src/main/java/com/webforj/samples/views/tree/TreeView.java']}
 height='300px'
 />
 
@@ -59,10 +60,12 @@ Each node supports storing additional information on the server side using `setU
 In the demo, double-click a node to open an editor for its text. Enter the new text and save it to update the node’s label in the tree.
 :::
 
-<ComponentDemo 
-path='/webforj/treemodify?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tree/TreeModifyView.java'
-cssURL='/css/tree/tree-modify-view.css'
+<ComponentDemo
+path='/webforj/treemodify'
+files={[
+  'src/main/java/com/webforj/samples/views/tree/TreeModifyView.java',
+  'src/main/resources/static/css/tree/tree-modify-view.css',
+]}
 height='320px'
 />
 
@@ -109,9 +112,9 @@ tree.setGroupIconsVisible(false);
 tree.setLeafIconsVisible(false);
 ```
 
-<ComponentDemo 
-path='/webforj/treeicons?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tree/TreeIconsView.java'
+<ComponentDemo
+path='/webforj/treeicons'
+files={['src/main/java/com/webforj/samples/views/tree/TreeIconsView.java']}
 height='320px'
 />
 
@@ -146,9 +149,9 @@ The tree supports lazy loading of node children by reacting to expand events. Wh
 
 Use the `onExpand` event to detect when a node is expanded. Inside the handler, check if the node’s children are placeholders (for example, a spinner or empty node) and replace them with actual data once loaded.
 
-<ComponentDemo 
-path='/webforj/treelazyload?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tree/TreeLazyLoadView.java'
+<ComponentDemo
+path='/webforj/treelazyload'
+files={['src/main/java/com/webforj/samples/views/tree/TreeLazyLoadView.java']}
 height='250px'
 />
 
@@ -207,9 +210,9 @@ Object selectedKey = tree.getSelectedKey();
 List<Object> selectedKeys = tree.getSelectedKeys();
 ```
 
-<ComponentDemo 
-path='/webforj/treeselection?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tree/TreeSelectionView.java'
+<ComponentDemo
+path='/webforj/treeselection'
+files={['src/main/java/com/webforj/samples/views/tree/TreeSelectionView.java']}
 height='400px'
 />
 

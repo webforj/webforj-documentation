@@ -1,6 +1,7 @@
 ---
 sidebar_position: 55
 title: Asynchronous Updates
+description: Run background work off the UI thread and push updates back to webforJ components safely with Environment.runLater and PendingResult.
 ---
 
 <DocChip chip='since' label='25.02' />
@@ -10,6 +11,8 @@ title: Asynchronous Updates
 The `Environment.runLater()` API provides a mechanism for safely updating the UI from background threads in webforJ applications. This experimental feature enables asynchronous operations while maintaining thread safety for UI modifications.
 
 <ExperimentalWarning />
+
+<AISkillTip skill="webforj-handling-timers-and-async" />
 
 ## Understanding the thread model {#understanding-the-thread-model}
 

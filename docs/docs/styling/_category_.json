@@ -1,8 +1,9 @@
 {
-    "label": "Styling",
-    "position": 70,
-    "link": {
-      "type": "doc",
-      "id": "overview"
-    }
+  "label": "Styling",
+  "position": 70,
+  "className": "has-new-content cat-icon cat-icon--styling",
+  "link": {
+    "type": "doc",
+    "id": "overview"
   }
+}

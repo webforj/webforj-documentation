@@ -6,35 +6,35 @@ description: >-
   A component that provides a default browser-based input field for entering
   numeric values, with built-in controls for incrementing or decrementing the
   value.
-_i18n_hash: e1cde7099182ddabd898e0c5391fe8b7
+_i18n_hash: aa5037e2faa2968328081b1811dcabb0
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/NumberField" top='true' />
 
-`NumberField`-komponentti hyväksyy numeerisen syötteen ja hylkää virheelliset arvot automaattisesti. Se tukee minimi- ja maksimiarvoja, askelvälejä ja paikkamerkintätekstiä.
+`NumberField`-komponentti hyväksyy numeerisen syötteen ja hylkää virheelliset arvot automaattisesti. Se tukee minimi- ja maksimirajoja, askelvälejä ja paikkamerkkitekstiä.
 
 <!-- INTRO_END -->
 
-## Käyttäminen `NumberField` {#using-numberfield}
+## Käyttö `NumberField` {#using-numberfield}
 
 <ParentLink parent="Field" />
 
-`NumberField` laajentaa yhteistä `Field`-luokkaa, joka tarjoaa yhteisiä ominaisuuksia kaikille kenttäkomponenteille. Seuraava esimerkki luo `NumberField`-komponentin, jossa on etiketti ja paikkamerkintäteksti.
+`NumberField` laajentaa jaettua `Field`-luokkaa, joka tarjoaa yhteisiä ominaisuuksia kaikille kenttäkomponenteille. Seuraava esimerkki luo `NumberField`:in, jossa on etiketti ja paikkamerkkiteksti.
 
-<ComponentDemo 
-path='/webforj/numberfield?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldView.java'
+<ComponentDemo
+path='/webforj/numberfield'
+files={['src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldView.java']}
 />
 
 ## Kentän arvo {#field-value}
 
-`NumberField`-komponentti tallentaa arvonsa `Double`-tyyppiseen muotoon, mikä mahdollistaa sekä kokonaislukujen että desimaalilukujen tarkan käsittelyn.
+`NumberField`-komponentti tallentaa arvonsa `Double`-tyyppisenä, mikä mahdollistaa numeroiden ja desimaalilukuisten arvojen tarkan käsittelyn.
 
-### Nykyisen arvon hakeminen {#getting-the-current-value}
+### Nykyisen arvon saaminen {#getting-the-current-value}
 
-Voit noutaa käyttäjän syöttämän numeerisen arvon seuraavasti:
+Voit palauttaa käyttäjän syöttämän numeerisen arvon seuraavasti:
 
 ```java
 Double currentValue = numberField.getValue();
@@ -42,63 +42,63 @@ Double currentValue = numberField.getValue();
 
 ### Uuden arvon asettaminen {#setting-a-new-value}
 
-Aseta kenttäohjelmallisesti:
+Aseta kenttä ohjelmallisesti:
 
 ```java
 numberField.setValue(42.5);
 ```
 
-Jos arvoa ei ole syötetty eikä oletusarvoa ole asetettu, `getValue()` palauttaa `null`.
+Jos arvoa ei ole syötetty ja vakioarvoa ei ole asetettu, `getValue()` palauttaa `null`.
 
 :::tip
-Vaikka kenttä on suunniteltu hyväksymään vain voimassa olevaa numeerista syötettä, pidä mielessä, että taustalla oleva arvo voi olla nolla. Testaa aina muuttujan null-arvo ennen kuin käytät tulosta.
+Vaikka kenttä on suunniteltu hyväksymään vain voimassa olevia numeerisia syötteitä, pidä mielessä, että taustalla oleva arvo voi olla `null`. Testaa aina null-arvo ennen kuin käytät tulosta.
 :::
 
-## Käyttötarkoitukset {#usages}
+## Käyttötavat {#usages}
 
-`NumberField` on parasta käyttää tilanteissa, joissa numeeristen tietojen kerääminen, näyttäminen tai käsittely on olennaista sovelluksellesi. Tässä on joitakin esimerkkejä siitä, milloin käyttää `NumberField`-komponenttia:
+`NumberField` on parhaiten käytössä skenaarioissa, joissa numeeristen tietojen tallentaminen, näyttäminen tai käsitteleminen on oleellista sovelluksellesi. Tässä on joitakin esimerkkejä, milloin `NumberField`ia kannattaa käyttää:
 
-1. **Numeeriset syöte lomakkeet**: Kun suunnittelet lomakkeita, jotka vaativat numeerisia syötteitä, `NumberField`-komponentti yksinkertaistaa syöttöprosessia käyttäjille. Tämä on erityisen hyödyllistä sovelluksille, jotka keräävät käyttäjätietoja tai vaativat numeerisia arvoja.
+1. **Numeeriset Syöte Lomakkeet**: Kun suunnittelet lomakkeita, jotka vaativat numeerisia syötteitä, `NumberField`in käyttäminen yksinkertaistaa syöttöprosessia käyttäjille. Tämä on erityisen hyödyllistä sovelluksille, jotka keräävät käyttäjätietoja tai vaativat numeerisia arvoja.
 
-2. **Datankäsittely ja laskelmat**: `NumberField` on erityisen arvokas sovelluksissa, joissa käsitellään dataa, laskelmia tai matemaattisia operaatioita. Ne mahdollistavat käyttäjien syöttää tai manipuloida numeerisia arvoja tarkasti.
+2. **Datan Analysointi ja Laskelmat**: `NumberField` on erityisen arvokas sovelluksille, jotka sisältävät datan analysointia, laskelmia tai matemaattisia operaatioita. Ne mahdollistavat käyttäjien syöttää tai käsitellä numeerisia arvoja tarkasti.
 
-3. **Rahoitus- ja budjetointisovellukset**: Sovellukset, jotka käsittelevät taloudellisia laskelmia, budjetointia tai kulujen seurantaa, vaativat usein tarkkoja numeerisia syötteitä. `NumberField` varmistaa taloudellisten lukujen tarkan syöttämisen.
+3. **Rahoitus- ja Budjetointisovellukset**: Sovellukset, jotka vaativat rahoituslaskelmia, budjetointia tai kulujen seurantaa, tarvitsevat usein tarkkoja numeerisia syötteitä. `NumberField` varmistaa rahoitustietojen tarkan syöttämisen.
 
-4. **Mittaaminen ja yksikön muuntaminen**: Sovelluksissa, joissa käsitellään mittauksia tai yksikön muuntamista, `NumberField` on ihanteellinen numeeristen arvojen syöttämiseen, joissa on yksiköitä, kuten pituus, paino tai tilavuus.
+4. **Mittaa ja Yksikkö Muunnos**: Sovelluksissa, jotka käsittelevät mittauksia tai yksikkömuunnoksia, `NumberField` on ihanteellinen numeeristen arvojen syöttämiseen, joissa on yksiköitä, kuten pituus, paino tai tilavuus.
 
-## Minimi- ja maksimimäärä {#min-and-max-value}
+## Minim ja maksimi arvo {#min-and-max-value}
 
-`setMin()`-metodin avulla voit määrittää vähimmäis hyväksyttävän arvon numeerisessa kentässä. Jos käyttäjä syöttää tätä alhaisemman arvon, komponentti epäonnistuu rajoitustarkistuksessa ja antaa asianmukaista palautetta.
+`setMin()`-menetelmällä voit määrittää minimi hyväksyttävän arvon numeroikentässä. Jos käyttäjä syöttää arvon, joka on matalampi kuin tämä kynnys, komponentti epäonnistuu rajoituksen vahvistamisessa ja antaa asianmukaisen palautteen.
 
 ```java
 NumberField numberField = new NumberField();
-numberField.setMin(0.0); // Vähimmäisarvo: 0.0
+numberField.setMin(0.0); // Minimi sallittu: 0.0
 ```
 
-Erikseen `setMax()`-metodi mahdollistaa maksimimäärän määrittämisen. Jos käyttäjä syöttää tätä korkeamman arvon, syöttö hylätään. Kun sekä vähimmäis- että enimmäisarvot on asetettu, enimmäisarvon on oltava suurempi tai yhtä suuri kuin vähimmäisarvo.
+Erikseen `setMax()`-menetelmä mahdollistaa maksimi hyväksyttävän arvon määrittämisen. Jos käyttäjä syöttää arvon, joka on korkeampi kuin tämä raja, syöttö hylätään. Kun sekä minimi- että maksimiarvot on asetettu, maksimiarvon on oltava suurempi tai yhtä suuri kuin minimiarvo.
 
 ```java
-numberField.setMax(100.0); // Maksimiarvo: 100.0
+numberField.setMax(100.0); // Maksimi sallittu: 100.0
 ```
 
-Tässä konfiguraatiossa arvojen, kuten -5 tai 150 syöttäminen olisi virheellistä, kun taas arvot, jotka ovat 0 ja 100 välillä, hyväksytään.
+Tässä konfiguraatiossa arvon, kuten -5 tai 150, syöttäminen olisi virheellistä, kun taas arvot välillä 0 ja 100 hyväksytään.
 
 ## Tarkkuus {#granularity}
 
-Voit käyttää `setStep()`-metodia määrittääksesi tarkkuuden, joka arvon on noudatettava, kun käytetään nuolinäppäimiä arvon muuttamiseen. Tämä lisää tai vähentää komponentin arvoa tietyllä askeleella joka kerta. Tämä ei koske suoraa syöttöä, vaan vain vuorovaikutusta `NumberField`-komponentin kanssa nuolinäppäimillä.
+Voit käyttää `setStep()`-menetelmää määrittääksesi tarkkuuden, jota arvon on noudatettava, kun käytetään nuolinäppäimiä arvon muokkaamiseen. Tämä kasvattaa tai pienentää komponentin arvoa tietyllä askeleella joka kerta. Tämä ei päde, kun käyttäjä syöttää arvon suoraan, vaan vain vuorovaikutuksessa `NumberField`:n kanssa nuolinäppäimillä.
 
-## Paikkamerkintäteksti {#placeholder-text}
+## Paikkamerkkiteksti {#placeholder-text}
 
-Voit asettaa paikkamerkintätekstiä `NumberField`-komponentille käyttämällä `setPlaceholder()`-metodia. Paikkamerkintäteksti näytetään, kun kenttä on tyhjää, ja se auttaa ohjaamaan käyttäjää syöttämään sopivaa tietoa `NumberField`-kenttään.
+Voit asettaa paikkamerkkitekstiä `NumberField`:lle käyttämällä `setPlaceholder()`-menetelmää. Paikkamerkkiteksti näkyy, kun kenttä on tyhjennetty, auttaen käyttäjää syöttämään asianmukaista tietoa `NumberField`:iin.
 
-:::tip Anna selkeä konteksti tarkkuuden takaamiseksi
-Jos numeerinen syöte liittyy tiettyyn mittayksikköön tai sillä on erityinen konteksti, tarjoa selkeää merkintää tai lisätietoa, jotta käyttäjät voivat syöttää tarkkoja arvoja.
+:::tip Anna selkeä konteksti tarkkuutta varten
+Jos numeerinen syöte liittyy tiettyyn mittayksikköön tai sillä on erityinen konteksti, tarjoa selkeä merkintä tai lisätietoa ohjataksesi käyttäjiä ja varmistaaksesi tarkka syöttö.
 :::
 
 ## Parhaat käytännöt {#best-practices}
 
-Saavuttaaksesi saumatonta integrointia ja optimaalista käyttökokemusta, ota huomioon seuraavat parhaat käytännöt käytettäessä `NumberField`-komponenttia:
+Saadaksesi sujuvan integraation ja optimaalisen käyttäjäkokemuksen, harkitse seuraavia parhaita käytäntöjä käyttäessäsi `NumberField`:ia:
 
-- **Saavutettavuus**: Hyödynnä `NumberField`-komponenttia saavutettavuus mielessä, noudattaen saavutettavuusstandardeja, kuten oikeaa merkintää, näppäimistön navigointitukea ja yhteensopivuutta apuvälineiden kanssa. Varmista, että käyttäjät, joilla on erityisiä tarpeita, voivat vuorovaikuttaa `NumberField`-komponentin kanssa tehokkaasti.
+- **Saavutettavuus**: Hyödynnä `NumberField`-komponenttia saavutettavuus mielessä pitäen, noudattaen saavutettavuusstandardeja, kuten asianmukaista merkitsemistä, näppäimistön navigointituen ja yhteensopivuutta apuvälineiden kanssa. Varmista, että vammaiset käyttäjät voivat vuorovaikuttaa `NumberField`in kanssa tehokkaasti.
 
-- **Hyödynnä lisäys/poistamisen painikkeita**: Jos se on sovelluksellesi sopivaa, harkitse lisäys- ja poisto-painikkeiden käyttämistä `NumberField`-komponentin kanssa. Tämä auttaa käyttäjiä säätämään numeerista arvoa tietyllä lisäyksellä tai vähennyksellä yhdellä napsautuksella.
+- **Hyödynnä Lisäys/Pienennyspainikkeita**: Jos se on sovelluksellesi sopivaa, harkitse lisäys- ja pienennyspainikkeiden hyödyntämistä `NumberField`in kanssa. Tämä mahdollistaa käyttäjien säätää numeerista arvoa tietyllä lisäyksellä tai pienennyksellä yhdellä napsautuksella.

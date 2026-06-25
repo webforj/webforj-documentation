@@ -18,21 +18,21 @@ public class NavigatorPagesView extends Composite<Div> {
     Navigator nav = new Navigator(100, Layout.PAGES);
 
     nav.getPaginator().setMax(5);
-    nav.onChange(e -> {
-      int start = e.getStartIndex();
-      int end = e.getEndIndex();
+    nav.onChange(
+        e -> {
+          int start = e.getStartIndex();
+          int end = e.getEndIndex();
 
-      // Adjust for 1-based indexing
-      if (end != 0) {
-        start = start + 1;
-        end = end + 1;
-      }
+          // Adjust for 1-based indexing
+          if (end != 0) {
+            start = start + 1;
+            end = end + 1;
+          }
 
-      String formattedText = String.format("Showing %d to %d of 100", start, end);
-      text.setText(formattedText);
-    });
+          String formattedText = String.format("Showing %d to %d of 100", start, end);
+          text.setText(formattedText);
+        });
 
-    self.setStyle("padding", "20px")
-        .add(text, nav);
+    self.setStyle("padding", "20px").add(text, nav);
   }
 }

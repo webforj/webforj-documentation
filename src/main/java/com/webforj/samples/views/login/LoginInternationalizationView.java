@@ -23,8 +23,9 @@ public class LoginInternationalizationView extends Composite<Div> {
     i18n.setSubmit("Anmelden");
 
     i18n.getError().setTitle("Falscher Benutzername oder falsches Passwort");
-    i18n.getError().setMessage(
-        "Stellen Sie sicher, dass Sie den richtigen Benutzernamen und das richtige Passwort eingegeben haben und versuchen Sie es erneut.");
+    i18n.getError()
+        .setMessage(
+            "Stellen Sie sicher, dass Sie den richtigen Benutzernamen und das richtige Passwort eingegeben haben und versuchen Sie es erneut.");
 
     login.setI18n(i18n);
     login.setError(true);

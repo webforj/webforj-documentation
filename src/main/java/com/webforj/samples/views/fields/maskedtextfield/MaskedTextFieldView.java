@@ -23,12 +23,14 @@ public class MaskedTextFieldView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-m)");
 
-    recordCode.setMask("AA-00-0000")
+    recordCode
+        .setMask("AA-00-0000")
         .setValue("NE240934")
         .setHelperText("Mask: AA-00-0000 - for example: NE-24-0934")
         .setWidth(300);
 
-    couponCode.setMask("ZZZZ-0000")
+    couponCode
+        .setMask("ZZZZ-0000")
         .setValue("SAVE2025")
         .setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025")
         .setWidth(300);

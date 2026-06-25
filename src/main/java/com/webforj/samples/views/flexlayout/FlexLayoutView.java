@@ -4,11 +4,11 @@ import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.field.MaskedNumberField;
 import com.webforj.component.field.PasswordField;
 import com.webforj.component.field.TextField;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.list.ChoiceBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -35,37 +35,25 @@ public class FlexLayoutView extends Composite<FlexLayout> {
   }
 
   private void setupLayout() {
-    FlexLayout mainLayout = FlexLayout.create()
-        .vertical()
-        .build()
-        .addClassName("main__layout");
+    FlexLayout mainLayout = FlexLayout.create().vertical().build().addClassName("main__layout");
 
-    FlexLayout rowOne = FlexLayout.create(email, password)
-        .horizontal()
-        .wrap()
-        .build();
+    FlexLayout rowOne = FlexLayout.create(email, password).horizontal().wrap().build();
 
-    FlexLayout rowTwo = FlexLayout.create(firstName, lastName)
-        .horizontal()
-        .wrap()
-        .build();
+    FlexLayout rowTwo = FlexLayout.create(firstName, lastName).horizontal().wrap().build();
 
-    FlexLayout addressRow = FlexLayout.create(address)
-        .horizontal()
-        .wrap()
-        .build();
+    FlexLayout addressRow = FlexLayout.create(address).horizontal().wrap().build();
 
-    FlexLayout cityStateZipRow = FlexLayout.create(city, states, zip)
-        .horizontal()
-        .justify().between()
-        .build()
-        .setItemBasis("40%", city)
-        .setItemBasis("20%", states)
-        .setItemBasis("40%", zip);
+    FlexLayout cityStateZipRow =
+        FlexLayout.create(city, states, zip)
+            .horizontal()
+            .justify()
+            .between()
+            .build()
+            .setItemBasis("40%", city)
+            .setItemBasis("20%", states)
+            .setItemBasis("40%", zip);
 
-    FlexLayout rowFour = FlexLayout.create(cancel, submit)
-        .horizontalReverse()
-        .build();
+    FlexLayout rowFour = FlexLayout.create(cancel, submit).horizontalReverse().build();
 
     mainLayout.add(rowOne, rowTwo, addressRow, cityStateZipRow, rowFour);
     self.add(mainLayout);

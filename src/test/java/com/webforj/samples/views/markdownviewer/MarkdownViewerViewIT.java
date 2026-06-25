@@ -2,11 +2,10 @@ package com.webforj.samples.views.markdownviewer;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.markdownviewer.MarkdownViewerPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class MarkdownViewerViewIT extends BaseTest {
 
@@ -65,6 +64,7 @@ public class MarkdownViewerViewIT extends BaseTest {
   @Test
   public void testCodeBlockRendersJavaCode() {
     assertThat(viewerPage.getCodeBlock()).isVisible();
-    assertThat(viewerPage.getCodeBlock()).containsText("MarkdownViewer viewer = new MarkdownViewer()");
+    assertThat(viewerPage.getCodeBlock())
+        .containsText("MarkdownViewer viewer = new MarkdownViewer()");
   }
 }

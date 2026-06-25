@@ -37,15 +37,14 @@ public class SpinnerSpeedDemoView extends Composite<FlexLayout> {
     fastButton = new Button("Fast", e -> setSpinnerSpeed(spinner, 200));
     pauseResumeButton = new Button("Pause", ButtonTheme.PRIMARY, e -> spinner.setPaused(true));
 
-    FlexLayout buttons = new FlexLayout(slowButton, mediumButton, fastButton, pauseResumeButton)
+    FlexLayout buttons =
+        new FlexLayout(slowButton, mediumButton, fastButton, pauseResumeButton)
             .setMargin("var(--dwc-space-s)");
 
     self.add(spinner, buttons);
   }
 
-  /**
-   * Sets the spinner speed and resumes animation.
-   */
+  /** Sets the spinner speed and resumes animation. */
   private void setSpinnerSpeed(Spinner spinner, int speed) {
     spinner.setSpeed(speed);
     spinner.setPaused(false);

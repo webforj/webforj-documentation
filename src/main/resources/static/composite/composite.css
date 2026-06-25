@@ -1,12 +1,19 @@
+.todo-stage {
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--dwc-space-l);
+  box-sizing: border-box;
+}
+
 .frame {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px auto;
+  width: 600px;
   padding: var(--dwc-space-xl);
   gap: var(--dwc-space-l);
   background-color: var(--dwc-surface-3);
-  max-width: 600px;
+  max-width: 100%;
   max-height: 400px;
   box-shadow: var(--dwc-shadow-xs);
   border: var(--dwc-border-width) solid var(--dwc-color-default);
@@ -43,7 +50,7 @@
 
 .todo-text {
   font-size: 1rem;
-  color: var(--dwc-color-text);
+  color: var(--dwc-color-body-text);
   text-wrap: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

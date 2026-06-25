@@ -3,11 +3,10 @@ package com.webforj.samples.views.markdownviewer;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.webforj.samples.pages.markdownviewer.MarkdownViewerProgressivePage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class MarkdownViewerProgressiveViewIT extends BaseTest {
 
@@ -49,17 +48,22 @@ public class MarkdownViewerProgressiveViewIT extends BaseTest {
     String contentAfterStop = progressivePage.getViewer().textContent();
     page.waitForTimeout(500);
     String contentAfterWait = progressivePage.getViewer().textContent();
-    assertTrue(contentAfterStop.length() == contentAfterWait.length(),
+    assertTrue(
+        contentAfterStop.length() == contentAfterWait.length(),
         "Content should not grow after stop is clicked");
   }
 
   @Test
   public void testRenderingCompletesAndButtonsReset() {
     progressivePage.getStartButton().click();
-    progressivePage.getViewer().locator("blockquote").waitFor(
-        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(30000));
-    assertThat(progressivePage.getStartButton()).isEnabled(
-        new com.microsoft.playwright.assertions.LocatorAssertions.IsEnabledOptions().setTimeout(5000));
+    progressivePage
+        .getViewer()
+        .locator("blockquote")
+        .waitFor(new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(30000));
+    assertThat(progressivePage.getStartButton())
+        .isEnabled(
+            new com.microsoft.playwright.assertions.LocatorAssertions.IsEnabledOptions()
+                .setTimeout(5000));
     assertThat(progressivePage.getStopButton()).isDisabled();
     assertThat(progressivePage.getViewer()).containsText("Peter Godfrey-Smith");
   }

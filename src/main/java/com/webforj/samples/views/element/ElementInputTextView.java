@@ -15,10 +15,8 @@ public class ElementInputTextView extends Composite<Div> {
   private final Element input = new Element("input");
 
   public ElementInputTextView() {
-    self.setStyle("margin", "20px")
-        .add(input);
+    self.setStyle("margin", "20px").add(input);
 
-    input.addClassName("element--input")
-        .setText("Here is the set text");
+    input.addClassName("element--input").setText("Here is the set text");
   }
 }

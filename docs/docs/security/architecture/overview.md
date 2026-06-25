@@ -3,6 +3,7 @@ sidebar_position: 1
 title: Security Architecture
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Explore the foundational interfaces and patterns that let you build custom security implementations beyond Spring Security.
 ---
 
 <Head>

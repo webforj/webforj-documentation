@@ -1,70 +1,80 @@
 ---
 title: Toolbar
 sidebar_position: 145
-_i18n_hash: a0f2d1a3d39ff0d195a5150ea6130710
+description: >-
+  Lay out action controls with the Toolbar component, placing components into
+  Start, Title, Content, and End slots with compact mode.
+_i18n_hash: 99def78151a30c5c7fef7106b2efcb5b
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-toolbar" />
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="toolbar" location="com/webforj/component/layout/toolbar/Toolbar" top='true'/>
 
-Työkalurivit tarjoavat käyttäjille nopean pääsyn ydintoimintoihin ja navigointielementteihin. webforJ `Toolbar` -komponentti on vaakasuora kontti, joka voi sisältää joukon toimintopainikkeita, kuvakkeita tai muita komponentteja. Se sopii hyvin sivun hallintakontrollien hallintaan ja keskeisten toimintojen, kuten hakupalkin tai ilmoituspainikkeen, sijoittamiseen.
+Työkalupalkit tarjoavat käyttäjille nopean pääsyn keskeisiin toimintoihin ja navigointielementteihin. webforJ `Toolbar` komponentti on horisontaalinen säiliö, joka voi pitää sarjan toimintapainikkeita, kuvakkeita tai muita komponentteja. Se soveltuu hyvin sivun ohjausten hallintaan ja tärkeiden toimintojen, kuten hakupalkin tai ilmoituspainikkeen, sijoittamiseen.
 
 <!-- INTRO_END -->
 
-## Työkalurivin sisällön järjestäminen {#organizing-toolbar-content}
+## Organizing toolbar content {#organizing-toolbar-content}
 
-`Toolbar` järjestää olennaiset komponentit helposti saavutettavaan ja johdonmukaiseen asetteluun. Oletusarvoisesti se vie koko tyypin vanhemman elementtinsä leveyden ja tarjoaa neljä sijoitusaluetta tai _slotia_ komponenttien järjestämistä varten:
+`Toolbar` järjestää olennaiset komponentit helposti saatavilla olevaan ja johdonmukaiseen asetteluun. Oletusarvoisesti se vie koko vanhemman elementin leveyden ja tarjoaa neljä sijoitusaluetta, tai _paikkaa_, komponenttien järjestämiseen:
 
-- **Alku**: Yleensä sisältää <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppDrawerToggle" code='true'>AppDrawerToggle</JavadocLink> -painikkeen tai kotipainikkeen.
-- **Otsikko**: Käytetään sovelluksen nimille tai logoille.
-- **Sisältö**: Korkean huomion toimintoja, kuten haku tai navigointi.
-- **Loppu**: Harvemmin käytettyjä toimintoja, kuten käyttäjäprofiili tai apua.
+- **Alku**: Sisältää yleensä <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppDrawerToggle" code='true'>AppDrawerToggle</JavadocLink> tai kotipainikkeen.
+- **Otsikko**: Käytetään sovellusten nimille tai logoille.
+- **Sisältö**: Suuri huomioarvoisten toimintojen, kuten haun tai navigoinnin, kohdalle.
+- **Loppu**: Harvemmin käytettävät toiminnot, kuten käyttäjäprofiili tai apu.
 
-Jokaisella slotilla on menetelmä komponenttien lisäämiseksi: `addToStart()`, `addToTitle()`, `addToContent()`, ja `addToEnd()`.
+Jokaisella paikalla on menetelmä komponenttien lisäämiseksi: `addToStart()`, `addToTitle()`, `addToContent()`, ja `addToEnd()`.
 
-Seuraava esimerkki osoittaa, miten voit lisätä `Toolbar`-komponentin [AppLayout](./app-layout) -sovellukseen ja hyödyntää kaikkia tuettuja slotteja tehokkaasti. Lisätietoja työkalurivien toteuttamisesta `AppLayout`-sovelluksessa saat lukemalla [Sticky toolbars](./app-layout#sticky-toolbars) ja [Mobile navigation layout](./app-layout#mobile-navigation-layout).
+Seuraava demo näyttää, miten `Toolbar` lisätään [AppLayout](./app-layout) ja kuinka käyttää kaikkia tuettuja paikkoja tehokkaasti. 
+Jos haluat lukea lisää työkalupalkkien toteuttamisesta `AppLayout`-rakenteessa, katso [Sticky toolbars](./app-layout#sticky-toolbars) ja [Mobile navigation layout](./app-layout#mobile-navigation-layout).
 
-<AppLayoutViewer
-path='/webforj/toolbarslots?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java'
-cssURL='/css/toolbar/toolbar-slots-view.css'
-height='300px'
+<ComponentDemo
+path='/webforj/toolbarslots'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java',
+  'src/main/resources/static/css/toolbar/toolbar-slots-view.css',
+]}
 />
 
-## Tiivistetty tila {#compact-mode}
+## Compact mode {#compact-mode}
 
-Käytä `setCompact(true)` pienentääksesi väliä `Toolbar`-komponentin ympärillä. Tämä on hyödyllistä, kun sinun on sovitettavissa enemmän sisältöä näyttöön, erityisesti sovelluksissa, joissa on kerrostettuja työkaluja tai rajoitettua tilaa. Työkalurivi toimii edelleen samalla tavalla—vain korkeus on pienennetty. Tätä tilaa käytetään yleisesti otsikoissa, sivupalkissa tai asetteluissa, joissa tila on tiukka.
+Käytä `setCompact(true)` vähentääksesi tyhjää tilaa `Toolbar` ympärillä. Tämä on hyödyllistä, kun sinun tarvitsee mahtua enemmän sisältöä näyttöön, erityisesti sovelluksissa, joissa on pinottuja työkalupalkkeja tai rajallista tilaa. Työkalupalkki käyttäytyy silti samalla tavalla—vain korkeus on pienempi. Tätä tilaa käytetään yleisesti otsikoissa, sivupalkissa tai asetteluissa, joissa tila on tiukka.
 
 ```java
 Toolbar toolbar = new Toolbar();
 toolbar.setCompact(true);
 ```
 
-<AppLayoutViewer path='/webforj/toolbarcompact?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java'
+<ComponentDemo
+path='/webforj/toolbarcompact'
+frame='desktop'
+files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java']}
 />
 
-## `ProgressBar` työkaluissa {#progressbar-in-toolbars}
+## `ProgressBar` in toolbars {#progressbar-in-toolbars}
 
-`ProgressBar` toimii visuaalisena indikaattorina käynnissä olevista prosesseista, kuten tietojen lataamisesta, tiedostojen lataamisesta tai vaiheiden suorittamisesta prosessissa. Kun se sijoitetaan `Toolbar`-komponentin sisään, `ProgressBar` kohdistuu kauniisti alareunaan, jolloin se ei häiritse, mutta viestittää silti käyttäjille edistymisestä.
+`ProgressBar` toimii visuaalisena indikaattorina meneillään olevista prosesseista, kuten tietojen lataamisesta, tiedostojen lataamisesta tai vaiheiden suorittamisesta prosessissa. Kun se asetetaan `Toolbar`:in sisälle, `ProgressBar` asettuu siististi alemman reunan mukaan, tehden siitä huomaamattoman samalla, kun se selvästi viestittää käyttäjille edistymistä.
 
-Voit yhdistää sen muihin komponentteihin työkalurivissä, kuten painikkeisiin tai etiketteihin, ilman, että asettelu häiriintyy.
+Voit yhdistää sen muihin komponentteihin työkalupalkissa, kuten painikkeisiin tai etiketteihin häiritsemättä asettelua.
 
-<AppLayoutViewer path='/webforj/toolbarprogressbar?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.java'
+<ComponentDemo
+path='/webforj/toolbarprogressbar'
+frame='desktop'
+files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.java']}
 />
 
-## Tyylit {#styling}
+## Styling {#styling}
 
-### Teemat {#themes}
+### Themes {#themes}
 
-`Toolbar`-komponentit sisältävät <JavadocLink type="foundation" location="com/webforj/component/Theme">seitsemän sisäänrakennettua teemaa</JavadocLink>, jotka mahdollistavat nopean visuaalisen mukauttamisen:
+`Toolbar` komponentit sisältävät <JavadocLink type="foundation" location="com/webforj/component/Theme">seitsemän sisäänrakennettua teemaa</JavadocLink> nopeaa visuaalista mukauttamista varten:
 
-<ComponentDemo 
-path='/webforj/toolbartheme?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java' 
-height = '475px'
+<ComponentDemo
+path='/webforj/toolbartheme'
+files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java']}
+height='590px'
 />
 
 <TableBuilder name="Toolbar" />

@@ -2,6 +2,7 @@
 sidebar_position: 21
 title: Debouncing
 slug: debouncing
+description: Delay actions until activity settles using the Debouncer class for search-as-you-type, autosave, and other rate-limited UI work.
 ---
 
 <DocChip chip='since' label='25.11' />
@@ -10,8 +11,8 @@ slug: debouncing
 Debouncing is a technique that delays executing an action until a specified time has elapsed since the last call. Each new call resets the timer. This is useful for scenarios like search-as-you-type, where you want to wait until the user stops typing before executing a search query.
 
 <ComponentDemo
-path='/webforj/debouncer?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/debouncer/DebouncerView.java'
+path='/webforj/debouncer'
+files={['src/main/java/com/webforj/samples/views/debouncer/DebouncerView.java']}
 height='265px'
 />
 

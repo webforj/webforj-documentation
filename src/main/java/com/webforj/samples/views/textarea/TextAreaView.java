@@ -32,7 +32,8 @@ public class TextAreaView extends Composite<FlexLayout> {
         .setMargin("50px auto")
         .setMaxWidth("400px");
 
-    feedbackArea.setPlaceholder("Enter your feedback here...")
+    feedbackArea
+        .setPlaceholder("Enter your feedback here...")
         .setWidth("100%")
         .setMaxWidth("800px")
         .setMaxLength(MAX_CHARACTERS)
@@ -42,20 +43,21 @@ public class TextAreaView extends Composite<FlexLayout> {
 
     updateCharCount(feedbackArea.getValue());
 
-    charCount.setStyle("font-size", "12px")
-        .setStyle("color", "var(--dwc-color-gray-text)");
+    charCount.setStyle("font-size", "12px").setStyle("color", "var(--dwc-color-gray-text)");
 
-    submitButton.onClick(e -> {
-      String input = feedbackArea.getValue().trim();
-      if (!input.isEmpty()) {
-        Toast.show("Thank you for your feedback!", Theme.SUCCESS);
-        feedbackArea.setValue("");
-        updateCharCount("");
-      }
-    });
+    submitButton.onClick(
+        e -> {
+          String input = feedbackArea.getValue().trim();
+          if (!input.isEmpty()) {
+            Toast.show("Thank you for your feedback!", Theme.SUCCESS);
+            feedbackArea.setValue("");
+            updateCharCount("");
+          }
+        });
 
     FlexLayout bottomRowLayout = new FlexLayout();
-    bottomRowLayout.setDirection(FlexDirection.ROW)
+    bottomRowLayout
+        .setDirection(FlexDirection.ROW)
         .setJustifyContent(FlexJustifyContent.BETWEEN)
         .setAlignContent(FlexContentAlignment.CENTER)
         .setWidth("100%");

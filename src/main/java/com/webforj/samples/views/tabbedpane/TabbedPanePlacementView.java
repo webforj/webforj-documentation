@@ -41,8 +41,9 @@ public class TabbedPanePlacementView extends Composite<FlexLayout> {
     for (Placement placement : Placement.values()) {
       placements.add(placement.toString());
     }
-    placements.setWidth("200px")
-            .selectIndex(0)
-            .onSelect(e -> pane.setPlacement(Placement.valueOf(e.getSelectedItem().getText())));
+    placements
+        .setWidth("200px")
+        .selectIndex(0)
+        .onSelect(e -> pane.setPlacement(Placement.valueOf(e.getSelectedItem().getText())));
   }
 }

@@ -10,9 +10,6 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-import java.util.Arrays;
-import java.util.function.Predicate;
-
 @Route
 @FrameTitle("Badge - Themes")
 public class BadgeThemesView extends Composite<FlexLayout> {
@@ -21,10 +18,10 @@ public class BadgeThemesView extends Composite<FlexLayout> {
 
   public BadgeThemesView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-m)")
-      .setPadding("var(--dwc-space-l)")
-      .setMargin("0 auto")
-      .setMaxWidth("700px");
+        .setSpacing("var(--dwc-space-m)")
+        .setPadding("var(--dwc-space-l)")
+        .setMargin("0 auto")
+        .setMaxWidth("700px");
 
     FlexLayout solidRow = createBadgeRow();
     FlexLayout outlineRow = createBadgeRow();
@@ -33,12 +30,10 @@ public class BadgeThemesView extends Composite<FlexLayout> {
       String themeName = theme.name();
       if (themeName.startsWith("OUTLINED")) {
         String text = themeName.split("_")[1];
-        String name = text.transform(s ->
-          s.charAt(0) + s.substring(1).toLowerCase());
+        String name = text.transform(s -> s.charAt(0) + s.substring(1).toLowerCase());
         outlineRow.add(new Badge(name, theme));
       } else {
-        String name = themeName.transform(s ->
-          s.charAt(0) + s.substring(1).toLowerCase());
+        String name = themeName.transform(s -> s.charAt(0) + s.substring(1).toLowerCase());
         solidRow.add(new Badge(name, theme));
       }
     }
@@ -48,10 +43,10 @@ public class BadgeThemesView extends Composite<FlexLayout> {
 
   private FlexLayout createBadgeRow() {
     return FlexLayout.create()
-      .horizontal()
-      .wrap()
-      .build()
-      .setSpacing("var(--dwc-space-s)")
-      .setAlignment(FlexAlignment.CENTER);
+        .horizontal()
+        .wrap()
+        .build()
+        .setSpacing("var(--dwc-space-s)")
+        .setAlignment(FlexAlignment.CENTER);
   }
 }

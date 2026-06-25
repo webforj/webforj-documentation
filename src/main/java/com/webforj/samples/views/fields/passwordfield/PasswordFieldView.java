@@ -13,11 +13,8 @@ public class PasswordFieldView extends Composite<FlexLayout> {
   private final PasswordField passwordField = new PasswordField();
 
   public PasswordFieldView() {
-    self.setMargin("var(--dwc-space-m)")
-        .add(passwordField);
+    self.setMargin("var(--dwc-space-m)").add(passwordField);
 
-    passwordField.setWidth("200px")
-        .setLabel("Enter your Password:")
-        .setPlaceholder("Password");
+    passwordField.setWidth("200px").setLabel("Enter your Password:").setPlaceholder("Password");
   }
 }

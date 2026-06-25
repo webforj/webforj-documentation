@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Lifecycle Observers
+description: Hook into route lifecycle stages by implementing WillEnter, DidEnter, WillLeave, DidLeave, and Activate observer interfaces.
 ---
 
 Observers allow components to react to lifecycle events by implementing interfaces for specific stages. This pattern ensures a clean separation of concerns and simplifies handling navigation logic.

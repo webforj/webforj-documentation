@@ -3,6 +3,7 @@ sidebar_position: 1
 title: Security
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Protect webforJ routes with declarative annotations and centralized authentication and authorization enforcement.
 ---
 
 <Head>
@@ -20,6 +21,8 @@ This feature is in public preview and ready for production use. During the previ
 :::
 
 In modern web applications, **security** refers to controlling access to different parts of your app based on user identity and permissions. In webforJ, security provides a framework for **route-level access control**, where you can protect views, require authentication, and enforce role-based permissions.
+
+<AISkillTip skill="webforj-securing-apps" />
 
 ## Traditional VS secured routing {#traditional-vs-secured-routing}
 

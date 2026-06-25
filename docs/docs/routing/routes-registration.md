@@ -1,6 +1,7 @@
 ---
 sidebar_position: 11
 title: Routes Registration
+description: Register, update, and remove routes at runtime through the RouteRegistry API for dynamic, role-aware navigation.
 ---
 
 In addition to [registering routes using the `@Route` annotations](./defining-routes), it's possible to dynamically register, update, or remove routes at runtime based on app logic, user roles, or other conditions. This flexibility enables you to manage navigation more dynamically, rather than statically defining routes at compile time.

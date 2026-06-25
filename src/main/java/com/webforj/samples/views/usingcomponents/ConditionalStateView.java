@@ -12,6 +12,7 @@ import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
@@ -70,6 +71,7 @@ public class ConditionalStateView extends Composite<FlexLayout> {
 
     self.setDirection(FlexDirection.COLUMN);
     self.setAlignment(FlexAlignment.CENTER);
+    self.setJustifyContent(FlexJustifyContent.CENTER);
     self.addClassName("conditional-container");
     self.add(card);
   }
@@ -78,9 +80,10 @@ public class ConditionalStateView extends Composite<FlexLayout> {
     usernameField.addValueChangeListener(event -> checkFieldsAndUpdateButton());
     passwordField.addValueChangeListener(event -> checkFieldsAndUpdateButton());
 
-    submitButton.onClick(e -> {
-      Toast.show("Signed in as " + usernameField.getValue());
-    });
+    submitButton.onClick(
+        e -> {
+          Toast.show("Signed in as " + usernameField.getValue());
+        });
   }
 
   private void checkFieldsAndUpdateButton() {

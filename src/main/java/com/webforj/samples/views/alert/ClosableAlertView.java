@@ -3,7 +3,6 @@ package com.webforj.samples.views.alert;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.alert.Alert;
-import com.webforj.component.alert.event.AlertCloseEvent;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
@@ -28,16 +27,19 @@ public class ClosableAlertView extends Composite<FlexLayout> {
         .setMargin("var(--dwc-space-l)")
         .add(alert, reopenButton);
 
-    alert.setTheme(Theme.INFO)
+    alert
+        .setTheme(Theme.INFO)
         .setClosable(true)
         .setMaxWidth("400px")
         .onClose(e -> reopenButton.setVisible(true));
 
-    reopenButton.setTheme(ButtonTheme.PRIMARY)
+    reopenButton
+        .setTheme(ButtonTheme.PRIMARY)
         .setVisible(false)
-        .onClick(e -> {
-          alert.open();
-          reopenButton.setVisible(false);
-        });
+        .onClick(
+            e -> {
+              alert.open();
+              reopenButton.setVisible(false);
+            });
   }
 }

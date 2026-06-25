@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Accordion
-sidebar_class_name: new-content
+description: Group collapsible panels with the Accordion and AccordionPanel components to toggle visibility and coordinate expand or collapse behavior.
 ---
 
 <DocChip chip='shadow' />
@@ -34,8 +34,8 @@ AccordionPanel panel = new AccordionPanel("Title", new Paragraph("Body content."
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordionbasic'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionBasicView.java'
-height='500px'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionBasicView.java']}
+height='550px'
 />
 <!-- vale on -->
 
@@ -77,7 +77,7 @@ Accordion accordion = new Accordion(panel1, panel2, panel3);
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordiongroup'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionGroupView.java'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionGroupView.java']}
 height='400px'
 />
 <!-- vale on -->
@@ -103,8 +103,8 @@ accordion.closeAll();
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordionmultiple'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionMultipleView.java'
-height='500px'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionMultipleView.java']}
+height='575px'
 />
 <!-- vale on -->
 
@@ -129,8 +129,8 @@ accordion.setEnabled(false);
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordiondisabled'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionDisabledView.java'
-height='600px'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionDisabledView.java']}
+height='650px'
 />
 <!-- vale on -->
 
@@ -159,7 +159,7 @@ Content added via `addToHeader()` fully replaces the default label text. `setLab
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordioncustomheader'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionCustomHeaderView.java'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionCustomHeaderView.java']}
 height='300px'
 />
 <!-- vale on -->
@@ -179,7 +179,7 @@ panel.setIcon(null);
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordioncustomicon'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionCustomIconView.java'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionCustomIconView.java']}
 height='200px'
 />
 <!-- vale on -->
@@ -200,7 +200,7 @@ outer.add(innerAccordion);
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/accordionnested'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionNestedView.java'
+files={['src/main/java/com/webforj/samples/views/accordion/AccordionNestedView.java']}
 height='550px'
 />
 <!-- vale on -->

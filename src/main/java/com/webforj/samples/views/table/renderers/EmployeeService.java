@@ -11,8 +11,10 @@ public final class EmployeeService {
 
   public static CollectionRepository<Employee> getEmployees() {
     List<Employee> data =
-        new Gson().fromJson(Assets.contentOf(Assets.resolveContextUrl("context://data/employees.json")),
-            new TypeToken<List<Employee>>() {});
+        new Gson()
+            .fromJson(
+                Assets.contentOf(Assets.resolveContextUrl("context://data/employees.json")),
+                new TypeToken<List<Employee>>() {});
     return new CollectionRepository<>(data);
   }
 }

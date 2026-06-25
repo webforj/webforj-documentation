@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-dialog>
 sidebar_class_name: sidebar--item__hidden
 slug: dialog
-description: A user guide article for the dialog
+description: Style the dwc-dialog client component via CSS variables, shadow parts, and slots to theme the modal surface, header, body, and footer.
 // pagination_prev: null
 // pagination_next: null
 ---

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Route Patterns
+description: Define dynamic URL segments, optional parameters, wildcards, and regex constraints to match webforJ routes precisely.
 ---
 
 **Route Patterns** are used to define how URLs map to specific views, including dynamic and optional segments, regular expressions, and wildcards. Route patterns enable the framework to match URLs, extract parameters, and generate URLs dynamically. They play a critical role in structuring an app's navigation and component rendering based on the browser's location.

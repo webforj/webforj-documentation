@@ -18,16 +18,15 @@ public class ButtonEventView extends Composite<FlexLayout> {
   private final Button button = new Button("Click Me!");
 
   public ButtonEventView() {
-    button.setWidth("150px")
-        .onClick(e -> {
-          text.setText("Current Counter: " + (++counter));
-          payload.setText("Event payload: " + e.getData());
-        });
+    button
+        .setWidth("150px")
+        .onClick(
+            e -> {
+              text.setText("Current Counter: " + (++counter));
+              payload.setText("Event payload: " + e.getData());
+            });
 
-    FlexLayout textDisplay = FlexLayout.create(text, payload)
-        .vertical()
-        .build()
-        .setSpacing("0px");
+    FlexLayout textDisplay = FlexLayout.create(text, payload).vertical().build().setSpacing("0px");
 
     self.setDirection(FlexDirection.ROW)
         .setSpacing("var(--dwc-space-l)")

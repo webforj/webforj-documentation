@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-numberfield-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: numberfield-spinner
-description: A user guide article for the numberfield-spinner
+description: Style the dwc-numberfield-spinner increment and decrement controls with CSS variables and shadow parts for button theming.
 // pagination_prev: null
 // pagination_next: null
 ---

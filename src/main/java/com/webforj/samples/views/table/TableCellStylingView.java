@@ -7,7 +7,6 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.table.Column;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.Route;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,33 +18,35 @@ public class TableCellStylingView extends Composite<FlexLayout> {
 
   public TableCellStylingView() {
     self.setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-l)")
-      .setMargin("var(--dwc-space-xl)")
-      .add(table);
+        .setSpacing("var(--dwc-space-l)")
+        .setMargin("var(--dwc-space-xl)")
+        .add(table);
 
-    List<Person> data = List.of(
-      new Person("Alice", 28, "New York"),
-      new Person("Bob", 35, "Chicago"),
-      new Person("Charlie", 25, "Los Angeles"),
-      new Person("David", 40, "San Francisco"),
-      new Person("Eve", 30, "Boston"),
-      new Person("Frank", 45, "Miami")
-    );
+    List<Person> data =
+        List.of(
+            new Person("Alice", 28, "New York"),
+            new Person("Bob", 35, "Chicago"),
+            new Person("Charlie", 25, "Los Angeles"),
+            new Person("David", 40, "San Francisco"),
+            new Person("Eve", 30, "Boston"),
+            new Person("Frank", 45, "Miami"));
 
     table.addColumn("Name", Person::getName).setSortable(true);
     table.addColumn("City", Person::getCity).setSortable(true);
     Column<Person, Integer> ageCol = table.addColumn("Age", Person::getAge).setSortable(true);
 
-    table.setItems(data)
-      .setSize("100%", "260px")
-      .setCellPartProvider((person, column) -> {
-        List<String> parts = new ArrayList<>();
-        if (column == ageCol && person.getAge() > 30) {
-          parts.add("cell-highlight");
-        }
-        return parts;
-      });
-    
+    table
+        .setItems(data)
+        .setSize("100%", "260px")
+        .setCellPartProvider(
+            (person, column) -> {
+              List<String> parts = new ArrayList<>();
+              if (column == ageCol && person.getAge() > 30) {
+                parts.add("cell-highlight");
+              }
+              return parts;
+            });
+
     table.setColumnsToAutoFit();
   }
 }

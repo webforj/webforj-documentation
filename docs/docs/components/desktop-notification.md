@@ -1,6 +1,7 @@
 ---
 title: DesktopNotification
 sidebar_position: 29
+description: Send native OS notifications outside the browser window with the DesktopNotification component for real-time messages, alerts, and status changes.
 ---
 
 <DocChip chip='since' label='25.00' />

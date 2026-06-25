@@ -13,10 +13,8 @@ public class DateTimeFieldView extends Composite<FlexLayout> {
   private final DateTimeField departure = new DateTimeField();
 
   public DateTimeFieldView() {
-    self.setMargin("var(--dwc-space-m)")
-        .add(departure);
+    self.setMargin("var(--dwc-space-m)").add(departure);
 
-    departure.setLabel("Departure Date and Time:")
-        .setWidth("200px");
+    departure.setLabel("Departure Date and Time:").setWidth("200px");
   }
 }

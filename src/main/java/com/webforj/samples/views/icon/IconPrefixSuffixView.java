@@ -21,14 +21,11 @@ public class IconPrefixSuffixView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-l)");
 
     Icon arrow = TablerIcon.create("arrow-narrow-right");
-    Button nextButton = new Button("Next")
-        .setSuffixComponent(arrow)
-        .setTheme(ButtonTheme.PRIMARY);
+    Button nextButton = new Button("Next").setSuffixComponent(arrow).setTheme(ButtonTheme.PRIMARY);
 
     Icon filter = TablerIcon.create("filter");
-    Button filterButton = new Button("Filter")
-        .setPrefixComponent(filter)
-        .setTheme(ButtonTheme.DEFAULT);
+    Button filterButton =
+        new Button("Filter").setPrefixComponent(filter).setTheme(ButtonTheme.DEFAULT);
 
     self.add(nextButton, filterButton);
   }

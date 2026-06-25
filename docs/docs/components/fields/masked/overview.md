@@ -3,6 +3,7 @@ sidebar_position: 1
 title: Masked Fields
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: Enforce structured input for dates, times, numbers, and identifiers with the masked field components and their shared formatting rules.
 ---
 
 <Head>
