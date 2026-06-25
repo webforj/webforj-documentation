@@ -19,6 +19,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
 @Route("scroll-demo")
+@InlineStyleSheet("dwc-window-center {overflow: auto}")
 public class ScrollDemoView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Button jumpButton = new Button("Jump to footer", ButtonTheme.PRIMARY);
