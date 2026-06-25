@@ -6,53 +6,52 @@ components: []
 difficulty: intermediate
 ---
 
-Hold an `EventDispatcher` inside the `Composite`, dispatch your event object from any internal handler, and expose `onRatingChanged` so callers register listeners without touching implementation details.
+Hold an `EventDispatcher` inside the `Composite`, dispatch your event object from any internal handler, and expose `onRatingChanged` so callers register listeners without reaching into the component's internals. The `RatingPicker` owns its star buttons and recolors them itself when the value changes; the event simply carries the new rating.
 
 ```java
-import java.util.List;
-
-import com.webforj.component.Component;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.IconButton;
 import com.webforj.component.icons.TablerIcon;
-import com.webforj.concern.HasComponents;
 import com.webforj.dispatcher.EventDispatcher;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
+import java.util.ArrayList;
 import java.util.EventObject;
+import java.util.List;
 
-public class RatingPicker extends Composite<Div> implements HasComponents {
-
-  private final EventDispatcher dispatcher = new EventDispatcher();
-  private int value = 0;
+public class RatingPicker extends Composite<Div> {
   private final Div self = getBoundComponent();
+  private final EventDispatcher dispatcher = new EventDispatcher();
+  private final List<IconButton> stars = new ArrayList<>();
+  private int value = 0;
 
   public RatingPicker() {
     for (int i = 1; i <= 5; i++) {
       int rating = i;
       IconButton star = new IconButton(TablerIcon.create("star"));
       star.setTheme(Theme.GRAY);
-      star.setUserData("rating", rating);
       star.onClick(e -> setValue(rating));
+      stars.add(star);
       self.add(star);
     }
   }
 
-  @Override
-  public List<Component> getComponents() {
-    List<Component> components = self.getComponents();
-    return components;
-  }
-
   public void setValue(int newValue) {
     this.value = newValue;
-    dispatcher.dispatchEvent(new RatingChangedEvent(this));
+    updateStars();
+    dispatcher.dispatchEvent(new RatingChangedEvent(this, newValue));
   }
 
   public int getValue() {
     return value;
+  }
+
+  private void updateStars() {
+    for (int i = 0; i < stars.size(); i++) {
+      stars.get(i).setTheme(i < value ? Theme.PRIMARY : Theme.GRAY);
+    }
   }
 
   public ListenerRegistration<RatingChangedEvent> onRatingChanged(
@@ -63,9 +62,9 @@ public class RatingPicker extends Composite<Div> implements HasComponents {
   public static class RatingChangedEvent extends EventObject {
     private final int value;
 
-    public RatingChangedEvent(Object source) {
+    public RatingChangedEvent(Object source, int value) {
       super(source);
-      this.value = ((RatingPicker) source).getValue();
+      this.value = value;
     }
 
     public int getValue() {
@@ -75,40 +74,23 @@ public class RatingPicker extends Composite<Div> implements HasComponents {
 }
 ```
 
-Then, when you use `RatingPicker` in another portion of your app, you can use the custom event as desired, like changing the themes of the star icons:
+Any view that uses `RatingPicker` subscribes through `onRatingChanged` and reacts to the typed event. The parent reads the value from the event without touching the picker's stars:
 
 ```java
-import java.util.List;
-
-import com.webforj.component.Component;
 import com.webforj.component.Composite;
-import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
-import com.webforj.component.icons.IconButton;
+import com.webforj.component.html.elements.Paragraph;
 import com.webforj.router.annotation.Route;
 
-@Route()
+@Route
 public class RatingView extends Composite<Div> {
-  
-  Div self = getBoundComponent();
-  RatingPicker ratingPicker = new RatingPicker();
+  private final Div self = getBoundComponent();
+  private final RatingPicker ratingPicker = new RatingPicker();
+  private final Paragraph summary = new Paragraph("No rating yet");
 
-  public RatingView(){
-
-    ratingPicker.onRatingChanged(e -> {
-      List<Component> stars = ratingPicker.getComponents();
-      int rating = e.getValue();
-      for (int i = 0; i <= 4; i++) {
-        IconButton starButton = (IconButton) stars.get(i);
-        if ((int) starButton.getUserData("rating") <= rating) {
-          starButton.setTheme(Theme.PRIMARY);
-        } else {
-          starButton.setTheme(Theme.GRAY);
-        }
-      }
-    });
-
-    self.add(ratingPicker);
+  public RatingView() {
+    ratingPicker.onRatingChanged(e -> summary.setText("You rated: " + e.getValue() + " / 5"));
+    self.add(ratingPicker, summary);
   }
 }
 ```
