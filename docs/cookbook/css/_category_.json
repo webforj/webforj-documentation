@@ -1,4 +1,5 @@
 {
-    "label": "CSS & Styling",
-    "position": 10
+  "label": "CSS & Styling",
+  "position": 10,
+  "className": "cat-icon cat-icon--css"
 }

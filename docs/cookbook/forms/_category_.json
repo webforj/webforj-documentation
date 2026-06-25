@@ -1,4 +1,5 @@
 {
-    "label": "Forms",
-    "position": 40
+  "label": "Forms",
+  "position": 40,
+  "className": "cat-icon cat-icon--forms"
 }

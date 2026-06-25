@@ -1,4 +1,5 @@
 {
-    "label": "Routing",
-    "position": 20
+  "label": "Routing",
+  "position": 20,
+  "className": "cat-icon cat-icon--routing"
 }

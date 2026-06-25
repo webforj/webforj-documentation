@@ -83,4 +83,29 @@
   .cat-icon--upgrading > .menu__list-item-collapsible > .menu__link::before {
     @include _icon("arrow-up-circle");
   }
+
+  // Cookbook categories
+  .cat-icon--css > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("brush");
+  }
+
+  .cat-icon--forms > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("forms");
+  }
+
+  .cat-icon--layout > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("layout-2");
+  }
+
+  .cat-icon--theme > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("color-swatch");
+  }
+
+  .cat-icon--table > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("table");
+  }
+
+  .cat-icon--javascript > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("brand-javascript");
+  }
 }

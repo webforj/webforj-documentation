@@ -1,4 +1,5 @@
 {
-    "label": "Components",
-    "position": 5
+  "label": "Components",
+  "position": 5,
+  "className": "cat-icon cat-icon--components"
 }

@@ -1,4 +1,5 @@
 {
-    "label": "Theme",
-    "position": 25
+  "label": "Theme",
+  "position": 25,
+  "className": "cat-icon cat-icon--theme"
 }
