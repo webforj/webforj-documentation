@@ -114,7 +114,7 @@ Si cette méthode est utilisée sur un `Tab` qui est déjà associé à un `Comp
 
 ## Configuration et mise en page {#configuration-and-layout}
 
-La classe `TabbedPane` a deux parties constitutives : un `Tab` qui est affiché à un endroit spécifié, et un composant à afficher. Cela peut être un seul composant, ou un composant [`Composite`](../building-ui/composite-components), permettant d'afficher des composants plus complexes dans la section de contenu d'un onglet.
+La classe `TabbedPane` a deux parties constitutives : un `Tab` qui est affiché à un endroit spécifié, et un composant à afficher. Cela peut être un seul composant, ou un composant [`Composite`](../building-ui/composing-components), permettant d'afficher des composants plus complexes dans la section de contenu d'un onglet.
 
 ### Glissement {#swiping}
 

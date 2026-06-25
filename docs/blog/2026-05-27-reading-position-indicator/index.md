@@ -76,7 +76,7 @@ content
 
 ### Composite component
 
-Since all the UI needs to go somewhere, I decided to make my [composite component](/docs/building-ui/composite-components) another `FlexLayout`. My composite component also included the scrollbar, so anything larger than the screen will overflow.
+Since all the UI needs to go somewhere, I decided to make my [composite component](/docs/building-ui/composing-components) another `FlexLayout`. My composite component also included the scrollbar, so anything larger than the screen will overflow.
 
 
 ```java

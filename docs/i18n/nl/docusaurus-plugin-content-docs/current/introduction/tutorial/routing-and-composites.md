@@ -9,7 +9,7 @@ Je verplaatst de UI die je hebt gemaakt in [Werken met Gegevens](/docs/introduct
 Vervolgens verbind je deze pagina's zodat je app in staat is om tussen hen te navigeren door deze concepten toe te passen:
 
 - [Routing](/docs/routing/overview)
-- [Samenstellende componenten](/docs/building-ui/composite-components)
+- [Samenstellende componenten](/docs/building-ui/composing-components)
 - De [`ColumnsLayout`](/docs/components/columns-layout) component
 
 Het voltooien van deze stap creëert een versie van [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
@@ -122,7 +122,7 @@ Naast dat beide view-routes zijn, delen `MainView` en `FormView` aanvullende ken
 
 ### Het gebruik van `Composite` componenten {#using-composite-components}
 
-Toen de app een enkele pagina was, bewaarde je de componenten binnen een `Frame`. Voortaan, met een app met meerdere views, moet je die UI-componenten binnen [`Composite` componenten](/docs/building-ui/composite-components) wikkelen.
+Toen de app een enkele pagina was, bewaarde je de componenten binnen een `Frame`. Voortaan, met een app met meerdere views, moet je die UI-componenten binnen [`Composite` componenten](/docs/building-ui/composing-components) wikkelen.
 
 `Composite` componenten zijn wrappers die het gemakkelijk maken om herbruikbare componenten te creëren. 
 Om een `Composite` component te maken, breid je de `Composite` klasse uit met een opgegeven gebonden component dat als basis van de klasse dient, bijv. `Composite<FlexLayout>`. 

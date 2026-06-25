@@ -9,6 +9,9 @@ import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.html.elements.Span;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.progressbar.ProgressBar;
 import com.webforj.router.annotation.FrameTitle;
@@ -19,11 +22,18 @@ import java.util.Map;
 @Route
 @FrameTitle("Analytics Card")
 @StyleSheet("ws://composite/analyticscomposite.css")
-public class AnalyticsCardCompositeView extends Composite<Div> {
-  private final Div self = getBoundComponent();
+public class AnalyticsCardCompositeView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public AnalyticsCardCompositeView() {
-    self.addClassName("analytics-card").add(buildContent());
+    Div card = new Div();
+    card.addClassName("analytics-card").add(buildContent());
+
+    self.setDirection(FlexDirection.COLUMN);
+    self.setAlignment(FlexAlignment.CENTER);
+    self.setJustifyContent(FlexJustifyContent.CENTER);
+    self.addClassName("analytics-stage");
+    self.add(card);
   }
 
   private FlexLayout buildContent() {

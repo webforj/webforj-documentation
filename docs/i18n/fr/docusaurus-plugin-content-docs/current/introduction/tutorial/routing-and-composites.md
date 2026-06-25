@@ -9,7 +9,7 @@ Vous déplacerez l'interface utilisateur que vous avez créée dans [Travailler 
 Ensuite, vous connecterez ces pages afin que votre application puisse naviguer entre elles en appliquant ces concepts :
 
 - [Routage](/docs/routing/overview)
-- [Composants composites](/docs/building-ui/composite-components)
+- [Composants composites](/docs/building-ui/composing-components)
 - Le composant [`ColumnsLayout`](/docs/components/columns-layout)
 
 Compléter cette étape crée une version de [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
@@ -122,7 +122,7 @@ Au-delà d'être toutes deux des routes de vue, `MainView` et `FormView` partage
 
 ### Utilisation de composants `Composite` {#using-composite-components}
 
-Lorsque l'application était monopage, vous stockiez les composants à l'intérieur d'un `Frame`. À partir de maintenant, avec une application à plusieurs vues, vous devrez envelopper ces composants UI à l'intérieur de composants [`Composite`](/docs/building-ui/composite-components).
+Lorsque l'application était monopage, vous stockiez les composants à l'intérieur d'un `Frame`. À partir de maintenant, avec une application à plusieurs vues, vous devrez envelopper ces composants UI à l'intérieur de composants [`Composite`](/docs/building-ui/composing-components).
 
 Les composants `Composite` sont des enveloppes qui facilitent la création de composants réutilisables. 
 Pour créer un composant `Composite`, héritez de la classe `Composite` avec un composant lié spécifié qui sert de fondation de la classe, par exemple, `Composite<FlexLayout>`. 

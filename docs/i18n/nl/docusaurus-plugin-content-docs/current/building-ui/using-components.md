@@ -333,7 +333,7 @@ Gebruik `ComponentLifecycleObserver` voor:
 - Coördineren van meerdere componenten
 - Schoonmaken van externe bronnen
 
-Voor het uitvoeren van code nadat een component aan de DOM is gekoppeld, zie [`whenAttached()`](/docs/building-ui/composite-components) in de gids voor samengestelde componenten.
+Voor het uitvoeren van code nadat een component aan de DOM is gekoppeld, zie [`whenAttached()`](/docs/building-ui/composing-components) in de gids voor samengestelde componenten.
 
 ## Gebruikersdata {#user-data}
 

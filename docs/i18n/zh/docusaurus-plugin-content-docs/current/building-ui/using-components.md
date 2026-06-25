@@ -332,7 +332,7 @@ public class FormCoordinator {
 - 协调多个组件
 - 清理外部资源
 
-要执行代码在组件附加到 DOM 后，请参阅 [`whenAttached()`](/docs/building-ui/composite-components) 中的复合组件指南。
+要执行代码在组件附加到 DOM 后，请参阅 [`whenAttached()`](/docs/building-ui/composing-components) 中的复合组件指南。
 
 ## 用户数据 {#user-data}
 

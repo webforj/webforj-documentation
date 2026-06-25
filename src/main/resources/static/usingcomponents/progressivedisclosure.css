@@ -1,6 +1,6 @@
 .settings-container {
-    min-height: 100vh;
     padding: var(--dwc-space-xl);
+    box-sizing: border-box;
 }
 
 .settings-card {

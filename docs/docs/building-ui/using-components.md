@@ -123,10 +123,6 @@ if (isLoading) {
 }
 ```
 
-:::note Legacy approach
-[`@InlineStyleSheet`](/docs/managing-resources/importing-assets#injecting-css) is a legacy approach and is generally not recommended for new projects. In most cases, keep your styles in separate CSS files.
-:::
-
 ## Component state {#component-state}
 
 Beyond content and appearance, components have state properties that determine whether they're visible and whether they respond to user interaction. The two most commonly used are `setVisible()` and `setEnabled()`.
@@ -149,6 +145,10 @@ TextField nameField = new TextField("Name");
 nameField.addValueChangeListener(e -> submitButton.setEnabled(!e.getValue().isBlank()));
 ```
 
+:::warning Disabled and hidden aren't security
+`setVisible(false)` and `setEnabled(false)` affect the UI only. They don't stop a determined user from invoking the underlying action through the browser or a crafted request, so never rely on them to protect sensitive operations. Always enforce access control on the server. See [Disabled and hidden aren't security](/docs/security/application-security/production-hardening#disabled-and-hidden-arent-security) for more details.
+:::
+
 The following login form demonstrates `setEnabled()` in practice. The sign-in button stays disabled until both fields have content, making it clear to the user that input is required before proceeding:
 
 <ComponentDemo
@@ -157,7 +157,7 @@ files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java',
   'src/main/resources/static/usingcomponents/conditionalstate.css',
 ]}
-height='400px'
+height='450px'
 />
 
 ## Working with containers {#working-with-containers}
@@ -217,10 +217,14 @@ This is useful when you need to replace content entirely, such as swapping a loa
 
 ## Form validation {#form-validation}
 
-Coordinating multiple components to gate a submit action is one of the most common patterns in webforJ UIs. The core idea is simple: each input field registers a listener, and whenever any value changes, the form re-evaluates whether all criteria are met and updates the submit button accordingly.
-
-This is preferable to showing validation errors only after the user clicks submit, because it gives continuous feedback and prevents unnecessary submissions. The submit button serves as the indicator: disabled means the form isn't ready, enabled means it is.
-
+Coordinating multiple components to gate a submit action is a common pattern in webforJ UIs. The basic idea is that each input field registers a listener, and whenever a value changes, the form re-evaluates whether all criteria are met and updates the submit button accordingly.
+ 
+The example below wires this up manually so you can see how component state and event listeners work together. It isn't the recommended approach for real forms: manual listener logic becomes hard to maintain as forms grow, and it doesn't connect your components to an underlying data model.
+ 
+:::tip Use data binding for form validation
+For production forms, use [data binding](/docs/data-binding/overview). It covers validation, two-way synchronization between components and your model, and value transformation through `BindingContext`. The manual pattern shown here is for illustration only.
+:::
+ 
 In this contact form, the name field must not be empty, the email must contain an `@` symbol, and the message must be at least 10 characters long:
 
 <ComponentDemo
@@ -331,7 +335,7 @@ Use `ComponentLifecycleObserver` for:
 - Coordinating multiple components
 - Cleaning up external resources
 
-For executing code after a component is attached to the DOM, see [`whenAttached()`](/docs/building-ui/composite-components) in the Composite Components guide.
+For executing code after a component is attached to the DOM, see `whenAttached()` in the [Composing Components](/docs/building-ui/composing-components) guide.
 
 ## User data {#user-data}
 

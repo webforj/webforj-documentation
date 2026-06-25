@@ -114,7 +114,7 @@ Si este método se usa en una `Tab` que ya está asociada con un `Component`, el
 
 ## Configuración y diseño {#configuration-and-layout}
 
-La clase `TabbedPane` tiene dos partes constitutivas: una `Tab` que se muestra en una ubicación especificada, y un componente que se mostrará. Este puede ser un solo componente, o un componente [`Composite`](../building-ui/composite-components), permitiendo la visualización de componentes más complejos dentro de la sección de contenido de una pestaña.
+La clase `TabbedPane` tiene dos partes constitutivas: una `Tab` que se muestra en una ubicación especificada, y un componente que se mostrará. Este puede ser un solo componente, o un componente [`Composite`](../building-ui/composing-components), permitiendo la visualización de componentes más complejos dentro de la sección de contenido de una pestaña.
 
 ### Deslizamiento {#swiping}
 

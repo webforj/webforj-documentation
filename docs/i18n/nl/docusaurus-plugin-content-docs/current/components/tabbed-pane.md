@@ -114,7 +114,7 @@ Als deze methode wordt gebruikt op een `Tab` die al is geassocieerd met een `Com
 
 ## Configuratie en lay-out {#configuration-and-layout}
 
-De `TabbedPane`-klasse heeft twee samenstellende delen: een `Tab` die op een specifieke locatie wordt weergegeven, en een component die wordt weergegeven. Dit kan een enkele component zijn of een [`Composite`](../building-ui/composite-components) component, waarmee complexere componenten binnen de inhoudssectie van een tab kunnen worden weergegeven.
+De `TabbedPane`-klasse heeft twee samenstellende delen: een `Tab` die op een specifieke locatie wordt weergegeven, en een component die wordt weergegeven. Dit kan een enkele component zijn of een [`Composite`](../building-ui/composing-components) component, waarmee complexere componenten binnen de inhoudssectie van een tab kunnen worden weergegeven.
 
 ### Swipen {#swiping}
 

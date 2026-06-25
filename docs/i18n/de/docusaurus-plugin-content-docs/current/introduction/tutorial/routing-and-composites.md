@@ -9,7 +9,7 @@ Sie werden die Benutzeroberfläche, die Sie in [Arbeiten mit Daten](/docs/introd
 Dann verbinden Sie diese Seiten, sodass Ihre App in der Lage ist, zwischen ihnen zu navigieren, indem Sie diese Konzepte anwenden:
 
 - [Routing](/docs/routing/overview)
-- [Komposite Komponenten](/docs/building-ui/composite-components)
+- [Komposite Komponenten](/docs/building-ui/composing-components)
 - Die [`ColumnsLayout`](/docs/components/columns-layout) Komponente
 
 Wenn Sie diesen Schritt abschließen, erstellen Sie eine Version von [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
@@ -122,7 +122,7 @@ Neben der Tatsache, dass es sich bei beiden um Ansichts-Routen handelt, teilen `
 
 ### Verwendung von `Composite` Komponenten {#using-composite-components}
 
-Als die App eine Ein-Seiten-Anwendung war, hatten Sie die Komponenten innerhalb eines `Frame` gespeichert. Im Folgenden, mit einer App mit mehreren Ansichten, müssen Sie diese UI-Komponenten innerhalb von [`Composite`-Komponenten](/docs/building-ui/composite-components) umschließen.
+Als die App eine Ein-Seiten-Anwendung war, hatten Sie die Komponenten innerhalb eines `Frame` gespeichert. Im Folgenden, mit einer App mit mehreren Ansichten, müssen Sie diese UI-Komponenten innerhalb von [`Composite`-Komponenten](/docs/building-ui/composing-components) umschließen.
 
 `Composite`-Komponenten sind Wrapper, die es einfach machen, wiederverwendbare Komponenten zu erstellen. 
 Um eine `Composite`-Komponente zu erstellen, erweitern Sie die `Composite`-Klasse mit einer bestimmten gebundenen Komponente, die als Grundlage der Klasse dient, z. B. `Composite<FlexLayout>`. 
