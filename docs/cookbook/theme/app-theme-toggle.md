@@ -24,7 +24,7 @@ public class AppThemeToggle extends Composite<Div> {
     iconButton.setTheme(Theme.GRAY)
         .onClick(e -> switchAppTheme());
 
-    switch (String.valueOf(App.getTheme())) {
+    switch (App.getTheme()) {
       case "light":
         updateButton("sun", "Switch to dark mode");
         break;
