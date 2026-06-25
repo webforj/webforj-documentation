@@ -6,7 +6,7 @@ components: [FlexLayout]
 difficulty: beginner
 ---
 
-Using a [FlexLayout](/docs/components/flex-layout), either on its own or as the bound component for a [Composite Component](/docs/building-ui/composite-components), use the `setJustifyContent()` and `setAlignment()` methods to align its content horizontally and vertically. Add at least one child so the centering is visible, and give the layout a height so there's room to center within.
+Using a [FlexLayout](/docs/components/flex-layout), either on its own or as the bound component for a [Composite Component](/docs/building-ui/composing-components), use the `setJustifyContent()` and `setAlignment()` methods to align its content horizontally and vertically. Add at least one child so the centering is visible, and give the layout a height so there's room to center within.
 
 ```java
 import com.webforj.component.Composite;
