@@ -62,7 +62,8 @@ For convenience, `ElementEventOptions` can be configured using annotations. Thes
 ### Example {#example-1}
 Consider the following example annotation:
 
-```java
-@EventOptions(data = {@EventData(key = "value", exp = "component.value")},
-debounce = @DebounceSettings(value = 200))
-```
+<SourceSnippet
+  file="src/main/java/com/webforj/samples/views/elementcomposite/RatingView.java"
+  region="building-ui.event-options.annotation"
+  showLineNumbers={false}
+/>

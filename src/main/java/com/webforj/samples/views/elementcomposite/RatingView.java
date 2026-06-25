@@ -111,7 +111,9 @@ public class RatingView extends Composite<FlexLayout> {
   }
 
   @EventName("sl-change")
+  // docs:start building-ui.event-options.annotation
   @EventOptions(data = {@EventData(key = "value", exp = "event.target.value")})
+  // docs:end building-ui.event-options.annotation
   public static final class ChangeEvent extends ComponentEvent<Rating> {
 
     public ChangeEvent(Rating component, Map<String, Object> payload) {
