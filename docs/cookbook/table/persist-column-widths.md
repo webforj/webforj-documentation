@@ -6,7 +6,9 @@ components: [Table]
 difficulty: intermediate
 ---
 
-Use explicit fixed-width columns, restore each column's saved width on startup, and write the resized column's new width from `onColumnResize`. Fixed widths keep neighboring columns from becoming hidden, implicit state. If your table uses flex or auto-fit sizing, persist that sizing model separately instead of saving only pixel widths.
+Give each column a fixed pixel width with `setWidth`, restore any saved width on startup, and write the resized column's new width from `onColumnResize`. `Product::getName` and `Product::getPrice` are getters on your own row type; replace `Product` and its accessors with your domain object.
+
+Fixed widths are deliberate here. Width and flex are mutually exclusive in the `Table` (setting one clears the other), so these columns use width only and never call `setFlex`. Because each column holds its own width, resizing one column doesn't reflow the others, and a saved pixel width restores exactly as it was. If your table uses flex or auto-fit sizing instead, persist that sizing model rather than raw pixel widths.
 
 ```java
 import com.webforj.component.Composite;
@@ -32,13 +34,11 @@ public class ProductsView extends Composite<Div> {
     addColumn("name", table.addColumn("name", Product::getName)
         .setLabel("Name")
         .setWidth(220f)
-        .setFlex(0f)
         .setResizable(true));
 
     addColumn("price", table.addColumn("price", Product::getPrice)
         .setLabel("Price")
         .setWidth(120f)
-        .setFlex(0f)
         .setResizable(true));
 
     columns.forEach(this::restoreWidth);
@@ -101,3 +101,5 @@ public class ProductsView extends Composite<Div> {
   }
 }
 ```
+
+Only columns the user actually resizes get a saved width. A column that was never dragged has no stored value, so `restoreWidth` leaves it at its declared default (220 for Name, 120 for Price). Because the widths are fixed and independent, this round-trips correctly across reloads without one column's size affecting another.
