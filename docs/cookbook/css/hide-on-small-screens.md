@@ -18,15 +18,21 @@ import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.ListEntry;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.html.elements.UnorderedList;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
 @Route("responsive-hide")
 @StyleSheet("ws://cookbook-static/responsive-hide.css")
-public class ResponsiveHideView extends Composite<Div> {
-  private final Div self = getBoundComponent();
+public class ResponsiveHideView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public ResponsiveHideView() {
-    self.addClassName("cookbook-responsive-hide");
+    self.setDirection(FlexDirection.ROW)
+        .setSpacing("var(--dwc-space-l)")
+        .setPadding("var(--dwc-space-xl)")
+        .setAlignment(FlexAlignment.START);
 
     Div main = new Div().addClassName("cookbook-responsive-hide__main");
     main.add(
@@ -42,6 +48,10 @@ public class ResponsiveHideView extends Composite<Div> {
             new ListEntry(new Anchor("#", "Cookbook"))));
 
     self.add(main, sidebar);
+
+    // Main fills the row; sidebar stays a fixed 240px.
+    self.setItemGrow(1, main);
+    self.setItemShrink(0, sidebar).setItemBasis("240px", sidebar);
   }
 }
 ```
@@ -49,28 +59,16 @@ public class ResponsiveHideView extends Composite<Div> {
 The sidecar lives at `src/main/resources/static/cookbook-static/responsive-hide.css` (kept outside `/cookbook/*`, which the docs site reserves):
 
 ```css
-.cookbook-responsive-hide {
-  display: flex;
-  gap: var(--dwc-space-l);
-  padding: var(--dwc-space-xl);
-  align-items: flex-start;
+.cookbook-responsive-hide__main,
+.cookbook-responsive-hide__sidebar {
+  background: var(--dwc-surface-2);
+  border: var(--dwc-border-width) var(--dwc-border-style) var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius);
+  padding: var(--dwc-space-l);
 }
 
 .cookbook-responsive-hide__main {
-  flex: 1 1 auto;
   min-width: 0;
-  background: var(--dwc-surface-2);
-  border: var(--dwc-border-width) var(--dwc-border-style) var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius);
-  padding: var(--dwc-space-l);
-}
-
-.cookbook-responsive-hide__sidebar {
-  flex: 0 0 240px;
-  background: var(--dwc-surface-2);
-  border: var(--dwc-border-width) var(--dwc-border-style) var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius);
-  padding: var(--dwc-space-l);
 }
 
 @media (max-width: 768px) {
@@ -78,6 +76,7 @@ The sidecar lives at `src/main/resources/static/cookbook-static/responsive-hide.
     display: none;
   }
 }
+
 ```
 
 Pick the breakpoint to match your layout's natural collapse point. `768px` is a common device breakpoint, but the technique works for any width. Use `min-width` instead if you'd rather progressively reveal the region as the viewport grows.
