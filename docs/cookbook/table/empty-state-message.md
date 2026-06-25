@@ -25,24 +25,16 @@ import java.util.List;
 @StyleSheet("ws://cookbook-static/empty-state.css")
 public class BooksView extends Composite<Div> {
   private final Div self = getBoundComponent();
-  private final List<Book> books = new ArrayList<>(List.of(
-      new Book("Modern Java", "A. Developer"),
-      new Book("Practical UI", "B. Designer")));
+  private final List<Book> books = new ArrayList<>(defaultBooks());
   private final CollectionRepository<Book> repository = new CollectionRepository<>(books);
   private final Table<Book> table = new Table<>();
-  private final Div emptyState = new Div();
+  private final EmptyState emptyState = new EmptyState();
 
   public BooksView() {
     table.addColumn("title", Book::title).setLabel("Title");
     table.addColumn("author", Book::author).setLabel("Author");
     table.setRepository(repository);
     table.setSize("100%", "60vh");
-
-    emptyState.addClassName("cookbook-empty-state");
-    emptyState.add(
-        FeatherIcon.BOOK.create().addClassName("cookbook-empty-state__icon"),
-        new Paragraph("No books found"));
-    emptyState.setVisible(false);
 
     Button clear = new Button("Clear list", e -> {
       books.clear();
@@ -51,8 +43,7 @@ public class BooksView extends Composite<Div> {
 
     Button restore = new Button("Restore books", e -> {
       books.clear();
-      books.add(new Book("Modern Java", "A. Developer"));
-      books.add(new Book("Practical UI", "B. Designer"));
+      books.addAll(defaultBooks());
       repository.commit();
     });
 
@@ -65,6 +56,12 @@ public class BooksView extends Composite<Div> {
     repository.addCommitListener(e -> refreshEmptyState());
   }
 
+  private static List<Book> defaultBooks() {
+    return List.of(
+        new Book("Modern Java", "A. Developer"),
+        new Book("Practical UI", "B. Designer"));
+  }
+
   private void refreshEmptyState() {
     boolean hasResults = repository.findAll().findAny().isPresent();
     table.setVisible(hasResults);
@@ -72,6 +69,21 @@ public class BooksView extends Composite<Div> {
   }
 
   public record Book(String title, String author) {}
+
+  private static class EmptyState extends Composite<Div> {
+    private final Div self = getBoundComponent();
+
+    EmptyState() {
+      self.addClassName("cookbook-empty-state");
+      self.add(
+          FeatherIcon.BOOK.create().addClassName("cookbook-empty-state__icon"),
+          new Paragraph("No books found"));
+    }
+
+    void setVisible(boolean visible) {
+      self.setVisible(visible);
+    }
+  }
 }
 ```
 
