@@ -227,14 +227,19 @@ function refreshClasspath() {
   return readFileSync(classpathFile, 'utf8').trim();
 }
 
-function compileSnippet(snippet, classpath) {
-  const sourceDir = join(sourceRoot, slugFor(snippet.block, snippet.index));
-  const outputDir = join(classesRoot, slugFor(snippet.block, snippet.index));
+function compileRecipeSnippets(snippets, classpath) {
+  const recipeBlock = snippets[0].block;
+  const recipeSlug = recipeBlock.rel.replace(/[^A-Za-z0-9_.-]/g, '_');
+  const sourceDir = join(sourceRoot, recipeSlug);
+  const outputDir = join(classesRoot, recipeSlug);
   mkdirSync(sourceDir, { recursive: true });
   mkdirSync(outputDir, { recursive: true });
 
-  const sourceFile = join(sourceDir, `${snippet.typeName}.java`);
-  writeFileSync(sourceFile, snippet.block.content, 'utf8');
+  const sourceFiles = snippets.map((snippet) => {
+    const sourceFile = join(sourceDir, `${snippet.typeName}.java`);
+    writeFileSync(sourceFile, snippet.block.content, 'utf8');
+    return sourceFile;
+  });
 
   try {
     runFirstAvailable(javacCandidates(), [
@@ -244,15 +249,22 @@ function compileSnippet(snippet, classpath) {
       classpath,
       '-d',
       outputDir,
-      sourceFile,
+      ...sourceFiles,
     ], { cwd: repoRoot });
-    return { ok: true, sourceFile, output: '' };
+    return snippets.map((snippet, index) => ({
+      snippet,
+      ok: true,
+      sourceFile: sourceFiles[index],
+      output: '',
+    }));
   } catch (error) {
-    return {
+    const output = `${error.stdout ?? ''}${error.stderr ?? ''}`.trim();
+    return snippets.map((snippet, index) => ({
+      snippet,
       ok: false,
-      sourceFile,
-      output: `${error.stdout ?? ''}${error.stderr ?? ''}`.trim(),
-    };
+      sourceFile: sourceFiles[index],
+      output,
+    }));
   }
 }
 
@@ -419,7 +431,7 @@ const MANUAL_CHECKS = {
     'Resize each column, reload the page, and verify every saved width is restored.',
     'Put an invalid width in LocalStorage and verify it is removed without breaking the table.',
   ],
-  'cookbook/theme/AppThemeToggle.md': [
+  'cookbook/theme/app-theme-toggle.md': [
     'Start in light and dark themes and verify the icon, tooltip, and next toggle action.',
     'Start with the system theme and verify the recipe does not silently replace the user preference.',
     'Verify the control has an accessible name that describes the action.',
@@ -603,10 +615,15 @@ async function main() {
   }
 
   const classpath = refreshClasspath();
-  const results = snippets.map((snippet) => ({
-    snippet,
-    ...compileSnippet(snippet, classpath),
-  }));
+  const snippetsByRecipe = new Map();
+  for (const snippet of snippets) {
+    const recipeSnippets = snippetsByRecipe.get(snippet.block.rel) ?? [];
+    recipeSnippets.push(snippet);
+    snippetsByRecipe.set(snippet.block.rel, recipeSnippets);
+  }
+  const results = [...snippetsByRecipe.values()].flatMap(
+    (recipeSnippets) => compileRecipeSnippets(recipeSnippets, classpath),
+  );
 
   const failures = results.filter((result) => !result.ok);
   for (const result of results.filter((candidate) => candidate.ok)) {

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-11T08:08:17.111Z",
+  "generated": "2026-06-25T10:39:51.098Z",
   "count": 20,
   "recipes": [
     {
@@ -241,8 +241,8 @@
       "difficulty": "intermediate"
     },
     {
-      "slug": "theme/AppThemeToggle",
-      "url": "/cookbook/theme/AppThemeToggle",
+      "slug": "theme/app-theme-toggle",
+      "url": "/cookbook/theme/app-theme-toggle",
       "title": "Add a toggle for the app's theme",
       "description": "Have a toggle component that switches the app's theme between a light and a dark mode.",
       "tags": [

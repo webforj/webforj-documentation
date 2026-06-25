@@ -2,7 +2,7 @@
 /**
  * generate-cookbook-index.mjs
  *
- * Reads every recipe `.mdx` file under `docs/cookbook/`, parses its
+ * Reads every recipe `.md` or `.mdx` file under `docs/cookbook/`, parses its
  * frontmatter with gray-matter, and writes the result to
  * `docs/static/cookbook-index.json`.
  *
@@ -16,7 +16,7 @@
  *   node tools/generate-cookbook-index.mjs
  */
 
-import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join, relative, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import fg from 'fast-glob';
@@ -26,6 +26,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const docsRoot   = join(__dirname, '..');
 const cookbookDir = join(docsRoot, 'cookbook');
 const outputPath  = join(docsRoot, 'static', 'cookbook-index.json');
+const checkOnly = process.argv.includes('--check');
 
 /**
  * Derives a URL-safe slug from a file path relative to the cookbook directory.
@@ -65,10 +66,34 @@ async function main() {
     };
   });
 
-  const manifest = {
-    generated: new Date().toISOString(),
+  const index = {
     count: recipes.length,
     recipes,
+  };
+
+  if (checkOnly) {
+    if (!existsSync(outputPath)) {
+      throw new Error(`Cookbook index does not exist: ${outputPath}`);
+    }
+
+    const current = JSON.parse(readFileSync(outputPath, 'utf8'));
+    const currentIndex = {
+      count: current.count,
+      recipes: current.recipes,
+    };
+    if (JSON.stringify(currentIndex) !== JSON.stringify(index)) {
+      throw new Error(
+        'Cookbook index is stale. Run node tools/generate-cookbook-index.mjs.',
+      );
+    }
+
+    console.log(`Cookbook index is current: ${recipes.length} recipe(s).`);
+    return;
+  }
+
+  const manifest = {
+    generated: new Date().toISOString(),
+    ...index,
   };
 
   mkdirSync(dirname(outputPath), { recursive: true });
