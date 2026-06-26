@@ -890,5 +890,28 @@
   "automatedUpgradeTip.automatedUpgradeLink": {
     "message": "Käytä OpenRewritea",
     "description": "The text that links to the automated upgrade article"
+  },
+  "cookbook.difficulty.all": {
+    "message": "All levels",
+    "description": "Cookbook filter option to show every recipe"
+  },
+  "cookbook.difficulty.beginner": {
+    "message": "Beginner",
+    "description": "Cookbook filter option to show beginner-level recipes"
+  },
+  "cookbook.difficulty.intermediate": {
+    "message": "Intermediate",
+    "description": "Cookbook filter option to show intermediate-level recipes"
+  },
+  "cookbook.difficulty.advanced": {
+    "message": "Advanced",
+    "description": "Cookbook filter option to show advanced-level recipes"
+  },
+  "Loading recipes…": {
+    "message": "Loading recipes…"
+  },
+  "cookbook.search.placeholder": {
+    "message": "Search recipes…",
+    "description": "Placeholder text for the cookbook recipe search input"
   }
 }

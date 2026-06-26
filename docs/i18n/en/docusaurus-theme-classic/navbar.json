@@ -70,5 +70,9 @@
   "item.label.vlatest": {
     "message": "vlatest",
     "description": "Navbar item with label vlatest"
+  },
+  "item.label.Cookbook": {
+    "message": "Cookbook",
+    "description": "Navbar item with label Cookbook"
   }
 }

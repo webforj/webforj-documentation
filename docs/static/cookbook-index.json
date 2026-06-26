@@ -1,0 +1,259 @@
+{
+  "generated": "2026-06-25T10:39:51.098Z",
+  "count": 20,
+  "recipes": [
+    {
+      "slug": "components/card-with-slots",
+      "url": "/cookbook/components/card-with-slots",
+      "title": "Build a reusable card with title, body, and action slots",
+      "description": "Create a Composite card component with header, body, and footer regions you fill from any view.",
+      "tags": [
+        "components",
+        "layout",
+        "styling"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "components/enum-property-on-element-composite",
+      "url": "/cookbook/components/enum-property-on-element-composite",
+      "title": "Expose an enum property on an ElementComposite",
+      "description": "Declare a typed enum property on an ElementComposite so it serializes to the correct web-component attribute value.",
+      "tags": [
+        "components"
+      ],
+      "components": [],
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "components/save-feedback-toast",
+      "url": "/cookbook/components/save-feedback-toast",
+      "title": "Show a success or error Toast after a save action",
+      "description": "Use Toast.show with a success or danger theme to give the user immediate, non-blocking feedback after a server-side operation.",
+      "tags": [
+        "notification",
+        "components"
+      ],
+      "components": [
+        "Toast"
+      ],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "components/typed-custom-event-from-composite",
+      "url": "/cookbook/components/typed-custom-event-from-composite",
+      "title": "Fire a typed custom event from a Composite to its parent",
+      "description": "Expose a typed event from a Composite using EventDispatcher so parent views can subscribe to custom domain events.",
+      "tags": [
+        "components"
+      ],
+      "components": [],
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "css/hide-on-small-screens",
+      "url": "/cookbook/css/hide-on-small-screens",
+      "title": "Hide a component on small screens with a media query",
+      "description": "Use a sidecar CSS file with a media query to hide a region of the UI below a breakpoint.",
+      "tags": [
+        "css",
+        "layout"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "css/inject-inline-css",
+      "url": "/cookbook/css/inject-inline-css",
+      "title": "Inject inline CSS into a page from Java",
+      "description": "Use @InlineStyleSheet to add CSS class definitions directly from a Java component without a separate style sheet file.",
+      "tags": [
+        "css",
+        "styling"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "forms/debounced-email-validation",
+      "url": "/cookbook/forms/debounced-email-validation",
+      "title": "Validate an email field as the user types, debounced",
+      "description": "Combine the Debouncer with a text field's modify event so validation runs once typing pauses, not on every keystroke.",
+      "tags": [
+        "forms",
+        "validation"
+      ],
+      "components": [],
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "forms/dialog-form-with-binding-context",
+      "url": "/cookbook/forms/dialog-form-with-binding-context",
+      "title": "Show a multi-field form in a Dialog and save it with BindingContext",
+      "description": "Open a Dialog pre-populated with a domain object, bind fields with BindingContext, and persist changes on save.",
+      "tags": [
+        "forms",
+        "data-binding",
+        "validation",
+        "dialog"
+      ],
+      "components": [
+        "Dialog"
+      ],
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "forms/disable-button-during-save",
+      "url": "/cookbook/forms/disable-button-during-save",
+      "title": "Disable a Button while a save operation runs",
+      "description": "Prevent double-submit by disabling the button and updating its label for the duration of the operation, then restoring it when done.",
+      "tags": [
+        "forms",
+        "components"
+      ],
+      "components": [
+        "Button"
+      ],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "javascript/call-dom-method",
+      "url": "/cookbook/javascript/call-dom-method",
+      "title": "Call a DOM method (like scrollIntoView) from Java",
+      "description": "Use executeJs and the component keyword to invoke any DOM method on a component's underlying HTML element.",
+      "tags": [
+        "javascript"
+      ],
+      "components": [],
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "layout/centered-layout",
+      "url": "/cookbook/layout/centered-layout",
+      "title": "Center content in a FlexLayout",
+      "description": "Use the FlexLayout component to center components horizontally and vertically",
+      "tags": [
+        "layout"
+      ],
+      "components": [
+        "FlexLayout"
+      ],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "routing/block-navigation-unsaved-changes",
+      "url": "/cookbook/routing/block-navigation-unsaved-changes",
+      "title": "Block navigation when a form has unsaved changes",
+      "description": "Implement WillLeaveObserver to prompt the user with a confirm dialog before discarding edits.",
+      "tags": [
+        "routing",
+        "forms"
+      ],
+      "components": [],
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "routing/dynamic-page-title",
+      "url": "/cookbook/routing/dynamic-page-title",
+      "title": "Set the browser tab title dynamically from a route parameter",
+      "description": "Implement HasFrameTitle to generate a per-record page title from URL parameters so every detail view has a descriptive tab label.",
+      "tags": [
+        "routing"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "routing/navigate-programmatically",
+      "url": "/cookbook/routing/navigate-programmatically",
+      "title": "Navigate to another view programmatically",
+      "description": "Trigger programmatic navigation to a view class using Router.getCurrent().navigate().",
+      "tags": [
+        "routing",
+        "navigation"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "routing/open-in-new-tab",
+      "url": "/cookbook/routing/open-in-new-tab",
+      "title": "Open a route in a new browser tab",
+      "description": "Construct a route URL with the router and open it via Page.open so paths aren't hard-coded.",
+      "tags": [
+        "routing",
+        "navigation"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "routing/read-query-parameter",
+      "url": "/cookbook/routing/read-query-parameter",
+      "title": "Read a query parameter from a route",
+      "description": "Access URL query parameters inside a webforJ view using DidEnterObserver and ParametersBag.",
+      "tags": [
+        "routing",
+        "parameters"
+      ],
+      "components": [],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "table/boolean-column-renderer",
+      "url": "/cookbook/table/boolean-column-renderer",
+      "title": "Render a boolean column with custom icons in a Table",
+      "description": "Replace true/false cell values with themed icons using BooleanRenderer so status columns are scannable at a glance.",
+      "tags": [
+        "table",
+        "components"
+      ],
+      "components": [
+        "Table"
+      ],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "table/empty-state-message",
+      "url": "/cookbook/table/empty-state-message",
+      "title": "Show an empty-state message when a Table has no rows",
+      "description": "Toggle a placeholder message whenever the repository backing a Table becomes empty.",
+      "tags": [
+        "table"
+      ],
+      "components": [
+        "Table"
+      ],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "table/persist-column-widths",
+      "url": "/cookbook/table/persist-column-widths",
+      "title": "Save and restore Table column widths between sessions",
+      "description": "Persist per-column widths to LocalStorage on resize and restore them the next time the view loads.",
+      "tags": [
+        "table"
+      ],
+      "components": [
+        "Table"
+      ],
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "theme/app-theme-toggle",
+      "url": "/cookbook/theme/app-theme-toggle",
+      "title": "Add a toggle for the app's theme",
+      "description": "Have a toggle component that switches the app's theme between a light and a dark mode.",
+      "tags": [
+        "styling",
+        "components",
+        "theme"
+      ],
+      "components": [
+        "IconButton"
+      ],
+      "difficulty": "beginner"
+    }
+  ]
+}
