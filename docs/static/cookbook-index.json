@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-25T10:39:51.098Z",
-  "count": 20,
+  "generated": "2026-06-27T00:15:15.716Z",
+  "count": 19,
   "recipes": [
     {
       "slug": "components/card-with-slots",
@@ -226,19 +226,6 @@
         "Table"
       ],
       "difficulty": "beginner"
-    },
-    {
-      "slug": "table/persist-column-widths",
-      "url": "/cookbook/table/persist-column-widths",
-      "title": "Save and restore Table column widths between sessions",
-      "description": "Persist per-column widths to LocalStorage on resize and restore them the next time the view loads.",
-      "tags": [
-        "table"
-      ],
-      "components": [
-        "Table"
-      ],
-      "difficulty": "intermediate"
     },
     {
       "slug": "theme/app-theme-toggle",

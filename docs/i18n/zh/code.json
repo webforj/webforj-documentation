@@ -892,26 +892,26 @@
     "description": "The text that links to the automated upgrade article"
   },
   "cookbook.difficulty.all": {
-    "message": "All levels",
+    "message": "所有级别",
     "description": "Cookbook filter option to show every recipe"
   },
   "cookbook.difficulty.beginner": {
-    "message": "Beginner",
+    "message": "初学者",
     "description": "Cookbook filter option to show beginner-level recipes"
   },
   "cookbook.difficulty.intermediate": {
-    "message": "Intermediate",
+    "message": "中级",
     "description": "Cookbook filter option to show intermediate-level recipes"
   },
   "cookbook.difficulty.advanced": {
-    "message": "Advanced",
+    "message": "高级",
     "description": "Cookbook filter option to show advanced-level recipes"
   },
   "Loading recipes…": {
-    "message": "Loading recipes…"
+    "message": "加载食谱…"
   },
   "cookbook.search.placeholder": {
-    "message": "Search recipes…",
+    "message": "搜索食谱…",
     "description": "Placeholder text for the cookbook recipe search input"
   }
 }

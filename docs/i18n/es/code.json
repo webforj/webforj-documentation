@@ -892,26 +892,26 @@
     "description": "The text that links to the automated upgrade article"
   },
   "cookbook.difficulty.all": {
-    "message": "All levels",
+    "message": "Todos los niveles",
     "description": "Cookbook filter option to show every recipe"
   },
   "cookbook.difficulty.beginner": {
-    "message": "Beginner",
+    "message": "Principiante",
     "description": "Cookbook filter option to show beginner-level recipes"
   },
   "cookbook.difficulty.intermediate": {
-    "message": "Intermediate",
+    "message": "Intermedio",
     "description": "Cookbook filter option to show intermediate-level recipes"
   },
   "cookbook.difficulty.advanced": {
-    "message": "Advanced",
+    "message": "Avanzado",
     "description": "Cookbook filter option to show advanced-level recipes"
   },
   "Loading recipes…": {
-    "message": "Loading recipes…"
+    "message": "Cargando recetas…"
   },
   "cookbook.search.placeholder": {
-    "message": "Search recipes…",
+    "message": "Buscar recetas…",
     "description": "Placeholder text for the cookbook recipe search input"
   }
 }

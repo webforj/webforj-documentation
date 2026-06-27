@@ -892,26 +892,26 @@
     "description": "The text that links to the automated upgrade article"
   },
   "cookbook.difficulty.all": {
-    "message": "All levels",
+    "message": "Kaikki tasot",
     "description": "Cookbook filter option to show every recipe"
   },
   "cookbook.difficulty.beginner": {
-    "message": "Beginner",
+    "message": "Aloittelija",
     "description": "Cookbook filter option to show beginner-level recipes"
   },
   "cookbook.difficulty.intermediate": {
-    "message": "Intermediate",
+    "message": "Keskitaso",
     "description": "Cookbook filter option to show intermediate-level recipes"
   },
   "cookbook.difficulty.advanced": {
-    "message": "Advanced",
+    "message": "Edistynyt",
     "description": "Cookbook filter option to show advanced-level recipes"
   },
   "Loading recipes…": {
-    "message": "Loading recipes…"
+    "message": "Ladataan reseptejä…"
   },
   "cookbook.search.placeholder": {
-    "message": "Search recipes…",
+    "message": "Etsi reseptejä…",
     "description": "Placeholder text for the cookbook recipe search input"
   }
 }
