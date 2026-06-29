@@ -9,12 +9,12 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@StyleSheet("ws://css/element/elementInput.css")
+@StyleSheet("ws://css/element/elementfigure.css")
 @FrameTitle("Element Input Text")
-public class ElementInputTextView extends Composite<Div> {
+public class ElementFigureView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
-  public ElementInputTextView() {
+  public ElementFigureView() {
     self.addClassName("element-demo-frame");
 
     Div card = new Div();

@@ -11,7 +11,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @StyleSheet("ws://css/element/elementtaginput.css")
-@FrameTitle("Input Event")
+@FrameTitle("Tag Input")
 public class ElementTagInputView extends Composite<Div> {
   private final Div self = getBoundComponent();
   private final Element input = new Element("input");
@@ -31,9 +31,10 @@ public class ElementTagInputView extends Composite<Div> {
 
     ElementEventOptions options =
         new ElementEventOptions()
-            .addData("tag", "component.value")
+            .addData("tag", "event.__tagValue")
             .setFilter("event.key === 'Enter'")
-            .setCode("event.preventDefault(); component.value = '';");
+            .setCode(
+                "event.preventDefault(); event.__tagValue = component.value; component.value = '';");
 
     input.addEventListener(
         "keydown",

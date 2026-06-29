@@ -16,13 +16,13 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@StyleSheet("ws://css/element/elementInput.css")
+@StyleSheet("ws://css/element/elementsearch.css")
 @FrameTitle("Input Function")
-public class ElementInputFunctionView extends Composite<Div> {
+public class ElementSearchView extends Composite<Div> {
   private final Div self = getBoundComponent();
   private final Element search = new Element("input");
 
-  public ElementInputFunctionView() {
+  public ElementSearchView() {
     self.addClassName("element-demo-frame");
 
     Div card = new Div();

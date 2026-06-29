@@ -15,26 +15,6 @@
   border-radius: var(--dwc-border-radius-l);
 }
 
-.storage-meter {
-  width: 100%;
-  box-sizing: border-box;
-  height: 1rem;
-}
-
-.testimonial-figure {
-  margin: 0;
-}
-
-.testimonial-quote {
-  margin: 0 0 var(--dwc-space-s) 0;
-  font-size: 1.125rem;
-  font-style: italic;
-}
-
-.testimonial-caption {
-  color: var(--dwc-color-default-text-light);
-}
-
 .search-input {
   flex: 1;
   min-width: 0;
