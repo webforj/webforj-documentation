@@ -10,7 +10,7 @@ slug: element
 webforJ developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
 
 :::important
-The `Element` component cannot be extended, and is not the base component for all components within webforJ. To read more about webforJ's component hierarchy, read [this article](../architecture/controls-components.md).
+The `Element` component can't be extended, and isn't the base component for all components within webforJ. To read more about webforJ's component hierarchy, read [this article](../architecture/controls-components.md).
 :::
 
 <ComponentDemo
