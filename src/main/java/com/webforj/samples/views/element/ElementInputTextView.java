@@ -15,30 +15,21 @@ public class ElementInputTextView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public ElementInputTextView() {
-    self.setStyle("display", "flex");
-    self.setStyle("flex-direction", "column");
-    self.setStyle("justify-content", "center");
-    self.setStyle("align-items", "center");
-    self.setStyle("min-height", "100vh");
+    self.addClassName("element-demo-frame");
 
     Div card = new Div();
-    card.setStyle("width", "100%");
-    card.setStyle("max-width", "420px");
-    card.setStyle("padding", "var(--dwc-space-l)");
-    card.setStyle("background", "var(--dwc-surface-3)");
-    card.setStyle("border", "var(--dwc-border-width) var(--dwc-border-style) var(--dwc-border-color)");
-    card.setStyle("border-radius", "var(--dwc-border-radius-l)");
+    card.addClassName("element-demo-card");
 
     Element figure = new Element("figure");
-    figure.setAttribute("style", "margin: 0;");
+    figure.addClassName("testimonial-figure");
 
     Element quote = new Element("blockquote");
+    quote.addClassName("testimonial-quote");
     quote.setText("Building the entire UI in Java kept our team on one stack.");
-    quote.setAttribute("style", "margin: 0 0 var(--dwc-space-s) 0; font-size: 1.125rem; font-style: italic;");
 
     Element caption = new Element("figcaption");
+    caption.addClassName("testimonial-caption");
     caption.setHtml("<strong>Dana Lee</strong>, Engineering Lead");
-    caption.setAttribute("style", "color: var(--dwc-color-default-text-light);");
 
     figure.add(quote, caption);
 

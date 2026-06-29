@@ -102,8 +102,8 @@ Arguments that are passed to these methods which are used in the execution of JS
 :::info
 Both synchronous and asynchronous function calling will wait until the `Element` has been added to the DOM before executing a function, but `callJsFunction()` won't wait for any `component` arguments to attach, which can result in failure. Conversely, invoking `callJsFunctionAsync()` may never complete if a component argument is never attached.
 :::
-
-In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> is then used to create another message box once the asynchronous function has been completed.
+ 
+In the demo below, selecting **Focus search** calls the native `focus()` method on the search input with `callJsFunctionAsync()`. The resulting <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> is used to confirm the call with a toast once the asynchronous function completes.
 
 <ComponentDemo
 path='/webforj/elementinputfunction'
