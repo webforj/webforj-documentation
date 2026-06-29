@@ -9,7 +9,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="foundation" location="com/webforj/concern/HasJsExecution" top='true'/>
 
-webforJ runs on the server, but there are times you need to reach the client: scroll the window, focus a field, read a browser value, or call a method on a web component. The <JavadocLink type="foundation" location="com/webforj/concern/HasJsExecution" code='true'>HasJsExecution</JavadocLink> interface provides that bridge. It's implemented at two levels:
+webforJ runs on the server, but there are times you need to reach the client: scroll the window, focus a field, read a browser value, or call a method on a web component. The <JavadocLink type="foundation" location="com/webforj/concern/HasJsExecution" code='true'>HasJsExecution</JavadocLink> interface provides that bridge. It is implemented at two levels:
 
 - The [`Page`](#app-level-execution) runs script in the context of the whole page.
 - An [`Element`](#element-level-execution) runs script scoped to a single client element.
@@ -42,7 +42,7 @@ When a script returns a value, webforJ converts it to the matching Java type:
 | `null` or `undefined`   | `null`                               |
 | any other type          | its string representation            |
 
-Read values with `executeJsAsync`, which applies the conversion reliably. A returned number can arrive as `Integer`, `Long`, or `Double`, so read it through `Number`:
+Read values with `executeJsAsync`, which applies the conversion above reliably. A returned number can arrive as `Integer`, `Long`, or `Double`, so read it through `Number`:
 
 ```java
 Page.getCurrent()
@@ -54,7 +54,7 @@ Page.getCurrent()
 ```
 
 :::warning Prefer the async form when you need the value
-The synchronous `executeJs` returns `null` when the execution context isn't ready, for example when it's called before the component is attached. Use `executeJsAsync` whenever you depend on the returned value, and avoid casting a synchronous result to a specific type.
+The synchronous `executeJs` returns `null` when the execution context is not ready, for example when it is called before the component is attached. Use `executeJsAsync` whenever you depend on the returned value, and avoid casting a synchronous result to a specific type.
 :::
 
 ## App-level execution {#app-level-execution}
@@ -95,6 +95,6 @@ height='260px'
 
 ## Element-level execution {#element-level-execution}
 
-Calling the same methods on an <JavadocLink type="foundation" location="com/webforj/component/element/Element" code='true'>Element</JavadocLink> scopes the script to that element instead of the page. The return values and the synchronous and asynchronous behavior match the preceding page-level methods.
+Calling the same methods on an <JavadocLink type="foundation" location="com/webforj/component/element/Element" code='true'>Element</JavadocLink> scopes the script to that element instead of the page. The return values and the synchronous and asynchronous behavior match the page-level methods described above.
 
 Element scripts queue until the element is attached to the DOM, then run, so you can call them during setup without waiting for attachment yourself.
