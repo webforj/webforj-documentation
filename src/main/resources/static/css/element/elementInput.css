@@ -1,15 +1,44 @@
-.element--input{
-  display: block;
-  margin: 0;
-  padding: 1em 1.5em;
-  width: 50%;
-  font-size: 1.75em;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 0.4rem;
-  transition: box-shadow 300ms;
+.element-demo-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.element--input:focus {
-  outline: none;
-  box-shadow: 0.2rem 0.8rem 1.6rem rgba(0, 0, 0, 0.12);
+.element-demo-card {
+  width: 100%;
+  max-width: 420px;
+  padding: var(--dwc-space-l);
+  background: var(--dwc-surface-3);
+  border: var(--dwc-border-width) var(--dwc-border-style) var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-l);
+}
+
+.storage-meter {
+  width: 100%;
+  box-sizing: border-box;
+  height: 1rem;
+}
+
+.testimonial-figure {
+  margin: 0;
+}
+
+.testimonial-quote {
+  margin: 0 0 var(--dwc-space-s) 0;
+  font-size: 1.125rem;
+  font-style: italic;
+}
+
+.testimonial-caption {
+  color: var(--dwc-color-default-text-light);
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: var(--dwc-space-xs) var(--dwc-space-s);
+  font-size: 1rem;
 }
