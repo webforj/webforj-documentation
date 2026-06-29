@@ -20,13 +20,13 @@ You might find yourself wondering: what are they doing differently?
 
 That's more or less where I find myself: I make some use of AI tools and have found them helpful, but I haven't fully integrated them into my development workflow. 
 So, what would that entail? 
-For starters, that would mean finally setting up [Claude Code](https://claude.com/product/claude-code) and connecting it to [webforJ's Model Context Protocol (MCP) server](/docs/integrations/ai-tooling/mcp).
+For starters, that would mean finally setting up [Claude Code](https://claude.com/product/claude-code) and connecting it to [webforJ's Model Context Protocol (MCP) server](/docs/ai-tooling/mcp).
 It looks like it's time to take that first step.
 
 :::tip
 I'll be using Claude Code, but you can connect webforJ's MCP server to lots of different AI coding tools.
 The Model Context Protocol is an open standard implemented by Claude, ChatGPT, Cursor, Windsurf, VS Code, and more.
-See the [MCP Server](/docs/integrations/ai-tooling/mcp) documentation for more information.
+See the [MCP Server](/docs/ai-tooling/mcp) documentation for more information.
 :::
 
 ## Which Claude?
@@ -203,7 +203,7 @@ But, even without complicated prompt engineering, I was able to use Claude Code 
 
 The webforJ MCP server gives Claude some direction for webforJ-specific design patterns, and increases the accuracy of its output.
 But, that's only one tool. 
-There are also [webforJ agent skills](/docs/integrations/ai-tooling/agent-skills) that make AI agents even more effective when working with webforJ.
+There are also [webforJ agent skills](/docs/ai-tooling/agent-skills) that make AI agents even more effective when working with webforJ.
 With the webforJ MCP server and the help of some AI tools, creating a new web app in Java is the easiest its ever been.
 You don't need to worry about all the project setup and boilerplate code; you can focus on the actual ideas and design.
 Give it a try, let your imagination run wild, and do it all in Java with webforJ!

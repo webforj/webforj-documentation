@@ -1,0 +1,9 @@
+{
+  "label": "AI Tooling",
+  "position": 10.5,
+  "className": "cat-icon cat-icon--ai-tooling new-content",
+  "link": {
+    "type": "doc",
+    "id": "ai-tooling/overview"
+  }
+}
