@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: Elements
-description: Integrate raw HTML tags and custom web components in webforJ using the Element class to add children, set content, and invoke JavaScript.
+description: Integrate raw HTML tags and custom web components in webforJ using the Element class to add children, set content, and call JavaScript functions.
 slug: element
 ---
 
@@ -19,6 +19,7 @@ files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java',
   'src/main/frontend/css/element/elementInput.css',
 ]}
+height='240px'
 />
 
 ## Adding events {#adding-events}
@@ -47,34 +48,10 @@ The `Element` component supports the composition of child components. Developers
 
 1. **`add(Component... components)`**: This method allows one or multiple components to be added to an optional `String` which designates a specified slot when used with a Web Component. Omitting the slot will add the component between the HTML tags.
 
-2. **`setText(String text)`**: This method behaves similarly to the `setHtml()` method, but injects literal text into the `Element`.
+2. **`setHtml(String html)`**: This method takes the `String` passed to the method and injects it as HTML within the component. Depending on the `Element`, this may be rendered in different ways.
 
-  ```java
-  // Shown as the literal characters "<b>Status: ready</b>"
-  element.setText("<b>Status: ready</b>");
-  ```
+3. **`setText(String text)`**: This method behaves similarly to the `setHtml()` method, but injects literal text into the `Element`.
 
-  :::note Using the `<html>` tag
-  Earlier versions of webforJ treated a value wrapped in `<html>` and passed to `setText()` as HTML. This behavior is deprecated and will be removed in webforJ 27.00.
-
-  The first time an `<html>` wrapped value reaches `setText()`, a warning is logged that names the component and the call site, so the call can be moved to `setHtml()`.
-
-  To adopt the webforJ 27.00 default ahead of time, set `webforj.legacyHtmlInText` to `false`. In a Spring app, the same value is set through `webforj.legacy-html-in-text`.
-
-  ```java
-  // webforj.legacyHtmlInText = true (default)
-  element.setText("<html><b>Status: ready</b></html>"); // renders bold
-
-  // webforj.legacyHtmlInText = false
-  element.setText("<html><b>Status: ready</b></html>"); // shows the characters <b>Status: ready</b>
-  ```
-  :::
-
-3. **`setHtml(String html)`**: This method takes the `String` passed to the method and injects it as HTML within the component. Depending on the `Element`, this may be rendered in different ways.
-
-  :::danger Cross-site Scripting (XSS)
-  As a precaution against [cross-site scripting (XSS) attacks](/docs/security/application-security/common-threats#cross-site-scripting-xss), only use `setHtml()` with content you directly control.
-  :::
 
 <ComponentDemo
 path='/webforj/elementinputtext'
@@ -82,7 +59,7 @@ files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputTextView.java',
   'src/main/frontend/css/element/elementInput.css',
 ]}
-height='175px'
+height='240px'
 />
 
 :::tip
@@ -139,14 +116,4 @@ height='240px'
 
 ## Executing JavaScript {#executing-javascript}
 
-In addition to executing JavaScript from the app level, it's possible to execute JavaScript from the `Element` level as well. Performing this execution at the `Element` level allows the context of the HTML element to be included in the execution. This is a powerful tool that acts as a developer's conduit to interactive capabilities with client-side environments.
-
-Similar to function execution, executing JavaScript can be done synchronously or asynchronously with the following methods:
-
-1. **`executeJs(String script)`**: This method takes a `String`, which will be executed as JavaScript code in the client. This script is executed synchronously, meaning that the **executing thread is blocked** until the JS execution returns, and results in a round trip. The results of the function are returned as an `Object`, which can be cast and used in Java.
-
-2. **`executeJsAsync(String script)`**: As with the previous method, a passed `String` parameter will be executed as JavaScript code on the client. This method executes asynchronously and **doesn't block the executing thread**. It returns a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, which allows for further interaction with the function and its payload.
-
-:::tip
-These methods have access to the `component` keyword, which gives the JavaScript code access to the client-side instance of the component executing the JavaScript.
-:::
+Beyond calling named functions, an `Element` can run raw scripts scoped to that element with `executeJs`, `executeJsAsync`, and `executeJsVoidAsync`. See [Execute JavaScript](./execute-javascript.md) for these methods, their synchronous and asynchronous behavior, and how returned values convert to Java types.
