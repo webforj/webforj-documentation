@@ -31,9 +31,10 @@ public class ElementInputEventView extends Composite<Div> {
 
     ElementEventOptions options =
         new ElementEventOptions()
-            .addData("tag", "component.value")
+            .addData("tag", "event.__tagValue")
             .setFilter("event.key === 'Enter'")
-            .setCode("event.preventDefault(); component.value = '';");
+            .setCode(
+                "event.preventDefault(); event.__tagValue = component.value; component.value = '';");
 
     input.addEventListener(
         "keydown",
