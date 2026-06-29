@@ -176,12 +176,12 @@ This is an area where strict style guides and review processes ensure that, rega
 
 In addition to our own use of AI, the prevalence of AI tools means that our webforJ users are using AI, too.
 Because of this, we're always looking for ways to improve the experience of developers using webforJ with these tools.
-One of the best ways to start using AI in your webforJ development is with the dedicated [webforJ MCP server](/docs/integrations/ai-tooling/mcp).
+One of the best ways to start using AI in your webforJ development is with the dedicated [webforJ MCP server](/docs/ai-tooling/mcp).
 The [Model Context Protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol) (MCP) is an open standard for integrating LLMs with external data sources.
 The webforJ MCP Server gives your AI direct access to the webforJ documentation and verified code samples, making its responses more relevant and accurate. 
 By integrating it into your workflow, you can avoid many of the pitfalls of AI-generated code and accelerate the development of your own app.
 
-webforJ also provides a collection of [webforJ agent skills](/docs/integrations/ai-tooling/agent-skills), which can teach AIs to perform webforJ-related tasks correctly. 
+webforJ also provides a collection of [webforJ agent skills](/docs/ai-tooling/agent-skills), which can teach AIs to perform webforJ-related tasks correctly. 
 By adding these to your workflow, you can keep your AI tools on track, largely eliminating guesswork and hallucinations.
 Your AI will have clear, explicit instructions and resources to help them do common tasks like modifying webforJ themes or creating custom webforJ components.
 

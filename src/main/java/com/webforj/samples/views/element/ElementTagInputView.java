@@ -10,14 +10,14 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@StyleSheet("ws://css/element/elementInputEvent.css")
+@StyleSheet("ws://css/element/elementtaginput.css")
 @FrameTitle("Input Event")
-public class ElementInputEventView extends Composite<Div> {
+public class ElementTagInputView extends Composite<Div> {
   private final Div self = getBoundComponent();
   private final Element input = new Element("input");
   private final Div chips = new Div();
 
-  public ElementInputEventView() {
+  public ElementTagInputView() {
     self.addClassName("element-demo-frame");
 
     Div card = new Div();

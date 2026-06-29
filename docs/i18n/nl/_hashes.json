@@ -314,5 +314,12 @@
   "sidebar.documentationSidebar.category.Upgrade to 26.00": "35a959230718667d6e2ffd94f999c317",
   "sidebar.documentationSidebar.category.security-application-security": "2993e06f9e34b9da0ed41173d7d56a4a",
   "sidebar.documentationSidebar.category.Frontend bundler": "0abbd35c99082689c5e8e2624d307090",
-  "sidebar.documentationSidebar.category.Extensions": "5e2f5f3c24ae8c6ab3eca618826b0e23"
+  "sidebar.documentationSidebar.category.Extensions": "5e2f5f3c24ae8c6ab3eca618826b0e23",
+  "item.label.Cookbook": "8933a21091f09c7d6b32d9d4098005b2",
+  "cookbook.difficulty.all": "c9818b2c0890a205d294a2b31354f8b4",
+  "cookbook.difficulty.beginner": "2ddabc33a6100ceb5311697534035d8d",
+  "cookbook.difficulty.intermediate": "b57ed7a0b4f939d0c048882570336e3a",
+  "cookbook.difficulty.advanced": "9b6545e4cea9b4ad4979d41bb9170e2b",
+  "Loading recipes…": "4be46acdb49885a3f6a3edf2b9206894",
+  "cookbook.search.placeholder": "190eee3b8b0980f3d0abe69482b456c5"
 }

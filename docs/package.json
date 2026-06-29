@@ -4,12 +4,18 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "prebuild": "node tools/generate-cookbook-index.mjs",
+    "prestart": "node tools/generate-cookbook-index.mjs",
     "start": "npm run clear && docusaurus start --locale en",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "rimraf build && docusaurus clear",
     "serve": "docusaurus serve",
+    "review:cookbook-snippets": "node tools/validate-cookbook-snippets.mjs --report --verbose",
+    "validate:cookbook": "node tools/validate-cookbook.mjs",
+    "validate:cookbook-index": "node tools/generate-cookbook-index.mjs --check",
+    "validate:cookbook-snippets": "node tools/validate-cookbook-snippets.mjs",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "translate": "tsx tools/i18n-translator/index.ts"
