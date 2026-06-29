@@ -223,89 +223,92 @@ private void submitCustomer() {
 Así es como debería verse `FormView`, ahora que puede manejar la edición de clientes existentes:
 
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
-  {`@Route("customer/:id?<[0-9]+>")
-  @FrameTitle("Formulario de Cliente")
-  public class FormView extends Composite<Div> implements WillEnterObserver {
-    private final CustomerService customerService;
-    private Customer customer = new Customer();
-    private Long customerId = 0L;
-    private Div self = getBoundComponent();
-    private TextField firstName = new TextField("Nombre", e -> customer.setFirstName(e.getValue()));
-    private TextField lastName = new TextField("Apellido", e -> customer.setLastName(e.getValue()));
-    private TextField company = new TextField("Empresa", e -> customer.setCompany(e.getValue()));
-    private ChoiceBox country = new ChoiceBox("País",
-        e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
-    private Button submit = new Button("Enviar", ButtonTheme.PRIMARY, e -> submitCustomer());
-    private Button cancel = new Button("Cancelar", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
-    private ColumnsLayout layout = new ColumnsLayout(
-        firstName, lastName,
-        company, country,
-        submit, cancel);
 
-    public FormView(CustomerService customerService) {
-      this.customerService = customerService;
-      fillCountries();
-      setColumnsLayout();
-      self.setMaxWidth(600)
-          .addClassName("card")
-          .add(layout);
-      submit.setStyle("margin-top", "var(--dwc-space-l)");
-      cancel.setStyle("margin-top", "var(--dwc-space-l)");
-    }
+```java
+@Route("customer/:id?<[0-9]+>")
+@FrameTitle("Formulario de Cliente")
+public class FormView extends Composite<Div> implements WillEnterObserver {
+  private final CustomerService customerService;
+  private Customer customer = new Customer();
+  private Long customerId = 0L;
+  private Div self = getBoundComponent();
+  private TextField firstName = new TextField("Nombre", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Apellido", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Empresa", e -> customer.setCompany(e.getValue()));
+  private ChoiceBox country = new ChoiceBox("País",
+      e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
+  private Button submit = new Button("Enviar", ButtonTheme.PRIMARY, e -> submitCustomer());
+  private Button cancel = new Button("Cancelar", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+  private ColumnsLayout layout = new ColumnsLayout(
+      firstName, lastName,
+      company, country,
+      submit, cancel);
 
-    private void setColumnsLayout() {
-      List<Breakpoint> breakpoints = List.of(
-          new Breakpoint(600, 2));
-      layout.setSpacing("var(--dwc-space-l)")
-          .setBreakpoints(breakpoints);
-    }
-
-    private void fillCountries() {
-      ArrayList<ListItem> listCountries = new ArrayList<>();
-      for (Country countryItem : Customer.Country.values()) {
-        listCountries.add(new ListItem(countryItem, countryItem.toString()));
-      }
-      country.insert(listCountries);
-      country.selectIndex(0);
-    }
-
-    private void submitCustomer() {
-      if (customerService.doesCustomerExist(customerId)) {
-        customerService.updateCustomer(customer);
-      } else {
-        customerService.createCustomer(customer);
-      }
-      navigateToMain();
-    }
-
-    private void navigateToMain() {
-      Router.getCurrent().navigate(MainView.class);
-    }
-
-    @Override
-    public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
-      parameters.getInt("id").ifPresentOrElse(id -> {
-        customerId = Long.valueOf(id);
-        if (customerService.doesCustomerExist(customerId)) {
-          event.accept();
-          fillForm(customerId);
-        } else {
-          event.reject();
-          navigateToMain();
-        }
-
-      }, () -> event.accept());
-    }
-
-    public void fillForm(Long customerId) {
-      customer = customerService.getCustomerByKey(customerId);
-      firstName.setValue(customer.getFirstName());
-      lastName.setValue(customer.getLastName());
-      company.setValue(customer.getCompany());
-      country.selectKey(customer.getCountry());
-    }
+  public FormView(CustomerService customerService) {
+    this.customerService = customerService;
+    fillCountries();
+    setColumnsLayout();
+    self.setMaxWidth(600)
+        .addClassName("card")
+        .add(layout);
+    submit.setStyle("margin-top", "var(--dwc-space-l)");
+    cancel.setStyle("margin-top", "var(--dwc-space-l)");
   }
-`}
+
+  private void setColumnsLayout() {
+    List<Breakpoint> breakpoints = List.of(
+        new Breakpoint(600, 2));
+    layout.setSpacing("var(--dwc-space-l)")
+        .setBreakpoints(breakpoints);
+  }
+
+  private void fillCountries() {
+    ArrayList<ListItem> listCountries = new ArrayList<>();
+    for (Country countryItem : Customer.Country.values()) {
+      listCountries.add(new ListItem(countryItem, countryItem.toString()));
+    }
+    country.insert(listCountries);
+    country.selectIndex(0);
+  }
+
+  private void submitCustomer() {
+    if (customerService.doesCustomerExist(customerId)) {
+      customerService.updateCustomer(customer);
+    } else {
+      customerService.createCustomer(customer);
+    }
+    navigateToMain();
+  }
+
+  private void navigateToMain() {
+    Router.getCurrent().navigate(MainView.class);
+  }
+
+  @Override
+  public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
+    parameters.getInt("id").ifPresentOrElse(id -> {
+      customerId = Long.valueOf(id);
+      if (customerService.doesCustomerExist(customerId)) {
+        event.accept();
+        fillForm(customerId);
+      } else {
+        event.reject();
+        navigateToMain();
+      }
+
+    }, () -> event.accept());
+  }
+
+  public void fillForm(Long customerId) {
+    customer = customerService.getCustomerByKey(customerId);
+    firstName.setValue(customer.getFirstName());
+    lastName.setValue(customer.getLastName());
+    company.setValue(customer.getCompany());
+    country.selectKey(customer.getCountry());
+  }
+}
+```
+
 </ExpandableCode>
 
 ## Navegando desde `MainView` a `FormView` para editar clientes {#navigating-from-mainview-to-formview-to-edit-customers}

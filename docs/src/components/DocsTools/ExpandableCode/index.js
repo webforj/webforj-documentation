@@ -4,6 +4,57 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { translate } from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
+function getLanguageFromClassName(className) {
+  return className
+    ?.split(' ')
+    .find((name) => name.startsWith('language-'))
+    ?.replace('language-', '');
+}
+
+function getCodeElement(node) {
+  if (!React.isValidElement(node)) {
+    return null;
+  }
+
+  if (node.type === 'code') {
+    return node;
+  }
+
+  return React.Children.toArray(node.props.children)
+    .map(getCodeElement)
+    .find(Boolean);
+}
+
+function getTextContent(node) {
+  if (typeof node === 'string') {
+    return node;
+  }
+
+  if (Array.isArray(node)) {
+    return node.map(getTextContent).join('');
+  }
+
+  if (React.isValidElement(node)) {
+    return getTextContent(node.props.children);
+  }
+
+  return '';
+}
+
+function trimWrapperBlankLines(code) {
+  const lines = code.replace(/\r\n/g, '\n').split('\n');
+
+  while (lines.length > 0 && lines[0].trim() === '') {
+    lines.shift();
+  }
+
+  while (lines.length > 0 && lines[lines.length - 1].trim() === '') {
+    lines.pop();
+  }
+
+  return lines.join('\n');
+}
+
 export default function ExpandableCode({ 
   children, 
   language = 'java', 
@@ -13,9 +64,15 @@ export default function ExpandableCode({
   endLine = null 
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const codeElement = React.Children.toArray(children)
+    .map(getCodeElement)
+    .find(Boolean);
+  const code = trimWrapperBlankLines(getTextContent(codeElement ?? children));
+  const codeLanguage = getLanguageFromClassName(codeElement?.props.className) ?? language;
   
   // Split the code into lines
-  const lines = children.trim().split('\n');
+  const lines = code.split('\n');
   
   // Calculate preview range
   const previewStart = startLine - 1; // Convert to 0-based index
@@ -23,7 +80,7 @@ export default function ExpandableCode({
   
   // Get preview content based on specified range
   const previewContent = lines.slice(previewStart, previewEnd).join('\n');
-  const fullContent = children;
+  const fullContent = code;
   
   // Check if we need expand/collapse functionality
   const hasOverflow = endLine ? (endLine < lines.length || startLine > 1) : lines.length > previewLines;
@@ -33,7 +90,7 @@ export default function ExpandableCode({
       <div className={styles.codeWrapper}>
         <div className={`${styles.codeContainer} ${isExpanded ? styles.expanded : styles.collapsed}`}>
           <CodeBlock
-            language={language}
+            language={codeLanguage}
             title={title}
             showLineNumbers
             className={styles.codeBlock}
