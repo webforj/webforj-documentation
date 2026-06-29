@@ -1,9 +1,9 @@
 {
   "label": "Managing Resources",
   "position": 80,
+  "className": "has-new-content cat-icon cat-icon--managing-resources",
   "link": {
     "type": "doc",
     "id": "overview"
-  },
-  "className": "cat-icon cat-icon--managing-resources"
+  }
 }

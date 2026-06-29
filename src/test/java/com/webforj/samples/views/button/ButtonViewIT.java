@@ -35,4 +35,13 @@ public class ButtonViewIT extends BaseTest {
     assertThat(button.getLastName()).hasValue("");
     assertThat(button.getEmail()).hasValue("");
   }
+
+  @Test
+  public void testLiteralCharacters() {
+    button.getFirstName().fill("<html><b>Jason</b></html>");
+    button.getLastName().fill("<html><b>Turner</b></html>");
+    button.getSubmitButton().click();
+    assertThat(button.getWelcomeDialog())
+        .hasValue("Welcome to the app <html><b>Jason</b></html> <html><b>Turner</b></html>");
+  }
 }

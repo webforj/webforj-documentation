@@ -69,3 +69,10 @@ SQL
 TLS
 OWASP
 JDBC
+Tailwind
+Sass
+Less
+Stylus
+Preact
+Svelte
+stylesheet

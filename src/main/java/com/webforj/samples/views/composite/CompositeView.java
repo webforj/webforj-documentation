@@ -11,6 +11,7 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
@@ -19,8 +20,8 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("To-Do List")
 @StyleSheet("ws://composite/composite.css")
-public class CompositeView extends Composite<Div> {
-  private final Div self = getBoundComponent();
+public class CompositeView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
   private final TextField taskInput = new TextField();
   private final FlexLayout taskContainer = new FlexLayout();
   private final H1 title = new H1("To-do List");
@@ -42,7 +43,14 @@ public class CompositeView extends Composite<Div> {
   }
 
   private void setupLayout() {
-    self.addClassName("frame").add(title, taskInput, taskContainer);
+    Div frame = new Div();
+    frame.addClassName("frame").add(title, taskInput, taskContainer);
+
+    self.setDirection(FlexDirection.COLUMN);
+    self.setAlignment(FlexAlignment.CENTER);
+    self.setJustifyContent(FlexJustifyContent.CENTER);
+    self.addClassName("todo-stage");
+    self.add(frame);
   }
 
   private void setupEventHandlers() {

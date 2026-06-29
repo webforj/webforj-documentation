@@ -1,11 +1,16 @@
+.analytics-stage {
+  min-height: 100vh;
+  padding: var(--dwc-space-l);
+}
+
 .analytics-card {
   border: thin solid var(--dwc-color-default);
   border-radius: 16px;
   padding: var(--dwc-space-m);
   background-color: var(--dwc-surface-3);
   box-shadow: var(--dwc-shadow-xs);
+  width: 100%;
   max-width: 500px;
-  margin: 2em auto;
 }
 
 .analytics-title {
@@ -23,4 +28,4 @@
 .analytics-description {
   font-size: var(--dwc-font-size-l);
   color: var(--dwc-color-success-text);
-} 
+}

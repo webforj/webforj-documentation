@@ -66,5 +66,9 @@
   "item.label.vlatest": {
     "message": "vlatest",
     "description": "Navbar item with label vlatest"
+  },
+  "item.label.Cookbook": {
+    "message": "Livre de recettes",
+    "description": "Navbar item with label Cookbook"
   }
 }

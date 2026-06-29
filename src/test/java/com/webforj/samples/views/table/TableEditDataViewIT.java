@@ -27,4 +27,13 @@ public class TableEditDataViewIT extends BaseTest {
 
     assertThat(tablePage.verifyTitle("Somebody I Used To Know")).isVisible();
   }
+
+  @Test
+  public void testLiteralCharacters() {
+    tablePage.getEditButton().click();
+    tablePage.getInput().fill("<html><b>Somebody I Used To Know</b></html>");
+    tablePage.getSaveButton().click();
+
+    assertThat(tablePage.verifyTitle("<html><b>Somebody I Used To Know</b></html>")).isVisible();
+  }
 }

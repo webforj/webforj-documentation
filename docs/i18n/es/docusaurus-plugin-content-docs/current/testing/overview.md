@@ -1,9 +1,12 @@
 ---
 sidebar_position: 1
 title: Testing
+description: >-
+  Combine JUnit unit tests with Selenium or Playwright end-to-end tests to
+  validate webforJ components, logic, and full user journeys.
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 34ef676ce8690df9732e6bee7af56206
+_i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
 ---
 <Head>
   <style>{`
@@ -13,30 +16,34 @@ _i18n_hash: 34ef676ce8690df9732e6bee7af56206
   `}</style>
 </Head>
 
-# Pruebas de webforJ
+# Pruebas en webforJ
 
-Las pruebas en las aplicaciones webforJ implican una combinación de pruebas unitarias y pruebas de extremo a extremo (E2E) para garantizar una aplicación estable y confiable. Cada tipo de prueba tiene un propósito distinto en el mantenimiento de la calidad de la aplicación.
+Las pruebas en aplicaciones webforJ combinan pruebas unitarias, de frontend y de extremo a extremo (E2E), cada una sirviendo a un propósito distinto para mantener la aplicación estable y confiable.
 
 ## Pruebas unitarias {#unit-testing}
 
-Las pruebas unitarias se centran en verificar componentes individuales o lógica de backend de manera aislada. Siguiendo las prácticas estándar de pruebas en Java, como usar [JUnit](https://junit.org/junit5/), los desarrolladores pueden validar de manera eficiente la lógica específica de la aplicación y asegurarse de que cada "unidad" funcione como se espera.
+Las pruebas unitarias se centran en verificar componentes individuales o la lógica del backend de forma aislada. Al seguir prácticas estándar de pruebas en Java, como el uso de [JUnit](https://junit.org/junit5/), los desarrolladores pueden validar de manera eficiente la lógica específica de la aplicación y asegurarse de que cada "unidad" funcione como se espera.
+
+## Pruebas de frontend {#frontend-testing}
+
+Las pruebas de frontend cubren las fuentes que un proyecto autoriza con el [paquete de frontend](/docs/managing-resources/bundler/overview). El ejecutor de pruebas [Bun](https://bun.sh/) las ejecuta como parte del mismo proceso de construcción que ejecuta las pruebas de Java, por lo que un componente TypeScript o una pieza de lógica del cliente se verifica de la misma manera que el backend. Consulta [Pruebas de frontend](./frontend-testing).
 
 ## Pruebas de extremo a extremo (E2E) {#end-to-end-e2e-testing}
 
-Las pruebas de extremo a extremo son importantes para validar la experiencia del usuario en las aplicaciones webforJ, que generan interfaces web dinámicas de una sola página. Estas pruebas simulan interacciones del usuario y verifican las características de toda la aplicación.
+Las pruebas de extremo a extremo son importantes para validar la experiencia del usuario en aplicaciones webforJ, que generan interfaces web dinámicas de una sola página. Estas pruebas simulan interacciones del usuario y verifican las características de toda la aplicación.
 
 Usando herramientas como [**Selenium**](https://www.selenium.dev/) y [**Playwright**](https://playwright.dev/java/docs/intro), puedes:
 
-- Automatizar interacciones del navegador, como clics en botones y envíos de formularios.
-- Verificar el renderizado y la interactividad consistentes de los componentes de la interfaz de usuario dinámica.
-- Garantizar la consistencia del comportamiento en diferentes navegadores y dispositivos.
+- Automatizar interacciones en el navegador, como clics en botones y envíos de formularios.
+- Verificar el renderizado consistente y la interactividad de los componentes de la UI dinámica.
+- Asegurar la consistencia de comportamiento en diferentes navegadores y dispositivos.
 
 ## Combinando estrategias de pruebas {#combining-testing-strategies}
 
 Al combinar pruebas unitarias y E2E:
 
-1. **Aislar problemas**: Detectar y resolver errores a nivel de componente de manera temprana con pruebas unitarias.
-2. **Garantizar confiabilidad**: Validar recorridos completos de usuarios e integraciones del sistema con pruebas E2E.
+1. **Aislar problemas**: Detectar y resolver errores a nivel de componente con pruebas unitarias.
+2. **Asegurar confiabilidad**: Validar recorridos completos del usuario e integraciones del sistema con pruebas E2E.
 
 ## Temas {#topics}
 

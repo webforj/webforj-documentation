@@ -890,5 +890,28 @@
   "automatedUpgradeTip.automatedUpgradeLink": {
     "message": "使用OpenRewrite",
     "description": "The text that links to the automated upgrade article"
+  },
+  "cookbook.difficulty.all": {
+    "message": "所有级别",
+    "description": "Cookbook filter option to show every recipe"
+  },
+  "cookbook.difficulty.beginner": {
+    "message": "初学者",
+    "description": "Cookbook filter option to show beginner-level recipes"
+  },
+  "cookbook.difficulty.intermediate": {
+    "message": "中级",
+    "description": "Cookbook filter option to show intermediate-level recipes"
+  },
+  "cookbook.difficulty.advanced": {
+    "message": "高级",
+    "description": "Cookbook filter option to show advanced-level recipes"
+  },
+  "Loading recipes…": {
+    "message": "加载食谱…"
+  },
+  "cookbook.search.placeholder": {
+    "message": "搜索食谱…",
+    "description": "Placeholder text for the cookbook recipe search input"
   }
 }
