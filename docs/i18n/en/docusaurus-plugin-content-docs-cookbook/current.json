@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.cookbookSidebar.category.Table": {
+    "message": "Table",
+    "description": "The label for category Table in sidebar cookbookSidebar"
+  },
+  "sidebar.cookbookSidebar.category.Components": {
+    "message": "Components",
+    "description": "The label for category Components in sidebar cookbookSidebar"
+  },
+  "sidebar.cookbookSidebar.category.CSS & Styling": {
+    "message": "CSS & Styling",
+    "description": "The label for category CSS & Styling in sidebar cookbookSidebar"
+  },
+  "sidebar.cookbookSidebar.category.Routing": {
+    "message": "Routing",
+    "description": "The label for category Routing in sidebar cookbookSidebar"
+  },
+  "sidebar.cookbookSidebar.category.Theme": {
+    "message": "Theme",
+    "description": "The label for category Theme in sidebar cookbookSidebar"
+  },
+  "sidebar.cookbookSidebar.category.Forms": {
+    "message": "Forms",
+    "description": "The label for category Forms in sidebar cookbookSidebar"
+  },
+  "sidebar.cookbookSidebar.category.Layout": {
+    "message": "Layout",
+    "description": "The label for category Layout in sidebar cookbookSidebar"
+  },
+  "sidebar.cookbookSidebar.category.JavaScript & Browser APIs": {
+    "message": "JavaScript & Browser APIs",
+    "description": "The label for category JavaScript & Browser APIs in sidebar cookbookSidebar"
+  }
+}

@@ -1,6 +1,7 @@
 ---
 title: MaskedDateField
 sidebar_position: 5
+description: Capture localized date input with the MaskedDateField, applying configurable masks, format indicators, parsing rules, and validation.
 ---
 
 <DocChip chip='shadow' />

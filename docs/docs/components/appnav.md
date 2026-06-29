@@ -1,6 +1,7 @@
 ---
 title: AppNav
 sidebar_position: 6
+description: Build hierarchical side navigation menus with AppNav and AppNavItem, linking to routes, registered views, or external URLs.
 ---
 
 <DocChip chip="shadow" />

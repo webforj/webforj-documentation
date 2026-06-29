@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-toolbar>
 sidebar_class_name: sidebar--item__hidden
 slug: toolbar
-description: A user guide article for the toolbar
+description: Style the dwc-toolbar container, slots, and action items with CSS variables and shadow parts for background and spacing.
 // pagination_prev: null
 // pagination_next: null
 ---

@@ -1,6 +1,7 @@
 ---
 title: Terminal
 sidebar_position: 126
+description: Embed an interactive terminal emulator with the Terminal component for shells, dashboards, debug consoles, and remote access tools.
 ---
 
 <DocChip chip="shadow" />  
@@ -36,7 +37,7 @@ files={[
   'src/main/java/com/webforj/samples/views/terminal/commands/DateCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/HelpCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
-  'src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/ConfirmCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java',
   'src/main/resources/static/css/terminal/terminal-view.css',
 ]}

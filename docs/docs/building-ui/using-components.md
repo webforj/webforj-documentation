@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Using Components
+description: Configure webforJ components in Java by setting text, attributes, IDs, inline styles, and CSS classes that drive appearance and behavior.
 sidebar_class_name: new-content
 ---
 
@@ -16,7 +17,7 @@ Every component exposes properties that control its content, appearance, and beh
 
 ### Text content {#text-content}
 
-The `setText()` method sets a component's visible text, such as the caption on a `Button` or the content of a `Label`. For input components like `TextField`, use `setValue()` instead to set the field's current value.
+The `setText()` method sets a component's visible text as literal characters, such as the caption on a `Button` or the content of a `Label`. For input components like `TextField`, use `setValue()` instead to set the field's current value.
 
 ```java
 Button button = new Button();
@@ -29,12 +30,41 @@ TextField field = new TextField();
 field.setValue("Initial value");
 ```
 
-Some components also support `setHtml()` for cases where you need inline HTML markup in the content:
+Markup written with `setText()` appears as those characters and is never run, which keeps text that comes from user input or external data from being interpreted as live markup.
+
+```java
+// Shown as the literal characters "<b>Status: ready</b>"
+component.setText("<b>Status: ready</b>");
+```
+
+:::note Using the `<html>` tag
+Earlier versions of webforJ treated a value wrapped in `<html>` and passed to `setText()` as HTML. This behavior is deprecated and will be removed in webforJ 27.00.
+
+The first time an `<html>` wrapped value reaches `setText()`, a warning is logged that names the component and the call site, so the call can be moved to `setHtml()`.
+
+To adopt the webforJ 27.00 default ahead of time, set `webforj.legacyHtmlInText` to `false`. In a Spring app, the same value is set through `webforj.legacy-html-in-text`.
+
+```java
+// webforj.legacyHtmlInText = true (default)
+component.setText("<html><b>Status: ready</b></html>"); // renders bold
+
+// webforj.legacyHtmlInText = false
+component.setText("<html><b>Status: ready</b></html>"); // shows the characters <b>Status: ready</b>
+```
+:::
+
+### Rendering HTML {#rendering-html}
+
+Some components also support `setHtml()` for cases where you need to render inline HTML markup in the content:
 
 ```java
 Div container = new Div();
 container.setHtml("<strong>Bold text</strong> and <em>italic text</em>");
 ```
+
+:::danger Cross-site Scripting (XSS)
+As a precaution against [cross-site scripting (XSS) attacks](/docs/security/application-security/common-threats#cross-site-scripting-xss), only use `setHtml()` with content you directly control.
+:::
 
 ### HTML attributes {#html-attributes}
 
@@ -93,10 +123,6 @@ if (isLoading) {
 }
 ```
 
-:::note Legacy approach
-[`@InlineStyleSheet`](/docs/managing-resources/importing-assets#injecting-css) is a legacy approach and is generally not recommended for new projects. In most cases, keep your styles in separate CSS files.
-:::
-
 ## Component state {#component-state}
 
 Beyond content and appearance, components have state properties that determine whether they're visible and whether they respond to user interaction. The two most commonly used are `setVisible()` and `setEnabled()`.
@@ -119,6 +145,10 @@ TextField nameField = new TextField("Name");
 nameField.addValueChangeListener(e -> submitButton.setEnabled(!e.getValue().isBlank()));
 ```
 
+:::warning Disabled and hidden aren't security
+`setVisible(false)` and `setEnabled(false)` affect the UI only. They don't stop a determined user from invoking the underlying action through the browser or a crafted request, so never rely on them to protect sensitive operations. Always enforce access control on the server. See [Disabled and hidden aren't security](/docs/security/application-security/production-hardening#disabled-and-hidden-arent-security) for more details.
+:::
+
 The following login form demonstrates `setEnabled()` in practice. The sign-in button stays disabled until both fields have content, making it clear to the user that input is required before proceeding:
 
 <ComponentDemo
@@ -127,7 +157,7 @@ files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java',
   'src/main/resources/static/usingcomponents/conditionalstate.css',
 ]}
-height='400px'
+height='450px'
 />
 
 ## Working with containers {#working-with-containers}
@@ -187,10 +217,14 @@ This is useful when you need to replace content entirely, such as swapping a loa
 
 ## Form validation {#form-validation}
 
-Coordinating multiple components to gate a submit action is one of the most common patterns in webforJ UIs. The core idea is simple: each input field registers a listener, and whenever any value changes, the form re-evaluates whether all criteria are met and updates the submit button accordingly.
-
-This is preferable to showing validation errors only after the user clicks submit, because it gives continuous feedback and prevents unnecessary submissions. The submit button serves as the indicator: disabled means the form isn't ready, enabled means it is.
-
+Coordinating multiple components to gate a submit action is a common pattern in webforJ UIs. The basic idea is that each input field registers a listener, and whenever a value changes, the form re-evaluates whether all criteria are met and updates the submit button accordingly.
+ 
+The example below wires this up manually so you can see how component state and event listeners work together. It isn't the recommended approach for real forms: manual listener logic becomes hard to maintain as forms grow, and it doesn't connect your components to an underlying data model.
+ 
+:::tip Use data binding for form validation
+For production forms, use [data binding](/docs/data-binding/overview). It covers validation, two-way synchronization between components and your model, and value transformation through `BindingContext`. The manual pattern shown here is for illustration only.
+:::
+ 
 In this contact form, the name field must not be empty, the email must contain an `@` symbol, and the message must be at least 10 characters long:
 
 <ComponentDemo
@@ -301,7 +335,7 @@ Use `ComponentLifecycleObserver` for:
 - Coordinating multiple components
 - Cleaning up external resources
 
-For executing code after a component is attached to the DOM, see [`whenAttached()`](/docs/building-ui/composite-components) in the Composite Components guide.
+For executing code after a component is attached to the DOM, see `whenAttached()` in the [Composing Components](/docs/building-ui/composing-components) guide.
 
 ## User data {#user-data}
 

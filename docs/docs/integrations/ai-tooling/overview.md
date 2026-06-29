@@ -3,6 +3,7 @@ title: webforJ AI Plugin
 sidebar_position: 1
 slug: /integrations/ai-tooling
 sidebar_class_name: new-content
+description: Install the webforJ AI plugin to add the MCP server and Agent Skills to Claude Code, Copilot, Cursor, Gemini, and Codex in one step.
 ---
 
 The **webforJ AI plugin** is the recommended way to connect your AI coding assistant to webforJ. One install gives your assistant the full toolkit: live access to webforJ docs, project scaffolding, theme generation, design-token validation, and structured workflows that teach it how to use all of it correctly.

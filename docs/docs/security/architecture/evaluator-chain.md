@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Evaluator Chain
+description: Evaluate route access through a priority-ordered chain of evaluators using the chain of responsibility pattern.
 ---
 
 The evaluator chain is the heart of webforJ's security system. It's a priority-ordered sequence of evaluators that examine routes and make access decisions using the chain of responsibility design pattern. Understanding how the chain works helps you create custom evaluators and troubleshoot unexpected access denials.

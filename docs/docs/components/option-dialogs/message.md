@@ -1,6 +1,7 @@
 ---
 title: Message
 sidebar_position: 30
+description: Show a blocking MessageDialog with an OK button, configurable message types, alignment, blur, and timeout.
 ---
 
 <DocChip chip='shadow' />

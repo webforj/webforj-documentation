@@ -44,4 +44,17 @@ public class DrawerTaskViewIT extends BaseTest {
         page.getByRole(AriaRole.CHECKBOX, new Page.GetByRoleOptions().setName("New Task from IT"));
     assertThat(newTaskCheckbox).isVisible();
   }
+
+  @Test
+  public void testLiteralCharacters() {
+    Locator newTaskInput =
+        page.getByRole(
+            AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("<html><b>New Task</b></html>"));
+
+    Locator addTaskButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Add Task"));
+    addTaskButton.click();
+
+    assertThat(newTaskInput).hasValue("<html><b>New Task</b></html>");
+  }
 }

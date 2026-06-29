@@ -36,7 +36,7 @@
 
 .contact-location {
   margin: 0;
-  color: var(--dwc-color-neutral-500);
+  color: var(--dwc-color-gray-50);
   font-size: var(--dwc-font-size-s);
 }
 

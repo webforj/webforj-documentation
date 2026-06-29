@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Automated Upgrades
+description: Migrate webforJ projects between versions automatically with OpenRewrite recipes that rename APIs, update dependencies, and flag manual fixes.
 sidebar_class_name: new-content
 ---
 
@@ -64,4 +65,5 @@ After running OpenRewrite with a webforJ recipe and resolving any `TODO` comment
 
 | Version | Standard webforJ Projects | Spring Boot Projects |
 | ------- | ------- | ------- |
+| v26.01 | `com.webforj.rewrite.v26.UpgradeWebforj_26_01` | `com.webforj.rewrite.v26.UpgradeWebforjSpring_26_01` |
 | v26 | `com.webforj.rewrite.v26.UpgradeWebforj` | `com.webforj.rewrite.v26.UpgradeWebforjSpring` |

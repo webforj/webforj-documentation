@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Automatic Binding
+description: Bind UI fields to bean properties automatically with BindingContext.of using UseProperty, BindingExclude, and UseValidator annotations.
 ---
 
 webforJ offers several features that streamline the configuration and automatic binding process for developers. This section demonstrates how to use these features effectively.
@@ -36,20 +37,25 @@ public class Hero {
 
 ### `UseProperty` annotation {#useproperty-annotation}
 
-Use the `UseProperty` annotation to specify the bean property name when the UI field name doesn't match the bean property name.
+When you want to bind a bean property to a UI component that has a different name, use the `UseProperty` annotation.
+This annotation provides greater precision when binding bean properties to UI components, especially when you're dealing with [nested bean properties](/docs/data-binding/bindings#nested-bean-properties).
 
 ```java
 public class HeroRegistration extends App {
-  // Bindable components
+  // Binds to the name property
   @UseProperty("name")
-  TextField nameField = new TextField("Text Field");
+  TextField nameField = new TextField("Name");
+  
+  // Binds to the nested address.street property
+  @UseProperty("address.street")
+  TextField streetField = new TextField("Street");
+
+  // Binds to the power property
   ComboBox power = new ComboBox("Power");
 
   // ...
 }
 ```
-
-In the example above, the UI field name is `nameField`, but the bean property is `name`. You can annotate the UI field with the bean property name to ensure proper binding.
 
 ### `BindingExclude` annotation {#bindingexclude-annotation}
 

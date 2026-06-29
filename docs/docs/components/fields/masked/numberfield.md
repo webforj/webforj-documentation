@@ -1,6 +1,7 @@
 ---
 title: MaskedNumberField
 sidebar_position: 10
+description: Format numeric input with the MaskedNumberField using configurable mask characters, grouping, decimal separators, and locale settings.
 ---
 
 <DocChip chip='shadow' />

@@ -1,6 +1,7 @@
 ---
 title: Google Charts
 sidebar_position: 50
+description: Render bar, line, pie, geo, and other Google Charts in webforJ using the GoogleChart component with a typed Java options map and data API.
 ---
 
 <DocChip chip='shadow' />

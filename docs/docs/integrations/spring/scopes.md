@@ -1,6 +1,7 @@
 ---
 title: Scopes
 sidebar_position: 16
+description: Use WebforjSessionScope, EnvironmentScope, and RouteScope to control bean lifetimes across sessions, browser tabs, and route hierarchies.
 ---
 
 <!-- vale off -->

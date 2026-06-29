@@ -2,6 +2,7 @@
 sidebar_position: 5
 title: ChoiceBox
 slug: choicebox
+description: Pick a single value from a fixed set with the ChoiceBox dropdown, including dropdown type styling, max row count, and keyboard navigation.
 ---
 
 <DocChip chip='shadow' />
@@ -43,7 +44,7 @@ Using the <JavadocLink type="foundation" location="com/webforj/component/list/Dw
 This detachment creates a situation where directly targeting the
 dropdown using CSS or shadow part selectors from the parent component becomes challenging, unless you make use of the dropdown type attribute.
 
-In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
+In the demo below, the Dropdown type is set and used in the CSS file to enlarge an option when you hover over it.
 
 <ComponentDemo
 path='/webforj/choiceboxdropdowntype'

@@ -1,6 +1,7 @@
 ---
 title: MarkdownViewer
 sidebar_position: 74
+description: Render markdown as HTML with the MarkdownViewer component, supporting append, auto-scroll, and progressive typewriter rendering.
 ---
 
 <DocChip chip='shadow' />

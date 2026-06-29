@@ -1,6 +1,7 @@
 ---
 title: Toast
 sidebar_position: 140
+description: Show transient notifications with the Toast component, configuring duration, theme, and placement via Toast.show or open.
 ---
 
 <DocChip chip="shadow" />

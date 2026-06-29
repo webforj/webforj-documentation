@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Typography
+description: Tune font family, size, weight, and line height across webforJ apps with the DWC typography CSS custom properties.
 ---
 
 Typography tokens are used to maintain a consistent set of font styles throughout your app.

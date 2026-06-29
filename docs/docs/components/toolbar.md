@@ -1,6 +1,7 @@
 ---
 title: Toolbar
 sidebar_position: 145
+description: Lay out action controls with the Toolbar component, placing components into Start, Title, Content, and End slots with compact mode.
 ---
 
 <DocChip chip="shadow" />
@@ -71,7 +72,7 @@ files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.
 <ComponentDemo
 path='/webforj/toolbartheme'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java']}
-height='475px'
+height='590px'
 />
 
 <TableBuilder name="Toolbar" />

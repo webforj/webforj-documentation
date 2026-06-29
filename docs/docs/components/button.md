@@ -1,6 +1,7 @@
 ---
 title: Button
 sidebar_position: 15
+description: Trigger click actions in webforJ with the Button component, including themes, expanses, prefix and suffix icons, and disabled state.
 ---
 
 <DocChip chip="shadow" />

@@ -1,9 +1,13 @@
 ---
 sidebar_position: 10
 title: Transitions & Easing
-_i18n_hash: 49efb98e49f030a3c09f7e629ad95eb8
+description: >-
+  Animate UI changes with consistent DWC duration tokens and cubic-bezier easing
+  curves for natural-feeling transitions.
+sidebar_class_name: updated-content
+_i18n_hash: d99ffb6e3feed9642c483aab7b42d227
 ---
-Las variables de transición se utilizan para proporcionar duraciones de animación consistentes a lo largo de su aplicación. Controlan cuánto tiempo tarda en completarse una animación.
+Las variables de transición se utilizan para proporcionar duraciones de animación consistentes en su aplicación. Controlan cuánto tiempo tarda en completarse una animación.
 
 ### Ejemplo {#example}
 
@@ -15,13 +19,13 @@ Las variables de transición se utilizan para proporcionar duraciones de animaci
 
 ### Variables {#variables}
 
-| **Variable**              | **Valor por defecto**          |
-|---------------------------|--------------------------------|
-| `--dwc-transition-x-slow` | `1000ms`                      |
-| `--dwc-transition-slow`   | `300ms`                       |
-| `--dwc-transition-medium` | `250ms`                       |
-| `--dwc-transition-fast`   | `150ms`                       |
-| `--dwc-transition-x-fast` | `100ms`                       |
+| **Variable**              | **Valor Predeterminado**      |
+|---------------------------|-------------------------------|
+| `--dwc-transition-x-slow` | `1000ms`                     |
+| `--dwc-transition-slow`   | `300ms`                      |
+| `--dwc-transition-medium` | `250ms`                      |
+| `--dwc-transition-fast`   | `150ms`                      |
+| `--dwc-transition-x-fast` | `100ms`                      |
 | `--dwc-transition`        | `var(--dwc-transition-medium)` |
 
 <dwc-doc-transitions></dwc-doc-transitions>
@@ -42,7 +46,7 @@ Las variables de easing definen cómo cambian los valores a lo largo del tiempo,
 
 ### Easing estándar {#standard-easings}
 
-Estas son las curvas de easing de propósito general utilizadas por la mayoría de los componentes:
+Estas son las curvas de easing de uso general utilizadas por la mayoría de los componentes:
 
 | **Variable** | **Cubic Bezier** |
 |-------------|------------------|
@@ -53,7 +57,7 @@ Estas son las curvas de easing de propósito general utilizadas por la mayoría 
 
 ### Easing extendido {#extended-easings}
 
-| **Variable** | **Cubic Bezier** | **Enlace de prueba** |
+| **Variable** | **Cubic Bezier** | **Enlace de Prueba** |
 |-------------|------------------|-----------------------|
 | `--dwc-ease-inQuad` | `cubic-bezier(0.55, 0.085, 0.68, 0.53)` | [Pruébalo](https://cubic-bezier.com/#0.55,0.085,0.68,0.53) |
 | `--dwc-ease-outQuad` | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | [Pruébalo](https://cubic-bezier.com/#0.25,0.46,0.45,0.94) |
@@ -76,3 +80,18 @@ Estas son las curvas de easing de propósito general utilizadas por la mayoría 
 | `--dwc-ease-inBack` | `cubic-bezier(0.36, 0, 0.66, -0.56)` | [Pruébalo](https://cubic-bezier.com/#0.36,0,0.66,-0.56) |
 | `--dwc-ease-outBack` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | [Pruébalo](https://cubic-bezier.com/#0.34,1.56,0.64,1) |
 | `--dwc-ease-inOutBack` | `cubic-bezier(0.68, -0.6, 0.32, 1.6)` | [Pruébalo](https://cubic-bezier.com/#0.68,-0.6,0.32,1.6) |
+
+---
+
+## Movimiento reducido {#reduced-motion}
+
+webforJ respeta la preferencia de accesibilidad "reducir movimiento" del usuario. Cuando está habilitada a nivel del sistema operativo, webforJ desactiva automáticamente las animaciones no esenciales en todos los componentes. No se requiere código Java.
+
+:::info Configuración de reducción de movimiento a nivel del sistema operativo
+Dónde los usuarios pueden habilitar la preferencia:
+
+- **Windows 10/11**: Configuración > Facilidad de acceso > Pantalla > Mostrar animaciones en Windows
+- **macOS**: Configuración del sistema > Accesibilidad > Pantalla > Reducir movimiento
+- **iOS**: Configuración > Accesibilidad > Movimiento > Reducir movimiento
+- **Android**: Configuración > Accesibilidad > Eliminar animaciones
+:::

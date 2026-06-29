@@ -1,6 +1,7 @@
 ---
 title: FlexLayout
 sidebar_position: 45
+description: Arrange children in rows or columns with the FlexLayout component, controlling direction, justification, alignment, wrapping, and growth.
 ---
 
 <JavadocLink type="flexlayout" location="com/webforj/component/layout/flexlayout/FlexLayout" top='true'/>

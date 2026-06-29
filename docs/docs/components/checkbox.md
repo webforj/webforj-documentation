@@ -1,6 +1,7 @@
 ---
 title: CheckBox
 sidebar_position: 20
+description: Toggle individual settings or pick multiple options with the CheckBox component, supporting text positioning and an indeterminate state.
 ---
 
 <DocChip chip="shadow" />

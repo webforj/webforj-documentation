@@ -1,6 +1,7 @@
 ---
 title: Error Handling
 sidebar_position: 5
+description: Register custom ErrorHandler implementations through the Java Service Provider Interface to respond to specific exceptions in webforJ apps.
 ---
 
 Error handling is a crucial aspect of developing reliable web apps. In webforJ, error handling is designed to be flexible and customizable, allowing developers to handle exceptions in a way that best suits their app's needs.

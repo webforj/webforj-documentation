@@ -1,11 +1,16 @@
 ---
-sidebar_position: 21
+sidebar_position: 40
 title: Minifier Plugin
+description: Discover and minify CSS and JavaScript assets referenced by webforJ annotations during the Maven or Gradle production build.
 ---
 
 # Minifier plugin <DocChip chip='since' label='25.11' />
 
 The webforJ Minifier Plugin automatically [minifies](https://en.wikipedia.org/wiki/Minification_(programming)) and optimizes CSS and JavaScript assets during the build process. The plugin discovers assets referenced through webforJ [asset annotations](/docs/managing-resources/importing-assets) and minifies them in the build output, reducing file sizes and improving load times without modifying your original source files.
+
+:::info Minification is built into the bundler
+The [frontend bundler](/docs/managing-resources/bundler/overview) minifies CSS and JavaScript as part of its production build, so a project that uses the bundler doesn't need this plugin. The plugin remains available and supported for projects that load assets through the asset annotations without the bundler. Existing setups keep working as before, with no change required.
+:::
 
 ## Setup {#setup}
 

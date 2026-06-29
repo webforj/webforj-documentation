@@ -2,12 +2,16 @@ package com.webforj.samples.views.composite;
 
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.html.elements.Span;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.progressbar.ProgressBar;
 import com.webforj.router.annotation.FrameTitle;
@@ -18,11 +22,18 @@ import java.util.Map;
 @Route
 @FrameTitle("Analytics Card")
 @StyleSheet("ws://composite/analyticscomposite.css")
-public class AnalyticsCardCompositeView extends Composite<Div> {
-  private final Div self = getBoundComponent();
+public class AnalyticsCardCompositeView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public AnalyticsCardCompositeView() {
-    self.addClassName("analytics-card").add(buildContent());
+    Div card = new Div();
+    card.addClassName("analytics-card").add(buildContent());
+
+    self.setDirection(FlexDirection.COLUMN);
+    self.setAlignment(FlexAlignment.CENTER);
+    self.setJustifyContent(FlexJustifyContent.CENTER);
+    self.addClassName("analytics-stage");
+    self.add(card);
   }
 
   private FlexLayout buildContent() {
@@ -48,12 +59,9 @@ public class AnalyticsCardCompositeView extends Composite<Div> {
   }
 
   private FlexLayout buildChangeRow() {
-    Span changeText =
-        new Span("12% from last month")
-            .setStyle("color", "var(--dwc-color-success-600)")
-            .setStyle("font-size", "0.9rem");
+    Span changeText = new Span("12% from last month").addClassName("analytics-description");
 
-    Icon upArrow = TablerIcon.create("arrow-up");
+    Icon upArrow = TablerIcon.create("arrow-up").setTheme(Theme.SUCCESS);
 
     return FlexLayout.create(upArrow, changeText)
         .align()

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Docker
+description: Install Docker Desktop on Windows or Mac, pull the webforj/sandbox image, and run BBjServices in a container for webforJ development.
 ---
 
 # Docker installation

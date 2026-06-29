@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Context Results
+description: Inspect ValidationResult after a BindingContext write, react to BindingContextValidateEvent, and auto-focus the first violation.
 ---
 
 When you write data from the UI to the model, the `write` method of the `BindingContext` triggers the validations. The validation results determine whether the data is acceptable.

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 8
 title: Surfaces
+description: Layer UI hierarchy with three mode-aware DWC surface tokens for page backgrounds, cards, and popovers or dialogs.
 ---
 
 DWC defines three levels of surfaces which are used to organize the UI hierarchy combined with [shadows](./shadows). All [palette colors](./colors) are tested to have enough contrast with these surfaces.

@@ -890,5 +890,28 @@
   "automatedUpgradeTip.automatedUpgradeLink": {
     "message": "Käytä OpenRewritea",
     "description": "The text that links to the automated upgrade article"
+  },
+  "cookbook.difficulty.all": {
+    "message": "Kaikki tasot",
+    "description": "Cookbook filter option to show every recipe"
+  },
+  "cookbook.difficulty.beginner": {
+    "message": "Aloittelija",
+    "description": "Cookbook filter option to show beginner-level recipes"
+  },
+  "cookbook.difficulty.intermediate": {
+    "message": "Keskitaso",
+    "description": "Cookbook filter option to show intermediate-level recipes"
+  },
+  "cookbook.difficulty.advanced": {
+    "message": "Edistynyt",
+    "description": "Cookbook filter option to show advanced-level recipes"
+  },
+  "Loading recipes…": {
+    "message": "Ladataan reseptejä…"
+  },
+  "cookbook.search.placeholder": {
+    "message": "Etsi reseptejä…",
+    "description": "Placeholder text for the cookbook recipe search input"
   }
 }

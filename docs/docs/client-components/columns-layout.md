@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-columns-layout>
 sidebar_class_name: sidebar--item__hidden
 slug: columns-layout
-description: A user guide article for the columns-layout
+description: Style the dwc-columns-layout client component using CSS variables to control column gaps, breakpoints, and responsive spacing.
 // pagination_prev: null
 // pagination_next: null
 ---

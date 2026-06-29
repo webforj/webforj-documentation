@@ -1,13 +1,16 @@
 ---
 sidebar_position: 5
 title: Automatic Binding
-_i18n_hash: e914be874b2c22c5e32f7fce4b5f1885
+description: >-
+  Bind UI fields to bean properties automatically with BindingContext.of using
+  UseProperty, BindingExclude, and UseValidator annotations.
+_i18n_hash: 412c446b42788eae1b7f7e16194afda9
 ---
-webforJ offre plusieurs fonctionnalités qui simplifient le processus de configuration et de liaison automatique pour les développeurs. Cette section montre comment utiliser ces fonctionnalités de manière efficace.
+webforJ offre plusieurs fonctionnalités qui simplifient le processus de configuration et de liaison automatique pour les développeurs. Cette section démontre comment utiliser ces fonctionnalités de manière efficace.
 
-## Utilisation de `BindingContext.of` {#using-bindingcontextof}
+## Using `BindingContext.of` {#using-bindingcontextof}
 
-La méthode `BindingContext.of` lie automatiquement les composants de l'interface utilisateur aux propriétés d'une classe bean spécifiée, simplifiant ainsi le processus de liaison et réduisant la configuration manuelle. Elle aligne les composants bindables, déclarés comme des champs dans un formulaire ou une application, avec les propriétés du bean en fonction de leurs noms.
+La méthode `BindingContext.of` lie automatiquement les composants UI aux propriétés d'une classe bean spécifiée, simplifiant le processus de liaison et réduisant la configuration manuelle. Elle aligne les composants bindables, déclarés comme des champs au sein d'un formulaire ou d'une application, avec les propriétés de bean en fonction de leurs noms.
 
 ```java
 public class HeroRegistration extends App {
@@ -34,24 +37,29 @@ public class Hero {
 }
 ```
 
-### Annotation `UseProperty` {#useproperty-annotation}
+### `UseProperty` annotation {#useproperty-annotation}
 
-Utilisez l'annotation `UseProperty` pour spécifier le nom de la propriété du bean lorsque le nom du champ de l'interface utilisateur ne correspond pas au nom de la propriété du bean.
+Lorsque vous souhaitez lier une propriété de bean à un composant UI portant un nom différent, utilisez l'annotation `UseProperty`. 
+Cette annotation offre une plus grande précision lors de la liaison des propriétés de bean avec les composants UI, notamment lorsque vous traitez des [propriétés de bean imbriquées](/docs/data-binding/bindings#nested-bean-properties).
 
 ```java
 public class HeroRegistration extends App {
-  // Composants bindables
+  // Lie à la propriété name
   @UseProperty("name")
-  TextField nameField = new TextField("Champ de texte");
+  TextField nameField = new TextField("Nom");
+  
+  // Lie à la propriété imbriquée address.street
+  @UseProperty("address.street")
+  TextField streetField = new TextField("Rue");
+
+  // Lie à la propriété power
   ComboBox power = new ComboBox("Pouvoir");
 
   // ...
 }
 ```
 
-Dans l'exemple ci-dessus, le nom du champ de l'interface utilisateur est `nameField`, mais la propriété du bean est `name`. Vous pouvez annoter le champ de l'interface utilisateur avec le nom de la propriété du bean pour garantir une liaison appropriée.
-
-### Annotation `BindingExclude` {#bindingexclude-annotation}
+### `BindingExclude` annotation {#bindingexclude-annotation}
 
 Utilisez l'annotation `BindingExclude` pour exclure un composant des configurations de liaison automatique lorsque vous préférez le lier manuellement ou l'exclure complètement.
 
@@ -68,9 +76,9 @@ public class HeroRegistration extends App {
 }
 ```
 
-### Annotation `UseValidator` {#usevalidator-annotation}
+### `UseValidator` annotation {#usevalidator-annotation}
 
-Utilisez l'annotation `UseValidator` pour déclarer des validateurs qui appliquent des règles de validation supplémentaires lors de la liaison. Les validateurs s'appliquent dans l'ordre que vous les spécifiez.
+Utilisez l'annotation `UseValidator` pour déclarer des validateurs qui appliquent des règles de validation supplémentaires lors de la liaison. Les validateurs s'appliquent dans l'ordre dans lequel vous les spécifiez.
 
 ```java
 public class UserRegistration extends App {
@@ -80,9 +88,9 @@ public class UserRegistration extends App {
 }
 ```
 
-### Annotation `UseTransformer` {#usetransformer-annotation}
+### `UseTransformer` annotation {#usetransformer-annotation}
 
-Utilisez l'annotation `UseTransformer` pour déclarer une classe de transformation directement sur un champ de l'interface utilisateur. Le `BindingContext` applique automatiquement le transformateur spécifié.
+Utilisez l'annotation `UseTransformer` pour déclarer une classe de transformation directement sur un champ UI. Le `BindingContext` applique automatiquement le transformateur spécifié.
 
 ```java
 public class UserRegistration extends App {
@@ -93,36 +101,35 @@ public class UserRegistration extends App {
 }
 ```
 
-### Annotation `BindingReadOnly` {#bindingreadonly-annotation}
+### `BindingReadOnly` annotation {#bindingreadonly-annotation}
 
-Utilisez `BindingReadOnly` pour [marquer une liaison comme en lecture seule](./bindings/#configuring-readonly-bindings).
+Utilisez le `BindingReadOnly` pour [marquer une liaison comme étant en lecture seule](./bindings/#configuring-readonly-bindings).
 
 ```java
 public class UserRegistration extends App {
 
   @BindingReadOnly
-  TextField IDField = new TextField("ID Utilisateur");
+  TextField IDField = new TextField("ID de l'utilisateur");
 }
 ```
 
-### Annotation `BindingRequired` {#bindingrequired-annotation}
+### `BindingRequired` annotation {#bindingrequired-annotation}
 
-Utilisez `BindingReadOnly` pour marquer une liaison comme requise. Voir aussi [détections de liaison requises](#required-binding-detections).
-
+Utilisez le `BindingRequired` pour marquer une liaison comme obligatoire. Voir aussi [détections de liaison requises](#required-binding-detections).
 
 ```java
 public class UserRegistration extends App {
 
   @BindingRequired
-  TextField emailField = new TextField("Email Utilisateur");
+  TextField emailField = new TextField("E-mail de l'utilisateur");
 }
 ```
 
-## Écriture de données automatiquement {#writing-data-automatically}
+## Writing data automatically {#writing-data-automatically}
 
-Pour améliorer la réactivité et le dynamisme des applications, vous pouvez utiliser la méthode `observe`. Cette méthode garantit que les modifications apportées aux composants de l'interface utilisateur se propagent immédiatement au modèle de données. Elle est particulièrement utile lorsque vous avez besoin d'une synchronisation continue entre le modèle de données et l'interface utilisateur.
+Pour améliorer la réactivité et le dynamisme des applications, vous pouvez utiliser la méthode `observe`. Cette méthode garantit que les modifications apportées aux composants UI se propagent immédiatement au modèle de données. Elle est particulièrement utile lorsque vous avez besoin d'une synchronisation continue entre le modèle de données et l'UI.
 
-La méthode `observe` enregistre un écouteur `ValueChangeEvent` sur toutes les liaisons dans le contexte pour surveiller les changements effectués par l'utilisateur, puis elle écrit instantanément ces changements dans les propriétés liées du modèle s'ils sont valides. Lorsque vous invoquez cette méthode pour la première fois, elle reflète les propriétés du bean dans les composants de l'interface utilisateur.
+La méthode `observe` enregistre un écouteur `ValueChangeEvent` sur toutes les liaisons dans le contexte pour surveiller les modifications effectuées par l'utilisateur, puis écrit instantanément ces modifications dans les propriétés liées du modèle si elles sont valides. Lorsque vous invoquez cette méthode pour la première fois, elle reflète les propriétés de bean dans les composants UI.
 
 Voici un exemple d'utilisation de `observe` :
 
@@ -142,21 +149,21 @@ submit.onClick(e -> {
 });
 ```
 
-:::info Direction de mise à jour
-Cette liaison automatique est unidirectionnelle ; les mises à jour se reflètent dans le modèle lorsque vous mettez à jour les composants de l'interface utilisateur, mais les modifications dans le modèle ne se reflètent dans les composants de l'interface utilisateur qu'une seule fois, lors de la première invocation de la méthode.
+:::info Update Direction
+Cette liaison automatique est unidirectionnelle ; les mises à jour sont reflétées dans le modèle lorsque vous mettez à jour les composants UI, mais les changements dans le modèle ne se reflètent dans les composants UI qu'une fois, lors de la première invocation de la méthode.
 :::
 
-:::tip Considérations
+:::tip Considerations
 Bien que `observe` augmente l'interactivité des applications, il est important de l'utiliser judicieusement :
 
-- **Impact sur les performances** : Des mises à jour fréquentes peuvent affecter les performances, en particulier avec des modèles complexes ou des services backend lents.
-- **Expérience utilisateur** : Les mises à jour automatiques ne devraient pas perturber la capacité de l'utilisateur à saisir des données confortablement.
+- **Impact sur les performances** : Des mises à jour fréquentes pourraient affecter les performances, en particulier avec des modèles complexes ou des services backend lents.
+- **Expérience utilisateur** : Les mises à jour automatiques ne doivent pas perturber la capacité de l'utilisateur à saisir des données de manière confortable.
 :::
 
 
-## Détections de liaisons requises {#required-binding-detections}
+## Required binding detections {#required-binding-detections}
 
-Lorsque vous marquez une liaison comme requise, cela marque le composant comme requis, à condition que le composant prenne en charge cet état grâce à l'interface `RequiredAware`. La liaison n'impose pas cet état par elle-même, mais le définit sur le composant lorsque cela est applicable.
+Lorsque vous marquez une liaison comme requise, cela marque le composant comme requis, à condition que le composant prenne en charge cet état via l'interface `RequiredAware`. La liaison n'impose pas cet état par elle-même, mais le définit sur le composant lorsque cela est applicable.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
@@ -166,7 +173,7 @@ context
     .add()
 ```
 
- Lors de l'utilisation des [annotations Jakarta](./validation/jakarta-validation.md), la liaison peut automatiquement détecter l'état requis en fonction de la présence de l'une des annotations suivantes sur les propriétés du bean :
+Lors de l'utilisation des [annotations Jakarta](./validation/jakarta-validation.md), la liaison peut automatiquement détecter l'état requis en fonction de la présence de l'une des annotations suivantes sur les propriétés de bean :
 
 1. `@NotNull` 
 2. `@NotEmpty` 

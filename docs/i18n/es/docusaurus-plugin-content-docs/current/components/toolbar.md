@@ -1,7 +1,10 @@
 ---
 title: Toolbar
 sidebar_position: 145
-_i18n_hash: 54bfdf481b7e149762dc4544c192c6e6
+description: >-
+  Lay out action controls with the Toolbar component, placing components into
+  Start, Title, Content, and End slots with compact mode.
+_i18n_hash: 99def78151a30c5c7fef7106b2efcb5b
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-toolbar" />
@@ -14,16 +17,16 @@ Las barras de herramientas ofrecen a los usuarios acceso rápido a acciones y el
 
 ## Organizando el contenido de la barra de herramientas {#organizing-toolbar-content}
 
-La `Toolbar` organiza componentes esenciales en un diseño fácilmente accesible y consistente. Por defecto, ocupa el ancho completo de su elemento padre y proporciona cuatro áreas de colocación, o _slots_, para organizar componentes:
+El `Toolbar` organiza componentes esenciales en un diseño fácilmente accesible y consistente. De forma predeterminada, ocupa el ancho completo de su elemento padre y proporciona cuatro áreas de colocación, o _slots_, para organizar componentes:
 
 - **Inicio**: Generalmente contiene un <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppDrawerToggle" code='true'>AppDrawerToggle</JavadocLink> o un botón de inicio.
-- **Título**: Utilizado para nombres de aplicaciones o logotipos.
+- **Título**: Se utiliza para nombres o logotipos de aplicaciones.
 - **Contenido**: Para acciones de alta atención como búsqueda o navegación.
-- **Fin**: Acciones menos frecuentes, como perfil de usuario o ayuda.
+- **Fin**: Acciones menos frecuentes, como el perfil de usuario o ayuda.
 
 Cada slot tiene un método para agregar componentes: `addToStart()`, `addToTitle()`, `addToContent()`, y `addToEnd()`.
 
-La siguiente demostración muestra cómo agregar una `Toolbar` a un [AppLayout](./app-layout) y utilizar todos los slots soportados de manera efectiva. Para leer más sobre la implementación de barras de herramientas dentro de un `AppLayout`, consulte [Barras de herramientas fijas](./app-layout#sticky-toolbars) y [Diseño de navegación móvil](./app-layout#mobile-navigation-layout).
+La siguiente demostración muestra cómo agregar un `Toolbar` a un [AppLayout](./app-layout) y utilizar todos los slots soportados de manera efectiva. Para leer más sobre la implementación de barras de herramientas dentro de un `AppLayout`, consulta [Barras de herramientas fijas](./app-layout#sticky-toolbars) y [Diseño de navegación móvil](./app-layout#mobile-navigation-layout).
 
 <ComponentDemo
 path='/webforj/toolbarslots'
@@ -36,7 +39,7 @@ files={[
 
 ## Modo compacto {#compact-mode}
 
-Utilice `setCompact(true)` para reducir el padding alrededor de una `Toolbar`. Esto es útil cuando necesita ajustar más contenido en la pantalla, especialmente en aplicaciones con barras de herramientas apiladas o espacio limitado. La barra de herramientas sigue comportándose de la misma manera; solo se reduce la altura. Este modo se utiliza comúnmente en encabezados, barras laterales o diseños donde el espacio es escaso.
+Utiliza `setCompact(true)` para reducir el padding alrededor de un `Toolbar`. Esto es útil cuando necesitas ajustar más contenido en la pantalla, especialmente en aplicaciones con barras de herramientas apiladas o espacio limitado. La barra de herramientas sigue comportándose de la misma manera; solo se reduce la altura. Este modo se utiliza comúnmente en encabezados, barras laterales o diseños donde el espacio es reducido.
 
 ```java
 Toolbar toolbar = new Toolbar();
@@ -49,11 +52,11 @@ frame='desktop'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java']}
 />
 
-## `ProgressBar` en barras de herramientas {#progressbar-in-toolbars}
+## `ProgressBar` en las barras de herramientas {#progressbar-in-toolbars}
 
-Una `ProgressBar` sirve como un indicador visual para procesos en curso, como cargar datos, subir archivos o completar pasos en un flujo. Cuando se coloca dentro de una `Toolbar`, la `ProgressBar` se alinea perfectamente a lo largo del borde inferior, haciéndola discreta mientras comunica claramente el progreso a los usuarios.
+Un `ProgressBar` sirve como un indicador visual para procesos en curso, como cargar datos, subir archivos o completar pasos en un flujo. Cuando se coloca dentro de un `Toolbar`, el `ProgressBar` se alinea ordenadamente a lo largo del borde inferior, haciéndolo discreto mientras comunica claramente el progreso a los usuarios.
 
-Puede combinarla con otros componentes en la barra de herramientas, como botones o etiquetas, sin interrumpir el diseño.
+Puedes combinarlo con otros componentes en la barra de herramientas, como botones o etiquetas, sin interrumpir el diseño.
 
 <ComponentDemo
 path='/webforj/toolbarprogressbar'
@@ -70,7 +73,7 @@ Los componentes `Toolbar` incluyen <JavadocLink type="foundation" location="com/
 <ComponentDemo
 path='/webforj/toolbartheme'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java']}
-height='475px'
+height='590px'
 />
 
 <TableBuilder name="Toolbar" />

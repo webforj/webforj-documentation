@@ -1,6 +1,7 @@
 ---
 title: Custom data sources
 sidebar_position: 4
+description: Wire REST APIs, databases, or external services to webforJ components by supplying find, count, and key-lookup functions to DelegatingRepository.
 ---
 
 <!-- vale off -->

@@ -3,7 +3,7 @@ sidebar_position: 0
 title: <dwc-table>
 sidebar_class_name: sidebar--item__hidden
 slug: table
-description: A user guide article for the table
+description: Style the dwc-table grid, header, rows, cells, and selection state with CSS variables and shadow parts for full visual control.
 // pagination_prev: null
 // pagination_next: null
 ---

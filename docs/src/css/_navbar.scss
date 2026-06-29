@@ -134,8 +134,14 @@
     }
   }
 
-  @media (max-width: 1350px) {
+  @media (max-width: 1550px) {
     .dropdown--right:not(#startforj-link) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .theme-layout-navbar-left .navbar__item:nth-last-child(-n + 2) {
       display: none;
     }
   }

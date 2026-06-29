@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Accordion
+description: Group collapsible panels with the Accordion and AccordionPanel components to toggle visibility and coordinate expand or collapse behavior.
 ---
 
 <DocChip chip='shadow' />

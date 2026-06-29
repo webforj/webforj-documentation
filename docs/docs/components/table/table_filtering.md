@@ -2,6 +2,7 @@
 sidebar_position: 35
 title: Filtering
 slug: filtering
+description: Narrow Table rows by applying a Predicate through the bound Repository, refreshing results on commit.
 ---
 
 The `Table` component allows you to implement filtering to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table
