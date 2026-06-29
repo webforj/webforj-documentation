@@ -1,0 +1,22 @@
+.upload-demo {
+  margin: var(--dwc-space-l) auto;
+  max-width: 560px;
+  padding: var(--dwc-space-m);
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-m);
+  background: var(--dwc-surface-3);
+}
+
+.upload-demo--narrow { max-width: 520px; }
+
+.upload-demo__field-label {
+  font-weight: var(--dwc-font-weight-semibold);
+  font-size: var(--dwc-font-size-xs);
+  padding-left: var(--dwc-space-s);
+  margin-bottom: var(--dwc-space-s);
+}
+
+.upload-demo__helper {
+  color: var(--dwc-color-default-text-light);
+  font-size: var(--dwc-font-size-xs);
+}
