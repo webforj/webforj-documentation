@@ -23,6 +23,8 @@ Once changes are deployed, live reload automatically reloads the app so the brow
 
 In a webforJ app, live reload can automatically refresh the view, re-rendering components to show the latest state of the app, or even patch changes as needed on demand.
 
+For frontend sources, the [frontend watch](/docs/configuration/deploy-reload/frontend-watch) rebuilds on every change and patches a stylesheet or image in place, reloading the view only when a script changes.
+
 ## Topics {#topics}
 
 <DocCardList className="topics-section" />

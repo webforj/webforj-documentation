@@ -890,5 +890,28 @@
   "automatedUpgradeTip.automatedUpgradeLink": {
     "message": "OpenRewrite verwenden",
     "description": "The text that links to the automated upgrade article"
+  },
+  "cookbook.difficulty.all": {
+    "message": "Alle Ebenen",
+    "description": "Cookbook filter option to show every recipe"
+  },
+  "cookbook.difficulty.beginner": {
+    "message": "Anfänger",
+    "description": "Cookbook filter option to show beginner-level recipes"
+  },
+  "cookbook.difficulty.intermediate": {
+    "message": "Mittelstufe",
+    "description": "Cookbook filter option to show intermediate-level recipes"
+  },
+  "cookbook.difficulty.advanced": {
+    "message": "Erweitert",
+    "description": "Cookbook filter option to show advanced-level recipes"
+  },
+  "Loading recipes…": {
+    "message": "Rezepte laden…"
+  },
+  "cookbook.search.placeholder": {
+    "message": "Rezepte suchen…",
+    "description": "Placeholder text for the cookbook recipe search input"
   }
 }

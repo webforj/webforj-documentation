@@ -1,21 +1,24 @@
 ---
 title: Terminal
 sidebar_position: 126
-_i18n_hash: 513f4970da96e2e9f36a80739e60cd9c
+description: >-
+  Embed an interactive terminal emulator with the Terminal component for shells,
+  dashboards, debug consoles, and remote access tools.
+_i18n_hash: 8480d045ce597a8a24d6fd9760a72935
 ---
 <DocChip chip="shadow" />  
 <DocChip chip="name" label="dwc-terminal" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
 
-Die `Terminal`-Komponente ist ein interaktiver Terminalemulator, der sich wie eine traditionelle Systemkonsole verhält. Sie verarbeitet Textausgaben, Benutzereingaben, Steuersequenzen und Bildschirmpuffer und ist somit geeignet für den Aufbau von Remote-Access-Tools, Text-Dashboards, eingebetteten Befehlszeilen oder Debug-Konsolen.
+Die `Terminal`-Komponente ist ein interaktiver Terminal-Emulator, der sich wie eine traditionelle Systemkonsole verhält. Sie verarbeitet Textausgaben, Benutzereingaben, Steuersequenzen und Bildschirmpuffer, was sie für den Aufbau von Fernzugriffs-Tools, Text-Dashboards, eingebetteten Kommandozeilen oder Debug-Konsolen geeignet macht.
 
 <!-- INTRO_END -->
 
 ## Erstellen eines Terminals {#creating-a-terminal}
 
-:::info Importieren von Terminal
-Um die `Terminal`-Komponente in Ihrer Anwendung zu verwenden, stellen Sie sicher, dass Sie die folgende Abhängigkeit in Ihrer pom.xml einschließen.
+:::info Importieren des Terminals
+Um die `Terminal`-Komponente in Ihrer App zu verwenden, stellen Sie sicher, dass Sie die folgende Abhängigkeit in Ihre pom.xml aufnehmen.
 
 ```xml
 <dependency>
@@ -25,7 +28,7 @@ Um die `Terminal`-Komponente in Ihrer Anwendung zu verwenden, stellen Sie sicher
 ```
 :::
 
-Das folgende Beispiel erstellt eine interaktive Befehlszeile mit eingegebenen Befehlen, Verlaufsnavigation und benutzerdefinierten Ausgaben.
+Das folgende Beispiel erstellt eine interaktive Eingabeaufforderung mit eingegebenen Befehlen, Verlaufnavigation und benutzerdefinierter Ausgabe.
 
 <ComponentDemo
 path='/webforj/terminal'
@@ -36,7 +39,7 @@ files={[
   'src/main/java/com/webforj/samples/views/terminal/commands/DateCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/HelpCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
-  'src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/ConfirmCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java',
   'src/main/resources/static/css/terminal/terminal-view.css',
 ]}
@@ -45,33 +48,33 @@ height='400px'
 
 ## Wie es funktioniert {#how-it-works}
 
-Das Terminal verwaltet ein Gitter von Textzellen, verarbeitet eingehende Zeichenströme und reagiert auf Benutzeraktionen wie das Tippen oder Auswählen von Text. Es interpretiert automatisch Steuerzeichen und Escape-Sequenzen für den Cursorbeweger, Farbänderungen und das Leeren des Bildschirms.
+Das Terminal verwaltet ein Gitter von Textzellen, verarbeitet eingehende Zeichendatenströme und reagiert auf Benutzeraktionen wie Tippen oder Auswahl von Text. Es interpretiert automatisch Steuerzeichen und Escape-Sequenzen für die Cursorbewegung, Farbänderungen und Bildschirmlöschen.
 
-Die grundlegenden Verhaltensweisen umfassen:
+Die Kernfunktionen umfassen:
 
-- **Daten Eingabe**: Das Schreiben von Daten ins Terminal aktualisiert den Bildschirm und verarbeitet sowohl Text- als auch Steuersequenzen.
-- **Daten Ausgabe**: Erfasst Benutzereingaben und gibt diese als strukturierte Ereignisse aus.
-- **Bildschirmverwaltung**: Pflegt einen scrollbaren Verlaufspuffer und den aktuellen Bildschirmzustand.
-- **Cursorverwaltung**: Verfolgt die Cursorposition für die Texteingabe und die Antworten auf Steuersequenzen.
+- **Dateninput**: Das Schreiben von Daten in das Terminal aktualisiert den Bildschirm und verarbeitet sowohl Text als auch Steuersequenzen.
+- **Datenoutput**: Erfasst die Tastenanschläge des Benutzers und gibt sie als strukturierte Ereignisse aus.
+- **Bildschirmverwaltung**: Hält einen scrollbar gespeicherten Verlaufspuffer und den aktuellen Bildschirmstatus.
+- **Cursormanagement**: Verfolgt die Cursorposition für die Texteingabe und die Reaktionen auf Steuersequenzen.
 
-Das Terminal ist zustandsbehaftet, was bedeutet, dass es mehrbyteige Zeichen ordnungsgemäß rekonstruieren und die Kontinuität über fragmentierte Eingaben hinweg aufrechterhalten kann.
+Das Terminal ist zustandsbehaftet, was bedeutet, dass es mehrbyteige Zeichen korrekt rekonstruiert und die Kontinuität über fragmentierte Eingaben aufrechterhält.
 
-## Senden von Daten an das Terminal {#sending-data-to-the-terminal}
+## Daten an das Terminal senden {#sending-data-to-the-terminal}
 
-Daten werden an das Terminal mithilfe der Methoden `write` und `writeln` gesendet:
+Daten werden an das Terminal mit den Methoden `write` und `writeln` gesendet:
 
 - `write(Object data)`: Sendet Daten in den Terminalstream.
 - `writeln(Object data)`: Sendet Daten gefolgt von einem Zeilenumbruch.
 
-Das Terminal verarbeitet alle eingehenden Daten als **UTF-16**-Strings. Es behandelt automatisch mehrbyteige Zeichen, selbst wenn die Eingabe in fragmentierten Chunks eintrifft.
+Das Terminal verarbeitet alle eingehenden Daten als **UTF-16**-Strings. Es verarbeitet automatisch mehrbyteige Zeichen, selbst wenn die Eingabe in fragmentierten Chunks ankommt.
 
 ### Beispiel {#example}
 ```java
-terminal.write("echo Hallo Welt\n");
+terminal.write("echo Hello World\n");
 terminal.writeln("Bereit.");
 ```
 
-Sie können auch eine Rückruffunktion anhängen, die ausgeführt wird, sobald der Datenchunk verarbeitet wurde:
+Sie können auch eine Callback-Funktion anfügen, die ausgeführt wird, nachdem der Datenchunk verarbeitet wurde:
 
 ```java
 terminal.write("Lange Befehlsausgabe", e -> {
@@ -79,12 +82,12 @@ terminal.write("Lange Befehlsausgabe", e -> {
 });
 ```
 
-## Empfang von Benutzereingaben {#receiving-user-input}
+## Benutzereingaben empfangen {#receiving-user-input}
 
-Das Terminal erfasst Benutzereingaben über zwei Ereignisse:
+Das Terminal erfasst benutzergenerierte Eingaben über zwei Ereignisse:
 
-- **Datenereignis (`onData`)**: Wird ausgelöst, wenn Texteingaben erfolgen, und sendet Unicode-Zeichen.
-- **Tasteneingabeereignis (`onKey`)**: Wird für jeden Tastendruck ausgelöst und enthält Informationen über Tastencodes und Modifikatoren wie <kbd>Ctrl</kbd> oder <kbd>Alt</kbd>.
+- **Datenereignis (`onData`)**: Wird ausgelöst, wenn Texteingaben erfolgen, wobei Unicode-Zeichen gesendet werden.
+- **Tastenevent (`onKey`)**: Wird für jeden Tastendruck ausgelöst, einschließlich Informationen über Tasten-Codes und Modifikatoren wie <kbd>Ctrl</kbd> oder <kbd>Alt</kbd>.
 
 Diese Ereignisse können verwendet werden, um Benutzereingaben an ein Backend weiterzuleiten, UI-Elemente zu aktualisieren oder benutzerdefinierte Aktionen auszulösen.
 
@@ -102,23 +105,23 @@ terminal.onKey(event -> {
 });
 ```
 
-Alle vom Terminal erfassten Benutzereingaben (zum Beispiel von `onData`-Ereignissen) werden als UTF-16-Strings ausgegeben.  
-Wenn Ihr Backend eine andere Kodierung (wie UTF-8-Bytes) erwartet, müssen Sie die Daten manuell transkodieren.
+Alle Benutzereingaben, die vom Terminal erfasst werden (zum Beispiel von `onData`-Ereignissen), werden als UTF-16-Strings ausgegeben.  
+Wenn Ihr Backend eine andere Codierung erwartet (wie UTF-8-Bytes), müssen Sie die Daten manuell transkodieren.
 
-:::info Veraltete Kodierungen
-Das Terminal **unterstützt keine veralteten Kodierungen** wie `ISO-8859`.  
-Wenn Sie Kompatibilität mit Nicht-UTF-8-Systemen benötigen, verwenden Sie einen externen Transcoder (zum Beispiel [`luit`](https://linux.die.net/man/1/luit) oder [`iconv`](https://de.wikipedia.org/wiki/Iconv)), um die Daten vor dem Schreiben oder Lesen im Terminal zu konvertieren.
+:::info Veraltete Codierungen
+Das Terminal **unterstützt keine veralteten Codierungen** wie `ISO-8859`.  
+Wenn Sie Kompatibilität mit Nicht-UTF-8-Systemen benötigen, verwenden Sie einen externen Transcoder (zum Beispiel [`luit`](https://linux.die.net/man/1/luit) oder [`iconv`](https://en.wikipedia.org/wiki/Iconv)), um die Daten vor dem Schreiben in oder Lesen vom Terminal zu konvertieren.
 :::
 
-## Verarbeitung großer Datenströme {#handling-large-data-streams}
+## Handhabung großer Datenströme {#handling-large-data-streams}
 
-Da das Terminal unbegrenzte Eingaben nicht sofort rendern kann, unterhält es einen internen Eingabepuffer. Wenn dieser Puffer zu groß wird (standardmäßig etwa `50MB`), können neue eingehende Daten verworfen werden, um die Systemleistung zu schützen.
+Da das Terminal nicht sofort unbegrenzte Eingaben rendern kann, unterhält es einen internen Eingabepuffer. Wenn dieser Puffer zu groß wird (standardmäßig etwa `50MB`), kann neue eingehende Daten abgeworfen werden, um die Systemleistung zu schützen.
 
-Um schnelle Datenquellen ordnungsgemäß zu verwalten, sollten Sie **Flusskontrolle** implementieren.
+Um schnelle Datenquellen richtig zu verwalten, sollten Sie **Flusskontrolle** implementieren.
 
-### Einfaches Beispiel für Flusskontrolle {#basic-flow-control-example}
+### Einfaches Flusssteuerungsbeispiel {#basic-flow-control-example}
 
-Pausieren Sie Ihr Backend, bis das Terminal mit der Verarbeitung eines Chunks fertig ist:
+Halten Sie Ihr Backend an, bis das Terminal einen Chunk verarbeitet hat:
 
 ```java
 pty.onData(chunk -> {
@@ -129,9 +132,9 @@ pty.onData(chunk -> {
 });
 ```
 
-### Beispiel für Flusskontrolle mit Wasserzeichen {#watermark-flow-control-example}
+### Wasserstandsteuerungsbeispiel {#watermark-flow-control-example}
 
-Für eine effizientere Kontrolle verwenden Sie hohe/niedrige Wasserzeichen:
+Für eine effizientere Kontrolle verwenden Sie Hoch-/Tiefwasserzeichen:
 
 ```java
 int HIGH_WATERMARK = 100_000;
@@ -165,11 +168,11 @@ height='400px'
 
 ### Terminaloptionen {#terminal-options}
 
-Die Klasse `TerminalOptions` ermöglicht Ihnen die Konfiguration des Verhaltens:
+Die Klasse `TerminalOptions` ermöglicht es Ihnen, das Verhalten zu konfigurieren:
 
 - Cursorblinken.
 - Schriftarteinstellungen (Familie, Größe, Gewicht).
-- Größe des Scrollback-Puffers.
+- Größe des Rücklaufpuffers.
 - Zeilenhöhe und Buchstabenabstand.
 - Barrierefreiheitseinstellungen (Bildschirmlesemodus).
 
@@ -184,13 +187,13 @@ TerminalOptions options = new TerminalOptions()
 terminal.setOptions(options);
 ```
 
-### Terminal-Design {#terminal-theme}
+### Terminaldesign {#terminal-theme}
 
-Sie können das Terminal mit `TerminalTheme` gestalten, das die folgenden Eigenschaften definiert:
+Sie können das Terminal mit `TerminalTheme` stylen, das definiert:
 
 - Hintergrund- und Vordergrundfarben.
-- Standard-Farbenpalette `ANSI`.
-- Hintergrundfarben für Cursor und Auswahl.
+- Standard `ANSI`-Farbschema.
+- Cursor- und Auswahlhintergrundfarben.
 
 Beispiel:
 ```java
@@ -207,20 +210,20 @@ height='500px'
 
 ## Unterstützte Sequenzen {#supported-sequences}
 
-Das Terminal unterstützt eine Vielzahl standardmäßiger Steuersequenzen, die für Cursorbewegungen, Bildschirmaktualisierungen und Textformatierungen verwendet werden.
+Das Terminal unterstützt eine Vielzahl von standardmäßigen Steuersequenzen, die für Cursorbewegungen, Bildschirmaktualisierungen und Textformatierungen verwendet werden.
 
 Erkannte Gruppen:
 
-- **`C0`-Steuercodes** (einzelbyte 7-bit Befehle, `\x00`, `\x1F`, wie Rückschritt und Zeilenumbruch)
-- **`C1`-Steuercodes** (einzelbyte 8-bit Befehle, `\x80`, `\x9F`)
-- **`ESC`-Sequenzen** (beginnend mit `ESC` (`\x1B`), wie Cursor speichern/wiederherstellen, Bildschirmausrichtung)
-- **`CSI`-Sequenzen** (Control Sequence Introducer, `ESC [` oder `CSI (\x9B)`, für Operationen wie Scrollen, Löschen und Stylisieren)
-- **`DCS`-Sequenzen** (Gerätesteuerungszeichenfolgen, `ESC P` oder `DCS (\x90)`)
-- **`OSC`-Sequenzen** (Betriebssystembefehle, `ESC ]` oder `OSC (\x9D)`, zum Setzen des Fenstertitels, von Hyperlinks und Farben)
+- **`C0`-Steuercodes** (einbyteige 7-Bit-Befehle, `\x00`, `\x1F`, wie Backspace und Zeilenumbruch)
+- **`C1`-Steuercodes** (einbyteige 8-Bit-Befehle, `\x80`, `\x9F`)
+- **`ESC`-Sequenzen** (beginnen mit `ESC` (`\x1B`), wie Cursor speichern/wiederherstellen, Bildschirmausrichtung)
+- **`CSI`-Sequenzen** (Control Sequence Introducer, `ESC [` oder `CSI (\x9B)`, für Operationen wie Scrollen, Löschen und Formatierung)
+- **`DCS`-Sequenzen** (Device Control Strings, `ESC P` oder `DCS (\x90)`)
+- **`OSC`-Sequenzen** (Betriebssystembefehle, `ESC ]` oder `OSC (\x9D)`, zum Setzen von Fenstertiteln, Hyperlinks und Farben)
 
-:::info Umgang mit exotischen und benutzerdefinierten Sequenzen
-Einige exotische Sequenztypen wie `APC`, `PM` und `SOS` werden erkannt, aber stillschweigend ignoriert.  
-Benutzerdefinierte Sequenzen können nach Bedarf über Integrationen unterstützt werden.
+:::info Handhabung exotischer und benutzerdefinierter Sequenzen
+Einige exotische Sequenztypen wie `APC`, `PM` und `SOS` werden erkannt, aber stillschweigend ignoriert. 
+Benutzerdefinierte Sequenzen können bei Bedarf durch Integrationen unterstützt werden.
 :::
 
 ## Styling {#styling}

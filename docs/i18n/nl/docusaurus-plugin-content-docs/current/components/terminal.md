@@ -1,21 +1,24 @@
 ---
 title: Terminal
 sidebar_position: 126
-_i18n_hash: 513f4970da96e2e9f36a80739e60cd9c
+description: >-
+  Embed an interactive terminal emulator with the Terminal component for shells,
+  dashboards, debug consoles, and remote access tools.
+_i18n_hash: 8480d045ce597a8a24d6fd9760a72935
 ---
 <DocChip chip="shadow" />  
 <DocChip chip="name" label="dwc-terminal" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
 
-De `Terminal` component is een interactieve terminalemulator die zich gedraagt als een traditionele systeemconsole. Het beheert tekstuitvoer, gebruikersinvoer, controle- en escape-sequenties, en schermbuffers, waardoor het geschikt is voor het bouwen van hulpmiddelen voor externe toegang, tekstdashboards, ingebedde commando-shells of debugconsoles.
+De `Terminal` component is een interactieve terminalemulator die zich gedraagt als een traditionele systeemconsole. Het beheert tekstuitvoer, gebruikersinvoer, controle-sequenties en schermbuffers, waardoor het geschikt is voor het bouwen van tools voor externe toegang, tekstdashboards, ingebedde opdracht_shells of foutopsporingsconsoles.
 
 <!-- INTRO_END -->
 
-## Een terminal aanmaken {#creating-a-terminal}
+## Een terminal maken {#creating-a-terminal}
 
 :::info Terminal importeren
-Om de `Terminal` component in je app te gebruiken, zorg ervoor dat je de volgende afhankelijkheid in je pom.xml opneemt.
+Om de `Terminal` component in uw app te gebruiken, zorgt u ervoor dat u de volgende afhankelijkheid in uw pom.xml opneemt.
 
 ```xml
 <dependency>
@@ -25,7 +28,7 @@ Om de `Terminal` component in je app te gebruiken, zorg ervoor dat je de volgend
 ```
 :::
 
-Het volgende voorbeeld bouwt een interactieve opdracht-shell met getypte opdrachten, navigatie in de geschiedenis en aangepaste uitvoer.
+Het volgende voorbeeld bouwt een interactieve opdracht_shell met getypte opdrachten, navigatie door de geschiedenis en aangepaste uitvoer.
 
 <ComponentDemo
 path='/webforj/terminal'
@@ -36,7 +39,7 @@ files={[
   'src/main/java/com/webforj/samples/views/terminal/commands/DateCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/HelpCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
-  'src/main/java/com/webforj/samples/views/terminal/commands/PromptCommand.java',
+  'src/main/java/com/webforj/samples/views/terminal/commands/ConfirmCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java',
   'src/main/resources/static/css/terminal/terminal-view.css',
 ]}
@@ -45,25 +48,25 @@ height='400px'
 
 ## Hoe het werkt {#how-it-works}
 
-De terminal beheert een grid van tekstcellen, verwerkt inkomende tekenstromen en reageert op gebruikersacties zoals typen of tekst selecteren. Het interpreteert automatisch controlekarakters en escape-sequenties voor cursorbeweging, kleuraanpassingen en het wissen van het scherm.
+De terminal beheert een raster van tekstcellen, verwerkt binnenkomende tekenstromen en reageert op gebruikersacties zoals typen of tekst selecteren. Het interpreteert automatisch controlekarakters en escape-sequenties voor cursorbeweging, kleurveranderingen en schermwissen.
 
-De kernfunctionaliteiten omvatten:
+De kernfunctionaliteiten zijn:
 
-- **Gegevensinvoer**: Het schrijven van gegevens naar de terminal werkt het scherm bij, waarbij zowel tekst als controle-sequenties worden verwerkt.
-- **Gegevensuitvoer**: Vangt gebruikersinvoer van toetsen en geeft deze weer als gestructureerde gebeurtenissen.
-- **Schermbeheer**: Behoudt een scrollbare geschiedenisbuffer en de huidige schermstatus.
-- **Cursorbeheer**: Houdt de cursorpositie bij voor tekstinvoer en reacties op controle-sequenties.
+- **Gegevensinvoer**: Het schrijven van gegevens naar de terminal werkt het scherm bij, wat zowel tekst als controle-sequenties afhandelt.
+- **Gegevensuitvoer**: Vangt gebruikersinvoer en geeft deze door als gestructureerde gebeurtenissen.
+- **Schermbeheer**: Houdt een scrollbare geschiedenisbuffer en de huidige schermstatus bij.
+- **Cursorbeheer**: Volgt de cursorpositie voor tekstinvoer en reacties op controle-sequenties.
 
-De terminal is stateful, wat betekent dat deze multibyte-tekens goed reconstrueert en continuïteit behoudt bij gefragmenteerde invoer.
+De terminal is stateful, wat betekent dat deze meerdere-byte tekenreconstructies correct afhandelt en continuïteit waarborgt bij gefragmenteerde invoer.
 
-## Gegevens naar de terminal sturen {#sending-data-to-the-terminal}
+## Gegevens naar de terminal verzenden {#sending-data-to-the-terminal}
 
-Gegevens worden naar de terminal gestuurd met de methoden `write` en `writeln`:
+Gegevens worden naar de terminal verzonden met de `write` en `writeln` methoden:
 
-- `write(Object data)`: Stuurt gegevens in de terminalstroom.
-- `writeln(Object data)`: Stuurt gegevens gevolgd door een newline.
+- `write(Object data)`: Stuur gegevens naar de terminalstream.
+- `writeln(Object data)`: Stuur gegevens gevolgd door een nieuwe regel.
 
-De terminal verwerkt alle inkomende gegevens als **UTF-16**-strings. Het verwerkt automatisch multibyte-tekens, zelfs wanneer de invoer in gefragmenteerde stukken arriveert.
+De terminal verwerkt alle binnenkomende gegevens als **UTF-16**-strings. Het handelt automatisch meerdere-byte tekens af, zelfs wanneer de invoer in gefragmenteerde stukken arriveert.
 
 ### Voorbeeld {#example}
 ```java
@@ -71,10 +74,10 @@ terminal.write("echo Hello World\n");
 terminal.writeln("Klaar.");
 ```
 
-Je kunt ook een callback toevoegen die wordt uitgevoerd zodra het gegevensfragment is verwerkt:
+U kunt ook een callback toevoegen die wordt uitgevoerd zodra het gegevensblok is verwerkt:
 
 ```java
-terminal.write("Lang uitvoer van opdracht", e -> {
+terminal.write("Lang commando uitvoer", e -> {
   System.out.println("Gegevens verwerkt.");
 });
 ```
@@ -83,10 +86,10 @@ terminal.write("Lang uitvoer van opdracht", e -> {
 
 De terminal vangt door de gebruiker gegenereerde invoer via twee evenementen:
 
-- **Gegevens evenement (`onData`)**: Vindt plaats wanneer textinvoer plaatsvindt, met Unicode-tekens.
-- **Toetsenbord evenement (`onKey`)**: Vindt plaats bij elke toetsdruk, inclusief informatie over toetsaanslagen en modifiers zoals <kbd>Ctrl</kbd> of <kbd>Alt</kbd>.
+- **Gegevensevenement (`onData`)**: Wordt geactiveerd wanneer tekstinvoer plaatsvindt, verzendt Unicode-tekens.
+- **Toetsenbordgebeurtenis (`onKey`)**: Wordt geactiveerd bij elke toetsaanslag, inclusief informatie over toetscodes en modifiers zoals <kbd>Ctrl</kbd> of <kbd>Alt</kbd>.
 
-Deze evenementen kunnen worden gebruikt om gebruikersinvoer naar een backend door te geven, UI-elementen bij te werken, of aangepaste acties te activeren.
+Deze gebeurtenissen kunnen worden gebruikt om gebruikersinvoer naar een backend door te geven, UI-elementen bij te werken of aangepaste acties te activeren.
 
 ### Voorbeeld {#example-1}
 ```java
@@ -102,23 +105,23 @@ terminal.onKey(event -> {
 });
 ```
 
-Alle door de terminal vastgelegde gebruikersinvoer (zoals van `onData`-evenementen) wordt uitgezonden als UTF-16-strings.  
-Als je backend een andere codering verwacht (zoals UTF-8-bytes), moet je de gegevens handmatig transcoderend.
+Alle door de terminal vastgelegde gebruikersinvoer (zoals van `onData` evenementen) wordt uitgegeven als UTF-16-strings.  
+Als uw backend een andere codering verwacht (zoals UTF-8 bytes), moet u de gegevens handmatig transcoden.
 
-:::info Legacy encodings
+:::info Legacy Coderingen
 De terminal **ondersteunt geen legacy coderingen** zoals `ISO-8859`.  
-Als je compatibiliteit nodig hebt met niet-UTF-8-systemen, gebruik dan een externe transcoder (bijvoorbeeld [`luit`](https://linux.die.net/man/1/luit) of [`iconv`](https://en.wikipedia.org/wiki/Iconv)) om de gegevens te converteren voordat je ze naar de terminal schrijft of deze uitleest.
+Als u compatibiliteit nodig heeft met niet-UTF-8-systemen, gebruik dan een externe transcoder (bijvoorbeeld, [`luit`](https://linux.die.net/man/1/luit) of [`iconv`](https://en.wikipedia.org/wiki/Iconv)) om de gegevens te converteren voordat u ze naar de terminal schrijft of eruit leest.
 :::
 
-## Behandelen van grote gegevensstromen {#handling-large-data-streams}
+## Omgaan met grote gegevensstromen {#handling-large-data-streams}
 
-Omdat de terminal niet in staat is om onbeperkte invoer onmiddellijk weer te geven, onderhoudt het een interne invoerbuffer. Als deze buffer te groot groeit (standaard ongeveer `50MB`), kunnen nieuwe inkomende gegevens worden verworpen om de systeemperformance te beschermen.
+Omdat de terminal niet onmiddellijk onbeperkte invoer kan renderen, onderhoudt deze een interne invoerbuffer. Als deze buffer te groot wordt (standaard rond de `50MB`), kunnen nieuwe binnenkomende gegevens worden verworpen om de systeemprestaties te beschermen.
 
-Om snel datastromen goed te beheren, moet je **flow control** implementeren.
+Om snelle gegevensbronnen goed te beheren, moet u **stroomregeling** implementeren.
 
-### Basisvoorbeeld van flow control {#basic-flow-control-example}
+### Basis stroomregeling voorbeeld {#basic-flow-control-example}
 
-Pauzeer je backend totdat de terminal de verwerking van een fragment heeft voltooid:
+Pauzeer uw backend totdat de terminal klaar is met het verwerken van een blok:
 
 ```java
 pty.onData(chunk -> {
@@ -129,9 +132,9 @@ pty.onData(chunk -> {
 });
 ```
 
-### Watermark flow control voorbeeld {#watermark-flow-control-example}
+### Watermerk stroomregeling voorbeeld {#watermark-flow-control-example}
 
-Voor efficiëntere controle, gebruik hoge/lage watermerken:
+Gebruik voor efficiëntere controle hoge/lage watermerken:
 
 ```java
 int HIGH_WATERMARK = 100_000;
@@ -165,7 +168,7 @@ height='400px'
 
 ### Terminal opties {#terminal-options}
 
-De `TerminalOptions` klasse stelt je in staat om gedrag te configureren:
+De `TerminalOptions` class stelt u in staat om het gedrag te configureren:
 
 - Cursor knipperen.
 - Lettertype-instellingen (familie, grootte, gewicht).
@@ -186,11 +189,11 @@ terminal.setOptions(options);
 
 ### Terminal thema {#terminal-theme}
 
-Je kunt de terminal stylen met `TerminalTheme`, dat het volgende definieert:
+U kunt de terminal stylen met `TerminalTheme`, dat definieert:
 
-- Achtergrond- en voorgrondkleuren.
-- Standaard `ANSI` kleurenpalet.
-- Cursor- en selectieachtergrondkleuren.
+- Achtergrond- en foregroundkleuren.
+- Standaard `ANSI` kleurpalet.
+- Achtergrondkleuren voor cursor en selectie.
 
 Voorbeeld:
 ```java
@@ -207,22 +210,22 @@ height='500px'
 
 ## Ondersteunde sequenties {#supported-sequences}
 
-De terminal ondersteunt een breed scala aan standaard controle sequenties die worden gebruikt voor cursorbeweging, schermupdates en tekstformattering.
+De terminal ondersteunt een breed scala aan standaard controle-sequenties die worden gebruikt voor cursorbeweging, schermupdates en tekstformatering.
 
-Herkenbare groepen:
+Erkenningsgroepen:
 
-- **`C0` controlecodes** (enkele byte 7-bits commando's, `\x00`, `\x1F`, zoals backspace en line feed)
-- **`C1` controlecodes** (enkele byte 8-bits commando's, `\x80`, `\x9F`)
-- **`ESC` sequenties** (beginnen met `ESC` (`\x1B`), zoals cursor opslaan/herstellen, schermuitlijning)
-- **`CSI` sequenties** (Control Sequence Introducer, `ESC [` of `CSI (\x9B)`, voor operaties zoals scrollen, wissen, en stylen)
+- **`C0` controlecodes** (enkele-byte 7-bit commando's, `\x00`, `\x1F`, zoals terugspoelen en regelvoeding)
+- **`C1` controlecodes** (enkele-byte 8-bit commando's, `\x80`, `\x9F`)
+- **`ESC` sequenties** (begint met `ESC` (`\x1B`), zoals cursor opslaan/herstellen, schermuitlijning)
+- **`CSI` sequenties** (Control Sequence Introducer, `ESC [` of `CSI (\x9B)`, voor bewerkingen zoals scrollen, wissen en stijlen)
 - **`DCS` sequenties** (Device Control Strings, `ESC P` of `DCS (\x90)`)
-- **`OSC` sequenties** (Operating System Commands, `ESC ]` of `OSC (\x9D)`, voor het instellen van venstertitel, hyperlinks, en kleuren)
+- **`OSC` sequenties** (Operating System Commands, `ESC ]` of `OSC (\x9D)`, voor het instellen van venstertitels, hyperlinks en kleuren)
 
-:::info Exotic en aangepaste sequenties afhandelen
-Sommige exotische sequentietypes zoals `APC`,`PM`, en `SOS` worden herkend maar stilletjes genegeerd.  
-Aangepaste sequenties kunnen indien nodig worden ondersteund via integraties.
+:::info Omgaan met Exotische en Aangepaste Sequenties
+Sommige exotische sequentietypen zoals `APC`, `PM` en `SOS` worden herkend maar stilzwijgend genegeerd.  
+Aangepaste sequenties kunnen worden ondersteund via integraties indien nodig.
 :::
 
-## Styling {#styling}
+## Stijling {#styling}
 
 <TableBuilder name="Terminal" />

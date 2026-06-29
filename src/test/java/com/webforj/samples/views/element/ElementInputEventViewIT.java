@@ -26,4 +26,12 @@ public class ElementInputEventViewIT extends BaseTest {
 
     elementInputEventPage.getOKButton().click();
   }
+
+  @Test
+  public void testLiteralCharacters() {
+    elementInputEventPage.getInputField().fill("<html><b>Hello World</b></html>");
+    elementInputEventPage.getOKButton().click();
+    assertThat(elementInputEventPage.getDialogMessage())
+        .hasValue("<html><b>Hello World</b></html>");
+  }
 }

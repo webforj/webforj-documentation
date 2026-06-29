@@ -1,12 +1,11 @@
 package com.webforj.samples.views.element;
 
-import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
-
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.element.Element;
 import com.webforj.component.element.event.ElementEventOptions;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.optiondialog.MessageDialog;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -33,7 +32,10 @@ public class ElementInputEventView extends Composite<Div> {
     input.addEventListener(
         "keypress",
         e -> {
-          showMessageDialog(e.getEventMap().get("theValue"), "Input Event");
+          MessageDialog messageDialog =
+              new MessageDialog(e.getEventMap().get("theValue"), "Input Event");
+          messageDialog.setRawText(true);
+          messageDialog.show();
         },
         options);
   }

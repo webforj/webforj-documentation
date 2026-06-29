@@ -1,6 +1,6 @@
 ---
 title: Licensing and Watermark
-sidebar_position: 20
+sidebar_position: 45
 description: Request a webforJ trial certificate and place certificate.bls in the resources directory to remove the unlicensed runtime watermark.
 ---
 

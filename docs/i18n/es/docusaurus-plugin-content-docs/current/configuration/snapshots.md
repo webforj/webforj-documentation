@@ -1,13 +1,25 @@
 ---
 title: Snapshots
-sidebar_position: 35
-sidebar_class_name: new-content
-_i18n_hash: 5234e12882e2652d440f8861a6341cef
+sidebar_position: 30
+hide_table_of_contents: true
+description: >-
+  Locate the latest webforJ snapshot version and add the Central Portal
+  Snapshots repository to consume pre-release builds.
+_i18n_hash: 646ace835d5ba39ed182935e8d7f33fb
 ---
-Cada versión de webforJ que se lanza viene acompañada de notas de [lanza detalladas](https://github.com/webforj/webforj/releases) y un artículo de blog sobre el [lanzamiento](/blog/tags/release). Las versiones de instantáneas de webforJ te dan acceso a las últimas características para pruebas mientras se continúa el desarrollo de la versión pre-liberada.
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
+
+Cada versión de webforJ lanzada está acompañada de notas de [lanzamiento](https://github.com/webforj/webforj/releases) y un artículo en el [blog de lanzamiento](/blog/tags/release).
+Las versiones snapshot de webforJ te dan acceso a las últimas características para pruebas mientras el desarrollo continúa en la versión no publicada.
 
 <!-- vale Google.Acronyms = NO -->
-Si bien las instantáneas no están listadas públicamente en los sitios del repositorio de Maven como [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) o [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj), es fácil acceder al nombre de la instantánea. Para encontrar la versión de instantánea más reciente, navega al [proyecto webforJ](https://github.com/webforj/webforj) en GitHub. Desde allí, busca el [archivo POM del proyecto](https://github.com/webforj/webforj/blob/main/pom.xml) y busca la etiqueta `version`:
+Aunque los snapshots no están listados públicamente en sitios de repositorios de Maven como [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) o [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj), es fácil acceder al nombre del snapshot. Para encontrar la versión snapshot más nueva, navega al [proyecto de webforJ](https://github.com/webforj/webforj) en GitHub. Desde allí, busca el [archivo POM](https://github.com/webforj/webforj/blob/main/pom.xml) del proyecto y busca la etiqueta `version`:
 <!-- vale Google.Acronyms = YES -->
 ```xml {3} title="pom.xml"
 <groupId>com.webforj</groupId>
@@ -17,7 +29,7 @@ Si bien las instantáneas no están listadas públicamente en los sitios del rep
 <name>webforj</name>
 ```
 
-Para utilizar esa versión de instantánea en tu aplicación, usa ese valor como la propiedad `webforj.version` en el archivo POM de tu aplicación:
+Para usar esa versión snapshot en tu aplicación, usa ese valor como la propiedad `webforj.version` en el archivo POM de tu aplicación:
 ```xml title="pom.xml" {2}
 <properties>
   <webforj.version>26.00-SNAPSHOT</webforj.version>
@@ -28,9 +40,9 @@ Para utilizar esa versión de instantánea en tu aplicación, usa ese valor como
 </properties>
 ```
 
-## Configurar el repositorio de instantáneas {#configure-the-snapshot-repository}
+## Configurar el repositorio de snapshots {#configure-the-snapshot-repository}
 
-Debido a que las instantáneas no se publican en Maven Central, necesitas agregar el repositorio Central Portal Snapshots al `pom.xml` de tu aplicación para que Maven pueda resolverlas. Necesitas dos entradas: un `<repository>` para los artefactos de tiempo de ejecución de webforJ, y un `<pluginRepository>` para sus plugins de Maven (como los plugins de instalación y minificación), que también se publican como instantáneas. Ambas entradas desactivan la resolución de lanzamientos para que Maven solo use este repositorio para artefactos de instantánea.
+Debido a que los snapshots no se publican en Maven Central, necesitas agregar el repositorio de Snapshots de Central Portal al `pom.xml` de tu aplicación para que Maven pueda resolverlos. Necesitas dos entradas: un `<repository>` para los artefactos de tiempo de ejecución de webforJ, y un `<pluginRepository>` para sus plugins de Maven (como los plugins de instalación y minificación), que también se publican como snapshots. Ambas entradas desactivan la resolución de versiones de lanzamiento para que Maven solo use este repositorio para artefactos snapshot.
 
 ```xml title="pom.xml"
 <repositories>
@@ -64,5 +76,5 @@ Debido a que las instantáneas no se publican en Maven Central, necesitas agrega
 Alternativamente, si estás creando una nueva aplicación webforJ, ve a [startforJ](https://docs.webforj.com/startforj/) y elige la versión de webforJ que termina con `(pre)`.
 
 :::warning
-Las versiones de instantáneas están en desarrollo activo y están sujetas a cambios, por lo que no se recomiendan para su uso en aplicaciones de producción en vivo.
+Las versiones snapshot están en desarrollo activo y están sujetas a cambios, por lo que no se recomiendan para su uso en aplicaciones de producción en vivo.
 :::

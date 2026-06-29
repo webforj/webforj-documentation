@@ -1,6 +1,6 @@
 ---
 title: Debugging
-sidebar_position: 1
+sidebar_position: 15
 description: Attach a remote Java debugger to a running webforJ app from Visual Studio Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
 ---
 

@@ -1,22 +1,29 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-_i18n_hash: 8feae38bceaabbc49e058a8d2f56f3ba
+description: >-
+  Pair Spring DevTools with webforJ DevTools to auto-restart the app and refresh
+  the browser when Java, CSS, or asset files change.
+_i18n_hash: 3a552976cb9d962eb59dbfa25a10fb58
 ---
-Spring DevTools tarjoaa automaattiset sovelluksen uudelleenkäynnistykset koodin muuttuessa. webforJ DevTools lisää automaattisen selaimen päivityksen - kun Spring käynnistää sovelluksesi uudelleen, selain päivittyy automaattisesti webforJ:n LiveReload-palvelimen kautta.
+Spring DevTools tarjoaa automaattisen sovelluksen uudelleenkäynnistyksen, kun koodia muutetaan. webforJ DevTools lisää automaattisen selaimen päivityksen - kun Spring käynnistää sovelluksesi uudelleen, selain päivittyy automaattisesti webforJ:n LiveReload-palvelimen kautta.
 
-Eri tiedostotyypit laukaisevat erilaisen uudelleenlataus käyttäytymisen. Java-koodin muutokset aiheuttavat täydellisen Spring-uudelleenkäynnistyksen ja selaimen päivityksen. CSS- ja kuvamuutokset päivitetään ilman sivun uudelleenlatausta, säilyttäen lomaketiedot ja sovellustilan.
+Eri tiedostotyypit aiheuttavat erilaisia uudelleenlatauskäyttäytymisiä. Java-koodimuutokset aiheuttavat täydellisen Spring-uudelleenkäynnistyksen ja selaimen päivityksen. CSS- ja kuvat muutokset päivittyvät ilman sivun uudelleenlatausta, säilyttäen lomakedatan ja sovellustilan.
+
+:::tip Frontend-muutokset
+Muutokset `src/main/frontend` -kansiossa käsitellään [frontend watch](/docs/configuration/deploy-reload/frontend-watch) -ominaisuuden kautta, joka rakentaa ne uudelleen ja päivittää selaimen yhdessä palvelimen kanssa.
+:::
 
 ## Understanding webforJ DevTools {#understanding-webforj-devtools}
 
-webforJ laajentaa Spring DevToolsia selaimen synkronoinnilla. Kun Spring havaitsee tiedostomuutoksia ja käynnistää, webforJ DevTools päivittää automaattisesti selaimesi.
+webforJ laajentaa Spring DevToolsia selaimen synkronoinnilla. Kun Spring havaitsee tiedostomuutoksia ja uudelleenkäynnistää, webforJ DevTools päivittää selaimesi automaattisesti.
 
 ### Reload behavior {#reload-behavior}
 
-Eri tiedostotyypit laukaisevat erilaisia uudelleenlatausstrategioita:
+Eri tiedostotyypit aiheuttavat erilaisia latausstrategioita:
 
-- **Java-tiedostot**: Täydellinen selaimen sivun uudelleenlataus Spring-uudelleenkäynnistyksen jälkeen
-- **JavaScript-tiedostot**: Täydellinen selaimen sivun uudelleenlataus Spring-uudelleenkäynnistyksen jälkeen
+- **Java-tiedostot**: Täysi selaimen sivun uudelleenlataus Spring-uudelleenkäynnistyksen jälkeen
+- **JavaScript-tiedostot**: Täysi selaimen sivun uudelleenlataus Spring-uudelleenkäynnistyksen jälkeen
 - **CSS-tiedostot**: Tyylipäivitykset ilman sivun uudelleenlatausta  
 - **Kuvat**: Päivitys paikallaan ilman sivun uudelleenlatausta
 
@@ -41,10 +48,10 @@ Lisää sekä Spring DevTools että webforJ DevTools projektiisi:
 
 ## Configuration {#configuration}
 
-Ota käyttöön webforJ DevTools `application.properties`-tiedostossasi:
+Ota webforJ DevTools käyttöön `application.properties` -tiedostossasi:
 
 ```Ini title="application.properties"
-# Ota käyttöön webforJ selaimen automaattinen uudelleenlataus
+# Ota käyttöön webforJ selaimen automaattinen päivitys
 webforj.devtools.livereload.enabled=true
 
 # Ota käyttöön välitön sammutus nopeampia uudelleenkäynnistyksiä varten
@@ -62,19 +69,19 @@ webforj.devtools.livereload.websocket-port=35730
 # WebSocket-päätepisteen polku (oletus: /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
-# Sydämen lyönti väli millisekunneissa (oletus: 30000)
+# Sydämenlyöntiväli millisekunteina (oletus: 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
-# Ota käyttöön kuuma lataus staattisille resursseille (oletus: true)
+# Ota käyttöön kuuma uudelleenlataus staattisille resursseille (oletus: true)
 webforj.devtools.livereload.static-resources-enabled=true
 ```
 
-<DocChip chip='since' label='25.03' /> Määritä selaimen avautuminen sovelluksen käynnistyksessä:
+<DocChip chip='since' label='25.03' /> Määritä selaimen avautuminen sovelluksen käynnistyksen yhteydessä:
 
 ```Ini title="application.properties"
 # Ota käyttöön selaimen avautuminen (oletus: false)
 webforj.devtools.browser.open=true
 
-# localhost, isännän nimi tai IP-osoite (oletus: localhost)
+# localhost, isäntänimi tai IP-osoite (oletus: localhost)
 webforj.devtools.browser.host=localhost
 ```
