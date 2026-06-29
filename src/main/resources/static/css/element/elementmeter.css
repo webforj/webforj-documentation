@@ -5,7 +5,7 @@
   align-items: center;
   min-height: 100vh;
 }
-
+ 
 .element-demo-card {
   width: 100%;
   max-width: 420px;
@@ -14,17 +14,10 @@
   border: var(--dwc-border-width) var(--dwc-border-style) var(--dwc-border-color);
   border-radius: var(--dwc-border-radius-l);
 }
-
-.testimonial-figure {
-  margin: 0;
+ 
+.storage-meter {
+  width: 100%;
+  box-sizing: border-box;
+  height: 1rem;
 }
-
-.testimonial-quote {
-  margin: 0 0 var(--dwc-space-s) 0;
-  font-size: 1.125rem;
-  font-style: italic;
-}
-
-.testimonial-caption {
-  color: var(--dwc-color-default-text-light);
-}
+ 

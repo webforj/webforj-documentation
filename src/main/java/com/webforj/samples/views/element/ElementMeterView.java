@@ -10,13 +10,13 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@StyleSheet("ws://css/element/elementInput.css")
+@StyleSheet("ws://css/element/elementmeter.css")
 @FrameTitle("Input Demo")
-public class ElementInputDemoView extends Composite<Div> {
+public class ElementMeterView extends Composite<Div> {
   private final Div self = getBoundComponent();
   private final Element meter = new Element("meter");
 
-  public ElementInputDemoView() {
+  public ElementMeterView() {
     self.addClassName("element-demo-frame");
 
     Div card = new Div();
