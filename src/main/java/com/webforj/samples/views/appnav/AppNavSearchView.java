@@ -52,7 +52,6 @@ public class AppNavSearchView extends Composite<AppLayout> {
     AppNavItem invoices =
         new AppNavItem("Invoices")
             .setPrefixComponent(TablerIcon.create("file-invoice"))
-            .addItem(createItem("Outstanding", "clock"))
             .addItem(createItem("Paid", "check"))
             .addItem(createItem("Drafts", "pencil"));
 
