@@ -30,7 +30,8 @@ public class TableEditDataViewIT extends BaseTest {
   }
 
   @Test
-  @Disabled("Pending framework support: webforj.legacyHtmlInText=false is not honored by setText() in 26.01")
+  @Disabled(
+      "Pending framework support: webforj.legacyHtmlInText=false is not honored by setText() in 26.01")
   public void testLiteralCharacters() {
     tablePage.getEditButton().click();
     tablePage.getInput().fill("<html><b>Somebody I Used To Know</b></html>");
