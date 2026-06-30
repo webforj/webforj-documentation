@@ -5,6 +5,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import com.webforj.samples.pages.element.ElementInputEventPage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class ElementInputEventViewIT extends BaseTest {
@@ -28,6 +29,8 @@ public class ElementInputEventViewIT extends BaseTest {
   }
 
   @Test
+  @Disabled(
+      "Pending framework support: webforj.legacyHtmlInText=false is not honored by setText() in 26.01")
   public void testLiteralCharacters() {
     elementInputEventPage.getInputField().fill("<html><b>Hello World</b></html>");
     elementInputEventPage.getInputField().press("Enter");
