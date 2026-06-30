@@ -7,6 +7,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class DrawerTaskViewIT extends BaseTest {
@@ -46,6 +47,7 @@ public class DrawerTaskViewIT extends BaseTest {
   }
 
   @Test
+  @Disabled("Pending framework support: webforj.legacyHtmlInText=false is not honored by setText() in 26.01")
   public void testLiteralCharacters() {
     Locator newTaskInput =
         page.getByRole(
