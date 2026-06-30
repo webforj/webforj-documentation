@@ -35,6 +35,7 @@ public class AppNavPinningView extends Composite<AppLayout> {
 
   private void setDrawer() {
     self.addToDrawer(appNav);
+    self.setDrawerBreakpoint("0px");
 
     AppNavItem dashboard = createItem("Dashboard", "layout-dashboard");
     dashboard.setPinned(true); // starts in the Favorites group
