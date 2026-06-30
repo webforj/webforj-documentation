@@ -30,8 +30,11 @@ public class ElementInputEventViewIT extends BaseTest {
   @Test
   public void testLiteralCharacters() {
     elementInputEventPage.getInputField().fill("<html><b>Hello World</b></html>");
-    elementInputEventPage.getOKButton().click();
+    elementInputEventPage.getInputField().press("Enter");
+
     assertThat(elementInputEventPage.getDialogMessage())
-        .hasValue("<html><b>Hello World</b></html>");
+        .hasText("<html><b>Hello World</b></html>");
+
+    elementInputEventPage.getOKButton().click();
   }
 }

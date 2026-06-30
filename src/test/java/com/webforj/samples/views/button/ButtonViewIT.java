@@ -2,6 +2,7 @@ package com.webforj.samples.views.button;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.microsoft.playwright.Locator;
 import com.webforj.samples.pages.button.ButtonPage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,7 +42,9 @@ public class ButtonViewIT extends BaseTest {
     button.getFirstName().fill("<html><b>Jason</b></html>");
     button.getLastName().fill("<html><b>Turner</b></html>");
     button.getSubmitButton().click();
-    assertThat(button.getWelcomeDialog())
-        .hasValue("Welcome to the app <html><b>Jason</b></html> <html><b>Turner</b></html>");
+    Locator welcome =
+        page.getByText(
+            "Welcome to the app <html><b>Jason</b></html> <html><b>Turner</b></html>!");
+    assertThat(welcome).isVisible();
   }
 }
