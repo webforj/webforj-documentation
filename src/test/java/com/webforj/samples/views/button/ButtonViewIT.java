@@ -43,8 +43,7 @@ public class ButtonViewIT extends BaseTest {
     button.getLastName().fill("<html><b>Turner</b></html>");
     button.getSubmitButton().click();
     Locator welcome =
-        page.getByText(
-            "Welcome to the app <html><b>Jason</b></html> <html><b>Turner</b></html>!");
+        page.getByText("Welcome to the app <html><b>Jason</b></html> <html><b>Turner</b></html>!");
     assertThat(welcome).isVisible();
   }
 }

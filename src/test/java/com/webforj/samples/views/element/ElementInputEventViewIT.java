@@ -32,8 +32,7 @@ public class ElementInputEventViewIT extends BaseTest {
     elementInputEventPage.getInputField().fill("<html><b>Hello World</b></html>");
     elementInputEventPage.getInputField().press("Enter");
 
-    assertThat(elementInputEventPage.getDialogMessage())
-        .hasText("<html><b>Hello World</b></html>");
+    assertThat(elementInputEventPage.getDialogMessage()).hasText("<html><b>Hello World</b></html>");
 
     elementInputEventPage.getOKButton().click();
   }
