@@ -77,3 +77,4 @@ Preact
 Svelte
 stylesheet
 BLS
+BASIS
