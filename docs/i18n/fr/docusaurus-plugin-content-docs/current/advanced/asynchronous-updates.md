@@ -241,7 +241,8 @@ Ce qui suit est une mise en œuvre complète, prête pour la production, démont
 <!-- vale off -->
 
 <ExpandableCode title="LongTaskView.java" language="java" startLine={91} endLine={159}>
-{`
+
+```java
 @Route("/")
 public class LongTaskView extends Composite<FlexLayout> {
   // Utilisez un exécuteur à thread unique pour prévenir l'épuisement des ressources
@@ -433,7 +434,8 @@ public class LongTaskView extends Composite<FlexLayout> {
     }
   }
 }
-`}
+```
+
 </ExpandableCode>
 
 <div class="videos-container" style={{maxWidth: '400px', margin: '0 auto'}}>

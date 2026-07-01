@@ -242,7 +242,8 @@ The following is a complete, production-ready implementation demonstrating all b
 <!-- vale off -->
 
 <ExpandableCode title="LongTaskView.java" language="java" startLine={91} endLine={159}>
-{`
+
+```java
 @Route("/")
 public class LongTaskView extends Composite<FlexLayout> {
   // Use a single thread executor to prevent resource exhaustion
@@ -434,7 +435,8 @@ public class LongTaskView extends Composite<FlexLayout> {
     }
   }
 }
-`}
+```
+
 </ExpandableCode>
 
 <div class="videos-container" style={{maxWidth: '400px', margin: '0 auto'}}>

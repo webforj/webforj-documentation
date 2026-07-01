@@ -313,39 +313,42 @@ Mit der Navigation zu `FormView` und der Gruppierung der Tabellenmethoden sollte
 
 <!-- vale off -->
 <ExpandableCode title="MainView.java" language="java" startLine={1} endLine={15}>
-{`@Route("/")
-  @FrameTitle("Kunden Tabelle")
-  public class MainView extends Composite<Div> {
-    private final CustomerService customerService;
-    private Div self = getBoundComponent();
-    private Table<Customer> table = new Table<>();
-    private Button addCustomer = new Button("Kunden hinzufügen", ButtonTheme.PRIMARY,
-        e -> Router.getCurrent().navigate(FormView.class));
 
-    public MainView(CustomerService customerService) {
-      this.customerService = customerService;
-      addCustomer.setWidth(200);
-      buildTable();
-      self.setWidth("fit-content")
-          .addClassName("card")
-          .add(table, addCustomer);
-    }
+```java
+@Route("/")
+@FrameTitle("Kunden Tabelle")
+public class MainView extends Composite<Div> {
+  private final CustomerService customerService;
+  private Div self = getBoundComponent();
+  private Table<Customer> table = new Table<>();
+  private Button addCustomer = new Button("Kunden hinzufügen", ButtonTheme.PRIMARY,
+      e -> Router.getCurrent().navigate(FormView.class));
 
-    private void buildTable() {
-      table.setSize("1000px", "294px");
-      table.setMaxWidth("90vw");
-      table.addColumn("firstName", Customer::getFirstName).setLabel("Vorname");
-      table.addColumn("lastName", Customer::getLastName).setLabel("Nachname");
-      table.addColumn("company", Customer::getCompany).setLabel("Firma");
-      table.addColumn("country", Customer::getCountry).setLabel("Land");
-      table.setColumnsToAutoFit();
-      table.setColumnsToResizable(false);
-      table.getColumns().forEach(column -> column.setSortable(true));
-      table.setRepository(customerService.getRepositoryAdapter());
-    }
-
+  public MainView(CustomerService customerService) {
+    this.customerService = customerService;
+    addCustomer.setWidth(200);
+    buildTable();
+    self.setWidth("fit-content")
+        .addClassName("card")
+        .add(table, addCustomer);
   }
-`}
+
+  private void buildTable() {
+    table.setSize("1000px", "294px");
+    table.setMaxWidth("90vw");
+    table.addColumn("firstName", Customer::getFirstName).setLabel("Vorname");
+    table.addColumn("lastName", Customer::getLastName).setLabel("Nachname");
+    table.addColumn("company", Customer::getCompany).setLabel("Firma");
+    table.addColumn("country", Customer::getCountry).setLabel("Land");
+    table.setColumnsToAutoFit();
+    table.setColumnsToResizable(false);
+    table.getColumns().forEach(column -> column.setSortable(true));
+    table.setRepository(customerService.getRepositoryAdapter());
+  }
+
+}
+```
+
 </ExpandableCode>
 <!-- vale on -->
 
@@ -566,62 +569,65 @@ Nachdem Sie eine `Customer`-Instanz, die interaktiven Komponenten und das `Colum
 
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
-{`@Route("customer")
-  @FrameTitle("Kunden Formular")
-  public class FormView extends Composite<Div> {
-    private final CustomerService customerService;
-    private Customer customer = new Customer();
-    private Div self = getBoundComponent();
-    private TextField firstName = new TextField("Vorname", e -> customer.setFirstName(e.getValue()));
-    private TextField lastName = new TextField("Nachname", e -> customer.setLastName(e.getValue()));
-    private TextField company = new TextField("Firma", e -> customer.setCompany(e.getValue()));
-    private ChoiceBox country = new ChoiceBox("Land",
-        e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
-    private Button submit = new Button("Absenden", ButtonTheme.PRIMARY, e -> submitCustomer());
-    private Button cancel = new Button("Abbrechen", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
-    private ColumnsLayout layout = new ColumnsLayout(
-        firstName, lastName,
-        company, country,
-        submit, cancel);
 
-    public FormView(CustomerService customerService) {
-      this.customerService = customerService;
-      fillCountries();
-      setColumnsLayout();
-      self.setMaxWidth(600)
-          .addClassName("card")
-          .add(layout);
-      submit.setStyle("margin-top", "var(--dwc-space-l)");
-      cancel.setStyle("margin-top", "var(--dwc-space-l)");
-    }
+```java
+@Route("customer")
+@FrameTitle("Kunden Formular")
+public class FormView extends Composite<Div> {
+  private final CustomerService customerService;
+  private Customer customer = new Customer();
+  private Div self = getBoundComponent();
+  private TextField firstName = new TextField("Vorname", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Nachname", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Firma", e -> customer.setCompany(e.getValue()));
+  private ChoiceBox country = new ChoiceBox("Land",
+      e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
+  private Button submit = new Button("Absenden", ButtonTheme.PRIMARY, e -> submitCustomer());
+  private Button cancel = new Button("Abbrechen", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+  private ColumnsLayout layout = new ColumnsLayout(
+      firstName, lastName,
+      company, country,
+      submit, cancel);
 
-    private void setColumnsLayout() {
-      List<Breakpoint> breakpoints = List.of(
-          new Breakpoint(600, 2));
-      layout.setSpacing("var(--dwc-space-l)")
-          .setBreakpoints(breakpoints);
-    }
-
-    private void fillCountries() {
-      ArrayList<ListItem> listCountries = new ArrayList<>();
-      for (Country countryItem : Customer.Country.values()) {
-        listCountries.add(new ListItem(countryItem, countryItem.toString()));
-      }
-      country.insert(listCountries);
-      country.selectIndex(0);
-    }
-
-    private void submitCustomer() {
-      customerService.createCustomer(customer);
-      navigateToMain();
-    }
-
-    private void navigateToMain() {
-      Router.getCurrent().navigate(MainView.class);
-    }
-
+  public FormView(CustomerService customerService) {
+    this.customerService = customerService;
+    fillCountries();
+    setColumnsLayout();
+    self.setMaxWidth(600)
+        .addClassName("card")
+        .add(layout);
+    submit.setStyle("margin-top", "var(--dwc-space-l)");
+    cancel.setStyle("margin-top", "var(--dwc-space-l)");
   }
-`}
+
+  private void setColumnsLayout() {
+    List<Breakpoint> breakpoints = List.of(
+        new Breakpoint(600, 2));
+    layout.setSpacing("var(--dwc-space-l)")
+        .setBreakpoints(breakpoints);
+  }
+
+  private void fillCountries() {
+    ArrayList<ListItem> listCountries = new ArrayList<>();
+    for (Country countryItem : Customer.Country.values()) {
+      listCountries.add(new ListItem(countryItem, countryItem.toString()));
+    }
+    country.insert(listCountries);
+    country.selectIndex(0);
+  }
+
+  private void submitCustomer() {
+    customerService.createCustomer(customer);
+    navigateToMain();
+  }
+
+  private void navigateToMain() {
+    Router.getCurrent().navigate(MainView.class);
+  }
+
+}
+```
+
 </ExpandableCode>
 <!-- vale on -->
 

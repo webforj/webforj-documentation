@@ -339,55 +339,58 @@ Here's `MainLayout` with created content for the drawer and the header inside an
 
 <!-- vale off -->
 <ExpandableCode title="MainLayout.java" language="java">
-{`@Route
-  public class MainLayout extends Composite<AppLayout> {
-    private AppLayout self = getBoundComponent();
-    private H1 title = new H1("");
-    private ListenerRegistration<NavigateEvent> navigateRegistration;
-    private Toolbar toolbar = new Toolbar();
-    private AppNav appNav = new AppNav();
 
-    public MainLayout() {
-      setHeader();
-      setDrawer();
-      navigateRegistration = Router.getCurrent().onNavigate(this::onNavigate);
-    }
+```java
+@Route
+public class MainLayout extends Composite<AppLayout> {
+  private AppLayout self = getBoundComponent();
+  private H1 title = new H1("");
+  private ListenerRegistration<NavigateEvent> navigateRegistration;
+  private Toolbar toolbar = new Toolbar();
+  private AppNav appNav = new AppNav();
 
-    private void setHeader() {
-      self.addToHeader(toolbar);
-
-      toolbar.addToStart(new AppDrawerToggle());
-      toolbar.addToTitle(title);
-    }
-
-    private void setDrawer() {
-      self.setDrawerHeaderVisible(true)
-          .addToDrawerTitle(new AppTitle(true));
-
-      appNav.addItem(new AppNavItem("Dashboard", MainView.class,
-          TablerIcon.create("archive")));
-      appNav.addItem(new AppNavItem("About", AboutView.class,
-          TablerIcon.create("info-circle")));
-      self.addToDrawer(appNav);
-    }
-
-    @Override
-    protected void onDidDestroy() {
-      if (navigateRegistration != null) {
-        navigateRegistration.remove();
-      }
-    }
-
-    private void onNavigate(NavigateEvent ev) {
-      Component component = ev.getContext().getComponent();
-      if (component != null) {
-        FrameTitle frameTitle = component.getClass().getAnnotation(FrameTitle.class);
-        title.setText(frameTitle != null ? frameTitle.value() : "");
-      }
-    }
-
+  public MainLayout() {
+    setHeader();
+    setDrawer();
+    navigateRegistration = Router.getCurrent().onNavigate(this::onNavigate);
   }
-`}
+
+  private void setHeader() {
+    self.addToHeader(toolbar);
+
+    toolbar.addToStart(new AppDrawerToggle());
+    toolbar.addToTitle(title);
+  }
+
+  private void setDrawer() {
+    self.setDrawerHeaderVisible(true)
+        .addToDrawerTitle(new AppTitle(true));
+
+    appNav.addItem(new AppNavItem("Dashboard", MainView.class,
+        TablerIcon.create("archive")));
+    appNav.addItem(new AppNavItem("About", AboutView.class,
+        TablerIcon.create("info-circle")));
+    self.addToDrawer(appNav);
+  }
+
+  @Override
+  protected void onDidDestroy() {
+    if (navigateRegistration != null) {
+      navigateRegistration.remove();
+    }
+  }
+
+  private void onNavigate(NavigateEvent ev) {
+    Component component = ev.getContext().getComponent();
+    if (component != null) {
+      FrameTitle frameTitle = component.getClass().getAnnotation(FrameTitle.class);
+      title.setText(frameTitle != null ? frameTitle.value() : "");
+    }
+  }
+
+}
+```
+
 </ExpandableCode>
 <!-- vale on -->
 
@@ -427,64 +430,67 @@ Putting these together and making another method to get the `FlexLayout` centere
 
 <!-- vale off -->
 <ExpandableCode title="MainView.java" language="java">
-{`@Route(value = "/", outlet = MainLayout.class)
-  @FrameTitle("Customer Table")
+
+```java
+@Route(value = "/", outlet = MainLayout.class)
+@FrameTitle("Customer Table")
+// highlight-next-line
+public class MainView extends Composite<FlexLayout> {
+  private final CustomerService customerService;
   // highlight-next-line
-  public class MainView extends Composite<FlexLayout> {
-    private final CustomerService customerService;
+  private FlexLayout self = getBoundComponent();
+  private Table<Customer> table = new Table<>();
+  private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
+      e -> Router.getCurrent().navigate(FormView.class));
+
+  public MainView(CustomerService customerService) {
+    this.customerService = customerService;
+    addCustomer.setWidth(200);
+    buildTable();
     // highlight-next-line
-    private FlexLayout self = getBoundComponent();
-    private Table<Customer> table = new Table<>();
-    private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
-        e -> Router.getCurrent().navigate(FormView.class));
-
-    public MainView(CustomerService customerService) {
-      this.customerService = customerService;
-      addCustomer.setWidth(200);
-      buildTable();
-      // highlight-next-line
-      setFlexLayout();
-      // highlight-next-line
-      self.add(addCustomer, table);
-      // highlight-next-line
-      self.setItemAlignment(FlexAlignment.END, addCustomer);
-    }
-
-    private void buildTable() {
-      // highlight-next-line
-      table.setSize("100%", "294px");
-      table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
-      table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
-      table.addColumn("company", Customer::getCompany).setLabel("Company");
-      table.addColumn("country", Customer::getCountry).setLabel("Country");
-      table.setColumnsToAutoFit();
-      table.setColumnsToResizable(false);
-      table.getColumns().forEach(column -> column.setSortable(true));
-      table.setRepository(customerService.getRepositoryAdapter());
-      table.setKeyProvider(Customer::getId);
-      table.addItemClickListener(this::editCustomer);
-    }
-
+    setFlexLayout();
     // highlight-next-line
-    private void setFlexLayout() {
-      // highlight-next-line
-      self.setSize("100%", "100%")
-          // highlight-next-line
-          .setMargin("auto")
-          // highlight-next-line
-          .setMaxWidth(2000)
-          // highlight-next-line
-          .setDirection(FlexDirection.COLUMN)
-          // highlight-next-line
-          .setAlignment(FlexAlignment.CENTER);
-          // highlight-next-line
-    }
-
-    private void editCustomer(TableItemClickEvent<Customer> e) {
-      Router.getCurrent().navigate(FormView.class,
-          ParametersBag.of("id=" + e.getItemKey()));
-    }
+    self.add(addCustomer, table);
+    // highlight-next-line
+    self.setItemAlignment(FlexAlignment.END, addCustomer);
   }
-`}
+
+  private void buildTable() {
+    // highlight-next-line
+    table.setSize("100%", "294px");
+    table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+    table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+    table.addColumn("company", Customer::getCompany).setLabel("Company");
+    table.addColumn("country", Customer::getCountry).setLabel("Country");
+    table.setColumnsToAutoFit();
+    table.setColumnsToResizable(false);
+    table.getColumns().forEach(column -> column.setSortable(true));
+    table.setRepository(customerService.getRepositoryAdapter());
+    table.setKeyProvider(Customer::getId);
+    table.addItemClickListener(this::editCustomer);
+  }
+
+  // highlight-next-line
+  private void setFlexLayout() {
+    // highlight-next-line
+    self.setSize("100%", "100%")
+        // highlight-next-line
+        .setMargin("auto")
+        // highlight-next-line
+        .setMaxWidth(2000)
+        // highlight-next-line
+        .setDirection(FlexDirection.COLUMN)
+        // highlight-next-line
+        .setAlignment(FlexAlignment.CENTER);
+        // highlight-next-line
+  }
+
+  private void editCustomer(TableItemClickEvent<Customer> e) {
+    Router.getCurrent().navigate(FormView.class,
+        ParametersBag.of("id=" + e.getItemKey()));
+  }
+}
+```
+
 </ExpandableCode>
 <!-- vale on -->

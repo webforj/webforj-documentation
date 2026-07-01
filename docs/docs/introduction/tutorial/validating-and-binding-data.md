@@ -43,100 +43,103 @@ To require that both first and last names are mandatory and contain only letters
 
 <!-- vale off -->
 <ExpandableCode title="Customer.java" language="java" startLine={8} endLine={28}>
-{`@Entity
-  @Table(name = "customers")
-  public class Customer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+```java
+@Entity
+@Table(name = "customers")
+public class Customer {
 
-  // highlight-next-line
-    @NotEmpty(message = "Customer first name is required")
-  // highlight-next-line
-    @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
-    private String firstName = "";
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-  // highlight-next-line
-    @NotEmpty(message = "Customer last name is required")
-  // highlight-next-line
-    @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
-    private String lastName = "";
+// highlight-next-line
+  @NotEmpty(message = "Customer first name is required")
+// highlight-next-line
+  @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
+  private String firstName = "";
 
-  // highlight-next-line
-    @Pattern(regexp = "[a-zA-Z0-9 ]*", message = "Invalid characters")
-    private String company = "";
+// highlight-next-line
+  @NotEmpty(message = "Customer last name is required")
+// highlight-next-line
+  @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
+  private String lastName = "";
 
-    private Country country = Country.UNKNOWN;
+// highlight-next-line
+  @Pattern(regexp = "[a-zA-Z0-9 ]*", message = "Invalid characters")
+  private String company = "";
 
-    public enum Country {
-      UNKNOWN,
-      GERMANY,
-      ENGLAND,
-      ITALY,
-      USA
-    }
+  private Country country = Country.UNKNOWN;
 
-    public Customer(String firstName, String lastName, String company, Country country) {
-      setFirstName(firstName);
-      setLastName(lastName);
-      setCompany(company);
-      setCountry(country);
-    }
-
-    public Customer(String firstName, String lastName, String company) {
-      this(firstName, lastName, company, Country.UNKNOWN);
-    }
-
-    public Customer(String firstName, String lastName) {
-      this(firstName, lastName, "");
-    }
-
-    public Customer(String firstName) {
-      this(firstName, "");
-    }
-
-    public Customer() {
-    }
-
-    public void setFirstName(String newName) {
-      firstName = newName;
-    }
-
-    public String getFirstName() {
-      return firstName;
-    }
-
-    public void setLastName(String newName) {
-      lastName = newName;
-    }
-
-    public String getLastName() {
-      return lastName;
-    }
-
-    public void setCompany(String newCompany) {
-      company = newCompany;
-    }
-
-    public String getCompany() {
-      return company;
-    }
-
-    public void setCountry(Country newCountry) {
-      country = newCountry;
-    }
-
-    public Country getCountry() {
-      return country;
-    }
-
-    public Long getId() {
-      return id;
-    }
-
+  public enum Country {
+    UNKNOWN,
+    GERMANY,
+    ENGLAND,
+    ITALY,
+    USA
   }
-`}
+
+  public Customer(String firstName, String lastName, String company, Country country) {
+    setFirstName(firstName);
+    setLastName(lastName);
+    setCompany(company);
+    setCountry(country);
+  }
+
+  public Customer(String firstName, String lastName, String company) {
+    this(firstName, lastName, company, Country.UNKNOWN);
+  }
+
+  public Customer(String firstName, String lastName) {
+    this(firstName, lastName, "");
+  }
+
+  public Customer(String firstName) {
+    this(firstName, "");
+  }
+
+  public Customer() {
+  }
+
+  public void setFirstName(String newName) {
+    firstName = newName;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setLastName(String newName) {
+    lastName = newName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setCompany(String newCompany) {
+    company = newCompany;
+  }
+
+  public String getCompany() {
+    return company;
+  }
+
+  public void setCountry(Country newCountry) {
+    country = newCountry;
+  }
+
+  public Country getCountry() {
+    return country;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+}
+```
+
 </ExpandableCode>
 <!-- vale on -->
 
@@ -257,91 +260,94 @@ With these changes, here's what `FormView` looks like. The app now supports data
 
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
-{`@Route("customer/:id?<[0-9]+>")
-  @FrameTitle("Customer Form")
-  public class FormView extends Composite<Div> implements WillEnterObserver {
-    private final CustomerService customerService;
-    private BindingContext<Customer> context;
-    private Customer customer = new Customer();
-    private Long customerId = 0L;
-    private Div self = getBoundComponent();
-    private TextField firstName = new TextField("First Name");
-    private TextField lastName = new TextField("Last Name");
-    private TextField company = new TextField("Company");
-    private ChoiceBox country = new ChoiceBox("Country");
-    private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
-    private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
-    private ColumnsLayout layout = new ColumnsLayout(
-        firstName, lastName,
-        company, country,
-        submit, cancel);
 
-    public FormView(CustomerService customerService) {
-      this.customerService = customerService;
-      context = BindingContext.of(this, Customer.class, true);
-      context.onValidate(e -> submit.setEnabled(e.isValid()));
-      fillCountries();
-      setColumnsLayout();
-      self.setMaxWidth(600)
-          .addClassName("card")
-          .add(layout);
-      submit.setStyle("margin-top", "var(--dwc-space-l)");
-      cancel.setStyle("margin-top", "var(--dwc-space-l)");
+```java
+@Route("customer/:id?<[0-9]+>")
+@FrameTitle("Customer Form")
+public class FormView extends Composite<Div> implements WillEnterObserver {
+  private final CustomerService customerService;
+  private BindingContext<Customer> context;
+  private Customer customer = new Customer();
+  private Long customerId = 0L;
+  private Div self = getBoundComponent();
+  private TextField firstName = new TextField("First Name");
+  private TextField lastName = new TextField("Last Name");
+  private TextField company = new TextField("Company");
+  private ChoiceBox country = new ChoiceBox("Country");
+  private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
+  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+  private ColumnsLayout layout = new ColumnsLayout(
+      firstName, lastName,
+      company, country,
+      submit, cancel);
+
+  public FormView(CustomerService customerService) {
+    this.customerService = customerService;
+    context = BindingContext.of(this, Customer.class, true);
+    context.onValidate(e -> submit.setEnabled(e.isValid()));
+    fillCountries();
+    setColumnsLayout();
+    self.setMaxWidth(600)
+        .addClassName("card")
+        .add(layout);
+    submit.setStyle("margin-top", "var(--dwc-space-l)");
+    cancel.setStyle("margin-top", "var(--dwc-space-l)");
+  }
+
+  private void setColumnsLayout() {
+    List<Breakpoint> breakpoints = List.of(
+        new Breakpoint(600, 2));
+    layout.setSpacing("var(--dwc-space-l)")
+        .setBreakpoints(breakpoints);
+  }
+
+  private void fillCountries() {
+    ArrayList<ListItem> listCountries = new ArrayList<>();
+    for (Country countryItem : Customer.Country.values()) {
+      listCountries.add(new ListItem(countryItem, countryItem.toString()));
     }
+    country.insert(listCountries);
+    country.selectIndex(0);
+  }
 
-    private void setColumnsLayout() {
-      List<Breakpoint> breakpoints = List.of(
-          new Breakpoint(600, 2));
-      layout.setSpacing("var(--dwc-space-l)")
-          .setBreakpoints(breakpoints);
-    }
-
-    private void fillCountries() {
-      ArrayList<ListItem> listCountries = new ArrayList<>();
-      for (Country countryItem : Customer.Country.values()) {
-        listCountries.add(new ListItem(countryItem, countryItem.toString()));
+  private void submitCustomer() {
+    ValidationResult results = context.write(customer);
+    if (results.isValid()) {
+      if (customerService.doesCustomerExist(customerId)) {
+        customerService.updateCustomer(customer);
+      } else {
+        customerService.createCustomer(customer);
       }
-      country.insert(listCountries);
-      country.selectIndex(0);
-    }
-
-    private void submitCustomer() {
-      ValidationResult results = context.write(customer);
-      if (results.isValid()) {
-        if (customerService.doesCustomerExist(customerId)) {
-          customerService.updateCustomer(customer);
-        } else {
-          customerService.createCustomer(customer);
-        }
-        navigateToMain();
-      }
-    }
-
-    private void navigateToMain() {
-      Router.getCurrent().navigate(MainView.class);
-    }
-
-    @Override
-    public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
-      parameters.getInt("id").ifPresentOrElse(id -> {
-        customerId = Long.valueOf(id);
-        if (customerService.doesCustomerExist(customerId)) {
-          event.accept();
-          fillForm(customerId);
-        } else {
-          event.reject();
-          navigateToMain();
-        }
-
-      }, () -> event.accept());
-    }
-
-    public void fillForm(Long customerId) {
-      customer = customerService.getCustomerByKey(customerId);
-      context.read(customer);
+      navigateToMain();
     }
   }
-`}
+
+  private void navigateToMain() {
+    Router.getCurrent().navigate(MainView.class);
+  }
+
+  @Override
+  public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
+    parameters.getInt("id").ifPresentOrElse(id -> {
+      customerId = Long.valueOf(id);
+      if (customerService.doesCustomerExist(customerId)) {
+        event.accept();
+        fillForm(customerId);
+      } else {
+        event.reject();
+        navigateToMain();
+      }
+
+    }, () -> event.accept());
+  }
+
+  public void fillForm(Long customerId) {
+    customer = customerService.getCustomerByKey(customerId);
+    context.read(customer);
+  }
+}
+```
+
 </ExpandableCode>
 <!-- vale on -->
 
