@@ -1,5 +1,6 @@
 ---
 title: Local BLS License
+sidebar_class_name: new-content
 sidebar_position: 25
 description: Configure a webforJ project to use a locally installed BLS certificate and client configuration.
 ---
