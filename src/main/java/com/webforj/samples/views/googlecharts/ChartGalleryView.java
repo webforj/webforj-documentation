@@ -1,6 +1,6 @@
 package com.webforj.samples.views.googlecharts;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Anchor;
@@ -11,7 +11,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.samples.views.googlecharts.types.*;
 import java.util.List;
 
-@StyleSheet("ws://css/googlecharts/chartGallery.css")
+@BundleEntry("css/googlecharts/chartGallery.css")
 @Route
 @FrameTitle("Chart Gallery")
 public class ChartGalleryView extends Composite<Div> {
