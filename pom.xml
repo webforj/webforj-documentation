@@ -23,7 +23,7 @@
       Should be disabled when using a live reload system, such as JRebel.
       -->
     <jetty.scan>1</jetty.scan>
-    <port>9090</port>
+    <port>8080</port>
     <jetty.port>${port}</jetty.port>
     <jetty.stopPort>9966</jetty.stopPort>
 
