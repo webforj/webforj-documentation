@@ -1,6 +1,6 @@
 package com.webforj.samples.views.table;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.table.Column;
@@ -10,7 +10,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import java.util.List;
 
-@StyleSheet("ws://css/table/tablestyledcolumngroups.css")
+@BundleEntry("css/table/tablestyledcolumngroups.css")
 @Route
 @FrameTitle("Table Styled Column Groups")
 public class TableStyledColumnGroupsView extends Composite<Div> {

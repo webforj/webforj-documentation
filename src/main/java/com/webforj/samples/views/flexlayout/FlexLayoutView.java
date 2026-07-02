@@ -1,6 +1,6 @@
 package com.webforj.samples.views.flexlayout;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -12,7 +12,7 @@ import com.webforj.component.list.ChoiceBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/flexlayout/flexLayout.css")
+@BundleEntry("css/flexlayout/flexLayout.css")
 @Route
 @FrameTitle("Flex Layout")
 public class FlexLayoutView extends Composite<FlexLayout> {

@@ -158,17 +158,20 @@ If progressive rendering is active, `clear()` also stops rendering and completes
 
 ## Syntax highlighting {#syntax-highlighting}
 
-The `MarkdownViewer` supports syntax highlighting for code blocks when [Prism.js](https://prismjs.com/) is available. Add Prism.js to your app using the `@JavaScript` and `@StyleSheet` annotations:
+The `MarkdownViewer` supports syntax highlighting for code blocks when [Prism.js](https://prismjs.com/) is available. Bring Prism into your app with the [frontend bundler](../managing-resources/bundler/overview): declare the package on your `App` class and author an entry that imports Prism, the autoloader plugin, and a theme.
 
-```java
-@StyleSheet("https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css")
-@JavaScript(
-  value = "https://cdn.jsdelivr.net/combine/npm/prismjs@1/prism.min.js,npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js",
-  top = true
-)
+```java title="Application.java"
+@BundlePackage(value = "prismjs", version = "^1.29.0")
+@BundleEntry("prism/entry.ts")
 public class Application extends App {
   // ...
 }
+```
+
+```ts title="src/main/frontend/prism/entry.ts"
+import "prismjs";
+import "prismjs/plugins/autoloader/prism-autoloader";
+import "prismjs/themes/prism-tomorrow.min.css";
 ```
 
 The autoloader plugin loads language definitions as needed, so code blocks with language hints like ` ```java ` or ` ```python ` get highlighted automatically.

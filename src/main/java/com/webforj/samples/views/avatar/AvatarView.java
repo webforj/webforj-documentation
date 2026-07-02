@@ -1,6 +1,6 @@
 package com.webforj.samples.views.avatar;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.avatar.Avatar;
 import com.webforj.component.avatar.AvatarExpanse;
@@ -21,7 +21,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Team Members")
-@StyleSheet("ws://css/avatar/avatar.css")
+@BundleEntry("css/avatar/avatar.css")
 public class AvatarView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Div panel = new Div();

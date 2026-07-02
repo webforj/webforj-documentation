@@ -1,6 +1,6 @@
 package com.webforj.samples.views.upload;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.H4;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -10,7 +10,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@StyleSheet("ws://css/upload/uploadPresets.css")
+@BundleEntry("css/upload/uploadPresets.css")
 @FrameTitle("Upload Presets")
 public class UploadPresetsView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();

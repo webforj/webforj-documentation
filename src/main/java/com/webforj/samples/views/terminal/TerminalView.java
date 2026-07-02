@@ -1,6 +1,6 @@
 package com.webforj.samples.views.terminal;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.terminal.Terminal;
 import com.webforj.component.terminal.event.TerminalDataEvent;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Route
 @FrameTitle("Custom Terminal")
-@StyleSheet("ws://css/terminal/terminal-view.css")
+@BundleEntry("css/terminal/terminal-view.css")
 public class TerminalView extends Composite<Terminal> {
   private final Terminal self = getBoundComponent();
   private final StringBuilder commandBuffer = new StringBuilder();
