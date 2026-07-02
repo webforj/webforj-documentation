@@ -8,4 +8,4 @@ By default, webforJ projects can be run but won't have a license certificate ass
 
 For individual developers, getting a trial license certificate of webforJ is simple. Visit the [webforJ pricing page](https://webforj.com/pricing/), choose the appropriate plan, and follow the prompts to request a license.
 
-To let a webforJ app request a license from a service running on your development machine or internal network, go to [Local BLS License](/docs/configuration\local-bls-license).
+To let a webforJ app request a license from a service running on your development machine or internal network, go to [Local BLS License](./local-bls-license).
