@@ -35,6 +35,7 @@ public class AppNavView extends Composite<AppLayout> {
 
   private void setDrawer() {
     self.addToDrawer(appNav);
+    self.setDrawerBreakpoint("0px");
 
     AppNavItem inbox =
         new AppNavItem("Inbox")
