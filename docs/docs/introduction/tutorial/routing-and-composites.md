@@ -42,7 +42,7 @@ When you add the `@Routify` annotation to `Application`, remove the `run()` meth
 
 ```java title="Application.java" {5-6,15}
 @SpringBootApplication
-@StyleSheet("ws://css/card.css")
+@BundleEntry("css/card.css")
 @AppTheme("system")
 
 //Added @Routify annotation
@@ -61,7 +61,7 @@ public class Application extends App {
 ```
 
 :::tip Global CSS
-Keeping the `@StyleSheet` annotation in `Application` applies that CSS globally.
+Keeping the `@BundleEntry` annotation in `Application` adds the CSS file to the app-level frontend bundle, so the styles remain available across routed views.
 :::
 
 ### Creating routes {#creating-routes}
