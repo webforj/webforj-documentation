@@ -437,6 +437,22 @@ Available debounce phases:
 options.setThrottle(100); // Fire at most once per 100ms
 ```
 
+#### Merging options {#merging-options}
+
+When several listeners share a common configuration, define it once and combine it with per-listener options using `mergeWith()`. It accepts one or more `ElementEventOptions` and returns the merged instance. For each of data, code, and filter, the last non-empty value takes precedence, and null arguments are ignored.
+
+```java
+// Shared configuration reused across listeners
+ElementEventOptions base = new ElementEventOptions()
+  .addData("value", "component.value");
+
+// Combine with listener-specific filtering
+ElementEventOptions filtered = base.mergeWith(
+  new ElementEventOptions().setFilter("component.value.length >= 2"));
+```
+
+Because `mergeWith()` takes varargs, you can fold several option sets together in a single call, with each later value winning per setting.
+
 ## Interacting with slots {#interacting-with-slots}
 
 Slots are placeholders inside a web component that users fill with content. The web component declares its slots in its template with `<slot>` or `<slot name="...">`, and the wrapper exposes methods that put Java components into those slots.
