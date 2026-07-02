@@ -33,7 +33,7 @@ To set the direction on an existing `FlexLayout` object, use the `setDirection()
 path='/webforj/flexdirection'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='275px'
 />
@@ -54,7 +54,7 @@ The `setAlignContent()` method controls the space around the cross axis, and wil
 path='/webforj/flexpositioning'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='375px'
 />
@@ -87,7 +87,7 @@ The following demo allows you to build a container with the desired flex propert
 path='/webforj/flexcontainerbuilder'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='600px'
 />
@@ -112,7 +112,7 @@ It's important to note that the order property only affects the visual order of 
 path='/webforj/flexorder'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='320px'
 />
@@ -133,7 +133,7 @@ This property is especially useful when you need to align a specific item differ
 path='/webforj/flexselfalign'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='350px'
 />
@@ -179,7 +179,7 @@ If you prefer a column-based structure, look at the `ColumnsLayout` version of t
 path='/webforj/flexlayout'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java',
-  'src/main/resources/static/css/flexlayout/flexLayout.css',
+  'src/main/frontend/css/flexlayout/flexLayout.css',
 ]}
 height='620px'
 />

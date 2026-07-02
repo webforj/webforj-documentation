@@ -66,7 +66,7 @@ In the demo below, the Dropdown type is set and used in the CSS file to enlarge 
 path='/webforj/comboboxdropdowntype'
 files={[
   'src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java',
-  'src/main/resources/static/css/lists/combobox/comboBoxDropDownType.css',
+  'src/main/frontend/css/lists/combobox/comboBoxDropDownType.css',
 ]}
 height='250px'
 />

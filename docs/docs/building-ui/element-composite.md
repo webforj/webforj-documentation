@@ -139,7 +139,7 @@ The demo below adds properties for relative-time based on the web component's do
 path='/webforj/relativetimeproperties' 
 files={[
   'src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimePropertiesView.java',
-  'src/main/resources/static/css/elementcomposite/activity-feed.css',
+  'src/main/frontend/css/elementcomposite/activity-feed.css',
 ]}
 height='450px'
 />

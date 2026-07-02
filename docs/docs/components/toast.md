@@ -33,7 +33,7 @@ toast.open();
 path='/webforj/toast'
 files={[
   'src/main/java/com/webforj/samples/views/toast/ToastView.java',
-  'src/main/resources/static/css/toast/toastTheme.css',
+  'src/main/frontend/css/toast/toastTheme.css',
 ]}
 height='200px'
 />
@@ -147,7 +147,7 @@ Since the `Toast` isn't located in a specific position in the DOM, you can targe
 path='/webforj/toasttheme'
 files={[
   'src/main/java/com/webforj/samples/views/toast/ToastThemeView.java',
-  'src/main/resources/static/css/toast/toastTheme.css',
+  'src/main/frontend/css/toast/toastTheme.css',
 ]}
 height='200px'
 />
