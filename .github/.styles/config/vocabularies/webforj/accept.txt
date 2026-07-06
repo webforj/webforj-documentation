@@ -76,3 +76,5 @@ Stylus
 Preact
 Svelte
 stylesheet
+BLS
+BASIS
