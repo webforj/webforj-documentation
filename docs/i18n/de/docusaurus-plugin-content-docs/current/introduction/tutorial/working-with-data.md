@@ -72,88 +72,90 @@ Bevor Sie die Daten visuell anzeigen oder erstellen, benötigt dieses Tutorial e
 Erstellen Sie eine Klasse in `src/main/java/com/webforj/tutorial/entity` mit dem Namen `Customer.java`. Sie sollte die `@Entity`-Annotation enthalten und Getter- und Setter-Methoden für die Kundenwerte besitzen, mit Ausnahme des `id`. Anstatt eine Erstellungsmetode für `id`-Werte zu verwenden, verwenden Sie die Annotations `@Id` und `@GeneratedValue`, um sicherzustellen, dass jeder Kunde eine eindeutige `id` erhält.
 
 <ExpandableCode title="Customer.java" language="java" startLine={1} endLine={15}>
-{`@Entity
-  @Table(name = "customers")
-  public class Customer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+```java
+@Entity
+@Table(name = "customers")
+public class Customer {
 
-    private String firstName = "";
-    private String lastName = "";
-    private String company = "";
-    private Country country = Country.UNKNOWN;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    public enum Country {
-      UNKNOWN,
-      GERMANY,
-      ENGLAND,
-      ITALY,
-      USA
-    }
+  private String firstName = "";
+  private String lastName = "";
+  private String company = "";
+  private Country country = Country.UNKNOWN;
 
-    public Customer(String firstName, String lastName, String company, Country country) {
-      setFirstName(firstName);
-      setLastName(lastName);
-      setCompany(company);
-      setCountry(country);
-    }
-
-    public Customer(String firstName, String lastName, String company) {
-      this(firstName, lastName, company, Country.UNKNOWN);
-    }
-
-    public Customer(String firstName, String lastName) {
-      this(firstName, lastName, "");
-    }
-
-    public Customer(String firstName) {
-      this(firstName, "");
-    }
-
-    public Customer() {
-    }
-
-    public void setFirstName(String newName) {
-      firstName = newName;
-    }
-
-    public String getFirstName() {
-      return firstName;
-    }
-
-    public void setLastName(String newName) {
-      lastName = newName;
-    }
-
-    public String getLastName() {
-      return lastName;
-    }
-
-    public void setCompany(String newCompany) {
-      company = newCompany;
-    }
-
-    public String getCompany() {
-      return company;
-    }
-
-    public void setCountry(Country newCountry) {
-      country = newCountry;
-    }
-
-    public Country getCountry() {
-      return country;
-    }
-
-    public Long getId() {
-      return id;
-    }
-
+  public enum Country {
+    UNKNOWN,
+    GERMANY,
+    ENGLAND,
+    ITALY,
+    USA
   }
 
-`}
+  public Customer(String firstName, String lastName, String company, Country country) {
+    setFirstName(firstName);
+    setLastName(lastName);
+    setCompany(company);
+    setCountry(country);
+  }
+
+  public Customer(String firstName, String lastName, String company) {
+    this(firstName, lastName, company, Country.UNKNOWN);
+  }
+
+  public Customer(String firstName, String lastName) {
+    this(firstName, lastName, "");
+  }
+
+  public Customer(String firstName) {
+    this(firstName, "");
+  }
+
+  public Customer() {
+  }
+
+  public void setFirstName(String newName) {
+    firstName = newName;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setLastName(String newName) {
+    lastName = newName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setCompany(String newCompany) {
+    company = newCompany;
+  }
+
+  public String getCompany() {
+    return company;
+  }
+
+  public void setCountry(Country newCountry) {
+    country = newCountry;
+  }
+
+  public Country getCountry() {
+    return country;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+}
+```
+
 </ExpandableCode>
 
 Mit dem `Customer`-Datenmodell können Sie nun beginnen, Geschäftslogik in Ihre App zu integrieren.
@@ -255,69 +257,72 @@ public class CustomerService {
 Für dieses Tutorial stammt das anfängliche Kundendatenset aus einer JSON-Datei. Um einen direkten Browserzugriff zu verhindern, sollte die Dateiressource außerhalb von `src/main/resources/static` erstellt werden. Zu Ihrer Bequemlichkeit können Sie die JSON-Datei im Verzeichnis `src/main/resources/data` mit den folgenden Daten erstellen:
 
 <ExpandableCode title="customers.json" language="json" startLine={1} endLine={13}>
-{`[
-    {
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "company": "TechCorp",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "John",
-      "lastName": "Doe",
-      "company": "Innovatech",
-      "country": "ITALY"
-    },
-    {
-      "firstName": "Emma",
-      "lastName": "Brown",
-      "company": "SoftSolutions",
-      "country": "ENGLAND"
-    },
-    {
-      "firstName": "Liam",
-      "lastName": "Jones",
-      "company": "FinWise",
-      "country": "UNKNOWN"
-    },
-    {
-      "firstName": "Sophia",
-      "lastName": "Taylor",
-      "company": "DataWorks",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "Noah",
-      "lastName": "Wilson",
-      "company": "EcoBuild",
-      "country": "ITALY"
-    },
-    {
-      "firstName": "Olivia",
-      "lastName": "Moore",
-      "company": "NextGen",
-      "country": "ENGLAND"
-    },
-    {
-      "firstName": "James",
-      "lastName": "Anderson",
-      "company": "BlueTech",
-      "country": "UNKNOWN"
-    },
-    {
-      "firstName": "Isabella",
-      "lastName": "Thomas",
-      "company": "FutureLogic",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "Lucas",
-      "lastName": "White",
-      "company": "GreenEnergy",
-      "country": "ITALY"
-    }
-  ]
-`}
+
+```json
+[
+  {
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "company": "TechCorp",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Innovatech",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Brown",
+    "company": "SoftSolutions",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Jones",
+    "company": "FinWise",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Taylor",
+    "company": "DataWorks",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Wilson",
+    "company": "EcoBuild",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Moore",
+    "company": "NextGen",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Anderson",
+    "company": "BlueTech",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Thomas",
+    "company": "FutureLogic",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "White",
+    "company": "GreenEnergy",
+    "country": "ITALY"
+  }
+]
+```
+
 </ExpandableCode>
 
 Anschließend benötigt die App eine Möglichkeit, diese Daten beim Start abzurufen. Erstellen Sie in `src/main/java/com/webforj/tutorial/config` eine Klasse `DataInitializer`. Wenn die App ausgeführt wird und keine Kunden erkannt werden, lädt sie die Kunden aus der JSON-Datei und speichert sie in der H2-Datenbank:

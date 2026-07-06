@@ -72,88 +72,90 @@ Maak een klasse in `src/main/java/com/webforj/tutorial/entity` met de naam `Cust
 
 <!-- vale off -->
 <ExpandableCode title="Customer.java" language="java" startLine={1} endLine={15}>
-{`@Entity
-  @Table(name = "customers")
-  public class Customer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+```java
+@Entity
+@Table(name = "customers")
+public class Customer {
 
-    private String firstName = "";
-    private String lastName = "";
-    private String company = "";
-    private Country country = Country.UNKNOWN;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    public enum Country {
-      UNKNOWN,
-      GERMANY,
-      ENGLAND,
-      ITALY,
-      USA
-    }
+  private String firstName = "";
+  private String lastName = "";
+  private String company = "";
+  private Country country = Country.UNKNOWN;
 
-    public Customer(String firstName, String lastName, String company, Country country) {
-      setFirstName(firstName);
-      setLastName(lastName);
-      setCompany(company);
-      setCountry(country);
-    }
-
-    public Customer(String firstName, String lastName, String company) {
-      this(firstName, lastName, company, Country.UNKNOWN);
-    }
-
-    public Customer(String firstName, String lastName) {
-      this(firstName, lastName, "");
-    }
-
-    public Customer(String firstName) {
-      this(firstName, "");
-    }
-
-    public Customer() {
-    }
-
-    public void setFirstName(String newName) {
-      firstName = newName;
-    }
-
-    public String getFirstName() {
-      return firstName;
-    }
-
-    public void setLastName(String newName) {
-      lastName = newName;
-    }
-
-    public String getLastName() {
-      return lastName;
-    }
-
-    public void setCompany(String newCompany) {
-      company = newCompany;
-    }
-
-    public String getCompany() {
-      return company;
-    }
-
-    public void setCountry(Country newCountry) {
-      country = newCountry;
-    }
-
-    public Country getCountry() {
-      return country;
-    }
-
-    public Long getId() {
-      return id;
-    }
-
+  public enum Country {
+    UNKNOWN,
+    GERMANY,
+    ENGLAND,
+    ITALY,
+    USA
   }
 
-`}
+  public Customer(String firstName, String lastName, String company, Country country) {
+    setFirstName(firstName);
+    setLastName(lastName);
+    setCompany(company);
+    setCountry(country);
+  }
+
+  public Customer(String firstName, String lastName, String company) {
+    this(firstName, lastName, company, Country.UNKNOWN);
+  }
+
+  public Customer(String firstName, String lastName) {
+    this(firstName, lastName, "");
+  }
+
+  public Customer(String firstName) {
+    this(firstName, "");
+  }
+
+  public Customer() {
+  }
+
+  public void setFirstName(String newName) {
+    firstName = newName;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setLastName(String newName) {
+    lastName = newName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setCompany(String newCompany) {
+    company = newCompany;
+  }
+
+  public String getCompany() {
+    return company;
+  }
+
+  public void setCountry(Country newCountry) {
+    country = newCountry;
+  }
+
+  public Country getCountry() {
+    return country;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+}
+```
+
 </ExpandableCode>
 <!-- vale on -->
 
@@ -257,69 +259,72 @@ Voor deze tutorial komt de initiële klantdataset uit een JSON-bestand. Om direc
 
 <!-- vale off -->
 <ExpandableCode title="customers.json" language="json" startLine={1} endLine={13}>
-{`[
-    {
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "company": "TechCorp",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "John",
-      "lastName": "Doe",
-      "company": "Innovatech",
-      "country": "ITALY"
-    },
-    {
-      "firstName": "Emma",
-      "lastName": "Brown",
-      "company": "SoftSolutions",
-      "country": "ENGLAND"
-    },
-    {
-      "firstName": "Liam",
-      "lastName": "Jones",
-      "company": "FinWise",
-      "country": "UNKNOWN"
-    },
-    {
-      "firstName": "Sophia",
-      "lastName": "Taylor",
-      "company": "DataWorks",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "Noah",
-      "lastName": "Wilson",
-      "company": "EcoBuild",
-      "country": "ITALY"
-    },
-    {
-      "firstName": "Olivia",
-      "lastName": "Moore",
-      "company": "NextGen",
-      "country": "ENGLAND"
-    },
-    {
-      "firstName": "James",
-      "lastName": "Anderson",
-      "company": "BlueTech",
-      "country": "UNKNOWN"
-    },
-    {
-      "firstName": "Isabella",
-      "lastName": "Thomas",
-      "company": "FutureLogic",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "Lucas",
-      "lastName": "White",
-      "company": "GreenEnergy",
-      "country": "ITALY"
-    }
-  ]
-`}
+
+```json
+[
+  {
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "company": "TechCorp",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Innovatech",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Brown",
+    "company": "SoftSolutions",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Jones",
+    "company": "FinWise",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Taylor",
+    "company": "DataWorks",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Wilson",
+    "company": "EcoBuild",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Moore",
+    "company": "NextGen",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Anderson",
+    "company": "BlueTech",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Thomas",
+    "company": "FutureLogic",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "White",
+    "company": "GreenEnergy",
+    "country": "ITALY"
+  }
+]
+```
+
 </ExpandableCode>
 <!-- vale on -->
 

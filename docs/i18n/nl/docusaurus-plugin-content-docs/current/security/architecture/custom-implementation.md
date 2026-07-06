@@ -110,7 +110,9 @@ De context houdt bij wie is ingelogd. Deze implementatie gebruikt HTTP-sessies o
 <!-- vale off -->
 
 <ExpandableCode title="SecurityContext.java" language="java">
-{`package com.securityplain.security;
+
+```java
+package com.securityplain.security;
 
 import com.webforj.Environment;
 import com.webforj.router.security.RouteSecurityContext;
@@ -216,7 +218,9 @@ public class SecurityContext implements RouteSecurityContext {
     });
     return Optional.ofNullable(result[0]);
   }
-}`}
+}
+```
+
 </ExpandableCode>
 
 <!-- vale on -->
@@ -236,7 +240,9 @@ De manager coördineert beveiligingsbeslissingen. Het breidt `AbstractRouteSecur
 <!-- vale off -->
 
 <ExpandableCode title="SecurityManager.java" language="java">
-{`package com.securityplain.security;
+
+```java
+package com.securityplain.security;
 
 import com.webforj.environment.ObjectTable;
 import com.webforj.environment.SessionObjectTable;
@@ -334,7 +340,9 @@ public class SecurityManager extends AbstractRouteSecurityManager {
     SessionObjectTable.put(SESSION_USER_KEY, username);
     SessionObjectTable.put(SESSION_ROLES_KEY, roles);
   }
-}`}
+}
+```
+
 </ExpandableCode>
 
 <!-- vale on -->
