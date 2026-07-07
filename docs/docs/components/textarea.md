@@ -99,7 +99,7 @@ This predictive behavior enhances both speed and accuracy, especially in repetit
 path='/webforj/textareapredictedtext'
 files={[
   'src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java',
-  'src/main/resources/static/css/textarea/text-area-predicted-text-view.css',
+  'src/main/frontend/css/textarea/text-area-predicted-text-view.css',
 ]}
 height='400px'
 />

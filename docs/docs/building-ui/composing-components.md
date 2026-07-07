@@ -160,7 +160,7 @@ The following example demonstrates a Todo app where each item is a `Composite` c
 path='/webforj/composite'
 files={[
   'src/main/java/com/webforj/samples/views/composite/CompositeView.java',
-  'src/main/resources/static/composite/composite.css',
+  'src/main/frontend/composite/composite.css',
 ]}
 height='500px'
 />
@@ -173,7 +173,7 @@ Sometimes you may want to use a `Composite` to group related components together
 path='/webforj/analyticscardcomposite'
 files={[
   'src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java',
-  'src/main/resources/static/composite/analyticscomposite.css',
+  'src/main/frontend/composite/analyticscomposite.css',
 ]}
 height='550px'
 />

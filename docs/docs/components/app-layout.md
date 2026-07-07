@@ -44,7 +44,7 @@ files={[
   'src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java',
   'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
   'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
+  'src/main/frontend/css/applayout/applayout.css',
 ]}
 />
 <!--vale on-->
@@ -68,7 +68,7 @@ files={[
   'src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java',
   'src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarContentView.java',
   'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
+  'src/main/frontend/css/applayout/applayout.css',
 ]}
 />
 <!--vale on-->
@@ -88,7 +88,7 @@ files={[
   'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
   'src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeaderContentView.java',
   'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
+  'src/main/frontend/css/applayout/applayout.css',
 ]}
 />
 <!--vale on-->
@@ -112,7 +112,7 @@ files={[
   'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
   'src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarContentView.java',
   'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
+  'src/main/frontend/css/applayout/applayout.css',
 ]}
 />
 <!--vale on-->
@@ -136,7 +136,7 @@ files={[
   'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
   'src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerContentView.java',
   'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
+  'src/main/frontend/css/applayout/applayout.css',
 ]}
 />
 <!--vale on-->
@@ -194,7 +194,7 @@ files={[
   'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
   'src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityContentView.java',
   'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
+  'src/main/frontend/css/applayout/applayout.css',
 ]}
 />
 <!--vale on-->

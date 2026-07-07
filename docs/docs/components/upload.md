@@ -36,7 +36,7 @@ The following example drops a resume `Upload` into a hiring form, alongside a na
 path='/webforj/upload'
 files={[
   'src/main/java/com/webforj/samples/views/upload/UploadView.java',
-  'src/main/resources/static/css/upload/upload.css'
+  'src/main/frontend/css/upload/upload.css'
 ]}
 height='550px'
 />
@@ -52,7 +52,7 @@ Here's a gallery uploader configured with both image and video filters, multi-fi
 path='/webforj/uploadpickingfiles'
 files={[
   'src/main/java/com/webforj/samples/views/upload/UploadPickingFilesView.java',
-  'src/main/resources/static/css/upload/upload.css'
+  'src/main/frontend/css/upload/upload.css'
 ]}
 
 height='450px'
@@ -213,7 +213,7 @@ upload.setPreset(Upload.Preset.INLINE);
 path='/webforj/uploadpresets'
 files={[
   'src/main/java/com/webforj/samples/views/upload/UploadPresetsView.java',
-  'src/main/resources/static/css/upload/uploadPresets.css'
+  'src/main/frontend/css/upload/uploadPresets.css'
 ]}
 height='650px'
 />
@@ -323,7 +323,7 @@ In the following example, `onChange`, `onListProgress`, and `onComplete` drive a
 path='/webforj/uploadevents'
 files={[
   'src/main/java/com/webforj/samples/views/upload/UploadEventsView.java',
-  'src/main/resources/static/css/upload/uploadEvents.css'
+  'src/main/frontend/css/upload/uploadEvents.css'
 ]}
 height='450px'
 />

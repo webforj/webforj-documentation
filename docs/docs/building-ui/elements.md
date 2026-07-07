@@ -17,7 +17,7 @@ The `Element` component cannot be extended, and is not the base component for al
 path='/webforj/elementinputdemo'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java',
-  'src/main/resources/static/css/element/elementInput.css',
+  'src/main/frontend/css/element/elementInput.css',
 ]}
 />
 
@@ -31,7 +31,7 @@ There are also additional options to further customize events by using the Event
 path='/webforj/elementinputevent'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputEventView.java',
-  'src/main/resources/static/css/element/elementInputEvent.css',
+  'src/main/frontend/css/element/elementInputEvent.css',
 ]}
 height='240px'
 />
@@ -80,7 +80,7 @@ The `Element` component supports the composition of child components. Developers
 path='/webforj/elementinputtext'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputTextView.java',
-  'src/main/resources/static/css/element/elementInput.css',
+  'src/main/frontend/css/element/elementInput.css',
 ]}
 height='175px'
 />
@@ -132,7 +132,7 @@ In the demo below, an event is added to an HTML `Button`. This event is then fir
 path='/webforj/elementinputfunction'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java',
-  'src/main/resources/static/css/element/elementInput.css',
+  'src/main/frontend/css/element/elementInput.css',
 ]}
 height='240px'
 />

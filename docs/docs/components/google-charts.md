@@ -35,7 +35,7 @@ This example creates a geo chart that maps revenue data across different countri
 path='/webforj/chart'
 files={[
   'src/main/java/com/webforj/samples/views/googlecharts/ChartView.java',
-  'src/main/resources/static/css/googlecharts/chart.css',
+  'src/main/frontend/css/googlecharts/chart.css',
 ]}
 height='300px'
 />
@@ -48,7 +48,7 @@ The `GoogleChart` addon offers a comprehensive array of chart types to suit vari
 path='/webforj/chartgallery'
 files={[
   'src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java',
-  'src/main/resources/static/css/googlecharts/chartGallery.css',
+  'src/main/frontend/css/googlecharts/chartGallery.css',
 ]}
 height='600px'
 />
@@ -154,7 +154,7 @@ Invoke `redraw()` in scenarios such as:
 path='/webforj/chartredraw'
 files={[
   'src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java',
-  'src/main/resources/static/css/googlecharts/chartRedraw.css',
+  'src/main/frontend/css/googlecharts/chartRedraw.css',
 ]}
 height='650px'
 />

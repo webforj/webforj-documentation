@@ -135,6 +135,7 @@
     </dependency>
   </dependencies>
   <build>
+    <defaultGoal>compile webforj:watch jetty:run</defaultGoal>
     <finalName>${warFileName}</finalName>
     <plugins>
       <plugin>
@@ -254,11 +255,23 @@
         </configuration>
       </plugin>
       <plugin>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-maven-plugin</artifactId>
+        <version>${webforj.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
         <groupId>org.eclipse.jetty.ee10</groupId>
         <artifactId>jetty-ee10-maven-plugin</artifactId>
         <version>${jetty.version}</version>
         <configuration>
           <scan>${jetty.scan}</scan>
+          <scanClassesPattern>
+            <excludes>
+              <exclude>**/static</exclude>
+              <exclude>**/static/**</exclude>
+            </excludes>
+          </scanClassesPattern>
           <stopPort>${jetty.stopPort}</stopPort>
           <stopKey>${project.artifactId}</stopKey>
           <stopWait>30</stopWait>
@@ -478,6 +491,12 @@
       <properties>
         <config.file>webforj-dev.conf</config.file>
       </properties>
+      <dependencies>
+        <dependency>
+          <groupId>com.webforj</groupId>
+          <artifactId>webforj-devtools</artifactId>
+        </dependency>
+      </dependencies>
     </profile>
     <profile>
       <id>en-only</id>
