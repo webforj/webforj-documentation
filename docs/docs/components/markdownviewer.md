@@ -158,7 +158,7 @@ If progressive rendering is active, `clear()` also stops rendering and completes
 
 ## Syntax highlighting {#syntax-highlighting}
 
-The `MarkdownViewer` supports syntax highlighting for code blocks when [Prism.js](https://prismjs.com/) is available. Bring Prism into your app with the [frontend bundler](../managing-resources/bundler/overview): declare the package on your `App` class and author an entry that imports Prism, the autoloader plugin, and a theme.
+The `MarkdownViewer` supports syntax highlighting for code blocks when [Prism.js](https://prismjs.com/) is available. Bring Prism into your app with the [frontend bundler](/docs/managing-resources/bundler/overview): declare the package on your `App` class and author an entry that imports Prism, the autoloader plugin, and a theme.
 
 ```java title="Application.java"
 @BundlePackage(value = "prismjs", version = "^1.29.0")
