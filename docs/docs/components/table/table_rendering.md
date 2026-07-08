@@ -259,7 +259,7 @@ deleteBtn.addClickListener(e -> {
 table.addColumn("delete", r -> "").setRenderer(deleteBtn);
 ```
 
-## Performance: lazy rendering <DocChip chip='since' label='25.12' /> {#lazy-rendering} 
+## Performance: lazy rendering <DocChip chip='since' label='25.12' /> {#lazy-rendering}
 
 For columns that use visually expensive renderers such as badges, progress bars, avatars, or web components, enable lazy rendering to improve scroll performance.
 
@@ -285,7 +285,7 @@ Cell renderers create more entities within the DOM, meaning more CPU work during
 Lazy rendering can help reduce the performance impact if a renderer is truly needed. If you only need to change or format the value, and you aren't creating a complex DOM, use a value provider instead to transform the value.
 :::
 
-## Built-in renderer reference {#built-in-renderers} 
+## Built-in renderer reference {#built-in-renderers}
 
 webforJ ships with a comprehensive set of renderers for the most common use cases. Assign any of them to a column using `column.setRenderer(renderer)`.
 
