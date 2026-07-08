@@ -135,7 +135,7 @@
   }
 
   @media (max-width: 1550px) {
-    .dropdown--right:not(#startforj-link) {
+    .dropdown--right:not(:has(.navbar-locale-dropdown)) {
       display: none;
     }
   }

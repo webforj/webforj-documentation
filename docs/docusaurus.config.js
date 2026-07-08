@@ -358,6 +358,7 @@ module.exports = async function createConfig() {
         {
           type: 'localeDropdown',
           position: 'right',
+          className: 'navbar-locale-dropdown',
         },
         {
           href: 'https://github.com/webforj',
