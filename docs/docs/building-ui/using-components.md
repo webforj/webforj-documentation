@@ -112,14 +112,14 @@ Div container = new Div();
 container.setStyle("padding", "20px");
 
 if (isHighPriority) {
-    container.setStyle("border-left", "4px solid red");
+  container.setStyle("border-left", "4px solid red");
 }
 
 Button button = new Button("Toggle");
 button.addClassName("primary", "large");
 
 if (isLoading) {
-    button.addClassName("loading");
+  button.addClassName("loading");
 }
 ```
 
@@ -245,16 +245,16 @@ Label statusLabel = new Label("Ready");
 Button startButton = new Button("Start Process");
 
 startButton.onClick(event -> {
-    startButton.setEnabled(false);
-    statusLabel.setText("Processing...");
-    statusLabel.addClassName("processing");
-    
-    performTask(() -> {
-        statusLabel.setText("Complete");
-        statusLabel.removeClassName("processing");
-        statusLabel.addClassName("success");
-        startButton.setEnabled(true);
-    });
+  startButton.setEnabled(false);
+  statusLabel.setText("Processing...");
+  statusLabel.addClassName("processing");
+
+  performTask(() -> {
+    statusLabel.setText("Complete");
+    statusLabel.removeClassName("processing");
+    statusLabel.addClassName("success");
+    startButton.setEnabled(true);
+  });
 });
 ```
 
@@ -272,14 +272,14 @@ Call `addLifecycleObserver()` on any component to register a callback. The callb
 Button button = new Button("Watch Me");
 
 button.addLifecycleObserver((component, event) -> {
-    switch (event) {
-        case CREATE:
-            System.out.println("Button was created");
-            break;
-        case DESTROY:
-            System.out.println("Button was destroyed");
-            break;
-    }
+  switch (event) {
+    case CREATE:
+      System.out.println("Button was created");
+      break;
+    case DESTROY:
+      System.out.println("Button was destroyed");
+      break;
+  }
 });
 ```
 
@@ -289,17 +289,17 @@ The DESTROY event is particularly useful for keeping a registry automatically in
 
 ```java
 public class ResourceRegistry {
-    private final Map<String, Component> activeComponents = new ConcurrentHashMap<>();
-    
-    public void track(Component component, String name) {
-        activeComponents.put(name, component);
-        
-        component.addLifecycleObserver((comp, event) -> {
-            if (event == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
-                activeComponents.remove(name);
-            }
-        });
-    }
+  private final Map<String, Component> activeComponents = new ConcurrentHashMap<>();
+
+  public void track(Component component, String name) {
+    activeComponents.put(name, component);
+
+    component.addLifecycleObserver((comp, event) -> {
+      if (event == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
+        activeComponents.remove(name);
+      }
+    });
+  }
 }
 ```
 
@@ -309,21 +309,21 @@ A coordinator class that manages a set of related components can use the same ap
 
 ```java
 public class FormCoordinator {
-    private final List<DwcComponent<?>> managedComponents = new ArrayList<>();
-    
-    public void manage(DwcComponent<?> component) {
-        managedComponents.add(component);
-        
-        component.addLifecycleObserver((comp, event) -> {
-            if (event == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
-                managedComponents.remove(comp);
-            }
-        });
-    }
-    
-    public void disableAll() {
-        managedComponents.forEach(c -> c.setEnabled(false));
-    }
+  private final List<DwcComponent<?>> managedComponents = new ArrayList<>();
+
+  public void manage(DwcComponent<?> component) {
+    managedComponents.add(component);
+
+    component.addLifecycleObserver((comp, event) -> {
+      if (event == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
+        managedComponents.remove(comp);
+      }
+    });
+  }
+
+  public void disableAll() {
+    managedComponents.forEach(c -> c.setEnabled(false));
+  }
 }
 ```
 
@@ -346,8 +346,8 @@ Button button = new Button("Process");
 button.setUserData("context", new ProcessingContext(userId, taskId));
 
 button.onClick(event -> {
-    ProcessingContext context = (ProcessingContext) button.getUserData("context");
-    processTask(context.getUserId(), context.getTaskId());
+  ProcessingContext context = (ProcessingContext) button.getUserData("context");
+  processTask(context.getUserId(), context.getTaskId());
 });
 ```
 

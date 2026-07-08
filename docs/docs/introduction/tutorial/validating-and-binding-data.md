@@ -191,7 +191,7 @@ TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.g
 TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
 TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
 ChoiceBox country = new ChoiceBox("Country",
-    e -> customer.setCountry(Country.valueOf(e.getSelectedItem().getText())));
+  e -> customer.setCountry(Country.valueOf(e.getSelectedItem().getText())));
 ```
 
 **After**

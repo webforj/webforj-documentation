@@ -175,23 +175,23 @@ A descriptor is parameterized by the Java type of its value. The full declaratio
 
 ```java
 private final PropertyDescriptor<T> name =
-    PropertyDescriptor.property(String name, T defaultValue);
+  PropertyDescriptor.property(String name, T defaultValue);
 ```
 
 The `<T>` generic parameter declares the value's type. The default value's runtime type also fixes `T`, so the generic argument rarely needs to be specified explicitly. webforJ uses `T` to serialize and deserialize values when communicating with the client.
 
 ```java
 private final PropertyDescriptor<String> label =
-    PropertyDescriptor.property("label", "");
+  PropertyDescriptor.property("label", "");
 
 private final PropertyDescriptor<Boolean> disabled =
-    PropertyDescriptor.property("disabled", false);
+  PropertyDescriptor.property("disabled", false);
 
 private final PropertyDescriptor<Integer> max =
-    PropertyDescriptor.property("max", 100);
+  PropertyDescriptor.property("max", 100);
 
 private final PropertyDescriptor<Double> step =
-    PropertyDescriptor.property("step", 1.0);
+  PropertyDescriptor.property("step", 1.0);
 ```
 
 Serialization is automatic for primitives, their boxed equivalents, and `String`. For complex types, the value is serialized as JSON before it's assigned to the property on the client.
@@ -289,7 +289,7 @@ Some descriptors don't follow standard getter and setter conventions, or they re
 ```java
 @PropertyExclude
 private final PropertyDescriptor<String> internal =
-    PropertyDescriptor.property("internal", "");
+  PropertyDescriptor.property("internal", "");
 ```
 
 #### Custom getter and setter names {#custom-getter-and-setter-names}
@@ -299,7 +299,7 @@ If a descriptor uses non-standard accessor names, declare them with `@PropertyMe
 ```java
 @PropertyMethods(getter = "retrieveValue", setter = "updateValue")
 private final PropertyDescriptor<String> custom =
-    PropertyDescriptor.property("custom", "default");
+  PropertyDescriptor.property("custom", "default");
 ```
 
 The `target` parameter accepts a class when the accessors live somewhere other than the component itself.

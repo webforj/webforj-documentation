@@ -80,11 +80,11 @@ Before discussing the code for the `WillEnterObserver`, the following flowchart 
 
 ```mermaid
 flowchart TD
-    A[Going to FormView] --> B{Is there an id parameter?}
-    B -->|No| C[Go to an empty FormView]
-    B -->|Yes| D{Does that id value match with a customer id?}
-    D -->|Yes| E[Go to a filled FormView]
-    D -->|No| F[Redirect to MainView]
+  A[Going to FormView] --> B{Is there an id parameter?}
+  B -->|No| C[Go to an empty FormView]
+  B -->|Yes| D{Does that id value match with a customer id?}
+  D -->|Yes| E[Go to a filled FormView]
+  D -->|No| F[Redirect to MainView]
 ```
 
 ### Using the `WillEnterObserver` {#using-the-willenterobserver}

@@ -304,7 +304,7 @@ To allow users to add a new customer, you can either modify or replace the info 
 
 ```java
 private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
-    e -> Router.getCurrent().navigate(FormView.class));
+  e -> Router.getCurrent().navigate(FormView.class));
 ```
 
 ## Completed `MainView` {#completed-mainview}
@@ -433,7 +433,7 @@ Then, when the user selects an option in the `ChoiceBox`, the `Customer` instanc
 
 ```java
 private ChoiceBox country = new ChoiceBox("Country",
-    e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
+  e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
 ```
 
 To keep the code clean, the iterator that creates the `ArrayList<ListItem>` and adds it to the `ChoiceBox` should be in a separate method. 
@@ -497,7 +497,7 @@ The [Themes](/docs/components/button#themes) section of the `Button` component p
 
 ```java
 private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY,
-    e -> navigateToMain());
+  e -> navigateToMain());
 ```
 
 **Submit button**
