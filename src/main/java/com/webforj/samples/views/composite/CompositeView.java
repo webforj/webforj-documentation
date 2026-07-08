@@ -1,6 +1,6 @@
 package com.webforj.samples.views.composite;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -19,7 +19,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("To-Do List")
-@StyleSheet("ws://composite/composite.css")
+@BundleEntry("composite/composite.css")
 public class CompositeView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final TextField taskInput = new TextField();

@@ -1,6 +1,6 @@
 package com.webforj.samples.views.usingcomponents;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -16,7 +16,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Form Validation View")
-@StyleSheet("ws://usingcomponents/formvalidation.css")
+@BundleEntry("usingcomponents/formvalidation.css")
 public class FormValidationView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();

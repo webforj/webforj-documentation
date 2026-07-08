@@ -155,7 +155,7 @@ The following login form demonstrates `setEnabled()` in practice. The sign-in bu
 path='/webforj/conditionalstate'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java',
-  'src/main/resources/static/usingcomponents/conditionalstate.css',
+  'src/main/frontend/usingcomponents/conditionalstate.css',
 ]}
 height='450px'
 />
@@ -194,7 +194,7 @@ The following settings panel demonstrates this: basic notification preferences a
 path='/webforj/progressivedisclosure'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ProgressiveDisclosureView.java',
-  'src/main/resources/static/usingcomponents/progressivedisclosure.css',
+  'src/main/frontend/usingcomponents/progressivedisclosure.css',
 ]}
 height='450px'
 />
@@ -231,7 +231,7 @@ In this contact form, the name field must not be empty, the email must contain a
 path='/webforj/formvalidation'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java',
-  'src/main/resources/static/usingcomponents/formvalidation.css',
+  'src/main/frontend/usingcomponents/formvalidation.css',
 ]}
 height='500px'
 />

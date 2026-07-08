@@ -1,8 +1,7 @@
 package com.webforj.samples.views.elementcomposite;
 
-import com.webforj.annotation.Attribute;
-import com.webforj.annotation.JavaScript;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
+import com.webforj.bundle.annotation.BundlePackage;
 import com.webforj.component.Component;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
@@ -105,11 +104,9 @@ public class CardView extends Composite<FlexLayout> {
     return new ListEntry(check, new Span(text));
   }
 
-  @JavaScript(
-      value =
-          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js",
-      attributes = {@Attribute(name = "type", value = "module")})
-  @StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css")
+  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
+  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
+  @BundleEntry("@shoelace-style/shoelace/dist/components/card/card.js")
   @NodeName("sl-card")
   public static final class Card extends ElementCompositeContainer
       implements HasClassName<Card>, HasStyle<Card> {

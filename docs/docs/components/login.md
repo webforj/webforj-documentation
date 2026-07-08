@@ -78,7 +78,7 @@ The following login has a custom field added for a customer ID. This can help yo
 path='/webforj/logincustomfields'
 files={[
   'src/main/java/com/webforj/samples/views/login/LoginCustomFieldsView.java',
-  'src/main/resources/static/css/login/loginCustomFields.css',
+  'src/main/frontend/css/login/loginCustomFields.css',
 ]}
 height='700px'
 />
