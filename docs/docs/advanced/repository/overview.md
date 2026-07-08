@@ -150,7 +150,7 @@ customer.ifPresent(c -> {
 });
 ```
 
-### Using custom key provider <DocChip chip='since' label='25.10' /> {#using-custom-key-provider} 
+### Using custom key provider <DocChip chip='since' label='25.10' /> {#using-custom-key-provider}
 
 For entities where you can't or don't want to implement `HasEntityKey` (like JPA entities), use `setKeyProvider()`:
 

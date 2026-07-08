@@ -117,7 +117,7 @@ There are three available directions for pinning a column:
 
 Pinning can be set programmatically, allowing you to change the pin direction based on user interactions or by the app's logic.
 
-## Column sizing <DocChip chip='since' label='25.03' /> {#column-sizing} 
+## Column sizing <DocChip chip='since' label='25.03' /> {#column-sizing}
 
 ### Fixed width {#fixed-width}
 
