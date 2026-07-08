@@ -7,7 +7,7 @@ description: Connect AI assistants to the webforJ MCP server for live documentat
 The webforJ Model Context Protocol (MCP) server plugs AI coding assistants into webforJ's documentation, APIs, design tokens, and scaffolding tools. Instead of guessing at framework conventions, the assistant asks the server and gets answers grounded in the real webforJ.
 
 :::tip Use the plugin
-Unless you know you want only the MCP server, install the **[webforJ AI plugin](/docs/integrations/ai-tooling)** instead - it bundles this server with the matching [Agent Skills](/docs/integrations/ai-tooling/agent-skills) in a single install.
+Unless you know you want only the MCP server, install the **[webforJ AI plugin](/docs/ai-tooling)** instead - it bundles this server with the matching [Agent Skills](/docs/ai-tooling/agent-skills) in a single install.
 :::
 
 ## What's an MCP? {#whats-an-mcp}
@@ -25,7 +25,7 @@ The MCP server significantly improves accuracy, but AI assistants can still prod
 
 ## Installation {#installation}
 
-For the full experience, install the **[webforJ AI plugin](/docs/integrations/ai-tooling)** - it configures this server alongside the Agent Skills your assistant needs to use it well.
+For the full experience, install the **[webforJ AI plugin](/docs/ai-tooling)** - it configures this server alongside the Agent Skills your assistant needs to use it well.
 
 If you want only the MCP server (no skills), point your client at `https://mcp.webforj.com/mcp`:
 
@@ -39,7 +39,7 @@ claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
 </TabItem>
 <TabItem value="copilot-cli" label="GitHub Copilot CLI">
 
-The recommended path on Copilot CLI is the **[webforJ AI plugin](/docs/integrations/ai-tooling)** - it registers the MCP server for you in one step. For a raw MCP-only setup, see the per-client instructions in the [webforJ AI repository](https://github.com/webforj/webforj-ai#clients).
+The recommended path on Copilot CLI is the **[webforJ AI plugin](/docs/ai-tooling)** - it registers the MCP server for you in one step. For a raw MCP-only setup, see the per-client instructions in the [webforJ AI repository](https://github.com/webforj/webforj-ai#clients).
 
 </TabItem>
 <TabItem value="vscode" label="VS Code + Copilot">
@@ -190,7 +190,7 @@ When the MCP server is connected, your AI assistant gains the following capabili
       "Which DWC tag does the webforJ TextField class map to?"
       ```
 
-      Pair this with the [styling-apps agent skill](/docs/integrations/ai-tooling/agent-skills) for end-to-end styling workflows.
+      Pair this with the [styling-apps agent skill](/docs/ai-tooling/agent-skills) for end-to-end styling workflows.
     </div>
   </AccordionDetails>
 </Accordion>

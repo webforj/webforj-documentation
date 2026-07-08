@@ -2,7 +2,6 @@
 title: Integrating an App Layout
 sidebar_position: 7
 description: Step 6 - Using the AppLayout and FlexLayout components.
-sidebar_class_name: new-content
 ---
 
 In this step, you'll pull all the parts of your app into a cohesive app layout. By the end of this step, your app’s structure will closely resemble the [SideMenu archetype](/docs/building-ui/archetypes/sidemenu), and you’ll have a better understanding of how the following components and concepts work:

@@ -105,7 +105,9 @@ jobs:
         working-directory: ./docs
         run: |
           if [ "${{ github.event.inputs.target_language }}" = "all" ] || [ -z "${{ github.event.inputs.target_language }}" ]; then
-            npm run write-translations
+            for language in en es de fr nl fi zh; do
+              npm run write-translations -- --locale $language
+            done
           else
             npm run write-translations -- --locale ${{ github.event.inputs.target_language }}
           fi

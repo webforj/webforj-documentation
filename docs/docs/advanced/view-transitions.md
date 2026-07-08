@@ -17,7 +17,7 @@ View transitions provide animated transitions when the [DOM](/docs/glossary#dom)
 path='/webforj/viewtransitionchat'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
-  'src/main/resources/static/css/viewtransitions/chat.css',
+  'src/main/frontend/css/viewtransitions/chat.css',
 ]}
 height='450px'
 />
@@ -105,7 +105,7 @@ files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
-  'src/main/resources/static/css/viewtransitions/morph.css',
+  'src/main/frontend/css/viewtransitions/morph.css',
 ]}
 height='650px'
 />
@@ -132,7 +132,7 @@ path='/webforj/viewtransitionshuffle'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
-  'src/main/resources/static/css/viewtransitions/shuffle.css',
+  'src/main/frontend/css/viewtransitions/shuffle.css',
 ]}
 height='550px'
 />
@@ -191,7 +191,7 @@ Page.getCurrent().startViewTransition()
 path='/webforj/viewtransitionenterexit'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
-  'src/main/resources/static/css/viewtransitions/enterexit.css',
+  'src/main/frontend/css/viewtransitions/enterexit.css',
 ]}
 height='400px'
 />

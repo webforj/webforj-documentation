@@ -1,7 +1,6 @@
 {
   "label": "Upgrade to 26.00",
   "position": 20,
-  "className": "new-content",
   "link": {
     "type": "doc",
     "id": "overview"

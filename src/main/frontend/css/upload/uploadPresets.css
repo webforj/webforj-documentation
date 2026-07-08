@@ -1,0 +1,18 @@
+.upload-presets {
+  margin: var(--dwc-space-l) auto;
+  max-width: 560px;
+  padding: var(--dwc-space-m);
+  border: 1px solid var(--dwc-color-default-border);
+  border-radius: var(--dwc-border-radius-m);
+  background: var(--dwc-surface-3);
+}
+
+.upload-presets__subcard {
+  padding: var(--dwc-space-m);
+  border: 1px solid var(--dwc-color-default-border);
+  border-radius: var(--dwc-border-radius-m);
+}
+
+.upload-presets__subcard-title {
+  margin: 0;
+}

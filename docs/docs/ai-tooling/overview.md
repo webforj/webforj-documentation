@@ -1,7 +1,7 @@
 ---
 title: webforJ AI Plugin
 sidebar_position: 1
-slug: /integrations/ai-tooling
+slug: /ai-tooling
 sidebar_class_name: new-content
 description: Install the webforJ AI plugin to add the MCP server and Agent Skills to Claude Code, Copilot, Cursor, Gemini, and Codex in one step.
 ---
@@ -12,8 +12,8 @@ The **webforJ AI plugin** is the recommended way to connect your AI coding assis
 
 Installing the plugin connects two complementary pieces in a single step:
 
-- **[webforJ MCP server](/docs/integrations/ai-tooling/mcp)** - live tools the assistant can call on demand: look things up in the webforJ knowledge base, scaffold Maven projects, generate DWC themes, read the styling surface of any DWC component, and validate `--dwc-*` tokens before they land in your CSS.
-- **[Agent Skills](/docs/integrations/ai-tooling/agent-skills)** - structured workflows that tell the assistant _when_ to reach for those tools, what order to do things in, and how to validate the result. Covers building reusable components and styling webforJ apps end-to-end.
+- **[webforJ MCP server](/docs/ai-tooling/mcp)** - live tools the assistant can call on demand: look things up in the webforJ knowledge base, scaffold Maven projects, generate DWC themes, read the styling surface of any DWC component, and validate `--dwc-*` tokens before they land in your CSS.
+- **[Agent Skills](/docs/ai-tooling/agent-skills)** - structured workflows that tell the assistant _when_ to reach for those tools, what order to do things in, and how to validate the result. Covers building reusable components and styling webforJ apps end-to-end.
 
 Together they turn an AI assistant that guesses at webforJ conventions into one that follows them.
 

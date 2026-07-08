@@ -1,8 +1,7 @@
 package com.webforj.samples.views.elementcomposite;
 
-import com.webforj.annotation.Attribute;
-import com.webforj.annotation.JavaScript;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
+import com.webforj.bundle.annotation.BundlePackage;
 import com.webforj.component.Composite;
 import com.webforj.component.avatar.Avatar;
 import com.webforj.component.avatar.AvatarTheme;
@@ -25,7 +24,7 @@ import java.time.Instant;
 
 @Route
 @FrameTitle("Recent Activity")
-@StyleSheet("ws://element-composite/activityfeed.css")
+@BundleEntry("element-composite/activityfeed.css")
 public class RelativeTimePropertiesView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
@@ -130,11 +129,9 @@ public class RelativeTimePropertiesView extends Composite<FlexLayout> {
   }
 
   /** Wrapper for the Shoelace relative-time web component. */
-  @JavaScript(
-      value =
-          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js",
-      attributes = {@Attribute(name = "type", value = "module")})
-  @StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css")
+  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
+  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
+  @BundleEntry("@shoelace-style/shoelace/dist/components/relative-time/relative-time.js")
   @NodeName("sl-relative-time")
   public static final class RelativeTime extends ElementComposite
       implements HasClassName<RelativeTime>, HasStyle<RelativeTime> {

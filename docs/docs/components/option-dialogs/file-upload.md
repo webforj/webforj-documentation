@@ -12,6 +12,10 @@ A `FileUploadDialog` is a modal dialog designed to allow the user to upload file
 
 <!-- INTRO_END -->
 
+:::tip Inline component
+If you want a file picker that renders directly in the page layout instead of a dialog, consider using the [`Upload`](/docs/components/upload) component.
+:::
+
 ## Usages {#usages}
 
 The `FileUploadDialog` provides a way to select and upload files, enabling users to submit documents, images, or other file types required by the app. Use `showFileUploadDialog()` to display the dialog and capture the uploaded file.

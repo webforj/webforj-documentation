@@ -2,7 +2,7 @@ package com.webforj.samples.views.viewtransitions;
 
 import com.webforj.Page;
 import com.webforj.ViewTransition;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
@@ -17,7 +17,7 @@ import com.webforj.samples.views.viewtransitions.components.DemoHeader;
 
 @Route
 @FrameTitle("Shared Element Morph")
-@StyleSheet("ws://css/viewtransitions/morph.css")
+@BundleEntry("css/viewtransitions/morph.css")
 public class ViewTransitionMorphView extends Composite<FlexLayout> {
   private static final String TRANSITION_NAME = "blog-image";
   private static final String TITLE = "The Art of Writing";

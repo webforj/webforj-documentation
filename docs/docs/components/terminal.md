@@ -39,7 +39,7 @@ files={[
   'src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/ConfirmCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java',
-  'src/main/resources/static/css/terminal/terminal-view.css',
+  'src/main/frontend/css/terminal/terminal-view.css',
 ]}
 height='400px'
 />

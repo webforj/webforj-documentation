@@ -28,6 +28,10 @@
     @include _icon("rocket");
   }
 
+  .cat-icon--ai-tooling > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("sparkles");
+  }
+
   .cat-icon--architecture > .menu__list-item-collapsible > .menu__link::before {
     @include _icon("sitemap");
   }
@@ -77,7 +81,7 @@
   }
 
   .cat-icon--advanced > .menu__list-item-collapsible > .menu__link::before {
-    @include _icon("sparkles");
+    @include _icon("atom");
   }
 
   .cat-icon--upgrading > .menu__list-item-collapsible > .menu__link::before {

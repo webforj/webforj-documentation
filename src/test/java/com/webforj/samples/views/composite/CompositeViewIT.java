@@ -7,6 +7,7 @@ import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.composite.CompositePage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class CompositeViewIT extends BaseTest {
@@ -42,6 +43,8 @@ public class CompositeViewIT extends BaseTest {
   }
 
   @Test
+  @Disabled(
+      "Pending framework support: webforj.legacyHtmlInText=false is not honored by setText() in 26.01")
   public void testLiteralCharacters() {
     compositePage.getToDoInput().fill("<html><b>New Task</b></html>");
     compositePage.getToDoInput().press("Enter");

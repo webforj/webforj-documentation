@@ -1,6 +1,6 @@
 package com.webforj.samples.views.drawer;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -17,7 +17,7 @@ import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/drawer/drawerContact.css")
+@BundleEntry("css/drawer/drawerContact.css")
 @Route
 @FrameTitle("Contact Picker")
 public class DrawerContactView extends Composite<FlexLayout> {

@@ -7,7 +7,7 @@ description: Install Agent Skills so AI coding assistants follow webforJ workflo
 Agent Skills teach AI coding assistants how to build webforJ applications using the correct APIs, design tokens, and component patterns. Instead of guessing at framework conventions, the assistant loads a skill and follows a structured workflow to produce code that compiles and follows best practices on the first attempt.
 
 :::tip Use the plugin
-The skills below ship inside the **[webforJ AI plugin](/docs/integrations/ai-tooling)** together with the [MCP server](/docs/integrations/ai-tooling/mcp). One install gives your assistant both pieces.
+The skills below ship inside the **[webforJ AI plugin](/docs/ai-tooling)** together with the [MCP server](/docs/ai-tooling/mcp). One install gives your assistant both pieces.
 :::
 
 Skills follow the open [Agent Skills](https://agentskills.io/specification) standard and work across many AI assistants, including Claude Code, GitHub Copilot, Cursor, Gemini CLI, OpenAI Codex, and more. A skill tells the assistant what kind of task it handles; the assistant loads it automatically when your prompt matches. For example, asking "theme this app with a blue palette" triggers the `webforj-styling-apps` skill, which walks the assistant through looking up valid DWC tokens, writing scoped CSS, and validating every variable name before writing anything to disk.
@@ -20,7 +20,7 @@ Skills give the assistant a task-specific playbook: how to classify the work in 
 
 ## How skills differ from MCP {#how-skills-differ-from-mcp}
 
-Skills and the [webforJ MCP server](/docs/integrations/ai-tooling/mcp) serve complementary roles. The MCP server provides live tools the assistant can call to fetch information or generate output. Skills provide the workflow that tells the assistant _when_ to reach for those tools, what order to do things in, and how to validate the result.
+Skills and the [webforJ MCP server](/docs/ai-tooling/mcp) serve complementary roles. The MCP server provides live tools the assistant can call to fetch information or generate output. Skills provide the workflow that tells the assistant _when_ to reach for those tools, what order to do things in, and how to validate the result.
 
 | | MCP server | Agent Skills |
 |---|---|---|
@@ -32,7 +32,7 @@ In practice the two work best together - and the [webforJ AI plugin](https://git
 
 ## Installation {#installation}
 
-Install the **[webforJ AI plugin](/docs/integrations/ai-tooling)** - it ships both skills below alongside the MCP server. For clients that don't support plugins, the [webforJ AI repository](https://github.com/webforj/webforj-ai#clients) lists the skill directory each tool reads from, so you can copy the skill folders in by hand.
+Install the **[webforJ AI plugin](/docs/ai-tooling)** - it ships both skills below alongside the MCP server. For clients that don't support plugins, the [webforJ AI repository](https://github.com/webforj/webforj-ai#clients) lists the skill directory each tool reads from, so you can copy the skill folders in by hand.
 
 ## Available skills {#available-skills}
 

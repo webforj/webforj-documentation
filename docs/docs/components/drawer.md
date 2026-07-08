@@ -24,7 +24,7 @@ path='/webforj/drawerwelcome'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java',
-  'src/main/resources/static/css/drawer/drawerWelcome.css',
+  'src/main/frontend/css/drawer/drawerWelcome.css',
 ]}
 />
 
@@ -154,7 +154,7 @@ This example uses a `Drawer` as a task manager. You can add tasks, check them of
 path='/webforj/drawertask'
 files={[
   'src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java',
-  'src/main/resources/static/css/drawer/drawer-task-view.css',
+  'src/main/frontend/css/drawer/drawer-task-view.css',
 ]}
 height='600px'
 />

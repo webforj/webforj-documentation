@@ -1,6 +1,6 @@
 package com.webforj.samples.views.composite;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.googlecharts.GoogleChart;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Route
 @FrameTitle("Analytics Card")
-@StyleSheet("ws://composite/analyticscomposite.css")
+@BundleEntry("composite/analyticscomposite.css")
 public class AnalyticsCardCompositeView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 

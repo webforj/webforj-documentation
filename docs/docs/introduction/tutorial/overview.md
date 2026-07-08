@@ -2,7 +2,6 @@
 title: Overview
 description: Follow a six-step tutorial to build a customer management app with webforJ and Spring Boot, adding routing, data binding, and layout.
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
 ---
 
 This step-by-step tutorial guides you through the process of building a customer management app using webforJ and Spring Boot. It teaches you how to create a modern, user-friendly interface for viewing, adding, and editing customer data.

@@ -23,7 +23,7 @@ Here's an example of creating a `Loading` component with a message:
 path='/webforj/loadingdemo'
 files={[
   'src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java',
-  'src/main/resources/static/css/loadingstyles/loadingdemo.css',
+  'src/main/frontend/css/loadingstyles/loadingdemo.css',
 ]}
 height='300px'
 />
@@ -67,7 +67,7 @@ Here's an example of how you can customize the spinner within a `Loading` compon
 path='/webforj/loadingspinnerdemo'
 files={[
   'src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java',
-  'src/main/resources/static/css/loadingstyles/loadingspinnerdemo.css',
+  'src/main/frontend/css/loadingstyles/loadingspinnerdemo.css',
 ]}
 height='300px'
 />
