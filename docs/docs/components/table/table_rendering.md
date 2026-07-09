@@ -259,7 +259,7 @@ deleteBtn.addClickListener(e -> {
 table.addColumn("delete", r -> "").setRenderer(deleteBtn);
 ```
 
-## Performance: lazy rendering <DocChip chip='since' label='25.12' /> {#lazy-rendering} 
+## Performance: lazy rendering <DocChip chip='since' label='25.12' /> {#lazy-rendering}
 
 For columns that use visually expensive renderers such as badges, progress bars, avatars, or web components, enable lazy rendering to improve scroll performance.
 

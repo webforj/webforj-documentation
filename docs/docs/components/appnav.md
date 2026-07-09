@@ -122,7 +122,7 @@ Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested
 nav.setAutoOpen(true);
 ```
 
-## Pinning <DocChip chip='since' label='26.01' /> {#pinning} 
+## Pinning <DocChip chip='since' label='26.01' /> {#pinning}
  
 Pinning lets a user lift the items they reach for most into a group at the top of the navigation, so a deep menu still keeps a short list of favorites within one click. It's off by default. Turn it on through the pinning configuration:
  
