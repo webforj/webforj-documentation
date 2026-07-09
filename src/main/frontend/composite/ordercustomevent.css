@@ -1,0 +1,50 @@
+.orderdesk-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--dwc-space-xl);
+}
+
+.orderdesk-card {
+  padding: var(--dwc-space-l);
+  width: 100%;
+  max-width: 460px;
+  background: var(--dwc-surface-3);
+  border: 1px solid var(--dwc-color-default);
+  border-radius: var(--dwc-border-radius-l);
+}
+
+.orderdesk-card h2 {
+  margin: 0;
+}
+
+.orderdesk-subhead {
+  margin: 0;
+}
+
+.orderdesk-log {
+  gap: var(--dwc-space-s);
+  flex: none;
+}
+
+.orderdesk-empty {
+  margin: 0;
+  color: var(--dwc-color-default-text-light);
+}
+
+.orderdesk-order {
+  gap: var(--dwc-space-s);
+  padding: var(--dwc-space-s);
+  background: var(--dwc-surface-2);
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-s);
+}
+
+.orderdesk-order-id {
+  font-weight: 600;
+}
+
+.orderdesk-order-total {
+  margin-left: auto;
+  font-weight: 600;
+}
