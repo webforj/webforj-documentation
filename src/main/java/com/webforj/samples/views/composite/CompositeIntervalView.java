@@ -40,7 +40,7 @@ public class CompositeIntervalView extends Composite<FlexLayout> {
 
     private final FlexLayout self = getBoundComponent();
     private final FlexLayout list = new FlexLayout();
-    private final Button toggle = new Button("Start", ButtonTheme.OUTLINED_GRAY);
+    private final Button toggle = new Button("Pause", ButtonTheme.OUTLINED_GRAY);
     private final Random random = new Random();
     private final Interval interval = new Interval(2.5f, event -> addOrder());
 
@@ -65,6 +65,11 @@ public class CompositeIntervalView extends Composite<FlexLayout> {
       }
 
       toggle.onClick(event -> togglePolling());
+    }
+
+    @Override
+    protected void onDidCreate(FlexLayout container) {
+      interval.start();
     }
 
     @Override
