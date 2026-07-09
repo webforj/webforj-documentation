@@ -439,19 +439,26 @@ options.setThrottle(100); // Fire at most once per 100ms
 
 #### Merging options {#merging-options}
 
-When several listeners share a common configuration, define it once and combine it with per-listener options using `mergeWith()`. It accepts one or more `ElementEventOptions` and returns the merged instance. For each of data, code, and filter, the last non-empty value takes precedence, and null arguments are ignored.
+Combine several `ElementEventOptions` into one with `mergeWith()`. It accepts one or more option objects, applies each to the receiver in order, and returns that same instance. Each setting merges differently:
+
+- Data merges key by key. Incoming entries are added, an incoming key overwrites a matching one, and keys only on the receiver stay in place.
+- Code and filter are replaced only when the incoming option sets a non-empty value, so the last option that specifies one wins.
+- Timing merges too. A debounce or throttle set on an incoming option is applied, and because the two are mutually exclusive, the last timing mode set wins.
+
+`mergeWith()` mutates the instance it is called on rather than returning a new one, so treat the receiver as the merge target. Build a fresh instance when you need to keep a configuration intact.
 
 ```java
-// Shared configuration reused across listeners
-ElementEventOptions base = new ElementEventOptions()
-  .addData("value", "component.value");
+ElementEventOptions options = new ElementEventOptions()
+  .addData("value", "component.value")
+  .setDebounce(300);
 
-// Combine with listener-specific filtering
-ElementEventOptions filtered = base.mergeWith(
-  new ElementEventOptions().setFilter("component.value.length >= 2"));
+// Merges in place and returns the same instance: keeps 'value' and the
+// 300ms debounce, adds the 'length' key and a filter
+options.mergeWith(
+  new ElementEventOptions()
+    .addData("length", "component.value.length")
+    .setFilter("component.value.length >= 2"));
 ```
-
-Because `mergeWith()` takes varargs, you can fold several option sets together in a single call, with each later value winning per setting.
 
 ## Interacting with slots {#interacting-with-slots}
 
