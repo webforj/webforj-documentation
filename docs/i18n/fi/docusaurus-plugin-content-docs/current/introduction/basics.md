@@ -1,15 +1,18 @@
 ---
 title: App Basics
+description: >-
+  Walk through the Application and HomeView classes of the hello-world archetype
+  to see how routing, annotations, and views shape a webforJ app.
 sidebar_position: 3
-_i18n_hash: 23f93367391ac7cd42c28bf4cd3640ee
+_i18n_hash: 2ebddfe300802013e4376681bc2ccf04
 ---
-Kun webforJ ja sen riippuvuudet on asetettu projektiisi, olet valmis luomaan sovelluksen rakenteen. Tämä artikkeli käy läpi keskeiset elementit yksinkertaisessa webforJ-sovelluksessa, erityisesti keskittyen `Application`- ja `HomeView`-luokkiin, jotka ovat perustavanlaatuisia luokkia `webforj-archetype-hello-world` aloitusprojektissa.
+Kun webforJ ja sen riippuvuudet on määritetty projektissasi, olet valmis luomaan sovellusrakenteen. Tämä artikkeli käy läpi keskeiset elementit yksinkertaisessa webforJ-sovelluksessa, erityisesti keskittyen `Application`- ja `HomeView`-luokkiin, jotka ovat perustavia luokkia `webforj-archetype-hello-world`-aloitushankkeessa.
 
-## Pääsovellusluokka: `Application.java` {#main-app-class-applicationjava}
+## Pään sovellusluokka: `Application.java` {#main-app-class-applicationjava}
 
-`Application`-luokka toimii sovelluksesi webforJ-sovelluksen sisäänkäyntipisteenä, asettaen olennaiset asetukset ja reitit. Huomaa aluksi luokan julistus ja annotaatiot.
+`Application`-luokka toimii pääsisäänkäyntinä webforJ-sovelluksellesi, määrittäen olennaiset asetukset ja reitit. Aloita huomaamalla luokan julistus ja annotaatiot.
 
-Tämä luokka laajentaa webforJ:n ydin `App`-luokkaa, jolloin se tunnetaan webforJ-sovelluksena. Eri annotaatiot määrittävät sovelluksen teeman, otsikon ja reitit.
+Tämä luokka laajentaa webforJ:n ydin `App`-luokkaa, mikä tekee siitä tunnistettavan webforJ-sovelluksena. Erilaiset annotaatiot määrittävät sovelluksen teeman, otsikon ja reitit.
 
 ```java
 @Routify(packages = "com.samples.views")
@@ -19,36 +22,36 @@ public class Application extends App {
 }
 ```
 
-- `@Routify`: Määrittää, että webforJ:n tulee skannata `com.samples.views`-paketti reittikomponenttien löytämiseksi.
-- `@AppTitle`: Määrittää otsikon, joka näkyy sovelluksen selainvälilehdellä.
-- `@StyleSheet`: Linkittää ulkoisen CSS-tiedoston, `app.css`, jolloin sovellukselle voidaan soveltaa mukautettua tyylitystä.
+- `@Routify`: Määrittää, että webforJ:n tulee skannata `com.samples.views` -paketti reittikomponenteille.
+- `@AppTitle`: Määrittää otsikon, joka näytetään sovelluksen selainvälilehdellä.
+- `@StyleSheet`: Linkittää ulkoisen CSS-tiedoston, `app.css`, joka mahdollistaa mukautetut tyylit sovellukselle.
 
-`Application`-luokka ei sisällä lisämenetelmiä, koska asetukset on määritetty annotaatioiden avulla, ja webforJ hoitaa sovelluksen alustusprosessin.
+`Application`-luokka ei sisällä muita metodeja, koska asetukset määritetään annotaatioiden kautta, ja webforJ hoitaa sovelluksen aloituksen.
 
-Kun `Application.java` on asetettu, sovellus on nyt konfiguroitu otsikolla ja reiteillä, jotka osoittavat näkymäpakettiin. Seuraavaksi `HomeView`-luokan yleiskuva antaa käsityksen siitä, mitä näytetään, kun sovellus käynnistetään.
+Kun `Application.java` on määritetty, sovellus on nyt konfiguroitu otsikolla ja reiteillä, jotka osoittavat näkymäpakkaukseen. Seuraavaksi `HomeView`-luokan yleiskatsaus antaa käsityksen siitä, mitä näytetään, kun sovellus käynnistetään.
 
-### Sovelluksen löytämistä {#discovering-an-app}
+### Löydetään `App` {#discovering-an-app}
 
-Yksi <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink> -rajoitus on voimassa webforJ:ssä, mikä siirtää kaikki virheiden käsittelyvastuut Java-puolelle ja antaa kehittäjille täyden hallinnan virheiden hallintaan.
+webforJ:ssä pakollinen <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>-rajaus toteutuu, mikä siirtää kaikki virheiden käsittelyvastuut Java-puolelle ja antaa kehittäjille täyden hallinnan virheiden hallintaan.
 
-WebforJ:n käynnistysprosessin aikana kaikki luokat, jotka laajentavat <JavadocLink type="foundation" location="com/webforj/App" code='true'>com.webforj.App</JavadocLink>, skannataan. Jos useita sovelluksia löytyy, järjestelmä etsii <JavadocLink type="foundation" location="com/webforj/annotation/AppEntry" code='true'>com.webforj.annotation.AppEntry</JavadocLink> -annotaatiota. Jos jokin löydetyistä luokista on merkitty <JavadocLink type="foundation" location="com/webforj/annotation/AppEntry" code='true' >@AppEntry</JavadocLink> -annotaatiolla, ensimmäinen kohdattu luokka katsotaan sisäänkäyntipisteeksi.
+WebforJ:n käynnistysprosessin aikana skannataan kaikki luokat, jotka laajentavat <JavadocLink type="foundation" location="com/webforj/App" code='true'>com.webforj.App</JavadocLink>. Jos useita sovelluksia löytyy, järjestelmä etsii <JavadocLink type="foundation" location="com/webforj/annotation/AppEntry" code='true'>com.webforj.annotation.AppEntry</JavadocLink> -annotaatiota. Jos jokin löytyneistä luokista on merkitty <JavadocLink type="foundation" location="com/webforj/annotation/AppEntry" code='true'>@AppEntry</JavadocLink> -annotaatiolla, ensimmäinen, jota kohdattiin, katsotaan pääsisäänkäynniksi.
 
-- Jos luokka on merkitty `@AppEntry`, tätä luokkaa käytetään sisäänkäyntipisteenä.
-- Jos useita luokkia on merkitty `@AppEntry`, poikkeus heitetään, jossa luetellaan kaikki löydetyt luokat.
-- Jos yhtään luokkaa ei ole merkitty ja vain yksi `App`-alaluokka löytyy, tätä luokkaa käytetään sisäänkäyntipisteenä.
-- Jos yhtään luokkaa ei ole merkitty ja useita `App`-alaluokkia on löydetty, poikkeus heitetään, jossa kerrotaan jokaisesta alaluokasta.
+- Jos luokka on merkitty `@AppEntry`, kyseistä luokkaa käytetään pääsisäänkäyntinä.
+- Jos useat luokat ovat merkitty `@AppEntry`, poikkeus heitetään, ja listataan kaikki löydetyt luokat.
+- Jos mikään luokka ei ole merkitty ja vain yksi `App`-aliluokka löytyy, tätä luokkaa käytetään pääsisäänkäyntinä.
+- Jos mikään luokka ei ole merkitty ja useita `App`-aliluokkia löytyy, poikkeus heitetään, jossa eritellään jokainen aliluokka.
 
 :::tip Virheiden käsittely
-Lisätietoja virheiden käsittelystä webforJ:ssä, katso [tämä artikkeli](../advanced/error-handling).
+Lisätietoja siitä, miten virheitä käsitellään webforJ:ssä, katso [tämä artikkeli](../advanced/error-handling).
 :::
 
-## Päänäkymäluokka: `HomeView.java` {#main-view-class-homeviewjava}
+## Pään näkymäluokka: `HomeView.java` {#main-view-class-homeviewjava}
 
-`HomeView`-luokka määrittelee yksinkertaisen näkymäkomponentin, joka toimii sovelluksen etusivuna. Se näyttää kentän ja painikkeen, joka tervehtii käyttäjän kirjoittamaa nimeä.
+`HomeView`-luokka määrittelee yksinkertaisen näkymäkomponentin, joka toimii sovelluksen etusivuna. Se näyttää kentän ja painikkeen, joka tervehtii käyttäjän syöttämää nimeä.
 
 ### Luokan julistus ja annotaatiot {#class-declaration-and-annotations}
 
-`HomeView` laajentaa `Composite<FlexLayout>`, mikä mahdollistaa sen toimimisen uudelleenkäytettävänä komponenttina, joka koostuu [`FlexLayout`](../components/flex-layout) -komponentista. [`@Route("/")`](../routing/overview) tekee tästä sovelluksen juurereitin.
+`HomeView` laajentaa `Composite<FlexLayout>`, mikä mahdollistaa sen toimimisen uudelleenkäytettävänä komponenttina, joka koostuu [`FlexLayout`](../components/flex-layout) -komponentista. [`@Route("/")`](../routing/overview) tekee tästä sovelluksen juurireitin.
 
 ```java
 @Route("/")
@@ -64,7 +67,7 @@ public class HelloWorldView extends Composite<FlexLayout> {
     self.setStyle("margin", "1em auto");
 
     btn.setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> 
+        .addClickListener(e ->
           Toast.show("Tervetuloa webforJ Starter " + hello.getValue() + "!", Theme.GRAY));
 
     self.add(hello, btn);
@@ -82,23 +85,23 @@ private TextField hello = new TextField("Mikä on nimesi?");
 private Button btn = new Button("Tervehdi");
 ```
 
-- `self`: Pääasiallinen asettelu komponentti, joka käyttää [`FlexLayout`](../components/flex-layout), konfiguroitu elementtien säilöksi. Tämä elementti käyttää `getBoundComponent()`-menetelmää tallentaakseen pääasiallisen `FlexLayoutin`, jonka luokka sisältää.
-- `hello`: [`TextField`](../components/fields/textfield), jossa on etiketti `Mikä on nimesi?`, jonka avulla käyttäjät voivat syöttää nimensä.
-- `btn`: Päästyylillä varustettu [`Button`](../components/button), jonka etiketti on `Tervehdi`.
+- `self`: Pääasiallinen asettelu, joka käyttää [`FlexLayout`](../components/flex-layout) -komponenttia, määritetty elementtien säilöksi. Tämä elementti käyttää `getBoundComponent()`-metodia tallentaakseen pääasiallisen `FlexLayout`-luokan.
+- `hello`: [`TextField`](../components/fields/textfield) nimeltään `Mikä on nimesi?` käyttäjien nimensä syöttämistä varten.
+- `btn`: Päätyylinen [`Button`](../components/button) nimeltään `Tervehdi`.
 
-### Asettelun konfigurointi {#layout-configuration}
+### Asettelu ja konfigurointi {#layout-configuration}
 
-Asettelu `(self)` on konfiguroitu muutamalla avaintyylillä:
+Asettelu (self) konfiguroidaan muutamilla keskeisillä tyyliparametreilla:
 
-- `FlexDirection.COLUMN` pinnee elementit pystysuoraan.
+- `FlexDirection.COLUMN` pinotaan elementit pystysuoraan.
 - `setMaxWidth(300)` rajoittaa leveyden 300 pikseliin kompaktin asettelun saavuttamiseksi.
-- `setStyle("margin", "1em auto")` keskittää asettelun marginaalilla ympärillään.
+- `setStyle("margin", "1em auto")` keskittää asettelun marginaalilla sen ympärillä.
 
 ### Komponenttien lisääminen asetteluun {#adding-components-to-the-layout}
-Lopuksi hello tekstikenttä ja btn-painike lisätään [`FlexLayout`](../components/flex-layout) -säiliöön kutsumalla `self.add(hello, btn)`. Tämä järjestely määrittelee näkymän rakenteen, mikä tekee lomakkeesta sekä interaktiivisen että visuaalisesti keskittyneen.
+Lopuksi hello-tekstikenttä ja btn-painike lisätään [`FlexLayout`](../components/flex-layout) -säilöön kutsumalla `self.add(hello, btn)`. Tämä järjestely määrittelee näkymän rakenteen, jolloin lomake on sekä vuorovaikutteinen että visuaalisesti keskitetty.
 
-## Sovelluksen tyylittäminen {#styling-the-app}
+## Sovelluksen tyylittely {#styling-the-app}
 
-`styles.css`-tiedosto tarjoaa mukautettua tyylitystä webforJ-sovelluksellesi. Tämä CSS-tiedosto viitataan Application-luokassa käyttäen [`@StyleSheet`](../managing-resources/importing-assets#importing-css-files) -annotaatiota, joka sallii sovelluksen soveltaa tyylejä sovelluksen komponentteihin.
+`styles.css`-tiedosto tarjoaa mukautettuja tyylejä webforJ-sovelluksellesi. Tätä CSS-tiedostoa käytetään Application-luokassa [`@StyleSheet`](../managing-resources/importing-assets#importing-css-files) -annotaation avulla, mikä mahdollistaa sovelluksen tyylin soveltamisen komponenteille.
 
-Tämä tiedosto sijaitsee projektin `resources/static`-hakemistossa, ja sitä voidaan viitata verkkopalvelimen URL-osoitteella `ws://app.css`.
+Tämä tiedosto sijaitsee projektin `resources/static`-hakemistossa ja sitä voidaan viitata verkkopalvelimen URL:llä `ws://app.css`.

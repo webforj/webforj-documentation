@@ -1,9 +1,12 @@
 ---
 sidebar_position: 0
 title: Archetypes
+description: >-
+  Pick a starter archetype such as SideMenu, Tabs, Blank, or HelloWorld to
+  scaffold a webforJ project with prebuilt structure and dependencies.
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: c823626e55ee8a43636f750d2d456e5c
+_i18n_hash: 6bf7d20225657d88d7a8d10ebe56b878
 ---
 <Head>
   <style>{`
@@ -25,27 +28,27 @@ import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 
 <!-- vale on -->
 
-Aloita webforJ-sovelluksen kehitys, webforJ tarjoaa useita ennalta määriteltyjä malleja tai **archetypes**, jotka auttavat sinua aloittamaan sovelluksesi nopeasti. Nämä archetypet on suunniteltu tarjoamaan sinulle vankka perusta, mikä mahdollistaa keskittymisen sovelluksesi ominaisuuksien rakentamiseen ilman, että sinun tarvitsee murehtia alkuasetuksista.
+Aloita webforJ-sovelluksesi kehittäminen, webforJ tarjoaa useita ennalta määriteltyjä malleja eli **archetypeja** auttaakseen sinua aloittamaan sovelluksesi nopeasti. Nämä archetypet on suunniteltu tarjoamaan vakaa perusta, jolloin voit keskittyä sovelluksesi ominaisuuksien rakentamiseen ilman, että sinun tarvitsee huolehtia alkuasetuksesta.
 
-Valitse malli, joka parhaiten vastaa projektisi tarpeita, kopioi komento ja liitä se terminaaliisi projektiasi varten. Jokaisessa archetypessä on omat ominaisuudet ja konfiguraatiot, jotka auttavat sinua pääsemään tehokkaasti alkuun.
+Valitse malli, joka parhaiten vastaa projektisi tarpeita, kopioi komento ja liitä se terminaaliisi rakentaaksesi projektisi. Jokaisella archetypellä on oma joukko ominaisuuksia ja asetuksia, jotka auttavat sinua pääsemään tehokkaasti alkuun.
 
 <GalleryGrid>
   <GalleryCard header="SideMenu" href="sidemenu" image="/img/archetypes/light/sidemenu.webp" imageDark="/img/archetypes/dark/sidemenu.webp" effect="none">
-    <p>Yksinkertainen sovellus, jossa on sivuvalikko ja navigointi sisällön alueella. Täydellinen sovelluksiin, jotka tarvitsevat rakenteellista navigointijärjestelmää.</p>
+    <p>Yksinkertainen sovellus sivuvalikolla ja navigaatiolla sisältöalueella. Täydellinen sovelluksille, jotka tarvitsevat jäsentynyttä navigointijärjestelmää.</p>
   </GalleryCard>
 
   <GalleryCard header="Tabs" href="tabs" image="/img/archetypes/light/tabs.webp" imageDark="/img/archetypes/dark/tabs.webp" effect="none">
-    <p>Projekti, jossa on yksinkertainen välilehtikilpi. Ihanteellinen sovelluksiin, joissa tarvitaan useita näkymiä tai osioita, joihin pääsee käsiksi välilehtien kautta.</p>
+    <p>Projektissa on yksinkertainen välilehtiliittymä. Ihanteellinen sovelluksille, jotka tarvitsevat useita näkymiä tai osioita, joita pääsee käsiksi välilehtien kautta.</p>
   </GalleryCard>
 
   <GalleryCard header="Blank" href="blank" image="/img/archetypes/light/blank.webp" imageDark="/img/archetypes/dark/blank.webp" effect="none">
-    <p>Tyhjää aloitusprojektia webforJ-sovelluksille. Tämä malli tarjoaa puhtaan alustan sovelluksesi rakentamiselle alusta alkaen.</p>
+    <p>Tyhjää aloitusprojektia webforJ-sovelluksille. Tämä malli tarjoaa puhtaan alustan, jolta voit rakentaa sovelluksesi alusta alkaen.</p>
   </GalleryCard>
 
   <GalleryCard header="HelloWorld" href="hello-world" image="/img/archetypes/light/hello-world.webp" imageDark="/img/archetypes/dark/hello-world.webp" effect="none">
-    <p>Hello world -projekti esittelee käyttöliittymän perustat webforJ:llä. Tämä malli on loistava aloittelijoille, jotta he voivat päästä nopeasti alkuun.</p>
+    <p>Hello world -projekti havainnollistaa käyttöliittymän rakentamisen perusteita webforJ:kalla. Tämä malli on erinomainen aloittelijoille, jotka haluavat aloittaa nopeasti.</p>
     <div hidden>
-      <p>Dialogin sisältö HelloWorld-projektissa.</p>
+      <p>Dialogisisältö HelloWorld -projektille.</p>
     </div>
   </GalleryCard>
 </GalleryGrid>

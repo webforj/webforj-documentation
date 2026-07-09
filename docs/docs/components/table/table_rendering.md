@@ -280,12 +280,12 @@ height='600px'
 <!-- vale on -->
 
 :::tip When to Enable Lazy Rendering
-Cell renderers create more entities within the DOM, meaning more CPU work during rendering, no matter what renderer creates it. 
+Cell renderers create more entities within the DOM, meaning more CPU work during rendering, no matter what renderer creates it.
 
 Lazy rendering can help reduce the performance impact if a renderer is truly needed. If you only need to change or format the value, and you aren't creating a complex DOM, use a value provider instead to transform the value.
 :::
 
-## Built-in renderer reference {#built-in-renderers} 
+## Built-in renderer reference {#built-in-renderers}
 
 webforJ ships with a comprehensive set of renderers for the most common use cases. Assign any of them to a column using `column.setRenderer(renderer)`.
 
@@ -778,13 +778,13 @@ table.addColumn("custom", MusicRecord::getTitle).setRenderer(renderer);
 
 ## Template reference {#template-reference}
 
-Renderers offer a powerful mechanism for customizing the way data is displayed within a `Table`. The primary class, `Renderer`, is designed to be extended to create custom renderers based on lodash templates, enabling dynamic and interactive content rendering. 
+Renderers offer a powerful mechanism for customizing the way data is displayed within a `Table`. The primary class, `Renderer`, is designed to be extended to create custom renderers based on lodash templates, enabling dynamic and interactive content rendering.
 
 Lodash templates enable the insertion of HTML directly into table cells, making them highly effective for rendering complex cell data in a `Table`. This approach allows for the dynamic generation of HTML based on cell data, facilitating rich and interactive table cell content.
 
 ### Lodash syntax {#lodash-syntax}
 
-The following section outlines the basics of Lodash syntax. While this is not an exhaustive or comprehensive overview, it can be used to help start using Lodash within the `Table` component. 
+The following section outlines the basics of Lodash syntax. While this is not an exhaustive or comprehensive overview, it can be used to help start using Lodash within the `Table` component.
 
 #### Syntax overview for lodash templates: {#syntax-overview-for-lodash-templates}
 

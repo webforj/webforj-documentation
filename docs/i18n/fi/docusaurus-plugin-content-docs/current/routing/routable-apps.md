@@ -1,21 +1,24 @@
 ---
 sidebar_position: 2
 title: Routable Apps
-_i18n_hash: edec1086b0723febd831816f8d1fa76a
+description: >-
+  Enable webforJ routing with the @Routify annotation to scan packages, manage
+  frames, and control browser history.
+_i18n_hash: bea0848523a00ddfff8d79265ea699ac
 ---
-Routing in webforJ on valinnainen työkalu. Kehittäjät voivat valita webforJ-reititysratkaisun tai perinteisen mallin, jossa käytetään `Frame`-manipulaatiota ilman syvää linkittämistä. Reitityksen mahdollistamiseksi **`@Routify`**-annotaatio on sovellettava `App`-luokan tason. Tämä antaa webforJ:lle valtuudet hallita selainhistorian, reagoida navigointitapahtumiin ja renderöidä sovelluksen komponentit URL-osoitteen perusteella.
+Routing in webforJ on ominainen työkalu. Kehittäjät voivat valita webforJ:n reititysratkaisun tai perinteisen mallin, jossa käytetään `Frame`-manipulaatiota ilman syvää linkittämistä. Reitityksen mahdollistamiseksi **`@Routify`**-annotation on sovellettava `App`-luokan tasolla. Tämä antaa webforJ:lle oikeuden hallita selaimen historiaa, reagoida navigointitapahtumiin ja renderöidä sovelluksen komponentteja URL-osoitteen perusteella.
 
 :::info
-Jos haluat oppia lisää käyttöliittymien rakentamisesta kehysten, sisäänrakennettujen ja mukautettujen komponenttien avulla, vieraile [Käyttöliittymien rakentaminen](../building-ui/overview).
+Jos haluat oppia lisää käyttöliittymien rakentamisesta kehyksillä, sisäänrakennetuilla ja mukautetuilla komponenteilla, vieraile [Käyttöliittymien rakentaminen](../building-ui/overview).
 :::
 
 ## `@Routify`-annotaation tarkoitus {#purpose-of-the-routify-annotation}
 
-**`@Routify`** mahdollistaa kehyksen automaattisen reitityksen rekisteröinnin, kehysten näkyvyyden hallinnan ja reititys käyttäytymisten, kuten vianetsinnän ja kehysten alustus, määrittämisen, mikä mahdollistaa dynaamisen ja joustavan reitityksen sovelluksessa.
+**`@Routify`** mahdollistaa kehyksen automaattisen reittien rekisteröinnin, kehyksen näkyvyyden hallinnan ja reitityskäyttäytymisen määrittämisen, kuten virheenkorjauksen ja kehyksen alustamisen, mikä mahdollistaa dynaamisen ja joustavan reitityksen sovelluksessa.
 
-## `@Routify`-annotaation käyttö {#usage-of-routify}
+## `@Routify`-käyttö {#usage-of-routify}
 
-**`@Routify`**-annotaatio sovelletaan pääsovellusluokan tason. Se määrittää pakettijoukon, jota skannataan reittien varalta, ja käsittelee muita reititykseen liittyviä asetuksia, kuten kehysten alustus ja näkyvyyden hallinta.
+**`@Routify`**-annotation on sovellettava pääsovelluksen luokan tasolla. Se määrittelee pakettijoukon, jota skannataan reittien löytämiseksi, ja käsittelee muita reititykseen liittyviä asetuksia, kuten kehyksen alustamista ja näkyvyyden hallintaa.
 
 Tässä on perusesimerkki:
 
@@ -31,40 +34,40 @@ public class MyApp extends App {
 
   @Override
   public void run() {
-    // Sovelluslogiikka menee tänne
+    // Sovelluksen logiikka menee tänne
   }
 }
 ```
 
-:::tip Routify'n oletusasetukset
-**`@Routify`**-annotaatio tulee kohtuullisten oletusasetusten kanssa. Se olettaa, että nykyistä pakettia, jossa sovellus on määritelty, sekä kaikkia sen alipaketteja, tulisi skannata reittien varalta. Lisäksi se olettaa, että sovellus hallitsee oletuksena vain yhtä kehystä. Jos sovelluksesi noudattaa tätä rakennetta, ei ole tarpeen antaa mukautettuja asetuksia annotaatioon.
+:::tip Routify Oletusasetukset
+**`@Routify`**-annotation on varustettu kohtuullisilla oletusasetuksilla. Se olettaa, että nykyinen paketti, jossa sovellus määritellään, yhdessä kaikkien sen alapakettien kanssa, skannataan reittejä varten. Lisäksi se olettaa, että sovellus hallitsee oletuksena vain yhtä kehystä. Jos sovelluksesi seuraa tätä rakennetta, ei tarvitse antaa mukautettuja asetuksia annotaatiolle.
 :::
 
-## `@Routify`-annotaation tärkeimmät elementit {#key-elements-of-routify}
+## `@Routify`-avainelementit {#key-elements-of-routify}
 
 ### 1. **`packages`** {#1-packages}
 
-`packages`-elementti määrittää, mitkä paketit tulisi skannata reittimäärityksiä varten. Se mahdollistaa reittien automaattisen löytämisen ilman manuaalista rekisteröintiä, mikä sujuvoittaa sovelluksen reititysjärjestelmän laajentamista.
+`packages`-elementti määrittelee, mitkä paketit skannataan reittimäärittelyjen löytämiseksi. Se mahdollistaa reittien automaattisen löytämisen ilman manuaalista rekisteröintiä, jolloin sovelluksen reititysjärjestelmän laajentaminen sujuu helpommin.
 
 ```java
 @Routify(packages = {"com.myapp.views"})
 ```
 
-Jos paketteja ei ole määritelty, sovelluksen oletuspakettia käytetään.
+Jos paketteja ei ole määritetty, käytetään sovelluksen oletuspakettia.
 
 ### 2. **`defaultFrameName`** {#2-defaultframename}
 
-Tämä elementti määrittää oletuskehuksen nimen, jonka sovellus alustaa. Kehykset edustavat ylimpiä käyttöliittymätuotteita, ja tämä asetus hallitsee, miten ensimmäinen kehys nimetään ja hallitaan.
+Tämä elementti määrittelee sovelluksen alustaman oletuskehyksen nimen. Kehykset edustavat ylimmän tason käyttöliittymäkonteksteja, ja tämä asetus hallitsee, miten ensimmäinen kehys nimetään ja sitä hallitaan.
 
 ```java
 @Routify(defaultFrameName = "MainFrame")
 ```
 
-Oletusarvoisesti, jos arvoa ei ole nimenomaan annettu, se asetetaan `Routify.DEFAULT_FRAME_NAME`:ksi.
+Oletuksena, jos arvoa ei ole selvästi annettu, se asetetaan arvoon `Routify.DEFAULT_FRAME_NAME`.
 
 ### 3. **`initializeFrame`** {#3-initializeframe}
 
-`initializeFrame`-lippu määrää, alustaako kehys automaattisesti ensimmäisen kehys sovelluksen käynnistyessä. Tämän asettaminen arvoksi `true` yksinkertaistaa ensimmäisen kehysasetuksen.
+`initializeFrame`-lippu määrää, aloitetaanko kehys automaattisesti ensimmäisenä sovelluksen käynnistyessä. Asettaminen arvoon `true` yksinkertaistaa ensimmäisen kehyksen asennusta.
 
 ```java
 @Routify(initializeFrame = true)
@@ -72,7 +75,7 @@ Oletusarvoisesti, jos arvoa ei ole nimenomaan annettu, se asetetaan `Routify.DEF
 
 ### 4. **`manageFramesVisibility`** {#4-manageframesvisibility}
 
-Tämä elementti hallitsee, hallitseeko kehys automaattisesti kehysten näkyvyyden navigoinnin aikana. Kun se on käytössä, vastaava reitti näyttää automaattisesti vastaavan kehyksen ja piilottaa muut, varmistaen siistin ja keskittyneen käyttöliittymän. Tämä asetus on merkityksellinen vain, kun sovellus hallitsee useita kehyksiä.
+Tämä elementti hallitsee, tuleeko kehyksen automaattisesti vaihtaa näkyvyyttä navigoinnin aikana. Kun tämä on käytössä, vastaava reitti näyttää automaattisesti vastaavan kehyksen samalla, kun muut piilotetaan, varmistaen puhtaan ja keskittyneen käyttöliittymän. Tämä asetus on merkityksellinen vain, jos sovelluksesi hallitsee useita kehyksiä.
 
 ```java
 @Routify(manageFramesVisibility = true)
@@ -80,12 +83,12 @@ Tämä elementti hallitsee, hallitseeko kehys automaattisesti kehysten näkyvyyd
 
 ### 5. **`debug`** {#5-debug}
 
-`debug`-lippu mahdollistaa tai estää reititysvirhetilan. Kun se on käytössä, reititystiedot ja toiminnot kirjataan konsoliin helpompaa vianetsintää varten kehityksen aikana.
+`debug`-lippu mahdollistaa tai keskeyttää reitityksen virheenkorjaustilan. Kun se on käytössä, reititysinfo ja -toiminnat kirjataan konsoliin helpomman virheenkorjauksen vuoksi kehityksen aikana.
 
 ```java
 @Routify(debug = true)
 ```
 
-:::info Reititin debug-tila ja webforJ debug-tila  
-Jos reitittimen debug-tila on asetettu todeksi, mutta webforJ:n debug-tila on asetettu epätodeksi, konsolissa ei näytetä vianetsintätietoja.  
+:::info Reitittimen virheenkorjaustila ja webforJ:n virheenkorjaustila
+Jos reitittimen virheenkorjaustila on asetettu arvoon `true`, mutta webforJ:n virheenkorjaustila on asetettu arvoon `false`, konsolissa ei näytetä mitään virheenkorjaustietoja.
 :::

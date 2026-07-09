@@ -25,7 +25,7 @@ The tool supports annotations for more complex use cases, such as excluding irre
 
 The testing process involves several automated steps:
 
-1. **Class Scanning**: 
+1. **Class Scanning**:
    The `PropertyDescriptorScanner` identifies all `PropertyDescriptor` fields within a component class, automatically excluding fields annotated with `@PropertyExclude`.
 
 2. **Method Resolution**:

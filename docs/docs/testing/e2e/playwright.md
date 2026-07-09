@@ -65,7 +65,7 @@ class HelloWorldViewTest {
 
   @BeforeEach
   void setUp() {
-    browser = playwright.chromium().launch(); 
+    browser = playwright.chromium().launch();
     page = browser.newPage();
     page.navigate("http://localhost:" + port + "/");
   }

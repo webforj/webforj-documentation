@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6  
+sidebar_position: 6
 title: Query Parameters
 description: Read, type-cast, and iterate URL query string values in webforJ views using the ParametersBag and Location APIs.
 ---

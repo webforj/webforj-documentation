@@ -7,7 +7,7 @@ description: Install Docker Desktop on Windows or Mac, pull the webforj/sandbox 
 # Docker installation
 
 This section of the documentation will cover the steps required for users who wish to develop using Docker. Changes to your code
-will be made on your development machine, and the resulting app will be run in Docker. 
+will be made on your development machine, and the resulting app will be run in Docker.
 
 ## 1. Downloading Docker {#1-downloading-docker}
 
@@ -107,7 +107,7 @@ the POM file of your project correctly. Once this is done, going to a specific U
 Running a webforJ project in the Docker container will require the use of the webforJ Install Plugin, which can be configured using your POM file:
 
 
-Create a new `<plugin>` entry in `<plugins>` section of POM. The following code shows a starting entry that can be used and tweaked as 
+Create a new `<plugin>` entry in `<plugins>` section of POM. The following code shows a starting entry that can be used and tweaked as
 needed for your project:
 
 :::important
@@ -158,5 +158,5 @@ you to access your app. To see the app, you'll want to go to the following URL:
 
 `http://localhost:YourHostPort/webapp/YourPublishName`
 
-Replace `YourHostPort` with the Host port you configured with Docker, and `YourPublishName` is replaced by the text inside the `<publishname>` tag of the POM. 
+Replace `YourHostPort` with the Host port you configured with Docker, and `YourPublishName` is replaced by the text inside the `<publishname>` tag of the POM.
 If done correctly, you should see your app render.

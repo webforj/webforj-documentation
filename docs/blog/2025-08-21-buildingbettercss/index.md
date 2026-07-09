@@ -19,7 +19,7 @@ Working on webforJ's styling system has changed how I approach CSS. It handles c
 
 <!-- truncate -->
 
-## CSS that loads when it should
+## CSS that loads when it should {#css-that-loads-when-it-should}
 
 The first thing that caught my attention was how stylesheets load in webforJ. Instead of complex workarounds, you get annotations that actually work the way you'd expect:
 
@@ -34,7 +34,7 @@ public class Application extends App {
 
 The `ws://` prefix maps directly to `resources/static`. webforJ deduplicates automatically - reference the same CSS file from multiple components and it still only loads once. You can annotate at the app level or component level, and everything loads exactly when needed.
 
-## Inline styles that scale
+## Inline styles that scale {#inline-styles-that-scale}
 
 I avoided `@InlineStyleSheet` initially. Inline styles felt wrong because of separation of concerns and all that. But working on component demos changed my perspective.
 
@@ -46,7 +46,7 @@ I avoided `@InlineStyleSheet` initially. Inline styles felt wrong because of sep
     border-left: 4px solid var(--dwc-color-primary-40);
     transition: all 0.3s ease;
   }
-  
+
   .example-card:hover {
     transform: translateY(-2px);
   }
@@ -62,11 +62,11 @@ public class CardExample extends Composite<Div> {
 
 When I need to change something, it's all right there. No more digging through random CSS files trying to figure out where `.some-random-class` is defined. Everything just lives together, which makes way more sense than I expected.
 
-## Understanding color systems through DWC
+## Understanding color systems through DWC {#understanding-color-systems-through-dwc}
 
 The DWC design system taught me what systematic color usage actually means. Before this, I picked colors randomly and hoped they worked together.
 
-### Consistent color relationships
+### Consistent color relationships {#consistent-color-relationships}
 
 DWC provides structured color usage that eliminates guesswork:
 
@@ -88,7 +88,7 @@ The numbers represent lightness values (5 = darkest, 95 = lightest, in steps of 
 
 This eliminated so much tedious work. Instead of maintaining duplicate color schemes or writing conditional CSS, I define colors once and they work everywhere.
 
-## How CSS custom properties work
+## How CSS custom properties work {#how-css-custom-properties-work}
 
 While building various demos, I kept seeing these `--dwc-` variables everywhere. I didn't really understand what they did until I started experimenting with them:
 
@@ -99,15 +99,15 @@ While building various demos, I kept seeing these `--dwc-` variables everywhere.
     --dwc-color-primary-h: 210;
     --dwc-color-primary-s: 80%;
     --dwc-color-primary-c: 45;
-    
+
     --dwc-color-success-h: 160;
     --dwc-color-success-s: 84%;
     --dwc-color-success-c: 39;
-    
+
     /* Custom spacing for tighter layouts */
     --dwc-space-m: 0.875rem;
     --dwc-space-l: 1.125rem;
-    
+
     /* Corporate typography */
     --dwc-font-family: "Inter", "Segoe UI", sans-serif;
   }
@@ -120,11 +120,11 @@ public class CorporateApp extends App {
 
 Turns out these DWC variables control a lot of the styling. Change them at the root level and webforJ components using them update. Pretty useful once you understand how it works.
 
-## Responsive design
+## Responsive design {#responsive-design}
 
 I learned about responsive design by necessity when my first few experiments with webforJ looked terrible on mobile. I learned responsive design by building demos that needed to work across different screen sizes, which taught me how webforJ's DWC system handles responsive behavior.
 
-### DWC spacing tokens and responsive scaling
+### DWC spacing tokens and responsive scaling {#dwc-spacing-tokens-and-responsive-scaling}
 
 The DWC spacing system does a lot of the responsive work so you don't have to. Spacing tokens use `rem` units that scale relative to the root font size, which means your padding and margins maintain their relationships without you doing any calculations:
 
@@ -138,15 +138,15 @@ The DWC spacing system does a lot of the responsive work so you don't have to. S
 
 Since `rem` units are relative to the root element's font size, these spacing values maintain their proportional relationships whether someone views your app on a phone or a massive desktop monitor.
 
-### Component consistency across devices
+### Component consistency across devices {#component-consistency-across-devices}
 
 webforJ components respond consistently because they're built on the same DWC token system. Buttons, cards, and layout components use the same spacing and sizing tokens, so they maintain their visual relationships. Change the spacing at the root level and everything adjusts together like a well-choreographed dance.
 
-### When you need custom responsive behavior
+### When you need custom responsive behavior {#when-you-need-custom-responsive-behavior}
 
 For complex layout changes (like sidebars that disappear on mobile or metric grids that reorganize), you layer custom CSS on top of the DWC foundation. But the core spacing, colors, and component styling continue to scale automatically even within your custom media queries.
 
-## Shadow DOM styling
+## Shadow DOM styling {#shadow-dom-styling}
 
 I've run into situations where I write CSS targeting a component and nothing happens. webforJ components use a Shadow DOM, which keeps their internal styles separate from your CSS.
 
@@ -161,15 +161,15 @@ dwc-button::part(label) {
 
 The `::part()` pseudo-element is like having a key to specific rooms in an otherwise locked house. I can style exactly what the component exposes, without breaking the encapsulation that keeps everything else stable.
 
-## My analytics dashboard
+## My analytics dashboard {#my-analytics-dashboard}
 
 Here's a dashboard I put together that uses most of the stuff I've mentioned - CSS Grid, DWC tokens, and component-specific styling:
 
 ![Screenshot of Dashboard](https://cdn.webforj.com/webforj-documentation/blogs/2025-08-21-buildingbettercss/buildingbettercss-dashboard.png)
 
-This dashboard shows how all the pieces work together in practice. The responsive layout uses CSS Grid with custom media queries for mobile optimization. All the colors and spacing come from DWC tokens, so changing the primary color at the root level updates the entire interface. The combination of external CSS and inline component styles keeps everything maintainable, which is great because I definitely needed to go back and fix things multiple times. 
+This dashboard shows how all the pieces work together in practice. The responsive layout uses CSS Grid with custom media queries for mobile optimization. All the colors and spacing come from DWC tokens, so changing the primary color at the root level updates the entire interface. The combination of external CSS and inline component styles keeps everything maintainable, which is great because I definitely needed to go back and fix things multiple times.
 
-## Wrapping it up
+## Wrapping it up {#wrapping-it-up}
 
 From simple to complex, webforJ's styling system scales nicely. `@StyleSheet` and `@InlineStyleSheet` annotations work exactly as expected when you start out. Because the DWC design system handles your colors and spacing decisions, you're not reinventing basic design patterns every time.
 

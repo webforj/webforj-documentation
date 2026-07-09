@@ -48,7 +48,7 @@ The <JavadocLink type="data" location="com/webforj/data/repository/CollectionRep
 List<Customer> customers = new ArrayList<>();
 CollectionRepository<Customer> customerRepo = new CollectionRepository<>(customers);
 
-// From HashSet  
+// From HashSet
 Set<String> tags = new HashSet<>();
 CollectionRepository<String> tagRepo = new CollectionRepository<>(tags);
 
@@ -71,7 +71,7 @@ Product newProduct = new Product("P4", "Gizmo", 79.99, 15);
 products.add(newProduct);
 repository.commit(); // All connected components update
 
-// Update existing product  
+// Update existing product
 products.get(0).setPrice(89.99);
 repository.commit(products.get(0)); // Only updates this specific row
 
@@ -100,9 +100,9 @@ repository.setBaseFilter(product -> product.getStock() > 0);
 repository.setBaseFilter(product -> "Electronics".equals(product.getCategory()));
 
 // Combine multiple conditions
-repository.setBaseFilter(product -> 
-  product.getCategory().equals("Electronics") && 
-  product.getStock() > 0 && 
+repository.setBaseFilter(product ->
+  product.getCategory().equals("Electronics") &&
+  product.getStock() > 0 &&
   product.getPrice() < 100.0
 );
 

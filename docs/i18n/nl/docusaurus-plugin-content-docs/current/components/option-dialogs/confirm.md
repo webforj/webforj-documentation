@@ -1,17 +1,20 @@
 ---
 title: Confirm
 sidebar_position: 5
-_i18n_hash: 712808f446f16655074e93cda2231286
+description: >-
+  Show a blocking ConfirmDialog with up to three options, configurable button
+  sets, message types, and timeout behavior.
+_i18n_hash: 0d5432d42be98a19b1a6938b306b0442
 ---
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/ConfirmDialog" top='true'/>
 
-Een `ConfirmDialog` is een modale dialoog die is ontworpen om de gebruiker de mogelijkheid te geven om een van een set van maximaal 3 opties te kiezen. De dialoog blokkeert de uitvoering van de app totdat de gebruiker ermee interactie heeft of deze sluit vanwege een time-out.
+Een `ConfirmDialog` is een modaal dialoogvenster dat is ontworpen om de gebruiker in staat te stellen om te kiezen uit een set van maximaal 3 opties. Het dialoogvenster blokkeert de uitvoering van de app totdat de gebruiker ermee interacteert of het wordt gesloten door een timeout.
 
 <!-- INTRO_END -->
 
-## Usages {#usages}
+## Toepassingen {#usages}
 
 De `ConfirmDialog` biedt een manier om gebruikers om bevestiging te vragen of om te kiezen tussen meerdere opties, zoals `Ja/Nee` of `OK/Annuleren`, zodat ze hun acties erkennen en bevestigen.
 
@@ -25,27 +28,27 @@ height='350px'
 
 ### Optietype {#option-type}
 
-De `ConfirmDialog` ondersteunt de volgende optietypen, die de knoppen bepalen die in de dialoog worden weergegeven:
+De `ConfirmDialog` ondersteunt de volgende optietypen, die bepalen welke knoppen in het dialoogvenster worden weergegeven:
 
-1. **`OK`**: Toont een `OK` knop.
-2. **`OK_CANCEL`**: Toont `OK` en `Annuleren` knoppen.
-3. **`ABORT_RETRY_IGNORE`**: Toont `Abort`, `Retry`, en `Ignore` knoppen.
-4. **`YES_NO_CANCEL`**: Toont `Ja`, `Nee`, en `Annuleren` knoppen.
+1. **`OK`**: Toont een `OK`-knop.
+2. **`OK_CANCEL`**: Toont `OK`- en `Annuleren`-knoppen.
+3. **`ABORT_RETRY_IGNORE`**: Toont `Afbreken`, `Opnieuw` en `Negeren` knoppen.
+4. **`YES_NO_CANCEL`**: Toont `Ja`, `Nee` en `Annuleren` knoppen.
 5. **`YES_NO`**: Toont `Ja` en `Nee` knoppen.
-6. **`RETRY_CANCEL`**: Toont `Retry` en `Annuleren` knoppen.
+6. **`RETRY_CANCEL`**: Toont `Opnieuw` en `Annuleren` knoppen.
 7. **`CUSTOM`**: Toont aangepaste knoppen zoals gespecificeerd.
 
-### Berichttype {#message-type}
+### Berichten type {#message-type}
 
-De `ConfirmDialog` ondersteunt de volgende berichttypen. Wanneer u een type configureert, toont de dialoog een pictogram naast het bericht, en het thema van de dialoog wordt bijgewerkt volgens de ontwerpregels van webforJ.
+De `ConfirmDialog` ondersteunt de volgende berichttypen. Wanneer je een type configureert, wordt er een pictogram naast het bericht weergegeven, en het thema van het dialoogvenster wordt bijgewerkt volgens de ontwerpsysteemregels van webforJ.
 
-1. `PLAIN`: Toont het bericht zonder pictogram, met gebruik van het standaardthema.
+1. `PLAIN`: Toont het bericht zonder pictogram, met het standaardthema.
 2. `ERROR`: Toont een foutpictogram naast het bericht met het foutthema toegepast.
-3. `QUESTION`: Toont een vraagtekenpictogram naast het bericht, met gebruik van het primaire thema.
-4. `WARNING`: Toont een waarschuwingspictogram naast het bericht met het waarschuwings-thema toegepast.
-5. `INFO`: Toont een info-pictogram naast het bericht, met gebruik van het info-thema.
+3. `QUESTION`: Toont een vraagtekenpictogram naast het bericht, met het primaire thema.
+4. `WARNING`: Toont een waarschuwingpictogram naast het bericht met het waarschuwingsthema toegepast.
+5. `INFO`: Toont een informatiete tekenpictogram naast het bericht, met het informatie thema.
 
-In het volgende voorbeeld configureert de code een bevestigingsdialoog van het type `CUSTOM` met een aangepaste titel en bericht.
+In het volgende voorbeeld configureert de code een bevestigingsdialoog van het type `CUSTOM` met een aangepaste titel en boodschap.
 
 <ComponentDemo
 path='/webforj/confirmdialogoptions'
@@ -55,39 +58,39 @@ height='350px'
 
 ## Resultaat {#result}
 
-De `ConfirmDialog` retourneert een resultaat op basis van de interactie van de gebruiker met de dialoog. Dit resultaat geeft aan welke knop de gebruiker heeft ingedrukt of of de dialoog is afgesloten vanwege een time-out.
+De `ConfirmDialog` retourneert een resultaat op basis van de interactie van de gebruiker met het dialoogvenster. Dit resultaat geeft aan welke knop de gebruiker heeft aangeklikt of als het dialoogvenster werd gesloten als gevolg van een timeout.
 
 :::important
-Het resultaat zal worden geretourneerd vanuit de `show()` methode, of de equivalente `OptionDialog` methode zoals hieronder weergegeven. 
+Het resultaat wordt geretourneerd uit de `show()`-methode, of de equivalente `OptionDialog`-methode zoals hieronder weergegeven.
 :::
 
-De `ConfirmDialog.Result` enum omvat de volgende mogelijke resultaten:
+De `ConfirmDialog.Result` enum bevat de volgende mogelijke resultaten:
 
-1. **`OK`**: De gebruiker heeft op de `OK` knop gedrukt.
-2. **`CANCEL`**: De gebruiker heeft op de `CANCEL` knop gedrukt.
-3. **`YES`**: De gebruiker heeft op de `JA` knop gedrukt.
-4. **`NO`**: De gebruiker heeft op de `NEE` knop gedrukt.
-5. **`ABORT`**: De gebruiker heeft op de `ABORT` knop gedrukt.
-6. **`RETRY`**: De gebruiker heeft op de `RETRY` knop gedrukt.
-7. **`IGNORE`**: De gebruiker heeft op de `IGNORE` knop gedrukt.
-8. **`FIRST_CUSTOM_BUTTON`**: De gebruiker heeft op de eerste aangepaste knop gedrukt
-9. **`SECOND_CUSTOM_BUTTON`**: De gebruiker heeft op de tweede aangepaste knop gedrukt
-10. **`THIRD_CUSTOM_BUTTON`**: De gebruiker heeft op de derde aangepaste knop gedrukt
-11. **`TIMEOUT`**: De dialoog is tijdoverschreden.
-12. **`UNKNOWN`**: Een onbekend resultaat, meestal gebruikt als een standaard- of fouttoestand.
+1. **`OK`**: De gebruiker heeft op de `OK`-knop geklikt.
+2. **`CANCEL`**: De gebruiker heeft op de `CANCEL`-knop geklikt.
+3. **`YES`**: De gebruiker heeft op de `JA`-knop geklikt.
+4. **`NO`**: De gebruiker heeft op de `NEE`-knop geklikt.
+5. **`ABORT`**: De gebruiker heeft op de `AFBREKEN`-knop geklikt.
+6. **`RETRY`**: De gebruiker heeft op de `OPNIEUW`-knop geklikt.
+7. **`IGNORE`**: De gebruiker heeft op de `NEGEREN`-knop geklikt.
+8. **`FIRST_CUSTOM_BUTTON`**: De gebruiker heeft op de eerste aangepaste knop geklikt.
+9. **`SECOND_CUSTOM_BUTTON`**: De gebruiker heeft op de tweede aangepaste knop geklikt.
+10. **`THIRD_CUSTOM_BUTTON`**: De gebruiker heeft op de derde aangepaste knop geklikt.
+11. **`TIMEOUT`**: Het dialoogvenster verloopt.
+12. **`UNKNOWN`**: Een onbekend resultaat, meestal gebruikt als een standaard- of foutstatus.
 
 ```java showLineNumbers
 if (result == ConfirmDialog.Result.FIRST_CUSTOM_BUTTON) {
-  OptionDialog.showMessageDialog("Wijzigingen weggegooid", "Weggegooid", "Begrijp het");
+  OptionDialog.showMessageDialog("Wijzigingen verworpen", "Verworpen", "Begrepen");
 } else {
   OptionDialog.showMessageDialog(
-    "Wijzigingen opgeslagen", "Opgeslagen", "Begrijp het", MessageDialog.MessageType.INFO);
+    "Wijzigingen opgeslagen", "Opgeslagen", "Begrepen", MessageDialog.MessageType.INFO);
 }
 ```
 
 ## Standaardknop {#default-button}
 
-De `ConfirmDialog` stelt u in staat om een standaardknop op te geven die vooraf is geselecteerd wanneer de dialoog wordt weergegeven. Dit verbetert de gebruikerservaring door een voorgestelde actie te bieden die snel kan worden bevestigd door op de <kbd>Enter</kbd> toets te drukken.
+De `ConfirmDialog` stelt je in staat om een standaardknop op te geven die vooraf is geselecteerd wanneer het dialoogvenster wordt weergegeven. Dit verbetert de gebruikerservaring door een voorgesteld actie te bieden die snel kan worden bevestigd door op de <kbd>Enter</kbd> toets te drukken.
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
@@ -98,7 +101,7 @@ dialog.show();
 
 ## Knoptekst {#buttons-text}
 
-U kunt de tekst van de knoppen configureren met behulp van de methode `setButtonText(ConfirmDialog.Button button, String text)`.
+Je kunt de tekst van de knoppen configureren met behulp van de `setButtonText(ConfirmDialog.Button button, String text)` methode.
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
@@ -110,7 +113,7 @@ dialog.show();
 
 ## HTML-verwerking {#html-processing}
 
-Standaard verwerkt de bevestigingsdialoog HTML-inhoud en rendert deze. U kunt deze functie uitschakelen door deze te configureren om in plaats daarvan ruwe tekst weer te geven.
+Standaard verwerkt het bevestigingsdialoogvenster en rendert het HTML-inhoud. Je kunt deze functie uitschakelen door het zo te configureren dat het ruwe tekst weergeeft.
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
@@ -120,11 +123,11 @@ dialog.setRawText(true);
 dialog.show();
 ```
 
-## Time-out {#timeout}
+## Timeout {#timeout}
 
-De `ConfirmDialog` stelt u in staat om een time-outduur in te stellen waarna de dialoog automatisch sluit. Deze functie is nuttig voor niet-kritieke bevestigingen of acties die geen onmiddellijke interactie van de gebruiker vereisen.
+De `ConfirmDialog` stelt je in staat om een timeoutduur in te stellen waarna het dialoogvenster automatisch sluit. Deze functie is nuttig voor niet-kritieke bevestigingen of acties die geen onmiddellijke interactie van de gebruiker vereisen.
 
-U kunt de time-out voor de dialoog configureren met behulp van de methode `setTimeout(int timeout)`. De time-outduur is in seconden. Als de gespecificeerde tijd verstrijkt zonder enige gebruikersinteractie, sluit de dialoog automatisch.
+Je kunt de timeout voor het dialoogvenster configureren met de `setTimeout(int timeout)` methode. De timeoutduur is in seconden. Als de opgegeven tijd verstrijkt zonder enige gebruikersinteractie, sluit het dialoogvenster automatisch.
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
@@ -136,17 +139,17 @@ ConfirmDialog.Result result = dialog.show();
 switch (result) {
   case TIMEOUT:
     OptionDialog.showMessageDialog(
-        "Je nam te veel tijd om te beslissen", "Time-out", "Begrijp het",
+        "Je hebt te lang de tijd genomen om te beslissen", "Timeout", "Begrepen",
         MessageDialog.MessageType.WARNING);
     break;
   case YES:
     OptionDialog.showMessageDialog(
-        "Je klikte Ja", "Ja", "Begrijp het",
+        "Je hebt Ja geklikt", "Ja", "Begrepen",
         MessageDialog.MessageType.INFO);
     break;
   default:
     OptionDialog.showMessageDialog(
-        "Je klikte Nee", "Nee", "Begrijp het",
+        "Je hebt Nee geklikt", "Nee", "Begrepen",
         MessageDialog.MessageType.INFO);
     break;
 }
@@ -154,9 +157,9 @@ switch (result) {
 
 ## Beste praktijken {#best-practices}
 
-1. **Duidelijke en beknopte prompts**: Zorg ervoor dat het promptbericht duidelijk uitlegt welke actie de gebruiker wordt gevraagd te bevestigen. Vermijd ambiguïteit.
-2. **Geschikte optietypen**: Kies optietypen die passen bij de context van de actie. Voor eenvoudige ja/nee-beslissingen, gebruik rechttoe rechtaan opties. Voor complexere scenario's kunnen extra knoppen zoals "Annuleren" worden toegevoegd, zodat gebruikers kunnen terugtrekken zonder een keuze te maken.
-3. **Logische standaardknop**: Stel een standaardknop in die overeenkomt met de meest waarschijnlijke of aanbevolen gebruikersactie om het besluitvormingsproces te stroomlijnen.
-4. **Consistent thema**: Stem de thema's van de dialoog en knoppen af op het ontwerp van uw app voor een samenhangende gebruikerservaring.
-5. **Doordacht gebruik van time-out**: Stel time-outs in voor niet-kritieke bevestigingen, zodat gebruikers voldoende tijd hebben om het promptbericht te lezen en te begrijpen.
-6. **Minimaliseer overmatig gebruik**: Gebruik bevestigingsdialogen spaarzaam om frustratie bij gebruikers te voorkomen. Beperk ze tot kritieke acties die expliciete bevestiging van de gebruiker vereisen.
+1. **Duidelijke en Bondige Prompt**: Zorg ervoor dat het promptbericht duidelijk uitlegt welke actie de gebruiker wordt gevraagd te bevestigen. Vermijd ambiguïteit.
+2. **Geschikte Optietypen**: Kies optietypen die passen bij de context van de actie. Voor eenvoudige ja/nee-beslissingen, gebruik eenvoudige opties. Voor complexere scenario's, bied extra knoppen aan zoals "Annuleren" om gebruikers in staat te stellen terug te trekken zonder een keuze te maken.
+3. **Logische Standaardknop**: Stel een standaardknop in die aansluit bij de meest waarschijnlijke of aanbevolen gebruikersactie om het beslissingsproces te stroomlijnen.
+4. **Consistente Theming**: Stem het thema van het dialoogvenster en de knoppen af op het ontwerp van je app voor een samenhangende gebruikerservaring.
+5. **Juiste Gebruik van Timeout**: Stel timeouts in voor niet-kritieke bevestigingen, zodat gebruikers voldoende tijd hebben om de prompt te lezen en te begrijpen.
+6. **Minimaliseer Overmatig Gebruik**: Gebruik bevestigingsdialoogvensters spaarzaam om frustratie bij gebruikers te voorkomen. Reserveer ze voor kritieke acties die expliciete bevestiging van de gebruiker vereisen.

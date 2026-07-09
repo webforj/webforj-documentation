@@ -30,7 +30,7 @@ Before you start, make sure you have:
 To get the BLS installer, go to the [BASIS Product Suite Downloads](https://basis.cloud/bbj-downloads/) page.
 Once you've selected a desired language for the form, go to the **Select Product** section. In the **Product** dropdown, select `BLS`, and in the **Revision** dropdown, select the latest version. The required Java versions for running the BLS are under the **Revision** dropdown.
 
-Then, fill in the form inside **Contact Information**, and select the checkboxes inside **Download Terms**. 
+Then, fill in the form inside **Contact Information**, and select the checkboxes inside **Download Terms**.
 Once you've filled the form, select the `Download` button to download the BLS installer JAR.
 
    ![Download form with BLS selected as the product](/img/configuration/local-bls-license/download-bls.png#rounded-border)

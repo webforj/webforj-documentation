@@ -28,7 +28,7 @@ files={[
 ]}
 />
 
-## Autofocus
+## Autofocus {#autofocus}
 
 The `Drawer` component supports autofocus, which automatically sets focus on the first focusable element when the `Drawer` opens. This improves usability by bringing attention directly to the first actionable element.
 
@@ -53,7 +53,7 @@ drawer.setLabel("Task Manager");
 Use concise and descriptive labels that reflect the purpose of the `Drawer`. Avoid generic terms like “Menu” or “Panel” when a more specific name can be used.
 :::
 
-## Size
+## Size {#size}
 
 To control the size of a `Drawer`, set a value for the CSS custom property `--dwc-drawer-size`. This sets the width of the `Drawer` for left/right placement or height for top/bottom placement.
 
@@ -108,9 +108,9 @@ files={['src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java
 height='600px'
 />
 
-## Event handling
+## Event handling {#event-handling}
 
-The `Drawer` component emits lifecycle events that can be used to trigger app logic in response to changes in its open or closed state. 
+The `Drawer` component emits lifecycle events that can be used to trigger app logic in response to changes in its open or closed state.
 
 Supported events:
 
@@ -131,7 +131,7 @@ drawer.addCloseListener(e -> {
 });
 ```
 
-## Example: Contact picker
+## Example: Contact picker {#example-contact-picker}
 
 The `Drawer` component exposes additional content without disrupting the current view. This example places a drawer at the bottom center, containing a scrollable contact list.
 
@@ -146,7 +146,7 @@ files={[
 height='600px'
 />
 
-## Example: Task manager
+## Example: Task manager {#example-task-manager}
 
 This example uses a `Drawer` as a task manager. You can add tasks, check them off, and clear completed ones. The `Drawer` footer includes form controls to interact with the task list, and the “Add Task” [`Button`](../components/button) disables itself if 50 tasks are reached.
 

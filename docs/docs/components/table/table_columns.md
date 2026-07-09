@@ -16,7 +16,7 @@ A column’s identity defines how it's recognized in the `Table`. This includes 
 
 ### Label {#label}
 
-The label of a column is its public-facing identifier, helping clarify displayed data.  
+The label of a column is its public-facing identifier, helping clarify displayed data.
 
 Use `setLabel()` to set or modify the label.
 
@@ -51,7 +51,7 @@ for (String column : columnsList) {
 
 ### Visibility {#visibility}
 
-It's possible to set a column's visibility, determining whether or not it will be shown within the `Table`. This can be useful when, among other things, determining whether or not to display sensitive information. 
+It's possible to set a column's visibility, determining whether or not it will be shown within the `Table`. This can be useful when, among other things, determining whether or not to display sensitive information.
 
 ```java
 table.addColumn("Credit Card", Customer::getCreditCardNumber).setHidden(true);
@@ -307,7 +307,7 @@ Apply movement settings to multiple columns simultaneously:
 // Enable reordering for all existing columns
 table.setColumnsToMovable(true);
 
-// Disable reordering for all existing columns  
+// Disable reordering for all existing columns
 table.setColumnsToMovable(false);
 ```
 
@@ -315,7 +315,7 @@ table.setColumnsToMovable(false);
 The `setColumnsToResizable()` and `setColumnsToMovable()` methods only affect existing columns at the time of invocation. They don't set defaults for future columns.
 :::
 
-### Programmatic column movement {#programmatic-column-movement} 
+### Programmatic column movement {#programmatic-column-movement}
 
 In addition to drag-and-drop, you can also reposition columns programmatically by index or ID. Keep in mind that the index is based only on visible columns; any hidden columns are ignored when calculating positions.
 
@@ -352,7 +352,7 @@ table.onColumnResize(event -> {
 });
 
 table.onColumnMove(event -> {
-  // Handle column move event  
+  // Handle column move event
   // Access: event.getColumn(), event.getOldIndex(), event.getNewIndex()
 });
 ```

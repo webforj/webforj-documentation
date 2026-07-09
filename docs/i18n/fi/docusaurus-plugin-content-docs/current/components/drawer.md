@@ -1,35 +1,38 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: 7edd08525f20625cb8d891316111ebb3
+description: >-
+  Slide panels in from any screen edge with the Drawer component, ideal for side
+  navigation, filter menus, settings, and stackable popovers.
+_i18n_hash: c04ddb6b8576656535eb1fa09ea587e3
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-`Drawer`-komponentti webforJ:ssä luo liukuvan paneelin, joka ilmestyy näytön reunalta, paljastaen lisäsisältöä ilman, että nykyinen näkymä poistuu. Sitä käytetään yleisesti sivunavigaatiossa, suodatinvalikoissa, käyttäjäasetuksissa tai kompakteissa ilmoituksissa, jotka tarvitsevat tilapäistä ilmestymistä ilman pääkäyttöliittymän häiritsemistä.
+`Drawer`-komponentti webforJ:ssä luo liukupaneelin, joka ilmestyy näytön reunasta paljastaen lisäsisältöä keskeyttämättä nykyistä näkymää. Sitä käytetään yleisesti sivunavigaatioon, suodatinvalikoihin, käyttäjäasetuksiin tai tiiviisiin ilmoituksiin, jotka tarvitsevat tilaa hetkellisesti ilman pääliittymän häiritsemistä.
 
 <!-- INTRO_END -->
 
-## Stacking {#stacking}
+## Pinoaminen {#stacking}
 
-Drawerit pinoavat automaattisesti useita avattuna, mikä tekee niistä joustavan valinnan tilarajoitteisille käyttöliittymille.
+Laatikot pinoutuvat automaattisesti, kun useita on avattu, mikä tekee niistä joustavan valinnan tilarajoitetuissa käyttöliittymissä.
 
-Alla oleva esimerkki osoittaa tämän käyttäytymisen [`AppLayout`](../components/app-layout) -komponentin sisällä. Hammburger-valikon laukaisema navigointidrawer on rakennettu osaksi [`AppLayout`](../components/app-layout), kun taas alareunassa oleva tervetuloa-popup käyttää erillistä `Drawer`-instanssia. Molemmat ovat olemassa ja pinoutuvat itsenäisesti, osoittaen, kuinka Drawerit voivat olla integroituna asettelukomponentteihin tai käytettävissä itsenäisinä elementteinä.
+Alla oleva esimerkki näyttää tämän käyttäytymisen [`AppLayout`](../components/app-layout) komponentin sisällä. Hampurilaisvalikolla aktivointi navigaatiolaatikko on integroitu [`AppLayout`](../components/app-layout):iin, kun taas alaosassa oleva tervetuloponnahdus käyttää erillistä `Drawer`-instanssia. Molemmat ovat samanaikaisesti läsnä ja pinoituvat itsenäisesti, osoittaen kuinka laatikoita voidaan integroida asettelukomponentteihin tai käyttää erillisinä elementteinä.
 
 <ComponentDemo
 path='/webforj/drawerwelcome'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java',
-  'src/main/resources/static/css/drawer/drawerWelcome.css',
+  'src/main/frontend/css/drawer/drawerWelcome.css',
 ]}
 />
 
-## Autofocus
+## Automaattinen keskittyminen {#autofocus}
 
-`Drawer`-komponentti tukee automaattista fokusta, joka asettaa automaattisesti kohdistuksen ensimmäiseen fokusoituvaan elementtiin, kun `Drawer` avataan. Tämä parantaa käytettävyyttä tuomalla huomion suoraan ensimmäiseen toimiin.
+`Drawer`-komponentti tukee automaattista keskittymistä, joka asettaa automaattisesti fokuksen ensimmäiseen fokusoituvaan elementtiin, kun `Drawer` avautuu. Tämä parantaa käytettävyyttä tuomalla huomion suoraan ensimmäiseen toiminnalliseen elementtiin.
 
 <ComponentDemo
 path='/webforj/drawerautofocus'
@@ -39,24 +42,24 @@ height='600px'
 
 <!-- Esimerkki -->
 
-## Label {#label}
+## Otsikko {#label}
 
-`setLabel()`-metodi voi tarjota merkityksellisen kuvauksen `Drawer`-sisällöstä. Kun etiketti asetetaan, apuvälineet kuten näytönlukijat voivat ilmoittaa sen, auttaen käyttäjiä ymmärtämään `Drawer`-komponentin tarkoituksen näkemättä sen visuaalisia sisältöjä.
+`setLabel()`-menetelmällä voidaan antaa merkityksellinen kuvaus `Drawer`:n sisällöstä. Kun otsikko asetetaan, apuvälineet kuten ruudunlukijat voivat ilmoittaa sen, auttaen käyttäjiä ymmärtämään `Drawer`:n tarkoituksen näkemättä sen visuaalista sisältöä.
 
 ```java
 Drawer drawer = new Drawer();
-drawer.setLabel("Tehtävämanageri");
+drawer.setLabel("Tehtävien hallinta");
 ```
 
-:::tip Kuvaavat etiketit
-Käytä tiiviitä ja kuvaavia etikettejä, jotka heijastavat `Drawer`-komponentin tarkoitusta. Vältä geneerisiä termejä kuten "Valikko" tai "Paneeli", kun tarkempi nimi voidaan käyttää.
+:::tip Kuvailevat otsikot
+Käytä tiiviitä ja kuvailevia otsikoita, jotka heijastavat `Drawer`:n tarkoitusta. Vältä geneerisiä termejä kuten "Valikko" tai "Paneeli", kun tarkempi nimi voidaan käyttää.
 :::
 
-## Koko
+## Koko {#size}
 
-Hallita `Drawer`-komponentin kokoa asettamalla arvo CSS:n mukautetulle ominaisuudelle `--dwc-drawer-size`. Tämä asettaa `Drawer`-komponentin leveyden vasen/oikea sijoituksessa tai korkeuden ylös/alas sijoituksessa.
+`Drawer`:n koon hallitsemiseksi aseta arvo CSS:n mukautetulle ominaisuudelle `--dwc-drawer-size`. Tämä asettaa `Drawer`:n leveyden vasemman/oikean sijoittamisen tai korkeuden ylhäältä/alhaalta sijoittamisen osalta.
 
-Voit määrittää arvon käyttäen mitä tahansa voimassa olevaa CSS-yksikköä, kuten prosentteja, pikseleitä tai vw/vh, käyttäen joko Javaa tai CSS:ää:
+Voit määrittää arvon käyttämällä mitä tahansa hyväksyttävää CSS-yksikköä, kuten prosentteja, pikseliä tai vw/vh, käyttäen joko Javaa tai CSS:ää:
 
 ```java
 // Java
@@ -70,7 +73,7 @@ dwc-drawer {
 }
 ```
 
-Estääksesi `Drawer`-komponentin kasvamasta liian suureksi, käytä `--dwc-drawer-max-size` sen rinnalla:
+Estääksesi `Drawer`:n kasvamasta liian suureksi, käytä `--dwc-drawer-max-size`-ominaisuutta sen kanssa:
 
 ```java
 // Java
@@ -86,19 +89,19 @@ dwc-drawer {
 }
 ```
 
-## Placement {#placement}
+## Sijoitus {#placement}
 
-`setPlacement()`-metodi hallitsee, mihin `Drawer`-komponentti ilmaisee itsensä näkymässä.
+`setPlacement()`-menetelmä hallitsee, minne `Drawer` ilmestyy näkymään.
 
 Saatavilla olevat sijoitusvaihtoehdot:
 
 <!-- vale off -->
-- **TOP**: Asettaa drawerin näkymän yläpisteeseen.
-- **TOP_CENTER**: Kohdistaa drawerin suorakulmaisesti keskelle ylhäällä näkymässä.
-- **BOTTOM**: Asettaa drawerin näkymän alaosaan.
-- **BOTTOM_CENTER**: Kohdistaa drawerin suorakulmaisesti keskelle alhaalla näkymässä.
-- **LEFT**: Asettaa drawerin vasenta reunaa myöten näkymässä.
-- **RIGHT**: Asettaa drawerin oikeaa reunaa myöten näkymässä.
+- **YLÄOSA**: Asettaa laatikon näkymän yläreunaan.
+- **YLÄKESKIOSSA**: Keskittää laatikon vaakasuunnassa näytön yläreunaan.
+- **ALHAALLA**: Asettaa laatikon näkymän alaosaan.
+- **ALHAISKESKIOSSA**: Keskittää laatikon vaakasuunnassa näkymän alaosaan.
+- **VASEN**: Asettaa laatikon vasemman reunan varaan.
+- **OIKEA**: Asettaa laatikon oikean reunan varaan.
 <!-- vale on -->
 
 <ComponentDemo
@@ -107,34 +110,34 @@ files={['src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java
 height='600px'
 />
 
-## Tapahtumankäsittely
+## Tapahtumien käsittely {#event-handling}
 
-`Drawer`-komponentti lähettää elinkaaritapahtumia, joita voidaan käyttää sovelluslogiikan käynnistämiseen sen avatussa tai suljetussa tilassa.
+`Drawer`-komponentti lähettää elinkaaritapahtumia, joita voidaan käyttää sovelluslogiikan laukaisemiseen sen avautumisen tai sulkeutumisen tilan muutoksen yhteydessä.
 
 Tuetut tapahtumat:
 
-- `DrawerOpenEvent`: Lausutaan, kun drawer on täysin avattu.
-- `DrawerCloseEvent`: Lausutaan, kun drawer on täysin suljettu.
+- `DrawerOpenEvent`: Lähetetään, kun laatikko on täysin avattu.
+- `DrawerCloseEvent`: Lähetetään, kun laatikko on täysin suljettu.
 
-Voit liittää kuuntelijoita näihin tapahtumiin suorittaaksesi logiikkaa, kun `Drawer`-komponentin tila muuttuu.
+Voit liittää kuuntelijoita näille tapahtumille suorittaaksesi logiikan, kun `Drawer`:n tila muuttuu.
 
 ```java
 Drawer drawer = new Drawer();
 
 drawer.addOpenListener(e -> {
-  // Käsittele drawerin avattu tapahtuma
+  // Käsittele laatikon avaus tapahtuma
 });
 
 drawer.addCloseListener(e -> {
-  // Käsittele drawerin suljettu tapahtuma
+  // Käsittele laatikon sulkemis tapahtuma
 });
 ```
 
-## Esimerkki: Yhteystietojen valitsin
+## Esimerkki: Yhteydenottovalitsin {#example-contact-picker}
 
-`Drawer`-komponentti tuo esiin lisäsisältöä häiritsemättä nykyistä näkymää. Tässä esimerkissä drawer asetetaan alhaalla keskelle, sisältäen vieritettävän yhteystietoluettelon.
+`Drawer`-komponentti tuo esille lisäsisältöä keskeyttämättä nykyistä näkymää. Tämä esimerkki sijoittaa laatikon alaosaan keskelle, sisältäen vieritettävän yhteystietoluettelon.
 
-Jokainen yhteystieto näyttää avatarin, nimen, sijainnin ja toimintopainikkeen, jolla pääsee nopeasti yksityiskohtiin tai viestintään. Tämä lähestymistapa toimii hyvin kompaktien työkalujen, kuten yhteystietojen valitsinten, asetuspaneelien tai ilmoitusten rakentamisessa.
+Jokaisessa yhteystiedossa näkyy avatar, nimi, sijainti ja toimintopainike nopeaa pääsyä yksityiskohtiin tai viestintään varten. Tämä lähestymistapa toimii hyvin tiivien työkalujen luomisessa, kuten yhteydenottovalitsijat, asetuspaneelit tai ilmoitukset.
 
 <ComponentDemo
 path='/webforj/drawercontact'
@@ -145,19 +148,19 @@ files={[
 height='600px'
 />
 
-## Esimerkki: Tehtävämanageri
+## Esimerkki: Tehtävien hallinta {#example-task-manager}
 
-Tässä esimerkissä käytetään `Drawer`-komponenttia tehtävämanagerina. Voit lisätä tehtäviä, merkitä ne valituiksi ja tyhjentää valmiit tehtävät. `Drawer`-komponentin alatunniste sisältää lomakeohjaimia tehtävälistaan vuorovaikutukseen, ja "Lisää tehtävä" [`Button`](../components/button) estää itsensä, jos 50 tehtävää on saavutettu.
+Tämä esimerkki käyttää `Drawer`:ia tehtävien hallintana. Voit lisätä tehtäviä, merkitä ne suoritetuiksi ja tyhjentää valmiit. `Drawer`:n alatunniste sisältää lomakeohjaimia, joilla voidaan vuorovaikuttaa tehtäväluettelon kanssa, ja "Lisää tehtävä" [`Button`](../components/button) poistaa itsensä käytöstä, jos 50 tehtävään saavutetaan.
 
 <ComponentDemo
 path='/webforj/drawertask'
 files={[
   'src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java',
-  'src/main/resources/static/css/drawer/drawer-task-view.css',
+  'src/main/frontend/css/drawer/drawer-task-view.css',
 ]}
 height='600px'
 />
 
-## Styling {#styling}
+## Tyylitys {#styling}
 
 <TableBuilder name="Drawer" />

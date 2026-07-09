@@ -18,10 +18,10 @@ When your data lives outside your app - in a REST API, database, or external ser
 DelegatingRepository<User, UserFilter> repository = new DelegatingRepository<>(
   // 1. Find function - returns filtered/sorted/paginated data
   criteria -> userService.findUsers(criteria),
-  
+
   // 2. Count function - returns total count for the filter
   criteria -> userService.countUsers(criteria),
-  
+
   // 3. Find by key function - returns single entity by ID
   userId -> userService.findById(userId)
 );
@@ -64,13 +64,13 @@ DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<
     List<User> users = restClient.get("/users", params);
     return users.stream();
   },
-  
+
   // Count users
   criteria -> {
     Map<String, String> filterParams = buildFilterParams(criteria.getFilter());
     return restClient.getCount("/users/count", filterParams);
   },
-  
+
   // Find by ID
   userId -> restClient.getById("/users/" + userId)
 );
@@ -89,13 +89,13 @@ DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepo
     String sql = buildQuery(criteria);
     return jdbcTemplate.queryForStream(sql, rowMapper);
   },
-  
+
   // Count matching records
   criteria -> {
     String countSql = buildCountQuery(criteria.getFilter());
     return jdbcTemplate.queryForObject(countSql, Integer.class);
   },
-  
+
   // Find by primary key
   customerId -> {
     String sql = "SELECT * FROM customers WHERE id = ?";
@@ -106,7 +106,7 @@ DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepo
 
 The `buildQuery()` method would construct SQL like:
 ```sql
-SELECT * FROM customers 
+SELECT * FROM customers
 WHERE status = ? AND region = ?
 ORDER BY created_date DESC, name ASC
 LIMIT ? OFFSET ?
@@ -144,17 +144,17 @@ public class CustomUserRepository extends AbstractQueryableRepository<User, User
   public Stream<User> findBy(RepositoryCriteria<User, UserFilter> criteria) {
     // Implementation
   }
-  
+
   @Override
   public int size(RepositoryCriteria<User, UserFilter> criteria) {
     // Implementation
   }
-  
+
   @Override
   public Optional<User> find(Object key) {
     // Implementation
   }
-  
+
   // Add custom methods
   public List<User> findActiveManagers() {
     // Custom query logic

@@ -158,7 +158,7 @@ demo.setDrawerBreakpoint("(max-width:500px)");
 
 ### Drawer title {#drawer-title}
 
-The `AppLayout` component provides a `addToDrawerTitle()` method for defining a custom title to display in the drawer header. 
+The `AppLayout` component provides a `addToDrawerTitle()` method for defining a custom title to display in the drawer header.
 
 ```java
 layout.addToDrawerTitle(new Div("Menu"));

@@ -86,7 +86,7 @@ Instead, utilizing the payload of the method, which for the sake of the example 
 myComponent.addEventListener(e -> {
   // Access data from the event payload
   String componentText = e.getText();
-  
+
   // Use the componentText to perform other actions.
 });
 ```

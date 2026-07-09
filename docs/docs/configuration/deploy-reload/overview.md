@@ -9,7 +9,7 @@ Efficient development workflows rely on tools that detect code changes and autom
 
 ## Redeployment {#redeployment}
 
-Redeployment in Java development refers to automatically detecting and deploying code changes, so updates are reflected in the app without a manual server restart. This process typically involves updating Java classes and web resources on the fly. 
+Redeployment in Java development refers to automatically detecting and deploying code changes, so updates are reflected in the app without a manual server restart. This process typically involves updating Java classes and web resources on the fly.
 
 In a webforJ app, this means regenerating the WAR file whenever modifications are made to the code.
 
@@ -19,7 +19,7 @@ For the best experience, use automatic redeployment in combination with tools or
 
 ## Live reload {#live-reload}
 
-Once changes are deployed, live reload automatically reloads the app so the browser reflects updates immediately, without requiring a manual browser refresh. 
+Once changes are deployed, live reload automatically reloads the app so the browser reflects updates immediately, without requiring a manual browser refresh.
 
 In a webforJ app, live reload can automatically refresh the view, re-rendering components to show the latest state of the app, or even patch changes as needed on demand.
 
