@@ -21,7 +21,7 @@ setSelectionMode(SelectionMode selectionMode)
 
 Available SelectionMode options include:
 
->- `SINGLE` - (single selection) 
+>- `SINGLE` - (single selection)
 >- `MULTI` - (multiple selection)
 >- `NONE` - (no selection).
 
@@ -67,7 +67,7 @@ height='600px'
 
 ## Programatic selection {#programatic-selection}
 
-The `Table` component provides programmatic selection methods, allowing you to manipulate selected items either by their keys or by the entire items. 
+The `Table` component provides programmatic selection methods, allowing you to manipulate selected items either by their keys or by the entire items.
 
 ### Select by key {#select-by-key}
 

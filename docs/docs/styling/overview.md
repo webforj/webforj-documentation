@@ -34,7 +34,7 @@ The [DWC Figma library](https://www.figma.com/community/file/1144573845612007198
 
 <img src="/img/dwc.png" alt="Figma Design Kit" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
 
->  
+>
 <!-- > ![Figma Design Kit Screenshot](./path-to-your-screenshot.png) -->
 
 ## Topics {#topics}

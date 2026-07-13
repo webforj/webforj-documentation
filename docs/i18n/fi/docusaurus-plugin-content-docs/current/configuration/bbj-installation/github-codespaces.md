@@ -1,45 +1,48 @@
 ---
 sidebar_position: 2
 title: Github Codespaces
-_i18n_hash: e9d0c9402dcba748eea3671a39562b83
+description: >-
+  Run the webforj-hello-world starter in a GitHub Codespace to develop and
+  preview webforJ apps directly from the browser.
+_i18n_hash: ffbe6dd8d2c6c81e95e7e97dbb8ff32e
 ---
-[`webforj-hello-world`](https://github.com/webforj/webforj-hello-world) on ollut määritelty toimimaan Github Codespacesissa. Codespaces on pilvipohjainen kehitysympäristö, joka mahdollistaa webforJ-sovellusten kehittämisen ja suorittamisen suoraan selaimessasi. Aloittaaksesi kehittämisen tämän työkalun kanssa, seuraa alla olevia vaiheita:
+[`webforj-hello-world`](https://github.com/webforj/webforj-hello-world) on säädetty toimimaan Github Codespaces -ympäristössä. Codespaces on pilvipohjainen kehitysympäristö, joka mahdollistaa webforJ-sovellusten kehittämisen ja suorittamisen suoraan selaimessasi. Kehittämisen aloittamiseksi seuraa alla olevia vaiheita:
 
-## 1. Siirry HelloWorldJava-repositorioon {#1-navigate-to-the-helloworldjava-repository}
+## 1. Siirry HelloWorldJava-repositioon {#1-navigate-to-the-helloworldjava-repository}
 
-Aloittaaksesi sinun täytyy mennä HelloWorldJava-repositorioon, joka löytyy [tästä linkistä](https://github.com/webforj/webforj-hello-world). Kun olet siellä, napsauta vihreää **"Käytä tätä mallia"** -painiketta ja sitten **"Avaa kooditilassa"** -vaihtoehtoa.
+Aloittaaksesi sinun täytyy siirtyä HelloWorldJava-repositioon, joka löytyy [tästä linkistä](https://github.com/webforj/webforj-hello-world). Kun olet siellä, napsauta vihreää **"Use this template"** -painiketta ja sitten **"Open in a codespace"** -vaihtoehtoa.
 
-![Kooditilan painikkeet](/img/bbj-installation/github/1.png#rounded-border)
+![Codespace buttons](/img/bbj-installation/github/1.png#rounded-border)
 
-## 2. Ohjelman suorittaminen {#2-running-your-program}
+## 2. Ohjelmasi suorittaminen {#2-running-your-program}
 
-Kun kooditilan lataaminen on valmis, sinun pitäisi nähdä selaimessa VS Studio Coden versio, jossa "HelloWorldJava" esimerkkiohjelma on ladattuna. Täältä voit suorittaa esimerkkiohjelman tai aloittaa kehittämisen.
+Odottamisen jälkeen, että codespace latautuu, sinun pitäisi nähdä selaimessa VS Studio Code -versio, jossa on "HelloWorldJava" esimerkkiohjelma ladattuna. Täältä voit suorittaa esimerkkiohjelman tai aloittaa kehittämisen.
 
-Kompiloidaksesi ohjelman, avaa terminaali VS Codessa ja suorita komento `mvn install`.
+Käännät ohjelman avaamalla terminaali VS Codessa ja suorittamalla `mvn install` -komennon.
 
-![Maven Asennus](/img/bbj-installation/github/2.png#rounded-border)
+![Maven Install](/img/bbj-installation/github/2.png#rounded-border)
 
-Jos kaikki sujuu onnistuneesti, näet `BUILD SUCCESS` -viestin.
+Jos kaikki onnistuu, sinun pitäisi nähdä `BUILD SUCCESS` -viesti.
 
-:::warning VAROITUS
-Varmista, että käytät `mvn install` -komentoa sen sijaan, että käyttäisit VS Coden sisäänrakennettua Maven-käyttöliittymää ohjelmasi asentamiseen.
+:::warning WARNING
+Varmista, että käytät `mvn install` -komentoa ohjelmasi asentamiseen sen sijaan, että käyttäisit VS Code:n sisäänrakennettua Maven-käyttöliittymää.
 :::
 
-Kun tämä on tehty, sinun täytyy siirtyä tiettyyn verkkosoitteeseen nähdäksesi ohjelmasi. Tämä tapahtuu ensin napsauttamalla **"Ports"**-välilehteä VS Coden alareunassa. Täällä näet kaksi porttia, 8888, ja yhden muun, lueteltuna.
+Kun tämä on tehty, sinun täytyy siirtyä tiettyyn verkkosivustoon nähdäksesi ohjelmasi. Tämä tehdään napsauttamalla ensin VS Code -ikkunan alareunassa olevaa **"Ports"**-välilehteä. Täällä näet kaksi porttia, 8888 ja yhden muun, lueteltuna.
 
-![Edistetään Portteja](/img/bbj-installation/github/3.png#rounded-border)
+![Forwarded Ports](/img/bbj-installation/github/3.png#rounded-border)
 
-Napsauta pientä **"Avaa selaimessa"** -painiketta, joka näyttää maapallon, **"Local Address"** -osiossa **Ports**-välilehdellä, mikä avaa uuden välilehden selaimessasi.
+Napsauta **"Local Address"** -osion **Ports**-välilehdellä pientä **"Open in Browser"** -painiketta, joka näyttää maapallolta, avaten uuden välilehden selaimessasi.
 
-![Selaimen Painike](/img/bbj-installation/github/4.png#rounded-border)
+![Browser Button](/img/bbj-installation/github/4.png#rounded-border)
 
-Kun selaimen välilehti on avoinna, haluat lisätä URL-osoitteen loppuun varmistaaksesi, että sovelluksesi ajetaan. Ensiksi lisää `/webapp` verkkosivuston osoitteen loppuun, joka päättyy `github.dev`. Tämän jälkeen lisää oikea sovellus- ja luokanimi (jos sovellettavissa) näyttämään haluttu sovellus. Näet, miten URL-osoite on oikein määritettävä, [seuraamalla tätä opasta](./configuration).
+Kun selainvälilehti on auki, haluat lisätä URL-osoitteen loppuun varmistaaksesi, että sovelluksesi käynnistyy. Ensinnäkin lisää `/webapp` verkkosivun osoitteen loppuun, joka päättyy `github.dev`:hen. Tämän jälkeen lisää tarvittaessa oikea sovellus- ja luokan nimi näyttääksesi halutun sovelluksen. Näet, kuinka URL-osoite konfiguroidaan oikein, [seuraa tätä opasta](./configuration).
 
-:::success Vinkki
-Jos haluat suorittaa oletus "Hello World" -ohjelman, lisää yksinkertaisesti `/hworld` `/webapp` jälkeen URL-osoitteeseen:
+:::success Tip
+Jos haluat suorittaa oletusarvoisen "Hello World" -ohjelman, lisää yksinkertaisesti `/hworld` `/webapp` -osuuden jälkeen URL-osoitteeseen:
 <br />
 
-![Muokattu URL](/img/bbj-installation/github/5.png#rounded-border)
+![Modified URL](/img/bbj-installation/github/5.png#rounded-border)
 :::
 
-Kun tämä on tehty, sinun pitäisi nähdä sovelluksesi toimivan selaimessa, ja voit muokata sitä VS Code -instanssissa, joka toimii kooditiloissa.
+Kun tämä on tehty, sinun pitäisi nähdä sovelluksesi toimivan selaimessa, ja voit muokata sitä Codespaces-ympäristössä toimivassa VS Code -instanssissa.

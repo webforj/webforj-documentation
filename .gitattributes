@@ -1,2 +1,8 @@
 # Force LF line endings for Java files so Spotless passes on Windows
 *.java text eol=lf
+
+# Force LF line endings for Markdown so Docusaurus write-heading-ids
+# stays idempotent (its parseMarkdownHeadingId regex is anchored on `}$`
+# and fails if a CR sits between `}` and the newline).
+*.md text eol=lf
+*.mdx text eol=lf

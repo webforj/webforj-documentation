@@ -1,10 +1,13 @@
 ---
 title: Running with BBjServices
 hide_table_of_contents: true
-_i18n_hash: 1dcf3d9e0fdd90f3d240a65f89088c34
+description: >-
+  Set up and deploy webforJ apps that run on BBjServices using Docker, GitHub
+  Codespaces, or a local BBj installation.
+_i18n_hash: ff8e3053e23b38b1a621b39abb2ca28c
 ---
 :::important
-本节仅适用于使用 `BBjServices` 的开发人员。对于大多数开发人员，本节中的信息在 webforJ 应用程序开发或部署中不会是必要的。
+此部分仅适用于使用 `BBjServices` 的开发人员。对于大多数开发人员，此部分中的信息对 webforJ 应用程序的开发或部署并不必要。
 :::
 
 <Head>

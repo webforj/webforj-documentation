@@ -1,0 +1,10 @@
+extends: substitution
+message: "Use straight quotes/apostrophes instead of the curly character '%s'."
+link: "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+level: warning
+nonword: true
+action:
+  name: replace
+swap:
+  '(?:“|”)': '"'
+  '(?:‘|’)': "'"

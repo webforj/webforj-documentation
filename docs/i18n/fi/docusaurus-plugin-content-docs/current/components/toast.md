@@ -1,29 +1,32 @@
 ---
 title: Toast
 sidebar_position: 140
-_i18n_hash: 563743d9f91aff0002f8965cbf719d99
+description: >-
+  Show transient notifications with the Toast component, configuring duration,
+  theme, and placement via Toast.show or open.
+_i18n_hash: 07365e349ec9393e79a13969504861bd
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-toast" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="toast" location="com/webforj/component/toast/Toast" top='true'/>
 
-`Toast` on pieni, tilapäinen ilmoitus, joka ilmestyy antaakseen käyttäjille palautetta toiminnasta tai tapahtumasta. Toastit näyttävät viestejä, kuten onnistumisvahvistuksia, varoituksia tai virheitä ilman, että nykyinen työskentelykatko keskeytyy, ja ne katoavat automaattisesti asetetun ajan kuluttua.
+A `Toast` on pieni, väliaikainen ilmoitus, joka ilmestyy antamaan käyttäjille palautetta toiminnasta tai tapahtumasta. Toastit näyttävät viestejä, kuten onnistumisvahvistuksia, varoituksia tai virheitä, keskeyttämättä nykyistä työskentelyä, ja ne häipyvät automaattisesti asetetun ajan kuluttua.
 
 <!-- INTRO_END -->
 
 ## Perusteet {#basics}
 
-webforJ tarjoaa nopean ja helpon tavan luoda `Toast`-komponentti yhdellä koodirivillä `Toast.show()`-menetelmällä, joka luo `Toast`-komponentin, lisää sen `Frame`-komponenttiin ja näyttää sen. Voit antaa parametreja `show`-menetelmälle näyttämääsi `Toast`:iin liittyen:
+webforJ tarjoaa nopean ja helpon tavan luoda `Toast`-komponentti yhdellä koodirivillä `Toast.show()`-metodin avulla, joka luo `Toast`-komponentin, lisää sen `Frame`:en ja näyttää sen. Voit välittää parametreja `show`-metodille näyttäessäsi `Toast`-ilmoitusta:
 
 ```java
-Toast.show("Toiminto suoritettu onnistuneesti!", Theme.SUCCESS);
+Toast.show("Toimenpide suoritettiin onnistuneesti!", Theme.SUCCESS);
 ```
 
-Jos haluat enemmän hienosäätöä komponenttiin, voit myös luoda `Toast`-komponentin käytännön konstruktorilla ja käyttää `open()`-menetelmää sen esittämiseen.
+Jos haluat enemmän tarkkuutta komponentin hallintaan, voit myös luoda `Toast`in standardin rakentajan avulla ja käyttää `open()`-metodia sen näyttämiseen.
 
 ```java
-Toast toast = new Toast("Toiminto suoritettu onnistuneesti!", 3000, Theme.SUCCESS, Placement.TOP);
+Toast toast = new Toast("Toimenpide suoritettiin onnistuneesti!", 3000, Theme.SUCCESS, Placement.TOP);
 toast.open();
 ```
 
@@ -31,65 +34,65 @@ toast.open();
 path='/webforj/toast'
 files={[
   'src/main/java/com/webforj/samples/views/toast/ToastView.java',
-  'src/main/resources/static/css/toast/toastTheme.css',
+  'src/main/frontend/css/toast/toastTheme.css',
 ]}
 height='200px'
 />
 
 :::info Oletuskäyttäytyminen
-Toisin kuin muut komponentit, `Toast`-komponenttia ei tarvitse erikseen lisätä säilöön, kuten `Frame`:een. Kun kutsut `open()`-menetelmää, `Toast` liitetään automaattisesti ensimmäiseen sovelluksen `Frame`:een.
+Toisin kuin muut komponentit, `Toast` ei tarvitse olla erikseen lisättynä säiliöön, kuten `Frame`:en. Kun kutsut `open()`-metodia, `Toast` liitetään automaattisesti ensimmäiseen sovellus `Frame`:en.
 :::
 
-Toasit ovat monipuolisia ja tarjoavat hienovaraisia ilmoituksia reaaliaikaisista palautteista. Esimerkiksi:
+Toastit ovat monipuolisia ja tarjoavat hienovaraisia ilmoituksia reaaliaikaisesta palautteesta. Esimerkiksi:
 
-- **Reaaliaikainen palaute** toimista, kuten lomakkeiden lähettämisestä, tietojen tallentamisesta tai virheistä.
-- **Mukautettavat teemat** erottamaan onnistuneet, virheelliset, varoittavat tai tiedottavat viestit.
-- **Joustavat sijoittamisvaihtoehdot** ilmoitusten näyttämiseksi eri paikoissa näytöllä ilman, että käyttäjän työskentely keskeytyy.
+- **Reaaliaikainen palaute** toimille, kuten lomakkeiden lähettämisille, tietojen tallennuksille tai virheille.
+- **Mukautettavat teemat** erottamaan onnistumiset, virheet, varoitukset tai informatiiviset viestit.
+- **Joustavat sijoitus**vaihtoehdot ilmoitusten näyttämiseen eri alueilla näytöllä ilman, että käyttäjän työskentely keskeytyy.
 
 ## Kesto {#duration}
 
-Voit määrittää `Toast`-ilmoitusten katoamisen tapahtuvan asetetun keston jälkeen tai pysyvän näytöllä, kunnes ne hylätään, tarpeidesi mukaan. Voit mukauttaa kestoa `setDuration()`-menetelmällä tai yksinkertaisesti toimittamalla keston parametrin konstruktorille tai `show()`-menetelmälle.
+Voit konfiguroida `Toast`-ilmoituksia häipymään asetetun ajan kuluttua tai pysymään ruudulla, kunnes ne suljetaan, tarpeidesi mukaan. Voit mukauttaa kestot `setDuration()`-metodilla tai yksinkertaisesti antaa kestoparametrin rakentajalle tai `show()`-metodille.
 
 :::info Oletuskesto
-Oletuksena `Toast` sulkeutuu automaattisesti 5000 millisekunnin jälkeen.
+Oletuksena `Toast` sulkeutuu automaattisesti 5000 millisekunnin kuluttua.
 :::
 
 ```java
-Toast toast = new Toast("Esimerkkiviesti");
+Toast toast = new Toast("Esimerkkihälytys");
 toast.setDuration(10000);
 toast.open();
 ```
 
 ### Pysyvät toastit {#persistent-toasts}
 
-Voit luoda pysyvän `Toast`-ilmoituksen asettamalla negatiivisen keston. Pysyvät `Toast`-ilmoitukset eivät sulkeudu automaattisesti, mikä voi olla hyödyllistä kriittisten hälytysten tai tilanteissa, joissa käyttäjältä vaaditaan jonkinlaista vuorovaikutusta tai tunnustamista.
+Voit luoda pysyvän `Toast`in asettamalla negatiivisen keston. Pysyvät `Toast`-ilmoitukset eivät sulkeudu automaattisesti, mikä voi olla hyödyllistä kriittisissä hälytyksissä tai tapauksissa, joissa käyttäjältä vaaditaan vuorovaikutusta tai tunnustamista.
 
 :::caution
-Ole varovainen pysyvien `Toast`-ilmoitusten kanssa ja varmista, että tarjoat tavan käyttäjän sulkea ilmoitus. Käytä `close()`-menetelmää piilottaaksesi `Toast`:in, kun käyttäjä on tunnustanut sen tai suorittanut tarvittavat vuorovaikutukset.
+Ole varovainen pysyvien `Toast`-ilmoitusten kanssa, ja varmista, että käyttäjälle on tarjottu tapa sulkea ilmoitus. Käytä `close()`-metodia piilottaaksesi `Toast`in, kun käyttäjä on tunnustanut sen tai suorittanut tarvittavan vuorovaikutuksen.
 :::
 
 ```java
-Toast toast = new Toast("Toiminto suoritettu onnistuneesti!", -1, Theme.SUCCESS, Placement.TOP);
+Toast toast = new Toast("Toimenpide suoritettiin onnistuneesti!", -1, Theme.SUCCESS, Placement.TOP);
 toast.open();
 ```
 
-## Sijoittaminen {#placement}
+## Sijoitus {#placement}
 
-webforJ:n `Toast`-komponentilla voit valita, missä ilmoitus näkyy näytöllä sovelluksesi suunnittelun ja käytettävyyden vaatimusten mukaisesti. Oletuksena `Toast`-ilmoitukset näkyvät näytön alaosassa keskellä.
+webforJ:n `Toast`-komponentin avulla voit valita, missä ilmoitus näkyy näytöllä, sopiaksesi sovelluksesi suunnittelu- ja käytettävyyden vaatimuksiin. Oletuksena `Toast`-ilmoitukset näkyvät näytön alaosassa keskellä.
 
-Voit määrittää `Toast`-ilmoituksen `placement`-asetuksen `setPlacement`-menetelmällä käyttämällä `Toast.Placement`-enumerointia seuraavilla arvoilla:
+Voit asettaa `Toast`-ilmoituksen `placement`-arvon `setPlacement`-metodilla käyttäen `Toast.Placement` enumia seuraavilla arvoilla:
 
-- **ALUE**: Asettuu ilmoitus näytön alaosaan keskelle.
-- **ALUE_VASEN**: Asettuu ilmoitus näytön vasempaan alakulmaan.
-- **ALUE_OIKEA**: Asettuu ilmoitus näytön oikeaan alakulmaan.
-- **YLÄ**: Asettuu ilmoitus näytön yläosaan keskelle.
-- **YLÄ_VASEN**: Asettuu ilmoitus näytön vasempaan yläkulmaan.
-- **YLÄ_OIKEA**: Asettuu ilmoitus näytön oikeaan yläkulmaan.
+- **BOTTOM**: Asettaa ilmoituksen alaosaan keskelle näyttöä.
+- **BOTTOM_LEFT**: Asettaa ilmoituksen ala-vasempaan kulmaan.
+- **BOTTOM_RIGHT**: Asettaa ilmoituksen ala-oikeaan kulmaan.
+- **TOP**: Asettaa ilmoituksen yläosaan keskelle näyttöä.
+- **TOP_LEFT**: Asettaa ilmoituksen ylä-vasempaan kulmaan.
+- **TOP_RIGHT**: Asettaa ilmoituksen ylä-oikeaan kulmaan.
 
-Nämä vaihtoehdot mahdollistavat `Toast`-ilmoituksen sijoittamisen hallinnan sovelluksesi suunnittelun ja käytettävyyden tarpeiden mukaan.
+Nämä vaihtoehdot antavat sinulle hallintaa `Toast`-ilmoituksen sijoittelusta sovelluksesi suunnittelu- ja käytettävyyden tarpeiden mukaan.
 
 ```java
-Toast toast = new Toast("Esimerkkiviesti");
+Toast toast = new Toast("Esimerkkihälytys");
 toast.setPlacement(Toast.Placement.TOP_LEFT);
 toast.open();
 ```
@@ -100,15 +103,15 @@ files={['src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java']
 height='600px'
 />
 
-Mukauttamalla `Toast`-ilmoitusten sijoittamista voit varmistaa, että käyttäjät saavat tietoa tavalla, joka on sopiva annettuna sovellukselle, näyttöasettelulle ja kontekstille.
+Mukauttamalla `Toast`-ilmoitustesi sijoittelua voit varmistaa, että käyttäjät saavat tietoa sopivalla tavalla kussakin sovelluksessa, näytön asettelussa ja kontekstissa.
 
 ## Pinottaminen {#stacking}
 
-`Toast`-komponentti voi näyttää useita ilmoituksia samanaikaisesti, pinoamalla ne pystysuunnassa niiden sijoittamisen mukaan. Uudemmat ilmoitukset ilmestyvät lähemmäs sijoitusreunaa työntäen vanhempia ilmoituksia kauemmas. Tämä varmistaa, että käyttäjät eivät jää paitsi tärkeistä tiedoista, vaikka näytöllä olisi paljon tapahtumaa.
+`Toast`-komponentti voi näyttää useita ilmoituksia samanaikaisesti, pinoten niitä pystysuoraan sijoittelunsa mukaan. Uudemmat ilmoitukset näkyvät lähempänä sijoittelun reunaa, työntäen vanhempia ilmoituksia kauemmas. Tämä varmistaa, että käyttäjät eivät jää ilman tärkeitä tietoja, vaikka paljon tapahtuu.
 
-## Toiminnot ja vuorovaikutteisuus {#actions-and-interactivity}
+## Toiminnot ja vuorovaikutus {#actions-and-interactivity}
 
-Vaikka `Toast`-ilmoitukset eivät vaadi käyttäjän vuorovaikutusta oletuksena, webforJ mahdollistaa painikkeiden tai muiden vuorovaikutteisten elementtien lisäämisen, jotta ne olisivat hyödyllisempia kuin pelkkä ilmoitus.
+Vaikka `Toast`-ilmoitukset eivät vaadi käyttäjän vuorovaikutusta oletusarvoisesti, webforJ sallii lisätä painikkeita tai muita interaktiivisia elementtejä, jotta ne olisivat käyttökelpoisempia kuin pelkät ilmoitukset.
 
 <ComponentDemo
 path='/webforj/toastcookies'
@@ -116,36 +119,36 @@ files={['src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java']}
 height='350px'
 />
 
-Tällaisen vuorovaikutteisuuden lisäämisen avulla voit antaa käyttäjille mahdollisuuden hoitaa tehtäviä ja suorittaa toimintoja ilman, että heidän tarvitsee siirtyä pois nykyiseltä näytöltään, muuttamalla `Toast`-ilmoitus arvokkaaksi vuorovaikutuksen ja sitoutumisen väyläksi.
+Lisäämällä tällaista vuorovaikutusta voit antaa käyttäjille mahdollisuuden hoitaa tehtäviä ja suorittaa toimintoja siirtymättä pois nykyiseltä näytöltään, muuttaen `Toast`-ilmoituksesta arvokkaan vuorovaikutus- ja sitoutumiskanavan.
 
 ## Tyylittely {#styling}
 
-Voit tyylittää `Toast`-ilmoituksia teemoilla kuten muutkin webforJ-komponentit, antaen käyttäjille arvokasta kontekstia siitä, minkä tyyppistä tietoa näytetään, ja luoden johdonmukaisen tyylin koko sovelluksessasi. Voit joko asettaa teeman, kun luot Toastin tai käyttää `setTheme()`-menetelmää.
+Voit tyylittää `Toast`-ilmoituksia teemoilla kuten muutkin webforJ-komponentit, tarjoten käyttäjille arvokasta kontekstia esitettävän tiedon tyypistä ja luoden johdonmukaisen tyylin koko sovellukseen. Voit joko asettaa teeman luodessasi `Toast`ia tai käyttää `setTheme()`-metodia.
 
 ```java
-Toast toast = new Toast("Esimerkkiviesti", Theme.INFO);
+Toast toast = new Toast("Esimerkkihälytys", Theme.INFO);
 ```
 
 ```java
-Toast toast = new Toast("Esimerkkiviesti");
+Toast toast = new Toast("Esimerkkihälytys");
 toast.setTheme(Theme.INFO);
 ```
 
 ### Mukautetut teemat {#custom-themes}
 
-Lisäksi voit luoda omia mukautettuja teemoja `Toast`-ilmoituksille. Tämä mahdollistaa henkilökohtaisemman ja brändätyn käyttäjäkokemuksen tarjoamisen ja antaa sinulle täydellisen hallinnan `Toast`-ilmoituksen kokonaisilmeestä.
+Lisäksi voit luoda omia mukautettuja teemoja `Toast`-ilmoituksille. Tämä mahdollistaa henkilökohtaisemman ja brändätyn käyttäjäkokemuksen, antaen sinulle täyden hallinnan `Toast`:n kokonestyylin yli.
 
-Voit lisätä mukautetun teeman `Toast`:iin määrittelemällä mukautettuja CSS-muuttujia, jotka muokkaavat komponentin ulkonäköä. Seuraava esimerkki havainnollistaa, kuinka luoda `Toast` mukautetulla teemalla webforJ:lla.
+Voit lisätä mukautetun teeman `Toast`:lle määrittämällä mukautettuja CSS-muuttujia, jotka muokkaavat komponentin ulkoasua. Seuraava esimerkki havainnollistaa, kuinka luoda `Toast` mukautetulla teemalla käyttäen webforJ:ta.
 
 :::info `Toast` Kohdistaminen
-Koska `Toast` ei sijaitse tiettyyn kohtaan DOM:issa, voit kohdistaa sen käyttämällä CSS-muuttujia. Nämä muuttujat helpottavat johdonmukaisten mukautettujen tyylien soveltamista kaikkiin Toast-ilmoituksiin.
+Koska `Toast` ei sijaitse tietyssä paikassa DOM:ssa, voit kohdistaa sen CSS-muuttujilla. Nämä muuttujat helpottavat yhdenmukaisten mukautettujen tyylien soveltamista kaikkiin `Toast`-ilmoituksiin.
 :::
 
 <ComponentDemo
 path='/webforj/toasttheme'
 files={[
   'src/main/java/com/webforj/samples/views/toast/ToastThemeView.java',
-  'src/main/resources/static/css/toast/toastTheme.css',
+  'src/main/frontend/css/toast/toastTheme.css',
 ]}
 height='200px'
 />

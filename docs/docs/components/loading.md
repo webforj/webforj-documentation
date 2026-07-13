@@ -23,7 +23,7 @@ Here's an example of creating a `Loading` component with a message:
 path='/webforj/loadingdemo'
 files={[
   'src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java',
-  'src/main/resources/static/css/loadingstyles/loadingdemo.css',
+  'src/main/frontend/css/loadingstyles/loadingdemo.css',
 ]}
 height='300px'
 />
@@ -35,7 +35,7 @@ The `Loading` component in webforJ can scope itself to a specific parent contain
 To limit the `Loading` component to its parent, simply add the `Loading` component to the parent container. For example, if you add it to a `Div`, the loading overlay applies only to that `Div`:
 
 ```java
-Div parentDiv = new Div();  
+Div parentDiv = new Div();
 parentDiv.setStyle("position", "relative");
 Loading loading = new Loading();
 parentDiv.add(loading);
@@ -67,19 +67,19 @@ Here's an example of how you can customize the spinner within a `Loading` compon
 path='/webforj/loadingspinnerdemo'
 files={[
   'src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java',
-  'src/main/resources/static/css/loadingstyles/loadingspinnerdemo.css',
+  'src/main/frontend/css/loadingstyles/loadingspinnerdemo.css',
 ]}
 height='300px'
 />
 
 ## Use cases {#use-cases}
-- **Data Fetching**  
+- **Data Fetching**
    When retrieving data from a server or API, the `Loading` component overlays a specific section of the UI, such as a card or form, to inform users that the system is working in the background. This is ideal when you want to show progress on just one part of the screen without blocking the entire interface.
 
-- **Content Loading in Cards/Sections**  
+- **Content Loading in Cards/Sections**
    The `Loading` component can be scoped to specific areas of a page, such as individual cards or containers. This is useful when you want to indicate that a particular section of the UI is still loading while allowing users to interact with other parts of the page.
 
-- **Complex Form Submissions**  
+- **Complex Form Submissions**
    For longer form submissions where validation or processing takes time, the `Loading` component provides visual feedback to users, reassuring them that their input is actively processing.
 
 ## Styling {#styling}

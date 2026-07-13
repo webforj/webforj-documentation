@@ -14,8 +14,8 @@ Reach for `ElementComposite` when wrapping a third-party web component that webf
 
 This guide demonstrates how to implement the [Shoelace relative-time web component](https://shoelace.style/components/relative-time) using the `ElementComposite` class.
 
-<ComponentDemo 
-path='/webforj/relativetime' 
+<ComponentDemo
+path='/webforj/relativetime'
 files={['src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimeView.java']}
 height='150px'
 />
@@ -135,11 +135,11 @@ The optional third argument is a `java.lang.reflect.Type` and controls how the r
 
 The demo below adds properties for relative-time based on the web component's docs and exposes them through getters and setters. Each row in the activity feed uses different `format` and `numeric` values to show how the same component renders under varied configurations.
 
-<ComponentDemo 
-path='/webforj/relativetimeproperties' 
+<ComponentDemo
+path='/webforj/relativetimeproperties'
 files={[
   'src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimePropertiesView.java',
-  'src/main/resources/static/css/elementcomposite/activity-feed.css',
+  'src/main/frontend/css/elementcomposite/activity-feed.css',
 ]}
 height='450px'
 />
@@ -382,8 +382,8 @@ Define custom event classes with `@EventName` and `@EventOptions` to capture cli
 
 The product review form below uses this pattern with [`sl-rating`](https://shoelace.style/components/rating). The custom `ChangeEvent` carries the rating value as a typed `double`, and the listener uses it to enable the submit button:
 
-<ComponentDemo 
-path='/webforj/rating' 
+<ComponentDemo
+path='/webforj/rating'
 files={['src/main/java/com/webforj/samples/views/elementcomposite/RatingView.java']}
 height='220px'
 />
@@ -398,13 +398,13 @@ ElementEventOptions options = new ElementEventOptions()
   .addData("query", "component.value")
   .addData("timestamp", "Date.now()")
   .addData("isValid", "component.checkValidity()")
-  
+
   // Execute JavaScript before event fires
   .setCode("component.classList.add('processing');")
-  
+
   // Only fire if conditions are met
   .setFilter("component.value.length >= 2")
-  
+
   // Delay execution until user stops typing (300ms)
   .setDebounce(300, DebouncePhase.TRAILING);
 
@@ -487,8 +487,8 @@ public class Dialog extends ElementCompositeContainer {
 
 The demo below shows two pricing cards built with [`sl-card`](https://shoelace.style/components/card), populating the `header`, default, and `footer` slots from Java:
 
-<ComponentDemo 
-path='/webforj/card' 
+<ComponentDemo
+path='/webforj/card'
 files={['src/main/java/com/webforj/samples/views/elementcomposite/CardView.java']}
 height='400px'
 />

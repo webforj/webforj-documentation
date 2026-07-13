@@ -29,7 +29,7 @@ This example creates the `Navigator` and [`Table`](table/overview) with the same
 
 ## Pagination {#pagination}
 
-The `Navigator` component is closely linked with the `Paginator` model class, calculates pagination metadata such as total number of pages, start/end indices of items on the current page, and an array of page numbers for navigation. 
+The `Navigator` component is closely linked with the `Paginator` model class, calculates pagination metadata such as total number of pages, start/end indices of items on the current page, and an array of page numbers for navigation.
 
 While not overtly necessary, utilizing the `Paginator` enables the logic behind navigation. When integrating with a `Paginator`, the navigator responds to any changes within the `Paginator`. `Navigator` objects have access to a built-in `Paginator` through use of the `getPaginator()` method. It can also accept a `Paginator` instance via the `setPaginator()` method, or utilization of one of the applicable constructors.
 
@@ -37,7 +37,7 @@ This section includes practical code snippets to illustrate how this integration
 
 ### Items {#items}
 
-The term "items" denotes the individual paginated elements or data entries. These could be records, entries, or any discrete units within a dataset. You can set the total number of items using the `setTotalItems()` method. 
+The term "items" denotes the individual paginated elements or data entries. These could be records, entries, or any discrete units within a dataset. You can set the total number of items using the `setTotalItems()` method.
 
 ```java
 navigator.getPaginator().setTotalItems(totalItems);
@@ -65,7 +65,7 @@ This program shows a maximum of five pages on the `Navigator` at one time by usi
 
 ### Page size {#page-size}
 
-The `setSize()` method allows you to specify the number of items to display on each page of the pagination. When you call this method and provide a new page size, it adjusts the pagination accordingly. 
+The `setSize()` method allows you to specify the number of items to display on each page of the pagination. When you call this method and provide a new page size, it adjusts the pagination accordingly.
 
 ```java
 navigator.getPaginator().setSize(pageSize);
@@ -73,9 +73,9 @@ navigator.getPaginator().setSize(pageSize);
 
 ## Customizing buttons, text and tooltips {#customizing-buttons-text-and-tooltips}
 
-The `Navigator` component provides extensive customization options for buttons, text, and tooltips. To change the displayed text on the `Navigator` component, use the `setText()` method. This method takes text, as well as the desired `Part` of the `Navigator`. 
+The `Navigator` component provides extensive customization options for buttons, text, and tooltips. To change the displayed text on the `Navigator` component, use the `setText()` method. This method takes text, as well as the desired `Part` of the `Navigator`.
 
-In the following example, the `setText()` method displays a numeric value to the user. Clicking the buttons fires the `onChange` method of the `Navigator`, which comes with a `Direction` value the clicked button. 
+In the following example, the `setText()` method displays a numeric value to the user. Clicking the buttons fires the `onChange` method of the `Navigator`, which comes with a `Direction` value the clicked button.
 
 <ComponentDemo
 path='/webforj/navigatorbasic'
@@ -98,7 +98,7 @@ The `setText()` method evaluates the text parameter as a JavaScript expression u
 - `component` - The Navigator client component.
 
 <!-- vale off -->
-For example, to set the text of the last page button in a `Navigator` with 10 pages to "Go to page 10", use the following code snippet: 
+For example, to set the text of the last page button in a `Navigator` with 10 pages to "Go to page 10", use the following code snippet:
 <!-- vale on -->
 
 ```java
@@ -175,7 +175,7 @@ navigator.setLayout(Navigator.Layout.QUICK_JUMP);
 
 ## Best practices {#best-practices}
 
-To ensure an optimal user experience when using the `Navigator` component, consider the following best practices: 
+To ensure an optimal user experience when using the `Navigator` component, consider the following best practices:
 
 - **Understand dataset**: Before integrating a `Navigator` component into your app, thoroughly understand the data browsing requirements of your users. Consider factors such as the size of the dataset, typical user interactions, and preferred navigation patterns.
 

@@ -4,7 +4,7 @@ title: Understanding Components
 description: Understand the webforJ component hierarchy, composition over inheritance, lifecycle stages, and concern interfaces before building custom components.
 ---
 
-<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
+<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
 
 Before building custom components in webforJ, it's important to understand the foundational architecture that shapes how components work. This article explains the component hierarchy, component identity, lifecycle concepts, and how concern interfaces provide component capabilities.
 
@@ -19,7 +19,7 @@ In webforJ, built-in components like [`Button`](../components/button) and [`Text
 ```java
 // This won't work in webforJ
 public class MyButton extends Button {
-  // Button is final - cannot be extended 
+  // Button is final - cannot be extended
 }
 ```
 
@@ -30,11 +30,11 @@ public class SearchBar extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private TextField searchField;
   private Button searchButton;
-  
+
   public SearchBar() {
     searchField = new TextField("Search");
     searchButton = new Button("Go");
-    
+
     self.setDirection(FlexDirection.ROW)
       .add(searchField, searchButton);
   }
@@ -53,12 +53,12 @@ For a detailed explanation, see [Final Classes and Extension Restrictions](https
 ```mermaid
 graph TD
   A[Component<br/><small>Abstract base - framework internal</small>]
-  
+
   A --> B[DwcComponent<br/><small>Built-in webforJ components</small>]
   A --> C[Composite<br/><small>Combine webforJ components</small>]
-  
+
   B --> E[Button, TextField,<br/>DateField, ComboBox]
-  
+
   C --> D[ElementComposite<br/><small>Wrap web components</small>]
   D --> F[ElementCompositeContainer<br/><small>Components with slots</small>]
 
@@ -98,11 +98,11 @@ Implementing concern interfaces gives your custom components the same APIs as bu
 // Implement HasSize to get width/height methods automatically
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
   private final Div self = getBoundComponent();
-  
+
   public SizedCard() {
     self.setText("Card content");
   }
-  
+
   // No need to implement these - you get them for free:
   // setWidth(), setHeight(), setSize()
 }

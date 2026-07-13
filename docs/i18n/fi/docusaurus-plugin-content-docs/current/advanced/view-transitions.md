@@ -1,20 +1,23 @@
 ---
 sidebar_position: 40
 title: View Transitions
-_i18n_hash: f906f47211e25b6b4bd659abdb1ad500
+description: >-
+  Animate DOM changes with the browser View Transition API, applying fade,
+  slide, zoom, and shared morph effects between component states.
+_i18n_hash: fb54ad2ee8205e9dbdc27165635fda55
 ---
 <JavadocLink type="foundation" location="com/webforj/ViewTransition" top='true'/>
 
 <DocChip chip='since' label='25.11' />
 <DocChip chip='experimental' />
 
-Katseluen siirtymät tarjoavat animoituja siirtymiä, kun [DOM](/docs/glossary#dom) muuttuu, vähentäen visuaalista hämmennystä ja ylläpitäen tilallista kontekstia navigoinnin tai sisällön päivitysten aikana. webforJ integroituu selaimen [View Transition API:hin](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) käsittelemään animaatioiden koordinoimisen monimutkaisuutta vanhojen ja uusien tilojen välillä.
+Näkymäsiirtymät tarjoavat animoituja siirtymiä, kun [DOM](/docs/glossary#dom) muuttuu, vähentäen visuaalista kuormitusta ja säilyttäen tilallisesta kontekstista navigoinnin tai sisällön päivitysten aikana. webforJ integroituu selaimen [View Transition API:iin](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) hallitakseen animaatioiden koordinoinnin vanhojen ja uusien tilojen välillä.
 
 <ComponentDemo
 path='/webforj/viewtransitionchat'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
-  'src/main/resources/static/css/viewtransitions/chat.css',
+  'src/main/frontend/css/viewtransitions/chat.css',
 ]}
 height='450px'
 />
@@ -23,7 +26,7 @@ height='450px'
 
 ## Peruskäyttö {#basic-usage}
 
-Luodaksesi katseluen siirtymisen, käytä `Page.getCurrent().startViewTransition()`, joka palauttaa builderin siirtymän konfiguroimiseen:
+Näkymäsiirtymän luomiseksi käytä `Page.getCurrent().startViewTransition()`, joka palauttaa rakennusohjelman siirtymän konfiguroimiseen:
 
 ```java
 Page.getCurrent().startViewTransition()
@@ -35,28 +38,28 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
-Siirtymäprosessi ottaa nykyisestä tilasta otteen, soveltaa DOM-muutoksesi `onUpdate`-kutsussa ja animoituu vanhasta otoksesta uuteen sisältöön. Sinun on kutsuttava `done.run()` ilmoittaaksesi, kun muutoksesi on valmis.
+Siirtymäprosessi tallentaa nykyaikaisen tilan näytön, soveltaa DOM-muutokset `onUpdate` -takaisinkutsussa ja animoi vanhasta hetkestä uuteen sisältöön. Sinun on kutsuttava `done.run()` merkitäksesi, kun muutoksesi ovat valmiita.
 
-:::warning `onUpdate`-kutsu on pakollinen
-Käynnistämällä `start()` ilman päivityskutsua heitetään `IllegalStateException`.
+:::warning `onUpdate` -takaisinkutsu on pakollinen
+Kutsumalla `start()` ilman päivitystakaisinkutsua heitetään `IllegalStateException`.
 :::
 
 ## Siirtymien soveltaminen {#applying-transitions}
 
-webforJ tarjoaa ennalta määriteltyjä siirtymätyyppejä, joita voit soveltaa komponenteille, jotka tulevat DOM:iin tai poistuvat sieltä:
+webforJ tarjoaa määriteltyjä siirtymätyyppejä, joita voit soveltaa DOM:iin tuleville tai lähteville komponenteille:
 
 | Vakiot | Vaikutus |
 |----------|--------|
 | `ViewTransition.NONE` | Ei animaatiota |
-| `ViewTransition.FADE` | Ristiin häivyttää vanhan ja uuden sisällön |
-| `ViewTransition.SLIDE_LEFT` | Sisältö virtaa vasemmalle (kuten eteenpäin navigointi) |
-| `ViewTransition.SLIDE_RIGHT` | Sisältö virtaa oikealle (kuten takaisin navigointi) |
-| `ViewTransition.SLIDE_UP` | Sisältö virtaa ylöspäin |
-| `ViewTransition.SLIDE_DOWN` | Sisältö virtaa alaspäin |
-| `ViewTransition.ZOOM` | Vanha sisältö kutistuu pois, uusi sisältö kasvaa sisään |
-| `ViewTransition.ZOOM_OUT` | Vanha sisältö kasvaa pois, uusi sisältö kutistuu sisään |
+| `ViewTransition.FADE` | Yli- ja ala-vaihto vanhan ja uuden sisällön välillä |
+| `ViewTransition.SLIDE_LEFT` | Sisältö liikkuu vasemmalle (kuin eteenpäin navigointi) |
+| `ViewTransition.SLIDE_RIGHT` | Sisältö liikkuu oikealle (kuin taaksepäin navigointi) |
+| `ViewTransition.SLIDE_UP` | Sisältö liikkuu ylöspäin |
+| `ViewTransition.SLIDE_DOWN` | Sisältö liikkuu alaspäin |
+| `ViewTransition.ZOOM` | Vanha sisältö pienenee, uusi sisältö kasvaa |
+| `ViewTransition.ZOOM_OUT` | Vanha sisältö kasvaa, uusi sisältö pienenee |
 
-Käytä `enter()` animoidaksesi komponenttia, joka lisätään, ja `exit()` animoidaksesi komponenttia, joka poistuu:
+Käytä `enter()` animoidessasi komponenttia, joka lisätään, ja `exit()` animoidessasi komponenttia, joka poistetaan:
 
 ```java
 // Animoidaan komponentti, joka tulee DOM:iin
@@ -78,22 +81,22 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
-## Yhteiset komponenttisiirtymät {#shared-component-transitions}
+## Jaetut komponenttisiirtymät {#shared-component-transitions}
 
-Yhteiset komponenttisiirtymät luovat muuntumistehokkuuden, jossa komponentti tuntuu muuttuvan sen paikasta vanhassa näkymässä sen paikkaan uudessa näkymässä. Tämä saavutetaan antamalla komponenteille sama siirtymän nimi käyttämällä `setViewTransitionName()`-menetelmää, joka on saatavilla kaikille komponenteille, jotka toteuttavat <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink>-rajapinnan.
+Jaetut komponenttisiirtymät luovat muunnosvaikutelman, jossa komponentti näyttää muuttuvan sen sijainnista vanhassa näkymässä uuteen. Tämä saavutetaan antamalla komponenteille sama siirtymän nimi käyttäen `setViewTransitionName()` -menetelmää, joka on käytettävissä kaikilla komponenteilla, jotka toteuttavat <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink> -rajapinnan.
 
 ```java
 // Korttinäkymässä
 image.setViewTransitionName("blog-image");
 
-// Yksityiskohdanäkymässä - sama nimi luo muunnoksen
+// Yksityiskohtanäkymässä - sama nimi luo muunnoksen
 image.setViewTransitionName("blog-image");
 ```
 
-Siirtyminen näiden näkymien välillä tuo selaimen animaatiot komponentin välillä paikoiltaan, luoden yhteyden visuaaliseen kokemukseen.
+Kun siirretään näiden näkymien välillä, selain animoi komponentin sijainneilta, luoden yhteyden visuaalisen kokemuksen.
 
 :::tip Käytä ainutlaatuisia nimiä
-Työskennellessäsi listojen tai toistuvien komponenttien kanssa, yhdistä siirtymän nimeen ainutlaatuinen tunniste. Jokaisella komponentilla on oltava oma erillinen nimi, jotta se voi muuntua oikein vastaavaksi komponentiksi uutessa näkymässä. Saman nimen käyttäminen usealle näkyvälle komponentille aiheuttaa määrittelemätöntä toimintaa.
+Työskennellessäsi listojen tai toistuvien komponenttien kanssa, sisällytä ainutlaatuinen tunniste siirtymän nimeen. Jokaisella komponentilla tarvitsee olla oma erillinen nimensä muuntua oikein vastaavaksi komponentiksi uudessa näkymässä. Samojen nimien käyttäminen useille näkyville komponenteille aiheuttaa määrittelemätöntä käyttäytymistä.
 :::
 
 <ComponentDemo
@@ -102,14 +105,14 @@ files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
-  'src/main/resources/static/css/viewtransitions/morph.css',
+  'src/main/frontend/css/viewtransitions/morph.css',
 ]}
 height='650px'
 />
 
-### Listan uudelleenjärjestäminen {#list-reordering}
+### Listan järjestäminen {#list-reordering}
 
-Yhteisten komponenttisiirtymien yleinen käyttötapa on listaelementtien animoiminen, kun niiden järjestys muuttuu. Antamalla jokaiselle itemille ainutlaatuinen `view-transition-name`, selain animoi komponentit automaattisesti uusiin paikkoihinsa:
+Yksi jaettujen komponenttisiirtymien yleisistä käyttötapauksista on listaelementtien animointi, kun niiden järjestys muuttuu. Antamalla jokaiselle kohteelle ainutlaatuinen `view-transition-name`, selain animoi komponentit automaattisesti uusiin sijainteihinsa:
 
 ```java
 // Jokaiselle kortille annetaan ainutlaatuinen siirtymän nimi sen ID:n perusteella
@@ -129,17 +132,17 @@ path='/webforj/viewtransitionshuffle'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
-  'src/main/resources/static/css/viewtransitions/shuffle.css',
+  'src/main/frontend/css/viewtransitions/shuffle.css',
 ]}
 height='550px'
 />
 
 ## Mukautetut CSS-animaatiot {#custom-css-animations}
 
-Saadaksesi täydellisen hallinnan animaatioista, voit määritellä mukautetut CSS-avainkehykset. webforJ lisää siirtymän nimiin päätteet `-enter` tai `-exit`, joita käytät kohdentamaan katseluen siirtymän pseudo-elementteihin:
+Täydellisen hallinnan saamiseksi animaatioista, voit määrittää mukautetut CSS-avainkehykset. webforJ lisää `-enter` tai `-exit` päätteet siirtymän nimiin, joita käytät kohdistamaan näkymäsiirtymän pseudo-elementteihin:
 
 ```css
-/* Määrittele avainkehykset komponenttien saapumiselle */
+/* Määritä avainkehykset komponenttien saapumiselle */
 @keyframes flip-enter {
   from {
     opacity: 0;
@@ -151,7 +154,7 @@ Saadaksesi täydellisen hallinnan animaatioista, voit määritellä mukautetut C
   }
 }
 
-/* Sovelletaan katseluen siirtymän pseudo-elementtiin */
+/* Käytä näkymäsiirtymän pseudo-elementissä */
 ::view-transition-new(flip-in-enter) {
   animation: flip-enter 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-origin: top center;
@@ -162,10 +165,10 @@ Saadaksesi täydellisen hallinnan animaatioista, voit määritellä mukautetut C
 }
 ```
 
-Viittaa mukautettuun animaatioosi siirtämällä sen nimi (ilman päätteitä) `enter()` tai `exit()`-metodille:
+Viitaten mukautettuun animaatioosi, siirrä sen nimi (ilman päätettä) `enter()` tai `exit()`:
 
 ```java
-// Käytä "flip-in" - webforJ lisää automaattisesti "-enter"-päätteen
+// Käytä "flip-in" - webforJ lisää "-enter" päätteet automaattisesti
 Page.getCurrent().startViewTransition()
   .enter(notification, "flip-in")
   .onUpdate(done -> {
@@ -174,7 +177,7 @@ Page.getCurrent().startViewTransition()
   })
   .start();
 
-// Käytä "blur-out" poistumiseen - webforJ lisää automaattisesti "-exit"-päätteen
+// Käytä "blur-out" poistumiseen - webforJ lisää "-exit" päätteet
 Page.getCurrent().startViewTransition()
   .exit(notification, "blur-out")
   .onUpdate(done -> {
@@ -188,7 +191,7 @@ Page.getCurrent().startViewTransition()
 path='/webforj/viewtransitionenterexit'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
-  'src/main/resources/static/css/viewtransitions/enterexit.css',
+  'src/main/frontend/css/viewtransitions/enterexit.css',
 ]}
 height='400px'
 />
@@ -199,7 +202,7 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Häivytys</strong>
+    <strong>Haalistuminen</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -213,7 +216,7 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Liukuvasemmalle</strong>
+    <strong>Liukuu vasemmalle</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -221,14 +224,14 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
       |----------|---------|-------------|
       | `--vt-slide-left-duration` | `200ms` | Animaation kesto |
       | `--vt-slide-left-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-funktio |
-      | `--vt-slide-left-distance` | `30%` | Liu'un etäisyys |
+      | `--vt-slide-left-distance` | `30%` | Liukumatka |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Liukuoikealle</strong>
+    <strong>Liukuu oikealle</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -236,14 +239,14 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
       |----------|---------|-------------|
       | `--vt-slide-right-duration` | `200ms` | Animaation kesto |
       | `--vt-slide-right-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-funktio |
-      | `--vt-slide-right-distance` | `30%` | Liu'un etäisyys |
+      | `--vt-slide-right-distance` | `30%` | Liukumatka |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Liukuylöspäin</strong>
+    <strong>Liukuu ylöspäin</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -251,14 +254,14 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
       |----------|---------|-------------|
       | `--vt-slide-up-duration` | `200ms` | Animaation kesto |
       | `--vt-slide-up-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-funktio |
-      | `--vt-slide-up-distance` | `30%` | Liu'un etäisyys |
+      | `--vt-slide-up-distance` | `30%` | Liukumatka |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Liukualas</strong>
+    <strong>Liukuu alaspäin</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -266,7 +269,7 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
       |----------|---------|-------------|
       | `--vt-slide-down-duration` | `200ms` | Animaation kesto |
       | `--vt-slide-down-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-funktio |
-      | `--vt-slide-down-distance` | `30%` | Liu'un etäisyys |
+      | `--vt-slide-down-distance` | `30%` | Liukumatka |
     </div>
   </AccordionDetails>
 </Accordion>
@@ -281,14 +284,14 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
       |----------|---------|-------------|
       | `--vt-zoom-duration` | `200ms` | Animaation kesto |
       | `--vt-zoom-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-funktio |
-      | `--vt-zoom-scale` | `0.8` | Skaalatekijä (vanha zoomaa tästä pois, uusi zoomaa tähän) |
+      | `--vt-zoom-scale` | `0.8` | Skaalakerroin (vanha zoomaa tästä, uusi zoomaa tähän) |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Zoom ulos</strong>
+    <strong>Zoomaa ulos</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -296,18 +299,18 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
       |----------|---------|-------------|
       | `--vt-zoom-out-duration` | `200ms` | Animaation kesto |
       | `--vt-zoom-out-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-funktio |
-      | `--vt-zoom-out-scale` | `1.2` | Skaalatekijä (vanha zoomaa tähän, uusi zoomaa tästä pois) |
+      | `--vt-zoom-out-scale` | `1.2` | Skaalakerroin (vanha zoomaa tähän, uusi zoomaa tähän) |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Muuttujien ylikirjoittaminen</strong>
+    <strong>Muuttujien ylittämiseen</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Mukauttaaksesi, ylikirjoita nämä muuttujat CSS:ssäsi:
+      Mukauttaaksesi, ohita nämä muuttujat CSS:ssäsi:
 
       ```css
       :root {
@@ -316,7 +319,7 @@ Jokainen ennalta määritelty siirtymätyyppi tarjoaa CSS-mukautusominaisuuksia 
       }
       ```
 
-      Edistyksellisessä mukautuksessa kohdenna katseluen siirtymän pseudo-elementteihin suoraan:
+      Edistynyt mukauttaminen, kohdistaa näkymäsiirtymän pseudo-elementit suoraan:
 
       ```css
       ::view-transition-old(vt-slide-left-exit) {

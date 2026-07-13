@@ -41,7 +41,7 @@ dwc-button {
 ```
 
 :::tip Component-Specific Styling Reference
-Each webforJ component supports a specific set of CSS variables that control its appearance. These are documented under the **Styling > CSS properties** section for each component. 
+Each webforJ component supports a specific set of CSS variables that control its appearance. These are documented under the **Styling > CSS properties** section for each component.
 :::
 
 
@@ -87,5 +87,5 @@ const value = el.style.getPropertyValue('--dwc-font-size-m');
 
 ## Additional resources {#additional-resources}
 
-- [Using CSS Custom Properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)  
+- [Using CSS Custom Properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
 - [A Complete Guide to Custom Properties (CSS-Tricks)](https://css-tricks.com/a-complete-guide-to-custom-properties/)

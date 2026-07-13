@@ -3,7 +3,7 @@ title: JRebel
 description: Use JRebel with webforJ to hot-swap modified classes into a running Jetty server and skip full restarts during development.
 ---
 
-JRebel is a Java development tool that integrates with the JVM to detect code changes and replace modified classes directly in memory, allowing developers to see code changes immediately without restarting the server. 
+JRebel is a Java development tool that integrates with the JVM to detect code changes and replace modified classes directly in memory, allowing developers to see code changes immediately without restarting the server.
 
 When a change is made to a class, method, or field, JRebel compiles and injects the updated bytecode on the fly, eliminating the need for a full server restart. By applying changes directly to the running app, JRebel streamlines the development workflow, saving time and preserving app state, including user sessions.
 

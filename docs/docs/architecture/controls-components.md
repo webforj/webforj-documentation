@@ -5,7 +5,7 @@ description: See how webforJ components map one-to-one to BBj controls through t
 ---
 
 
-The webforJ framework is designed to provide a Java API around the BBj language's DWC, offers a robust architecture for building and managing components. 
+The webforJ framework is designed to provide a Java API around the BBj language's DWC, offers a robust architecture for building and managing components.
 
 ## Mapping BBj controls to webforJ components {#mapping-bbj-controls-to-webforj-components}
 One of the fundamental principles of webforJ is the binding of BBj controls with webforJ components. In this architecture, every webforJ component shipped with the product has a one-to-one mapping with an underlying BBj control. This mapping ensures that Java components mirror the behavior and properties of their BBj counterparts seamlessly.
@@ -24,7 +24,7 @@ In webforJ, most component classes, with the exception of the built-in HTML Elem
 
 2. **Preventing Unintended Modifications**: Making the component classes `final` prevents unintentional modifications to core components, reducing the risk of introducing unexpected behaviors or vulnerabilities.
 
-3. **Promoting the Use of Composites**: To extend the functionality of components, webforJ framework encourages developers to use a composite approach. Composite components are Java classes that contain other webforJ components or standard HTML elements. While traditional inheritance is discouraged, composite components offer a way to create new, customized components that encapsulate existing ones. 
+3. **Promoting the Use of Composites**: To extend the functionality of components, webforJ framework encourages developers to use a composite approach. Composite components are Java classes that contain other webforJ components or standard HTML elements. While traditional inheritance is discouraged, composite components offer a way to create new, customized components that encapsulate existing ones.
 
 <!-- ## Adding Components to the DOM
 TODO: Talk about how webforJ will search for a BBj control - means you can't add something that doesn't have a control -->
@@ -34,6 +34,6 @@ In webforJ framework, the concept of composite components plays a pivotal role i
 
 This approach encourages a more modular and flexible development style, enabling developers to build tailored components that meet specific requirements.
 
-<!-- 
+<!--
 ## Component Hierarchy {#component-hierarchy}
 TODO: Create and show graphic -->

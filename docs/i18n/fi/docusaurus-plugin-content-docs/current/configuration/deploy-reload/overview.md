@@ -5,27 +5,27 @@ hide_giscus_comments: true
 description: >-
   Combine automatic redeployment with live browser reload so code changes appear
   in a running webforJ app without manual restarts.
-_i18n_hash: dc1833dbce97bdbf387e98fab07967ca
+_i18n_hash: 1b9e4b7fe64a9bcb0aa2aa16b0866ec9
 ---
-Tehokkaat kehitystyönkulut perustuvat työkaluihin, jotka havaitsevat koodin muutokset ja päivittävät sovelluksen automaattisesti reaaliajassa. Jatkuva käyttöönotto ja dynaaminen lataus toimivat yhdessä yksinkertaistaakseen kehitysprosessia vähentämällä manuaalisia vaiheita, jolloin voit nähdä muutoksesi nopeasti ilman, että palvelinta tarvitsee käynnistää manuaalisesti uudelleen.
+Tehokkaat kehitysprosessit perustuvat työkaluihin, jotka havaitsevat koodimuutoksia ja päivittävät sovelluksen automaattisesti reaaliajassa. Jatkuva käyttöönottaminen ja dynaaminen uudelleenlataus toimivat yhdessä yksinkertaistaakseen kehitysprosessia vähentämällä manuaalisia vaiheita, jolloin voit nähdä muutoksesi nopeasti ilman, että sinun tarvitsee käynnistää palvelinta manuaalisesti uudelleen.
 
-## Uudelleenkäynnistys {#redeployment}
+## Uudelleenluonti {#redeployment}
 
-Uudelleenkäynnistys Java-kehityksessä tarkoittaa koodin muutosten automaattista havaitsemista ja käyttöönottoa, jotta päivitykset näkyvät sovelluksessa ilman manuaalista palvelimen uudelleenkäynnistystä. Tämä prosessi sisältää tyypillisesti Java-luokkien ja verkkoresurssien päivittämisen lennossa.
+Uudelleenluonti Java-kehityksessä tarkoittaa koodimuutosten automaattista havaitsemista ja käyttöönottoa siten, että päivitykset näkyvät sovelluksessa ilman manuaalista palvelimen käynnistämistä. Tämä prosessi sisältää tyypillisesti Java-luokkien ja verkkoresurssien päivittämisen lennossa.
 
-webforJ-sovelluksessa tämä tarkoittaa WAR-tiedoston uudelleensuunnittelua aina, kun koodiin tehdään muutoksia.
+webforJ-sovelluksessa tämä tarkoittaa WAR-tiedoston regeneroimista aina, kun koodia muokataan.
 
-Muutokset Java-luokkiin ja resurssit, jotka ovat luokkateissä, havaitaan tyypillisesti IDE:n toimesta. Kun Java-luokkaa muokataan ja tiedosto tallennetaan, joko IDE:n automaattisesti tai kehittäjän manuaalisesti, nämä työkalut aktivoituvat kääntämään ja sijoittamaan päivitetyt luokk tiedostot kohdekansioon muutosten soveltamiseksi.
+Muutoksia Java-luokkiin ja resursseihin luokkamatkalla seurataan tyypillisesti IDE:llä. Kun Java-luokkaa muokataan ja tiedosto tallennetaan, joko IDE:n automaattisesti tai kehittäjän manuaalisesti, nämä työkalut aktivoituvat koostamaan ja sijoittamaan päivitetyt luokkakentät kohdekansioon muutosten soveltamiseksi.
 
-Parhaan käyttökokemuksen saavuttamiseksi käytä automaattista uudelleenkäynnistystä yhdessä työkalujen tai asetusten kanssa, jotka automatisoivat selaimen lataamisen.
+Parhaan käyttökokemuksen saavuttamiseksi käytä automaattista uudelleenlatausta yhdessä työkalujen tai asetusten kanssa, jotka automatisoivat selaimen lataamisen.
 
-## Reaaliaikainen lataus {#live-reload}
+## Reaalilataus {#live-reload}
 
-Kun muutokset on otettu käyttöön, reaaliaikainen lataus lataa sovelluksen automaattisesti, jotta selain heijastaa päivitykset välittömästi ilman, että manuaalista selainpäivitystä tarvitaan.
+Kun muutokset on otettu käyttöön, reaaliuudelleenlataus latautuu automaattisesti sovelluksen niin, että selain heijastaa päivityksiä heti, ilman että manuaalista selaimen uudelleenlatausta tarvitaan.
 
-webforJ-sovelluksessa reaaliaikainen lataus voi automaattisesti päivittää näkymän, uudelleenrenderöimällä komponentteja näyttääkseen sovelluksen viimeisimmän tilan tai jopa paikkaamaan muutoksia tarvittaessa kysynnä.
+webforJ-sovelluksessa reaaliuudelleenlataus voi automaattisesti päivittää näkymän, renderöidä komponentit uudelleen näyttämään sovelluksen viimeisintä tilaa, tai jopa korjata muutoksia tarpeen mukaan pyynnöstä.
 
-Frontend-lähteille [frontend watch](/docs/configuration/deploy-reload/frontend-watch) rakennetaan jokaisella muutoksella ja paikkaa tyylitiedoston tai kuvan paikallaan, lataamalla näkymä vain, kun skripti muuttuu.
+Frontend-lähteille [frontend watch](/docs/configuration/deploy-reload/frontend-watch) uudelleenrakentaa jokaisen muutoksen yhteydessä ja päivittää tyylitiedoston tai kuvan paikan päällä, lataamalla näkymä uudelleen vain, kun skripti muuttuu.
 
 ## Aiheet {#topics}
 

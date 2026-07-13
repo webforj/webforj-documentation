@@ -4,52 +4,52 @@ sidebar_position: 40
 description: >-
   Share thread-safe key-value state across sessions, thread groups, or the
   entire JVM using Private, Group, and Global namespaces.
-_i18n_hash: 82037bcac961ffa8fefb90bf7579a3af
+_i18n_hash: fb5d7a0ef2a65790f0692612c07d9044
 ---
 <DocChip chip='since' label='24.22' />
 <JavadocLink type="foundation" location="com/webforj/environment/namespace/Namespace" top='true'/>
 
-Nimiavaruudet webforJ:ssä tarjoavat mekanismin yhteisten tietojen tallentamiseen ja hakemiseen eri alueilla web-sovelluksessa. Ne mahdollistavat komponenttien välistä ja sessioiden välistä tietoliikennettä ilman perinteisiä tallennusmenetelmiä, kuten sessioattribuutteja tai staattisia kenttiä. Tämä abstraktio antaa kehittäjille mahdollisuuden kapseloida ja käyttää tilaa hallitusti ja säikeet turvattuna. Nimivarat ovat täydellisiä monikäyttäjien yhteistyötyökalujen rakentamiseen tai yksinkertaisesti johdonmukaisten globaalien asetusten ylläpitämiseen, ja ne antavat sinun koordinoida tietoja turvallisesti ja tehokkaasti.
+Namespaces in webforJ tarjoavat mekanismin jaettujen tietojen tallentamiseen ja hakemiseen eri alueilla verkkosovelluksessa. Ne mahdollistavat komponenttien välisen ja istuntojen välisen tietoliikenteen ilman, että luotetaan perinteisiin tallennustekniikoihin, kuten istuntotietoihin tai staattisiin kenttiin. Tämä abstraktio mahdollistaa kehittäjien kapseloida ja käyttää tilaa hallitusti ja säieystävällisesti. Namespacet ovat ihanteellisia monikäyttäjäyhteistyötyökalujen rakentamiseen tai yksinkertaisesti johdonmukaisen globaalin asetuksen ylläpitämiseen, ja ne antavat sinun koordinoida tietoja turvallisesti ja tehokkaasti.
 
-## Mikä on nimiavaruus? {#whats-a-namespace}
+## Mikä on namespace? {#whats-a-namespace}
 
-Nimiavaruus on nimetty säiliö, joka tallentaa avain-arvo-pareja. Näitä arvoja voidaan käyttää ja muokata eri osissa sovellustasi sen mukaan, mitä nimiavaruutta käytät. Ajattele sitä kuin säikeettömän, hajautetun kartan, jossa on sisäänrakennetut tapahtumankäsittely- ja lukitusmekanismit.
+Namespace on nimetty säilö, joka tallentaa avain-arvo-pareja. Nämä arvot voidaan käyttää ja muokata eri osissa sovellustasi sen mukaan, mitä namespace-tyyppiä käytät. Ajattele sitä säieystävällisenä, jaettuna karttana, jossa on sisäänrakennettu tapahtumankäsittely ja lukitusmekanismeja.
 
-### Milloin käyttää nimiavaruuksia {#when-to-use-namespaces}
+### Milloin käyttää namespacet {#when-to-use-namespaces}
 
-Käytä nimiavaruuksia, kun:
+Käytä namespacet, kun:
 
-- Tarvitset jakaa arvoja käyttäjäsessioiden tai sovelluksen komponenttien kesken.
-- Haluat reagoida arvomuutoksiin kuuntelijoiden kautta.
-- Tarvitset tarkkoja lukituksia kriittisille alueille.
-- Tarvitset säilyttää ja noutaa tilaa tehokkaasti sovelluksesi läpi.
+- Sinun tarvitsee jakaa arvoja käyttäjäistuntojen tai sovelluskomponenttien välillä.
+- Halut toimia arvomuutoksille kuuntelijoiden kautta.
+- Tarvitset hienojakoista lukitusta kriittisille osille.
+- Sinun tarvitsee säilyttää ja hakea tilaa tehokkaasti koko sovelluksesi ajan.
 
-### Nimiavaruuden tyypit {#types-of-namespaces}
+### Namespacet tyypit {#types-of-namespaces}
 
-webforJ tarjoaa kolme tyyppiä nimiavaruuksia:
+webforJ tarjoaa kolme tyyppiä namespacet:
 
-| Tyyppi      | Laajuus                                                                                                               | Tyypillinen käyttö                         |
-|-------------|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
-| **Yksityinen**  | Jaettu asiakkaiden kesken, jotka käyttävät samaa etuliitettä ja nimeä. Muisti vapautuu automaattisesti, kun viittauksia ei enää ole. | Jaettu tila liittyvien käyttäjäsessioiden välillä. |
-| **Ryhmän**   | Jaettu kaikille säikeille, jotka on luotu samasta vanhempisäikeestä.                                                | Tilan koordinointi säiekasassa.               |
-| **Globaali** | Saatavana kaikissa palvelinsäikeissä (JVM-laajuisesti). Muisti säilytetään, kunnes avaimet poistetaan erikseen.   | Sovelluksen laajuinen jaettu tila.            |
+| Tyyppi      | Alue                                                                                                             | Tyypillinen käyttö                            |
+|-------------|------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| **Yksityinen** | Jaettu niiden asiakkaiden kesken, jotka käyttävät samaa etuliitettä ja nimeä. Muisti vapautetaan automaattisesti, kun viittauksia ei enää ole. | Jaettu tila liittyvien käyttäjäistuntojen välillä. |
+| **Ryhmä**    | Jaettu kaikilla säikeillä, jotka ovat syntyneet samasta parent-säikeestä.                                         | Tilan koordinointi säie-ryhmässä.             |
+| **Globaali** | Saatavilla kaikille palvelin säikeille (JVM-laajuisesti). Muisti säilyy, kunnes avaimet poistetaan erikseen.  | Sovelluksen laajuinen jaettu tila.            |
 
-:::tip Oletusarvon valinta - Suosi `PrivateNamespace`
-Kun olet epävarma, käytä `PrivateNamespace`:a. Se tarjoaa turvallista, rajattua jakamista liittyvien istuntojen kesken vaikuttamatta globaaliin tai palvelinlaajuiseen tilaan. Tämä tekee siitä luotettavan oletusarvon useimmissa sovelluksissa.
+:::tip Oletusarvon valinta - Suosi `PrivateNamespace`- käyttöä
+Kun olet epävarma, käytä `PrivateNamespace`:ia. Se tarjoaa turvallista, rajattua jakamista liittyvien istuntojen välillä vaikuttamatta globaaliseen tai palvelinlaajuiseen tilaan. Tämä tekee siitä luotettavan oletuksen useimmissa sovelluksissa.
 :::
 
-## Nimiavaruuden luominen ja käyttö {#creating-and-using-a-namespace}
+## Namespace luominen ja käyttö {#creating-and-using-a-namespace}
 
-Nimiavaruudet luodaan instanssoimalla jokin saatavilla olevista tyypeistä. Jokainen tyyppi määrittelee, kuinka ja missä tieto jaetaan. Esimerkit alla havainnollistavat, kuinka luoda nimiavaruus ja olla vuorovaikutuksessa sen arvojen kanssa.
+Namespacet luodaan instanssoimalla yksi saatavilla olevista tyypeistä. Jokainen tyyppi määrittää, miten ja missä dataa jaetaan. Esimerkit alla osoittavat, kuinka luoda namespace ja vuorovaikuttaa sen arvojen kanssa.
 
-### `Yksityinen` nimiavaruus {#private-namespace}
+### `Yksityinen` namespace {#private-namespace}
 
-Yksityisen nimiavaruuden nimi koostuu kahdesta osasta:
+Yksityisen namespacen nimi koostuu kahdesta osasta:
 
-- **Etuliite**: Kehittäjän määrittelemä tunniste, joka pitäisi olla ainutlaatuisen sovelluksellesi tai moduulillesi, jotta vältetään ristiriidat.
-- **Perusnimi**: Erityinen nimi jaetulle kontekstilta tai tiedolle, jota haluat hallita.
+- **Etuliite**: Kehittäjän määrittelemä tunniste, joka tulisi olla ainutlaatuinen sovelluksellesi tai moduulillesi konfliktien välttämiseksi.
+- **Perusnimi**: Kananiveloitu nimi jaetulle kontekstille tai datalle, jota haluat hallita.
 
-Yhdessä ne muodostavat täydellisen nimiavaruuden nimen seuraavassa muodossa:
+Yhdessä ne muodostavat täydellisen namespacen nimen muodossa:
 
 ```text
 etuliite + "." + perusnimi
@@ -57,10 +57,10 @@ etuliite + "." + perusnimi
 
 Esimerkiksi, `"myApp.sharedState"`.
 
-Nimiavaruudet, jotka on luotu samasta etuliitteestä ja perusnimestä, viittaavat aina _samaan taustainstanssiin_. Tämä varmistaa johdonmukaisen jaetun pääsyn kaikkiin `PrivateNamespace`:in kutsuihin, joissa käytetään samoja tunnisteita.
+Namespacet, jotka on luotu samalla etuliitteellä ja perusnimellä, viittaavat aina _samaan perustavanlaatuiseen instanssiin_. Tämä varmistaa johdonmukaisen jaetun pääsyn kaikkiin `PrivateNamespace` -kutsuihin, joissa käytetään samoja tunnisteita.
 
 ```java
-// Luo tai hae yksityinen nimiavaruus
+// Luo tai hae yksityinen namespace
 PrivateNamespace ns = new PrivateNamespace("myApp", "sharedState");
 ```
 
@@ -72,68 +72,68 @@ if (PrivateNamespace.isPresent("myApp.sharedState")) {
 }
 ```
 
-:::tip Nimeämisohjeet
-Kun nimeät `PrivateNamespace`:n, noudata näitä sääntöjä:
+:::tip Nimivihjeet
+Kun nimität `PrivateNamespace`:ia, noudata seuraavia sääntöjä:
 
-- Molempien osien on oltava ei-tyhjät.
-- Jokaisen on aloitettava kirjaimella.
+- Molempien osien on oltava ei-tyhjää.
+- Kummankin on aloitettava kirjaimella.
 - Vain tulostettavat merkit ovat sallittuja.
-- Välilyöntiä ei sallita.
+- Tyhjiä merkkejä ei sallita.
 
 Esimerkkejä:
 - ✓ mycrm.sessionData
 - ✓ acme.analytics
-- X shared.data (liian yleinen, todennäköisesti ristiriidassa)
+- X shared.data (liian geneerinen, todennäköisesti aiheuttaa konflikteja)
 :::
 
-### `Ryhmän` ja `Globaalit` nimiavaruudet {#group-and-global-namespaces}
+### `Ryhmä` ja `Globaali` namespacet {#group-and-global-namespaces}
 
-Yksityisen nimiavaruuden lisäksi webforJ tarjoaa kaksi muuta tyyppiä laajemmille jakamisalueille. Nämä ovat hyödyllisiä, kun tila tarvitsee pysyä yli yhdestä istunnosta tai säiekasasta.
+Yksityisen namespacen lisäksi webforJ tarjoaa kaksi muuta tyyppiä laajemmille jakamiskonteksteille. Nämä ovat hyödyllisiä, kun tila tarvitsee säilyä yli yhden istunnon tai säie-ryhmän.
 
-- **Globaali Nimiavaruus**: Saatavana kaikissa palvelinsäikeissä (JVM-laajuisesti).
-- **Ryhmän Nimiavaruus**: Jaettu säikeiden kesken, jotka ovat peräisin samasta vanhemmasta.
+- **Globaali Namespace**: Saatavilla kaikille palvelin säikeille (JVM-laajuisesti).
+- **Ryhmä Namespace**: Jaettu säikeiden kesken, jotka syntyvät samasta parentista.
 
 ```java
-// Globaali jaettu tila, saatavilla sovelluksen laajuudessa
+// Globaali jaettu tila, saatavilla sovelluslaajuisesti
 GlobalNamespace globalNs = new GlobalNamespace();
 globalNs.put("globalTheme", "dark");
 
-// Ryhmälähtöinen tila, rajoitettu säikeisiin, jotka jakavat yhteisen vanhemman
+// Ryhmäkohtainen tila, rajoitettu säikeisiin, jotka jakavat yhteisen parentin
 GroupNamespace groupNs = new GroupNamespace();
 groupNs.put("localCache", new HashMap<>());
 ```
 
 ## Työskentely arvojen kanssa {#working-with-values}
 
-Nimiavaruudet tarjoavat johdonmukaisen käyttöliittymän jaetun tiedon hallitsemiseen avain-arvo-pareina. Tämä sisältää arvojen asettamisen, hakemisen, poistamisen, pääsyn synkronoinnin ja muutosten seuraamisen reaaliajassa.
+Namespacet tarjoavat johdonmukaisen rajapinnan jaetun datan hallitsemiseen avain-arvo-pareilla. Tämä sisältää arvojen asettamisen, hakemisen, poistamisen, pääsyn synkronoinnin ja muutosten tarkkailemisen reaaliaikaisesti.
 
 ### Arvojen asettaminen ja poistaminen {#setting-and-removing-values}
 
-Käytä `put()`-metodia tallentaaksesi arvon tietyn avaimen alle. Jos avain on tällä hetkellä lukittu, metodi odottaa, kunnes lukitus vapautuu tai aikakatkaisu umpeutuu.
+Käytä `put()`-metodia tallentaaksesi arvon tietyn avaimen alle. Jos avain on tällä hetkellä lukittu, metodi odottaa, kunnes lukitus vapautuu tai aikaraja päättyy.
 
 ```java
-// Odottaa enintään 20 ms (oletus) arvon asettamista
+// Odottaa jopa 20ms (oletus) arvon asettamista
 ns.put("username", "admin");
 
-// Määritä mukautettu aikakatkaisu millisekunteina
+// Määritä mukautettu aikaraja millisekunneissa
 ns.put("config", configObject, 100);
 ```
 
-Poistaaksesi avaimen nimiavaruudesta:
+Poistaaksesi avaimen namespacesta:
 
 ```java
 ns.remove("username");
 ```
 
-Sekä `put()` että `remove()` ovat estäviä operaatioita, jos kohdeavain on lukittu. Jos aikakatkaisu umpeutuu ennen lukituksen vapautumista, heitetään `NamespaceLockedException`.
+Sekä `put()` että `remove()` ovat estäviä toimintoja, jos kohdeavain on lukittu. Jos aikaraja päättyy ennen lukituksen vapauttamista, heitetään `NamespaceLockedException`.
 
-Turvallisia rinnakkaisia päivityksiä varten, joissa sinun tarvitsee vain korvata arvo, käytä `atomicPut()`. Se lukitsee avaimen, kirjoittaa arvon ja vapauttaa lukituksen yhdellä askelella:
+Turvallisten rinnakkaisten päivitysten yhteydessä, joissa sinun tarvitsee vain korvata arvo, käytä `atomicPut()`. Se lukitsee avaimen, kirjoittaa arvon ja vapauttaa lukituksen yhdessä vaiheessa:
 
 ```java
 ns.atomicPut("counter", 42);
 ```
 
-Tämä estää kilpailuasetelmia ja välttää tarpeen manuaaliseen lukitsemiseen yksinkertaisissa päivitysskenaarioissa.
+Tämä estää kilpajuoksutilanteet ja välttää manuaalisen lukituksen tarpeen yksinkertaisissa päivitysskenaarioissa.
 
 ### Arvojen hakeminen {#getting-values}
 
@@ -143,7 +143,7 @@ Arvon hakemiseen käytä `get()`:
 Object value = ns.get("username");
 ```
 
-Jos avainta ei ole olemassa, tämä heittää `NoSuchElementException`. Poistaaksesi poikkeukset, käytä `getOrDefault()`:
+Jos avainta ei ole, tämä heittää `NoSuchElementException`. Poistaaksesi poikkeuksia, käytä `getOrDefault()`:
 
 ```java
 Object value = ns.getOrDefault("username", "guest");
@@ -157,73 +157,73 @@ if (ns.contains("username")) {
 }
 ```
 
-Jos haluat laiskasti alustaa arvon vain, kun sitä ei ole, käytä `computeIfAbsent()`:
+Jos haluat alustaa arvon laiskasti vain, kun se puuttuu, käytä `computeIfAbsent()`:
 
 ```java
 Object token = ns.computeIfAbsent("authToken", key -> generateToken());
 ```
 
-Tämä on hyödyllistä jaettavissa arvoissa, jotka luodaan kerran ja käytetään uudelleen, kuten istuntotunnisteet, konfiguraatioblokit tai välimuistetut tiedot.
+Tämä on hyödyllistä jaetuissa arvoissa, jotka luodaan kerran ja käytetään uudelleen, kuten istuntotunnukset, konfiguraatiolohkot tai välimuistitiedot.
 
-### Manuaalinen lukitseminen {#manual-locking}
+### Manuaalinen lukitus {#manual-locking}
 
-Jos sinun täytyy suorittaa useita toimintoja samalla avaimella tai koordinoida useiden avainten välillä, käytä manuaalista lukitsemista.
+Jos sinun tarvitsee suorittaa useita toimintoja samalla avaimella tai koordinoida useiden avainten välillä, käytä manuaalista lukitusta.
 
 ```java
-ns.setLock("flag", 500); // Odota enintään 500 ms lukitusta
+ns.setLock("flag", 500); // Odota jopa 500ms lukitusta
 
-// Kriittinen alue alkaa
+// Kriittinen osio alkaa
 Object existing = ns.get("flag");
 ns.put("flag", "in-progress");
-// Kriittinen alue päättyy
+// Kriittinen osio päättyy
 
 ns.removeLock("flag");
 ```
 
-Käytä tätä kaavaa, kun useita toimintoja on suoritettava atomisesti lukemisten ja kirjoitusten välillä. Varmista aina, että lukitus vapautuu, jotta vältetään muiden säikeiden estäminen.
+Käytä tätä kaavakuviota, kun toimintoja on suoritettava atomisesti lukemisten ja kirjoitusten kesken. Varmista aina, että lukitus vapautetaan estämään muiden säikeiden estäminen.
 
-### Muutosten kuuntelu {#listening-for-changes}
+### Muutoksista kuunteleminen {#listening-for-changes}
 
-Nimiavaruudet tukevat tapahtumakuuntelijoita, jotka antavat sinun reagoida arvojen käsittelyyn tai muokkaamiseen. Tämä on hyödyllistä seuraavissa skenaarioissa:
+Namespacet tukevat tapahtumakuuntelijoita, jotka sallivat sinun reagoida arvojen hakemiseen tai muokkaamiseen. Tämä on hyödyllistä skenaarioissa, kuten:
 
-- Lokitus tai auditointi pääsyyn herkkiin avaimiin
-- Päivitysten laukaiseminen, kun konfiguraatioarvo muuttuu
-- Jaetun tilan muutosten seuranta monikäyttäjäisissä sovelluksissa
+- Rajoituksen tai käytön kirjaaminen arkaluontoisille avaimille
+- Päivitysten laukaisu, kun konfiguraatioarvo muuttuu
+- Jaetun tilan muutosten seuranta monikäyttäjä sovelluksissa
 
-#### Saatavilla olevat kuuntelijametodit {#available-listener-methods}
+#### Saatavilla olevat kuuntelumetodit {#available-listener-methods}
 
-| Metodi                     | Laukaisee                       | Laajuus            |
-|---------------------------|----------------------------------|--------------------|
-| `onAccess`                | Mikä tahansa avain luetaan      | Koko nimiavaruus   |
-| `onChange`                | Mikä tahansa avain muutetaan    | Koko nimiavaruus   |
-| `onKeyAccess("key")`      | Tietty avain luetaan            | Avainkohtaisesti    |
-| `onKeyChange("key")`      | Tietty avain muutetaan          | Avainkohtaisesti    |
+| Metodi                     | Laukaise                      | Laajuus            |
+|----------------------------|-------------------------------|---------------------|
+| `onAccess`                 | Mikä tahansa avain on luettu  | Koko namespace      |
+| `onChange`                 | Mikä tahansa avain on muutettu| Koko namespace      |
+| `onKeyAccess("key")`       | Tietty avain on luettu        | Per avain          |
+| `onKeyChange("key")`       | Tietty avain on muutettu      | Per avain          |
 
-Jokainen kuuntelija saa tapahtumaolion, joka sisältää:
-- Avaimen nimen
-- Vanhan arvon
-- Uuden arvon
-- Viittauksen nimiavaruuteen
+Jokainen kuuntelija saa tapahtumaobjektin, joka sisältää:
+- Avain nimen
+- Vanha arvo
+- Uusi arvo
+- Viittauksen namespaceen
 
-#### Esimerkki: Reagointi mihin tahansa avaimen muutokseen {#example-respond-to-any-key-change}
+#### Esimerkki: Reagoi mihin tahansa avaimen muutokseen {#example-respond-to-any-key-change}
 
 ```java
 ns.onChange(event -> {
-  System.out.println("Avainta muutettiin: " + event.getVariableName());
+  System.out.println("Avain muuttui: " + event.getVariableName());
   System.out.println("Vanha arvo: " + event.getOldValue());
   System.out.println("Uusi arvo: " + event.getNewValue());
 });
 ```
 
-#### Esimerkki: Seuraa tietyn avaimen käyttöä {#example-track-access-to-a-specific-key}
+#### Esimerkki: Seuraa pääsyä tiettyyn avaimen {#example-track-access-to-a-specific-key}
 
 ```java
 ns.onKeyAccess("sessionToken", event -> {
-  System.out.println("Tokenia päästiin käsiksi: " + event.getNewValue());
+  System.out.println("Tokenia käytettiin: " + event.getNewValue());
 });
 ```
 
-Kuuntelijat palauttavat `ListenerRegistration` -olion, jota voit käyttää kuuntelijan poistamiseen myöhemmin:
+Kuuntelijat palauttavat `ListenerRegistration` -objektin, jota voit käyttää rekisteröidyn kuuntelijan poistamiseen myöhemmin:
 
 ```java
 ListenerRegistration<NamespaceKeyChangeEvent> reg = ns.onKeyChange("status", event -> {
@@ -232,17 +232,17 @@ ListenerRegistration<NamespaceKeyChangeEvent> reg = ns.onKeyChange("status", eve
 reg.remove();
 ```
 
-## Esimerkki: Pelitilan jakaminen Tik-Tak-Toessa {#example-sharing-game-state-in-tic-tac-toe}
+## Esimerkki: Pelitilan jakaminen Tic-Tac-Toe {#example-sharing-game-state-in-tic-tac-toe}
 
-[webforJ Tic-Tac-Toe -esittely](https://github.com/webforj/webforj-tictactoe) tarjoaa yksinkertaisen kaksinpelaajapelin, jossa vuorot jaetaan käyttäjien kesken. Projekti osoittaa, kuinka `Namespace`-moduulia voidaan käyttää tilan koordinoimiseen ilman ulkoisten työkalujen, kuten tietokantojen tai API: iden, luomista.
+[webforJ Tic-Tac-Toe demo](https://github.com/webforj/webforj-tictactoe) tarjoaa yksinkertaisen kaksinpelin, jossa vuorot jakautuvat käyttäjien kesken. Projekti havainnollistaa, kuinka `Namespace` voi koordinoida tilaa ilman ulkoisten työkalujen, kuten tietokantojen tai API:iden, turvautumista.
 
-Tässä esimerkissä jaettu Java-peliodotus tallennetaan `PrivateNamespace`:een, mikä mahdollistaa useiden asiakaspuolten vuorovaikuttaa saman pelilogiikan kanssa. Nimiavaruus toimii pelin tilan keskitettynä säiliönä varmistaen, että:
+Tässä esimerkissä jaettu Java-peliesine tallennetaan `PrivateNamespace`:iin, jolloin useat asiakkaat voivat vuorovaikuttaa saman pelilogiikan kanssa. Namespace toimii pelitilan keskitettynä säilönä varmistaen, että:
 
-- Molemmat pelaajat näkevät johdonmukaisia lautapäivityksiä
-- Vuorot synkronoidaan
-- Pelilogiikka jakautuu sessioiden kesken
+- Molemmat pelaajat näkevät johdonmukaiset lautapäivitykset
+- Vuorot ovat synkronoituja
+- Pelilogiikka jaetaan istuntojen välillä
 
-Ulkoisia palveluja (kuten REST tai WebSocketit) ei tarvita. Kaikki koordinointi tapahtuu nimiavaruuksien kautta, mikä korostaa niiden kykyä hallita jaettua tilaa reaaliajassa vähäisellä infrastruktuurilla.
+Ulkoisia palveluja (kuten REST tai WebSockets) ei tarvita. Kaikki koordinointi tehdään namespacen kautta, mikä korostaa niiden kykyä hallita jaettua tilaa reaaliajassa vähäisellä infrastruktuurilla.
 
 Tutustu koodiin: [webforj/webforj-tictactoe](https://github.com/webforj/webforj-tictactoe)
 
