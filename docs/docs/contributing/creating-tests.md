@@ -1,26 +1,53 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: Creating Tests
-description: Decide when to add tests for webforJ documentation, demos, frontend resources, and integration scenarios.
+description: Add and run tests for webforJ framework code, documentation demos, frontend resources, and integration scenarios.
 hide_giscus_comments: true
 ---
 
-Tests should match the risk of the contribution. Documentation-only wording changes usually need a docs build. Demo, sample, frontend, or behavior changes need validation that exercises the code path.
+Tests should match the risk of the contribution and run in the repository that owns the behavior. Documentation-only wording changes usually need a docs build. Framework behavior, demos, samples, and frontend logic need tests that exercise the changed code path.
 
 ## What to test {#what-to-test}
 
 | Change type | Expected validation |
 | --- | --- |
+| Framework behavior or public API | Add or update JUnit 5 tests in the affected module; run the module build |
+| Framework bug fix | Add a regression test that fails without the fix; run the full Maven build when practical |
 | Markdown or Markdown with JSX content only | Build the docs site |
 | Navigation, sidebar, redirects, or Docusaurus config | Build the docs site and verify affected links |
 | Cookbook recipe changes | Run the cookbook validation scripts |
 | Java demo or sample changes | Run Maven checks and add or update integration tests when behavior changes |
 | Frontend assets or bundler examples | Add or update frontend tests when logic changes |
-| Bug fix | Add a regression test when the behavior can be tested locally |
+
+## Framework tests {#framework-tests}
+
+The framework uses JUnit 5, with Mockito available where test doubles are needed. Put tests under the affected module's `src/test/java` directory, use the same package as the production code, and follow nearby naming and structure.
+
+From the framework repository root, run the affected module and the modules it depends on. For example:
+
+```bash
+mvn -pl webforj-components/webforj-accordion -am test
+```
+
+To select one test while building required modules, use Surefire's test filter and allow dependency modules without a matching test:
+
+```bash
+mvn -pl webforj-components/webforj-accordion -am \
+  -Dtest=AccordionTest \
+  -Dsurefire.failIfNoSpecifiedTests=false test
+```
+
+Run the same full build used by framework pull request CI before submitting a broad or shared change:
+
+```bash
+mvn install
+```
+
+Framework CI runs this build on Java 21, reports JaCoCo coverage, and compares results with thresholds of 40% overall coverage and 60% coverage for changed files. Coverage percentage doesn't replace a meaningful assertion. Test the public contract, important edge cases, and the reported failure for a bug fix.
 
 ## Documentation builds {#documentation-builds}
 
-Run the docs build from the `docs` directory:
+Run the docs build from the documentation repository's `docs` directory:
 
 ```bash
 cd docs
@@ -31,7 +58,7 @@ This catches broken links, invalid Markdown with JSX, missing imports, and Docus
 
 ## Cookbook checks {#cookbook-checks}
 
-When you edit cookbook recipes, run the relevant validation script from the `docs` directory:
+When you edit cookbook recipes, run the validation scripts from the documentation repository's `docs` directory:
 
 ```bash
 cd docs
@@ -46,9 +73,9 @@ Use the snippet report when you need more detail:
 npm run review:cookbook-snippets
 ```
 
-## Java sample and integration tests {#java-sample-and-integration-tests}
+## Documentation sample and integration tests {#documentation-sample-and-integration-tests}
 
-Run the full Maven verification from the repository root when Java samples, demo routes, or integration tests change:
+Run the full Maven verification from the documentation repository root when Java samples, demo routes, or integration tests change:
 
 ```bash
 mvn -Pen-only verify
@@ -63,10 +90,6 @@ mvn -Pen-only -Dit.test=TableSortingViewIT verify
 Add or update integration tests when a sample demonstrates interactive behavior, navigation, validation, dynamic rendering, or a previously broken path.
 
 For more details, see [Testing](/docs/testing/overview), [Frontend testing](/docs/testing/frontend-testing), and [End-to-End Testing](/docs/testing/e2e/overview).
-
-## Framework tests {#framework-tests}
-
-The Maven commands on this page apply to the documentation repository and its sample app. Framework changes belong in the [webforJ repository](https://github.com/webforj/webforj), which uses JUnit 5 tests. Run the affected module's tests and follow its [contribution guide](https://github.com/webforj/webforj/blob/main/CONTRIBUTING.md).
 
 ## When local validation isn't practical {#when-local-validation-isnt-practical}
 

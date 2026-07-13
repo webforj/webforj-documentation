@@ -1,11 +1,11 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Documentation
 description: Write and organize webforJ documentation pages, demos, links, assets, and examples consistently.
 hide_giscus_comments: true
 ---
 
-webforJ documentation should help readers complete real work with accurate explanations and runnable examples. Start from nearby pages and keep new content consistent with the section where it belongs.
+Documentation contributions are made in the [webforJ documentation repository](https://github.com/webforj/webforj-documentation). They should help readers complete real work with accurate explanations and runnable examples. Start from nearby pages and keep new content consistent with the section where it belongs.
 
 ## Repository layout {#repository-layout}
 
@@ -88,3 +88,5 @@ Avoid adding decorative images when a code sample, diagram, or short explanation
 Write in direct, practical language. Explain what the feature does, when to use it, and what tradeoffs matter. Avoid unverifiable claims, vague marketing language, and examples that rely on behavior outside the current webforJ version.
 
 Before submitting, compare the page with nearby docs for title casing, code block style, admonition use, and link patterns.
+
+When documenting a framework change, verify the behavior against the corresponding framework implementation and tests. Cross-link the documentation pull request with its framework issue or pull request so both changes can be reviewed together.

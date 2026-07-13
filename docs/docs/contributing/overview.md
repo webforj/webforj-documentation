@@ -14,14 +14,14 @@ hide_giscus_comments: true
   `}</style>
 </Head>
 
-Contributions help keep webforJ accurate, practical, and easier to use. You can help by reporting unclear documentation, proposing new topics, improving examples, adding tests, or contributing framework code.
+Contributions help keep webforJ reliable, accurate, and easier to use. You can report incorrect behavior, implement framework features, add tests, improve examples, or clarify the documentation.
 
 Start by choosing the right place for the work. This keeps issues and pull requests visible to the maintainers who can review them.
 
 | Contribution | Where to start |
 | --- | --- |
-| Documentation fixes, tutorial updates, cookbook recipes, sample apps, and docs site issues | [webforJ documentation repository](https://github.com/webforj/webforj-documentation) |
-| Framework bugs, API changes, core components, and runtime behavior | [webforJ framework repository](https://github.com/webforj/webforj) |
+| Framework bugs, API changes, components, integrations, and runtime behavior | [webforJ framework repository](https://github.com/webforj/webforj) and the [framework contribution guide](./framework) |
+| Documentation fixes, tutorial updates, cookbook recipes, sample apps, and docs site issues | [webforJ documentation repository](https://github.com/webforj/webforj-documentation) and the [documentation contribution guide](./documentation) |
 | Security reports | Use the security advisories for the affected [framework](https://github.com/webforj/webforj/security/advisories) or [documentation](https://github.com/webforj/webforj-documentation/security/advisories) repository instead of a public issue |
 
 ## Ways to contribute {#ways-to-contribute}
@@ -44,17 +44,21 @@ Describe the problem or use case before describing a solution. Include the peopl
 
 For a focused how-to topic, use the [cookbook request form](https://github.com/webforj/webforj-documentation/issues/new?template=cookbook-request.yml).
 
-### Submit a change {#submit-a-change}
+### Contribute to the framework {#contribute-to-the-framework}
 
-Small corrections can go directly to a pull request. Open an issue first for new sections, significant rewrites, demos, or behavior changes so maintainers can confirm the scope.
+Framework contributions include bug fixes, components, data APIs, integrations, build plugins, and tests. Start with the [framework contribution guide](./framework) to set up the Java 21 multi-module Maven build, locate the module that owns the behavior, and keep public API documentation and tests with the implementation.
 
-The [pull request guide](./pull-requests) covers forks, branches, descriptions, validation, and review. Framework contributors should also review the [framework contribution guide](https://github.com/webforj/webforj/blob/main/CONTRIBUTING.md) for code-specific expectations.
+### Improve the documentation {#improve-the-documentation}
+
+Documentation contributions include articles, cookbook recipes, runnable samples, assets, navigation, and site tooling. The [documentation contribution guide](./documentation) explains the repository structure and the requirements for pages and demos.
+
+Small corrections can go directly to a pull request. Open an issue first for new sections, significant rewrites, demos, or framework behavior changes so maintainers can confirm the scope. The [pull request guide](./pull-requests) covers the shared fork, branch, commit, review, and validation workflow for both repositories.
 
 ## Before opening a pull request {#before-opening-a-pull-request}
 
 Make sure the change has a clear purpose, is limited to one topic, and can be reviewed without unrelated cleanup. If the pull request closes an issue, include `Closes #<issue-number>` in the description.
 
-For documentation-only edits, build the English docs site before submitting. For Java samples, demos, or integration test changes, run the relevant Maven validation as well.
+For framework code, run the affected module tests and the full Maven build when practical. For documentation-only edits, build the English docs site. Java samples, demos, and integration test changes also require the relevant Maven validation.
 
 ## Contributor guides {#contributor-guides}
 

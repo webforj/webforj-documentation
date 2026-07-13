@@ -1,6 +1,6 @@
 # Contributing to webforJ docs
 
-The complete contribution guide is available in the [Contributing documentation](docs/docs/contributing/overview.md). It covers local setup, forks, pull requests, tests, documentation structure, and demo requirements.
+The complete [Contributing guide](docs/docs/contributing/overview.md) covers framework and documentation contributions, including local setup, forks, pull requests, tests, documentation structure, and demo requirements.
 
 Thank you for considering contributing to the webforJ documentation. Clear, accurate, and useful documentation is vital for helping others get started and stay productive with webforJ.
 
@@ -86,9 +86,9 @@ This keeps the documentation well-organized and easy to maintain.
 
 ## How to contribute
 
-Contributions can improve documentation, demos, and the framework. Fixing typos, expanding a guide, or submitting new demo apps all make webforJ better.
+Contributions can improve documentation, demos, and the framework. This repository accepts documentation and sample changes. Framework code changes are submitted to the `webforj/webforj` repository.
 
-> To contribute to webforJ itself, please see [this guide](https://github.com/webforj/webforj/blob/main/CONTRIBUTING.md).
+> To contribute to webforJ itself, follow the [Framework Contributions guide](docs/docs/contributing/framework.md). It expands on the framework repository's contribution policy with its current setup, module, formatting, and testing workflow.
 
 ### Contribution workflow
 
