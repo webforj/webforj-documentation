@@ -1,16 +1,18 @@
 # Contributing to webforJ docs
 
+The complete contribution guide is available in the [Contributing documentation](docs/docs/contributing/overview.md). It covers local setup, forks, pull requests, tests, documentation structure, and demo requirements.
+
 Thank you for considering contributing to the webforJ documentation. Clear, accurate, and useful documentation is vital for helping others get started and stay productive with webforJ.
 
 This guide will help you contribute effectively, whether you’re fixing a typo, suggesting a new section, or opening a larger pull request.
 
-Following this guide helps ensure contributions are consistent, well-scoped, and easy to review. It also shows respect for the time of the community and maintainers.
+Following this guide keeps contributions consistent, well-scoped, and easy to review. It also shows respect for the time of the community and maintainers.
 
 ---
 
 ## What contributions are welcome?
 
-We welcome:
+Accepted contributions include:
 
 - Fixes for typos, grammar, and clarity  
 - Improvements to tutorials, guides, and reference material  
@@ -19,14 +21,14 @@ We welcome:
 - Suggestions to improve developer onboarding  
 - External resources (e.g., tutorials or examples) that help the community  
 
-> You don't have to write code to contribute! Even improving or reorganizing content helps others.
+> You don't have to write code to contribute. Improving or reorganizing content also helps readers.
 
 ---
 
 ## What contributions aren't ideal?
   
 - Feature requests unrelated to documentation - open these in the [main repo](https://github.com/webforj/webforj/issues)  
-- Unverifiable examples or tutorials not based on current functionality  
+- Unverifiable examples or tutorials not based on current behavior
 
 ---
 
@@ -64,13 +66,13 @@ To report a problem with the documentation, open a [bug report](https://github.c
 - Additional observations  
 
 > **Security issues?**  
-> Please **do not** open an issue. Instead, please use [this link](https://github.com/webforj/webforj-documentation/security/advisories) and create a new security advisory there.
+> Please **don't** open an issue. Instead, use [this link](https://github.com/webforj/webforj-documentation/security/advisories) to create a security advisory.
 
 ---
 
 ## Proposing new docs or features
 
-If you want to contribute new guides or content, please use this [link to create a request for a new doc or feature](https://github.com/webforj/webforj-documentation/issues/new?template=bug_report.yml), and include the following:
+If you want to contribute new guides or content, please use this [link to create a request for a new doc or feature](https://github.com/webforj/webforj-documentation/issues/new?template=feature_request.yml), and include the following:
 
 - A suggested title(if the enhancement is a new documentation article), or the current title if the request applies to an existing article
 - Explain why it's useful and what it covers  
@@ -78,13 +80,13 @@ If you want to contribute new guides or content, please use this [link to create
 - Label the enhancement according to its type
 - Additional notes
 
-This helps us keep the documentation well-organized and easy to maintain.
+This keeps the documentation well-organized and easy to maintain.
 
 ---
 
 ## How to contribute
 
-We welcome contributions to improve our documentation, demos, and framework. Whether you’re fixing typos, expanding a guide, or submitting new demo apps, every contribution helps make webforJ better for everyone.
+Contributions can improve documentation, demos, and the framework. Fixing typos, expanding a guide, or submitting new demo apps all make webforJ better.
 
 > To contribute to webforJ itself, please see [this guide](https://github.com/webforj/webforj/blob/main/CONTRIBUTING.md).
 
@@ -98,17 +100,17 @@ We welcome contributions to improve our documentation, demos, and framework. Whe
 
 ### Contributing to the documentation articles
 
-All documentation content lives in Markdown/MDX format inside the docs/ folder and is powered by Docusaurus. To contribute to any page, you’ll need to set up the project locally.
+All documentation content uses Markdown or Markdown with JSX inside the `docs` folder and is powered by Docusaurus. To contribute to a page, set up the project locally.
 
 To see the required to get docusaurus up and running, as well as how to use the development server, and other development need-to-knows, start with [this article](https://docusaurus.io/docs/installation).
 
 ### Contributing to the demos
 
-We use self-contained demo applications to illustrate how to use webforJ. If you’d like to contribute new examples or improve existing ones, you’ll need to set up a local webforJ development environment.
+Self-contained demo apps illustrate how to use webforJ. To contribute new examples or improve existing ones, set up a local webforJ development environment.
 
 See [this article](https://docs.webforj.com/docs/introduction/prerequisites) for a more in-depth guide to setting up a project. You will need:
 
-- Java 17 or higher
+- Java 21 or higher
 - Maven
 - Jetty plugin or servlet container
 
@@ -128,36 +130,33 @@ Pull requests are reviewed by the documentation team. Please:
 - Break large changes into smaller PRs when possible  
 - Respond to review comments promptly  
 
-To help with these goals, we use various tools and plugins to keep writing style cohesive, code clean, and PRs manageable.
+The following tools keep writing cohesive, code clean, and pull requests manageable.
 
-## Tools we're using
+## Tools
 
-We use the following tools when creating code for demos, or writing documentation articles to keep a consistent tone and keep documentation as high quality as possible.
+Use these tools when creating demo code or writing documentation articles.
 
-### SonarLint
+### Static analysis
 SonarLint is a static analysis tool that helps catch common bugs, anti-patterns, and style issues in real-time. It integrates with your IDE and provides immediate feedback while you're writing Java example code.
 
 - VS Code: [SonarLint Extension](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode)
 - IntelliJ IDEA: [SonarLint Plugin](https://plugins.jetbrains.com/plugin/7973-sonarqube-for-ide)
 
-### Code Formatting (Google Java Style)
-We follow the Google Java Style Guide when formatting Java code in webforJ documentation and examples. This helps keep the codebase uniform and easy to read for all contributors.
+### Code formatting
+Java code in webforJ documentation and examples follows the Google Java Style Guide. This keeps the codebase uniform and readable.
 
 You can download the formatter configuration file [here](https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml)
 
-### Checkstyle
-Checkstyle is another tool we use to enforce code style and formatting. It checks your Java code against defined rules and ensures it aligns with project standards (which follow Google’s rules).
+### Spotless
+The Maven build uses Spotless with Google Java Format to validate Java files in `src/main/java` and `src/test/java`.
 
-- VS Code: [Checkstyle for Java](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle)
-- IntelliJ IDEA: [CheckStyle-IDEA Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea)
-
-Example code in webforJ documentation should pass Checkstyle validation before being submitted.
+Run `mvn spotless:check` before submitting Java changes. Use `mvn spotless:apply` to format files that fail validation.
 
 ### Vale for prose linting
-Vale is a syntax-aware prose linter used to enforce grammar, style, and consistency across all Markdown and MDX documentation in the webforJ project.
+Vale is a syntax-aware prose linter used to enforce grammar, style, and consistency across all Markdown and Markdown with JSX documentation in the webforJ project.
 
-We use a custom Vale configuration (.vale.ini) with rules that match our internal style guide (e.g., consistent casing, word choice, tone). This helps ensure that contributions remain clear and aligned with the rest of the site.
+Pull request CI runs Vale with the repository configuration in `.vale.ini`. Resolve all alerts in changed prose files before submitting.
 
 ### Conventional commits
 
-We use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) (`fix:`, `docs:`, `refactor:`, `chore:`, etc.) where appropriate.
+Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) (`fix:`, `docs:`, `refactor:`, `chore:`, etc.) where appropriate.

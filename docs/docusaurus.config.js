@@ -337,9 +337,9 @@ module.exports = async function createConfig() {
               activeBasePath: 'docs/client-components/overview'
             },
             {
-              label: "Contribution Guide",
-              href: 'https://github.com/webforj/webforj/blob/main/CONTRIBUTING.md',
-              rel: null,
+              label: "Contributing",
+              to: '/docs/contributing/overview',
+              activeBasePath: '/docs/contributing',
             },
           ]
         },
