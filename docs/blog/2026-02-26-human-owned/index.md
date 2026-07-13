@@ -11,7 +11,7 @@ hide_table_of_contents: false
 <!-- vale webforJ.BeDirect = NO -->
 
 As AI coding tools, assistants, and agents become increasingly powerful, professional engineers and casual vibe coders alike can go from concept to compilation faster than ever before.
-On top of that, meta-prompting systems like [get-shit-done](https://github.com/glittercowboy/get-shit-done) and [Auto-Claude](https://github.com/AndyMik90/Auto-Claude) automate entire development workflows, so that the AI doesn't just write the code, but verifies it as well. 
+On top of that, meta-prompting systems like [get-shit-done](https://github.com/glittercowboy/get-shit-done) and [Auto-Claude](https://github.com/AndyMik90/Auto-Claude) automate entire development workflows, so that the AI doesn't just write the code, but verifies it as well.
 
 AI tools certainly accelerate output, and are very impressive at first glance.
 But what impact are they having on code quality?
@@ -25,7 +25,7 @@ This is why we've made a strategic choice at webforJ: **AI-assisted development,
 
 <!-- truncate -->
 
-## The quantity
+## The quantity {#the-quantity}
 
 As you might expect, there is plenty of data tracking the impact of AI on software development.
 For instance, GitHub's annual [Octoverse Report](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) analyzes developer trends, providing insight into the use of AI on the platform.
@@ -42,7 +42,7 @@ This increase in output comes alongside increased usage of AI. GitHub's analysis
 - Almost 80% of new developers started using GitHub Copilot within their first week
 
 These numbers compound on the growth already seen in 2024, when [GitHub's report](https://github.blog/news-insights/octoverse/octoverse-2024/) also showed significant growth in AI development:
-- 98% increase in generative AI projects on GitHub 
+- 98% increase in generative AI projects on GitHub
 - 59% increase in contributions to these projects
 
 Along with the increase in AI-related projects and developer output, the use of AI tools for development has become normalized through widespread adoption.
@@ -50,10 +50,10 @@ According to over 49,000 responses to [StackOverflow's 2025 Developer Survey](ht
 
 These trends reveal that AI tools are extremely popular, and that they're creating a tangible impact on code volume.
 
-## The quality
+## The quality {#the-quality}
 
-So what about the quality of all this code? 
-Does the flood of commits stand up to scrutiny? 
+So what about the quality of all this code?
+Does the flood of commits stand up to scrutiny?
 These questions have been top of mind for many developers, and emerging research is starting to answer them.
 
 StackOverflow's 2025 Developer survey found that positive sentiment toward AI tools dropped in 2025, falling to only **60% positive sentiment**.
@@ -74,10 +74,10 @@ Only 4% responded that they haven't encountered any problems when using AI tools
 In addition, the METR study [*Measuring the Impact of Early 2025 AI on Experienced Open-Source Developer Productivity*](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) found that experienced developers in large open source codebases took **19% longer** to complete tasks with the help of AI tools than without.
 <!-- vale Google.Acronyms = YES -->
 
-### Maintainability
+### Maintainability {#maintainability}
 
 GitClear analyzed over 200 million lines of code written between 2020 and 2024 in their [AI Copilot Code Quality](https://www.gitclear.com/ai_assistant_code_quality_2025_research) study.
-They found that in 2024, copy/pasted lines of code exceeded moved lines of code for the first time, indicating **less refactoring** and **worse code reuse**. 
+They found that in 2024, copy/pasted lines of code exceeded moved lines of code for the first time, indicating **less refactoring** and **worse code reuse**.
 From 2020 to 2024, they found that code reuse, as measured in moved lines, has decreased from 25% of all changes to less than 10% of all changes.
 In just one year from 2023 to 2024, the percentage of commits that contained duplicated blocks of code rose dramatically, from just 1.8% to 6.6%.
 Duplicated code blocks create technical debt and place undue burden on future developers, who have to find duplicated sections and determine whether they should all be updated, or if they serve different functions.
@@ -87,13 +87,13 @@ They found a 2.6x increase in formatting problems, and almost twice as many nami
 
 These issues make codebases more difficult to maintain, and increase the risk of future errors.
 
-### Security 
+### Security {#security}
 
 CodeRabbit's study found a **2.74x increase in security issues** in AI-written PRs.
 The most common issues were improper password handling, insecure object references, cross-site scripting issues (XSS), and insecure deserialization.
 These aren't AI-specific vulnerabilities, but the use of AI seems to increase their frequency.
 
-#### Slopsquatting
+#### Slopsquatting {#slopsquatting}
 
 In addition to increased prevalence of traditional vulnerabilities, AI also opens up new potential attack vectors that exploit the possibility of developers shipping un-reviewed code.
 Large Language Models sometimes "hallucinate" information, including dependencies and package names.
@@ -103,25 +103,25 @@ This practice is called [slopsquatting](https://en.wikipedia.org/wiki/Slopsquatt
 The research paper [*We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs*](https://arxiv.org/abs/2406.10279) found that almost **20% of recommended packages** across more than half a million code samples **didn't exist**.
 Many of the package names appeared every time the same prompt was given, making it easy for attackers to identify common hallucinations.
 
-### Performance
+### Performance {#performance}
 
 CodeRabbit's study found that AI-written PRs were more likely to create performance issues, with **7x more excessive I/O operations** in the form of unnecessary file reads, repeated network calls, or unbatched operations.
 They suggest that this may be due to AI's preference for clarity and simple patterns at the cost of larger-scale efficiency.
 
-## AI upside
+## AI upside {#ai-upside}
 
 This isn't all to say that AI shouldn't be used as a coding tool.
 In fact, given the pace of improvement and adoption, it's crucial to learn how to use it safely and effectively.
 AI *can* improve both output and the developer's experience, provided that care is taken to avoid these common pitfalls.
 
-## webforJ's AI policy
+## webforJ's AI policy {#webforjs-ai-policy}
 
 AI coding assistants are dramatically changing the way that people create software, and the engineers at webforJ are no exception.
 We're excited to make use of these new tools and capabilities, but we're strongly committed to our policy of **AI-assisted development, and human-owned code**.
 We use AI in many parts of our development cycle, including generating boilerplate, writing tests, updating dependencies, drafting documentation, creating sample programs, and exploring architectural alternatives.
 But regardless of what the development process looks like, **we only ship code that passes human review** and quality assurance checks.
 
-### Where is AI most useful?
+### Where is AI most useful? {#where-is-ai-most-useful}
 
 Research into AI's impact on software development gives some hints as to where AI can be most effective, and where it's important to exercise caution.
 An initial commit might be ready in a matter of minutes, but we have to make sure it isn't imposing higher costs in review and maintenance.
@@ -134,7 +134,7 @@ This means that we can only allow AI to play a limited part in development, and 
 
 Outside of the core, the benefits of AI really shine in **exploration and experimentation**, **demos and samples**, **testing**, and **documentation**.
 
-#### Exploration and experimentation
+#### Exploration and experimentation {#exploration-and-experimentation}
 
 Exploration is one of our top uses of AI.
 Without AI tools, spending time and resources exploring new paths requires a high level of certainty that they will result in useful outcomes.
@@ -143,7 +143,7 @@ Once a promising path is identified, engineers can do their usual work of creati
 
 Because these experiments aren't connected to our core code, they have **low risk and high reward**, letting us focus on speed and turnaround time without worrying about the impact on our codebase.
 
-#### Demos and samples
+#### Demos and samples {#demos-and-samples}
 
 Demos and samples are another one of the best areas to use AI, because they're **low-risk** and **self-contained**.
 AI tools struggle the most in high-complexity environments where they need to integrate with the logic and style of a larger system.
@@ -155,7 +155,7 @@ Not only is this a low-risk area to make use of AI, but doing so also provides u
 Since AI usage has become the norm, we expect that webforJ users are also using AI in the development of their Java-based web applications.
 By putting ourselves in their shoes, we can uncover problems and ensure that webforJ works with AI as smoothly as possible.
 
-#### Testing
+#### Testing {#testing}
 
 Testing is another area where AI has improved our workflow.
 Unit tests are crucial for verifying software stability, but writing them can be boring and repetitive, because many tests follow very similar patterns.
@@ -163,7 +163,7 @@ However, AI is particularly good at **repetitive** and **predictable** tasks, be
 We can simply teach the AI how we write our unit tests, and it will create new tests following the same patterns.
 Engineers review the output for accuracy, and don't have to re-write the same boilerplate code over and over.
 
-#### Documentation
+#### Documentation {#documentation}
 
 Documentation includes both Javadocs and our [online documentation](https://docs.webforj.com/docs/introduction/getting-started), and AI can assist with both to varying degrees.
 Generating Javadoc comments with AI is especially useful, because it's **time-consuming** work for humans, **simple for AI**, and **easy to verify**.
@@ -172,16 +172,16 @@ Engineers can focus on the API implementation, offload Javadocs to the AI, and e
 We aren't able to rely as heavily on AI in the rest of our documentation, but it can still assist with the boilerplate code for many pages and provide initial rough drafts.
 This is an area where strict style guides and review processes ensure that, regardless of the workflow used to create a page, the final product meets our standards.
 
-## How webforJ supports your use of AI
+## How webforJ supports your use of AI {#how-webforj-supports-your-use-of-ai}
 
 In addition to our own use of AI, the prevalence of AI tools means that our webforJ users are using AI, too.
 Because of this, we're always looking for ways to improve the experience of developers using webforJ with these tools.
 One of the best ways to start using AI in your webforJ development is with the dedicated [webforJ MCP server](/docs/ai-tooling/mcp).
 The [Model Context Protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol) (MCP) is an open standard for integrating LLMs with external data sources.
-The webforJ MCP Server gives your AI direct access to the webforJ documentation and verified code samples, making its responses more relevant and accurate. 
+The webforJ MCP Server gives your AI direct access to the webforJ documentation and verified code samples, making its responses more relevant and accurate.
 By integrating it into your workflow, you can avoid many of the pitfalls of AI-generated code and accelerate the development of your own app.
 
-webforJ also provides a collection of [webforJ agent skills](/docs/ai-tooling/agent-skills), which can teach AIs to perform webforJ-related tasks correctly. 
+webforJ also provides a collection of [webforJ agent skills](/docs/ai-tooling/agent-skills), which can teach AIs to perform webforJ-related tasks correctly.
 By adding these to your workflow, you can keep your AI tools on track, largely eliminating guesswork and hallucinations.
 Your AI will have clear, explicit instructions and resources to help them do common tasks like modifying webforJ themes or creating custom webforJ components.
 

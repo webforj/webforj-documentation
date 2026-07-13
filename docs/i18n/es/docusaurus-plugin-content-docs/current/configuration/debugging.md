@@ -1,9 +1,12 @@
 ---
 title: Debugging
-sidebar_position: 1
-_i18n_hash: 057e00d21a3392bb3bf8d1fba1dea15f
+sidebar_position: 15
+description: >-
+  Attach a remote Java debugger to a running webforJ app from Visual Studio
+  Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+_i18n_hash: d418992cee0dea04f98e4d4760acc2db
 ---
-La depuración es una parte esencial del desarrollo en Java, ayudando a los desarrolladores a identificar y solucionar problemas de manera eficiente. Esta guía explica cómo configurar la depuración en webforJ para Visual Studio Code, IntelliJ IDEA y Eclipse.
+Depuración es una parte esencial del desarrollo en Java, ayudando a los desarrolladores a identificar y solucionar problemas de manera eficiente. Esta guía explica cómo configurar la depuración en webforJ para Visual Studio Code, IntelliJ IDEA y Eclipse.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -15,8 +18,8 @@ La depuración es una parte esencial del desarrollo en Java, ayudando a los desa
 </div>
 
 1. Abre tu proyecto de webforJ en VS Code.
-2. Presiona <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (o <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> en Mac) para abrir el panel de Ejecución y Depuración.
-3. Haz clic en "crear un archivo launch.json"
+2. Presiona <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (o <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> en Mac) para abrir el panel Ejecutar y Depurar.
+3. Haz clic en "crear un archivo launch.json".
 4. Selecciona Java como el entorno.
 5. Modifica `launch.json` para que coincida con lo siguiente:
 
@@ -26,7 +29,7 @@ La depuración es una parte esencial del desarrollo en Java, ayudando a los desa
   "configurations": [
     {
       "type": "java",
-      "name": "Adjuntar a Jetty",
+      "name": "Attach to Jetty",
       "request": "attach",
       "hostName": "localhost",
       "port": 8000
@@ -47,10 +50,10 @@ La depuración es una parte esencial del desarrollo en Java, ayudando a los desa
 </div>
 
 1. Abre tu proyecto en IntelliJ IDEA.
-2. Navega a Ejecutar → Editar configuraciones.
-3. Haz clic en el botón <kbd>+</kbd> y selecciona Depuración remota de JVM.
-4. Establece el host como `localhost` y el puerto como `8000`.
-5. Guarda la configuración y haz clic en Depurar para adjuntarte a la aplicación en ejecución.
+2. Navega a Ejecutar → Editar Configuraciones.
+3. Haz clic en el botón <kbd>+</kbd> y selecciona Depuración Remota de JVM.
+4. Establece el host en `localhost` y el puerto en `8000`.
+5. Guarda la configuración y haz clic en Depurar para conectar a la aplicación en ejecución.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -62,9 +65,9 @@ La depuración es una parte esencial del desarrollo en Java, ayudando a los desa
 </div>
 
 1. Abre tu proyecto en Eclipse.
-2. Ve a Ejecutar → Editar configuraciones.
+2. Ve a Ejecutar → Editar Configuraciones.
 3. Selecciona Aplicación Java Remota.
-4. Haz clic en Nueva configuración y establece:
+4. Haz clic en Nueva Configuración y establece:
    - Host: `localhost`
    - Puerto: `8000`
 5. Guarda y comienza el depurador.
@@ -76,13 +79,13 @@ La depuración es una parte esencial del desarrollo en Java, ayudando a los desa
 
 Una vez que hayas configurado tu IDE:
 
-1. Inicia tu aplicación webforJ usando el comando correspondiente: 
-    - Para Jetty, usa `mvnDebug jetty:run` 
+1. Inicia tu aplicación webforJ utilizando el comando correspondiente:
+    - Para Jetty, usa `mvnDebug jetty:run`
     - Para Spring Boot, usa `mvnDebug spring-boot:run`
 2. Ejecuta la configuración de depuración en tu IDE.
-3. Establece puntos de ruptura y comienza a depurar.
+3. Establece puntos de interrupción y comienza la depuración.
 
 :::tip Consejos de Depuración
-1. Asegúrate de que el puerto 8000 esté disponible y no esté bloqueado por ningún cortafuegos.
+1. Asegúrate de que el puerto 8000 esté disponible y no esté bloqueado por ningún firewall.
 2. Si estás utilizando alguno de los arquetipos de webforJ y has cambiado el número de puerto en el archivo pom.xml, asegúrate de que el puerto utilizado para la depuración coincida con el valor actualizado.
 :::

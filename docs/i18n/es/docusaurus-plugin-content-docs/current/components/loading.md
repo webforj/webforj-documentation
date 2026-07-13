@@ -1,59 +1,62 @@
 ---
 title: Loading
 sidebar_position: 65
-_i18n_hash: c81b8d0ced3e4097693a186a05f18dbf
+description: >-
+  Overlay a parent container with the Loading component to block interaction
+  during async tasks, with backdrop and spinner customization.
+_i18n_hash: e17c9249d41752ed1f4b98d18028371a
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-loading" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="loading" location="com/webforj/component/loading/Loading" top='true'/>
 
-El componente `Loading` muestra una superposición en un componente o área específica, señalando que una operación está en progreso y bloqueando temporalmente la interacción. Funciona bien para tareas como la carga de datos, cálculos o procesos en segundo plano. Para procesos globales en toda la aplicación, el componente [`BusyIndicator`](../components/busyindicator) cubre toda la interfaz.
+El componente `Loading` muestra una superposición sobre un componente o área específica, señalando que una operación está en curso y bloqueando temporalmente la interacción. Funciona bien para tareas como carga de datos, cálculos o procesos en segundo plano. Para procesos globales en la aplicación, el componente [`BusyIndicator`](../components/busyindicator) cubre toda la interfaz.
 
 <!-- INTRO_END -->
 
-## Básicos {#basics}
+## Basics {#basics}
 
-La forma más sencilla de crear un componente `Loading` es inicializándolo sin configuraciones adicionales. Por defecto, esto muestra un spinner básico sobre su contenido padre. Sin embargo, también puedes proporcionar un mensaje para más contexto.
+La forma más simple de crear un componente `Loading` es inicializándolo sin ninguna configuración adicional. Por defecto, esto muestra un spinner básico sobre su contenido padre. Sin embargo, también puedes proporcionar un mensaje para dar más contexto.
 
-Aquí hay un ejemplo de crear un componente `Loading` con un mensaje:
+Aquí hay un ejemplo de cómo crear un componente `Loading` con un mensaje:
 
 <ComponentDemo
 path='/webforj/loadingdemo'
 files={[
-  'src/main/java/com.webforj/samples/views/loading/LoadingDemoView.java',
-  'src/main/resources/static/css/loadingstyles/loadingdemo.css',
+  'src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java',
+  'src/main/frontend/css/loadingstyles/loadingdemo.css',
 ]}
 height='300px'
 />
 
-## Alcance {#scoping}
+## Scoping {#scoping}
 
-El componente `Loading` en webforJ puede limitar su alcance a un contenedor padre específico, como un `Div`, asegurando que solo bloquee la interacción del usuario dentro de ese elemento. Por defecto, el componente `Loading` es relativo a su padre, lo que significa que se superpone al componente padre en lugar de a toda la aplicación.
+El componente `Loading` en webforJ puede limitarse a un contenedor padre específico, como un `Div`, asegurando que solo bloquee la interacción del usuario dentro de ese elemento. Por defecto, el componente `Loading` es relativo a su padre, lo que significa que se superpone al componente padre en lugar de a toda la aplicación.
 
-Para limitar el componente `Loading` a su padre, simplemente agrega el componente `Loading` al contenedor padre. Por ejemplo, si lo agregas a un `Div`, la superposición de carga se aplica solo a ese `Div`:
+Para limitar el componente `Loading` a su padre, simplemente añade el componente `Loading` al contenedor padre. Por ejemplo, si lo añades a un `Div`, la superposición de carga se aplica solo a ese `Div`:
 
 ```java
-Div parentDiv = new Div();  
+Div parentDiv = new Div();
 parentDiv.setStyle("position", "relative");
 Loading loading = new Loading();
 parentDiv.add(loading);
 loading.open();  // Loading solo bloqueará la interacción dentro de parentDiv
 ```
 
-## Fondo {#backdrop}
+## Backdrop {#backdrop}
 
-El componente `Loading` en webforJ te permite mostrar un fondo para bloquear la interacción del usuario mientras un proceso está en curso. Por defecto, el componente activa el fondo, pero tienes la opción de desactivarlo si es necesario.
+El componente `Loading` en webforJ te permite mostrar un fondo para bloquear la interacción del usuario mientras un proceso está en curso. Por defecto, el componente habilita el fondo, pero tienes la opción de desactivarlo si es necesario.
 
-Para el componente `Loading`, el fondo es visible por defecto. Puedes habilitarlo explícitamente o apagarlo utilizando el método `setBackdropVisible()`:
+Para el componente `Loading`, el fondo es visible por defecto. Puedes habilitarlo o desactivarlo explícitamente utilizando el método `setBackdropVisible()`:
 
 ```java
 Loading loading = new Loading();
 loading.setBackdropVisible(false);  // Desactiva el fondo
 loading.open();
 ```
-:::info Fondo apagado
-Incluso cuando apagas el fondo, el componente `Loading` sigue bloqueando la interacción del usuario para garantizar que el proceso subyacente se complete sin interrupciones. El fondo simplemente controla la superposición visual, no el comportamiento de bloqueo de interacción.
+:::info Fondo Desactivado
+Incluso cuando desactivas el fondo, el componente `Loading` continúa bloqueando la interacción del usuario para garantizar que el proceso subyacente se complete sin interrupciones. El fondo simplemente controla la superposición visual, no el comportamiento de bloqueo de interacción.
 :::
 
 ## `Spinner` {#spinner}
@@ -65,22 +68,22 @@ Aquí hay un ejemplo de cómo puedes personalizar el spinner dentro de un compon
 <ComponentDemo
 path='/webforj/loadingspinnerdemo'
 files={[
-  'src/main/java/com.webforj/samples/views/loading/LoadingSpinnerDemoView.java',
-  'src/main/resources/static/css/loadingstyles/loadingspinnerdemo.css',
+  'src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java',
+  'src/main/frontend/css/loadingstyles/loadingspinnerdemo.css',
 ]}
 height='300px'
 />
 
-## Casos de uso {#use-cases}
-- **Recuperación de datos**  
-   Al recuperar datos de un servidor o API, el componente `Loading` superpone una sección específica de la interfaz de usuario, como una tarjeta o formulario, para informar a los usuarios que el sistema está trabajando en segundo plano. Esto es ideal cuando deseas mostrar progreso en solo una parte de la pantalla sin bloquear toda la interfaz.
+## Use cases {#use-cases}
+- **Recuperación de Datos**
+   Al recuperar datos de un servidor o API, el componente `Loading` superpone una sección específica de la UI, como una tarjeta o formulario, para informar a los usuarios que el sistema está trabajando en segundo plano. Esto es ideal cuando deseas mostrar el progreso en solo una parte de la pantalla sin bloquear toda la interfaz.
 
-- **Carga de contenido en tarjetas/secciones**  
-   El componente `Loading` puede limitarse a áreas específicas de una página, como tarjetas individuales o contenedores. Esto es útil cuando deseas indicar que una sección particular de la interfaz de usuario aún se está cargando mientras permites que los usuarios interactúen con otras partes de la página.
+- **Carga de Contenido en Tarjetas/Secciones**
+   El componente `Loading` puede limitarse a áreas específicas de una página, como tarjetas individuales o contenedores. Esto es útil cuando deseas indicar que una sección particular de la UI aún se está cargando mientras permites que los usuarios interactúen con otras partes de la página.
 
-- **Envíos de formularios complejos**  
-   Para envíos de formularios más largos donde la validación o el procesamiento toma tiempo, el componente `Loading` proporciona retroalimentación visual a los usuarios, asegurándoles que su entrada se está procesando activamente.
+- **Envíos de Formularios Complejos**
+   Para envíos de formularios más largos donde la validación o el procesamiento lleva tiempo, el componente `Loading` proporciona retroalimentación visual a los usuarios, asegurándoles que su entrada se está procesando activamente.
 
-## Estilo {#styling}
+## Styling {#styling}
 
 <TableBuilder name="Loading" />

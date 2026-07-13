@@ -3,9 +3,9 @@ title: Maven Jetty plugin
 description: Tune the Maven Jetty plugin scan interval and webforJ reload properties to enable hot redeployment during webforJ development.
 ---
 
-The Maven Jetty plugin is a popular tool that allows developers to run Java web apps within an embedded Jetty server directly from their Maven projects. 
+The Maven Jetty plugin is a popular tool that allows developers to run Java web apps within an embedded Jetty server directly from their Maven projects.
 
-The Jetty Plugin launches an embedded Jetty server that monitors your app’s files, including Java classes and resources, for changes. When it detects updates, it automatically redeploys the app, which speeds up development by eliminating manual build and deployment steps. 
+The Jetty Plugin launches an embedded Jetty server that monitors your app’s files, including Java classes and resources, for changes. When it detects updates, it automatically redeploys the app, which speeds up development by eliminating manual build and deployment steps.
 
 :::tip Frontend changes
 Changes under `src/main/frontend` are handled by the [frontend watch](/docs/configuration/deploy-reload/frontend-watch), which rebuilds them and refreshes the browser alongside the server.

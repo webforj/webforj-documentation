@@ -16,7 +16,7 @@ For page events that can't be controlled directly, the router doesn't interfere 
 
 ```java
 PageEventOptions options = new PageEventOptions();
-options.setCode(""" 
+options.setCode("""
   event.preventDefault();
   return true;
   """);

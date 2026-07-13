@@ -162,7 +162,7 @@ Option dialogs provide a way to present users with choices or prompt them for co
   <GalleryCard header="ConfirmDialog" href="option-dialogs/confirm" image="/img/components/light/ConfirmDialog.webp" imageDark="/img/components/dark/ConfirmDialog.webp">
     <p>A dialog component that asks the user to confirm or cancel an action, typically providing `Yes` and `No` or `OK` and `Cancel` buttons.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="InputDialog" href="option-dialogs/input" image="/img/components/light/InputDialog.webp" imageDark="/img/components/dark/InputDialog.webp">
     <p>A dialog component that prompts the user to input text or data, typically providing an input field along with action buttons like `OK` and `Cancel`.</p>
   </GalleryCard>
@@ -212,7 +212,7 @@ This category includes components that facilitate user interactions and visually
   <GalleryCard header="DesktopNotification" href="desktop-notification" image="/img/components/light/DesktopNotification.webp" imageDark="/img/components/dark/DesktopNotification.webp">
     <p>A component that leverages the browser’s native Notification API to alert users with custom desktop notifications.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="Navigator" href="navigator" image="/img/components/light/Navigator.webp" imageDark="/img/components/dark/Navigator.webp">
     <p>A customizable pagination component for navigating through data sets, supporting layouts with first, last, next, previous buttons, and quick jump fields.</p>
   </GalleryCard>
@@ -248,7 +248,7 @@ This category includes components that facilitate user interactions and visually
   <GalleryCard header="Terminal" href="terminal" image="/img/components/light/Terminal.webp" imageDark="/img/components/dark/Terminal.webp">
     <p>A component that simulates a command-line interface (CLI) within the app, allowing users to input and execute text-based commands.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="InfiniteScroll" href="infinitescroll" image="/img/components/light/InfiniteScroll.webp" imageDark="/img/components/dark/InfiniteScroll.webp">
     <p>A component that loads more items on scroll, shows a loader, and tracks when all content is fetched.</p>
   </GalleryCard>
@@ -260,15 +260,15 @@ This category includes components that facilitate user interactions and visually
   <GalleryCard header="Tree" href="tree" image="/img/components/light/Tree.webp" imageDark="/img/components/dark/Tree.webp">
     <p>A component for displaying hierarchical data, letting users expand, collapse, and interact with nested items.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="Avatar" href="avatar" image="/img/components/light/Avatar.webp" imageDark="/img/components/dark/Avatar.webp">
     <p>A component for displaying user profile pictures or initials, with support for different sizes, shapes, and themes.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="MarkdownViewer" href="markdownviewer" image="/img/components/light/MarkdownViewer.webp" imageDark="/img/components/dark/MarkdownViewer.webp">
     <p>A component for displaying markdown content with progressive character-by-character rendering, ideal for AI chat interfaces and streaming text.</p>
   </GalleryCard>
-  
+
 </GalleryGrid>
 
 

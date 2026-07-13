@@ -1,26 +1,26 @@
 ---
 sidebar_position: 3
 title: Reporters
-_i18n_hash: 0cb57295142e37eff340531d120b3566
+description: >-
+  Surface validation outcomes through the DefaultBindingReporter or attach
+  custom reporters to bindings with the useReporter callback.
+_i18n_hash: e642fa150e90534cdaef8bb0955d4ff0
 ---
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+Los reporteros de validación se utilizan para proporcionar retroalimentación sobre el proceso de validación a la interfaz de usuario. Esta característica es esencial para informar a los usuarios sobre los resultados de la validación de su entrada, particularmente en formularios complejos o aplicaciones intensivas en datos.
 
-Validation reporters are used for providing feedback about the validation process to the user interface. This feature is essential for informing users about the results of their input validation, particularly in complex forms or data-intensive applications.
+## ¿Qué es un reportero de validación? {#whats-a-validation-reporter}
 
-## ¿Qué es un validador de informes? {#whats-a-validation-reporter}
+Un reportero de validación es un componente que procesa y muestra los resultados de las validaciones a los usuarios. Actúa como un puente entre la lógica de validación y la interfaz de usuario, asegurando que los resultados de la validación se comuniquen de manera efectiva y clara.
 
-Un validador de informes es un componente que procesa y muestra los resultados de las validaciones a los usuarios. Actúa como un puente entre la lógica de validación y la interfaz de usuario, asegurando que los resultados de la validación se comuniquen de manera efectiva y clara.
-
-:::tip Componentes básicos Reportero predeterminado
-webforJ incluye el `DefaultBindingReporter`, un reportero de uniones predeterminado diseñado para funcionar sin problemas con todos los componentes principales de webforJ. Este reportero integrado muestra automáticamente errores de validación, eliminando la necesidad de una implementación personalizada en muchos casos. Dependiendo de la configuración del componente, el `DefaultBindingReporter` muestra los errores de validación directamente como un popover o en línea, justo debajo del componente. Esta característica simplifica significativamente el proceso de informes de errores, asegurando una comunicación clara y directa de los errores de validación, y mejora la experiencia del usuario al proporcionar una retroalimentación inmediata y específica sobre la validación de entrada.
+:::tip Reportero por defecto de componentes principales
+webforJ incluye el `DefaultBindingReporter`, un reportero de vinculaciones predeterminado diseñado para funcionar sin problemas con todos los componentes principales de webforJ. Este reportero integrado muestra automáticamente los errores de validación, eliminando la necesidad de una implementación personalizada en muchos casos. Dependiendo de la configuración del componente, el `DefaultBindingReporter` muestra los errores de validación directamente como un popover o en línea, justo debajo del componente. Esta característica simplifica significativamente el proceso de reporteo de errores, asegurando una comunicación clara y directa de los errores de validación, y mejora la experiencia del usuario al proporcionar retroalimentación inmediata y sensible al contexto sobre la validación de la entrada.
 :::
 
-## Configurando reporteros de validación {#configuring-validation-reporters}
+## Configuración de reporteros de validación {#configuring-validation-reporters}
 
-Puedes configurar reporteros de validación dentro del contexto de unión para personalizar cómo se presentan los mensajes. Típicamente, implementarías un reportero de validación para agregar resultados de validación y luego mostrarlos de una manera amigable para el usuario, como resaltando campos incorrectos, mostrando mensajes de error o actualizando indicadores de estado.
+Puedes configurar reporteros de validación dentro del contexto de vinculación para personalizar cómo se presentan los mensajes. Típicamente, implementarías un reportero de validación para agregar resultados de validación y luego mostrarlos de manera amigable para el usuario, como destacar campos incorrectos, mostrar mensajes de error o actualizar indicadores de estado.
 
-Aquí tienes un ejemplo de cómo configurar un reportero de validación para un campo
+Aquí hay un ejemplo de cómo configurar un reportero de validación para un campo
 
 <Tabs>
 <TabItem value="UserRegistration" label="UserRegistration.java">
@@ -29,7 +29,7 @@ Aquí tienes un ejemplo de cómo configurar un reportero de validación para un 
 @StyleSheet("ws://css/styles.css")
 public class UserRegistration extends App {
   Div errors = new Div();
-  TextField emailField = new TextField("Dirección de correo electrónico");
+  TextField emailField = new TextField("Email Address");
 
   FlexLayout layout = FlexLayout.create(emailField, errors).vertical().build();
 
@@ -43,7 +43,7 @@ public class UserRegistration extends App {
     BindingContext<User> context = new BindingContext<>(User.class);
     context.bind(emailField, "email")
         .useValidator(
-            Validator.from(new EmailValidator(), "Mensaje personalizado para dirección de correo electrónico inválida"))
+            Validator.from(new EmailValidator(), "Mensaje personalizado para dirección de correo electrónico no válida"))
         .useReporter((validationResult, binding) -> {
           errors.setVisible(!validationResult.isValid());
 
@@ -87,7 +87,7 @@ public class User {
   public String getPassword() {
     return password;
   }
-  
+
   public void setPassword(String password) {
     this.password = password;
   }
@@ -115,4 +115,4 @@ public class User {
 </TabItem>
 </Tabs>
 
-En el código anterior, la unión de correo electrónico incorpora un reportero personalizado que muestra directamente los mensajes de validación debajo del campo de entrada. Esta configuración utiliza el método `useReporter`, que configura cómo la unión maneja y presenta los resultados de validación. Este método vincula efectivamente la lógica de validación a la interfaz de usuario, asegurando que cualquier problema de validación sea inmediatamente visible para el usuario, mejorando la interactividad del formulario y la experiencia del usuario.
+En el código anterior, la vinculación de correo electrónico incorpora un reportero personalizado que muestra directamente los mensajes de validación debajo del campo de entrada. Esta configuración utiliza el método `useReporter`, que configura cómo la vinculación maneja y presenta los resultados de validación. Este método vincula efectivamente la lógica de validación a la interfaz de usuario, asegurando que cualquier problema de validación sea inmediatamente visible para el usuario, mejorando la interactividad del formulario y la experiencia del usuario.

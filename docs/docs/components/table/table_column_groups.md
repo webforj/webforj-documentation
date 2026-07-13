@@ -159,7 +159,7 @@ files={[
   'src/main/java/com/webforj/samples/views/table/TableStyledColumnGroupsView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
   'src/main/java/com/webforj/samples/views/table/Service.java',
-  'src/main/resources/static/css/table/tablestyledcolumngroups.css',
+  'src/main/frontend/css/table/tablestyledcolumngroups.css',
 ]}
 height='600px'
 />

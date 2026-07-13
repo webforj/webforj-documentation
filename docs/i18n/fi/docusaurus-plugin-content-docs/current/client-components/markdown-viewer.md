@@ -3,10 +3,12 @@ sidebar_position: 0
 title: <dwc-markdown-viewer>
 sidebar_class_name: sidebar--item__hidden
 slug: markdown-viewer
-description: A user guide article for the markdown-viewer
+description: >-
+  Style the dwc-markdown-viewer component with CSS variables and shadow parts to
+  theme rendered Markdown content, typography, and code blocks.
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 1969ff031ffe6006d7bd33d2b6f2b743
+_i18n_hash: d041f88046ac8d6c741721ef389cce13
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +19,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa annetaan tyylitietoja **`<dwc-markdown-viewer>`** -komponentille. Tämä komponentti on **vain asiakaspäässä** - sitä ei voi alustaa itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa kuvataan tyylitietoja **`<dwc-markdown-viewer>`** komponentille. Tämä komponentti on **vain asiakaspäätteen puolella** - sitä ei voi alustaa itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylit
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-markdown-viewer" clientComponent />

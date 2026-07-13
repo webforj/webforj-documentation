@@ -64,7 +64,7 @@ In the demo, double-click a node to open an editor for its text. Enter the new t
 path='/webforj/treemodify'
 files={[
   'src/main/java/com/webforj/samples/views/tree/TreeModifyView.java',
-  'src/main/resources/static/css/tree/tree-modify-view.css',
+  'src/main/frontend/css/tree/tree-modify-view.css',
 ]}
 height='320px'
 />

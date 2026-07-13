@@ -2,18 +2,21 @@
 sidebar_position: 1
 title: Table
 hide_giscus_comments: true
-_i18n_hash: 3b4ddfbfc0fb9c5d67fa60136a23af73
+description: >-
+  Display tabular data with the Table component, binding entity classes to a
+  Repository to populate columns and render rows.
+_i18n_hash: 680ee8ce00bf4efc4ae933a913fe1c1a
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-table" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Table" top='true'/>
 
-`Table`-luokka on monipuolinen komponentti, joka on suunniteltu esittämään taulukkomuotoista tietoa rakenteellisesti ja helposti ymmärrettävällä tavalla. Optimoi suuret tietojoukot korkean suorituskyvyn avulla, tämä komponentti tarjoaa edistyksellistä visualisointia ja kattavan tapahtumasarjan dynaamiseen käyttäjävuorovaikutukseen.
+`Table`-luokka on monipuolinen komponentti, joka on suunniteltu esittämään taulukkomuotoista tietoa rakenteellisella ja helposti ymmärrettävällä tavalla. Suunniteltu käsittelemään suuria tietojoukkia korkealla suorituskyvyllä, tämä komponentti tarjoaa kehittyneitä visualisointimahdollisuuksia ja kattavan tapahtumakompleksin dynaamiseen käyttäjävuorovaikutukseen.
 
 <!-- INTRO_END -->
 
-## Table- komponentin luominen {#creating-a-table}
+## Taulukon luominen {#creating-a-table}
 
 <!-- vale off -->
 <ComponentDemo
@@ -23,23 +26,23 @@ height='600px'
 />
 <!-- vale on -->
 
-Luodaksesi ja täyttääksesi `Table`-komponentin sovelluksessa, voit seurata seuraavia vaiheita:
+Taulukon luomiseksi ja täyttämiseksi sovelluksessa voidaan ottaa seuraavat vaiheet:
 
 ### 1. Luo entiteettiluokka {#1-create-an-entity-class}
 
-Määrittele luokka edustamaan entiteettejä (data), joita haluat näyttää taulukossa. Esimerkissä tämä luokka on MusicRecord.
+Määrittele luokka, joka edustaa entiteettejä (dataa), joita haluat näyttää taulukossa. Esimerkissä tämä luokka on MusicRecord.
 
 ```java
 public class MusicRecord {
-  // Kentät ja menetelmät, jotka edustavat kunkin tietueen attribuutteja
+  // Kentät ja metodit, jotka edustavat jokaisen tietueen attribuutteja
 }
 ```
 
-### 2. Luo repositorio {#2-create-a-repository}
+### 2. Luo varasto {#2-create-a-repository}
 
-Kun entiteettiluokka on luotu, käytä tätä täyttämään kokoelma näistä entiteeteistä halutulla datalla.
+Kun entiteettiluokka on luotu, käytä tätä täyttääksesi kokoelman näistä entiteeteistä halutulla datalla.
 
-Tämästä datasta on luotava `Repository`, jota käytetään `Table`-komponentissa. `CollectionRepository`-luokkaa tarjotaan, jotta mikä tahansa kelvollinen Java-kokoelma voitaisiin muuttaa käyttökelpoiseksi `Repository`:ksi, jolloin omaa `Repository`-luokkaa ei tarvitse toteuttaa.
+Tästä datasta on luotava `Repository`, jota käytetään `Table`-komponentin sisällä. `CollectionRepository`-luokka on tarjottu muuntamaan mikä tahansa kelvollinen Java-kokoelma käyttökelpoiseksi `Repository`:ksi, joten omaa `Repository`-luokkaa ei tarvitse toteuttaa.
 
 ```java
 List<MusicRecord> data = new Gson().fromJson(
@@ -52,35 +55,35 @@ CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(da
 ```
 
 :::tip Lisätietoja
-Lisätietoja `Repository`-mallista webforJ:ssä, katso [Repository-artikkelit](/docs/advanced/repository/overview).
+Lisätietoja `Repository`-kuviosta webforJ:ssä, katso [Repository-artikkelit](/docs/advanced/repository/overview).
 :::
 
-### 3. Instansoi `Table` ja lisää sarakkeet {#3-instantiate-table-and-add-columns}
+### 3. Luo `Table` ja lisää sarakkeita {#3-instantiate-table-and-add-columns}
 
-Instansoi uusi `Table`-objekti ja käytä yhtä tarjotuista tehdasmenetelmistä lisätäksesi halutut sarakkeet juuri luotuun `Table`:en:
+Luo uusi `Table`-objekti ja käytä jotain tarjotuista tehdasmenetelmistä lisätäksesi haluamasi sarakkeet juuri luotuun `Table`:en:
 
 ```java
 Table<MusicRecord> table = new Table<>();
-table.addColumn("Number", MusicRecord::getNumber);
-table.addColumn("Title", MusicRecord::getTitle);
-table.addColumn("Artist", MusicRecord::getArtist);
+table.addColumn("Numero", MusicRecord::getNumber);
+table.addColumn("Otsikko", MusicRecord::getTitle);
+table.addColumn("Esittäjä", MusicRecord::getArtist);
 table.addColumn("Genre", MusicRecord::getMusicType);
-table.addColumn("Cost", MusicRecord::getCost);
+table.addColumn("Hinta", MusicRecord::getCost);
 ```
 
 ### 4. Aseta `Table`-datan {#4-set-the-table-data}
 
-Lopuksi, aseta `Repository` aikaisemmin luodulle `Table`:lle:
+Lopuksi, aseta aiemmassa vaiheessa luodun `Table`:n `Repository`:
 
 ```java
 table.setRepository(Service.getMusicRecords());
 ```
 
 :::info
-Vaihtoehtoisesti, `setItems()`-menetelmään voidaan syöttää mikä tahansa kelvollinen Java-kokoelma, jolloin se luo automaattisesti `CollectionRepository`:n.
+Vaihtoehtoisesti `setItems()`-metodille voi antaa minkä tahansa kelvollisen Java-kokoelman, mikä luo taustalla `CollectionRepository`:n automaattisesti puolestasi.
 :::
 
-Alla on esimerkki edellä mainituista vaiheista toteutettuna luomaan perus `Table`-komponentti:
+Alla on esimerkki yllä olevista vaiheista toteutettuna perus `Table`-komponentin luomiseksi:
 
 <ComponentDemo
 path='/webforj/tablebasic'
@@ -92,6 +95,6 @@ files={[
 height='600px'
 />
 
-## Tyylittely
+## Tyylittely {#styling}
 
 <TableBuilder name="Table" />

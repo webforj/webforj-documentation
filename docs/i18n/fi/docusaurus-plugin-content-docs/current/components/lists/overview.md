@@ -2,66 +2,68 @@
 sidebar_position: 20
 title: Lists
 hide_giscus_comments: true
-_i18n_hash: 15effbe238b9ea86c975499ed2faa30b
+description: >-
+  Manage shared list features across ChoiceBox, ComboBox, and ListBox, including
+  ListItem objects, adding, removing, and selection APIs.
+_i18n_hash: 1fa51afef9c5af46944d4d74a6b5ec61
 ---
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList"/>
 
 :::info
-Tässä osiossa kuvataan kaikkien luettelokomponenttien yleisiä ominaisuuksia, eikä se ole luokka, jota voidaan instansioida tai käyttää suoraan.
+Tämä osa kuvaa kaikkien luettelo-komponenttien yleisiä ominaisuuksia, eikä se ole luokka, jota voidaan instansioida tai käyttää suoraan.
 :::
 
-Sovelluksissasi on käytettävissä kolme erilaista luetteloa: [`ListBox`](listbox), [`ChoiceBox`](choicebox) ja [`ComboBox`](combobox). Nämä komponentit näyttävät kaikki avain-arvo-itemien luettelon ja tarjoavat menetelmiä itemien lisäämiseen, poistamiseen, valitsemiseen ja hallintaan luettelossa.
+Käyttöösi on saatavilla kolme erilaista luetteloa sovelluksissasi: [`ListBox`](listbox), [`ChoiceBox`](choicebox) ja [`ComboBox`](combobox). Nämä komponentit Display a list of key-value items, and provide methods to add, remove, select, and manage the items within the list.
 
-Tällä sivulla esitetään kaikkien luettelokomponenttien yhteiset ominaisuudet ja käyttäytyminen, kun taas kunkin erityiset tiedot käsitellään niiden omilla sivuillaan.
+Tällä sivulla on kuvattu kaikkien luettelo-komponenttien jaettavat ominaisuudet ja käyttäytyminen, kun taas kunkin tarkat tiedot käsitellään niiden omilla sivuilla.
 
 ## Käyttäminen `ListItem` {#using-listitem}
 
-Luettelokomponentit koostuvat <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink>-objekteista, jotka edustavat yksittäisiä itemeitä luettelossa. Jokainen <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> on liitetty yksilölliseen avaimen ja näyttetekstiin. Tärkeitä piirteitä <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink>-luokassa ovat:
+Luettelo-komponentit koostuvat <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> -objekteista, jotka edustavat yksittäisiä kohteita luettelossa. Jokaisella <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> -objektilla on ainutlaatuinen avain ja näytettävä teksti. Tärkeitä ominaisuuksia <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> -luokassa ovat:
 
-- <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> kapseloi ainutlaatuisen avaimen `Object` ja tekstin `String`, joka näytetään luettelokomponentissa. 
-- Voit luoda <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink>-objektin antamalla avaimen ja tekstin, tai määrittelemällä vain tekstin, jolloin satunnainen avain luodaan.
+- <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> kapseloi ainutlaatuisen avaimen `Object` ja tekstin `String`, joka näytetään luettelo-komponentissa.
+- Voit rakentaa <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> -objektin tarjoamalla avaimen ja tekstin tai määrittelemällä vain tekstin, jolloin satunnainen avain generoidaan.
 
 ## `ListItem`-objektien hallinta API:n avulla {#managing-listitem-objects-with-the-api}
 
-Erilaiset luettelokomponentit tarjoavat useita menetelmiä itemien hallintaan ja johdonmukaisen tilan ylläpitämiseen luettelon ja asiakkaan välillä. Näitä menetelmiä käyttämällä voit hallita tehokkaasti luettelon itemeitä. API:n avulla voit vuorovaikuttaa ja manipuloida luetteloa sovelluksesi vaatimusten mukaan.
+Eri luettelo-komponentit tarjoavat useita menetelmiä kohteiden luettelon hallitsemiseksi ja johdonmukaisen tilan ylläpitämiseksi luettelon ja asiakkaan välillä. Näiden menetelmien avulla voit tehokkaasti hallita luettelon kohteita. API mahdollistaa vuorovaikutuksen ja manipulaation luettelon kanssa, jotta se täyttää sovelluksesi vaatimukset.
 
-### Itemien lisääminen {#adding-items}
+### Kohteiden lisääminen {#adding-items}
 
-- **Itemin lisääminen**:
+- **Kohteen lisääminen**:
 
-   - Voit lisätä `ListItem`-objektin luetteloon käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#add(com.webforj.component.list.ListItem)' code="true">add(ListItem item)</JavadocLink> -menetelmää.
-   - Voit myös lisätä uuden `ListItem`-objektin määrittämällä avaimen ja tekstin käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#add(java.lang.Object,java.lang.String)' code="true">add(Object key, String text)</JavadocLink> tai <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#add(java.lang.String)' code="true">add(String text)</JavadocLink> -menetelmää.
+   - Voit lisätä `ListItem`-kohteen luetteloon käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#add(com.webforj.component.list.ListItem)' code="true">add(ListItem item)</JavadocLink> -menetelmää.
+   - Voit myös lisätä uuden `ListItem`-kohteen määrittelemällä avaimen ja tekstin käyttäen <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#add(java.lang.Object,java.lang.String)' code="true">add(Object key, String text)</JavadocLink> tai <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#add(java.lang.String)' code="true">add(String text)</JavadocLink> -menetelmää.
 
+- **Kohteen lisääminen tiettyyn indeksiin:**
 
-- **Itemin lisääminen tiettyyn indeksiin:**
+   - Voit lisätä kohteen tiettyyn indeksiin käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,com.webforj.component.list.ListItem)' code="true">insert(int index, ListItem item)</JavadocLink> -menetelmää.
+   - Voit lisätä kohteen, jolla on avain ja teksti, käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.lang.Object,java.lang.String)' code="true">insert(int index, Object key, String text)</JavadocLink> tai <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.lang.String)' code="true">insert(int index, String text)</JavadocLink> -menetelmää.
 
-   - Voit lisätä itemin tiettyyn indeksiin käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,com.webforj.component.list.ListItem)' code="true">insert(int index, ListItem item)</JavadocLink> -menetelmää.
-   - Voit lisätä itemin, yhdistäen avaimen ja tekstin, käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.lang.Object,java.lang.String)' code="true">insert(int index, Object key, String text)</JavadocLink> tai <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.lang.String)' code="true">insert(int index, String text)</JavadocLink> -menetelmää.
+- **Useiden kohteiden lisääminen:**
 
-- **Useiden itemien lisääminen:** 
-
-   - Voit lisätä useita itemeitä määritettyyn indeksiin käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.util.List)' code="true">insert(int index, List< ListItem > items)</JavadocLink> -menetelmää.
+   - Voit lisätä useita kohteita määritettyyn indeksiin käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.util.List)' code="true">insert(int index, List< ListItem > items)</JavadocLink> -menetelmää.
 
 :::tip
-Suorituskyvyn optimoimiseksi, sen sijaan että laukaistaisit palvelin-asiakasviestin joka kerta, kun käytät `add()`-menetelmää, on tehokkaampaa luoda ensin <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink>-objektien lista. Kun sinulla on tämä lista, voit lisätä ne kaikki kerralla käyttäen `insert(int index, List<ListItem> items)` -menetelmää. Tämä lähestymistapa vähentää palvelin-asiakasviestintää, parantaen koko tehokkuutta. Yksityiskohtaisia ohjeita tästä ja muista parhaista käytännöistä webforJ-arkkitehtuurissa, katso [Asiakas/Palvelin vuorovaikutus](/docs/architecture/client-server).
+Suorituskyvyn optimoimiseksi on tehokkaampaa luoda ensin `List` <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> -objekteista sen sijaan, että laukaistaan palvelin-asiakasviestiä joka kerta, kun käytät `add()`-menetelmää. Kun sinulla on tämä lista, voit lisätä ne kaikki kerralla käyttämällä `insert(int index, List<ListItem> items)` -menetelmää. Tämä lähestymistapa vähentää palvelin-asiakasviestintää ja parantaa kokonaistehokkuutta. Yksityiskohtaisia ohjeita tästä ja muista parhaista käytännöistä webforJ-arkkitehtuurissa löytyy [Client/Server Interaction](/docs/architecture/client-server).
 :::
 
-### Itemien poistaminen {#removing-items}
+### Kohteiden poistaminen {#removing-items}
 
-- **Itemin poistaminen:**
+- **Kohteen poistaminen:**
 
-   - Poistaaksesi itemin luettelosta, käytä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#remove(int)' code="true">remove(int index)</JavadocLink> tai <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#remove(java.lang.Object)' code="true">remove(Object key)</JavadocLink> -menetelmää.
+   - Voit poistaa kohteen luettelosta käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#remove(int)' code="true">remove(int index)</JavadocLink> tai <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#remove(java.lang.Object)' code="true">remove(Object key)</JavadocLink> -menetelmää.
 
-- **Kaikkien itemien poistaminen:**
-   - Voit poistaa kaikki itemit luettelosta käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#removeAll()' code="true">removeAll()</JavadocLink>.
+- **Kaikkien kohteiden poistaminen:**
+   - Voit poistaa kaikki kohteet luettelosta käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#removeAll()' code="true">removeAll()</JavadocLink>.
 
-### Itemien valitseminen {#selecting-items}
+### Kohteiden valitseminen {#selecting-items}
 
 Kaikki luettelotyypit toteuttavat `SelectableList`-rajapinnan. Tämä rajapinta mahdollistaa useita eri tapoja valita nykyinen `ListItem`.
 
-#### Annetun `ListItem` avulla {#with-a-given-listitem}
+#### Tietyn `ListItem` avulla {#with-a-given-listitem}
 
-<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#select(com.webforj.component.list.ListItem)' code="true">select(ListItem item)</JavadocLink> ottaa `ListItem`-parametrin valitsemiseksi.
+<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#select(com.webforj.component.list.ListItem)' code="true">select(ListItem item)</JavadocLink> ottaa parametriksi `ListItem`-objektin valitsemiseksi.
 
 ```java {4}
 List demoList = new List();
@@ -70,9 +72,9 @@ demoList.add(demoItem);
 demoList.select(demoItem);
 ```
 
-#### Annetun `ListItem`:n avaimen avulla {#with-a-given-key-of-a-listitem}
+#### Tietyn `ListItem` avaimen avulla {#with-a-given-key-of-a-listitem}
 
-<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectKey(java.lang.Object)' code="true">selectKey(Object key)</JavadocLink> ottaa avaimen `ListItem`-valitsemiseksi.
+<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectKey(java.lang.Object)' code="true">selectKey(Object key)</JavadocLink> ottaa parametriksi avaimen `ListItem`-objektiin valitsemiseksi.
 
 ```java {3}
 List demoList = new List();
@@ -80,9 +82,9 @@ demoList.add("demo","Demo Item");
 demoList.selectKey("demo");
 ```
 
-#### Annetun `ListItem`:n indeksin avulla {#with-a-given-index-of-a-listitem}
+#### Tietyn `ListItem` indeksin avulla {#with-a-given-index-of-a-listitem}
 
-<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectIndex(int)' code="true">selectIndex(int index)</JavadocLink> ottaa indeksin `ListItem`-valitsemiseksi.
+<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectIndex(int)' code="true">selectIndex(int index)</JavadocLink> ottaa parametrina indeksin `ListItem`-objektiin valitsemiseksi.
 
 ```java {3}
 List demoList = new List();
@@ -90,22 +92,22 @@ demoList.add("demo","Demo Item");
 demoList.selectKey(0);
 ```
 
-### Muut luettelotoiminnot {#other-list-operations}
+### Muita luettelo-operaatioita {#other-list-operations}
 
-- **Itemien saavutettavuus ja päivittäminen:**
+- **Kohteiden hakeminen ja päivittäminen:**
 
-   - Saadaksesi itemit avaimen tai indeksin kautta, käytä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#getByKey(java.lang.Object)' code="true">getByKey(Object key)</JavadocLink> tai <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#getByIndex(int)' code="true">getByIndex(int index)</JavadocLink>.
-   - Voit päivittää itemin tekstiä käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/ListItem" suffix='#setText(java.lang.String)' code="true">setText(String text)</JavadocLink> -menetelmää <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink>-luokassa.
+   - Voit käyttää kohteita avaimen tai indeksin avulla, käyttäen <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#getByKey(java.lang.Object)' code="true">getByKey(Object key)</JavadocLink> tai <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#getByIndex(int)' code="true">getByIndex(int index)</JavadocLink>.
+   - Voit päivittää kohteen tekstiä käyttäen <JavadocLink type="foundation" location="com/webforj/component/list/ListItem" suffix='#setText(java.lang.String)' code="true">setText(String text)</JavadocLink> -metodia <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> -luokassa.
 
-- **Tietojen hakeminen listasta:**
-   - Voit saada luettelon koon käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#size()' code="true">size()</JavadocLink> -menetelmää.
-   - Tarkistaaksesi, onko luettelo tyhjentynyt, käytä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#isEmpty()' code="true">isEmpty()</JavadocLink> -menetelmää.
+- **Tietojen hakeminen luettelosta:**
+   - Voit saada luettelon koon käyttämällä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#size()' code="true">size()</JavadocLink> -metodia.
+   - Tarkistaaksesi onko luettelo tyhjää, käytä <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#isEmpty()' code="true">isEmpty()</JavadocLink> -metodia.
 
-### Listojen läpikäynti {#iterating-over-lists}
+### Luetteloiden iteroiminen {#iterating-over-lists}
 
-Kaikki Luettelo-n komponentit toteuttavat Java [`Iteratable`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html) -rajapinnan, joka tarjoaa tehokkaan ja intuitiivisen tavan käydä läpi luettelon sisältöä. Tämän rajapinnan avulla voit helposti silmukoida jokaisen `ListItem`-objektin läpi, mikä helpottaa jokaisen itemin saavuttamista, muokkaamista tai käsittelemistä vähällä vaivalla. `Iterable`-rajapinta on standardimalli Java-kielessä, varmistaen, että koodisi on tuttu ja ylläpidettävä kaikille Java-kehittäjille.
+Kaikki luettelo-komponentit toteuttavat Java [`Iteratable`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html) -rajapinnan, joka tarjoaa tehokkaan ja intuitiivisen tavan iteroida luettelon sisältöä. Tämän rajapinnan avulla voit helposti käydä läpi jokaisen `ListItem`-kohteen, mikä tekee yksittäisten kohteiden käsittelemisestä ja muuttamisesta vaivatonta. `Iterable`-rajapinta on Java-kielen standardiominaisuus, mikä varmistaa, että koodisi on tuttua ja ylläpidettävää kaikille Java-kehittäjille.
 
-Alla esitetty koodinpätkä osoittaa kaksi helppoa tapaa käydä läpi luetteloa:
+Alla olevassa koodiesimerkissä on esitetty kaksi helppoa tapaa iteroida läpi luetteloa:
 
 ```java
 list.forEach(item -> {
@@ -119,19 +121,19 @@ for (ListItem item : list) {
 
 ## Yhteiset luettelo-ominaisuudet {#shared-list-properties}
 
-### Tekstiosio {#label}
+### Otsikko {#label}
 
-Kaikille Luettelo-n komponenteille voidaan määrittää teksti, joka on kuvaava teksti tai otsikko, joka liittyy komponenttiin. Etiketit tarjoavat lyhyen selityksen tai kehotteen auttaakseen käyttäjiä ymmärtämään kyseisen luettelon tarkoituksen tai odotetun valinnan. Käytettävyyden lisäksi luettelon etiketit ovat tärkeäksi tehtäväksi esteettömyydessä, mahdollistaen ruudunlukuohjelmien ja apuvälineiden tarjoaman tarkan tiedon sekä helpottamaan näppäimistön navigointia.
+Kaikille luettelo-komponenteille voidaan määrittää otsikko, joka on kuvaileva teksti tai nimi, joka liittyy komponenttiin. Otsikot tarjoavat lyhyen selityksen tai kehotuksen, joka auttaa käyttäjiä ymmärtämään kyseisen luettelon tarkoitusta tai odotettua valintaa. Olemalla tärkeitä käytettävyyden kannalta, luettelo-otsikot näyttelevät myös keskeistä roolia saavutettavuudessa, mahdollistamalla ruudunlukijoiden ja apuvälineiden antavan tarkkaa tietoa ja helpottavan näppäimistön navigointia.
 
 ### Aputeksti {#helper-text}
 
-Jokainen Luettelo-n komponentti voi näyttää aputekstiä luettelon alla käyttämällä `setHelperText()`-menetelmää. Tämä aputeksti tarjoaa lisäkontekstia tai selityksiä käytettävissä olevista vaihtoehdoista, varmistaen, että käyttäjillä on tarpeelliset tiedot tietoon tekemiseksi.
+Jokainen Luettelo-komponentti voi näyttää aputekstiä luettelon alla käyttäen `setHelperText()` -metodia. Tämä aputeksti tarjoaa lisäkontekstia tai selityksiä käytettävissä olevista vaihtoehdoista, varmistaen, että käyttäjillä on tarvittavat tiedot, jotta he voivat tehdä tietoon perustuvia valintoja.
 
-### Vaakasuora kohdistus {#horizontal-alignment}
+### Vaakatasaus {#horizontal-alignment}
 
-Kaikki luettelokomponentit toteuttavat <JavadocLink type="foundation" location="com/webforj/concern/HasHorizontalAlignment" code='true'>HasHorizontalAlignment</JavadocLink> -rajapinnan, antamalla sinulle hallinnan siitä, miten teksti ja sisältö kohdistuvat komponentin sisällä.
+Kaikki luettelo-komponentit toteuttavat <JavadocLink type="foundation" location="com/webforj/concern/HasHorizontalAlignment" code='true'>HasHorizontalAlignment</JavadocLink> -rajapinnan, joka antaa sinulle hallinnan siitä, miten teksti ja sisältö on kohdistettu komponentin sisällä.
 
-Käytä `setHorizontalAlignment()`-menetelmää kohdistuksen asettamiseen:
+Käytä `setHorizontalAlignment()` -metodia asettaaksesi tasaus:
 
 - `HorizontalAlignment.LEFT` (oletus)
 - `HorizontalAlignment.MIDDLE`
@@ -142,16 +144,16 @@ ListBox<String> listBox = new ListBox<>();
 listBox.setHorizontalAlignment(HorizontalAlignment.LEFT);
 ```
 
-Saadaksesi nykyisen kohdistuksen:
+Hankkiaksesi nykyisen tasaamisen:
 ```java
 HorizontalAlignment alignment = listBox.getHorizontalAlignment();
 ```
 
-### Laajuudet {#expanses}
+### Laajuus {#expanses}
 
-Kaikki luettelokomponentit webforJ:ssä toteuttavat myös <JavadocLink type="foundation" location="com/webforj/concern/HasExpanse" code='true'>HasExpanse</JavadocLink> -rajapinnan, jonka avulla voit säätää komponentin yleistä kokoa ja visuaalista painetta. Tämä on hyödyllistä mukautettaessa komponenttia eri käyttöliittymäyhteyksiin, kuten lomakkeisiin, dialogeihin, sivupaneeleihin jne.
+Kaikki webforJ:n luettelo-komponentit toteuttavat myös <JavadocLink type="foundation" location="com/webforj/concern/HasExpanse" code='true'>HasExpanse</JavadocLink> -rajapinnan, joka mahdollistaa komponentin koon ja visuaalisen painon säätämisen. Tämä on hyödyllistä, kun mukautat komponentin erilaisiin käyttöliittymäkonteksteihin, kuten lomakkeisiin, dialogeihin, sivupalkkeihin jne.
 
-Käytä `setExpanse()`-menetelmää säätääksesi laajuustasoa. Vaihtoehdoista löytyy:
+Käytä `setExpanse()` -metodia asettaaksesi laajuustason. Vaihtoehtoina ovat:
 
 - `Expanse.NONE`
 - `Expanse.XSMALL`
@@ -165,7 +167,7 @@ ListBox<String> listBox = new ListBox<>();
 listBox.setExpanse(Expanse.LARGE);
 ```
 
-Voit palauttaa nykyisen asetuksen seuraavasti:
+Voit tarvittaessa hankkia nykyisen asetuksen:
 ```java
 Expanse current = listBox.getExpanse();
 ```

@@ -24,7 +24,7 @@ Different file types trigger different reload strategies:
 
 - **Java files**: Full browser page reload after Spring restart
 - **JavaScript files**: Full browser page reload after Spring restart
-- **CSS files**: Style updates without page reload  
+- **CSS files**: Style updates without page reload
 - **Images**: Refresh in place without page reload
 
 ## Dependencies {#dependencies}

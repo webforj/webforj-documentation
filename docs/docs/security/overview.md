@@ -55,7 +55,7 @@ Here's an example showing different security levels in a webforJ app:
 public class LoginView extends Composite<Login> {
   private final Login self = getBoundComponent();
 
-  public LoginView() {  
+  public LoginView() {
     self.onSubmit(e -> {
       handleLogin(e.getUsername(), e.getPassword());
     });

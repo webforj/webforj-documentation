@@ -1,9 +1,12 @@
 ---
 title: Debugging
-sidebar_position: 1
-_i18n_hash: 057e00d21a3392bb3bf8d1fba1dea15f
+sidebar_position: 15
+description: >-
+  Attach a remote Java debugger to a running webforJ app from Visual Studio
+  Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+_i18n_hash: d418992cee0dea04f98e4d4760acc2db
 ---
-Debugging is een essentieel onderdeel van Java-ontwikkeling, dat ontwikkelaars helpt om problemen efficiënt te identificeren en op te lossen. Deze gids legt uit hoe je debugging in webforJ configureert voor Visual Studio Code, IntelliJ IDEA en Eclipse.
+Debugging is een essentieel onderdeel van Java-ontwikkeling, dat ontwikkelaars helpt om efficiënt problemen te identificeren en op te lossen. Deze gids legt uit hoe je debugging in webforJ configureert voor Visual Studio Code, IntelliJ IDEA en Eclipse.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -16,9 +19,9 @@ Debugging is een essentieel onderdeel van Java-ontwikkeling, dat ontwikkelaars h
 
 1. Open je webforJ-project in VS Code.
 2. Druk op <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (of <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> op Mac) om het Run and Debug-paneel te openen.
-3. Klik op "create a launch.json file"
+3. Klik op "create a launch.json file".
 4. Selecteer Java als de omgeving.
-5. Pas `launch.json` aan om overeen te komen met het volgende:
+5. Pas `launch.json` aan zodat het overeenkomt met het volgende:
 
 ```json title="launch.json"
 {
@@ -48,9 +51,9 @@ Debugging is een essentieel onderdeel van Java-ontwikkeling, dat ontwikkelaars h
 
 1. Open je project in IntelliJ IDEA.
 2. Navigeer naar Run → Edit Configurations.
-3. Klik op de <kbd>+</kbd> knop en selecteer Remote JVM Debug.
+3. Klik op de <kbd>+</kbd>-knop en selecteer Remote JVM Debug.
 4. Stel de host in op `localhost` en de poort op `8000`.
-5. Sla de configuratie op en klik op Debug om aan de draaiende app te koppelen.
+5. Sla de configuratie op en klik op Debug om je aan de draaiende app te koppelen.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -76,11 +79,11 @@ Debugging is een essentieel onderdeel van Java-ontwikkeling, dat ontwikkelaars h
 
 Zodra je je IDE hebt geconfigureerd:
 
-1. Start je webforJ-app met de bijbehorende opdracht: 
-    - Voor Jetty, gebruik `mvnDebug jetty:run` 
+1. Start je webforJ-app met het volgende commando:
+    - Voor Jetty, gebruik `mvnDebug jetty:run`
     - Voor Spring Boot, gebruik `mvnDebug spring-boot:run`
 2. Voer de debugconfiguratie in je IDE uit.
-3. Zet breakpoints en begin met debuggen.
+3. Stel breakpoints in en begin met debuggen.
 
 :::tip Debugging Tips
 1. Zorg ervoor dat poort 8000 beschikbaar is en niet geblokkeerd wordt door een firewall.

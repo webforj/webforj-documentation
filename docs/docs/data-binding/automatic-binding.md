@@ -45,7 +45,7 @@ public class HeroRegistration extends App {
   // Binds to the name property
   @UseProperty("name")
   TextField nameField = new TextField("Name");
-  
+
   // Binds to the nested address.street property
   @UseProperty("address.street")
   TextField streetField = new TextField("Street");
@@ -174,7 +174,7 @@ context
 
  When utilizing [Jakarta annotations](./validation/jakarta-validation.md), the binding can be automatically detect required state based on the presence of any of the following annotations on bean properties:
 
-1. `@NotNull` 
-2. `@NotEmpty` 
+1. `@NotNull`
+2. `@NotEmpty`
 3. `@NotBlank`
 4. `@Size`

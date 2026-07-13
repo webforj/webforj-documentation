@@ -1,8 +1,8 @@
 package com.webforj.samples.components;
 
 import com.webforj.Page;
-import com.webforj.annotation.JavaScript;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
+import com.webforj.bundle.annotation.BundlePackage;
 import com.webforj.component.element.Element;
 import com.webforj.component.element.ElementComposite;
 import com.webforj.component.element.annotation.NodeName;
@@ -12,8 +12,8 @@ import com.webforj.environment.ObjectTable;
 import java.util.HashSet;
 
 @NodeName("div")
-@JavaScript("https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js")
-@StyleSheet("https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css")
+@BundlePackage(value = "prismjs", version = "^1.29.0")
+@BundleEntry("prism/entry.ts")
 public class CodeDisplay extends ElementComposite
     implements HasText<CodeDisplay>, HasClassName<CodeDisplay> {
   public static final String PRISM_CSS =

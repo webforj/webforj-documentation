@@ -35,7 +35,7 @@ This approach remaps the `WebforjServlet` from `/*` to a specific path like `/ui
     <servlet-name>WebforjServlet</servlet-name>
     <url-pattern>/ui/*</url-pattern>
   </servlet-mapping>
-  
+
   <!-- Custom servlet with its own URL pattern -->
   <servlet>
     <servlet-name>HelloWorldServlet</servlet-name>

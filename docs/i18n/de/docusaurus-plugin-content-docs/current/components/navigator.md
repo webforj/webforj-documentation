@@ -1,22 +1,25 @@
 ---
 title: Navigator
 sidebar_position: 75
-_i18n_hash: db351d8f9fdf344a571d374e8d373f22
+description: >-
+  Add pagination controls with the Navigator component, binding to a Paginator
+  or Repository to drive page size, navigation, and labels.
+_i18n_hash: 1223e167b76000411cd73c4bbbbda3d5
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-navigator" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="foundation" location="com/webforj/component/navigator/Navigator" top='true'/>
 
-Die `Navigator`-Komponente fügt Steuerungselemente für die Seitenpagination hinzu, um durch Datensätze zu navigieren. Sie kann Schaltflächen für "Erste", "Letzte", "Nächste" und "Vorherige" sowie Seitenzahlen oder ein Schnellzugriffsfeld anzeigen und deaktiviert automatisch die Steuerungselemente, wenn diese nicht anwendbar sind. Sie bindet sich an eine `Paginator`-Instanz, um die zugrunde liegende Paginierungslogik zu verwalten.
+Die `Navigator`-Komponente fügt Steuerungselemente für die Seitennavigation von Datenmengen hinzu. Sie kann Schaltflächen für das Erste, Letzte, Nächste und Vorherige sowie Seitenzahlen oder ein Schnell-Jump-Feld anzeigen und deaktiviert automatisch Steuerungselemente, wenn diese nicht anwendbar sind. Sie bindet sich an eine `Paginator`-Instanz zur Verwaltung der zugrunde liegenden Paginierungslogik.
 
 <!-- INTRO_END -->
 
-## Binding an Repositories {#binding-to-repositories}
+## Bindung an Repositories {#binding-to-repositories}
 
-Oft zeigt eine `Navigator`-Komponente Informationen, die in einem gebundenen `Repository` gefunden werden. Diese Bindung ermöglicht es dem `Navigator`, Daten, die vom Repository verwaltet werden, automatisch zu paginieren und andere bindbare Komponenten, wie Tabellen, basierend auf den navigierten Daten zu aktualisieren.
+Häufig zeigt eine `Navigator`-Komponente Informationen an, die in einem gebundenen `Repository` gefunden werden. Diese Bindung ermöglicht es dem `Navigator`, Daten, die vom Repository verwaltet werden, automatisch zu paginieren und andere bindbare Komponenten, wie Tabellen, basierend auf den navigierten Daten zu aktualisieren.
 
-Um dies zu tun, geben Sie einfach das gewünschte `Repository`-Objekt an den Konstruktor eines geeigneten `Navigator`-Objekts weiter:
+Um dies zu tun, übergeben Sie einfach das gewünschte `Repository`-Objekt an den Konstruktor eines anwendbaren `Navigator`-Objekts:
 
 <ComponentDemo
 path='/webforj/navigatortable'
@@ -24,31 +27,31 @@ files={['src/main/java/com/webforj/samples/views/navigator/NavigatorTableView.ja
 height='475px'
 />
 
-Dieses Beispiel erstellt den `Navigator` und [`Table`](table/overview) mit der gleichen `Repository`-Instanz. Das bedeutet, dass der [`Table`](table/overview) diese Änderung erkennt und neu rendert, wenn zu einer neuen Seite mit dem `Navigator` navigiert wird.
+Dieses Beispiel erstellt den `Navigator` und [`Table`](table/overview) mit derselben `Repository`-Instanz. Das bedeutet, dass, wenn zum Navigieren eine neue Seite mit dem `Navigator` aufgerufen wird, die [`Table`](table/overview) diese Änderung erkennt und neu rendert.
 
 ## Paginierung {#pagination}
 
-Die `Navigator`-Komponente ist eng mit der Modellklasse `Paginator` verbunden, berechnet Paginierungsmetadaten wie die Gesamtzahl der Seiten, Start-/Endindizes der Elemente auf der aktuellen Seite und ein Array von Seitenzahlen zur Navigation.
+Die `Navigator`-Komponente ist eng mit der `Paginator`-Modellklasse verbunden, die Paginierungsmetadaten wie die Gesamtzahl der Seiten, Start-/Endindizes der Elemente auf der aktuellen Seite und ein Array von Seitenzahlen für die Navigation berechnet.
 
-Obwohl dies nicht unbedingt erforderlich ist, ermöglicht die Verwendung des `Paginator` die Logik hinter der Navigation. Bei der Integration mit einem `Paginator` reagiert der Navigator auf alle Änderungen innerhalb des `Paginators`. `Navigator`-Objekte haben über die Methode `getPaginator()` Zugriff auf einen integrierten `Paginator`. Es kann auch eine `Paginator`-Instanz über die Methode `setPaginator()` oder die Nutzung eines der anwendbaren Konstruktoren akzeptieren.
+Obwohl es nicht unbedingt notwendig ist, ermöglicht die Verwendung des `Paginator` die Logik hinter der Navigation. Bei der Integration mit einem `Paginator` reagiert der Navigator auf alle Änderungen innerhalb des `Paginator`. `Navigator`-Objekte haben Zugriff auf einen integrierten `Paginator` durch Verwendung der Methode `getPaginator()`. Er kann auch eine `Paginator`-Instanz über die Methode `setPaginator()` akzeptieren oder durch Nutzung eines der anwendbaren Konstruktoren.
 
-In diesem Abschnitt finden Sie praktische Codebeispiele, um zu veranschaulichen, wie diese Integration in der Praxis funktioniert.
+Dieser Abschnitt enthält praktische Codebeispiele, um zu veranschaulichen, wie diese Integration in der Praxis funktioniert.
 
 ### Elemente {#items}
 
-Der Begriff "Elemente" bezeichnet die einzelnen paginierten Elemente oder Datenpunkte. Dies könnten Datensätze, Einträge oder andere diskrete Einheiten innerhalb eines Datensatzes sein. Sie können die Gesamtanzahl der Elemente mit der Methode `setTotalItems()` festlegen.
+Der Begriff "Elemente" bezeichnet die einzelnen paginierten Elemente oder Datensätze. Dies könnten Datensätze, Einträge oder beliebige diskrete Einheiten innerhalb eines Datensatzes sein. Sie können die Gesamtzahl der Elemente mit der Methode `setTotalItems()` festlegen.
 
 ```java
 navigator.getPaginator().setTotalItems(totalItems);
 ```
 
 :::info
-Ein mit der `Paginator`-Instanz verbundenes Repository hat die Gesamtzahl der Elemente, die direkt vom Repository verwaltet werden, und kann nicht direkt festgelegt werden.
+Ein mit der `Paginator`-Instanz verbundenes Repository verwaltet die direkt von dem Repository verwaltete Gesamtzahl der Elemente und kann nicht direkt festgelegt werden.
 :::
 
 ### Maximale Seiten {#maximum-pages}
 
-Die Methode `setMax()` ermöglicht es Ihnen, die maximale Anzahl von Seitenlinks festzulegen, die in der Paginierungsnavigation angezeigt werden. Dies ist besonders nützlich, wenn es eine große Anzahl von Seiten gibt, da sie die Anzahl der Seitenlinks steuert, die dem Benutzer zu jedem Zeitpunkt sichtbar sind.
+Die Methode `setMax()` ermöglicht es Ihnen, die maximale Anzahl der Seitenlinks festzulegen, die in der Paginierungsnavigation angezeigt werden. Dies ist besonders nützlich, wenn es eine große Anzahl von Seiten gibt, da es die Anzahl der Seitenlinks steuert, die dem Benutzer zu jedem Zeitpunkt sichtbar sind.
 
 ```java
 navigator.getPaginator().setMax(maxPages);
@@ -60,21 +63,21 @@ files={['src/main/java/com/webforj/samples/views/navigator/NavigatorPagesView.ja
 height='125px'
 />
 
-Dieses Programm zeigt maximal fünf Seiten im `Navigator` zu einem Zeitpunkt an, indem die Methode `getPaginator()` verwendet wird, um den mit dem `Navigator`-Objekt verbundenen `Paginator` abzurufen, und dann die Methode `setMax()` verwendet wird, um eine gewünschte Anzahl von maximal angezeigten Seiten festzulegen.
+Dieses Programm zeigt maximal fünf Seiten im `Navigator` gleichzeitig an, indem die Methode `getPaginator()` verwendet wird, um den mit dem `Navigator`-Objekt verbundenen `Paginator` abzurufen, und dann die Methode `setMax()` verwendet wird, um eine gewünschte Anzahl von maximal angezeigten Seiten anzugeben.
 
 ### Seitengröße {#page-size}
 
-Die Methode `setSize()` ermöglicht es Ihnen, die Anzahl der Elemente festzulegen, die auf jeder Seite der Paginierung angezeigt werden sollen. Wenn Sie diese Methode aufrufen und eine neue Seitengröße angeben, passt sich die Paginierung entsprechend an.
+Die Methode `setSize()` erlaubt es Ihnen, die Anzahl der Elemente festzulegen, die auf jeder Seite der Paginierung angezeigt werden sollen. Wenn Sie diese Methode aufrufen und eine neue Seitengröße angeben, passt sie die Paginierung entsprechend an.
 
 ```java
 navigator.getPaginator().setSize(pageSize);
 ```
 
-## Anpassung von Schaltflächen, Text und Tooltips {#customizing-buttons-text-and-tooltips}
+## Anpassen von Schaltflächen, Texten und Tooltips {#customizing-buttons-text-and-tooltips}
 
-Die `Navigator`-Komponente bietet umfangreiche Anpassungsmöglichkeiten für Schaltflächen, Text und Tooltips. Um den angezeigten Text auf der `Navigator`-Komponente zu ändern, verwenden Sie die Methode `setText()`. Diese Methode akzeptiert Text sowie den gewünschten `Part` des `Navigators`.
+Die `Navigator`-Komponente bietet umfangreiche Anpassungsoptionen für Schaltflächen, Texte und Tooltips. Um den angezeigten Text auf der `Navigator`-Komponente zu ändern, verwenden Sie die Methode `setText()`. Diese Methode nimmt Text sowie den gewünschten `Part` des `Navigator` entgegen.
 
-Im folgenden Beispiel zeigt die Methode `setText()`, einen numerischen Wert für den Benutzer an. Durch Klicken auf die Schaltflächen wird die Methode `onChange` des `Navigators` ausgelöst, die mit einem `Direction`-Wert der geklickten Schaltfläche ausgestattet ist.
+Im folgenden Beispiel zeigt die Methode `setText()` einen numerischen Wert für den Benutzer an. Das Klicken auf die Schaltflächen ruft die Methode `onChange` des `Navigator` auf, die mit einem Wert für `Direction` die angeklickte Schaltfläche hat.
 
 <ComponentDemo
 path='/webforj/navigatorbasic'
@@ -82,22 +85,22 @@ files={['src/main/java/com/webforj/samples/views/navigator/NavigatorBasicView.ja
 height='100px'
 />
 
-### Schaltflächen- und Komponententext {#buttons-and-component-text}
+### Schaltflächen- und Komponenten-Text {#buttons-and-component-text}
 
-Die Methode `setText()` wertet den Textparameter als JavaScript-Ausdruck unter Verwendung folgender Parameter aus:
+Die Methode `setText()` bewertet den Textparameter als einen JavaScript-Ausdruck unter Verwendung der folgenden Parameter:
 
 - `page` - die aktuelle Seitenzahl
-- `current` - die derzeit ausgewählte Seitenzahl
+- `current` - die aktuell ausgewählte Seitenzahl
 - `x` - ein Alias für die aktuelle Seite
-- `startIndex` - der Startindex der aktuellen Seite.
-- `endIndex` - der Endindex der aktuellen Seite.
-- `totalItems` - die Gesamtanzahl der Elemente.
-- `startPage` - die Seitenzahl des Startseite.
-- `endPage` - die Seitenzahl der letzten Seite.
-- `component` - die Navigator-Clientkomponente.
+- `startIndex` - Der Startindex der aktuellen Seite.
+- `endIndex` - Der Endindex der aktuellen Seite.
+- `totalItems` - Die Gesamtzahl der Elemente.
+- `startPage` - Die Startseitenzahl.
+- `endPage` - Die Endseitenzahl.
+- `component` - Die Navigator-Clientkomponente.
 
 <!-- vale off -->
-Um beispielsweise den Text der letzten Seite-Schaltfläche in einem `Navigator` mit 10 Seiten auf "Gehe zu Seite 10" zu setzen, verwenden Sie den folgenden Code-Snippet:
+Um beispielsweise den Text der Schaltfläche für die letzte Seite in einem `Navigator` mit 10 Seiten auf "Gehe zu Seite 10" festzulegen, verwenden Sie den folgenden Codeausschnitt:
 <!-- vale on -->
 
 ```java
@@ -106,14 +109,14 @@ navigator.setText("'Gehe zu Seite ' + endPage", Navigator.Part.LAST_BUTTON);
 
 ### Tooltip-Text {#tooltip-text}
 
-Sie können Tooltips für verschiedene Teile der `Navigator`-Komponente mit der Methode `setTooltipText()` anpassen. Tooltips bieten hilfreiche Hinweise für Benutzer, wenn sie über die Navigationselemente fahren.
+Sie können Tooltips für verschiedene Teile der `Navigator`-Komponente mit der Methode `setTooltipText()` anpassen. Tooltips bieten den Benutzern nützliche Hinweise, wenn sie über Navigationselemente fahren.
 
 :::info
-Tooltip-Text wird nicht als JavaScript ausgewertet, im Gegensatz zum mit der Methode `setText()` verwendeten Text.
+Tooltip-Text wird nicht als JavaScript ausgewertet, im Gegensatz zu dem Text, der von der Methode `setText()` verwendet wird.
 :::
 
 <!-- vale off -->
-Um beispielsweise den Tooltip-Text der letzten Seite-Schaltfläche in einem `Navigator` auf "Gehe zur letzten Seite" zu setzen, verwenden Sie den folgenden Code-Snippet:
+Um beispielsweise den Tooltip-Text der Schaltfläche für die letzte Seite in einem `Navigator` auf "Gehe zur letzten Seite" festzulegen, verwenden Sie den folgenden Codeausschnitt:
 <!-- vale on -->
 
 ```java
@@ -122,7 +125,7 @@ navigator.setTooltipText("Gehe zur letzten Seite", Navigator.Part.LAST_BUTTON);
 
 ## Layouts {#layouts}
 
-Es gibt verschiedene Layoutoptionen für die `Navigator`-Komponente, um Flexibilität bei der Anzeige von Paginierungssteuerungselementen zu bieten. Um auf diese Layouts zuzugreifen, verwenden Sie die Werte des `Navigator.Layout`-Enums. Die Optionen sind wie folgt:
+Es gibt verschiedene Layout-Optionen für die `Navigator`-Komponente, um Flexibilität bei der Anzeige von Paginierungssteuerungen zu bieten. Um auf diese Layouts zuzugreifen, verwenden Sie die Werte des Enums `Navigator.Layout`. Die Optionen sind wie folgt:
 
 <ComponentDemo
 path='/webforj/navigatorlayout'
@@ -132,7 +135,7 @@ height='200px'
 
 ### 1. Kein Layout {#1-none-layout}
 
-Das `NONE`-Layout rendert keinen Text innerhalb des `Navigators` und zeigt nur die Navigationsschaltflächen ohne standardmäßige Textanzeige an. Um dieses Layout zu aktivieren, verwenden Sie:
+Das Layout `NONE` rendert keinen Text innerhalb des `Navigator`, sondern zeigt nur die Navigationsschaltflächen ohne eine standardmäßige Textanzeige an. Um dieses Layout zu aktivieren, verwenden Sie:
 
 ```java
 navigator.setLayout(Navigator.Layout.NONE);
@@ -140,7 +143,7 @@ navigator.setLayout(Navigator.Layout.NONE);
 
 ### 2. Nummeriertes Layout {#2-numbered-layout}
 
-Das nummerierte Layout zeigt nummerierte Chips, die jeder Seite innerhalb des Anzeigebereichs des `Navigators` entsprechen. Die Verwendung dieses Layouts ist ideal für Szenarien, in denen Benutzer eine direkte Navigation zu bestimmten Seiten bevorzugen. Um dieses Layout zu aktivieren, verwenden Sie:
+Das nummerierte Layout zeigt nummerierte Chips an, die jeder Seite innerhalb des Anzeigebereichs des `Navigator` entsprechen. Die Verwendung dieses Layouts ist ideal für Szenarien, in denen Benutzer eine direkte Navigation zu bestimmten Seiten bevorzugen. Um dieses Layout zu aktivieren, verwenden Sie:
 
 ```java
 navigator.setLayout(Navigator.Layout.PAGES);
@@ -148,10 +151,10 @@ navigator.setLayout(Navigator.Layout.PAGES);
 
 ### 3. Vorschau-Layout {#3-preview-layout}
 
-Das Vorschau-Layout zeigt die aktuelle Seitenzahl und die Gesamtanzahl der Seiten an und eignet sich für kompakte Paginierungsoberflächen mit begrenztem Platz.
+Das Vorschau-Layout zeigt die aktuelle Seitenzahl und die Gesamtzahl der Seiten an und eignet sich für kompakte Paginierungsoberflächen mit begrenztem Platz.
 
 :::info
-Vorschau ist das standardmäßige `Navigator`-Layout.
+Vorschau ist das standardmäßige Layout des `Navigator`.
 :::
 
 Um dieses Layout zu aktivieren, verwenden Sie:
@@ -160,9 +163,9 @@ Um dieses Layout zu aktivieren, verwenden Sie:
 navigator.setLayout(Navigator.Layout.PREVIEW);
 ```
 
-### 4. Schnellzugriffs-Layout {#4-quick-jump-layout}
+### 4. Schnell-Jump-Layout {#4-quick-jump-layout}
 
-Das Schnellzugriffs-Layout bietet ein [NumberField](./fields/number-field.md) für Benutzer, um eine Seitenzahl für eine schnelle Navigation einzugeben. Dies ist nützlich, wenn Benutzer schnell zu einer bestimmten Seite navigieren müssen, insbesondere bei großen Datensätzen. Um dieses Layout zu aktivieren, verwenden Sie:
+Das Schnell-Jump-Layout bietet ein [NumberField](./fields/number-field.md) für Benutzer, um eine Seitenzahl für eine schnelle Navigation einzugeben. Dies ist nützlich, wenn Benutzer schnell zu einer bestimmten Seite navigieren müssen, insbesondere bei großen Datensätzen. Um dieses Layout zu aktivieren, verwenden Sie:
 
 ```java
 navigator.setLayout(Navigator.Layout.QUICK_JUMP);
@@ -174,10 +177,10 @@ navigator.setLayout(Navigator.Layout.QUICK_JUMP);
 
 ## Beste Praktiken {#best-practices}
 
-Um eine optimale Benutzererfahrung bei der Verwendung der `Navigator`-Komponente sicherzustellen, beachten Sie die folgenden besten Praktiken:
+Um eine optimale Benutzererfahrung bei der Verwendung der `Navigator`-Komponente zu gewährleisten, beachten Sie die folgenden besten Praktiken:
 
-- **Datensatz verstehen**: Bevor Sie eine `Navigator`-Komponente in Ihre Anwendung integrieren, sollten Sie die Anforderungen der Benutzer an die Datenbrowser gründlich verstehen. Berücksichtigen Sie Faktoren wie die Größe des Datensatzes, typische Benutzerinteraktionen und bevorzugte Navigationsmuster.
+- **Dataset verstehen**: Verstehen Sie gründlich die Anforderungen an das Datenbrowsing Ihrer Benutzer, bevor Sie eine `Navigator`-Komponente in Ihre App integrieren. Berücksichtigen Sie Faktoren wie die Größe des Datensatzes, typische Benutzerinteraktionen und bevorzugte Navigationsmuster.
 
-- **Geeignetes Layout auswählen**: Wählen Sie ein Layout für die `Navigator`-Komponente aus, das mit den Zielen der Benutzererfahrung und dem verfügbaren Bildschirmplatz übereinstimmt.
+- **Angemessenes Layout wählen**: Wählen Sie ein Layout für die `Navigator`-Komponente, das mit den Zielen der Benutzererfahrung und dem verfügbaren Platz auf dem Bildschirm übereinstimmt.
 
-- **Text und Tooltips anpassen**: Passen Sie den Text und die Tooltips der `Navigator`-Komponente an die in Ihrer Anwendung verwendete Sprache und Terminologie an. Bieten Sie beschreibende Labels und hilfreiche Hinweise an, um Benutzern beim Navigieren im Datensatz effektiv zu helfen.
+- **Text und Tooltips anpassen**: Passen Sie den Text und die Tooltips der `Navigator`-Komponente an die Sprache und Terminologie an, die in Ihrer App verwendet werden. Stellen Sie beschreibende Labels und hilfreiche Hinweise zur Verfügung, um Benutzern zu helfen, den Datensatz effektiv zu navigieren.

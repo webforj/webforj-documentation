@@ -24,7 +24,7 @@ path='/webforj/infinitescroll'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollView.java',
-  'src/main/resources/static/css/infinitescroll/infinitescroll.css',
+  'src/main/frontend/css/infinitescroll/infinitescroll.css',
 ]}
 />
 
@@ -66,7 +66,7 @@ path='/webforj/infinitescrollloading'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollLoadingView.java',
-  'src/main/resources/static/css/infinitescroll/infinitescroll.css',
+  'src/main/frontend/css/infinitescroll/infinitescroll.css',
 ]}
 />
 
@@ -82,7 +82,7 @@ path='/webforj/infinitescrollcustomloading'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollCustomLoadingView.java',
-  'src/main/resources/static/css/infinitescroll/infinitescrollcustom.css',
+  'src/main/frontend/css/infinitescroll/infinitescrollcustom.css',
 ]}
 />
 

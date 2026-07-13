@@ -2,14 +2,17 @@
 sidebar_position: 1
 title: Table
 hide_giscus_comments: true
-_i18n_hash: 3b4ddfbfc0fb9c5d67fa60136a23af73
+description: >-
+  Display tabular data with the Table component, binding entity classes to a
+  Repository to populate columns and render rows.
+_i18n_hash: 680ee8ce00bf4efc4ae933a913fe1c1a
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-table" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Table" top='true'/>
 
-La clase `Table` es un componente versátil diseñado para presentar información tabular de manera estructurada y fácilmente comprensible. Optimizando el manejo de grandes conjuntos de datos con alto rendimiento, este componente ofrece visualización avanzada y un conjunto integral de eventos para la interacción dinámica del usuario.
+La clase `Table` es un componente versátil diseñado para presentar información tabular de manera estructurada y fácilmente comprensible. Optimizado para manejar grandes conjuntos de datos con alto rendimiento, este componente ofrece visualización avanzada y un conjunto completo de eventos para la interacción dinámica del usuario.
 
 <!-- INTRO_END -->
 
@@ -23,7 +26,7 @@ height='600px'
 />
 <!-- vale on -->
 
-Para crear y llenar una `Table` en una aplicación, se pueden seguir los siguientes pasos:
+Para crear y poblar una `Table` en una aplicación, se pueden seguir los siguientes pasos:
 
 ### 1. Crear una clase de entidad {#1-create-an-entity-class}
 
@@ -39,7 +42,7 @@ public class MusicRecord {
 
 Una vez que se ha creado una clase de entidad, utilízala para llenar una colección de estas entidades con los datos deseados.
 
-A partir de estos datos, se necesita crear un `Repository` para su uso dentro de la `Table`. La clase `CollectionRepository` se proporciona para convertir cualquier colección de Java válida en un `Repository` utilizable, prescindiendo de la necesidad de implementar tu propia clase `Repository`.
+A partir de estos datos, se necesita crear un `Repository` para su uso dentro de la `Table`. La clase `CollectionRepository` se proporciona para convertir cualquier colección válida de Java en un `Repository` utilizable, evitando la necesidad de implementar tu propia clase `Repository`.
 
 ```java
 List<MusicRecord> data = new Gson().fromJson(
@@ -52,12 +55,12 @@ CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(da
 ```
 
 :::tip Más información
-Para obtener más información sobre el patrón `Repository` en webforJ, consulta los [artículos sobre Repositorios](/docs/advanced/repository/overview).
+Para obtener más información sobre el patrón `Repository` en webforJ, consulta los [artículos sobre Repositorio](/docs/advanced/repository/overview).
 :::
 
-### 3. Instanciar `Table` y añadir columnas {#3-instantiate-table-and-add-columns}
+### 3. Instanciar `Table` y agregar columnas {#3-instantiate-table-and-add-columns}
 
-Instancia un nuevo objeto `Table` y utiliza uno de los métodos de fábrica proporcionados para agregar las columnas deseadas a la `Table` recién creada:
+Instancia un nuevo objeto `Table`, y utiliza uno de los métodos de fábrica proporcionados para agregar las columnas deseadas a la `Table` recién creada:
 
 ```java
 Table<MusicRecord> table = new Table<>();
@@ -77,10 +80,10 @@ table.setRepository(Service.getMusicRecords());
 ```
 
 :::info
-Alternativamente, el método `setItems()` puede recibir cualquier colección de Java válida, lo que creará un `CollectionRepository` automáticamente para ti.
+Alternativamente, el método `setItems()` puede recibir cualquier colección válida de Java, que creará un `CollectionRepository` automáticamente para ti.
 :::
 
-A continuación se muestra un ejemplo de los pasos anteriores implementados para crear un componente básico de `Table`:
+A continuación se muestra un ejemplo de los pasos anteriores implementados para crear un componente básico `Table`:
 
 
 <ComponentDemo
@@ -93,6 +96,6 @@ files={[
 height='600px'
 />
 
-## Estilo
+## Estilizando {#styling}
 
 <TableBuilder name="Table" />

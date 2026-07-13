@@ -62,7 +62,7 @@ height='25px'
 
 ## Text and text visibility {#text-and-text-visibility}
 
-By default when created, the progress bar displays the percentage complete in the format `XX%`. Using the `setText()` method, you can use the placeholder `{{x}}` to get the current value as a percentage. Additionally, you can use the placeholder 
+By default when created, the progress bar displays the percentage complete in the format `XX%`. Using the `setText()` method, you can use the placeholder `{{x}}` to get the current value as a percentage. Additionally, you can use the placeholder
 `{{value}}` to get the raw current value.
 
 ```java
@@ -73,8 +73,8 @@ ProgressBar bar = new ProgressBar(15, "Downloading: {{x}}%");
 
 ### Themes {#themes}
 
-The `ProgressBar` component comes with <JavadocLink type="foundation" location="com/webforj/component/Theme"> themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. 
-They offer a quick and consistent way to customize the look of ProgressBars throughout an app. 
+The `ProgressBar` component comes with <JavadocLink type="foundation" location="com/webforj/component/Theme"> themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation.
+They offer a quick and consistent way to customize the look of ProgressBars throughout an app.
 
 <ComponentDemo
 path='/webforj/progressbarthemes'

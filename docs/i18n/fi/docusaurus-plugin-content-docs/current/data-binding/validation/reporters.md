@@ -1,26 +1,26 @@
 ---
 sidebar_position: 3
 title: Reporters
-_i18n_hash: 0cb57295142e37eff340531d120b3566
+description: >-
+  Surface validation outcomes through the DefaultBindingReporter or attach
+  custom reporters to bindings with the useReporter callback.
+_i18n_hash: e642fa150e90534cdaef8bb0955d4ff0
 ---
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+Validation reporters ovat työkaluja, joita käytetään antamaan palautetta validaatioprosessista käyttäjärajapinnalle. Tämä ominaisuus on välttämätön käyttäjille heidän syötteidensä validaation tulosten kertomiseksi, erityisesti monimutkaisissa lomakkeissa tai tietoa vaativissa sovelluksissa.
 
-Validation reporters are used for providing feedback about the validation process to the user interface. This feature is essential for informing users about the results of their input validation, particularly in complex forms or data-intensive applications.
+## Mikä on validaatiotoimittaja? {#whats-a-validation-reporter}
 
-## Mikä on validointiraportti? {#whats-a-validation-reporter}
+Validaatiotoimittaja on komponentti, joka käsittelee ja näyttää validoitumiset käyttäjille. Se toimii siltoina validaatiologiikan ja käyttäjärajapinnan välillä varmistaen, että validointituloksia viestitään tehokkaasti ja selkeästi.
 
-A validation reporter is a component that processes and displays the outcomes of validations to users. It acts as a bridge between the validation logic and the user interface, ensuring that validation results are communicated effectively and clearly.
-
-:::tip Ydinkomponentit Oletusraportti
-webforJ includes the `DefaultBindingReporter`, a default bindings reporter designed to work seamlessly with all core webforJ components. This built-in reporter automatically displays validation errors, eliminating the need for custom implementation in many cases. Depending on the component's configuration, the `DefaultBindingReporter` displays validation errors directly as a popover or inline, right beneath the component. This feature simplifies the error reporting process significantly, ensuring clear and direct communication of validation errors, and enhances the user experience by providing immediate, context-sensitive feedback on input validation.
+:::tip Ydinkomponentit Oletustoimittaja
+webforJ sisältää `DefaultBindingReporter`-oletustoimittajan, joka on suunniteltu toimimaan saumattomasti kaikkien ydinkomponenttien kanssa. Tämä sisäänrakennettu toimittaja näyttää automaattisesti validaatiovirheet, eliminoiden monissa tapauksissa tarvetta mukautetulle toteutukselle. Komponentin määrityksestä riippuen `DefaultBindingReporter` näyttää validoitumiset suoraan ponnahtavassa ikkunassa tai rivin alla, suoraan komponentin alapuolella. Tämä ominaisuus yksinkertaistaa virheiden raportointiprosessia huomattavasti, varmistaen selkeän ja suoran kommunikoinnin validaatiovirheistä ja parantaen käyttäjäkokemusta tarjoamalla välitöntä ja kontekstiin liittyvää palautetta syötteen validoimisesta.
 :::
 
-## Validointiraporttien määrittäminen {#configuring-validation-reporters}
+## Validaatiotoimittajien konfigurointi {#configuring-validation-reporters}
 
-You can configure validation reporters within the binding context to customize how messages are presented. Typically, you would implement a validation reporter to aggregate validation results and then display them in a user-friendly manner, such as highlighting incorrect fields, displaying error messages, or updating status indicators.
+Voit konfiguroida validaatiotoimittajia sitoutumiskontekstissa mukauttaaksesi miten viestejä esitetään. Tyypillisesti toteutat validaatiotoimittajan, joka kokoaa validoitumistulokset yhteen ja näyttää ne käyttäjäystävällisellä tavalla, kuten korostamalla virheellisiä kenttiä, näyttämällä virheviestejä tai päivittämällä tilanilmaisin.
 
-Here’s an example of how to set up a validation reporter for a field
+Tässä on esimerkki, kuinka asettaa validaatiotoimittaja kentälle
 
 <Tabs>
 <TabItem value="UserRegistration" label="UserRegistration.java">
@@ -43,7 +43,7 @@ public class UserRegistration extends App {
     BindingContext<User> context = new BindingContext<>(User.class);
     context.bind(emailField, "email")
         .useValidator(
-            Validator.from(new EmailValidator(), "Mukautettu viesti virheelliselle sähköpostiosoitteelle"))
+            Validator.from(new EmailValidator(), "Mukautettu viesti virheellisestä sähköpostiosoitteesta"))
         .useReporter((validationResult, binding) -> {
           errors.setVisible(!validationResult.isValid());
 
@@ -87,7 +87,7 @@ public class User {
   public String getPassword() {
     return password;
   }
-  
+
   public void setPassword(String password) {
     this.password = password;
   }
@@ -115,4 +115,4 @@ public class User {
 </TabItem>
 </Tabs>
 
-In the above code, the email binding incorporates a custom reporter that directly displays validation messages beneath the input field. This setup utilizes the `useReporter` method, which configures how the binding handles and presents validation results. This method effectively links the validation logic to the user interface, ensuring that any validation issues are immediately visible to the user, enhancing the form's interactivity and user experience.
+Yllä olevassa koodissa sähköpostisitoutuminen sisältää mukautetun toimittajan, joka näyttää suoraan validoitumisviestit syöttökentän alapuolella. Tämä asetus hyödyntää `useReporter`-menetelmää, joka konfiguroi miten sitoutuminen käsittelee ja esittää validoitumistuloksia. Tämä menetelmä linkittää validaatiologiikan käyttäjärajapintaan varmistaen, että kaikki validoitumisongelmat ovat heti käyttäjän nähtävillä, parantaen lomakkeen vuorovaikutteisuutta ja käyttäjäkokemusta.

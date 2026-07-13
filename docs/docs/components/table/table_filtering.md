@@ -7,7 +7,7 @@ description: Narrow Table rows by applying a Predicate through the bound Reposit
 
 The `Table` component allows you to implement filtering to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table
 
-The following example uses a user-defined criteria from the search field and the `setBaseFilter()` method to apply a filter to the `CollectionRepository` based on the titles of `MusicRecord`. When the `commit()` method is triggered, the table refreshes with the filtered data. 
+The following example uses a user-defined criteria from the search field and the `setBaseFilter()` method to apply a filter to the `CollectionRepository` based on the titles of `MusicRecord`. When the `commit()` method is triggered, the table refreshes with the filtered data.
 
 <!-- vale off -->
 <ComponentDemo

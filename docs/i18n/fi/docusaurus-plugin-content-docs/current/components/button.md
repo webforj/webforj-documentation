@@ -1,42 +1,46 @@
 ---
 title: Button
 sidebar_position: 15
-_i18n_hash: 4f84dd4c618dafe32cbeb47c7dcbbe36
+description: >-
+  Trigger click actions in webforJ with the Button component, including themes,
+  expanses, prefix and suffix icons, and disabled state.
+_i18n_hash: 31fa93b60126cba6b26198da5a5c15b5
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-button" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/button/Button" top='true'/>
 
-`Nappi` on klikattava elementti, joka käynnistää toiminnon, kun sitä painetaan. Se voi näyttää tekstiä, kuvakkeita tai molempia. Napit tukevat useita visuaalisia teemoja ja kokoja, ja ne voidaan poistaa käytöstä estämään vuorovaikutuksen pitkäkestoisten toimintojen aikana tai kun tietyt ehdot eivät täyty.
+`Nappi` on napsittava elementti, joka laukaisee toiminnon, kun sitä painetaan. Se voi näyttää tekstiä, kuvakkeita tai niiden yhdistelmää. Napit tukevat useita visuaalisia teemoja ja kokoja, ja ne voidaan poistaa käytöstä, jotta estetään vuorovaikutus pitkäkestoisten operaatioiden aikana tai kun tietyt ehdot eivät täyty.
 
 <!-- INTRO_END -->
 
-## Käyttötarkoitukset {#usages}
+## Käytöt {#usages}
 
-`Nappi`-luokka on monikäyttöinen komponentti, jota käytetään yleisesti erilaisissa tilanteissa, joissa käyttäjävuorovaikutuksia ja toimintoja on käynnistettävä. Tässä on joitakin tyypillisiä tilanteita, joissa saatat tarvita nappia sovelluksessasi:
+`Nappi`-luokka on monikäyttöinen komponentti, jota käytetään yleisesti eri tilanteissa, joissa käyttäjän vuorovaikutuksia ja toimintoja täytyy laukaista. Tässä on joitakin tyypillisiä skenaarioita, joissa saatat tarvita painiketta sovelluksessasi:
 
-1. **Lomakkeen lähetys**: Napit käytetään usein lomaketietojen lähettämiseen. Esimerkiksi sovelluksessa voit käyttää:
+1. **Lomakkeen lähettäminen**: Nappeja käytetään usein lomakedatan lähettämiseen. Esimerkiksi sovelluksessa voit käyttää:
 
-  > - "Lähetä" nappia tietojen lähettämiseksi palvelimelle
-  > - "Tyhjennä" nappia kaiken lomakkeessa jo olevan tiedon poistamiseksi
+  > - "Lähetä" -painiketta tietojen lähettämiseen palvelimelle
+  > - "Tyhjennä" -painiketta poistaaksesi lomakkeeseen jo syötetyt tiedot
 
-2. **Käyttäjätoiminnot**: Napit käytetään antamaan käyttäjille mahdollisuus suorittaa tiettyjä toimintoja sovelluksessa. Esimerkiksi sinulla voi olla nappi, jossa on otsikko:
 
-  > - "Poista" aloittamaan valitun kohteen poistaminen
-  > - "Tallenna" tallentamaan dokumenttiin tai sivulle tehdyt muutokset.
+2. **Käyttäjän toiminnot**: Nappeja käytetään, jotta käyttäjät voivat suorittaa erityisiä toimintoja sovelluksessa. Esimerkiksi voit olla painike, jossa lukee:
 
-3. **Vahvistusdialogit**: Napit sisältyvät usein [`Dialog`](../components/dialog) komponentteihin, joita on rakennettu erilaisiin tarkoituksiin, tarjoten käyttäjille vaihtoehtoja vahvistaa tai peruuttaa toimenpide tai muita toimintoja, jotka ovat rakennettu sisälle käyttämääsi [`Dialog`](../components/dialog).
+  > - "Poista" aloittaaksesi valitun kohteen poistamisen
+  > - "Tallenna" tallentaaksesi muutokset asiakirjaan tai sivulle.
 
-4. **Vuorovaikutuksen laukaisijat**: Napit voivat toimia vuorovaikutuksen tai tapahtumien laukaisijoina sovelluksessa. Nappia klikkaamalla käyttäjät voivat aloittaa monimutkaisia toimintoja, laukaista animaatioita, päivittää sisältöä tai päivittää näyttöä.
+3. **Vahvistusdialogit**: Nappeja sisältyy usein [`Dialog`](../components/dialog) -komponentteihin, jotka on rakennettu eri tarkoituksiin tarjotakseen käyttäjille vaihtoehtoja vahvistaa tai peruuttaa toiminto tai muu toiminnallisuus, joka on rakennettu käyttämääsi [`Dialog`](../components/dialog) -komponenttiin.
 
-5. **Navigointi**: Napit voivat olla navigointitarkoituksiin, kuten siirtyminen sovelluksen eri osien tai sivujen välillä. Navigointinapit voivat sisältää:
+4. **Vuorovaikutuksen laukaisijat**: Nappeja voidaan käyttää laukaisemaan vuorovaikutuksia tai tapahtumia sovelluksessa. Painamalla painiketta käyttäjät voivat aloittaa monimutkaisia toimintoja tai laukaista animaatioita, päivittää sisältöä tai päivittää näyttöä.
+
+5. **Navigaatio**: Nappeja voidaan käyttää navigointitarkoituksiin, kuten siirtymiseen eri osioiden tai sivujen välillä sovelluksessa. Navigointia varten tarkoitetut napit voivat sisältää:
 
   > - "Seuraava" - vie käyttäjän seuraavalle sivulle tai osioon nykyisessä sovelluksessa tai sivulla.
   > - "Edellinen" - palauttaa käyttäjän edelliselle sivulle sovelluksessa tai osioon, jossa he ovat.
-  > - "Takaisin" palauttaa käyttäjän sovelluksen tai sivun ensimmäiseen osaan, jossa he ovat.
+  > - "Takaisin" - palauttaa käyttäjän sovelluksen tai sivun ensimmäiseen osaan, jossa he ovat.
 
-Seuraava esimerkki demonstroi nappeja lomakkeen lähettämiseen ja tietojen tyhjentämiseen:
+Seuraava esimerkki näyttää painikkeet, joita käytetään lomakkeen lähettämiseen ja syötteen tyhjentämiseen:
 
 <ComponentDemo
 path='/webforj/button'
@@ -46,15 +50,18 @@ height='300px'
 
 ## Kuvakkeiden lisääminen nappeihin <DocChip chip='since' label='24.11' /> {#adding-icons-to-buttons-docchip-chipsince-label2411-}
 
-Kuvakkeen liittäminen nappiin voi parantaa sovelluksesi suunnittelua merkittävästi, ja se antaa käyttäjille mahdollisuuden nopeasti tunnistaa, mitä toimintoja on käytettävissä näytöllä. [`Icon`](./icon.md) komponentti tarjoaa laajan valikoiman kuvakkeita valittavaksi.
+Kuvakkeen lisääminen painikkeeseen voi parantaa sovelluksesi suunnittelua, jolloin käyttäjät voivat nopeasti tunnistaa toimivat elementit näytöllä. [`Ikoni`](./icon.md) -komponentti tarjoaa laajan valikoiman kuvakkeita, joista valita.
 
-Käyttämällä `setPrefixComponent()` ja `setSuffixComponent()` menetelmiä sinulla on joustavuus määrittää, tulisiko `Icon`-kuvakkeen näkyä ennen vai jälkeen napin tekstin. Alternatiivisesti `setIcon()` menetelmää voidaan käyttää lisäämään `Icon`-kuvakkeita tekstin jälkeen, mutta ennen napin `suffix`-slotia.
+Käyttämällä `setPrefixComponent()` ja `setSuffixComponent()` -metodeja voit päättää, tuleeko `Ikoni` ennen vai jälkeen napin tekstin. Vaihtoehtoisesti `setIcon()`-metodia voidaan käyttää lisämään `Ikoni` tekstin jälkeen, mutta ennen napin `suffix`-paikkaa.
+
+<!-- Add this back in once Icon has been merged -->
+<!-- Katso [Ikoni komponentti](../components/icon) sivulta lisätietoja kuvakkeiden määrittelystä ja mukauttamisesta. -->
 
 :::tip
-Oletusarvoisesti `Icon` perii napin teeman ja koon.
+Oletusarvoisesti `Ikoni` perii napin teeman ja koon.
 :::
 
-Alla on esimerkkejä napuista, joilla on tekstiä vasemmalla ja oikealla, sekä nappi, jossa on vain kuvake:
+Alla on esimerkkejä painikkeista, joissa teksti on vasemmalla ja oikealla, sekä painike, jossa on vain kuvake:
 
 <ComponentDemo
 path='/webforj/buttonicon'
@@ -62,44 +69,44 @@ files={['src/main/java/com/webforj/samples/views/button/ButtonIconView.java']}
 height='200px'
 />
 
-### Nimitykset {#names}
+### Nimet {#names}
 
-`Nappi`-komponentti käyttää nimeämistä, joka on käytössä saavutettavuutta varten. Kun nimeä ei ole eksplisiittisesti asetettu, `Nappi`-komponentin etiketti käytetään sen sijaan. Kuitenkin jotkut kuvakkeet eivät omaa etikettejä, ja näyttävät vain ei-tekstielementtejä, kuten kuvakkeita. Tässä tapauksessa on hyödyllistä käyttää `setName()` menetelmää varmistaaksesi, että luotu `Nappi`-komponentti noudattaa saavutettavuusstandardeja.
+`Nappi`-komponentti käyttää nimeämistä, joka on käytössä saavutettavuudelle. Kun nimeä ei ole erikseen asetettu, `Nappi`-komponentin etiketti käytetään sen sijaan. Kuitenkin jotkin kuvakkeet eivät sisällä etikettejä, vaan vain näyttävät ei-tekstielementtejä, kuten kuvakkeita. Tässä tapauksessa on järkevä käyttää `setName()` -metodia varmistaaksesi, että luotu `Nappi`-komponentti noudattaa saavutettavuusstandardeja.
 
 ## Napin poistaminen käytöstä {#disabling-a-button}
 
-Nappikomponentteja, kuten monia muita, voidaan poistaa käytöstä viestittääkseen käyttäjälle, että tietty toiminto ei ole vielä käytettävissä tai se ei ole enää käytettävissä. Poistettu nappi vähentää napin opasiteettia, ja se on saatavilla kaikille napiteemoille ja -kokoille.
+Nappikomponentteja, kuten monia muita, voidaan poistaa käytöstä osoittamaan käyttäjälle, että tietty toiminto ei ole vielä tai ei enää saatavilla. Poistettu nappi vähentää napin läpinäkyvyyttä, ja se on käytettävissä kaikilla napin teemoilla ja kokoilla.
 
 <ComponentDemo
 path='/webforj/buttondisable'
 files={['src/main/java/com/webforj/samples/views/button/ButtonDisableView.java']}
 />
 
-Napin poistaminen käytöstä voidaan tehdä milloin tahansa koodissa käyttämällä <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> toimintoa. Lisämukavuuden vuoksi nappi voidaan myös poistaa käytöstä napsautettaessa käyttämällä sisäänrakennettua <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> toimintoa.
+Napin poistaminen käytöstä voidaan tehdä milloin tahansa koodissa käyttämällä <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> -toimintoa. Käytännön mukavuuden vuoksi nappi voidaan myös poistaa käytöstä napsautettaessa käyttämällä rakennettua <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> -toimintoa.
 
-Joissakin tapauksissa napin napsauttaminen laukaisee pitkäkestoisen toiminnon. Napin poistaminen käytöstä kunnes sovelluksesi käsittelee toiminnon estää käyttäjiä napsauttamasta nappia useita kertoja, erityisesti korkean viiveen ympäristöissä.
+Joissakin tapauksissa napin napsautus laukaisee pitkäkestoisen toiminnon. Napin poistaminen käytöstä, kun sovelluksesi käsittelee toimintoa, estää käyttäjää napsauttamasta nappia useita kertoja, erityisesti korkealaatuisten ympäristöjen aikana.
 
 :::tip
-Napsautuksessa poistaminen käytöstä ei vain optimoi toimintojen prosessointia, vaan myös estää kehittäjää toteuttamasta tätä käyttäytymistä itse, sillä tämä menetelmä on optimoitu vähentämään kierrosmatka viestintää.
+Napsauttamisen yhteydessä poistaminen käytöstä ei vain optimoi toimintojen käsittelyä, vaan myös estää kehittäjää toteuttamasta tätä toimintoa itsenäisesti, koska tämä menetelmä on optimoitu vähentämään palautusviestintöjä.
 :::
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 ### Teemat {#themes}
 
-`Nappi`-komponentit tulevat mukana <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 erillisellä teemalla</JavadocLink>, jotka on rakennettu nopeaa tyylittelyä varten ilman CSS:n käyttöä. Nämä teemat ovat esiasetettuja tyylejä, joita voidaan soveltaa nappeihin niiden ulkonäön ja visuaalisen esityksen muuttamiseksi. Ne tarjoavat nopean ja yhdenmukaisen tavan mukauttaa nappeja koko sovelluksessa.
+`Nappi`-komponentit tarjoavat <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 erilaista teemaa</JavadocLink>, jotka on sisäänrakennettu nopeaa tyylittelyä varten ilman CSS:n käyttöä. Nämä teemat ovat ennalta määriteltyjä tyylejä, joita voidaan soveltaa nappeihin niiden ulkonäön ja visuaalisen esityksen muuttamiseksi. Ne tarjoavat nopean ja johdonmukaisen tavan mukauttaa nappejen ulkoasua sovelluksessa.
 
-Vaikka jokaiselle erilaiselle teemalle on monia käyttötarkoituksia, joitakin esimerkkejä käytöstä ovat:
+Vaikka eri teemoille on monia käyttötarkoituksia, joitakin esimerkkejä ovat:
 
-  - **Vaarallinen**: Parhaiten toimenpiteille, joilla on vakavat seuraukset, kuten täytetyn tiedon tyhjentäminen tai tilin/tietojen pysyvä poistaminen.
-  - **Oletusarvo**: Sopiva koko sovelluksessa, jossa ei ole erityistä huomiota vaativia toimia ja jotka ovat geneerisiä, kuten asetuksen vaihtaminen.
-  - **Pää**: Sopiva tärkeiksi "toimintakutsujeksi" sivulla, kuten rekisteröityminen, muutosten tallentaminen tai siirtyminen toiselle sivulle.
-  - **Onnistuminen**: Erinomainen visualisoimaan elementin onnistunut täydentäminen sovelluksessa, kuten lomakkeen lähettämistä tai rekisteröitymisprosessin valmistumista. Onnistumistheema voidaan ohjelmallisesti soveltaa, kun onnistunut toiminto on suoritettu.
-  - **Varoitus**: Käytetään ilmoittamaan käyttäjälle, että hän on tekemässä mahdollisesti riskialtista toimintoa, kuten siirtymistä pois sivulta, jossa on tallentamattomia muutoksia. Nämä toimenpiteet ovat usein vähemmän vaikuttavia kuin ne, jotka käyttäisivät Vaaralliselle teemalle.
-  - **Harmaa**: Hyvä hienovaraisille toimenpiteille, kuten pienille asetuksille tai toimenpiteille, jotka ovat enemmän täydentäviä sivulle, eivätkä ole osa päätoiminnallisuutta.
-  - **Tieto**: Hyvä lisätieto selventämään käyttäjälle.
+  - **Vaarallinen**: Paras toiminnoille, joilla on vakavia seurauksia, kuten täytettyjen tietojen tyhjentäminen tai tilin/tietojen pysyvä poistaminen.
+  - **Oletus**: Sopii sovelluksessa käytettäville toiminnoille, joilla ei ole erityistä huomiota vaativia ominaisuuksia ja jotka ovat yleisiä, kuten asetusten vaihtaminen.
+  - **Pääasiallinen**: Sopii pääasialliseksi "toimintokutsuksi" sivulla, kuten rekisteröitymiselle, muutosten tallentamiselle tai siirtymiselle toiselle sivulle.
+  - **Onnistuminen**: Erinomainen kuvaamaan jotakin, joka on onnistuneesti saatu päätökseen sovelluksessa, kuten lomakkeen lähettäminen tai rekisteröitymisprosessin loppuun saattaminen. Onnistumisteema voidaan ohjelmallisesti soveltaa, kun onnistunut toiminto on suoritettu.
+  - **Varoitus**: Hyödyllinen osoittamaan, että käyttäjä on aikeissa suorittaa mahdollisesti riskialtista toimintoa, kuten siirtymistä sivulta, jolla ei ole tallennettuja muutoksia. Nämä toiminnot ovat usein vähemmän vaikutusvaltaisia kuin ne, jotka käyttäisivät vaarallista teemaa.
+  - **Harmaa**: Hyvä hienovaraisille toimille, kuten vähäisille asetuksille tai toimille, jotka ovat enemmän lisätoimintoja sivulla, eivätkä ole osa päätoiminnallisuutta.
+  - **Tiedot**: Hyvä tarjoamaan käyttäjälle lisäselvyyksiä.
 
-Alla on esimerkkipainikkeet, joilla on jokainen tuettu teema käytössä: <br/>
+Alla on esimerkkejä painikkeista, joihin on sovellettu kaikkia tuettuja teemoja: <br/>
 
 <ComponentDemo
 path='/webforj/buttonthemes'
@@ -108,14 +115,14 @@ height='175px'
 />
 
 ### Koot {#expanses}
-Seuraavat <JavadocLink type="foundation" location="com/webforj/component/Expanse">Koot</JavadocLink> arvot mahdollistavat nopean tyylittelyn ilman CSS:n käyttöä. Tämä mahdollistaa napin mittojen manipuloinnin ilman, että niitä täytyy eksplisiittisesti asettaa käyttäen mitään tyylittelyä. Tyylittelyn yksinkertaistamisen lisäksi se auttaa myös luomaan ja ylläpitämään yhdenmukaisuutta sovelluksessa. Oletusarvoinen `Nappi`-koko on `Expanse.MEDIUM`.
+Seuraavat <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Koot </JavadocLink> -arvot mahdollistavat nopean tyylittelyn ilman CSS:n käyttöä. Tämä mahdollistaa napin ulottuvuuksien muokkaamisen ilman, että niitä tarvitsee asettaa erikseen. Tyylittelyn yksinkertaistamisen lisäksi se auttaa luomaan ja ylläpitämään yhtenäisyyttä sovelluksessasi. Oletusarvoinen `Nappi`-koko on `Expanse.MEDIUM`.
 
-Eri kokoja on usein sopivaa käyttää eri käyttötarkoituksiin:
-  - **Suuremmat** kokoarvot soveltuvat nappeihin, joilla tulisi olla huomion herättäminen, korostaa toiminnallisuutta tai olla keskeisiä sovelluksen tai sivun toiminnallisuudelle.
-  - **Keskikokoiset** napit, oletuskoko, tulisi olla napin standardikoko. Näiden napin toimintojen ei tulisi olla sen tärkeämpiä kuin vastaavien komponenttien.
-  - **Pienemmät** kokoarvot tulisi käyttää nappeihin, joilla ei ole keskeisiä toimintoja sovelluksessa, ja jotka palvelevat enemmän täydentävää tai utilitaristista roolia, sen sijaan, että ne olisivat tärkeä osa käyttäjävuorovaikutusta. Tämä sisältää `Nappi`-komponentteja, joita käytetään vain kuvakkeilla utilitaristisiin tarkoituksiin.
+Eri kokoja käytetään usein eri tarkoituksiin:
+  - **Suuremmat** kokoarvot sopivat painikkeille, joiden tulisi kiinnittää huomiota, korostaa toiminnallisuutta tai olla keskeisiä sovelluksen tai sivun toiminnallisuudessa.
+  - **Keskikokoiset** napit, oletuskoko, tulisi olla painikkeiden standardikoko. Näiden nappien toiminnot eivät tulisi olla enempää eivätkä vähempää kriittisiä kuin vastaavat komponentit.
+  - **Pienemmät** kokoarvot tulisi varata painikkeille, joilla ei ole keskeisiä käytöksiä sovelluksessa, ja jotka palvelevat enemmän lisä- tai käyttökelpoisia rooleja, eivätkä ole tärkeitä käyttäjien vuorovaikutuksessa. Tämä sisältää `Nappi`-komponentit, joita käytetään vain kuvakkeiden kanssa käyttökelpoisiin tarkoituksiin.
 
-Alla ovat erilaiset koot, joita `Nappi`-komponentti tukee: <br/>
+Alla ovat eri koot, joita tuetaan `Nappi`-komponentille: <br/>
 
 <ComponentDemo
 path='/webforj/buttonexpanses'
@@ -127,14 +134,14 @@ height='200px'
 
 ## Parhaat käytännöt {#best-practices}
 
-Optimaalisen käyttäjäkokemuksen varmistamiseksi `Nappi`-komponentin käytön aikana, harkitse seuraavia parhaita käytäntöjä:
+Varmistaaksesi optimaalinen käyttäjäkokemus käytettäessä `Nappi`-komponenttia, harkitse seuraavia parhaita käytäntöjä:
 
-1. **Oikea teksti**: Käytä selvää ja tiivistä tekstiä `Nappi`-komponentissasi antaaksesi selvä viesti sen tarkoituksesta.
+1. **Oikea teksti**: Käytä selkeää ja ytimekästä tekstiä `Nappi`-komponentissasi, jotta se antaa selkeän käsityksen sen tarkoituksesta.
 
-2. **Sopiva visuaalinen tyyli**: Ota huomioon `Nappi`-komponentin visuaalinen tyyli ja teema varmistaaksesi yhdenmukaisuuden sovelluksesi suunnittelussa. Esimerkiksi:
-  > - "Peru" `Nappi`-komponentti tulisi tyylitellä oikealla teemalla tai CSS-tyylillä varmistaaksesi, että käyttäjät tietävät varmasti haluavansa peruuttaa toiminnon
-  > - "Vahvista" `Nappi`-komponentti olisi tyyliltään erilainen kuin "Peru" nappi, mutta myös samalla tavalla erottuva, jotta käyttäjät ymmärtävät, että tämä on erityinen toiminto.
+2. **Sopiva visuaalinen tyylittely**: Harkitse napin visuaalista tyyliä ja teemaa varmistaaksesi johdonmukaisuuden sovelluksesi suunnittelussa. Esimerkiksi:
+  > - "Peruuta" `Nappi`-komponentin tulisi olla tyyliltään sopiva teema tai CSS-tyyli, jotta käyttäjät ovat varmoja siitä, että he haluavat peruuttaa toiminnon
+  > - "Vahvista" -nappilla olisi erilainen tyyli kuin "Peruuta" -nappilla, mutta se erottuu silti varmistaakseen, että käyttäjät tietävät tämän olevan erityinen toiminto.
 
-3. **Tehokas tapahtumakäsittely**: Käsittele `Nappi`-tapahtumia tehokkaasti ja anna käyttäjille asianmukaista palautetta. Viittaa [Tapahtumat](../building-ui/events) tarkastellaksesi tehokkaita tapahtumien lisäämis käytäntöjä.
+3. **Tehokas tapahtumankäsittely**: Käsittele `Nappi`-tapahtumia tehokkaasti ja tarjoa käyttäjille asianmukaista palautetta. Viittaa [Tapahtumat](../building-ui/events) tarkastellaksesi tehokkaita tapahtumien lisäämis käytäntöjä.
 
-4. **Testaus ja saavutettavuus**: Testaa napin käyttäytymistä eri tilanteissa, kuten silloin kun se on poistettu käytöstä tai saa fokuksen, varmistaaksesi sujuvan käyttäjäkokemuksen. Noudata saavutettavuusohjeita, jotta `Nappi` on käytettävissä kaikille käyttäjille, mukaan lukien niille, jotka luottavat apuvälineisiin.
+4. **Testaus ja saavutettavuus**: Testaa napin käyttäytymistä eri skenaarioissa, kuten silloin, kun se on poistettu käytöstä tai saa fokuksen, varmistaaksesi sujuvan käyttäjäkokemuksen. Noudata saavutettavuusohjeita varmistaaksesi, että `Nappi` on käytettävissä kaikille käyttäjille, mukaan lukien ne, jotka käyttävät apuvälineitä.

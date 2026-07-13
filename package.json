@@ -1,0 +1,14 @@
+{
+  "name": "webforj-samples",
+  "private": true,
+  "dependencies": {
+    "prismjs": "^1.29.0",
+    "@shoelace-style/shoelace": "^2.20.1"
+  },
+  "webforj": {
+    "dependencies": {
+      "prismjs": "^1.29.0",
+      "@shoelace-style/shoelace": "^2.20.1"
+    }
+  }
+}
