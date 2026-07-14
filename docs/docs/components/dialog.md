@@ -42,12 +42,12 @@ height='225px'
 
 ## Backdrop and blur {#backdrop-and-blur}
 
-By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
+An open `Dialog` component has a dimmed backdrop that subtly draws attention to its contents. Using `setBackDrop()` and `setBlurred()`, you can change how webforJ displays (or oboscures) the content behind the `Dialog`. Modifying these attributes can help users by providing depth and visual hierarchy.
 
 <ComponentDemo
 path='/webforj/dialogbackdropblur'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java']}
-height='300px'
+height='600px'
 />
 
 ## Opening and closing the `Dialog` {#opening-and-closing-the-dialog}
