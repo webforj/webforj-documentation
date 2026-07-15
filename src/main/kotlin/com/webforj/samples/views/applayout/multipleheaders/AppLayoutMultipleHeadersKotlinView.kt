@@ -25,7 +25,6 @@ import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
 import com.webforj.samples.views.applayout.drawerLogo
-import com.webforj.samples.views.applayout.multipleheaders.AppLayoutMultipleHeaderContentKotlinView
 
 @Route
 @StyleSheet("ws://css/applayout/applayout.css")
@@ -50,16 +49,16 @@ class AppLayoutMultipleHeadersKotlinView: Composite<AppLayout>() {
               isBorderless = true
               isBodyHidden = true
               tab("Sales") {
-                prefixSlot { tabbedPane("report-money") }
+                prefixSlot { tablerIcon("report-money") }
               }
               tab("Enterprise") {
-                prefixSlot { tabbedPane("building") }
+                prefixSlot { tablerIcon("building") }
               }
               tab("Payments") {
-                prefixSlot { tabbedPane("credit-card") }
+                prefixSlot { tablerIcon("credit-card") }
               }
               tab("History") {
-                prefixSlot { tabbedPane("history") }
+                prefixSlot { tablerIcon("history") }
               }
             }
           }
@@ -72,7 +71,7 @@ class AppLayoutMultipleHeadersKotlinView: Composite<AppLayout>() {
           appNav {
             item("Dashboard", "dashboard")
             item("Orders", "shopping-cart")
-            item("Customers", "user")
+            item("Customers", "users")
             item("Products", "box")
             item("Documents", "files")
             item("Tasks", "checklist")
