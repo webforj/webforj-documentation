@@ -52,8 +52,7 @@ class DialogAutoWidthKotlinView : Composite<FlexLayout>() {
             alignment = FlexAlignment.CENTER
             styles["width"] = 100.percent
 
-            switch("Auto width").apply {
-              isChecked = true
+            switch("Auto width", checked = true).apply {
               onToggle { this@dialog.isAutoWidth = it.isToggled }
             }
 
