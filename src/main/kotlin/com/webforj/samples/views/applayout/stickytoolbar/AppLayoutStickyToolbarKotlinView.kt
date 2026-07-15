@@ -35,10 +35,11 @@ class AppLayoutStickyToolbarKotlinView: Composite<AppLayout>() {
   init {
     self.apply {
       isDrawerHeaderVisible = false
+      isHeaderFixed = false
+      isHeaderReveal = true
       classNames += "layout--collapse"
+
       headerSlot {
-        isHeaderFixed = false
-        isHeaderReveal = true
         toolbar {
           startSlot { appDrawerToggle() }
           titleSlot { h3("Application") }
@@ -50,16 +51,16 @@ class AppLayoutStickyToolbarKotlinView: Composite<AppLayout>() {
               isBorderless = true
               isBodyHidden = true
               tab("Sales") {
-                prefixSlot { tabbedPane("report-money") }
+                prefixSlot { tablerIcon("report-money") }
               }
               tab("Enterprise") {
-                prefixSlot { tabbedPane("building") }
+                prefixSlot { tablerIcon("building") }
               }
               tab("Payments") {
-                prefixSlot { tabbedPane("credit-card") }
+                prefixSlot { tablerIcon("credit-card") }
               }
               tab("History") {
-                prefixSlot { tabbedPane("history") }
+                prefixSlot { tablerIcon("history") }
               }
             }
           }
@@ -71,7 +72,7 @@ class AppLayoutStickyToolbarKotlinView: Composite<AppLayout>() {
           appNav {
             item("Dashboard", "dashboard")
             item("Orders", "shopping-cart")
-            item("Customers", "user")
+            item("Customers", "users")
             item("Products", "box")
             item("Documents", "files")
             item("Tasks", "checklist")
