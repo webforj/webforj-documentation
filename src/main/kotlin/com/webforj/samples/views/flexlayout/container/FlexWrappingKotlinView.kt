@@ -20,11 +20,12 @@ class FlexWrappingKotlinView : Composite<Div>() {
 
   init {
     self.apply {
+      width = 200.px
+      styles["border"] = "1px black dotted"
+
       flexLayout {
         horizontal()
-        width = 200.px
         wrap = FlexWrap.WRAP
-        styles["border"] = "1px black dotted"
 
         button("Button 1", ButtonTheme.PRIMARY)
         button("Button 2")
