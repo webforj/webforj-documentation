@@ -22,7 +22,6 @@ import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
-import com.webforj.samples.views.applayout.applayoutdrawerutility.AppLayoutDrawerUtilityContentKotlinView
 import com.webforj.samples.views.applayout.drawerLogo
 
 @StyleSheet("ws://css/applayout/applayout.css")
@@ -33,6 +32,9 @@ class AppLayoutDrawerUtilityKotlinView: Composite<AppLayout>() {
 
   init {
     self.apply {
+      isDrawerHeaderVisible = true
+      isDrawerOpened = true
+
       headerSlot {
         toolbar {
           startSlot { appDrawerToggle() }
@@ -53,7 +55,7 @@ class AppLayoutDrawerUtilityKotlinView: Composite<AppLayout>() {
           }
         }
       }
-      drawerTitleSlot { div("Jow Smith") }
+      drawerTitleSlot { div("Joe Smith") }
       drawerHeaderActionsSlot {
         iconButton("pin", "tabler") {
           tooltipText = "Pin drawer"
