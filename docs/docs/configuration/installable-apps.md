@@ -7,14 +7,14 @@ description: Annotate a webforJ app with AppProfile to generate a Web App Manife
 <DocChip chip='since' label='24.21' />
 <JavadocLink type="foundation" location="com/webforj/annotation/AppProfile" top='true'/>
 
-The `@AppProfile` annotation in webforJ enables you to make your app installable on supported platforms. 
-Installable web apps integrate with the device's operating system. 
-When installed, they appear on the home screen or app menu, similar to native apps. 
-To achieve this, certain metadata such as name, description, and icons must be provided. 
+The `@AppProfile` annotation in webforJ enables you to make your app installable on supported platforms.
+Installable web apps integrate with the device's operating system.
+When installed, they appear on the home screen or app menu, similar to native apps.
+To achieve this, certain metadata such as name, description, and icons must be provided.
 These details help the operating system identify and display the app.
 
 :::info Secure Origin Requirement
-For an app to be installable, it must be served from a secure origin, such as `https`. 
+For an app to be installable, it must be served from a secure origin, such as `https`.
 Browsers reject installation attempts on insecure origins. However, this rule doesn't apply when serving the app locally from `localhost` during development.
 
 <!-- vale off -->

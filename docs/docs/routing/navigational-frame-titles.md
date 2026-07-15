@@ -37,8 +37,8 @@ In this example:
 
 This method is useful for routes that have a static title and don't require frequent updates based on the route’s context.
 
-:::tip `@AppTitle` and `@FrameTitle`  
-If the app title is set, the frame title will incorporate it. For example, if the app defines the title as `@AppTitle("webforJ")` and the frame title is set as `@FrameTitle("Dashboard")`, the final page title will be `Dashboard - webforJ`. You can customize the format of the final title in the `@AppTitle` annotation by using the `format` attribute if needed.  
+:::tip `@AppTitle` and `@FrameTitle`
+If the app title is set, the frame title will incorporate it. For example, if the app defines the title as `@AppTitle("webforJ")` and the frame title is set as `@FrameTitle("Dashboard")`, the final page title will be `Dashboard - webforJ`. You can customize the format of the final title in the `@AppTitle` annotation by using the `format` attribute if needed.
 :::
 
 ## Dynamic frame titles {#dynamic-frame-titles}
@@ -57,7 +57,7 @@ public class ProfileView extends Composite<Div> implements HasFrameTitle {
   public ProfileView() {
     self.add(new H1("Profile Page"));
   }
-  
+
   @Override
   public String getFrameTitle(NavigationContext context, ParametersBag parameters) {
     // Dynamically set the frame title using route parameters

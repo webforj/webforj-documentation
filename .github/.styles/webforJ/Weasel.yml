@@ -1,0 +1,13 @@
+extends: existence
+message: "Vague attribution '%s'. Cite a specific source or remove the claim."
+link: "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+level: suggestion
+ignorecase: true
+tokens:
+  - 'experts (?:argue|say|believe|agree|note)'
+  - 'studies show'
+  - 'research shows'
+  - 'it is widely (?:believed|regarded|considered|known)'
+  - 'observers (?:note|cite)'
+  - 'industry reports'
+  - 'many believe'

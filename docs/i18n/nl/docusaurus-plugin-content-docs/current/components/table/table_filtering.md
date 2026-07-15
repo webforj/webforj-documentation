@@ -2,11 +2,14 @@
 sidebar_position: 35
 title: Filtering
 slug: filtering
-_i18n_hash: e35c9b340f9faa796a4dbf5635f59495
+description: >-
+  Narrow Table rows by applying a Predicate through the bound Repository,
+  refreshing results on commit.
+_i18n_hash: 4e0709a55b763f553eeb8ddb8a3abb32
 ---
-De `Table`-component stelt je in staat om filters toe te passen om de weergegeven gegevens te verkleinen op basis van specifieke criteria. Filtering kan worden bereikt door een filtercriterium te definiëren met de `setFilter(Predicate<T> filter)`-methode die wordt geleverd door de `Repository` die aan de tabel is gekoppeld.
+De `Table`-component stelt je in staat om filtering toe te passen om weergegeven gegevens te verkleinen op basis van specifieke criteria. Filtering kan worden bereikt door een filtercriterium te definiëren met behulp van de `setFilter(Predicate<T> filter)`-methode die wordt aangeboden door de `Repository` die aan de tabel is gekoppeld.
 
-In het volgende voorbeeld wordt een door de gebruiker gedefinieerd criterium uit het zoekveld gebruikt en de `setBaseFilter()`-methode om een filter toe te passen op de `CollectionRepository` op basis van de titels van `MusicRecord`. Wanneer de `commit()`-methode wordt geactiveerd, wordt de tabel vernieuwd met de gefilterde gegevens.
+Het volgende voorbeeld gebruikt een door de gebruiker gedefinieerd criterium uit het zoekveld en de `setBaseFilter()`-methode om een filter toe te passen op de `CollectionRepository` op basis van de titels van `MusicRecord`. Wanneer de `commit()`-methode wordt geactiveerd, wordt de tabel verfrist met de gefilterde gegevens.
 
 <!-- vale off -->
 <ComponentDemo
@@ -21,5 +24,5 @@ height='600px'
 <!-- vale on -->
 
 :::note
-De `setBaseFilter()`-methode behoort tot de `CollectionRepository`-klasse, niet tot de `Table`-component.
+De `setBaseFilter()`-methode behoort tot de `CollectionRepository`-klasse, niet de `Table`-component.
 :::

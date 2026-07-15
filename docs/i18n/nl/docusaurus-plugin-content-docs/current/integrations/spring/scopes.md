@@ -1,42 +1,44 @@
 ---
 title: Scopes
 sidebar_position: 16
-sidebar_class_name: new-content
-_i18n_hash: 8c977fdef41f6125ac21239e7e397f4d
+description: >-
+  Use WebforjSessionScope, EnvironmentScope, and RouteScope to control bean
+  lifetimes across sessions, browser tabs, and route hierarchies.
+_i18n_hash: ea33564c3dec0bc26426440f3b448c53
 ---
 <!-- vale off -->
 
-# Scopes <DocChip chip='since' label='25.03' />
+# Scope <DocChip chip='since' label='25.03' />
 
 <!-- vale on -->
 
-Spring beheert de levenscyclus van beans via scopes. Elke scope definieert wanneer een bean wordt aangemaakt, hoe lang deze leeft en wanneer deze wordt vernietigd. Naast de standaard Spring-scopes, voegt webforJ drie aangepaste scopes toe: `@WebforjSessionScope`, `@EnvironmentScope` en `@RouteScope`.
+Spring beheert de levenscyclus van beans via scopes. Elke scope definieert wanneer een bean wordt aangemaakt, hoe lang deze leeft en wanneer deze wordt vernietigd. Naast de standaard Spring-scopes voegt webforJ drie aangepaste scopes toe: `@WebforjSessionScope`, `@EnvironmentScope` en `@RouteScope`.
 
 :::tip[Leer meer over Spring-scopes]
-Voor uitgebreide informatie over de scopingmechanisme van Spring en standaardscopes, zie [Spring's bean scopes documentation](https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html).
+Voor uitgebreide informatie over het scoping-mechanisme van Spring en de standaard scopes, zie [de documentatie over Spring's bean scopes](https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html).
 :::
 
-## Overzicht
+## Overzicht {#overview}
 
-webforJ biedt drie aangepaste scopes die zijn ontworpen voor het beheren van de status van web-apps:
+webforJ biedt drie aangepaste scopes die zijn ontworpen voor het beheer van de status van webapplicaties:
 
-- **`@WebforjSessionScope`**: Beans die worden gedeeld over alle browsertabbladen/vensters voor dezelfde gebruikerssessie. Perfect voor authenticatie, gebruikersvoorkeuren en winkelwagentjes.
-- **`@EnvironmentScope`**: Beans die geïsoleerd zijn voor een enkel browsertabblad/venster. Ideaal voor tab-specifieke workflows, formuliergegevens en onafhankelijke documentbewerking.
-- **`@RouteScope`**: Beans die worden gedeeld binnen een routehiërarchie. Handig voor navigatiestatus en gegevens die opnieuw moeten worden ingesteld wanneer gebruikers navigeren tussen secties van de app.
+- **`@WebforjSessionScope`**: Beans die worden gedeeld over alle browser-tabbladen/vensters voor dezelfde gebruikerssessie. Perfect voor authenticatie, gebruikersvoorkeuren en winkelwagentjes.
+- **`@EnvironmentScope`**: Beans die geïsoleerd zijn tot een enkel browser-tabblad/venster. Ideaal voor tab-specifieke werkstromen, formulierdata en onafhankelijke documentbewerking.
+- **`@RouteScope`**: Beans die worden gedeeld binnen een route-hiërarchie. Handig voor navigatiestatus en gegevens die moeten worden gereset wanneer gebruikers tussen secties van de app navigeren.
 
 [![webforJ spring scopes](/img/spring-scopes.svg)](/img/spring-scopes.svg)
 
-## Sessie-scope {#session-scope}
+## Sessie scope {#session-scope}
 
-De `@WebforjSessionScope` annotatie creëert beans die persistent zijn gedurende de hele webforJ-sessie. In tegenstelling tot [environment scope](#environment-scope) die beans isoleert per browsertabblad/venster, worden sessie-scoped beans gedeeld tussen alle vensters en tabbladen van dezelfde browser. Deze beans leven zolang de webforJ-sessie actief blijft, meestal totdat de gebruiker uitlogt of de sessie verloopt.
+De annotatie `@WebforjSessionScope` creëert beans die persistent zijn gedurende de gehele webforJ-sessie. In tegenstelling tot de [environment scope](#environment-scope) die beans isoleert per browservenster/tab, worden sessie-scoped beans gedeeld over alle vensters en tabbladen van dezelfde browser. Deze beans leven zolang de webforJ-sessie actief blijft, meestal totdat de gebruiker uitlogt of de sessie vervalt.
 
-Sessie-scope is ideaal voor authenticatiestatus, gebruikersvoorkeuren, winkelwagentjes en gegevens die moeten blijven bestaan over meerdere browsertabbladen maar geïsoleerd moeten blijven tussen verschillende gebruikers. Elke gebruikersbrowser-sessie ontvangt zijn eigen instantie van sessie-scoped beans.
+Sessie scope is ideaal voor authenticatiestatus, gebruikersvoorkeuren, winkelwagentjes en gegevens die persistent moeten blijven over meerdere browser-tabbladen maar geïsoleerd moeten blijven tussen verschillende gebruikers. Elke gebruikerssessie in de browser ontvangt zijn eigen instantie van sessie-scoped beans.
 
-:::info Beans moeten serialiseerbaar zijn
-Sessie-scoped beans moeten `Serializable` implementeren, aangezien ze worden opgeslagen in HTTP-sessie-attributen. Alle niet-transiënte velden moeten ook serialiseerbaar zijn (primitieven, `String`, of klassen die `Serializable` implementeren). Markeer velden als `transient` als ze niet moeten worden opgeslagen.
+:::info Beans moeten Serializable zijn
+Sessie-scoped beans moeten `Serializable` implementeren, aangezien ze worden opgeslagen in HTTP-sessie-attributen. Alle niet-transiënte velden moeten ook serialiseerbaar zijn (primitieven, `String` of klassen die `Serializable` implementeren). Markeer velden als `transient` als ze niet moeten worden gepersistent.
 :::
 
-Voeg `@WebforjSessionScope` toe aan elke Spring-component:
+Voeg `@WebforjSessionScope` toe aan elk Spring-component:
 
 ```java title="AuthenticationService.java" {2}
 @Service
@@ -46,7 +48,7 @@ public class AuthenticationService {
   private Instant loginTime;
 
   public void login(String username, String password) {
-    // Authenticate user
+    // Authenticeer gebruiker
     authenticatedUser = authenticate(username, password);
     loginTime = Instant.now();
   }
@@ -54,7 +56,7 @@ public class AuthenticationService {
   public void logout() {
     authenticatedUser = null;
     loginTime = null;
-    // Invalidate session
+    // Ongeldig maken van sessie
   }
 
   public boolean isAuthenticated() {
@@ -67,9 +69,9 @@ public class AuthenticationService {
 }
 ```
 
-### Sessie delen tussen tabbladen {#session-sharing-across-tabs}
+### Delen van de sessie over tabbladen {#session-sharing-across-tabs}
 
-Sessie-scoped beans behouden staat tussen alle browservervensters en tabbladen. Het openen van de app in meerdere tabbladen deelt dezelfde bean-instantie:
+Sessie-scoped beans behouden de status over alle browservensters en tabbladen. Het openen van de app in meerdere tabbladen deelt dezelfde bean-instantie:
 
 ```java
 @Route
@@ -101,20 +103,20 @@ public class DashboardView extends Composite<Div> {
       return;
     }
 
-    // Toon gebruikers dashboard
+    // Toon gebruikersdashboard
   }
 }
 ```
 
-Wanneer een gebruiker inlogt via een tabblad, hebben alle andere tabbladen onmiddellijk toegang tot de geauthenticeerde status. Het openen van nieuwe tabbladen of vensters behoudt de ingelogde status. Afmelden vanuit een tabblad heeft invloed op alle tabbladen, aangezien ze dezelfde sessie-scoped bean delen.
+Wanneer een gebruiker inlogt via een tabblad, hebben alle andere tabbladen onmiddellijk toegang tot de geauthenticeerde status. Het openen van nieuwe tabbladen of vensters behoudt de ingelogde status. Uitloggen vanuit eender welk tabblad heeft invloed op alle tabbladen, aangezien ze dezelfde sessie-scoped bean delen.
 
-## Omgevingsscope {#environment-scope}
+## Environment scope {#environment-scope}
 
-De `@EnvironmentScope` annotatie creëert beans die leven gedurende de duur van een browservervenster of tabblad-sessie. Wanneer een gebruiker de app opent in een browservervenster of tabblad, creëert webforJ een omgeving. Elke bean gemarkeerd met `@EnvironmentScope` wordt eenmaal per browservervenster/tabblad aangemaakt en blijft beschikbaar totdat de gebruiker het tabblad sluit of de sessie verloopt.
+De annotatie `@EnvironmentScope` creëert beans die zolang leven als een browservenster- of tabblad-sessie. Wanneer een gebruiker de app opent in een browservenster of -tabblad, creëert webforJ een Environment. Elke bean die is gemarkeerd met `@EnvironmentScope` wordt één keer per browservenster/tab gemaakt en blijft beschikbaar totdat de gebruiker het tabblad sluit of de sessie vervalt.
 
-Elke omgeving vertegenwoordigt een geïsoleerd browservervenster of tabblad. Environment-scoped beans kunnen niet worden gedeeld tussen verschillende browservervensters of tabbladen omdat elk venster/tabblad zijn eigen instantie ontvangt.
+Elke Environment vertegenwoordigt een geïsoleerd browservenster of tabblad. Environment-scoped beans kunnen niet worden gedeeld tussen verschillende browservensters of tabbladen omdat elk venster/tabblad zijn eigen instantie ontvangt.
 
-Voeg `@EnvironmentScope` toe aan elke Spring-component:
+Voeg `@EnvironmentScope` toe aan elk Spring-component:
 
 ```java title="TabWorkspace.java" {2}
 @Component
@@ -141,7 +143,7 @@ public class TabWorkspace {
 }
 ```
 
-De `TabWorkspace` bean behoudt staat gedurende de levensduur van een browservervenster of tabblad. Elke browservervenster/tabblad ontvangt een geïsoleerde instantie.
+De bean `TabWorkspace` behoudt de status gedurende de levensduur van een browservenster of tabblad. Elk browservenster/tabblad ontvangt een geïsoleerde instantie.
 
 ### Gebruik van environment-scoped beans {#using-environment-scoped-beans}
 
@@ -173,15 +175,15 @@ public class PreviewView extends Composite<Div> {
 }
 ```
 
-Spring injecteert dezelfde `TabWorkspace` instantie in beide views voor hetzelfde browservervenster/tabblad. Navigeren tussen editor en voorbeeld behoudt de workspace-instantie. Als de gebruiker de app in een nieuw browservervenster of tabblad opent, ontvangt dat venster zijn eigen onderscheidende `TabWorkspace` instantie, waardoor onafhankelijke bewerking van verschillende documenten mogelijk is.
+Spring injecteert dezelfde `TabWorkspace`-instantie in beide views voor hetzelfde browservenster/tabblad. Navigatie tussen editor en preview behoudt de workspace-instantie. Als de gebruiker de app opent in een nieuw browservenster of -tabblad, ontvangt dat venster zijn eigen unieke `TabWorkspace`-instantie, waardoor onafhankelijke bewerking van verschillende documenten mogelijk is.
 
-## Route-scope {#route-scope}
+## Route scope {#route-scope}
 
-De `@RouteScope` annotatie creëert beans die worden gedeeld binnen een routehiërarchie. Navigeren naar `/admin/users` bouwt een componenthiërarchie waarbij de admin-weergave als ouder en de gebruikersweergave als kind fungeert. Route-scoped beans worden eenmaal per hiërarchie geïnstantieerd en gedeeld tussen ouder- en kindercomponenten.
+De annotatie `@RouteScope` creëert beans die worden gedeeld binnen een route-hiërarchie. Navigeren naar `/admin/users` bouwt een component-hiërarchie met de beheerdersweergave als ouder en de gebruikersweergave als kind. Route-scoped beans worden eenmaal per hiërarchie geïnstantieerd en gedeeld tussen ouder- en kindcomponenten.
 
-Route-scope verschilt van environment-scope in granulariteit. Terwijl environment-scoped beans bestaan gedurende de hele browservervenster/tabblad-sessie, bestaan route-scoped beans alleen terwijl de gebruiker zich binnen een specifieke routehiërarchie bevindt. Navigeren weg van de hiërarchie vernietigt de beans en terugkeren creëert nieuwe instanties. Deze scope is ideaal voor staat die opnieuw moet worden ingesteld wanneer gebruikers navigeren tussen verschillende secties van je app.
+Route scope verschilt van environment scope in granulariteit. Terwijl environment-scoped beans bestaan voor de gehele browservenster/tab-sessie, bestaan route-scoped beans alleen terwijl de gebruiker binnen een specifieke route-hiërarchie blijft. Navigeren weg van de hiërarchie vernietigt de beans en terugkeren creëert nieuwe instanties. Deze scope is ideaal voor status die moet worden gereset wanneer gebruikers tussen verschillende secties van je app navigeren.
 
-Voeg `@RouteScope` toe aan elke Spring-component:
+Voeg `@RouteScope` toe aan elk Spring-component:
 
 ```java title="NavigationState" {2}
 @Component
@@ -206,7 +208,7 @@ public class NavigationState {
 
 ### Route-hiërarchieën en delen {#route-hierarchies-and-sharing}
 
-Routes vormen hiërarchieën via de `outlet` parameter. De ouderroute biedt een outlet waar kindroutes zich renderen. Wanneer je een route definieert met een outlet, construeert webforJ een componentenboom waarbij het outletcomponent de ouder wordt en het routecomponent het kind. Deze ouder-kind relatie bepaalt welke componenten route-scoped beans delen.
+Routes vormen hiërarchieën via de parameter `outlet`. De ouderroute biedt een outlet waar de kindroutes worden weergegeven. Wanneer je een route definieert met een outlet, construeert webforJ een componentboom waarin de outlet-component de ouder wordt en de route-component het kind wordt. Deze ouder-kind-relatie bepaalt welke componenten route-scoped beans delen.
 
 ```java {11}
 @Route
@@ -230,13 +232,13 @@ public class UsersView extends Composite<Div> {
 }
 ```
 
-De `AdminView` en `UsersView` delen dezelfde `NavigationState` instantie. De lay-out stelt de navigatiestructuur vast, terwijl de weergave de actieve status bijwerkt. Navigeren buiten de `admin` sectie (naar `/public` bijvoorbeeld) vernietigt de huidige `NavigationState` instantie en creëert een nieuwe voor de daaropvolgende hiërarchie.
+De `AdminView` en `UsersView` delen dezelfde `NavigationState`-instantie. De lay-out stelt de navigatiestructuur vast terwijl de view de actieve status bijwerkt. Navigatie buiten de `admin` sectie (naar `/public` bijvoorbeeld) vernietigt de huidige `NavigationState`-instantie en creëert een nieuwe voor de volgende hiërarchie.
 
-De scope-grens volgt de structuur van de routeboom. Alle componenten van de wortel van een hiërarchie tot de bladeren delen dezelfde route-scoped bean-instanties. Navigeren naar broederoutes binnen dezelfde hiërarchie behoudt de beans, terwijl navigeren naar niet-gerelateerde hiërarchieën leidt tot het vernietigen en opnieuw creëren van beans.
+De scope-grens volgt de structuur van de routeboom. Alle componenten van de wortel van een hiërarchie tot aan de bladeren delen dezelfde route-scoped bean-instanties. Navigeren naar zusterroutes binnen dezelfde hiërarchie behoudt de beans, terwijl navigatie naar niet-verwante hiërarchieën leidt tot het vernietigen en recreëren van beans.
 
-### Het aanpassen van scope-grenzen met `@SharedFrom` {#customizing-scope-boundaries}
+### Scope-grenzen aanpassen met `@SharedFrom` {#customizing-scope-boundaries}
 
-Route-scoped beans worden standaard gedeeld vanaf de bovenste component. De annotatie `@SharedFrom` specificeert een alternatieve hoofcomponent. Deze annotatie verandert waar in de hiërarchie een bean beschikbaar wordt, waardoor je toegang tot specifieke subbomen van je routestructuur kunt beperken:
+Route-scoped beans worden standaard gedeeld vanaf de bovenste component. De annotatie `@SharedFrom` specificeert een alternatieve wortelcomponent. Deze annotatie verandert waar in de hiërarchie een bean beschikbaar wordt, zodat je de toegang tot specifieke subbomen van je routestructuur kunt beperken:
 
 ```java title="TeamContext" {2,3}
 @Component
@@ -266,7 +268,7 @@ public class MainView extends Composite<Div> {}
 public class TeamSection extends Composite<Div> {
 
   public TeamSection(TeamContext context) {
-    // Bean wordt hier gecreëerd
+    // Bean wordt hier gemaakt
     context.setTeamId("team-123");
   }
 }
@@ -275,12 +277,12 @@ public class TeamSection extends Composite<Div> {
 public class PublicSection extends Composite<Div> {
 
   public PublicSection(TeamContext context) {
-    // Kan TeamContext niet injecteren - deze is scoped naar TeamSection
-    // Poging tot injectie zal IllegalStateException veroorzaken
+    // Kan TeamContext niet injecteren - het is scoped naar TeamSection
+    // Poging tot injectie resulteert in IllegalStateException
   }
 }
 ```
 
-De annotatie `@SharedFrom` handhaaft architecturale grenzen. Componenten buiten de opgegeven scope kunnen de bean niet benaderen. Wanneer Spring probeert een `@SharedFrom` bean te injecteren in een component buiten de aangewezen hiërarchie, faalt de injectie met een `IllegalStateException`. Deze handhaving vindt plaats tijdens de uitvoering wanneer de route wordt benaderd, zodat beans correct worden gescopeerd naar hun beoogde componentbomen.
+De annotatie `@SharedFrom` handhaaft architectonische grenzen. Componenten buiten de gespecificeerde scope kunnen de bean niet bereiken. Wanneer Spring probeert een `@SharedFrom` bean in een component buiten zijn aangewezen hiërarchie te injecteren, mislukt de injectie met een `IllegalStateException`. Deze handhaving vindt plaats tijdens runtime wanneer de route wordt geopend, zodat beans correct binnen hun beoogde componentbomen blijven gescopeerd.
 
-De annotatie accepteert een enkele parameter: de componentklasse die als de wortel voor delen moet dienen. Alleen deze component en zijn afstammelingen in de routestructuur kunnen de bean benaderen. Oudercomponenten en broederhiërarchieën kunnen deze niet injecteren.
+De annotatie accepteert één parameter: de componentklasse die als de wortel voor delen moet dienen. Alleen deze component en zijn afstammelingen in de routestructuur kunnen de bean bereiken. Bovenliggende componenten en zusterhiërarchieën kunnen deze niet injecteren.

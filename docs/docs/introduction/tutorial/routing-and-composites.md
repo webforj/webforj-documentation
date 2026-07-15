@@ -4,7 +4,7 @@ sidebar_position: 4
 description: Step 3 - Make your app navigable.
 ---
 
-Up until now, this tutorial has only been a single-page app. This step changes that. 
+Up until now, this tutorial has only been a single-page app. This step changes that.
 You'll move the UI you created in [Working with Data](/docs/introduction/tutorial/working-with-data) to its own page and create another page for adding new customers.
 Then, you'll connect these pages so your app is able to navigate between them by applying these concepts:
 
@@ -31,7 +31,7 @@ Running the app automatically opens a new browser at `http://localhost:8080`.
 
 ## Routable apps {#routable-apps}
 
-Previously, your app had a single function: displaying a table of existing customer data. 
+Previously, your app had a single function: displaying a table of existing customer data.
 In this step, your app will also be able to modify the customer data by adding new customers.
 Separating the UIs for display and modification is beneficial for long-term maintenance and testing, so you'll add this feature as a separate page.
 You’ll make your app [routable](/docs/routing/overview) so webforJ can access and load the two UIs individually.
@@ -66,7 +66,7 @@ Keeping the `@BundleEntry` annotation in `Application` adds the CSS file to the 
 
 ### Creating routes {#creating-routes}
 
-Adding the `@Routify` annotation makes your app routable. Once it's routable, your app will look in the `com.webforj.tutorial.views` package for routes. 
+Adding the `@Routify` annotation makes your app routable. Once it's routable, your app will look in the `com.webforj.tutorial.views` package for routes.
 You'll need to create the routes for your UIs and also specify their [Route Types](/docs/routing/route-hierarchy/route-types). The route type determines how to map the UI content to the URL.
 
 The first route type is `View`. These kinds of routes map directly to a specific URL segment in your app. The UIs for the table and the new customer form will both be `View` routes.
@@ -124,8 +124,8 @@ Besides both being view routes, `MainView` and `FormView` share additional chara
 
 When the app was single-paged, you stored the components inside a `Frame`. Moving forward, with an app with multiple views, you'll need to wrap those UI components inside [`Composite` components](/docs/building-ui/composing-components).
 
-`Composite` components are wrappers that make it easy to create reusable components. 
-To create a `Composite` component, extend the `Composite` class with a specified bound component that serves as the foundation of the class, e.g., `Composite<FlexLayout>`. 
+`Composite` components are wrappers that make it easy to create reusable components.
+To create a `Composite` component, extend the `Composite` class with a specified bound component that serves as the foundation of the class, e.g., `Composite<FlexLayout>`.
 
 This tutorial uses `Div` elements as the bound components, but they can be any component, such as [`FlexLayout`](/docs/components/flex-layout) or [`AppLayout`](/docs/components/app-layout). Using the `getBoundComponent()` method, you can reference the bound component and have access to its methods. This lets you set the sizing, add a CSS class name, add components you want displayed in the `Composite` component, and access component-specific methods.
 
@@ -186,8 +186,8 @@ The [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest
 
 ### Shared CSS {#shared-css}
 
-With a bound component you can reference in `MainView` and `FormView`, you can style it with CSS. 
-You can use the CSS from the first step, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app#referencing-a-css-file), to give both views identical UI container styles. 
+With a bound component you can reference in `MainView` and `FormView`, you can style it with CSS.
+You can use the CSS from the first step, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app#referencing-a-css-file), to give both views identical UI container styles.
 Add the CSS class name `card` to the bound component in each view:
 
 <Tabs>
@@ -226,7 +226,7 @@ Add the CSS class name `card` to the bound component in each view:
 ### Using `CustomerService` {#using-customerservice}
 
 The last shared trait for the views is using the `CustomerService` class.
-The `Table` in `MainView` displays each customer, while `FormView` adds new customers. Since both views interact with customer data, they need access to the app's business logic. 
+The `Table` in `MainView` displays each customer, while `FormView` adds new customers. Since both views interact with customer data, they need access to the app's business logic.
 
 The views get access through the Spring service created in [Working with Data](/docs/introduction/tutorial/working-with-data#creating-a-service), `CustomerService`. To use the Spring service in each view, make `CustomerService` a constructor parameter:
 
@@ -291,9 +291,9 @@ private void buildTable() {
 
 Users need a way to navigate from `MainView` to `FormView` using the UI.
 
-In webforJ, you can directly navigate to a new view by using the view's class. Routing via a class instead of a URL segment guarantees webforJ will take the correct path to load the view. 
+In webforJ, you can directly navigate to a new view by using the view's class. Routing via a class instead of a URL segment guarantees webforJ will take the correct path to load the view.
 
-To navigate to a different view, use the [`Router`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/router/Router.html) class to get the current location with `getCurrent()`, then use the `navigate()` method with the view's class as a parameter: 
+To navigate to a different view, use the [`Router`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/router/Router.html) class to get the current location with `getCurrent()`, then use the `navigate()` method with the view's class as a parameter:
 
 ```java
 Router.getCurrent().navigate(FormView.class);
@@ -436,7 +436,7 @@ private ChoiceBox country = new ChoiceBox("Country",
     e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
 ```
 
-To keep the code clean, the iterator that creates the `ArrayList<ListItem>` and adds it to the `ChoiceBox` should be in a separate method. 
+To keep the code clean, the iterator that creates the `ArrayList<ListItem>` and adds it to the `ChoiceBox` should be in a separate method.
 After you add a `ChoiceBox` that allows the user to choose the `country` property, `FormView` should look like this:
 
 ```java title="FormView.java" {9-10,15,18-25}
@@ -480,7 +480,7 @@ private Button cancel = new Button("Cancel");
 ```
 
 Both the submit and cancel buttons should return the user to `MainView`.
-This allows the user to immediately see the results of their action, whether they see a new customer in the table or it remains unchanged. 
+This allows the user to immediately see the results of their action, whether they see a new customer in the table or it remains unchanged.
 Since multiple inputs in `FormView` take users to `MainView`, the navigation should be put into a recallable method:
 
 ```java
@@ -491,7 +491,7 @@ private void navigateToMain(){
 
 **Cancel button**
 
-Discarding the changes on the form doesn’t require any additional code for the event beyond returning to `MainView`. However, since canceling isn't a primary action, setting the theme of the button to an outline gives the submit button more prominence. 
+Discarding the changes on the form doesn’t require any additional code for the event beyond returning to `MainView`. However, since canceling isn't a primary action, setting the theme of the button to an outline gives the submit button more prominence.
 The [Themes](/docs/components/button#themes) section of the `Button` component page lists all available themes.
 
 

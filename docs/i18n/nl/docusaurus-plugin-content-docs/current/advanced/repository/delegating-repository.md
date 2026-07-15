@@ -1,47 +1,50 @@
 ---
 title: Custom data sources
 sidebar_position: 4
-_i18n_hash: 7ead4a1af63b9c20d81dc2fd9b67380f
+description: >-
+  Wire REST APIs, databases, or external services to webforJ components by
+  supplying find, count, and key-lookup functions to DelegatingRepository.
+_i18n_hash: 7d203b803816c64e9ca77d8b49bf34ed
 ---
 <!-- vale off -->
 # Aangepaste gegevensbronnen <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-Wanneer je gegevens buiten je app hebt - in een REST API, database of externe service - moet je een aangepaste repository-implementatie maken. De <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> klasse maakt dit eenvoudig door je in staat te stellen functies te bieden in plaats van een volledige klasse te implementeren.
+Wanneer uw gegevens zich buiten uw app bevinden - in een REST API, database of externe service - moet u een aangepaste repository-implementatie maken. De <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> klasse maakt dit eenvoudig door u in staat te stellen functies te bieden in plaats van een volledige klasse te implementeren.
 
 ## Hoe `DelegatingRepository` werkt {#how-delegatingrepository-works}
 
-<JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> is een concrete klasse die <JavadocLink type="data" location="com/webforj/data/repository/AbstractQueryableRepository" code="true">AbstractQueryableRepository</JavadocLink> uitbreidt. In plaats van abstracte methoden te implementeren, geef je drie functies in de constructor op:
+<JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> is een concrete klasse die <JavadocLink type="data" location="com/webforj/data/repository/AbstractQueryableRepository" code="true">AbstractQueryableRepository</JavadocLink> uitbreidt. In plaats van abstracte methoden te implementeren, biedt u drie functies in de constructor:
 
 ```java
 DelegatingRepository<User, UserFilter> repository = new DelegatingRepository<>(
-  // 1. Vindfunctie - retourneert gefilterde/gesorteerde/gepaginaerde gegevens
+  // 1. Zoekfunctie - retourneert gefilterde/sorteerde/gevuld gegevens
   criteria -> userService.findUsers(criteria),
-  
-  // 2. Telfunctie - retourneert het totale aantal voor de filter
+
+  // 2. Tel functie - retourneert totaal aantal voor de filter
   criteria -> userService.countUsers(criteria),
-  
-  // 3. Vindfunctie op sleutel - retourneert een enkele entiteit op basis van ID
+
+  // 3. Zoek op sleutel functie - retourneert enkele entiteit op ID
   userId -> userService.findById(userId)
 );
 ```
 
-Elke functie heeft een specifiek doel:
+Elke functie heeft een specifieke functie:
 
-**Vindfunctie** ontvangt een `RepositoryCriteria` object met:
-- `getFilter()` - je aangepaste filterobject (de `F` typeparameter)
+**Zoekfunctie** ontvangt een `RepositoryCriteria` object dat bevat:
+- `getFilter()` - uw aangepaste filterobject (de `F` typeparameter)
 - `getOffset()` en `getLimit()` - voor paginering
-- `getOrderCriteria()` - lijst met sorteervariabelen
+- `getOrderCriteria()` - lijst met sorteerregels
 
-Deze functie moet een `Stream<T>` van entiteiten retourneren die aan de criteria voldoen. De stream kan leeg zijn als er geen overeenkomsten zijn gevonden.
+Deze functie moet een `Stream<T>` van entiteiten retourneren die voldoen aan de criteria. De stroom kan leeg zijn als er geen overeenkomsten worden gevonden.
 
-**Telfunctie** ontvangt ook de criteria, maar gebruikt meestal alleen het filtergedeelte. Het retourneert het totale aantal overeenkomende entiteiten, waarbij paginering wordt genegeerd. Dit wordt gebruikt door UI-componenten om totale resultaten weer te geven of pagina's te berekenen.
+**Tel functie** ontvangt ook de criteria, maar gebruikt meestal alleen het filtergedeelte. Het retourneert het totale aantal bijpassende entiteiten, waarbij paginering wordt genegeerd. Dit wordt door UI-componenten gebruikt om totale resultaten weer te geven of pagina's te berekenen.
 
-**Vindfunctie op sleutel** ontvangt een entiteitssleutel (meestal een ID) en retourneert een `Optional<T>`. Retourneer `Optional.empty()` als de entiteit niet bestaat.
+**Zoek op sleutel functie** ontvangt een entiteitssleutel (meestal een ID) en retourneert een `Optional<T>`. Geef `Optional.empty()` terug als de entiteit niet bestaat.
 
 ## REST API voorbeeld {#rest-api-example}
 
-Bij integratie met een REST API moet je de repositorycriteria omzetten in HTTP-verzoekparameters. Begin met het definiëren van een filterklasse die overeenkomt met de querymogelijkheden van je API:
+Bij integratie met een REST API moet u de repositorycriteria omzetten in HTTP-verzoekparameters. Begin met het definiëren van een filterklasse die overeenkomt met de zoekmogelijkheden van uw API:
 
 ```java
 public class UserFilter {
@@ -51,35 +54,35 @@ public class UserFilter {
 }
 ```
 
-Deze filterklasse vertegenwoordigt de zoekparameters die je API accepteert. De repository zal instanties van deze klasse doorgeven aan je functies wanneer filtering wordt toegepast.
+Deze filterklasse vertegenwoordigt de zoekparameters die uw API accepteert. De repository zal instanties van deze klasse doorgeven aan uw functies wanneer filtering wordt toegepast.
 
 Maak de repository met functies die criteria vertalen naar API-aanroepen:
 
 ```java
 DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<>(
-  // Vind gebruikers
+  // Zoek gebruikers
   criteria -> {
     Map<String, String> params = buildParams(criteria);
     List<User> users = restClient.get("/users", params);
     return users.stream();
   },
-  
-  // Telfunctie voor gebruikers
+
+  // Tel gebruikers
   criteria -> {
     Map<String, String> filterParams = buildFilterParams(criteria.getFilter());
     return restClient.getCount("/users/count", filterParams);
   },
-  
-  // Vind op ID
+
+  // Zoek op ID
   userId -> restClient.getById("/users/" + userId)
 );
 ```
 
-De `buildParams()` methode zou waarden van de criteria extraheren en converteren naar queryparameters zoals `?department=Sales&status=active&offset=20&limit=10`. Je REST-client maakt vervolgens de daadwerkelijke HTTP-aanroep en deserialiseert de respons.
+De `buildParams()` methode zou waarden uit de criteria extraheren en deze omzetten in queryparameters zoals `?department=Sales&status=active&offset=20&limit=10`. Uw REST-client doet vervolgens de daadwerkelijke HTTP-aanroep en deserializeert de respons.
 
 ## Database voorbeeld {#database-example}
 
-Database-integratie volgt een vergelijkbaar patroon, maar zet criteria om in SQL-query's. Het belangrijkste verschil is de afhandeling van SQL-generatie en parameterbinding:
+Database-integratie volgt een vergelijkbaar patroon, maar zet criteria om in SQL-query's. Het belangrijkste verschil is het omgaan met SQL-generatie en parameterbinding:
 
 ```java
 DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepository<>(
@@ -88,14 +91,14 @@ DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepo
     String sql = buildQuery(criteria);
     return jdbcTemplate.queryForStream(sql, rowMapper);
   },
-  
-  // Tellen van overeenkomende records
+
+  // Tel bijpassende records
   criteria -> {
     String countSql = buildCountQuery(criteria.getFilter());
     return jdbcTemplate.queryForObject(countSql, Integer.class);
   },
-  
-  // Vind op primaire sleutel
+
+  // Zoek op primaire sleutel
   customerId -> {
     String sql = "SELECT * FROM customers WHERE id = ?";
     return jdbcTemplate.queryForObject(sql, rowMapper, customerId);
@@ -105,17 +108,17 @@ DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepo
 
 De `buildQuery()` methode zou SQL construeren zoals:
 ```sql
-SELECT * FROM customers 
+SELECT * FROM customers
 WHERE status = ? AND region = ?
 ORDER BY created_date DESC, name ASC
 LIMIT ? OFFSET ?
 ```
 
-Je filterobjecteigenschappen worden gekoppeld aan `WHERE` clausulevoorwaarden, terwijl paginering en sorteren worden afgehandeld via `LIMIT/OFFSET` en `ORDER BY` clausules.
+De eigenschappen van uw filterobject worden gekoppeld aan voorwaarden in de `WHERE` clausule, terwijl paginering en sortering worden afgehandeld via `LIMIT/OFFSET` en `ORDER BY` clausules.
 
 ## Gebruik met UI-componenten {#using-with-ui-components}
 
-De schoonheid van het repositorypatroon is dat UI-componenten niet weten of zich niet interesseren waar de gegevens vandaan komen. Of het nu een in-memory collectie, REST API of database is, het gebruik is identiek:
+De schoonheid van het repository-patroon is dat UI-componenten niet weten of geven om waar de gegevens vandaan komen. Of het nu een in-memory collectie, REST API of database is, het gebruik is identiek:
 
 ```java
 // Maak en configureer repository
@@ -128,14 +131,14 @@ repository.setBaseFilter(filter);
 Table<User> table = new Table<>();
 table.setRepository(repository);
 
-// Tabel toont automatisch gefilterde engineering gebruikers
+// Tabel geeft automatisch gefilterde engineering gebruikers weer
 ```
 
-Wanneer gebruikers interactie hebben met de [`Table`](../../components/table/overview) (kolommen sorteren, pagina's wijzigen), roept de `Table` je repositoryfuncties aan met bijgewerkte criteria. Je functies vertalen deze naar API-aanroepen of SQL-query's, en de tabel wordt automatisch bijgewerkt met de resultaten.
+Wanneer gebruikers interactie hebben met de [`Table`](../../components/table/overview) (kolommen sorteren, pagina's wijzigen), roept de `Table` uw repository-functies aan met bijgewerkte criteria. Uw functies vertalen deze naar API-aanroepen of SQL-query's, en de tabel wordt automatisch bijgewerkt met de resultaten.
 
 ## Wanneer `AbstractQueryableRepository` uit te breiden {#when-to-extend-abstractqueryablerepository}
 
-Als je aangepaste methoden of complexe initialisatie nodig hebt, breid dan <JavadocLink type="data" location="com/webforj/data/repository/AbstractQueryableRepository" code="true">AbstractQueryableRepository</JavadocLink> direct uit:
+Als u aangepaste methoden of complexe initialisatie nodig heeft, breidt u <JavadocLink type="data" location="com/webforj/data/repository/AbstractQueryableRepository" code="true">AbstractQueryableRepository</JavadocLink> direct uit:
 
 ```java
 public class CustomUserRepository extends AbstractQueryableRepository<User, UserFilter> {
@@ -143,17 +146,17 @@ public class CustomUserRepository extends AbstractQueryableRepository<User, User
   public Stream<User> findBy(RepositoryCriteria<User, UserFilter> criteria) {
     // Implementatie
   }
-  
+
   @Override
   public int size(RepositoryCriteria<User, UserFilter> criteria) {
     // Implementatie
   }
-  
+
   @Override
   public Optional<User> find(Object key) {
     // Implementatie
   }
-  
+
   // Voeg aangepaste methoden toe
   public List<User> findActiveManagers() {
     // Aangepaste querylogica

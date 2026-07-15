@@ -1,13 +1,16 @@
 ---
 title: Custom data sources
 sidebar_position: 4
-_i18n_hash: 7ead4a1af63b9c20d81dc2fd9b67380f
+description: >-
+  Wire REST APIs, databases, or external services to webforJ components by
+  supplying find, count, and key-lookup functions to DelegatingRepository.
+_i18n_hash: 7d203b803816c64e9ca77d8b49bf34ed
 ---
 <!-- vale off -->
 # Fuentes de datos personalizadas <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-Cuando tus datos están fuera de tu aplicación - en una API REST, base de datos o servicio externo - necesitas crear una implementación de repositorio personalizada. La clase <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> lo hace sencillo al permitirte proporcionar funciones en lugar de implementar una clase completa.
+Cuando tus datos residen fuera de tu aplicación - en una API REST, base de datos o servicio externo - necesitas crear una implementación de repositorio personalizada. La clase <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> hace esto sencillo al permitirte proporcionar funciones en lugar de implementar una clase completa.
 
 ## Cómo funciona `DelegatingRepository` {#how-delegatingrepository-works}
 
@@ -15,13 +18,13 @@ Cuando tus datos están fuera de tu aplicación - en una API REST, base de datos
 
 ```java
 DelegatingRepository<User, UserFilter> repository = new DelegatingRepository<>(
-  // 1. Función de búsqueda - retorna datos filtrados/ordenados/paginados
+  // 1. Función de búsqueda - devuelve datos filtrados/ordenados/paginados
   criteria -> userService.findUsers(criteria),
-  
-  // 2. Función de conteo - retorna el conteo total para el filtro
+
+  // 2. Función de conteo - devuelve el conteo total para el filtro
   criteria -> userService.countUsers(criteria),
-  
-  // 3. Función de búsqueda por clave - retorna una entidad única por ID
+
+  // 3. Función de búsqueda por clave - devuelve una entidad única por ID
   userId -> userService.findById(userId)
 );
 ```
@@ -31,13 +34,13 @@ Cada función tiene un propósito específico:
 **Función de búsqueda** recibe un objeto `RepositoryCriteria` que contiene:
 - `getFilter()` - tu objeto de filtro personalizado (el parámetro de tipo `F`)
 - `getOffset()` y `getLimit()` - para paginación
-- `getOrderCriteria()` - lista de reglas de ordenación
+- `getOrderCriteria()` - lista de reglas de ordenamiento
 
-Esta función debe retornar un `Stream<T>` de entidades que coincidan con los criterios. El flujo puede estar vacío si no se encuentran coincidencias.
+Esta función debe devolver un `Stream<T>` de entidades que coincidan con los criterios. El flujo puede estar vacío si no se encuentran coincidencias.
 
-**Función de conteo** también recibe los criterios, pero típicamente solo utiliza la parte del filtro. Retorna el conteo total de entidades coincidentes, ignorando la paginación. Esto es utilizado por los componentes de UI para mostrar el total de resultados o calcular páginas.
+**Función de conteo** también recibe los criterios, pero generalmente solo utiliza la parte del filtro. Devuelve el conteo total de entidades que coinciden, ignorando la paginación. Esto es utilizado por los componentes de la interfaz de usuario para mostrar el total de resultados o calcular páginas.
 
-**Función de búsqueda por clave** recibe una clave de entidad (generalmente un ID) y retorna un `Optional<T>`. Retorna `Optional.empty()` si la entidad no existe.
+**Función de búsqueda por clave** recibe una clave de entidad (usualmente un ID) y devuelve un `Optional<T>`. Devuelve `Optional.empty()` si la entidad no existe.
 
 ## Ejemplo de API REST {#rest-api-example}
 
@@ -53,7 +56,7 @@ public class UserFilter {
 
 Esta clase de filtro representa los parámetros de búsqueda que tu API acepta. El repositorio pasará instancias de esta clase a tus funciones cuando se aplique el filtrado.
 
-Crea el repositorio con funciones que traduzcan criterios en llamadas a la API:
+Crea el repositorio con funciones que traduzcan criterios a llamadas API:
 
 ```java
 DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<>(
@@ -63,13 +66,13 @@ DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<
     List<User> users = restClient.get("/users", params);
     return users.stream();
   },
-  
+
   // Contar usuarios
   criteria -> {
     Map<String, String> filterParams = buildFilterParams(criteria.getFilter());
     return restClient.getCount("/users/count", filterParams);
   },
-  
+
   // Buscar por ID
   userId -> restClient.getById("/users/" + userId)
 );
@@ -79,22 +82,22 @@ El método `buildParams()` extraería valores de los criterios y los convertirí
 
 ## Ejemplo de base de datos {#database-example}
 
-La integración de bases de datos sigue un patrón similar, pero convierte los criterios en consultas SQL. La diferencia clave es manejar la generación de SQL y la vinculación de parámetros:
+La integración con la base de datos sigue un patrón similar, pero convierte los criterios en consultas SQL. La diferencia clave es manejar la generación de SQL y la vinculación de parámetros:
 
 ```java
 DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepository<>(
-  // Consulta con filtro, orden, paginación
+  // Consultar con filtro, orden y paginación
   criteria -> {
     String sql = buildQuery(criteria);
     return jdbcTemplate.queryForStream(sql, rowMapper);
   },
-  
+
   // Contar registros coincidentes
   criteria -> {
     String countSql = buildCountQuery(criteria.getFilter());
     return jdbcTemplate.queryForObject(countSql, Integer.class);
   },
-  
+
   // Buscar por clave primaria
   customerId -> {
     String sql = "SELECT * FROM customers WHERE id = ?";
@@ -103,19 +106,19 @@ DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepo
 );
 ```
 
-El método `buildQuery()` construiría SQL como:
+El método `buildQuery()` construiría consultas SQL como:
 ```sql
-SELECT * FROM customers 
+SELECT * FROM customers
 WHERE status = ? AND region = ?
 ORDER BY created_date DESC, name ASC
 LIMIT ? OFFSET ?
 ```
 
-Las propiedades de tu objeto de filtro se asignan a las condiciones de la cláusula `WHERE`, mientras que la paginación y el orden se manejan a través de las cláusulas `LIMIT/OFFSET` y `ORDER BY`.
+Las propiedades de tu objeto de filtro se asignan a condiciones de la cláusula `WHERE`, mientras que la paginación y el ordenamiento se manejan a través de las cláusulas `LIMIT/OFFSET` y `ORDER BY`.
 
 ## Usando con componentes de UI {#using-with-ui-components}
 
-La belleza del patrón de repositorio es que los componentes de UI no saben ni les importa de dónde provienen los datos. Ya sea una colección en memoria, una API REST o una base de datos, el uso es idéntico:
+La belleza del patrón de repositorio es que los componentes de la interfaz de usuario no saben ni les importa de dónde provienen los datos. Ya sea una colección en memoria, una API REST o una base de datos, el uso es idéntico:
 
 ```java
 // Crear y configurar repositorio
@@ -131,7 +134,7 @@ table.setRepository(repository);
 // La tabla muestra automáticamente los usuarios de ingeniería filtrados
 ```
 
-Cuando los usuarios interactúan con la [`Table`](../../components/table/overview) (ordenando columnas, cambiando páginas), la `Table` llama a tus funciones de repositorio con criterios actualizados. Tus funciones traducen estas a llamadas a la API o consultas SQL, y la tabla se actualiza automáticamente con los resultados.
+Cuando los usuarios interactúan con la [`Table`](../../components/table/overview) (ordenando columnas, cambiando de página), la `Table` llama a tus funciones de repositorio con criterios actualizados. Tus funciones traducen esto a llamadas API o consultas SQL, y la tabla se actualiza automáticamente con los resultados.
 
 ## Cuándo extender `AbstractQueryableRepository` {#when-to-extend-abstractqueryablerepository}
 
@@ -143,17 +146,17 @@ public class CustomUserRepository extends AbstractQueryableRepository<User, User
   public Stream<User> findBy(RepositoryCriteria<User, UserFilter> criteria) {
     // Implementación
   }
-  
+
   @Override
   public int size(RepositoryCriteria<User, UserFilter> criteria) {
     // Implementación
   }
-  
+
   @Override
   public Optional<User> find(Object key) {
     // Implementación
   }
-  
+
   // Agregar métodos personalizados
   public List<User> findActiveManagers() {
     // Lógica de consulta personalizada

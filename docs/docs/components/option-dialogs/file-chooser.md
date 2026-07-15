@@ -27,7 +27,7 @@ height='600px'
 The `FileChooserDialog` returns the selected file or directory as a string. If the user closes the dialog without making a selection, the result will be `null`.
 
 :::info
-The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
+The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below.
 :::
 
 ```java showLineNumbers

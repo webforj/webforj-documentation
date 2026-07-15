@@ -27,7 +27,7 @@ import DocCardList from '@theme/DocCardList';
 
 ## Concept {#concept}
 
-The following demonstration showcases a simple webforJ app for registering superheroes using webforJ data binding. The app consists of two main parts: `HeroRegistration.java` and `Hero.java`. 
+The following demonstration showcases a simple webforJ app for registering superheroes using webforJ data binding. The app consists of two main parts: `HeroRegistration.java` and `Hero.java`.
 
 In `HeroRegistration.java`, the code configures the user interface with a `TextField` for entering the hero's name, a `ComboBox` to select a superpower, and a `Button` to submit the registration.
 
@@ -40,7 +40,7 @@ The app uses the `BindingContext` to bind UI components to the properties of the
 
 ```java showLineNumbers
 public class HeroRegistration extends App {
-    
+
   private TextField name = new TextField("Text Field");
   private ComboBox power = new ComboBox("Power");
   private Button submit = new Button("Submit Application");

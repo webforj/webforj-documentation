@@ -1,26 +1,29 @@
 ---
 sidebar_position: 3
 title: Testing with Selenium
-_i18n_hash: fe85942b4638ef9828b334ef986b4436
+description: >-
+  Drive a webforJ app from JUnit with Selenium WebDriver and WebDriverManager to
+  simulate user interactions and assert UI state.
+_i18n_hash: 865e29cc6d656fb60a0a3332a805c5f4
 ---
-Deze documentatie beschrijft het proces voor het testen van webforJ-apps met Selenium, met een specifieke focus op de `HelloWorldView` van de `webforj-archetype-hello-world`.
+Deze documentatie beschrijft het proces voor het testen van een webforJ-apps met Selenium, met specifieke focus op de `HelloWorldView` van de `webforj-archetype-hello-world`.
 
-:::info App Basis
-Om meer te leren over de `webforj-archetype-hello-world`, raadpleeg de [App Basis Introductie](../../introduction/basics) sectie.
+:::info Basisprincipes van de app
+Om meer te leren over de `webforj-archetype-hello-world`, raadpleeg de sectie [Inleiding tot de basisprincipes van de app](../../introduction/basics).
 :::
 
 ## Vereisten {#prerequisites}
 
 Voordat je de Selenium-tests uitvoert, zorg ervoor dat aan het volgende is voldaan:
-- De webforJ-app is correct ingesteld en draait op je lokale server.
+- de webforJ-app correct is ingesteld en draait op je lokale server.
 - Je hebt geïnstalleerd:
   - Selenium Java bindings.
   - Een compatibele WebDriver voor je browser.
   - Maven voor projectafhankelijkheden.
 
-## Maven configuratie {#maven-configuration}
+## Maven-configuratie {#maven-configuration}
 
-Voeg de noodzakelijke afhankelijkheden toe in je `pom.xml` voor Selenium en andere testbibliotheken:
+Voeg de benodigde afhankelijkheden toe in je `pom.xml` voor Selenium en andere testbibliotheken:
 
 ```xml title="pom.xml"
 <dependencies>
@@ -44,7 +47,7 @@ Voeg de noodzakelijke afhankelijkheden toe in je `pom.xml` voor Selenium en ande
 
 ## Testvoorbeeld: `HelloWorldView` {#testing-example-helloworldview}
 
-De volgende code demonstreert een op Selenium gebaseerd test voor de `HelloWorldView` component.
+De volgende code demonstreert een Selenium-gebaseerde test voor de `HelloWorldView`-component.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -93,7 +96,7 @@ class HelloWorldViewTest {
   @Test
   void shouldClickButton() {
     WebElement button = driver.findElement(By.tagName("dwc-button"));
-    assertEquals("Say Hello", button.getText(), "Button text mismatch!");
+    assertEquals("Say Hello", button.getText(), "Buttontekst mismatch!");
   }
 }
 ```
@@ -103,20 +106,20 @@ class HelloWorldViewTest {
 1. **Initialiseer WebDriver**:
    - Gebruik [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager) om automatisch de driver-executable voor de browser te beheren.
 
-2. **Stel Testomgeving in**:
+2. **Stel de testomgeving in**:
    - Start de testserver op `http://localhost:<port>/`.
    - Wacht totdat de paginatitel overeenkomt met de verwachte `webforJ Hello World`.
 
-3. **Interactie met Elementen**:
-   - Zoek elementen met behulp van `By.tagName`, `By.id`, of andere Selenium-locators.
-   - Controleer verwachte gedragingen zoals knopklikken of tekstveranderingen.
-    
+3. **Interactie met elementen**:
+   - Lokaliseer elementen met behulp van `By.tagName`, `By.id`, of andere Selenium-locators.
+   - Verifieer verwachte gedragingen zoals knopklikken of tekstwijzigingen.
+
   :::info
-  Omdat webforJ een single-page webapp produceert, is Selenium zich niet bewust van DOM-manipulatie nadat de initiële pagina is geladen. Je kunt de [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) van Selenium gebruiken om te wachten totdat de DOM is samengesteld.
+  Omdat webforJ een single-page webapplicatie produceert, is Selenium zich niet bewust van DOM-manipulatie nadat de initiële pagina is geladen. Je kunt de [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) van Selenium gebruiken om te wachten tot de DOM is samengesteld.
   :::
 
 4. **Opruimen**:
-   - Sluit de WebDriver-sessie om de middelen vrij te geven.
+   - Sluit de WebDriver-sessie af om middelen vrij te geven.
 
 ### Tests uitvoeren {#running-tests}
 
@@ -132,5 +135,5 @@ class HelloWorldViewTest {
 
 ## Verwacht gedrag {#expected-behavior}
 
-- Bij het bezoeken van `http://localhost:<port>/`, laadt de `HelloWorldView` pagina.
-- Het `dwc-button` element met de tekst `Say Hello` zou aanwezig moeten zijn.
+- Bij het bezoeken van `http://localhost:<port>/`, wordt de `HelloWorldView`-pagina geladen.
+- Het `dwc-button`-element met de tekst `Say Hello` zou aanwezig moeten zijn.

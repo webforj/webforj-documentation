@@ -1,24 +1,27 @@
 ---
 sidebar_position: 10
 title: Events
+description: >-
+  Attach event listeners to webforJ components with lambdas, anonymous classes,
+  or method references and reuse the event payload server-side.
 slug: events
 draft: false
-_i18n_hash: 6c1d6fc7f2d8e0027320e0323b107dca
+_i18n_hash: e965d354159ccc38ad417700fc3686eb
 ---
 <JavadocLink type="foundation" location="com/webforj/component/event/Event" top='true'/>
 
-Komponentit, olivatpa ne mukautettuja tai osana kehystä, tukevat tapahtumien käsittelyä. Voit lisätä tapahtumakuuntelijoita kaapataksesi erilaisia tapahtumia, kuten käyttäjäinteraktioita, tilan muutoksia tai muita mukautettuja tapahtumia. Näitä tapahtumakuuntelijoita voidaan käyttää erityisten toimintojen tai käyttäytymisten käynnistämiseen vastauksena tapahtumiin.
+Komponentit, olivatpa ne mukautettuja tai osia keh Frameworkista, tukevat tapahtumankäsittelyä. Voit lisätä tapahtumakuuntelijoita eri tyyppisten tapahtumien, kuten käyttäjävuorovaikutusten, tilamuutosten tai muiden mukautettujen tapahtumien, tallentamiseksi. Näitä tapahtumakuuntelijoita voidaan käyttää erityisten toimintojen tai käyttäytymisten laukaisemiseen tapahtumien yhteydessä.
 
-Alla olevassa esimerkissä tapahtuma lisätään käyttämällä jokaista kolmea tuettua menetelmää: lambda-ilmaisut, anonyymit luokat ja metodiviittaukset.
+Alla olevassa esimerkissä tapahtuma lisätään kolmen tuetun menetelmän avulla: lambda-lauseet, anonyymit luokat ja metodiviittaukset.
 ## Tapahtumien lisääminen {#adding-events}
 
 Tapahtumakuuntelijan lisääminen on mahdollista käyttää yhtä seuraavista malleista, joissa:
 
 - **`myComponent`** on komponentti, johon haluat liittää tapahtumakuuntelijan.
 
-- **`addEventListener`** korvataan tapahtumakohtaisella metodilla.
+- **`addEventListener`** korvataan tapahtumaspecific-grahamella.
 
-- **`EventListener`** korvataan kuunneltavan tapahtuman tyypillä.
+- **`EventListener`** korvataan tapahtuman tyypillä, jota kuunnellaan.
 
 ```java
 myComponent.addEventListener(e -> {
@@ -39,7 +42,7 @@ myComponent.addEventListener(new ComponentEventListener<EventListener>() {
 myComponent.addEventListener(this::eventMethod);
 ```
 
-Lisäsyntaktiset sokerimenetelmät tai aliasit on lisätty mahdollistamaan vaihtoehtoinen tapahtumien lisääminen käyttämällä `on`-etuliitettä seurattuna tapahtumalla, kuten:
+Lisäksi on lisätty synnynnäisiä sokerimenetelmiä tai alias-nimiä, jotka mahdollistavat tapahtumien vaihtoehtoisen lisäämisen käyttämällä `on`-etuliitettä, jota seuraa tapahtuma, kuten:
 
 ```java
 myComponent.onEvent(e -> {
@@ -49,27 +52,27 @@ myComponent.onEvent(e -> {
 
 ## Tapahtuman poistaminen {#removing-an-event}
 
-Kun lisätään tapahtumakuuntelija, palautetaan `ListenerRegistration`-olio. Tätä voidaan käyttää muun muassa tapahtuman poistamiseen myöhemmin.
+Kun tapahtumakuuntelija lisätään, `ListenerRegistration`-objekti palautetaan. Sitä voidaan käyttää muun muassa tapahtuman poistamiseen myöhemmin.
 
 ```java
-//Lisätään tapahtuma
+//Tapahtuman lisääminen
 ListenerRegistration listenerRegistration = myComponent.addEventListener(e -> {
     //Suoritetaan, kun tapahtuma laukaisee
   });
 
-//Poistetaan tapahtuma
+//Tapahtuman poistaminen
 listenerRegistration.remove();
 ```
 
-## Tapahtuman kuormituksen käyttäminen {#using-event-payload}
+## Tapahtumakuorman käyttäminen {#using-event-payload}
 
-On tärkeää huomata, että tapahtumat tulevat usein kuormituksen kanssa, joka sisältää lisätietoja tapahtumasta. Voit hyödyntää tätä kuormitusta tehokkaasti tapahtumankäsittelijässä päästäksesi käsiksi olennaisiin tietoihin ilman turhaa liikennettä asiakkaan ja palvelimen välillä. Näin voit parantaa sovelluksesi suorituskykyä.
+On tärkeää huomata, että tapahtumat usein tulevat kuormituksen kanssa, joka sisältää lisätietoja, jotka liittyvät tapahtumaan. Voit hyödyntää tätä kuormaa tehokkaasti tapahtumankäsittelijässä saadaksesi käyttökelpoiset tiedot ilman tarpeettomia pyynnön toimittamista asiakkaan ja palvelimen välillä. Näin parannat sovelluksesi suorituskykyä.
 
-Seuraava koodinpätkä kysyy komponentilta tietoja, jotka esimerkin tarkoituksia varten on jo sisällytetty tapahtuman kuormitukseen, edustaen tehotonta koodia:
+Seuraava koodinpätkä kysyy komponentilta tietoja, jotka, tämän demonstroinnin tarkoituksia varten, on jo sisällytetty tapahtuman kuormaan, ja se edustaa tehotonta koodia:
 
 ```java
 myComponent.addEventListener(e -> {
-  // Pääsy tietoihin komponentista
+  // Joka saa tietoja komponentista
   String componentText = e.getComponent().getText();
 
   //TAI jos komponentti on käytettävissä funktion laajuudessa
@@ -79,22 +82,22 @@ myComponent.addEventListener(e -> {
 });
 ```
 
-Sen sijaan hyödyntäen metodin kuormitusta, joka esimerkin vuoksi sisältää komponentin tekstin, vältetään ylimääräinen kysely:
+Sen sijaan voit käyttää metodin kuormaa, jonka esimerkki sisältää komponentin tekstin, jolloin kierrosavoimaa vältetään:
 
 ```java
 myComponent.addEventListener(e -> {
-  // Pääsy tietoihin tapahtuman kuormituksesta
+  // Joka saa tietoja tapahtumakuormasta
   String componentText = e.getText();
-  
+
   // Käytä componentTextiä suorittaaksesi muita toimintoja.
 });
 ```
 
-Tämä lähestymistapa minimoi tarpeen kysyä komponentilta tietoja, sillä tiedot ovat heti saatavilla tapahtuman kuormituksessa. Noudattamalla tätä tehokasta tapahtumien käsittelykäytäntöä voit parantaa komponenttiesi suorituskykyä ja reagointikykyä. Lisätietoja varten voit viitata [Asiakas/Palvelin vuorovaikutukseen](../architecture/client-server).
+Tämä lähestymistapa minimoi tarpeen kysyä komponentilta tietoja, koska tiedot ovat helposti saatavilla tapahtuman kuormassa. Noudattamalla tätä tehokasta tapahtumankäsittelykäytäntöä voit parantaa komponenttisi suorituskykyä ja reagointikykyä. Lisätietoja löytyy [Asiakas/PALVELINSUHTEET](../architecture/client-server).
 
 ### Esimerkki {#sample}
 
-Alla on esittely, joka näyttää <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEventin</JavadocLink> lisäämisen [`Button`](#). Tämä [`Button`](#) käyttää myös tapahtuman kuormituksessa tulevia tietoja näyttääkseen tietoa näytöllä.
+Alla on esittely, joka osoittaa <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> lisäämisen [`Button`](#) komponenttiin. Tämä [`Button`](#) käyttää myös tapahtuman kuorman mukana tulevaa tietoa näyttääkseen tietoja näytöllä.
 
 <ComponentDemo
 path='/webforj/buttonevent'

@@ -50,7 +50,7 @@ mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId
 
 ## 2. Install and configure the webforJ plugin
 
-Once BBj has been installed, the Plugin Manager can be accessed to install tools needed to configure webforJ. To start, type "Plugin Manager" into the start menu or Finder. 
+Once BBj has been installed, the Plugin Manager can be accessed to install tools needed to configure webforJ. To start, type "Plugin Manager" into the start menu or Finder.
 
 <!-- ![Plugin manager start location](/img/bbj-installation/users/local/i1.png#rounded-border) -->
 
@@ -87,7 +87,7 @@ On the window that opens, click the "Enable Maven Remote Install" button at the 
 
 ![Plugin manager configuration](/img/bbj-installation/local/Step_8l.png#rounded-border)
 
-:::tip 
+:::tip
 
 Alternatively, navigate to the `bin` directory within your `bbx` folder and run the following command:
 
@@ -130,5 +130,5 @@ you to access your app. To see the app, you'll want to go to the following URL:
 
 `http://localhost:YourHostPort/webapp/YourPublishName`
 
-Replace `YourHostPort` with the Host port you configured with Docker, and `YourPublishName` is replaced by the text inside the `<publishname>` tag of the POM. 
+Replace `YourHostPort` with the Host port you configured with Docker, and `YourPublishName` is replaced by the text inside the `<publishname>` tag of the POM.
 If done correctly, you should see your app render.

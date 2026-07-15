@@ -1,6 +1,6 @@
 package com.webforj.samples.blogs.buildingbettercss;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Route("blogs/building-better-css")
-@StyleSheet("ws://blogs/buildingbettercss/dashboard.css")
+@BundleEntry("blogs/buildingbettercss/dashboard.css")
 public class ModernDashboardView extends Composite<AppLayout> {
 
   public ModernDashboardView() {

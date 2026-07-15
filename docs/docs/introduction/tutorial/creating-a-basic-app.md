@@ -32,7 +32,7 @@ Running the app automatically opens a new browser at `http://localhost:8080`.
 Every webforJ app contains a single class that extends <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>. For this tutorial, and other published webforJ projects, it's commonly called `Application`. This class is inside a package that's named after the `groupId` you used in [Project Setup](/docs/introduction/tutorial/project-setup):
 
 ```
-1-creating-a-basic-app 
+1-creating-a-basic-app
 │   .editorconfig
 │   .gitignore
 │   pom.xml
@@ -72,12 +72,12 @@ The [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/s
 
 - **`@AppTheme`** manages the app's visual theme. If set to `system`, the app automatically adopts the user's preferred theme: `light`, `dark`, or `dark-pure`. For information on creating custom themes or overriding the default themes, refer to the [Themes](/docs/styling/themes) article.
 
-- **`@AppProfile`** helps configure how the app presents to the user as an [installable app](/docs/configuration/installable-apps). At minimum, this annotation needs a `name` for the app’s full name and a `shortName` for use when space is limited. The `shortName` shouldn't exceed 12 characters.  
+- **`@AppProfile`** helps configure how the app presents to the user as an [installable app](/docs/configuration/installable-apps). At minimum, this annotation needs a `name` for the app’s full name and a `shortName` for use when space is limited. The `shortName` shouldn't exceed 12 characters.
 
 ## Creating a user interface {#creating-a-ui}
 
-To create your UI, you’ll need to add [HTML element components](/docs/components/html-elements) and [webforJ components](/docs/components/overview). For now, you only have a single-page app, so you'll add components directly to the `Application` class. 
-To do this, override the `App.run()` method and create a `Frame` to add components to. 
+To create your UI, you’ll need to add [HTML element components](/docs/components/html-elements) and [webforJ components](/docs/components/overview). For now, you only have a single-page app, so you'll add components directly to the `Application` class.
+To do this, override the `App.run()` method and create a `Frame` to add components to.
 
 ```java
 @Override
@@ -146,7 +146,9 @@ In addition to these methods, you can style your app using CSS. The **Styling** 
 
 webforJ also comes with a set of designed CSS variables called DWC tokens. See the [Styling](/docs/styling/overview) documentation for detailed information on how to style webforJ components, and how to use the tokens.
 
+
 ### Adding CSS to the frontend bundle {#referencing-a-css-file} 
+
 
 It's best to have a separate CSS file to keep everything organized and maintainable. Create a file named `card.css` inside `src/main/frontend/css`, with the following CSS class definition:
 

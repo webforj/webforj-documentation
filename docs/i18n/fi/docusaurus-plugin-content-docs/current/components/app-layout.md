@@ -1,31 +1,32 @@
 ---
 title: AppLayout
 sidebar_position: 5
-_i18n_hash: 07c685c4fce66e48d5a4e6660b7bc991
+description: >-
+  Build dashboards and admin shells with the AppLayout component, providing a
+  fixed header, footer, sliding drawer, and scrollable content area.
+_i18n_hash: 559d0c63a8e61e2e3d79086aa08922c1
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-app-layout" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppLayout" top='true'/>
 
-`AppLayout` -komponentti tarjoaa valmiin sivurakenteen, jossa on kiinteä ylätunniste ja alatunniste, liukuva laatikko ja vieritettävä sisältöalue. Nämä osiot yhdessä kattavat hallintapaneelien, hallintasivujen ja useimpien moniosioisten käyttöliittymien asettelutarpeet.
-
-<!-- INTRO_END -->
+`AppLayout`-komponentti tarjoaa valmiin sivurakenteen, jossa on kiinteä ylä- ja alaosa, liukuva työkalupakki sekä vieritettävä sisältöalue. Nämä osiot katettavat hallintapaneelien, admin-paneelien ja useimpien moniosioisten käyttöliittymien asettelutarpeet.
 
 ## Ominaisuudet {#features}
 
-webforJ App Layout on komponentti, joka mahdollistaa yleisten sovellusten asettelujen luomisen.
+webforJ App Layout on komponentti, joka mahdollistaa yleisten sovellusten asettelujen rakentamisen.
 
 <ul>
-    <li>Helppo käyttää ja mukauttaa</li>
-    <li>Reagoiva muotoilu</li>
+    <li>Helppo käyttää ja muokata</li>
+    <li>Vastaava suunnittelu</li>
     <li>Useita asettelu vaihtoehtoja</li>
-    <li>Toimii webforJ Tummassa tilassa</li>
+    <li>Toimii webforJ Tummassa Režiimissä</li>
 </ul>
 
-Se tarjoaa ylätunnisteen, alatunnisteen, liukuvan laatikon ja sisältöalueen, kaikki rakennettuna reagoivaksi komponentiksi, joka voidaan helposti mukauttaa yleisten sovellusasetusten, kuten hallintapaneelin, nopeaan rakentamiseen. Ylätunniste ja alatunniste ovat kiinteitä, liukuva laatikko liikkuu näkymän sisällä ja sisältö on vieritettävää.
+Se tarjoaa kiinteän yläosan, alaosan, työkalupakin ja sisältöosion, jotka kaikki on rakennettu vastaavaksi komponentiksi ja joita voidaan helposti muokata yhteisten sovellusten asettelujen, kuten hallintapaneelin, rakentamiseksi. Yläosa ja alaosa ovat kiinteitä, työkalupakki liukuu näkymän sisään ja ulos, ja sisältö on vieritettävissä.
 
-Jokainen asettelun osa on `Div`, joka voi sisältää mitä tahansa kelvollista webforJ-ohjainta. Parhaiden tulosten saavuttamiseksi sovelluksen tulisi sisältää näkymämeta-tag, joka sisältää viewport-fit=cover. Meta-tag saa näkymän täyttämään laitteen näytön.
+Jokainen asettelun osa on `Div`, joka voi sisältää mitä tahansa voimassa olevaa webforJ-ohjainta. Parhaiden tulosten saavuttamiseksi sovelluksen tulisi sisältää viewportin meta-tag, joka sisältää viewport-fit=cover. Meta-tagi aiheuttaa näkymän skaalaantuvan täyttämään laitteen näytön.
 
 ```java
 @AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
@@ -33,24 +34,11 @@ Jokainen asettelun osa on `Div`, joka voi sisältää mitä tahansa kelvollista 
 
 ## Yleiskatsaus {#overview}
 
-Seuraava koodiesimerkki tuottaa sovelluksen, jossa on taitettava sivupalkki, joka sisältää logon ja välilehtiä eri sisältövaihtoehdoille sekä ylätunnisteen. Esimerkki käyttää dwc-icon-button -web-komponenttia luodakseen liukuvapainikkeen. Painikkeessa on data-drawer-toggle -attribuutti, joka ohjaa DwcAppLayoutia kuuntelemaan tuosta komponentista tulevia klikkaustapahtumia liukuvan tilan vaihtamiseksi.
+Seuraava koodinäyte tuottaa sovelluksen, jossa on kokoontaitettava sivupalkki, joka sisältää logon ja välilehdet eri sisältövaihtoehdoille sekä yläosan. Demo käyttää dwc-icon-button-webkomponenttia luodakseen työkalupakin vaihtonapin. Napissa on data-drawer-toggle-attribuutti, joka käskee DwcAppLayoutia kuuntelemaan napsautustapahtumia, jotka tulevat tuosta komponentista työkalupakin tilan vaihtamiseksi.
 
-<!--vale off-->
-<ComponentDemo
-path='/webforj/applayout/content/Dashboard'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java',
-  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
-]}
-/>
-<!--vale on-->
+## Koko leveys navigointipalkki {#full-width-navbar}
 
-## Täysimittainen navigointipalkki {#full-width-navbar}
-
-Oletusarvoisesti AppLayout renderoi ylätunnisteen ja alatunnisteen näkymän ulkopuolelle. Näkymän ulkopuolinen tila tarkoittaa, että ylätunnisteen ja alatunnisteen paikka siirtyy sopimaan avattavan laatikon viereen. Tämän tilan poistaminen aiheuttaa ylätunnisteen ja alatunnisteen käyttävän koko käytettävissä olevaa tilaa ja siirtävän liukuvan laatikon ylä- ja alareunat sopimaan ylätunnisteen ja alatunnisteen kanssa.
+Oletuksena AppLayout renderöi ylä- ja alaosan näkymän ulkopuolella. Näkymän ulkopuolinen tila tarkoittaa, että ylä- ja alaosan sijainti siirtyy sopimaan avattavan työkalupakin viereen. Tämän tilan poistaminen käytöstä saa ylä- ja alaosan ottamaan koko käytettävissä olevan tilan ja siirtämään työkalupakin ylä- ja alaosaa sovittamaan ylä- ja alaosan.
 
 ```java showLineNumbers
 AppLayout myApp = new AppLayout();
@@ -59,113 +47,58 @@ myApp.setHeaderOffscreen(false);
 myApp.setFooterOffscreen(false);
 ```
 
-<!--vale off-->
-<ComponentDemo
-path='/webforj/applayoutfullnavbar/content/Dashboard'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java',
-  'src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarContentView.java',
-  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
-]}
-/>
-<!--vale on-->
+## Useita työkaluja {#multiple-toolbars}
 
-## Useita työpöytiä {#multiple-toolbars}
+Navigointipalkkiin voi lisätä rajattoman määrän työkaluja. `Toolbar` on vaakasuuntainen säilökomponentti, joka pitää sisällään joukon toimintanappeja, kuvakkeita tai muita ohjaimia. Lisätäksesi ylimääräisen työkalupakin, käytä yksinkertaisesti `addToHeader()`-menetelmää toisen `Toolbar`-komponentin lisäämiseksi.
 
-Navigointipalkilla ei ole rajoituksia työpöytien määrälle, jotka voit lisätä. `Toolbar` on vaakasuuntainen säiliökomponentti, joka pitää sisällään joukon toimintapainikkeita, ikoneita tai muita ohjaimia. Lisätäksesi ylimääräisen työpöydän, käytä yksinkertaisesti `addToHeader()` -menetelmää lisätäksesi toisen `Toolbar`-komponentin.
+Seuraava demo näyttää, kuinka käyttää kahta työkalupakkia. Ensimmäisessä on työkalupakin vaihtonappi ja sovelluksen nimi. Toinen työkalupakki sisältää toissijaisen navigointivalikon.
 
-Seuraava esimerkki näyttää, kuinka käyttää kahta työpöytää. Ensimmäinen sisältää liukuvalaatikon kytkinpainikkeen ja sovelluksen nimen. Toinen työpöytä sisältää toissijaisen navigointivalikon.
+## Sticky työkalupakit {#sticky-toolbars}
 
-<!--vale off-->
-<ComponentDemo
-path='/webforj/applayoutmultipleheaders/content/Dashboard'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java',
-  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-  'src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeaderContentView.java',
-  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
-]}
-/>
-<!--vale on-->
+Sticky-työkalupakki on työkalu, joka pysyy näkyvissä sivun yläosassa, kun käyttäjä vierittää alaspäin, mutta navigointipalkin korkeus on romahtanut, jotta sivun sisällölle on enemmän tilaa. Tavallisesti tämäntyyppisessä työkalupakissa on kiinteä navigointivalikko, joka on relevantti nykyiselle sivulle.
 
-## Kiinteät työpöydät {#sticky-toolbars}
+On mahdollista luoda sticky-työkalupakkeja käyttämällä CSS:n mukautettua ominaisuutta `--dwc-app-layout-header-collapse-height` ja `AppLayout.setHeaderReveal()` -valintaa.
 
-Kiinteä työpöytä on työpöytä, joka pysyy näkyvissä sivun yläosassa, kun käyttäjä vierittää alas, mutta navigointipalkin korkeus on kutistunut, jotta sivun sisällölle saadaan enemmän tilaa. Tämäntyyppinen työpöytä sisältää yleensä kiinteän navigointivalikon, joka on relevantti nykyiselle sivulle.
+Kun `AppLayout.setHeaderReveal(true)` kutsutaan, yläosa on näkyvissä ensimmäisellä renderöinnillä ja piilotettu, kun käyttäjä alkaa vierittää alaspäin. Kun käyttäjä alkaa vierittää uudelleen ylöspäin, yläosa paljastuu.
 
-On mahdollista luoda kiinteitä työpöytiä käyttämällä CSS:n mukautettua ominaisuutta `--dwc-app-layout-header-collapse-height` ja `AppLayout.setHeaderReveal()` -valintaa.
+CSS-mukautetun ominaisuuden `--dwc-app-layout-header-collapse-height` avulla on mahdollista säätää, kuinka paljon yläosasta navigointipalkista piilotetaan.
 
-Kun `AppLayout.setHeaderReveal(true)` -asetusta kutsutaan, ylätunniste on näkyvissä ensimmäisellä renderöinnillä, ja se piilotetaan, kun käyttäjä alkaa vierittää alaspäin. Kun käyttäjä alkaa vierittää ylös päin uudelleen, ylätunniste tulee näkyviin.
+## Mobiili navigointi asettelu {#mobile-navigation-layout}
 
-CSS:n mukautetun ominaisuuden `--dwc-app-layout-header-collapse-height` avulla on mahdollista hallita, kuinka paljon ylätunnisteen navigointipalkista piilotetaan.
+Alhaalla oleva navigointipalkki voidaan käyttää tarjoamaan erilaista versiota navigoinnista sovelluksen alaosassa. Tämäntyyppinen navigointi on erityisen suosittua mobiilisovelluksissa.
 
-<!--vale off-->
-<ComponentDemo
-path='/webforj/applayoutstickytoolbar/content/Dashboard'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java',
-  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-  'src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarContentView.java',
-  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
-]}
-/>
-<!--vale on-->
+Huomaa, että työkalupakki on piilotettu seuraavassa demossa. AppLayout-widget tukee kolmea työkalupakin sijaintia: `DrawerPlacement.LEFT`, `DrawerPlacement.RIGHT` ja `DrawerPlacement.HIDDEN`.
 
-## Mobiilinavigointiasettelu {#mobile-navigation-layout}
+Kuten `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` tuetaan. Kun `AppLayout.setFooterReveal(true)` kutsutaan, alaosa näkyy ensimmäisellä renderöinnillä ja piilotetaan, kun käyttäjä alkaa vierittää ylöspäin. Kun käyttäjä alkaa vierittää uudelleen alaspäin, alaosa paljastuu.
 
-Alareunan navigointipalkkia voidaan käyttää tarjoamaan eri version navigoinnista sovelluksen alareunassa. Tämän tyyppinen navigointi on erityisen suosittua mobiilisovelluksissa.
+Oletuksena, kun näytön leveys on 800px tai vähemmän, työkalupakki vaihdetaan popover-tilaan. Tätä kutsutaan katkaisupisteeksi. Popover-tila tarkoittaa, että työkalupakki ponnahtaa sisällön alueelle päällekkäin. Katkaisupisteen voi määrittää käyttämällä `setDrawerBreakpoint()`-menetelmää ja katkaisupisteen on oltava voimassa oleva [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
-Huomaa, että liukuva laatikko on piilotettu seuraavassa esimerkissä. AppLayout-widget tukee kolmea liukuvan laatikon sijaintia: `DrawerPlacement.LEFT`, `DrawerPlacement.RIGHT` ja `DrawerPlacement.HIDDEN`.
+## Työkalupakin työkalut {#drawer-utilities}
 
-Kuten `AppLayout.setHeaderReveal()`, myös `AppLayout.setFooterReveal()` tuetaan. Kun `AppLayout.setFooterReveal(true)` -asetusta kutsutaan, alatunniste on näkyvissä ensimmäisellä renderöinnillä ja sitten piilotettu, kun käyttäjä alkaa vierittää ylös päin. Kun käyttäjä alkaa vierittää alaspäin jälleen, alatunniste tulee näkyviin.
+`AppLayout`-työkalupakin työkalut on suunniteltu integroituun navigointiin ja kontekstuaalisiin valikoihin pääsovelluksen asettelussa, kun taas itsenäiset [`Drawer`](https://docs.webforj.com/docs/components/drawer) komponentit tarjoavat joustavia, itsenäisiä liukupaneeleja, joita voidaan käyttää missä tahansa sovelluksessa lisäsisältöön, suodattimiin tai ilmoituksiin. Tämä osio keskittyy AppLayoutin tarjoamiin sisäänrakennettuihin työkalupakko-ominaisuuksiin ja -työkaluihin.
 
-Oletusarvoisesti, kun näytön leveys on 800px tai vähemmän, liukuva laatikko vaihdetaan popover-tilaan. Tätä kutsutaan katkaisupisteeksi. Popover-tila tarkoittaa, että liukuva laatikko kohoaa sisältöalueen ylle päällekkäin. Katkaisupistettä voidaan konfiguroida käyttämällä `setDrawerBreakpoint()` -menetelmää, ja katkaisupisteen on oltava kelvollinen [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
+### Työkalupakin katkaisupiste {#drawer-breakpoint}
 
-<!--vale off-->
-<ComponentDemo
-path='/webforj/applayoutmobiledrawer/'
-frame='mobile'
-files={[
-  'src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java',
-  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-  'src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerContentView.java',
-  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
-]}
-/>
-<!--vale on-->
+Oletuksena, kun näytön leveys on 800px tai vähemmän, työkalupakki vaihdetaan popover-tilaan. Tämä on katkaisupiste. Popover-tila tarkoittaa, että työkalupakki ponnahtaa sisällön alueelle päällekkäin. Katkaisupisteen voi määrittää käyttämällä `setDrawerBreakpoint()`-menetelmää ja katkaisupisteen on oltava voimassa oleva media query.
 
-## Liukuvan laatikon työkalut {#drawer-utilities}
-
-`AppLayout` -liukuvan laatikon työkalut on suunniteltu integroituun navigointiin ja kontekstitietoisiin valikoihin pääsovelluksen asettelussa, kun taas itsenäiset [`Drawer`](https://docs.webforj.com/docs/components/drawer) -komponentit tarjoavat joustavia, riippumattomia liukuva paneeleja, joita voidaan käyttää missä tahansa sovelluksessa lisäsisältöön, suodattimiin tai ilmoituksiin. Tämä osa keskittyy AppLayoutin tarjoamiin sisäänrakennettuihin liukuvan laatikon ominaisuuksiin ja työkaluihin.
-
-### Liukuvan laatikon katkaisupiste {#drawer-breakpoint}
-
-Oletusarvoisesti, kun näytön leveys on 800px tai vähemmän, liukuva laatikko vaihdetaan popover-tilaan. Tätä kutsutaan katkaisupisteeksi. Popover-tila tarkoittaa, että liukuva laatikko kohoaa sisältöalueen ylle päällekkäin. Katkaisupistettä voidaan konfiguroida käyttämällä `setDrawerBreakpoint()` -menetelmää, ja katkaisupisteen on oltava kelvollinen media query.
-
-Esimerkiksi seuraavassa esimerkissä liukuvan laatikon katkaisupistettä on konfiguroitu olemaan 500px tai vähemmän.
+Esimerkiksi seuraavassa näytteessä työkalupakin katkaisupiste on määritetty olevan 500px tai vähemmän.
 
 ```java
 AppLayout demo = new AppLayout();
 demo.setDrawerBreakpoint("(max-width:500px)");
 ```
 
-### Liukuvan laatikon otsikko {#drawer-title}
+### Työkalupakin otsikko {#drawer-title}
 
-`AppLayout` -komponentti tarjoaa `addToDrawerTitle()` -menetelmän, jonka avulla voidaan määrittää mukautettu otsikko, joka näytetään liukuvan laatikon ylätunnisteessa.
+`AppLayout`-komponentti tarjoaa `addToDrawerTitle()`-menetelmän mukautetun otsikon määrittämiseksi, joka näkyy työkalupakin yläosassa.
 
 ```java
 layout.addToDrawerTitle(new Div("Valikko"));
 ```
 
-### Liukuvan laatikon toiminnot {#drawer-actions}
+### Työkalupakin toiminnot {#drawer-actions}
 
-`AppLayout` -komponentti mahdollistaa mukautettujen komponenttien, kuten painikkeiden tai ikoneiden, sijoittamisen **liukuvan laatikon ylätunnisteen toiminnot** -alueeseen käyttäen `addToDrawerHeaderActions()` -menetelmää.
+`AppLayout`-komponentti mahdollistaa mukautettujen komponenttien, kuten nappien tai kuvakkeiden, sijoittamisen **työkalupakin yläosan toimintotilaan** käyttämällä `addToDrawerHeaderActions()` -menetelmää.
 
 ```java
 layout.addToDrawerHeaderActions(
@@ -182,37 +115,22 @@ layout.addToDrawerHeaderActions(
 );
 ```
 
-Liukuvan laatikon toiminnot näkyvät liukuvan laatikon ylätunnisteen **oikean reunan** osassa.
-
-<!--vale off-->
-<ComponentDemo
-path='/webforj/applayoutdrawerutility/content/Dashboard/'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java',
-  'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-  'src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityContentView.java',
-  'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/resources/static/css/applayout/applayout.css',
-]}
-/>
-<!--vale on-->
-
+Työkalupakin toiminnot näkyvät **oikealla puolella** työkalupakin yläosassa.
 
 ## `AppDrawerToggle` <DocChip chip='since' label='24.12' /> {#appdrawertoggle-docchip-chipsince-label2412-}
 
-[`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) -komponentti on palvelinpuolen webforJ-luokka, joka edustaa painiketta, jota käytetään navigointilaudun näkyvyyden vaihtamiseen `AppLayout`-sovelluksessa. Se vastaa asiakaspuolen `<dwc-app-drawer-toggle>` -elementtiä ja on oletusarvoisesti muotoiltu käyttäytymään perinteisen hampurilaisvalikon kuvakeen tavoin, tätä käyttäytymistä voidaan mukauttaa.
+[`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) -komponentti on palvelinpuolen webforJ-luokka, joka edustaa painiketta, jota käytetään navigointityökalupakin näkyvyyden vaihtamiseen `AppLayout`:ssa. Se vastaa asiakaspään `<dwc-app-drawer-toggle>` -elementtiä ja on oletusarvoisesti tyylitelty toimimaan kuin perinteinen hampurilaisvalikon kuvake, tätä käytöstä voidaan mukauttaa.
 
 ### Yleiskatsaus {#overview-1}
 
-`AppDrawerToggle` laajentaa `IconButton`-komponenttia ja käyttää oletusarvoisesti Tabler-ikonisarjan "menu-2" -ikonia. Se automaattisesti lisää `data-drawer-toggle` -attribuutin integroidakseen asiakaspuolen liukuvan laatikon käyttäytymisen.
+`AppDrawerToggle` laajentaa `IconButton`-luokkaa ja käyttää oletusarvoisesti "menu-2" kuvaketta Tabler-ikona-sarjasta. Se lisää automaattisesti `data-drawer-toggle` -attribuutin integroitumiseen asiakaspään työkalupakin käytökseen.
 
 ```java
-// Ei tarvita tapahtuman rekisteröintiä:
+// Ei tarvitse rekisteröidä tapahtumaa:
 AppLayout layout = new AppLayout();
 layout.addToHeader(new AppDrawerToggle());
-// Liukuvan laatikon kytkin toimii suoraan - ei tarvita manuaalisia tapahtumakuuntelijoita.
+// Työkalupakin vaihtaminen toimii heti—ei tarvetta manuaalisille tapahtumakuuntelijoille.
 ```
-## Muotoilu {#styling}
+## Tyylitys {#styling}
 
 <TableBuilder name="AppLayout" />

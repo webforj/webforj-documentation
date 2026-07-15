@@ -5,15 +5,15 @@
   },
   "sidebar.documentationSidebar.category.Introduction": {
     "message": "Einführung",
-    "description": "The label for category Introduction in sidebar documentationSidebar"
+    "description": "The label for category 'Introduction' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Tutorial": {
     "message": "Tutorial",
-    "description": "The label for category Tutorial in sidebar documentationSidebar"
+    "description": "The label for category 'Tutorial' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Integrations": {
     "message": "Integrationen",
-    "description": "The label for category Integrations in sidebar documentationSidebar"
+    "description": "The label for category 'Integrations' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
     "message": "Spring-Framework",
@@ -21,23 +21,23 @@
   },
   "sidebar.documentationSidebar.category.Routing": {
     "message": "Routing",
-    "description": "The label for category Routing in sidebar documentationSidebar"
+    "description": "The label for category 'Routing' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
     "message": "Navigationslebenszyklus",
-    "description": "The label for category Navigation Lifecycle in sidebar documentationSidebar"
+    "description": "The label for category 'Navigation Lifecycle' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Route Hierarchy": {
     "message": "Routenhierarchie",
-    "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
+    "description": "The label for category 'Route Hierarchy' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
     "message": "UIs erstellen",
-    "description": "The label for category Building UIs in sidebar documentationSidebar"
+    "description": "The label for category 'Building UIs' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
     "message": "Archetypen",
-    "description": "The label for category Archetypes in sidebar documentationSidebar"
+    "description": "The label for category 'Archetypes' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
     "message": "HTML und Webkomponenten",
@@ -45,106 +45,122 @@
   },
   "sidebar.documentationSidebar.category.Data Binding": {
     "message": "Datenbindung",
-    "description": "The label for category Data Binding in sidebar documentationSidebar"
+    "description": "The label for category 'Data Binding' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Validation": {
     "message": "Validierung",
-    "description": "The label for category Validation in sidebar documentationSidebar"
+    "description": "The label for category 'Validation' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Components": {
     "message": "Komponenten",
-    "description": "The label for category Components in sidebar documentationSidebar"
+    "description": "The label for category 'Components' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Fields": {
     "message": "Felder",
-    "description": "The label for category Fields in sidebar documentationSidebar"
+    "description": "The label for category 'Fields' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
     "message": "Maskierte Felder",
-    "description": "The label for category Masked Fields in sidebar documentationSidebar"
+    "description": "The label for category 'Masked Fields' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Lists": {
     "message": "Listen",
-    "description": "The label for category Lists in sidebar documentationSidebar"
+    "description": "The label for category 'Lists' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Option Dialogs": {
     "message": "Optionsdialoge",
-    "description": "The label for category Option Dialogs in sidebar documentationSidebar"
+    "description": "The label for category 'Option Dialogs' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Table": {
     "message": "Tabelle",
-    "description": "The label for category Table in sidebar documentationSidebar"
+    "description": "The label for category 'Table' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Testing": {
     "message": "Testen",
-    "description": "The label for category Testing in sidebar documentationSidebar"
+    "description": "The label for category 'Testing' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.E2E Testing": {
     "message": "E2E-Testen",
-    "description": "The label for category E2E Testing in sidebar documentationSidebar"
+    "description": "The label for category 'E2E Testing' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Styling": {
     "message": "Styling",
-    "description": "The label for category Styling in sidebar documentationSidebar"
+    "description": "The label for category 'Styling' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
     "message": "Ressourcen verwalten",
-    "description": "The label for category Managing Resources in sidebar documentationSidebar"
+    "description": "The label for category 'Managing Resources' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Configuration": {
     "message": "Konfiguration",
-    "description": "The label for category Configuration in sidebar documentationSidebar"
+    "description": "The label for category 'Configuration' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
     "message": "Neuimplementierung und Live-Neuladen",
-    "description": "The label for category Redeployment and Live Reload in sidebar documentationSidebar"
+    "description": "The label for category 'Redeployment and Live Reload' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Running with BBjServices": {
     "message": "Ausführung mit BBjServices",
-    "description": "The label for category Running with BBjServices in sidebar documentationSidebar"
+    "description": "The label for category 'Running with BBjServices' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Advanced Topics": {
     "message": "Erweiterte Themen",
-    "description": "The label for category Advanced Topics in sidebar documentationSidebar"
+    "description": "The label for category 'Advanced Topics' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Repository": {
     "message": "Repository",
-    "description": "The label for category Repository in sidebar documentationSidebar"
+    "description": "The label for category 'Repository' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Architecture": {
     "message": "Architektur",
-    "description": "The label for category Architecture in sidebar documentationSidebar"
+    "description": "The label for category 'Architecture' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
     "message": "Upgrade-Anleitungen",
-    "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
+    "description": "The label for category 'Upgrading Guides' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Client Components": {
     "message": "Client-Komponenten",
-    "description": "The label for category Client Components in sidebar documentationSidebar"
+    "description": "The label for category 'Client Components' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.AI Tooling": {
     "message": "AI Tooling",
-    "description": "The label for category AI Tooling in sidebar documentationSidebar"
+    "description": "The label for category 'AI Tooling' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Kotlin DSL": {
     "message": "Kotlin DSL",
-    "description": "The label for category Kotlin DSL in sidebar documentationSidebar"
+    "description": "The label for category 'Kotlin DSL' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Spring": {
     "message": "Spring",
-    "description": "The label for category Spring in sidebar documentationSidebar"
+    "description": "The label for category 'Spring' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Webswing": {
     "message": "Webswing",
-    "description": "The label for category Webswing in sidebar documentationSidebar"
+    "description": "The label for category 'Webswing' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.Security": {
     "message": "Security",
-    "description": "The label for category Security in sidebar documentationSidebar"
+    "description": "The label for category 'Security' in sidebar 'documentationSidebar'"
   },
   "sidebar.documentationSidebar.category.security-architecture": {
     "message": "Architecture",
-    "description": "The label for category Architecture in sidebar documentationSidebar"
+    "description": "The label for category 'Architecture' in sidebar 'documentationSidebar'"
+  },
+  "sidebar.documentationSidebar.category.security-application-security": {
+    "message": "Application Security",
+    "description": "The label for category 'Application Security' in sidebar 'documentationSidebar'"
+  },
+  "sidebar.documentationSidebar.category.Frontend bundler": {
+    "message": "Frontend bundler",
+    "description": "The label for category 'Frontend bundler' in sidebar 'documentationSidebar'"
+  },
+  "sidebar.documentationSidebar.category.Extensions": {
+    "message": "Extensions",
+    "description": "The label for category 'Extensions' in sidebar 'documentationSidebar'"
+  },
+  "sidebar.documentationSidebar.category.Upgrade to 26.00": {
+    "message": "Upgrade to 26.00",
+    "description": "The label for category 'Upgrade to 26.00' in sidebar 'documentationSidebar'"
   }
 }

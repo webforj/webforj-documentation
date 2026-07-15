@@ -4,7 +4,7 @@ sidebar_position: 3
 description: Step 2 - Use Spring to work with data.
 ---
 
-In this step, you’ll learn how to create a data model using Spring and display that data visually. 
+In this step, you’ll learn how to create a data model using Spring and display that data visually.
 By the end of this step, the app created in the previous step, [Creating a Basic App](./creating-a-basic-app), will have a table that displays data about customers. Following along will teach you about:
 
 - Spring annotations
@@ -202,7 +202,7 @@ Here are four links to Spring’s documentation that will help you better unders
 
 ### Creating a service {#creating-a-service}
 
-In `src/main/java/com/webforj/tutorial/service`, create a `CustomerService` class. This service will contain methods to create, update, delete, and query customers by using `CustomerRepository`. 
+In `src/main/java/com/webforj/tutorial/service`, create a `CustomerService` class. This service will contain methods to create, update, delete, and query customers by using `CustomerRepository`.
 
 Additionally, this service needs a mechanism to connect Spring Data repositories to webforJ's UI components. Using the `SpringDataRepository` webforJ class lets you create this bridge. It simplifies data binding and CRUD operations by allowing your webforJ tables and forms to work freely with your Spring-managed data layer. See more information about webforJ’s Spring integration in the [Spring Data JPA](/docs/integrations/spring/spring-data-jpa) article.
 
@@ -420,7 +420,7 @@ The highlighted portions of the `Application` class add the `Table` component, d
 @AppTheme("system")
 @AppProfile(name = "Customer Application", shortName = "CustomerApp")
 public class Application extends App {
-  
+
   //Add a constructor injection for CustomerService
   private final CustomerService customerService;
 
