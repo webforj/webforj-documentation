@@ -18,7 +18,6 @@ import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
-import com.webforj.samples.views.applayout.fullnavbar.AppLayoutFullNavbarContentKotlinView
 
 @Route
 @StyleSheet("ws://css/applayout/applayout.css")
@@ -41,7 +40,7 @@ class AppLayoutFullNavbarKotlinView: Composite<AppLayout>() {
         appNav {
           item("Dashboard", "dashboard")
           item("Orders", "shopping-cart")
-          item("Customers", "user")
+          item("Customers", "users")
           item("Products", "box")
           item("Documents", "files")
           item("Tasks", "checklist")
