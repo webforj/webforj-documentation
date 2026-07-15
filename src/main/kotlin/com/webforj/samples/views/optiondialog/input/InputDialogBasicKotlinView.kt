@@ -12,7 +12,7 @@ import com.webforj.router.annotation.Route
 
 @Route
 @FrameTitle("Input Dialog Basics")
-class InputDialogBasicKotlinView : Composite<Div?>() {
+class InputDialogBasicKotlinView : Composite<Div>() {
   init {
     val message = """
         <dwc-alert theme='warning'>
@@ -25,7 +25,7 @@ class InputDialogBasicKotlinView : Composite<Div?>() {
         To confirm, type <b>$CONFIRMATION_CODE</b> in the box below
         """.trimIndent()
 
-    val dialog: InputDialog = InputDialog(message, "Delete Repository", /*InputDialog.MessageType.ERROR*/).apply {
+    val dialog: InputDialog = InputDialog(message, "Delete Repository", DwcPromptMsgBox.MessageType.ERROR).apply {
       messageType = DwcPromptMsgBox.MessageType.PLAIN
       firstButtonText = "Delete Repository"
       setSecondButtonTheme(ButtonTheme.OUTLINED_GRAY)
