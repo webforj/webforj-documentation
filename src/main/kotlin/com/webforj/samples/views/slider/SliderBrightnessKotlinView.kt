@@ -2,6 +2,7 @@ package com.webforj.samples.views.slider
 
 import com.webforj.component.Composite
 import com.webforj.component.layout.flexlayout.FlexAlignment
+import com.webforj.component.layout.flexlayout.FlexContentAlignment
 import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexJustifyContent
 import com.webforj.component.layout.flexlayout.FlexLayout
@@ -24,7 +25,7 @@ class SliderBrightnessKotlinView : Composite<FlexLayout>() {
     self.apply {
       direction = FlexDirection.COLUMN
       justifyContent = FlexJustifyContent.CENTER
-      alignment = FlexAlignment.CENTER
+      alignContent = FlexContentAlignment.CENTER
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-l)"
 
