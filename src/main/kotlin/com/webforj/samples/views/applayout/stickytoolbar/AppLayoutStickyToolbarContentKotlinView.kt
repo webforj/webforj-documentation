@@ -33,6 +33,6 @@ class AppLayoutStickyToolbarContentKotlinView: AbstractContentView() {
         }
       }
     }
-    super.contentLabel.isVisible = true
+    super.contentLabel.isVisible = false
   }
 }
