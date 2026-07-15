@@ -10,6 +10,8 @@ import com.webforj.component.table.Table
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.table.table
+import com.webforj.kotlin.extension.px
+import com.webforj.kotlin.extension.rem
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.kotlin.extension.vh
@@ -30,6 +32,15 @@ class TableHiddenColumnGroupsKotlinView : Composite<Div>() {
         direction = FlexDirection.COLUMN
         height = 100.vh
 
+        button("Toggle Retail Column", ButtonTheme.PRIMARY) {
+          maxWidth = 200.px
+          styles["margin-top"] = 1.rem
+          styles["margin-left"] = 1.rem
+          onClick {
+            retailColumn.isHidden = !retailColumn.isHidden
+            table.refreshColumns()
+          }
+        }
         table = table<MusicRecord> {
           repository = Service.getMusicRecords()
           width = 100.vw
@@ -61,16 +72,6 @@ class TableHiddenColumnGroupsKotlinView : Composite<Div>() {
             .add("Retail")
 
           columnGroups = listOf(catalog, pricing)
-        }
-
-        button("Toggle Retail Column", ButtonTheme.PRIMARY) {
-          maxWidth = "200px"
-          styles["margin-top"] = "1rem"
-          styles["margin-left"] = "1rem"
-          onClick {
-            retailColumn.isHidden = !retailColumn.isHidden
-            table.refreshColumns()
-          }
         }
       }
     }
