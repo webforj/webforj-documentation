@@ -10,7 +10,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @BundleEntry("css/element/elementfigure.css")
-@FrameTitle("Element Input Text")
+@FrameTitle("Element Figure")
 public class ElementFigureView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
