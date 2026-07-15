@@ -4,7 +4,7 @@ description: Set up a webforJ development environment with JDK 21, Apache Maven,
 sidebar_position: 1
 ---
 
-Getting started with webforJ is simple, because there are only a couple of prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ. 
+Getting started with webforJ is simple, because there are only a couple of prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ.
 
 <!-- vale off -->
 ## Java Development Kit (JDK) 21 {#java-development-kit-jdk-21}
@@ -16,19 +16,19 @@ Java **21** is required to ensure compatibility with webforJ and access to the l
 <!-- vale off -->
 ### JDK installation links: {#jdk-installation-links}
 <!-- vale on -->
-:::tip  
-If you're using a UNIX-based operating system, it's recommended to use [SDKMAN!](https://sdkman.io/) to manage your Java environment. It lets you easily switch between different Java vendors without any extra hassle.  
+:::tip
+If you're using a UNIX-based operating system, it's recommended to use [SDKMAN!](https://sdkman.io/) to manage your Java environment. It lets you easily switch between different Java vendors without any extra hassle.
 
-Alternatively, you can use [Jabba](https://github.com/Jabba-Team/jabba), which works on both UNIX-based systems and Windows. It's a solid cross-platform solution for managing Java versions.  
+Alternatively, you can use [Jabba](https://github.com/Jabba-Team/jabba), which works on both UNIX-based systems and Windows. It's a solid cross-platform solution for managing Java versions.
 :::
 
-- Official Oracle JDKs can be found on Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page. 
+- Official Oracle JDKs can be found on Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page.
   - Select Java version **21**.
   - Click the tab for Linux, macOS, or Windows.
-  - Click the link that corresponds to your computer's architecture. 
+  - Click the link that corresponds to your computer's architecture.
   - See Oracle's [JDK Installation Guide](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html) for complete information on installing an Oracle JDK.
-- Open source JDKs can be found on Adoptium's [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) page. 
-  - Use the dropdown menus to select the operating system, architecture, package type, and JDK version **21**. 
+- Open source JDKs can be found on Adoptium's [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) page.
+  - Use the dropdown menus to select the operating system, architecture, package type, and JDK version **21**.
   - Click the link in the table for the archive type you wish to download.
   - See Adoptium's [Installation Guide](https://adoptium.net/installation/) for complete information on installing an Eclipse Temurin JDK.
 
@@ -46,12 +46,12 @@ If your JDK is installed correctly, you will see output with your JDK version de
 ## Apache Maven {#apache-maven}
 <!-- vale on -->
 
-[Apache Maven](https://maven.apache.org/index.html) is a build automation and dependency management tool that simplifies the process of including external libraries such as webforJ in your project. 
+[Apache Maven](https://maven.apache.org/index.html) is a build automation and dependency management tool that simplifies the process of including external libraries such as webforJ in your project.
 In addition to helping with dependency management, Maven can automate tasks like compiling code, running tests, and packaging applications.
 
 ### Maven installation links {#maven-installation-links}
-- To install the latest version of Maven, go to the [Apache Maven Download Page](https://maven.apache.org/download.cgi). 
-  - Maven's [Installing Apache Maven](https://maven.apache.org/install.html) page has an overview of the installation process. 
+- To install the latest version of Maven, go to the [Apache Maven Download Page](https://maven.apache.org/download.cgi).
+  - Maven's [Installing Apache Maven](https://maven.apache.org/install.html) page has an overview of the installation process.
   - Baeldung's [How to Install Maven on Windows, Linux, and Mac](https://www.baeldung.com/install-maven-on-windows-linux-mac) is a more in-depth installation guide for each operating system.
 
 <!-- vale off -->

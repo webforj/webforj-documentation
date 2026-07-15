@@ -34,7 +34,7 @@ webforj-tutorial
 │   LICENSE
 │   README.md
 │
-├───1-creating-a-basic-app  
+├───1-creating-a-basic-app
 ├───2-working-with-data
 ├───3-routing-and-composites
 ├───4-observers-and-route-parameters
@@ -50,7 +50,7 @@ If you’d prefer to create a new project, you can use [startforJ](https://docs.
 
 :::note Required settings
 - In the **webforJ version** dropdown, choose webforJ version **26.00 or higher**.
-- In the **Flavor** dropdown, choose **webforJ + Spring Boot**. 
+- In the **Flavor** dropdown, choose **webforJ + Spring Boot**.
 :::
 
 ## Using the command line {#using-command-line}
@@ -98,7 +98,7 @@ mvn -B archetype:generate ^
 </Tabs>
 <!-- vale on -->
 
-## Configurations
+## Configurations {#configurations}
 
 The two mentioned ways of creating a new project use webforJ [archetypes](/docs/building-ui/archetypes/overview), which automatically add the needed configurations to your project, like Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) to your POM and the following properties in `src/main/resources/application.properties`:
 

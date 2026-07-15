@@ -23,7 +23,7 @@ height='600px'
 
 By default, a column isn't sortable unless explicitly enabled. To allow sorting on a specific column, use the `setSortable(true)` method:
 
-```java 
+```java
 table.getColumn("Age").setSortable(true);
 ```
 

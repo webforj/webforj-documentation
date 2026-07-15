@@ -25,7 +25,7 @@ height='225px'
 
 ## Managing speed and pausing {#managing-speed-and-pausing}
 
-It's possible to set the speed in milliseconds for the `Spinner` and pause/resume the animation with ease. 
+It's possible to set the speed in milliseconds for the `Spinner` and pause/resume the animation with ease.
 
 Use cases for setting speeds include differentiating between loading processes. For example, faster `Spinners` are suitable for smaller tasks, while slower `Spinners` are better for larger tasks. Pausing is useful when user action or confirmation is required before continuing the process.
 
@@ -45,7 +45,7 @@ By default, the `Spinner` will take 1000 milliseconds to complete one full rotat
 
 Pausing the `Spinner` is useful when a program is temporarily halted or waiting for user input. It lets users know that the program is on hold, rather than actively running, which enhances clarity during multi-step processes.
 
-To pause and resume the Spinner, use the `setPaused()` method. This is particularly helpful when you need to temporarily stop the spinning animation.      
+To pause and resume the Spinner, use the `setPaused()` method. This is particularly helpful when you need to temporarily stop the spinning animation.
 
 ```java
 spinner.setPaused(true);  // Pause the spinner
@@ -86,15 +86,15 @@ The `Spinner` component comes with several built-in themes that allow you to qui
 While spinners serve various situations, here are some example use cases for the different themes:
 
 - **Primary**: Ideal for emphasizing a loading state that's a key part of the user flow, such as while submitting a form or processing an important action.
-  
+
 - **Success**: Useful to represent successful background processes, such as when a user submits a form and the app is performing the final steps of the process.
-  
+
 - **Danger**: Use this for risky or high-stakes operations, like deleting important data or making irreversible changes, where a visual indicator of urgency or caution is necessary.
-  
+
 - **Warning**: Use this to indicate a cautionary or less urgent process, such as when the user waits for data validation, but doesn't require immediate action.
 
 - **Gray**: Works well for subtle background processes, such as low-priority or passive loading tasks, like when fetching supplemental data that doesn't directly impact the user experience.
-  
+
 - **Info**: Suitable for loading scenarios where you're providing additional information or clarification to the user, such as displaying a spinner alongside a message that explains the ongoing process.
 
 You can apply these themes programmatically to the spinner, providing visual cues that align with the context and importance of the operation.

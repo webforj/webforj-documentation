@@ -1,47 +1,50 @@
 ---
 title: Avatar
 sidebar_position: 7
-_i18n_hash: 77ac4a1373803d1d68a45968175050e0
+description: >-
+  Represent users with the Avatar component, showing profile images,
+  auto-computed initials, custom initials, or icons for identification.
+_i18n_hash: a19b6cefc7a422d075f42ddedfcddfce
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-avatar" />
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="avatar" location="com/webforj/component/avatar/Avatar" top='true'/>
 
-`Avatar`-komponentti tarjoaa visuaalisen esityksen käyttäjästä tai entiteetistä. Se voi näyttää kuvan, automaattisesti lasketut alut, mukautetut alut tai kuvakkeen. Avatarit ovat yleisesti käytössä käyttäjien tunnistamiseen kommenttiosioissa, navigointivalikoissa, chat-sovelluksissa ja kontaktitasoilla.
+`Avatar`-komponentti tarjoaa visuaalisen esityksen käyttäjästä tai entiteetistä. Se voi näyttää kuvan, automaattisesti lasketut alkukirjaimet, mukautetut alkukirjaimet tai ikonin. Avatareita käytetään yleisesti käyttäjien tunnistamiseen kommenttiosioissa, navigointivalikoissa, chat-sovelluksissa ja kontaktiluetteloissa.
 
 <!-- INTRO_END -->
 
-## Luodaan avatarit {#creating-avatars}
+## Luodaan avatareita {#creating-avatars}
 
-Luodaksesi `Avatar`, välitä etiketti, joka toimii saavutettavana nimenä. Komponentti laskee automaattisesti alut ottamalla ensimmäisen kirjaimen kustakin sanasta etikettiä.
+Luodaksesi `Avatar`-objektin, siirrä etiketti, joka toimii saavutettavana nimenä. Komponentti laskee automaattisesti alkukirjaimet ottamalla ensimmäisen kirjaimen jokaisesta sanasta etiketissä.
 
 ```java
-// Luo avatarin, joka näyttää "JD" etiketistä
+// Luo avatar, joka näyttää "JD" etiketistä
 Avatar avatar = new Avatar("John Doe");
 ```
 
-Voit myös antaa eksplisiittiset alut, jos haluat enemmän hallintaa siitä, mitä näytetään:
+Voit myös antaa eksplisiittiset alkukirjaimet, jos haluat enemmän hallintaa siitä, mitä näytetään:
 
 ```java
-// Luo avatarin mukautetuilla alulla
+// Luo avatar mukautetuilla alkukirjaimilla
 Avatar avatar = new Avatar("John Doe", "J");
 ```
 
-Alla oleva esimerkki esittelee avatarit tiimipaneelin kontekstissa. Jokainen `Avatar` näyttää joko profiilikuvan tai automaattisesti luodut alut käyttäjän nimen perusteella. Klikkaamalla `Avatar`-kuvaketta avautuu dialogi suurennetulla näkymällä.
+Alla oleva esimerkki esittelee avatareita tiimipaneelissa. Jokainen `Avatar` näyttää joko profiilikuva tai automaattisesti luodut alkukirjaimet käyttäjän nimen perusteella. Klikkaamalla `Avatar`-objektia avautuu dialogi, jossa on suurennettu näkymä.
 
 <ComponentDemo
 path='/webforj/avatar'
 files={[
   'src/main/java/com/webforj/samples/views/avatar/AvatarView.java',
-  'src/main/resources/static/css/avatar/avatar.css',
+  'src/main/frontend/css/avatar/avatar.css',
 ]}
 height='500px'
 />
 
 ## Kuvien näyttäminen {#displaying-images}
 
-`Avatar`-komponentti voi näyttää kuvan sen sijaan, että näyttäisi alut liittämällä `Img`-komponentin lapsena. Kun kuva annetaan, se saa etuoikeuden aluille.
+`Avatar`-komponentti voi näyttää kuvan alkukirjainten sijasta sijoittamalla `Img`-komponentin lapsena. Kun kuva on annettu, se ottaa etusijan alkukirjaimiin nähden.
 
 ```java
 import com.webforj.component.html.elements.Img;
@@ -50,53 +53,53 @@ import com.webforj.component.html.elements.Img;
 Avatar avatar = new Avatar("John Doe", new Img("path/to/profile.png"));
 ```
 
-:::tip Kuvan kokoaminen
-Kuva skaalaa automaattisesti sopimaan avatarin mitoihin nykyisen laajuusasetuksen mukaan.
+:::tip Kuvan koko
+Kuva skaalaa automaattisesti sopimaan avatarin mittoihin nykyisen laajuusasetuksen mukaan.
 :::
 
-## Kuvakkeiden näyttäminen {#displaying-icons}
+## Ikonien näyttäminen {#displaying-icons}
 
-Voit näyttää kuvakkeen `Avatar`-komponentissa lisäämällä `Icon`-komponentin lapsena:
+Voit näyttää ikonin `Avatar`-komponentissa lisäämällä `Icon`-komponentin lapsena:
 
 ```java
 import com.webforj.component.icons.TablerIcon;
 
-// Avatar kuvakkeen kanssa
+// Avatar ikonilla
 Avatar avatar = new Avatar("Guest User", TablerIcon.create("user"));
 ```
 
-## Etiketti ja alut {#label-and-initials}
+## Etiketti ja alkukirjaimet {#label-and-initials}
 
-`Avatar`-komponentti käyttää etikettiä saavutettavuuden ja työkaluvihjeiden luomiseen. `setLabel()` ja `setText()` -menetelmät ovat viittauksia, jotka molemmat asettavat saavutettavan etiketin `Avatar`-komponentille.
+`Avatar`-komponentti käyttää etikettiä saavutettavuuteen ja työkaluvihjeen luomiseen. `setLabel()` ja `setText()` -menetelmät ovat synonyymejä, jotka molemmat asettavat saavutettavan etiketin `Avatar`-objektille.
 
-:::info Automaattisesti lasketut alut
-Kun luot `Avatar`-komponentin vain etiketillä, alut lasketaan automaattisesti ottamalla ensimmäinen kirjain kustakin sanasta. Esimerkiksi `Avatar`, jonka etiketti on "John Doe", näyttää automaattisesti "JD" käyttöliittymässä.
+:::info Automaattisesti lasketut alkukirjaimet
+Kun luot `Avatar`-objektin vain etiketillä, alkukirjaimet lasketaan automaattisesti ottamalla ensimmäinen merkki jokaisesta sanasta. Esimerkiksi `Avatar`, jonka etiketti on "John Doe", näyttää automaattisesti "JD" käyttöliittymässä.
 :::
 
 ```java
 Avatar avatar = new Avatar();
-avatar.setLabel("Jane Smith");  // Asettaa etiketin ja generoi automaattisesti työkaluvihjeen
-avatar.setInitials("JS");       // Ohittaa automaattisesti lasketut alut
+avatar.setLabel("Jane Smith");  // Aseta etiketti ja luo automaattisesti työkaluvihje
+avatar.setInitials("JS");       // Ylikirjoita automaattisesti lasketut alkukirjaimet
 ```
 
 :::tip Automaattinen työkaluvihje
-Komponentti luo automaattisesti työkaluvihjeen etiketistä, mikä helpottaa täydellisen nimen näkemistä hiiren kanssa. Tämä käyttäytyminen on pois käytöstä käytettäessä oletusetikettiä "Avatar".
+Komponentti luo automaattisesti työkaluvihjeen etiketistä, jolloin koko nimen näkeminen on helppoa hiiren päällä. Tämä käyttäytyminen on poistettu käytöstä, kun käytetään oletusetikettiä "Avatar".
 :::
 
-## Napsautustapahtumat {#click-events}
+## Klikkaustapahtumat {#click-events}
 
-`Avatar`-komponentti toteuttaa `HasElementClickListener`-rajapinnan, jolloin voit reagoida käyttäjän napsautuksiin. Tämä on hyödyllistä toimintojen laukaisevana, kuten käyttäjäprofiilin avaamisena tai valikon esittämisenä.
+`Avatar`-komponentti toteuttaa `HasElementClickListener`-rajapinnan, mikä mahdollistaa käyttäjän klikkausten käsittelyn. Tämä on hyödyllistä, kun halutaan käynnistää toimintoja, kuten avata käyttäjäprofiili tai näyttää valikko.
 
 ```java
 avatar.onClick(event -> {
-  // Käsittele avatarin napsautus - esim. avaa käyttäjäprofiili
+  // Käsittele avatarin klikkaus - esim. avaa käyttäjäprofiili
   System.out.println("Avatar clicked!");
 });
 ```
 
 ## Muodot {#shapes}
 
-Avatarit voidaan näyttää ympyröinä tai neliöinä. Oletusmuoto on `CIRCLE`, mikä on standardi käyttäjäavatarille. Käytä `SQUARE`-muotoa entiteeteille kuten tiimit, yritykset tai sovellukset.
+Avatareita voidaan näyttää ympyröinä tai neliöinä. Oletusmuoto on `CIRCLE`, mikä on standardi käyttäjäavatareille. Käytä `SQUARE`-muotoa entiteeteille, kuten tiimeille, yrityksille tai sovelluksille.
 
 <ComponentDemo
 path='/webforj/avatarshapes'
@@ -106,19 +109,19 @@ height='100px'
 
 ## Teemat {#themes}
 
-Teemat viestivät merkitystä tai tilaa; voit käyttää niitä osoittamaan saatavuutta, korostamaan tärkeitä käyttäjiä tai vastaamaan sovelluksesi ulkoasua.
+Teemat välittävät merkitystä tai tilaa; voit käyttää niitä osoittamaan saatavuutta, korostamaan tärkeitä käyttäjiä tai vastaamaan sovelluksesi muotoilua.
 
 Seuraavat teemat ovat saatavilla:
 
-- `DEFAULT`: Standardinäkymä
-- `GRAY`: Neutraali, hillitty ulkoasu
-- `PRIMARY`: Korostaa ensisijaisia toimintoja tai käyttäjiä
-- `SUCCESS`: Ilmaisee positiivista tilaa (esim. verkossa)
+- `DEFAULT`: Vakio-ilme
+- `GRAY`: Neutraali, hillitty ilme
+- `PRIMARY`: Korostaa päätoimintoja tai käyttäjiä
+- `SUCCESS`: Ilmaisee positiivista tilaa (esim. online)
 - `WARNING`: Ilmaisee varoitusta (esim. poissa)
-- `DANGER`: Ilmaisee virhe- tai kiiretilaa
-- `INFO`: Antaa informatiivista kontekstia
+- `DANGER`: Ilmaisee virhe- tai kiireistä tilaa
+- `INFO`: Tarjoaa informaatiota kontekstista
 
-Jokaisella teemalla on myös ääriviivavariantti kevyempää visuaalista käsittelyä varten:
+Jokaisella teemalla on myös viivoitettu variantti kevyempää visuaalista käsittelyä varten:
 
 <ComponentDemo
 path='/webforj/avatarthemes'
@@ -128,7 +131,7 @@ height='120px'
 
 ## Laajuudet {#expanses}
 
-Hallinnoi avatarin kokoa käyttämällä `setExpanse()`-menetelmää. Komponentti tukee yhdeksää koko vaihtoehtoa, jotka vaihtelevat `XXXSMALL`-kosta `XXXLARGE`-kkoon.
+Säädä avatarin kokoa käyttämällä `setExpanse()`-menetelmää. Komponentti tukee yhdeksää koovaihtoehtoa, jotka vaihtelevat `XXXSMALL`-kokoisesta `XXXLARGE`-kokoon.
 
 <ComponentDemo
 path='/webforj/avatarexpanses'
@@ -136,6 +139,7 @@ files={['src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java'
 height='100px'
 />
 
-## Tyylit {#styling}
+
+## Tyylittely {#styling}
 
 <TableBuilder name="Avatar" />

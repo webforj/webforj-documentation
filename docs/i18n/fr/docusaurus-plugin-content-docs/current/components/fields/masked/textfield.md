@@ -1,7 +1,10 @@
 ---
 title: MaskedTextField
 sidebar_position: 15
-_i18n_hash: 8ef566720a30ba07ae47b5a957804c52
+description: >-
+  Enforce formatted text entry with the MaskedTextField, supporting mask
+  characters for digits, letters, and literals for IDs and codes.
+_i18n_hash: 10866226b1025c8c4c0a28499d46de38
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-textfield" />
@@ -24,10 +27,10 @@ field.setMask("ZZZZ-0000")
 
 ## Règles de masque {#mask-rules}
 
-Le `MaskedTextField` formate l'entrée de texte en utilisant un masque - une chaîne qui définit quels caractères sont autorisés à chaque position. Cela garantit une saisie cohérente et structurée pour des éléments comme les numéros de téléphone, les codes postaux et les formats d'identification.
+Le `MaskedTextField` formate l'entrée de texte à l'aide d'un masque - une chaîne qui définit quels caractères sont autorisés à chaque position. Cela assure une saisie cohérente et structurée pour des éléments tels que les numéros de téléphone, les codes postaux et les formats d'identification.
 
 :::tip Application de masques par programme
-Pour formater des chaînes avec la même syntaxe de masque en dehors d'un champ, par exemple lors du rendu de données dans un [`Table`](/docs/components/table/overview), utilisez la classe utilitaire [`MaskDecorator`](/docs/advanced/mask-decorator).
+Pour formater des chaînes avec la même syntaxe de masque en dehors d'un champ, par exemple lors de l'affichage de données dans un [`Table`](/docs/components/table/overview), utilisez la classe utilitaire [`MaskDecorator`](/docs/advanced/mask-decorator).
 :::
 
 ### Caractères de masque pris en charge {#supported-mask-characters}
@@ -41,12 +44,12 @@ Pour formater des chaînes avec la même syntaxe de masque en dehors d'un champ,
 | `z`       | Tout chiffre ou lettre (majuscule ou minuscule)                                                |
 | `Z`       | Tout chiffre ou lettre ; les lettres minuscules sont converties en majuscules                           |
 
-Tous les autres caractères dans le masque sont traités comme des littéraux et doivent être saisis exactement. 
-Par exemple, un masque comme `XX@XX` exige que l'utilisateur entre un `@` au milieu.
+Tous les autres caractères dans le masque sont traités comme des littéraux et doivent être saisis exactement.
+Par exemple, un masque comme `XX@XX` exige que l'utilisateur saisisse un `@` au milieu.
 
-- **Caractères invalides** sont silencieusement ignorés.
-- **Saisie courte** est complétée par des espaces.
-- **Saisie longue** est tronquée pour s'adapter au masque.
+- **Les caractères invalides** sont ignorés silencieusement.
+- **Les entrées courtes** sont complétées par des espaces.
+- **Les entrées longues** sont tronquées pour s'adapter au masque.
 
 ### Exemples {#examples}
 
@@ -57,9 +60,9 @@ field.setMask("ZZZZ-0000");          // Exemple : ABCD-1234
 field.setMask("0000-0000-0000-0000");// Exemple : 1234-5678-9012-3456
 ```
 
-:::tip Saisie complète autorisée
-Si le masque ne contient que des `X`, le champ se comporte comme un [`TextField`](../textfield) standard, permettant toute saisie imprimable.
-Ceci est utile lorsque vous souhaitez réserver la possibilité de formatage sans appliquer de règles strictes sur les caractères.
+:::tip Entrée complète autorisée
+Si le masque ne contient que `X`, le champ se comporte comme un [`TextField`](../textfield) standard, permettant toute entrée imprimable.
+Ceci est utile lorsque vous souhaitez réserver la possibilité de formater sans appliquer de règles strictes de caractères.
 :::
 
 <ComponentDemo
@@ -70,41 +73,41 @@ height='250px'
 
 ## Modèles de validation {#validation-patterns}
 
-Alors que les masques définissent la structure de l'entrée, vous pouvez les combiner avec des modèles de validation pour imposer des règles d'entrée plus spécifiques. Cela ajoute une couche supplémentaire de validation côté client en utilisant des expressions régulières.
+Bien que les masques définissent la structure de l'entrée, vous pouvez les combiner avec des modèles de validation pour imposer des règles d'entrée plus spécifiques. Cela ajoute une couche supplémentaire de validation côté client à l'aide d'expressions régulières.
 
 Utilisez la méthode `setPattern()` pour appliquer une expression régulière personnalisée :
 
 ```java
-field.setPattern("[A-Za-z0-9]{10}"); // Imposé un code alphanumérique de 10 caractères
+field.setPattern("[A-Za-z0-9]{10}"); // Imposera un code alphanumérique de 10 caractères
 ```
 
-Cela garantit que l'entrée non seulement correspond au masque mais se conforme également à une structure définie, comme la longueur ou les caractères autorisés.
+Cela garantit que l'entrée correspond non seulement au masque, mais se conforme également à une structure définie, telle que la longueur ou les caractères autorisés.
 
 Cela est particulièrement utile lorsque :
 
 - Le masque permet trop de flexibilité
-- Vous souhaitez imposer une longueur exacte ou un format spécifique (par exemple, hex, Base64, UUID)
+- Vous souhaitez imposer une longueur exacte ou un format spécifique (ex. hex, Base64, UUID)
 
 :::tip Format d'expression régulière
-Le modèle doit être une expression régulière [JavaScript valide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), comme utilisé par le type `RegExp`. Vous trouverez plus de détails dans la [documentation de l'attribut de modèle HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
+Le modèle doit être une expression régulière JavaScript valide, comme utilisé par le type `RegExp`. Vous pouvez trouver plus de détails dans la documentation de l'attribut HTML pattern.
 :::
 
 ## Restauration de la valeur {#restoring-the-value}
 
-Le `MaskedTextField` inclut une fonctionnalité de restauration qui réinitialise la valeur du champ à un état prédéfini ou d'origine. 
-Cela peut être utile pour annuler les modifications de l'utilisateur ou revenir à une saisie par défaut.
+Le `MaskedTextField` comprend une fonction de restauration qui réinitialise la valeur du champ à un état prédéfini ou d'origine.
+Cela peut être utile pour annuler des modifications utilisateur ou revenir à une entrée par défaut.
 
 ```java
 field.setRestoreValue("ABC123");
 field.restoreValue();
 ```
 
-### Méthodes pour restaurer la valeur {#ways-to-restore-the-value}
+### Façons de restaurer la valeur {#ways-to-restore-the-value}
 
 - **Par programme**, en appelant `restoreValue()`
-- **Via le clavier**, en appuyant sur <kbd>ESC</kbd> (c'est la touche de restauration par défaut sauf si remplacée par un écouteur d'événements)
+- **Via le clavier**, en appuyant sur <kbd>ESC</kbd> (c'est la touche de restauration par défaut à moins d'être remplacée par un écouteur d'événements)
 
-Vous pouvez définir la valeur à restaurer avec `setRestoreValue()`. Si aucune valeur de restauration n'est définie, le champ reviendra à la valeur initiale au moment où il a été rendu.
+Vous pouvez définir la valeur à restaurer avec `setRestoreValue()`. Si aucune valeur de restauration n'est définie, le champ revertira à la valeur initiale au moment de son rendu.
 
 <ComponentDemo
 path='/webforj/maskedtextfieldrestore'
@@ -114,7 +117,7 @@ height='200px'
 
 ## `MaskedTextFieldSpinner` {#maskedtextfieldspinner}
 
-Le `MaskedTextFieldSpinner` étend [`MaskedTextField`](#basics) en ajoutant des contrôles de sélecteur qui permettent aux utilisateurs de faire défiler une liste de valeurs prédéfinies. 
+Le `MaskedTextFieldSpinner` étend le [`MaskedTextField`](#basics) en ajoutant des contrôles de spinner qui permettent aux utilisateurs de parcourir une liste de valeurs prédéfinies.
 Cela améliore l'expérience utilisateur dans les situations où l'entrée doit être contrainte à un ensemble fixe d'options valides.
 
 <ComponentDemo
@@ -125,14 +128,14 @@ height='120px'
 
 ### Caractéristiques clés {#key-features}
 
-- **Support de liste d'options**  
-  Remplissez le sélecteur avec une liste de valeurs de chaîne valides en utilisant `setOptions()` :
+- **Support de liste d'options**
+  Remplissez le spinner avec une liste de valeurs de chaîne valides à l'aide de `setOptions()` :
 
   ```java
   spinner.setOptions(List.of("Option A", "Option B", "Option C"));
   ```
 
-- **Défilement par programme**  
+- **Rotation programmatique**
   Utilisez `spinUp()` et `spinDown()` pour parcourir les options :
 
   ```java
@@ -140,7 +143,7 @@ height='120px'
   spinner.spinDown(); // Sélectionne l'option précédente
   ```
 
-- **Contrôle de l'index**  
+- **Contrôle de l'index**
   Définissez ou récupérez l'index de sélection actuel avec :
 
   ```java
@@ -148,9 +151,9 @@ height='120px'
   int current = spinner.getOptionIndex();
   ```
 
-- **Compatibilité de masque**  
-  Hérite entièrement de toutes les règles de formatage, de masques et de validation des modèles de `MaskedTextField`.
+- **Compatibilité de masque**
+  Hérite entièrement de toutes les règles de formatage, de masque et de validation des modèles du `MaskedTextField`.
 
-## Style {#styling}
+## Stylisation {#styling}
 
 <TableBuilder name="MaskedTextField" />

@@ -40,7 +40,7 @@ public class AppNavSearchView extends Composite<AppLayout> {
         .getSearch()
         .setFieldVisible(true)
         .setPlaceholder("Search menu")
-        .setEmptyMessage("<html><strong>Nothing found</strong></html>");
+        .setEmptyMessage("Nothing found");
   }
 
   private void setDrawer() {
@@ -52,7 +52,6 @@ public class AppNavSearchView extends Composite<AppLayout> {
     AppNavItem invoices =
         new AppNavItem("Invoices")
             .setPrefixComponent(TablerIcon.create("file-invoice"))
-            .addItem(createItem("Outstanding", "clock"))
             .addItem(createItem("Paid", "check"))
             .addItem(createItem("Drafts", "pencil"));
 

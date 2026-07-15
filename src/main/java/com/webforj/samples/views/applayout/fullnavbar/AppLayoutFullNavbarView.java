@@ -1,6 +1,6 @@
 package com.webforj.samples.views.applayout.fullnavbar;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.icons.Icon;
@@ -15,7 +15,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 
 @Route
-@StyleSheet("ws://css/applayout/applayout.css")
+@BundleEntry("css/applayout/applayout.css")
 @FrameTitle("AppLayout Full Navbar")
 public class AppLayoutFullNavbarView extends Composite<AppLayout> {
   private final AppLayout self = getBoundComponent();

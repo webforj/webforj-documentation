@@ -1,26 +1,29 @@
 ---
 sidebar_position: 10
 title: Lifecycle Listeners
-_i18n_hash: ffb3121402861d501b322c7efca6f669
+description: >-
+  Hook into webforJ app startup and shutdown phases with AppLifecycleListener to
+  initialize services, modify config, or clean up resources.
+_i18n_hash: 3ef33ca5104ef421c38d3db16c9fa453
 ---
 <!-- vale off -->
-# Lifecyclelisteners <DocChip chip='since' label='25.02' />
+# Levenscyclusluisteraars <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-De `AppLifecycleListener` interface stelt externe code in staat om app-levenscyclusgebeurtenissen te observeren en erop te reageren. Door deze interface te implementeren, kun je code uitvoeren op specifieke momenten tijdens het opstarten en afsluiten van de app, zonder de `App`-klasse zelf te wijzigen.
+De interface `AppLifecycleListener` stelt externe code in staat om de gebeurtenissen in de levenscyclus van de app te observeren en erop te reageren. Door deze interface te implementeren, kunt u code uitvoeren op specifieke momenten tijdens het opstarten en afsluiten van de app zonder de `App`-klasse zelf te wijzigen.
 
-Lifecyclelisteners worden automatisch ontdekt en geladen tijdens runtime via configuratiebestanden voor serviceproviders. Elke app-instantie ontvangt zijn eigen set listener-instanties, wat isolatie onderhoudt tussen verschillende apps die in dezelfde omgeving draaien.
+Levenscyclusluisteraars worden automatisch ontdekt en geladen tijdens runtime via configuratiebestanden voor serviceproviders. Elke app-instantie ontvangt zijn eigen set luisterinstellingen, waardoor isolatie tussen verschillende apps die in dezelfde omgeving draaien, behouden blijft.
 
-## Wanneer lifecyclelisteners te gebruiken {#when-to-use-lifecycle-listeners}
+## Wanneer levenscyclusluisteraars te gebruiken {#when-to-use-lifecycle-listeners}
 
-Gebruik lifecyclelisteners wanneer je moet:
+Gebruik levenscyclusluisteraars wanneer u moet:
 
-- Hulpbronnen of services initialiseren voordat een app draait
-- Hulpbronnen opruimen wanneer een app beëindigt
+- Hulpbronnen of diensten initialiseren voordat een app draait
+- Hulpbronnen opschonen wanneer een app beëindigt
 - Cross-cutting concerns toevoegen zonder de `App`-klasse te wijzigen
 - Pluginarchitecturen bouwen
 
-## De `AppLifecycleListener` interface {#the-applifecyclelistener-interface}
+## De interface `AppLifecycleListener` {#the-applifecyclelistener-interface}
 
 ```java title="AppLifecycleListener.java"
 public interface AppLifecycleListener {
@@ -34,27 +37,27 @@ public interface AppLifecycleListener {
 ```
 
 :::info App-isolatie
-Elke app-instantie ontvangt zijn eigen set van listener-instanties:
+Elke app-instantie ontvangt zijn eigen set van luisterinstellingen:
 
-- Listeners zijn geïsoleerd tussen verschillende apps
-- Statische velden in listeners worden niet gedeeld tussen apps
-- Listener-instanties worden aangemaakt wanneer de app start en vernietigd wanneer deze eindigt
+- Luisteraars zijn geïsoleerd tussen verschillende apps
+- Statische velden in luisteraars worden niet gedeeld tussen apps
+- Luisterinstellingen worden gemaakt wanneer de app start en vernietigd wanneer deze beëindigt
 
-Als je gegevens tussen apps moet delen, gebruik dan externe opslagmechanismen zoals databases of gedeelde services.
+Als u gegevens tussen apps moet delen, gebruik dan externe opslagmechanismen zoals databases of gedeelde services.
 :::
 
-### Lifecyclegebeurtenissen {#lifecycle-events}
+### Levenscyclusgebeurtenissen {#lifecycle-events}
 
-| Gebeurtenis            | Wanneer opgeroepen                                     | Veelvoorkomende toepassingen                           |
-| ---------------------- | ------------------------------------------------------ | ----------------------------------------------------- |
-| `onWillCreate`&nbsp;<DocChip chip='since' label='25.03' /> | Na omgevinginitialisatie, vóór app-creatie             | Wijzig configuratie, haal externe configuratieniches op |
-| `onDidCreate`&nbsp;<DocChip chip='since' label='25.03' />  | Na app-instantie, vóór initialisatie                   | Vroeg app-niveau instellen, registreer services        |
-| `onWillRun`          | Vóór `app.run()` wordt uitgevoerd                      | Initialiseer hulpbronnen, configureer services         |
-| `onDidRun`           | Nadat `app.run()` succesvol is voltooid                | Start achtergrondtaken, log succesvolle opstart       |
-| `onWillTerminate`    | Vóór app-afsluiting                                   | Sla status op, bereid je voor op afsluiten             |
-| `onDidTerminate`     | Na app-afsluiting                                     | Ruim hulpbronnen op, laatste logging                   |
+| Evenement         | Wanneer Aangeroepen                                    | Veelvoorkomende Toepassingen                          |
+| ----------------- | ------------------------------------------------------ | ----------------------------------------------------- |
+| `onWillCreate`&nbsp;<DocChip chip='since' label='25.03' /> | Na initialisatie van de omgeving, voor app-creatie   | Configuratie aanpassen, externe configuratiebronnen samenvoegen |
+| `onDidCreate`&nbsp;<DocChip chip='since' label='25.03' />  | Na app-instantiering, voor initialisatie              | Vroegtijdige app-niveau setup, diensten registreren    |
+| `onWillRun`       | Voor het uitvoeren van `app.run()`                    | Hulpbronnen initialiseren, diensten configureren      |
+| `onDidRun`        | Na succesvolle voltooiing van `app.run()`             | Achtergrondtaken starten, succesvolle opstart registreren |
+| `onWillTerminate` | Voor beëindiging van de app                            | Toestand opslaan, voorbereiden op afsluiten           |
+| `onDidTerminate`  | Na beëindiging van de app                             | Hulpbronnen opschonen, uiteindelijke logging          |
 
-## Een lifecyclelistener maken {#creating-a-lifecycle-listener}
+## Een levenscyclusluisteraar maken {#creating-a-lifecycle-listener}
 
 ### Basisimplementatie {#basic-implementation}
 
@@ -69,7 +72,7 @@ public class StartupListener implements AppLifecycleListener {
 
   @Override
   public void onWillCreate(Environment env) {
-    // Wijzig configuratie vóór app-creatie
+    // Configuratie aanpassen voor app-creatie
     Config additionalConfig = ConfigFactory.parseString(
       "myapp.feature.enabled = true"
     );
@@ -78,7 +81,7 @@ public class StartupListener implements AppLifecycleListener {
 
   @Override
   public void onDidCreate(App app) {
-    System.out.println("App aangemaakt: " + app.getId());
+    System.out.println("App gemaakt: " + app.getId());
   }
 
   @Override
@@ -93,9 +96,9 @@ public class StartupListener implements AppLifecycleListener {
 }
 ```
 
-### De listener registreren {#registering-the-listener}
+### De luisteraar registreren {#registering-the-listener}
 
-Maak een configuratiebestand voor de serviceprovider aan:
+Maak een configuratiebestand voor serviceproviders aan:
 
 **Bestand**: `src/main/resources/META-INF/services/com.webforj.AppLifecycleListener`
 
@@ -116,15 +119,15 @@ public class StartupListener implements AppLifecycleListener {
 ```
 :::
 
-## Uitvoeringvolgorde beheersen {#controlling-execution-order}
+## Controle over de uitvoering volgorde {#controlling-execution-order}
 
-Wanneer meerdere listeners zijn geregistreerd, kun je hun uitvoeringsvolgorde controleren met de annotatie `@AppListenerPriority`. Dit is vooral belangrijk wanneer listeners afhankelijkheden van elkaar hebben of wanneer bepaalde initialisatie vóór andere moet plaatsvinden.
+Wanneer meerdere luisteraars zijn geregistreerd, kunt u hun uitvoeringsvolgorde regelen met behulp van de annotatie `@AppListenerPriority`. Dit is bijzonder belangrijk wanneer luisteraars afhankelijkheden van elkaar hebben of wanneer bepaalde initialisatie vóór andere moet plaatsvinden.
 
-Prioriteitswaarden werken in oplopende volgorde - **lagere nummers worden eerst uitgevoerd**. De standaardprioriteit is 10, dus listeners zonder expliciete prioriteitsannotaties worden uitgevoerd na die met lagere prioriteitswaarden.
+Prioriteitswaarden werken in oplopende volgorde - **lagere nummers worden eerst uitgevoerd**. De standaardprioriteit is 10, dus luisteraars zonder expliciete prioriteitsannotaties worden uitgevoerd na die met lagere prioriteitswaarden.
 
 ```java title="SecurityListener.java"
 @AutoService(AppLifecycleListener.class)
-@AppListenerPriority(1)  // Voert als eerste uit - kritische beveiligingsinstellingen
+@AppListenerPriority(1)  // Voert eerst uit - kritieke beveiligingssetup
 public class SecurityListener implements AppLifecycleListener {
   @Override
   public void onWillRun(App app) {
@@ -133,7 +136,7 @@ public class SecurityListener implements AppLifecycleListener {
 }
 
 @AutoService(AppLifecycleListener.class)
-@AppListenerPriority(10) // Standaard prioriteit - algemene logging
+@AppListenerPriority(10) // Standaardprioriteit - algemene logging
 public class LoggingListener implements AppLifecycleListener {
   @Override
   public void onWillRun(App app) {
@@ -142,24 +145,24 @@ public class LoggingListener implements AppLifecycleListener {
 }
 ```
 
-### Uitvoeringsstroom met App-haken {#execution-flow-with-app-hooks}
+### Uitvoeringsstroom met App-hooks {#execution-flow-with-app-hooks}
 
-Naast het beheersen van de volgorde tussen meerdere listeners is het belangrijk om te begrijpen hoe listeners interageren met de eigen lifecyclehaken van de `App`-klasse. Voor elke lifecyclegebeurtenis volgt het framework een specifieke uitvoeringsvolgorde die bepaalt wanneer jouw listeners draaien in relatie tot de ingebouwde haken van de app.
+Naast het regelen van de volgorde tussen meerdere luisteraars, is het belangrijk om te begrijpen hoe luisteraars interageren met de eigen levenscyclushooks van de `App`-klasse. Voor elke gebeurtenis in de levenscyclus volgt het framework een specifieke uitvoeringsvolgorde die bepaalt wanneer uw luisteraars draaien in relatie tot de ingebouwde hooks van de app.
 
-Het diagram hieronder illustreert deze uitvoeringsstroom en toont de precieze timing van wanneer de `AppLifecycleListener`-methoden worden aangeroepen in relatie tot de overeenkomstige `App`-haken: 
+De onderstaande diagram illustreert deze uitvoeringsstroom, die de exacte timing toont van wanneer `AppLifecycleListener`-methoden worden aangeroepen in relatie tot de overeenkomstige `App`-hooks:
 
 <div align="center">
 
-![AppLifecycleListener listeners VS `App` hooks  ](/img/lifecycle-listeners.svg)
+![AppLifecycleListener luisteraars VS `App` hooks ](/img/lifecycle-listeners.svg)
 
 </div>
 
 
 ## Foutafhandeling {#error-handling}
 
-Uitzonderingen die door listeners worden opgegooid, worden gelogd maar voorkomen niet dat andere listeners worden uitgevoerd of de app wordt uitgevoerd. Behandel altijd uitzonderingen binnen je listeners:
+Uitzonderingen die door luisteraars worden gegenereerd, worden gelogd maar voorkomen niet dat andere luisteraars worden uitgevoerd of de app draait. Behandel altijd uitzonderingen binnen uw luisteraars:
 
-```java title="Foutafhandelingsvoorbeeld"
+```java title="Foutafhandeling voorbeeld"
 @Override
 public void onWillRun(App app) {
   try {

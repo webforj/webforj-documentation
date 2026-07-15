@@ -29,7 +29,7 @@ height='270px'
 
 ## Mask rules {#mask-rules}
 
-The `MaskedNumberField` uses a mask string to control how numeric input is formatted and displayed. 
+The `MaskedNumberField` uses a mask string to control how numeric input is formatted and displayed.
 Each character in the mask defines a specific formatting behavior, allowing precise control over how numbers appear.
 
 :::tip Applying masks programmatically
@@ -104,10 +104,10 @@ height='150px'
 
 ## Min and max values {#min-and-max-values}
 
-The `MaskedNumberField` supports setting numeric boundaries using `setMin()` and `setMax()`. 
+The `MaskedNumberField` supports setting numeric boundaries using `setMin()` and `setMax()`.
 These constraints help ensure that user input stays within a valid, expected range.
 
-- **Minimum Value**  
+- **Minimum Value**
   Use `setMin()` to define the lowest acceptable number:
 
   ```java
@@ -116,7 +116,7 @@ These constraints help ensure that user input stays within a valid, expected ran
 
   If the user enters a number below this threshold, it will be considered invalid.
 
-- **Maximum Value**  
+- **Maximum Value**
   Use `setMax()` to define the highest acceptable number:
 
   ```java
@@ -127,10 +127,10 @@ These constraints help ensure that user input stays within a valid, expected ran
 
 ## Restoring the value {#restoring-the-value}
 
-The `MaskedNumberField` supports a restore feature that resets the field’s value to a predefined state. 
+The `MaskedNumberField` supports a restore feature that resets the field’s value to a predefined state.
 This can be useful when users need to undo changes, revert accidental edits, or return to a known default value.
 
-To enable this behavior, define the target value using `setRestoreValue()`. 
+To enable this behavior, define the target value using `setRestoreValue()`.
 When needed, the field can be reset programmatically using `restoreValue()`.
 
 ```java
@@ -153,7 +153,7 @@ height='150px'
 
 ## `MaskedNumberFieldSpinner` {#maskednumberfieldspinner}
 
-The `MaskedNumberFieldSpinner` extends [`MaskedNumberField`](#basics) by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys. 
+The `MaskedNumberFieldSpinner` extends [`MaskedNumberField`](#basics) by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys.
 This is ideal for inputs like quantities, pricing adjustments, rating controls, or any scenario where users make incremental changes.
 
 <ComponentDemo
@@ -164,17 +164,17 @@ height='120px'
 
 ### Key features {#key-features}
 
-- **Step Increments**  
+- **Step Increments**
   Use `setStep()` to define how much the value should change with each spin:
 
   ```java
   spinner.setStep(5.0); // Each spin adds or subtracts 5
   ```
 
-- **Interactive Controls**  
+- **Interactive Controls**
   Users can click spinner buttons or use keyboard input to adjust the value.
 
-- **All Features from MaskedNumberField**  
+- **All Features from MaskedNumberField**
   Fully supports masks, formatting, grouping/decimal characters, min/max constraints, and restore logic.
 
 ## Styling {#styling}

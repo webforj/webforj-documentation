@@ -48,7 +48,7 @@ Control the open/closed state programmatically at any time. `isOpened()` is usef
 panel.open();
 
 // Collapse the panel
-panel.close();                    
+panel.close();
 
 // Returns true if currently expanded
 boolean isOpen = panel.isOpened();
@@ -97,7 +97,7 @@ With multiple mode active, all panels in the group can be expanded or collapsed 
 accordion.openAll();
 
 // Collapse every panel in the group
-accordion.closeAll();   
+accordion.closeAll();
 ```
 
 <!-- vale off -->

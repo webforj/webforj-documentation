@@ -2,14 +2,17 @@
 sidebar_position: 1
 title: Table
 hide_giscus_comments: true
-_i18n_hash: 3b4ddfbfc0fb9c5d67fa60136a23af73
+description: >-
+  Display tabular data with the Table component, binding entity classes to a
+  Repository to populate columns and render rows.
+_i18n_hash: 680ee8ce00bf4efc4ae933a913fe1c1a
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-table" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Table" top='true'/>
 
-La classe `Table` est un composant polyvalent conçu pour présenter des informations tabulaires de manière structurée et facilement compréhensible. Optimisé pour gérer de grands ensembles de données avec une haute performance, ce composant offre une visualisation avancée et une suite complète d'événements pour une interaction dynamique avec l'utilisateur.
+La classe `Table` est un composant polyvalent conçu pour présenter des informations tabulaires de manière structurée et facilement compréhensible. Optimisé pour gérer de grands ensembles de données avec une performance élevée, ce composant offre une visualisation avancée et une suite complète d'événements pour un engagement dynamique des utilisateurs.
 
 <!-- INTRO_END -->
 
@@ -27,7 +30,7 @@ Pour créer et peupler une `Table` dans une application, les étapes suivantes p
 
 ### 1. Créer une classe d'entité {#1-create-an-entity-class}
 
-Définissez une classe pour représenter les entités (données) que vous souhaitez afficher dans la table. Dans cet exemple, cette classe est MusicRecord.
+Définissez une classe pour représenter les entités (données) que vous souhaitez afficher dans la table. Dans l'exemple, cette classe est MusicRecord.
 
 ```java
 public class MusicRecord {
@@ -35,11 +38,11 @@ public class MusicRecord {
 }
 ```
 
-### 2. Créer un référentiel {#2-create-a-repository}
+### 2. Créer un dépôt {#2-create-a-repository}
 
 Une fois qu'une classe d'entité a été créée, utilisez-la pour remplir une collection de ces entités avec les données souhaitées.
 
-À partir de ces données, un `Repository` doit être créé pour être utilisé dans la `Table`. La classe `CollectionRepository` est fournie pour transformer toute collection Java valide en un `Repository` utilisable, évitant ainsi la nécessité d'implémenter votre propre classe `Repository`.
+À partir de ces données, un `Repository` doit être créé pour être utilisé au sein de la `Table`. La classe `CollectionRepository` est fournie pour transformer toute collection Java valide en un `Repository` utilisable, évitant ainsi de devoir implémenter votre propre classe `Repository`.
 
 ```java
 List<MusicRecord> data = new Gson().fromJson(
@@ -52,12 +55,12 @@ CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(da
 ```
 
 :::tip Plus d'informations
-Pour plus d'informations sur le pattern `Repository` dans webforJ, consultez les [articles sur le Repository](/docs/advanced/repository/overview).
+Pour plus d'informations sur le modèle `Repository` dans webforJ, consultez les [articles sur les dépôts](/docs/advanced/repository/overview).
 :::
 
 ### 3. Instancier la `Table` et ajouter des colonnes {#3-instantiate-table-and-add-columns}
 
-Instanciez un nouvel objet `Table` et utilisez l'une des méthodes de fabrication fournies pour ajouter les colonnes souhaitées à une `Table` nouvellement créée :
+Instanciez un nouvel objet `Table`, et utilisez l'une des méthodes de fabrique fournies pour ajouter les colonnes souhaitées à la `Table` nouvellement créée :
 
 ```java
 Table<MusicRecord> table = new Table<>();
@@ -77,10 +80,10 @@ table.setRepository(Service.getMusicRecords());
 ```
 
 :::info
-Alternativement, la méthode `setItems()` peut se voir passer toute collection Java valide, ce qui créera pour vous un `CollectionRepository` en arrière-plan.
+Alternativement, la méthode `setItems()` peut se voir passer toute collection Java valide, qui créera en arrière-plan un `CollectionRepository` pour vous.
 :::
 
-Ci-dessous se trouve un exemple des étapes ci-dessus mises en œuvre pour créer un composant `Table` basique :
+Voici un exemple des étapes ci-dessus mises en œuvre pour créer un composant `Table` basique :
 
 <ComponentDemo
 path='/webforj/tablebasic'
@@ -92,6 +95,6 @@ files={[
 height='600px'
 />
 
-## Stylisation
+## Style {#styling}
 
 <TableBuilder name="Table" />

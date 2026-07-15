@@ -1,6 +1,6 @@
 package com.webforj.samples.views.flexlayout.item;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -11,7 +11,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
+@BundleEntry("css/flexlayout/container/flexContainerBuilder.css")
 @FrameTitle("Flex Item Self Align")
 public class FlexSelfAlignView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();

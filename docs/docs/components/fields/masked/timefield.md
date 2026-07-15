@@ -218,10 +218,10 @@ height='450px'
 
 ### Key features {#key-features}
 
-- **Interactive Time Stepping:**  
+- **Interactive Time Stepping:**
   Use arrow keys or spin buttons to increment or decrement the time value.
 
-- **Customizable Spin Unit:**  
+- **Customizable Spin Unit:**
   Choose which part of the time to modify using `setSpinField()`:
 
   ```java
@@ -230,10 +230,10 @@ height='450px'
 
   Options include `HOUR`, `MINUTE`, `SECOND`, and `MILLISECOND`.
 
-- **Min/Max Boundaries:**  
+- **Min/Max Boundaries:**
   Inherits support for minimum and maximum allowed times using `setMin()` and `setMax()`.
 
-- **Formatted Output:**  
+- **Formatted Output:**
   Fully compatible with masks and localization settings from `MaskedTimeField`.
 
 ### Example: Configure stepping by hour {#example-configure-stepping-by-hour}

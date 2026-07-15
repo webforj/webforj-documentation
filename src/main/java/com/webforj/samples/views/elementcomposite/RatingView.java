@@ -1,8 +1,7 @@
 package com.webforj.samples.views.elementcomposite;
 
-import com.webforj.annotation.Attribute;
-import com.webforj.annotation.JavaScript;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
+import com.webforj.bundle.annotation.BundlePackage;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
@@ -62,11 +61,9 @@ public class RatingView extends Composite<FlexLayout> {
   }
 
   /** Wrapper for the Shoelace rating web component. */
-  @JavaScript(
-      value =
-          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js",
-      attributes = {@Attribute(name = "type", value = "module")})
-  @StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css")
+  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
+  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
+  @BundleEntry("@shoelace-style/shoelace/dist/components/rating/rating.js")
   @NodeName("sl-rating")
   public static final class Rating extends ElementComposite
       implements HasClassName<Rating>, HasStyle<Rating> {

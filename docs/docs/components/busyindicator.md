@@ -53,13 +53,13 @@ height='200px'
 />
 
 ## Use cases {#use-cases}
-- **Page-Wide Processing**  
+- **Page-Wide Processing**
    The `BusyIndicator` is well-suited for larger, page-wide operations, such as when a user initiates a task that affects the entire page, like uploading a file or processing data across multiple sections. It can inform users that the entire app is working, preventing further interaction until the process is complete.
 
-- **Critical System Operations**  
+- **Critical System Operations**
    When performing system-critical tasks such as syncing data, applying system-wide updates, or processing sensitive information, the `BusyIndicator` gives clear visual feedback that a major operation is ongoing, allowing the user to wait until it’s completed.
 
-- **Asynchronous Data Loads**  
+- **Asynchronous Data Loads**
    In scenarios where asynchronous data processing is involved, such as when calling multiple APIs or waiting for complex computations, the `BusyIndicator` component actively indicates that the system is busy, prompting users to wait before performing additional actions.
 
 ## Styling {#styling}

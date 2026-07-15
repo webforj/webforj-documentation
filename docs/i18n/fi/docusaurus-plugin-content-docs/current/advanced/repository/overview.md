@@ -1,32 +1,35 @@
 ---
 title: Repository
 sidebar_position: 1
-_i18n_hash: 455b667132d3c9693257eb74671412c5
+description: >-
+  Bridge data collections to UI components with CollectionRepository, commit
+  changes for automatic sync, and apply base filters.
+_i18n_hash: 77548d09e4d712ce8f508917d3b953ae
 ---
 <!-- vale off -->
-# Repositorio <DocChip chip='since' label='24.00' />
+# Varasto <DocChip chip='since' label='24.00' />
 <!-- vale on -->
 
 
-`Repository`-malli webforJ:ssä tarjoaa standardoidun tavan hallita ja kysyä kokoelmaa entiteettejä. Se toimii abstraktiokerroksena UI-komponenttien ja datan välillä, mikä helpottaa työskentelyä eri tietolähteiden kanssa säilyttäen johdonmukaisen käyttäytymisen.
+`Varasto`-malli webforJ:ssa tarjoaa standardoidun tavan hallita ja kysyä olioita. Se toimii abstraktiokerroksena käyttöliittymäkomponenttiesi ja datan välillä, mikä helpottaa työskentelyä erilaisten datalähteiden kanssa säilyttäen samalla johdonmukaisen käyttäytymisen.
 
-## Miksi käyttää repositorya {#why-use-repository}
+## Miksi käyttää varastoa {#why-use-repository}
 
-`Repository` poistaa manuaaliset päivitykset ja pitää alkuperäiset tiedot ehjinä:
+`Varasto` poistaa manuaaliset päivitykset samalla kun alkuperäinen data pysyy muuttamattomana:
 
 ```java
-// Ilman Repositorya - manuaaliset päivitykset
+// Ilman varastoa - manuaaliset päivitykset
 List<Customer> customers = loadCustomers();
 Table<Customer> table = new Table<>();
 table.setItems(customers);
 
-// Lisääminen vaatii kokonaisuuden lataamista
+// Lisääminen vaatii täydellisen latauksen
 customers.add(newCustomer);
-table.setItems(customers); // Kaikki on ladattava uudelleen
+table.setItems(customers); // Pakko ladata kaikki uudelleen
 ```
 
 ```java
-// Repositoryn kanssa - automaattinen synkronointi
+// Varaston avulla - automaattinen synkronointi
 List<Customer> customers = loadCustomers();
 CollectionRepository<Customer> repository = new CollectionRepository<>(customers);
 Table<Customer> table = new Table<>();
@@ -34,20 +37,20 @@ table.setRepository(repository);
 
 // Lisääminen synkronoi automaattisesti
 customers.add(newCustomer);
-repository.commit(newCustomer); // Päivittää vain muutoksen
+repository.commit(newCustomer); // Päivittää vain muutetut
 ```
 
 
-## Kokoelma-repository {#collection-repository}
+## Kokoelman varasto {#collection-repository}
 
-<JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> on yleisin toteutus, ja se käärii minkä tahansa Java-kokoelman:
+<JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">Kokoelman varasto</JavadocLink> on yleisin toteutus, ja se käärii minkä tahansa Java-kokoelman:
 
 ```java
-// ArrayListista
+// ArrayListin osalta
 List<Customer> customers = new ArrayList<>();
 CollectionRepository<Customer> customerRepo = new CollectionRepository<>(customers);
 
-// HashSetista  
+// HashSetin osalta
 Set<String> tags = new HashSet<>();
 CollectionRepository<String> tagRepo = new CollectionRepository<>(tags);
 
@@ -59,7 +62,7 @@ CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employe
 
 ## Datan synkronointi {#data-synchronization}
 
-`Repository` toimii silta datasi ja UI-komponenttien välillä. Kun data muuttuu, ilmoitat repositorylle `commit()`-metodin kautta:
+`Varasto` toimii sillan tavoin datasi ja käyttöliittymäkomponenttien välillä. Kun data muuttuu, ilmoitat varastolle `commit()`-menetelmällä:
 
 ```java
 List<Product> products = new ArrayList<>();
@@ -68,9 +71,9 @@ CollectionRepository<Product> repository = new CollectionRepository<>(products);
 // Lisää uusi tuote
 Product newProduct = new Product("P4", "Gizmo", 79.99, 15);
 products.add(newProduct);
-repository.commit(); // Kaikki liitetyt komponentit päivitetään
+repository.commit(); // Kaikki liitetyt komponentit päivittyvät
 
-// Päivitä olemassa oleva tuote  
+// Päivitä olemassa olevaa tuotetta
 products.get(0).setPrice(89.99);
 repository.commit(products.get(0)); // Päivittää vain tämän tietyn rivin
 
@@ -80,28 +83,28 @@ repository.commit(); // Päivittää näkymän
 ```
 
 Commit-metodilla on kaksi allekirjoitusta:
-- `commit()` - Kehottaa repositorya päivittämään kaiken. Se laukaisee `RepositoryCommitEvent`-tapahtuman kaikilla nykyisillä tiedoilla
-- `commit(entity)` - Kohdentaa tiettyyn entiteettiin. Repository löytää tämän entiteetin sen avaimen kautta ja päivittää vain vaikutuksen saaneet UI-elementit
+- `commit()` - Kertoo varastolle, että koko tämänhetkinen data on päivitettävä. Se laukaisee `RepositoryCommitEvent`-tapahtuman kaikella nykyisellä datalla
+- `commit(entity)` - Kohdistaa tiettyyn entiteettiin. Varasto löytää tämän entiteetin sen avaimen avulla ja päivittää vain vaikuttavat käyttöliittymä-elementit
 
-:::important Yksittäisten entiteettien sitouttaminen
-Tällä erolla on merkitystä suorituskyvyn kannalta. Kun päivität yhden kentän 1000-rivisessä taulukossa, `commit(entity)` päivittää vain sen solun, kun taas `commit()` päivittäisi kaikki rivit.
+:::important Yksittäisten entiteettien sitominen
+Tämä ero on merkityksellinen suorituskyvyn kannalta. Kun päivität yhden kentän 1000-rivisessä taulussa, `commit(entity)` päivittää vain sen solun, kun taas `commit()` päivittäisi kaikki rivit.
 :::
 
-## Datatietojen suodatus {#filtering-data}
+## Datan suodatus {#filtering-data}
 
-Repositoryn suodatin hallitsee, mitä dataa virtaa liitettyihin komponentteihin. Perusteellinen kokoelmasi pysyy muuttumattomana, koska suodatin toimii linssinä:
+Varaston suodatin säätelee, mitä dataa kulkee liitettyihin komponentteihin. Taustalla oleva kokoelmasi pysyy muuttumattomana, koska suodatin toimii linssinä:
 
 ```java
 // Suodata varastotilanteen mukaan
 repository.setBaseFilter(product -> product.getStock() > 0);
 
 // Suodata kategorian mukaan
-repository.setBaseFilter(product -> "Electronics".equals(product.getCategory()));
+repository.setBaseFilter(product -> "Sähkölaitteet".equals(product.getCategory()));
 
-// Yhdistää useita ehtoja
-repository.setBaseFilter(product -> 
-  product.getCategory().equals("Electronics") && 
-  product.getStock() > 0 && 
+// Yhdistä useita ehtoja
+repository.setBaseFilter(product ->
+  product.getCategory().equals("Sähkölaitteet") &&
+  product.getStock() > 0 &&
   product.getPrice() < 100.0
 );
 
@@ -109,21 +112,21 @@ repository.setBaseFilter(product ->
 repository.setBaseFilter(null);
 ```
 
-Kun asetat suodattimen, `Repository`:
-1. Soveltaa ennustetta jokaiselle kokoelmasi kohteelle
-2. Luo suodatetun virran vastaavista kohteista
-3. Ilmoittaa liitetyille komponenteille, että niiden näyttö on päivitettävä
+Kun asetat suodattimen, `varasto`:
+1. Soveltaa ehtoa jokaiselle kohteelle kokoelmassasi
+2. Luo suodatetun streamin vastaavista kohteista
+3. Ilmoittaa liitetyille komponenteille päivityksestä
 
-Suodatin pysyy voimassa, kunnes muutat sen. Uudet kohteet, jotka lisätään kokoelmaan, testataan automaattisesti nykyisen suodattimen mukaan.
+Suodatin pysyy voimassa, kunnes vaihdat sen. Uudet kohteet, jotka lisätään kokoelmaan, testataan automaattisesti nykyistä suodatinta vastaan.
 
 
 ## Työskentely entiteettiavainten kanssa {#working-with-entity-keys}
 
-Repository tarvitsee tunnistaa entiteetit yksilöllisesti tukeakseen toimintoja kuten `find()` ja `commit(entity)`. On kaksi tapaa määrittää, miten entiteetit tunnistetaan:
+Varaston on pystyttävä tunnistamaan entiteetit ainutlaatuisesti, jotta se tukee toimintoja kuten `find()` ja `commit(entity)`. On kaksi tapaa määrittää, miten entiteettejä tunnistetaan:
 
-### Käyttämällä `HasEntityKey`-rajapintaa {#using-hasentitykey}
+### Käyttäen `HasEntityKey`-rajaa {#using-hasentitykey}
 
-Toteuta <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> entiteettisi luokassa:
+Toteuta <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> entiteettiluokassasi:
 
 ```java
 public class Customer implements HasEntityKey {
@@ -139,19 +142,19 @@ public class Customer implements HasEntityKey {
   // Konstruktori ja getterit/setterit...
 }
 
-// Etsi avaimen mukaan
+// Löydä avaimen mukaan
 Optional<Customer> customer = repository.find("C001");
 
 // Päivitä tietty asiakas
 customer.ifPresent(c -> {
   c.setEmail("newemail@example.com");
-  repository.commit(c); // Vain tämän asiakkaan rivi päivitetään
+  repository.commit(c); // Vain tämän asiakkaan rivi päivittyy
 });
 ```
 
-### Käyttämällä räätälöityä avaimen tarjoajaa <DocChip chip='since' label='25.10' /> {#using-custom-key-provider} 
+### Käyttäen mukautettua avaimen tarjoajaa <DocChip chip='since' label='25.10' /> {#using-custom-key-provider}
 
-Entiteeteille, joissa et voi tai et halua toteuttaa `HasEntityKey` (kuten JPA-entiteetit), käytä `setKeyProvider()`:
+Entiteeteille, joille et voi tai et halua toteuttaa `HasEntityKey` (kuten JPA-entiteetit), käytä `setKeyProvider()`:
 
 ```java
 @Entity
@@ -164,33 +167,33 @@ public class Product {
   // JPA-hallittu entiteetti
 }
 
-// Määritä repository käyttämään getId()-metodia
+// Määritä varasto käyttämään getId()-metodia
 CollectionRepository<Product> repository = new CollectionRepository<>(products);
 repository.setKeyProvider(Product::getId);
 
-// Nyt löytö toimii ID:llä
+// Nyt haku toimii ID:n kanssa
 Optional<Product> product = repository.find(123L);
 ```
 
 ### Lähestymistavan valitseminen {#choosing-approach}
 
-Molemmat lähestymistavat toimivat, mutta `setKeyProvider()` on suositeltavaa, kun:
-- Työskentelet JPA-entiteettien kanssa, joilla on `@Id`-kenttiä
-- Et voi muokata entiteettien luokkaa
-- Tarvitset erilaisia avainstrategioita eri repositorioille
+Molemmat lähestymistavat toimivat, mutta `setKeyProvider()` on suosittavampi, kun:
+- Työskentely JPA-entiteettien kanssa, joilla on `@Id`-kenttiä
+- Et voi muuttaa entiteettiluokkaa
+- Tarvitset erilaisia avainstrategioita eri varastoille
 
 Käytä `HasEntityKey` kun:
-- Hallitset entiteettien luokkaa
+- Hallitset entiteettiluokkaa
 - Avaimen poimintalogiikka on monimutkainen
-- Haluat entiteetin määrittävän oman identiteettinsä
+- Haluat entiteetin määrittelevän oman identiteettinsä
 
 
-## UI-integraatio {#ui-integration}
+## Käyttöliittymän integraatio {#ui-integration}
 
-`Repository` integroituu datatietoisiin komponentteihin:
+`Varasto` integroituu dataa tunteviin komponentteihin:
 
 ```java
-// Luo repository ja taulukko
+// Luo varasto ja taulu
 List<Customer> customers = new ArrayList<>();
 CollectionRepository<Customer> repository = new CollectionRepository<>(customers);
 
@@ -200,7 +203,7 @@ table.addColumn("ID", Customer::getId);
 table.addColumn("Nimi", Customer::getName);
 table.addColumn("Sähköposti", Customer::getEmail);
 
-// Lisää data - taulukko päivittyy automaattisesti
+// Lisää dataa - taulu päivittyy automaattisesti
 customers.add(new Customer("C001", "Alice Johnson", "alice@example.com"));
 repository.commit();
 ```
