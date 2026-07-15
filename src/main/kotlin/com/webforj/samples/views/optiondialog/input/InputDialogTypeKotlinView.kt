@@ -21,10 +21,11 @@ class InputDialogTypeKotlinView: Composite<Div>() {
       "This page is restricted. Please enter your password to continue.",
       "Restricted access.",
       InputDialog.InputType.PASSWORD
-    )
-      .setFirstButtonText("Continue")
-      .setSecondButtonText("Cancel")
-      .setFirstButtonTheme(ButtonTheme.PRIMARY)
+    ).apply {
+      firstButtonText = "Continue"
+      secondButtonText = "Cansel"
+      setFirstButtonTheme(ButtonTheme.PRIMARY)
+    }
 
     tryLogin()
   }
@@ -33,9 +34,9 @@ class InputDialogTypeKotlinView: Composite<Div>() {
    * Attempts login by showing the password dialog.
    */
   fun tryLogin() {
-    val result = dialog!!.show()
+    val result = dialog.show()
 
-    if (result != null && !result.isEmpty()) {
+    if (result.isNullOrEmpty()) {
       // Access granted
       OptionDialog.showMessageDialog(
         "Access granted",
