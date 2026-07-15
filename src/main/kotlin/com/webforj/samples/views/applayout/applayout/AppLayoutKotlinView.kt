@@ -7,17 +7,18 @@ import com.webforj.component.layout.appnav.AppNav
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.html.elements.h3
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
+import com.webforj.kotlin.dsl.component.layout.applayout.appDrawerToggle
 import com.webforj.kotlin.dsl.component.layout.applayout.drawerSlot
 import com.webforj.kotlin.dsl.component.layout.applayout.headerSlot
 import com.webforj.kotlin.dsl.component.layout.appnav.appNav
 import com.webforj.kotlin.dsl.component.layout.appnav.appNavItem
+import com.webforj.kotlin.dsl.component.toolbar.startSlot
 import com.webforj.kotlin.dsl.component.toolbar.titleSlot
 import com.webforj.kotlin.dsl.component.toolbar.toolbar
 import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
-import com.webforj.samples.views.applayout.applayout.AppLayoutContentKotlinView
 import com.webforj.samples.views.applayout.drawerLogo
 
 @Route
@@ -27,9 +28,10 @@ class AppLayoutKotlinView: Composite<AppLayout>() {
   private val self = boundComponent
 
   init {
-    boundComponent.apply {
+    self.apply {
       headerSlot {
         toolbar {
+          startSlot { appDrawerToggle() }
           titleSlot { h3("Application") }
         }
       }
