@@ -48,8 +48,8 @@ class RefresherThemesKotlinView : Composite<Div>() {
           for (i in 1..8) {
             canvas.add(Item())
           }
-          val next = themeIndex++
-          val nextTheme = themes[next]
+          themeIndex = (themeIndex + 1) % themes.size
+          val nextTheme = themes[themeIndex]
           theme = nextTheme
           canvas.attributes["theme"] = nextTheme.name.lowercase()
           finish()
