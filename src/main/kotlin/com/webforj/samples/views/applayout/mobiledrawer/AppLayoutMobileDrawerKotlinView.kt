@@ -10,6 +10,7 @@ import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.html.elements.h1
 import com.webforj.kotlin.dsl.component.html.elements.h3
 import com.webforj.kotlin.dsl.component.html.elements.paragraph
+import com.webforj.kotlin.dsl.component.icons.iconButton
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.dsl.component.layout.applayout.appDrawerToggle
 import com.webforj.kotlin.dsl.component.layout.applayout.drawerSlot
@@ -23,6 +24,8 @@ import com.webforj.kotlin.dsl.component.tabbedpane.tabbedPane
 import com.webforj.kotlin.dsl.component.toolbar.startSlot
 import com.webforj.kotlin.dsl.component.toolbar.titleSlot
 import com.webforj.kotlin.dsl.component.toolbar.toolbar
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.plusAssign
 import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -48,12 +51,12 @@ class AppLayoutMobileDrawerKotlinView: Composite<AppLayout>() {
       }
       drawerSlot {
         div {
-          addClassName("app-layout-drawer")
+          classNames += "app-layout-drawer"
           drawerLogo()
           appNav {
             item("Dashboard", "dashboard")
             item("Orders", "shopping-cart")
-            item("Customers", "user")
+            item("Customers", "users")
             item("Products", "box")
             item("Documents", "files")
             item("Tasks", "checklist")
@@ -72,19 +75,19 @@ class AppLayoutMobileDrawerKotlinView: Composite<AppLayout>() {
           alignment = TabbedPane.Alignment.STRETCH
           expanse = Expanse.XLARGE
           tab("") {
-            prefixSlot { tabbedPane("dashboard") }
+            prefixSlot { iconButton("dashboard", "tabler") }
           }
           tab("") {
-            prefixSlot { tabbedPane("shopping-cart") }
+            prefixSlot { iconButton("shopping-cart", "tabler") }
           }
           tab("") {
-            prefixSlot { tabbedPane("users") }
+            prefixSlot { iconButton("users", "tabler") }
           }
           tab("") {
-            prefixSlot { tabbedPane("box") }
+            prefixSlot { iconButton("box", "tabler") }
           }
           tab("") {
-            prefixSlot { tabbedPane("files") }
+            prefixSlot { iconButton("files", "tabler") }
           }
         }
       }
