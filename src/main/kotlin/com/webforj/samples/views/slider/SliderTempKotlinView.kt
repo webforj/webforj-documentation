@@ -34,7 +34,7 @@ class SliderTempKotlinView : Composite<FlexLayout>() {
 
       flexLayout {
         horizontal()
-        justifyContent = FlexJustifyContent.CENTER
+        justifyContent = FlexJustifyContent.BETWEEN
         alignment = FlexAlignment.CENTER
         spacing = "var(--dwc-space-m)"
 
@@ -44,7 +44,7 @@ class SliderTempKotlinView : Composite<FlexLayout>() {
           onClick { temperatureSlider.value = 60 }
         }
 
-        val temperatureSlider = slider(72, 60, 90) {
+        temperatureSlider = slider(72, 60, 90) {
           isTicksVisible = true
           majorTickSpacing = 10
           minorTickSpacing = 5
@@ -61,7 +61,7 @@ class SliderTempKotlinView : Composite<FlexLayout>() {
 
         iconButton("sun", "tabler") {
           theme = Theme.DANGER
-          styles["font-size"] = "1.5rem"
+          styles["font-size"] = 1.5.rem
           onClick { temperatureSlider.value = 90 }
         }
       }
