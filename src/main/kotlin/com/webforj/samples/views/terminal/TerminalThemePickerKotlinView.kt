@@ -48,31 +48,33 @@ class TerminalThemePickerKotlinView: Composite<FlexLayout>() {
         styles["margin"] = "0px var(--dwc-space-m)"
         styles["border"] = "1px solid var(--dwc-color-default)"
         size = 100.percent to 400.px
+        themes.values.firstOrNull()?.let { theme = it }
+        var esc = '\u001B'
         writeln(
           """
 
-                    \u001B[1m\u001B[47;31m FAIL \u001B[0m\u001B[90m src/com/webforj/samples/TerminalThemeTest.java\u001B[0m \u001B[41;97m (2.345s) \u001B[0m
+                    $esc[1m$esc[47;31m FAIL $esc[0m$esc[90m src/com/webforj/samples/TerminalThemeTest.java$esc[0m $esc[41;97m (2.345s) $esc[0m
 
-                    \u001B[31m  * should apply the selected theme correctly\u001B[0m
+                    $esc[31m  * should apply the selected theme correctly$esc[0m
 
-                    \u001B[90m    expect(\u001B[0m\u001B[31mreceived\u001B[0m\u001B[90m).toBe(\u001B[0m\u001B[32mexpected\u001B[0m\u001B[90m) // Object.is equality\u001B[0m
+                    $esc[90m    expect($esc[0m$esc[31mreceived$esc[0m$esc[90m).toBe($esc[0m$esc[32mexpected$esc[0m$esc[90m) // Object.is equality$esc[0m
 
-                        Expected: \u001B[32m"SolarizedDark"\u001B[0m
-                        Received: \u001B[31m"Dracula"\u001B[0m
+                        Expected: $esc[32m"SolarizedDark"$esc[0m
+                        Received: $esc[31m"Dracula"$esc[0m
 
                         42 |
                         43 | @Test
-                    >   44 | assertEquals(applyTheme(\u001B[33m"SolarizedDark"\u001B[0m), selectedTheme);
-                           |                                      \u001B[41;97m ^ \u001B[0m
+                    >   44 | assertEquals(applyTheme($esc[33m"SolarizedDark"$esc[0m), selectedTheme);
+                           |                                      $esc[41;97m ^ $esc[0m
                         45 |
 
-                    \u001B[90m    at TerminalThemeTest.applyTheme(\u001B[36mTerminalThemeTest.java:44\u001B[0m)\u001B[0m
+                    $esc[90m    at TerminalThemeTest.applyTheme($esc[36mTerminalThemeTest.java:44$esc[0m)$esc[0m
 
-                    \u001B[32m 3 passed\u001B[0m - \u001B[31m1 failed\u001B[0m - \u001B[33m 2 skipped\u001B[0m
+                    $esc[32m 3 passed$esc[0m - $esc[31m1 failed$esc[0m - $esc[33m 2 skipped$esc[0m
 
                     Total: 6 tests
                     Time: 2.3s
-                """);
+                """.trimIndent());
         themeChoiceBox.onValueChange {
           theme = it.value as TerminalTheme
         }
