@@ -15,7 +15,7 @@ class FileSaveDialogBasicKotlinView: Composite<Div>() {
   private val dialog: FileSaveDialog
 
   init {
-    dialog = FileSaveDialog("Save As", "/usr2/bbx/demos", "reports.xls").apply {
+    dialog = FileSaveDialog("Save As", "/usr2/bbx/demos", "report.xls").apply {
       isRestricted = true
     }
 
