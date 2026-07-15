@@ -23,7 +23,7 @@ import com.webforj.samples.views.terminal.commands.*
 
   """
 )
-class TerminalKotlinVIew: Composite<Terminal>() {
+class TerminalKotlinView: Composite<Terminal>() {
   private val self = boundComponent
   private val commandBuffer = StringBuilder()
   private val commandHistory = arrayListOf<String>()
@@ -66,7 +66,7 @@ class TerminalKotlinVIew: Composite<Terminal>() {
 
     val args =
       commandLine.trim { it <= ' ' }.split("\\s+".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-    commands[args[0]]?.execute(self, args) ?: self.writeln("Unknown command: " + args[0])
+    commands[args[0]]?.execute(self, args) ?: self.writeln("Unknown command: ${args[0]}")
 
     self.write("$ ")
   }
