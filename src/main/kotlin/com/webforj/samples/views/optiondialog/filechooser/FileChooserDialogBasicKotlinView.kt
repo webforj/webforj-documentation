@@ -39,6 +39,5 @@ class FileChooserDialogBasicKotlinView: Composite<Div>() {
       DwcPromptMsgBox.MessageType.ERROR
     )
 
-    show()
   }
 }
