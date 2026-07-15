@@ -11,7 +11,7 @@ import com.webforj.router.annotation.Route
 
 @Route
 @FrameTitle("File Upload Basics")
-class FileUploadDialogBasicKotlinView : Composite<Div?>() {
+class FileUploadDialogBasicKotlinView : Composite<Div>() {
   private val dialog: FileUploadDialog
 
   init {
