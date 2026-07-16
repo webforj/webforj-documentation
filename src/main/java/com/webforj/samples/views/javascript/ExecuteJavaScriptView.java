@@ -56,19 +56,27 @@ public class ExecuteJavaScriptView extends Composite<FlexLayout> {
 
   private void copyLink() {
     String script =
-        "const text = '"
-            + INVITE_LINK
-            + "';"
-            + "function fallback() {"
-            + "  const ta = document.createElement('textarea');"
-            + "  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';"
-            + "  document.body.appendChild(ta); ta.select();"
-            + "  try { document.execCommand('copy'); } catch (e) {}"
-            + "  document.body.removeChild(ta);"
-            + "}"
-            + "if (navigator.clipboard && navigator.clipboard.writeText) {"
-            + "  navigator.clipboard.writeText(text).catch(fallback);"
-            + "} else { fallback(); }";
+        """
+        const text = '%s';
+        function fallback() {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand('copy');
+          } catch (e) {}
+          document.body.removeChild(ta);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).catch(fallback);
+        } else {
+          fallback();
+        }
+        """
+            .formatted(INVITE_LINK);
 
     Page.getCurrent().executeJsVoidAsync(script);
     Toast.show("Link copied", 3000, Theme.SUCCESS);

@@ -63,7 +63,7 @@ files={[
 height='240px'
 />
 
-:::tip
+:::warning Replacing content
 Calling `setHtml()` or `setText()` will replace content currently contained between the element's opening and closing tags.
 :::
 
@@ -100,7 +100,7 @@ Arguments that are passed to these methods which are used in the execution of JS
 - `this`: Using the `this` keyword will give the method a reference to the client-side version of the invoking component.
 - `Component`: Any Java component instances passed into one of the JsFunction methods will be replaced with the client-side version of the component.
 
-:::info
+:::warning Waiting for component arguments
 Both synchronous and asynchronous function calling will wait until the `Element` has been added to the DOM before executing a function, but `callJsFunction()` won't wait for any `component` arguments to attach, which can result in failure. Conversely, invoking `callJsFunctionAsync()` may never complete if a component argument is never attached.
 :::
  

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 11
 title: Execute JavaScript
 sidebar_class_name: new-content
 description: Run client-side JavaScript from Java with executeJs, executeJsAsync, and executeJsVoidAsync at the app or element level.
@@ -7,8 +7,6 @@ slug: execute-javascript
 ---
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-
-<JavadocLink type="foundation" location="com/webforj/concern/HasJsExecution" top='true'/>
 
 webforJ runs on the server, but there are times you need to reach the client: scroll the window, focus a field, read a browser value, or call a method on a web component. The <JavadocLink type="foundation" location="com/webforj/concern/HasJsExecution" code='true'>HasJsExecution</JavadocLink> interface provides that bridge. It's implemented at two levels:
 
@@ -99,3 +97,22 @@ height='260px'
 Calling the same methods on an <JavadocLink type="foundation" location="com/webforj/component/element/Element" code='true'>Element</JavadocLink> scopes the script to that element instead of the page. The return values and the synchronous and asynchronous behavior match the preceding page-level methods.
 
 Element scripts queue until the element is attached to the DOM, then run, so you can call them during setup without waiting for attachment yourself.
+
+### Calling a function on an element {#calling-a-function}
+
+When you want to invoke a named client-side function rather than run a script string, `Element` offers a parallel set of methods. Instead of a script, you pass the function name and its arguments, which webforJ serializes and passes through. Two argument types are handled specially: `this` is replaced with the client element, and any `Component` argument is replaced with its client instance once attached.
+
+These mirror the execute methods, differing only in whether the thread waits and whether a result returns:
+
+1. **`callJsFunction(String name, Object... args)`**: calls the function synchronously and returns its result as an `Object`. The executing thread blocks for one round trip.
+
+2. **`callJsFunctionAsync(String name, Object... args)`**: calls the function asynchronously without blocking, returning a `PendingResult` that completes with the function's result. Available since `24.11`.
+
+3. **`callJsFunctionVoidAsync(String name, Object... args)`**: calls the function asynchronously and returns nothing to the server. Use it for fire-and-forget calls where you don't need the return value. Available since `24.11`.
+
+Because the call waits for every `Component` argument to attach before running, a call that passes a component which never attaches never completes.
+
+```java
+// Focus a web component's input by calling its client-side method
+searchElement.callJsFunctionVoidAsync("focus");
+```

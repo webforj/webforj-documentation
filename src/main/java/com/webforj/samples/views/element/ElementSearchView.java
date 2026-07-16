@@ -8,9 +8,12 @@ import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.element.Element;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H2;
+import com.webforj.component.icons.Icon;
+import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
@@ -28,14 +31,22 @@ public class ElementSearchView extends Composite<Div> {
     Div card = new Div();
     card.addClassName("element-demo-card");
 
-    search.addClassName("search-input");
+    Icon searchIcon = TablerIcon.create("search");
+    searchIcon.addClassName("search-input-icon");
+
+    search.addClassName("search-input-field");
     search.setAttribute("type", "search");
     search.setAttribute("placeholder", "Search products");
 
+    Div field = new Div();
+    field.addClassName("search-input");
+    field.add(searchIcon, search);
+
     Button focus = new Button("Focus search", e -> focusSearch()).setTheme(ButtonTheme.PRIMARY);
 
-    FlexLayout row = new FlexLayout(search, focus);
+    FlexLayout row = new FlexLayout(field, focus);
     row.setDirection(FlexDirection.ROW);
+    row.setWrap(FlexWrap.WRAP);
     row.setAlignment(FlexAlignment.CENTER);
     row.setSpacing("var(--dwc-space-s)");
 
