@@ -33,9 +33,6 @@ public class DialogCloseView extends Composite<FlexLayout> {
             .build()
             .setSpacing("var(--dwc-space-m)");
 
-    Button closeDialog = new Button("Close dialog");
-    closeDialog.onClick(e -> dialog.close());
-
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
@@ -45,8 +42,6 @@ public class DialogCloseView extends Composite<FlexLayout> {
     dialog
         .addToHeader(new Div("Close behavior"))
         .addToContent(closeOptions)
-        .addToFooter(closeDialog)
-        .setCloseable(true)
         .setCancelOnEscKey(true)
         .setCancelOnOutsideClick(true)
         .setMaxWidth("28rem")

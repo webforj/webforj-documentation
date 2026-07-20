@@ -33,9 +33,6 @@ public class DialogAutoWidthView extends Composite<FlexLayout> {
             .build()
             .setSpacing("var(--dwc-space-m)");
 
-    Button close = new Button("Close");
-    close.onClick(e -> dialog.close());
-
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
@@ -45,8 +42,6 @@ public class DialogAutoWidthView extends Composite<FlexLayout> {
     dialog
         .addToHeader(new Div("Export complete"))
         .addToContent(content)
-        .addToFooter(close)
-        .setCloseable(false)
         .setAutoWidth(true)
         .open();
   }
