@@ -22,7 +22,7 @@ public class DialogDraggableView extends Composite<FlexLayout> {
     snapToEdge.onToggle(e -> dialog.setSnapToEdge(e.isToggled()));
     FlexLayout content =
         FlexLayout.create(
-                new Paragraph("Move the dialog by dragging its header, content, or footer."),
+                new Paragraph("Move the dialog by dragging its header."),
                 snapToEdge)
             .vertical()
             .build()
