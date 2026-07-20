@@ -20,17 +20,18 @@ public class DialogAlignmentsView extends Composite<FlexLayout> {
     options.add(Dialog.Alignment.TOP, "Top");
     options.add(Dialog.Alignment.CENTER, "Center");
     options.add(Dialog.Alignment.BOTTOM, "Bottom");
-    options.setLabel("Select Alignment");
+    options.setLabel("Vertical alignment");
     options
         .selectIndex(1)
         .onSelect(e -> dialog.setAlignment((Dialog.Alignment) e.getSelectedItem().getKey()));
 
     dialog
-        .addToHeader(new Div("Alignments"))
+        .addToHeader(new Div("Align dialog"))
         .addToContent(options)
-        .setStyle("display", "flex")
-        .setStyle("justify-content", "center")
-        .open()
-        .setCloseable(false);
+        .setAlignment(Dialog.Alignment.CENTER)
+        .setMoveable(false)
+        .setCloseable(false)
+        .setMaxWidth("28rem")
+        .open();
   }
 }

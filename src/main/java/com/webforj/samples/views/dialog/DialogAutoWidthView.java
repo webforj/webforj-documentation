@@ -6,6 +6,9 @@ import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
@@ -18,32 +21,31 @@ public class DialogAutoWidthView extends Composite<FlexLayout> {
   private final Dialog dialog = new Dialog();
 
   public DialogAutoWidthView() {
-    self.add(dialog);
+    Button openDialog = new Button("Open export", ButtonTheme.PRIMARY);
+    openDialog.onClick(e -> dialog.open());
 
-    RadioButton autoWidth = RadioButton.Switch("Auto width", true);
+    RadioButton autoWidth = RadioButton.Switch("Fit content width", true);
     autoWidth.onToggle(e -> dialog.setAutoWidth(e.isToggled()));
 
-    Paragraph body = new Paragraph("Toggle Auto width to resize this dialog to fit its content.");
-    body.setStyle("max-width", "26ch");
-
-    FlexLayout content = FlexLayout.create(body).vertical().build().setPadding("20px");
-
-    Button save = new Button("Save", ButtonTheme.PRIMARY);
-
-    FlexLayout actions =
-        FlexLayout.create(autoWidth, save)
-            .horizontal()
-            .justify()
-            .between()
-            .align()
-            .center()
+    FlexLayout content =
+        FlexLayout.create(new Paragraph("Your export is ready to download."), autoWidth)
+            .vertical()
             .build()
-            .setStyle("width", "100%");
+            .setSpacing("var(--dwc-space-m)");
+
+    Button close = new Button("Close");
+    close.onClick(e -> dialog.close());
+
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setMinHeight("100vh")
+        .add(openDialog, dialog);
 
     dialog
-        .addToHeader(new Div("Save changes"))
+        .addToHeader(new Div("Export complete"))
         .addToContent(content)
-        .addToFooter(actions)
+        .addToFooter(close)
         .setCloseable(false)
         .setAutoWidth(true)
         .open();

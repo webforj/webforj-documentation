@@ -2,9 +2,14 @@ package com.webforj.samples.views.dialog;
 
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
+import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -13,21 +18,38 @@ import com.webforj.router.annotation.Route;
 public class DialogCloseView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Dialog dialog = new Dialog();
-  private final Button showDialog = new Button("Show Dialog");
-  private final Button closeDialog = new Button("Close Dialog");
 
   public DialogCloseView() {
-    self.add(dialog, showDialog);
-    showDialog
-        .setStyle("margin-left", "48vw")
-        .setStyle("margin-top", "20px")
-        .onClick(e -> dialog.open());
+    Button showDialog = new Button("Open dialog", ButtonTheme.PRIMARY);
+    showDialog.onClick(e -> dialog.open());
 
+    RadioButton closeOnEscape = RadioButton.Switch("Escape key", true);
+    closeOnEscape.onToggle(e -> dialog.setCancelOnEscKey(e.isToggled()));
+    RadioButton closeOnOutsideClick = RadioButton.Switch("Outside click", true);
+    closeOnOutsideClick.onToggle(e -> dialog.setCancelOnOutsideClick(e.isToggled()));
+    FlexLayout closeOptions =
+        FlexLayout.create(closeOnEscape, closeOnOutsideClick)
+            .vertical()
+            .build()
+            .setSpacing("var(--dwc-space-m)");
+
+    Button closeDialog = new Button("Close dialog");
     closeDialog.onClick(e -> dialog.close());
+
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setMinHeight("100vh")
+        .add(showDialog, dialog);
+
     dialog
-        .addToHeader(new Div("Closing the Dialog"))
-        .addToContent(closeDialog)
+        .addToHeader(new Div("Close behavior"))
+        .addToContent(closeOptions)
+        .addToFooter(closeDialog)
+        .setCloseable(true)
         .setCancelOnEscKey(true)
+        .setCancelOnOutsideClick(true)
+        .setMaxWidth("28rem")
         .open();
   }
 }
