@@ -20,7 +20,7 @@ The `Dialog` is organized into three sections: a header, a content area, and a f
 <ComponentDemo
 path='/webforj/dialogsections'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java']}
-height='225px'
+height='375px'
 />
 
 ## Usages {#usages}
@@ -62,7 +62,7 @@ Developers can choose which interactions close the `Dialog` with `setCancelOnEsc
 <ComponentDemo
 path='/webforj/dialogclose'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogCloseView.java']}
-height='350px'
+height='375px'
 />
 
 ## Auto-focus {#auto-focus}
@@ -72,7 +72,7 @@ When enabled, auto-focus will automatically give focus to the first element with
 <ComponentDemo
 path='/webforj/dialogautofocus'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java']}
-height='350px'
+height='400px'
 />
 
 ## Draggable {#draggable}
@@ -85,7 +85,7 @@ It is also possible to calibrate this behavior to snap to the edge of the screen
 <ComponentDemo
 path='/webforj/dialogdraggable'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogDraggableView.java']}
-height='350px'
+height='325px'
 />
 
 ## Positioning {#positioning}
@@ -95,7 +95,7 @@ The dialog's position can be manipulated using the built-in `setPosx()` and `set
 <ComponentDemo
 path='/webforj/dialogpositioning'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogPositioningView.java']}
-height='350px'
+height='400px'
 />
 
 ### Vertical alignment {#vertical-alignment}
@@ -105,7 +105,7 @@ In addition to manual assignment of a dialog's X and Y position, it is possible 
 <ComponentDemo
 path='/webforj/dialogalignments'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.java']}
-height='550px'
+height='450px'
 />
 
 ### Full screen and breakpoints {#full-screen-and-breakpoints}
@@ -141,7 +141,7 @@ While there are many use cases for each of the various themes, some examples use
 <ComponentDemo
 path='/webforj/dialogthemes'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogThemesView.java']}
-height='500px'
+height='375px'
 />
 
 <TableBuilder name="Dialog" />
