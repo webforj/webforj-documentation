@@ -1,6 +1,8 @@
 package com.webforj.samples.views.dialog;
 
 import com.webforj.component.Composite;
+import com.webforj.component.button.Button;
+import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Fieldset;
@@ -29,8 +31,14 @@ public class DialogBackdropBlurView extends Composite<FlexLayout> {
   private final RadioButtonGroup backdropGroup =
       new RadioButtonGroup(defaultBackdrop, hideBackdrop, customBackdrop);
   private final ColumnsLayout backdropOptions = new ColumnsLayout(backdropGroup);
-
   private final FlexLayout dialogContent = new FlexLayout(backdropFieldset, blurToggle);
+  private final Button openBtn =
+      new Button(
+          "Open dialog",
+          ButtonTheme.PRIMARY,
+          e -> {
+            dialog.open();
+          });
 
   private final String cssValue =
       """
@@ -40,34 +48,30 @@ public class DialogBackdropBlurView extends Composite<FlexLayout> {
     hsl(250, 70%, 40%)
   )
       """;
-
   private static final String SAMPLE_CONTENT =
       """
-      # The Octopus: Nature's Escape Artist
+      # Release overview
 
-      Octopuses are **incredibly intelligent** creatures with some remarkable abilities.
+      Tracking items intended for the next release
 
-      ## Fun Facts
+      ## Planning
 
-      - They have **three hearts** and blue blood
-      - Each arm contains its own "mini-brain"
-      - They can change color in just 200 milliseconds
-      - Some species can edit their own RNA
+      - Planned item 1
+      - Planned item 2
+      - Planned item 3
 
-      ## Escape Artists
+      ## In review
 
-      Octopuses are famous for escaping aquariums:
+      - In review item 1
+      - In review item 2
 
-      ```
-      1. Squeeze through tiny gaps
-      2. Unscrew jar lids from inside
-      3. Short out lights by splashing water
-      4. Make a run for the ocean
-      ```
+      ## Ready
 
-      > "The octopus is the closest we will come to meeting an intelligent alien." - Peter Godfrey-Smith
+      - Ready item 1
+      - Ready item 2
+      - Ready item 3
+      - Ready item 4
       """;
-
   private final MarkdownViewer markdown = new MarkdownViewer(SAMPLE_CONTENT);
 
   public DialogBackdropBlurView() {
@@ -77,8 +81,9 @@ public class DialogBackdropBlurView extends Composite<FlexLayout> {
         .setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setMargin("auto")
-        .add(dialog, markdown);
+        .add(dialog, markdown, openBtn);
 
+    openBtn.setWidth("fit-content");
     setBackdropOptions();
     setDialog();
   }
@@ -88,7 +93,6 @@ public class DialogBackdropBlurView extends Composite<FlexLayout> {
     dialog
         .addToHeader(new Div("Backdrop and Blur"))
         .addToContent(dialogContent)
-        .setCloseable(false)
         .setAutoWidth(true)
         .open();
   }
