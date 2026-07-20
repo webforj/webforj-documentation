@@ -4,6 +4,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.list.ChoiceBox;
 import com.webforj.router.annotation.FrameTitle;
@@ -19,24 +20,31 @@ public class DialogThemesView extends Composite<FlexLayout> {
     self.add(dialog);
 
     ChoiceBox options = new ChoiceBox();
-
-    for (Theme theme : Theme.values()) {
-      options.add(theme, theme.name());
-    }
+    options.add(Theme.DEFAULT, "Default");
+    options.add(Theme.PRIMARY, "Primary");
+    options.add(Theme.SUCCESS, "Success");
+    options.add(Theme.WARNING, "Warning");
+    options.add(Theme.DANGER, "Danger");
+    options.add(Theme.INFO, "Info");
+    options.add(Theme.GRAY, "Gray");
 
     options
-        .setLabel("Select Theme")
-        .setStyle("flex", "1")
-        .selectIndex(1)
-        .onSelect(e -> dialog.setTheme(((Theme) e.getSelectedItem().getKey())));
+        .setLabel("Dialog theme")
+        .selectIndex(0)
+        .onSelect(e -> dialog.setTheme((Theme) e.getSelectedItem().getKey()));
 
-    Div header = new Div("Themes");
+    FlexLayout content =
+        FlexLayout.create(new Paragraph("Your changes have been saved."), options)
+            .vertical()
+            .build()
+            .setSpacing("var(--dwc-space-m)");
+
     dialog
-        .addToHeader(header)
-        .addToContent(options)
-        .setStyle("display", "flex")
-        .setStyle("justify-content", "center")
-        .open()
-        .setCloseable(false);
+        .addToHeader(new Div("Dialog theme"))
+        .addToContent(content)
+        .setTheme(Theme.DEFAULT)
+        .setCloseable(false)
+        .setMaxWidth("28rem")
+        .open();
   }
 }
