@@ -46,11 +46,8 @@ By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop
 
 <ComponentDemo
 path='/webforj/dialogbackdropblur'
-files={[
-  'src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java',
-  'src/main/frontend/css/dialog/dialog-backdrop-blur.css',
-]}
-height='375px'
+files={['src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java']}
+height='300px'
 />
 
 ## Opening and closing the `Dialog` {#opening-and-closing-the-dialog}

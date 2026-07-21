@@ -1,11 +1,11 @@
 package com.webforj.samples.views.dialog;
 
 import com.webforj.component.Composite;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
+import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -18,18 +18,21 @@ public class DialogPositioningView extends Composite<FlexLayout> {
   public DialogPositioningView() {
     self.add(dialog);
 
-    Button topLeft = new Button("Top left");
-    topLeft.onClick(e -> setPosition("5%", "10%"));
-    Button center = new Button("Center", ButtonTheme.PRIMARY);
-    center.onClick(e -> setPosition("calc(50% - 10rem)", "calc(50% - 4rem)"));
-    Button bottomRight = new Button("Bottom right");
-    bottomRight.onClick(e -> setPosition("calc(95% - 20rem)", "calc(90% - 8rem)"));
-    FlexLayout positions =
-        FlexLayout.create(topLeft, center, bottomRight)
-            .horizontal()
-            .wrap()
-            .build()
-            .setSpacing("var(--dwc-space-s)");
+    RadioButton nearTopLeft = createPositionOption("Near top-left", "5%", "10%", false);
+    RadioButton centered =
+        createPositionOption("Centered in viewport", "calc(50% - 10rem)", "calc(50% - 4rem)", true);
+    RadioButton nearBottomRight =
+        createPositionOption("Near bottom-right", "calc(95% - 20rem)", "calc(90% - 8rem)", false);
+    RadioButtonGroup positions =
+        new RadioButtonGroup("Position preset", nearTopLeft, centered, nearBottomRight);
+    positions.onChange(
+        e -> {
+          RadioButton selected = e.getChecked();
+          if (selected != null) {
+            setPosition(
+                (String) selected.getUserData("posx"), (String) selected.getUserData("posy"));
+          }
+        });
 
     dialog
         .addToHeader(new Div("Position presets"))
@@ -40,6 +43,14 @@ public class DialogPositioningView extends Composite<FlexLayout> {
         .setPosx("calc(50% - 10rem)")
         .setPosy("calc(50% - 4rem)")
         .open();
+  }
+
+  private RadioButton createPositionOption(
+      String label, String posx, String posy, boolean checked) {
+    RadioButton option = new RadioButton(label, checked);
+    option.setUserData("posx", posx);
+    option.setUserData("posy", posy);
+    return option;
   }
 
   private void setPosition(String x, String y) {
