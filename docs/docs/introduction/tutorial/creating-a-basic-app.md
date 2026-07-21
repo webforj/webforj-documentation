@@ -200,15 +200,15 @@ public class Application extends App {
     Paragraph tutorial = new Paragraph("Tutorial App!");
     Button btn = new Button("Info");
 
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .setMaxWidth(200)
-        .addClickListener(e -> OptionDialog.showMessageDialog("This is a tutorial!", "Info"));
+    btn
+      .setTheme(ButtonTheme.PRIMARY)
+      .setMaxWidth(200)
+      .addClickListener(e ->
+        OptionDialog.showMessageDialog("This is a tutorial!", "Info")
+      );
 
-    mainFrame.setWidth("fit-content")
-        .addClassName("card")
-        .add(tutorial, btn);
+    mainFrame.setWidth("fit-content").addClassName("card").add(tutorial, btn);
   }
-
 }
 ```
 

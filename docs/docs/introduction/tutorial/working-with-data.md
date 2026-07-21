@@ -5,7 +5,7 @@ description: Step 2 - Use Spring to work with data.
 ---
 
 In this step, you’ll learn how to create a data model using Spring and display that data visually.
-By the end of this step, the app created in the previous step, [Creating a Basic App](./creating-a-basic-app), will have a table that displays data about customers. Following along will teach you about:
+By the end of this step, the app created in the previous step, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app), will have a table that displays data about customers. Following along will teach you about:
 
 - Spring annotations
 - Managing data
@@ -263,7 +263,7 @@ public class CustomerService {
 
 ## Loading initial data {#loading-initial-data}
 
-For this tutorial, the initial customer data set comes from a JSON file. This file is loaded by the Java application, not by the browser, so create it inside `src/main/resources/data` using the following data:
+For this tutorial, the initial customer data set comes from a JSON file. The Java app loads the file, not the browser, so create it inside `src/main/resources/data` using the following data:
 
 <!-- vale off -->
 <ExpandableCode title="customers.json" language="json" startLine={1} endLine={13}>

@@ -151,8 +151,7 @@ One of the items that’ll go inside the centered `FlexLayout` is an image. For 
 Once downloaded, add it to your project’s static folder in `src/main/resources/static/images` and name it `Files.svg`.
 
 Putting this image in the static folder allows you to 
-reference it using the Webserver protocol. Static image files can still be served directly this way, while CSS from the first step is handled by the frontend bundle. Then, you can use it inside your app as an HTML element, like so:
-
+reference it using the [Webserver protocol](/docs/managing-resources/assets-protocols#the-webserver-protocol). Then, you can use it inside your app as an HTML element, like so:
 
 ```java
 private Img fileImg = new Img("ws://images/Files.svg");
