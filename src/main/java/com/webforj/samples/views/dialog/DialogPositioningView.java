@@ -1,12 +1,11 @@
 package com.webforj.samples.views.dialog;
 
 import com.webforj.component.Composite;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.dialog.Dialog;
-import com.webforj.component.field.NumberField;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
+import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -14,37 +13,47 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Dialog Positioning")
 public class DialogPositioningView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
-  private final NumberField xPos = new NumberField("X Pixels:");
-  private final NumberField yPos = new NumberField("Y Pixels:");
   private final Dialog dialog = new Dialog();
-  private final Button setPosition = new Button("Set Dialog Position", ButtonTheme.PRIMARY);
 
   public DialogPositioningView() {
     self.add(dialog);
 
-    xPos.setMin(0d);
-    yPos.setMin(0d);
-
-    setPosition.setMinHeight("60px");
-
-    setPosition.onClick(
+    RadioButton nearTopLeft = createPositionOption("Near top-left", "5%", "10%", false);
+    RadioButton centered =
+        createPositionOption("Centered in viewport", "calc(50% - 10rem)", "calc(50% - 4rem)", true);
+    RadioButton nearBottomRight =
+        createPositionOption("Near bottom-right", "calc(95% - 20rem)", "calc(90% - 8rem)", false);
+    RadioButtonGroup positions =
+        new RadioButtonGroup("Position preset", nearTopLeft, centered, nearBottomRight);
+    positions.onChange(
         e -> {
-          Double xValue = xPos.getValue();
-          Double yValue = yPos.getValue();
-
-          if (xValue != null && yValue != null) {
-            dialog.setPosx(xValue + "px");
-            dialog.setPosy(yValue + "px");
+          RadioButton selected = e.getChecked();
+          if (selected != null) {
+            setPosition(
+                (String) selected.getUserData("posx"), (String) selected.getUserData("posy"));
           }
         });
 
     dialog
-        .addToHeader(new Div("Positioning"))
-        .addToContent(xPos, yPos)
-        .addToFooter(setPosition)
-        .setAutoFocus(true)
-        .open()
+        .addToHeader(new Div("Position presets"))
+        .addToContent(positions)
+        .setMoveable(false)
         .setCloseable(false)
-        .setMaxWidth("200px");
+        .setMaxWidth("20rem")
+        .setPosx("calc(50% - 10rem)")
+        .setPosy("calc(50% - 4rem)")
+        .open();
+  }
+
+  private RadioButton createPositionOption(
+      String label, String posx, String posy, boolean checked) {
+    RadioButton option = new RadioButton(label, checked);
+    option.setUserData("posx", posx);
+    option.setUserData("posy", posy);
+    return option;
+  }
+
+  private void setPosition(String x, String y) {
+    dialog.setPosx(x).setPosy(y);
   }
 }
