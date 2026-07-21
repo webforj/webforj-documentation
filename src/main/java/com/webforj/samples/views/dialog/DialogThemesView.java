@@ -20,13 +20,9 @@ public class DialogThemesView extends Composite<FlexLayout> {
     self.add(dialog);
 
     ChoiceBox options = new ChoiceBox();
-    options.add(Theme.DEFAULT, "Default");
-    options.add(Theme.PRIMARY, "Primary");
-    options.add(Theme.SUCCESS, "Success");
-    options.add(Theme.WARNING, "Warning");
-    options.add(Theme.DANGER, "Danger");
-    options.add(Theme.INFO, "Info");
-    options.add(Theme.GRAY, "Gray");
+    for (Theme theme : Theme.values()) {
+          options.add(theme, theme.name());
+        }
 
     options
         .setLabel("Dialog theme")

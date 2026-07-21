@@ -2,7 +2,6 @@ package com.webforj.samples.views.dialog;
 
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Fieldset;
@@ -16,6 +15,7 @@ import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.utilities.Assets;
 
 @Route
 @FrameTitle("Dialog Backdrop Blur")
@@ -95,6 +95,10 @@ public class DialogBackdropBlurView extends Composite<FlexLayout> {
         .addToContent(dialogContent)
         .setAutoWidth(true)
         .open();
+    backgroundBlur
+        .setStyle("display", "flex")
+        .setStyle("justify-content", "center")
+        .onClick(e -> dialog.setBlurred(!dialog.isBlurred()));
   }
 
   public void setBackdropOptions() {
