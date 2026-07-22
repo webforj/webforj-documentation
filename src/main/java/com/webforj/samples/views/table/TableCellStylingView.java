@@ -19,7 +19,7 @@ public class TableCellStylingView extends Composite<FlexLayout> {
   public TableCellStylingView() {
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-l)")
-        .setMargin("var(--dwc-space-xl)")
+        .setPadding("var(--dwc-space-xl)")
         .add(table);
 
     List<Person> data =
@@ -31,9 +31,10 @@ public class TableCellStylingView extends Composite<FlexLayout> {
             new Person("Eve", 30, "Boston"),
             new Person("Frank", 45, "Miami"));
 
-    table.addColumn("Name", Person::getName).setSortable(true);
-    table.addColumn("City", Person::getCity).setSortable(true);
-    Column<Person, Integer> ageCol = table.addColumn("Age", Person::getAge).setSortable(true);
+    table.addColumn("Name", Person::getName).setSortable(true).setFlex(1f).setMinWidth(120f);
+    table.addColumn("City", Person::getCity).setSortable(true).setFlex(1f).setMinWidth(140f);
+    Column<Person, Integer> ageCol =
+        table.addColumn("Age", Person::getAge).setSortable(true).setFlex(1f).setMinWidth(80f);
 
     table
         .setItems(data)
@@ -46,7 +47,5 @@ public class TableCellStylingView extends Composite<FlexLayout> {
               }
               return parts;
             });
-
-    table.setColumnsToAutoFit();
   }
 }

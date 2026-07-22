@@ -59,7 +59,7 @@ files={[
   'src/main/java/com/webforj/samples/views/table/TableDynamicStylingView.java',
   'src/main/frontend/css/table/table-dynamic-styling-view.css',
 ]}
-height='475px'
+height='500px'
 />
 
 ## Striped rows {#striped-rows}
