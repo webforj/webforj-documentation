@@ -1,7 +1,7 @@
 ---
 title: Prerequisites
 description: Set up a webforJ development environment with JDK 21, Apache Maven, and a supported Java IDE such as IntelliJ, VS Code, or NetBeans.
-sidebar_position: 1
+sidebar_position: 99
 ---
 
 Getting started with webforJ is simple, because there are only a couple of prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ.

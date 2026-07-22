@@ -1,0 +1,566 @@
+/* ─────────────────────────────────────────────────────────────
+   Getting Started page — all sections.
+
+   Color tokens are lifted from the Claude Design source
+   (`webforJ Doc Tiles.dc.html`) and defined on both the .page
+   wrapper (so children inherit) and on standalone components
+   like .tile and .bento (so they also work outside .page).
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Shared token set ───────────────────────────────────────── */
+
+.page,
+.tile,
+.bento {
+  --card-bg: #ffffff;
+  --card-bg-hover: #f2f7ff;
+  --card-border: #e6e8ec;
+  --card-border-primary: #9cc2fb;
+  --band-bg: #f5f7fa;
+  --text: #1f2937;
+  --text-secondary: #5b6472;
+  --il-line: #3a4658;
+  --il-fill: #ffffff;
+  --il-fill-2: #eceff4;
+  --il-fill-3: #dce1e9;
+  --il-muted: #c1c9d4;
+  --il-shadow: rgba(15, 23, 42, 0.09);
+  --il-accent: #0f6fe8;
+}
+
+:global(html[data-theme='dark']) .page,
+:global(html[data-theme='dark']) .tile,
+:global(html[data-theme='dark']) .bento {
+  --card-bg: #161f30;
+  --card-bg-hover: #1b2740;
+  --card-border: #273245;
+  --card-border-primary: #356199;
+  --band-bg: #131a29;
+  --text: #e8edf5;
+  --text-secondary: #9aa6b8;
+  --il-line: #8ea1bd;
+  --il-fill: #1e2a41;
+  --il-fill-2: #151e2f;
+  --il-fill-3: #2b3a56;
+  --il-muted: #3c4a66;
+  --il-shadow: rgba(0, 0, 0, 0.5);
+  --il-accent: #4f97ff;
+}
+
+.page {
+  color: var(--text);
+}
+
+.page :global(hr) {
+  display: none;
+}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+
+.hero {
+  padding: 2.5rem 0 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 720px;
+}
+
+.heroWithGraphic {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+  max-width: none;
+  padding: 3.5rem 0 3rem;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.heroEyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--text);
+}
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+  text-wrap: pretty;
+  max-width: 540px;
+}
+
+.heroCtas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+/* Plain-class buttons scoped under .heroCtas to beat Infima's `.markdown a`
+   specificity (0,1,1 vs. our 0,2,0). Also uses !important on the visual
+   essentials so nothing loaded later in the cascade can override. */
+.heroCtas .heroCtaPrimary,
+.heroCtas .heroCtaSecondary {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 8px !important;
+  font-size: 0.95rem;
+  font-weight: 600 !important;
+  letter-spacing: -0.005em;
+  line-height: 1;
+  text-decoration: none !important;
+  transition: transform 200ms ease, opacity 200ms ease, background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+.heroCtas .heroCtaPrimary::after,
+.heroCtas .heroCtaSecondary::after {
+  content: none !important;
+}
+
+.heroCtas .heroCtaPrimary {
+  background: var(--il-accent) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--il-accent) !important;
+}
+
+.heroCtas .heroCtaPrimary:hover {
+  background: var(--il-accent) !important;
+  color: #ffffff !important;
+  border-color: var(--il-accent) !important;
+  transform: translateY(-1px);
+  opacity: 0.95;
+  text-decoration: none !important;
+}
+
+.heroCtas .heroCtaPrimary:active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.heroCtas .heroCtaSecondary {
+  background: transparent !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--text) !important;
+}
+
+.heroCtas .heroCtaSecondary:hover {
+  background: var(--card-bg-hover) !important;
+  border-color: var(--card-border-primary) !important;
+  color: var(--text) !important;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+.heroCtas .heroCtaSecondary:active {
+  transform: translateY(0);
+}
+
+.heroGraphic {
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.heroGraphic .illo {
+  width: 88%;
+  height: 88%;
+}
+
+/* ── Quickstart band ────────────────────────────────────────── */
+
+.quickstart {
+  background: var(--band-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2rem 2.25rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.quickstartHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.quickstartTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--text);
+}
+
+.quickstartSubtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.stepNumeral {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--il-muted);
+  padding-top: 0.15rem;
+}
+
+.stepContent {
+  min-width: 0;
+}
+
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+
+.stepBody {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 0.85rem;
+  text-wrap: pretty;
+}
+
+.stepBody :global(a) {
+  color: var(--il-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.stepBody :global(a:hover) {
+  text-decoration: underline;
+}
+
+/* Tighten the Docusaurus Tabs / CodeBlock spacing inside a step */
+.stepContent :global(.tabs-container) {
+  margin-bottom: 0;
+}
+
+.stepContent :global(pre) {
+  margin-bottom: 0;
+}
+
+/* ── Two-card row (bento) ───────────────────────────────────── */
+
+.bentoRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 0 0 2.5rem;
+}
+
+.bento {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    border-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento:hover {
+  border-color: var(--card-border-primary);
+  background: var(--card-bg-hover);
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.bento::after {
+  content: none !important;
+}
+
+.bentoIllo {
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  margin-bottom: 0.25rem;
+}
+
+.bentoIllo .illo {
+  width: 78%;
+}
+
+.bentoTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--text);
+}
+
+.bentoDesc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+  text-wrap: pretty;
+  flex: 1;
+}
+
+.bentoCta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--il-accent);
+  margin-top: 0.5rem;
+}
+
+/* ── Task tile grid ─────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 0 0 2.5rem;
+}
+
+.gridHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.gridTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--text);
+}
+
+.gridSubtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 2rem 1.75rem;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tile:hover {
+  border-color: var(--card-border-primary);
+  background: var(--card-bg-hover);
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.tile::after {
+  content: none !important;
+}
+
+.illoWrap {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.illo {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tileTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--text);
+}
+
+.tileDesc {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* ── Community band ─────────────────────────────────────────── */
+
+.community {
+  background: var(--band-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  margin: 2.5rem 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.communityLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.communityLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.communityLink:hover {
+  color: var(--il-accent);
+  text-decoration: none;
+}
+
+.communityLink::after {
+  content: none !important;
+}
+
+.communityLink svg {
+  width: 18px;
+  height: 18px;
+}
+
+.communityCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: var(--il-accent);
+  color: #ffffff !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.communityCta:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+.communityCta::after {
+  content: none !important;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 800px) {
+  .heroWithGraphic {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 0 2rem;
+    gap: 1.5rem;
+  }
+
+  .heroGraphic {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .bentoRow {
+    grid-template-columns: 1fr;
+  }
+
+  .step {
+    grid-template-columns: 64px 1fr;
+    gap: 0.85rem;
+  }
+
+  .stepNumeral {
+    font-size: 1.9rem;
+  }
+
+  .quickstart {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .community {
+    padding: 1.25rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

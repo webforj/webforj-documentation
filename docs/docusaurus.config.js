@@ -179,6 +179,10 @@ module.exports = async function createConfig() {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
           {
+            from: '/docs/introduction/prerequisites',
+            to: '/docs/introduction/quickstart',
+          },
+          {
             from: '/docs/integrations/ai-tooling',
             to: '/docs/ai-tooling',
           },
