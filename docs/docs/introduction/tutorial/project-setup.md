@@ -49,9 +49,8 @@ webforj-tutorial
 If you’d prefer to create a new project, you can use [startforJ](https://docs.webforj.com/startforj) to generate a minimal starter project. See [Getting Started](/docs/introduction/getting-started) for more detailed information about using startforJ.
 
 :::note Required settings
-- In the **webforJ version** dropdown, choose webforJ version **26.00 or higher**.
-- In the **Flavor** dropdown, choose **webforJ + Spring Boot**.
-:::
+- In the **webforJ version** dropdown, choose webforJ version **26.01 or higher**.
+- In the **Flavor** dropdown, choose **webforJ + Spring Boot**. 
 
 ## Using the command line {#using-command-line}
 
@@ -100,7 +99,7 @@ mvn -B archetype:generate ^
 
 ## Configurations {#configurations}
 
-The two mentioned ways of creating a new project use webforJ [archetypes](/docs/building-ui/archetypes/overview), which automatically add the needed configurations to your project, like Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) to your POM and the following properties in `src/main/resources/application.properties`:
+The two mentioned ways of creating a new project use webforJ [archetypes](/docs/building-ui/archetypes/overview), which automatically add the needed configurations to your project. This includes Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies), the webforJ Maven plugin that builds and watches frontend sources, and the following properties in `src/main/resources/application.properties`:
 
 ```
 spring.application.name=CustomerApplication
@@ -119,6 +118,8 @@ To see the app in action as you progress through the tutorial:
     ```bash
     mvn
     ```
+
+   The generated POM configures this default command to compile the app, start the webforJ frontend watcher, and run Spring Boot.
 
 <!-- vale Google.WordList = NO -->
 Running the app automatically opens a new browser at `http://localhost:8080`.
