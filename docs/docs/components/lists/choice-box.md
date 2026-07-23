@@ -38,8 +38,6 @@ The `ChoiceBox` is intended for use when a preset number of options are availabl
 
 Using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> method will assign a value to the `type` attribute of a `ChoiceBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ChoiceBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
 
-<!-- ![example type](/img/components/_images/choicebox/type.png)
-![example type](/img/components/_images/choicebox/type_zoomed.png) -->
 
 This detachment creates a situation where directly targeting the
 dropdown using CSS or shadow part selectors from the parent component becomes challenging, unless you make use of the dropdown type attribute.
