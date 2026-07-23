@@ -1,0 +1,9 @@
+{
+  "label": "Contributing",
+  "position": 120,
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  },
+  "className": "cat-icon cat-icon--contributing has-new-content"
+}
