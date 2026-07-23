@@ -121,7 +121,7 @@ When textual parsing is enabled, you can use special modifiers in your mask to a
 
 Month names can appear in any position within the mask, and the field will still accept numeric input as a fallback.
 
-#### Examples
+#### Examples {#examples}
 
 | Mask | Input | Result |
 | ---- | ----- | ------ |
@@ -144,7 +144,7 @@ Day-of-week names can be included in the input for better readability, but they'
 When using day-of-week names (`%Ds` or `%Dl`), your mask **must also include** `%Dz` or `%Dd` to specify the actual day number. Without a numeric day component, the input will be invalid.
 :::
 
-#### Examples
+#### Examples {#examples-1}
 
 | Mask | Input | Result |
 | ---- | ----- | ------ |
@@ -296,10 +296,10 @@ height='450px'
 
 ### Key features {#key-features}
 
-- **Interactive Date Stepping:**  
+- **Interactive Date Stepping:**
   Use arrow keys or spin buttons to increment or decrement the date value.
 
-- **Customizable Step Unit:**  
+- **Customizable Step Unit:**
   Choose which part of the date to modify using `setSpinField()`:
 
   ```java
@@ -308,10 +308,10 @@ height='450px'
 
   Options include `DAY`, `WEEK`, `MONTH`, and `YEAR`.
 
-- **Min/Max Boundaries:**  
+- **Min/Max Boundaries:**
   Inherits support for minimum and maximum allowed dates using `setMin()` and `setMax()`.
 
-- **Formatted Output:**  
+- **Formatted Output:**
   Fully compatible with masks and localization settings from `MaskedDateField`.
 
 ### Example: Configure weekly stepping {#example-configure-weekly-stepping}

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2  
+sidebar_position: 2
 title: Routable Apps
 description: Enable webforJ routing with the @Routify annotation to scan packages, manage frames, and control browser history.
 ---
@@ -81,13 +81,13 @@ This element controls whether the framework should automatically toggle the visi
 
 ### 5. **`debug`** {#5-debug}
 
-The `debug` flag enables or disables routing debug mode. When enabled, routing information and actions are logged to the console for easier debugging during development. 
+The `debug` flag enables or disables routing debug mode. When enabled, routing information and actions are logged to the console for easier debugging during development.
 
 ```java
 @Routify(debug = true)
 ```
 
-:::info Router Debug Mode and webforJ Debug Mode  
-If router debug mode is set to `true` but webforJ debug mode is set to `false`, no debugging information will be displayed in the console.  
+:::info Router Debug Mode and webforJ Debug Mode
+If router debug mode is set to `true` but webforJ debug mode is set to `false`, no debugging information will be displayed in the console.
 :::
 

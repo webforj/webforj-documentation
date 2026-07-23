@@ -23,13 +23,13 @@ To see what this looks like in practice, I threw together a quick travel destina
 </video>
 </div>
 
-## How it works
+## How it works {#how-it-works}
 
 Before getting into the Java API, it's worth knowing what the browser is actually doing. When a view transition fires, the browser takes a snapshot of the current page, applies your DOM changes, then animates between the old snapshot and the new live content. The browser handles all of that on its own.
 
 The tricky part for server-side frameworks is timing. DOM mutations happen on the server, not instantly in the browser, so the browser needs a way to know when your changes are done. webforJ handles this by wrapping your component updates in a callback and signaling the browser once the server-side work is complete.
 
-## Basic usage
+## Basic usage {#basic-usage}
 
 Start with `Page.getCurrent().startViewTransition()`, which returns a transition builder, [`ViewTransition`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/ViewTransition.html). The only method you need to call before `start()` is `onUpdate()`, where you make your actual component changes:
 
@@ -47,7 +47,7 @@ Page.getCurrent().startViewTransition()
 
 Without any extra configuration, you get a crossfade. That's already a big improvement over a snap cut, and it only takes a few lines to set up.
 
-## Declarative route transitions
+## Declarative route transitions {#declarative-route-transitions}
 
 For most navigation scenarios, you don't need any of the above. `@RouteTransition` on a route class is enough; the router handles the animation lifecycle automatically:
 
@@ -61,7 +61,7 @@ public class DashboardView extends Composite<FlexLayout> {
 
 Set `enter` and `exit`, and you're done. It accepts `ViewTransition` constants, or a custom string if you've defined your own CSS. Reach for `startViewTransition()` directly when you need to animate non-navigation changes, combine enter and exit on different components, or work with shared element morphing.
 
-## Predefined transition types
+## Predefined transition types {#predefined-transition-types}
 
 If you need more control over individual components, `enter()` and `exit()` let you target specific elements:
 
@@ -112,7 +112,7 @@ Here's the full list of built-in types:
 | `ViewTransition.ZOOM` | Old content shrinks, new content grows in |
 | `ViewTransition.ZOOM_OUT` | Old content grows away, new content shrinks in |
 
-## Shared element transitions (morphing)
+## Shared element transitions (morphing) {#shared-element-transitions-morphing}
 
 Click a product thumbnail and it expands into a full-width hero image (the large featured image at the top of a detail page) with no jarring cut, just a continuous motion between the two states. That's a shared element transition, and it's the one I found most satisfying to wire up in the travel app.
 
@@ -138,7 +138,7 @@ The browser handles the rest on its own.
 
 One thing to watch out for with lists: every repeating element needs a unique name. If two visible components share the same transition name, behavior is undefined. Append the item ID, or whatever uniquely identifies each row.
 
-## Custom CSS animations
+## Custom CSS animations {#custom-css-animations}
 
 The API supports fully custom keyframe animations if the built-in types don't cover your use case. webforJ automatically appends `-enter` or `-exit` to whatever name you pass into `enter()` or `exit()`, which you target in CSS using the `::view-transition-new` and `::view-transition-old` pseudo-elements:
 
@@ -192,11 +192,10 @@ You don't have to go fully custom to get some CSS control. Targeting the built-i
 
 For all available easing variables, see [Transitions & Easing](/docs/styling/transitions-easing).
 
-## Wrapping up
+## Wrapping up {#wrapping-up}
 
 The Transitions API covers a lot of ground without touching JavaScript. If a browser doesn't support the View Transition API, webforJ doesn't error out: the `onUpdate` callback still runs, the DOM still updates, it just happens without animation. Safe to adopt incrementally.
 
 Try dropping `@RouteTransition` onto one of your existing route classes and go from there.
 
 For the full details, check out the [View Transitions](/docs/advanced/view-transitions) and [Route Transitions](/docs/routing/route-transitions) docs.
- 

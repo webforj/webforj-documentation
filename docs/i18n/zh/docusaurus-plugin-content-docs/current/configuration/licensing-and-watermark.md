@@ -1,12 +1,13 @@
 ---
 title: Licensing and Watermark
-sidebar_position: 20
-_i18n_hash: 9846eb8092fd823df938558446c260cf
+sidebar_position: 45
+description: >-
+  Request a webforJ trial certificate and place certificate.bls in the resources
+  directory to remove the unlicensed runtime watermark.
+_i18n_hash: 98575d4533b0e62a9c8a701b40622a52
 ---
-默认情况下，webforJ项目可以运行，但不会与许可证证书关联。当运行未许可的项目时，水印将在运行应用程序的用户界面上显示，直到输入有效许可证。
+默认情况下，webforJ 项目可以运行，但它们不会与许可证证书关联。当运行未授权的项目时，水印将显示在运行应用程序的用户界面上，直到输入有效的许可证。
 
-<!-- TODO add link -->
+对于个人开发者，获取 webforJ 的试用许可证证书非常简单。访问 [webforJ 定价页面](https://webforj.com/pricing/)，选择适当的计划，并按照提示请求许可证。
 
-对于个人开发者，获取webforJ的试用许可证证书很简单，访问许可证认证请求表单，填写详细信息并提交表单。提交后，确认电子邮件将发送到提供的电子邮件地址，并附带一个`certificate.bls`文件。
-
-将此文件放置在项目的`resources`目录中，水印将不再显示。
+要让 webforJ 应用程序请求来自您开发机器或内部网络上运行的服务的许可证，请访问 [Local BLS License](/docs/configuration/local-bls-license)。

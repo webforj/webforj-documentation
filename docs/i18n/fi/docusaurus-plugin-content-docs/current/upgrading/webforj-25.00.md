@@ -1,14 +1,14 @@
 ---
 title: Upgrade to 25.00
 description: Upgrade from 24.00 to 25.00
-pagination_next: null
-_i18n_hash: 53afcc2a74e5569086bcf7daeb6582d7
+sidebar_position: 30
+_i18n_hash: 6fdaf15e67e0015f7319572200ccc353
 ---
-Tämä dokumentaatio toimii oppaana webforJ-sovellusten päivittämiseksi versiosta 24.00 versioon 25.00. Tässä ovat tarpeelliset muutokset, jotta olemassa olevat sovellukset voivat toimia sujuvasti. Kuten aina, katso [GitHubin julkaisun yleiskatsaus](https://github.com/webforj/webforj/releases) saadaksesi kattavamman listan muutoksista versioiden välillä.
+Tämä dokumentaatio toimii oppaana webforJ-sovellusten päivittämiseksi versiosta 24.00 versioon 25.00. Tässä ovat vaatimukset olemassa oleville sovelluksille, jotta ne voivat jatkaa sujuvaa toimintaa. Kuten aina, katso [GitHubin julkaisu-yhteenveto](https://github.com/webforj/webforj/releases) saadaksesi kattavamman listan muutoksista versioiden välillä.
 
 ## Jetty 12 web-palvelimet {#jetty-12-web-servers}
 
-webforJ 25.00 ja korkeammilla versioilla käytetään Jetty 12:ta, joka hyödyntää Jakarta EE10 -servlettiarkkitehtuuria. Jos käytät Jetty Maven -liitintä kehityksessä, siirry Jakarta EE8:sta Jakarta EE10:ään. Tämä päivitys vaatii myös kaiken korvaamista, mikä on riippuvainen `javax.servlet`-paketista `Jakarta.servlet`-pakettiin.
+webforJ 25.00 ja korkeammat versiot käyttävät Jetty 12:ta, joka perustuu Jakarta EE10 servlet-arkkitehtuuriin. Jos käytät Jetty Maven -lisäosaa kehityksessä, siirry Jakarta EE8:sta Jakarta EE10:een. Tämä päivitys vaatii myös kaiken, mikä tuki `javax.servlet`-pakettia, korvaamisen `Jakarta.servlet`-paketilla.
 
 ### POM-tiedoston muutokset {#pom-file-changes}
 
@@ -31,69 +31,69 @@ webforJ 25.00 ja korkeammilla versioilla käytetään Jetty 12:ta, joka hyödynt
 
 ## API-muutokset `App`-luokassa {#api-changes-for-the-app-class}
 
-Useita vanhentuneita `App`-menetelmiä on poistettu versiossa 25.00. Seuraavat osiot selittävät, mitkä menetelmät on korvattu ja mitä suositeltuja korvauksia on.
+Useita vanhentuneita `App`-menetelmiä on poistettu versiossa 25.00. Seuraavat osiot kuvaavat, mitä menetelmiä on korvattu ja suositellut korvaukset.
 
-### Konsoli lokitus {#console-logging}
+### Konsolilokitus {#console-logging}
 
-Utiliteetti luokka [`BrowserConsole`](/docs/advanced/browser-console), joka on omistettu tyyliteltyjen lokien luomiseen selaimen konsoliin, korvasi `consoleLog()` ja `consoleError()` menetelmät. Hanki `BrowserConsole` käyttäen `console()` menetelmää:
+Apuluokka [`BrowserConsole`](/docs/advanced/browser-console), joka on omistettu tyylikkäiden lokien luomiseen selainkonsoliin, korvasi `consoleLog()` ja `consoleError()` -menetelmät. Hanki `BrowserConsole` käyttämällä `console()`-menetelmää:
 
 ```java
 public class Application extends App{
-  
+
   @Override
   public void run() throws WebforjException {
     console().log("Lokiviesti");
-    console().error("Virhesanoma");
+    console().error("Virheviesti");
   }
 }
 ```
 
 ### Web-tallennus {#web-storage}
 
-Versionssa webforJ 25.00 ja sitä aikaisemmin `App`-luokassa oli menetelmät `getLocalStorage()`, `getSessionStorage()` ja `getCookieStorage()` saadaksesi instansseja `LocalStorage`, `SessionStorage` ja `CookieStorage` luokista vastaavasti. Jatkossa jokaisella luokalla on `getCurrent()`-metodi.
+Versioissa, ennen webforJ 25.00, `App`-luokassa oli menetelmät `getLocalStorage()`, `getSessionStorage()`, ja `getCookieStorage()` saadakseen instanssit `LocalStorage`, `SessionStorage` ja `CookieStorage` -luokista. Tulevaisuudessa jokaisella luokalla on `getCurrent()`-menetelmä.
 
-Katso [Web Storage](/docs/advanced/web-storage) saadaksesi lisätietoja.
+Katso [Web Tallennus](/docs/advanced/web-storage) lisätietoja varten.
 
 ### `Request`-luokka {#request-class}
 
-`Request`-luokka vastaa nyt sovelluksen URL-osoitteen, portin, isännän ja protokollan hakemisesta. Joten sen sijaan, että käyttäisit `App.getUrl()`, käytä `App.getCurrent().getUrl()`. `getCurrent()`-metodi korvasi myös `getRequest()`-metodin saadaksesi instanssin `Request`-luokasta.
+`Request`-luokka on nyt vastuussa sovelluksen URL-osoitteen, portin, hostin ja protokollan hankkimisesta. Joten käyttäessäsi `App.getUrl()`, käytä `App.getCurrent().getUrl()`. `getCurrent()`-menetelmä korvasi myös `getRequest()`-menetelmän saadakseen instanssin `Request`-luokasta.
 
 :::info
-`Request`-luokassa on myös poistettuja menetelmiä, siirry [`Request`](#request-changes) nähdäksesi ne.
+`Request`-luokassa on myös poistettuja metodeja, siirry [`Request`](#request-changes) nähdäksesi ne.
 :::
 
 ### `Page`-luokka {#page-class}
 
-`getPage()`-metodi on korvattu `Page.getCurrent()`-menetelmällä saadaksesi nykyisen sivuinan.
+`getPage()`-menetelmä on korvattu `Page.getCurrent()`-menetelmällä saadakseen nykyinen sivu.
 
-### Valinta dialogit {#option-dialogs}
+### Valinta-dialiit {#option-dialogs}
 
-Sen sijaan, että käyttäisit `msgbox()`-metodia, käytä [`OptionDialog.showMessageDialog()`](/docs/components/option-dialogs/message) luodaksesi viestidialogeja.
+Sen sijaan, että käyttäisit `msgbox()`-menetelmää, käytä [`OptionDialog.showMessageDialog()`](/docs/components/option-dialogs/message) luodaksesi viestidialoja.
 
-### Sovelluksen lopettaminen {#app-termination}
+### Sovelluksen lopetus {#app-termination}
 
-`cleanup()`-metodi on poistettu. Nyt on kaksi menetelmää lopettamiseen, `onWillTerminate()` ja `onDidTerminate()`.
+`cleanup()`-menetelmä on poistettu. Nyt on kaksi menetelmää lopetuksille, `onWillTerminate()` ja `onDidTerminate()`.
 
-Katso [Hooks for termination](/docs/advanced/terminate-and-error-actions#hooks-for-termination) saadaksesi lisätietoja.
+Katso [Hooks for termination](/docs/advanced/terminate-and-error-actions#hooks-for-termination) lisätietoja varten.
 
 ## Taulukon lajittelu {#table-sorting}
 
-Versioissa webforJ 25.00 ja korkeammalla taulukot käyttävät oletuksena yhden sarakkeen lajittelua. Sarakkeita lajitellaan vain äskettäin valitun sarakeotsikon mukaan. Jotta taulukko käyttää monisarakelajittelua, kutsu [`setMultiSorting()`](/docs/components/table/sorting#multi-sorting) -metodia:
+webforJ 25.00 ja korkeammat versiot käyttävät oletuksena yhden sarakkeen lajittelua taulukoissa. Sarakkeet lajitellaan vain viimeksi valitun sarakeotsikon mukaan. Jotta taulukko käyttäisi monisarakkeista lajittelua, kutsu [`setMultiSorting()`](/docs/components/table/sorting#multi-sorting) -menetelmää:
 
 ```java
 table.setMultiSorting(true);
 ```
 
-## Piilotettu `TabbedPane`-runko {#hidden-tabbedpane-body}
+## Piilotettu `TabbedPane`-keho {#hidden-tabbedpane-body}
 
-`hideBody()`-metodi on korvattu `setBodyHidden()`-metodilla, jotta menetelmiin saadaan yhtenäinen nimeämiskäytäntö.
+`hideBody()`-menetelmä on korvattu `setBodyHidden()`-menetelmällä, jotta menetelmien nimikäytännöt pysyvät johdonmukaisina.
 
 ## HTML:n renderöinti komponenteissa {#rendering-html-inside-components}
 
-Versioissa webforJ 25.00 ja korkeammalla on `setHtml()`-metodi erottamaan literaalin ja HTML-tekstin asettaminen komponenttiin. HTML:n asettaminen `setText()`-metodin avulla on edelleen mahdollista, mutta se vaatii nyt sen erottavan `<html>`-tageilla.
+webforJ 25.00 ja korkeammat versiot sisältävät `setHtml()`-menetelmän, joka auttaa erottamaan komponentin sisällä asetettavan kirjaimellisen ja HTML-tekstin. HTML:n asettaminen `setText()`-menetelmällä on edelleen mahdollista, mutta nyt se vaatii erikseen `<html>`-tageihin kääretyn tekstin.
 
 ```java
-// Voimassa olevat käytännöt setText() ja setHtml()
+// Kelvolliset käytöt setText() ja setHtml()
 Button home = new Button();
 
 home.setText("""
@@ -108,38 +108,37 @@ home.setText("Koti");
 ```
 
 ```java
-// Virheelliset käytännöt setText() ja setHtml()
+// Kelvottomat käytöt setText() ja setHtml()
 Button home = new Button();
 home.setText("<h1>Koti</h1>");
 ```
 
-## HTML-säiliöt {#html-containers}
+## HTML-kontit {#html-containers}
 
-Pakettia `com.webforj.component.htmlcontainer` ei ole enää webforJ:ssa. Käytä sen sijaan monipuolisempaa pakettia `com.webforj.component.element`. Listan webforJ-luokista standardeille HTML-elementeille löydät kohdasta [HTML Element Components](/docs/components/html-elements).
+`com.webforj.component.htmlcontainer`-pakettia ei enää ole webforJ:ssä. Käytä sen sijaan monipuolisempaa `com.webforj.component.element`-pakettia. Lista webforJ-luokista standardeille HTML-Elementeille löytyy [HTML Element Components](/docs/components/html-elements).
 
-## `Request`-muutokset {#request-changes}
+## `Request` muutokset {#request-changes}
 
-- Juuri kuten `getCookieStorage()`-metodin poistamisessa `App`-luokasta, `Request`-luokalla ei ole enää `getCookie()`-metodia. Tämä vahvistaa `CookieStorgage.getCurrent()`-menetelmän käyttöä saadaksesi instanssin `CookieStorage`-luokasta.
+- Aivan kuten `getCookieStorage()`-menetelmän poistaminen `App`-luokasta, `Request`-luokalla ei enää ole `getCookie()`-menetelmää. Tämä vahvistaa `CookieStorgage.getCurrent()`-menetelmän käyttöä saadakseen instanssin `CookieStorage`-luokasta.
 
-- `getQueryParam()`-metodi on nyt `getQueryParameter()`.
+- `getQueryParam()`-menetelmä on nyt `getQueryParameter()`.
 
-## `WebforjBBjBridge`-muutokset {#webforjbbjbridge-changes}
+## `WebforjBBjBridge` muutokset {#webforjbbjbridge-changes}
 
-### `WebforjBBjBridge`-instanssin saaminen {#getting-an-instance-of-webforjbbjbridge}
+### `WebforjBBjBridge`-instanssin hankkiminen {#getting-an-instance-of-webforjbbjbridge}
 
-`Environment`-luokalla ei ole enää `getWebforjHelper()`-metodia, joten käytä sen sijaan `getBridge()`.
+`Environment`-luokassa ei enää ole `getWebforjHelper()`-menetelmää, joten käytä `getBridge()` sen sijaan.
 
-### `ConfirmDialog`-komponentin käyttäminen `msgbox()`-metodille {#using-the-confirmdialog-component-for-the-msgbox-method}
+### `ConfirmDialog` komponentin käyttäminen `msgbox()`-menetelmälle {#using-the-confirmdialog-component-for-the-msgbox-method}
 
-Aiemmat webforJ-versiot käyttivät suoraan merkkijonoja ja kokonaislukuja `WebforjBBjBridge` `msgbox()`-metodissa. Kuitenkin, viestit `WebforjBBjBridge`-sovelluksessa webforJ 25.00 ja korkeammalla käyttävät [`ConfirmDialog`](/docs/components/option-dialogs/confirm) komponenttia. Tämä antaa enemmän hallintaa näyttävien painikkeiden ja viestityypin suhteen.
-
+Aikaisemmissa webforJ-versioissa käytettiin suoraan merkkijonoja ja kokonaislukuja `WebforjBBjBridge`- `msgbox()`-menetelmälle. Kuitenkin viestit `WebforjBBjBridge`-sovelluksessa webforJ 25.00 ja korkeammissa versioissa käyttävät [`ConfirmDialog`](/docs/components/option-dialogs/confirm) komponenttia. Tämä antaa enemmän hallintaa siitä, mitkä painikkeet näytetään ja millaista viestiä käytetään.
 
 **Ennen**
 ```java
 Environment environment = Environment.getCurrent();
 WebforjBBjBridge bridge = environment.getWebforjHelper();
 
-int msgboxResult = bridge.msgbox("Haluatko varmasti poistaa tämän tiedoston?", 1, "Poisto");
+int msgboxResult = bridge.msgbox("Oletko varma, että haluat poistaa tämän tiedoston?", 1, "Poisto");
 ```
 
 **Jälkeen**
@@ -148,20 +147,22 @@ Environment environment = Environment.getCurrent();
 WebforjBBjBridge bridge = environment.getBridge();
 
 ConfirmDialog dialog = new ConfirmDialog(
-  "Haluatko varmasti poistaa tämän tiedoston?", "Poisto",
+  "Oletko varma, että haluat poistaa tämän tiedoston?", "Poisto",
   ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
 
 int msgboxResult = bridge.msgbox(dialog);
 ```
 
-## `PasswordMediation`-typo korjaus {#passwordmediation-typo-correction}
+<!-- ## Environment.logError poistettu -->
 
-`PasswordMediation`-enum-luokka, jota käytetään osoittamaan, onko käyttäjän kirjauduttava sisään joka vierailulla sovelluksessa, jossa on `Login`-komponentti, sisältää typon aikaisemmissa webforJ-versioissa. `SILENT` korvasi kirjoitusvirheen `SILIENT` webforJ 25.00 ja korkeammissa versioissa.
+## `PasswordMediation` kirjoitusvirheen korjaus {#passwordmediation-typo-correction}
 
-## Automaattisesti kohdistavat menetelmät {#auto-focusing-methods}
+Enum-luokka `PasswordMediation`, jota käytetään osoittamaan, vaaditaanko käyttäjältä kirjautuminen joka käynnistyksellä sovelluksessa, jossa on `Login`-komponentti, sisältää kirjoitusvirheen aiemmissa webforJ-versioissa. `SILENT` korvasi kirjoitusvirheen `SILIENT` webforJ 25.00 ja korkeammissa versioissa.
 
-Pitääkseen webforJ:n johdonmukaisena, menetelmät kuten `setAutofocus()` ja `isAutofocus()` saavat nyt yhtenäisen ison alkukirjaimen, kuten `HasAutoFocus`-rajapinta. Joten komponentit kuten `Dialog` ja `Drawer` käyttävät `setAutoFocus()` ja `isAutoFocus()` versioissa 25.00 ja korkeammalla.
+## Itsestään keskittymisen menetelmät {#auto-focusing-methods}
 
-## `BBjWindowAdapter` ja `Panel` merkitty `final`-nä {#bbjwindowadapter-and-panel-marked-as-final}
+WebforJ:n johdonmukaisuuden säilyttämiseksi menetelmät kuten `setAutofocus()` ja `isAutofocus()` saavat nyt yhdenmukaisen päättämisen kuten HasAutoFocus -rajapinta. Joten komponentit kuten `Dialog` ja `Drawer` käyttävät `setAutoFocus()` ja `isAutoFocus()` versioissa 25.00 ja korkeammissa.
 
-`BBjWindowAdapter` ja `Panel` -luokat on nyt määritelty `final`, mikä tarkoittaa, että niitä ei voi enää aliluokkaistaa. Tämä muutos parantaa vakautta ja pakottaa yhtenäisiä käyttökuvioita.
+## `BBjWindowAdapter` ja `Panel` merkitty `final` {#bbjwindowadapter-and-panel-marked-as-final}
+
+`BBjWindowAdapter` ja `Panel` -luokat on nyt merkitty `final`, mikä tarkoittaa, etteivät niitä voi enää periyttää. Tämä muutos parantaa vakautta ja vahvistaa johdonmukaisia käyttökaavoja.

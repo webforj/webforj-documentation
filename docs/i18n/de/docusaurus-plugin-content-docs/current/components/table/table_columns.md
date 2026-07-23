@@ -2,25 +2,28 @@
 sidebar_position: 5
 title: Columns
 slug: columns
-_i18n_hash: fbae9063370715e9f6dc2cb490a27511
+description: >-
+  Define Table columns with labels, value providers, visibility, navigability,
+  sizing, and user-interaction events.
+_i18n_hash: 5ca9d9959c258db42780e52dad8c463d
 ---
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Column" top='true'/>
 
-Die `Table`-Klasse verwendet Spalteninstanzen, um zu definieren und anzupassen, wie Daten angezeigt werden. Spalten steuern, welche Daten angezeigt werden, wie sie aussehen und wie Benutzer mit ihnen interagieren können. Diese Seite behandelt die Spaltenidentität, Präsentation, Größenanpassung, Benutzerinteraktionen und verwandte Ereignisse.
+Die Klasse `Table` verwendet Spalteninstanzen, um zu definieren und anzupassen, wie Daten angezeigt werden. Spalten kontrollieren, welche Daten angezeigt werden, wie sie aussehen und wie Benutzer mit ihnen interagieren können. Diese Seite behandelt die Identität von Spalten, Präsentation, Größenanpassung, Benutzerinteraktionen und verwandte Ereignisse.
 
-## Spaltenidentität {#column-identity}
+## Identität der Spalte {#column-identity}
 
 Die Identität einer Spalte definiert, wie sie in der `Table` erkannt wird. Dazu gehören ihr Label, der Wert, den sie bereitstellt, und ob sie sichtbar oder navigierbar ist.
 
 ### Label {#label}
 
-Das Label einer Spalte ist ihr öffentlich sichtbarer Bezeichner, der hilft, die angezeigten Daten zu klären.  
+Das Label einer Spalte ist ihr öffentlich erkennbarer Bezeichner, der hilft, die angezeigten Daten zu klären.
 
 Verwenden Sie `setLabel()`, um das Label festzulegen oder zu ändern.
 
 :::tip
-Standardmäßig ist das Label dasselbe wie die Spalten-ID.
+Standardmäßig wird das Label dasselbe wie die Spalten-ID sein.
 :::
 
 ```java
@@ -29,11 +32,11 @@ table.addColumn("Produkt-ID", Product::getProductId).setLabel("ID");
 
 ### Wertanbieter {#value-providers}
 
-Ein Wertanbieter ist eine Funktion, die dafür verantwortlich ist, Rohdaten aus dem zugrunde liegenden Datensatz in ein Format zu übersetzen, das für die Anzeige innerhalb einer bestimmten Spalte geeignet ist. Die von Ihnen definierte Funktion nimmt eine Instanz des Zeilendatentyps (T) und gibt den Wert zurück, der in der zugehörigen Spalte für diese bestimmte Zeile angezeigt werden soll.
+Ein Wertanbieter ist eine Funktion, die dafür verantwortlich ist, Rohdaten aus dem zugrunde liegenden Datensatz in ein für die Anzeige einer bestimmten Spalte geeignetes Format zu übersetzen. Die von Ihnen definierte Funktion nimmt eine Instanz des Zeilendatentyps (T) und gibt den Wert zurück, der in der zugehörigen Spalte für diese bestimmte Zeile angezeigt werden soll.
 
-Um einen Wertanbieter für eine Spalte festzulegen, verwenden Sie eine der `addColumn()`-Methoden aus der `Table`-Komponente.
+Um einen Wertanbieter für eine Spalte festzulegen, verwenden Sie eine der Methoden `addColumn()` aus der `Table`-Komponente.
 
-Im folgenden Snippet wird eine Spalte versuchen, Daten aus einem JSON-Objekt abzurufen und rendert diese nur, wenn die Daten nicht null sind.
+Im folgenden Snippet wird versucht, Daten aus einem JSON-Objekt abzufragen und es nur anzuzeigen, wenn die Daten nicht null sind.
 
 ```java
 List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
@@ -50,7 +53,7 @@ for (String column : columnsList) {
 
 ### Sichtbarkeit {#visibility}
 
-Es ist möglich, die Sichtbarkeit einer Spalte festzulegen, um zu bestimmen, ob sie innerhalb der `Table` angezeigt wird oder nicht. Dies kann nützlich sein, um unter anderem zu entscheiden, ob sensible Informationen angezeigt werden sollen. 
+Es ist möglich, die Sichtbarkeit einer Spalte festzulegen, um zu bestimmen, ob sie in der `Table` angezeigt wird oder nicht. Dies kann nützlich sein, um unter anderem zu entscheiden, ob sensible Informationen angezeigt werden sollen.
 
 ```java
 table.addColumn("Kreditkarte", Customer::getCreditCardNumber).setHidden(true);
@@ -58,7 +61,7 @@ table.addColumn("Kreditkarte", Customer::getCreditCardNumber).setHidden(true);
 
 ### Navigierbar {#navigable}
 
-Das Attribut "navigierbar" bestimmt, ob Benutzer während der Navigation mit einer Spalte interagieren können. Wenn `setSuppressNavigable()` auf true gesetzt wird, wird die Benutzerinteraktion mit der Spalte eingeschränkt, was eine schreibgeschützte Erfahrung bietet.
+Das Attribut navigierbar bestimmt, ob Benutzer während der Navigation mit einer Spalte interagieren können. Das Setzen von `setSuppressNavigable()` auf true schränkt die Benutzerinteraktion mit der Spalte ein und bietet ein schreibgeschütztes Erlebnis.
 
 ```java
 table.addColumn("Schreibgeschützte Spalte", Product::getDescription).setSuppressNavigable(true);
@@ -66,11 +69,11 @@ table.addColumn("Schreibgeschützte Spalte", Product::getDescription).setSuppres
 
 ## Layout und Formatierung {#layout-and-formatting}
 
-Nachdem die Identität einer Spalte festgelegt wurde, besteht der nächste Schritt darin, zu steuern, wie ihr Inhalt den Benutzern angezeigt wird. Layout-Optionen wie Ausrichtung und Anheften bestimmen, wo Daten angezeigt werden und wie sie sichtbar bleiben, während Sie mit einer `Table` arbeiten.
+Nachdem die Identität einer Spalte festgelegt wurde, ist der nächste Schritt, zu steuern, wie ihr Inhalt den Benutzern erscheint. Layoutoptionen wie Ausrichtung und Anheften bestimmen, wo Daten sitzen und wie sie sichtbar bleiben, während Sie mit einer `Table` arbeiten.
 
 ### Ausrichtung {#alignment}
 
-Die Festlegung der Ausrichtung einer Spalte ermöglicht es Ihnen, organisierte Tabellen zu erstellen, die den Benutzern helfen können, die verschiedenen Abschnitte in der `Table` zu identifizieren.
+Die Ausrichtung einer Spalte festzulegen, ermöglicht es Ihnen, organisierte Tabellen zu erstellen, die Benutzern helfen können, die verschiedenen Abschnitte in der `Table` zu identifizieren.
 
 <!-- vale off -->
 <ComponentDemo
@@ -86,15 +89,15 @@ height='600px'
 
 Die `Table`-Komponente unterstützt drei Ausrichtungsoptionen:
 
-- `Column.Alignment.LEFT`: Eignet sich für textuelle oder beschreibende Daten, bei denen ein linksseitiger Fluss intuitiv ist. Nützlich, um den Anfang des Inhalts zu betonen.
-- `Column.Alignment.CENTER`: Zentral ausgerichtete Spalten sind ideal für kürzere Werte, wie einen Schlüssel, Status oder alles, was eine ausgewogene Präsentation hat.
-- `Column.Alignment.RIGHT`: Ziehen Sie in Betracht, eine rechts ausgerichtete Spalte für numerische Werte zu verwenden, die hilfreich sind, um schnell durchzugehen, wie Daten, Beträge und Prozentsätze.
+- `Column.Alignment.LEFT`: Eignet sich für textuelle oder beschreibende Daten, bei denen es intuitiv ist, einen linken Fluss beizubehalten. Nützlich, wenn der Ausgangspunkt des Inhalts betont wird.
+- `Column.Alignment.CENTER`: Mittig ausgerichtete Spalten sind ideal für kürzere Werte, wie einen Keys, Status oder alles andere, das eine ausgewogene Präsentation hat.
+- `Column.Alignment.RIGHT`: Es kann sinnvoll sein, eine rechtsbündig ausgerichtete Spalte für numerische Werte zu verwenden, die leicht überflogen werden können, wie Daten, Beträge und Prozentsätze.
 
-Im vorhergehenden Beispiel wurde die letzte Spalte für `Kosten` nach rechts ausgerichtet, um einen auffälligeren visuellen Unterschied zu schaffen.
+Im vorherigen Beispiel wurde die letzte Spalte für `Kosten` rechtsbündig ausgerichtet, um einen deutlich erkennbaren visuellen Unterschied zu bieten.
 
 ### Anheften {#pinning}
 
-Das Anheften von Spalten ist eine Funktion, die es Benutzern ermöglicht, eine Spalte an einer bestimmten Seite der `Table` zu befestigen oder "anzupinnen". Dies ist nützlich, wenn bestimmte Spalten, wie Identifikatoren oder essentielle Informationen, sichtbar bleiben sollen, während Sie horizontal durch eine Tabelle scrollen.
+Das Anheften von Spalten ist eine Funktion, die es ermöglicht, eine Spalte an einer bestimmten Seite der `Table` zu befestigen oder zu "heften". Dies ist nützlich, wenn bestimmte Spalten, wie Identifikatoren oder wichtige Informationen, sichtbar bleiben müssen, während horizontal durch eine Tabelle gescrollt wird.
 
 <!-- vale off -->
 <ComponentDemo
@@ -108,29 +111,29 @@ height='600px'
 />
 <!-- vale on -->
 
-Es gibt drei verfügbare Richtungen für das Anheften einer Spalte:
+Es gibt drei verfügbare Richtungen, um eine Spalte zu pinnen:
 
-- `PinDirection.LEFT`: Befestigt die Spalte an der linken Seite.
-- `PinDirection.RIGHT`: Befestigt die Spalte an der rechten Seite.
-- `PinDirection.AUTO`: Die Spalte erscheint basierend auf der Einfügeordnung.
+- `PinDirection.LEFT`: Heftet die Spalte an die linke Seite.
+- `PinDirection.RIGHT`: Heftet die Spalte an die rechte Seite.
+- `PinDirection.AUTO`: Die Spalte erscheint basierend auf der Einfügereihenfolge.
 
-Das Anheften kann programmatisch festgelegt werden, sodass Sie die Pin-Richtung basierend auf Benutzerinteraktionen oder der Logik der Anwendung ändern können.
+Das Anheften kann programmgesteuert festgelegt werden, wodurch Sie die Pinnrichtung basierend auf Benutzerinteraktionen oder der Logik der App ändern können.
 
-## Spaltengrößenanpassung <DocChip chip='since' label='25.03' /> {#column-sizing} 
+## Größenanpassung der Spalte <DocChip chip='since' label='25.03' /> {#column-sizing}
 
 ### Feste Breite {#fixed-width}
 
-Legen Sie eine exakte Breite für eine Spalte mit der Methode `setWidth()` fest und geben Sie die gewünschte Breite in Pixeln an:
+Legen Sie eine genaue Breite für eine Spalte fest, indem Sie die Methode `setWidth()` verwenden und die gewünschte Breite in Pixel angeben:
 
 ```java
 table.addColumn("ID", Product::getId).setWidth(80f);
 ```
 
-Die Breite-Eigenschaft definiert die gewünschte Anfangsbreite für die Spalte. Wie diese Breite verwendet wird, hängt von anderen Eigenschaften und dem Spaltentyp ab:
+Die Breite-Eigenschaft definiert die gewünschte ursprüngliche Breite für die Spalte. Wie diese Breite genutzt wird, hängt von anderen Eigenschaften und dem Spaltentyp ab:
 
-- **Reguläre Spalten**: Wenn nur die Breite festgelegt wird, wird die Spalte mit der angegebenen Breite gerendert, kann jedoch proportional schrumpfen, wenn der Container zu klein ist. Die ursprüngliche Breite dient als gewünschte Breite, aber ohne explizite Mindestbeschränkungen kann die Spalte kleiner als die festgelegte Breite dargestellt werden.
-- [**Angenommene Spalten**](#pinning): Halten immer ihre exakte Breite und nehmen niemals am responsiven Schrumpfen teil.
-- [**Flex-Spalten**](#flex-sizing): Das Festlegen der Breite ist mit Flex inkompatibel. Verwenden Sie entweder Breite (fest) oder Flex (proportional), nicht beides.
+- **Reguläre Spalten**: Mit nur festgelegter Breite wird die Spalte in der angegebenen Breite gerendert, kann jedoch proportional schrumpfen, wenn der Container zu klein ist. Die ursprüngliche Breite dient als gewünschte Breite, aber ohne explizite Mindestbeschränkungen kann die Spalte kleiner als die festgelegte Breite gerendert werden.
+- [**Fixierte Spalten**](#pinning): Behalten immer ihre genaue Breite und nehmen nie am responsiven Schrumpfen teil.
+- [**Flex-Spalten**](#flex-sizing): Das Festlegen der Breite ist mit flex inkompatibel. Verwenden Sie entweder Breite (fest) oder flex (proportional), nicht beides.
 
 Wenn nicht angegeben, verwendet die Spalte ihre geschätzte Breite basierend auf der Inhaltsanalyse der ersten paar Zeilen.
 
@@ -139,30 +142,30 @@ Wenn nicht angegeben, verwendet die Spalte ihre geschätzte Breite basierend auf
 float currentWidth = column.getWidth();
 ```
 
-### Minimale Breite {#minimum-width}
+### Mindestbreite {#minimum-width}
 
-Die Methode `setMinWidth()` ermöglicht es Ihnen, die minimale Breite einer Spalte festzulegen. Wenn die minimale Breite nicht bereitgestellt wird, berechnet die `Table` die minimale Breite basierend auf dem Spalteninhalt.
+Die Methode `setMinWidth()` ermöglicht es Ihnen, die Mindestbreite einer Spalte zu definieren. Wenn die Mindestbreite nicht angegeben wird, berechnet die `Table` die Mindestbreite basierend auf dem Spalteninhalt.
 
 ```java
 table.addColumn("Preis", Product::getPrice).setMinWidth(100f);
 ```
 
-Der angegebene Wert stellt die minimale Breite in Pixeln dar.
+Der übergebene Wert stellt die Mindestbreite in Pixel dar.
 
 Die Mindestbreite-Eigenschaft steuert die kleinste Breite, die eine Spalte haben kann:
 
-- **Reguläre Spalten**: Wird nur die Mindestbreite festgelegt, verwendet die Spalte die Mindestbreite sowohl als gewünschte als auch als Mindestbreite. Bei Breite + Mindestbreite kann die Spalte von der Breite auf die Mindestbreite schrumpfen, aber nicht weiter.
-- [**Angenommene Spalten**](#pinning): Wenn nur die Mindestbreite festgelegt ist (keine Breite), wird sie zur festen Breite.
-- [**Flex-Spalten**](#flex-sizing): Verhindern, dass die Spalte unterhalb dieser Breite schrumpft, selbst wenn der Platz im Container begrenzt ist.
+- **Reguläre Spalten**: Bei nur festgelegter Mindestbreite verwendet die Spalte die Mindestbreite als sowohl gewünschte als auch Mindestbreite. Bei Breite + Mindestbreite kann die Spalte von der Breite auf die Mindestbreite schrumpfen, jedoch nicht weiter.
+- [**Fixierte Spalten**](#pinning): Wenn nur die Mindestbreite festgelegt ist (keine Breite), wird sie zur festen Breite.
+- [**Flex-Spalten**](#flex-sizing): Verhindert, dass die Spalte unter dieser Breite schrumpft, selbst wenn der Platz im Container begrenzt ist.
 
 ```java
 // Aktuelle Mindestbreite abrufen
 float minWidth = column.getMinWidth();
 ```
 
-### Maximale Breite {#maximum-width}
+### Maximalbreite {#maximum-width}
 
-Die Methode `setMaxWidth()` beschränkt, wie breit eine Spalte wachsen kann, und verhindert, dass Spalten mit langen Inhalten zu breit werden und die Lesbarkeit beeinträchtigen:
+Die Methode `setMaxWidth()` begrenzt, wie breit eine Spalte wachsen kann, um zu verhindern, dass Spalten mit langen Inhalten zu breit werden und die Lesbarkeit beeinträchtigen:
 
 ```java
 table.addColumn("Beschreibung", Product::getDescription)
@@ -170,28 +173,28 @@ table.addColumn("Beschreibung", Product::getDescription)
   .setMaxWidth(300f);
 ```
 
-Die `maxWidth`-Eigenschaft begrenzt das Wachstum der Spalte für alle Spaltentypen und wird nie überschritten, unabhängig von Inhalt, Containergröße oder Flex-Einstellungen.
+Die `maxWidth`-Eigenschaft begrenzt das Wachstum der Spalte für alle Spaltentypen und wird niemals überschritten, unabhängig von Inhalten, Containergröße oder flex-Einstellungen.
 
 ```java
-// Aktuelle maximale Breite abrufen
+// Aktuelle Maximalbreite abrufen
 float maxWidth = column.getMaxWidth();
 ```
 
 ### Flex-Größenanpassung {#flex-sizing}
 
-Die Methode `setFlex()` ermöglicht eine proportionale Spaltengrößenanpassung, sodass die Spalten den verfügbaren Raum nach der Zuordnung von festen Breiten-Spalten teilen:
+Die Methode `setFlex()` ermöglicht eine proportionale Größenanpassung der Spalten, sodass Spalten den verfügbaren Platz teilen, nachdem feststehende Breiten-Spalten zugewiesen wurden:
 
 ```java
-// Die Titelsäule erhält doppelt so viel Platz wie die Künstler-Spalte
+// Die Titelspalte erhält doppelt so viel Platz wie die Künstlerspalte
 table.addColumn("Titel", Product::getTitle).setFlex(2f);
 table.addColumn("Künstler", Product::getArtist).setFlex(1f);
 ```
 
-Wichtige Flex-Verhalten:
+Wichtige Flex-Verhaltensweisen:
 
-- **Flex-Wert**: Bestimmt den Anteil des verfügbaren Raums. Eine Spalte mit flex=2 erhält doppelt so viel Platz wie eine Spalte mit flex=1.
-- **Inkompatibel mit Breite**: Kann nicht zusammen mit der Breiten-Eigenschaft verwendet werden. Wenn flex größer als null ist, hat es Vorrang vor der Breiten-Einstellung.
-- **Respektiert Beschränkungen**: Funktioniert mit Mindestbreite-/Höchstbreitenbeschränkungen. Ohne Mindestbreite können Flex-Spalten auf 0 schrumpfen.
+- **Flex-Wert**: Bestimmt den Anteil des verfügbaren Platzes. Eine Spalte mit flex=2 erhält doppelt so viel Platz wie eine Spalte mit flex=1.
+- **Inkompatibel mit Breite**: Kann nicht zusammen mit der Breite-Eigenschaft verwendet werden. Wenn die Flex größer als null ist, hat sie Vorrang vor der Breite-Einstellung.
+- **Respektiert Einschränkungen**: Arbeitet mit den Einschränkungen der Mindestbreite/maximalen Breite. Ohne Mindestbreite können Flex-Spalten auf 0 schrumpfen.
 
 <!-- vale off -->
 <ComponentDemo
@@ -205,41 +208,41 @@ height='550px'
 />
 <!-- vale on -->
 
-:::info Breite vs Flex
-Die Eigenschaften Breite und Flex sind gegenseitig ausschließend. Das Festlegen einer bewirkt automatisch das Löschen der anderen. Verwenden Sie Breite für präzise Kontrolle oder Flex für responsive Verhaltensweisen.
+:::info Breite vs. Flex
+Breite und Flex-Eigenschaften sind gegenseitig ausschließend. Das Festlegen einer entfernt automatisch die andere. Verwenden Sie die Breite für präzise Kontrolle oder Flex für responsives Verhalten.
 :::
 
 ### Automatische Größenanpassung {#automatic-sizing}
 
-Über manuelle Breiten- und Flex-Einstellungen hinaus können Spalten auch automatisch dimensioniert werden. Die automatische Größenanpassung lässt die `Table` die optimalen Breiten entweder durch Analyse des Inhalts oder durch proportionale Verteilung des Raums bestimmen.
+Über die manuellen Breiten- und Flex-Einstellungen hinaus können Spalten auch automatisch dimensioniert werden. Die automatische Größenanpassung ermöglicht es der `Table`, optimale Breiten zu bestimmen, indem sie Inhalte analysiert oder den Platz proportional verteilt.
 
 #### Inhaltsbasierte automatische Größenanpassung {#content-based-auto-sizing}
 
-Spalten basierend auf ihrem Inhalt automatisch dimensionieren. Die `Table` analysiert die Daten in jeder Spalte und berechnet die optimale Breite, um den Inhalt ohne Truncation anzuzeigen.
+Spalten automatisch basierend auf ihrem Inhalt dimensionieren. Die `Table` analysiert die Daten in jeder Spalte und berechnet die optimale Breite, um den Inhalt ohne Abschneiden anzuzeigen.
 
 ```java
-// Alle Spalten automatisch anpassen, um den Inhalt zu passen
+// Alle Spalten automatisch dimensionieren, um den Inhalt anzupassen
 table.setColumnsToAutoSize().thenAccept(c -> {
   // Größenanpassung abgeschlossen - Spalten passen jetzt zu ihrem Inhalt
 });
 
-// Bestimmte Spalte automatisch anpassen
+// Bestimmte Spalte automatisch dimensionieren
 table.setColumnToAutoSize("beschreibung");
 ```
 
-#### Proportionaler Auto-Fit {#proportional-auto-fit}
+#### Proportionale Anpassung {#proportional-auto-fit}
 
-Verteilen Sie alle Spalten proportional über die verfügbare `Table`-Breite. Diese Operation setzt jede Spalte auf flex=1, sodass sie den gesamten `Table`-Breite gleichmäßig teilen, unabhängig von ihrer Inhaltslänge. Die Spalten werden erweitert oder verkleinert, um die genauen Abmessungen der `Table` ohne verbleibenden Platz auszufüllen.
+Alle Spalten proportional über die verfügbare `Table`-Breite verteilen. Dieser Vorgang setzt jede Spalte auf flex=1, sodass sie die gesamte Breite der `Table` gleichmäßig teilen, unabhängig von der Länge ihres Inhalts. Spalten werden sich erweitern oder zusammenziehen, um die genauen Maße der `Table` ohne verbleibenden Platz auszufüllen.
 
 ```java
-// Spalten auf die Tabellenbreite anpassen (entspricht dem Setzen von flex=1 für alle)
+// Spalten an die Tabellenbreite anpassen (entspricht dem Festlegen von flex=1 für alle)
 table.setColumnsToAutoFit().thenAccept(ignored -> {
   // Alle Spalten teilen sich jetzt den Platz gleichmäßig
 });
 ```
 
 :::info Asynchrone Operationen
-Auto-Größenanpassungsmethoden geben `PendingResult<Void>` zurück, da sie clientseitige Berechnungen erfordern. Verwenden Sie `thenAccept()`, um Code nach Abschluss der Größenanpassung auszuführen. Wenn Sie nicht auf den Abschluss warten müssen, können Sie die Methoden ohne `thenAccept()` aufrufen.
+Automatische Größenanpassungsmethoden geben `PendingResult<Void>` zurück, da sie clientseitige Berechnungen erfordern. Verwenden Sie `thenAccept()`, um Code nach Abschluss der Größenanpassung auszuführen. Wenn Sie nicht auf den Abschluss warten müssen, können Sie die Methoden auch ohne `thenAccept()` aufrufen.
 :::
 
 <!-- vale off -->
@@ -256,73 +259,73 @@ height='550px'
 
 ## Benutzerinteraktionen <DocChip chip='since' label='25.03' /> {#user-interactions}
 
-### Spaltenvergrößerung {#column-resizing}
+### Größenanpassung der Spalten {#column-resizing}
 
-Die Spaltenvergrößerung gibt Benutzern die Kontrolle darüber, wie viel Platz jede Spalte einnimmt, indem sie die Spaltenränder ziehen.
+Die Größenanpassung der Spalten gibt Benutzern die Kontrolle darüber, wie viel Platz jede Spalte einnimmt, indem sie die Spaltenränder ziehen.
 
-Sie können das Vergrößerungsverhalten für einzelne Spalten steuern, wenn Sie Ihre Tabelle erstellen:
+Sie können das Größenanpassungsverhalten für einzelne Spalten beim Erstellen Ihrer Tabelle steuern:
 
 ```java
-// Benutzervergrößerung für diese Spalte aktivieren
+// Benutzeranpassung für diese Spalte aktivieren
 table.addColumn("Titel", Product::getTitle).setResizable(true);
 
-// Vergrößerung deaktivieren
+// Größenanpassung deaktivieren
 table.addColumn("ID", Product::getId).setResizable(false);
 
-// Aktuellen Status prüfen
+// Aktuellen Status überprüfen
 boolean canResize = column.isResizable();
 ```
 
-Für Tabellen, bei denen Sie ein konsistentes Verhalten über mehrere Spalten hinweg wünschen, verwenden Sie die Methoden zur Massenkonfiguration:
+Für Tabellen, bei denen Sie ein konsistentes Verhalten über mehrere Spalten hinweg wünschen, verwenden Sie die massenweisen Konfigurationsmethoden:
 
 ```java
-// Alle vorhandenen Spalten vergrößerbar machen
+// Alle vorhandenen Spalten größenanpassbar machen
 table.setColumnsToResizable(true);
 
-// Alle vorhandenen Spalten vom Vergrößern abhält
+// Alle vorhandenen Spalten von der Größenanpassung sperren
 table.setColumnsToResizable(false);
 ```
 
-### Spaltenneuanordnung {#column-reordering}
+### Neuordnung der Spalten {#column-reordering}
 
-Die Spaltenneuanordnung ermöglicht es Benutzern, Spalten per Drag & Drop in ihre bevorzugte Reihenfolge zu verschieben, wodurch das Layout der `Table` für ihren Arbeitsablauf personalisiert wird.
+Die Neuordnung der Spalten ermöglicht es Benutzern, Spalten per Drag & Drop in ihre bevorzugte Reihenfolge zu ziehen und das Layout der `Table` für ihren Workflow zu personalisieren.
 
-Konfigurieren Sie die Berechtigungen für die Spaltenbewegung beim Einrichten Ihrer Tabelle:
+Konfigurieren Sie die Erlaubnis für die Bewegung von Spalten, wenn Sie Ihre Tabelle einrichten:
 
 ```java
-// Ermöglichen Sie Benutzern, diese Spalte zu verschieben
+// Benutzern erlauben, diese Spalte zu verschieben
 table.addColumn("Titel", Product::getTitle).setMovable(true);
 
-// Spaltenbewegung verhindern (nützlich für ID- oder Aktionsspalten)
+// Bewegung der Spalte verhindern (nützlich für ID- oder Aktionsspalten)
 table.addColumn("ID", Product::getId).setMovable(false);
 
-// Aktuellen Status prüfen
+// Aktuellen Status überprüfen
 boolean canMove = column.isMovable();
 ```
 
 Wenden Sie die Bewegungseinstellungen gleichzeitig auf mehrere Spalten an:
 
 ```java
-// Neuanordnung für alle vorhandenen Spalten aktivieren
+// Neuordnung für alle vorhandenen Spalten aktivieren
 table.setColumnsToMovable(true);
 
-// Neuanordnung für alle vorhandenen Spalten deaktivieren  
+// Neuordnung für alle vorhandenen Spalten deaktivieren
 table.setColumnsToMovable(false);
 ```
 
 :::note Massenoperationen
-Die Methoden `setColumnsToResizable()` und `setColumnsToMovable()` betreffen nur vorhandene Spalten zum Zeitpunkt des Aufrufs. Sie setzen keine Standards für zukünftige Spalten.
+Die Methoden `setColumnsToResizable()` und `setColumnsToMovable()` betreffen nur vorhandene Spalten zum Zeitpunkt des Aufrufs. Sie setzen keine Standardwerte für zukünftige Spalten.
 :::
 
-### Programmatische Spaltenbewegung {#programmatic-column-movement} 
+### Programmgesteuerte Spaltenbewegung {#programmatic-column-movement}
 
-Neben Drag-and-Drop können Sie Spalten auch programmgesteuert nach Index oder ID repositionieren. Bedenken Sie, dass der Index nur auf sichtbare Spalten basiert; alle versteckten Spalten werden bei der Berechnung der Positionen ignoriert.
+Zusätzlich zu Drag & Drop können Sie Spalten auch programmgesteuert nach Index oder ID repositionieren. Bedenken Sie, dass der Index nur auf sichtbaren Spalten basiert; alle ausgeblendeten Spalten werden beim Berechnen der Positionen ignoriert.
 
 ```java
-// Spalte an erste Position verschieben
+// Spalte an die erste Position verschieben
 table.moveColumn("titel", 0);
 
-// Spalte an letzte Position verschieben
+// Spalte an die letzte Position verschieben
 table.moveColumn(titleColumn, table.getColumns().size() - 1);
 
 // Asynchrone Bewegung mit Rückruf
@@ -333,12 +336,12 @@ table.moveColumn("beschreibung", 2).thenAccept(c -> {
 
 ## Ereignisbehandlung {#event-handling}
 
-Die `Table`-Komponente gibt Ereignisse aus, wenn Benutzer mit Spalten interagieren, sodass Sie auf Layoutänderungen reagieren und Benutzereinstellungen speichern können.
+Die `Table`-Komponente gibt Ereignisse aus, wenn Benutzer mit Spalten interagieren, sodass Sie auf Layoutänderungen reagieren und Benutzerpräferenzen speichern können.
 
 Unterstützte Ereignisse:
 
-- `TableColumnResizeEvent`: Wird ausgelöst, wenn ein Benutzer eine Spalte durch Ziehen ihres Randes vergrößert.
-- `TableColumnMoveEvent`: Wird ausgelöst, wenn ein Benutzer eine Spalte durch Ziehen ihrer Kopfzeile neu anordnet.
+- `TableColumnResizeEvent`: Wird ausgelöst, wenn ein Benutzer eine Spalte durch Ziehen ihres Randes anpasst.
+- `TableColumnMoveEvent`: Wird ausgelöst, wenn ein Benutzer eine Spalte durch Ziehen ihres Headers neu anordnet.
 
 Sie können Listener an die `Table` anhängen, um zu reagieren, wenn Benutzer das Tabellenlayout ändern.
 
@@ -346,12 +349,12 @@ Sie können Listener an die `Table` anhängen, um zu reagieren, wenn Benutzer da
 Table<Product> table = new Table<>();
 
 table.onColumnResize(event -> {
-  // Ereignis für die Spaltenvergrößerung behandeln
+  // Ereignis zur Größenänderung der Spalte behandeln
   // Zugriff: event.getColumn(), event.getOldWidth(), event.getNewWidth()
 });
 
 table.onColumnMove(event -> {
-  // Ereignis für die Spaltenbewegung behandeln  
+  // Ereignis zur Bewegung der Spalte behandeln
   // Zugriff: event.getColumn(), event.getOldIndex(), event.getNewIndex()
 });
 ```

@@ -112,7 +112,7 @@ class HelloWorldViewTest {
 3. **Interact with Elements**:
    - Locate elements using `By.tagName`, `By.id`, or other Selenium locators.
    - Verify expected behaviors like button clicks or text changes.
-    
+
   :::info
   Because webforJ produces a single-page web app, Selenium isn’t aware of DOM manipulation after the initial page has been loaded. You can use Selenium’s [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) to wait until the DOM has been compiled.
   :::

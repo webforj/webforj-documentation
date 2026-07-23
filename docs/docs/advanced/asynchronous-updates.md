@@ -50,14 +50,14 @@ Any thread created from within an `Environment` thread automatically has access 
 @Route
 public class DataView extends Composite<Div> {
   private final ExecutorService executor = Executors.newCachedThreadPool();
-  
+
   public DataView() {
     // This thread has Environment context
-    
+
     // Child threads inherit the context automatically
     executor.submit(() -> {
       String data = fetchRemoteData();
-      
+
       // Can use runLater because context was inherited
       Environment.runLater(() -> {
         dataLabel.setText(data);
@@ -80,7 +80,7 @@ static {
   }).start();
 }
 
-// System timer threads - no Environment context  
+// System timer threads - no Environment context
 Timer timer = new Timer();
 timer.schedule(new TimerTask() {
   public void run() {
@@ -106,12 +106,12 @@ When called from the `Environment` thread itself, tasks execute **synchronously 
 ```java
 button.onClick(e -> {
   System.out.println("Before: " + Thread.currentThread().getName());
-  
+
   PendingResult<String> result = Environment.runLater(() -> {
     System.out.println("Inside: " + Thread.currentThread().getName());
     return "completed";
   });
-  
+
   System.out.println("After: " + result.isDone());  // true
 });
 ```
@@ -128,13 +128,13 @@ public void onDidCreate() {
   CompletableFuture.runAsync(() -> {
     // This runs on ForkJoinPool thread
     System.out.println("Background: " + Thread.currentThread().getName());
-    
+
     PendingResult<Void> result = Environment.runLater(() -> {
       // This runs on Environment thread
       System.out.println("UI Update: " + Thread.currentThread().getName());
       statusLabel.setText("Processing complete");
     });
-    
+
     // result.isDone() would be false here
     // The task is queued and will execute asynchronously
   });
@@ -168,28 +168,28 @@ When performing long-running operations with frequent UI updates, track all pend
 public class LongRunningTask {
   private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
   private volatile boolean isCancelled = false;
-  
+
   public void startTask() {
     CompletableFuture.runAsync(() -> {
       for (int i = 0; i <= 100; i++) {
         if (isCancelled) return;
-        
+
         final int progress = i;
         PendingResult<Void> update = Environment.runLater(() -> {
           progressBar.setValue(progress);
         });
-        
+
         // Track for potential cancellation
         pendingUpdates.add(update);
-        
+
         Thread.sleep(100);
       }
     });
   }
-  
+
   public void cancelTask() {
     isCancelled = true;
-    
+
     // Cancel all pending UI updates
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
@@ -209,11 +209,11 @@ When components are destroyed (e.g., during navigation), cancel all pending upda
 @Route
 public class CleanupView extends Composite<Div> {
   private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
-  
+
   @Override
   protected void onDestroy() {
     super.onDestroy();
-    
+
     // Cancel all pending updates to prevent memory leaks
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {

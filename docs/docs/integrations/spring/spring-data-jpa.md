@@ -93,19 +93,19 @@ public class TableView extends Composite<Div> {
   public TableView(PersonRepository personRepository) {
     // Wrap Spring Data repository for webforJ
     repository = new SpringDataRepository<>(personRepository);
-    
+
     // Connect to table
     table.setRepository(repository);
-    
+
     // Define columns
     table.addColumn("name", Person::getFullName)
           .setPropertyName("firstName"); // Sort by actual JPA property
     table.addColumn("email", Person::getEmail);
-    table.addColumn("age", person -> 
+    table.addColumn("age", person ->
           person.getAge() != null ? person.getAge().toString() : "");
     table.addColumn("city", Person::getCity);
     table.addColumn("profession", Person::getProfession);
-    
+
     // Enable sorting
     table.getColumns().forEach(column -> column.setSortable(true));
   }
@@ -120,16 +120,16 @@ The `setPropertyName()` method is important for sorting - it tells the adapter w
 
 :::tip[Learn more about filtering]
 To understand how filtering works with webforJ repositories, including base filters and filter composition, see the [Repository documentation](../../advanced/repository/overview).
-::: 
+:::
 
 ```java
 // Filter by city
-Specification<Person> cityFilter = (root, query, cb) -> 
+Specification<Person> cityFilter = (root, query, cb) ->
   cb.equal(root.get("city"), "New York");
 repository.setFilter(cityFilter);
 
 // Multiple conditions
-Specification<Person> complexFilter = (root, query, cb) -> 
+Specification<Person> complexFilter = (root, query, cb) ->
   cb.and(
     cb.equal(root.get("profession"), "Engineer"),
     cb.greaterThanOrEqualTo(root.get("age"), 25)

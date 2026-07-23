@@ -4,7 +4,7 @@ sidebar_position: 126
 description: Embed an interactive terminal emulator with the Terminal component for shells, dashboards, debug consoles, and remote access tools.
 ---
 
-<DocChip chip="shadow" />  
+<DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-terminal" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
@@ -39,7 +39,7 @@ files={[
   'src/main/java/com/webforj/samples/views/terminal/commands/MsgCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/ConfirmCommand.java',
   'src/main/java/com/webforj/samples/views/terminal/commands/TimeCommand.java',
-  'src/main/resources/static/css/terminal/terminal-view.css',
+  'src/main/frontend/css/terminal/terminal-view.css',
 ]}
 height='400px'
 />
@@ -103,11 +103,11 @@ terminal.onKey(event -> {
 });
 ```
 
-All user input captured by the terminal (such as from `onData` events) is emitted as UTF-16 strings.  
+All user input captured by the terminal (such as from `onData` events) is emitted as UTF-16 strings.
 If your backend expects a different encoding (such as UTF-8 bytes), you must manually transcode the data.
 
 :::info Legacy Encodings
-The terminal **doesn't support legacy encodings** like `ISO-8859`.  
+The terminal **doesn't support legacy encodings** like `ISO-8859`.
 If you need compatibility with non-UTF-8 systems, use an external transcoder (for example, [`luit`](https://linux.die.net/man/1/luit) or [`iconv`](https://en.wikipedia.org/wiki/Iconv)) to convert the data before writing it to or reading it from the terminal.
 :::
 
@@ -220,7 +220,7 @@ Recognized groups:
 - **`OSC` sequences** (Operating System Commands, `ESC ]` or `OSC (\x9D)`, for setting window title, hyperlinks, and colors)
 
 :::info Handling Exotic and Custom Sequences
-Some exotic sequence types like `APC`,`PM`, and `SOS` are recognized but silently ignored.  
+Some exotic sequence types like `APC`,`PM`, and `SOS` are recognized but silently ignored.
 Custom sequences can be supported through integrations if needed.
 :::
 

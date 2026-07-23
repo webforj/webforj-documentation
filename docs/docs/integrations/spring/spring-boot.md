@@ -20,7 +20,7 @@ The simplest way to create a new webforJ app is [startforJ](https://docs.webforj
 
 When you create an app with [startforJ](https://docs.webforj.com/startforj), you can customize it by providing the following information:
 
-- Basic project metadata (App Name, Group ID, Artifact ID)  
+- Basic project metadata (App Name, Group ID, Artifact ID)
 - webforJ version and Java version
 - Theme Color and Icon
 - Archetype
@@ -147,7 +147,7 @@ For versions **before 25.11**, you must include both dependencies separately.
     <artifactId>webforj</artifactId>
     <version>${webforj.version}</version>
   </dependency>
-    
+
   <!-- Add Spring Boot starter -->
   <dependency>
     <groupId>com.webforj</groupId>
@@ -207,15 +207,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @Routify(packages = "com.example.views")
 public class Application extends App {
-    
+
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
-    
+
   // Keep your existing run() method if you have one
   @Override
   public void run() throws WebforjException {
-    // Your existing initialization code 
+    // Your existing initialization code
   }
 }
 ```
@@ -253,9 +253,9 @@ mvn spring-boot:run
 
 The app starts with an embedded Tomcat server on port 8080 by default. Your existing webforJ views and routes work exactly as before, but now you can inject Spring beans and use Spring features.
 
-## Configuration
+## Configuration {#configuration}
 
-Use the `application.properties` file in `src/main/resources` to configure your app. 
+Use the `application.properties` file in `src/main/resources` to configure your app.
  See [Property Configuration](/docs/configuration/properties) for information on webforJ configuration properties.
 
 The following webforJ `application.properties` settings are specific to Spring:

@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 This article outlines the steps to create a new webforJ app using webforJ [archetypes](../building-ui/archetypes/overview.md). Archetypes provide pre-configured project structures and starter code so you can get a project up and running quickly.
-To create a new webforJ app from an archetype, you can use [startforJ](#using-startforj) or the [command line](#using-the-command-line). 
+To create a new webforJ app from an archetype, you can use [startforJ](#using-startforj) or the [command line](#using-the-command-line).
 
 :::tip Prerequisites
 Before you begin, review the necessary [prerequisites](./prerequisites) for setting up and using webforJ.
@@ -27,7 +27,7 @@ The simplest way to create a new webforJ app is [startforJ](https://docs.webforj
 
 When you create an app with [startforJ](https://docs.webforj.com/startforj), you can customize it by providing the following information:
 
-- Basic project metadata (App Name, Group ID, Artifact ID)  
+- Basic project metadata (App Name, Group ID, Artifact ID)
 - webforJ version and Java version
 - Theme Color and Icon
 - Archetype

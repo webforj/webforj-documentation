@@ -112,6 +112,17 @@ jobs:
             npm run write-translations -- --locale ${{ github.event.inputs.target_language }}
           fi
 
+      # Docusaurus write-heading-ids uses a regex anchored on `}$` to detect
+      # existing `{#id}` markers. If a heading has any trailing whitespace or
+      # a CR before the newline, the check fails and the CLI appends a *second*
+      # `{#id}`. The MDX loader then only escapes the first `{#` per line, and
+      # the second one crashes the build with "Could not parse expression with
+      # acorn". Strip trailing whitespace preemptively so write-heading-ids
+      # stays idempotent regardless of author line-ending habits.
+      - name: Strip trailing whitespace from markdown
+        working-directory: ./docs
+        run: find docs blog -name '*.md' -type f -exec sed -i 's/[[:space:]]\+$//' {} +
+
       - name: Generate heading IDs
         working-directory: ./docs
         run: npm run write-heading-ids

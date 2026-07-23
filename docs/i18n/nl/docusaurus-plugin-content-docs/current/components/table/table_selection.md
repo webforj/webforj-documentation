@@ -2,12 +2,15 @@
 sidebar_position: 10
 title: Selection
 slug: selection
-_i18n_hash: 46e92f0b5b3f1dafbf040176711ae5ac
+description: >-
+  Configure single, multi, or no-selection modes on the Table and respond to row
+  selection events with appropriate listeners.
+_i18n_hash: 3dc9f9e7462f97e260e1112a2966dc18
 ---
-De `Table`-component biedt verschillende selectiemogelijkheden. Er zijn methoden voor het selecteren van een enkel item, meerdere items of het programmatisch beheren van selecties.
+De `Table` component biedt verschillende selectiemogelijkheden. Er zijn methoden voor het selecteren van een enkel item, meerdere items of het programmatistisch beheren van selecties.
 
 :::tip Beheren en opvragen van gegevens
-Voor informatie over het gebruik van het `Repository`-patroon om collecties te beheren en op te vragen, zie de [Repository-artikelen](/docs/advanced/repository/overview).
+Voor informatie over hoe u het `Repository`-patroon kunt gebruiken om collecties te beheren en op te vragen, zie de [Repository-artikelen](/docs/advanced/repository/overview).
 :::
 
 ## Selectiemodus {#selection-mode}
@@ -18,25 +21,25 @@ De selectiemodus in de tabel bepaalt hoe items door de gebruiker kunnen worden g
 setSelectionMode(SelectionMode selectionMode)
 ```
 
-Beschikbare SelectionMode-opties zijn onder andere:
+Beschikbare SelectieMode-opties zijn onder andere:
 
->- `SINGLE` - (enkele selectie) 
+>- `SINGLE` - (enkele selectie)
 >- `MULTI` - (meervoudige selectie)
 >- `NONE` - (geen selectie).
 
 ## Selectie-evenement {#selection-event}
 
-De `Table`-componentenpakket genereert verschillende evenementen gerelateerd aan rijenselectie. Deze evenementen registreren wijzigingen in de selectietoestand van `Table`-rijen. Hieronder staan de belangrijkste selectie-evenementen met hun beschrijvingen:
+Het `Table`-componentpakket zendt verschillende evenementen uit die verband houden met rijenselectie. Deze evenementen vangen wijzigingen in de selectietoestand van `Table`-rijen. Hieronder staan de belangrijkste selecteerevenementen met hun beschrijvingen:
 
->- `TableItemSelectEvent` - Geëmitteerd wanneer een tabelitem is geselecteerd.
->- `TableItemDeselectEvent` - Geëmitteerd wanneer een tabelitem is gedeselecteerd.
->- `TableItemSelectionChange` - Geëmitteerd wanneer de algehele selectie in de tabel verandert of wanneer een extra selectie is gekozen.
+>- `TableItemSelectEvent` -  Uitgezonden wanneer een tabelitem wordt geselecteerd.
+>- `TableItemDeselectEvent` - Uitgezonden wanneer een tabelitem wordt deselecteerd.
+>- `TableItemSelectionChange` - Uitgezonden wanneer de algehele selectie in de tabel verandert, of wanneer een extra selectie wordt gekozen.
 
 :::info
-De `TableItemSelectEvent` en `TableItemDeselectEvent` worden niet geactiveerd wanneer de meervoudige selectiemodus actief is en de selectie wordt gemaakt via het selectievakje in de kop. In dit geval moet de `TableItemSelectionChange` in plaats daarvan worden gebruikt.
+De `TableItemSelectEvent` en `TableItemDeselectEvent` worden niet geactiveerd wanneer de modus voor meervoudige selectie actief is en de selectie via de headercheckbox is gemaakt. In dit geval moet in plaats daarvan de `TableItemSelectionChange` worden gebruikt.
 :::
 
-In het onderstaande voorbeeld zal een `TableItemSelectEvent`-evenement worden geactiveerd wanneer een gebruiker een rij selecteert. Het evenement kan worden afgehandeld door een listener aan de tabel toe te voegen met behulp van de `onItemSelect()`-methode.
+In het onderstaande voorbeeld wordt een `TableItemSelectEvent`-evenement geactiveerd wanneer een gebruiker een rij selecteert. Het evenement kan worden verwerkt door een listener aan de tabel toe te voegen met de `onItemSelect()`-methode.
 
 <ComponentDemo
 path='/webforj/tablesingleselection'
@@ -48,11 +51,11 @@ files={[
 height='600px'
 />
 
-## Selectie met selectievakjes {#checkbox-selection}
+## Checkboxselectie {#checkbox-selection}
 
-Selectie met selectievakjes is ingeschakeld wanneer de selectiemodus `MULTI` is, en stelt gebruikers in staat om eenvoudig een of meer items te selecteren met behulp van selectievakjes die aan elke rij zijn gekoppeld. Deze functie is bijzonder nuttig voor scenario's waarin gebruikers bulkacties op geselecteerde items moeten uitvoeren. De Table-klasse biedt methoden om de selectie met selectievakjes in te schakelen en aan te passen.
+Checkboxselectie is ingeschakeld wanneer de selectiemodus `MULTI` is, en stelt gebruikers in staat om eenvoudig een of meer items te selecteren met behulp van checkboxes die aan elke rij zijn gekoppeld. Deze functie is bijzonder handig voor scenario's waarin gebruikers bulkacties op geselecteerde items moeten uitvoeren. De Table-klasse biedt methoden om checkboxselectie in te schakelen en aan te passen.
 
-Met de `setCheckboxSelection(boolean checkboxSelection)`-methode kunnen selectievakjes worden geconfigureerd om naast elke rij te worden weergegeven, zodat gebruikers items kunnen selecteren. Het onderstaande programma toont meervoudige selectie en selectie met selectievakjes ingeschakeld:
+Door de methode `setCheckboxSelection(boolean checkboxSelection)` te gebruiken, kunnen checkboxen worden geconfigureerd om naast elke rij te worden weergegeven, zodat gebruikers items kunnen selecteren. Het onderstaande programma toont meervoudige selectie en checkboxselectie ingeschakeld:
 
 <ComponentDemo
 path='/webforj/tablemultiselection'
@@ -64,14 +67,14 @@ files={[
 height='600px'
 />
 
-## Programmatische selectie {#programatic-selection}
+## Programmaselectie {#programatic-selection}
 
-De `Table`-component biedt programmatische selectiemethoden, waarmee u geselecteerde items kunt manipuleren op basis van hun sleutels of de volledige items.
+De `Table`-component biedt programmatistische selectiemethoden, waarmee u geselecteerde items kunt manipuleren, hetzij op basis van hun sleutels, hetzij op basis van de volledige items.
 
 ### Selecteren op sleutel {#select-by-key}
 
-De `selectKey(Object... keys)`-methode stelt u in staat om programmatisch items te selecteren met behulp van hun sleutels. U kunt een of meer sleutels aan deze methode doorgeven, en deze zal de selectie dienovereenkomstig bijwerken.
+De methode `selectKey(Object... keys)` stelt u in staat om programmatistisch items te selecteren met behulp van hun sleutels. U kunt een of meer sleutels aan deze methode doorgeven, en het zal de selectie dienovereenkomstig bijwerken.
 
-### Selecteren van invoeritems {#selecting-entry-items}
+### Het selecteren van invoeritems {#selecting-entry-items}
 
-Ten slotte stelt de `select(T... items)`-methode u in staat om programmatisch items te selecteren door een of meer items zelf aan deze methode door te geven om de selectie dienovereenkomstig bij te werken.
+Ten slotte stelt de methode `select(T... items)` u in staat om programmatistisch items te selecteren door een of meer items zelf aan deze methode door te geven om de selectie dienovereenkomstig bij te werken.

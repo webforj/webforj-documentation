@@ -1,26 +1,29 @@
 ---
 sidebar_position: 6
 title: Custom Implementation Example
-_i18n_hash: a04a98c0b17ef9b210aa856eb9e18a87
+description: >-
+  Build a session-based security stack by implementing SecurityConfiguration,
+  SecurityContext, SecurityManager, and SecurityRegistrar.
+_i18n_hash: 02c468d495da2fc6a00be56e72821d2c
 ---
-Ce guide explique comment créer une implémentation de sécurité personnalisée complète utilisant l'authentification basée sur les sessions. Vous apprendrez comment les quatre interfaces centrales fonctionnent ensemble en les implémentant depuis le début.
+Ce guide vous guide à travers la création d'une implémentation complète de sécurité personnalisée en utilisant l'authentification basée sur les sessions. Vous apprendrez comment les quatre interfaces principales interagissent en les mettant en œuvre à partir de zéro.
 
 :::tip[La plupart des applications devraient utiliser Spring Security]
-L'[intégration de Spring Security](/docs/security/getting-started) configure automatiquement tout ce qui est montré ici. Ne créez une sécurité personnalisée que si vous avez des exigences spécifiques ou que vous n'utilisez pas Spring Boot.
+L'[intégration de Spring Security](/docs/security/getting-started) configure automatiquement tout ce qui est montré ici. Ne construisez une sécurité personnalisée que si vous avez des exigences spécifiques ou si vous n'utilisez pas Spring Boot.
 :::
 
 ## Ce que vous allez construire {#what-youll-build}
 
-Un système de sécurité opérationnel avec quatre classes :
+Un système de sécurité fonctionnel avec quatre classes :
 
 - **SecurityConfiguration** - Définit le comportement de sécurité et les emplacements de redirection
 - **SecurityContext** - Suit qui est connecté en utilisant des sessions HTTP
-- **SecurityManager** - Coordonne les vérifications de sécurité et fournit les fonctions de connexion/déconnexion
-- **SecurityRegistrar** - Relie tout ensemble au démarrage de l'application
+- **SecurityManager** - Coordonne les vérifications de sécurité et fournit la connexion/déconnexion
+- **SecurityRegistrar** - Connecte tout ensemble au démarrage de l'application
 
-Cet exemple utilise un stockage basé sur les sessions, mais vous pourriez implémenter les mêmes interfaces en utilisant des requêtes de base de données, LDAP ou tout autre backend d'authentification.
+Cet exemple utilise le stockage basé sur les sessions, mais vous pourriez mettre en œuvre les mêmes interfaces en utilisant des requêtes de base de données, LDAP ou tout autre backend d'authentification.
 
-## Comment les pièces fonctionnent ensemble {#how-the-pieces-work-together}
+## Comment les éléments fonctionnent ensemble {#how-the-pieces-work-together}
 
 ```mermaid
 sequenceDiagram
@@ -52,7 +55,7 @@ sequenceDiagram
 **Flux :**
 1. **`SecurityRegistrar`** s'exécute au démarrage, crée le gestionnaire, enregistre les évaluateurs et attache l'observateur
 2. **`SecurityManager`** coordonne tout - il fournit le contexte et la configuration aux évaluateurs
-3. **`SecurityContext`** répond à la question "Qui est connecté ?" en lisant les sessions HTTP
+3. **`SecurityContext`** répond à la question "Qui est connecté ?" en lisant depuis les sessions HTTP
 4. **`SecurityConfiguration`** répond à la question "Où rediriger ?" pour les pages de connexion et d'accès refusé
 5. **`Evaluators`** prennent des décisions d'accès en utilisant le contexte et la configuration
 
@@ -71,7 +74,7 @@ import java.util.Optional;
  * Configuration de sécurité pour l'application.
  *
  * <p>
- * Définit où rediriger les utilisateurs lorsque l'authentification est requise ou lorsque l'accès est refusé.
+ * Définit où rediriger les utilisateurs lorsque l'authentification est requise ou que l'accès est refusé.
  * </p>
  */
 public class SecurityConfiguration implements RouteSecurityConfiguration {
@@ -99,13 +102,13 @@ public class SecurityConfiguration implements RouteSecurityConfiguration {
 ```
 
 - `isEnabled() = true` - La sécurité est active
-- `isSecureByDefault() = false` - Les routes sont publiques sauf si annotées (utilisez `true` pour exiger l'authentification sur toutes les routes par défaut)
+- `isSecureByDefault() = false` - Les routes sont publiques sauf annotation (utilisez `true` pour exiger l'authentification sur toutes les routes par défaut)
 - `/login` - Où vont les utilisateurs non authentifiés
 - `/access-denied` - Où vont les utilisateurs authentifiés sans permissions
 
 ## Étape 2 : Implémenter le contexte de sécurité {#step-2-implement-security-context}
 
-Le contexte suit qui est connecté. Cette implémentation utilise des sessions HTTP pour stocker les informations sur l'utilisateur :
+Le contexte suit qui est connecté. Cette implémentation utilise des sessions HTTP pour stocker les informations utilisateur :
 
 <!-- vale off -->
 
@@ -120,7 +123,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Contexte de sécurité basé sur les sessions simple.
+ * Contexte de sécurité basé sur les sessions.
  *
  * <p>
  * Stocke le principal utilisateur et les rôles dans la session HTTP. Il s'agit d'une implémentation minimale à des fins pédagogiques.
@@ -221,13 +224,13 @@ public class SecurityContext implements RouteSecurityContext {
 
 <!-- vale on -->
 
-**Comment cela fonctionne :**
+**Comment ça fonctionne :**
 
 - `isAuthenticated()` vérifie si un principal utilisateur existe dans la session
-- `getPrincipal()` récupère le nom d'utilisateur du stockage des sessions
+- `getPrincipal()` récupère le nom d'utilisateur du stockage de session
 - `hasRole()` vérifie si l'ensemble de rôles de l'utilisateur contient le rôle spécifié
 - `getAttribute()` / `setAttribute()` gèrent les attributs de sécurité personnalisés
-- `Environment.getSessionAccessor()` fournit un accès aux sessions thread-safe
+- `Environment.getSessionAccessor()` fournit un accès sécurisé aux sessions
 
 ## Étape 3 : Créer le gestionnaire de sécurité {#step-3-create-security-manager}
 
@@ -309,7 +312,7 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Récupère l'instance actuelle du gestionnaire.
+   * Obtient l'instance actuelle du gestionnaire.
    *
    * @return l'instance actuelle du gestionnaire
    */
@@ -339,18 +342,18 @@ public class SecurityManager extends AbstractRouteSecurityManager {
 
 <!-- vale on -->
 
-**Comment cela fonctionne :**
+**Comment ça fonctionne :**
 
-- Étend `AbstractRouteSecurityManager` pour hériter de la logique de chaîne d'évaluateur
+- Étend `AbstractRouteSecurityManager` pour hériter de la logique de chaîne d'évaluateurs
 - Fournit des implémentations pour `getConfiguration()` et `getSecurityContext()`
 - Ajoute `login()` pour authentifier les utilisateurs et stocker les informations d'identification dans la session
 - Ajoute `logout()` pour vider la session et rediriger vers la page de connexion
-- Utilise [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) pour un stockage de session simple
+- Utilise [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) pour un stockage simple des sessions
 - Se stocke dans [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) pour un accès global à l'application
 
-## Étape 4 : Relier tout au démarrage {#step-4-wire-everything-at-startup}
+## Étape 4 : Connecter tout au démarrage {#step-4-wire-everything-at-startup}
 
-Le registraire connecte toutes les pièces lorsque l'application démarre :
+Le registrar connecte tous les éléments lorsque l'application démarre :
 
 ```java title="SecurityRegistrar.java"
 package com.securityplain.security;
@@ -410,15 +413,15 @@ com.securityplain.security.SecurityRegistrar
 
 Cela enregistre votre [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners) pour qu'il s'exécute au démarrage de l'application.
 
-**Comment cela fonctionne :**
+**Comment ça fonctionne :**
 
 - S'exécute tôt (`@AppListenerPriority(1)`) pour configurer la sécurité avant le chargement des routes
-- Crée le gestionnaire de sécurité et le stocke de manière globale
-- Enregistre les évaluateurs intégrés par ordre de priorité (les nombres plus bas s'exécutent en premier)
+- Crée le gestionnaire de sécurité et le stocke globalement
+- Enregistre les évaluateurs intégrés dans l'ordre de priorité (les nombres inférieurs s'exécutent en premier)
 - Crée l'observateur qui intercepte la navigation
-- Attache l'observateur au routeur afin que les vérifications de sécurité se fassent automatiquement
+- Attache l'observateur au routeur afin que les vérifications de sécurité se produisent automatiquement
 
-Après cela, la sécurité est active pour toute la navigation.
+Après cela, la sécurité est active pour toute navigation.
 
 ## Utiliser votre implémentation {#using-your-implementation}
 
@@ -449,7 +452,7 @@ public class LoginView extends Composite<Login> {
       var result = SecurityManager.getCurrent().login(
         e.getUsername(), e.getPassword()
       );
-      
+
       if (result.isGranted()) {
         Router.getCurrent().navigate(new Location("/"));
       } else {

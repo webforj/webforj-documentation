@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3  
+sidebar_position: 3
 title: Defining Routes
 description: Map URLs to webforJ components with the @Route annotation and define multiple paths to the same view using @RouteAlias.
 ---
