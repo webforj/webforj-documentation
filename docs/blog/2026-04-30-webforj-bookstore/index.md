@@ -18,7 +18,7 @@ The [webforJ Bookstore](https://github.com/webforj/built-with-webforj/tree/main/
 
 ![Screenshot of Bookstore app](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/02-inventory-user.png)
 
-## The bookstore at a glance
+## The bookstore at a glance {#the-bookstore-at-a-glance}
 
 Here's what's in the app:
 
@@ -34,7 +34,7 @@ Two accounts ship with the app for testing:
 | `user` | `password` | User |
 | `admin` | `admin` | User + Admin |
 
-## Connecting the table to Spring Data
+## Connecting the table to Spring Data {#connecting-the-table-to-spring-data}
 
 The core of the inventory is a `Table<Book>` fed by a `SpringDataRepository`. webforJ's `SpringDataRepository` wraps a standard Spring Data `JpaRepository` and gives the `Table` component a way to page, sort, and filter rows without loading everything into memory at once.
 
@@ -63,7 +63,7 @@ bookTable.setRepository(repository);
 
 From there, the table handles its own lifecycle perfectly. Sorting, scrolling, and refreshing after a save all go through the repository.
 
-## Live filtering with JPA Specifications
+## Live filtering with JPA Specifications {#live-filtering-with-jpa-specifications}
 
 The search bar and genre filter both update the table in real time, no matter the size of the dataset. Each time the user types in the search bar or picks a genre, the view builds a JPA `Specification` and hands it to the repository:
 
@@ -91,13 +91,13 @@ repository.commit();
 
 `repository.commit()` is the trigger that tells the `Table` to re-fetch its data. The JPA `Specification` runs as a proper SQL query, so filtering against a large dataset stays fast.
 
-:::warning 
+:::warning
 Make sure to use `escapeLikePattern`. Without it, your search field is an open door into your database, and we don't want that, even in a demo.
 :::
 
 ![Filtering the inventory by search term](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/03-filtered-results.png)
 
-## Custom genre chip renderer
+## Custom genre chip renderer {#custom-genre-chip-renderer}
 
 Genres are stored as a list of strings on each `Book`, but they display as colored pill badges in the table. That's handled by `GenreChipRenderer`, a custom `Renderer` that outputs inline HTML for each row:
 
@@ -133,7 +133,7 @@ bookTable.addColumn("Genres", book -> GSON.toJson(
 
 The interesting bit here is the type boundary: genres are serialized to JSON on the Java side, then parsed and rendered client-side in the template. Passing structured data into a renderer this way worked cleanly, despite me half-expecting to spend time fighting the boundary.
 
-## Data binding in the edit drawer
+## Data binding in the edit drawer {#data-binding-in-the-edit-drawer}
 
 Clicking any row opens an `InventoryDrawer`, a `Drawer` component that lets users add or edit a book. The form fields map directly to a `Book` instance through webforJ's `BindingContext`, making sure any changes are reflected in the model and the fields are already prefilled:
 
@@ -170,7 +170,7 @@ If validation fails, the binding context maps the errors back to the individual 
 ![Edit drawer with a book loaded](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/04-edit-drawer.png)
 
 <!-- vale Google.Headings = NO -->
-## Adding Spring Security
+## Adding Spring Security {#adding-spring-security}
 <!-- vale Google.Headings = YES -->
 
 Wiring Spring Security into webforJ's routing goes through `WebforjSecurityConfigurer`:
@@ -191,9 +191,9 @@ Instead of hardcoding URL strings, you can hand it your actual view classes. web
 
 ![Login page](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/01-login.png)
 
-### Public routes and role restrictions
+### Public routes and role restrictions {#public-routes-and-role-restrictions}
 
-`@AnonymousAccess` on the login view is easy to forget, but skip it and Spring Security intercepts everyone before they can get to the login page. 
+`@AnonymousAccess` on the login view is easy to forget, but skip it and Spring Security intercepts everyone before they can get to the login page.
 
 ```java
 @Route("/signin")
@@ -217,7 +217,7 @@ That's it. Spring Security handles the rest, if someone without `ADMIN` navigate
 
 ![Management view, accessible only to admins](https://cdn.webforj.com/webforj-documentation/blogs/2026-04-24-webforj-bookstore/screenshots/06-management-view.png)
 
-### Role-aware navigation
+### Role-aware navigation {#role-aware-navigation}
 
 The nav drawer adapts based on role too. In `MainLayout`, `SecurityContextHolder` gives you the current user's authorities, so the Management tab only gets added if you're an admin:
 
@@ -241,13 +241,13 @@ logoutBtn.addClickListener(e ->
 );
 ```
 
-## Wrapping up
+## Wrapping up {#wrapping-up}
 
 Overall I have to say, even after working with webforJ for some time now, I am still impressed how easy it is to connect multiple concepts and technologies together with it. Everything we built here works together cleanly just using the default configs, but we could build any necessary custom components and they would fit just as well.
 
 If you want to see how it all fits together, the source is below.
 
-## Get the source code
+## Get the source code {#get-the-source-code}
 
 The full source code is available on GitHub:
 

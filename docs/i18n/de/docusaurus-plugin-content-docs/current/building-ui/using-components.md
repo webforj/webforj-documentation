@@ -5,21 +5,21 @@ description: >-
   Configure webforJ components in Java by setting text, attributes, IDs, inline
   styles, and CSS classes that drive appearance and behavior.
 sidebar_class_name: new-content
-_i18n_hash: fb67c93e2165a651245a703c772d3bcb
+_i18n_hash: 046749107d0e78ccfaab4017d4e374d1
 ---
-<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
+<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
 
-Komponenten sind die Bausteine der webforJ-Anwendungen. Ob Sie integrierte Komponenten wie `Button` und `TextField` verwenden oder mit benutzerdefinierten Komponenten arbeiten, die von Ihrem Team bereitgestellt werden, die Art und Weise, wie Sie mit ihnen interagieren, folgt demselben konsistenten Modell: Sie konfigurieren Eigenschaften, verwalten den Zustand und komponieren Komponenten zu Layouts.
+Komponenten sind die Bausteine von webforJ-Anwendungen. Egal, ob Sie integrierte Komponenten wie `Button` und `TextField` verwenden oder mit benutzerdefinierten Komponenten arbeiten, die von Ihrem Team bereitgestellt werden, die Interaktion mit ihnen folgt demselben konsistenten Modell: Sie konfigurieren Eigenschaften, verwalten den Zustand und setzen Komponenten in Layouts zusammen.
 
-Dieser Leitfaden konzentriert sich auf diese alltäglichen Operationen: nicht auf die internen Abläufe, wie Komponenten funktionieren, sondern darauf, wie man mit ihnen in der Praxis arbeitet.
+Dieser Leitfaden konzentriert sich auf die alltäglichen Vorgänge: nicht auf die Interna, wie Komponenten funktionieren, sondern darauf, wie man sie praktisch einsetzt.
 
 ## Komponenteneigenschaften {#component-properties}
 
-Jede Komponente bietet Eigenschaften, die ihren Inhalt, ihr Aussehen und ihr Verhalten steuern. Die meisten davon haben spezifische, typisierte Java-Methoden (`setText()`, `setTheme()`, `setExpanse()`, usw.), was die primäre Methode ist, wie Sie Komponenten in webforJ konfigurieren. In den folgenden Abschnitten werden die Eigenschaften und Methoden behandelt, die allgemein auf Komponententypen anwendbar sind.
+Jede Komponente bietet Eigenschaften, die ihren Inhalt, ihr Erscheinungsbild und ihr Verhalten steuern. Die meisten davon haben spezifische, typisierte Java-Methoden (`setText()`, `setTheme()`, `setExpanse()` usw.), was die primäre Möglichkeit darstellt, wie Sie Komponenten in webforJ konfigurieren. Die folgenden Abschnitte behandeln die Eigenschaften und Methoden, die allgemein für verschiedene Komponententypen gelten.
 
 ### Textinhalt {#text-content}
 
-Die Methode `setText()` setzt den sichtbaren Text einer Komponente als literale Zeichen, wie die Beschriftung auf einem `Button` oder den Inhalt eines `Label`. Für Eingabekomponenten wie `TextField` verwenden Sie stattdessen `setValue()`, um den aktuellen Wert des Feldes festzulegen.
+Die Methode `setText()` legt den sichtbaren Text einer Komponente als wörtliche Zeichen fest, wie z.B. die Beschriftung eines `Button` oder den Inhalt eines `Label`. Bei Eingabekomponenten wie `TextField` verwenden Sie stattdessen `setValue()`, um den aktuellen Wert des Feldes festzulegen.
 
 ```java
 Button button = new Button();
@@ -32,32 +32,32 @@ TextField field = new TextField();
 field.setValue("Anfangswert");
 ```
 
-Markup, das mit `setText()` geschrieben wird, erscheint als diese Zeichen und wird niemals ausgeführt, wodurch verhindert wird, dass Text, der von Benutzereingaben oder externen Daten stammt, als lebendes Markup interpretiert wird.
+Markup, das mit `setText()` geschrieben wird, erscheint als diese Zeichen und wird nie ausgeführt, was verhindert, dass Texte, die von Benutzereingaben oder externen Daten stammen, als aktives Markup interpretiert werden.
 
 ```java
-// Wird als die literalen Zeichen "<b>Status: ready</b>" angezeigt
-component.setText("<b>Status: ready</b>");
+// Wird als wörtliche Zeichen "<b>Status: bereit</b>" angezeigt
+component.setText("<b>Status: bereit</b>");
 ```
 
 :::note Verwendung des `<html>`-Tags
-Frühere Versionen von webforJ behandelten einen mit `<html>` umschlossenen Wert, der an `setText()` übergeben wurde, als HTML. Dieses Verhalten ist veraltet und wird in webforJ 27.00 entfernt.
+Frühere Versionen von webforJ behandelten einen in `<html>` eingekapselten Wert, der an `setText()` übergeben wurde, als HTML. Dieses Verhalten ist veraltet und wird in webforJ 27.00 entfernt.
 
-Beim ersten Mal, wenn ein mit `<html>` umschlossener Wert `setText()` erreicht, wird eine Warnung protokolliert, die den Komponenten- und den Aufrufort nennt, damit der Aufruf zu `setHtml()` verschoben werden kann.
+Beim ersten Erreichen eines `<html>`-verpackten Werts in `setText()` wird eine Warnung protokolliert, die die Komponente und den Aufrufort benennt, sodass der Aufruf zu `setHtml()` verschoben werden kann.
 
-Um die Standardwerte von webforJ 27.00 im Voraus zu übernehmen, setzen Sie `webforj.legacyHtmlInText` auf `false`. In einer Spring-Anwendung wird derselbe Wert über `webforj.legacy-html-in-text` gesetzt.
+Um den Standard von webforJ 27.00 vorzeitig zu übernehmen, setzen Sie `webforj.legacyHtmlInText` auf `false`. In einer Spring-Anwendung wird der gleiche Wert über `webforj.legacy-html-in-text` festgelegt.
 
 ```java
 // webforj.legacyHtmlInText = true (Standard)
-component.setText("<html><b>Status: ready</b></html>"); // rendert fett
+component.setText("<html><b>Status: bereit</b></html>"); // rendert fett
 
 // webforj.legacyHtmlInText = false
-component.setText("<html><b>Status: ready</b></html>"); // zeigt die Zeichen <b>Status: ready</b>
+component.setText("<html><b>Status: bereit</b></html>"); // zeigt die Zeichen <b>Status: bereit</b>
 ```
 :::
 
-### HTML rendern {#rendering-html}
+### HTML-rendering {#rendering-html}
 
-Einige Komponenten unterstützen auch `setHtml()`, wenn Sie inline HTML-Markup im Inhalt rendern müssen:
+Einige Komponenten unterstützen ebenfalls `setHtml()`, wenn Sie Inline-HTML-Markup im Inhalt rendern müssen:
 
 ```java
 Div container = new Div();
@@ -65,49 +65,48 @@ container.setHtml("<strong>Fetter Text</strong> und <em>kursiver Text</em>");
 ```
 
 :::danger Cross-Site-Scripting (XSS)
-Als Vorsichtsmaßnahme gegen [Cross-Site-Scripting (XSS)-Angriffe](/docs/security/application-security/common-threats#cross-site-scripting-xss) verwenden Sie `setHtml()` nur mit Inhalten, die Sie direkt kontrollieren.
+Als Vorsichtsmaßnahme gegen [Cross-Site-Scripting (XSS)-Angriffe](/docs/security/application-security/common-threats#cross-site-scripting-xss) sollten Sie `setHtml()` nur mit Inhalten verwenden, die Sie direkt kontrollieren.
 :::
 
 ### HTML-Attribute {#html-attributes}
 
-Die meiste Konfiguration in webforJ erfolgt über typisierte Java-Methoden und nicht über rohe HTML-Attribute. Dennoch ist `setAttribute()` nützlich, um Zugänglichkeitsattribute zu übergeben, die keine spezielle API haben:
+Die meisten Konfigurationen in webforJ erfolgen über typisierte Java-Methoden und nicht über rohe HTML-Attribute. Dennoch ist `setAttribute()` nützlich, um Zugänglichkeitsattribute zu übergeben, die keine spezifische API haben:
 
 ```java
-Button button = new Button("Absenden");
-button.setAttribute("aria-label", "Das Formular absenden");
+Button button = new Button("Einreichen");
+button.setAttribute("aria-label", "Das Formular einreichen");
 button.setAttribute("aria-describedby", "form-hint");
 ```
 
-:::note Überprüfen Sie die Unterstützung der Komponente
-Nicht alle Komponenten unterstützen beliebige Attribute. Dies hängt von der zugrunde liegenden Implementierung der Komponente ab.
+:::note Überprüfen Sie die Unterstützung von Komponenten
+Nicht alle Komponenten unterstützen willkürliche Attribute. Dies hängt von der zugrunde liegenden Komponentenimplementierung ab.
 :::
 
 ### Komponenten-IDs {#component-ids}
 
-Sie können einer HTML-Element-ID einer Komponente mit `setAttribute()` zuweisen:
+Sie können einer HTML-Element-ID einer Komponente eine ID zuweisen, indem Sie `setAttribute()` verwenden:
 
 ```java
-Button submitButton = new Button("Absenden");
+Button submitButton = new Button("Einreichen");
 submitButton.setAttribute("id", "submit-btn");
 
 TextField emailField = new TextField("E-Mail");
 emailField.setAttribute("id", "email-input");
 ```
 
-DOM-IDs werden häufig für Testauswahlen und CSS-Zielverzeichnisse in Ihren Stylesheets verwendet.
+DOM-IDs werden häufig für Testauswahlen und CSS-Zielsetzungen in Ihren Stylesheets verwendet.
 
-:::tip Bevorzugen Sie Klassen für die Verwaltung mehrerer Komponenten
-Im Gegensatz zu CSS-Klassen sollten IDs innerhalb Ihrer App einzigartig sein. Wenn Sie mehrere Komponenten anvisieren müssen, verwenden Sie stattdessen `addClassName()`.
+:::tip Bevorzugen Sie Klassen für Mehr-Komponenten-Zielsetzungen
+Im Gegensatz zu CSS-Klassen sollten IDs innerhalb Ihrer Anwendung eindeutig sein. Wenn Sie mehrere Komponenten ansprechen müssen, verwenden Sie stattdessen `addClassName()`.
 :::
 
-:::info Vom Framework verwaltete IDs
-webforJ weist auch automatisch Identifikatoren an Komponenten intern zu. Die serverseitige ID (über `getComponentId()` zugänglich) wird zur Verfolgung des Frameworks verwendet, während die clientseitige ID (über `getClientComponentId()` zugänglich) für die client-server Kommunikation verwendet wird. Diese unterscheiden sich von dem DOM-Attribut `id`, das Sie mit `setAttribute()` festlegen.
+:::info Von Framework verwaltete IDs
+webforJ weist auch automatisch Identifikatoren für Komponenten intern zu. Die serverseitige ID (erreichbar über `getComponentId()`) wird für die Framework-Nachverfolgung verwendet, während die clientseitige ID (erreichbar über `getClientComponentId()`) für die Kommunikation zwischen Client und Server verwendet wird. Diese sind getrennt von dem DOM-`id`-Attribut, das Sie mit `setAttribute()` festlegen.
 :::
 
 ### Styling {#styling}
 
-Drei Methoden decken die meisten Styling-Anforderungen ab: `setStyle()` für einzelne CSS-Property-Werte und `addClassName()` sowie `removeClassName()`, um CSS-Klassen anzuwenden oder zu entfernen, die in Ihren Stylesheets definiert sind. 
-Verwenden Sie `setStyle()` für kleinere oder einmalige Styling-Anpassungen, und verwenden Sie CSS-Klassen, um größere oder wiederverwendbare Stile anzuwenden.
+Drei Methoden decken die meisten Stylingbedürfnisse ab: `setStyle()` für individuelle CSS-Eigenschaftswerte sowie `addClassName()` und `removeClassName()` zum Anwenden oder Entfernen von CSS-Klassen, die in Ihren Stylesheets definiert sind. Verwenden Sie `setStyle()` für geringfügige oder einmalige Stylinganpassungen und CSS-Klassen für größere oder wiederverwendbare Styles.
 
 ```java
 Div container = new Div();
@@ -127,20 +126,20 @@ if (isLoading) {
 
 ## Komponentenstatus {#component-state}
 
-Über Inhalt und Aussehen hinaus haben Komponenten Zustandsattribute, die bestimmen, ob sie sichtbar sind und ob sie auf Interaktionen des Benutzers reagieren. Die beiden am häufigsten verwendeten sind `setVisible()` und `setEnabled()`.
+Über den Inhalt und das Aussehen hinaus haben Komponenten Zustandsattribute, die bestimmen, ob sie sichtbar sind und ob sie auf Benutzerinteraktionen reagieren. Die beiden am häufigsten verwendeten sind `setVisible()` und `setEnabled()`.
 
-`setVisible()` steuert, ob die Komponente überhaupt in der UI gerendert wird. `setEnabled()` steuert, ob sie Eingaben oder Interaktionen akzeptiert, während sie sichtbar bleibt. In den meisten Fällen ist es vorzuziehen, zu deaktivieren statt zu verstecken: Ein deaktivierter Button kommuniziert weiterhin, dass eine Aktion existiert, aber noch nicht verfügbar ist, was weniger verwirrend ist, als wenn er erscheint und verschwindet.
+`setVisible()` steuert, ob die Komponente überhaupt in der Benutzeroberfläche angezeigt wird. `setEnabled()` steuert, ob sie Eingaben oder Interaktionen akzeptiert, während sie sichtbar bleibt. In den meisten Fällen ist das Deaktivieren vorzuziehen als das Ausblenden: Ein deaktivierter Button kommuniziert immer noch, dass eine Aktion existiert, aber momentan nicht verfügbar ist, was weniger verwirrend ist, als wenn er erscheint und wieder verschwindet.
 
 ```java
-// Ein zusätzliches Feld anzeigen, wenn ein Kontrollkästchen aktiviert ist
+// Eine zusätzliche Eingabe anzeigen, wenn eine Checkbox aktiviert wird
 TextField advancedField = new TextField("Erweiterte Einstellung");
 advancedField.setVisible(false);
 
 CheckBox enableAdvanced = new CheckBox("Erweiterte Einstellungen anzeigen");
 enableAdvanced.addValueChangeListener(e -> advancedField.setVisible(e.getValue()));
 
-// Aktivieren Sie einen Button nur, wenn das erforderliche Feld einen Wert hat
-Button submitButton = new Button("Absenden");
+// Einen Button nur aktivieren, wenn das erforderliche Feld einen Wert hat
+Button submitButton = new Button("Einreichen");
 submitButton.setEnabled(false);
 
 TextField nameField = new TextField("Name");
@@ -148,23 +147,23 @@ nameField.addValueChangeListener(e -> submitButton.setEnabled(!e.getValue().isBl
 ```
 
 :::warning Deaktiviert und verborgen sind keine Sicherheit
-`setVisible(false)` und `setEnabled(false)` betreffen nur die UI. Sie verhindern nicht, dass ein entschlossener Benutzer die zugrunde liegende Aktion über den Browser oder eine gestaltete Anfrage ausführt, daher sollten Sie sich niemals auf sie verlassen, um sensible Operationen zu schützen. Setzen Sie immer die Zugriffssteuerung auf dem Server durch. Siehe [Deaktiviert und verborgen sind keine Sicherheit](/docs/security/application-security/production-hardening#disabled-and-hidden-arent-security) für weitere Details.
+`setVisible(false)` und `setEnabled(false)` beeinflussen nur die Benutzeroberfläche. Sie verhindern nicht, dass ein entschlossener Benutzer die zugrunde liegende Aktion über den Browser oder eine angepasste Anfrage aufruft, daher sollten Sie sich niemals darauf verlassen, um sensible Operationen zu schützen. Enforce always access control on the server. See [Disabled and hidden aren't security](/docs/security/application-security/production-hardening#disabled-and-hidden-arent-security) for more details.
 :::
 
-Das folgende Anmeldeformular demonstriert `setEnabled()` in der Praxis. Der Anmelde-Button bleibt deaktiviert, bis beide Felder Inhalt haben, was dem Benutzer klar macht, dass Eingaben erforderlich sind, bevor er fortfahren kann:
+Das folgende Anmeldeformular zeigt `setEnabled()` in der Praxis. Der Anmelde-Button bleibt deaktiviert, bis beide Felder Inhalt haben, was dem Benutzer klar macht, dass Eingaben erforderlich sind, bevor er fortfahren kann:
 
 <ComponentDemo
 path='/webforj/conditionalstate'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java',
-  'src/main/resources/static/usingcomponents/conditionalstate.css',
+  'src/main/frontend/usingcomponents/conditionalstate.css',
 ]}
 height='450px'
 />
 
 ## Arbeiten mit Containern {#working-with-containers}
 
-In webforJ wird das Layout von Containern behandelt, die Komponenten enthalten und steuern, wie sie angeordnet werden. Sie positionieren die untergeordneten Komponenten nicht manuell; stattdessen fügen Sie sie einem Container hinzu und konfigurieren die Layout-Eigenschaften dieses Containers.
+In webforJ wird das Layout von Containern verwaltet, die Komponenten halten und steuern, wie sie angeordnet sind. Sie positionieren untergeordnete Komponenten nicht manuell; stattdessen fügen Sie sie einem Container hinzu und konfigurieren die Layout-Eigenschaften dieses Containers.
 
 ### Komponenten hinzufügen {#adding-components}
 
@@ -177,37 +176,37 @@ container.add(new Button("Klick mich"));
 
 TextField nameField = new TextField("Name");
 TextField emailField = new TextField("E-Mail");
-Button submitButton = new Button("Absenden");
+Button submitButton = new Button("Einreichen");
 
 container.add(nameField, emailField, submitButton);
 ```
 
 ### Layout-Optionen {#layout-options}
 
-`FlexLayout` ist der primäre Layout-Container in webforJ und deckt die meisten Anwendungsfälle ab: Reihen, Spalten, Ausrichtung, Abstände und Umbrüche. Für komplexere Anordnungen wie CSS-Grid oder benutzerdefinierte Positionierungen können Sie CSS direkt über `setStyle()` oder `addClassName()` auf jede Container-Komponente anwenden. Siehe die [FlexLayout](/docs/components/flex-layout) Dokumentation für die vollständige Palette von Layout-Optionen.
+`FlexLayout` ist der primäre Layout-Container in webforJ und deckt die Mehrheit der Anwendungsfälle ab: Reihen, Spalten, Ausrichtung, Abstände und Zeilenumbrüche. Für komplexere Anordnungen wie CSS Grid oder benutzerdefinierte Positionierungen können Sie CSS direkt über `setStyle()` oder `addClassName()` auf jedem Container anwenden. Siehe die [FlexLayout](/docs/components/flex-layout) Dokumentation für die vollständige Palette von Layout-Optionen.
 
 ### Abschnitte anzeigen und ausblenden {#showing-hiding-sections}
 
-Eine häufige Verwendung von `setVisible()` in Containern ist das Anzeigen zusätzlicher UI, nur wenn sie relevant ist. Dies hält die Benutzeroberfläche fokussiert und reduziert visuelle Unordnung. Anstatt zu einer neuen Ansicht zu navigieren, können Sie einen Abschnitt des aktuellen Layouts direkt als Reaktion auf Benutzereingaben anzeigen.
+Eine häufige Verwendung von `setVisible()` in Containern ist das Anzeigen zusätzlicher Benutzeroberflächen, nur wenn sie relevant sind. Dies hält die Benutzeroberfläche fokussiert und reduziert visuelles Durcheinander. Anstatt zu einer neuen Ansicht zu navigieren, können Sie einen Abschnitt des aktuellen Layouts direkt als Reaktion auf Benutzereingaben anzeigen.
 
-Das folgende Einstellungsfeld demonstriert dies: Grundlegende Benachrichtigungseinstellungen sind immer sichtbar, und ein Abschnitt mit erweiterten Optionen erscheint nur, wenn der Benutzer danach fragt. Der Speichern-Button wird aktiv, sobald eine Einstellung geändert wird:
+Das folgende Einstellungen-Panel zeigt dies: grundlegende Benachrichtigungseinstellungen sind immer sichtbar, und ein Abschnitt mit erweiterten Optionen erscheint nur, wenn der Benutzer danach fragt. Der Speichern-Button wird sofort aktiviert, sobald eine Einstellung geändert wird:
 
 <ComponentDemo
 path='/webforj/progressivedisclosure'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ProgressiveDisclosureView.java',
-  'src/main/resources/static/usingcomponents/progressivedisclosure.css',
+  'src/main/frontend/usingcomponents/progressivedisclosure.css',
 ]}
 height='450px'
 />
 
-### Containerverwaltung {#container-management}
+### Container-Management {#container-management}
 
 Verwenden Sie `remove()` und `removeAll()`, um Komponenten zur Laufzeit aus einem Container zu entfernen:
 
 ```java
 FlexLayout container = new FlexLayout();
-Button tempButton = new Button("Vorübergehend");
+Button tempButton = new Button("Temporär");
 
 container.add(tempButton);
 container.remove(tempButton);
@@ -215,32 +214,32 @@ container.remove(tempButton);
 container.removeAll();
 ```
 
-Dies ist nützlich, wenn Sie den Inhalt vollständig ersetzen müssen, wie beim Austausch eines Ladeindikators gegen die geladenen Daten.
+Dies ist nützlich, wenn Sie den Inhalt vollständig ersetzen müssen, z. B. beim Ersetzen eines Ladeindikators durch die geladenen Daten.
 
 ## Formularvalidierung {#form-validation}
 
-Die Koordination mehrerer Komponenten zur Sperrung einer Absendaktion ist ein häufiges Muster in webforJ-Benutzeroberflächen. Die grundsätzliche Idee ist, dass jedes Eingabefeld einen Listener registriert, und wann immer ein Wert sich ändert, bewertet das Formular erneut, ob alle Kriterien erfüllt sind und aktualisiert den Absenden-Button entsprechend.
+Die Koordination mehrerer Komponenten, um eine Sendeaktion zu steuern, ist ein häufiges Muster in webforJ-UIs. Die grundlegende Idee ist, dass jedes Eingabefeld einen Listener registriert, und wann immer sich ein Wert ändert, bewertet das Formular erneut, ob alle Kriterien erfüllt sind und aktualisiert den Sende-Button entsprechend.
 
-Das folgende Beispiel verbindet dies manuell, damit Sie sehen können, wie der Status der Komponente und Ereignis-Listener zusammenarbeiten. Dies ist jedoch nicht der empfohlene Ansatz für echte Formulare: Die manuelle Listener-Logik wird schwer zu pflegen, wenn Formulare wachsen, und sie verbindet Ihre Komponenten nicht mit einem zugrunde liegenden Datenmodell.
+Das folgende Beispiel verkabelt dies manuell, damit Sie sehen können, wie der Komponentenstatus und Ereignis-Listener zusammenarbeiten. Es ist nicht der empfohlene Ansatz für echte Formulare: die manuelle Listener-Logik wird schwer zu warten, während Formulare wachsen, und sie verbindet Ihre Komponenten nicht mit einem zugrunde liegenden Datenmodell.
 
 :::tip Verwenden Sie Datenbindung für die Formularvalidierung
-Für Produktionsformulare verwenden Sie [Datenbindung](/docs/data-binding/overview). Sie umfasst Validierung, bidirektionale Synchronisierung zwischen Komponenten und Ihrem Modell sowie Wertetransformation durch `BindingContext`. Das hier gezeigte manuelle Muster dient nur zur Veranschaulichung.
+Für Produktionsformulare verwenden Sie [Datenbindung](/docs/data-binding/overview). Es umfasst Validierung, bidirektionale Synchronisierung zwischen Komponenten und Ihrem Modell und Werttransformationen durch `BindingContext`. Das hier gezeigte manuelle Muster dient nur zur Veranschaulichung.
 :::
 
-In diesem Kontaktformular darf das Namensfeld nicht leer sein, die E-Mail muss ein `@`-Symbol enthalten, und die Nachricht muss mindestens 10 Zeichen lang sein:
+In diesem Kontaktformular darf das Namensfeld nicht leer sein, die E-Mail muss ein `@`-Symbol enthalten und die Nachricht muss mindestens 10 Zeichen lang sein:
 
 <ComponentDemo
 path='/webforj/formvalidation'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java',
-  'src/main/resources/static/usingcomponents/formvalidation.css',
+  'src/main/frontend/usingcomponents/formvalidation.css',
 ]}
 height='500px'
 />
 
 ## Dynamische Inhaltsaktualisierungen {#dynamic-content-updates}
 
-Komponenten müssen nach ihrer Erstellung nicht in einem festen Zustand bleiben. Sie können Text aktualisieren, CSS-Klassen austauschen und den Status aktivieren oder deaktivieren, um auf App-Ereignisse zu reagieren. Ein häufiges Beispiel ist, während eines langanhaltenden Vorgangs Feedback zu geben:
+Komponenten müssen nach ihrer Erstellung nicht in einem festen Zustand bleiben. Sie können Text aktualisieren, CSS-Klassen ändern und den Status aktivieren oder deaktivieren, sobald App-Ereignisse eintreten. Ein häufiges Beispiel ist das Bereitstellen von Feedback während einer lang laufenden Aufgabe:
 
 ```java
 Label statusLabel = new Label("Bereit");
@@ -248,11 +247,11 @@ Button startButton = new Button("Prozess starten");
 
 startButton.onClick(event -> {
     startButton.setEnabled(false);
-    statusLabel.setText("Verarbeite...");
+    statusLabel.setText("Verarbeitung...");
     statusLabel.addClassName("processing");
-    
+
     performTask(() -> {
-        statusLabel.setText("Fertig");
+        statusLabel.setText("Abgeschlossen");
         statusLabel.removeClassName("processing");
         statusLabel.addClassName("success");
         startButton.setEnabled(true);
@@ -260,15 +259,15 @@ startButton.onClick(event -> {
 });
 ```
 
-Das Deaktivieren des Buttons, während der Vorgang läuft, verhindert doppelte Absendungen, und die Aktualisierung des Labels informiert den Benutzer darüber, was geschieht.
+Das Deaktivieren des Buttons, während die Aufgabe läuft, verhindert doppelte Einreichungen, und das Aktualisieren des Labels informiert den Benutzer darüber, was passiert.
 
 ## `ComponentLifecycleObserver` {#componentlifecycleobserver}
 
-Das `ComponentLifecycleObserver`-Interface ermöglicht es Ihnen, Komponentenlebenszyklusereignisse von außerhalb der Komponente selbst zu beobachten. Dies ist nützlich, wenn Sie auf eine Komponente reagieren müssen, die erstellt oder zerstört wird, ohne ihre Implementierung zu ändern. Zum Beispiel könnten Sie es verwenden, um ein Register aktiver Komponenten zu führen oder externe Ressourcen freizugeben, wenn eine Komponente entfernt wird.
+Das `ComponentLifecycleObserver`-Interface ermöglicht es Ihnen, Ereignisse im Lebenszyklus von Komponenten von außerhalb der Komponente selbst zu beobachten. Dies ist nützlich, wenn Sie auf die Erstellung oder Zerstörung einer Komponente reagieren müssen, ohne ihre Implementierung zu ändern. Zum Beispiel könnten Sie es verwenden, um ein Register aktiver Komponenten zu führen oder externe Ressourcen freizugeben, wenn eine Komponente entfernt wird.
 
 ### Grundlegende Verwendung {#basic-usage}
 
-Rufen Sie `addLifecycleObserver()` auf jeder Komponente auf, um einen Callback zu registrieren. Der Callback erhält die Komponente und das Lebenszyklusereignis:
+Rufen Sie `addLifecycleObserver()` für jede Komponente auf, um eine Rückruffunktion zu registrieren. Der Rückruf erhält die Komponente und das Lebenszyklusereignis:
 
 ```java
 Button button = new Button("Beobachte mich");
@@ -292,10 +291,10 @@ Das DESTROY-Ereignis ist besonders nützlich, um ein Register automatisch synchr
 ```java
 public class ResourceRegistry {
     private final Map<String, Component> activeComponents = new ConcurrentHashMap<>();
-    
+
     public void track(Component component, String name) {
         activeComponents.put(name, component);
-        
+
         component.addLifecycleObserver((comp, event) -> {
             if (event == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
                 activeComponents.remove(name);
@@ -307,22 +306,22 @@ public class ResourceRegistry {
 
 ### Muster: Komponentenkoordination {#pattern-component-coordination}
 
-Eine Koordinator-Klasse, die eine Gruppe verwandter Komponenten verwaltet, kann denselben Ansatz verwenden, um ihre interne Liste genau zu halten:
+Eine Koordinator-Klasse, die eine Gruppe verwandter Komponenten verwaltet, kann denselben Ansatz verwenden, um ihre interne Liste aktuell zu halten:
 
 ```java
 public class FormCoordinator {
     private final List<DwcComponent<?>> managedComponents = new ArrayList<>();
-    
+
     public void manage(DwcComponent<?> component) {
         managedComponents.add(component);
-        
+
         component.addLifecycleObserver((comp, event) -> {
             if (event == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
                 managedComponents.remove(comp);
             }
         });
     }
-    
+
     public void disableAll() {
         managedComponents.forEach(c -> c.setEnabled(false));
     }
@@ -337,11 +336,11 @@ Verwenden Sie `ComponentLifecycleObserver` für:
 - Koordinierung mehrerer Komponenten
 - Bereinigung externer Ressourcen
 
-Um Code auszuführen, nachdem eine Komponente an das DOM angeheftet wurde, siehe `whenAttached()` im [Komponenten erstellen](/docs/building-ui/composing-components) Leitfaden.
+Für die Ausführung von Code, nachdem eine Komponente an den DOM angefügt wurde, siehe `whenAttached()` im [Komponenten Composing](/docs/building-ui/composing-components) Leitfaden.
 
 ## Benutzerdaten {#user-data}
 
-Komponenten können beliebige serverseitige Daten über `setUserData()` und `getUserData()` tragen. Beide Methoden nehmen einen Schlüssel zur Identifizierung der Daten. Dies ist nützlich, wenn Sie Domainobjekte oder Kontexte mit einer Komponente verknüpfen müssen, ohne eine separate Lookup-Struktur verwalten zu müssen.
+Komponenten können beliebige serverseitige Daten über `setUserData()` und `getUserData()` übertragen. Beide Methoden benötigen einen Schlüssel, um die Daten zu identifizieren. Dies ist nützlich, wenn Sie Domainobjekte oder Kontexte mit einer Komponente verknüpfen müssen, ohne eine separate Lookup-Struktur zu verwalten.
 
 ```java
 Button button = new Button("Verarbeiten");
@@ -353,4 +352,4 @@ button.onClick(event -> {
 });
 ```
 
-Da Benutzerdaten niemals an den Client gesendet werden, können Sie sicher sensible Informationen oder große Objekte speichern, ohne den Netzwerkverkehr zu beeinflussen.
+Da Benutzerdaten niemals an den Client gesendet werden, können Sie sensible Informationen oder große Objekte sicher speichern, ohne den Netzwerkverkehr zu beeinträchtigen.

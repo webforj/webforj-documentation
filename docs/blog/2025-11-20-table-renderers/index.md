@@ -20,7 +20,7 @@ The fun part was using renderers to contain all of this information inside a tid
 
 <!-- truncate -->
 
-## What Are Renderers?
+## What Are Renderers? {#what-are-renderers}
 
 Using renderers, instead of plain text, you can inject custom HTML, apply conditional logic, and style content dynamically, all on the client-side.
 
@@ -33,7 +33,7 @@ The syntax is simple:
 
 Inside your template, you can access the current `cell`, `row`, and `column` objects, giving you everything you need to display information in a way that makes sense. Want to show different HTML based on the row's data? Check another column's value? Format based on position? It's all available.
 
-## When to Use Renderers?
+## When to Use Renderers? {#when-to-use-renderers}
 
 Great, you can make your data look nice, and we touched on why you might want to use renderers as a tool but when is this appropriate; what's a good use case?
 
@@ -43,7 +43,7 @@ Renderers let you add visual context - color-coding values, adding status badges
 
 The real power? You can apply complex logic and generate rich HTML—all from a single, reusable renderer class. They are to be used when you want your user to know something or get an impression that's more than just the simple data being displayed within a cell.
 
-## The Scenario: A Cryptocurrency Dashboard
+## The Scenario: A Cryptocurrency Dashboard {#the-scenario-a-cryptocurrency-dashboard}
 
 <div class="videos-container">
   <video autoplay="autoplay" controls muted preload="metadata">
@@ -60,7 +60,7 @@ Raw numbers really just don't cut it here. `-1234.56` and `2345.67` look similar
 This is where the `PriceChangeRenderer` comes in. It takes those raw numbers and transforms them into color-coded, properly formatted indicators that tell the story at a glance.
 
 
-## Building a Custom Renderer
+## Building a Custom Renderer {#building-a-custom-renderer}
 
 Let's build the `PriceChangeRenderer` step by step. The full code is surprisingly concise, but it does a lot of work. Here's what it looks like:
 
@@ -124,7 +124,7 @@ The result? One renderer class that handles all the edge cases, formats data int
   </video>
 </div>
 
-## Using the Renderer in Your Table
+## Using the Renderer in Your Table {#using-the-renderer-in-your-table}
 
 Once you've built your renderer, using it is straightforward. When you add a column to your table, just call `setRenderer()`:
 
@@ -155,7 +155,7 @@ The table handles the rest - your renderer gets called for each row, receives th
   </video>
 </div>
 
-## Built-in Renderers
+## Built-in Renderers {#built-in-renderers}
 
 While custom renderers give you complete control, webforJ includes several pre-built renderers for common use cases:
 
@@ -175,7 +175,7 @@ table.addColumn("Status", new IconRenderer<>(TablerIcon.create("check")));
 
 These built-in options handle the most common scenarios, and you can extend them to add custom behavior. But when you need complete control over the rendering logic and HTML output—like we did with the price change formatter—building a custom renderer from scratch is the way to go.
 
-## See It in Action
+## See It in Action {#see-it-in-action}
 
 Want to try this example yourself? The complete source code for the cryptocurrency dashboard is available on GitHub:
 
@@ -183,7 +183,7 @@ Want to try this example yourself? The complete source code for the cryptocurren
 
 Clone it, run it, and see how renderers can transform your tables!
 
-## Learn More
+## Learn More {#learn-more}
 
 - [Table Rendering Documentation](https://docs.webforj.com/docs/components/table/rendering) - Deep dive into renderers
 - [Table Component Overview](https://docs.webforj.com/docs/components/table/overview) - Working with tables

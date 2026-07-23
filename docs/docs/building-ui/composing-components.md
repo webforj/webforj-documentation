@@ -154,7 +154,7 @@ public class InteractiveMap extends Composite<Div> {
 
 ## Example `Composite` component {#example-composite-component}
 
-The following example demonstrates a Todo app where each item is a `Composite` component consisting of a [`RadioButton`](../components/radiobutton) styled as a switch and a Div with text: 
+The following example demonstrates a Todo app where each item is a `Composite` component consisting of a [`RadioButton`](../components/radiobutton) styled as a switch and a Div with text:
 
 <ComponentDemo
 path='/webforj/composite'

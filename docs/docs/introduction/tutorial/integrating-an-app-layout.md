@@ -36,7 +36,7 @@ For this `FlexLayout`, you’ll arrange the items’ direction and the spacing b
 // Make the bound component a FlexLayout
 public class AppTitle extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();
-  
+
   public AppTitle() {
 
     // Arrange the items vertically
@@ -81,7 +81,7 @@ public AppTitle(boolean showSubTitle) {
 
       // Add the title by default
       .add(title);
-  
+
   // Optionally display the subtitle
   if (showSubTitle) {
     self.add(subTitle);
@@ -107,7 +107,7 @@ public class AppTitle extends Composite<FlexLayout> {
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("0px")
         .add(title);
-        
+
     if (showSubTitle) {
       self.add(subTitle);
     }
@@ -125,7 +125,7 @@ The goal is center the content of the about page using the `FlexLayout`. The `Fl
 
 The methods for arranging items in a `FlexLayout` use a relative directional system. Instead of thinking about the horizontal and vertical axes, it’s better to think about the axis parallel to the items as the main axis, and the axis perpendicular to the items as the cross axis.
 
-Setting both the `FlexJustifyContent` and the `FlexAlignment` properties to `CENTER` will center the items along both the main and cross axes in the `FlexLayout`, and making the `FlexLayout` take up the entirety of its parent container makes it centered on the page. 
+Setting both the `FlexJustifyContent` and the `FlexAlignment` properties to `CENTER` will center the items along both the main and cross axes in the `FlexLayout`, and making the `FlexLayout` take up the entirety of its parent container makes it centered on the page.
 
 ```java
 private final FlexLayout layout = new FlexLayout();
@@ -151,7 +151,7 @@ One of the items that’ll go inside the centered `FlexLayout` is an image. For 
 Once downloaded, add it to your project’s static folder in `src/main/resources/static/images` and name it `Files.svg`.
 
 Putting this image in the static folder allows you to 
-reference it using the Webserver protocol, like you did when referencing the CSS file in the first step, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app). Then, you can use it inside your app as an HTML element, like so:
+reference it using the [Webserver protocol](/docs/managing-resources/assets-protocols#the-webserver-protocol). Then, you can use it inside your app as an HTML element, like so:
 
 ```java
 private Img fileImg = new Img("ws://images/Files.svg");
@@ -163,7 +163,7 @@ Like the two existing app pages, the about page will be a routable view. In `src
 
 Since you’ve named the class `AboutView`, there’s no need to give a custom value for the URL mapping; this page renders at `http://localhost:8080/about` by default.
 
-Here’s what it looks like when you use the concepts from the previous steps with the newly created components to create a new view with centered content: 
+Here’s what it looks like when you use the concepts from the previous steps with the newly created components to create a new view with centered content:
 
 ```java title='AboutView.java'
 @Route()
@@ -291,7 +291,7 @@ public class MainLayout extends Composite<AppLayout> {
 
 The `header` slot should include two items: a toggle to show or hide the side menu and a way to display the frame title. Both of these items will be inside a [Toolbar](/docs/components/toolbar) component, another way to organize components.
 
-You can include the toggle for the `AppLayout` drawer with the `AppDrawerToggle` component. This component is already styled with a commonly used icon for hidden menu options, and targets the drawer to open and close it. 
+You can include the toggle for the `AppLayout` drawer with the `AppDrawerToggle` component. This component is already styled with a commonly used icon for hidden menu options, and targets the drawer to open and close it.
 
 ```java
 // Create the container components
@@ -333,7 +333,7 @@ private void onNavigate(NavigateEvent ev) {
 }
 ```
 
-## Completed `MainLayout`
+## Completed `MainLayout` {#completed-mainlayout}
 
 Here's `MainLayout` with created content for the drawer and the header inside an `AppLayout`:
 
@@ -411,9 +411,9 @@ private FlexLayout self = getBoundComponent();
 self.setItemAlignment(FlexAlignment.END, addCustomer);
 ```
 
-Another improvement you can make here is the table's width. Instead of a fixed width, you can set it to match its parent container, the `FlexLayout`. Then that `FlexLayout` can have a maximum width so it doesn't overstretch on larger screens. 
+Another improvement you can make here is the table's width. Instead of a fixed width, you can set it to match its parent container, the `FlexLayout`. Then that `FlexLayout` can have a maximum width so it doesn't overstretch on larger screens.
 
-```java 
+```java
 private FlexLayout self = getBoundComponent();
 private Table<Customer> table = new Table<>();
 

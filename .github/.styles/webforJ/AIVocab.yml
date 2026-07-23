@@ -1,0 +1,12 @@
+extends: existence
+message: "'%s' is a common AI filler word. Use plainer, more specific wording."
+link: "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+level: warning
+ignorecase: true
+tokens:
+  - 'delv(?:e|es|ed|ing)'
+  - 'intricate'
+  - 'interplay'
+  - 'tapestry'
+  - 'underscor(?:es|ed|ing)'
+  - 'underscore the'

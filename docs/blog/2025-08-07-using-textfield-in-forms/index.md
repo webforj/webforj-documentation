@@ -15,7 +15,7 @@ While the majority of this content focuses on the single-line `TextField` compon
 
 <!-- truncate -->
 
-## Provide text information
+## Provide text information {#provide-text-information}
 
 Besides the actual value end users enter inside the field, you have three distinct spots to add text to inform what’s needed:
 
@@ -37,11 +37,11 @@ textField.setHelperText("Include any suffixes (Jr., II, etc.)");
 Regardless of where your information is, avoid using all uppercase text. This can be harder to read for smaller text, especially if multiple fields are present.
 :::
 
-## ~~Sometimes, using~~ less is more ~~effective, so keep things simple~~
+## ~~Sometimes, using~~ less is more ~~effective, so keep things simple~~ {#sometimes-using-less-is-more-effective-so-keep-things-simple}
 
-Time is a finite resource; on average, end users abandon forms within [**1 minute and 43 seconds**](https://formstory.io/learn/form-abandonment-statistics/). Clear and concise information helps quicken the process, but as a developer, it’s your duty to provide enough context so that end users can complete forms on their first try. One way to provide more context clues without being verbose is by adding icons. 
+Time is a finite resource; on average, end users abandon forms within [**1 minute and 43 seconds**](https://formstory.io/learn/form-abandonment-statistics/). Clear and concise information helps quicken the process, but as a developer, it’s your duty to provide enough context so that end users can complete forms on their first try. One way to provide more context clues without being verbose is by adding icons.
 
-## Add nested elements
+## Add nested elements {#add-nested-elements}
 
 An icon inside a field can let those skimming the form quickly associate what’s needed. If you have an icon in mind, you quickly add one as a prefix component in the webforJ field with a single line of code:
 
@@ -53,7 +53,7 @@ textField.setPrefixComponent(TablerIcon.create("user"));
 
 For moments that require more capability, like a filter, consider replacing the `Icon` with an `IconButton`. Other components in the webforJ framework, like the `DateField` and `PasswordField`, offer even more default features to meet the needs of types of fields common on forms.
 
-## Provide meaningful error messages
+## Provide meaningful error messages {#provide-meaningful-error-messages}
 
 It’s frustrating to complete a form with multiple fields and click the submit button only to see, "Oops, something went wrong." It’s even worse when the form fails to inform you where you went wrong. Avoid this pitfall by defining the validation needed for your fields.
 
@@ -65,18 +65,18 @@ Validations can range from character limits to uniquely defined criteria. Regard
 It’s equally important to reassure end users that you’ve received a form, so provide them with a response when they’ve successfully submitted a form. This can also reduce fraud if someone receives an email verification for an account they didn't sign up for.
 :::
 
-## Use multi-step forms
+## Use multi-step forms {#use-multi-step-forms}
 
 Did you know those using multi-step forms report a [**17% higher satisfaction rate**](https://blog.hubspot.com/marketing/state-of-email-lead-capture)? Dividing larger forms into segments can reduce cognitive load, letting end users focus on a small portion of the form before moving on. This design approach can also gamify the form-filling process; adding a progress bar can help end users keep track of their progress.
 
-## Design for mobile users
+## Design for mobile users {#design-for-mobile-users}
 
 It’s always important to know the audience you’re designing for. With over half of the global web traffic coming from mobile devices, plan to build your forms to be responsive on devices with smaller screen sizes and ones that rely on taps and swipes to navigate. Leave enough space between fields to reduce the number of accidental taps, and keep action items at the bottom of the screen for easier interaction.
 
-##  Rely on what webforJ can do for you
+##  Rely on what webforJ can do for you {#rely-on-what-webforj-can-do-for-you}
 
 For faster development, webforJ provides you with an initial style for your components that’s already responsive to different states, like when a field is focused, hovered over, or is invalid. The `TextField` component, and others in the webforJ framework, also come with event listeners to easily create responses in your app in a coding language you’re familiar with. Easily control the way the components look and how the components respond to different interactions.
 
-## What’s next?
+## What’s next? {#whats-next}
 
 Interested in creating a form in webforJ? Quickly create a new project using [startforJ](https://docs.webforj.com/startforj/), and see for yourself how fast you can develop new forms. While the focus of this article was on the `TextField`, browse through the other [webforJ components](/docs/components/overview) to see how you can build your next Java app.

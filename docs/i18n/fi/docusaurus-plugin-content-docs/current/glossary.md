@@ -3,14 +3,17 @@ sidebar_position: 1000
 title: Glossary
 sidebar_class_name: sidebar--item__hidden
 slug: glossary
-_i18n_hash: ac52f13825f3d8139dbc48fba5c7f13e
+description: >-
+  Definitions for terms used across webforJ documentation, including DOM, Shadow
+  DOM, and other web platform and framework concepts.
+_i18n_hash: 5567c28b0575afa1ce7a9fcafcbe429c
 ---
 ## DOM {#dom}
 
-DOM (Document Object Model) on ohjelmointi rajapinta verkkodokumenteille. Se esittää sivun rakenteen objektipuun muodossa, jossa jokainen solmu vastaa HTML-elementtiä. JavaScript ja verkkokehykset käyttävät DOM:ia dynaamisesti pääsemään käsiksi ja muokkaamaan verkkosivujen sisältöä, rakennetta ja tyylittelyä.
+DOM (Document Object Model) on ohjelmointirajapinta verkkodokumenteille. Se esittää sivun rakenteen objekteista koostuvana puuna, jossa jokainen solmu vastaa HTML-elementtiä. JavaScript ja verkkokehyksiä käyttävät DOM:ia dynaamisesti sisällön, rakenteen ja tyylin käsittelemiseen ja muokkaamiseen verkkosivuilla.
 
 ## Shadow DOM {#shadow-dom}
 
-Shadow DOM on verkkostandardi, joka mahdollistaa DOM:in (Document Object Model) ja CSS:n kapseloinnin tietyn elementin sisälle, jota kutsutaan varjopuuksi. Tämä eristetty DOM ja CSS ovat erillisiä pääasiakirjan DOM:ista, luoden tehokkaasti rajatun alueen komponentille. Shadow DOM auttaa luomaan itseensä sulautuvia, uudelleenkäytettäviä verkkokomponentteja, joita voidaan lisätä verkkosivulle ilman huolta muiden tyylien ja skriptien konflikteista sivulla.
+Shadow DOM on verkkostandardi, joka mahdollistaa DOM:in (Document Object Model) ja CSS:n kapseloinnin tietyn elementin sisälle, jota kutsutaan varjopuuksi. Tämä eristetty DOM ja CSS ovat erillisiä päädokumentin DOM:ista, mikä luo tehokkaasti rajatun alueen komponentille. Shadow DOM auttaa luomaan itsenäisiä, uudelleenkäytettäviä verkkokomponentteja, jotka voidaan lisätä verkkosivulle ilman huolta konflikteista muiden sivun tyylien ja skriptien kanssa.
 
-Se tuo myös mukanaan ominaisuuksia, kuten varjopuoliskot ja slotit, jotka sallivat kehittäjien altistaa tiettyjä osia varjopuusta mukautettavaksi pääsivun toimesta. Tämä tarjoaa joustavan tavan siirtää sisältöä komponenttiin ja mukauttaa sen ulkoasua samalla, kun säilytetään kapselointi.
+Se tuo myös mukanaan ominaisuuksia, kuten varjopartit ja slotit, jotka mahdollistavat kehittäjille tietyjen osien altistamisen varjopuusta vanhemman sivun muokattavaksi. Tämä tarjoaa joustavan tavan siirtää sisältöä komponenttiin ja muokata sen ulkonäköä samalla säilyttämällä kapseloinnin.

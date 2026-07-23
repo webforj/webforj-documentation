@@ -1,23 +1,26 @@
 ---
 title: MarkdownViewer
 sidebar_position: 74
-_i18n_hash: e50beb488f343e35da80b6d4f9ceddf5
+description: >-
+  Render markdown as HTML with the MarkdownViewer component, supporting append,
+  auto-scroll, and progressive typewriter rendering.
+_i18n_hash: fbd31d2317bf5de95c282a1319f35cf6
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-markdown-viewer" />
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="markdown-viewer" location="com/webforj/component/markdown/MarkdownViewer" top='true'/>
 
-El componente `MarkdownViewer` renderiza texto markdown como HTML. Soporta sintaxis markdown estándar que incluye encabezados, listas, bloques de código, enlaces, imágenes y renderizado de emojis. El componente también proporciona renderizado progresivo, que muestra contenido carácter por carácter para un efecto de máquina de escribir.
+El componente `MarkdownViewer` renderiza texto markdown como HTML. Soporta la sintaxis markdown estándar incluyendo encabezados, listas, bloques de código, enlaces, imágenes y renderización de emoji. El componente también proporciona renderización progresiva, que muestra el contenido carácter por carácter para crear un efecto de máquina de escribir.
 
-## Configuración de contenido {#setting-content}
+## Configuración del contenido {#setting-content}
 
 Crea un `MarkdownViewer` con o sin contenido inicial, luego actualízalo usando `setContent()`:
 
 ```java
-MarkdownViewer viewer = new MarkdownViewer("# Hola Mundo");
+MarkdownViewer viewer = new MarkdownViewer("# Hello World");
 
-// Reemplazar el contenido por completo
+// Reemplazar contenido completamente
 viewer.setContent("""
     ## Nuevo Contenido
 
@@ -37,35 +40,35 @@ files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerVi
 height='650px'
 />
 
-## Agregando contenido {#appending-content}
+## Agregar contenido {#appending-content}
 
-El método `append()` agrega contenido de manera incremental sin reemplazar lo que ya está:
+El método `append()` agrega contenido de forma incremental sin reemplazar lo que ya está allí:
 
 ```java
 viewer.append("## Nueva Sección\n\n");
 viewer.append("Más contenido aquí...");
 ```
 
-Por defecto, el contenido agregado aparece inmediatamente. Cuando se habilita [el renderizado progresivo](#progressive-rendering), el contenido agregado se guarda en un búfer y se muestra carácter por carácter.
+Por defecto, el contenido agregado aparece inmediatamente. Cuando se habilita la [renderización progresiva](#progressive-rendering), el contenido agregado va a un búfer y se muestra carácter por carácter.
 
 ## Desplazamiento automático {#auto-scroll}
 
-Habilita el desplazamiento automático para mantener la vista en la parte inferior a medida que crece el contenido. Esto funciona con cualquier método de adición de contenido, ya sea `setContent()`, `append()`, o renderizado progresivo. Si un usuario se desplaza manualmente hacia arriba para revisar contenido anterior, el desplazamiento automático se pausa y se reanuda cuando se desplaza de nuevo hacia abajo.
+Habilita el desplazamiento automático para mantener la vista en la parte inferior a medida que el contenido crece. Esto funciona con cualquier método de adición de contenido, ya sea `setContent()`, `append()`, o renderización progresiva. Si un usuario se desplaza manualmente hacia arriba para revisar contenido anterior, el desplazamiento automático se pausa y se reanuda cuando vuelven a desplazarse hacia abajo.
 
 ```java
 viewer.setAutoScroll(true);
 ```
 
-## Renderizado progresivo {#progressive-rendering}
+## Renderización progresiva {#progressive-rendering}
 
-El renderizado progresivo muestra contenido carácter por carácter en lugar de todo a la vez, creando un efecto de máquina de escribir. Las interfaces de chat de IA comúnmente utilizan esto para mostrar respuestas que aparecen gradualmente:
+La renderización progresiva muestra contenido carácter por carácter en lugar de todo de una vez, creando un efecto de máquina de escribir. Las interfaces de chat de IA comúnmente usan esto para mostrar respuestas que aparecen gradualmente:
 
 ```java
 MarkdownViewer viewer = new MarkdownViewer();
 viewer.setProgressiveRender(true);
 ```
 
-Cuando está habilitado, el contenido agregado a través de `setContent()` o `append()` se almacena en un búfer y se muestra de forma incremental. Cuando está deshabilitado, el contenido aparece inmediatamente.
+Cuando está habilitado, el contenido agregado a través de `setContent()` o `append()` va a un búfer y se muestra de forma incremental. Cuando está deshabilitado, el contenido aparece inmediatamente.
 
 <ComponentDemo
 path='/webforj/markdownviewerprogressive'
@@ -75,7 +78,7 @@ height='650px'
 
 ### Velocidad de renderizado {#render-speed}
 
-El método `setRenderSpeed()` controla cuántos caracteres se renderizan por cuadro de animación. Valores más altos significan un renderizado más rápido. A 60 fps, la velocidad predeterminada de 4 se traduce en aproximadamente 240 caracteres por segundo:
+El método `setRenderSpeed()` controla cuántos caracteres se renderizan por cuadro de animación. Valores más altos significan una renderización más rápida. A 60fps, la velocidad predeterminada de 4 se traduce aproximadamente en 240 caracteres por segundo:
 
 | Velocidad | Caracteres/Secundo |
 |-----------|---------------------|
@@ -88,12 +91,12 @@ viewer.setRenderSpeed(6);
 ```
 
 :::tip Sincronizando tu tasa de datos
-Si tu servidor envía contenido más rápido de lo que el visor renderiza, el búfer crece y el contenido mostrado se queda atrás. Aumenta `renderSpeed` para mantener el ritmo, o llama a `flush()` cuando todo el contenido haya sido recibido para mostrar el contenido restante de inmediato.
+Si tu servidor envía contenido más rápido de lo que el visor renderiza, el búfer crece y el contenido mostrado se queda atrás. Aumenta `renderSpeed` para mantener el ritmo, o llama a `flush()` cuando todo el contenido haya sido recibido para mostrar el contenido restante inmediatamente.
 :::
 
 ### Estado de renderizado {#render-state}
 
-Cuando el renderizado progresivo está habilitado, el método `isRendering()` devuelve `true` mientras el componente está activamente mostrando contenido almacenado en el búfer. Las interfaces de chat utilizan a menudo esto para mostrar u ocultar un botón de detención:
+Cuando la renderización progresiva está habilitada, el método `isRendering()` devuelve `true` mientras el componente está mostrando activamente contenido almacenado en búfer. Las interfaces de chat a menudo usan esto para mostrar u ocultar un botón de detener:
 
 ```java
 if (viewer.isRendering()) {
@@ -101,14 +104,14 @@ if (viewer.isRendering()) {
 }
 ```
 
-Este método siempre devuelve `false` cuando el renderizado progresivo está deshabilitado.
+Este método siempre devuelve `false` cuando la renderización progresiva está deshabilitada.
 
-### Controlando el renderizado {#controlling-rendering}
+### Controlando la renderización {#controlling-rendering}
 
-Dos métodos controlan cómo se detiene el renderizado progresivo:
+Dos métodos controlan cómo se detiene la renderización progresiva:
 
-- **`stop()`** detiene el renderizado y descarta cualquier contenido almacenado que aún no se haya mostrado. Llama a esto cuando el usuario cancela.
-- **`flush()`** detiene el renderizado pero muestra inmediatamente todo el contenido almacenado restante. Llama a esto cuando todo el contenido ha sido recibido y quieres mostrarlo sin esperar.
+- **`stop()`** detiene la renderización y descarta cualquier contenido en búfer que aún no se haya mostrado. Llame a esto cuando el usuario cancele.
+- **`flush()`** detiene la renderización pero muestra inmediatamente todo el contenido restante en búfer. Llame a esto cuando todo el contenido haya sido recibido y desee mostrarlo sin esperar.
 
 ```java
 // El usuario hizo clic en "Detener generación"
@@ -118,11 +121,11 @@ viewer.stop();
 viewer.flush();
 ```
 
-Estos métodos no tienen efecto cuando el renderizado progresivo está deshabilitado.
+Estos métodos no tienen efecto cuando la renderización progresiva está deshabilitada.
 
-### Esperando a que se complete {#waiting-for-completion}
+### Esperando a la finalización {#waiting-for-completion}
 
-El método `whenRenderComplete()` devuelve un `PendingResult` que se completa cuando el renderizado progresivo termina de mostrar todo el contenido almacenado:
+El método `whenRenderComplete()` devuelve un `PendingResult` que se completa cuando la renderización progresiva termina de mostrar todo el contenido en búfer:
 
 ```java
 viewer.whenRenderComplete().thenAccept(v -> {
@@ -131,13 +134,13 @@ viewer.whenRenderComplete().thenAccept(v -> {
 });
 ```
 
-Si el renderizado progresivo no está habilitado o no se está renderizando contenido, el `PendingResult` se completa inmediatamente.
+Si la renderización progresiva no está habilitada o no se está renderizando contenido, el `PendingResult` se completa inmediatamente.
 
-:::tip Coordinación de UI
-Al utilizar renderizado progresivo, no vuelvas a habilitar campos de entrada únicamente basándote en cuándo terminas de llamar a `append()`. El renderizador aún puede estar mostrando contenido almacenado. Espera a `whenRenderComplete()` para que todo el contenido aparezca antes de que los usuarios puedan interactuar de nuevo.
+:::tip Coordinación de la UI
+Cuando uses renderización progresiva, no re-habilites los campos de entrada basándote solo en cuando termines de llamar a `append()`. El renderizador puede seguir mostrando contenido almacenado en búfer. Espera a `whenRenderComplete()` para que todo el contenido aparezca antes de que los usuarios puedan interactuar nuevamente.
 :::
 
-La siguiente demostración simula una interfaz de chat de IA usando `append()` con renderizado progresivo habilitado:
+La siguiente demo simula una interfaz de chat de IA utilizando `append()` con renderización progresiva habilitada:
 
 <ComponentDemo
 path='/webforj/markdownviewerstreaming'
@@ -145,7 +148,7 @@ files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerSt
 height='700px'
 />
 
-## Limpiando contenido {#clearing-content}
+## Limpiando el contenido {#clearing-content}
 
 Elimina todo el contenido con `clear()`:
 
@@ -153,23 +156,26 @@ Elimina todo el contenido con `clear()`:
 viewer.clear();
 ```
 
-Si el renderizado progresivo está activo, `clear()` también detiene el renderizado y completa cualquier resultado pendiente de `whenRenderComplete()`.
+Si la renderización progresiva está activa, `clear()` también detiene la renderización y completa cualquier resultado pendiente de `whenRenderComplete()`.
 
 ## Resaltado de sintaxis {#syntax-highlighting}
 
-El `MarkdownViewer` soporta resaltado de sintaxis para bloques de código cuando [Prism.js](https://prismjs.com/) está disponible. Agrega Prism.js a tu aplicación usando las anotaciones `@JavaScript` y `@StyleSheet`:
+El `MarkdownViewer` soporta resaltado de sintaxis para bloques de código cuando [Prism.js](https://prismjs.com/) está disponible. Lleva Prism a tu aplicación con el [agregador de frontend](/docs/managing-resources/bundler/overview): declara el paquete en tu clase `App` y autoriza una entrada que importe Prism, el complemento de autoload y un tema.
 
-```java
-@StyleSheet("https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css")
-@JavaScript(
-  value = "https://cdn.jsdelivr.net/combine/npm/prismjs@1/prism.min.js,npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js",
-  top = true
-)
+```java title="Application.java"
+@BundlePackage(value = "prismjs", version = "^1.29.0")
+@BundleEntry("prism/entry.ts")
 public class Application extends App {
   // ...
 }
 ```
 
-El plugin autoloader carga definiciones de lenguaje según sea necesario, por lo que los bloques de código con pistas de lenguaje como ` ```java ` o ` ```python ` se resaltan automáticamente.
+```ts title="src/main/frontend/prism/entry.ts"
+import "prismjs";
+import "prismjs/plugins/autoloader/prism-autoloader";
+import "prismjs/themes/prism-tomorrow.min.css";
+```
+
+El complemento de autoload carga definiciones de lenguajes según sea necesario, por lo que los bloques de código con sugerencias de lenguaje como ` ```java ` o ` ```python ` se resaltan automáticamente.
 
 <TableBuilder name="MarkdownViewer" />
