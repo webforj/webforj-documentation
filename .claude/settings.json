@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:vaadin.com)",
+      "WebFetch(domain:stripe.com)",
+      "WebFetch(domain:code.visualstudio.com)",
+      "Bash(git fetch *)",
+      "Bash(git checkout *)",
+      "Read(//c/Users/matth/Downloads/Design components for webforJ docs/**)",
+      "Read(//c/Users/matth/Downloads/Design components for webforJ docs \\(1\\)/**)",
+      "Bash(gh api *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:docs.webforj.com)",
+      "Bash(where playwright *)",
+      "Bash(where npx *)",
+      "Bash(where node *)",
+      "Bash(curl -s -o NUL -w \"%{http_code}\" http://localhost:8080/)"
+    ]
+  }
+}
