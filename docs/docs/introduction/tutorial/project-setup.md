@@ -50,7 +50,7 @@ If you’d prefer to create a new project, you can use [startforJ](https://docs.
 
 :::note Required settings
 - In the **webforJ version** dropdown, choose webforJ version **26.01 or higher**.
-- In the **Flavor** dropdown, choose **webforJ + Spring Boot**. 
+- In the **Flavor** dropdown, choose **webforJ + Spring Boot**.
 
 ## Using the command line {#using-command-line}
 

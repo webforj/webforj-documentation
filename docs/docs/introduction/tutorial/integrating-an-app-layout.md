@@ -150,7 +150,7 @@ To help visualize how the different methods work, take a look at the blog post [
 One of the items that’ll go inside the centered `FlexLayout` is an image. For this tutorial, you can view and download the [about page's image](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout/src/main/resources/static/images/Files.svg) on GitHub.
 Once downloaded, add it to your project’s static folder in `src/main/resources/static/images` and name it `Files.svg`.
 
-Putting this image in the static folder allows you to 
+Putting this image in the static folder allows you to
 reference it using the [Webserver protocol](/docs/managing-resources/assets-protocols#the-webserver-protocol). Then, you can use it inside your app as an HTML element, like so:
 
 ```java

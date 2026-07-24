@@ -4,17 +4,17 @@ sidebar_position: 1
 description: >-
   Discover where to download the tutorial project, how to navigate it, and run
   the apps within.
-_i18n_hash: 00d93e4eb2ef6afad342bdbc64324e3e
+_i18n_hash: 72ee1120081fa9f4d4fed86c13741d5b
 ---
-要开始本教程，您需要一个项目位置，以便管理您的类和资源。以下部分描述了您可以为本教程创建 webforJ 项目的不同方法。
+要开始本教程，您需要一个项目的位置，在这里您可以管理您的类和资源。以下部分描述了您可以以不同方式创建本教程的 webforJ 项目。
 
 ## 使用源代码 {#using-source-code}
 
-按照本教程的最简单方法是参考其源代码。您可以从 GitHub 下载整个项目或克隆它：
+跟随本教程的最简单方法是参考其源代码。您可以下载整个项目或从 GitHub 克隆它：
 
 <!-- vale off -->
 - 下载 ZIP: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
-- GitHub 仓库: 从 [GitHub 直接克隆项目](https://github.com/webforj/webforj-tutorial)
+- GitHub 存储库: [直接从 GitHub 克隆项目](https://github.com/webforj/webforj-tutorial)
 <!-- vale on -->
 ```bash
 git clone https://github.com/webforj/webforj-tutorial.git
@@ -22,7 +22,7 @@ git clone https://github.com/webforj/webforj-tutorial.git
 
 ### 项目结构 {#project-structure}
 
-该项目包含六个子目录，每个子目录对应于教程中的一个步骤，并且每个目录都包含一个可运行的应用程序。按照教程进行，可以看到应用程序从基本设置逐步发展到一个完整的客户管理系统。
+该项目有六个子目录，每个目录对应于教程的一个步骤，每个目录中包含一个可运行的应用程序。跟随 本教程可以让您看到应用程序如何从基本设置发展到一个完全功能的客户管理系统。
 
 ```
 webforj-tutorial
@@ -40,12 +40,11 @@ webforj-tutorial
 
 ## 使用 startforJ {#using-startforj}
 
-如果您更愿意创建一个新项目，可以使用 [startforJ](https://docs.webforj.com/startforj) 生成一个最小的起始项目。有关使用 startforJ 的详细信息，请参阅 [入门指南](/docs/introduction/getting-started)。
+如果您更愿意创建一个新项目，您可以使用 [startforJ](https://docs.webforj.com/startforj) 来生成一个最小的启动项目。有关使用 startforJ 的更多详细信息，请参见 [开始使用](/docs/introduction/getting-started)。
 
 :::note 必需设置
-- 在 **webforJ 版本** 下拉菜单中，选择 webforJ 版本 **26.00 或更高版本**。
-- 在 **Flavor** 下拉菜单中，选择 **webforJ + Spring Boot**。
-:::
+- 在 **webforJ 版本** 下拉框中，选择 webforJ 版本 **26.01 或更高**。
+- 在 **Flavor** 下拉框中，选择 **webforJ + Spring Boot**。
 
 ## 使用命令行 {#using-command-line}
 
@@ -94,7 +93,7 @@ mvn -B archetype:generate ^
 
 ## 配置 {#configurations}
 
-创建新项目的这两种方式都使用 webforJ [原型](/docs/building-ui/archetypes/overview)，它们会自动将所需的配置添加到您的项目中，例如 Spring [依赖关系](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) 到您的 POM 以及以下属性在 `src/main/resources/application.properties` 中：
+前面提到的创建新项目的两种方法使用了 webforJ [原型](/docs/building-ui/archetypes/overview)，它们会自动将所需的配置添加到您的项目中。这包括 Spring [依赖项](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies)、构建和监视前端源的 webforJ Maven 插件，以及 `src/main/resources/application.properties` 中的以下属性：
 
 ```
 spring.application.name=CustomerApplication
@@ -105,13 +104,15 @@ webforj.debug=true
 
 ## 运行应用程序 {#running-the-app}
 
-要在您进行教程时查看应用程序的实际运行情况：
+要查看应用程序在您学习本教程过程中的运行状态：
 
-1. 导航到所需步骤的目录。这里应该是该步骤的顶层目录，包含 `pom.xml`。
+1. 导航到所需步骤的目录。这应该是该步骤的顶级目录，包含 `pom.xml`。
 
 2. 使用以下 Maven 命令在本地运行 Spring Boot 应用程序：
     ```bash
     mvn
     ```
 
-运行该应用程序会自动在 `http://localhost:8080` 打开一个新浏览器。
+   生成的 POM 将此默认命令配置为编译应用程序，启动 webforJ 前端监视器，并运行 Spring Boot。
+
+运行应用程序会自动在 `http://localhost:8080` 打开新的浏览器窗口。

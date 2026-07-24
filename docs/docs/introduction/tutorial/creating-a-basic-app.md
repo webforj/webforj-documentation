@@ -147,7 +147,7 @@ In addition to these methods, you can style your app using CSS. The **Styling** 
 webforJ also comes with a set of designed CSS variables called DWC tokens. See the [Styling](/docs/styling/overview) documentation for detailed information on how to style webforJ components, and how to use the tokens.
 
 
-### Adding CSS to the frontend bundle {#referencing-a-css-file} 
+### Adding CSS to the frontend bundle {#referencing-a-css-file}
 
 
 It's best to have a separate CSS file to keep everything organized and maintainable. Create a file named `card.css` inside `src/main/frontend/css`, with the following CSS class definition:

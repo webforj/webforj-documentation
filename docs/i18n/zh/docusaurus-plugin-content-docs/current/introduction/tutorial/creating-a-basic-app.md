@@ -2,34 +2,34 @@
 title: Creating a Basic App
 sidebar_position: 2
 description: Step 1 - Add components to an app.
-_i18n_hash: 7c98bf3851e1db10d5e0dd68045ea22d
+_i18n_hash: d7385c22706cf76508b7e1971186f88d
 ---
-在[项目设置](/docs/introduction/tutorial/project-setup)中，您生成了一个webforJ项目。现在是时候为项目创建主类，并使用webforJ组件添加一个交互式界面。在此步骤中，您将了解：
+在 [项目设置](/docs/introduction/tutorial/project-setup) 中，您生成了一个 webforJ 项目。现在是时候为该项目创建主类，并使用 webforJ 组件添加交互式界面。在此步骤中，您将了解：
 
-- 使用webforJ和Spring Boot的应用程序入口点
-- webforJ和HTML元素组件
-- 使用CSS为组件设置样式
+- 使用 webforJ 和 Spring Boot 的应用程序入口点
+- webforJ 和 HTML 元素组件
+- 使用 CSS 来样式化组件
 
-完成此步骤后，将创建一个[1-创建基本应用程序](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app)的版本。
+完成此步骤会创建 [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) 的一个版本。
 
-<!-- 在此插入视频 -->
+<!-- 在此处插入视频 -->
 
 ## 运行应用程序 {#running-the-app}
 
-在开发您的应用程序时，您可以使用[1-创建基本应用程序](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app)作为对比。要查看应用程序的运行情况：
+在您开发应用程序时，可以使用 [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) 进行比较。要查看应用程序的运行：
 
-1. 导航到包含`pom.xml`文件的顶级目录，如果您按照GitHub上的版本操作，则为`1-creating-a-basic-app`。
+1. 导航到包含 `pom.xml` 文件的顶级目录，如果您正在按照 GitHub 上的版本进行操作，该目录为 `1-creating-a-basic-app`。
 
-2. 使用以下Maven命令在本地运行Spring Boot应用程序：
+2. 使用以下 Maven 命令在本地运行 Spring Boot 应用程序：
     ```bash
     mvn
     ```
 
-运行应用程序会自动在`http://localhost:8080`打开一个新浏览器。
+运行应用程序会自动在 `http://localhost:8080` 打开一个新浏览器。
 
 ## 入口点 {#entry-point}
 
-每个webforJ应用程序都包含一个扩展自<JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>的单一类。在本教程以及其他发布的webforJ项目中，该类通常称为`Application`。此类位于一个以您在[项目设置](/docs/introduction/tutorial/project-setup)中使用的`groupId`命名的包内：
+每个 webforJ 应用程序包含一个扩展了 <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink> 的类。本教程及其他发布的 webforJ 项目通常称为 `Application`。该类位于一个以您在 [项目设置](/docs/introduction/tutorial/project-setup) 中使用的 `groupId` 命名的包内：
 
 ```
 1-creating-a-basic-app
@@ -47,13 +47,13 @@ _i18n_hash: 7c98bf3851e1db10d5e0dd68045ea22d
 └───target
 ```
 
-在`Application`类内部，`SpringApplication.run()`方法使用配置启动应用程序。各种注释用于应用程序的配置。
+在 `Application` 类中，`SpringApplication.run()` 方法使用配置启动应用程序。各种注解用于应用程序的配置。
 
 ```java title="Application.java"
 @SpringBootApplication
-@StyleSheet("ws://css/card.css")
+@BundleEntry("css/card.css")
 @AppTheme("system")
-@AppProfile(name = "Customer Application", shortName = "CustomerApp")
+@AppProfile(name = "客户应用程序", shortName = "CustomerApp")
 public class Application extends App {
 
   public static void main(String[] args) {
@@ -62,93 +62,93 @@ public class Application extends App {
 }
 ```
 
-### 注释 {#annotations}
+### 注解 {#annotations}
 
-[`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html)是Spring Boot中的核心注释。您将此注释放在主类上，以将其标记为应用程序的起点。
+[`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) 是 Spring Boot 中的核心注解。您将此注解放在主类上，以将其标记为应用程序的起始点。
 
-`@StyleSheet`、`@AppTheme`和`@AppProfile`只是您想要显式设置配置时可用的众多<JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ注释</JavadocLink>中的一部分。
+`@BundleEntry`、`@AppTheme` 和 `@AppProfile` 仅是 <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ 注解</JavadocLink> 中的一部分，您可以在需要明确设置配置时使用这些注解。
 
-- **`@StyleSheet`**将CSS文件嵌入网页中。有关如何与特定CSS文件互动的更多细节，请稍后在[使用CSS进行样式设置](#styling-with-css)中查看。
+- **`@BundleEntry`** 将文件从 `src/main/frontend` 添加到应用程序的前端捆绑包。在此步骤中，它加载您将在 [使用 CSS 进行样式化](#styling-with-css) 中创建的 CSS 文件。
 
-- **`@AppTheme`**管理应用程序的视觉主题。如果设置为`system`，应用程序将自动采用用户首选的主题：`light`、`dark`或`dark-pure`。有关创建自定义主题或覆盖默认主题的信息，请参阅[主题](/docs/styling/themes)文章。
+- **`@AppTheme`** 管理应用程序的视觉主题。如果设置为 `system`，应用程序将自动采用用户首选的主题：`light`、`dark` 或 `dark-pure`。有关创建自定义主题或覆盖默认主题的信息，请参阅 [主题](/docs/styling/themes) 文章。
 
-- **`@AppProfile`**有助于配置应用程序如何作为[可安装应用](/docs/configuration/installable-apps)向用户呈现。至少，此注释需要应用程序的全名`name`和在空间有限时使用的`shortName`。`shortName`不应超过12个字符。
+- **`@AppProfile`** 有助于配置应用程序如何作为 [可安装应用程序](/docs/configuration/installable-apps) 向用户展示。此注解至少需要应用程序的全名 `name` 和在空间有限时使用的 `shortName`。`shortName` 不应超过 12 个字符。
 
 ## 创建用户界面 {#creating-a-ui}
 
-要创建用户界面，您需要添加[HTML元素组件](/docs/components/html-elements)和[webforJ组件](/docs/components/overview)。目前，您只有一个单页面应用程序，因此您将直接将组件添加到`Application`类中。
-为此，请重写`App.run()`方法，并创建一个`Frame`来添加组件。
+要创建用户界面，您需要添加 [HTML 元素组件](/docs/components/html-elements) 和 [webforJ 组件](/docs/components/overview)。现在，您只有一个单页应用程序，因此您将直接将组件添加到 `Application` 类中。
+为此，重写 `App.run()` 方法并创建一个 `Frame` 来添加组件。
 
 ```java
 @Override
 public void run() throws WebforjException {
   Frame mainFrame = new Frame();
 
-  // 创建UI组件并添加到框架中
+  // 创建 UI 组件并添加到框架中
 
 }
 ```
 
-### 使用HTML元素 {#using-html-elements}
+### 使用 HTML 元素 {#using-html-elements}
 
-您可以使用[HTML元素组件](/docs/components/html-elements)向您的应用程序添加标准HTML元素。
-创建组件的新实例，然后使用`add()`方法将其添加到`Frame`：
+您可以使用 [HTML 元素组件](/docs/components/html-elements) 向应用程序添加标准 HTML 元素。
+创建组件的新实例，然后使用 `add()` 方法将其添加到 `Frame`：
 
 ```java
-// 创建UI元素的容器
+// 创建 UI 元素的容器
 Frame mainFrame = new Frame();
 
-// 创建HTML组件
+// 创建 HTML 组件
 Paragraph tutorial = new Paragraph("教程应用程序！");
 
-// 将组件添加到容器
+// 将组件添加到容器中
 mainFrame.add(tutorial);
 ```
 
-### 使用webforJ组件 {#webforj-components-and-html-elements}
+### 使用 webforJ 组件 {#webforj-components-and-html-elements}
 
-虽然HTML元素对结构、语义和轻量级UI需求很有用，但[webforJ组件](/docs/components/overview)提供了更复杂和动态的行为。
+虽然 HTML 元素对于结构、语义和轻量级 UI 需求很有用，但 [webforJ 组件](/docs/components/overview) 提供了更复杂和动态的行为。
 
-下面的代码添加了一个[按钮](/docs/components/button)组件，使用`setTheme()`方法更改其外观，并添加一个事件监听器，以便在单击按钮时创建一个[消息对话框](/docs/components/option-dialogs/message)组件。
-大多数webforJ组件方法会修改组件并返回组件本身，因此您可以链式调用多个方法以实现更紧凑的代码。
+下面的代码添加了一个 [Button](/docs/components/button) 组件，通过 `setTheme()` 方法更改其外观，并添加事件监听器，点击按钮时创建一个 [Message Dialog](/docs/components/option-dialogs/message) 组件。
+大多数 webforJ 组件方法修改组件后返回组件本身，因此您可以链式调用多个方法以获得更简洁的代码。
 
 ```java
-// 创建UI元素的容器
+// 创建 UI 元素的容器
 Frame mainFrame = new Frame();
 
-// 创建webforJ组件
+// 创建 webforJ 组件
 Button btn = new Button("信息");
 
-// 修改webforJ组件并添加事件监听器
+// 修改 webforJ 组件，并添加事件监听器
 btn.setTheme(ButtonTheme.PRIMARY)
   .addClickListener(e -> OptionDialog.showMessageDialog("这是一个教程！", "信息"));
 
-// 将组件添加到容器
+// 将组件添加到容器中
 mainFrame.add(btn);
 ```
 
-## 使用CSS进行样式设置 {#styling-with-css}
+## 使用 CSS 进行样式化 {#styling-with-css}
 
-大多数webforJ组件都有内置方法来进行常见的样式更改，例如调整大小和主题。
+大多数 webforJ 组件都有内置方法来进行常见的样式更改，例如调整大小和主题。
 
 ```java
-// 使用CSS关键字设置Frame的宽度
+// 使用 CSS 关键字设置框架的宽度
 mainFrame.setWidth("fit-content");
 
 // 使用像素设置按钮的最大宽度
 btn.setMaxWidth(200);
 
-// 将按钮主题设置为PRIMARY
+// 将按钮主题设置为 PRIMARY
 btn.setTheme(ButtonTheme.PRIMARY);
 ```
 
-除了这些方法，您还可以使用CSS为应用程序设置样式。任何组件文档页面的**样式设置**部分都有有关相关CSS属性的具体详细信息。
+除了这些方法，您还可以使用 CSS 来样式化您的应用程序。任何组件文档页面的 **样式** 部分提供了有关相关 CSS 属性的具体细节。
 
-webforJ还带有一组设计好的CSS变量，称为DWC令牌。有关如何为webforJ组件设置样式以及如何使用令牌的详细信息，请参阅[样式设置](/docs/styling/overview)文档。
+webforJ 还配备了一组设计好的 CSS 变量，称为 DWC 令牌。有关如何样式化 webforJ 组件以及如何使用令牌的详细信息，请参阅 [样式](/docs/styling/overview) 文档。
 
-### 引用CSS文件 {#referencing-a-css-file}
+### 将 CSS 添加到前端捆绑包 {#referencing-a-css-file}
 
-最好有一个单独的CSS文件，以保持一切组织和便于维护。在`src/main/resources/static/css`中创建一个名为`card.css`的文件，包含以下CSS类定义：
+最好使用单独的 CSS 文件以保持一切组织良好且易于维护。在 `src/main/frontend/css` 中创建一个名为 `card.css` 的文件，包含以下 CSS 类定义：
 
 ```css title="card.css"
 .card {
@@ -163,29 +163,29 @@ webforJ还带有一组设计好的CSS变量，称为DWC令牌。有关如何为w
 }
 ```
 
-然后，通过使用`@StyleSheet`注释引用`Application.java`中的文件，并指定CSS文件的名称。对于此步骤，它是`@StyleSheet("ws://css/card.css")`。
+然后，通过在 `Application.java` 中使用 `@BundleEntry("css/card.css")` 将文件添加到前端捆绑包。该路径相对于 `src/main/frontend`。
 
-:::tip Web服务器协议
-本教程使用Web服务器协议来引用CSS文件。要了解更多有关此如何工作的内容，请参阅[管理资源](/docs/managing-resources/overview)。
+:::tip 前端捆绑器
+教程项目的 Maven 配置在您使用 `mvn` 启动应用程序时运行 webforJ 前端观察者，因此在开发过程中 `src/main/frontend` 下的更改会被重建。要了解更多信息，请参见 [前端捆绑器](/docs/managing-resources/bundler/overview)。
 :::
 
-### 添加CSS类到组件 {#adding-css-classes-to-components}
+### 为组件添加 CSS 类 {#adding-css-classes-to-components}
 
-您可以使用`addClassName()`和`removeClassName()`方法动态地向组件添加或删除类名。对于本教程，只使用一个CSS类：
+您可以使用 `addClassName()` 和 `removeClassName()` 方法动态添加或删除组件的类名。对于本教程，仅使用了一个 CSS 类：
 
 ```java
 mainFrame.addClassName("card");
 ```
 
-## 完成的`Application` {#completed-application}
+## 完成的 `Application` {#completed-application}
 
-您的`Application`类现在应类似于以下内容：
+您的 `Application` 类现在应该看起来类似于以下内容：
 
 ```java title="Application.java"
 @SpringBootApplication
-@StyleSheet("ws://css/card.css")
+@BundleEntry("css/card.css")
 @AppTheme("system")
-@AppProfile(name = "Customer Application", shortName = "CustomerApp")
+@AppProfile(name = "客户应用程序", shortName = "CustomerApp")
 public class Application extends App {
 
   public static void main(String[] args) {
@@ -198,22 +198,22 @@ public class Application extends App {
     Paragraph tutorial = new Paragraph("教程应用程序！");
     Button btn = new Button("信息");
 
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .setMaxWidth(200)
-        .addClickListener(e -> OptionDialog.showMessageDialog("这是一个教程！", "信息"));
+    btn
+      .setTheme(ButtonTheme.PRIMARY)
+      .setMaxWidth(200)
+      .addClickListener(e ->
+        OptionDialog.showMessageDialog("这是一个教程！", "信息")
+      );
 
-    mainFrame.setWidth("fit-content")
-        .addClassName("card")
-        .add(tutorial, btn);
+    mainFrame.setWidth("fit-content").addClassName("card").add(tutorial, btn);
   }
-
 }
 ```
 
-:::tip 多页面
-对于更复杂的应用程序，您可以将用户界面划分为多个页面，以便于组织。该概念将在本教程后面在[路由和复合](/docs/introduction/tutorial/routing-and-composites)中覆盖。
+:::tip 多个页面
+对于更复杂的应用程序，您可以将用户界面分成多个页面以更好地组织。此概念将在本教程稍后涵盖的 [路由和组合](/docs/introduction/tutorial/routing-and-composites) 中进行说明。
 :::
 
 ## 下一步 {#next-step}
 
-在创建具有基本用户界面的功能性应用程序之后，下一步是添加数据模型并在[处理数据](/docs/introduction/tutorial/working-with-data)中的`Table`组件中显示结果。
+在创建一个具有基本用户界面的功能应用程序后，下一步是添加数据模型并在 [处理数据](/docs/introduction/tutorial/working-with-data) 的 `Table` 组件中显示结果。
