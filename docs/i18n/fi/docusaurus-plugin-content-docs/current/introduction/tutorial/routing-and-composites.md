@@ -2,50 +2,50 @@
 title: Routing and Composites
 sidebar_position: 4
 description: Step 3 - Make your app navigable.
-_i18n_hash: b6d14f241d64208bfcfff527691bf8e9
+_i18n_hash: 6016bff3255689b6be8a69997542a372
 ---
-Tähän asti tämä opas on ollut vain yksisivuinen sovellus. Tämä vaihe muuttaa sen.
-Siirrät [Työskentely tiedon kanssa](/docs/introduction/tutorial/working-with-data) luomasi käyttöliittymän omalle sivulle ja luot toisen sivun uusien asiakkaiden lisäämistä varten.
-Sitten yhdistät nämä sivut niin, että sovelluksesi voi navigoida niiden välillä näitä käsitteitä soveltamalla:
+F jusqu'à présent, ce tutoriel n'était qu'une application d'une seule page. Cette étape change cela.
+Vous déplacerez l'interface utilisateur que vous avez créée dans [Travailler avec des données](/docs/introduction/tutorial/working-with-data) vers sa propre page et créerez une autre page pour ajouter de nouveaux clients.
+Ensuite, vous connecter ces pages afin que votre application soit capable de naviguer entre elles en appliquant ces concepts :
 
-- [Reititys](/docs/routing/overview)
-- [Komponenttien yhdistäminen](/docs/building-ui/composing-components)
-- [`ColumnsLayout`](/docs/components/columns-layout) komponentti
+- [Routage](/docs/routing/overview)
+- [Composer des composants](/docs/building-ui/composing-components)
+- Le composant [`ColumnsLayout`](/docs/components/columns-layout)
 
-Tämän vaiheen suorittaminen luo version [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
+Compléter cette étape crée une version de [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
 
-<!-- Insert video here -->
+<!-- Insérer la vidéo ici -->
 
-## Sovelluksen suorittaminen {#running-the-app}
+## Exécution de l'application {#running-the-app}
 
-Sovellustasi kehittäessäsi voit käyttää [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites) vertailukohtana. Näet sovelluksen käytössä:
+En développant votre application, vous pouvez utiliser [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites) comme comparaison. Pour voir l'application en action :
 
-1. Siirry ylimpään hakemistoon, jossa `pom.xml`-tiedosto sijaitsee; tämä on `3-routing-and-composites`, jos seuraat mukana olevaa versiota GitHubissa.
+1. Naviguez jusqu'au répertoire de niveau supérieur contenant le fichier `pom.xml` ; c'est `3-routing-and-composites` si vous suivez la version sur GitHub.
 
-2. Käytä seuraavaa Maven-komentoa suorittaaksesi Spring Boot -sovellusta paikallisesti:
+2. Utilisez la commande Maven suivante pour exécuter l'application Spring Boot localement :
     ```bash
     mvn
     ```
 
-Sovelluksen suorittaminen avaa automaattisesti uuden selaimen osoitteessa `http://localhost:8080`.
+L'exécution de l'application ouvre automatiquement un nouveau navigateur à `http://localhost:8080`.
 
-## Reititettävät sovellukset {#routable-apps}
+## Applications routables {#routable-apps}
 
-Aiemmin sovelluksesi oli yhden toiminnon varassa: olemassa olevan asiakastiedon näyttäminen taulukossa.
-Tässä vaiheessa sovelluksesi voi myös muokata asiakastietoja lisäämällä uusia asiakkaita.
-Käyttöliittymien erottaminen näyttöä ja muokkausta varten on hyödyllistä pitkän aikavälin ylläpidolle ja testaamiselle, joten lisäät tämän ominaisuuden erilliseksi sivuksi.
-Teet sovelluksestasi [reititettävän](/docs/routing/overview), jolloin webforJ voi käyttää ja ladata kahta käyttöliittymää erikseen.
+Auparavant, votre application avait une seule fonction : afficher un tableau de données clients existantes.
+Dans cette étape, votre application sera également capable de modifier les données clients en ajoutant de nouveaux clients.
+Séparer les interfaces utilisateur pour l'affichage et la modification est bénéfique pour la maintenance et les tests à long terme, donc vous ajouterez cette fonctionnalité en tant que page séparée.
+Vous allez rendre votre application [routable](/docs/routing/overview) afin que webforJ puisse accéder et charger les deux interfaces utilisateur individuellement.
 
-Reititettävä sovellus renderöi käyttöliittymän URL-osoitteen mukaan. Luokan, joka perii `App`-luokan, merkitseminen [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html) avulla mahdollistaa reitityksen, ja `packages`-elementti kertoo webforJ:lle, mitkä paketit sisältävät käyttöliittymäkomponentteja.
+Une application routable rend l'interface utilisateur en fonction de l'URL. Annoter la classe qui étend la classe `App` avec [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html) active le routage, et l'élément `packages` indique à webforJ quels packages contiennent des composants d'interface utilisateur.
 
-Kun lisäät `@Routify`-annotaation `Application`-luokkaan, poista `run()`-metodi. Siirrät komponentit kyseisestä metodista luokkaan, jonka teet `com.webforj.tutorial.views`-pakettiin. Päivitetyn `Application.java`-tiedoston tulisi näyttää tältä:
+Lorsque vous ajoutez l'annotation `@Routify` à `Application`, supprimez la méthode `run()`. Vous déplacerez les composants de cette méthode vers une classe que vous créerez dans le package `com.webforj.tutorial.views`. Votre fichier `Application.java` mis à jour devrait ressembler à ceci :
 
 ```java title="Application.java" {5-6,15}
 @SpringBootApplication
-@StyleSheet("ws://css/card.css")
+@BundleEntry("css/card.css")
 @AppTheme("system")
 
-//Lisätty @Routify-annotaatio
+//Ajout de l'annotation @Routify
 @Routify(packages = "com.webforj.tutorial.views")
 
 @AppProfile(name = "CustomerApplication", shortName = "CustomerApplication")
@@ -55,37 +55,37 @@ public class Application extends App {
     SpringApplication.run(Application.class, args);
   }
 
-// Poistettu ylitse kirjoitettu App.run()-metodi
+// Suppression de la méthode App.run() remplacée
 
 }
 ```
 
-:::tip Globaali CSS
-`@StyleSheet`-annotaation pitäminen `Application`-luokassa soveltaa CSS:ää globaalisti.
+:::tip CSS global
+Gardez l'annotation `@BundleEntry` dans `Application` pour ajouter le fichier CSS au bundle frontend au niveau de l'application, afin que les styles restent disponibles dans toutes les vues routées.
 :::
 
-### Reittien luominen {#creating-routes}
+### Création de routes {#creating-routes}
 
-`@Routify`-annotaation lisääminen tekee sovelluksestasi reititettävän. Kun se on reititettävä, sovellus etsii reittejä `com.webforj.tutorial.views`-paketista.
-Sinun on luotava reitit käyttöliittymille ja määritettävä myös niiden [Reittityypit](/docs/routing/route-hierarchy/route-types). Reittityyppi määrittää, miten käyttöliittymän sisältö kartoitetaan URL-osoitteeseen.
+L'ajout de l'annotation `@Routify` rend votre application routable. Une fois qu'elle est routable, votre application cherchera dans le package `com.webforj.tutorial.views` des routes.
+Vous devrez créer les routes pour vos interfaces utilisateur et spécifier également leurs [Types de Route](/docs/routing/route-hierarchy/route-types). Le type de route détermine comment mapper le contenu de l'interface utilisateur à l'URL.
 
-Ensimmäinen reittityyppi on `View`. Tämäntyyppiset reitit kartoittavat suoraan tiettyyn URL-osaan sovelluksessasi. Taulukon käyttöliittymät ja uusi asiakaslomake ovat molemmat `View`-reittejä.
+Le premier type de route est `View`. Ces types de routes se mappent directement à un segment d'URL spécifique dans votre application. Les interfaces utilisateur pour le tableau et le formulaire de nouveau client seront toutes deux des routes de type `View`.
 
-Toinen reittityyppi on `Layout`, joka sisältää käyttöliittymää, joka näkyy useilla sivuilla, kuten ylätunniste tai sivupalkki. Layout-reitit kehystävät myös lapsinäkymiä ilman, että ne vaikuttavat URL-osoitteeseen.
+Le deuxième type de route est `Layout`, qui contient l'interface utilisateur qui apparaît sur plusieurs pages, comme un en-tête ou une barre latérale. Les routes de mise en page englobent également les vues enfants sans contribuer à l'URL.
 
-Luokan reittityypin määrittämiseksi lisää reittityyppi luokan nimen loppuun liitteenä.
-Esimerkiksi `MainView` on `View`-reitityyppi.
+Pour spécifier le type de route d'une classe, ajoutez le type de route à la fin du nom de la classe comme un suffixe.
+Par exemple, `MainView` est un type de route `View`.
 
-Pitääksesi sovelluksen kaksi toimintoa erillään, sovelluksesi tarvitsee kartoittaa käyttöliittymät kahteen ainutlaatuiseen `View`-reittiin: yksi taulukolle ja toinen asiakaslomakkeelle. Luodaan `/src/main/java/com/webforj/tutorial/views`-hakemistoon kaksi luokkaa, joilla on `View`-liite:
+Pour garder les deux fonctions de l'application séparées, votre application doit mapper les interfaces utilisateur à deux routes uniques de type `View` : une pour le tableau et une pour le formulaire client. Dans `/src/main/java/com/webforj/tutorial/views`, créez deux classes avec un suffixe `View` :
 
-- **`MainView`**: Tässä näkymässä on `Table`, joka oli aikaisemmin `Application`-luokassa.
-- **`FormView`**: Tässä näkymässä on lomake uusien asiakkaiden lisäämiseksi.
+- **`MainView`** : Cette vue contiendra le `Table` précédemment dans la classe `Application`.
+- **`FormView`** : Cette vue contiendra un formulaire pour ajouter de nouveaux clients.
 
-### URL-osoitteiden kartoittaminen komponentteihin {#mapping-urls-to-components}
+### Mapping des URLs aux composants {#mapping-urls-to-components}
 
-Sovelluksesi on reititettävä ja tietää etsiä kahta `View`-reittiä, `MainView` ja `FormView`, mutta sillä ei ole määritettyä URL-osoitetta niiden lataamista varten. Käyttämällä `@Route`-annotaatiota näkymäluokassa voit kertoa webforJ:lle, mistä se lataa sen annetun URL-osan perusteella. Esimerkiksi, käyttämällä `@Route("about")` -annotaatiota paikallisesti yhdistetään luokka osoitteeseen `http://localhost:8080/about`.
+Votre application est routable et sait qu'elle doit rechercher deux routes de type `View`, `MainView` et `FormView`, mais elle n'a pas d'URL spécifique pour les charger. En utilisant l'annotation `@Route` sur une classe de vue, vous pouvez indiquer à webforJ où la charger en fonction d'un segment d'URL donné. Par exemple, en utilisant `@Route("about")` dans une vue, vous mappez localement la classe à `http://localhost:8080/about`.
 
-Nimen mukaisesti `MainView` on luokka, jonka haluat ladata ensin, kun sovellus alkaa. Saadaksesi tämän aikaan, lisää `@Route` -annotaatio, joka yhdistää `MainView` sovelluksesi juuriosoitteeseen:
+Comme son nom l'indique, `MainView` est la classe que vous souhaitez charger initialement lorsque l'application s'exécute. Pour ce faire, ajoutez une annotation `@Route` qui mappe `MainView` à l'URL racine de votre application :
 
 ```java title="MainView.java" {1}
 @Route("/")
@@ -97,7 +97,7 @@ public class MainView {
 }
 ```
 
-`FormView`-näkymälle määritä se niin, että se lataa käyttäjän siirtyessä osoitteeseen `http://localhost:8080/customer`:
+Pour le `FormView`, mappez la vue afin qu'elle se charge lorsqu'un utilisateur accède à `http://localhost:8080/customer` :
 
 ```java title="FormView.java" {1}
 @Route("customer")
@@ -109,57 +109,57 @@ public class FormView {
 }
 ```
 
-:::tip Oletuskäyttäytyminen
-Jos et nimenomaisesti määritä arvoa `@Route`-annotaatiolle, URL-osa on luokan nimi, joka on muunnettu pieniksi kirjaimiksi, ja `View`-liite poistettu.
+:::tip Comportement par défaut
+Si vous n'assignez pas explicitement une valeur à l'annotation `@Route`, le segment d'URL est le nom de la classe converti en minuscules, avec le suffixe `View` supprimé.
 
-- `MainView` kartoittuu `/main`
-- `FormView` kartoittuu `/form`
+- `MainView` serait mappé à `/main`
+- `FormView` serait mappé à `/form`
 :::
 
-## Yhteiset ominaisuudet {#shared-characteristics}
+## Caractéristiques partagées {#shared-characteristics}
 
-Lisäksi, kun molemmat ovat näkymäreittejä, `MainView` ja `FormView` jakavat lisäominaisuuksia. Jotkut näistä jaetuista ominaisuuksista, kuten `Composite`-komponenttien käyttö, ovat perustavanlaatuisia webforJ-sovellusten käyttämiselle, kun taas muut helpottavat sovelluksesi hallintaa.
+En plus d'être toutes deux des routes de vue, `MainView` et `FormView` partagent des caractéristiques supplémentaires. Certaines de ces traits partagés, comme l'utilisation de composants `Composite`, sont fondamentaux pour l'utilisation des applications webforJ, tandis que d'autres facilitent simplement la gestion de votre application.
 
-### `Composite`-komponenttien käyttäminen {#using-composite-components}
+### Utilisation des composants `Composite` {#using-composite-components}
 
-Kun sovellus oli yksisivuinen, säilytit komponentit `Frame`-sisällä. Jatkossa, monivisioisessa sovelluksessa, sinun tulee kääriä nämä käyttöliittymäkomponentit [`Composite`-komponentteihin](/docs/building-ui/composing-components).
+Lorsque l'application était à page unique, vous avez stocké les composants à l'intérieur d'un `Frame`. À l'avenir, avec une application à plusieurs vues, vous devrez envelopper ces composants d'interface utilisateur dans des [composants `Composite`](/docs/building-ui/composing-components).
 
-`Composite`-komponentit ovat kehystimiä, jotka helpottavat uudelleenkäytettävien komponenttien luomista.
-Luodaksesi `Composite`-komponentin, laajenna `Composite`-luokkaa määritellyllä sidotulla komponentilla, joka toimii luokan perustana, esim., `Composite<FlexLayout>`.
+Les composants `Composite` sont des wrappers qui facilitent la création de composants réutilisables.
+Pour créer un composant `Composite`, étendez la classe `Composite` avec un composant lié spécifié qui sert de fondation de la classe, par exemple, `Composite<FlexLayout>`.
 
-Tässä oppaassa käytetään `Div`-elementtejä sidottuina komponentteina, mutta ne voivat olla mitä tahansa komponentteja, kuten [`FlexLayout`](/docs/components/flex-layout) tai [`AppLayout`](/docs/components/app-layout). Käyttämällä `getBoundComponent()`-metodia voit viitata sidottuun komponenttiin ja saada pääsyn sen metodeihin. Tämä sallii sinun asettaa koon, lisätä CSS-luokan nimen, lisätä komponentteja, joita haluat näyttää `Composite`-komponentissa, ja käyttää komponenttikohtaisia metodeja.
+Ce tutoriel utilise des éléments `Div` comme composants liés, mais ils peuvent être n'importe quel composant, comme le [`FlexLayout`](/docs/components/flex-layout) ou le [`AppLayout`](/docs/components/app-layout). En utilisant la méthode `getBoundComponent()`, vous pouvez référencer le composant lié et avoir accès à ses méthodes. Cela vous permet de définir la taille, d'ajouter un nom de classe CSS, d'ajouter des composants que vous souhaitez afficher dans le composant `Composite`, et d'accéder à des méthodes spécifiques au composant.
 
-`MainView`- ja `FormView`-näkymille laajenna `Composite` `Div`-sidotun komponentin kanssa. Viittaa sitten siihen sidottuun komponenttiin, jotta voit lisätä käyttöliittymiä myöhemmin. Molempien näkymien tulisi näyttää jokseenkin seuraavalta struktuurilta:
+Pour `MainView` et `FormView`, étendez `Composite` avec `Div` comme composant lié. Ensuite, référencez ce composant lié afin que vous puissiez intégrer les interfaces utilisateur plus tard. Les deux vues devraient avoir une structure similaire à la suivante :
 
 ```java
-// Laajenna Compositea sidotulla komponentilla
+// Étendre Composite avec un composant lié
 public class MainView extends Composite<Div> {
 
-  // Viittaa sidottuun komponenttiin
+  // Accéder au composant lié
   private Div self = getBoundComponent();
 
-  // Luo komponentin käyttöliittymä
+  // Créer une interface utilisateur pour le composant
   private Button submit = new Button("Submit");
 
   public MainView() {
 
-    // Lisää käyttöliittymäkomponentti sidottuun komponenttiin
+    // Ajouter le composant d'interface utilisateur au composant lié
     self.add(submit);
   }
 }
 ```
 
-### Kehyksen otsikon asettaminen {#setting-the-frame-tile}
+### Définir le titre de la fenêtre {#setting-the-frame-tile}
 
-Kun käyttäjällä on useita välilehtiä selaimessaan, ainutlaatuinen kehyksen otsikko auttaa heitä nopeammin tunnistamaan, mikä osa sovelluksesta on avattu.
+Lorsqu'un utilisateur a plusieurs onglets dans son navigateur, un titre de fenêtre unique l'aide à identifier rapidement quelle partie de l'application il a ouverte.
 
-[`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) -annotaatio määrittelee, mitä näkyy selaimen otsikossa tai sivun välilehdessä. Lisää molemmille näkymille kehyksen otsikko käyttämällä `@FrameTitle` -annotaatiota:
+L'annotation [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) définit ce qui apparaît dans le titre du navigateur ou l'onglet de la page. Pour les deux vues, ajoutez un titre de fenêtre en utilisant l'annotation `@FrameTitle` :
 
 <Tabs>
   <TabItem value="MainView" label="MainView">
   ```java title="MainView.java" {2}
   @Route("/")
-  @FrameTitle("Asiakkaat Taulukko")
+  @FrameTitle("Table des clients")
   public class MainView extends Composite<Div> {
 
     private Div self = getBoundComponent();
@@ -172,7 +172,7 @@ Kun käyttäjällä on useita välilehtiä selaimessaan, ainutlaatuinen kehyksen
   <TabItem value="FormView" label="FormView">
   ```java title="FormView.java" {2}
   @Route("customer")
-  @FrameTitle("Asiakkaan Lomake")
+  @FrameTitle("Formulaire client")
   public class FormView extends Composite<Div> {
 
     private Div self = getBoundComponent();
@@ -184,17 +184,17 @@ Kun käyttäjällä on useita välilehtiä selaimessaan, ainutlaatuinen kehyksen
   </TabItem>
 </Tabs>
 
-### Yhteinen CSS {#shared-css}
+### CSS partagé {#shared-css}
 
-Kun sinulla on sidottu komponentti, johon voit viitata `MainView`- ja `FormView`-näkymissä, voit tyylitellä sen CSS:llä.
-Voit käyttää ensimmäisen vaiheen CSS:ää, [Perus sovelluksen luominen](/docs/introduction/tutorial/creating-a-basic-app#referencing-a-css-file), antaaksesi molemmille näkymille identtiset käyttöliittymäkontin tyylit.
-Lisää CSS-luokka `card` sidottuun komponenttiin kummassakin näkymässä:
+Avec un composant lié que vous pouvez référencer dans `MainView` et `FormView`, vous pouvez le styliser avec CSS.
+Vous pouvez utiliser le CSS de la première étape, [Créer une application de base](/docs/introduction/tutorial/creating-a-basic-app#referencing-a-css-file), pour donner aux deux vues des styles de conteneur UI identiques.
+Ajoutez le nom de classe CSS `card` au composant lié dans chaque vue :
 
 <Tabs>
   <TabItem value="MainView" label="MainView">
     ```java {9} title="MainView.java"
     @Route("/")
-    @FrameTitle("Asiakkaat Taulukko")
+    @FrameTitle("Table des clients")
     public class MainView extends Composite<Div> {
 
       private Div self = getBoundComponent();
@@ -209,7 +209,7 @@ Lisää CSS-luokka `card` sidottuun komponenttiin kummassakin näkymässä:
   <TabItem value="FormView" label="FormView">
     ```java {9} title="FormView.java"
     @Route("customer")
-    @FrameTitle("Asiakkaan Lomake")
+    @FrameTitle("Formulaire client")
     public class FormView extends Composite<Div> {
 
       private Div self = getBoundComponent();
@@ -223,18 +223,18 @@ Lisää CSS-luokka `card` sidottuun komponenttiin kummassakin näkymässä:
   </TabItem>
 </Tabs>
 
-### `CustomerService`-käytön {#using-customerservice}
+### Utilisation de `CustomerService` {#using-customerservice}
 
-Näkymille viimeinen yhteinen ominaisuus on `CustomerService`-luokan käyttö.
-`Table` `MainView`-näkymässä näyttää jokaisen asiakkaan, kun taas `FormView` lisää uusia asiakkaita. Koska molemmat näkymät ovat vuorovaikutuksessa asiakastietojen kanssa, niiden on päästävä käsiksi sovelluksen liiketoimintalogiikkaan.
+Le dernier trait partagé pour les vues est l'utilisation de la classe `CustomerService`.
+Le `Table` dans `MainView` affiche chaque client, tandis que `FormView` ajoute de nouveaux clients. Comme les deux vues interagissent avec les données clients, elles ont besoin d'accès à la logique métier de l'application.
 
-Näkymät saavat pääsyn Spring-palvelun kautta, joka luotiin [Työskentely tiedon kanssa](/docs/introduction/tutorial/working-with-data#creating-a-service), `CustomerService`. Käyttääksesi Spring-palvelua jokaisessa näkymässä, tee `CustomerService` konstruktoriparametriksi:
+Les vues obtiennent l'accès par le service Spring créé dans [Travailler avec des données](/docs/introduction/tutorial/working-with-data#creating-a-service), `CustomerService`. Pour utiliser le service Spring dans chaque vue, faites de `CustomerService` un paramètre du constructeur :
 
 <Tabs>
   <TabItem value="MainView" label="MainView">
     ```java {7-8} title="MainView.java"
     @Route("/")
-    @FrameTitle("Asiakkaat Taulukko")
+    @FrameTitle("Table des clients")
     public class MainView extends Composite<Div> {
 
       private Div self = getBoundComponent();
@@ -249,7 +249,7 @@ Näkymät saavat pääsyn Spring-palvelun kautta, joka luotiin [Työskentely tie
   <TabItem value="FormView" label="FormView">
     ```java {7-8} title="FormView.java"
     @Route("customer")
-    @FrameTitle("Asiakkaan Lomake")
+    @FrameTitle("Formulaire client")
     public class FormView extends Composite<Div> {
 
       private Div self = getBoundComponent();
@@ -263,63 +263,63 @@ Näkymät saavat pääsyn Spring-palvelun kautta, joka luotiin [Työskentely tie
   </TabItem>
 </Tabs>
 
-## `MainView` luominen {#creating-mainview}
+## Création de `MainView` {#creating-mainview}
 
-Kun olet tehnyt sovelluksestasi reititettävän, antanut näkymille `Composite`-komponentin kehykset ja sisällyttänyt `CustomerService`:n, voit rakentaa käyttöliittymät, jotka ovat ainutlaatuisia jokaiselle näkymälle. Kuten aiemmin mainittiin, `MainView` sisältää käyttöliittymäkomponentit, jotka alun perin olivat `Application`:ssa. Tälle luokalle tarvitaan myös tapa navigoida `FormView`:hen.
+Après avoir rendu votre application routable, donné aux vues des wrappers de composant `Composite` et inclus le `CustomerService`, vous êtes prêt à construire les interfaces utilisateur uniques à chaque vue. Comme mentionné précédemment, `MainView` contient les composants d'interface utilisateur initialement dans `Application`. Cette classe a également besoin d'un moyen de naviguer vers `FormView`.
 
-### Taulukon menetelmien ryhmittely {#grouping-the-table-methods}
+### Regroupement des méthodes du `Table` {#grouping-the-table-methods}
 
-Kun siirrät komponentteja `Application`-luokasta `MainView`-näkymään, on hyvä idea aloittaa sovelluksesi osittaen osia niin, että yksi mukautettu metodi voi tehdä muutoksia `Table`:lle kerralla. Kodin jäsentäminen nyt helpottaa sen hallintaa sovelluksen kasvaessa monimutkaiseksi.
+Lorsque vous déplacez les composants de `Application` à `MainView`, c'est une bonne idée de commencer à sectionner les parties de votre application, de sorte qu'une méthode personnalisée unique puisse apporter des modifications au `Table` à la fois. Sectionner votre code maintenant en rend la gestion plus facile à mesure que l'application devient plus complexe.
 
-Nyt `MainView`-konstruktorin tulisi kutsua vain yhtä `buildTable()`-metodia, joka lisää sarakkeet, asettaa koon ja viittaa varastoon:
+Maintenant, votre constructeur `MainView` ne devrait appeler qu'une seule méthode `buildTable()` qui ajoute les colonnes, définit la taille et référence le dépôt :
 
 ```java
 private void buildTable() {
   table.setSize("1000px", "294px");
   table.setMaxWidth("90vw");
-  table.addColumn("firstName", Customer::getFirstName).setLabel("Etunimi");
-  table.addColumn("lastName", Customer::getLastName).setLabel("Sukunimi");
-  table.addColumn("company", Customer::getCompany).setLabel("Yritys");
-  table.addColumn("country", Customer::getCountry).setLabel("Maa");
+  table.addColumn("firstName", Customer::getFirstName).setLabel("Prénom");
+  table.addColumn("lastName", Customer::getLastName).setLabel("Nom");
+  table.addColumn("company", Customer::getCompany).setLabel("Société");
+  table.addColumn("country", Customer::getCountry).setLabel("Pays");
   table.setColumnsToAutoFit();
   table.getColumns().forEach(column -> column.setSortable(true));
   table.setRepository(customerService.getRepositoryAdapter());
 }
 ```
 
-### Navigointi `FormView`-näkymään {#navigating-to-formview}
+### Navigation vers `FormView`{#navigating-to-formview}
 
-Käyttäjillä on oltava tapa navigoida `MainView`-näkymästä `FormView`-näkymään käyttöliittymän avulla.
+Les utilisateurs ont besoin d'un moyen de naviguer de `MainView` à `FormView` en utilisant l'interface utilisateur.
 
-webforJ:ssä voit navigoida suoraan uuteen näkymään käyttämällä näkymän luokkaa. Reitittäminen luokan kautta URL-osan sijaan takaa, että webforJ löytää oikean polun ladatakseen näkymän.
+Dans webforJ, vous pouvez naviguer directement vers une nouvelle vue en utilisant la classe de vue. Le routage via une classe au lieu d'un segment d'URL garantit que webforJ prendra le bon chemin pour charger la vue.
 
-Voit navigoida toiseen näkymään käyttämällä [`Router`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/router/Router.html) -luokkaa saadaksesi nykyisen sijainnin `getCurrent()`-metodilla, ja sitten käytä `navigate()`-metodia näkymän luokka parametrina:
+Pour naviguer vers une vue différente, utilisez la classe [`Router`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/router/Router.html) pour obtenir l'emplacement actuel avec `getCurrent()`, puis utilisez la méthode `navigate()` avec la classe de la vue comme paramètre :
 
 ```java
 Router.getCurrent().navigate(FormView.class);
 ```
 
-Tämä koodi ohjaa käyttäjät ohjelmallisesti uuteen asiakaslomakkeeseen, mutta navigoinnin on oltava kytketty käyttäjän toimintaan.
-Voit joko muokata tai korvata `Application`:n info-painiketta salliaksesi käyttäjien lisätä uuden asiakkaan. Painike voi navigoida `FormView`-luokkaan:
+Ce code enverra programmatique les utilisateurs vers le formulaire de nouveau client, mais la navigation doit être connectée à une action de l'utilisateur.
+Pour permettre aux utilisateurs d'ajouter un nouveau client, vous pouvez soit modifier, soit remplacer le bouton d'information du `Application`. Au lieu d'ouvrir une boîte de dialogue de message, le bouton peut naviguer vers la classe `FormView` :
 
 ```java
-private Button addCustomer = new Button("Lisää asiakas", ButtonTheme.PRIMARY,
+private Button addCustomer = new Button("Ajouter un client", ButtonTheme.PRIMARY,
     e -> Router.getCurrent().navigate(FormView.class));
 ```
 
-## Valmistunut `MainView` {#completed-mainview}
+## `MainView` terminé {#completed-mainview}
 
-Kun navigointi `FormView`-näkymään ja taulukon metodit on ryhmitelty, tässä on miltä `MainView` tulisi näyttää ennen kuin siirrytään `FormView`-näkymän luomiseen:
+Avec la navigation vers `FormView` et des méthodes de tableau regroupées, voici à quoi devrait ressembler `MainView` avant de passer à la création de `FormView` :
 
 <!-- vale off -->
 <ExpandableCode title="MainView.java" language="java" startLine={1} endLine={15}>
 {`@Route("/")
-  @FrameTitle("Asiakkaat Taulukko")
+  @FrameTitle("Table des clients")
   public class MainView extends Composite<Div> {
     private final CustomerService customerService;
     private Div self = getBoundComponent();
     private Table<Customer> table = new Table<>();
-    private Button addCustomer = new Button("Lisää asiakas", ButtonTheme.PRIMARY,
+    private Button addCustomer = new Button("Ajouter un client", ButtonTheme.PRIMARY,
         e -> Router.getCurrent().navigate(FormView.class));
 
     public MainView(CustomerService customerService) {
@@ -334,10 +334,10 @@ Kun navigointi `FormView`-näkymään ja taulukon metodit on ryhmitelty, tässä
     private void buildTable() {
       table.setSize("1000px", "294px");
       table.setMaxWidth("90vw");
-      table.addColumn("firstName", Customer::getFirstName).setLabel("Etunimi");
-      table.addColumn("lastName", Customer::getLastName).setLabel("Sukunimi");
-      table.addColumn("company", Customer::getCompany).setLabel("Yritys");
-      table.addColumn("country", Customer::getCountry).setLabel("Maa");
+      table.addColumn("firstName", Customer::getFirstName).setLabel("Prénom");
+      table.addColumn("lastName", Customer::getLastName).setLabel("Nom");
+      table.addColumn("company", Customer::getCompany).setLabel("Société");
+      table.addColumn("country", Customer::getCountry).setLabel("Pays");
       table.setColumnsToAutoFit();
       table.setColumnsToResizable(false);
       table.getColumns().forEach(column -> column.setSortable(true));
@@ -349,27 +349,27 @@ Kun navigointi `FormView`-näkymään ja taulukon metodit on ryhmitelty, tässä
 </ExpandableCode>
 <!-- vale on -->
 
-## `FormView` luominen {#creating-formview}
+## Création de `FormView` {#creating-formview}
 
-`FormView` näyttää lomakkeen uusien asiakkaiden lisäämiseksi. Jokaiselle asiakasominaisuudelle `FormView` sisältää muokattavan komponentin, jonka avulla käyttäjät voivat olla vuorovaikutuksessa sen kanssa. Lisäksi siinä on nappi käyttäjien tietojen lähettämiseksi ja peruutusnappi sen hylkäämiseksi.
+`FormView` affichera un formulaire pour ajouter de nouveaux clients. Pour chaque propriété client, `FormView` aura un composant éditable pour que les utilisateurs puissent interagir. De plus, il aura un bouton pour que les utilisateurs soumettent les données et un bouton annulé pour les rejeter.
 
-### `Customer`-instanssin luominen {#creating-a-customer-instance}
+### Création d'une instance `Customer` {#creating-a-customer-instance}
 
-Kun käyttäjä muokkaa tietoja uudesta asiakkaasta, muutokset tulisi soveltaa varastoon vain, kun he ovat valmiita lähettämään lomakkeen. `Customer`-olion instanssin käyttö on kätevä tapa muokata ja ylläpitää uutta tietoa ilman, että muokataan varastoa suoraan. Luo uusi `Customer` `FormView`:ssä lomakkeelle käyttöä varten:
+Lorsqu'un utilisateur modifie des données pour un nouveau client, les modifications ne doivent être appliquées au dépôt que lorsqu'il est prêt à soumettre le formulaire. Utiliser une instance de l'objet `Customer` est un moyen pratique d'éditer et de maintenir les nouvelles données sans modifier directement le dépôt. Créez un nouveau `Customer` à l'intérieur de `FormView` à utiliser pour le formulaire :
 
 ```java
 private Customer customer = new Customer();
 ```
 
-Jotta `Customer`-instanssi olisi muokattavissa, jokaiselle ominaisuudelle, paitsi `id`:lle, tulisi olla yhteys muokattavaan komponenttiin. Käyttäjän käyttöliittymässä tekemät muutokset tulisi heijastaa `Customer`-instanssissa.
+Pour rendre l'instance `Customer` modifiable, chaque propriété, à l'exception de l'`id`, doit être associée à un composant éditable. Les changements qu'un utilisateur apporte à l'interface utilisateur doivent être reflétés dans l'instance `Customer`.
 
-### `TextField`-komponenttien lisääminen {#adding-textfield-components}
+### Ajout de composants `TextField` {#adding-textfield-components}
 
-Ensimmäiset kolme muokattavaa ominaisuutta `Customer`:issa (`firstName`, `lastName` ja `company`) ovat kaikki `String`-arvoja, ja ne tulisi esittää yhdellä rivillä. [`TextField`](/docs/components/fields/textfield) -komponentit ovat loistava valinta näiden ominaisuuksien esittämiseen.
+Les trois premières propriétés modifiables dans `Customer` (`firstName`, `lastName`, et `company`) sont toutes des valeurs `String`, et doivent être représentées par un éditeur de texte à une seule ligne. Les composants [`TextField`](/docs/components/fields/textfield) sont un excellent choix pour représenter ces propriétés.
 
-`TextField`-komponentin avulla voit lisätä etiketin ja tapahtumankuuntelijan, joka laukeaa aina, kun kentän arvo muuttuu. Jokaisen tapahtumankuuntelijan tulisi päivittää `Customer`-instanssia vastaavalla ominaisuudella.
+Avec le composant `TextField`, vous pouvez ajouter une étiquette et un écouteur d'événements qui se déclenche à chaque fois que la valeur du champ change. Chaque écouteur d'événements doit mettre à jour l'instance `Customer` pour la propriété correspondante.
 
-Lisää kolme `TextField`-komponenttia, jotka päivittävät `Customer`-instanssia:
+Ajoutez trois composants `TextField` qui mettent à jour l'instance `Customer` :
 
 ```java title="FormView.java" {6-8}
 public class FormView extends Composite<Div> {
@@ -377,9 +377,9 @@ public class FormView extends Composite<Div> {
   private Customer customer = new Customer();
   private Div self = getBoundComponent();
 
-  private TextField firstName = new TextField("Etunimi", e -> customer.setFirstName(e.getValue()));
-  private TextField lastName = new TextField("Sukunimi", e -> customer.setLastName(e.getValue()));
-  private TextField company = new TextField("Yritys", e -> customer.setCompany(e.getValue()));
+  private TextField firstName = new TextField("Prénom", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Nom", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Société", e -> customer.setCompany(e.getValue()));
 
   public FormView(CustomerService customerService) {
     this.customerService = customerService;
@@ -388,67 +388,65 @@ public class FormView extends Composite<Div> {
 }
 ```
 
-:::tip Yhteinen nimeämiskäytäntö
-Komponenttien nimeäminen samaksi kuin ne ominaisuudet, joita ne edustavat `Customer`-oliossa, helpottaa tietojen sitomista tulevassa vaiheessa, [Tietojen validoiminen ja sitominen](/docs/introduction/tutorial/validating-and-binding-data).
+:::tip Convention de nommage partagée
+Nommer les composants de la même façon que les propriétés qu'ils représentent pour l'entité `Customer` facilite la liaison des données dans une étape future, [Validation et liaison des données](/docs/introduction/tutorial/validating-and-binding-data).
 :::
 
-### `ChoiceBox`-komponentin lisääminen {#adding-a-choicebox-component}
+### Ajout d'un composant `ChoiceBox` {#adding-a-choicebox-component}
 
-`country`-ominaisuuden esittämiseen `TextField`-komponentti ei olisi ihanteellinen, koska ominaisuuden on oltava yksi viidestä enum-arvosta: `UNKNOWN`, `GERMANY`, `ENGLAND`, `ITALY`, ja `USA`.
+Utiliser un `TextField` pour la propriété `country` ne serait pas idéal, car la propriété ne peut être qu'une des cinq valeurs énumérées : `UNKNOWN`, `GERMANY`, `ENGLAND`, `ITALY`, et `USA`.
 
-Parempi komponentti ennalta määritellyn vaihtoehtoluettelon valitsemiseksi on [`ChoiceBox`](/docs/components/lists/choicebox).
+Un meilleur composant pour sélectionner dans une liste prédéfinie d'options est le composant [`ChoiceBox`](/docs/components/lists/choicebox).
 
-Jokainen vaihtoehto `ChoiceBox`-komponentille esitetään `ListItem`:na. Jokaisella `ListItem`:llä on kaksi arvoa, `Object`-avain ja `String`-teksti, joka näytetään käyttöliittymässä. Kaksi arvoa jokaiselle vaihtoehdolle mahdollistavat sen, että voit käsitellä `Object`-arvoa sisäisesti samalla, kun esität käyttöliittymässä käyttäjille luettavampia vaihtoehtoja.
-
-Esimerkiksi, `Object`-avain voisi olla Kansainvälinen Standardikirjanumero (ISBN), kun taas `String`-teksti on kirjan otsikko, joka on käyttäjille helposti luettavissa.
+Chaque option pour un composant `ChoiceBox` est représentée comme un `ListItem`. Chaque `ListItem` a deux valeurs, une clé `Object` et un texte `String` à afficher dans l'interface utilisateur. Avoir deux valeurs pour chaque option vous permet de gérer l'`Object` en interne tout en présentant simultanément une option plus lisible pour les utilisateurs dans l'interface utilisateur.
 
 ```java
 new ListItem(isbn, bookTitle);
 ```
 
-Mutta tämä sovellus käsittelee maiden nimiä, ei kirjoja. Jokaisen `ListItem`:n osalta voit haluta `Object`:ksi `Customer.Country`-enum, kun taas tekstin voi olla sen `String`-esitys.
+Cependant, cette application traite d'une liste de noms de pays, et non de livres. Pour chaque `ListItem`, vous souhaitez que l'`Object` soit l'énumération `Customer.Country`, tandis que le texte peut être sa représentation `String`.
 
-Lisätäksesi kaikki `country`-vaihtoehdot `ChoiceBox`-komponenttiin voit käyttää iteraattoria, joka luo `ListItem`:n jokaisesta `Customer.Country`-enmusta ja laittaa ne `ArrayList<ListItem>`-listaan. Sitten voit lisätä tuon `ArrayList<ListItem>`-listan `ChoiceBox`-komponenttiin:
+Pour ajouter toutes les options `country` dans un `ChoiceBox`, vous pouvez utiliser un itérateur pour créer un `ListItem` pour chaque énumération `Customer.Country`, et les mettre dans une `ArrayList<ListItem>`. Ensuite, vous pouvez insérer cette `ArrayList<ListItem>` dans un composant `ChoiceBox` :
 
 ```java
-//Luo ChoiceBox-komponentti
-private ChoiceBox country = new ChoiceBox("Maa");
+//Créer le composant ChoiceBox
+private ChoiceBox country = new ChoiceBox("Pays");
 
-//Luo ArrayList ListItem-objekteista
+//Créer une ArrayList d'objets ListItem
 ArrayList<ListItem> listCountries = new ArrayList<>();
 
-//Lisää iteraattori, joka luo ListItemin jokaiselle Customer.Country -vaihtoehdolle
+//Ajouter un itérateur qui crée un ListItem pour chaque option Customer.Country
 for (Country countryItem : Customer.Country.values()) {
   listCountries.add(new ListItem(countryItem, countryItem.toString()));
 }
 
-//Lisää täytetty ArrayList ChoiceBox:iin
+//Insérer l'ArrayList remplie dans le ChoiceBox
 country.insert(listCountries);
 
-//Aseta ensimmäinen `ListItem` oletukseksi lomakkeen latautuessa
+//Fait le premier `ListItem` par défaut lorsque le formulaire se charge
 country.selectIndex(0);
 ```
 
-Kun käyttäjä valitsee vaihtoehdon `ChoiceBox`:ssa, `Customer`-instanssin tulisi päivittyä valitun kohteen avaimella, joka on `Customer.Country`-arvo.
+Ensuite, lorsque l'utilisateur sélectionne une option dans le `ChoiceBox`, l'instance `Customer` doit se mettre à jour avec la clé de l'élément sélectionné, qui est une valeur `Customer.Country` :
 
 ```java
-private ChoiceBox country = new ChoiceBox("Maa",
+private ChoiceBox country = new ChoiceBox("Pays",
     e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
 ```
 
-Pitäntöäsi siistinä varten iteraattori, joka luo `ArrayList<ListItem>`-listan ja lisää sen `ChoiceBox`-komponenttiin, tulisi olla erillisessä metodissa.
-Kun lisäät `ChoiceBox`:n, joka mahdollistaa käyttäjän valita `country`-ominaisuuden, `FormView`-näkymän tulisi näyttää tältä:
+Pour garder le code propre, l'itérateur qui crée l'`ArrayList<ListItem>` et l'ajoute au `ChoiceBox` devrait être dans une méthode séparée.
+Après avoir ajouté un `ChoiceBox` qui permet à l'utilisateur de choisir la propriété `country`, `FormView` devrait ressembler à ceci :
 
 ```java title="FormView.java" {9-10,15,18-25}
 public class FormView extends Composite<Div> {
   private final CustomerService customerService;
   private Customer customer = new Customer();
   private Div self = getBoundComponent();
-  private TextField firstName = new TextField("Etunimi", e -> customer.setFirstName(e.getValue()));
-  private TextField lastName = new TextField("Sukunimi", e -> customer.setLastName(e.getValue()));
-  private TextField company = new TextField("Yritys", e -> customer.setCompany(e.getValue()));
+  private TextField firstName = new TextField("Prénom", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Nom", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Société", e -> customer.setCompany(e.getValue()));
 
-  private ChoiceBox country = new ChoiceBox("Maa",
+  private ChoiceBox country = new ChoiceBox("Pays",
       e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
 
   public FormView(CustomerService customerService) {
@@ -469,19 +467,19 @@ public class FormView extends Composite<Div> {
 }
 ```
 
-### `Button`-komponenttien lisääminen {#adding-button-components}
+### Ajout de composants `Button` {#adding-button-components}
 
-Käyttäjien tulisi voida tallentaa tai hylätä muutoksensa uuden asiakkaan lomakkeessa.
-Luo kaksi `Button`-komponenttia tämän ominaisuuden toteuttamiseksi:
+Lorsqu'ils utilisent le formulaire de nouveau client, les utilisateurs devraient pouvoir sauvegarder ou annuler leurs changements.
+Créez deux composants `Button` pour implémenter cette fonctionnalité :
 
 ```java
-private Button submit = new Button("Lähetä");
-private Button cancel = new Button("Peruuta");
+private Button submit = new Button("Soumettre");
+private Button cancel = new Button("Annuler");
 ```
 
-Sekä lähetys- että peruutuspainikkeet tulisi palata käyttäjät `MainView`:hin.
-Tämä antaa käyttäjälle mahdollisuuden nähdä heti toimintansa tulokset, riippumatta siitä, näkyykö uusi asiakas taulukossa vai jääkö se ennalleen.
-Koska useat syötteet `FormView`:ssä vievät käyttäjät `MainView`:hin, navigointi tulisi sijoittaa muistettavaksi metodiksi:
+Les boutons de soumission et d'annulation devraient ramener l'utilisateur à `MainView`.
+Cela permet à l'utilisateur de voir immédiatement les résultats de son action, qu'il s'agisse de voir un nouveau client dans le tableau ou de constater qu'il reste inchangé.
+Puisque plusieurs entrées dans `FormView` renvoient les utilisateurs à `MainView`, la navigation doit être mise dans une méthode rappelable :
 
 ```java
 private void navigateToMain(){
@@ -489,24 +487,24 @@ private void navigateToMain(){
 }
 ```
 
-**Peruuta-painike**
+**Bouton d'annulation**
 
-Lomakkeen muutosten hylkääminen ei vaadi mitään lisäkoodia tapahtumalle, vaan se palautuu `MainView`:iin. Koska peruutus ei ole ensisijainen toiminto, painikkeen teeman asettaminen ääriviivaksi antaa lähetys-painikkeelle enemmän painoarvoa.
-`Button`-komponenttisivun [Teemat](/docs/components/button#themes) osiossa luetellaan kaikki saatavilla olevat teemat.
+Annuler les changements dans le formulaire ne nécessite pas de code supplémentaire pour l'événement au-delà de revenir à `MainView`. Cependant, comme annuler n'est pas une action principale, définir le thème du bouton pour qu'il soit outline donne plus de proéminence au bouton de soumission.
+La section [Thèmes](/docs/components/button#themes) de la page du composant `Button` liste tous les thèmes disponibles.
 
 ```java
-private Button cancel = new Button("Peruuta", ButtonTheme.OUTLINED_PRIMARY,
+private Button cancel = new Button("Annuler", ButtonTheme.OUTLINED_PRIMARY,
     e -> navigateToMain());
 ```
 
-**Lähetä-painike**
+**Bouton de soumission**
 
-Kun käyttäjä painaa lähetyspainiketta, `Customer`-instanssissa olevia arvoja tulisi käyttää uuden merkinnän luomiseen varastossa.
+Lorsqu'un utilisateur appuie sur le bouton de soumission, les valeurs de l'instance `Customer` devraient être utilisées pour créer une nouvelle entrée dans le dépôt.
 
-Käyttäen `CustomerService`:a, voit käyttää `Customer`-instanssia päivittääksesi H2-tietokannan. Kun tämä tapahtuu, uusi ja ainutlaatuinen `id` myönnetään tälle `Customer`:lle. Päivitettyäsi varaston voit ohjata käyttäjät `MainView`:iin, jossa he voivat nähdä uuden asiakkaan taulukossa.
+En utilisant le `CustomerService`, vous pouvez prendre l'instance `Customer` pour mettre à jour la base de données H2. Lorsque cela se produit, un nouvel et unique `id` est attribué à ce `Customer`. Après avoir mis à jour le dépôt, vous pouvez rediriger les utilisateurs vers `MainView`, où ils peuvent voir le nouveau client dans le tableau.
 
 ```java
-private Button submit = new Button("Lähetä", ButtonTheme.PRIMARY,
+private Button submit = new Button("Soumettre", ButtonTheme.PRIMARY,
     e -> submitCustomer());
 
 //...
@@ -517,12 +515,12 @@ private void submitCustomer() {
 }
 ```
 
-### `ColumnsLayout`:n käyttäminen {#using-a-columnslayout}
+### Utilisation d'un `ColumnsLayout` {#using-a-columnslayout}
 
-Lisäämällä `TextField`, `ChoiceBox` ja `Button`-komponentit, sinulla on nyt kaikki lomakkeen vuorovaikutteiset osat. Viimeinen parannus `FormView`:lle tässä vaiheessa on järjestää kuusi komponenttia visuaalisesti.
+Avec l'ajout des composants `TextField`, `ChoiceBox`, et `Button`, vous avez maintenant toutes les parties interactives du formulaire. La dernière amélioration à `FormView` dans cette étape est d'organiser visuellement les six composants.
 
-Tämä lomake voi käyttää [`ColumnsLayout`](/docs/components/columns-layout) komponenttia, joka jakaa komponentit kahteen sarakkeeseen ilman, että sinun tarvitsee määrittää minkään vuorovaikutteisen komponentin leveyttä.
-Luodaksesi `ColumnsLayout`:n, määritä jokainen komponentti, joka tulisi sijaitsemaan kehystyksessä:
+Ce formulaire peut utiliser un [`ColumnsLayout`](/docs/components/columns-layout) pour séparer les composants en deux colonnes sans avoir à définir la largeur de l'un des composants interactifs.
+Pour créer un `ColumnsLayout`, spécifiez chaque composant qui devrait être à l'intérieur de la mise en page :
 
 ```java
 private ColumnsLayout layout = new ColumnsLayout(
@@ -531,28 +529,28 @@ private ColumnsLayout layout = new ColumnsLayout(
   submit, cancel);
 ```
 
-Määrittääksesi `ColumnsLayout`:n sarakkeiden lukumäärän, käytä `Breakpoint`-objekteista koostuvaa `List`:aa. Jokainen `Breakpoint` kertoo `ColumnsLayout`:lle vähimmäisleveyden, jonka on oltava, jotta se voi käyttää määritettyä sarakkeiden määrää. Käyttämällä `ColumnsLayout`-komponenttia voit luoda lomakkeen, jossa on kaksi saraketta, mutta vain jos näyttö on riittävän leveä, jotta kaksi saraketta voidaan näyttää. Pienemmillä näytöillä komponentit näytetään yhdessä sarakkeessa.
+Pour définir le nombre de colonnes pour un `ColumnsLayout`, utilisez une `List` d'objets `Breakpoint`. Chaque `Breakpoint` indique au `ColumnsLayout` la largeur minimale qu'il doit avoir pour appliquer un nombre spécifié de colonnes. En utilisant le `ColumnsLayout`, vous pouvez faire un formulaire avec deux colonnes, mais uniquement si l'écran est suffisamment large pour afficher deux colonnes. Sur des écrans plus petits, les composants sont affichés dans une seule colonne.
 
-[Breakpoints](/docs/components/columns-layout#breakpoints) -artikkelin osio selittää breakpointeista tarkemmin.
+La section [Breakpoints](/docs/components/columns-layout#breakpoints) dans l'article `ColumnsLayout` explique plus en détail les breakpoints.
 
-Pitääksesi koodin ylläpidettävänä, aseta breakpointit erillisessä metodissa. Tässä metodissa voit myös hallita komponenttien välistä vaakasuoraa ja pystysuoraa väliä `ColumnsLayout`-komponentin `setSpacing()`-metodin avulla.
+Pour garder le code maintenable, définissez les breakpoints dans une méthode séparée. Dans cette méthode, vous pouvez également contrôler l'espacement horizontal et vertical entre les composants à l'intérieur du `ColumnsLayout` avec la méthode `setSpacing()`.
 
 ```java
 private void setColumnsLayout() {
 
-  //Kaksi saraketta `ColumnsLayout`:issa, jos se on leveämpi kuin 600px
+  //Avoir deux colonnes dans le ColumnsLayout s'il est plus large que 600px
   List<Breakpoint> breakpoints = List.of(
     new Breakpoint(600, 2));
 
-  //Lisää breakpoints-lista
+  //Ajouter la liste de breakpoints
   layout.setBreakpoints(breakpoints);
 
-  //Aseta komponenttien väli käyttäen DWC CSS -muuttujaa
+  //Définir l'espacement entre les composants en utilisant une variable CSS DWC
   layout.setSpacing("var(--dwc-space-l)")
 }
 ```
 
-Lopuksi voit lisätä juuri luodun `ColumnsLayout`:n `FormView`:n sidottuun komponenttiin samalla kun asetat maksimi-leveyden ja lisäät aikaisemmin käytetyn luokan nimen:
+Enfin, vous pouvez ajouter le `ColumnsLayout` nouvellement créé au composant lié de `FormView`, tout en définissant également la largeur maximale, et en ajoutant le nom de classe d'avant :
 
 ```java
 self.setMaxWidth(600)
@@ -560,25 +558,25 @@ self.setMaxWidth(600)
   .add(layout);
 ```
 
-## Valmistunut `FormView` {#completed-formview}
+## `FormView` terminé {#completed-formview}
 
-Kun olet lisännyt `Customer`-instanssin, vuorovaikutteiset komponentit ja `ColumnsLayout`:n, `FormView`:n tulisi näyttää seuraavalta:
+Après avoir ajouté une instance `Customer`, les composants interactifs, et le `ColumnsLayout`, votre `FormView` devrait avoir l'apparence suivante :
 
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
 {`@Route("customer")
-  @FrameTitle("Asiakkaan Lomake")
+  @FrameTitle("Formulaire client")
   public class FormView extends Composite<Div> {
     private final CustomerService customerService;
     private Customer customer = new Customer();
     private Div self = getBoundComponent();
-    private TextField firstName = new TextField("Etunimi", e -> customer.setFirstName(e.getValue()));
-    private TextField lastName = new TextField("Sukunimi", e -> customer.setLastName(e.getValue()));
-    private TextField company = new TextField("Yritys", e -> customer.setCompany(e.getValue()));
-    private ChoiceBox country = new ChoiceBox("Maa",
+    private TextField firstName = new TextField("Prénom", e -> customer.setFirstName(e.getValue()));
+    private TextField lastName = new TextField("Nom", e -> customer.setLastName(e.getValue()));
+    private TextField company = new TextField("Société", e -> customer.setCompany(e.getValue()));
+    private ChoiceBox country = new ChoiceBox("Pays",
         e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
-    private Button submit = new Button("Lähetä", ButtonTheme.PRIMARY, e -> submitCustomer());
-    private Button cancel = new Button("Peruuta", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+    private Button submit = new Button("Soumettre", ButtonTheme.PRIMARY, e -> submitCustomer());
+    private Button cancel = new Button("Annuler", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
     private ColumnsLayout layout = new ColumnsLayout(
         firstName, lastName,
         company, country,
@@ -625,6 +623,6 @@ Kun olet lisännyt `Customer`-instanssin, vuorovaikutteiset komponentit ja `Colu
 </ExpandableCode>
 <!-- vale on -->
 
-## Seuraava vaihe {#next-step}
+## Prochaine étape {#next-step}
 
-Koska käyttäjät voivat nyt lisätä asiakkaita, sovelluksesi tulisi voida muokata olemassa olevia asiakkaita käyttämällä samaa lomaketta. Seuraavassa vaiheessa, [Observerit ja reittiparametrit](/docs/introduction/tutorial/observers-and-route-parameters), sallit asiakastunnuksen `id` olla alkuperäinen parametri `FormView`:lle, jotta se voi täyttää lomakkeen kyseisen asiakkaan tiedoilla ja sallii käyttäjien muuttaa ominaisuuksia.
+Maintenant que les utilisateurs peuvent ajouter des clients, votre application doit être capable de modifier les clients existants en utilisant le même formulaire. Dans la prochaine étape, [Observateurs et paramètres de route](/docs/introduction/tutorial/observers-and-route-parameters), vous permettrez à l'`id` du client d'être un paramètre initial pour `FormView`, afin qu'il puisse remplir le formulaire avec les données de ce client et permettre aux utilisateurs de modifier les propriétés.
