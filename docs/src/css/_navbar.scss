@@ -1,6 +1,11 @@
+  [data-theme='light'] .menu__list-item .header-github-link::before {
+    filter: brightness(0);
+  }
+
 #__docusaurus {
   .navbar {
     border-bottom: 1px solid var(--dwc-border-color);
+    font-size: .925rem;
   }
 
   .navbar--dark {
@@ -30,6 +35,7 @@
     background: var(--dwc-color-default);
     height: 1.75rem;
     width: 1px;
+    filter: brightness(0) invert(1);
   }
 
   .navbar__logo img {
@@ -134,38 +140,36 @@
     }
   }
 
-  @media (max-width: 1550px) {
-    .dropdown--right:not(#startforj-link) {
+  @media (max-width: 1450px) {
+    .dropdown--right:not(#startforj-link, div:has(.localeDropdown)) {
       display: none;
     }
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1260px) {
     .theme-layout-navbar-left .navbar__item:nth-last-child(-n + 2) {
       display: none;
     }
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 996px) {
+    div:has(.DocSearch-Button) {
+      position: static;
+      order: 3;
+    }
+    .theme-layout-navbar-right {
+      width: fit-content;
+      justify-content: flex-end;
+    }
     .separator {
       display: none;
     }
-  }
-
-  @media (max-width: 996px) {
-    .navbar__item:has(#startforj-link) {
-      margin-right: 165px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .navbar__item:has(#startforj-link) {
-      margin-right: 50px;
+    .dropdown--hoverable:has(.localeDropdown) {
+      display: inline-flex;
     }
   }
 
   @media (max-width: 600px) {
-
     #startforj-link,
     #webforj-version-badge {
       display: none;
