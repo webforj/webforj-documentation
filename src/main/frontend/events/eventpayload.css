@@ -1,0 +1,49 @@
+.payload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: var(--dwc-space-xl);
+}
+
+.payload-card {
+  margin: auto;
+  padding: var(--dwc-space-l);
+  width: 100%;
+  max-width: 420px;
+  background: var(--dwc-surface-3);
+  border: 1px solid var(--dwc-color-default);
+  border-radius: var(--dwc-border-radius-l);
+}
+
+.payload-card h2 {
+  margin: 0;
+}
+
+.payload-estimates {
+  position: relative;
+  min-height: 1.5em;
+}
+
+.payload-estimate {
+  margin: 0;
+  color: var(--dwc-color-default-text-light);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.payload-estimate:not(.is-active) {
+  position: absolute;
+  pointer-events: none;
+}
+
+.payload-estimate.is-active {
+  position: static;
+  opacity: 1;
+}
+
+.payload-card dwc-choicebox::part(label) {
+  padding-left: 0 !important;
+}

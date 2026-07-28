@@ -1,9 +1,8 @@
 ---
-sidebar_position: 7
+sidebar_position: 10
 title: Event Options
 description: Configure element events with ElementEventOptions to attach payload data, filter, debounce, throttle, and run client-side code before firing.
 ---
-<!-- sidebar_class_name: sidebar--item__hidden -->
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="foundation" location="com/webforj/component/element/event/ElementEventOptions" top='true'/>
@@ -21,8 +20,6 @@ For more information, see the [events](/docs/building-ui/events) and [Client/Ser
 :::
 
 To add data to the event options, you can use the `addData()` method.
-
-<!-- ### Example -->
 
 ## Executing JavaScript {#executing-javascript}
 
@@ -52,7 +49,24 @@ In scenarios where you want to handle rapid user input, such as search input fie
 
 ## Merging event options {#merging-event-options}
 
-The `ElementEventOptions` class supports merging with other instances, allowing developers to aggregate various options. This feature is helpful when combining settings from different sources.
+The `ElementEventOptions` class supports merging with other instances, allowing developers to aggregate various options. This is helpful when a shared base configuration is reused across several events.
+
+Use the `mergeWith()` method to merge one or more option sets into the current instance. Data entries are combined, while code, filter, debounce, and throttle settings from the passed options take precedence over those already set, so a shared base applied last overrides the current values. When several options define the same setting, the last one encountered wins.
+
+```java
+// A specific event's own options
+ElementEventOptions options = new ElementEventOptions()
+    .addData("value", "component.value")
+    .setFilter("event.target.value.length > 2");
+
+// A shared base reused across events
+ElementEventOptions base = new ElementEventOptions()
+    .addData("id", "component.id")
+    .setDebounce(200);
+
+// Merge the base in: its data is added, and its settings take precedence
+options.mergeWith(base);
+```
 
 ## Annotations {#annotations}
 
