@@ -4,12 +4,12 @@ description: Using webforJ's automatic data binding to wire forms to nested Java
 slug: nested-data-binding-webforj
 date: 2026-07-22
 authors: Matthew Hawkins
-image: 'https://cdn.webforj.com/webforj-documentation/blogs/nested-data-binding/nested-data-binding-thumbnail.png'
+image: 'https://cdn.webforj.com/webforj-documentation/blogs/2026-07-22-nested-data-binding/nested-data-binding-thumbnail.png'
 tags: [data binding, forms, java, tutorial]
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/nested-data-binding/nested-data-binding-thumbnail.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-22-nested-data-binding/nested-data-binding-thumbnail.png)
 
 A little while after moving back to the US from working in Germany I was tasked with a colleague of mine to learn some Spring. Bryan and I were in the exact same boat of being totally new to anything more than Java basics, and one of the first tasks we bumped into together was this: take a form on the screen, and wire it up to a Java object that had, of all things, another Java object nested inside of it.
 
@@ -48,7 +48,7 @@ The `Employee` has some flat fields on it, but it also holds an `Address` and an
 
 On the UI side, all of these live together on a single form. The user doesn't know or care that the data behind the scenes is split across three Java objects, they just see a nicely laid out form with three sections.
 
-![empty employee onboarding form with three grouped sections](https://cdn.webforj.com/webforj-documentation/blogs/nested-data-binding/form-empty.png)
+![empty employee onboarding form with three grouped sections](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-22-nested-data-binding/form-empty.png)
 
 The question, and this is the question that stumped past me for days, is: how do you wire a `TextField` labeled "Street" to `employee.getAddress().setStreet(...)` without writing a big pile of manual glue code every time?
 
@@ -119,7 +119,7 @@ public class Employee {
 
 When the user clicks Save, `context.write()` validates the whole tree in one shot. If anything fails, the appropriate field on the UI lights up with the appropriate message, whether that field lives on the top-level `Employee` or two layers deep. I didn't have to write custom code to make that happen, I just wrote the rules on the domain objects where they belong and let the framework handle the wiring.
 
-![form with validation errors on required fields across all three sections](https://cdn.webforj.com/webforj-documentation/blogs/nested-data-binding/form-validation.png)
+![form with validation errors on required fields across all three sections](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-22-nested-data-binding/form-validation.png)
 
 Every one of those red-labeled fields is telling the same story from a different layer of the object graph, `Employee`, `Address`, and `EmergencyContact`, all reporting up through the one `BindingContext`.
 
@@ -137,7 +137,7 @@ The demo view is called `EmployeeFormView`, and it's a single `@Route("/")` comp
 
 The dialog isn't really the point of the post, but I wanted to include it because it's a nice illustration of what the nested structure looks like once it's populated. All three panels of the accordion pull from the same `Employee` object, one from the top-level fields, one from `employee.getAddress()`, and one from `employee.getEmergencyContact()`.
 
-![save confirmation dialog with an accordion showing Employee, Address, and Emergency contact panels](https://cdn.webforj.com/webforj-documentation/blogs/nested-data-binding/form-dialog.png)
+![save confirmation dialog with an accordion showing Employee, Address, and Emergency contact panels](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-22-nested-data-binding/form-dialog.png)
 
 ## Would past Matthew have understood this? {#would-past-matthew-have-understood-this}
 
