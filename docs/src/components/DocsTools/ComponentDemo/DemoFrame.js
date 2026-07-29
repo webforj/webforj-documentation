@@ -123,7 +123,6 @@ function useIframeBehavior(iframeRef) {
 function useResizable({ minWidthFactor = 1 / 3, minRight = 25 } = {}) {
   const containerRef = useRef(null);
   const elementRef = useRef(null);
-  const buttonRef = useRef(null);
   const containerWidthRef = useRef(0);
   const dragRef = useRef({ startX: 0, startWidth: 0, startRight: minRight, currentRight: minRight });
   const [isResizing, setIsResizing] = useState(false);
@@ -164,11 +163,6 @@ function useResizable({ minWidthFactor = 1 / 3, minRight = 25 } = {}) {
       if (elementRef.current) {
         elementRef.current.style.width = `${nextWidth}px`;
       }
-      if (buttonRef.current) {
-        const nextRight = Math.max(minRight, drag.startRight - dx);
-        buttonRef.current.style.right = `${nextRight}px`;
-        drag.currentRight = nextRight;
-      }
     };
     const onUp = () => setIsResizing(false);
 
@@ -180,7 +174,7 @@ function useResizable({ minWidthFactor = 1 / 3, minRight = 25 } = {}) {
     };
   }, [isResizing, minWidthFactor, minRight]);
 
-  return { containerRef, elementRef, buttonRef, isResizing, startResizing };
+  return { containerRef, elementRef, isResizing, startResizing };
 }
 
 // Small button that opens the demo URL in a new browser tab. Decorative icon
@@ -189,17 +183,12 @@ function OpenNewWindowButton({ url }) {
   const { colorMode } = useColorMode();
 
   const buttonStyles = css`
-    position: relative;
     cursor: pointer;
     z-index: 10;
     height: 35px;
     width: 35px;
     border: none;
-    justify-self: flex-end;
-    margin-top: -5px;
-    margin-bottom: -20px;
     background-color: transparent;
-    margin-right: 12px;
   `;
 
   const iconStyles = css`
@@ -243,13 +232,12 @@ const resizableFrameStyles = css`
 `;
 
 const fadeInButton = css`
-  display: flex;
-  justify-content: flex-end;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  margin: 10px 0 0 0;
   position: absolute;
-  right: 25px;
+  position-anchor: --fade-in-anchor;
+  position-area: top right;
+  transform: translate(-40px, 10px);
 `;
 
 const resizeBarStyles = css`
@@ -301,6 +289,7 @@ const phoneIframeStyles = css`
   width: 100%;
   height: 100%;
   background: var(--dwc-surface-3);
+  anchor-name: --fade-in-anchor;
 `;
 
 const phoneFadeInButton = css`
@@ -328,7 +317,6 @@ function ResizableFrame({ path, height }) {
   const {
     containerRef,
     elementRef: iframeRef,
-    buttonRef: codeButtonRef,
     isResizing,
     startResizing,
   } = useResizable();
@@ -341,6 +329,7 @@ function ResizableFrame({ path, height }) {
     width: 100%;
     height: ${height || "100%"};
     pointer-events: ${isResizing ? "none" : "auto"};
+    anchor-name: --fade-in-anchor;
   `;
 
   return (
@@ -353,7 +342,7 @@ function ResizableFrame({ path, height }) {
         css={iframeStyles}
         ref={iframeRef}
       ></iframe>
-      <div className="open-window-button-wrapper" css={fadeInButton} ref={codeButtonRef}>
+      <div className="open-window-button-wrapper" css={fadeInButton}>
         <OpenNewWindowButton url={iframeSrc} />
       </div>
       <div css={resizeBarStyles} onMouseDown={startResizing}>
