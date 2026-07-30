@@ -71,7 +71,7 @@ Here's the whole binding setup in the demo:
 context = BindingContext.of(this, Employee.class, true);
 ```
 
-That's the single line that takes care of everything, without needing a separate `BindingContext` for each object. 
+That's the single line that takes care of everything, without needing a separate `BindingContext` for each object.
 
 `BindingContext.of()` scans the view, looks at every field that could reasonably be bound, and figures out how to connect each one to a property on the `Employee`. If the UI field's name matches an `Employee` property, it binds automatically. If it needs to reach into a nested object, you tell it with a single annotation:
 
