@@ -82,4 +82,15 @@ BASIS
 HotswapAgent
 JRebel
 Gretty
+craftforJ
+Ollama
+JRE
+Anthropic
+OpenAI
+Groq
+Mistral
+OpenRouter
 JetBrains
+Toolbox
+Zed
+Tabler

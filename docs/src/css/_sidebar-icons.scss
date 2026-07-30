@@ -32,6 +32,10 @@
     @include _icon("sparkles");
   }
 
+  .cat-icon--craftforj > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("pick");
+  }
+
   .cat-icon--architecture > .menu__list-item-collapsible > .menu__link::before {
     @include _icon("sitemap");
   }

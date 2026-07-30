@@ -2,7 +2,6 @@
 title: webforJ AI Plugin
 sidebar_position: 1
 slug: /ai-tooling
-sidebar_class_name: new-content
 description: Install the webforJ AI plugin to add the MCP server and Agent Skills to Claude Code, Copilot, Cursor, Gemini, and Codex in one step.
 ---
 
@@ -16,6 +15,10 @@ Installing the plugin connects two complementary pieces in a single step:
 - **[Agent Skills](/docs/ai-tooling/agent-skills)** - structured workflows that tell the assistant _when_ to reach for those tools, what order to do things in, and how to validate the result. Covers building reusable components and styling webforJ apps end-to-end.
 
 Together they turn an AI assistant that guesses at webforJ conventions into one that follows them.
+
+Alongside them, webforJ ships an assistant of a different kind:
+
+- **[craftforJ Assistant](/docs/ai-tooling/craftforj-assistant)** - a coding agent that works inside your *running* app rather than your editor. It writes Java freely, compiles each edit before you see it, applies it, and keeps working after your app restarts, alongside reading the live component tree, changing properties, navigating routes, and adjusting the theme. There's nothing to install, because it ships with webforJ.
 
 :::warning AI Can Still Make Mistakes
 Even with the plugin, AI assistants can produce incorrect code in complex scenarios. Always review and test generated code before shipping.

@@ -294,9 +294,9 @@ module.exports = async function createConfig() {
         },
         {
           position: 'left',
-          label: 'Cookbook',
-          to: '/cookbook',
-          activeBasePath: '/cookbook',
+          label: 'craftforJ',
+          to: '/docs/craftforj',
+          activeBasePath: '/docs/craftforj',
         },
         {
           type: 'search',
@@ -334,6 +334,11 @@ module.exports = async function createConfig() {
           label: 'Developers',
           position: 'right',
           items: [
+            {
+              label: 'Cookbook',
+              to: '/cookbook',
+              activeBasePath: '/cookbook',
+            },
             {
               label: "JavaDocs",
               href: 'https://javadoc.io/doc/com.webforj',
