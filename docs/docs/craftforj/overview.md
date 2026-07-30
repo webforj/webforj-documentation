@@ -49,6 +49,14 @@ A debugger pauses your code and shows you the state of your variables at that mo
 
 craftforJ requires two separate settings to be enabled, and by default it answers only a browser running on the same machine as the app. Projects created with [startforJ](https://docs.webforj.com/startforj) or from a webforJ [archetype](/docs/building-ui/archetypes/overview) enable it for you, so it's available the first time you run them. See [Security](./security.md) for what craftforJ can reach and how to confirm it's off in production.
 
+## Experimental features {#experimental-features}
+
+Some parts of craftforJ carry a **Use with care** badge. The feature works and is meant to be used. The badge marks work whose behavior is still settling, usually because it touches your files or your app in ways worth being deliberate about, and the first time you use one craftforJ explains what you're about to do and asks you to confirm.
+
+:::info Experimental doesn't mean the feature is going away
+The badge is about the shape of a feature, not its future. It isn't a signal that the feature is on trial or due for removal.
+:::
+
 ## Topics {#topics}
 
 <DocCardList className="topics-section" />
