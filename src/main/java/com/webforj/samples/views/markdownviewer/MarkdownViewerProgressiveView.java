@@ -50,7 +50,10 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
     FlexLayout self = getBoundComponent();
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-m)")
-        .setPadding("var(--dwc-space-l)");
+        .setPadding("var(--dwc-space-l)")
+        .setStyle("box-sizing", "border-box")
+        .setStyle("height", "100vh")
+        .setStyle("overflow", "hidden");
 
     speedChoice.setLabel("Render Speed").setWidth("200px").setStyle("align-self", "flex-end");
 
@@ -65,10 +68,12 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
           viewer.setRenderSpeed(speed);
         });
 
-    viewer
-        .setProgressiveRender(true)
-        .setRenderSpeed(4)
-        .setMinHeight("350px")
+    viewer.setProgressiveRender(true).setRenderSpeed(4);
+
+    FlexLayout viewerArea = FlexLayout.create(viewer).vertical().build();
+    viewerArea
+        .setStyle("overflow-y", "auto")
+        .setStyle("min-height", "0")
         .setStyle("background", "var(--dwc-surface-3)")
         .setStyle("border", "1px solid var(--dwc-color-default)")
         .setStyle("border-radius", "var(--dwc-border-radius-m)")
@@ -103,6 +108,7 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
           stopButton.setEnabled(false);
         });
 
-    self.add(speedChoice, viewer, buttons);
+    self.add(speedChoice, viewerArea, buttons);
+    self.setItemGrow(1, viewerArea);
   }
 }
