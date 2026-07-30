@@ -63,4 +63,6 @@ To ensure an optimal user experience when using the `ColorField` component, cons
 
 - **Offer Preset Colors**: Include a palette of commonly used or on-brand colors alongside the color field for quick selection.
 
-<FieldCommonFeatures tableName="Color-Chooser" />
+## Common field features {#common-field-features}
+
+<FieldCommonFeatures tableName="ColorField" />

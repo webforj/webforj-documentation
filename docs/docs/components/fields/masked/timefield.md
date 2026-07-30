@@ -238,3 +238,7 @@ spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.HOUR);
 ## Styling {#styling}
 
 <TableBuilder name="MaskedTimeField" />
+
+## Common field features {#common-field-features}
+
+<FieldCommonFeatures includeStyling={false} />

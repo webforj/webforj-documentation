@@ -107,4 +107,6 @@ To ensure an optimal user experience when using the `DateField` component, consi
 
 - **Auto-Populate Current Date**: If appropriate for your app's use case, auto-populate with the date field with the current date.
 
+## Common field features {#common-field-features}
+
 <FieldCommonFeatures />

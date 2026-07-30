@@ -113,4 +113,6 @@ To ensure an optimal user experience when using the `DateTimeField` component, c
 
 - **Auto-Populate Current Date**: Consider providing an option to auto-populate the current date and time as a default value in the date time field, if appropriate for your app's use case.
 
+## Common field features {#common-field-features}
+
 <FieldCommonFeatures />

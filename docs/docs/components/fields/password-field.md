@@ -123,4 +123,6 @@ As the `PasswordField` component is often associated with sensitive information,
 
 - **Accessibility**: Set up the `PasswordField` with accessibility in mind, so that it meets accessibility standards such as providing proper labels, and compatibility with assistive technologies.
 
+## Common field features {#common-field-features}
+
 <FieldCommonFeatures />

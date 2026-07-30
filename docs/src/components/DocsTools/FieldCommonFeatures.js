@@ -4,12 +4,24 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Translate, { translate } from '@docusaurus/Translate';
 import AccordionGroup from './AccordionGroup';
 import TableBuilder from './TableBuilder';
 
 const PREFIX_SUFFIX_EXAMPLE = `TextField textField = new TextField();
 textField.setPrefixComponent(TablerIcon.create("box"));
 textField.setSuffixComponent(TablerIcon.create("box"));`;
+
+function FeatureAccordion({ summary, children }) {
+  return (
+    <Accordion>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <strong>{summary}</strong>
+      </AccordionSummary>
+      <AccordionDetails>{children}</AccordionDetails>
+    </Accordion>
+  );
+}
 
 /**
  * Renders shared Field properties as an accordion section to be placed at the
@@ -18,109 +30,162 @@ textField.setSuffixComponent(TablerIcon.create("box"));`;
  *
  * @param {Object}  props
  * @param {string}  [props.tableName="Field"]  - TableBuilder name for the styling section.
- *                  Pass "Color-Chooser" for ColorField, or any other valid TableBuilder name.
+ *                  Pass "ColorField" for ColorField, or any other valid TableBuilder name.
  * @param {boolean} [props.includeStyling=true] - Set to false to omit the Styling accordion.
+ * @param {boolean} [props.includeSpellCheck=false] - Set to true for text-oriented fields.
  */
-export default function FieldCommonFeatures({ tableName = 'Field', includeStyling = true }) {
+export default function FieldCommonFeatures({
+  tableName = 'Field',
+  includeStyling = true,
+  includeSpellCheck = false
+}) {
   return (
     <div>
-      <h2 id="common-field-features">Common field features</h2>
       <p>
-        Because all field components extend the shared <code>Field</code> class, the following
-        properties and behaviors are available across all field types.
+        <Translate
+          id="fieldCommonFeatures.introduction"
+          description="Introduction to the features shared by field components"
+          values={{ fieldClass: <code>Field</code> }}
+        >
+          {'Because all field components extend the shared {fieldClass} class, the following properties and behaviors are available across all field types.'}
+        </Translate>
       </p>
       <AccordionGroup>
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <b>Label</b>
-          </AccordionSummary>
-          <AccordionDetails>
-            <p>
-              A field label is a descriptive text or title associated with the field. Define it
-              using the constructor or by calling the <code>setLabel()</code> method. Labels provide
-              a brief explanation or prompt to help users understand the purpose or expected input
-              for that particular field. Field labels are important for usability and play a crucial
-              role in accessibility, as they allow screen readers and assistive technologies to
-              provide accurate information and facilitate keyboard navigation.
-            </p>
-          </AccordionDetails>
-        </Accordion>
+        <FeatureAccordion
+          summary={translate({
+            id: 'fieldCommonFeatures.label.summary',
+            message: 'Label',
+            description: 'Accordion summary for the field label feature'
+          })}
+        >
+          <p>
+            <Translate
+              id="fieldCommonFeatures.label.description"
+              description="Description of the label feature shared by field components"
+              values={{ setLabelMethod: <code>setLabel()</code> }}
+            >
+              {'A field label is descriptive text associated with the field. Define it using the constructor or by calling the {setLabelMethod} method. Labels help users understand the purpose or expected input for the field. They also support accessibility by giving screen readers and assistive technologies accurate information for navigation.'}
+            </Translate>
+          </p>
+        </FeatureAccordion>
 
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <b>Helper text</b>
-          </AccordionSummary>
-          <AccordionDetails>
-            <p>
-              Each field can display helper text beneath the input using the{' '}
-              <code>setHelperText()</code> method. This helper text offers additional context or
-              explanations about the available inputs, ensuring users have the necessary information
-              to make informed selections.
-            </p>
-          </AccordionDetails>
-        </Accordion>
+        <FeatureAccordion
+          summary={translate({
+            id: 'fieldCommonFeatures.helperText.summary',
+            message: 'Helper text',
+            description: 'Accordion summary for the field helper text feature'
+          })}
+        >
+          <p>
+            <Translate
+              id="fieldCommonFeatures.helperText.description"
+              description="Description of the helper text feature shared by field components"
+              values={{ setHelperTextMethod: <code>setHelperText()</code> }}
+            >
+              {'Each field can display helper text beneath the input using the {setHelperTextMethod} method. Helper text provides additional context about the available inputs so users can make informed selections.'}
+            </Translate>
+          </p>
+        </FeatureAccordion>
 
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <b>Required</b>
-          </AccordionSummary>
-          <AccordionDetails>
-            <p>
-              You can call the <code>setRequired(true)</code> method to require users to provide a
-              value before submitting a form. This property works in tandem with the field label,
-              providing a visual indication that a field is necessary.
-            </p>
-            <p>
-              Field components contain built-in visual validation to notify users when a required
-              field is empty or when a value has been removed.
-            </p>
-          </AccordionDetails>
-        </Accordion>
+        <FeatureAccordion
+          summary={translate({
+            id: 'fieldCommonFeatures.required.summary',
+            message: 'Required',
+            description: 'Accordion summary for the required field feature'
+          })}
+        >
+          <p>
+            <Translate
+              id="fieldCommonFeatures.required.description"
+              description="Description of the required feature shared by field components"
+              values={{ setRequiredMethod: <code>setRequired(true)</code> }}
+            >
+              {'Call {setRequiredMethod} to require users to provide a value before submitting a form. This property works with the field label to indicate visually that a field is necessary.'}
+            </Translate>
+          </p>
+          <p>
+            <Translate
+              id="fieldCommonFeatures.required.validation"
+              description="Description of built-in required field validation"
+            >
+              Field components include visual validation that notifies users when a required field
+              is empty or its value has been removed.
+            </Translate>
+          </p>
+        </FeatureAccordion>
 
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <b>Spellcheck</b>
-          </AccordionSummary>
-          <AccordionDetails>
+        {includeSpellCheck && (
+          <FeatureAccordion
+            summary={translate({
+              id: 'fieldCommonFeatures.spellcheck.summary',
+              message: 'Spellcheck',
+              description: 'Accordion summary for the field spellcheck feature'
+            })}
+          >
             <p>
-              By calling <code>setSpellCheck(true)</code>, you can allow the browser or user agent
-              to verify the spelling of text entered by the user and highlight any errors.
+              <Translate
+                id="fieldCommonFeatures.spellcheck.description"
+                description="Description of the spellcheck feature for text-oriented fields"
+                values={{ setSpellCheckMethod: <code>setSpellCheck(true)</code> }}
+              >
+                {'Call {setSpellCheckMethod} to allow the browser or user agent to check the spelling of entered text and highlight errors.'}
+              </Translate>
             </p>
-          </AccordionDetails>
-        </Accordion>
+          </FeatureAccordion>
+        )}
 
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <b>Prefix and suffix</b>
-          </AccordionSummary>
-          <AccordionDetails>
-            <p>
-              Slots provide flexible options for extending field components. You can add icons,
-              labels, loading spinners, clear/reset buttons, avatar images, and other components
-              nested within a field to further clarify its intended purpose.
-            </p>
-            <p>
-              Fields have two slots: <code>prefix</code> and <code>suffix</code>. Use the{' '}
-              <code>setPrefixComponent()</code> and <code>setSuffixComponent()</code> methods to
-              insert components before and after the field value.
-            </p>
-            <CodeBlock language="java">{PREFIX_SUFFIX_EXAMPLE}</CodeBlock>
-          </AccordionDetails>
-        </Accordion>
+        <FeatureAccordion
+          summary={translate({
+            id: 'fieldCommonFeatures.prefixSuffix.summary',
+            message: 'Prefix and suffix',
+            description: 'Accordion summary for the field prefix and suffix feature'
+          })}
+        >
+          <p>
+            <Translate
+              id="fieldCommonFeatures.prefixSuffix.description"
+              description="Description of components that can be placed in field slots"
+            >
+              Slots let you add icons, labels, loading spinners, clear or reset buttons, avatar
+              images, and other components that clarify a field's purpose.
+            </Translate>
+          </p>
+          <p>
+            <Translate
+              id="fieldCommonFeatures.prefixSuffix.usage"
+              description="Instructions for using field prefix and suffix slots"
+              values={{
+                prefixSlot: <code>prefix</code>,
+                suffixSlot: <code>suffix</code>,
+                setPrefixMethod: <code>setPrefixComponent()</code>,
+                setSuffixMethod: <code>setSuffixComponent()</code>
+              }}
+            >
+              {'Fields provide the {prefixSlot} and {suffixSlot} slots. Use {setPrefixMethod} and {setSuffixMethod} to insert components before and after the field value.'}
+            </Translate>
+          </p>
+          <CodeBlock language="java">{PREFIX_SUFFIX_EXAMPLE}</CodeBlock>
+        </FeatureAccordion>
 
         {includeStyling && (
-          <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <b>Styling</b>
-            </AccordionSummary>
-            <AccordionDetails>
-              <p>
-                Because field components are built from a shared web component, they share the
-                following shadow parts and CSS custom property values.
-              </p>
-              <TableBuilder name={tableName} />
-            </AccordionDetails>
-          </Accordion>
+          <FeatureAccordion
+            summary={translate({
+              id: 'fieldCommonFeatures.styling.summary',
+              message: 'Styling',
+              description: 'Accordion summary for shared field styling information'
+            })}
+          >
+            <p>
+              <Translate
+                id="fieldCommonFeatures.styling.description"
+                description="Description of styling information shared by field components"
+              >
+                Field components built from the shared web component use the following shadow parts
+                and CSS custom properties.
+              </Translate>
+            </p>
+            <TableBuilder name={tableName} />
+          </FeatureAccordion>
         )}
       </AccordionGroup>
     </div>
