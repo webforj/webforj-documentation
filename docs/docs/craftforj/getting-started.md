@@ -57,6 +57,12 @@ When craftforJ is active, a trigger button appears over your app. Click it to op
 
 Its tabs cover the [component tree](./inspector.md), [routes](./routes.md), the [theme](./theme.md), and the [assistant](./ai.md), with settings and app information alongside them.
 
+**The trigger** is the button that opens and closes craftforJ. It stays out of the way while craftforJ is closed. **The tab strip** runs along the edge nearest the app and switches between what craftforJ shows you. **The window menu** holds everything about where craftforJ sits, covered in [Where craftforJ sits](#where-craftforj-sits).
+
+<MediaPlaceholder type="image" file="getting-started/anatomy.png">
+  craftforJ annotated with the names of its parts: trigger, tab strip, tab body, window menu
+</MediaPlaceholder>
+
 :::info Shortcuts on macOS
 craftforJ writes each shortcut using the modifiers of the platform you're on, so <kbd>Alt</kbd> appears as <kbd>⌥</kbd> and <kbd>Ctrl</kbd> as <kbd>⌘</kbd>. Press <kbd>Shift</kbd> + <kbd>?</kbd> in craftforJ to see the current list.
 :::
