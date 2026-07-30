@@ -25,6 +25,7 @@ import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarning';
 import AutomatedUpgradeTip from '@site/src/components/DocsTools/AutomatedUpgradeTip';
 import AISkillTip from '@site/src/components/DocsTools/AISkillTip';
+import MediaPlaceholder from '@site/src/components/DocsTools/MediaPlaceholder';
 
 
 export default {
@@ -51,5 +52,6 @@ export default {
   table: TableWrapper,
   ExperimentalWarning,
   AutomatedUpgradeTip,
-  AISkillTip
+  AISkillTip,
+  MediaPlaceholder
 };
