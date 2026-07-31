@@ -2,9 +2,9 @@
 title: Working with Data
 sidebar_position: 3
 description: Step 2 - Use Spring to work with data.
-_i18n_hash: 99491f42d1a848f6270686a0730d9d08
+_i18n_hash: c5bf8e9751b676f3490a2f01512647ca
 ---
-In deze stap leert u hoe u een datamodel maakt met Spring en die gegevens visueel weergeeft. Aan het eind van deze stap zal de app die in de vorige stap is gemaakt, [Een Basis App Maken](./creating-a-basic-app), een tabel bevatten die gegevens over klanten weergeeft. Het volgen van deze stappen leert u over:
+In deze stap leer je hoe je een datamodel kunt maken met Spring en die gegevens visueel weergeven. Aan het einde van deze stap heeft de app die in de vorige stap is gemaakt, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app), een tabel die gegevens over klanten weergeeft. Het volgen van deze stappen leert je over:
 
 - Spring annotaties
 - Gegevensbeheer
@@ -14,22 +14,22 @@ Het voltooien van deze stap creëert een versie van [2-working-with-data](https:
 
 ## De app uitvoeren {#running-the-app}
 
-Terwijl u uw app ontwikkelt, kunt u [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) als vergelijking gebruiken. Om de app in actie te zien:
+Tijdens de ontwikkeling van je app kun je [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) als referentie gebruiken. Om de app in actie te zien:
 
-1. Navigeer naar de top-level directory met het `pom.xml` bestand, dit is `2-working-with-data` als u de versie op GitHub volgt.
+1. Navigeer naar de bovenste directory met het `pom.xml` bestand, dit is `2-working-with-data` als je de versie op GitHub volgt.
 
 2. Gebruik de volgende Maven-opdracht om de Spring Boot-app lokaal uit te voeren:
     ```bash
     mvn
     ```
 
-Wanneer de app draait, opent er automatisch een nieuwe browser op `http://localhost:8080`.
+De app opent automatisch een nieuwe browser op `http://localhost:8080`.
 
 ## Afhankelijkheden en configuraties {#dependencies-and-configurations}
 
-Deze tutorial maakt gebruik van de [H2-database](https://www.h2database.com/html/main.html) en in een toekomstige stap, de Jakarta Persistence API (JPA) via [Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html). Dit vereist dat u afhankelijkheden toevoegt aan `pom.xml` en `application.properties` bijwerkt. Dit is de laatste keer dat u deze twee bestanden moet wijzigen voor de rest van de tutorial.
+Deze tutorial gebruikt [H2 database](https://www.h2database.com/html/main.html) en in een toekomstige stap de Jakarta Persistence API (JPA) via [Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html). Dit vereist dat je afhankelijkheden toevoegt aan `pom.xml` en `application.properties` bijwerkt. Dit is de laatste keer dat je deze twee bestanden zult moeten wijzigen voor de rest van de tutorial.
 
-Voeg in uw POM de volgende afhankelijkheden toe:
+Voeg in je POM de volgende afhankelijkheden toe:
 
 ```xml
 <dependency>
@@ -57,19 +57,20 @@ spring.jpa.hibernate.ddl-auto=update
 ```
 
 :::info Toegang tot gegevens
-Deze tutorial maakt gebruik van een in-memory database en de standaard referenties voor het toegang krijgen tot gegevens. Ga naar de [Data Access](https://docs.spring.io/spring-boot/how-to/data-access.html) documentatie van Spring om te leren over specifieke Spring Boot configuratieopties.
+Deze tutorial maakt gebruik van een in-memory database en de standaard referenties voor toegang tot gegevens. Ga naar Spring's [Data Access](https://docs.spring.io/spring-boot/how-to/data-access.html) documentatie om meer te leren over specifieke Spring Boot configuratie-opties.
 :::
 
 ## Spring beans {#spring-beans}
 
-Een belangrijk onderdeel van het gebruik van het Spring-framework is het begrijpen van wat beans zijn. Beans zijn objecten met gedefinieerde Spring-annotaties die het voor Spring gemakkelijker maken om ze te configureren door de bedoeling van de klasse te kennen. Ga naar de [Bean Overview](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) documentatie van Spring om meer te leren.
+Een belangrijk onderdeel van het gebruik van het Spring-framework is het begrijpen van wat beans zijn. Beans zijn objecten met gedefinieerde Spring annotaties die het gemakkelijker maken voor Spring om ze te configureren door de beoogde functie van de klasse te kennen. Ga naar Spring’s [Bean Overview](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) documentatie om meer te leren.
 
 ## Een datamodel maken {#creating-a-data-model}
 
-Voordat u de gegevens visueel weergeeft of aanmaakt, heeft deze tutorial een manier nodig om de gegevens van elke klant weer te geven, inclusief hun naam, land en bedrijf. Met behulp van Spring gebeurt dit met een klasse die de `@Entity` annotatie heeft.
+Voordat je de gegevens visueel weergeeft of maakt, heeft deze tutorial een manier nodig om de gegevens van elke klant weer te geven, inclusief hun naam, land en bedrijf. Met Spring gebeurt dit met een klasse die een `@Entity` annotatie heeft.
 
-Maak een klasse in `src/main/java/com/webforj/tutorial/entity` genaamd `Customer.java`. Deze moet de `@Entity` annotatie hebben en getter- en setter-methoden voor de klantwaarden bevatten, behalve voor de `id`. In plaats van een aanmaakmethode voor `id` waarden te gebruiken, gebruikt u de annotaties `@Id` en `@GeneratedValue` om te garanderen dat elke klant een unieke `id` krijgt.
+Maak een klasse in `src/main/java/com/webforj/tutorial/entity` genaamd `Customer.java`. Het moet de `@Entity` annotatie hebben en getter- en setter-methoden voor de klantwaarden bevatten, met uitzondering van de `id`. In plaats van een creatiemethode voor `id` waarden te gebruiken, gebruik je de annotaties `@Id` en `@GeneratedValue` om te garanderen dat elke klant een unieke `id` krijgt.
 
+<!-- vale off -->
 <ExpandableCode title="Customer.java" language="java" startLine={1} endLine={15}>
 {`@Entity
   @Table(name = "customers")
@@ -154,20 +155,21 @@ Maak een klasse in `src/main/java/com/webforj/tutorial/entity` genaamd `Customer
 
 `}
 </ExpandableCode>
+<!-- vale on -->
 
-Met het `Customer` datamodel op zijn plaats, kunt u nu beginnen met het toevoegen van bedrijfslogica aan uw app.
+Met het `Customer` datamodel op zijn plaats, kun je nu beginnen met het toevoegen van bedrijfslogica aan je app.
 
-## Gegevensbeheer {#managing-data}
+## Gegevens beheren {#managing-data}
 
-Na het maken van een datamodel, zult u een repository en een service maken om de klantgegevens te beheren. Deze soorten klassen in uw app maken het mogelijk om bewerkingen zoals het toevoegen, verwijderen en bijwerken van klantrecords op te nemen.
+Na het maken van een datamodel, ga je een repository en een service maken om de klantgegevens te beheren. Het maken van deze soorten klassen in je app stelt je in staat om bewerkingen uit te voeren zoals het toevoegen, verwijderen en bijwerken van klantrecords.
 
 ### Een repository maken {#creating-a-repository}
 
-Het maken van een repository maakt de gegevens van de entiteiten toegankelijk, zodat uw app meerdere klanten kan bevatten. Het doel van deze tutorial is om de gegevens bewerkbaar, sorteerbaar en validerend te maken. U bepaalt de mogelijkheden van een repository door de Spring Data repository die u gebruikt.
+Het maken van een repository maakt de gegevens van de entiteiten toegankelijk, zodat je app meerdere klanten kan bevatten. Het doel van deze tutorial is om de gegevens bewerkbaar, sorteerbaar en valideerbaar te maken. Je bepaalt de mogelijkheden van een repository door de Spring Data repository die je gebruikt.
 
-In een toekomstige stap, [Valideren en Binden van Gegevens](/docs/introduction/tutorial/validating-and-binding-data), heeft u toegang tot Spring Data JPA nodig om klant eigenschappen te valideren. Daarom is de geschikte repository om te gebruiken de `JpaRepository`.
+In een toekomstige stap, [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data), heb je toegang nodig tot Spring Data JPA om klant eigenschappen te valideren. Daarom is de juiste repository die je moet gebruiken de `JpaRepository`.
 
-Maak in `src/main/java/com/webforj/tutorial/repository` een repository-interface die de Spring `@Repository` annotatie heeft en `JpaRepository` uitbreidt. U moet specificeren welk type entiteiten in deze repository zijn, en welk type object de `id` is. Ter goede trouw, breidt u ook `JpaSpecificationExecutor` uit. Deze toevoeging stelt u in staat om later, indien nodig, geavanceerde filteropties te implementeren.
+Maak in `src/main/java/com/webforj/tutorial/repository` een repository-interface die de Spring `@Repository` annotatie heeft en `JpaRepository` uitbreidt. Je moet specificeren welke type entiteiten in deze repository staan, en welk type object de `id` is. Om het zeker te maken, breid ook `JpaSpecificationExecutor` uit. Deze toevoeging stelt je in staat om later geavanceerde filteropties te implementeren, indien nodig.
 
 ```java title="CustomerRepository.java"
 @Repository
@@ -177,29 +179,29 @@ public interface CustomerRepository
 }
 ```
 
-De `CustomerRepository` die u net hebt gemaakt zal geen gedefinieerde methoden hebben. De methoden voor het beheren van de gegevens (de bedrijfslogica van de app) zullen in een serviceklasse staan.
+De `CustomerRepository` die je zojuist hebt gemaakt, heeft geen gedeclareerde methoden. De methoden voor het beheren van de gegevens (de bedrijfslogica van de app) zullen zich in een serviceklasse bevinden.
 
 :::info Spring documentatie links
 
-Hier zijn vier links naar de documentatie van Spring die u helpen om beter te begrijpen wat Spring repositories zijn:
+Hier zijn vier links naar de documentatie van Spring die je zullen helpen om een beter begrip van Spring repositories te krijgen:
 
 - [Werken met Spring Data Repositories](https://docs.spring.io/spring-data/commons/reference/repositories.html)
-- [Overzicht van Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html)
+- [Overzicht Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html)
 - [Spring Data JPA Specificaties](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
 - [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
 :::
 
 ### Een service maken {#creating-a-service}
 
-Maak in `src/main/java/com/webforj/tutorial/service` een `CustomerService` klasse. Deze service zal methoden bevatten om klanten te creëren, bij te werken, te verwijderen en op te vragen met behulp van `CustomerRepository`.
+In `src/main/java/com/webforj/tutorial/service`, maak een `CustomerService` klasse. Deze service zal methoden bevatten om klanten te creëren, bij te werken, te verwijderen en op te vragen met behulp van `CustomerRepository`.
 
-Bovendien heeft deze service een mechanisme nodig om Spring Data repositories te koppelen aan de webforJ UI-componenten. Het gebruik van de `SpringDataRepository` webforJ klasse laat u deze brug creëren. Het vereenvoudigt gegevensbinding en CRUD-bewerkingen door te zorgen dat uw webforJ tabellen en formulieren vrij kunnen werken met uw door Spring beheerde gegevenslaag. Zie meer informatie over de integratie van webforJ met Spring in het artikel [Spring Data JPA](/docs/integrations/spring/spring-data-jpa).
+Daarnaast heeft deze service een mechanisme nodig om Spring Data repositories te verbinden met de UI-componenten van webforJ. Het gebruik van de `SpringDataRepository` webforJ-klasse stelt je in staat om deze brug te creëren. Het vereenvoudigt gegevensbinding en CRUD-bewerkingen door het je webforJ-tabellen en formulieren mogelijk te maken om vrij met je door Spring beheerde gegevenslaag te werken. Zie meer informatie over de Spring-integratie van webforJ in het artikel [Spring Data JPA](/docs/integrations/spring/spring-data-jpa).
 
-Voor deze serviceklasse gebruikt u twee Spring-annotaties:
+Voor deze serviceklasse gebruik je twee Spring annotaties:
 
 - **`@Service`** - Dit markeert een klasse als een servicecomponent in Spring, waardoor deze automatisch wordt gedetecteerd en beheerd als een bean voor bedrijfslogica of herbruikbare bewerkingen.
 
-- **`@Transactional`** - Deze annotatie vertelt Spring om de methode of klasse binnen een database-transactie te draaien, zodat alle bewerkingen binnenin samen worden gecommitteerd of teruggedraaid. Meer details zijn beschikbaar in de documentatie van Spring, [Het gebruik van @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+- **`@Transactional`** - Deze annotatie vertelt Spring om de methode of klasse binnen een database-transactie uit te voeren, zodat alle bewerkingen samen worden gecommit of teruggedraaid. Meer details zijn beschikbaar in de documentatie van Spring, [Using @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
 
 ```java title="CustomerService.java"
 @Service
@@ -249,10 +251,11 @@ public class CustomerService {
 }
 ```
 
-## Startgegevens laden {#loading-initial-data}
+## Initiële gegevens laden {#loading-initial-data}
 
-Voor deze tutorial komt de initiële klantendataset uit een JSON-bestand. Om directe toegang via de browser te voorkomen, moet de bestandsresource buiten `src/main/resources/static` worden gemaakt. Voor uw gemak kunt u het JSON-bestand binnen `src/main/resources/data` maken met de volgende gegevens:
+Voor deze tutorial komt de initiële klanten dataset uit een JSON-bestand. De Java-app laadt het bestand, niet de browser, dus maak het binnen `src/main/resources/data` met de volgende gegevens:
 
+<!-- vale off -->
 <ExpandableCode title="customers.json" language="json" startLine={1} endLine={13}>
 {`[
     {
@@ -318,8 +321,9 @@ Voor deze tutorial komt de initiële klantendataset uit een JSON-bestand. Om dir
   ]
 `}
 </ExpandableCode>
+<!-- vale on -->
 
-Vervolgens heeft de app een manier nodig om deze gegevens op te halen wanneer deze opstart. Maak in `src/main/java/com/webforj/tutorial/config` een `DataInitializer` klasse. Nu, wanneer de app draait, als er geen klanten worden gedetecteerd, laadt deze klanten uit het JSON-bestand en plaatst ze in de H2-database:
+Vervolgens heeft de app een manier nodig om deze gegevens op te halen wanneer deze wordt gestart. Maak in `src/main/java/com/webforj/tutorial/config` een `DataInitializer` klasse. Nu, wanneer de app draait, als er geen klanten worden gedetecteerd, worden de klanten uit het JSON-bestand geladen en in de H2-database geplaatst:
 
 ```java title="DataInitializer.java"
 @Component
@@ -354,15 +358,15 @@ public class DataInitializer implements CommandLineRunner {
 
 ## Gegevens visueel weergeven {#displaying-data-visually}
 
-Het laatste deel van deze stap is het gebruik van de [`Table`](/docs/components/table/overview) component en het verbinden ervan met de Spring-gegevens.
+Het laatste deel van deze stap is het gebruik van de [`Table`](/docs/components/table/overview) component en deze verbinden met de Spring-gegevens.
 
-Een instantie van een webforJ `Table` heeft een datatype nodig om te kunnen werken, dat is de entiteitsklasse die eerder in deze stap is gemaakt:
+Een instantie van een webforJ `Table` moet een datatype hebben om te werken, dat is de entiteitsklasse die eerder in deze stap is gemaakt:
 
 ```java
 Table<Customer> table = new Table<>();
 ```
 
-Zodra u een `Table` heeft, krijgt elke klantproperty zijn eigen kolom. Voor elke kolom die u toevoegt, gebruikt u de propertynaam, de getter-methode in de `Customer` entiteit en de `setLabel()` methode om de informatie in de volgorde weer te geven die u wilt:
+Zodra je een `Table` hebt, krijgt elke klant eigenschap zijn eigen kolom. Voor elke kolom die je toevoegt, gebruik je de eigenschapsnaam, de getter-methode in de `Customer` entiteit en de `setLabel()` methode om de informatie weer te geven in de volgorde die je wilt:
 
 ```java
 table.addColumn("firstName", Customer::getFirstName).setLabel("Voornaam");
@@ -371,7 +375,7 @@ table.addColumn("company", Customer::getCompany).setLabel("Bedrijf");
 table.addColumn("country", Customer::getCountry).setLabel("Land");
 ```
 
-Nadat u de kolommen heeft toegevoegd, moet u specificeren welke repository de `Table` moet gebruiken om zijn gegevens te vullen. Deze app krijgt de repository van de `getRepositoryAdapter()` methode in de gemaakte `CustomerService`:
+Nadat je de kolommen hebt toegevoegd, moet je specificeren welke repository de `Table` moet gebruiken om de gegevens te populaten. Deze app haalt de repository uit de `getRepositoryAdapter()` methode in de gemaakte `CustomerService`:
 
 ```java
 table.setRepository(customerService.getRepositoryAdapter());
@@ -379,9 +383,9 @@ table.setRepository(customerService.getRepositoryAdapter());
 
 ### Tabelgrootte {#table-sizing}
 
-Voor de tabel kunt u `setSize()` gebruiken om de grootte in pixels of andere [CSS-eenheden](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units) in te stellen. Door een maximale breedte in te stellen ten opzichte van de breedte van het scherm, helpt u uw app om zich aan te passen aan kleinere schermen.
+Voor de tabel kun je `setSize()` gebruiken om de grootte in pixels of andere [CSS-eenheden](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units) in te stellen. Door een maximale breedte in te stellen die relatief is aan de breedte van het scherm, help je je app om zich beter aan te passen aan kleinere schermen.
 
-Voor de kolommen kunt u de breedtes individueel instellen, of een van de `Table` methoden zoals `setColumnsToAutoFit()` gebruiken om het webforJ voor u de breedtes te laten beheren:
+Voor de kolommen kun je de breedtes individueel instellen, of een van de `Table` methoden zoals `setColumnsToAutoFit()` gebruiken om webforJ de breedtes voor je te laten afhandelen:
 
 ```java
 table.setSize("1000px", "294px");
@@ -391,7 +395,7 @@ table.setColumnsToAutoFit();
 
 ### Gebruikersinteracties {#user-interactions}
 
-De `Table` component heeft ook methoden om te controleren hoe gebruikers met de kolommen interactie hebben:
+De `Table` component heeft ook methoden om te bepalen hoe gebruikers met de kolommen interactie hebben:
 
 ```java
 table.setColumnsToResizable(false);
@@ -402,12 +406,12 @@ De gemarkeerde delen van de `Application` klasse voegen de `Table` component toe
 
 ```java title="Application.java" {7-12,24-25,30-40,46-47}
 @SpringBootApplication
-@StyleSheet("ws://css/card.css")
+@BundleEntry("css/card.css")
 @AppTheme("system")
-@AppProfile(name = "Klantapplicatie", shortName = "KlantApp")
+@AppProfile(name = "Klant Applicatie", shortName = "KlantApp")
 public class Application extends App {
 
-  //Voeg een constructor-injectie toe voor CustomerService
+  //Voeg constructor injectie toe voor CustomerService
   private final CustomerService customerService;
 
   public Application(CustomerService customerService) {
@@ -455,4 +459,4 @@ public class Application extends App {
 
 ## Volgende stap {#next-step}
 
-Met deze wijzigingen laadt de app klantgegevens in de database en geeft deze weer in een `Table` component. De volgende stap, [Routing en Composities](/docs/introduction/tutorial/routing-and-composites), introduceert routing en meerdere weergaven voor het toevoegen van nieuwe klanten.
+Met deze wijzigingen laadt de app klantgegevens in de database en geeft deze weer in een `Table` component. De volgende stap, [Routing and Composites](/docs/introduction/tutorial/routing-and-composites), introduceert routing en meerdere weergaven voor het toevoegen van nieuwe klanten.

@@ -77,11 +77,7 @@ async function main() {
     }
 
     const current = JSON.parse(readFileSync(outputPath, 'utf8'));
-    const currentIndex = {
-      count: current.count,
-      recipes: current.recipes,
-    };
-    if (JSON.stringify(currentIndex) !== JSON.stringify(index)) {
+    if (JSON.stringify(current) !== JSON.stringify(index)) {
       throw new Error(
         'Cookbook index is stale. Run node tools/generate-cookbook-index.mjs.',
       );
@@ -91,13 +87,8 @@ async function main() {
     return;
   }
 
-  const manifest = {
-    generated: new Date().toISOString(),
-    ...index,
-  };
-
   mkdirSync(dirname(outputPath), { recursive: true });
-  writeFileSync(outputPath, JSON.stringify(manifest, null, 2), 'utf8');
+  writeFileSync(outputPath, JSON.stringify(index, null, 2), 'utf8');
   console.log(`✅ Cookbook index generated: ${recipes.length} recipe(s) → ${outputPath}`);
 }
 
