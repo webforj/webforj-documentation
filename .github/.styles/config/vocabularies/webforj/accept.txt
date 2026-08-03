@@ -78,3 +78,15 @@ Svelte
 stylesheet
 BLS
 BASIS
+craftforJ
+Ollama
+JRE
+Anthropic
+OpenAI
+Groq
+Mistral
+OpenRouter
+JetBrains
+Toolbox
+Zed
+Tabler
