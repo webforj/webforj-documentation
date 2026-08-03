@@ -1,99 +1,52 @@
 package com.webforj.samples.views.button;
 
-import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.icons.Icon;
-import com.webforj.component.icons.IconButton;
-import com.webforj.component.icons.TablerIcon;
+import com.webforj.component.layout.columnslayout.ColumnsLayout;
+import com.webforj.component.layout.columnslayout.ColumnsLayout.Breakpoint;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.util.List;
 
 @Route
-@BundleEntry("css/button/buttonThemes.css")
 @FrameTitle("Button Themes")
 public class ButtonThemesView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
-  private final IconButton rightIcon = new IconButton(TablerIcon.create("caret-right"));
-  private final IconButton leftIcon = new IconButton(TablerIcon.create("caret-left"));
-  private final FlexLayout solidRow = new FlexLayout();
-  private final FlexLayout outlinedRow = new FlexLayout();
-  private final FlexLayout buttonWrapper = new FlexLayout(solidRow, outlinedRow);
-  private int counter = 0;
-  private int order;
-  private int targetButton;
+  private final ColumnsLayout solidThemeLayout = new ColumnsLayout();
+  private final ColumnsLayout outlinedThemeLayout = new ColumnsLayout();
+  private final List<Breakpoint> breakpoints =
+      List.of(new Breakpoint(0, 1), new Breakpoint(400, 2), new Breakpoint(600, 3));
 
   public ButtonThemesView() {
-    self.setSize("fit-content", "100vh")
-        .setMargin("auto")
-        .setAlignment(FlexAlignment.CENTER)
-        .add(leftIcon, buttonWrapper, rightIcon);
 
-    solidRow
-        .setDirection(FlexDirection.ROW)
-        .setWrap(FlexWrap.NOWRAP)
-        .setSpacing("var(--dwc-space-s)");
-
-    outlinedRow
-        .setDirection(FlexDirection.ROW)
-        .setWrap(FlexWrap.NOWRAP)
-        .setSpacing("var(--dwc-space-s)");
-
-    buttonWrapper
+    self.setSize("100vw", "100vh")
+        .setPadding("var(--dwc-space-xl)")
         .setDirection(FlexDirection.COLUMN)
-        .setPadding("var(--dwc-space-s)")
-        .setWrap(FlexWrap.NOWRAP)
-        .addClassName("buttonWrapperWidth");
+        .setAlignment(FlexAlignment.CENTER)
+        .setStyle("overflow-y", "scroll")
+        .add(solidThemeLayout, outlinedThemeLayout);
 
-    for (ButtonTheme theme : ButtonTheme.values()) {
-      if (theme.name().startsWith("OUTLINE")) {
-        Button outlineButton =
-            new Button(theme.name(), theme).setMaxWidth("200px").setMinWidth("200px");
-        outlinedRow.add(outlineButton);
-      } else {
-        solidRow.add(new Button(theme.name(), theme).setMaxWidth("200px").setMinWidth("200px"));
-      }
-    }
-
-    leftIcon.onClick(
-        e -> {
-          if (counter == 0) {
-            counter = 6;
-          } else {
-            counter--;
-          }
-          targetButton = counter;
-          setButtonOrder(targetButton, e.getComponent());
-        });
-
-    rightIcon.onClick(
-        e -> {
-          if (counter == 6) {
-            counter = 0;
-            targetButton = 6;
-          } else {
-            ++counter;
-            targetButton = counter - 1;
-          }
-          setButtonOrder(targetButton, e.getComponent());
-        });
+    setLayout(solidThemeLayout);
+    setLayout(outlinedThemeLayout);
+    setButtonThemes();
   }
 
-  public void setButtonOrder(int targetButton, Icon sourceIcon) {
-    Button outlineButton = (Button) outlinedRow.getComponents().get(targetButton);
-    Button solidButton = (Button) solidRow.getComponents().get(targetButton);
-
-    if (sourceIcon.getName() == "caret-right") {
-      order = outlinedRow.getItemOrder(outlineButton) + 1;
-    } else {
-      order = outlinedRow.getItemOrder(outlineButton) - 1;
+  public void setButtonThemes() {
+    for (ButtonTheme theme : ButtonTheme.values()) {
+      Button button = new Button(theme.name(), theme);
+      if (theme.name().startsWith("OUTLINE")) {
+        outlinedThemeLayout.add(button);
+      } else {
+        solidThemeLayout.add(button);
+      }
     }
-    outlinedRow.setItemOrder(order, outlineButton);
-    solidRow.setItemOrder(order, solidButton);
+  }
+
+  public void setLayout(ColumnsLayout layout) {
+    layout.setBreakpoints(breakpoints).setWidth("100%").setMaxWidth(700);
   }
 }
