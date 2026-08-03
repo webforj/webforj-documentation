@@ -39,10 +39,6 @@ public class DialogAutoWidthView extends Composite<FlexLayout> {
         .setMinHeight("100vh")
         .add(openDialog, dialog);
 
-    dialog
-        .addToHeader(new Div("Export complete"))
-        .addToContent(content)
-        .setAutoWidth(true)
-        .open();
+    dialog.addToHeader(new Div("Export complete")).addToContent(content).setAutoWidth(true).open();
   }
 }
