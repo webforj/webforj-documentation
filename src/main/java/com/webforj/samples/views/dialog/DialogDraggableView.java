@@ -21,9 +21,7 @@ public class DialogDraggableView extends Composite<FlexLayout> {
     RadioButton snapToEdge = RadioButton.Switch("Snap to viewport edges", true);
     snapToEdge.onToggle(e -> dialog.setSnapToEdge(e.isToggled()));
     FlexLayout content =
-        FlexLayout.create(
-                new Paragraph("Move the dialog by dragging its header."),
-                snapToEdge)
+        FlexLayout.create(new Paragraph("Move the dialog by dragging its header."), snapToEdge)
             .vertical()
             .build()
             .setSpacing("var(--dwc-space-m)");

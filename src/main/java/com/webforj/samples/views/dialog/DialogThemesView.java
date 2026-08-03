@@ -21,12 +21,12 @@ public class DialogThemesView extends Composite<FlexLayout> {
 
     ChoiceBox options = new ChoiceBox();
     for (Theme theme : Theme.values()) {
-          options.add(theme, theme.name());
-        }
+      options.add(theme, theme.name());
+    }
 
     options
         .setLabel("Dialog theme")
-        .selectIndex(0)
+        .selectKey(Theme.SUCCESS)
         .onSelect(e -> dialog.setTheme((Theme) e.getSelectedItem().getKey()));
 
     FlexLayout content =
@@ -38,7 +38,7 @@ public class DialogThemesView extends Composite<FlexLayout> {
     dialog
         .addToHeader(new Div("Dialog theme"))
         .addToContent(content)
-        .setTheme(Theme.DEFAULT)
+        .setTheme(Theme.SUCCESS)
         .setCloseable(false)
         .setMaxWidth("28rem")
         .open();
