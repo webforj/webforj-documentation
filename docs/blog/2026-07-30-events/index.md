@@ -5,13 +5,13 @@ slug: the-demo-that-taught-me-events
 date: 2026-07-28
 authors: Lauren Alamo
 tags: [events, components, showcase, tutorial]
-image: "https://cdn.webforj.com/webforj-documentation/blogs/the-demo-that-taught-me-events/cover.png"
+image: "https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-events/event-blog-cover.png"
 hide_table_of_contents: true
 ---
 
 <!-- vale Google.FirstPerson = NO -->
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/the-demo-that-taught-me-events/cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-events/event-blog-cover.png)
 
 A lot of what I understand about webforJ, I picked up from building the demos that go in the documentation. Writing the explanation is one thing. Building the small app that has to actually work underneath it is where I find out whether I really understood what I was about to explain to everyone else.
 
@@ -61,19 +61,19 @@ That line is when it clicked for me. The `onSubmit` call works the same as `onCl
  
 What stuck with me is that all of it, the event, the dispatch, and the handler, is plain Java running on the server. There's no client-side event wiring to set up and no data to serialize across the wire by hand. When I want to work directly in the client, webforJ still lets me, which is what the `Element` APIs and client-side event options are for. But for connecting one component to another like this, I didn't need to leave Java at all.
 
-![The order form placing orders into the list](https://cdn.webforj.com/webforj-documentation/blogs/the-demo-that-taught-me-events/order-desk.png)
+![The order form placing orders into the list](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-events/order-desk-demo.gif)
 
 ## The part writing the docs forced me to get right {#the-part-writing-the-docs-forced-me-to-get-right}
 
 Writing docs has a useful side effect: you can't skip the parts you'd normally gloss over, because you're about to explain them to everyone else. My demo is a single long-lived screen, so it never had to deal with this, but the doc did, and writing it made me sit with something I usually rush past, which is cleanup.
 
-Anything that subscribes to an event holds on. The dispatcher keeps its listeners, and each listener keeps a reference to whatever it captured, the view and its data included. For something that lives as long as the app, like my order desk, you never notice. But once you have short-lived things opening and closing, like dialogs or views you navigate away from, a subscription nobody removes becomes memory that can't be freed, because a dispatcher somewhere is still holding it.
+Anything that subscribes to an event holds on. The dispatcher keeps its listeners, and each listener keeps a reference to whatever it captured, including the view and its data. For something that lives as long as the app, like my order desk, you never notice. But once you have short-lived things opening and closing, like dialogs or views you navigate away from, a subscription nobody removes becomes memory that can't be freed, because a dispatcher somewhere is still holding it.
 
-webforJ makes this manageable rather than leaving you to track it yourself. When you subscribe, you get back a registration, and removing the listener later is a single call. Combined with the component lifecycle, cleanup ends up as one line in a component's teardown, right where you'd look for it. My demo didn't need it, but I was glad to see the framework makes the responsible version the easy one for the cases that do.
+webforJ makes this manageable rather than leaving you to track it yourself. When you subscribe, you get back a registration, and removing the listener later is a single call. When combined with the component lifecycle, cleanup ends up as a single line in a component's teardown, right where you'd expect it. My demo didn't need it, but I was glad to see the framework makes the responsible version the easy one for the cases that do.
 
 ## What I took away from it {#what-i-took-away-from-it}
 
-Now, when a component does something the rest of the app might care about, my default is to have it announce the event and stay out of the way, rather than reaching across the screen to do the next thing itself. The components end up easier to move around, the views wire up in a line or two, and I write far less code whose only job is to ask a component about something it already knew.
+Now, when a component does something the rest of the app might care about, my default is to have it announce the event and stay out of the way, rather than reaching across the screen to do the next thing itself. The components end up easier to move around, the views wire up in a line or two, and I write far less code whose only job is to ask a component about something it already knows.
  
 I reach for this easily because webforJ keeps the clean version simple, and because it's all Java. Firing your own events, subscribing to them, and cleaning them up are all built into the framework, they behave like the events on webforJ's built-in components, and they run on the server in the same language as the rest of the app. JavaScript is there when you want it, not something you have to write just to connect two components.
  
