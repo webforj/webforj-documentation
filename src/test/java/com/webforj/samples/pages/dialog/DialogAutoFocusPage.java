@@ -8,16 +8,22 @@ public class DialogAutoFocusPage {
 
   private static final String ROUTE = "dialogautofocus";
 
+  private final Locator openDialog;
   private final Locator textField;
 
   public DialogAutoFocusPage(Page page) {
+    this.openDialog =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Invite teammate"));
     this.textField =
-        page.getByRole(
-            AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("This Box is Auto Focused"));
+        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Email address"));
   }
 
   public static String getRoute() {
     return ROUTE;
+  }
+
+  public Locator getOpenDialog() {
+    return openDialog;
   }
 
   public Locator getTextField() {
