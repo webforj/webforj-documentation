@@ -1,0 +1,44 @@
+name: Regenerate Client Component Docs
+
+on:
+  schedule:
+    # Run weekly on Mondays at 06:00 UTC. Offset from translations.yml's
+    # 23:00 UTC nightly run so the two bot commits never land at the same
+    # time.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  regenerate:
+    name: Regenerate client component docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACTOR_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '25.1.0'
+          cache: 'npm'
+          cache-dependency-path: 'docs/package-lock.json'
+
+      - name: Run client component docs generator
+        working-directory: ./docs/docs/client-components
+        run: node create_files.js
+
+      - name: Commit and push regenerated docs
+        run: |
+          git config --local user.email "${{ secrets.ACTOR_EMAIL }}"
+          git config --local user.name "${{ secrets.ACTOR_NAME }}"
+
+          if [ -n "$(git status --porcelain docs/docs/client-components/)" ]; then
+            git add docs/docs/client-components/
+            git commit -m "chore: regenerate client component docs"
+            git push
+          else
+            echo "::notice::No changes in client component docs - nothing to commit"
+          fi
