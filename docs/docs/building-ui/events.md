@@ -234,7 +234,7 @@ This becomes a problem when a listener outlives what it references. If a dialog 
 
 Remove a listener when:
 
-- The object that registered it is finished, such as a closed dialog or a view that has been navigated away from.
+- The object that registered it's finished, such as a closed dialog or a view that has been navigated away from.
 - The subscription was tied to a short-lived task or a one-time flow.
 
 Keep the returned `ListenerRegistration` where you can reach it during cleanup rather than registering a listener you can't later remove. In a component, `onDidDestroy()` is the cleanup point.
