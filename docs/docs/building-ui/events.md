@@ -16,20 +16,25 @@ You can pass the listener as a lambda:
 
 ```java
 Button button = new Button("Save");
-button.onClick(event -> save());
+button.onClick(event -> {
+  // Handle the click
+});
 ```
 
 or as a method reference:
 
 ```java
-button.onClick(this::save);
+button.onClick(this::handleSave);
 ```
 
 Not every event has an `on` alias. Value changes, for instance, are added with `addValueChangeListener` only:
 
 ```java
 TextField name = new TextField("Name");
-name.addValueChangeListener(event -> validate(event.getValue()));
+name.addValueChangeListener(event -> {
+  String value = event.getValue();
+  // Handle the new value
+});
 ```
 
 ## Removing an event {#removing-an-event}
@@ -37,7 +42,10 @@ name.addValueChangeListener(event -> validate(event.getValue()));
 Adding a listener returns a `ListenerRegistration`. Keep it to remove the listener later.
 
 ```java
-ListenerRegistration<ButtonClickEvent> registration = button.onClick(event -> save());
+ListenerRegistration<ButtonClickEvent> registration =
+    button.onClick(event -> {
+      // Handle the click
+    });
 
 // Later, when the listener is no longer needed
 registration.remove();
@@ -138,7 +146,7 @@ When you also pass an `ElementEventOptions` at the call site, its data combines 
 
 ## Dispatching your own events {#dispatching-your-own-events}
 
-The events above come from the component you're listening to. A component you write can publish events of its own the same way, so the code using it can react without reaching into the component's internals.
+The events covered so far come from the component you're listening to. A component you write can publish events of its own the same way, so the code using it can react without reaching into the component's internals.
 
 :::tip When to dispatch a custom event
 Dispatch a custom event when your component decides something has happened, such as a form reporting a completed submission or an editor reporting a saved record. Events that originate from a client interaction on an `Element` are configured with [element event options](#configuring-element-events) instead.
@@ -171,7 +179,7 @@ public class OrderSubmittedEvent extends EventObject {
 }
 ```
 
-Reading the data from the event follows the same reasoning as [using event payload](#using-event-payload) above. Listeners get what they need from the event instead of querying the source afterward.
+Reading the data from the event follows the same reasoning as [using event payload](#using-event-payload). Listeners get what they need from the event instead of querying the source afterward.
 
 ### Registering and dispatching {#registering-and-dispatching}
 
