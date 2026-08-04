@@ -19,7 +19,7 @@ public class TableLayoutStylingView extends Composite<FlexLayout> {
   public TableLayoutStylingView() {
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-l)")
-        .setMargin("var(--dwc-space-xl)")
+        .setPadding("var(--dwc-space-xl)")
         .add(table);
 
     List<Person> data =
@@ -31,15 +31,14 @@ public class TableLayoutStylingView extends Composite<FlexLayout> {
             new Person("Eve", 30, "Boston"),
             new Person("Frank", 45, "Miami"));
 
-    table.addColumn("Name", Person::getName).setSortable(true);
-    table.addColumn("Age", Person::getAge).setSortable(true);
-    table.addColumn("City", Person::getCity).setSortable(true);
+    table.addColumn("Name", Person::getName).setSortable(true).setFlex(1f).setMinWidth(120f);
+    table.addColumn("Age", Person::getAge).setSortable(true).setFlex(1f).setMinWidth(80f);
+    table.addColumn("City", Person::getCity).setSortable(true).setFlex(1f).setMinWidth(140f);
 
     table
         .setItems(data)
         .setSize("100%", "260px")
         .setStriped(true)
         .setBordersVisible(EnumSet.of(Border.AROUND, Border.ROWS, Border.COLUMNS));
-    table.setColumnsToAutoFit();
   }
 }
