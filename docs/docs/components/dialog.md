@@ -20,7 +20,7 @@ The `Dialog` is organized into three sections: a header, a content area, and a f
 <ComponentDemo
 path='/webforj/dialogsections'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java']}
-height='225px'
+height='375px'
 />
 
 ## Usages {#usages}
@@ -42,12 +42,12 @@ height='225px'
 
 ## Backdrop and blur {#backdrop-and-blur}
 
-By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
+An open `Dialog` component has a dimmed backdrop that subtly draws attention to its contents. Using `setBackdrop()` and `setBlurred()`, you can change how webforJ displays (or obscures) the content behind the `Dialog`. Modifying these attributes can help users by providing depth and visual hierarchy.
 
 <ComponentDemo
 path='/webforj/dialogbackdropblur'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java']}
-height='300px'
+height='600px'
 />
 
 ## Opening and closing the `Dialog` {#opening-and-closing-the-dialog}
@@ -62,7 +62,7 @@ Developers can choose which interactions close the `Dialog` with `setCancelOnEsc
 <ComponentDemo
 path='/webforj/dialogclose'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogCloseView.java']}
-height='350px'
+height='375px'
 />
 
 ## Auto-focus {#auto-focus}
@@ -72,7 +72,7 @@ When enabled, auto-focus will automatically give focus to the first element with
 <ComponentDemo
 path='/webforj/dialogautofocus'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java']}
-height='350px'
+height='400px'
 />
 
 ## Draggable {#draggable}
@@ -85,7 +85,7 @@ It is also possible to calibrate this behavior to snap to the edge of the screen
 <ComponentDemo
 path='/webforj/dialogdraggable'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogDraggableView.java']}
-height='350px'
+height='325px'
 />
 
 ## Positioning {#positioning}
@@ -95,7 +95,7 @@ The dialog's position can be manipulated using the built-in `setPosx()` and `set
 <ComponentDemo
 path='/webforj/dialogpositioning'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogPositioningView.java']}
-height='350px'
+height='400px'
 />
 
 ### Vertical alignment {#vertical-alignment}
@@ -105,7 +105,7 @@ In addition to manual assignment of a dialog's X and Y position, it is possible 
 <ComponentDemo
 path='/webforj/dialogalignments'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.java']}
-height='550px'
+height='450px'
 />
 
 ### Full screen and breakpoints {#full-screen-and-breakpoints}
@@ -141,7 +141,7 @@ While there are many use cases for each of the various themes, some examples use
 <ComponentDemo
 path='/webforj/dialogthemes'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogThemesView.java']}
-height='500px'
+height='375px'
 />
 
 <TableBuilder name="Dialog" />
