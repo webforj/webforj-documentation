@@ -5,13 +5,13 @@ slug: the-demo-that-taught-me-events
 date: 2026-07-28
 authors: Lauren Alamo
 tags: [events, components, architecture, front end]
-image: "https://cdn.webforj.com/webforj-documentation/blogs/the-demo-that-taught-me-events/cover.png"
+image: "https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-events/event-blog-cover.png"
 hide_table_of_contents: true
 ---
 
 <!-- vale Google.FirstPerson = NO -->
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/the-demo-that-taught-me-events/cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-events/event-blog-cover.png)
 
 A lot of what I understand about webforJ, I picked up by building things while writing the documentation. Explaining a feature is one thing. Building something small that actually uses it is where I find out whether I really understood what I was about to explain to everyone else.
 
@@ -61,7 +61,7 @@ That line is the whole point. The `onSubmit` call works the same as `onClick` on
 
 What stuck with me is that all of it, the event, the dispatch, and the handler, is plain Java running on the server. There's no client-side event wiring to set up and no data to serialize across the wire by hand. When I want to work directly in the client, webforJ still lets me, which is what the `Element` APIs and client-side event options are for. But for connecting one component to another like this, I didn't need to leave Java at all.
 
-![The order form placing orders into the list](https://cdn.webforj.com/webforj-documentation/blogs/the-demo-that-taught-me-events/order-desk.png)
+![The order form placing orders into the list](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-events/order-desk-demo.gif)
 
 ## The part writing the docs forced me to get right {#the-part-writing-the-docs-forced-me-to-get-right}
 
