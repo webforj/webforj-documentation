@@ -225,6 +225,10 @@ module.exports = async function createConfig() {
           {
             from: '/docs/building-ui/composite-components',
             to: '/docs/building-ui/composing-components'
+          },
+          {
+            from: '/docs/building-ui/event-options',
+            to: '/docs/building-ui/events',
           }
         ],
       },

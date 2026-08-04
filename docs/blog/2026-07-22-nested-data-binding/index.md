@@ -5,7 +5,7 @@ slug: nested-data-binding-webforj
 date: 2026-07-22
 authors: Matthew Hawkins
 image: 'https://cdn.webforj.com/webforj-documentation/blogs/2026-07-22-nested-data-binding/nested-data-binding-thumbnail.png'
-tags: [data binding, forms, java, tutorial]
+tags: [data visualization, ui customization, spring, tutorial]
 hide_table_of_contents: false
 ---
 
