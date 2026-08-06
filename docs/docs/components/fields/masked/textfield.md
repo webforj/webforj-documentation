@@ -155,3 +155,7 @@ height='120px'
 ## Styling {#styling}
 
 <TableBuilder name="MaskedTextField" />
+
+## Common field features {#common-field-features}
+
+<FieldCommonFeatures includeStyling={false} includeSpellCheck />
