@@ -46,7 +46,7 @@ webforj-tutorial
 ## Using startforJ {#using-startforj}
 <!-- vale on -->
 
-If you’d prefer to create a new project, you can use [startforJ](https://docs.webforj.com/startforj) to generate a minimal starter project. See [Getting Started](/docs/introduction/getting-started) for more detailed information about using startforJ.
+If you’d prefer to create a new project, you can use [startforJ](https://docs.webforj.com/startforj) to generate a minimal starter project. See [Getting Started](/) for more detailed information about using startforJ.
 
 :::note Required settings
 - In the **webforJ version** dropdown, choose webforJ version **26.01 or higher**.

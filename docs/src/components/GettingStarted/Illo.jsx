@@ -204,6 +204,53 @@ const variants = {
     </svg>
   ),
 
+  testing: (
+    <svg {...tileSvgProps}>
+      <ellipse cx="130" cy="186" rx="60" ry="8" fill="var(--il-shadow)" />
+      <circle cx="130" cy="96" r="52" fill="none" stroke="var(--il-fill-3)" strokeWidth="12" />
+      <path d="M130 44 A52 52 0 1 1 82.6 117.6" fill="none" stroke="var(--il-accent)" strokeWidth="12" strokeLinecap="round" />
+      <polyline points="112,95 126,109 152,80" fill="none" stroke="var(--il-accent)" strokeWidth="9" />
+      <circle cx="54" cy="162" r="7.5" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <polyline points="50.5,162 53,164.5 57.5,159" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <circle cx="82" cy="162" r="7.5" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <polyline points="78.5,162 81,164.5 85.5,159" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <circle cx="110" cy="162" r="7.5" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <polyline points="106.5,162 109,164.5 113.5,159" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <circle cx="138" cy="162" r="7.5" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <polyline points="134.5,162 137,164.5 141.5,159" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <circle cx="166" cy="162" r="7.5" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <polyline points="162.5,162 165,164.5 169.5,159" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <circle cx="194" cy="162" r="7.5" fill="none" stroke="var(--il-muted)" strokeWidth="2.5" strokeDasharray="4 3" />
+    </svg>
+  ),
+
+  security: (
+    <svg {...tileSvgProps}>
+      <ellipse cx="130" cy="186" rx="66" ry="8" fill="var(--il-shadow)" />
+      <path d="M130 26 L196 48 V104 C196 142 168 166 130 178 C92 166 64 142 64 104 V48 Z" fill="var(--il-fill)" stroke="var(--il-line)" strokeWidth="2" />
+      <path d="M130 40 L182 57 V104 C182 134 160 154 130 165 Z" fill="var(--il-fill-2)" />
+      <rect x="106" y="96" width="48" height="38" rx="7" fill="var(--il-accent)" />
+      <path d="M116 96 V86 A14 14 0 0 1 144 86 V96" fill="none" stroke="var(--il-accent)" strokeWidth="4" />
+      <circle cx="130" cy="111" r="4" fill="var(--il-fill)" />
+      <rect x="128.5" y="113" width="3" height="9" rx="1.5" fill="var(--il-fill)" />
+    </svg>
+  ),
+
+  jbang: (
+    <svg {...tileSvgProps}>
+      <ellipse cx="130" cy="184" rx="76" ry="9" fill="var(--il-shadow)" />
+      <rect x="52" y="72" width="156" height="70" rx="12" fill="var(--il-fill)" stroke="var(--il-line)" strokeWidth="2" />
+      <polyline points="72,100 78,105 72,110" fill="none" stroke="var(--il-accent)" strokeWidth="2.5" />
+      <rect x="88" y="101" width="72" height="8" rx="4" fill="var(--il-fill-3)" />
+      <rect x="166" y="100" width="9" height="11" rx="1.5" fill="var(--il-accent)" />
+      <path d="M40 92 H16" stroke="var(--il-accent)" strokeWidth="3" opacity="0.45" />
+      <path d="M40 107 H4" stroke="var(--il-accent)" strokeWidth="3" opacity="0.7" />
+      <path d="M40 122 H22" stroke="var(--il-accent)" strokeWidth="3" opacity="0.35" />
+      <path d="M130 46 L118 62 H128 L120 76 L142 58 H131 Z" fill="var(--il-accent)" />
+      <rect x="98" y="158" width="64" height="10" rx="5" fill="var(--il-fill-3)" />
+    </svg>
+  ),
+
   hero: (
     <svg {...heroSvgProps}>
       <ellipse cx="210" cy="248" rx="122" ry="11" fill="var(--il-shadow)" />

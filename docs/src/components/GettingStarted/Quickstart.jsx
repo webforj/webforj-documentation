@@ -23,7 +23,7 @@ export function Quickstart({ title = 'Quickstart', subtitle, children }) {
  */
 export function QuickstartStep({ number, title, children }) {
   return (
-    <div className={styles.step}>
+    <div className={styles.step} data-index={number}>
       <div className={styles.stepNumeral}>{number}</div>
       <div className={styles.stepContent}>
         <h3 className={styles.stepTitle}>{title}</h3>

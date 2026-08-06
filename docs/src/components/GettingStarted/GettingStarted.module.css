@@ -1,55 +1,159 @@
 /* ─────────────────────────────────────────────────────────────
    Getting Started page — all sections.
 
-   Color tokens are lifted from the Claude Design source
-   (`webforJ Doc Tiles.dc.html`) and defined on both the .page
-   wrapper (so children inherit) and on standalone components
-   like .tile and .bento (so they also work outside .page).
+   Design language borrowed from stageforJ:
+   - DWC token consumption via color-mix() (light/dark handled by DWC itself)
+   - Bricolage Grotesque display font for the hero title
+   - Mono kickers with wide letter-spacing + border-left accent
+   - Ghost numerals behind quickstart steps (attr(data-index))
+   - Optional scroll-driven reveals on capable browsers
+
+   No hardcoded hex — everything routes through DWC tokens so
+   the whole page follows the site theme.
    ───────────────────────────────────────────────────────────── */
 
 /* ── Shared token set ───────────────────────────────────────── */
 
 .page,
 .tile,
-.bento {
-  --card-bg: #ffffff;
-  --card-bg-hover: #f2f7ff;
-  --card-border: #e6e8ec;
-  --card-border-primary: #9cc2fb;
-  --band-bg: #f5f7fa;
-  --text: #1f2937;
-  --text-secondary: #5b6472;
-  --il-line: #3a4658;
-  --il-fill: #ffffff;
-  --il-fill-2: #eceff4;
-  --il-fill-3: #dce1e9;
-  --il-muted: #c1c9d4;
-  --il-shadow: rgba(15, 23, 42, 0.09);
-  --il-accent: #0f6fe8;
-}
+.bento,
+.appBasics,
+.previewStrip {
+  /* Card / band chrome, wired to DWC surfaces so dark mode is automatic */
+  --card-bg: var(--dwc-surface-1);
+  --card-bg-hover: var(--dwc-color-primary-alt);
+  --card-border: var(--dwc-border-color);
+  --card-border-primary: var(--dwc-border-color-primary);
+  --band-bg: var(--dwc-surface-2);
 
-:global(html[data-theme='dark']) .page,
-:global(html[data-theme='dark']) .tile,
-:global(html[data-theme='dark']) .bento {
-  --card-bg: #161f30;
-  --card-bg-hover: #1b2740;
-  --card-border: #273245;
-  --card-border-primary: #356199;
-  --band-bg: #131a29;
-  --text: #e8edf5;
-  --text-secondary: #9aa6b8;
-  --il-line: #8ea1bd;
-  --il-fill: #1e2a41;
-  --il-fill-2: #151e2f;
-  --il-fill-3: #2b3a56;
-  --il-muted: #3c4a66;
-  --il-shadow: rgba(0, 0, 0, 0.5);
-  --il-accent: #4f97ff;
+  /* Type colors — inherit from Infima so link/prose contrast stays right */
+  --text: var(--ifm-font-color-base);
+  --text-secondary: var(--ifm-color-content-secondary, color-mix(in srgb, var(--ifm-font-color-base) 65%, transparent));
+
+  /* Illustration tokens — derived from the theme so light/dark just work */
+  --il-line: var(--ifm-font-color-base);
+  --il-fill: var(--dwc-surface-1);
+  --il-fill-2: var(--dwc-surface-2);
+  --il-fill-3: color-mix(in srgb, var(--dwc-color-primary) 8%, var(--dwc-surface-2));
+  --il-muted: color-mix(in srgb, var(--ifm-font-color-base) 35%, transparent);
+  --il-shadow: color-mix(in srgb, var(--ifm-font-color-base) 12%, transparent);
+  --il-accent: var(--dwc-color-primary);
+
+  /* Font stack — Bricolage for display, JetBrains Mono for kickers */
+  --gs-font-display: 'Bricolage Grotesque', 'Manrope', var(--ifm-heading-font-family);
+  --gs-font-mono: 'JetBrains Mono', var(--ifm-font-family-monospace);
 }
 
 .page {
+  position: relative;
+  isolation: isolate; /* create stacking context so dust's z-index: -1 stays contained */
   color: var(--text);
+  /* No page-level gradient — hero, statement, task grid, and App Basics
+     each carry their own scoped glow so atmosphere is targeted, not
+     smeared across the whole page. Dust does the ambient work everywhere. */
 }
+
+/* Ambient dust — accent-tinted dots scattered across the whole page. Uses
+   position: absolute (attached to .page) so the dots scroll WITH the page.
+   The drift animation runs on top — dots rise slowly, cross the viewport,
+   fade out and loop. Two staggered particle sets so the field feels dense
+   without any single dot cluster feeling repetitive. Matches stageforJ's
+   .scene__dust pattern exactly. */
+/* Escape the Docusaurus .container's max-width so dust spans the full
+   viewport horizontally, while staying attached to .page vertically (so it
+   scrolls with the content). left: calc((100vw - 100%) / -2) shifts the
+   left edge from .page's left edge back to the viewport's left edge. */
+.dust {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: calc((100vw - 100%) / -2);
+  width: 100vw;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dust::before,
+.dust::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: transparent;
+  animation: gsDustRise 44s linear infinite;
+}
+
+/* Crisp dots — stageforJ pattern: 0 blur, alternating spread (0px / 1px)
+   for subtle size variation. Blueish-gray tint (35% accent + 65% muted
+   text color) so dots read as ambient dust rather than a saturated brand
+   accent. Two sets are interleaved across y=15-480dvh so a 4-5 viewport
+   page has particles all the way down, not just at the top. */
+.dust::before {
+  --gs-dust-color: color-mix(in srgb, var(--il-accent) 35%, var(--text-secondary));
+  box-shadow:
+    1vw   18dvh 0 0   var(--gs-dust-color),
+    8vw   82dvh 0 1px var(--gs-dust-color),
+    15vw 148dvh 0 0   var(--gs-dust-color),
+    22vw 214dvh 0 1px var(--gs-dust-color),
+    29vw 278dvh 0 0   var(--gs-dust-color),
+    36vw 344dvh 0 1px var(--gs-dust-color),
+    43vw 410dvh 0 0   var(--gs-dust-color),
+    50vw  52dvh 0 1px var(--gs-dust-color),
+    57vw 118dvh 0 0   var(--gs-dust-color),
+    64vw 184dvh 0 1px var(--gs-dust-color),
+    71vw 250dvh 0 0   var(--gs-dust-color),
+    78vw 316dvh 0 1px var(--gs-dust-color),
+    85vw 382dvh 0 0   var(--gs-dust-color),
+    92vw 446dvh 0 1px var(--gs-dust-color),
+    99vw 476dvh 0 0   var(--gs-dust-color);
+}
+
+/* Second particle set — offset x + offset y so the two layers interleave
+   evenly across the full page height */
+.dust::after {
+  --gs-dust-color: color-mix(in srgb, var(--il-accent) 35%, var(--text-secondary));
+  box-shadow:
+    2vw   38dvh 0 0   var(--gs-dust-color),
+    11vw 104dvh 0 1px var(--gs-dust-color),
+    18vw 170dvh 0 0   var(--gs-dust-color),
+    25vw 236dvh 0 1px var(--gs-dust-color),
+    32vw 300dvh 0 0   var(--gs-dust-color),
+    39vw 366dvh 0 1px var(--gs-dust-color),
+    46vw 432dvh 0 0   var(--gs-dust-color),
+    53vw  70dvh 0 1px var(--gs-dust-color),
+    60vw 136dvh 0 0   var(--gs-dust-color),
+    67vw 202dvh 0 1px var(--gs-dust-color),
+    74vw 268dvh 0 0   var(--gs-dust-color),
+    81vw 334dvh 0 1px var(--gs-dust-color),
+    88vw 400dvh 0 0   var(--gs-dust-color),
+    95vw 462dvh 0 1px var(--gs-dust-color),
+    98vw 488dvh 0 0   var(--gs-dust-color);
+  animation-duration: 58s;
+  animation-delay: -22s;
+  opacity: 0.8;
+}
+
+@keyframes gsDustRise {
+  from { transform: translateY(12dvh); opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  to   { transform: translateY(-92dvh); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dust::before,
+  .dust::after {
+    animation: none;
+  }
+}
+
+/* .page has isolation: isolate, so .dust's z-index: -1 stays inside .page's
+   stacking context and is naturally rendered below in-flow content. No
+   explicit z-index needed on siblings. */
 
 .page :global(hr) {
   display: none;
@@ -57,66 +161,172 @@
 
 /* ── Hero ───────────────────────────────────────────────────── */
 
+/* Bordered rounded container — matches the App Basics band shape so the
+   hero reads as a defined "top card" instead of leaking gradient at the
+   edges. Overflow: hidden clips the radial spotlight to the box. */
 .hero {
-  padding: 2.5rem 0 2.25rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 3rem 2.75rem 2.75rem;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  margin-bottom: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  max-width: 720px;
+  gap: 1.1rem;
 }
 
 .heroWithGraphic {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 2.5rem;
+  gap: 3rem;
   align-items: center;
-  max-width: none;
-  padding: 3.5rem 0 3rem;
+  padding: 3.5rem 2.75rem 3rem;
+}
+
+/* Hero-level spotlight — soft radial that spans the entire hero (text +
+   illustration) with a gentle falloff. Sits on .hero so it reads as one
+   even wash instead of feeling anchored under just the text column. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    65% 75% at 35% 50%,
+    color-mix(in srgb, var(--dwc-color-primary) 9%, transparent) 0%,
+    color-mix(in srgb, var(--dwc-color-primary) 3%, transparent) 42%,
+    transparent 82%
+  );
+  pointer-events: none;
 }
 
 .heroContent {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 1.1rem;
 }
 
+/* Eyebrow row — hosts the kicker and the optional live/version chip */
+.heroEyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  align-self: flex-start;
+}
+
+/* Kicker — mono uppercase with accent border-left (stageforJ signature) */
 .heroEyebrow {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--gs-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--text-secondary);
+  border-left: 3px solid var(--il-accent);
+  padding-left: 0.85rem;
   margin: 0;
 }
 
+/* Version chip — small mono pill with a live-pulse dot before the label */
+.heroChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.65rem 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  font-family: var(--gs-font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.heroChip:hover {
+  color: var(--il-accent);
+  border-color: var(--card-border-primary);
+  text-decoration: none;
+}
+
+.heroChip::after {
+  content: none !important;
+}
+
+.heroChip a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.heroChip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--il-accent);
+  flex-shrink: 0;
+  animation: heroLivePulse 3.2s ease-in-out infinite;
+}
+
+@keyframes heroLivePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Hero title — Bricolage Grotesque, huge, tight tracking, optical-size 96 */
 .heroTitle {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: var(--gs-font-display);
+  font-size: clamp(2.4rem, 5.2vw, 3.75rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-variation-settings: 'opsz' 96;
+  letter-spacing: -0.028em;
+  line-height: 1.02;
   margin: 0;
   color: var(--text);
+  text-wrap: balance;
+}
+
+/* Java brand-color highlight for the word "Java" in the hero title.
+   Uses the official Java identity orange (#f8981d) — same value stageforJ
+   uses for its Java-tinted accents. Readable on both light and dark. */
+.heroTitleJava {
+  color: #f8981d;
+  font-variation-settings: 'opsz' 96;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroChip::before {
+    animation: none;
+  }
 }
 
 .heroSubtitle {
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   line-height: 1.55;
   color: var(--text-secondary);
   margin: 0;
   text-wrap: pretty;
-  max-width: 540px;
+  max-width: 560px;
 }
 
 .heroCtas {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 
-/* Plain-class buttons scoped under .heroCtas to beat Infima's `.markdown a`
-   specificity (0,1,1 vs. our 0,2,0). Also uses !important on the visual
-   essentials so nothing loaded later in the cascade can override. */
+/* Plain-class buttons — same visual language as .communityCta, scoped
+   under .heroCtas to beat Infima's `.markdown a` specificity, plus
+   !important on visual essentials so nothing loaded later can override. */
 .heroCtas .heroCtaPrimary,
 .heroCtas .heroCtaSecondary {
   display: inline-flex !important;
@@ -151,6 +361,11 @@
   transform: translateY(-1px);
   opacity: 0.95;
   text-decoration: none !important;
+  /* Neon-halo glow — stageforJ's .neon-tube box-shadow, dialed down for docs */
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--il-accent) 45%, transparent),
+    0 6px 20px color-mix(in srgb, var(--il-accent) 35%, transparent),
+    0 12px 40px color-mix(in srgb, var(--il-accent) 18%, transparent);
 }
 
 .heroCtas .heroCtaPrimary:active {
@@ -189,111 +404,311 @@
   height: 88%;
 }
 
-/* ── Quickstart band ────────────────────────────────────────── */
+/* ── Preview strip (compact 3-step teaser to /quickstart) ───── */
 
-.quickstart {
-  background: var(--band-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 20px;
-  padding: 2rem 2.25rem;
-  margin: 1.5rem 0 2.5rem;
-}
-
-.quickstartHeader {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.75rem;
-}
-
-.quickstartTitle {
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin: 0;
-  color: var(--text);
-}
-
-.quickstartSubtitle {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-.steps {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-.step {
+.previewStrip {
   display: grid;
-  grid-template-columns: 88px 1fr;
-  gap: 1.25rem;
-  align-items: start;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 3rem;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  background: var(--band-bg);
 }
 
-.stepNumeral {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 2.4rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--il-muted);
-  padding-top: 0.15rem;
+.previewSteps {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.stepContent {
-  min-width: 0;
-}
-
-.stepTitle {
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0 0 0.5rem;
+.previewStep {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.55rem;
+  border-radius: 999px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  font-size: 0.9rem;
   color: var(--text);
 }
 
-.stepBody {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin: 0 0 0.85rem;
-  text-wrap: pretty;
+.previewStepNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--il-accent);
+  color: #ffffff;
+  font-family: var(--gs-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
-.stepBody :global(a) {
+.previewSeparator {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin: 0 0.15rem;
+  user-select: none;
+}
+
+.previewCta {
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--il-accent);
   text-decoration: none;
-  font-weight: 500;
+  white-space: nowrap;
 }
 
-.stepBody :global(a:hover) {
+.previewCta:hover {
   text-decoration: underline;
+  color: var(--il-accent);
 }
 
-/* Tighten the Docusaurus Tabs / CodeBlock spacing inside a step */
-.stepContent :global(.tabs-container) {
-  margin-bottom: 0;
+.previewCta::after {
+  content: none !important;
 }
 
-.stepContent :global(pre) {
-  margin-bottom: 0;
+/* ── Hint band (subtle one-line callout, e.g. "prefer startforJ?") ─── */
+
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  margin: 0 0 2rem;
+  background: var(--band-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex-wrap: wrap;
+}
+
+.hintText {
+  flex: 1;
+  min-width: 240px;
+  color: var(--text);
+}
+
+.hintText strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hintCta {
+  color: var(--il-accent);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 0.925rem;
+}
+
+.hintCta:hover {
+  text-decoration: underline;
+  color: var(--il-accent);
+}
+
+.hintCta::after {
+  content: none !important;
+}
+
+/* ── Task tile grid ─────────────────────────────────────────── */
+
+/* Scene pool — very subtle accent-tinted radial that sits behind the whole
+   task grid so the 8 tiles feel "lit on a stage" instead of just floating
+   on the page background. Matches stageforJ's .scene::before pattern. */
+.grid {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 0 0 3rem;
+}
+
+.grid::before {
+  content: '';
+  position: absolute;
+  inset: -8% -12%;
+  z-index: -1;
+  background: radial-gradient(
+    55% 50% at 50% 55%,
+    color-mix(in srgb, var(--dwc-color-primary) 6%, transparent) 0%,
+    transparent 78%
+  );
+  pointer-events: none;
+}
+
+.gridHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.gridEyebrow {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--gs-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-left: 3px solid var(--il-accent);
+  padding-left: 0.85rem;
+  margin: 0;
+}
+
+.gridTitle {
+  font-family: var(--gs-font-display);
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.gridSubtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0.15rem 0 0;
+  text-wrap: pretty;
+  max-width: 640px;
+}
+
+/* Small kicker label between the two task-grid halves — splits the 8 tiles
+   into "Build UI" and "Configure & ship" sub-groups without adding cards. */
+.gridGroupLabel {
+  display: inline-block;
+  font-family: var(--gs-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-left: 3px solid var(--il-accent);
+  padding-left: 0.85rem;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.gridGroupLabel:first-of-type {
+  margin-top: 0;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 2rem 1.75rem;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ifm-font-color-base) 4%, transparent);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tile:hover {
+  border-color: var(--card-border-primary);
+  background: var(--card-bg-hover);
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* Vercel-style top-edge accent — same treatment as the bento cards, so the
+   whole card system uses one signature hover effect. */
+.tile::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 1.75rem;
+  right: 1.75rem;
+  height: 2px;
+  background: transparent;
+  transition: background 240ms ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.tile:hover::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--il-accent) 55%, transparent) 25%,
+    var(--il-accent) 50%,
+    color-mix(in srgb, var(--il-accent) 55%, transparent) 75%,
+    transparent 100%
+  );
+}
+
+.tile::after {
+  content: none !important;
+}
+
+.illoWrap {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.illo {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tileTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--text);
+}
+
+.tileDesc {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+  text-wrap: pretty;
 }
 
 /* ── Two-card row (bento) ───────────────────────────────────── */
 
+/* Asymmetric bento — first tile (AI) gets more visual weight (~35% wider)
+   so the row reads with rhythm instead of feeling like two equal boxes. */
 .bentoRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.35fr 1fr;
   gap: 1.25rem;
-  margin: 0 0 2.5rem;
+  margin: 0 0 3rem;
 }
 
 .bento {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -301,13 +716,40 @@
   border-radius: 20px;
   border: 1px solid var(--card-border);
   background: var(--card-bg);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ifm-font-color-base) 4%, transparent);
   color: var(--text);
   text-decoration: none;
   transition:
     border-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Top-edge accent that lights up on hover — Vercel-style card treatment.
+   Sits above the card border with an inset gradient so the highlight fades
+   at both ends instead of hitting the corners hard. */
+.bento::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 1.75rem;
+  right: 1.75rem;
+  height: 2px;
+  background: transparent;
+  transition: background 240ms ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bento:hover::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--il-accent) 55%, transparent) 25%,
+    var(--il-accent) 50%,
+    color-mix(in srgb, var(--il-accent) 55%, transparent) 75%,
+    transparent 100%
+  );
 }
 
 .bento:hover {
@@ -360,110 +802,301 @@
   margin-top: 0.5rem;
 }
 
-/* ── Task tile grid ─────────────────────────────────────────── */
+/* ── App Basics band (full-width horizontal spotlight) ─────── */
 
-.grid {
+.appBasics {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem;
-  margin: 0 0 2.5rem;
-}
-
-.gridHeader {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin: 0.5rem 0 1.25rem;
-}
-
-.gridTitle {
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin: 0;
-  color: var(--text);
-}
-
-.gridSubtitle {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-.tile {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem 2rem 1.75rem;
-  border-radius: 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.5rem 2.5rem;
+  margin: 0 0 3rem;
   border: 1px solid var(--card-border);
-  background: var(--card-bg);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-  color: var(--text);
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    border-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 20px;
+  background: var(--band-bg);
+  overflow: hidden;
+  position: relative;
 }
 
-.tile:hover {
-  border-color: var(--card-border-primary);
-  background: var(--card-bg-hover);
-  transform: translateY(-1px);
-  text-decoration: none;
-  color: var(--text);
+.appBasics::before {
+  content: '';
+  position: absolute;
+  inset: -20% -20% auto auto;
+  width: 60%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--dwc-color-primary) 10%, transparent) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
 }
 
-.tile::after {
-  content: none !important;
-}
-
-.illoWrap {
+.appBasicsIllo {
+  position: relative;
+  z-index: 1;
   aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
-  margin-bottom: 0.5rem;
+  padding: 0.5rem;
 }
 
-.illo {
-  width: 80%;
-  height: 100%;
+.appBasicsIllo .illo {
+  width: 90%;
+}
+
+.appBasicsContent {
+  position: relative;
+  z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.tileTitle {
-  font-size: 1.05rem;
+.appBasicsEyebrow {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--gs-font-mono);
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-left: 3px solid var(--il-accent);
+  padding-left: 0.85rem;
+  margin: 0;
+}
+
+.appBasicsTitle {
+  font-family: var(--gs-font-display);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   margin: 0;
   color: var(--text);
 }
 
-.tileDesc {
-  font-size: 0.875rem;
+.appBasicsDesc {
+  font-size: 1rem;
   line-height: 1.55;
   color: var(--text-secondary);
   margin: 0;
   text-wrap: pretty;
+  max-width: 60ch;
+}
+
+.appBasicsCtas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.appBasicsCtas .appBasicsCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 8px;
+  background: var(--il-accent);
+  color: #ffffff !important;
+  font-size: 0.925rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.appBasicsCtas .appBasicsCta::after {
+  content: none !important;
+}
+
+.appBasicsCtas .appBasicsCta:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+  text-decoration: none;
+  color: #ffffff !important;
+}
+
+/* ── Statement band (scene-style chapter divider) ──────────── */
+
+/* Big-type breather between card-heavy sections. Kicker + huge Bricolage
+   statement + centered lede. Its own radial pool creates atmosphere without
+   another card frame. */
+.statement {
+  padding: 5.5rem 0 5rem;
+  margin: 0 0 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.statement::before {
+  content: '';
+  position: absolute;
+  inset: -60% -20% -60% -20%;
+  z-index: -1;
+  background: radial-gradient(
+    40% 50% at 50% 50%,
+    color-mix(in srgb, var(--dwc-color-primary) 5%, transparent) 0%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.statementKicker {
+  display: inline-block;
+  font-family: var(--gs-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--il-accent);
+  margin: 0 0 1.5rem;
+}
+
+/* Small centered accent line above the kicker — anchors the centered
+   statement layout the way the border-left kicker anchors left-aligned ones. */
+.statementKicker::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: var(--il-accent);
+  margin: 0 auto 0.85rem;
+}
+
+.statementTitle {
+  font-family: var(--gs-font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  font-variation-settings: 'opsz' 96;
+  letter-spacing: -0.028em;
+  line-height: 1.05;
+  color: var(--text);
+  text-wrap: balance;
+  margin: 0 auto 1.5rem;
+  max-width: 22ch;
+}
+
+.statementLede {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+  max-width: 62ch;
+  margin: 0 auto;
+}
+
+/* ── Code showcase band ─────────────────────────────────────── */
+
+/* "This is what webforJ code looks like" moment — kicker + short display
+   title + real Java code + a link into the walkthrough. Uses Docusaurus's
+   built-in Prism-highlighted code block styling; we just wrap it in our
+   container so it visually reads as one of our design system's cards. */
+.codeShowcase {
+  position: relative;
+  isolation: isolate;
+  padding: 2.25rem 2.5rem 2rem;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  background: var(--card-bg);
+  margin: 0 0 3rem;
+  overflow: hidden;
+}
+
+.codeShowcase::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    50% 60% at 22% 25%,
+    color-mix(in srgb, var(--dwc-color-primary) 11%, transparent) 0%,
+    transparent 78%
+  );
+  pointer-events: none;
+}
+
+.codeShowcaseKicker {
+  display: inline-block;
+  font-family: var(--gs-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-left: 3px solid var(--il-accent);
+  padding-left: 0.85rem;
+  margin: 0 0 1rem;
+}
+
+.codeShowcaseTitle {
+  font-family: var(--gs-font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 700;
+  font-variation-settings: 'opsz' 96;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 1.5rem;
+  color: var(--text);
+  text-wrap: balance;
+  max-width: 34ch;
+}
+
+/* Tighten the Docusaurus code block inside our container */
+.codeShowcase :global(.theme-code-block),
+.codeShowcase :global(pre) {
+  margin: 0 !important;
+}
+
+.codeShowcaseFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--card-border);
+  flex-wrap: wrap;
+}
+
+.codeShowcaseNote {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+  flex: 1;
+  min-width: 220px;
+}
+
+.codeShowcaseCta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--il-accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.codeShowcaseCta:hover {
+  text-decoration: underline;
+  color: var(--il-accent);
+}
+
+.codeShowcaseCta::after {
+  content: none !important;
 }
 
 /* ── Community band ─────────────────────────────────────────── */
 
+/* Bordered but transparent — keeps the pill/card shape without the tinted
+   background. Reads as a defined footer band, not another glowing card. */
 .community {
-  background: var(--band-bg);
+  background: transparent;
   border: 1px solid var(--card-border);
   border-radius: 20px;
   padding: 1.5rem 2rem;
-  margin: 2.5rem 0 1rem;
+  margin: 0 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -503,6 +1136,23 @@
   height: 18px;
 }
 
+/* Small live-data badge shown next to GitHub link when API returns a star
+   count — mono pill, subtle border, so it reads as "3.2k ⭐" not a button. */
+.communityBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  font-family: var(--gs-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: 0.15rem;
+}
+
 .communityCta {
   display: inline-flex;
   align-items: center;
@@ -527,9 +1177,135 @@
   content: none !important;
 }
 
+/* ── Quickstart band (only used on the /quickstart page) ───── */
+
+.quickstart {
+  background: var(--band-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2.25rem 2.5rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.quickstartHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.quickstartTitle {
+  font-family: var(--gs-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--text);
+}
+
+.quickstartSubtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Vertically-stacked step: numeral in a fixed left column, content in the right */
+.step {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 0.75rem 0;
+}
+
+.stepNumeral {
+  font-family: var(--gs-font-mono);
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--il-accent);
+  padding-top: 0.15rem;
+}
+
+.stepContent {
+  min-width: 0;
+}
+
+.stepTitle {
+  font-family: var(--gs-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.stepBody {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 0.85rem;
+  text-wrap: pretty;
+}
+
+.stepBody :global(a) {
+  color: var(--il-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.stepBody :global(a:hover) {
+  text-decoration: underline;
+}
+
+.stepContent :global(.tabs-container) {
+  margin-bottom: 0;
+}
+
+.stepContent :global(pre) {
+  margin-bottom: 0;
+}
+
+/* ── Scroll-driven reveals (Chrome + capable browsers only) ── */
+
+@supports (animation-timeline: view()) {
+  .hero,
+  .previewStrip,
+  .gridHeader,
+  .tile,
+  .bento,
+  .appBasics,
+  .step {
+    animation: gs-rise both ease-out;
+    animation-timeline: view();
+    animation-range: entry 5% cover 20%;
+  }
+}
+
+@keyframes gs-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .heroWithGraphic {
     grid-template-columns: 1fr;
     padding: 2.5rem 0 2rem;
@@ -537,8 +1313,27 @@
   }
 
   .heroGraphic {
-    max-width: 380px;
+    max-width: 420px;
     margin: 0 auto;
+  }
+
+  .previewStrip {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .previewCta {
+    align-self: flex-start;
+  }
+
+  .appBasics {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 1.75rem;
+  }
+
+  .appBasicsIllo {
+    max-width: 340px;
   }
 
   .bentoRow {
@@ -546,8 +1341,8 @@
   }
 
   .step {
-    grid-template-columns: 64px 1fr;
-    gap: 0.85rem;
+    grid-template-columns: 68px 1fr;
+    gap: 1rem;
   }
 
   .stepNumeral {
@@ -555,7 +1350,7 @@
   }
 
   .quickstart {
-    padding: 1.5rem 1.25rem;
+    padding: 1.75rem 1.25rem;
   }
 
   .community {

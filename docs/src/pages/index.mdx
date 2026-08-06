@@ -1,0 +1,164 @@
+---
+title: Getting Started
+description: Start building web apps in pure Java — pick your path, explore the components, and see what people are shipping with webforJ.
+hide_table_of_contents: true
+---
+
+import Link from '@docusaurus/Link';
+import Hero from '@site/src/components/GettingStarted/Hero';
+import Illo from '@site/src/components/GettingStarted/Illo';
+import PreviewStrip from '@site/src/components/GettingStarted/PreviewStrip';
+import BentoCard from '@site/src/components/GettingStarted/BentoCard';
+import TaskTile from '@site/src/components/GettingStarted/TaskTile';
+import AppBasicsBand from '@site/src/components/GettingStarted/AppBasicsBand';
+import CommunityBand from '@site/src/components/GettingStarted/CommunityBand';
+import styles from '@site/src/components/GettingStarted/GettingStarted.module.css';
+
+<div className={styles.page}>
+
+<div className={styles.dust} aria-hidden="true" />
+
+<Hero
+  eyebrow="Getting started · webforJ"
+  chip={<Link to="/docs/upgrading/overview">Latest: v25.11</Link>}
+  title={<>Build web apps in pure <span className={styles.heroTitleJava}>Java</span></>}
+  subtitle="Ship production-ready UIs with components, routing, and data binding — no HTML templates, no client-side glue, no build tools running in your browser."
+  graphic={<Illo variant="hero" />}
+  ctas={
+    <>
+      <Link className={styles.heroCtaPrimary} to="/docs/introduction/quickstart">
+        Quickstart →
+      </Link>
+      <a className={styles.heroCtaSecondary} href="https://docs.webforj.com/startforj/" target="_blank" rel="noopener noreferrer">
+        Try startforJ
+      </a>
+    </>
+  }
+/>
+
+<PreviewStrip />
+
+<div className={styles.bentoRow}>
+
+<BentoCard
+  variant="ai"
+  title="Add AI features"
+  description="Spring AI, streaming chat, MarkdownViewer, and MCP integration — the pieces you need to build AI-first Java UIs."
+  cta="Explore AI tooling →"
+  to="/docs/ai-tooling"
+/>
+
+<BentoCard
+  variant="projects"
+  title="Built with webforJ"
+  description="Real apps from the community — dashboards, AI chat, dev tools, games. Browse the source and get inspired."
+  cta="Browse on GitHub →"
+  to="https://github.com/webforj/built-with-webforj"
+  external
+/>
+
+</div>
+
+<section className={styles.statement}>
+  <p className={styles.statementKicker}>The premise</p>
+  <h2 className={styles.statementTitle}>One language. One codebase. One deploy.</h2>
+  <p className={styles.statementLede}>webforJ speaks Java from your models down to the DOM. No JSX bindings, no JavaScript bundler to configure, no context switch between backend and frontend. Just Java, all the way through.</p>
+</section>
+
+<div className={styles.codeShowcase}>
+
+<p className={styles.codeShowcaseKicker}>The shape of a view</p>
+
+<h2 className={styles.codeShowcaseTitle}>Everything is a Java class.</h2>
+
+```java
+@Route("/")
+public class HomeView extends Composite<FlexLayout> {
+  private TextField name = new TextField("What is your name?");
+  private Button hello = new Button("Say hello");
+
+  public HomeView() {
+    hello.setTheme(ButtonTheme.PRIMARY)
+         .addClickListener(e -> Toast.show("Hi, " + name.getValue() + "!"));
+
+    getBoundComponent().add(name, hello);
+  }
+}
+```
+
+<div className={styles.codeShowcaseFooter}>
+  <p className={styles.codeShowcaseNote}>A route, a layout, two components, a click handler. That's the whole view.</p>
+  <a href="/docs/introduction/basics" className={styles.codeShowcaseCta}>Read the walkthrough →</a>
+</div>
+
+</div>
+
+<div className={styles.gridHeader}>
+  <p className={styles.gridEyebrow}>Pick a topic</p>
+  <h2 className={styles.gridTitle}>What do you want to build next?</h2>
+  <p className={styles.gridSubtitle}>Dive into any topic when you're ready — each card links to a focused guide.</p>
+</div>
+
+<p className={styles.gridGroupLabel}>Build UI</p>
+
+<div className={styles.grid}>
+  <TaskTile
+    variant="pages"
+    title="Add pages & navigation"
+    description="Multi-page apps with routes, layouts, and deep linking."
+    to="/docs/routing/overview"
+  />
+  <TaskTile
+    variant="forms"
+    title="Build forms & bind data"
+    description="Two-way binding, validation, and Java-model-driven forms."
+    to="/docs/data-binding/overview"
+  />
+  <TaskTile
+    variant="theme"
+    title="Style & theme your app"
+    description="Customize with DWC tokens — no CSS gymnastics."
+    to="/docs/styling/overview"
+  />
+  <TaskTile
+    variant="spring"
+    title="Connect to Spring Boot"
+    description="Spring Data JPA, Security, and your existing stack."
+    to="/docs/integrations/spring/spring-boot"
+  />
+</div>
+
+<p className={styles.gridGroupLabel}>Configure & ship</p>
+
+<div className={styles.grid}>
+  <TaskTile
+    variant="jbang"
+    title="Run without Maven"
+    description="Single-file Java scripts with JBang — no pom.xml, no project structure."
+    to="/docs/integrations/jbang"
+  />
+  <TaskTile
+    variant="testing"
+    title="Test your app"
+    description="Unit and integration tests for views, routes, and data-bound components."
+    to="/docs/testing/overview"
+  />
+  <TaskTile
+    variant="security"
+    title="Secure your app"
+    description="Authentication, authorization, roles, and protected routes."
+    to="/docs/security/overview"
+  />
+  <TaskTile
+    variant="ship"
+    title="Ship it"
+    description="Package as JAR or WAR, deploy anywhere Java runs."
+    to="/docs/configuration/overview"
+  />
+</div>
+
+<AppBasicsBand />
+
+<CommunityBand />
+
+</div>

@@ -11,7 +11,7 @@ The webforJ build plugin runs webforJ's build time work as part of your Maven or
 
 ## Adding the plugin {#adding-the-plugin}
 
-A webforJ project created from an [archetype](/docs/introduction/getting-started) already has the plugin. To add it to an existing project:
+A webforJ project created from an [archetype](/) already has the plugin. To add it to an existing project:
 
 <Tabs>
 <TabItem value="maven" label="Maven">

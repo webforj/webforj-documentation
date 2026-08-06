@@ -117,7 +117,7 @@ module.exports = async function createConfig() {
       tagName: 'link',
       attributes: {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap',
       },
     },
   ],
@@ -178,6 +178,14 @@ module.exports = async function createConfig() {
       {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
+          {
+            from: '/docs/introduction/getting-started',
+            to: '/',
+          },
+          {
+            from: '/getting-started',
+            to: '/',
+          },
           {
             from: '/docs/introduction/prerequisites',
             to: '/docs/introduction/quickstart',
@@ -283,8 +291,8 @@ module.exports = async function createConfig() {
         {
           position: 'left',
           label: 'Getting Started',
-          to: '/docs/introduction/getting-started',
-          activeBasePath: '/docs/introduction/getting-started'
+          to: '/',
+          activeBaseRegex: '^/$'
         },
         {
           position: 'left',

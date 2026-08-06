@@ -11,11 +11,16 @@ import styles from './GettingStarted.module.css';
  *
  * `ctas` is a slot for one or more <Link>/<a> button elements.
  */
-export default function Hero({ eyebrow, title, subtitle, graphic, ctas }) {
+export default function Hero({ eyebrow, chip, title, subtitle, graphic, ctas }) {
   return (
     <header className={clsx(styles.hero, graphic && styles.heroWithGraphic)}>
       <div className={styles.heroContent}>
-        {eyebrow && <p className={styles.heroEyebrow}>{eyebrow}</p>}
+        {(eyebrow || chip) && (
+          <div className={styles.heroEyebrowRow}>
+            {eyebrow && <p className={styles.heroEyebrow}>{eyebrow}</p>}
+            {chip && <span className={styles.heroChip}>{chip}</span>}
+          </div>
+        )}
         <h1 className={styles.heroTitle}>{title}</h1>
         {subtitle && <p className={styles.heroSubtitle}>{subtitle}</p>}
         {ctas && <div className={styles.heroCtas}>{ctas}</div>}
