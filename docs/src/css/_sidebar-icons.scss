@@ -88,6 +88,10 @@
     @include _icon("arrow-up-circle");
   }
 
+  .cat-icon--contributing > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("git-pull-request");
+  }
+
   // Cookbook categories
   .cat-icon--css > .menu__list-item-collapsible > .menu__link::before {
     @include _icon("brush");
