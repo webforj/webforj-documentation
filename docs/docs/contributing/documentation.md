@@ -45,7 +45,7 @@ Overview pages commonly use `DocCardList` to link to child pages:
 
 ## Links and headings {#links-and-headings}
 
-Prefer relative links for pages in the same documentation area and absolute `/docs/...` links when crossing sections. Keep heading anchors stable if other pages may link to them:
+When linking to any page within the webforJ documentation, use root-relative links from the `docs` directory. This makes the link go to the correct location, even for translated pages. Keep heading anchors stable if other pages may link to them:
 
 ```md
 ## Pull request checklist {#pull-request-checklist}
@@ -71,6 +71,7 @@ When adding a demo:
 - Use names that match the documented component or feature.
 - Include only the code needed to demonstrate the concept.
 - Confirm every `files` entry points to a tracked source file.
+- Have a `files` entry point for each resource used, e.g. CSS files, JSON data, and custom composite components.
 - Confirm the `path` loads the intended `@Route` while the sample app is running.
 - Add or update an integration test for meaningful interactive behavior.
 - Verify the docs page and sample route together.

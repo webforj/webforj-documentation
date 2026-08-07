@@ -9,7 +9,7 @@ Framework contributions are made in the [webforJ repository](https://github.com/
 
 ## Before you start {#before-you-start}
 
-Search the [framework issues](https://github.com/webforj/webforj/issues) before starting work. Open an issue before making a significant behavior or API change so maintainers can confirm the problem, scope, and intended design. Use the [bug report](https://github.com/webforj/webforj/issues/new?template=bug_report.yml) for incorrect behavior and the [feature request](https://github.com/webforj/webforj/issues/new?template=feature_request.yml) for a new capability.
+Before you make a contribution to the framework, search the [framework issues](https://github.com/webforj/webforj/issues) to verify there isn't an existing issue, or an issue that's currently in progress. Then, before making a significant behavior or API change, open an issue so maintainers can confirm the problem, scope, and intended design. Use the [bug report form](https://github.com/webforj/webforj/issues/new?template=bug_report.yml) for incorrect behavior and the [feature request form](https://github.com/webforj/webforj/issues/new?template=feature_request.yml) for a new capability.
 
 Security vulnerabilities must be reported through the [private security advisory form](https://github.com/webforj/webforj/security/advisories/new), not a public issue or pull request. All participation is subject to the repository's [Code of Conduct](https://github.com/webforj/webforj/blob/main/CODE_OF_CONDUCT.md).
 
@@ -23,7 +23,7 @@ Framework development requires:
 | Maven | A current Maven installation available as `mvn` |
 | Git | A version that supports `git switch` |
 
-Follow the [pull request guide](./pull-requests#fork-and-clone-the-repository) to clone your fork and configure the upstream remote. From the framework repository root, confirm the toolchain and run a small module build:
+Follow the [pull request guide](/docs/contributing/pull-requests#fork-and-clone-the-repository) to clone your fork and configure the upstream remote. From the framework repository root, confirm the toolchain and run a small module build:
 
 ```bash
 java -version
@@ -59,17 +59,17 @@ Keep production code, tests, and API documentation in the same focused change:
 - Preserve existing public behavior unless the linked issue explicitly approves a change.
 - Match nearby naming, overload, null-handling, and exception conventions.
 - Update Javadoc when a public type, method, parameter, return value, or exception contract changes.
-- Add a JUnit 5 test under the module's `src/test/java` tree for new behavior and bug fixes.
+- Add a [JUnit 5](https://docs.junit.org/5.5.0/user-guide/) test under the module's `src/test/java` tree for new behavior and bug fixes.
 - Avoid unrelated formatting, dependency, or refactoring changes.
 - Explain any new dependency in the pull request. Framework CI performs dependency review for pull requests.
 
-Run the framework formatter, Checkstyle, and affected tests as described in [Editor Settings and Local Setup](./editor-settings#framework-formatting-and-analysis) and [Creating Tests](./creating-tests#framework-tests).
+Run the framework formatter, Checkstyle, and affected tests as described in [Editor Settings and Local Setup](/docs/contributing/editor-settings#framework-formatting-and-analysis) and [Creating Tests](/docs/contributing/creating-tests#framework-tests).
 
 ## Keep documentation in sync {#keep-documentation-in-sync}
 
 A framework change that affects users may also require a change in the [documentation repository](https://github.com/webforj/webforj-documentation). This includes new APIs, changed defaults, renamed methods, migration requirements, and behavior that changes an existing example.
 
-Because framework and documentation changes use separate repositories, open a companion documentation issue or pull request and cross-link it from the framework pull request. Don't leave a user-facing API change documented only in Javadoc or a pull request description.
+Because framework and documentation changes use separate repositories, open a companion documentation issue or pull request and cross-link it from the framework pull request. Don't leave a user-facing API change documented only in Javadoc or in a pull request description.
 
 ## Framework checklist {#framework-checklist}
 

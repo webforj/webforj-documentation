@@ -20,8 +20,8 @@ Start by choosing the right place for the work. This keeps issues and pull reque
 
 | Contribution | Where to start |
 | --- | --- |
-| Framework bugs, API changes, components, integrations, and runtime behavior | [webforJ framework repository](https://github.com/webforj/webforj) and the [framework contribution guide](./framework) |
-| Documentation fixes, tutorial updates, cookbook recipes, sample apps, and docs site issues | [webforJ documentation repository](https://github.com/webforj/webforj-documentation) and the [documentation contribution guide](./documentation) |
+| Framework bugs, API changes, components, integrations, and runtime behavior | [webforJ framework repository](https://github.com/webforj/webforj) and the [framework contribution guide](/docs/contributing/framework) |
+| Documentation fixes, tutorial updates, cookbook recipes, sample apps, and docs site issues | [webforJ documentation repository](https://github.com/webforj/webforj-documentation) and the [documentation contribution guide](/docs/contributing/documentation) |
 | Security reports | Use the security advisories for the affected [framework](https://github.com/webforj/webforj/security/advisories) or [documentation](https://github.com/webforj/webforj-documentation/security/advisories) repository instead of a public issue |
 
 ## Ways to contribute {#ways-to-contribute}
@@ -36,29 +36,35 @@ Search existing issues before opening a new one. A useful report includes:
 - Relevant logs, stack traces, screenshots, or recordings
 - The documentation URL when the report concerns a page
 
-Use the [documentation issue chooser](https://github.com/webforj/webforj-documentation/issues/new/choose) for docs and sample problems. Use the [framework issue chooser](https://github.com/webforj/webforj/issues/new/choose) for API, component, and runtime problems.
+Use the [documentation issue templates](https://github.com/webforj/webforj-documentation/issues/new/choose) for docs and sample problems. Use the [framework issue templates](https://github.com/webforj/webforj/issues/new/choose) for API, component, and runtime problems.
 
 ### Propose an improvement {#propose-an-improvement}
 
-Describe the problem or use case before describing a solution. Include the people affected, the desired outcome, and alternatives you considered. Use the [documentation proposal form](https://github.com/webforj/webforj-documentation/issues/new?template=feature_request.yml) for new guides or site changes, and the [framework issue chooser](https://github.com/webforj/webforj/issues/new/choose) for product features.
+Describe the problem or use case before describing a solution. Include the people affected, the desired outcome, and the alternatives you've considered. Use the [documentation proposal form](https://github.com/webforj/webforj-documentation/issues/new?template=feature_request.yml) for new guides or site changes, and the [framework feature request from](https://github.com/webforj/webforj/issues/new?template=feature_request.yml) for product features.
 
 For a focused how-to topic, use the [cookbook request form](https://github.com/webforj/webforj-documentation/issues/new?template=cookbook-request.yml).
 
 ### Contribute to the framework {#contribute-to-the-framework}
 
-Framework contributions include bug fixes, components, data APIs, integrations, build plugins, and tests. Start with the [framework contribution guide](./framework) to set up the Java 21 multi-module Maven build, locate the module that owns the behavior, and keep public API documentation and tests with the implementation.
+Framework contributions include bug fixes, components, data APIs, integrations, build plugins, and tests. Start with the [framework contribution guide](/docs/contributing/framework) to set up the Java 21 multi-module Maven build, locate the module that owns the behavior, and keep public API documentation and tests with the implementation.
 
 ### Improve the documentation {#improve-the-documentation}
 
-Documentation contributions include articles, cookbook recipes, runnable samples, assets, navigation, and site tooling. The [documentation contribution guide](./documentation) explains the repository structure and the requirements for pages and demos.
+Documentation contributions include articles, cookbook recipes, runnable samples, assets, navigation, and site tooling. The [documentation contribution guide](/docs/contributing/documentation) explains the repository structure and the requirements for pages and demos.
 
-Small corrections can go directly to a pull request. Open an issue first for new sections, significant rewrites, demos, or framework behavior changes so maintainers can confirm the scope. The [pull request guide](./pull-requests) covers the shared fork, branch, commit, review, and validation workflow for both repositories.
+Small corrections, like typos or misspellings, can go directly to a pull request. Open an issue first for new sections, significant rewrites, demos, or framework behavior changes so maintainers can confirm the scope. The [pull request guide](/docs/contributing/pull-requests) covers the shared fork, branch, commit, review, and validation workflow for both repositories.
 
 ## Before opening a pull request {#before-opening-a-pull-request}
 
 Make sure the change has a clear purpose, is limited to one topic, and can be reviewed without unrelated cleanup. If the pull request closes an issue, include `Closes #<issue-number>` in the description.
 
 For framework code, run the affected module tests and the full Maven build when practical. For documentation-only edits, build the English docs site. Java samples, demos, and integration test changes also require the relevant Maven validation.
+
+To build the English docs site, run the following:
+
+```bash
+mvn jetty:run -Pen-only
+```
 
 ## Contributor guides {#contributor-guides}
 

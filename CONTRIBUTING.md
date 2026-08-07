@@ -4,7 +4,7 @@ The complete [Contributing guide](docs/docs/contributing/overview.md) covers fra
 
 Thank you for considering contributing to the webforJ documentation. Clear, accurate, and useful documentation is vital for helping others get started and stay productive with webforJ.
 
-This guide will help you contribute effectively, whether you’re fixing a typo, suggesting a new section, or opening a larger pull request.
+This guide will help you contribute effectively, whether you're fixing a typo, suggesting a new section, or opening a larger pull request.
 
 Following this guide keeps contributions consistent, well-scoped, and easy to review. It also shows respect for the time of the community and maintainers.
 
@@ -88,7 +88,7 @@ This keeps the documentation well-organized and easy to maintain.
 
 Contributions can improve documentation, demos, and the framework. This repository accepts documentation and sample changes. Framework code changes are submitted to the `webforj/webforj` repository.
 
-> To contribute to webforJ itself, follow the [Framework Contributions guide](docs/docs/contributing/framework.md). It expands on the framework repository's contribution policy with its current setup, module, formatting, and testing workflow.
+> To contribute to webforJ itself, follow the [Framework Contributions guide](docs/docs/contributing/framework.md). It expands on the framework repository's contribution policy, including its current setup, modules, formatting, and testing workflow.
 
 ### Contribution workflow
 
@@ -102,7 +102,7 @@ Contributions can improve documentation, demos, and the framework. This reposito
 
 All documentation content uses Markdown or Markdown with JSX inside the `docs` folder and is powered by Docusaurus. To contribute to a page, set up the project locally.
 
-To see the required to get docusaurus up and running, as well as how to use the development server, and other development need-to-knows, start with [this article](https://docusaurus.io/docs/installation).
+To see the required to get Docusaurus up and running, as well as how to use the development server, and other development need-to-knows, start with [this article](https://docusaurus.io/docs/installation).
 
 ### Contributing to the demos
 
@@ -117,7 +117,7 @@ See [this article](https://docs.webforj.com/docs/introduction/prerequisites) for
 **All demos should:**
 
 - Follow the standard Maven structure
-- Compile and run via mvn jetty:run
+- Compile and run via `mvn jetty:run`
 - Contain relevant comments or Javadoc when appropriate
 
 ---
@@ -145,7 +145,7 @@ SonarLint is a static analysis tool that helps catch common bugs, anti-patterns,
 ### Code formatting
 Java code in webforJ documentation and examples follows the Google Java Style Guide. This keeps the codebase uniform and readable.
 
-You can download the formatter configuration file [here](https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml)
+You can download the formatter configuration file [here](https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml).
 
 ### Spotless
 The Maven build uses Spotless with Google Java Format to validate Java files in `src/main/java` and `src/test/java`.
