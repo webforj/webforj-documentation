@@ -15,9 +15,12 @@ const tabStyles = css`
     border-color: var(--ifm-color-primary);
   }
 
-  .tabs__item {
+  li.tabs__item {
     padding: 5px 20px -2px 20px;
     border-radius: 0px;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
   }
 `;
 
