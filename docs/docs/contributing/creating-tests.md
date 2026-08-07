@@ -23,7 +23,7 @@ Tests should match the risk of the contribution and run in the repository that o
 
 The framework uses JUnit 5, with Mockito available where test doubles are needed. Put tests under the affected module's `src/test/java` directory, use the same package as the production code, and follow nearby naming and structure.
 
-From the framework repository root, run the affected module and the modules it depends on. For example:
+From the framework repository root, run the affected module, and the modules it depends on. For example:
 
 ```bash
 mvn -pl webforj-components/webforj-accordion -am test
@@ -93,4 +93,4 @@ For more details, see [Testing](/docs/testing/overview), [Frontend testing](/doc
 
 ## When local validation isn't practical {#when-local-validation-isnt-practical}
 
-If local validation is too slow, flaky, or blocked by your environment, submit the best focused change you can. In the pull request description, list what you didn't run and the reason.
+If local validation is too slow, flaky, or blocked by your environment, submit the most focused change you can with your available tools. In the pull request description, list what you didn't run and the reason.

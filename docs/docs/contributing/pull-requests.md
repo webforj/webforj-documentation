@@ -90,7 +90,7 @@ Open the pull request against the official repository's `main` branch and allow 
 - Links to companion framework or documentation work
 - `Closes #<issue-number>` when the pull request resolves an issue in the same repository
 
-For framework changes, call out public API changes and new dependencies explicitly. For documentation changes, identify the pages and demo routes reviewers should inspect.
+Call out public API changes and new dependencies explicitly for framework changes. For documentation changes, identify the pages and demo routes reviewers should inspect.
 
 ## Respond to review {#respond-to-review}
 
