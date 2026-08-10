@@ -51,9 +51,11 @@ Once these are in place, restart the app and reload the page.
 
 When craftforJ is active, a trigger button appears over your app. Click it to open craftforJ, or press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> from anywhere in the app. The same shortcut closes craftforJ again, and you can drag the trigger to whichever corner suits you.
 
-<MediaPlaceholder type="video" file="craftforJ/first-open.mp4" length="15s">
-  Pressing the shortcut and craftforJ arriving over a running app
-</MediaPlaceholder>
+<div class="videos-container">
+  <video controls preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/getting-started.mp4" type="video/mp4" />
+  </video>
+</div>
 
 Its tabs cover the [component tree](./inspector.md), [routes](./routes.md), the [theme](./theme.md), and the [assistant](./ai.md), with settings and app information alongside them.
 
@@ -75,15 +77,15 @@ craftforJ floats over your app by default. Drag it anywhere on the page, resize 
 craftforJ is drawn on top of the page. Your app doesn't resize and nothing in it moves out of the way, so whatever sits under craftforJ is hidden while it's there. To see what's underneath, move craftforJ to another edge or take it out of the page.
 :::
 
-<MediaPlaceholder type="image" file="getting-started/docked.png">
-  craftforJ docked to the right of an app page, covering that edge of the app
-</MediaPlaceholder>
+![craftforJ docked to the right of an app page, covering that edge of the app](/img/craftforj/getting-started/docking.png#rounded-border)
 
 To stop covering the app at all, move craftforJ out of the page and into a browser window or tab of its own, which suits a second monitor. It still inspects your app through the page that opened it, so leave that page open. Navigate it away or close it and craftforJ has nothing left to inspect until you open the app again.
 
-<MediaPlaceholder type="video" file="craftforJ/undock-window.mp4" length="20s">
-  Moving craftforJ into a window of its own and bringing it back into the page
-</MediaPlaceholder>
+<div class="videos-container">
+  <video controls preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/undock-window.mp4" type="video/mp4" />
+  </video>
+</div>
 
 Choose a tab rather than a window if you use Chrome's split view, which puts your app and craftforJ side by side and accepts only real tabs. Right-click your app's tab, add it to a new split view, then pick the craftforJ tab.
 
@@ -91,9 +93,11 @@ Choose a tab rather than a window if you use Chrome's split view, which puts you
 Chrome provides the side-by-side arrangement, not craftforJ. Other browsers have no equivalent, so there craftforJ opens in an ordinary tab you switch to. craftforJ itself works the same either way.
 :::
 
-<MediaPlaceholder type="video" file="craftforJ/split-view.mp4" length="20s">
-  Opening craftforJ in a tab, then placing both tabs side by side with the browser's split view
-</MediaPlaceholder>
+<div class="videos-container">
+  <video controls preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/split-view.mp4" type="video/mp4" />
+  </video>
+</div>
 
 :::tip Moving while the assistant is writing
 Moving craftforJ into another window ends a reply that's still streaming. craftforJ asks first, and everything written up to that point stays in the chat.
@@ -108,8 +112,6 @@ Moving craftforJ into another window ends a reply that's still streaming. craftf
 
 The change affects the app in front of you only. Your files stay untouched until you review the change and apply it, which is covered in [Writing changes to source](./source-changes.md).
 
-<MediaPlaceholder type="image" file="getting-started/first-open.png">
-  craftforJ open beside a running app with a component selected
-</MediaPlaceholder>
+![craftforJ open beside a running app with a component selected](/img/craftforj/getting-started/first-open.png#rounded-border)
 
 If nothing appears at all, work through [Troubleshooting](./troubleshooting.md).
