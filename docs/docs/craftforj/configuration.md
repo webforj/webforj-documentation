@@ -52,7 +52,7 @@ Each of these is enabled by default. Turning one off narrows what craftforJ is a
 
 Turning off a flag turns the feature off for everyone using that app. The craftforJ settings are per developer and can only narrow further, so a developer can't switch a capability back on that the app switched off.
 
-:::info Disabled features stay visible
+:::info Features you turn off stay visible
 When a flag is off, the control remains in craftforJ and is marked as unsupported by the connected app.
 :::
 

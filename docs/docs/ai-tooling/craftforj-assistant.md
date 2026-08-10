@@ -12,10 +12,10 @@ The craftforJ assistant is a coding agent that works inside your **running app**
 | | [webforJ AI plugin](/docs/ai-tooling) | craftforJ assistant |
 |---|---|---|
 | **Lives in** | Your editor | The running app |
-| **Sees** | Your source files | Your app, live, with its real values |
+| **Reads** | Your source files | Your app, live, with its real values |
 | **Does** | Writes code | Writes code, and inspects, changes, navigates, and themes the running app |
 | **Verifies by** | Your next build | Compiling each edit before you see it, then showing you the result running |
-| **Best at** | Building something new from scratch | Understanding, fixing, building, and prototyping against the app in front of you |
+| **Suited to** | Building something new from scratch | Understanding, fixing, building, and prototyping against the app in front of you |
 
 The two are complementary and can hand work to each other. Once the work outgrows craftforJ, you can [hand a craftforJ conversation off](/docs/craftforj/ai#conversations) to your editor.
 

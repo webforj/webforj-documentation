@@ -37,7 +37,7 @@ On Linux, set `OLLAMA_ORIGINS` in the environment Ollama starts from and restart
 
 ## craftforJ says the app is restarting {#craftforj-says-the-app-is-restarting}
 
-Your app goes away regularly in development, every time it rebuilds. craftforJ reports what's happening rather than freezing, so it tells you when the app is restarting or the page is reloading, and its controls stay inert until the app is back. It reconnects on its own with your selection and your pending work intact, so there's nothing to do but wait. If it reports that it can't reach the app at all, confirm the app is still running and reload the page.
+Your app goes away regularly in development, every time it rebuilds. craftforJ reports what's happening rather than freezing, so it shows when the app is restarting or the page is reloading, and its controls stay inert until the app is back. It reconnects on its own with your selection and your pending work intact, so there's nothing to do but wait. If it reports that it can't reach the app at all, confirm the app is still running and reload the page.
 
 ## The app keeps restarting {#the-app-keeps-restarting}
 
