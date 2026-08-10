@@ -4,32 +4,32 @@ sidebar_position: 5
 description: >-
   Connect AI assistants to the webforJ MCP server for live documentation lookup,
   project scaffolding, theme generation, and token validation.
-_i18n_hash: fb0e068ee7d7a489237e021b24a883b0
+_i18n_hash: e51aa2e6a5a0f6c37a18c404c1104684
 ---
-The webforJ Mallin Konteksti Protokolla (MCP) -palvelin liittää AI-koodausassistentit webforJ:n dokumentaatioon, API:hin, design-token-järjestelmiin ja tukiin. Sen sijaan, että arvattavalle frameworkin konventiot, avustaja kysyy palvelimelta ja saa vastauksia, jotka perustuvat oikeaan webforJ:iin.
+WebforJ Model Context Protocol (MCP) -palvelin liittää AI-koodin avustajat webforJ:n dokumentaatioon, API:hin, suunnittelutokeneihin ja rakennustyökaluihin. Sen sijaan, että avustaja arvailee kehyskonventioita, se kysyy palvelimelta ja saa vastauksia, jotka perustuvat todelliseen webforJ:iin.
 
-:::tip Käytä liitännäistä
-Ellet tiedä, että haluat vain MCP-palvelimen, asenna **[webforJ AI -liitännäinen](/docs/ai-tooling)** sen sijaan - se pakkaa tämän palvelimen yhteen yhteensopivien [Agent Skills](/docs/ai-tooling/agent-skills) kanssa yhden asennuksen aikana.
+:::tip Käytä liitintä
+Ellei tiedä haluamansa olevan vain MCP-palvelin, asenna **[webforJ AI plugin](/docs/ai-tooling)** sen sijaan - se paketoi tämän palvelimen yhteen asennukseen yhdessä vastaavien [Agent Skills](/docs/ai-tooling/agent-skills) kanssa.
 :::
 
 ## Mikä on MCP? {#whats-an-mcp}
 
-Mallin Konteksti Protokolla on avoin standardi, joka mahdollistaa AI-avustajien kysyä ulkoisia työkaluja tarpeen mukaan. webforJ MCP -palvelin toteuttaa tätä protokollaa, jotta avustajasi voi:
+Model Context Protocol on avoin standardi, joka antaa AI-avustajille mahdollisuuden kutsua ulkoisia työkaluja kysynnän mukaan. WebforJ MCP -palvelin toteuttaa tämän protokollan, jotta avustajasi voi:
 
-- Etsiä asioita webforJ-dokumenteista sen sijaan, että keksiisi menetelmän nimiä
-- Luoda uusia webforJ-projekteja virallisista Maven-arkkitehtuureista
-- Luoda saavutettavia DWC-teemoja brändiväristä
+- Etsiä tietoa webforJ:n dokumentaatiosta sen sijaan, että se keksii metodin nimiä
+- Rakentaa uusia webforJ-projekteja virallisista Maven-archetypeista
+- Tuottaa esteettömiä DWC-teemoja brändiväristä
 - Lukea DWC-komponentin todellista tyylipintaa ja validoida kaikki `--dwc-*` tokenit ennen niiden päätymistä CSS:ään
 
 :::warning AI voi silti tehdä virheitä
-MCP-palvelin parantaa tarkkuutta merkittävästi, mutta AI-avustajat voivat silti tuottaa virheellistä koodia monimutkaisissa skenaarioissa. Tarkista ja testaa aina generoitu koodi ennen käyttöönottoa.
+MCP-palvelin parantaa tarkkuutta merkittävästi, mutta AI-avustajat voivat silti tuottaa virheellistä koodia monimutkaisissa tilanteissa. Tarkista ja testaa aina generoitu koodi ennen julkaisua.
 :::
 
 ## Asennus {#installation}
 
-Täydellisen kokemuksen saamiseksi asenna **[webforJ AI -liitännäinen](/docs/ai-tooling)** - se konfiguroi tämän palvelimen yhdessä Agent Skillsin kanssa, joita avustajasi tarvitsee sen hyvään käyttöön.
+Koko kokemuksen saamiseksi asenna **[webforJ AI plugin](/docs/ai-tooling)** - se konfiguroi tämän palvelimen yhdessä Agent Skillsin kanssa, joita avustajasi tarvitsee sen käyttämiseen tehokkaasti.
 
-Jos haluat vain MCP-palvelimen (ilman taitoja), osoita asiakas ohjelmaan `https://mcp.webforj.com/mcp`:
+Jos haluat vain MCP-palvelimen (ilman taitoja), ohjaa asiakas osoitteeseen `https://mcp.webforj.com/mcp`:
 
 <Tabs groupId="ide">
 <TabItem value="claude-code" label="Claude Code" default>
@@ -41,7 +41,7 @@ claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
 </TabItem>
 <TabItem value="copilot-cli" label="GitHub Copilot CLI">
 
-Suositeltu polku Copilot CLI:ssä on **[webforJ AI -liitännäinen](/docs/ai-tooling)** - se rekisteröi MCP-palvelimen puolestasi yhdellä askelella. Raw MCP-setupista ilman taitoja, katso per-asiakasohjeet [webforJ AI -repo](/docs/ai-tooling).
+Suositeltu reitti Copilot CLI:llä on **[webforJ AI plugin](/docs/ai-tooling)** - se rekisteröi MCP-palvelimen puolestasi yhdellä askeleella. Raakamuotoista MCP-asennusta varten katso asiakaskohtaiset ohjeet [webforJ AI -repoilta](https://github.com/webforj/webforj-ai#clients).
 
 </TabItem>
 <TabItem value="vscode" label="VS Code + Copilot">
@@ -61,7 +61,7 @@ Lisää VS Code -asetuksiisi:
 </TabItem>
 <TabItem value="gemini" label="Gemini CLI">
 
-Lisää `~/.gemini/settings.json`-tiedostoon:
+Lisää `~/.gemini/settings.json`:
 
 ```json
 {
@@ -76,7 +76,7 @@ Lisää `~/.gemini/settings.json`-tiedostoon:
 </TabItem>
 <TabItem value="codex" label="OpenAI Codex CLI">
 
-Lisää `~/.codex/config.toml`-tiedostoon:
+Lisää `~/.codex/config.toml`:
 
 ```toml
 [mcp_servers.webforj-mcp]
@@ -88,11 +88,11 @@ url = "https://mcp.webforj.com/mcp"
 
 ### Muut asiakkaat {#other-clients}
 
-Cursor, Kiro, Goose, Junie, Antigravity ja muut MCP-over-HTTP -asiakkaat toimivat myös - ne käyttävät vain omaa konfiguraatioformaattiaan. Katso [per-asiakas asennusopas](https://github.com/webforj/webforj-ai#clients) jokaisen tarkka pätkä.
+Cursor, Kiro, Goose, Junie, Antigravity ja muut MCP-over-HTTP -asiakkaat toimivat myös - ne käyttävät vain omaa konfiguraatiomuotoaan. Katso [asiakaskohtainen asennusopas](https://github.com/webforj/webforj-ai#clients) jokaisen tarkkaa koodia varten.
 
 ## Mitä palvelin voi tehdä {#capabilities}
 
-Kun MCP-palvelin on yhdistetty, AI-avustajasi saa seuraavat kyvyt. Mikä tahansa niistä voidaan laukaista luonnollisen kielen pyynnöllä - avustaja valitsee automaattisesti oikean.
+Kun MCP-palvelin on yhdistetty, AI-avustajasi saa seuraavat kyvyt. Mikä tahansa niistä voidaan laukaista luonnollisen kielen kysymyksellä - avustaja valitsee oikean automaattisesti.
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -100,26 +100,26 @@ Kun MCP-palvelin on yhdistetty, AI-avustajasi saa seuraavat kyvyt. Mikä tahansa
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Ennen kuin vastaa versioon liittyviin kysymyksiin (kaikki tyylitykseen tai API:iin liittyvät), avustaja selvittää, mikä webforJ-versio sinulla on. Se lukee `pom.xml`-tiedostosta, kun se on saatavilla ja muuten kysyy sinulta. Jokainen seuraava vastaus kohdistuu kyseiseen versioon.
+      Ennen vastauksen antamista versiota koskeviin kysymyksiin (mikä tahansa tyyliin tai API:hin liittyvä) avustaja selvittää, mikä webforJ-versio sinulla on. Se lukee `pom.xml`:n, kun se on saatavilla, ja kysyy muulloin. Jokainen seuraava vastaus on rajattu tähän versioon.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Etsi asioita webforJ-tietopankista</strong>
+    <strong>Etsi tietoja webforJ:n tietopankista</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Avustaja voi kysyä koko webforJ-tietopankista vastauksia, jotka perustuvat oikeaan kehykseen. Tulokset rajaavat sen, mistä kysyt - API-kysymyksestä, oppaasta, koodinäytteestä tai Kotlin DSL:stä.
+      Avustaja voi kysyä koko webforJ:n tietopankista vastauksia, jotka perustuvat todelliseen kehykseen. Tulokset rajataan siihen, mistä kysyt - API-kysymykseen, oppaaseen, koodiesimerkkiin tai Kotlin DSL:ään.
 
-      **Esimerkki pyynnöistä:**
+      **Esimerkkikyselyt:**
       ```
-      "Etsi webforJ:n painike komponentin tapahtumankäsittelyesimerkit"
+      "Löydä webforJ:n Button-komponentin tapahtumankäsittelyesimerkit"
 
-      "Kuinka asetan reitityksen @Route:ssa webforJ:ssa?"
+      "Miten asetetaan reititys @Route:lla webforJ:ssä?"
 
-      "Näytä minulle webforJ:n lomakkeiden validointiesimerkki"
+      "Näytä webforJ:lle suunniteltu lomakkeentarkistusnäyte"
       ```
     </div>
   </AccordionDetails>
@@ -127,31 +127,31 @@ Kun MCP-palvelin on yhdistetty, AI-avustajasi saa seuraavat kyvyt. Mikä tahansa
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Rakenna uusi webforJ-projekti</strong>
+    <strong>Rakentaa uusi webforJ-projekti</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Avustaja luo oikean Maven-arkkitehtuuri-komennon uudelle webforJ-sovellukselle vaatimustesi perusteella (arkkitehtuuri, Spring-integraatio, nimi, ryhmä).
+      Avustaja generoi oikean Maven-archetype -komennon uudelle webforJ-sovellukselle vaatimustesi (archetype, Spring-integraatio, nimi, ryhmä) perusteella.
 
-      **Arkkitehtuurit:**
-      - `hello-world` - käynnistysapp, jossa on esimerkkikomponentteja
+      **Archetypet:**
+      - `hello-world` - aloitussovellus esimerkkikomponenteilla
       - `blank` - minimaalinen projektirakenne
-      - `tabs` - välilehtirajaliittymät
-      - `sidemenu` - sivunavigaatiorajaliittymät
+      - `tabs` - välilehtikäyttöliittymän asettelu
+      - `sidemenu` - sivunavigaation asettelu
 
       **Maut:**
-      - `webforj` - normaali webforJ-sovellus
-      - `webforj-spring` - webforJ, joka on yhdistetty Spring Bootin kanssa
+      - `webforj` - standardi webforJ-sovellus
+      - `webforj-spring` - webforJ integroituna Spring Bootiin
 
-      **Esimerkki pyynnöistä:**
+      **Esimerkkikyselyt:**
       ```
-      "Luo webforJ-projekti nimeltä CustomerPortal käyttäen sidemenu-arkkitehtuuria"
+      "Luo webforJ-projekti nimeltä CustomerPortal käyttäen sidemenu-archetypea"
 
-      "Tuota webforJ Spring Boot -projekti, jossa on tabs-rakenne nimeltä Dashboard"
+      "Generoi webforJ Spring Boot -projekti, jossa on välilehtiasettelu nimeltä Dashboard"
       ```
 
-      :::tip Saatavilla olevat arkkitehtuurit
-      Täydellisen luettelon arkkitehtuureista katso [arkkitehtuuri-katalogista](/docs/building-ui/archetypes/overview).
+      :::tip Saatavilla olevat archetypet
+      Koko luettelon archetypeista löydät [archetype-katalogista](/docs/building-ui/archetypes/overview).
       :::
     </div>
   </AccordionDetails>
@@ -163,13 +163,13 @@ Kun MCP-palvelin on yhdistetty, AI-avustajasi saa seuraavat kyvyt. Mikä tahansa
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Yhden brändivärin perusteella avustaja tuottaa täydellisen DWC-teeman: pääväri, onnistuminen, varoitus, vaara, info, oletus ja harmaa paletti automaattisella tekstikontrastilla. Tuotteen mukana tulee tyylitiedosto sekä `@AppTheme` / `@StyleSheet` -kytkentä.
+      Yhden brändivärin perusteella avustaja tuottaa täydellisen DWC-teeman: ensisijaiset, onnistuneet, varoitus-, vaarallis-, tieto-, oletus- ja harmaat värit automaattisella tekstikontrastilla. Tuloste pitää sisällään tyylitiedoston sekä `@AppTheme` / `@StyleSheet` johdotuksen.
 
-      **Esimerkki pyynnöistä:**
+      **Esimerkkikyselyt:**
       ```
       "Generoi webforJ-teema brändiväristä #6366f1"
 
-      "Luo saavutettava teema HSL 220, 70, 50 päävärinä"
+      "Luo esteetön teema, jossa HSL 220, 70, 50 on ensisijainen"
       ```
     </div>
   </AccordionDetails>
@@ -177,78 +177,77 @@ Kun MCP-palvelin on yhdistetty, AI-avustajasi saa seuraavat kyvyt. Mikä tahansa
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Stailaa DWC-komponentit oikein</strong>
+    <strong>Tyylittele DWC-komponentit oikein</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Avustaja lukee jokaisen DWC-komponentin todellista tyylipintaa - CSS-muokattuja ominaisuuksia, varjopartti, heijastetut ominaisuudet ja slotit - ennen kuin kirjoittaa mitään CSS:ää. Se voi myös luetella jokaisen DWC-tagin ja ratkaista webforJ Java -luokkien (`Button`, `TextField`) vastaavuuksia DWC:n kanssa.
+      Avustaja lukee jokaisen DWC-komponentin todellista tyylipintaa - CSS-muokkausprosessit, varjo-osat, heijastetut attribuutit ja slotit - ennen CSS:n kirjoittamista. Se voi myös luetella jokaisen DWC-tagin ja liittää webforJ:n Java-luokkien (`Button`, `TextField`) vastaavat DWC-vastineet.
 
-      **Esimerkki pyynnöistä:**
+      **Esimerkkikyselyt:**
       ```
-      "Mitä CSS-muuttujia ja osia dwc-button paljastaa?"
+      "Mitä CSS-muuttujia ja osia dwc-button tarjoaa?"
 
-      "Näytä minulle kaikki slotit, jotka ovat saatavilla dwc-dialogilla"
+      "Näytä kaikki slotit, jotka ovat käytettävissä dwc-dialogissa"
 
-      "Mikä DWC-tag vastaa webforJ:n TextField-luokkaa?"
+      "Mihin DWC-tagiin webforJ:n TextField-luokka karttuu?"
       ```
 
-      Yhdistä tämä [styling-apps agent skill](/docs/ai-tooling/agent-skills) kanssa kattavaan stailaustyöhön.
+      Yhdistä tämä [styling-apps agent skill](/docs/ai-tooling/agent-skills) kanssa päättäen tyylityönkulut.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Työskentele DWC-design-tokenien kanssa</strong>
+    <strong>Työskentele DWC-suunnittelutokenien kanssa</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Avustaja voi listata virallisen luettelon `--dwc-*` tokenista webforJ-versiollesi - palettiseemojen, sävyjen, pintojen, välisten etäisyyksien, typografian, reunojen - suodattamalla etuliitteen tai osajoukon mukaan. Se validoi myös kaiken CSS:n, Java:n tai Markdownin, jota annat sen todellisen token-katalogin mukaan ja merkitsee tuntemattomat nimet ehdotetuilla korjauksilla.
+      Avustaja voi luetella virallisen luettelon `--dwc-*` tokenista webforJ-versiollesi - palettisiemenet, sävyt, pinnat, väli, typografia, reunat - suodattamalla etuliitteiden tai alimerkkijonojen mukaan. Se myös validoi minkä tahansa CSS-, Java- tai Markdown-lähteen, jonka annat, todellista token-katalogia vastaan ja merkitsee tuntemattomat nimet ehdotetuilla korjauksilla.
 
-      **Esimerkki pyynnöistä:**
+      **Esimerkkikyselyt:**
       ```
       "Listaa kaikki --dwc-space-* tokenit"
 
-      "Validoi app.css tuntemattomista --dwc-* tokenista"
+      "Vahvista app.css tuntemattomien --dwc-* tokenien varalta"
 
-      "Mitkä pääpaletti sävyt ovat saatavilla?"
+      "Mitä ensisijaisia palettisävyjä on saatavilla?"
       ```
 
-      Validointi poimii kirjoitusvirheet ja keksityt tokenit ennen kuin ne pääsevät hiljaisesti epäonnistuvaksi CSS:ksi.
+      Validointi löytää kirjoitusvirheet ja keksityt tokenit ennen kuin ne julkaistaan hiljaisina epäonnistuvina CSS:inä.
     </div>
   </AccordionDetails>
 </Accordion>
 
-## Hyvien pyyntöjen kirjoittaminen {#writing-good-prompts}
+## Hyvien kysymysten kirjoittaminen {#writing-good-prompts}
 
-MCP-palvelinta konsultoidaan vain, kun avustajasi katsoo sen olevan relevantti. Muutamat tavat pitävät sen sitoutuneena:
+MCP-palvelinta konsultoidaan vain silloin, kun avustaja katsoo sen olevan relevanttia. Muutamat tavat pitävät sen aktiivisena:
 
-- **Nimeä kehys.** Mainitse "webforJ" pyynnössä, jotta avustaja hakee MCP-palvelinta sen sijaan, että se käyttäisi yleistä Java-tietämystään.
-- **Ole tarkka.** `"Luo webforJ-projekti nimeltä InventorySystem käyttämällä sidemenu-arkkitehtuuria ja Spring Bootia"` voittaa `"tee sovellus"`.
-- **Pyydä vahvistusta.** Fraasit kuten `"vahvista webforJ-dokumenttien perusteella"` tai `"tarkista tämä CSS huonoista --dwc-* tokenista"` ohjaavat avustajaa käyttämään työkaluja sen sijaan, että se arvaisi.
+- **Nimeä kehys.** Mainitse "webforJ" kysymyksessä, jotta avustaja käyttää MCP-palvelinta sen sijaan, että se turvautuu yleisiin Java-tietoihin.
+- **Ole tarkka.** `"Luo webforJ-projekti nimeltä InventorySystem käyttäen sidemenu-archetype ja Spring Boot"` voittaa `"tee sovellus"`.
+- **Pyydä vahvistusta.** Ilmaisuja kuten `"vahvista webforJ-dokumenttien mukaan"` tai `"tarkista tämä CSS huonoilta --dwc-* tokenilta"` rohkaisee avustajaa käyttämään työkaluja sen sijaan, että se arvaa.
 
-Jos avustajasi silti vastaa ilman palvelimen konsultointia, asenna [webforJ AI -liitännäinen](https://github.com/webforj/webforj-ai) - se toimittaa vastaavat Agent Skillsit, jotka ohjaavat avustajaa käyttämään MCP-työkaluja automaattisesti webforJ-tehtävissä.
+Jos avustaja silti vastaa konsultoimatta palvelinta, asenna [webforJ AI plugin](https://github.com/webforj/webforj-ai) - se sisältää vastaavat Agent Skills, jotka ohjaavat avustajaa automaattisesti käyttämään MCP-työkaluja webforJ-tehtäville.
 
-## UKK {#faq}
+## FAQ {#faq}
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Miksi AI-avustaja ei käytä MCP-palvelinta?</p>
-    <p>Miksi AI-avustaja ei käytä MCP-palvelinta?</p>
+    <p>Pourquoi l'assistant IA n'utilise-t-il pas le serveur MCP ?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Useimmat avustajat ottavat MCP:n käyttöön vain, kun he ajattelevat kysymyksen tarvitsevan sitä. Kaksi ratkaisua:
+      Useimmissa avustajissa on tapana käyttää MCP:tä vain silloin, kun ne kokevat kysymyksen tarvitsevan sitä. Kaksi ratkaisua:
 
-      1. **Asenna [webforJ AI -liitännäinen](https://github.com/webforj/webforj-ai)**, joka yhdistää palvelimen Agent Skilleihin, jotka kertovat avustajalle käyttää MCP:tä webforJ-tehtävissä.
-      2. **Ole eksplisiittinen pyynnössäsi**: sisällytä "webforJ" kysymykseen, ja hankalille tapauksille sano "käytä webforJ MCP -palvelinta vastaukseen".
+      1. **Asenna [webforJ AI plugin](https://github.com/webforj/webforj-ai)**, joka yhdistää palvelimen Agent Skillsin kanssa, joka pyytää avustajaa käyttämään MCP:tä webforJ-tehtäville.
+      2. **Ole eksplisiittinen kysymyksessäsi**: sisällytä "webforJ" kysymykseen, ja itsepäisten tapausten varalta sano "käytä webforJ MCP -palvelinta vastaukseen".
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Kuinka vahvistaa, että MCP-yhteys toimii?</p>
+    <p>Kuinka tarkistaa MCP-yhteyden toimivuus?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -258,18 +257,18 @@ Jos avustajasi silti vastaa ilman palvelimen konsultointia, asenna [webforJ AI -
       npx @modelcontextprotocol/inspector
       ```
 
-      Yhdistä sitten inspektorissa `https://mcp.webforj.com/mcp` ja tutki käytettävissä olevia työkaluja.
+      Yhdistä sitten inspektorissa osoitteeseen `https://mcp.webforj.com/mcp` ja tutki käytettävissä olevia työkaluja.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Kuinka raportoida ongelmista?</p>
+    <p>Kuinka ilmoittaa ongelmista?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Avaa tiketti käyttäen [webforJ MCP -ongelmatunnistetta](https://github.com/webforj/webforj/issues/new?template=mcp_report.yml). Liitä pyyntö, odotettu tulos ja mitä sait.
+      Avaa tiketti käyttäen [webforJ MCP -ongelmapohjaa](https://github.com/webforj/webforj/issues/new?template=mcp_report.yml). Liitä kysymys, odotettu tulos ja mitä sait.
     </div>
   </AccordionDetails>
 </Accordion>
