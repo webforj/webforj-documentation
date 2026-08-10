@@ -18,7 +18,7 @@ To select a component from the page, press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <
   </video>
 </div>
 
-To search the tree, press <kbd>Cmd/Ctrl</kbd> + <kbd>F</kbd>. Wrapping a term in slashes treats it as a regular expression. Right-clicking a node opens the actions available for it, such as opening its source or handing it to the [assistant](./ai.md).
+To search the tree, press <kbd>Cmd/Ctrl</kbd> + <kbd>F</kbd>. Wrapping a term in slashes treats it as a regular expression. Right-clicking a node opens the actions available for it. You can open its source or hand it to the [assistant](./ai.md).
 
 ## Reading and changing properties {#reading-and-changing-properties}
 
@@ -36,6 +36,6 @@ A property edit changes the app in front of you and nothing else. Getting it int
 
 ## Viewing the source of a component {#viewing-the-source-of-a-component}
 
-You can trace any component back to the Java that built it. By default the source opens in craftforJ as read-only, positioned at the line that created the component. You can configure craftforJ to open it in your editor instead, at the same line. When a component can't be traced to a line, craftforJ tells you so rather than opening an empty viewer.
+You can trace any component back to the Java that built it. By default the source opens in craftforJ as read-only, positioned at the line that created the component. You can configure craftforJ to open it in your editor instead, at the same line. When a component can't be traced to a line, craftforJ reports that rather than opening an empty viewer.
 
 ![The source viewer positioned at the line that created the selected component](/img/craftforj/inspector/source-viewer.png#rounded-border)

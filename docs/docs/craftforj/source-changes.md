@@ -22,7 +22,7 @@ Every property you change is recorded as a pending change, and craftforJ shows h
 
 ## Reviewing and applying {#reviewing-and-applying}
 
-Press <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> to open the review. Changes are grouped by the file they'll land in. Each one shows the property with its old and new value, and expands into the diff of the file. If a change would replace a computed value with a fixed one, craftforJ tells you and names the expression it's about to replace. Nothing is written until you apply. Before you do, you can revert or discard each change on its own.
+Press <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> to open the review. Changes are grouped by the file they'll land in. Each one shows the property with its old and new value, and expands into the diff of the file. If a change would replace a computed value with a fixed one, craftforJ warns you and names the expression it's about to replace. Nothing is written until you apply. Before you do, you can revert or discard each change on its own.
 
 ![The review with changes grouped by file and one expanded to its diff](/img/craftforj/source-changes/review.png#rounded-border)
 
@@ -34,10 +34,6 @@ Where a change is written determines how far it reaches. When a component is bui
 - **The definition** - the place the component is built, which changes every screen that uses it.
 
 Each pending change shows which of the two applies and lets you switch between them. Some properties can only be written at the definition, because the component sets them itself rather than accepting them from the caller. craftforJ marks those before you apply.
-
-<MediaPlaceholder type="image" file="source-changes/edit-target-chip.png">
-  A pending change showing which file it will be written to
-</MediaPlaceholder>
 
 ## After you apply {#after-you-apply}
 

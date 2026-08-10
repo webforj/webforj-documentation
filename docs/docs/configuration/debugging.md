@@ -93,7 +93,7 @@ Once you’ve configured your IDE:
 
 A debugger shows you what your code is doing. [craftforJ](/docs/craftforj) shows you the app that code produced, including the component tree webforJ built, the properties each component has, which route is active, and who is allowed to reach it. You can change a property, see the result in the running app, and write that change back into the Java it came from.
 
-craftforJ ships with webforJ and uses the same debug mode you enabled above, plus one additional property:
+craftforJ ships with webforJ and uses the same debug mode you already enabled, plus one additional property:
 
 ```ini title="webforj.conf"
 webforj.debug = true
