@@ -6,9 +6,11 @@ description: Review the changes you made in craftforJ as a diff, choose where ea
 
 Changing a property in craftforJ changes the running app and nothing else. To keep a change, you review it and write it into the Java file it came from. This page describes that step.
 
-<MediaPlaceholder type="video" file="craftforJ/apply-change.mp4" length="40s">
-  Changing a property, reviewing the diff, applying it, and the app restarting with the change in the file
-</MediaPlaceholder>
+<div class="videos-container">
+  <video controls preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-change.mp4" type="video/mp4" />
+  </video>
+</div>
 
 :::warning craftforJ writes to your project
 Keep your work in version control. Read the diff before you apply it, and read it again before you commit.
@@ -22,9 +24,7 @@ Every property you change is recorded as a pending change, and craftforJ shows h
 
 Press <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> to open the review. Changes are grouped by the file they'll land in. Each one shows the property with its old and new value, and expands into the diff of the file. If a change would replace a computed value with a fixed one, craftforJ tells you and names the expression it's about to replace. Nothing is written until you apply. Before you do, you can revert or discard each change on its own.
 
-<MediaPlaceholder type="image" file="inspector/review.png">
-  The review with changes grouped by file and one expanded to its diff
-</MediaPlaceholder>
+![The review with changes grouped by file and one expanded to its diff](/img/craftforj/source-changes/review.png#rounded-border)
 
 ## Choosing where a change is written {#choosing-where-a-change-is-written}
 
@@ -35,7 +35,7 @@ Where a change is written determines how far it reaches. When a component is bui
 
 Each pending change shows which of the two applies and lets you switch between them. Some properties can only be written at the definition, because the component sets them itself rather than accepting them from the caller. craftforJ marks those before you apply.
 
-<MediaPlaceholder type="image" file="inspector/edit-target-chip.png">
+<MediaPlaceholder type="image" file="source-changes/edit-target-chip.png">
   A pending change showing which file it will be written to
 </MediaPlaceholder>
 

@@ -6,9 +6,7 @@ description: Read the versions, Java runtime, and project root of the app craftf
 
 App info reports what your app is actually running with, which isn't always what your `pom.xml` says it should be running with. Alongside the webforJ and BBj Services versions, it covers the Java runtime, the operating system, and where the app is rooted on disk.
 
-<MediaPlaceholder type="image" file="app-info/app-info-tab.png">
-  The App Info tab
-</MediaPlaceholder>
+![The App Info tab](/img/craftforj/app-info/app-info-tab.png#rounded-border)
 
 Two of these values affect how craftforJ behaves:
 
