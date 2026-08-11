@@ -223,6 +223,10 @@ module.exports = async function createConfig() {
             to: '/docs/building-ui/composing-components'
           },
           {
+            from: '/docs/configuration/deploy-reload/jrebel',
+            to: '/docs/configuration/deploy-reload/hotswap'
+          },
+          {
             from: '/docs/building-ui/event-options',
             to: '/docs/building-ui/events',
           }
