@@ -6,7 +6,7 @@ description: Fix the common cases where craftforJ doesn't appear, a feature is u
 
 ### Nothing appears on the page {#nothing-appears-on-the-page}
 
-craftforJ attaches only when every requirement in [Getting started](/docs/craftforj/getting-started.#requirements) is met, and it shows nothing at all when one is missing. Check them in order: the `webforj-devtools` dependency on the classpath, debug mode, the craftforJ property, a browser on the machine running the app, and a valid developer license. A configuration file in the wrong location, or a profile that overrides one of the properties, produces exactly the same result as the property being off.
+craftforJ attaches only when every requirement in [Getting started](/docs/craftforj/getting-started#requirements) is met, and it shows nothing at all when one is missing. Check them in order: the `webforj-devtools` dependency on the classpath, debug mode, the craftforJ property, a browser on the machine running the app, and a valid developer license. A configuration file in the wrong location, or a profile that overrides one of the properties, produces exactly the same result as the property being off.
 
 ### A feature is unavailable {#a-feature-is-unavailable}
 
