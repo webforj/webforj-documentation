@@ -1,50 +1,87 @@
 package com.webforj.samples.views.dialog;
 
 import com.webforj.component.Composite;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.dialog.Dialog;
-import com.webforj.component.field.NumberField;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
+import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.util.ArrayList;
+import java.util.List;
 
 @Route
 @FrameTitle("Dialog Positioning")
 public class DialogPositioningView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
-  private final NumberField xPos = new NumberField("X Pixels:");
-  private final NumberField yPos = new NumberField("Y Pixels:");
   private final Dialog dialog = new Dialog();
-  private final Button setPosition = new Button("Set Dialog Position", ButtonTheme.PRIMARY);
 
   public DialogPositioningView() {
     self.add(dialog);
 
-    xPos.setMin(0d);
-    yPos.setMin(0d);
+    List<RadioButton> options = new ArrayList<>();
+    for (Preset preset : Preset.values()) {
+      RadioButton option = new RadioButton(preset.getLabel(), preset == Preset.CENTERED);
+      option.setUserData("preset", preset);
+      options.add(option);
+    }
 
-    setPosition.setMinHeight("60px");
-
-    setPosition.onClick(
+    RadioButtonGroup presets =
+        new RadioButtonGroup("Position presets", options.toArray(RadioButton[]::new));
+    presets.onChange(
         e -> {
-          Double xValue = xPos.getValue();
-          Double yValue = yPos.getValue();
-
-          if (xValue != null && yValue != null) {
-            dialog.setPosx(xValue + "px");
-            dialog.setPosy(yValue + "px");
+          RadioButton selected = e.getChecked();
+          if (selected != null) {
+            applyPreset((Preset) selected.getUserData("preset"));
           }
         });
 
+    FlexLayout content =
+        new FlexLayout().setDirection(FlexDirection.COLUMN).setSpacing("var(--dwc-space-s)");
+    content.add(presets);
+
+    applyPreset(Preset.CENTERED);
+
     dialog
-        .addToHeader(new Div("Positioning"))
-        .addToContent(xPos, yPos)
-        .addToFooter(setPosition)
-        .setAutoFocus(true)
-        .open()
+        .addToHeader(new Div("Position presets"))
+        .addToContent(content)
+        .setMoveable(false)
         .setCloseable(false)
-        .setMaxWidth("200px");
+        .setMaxWidth("20rem")
+        .open();
+  }
+
+  private void applyPreset(Preset preset) {
+    dialog.setPosx(preset.getPosx()).setPosy(preset.getPosy());
+  }
+
+  private enum Preset {
+    NEAR_START("Upper left", "5%", "10%"),
+    CENTERED("Middle", "calc(50% - 10rem)", "calc(50% - 4rem)"),
+    NEAR_END("Lower right", "calc(95% - 20rem)", "calc(90% - 8rem)");
+
+    private final String label;
+    private final String posx;
+    private final String posy;
+
+    Preset(String label, String posx, String posy) {
+      this.label = label;
+      this.posx = posx;
+      this.posy = posy;
+    }
+
+    String getLabel() {
+      return label;
+    }
+
+    String getPosx() {
+      return posx;
+    }
+
+    String getPosy() {
+      return posy;
+    }
   }
 }

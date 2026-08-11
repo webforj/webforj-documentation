@@ -78,3 +78,8 @@ Svelte
 stylesheet
 BLS
 BASIS
+[Hh]otswap
+HotswapAgent
+JRebel
+Gretty
+JetBrains

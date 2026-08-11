@@ -5,8 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "prebuild": "node tools/generate-cookbook-index.mjs",
-    "prestart": "node tools/generate-cookbook-index.mjs",
-    "start": "npm run clear && docusaurus start --locale en",
+    "prestart": "node tools/generate-cookbook-index.mjs && node tools/preflight-start.mjs",
+    "start": "docusaurus start --locale en",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

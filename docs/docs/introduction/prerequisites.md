@@ -1,76 +1,60 @@
 ---
 title: Prerequisites
-description: Set up a webforJ development environment with JDK 21, Apache Maven, and a supported Java IDE such as IntelliJ, VS Code, or NetBeans.
+description: What a webforJ development environment needs, a Java 21 or higher JDK, Maven or Gradle, and an editor with Java support.
 sidebar_position: 1
 ---
 
 Getting started with webforJ is simple, because there are only a couple of prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ.
 
 <!-- vale off -->
-## Java Development Kit (JDK) 21 {#java-development-kit-jdk-21}
-
+## Java Development Kit (JDK) {#java-development-kit-jdk-21}
 <!-- vale on -->
 
-A Java Development Kit (JDK) is the most important requirement for developing with webforJ, providing the necessary tools to compile, run, and manage Java apps.
-Java **21** is required to ensure compatibility with webforJ and access to the latest features and security updates of the Java ecosystem. The webforJ framework is compatible with official Oracle JDKs and the open source Eclipse Temurin JDKs.
-<!-- vale off -->
-### JDK installation links: {#jdk-installation-links}
-<!-- vale on -->
-:::tip
-If you're using a UNIX-based operating system, it's recommended to use [SDKMAN!](https://sdkman.io/) to manage your Java environment. It lets you easily switch between different Java vendors without any extra hassle.
+webforJ requires Java **21** or higher. Any distribution at that version works, so pick the one your team already uses.
 
-Alternatively, you can use [Jabba](https://github.com/Jabba-Team/jabba), which works on both UNIX-based systems and Windows. It's a solid cross-platform solution for managing Java versions.
+:::tip Recommended for development
+Develop on a [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime/releases) build. It accepts the `-XX:+AllowEnhancedClassRedefinition` option, which is what lets a [hotswap tool](/docs/configuration/deploy-reload/hotswap) carry a change to the structure of a class, a new field or a new method, into the running app.
+
+On any other build, edits inside a method body still apply in place, and a change to the structure of a class waits for a restart. The choice only concerns the machine you develop on, and it doesn't affect what you package or where you deploy it.
 :::
 
-- Official Oracle JDKs can be found on Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page.
-  - Select Java version **21**.
-  - Click the tab for Linux, macOS, or Windows.
-  - Click the link that corresponds to your computer's architecture.
-  - See Oracle's [JDK Installation Guide](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html) for complete information on installing an Oracle JDK.
-- Open source JDKs can be found on Adoptium's [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) page.
-  - Use the dropdown menus to select the operating system, architecture, package type, and JDK version **21**.
-  - Click the link in the table for the archive type you wish to download.
-  - See Adoptium's [Installation Guide](https://adoptium.net/installation/) for complete information on installing an Eclipse Temurin JDK.
+A version manager is the easiest way to install a JDK, and the easiest way to move between versions later. [SDKMAN!](https://sdkman.io/) covers UNIX systems, and [Jabba](https://github.com/Jabba-Team/jabba) covers UNIX systems and Windows. Under SDKMAN!, `sdk install java 21.0.11-jbr` gets you a JetBrains Runtime.
 
-<!-- vale off -->
-### Verify your JDK installation {#verify-your-jdk-installation}
-<!-- vale on -->
-After installing the JDK, verify the installation by running the following command in your terminal or command prompt:
+To download a build yourself instead:
 
-```bash
-java -version
-```
+- **Oracle JDK**: the [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page, with Oracle's [installation guide](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html).
+- **Eclipse Temurin**: the [latest releases](https://adoptium.net/temurin/releases/) page, with Adoptium's [installation guide](https://adoptium.net/installation/).
+- **JetBrains Runtime**: the [releases](https://github.com/JetBrains/JetBrainsRuntime/releases) page.
 
-If your JDK is installed correctly, you will see output with your JDK version details, indicating version **21**.
-<!-- vale off -->
-## Apache Maven {#apache-maven}
-<!-- vale on -->
+Run `java -version` to confirm which version is on your path.
 
-[Apache Maven](https://maven.apache.org/index.html) is a build automation and dependency management tool that simplifies the process of including external libraries such as webforJ in your project.
-In addition to helping with dependency management, Maven can automate tasks like compiling code, running tests, and packaging applications.
+## Build tool {#build-tool}
 
-### Maven installation links {#maven-installation-links}
-- To install the latest version of Maven, go to the [Apache Maven Download Page](https://maven.apache.org/download.cgi).
-  - Maven's [Installing Apache Maven](https://maven.apache.org/install.html) page has an overview of the installation process.
-  - Baeldung's [How to Install Maven on Windows, Linux, and Mac](https://www.baeldung.com/install-maven-on-windows-linux-mac) is a more in-depth installation guide for each operating system.
+webforJ builds with Maven or Gradle. [Archetypes](/docs/introduction/getting-started) generate Maven projects, so Maven is the quickest way to a new app, and an existing Gradle build works the same way.
 
-<!-- vale off -->
-### Verify your Maven installation {#verify-your-maven-installation}
+<Tabs>
+<TabItem value="maven" label="Maven">
 
-<!-- vale on -->
+Install Maven from the [Apache Maven download page](https://maven.apache.org/download.cgi), following Maven's [installation instructions](https://maven.apache.org/install.html) or Baeldung's [guide for each operating system](https://www.baeldung.com/install-maven-on-windows-linux-mac).
 
-After installing Maven, verify the installation by running the following command in your terminal or command prompt:
+Run `mvn -v` to confirm the install.
 
-```bash
-mvn -v
-```
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-If Maven is installed correctly, the output should show the Maven version, Java version, and operating system information.
+Install Gradle by following Gradle's [installation guide](https://gradle.org/install/).
 
-## Java IDE {#java-ide}
+Run `gradle -v` to confirm the install. A project that ships a Gradle wrapper needs no install at all, since `./gradlew` fetches the version the project pins.
 
-A Java IDE provides a comprehensive environment for writing, testing, and debugging your code. There are many IDEs to choose from, so you can choose whichever one fits your workflow. Some popular choices for Java development include:
+</TabItem>
+</Tabs>
 
-- **[Visual Studio Code](https://code.visualstudio.com/Download)**: A lightweight, extensible code editor with Java support through plugins.
-- **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Known for its powerful Java support and rich plugin ecosystem.
-- **[NetBeans](https://netbeans.apache.org/download/index.html)**: A free, open source IDE for Java and other languages, known for its ease of use and built-in project templates.
+Either build runs webforJ's build time work through the [webforJ build plugin](/docs/configuration/build-plugin), which a project created from an archetype already has.
+
+## Editor {#java-ide}
+
+Any editor with Java support works, so use the one that fits your workflow. Common choices:
+
+- **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Java support and a plugin ecosystem out of the box.
+- **[Visual Studio Code](https://code.visualstudio.com/Download)**: A lightweight editor that takes its Java support from extensions.
+- **[Zed](https://zed.dev/download)**: A code editor that picks up Java through an extension, which downloads and manages the Eclipse Java language server for you.
