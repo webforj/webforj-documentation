@@ -19,10 +19,10 @@ Projects created with [startforJ](https://docs.webforj.com/startforj) or from a 
 
 ## Local access by default {#local-access-by-default}
 
-Only a browser on the machine running the app can reach craftforJ. Everything else is refused, and this applies without any configuration on your part. To reach craftforJ from another machine, name that machine in [`hosts-allowed`](./configuration.md#access). Addresses are matched literally, so a client can't get through by claiming to be something else.
+Only a browser on the machine running the app can reach craftforJ. Everything else is refused, and this applies without any configuration on your part. To reach craftforJ from another machine, name that machine in [`hosts-allowed`](/docs/craftforj/configuration#access). Addresses are matched literally, so a client can't get through by claiming to be something else.
 
 :::warning The wildcard removes the restriction completely
-Setting `hosts-allowed = "*"` means anyone who can reach your app's port can read and write your project sources. It exists for sealed environments such as a container only you can reach. Don't use it anywhere else.
+Setting `hosts-allowed = "*"` means anyone who can reach your app's port can read and write your project sources. It exists for sealed environments, such as a container that's only reachable by you. Don't use it anywhere else.
 :::
 
 ## No added HTTP surface {#no-added-http-surface}
@@ -35,7 +35,7 @@ craftforJ acts only on requests that came from the page your server actually ser
 
 ## API keys {#api-keys}
 
-Your key is stored on the machine running your app. The [AI assistant](./ai.md) runs in the browser, so craftforJ has to hand it the key to work with, and it holds that key in memory for as long as the page is open. Nothing is written to browser storage, and closing the page leaves nothing behind.
+Your key is stored on the machine running your app. The [AI assistant](/docs/craftforj/ai) runs in the browser, so craftforJ has to hand it the key to work with, and it holds that key in memory for as long as the page is open. Nothing is written to browser storage, and closing the page leaves nothing behind.
 
 The assistant then talks to your provider from the browser rather than through your server. There's no relay, no proxy, no telemetry, and no third party in between.
 
@@ -51,7 +51,7 @@ With every feature enabled, craftforJ can:
 - Change and remove components in the running app
 - Navigate the running app
 
-Each of these can be [switched off](./configuration.md#feature-flags) independently, and every write to disk goes through a diff you approve.
+Each of these can be [switched off](/docs/craftforj/configuration#feature-flags) independently, and every write to disk goes through a diff you approve.
 
 ## In production {#in-production}
 

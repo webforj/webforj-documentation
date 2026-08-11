@@ -32,7 +32,7 @@ Only `@RolesAllowed` and `@DenyAll` count as protected. `@PermitAll` names no ro
 
 ![The route tree with an access badge on each route](/img/craftforj/routes/access-badge.png#rounded-border)
 
-You can also change a route's access rule from craftforJ. craftforJ writes the annotation into the route's class and the app restarts, so the change goes through the same review as any other [source change](./source-changes.md). The option is unavailable when craftforJ isn't allowed to write Java.
+You can also change a route's access rule from craftforJ. craftforJ writes the annotation into the route's class and the app restarts, so the change goes through the same review as any other [source change](/docs/craftforj/source-changes). The option is unavailable when craftforJ isn't allowed to write Java.
 
 <div class="videos-container">
   <video controls preload="metadata">

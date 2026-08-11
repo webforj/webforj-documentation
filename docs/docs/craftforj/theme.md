@@ -4,7 +4,7 @@ sidebar_position: 6
 description: Adjust the DWC design tokens of a running webforJ app, preview the result immediately, and save it into your stylesheet.
 ---
 
-The Theme tab lets you change how your app looks while it runs. It works on the [DWC design tokens](/docs/styling/css-variables) your app already uses, so a single change reaches every component that reads that token instead of one rule at a time.
+The Theme tab lets you change how your app looks while it runs. It works with the [DWC design tokens](/docs/styling/css-variables) your app already uses, so a single change reaches every component that reads that token instead of one rule at a time.
 
 <div class="videos-container">
   <video controls preload="metadata">
@@ -26,10 +26,21 @@ A theme you're working on is applied to the app but isn't part of your project y
 
 craftforJ writes to a single stylesheet, which it detects on its own or which you name in craftforJ settings. If that file already holds a theme, saving replaces it as a whole rather than layering a second one on top, and craftforJ asks you to confirm first. If the file changed after craftforJ read it, nothing is written and craftforJ asks you to save again.
 
-![The same screen before and after a theme](/img/craftforj/theme/before-after.png#rounded-border)
-
 You can revert a theme to its last saved state, or remove it from the stylesheet entirely without affecting anything else in the file.
+
+## Preset themes {#preset-themes}
+
+Beyond the default look and feel, craftforJ has several theme presets to choose from. The following shows a comparison between the themes App Default and the Portico.
+
+<Tabs>
+  <TabItem value="app-default" label="App Default" default>
+    ![App with the App Default theme](/img/craftforj/theme/theme-app-default.png#rounded-border)
+  </TabItem>
+  <TabItem value="portico" label="Portico">
+    ![App with the Portico theme](/img/craftforj/theme/theme-portico.png#rounded-border)
+  </TabItem>
+</Tabs>
 
 ## Turning it off {#turning-it-off}
 
-You can switch off saving styles for an app in craftforJ settings, or remove it entirely with the [`stylesheet-changes`](./configuration.md#feature-flags) property. With either turned off, the tab still works and still repaints the running app, but you can't save the result.
+You can switch off saving styles for an app in craftforJ settings, or remove it entirely with the [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags) property. With either turned off, the tab still works and still repaints the running app, but you can't save the result.

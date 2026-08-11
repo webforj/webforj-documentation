@@ -13,7 +13,7 @@ craftforJ is configured in `webforj.conf`. The property names are the same on [S
 | **`webforj.debug`** | Boolean | `false` | Enables debug mode. craftforJ requires it |
 | **`webforj.devtools.craftforj.enabled`** | Boolean | `false` | Enables craftforJ |
 
-Both properties must be enabled. See [Security](./security.md#two-required-settings) for why craftforJ requires two settings rather than one
+Both properties must be enabled. See [Security](/docs/craftforj/security#two-required-settings) for why craftforJ requires two settings rather than one
 
 ## Access {#access}
 
@@ -37,7 +37,7 @@ craftforJ reads and writes your project sources. Only use `*` on a network where
 |----------|------|---------|-------------|
 | **`webforj.devtools.craftforj.project-root`** | String | detected | The directory your sources live in |
 
-craftforJ determines where your project is from how the app was started. Unusual project layouts and some container setups defeat that detection. If [App info](./app-info.md) reports the wrong project root, set it here
+craftforJ determines where your project is from how the app was started. Unusual project layouts and some container setups defeat that detection. If [App info](/docs/craftforj/app-info) reports the wrong project root, set it here
 
 ## Feature flags {#feature-flags}
 
@@ -57,5 +57,5 @@ When a flag is off, the control remains in craftforJ and is marked as unsupporte
 :::
 
 :::warning In production
-Leave `webforj.devtools.craftforj.enabled` unset. See [Security](./security.md#in-production) for the full checklist.
+Leave `webforj.devtools.craftforj.enabled` unset. See [Security](/docs/craftforj/security#in-production) for the full checklist.
 :::
