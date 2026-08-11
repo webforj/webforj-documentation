@@ -79,7 +79,8 @@ This section outlines styling information for the **\`<${tag}>\`** component. Th
 
     console.log('Markdown files have been generated.');
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error('Error generating client component docs:', error);
+    process.exitCode = 1;
   }
 }
 
