@@ -2,6 +2,7 @@
 sidebar_position: 6
 title: Element Composite
 sidebar_class_name: new-content
+description: Wrap a custom HTML element or third-party web component in Java with ElementComposite, exposing its properties, attributes, and events through the Java API.
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
