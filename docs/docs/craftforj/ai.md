@@ -38,7 +38,7 @@ The agent has a large toolset covering everything craftforJ knows about your app
 - **Your source** - reading any file under your project root, staging edits, showing diffs, and applying them.
 - **Your routes** - the routing table, the active route, navigating anywhere, and changing the access rules declared on a route.
 - **Your theme and styles** - reading and setting design tokens, saving a theme, and searching the available fonts and icons.
-- **The page itself** - running CSS and JavaScript against the live page, and taking a screenshot of a component to look at it.
+- **The page itself** - injecting CSS and JavaScript against the live page, and taking a screenshot of a component to look at it.
 - **The webforJ knowledge base** - the same documentation, component styling surface, and `--dwc-*` token tools the [webforJ MCP server](/docs/ai-tooling/mcp) gives your editor. It's built in and always available.
 
 Because it reaches all of this through craftforJ, it works with the same information you do. It reads real values, not the ones your source implies.
