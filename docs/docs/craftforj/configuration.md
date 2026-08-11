@@ -13,7 +13,7 @@ craftforJ is configured in `webforj.conf`. The property names are the same on [S
 | **`webforj.debug`** | Boolean | `false` | Enables debug mode. craftforJ requires it |
 | **`webforj.devtools.craftforj.enabled`** | Boolean | `false` | Enables craftforJ |
 
-Both properties must be enabled. See [Security](./security.md#two-required-settings) for why craftforJ requires two settings rather than one.
+Both properties must be enabled. See [Security](./security.md#two-required-settings) for why craftforJ requires two settings rather than one
 
 ## Access {#access}
 
@@ -21,7 +21,7 @@ Both properties must be enabled. See [Security](./security.md#two-required-setti
 |----------|------|---------|-------------|
 | **`webforj.devtools.craftforj.hosts-allowed`** | List or String | loopback only | Client addresses allowed beyond the machine running the app |
 
-By default, only a browser on the same machine as the app can reach craftforJ. To allow other machines, list their addresses. An entry ending in `*` matches a prefix, and a single `*` removes the restriction entirely.
+By default, only a browser on the same machine as the app can reach craftforJ. To allow other machines, list their addresses. An entry ending in `*` matches a prefix, and a single `*` removes the restriction entirely
 
 ```ini title="webforj.conf"
 webforj.devtools.craftforj.hosts-allowed = ["192.168.1.42", "10.0.0.*"]
@@ -37,7 +37,7 @@ craftforJ reads and writes your project sources. Only use `*` on a network where
 |----------|------|---------|-------------|
 | **`webforj.devtools.craftforj.project-root`** | String | detected | The directory your sources live in |
 
-craftforJ determines where your project is from how the app was started. Unusual project layouts and some container setups defeat that detection. If [App info](./app-info.md) reports the wrong project root, set it here.
+craftforJ determines where your project is from how the app was started. Unusual project layouts and some container setups defeat that detection. If [App info](./app-info.md) reports the wrong project root, set it here
 
 ## Feature flags {#feature-flags}
 
