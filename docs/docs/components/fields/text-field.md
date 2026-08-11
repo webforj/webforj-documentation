@@ -67,7 +67,7 @@ If the `getValue()` method is used on a field without a current value, it return
 This behavior is consistent with how the HTML `<input type="text">` element exposes its value via JavaScript.
 
 :::tip Combine value handling with validation
-Apply constraints like a [pattern](#pattern-matching), [minimum length](#setminlength), or a [maximum length](#setmaxlength) to define when a value is considered valid. 
+Apply constraints like a [pattern](#pattern-matching), [minimum length](#setminlength), or a [maximum length](#setmaxlength) to define when a value is considered valid.
 :::
 
 ## Placeholder text {#placeholder-text}
@@ -76,7 +76,7 @@ You can set placeholder text for the `TextField` using the `setPlaceholder()` me
 
 ## Selected text {#selected-text}
 
-It's possible to interact with the `TextField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `TextField` using the `getSelectedText()` method. This behavior would commonly be used in conjunction with an event. 
+It's possible to interact with the `TextField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `TextField` using the `getSelectedText()` method. This behavior would commonly be used in conjunction with an event.
 
 ```java
 TextField textField = new TextField("Enter something...");

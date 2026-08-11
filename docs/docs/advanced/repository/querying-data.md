@@ -12,21 +12,21 @@ The <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepo
 
 ## Understanding filter types {#understanding-filter-types}
 
-<JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> introduces a second generic parameter for the filter type: `QueryableRepository<T, F>` where `T` is your entity type and `F` is your custom filter type. 
+<JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> introduces a second generic parameter for the filter type: `QueryableRepository<T, F>` where `T` is your entity type and `F` is your custom filter type.
 
 This separation exists because different data sources speak different query languages:
 
 ```java
 // Predicate filters for in-memory collections
-QueryableRepository<Product, Predicate<Product>> inMemoryRepo = 
+QueryableRepository<Product, Predicate<Product>> inMemoryRepo =
   new CollectionRepository<>(products);
 
-// Custom filter objects for REST APIs or databases  
-QueryableRepository<User, UserFilter> apiRepo = 
+// Custom filter objects for REST APIs or databases
+QueryableRepository<User, UserFilter> apiRepo =
   new DelegatingRepository<>(/* implementation */);
 
 // String queries for search engines
-QueryableRepository<Document, String> searchRepo = 
+QueryableRepository<Document, String> searchRepo =
   new DelegatingRepository<>(/* implementation */);
 ```
 
@@ -40,10 +40,10 @@ UI components don't care about these differences. They call `setBaseFilter()` wi
 
 ```java
 // Complete query with all parameters
-RepositoryCriteria<Product, Predicate<Product>> criteria = 
+RepositoryCriteria<Product, Predicate<Product>> criteria =
   new RepositoryCriteria<>(
     20,                                       // offset - skip first 20
-    10,                                       // limit - take 10 items  
+    10,                                       // limit - take 10 items
     orderCriteria,                           // sorting rules
     product -> product.getPrice() < 100.0    // filter condition
   );
@@ -59,11 +59,11 @@ You can also create criteria with just the parts you need:
 
 ```java
 // Filter only
-RepositoryCriteria<Product, Predicate<Product>> filterOnly = 
+RepositoryCriteria<Product, Predicate<Product>> filterOnly =
   new RepositoryCriteria<>(product -> product.isActive());
 
-// Pagination only  
-RepositoryCriteria<Product, Predicate<Product>> pageOnly = 
+// Pagination only
+RepositoryCriteria<Product, Predicate<Product>> pageOnly =
   new RepositoryCriteria<>(0, 25);
 ```
 
@@ -105,7 +105,7 @@ public class ProductFilter {
   private String category;
   private BigDecimal maxPrice;
   private Boolean inStock;
-  
+
   // getters and setters...
 }
 
@@ -115,7 +115,7 @@ filter.setCategory("Electronics");
 filter.setMaxPrice(new BigDecimal("99.99"));
 filter.setInStock(true);
 
-RepositoryCriteria<Product, ProductFilter> criteria = 
+RepositoryCriteria<Product, ProductFilter> criteria =
   new RepositoryCriteria<>(filter);
 
 Stream<Product> results = customRepository.findBy(criteria);
@@ -134,17 +134,17 @@ The `Repository` implementation should handle this translation, keeping your UI 
 
 ```java
 // Single field sorting
-OrderCriteria<Employee, String> byName = 
+OrderCriteria<Employee, String> byName =
   new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC);
 
 // Multi-level sorting - department first, then salary, then name
 OrderCriteriaList<Employee> sorting = new OrderCriteriaList<>();
 sorting.add(new OrderCriteria<>(Employee::getDepartment, OrderCriteria.Direction.ASC));
-sorting.add(new OrderCriteria<>(Employee::getSalary, OrderCriteria.Direction.DESC));  
+sorting.add(new OrderCriteria<>(Employee::getSalary, OrderCriteria.Direction.DESC));
 sorting.add(new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC));
 
 // Use in criteria
-RepositoryCriteria<Employee, Predicate<Employee>> criteria = 
+RepositoryCriteria<Employee, Predicate<Employee>> criteria =
   new RepositoryCriteria<>(0, 50, sorting, employee -> employee.isActive());
 ```
 
@@ -172,10 +172,10 @@ int page = 2;          // zero-based page number
 int pageSize = 20;     // items per page
 int offset = page * pageSize;
 
-RepositoryCriteria<Product, Predicate<Product>> criteria = 
+RepositoryCriteria<Product, Predicate<Product>> criteria =
   new RepositoryCriteria<>(offset, pageSize, null, yourFilter);
 
-// Progressive loading - load more data incrementally  
+// Progressive loading - load more data incrementally
 int currentlyLoaded = 50;
 int loadMore = 25;
 

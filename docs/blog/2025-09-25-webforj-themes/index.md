@@ -21,7 +21,7 @@ Let's walk through how it all works together.
 
 <!-- truncate -->
 
-## Starting with the basics
+## Starting with the basics {#starting-with-the-basics}
 
 webforJ comes with three thoughtfully designed themes that cover most common scenarios. There's `light` for clean, bright interfaces, `dark` for those who prefer darker backgrounds with your brand colors, and `dark-pure` for a more neutral approach using grayscale tones.
 
@@ -38,14 +38,14 @@ public class MyApp extends App {
 
 With that single annotation you can transform an entire app. Every webforJ component automatically adapts its appearance to work harmoniously with the dark theme.
 
-## Respecting system preferences
+## Respecting system preferences {#respecting-system-preferences}
 
 Even better, you can let your users' system preferences guide the experience:
 
 ```java
 @AppTheme("system")
 @AppLightTheme("light")
-@AppDarkTheme("dark-pure")  
+@AppDarkTheme("dark-pure")
 public class AdaptiveApp extends App {
     // Follows whatever the user has chosen in their operating system
 }
@@ -53,7 +53,7 @@ public class AdaptiveApp extends App {
 
 When someone has dark mode enabled in their OS, your app loads with the dark theme you specified. Switch back to light mode, and the app follows along.
 
-## Changing themes when needed
+## Changing themes when needed {#changing-themes-when-needed}
 
 Sometimes you'll want to give users direct control over themes. Maybe you're building a settings screen, or you'd like to let people preview different options.
 
@@ -72,7 +72,7 @@ public void switchToLightMode() {
 
 The transition happens instantly throughout your entire app. Components update their colors, backgrounds adjust, and text remains readable.
 
-## Creating your own themes
+## Creating your own themes {#creating-your-own-themes}
 
 While the built-in themes work well for many situations, you'll often want to incorporate your own brand colors or create a unique visual identity. webforJ makes this process much more approachable than traditional CSS theming.
 
@@ -83,7 +83,7 @@ html[data-app-theme="corporate"] {
   --dwc-color-primary-h: 215;    /* A pleasant blue */
   --dwc-color-primary-s: 75%;    /* Moderately saturated */
   --dwc-color-primary-c: 55;     /* Good contrast balance */
-  
+
   /* You can also adjust typography */
   --dwc-font-family: "Inter", "Segoe UI", sans-serif;
   --dwc-font-size: 0.95rem;
@@ -124,7 +124,7 @@ html[data-app-theme="corporate-evening"] {
 }
 ```
 
-## Consistent dark mode
+## Consistent dark mode {#consistent-dark-mode}
 
 The way webforJ handles dark mode is worth understanding because it's not what you'd expect. Rather than just swapping colors around, it focuses on preserving the visual relationships in your design.
 
@@ -143,7 +143,7 @@ In light mode, this gives you a subtle background with dark text. If you switch 
 
 The `-text` variants provide coordinated text colors that work with their corresponding background shades, helping maintain readability across different theme modes.
 
-## Component themes
+## Component themes {#component-themes}
 
 Beyond the overall app theme, individual webforJ components support their own semantic themes, and these work with any app-level theme you choose:
 
@@ -151,23 +151,23 @@ Beyond the overall app theme, individual webforJ components support their own se
 // These adapt gracefully to your chosen app theme
 Button saveButton = new Button("Save Changes")
     .setTheme(ButtonTheme.PRIMARY);
-    
-Button deleteButton = new Button("Delete Item") 
+
+Button deleteButton = new Button("Delete Item")
     .setTheme(ButtonTheme.DANGER);
-    
+
 Spinner loadingSpinner = new Spinner()
     .setTheme(Theme.INFO);
 ```
 
 When you change your app's primary color, all the primary-themed components update. Switch to dark mode, and the danger theme still conveys urgency while using colors that work well in the dark environment.
 
-## Performance and efficiency
+## Performance and efficiency {#performance-and-efficiency}
 
 Theme switching happens instantly across the entire app. You won't see components updating at different rates or half your buttons still showing the old theme while everything else has switched.
 
-webforJ uses one style sheet that adapts to different themes through CSS variables instead of requiring separate style sheets for each theme. This means fewer files to manage and faster loading since the client downloads a single stylesheet that handles all theme variations. 
+webforJ uses one style sheet that adapts to different themes through CSS variables instead of requiring separate style sheets for each theme. This means fewer files to manage and faster loading since the client downloads a single stylesheet that handles all theme variations.
 
-## Starting your theming journey
+## Starting your theming journey {#starting-your-theming-journey}
 
 webforJ's theming system scales with your needs, letting you start simple and grow more sophisticated over time. Start with `@AppTheme("system")` to respect user preferences. Add runtime theme switching when you need user control. Create custom themes when you need specific branding.
 

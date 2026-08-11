@@ -221,9 +221,9 @@ In the `fillForm()` method, replace the `setValue()` methods with `read()`:
 ```java title="FormView.java" {6}
 public void fillForm(Long customerId) {
   customer = customerService.getCustomerByKey(customerId);
-  
+
   // Removed each setValue() method for the UI components
-    
+
     context.read(customer);
   }
 ```
@@ -251,7 +251,7 @@ private void submitCustomer() {
 }
 ```
 
-### Completed `FormView`
+### Completed `FormView` {#completed-formview}
 
 With these changes, here's what `FormView` looks like. The app now supports data binding and validation using Spring Boot and webforJ. Form inputs are automatically synchronized with the model and checked against validation rules.
 

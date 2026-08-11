@@ -64,7 +64,7 @@ public class BackgroundService {
 }
 ```
 
-This service accepts a progress callback (`Consumer<Integer>`) that gets called from the background thread. The callback pattern allows the service to report progress without knowing about UI components. 
+This service accepts a progress callback (`Consumer<Integer>`) that gets called from the background thread. The callback pattern allows the service to report progress without knowing about UI components.
 
 The method simulates a 5-second task with 10 progress updates. In production, this would be actual work like database queries or file processing. The exception handling restores the interrupt status to support proper task cancellation when `cancel(true)` is called.
 

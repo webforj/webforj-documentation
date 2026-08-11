@@ -27,9 +27,9 @@ height='110px'
 
 ## Dismissing alerts {#dismissing-alerts}
 
-If you’d like to give users the option to dismiss the `Alert`, you can make it closable by calling the `setClosable()` method. 
+If you’d like to give users the option to dismiss the `Alert`, you can make it closable by calling the `setClosable()` method.
 
-```java 
+```java
 Alert alert = new Alert("Heads up! This alert can be dismissed.");
 closableAlert.setClosable(true);
 ```

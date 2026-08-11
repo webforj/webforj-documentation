@@ -2,31 +2,31 @@
 sidebar_position: 6
 title: Element Composite
 sidebar_class_name: new-content
-_i18n_hash: d626a230fe04d316c48e3cae7e292599
+_i18n_hash: b8099816ab51d246d3a69c2ca8bd9108
 ---
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-`ElementComposite`-luokka käärii mukautetun HTML-elementin tai [verkkokomponentin](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). Se sitoo Java-luokkasi taustalla olevaan `Element`-elementtiin ja antaa sinun työskennellä sen ominaisuuksien, attribuuttien ja tapahtumien kanssa Java-koodissa. Käytä tätä verkkokomponenttien integroimiseen webforJ-sovellukseen.
+`ElementComposite`-luokka käärii mukautetun HTML-elementin tai [web-komponentin](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). Se sitoo Java-luokkasi taustalla olevaan `Element`-elementtiin ja antaa sinun työskennellä sen ominaisuuksien, attribuuttien ja tapahtumien kanssa Java-koodissa. Käytä sitä integroitaessa web-komponentteja webforJ-sovellukseen.
 
 :::tip Milloin käyttää `ElementComposite`
-Käytä `ElementComposite`-luokkaa, kun käärit kolmannen osapuolen verkkokomponentin, jota webforJ ei vielä tarjoa. Jos sisäänrakennettu webforJ-komponentti kattaa käyttötapauksen (kuten `TextField`, `ColorField`, `Button` jne.), käytä sitä sen sijaan. Yksittäiseen DOM-työhön, jota ei tarvitse käyttää uudelleen, voit käyttää `Element`-luokkaa suoraan ilman käärettä.
+Käytä `ElementComposite`-luokkaa, kun käärit kolmannen osapuolen web-komponenttia, jota webforJ ei jo tarjoa. Jos jokin sisäänrakennettu webforJ-komponentti kattaa käyttötapauksen (`TextField`, `ColorField`, `Button` jne.), käytä sitä sen sijaan. Yksittäiseen DOM-työhön, jota ei tarvitse käyttää uudelleen, voit käyttää suoraan `Element`-luokkaa ilman käärettä.
 :::
 
-Tämä opas osoittaa, kuinka toteuttaa [Shoelace relative-time verkkokomponentti](https://shoelace.style/components/relative-time) käyttäen `ElementComposite`-luokkaa.
+Tässä oppaassa näytetään, kuinka toteuttaa [Shoelace relative-time web component](https://shoelace.style/components/relative-time) käyttäen `ElementComposite`-luokkaa.
 
-<ComponentDemo 
-path='/webforj/relativetime' 
+<ComponentDemo
+path='/webforj/relativetime'
 files={['src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimeView.java']}
 height='150px'
 />
 
 ## Luokan annotaatiot {#class-annotations}
 
-Kolme annotaatiota esiintyy tavallisesti `ElementComposite`-aliluokan alussa: `@NodeName` ilmoittaa, mikä HTML-tagi komponentti käärii, ja `@JavaScript` sekä `@StyleSheet` lataavat kaikki asiakaspuolen resurssit, joita taustalla oleva verkkokomponentti tarvitsee. `@NodeName` on pakollinen ja spesifinen `ElementComposite`:lle. `@JavaScript` ja `@StyleSheet` ovat yleisiä webforJ-resurssiannotaatioita, jotka toimivat missä tahansa luokassa, mukaan lukien näkymät, komponentit tai `App`-luokka.
+Kolme annotaatiota esiintyy yleisesti `ElementComposite`-aliluokan alussa: `@NodeName` määrittelee HTML-tagin, jota komponentti käärii, ja `@JavaScript` sekä `@StyleSheet` lataavat asiakaspuolen varat, joita taustalla oleva web-komponentti tarvitsee. `@NodeName` on pakollinen ja erityinen `ElementComposite`:lle. `@JavaScript` ja `@StyleSheet` ovat yleisiä webforJ-varaannotaatiota ja toimivat kaikilla luokilla, mukaan lukien näkymät, komponentit tai `App`-luokka.
 
 ### `@NodeName` {#nodename}
 
-`@NodeName`-annotaatio määrittelee HTML-tagin, jota komponentti käärii. webforJ käyttää tätä nimeä luodakseen taustalla olevan elementin DOM:iin.
+`@NodeName`-annotaatio määrittelee HTML-tagin, jota komponentti käärii. webforJ käyttää tätä nimeä, kun se luo taustalla olevan elementin DOM:ssa.
 
 ```java
 @NodeName("sl-relative-time")
@@ -35,13 +35,13 @@ public class RelativeTime extends ElementComposite {
 }
 ```
 
-Tagin nimen on vastattava asiakaspuolella rekisteröityä mukautettua elementtiä. Ilman tätä annotaatiota kehys ei voi määrittää, mikä elementti luodaan.
+Tagin nimen on vastattava mukautettua elementtiä, joka on rekisteröity asiakaspuolelle. Ilman tätä annotaatiota kehys ei voi määrittää, mikä elementti luodaan.
 
-Aliluokassa `getNodeName()` lukee ilmoitetun tagin, ja `getElement()` palauttaa taustalla olevan `Element`:in, jotta voit kutsua suoraan sen DOM-tason menetelmiä.
+Aliluokassa `getNodeName()` lukee takaisin määritellyn tagin, ja `getElement()` palauttaa taustalla olevan `Element`:in, joten voit kutsua DOM-tason metodeja suoraan sen avulla.
 
 ### `@JavaScript` {#javascript}
 
-`@JavaScript`-annotaatio lataa skriptin, joka määrittää tai rekisteröi taustalla olevan verkkokomponentin. Aseta se luokalle, jotta skripti ladataan vain, kun komponenttia käytetään.
+`@JavaScript`-annotaatio lataa skriptin, joka määrittää tai rekisteröi taustalla olevan web-komponentin. Aseta se luokkaan, jotta skripti latautuu vain, kun komponenttia käytetään.
 
 ```java
 @NodeName("sl-relative-time")
@@ -51,56 +51,56 @@ public class RelativeTime extends ElementComposite {
 }
 ```
 
-Useat `@JavaScript`-annotaatiot ovat sallittuja, ja webforJ poistaa automaattisesti päällekkäiset lataukset. Sama skripti ei lataudu kahdesti, jos useat komponentit riippuvat siitä.
+Useita `@JavaScript`-annotaatioita on sallittu, ja webforJ poistetaan automaattisesti päällekkäiset ladaukset. Sama skripti ei lataudu kahdesti, jos useat komponentit riippuvat siitä.
 
-Katso [JavaScript-tiedostojen tuonti](../managing-resources/importing-assets#importing-javascript-files) täysiä vaihtoehtoja varten, mukaan lukien `top`, `attributes` ja latausaikataulu.
+Katso [JavaScript-tiedostojen tuonti](../managing-resources/importing-assets#importing-javascript-files) täydellistä vaihtoehtojen joukkoa varten, mukaan lukien `top`, `attributes` ja latausajankohdat.
 
 ### `@StyleSheet` {#stylesheet}
 
-`@StyleSheet`-annotaatio lataa CSS-tiedoston, johon komponentti perustuu. Se on hyödyllinen kolmannen osapuolen komponenttien kanssa, jotka toimittavat erillisen tyylitiedoston, tai komponentti-erityisen tyylin yhdistämiseksi kääreeseen.
+`@StyleSheet`-annotaatio lataa CSS-tiedoston, jota komponentti tarvitsee. Se on hyödyllinen kolmansien osapuolten komponenteille, jotka tarjoavat erillisen tyylitiedoston, tai komponenttikohtaisen muotoilun pakkaamiseksi kääreen joukkoon.
 
 ```java
 @StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css")
 ```
 
-Paikallisesti pakattuja resursseja varten käytä `ws://`-etuliitettä viitataksesi tiedostoihin `resources/static`-hakemistossa:
+Paikallisia pakattuja varoja varten käytä `ws://`-etuliitettä viitataksesi tiedostoihin `resources/static`-kansiossa:
 
 ```java
 @StyleSheet("ws://components/relative-time.css")
 ```
 
-Katso [CSS-tiedostojen tuonti](../managing-resources/importing-assets#importing-css-files) täysiä vaihtoehtoja varten.
+Katso [CSS-tiedostojen tuonti](../managing-resources/importing-assets#importing-css-files) täydellistä vaihtoehtojen joukkoa varten.
 
-## Ominaisuudet ja attribuuttikuvastot {#property-and-attribute-descriptors}
+## Ominaisuus- ja attribuuttikuvastot {#property-and-attribute-descriptors}
 
-Ominaisuudet ja attribuutit edustavat verkkokomponentin tilaa, joka tyypillisesti pitää tietoja tai konfiguraatiota. `ElementComposite` altistaa molemmat käytettäväksi `PropertyDescriptor`-luokan kautta.
+Ominaisuudet ja attribuutit kuvaavat web-komponentin tilaa, ja ne pitävät tyypillisesti tietoa tai konfigurointia. `ElementComposite` altistaa molemmat `PropertyDescriptor`-luokan kautta.
 
-Kaksi tehdastehdasta `PropertyDescriptor`:ssä tuottaa itse kuvaston, yksi kutakin sidontakohdetta varten:
+Kaksi tehdasmetodia `PropertyDescriptor`-luokassa tuottaa kuvaston itselleen, yksi per sidontakohde:
 
 ```java
 PropertyDescriptor<T> property  = PropertyDescriptor.property(String name, T defaultValue);
 PropertyDescriptor<T> attribute = PropertyDescriptor.attribute(String name, T defaultValue);
 ```
 
-`PropertyDescriptor.property()` sitoo DOM-solmun JavaScript-ominaisuuteen. `PropertyDescriptor.attribute()` sitoo HTML-attribuuttiin. Ensimmäinen argumentti on nimi, jonka verkkokomponentti odottaa. Toinen on oletusarvo, joka myös kiinnittää kuvaston Java-tyypin.
+`PropertyDescriptor.property()` sitoo JavaScript-ominaisuuden DOM-solmulle. `PropertyDescriptor.attribute()` sitoo HTML-attribuutin. Ensimmäinen argumentti on nimi, jonka web-komponentti odottaa. Toinen on oletusarvo, joka myös määrittää kuvaston Java-tyypin.
 
-Määritä kuvasto komponentin yksityisenä kenttänä, ja lue ja kirjoita sen kautta käyttäen `set(PropertyDescriptor<V> property, V value)` ja `get(PropertyDescriptor<V> property)`.
+Määritä kuvasto komponentin yksityisenä kenttänä, ja lue ja kirjoita sen kautta `set(PropertyDescriptor<V> property, V value)` ja `get(PropertyDescriptor<V> property)` -kutsuilla.
 
 :::info
-Ominaisuudet ovat DOM-solmun sisäistä tilaa eivätkä heijastu merkkijonoon. Attribuutit ovat HTML-merkintöjä, jotka ovat näkyviä ulkoisille skripteille ja CSS:lle.
+Ominaisuudet ovat sisäistä tilaa DOM-solmussa eivätkä näy merkinnässä. Attribuutit ovat HTML-merkintää, joka on näkyvissä ulkoisille skripteille ja CSS:lle.
 :::
 
 ```java
-// Esimerkki "title"-ominaisuudesta ElementComposite-luokassa
+// Esimerkki ominaisuudesta nimeltä "title" ElementComposite-luokassa
 private final PropertyDescriptor<String> title = PropertyDescriptor.property("title", "");
-// Esimerkki "value"-attribuutista ElementComposite-luokassa
+// Esimerkki attribuutista nimeltä "value" ElementComposite-luokassa
 private final PropertyDescriptor<String> value = PropertyDescriptor.attribute("value", "");
 //...
 set(title, "My Title");
 set(value, "My Value");
 ```
 
-Yllä olevat kutsut käyttävät `set()`-menetelmää suoraan esittääkseen primitiivisen muodon. Käytännössä `set()` ja `get()` ovat `protected`-menetelmiä `ElementComposite`-luokassa. Ne ovat primitiivinen kerros, joka synkronoi Java-arvot taustalla olevan elementin kanssa, eivät julkista API:ta, jota kuluttajat kutsuvat. Tarkoituksena on pitää `PropertyDescriptor` yksityisenä ja kirjoittaa julkiset `setX()` ja `getX()` -menetelmät, jotka delegoivat primitiiville.
+Yllä olevat kutsut käyttävät `set()`-metodia suoraan yksinkertaisessa muodossa. Käytännössä `set()` ja `get()` ovat `protected`-metodeja `ElementComposite`-luokassa. Ne ovat primitiivinen kerros, joka synkronoi Java-arvoja taustalla olevan elementin kanssa, ei julkinen API, jota käyttäjät kutsuvat. Tavoite on pitää `PropertyDescriptor` yksityisenä ja kirjoittaa julkiset `setX()` ja `getX()` -metodit, jotka delegoivat primitiiveille.
 
 ```java
 @NodeName("my-card")
@@ -110,75 +110,75 @@ public class Card extends ElementComposite {
       PropertyDescriptor.property("heading", "");
 
   public Card setHeading(String value) {
-    set(heading, value);     // protected primitiivi
+    set(heading, value);     // suojattu primitiivi
     return this;
   }
 
   public String getHeading() {
-    return get(heading);     // protected primitiivi
+    return get(heading);     // suojattu primitiivi
   }
 }
 ```
 
-Yksi kutsu `set(descriptor, value)` tekee kolme asiaa kerralla. Se työntää arvon asiakkaalle `setProperty()`-menetelmää käyttäen ominaisuuksille tai `setAttribute()`-menetelmää käyttäen attribuuteille. Se tallentaa arvon paikalliseen palvelinpuolen välimuistiin, yksi kartta per komponentti-instanssi. Ja se tallentaa ajonaikaisen tyypin arvon yhteydessä, jotta myöhemmät `get()`-kutsut tietävät, miten deserialisoida.
+Yksi `set(descriptor, value)`-kutsu tekee kolme asiaa kerralla. Se välittää arvon asiakaspuolelle `setProperty()`-metodin kautta ominaisuuksille tai `setAttribute()`-metodille attribuuteille. Se tallentaa arvon paikalliseen palvelinpuolen välimuistiin, yksi kartta per komponentti-instanssi. Ja se tallentaa ajoitusluokan arvon viereen, jotta myöhemmät `get()`-kutsut tietävät, miten deserialisoida.
 
-Tämä paikallinen välimuisti on syy siihen, että `get()` voi olla edullinen oletuksena. `get(descriptor)` palauttaa tallennetun arvon palvelinpuolen tallennuksesta ilman verkko-kutsuja, koska jokainen `set()` pitää välimuistin synkronoituna asiakkaan kanssa. Valinnainen `boolean` toinen argumentti hallitsee, ohitetaanko välimuisti ja luetaanko selaimelta sen sijaan.
+Se paikallinen välimuisti on syy siihen, miksi `get()` voi olla halpa oletusarvoisesti. `get(descriptor)` palauttaa välimuistissa olevan arvon palvelinpuolen tallennuksesta ilman verkkokutsua, koska jokainen `set()` pitää välimuistin synkronoituna asiakkaan kanssa. Valinnainen `boolean` toinen argumentti määrittelee, ohitetaanko välimuisti ja luetaanko selainpuolelta sen sijaan.
 
 ```java
 String cached = get(heading);            // lukee palvelinpuolen välimuistista
-String live = get(heading, true);        // pakottaa lukemaan selaimesta
+String live = get(heading, true);        // pakottaa lukemaan selaimelta
 ```
 
-Aseta `fromClient` todeksi, kun arvo voi muuttua asiakkaalla ilman palvelimen tietämystä, kuten kirjoitettuna `<input>`-kenttään. Palvelimelta ohjattaville ominaisuuksille oletus välttää ylimääräisiä pyyntejä.
+Aseta `fromClient` todeksi, kun arvo voi muuttua asiakkaalla ilman palvelimen tietoa, kuten kirjoitettu `<input>`-arvo. Palvelinohjatuissa ominaisuuksissa oletus välttää matkustamista.
 
-Valinnainen kolmas argumentti on `java.lang.reflect.Type` ja se hallitsee sitä, miten tulos deserialisoidaan. webforJ ratkaisee tyypin seuraavassa järjestyksessä: eksplisiittinen `Type`-argumentti, jos se on annettu, sitten ajonaikainen tyyppi, joka on rekisteröity aikaisemmalla `set()`-kutsulla samalla kuvastolla, sitten `Object.class`. Käytännössä aiemman `set()`-kutsun rekisteröity tyyppi riittää, joten kolmas argumentti voidaan tyypillisesti jättää pois. Sitä tarvitaan, kun rekisteröity luokka menettää tietoa, jota deserialisoija tarvitsee, kuten parametrisoitu tyyppi, kuten `List<String>`, jonka ajonaikainen luokka on vain `ArrayList`.
+Valinnainen kolmas argumentti on `java.lang.reflect.Type` ja se määrittää, miten tulos deserialisoidaan. webforJ ratkaisee tyypin tässä järjestyksessä: suorana `Type`-argumentti, jos se on annettu, sitten aikarajan tyyppi, joka on tallennettu aiemmasta `set()`-kutsusta samalle kuvastolle, ja viimeisenä `Object.class`. Käytännössä aikarajan tyyppi, jota tallennettiin aiemman `set()`-kutsun aikana, riittää, joten kolmas argumentti voidaan yleensä jättää pois. Se on tarpeellinen silloin, kun tallennettu luokka menettää informaatiota, jota deserialisoija tarvitsee, kuten parametrisoitu tyyppi kuten `List<String>`, jonka ajonaikainen luokka on vain `ArrayList`.
 
-Alla oleva demo lisää ominaisuuksia relative-time -perusteella verkkokomponentin asiakirjojen mukaan ja altistaa ne getterien ja setterien kautta. Jokainen rivi aktiviteettisyötteessä käyttää erilaisia `format`- ja `numeric`-arvoja osoittaakseen, kuinka sama komponentti renderöityy eri määritysten alla.
+Alla olevassa demon traadissa lisätään ominaisuudet relative-time tietojen perusteella web-komponentin asiakirjoista ja altistetaan ne getterien ja setterien kautta. Jokainen rivi aktiviteettilistalla käyttää erilaisia `format`- ja `numeric`-arvoja osoittaakseen, miten sama komponentti renderöityy eri kokoonpanoissa.
 
-<ComponentDemo 
-path='/webforj/relativetimeproperties' 
+<ComponentDemo
+path='/webforj/relativetimeproperties'
 files={[
   'src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimePropertiesView.java',
-  'src/main/resources/static/css/elementcomposite/activity-feed.css',
+  'src/main/frontend/css/elementcomposite/activity-feed.css',
 ]}
 height='450px'
 />
 
 ### Ominaisuudet vs. attribuutit {#properties-versus-attributes}
 
-Vaikka `PropertyDescriptor.property()` ja `PropertyDescriptor.attribute()` näyttävät olevan toisiaan vastaavia, ne kohdistavat eri osiin taustalla olevaa elementtiä. Väärän valinnan tekeminen johtaa siihen, että arvot eivät sovellu ilman ääntä.
+Vaikka `PropertyDescriptor.property()` ja `PropertyDescriptor.attribute()` vaikuttavat vaihdettavilta, ne kohdistuvat eri osiin taustalla olevaa elementtiä. Väärän valinnan tekeminen johtaa siihen, että arvot hiljaa epäonnistuvat.
 
-Ominaisuudet ovat JavaScript-objektin ominaisuuksia DOM-solmussa. Ne voivat pitää mitä tahansa tyyppiä, mukaan lukien merkkijonoja, totuusarvoja, numeroita, objekteja ja taulukoita, ja ne kuvaavat elementin nykyistä ajonaikaista tilaa. Ominaisuuden asettaminen on suora JavaScript-määritys.
+Ominaisuudet ovat JavaScript-objektin ominaisuuksia DOM-solmulla. Ne voivat pitää mitä tahansa tyyppiä, mukaan lukien merkkijonot, booleanit, numerot, objektit ja taulukot, ja ne edustavat elementin nykyistä ajonaikaista tilaa. Ominaisuuden asettaminen on suora JavaScript-muuttuja.
 
-Attribuutit ovat HTML-merkintöjä. Ne sijaitsevat elementin avaustagissa, ovat aina merkkijonoja ja kuvaavat elementin alkuperäistä konfiguraatiota. Attribuutin asettaminen aktivoi DOM-muutoksen ja merkkijonon konversion.
+Attribuutit ovat HTML-merkintää. Ne löytyvät elementin avaus-tägistä, ovat aina merkkijonoja ja edustavat elementin alkuperäistä kokoonpanoa. Attribuutin asettaminen laukaisee DOM:n muutoksen ja merkkijonon muunnoksen.
 
-Joissakin tapauksissa molemmat pysyvät synkronoituna. Toisissa ne poikkeavat toisistaan. `<input>`-kentän `value` on klassinen esimerkki: `value` -attribuutti on alkuperäinen arvo, kun taas `value` -ominaisuus on nykyinen arvo, jonka käyttäjä on kirjoittanut. Attribuutin lukeminen sen jälkeen, kun käyttäjä on kirjoittanut palauttaa alkuperäisen merkinnän, mutta ominaisuuden lukeminen palauttaa kentän nykyisen sisällön.
+Joissakin tapauksissa molemmat pysyvät synkronoituna. Toisissa ne poikkeavat. `<input>`-elementin `value` on klassinen esimerkki: `value`-attribuutti on alkuperäinen arvo, kun taas `value`-ominaisuus on nykyinen arvo, jonka käyttäjä on kirjoittanut. Attributesin lukeminen käyttäjän kirjoittamisen jälkeen palauttaa alkuperäisen merkintä, mutta ominaisuuden lukeminen palauttaa kentän nykyiset sisällöt.
 
-Käytä **ominaisuuksia**:
+Käytä **ominaisuuksia** seuraaville:
 
 - **Usein muuttuva ajonaikainen tila**: laskurit, nykyiset valinnat, kirjoitetut arvot
-- **Ei-merkkijono-tyypit**: totuusarvot, numerot, objektit, taulukot
-- **Suorituskykytunnevat päivitykset**: ominaisuudet ohittavat attribuuttien vaatiman merkkijonon konversion
+- **Eri tyyppiset**: booleanit, numerot, objektit, taulukot
+- **Suorituskykyherkät päivitykset**: ominaisuudet ohittavat merkkijonon muunnoksen, jota attribuutit vaativat
 
-Käytä **attribuutteja**:
+Käytä **attribuutteja** seuraaville:
 
-- **Alkuperäinen konfiguraatio**: asetukset, joita komponentti lukee kerran yhdistämisen aikana
-- **CSS-valitsijat**: arvot, joita haluat kohdistaa valitsijilla kuten `[disabled]` tai `[variant="danger"]`
-- **Saavutettavuus-koukut**: `aria-label`, `role` ja muut ARIA-attribuutit
-- **Merkkijono-tyyppiset asetukset, joita harvoin muutetaan**
+- **Alkuperäinen kokoonpano**: asetukset, joita komponentti lukee vain kerran, kun se yhdistetään
+- **CSS-valitsimet**: arvot, joita haluat kohdistaa valitsimilla, kuten `[disabled]` tai `[variant="danger"]`
+- **Esteettömyysniksit**: `aria-label`, `role` ja muut ARIA-attribuutit
+- **Merkkijonon kaltaiset asetukset, jotka harvoin muuttuvat**
 
-Kun käännät kolmannen osapuolen verkkokomponenttia, tarkista komponentin dokumentaatio varmistaaksesi, mikä nimi vastaa ominaisuutta ja mikä attribuuttia. `PropertyDescriptor.attribute()` käyttämisestä jollekulle, jonka komponentti altistaa vain ominaisuutena, ei toimi, ja sama pätee käänteisesti. Komponentti ohittaa arvon hiljaa.
+Kun käännät kolmannen osapuolen web-komponenttia, tarkista komponentin dokumentaatio varmistaaksesi, mitä nimeä vastaavat ominaisuus ja mikä attribuutti. Käyttämällä `PropertyDescriptor.attribute()`:ta johonkin, jonka komponentti altistaa vain ominaisuutena, ei toimi, ja sama pätee päinvastoin. Komponentti hiljaa sivuuttaa arvon.
 
-### Ominaisuuksien tyyppisuojaus {#typing-properties}
+### Ominaisuuksien tyypit {#typing-properties}
 
-Kuvasto on parametrisoitu sen arvon Java-tyypillä. Täysi ilmoitussyntaksi on:
+Kuvasto on parametrisoitu sen arvon Java-tyypillä. Täydellinen ilmoitussyntaksi on:
 
 ```java
 private final PropertyDescriptor<T> name =
     PropertyDescriptor.property(String name, T defaultValue);
 ```
 
-`<T>`-geneerinen parametri ilmoittaa arvon tyypin. Oletusarvon ajonaikainen tyyppi myös kiinnittää `T`:n, joten geneeristä argumenttia harvoin tarvitsee määrittää eksplisiittisesti. webforJ käyttää `T`:tä arvojen sarjaa ja desarvoa, kun se kommunikoi asiakkaan kanssa.
+`<T>`-geneerinen parametri määrittelee arvon tyypin. Oletusarvon ajonaikainen tyyppi fixes `T`, joten geneeristä argumenttia harvoin tarvitsee määrittää erikseen. webforJ käyttää `T`:tä sarjoittaakseen ja desarjoittaakseen arvoja asiakaspuolen kanssa kommunikoidessaan.
 
 ```java
 private final PropertyDescriptor<String> label =
@@ -194,11 +194,11 @@ private final PropertyDescriptor<Double> step =
     PropertyDescriptor.property("step", 1.0);
 ```
 
-Sarja on automaattista primitiiville, niiden pakatuille vastineille ja `String`:lle. Monimutkaisille tyypeille arvo sarjoitetaan JSON-muotoon ennen kuin se liitetään asiakkaan ominaisuuteen.
+Sarjoitus tapahtuu automaattisesti primitiiville, niiden pakattuille vastineille ja `String`:ille. Monimutkaisille tyypeille arvo sarjoitetaan JSON-muotoon ennen sen asettamista asiakkaalle.
 
 ### Arvojen validoiminen {#validating-values}
 
-Vahvista arvot setterissä ennen `set()`-kutsun tekemistä. Setter on luonnollinen valvontakohta, koska jokainen mutaatio kulkee sen lävitse.
+Varmista arvot setterissä ennen `set()`-kutsun tekemistä. Setter on luonnollinen valvontakohta, koska jokainen muutos kulkee sen kautta.
 
 ```java
 private final PropertyDescriptor<Integer> max =
@@ -213,7 +213,7 @@ public Slider setMax(int value) {
 }
 ```
 
-Nullable-viittauksille käytä `Objects.requireNonNull()`, jotta virhearvo näkyy rajapinnassa sen sijaan, että se näkyisi myöhemmin renderointiputkessa.
+Nullable-viittauksille käytä `Objects.requireNonNull()`, jotta epäonnistuminen näkyy rajapinnassa sen sijaan, että se tapahtuisi myöhemmin renderointiputkessa.
 
 ```java
 public Card setHeading(String value) {
@@ -223,11 +223,11 @@ public Card setHeading(String value) {
 }
 ```
 
-Vältä validoimista `get()`-menetelmässä. Lukujen tulisi pysyä edullisina ja johdonmukaisina.
+Vältä validointia `get()`-metodissa. Lukemisen tulisi pysyä halpana ja johdonmukaisena.
 
-### Enum-tyyliset ominaisuudet {#enum-style-properties}
+### Enum-tyyppiset ominaisuudet {#enum-style-properties}
 
-Useimmat verkkokomponentit odottavat pienikokoisia tai kebab-kielisiä merkkijonoarvoja enum-tyylisille ominaisuuksille (`theme="primary"`, `expanse="xs"`). webforJ käyttää Gsonia sarjoittamaan enum-arvoja, mutta Gsonin oletusesitys on vakio nimi isoilla kirjaimilla. Merkitse jokainen vakio `@SerializedName`-annotaatiolla, jotta sarjattu arvo vastaa sitä, mitä verkkokomponentti odottaa.
+Useimmat web-komponentit odottavat alhaalla tai kebab-käytä merkkijonon arvoja enum-tyylisille ominaisuuksille (`theme="primary"`, `expanse="xs"`). webforJ käyttää Gsonia sarjoittamiseen enum-tyypeissä, mutta Gsonin oletusesitys on vakionimi isoina kirjaimina. Merkitse jokainen vakio annotaatiolla `@SerializedName`, jotta sarjoitettu arvo vastaa sitä, mitä web-komponentti odottaa.
 
 ```java
 import com.google.gson.annotations.SerializedName;
@@ -260,13 +260,13 @@ public Variant getVariant() {
 }
 ```
 
-Tämä on sama kaava, jota webforJ:n sisäänrakennetut komponentit käyttävät `Theme`, `Expanse` ja samankaltaiset enum-luokat. Julkinen Java-API pysyy tyyppiturvallisena, ja verkkokomponentti saa arvon `@SerializedName`:stä.
+Tämä on sama malli, jota webforJ:n sisäänrakennetut komponentit käyttävät `Theme`, `Expanse` ja samanlaisista enumsista. Julkinen Java-API pysyy tyypin turvallisena, ja arvo, jonka web-komponentti vastaanottaa, on merkkijono `@SerializedName`:stä.
 
 ### Ominaisuuksien testaaminen {#testing-properties}
 
-`PropertyDescriptorTester` validoi, että jokainen `PropertyDescriptor` komponentissa on kytketty oikein. Se skannaa luokan kuvastokentät, kutsuu kutakin setteria oletusarvolla ja vertailee tulosta sitä vastaan, mitä getter palauttaa. Testeri havaitsee integraatiovirheitä ennen kuin ne saavuttavat suorassa sovelluksessa: setter, joka kirjoittaa väärään kuvastoon, getter, joka lukee eri ominaisuuden, oletusarvo, joka ei käänny, tai puuttuva accessor ilmoitetulle kuvastolle.
+`PropertyDescriptorTester` validoi, että jokainen `PropertyDescriptor` komponentissa on kytketty oikein. Se skannaa luokan kuvastokentät, kutsuu kutakin setteria oletusarvoilla ja vertaa tulosta siihen, mitä getter palauttaa. Testerillä on mahdollista löytää integraatiovirheitä ennen kuin ne saavuttavat toimivan sovelluksen: setter, joka kirjoittaa väärään kuvastoon, getter, joka lukee eri ominaisuuden, oletusarvo, joka ei pyöri takaisin, tai puuttuva pääsy määriteltyyn kuvastoon.
 
-Perustesti komponentille näyttää tältä:
+Alustava testi komponentille näyttää tältä:
 
 ```java
 import com.webforj.component.element.PropertyDescriptorTester;
@@ -282,9 +282,9 @@ class CardTest {
 }
 ```
 
-#### Ominaisuuksien poistaminen {#excluding-properties}
+#### Ominaisuuksien taiottaminen {#excluding-properties}
 
-Jotkut kuvastot eivät noudata vakiogetteri- ja setterisääntöjä, tai ne riippuvat ulkoisesta tilasta, jota testi ei voi tyydyttää. Merkitse ne `@PropertyExclude`-annotaatiolla ohittaaksesi ne.
+Jotkut kuvastot eivät noudata standardimuuttujia ja setter-konventioita, tai ne saattavat riippua ulkoisesta tilasta, jota testi ei voi tyydyttää. Merkitse ne `@PropertyExclude`-annotaatiolla, jotta ne ohitetaan.
 
 ```java
 @PropertyExclude
@@ -294,7 +294,7 @@ private final PropertyDescriptor<String> internal =
 
 #### Mukautetut getter- ja setter-nimet {#custom-getter-and-setter-names}
 
-Jos kuvasto käyttää ei-standardeja accessor-nimiä, ilmoita ne `@PropertyMethods`-annotaatiolla.
+Jos kuvasto käyttää ei-standardeja käyttöliittymän nimiä, ilmoita ne `@PropertyMethods`-annotaatiolla.
 
 ```java
 @PropertyMethods(getter = "retrieveValue", setter = "updateValue")
@@ -302,13 +302,13 @@ private final PropertyDescriptor<String> custom =
     PropertyDescriptor.property("custom", "default");
 ```
 
-`target`-parametri hyväksyy luokan, kun accessorit sijaitsevat muualla kuin komponentissa itsessään.
+`target`-parametri hyväksyy luokan, kun käyttöliittymät sijaitsevat muualla kuin itse komponentissa.
 
-Lisätietoja testikattavuudesta katso [PropertyDescriptorTester](../testing/property-descriptor-tester).
+Lisätietoja testauksen pinnasta, katso [PropertyDescriptorTester](../testing/property-descriptor-tester).
 
 ## Huolenaiheiden rajapinnat {#concern-interfaces}
 
-Huolenaiherajapinnat antavat `ElementComposite`-aliluokan komponentille kykyjä ilman, että sinun tarvitsee kirjoittaa toteutusta itse. Rajapinnat välittävät kutsuja taustalla olevalle elementille. Toteuta ne, joita komponentin tulisi tukea, parametrisoituna aliluokan tyypillä, jotta ketjuttaminen palauttaa komponentin:
+Huolenaiheiden rajapinnat antavat `ElementComposite`-aliluokalle komponentin ominaisuuksia ilman, että sinun tarvitsee kirjoittaa toteutusta itse. Rajapinnat välittävät kutsuja taustalla olevalle elementille. Toteuta ne, joita komponentin tulisi tukea, parametrisoituna aliluokan tyypillä, jotta ketjutetut kutsut palauttavat komponentin:
 
 ```java
 @NodeName("my-badge")
@@ -323,42 +323,42 @@ MyBadge badge = new MyBadge()
     .setStyle("color", "var(--dwc-color-primary)");
 ```
 
-Yllä olevat kolme rajapintaa kattavat kaiken mitä `MyBadge` tarvitsee ilman mitään metodilohkoja luokassa. `HasText` altistaa `setText()`-metodin ja kirjoittaa elementin tekstisisältöön. `HasClassName` altistaa `addClassName()`-metodin, joka mahdollistaa badgen, jonka CSS voi kohdistaa. `HasStyle` altistaa `setStyle()`-metodin inline-tyylittelyyn.
+Yllä olevat kolme rajapintaa kattavat kaiken, mitä `MyBadge` tarvitsee ilman mitään menetelmärakenteita luokassa. `HasText` altistaa `setText()`-metodin ja kirjoittaa elementin tekstisisältöön. `HasClassName` altistaa `addClassName()`, joka mahdollistaa, että merkki voidaan tavoittaa CSS:stä. `HasStyle` altistaa `setStyle()` inline-tyylitykselle.
 
-Täydellinen saatavilla olevien rajapintojen sarja ja mitä kukin tarjoaa, katso [Huolenaiheiden rajapinnat](./component-fundamentals#concern-interfaces) Ymmärtäminen komponentit-artikkelissa. Jos oletuslähetyksesi ei vastaa sitä, mitä kääritty elementti altistaa, ohi.
+Kattavan luettelon saatavilla olevista rajapinnoista ja siitä, mitä kukin tarjoaa, katso [Huolenaiheiden rajapinnat](./component-fundamentals#concern-interfaces) Ymmärtämällä komponentit -artikkelista. Jos oletuslähetys ei vastaa mitä kääritty elementti tarjoaa, ylikirjoita menetelmä alaluokassa.
 
 ## Tapahtumat {#events}
 
 ### Tapahtumien rekisteröinti {#event-registration}
 
-Verkkokomponentit lähettävät DOM-tapahtumia, kun selaimessa tapahtuu jotain. Reagoidaksesi Java-koodista, kuuntele näitä tapahtumia `addEventListener()`-menetelmällä. Tapahtumien joukko, jota komponentti lähettää, vaihtelee, joten tarkista komponentin omat asiakirjat saatavilla olevista nimistä ja tietosisällöistä.
+Web-komponentit lähettävät DOM-tapahtumia, kun selaimessa tapahtuu jotain. Reagoidaksesi Java-koodista, kuuntele näitä tapahtumia `addEventListener()`-metodilla. Komponentin lähettämien tapahtumien joukko vaihtelee, joten tarkista komponentin omasta dokumentaatiosta nimet ja käytettävissä olevat kuormitukset.
 
-`ElementComposite` tukee debounce-, throttle-, suodatin- ja mukautettuja tapahtumadatassa rekisteröidyillä kuuntelijoilla.
+`ElementComposite` tukee debouncetta, throttlingia, suodattamista ja mukautettua tapahtumatietoa rekisteröidyillä kuuntelijoilla.
 
-Rekisteröi tapahtumakuuntelijat käyttämällä `addEventListener()`-menetelmää:
+Rekisteröi tapahtumakuuntelijat käyttäen `addEventListener()`-metodia:
 
 ```java
-// Esimerkki: lisääminen klikkaustapahtumakuuntelijalla
+// Esimerkki: klikkaustapahtuman kuuntelijan lisääminen
 addEventListener(ElementClickEvent.class, event -> {
   // Käsittele klikkaustapahtuma
 });
 ```
 
 :::info
-`ElementComposite` hyväksyy vain tapahtumaluokkia, jotka on merkitty `@EventName`-annotaatiolla, toisin kuin `Element`, joka hyväksyy minkä tahansa merkin tapahtuman nimen.
+`ElementComposite` hyväksyy vain tapahtumaluokkia, joita on merkitty `@EventName`, toisin kuin `Element`, joka hyväksyy minkä tahansa merkkijonotapahtuman nimen.
 :::
 
 ### Sisäänrakennetut tapahtumaluokat {#built-in-event-classes}
 
-`ElementClickEvent` on ainoa sisäänrakennettu tapahtumaluokka, jonka `ElementComposite` toimittaa. Se nostaa hiiren klikkauksen tapahtumat taustalla olevalta elementiltä typed-yhteensopivilla koordinaattihakemistoilla (`getClientX()`, `getClientY()`), painetietoja (`getButton()`) ja modifier-näppäimillä (`isCtrlKey()`, `isShiftKey()` jne.).
+`ElementClickEvent` on ainoa sisäänrakennettu tapahtumaluokka, jonka `ElementComposite` tarjoaa. Se tuo esille hiiren klikkaustapahtumat taustalla olevalta elementiltä ja sisältää tyypitetyt käyttöliittymät koordinaateille (`getClientX()`, `getClientY()`), painetietoa (`getButton()`) ja muokkausnäppäimiä (`isCtrlKey()`, `isShiftKey()` jne.).
 
-Jotta klikkaustapahtuman käsittely olisi saatavana aliluokan julkisessa API:ssa, toteuta `HasElementClickListener<T>`-huolenaiherajapinta. Se tarjoaa oletusmenetelmiä `onClick()` ja `addClickListener()`, jotka delegoivat suojatulle `addEventListener()`-menetelmälle.
+Jotta klikkauskäsittely saadaan alaluokan julkiselle API:lle, toteuta `HasElementClickListener<T>`-huolenaihe. Se tarjoaa oletusmenetelmiä `onClick()` ja `addClickListener()`, jotka delegoivat suojattuun `addEventListener()`-metodiin.
 
 ```java
 @NodeName("my-badge")
 public class MyBadge extends ElementComposite
     implements HasElementClickListener<MyBadge> {
-  // onClick() ja addClickListener() ovat nyt saatavilla MyBadgelle
+  // onClick() ja addClickListener() ovat nyt saatavilla MyBadge-luokassa
 }
 
 new MyBadge().onClick(event -> {
@@ -368,80 +368,80 @@ new MyBadge().onClick(event -> {
 });
 ```
 
-Muille tapahtumille, joita taustalla oleva verkkokomponentti lähettää, määritä mukautettu tapahtumaluokka. Katso [Mukautetut tapahtumaluokat](#custom-event-classes).
+Muille tapahtumille, joita taustalla oleva web-komponentti lähettää, määrittele mukautettu tapahtumaluokka. Katso [Mukautetut tapahtumaluokat](#custom-event-classes).
 
-### Tapahtuman tietosisältö {#event-payloads}
+### Tapahtumakuormitukset {#event-payloads}
 
-Tapahtumat kuljettavat tietoa asiakkaalta Java-koodillesi. Pääset tähän tietoon `getData()`-menetelmän kautta raakatietoja varten tai käytä tyyppimenetelmiä, kun niitä on saatavilla sisäänrakennetuissa tapahtumaluokissa. Katso [Tapahtumat-opas](../building-ui/events) tehokkaan tietojen käsittelyn osalta.
+Tapahtumat kuljettavat tietoa asiakkaalta Java-koodiin. Pääset tähän tietoon `getData()`-metodin avulla raakadatasta tai käytä tyypitettyjä metodeja, kun ne ovat saatavilla sisäänrakennetuissa tapahtumaluokissa. Katso [Tapahtumaopas](../building-ui/events) tehokasta kuormituksen käsittelyä varten.
 
 ### Mukautetut tapahtumaluokat {#custom-event-classes}
 
-Määritä mukautetut tapahtumaluokat käyttäen `@EventName` ja `@EventOptions` kaappaamaan asiakaspuolen tietoa tyypitettynä Java-tapahtumana. Käytä tätä, kun Java-käsittelijä tarvitsee arvoja selaimelta.
+Määrittele mukautettu tapahtumaluokka `@EventName` ja `@EventOptions` -annotaatioiden avulla, jotta voit kaapata asiakaspuolen tietoa tyypitettyyn Java-tapahtumaan. Käytä tätä, kun Java-käsittelijasi tarvitsee arvoja selaimesta.
 
-`@EventName` sitoo Java-luokan tapahtumaan, jonka komponentti lähettää selaimessa, joten luokka, jossa on `@EventName("sl-change")`, laukaisee aina, kun taustalla oleva elementti lähettää `sl-change`. `@EventOptions` hallitsee, mitä kulkee takaisin kyseisen tapahtuman mukana. Jokainen `@EventData`, joka siihen sisältyy, pariutuu avaimen kanssa JavaScript-lauseeseen, joka arvioidaan DOM-tapahtuman yhteydessä. Tulos saatavilla Java-tapahtumaluokassa `getData().get(key)` kautta.
+`@EventName` sitoo Java-luokan tapahtumaan, jonka komponentti lähettää selaimessa, jotta luokka, joka on merkitty `@EventName("sl-change")`, laukaisee aina, kun taustalla oleva elementti lähettää `sl-change`. `@EventOptions` ohjaa, mitä tietoja kulkee takaisin tämän tapahtuman mukana. Jokaisen `@EventData`-huonetilassa yhdistää avaimen JavaScript-lausekkeeseen, joka arvioidaan DOM-tapahtuman osalta. Tulos on käytettävissä Java-tapahtumaluokassa `getData().get(key)`.
 
-Tuotearvostelulomake alla käyttää tätä kaavaa mukautetun `ChangeEvent`:n kanssa [`sl-rating`](https://shoelace.style/components/rating). Mukautettu `ChangeEvent` kuljettaa arviointiarvon tyypitettynä `double`:na, ja kuuntelija käyttää sitä mahdollistaa lähetyspainikkeen:
+Tuotearvostelulomake alla käyttää tätä mallia [`sl-rating`](https://shoelace.style/components/rating). Mukautettu `ChangeEvent` kuljettaa arvioinnin arvon tyypitettynä `double`:na, ja kuuntelija käyttää sitä aktivoinnin mahdollistamiseksi:
 
-<ComponentDemo 
-path='/webforj/rating' 
+<ComponentDemo
+path='/webforj/rating'
 files={['src/main/java/com/webforj/samples/views/elementcomposite/RatingView.java']}
 height='220px'
 />
 
 ### Tapahtumavaihtoehdot {#event-options}
 
-`ElementEventOptions` määrittää tapahtumapayloadin, debounce- tai throttle-ajan, suodatuslausekkeet ja esikäsittelykoodin. Alla olevan koodinpätkän osoittaa vaihtoehtoja:
+`ElementEventOptions` konfiguroi tapahtumakuormaa, debounce tai throttle-aikoja, suodatusilmaisuja ja ennakkokoodia. Alla oleva koodinpätkä näyttää vaihtoehdot:
 
 ```java
 ElementEventOptions options = new ElementEventOptions()
-  // Kerää mukautettuja tietoja asiakkailta
+  // Kerää mukautettua tietoa asiakkaalta
   .addData("query", "component.value")
   .addData("timestamp", "Date.now()")
   .addData("isValid", "component.checkValidity()")
-  
-  // Suorita JavaScriptiä ennen kuin tapahtuma laukaistaan
+
+  // Suorita JavaScript ennen tapahtuman laukaisemista
   .setCode("component.classList.add('processing');")
-  
-  // Laadi vain, jos ehdot täyttyvät
+
+  // Laadi vain, jos olosuhteet ovat täyttyneet
   .setFilter("component.value.length >= 2")
-  
-  // Viivästytä suoritusta, kunnes käyttäjä lopettaa kirjoittamisen (300 ms)
+
+  // Viivytä suoritusta, kunnes käyttäjä lopettaa kirjoittamisen (300ms)
   .setDebounce(300, DebouncePhase.TRAILING);
 
-// Sovita nämä vaihtoehdot rekisteröidessäsi kuuntelijaa mukautetulle tapahtumaluokalle
-// (katso Mukautetut tapahtumaluokat -osio yllä, kuinka määrittää yksi):
+// Käytä näitä vaihtoehtoja, kun rekisteröit kuuntelijan mukautetulle tapahtumaluokalle
+// (katso Mukautetut tapahtumaluokat -osasta, kuinka yksi määritellään):
 addEventListener(InputEvent.class, this::handleSearch, options);
 ```
 
 :::info
-`ElementComposite` altistaa vain luokkapohjaisen muodon `addEventListener(Class, listener, options)`. Käytä sitä tapahtumaluokalla, joka on merkitty `@EventName`. Rekisteröi suoraan merkin tapahtuman nimen perusteella kutsumalla `getElement().addEventListener("input", listener, options)`.
+`ElementComposite` altistaa vain luokkaperustaisen muodon `addEventListener(Class, listener, options)`. Käytä sitä tapahtumaluokassa, jota on merkitty `@EventName`. Rekisteröidäksesi suoraan merkkijonotapahtuman nimeen, kutsu `getElement().addEventListener("input", listener, options)`.
 :::
 
 #### Suorituskyvyn hallinta {#performance-control}
 
-**Debounce** viivästyttää suoritusta, kunnes toiminta loppuu:
+**Debouncing** viivyttää suoritusta, kunnes aktiviteetti lopetetaan:
 
 ```java
-options.setDebounce(300, DebouncePhase.TRAILING); // Odota 300 ms viimeisestä tapahtumasta
+options.setDebounce(300, DebouncePhase.TRAILING); // Odota 300ms viimeisen tapahtuman jälkeen
 ```
 
-Saatavilla olevat debounce-vaiheet:
+Saatavilla olevat debounci-vaiheet:
 
-- `LEADING`: Laukaise heti, odota sitten
-- `TRAILING`: Odota hiljaista aikaa, sitten laukaise (oletus)
-- `BOTH`: Laukaise heti ja hiljaisten aikojen jälkeen
+- `LEADING`: Laukaise heti, sitten odota
+- `TRAILING`: Odota hiljaista aikaa, laukaiseminen (oletus)
+- `BOTH`: Laukaise heti ja hiljaisen jakson jälkeen
 
-**Throttle** rajoittaa suorituksen taajuutta:
+**Throttling** rajoittaa suorituksen tiheyttä:
 
 ```java
-options.setThrottle(100); // Laukaise enintään kerran 100 ms: n välein
+options.setThrottle(100); // Laukaisee korkeintaan kerran 100ms
 ```
 
 ## Vuorovaikutus slotien kanssa {#interacting-with-slots}
 
-Slotit ovat paikkoja verkkokomponentin sisällä, joita käyttäjät täyttävät sisällöllä. Verkkokomponentti ilmoittaa slotit malliinsa `<slot>` tai `<slot name="...">`, ja kääre altistaa menetelmät, jotka asettavat Java-komponentteja näihin slotteihin.
+Slotit ovat paikkoja web-komponentin sisällä, joihin käyttäjät täyttävät sisällön. Web-komponentti ilmoittaa slotit mallissaan käyttämällä `<slot>` tai `<slot name="...">`, ja kääre altistaa menetelmät, jotka asettavat Java-komponentit näihin slotteihin.
 
-Sisällön lisäämiseksi slotteihin, laajenna `ElementCompositeContainer`-luokkaa sijasta `ElementComposite`. Konttaineri sisältää saman ominaisuus- ja attribuuttikoneiston lisäksi menetelmät lasten lisäämiseen. `add()`-kutsulla lisätyt lapset menevät oletusslottiin. `getElement().add(slotName, components)`-kutsulla lisätyt lapset menevät nimettyyn slottiin.
+Lisätäksesi sisältöä slotteihin, laajenna `ElementCompositeContainer`-luokkaa `ElementComposite`-luokan sijaan. Kontti sisältää samat ominaisuus- ja attribuuttimekanismit plus menetelmät lapsien lisäämiseksi. Lapsia, jotka on lisätty `add()`-menetelmällä, menee oletusslotille. Slotilla nimen kanssa lisäämällä `getElement().add(slotName, components)` tallennat komponentit nimettyyn slottiin.
 
 ```java
 @NodeName("my-dialog")
@@ -462,18 +462,18 @@ public class Dialog extends ElementCompositeContainer {
 }
 ```
 
-Alla oleva demo näyttää kaksi hinnoittelukorttia, jotka on rakennettu [`sl-card`](https://shoelace.style/components/card) käyttäen, joka täyttää `header`, oletus- ja `footer`-slotit Javasta:
+Alla oleva demo esittelee kaksi hinnoittelukorttia, jotka on rakennettu [`sl-card`](https://shoelace.style/components/card):lla, täyttäen `header`, oletus- ja `footer`-slotteja Javasta:
 
-<ComponentDemo 
-path='/webforj/card' 
+<ComponentDemo
+path='/webforj/card'
 files={['src/main/java/com/webforj/samples/views/elementcomposite/CardView.java']}
 height='400px'
 />
 
-### Slotin sisältöjen tarkastelu {#inspecting-slot-contents}
+### Slot-sisällön tarkastelu {#inspecting-slot-contents}
 
-Taustalla oleva `Element` (johon pääsee `getElement()`-kutsulla) tarjoaa menetelmiä tarkastellakseen, mitä nykyisin on liitetty slotteihin:
+Taustalla oleva `Element` (johon pääsee käsiksi `getElement()`-metodilla) tarjoaa menetelmiä nykyisen slot-sisällön lukemiseen:
 
-- **`findComponentSlot()`**: etsii kaikista sloteista tietyn komponentin ja palauttaa slotin nimen, joka sisältää sen, tai tyhjät merkkijonot, jos komponentti ei ole missään slotissa.
-- **`getComponentsInSlot()`**: palauttaa listan komponenteista, jotka on liitetty tiettyyn slotiin. Vapaasti voi ottaa myös luokkatyypin suodattamaan tuloksia.
-- **`getFirstComponentInSlot()`**: palauttaa ensimmäisen komponentin, joka on liitetty slottiin. Vapaasti voi ottaa myös luokkatyypin suodattamaan.
+- **`findComponentSlot()`**: etsii kaikista sloteista tietyn komponentin ja palauttaa sen nimen, joka sisältää sen, tai tyhjän merkkijonon, jos komponenttia ei ole missään slotissa.
+- **`getComponentsInSlot()`**: palauttaa listan komponentista, jotka on liitetty tiettyyn slottiin. Valinnaisesti kultakin saadaan suodatettua tuloksia luokkatyypin avulla.
+- **`getFirstComponentInSlot()`**: palauttaa ensimmäisen komponentin, joka on liitetty slottiin. Valinnaisesti kultakin saadaan suodatettua tuloksia luokkatyypin avulla.

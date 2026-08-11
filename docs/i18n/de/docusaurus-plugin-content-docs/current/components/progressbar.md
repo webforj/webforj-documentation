@@ -1,26 +1,29 @@
 ---
 title: ProgressBar
 sidebar_position: 90
-_i18n_hash: 6acac582ce905eb255ee09e499fd561f
+description: >-
+  Visualize task completion with the ProgressBar component, supporting
+  determinate and indeterminate modes, orientation, and themes.
+_i18n_hash: 47c51276d2b1da6c6bef337f76403515
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-progressbar" />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 
-Die `ProgressBar`-Komponente stellt den Fertigungsstatus eines Vorgangs visuell dar. Während die Arbeit voranschreitet, füllt sich ein Rechteck allmählich, um den aktuellen Prozentsatz widerzuspiegeln. Die Leiste kann auch eine textuelle Darstellung ihres Wertes anzeigen und unterstützt sowohl determinierte als auch indeterminierte Zustände für Aufgaben mit bekannten oder unbekannten Dauern.
+Die `ProgressBar`-Komponente stellt visuell den Abschlussstatus eines Vorgangs dar. Während die Arbeit fortschreitet, füllt sich ein Rechteck allmählich, um den aktuellen Prozentsatz widerzuspiegeln. Die Leiste kann auch eine textliche Darstellung ihres Wertes anzeigen und unterstützt sowohl determinate als auch indeterminate Zustände für Aufgaben mit bekannter oder unbekannter Dauer.
 
 <!-- INTRO_END -->
 
-## Verwendungen {#usages}
+## Usos {#usages}
 
-Die `ProgressBar`-Komponente ist nützlich zur Visualisierung des Fertigungsstatus von Aufgaben. Sie unterstützt:
+Die `ProgressBar`-Komponente ist nützlich, um den Abschlussstatus von Aufgaben zu visualisieren. Sie unterstützt:
 
-- Konfigurierbare Minimal- und Maximalwerte.
-- Indeterminate Modus für andauernde Aufgaben ohne definitives Ende.
-- Optionen für Textsichtbarkeit, Animation und gestreifte Designs für besseres visuelles Feedback.
+- Konfigurierbare Mindest- und Höchstwerte.
+- Indeterminate Modus für laufende Aufgaben ohne definitives Ende.
+- Optionen für Textsichtbarkeit, Animation und gestreifte Designs für bessere visuelle Rückmeldungen.
 
-Das folgende Beispiel zeigt eine gestreifte, animierte Fortschrittsleiste mit Start-, Pause- und Zurücksetzen-Steuerelementen:
+Das folgende Beispiel zeigt eine gestreifte, animierte Fortschrittsleiste mit Start-, Pause- und Rücksetzsteuerungen:
 
 <ComponentDemo
 path='/webforj/progressbarbasic'
@@ -28,9 +31,9 @@ files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicVie
 height='150px'
 />
 
-## Werte festlegen {#setting-values}
+## Werte setzen {#setting-values}
 
-Die ProgressBar-Komponente ermöglicht das Setzen und Abrufen ihres aktuellen Wertes sowie der minimalen und maximalen Grenzen.
+Die ProgressBar-Komponente ermöglicht das Setzen und Abrufen ihres aktuellen Wertes, Mindest- und Höchstgrenzen.
 
 ```java showLineNumbers
 ProgressBar bar = new ProgressBar();
@@ -41,7 +44,7 @@ bar.setValue(50);
 
 ## Ausrichtung {#orientation}
 
-Die `ProgressBar` kann horizontal oder vertikal ausgerichtet werden.
+Die `ProgressBar` kann horizontal oder vertikal ausgerichtet sein.
 
 <ComponentDemo
 path='/webforj/progressbarorientation'
@@ -49,9 +52,9 @@ files={['src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientat
 height='175px'
 />
 
-## Indeterminierter Zustand {#indeterminate-state}
+## Indeterminate Zustand {#indeterminate-state}
 
-Die `ProgressBar` unterstützt einen indeterminierten Zustand für Aufgaben mit unbekannter Fertigstellungszeit.
+Die `ProgressBar` unterstützt einen indeterminierten Zustand für Aufgaben mit unbekannter Abschlusszeit.
 
 <ComponentDemo
 path='/webforj/progressbardeterminate'
@@ -61,18 +64,19 @@ height='25px'
 
 ## Text und Textsichtbarkeit {#text-and-text-visibility}
 
-Standardmäßig zeigt die Fortschrittsleiste beim Erstellen den Prozentsatz der Fertigstellung im Format `XX%` an. Mit der Methode `setText()` können Sie den Platzhalter `{{x}}` verwenden, um den aktuellen Wert als Prozentsatz zu erhalten. Außerdem können Sie den Platzhalter `{{value}}` verwenden, um den aktuellen Rohwert zu erhalten.
+Im Standardformat zeigt die Fortschrittsleiste beim Erstellen den abgeschlossenen Prozentsatz im Format `XX%` an. Mit der `setText()`-Methode können Sie den Platzhalter `{{x}}` verwenden, um den aktuellen Wert als Prozentsatz zu erhalten. Darüber hinaus können Sie den Platzhalter
+`{{value}}` verwenden, um den aktuellen Rohwert zu erhalten.
 
 ```java
 ProgressBar bar = new ProgressBar(15, "Herunterladen: {{x}}%");
 ```
 
-## Stilgestaltung {#styling}
+## Styling {#styling}
 
 ### Themen {#themes}
 
-Die `ProgressBar`-Komponente kommt mit <JavadocLink type="foundation" location="com/webforj/component/Theme">Themen</JavadocLink>, die für eine schnelle Stilgestaltung ohne CSS integriert sind. Diese Themen sind vorgegebene Stile, die auf Schaltflächen angewendet werden können, um ihr Aussehen und ihre visuelle Präsentation zu ändern. 
-Sie bieten eine schnelle und konsistente Möglichkeit, das Erscheinungsbild von ProgressBars in einer App anzupassen.
+Die `ProgressBar`-Komponente kommt mit <JavadocLink type="foundation" location="com/webforj/component/Theme"> Themen </JavadocLink>, die für eine schnelle Gestaltung ohne Verwendung von CSS integriert sind. Diese Themen sind vordefinierte Stile, die auf Schaltflächen angewendet werden können, um ihr Aussehen und ihre visuelle Präsentation zu ändern. 
+Sie bieten eine schnelle und konsistente Möglichkeit, das Erscheinungsbild von Fortschrittsleisten in einer Anwendung anzupassen.
 
 <ComponentDemo
 path='/webforj/progressbarthemes'
@@ -84,7 +88,7 @@ height='320px'
 
 ## Best Practices {#best-practices}
 
-- **Verwenden Sie geeignete Minimal- und Maximalwerte**: Setzen Sie die Minimal- und Maximalwerte, um den Bereich der Aufgabe genau widerzuspiegeln.
+- **Verwenden Sie angemessene Mindest- und Höchstwerte**: Setzen Sie die Mindest- und Höchstwerte, um den Bereich der Aufgabe genau widerzuspiegeln.
 - **Aktualisieren Sie den Fortschritt regelmäßig**: Aktualisieren Sie den Fortschrittswert kontinuierlich, um den Benutzern Echtzeit-Feedback zu geben.
-- **Nutzen Sie den indeterminierten Zustand für unbekannte Dauer**: Verwenden Sie den indeterminierten Zustand für Aufgaben mit unvorhersehbaren Dauern, um den fortschreitenden Verlauf anzuzeigen.
-- **Anzeige von Text für besseres Benutzerfeedback**: Zeigen Sie Text auf der Fortschrittsleiste an, um zusätzlichen Kontext über den Fortschritt der Aufgabe zu bieten.
+- **Nutzen Sie den indeterminierten Zustand für unbekannte Dauer**: Verwenden Sie den indeterminierten Zustand für Aufgaben mit unvorhersehbaren Dauern, um andauernden Fortschritt anzuzeigen.
+- **Zeigen Sie Text für besseres Benutzerfeedback an**: Stellen Sie Text auf der Fortschrittsleiste dar, um weiteren Kontext zum Fortschritt der Aufgabe zu bieten.

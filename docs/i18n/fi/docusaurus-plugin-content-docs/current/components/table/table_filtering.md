@@ -2,11 +2,14 @@
 sidebar_position: 35
 title: Filtering
 slug: filtering
-_i18n_hash: e35c9b340f9faa796a4dbf5635f59495
+description: >-
+  Narrow Table rows by applying a Predicate through the bound Repository,
+  refreshing results on commit.
+_i18n_hash: 4e0709a55b763f553eeb8ddb8a3abb32
 ---
-`Table`-komponentti mahdollistaa suodattamisen, jolla voidaan rajata näytettävää dataa tiettyjen kriteerien mukaan. Suodattaminen voidaan toteuttaa määrittelemällä suodatuskriteeri käyttämällä `setFilter(Predicate<T> filter)` -metodia, joka on saatavilla taulukkoon liitetystä `Repository`:sta.
+`Table`-komponentti mahdollistaa suodatuksen toteuttamisen, jotta voit rajoittaa näytettävää dataa tiettyjen kriteerien perusteella. Suodatus voidaan toteuttaa määrittelemällä suodatuskriteeri käyttäen `setFilter(Predicate<T> filter)` -menetelmää, joka on tarjottu taulukon kanssa liitetyssä `Repository`-luokassa.
 
-Seuraavassa esimerkissä käytetään käyttäjän määrittelemää kriteeriä hakukentästä ja `setBaseFilter()` -metodia suodattimen soveltamiseksi `CollectionRepository`:lle `MusicRecord`-otsikoiden perusteella. Kun `commit()`-metodia kutsutaan, taulukko päivitetään suodatetulla datalla.
+Seuraavassa esimerkissä käytetään käyttäjän määrittelemää kriteeriä hakukentästä ja `setBaseFilter()` -menetelmää, jotta suodatin voidaan soveltaa `CollectionRepository`-luokkaan `MusicRecord`-otsikoiden perusteella. Kun `commit()`-menetelmää kutsutaan, taulukko päivittyy suodatetulla datalla.
 
 <!-- vale off -->
 <ComponentDemo
@@ -21,5 +24,5 @@ height='600px'
 <!-- vale on -->
 
 :::note
-`setBaseFilter()`-metodi kuuluu `CollectionRepository`-luokkaan, ei `Table`-komponenttiin.
+`setBaseFilter()` -menetelmä kuuluu `CollectionRepository`-luokkaan, ei `Table`-komponenttiin.
 :::

@@ -118,7 +118,7 @@ public class ProductView extends Composite<Div> implements ActivateObserver {
   @Override
   public void onActivate(ActivateEvent event, ParametersBag parameters) {
     String productId = parameters.get("id").orElseThrow();
-    
+
     // Component is being reused with different parameters
     if (!productId.equals(currentProductId)) {
       currentProductId = productId;

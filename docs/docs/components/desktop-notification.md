@@ -47,7 +47,7 @@ This one-liner creates a notification with a title and body, then attempts to di
 
 ## Customizing the notification {#customizing-the-notification}
 
-There are various options for customizing the look and feel of the displayed notification, depending on needs of the app and the purpose of the notification. 
+There are various options for customizing the look and feel of the displayed notification, depending on needs of the app and the purpose of the notification.
 
 ### Setting a custom `Icon` {#setting-a-custom-icon}
 

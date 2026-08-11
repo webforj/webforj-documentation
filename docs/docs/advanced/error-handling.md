@@ -118,5 +118,5 @@ The `GlobalErrorHandler` is the default error handler provided by webforJ. It im
 To define a global error handler, you need to create a new error handler named `WebforjGlobalErrorHandler`. then follow [the steps to register error handlers](#step-2-register-the-error-handler) as explained previously. In this case, webforJ first look for any custom error handlers to manage exceptions. If none are found, webforJ falls back to the custom global error handler.
 
 :::info
-If multiple `WebforjGlobalErrorHandler` are registerd then webforJ selects the first one 
+If multiple `WebforjGlobalErrorHandler` are registerd then webforJ selects the first one
 :::

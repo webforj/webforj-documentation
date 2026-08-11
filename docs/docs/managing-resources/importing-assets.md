@@ -97,7 +97,7 @@ The `InlineStyleSheet` annotation allows you to inject CSS content directly into
 | `id`         | String  | A unique resource ID. If multiple resources have the same ID, they will be bundled together in a single style element.    | `""`    |
 | `once`       | Boolean | Determines whether the StyleSheet should be injected into the page only once, regardless of multiple component instances. | `true`  |
 
-:::tip 
+:::tip
 For better syntax highlighting when writing inline CSS for your components, you can use webforJ VS Code extension: [Java HTML CSS Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=BEU.vscode-java-html).
 :::
 

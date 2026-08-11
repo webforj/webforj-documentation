@@ -22,10 +22,10 @@ The `ListBox` component displays a scrollable list of items that stays visible w
 
 2. **Project Task Assignment**: In project management software, `ListBox` components are useful for assigning tasks to team members. Users can select tasks from a list and assign them to different team members. This simplifies task delegation and ensures that responsibilities are clearly defined within the team.
 
-3. **Multi-Category Filtering**: In a search application, users often need to filter search results based on multiple criteria. A `ListBox` can display various filter options, such as 
+3. **Multi-Category Filtering**: In a search application, users often need to filter search results based on multiple criteria. A `ListBox` can display various filter options, such as
 >- Product features
 >- Price ranges
->- Brands. 
+>- Brands.
 
   Users can select items from each filter category, allowing them to refine search results and find exactly what they're looking for.
 
@@ -33,7 +33,7 @@ The `ListBox` component displays a scrollable list of items that stays visible w
 
 ## Selection Options {#selection-options}
 
-By default, the list box is configured to allow selection of a single item at a time. However, the `ListBox` implements the <JavadocLink type="foundation" location="com/webforj/component/list/MultipleSelectableList" code='true'>MultipleSelectableList</JavadocLink> interface, which can be configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. 
+By default, the list box is configured to allow selection of a single item at a time. However, the `ListBox` implements the <JavadocLink type="foundation" location="com/webforj/component/list/MultipleSelectableList" code='true'>MultipleSelectableList</JavadocLink> interface, which can be configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection.
 
 Use the <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> function to change this property. This method accepts either `SelectionMode.SINGLE` or `SelectionMode.MULTIPLE`.
 

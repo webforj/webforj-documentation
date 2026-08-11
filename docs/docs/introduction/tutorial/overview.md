@@ -6,7 +6,7 @@ hide_giscus_comments: true
 
 This step-by-step tutorial guides you through the process of building a customer management app using webforJ and Spring Boot. It teaches you how to create a modern, user-friendly interface for viewing, adding, and editing customer data.
 
-Each step introduces new concepts and results in a runnable Spring Boot app (JAR). You can launch your app locally using Maven and interact with it in a web browser. With this setup, you get a fast development cycle and a production-ready deployment model, using Spring Boot’s embedded server.
+Each step introduces new concepts and results in a runnable Spring Boot app (JAR). You can launch your app locally using Maven and interact with it in a web browser. With this setup, you get a fast development cycle with frontend bundling and a production-ready deployment model, using Spring Boot’s embedded server.
 
 No prior Spring Boot or webforJ experience is needed, but you should have a basic understanding of Java and Maven to get the most out of this tutorial. This tutorial will cover Spring concepts as they come up, but those interested in an in-depth understanding of Spring can go to [Spring's main documentation](https://spring.io/learn) and Spring's documentation about [Spring Boot](https://docs.spring.io/spring-boot/index.html).
 

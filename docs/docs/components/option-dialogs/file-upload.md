@@ -29,7 +29,7 @@ UploadedFile result = OptionDialog.showFileUploadDialog("Upload a file");
 The `FileUploadDialog` returns an `UploadedFile` object that contains information about the uploaded file, such as its name, size, and content. If the user closes the dialog without selecting a file, the result will be `null`.
 
 :::important
-The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
+The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below.
 :::
 
 <ComponentDemo
@@ -61,7 +61,7 @@ The `FileUploadDialog` allows you to set filters to limit the types of files tha
 
 ```java showLineNumbers
 FileUploadDialog dialog = new FileUploadDialog(
-  "Upload a file", 
+  "Upload a file",
   Arrays.asList(new FileChooserFilter("Text Files", "*.txt")));
 UploadedFile result = dialog.show();
 ```

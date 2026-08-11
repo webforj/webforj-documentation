@@ -1,0 +1,7 @@
+extends: existence
+message: "Avoid the '%s' construction common in AI writing. State it directly."
+link: "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+level: suggestion
+ignorecase: true
+raw:
+  - "(?:not only\\b.{1,60}?\\bbut(?: also)?|it(?:'s| is) not\\b.{1,40}?\\bit(?:'s| is))"

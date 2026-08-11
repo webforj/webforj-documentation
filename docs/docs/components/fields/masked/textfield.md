@@ -42,7 +42,7 @@ To format strings with the same mask syntax outside of a field, for example when
 | `z`       | Any digit or letter (uppercase or lowercase)                                                |
 | `Z`       | Any digit or letter; lowercase letters are converted to uppercase                           |
 
-All other characters in the mask are treated as literals and must be typed exactly. 
+All other characters in the mask are treated as literals and must be typed exactly.
 For example, a mask like `XX@XX` requires the user to enter an `@` in the middle.
 
 - **Invalid characters** are silently ignored.
@@ -92,7 +92,7 @@ The pattern must be a valid [JavaScript regular expression](https://developer.mo
 
 ## Restoring the value {#restoring-the-value}
 
-The `MaskedTextField` includes a restore feature that resets the field’s value to a predefined or original state. 
+The `MaskedTextField` includes a restore feature that resets the field’s value to a predefined or original state.
 This can be useful for undoing user changes or reverting to a default input.
 
 ```java
@@ -115,7 +115,7 @@ height='200px'
 
 ## `MaskedTextFieldSpinner` {#maskedtextfieldspinner}
 
-The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#basics) by adding spinner controls that let users cycle through a list of predefined values. 
+The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#basics) by adding spinner controls that let users cycle through a list of predefined values.
 This improves the user experience in situations where the input should be constrained to a fixed set of valid options.
 
 <ComponentDemo
@@ -126,14 +126,14 @@ height='120px'
 
 ### Key features {#key-features}
 
-- **Option List Support**  
+- **Option List Support**
   Populate the spinner with a list of valid string values using `setOptions()`:
 
   ```java
   spinner.setOptions(List.of("Option A", "Option B", "Option C"));
   ```
 
-- **Programmatic Spinning**  
+- **Programmatic Spinning**
   Use `spinUp()` and `spinDown()` to move through options:
 
   ```java
@@ -141,7 +141,7 @@ height='120px'
   spinner.spinDown(); // Selects the previous option
   ```
 
-- **Index Control**  
+- **Index Control**
   Set or retrieve the current selection index with:
 
   ```java
@@ -149,7 +149,7 @@ height='120px'
   int current = spinner.getOptionIndex();
   ```
 
-- **Mask Compatibility**  
+- **Mask Compatibility**
   Fully inherits all formatting, mask rules, and pattern validation from `MaskedTextField`.
 
 ## Styling {#styling}

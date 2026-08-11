@@ -1,9 +1,12 @@
 ---
 title: Debugging
-sidebar_position: 1
-_i18n_hash: 057e00d21a3392bb3bf8d1fba1dea15f
+sidebar_position: 15
+description: >-
+  Attach a remote Java debugger to a running webforJ app from Visual Studio
+  Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+_i18n_hash: d418992cee0dea04f98e4d4760acc2db
 ---
-Le débogage est une partie essentielle du développement Java, aidant les développeurs à identifier et à corriger les problèmes de manière efficace. Ce guide explique comment configurer le débogage dans webforJ pour Visual Studio Code, IntelliJ IDEA et Eclipse.
+Le débogage est une partie essentielle du développement Java, aidant les développeurs à identifier et à résoudre des problèmes de manière efficace. Ce guide explique comment configurer le débogage dans webforJ pour Visual Studio Code, IntelliJ IDEA et Eclipse.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -15,7 +18,7 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 </div>
 
 1. Ouvrez votre projet webforJ dans VS Code.
-2. Appuyez sur <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (ou <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> sur Mac) pour ouvrir le panneau Exécuter et Déboguer.
+2. Appuyez sur <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (ou <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> sur Mac) pour ouvrir le panneau Exécuter et déboguer.
 3. Cliquez sur "créer un fichier launch.json"
 4. Sélectionnez Java comme environnement.
 5. Modifiez `launch.json` pour correspondre à ce qui suit :
@@ -48,8 +51,8 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 
 1. Ouvrez votre projet dans IntelliJ IDEA.
 2. Accédez à Exécuter → Modifier les configurations.
-3. Cliquez sur le bouton <kbd>+</kbd> et sélectionnez Débogage JVM à distance.
-4. Définissez l'hôte sur `localhost` et le port sur `8000`.
+3. Cliquez sur le bouton <kbd>+</kbd> et sélectionnez Débogage JVM distant.
+4. Réglez l'hôte sur `localhost` et le port sur `8000`.
 5. Enregistrez la configuration et cliquez sur Déboguer pour vous connecter à l'application en cours d'exécution.
 
 </TabItem>
@@ -63,7 +66,7 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 
 1. Ouvrez votre projet dans Eclipse.
 2. Allez à Exécuter → Modifier les configurations.
-3. Sélectionnez Application Java à distance.
+3. Sélectionnez Application Java distante.
 4. Cliquez sur Nouvelle configuration et définissez :
    - Hôte : `localhost`
    - Port : `8000`
@@ -72,15 +75,15 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 </TabItem>
 </Tabs>
 
-## Exécution du débogueur {#running-the-debugger}
+## Exécuter le débogueur {#running-the-debugger}
 
 Une fois que vous avez configuré votre IDE :
 
-1. Démarrez votre application webforJ en utilisant la commande correspondante : 
-    - Pour Jetty, utilisez `mvnDebug jetty:run` 
+1. Démarrez votre application webforJ en utilisant la commande correspondante :
+    - Pour Jetty, utilisez `mvnDebug jetty:run`
     - Pour Spring Boot, utilisez `mvnDebug spring-boot:run`
 2. Exécutez la configuration de débogage dans votre IDE.
-3. Définissez des points d'arrêt et commencez le débogage.
+3. Définissez des points d'arrêt et commencez à déboguer.
 
 :::tip Conseils de débogage
 1. Assurez-vous que le port 8000 est disponible et n'est pas bloqué par un pare-feu.

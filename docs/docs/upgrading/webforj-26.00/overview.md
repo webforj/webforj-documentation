@@ -60,7 +60,7 @@ The location where the snapshot artifacts are hosted has changed. In your projec
 
 ### Spring Boot upgrade {#spring-boot-upgrade}
 
-webforJ 25.12 is the last version that uses Spring Boot 3.x. 
+webforJ 25.12 is the last version that uses Spring Boot 3.x.
 Starting with webforJ 26.00, your project needs to use Spring Boot 4.x.
 
 ```xml {4}

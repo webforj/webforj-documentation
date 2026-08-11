@@ -1,37 +1,40 @@
 ---
 sidebar_position: 5
 title: Route Patterns
-_i18n_hash: 2f1668e34197bb2f4bb6c5b3ec6e87e5
+description: >-
+  Define dynamic URL segments, optional parameters, wildcards, and regex
+  constraints to match webforJ routes precisely.
+_i18n_hash: a6c1267e034c1562652cc01d0f336640
 ---
-**Reittimallit** käytetään määrittämään, miten URL-osoitteet vastaavat tiettyihin näkymiin, mukaan lukien dynaamiset ja valinnaiset segmentit, säännönmukaiset lausekkeet ja jokerimerkit. Reittimallit mahdollistavat kehyksen URL-osoitteiden täsmäyttämisen, parametrien erottamisen ja URL-osoitteiden dynaamisen luomisen. Ne näyttelevät kriittistä roolia sovelluksen navigoinnin ja komponenttien renderöinnin jäsentelyssä selaimen sijainnin perusteella.
+**Reittimallit** määrittävät, kuinka URL-osoitteet vastaavat tiettyjä näkymiä, mukaan lukien dynaamiset ja valinnaiset segmentit, säännönmukaiset lausekkeet ja wildcardit. Reittimallit mahdollistavat kehyksen ottavan URL-osoitteita huomioon, parametreja erottavan ja URL-osoitteiden dynaamisen luomisen. Ne ovat keskeisessä roolissa sovelluksen navigoinnin ja komponenttien renderöinnin jäsentelyssä selaimen sijainnin mukaan.
 
 ## Reittimallin syntaksi {#route-pattern-syntax}
 
 Reittimallit webforJ:ssä ovat erittäin joustavia ja tukevat seuraavia ominaisuuksia:
 
-- **Nimetyt parametrid:** Merkitään muodossa `:paramName`, ne ovat pakollisia, ellei niitä ole merkitty valinnaisiksi.
-- **Valinnaiset parametrit:** Merkitään muodossa `:paramName?`, ne voidaan jättää pois URL-osoitteesta.
-- **Jokerimerkki segmentit:** Edustettuna merkillä `*`, ne sieppaavat kaikki jäljelle jäävät URL-segmentit.
-- **Säännönmukaisen lausekkeen rajoitukset:** Rajoituksia voidaan lisätä vain nimettyihin parametreihin (esimerkiksi `:id<[0-9]+>`).
+- **Nimetyt parametrit:** Merkitty `:paramName`, ne ovat pakollisia, ellei niitä ole merkitty valinnaisiksi.
+- **Valinnaiset parametrit:** Merkitty `:paramName?`, ne voidaan jättää pois URL-osoitteesta.
+- **Wildcard-segmentit:** Merkitty `*`, ne sieppaavat kaikki jäljellä olevat segmentit URL-osoitteessa.
+- **Säännönmukaiset lausekkeet rajoitukset:** Rajoituksia voidaan lisätä vain nimettyihin parametreihin (esimerkiksi `:id<[0-9]+>`).
 
-### Esimerkki reittimallin määrittelyistä {#example-of-route-pattern-definitions}
+### Esimerkki reittimallin määritelmistä {#example-of-route-pattern-definitions}
 
 ```java
-@Route("asiakas/:id<[0-9]+>/nimeltä/:nimi/*")
-public class AsiakasNäkymä extends Composite<Div> implements DidEnterObserver {
+@Route("customer/:id<[0-9]+>/named/:name/*")
+public class CustomerView extends Composite<Div> implements DidEnterObserver {
 
   @Override
   public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
     int id = parameters.getInt("id").orElse(0);
-    String nimi = parameters.getAlpha("nimi").orElse("Tuntematon");
+    String name = parameters.getAlpha("name").orElse("Tuntematon");
     String extra = parameters.getAlpha("*").orElse("");
 
-    String tulos =
+    String result =
         "Asiakas ID: " + id + "-" +
-        "Nimi: " + nimi + "-" +
+        "Nimi: " + name + "-" +
         "*: " + extra;
 
-    console().log(tulos);
+    console().log(result);
   }
 }
 ```
@@ -39,130 +42,130 @@ public class AsiakasNäkymä extends Composite<Div> implements DidEnterObserver 
 Tässä esimerkissä:
 
 - `:id<[0-9]+>` sieppaa numeerisen asiakas-ID:n.
-- `:nimi` sieppaa nimen.
-- `*` sieppaa kaikki ylimääräiset polkusegmentit `nimeltä/:nimi` jälkeen.
+- `:name` sieppaa nimen.
+- `*` sieppaa kaikki lisäpolku-segmentit `named/:name` jälkeen.
 
-## Nimetyt parametrit {#named-parameters}
+## Nimettävät parametrit {#named-parameters}
 
-Nimetyt parametrit määritellään etuliitteellä kaksoispiste `:` parametrin nimen edessä mallissa. Ne ovat pakollisia, ellei niitä ole merkitty valinnaisiksi. Nimetyt parametrit voivat myös sisältää säännönmukaisen lausekkeen [rajoitukset](#regular-expression-constraints) arvojen validoimiseksi.
+Nimettävät parametrit määritellään lisäämällä kaksipiste `:` parametrin nimen eteen mallissa. Ne ovat pakollisia, ellei niitä ole merkitty valinnaisiksi. Nimettävillä parametreilla voi myös olla säännönmukaisia lauseke [rajoituksia](#regular-expression-constraints) arvojen vahvistamiseksi.
 
 ### Esimerkki: {#example}
 
 ```java
-@Route("tuote/:id")
-public class TuoteNäkymä extends Composite<Div> {
-  // Komponenttilogiikka tähän
+@Route("product/:id")
+public class ProductView extends Composite<Div> {
+  // Komponenttilogikka täällä
 }
 ```
 
-Tämä malli vastaa URL-osoitteita, kuten `/tuote/123`, jossa `id` on `123`.
+Tämä malli vastaa URL-osoitteita kuten `/product/123`, missä `id` on `123`.
 
 ## Valinnaiset parametrit {#optional-parameters}
 
-Valinnaiset parametrit merkitään lisäämällä `?` parametrin nimen jälkeen. Nämä segmentit eivät ole pakollisia ja ne voidaan jättää pois URL-osoitteesta.
+Valinnaiset parametrit merkitään lisäämällä `?` parametrin nimen perään. Näitä segmenttejä ei vaadita ja ne voidaan jättää pois URL-osoitteesta.
 
 ### Esimerkki: {#example-1}
 
 ```java
-@Route("tilaus/:id?<[0-9]+>")
-public class TilausNäkymä extends Composite<Div> implements DidEnterObserver {
+@Route("order/:id?<[0-9]+>")
+public class OrderView extends Composite<Div> implements DidEnterObserver {
 
   @Override
   public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
     parameters.getInt("id").ifPresentOrElse(
-      id -> console().log("Tilaus ID: " + id),
-      () -> console().log("Tilaus ID:tä ei annettu")
+      id -> console().log("Tilauksen ID: " + id),
+      () -> console().log("Tilauksen ID:ta ei annettu")
     );
   }
 }
 ```
 
-Tämä malli vastaa sekä `/tilaus/123` sisältäen numeerisen arvon, että `/tilaus`, jolloin numeerista arvoa voidaan jättää pois, kun `/tilaus` syötetään.
+Tämä malli vastaa sekä `/order/123`, joka sisältää numeerisen arvon, että `/order`, jolloin numeerinen arvo voidaan jättää pois kun syötetään `/order`.
 
-## Säännönmukaisen lausekkeen rajoitukset {#regular-expression-constraints}
+## Säännönmukaiset lausekkeet rajoitukset {#regular-expression-constraints}
 
-Voit soveltaa säännönmukaisen lausekkeen rajoituksia parametreihin lisäämällä ne kulmasulkeisiin `<>`. Tämä mahdollistaa tiukempien vastaavuus sääntöjen määrittämisen parametreille.
+Voit soveltaa säännönmukaisia lauseke rajoituksia parametreihin lisäämällä ne kulmarakenteisiin `<>`. Tämä mahdollistaa tiukempien vastaavien sääntöjen määrittämisen parametreille.
 
 ### Esimerkki: {#example-2}
 
 ```java
-@Route("tuote/:koodi<[A-Z]{3}-[0-9]{4}>")
-public class TuoteNäkymä extends Composite<FlexLayout> implements DidEnterObserver {
+@Route("product/:code<[A-Z]{3}-[0-9]{4}>")
+public class ProductView extends Composite<FlexLayout> implements DidEnterObserver {
 
   @Override
   public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    parameters.get("koodi").ifPresentOrElse(
-      koodi -> console().log("Tuotekoodi: " + koodi),
+    parameters.get("code").ifPresentOrElse(
+      code -> console().log("Tuotekoodi: " + code),
       () -> console().error("Tuotekoodia ei löytynyt"));
   }
 }
 ```
 
-Tämä malli vastaa vain tuotekoodeja, jotka ovat muodossa `ABC-1234`. Esimerkiksi `/tuote/XYZ-5678` sopii, mutta `/tuote/abc-5678` ei sovi.
+Tämä malli vastaa vain tuotekoodin formaattia `ABC-1234`. Esimerkiksi `/product/XYZ-5678` vastaa, mutta `/product/abc-5678` ei.
 
-## Jokerimerkki segmentit {#wildcard-segments}
+## Wildcard-segmentit {#wildcard-segments}
 
-Jokerimerkkejä voidaan käyttää koko polun sieppaamiseen tietyn reittisegmentin jälkeen, mutta ne voivat olla vain mallin viimeinen segmentti, ratkaisten kaikki jäljellä olevat arvot URL-osoitteessa. Parempaa luettavuutta varten jokerimerkki segmenttejä voidaan nimetä. Kuitenkin, toisin kuin nimetyillä parametreilla, jokerimerkki segmenteillä ei voi olla rajoituksia.
+Wildcardit voidaan käyttää sieppaamaan koko polku, joka seuraa tiettyä reittisegmenttiä, mutta ne voivat esiintyä vain mallin loppusegmenttinä, ratkaisten kaikki seuraavat arvot URL-osoitteessa. Parempaa luettavuutta varten wildcards-segmenttejä voidaan nimetä. Kuitenkin, toisin kuin nimettävät parametrit, wildcard-segmenteillä ei voi olla rajoituksia.
 
 ### Esimerkki: {#example-3}
 
 ```java
-@Route("tiedostot/:polku*")
-public class TiedostoHallintaNäkymä extends Composite<Div> implements DidEnterObserver {
+@Route("files/:pathname*")
+public class FileManagerView extends Composite<Div> implements DidEnterObserver {
 
   @Override
   public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    parameters.get("polku").ifPresentOrElse(
-      polku -> console().log("TiedostoHallintaNäkymä: " + polku),
-      () -> console().log("TiedostoHallintaNäkymä: Ei polkuparametria")
+    parameters.get("pathname").ifPresentOrElse(
+      pathname -> console().log("FileManagerView: " + pathname),
+      () -> console().log("FileManagerView: Ei pathname-parametria")
     );
   }
 }
 ```
 
-Tämä malli vastaa mitä tahansa URL-osoitetta, joka alkaa `/tiedostot` ja sieppaa loput polusta jokerimerkkinä.
+Tämä malli vastaa mitä tahansa URL-osoitetta, joka alkaa `/files` ja sieppaa loput polusta wildcardina.
 
 ## Reittien prioriteetti {#route-priority}
 
-Kun useat reitit vastaavat tiettyä URL-osoitetta, reitin prioriteetti määrittää, mikä reitti valitaan ensin. Tämä on erityisen hyödyllistä, kun kaksi tai useampi reitti päällekkäin niiden polkumalleissa, ja tarvitset keinon hallita, mikä niistä saa etusijan. Prioriteettiattribuutti on käytettävissä sekä `@Route` että `@RouteAlias` -annotaatioissa.
+Kun useat reitit vastaavat tiettyä URL-osoitetta, reitin prioriteetti määrittää, mikä reitti valitaan ensin. Tämä on erityisen hyödyllistä, kun kaksi tai useampi reitti päällekkäin niiden polkumalleissa, ja tarvitaan tapa hallita, mikä saa etusijan. Prioriteettiattribuutti on käytettävissä sekä `@Route` että `@RouteAlias` -annotationeissa.
 
-### Miten prioriteettijärjestelmä toimii {#how-the-priority-system-works}
+### Miten prioriteetijärjestelmä toimii {#how-the-priority-system-works}
 
-Prioriteettiattribuutti sallii reitittimen määrittää sen järjestyksen, jossa reittejä arvioidaan, kun useat reitit voisivat vastata tiettyä URL-osoitetta. Reitit lajitellaan niiden prioriteettiarvojen mukaan, ja korkeampi prioriteetti (alhaisemmat numeeriset arvot) vastaa ensin. Tämä varmistaa, että tarkemmat reitit saavat etusijan yleisempiin verrattuna.
+Prioriteettiattribuutti mahdollistaa reitittimen määrittää, missä järjestyksessä reittejä arvioidaan, kun useat reittejä voivat vastata tiettyä URL-osoitetta. Reitit lajitellaan prioriteettiarvojensa mukaan, ja korkeampi prioriteetti (alemmat numeeriset arvot) vastaa ensin. Tämä varmistaa, että spesifimmät reitit saavat etusijan yleisempiin verrattuna.
 
-Jos kaksi reittiä jakaa saman prioriteetin, reititin ratkaisee konfliktin valitsemalla ensin rekisteröidyn reitin. Tämä mekanismi varmistaa, että oikea reitti valitaan, jopa silloin, kun useat reitit päällekkäin niiden URL-malleissa.
+Jos kaksi reittiä jakaa saman prioriteetin, reititin ratkaisee konfliktin valitsemalla ensin rekisteröidyn reitin. Tämä mekanismi varmistaa, että oikea reitti valitaan, vaikka useat reitit päällekkäin niiden URL-malleissa.
 
-:::info Oletusarvoinen prioriteetti  
-Oletuksena kaikille reiteille annetaan prioriteetti `10`.  
+:::info Oletusarvoinen prioriteetti
+Oletuksena kaikille reiteille asetetaan prioriteetti `10`.
 :::
 
-### Esimerkki: Konfliktiset reitit {#example-conflicting-routes}
+### Esimerkki: Konfliktireitit {#example-conflicting-routes}
 
 Kuvitellaan tilanne, jossa kaksi reittiä vastaavat samankaltaisia URL-malleja:
 
 ```java
-@Route(value = "tuotteet/:kategoria", priority = 9)
-public class TuoteKategoriaNäkymä extends Composite<Div> implements DidEnterObserver {
+@Route(value = "products/:category", priority = 9)
+public class ProductCategoryView extends Composite<Div> implements DidEnterObserver {
   @Override
   public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    String kategoria = parameters.get("kategoria").orElse("tuntematon");
-    console().log("Näytetään kategoria: " + kategoria);
+    String category = parameters.get("category").orElse("tuntematon");
+    console().log("Näytetään kategoria: " + category);
   }
 }
 
-@Route(value = "tuotteet/:kategoria/:tuoteId?<[0-9]+>")
-public class TuoteNäkymä extends Composite<Div> implements DidEnterObserver {
+@Route(value = "products/:category/:productId?<[0-9]+>")
+public class ProductView extends Composite<Div> implements DidEnterObserver {
   @Override
   public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    String tuoteId = parameters.get("tuoteId").orElse("tuntematon");
-    console().log("Näytetään tuote: " + tuoteId);
+    String productId = parameters.get("productId").orElse("tuntematon");
+    console().log("Näytetään tuote: " + productId);
   }
 }
 ```
 
-Tässä on, miten prioriteettijärjestelmä auttaa ratkaisemaan konflikteja:
+Näin prioriteettijärjestelmä auttaa ratkaisemaan konflikteja:
 
-- **`TuoteKategoriaNäkymä`** vastaa URL-osoitteita, kuten `/tuotteet/elektroniikka`.
-- **`TuoteNäkymä`** vastaa tarkempiin URL-osoitteisiin, kuten `/tuotteet/elektroniikka/123`, jossa `123` on tuote-ID.
+- **`ProductCategoryView`** vastaa URL-osoitteita kuten `/products/electronics`.
+- **`ProductView`** vastaa tarkempia URL-osoitteita kuten `/products/electronics/123`, missä `123` on tuotteen ID.
 
-Tässä tapauksessa molemmat reitit voisivat vastata URL-osoitteeseen `/tuotteet/elektroniikka`. Kuitenkin, koska `TuoteKategoriaNäkymä`:llä on korkeampi prioriteetti (prioriteetti = 9), se valitaan ensin, kun URL-osoitteessa ei ole `tuoteId`:tä. URL-osoitteissa, kuten `/tuotteet/elektroniikka/123`, `TuoteNäkymä` valitaan `tuoteId` parametrin vuoksi.
+Tässä tapauksessa molemmat reitit voisivat vastata URL-osoitetta `/products/electronics`. Kuitenkin, koska `ProductCategoryView`:lla on korkeampi prioriteetti (prioriteetti = 9), se valitaan ensin, kun URL-osoitteessa ei ole `productId`:ta. URL-osoitteisiin kuten `/products/electronics/123`, `ProductView` valitaan `productId`-parametrin vuoksi.

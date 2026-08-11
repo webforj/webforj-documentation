@@ -11,7 +11,7 @@ hide_table_of_contents: true
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-reading-position-indicator/blog-reading-progress-cover.png)
 
 Recently, I was browsing articles on [CSS Tricks](https://css-tricks.com) and came across *[Reading Position Indicator](https://css-tricks.com/reading-position-indicator/)* by Pankaj Parashar.
-I've seen this type of indicator in articles, blogs, and in lengthy terms and conditions that I've definitely read through thoroughly. I wanted to try recreating a reading position indicator using webforJ, and see if I could build it in less than 100 lines of code. 
+I've seen this type of indicator in articles, blogs, and in lengthy terms and conditions that I've definitely read through thoroughly. I wanted to try recreating a reading position indicator using webforJ, and see if I could build it in less than 100 lines of code.
 
 <!-- truncate -->
 
@@ -19,9 +19,9 @@ Including import statements, I managed to keep this project contained within 76 
 
 ![gif showcasing the webforJ reading position indicator](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-reading-position-indicator/tempReadingPositionIndicator.gif)
 
-## The visuals
+## The visuals {#the-visuals}
 
-### The main component
+### The main component {#the-main-component}
 
 I knew immediately which webforJ component I wanted to use for this project: the [`ProgressBar`](/docs/components/progressbar) component. Even though it's the most crucial component, it only took a few lines to get it working the way I wanted.
 
@@ -32,7 +32,7 @@ private final Integer maxProgressValue = 100;
 private final ProgressBar progressBar = new ProgressBar(0, maxProgressValue);
 ```
 
-### A persistent `Toolbar`
+### A persistent `Toolbar` {#a-persistent-toolbar}
 
 Ok, now that I had the component that would show the progression, I wanted to keep it compact, close to an article header, and anchored at the top of the screen. I knew that if I nested my `ProgressBar` inside a `Toolbar`, as shown in the [`ProgressBar` in toolbars](/docs/components/toolbar#progressbar-in-toolbars) example, I could achieve my goals for compactness and closeness to the article header.
 
@@ -51,7 +51,7 @@ dwc-toolbar {
 }
 ```
 
-### Filler content
+### Filler content {#filler-content}
 
 I had my progress bar anchored at the top of the page, along with the article header. The next thing I needed to add was filler content for the page, enough of it so that the content exceeds the content window's size.
 
@@ -72,9 +72,9 @@ content
     .setMargin("0 auto");
 ```
 
-## The logic
+## The logic {#the-logic}
 
-### Composite component
+### Composite component {#composite-component}
 
 Since all the UI needs to go somewhere, I decided to make my [composite component](/docs/building-ui/composing-components) another `FlexLayout`. My composite component also included the scrollbar, so anything larger than the screen will overflow.
 
@@ -92,7 +92,7 @@ public class ReadingIndicatorView extends Composite<FlexLayout> {
 }
 ```
 
-### Event listeners
+### Event listeners {#event-listeners}
 
 I wanted my `ProgressBar` to react whenever a user scrolled the composite component. This was pretty straightforward, as I could add an event listener directly for the [`scroll` event](https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event), queuing up another part of my code that would handle actually setting the values needed for the `ProgressBar`:
 
@@ -118,7 +118,7 @@ self.setAttribute("id", "composite-component")
 self.getElement().addEventListener("element-resize", e -> updateProgressBar());
 ```
 
-### Updating the `ProgressBar` value
+### Updating the `ProgressBar` value {#updating-the-progressbar-value}
 
 Finally, I had to write a section of code that calculates the article's current progress, then use that value to update the `ProgressBar`. The following figure helps visualize how three element properties can be used for the calculation.
 
@@ -139,7 +139,7 @@ Double articleProgress = scrollTop / maxScroll * maxProgressValue;
 progressBar.setValue(articleProgress.intValue());
 ```
 
-## Final product and thoughts
+## Final product and thoughts {#final-product-and-thoughts}
 
 The following block of code is the full project of my reading position indicator, made within 100 lines of code. Even when I did need to use JavaScript, it was minimal and contained within my composite component. I hope my project gives you some inspiration for webforJ-focused solutions for your next project.
 
@@ -180,7 +180,7 @@ The following block of code is the full project of my reading position indicator
 
       private void setupEventHandlers() {
         self.getElement().addEventListener("element-resize", e -> updateProgressBar());
-        
+
         self.setAttribute("id", "main-article")
             .getElement()
             .executeJsVoidAsync(

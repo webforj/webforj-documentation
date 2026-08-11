@@ -2,7 +2,10 @@
 title: Styling
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: abb693dec702e4a253cf4e1228fb2d7e
+description: >-
+  Style webforJ apps with the DWC design system using CSS custom properties,
+  palettes, shadow parts, and the Figma kit.
+_i18n_hash: 40e7755b35318ea88eb990c6b6dbd240
 ---
 <Head>
   <style>{`
@@ -17,25 +20,25 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ toimitetaan kattavan suunnittelujärjestelmän kanssa nimeltä **DWC**. Se on enemmän kuin vain teema, se on rakennettu, laajennettavissa oleva järjestelmä, joka hallitsee sovelluksesi visuaalista kieltä. DWC on suunniteltu auttamaan kehittäjiä ja suunnittelijoita luomaan johdonmukaisia, brändin mukaisia käyttöliittymiä nopeasti ja varmasti.
+webforJ toimittaa kattavan suunnittelujärjestelmän nimeltä **DWC**. Se on enemmän kuin pelkkä teema, se on rakenteellinen, laajennettavissa oleva järjestelmä, joka säätelee sovelluksesi visuaalista kieltä. DWC on rakennettu auttamaan kehittäjiä ja suunnittelijoita luomaan johdonmukaisia, brändin mukaisia käyttöliittymiä nopeasti ja vahvasti.
 
-DWC:n ytimessä on joukko huolellisesti suunniteltuja CSS-muuttujia (suunnittelutunnisteita), jotka kattavat keskeiset visuaaliset elementit, kuten värit, typografian, reunat ja väliyhteydet. Nämä tunnisteet toimivat kaikkien komponenttityylien perustavanlaatuisina rakennuspalikoina ja mahdollistavat globaalin mukauttamisen vähällä vaivalla.
+Perusperiaatteeltaan DWC tarjoaa joukon tarkasti suunniteltuja CSS-muuttujia (suunnittelutokeneita), jotka kattavat keskeiset visuaaliset elementit, kuten värit, typografian, reunat ja välistykset. Nämä tokenit toimivat kaikkien komponenttityylien perustavanlaatuisina rakennuspalikoina ja mahdollistavat globaaliin mukauttamiseen minimaalista vaivannäköä.
 
-Edistyneemmän tyylittelyn tukemiseksi webforJ hyödyntää CSS Shadow Partsia, mikä mahdollistaa komponenttien sisäisten osien valikoidun tyylittelyn ilman kapseloinnin rikkomista. Tämä antaa tiimeille tarkkaa hallintaa siitä, kuinka komponentit näkyvät, jopa suuremmissa sovelluksissa.
+Edistyneemmän tyylittelyn tukemiseksi webforJ hyödyntää CSS Shadow Parts -tekniikkaa, joka mahdollistaa komponenttien sisäisten osien valikoivan tyylittelyn ilman kapseloinnin murtumista. Tämä antaa tiimeille tarkkaa hallintaa siitä, miltä komponentit näyttävät, jopa suurissa sovelluksissa.
 
-DWC sisältää myös muokattavan väri-kartan ja oletuksena puhtaan, vaalean visuaalisen teeman, mutta jokaista aspektia voidaan mukauttaa brändisi tai tuotteesi tyyliin.
+DWC sisältää myös räätälöitävän väriasteikon ja oletuksena puhtaan, vaalean visuaalisen teeman, mutta jokainen osa voidaan mukauttaa brändisi tai tuotteen tyyliin.
 
 <AISkillTip skill="webforj-styling-apps" />
 
-## Figma design kit {#figma-design-kit}
+## Figma-suunnittelupaketti {#figma-design-kit}
 
-[DWC Figma -kirjasto](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) on virallinen suunnitteluresurssi modernien, yritystasojen verkkosovellusten luomiseen. Se sisältää kattavan joukon komponentteja, typografiatyylejä ja väritunnisteita, jotka ovat linjassa DWC:n suunnittelujärjestelmän kanssa. Suunnittelijat ja kehittäjät voivat käyttää tätä kirjastoa rakentaakseen visuaalisesti johdonmukaisia, käyttäjäystävällisiä käyttöliittymiä ennakoitavalla komponenttikäytöksellä, tarkalla väliyhteydellä ja saavutettavalla väri-eron kanssa.
+[DWC Figma -kirjasto](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) on virallinen suunnitteluresurssi modernien, yritysluokan verkkosovellusten luomiseen. Se sisältää kattavan joukon komponentteja, typografiastylejä ja väritokeneita, jotka vastaavat DWC-suunnittelujärjestelmää. Suunnittelijat ja kehittäjät voivat käyttää tätä kirjastoa visuaalisesti johdonmukaisten, käyttäjäystävällisten käyttöliittymien rakentamiseen, joissa komponenttien käyttäytyminen on ennustettavaa, välistykset tarkkoja ja värikontrasti saavutettavaa.
 
-<img src="/img/dwc.png" alt="Figma Design Kit" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
+<img src="/img/dwc.png" alt="Figma-suunnittelupaketti" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
 
->  
+>
 <!-- > ![Figma Design Kit Screenshot](./path-to-your-screenshot.png) -->
 
-## Topics {#topics}
+## Aiheita {#topics}
 
 <DocCardList className="topics-section" />

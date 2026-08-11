@@ -16,7 +16,7 @@ In this post, we'll explore two distinct approaches to loading data from REST AP
 
 <!-- truncate -->
 
-## The Setup: A Customer Management System
+## The Setup: A Customer Management System {#the-setup-a-customer-management-system}
 
 Our demo application displays 100 customer records in a table with pagination. Simple enough, right? But we've implemented it in two different ways, each living in its own tab, to demonstrate when each approach shines.
 
@@ -35,13 +35,13 @@ Both `Table` components showcase:
 
 But under the hood? They work very differently.
 
-## Approach 1: CollectionRepository (Load Everything Up Front)
+## Approach 1: CollectionRepository (Load Everything Up Front) {#approach-1-collectionrepository-load-everything-up-front}
 
 The first approach uses webforJ's [`CollectionRepository`](https://docs.webforj.com/docs/advanced/repository/overview#collection-repository) to load all data into memory at once, then handle pagination.
 
 ![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/data-loading-strategies/rest-blog-collection-repo.png)
 
-### How It Works
+### How It Works {#how-it-works}
 
 ```java
 // 1. Fetch ALL customers from the REST API in one call
@@ -57,7 +57,7 @@ navigator = new Navigator(repository, 15);
 
 That's it. One API call, all your data in memory, instant pagination.
 
-### The Backend Endpoint
+### The Backend Endpoint {#the-backend-endpoint}
 
 The Spring Boot controller just needs a simple endpoint that returns everything (the `getAllCustomers()` method, in this case):
 
@@ -72,13 +72,13 @@ public class CustomerRestController {
 }
 ```
 
-### The Pros
+### The Pros {#the-pros}
 
 **Simple Implementation**: It's the easiest pattern to implement. One endpoint, one service call, done. No need to manage offset/limit parameters or worry about pagination logic.
 
 **Excellent for Small Datasets**: If you're working with a few hundred records or less, the performance is excellent and the memory footprint is negligible.
 
-### The Cons
+### The Cons {#the-cons}
 
 **Initial Load Time**: Users have to wait for all 100 (or 1000, or 10,000) records to load before seeing anything. For large datasets, this can be noticeable.
 
@@ -88,7 +88,7 @@ public class CustomerRestController {
 
 **Scalability Ceiling**: This approach hits a wall. At some point, loading 50,000 records becomes impractical no matter how you optimize it.
 
-### When to Use CollectionRepository
+### When to Use CollectionRepository {#when-to-use-collectionrepository}
 
 This approach is perfect when:
 - You're working with **small to medium datasets** (up to a few thousand records)
@@ -96,15 +96,15 @@ This approach is perfect when:
 - You need **instant filtering and sorting** without round trips
 - **Simplicity is a priority** and you want minimal backend complexity
 
-This approach worked because our API was relatively simple, and we were only interested in getting the entirety of the data in one fell swoop. As you start to work with more complex REST APIs and need to convert the repository criteria into HTTP request parameters, such as pagination, the `DelegatingRepository` becomes the more appropriate tool. 
+This approach worked because our API was relatively simple, and we were only interested in getting the entirety of the data in one fell swoop. As you start to work with more complex REST APIs and need to convert the repository criteria into HTTP request parameters, such as pagination, the `DelegatingRepository` becomes the more appropriate tool.
 
-## Approach 2: DelegatingRepository (Lazy Loading on Demand)
+## Approach 2: DelegatingRepository (Lazy Loading on Demand) {#approach-2-delegatingrepository-lazy-loading-on-demand}
 
 The second `Table` demonstrates webforJ's [`DelegatingRepository`](https://docs.webforj.com/docs/advanced/repository/delegating-repository) to fetch only the data needed for the current page, loading more as users navigate.
 
 ![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/data-loading-strategies/rest-blog-delegating-repo.png)
 
-### How It Works
+### How It Works {#how-it-works-1}
 
 Instead of fetching everything at once, we create a custom repository that knows how to fetch data in chunks. This is because the `DelegatingRepository` lets you specify criteria and turn that into HTTP requests. Here, we use pagination as an example of using repository functions to correspond to API calls:
 
@@ -137,7 +137,7 @@ The `DelegatingRepository` requires three functions:
 2. **Count**: Returns the total count for pagination calculations
 3. **Find by key**: Fetches a single item when needed
 
-### Using the DelegatingRepository
+### Using the DelegatingRepository {#using-the-delegatingrepository}
 
 Once defined, using it is just as simple as the CollectionRepository:
 
@@ -154,7 +154,7 @@ customersTable.setRepository(customerRepository);
 navigator = new Navigator(customerRepository, 15);
 ```
 
-### The Backend Implementation
+### The Backend Implementation {#the-backend-implementation}
 
 The Spring Boot controller needed to support pagination in order to demonstrate this:
 
@@ -185,7 +185,7 @@ public class CustomerRestController {
 }
 ```
 
-### The Pros
+### The Pros {#the-pros-1}
 
 **Fast Initial Load**: Users see data immediately. Only 15 records load on startup, not 100 or 10,000.
 
@@ -193,7 +193,7 @@ public class CustomerRestController {
 
 **Scales Indefinitely**: Whether you have 100 records or 100,000, the client-side performance remains consistent.
 
-### The Cons
+### The Cons {#the-cons-1}
 
 **Network Latency**: Every page change requires a round trip to the server. On slow connections or with high latency, this creates lag when users navigate.
 
@@ -201,7 +201,7 @@ public class CustomerRestController {
 
 **More API Calls**: More network requests means more opportunities for failures and more load on your backend infrastructure.
 
-### When to Use DelegatingRepository
+### When to Use DelegatingRepository {#when-to-use-delegatingrepository}
 
 This approach shines when:
 - You're working with **large datasets** (thousands to millions of records)
@@ -210,7 +210,7 @@ This approach shines when:
 - Your backend **already supports pagination** (or you can easily add it)
 - Users typically **work with subsets** of data, not the whole collection
 
-## Implementation Highlights
+## Implementation Highlights {#implementation-highlights}
 
 Both approaches use webforJ's [`Navigator`](https://docs.webforj.com/docs/components/navigator) component for pagination UI and webforJ's [`Table`](https://docs.webforj.com/docs/components/table/overview) component for displaying data. The beauty of webforJ's repository abstraction is that the UI code doesn't need to know which loading strategy you're using - it all works the same way from the table and navigator's perspective.
 
@@ -223,7 +223,7 @@ navigator.setLayout(Navigator.Layout.PAGES);
 
 The repository interface abstracts away the loading strategy, so you can switch between approaches without rewriting your UI code.
 
-## Making the Choice
+## Making the Choice {#making-the-choice}
 
 So which approach should you use? Here's my rule of thumb:
 
@@ -241,7 +241,7 @@ So which approach should you use? Here's my rule of thumb:
 
 And remember: you can always start simple and refactor later. The repository pattern makes it straightforward to switch between approaches as your requirements evolve.
 
-## See It in Action
+## See It in Action {#see-it-in-action}
 
 Want to try both approaches yourself? The complete source code for this demo application is available on GitHub:
 
@@ -249,7 +249,7 @@ Want to try both approaches yourself? The complete source code for this demo app
 
 Clone it, run it, and see how each approach behaves with your own data and use cases!
 
-## Learn More
+## Learn More {#learn-more}
 
 - [Repository Overview](https://docs.webforj.com/docs/advanced/repository/overview) - Understanding repositories in webforJ
 - [DelegatingRepository Guide](https://docs.webforj.com/docs/advanced/repository/delegating-repository) - Deep dive into lazy loading

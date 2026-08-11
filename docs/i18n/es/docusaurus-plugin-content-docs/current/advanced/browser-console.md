@@ -1,21 +1,25 @@
 ---
 sidebar_position: 15
 title: Browser Console
-_i18n_hash: 843587956991faa037138ce8e8563e7a
+description: >-
+  Log messages from Java to the browser console with typed levels and styled
+  output using the BrowserConsole utility.
+_i18n_hash: 5900eaf4e7be19839d40784d6532bff1
 ---
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>
 
-Usar la consola del navegador para imprimir información del programa es una parte integral del proceso de desarrollo. La clase utilitaria <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> proporciona características que mejoran las capacidades de registro a través de tipos de registro y estilos.
+Usar la consola del navegador para imprimir información del programa es una parte integral del proceso de desarrollo.
+La clase de utilidad <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> proporciona características que mejoran las capacidades de registro a través de tipos de registro y estilos.
 
 ## Instance {#instance}
 
-Obtén una instancia de `BrowserConsole` utilizando el método `App.console()`. Imprime cualquier `Object` deseado como uno de los cinco tipos de registro: log, info, warn, error o debug.
+Obtén una instancia de `BrowserConsole` usando el método `App.console()`. Imprime cualquier `Object` deseado como uno de los cinco tipos de registro: log, info, warn, error o debug.
 
 ```java
 import static com.webforj.App.console;
 // Tipos
-console().log("Mensaje de log");
+console().log("Mensaje de registro");
 console().info("Mensaje de información");
 console().warn("Mensaje de advertencia");
 console().error("Mensaje de error");
@@ -25,7 +29,7 @@ console().debug("Mensaje de depuración");
 ## Styling {#styling}
 
 Utiliza los métodos de constructor para establecer la apariencia del mensaje de registro. Cada constructor tiene opciones para cambiar una propiedad específica. También es posible [mezclar múltiples estilos](#mixing-styles).
-Una vez que se imprime un mensaje en la consola, cualquier estilo aplicado no se transferirá a mensajes subsiguientes a menos que se redefina *explícitamente*.
+Una vez que se imprime un mensaje en la consola, cualquier estilo aplicado no se transferirá a los mensajes posteriores a menos que se redefina *explícitamente*.
 
 - [`background()`](#background-color)
 - [`color()`](#text-color)
@@ -35,7 +39,7 @@ Una vez que se imprime un mensaje en la consola, cualquier estilo aplicado no se
 - [`weight()`](#font-weight)
 
 :::tip
-Utiliza el método `setStyle` para cambiar las propiedades del registro de `BrowserConsole` que no están especificadas por los constructores.
+Utiliza el método `setStyle` para cambiar las propiedades del registro `BrowserConsole` que no están especificadas por los constructores.
 :::
 
 ### Background color {#background-color}
@@ -57,7 +61,7 @@ Utiliza métodos nombrados por color, como `red()`, o elige un valor específico
 ```java
 // Ejemplos de color
 console().background().red().log("Texto rojo");
-console().color().colored("#becad2").log("Texto personalizado color gris azul claro");
+console().color().colored("#becad2").log("Texto gris azulado personalizado");
 ```
 
 ### Font size {#font-size}
@@ -88,20 +92,20 @@ console().style().normal().log("Fuente normal");
 ### Text transformation {#text-transformation}
 
 Controla la capitalización de los caracteres en un mensaje con el método `transform()`, que devuelve el <JavadocLink type="foundation" location="com/webforj/BrowserConsole.TextTransformBuilder" code='true'>TextTransformBuilder</JavadocLink>.
-Por ejemplo, utiliza el método `capitalize()` para transformar la primera letra de cada palabra a mayúscula.
+Por ejemplo, utiliza el método `capitalize()` para transformar la primera letra de cada palabra en mayúscula.
 
 ```java
 // Ejemplos de transformación
 // Transformación de texto en mayúscula
-console().transform().capitalize().log("Transformación de texto a capital");
- // TRANSFORMACIÓN DE TEXTO EN MAYÚSCULAS 
+console().transform().capitalize().log("Transformación de texto en mayúscula");
+// TRANSFORMACIÓN DE TEXTO EN MAYÚSCULAS
 console().transform().uppercase().log("Transformación de texto en mayúsculas");
 ```
 
 ### Font weight {#font-weight}
 
-Establece qué tan grueso es el texto con el método `weight()`, que devuelve el <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontWeightBuilder" code='true'>FontWeightBuilder</JavadocLink>.
-Por ejemplo, utiliza el método `lighter()` para hacer que la fuente sea más ligera que la normal.
+Establece cuán grueso es el texto con el método `weight()`, que devuelve el <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontWeightBuilder" code='true'>FontWeightBuilder</JavadocLink>.
+Por ejemplo, utiliza el método `ligther()` para hacer que la fuente sea más ligera que lo normal.
 
 ```java
 // Ejemplos de peso

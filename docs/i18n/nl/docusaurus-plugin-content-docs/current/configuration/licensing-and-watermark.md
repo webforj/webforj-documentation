@@ -1,10 +1,13 @@
 ---
 title: Licensing and Watermark
-sidebar_position: 20
-_i18n_hash: 9846eb8092fd823df938558446c260cf
+sidebar_position: 45
+description: >-
+  Request a webforJ trial certificate and place certificate.bls in the resources
+  directory to remove the unlicensed runtime watermark.
+_i18n_hash: 98575d4533b0e62a9c8a701b40622a52
 ---
-Standaard kunnen webforJ-projecten worden uitgevoerd, maar zullen ze geen licentiecertificaat hebben. Bij het uitvoeren van een ongecertificeerd project wordt er een watermerk weergegeven op de gebruikersinterface van de draaiende applicatie totdat een geldige licentie is ingevoerd.
+Standaard kunnen webforJ-projecten worden uitgevoerd, maar hebben ze geen licentiecertificaat eraan gekoppeld. Wanneer een niet-gelicentieerd project wordt uitgevoerd, wordt er een watermerk weergegeven op de gebruikersinterface van de draaiende app totdat een geldig licentie is ingevoerd.
 
-Voor individuele ontwikkelaars is het eenvoudig om een proeflicentiecertificaat van webforJ te verkrijgen. Bezoek het aanvraagformulier voor licentiecertificaten, vul de gegevens in en dien het formulier in. Nadat het formulier is ingediend, wordt er een bevestigings-e-mail met een bijgevoegd `certificate.bls`-bestand naar het opgegeven e-mailadres gestuurd.
+Voor individuele ontwikkelaars is het verkrijgen van een proeflicentiecertificaat van webforJ eenvoudig. Bezoek de [webforJ-prijzenpagina](https://webforj.com/pricing/), kies het juiste plan en volg de instructies om een licentie aan te vragen.
 
-Plaats dit bestand in de `resources`-directory van een project, en het watermerk wordt niet langer weergegeven.
+Om een webforJ-app een licentie te laten aanvragen van een service die op uw ontwikkelingsmachine of interne netwerk draait, ga naar [Lokale BLS Licentie](/docs/configuration/local-bls-license).

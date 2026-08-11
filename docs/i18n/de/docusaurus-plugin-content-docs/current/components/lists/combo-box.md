@@ -5,39 +5,39 @@ slug: combobox
 description: >-
   Combine a dropdown list with a text input in the ComboBox to let users select
   preset items or type custom values with placeholder support.
-_i18n_hash: 4ef8ce7040bed877e314790f155f728a
+_i18n_hash: 9e5c0f54f07f604ee91a84210189ca30
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-combobox" />
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" top='true'/>
 
-Die `ComboBox`-Komponente kombiniert eine Dropdown-Liste mit einem Texteingabefeld, sodass Benutzer entweder aus vordefinierten Optionen auswählen oder einen benutzerdefinierten Wert eingeben können. Wenn benutzerdefinierte Einträge zusammen mit einem Satz empfohlenen Optionen zulässig sein müssen, füllt dies die Lücke, die `ChoiceBox` nicht abdeckt.
+Die `ComboBox`-Komponente kombiniert eine Dropdown-Liste mit einem Texteingabefeld, sodass Benutzer entweder aus vordefinierten Optionen auswählen oder einen benutzerdefinierten Wert eingeben können. Wenn benutzerdefinierte Eingaben zusammen mit einer Reihe von vorgeschlagenen Optionen erlaubt werden müssen, füllt sie die Lücke, die `ChoiceBox` nicht abdeckt.
 
 <!-- INTRO_END -->
 
-## Usos {#usages}
+## Usages {#usages}
 
-<ParentLink parent="Liste" />
+<ParentLink parent="List" />
 
-Die ComboBox-Komponente ist ein vielseitiges Eingabeelement, das die Funktionen sowohl einer Dropdown-Liste als auch eines Texteingabefelds kombiniert. Sie ermöglicht es Benutzern, Elemente aus einer vordefinierten Liste auszuwählen oder nach Bedarf benutzerdefinierte Werte einzugeben. In diesem Abschnitt werden gängige Anwendungen der ComboBox-Komponente in verschiedenen Szenarien untersucht:
+Die ComboBox-Komponente ist ein vielseitiges Eingabeelement, das die Funktionen einer Dropdown-Liste und eines Texteingabefelds kombiniert. Sie ermöglicht es den Benutzern, Elemente aus einer vordefinierten Liste auszuwählen oder nach Bedarf benutzerdefinierte Werte einzugeben. Dieser Abschnitt untersucht gängige Anwendungen der ComboBox-Komponente in verschiedenen Szenarien:
 
-1. **Produktsuche und -eingabe**: Verwenden Sie eine ComboBox, um eine Produktsuch- und Eingabefunktion zu implementieren. Benutzer können entweder ein Produkt aus einer vordefinierten Liste auswählen oder einen benutzerdefinierten Produktnamen eingeben. Dies ist hilfreich für Anwendungen wie E-Commerce-Websites, in denen Produkte zahlreich und vielfältig sind.
+1. **Produkt Suche und Eingabe**: Verwenden Sie eine ComboBox, um eine Produkt-Such- und Eingabefunktion zu implementieren. Benutzer können entweder ein Produkt aus einer vordefinierten Liste auswählen oder einen benutzerdefinierten Produktnamen eingeben. Dies ist hilfreich für Anwendungen wie E-Commerce-Seiten, auf denen Produkte zahlreich und vielfältig sind.
 
-2. **Tag-Auswahl und -eingabe**: In Anwendungen, die Inhalte taggen, kann eine ComboBox eine ausgezeichnete Wahl sein. Benutzer können aus einer Liste bestehender Tags auswählen oder benutzerdefinierte Tags hinzufügen, indem sie sie eingeben. Dies ist nützlich für die Organisation und Kategorisierung von Inhalten. Beispiele für solche Tags sind:
-    >- Projektbeschriftungen: In einem Projektmanagement-Tool können Benutzer Beschriftungen oder Tags (z. B. "Dringend", "In Bearbeitung", "Abgeschlossen") auswählen, um Aufgaben oder Projekte zu kategorisieren, und sie können nach Bedarf benutzerdefinierte Beschriftungen erstellen.
-    >- Rezeptzutaten: In einer Koch- oder Rezept-App können Benutzer Zutaten aus einer Liste auswählen (z. B. "Tomaten", "Zwiebeln", "Hähnchen") oder ihre eigenen Zutaten für benutzerdefinierte Rezepte hinzufügen.
-    >- Standort-Tags: In einer Karten- oder Geotagging-Anwendung können Benutzer vordefinierte Standort-Tags auswählen (z. B. "Strand", "Stadt", "Park") oder benutzerdefinierte Tags erstellen, um bestimmte Orte auf einer Karte zu markieren.
+2. **Tag-Auswahl und Eingabe**: In Anwendungen, die das Tagging von Inhalten betreffen, kann eine ComboBox eine ausgezeichnete Wahl sein. Benutzer können aus einer Liste bestehender Tags auswählen oder benutzerdefinierte Tags hinzufügen, indem sie diese eingeben. Dies ist nützlich, um Inhalte zu organisieren und zu kategorisieren. Beispiele für solche Tags sind:
+    >- Projektlabel: In einem Projektmanagement-Tool können Benutzer Labels oder Tags (z.B. "Dringend", "In Bearbeitung", "Abgeschlossen") auswählen, um Aufgaben oder Projekte zu kategorisieren, und sie können nach Bedarf benutzerdefinierte Labels erstellen.
+    >- Rezept-Zutaten: In einer Koch- oder Rezept-App können Benutzer Zutaten aus einer Liste auswählen (z.B. "Tomaten", "Zwiebeln", "Hühnchen") oder ihre eigenen Zutaten für benutzerdefinierte Rezepte hinzufügen.
+    >- Standort-Tags: In einer Mapping- oder Geotagging-Anwendung können Benutzer vordefinierte Standort-Tags (z.B. "Strand", "Stadt", "Park") auswählen oder benutzerdefinierte Tags erstellen, um bestimmte Orte auf einer Karte zu markieren.
 
-3. **Dateneingabe mit vorgeschlagenen Werten**: In Dateneingabeformularen kann eine ComboBox verwendet werden, um die Eingabe zu beschleunigen, indem eine Liste vorgeschlagener Werte basierend auf der Benutzereingabe bereitgestellt wird. Dies hilft Benutzern, Daten genau und effizient einzugeben.
+3. **Daten Eingabe mit vorgeschlagenen Werten**: In Dateneingabeformularen kann eine ComboBox verwendet werden, um die Eingabe zu beschleunigen, indem eine Liste von vorgeschlagenen Werten basierend auf der Benutzereingabe bereitgestellt wird. Dies hilft den Benutzern, Daten genau und effizient einzugeben.
 
     :::tip
-    Die `ComboBox` sollte verwendet werden, wenn Benutzern das Eingeben benutzerdefinierter Werte erlaubt ist. Wenn nur vordefinierte Werte gewünscht sind, verwenden Sie stattdessen eine [`ChoiceBox`](./choice-box.md).
+    Die `ComboBox` sollte verwendet werden, wenn Benutzer benutzerdefinierte Werte eingeben können. Wenn nur voreingestellte Werte gewünscht sind, verwenden Sie stattdessen eine [`ChoiceBox`](./choice-box.md).
     :::
 
-## Benutzerdefinierter Wert {#custom-value}
+## Custom value {#custom-value}
 
-Die Änderung der benutzerdefinierten Wert-Eigenschaft ermöglicht die Kontrolle darüber, ob ein Benutzer den Wert im Eingabefeld der `ComboBox`-Komponente ändern kann oder nicht. Wenn `true`, was der Standard ist, kann ein Benutzer den Wert ändern. Wenn auf `false` gesetzt, kann der Benutzer den Wert nicht ändern. Dies kann mit der <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink>-Methode festgelegt werden.
+Die Änderung der benutzerdefinierten Wert-Eigenschaft ermöglicht es, zu steuern, ob ein Benutzer den Wert im Eingabefeld der `ComboBox`-Komponente ändern kann oder nicht. Wenn `true`, was der Standard ist, kann der Benutzer den Wert ändern. Wenn auf `false` gesetzt, kann der Benutzer den Wert nicht ändern. Dies kann mit der <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink>-Methode eingestellt werden.
 
 <ComponentDemo
 path='/webforj/comboboxcustomvalue'
@@ -45,7 +45,7 @@ files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomVa
 height='200px'
 />
 
-## Platzhalter {#placeholder}
+## Placeholder {#placeholder}
 
 Ein Platzhalter kann für eine `ComboBox` festgelegt werden, der im Texteingabefeld der Komponente angezeigt wird, wenn es leer ist, um Benutzer zur gewünschten Eingabe im Feld aufzufordern. Dies kann mit der <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink>-Methode erreicht werden.
 
@@ -55,29 +55,29 @@ files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlacehol
 height='200px'
 />
 
-## Dropdown-Typ {#dropdown-type}
+## Dropdown type {#dropdown-type}
 
-Die Verwendung der <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink>-Methode weist dem `type`-Attribut einer `ComboBox` einen Wert zu und einen entsprechenden Wert für das `data-dropdown-for`-Attribut im Dropdown der `ComboBox`. Dies ist hilfreich für das Styling, da das Dropdown aus seiner aktuellen Position im DOM entfernt und an das Ende des Seitenkörpers verschoben wird, wenn es geöffnet wird.
+Die Verwendung der <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink>-Methode weist den `type`-Attributwert einer `ComboBox` zu und einem entsprechenden Wert für das `data-dropdown-for`-Attribut im Dropdown der `ComboBox`. Dies ist hilfreich für das Styling, da das Dropdown bei Öffnung aus seiner aktuellen Position im DOM entfernt und ans Ende des Seitenkörpers verschoben wird.
 
-Diese Abtrennung schafft eine Situation, in der es schwierig wird, das Dropdown direkt mit CSS oder Shadow-Part-Selektoren aus der übergeordneten Komponente anzusprechen, es sei denn, Sie verwenden das Dropdown-Typ-Attribut.
+Diese Abtrennung schafft eine Situation, in der das direkte Anvisieren des Dropdowns mit CSS oder Shadow-Part-Selektoren aus der übergeordneten Komponente heraus herausfordernd wird, es sei denn, Sie nutzen das Dropdown-Type-Attribut.
 
-Im folgenden Beispiel wird der Dropdown-Typ festgelegt und im CSS-Datei verwendet, um eine Option zu vergrößern, wenn Sie darüber hovern.
+Im unteren Demo wird der Dropdown-Typ festgelegt und in der CSS-Datei verwendet, um eine Option zu vergrößern, wenn Sie darüber fahren.
 
 <ComponentDemo
 path='/webforj/comboboxdropdowntype'
 files={[
   'src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java',
-  'src/main/resources/static/css/lists/combobox/comboBoxDropDownType.css',
+  'src/main/frontend/css/lists/combobox/comboBoxDropDownType.css',
 ]}
 height='250px'
 />
 
-## Maximale Zeilenanzahl {#max-row-count}
+## Max row count {#max-row-count}
 
-Standardmäßig wird die Anzahl der in der Dropdown-Liste einer `ComboBox` angezeigten Zeilen erhöht, um den Inhalt anzupassen. Verwenden Sie jedoch die <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink>-Methode, um zu steuern, wie viele Elemente angezeigt werden.
+Standardmäßig wird die Anzahl der angezeigten Zeilen im Dropdown einer `ComboBox` erhöht, um den Inhalt passend zu machen. Die Verwendung der <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink>-Methode ermöglicht die Kontrolle darüber, wie viele Elemente angezeigt werden.
 
 :::caution
-Die Verwendung einer Zahl, die kleiner oder gleich 0 ist, führt dazu, dass diese Eigenschaft zurückgesetzt wird.
+Die Verwendung einer Zahl, die kleiner oder gleich 0 ist, führt dazu, dass diese Eigenschaft deaktiviert wird.
 :::
 
 <ComponentDemo
@@ -86,65 +86,65 @@ files={['src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowVi
 height='450px'
 />
 
-## Öffnen und Schließen {#opening-and-closing}
+## Opening and closing {#opening-and-closing}
 
-Die Sichtbarkeit der Optionen für eine `ComboBox` kann programmgesteuert mit den Methoden `open()` und `close()` gesteuert werden. Diese Methoden ermöglichen es Ihnen, die Liste der auszuwählenden Optionen anzuzeigen oder bei Bedarf auszublenden, was eine größere Flexibilität bei der Verwaltung des Verhaltens einer `ComboBox` bietet.
+Die Sichtbarkeit der Optionen für eine `ComboBox` kann programmgesteuert mit den Methoden `open()` und `close()` gesteuert werden. Diese Methoden ermöglichen es Ihnen, die Liste der Optionen zur Auswahl anzuzeigen oder nach Bedarf auszublenden, um mehr Flexibilität beim Verwalten des Verhaltens einer `ComboBox` zu bieten.
 
-Darüber hinaus hat webforJ Ereignis-Listener für das Schließen und Öffnen der `ComboBox`, die Ihnen mehr Kontrolle geben, um spezifische Aktionen auszulösen.
+Darüber hinaus verfügt webforJ über Ereignislistener, die aktiviert werden, wenn die `ComboBox` geschlossen und geöffnet wird, sodass Sie spezifische Aktionen auslösen können.
 
 ```Java
-//Fokussieren oder öffnen Sie die nächste Komponente in einem Formular
-ComboBox universität = new ComboBox("Universität");
-ComboBox hauptfach = new ComboBox("Hauptfach");
-Button einreichen = new Button("Einreichen");
+// Fokussieren oder öffnen Sie die nächste Komponente in einem Formular
+ComboBox university = new ComboBox("Universität");
+ComboBox major = new ComboBox("Fach");
+Button submit = new Button("Absenden");
 
-//... Fügen Sie Listen von Universitäten und Hauptfächern hinzu
+// ... Listen von Universitäten und Fächern hinzufügen
 
-universität.onClose( e ->{
-  hauptfach.open();
+university.onClose( e ->{
+  major.open();
 });
 
-hauptfach.onClose( e ->{
-  einreichen.focus();
+major.onClose( e ->{
+  submit.focus();
 });
 ```
 
-## Öffnungsdimensionen {#opening-dimensions}
+## Opening dimensions {#opening-dimensions}
 
-Die `ComboBox`-Komponente verfügt über Methoden, die eine Manipulation der Dropdown-Dimensionen ermöglichen. Die **maximale Höhe** und **minimale Breite** des Dropdowns können mit den <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink>- und <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink>-Methoden festgelegt werden.
+Die `ComboBox`-Komponente verfügt über Methoden, die eine Manipulation der Dropdown-Abmessungen ermöglichen. Die **maximale Höhe** und **minimale Breite** des Dropdowns können mit den Methoden <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> und <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> festgelegt werden.
 
 :::tip
-Das Übergeben eines `String`-Wertes an eine dieser Methoden ermöglicht die Anwendung von [beliebigen gültigen CSS-Einheiten](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units), wie Pixel, Ansichtsweite oder andere gültige Regeln. Das Übergeben einer `int`-Zahl legt den übergebenen Wert in Pixeln fest.
+Das Übergeben eines `String`-Wertes an eine dieser Methoden ermöglicht die Anwendung [irgendwelcher gültigen CSS-Einheiten](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units), wie Pixel, Ansichtsgrößen oder andere gültige Regeln. Das Übergeben einer `int`-Zahl setzt den übergebenen Wert in Pixeln.
 :::
 
-## Hervorhebung {#highlighting}
+## Highlighting {#highlighting}
 
-Beim Arbeiten mit einer `ComboBox` können Sie anpassen, wann der Text hervorgehoben wird, basierend darauf, wie die Komponente den Fokus erhält. Diese Funktion kann Eingabefehler beim Ausfüllen von Formularen reduzieren und das allgemeine Navigationserlebnis verbessern. Ändern Sie das Hervorhebungsverhalten mit der Methode `setHighlightOnFocus()` mit einer der integrierten `HasHighlightOnFocus.Behavior`-Enums:
+Bei der Arbeit mit einer `ComboBox` können Sie anpassen, wann der Text basierend auf der Art und Weise, wie die Komponente den Fokus erhält, hervorgehoben wird. Diese Funktion kann Eingabefehler verringern, wenn Benutzer Formulare ausfüllen, und die allgemeine Navigationserfahrung verbessern. Ändern Sie das Hervorhebungsverhalten mit der `setHighlightOnFocus()`-Methode mit einem der integrierten `HasHighlightOnFocus.Behavior`-Enums:
 
 - `ALL`
 Der Inhalt der Komponente wird immer automatisch hervorgehoben, wenn die Komponente den Fokus erhält.
 - `FOCUS`
-Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente programmgesteuert den Fokus erhält.
+Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente unter Programmsteuerung den Fokus erhält.
 - `FOCUS_OR_KEY`
-Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente programmgesteuert den Fokus erhält oder durch Tabben hinein gelangt.
+Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente unter Programmsteuerung den Fokus erhält oder mit der Tabulatortaste hineingegangen wird.
 - `FOCUS_OR_MOUSE`
-Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente programmgesteuert den Fokus erhält oder durch einen Klick mit der Maus hinein gelangt.
+Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente unter Programmsteuerung den Fokus erhält oder durch Klicken mit der Maus hineingegangen wird.
 - `KEY`
-Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente den Fokus erhält, indem man hinein tabbt.
+Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente den Fokus erhält, indem in sie hinein tabuliert wird.
 - `KEY_MOUSE`
-Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente den Fokus erhält, indem man hinein tabbt oder mit der Maus hinein klickt.
+Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente den Fokus erhält, indem in sie hinein tabuliert wird oder durch Klicken mit der Maus hinein.
 - `MOUSE`
-Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente den Fokus erhält, indem man mit der Maus hinein klickt.
+Der Inhalt der Komponente wird automatisch hervorgehoben, wenn die Komponente durch Klicken mit der Maus hinein den Fokus erhält.
 - `NONE`
 Der Inhalt der Komponente wird niemals automatisch hervorgehoben, wenn die Komponente den Fokus erhält.
 
 :::note
-Wenn der Inhalt beim Verlassen des Fokus hervorgehoben war, wird er beim Wiedererlangen des Fokus erneut hervorgehoben, unabhängig vom festgelegten Verhalten.
+Wenn der Inhalt beim Verlust des Fokus hervorgehoben wurde, wird er nach dem Wiedererlangen des Fokus erneut hervorgehoben, unabhängig vom festgelegten Verhalten.
 :::
 
-## Präfix und Suffix {#prefix-and-suffix}
+## Prefix and suffix {#prefix-and-suffix}
 
-Slots bieten flexible Optionen zur Verbesserung der Fähigkeit einer `ComboBox`. Sie können Icons, Beschriftungen, Ladeanimationen, Löschen/Zurücksetzen, Avatar/profilbilder und andere nützliche Komponenten innerhalb einer `ComboBox` einfügen, um die beabsichtigte Bedeutung für die Benutzer weiter zu verdeutlichen. Die `ComboBox` hat zwei Slots: die `prefix`- und `suffix`-Slots. Verwenden Sie die Methoden `setPrefixComponent()` und `setSuffixComponent()`, um verschiedene Komponenten vor und nach den Optionen innerhalb einer `ComboBox` einzufügen.
+Slots bieten flexible Optionen zur Verbesserung der Funktionalität einer `ComboBox`. Sie können Symbole, Labels, Lade-Spinnner, die Möglichkeit zum Löschen/Zurücksetzen, Avatar-/Profilbilder und andere nützliche Komponenten innerhalb einer `ComboBox` haben, um den beabsichtigten Sinn für die Benutzer weiter zu verdeutlichen. Die `ComboBox` verfügt über zwei Slots: die `prefix`- und `suffix`-Slots. Verwenden Sie die Methoden `setPrefixComponent()` und `setSuffixComponent()`, um verschiedene Komponenten vor und nach den Optionen innerhalb einer `ComboBox` einzufügen.
 
 ```java
 ComboBox comboBox = new ComboBox());
@@ -156,18 +156,18 @@ ComboBox comboBox = new ComboBox());
 
 <TableBuilder name="ComboBox" />
 
-## Beste Praktiken {#best-practices}
+## Best practices {#best-practices}
 
-Um ein optimales Benutzererlebnis bei der Verwendung der `ComboBox`-Komponente zu gewährleisten, sollten Sie die folgenden besten Praktiken beachten:
+Um eine optimale Benutzererfahrung bei der Verwendung der `ComboBox`-Komponente zu gewährleisten, sollten die folgenden Best Practices berücksichtigt werden:
 
-1. **Vorab häufig verwendete Werte laden**: Wenn es häufig verwendete Elemente gibt, laden Sie diese in die Liste der `ComboBox`. Dies beschleunigt die Auswahl für häufig gewählte Elemente und fördert die Konsistenz.
+1. **Häufige Werte vorladen**: Wenn es gängige oder häufig verwendete Elemente gibt, laden Sie diese in die Liste der `ComboBox` vor. Dies beschleunigt die Auswahl für häufig gewählte Elemente und fördert die Konsistenz.
 
-2. **Benutzerfreundliche Labels**: Stellen Sie sicher, dass die angezeigten Beschriftungen für jede Option benutzerfreundlich und selbsterklärend sind. Die Benutzer sollten leicht verstehen können, welchen Zweck jede Wahl hat.
+2. **Benutzerfreundliche Labels**: Stellen Sie sicher, dass die angezeigten Labels für jede Option benutzerfreundlich und selbsterklärend sind. Stellen Sie sicher, dass die Benutzer den Zweck jeder Auswahl leicht verstehen können.
 
-3. **Validierung**: Implementieren Sie eine Eingabevalidierung, um benutzerdefinierte Eingaben zu bearbeiten. Überprüfen Sie die Daten auf Genauigkeit und Konsistenz. Möglicherweise möchten Sie Korrekturen oder Bestätigungen für mehrdeutige Eingaben vorschlagen.
+3. **Validierung**: Implementieren Sie eine Eingabevalidierung, um benutzerdefinierte Eingaben zu behandeln. Überprüfen Sie die Daten auf Genauigkeit und Konsistenz. Möglicherweise möchten Sie Korrekturen oder Bestätigungen für mehrdeutige Eingaben vorschlagen.
 
-4. **Standardauswahl**: Legen Sie eine Standardeinstellung fest, insbesondere wenn es eine gängige oder empfohlene Wahl gibt. Dies verbessert das Benutzererlebnis, indem es die Notwendigkeit zusätzlicher Klicks verringert.
+4. **Standardauswahl**: Legen Sie eine Standardauswahl fest, insbesondere wenn es eine gängige oder empfohlene Auswahl gibt. Dies verbessert die Benutzererfahrung, indem es die Notwendigkeit zusätzlicher Klicks verringert.
 
-5. **ComboBox vs. andere Listenkomponenten**: Eine `ComboBox` ist die beste Wahl, wenn Sie eine Eingabe vom Benutzer benötigen und ihm vordefinierte Auswahlmöglichkeiten sowie die Möglichkeit bieten möchten, seine Eingabe anzupassen. Eine andere Listenkomponente kann besser geeignet sein, wenn folgende Verhaltensweisen erforderlich sind:
+5. **ComboBox vs. Andere Listenkomponenten**: Eine `ComboBox` ist die beste Wahl, wenn Sie eine einzelne Eingabe vom Benutzer benötigen und Ihnen vorgegebene Auswahlmöglichkeiten sowie die Möglichkeit zur Anpassung ihrer Eingabe bieten möchten. Eine andere Listenkomponente könnte besser geeignet sein, wenn Sie folgende Verhaltensweisen benötigen:
     - Mehrfachauswahl und Anzeige aller Elemente auf einmal: [ListBox](./list-box.md)
-    - Verhindern benutzerdefinierter Eingaben: [ChoiceBox](./choice-box.md)
+    - Verhindern von benutzerdefinierten Eingaben: [ChoiceBox](./choice-box.md)

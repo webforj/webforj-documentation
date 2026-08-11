@@ -14,7 +14,7 @@ description: Select and upload one or more files from the local machine with the
 The `Upload` component is an inline file picker that lets the user select one or more files from their local machine and send them to the server. Unlike [`FileUploadDialog`](/docs/components/option-dialogs/file-upload), which presents the picker in a modal that blocks the app until the user finishes, `Upload` renders directly in the page layout. It fits anywhere a file input belongs: a profile form, an attachment field next to a comment box, or a dropzone on a media management page.
 
 <!-- INTRO_END -->
- 
+
 :::tip When to use an `Upload`
 Use the `Upload` component when file selection is accompanied with other actions in a workflow, like editing a profile or building a post. Reach for [`FileUploadDialog`](/docs/components/option-dialogs/file-upload) instead when uploads should be modal, for example when a file is strictly required before the user can continue.
 :::
@@ -29,9 +29,9 @@ upload.addFilter("Images", "*.png;*.jpg");
 upload.setVisible(false, Upload.Part.LIST);
 layout.add(upload);
 ```
- 
+
 The following example drops a resume `Upload` into a hiring form, alongside a name field and submit button.
- 
+
 <ComponentDemo
 path='/webforj/upload'
 files={[
@@ -45,7 +45,7 @@ height='550px'
 
 How the picker behaves is controlled by a few independent settings: how many files the user can pick at once, what's selectable from the local filesystem, and what types are visible in the file dialog. Together they shape the picking experience to fit the field.
 
- 
+
 Here's a gallery uploader configured with both image and video filters, multi-file selection, and a 20-file cap:s
 
 <ComponentDemo
@@ -115,31 +115,31 @@ Filters, max size, and max file count are enforced in the UI to guide the user, 
 :::
 
 ## Upload behavior {#upload-behavior}
- 
+
 Once files are picked, two decisions remain: when the upload starts, and what happens to existing entries when the user picks again. By default the user clicks **Upload** to start the transfer, and existing entries stay in the list until they're explicitly cleared.
- 
+
 ### Auto upload {#auto-upload}
- 
+
 The default mode is `NONE`, where the user clicks **Upload** to start the transfer. `setAutoUpload()` removes that click and starts the transfer as soon as files are picked, dropped, or both.
- 
+
 - **`NONE`** leaves uploading to the user, who clicks **Upload**.
 - **`ON_SELECT`** uploads as soon as files are picked through the file dialog.
 - **`ON_DROP`** uploads as soon as files are dropped onto the component.
 - **`ALWAYS`** covers both paths.
- 
+
 :::tip Pairing with presets
 Auto upload pairs well with the `BUTTON_ONLY` or `INLINE` presets, where there's no Upload button for the user to click anyway. For workflows where the user needs to review the selection before sending, leave auto upload off.
 :::
- 
+
 ### Auto clear {#auto-clear}
- 
+
 When the user picks a new batch, auto clear decides what to do with the entries already in the list. Clearing happens at the moment of the next pick, not on upload completion, so finished uploads stay visible until the user picks again.
 
 - **`COMPLETED`** clears successfully uploaded entries.
 - **`IN_PROGRESS`** cancels and clears entries still transferring.
 - **`ALL`** clears everything.
 Queued entries that haven't started uploading are kept regardless of the setting.
- 
+
 ```java
 upload.setAutoClear(Upload.AutoClear.COMPLETED);
 upload.setAutoClear(Upload.AutoClear.IN_PROGRESS);
@@ -149,7 +149,7 @@ upload.setAutoClear(Upload.AutoClear.ALL);
 :::warning Auto clear has subtle triggers
 Auto clear only takes effect once a previously picked file has actually started uploading or finished. Without an upload between picks, no file matches the filter and the list keeps growing.
 :::
- 
+
 Reach for `COMPLETED` in uploaders that live on screen across multiple actions, like a chat composer where every message has its own attachments, or a comment form that's reused for each reply. Without it, the list of previous successes accumulates as the user works.
 
 ### Programmatic actions {#programmatic-actions}
@@ -245,68 +245,68 @@ height='400px'
 />
 
 ## Events {#events}
- 
+
 `Upload` emits events at three levels: things the user does to the whole component, the transfer state of a single file, and the lifecycle of the batch as a whole. Most apps register a couple of listeners across these tiers depending on what they need to react to. A form might only need `onUpload` to know when files reach the server; an uploader with a progress UI needs `onListProgress` and `onComplete`; a dropzone that has to surface rejections needs `onReject`.
- 
+
 Most events that carry files expose both `getFile()` (the first or only file in the payload) and `getFiles()` (the full list). Use `getFile()` for single-file events like `onReject`, and `getFiles()` when you expect a batch. `UploadCompleteEvent` is the exception; it has its own `getUploadedFiles()` and `getFailedFiles()` accessors since the batch result is split between successes and failures.
- 
+
 ### User actions {#user-actions}
- 
+
 These fire in response to something the user does on the component as a whole. They don't say anything about transfer progress, just that the user has done something the app might want to react to.
- 
+
 | Event | Fires |
 | --- | --- |
 | `UploadChangeEvent` | When the list of picked files changes |
 | `UploadEvent` | When the user clicks **Upload** and the files reach the server |
 | `UploadCancelEvent` | When the user clicks **Cancel** |
 | `UploadFilterChangeEvent` | When the active filter changes |
- 
+
 ```java
 upload.onChange(e -> {
     // Fires whenever the picked file list changes.
     List<UploadedFile> files = e.getFiles();
 });
- 
+
 upload.onUpload(e -> {
     // Fires when the upload is triggered; files have reached the server.
 });
 ```
- 
+
 `UploadEvent` and `UploadCompleteEvent` look similar at a glance, but they answer different questions. `UploadEvent` fires when the user explicitly triggers the upload (or `setAutoUpload()` triggers it on their behalf), and is the natural place to persist or hand off the uploaded files. `UploadCompleteEvent` fires once the transfer of every queued file has finished, and is the right hook for "the batch is done" UI updates.
- 
+
 ### Per-file transfer {#per-file-transfer}
- 
+
 These fire once per file, while a transfer is happening or right after it fails. Use them when the UI needs to reflect the state of individual files rather than the batch.
- 
+
 | Event | Fires |
 | --- | --- |
 | `UploadProgressEvent` | While a single file is being transferred |
 | `UploadErrorEvent` | When a single file transfer fails |
 | `UploadRejectEvent` | When a picked or dropped file doesn't meet the configured constraints |
- 
+
 ```java
 upload.onProgress(e -> {
     // Fires repeatedly during a single file's transfer.
     double percent = e.getProgress();
 });
- 
+
 upload.onReject(e -> {
     // Fires when a file is rejected for size, count, or filter reasons.
     String reason = e.getMessage();
 });
 ```
- 
+
 Within this group, `UploadRejectEvent` is the odd one out. It fires before any bytes move, when a file fails a client-side constraint like `setMaxFileSize` or `setMaxFiles`. `UploadErrorEvent`, by contrast, fires after the transfer started and something went wrong on the way to the server.
- 
+
 ### Whole batch {#whole-batch}
- 
+
 These fire on the batch rather than on any one file. Use them for aggregate UI like an overall progress bar or a "done" message that summarizes the whole pick.
- 
+
 | Event | Fires |
 | --- | --- |
 | `UploadListProgressEvent` | Alongside `UploadProgressEvent`, with the whole list state |
 | `UploadCompleteEvent` | Once per batch, when every file has finished transferring |
- 
+
 ```java
 upload.onComplete(e -> {
     // Fires once when the whole batch is done.
@@ -314,11 +314,11 @@ upload.onComplete(e -> {
     List<UploadedFile> failed = e.getFailedFiles();
 });
 ```
- 
+
 `onProgress` and `onListProgress` cover the same transfer from two angles. `onProgress` is per-file, and is the right hook when each file has its own progress UI. `onListProgress` fires alongside it with aggregate counters (`getListTotal`, `getListRemaining`, `getListProgress`) for a single batch-wide indicator.
- 
+
 In the following example, `onChange`, `onListProgress`, and `onComplete` drive a progress bar and status line that update as the file list changes and as files transfer.
- 
+
 <ComponentDemo
 path='/webforj/uploadevents'
 files={[

@@ -7,7 +7,7 @@ description: Log messages from Java to the browser console with typed levels and
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>
 
-Using the browser's console to print program information is an integral part of the development process. 
+Using the browser's console to print program information is an integral part of the development process.
 The <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> utility class provides features that improve logging capabilities through log types and styling.
 
 <!-- :::info
@@ -100,7 +100,7 @@ For example, use the `capitalize()` method to transform the first letter of each
 // Transform Examples
 // Capitalize Text Transformation
 console().transform().capitalize().log("Capitalize text transformation");
-// UPPERCASE TEXT TRANSFORMATION 
+// UPPERCASE TEXT TRANSFORMATION
 console().transform().uppercase().log("Uppercase text transformation");
 ```
 

@@ -2,9 +2,11 @@
 title: UI Components
 sidebar_position: 85
 hide_table_of_contents: true
-sidebar_class_name: has-new-content
 hide_giscus_comments: true
-_i18n_hash: 2af867ffb7bb39ed4624efa14b81d452
+description: >-
+  Browse the webforJ UI component catalog covering layouts, data entry,
+  navigation, feedback, and visualization components.
+_i18n_hash: 5533b760c7585442c917bc506c2dd763
 ---
 <Head>
   <style>{`
@@ -15,32 +17,32 @@ _i18n_hash: 2af867ffb7bb39ed4624efa14b81d452
 </Head>
 
 <Head>
-  <title>Componentes UI | Componentes para la construcción de aplicaciones de interfaz de usuario</title>
+  <title>Componentes de UI | Creación de Aplicaciones de Interfaz de Usuario</title>
 </Head>
 
-En webforJ, las aplicaciones se crean utilizando unidades modulares conocidas como Componentes, que facilitan el desarrollo rápido y eficiente de UI. El marco ofrece una variedad de componentes esenciales como botones, elementos de entrada y contenedores de diseño. Después de dominar los fundamentos, puedes consultar la [JavaDocs](https://javadoc.io/doc/com.webforj) para obtener un resumen detallado de todos los componentes y sus funcionalidades.
+En webforJ, las aplicaciones se crean utilizando unidades modulares conocidas como Componentes, que facilitan el desarrollo rápido y eficiente de UI. El marco ofrece una gama de componentes esenciales como botones, elementos de entrada y contenedores de diseño. Después de dominar los fundamentos, puedes consultar la [JavaDocs](https://javadoc.io/doc/com.webforj) para obtener una visión detallada de todos los componentes y sus funcionalidades.
 
 ## Diseños {#layouts}
 
 Los componentes de diseño proporcionan la base para estructurar interfaces de usuario, permitiendo a los desarrolladores organizar el contenido de manera eficiente. Estos componentes ofrecen diversas formas de controlar la disposición de los componentes secundarios, ya sea para diseños simples o complejos.
 
-Los siguientes componentes de diseño están diseñados para manejar una amplia variedad de casos de uso, desde diseño responsivo hasta gestión avanzada de contenido.
+Los siguientes componentes de diseño están diseñados para manejar una amplia gama de casos de uso, desde diseño responsivo hasta gestión avanzada de contenido.
 
 <GalleryGrid>
   <GalleryCard header="AppLayout" href="app-layout" image="/img/components/light/AppLayout.webp" imageDark="/img/components/dark/AppLayout.webp">
-    <p>Un componente contenedor que proporciona un diseño estructurado para la navegación de la aplicación de nivel superior y la organización del contenido.</p>
+    <p>Un componente contenedor que proporciona un diseño estructurado para la navegación y organización de contenido de la aplicación a nivel superior.</p>
   </GalleryCard>
 
   <GalleryCard header="Toolbar" href="toolbar" image="/img/components/light/Toolbar.webp" imageDark="/img/components/dark/Toolbar.webp">
-    <p>Un componente contenedor horizontal que sostiene un conjunto de botones de acción, íconos u otros controles, utilizado típicamente para realizar tareas relacionadas con el contexto actual.</p>
+    <p>Un componente contenedor horizontal que sostiene un conjunto de botones de acción, íconos u otros controles, típicamente utilizado para realizar tareas relacionadas con el contexto actual.</p>
   </GalleryCard>
 
   <GalleryCard header="FlexLayout" href="flex-layout" image="/img/components/light/FlexLayout.webp" imageDark="/img/components/dark/FlexLayout.webp">
-    <p>Un componente de diseño que organiza a sus hijos utilizando reglas de caja flexible (flexbox) para un diseño y alineación responsivos.</p>
+    <p>Un componente de diseño que organiza sus hijos utilizando reglas de caja flexible (flexbox) para diseño responsivo y alineación.</p>
   </GalleryCard>
 
   <GalleryCard header="ColumnsLayout" href="columns-layout" image="/img/components/light/ColumnsLayout.webp" imageDark="/img/components/dark/ColumnsLayout.webp">
-    <p>Un componente de diseño que organiza a sus hijos en múltiples columnas verticales, útil para crear formularios y estructuras tipo cuadrícula.</p>
+    <p>Un componente de diseño que organiza sus hijos en múltiples columnas verticales, útil para crear formularios y estructuras similares a cuadrículas.</p>
   </GalleryCard>
 
   <GalleryCard header="Splitter" href="splitter" image="/img/components/light/Splitter.webp" imageDark="/img/components/dark/Splitter.webp">
@@ -48,19 +50,19 @@ Los siguientes componentes de diseño están diseñados para manejar una amplia 
   </GalleryCard>
 
   <GalleryCard header="Drawer" href="drawer" image="/img/components/light/Drawer.webp" imageDark="/img/components/dark/Drawer.webp">
-    <p>Un panel deslizante que se utiliza típicamente para la navegación lateral o para albergar contenido adicional que puede mostrarse u ocultarse.</p>
+    <p>Un componente de panel deslizante que se utiliza típicamente para navegación lateral o para albergar contenido adicional que puede mostrarse u ocultarse.</p>
   </GalleryCard>
 
   <GalleryCard header="Dialog" href="dialog" image="/img/components/light/Dialog.webp" imageDark="/img/components/dark/Dialog.webp">
-    <p>Un componente de ventana modal que superpone contenido para mostrar información importante o solicitar interacción del usuario, a menudo requiriendo acción del usuario para cerrar.</p>
+    <p>Un componente de ventana modal que superpone contenido para mostrar información importante o solicitar interacción del usuario, a menudo requiriendo acción del usuario para cerrarse.</p>
   </GalleryCard>
 
   <GalleryCard header="Login" href="login" image="/img/components/light/Login.webp" imageDark="/img/components/dark/Login.webp">
-    <p>Un componente que proporciona una UI preconstruida para la autenticación de usuarios, típicamente incluyendo campos para nombre de usuario y contraseña junto con un botón de envío.</p>
+    <p>Un componente que proporciona una interfaz de usuario preconstruida para la autenticación de usuarios, que típicamente incluye campos para nombre de usuario y contraseña, junto con un botón de enviar.</p>
   </GalleryCard>
 
   <GalleryCard header="Accordion" href="accordion" image="/img/components/light/Accordion.webp" imageDark="/img/components/dark/Accordion.webp">
-    <p>Un conjunto de paneles colapsables apilados verticalmente, cada uno con un encabezado clickeable que alterna la visibilidad de su contenido.</p>
+    <p>Un conjunto vertical apilado de paneles colapsables, cada uno con un encabezado clickeable que alterna la visibilidad de su contenido.</p>
   </GalleryCard>
 
   <GalleryCard header="TabbedPane" href="tabbedpane" image="/img/components/light/TabbedPane.webp" imageDark="/img/components/dark/TabbedPane.webp">
@@ -70,7 +72,7 @@ Los siguientes componentes de diseño están diseñados para manejar una amplia 
 
 ## Entrada de datos {#data-entry}
 
-Los componentes de entrada de datos proporcionan herramientas esenciales para capturar la entrada del usuario y gestionar interacciones dentro de tu aplicación. Estos componentes son versátiles, facilitando la construcción de formularios interactivos y la recopilación de diversos tipos de datos.
+Los componentes de entrada de datos proporcionan herramientas esenciales para capturar la entrada del usuario y gestionar interacciones dentro de tu aplicación. Estos componentes son versátiles, lo que facilita la construcción de formularios interactivos y la recopilación de varios tipos de datos.
 
 <GalleryGrid>
   <GalleryCard header="TextField" href="fields/textfield" image="/img/components/light/TextField.webp" imageDark="/img/components/dark/TextField.webp">
@@ -82,55 +84,55 @@ Los componentes de entrada de datos proporcionan herramientas esenciales para ca
   </GalleryCard>
 
   <GalleryCard header="NumberField" href="fields/numberfield" image="/img/components/light/NumberField.webp" imageDark="/img/components/dark/NumberField.webp">
-    <p>Un componente que proporciona un campo de entrada basado en el navegador para ingresar valores numéricos, con controles integrados para incrementar o decrementar el valor.</p>
+    <p>Un componente que proporciona un campo de entrada basado en el navegador por defecto para ingresar valores numéricos, con controles integrados para aumentar o disminuir el valor.</p>
   </GalleryCard>
 
   <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>NumberField" href="fields/masked/numberfield" image="/img/components/light/MaskedNumberField.webp" imageDark="/img/components/dark/MaskedNumberField.webp">
-    <p>Un componente de entrada numérica que restringe la entrada del usuario a un formato o patrón numérico específico, asegurando una entrada válida de números como para divisas, porcentajes u otros números formateados.</p>
+    <p>Un componente de entrada numérica que restringe la entrada del usuario a un formato o patrón numérico específico, asegurando una entrada de número válida, como para moneda, porcentajes u otros números formateados.</p>
   </GalleryCard>
 
   <GalleryCard header="PasswordField" href="fields/passwordfield" image="/img/components/light/PasswordField.webp" imageDark="/img/components/dark/PasswordField.webp">
-    <p>Un componente de entrada de una sola línea para ingresar y enmascarar datos de contraseña de manera segura.</p>
+    <p>Un componente de entrada de una sola línea para ingresar y ocultar de manera segura los datos de contraseña.</p>
   </GalleryCard>
 
   <GalleryCard header="DateField" href="fields/datefield" image="/img/components/light/DateField.webp" imageDark="/img/components/dark/DateField.webp">
-    <p>Un componente que proporciona un selector de fecha basado en el navegador para seleccionar una fecha a través de un campo de entrada.</p>
+    <p>Un componente que proporciona un selector de fecha basado en el navegador por defecto para seleccionar una fecha a través de un campo de entrada.</p>
   </GalleryCard>
 
   <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>DateField" href="fields/masked/datefield" image="/img/components/light/MaskedDateField.webp" imageDark="/img/components/dark/MaskedDateField.webp">
-    <p>Un componente de entrada de fecha que impone un formato o patrón de fecha específico, asegurando que el usuario ingrese una fecha válida de acuerdo con la máscara definida.</p>
+    <p>Un componente de entrada de fecha que requiere un formato o patrón de fecha específico, asegurando que el usuario ingrese una fecha válida de acuerdo con la máscara definida.</p>
   </GalleryCard>
 
   <GalleryCard header="TimeField" href="fields/timefield" image="/img/components/light/TimeField.webp" imageDark="/img/components/dark/TimeField.webp">
-    <p>Un componente que proporciona un selector de hora basado en el navegador para seleccionar un valor de tiempo a través de un campo de entrada.</p>
+    <p>Un componente que proporciona un selector de hora basado en el navegador por defecto para seleccionar un valor de hora a través de un campo de entrada.</p>
   </GalleryCard>
 
   <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>TimeField" href="fields/masked/timefield" image="/img/components/light/MaskedTimeField.webp" imageDark="/img/components/dark/MaskedTimeField.webp">
-    <p>Un componente de entrada de tiempo que impone un formato o patrón de tiempo específico, asegurando que el usuario ingrese un tiempo válido de acuerdo con la máscara definida.</p>
+    <p>Un componente de entrada de hora que requiere un formato o patrón de hora específico, asegurando que el usuario ingrese una hora válida de acuerdo con la máscara definida.</p>
   </GalleryCard>
 
   <GalleryCard header="DateTimeField" href="fields/datetimefield" image="/img/components/light/DateTimeField.webp" imageDark="/img/components/dark/DateTimeField.webp">
-    <p>Un componente que proporciona un selector de fecha y hora basado en el navegador para seleccionar tanto la fecha como la hora a través de un único campo de entrada.</p>
+    <p>Un componente que proporciona un selector de fecha y hora basado en el navegador por defecto para seleccionar tanto la fecha como la hora a través de un solo campo de entrada.</p>
   </GalleryCard>
 
   <GalleryCard header="ColorField" href="fields/colorfield" image="/img/components/light/ColorField.webp" imageDark="/img/components/dark/ColorField.webp">
-    <p>Un componente que proporciona un selector de color basado en el navegador, permitiendo a los usuarios seleccionar un color a través de un campo de entrada.</p>
+    <p>Un componente que proporciona un selector de color basado en el navegador por defecto, permitiendo a los usuarios seleccionar un color desde un campo de entrada.</p>
   </GalleryCard>
 
   <GalleryCard header="TextArea" href="textarea" image="/img/components/light/TextArea.webp" imageDark="/img/components/dark/TextArea.webp">
-    <p>Un componente de entrada de texto multilinea que permite a los usuarios ingresar o editar bloques más grandes de texto.</p>
+    <p>Un componente de entrada de texto de varias líneas que permite a los usuarios ingresar o editar bloques de texto más grandes.</p>
   </GalleryCard>
 
   <GalleryCard header="CheckBox" href="checkbox" image="/img/components/light/CheckBox.webp" imageDark="/img/components/dark/CheckBox.webp">
-    <p>Un componente que representa una opción binaria, permitiendo a los usuarios alternar entre un estado marcado (verdadero) o no marcado (falso).</p>
+    <p>Un componente que representa una opción binaria, permitiendo a los usuarios alternar entre un estado checked (verdadero) o unchecked (falso).</p>
   </GalleryCard>
 
   <GalleryCard header="RadioButton" href="radiobutton" image="/img/components/light/RadioButton.webp" imageDark="/img/components/dark/RadioButton.webp">
-    <p>Un componente que permite a los usuarios seleccionar una única opción de un grupo de elecciones mutuamente exclusivas.</p>
+    <p>Un componente que permite a los usuarios seleccionar una sola opción de un grupo de opciones mutuamente excluyentes.</p>
   </GalleryCard>
 
   <GalleryCard header="Switch" href="radiobutton#switches" image="/img/components/light/Switch.webp" imageDark="/img/components/dark/Switch.webp">
-    <p>Un componente de alternancia que permite a los usuarios cambiar entre dos estados, como encendido/apagado o verdadero/falso, con una acción deslizante.</p>
+    <p>Un componente de alternar que permite a los usuarios cambiar entre dos estados, como on/off o verdadero/falso, con una acción de deslizamiento.</p>
   </GalleryCard>
 
   <GalleryCard header="ChoiceBox" href="lists/choicebox" image="/img/components/light/ChoiceBox.webp" imageDark="/img/components/dark/ChoiceBox.webp">
@@ -144,45 +146,49 @@ Los componentes de entrada de datos proporcionan herramientas esenciales para ca
   <GalleryCard header="ListBox" href="lists/listbox" image="/img/components/light/ListBox.webp" imageDark="/img/components/dark/ListBox.webp">
     <p>Un componente que muestra una lista desplazable de opciones, permitiendo a los usuarios seleccionar uno o más elementos de la lista.</p>
   </GalleryCard>
+
+  <GalleryCard header="Upload" href="upload" image="/img/components/light/Upload.webp" imageDark="/img/components/dark/Upload.webp">
+    <p>Un selector de archivos inline que permite a los usuarios seleccionar uno o más archivos de su máquina local y subirlos al servidor, con soporte para arrastrar y soltar, filtros y seguimiento de eventos por archivo.</p>
+  </GalleryCard>
 </GalleryGrid>
 
-## Diálogos de opciones {#option-dialogs}
+## Diálogos de opción {#option-dialogs}
 
-Los diálogos de opciones proporcionan una forma de presentar a los usuarios elecciones o solicitarles confirmación antes de proceder con una acción. Estos componentes son esenciales para crear flujos de trabajo interactivos y basados en decisiones, permitiendo a los usuarios confirmar, cancelar o elegir entre diversas opciones de manera clara y estructurada.
+Los diálogos de opción ofrecen una forma de presentar a los usuarios opciones o solicitarles confirmación antes de proceder con una acción. Estos componentes son esenciales para crear flujos de trabajo interactivos basados en decisiones, permitiendo a los usuarios confirmar, cancelar o elegir entre varias opciones de manera clara y estructurada.
 
 <GalleryGrid>
   <GalleryCard header="MessageDialog" href="option-dialogs/message" image="/img/components/light/MessageDialog.webp" imageDark="/img/components/dark/MessageDialog.webp">
-    <p>Un componente de diálogo utilizado para mostrar mensajes informativos o alertas al usuario, típicamente con un solo botón `OK` para reconocer el mensaje.</p>
+    <p>Un componente de diálogo utilizado para mostrar mensajes o alertas informativas al usuario, típicamente con un solo botón `OK` para reconocer el mensaje.</p>
   </GalleryCard>
 
   <GalleryCard header="ConfirmDialog" href="option-dialogs/confirm" image="/img/components/light/ConfirmDialog.webp" imageDark="/img/components/dark/ConfirmDialog.webp">
-    <p>Un componente de diálogo que pregunta al usuario si desea confirmar o cancelar una acción, proporcionando típicamente botones de `Sí` y `No` o `OK` y `Cancelar`.</p>
+    <p>Un componente de diálogo que solicita al usuario que confirme o cancele una acción, proporcionando típicamente botones de `Sí` y `No` o `Aceptar` y `Cancelar`.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="InputDialog" href="option-dialogs/input" image="/img/components/light/InputDialog.webp" imageDark="/img/components/dark/InputDialog.webp">
-    <p>Un componente de diálogo que solicita al usuario que ingrese texto o datos, típicamente proporcionando un campo de entrada junto con botones de acción como `OK` y `Cancelar`.</p>
+    <p>Un componente de diálogo que solicita al usuario ingresar texto o datos, proporcionando típicamente un campo de entrada junto con botones de acción como `Aceptar` y `Cancelar`.</p>
   </GalleryCard>
 
   <GalleryCard header="FileChooserDialog" href="option-dialogs/file-chooser" image="/img/components/light/FileChooserDialog.webp" imageDark="/img/components/dark/FileChooserDialog.webp">
-    <p>Un componente de diálogo que permite a los usuarios explorar y seleccionar archivos del sistema de archivos del servidor.</p>
+    <p>Un componente de diálogo que permite a los usuarios navegar y seleccionar archivos del sistema de archivos del servidor.</p>
   </GalleryCard>
 
   <GalleryCard header="FileUploadDialog" href="option-dialogs/file-upload" image="/img/components/light/FileUploadDialog.webp" imageDark="/img/components/dark/FileUploadDialog.webp">
-    <p>Un componente de diálogo que permite a los usuarios subir archivos desde su sistema de archivos local a la aplicación.</p>
+    <p>Un componente de diálogo que habilita a los usuarios a subir archivos desde su sistema de archivos local a la aplicación.</p>
   </GalleryCard>
 
   <GalleryCard header="FileSaveDialog" href="option-dialogs/file-save" image="/img/components/light/FileSaveDialog.webp" imageDark="/img/components/dark/FileSaveDialog.webp">
-    <p>Un componente de diálogo que permite a los usuarios guardar un archivo en una ubicación especificada en el sistema de archivos del servidor.</p>
+    <p>Un componente de diálogo que permite a los usuarios guardar un archivo en una ubicación específica en el sistema de archivos del servidor.</p>
   </GalleryCard>
 </GalleryGrid>
 
 ## Interacción y visualización {#interaction-and-display}
 
-Esta categoría incluye componentes que facilitan las interacciones del usuario y muestran visualmente datos o estados de la aplicación. Estos componentes ayudan a los usuarios a navegar por la aplicación, activar acciones y comprender el progreso o resultados a través de elementos visuales dinámicos.
+Esta categoría incluye componentes que facilitan las interacciones del usuario y visualizan datos o estados de la aplicación. Estos componentes ayudan a los usuarios a navegar por la aplicación, desencadenar acciones y entender el progreso o los resultados a través de elementos visuales dinámicos.
 
 <GalleryGrid>
   <GalleryCard header="Table" href="table/overview" image="/img/components/light/Table.webp" imageDark="/img/components/dark/Table.webp">
-    <p>Un componente utilizado para mostrar datos en un formato tabular estructurado con filas y columnas, soportando características como clasificación y paginación.</p>
+    <p> Un componente utilizado para mostrar datos en un formato tabular estructurado con filas y columnas, que admite características como ordenamiento y paginación.</p>
   </GalleryCard>
 
   <GalleryCard header="GoogleCharts" href="google-charts" image="/img/components/light/GoogleCharts.webp" imageDark="/img/components/dark/GoogleCharts.webp">
@@ -190,15 +196,15 @@ Esta categoría incluye componentes que facilitan las interacciones del usuario 
   </GalleryCard>
 
   <GalleryCard header="Button" href="button" image="/img/components/light/Button.webp" imageDark="/img/components/dark/Button.webp">
-    <p>Un componente clickeable que activa una acción o evento al ser presionado.</p>
+    <p>Un componente clickeable que desencadena una acción o evento cuando se presiona.</p>
   </GalleryCard>
 
   <GalleryCard header="Toast" href="toast" image="/img/components/light/Toast.webp" imageDark="/img/components/dark/Toast.webp">
-    <p>Un componente de notificación liviano y no bloqueante que muestra brevemente un mensaje al usuario antes de desaparecer automáticamente.</p>
+    <p>Un componente de notificación ligero y no bloqueante que muestra brevemente un mensaje al usuario antes de desaparecer automáticamente.</p>
   </GalleryCard>
 
   <GalleryCard header="Alert" href="alert" image="/img/components/light/Alert.webp" imageDark="/img/components/dark/Alert.webp">
-    <p>Un componente que muestra mensajes importantes o advertencias en un formato notable para captar la atención del usuario.</p>
+    <p>Un componente que muestra mensajes o advertencias importantes en un formato notable para captar la atención del usuario.</p>
   </GalleryCard>
 
   <GalleryCard header="Badge" href="badge" image="/img/components/light/Badge.webp" imageDark="/img/components/dark/Badge.webp">
@@ -206,11 +212,11 @@ Esta categoría incluye componentes que facilitan las interacciones del usuario 
   </GalleryCard>
 
   <GalleryCard header="DesktopNotification" href="desktop-notification" image="/img/components/light/DesktopNotification.webp" imageDark="/img/components/dark/DesktopNotification.webp">
-    <p>Un componente que utiliza la API de Notificación nativa del navegador para alertar a los usuarios con notificaciones personalizadas de escritorio.</p>
+    <p>Un componente que aprovecha la API de Notificación nativa del navegador para alertar a los usuarios con notificaciones personalizadas de escritorio.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="Navigator" href="navigator" image="/img/components/light/Navigator.webp" imageDark="/img/components/dark/Navigator.webp">
-    <p>Un componente de paginación personalizable para navegar a través de conjuntos de datos, soportando diseños con botones de primero, último, siguiente, anterior y campos de salto rápido.</p>
+    <p>Un componente de paginación personalizable para navegar a través de conjuntos de datos, que admite diseños con botones de primero, último, siguiente, anterior y campos de salto rápido.</p>
   </GalleryCard>
 
   <GalleryCard header="ProgressBar" href="progressbar" image="/img/components/light/ProgressBar.webp" imageDark="/img/components/dark/ProgressBar.webp">
@@ -222,19 +228,19 @@ Esta categoría incluye componentes que facilitan las interacciones del usuario 
   </GalleryCard>
 
   <GalleryCard header="BusyIndicator" href="busyindicator" image="/img/components/light/BusyIndicator.webp" imageDark="/img/components/dark/BusyIndicator.webp">
-    <p>Un indicador visual a nivel de aplicación, típicamente un spinner, que señala que un proceso global está en curso.</p>
+    <p> Un indicador visual a nivel de la aplicación, típicamente un spinner, que señala que un proceso global está en curso.</p>
   </GalleryCard>
 
   <GalleryCard header="Loading" href="loading" image="/img/components/light/Loading.webp" imageDark="/img/components/dark/Loading.webp">
-    <p>Un indicador de carga localizado que se muestra dentro de un componente padre específico, indicando que el contenido o los datos se están cargando en esa sección.</p>
+    <p>Un indicador de carga restringido que se muestra dentro de un componente padre específico, indicando que se están cargando contenido o datos en esa sección.</p>
   </GalleryCard>
 
   <GalleryCard header="Spinner" href="spinner" image="/img/components/light/Spinner.webp" imageDark="/img/components/dark/Spinner.webp">
-    <p>Un componente que muestra una animación de rotación, utilizado típicamente para indicar que un proceso o acción está en progreso.</p>
+    <p>Un componente que muestra una animación de rotación, utilizado típicamente para indicar que un proceso o acción está en curso.</p>
   </GalleryCard>
 
   <GalleryCard header="AppNav" href="appnav" image="/img/components/light/AppNav.webp" imageDark="/img/components/dark/AppNav.webp">
-    <p>Un componente que proporciona un menú de navegación para la aplicación, típicamente utilizado para listar enlaces o elementos de navegación para cambiar entre diferentes secciones o vistas.</p>
+    <p>Un componente que proporciona un menú de navegación para la aplicación, utilizado típicamente para listar enlaces o elementos de navegación para cambiar entre diferentes secciones o vistas.</p>
   </GalleryCard>
 
   <GalleryCard header="Icon" href="icon" image="/img/components/light/Icon.webp" imageDark="/img/components/dark/Icon.webp">
@@ -244,25 +250,24 @@ Esta categoría incluye componentes que facilitan las interacciones del usuario 
   <GalleryCard header="Terminal" href="terminal" image="/img/components/light/Terminal.webp" imageDark="/img/components/dark/Terminal.webp">
     <p>Un componente que simula una interfaz de línea de comandos (CLI) dentro de la aplicación, permitiendo a los usuarios ingresar y ejecutar comandos basados en texto.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="InfiniteScroll" href="infinitescroll" image="/img/components/light/InfiniteScroll.webp" imageDark="/img/components/dark/InfiniteScroll.webp">
-    <p>Un componente que carga más elementos al desplazarse, muestra un cargador y rastrea cuándo todo el contenido se ha recuperado.</p>
+    <p>Un componente que carga más elementos al desplazarse, muestra un cargador y rastrea cuando todo el contenido ha sido obtenido.</p>
   </GalleryCard>
 
   <GalleryCard header="Refresher" href="refresher" image="/img/components/light/Refresher.webp" imageDark="/img/components/dark/Refresher.webp">
-    <p>Un componente que permite una interacción de arrastrar para refrescar dentro de contenedores desplazables—ideal para cargar datos dinámicos.</p>
+    <p>Un componente que permite una interacción de arrastrar para refrescar dentro de contenedores desplazables, ideal para cargar datos dinámicos.</p>
   </GalleryCard>
 
   <GalleryCard header="Tree" href="tree" image="/img/components/light/Tree.webp" imageDark="/img/components/dark/Tree.webp">
     <p>Un componente para mostrar datos jerárquicos, permitiendo a los usuarios expandir, colapsar e interactuar con elementos anidados.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="Avatar" href="avatar" image="/img/components/light/Avatar.webp" imageDark="/img/components/dark/Avatar.webp">
-    <p>Un componente para mostrar imágenes de perfil de usuario o iniciales, con soporte para diferentes tamaños, formas y temas.</p>
+    <p>Un componente para mostrar imágenes o iniciales de perfil de usuario, con soporte para diferentes tamaños, formas y temas.</p>
   </GalleryCard>
-  
+
   <GalleryCard header="MarkdownViewer" href="markdownviewer" image="/img/components/light/MarkdownViewer.webp" imageDark="/img/components/dark/MarkdownViewer.webp">
-    <p>Un componente para mostrar contenido en markdown con renderizado progresivo carácter por carácter, ideal para interfaces de chat de IA y texto en streaming.</p>
+    <p>Un componente para mostrar contenido markdown con renderizado progresivo caracter por caracter, ideal para interfaces de chat de IA y texto en streaming.</p>
   </GalleryCard>
-  
 </GalleryGrid>

@@ -147,7 +147,7 @@ public class LoggingListener implements AppLifecycleListener {
 
 Beyond controlling the order between multiple listeners, it's important to understand how listeners interact with the `App` class's own lifecycle hooks. For each lifecycle event, the framework follows a specific execution sequence that determines when your listeners run relative to the app's built-in hooks.
 
-The diagram below illustrates this execution flow, showing the precise timing of when `AppLifecycleListener` methods are called in relation to the corresponding `App` hooks: 
+The diagram below illustrates this execution flow, showing the precise timing of when `AppLifecycleListener` methods are called in relation to the corresponding `App` hooks:
 
 <div align="center">
 

@@ -18,6 +18,8 @@ path='/webforj/viewtransitionchat'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
   'src/main/frontend/css/viewtransitions/chat.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
+  'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
 height='450px'
 />
@@ -106,6 +108,8 @@ files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
   'src/main/frontend/css/viewtransitions/morph.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
+  'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
 height='650px'
 />
@@ -133,6 +137,8 @@ files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
   'src/main/frontend/css/viewtransitions/shuffle.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
+  'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
 height='550px'
 />
@@ -192,6 +198,8 @@ path='/webforj/viewtransitionenterexit'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
   'src/main/frontend/css/viewtransitions/enterexit.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
+  'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
 height='400px'
 />

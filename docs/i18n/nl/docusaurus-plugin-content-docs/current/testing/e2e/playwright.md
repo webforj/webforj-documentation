@@ -1,19 +1,22 @@
 ---
 sidebar_position: 2
 title: Testing with Playwright
-_i18n_hash: dffe640edd9d7918a3c8bace8cf0bbe8
+description: >-
+  Drive a webforJ app from JUnit using the Playwright Java bindings to fill
+  fields, click buttons, and assert rendered output in the browser.
+_i18n_hash: d0b58780be88b22c15eef134bbd4755a
 ---
-Deze documentatie beschrijft het proces voor het testen van webforJ-toepassingen met behulp van Playwright, met een specifieke focus op de `HelloWorldView` van de `webforj-archetype-hello-world`.
+Deze documentatie beschrijft het proces voor het testen van webforJ-toepassingen met Playwright, met specifieke focus op de `HelloWorldView` van de `webforj-archetype-hello-world`.
 
 :::info Basis van de app
-Om meer te leren over de `webforj-archetype-hello-world`, raadpleeg de sectie [Basis van de app](/docs/introduction/basics).
+Voor meer informatie over de `webforj-archetype-hello-world`, raadpleeg de sectie [Inleiding tot de basis van de app](../../introduction/basics).
 :::
 
 ## Vereisten {#prerequisites}
 
-Voordat je de Playwright-tests schrijft en uitvoert, zorg voor het volgende:
+Voordat je de Playwright-tests schrijft en uitvoert, zorg ervoor dat het volgende is voldaan:
 - De webforJ-app is correct ingesteld en draait op je lokale server.
-- Je hebt geïnstalleerd:
+- Je hebt het volgende geïnstalleerd:
   - Playwright Java bindings.
   - Een compatibele browser (Playwright kan browsers automatisch installeren tijdens de setup).
   - Maven voor projectafhankelijkheden.
@@ -40,7 +43,7 @@ Voeg de noodzakelijke afhankelijkheden toe in je `pom.xml` voor Playwright:
 
 ## Testvoorbeeld: `HelloWorldView` {#testing-example-helloworldview}
 
-De volgende code demonstreert een Playwright gebaseerde test voor de `HelloWorldView` component.
+De volgende code demonstreert een test op basis van Playwright voor de `HelloWorldView`-component.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -64,7 +67,7 @@ class HelloWorldViewTest {
 
   @BeforeEach
   void setUp() {
-    browser = playwright.chromium().launch(); 
+    browser = playwright.chromium().launch();
     page = browser.newPage();
     page.navigate("http://localhost:" + port + "/");
   }
@@ -83,22 +86,22 @@ class HelloWorldViewTest {
 ### Belangrijke stappen {#key-steps}
 
 1. **Initialiseer Playwright**:
-   - Maak een `Playwright` instance.
-   - Lanceer een browser instance met `playwright.chromium().launch()`.
+   - Maak een `Playwright` instantie.
+   - Start een browserinstantie met `playwright.chromium().launch()`.
 
 2. **Stel Testomgeving in**:
    - Open een nieuwe browserpagina met `browser.newPage()`.
-   - Navigeer naar de `HelloWorldView` pagina met de `navigate` methode.
+   - Navigeer naar de `HelloWorldView`-pagina met de `navigate`-methode.
 
 3. **Interactie met Elementen**:
-   - Gebruik [Playwright's locators](https://playwright.dev/java/docs/api/class-locator) om met DOM-elementen te interageren.
+   - Gebruik [Playwright's locators](https://playwright.dev/java/docs/api/class-locator) om met DOM-elementen te interacteren.
    - Vul invoervelden in met `locator("input").fill()` en trigger acties met `getByText("Say Hello").click()`.
 
-4. **Assertions**:
-   - Verifieer de weergegeven toastmelding met `PlaywrightAssertions.assertThat()`.
+4. **Asserties**:
+   - Controleer het weergegeven toast-bericht met `PlaywrightAssertions.assertThat()`.
 
 5. **Opruimen**:
-   - Playwright beheert automatisch de opruiming van de browser wanneer de test is afgelopen. Voor handmatige opruiming kun je de browser sluiten met `browser.close()`.
+   - Playwright handelt automatisch de browseropruiming af wanneer de test is voltooid. Voor handmatige opruiming kun je de browser sluiten met `browser.close()`.
 
 ### Tests uitvoeren {#running-tests}
 
@@ -114,6 +117,6 @@ class HelloWorldViewTest {
 
 ## Verwacht gedrag {#expected-behavior}
 
-- Bij het bezoeken van `http://localhost:<port>/` wordt de `HelloWorldView` pagina geladen.
-- Vul webforJ in het tekstveld in en klik op de knop `Say Hello`.
-- Een toastmelding zou moeten verschijnen met de tekst: `Welcome to webforJ Starter webforJ!`.
+- Bij bezoek aan `http://localhost:<port>/`, wordt de `HelloWorldView`-pagina geladen.
+- Voer webforJ in het tekstveld in en klik op de knop `Say Hello`.
+- Er zou een toast-bericht moeten verschijnen met de tekst: `Welcome to webforJ Starter webforJ!`.

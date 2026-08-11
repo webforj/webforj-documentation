@@ -78,7 +78,7 @@ table.setRepository(Service.getMusicRecords());
 ```
 
 :::info
-Alternatively, the `setItems()` method can be passed any valid Java collection, which will create a `CollectionRepository` under the hood for you. 
+Alternatively, the `setItems()` method can be passed any valid Java collection, which will create a `CollectionRepository` under the hood for you.
 :::
 
 Below is an example of the above steps implemented to create a basic `Table` component:
@@ -94,6 +94,6 @@ files={[
 height='600px'
 />
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="Table" />

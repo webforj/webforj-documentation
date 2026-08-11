@@ -1,21 +1,24 @@
 ---
 sidebar_position: 2
 title: Testing with Playwright
-_i18n_hash: dffe640edd9d7918a3c8bace8cf0bbe8
+description: >-
+  Drive a webforJ app from JUnit using the Playwright Java bindings to fill
+  fields, click buttons, and assert rendered output in the browser.
+_i18n_hash: d0b58780be88b22c15eef134bbd4755a
 ---
-Diese Dokumentation beschreibt den Prozess zum Testen von webforJ-Anwendungen mit Playwright, insbesondere fokussiert auf die `HelloWorldView` aus dem `webforj-archetype-hello-world`.
+Diese Dokumentation beschreibt den Prozess zum Testen von webforJ-Anwendungen mit Playwright, wobei speziell der `HelloWorldView` aus dem `webforj-archetype-hello-world` im Fokus steht.
 
-:::info App Grundlagen
-Um mehr über das `webforj-archetype-hello-world` zu erfahren, siehe den Abschnitt [Grundlagen der App Einführung](../../introduction/basics).
+:::info Grundlagen der App
+Um mehr über das `webforj-archetype-hello-world` zu erfahren, beziehen Sie sich auf den Abschnitt [Einführung in die Grundlagen](../../introduction/basics).
 :::
 
 ## Voraussetzungen {#prerequisites}
 
-Bevor Sie die Playwright-Tests schreiben und ausführen, stellen Sie Folgendes sicher:
+Bevor Sie die Playwright-Tests schreiben und ausführen, stellen Sie sicher, dass Folgendes gegeben ist:
 - Die webforJ-App ist korrekt eingerichtet und läuft auf Ihrem lokalen Server.
 - Sie haben Folgendes installiert:
   - Playwright Java-Bindings.
-  - Einen kompatiblen Browser (Playwright kann während der Einrichtung automatisch Browser installieren).
+  - Einen kompatiblen Browser (Playwright kann Browser während der Einrichtung automatisch installieren).
   - Maven für Projektabhängigkeiten.
 
 ## Maven-Konfiguration {#maven-configuration}
@@ -64,7 +67,7 @@ class HelloWorldViewTest {
 
   @BeforeEach
   void setUp() {
-    browser = playwright.chromium().launch(); 
+    browser = playwright.chromium().launch();
     page = browser.newPage();
     page.navigate("http://localhost:" + port + "/");
   }
@@ -75,12 +78,12 @@ class HelloWorldViewTest {
     page.getByText("Say Hello").click();
 
     assertThat(page.locator("dwc-toast").first())
-        .containsText("Willkommen bei webforJ Starter webforJ!");
+        .containsText("Welcome to webforJ Starter webforJ!");
   }
 }
 ```
 
-### Schlüsselschritte {#key-steps}
+### Wichtige Schritte {#key-steps}
 
 1. **Playwright initialisieren**:
    - Erstellen Sie eine `Playwright`-Instanz.
@@ -90,15 +93,15 @@ class HelloWorldViewTest {
    - Öffnen Sie eine neue Browserseite mit `browser.newPage()`.
    - Navigieren Sie zur `HelloWorldView`-Seite mit der Methode `navigate`.
 
-3. **Mit Elementen interagieren**:
-   - Verwenden Sie [Playwrights Locator](https://playwright.dev/java/docs/api/class-locator), um mit DOM-Elementen zu interagieren.
-   - Füllen Sie Eingabefelder mit `locator("input").fill()` und triggern Sie Aktionen mit `getByText("Say Hello").click()`.
+3. **Interaktion mit Elementen**:
+   - Verwenden Sie die [Locatoren von Playwright](https://playwright.dev/java/docs/api/class-locator), um mit DOM-Elementen zu interagieren.
+   - Füllen Sie Eingabefelder mit `locator("input").fill()` und lösen Sie Aktionen mit `getByText("Say Hello").click()` aus.
 
 4. **Assertions**:
    - Überprüfen Sie die angezeigte Toast-Nachricht mit `PlaywrightAssertions.assertThat()`.
 
 5. **Teardown**:
-   - Playwright kümmert sich automatisch um die Bereinigung des Browsers, wenn der Test abgeschlossen ist. Für manuelle Bereinigung können Sie den Browser mit `browser.close()` schließen.
+   - Playwright verwaltet automatisch die Bereinigung des Browsers, wenn der Test abgeschlossen ist. Für eine manuelle Bereinigung können Sie den Browser mit `browser.close()` schließen.
 
 ### Tests ausführen {#running-tests}
 
@@ -114,6 +117,6 @@ class HelloWorldViewTest {
 
 ## Erwartetes Verhalten {#expected-behavior}
 
-- Beim Besuch von `http://localhost:<port>/` wird die `HelloWorldView`-Seite geladen.
+- Beim Aufrufen von `http://localhost:<port>/` wird die `HelloWorldView`-Seite geladen.
 - Geben Sie webforJ in das Textfeld ein und klicken Sie auf die Schaltfläche `Say Hello`.
-- Eine Toast-Nachricht sollte mit dem Text erscheinen: `Willkommen bei webforJ Starter webforJ!`.
+- Eine Toast-Nachricht sollte mit dem Text erscheinen: `Welcome to webforJ Starter webforJ!`.

@@ -55,7 +55,7 @@ height='600px'
 
 ## Options {#options}
 
-The `GoogleChart` addon enables extensive customization through a variety of options. These options allow you to tailor the look and functionality of your charts to fit your app's needs. Options are passed as a `Map<String, Object>` to the chart's `setOptions()` method. 
+The `GoogleChart` addon enables extensive customization through a variety of options. These options allow you to tailor the look and functionality of your charts to fit your app's needs. Options are passed as a `Map<String, Object>` to the chart's `setOptions()` method.
 
 Here's an example for setting a chart's options:
 
@@ -129,7 +129,7 @@ List<Object> data = new ArrayList<>();
 data.add(Arrays.asList("Year", "Sales", "Expenses"));
 data.add(Arrays.asList("2013", 1000, 400));
 data.add(Arrays.asList("2014", 1170, 460));
-data.add(Arrays.asList("2015", 660, null)); 
+data.add(Arrays.asList("2015", 660, null));
 data.add(Arrays.asList("2016", 1030, 540));
 chart.setData(data);
 
@@ -176,7 +176,7 @@ chart.addReadyListener(e -> {
 
 The `GoogleChartSelectedEvent` is triggered whenever a user selects a data point or segment in a Google Chart component. This event enables interaction with the selected chart data, providing details about what was selected. The event can be listened for by using the `addSelectedListener()` method on the `GoogleChart` instance.
 
-The `GoogleChartSelectedEvent` is useful in applications where user interaction with the chart is necessary. 
+The `GoogleChartSelectedEvent` is useful in applications where user interaction with the chart is necessary.
 
 ```java
 GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
@@ -185,7 +185,7 @@ GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
 chart.addSelectedListener(event -> {
   // Get the selection
   List<Object> selection = chart.getSelection();
-  
+
   // Handle the selected event
   if (!selection.isEmpty()) {
     System.out.println("Selected Row: " + selection.get(0));
@@ -199,7 +199,7 @@ The `GoogleChartSelectedEvent` provides access to the selection data, which can 
 
 - **row**: The index of the row in the chart’s data table that was selected.
 - **column**: The index of the column in the data table, which is optional and applies to charts that allow selection of individual cells, such as a table chart.
-  
+
 For charts like pie charts or bar charts, only the `row` is typically provided, indicating the selected data point.
 
 Here's an example of payload:

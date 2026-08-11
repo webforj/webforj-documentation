@@ -1,26 +1,33 @@
 ---
 sidebar_position: 3
 title: Reporters
-_i18n_hash: 0cb57295142e37eff340531d120b3566
+description: >-
+  Surface validation outcomes through the DefaultBindingReporter or attach
+  custom reporters to bindings with the useReporter callback.
+_i18n_hash: e642fa150e90534cdaef8bb0955d4ff0
 ---
-Importeren van Tabs uit '@theme/Tabs';
-Importeren van TabItem uit '@theme/TabItem';
+<!-- vale off -->
 
-Validatierapporten worden gebruikt om feedback te geven over het validatieproces aan de gebruikersinterface. Deze functie is essentieel om gebruikers te informeren over de resultaten van hun invoervalidatie, vooral in complexe formulieren of datarijke applicaties.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-## Wat is een validatierapport? {#whats-a-validation-reporter}
+<!-- vale on -->
 
-Een validatierapport is een component die de uitkomsten van de validaties verwerkt en aan gebruikers toont. Het fungeert als een brug tussen de validatielogica en de gebruikersinterface, en zorgt ervoor dat validatieresultaten effectief en duidelijk worden gecommuniceerd.
+Validatierapporteurs worden gebruikt om feedback te geven over het validatieproces aan de gebruikersinterface. Deze functie is essentieel om gebruikers te informeren over de resultaten van hun invoervalidatie, vooral in complexe formulieren of gegevensintensive applicaties.
 
-:::tip Kerncomponenten Standaard Rapporteur
-webforJ bevat de `DefaultBindingReporter`, een standaard bindingsrapporteur die naadloos werkt met alle kerncomponenten van webforJ. Deze ingebouwde rapporteur toont automatisch validatiefouten, waardoor de noodzaak voor maatwerkimplementaties in veel gevallen wordt geëlimineerd. Afhankelijk van de configuratie van de component, toont de `DefaultBindingReporter` validatiefouten rechtstreeks als een popover of inline, direct onder de component. Deze functie vereenvoudigt het rapporteren van fouten aanzienlijk, zorgt voor duidelijke en directe communicatie van validatiefouten en verbetert de gebruikerservaring door onmiddellijke, contextgevoelige feedback over invoervalidatie te bieden.
+## Wat is een validatierapporteur? {#whats-a-validation-reporter}
+
+Een validatierapporteur is een component die de resultaten van validaties verwerkt en aan gebruikers weergeeft. Het fungeert als een brug tussen de validatielogica en de gebruikersinterface, waardoor de validatie-uitkomsten effectief en duidelijk worden gecommuniceerd.
+
+:::tip Core Components Standaard Rapporteur
+webforJ omvat de `DefaultBindingReporter`, een standaard bindingsrapporteur die naadloos werkt met alle kernwebforJ-componenten. Dit ingebouwde rapport maakt automatisch validatiefouten zichtbaar, waardoor de behoefte aan aangepaste implementatie in veel gevallen wordt geëlimineerd. Afhankelijk van de configuratie van de component toont de `DefaultBindingReporter` validatiefouten direct als een popover of inline, direct onder de component. Deze functie vereenvoudigt het foutrapportageproces aanzienlijk, zorgt voor duidelijke en directe communicatie van validatiefouten, en verbetert de gebruikerservaring door onmiddellijke, contextgevoelige feedback te geven over invoervalidatie.
 :::
 
-## Configureren van validatierapporten {#configuring-validation-reporters}
+## Validatierapporteurs configureren {#configuring-validation-reporters}
 
-Je kunt validatierapporten binnen de bindingcontext configureren om de presentatie van berichten aan te passen. Typisch zou je een validatierapporteur implementeren om validatieresultaten te aggregeren en deze op een gebruiksvriendelijke manier weer te geven, zoals het markeren van onjuiste velden, het tonen van foutmeldingen of het bijwerken van statusindicatoren.
+Je kunt validatierapporteurs binnen de bindingcontext configureren om aan te passen hoe berichten worden gepresenteerd. Typisch zou je een validatierapporteur implementeren om validatieresultaten te aggregeren en deze vervolgens op een gebruiksvriendelijke manier weer te geven, zoals het markeren van onjuiste velden, het weergeven van foutmeldingen of het bijwerken van statusindicatoren.
 
-Hier is een voorbeeld van hoe je een validatierapport kunt opzetten voor een veld
+Hier is een voorbeeld van hoe je een validatierapporteur voor een veld kunt instellen
 
 <Tabs>
 <TabItem value="UserRegistration" label="UserRegistration.java">
@@ -29,7 +36,7 @@ Hier is een voorbeeld van hoe je een validatierapport kunt opzetten voor een vel
 @StyleSheet("ws://css/styles.css")
 public class UserRegistration extends App {
   Div errors = new Div();
-  TextField emailField = new TextField("Emailadres");
+  TextField emailField = new TextField("E-mailadres");
 
   FlexLayout layout = FlexLayout.create(emailField, errors).vertical().build();
 
@@ -43,7 +50,7 @@ public class UserRegistration extends App {
     BindingContext<User> context = new BindingContext<>(User.class);
     context.bind(emailField, "email")
         .useValidator(
-            Validator.from(new EmailValidator(), "Aangepaste melding voor ongeldig e-mailadres"))
+            Validator.from(new EmailValidator(), "Aangepaste boodschap voor ongeldige e-mailadres"))
         .useReporter((validationResult, binding) -> {
           errors.setVisible(!validationResult.isValid());
 
@@ -87,7 +94,7 @@ public class User {
   public String getPassword() {
     return password;
   }
-  
+
   public void setPassword(String password) {
     this.password = password;
   }
@@ -115,4 +122,4 @@ public class User {
 </TabItem>
 </Tabs>
 
-In de bovenstaande code incorporeert de e-mailbinding een aangepaste rapporteur die validatiemeldingen direct onder het invoerveld weergeeft. Deze opzet maakt gebruik van de `useReporter`-methode, die configureert hoe de binding validatieresultaten afhandelt en presenteert. Deze methode koppelt effectief de validatielogica aan de gebruikersinterface, waardoor eventuele validatieproblemen onmiddellijk zichtbaar zijn voor de gebruiker, wat de interactiviteit en gebruikerservaring van het formulier verbetert.
+In de bovenstaande code omvat de e-mailbinding een aangepaste rapporteur die direct validatieberichten onder het invoerveld weergeeft. Deze opzet maakt gebruik van de `useReporter`-methode, die configureert hoe de binding omgaat met en validatieresultaten presenteert. Deze methode koppelt effectief de validatielogica aan de gebruikersinterface, waardoor eventuele validatieproblemen onmiddellijk zichtbaar zijn voor de gebruiker, en de interactiviteit en gebruikerservaring van het formulier verbetert.

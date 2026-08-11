@@ -1,54 +1,57 @@
 ---
 title: Error Handling
 sidebar_position: 5
-_i18n_hash: 7957d907ae8a5bd9e7b3f7c2fdba2623
+description: >-
+  Register custom ErrorHandler implementations through the Java Service Provider
+  Interface to respond to specific exceptions in webforJ apps.
+_i18n_hash: 55731ba6ae9454377d363fa461c817bc
 ---
-Foutafhandeling is een cruciaal aspect van de ontwikkeling van betrouwbare webapps. In webforJ is foutafhandeling ontworpen om flexibel en aanpasbaar te zijn, waardoor ontwikkelaars uitzonderingen kunnen afhandelen op een manier die het beste aansluit bij de behoeften van hun app.
+Foutafhandeling is een cruciaal aspect van het ontwikkelen van betrouwbare web-apps. In webforJ is foutafhandeling ontworpen om flexibel en aanpasbaar te zijn, zodat ontwikkelaars uitzonderingen kunnen verwerken op een manier die het beste past bij de behoeften van hun app.
 
 ## Overzicht {#overview}
 
-In webforJ draait de foutafhandeling om de `ErrorHandler` interface. Deze interface stelt ontwikkelaars in staat om te definiëren hoe hun app moet reageren wanneer er uitzonderingen optreden tijdens de uitvoering. Standaard biedt webforJ een `GlobalErrorHandler` die alle uitzonderingen op een generieke manier afhandelt. Ontwikkelaars kunnen echter aangepaste foutafhandelaars maken voor specifieke uitzonderingen om meer gepersonaliseerde reacties te bieden.
+In webforJ draait foutafhandeling om de `ErrorHandler` interface. Deze interface stelt ontwikkelaars in staat om te definiëren hoe hun app moet reageren wanneer zich uitzonderingen voordoen tijdens de uitvoering. Standaard biedt webforJ een `GlobalErrorHandler` die alle uitzonderingen op een generieke manier afhandelt. Ontwikkelaars kunnen echter aangepaste foutbehandelaars maken voor specifieke uitzonderingen om meer op maat gemaakte reacties te bieden.
 
-## Ontdekken en gebruiken van foutafhandelaars {#discovering-and-using-error-handlers}
+## Ontdekken en gebruiken van foutbehandelaars {#discovering-and-using-error-handlers}
 
-webforJ gebruikt de Service Provider Interface (SPI) van Java om foutafhandelaars te ontdekken en te laden.
+webforJ maakt gebruik van de Service Provider Interface (SPI) van Java om foutbehandelaars te ontdekken en te laden.
 
-### Ontdekproces {#discovery-process}
+### Ontdekkingsproces {#discovery-process}
 
-1. **Service Registratie**: Foutafhandelaars worden geregistreerd via het `META-INF/services` mechanisme.
+1. **Service Registratie**: Foutbehandelaars worden geregistreerd via het `META-INF/services` mechanisme.
 2. **Service Laden**: Bij het opstarten van de app laadt webforJ alle klassen die zijn vermeld in `META-INF/services/com.webforj.error.ErrorHandler`.
-3. **Foutafhandeling**: Wanneer er een uitzondering optreedt, controleert webforJ of er een foutafhandelaar bestaat voor die specifieke uitzondering.
+3. **Foutafhandeling**: Wanneer zich een uitzondering voordoet, controleert webforJ of er een foutbehandelaar bestaat voor die specifieke uitzondering.
 
-### Handlerselectie {#handler-selection}
+### Beheerder selectie {#handler-selection}
 
-- Als er een specifieke handler voor de uitzondering bestaat, wordt deze gebruikt.
-- Als er geen specifieke handler is gevonden, maar er een aangepaste globale foutafhandelaar `WebforjGlobalErrorHandler` is gedefinieerd, wordt deze gebruikt.
-- Als er geen van beide wordt gevonden, wordt de standaard `GlobalErrorHandler` gebruikt.
+- Als er een specifieke beheerder voor de uitzondering bestaat, wordt deze gebruikt.
+- Als er geen specifieke beheerder wordt gevonden, maar een aangepaste globale foutbehandelaar `WebforjGlobalErrorHandler` is gedefinieerd, wordt deze gebruikt.
+- Als geen van beiden wordt gevonden, wordt de standaard `GlobalErrorHandler` gebruikt.
 
 ## De `ErrorHandler` Interface {#the-errorhandler-interface}
 
-De `ErrorHandler` interface is ontworpen om fouten te behandelen die optreden tijdens de uitvoering van een webforJ app. Toepassingen die specifieke uitzonderingen willen beheren, moeten deze interface implementeren.
+De `ErrorHandler` interface is ontworpen om fouten te verwerken die zich voordoen tijdens de uitvoering van een webforJ-app. Toepassingen die specifieke uitzonderingen willen beheren, moeten deze interface implementeren.
 
 ### Methoden {#methods}
 
 - **`onError(Throwable throwable, boolean debug)`**: Wordt aangeroepen wanneer er een fout optreedt. Deze methode moet de logica bevatten voor het afhandelen van de uitzondering.
 - **`showErrorPage(String title, String content)`**: Een standaardmethode die de foutpagina weergeeft met de gegeven titel en inhoud.
 
-### Naamgevingsconventie {#naming-convention}
+### Benaming conventie {#naming-convention}
 
-De implementerende klasse moet worden genoemd naar de uitzondering die het afhandelt, met de suffix `ErrorHandler`. Om bijvoorbeeld `NullPointerException` af te handelen, moet de klasse `NullPointerExceptionErrorHandler` worden genoemd.
+De implementerende klasse moet naar de uitzondering zijn vernoemd die hij behandelt, met de suffix `ErrorHandler`. Bijvoorbeeld, om `NullPointerException` te behandelen, moet de klasse `NullPointerExceptionErrorHandler` worden genoemd.
 
 ### Registratie {#registration}
 
-De aangepaste foutafhandelaar moet worden geregistreerd in het `META-INF/services/com.webforj.error.ErrorHandler` bestand, zodat webforJ deze kan ontdekken en gebruiken.
+De aangepaste foutbehandelaar moet worden geregistreerd in het `META-INF/services/com.webforj.error.ErrorHandler` bestand, zodat webforJ deze kan ontdekken en gebruiken.
 
-## Implementeren van een aangepaste foutafhandelaar {#implementing-a-custom-error-handler}
+## Implementeren van een aangepaste foutbehandelaar {#implementing-a-custom-error-handler}
 
-De volgende stappen beschrijven de implementatie van een aangepaste foutafhandelaar voor een specifieke uitzondering:
+De volgende stappen beschrijven de implementatie van een aangepaste foutbehandelaar voor een specifieke uitzondering:
 
-### Stap 1: Maak de foutafhandelaar klasse {#step-1-create-the-error-handler-class}
+### Stap 1: Maak de foutbehandelaar klasse aan {#step-1-create-the-error-handler-class}
 
-Maak een nieuwe klasse die de `ErrorHandler` interface implementeert en is genoemd naar de uitzondering die het afhandelt.
+Maak een nieuwe klasse die de `ErrorHandler` interface implementeert en is vernoemd naar de uitzondering die hij behandelt.
 
 ```java
 package com.example.error;
@@ -61,7 +64,7 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
   public void onError(Throwable throwable, boolean debug) {
     // Aangepaste afhandelingslogica voor NullPointerException
     String title = "Null Pointer Exception";
-    String content = "Een null-waarde werd aangetroffen waar een object vereist is.";
+    String content = "Er is een null waarde aangetroffen waar een object vereist is.";
 
     showErrorPage(title, content);
   }
@@ -69,12 +72,12 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
 ```
 
 :::info `showErrorPage()` methode
-De `showErrorPage` methode is een hulpfunctie die de webforJ API gebruikt om de gegeven HTML-inhoud en paginatitel naar de browser te verzenden, waarmee een foutpagina wordt weergegeven. Wanneer er een uitzondering optreedt en de app niet kan herstellen, wordt het onmogelijk om webforJ-componenten te gebruiken om een aangepaste foutpagina te bouwen. De `Page` API blijft echter toegankelijk, zodat de ontwikkelaar een omleiding of het weergeven van een foutpagina als laatste poging kan uitvoeren.
+De `showErrorPage` methode is een hulpmethode die de webforJ API gebruikt om de verstrekte HTML-inhoud en paginatitel naar de browser te verzenden, waarmee een foutpagina wordt weergegeven. Wanneer er een uitzondering optreedt en de app niet kan herstellen, wordt het onmogelijk om webforJ-componenten te gebruiken om een aangepaste foutpagina te bouwen. De `Page` API blijft echter toegankelijk, waardoor de ontwikkelaar de pagina kan omleiden of een foutpagina kan weergeven als laatste poging.
 :::
 
-### Stap 2: Registreer de foutafhandelaar {#step-2-register-the-error-handler}
+### Stap 2: Registreer de foutbehandelaar {#step-2-register-the-error-handler}
 
-Maak een bestand met de naam `com.webforj.error.ErrorHandler` in de `META-INF/services` map van uw app. Voeg de volledig gekwalificeerde naam van uw foutafhandelaar klasse aan dit bestand toe.
+Maak een bestand met de naam `com.webforj.error.ErrorHandler` in de `META-INF/services` directory van uw app. Voeg de volledig gekwalificeerde naam van uw foutbehandelaarklasse toe aan dit bestand.
 
 **Bestand**: `META-INF/services/com.webforj.error.ErrorHandler`
 
@@ -82,11 +85,11 @@ Maak een bestand met de naam `com.webforj.error.ErrorHandler` in de `META-INF/se
 com.example.error.NullPointerExceptionErrorHandler
 ```
 
-Nu, wanneer er een `NullPointerException` wordt gegooid, selecteert webforJ uw geregistreerde handler en voert de logica uit om de fout af te handelen.
+Nu, wanneer er een `NullPointerException` wordt opgegooid, selecteert webforJ uw geregistreerde beheerder en voert deze logica uit om de fout te verwerken.
 
 ## Gebruik van `AutoService` om registratie te vereenvoudigen {#using-autoservice-to-simplify-registration}
 
-Het is gemakkelijk voor ontwikkelaars om te vergeten servicebeschrijvingen bij te werken of correct op te geven. Door gebruik te maken van Google's `AutoService`, kunt u de generatie van het `META-INF/services/com.webforj.error.ErrorHandler` bestand automatiseren. Het enige dat u hoeft te doen, is de foutafhandelaar te annoteren met de `AutoService` annotatie. U kunt meer leren over [AutoService hier](https://github.com/google/auto/blob/main/service/README.md).
+Het is gemakkelijk voor ontwikkelaars om te vergeten om servicebeschrijvingen bij te werken of correct op te geven. Door gebruik te maken van Google's `AutoService`, kunt u de generatie van het `META-INF/services/com.webforj.error.ErrorHandler` bestand automatiseren. Alles wat u hoeft te doen, is de foutbehandelaar van een `AutoService` annotatie te voorzien. U kunt meer leren over [AutoService hier](https://github.com/google/auto/blob/main/service/README.md).
 
 ```java
 @AutoService(ErrorHandler.class)
@@ -96,7 +99,7 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
   public void onError(Throwable throwable, boolean debug) {
     // Aangepaste afhandelingslogica voor NullPointerException
     String title = "Null Pointer Exception";
-    String content = "Een null-waarde werd aangetroffen waar een object vereist is.";
+    String content = "Er is een null waarde aangetroffen waar een object vereist is.";
 
     showErrorPage(title, content);
   }
@@ -105,16 +108,16 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
 
 ## De `GlobalErrorHandler` klasse {#the-globalerrorhandler-class}
 
-De `GlobalErrorHandler` is de standaard foutafhandelaar die door webforJ wordt geleverd. Het implementeert de `ErrorHandler` interface en biedt generieke foutafhandeling.
+De `GlobalErrorHandler` is de standaard foutbehandelaar die door webforJ wordt geleverd. Deze implementeert de `ErrorHandler` interface en biedt generieke foutafhandeling.
 
 ### Gedrag {#behavior}
 
-- **Logging**: Fouten worden gelogd naar zowel de server- als browserconsoles.
-- **Foutpaginaweergave**: Afhankelijk van de debugmodus toont de foutpagina de stacktrace of een generiek foutbericht.
+- **Logging**: Fouten worden gelogd naar zowel de server- als browserconsole.
+- **Foutpagina Weergeven**: Afhankelijk van de debugmodus toont de foutpagina de stacktrace of een generieke foutmelding.
 
-### Het definiëren van een aangepaste globale foutafhandelaar {#defining-a-custom-global-error-handler}
+### Definiëren van een aangepaste globale foutbehandelaar {#defining-a-custom-global-error-handler}
 
-Om een globale foutafhandelaar te definiëren, moet u een nieuwe foutafhandelaar maken met de naam `WebforjGlobalErrorHandler`. volg vervolgens [de stappen om foutafhandelaars te registreren](#step-2-register-the-error-handler) zoals eerder uitgelegd. In dit geval kijkt webforJ eerst naar eventuele aangepaste foutafhandelaars om uitzonderingen te beheren. Als er geen zijn gevonden, valt webforJ terug op de aangepaste globale foutafhandelaar.
+Om een globale foutbehandelaar te definiëren, moet u een nieuwe foutbehandelaar maken met de naam `WebforjGlobalErrorHandler`. Volg vervolgens [de stappen om foutbehandelaars te registreren](#step-2-register-the-error-handler) zoals eerder uitgelegd. In dit geval zal webforJ eerst zoeken naar aangepaste foutbehandelaars om uitzonderingen te beheren. Als er geen worden gevonden, valt webforJ terug op de aangepaste globale foutbehandelaar.
 
 :::info
 Als er meerdere `WebforjGlobalErrorHandler` zijn geregistreerd, selecteert webforJ de eerste.

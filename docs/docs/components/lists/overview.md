@@ -19,7 +19,7 @@ This page outlines the shared features and behavior of all list components, whil
 
 List components are composed of <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects, which represent individual items within a list. Each <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> is associated with a unique key and display text. Important features of the <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> class include:
 
-- A <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> encapsulates a unique key `Object` and a text `String` to display within the list component. 
+- A <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> encapsulates a unique key `Object` and a text `String` to display within the list component.
 - You can construct a <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> by providing a key and text, or by specifying only the text so that a random key is generated.
 
 ## Managing `ListItem` objects with the API {#managing-listitem-objects-with-the-api}
@@ -39,7 +39,7 @@ The various List components offer several methods for managing the list of items
    - To insert an item at a specific index, use the <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,com.webforj.component.list.ListItem)' code="true">insert(int index, ListItem item)</JavadocLink> method.
    - You can insert an item with key and text using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.lang.Object,java.lang.String)' code="true">insert(int index, Object key, String text)</JavadocLink> or <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.lang.String)' code="true">insert(int index, String text)</JavadocLink> method.
 
-- **Inserting multiple items:** 
+- **Inserting multiple items:**
 
    - You can insert multiple items at a specified index using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.util.List)' code="true">insert(int index, List< ListItem > items)</JavadocLink> method.
 

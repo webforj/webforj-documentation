@@ -12,7 +12,7 @@ import DocCardList from '@theme/DocCardList';
 
 # Route hierarchy
 
-Routes are organized into a hierarchical tree structure that enables developers to define layouts, manage views, and dynamically render components across various parts of the app. 
+Routes are organized into a hierarchical tree structure that enables developers to define layouts, manage views, and dynamically render components across various parts of the app.
 
 The key concepts you’ll encounter when building a webforJ routable app include:
 

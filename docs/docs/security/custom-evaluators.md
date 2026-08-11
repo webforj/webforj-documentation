@@ -177,18 +177,18 @@ The security system uses a **chain of responsibility pattern** where evaluators 
 
 Stop the chain immediately:
 
-#### `RouteAccessDecision.grant()`
+#### `RouteAccessDecision.grant()` {#routeaccessdecisiongrant}
 
 - Grants access and stops further evaluation
 - Used by `@AnonymousAccess` and `@PermitAll` - these are complete authorizations that don't combine with other checks
 
-#### `RouteAccessDecision.deny(reason)`
+#### `RouteAccessDecision.deny(reason)` {#routeaccessdecisiondenyreason}
 
 - Denies access and stops further evaluation
 - Used by `@DenyAll` and when custom checks fail
 - Example: `RouteAccessDecision.deny("You can only access your own resources")`
 
-#### `RouteAccessDecision.denyAuthentication()`
+#### `RouteAccessDecision.denyAuthentication()` {#routeaccessdecisiondenyauthentication}
 
 - Redirects to login page
 - Used when authentication is required but missing
@@ -197,7 +197,7 @@ Stop the chain immediately:
 
 Allows combining checks:
 
-#### `chain.evaluate(routeClass, context, securityContext)`
+#### `chain.evaluate(routeClass, context, securityContext)` {#chainevaluaterouteclass-context-securitycontext}
 
 - Passes control to the next evaluator in the chain
 - Enables combining multiple authorization checks

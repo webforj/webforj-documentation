@@ -1,0 +1,31 @@
+extends: existence
+message: "Avoid promotional language like '%s'. State what the feature does plainly."
+link: "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+level: warning
+ignorecase: true
+tokens:
+  - 'stands as'
+  - '(?:serves|stands) as a testament'
+  - 'is a testament'
+  - 'plays a (?:vital|crucial|pivotal|key|significant) role'
+  - '(?:leaves?|left) an indelible mark'
+  - 'reflects? a broader'
+  - 'part of a broader'
+  - 'paving the way'
+  - 'boasts'
+  - 'vibrant'
+  - 'profound'
+  - 'nestled'
+  - 'in the heart of'
+  - 'groundbreaking'
+  - 'natural beauty'
+  - 'cutting-edge'
+  - 'state-of-the-art'
+  - 'best-in-class'
+  - 'world-class'
+  - 'game-?changer'
+  - 'game-?changing'
+  - 'revolutionary'
+  - 'seamless'
+  - 'seamlessly'
+  - 'robust'

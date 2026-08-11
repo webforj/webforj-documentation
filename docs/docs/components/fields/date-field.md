@@ -29,7 +29,7 @@ files={['src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.
 
 The `DateField` component stores its value internally as a `LocalDate` object, representing a date without time or timezone information. This allows for accurate handling of calendar-based inputs across different systems.
 
-:::info Displayed value VS parsed value 
+:::info Displayed value VS parsed value
 While the **displayed value** adapts to the user's browser locale, ensuring regionally familiar formatting (e.g., `MM/DD/YYYY` in the United States or `DD.MM.YYYY` in Europe), the **parsed value** always relies on the fixed format of `yyyy-MM-dd`.
 :::
 

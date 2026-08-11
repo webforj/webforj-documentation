@@ -5,7 +5,7 @@ description: Configure webforJ components in Java by setting text, attributes, I
 sidebar_class_name: new-content
 ---
 
-<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
+<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
 
 Components are the building blocks of webforJ applications. Whether you're using built-in components like `Button` and `TextField`, or working with custom components provided by your team, the way you interact with them follows the same consistent model: you configure properties, manage state, and compose components into layouts.
 
@@ -104,7 +104,7 @@ webforJ also assigns automatic identifiers to components internally. The server-
 
 ### Styling {#styling}
 
-Three methods cover most styling needs: `setStyle()` for individual CSS property values, and `addClassName()` and `removeClassName()` to apply or remove CSS classes defined in your stylesheets. 
+Three methods cover most styling needs: `setStyle()` for individual CSS property values, and `addClassName()` and `removeClassName()` to apply or remove CSS classes defined in your stylesheets.
 Use `setStyle()` for minor or one-off styling adjustments, and use CSS classes to apply larger or reusable styling.
 
 ```java
@@ -218,13 +218,13 @@ This is useful when you need to replace content entirely, such as swapping a loa
 ## Form validation {#form-validation}
 
 Coordinating multiple components to gate a submit action is a common pattern in webforJ UIs. The basic idea is that each input field registers a listener, and whenever a value changes, the form re-evaluates whether all criteria are met and updates the submit button accordingly.
- 
+
 The example below wires this up manually so you can see how component state and event listeners work together. It isn't the recommended approach for real forms: manual listener logic becomes hard to maintain as forms grow, and it doesn't connect your components to an underlying data model.
- 
+
 :::tip Use data binding for form validation
 For production forms, use [data binding](/docs/data-binding/overview). It covers validation, two-way synchronization between components and your model, and value transformation through `BindingContext`. The manual pattern shown here is for illustration only.
 :::
- 
+
 In this contact form, the name field must not be empty, the email must contain an `@` symbol, and the message must be at least 10 characters long:
 
 <ComponentDemo
@@ -248,7 +248,7 @@ startButton.onClick(event -> {
     startButton.setEnabled(false);
     statusLabel.setText("Processing...");
     statusLabel.addClassName("processing");
-    
+
     performTask(() -> {
         statusLabel.setText("Complete");
         statusLabel.removeClassName("processing");
@@ -290,10 +290,10 @@ The DESTROY event is particularly useful for keeping a registry automatically in
 ```java
 public class ResourceRegistry {
     private final Map<String, Component> activeComponents = new ConcurrentHashMap<>();
-    
+
     public void track(Component component, String name) {
         activeComponents.put(name, component);
-        
+
         component.addLifecycleObserver((comp, event) -> {
             if (event == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
                 activeComponents.remove(name);
@@ -310,17 +310,17 @@ A coordinator class that manages a set of related components can use the same ap
 ```java
 public class FormCoordinator {
     private final List<DwcComponent<?>> managedComponents = new ArrayList<>();
-    
+
     public void manage(DwcComponent<?> component) {
         managedComponents.add(component);
-        
+
         component.addLifecycleObserver((comp, event) -> {
             if (event == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
                 managedComponents.remove(comp);
             }
         });
     }
-    
+
     public void disableAll() {
         managedComponents.forEach(c -> c.setEnabled(false));
     }

@@ -77,7 +77,7 @@ toast.open();
 
 ## Placement {#placement}
 
-With webforJ's `Toast` component, you can choose where the notification appears on the screen to suit your app's design and usability requirements. By default, `Toast` notifications appear at the bottom center of the screen. 
+With webforJ's `Toast` component, you can choose where the notification appears on the screen to suit your app's design and usability requirements. By default, `Toast` notifications appear at the bottom center of the screen.
 
 You can set the `placement` of a Toast notification with the `setPlacement` method using the `Toast.Placement` enum with one of the following values:
 
@@ -110,7 +110,7 @@ The `Toast` component can display multiple notifications simultaneously, stackin
 
 ## Actions and Interactivity {#actions-and-interactivity}
 
-Although `Toast` notifications don't require user interaction by default, webforJ allows you to add buttons or other interactive elements to make them more useful than simple notifications. 
+Although `Toast` notifications don't require user interaction by default, webforJ allows you to add buttons or other interactive elements to make them more useful than simple notifications.
 
 <ComponentDemo
 path='/webforj/toastcookies'
@@ -118,7 +118,7 @@ files={['src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java']}
 height='350px'
 />
 
-By adding this kind of interactivity, you can give users the ability to handle tasks and perform actions without navigating away from their current screen, transforming a `Toast` notification into a valuable channel of interaction and engagement. 
+By adding this kind of interactivity, you can give users the ability to handle tasks and perform actions without navigating away from their current screen, transforming a `Toast` notification into a valuable channel of interaction and engagement.
 
 ## Styling {#styling}
 

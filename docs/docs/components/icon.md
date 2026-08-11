@@ -41,7 +41,7 @@ Using webforJ gives you the flexibility to choose from three pools and use them 
 
 | Icon Pool                                         | webforJ Class |
 | --------                                          | ------- |
-| [Tabler](https://tabler-icons.io/)                | `TablerIcon` and `DwcIcon`.<br/>`DwcIcon` is a subset of the Tabler icons.|    
+| [Tabler](https://tabler-icons.io/)                | `TablerIcon` and `DwcIcon`.<br/>`DwcIcon` is a subset of the Tabler icons.|
 | [Feather](https://feathericons.com/)              | `FeatherIcon`    |
 | [Font Awesome](https://fontawesome.com/search)    | `FontAwesomeIcon`   |
 
@@ -112,7 +112,7 @@ On the other hand, placing icons after the component text is effective for actio
 Icons after a component's text is ideal for components that either offer supplementary information or guide users in a directional flow.
 
 Ultimately, consistency is key. Once you choose a style, maintain it across your site for a cohesive and user-friendly design.
-   
+
 <ComponentDemo
 path='/webforj/iconprefixsuffix'
 files={['src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java']}

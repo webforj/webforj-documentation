@@ -2,40 +2,39 @@
 title: Integrating an App Layout
 sidebar_position: 7
 description: Step 6 - Using the AppLayout and FlexLayout components.
-sidebar_class_name: new-content
-_i18n_hash: 66c364d83c3b6d574acaca5156bbb018
+_i18n_hash: ddf62eb6d62a711c38f9ddaf9caeabad
 ---
-Tässä vaiheessa keräät kaikki sovelluksesi osat yhteen johdonmukaiseen sovelluslayoutiin. Tämän vaiheen lopussa sovelluksesi rakenne muistuttaa läheisesti [SideMenu-arkkityyppiä](/docs/building-ui/archetypes/sidemenu), ja sinulla on parempi ymmärrys siitä, miten seuraavat komponentit ja käsitteet toimivat:
+Tässä vaiheessa yhdistät kaikki sovelluksesi osat yhtenäiseksi sovellusrakenteeksi. Tämän vaiheen lopussa sovelluksesi rakenne muistuttaa läheisesti [SideMenu-mallia](/docs/building-ui/archetypes/sidemenu), ja ymmärrät paremmin, miten seuraavat komponentit ja käsitteet toimivat:
 
 - [`FlexLayout`](/docs/components/flex-layout)
-- [Reittiulostulot](/docs/routing/route-hierarchy/route-outlets)
+- [Reittilähtökohtia](/docs/routing/route-hierarchy/route-outlets)
 - [`AppLayout`](/docs/components/app-layout)
 - [`AppNav`](/docs/components/appnav)
 
 ## Sovelluksen suorittaminen {#running-the-app}
 
-Sovellusta kehittäessäsi voit käyttää [6-integrating-an-app-layout](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout) vertailupohjana. Näet sovelluksen käytössä:
+Kun kehität sovellustasi, voit käyttää [6-integrating-an-app-layout](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout) vertailukohtana. Nähdäksesi sovelluksen toiminnassa:
 
-1. Siirry pääkansioon, joka sisältää `pom.xml`-tiedoston, joka on `6-integrating-an-app-layout`, jos seuraat GitHubin versiota.
+1. Siirry ylimpään hakemistoon, joka sisältää `pom.xml` -tiedoston, tämä on `6-integrating-an-app-layout`, jos seuraat GitHubin versiota.
 
-2. Käytä seuraavaa Maven-komentoa suorittaaksesi Spring Boot -sovellusta paikallisesti:
+2. Käytä seuraavaa Maven-komentoa suorittaaksesi Spring Boot -sovelluksen paikallisesti:
     ```bash
     mvn
     ```
 
-Sovelluksen suorittaminen avaa automaattisesti uuden selaimen osoitteeseen `http://localhost:8080`.
+Sovelluksen suorittaminen avaa automaattisesti uuden selainikkunan osoitteeseen `http://localhost:8080`.
 
-## Uuden käytettävän komponentin luominen {#creating-a-reusable-component}
+## Uuden komponentin luominen {#creating-a-reusable-component}
 
-Aiemmassa vaiheessa, [Routing and Composites](/docs/introduction/tutorial/routing-and-composites), loit kaksi komposiittikomponenttia, jotka sisälsivät asiakastaulukon sisällön ja asiakaslomakkeen. Tämän vaiheen osana luot pienemmän, uudelleen käytettävän komposiittikomponentin, joka näyttää sovelluksen nimen sivuvalikossa ja "Tietoa"-sivulla. Jos päätät muuttaa sovelluksen nimeä tulevaisuudessa, sinun tarvitsee päivittää se vain tässä komponentissa.
+Aiemmassa vaiheessa, [Reititys ja koostumukset](/docs/introduction/tutorial/routing-and-composites), loit kaksi koottua komponenttia, jotka sisälsivät asiakastietotaulukon ja asiakaslomakkeen sisällön. Osana tätä vaihetta luot pienemmän, uudelleenkäytettävän koottavan komponentin, joka näyttää sovelluksen nimen sivuvalikossa ja tieto-sivulla. Jos päätät muuttaa sovelluksen nimeä tulevaisuudessa, sinun tarvitsee vain päivittää se tässä komponentissa.
 
-Hakemistossa `src/main/java/com/webforj/tutorial/components` luo luokka nimeltä `AppTitle`. `AppTitle`:n sidottu komponentti on `FlexLayout`, säilytyskomponentti, jota käytetään tämän vaiheen aikana näyttämään, kuinka tehdä monimutkaisempia asetteluja. Tälle `FlexLayout`:lle järjestät kohteiden suunnan ja välin kohteiden välillä. Tämä tehdään käyttämällä `setDirection()` ja `setSpacing()` -metodeja.
+Hakemistossa `src/main/java/com/webforj/tutorial/components` luo luokka nimeltä `AppTitle`. `AppTitle`:n sidottu komponentti on `FlexLayout`, säilytyskomponentti, jota käytetään tämän vaiheen aikana näyttämään, miten tehdä monimutkaisempia asetteluja. Tämän `FlexLayout`:n avulla voit järjestää kohteiden suunnan ja välin kohteiden välillä. Se tapahtuu käyttämällä `setDirection()` ja `setSpacing()` menetelmiä.
 
 ```java title='AppTitle.java'
 // Tee sidotusta komponentista FlexLayout
 public class AppTitle extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();
-  
+
   public AppTitle() {
 
     // Järjestä kohteet pystysuoraan
@@ -47,13 +46,13 @@ public class AppTitle extends Composite<FlexLayout> {
 }
 ```
 
-Sen jälkeen käytä standardeja HTML-elementtejä luodaksesi otsikon ja alaotsikon. Header-elementin alaosan marginaalin asettaminen `0px` tuo elementit lähemmäksi toisiaan, ja voit tyylitellä alaotsikon käyttämällä [DWC CSS -muuttujia](/docs/styling/css-variables).
+Käytä sitten tavallisia HTML-elementtejä luodaksesi otsikon ja alaotsikon. Asettamalla otsikkoelementin alareunan marginaaliin `0px`, saat elementit lähempänä toisiaan, ja voit tyylitellä alaotsikon käyttäen [DWC CSS -muuttujia](/docs/styling/css-variables).
 
 ```java title='AppTitle.java' {3-4,7-9,13}
 public class AppTitle extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();
-  private H2 title = new H2("Asiakkaan hallinta");
-  private Paragraph subTitle = new Paragraph("Yksinkertainen rekisterijärjestelmä");
+  private H2 title = new H2("Asiakashallinta");
+  private Paragraph subTitle = new Paragraph("Yksinkertainen tietojärjestelmä");
 
   public AppTitle() {
     title.setStyle("margin-bottom", "0px");
@@ -67,12 +66,12 @@ public class AppTitle extends Composite<FlexLayout> {
 }
 ```
 
-### Valinnainen renderointi {#optional-rendering}
+### Valinnainen renderöinti {#optional-rendering}
 
-Vaikka `AppTitle` on yksinkertainen, lisätty boolean-parametri konstruktoriin antaa sinun hallita, milloin renderöidä tietyt osat komponentista, kuten alaotsikon.
+Vaikka `AppTitle` on yksinkertainen, boolean-argumentin lisääminen konstruktorimenetelmään antaa sinulle mahdollisuuden hallita, milloin tietyt osat komponentista, kuten alaotsikko, renderoidaan.
 
 ```java title='AppTitle.java'
-// Lisää boolean-parametri
+// Lisää boolean-argumentti
 public AppTitle(boolean showSubTitle) {
 
   self.setDirection(FlexDirection.COLUMN)
@@ -80,8 +79,8 @@ public AppTitle(boolean showSubTitle) {
 
       // Lisää otsikko oletuksena
       .add(title);
-  
-  // Valinnaisesti näytä alaotsikko
+
+  // Näytä alaotsikko vaihtoehtoisesti
   if (showSubTitle) {
     self.add(subTitle);
   }
@@ -90,13 +89,13 @@ public AppTitle(boolean showSubTitle) {
 
 ### Valmis `AppTitle` {#completed-app-title}
 
-Kaikkiaan uudelleen käytettävä komponentti näyttää tältä:
+Kaiken kaikkiaan, uudelleenkäytettävän komponentin tulisi näyttää seuraavalta:
 
 ```java title='AppTitle.java'
 public class AppTitle extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();
-  private H2 title = new H2("Asiakkaan hallinta");
-  private Paragraph subTitle = new Paragraph("Yksinkertainen rekisterijärjestelmä");
+  private H2 title = new H2("Asiakashallinta");
+  private Paragraph subTitle = new Paragraph("Yksinkertainen tietojärjestelmä");
 
   public AppTitle(boolean showSubTitle) {
     title.setStyle("margin-bottom", "0");
@@ -106,7 +105,7 @@ public class AppTitle extends Composite<FlexLayout> {
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("0px")
         .add(title);
-        
+
     if (showSubTitle) {
       self.add(subTitle);
     }
@@ -114,53 +113,53 @@ public class AppTitle extends Composite<FlexLayout> {
 }
 ```
 
-## Tietosivun luominen {#creating-an-about-page}
+## Tieto-sivun luominen {#creating-an-about-page}
 
-Ensimmäinen paikka, johon lisäät juuri luodun `AppTitle`-komponentin, on tietosivu. Tämä sivu sisältää kuvan ja `AppTitle`-komponentin, keskitettynä sivulle toisen `FlexLayout`:n avulla.
+Ensimmäinen paikka, johon lisätään juuri luotu `AppTitle` komponentti, on tieto-sivu. Tämä sivu sisältää kuvan ja `AppTitle` komponentin, keskitettynä sivulle toisen `FlexLayout` komponentin avulla.
 
-### Sisällön keskittäminen `FlexLayout`:lla {#centering-content-using-a-flexlayout}
+### Sisällön keskittäminen käyttämällä `FlexLayout`:a {#centering-content-using-a-flexlayout}
 
-Tavoitteena on keskittyä tietosivun sisältöön `FlexLayout`:n avulla. `FlexLayout` komponentti seuraa [CSS flexbox -asettelumallia](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). `FlexLayout`:n metodit, kuten aiemmin käytetyt menetelmät kohteiden suuntaamiseksi pystysuoraan, ovat erilaisia tapoja järjestää kohteet.
+Tavoitteena on keskittää tieto-sivun sisältö käyttämällä `FlexLayout`:ia. `FlexLayout` komponentti noudattaa [CSS flexbox -asettelu mallia](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). `FlexLayout`:n menetelmät, kuten aiemmin käytettyjen kohteiden järjestäminen pystysuoraan, ovat erilaisia tapoja järjestää kohteita.
 
-Kohteiden järjestämisen metodit `FlexLayout`:ssa käyttävät suhteellista suuntajärjestelmää. Sen sijaan, että ajattelisit vaakasuoria ja pystysuoria akselia, on parempi ajatella, että akseli, joka on kohtisuorassa kohteiden kanssa, on pääakseli ja akseli, joka on kohteita vastaan kohtisuorassa, on poikkisysteemi.
+Menetelmät kohteiden järjestämiseksi `FlexLayout`:issa käyttävät suhteellista suuntaista järjestelmää. Sen sijaan että ajattelisit vaakasuoria ja pystysuoria akselia, on parempi ajatella akselia, joka on rinnakkainen kohteiden kanssa pääakselina, ja akselia, joka on kohtisuorassa kohteiden kanssa, ristiaskeleena.
 
-Kun asetat sekä `FlexJustifyContent` että `FlexAlignment` -ominaisuudet `CENTER`:iksi, se keskittää kohteet sekä pää- että poikkisysteemissä `FlexLayout`:ssa, ja kun teet `FlexLayout`:n käyttämään koko vanhempaa säiliötä, se keskittää sen sivulle.
+Asettamalla sekä `FlexJustifyContent` että `FlexAlignment` ominaisuudet `CENTER` auttaa keskittämään kohteet pitkin sekä pää- että ristiaspäässuunnat `FlexLayout`:issä, ja tekemällä `FlexLayout`:ista koko vanhemman säilöä täyttävän tekee sen keskitetyn sivulle.
 
 ```java
 private final FlexLayout layout = new FlexLayout();
 
-// Täytä koko tila vanhemman elementin
+// Täytä koko vanhemman elementin tila
 layout.setSize("100%", "100%");
 
-// Aseta pääakselin suunta pystysuoraksi
+// Tee pääakselista pystysuora
 layout.setDirection(FlexDirection.COLUMN);
 
-// Keskitä kohteet poikkisysteemissä
+// Keskity kohteet ristiaspaineaksella
 layout.setAlignment(FlexAlignment.CENTER);
 
-// Keskitä kohteet pääakselissa
+// Keskity kohteet pääakselilla
 layout.setJustifyContent(FlexJustifyContent.CENTER);
 ```
 
-Auttaaksesi visualisoimaan, kuinka eri menetelmät toimivat, voit katsoa blogiviestiä [FlexWrap your mind around webforJ's FlexLayout](/blog/2025/08/26/flexlayout-container).
+Auttaaksesi visualisoimaan, miten eri menetelmät toimivat, katso blogikirjoitusta [FlexWrap your mind around webforJ's FlexLayout](/blog/2025/08/26/flexlayout-container).
 
 ### Resurssien lisääminen {#adding-resources}
 
-Yksi kohteista, joka menee keskitettyyn `FlexLayout`:iin, on kuva. Tämän oppaan vuoksi voit katsella ja ladata [tietosivun kuvaa](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout/src/main/resources/static/images/Files.svg) GitHubista. Lataa se ja lisää se projektisi staattiseen kansioon `src/main/resources/static/images` ja nimeä se `Files.svg`.
+Yksi asioista, jotka menevät keskitettyyn `FlexLayout`:iin, on kuva. Tämän oppaan vuoksi voit katsella ja ladata [tieto-sivun kuvaa](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout/src/main/resources/static/images/Files.svg) GitHubista. Kun olet ladannut sen, lisää se projektisi staattiseen kansioon osoitteeseen `src/main/resources/static/images` ja nimeä se `Files.svg`.
 
-Tämän kuvan laittaminen staattiseen kansioon mahdollistaa sen käyttämisen viittauksena verkkopalveluprotokollan avulla, kuten teit, kun viittasit CSS-tiedostoon ensimmäisessä vaiheessa, [Perus sovelluksen luominen](/docs/introduction/tutorial/creating-a-basic-app). Voit sitten käyttää sitä sovelluksessasi HTML-elementtinä seuraavasti:
+Kuvan laittaminen staattiseen kansioon antaa mahdollisuuden viitata siihen käyttämällä [Verkkopalvelimen protokollaa](/docs/managing-resources/assets-protocols#the-webserver-protocol). Voit sitten käyttää sitä sovelluksessasi HTML-elementtinä, kuten näin:
 
 ```java
 private Img fileImg = new Img("ws://images/Files.svg");
 ```
 
-### `AboutView`:n luominen {#creating-about-view}
+### `AboutView` luominen {#creating-about-view}
 
-Kuten kahdella olemassa olevalla sovellussivulla, tietosivusta tulee reititettävä näkymä. Hakemistossa `src/main/java/com/webforj/tutorial/views` lisää luokka nimeltä `AboutView`. Käytä sidottuna komponenttina `FlexLayout`:a, kuten teit `AppTitle`:n kanssa.
+Kuten kaksi olemassa olevaa sovellussivua, tieto-sivu on reittiävä näkymä. Hakemistossa `src/main/java/com/webforj/tutorial/views` lisää luokka nimeltä `AboutView`. Käytä sidottuna komponenttina `FlexLayout`:ia, kuten teit `AppTitle`:lle.
 
-Koska olet nimennyt luokan `AboutView`:ksi, URL-kartoitukselle ei tarvitse antaa erityisarvoa; tämä sivu renderöityy oletusarvoisesti osoitteeseen `http://localhost:8080/about`.
+Koska olet nimennyt luokan `AboutView`, ei ole tarpeen antaa mukautettua arvoa URL-mappingille; tämä sivu renderöityy osoitteessa `http://localhost:8080/about` oletuksena.
 
-Tässä on miltä se näyttää, kun käytät aikaisempien vaiheiden käsitteitä ja juuri luotuja komponentteja uuden näkymän luomiseksi keskitettyyn sisältöön:
+Tältä näyttää, kun käytät aiemmista vaiheista saadun käsitteitä yhdessä juuri luotujen komponenttien kanssa luodaksesi uuden näkymän, jonka sisältö on keskitetty:
 
 ```java title='AboutView.java'
 @Route()
@@ -180,15 +179,15 @@ public class AboutView extends Composite<FlexLayout> {
 }
 ```
 
-## `Layout`-reititin luominen {#creating-the-layout-route}
+## `Layout` reitin luominen {#creating-the-layout-route}
 
-Se mainitaan lyhyesti [Routing and Composites](/docs/introduction/tutorial/routing-and-composites) vaiheessa, mutta on olemassa kaksi [reitityyppiä](/docs/routing/route-hierarchy/route-types). `MainView`, `FormView` ja `AboutView` ovat kaikki `View`-reittejä, kun taas se reitityyppi, jota käytät sovelluksen sivuvalikon luomiseen, on `Layout`-reititin.
+Se mainitaan lyhyesti [Reititys ja koostumukset](/docs/introduction/tutorial/routing-and-composites) vaiheessa, mutta on olemassa kaksi [reitityyppiä](/docs/routing/route-hierarchy/route-types). `MainView`, `FormView` ja `AboutView` ovat kaikki `View` reittejä, kun taas reitityyppi, jota käytät luodaksesi sovelluksen sivuvalikon, on `Layout` reitti.
 
-Layout-reitit paketoivat lapsinäkymiä ja mahdollistavat tiettyjen UI-osien pysymisen näkymien välillä, kuten sivuvalikon. Hakemistossa `src/main/java/com/webforj/tutorial/layouts` luo luokka nimeltä `MainLayout`.
+Layout-reitit kääriä lapsinäkymiä ja mahdollistavat tiettyjen UI-osien säilyttämisen näkymien välillä, kuten sivuvalikon. Hakemistossa `src/main/java/com/webforj/tutorial/layouts` luo luokka nimeltä `MainLayout`.
 
-### Reittiulostulot {#route-outlets}
+### Reittilähtöpaikat {#route-outlets}
 
-Kuten näkymäreiteillä, `MainLayout` tarvitsee `@Route`-annotaation. Koska sillä on `Layout`-lisäyksena, eikä layout-reitit vaikuta URL-osoitteeseen, näissä annotaatioissa ei tarvita argumentteja.
+Kuten näkymäreiteillä, `MainLayout` tarvitsee `@Route` -annotaation. Kuitenkin, koska sillä on `Layout` liitteenä ja layout-reitit eivät vaikuta URL-osoitteeseen, tämän annotaation ei tarvitse sisältää argumentteja.
 
 ```java title="MainLayout.java" {1}
 @Route
@@ -200,7 +199,7 @@ public class MainLayout {
 }
 ```
 
-Sovellus tietää, mitkä näkymät renderöidään `MainLayout`:ssa, ilmoittamalla layout-luokan [reittiulostimena](/docs/routing/route-hierarchy/route-outlets) jokaisessa näkymässä. Edellisissä vaiheissa on vain `value`-ominaisuus asetettuna `@Route`-annotaatiossaan, joten nyt sinun on ilmoitettava selkeästi, mitkä `value` ja `outlet` -ominaisuudet ovat näkyluokille.
+Sovellus tietää, mitä näkymiä renderoida `MainLayout`:in sisällä, ilmoittamalla layout-luokan [reititysleikkien](/docs/routing/route-hierarchy/route-outlets) jokaisessa näkymässä. Aiemmissa vaiheissa on vain `value`-ominaisuus asetettuna `@Route` annotaatioihin, joten nyt sinun on ilmoitettava, mitkä `value` ja `outlet` ominaisuudet ovat näkyluokilla.
 
 <!-- vale Google.Quotes = NO -->
 <Tabs>
@@ -222,43 +221,43 @@ Sovellus tietää, mitkä näkymät renderöidään `MainLayout`:ssa, ilmoittama
 </Tabs>
 <!-- vale Google.Quotes = YES -->
 
-:::note Viimeiset silaukset
-Tämä on viimeinen muutos, joka tarvitaan `FormView` ja `AboutView` tämän vaiheen osalta, joten muista päivittää `@Route`-annotaatio näille näkymille ennen kuin suoritat sovelluksesi.
+:::note Viimeiset säädöt
+Tämä on viimeinen muutos, joka tarvitaan `FormView` ja `AboutView` kohdalla tässä vaiheessa, joten muista päivittää `@Route` annotaatio näissä näkymissä ennen kuin suoritat sovelluksesi.
 :::
 
-## `AppLayout`-komponentin käyttäminen {#using-the-app-layout-component}
+## `AppLayout` komponentin käyttäminen {#using-the-app-layout-component}
 
-Nyt kun sovelluksesi renderöi näkymät `MainLayout`:ssa, voit valita, mihin komponentit renderöityvät. Valitsemalla `AppLayout`:n sidotuksi komponentiksi `MainLayout`:lle voit tallentaa näkymät oletusarvoisesti pääsisältöalueeseen, samalla kun sinulla on erilaisia alueita, joihin voit lisätä kohteita osoitteelle.
+Nyt kun sovelluksesi renderoi näkymiä `MainLayout` sisällä, voit valita, mihin nuo komponentit renderoidaan. Valitsemalla `AppLayout`:in sidottuna komponenttina `MainLayout`:lle, voit tallentaa näkymät oletuksena pääsisältöalueelle, samalla kun saat eri alueita, joihin voit lisätä elementtejä ylä- ja sivuvalikkoa varten.
 
-### Slotit {#slots}
+### Paikat {#slots}
 
-Monissa webforJ-säilöissä käyttämällä `add()`-menetelmiä lisätään UI-komponentteja pääsisältöalueeseen. `AppLayout`-komponentissa on useita alueita UI-komponenttien lisäämistä varten, kukin erikseen slotissa. Merkitsemällä `MainLayout`:n layout-reitiksi ja asettamalla sen sidotuksi komponentiksi `AppLayout`, näkymät renderöityvät automaattisesti pääsisältöslotissa.
+Monille webforJ säilöille, `add()` menetelmien käyttö lisää UI-komponentteja pääsisältöalueelle. `AppLayout` komponentissa on useita alueita UI-komponenttien lisäämiseen, jokainen erillisessä paikassa. Merkitsemällä `MainLayout`:n layout-reitiksi ja asettamalla sen sidotuksi komponentiksi `AppLayout`, näkymät renderoituvat automaattisesti pääsisältöpaikkaan.
 
-Tässä vaiheessa käytät `drawer-title` ja `drawer` slotteja luodaksesi sivuvalikon sekä `header` slotin näyttääksesi, millä sivulla käyttäjä on, ja se on sivuvalikon kytkin.
+Tässä vaiheessa käytät `drawer-title` ja `drawer` paikkoja luodaksesi sivuvalikon, ja `header` paikkaa näyttääksesi, millä sivulla käyttäjä on ja kytkimen sivuvalikolle.
 
 ### Sivuvalikon tekeminen {#making-a-side-menu}
 
-Kun laitteella on riittävästi näyttötilaa, `AppLayout`-komponentti näyttää laatikon. Tähän lisäät `AppTitle`-komponentin uudelleen ja kohteita, jotka mahdollistavat käyttäjien navigoinnin sovelluksessa.
+Kun laitteessa on tarpeeksi näyttötilaa, `AppLayout` komponentti näyttää laatikon. Tähän lisäät `AppTitle`:n uudelleen ja elementtejä, jotka mahdollistavat käyttäjien navigoida sovelluksessa.
 
-Oletuksena `AppLayout` ei näytä laatikon otsikkoa, mutta käyttämällä `setDrawerHeaderVisible()`-menetelmää voit näyttää `drawer-title` slotin sisällä olevia kohteita, jotka ovat `AppTitle` otsikolla alaotsikon kera.
+Oletuksena `AppLayout` ei näytä laatikon ykköshaaraa, mutta käyttämällä `setDrawerHeaderVisible()` menetelmää pystyt näyttämään elementtejä, jotka ovat `drawer-title` paikassa, mikä on `AppTitle` alaotsikkonsa kanssa.
 
 ```java
 private AppLayout appLayout = new AppLayout();
 
-// Näytä Laatikon Otsikko
+// Näytä laatikon ykköshaara
 appLayout.setDrawerHeaderVisible(true);
 
-// Lisää AppTitle Laatikon Otsikkoon alaotsikon kanssa
+// Lisää AppTitle laatikon ykköhaaraan alaotsikkonsa kanssa
 appLayout.addToDrawerTitle(new AppTitle(true));
 ```
 
-`drawer` slotin tulee sitten sisältää komponentteja, jotka mahdollistavat käyttäjien navigoinnin sovelluksessa. Käyttämällä [`AppNav`](/docs/components/appnav) -komponenttia on helppo luoda uusia navigointivaihtoehtoja. Jokaiselle linkille tarvitset vain luoda `AppNavItem`. `AppNavItem`-komponentit tässä oppaassa käyttävät kolmea parametria:
+`drawer` paikassa pitäisi sitten sisältää komponentit, jotka mahdollistavat käyttäjien navigoida sovelluksessa. Käyttäminen [`AppNav`](/docs/components/appnav) komponenttia helpottaa uusien navigointivaihtoehtojen luomista. Jokaiselle linkille tarvitset vain luoda `AppNavItem`. `AppNavItem` komponentit tässä oppaassa käyttävät kolmea parametria:
 
 - Linkin etiketti
 - Kohde-näkymä
-- Valinnainen [`Icon`](/docs/components/icon) -komponentti, joka käyttää kuvia [Tabler](https://tabler.io/icons)
+- Valinnainen [`Icon`](/docs/components/icon) komponentti, joka käyttää kuvia [Tablerista](https://tabler.io/icons)
 
-Koko laatikkoasetusten ryhmittely `MainLayout`:ssa näyttää seuraavalta:
+Kaikkien laatikon asetusten ryhmittäminen `MainLayout` näyttäisi seuraavalta:
 
 ```java title="MainLayout"
 @Route
@@ -274,40 +273,40 @@ public class MainLayout extends Composite<AppLayout> {
     self.setDrawerHeaderVisible(true)
         .addToDrawerTitle(new AppTitle(true));
 
-    appNav.addItem(new AppNavItem("Dashbord", MainView.class,
+    appNav.addItem(new AppNavItem("Koontinäkymä", MainView.class,
         TablerIcon.create("archive")));
-    appNav.addItem(new AppNavItem("Tietoja", AboutView.class,
+    appNav.addItem(new AppNavItem("Tietoa", AboutView.class,
         TablerIcon.create("info-circle")));
     self.addToDrawer(appNav);
   }
 ```
 
-### Headerin tekeminen {#making-a-header}
+### Ylätason tekeminen {#making-a-header}
 
-`header` slotin tulee sisältää kaksi kohdetta: kytkin näyttämään tai piilottamaan sivuvalikon ja tapa näyttää kehysotsikko. Molemmat nämä kohteet ovat osa [Toolbar](/docs/components/toolbar) -komponenttia, toinen tapa järjestää komponentteja.
+`header` paikassa tulisi olla kaksi elementtiä: kytkin näyttämään tai piilottamaan sivuvalikon ja tapa näyttää kehysotsikko. Molemmat nämä elementit ovat [Työkalupakki](/docs/components/toolbar) komponentissa, toinen tapa organisoida komponentteja.
 
-Voit sisällyttää kytkimen `AppLayout` laatikolle komponentilla `AppDrawerToggle`. Tämä komponentti on jo tyylitelty yleisesti käytetyn näkymävaihtoehtojen kuvakkeella, ja se avaa ja sulkee laatikkoa.
+Voit lisätä `AppLayout` laatikon kytkimen `AppDrawerToggle` komponentilla. Tämä komponentti on jo tyylitelty yleisesti käytetyllä ikonilla piilotetuille valikkovaihtoehdoille ja kohdistaa laatikon avaamaan ja sulkemaan sen.
 
 ```java
-// Luo säiliökomponentit
+// Luo säilöntäkomponentit
 private AppLayout appLayout = new AppLayout();
 private Toolbar toolbar = new Toolbar();
 
-// Lisää Työkalupalkki AppLayoutin yläosaan
+// Lisää Työkalupakki AppLayout yläosaan
 appLayout.addToHeader(toolbar);
 
-// Lisää AppDrawerToggle työkalupalkkiin
+// Lisää AppDrawerToggle työkalupakkiin
 toolbar.addToStart(new AppDrawerToggle());
 ```
 
-Header voi myös näyttää kehysotsikon rekisteröimällä navigointitapahtuman ja hakemalla tietoja saapuvasta komponentista, ja se on tapahtumakuuntelija, joka poistaa rekisteröinnin estämään muistivuotoja.
+Ylätaso voi myös näyttää kehysotsikon käyttämällä navigointitapahtumaa, jotta saat tietoa saapuvasta komponentista, jolloin sinulla on tapahtumakuuntelija, joka poistaa rekisteröinnin estääksesi muistivuodot.
 
 ```java
 // Luo H1-elementti ja navigointirekisteröinti
 private H1 title = new H1("");
 private ListenerRegistration<NavigateEvent> navigateRegistration;
 
-// Rekisteröi tapahtuma navigoitaessa
+// Rekisteröi tapahtuma navigoinnin aikana
 navigateRegistration = Router.getCurrent().onNavigate(this::onNavigate);
 
 // Poista kuuntelijat ennen MainLayoutin tuhoamista
@@ -318,7 +317,7 @@ protected void onDidDestroy() {
   }
 }
 
-// Hae kehysotsikko saapuvasta näkyluokasta
+// Hanki kehysotsikko saapuvan reitin luokasta
 private void onNavigate(NavigateEvent ev) {
   Component component = ev.getContext().getComponent();
   if (component != null) {
@@ -328,9 +327,9 @@ private void onNavigate(NavigateEvent ev) {
 }
 ```
 
-## Valmis `MainLayout`
+## Valmis `MainLayout` {#completed-mainlayout}
 
-Tässä on `MainLayout`, jossa on luotua sisältöä laatikon ja headerin sisällä `AppLayout`:issa:
+Tässä on `MainLayout`, jossa on luotu sisältö laatikolle ja ylätasolle `AppLayout`:n sisällä:
 
 <!-- vale off -->
 <ExpandableCode title="MainLayout.java" language="java">
@@ -359,9 +358,9 @@ Tässä on `MainLayout`, jossa on luotua sisältöä laatikon ja headerin sisäl
       self.setDrawerHeaderVisible(true)
           .addToDrawerTitle(new AppTitle(true));
 
-      appNav.addItem(new AppNavItem("Dashbord", MainView.class,
+      appNav.addItem(new AppNavItem("Koontinäkymä", MainView.class,
           TablerIcon.create("archive")));
-      appNav.addItem(new AppNavItem("Tietoja", AboutView.class,
+      appNav.addItem(new AppNavItem("Tietoa", AboutView.class,
           TablerIcon.create("info-circle")));
       self.addToDrawer(appNav);
     }
@@ -388,7 +387,7 @@ Tässä on `MainLayout`, jossa on luotua sisältöä laatikon ja headerin sisäl
 
 ## `FormView`:n päivittäminen {#updating-form-view}
 
-Kuten aiemmin mainittiin, ainoa muutos `FormView`:lle oli `@Route`-annotaatiossa.
+Kuten aiemmin mainittiin, ainoa muutos `FormView`:lle oli `@Route` annotaatiossa.
 
   ```java
   @Route(value = "customer/:id?<[0-9]+>", outlet = MainLayout.class)
@@ -396,19 +395,19 @@ Kuten aiemmin mainittiin, ainoa muutos `FormView`:lle oli `@Route`-annotaatiossa
 
 ## `MainView`:n päivittäminen {#updating-main-view}
 
-`MainView`:ssa vaihdat sidotun komponentin `Div`:stä `FlexLayout`:iin. Tämä mahdollistaa taulukon keskittymisen, samalla siirtäen tiettyjä komponentteja asettelun sisälle. `setItemAlignment()`-metodin käyttö antaa sinun valita komponentin asettelusta ja siirtää sen, joten voit pitää taulukon keskitettynä, kun taas asiakasta lisäävä painike voidaan kiinnittää asetelun yläkulmaan.
+`MainView`:lle vaihdat sidotun komponentin `Div`:stä `FlexLayout`:iin. Tämä mahdollistaa taulukon keskittämisen sekä joidenkin erikseen tiettyjen komponenttien siirtämisen asettelussa. Käyttämällä `setItemAlignment()` menetelmää voit valita komponentin asettelusta ja siirtää sen, jotta voit pitää taulukon keskitettynä, samalla kun sitoutat asiakkaan lisäämispainikkeen asettelun oikeaan yläkulmaan.
 
 ```java
-// Vaihda sidottu komponentti FlexLayout:iksi
+// Vaihda sidottu komponentti FlexLayout:ksi
 private FlexLayout self = getBoundComponent();
 
-// Kohdistaa painikkeen poikkisysteemin loppuun
+// Kohdistaa painikkeen ristiaskeleen loppupisteeseen
 self.setItemAlignment(FlexAlignment.END, addCustomer);
 ```
 
-Toinen parannus, jonka voit tehdä tässä, on taulukon leveys. Sen sijaan, että se olisi kiinteä leveys, voit asettaa sen vastaamaan vanhempaa säilöä, `FlexLayout`:ia. Sitten tuolle `FlexLayout`:lle voidaan asettaa enimmäisleveys, jotta se ei veny liikaa suuremmilla näytöillä.
+Toinen parannus, jonka voit tehdä, on taulukon leveys. Kiinteän leveyden sijasta voit asettaa sen vastaamaan vanhemman säilön, `FlexLayout`:in, leveyttä. Sitten tämä `FlexLayout` voi saada maksimaalisen leveyden, jotta se ei veny liian pitkälle suuremmilla näytöillä.
 
-```java 
+```java
 private FlexLayout self = getBoundComponent();
 private Table<Customer> table = new Table<>();
 
@@ -418,19 +417,19 @@ self.setMaxWidth(2000);
 table.setSize("100%", "294px");
 ```
 
-Yhdistämällä nämä yhteen ja tekemällä toisen metodin saadaksesi `FlexLayout` keskittyneenä kuten aiemmissa, `MainView` näyttää seuraavalta, jossa on korostetut muutokset:
+Yhdistämällä nämä yhteen ja tekemällä toisen menetelmän saadaksesi `FlexLayout` keskitettynä, kuten aiemmissa, tekee `MainView`:sta, jossa on korostetut muutokset:
 
 <!-- vale off -->
 <ExpandableCode title="MainView.java" language="java">
 {`@Route(value = "/", outlet = MainLayout.class)
-  @FrameTitle("Asiakkaan taulukko")
+  @FrameTitle("Asiakkaat Taulukko")
   // highlight-next-line
   public class MainView extends Composite<FlexLayout> {
     private final CustomerService customerService;
     // highlight-next-line
     private FlexLayout self = getBoundComponent();
     private Table<Customer> table = new Table<>();
-    private Button addCustomer = new Button("Lisää asiakas", ButtonTheme.PRIMARY,
+    private Button addCustomer = new Button("Lisää Asiakas", ButtonTheme.PRIMARY,
         e -> Router.getCurrent().navigate(FormView.class));
 
     public MainView(CustomerService customerService) {

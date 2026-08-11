@@ -42,7 +42,7 @@ The utility class [`BrowserConsole`](/docs/advanced/browser-console), dedicated 
 
 ```java
 public class Application extends App{
-  
+
   @Override
   public void run() throws WebforjException {
     console().log("Log message");

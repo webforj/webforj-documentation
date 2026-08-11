@@ -4,13 +4,13 @@ sidebar_position: 1
 description: >-
   Discover where to download the tutorial project, how to navigate it, and run
   the apps within.
-_i18n_hash: 02dbd05d1fdaba50c25155904013471b
+_i18n_hash: 72ee1120081fa9f4d4fed86c13741d5b
 ---
-Aloittaaksesi tämän oppaan, tarvitset paikan projektiisi, jossa voit hallita luokkia ja resursseja. Seuraavissa osioissa kuvataan eri tapoja luoda webforJ-projekti tälle oppaalle.
+Aloita tämä opas valitsemalla sijainti projektille, jossa voit hallita luokkia ja resursseja. Seuraavissa osioissa kuvataan erilaisia tapoja luoda webforJ-projekti tätä opasta varten.
 
-## Koodin käyttäminen {#using-source-code}
+## Käyttämällä lähdekoodia {#using-source-code}
 
-Helpoin tapa seurata tätä oppaata on viitata sen lähdekoodiin. Voit ladata koko projektin tai kloonata sen GitHubista:
+Helpoin tapa seurata tätä opasta on viitata sen lähdekoodiin. Voit ladata koko projektin tai kloonata sen GitHubista:
 
 <!-- vale off -->
 - Lataa ZIP: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
@@ -20,9 +20,15 @@ Helpoin tapa seurata tätä oppaata on viitata sen lähdekoodiin. Voit ladata ko
 git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
+<!-- <div class="videos-container">
+  <video controls>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
+  </video>
+</div> -->
+
 ### Projektin rakenne {#project-structure}
 
-Projektissa on kuusi alikansiota, yksi jokaiselle oppaan vaiheelle, ja jokaisessa on suoritettava sovellus. Seuraamalla mukana voit nähdä, kuinka sovellus etenee perustason asetuksesta täysin toimivaksi asiakashallintajärjestelmäksi.
+Projektissa on kuusi alikansiota, yksi kutakin opastusta varten, ja jokainen sisältää toimivan sovelluksen. Seuraamalla voit nähdä, kuinka sovellus etenee perusasetuksesta täysin toimivaksi asiakashallintajärjestelmäksi.
 
 ```
 webforj-tutorial
@@ -30,7 +36,7 @@ webforj-tutorial
 │   LICENSE
 │   README.md
 │
-├───1-creating-a-basic-app  
+├───1-creating-a-basic-app
 ├───2-working-with-data
 ├───3-routing-and-composites
 ├───4-observers-and-route-parameters
@@ -38,16 +44,17 @@ webforj-tutorial
 └───6-integrating-an-app-layout
 ```
 
+<!-- vale off -->
 ## Käyttämällä startforJ {#using-startforj}
+<!-- vale on -->
 
-Jos haluat mieluummin luoda uuden projektin, voit käyttää [startforJ](https://docs.webforj.com/startforj) -työkalua luodaksesi minimaalisen aloitusprojektin. Katso [Aloitus](/docs/introduction/getting-started) saadaksesi tarkempaa tietoa startforJ:n käytöstä.
+Jos haluat mieluummin luoda uuden projektin, voit käyttää [startforJ:ta](https://docs.webforj.com/startforj) luodaksesi minimaalisen aloitusprojektin. Katso [Aloitus](/docs/introduction/getting-started) saadaksesi yksityiskohtaisempaa tietoa startforJ:n käytöstä.
 
-:::note Vaatimustasetukset
-- Valitse **webforJ version** -pudotusvalikosta webforJ versio **26.00 tai uudempi**.
-- Valitse **Flavor** -pudotusvalikosta **webforJ + Spring Boot**. 
-:::
+:::note Vaaditut asetukset
+- **webforJ-version** pudotusvalikosta valitse webforJ versio **26.01 tai uudempi**.
+- **Maku** pudotusvalikosta valitse **webforJ + Spring Boot**.
 
-## Komentorivin käyttäminen {#using-command-line}
+## Käyttämällä komentoriviä {#using-command-line}
 
 Voit myös luoda uuden projektin seuraavalla komennolla:
 
@@ -77,7 +84,7 @@ mvn -B archetype:generate `
   -Dflavor="webforj-spring"
 ```
   </TabItem>
-  <TabItem value="cmd" label="Komentokehotte">
+  <TabItem value="cmd" label="Komentokehote">
 ```
 mvn -B archetype:generate ^
   -DarchetypeGroupId="com.webforj" ^
@@ -92,9 +99,9 @@ mvn -B archetype:generate ^
 </Tabs>
 <!-- vale on -->
 
-## Konfiguraatiot
+## Kokoonpanot {#configurations}
 
-Kaksi mainittua tapaa luoda uusi projekti käyttää webforJ [archetyyppien](/docs/building-ui/archetypes/overview) avulla, jotka automaattisesti lisäävät tarvittavat konfiguraatiot projektiisi, kuten Spring [riippuvuudet](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) POM-tiedostoon ja seuraavat ominaisuudet tiedostoon `src/main/resources/application.properties`:
+Kaksi mainittua tapaa uuden projektin luomiseksi käyttävät webforJ [archetyyppejä](/docs/building-ui/archetypes/overview), jotka automaattisesti lisäävät tarvittavat kokoonpanot projektiisi. Tämä sisältää Spring [riippuvuudet](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies), webforJ Maven -lisäosan, joka rakentaa ja seuraa frontend-lähteitä, sekä seuraavat asetukset tiedostossa `src/main/resources/application.properties`:
 
 ```
 spring.application.name=CustomerApplication
@@ -105,13 +112,17 @@ webforj.debug=true
 
 ## Sovelluksen suorittaminen {#running-the-app}
 
-Näet sovelluksen toiminnassa edetessäsi oppaan läpi:
+Näyttääksesi sovelluksen toiminnassa edetessäsi ohjeessa:
 
-1. Siirry halutun vaiheen hakemistoon. Tämän tulisi olla kyseisen vaiheen ylin hakemisto, jossa on `pom.xml`.
+1. Siirry sen vaiheen hakemistoon, jonka haluat. Tämä tulisi olla korkean tason hakemisto kyseiselle vaiheelle, joka sisältää `pom.xml`.
 
 2. Käytä seuraavaa Maven-komentoa suorittaaksesi Spring Boot -sovelluksen paikallisesti:
     ```bash
     mvn
     ```
 
+   Luotu POM määrittää tämän oletuskomennon kokoamaan sovelluksen, käynnistämään webforJ frontend -seuraajan ja suorittamaan Spring Bootin.
+
+<!-- vale Google.WordList = NO -->
 Sovelluksen suorittaminen avaa automaattisesti uuden selaimen osoitteessa `http://localhost:8080`.
+<!-- vale Google.WordList = YES -->

@@ -1,91 +1,95 @@
 ---
 sidebar_position: 1
 title: Docker
-_i18n_hash: 8cc797ca5ca7e8ba3a8cd9f3aec41d74
+description: >-
+  Install Docker Desktop on Windows or Mac, pull the webforj/sandbox image, and
+  run BBjServices in a container for webforJ development.
+_i18n_hash: 4981bf7da8b63063a781d946d29895e6
 ---
 # Installation de Docker
 
-Cette section de la documentation couvriera les étapes nécessaires pour les utilisateurs qui souhaitent développer en utilisant Docker. Les modifications apporteront votre code se feront sur votre machine de développement et l'application résultante sera exécutée dans Docker.
+Cette section de la documentation couvrira les étapes requises pour les utilisateurs qui souhaitent développer en utilisant Docker. Les modifications de votre code seront effectuées sur votre machine de développement, et l'application résultante sera exécutée dans Docker.
 
 ## 1. Téléchargement de Docker {#1-downloading-docker}
 
-Le processus d'installation de Docker sera légèrement différent entre les utilisateurs de Windows, Mac et Linux. Consultez la section ci-dessous qui correspond à votre système d'exploitation.
+Le processus d'installation de Docker variera légèrement entre les utilisateurs de Windows, Mac et Linux. Reportez-vous à la section ci-dessous qui correspond à votre système d'exploitation.
+
 
 ### Windows {#windows}
 
 :::info
-Il est recommandé de télécharger la dernière version de Windows Subsystem for Linux. Plus d'informations peuvent être trouvées [à ce lien](https://learn.microsoft.com/en-us/windows/wsl/install)
+Il est recommandé de télécharger la dernière version du Sous-système Windows pour Linux. Plus d'informations peuvent être trouvées [à ce lien](https://learn.microsoft.com/en-us/windows/wsl/install)
 :::
 
-**1. Téléchargez Docker Desktop :**
->- Visitez la page de téléchargement de Docker Desktop pour Windows : [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+**1. Télécharger Docker Desktop:**
+>- Visitez la page de téléchargement de Docker Desktop pour Windows : [Docker Desktop pour Windows](https://www.docker.com/products/docker-desktop/)
 >- Cliquez sur le bouton "Obtenir Docker Desktop pour Windows" pour télécharger l'installateur.
 
-**2. Installez Docker Desktop :**
+**2. Installer Docker Desktop:**
 >- Exécutez l'installateur que vous avez téléchargé.
->- Suivez l'assistant d'installation, et assurez-vous d'activer Hyper-V (si vous y êtes invité) car Docker pour Windows utilise Hyper-V pour la virtualisation.
->- Une fois l'installation terminée, Docker Desktop se lancera automatiquement.
+>- Suivez l'assistant d'installation et assurez-vous d'activer Hyper-V (si vous y êtes invité), car Docker pour Windows utilise Hyper-V pour la virtualisation.
+>- Une fois l'installation terminée, Docker Desktop démarrera automatiquement.
 
-**3. Vérifiez l'installation :**
+**3. Vérifier l'installation:**
 >- Ouvrez un terminal et exécutez la commande `docker --version` pour vérifier que Docker est installé et fonctionne correctement.
 
 ### Mac {#mac}
 
-**1. Téléchargez Docker Desktop :**
->- Visitez la page de téléchargement de Docker Desktop pour Mac : [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
+**1. Télécharger Docker Desktop:**
+>- Visitez la page de téléchargement de Docker Desktop pour Mac : [Docker Desktop pour Mac](https://www.docker.com/products/docker-desktop/)
 
-**2. Installez Docker Desktop :**
+**2. Installer Docker Desktop:**
 >- Exécutez l'installateur que vous avez téléchargé.
->- Une fois l'installation terminée, Docker Desktop se lancera automatiquement.
+>- Une fois l'installation terminée, Docker Desktop démarrera automatiquement.
 
-**3. Vérifiez l'installation :**
+**3. Vérifier l'installation:**
 >- Ouvrez un terminal et exécutez la commande `docker --version` pour vérifier que Docker est installé et fonctionne correctement.
 
 ## 2. Configuration {#2-configuration}
 
 Une fois Docker Desktop téléchargé, recherchez la dernière image webforJ, qui est actuellement sous le nom `webforj/sandbox`.
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_1l.png#rounded-border)
+![Recherche d'image DWCJ](/img/bbj-installation/docker/Step_1l.png#rounded-border)
 
-Cliquez sur la liste des tags pour voir les options disponibles.
+Cliquez sur la liste des balises pour voir les options disponibles
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_2l.png#rounded-border)
+![Recherche d'image DWCJ](/img/bbj-installation/docker/Step_2l.png#rounded-border)
 
 Pour la version la plus récente, sélectionnez "rc"
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_3l.png#rounded-border)
+![Recherche d'image DWCJ](/img/bbj-installation/docker/Step_3l.png#rounded-border)
 
-Tirez l'image pour démarrer votre conteneur.
+Tirez l'image pour démarrer votre conteneur
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_4l.png#rounded-border)
+![Recherche d'image DWCJ](/img/bbj-installation/docker/Step_4l.png#rounded-border)
 
-Une fois le téléchargement terminé, cliquez sur le bouton exécuter, ce qui ouvrira les paramètres de configuration.
+Une fois le téléchargement terminé, cliquez sur le bouton de démarrage, ce qui ouvrira les paramètres de configuration
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_5l.png#rounded-border)
+![Recherche d'image DWCJ](/img/bbj-installation/docker/Step_5l.png#rounded-border)
 
-Ouvrez le menu "Paramètres optionnels".
+Ouvrez le menu "Paramètres optionnels"
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_6l.png#rounded-border)
+![Recherche d'image DWCJ](/img/bbj-installation/docker/Step_6l.png#rounded-border)
 
-Sélectionnez un port hôte souhaité où vous pouvez voir votre application s'exécuter dans Docker.
+Sélectionnez un port hôte souhaité où vous pouvez voir votre application s'exécuter dans Docker
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_7l.png#rounded-border)
+![Recherche d'image DWCJ](/img/bbj-installation/docker/Step_7l.png#rounded-border)
 
-Cliquez sur "Exécuter" pour démarrer le conteneur.
+Cliquez sur "Exécuter" pour démarrer le conteneur
 
-![DWCJ Image Search](/img/bbj-installation/docker/Step_8l.png#rounded-border)
+![Recherche d'image DWCJ](/img/bbj-installation/docker/Step_8l.png#rounded-border)
 
 :::success Important
-Assurez-vous de noter le numéro de port hôte personnalisé que vous fournissez, car cela sera nécessaire par la suite.
+Assurez-vous de noter le numéro de port hôte personnalisé que vous fournissez, car cela sera nécessaire plus tard.
 :::
 
 ## 3. Exécution de votre application {#3-running-your-app}
 
-Une fois le conteneur créé, les applications webforJ peuvent être exécutées dans le conteneur au lieu de localement. Tout d'abord, il est nécessaire de configurer correctement le fichier POM de votre projet. Une fois cela fait, aller à une URL spécifique dans le navigateur affichera l'application.
+Une fois le conteneur créé, les applications webforJ peuvent être exécutées dans le conteneur au lieu de localement. Tout d'abord, il est nécessaire de configurer correctement le fichier POM de votre projet. Une fois cela fait, accéder à une URL spécifique dans le navigateur affichera l'application.
 
-### Configuration de votre fichier POM {#configuring-your-pom-file}
+### Configurer votre fichier POM {#configuring-your-pom-file}
 
-Exécuter un projet webforJ dans le conteneur Docker nécessitera l'utilisation du plugin d'installation webforJ, qui peut être configuré à l'aide de votre fichier POM :
+Exécuter un projet webforJ dans le conteneur Docker nécessitera l'utilisation du Plugin d'installation webforJ, qui peut être configuré en utilisant votre fichier POM :
 
 Créez une nouvelle entrée `<plugin>` dans la section `<plugins>` du POM. Le code suivant montre une entrée de départ qui peut être utilisée et ajustée selon les besoins de votre projet :
 
@@ -116,22 +120,22 @@ Si votre fichier POM n'a pas de section `<plugins>`, créez-en une.
 
 Une fois une entrée similaire à celle ci-dessus créée, personnalisez les informations suivantes :
 
-- Modifiez l'entrée `<deployurl>` pour utiliser le numéro de port qui correspond au **port hôte** que vous avez configuré pour votre conteneur dans l'étape précédente.
+- Modifiez l'entrée `<deployurl>` pour utiliser le numéro de port qui correspond au **port hôte** que vous avez configuré pour votre conteneur à l'étape précédente.
 
 - Assurez-vous que l'entrée `<classname>` correspond au nom de l'application que vous souhaitez exécuter.
 
-- Si vos informations d'identification `<username>` et `<password>` sont différentes pour votre installation de BBj, modifiez-les.
+- Si vos identifiants `<username>` et `<password>` sont différents pour votre installation de BBj, modifiez-les.
 
-### Utilisation du projet de démarrage {#using-the-starter-project}
+### Utiliser le projet de démarrage {#using-the-starter-project}
 
 <ComponentArchetype
 project="bbj-hello-world"
 />
 
-### Lancement de l'application {#launching-the-app}
+### Lancer l'application {#launching-the-app}
 
-Une fois cela fait, exécutez un `mvn install` dans le répertoire de votre projet. Cela exécutera le plugin d'installation webforJ et vous permettra d'accéder à votre application. Pour voir l'application, vous devrez aller à l'URL suivante :
+Une fois cela fait, exécutez un `mvn install` dans le répertoire de votre projet. Cela exécutera le plugin d'installation webforJ et vous permettra d'accéder à votre application. Pour voir l'application, vous devrez vous rendre à l'URL suivante :
 
 `http://localhost:YourHostPort/webapp/YourPublishName`
 
-Remplacez `YourHostPort` par le port hôte que vous avez configuré avec Docker, et `YourPublishName` par le texte à l'intérieur de la balise `<publishname>` du POM. Si cela est fait correctement, vous devriez voir votre application s'afficher.
+Remplacez `YourHostPort` par le port hôte que vous avez configuré avec Docker, et `YourPublishName` par le texte à l'intérieur de la balise `<publishname>` du POM. Si tout est fait correctement, vous devriez voir votre application s'afficher.

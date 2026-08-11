@@ -6,7 +6,7 @@ description: >-
   annotations, runtime injection APIs, and custom URL protocols.
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: ddf6edc65adddf9e8eb952916a120e1f
+_i18n_hash: 7aee2ee29fd227575e12f1450422d0a1
 ---
 <Head>
   <style>{`
@@ -21,15 +21,15 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-Sovellukset perustuvat erilaisiin resurssityyppeihin, kuten JavaScriptiin, CSS:ään ja kuviin. Tämä asiakirja tarjoaa kattavan teknisen tutkimuksen webforJ:n resurssinhallintamekanismeista, kattaen deklaratiiviset annotaatiot, ohjelmalliset API-menetelmät ja mukautetun protokollan käytön.
+Sovellukset luottavat erilaisiin resursseihin, kuten JavaScriptiin, CSS:ään ja kuviin. Tämä dokumentti tarjoaa kattavan teknisen tutkimuksen webforJ:n resurssinkäsittelymekanismeista, kattaen deklaratiiviset annotaatiot, ohjelmalliset API-menetelmät ja mukautettujen protokollien käytön.
 
-webforJ omaksuu modulaarisen lähestymistavan resurssinhallintaan, tarjoten useita mekanismeja eri sovellustarpeiden käsittelemiseksi:
+webforJ omaksuu modulaari lähestymistavan resurssien hallintaan, tarjoten useita mekanismeja erilaisten sovellusten tarpeiden täyttämiseksi:
 
-- **Frontend-bundler**: Tuo npm-paketteja, komponenttikehyksiä ja tyylisivukieliä sovellukseen kootun syötteen kautta. Tämä on oletustapa frontend-resursseille, ja se tekee kaiken, mitä annotaatiot tekevät.
-- **Deklaratiiviset annotaatiot**: Upota JavaScript- ja CSS-resurssit komponenttien tai sovellustason tasolla ilman rakennusvaihetta.
-- **API-pohjainen dynaaminen injektio**: Injektoi resursseja ajonaikaisesti dynaamisen sovelluskäyttäytymisen mahdollistamiseksi.
-- **Mukautetut protokollat**: Tarjoa standardisoituja menetelmiä resurssien käyttöön.
-- **Tiedostojen virran hallinta ja hallitut lataukset**: Mahdollistaa resurssitiedostojen hallitun hankinnan ja siirron.
+- **Frontend-bundler**: Tuo npm-paketit, komponenttipohjat ja tyylitiedostokielet sovellukseen koottujen sisäänkäyntien kautta. Tämä on oletustie frontend-varoille, ja se tekee kaiken, mitä annotaatiot tekevät.
+- **Deklaratiiviset annotaatiot**: Upota JavaScript- ja CSS-resursseja komponenttien tai sovellustason tasolla ilman rakennusvaihetta.
+- **API-pohjainen dynaaminen injektointi**: Injektoi resursseja ajon aikana, jotta mahdollistetaan dynaaminen sovelluskäyttäytyminen.
+- **Mukautetut protokollat**: Tarjoa standardoituja menetelmiä resurssien käyttöön.
+- **Tiedostovirtaukset ja hallitut lataukset**: Mahdollista hallittu tiedostojen hakeminen ja siirtäminen.
 
 ## Topics {#topics}
 

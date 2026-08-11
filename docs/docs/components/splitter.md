@@ -123,7 +123,7 @@ Clicking the "Clear State" button calls the `cleanState()` method and refreshes 
 
 ## Best practices {#best-practices}
 
-To ensure an optimal user experience when using the `Splitter` component, consider the following best practices: 
+To ensure an optimal user experience when using the `Splitter` component, consider the following best practices:
 
 - **Adjust Based on Content**: When deciding on the orientation and initial sizes of panels, consider the content's priority. For example, in a layout with a navigation sidebar and a main content area, the sidebar should typically remain narrower with a set min size for clear navigation.
 

@@ -1,43 +1,46 @@
 ---
-sidebar_position: 155
-title: HTML Element Components
-_i18n_hash: b2842b1d092327e8364bbe72fc09ac49
+sidebar_position: 52
+title: HTML Components
+description: >-
+  Compose pages with typed Java wrappers for standard HTML elements like Div,
+  Anchor, Paragraph, Img, headings, and semantic containers.
+_i18n_hash: 40b5b7346cf57ebc6795c87e25fe3a74
 ---
-webforJ toimittaa joukon komponentteja, jotka vastaavat suoraan standardeja HTML-elementtejä, tarjoten tyyppitetyn Java-API:n yleisimpiin verkkosivujen rakennuspalikoihin. Katso kattava viite jokaiselle taustalla olevalle HTML-elementille [MDN HTML element reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
+webforJ toimittaa joukon komponentteja, jotka vastaavat suoraan standardeja HTML-elementtejä ja tarjoavat tyypitetyn Java-rajapinnan verkkosivujen yleisimpiin rakennuspalikoihin. Kattavan viittauksen kuhunkin perus-html-elementtiin löydät [MDN HTML-elementtiviittauksesta](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
 
-## Saatavilla olevat komponentit
+## Saatavilla olevat komponentit {#available-components}
 
-Seuraavat komponentit ovat saatavilla ja ne vastaavat vastaavia HTML-elementtejä:
+Seuraavat komponentit ovat saatavilla ja karttuvat vastaaviin HTML-elementteihin:
 
 | webforJ-luokka | HTML-elementti | Kuvaus | Lapset |
 |:--|:--:|:--|:--:|
 | `Anchor` | `<a>` | Luo hyperlinkin URL-osoitteeseen, sähköpostiosoitteeseen tai sivun sisäiseen sijaintiin. | ✔️ |
-| `Article` | `<article>` | Edustaa itsenäistä teosta, kuten blogikirjoitusta, uutisartikkelia tai foorumi-inputia. | ✔️ |
-| `Aside` | `<aside>` | Edustaa sisältöä, joka on epäsuorasti liittynyt pääsisältöön, yleensä renderöity sivupalkkina. | ✔️ |
-| `Break` | `<hr>` | Edustaa temaattista jakoa kappaletasolla olevien elementtien välillä, renderöitynä vaakaviivana. | ❌ |
-| `Div` | `<div>` | Yleisluonteinen lohkotason säiliö sisällön ryhmittelyyn ja muotoiluun. | ✔️ |
-| `Emphasis` | `<em>` | Merkitsee tekstin painotetulla painotuksella, muuttaen lauseen merkitystä. | ✔️ |
-| `Fieldset` | `<fieldset>` | Ryhmittelee liittyvät lomakekomponentit ja niiden etiketti. | ✔️ |
-| `Footer` | `<footer>` | Edustaa sen lähimmän osallisen juuren alatunnistetta, joka sisältää yleensä tekijätietoa tai navigointitietoa. | ✔️ |
-| `FormattedText` | `<pre>` | Näyttää esimuotoiltua tekstiä säilyttäen valkoisen tilan ja rivinvaihdot täsmälleen niin kuin ne on kirjoitettu. | ✔️ |
-| `H1` – `H6` | `<h1>` – `<h6>` | Edustavat kuutta eritasoista osion otsikkoa, joissa `H1` on tärkein ja `H6` vähiten tärkeä. | ✔️ |
-| `Header` | `<header>` | Edustaa johdantoa, joka sisältää yleensä otsikon, logon tai navigointilinkkejä. | ✔️ |
-| `Iframe` | `<iframe>` | Upottaa toisen HTML-sivun sisäiseksi selausyhteydeksi nykyiselle sivulle. | ❌ |
-| `Img` | `<img>` | Upottaa kuvan asiakirjaan. | ❌ |
-| `Legend` | `<legend>` | Tarjoaa kuvatekstin `Fieldset`:n sisällölle. | ❌ |
-| `ListEntry` | `<li>` | Edustaa yksittäistä kohdetta `OrderedList`- tai `UnorderedList`:ssa. | ✔️ |
-| `Main` | `<main>` | Edustaa asiakirjan rungon vallitsevaa sisältöä, joka on ainutlaatuinen sivulle. | ✔️ |
-| `NativeButton` | `<button>` | Paikallinen interaktiivinen painiketyyppi, joka voi laukaista toimintoja tai lähettää lomakkeita. | ✔️ |
-| `Nav` | `<nav>` | Edustaa sivun osaa, joka sisältää navigointilinkkejä. | ✔️ |
-| `OrderedList` | `<ol>` | Edustaa numeroitua, järjestettyä luetteloa kohteista. | ✔️ |
-| `Paragraph` | `<p>` | Edustaa tekstiparaafia. | ✔️ |
+| `Article` | `<article>` | Edustaa itseään sisältävää rakennetta, kuten blogikirjoitusta, uutisartikkelia tai foorumin viestiä. | ✔️ |
+| `Aside` | `<aside>` | Edustaa sisältöä, joka on epäsuorasti liittynyt pääsisältöön, yleensä sivupalkkina. | ✔️ |
+| `Break` | `<hr>` | Edustaa temaattista taukoa kappaletasolla, esitettynä vaakasuorana viivana. | ❌ |
+| `Div` | `<div>` | Yleinen lohkotason säiliö sisällön ryhmittelyyn ja tyylittelyyn. | ✔️ |
+| `Emphasis` | `<em>` | Merkitsee tekstin painotusta korostamalla, muuttaen lauseen merkitystä. | ✔️ |
+| `Fieldset` | `<fieldset>` | Ryhmittelee yhteen liittyviä lomakeohjaimia ja niiden etikettejä. | ✔️ |
+| `Footer` | `<footer>` | Edustaa lähimmän osioitaon esivanhemman alaosaa, joka sisältää yleensä tekijä- tai navigointitietoja. | ✔️ |
+| `FormattedText` | `<pre>` | Näyttää muotoiltua tekstiä, säilyttäen valkoisen alueen ja rivinvaihdot tarkalleen sellaisina kuin ne on kirjoitettu. | ✔️ |
+| `H1` – `H6` | `<h1>` – `<h6>` | Edustavat kuutta tasoa osion otsikoita, joissa `H1` on tärkein ja `H6` vähiten tärkeä. | ✔️ |
+| `Header` | `<header>` | Edustaa johdantoa sisältöä, joka sisältää yleensä otsikon, logon tai navigointilinkkejä. | ✔️ |
+| `Iframe` | `<iframe>` | Liittää toisen HTML-sivun upotettuna selauskontekstina nykyiseen sivuun. | ❌ |
+| `Img` | `<img>` | Liittää kuvan asiakirjaan. | ❌ |
+| `Legend` | `<legend>` | Tarjoaa kuvatekstin `Fieldset`-sisällölle. | ❌ |
+| `ListEntry` | `<li>` | Edustaa yksittäistä kohtaa `OrderedList`- tai `UnorderedList`-kohdassa. | ✔️ |
+| `Main` | `<main>` | Edustaa asiakirjan rungon hallitsevaa sisältöä, joka on ainutlaatuinen sivulle. | ✔️ |
+| `NativeButton` | `<button>` | Natiivi interaktiivinen painike-elementti, joka voi laukaista toimintoja tai lähettää lomakkeita. | ✔️ |
+| `Nav` | `<nav>` | Edustaa sivun osiota, joka sisältää navigointilinkkejä. | ✔️ |
+| `OrderedList` | `<ol>` | Edustaa numeroitua, järjestettyä listaa esineistä. | ✔️ |
+| `Paragraph` | `<p>` | Edustaa tekstikappaletta. | ✔️ |
 | `Section` | `<section>` | Edustaa yleistä itsenäistä osiota asiakirjassa, yleensä otsikon kanssa. | ✔️ |
-| `Span` | `<span>` | Yleisluonteinen inline-säiliö tekstille ja muulle inline-sisällölle. | ✔️ |
-| `Strong` | `<strong>` | Tarkoittaa vahvasti tärkeitä sisältöjä, yleensä renderöitynä lihavoituna. | ✔️ |
-| `UnorderedList` | `<ul>` | Edustaa luetteloa kohteista, jossa on luetteloimattomia merkkejä. | ✔️ |
+| `Span` | `<span>` | Yleinen rivissä oleva säiliö tekstille ja muulle rivissä olevalle sisällölle. | ✔️ |
+| `Strong` | `<strong>` | Ilmaisee vahvasti merkityksellistä sisältöä, joka esitetään yleensä lihavoituna. | ✔️ |
+| `UnorderedList` | `<ul>` | Edustaa lueteltua, järjestämätöntä listaa esineistä. | ✔️ |
 
-## Työskentely lapsien kanssa
+## Työskentely lapsien kanssa {#working-with-children}
 
-✔️ merkittyjä komponentteja **Lapsia** sarakkeessa tukee lapsikomponenttien lisäämistä, poistamista ja käsittelyä. Nämä menetelmät tarjoavat [`Element`](../building-ui/element#component-interaction) -luokka.
+Komponentit, jotka on merkitty ✔️ **Lapset**-sarakkeessa, tukevat lapsikomponenttien lisäämistä, poistamista ja käyttöä. Nämä menetelmät tarjoavat [`Element`](../building-ui/element#component-interaction) -luokka.
 
-Jotta voit luoda satunnaisia HTML-elementtejä tämän luettelon ulkopuolella, tai upottaa mukautettuja verkkokomponentteja, katso [`Element`](../building-ui/element) dokumentaatio.
+Erityisten HTML-elementtien luomiseen näiden lisäksi, tai mukautettujen verkkokomponenttien upottamiseen, katso [`Element`](../building-ui/element) -dokumentaatio.

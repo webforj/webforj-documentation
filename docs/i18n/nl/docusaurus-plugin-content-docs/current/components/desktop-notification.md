@@ -1,13 +1,17 @@
 ---
 title: DesktopNotification
 sidebar_position: 29
-_i18n_hash: b7e4651594dee824d6bcdf1ac32e1998
+description: >-
+  Send native OS notifications outside the browser window with the
+  DesktopNotification component for real-time messages, alerts, and status
+  changes.
+_i18n_hash: 529ae2fce596f744b423574be0a95dc0
 ---
 <DocChip chip='since' label='25.00' />
 <DocChip chip='experimental' />
 <JavadocLink type="desktop-notification" location="com/webforj/component/desktopnotification/DesktopNotification" top='true'/>
 
-De `DesktopNotification` component toont native desktop notificaties buiten het browservenster. Het kan worden gebruikt om gebruikers te waarschuwen voor real-time gebeurtenissen zoals nieuwe berichten, systeemwaarschuwingen of statuswijzigingen terwijl ze je app gebruiken.
+De `DesktopNotification` component toont native desktop notificaties buiten het browservenster. Het kan worden gebruikt om gebruikers te waarschuwen voor realtime gebeurtenissen zoals nieuwe berichten, systeemwaarschuwingen of statuswijzigingen terwijl ze uw app gebruiken.
 
 <!-- INTRO_END -->
 
@@ -15,7 +19,7 @@ De `DesktopNotification` component toont native desktop notificaties buiten het 
 
 <ExperimentalWarning />
 
-Om deze functie te gebruiken, voeg je de volgende afhankelijkheid toe aan je pom.xml:
+Om deze functie te gebruiken, voeg de volgende afhankelijkheid toe aan uw pom.xml:
 
 ```xml
 <dependency>
@@ -24,42 +28,42 @@ Om deze functie te gebruiken, voeg je de volgende afhankelijkheid toe aan je pom
 </dependency>
 ```
 
-Voordat je de `DesktopNotification` component integreert, zorg ervoor dat:
+Voordat u de `DesktopNotification` component integreert, moet u ervoor zorgen dat:
 
-- Je app draait in een **veilige context** (HTTPS).
-- De browser zich niet in incognito- of privé browse-modus bevindt.
-- De gebruiker interactie heeft gehad met de app (bijv. op een knop heeft geklikt of een toets heeft ingedrukt), aangezien notificaties een gebruikersgebaar vereisen om weergegeven te worden.
+- Uw app draait in een **veilige context** (HTTPS).
+- De browser niet in incognito- of privé-browsingmodus is.
+- De gebruiker interactie met de app heeft gehad (bijv. op een knop heeft geklikt of een toets heeft ingedrukt), aangezien notificaties een gebruikersgebaar vereisen om zichtbaar te zijn.
 - De gebruiker toestemming heeft gegeven voor notificaties (dit zal automatisch worden aangevraagd indien nodig).
 
 ## Basisgebruik {#basic-usage}
 
-Er zijn verschillende manieren om een notificatie te creëren en weer te geven. In de meeste scenario's is de eenvoudigste benadering om een van de statische `show` methodes aan te roepen die de volledige levenscyclus van de notificatie encapsuleert.
+Er zijn meerdere manieren om een notificatie te maken en weer te geven. In de meeste scenario's is de eenvoudigste benadering het aanroepen van een van de statische `show` methoden die de volledige notificatielevenscyclus kapselen.
 
 ### Voorbeeld: Een basisnotificatie weergeven {#example-displaying-a-basic-notification}
 
 ```java
 // Basisnotificatie met titel en bericht
-DesktopNotification.show("Update Beschikbaar", "Je download is voltooid!");
+DesktopNotification.show("Update Beschikbaar", "Uw download is voltooid!");
 ```
 
-Deze one-liner creëert een notificatie met een titel en body, en probeert deze weer te geven.
+Deze één-liner maakt een notificatie met een titel en een bericht, en probeert deze vervolgens weer te geven.
 
 ## De notificatie aanpassen {#customizing-the-notification}
 
-Er zijn verschillende opties voor het aanpassen van de look en feel van de weergegeven notificatie, afhankelijk van de behoeften van de app en het doel van de notificatie.
+Er zijn verschillende opties voor het aanpassen van de uitstraling en het gevoel van de weergegeven notificatie, afhankelijk van de behoeften van de app en het doel van de notificatie.
 
 ### Een aangepaste `Icon` instellen {#setting-a-custom-icon}
 
-Standaard gebruikt de notificatie je gedefinieerde app-icoon via het [icons protocol](../managing-resources/assets-protocols#the-icons-protocol). Je kunt een aangepast icoon instellen met de `setIcon` methode. De component ondersteunt verschillende URL-schema's:
+Standaard gebruikt de notificatie het gedefinieerde app-pictogram via het [icons protocol](../managing-resources/assets-protocols#the-icons-protocol). U kunt een aangepast pictogram instellen met de methode `setIcon`. De component ondersteunt verschillende URL-schema's:
 
-- [`context://`](../managing-resources/assets-protocols#the-context-protocol): Opgehelderd als een context-URL die naar de resource-map van de app verwijst; afbeelding is base64-gecodeerd.
-- [`ws://`](../managing-resources/assets-protocols#the-webserver-protocol): Opgehelderd als een webserver-URL, wat een volledig gekwalificeerde URL geeft.
-- [`icons://`](../managing-resources/assets-protocols#the-icons-protocol): Opgehelderd als een icons-URL.
+- [`context://`](../managing-resources/assets-protocols#the-context-protocol): Opgelost als een context-URL die naar de resourcefolder van de app wijst; afbeelding is base64-gecodeerd.
+- [`ws://`](../managing-resources/assets-protocols#the-webserver-protocol): Opgelost als een webserver URL, wat een volledig gekwalificeerde URL oplevert.
+- [`icons://`](../managing-resources/assets-protocols#the-icons-protocol): Opgelost als een iconen-URL.
 
 **Voorbeeld:**
 
 ```java
-// Een notificatie creëren met een aangepaste icoon-URL
+// Een notificatie maken met een aangepaste pictogram URL
 DesktopNotification notification = new DesktopNotification(
   "Herinnering", "Vergadering begint over 10 minuten."
 );
@@ -67,48 +71,49 @@ notification.setIcon("context://images/custom-icon.png");
 notification.open();
 ```
 
-## Notificatie evenementen {#notification-events}
+## Notificatie-evenementen {#notification-events}
 
-De `DesktopNotification` ondersteunt verschillende levenscyclus gebeurtenissen, en luisteraars kunnen worden toegevoegd om gebeurtenissen af te handelen, zoals wanneer een notificatie wordt weergegeven, gesloten, geklikt of een fout tegenkomt.
+De `DesktopNotification` ondersteunt verschillende levenscyclus evenementen, en luisteraars kunnen worden bevestigd om gebeurtenissen te behandelen, zoals wanneer een notificatie wordt weergegeven, gesloten, geklikt of een fout ondervindt.
 
-| Evenement            | Beschrijving                                          | Wanneer te gebruiken                                          |
-|----------------------|------------------------------------------------------|-------------------------------------------------------------|
-| **Open**             | Gevoed wanneer de notificatie wordt weergegeven.     | Log notificatieweergave, update UI, volg engagement.        |
-| **Sluiten**         | Gevoed wanneer de notificatie wordt gesloten.        | Ruim resources op, log afwijzingen, voer vervolgacties uit. |
-| **Fout**             | Gevoed wanneer er een fout optreedt met de notificatie of de gebruiker geen toestemming heeft gegeven.| Behandel fouten elegant, informeer de gebruiker, pas fallback aan. |
-| **Klik**             | Gevoed wanneer de gebruiker op de notificatie klikt. | Navigeer naar een specifieke sectie, log interacties, herfocus de app. |
+| Evenement              | Beschrijving                                           | Wanneer te gebruiken                                           |
+|-----------------------------|-------------------------------------------------------|---------------------------------------------------------------|
+| **Open** | Geactiveerd wanneer de notificatie wordt weergegeven.       | Log notificatieweergave, update UI, volg betrokkenheid.       |
+| **Sluiten**| Geactiveerd wanneer de notificatie wordt gesloten.         | Maak bronnen schoon, logafmeldingen, voer vervolgacties uit. |
+| **Fout**| Geactiveerd wanneer er een fout optreedt met de notificatie of de gebruiker geen toestemming heeft gegeven.| Beheer fouten op een elegante manier, verwittig de gebruiker, pas fallback-methoden toe.  |
+| **Klik**| Geactiveerd wanneer de gebruiker op de notificatie klikt. | Navigeer naar een specifieke sectie, log interacties, richt de app opnieuw in. |
+
 
 ```java
-DesktopNotification notification = new DesktopNotification("Alert", "Je hebt een nieuw bericht!")
+DesktopNotification notification = new DesktopNotification("Waarschuwing", "U heeft een nieuw bericht!")
 
-// Voeg een evenementluisteraar toe voor het open evenement
+// Bevestig een evenement luisteraar voor het open-evenement
 notification.onOpen(event -> {
-  System.out.println("Notificatie is door de gebruiker geopend.");
+  System.out.println("Notificatie is geopend door de gebruiker.");
 });
 
-// Luister ook naar het klik evenement
+// Eveneens luisteren naar het klik-evenement
 notification.onClick(event -> {
   System.out.println("Notificatie geklikt.");
 });
 ```
 
 :::warning Klikgedrag
-Browserbeveiligingsbeleid voorkomt dat de klikgebeurtenis van de notificatie automatisch je app-venster of tabblad in de focus brengt. Dit gedrag wordt afgedwongen door de browser en kan niet programmatisch worden omzeild. Als je app vereist dat het venster gefocust wordt, moet je gebruikers instrueren om binnen de app te klikken na interactie met de notificatie.
+Browserbeveiligingsbeleid voorkomt dat het klik-evenement van de notificatie automatisch uw app-venster of tabblad in de focus brengt. Dit gedrag wordt afgedwongen door de browser en kan niet programmatisch worden overschreven. Als uw app vereist dat het venster de focus krijgt, moet u gebruikers instrueren om binnen de app te klikken nadat ze met de notificatie hebben geïnterageerd.
 :::
 
-## Beveiliging en compatibiliteit overwegingen {#security-and-compatibility-considerations}
+## Beveiligings- en compatibiliteitsoverwegingen {#security-and-compatibility-considerations}
 
-Bij het gebruik van de **DesktopNotification** component, houd je de volgende punten in gedachten:
+Bij het gebruik van de **DesktopNotification** component, houd de volgende punten in gedachten:
 
-- **Beveiligingscontext:** Je app moet via HTTPS worden aangeboden om ervoor te zorgen dat notificaties zijn toegestaan door de meeste moderne browsers.
-- **Vereiste gebruikersgebaar:** Notificaties worden alleen weergegeven na een door de gebruiker geactiveerde actie. Het simpelweg laden van een pagina activeert geen notificatie.
-- **Browserbeperkingen:** Niet alle browsers behandelen aangepaste iconen of focusgedrag op dezelfde manier. Bijvoorbeeld, aangepaste iconen werken mogelijk niet in Safari, terwijl het gedrag van evenementen kan variëren in andere browsers.
-- **Toestemmingen:** Controleer altijd of je app op een elegante manier om notificatietoestemming van de gebruiker vraagt.
+- **Beveiligingscontext:** Uw app moet via HTTPS worden aangeboden om ervoor te zorgen dat notificaties door de meeste moderne browsers worden toegestaan.
+- **Vereiste gebruikersgebaar:** Notificaties worden alleen weergegeven na een door de gebruiker geinitieerd actie. Het simpelweg laden van een pagina zal geen notificatie activeren.
+- **Browserbeperkingen:** Niet alle browsers behandelen aangepaste pictogrammen of focusgedrag op dezelfde manier. Bijvoorbeeld, aangepaste pictogrammen werken mogelijk niet in Safari, terwijl het evenementgedrag kan variëren in andere browsers.
+- **Toestemmingen:** Controleer altijd of uw app toestemming voor notificaties van de gebruiker op een elegante manier controleert en aanvraagt.
 
-## Beste gebruikspraktijken {#usage-best-practices}
+## Beste praktijken voor gebruik {#usage-best-practices}
 
-Houd de volgende beste praktijken in gedachten bij het gebruik van de `DesktopNotification` component in je app:
+Houd de volgende beste praktijken in gedachten bij het gebruik van de `DesktopNotification` component in uw app:
 
-- **Informeer je gebruikers:** Laat gebruikers weten waarom notificaties nodig zijn en hoe ze hiervan kunnen profiteren.
-- **Bied fallback opties aan:** Aangezien sommige browsers notificaties kunnen beperken, overweeg alternatieve manieren om gebruikers te waarschuwen (bijv. in-app berichten).
-- **Foutafhandeling:** Registreer altijd een foutluisteraar om scenario's waar notificaties falen op een elegante manier te beheren.
+- **Informeer uw gebruikers:** Laat gebruikers weten waarom notificaties nodig zijn en hoe ze voordeel kunnen hebben bij notificaties.
+- **Bied fallbacks aan:** Aangezien sommige browsers notificaties kunnen beperken, overweeg alternatieve manieren om gebruikers te waarschuwen (bijv. in-app berichten).
+- **Foutafhandeling:** Registreer altijd een foutluisteraar om scenario's waar notificaties niet kunnen worden weergegeven op een elegante manier te beheren.

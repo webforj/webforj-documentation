@@ -2,7 +2,10 @@
 title: Styling
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: abb693dec702e4a253cf4e1228fb2d7e
+description: >-
+  Style webforJ apps with the DWC design system using CSS custom properties,
+  palettes, shadow parts, and the Figma kit.
+_i18n_hash: 40e7755b35318ea88eb990c6b6dbd240
 ---
 <Head>
   <style>{`
@@ -17,24 +20,24 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ wordt geleverd met een uitgebreid ontwerpsysteem genaamd **DWC**. Het is meer dan alleen een thema; het is een gestructureerd, uitbreidbaar systeem dat de visuele taal van je app beheert. DWC is gebouwd om ontwikkelaars en ontwerpers te helpen consistente, merkgebonden interfaces snel en zelfverzekerd te creëren.
+webforJ levert een uitgebreid ontwerpsysteem genaamd **DWC**. Het is meer dan alleen een thema, het is een gestructureerd, uitbreidbaar systeem dat de visuele taal van je app bepaalt. DWC is ontworpen om ontwikkelaars en ontwerpers te helpen bij het snel en met vertrouwen creëren van consistente, merk-georiënteerde interfaces.
 
-In de kern biedt DWC een set zorgvuldig ontworpen CSS-variabelen (ontwerp tokens) die belangrijke visuele elementen zoals kleuren, typografie, randen en ruimte dekken. Deze tokens dienen als de fundamentele bouwstenen voor alle componentstijlen en stellen wereldwijde aanpassing mogelijk met minimale inspanning.
+In de kern biedt DWC een set zorgvuldig ontworpen CSS-variabelen (ontwerptokens) die belangrijke visuele elementen zoals kleuren, typografie, randen en afstanden dekken. Deze tokens dienen als de fundamentele bouwstenen voor alle componentstijlen en maken wereldwijde aanpassing met minimale inspanning mogelijk.
 
-Om meer geavanceerde styling te ondersteunen, maakt webforJ gebruik van CSS Shadow Parts, waarmee interne componenten selectief gestileerd kunnen worden zonder de encapsulatie te doorbreken. Dit geeft teams nauwkeurige controle over hoe componenten eruit zien, zelfs in grotere toepassingen.
+Om geavanceerdere styling te ondersteunen, maakt webforJ gebruik van CSS Shadow Parts, waardoor de interne delen van componenten selectief kunnen worden gestyled zonder de encapsulatie te doorbreken. Dit geeft teams gedetailleerde controle over hoe componenten eruitzien, zelfs in grotere applicaties.
 
-DWC bevat ook een aanpasbare kleurenpalet en standaard naar een schone, lichte visuele thema, maar elk aspect kan worden aangepast aan de stijl van jouw merk of product.
+DWC bevat ook een aanpasbare kleurenpalet en standaard een schone, lichte visuele thema, maar elk aspect kan worden aangepast aan jouw merk of productstijl.
 
 <AISkillTip skill="webforj-styling-apps" />
 
 ## Figma ontwerpkit {#figma-design-kit}
 
-De [DWC Figma-bibliotheek](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) is de officiële ontwerpreksel voor het creëren van moderne, bedrijfswaardige webapplicaties. Het bevat een uitgebreide set componenten, typografiestijlen en kleur tokens die aansluiten bij het DWC-ontwerpsysteem. Ontwerpers en ontwikkelaars kunnen deze bibliotheek gebruiken om visueel consistente, gebruiksvriendelijke interfaces te bouwen met voorspelbaar componentgedrag, nauwkeurige ruimte en toegankelijke kleurcontrasten.
+De [DWC Figma-bibliotheek](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) is de officiële ontwerpmiddleware voor het creëren van moderne, enterprise-grade webapplicaties. Het omvat een uitgebreide set componenten, typografiestijlen en kleurentokens die in lijn zijn met het DWC-ontwerpsysteem. Ontwerpers en ontwikkelaars kunnen deze bibliotheek gebruiken om visueel consistente, gebruiksvriendelijke interfaces te bouwen met voorspelbaar componentgedrag, precieze afstanden en toegankelijke kleurcontrasten.
 
-<img src="/img/dwc.png" alt="Figma Ontwerpkits" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
+<img src="/img/dwc.png" alt="Figma Ontwerpkit" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
 
->  
-<!-- > ![Figma Ontwerpkits Screenshot](./path-to-your-screenshot.png) -->
+>
+<!-- > ![Figma Design Kit Screenshot](./path-to-your-screenshot.png) -->
 
 ## Onderwerpen {#topics}
 

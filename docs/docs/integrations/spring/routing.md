@@ -1,5 +1,5 @@
 ---
-title: Routing  
+title: Routing
 sidebar_position: 15
 description: Inject Spring services and repositories into webforJ @Route classes through constructor injection while keeping a fresh instance per navigation.
 ---
@@ -32,19 +32,19 @@ Your route classes don't require Spring annotations. The `@Route` annotation alo
 ```java
 @Route("/dashboard")
 public class DashboardView extends Composite<Div> {
-  
+
   private final Div self = getBoundComponent();
   private final MetricsService metricsService;
   private final UserRepository userRepository;
-  
+
   public DashboardView(MetricsService metricsService, UserRepository userRepository) {
     this.metricsService = metricsService;
     this.userRepository = userRepository;
-    
+
     // Use injected services to build UI
     Div metricsPanel = new Div();
     metricsPanel.setText(metricsService.getCurrentMetrics());
-    
+
     self.add(metricsPanel);
   }
 }
@@ -100,7 +100,7 @@ In this example, the `RandomNumberService` is a standard Spring service bean. Th
 
 Notice that the route class only uses the `@Route` annotation - no Spring stereotypes like `@Component` or `@Controller` are needed. When a user navigates to the root path `/`, webforJ:
 
-1. Creates a new instance of `HelloWorldView` 
+1. Creates a new instance of `HelloWorldView`
 2. Asks Spring to resolve the `RandomNumberService` dependency
 3. Passes the service to the constructor
 4. The route uses the injected service to handle button clicks

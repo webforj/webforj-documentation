@@ -221,6 +221,14 @@ module.exports = async function createConfig() {
           {
             from: '/docs/building-ui/composite-components',
             to: '/docs/building-ui/composing-components'
+          },
+          {
+            from: '/docs/configuration/deploy-reload/jrebel',
+            to: '/docs/configuration/deploy-reload/hotswap'
+          },
+          {
+            from: '/docs/building-ui/event-options',
+            to: '/docs/building-ui/events',
           }
         ],
       },
@@ -358,6 +366,7 @@ module.exports = async function createConfig() {
         {
           type: 'localeDropdown',
           position: 'right',
+          className: 'localeDropdown',
         },
         {
           href: 'https://github.com/webforj',

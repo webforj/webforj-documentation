@@ -1,32 +1,35 @@
 ---
 title: Repository
 sidebar_position: 1
-_i18n_hash: 455b667132d3c9693257eb74671412c5
+description: >-
+  Bridge data collections to UI components with CollectionRepository, commit
+  changes for automatic sync, and apply base filters.
+_i18n_hash: 77548d09e4d712ce8f508917d3b953ae
 ---
 <!-- vale off -->
 # Repository <DocChip chip='since' label='24.00' />
 <!-- vale on -->
 
 
-Das `Repository`-Muster in webforJ bietet einen standardisierten Ansatz zur Verwaltung und Abfrage von Sammlungen von Entitäten. Es fungiert als Abstraktionsschicht zwischen Ihren UI-Komponenten und Daten und erleichtert das Arbeiten mit verschiedenen Datenquellen, während ein konsistentes Verhalten beibehalten wird.
+Das `Repository`-Muster in webforJ bietet eine standardisierte Methode zum Verwalten und Abfragen von Sammlungen von Entitäten. Es fungiert als Abstraktionsschicht zwischen Ihren UI-Komponenten und Daten und erleichtert die Arbeit mit verschiedenen Datenquellen, während ein einheitliches Verhalten gewährleistet bleibt.
 
-## Warum Repository verwenden {#why-use-repository}
+## Warum das Repository verwenden {#why-use-repository}
 
-`Repository` eliminiert manuelle Aktualisierungen, während Ihre ursprünglichen Daten intakt bleiben:
+`Repository` beseitigt manuelle Aktualisierungen, während Ihre ursprünglichen Daten intakt bleiben:
 
 ```java
-// Ohne Repository - manuelle Aktualisierungen
+// Ohne Repository - manuelle Updates
 List<Customer> customers = loadCustomers();
 Table<Customer> table = new Table<>();
 table.setItems(customers);
 
-// Hinzufügen erfordert vollständiges Neu Laden
+// Hinzufügen erfordert vollständiges Neuladen
 customers.add(newCustomer);
 table.setItems(customers); // Muss alles neu laden
 ```
 
 ```java
-// Mit Repository - automatische Synchronisierung
+// Mit Repository - automatische Synchronisation
 List<Customer> customers = loadCustomers();
 CollectionRepository<Customer> repository = new CollectionRepository<>(customers);
 Table<Customer> table = new Table<>();
@@ -34,74 +37,74 @@ table.setRepository(repository);
 
 // Hinzufügen synchronisiert automatisch
 customers.add(newCustomer);
-repository.commit(newCustomer); // Aktualisiert nur, was sich geändert hat
+repository.commit(newCustomer); // Aktualisiert nur das, was sich geändert hat
 ```
 
 
-## Sammlung Repository {#collection-repository}
+## Collections-Repository {#collection-repository}
 
-Das <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> ist die häufigste Implementierung und umschließt jede Java-Sammlung:
+Das <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> ist die gebräuchlichste Implementierung und umschließt jede Java-Sammlung:
 
 ```java
 // Von ArrayList
 List<Customer> customers = new ArrayList<>();
 CollectionRepository<Customer> customerRepo = new CollectionRepository<>(customers);
 
-// Von HashSet  
+// Von HashSet
 Set<String> tags = new HashSet<>();
 CollectionRepository<String> tagRepo = new CollectionRepository<>(tags);
 
-// Von jeder Sammlung
+// Von jeder Collection
 Collection<Employee> employees = getEmployeesFromHR();
 CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employees);
 ```
 
 
-## Daten-Synchronisierung {#data-synchronization}
+## Daten-Synchronisation {#data-synchronization}
 
-Das `Repository` fungiert als Brücke zwischen Ihren Daten und den UI-Komponenten. Wenn sich Daten ändern, benachrichtigen Sie das Repository über die `commit()`-Methode:
+Das `Repository` fungiert als Brücke zwischen Ihren Daten und den UI-Komponenten. Wenn sich die Daten ändern, benachrichtigen Sie das Repository über die Methode `commit()`:
 
 ```java
 List<Product> products = new ArrayList<>();
 CollectionRepository<Product> repository = new CollectionRepository<>(products);
 
-// Neues Produkt hinzufügen
+// Neuen Produkt hinzufügen
 Product newProduct = new Product("P4", "Gizmo", 79.99, 15);
 products.add(newProduct);
-repository.commit(); // Alle verbundenen Komponenten werden aktualisiert
+repository.commit(); // Alle angeschlossenen Komponenten aktualisieren
 
-// Bestehendes Produkt aktualisieren  
+// Bestehendes Produkt aktualisieren
 products.get(0).setPrice(89.99);
 repository.commit(products.get(0)); // Aktualisiert nur diese spezifische Zeile
 
 // Produkt entfernen
 products.remove(2);
-repository.commit(); // Aktualisiert die Ansicht
+repository.commit(); // Aktualisiert die Anzeige
 ```
 
-Die Commit-Methode hat zwei Signaturen:
-- `commit()` - Sagt dem Repository, dass alles aktualisiert werden soll. Dies löst ein `RepositoryCommitEvent` mit allen aktuellen Daten aus.
-- `commit(entity)` - Zielt auf eine spezifische Entität ab. Das Repository findet diese Entität anhand ihres Schlüssels und aktualisiert nur die betroffenen UI-Elemente.
+Die `commit`-Methode hat zwei Signaturen:
+- `commit()` - Sagt dem Repository, dass alles aktualisiert werden soll. Es löst ein `RepositoryCommitEvent` mit allen aktuellen Daten aus
+- `commit(entity)` - Zielt auf eine spezifische Entität ab. Das Repository findet diese Entität anhand ihres Schlüssels und aktualisiert nur die betroffenen UI-Elemente
 
-:::important Einzelne Entitäten committen
-Diese Unterscheidung ist wichtig für die Leistung. Wenn Sie ein Feld in einer Tabelle mit 1000 Zeilen aktualisieren, aktualisiert `commit(entity)` nur diese Zelle, während `commit()` alle Zeilen neu laden würde.
+:::important Einzelfehler commitieren
+Diese Unterscheidung ist für die Leistung wichtig. Wenn Sie ein Feld in einer Tabelle mit 1000 Zeilen aktualisieren, aktualisiert `commit(entity)` nur diese Zelle, während `commit()` alle Zeilen aktualisieren würde.
 :::
 
 ## Daten filtern {#filtering-data}
 
-Der Filter des Repositorys steuert, welche Daten zu den verbundenen Komponenten fließen. Ihre zugrunde liegende Sammlung bleibt unverändert, da der Filter als Linse fungiert:
+Der Filter des Repositories steuert, welche Daten zu verbundenen Komponenten fließen. Ihre zugrunde liegende Sammlung bleibt unverändert, da der Filter als Linse fungiert:
 
 ```java
-// Filtern nach Verfügbarkeit auf Lager
+// Nach Verfügbarkeit im Lager filtern
 repository.setBaseFilter(product -> product.getStock() > 0);
 
-// Filtern nach Kategorie
+// Nach Kategorie filtern
 repository.setBaseFilter(product -> "Electronics".equals(product.getCategory()));
 
-// Kombinieren mehrerer Bedingungen
-repository.setBaseFilter(product -> 
-  product.getCategory().equals("Electronics") && 
-  product.getStock() > 0 && 
+// Mehrere Bedingungen kombinieren
+repository.setBaseFilter(product ->
+  product.getCategory().equals("Electronics") &&
+  product.getStock() > 0 &&
   product.getPrice() < 100.0
 );
 
@@ -109,17 +112,17 @@ repository.setBaseFilter(product ->
 repository.setBaseFilter(null);
 ```
 
-Wenn Sie einen Filter festlegen, bewirkt das `Repository`:
-1. Es wendet das Prädikat auf jedes Element in Ihrer Sammlung an
-2. Es erstellt einen gefilterten Stream mit passenden Elementen
-3. Es benachrichtigt die verbundenen Komponenten, ihre Anzeige zu aktualisieren
+Wenn Sie einen Filter festlegen, führt das `Repository`:
+1. Wendet das Prädikat auf jedes Element in Ihrer Sammlung an
+2. Erstellt einen gefilterten Stream von übereinstimmenden Elementen
+3. Benachrichtigt angeschlossene Komponenten, ihre Anzeige zu aktualisieren
 
-Der Filter bleibt bestehen, bis Sie ihn ändern. Neu hinzugefügte Elemente in der Sammlung werden automatisch gegen den aktuellen Filter getestet.
+Der Filter bleibt bestehen, bis Sie ihn ändern. Neue Elemente, die zur Sammlung hinzugefügt werden, werden automatisch gegen den aktuellen Filter getestet.
 
 
 ## Arbeiten mit Entitätsschlüsseln {#working-with-entity-keys}
 
-Das Repository muss Entitäten eindeutig identifizieren, um Operationen wie `find()` und `commit(entity)` zu unterstützen. Es gibt zwei Möglichkeiten, wie Entitäten identifiziert werden:
+Das Repository muss Entitäten eindeutig identifizieren, um Operationen wie `find()` und `commit(entity)` zu unterstützen. Es gibt zwei Möglichkeiten zu definieren, wie Entitäten identifiziert werden:
 
 ### Verwendung des `HasEntityKey`-Interfaces {#using-hasentitykey}
 
@@ -142,7 +145,7 @@ public class Customer implements HasEntityKey {
 // Nach Schlüssel suchen
 Optional<Customer> customer = repository.find("C001");
 
-// Bestimmten Kunden aktualisieren
+// Besondere Kunden aktualisieren
 customer.ifPresent(c -> {
   c.setEmail("newemail@example.com");
   repository.commit(c); // Nur diese Zeile des Kunden wird aktualisiert
@@ -164,7 +167,7 @@ public class Product {
   // JPA-gemanagte Entität
 }
 
-// Repository so konfigurieren, dass die Methode getId() verwendet wird
+// Repository konfigurieren, um die Methode getId() zu verwenden
 CollectionRepository<Product> repository = new CollectionRepository<>(products);
 repository.setKeyProvider(Product::getId);
 
@@ -172,16 +175,16 @@ repository.setKeyProvider(Product::getId);
 Optional<Product> product = repository.find(123L);
 ```
 
-### Auswahl eines Ansatzes {#choosing-approach}
+### Wahl eines Ansatzes {#choosing-approach}
 
 Beide Ansätze funktionieren, aber `setKeyProvider()` wird bevorzugt, wenn:
-- Sie mit JPA-Entitäten arbeiten, die `@Id`-Felder haben
+- Mit JPA-Entitäten gearbeitet wird, die `@Id`-Felder haben
 - Sie die Entitätsklasse nicht ändern können
 - Sie unterschiedliche Schlüsselstrategien für verschiedene Repositories benötigen
 
 Verwenden Sie `HasEntityKey`, wenn:
 - Sie die Entitätsklasse kontrollieren
-- Die Schlüsselauszuglogik komplex ist
+- Die Schlüsselextraktionslogik komplex ist
 - Sie möchten, dass die Entität ihre eigene Identität definiert
 
 

@@ -1,44 +1,47 @@
 ---
 sidebar_position: 4
 title: PropertyDescriptorTester
-_i18n_hash: 663a49d7134273428b9b7648a1fd321e
+description: >-
+  Validate PropertyDescriptor fields on wrapped web components by checking
+  getters, setters, and default values with PropertyDescriptorTester.
+_i18n_hash: 5b14fba4a11a4da57a032123bd27be6b
 ---
 <DocChip chip='since' label='23.06' />
 <DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/component/element/PropertyDescriptorTester" top='true'/>
 
-`PropertyDescriptorTester` webforJ:ssä helpottaa **kolmannen osapuolen web-komponenttien** testiä, jotka on integroitu sovellukseesi. Se validoi, että `PropertyDescriptor`:illa määritellyt ominaisuudet on oikein liitetty niiden hakija- ja asettajametodeihin, ja varmistaa, että oletus käyttäytyminen käsitellään johdonmukaisesti. Tämä työkalu on erityisen hyödyllinen kolmannen osapuolen komponenttien paljastamien ominaisuuksien toiminnallisuuden vahvistamiseen ilman toistuvaa testilogiikkaa.
+`PropertyDescriptorTester` webforJ:ssä yksinkertaistaa **kolmannen osapuolen verkkokomponenttien** testaamista, jotka on integroitu sovellukseesi. Se validoi, että `PropertyDescriptor`-luokassa määritellyt ominaisuudet ovat oikein linkitettyjä niiden getter- ja setter-menetelmiin ja varmistaa, että oletuskäyttäytyminen käsitellään johdonmukaisesti. Tämä työkalu on erityisen hyödyllinen kolmansien osapuolten komponenttien tarjoamien ominaisuuksien toiminnan vahvistamiseksi ilman toistuvaa testilogikkaa.
 
 <ExperimentalWarning />
 
 ## Yleiskatsaus {#overview}
 
-Kun työskentelet kolmannen osapuolen web-komponenttien kanssa, on tärkeää varmistaa, että ominaisuudet käyttäytyvät odotetusti. `PropertyDescriptorTester` automatisoi tämän prosessin validoimalla, että ominaisuudet:
-- On oikein liitetty niiden hakija- ja asettajametodeihin.
+Työskennellessäsi kolmannen osapuolen verkkokomponenttien kanssa, on olennaista varmistaa, että ominaisuudet toimivat odotetulla tavalla. `PropertyDescriptorTester` automatisoi tämän prosessin validoimalla, että ominaisuudet:
+- On oikein määritetty niiden getter- ja setter-menetelmiin.
 - Säilyttävät odotetut oletusarvot ja mukautetut käyttäytymiset.
-- Vältetään yleisiä integraatio-ongelmia, kuten epäsopivia ominaisuuden nimiä tai epäjohdonmukaisia oletuksia.
+- Vältetään yleisiä integraatio-ongelmia, kuten virheellisiä ominaisuusnimien vastaavuuksia tai epäjohdonmukaisia oletusarvoja.
 
-Työkalu tukee annotaatioita monimutkaisemmille käyttötilanteille, kuten merkityksettömien ominaisuuksien ulkopuolelle jättämiselle tai mukautettujen hakija- ja asettajametodien määrittämiselle, mikä tekee siitä monipuolisen vaihtoehdon integraatiotesteille.
+Työkalu tukee annotaatioita monimutkaisemmissa käyttötapauksissa, kuten merkityksettömien ominaisuuksien sulkemisessa tai mukautettujen getter- ja setter-menetelmien määrittämisessä, mikä tekee siitä monipuolisen vaihtoehdon integraatiotestaukselle.
 
 ## Kuinka `PropertyDescriptorTester` toimii {#how-propertydescriptortester-works}
 
 Testausprosessi sisältää useita automatisoituja vaiheita:
 
-1. **Luokan skannaus**: 
-   `PropertyDescriptorScanner` tunnistaa kaikki `PropertyDescriptor`-kentät komponenttiluokassa, ja jättää automaattisesti pois kentät, joilla on annotaatio `@PropertyExclude`.
+1. **Luokan skannaus**:
+   `PropertyDescriptorScanner` tunnistaa kaikki `PropertyDescriptor`-kentät komponenttiluokassa, jättäen automaattisesti huomiotta `@PropertyExclude`-annotaatiolla merkityt kentät.
 
-2. **Menetelmien ratkaisu**:
-   Vakiokäyttäjä- ja asettajametodit havaitaan nimikäytäntöjen perusteella (`get<PropertyName>`/`set<PropertyName>`). Epästandardeissa toteutuksissa annotaatiot kuten `@PropertyMethods` määrittelevät mukautetut metodin nimet tai kohdeluokat.
+2. **Metodien ratkaisu**:
+   Vakiomaiset getter- ja setter-menetelmät havaitaan nimeämiskäytäntöjen perusteella (`get<PropertyName>`/`set<PropertyName>`). Ei-vakiototeutuksille annotaatiot, kuten `@PropertyMethods`, määrittelevät mukautettuja metodin nimiä tai kohdeluokkia.
 
 3. **Validointi**:
-   Oletusarvot asetetaan asettajametodin avulla, haetaan hakijametodilla ja verrataan oikeellisuuden varmistamiseksi. Kaikki epäyhtenäisyys laukaisee `AssertionError`-virheen, joka korostaa erityistä ongelmaa.
+   Oletusarvot määritetään setter-menetelmällä, haetaan getterillä ja verrataan oikeellisuuden varmistamiseksi. Kaikki epäjohdonmukaisuudet laukaisevat `AssertionError`-virheen, joka korostaa erityistä ongelmaa.
 
 4. **Virheiden raportointi**:
-   Testeri tarjoaa yksityiskohtaista palautetta kaikista vahvistusvirheistä, kuten puuttuvista metodeista, epäjohdonmukaisista oletuksista tai ominaisuuden vääristä konfiguraatioista.
+   Testeri tarjoaa yksityiskohtaista palautetta kaikista validoitumisvirheistä, kuten puuttuvista menetelmistä, epäjohdonmukaisista oletusarvoista tai ominaisuuksien väärästä konfiguroinnista.
 
-## Testien kirjoittaminen `PropertyDescriptorTester`-kanssa {#writing-tests-with-propertydescriptortester}
+## Testien kirjoittaminen `PropertyDescriptorTester`-työkalulle {#writing-tests-with-propertydescriptortester}
 
-Tässä on esimerkki, joka demonstroi perusominaisuuksien vahvistamista `AppLayout`-komponentille:
+Tässä on esimerkki, joka osoittaa perusominaisuuden validoimisen `AppLayout`-komponentille:
 
 ### Esimerkki: Perusvalidointi {#example-basic-validation}
 
@@ -49,7 +52,7 @@ public class MyComponent extends ElementCompositeContainer {
   private final PropertyDescriptor<String> headerTitle =
       PropertyDescriptor.property("headerTitle", "Oletusotsikko");
 
-  // asetukset ja haku
+  // setterit ja getterit
 }
 ```
 
@@ -68,33 +71,33 @@ class MyComponentTest {
     try {
       PropertyDescriptorTester.run(MyComponent.class, component);
     } catch (Exception e) {
-      fail("PropertyDescriptor-testi epäonnistui: " + e.getMessage());
+      fail("PropertyDescriptor-testissä tapahtui virhe: " + e.getMessage());
     }
   }
 }
 ```
 
 Tämä testi vahvistaa automaattisesti:
-- Sen, että `drawerOpened`-ominaisuudella on voimassa olevat hakija- ja asettajametodit.
-- Sen, että `headerTitle` oletusarvo on `"Oletusotsikko"`.
+- Sen, että `drawerOpened`-ominaisuudella on voimassa olevat getter- ja setter-menetelmät.
+- Sen, että `headerTitle`-ominaisuuden oletusarvo on `"Oletusotsikko"`.
 
-## Monimutkaiset käyttötilanteet annotaatioilla {#advanced-use-cases-with-annotations}
+## Edistyneet käyttötapaukset annotaatioilla {#advanced-use-cases-with-annotations}
 
-Monimutkaisempia skenaarioita varten `PropertyDescriptorTester` tukee annotaatioita ominaisuuksien mukauttamiseen tai testaamisesta sulkemiseen.
+Monimutkaisempia skenaarioita varten `PropertyDescriptorTester` tukee annotaatioita ominaisuuksien mukauttamiseen tai sulkemiseen testauksesta.
 
-### Poista ominaisuudet käytöstä `@PropertyExclude`-annotaatiolla {#exclude-properties-with-propertyexclude}
+### Poista ominaisuuksia `@PropertyExclude`-annotaatiolla {#exclude-properties-with-propertyexclude}
 
-Poista käytöstä ominaisuudet, jotka riippuvat ulkoisista järjestelmistä tai eivät ole relevantteja testille. Esimerkiksi:
+Poista ominaisuudet, jotka riippuvat ulkoisista järjestelmistä tai eivät ole merkityksellisiä testille. Esimerkiksi:
 
 ```java
 @PropertyExclude
 private final PropertyDescriptor<String> excludedProperty =
-  PropertyDescriptor.property("excludedProperty", "Poissuljettu");
+  PropertyDescriptor.property("excludedProperty", "Poistettu");
 ```
 
-### Mukauta metodeja `@PropertyMethods`-annotaatiolla {#customize-methods-with-propertymethods}
+### Mukauta menetelmiä `@PropertyMethods`-annotaatiolla {#customize-methods-with-propertymethods}
 
-Määritä mukautettu hakija, asettaja tai kohdeluokka, kun oletusnimisäännöt eivät päde:
+Määritä mukautettu getter, setter tai kohdeluokka, kun oletuskäytäntöjä ei voida soveltaa:
 
 ```java
 @PropertyMethods(getter = "retrieveValue", setter = "updateValue", target = InnerClass.class)

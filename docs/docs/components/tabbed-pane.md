@@ -32,7 +32,7 @@ The `TabbedPane` class is a gives developers a powerful tool for organizing and 
 5. **Program Navigation**: Within an application that needs to run various programs, a `TabbedPane` could:
     >- Serve as a sidebar which allows for different applications or programs to be run within a single application, such as what is shown in the [`AppLayout`](./app-layout.md) template
     >- Create a top bar which can serve a similar purpose, or represent sub-applications within an already selected application.
-  
+
 ## Tabs {#tabs}
 
 Tabs are UI elements that can be added to tabbed panes to organize and switch between different content views.
@@ -55,7 +55,7 @@ Tabs are comprised of the following properties, which are then used when adding 
 
 5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The     `TabbedPane` component dictates how to handle the removal.
 
-6. **Slot(`Component`)**: 
+6. **Slot(`Component`)**:
     Slots provide flexible options for improving the capability of a `Tab`. You can have icons, labels, loading spinners, clear/reset capability, avatar/profile pictures, and other beneficial components nested within a `Tab` to further clarify intended meaning to users.
     You can add a component to the `prefix` slot of a `Tab` during construction. Alternatively, you can use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the displayed option within a `Tab`.
 
@@ -84,7 +84,7 @@ The `add(Component... component)` determines the name of the passed `Component` 
 
 ### Inserting a `Tab` {#inserting-a-tab}
 
-In addition to adding a `Tab` at the end of the existing tabs, it is also possible to create a new one at a designated position. To do this, multiple overloaded versions of the `insertTab()`. 
+In addition to adding a `Tab` at the end of the existing tabs, it is also possible to create a new one at a designated position. To do this, multiple overloaded versions of the `insertTab()`.
 
 1. **`insertTab(int index, String text)`** - Inserts a `Tab` into the `TabbedPane` at the given index with the specified `String` as the text of the `Tab`.
 2. **`insertTab(int index, Tab tab)`** - Inserts the `Tab` provided as a parameter to the `TabbedPane` at the specified index.
@@ -96,7 +96,7 @@ In addition to adding a `Tab` at the end of the existing tabs, it is also possib
 To remove a single `Tab` from the `TabbedPane`, use one of the following methods:
 
 1. **`removeTab(Tab tab)`** - Removes a `Tab` from the `TabbedPane` by passing the Tab instance to be removed.
-2. **`removeTab(int index)`** - Removes a `Tab` from the `TabbedPane` by specifying the 
+2. **`removeTab(int index)`** - Removes a `Tab` from the `TabbedPane` by specifying the
 index of the `Tab` to be removed.
 
 In addition to the two above methods for removal of a single `Tab`, use the **`removeAllTabs()`** method to clear the `TabbedPane` of all tabs.
@@ -119,7 +119,7 @@ The `TabbedPane` class has two constituent parts: a `Tab` that's displayed in a 
 
 ### Swiping {#swiping}
 
-The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile application, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swipping are disabled by default, but can be enabled with the `setSwipable(boolean)` and `setSwipableWithMouse(boolean)` methods, respectively. 
+The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile application, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swipping are disabled by default, but can be enabled with the `setSwipable(boolean)` and `setSwipableWithMouse(boolean)` methods, respectively.
 
 ### Tab placement {#tab-placement}
 
@@ -146,7 +146,7 @@ height='250px'
 
 ### Border and activity indicator {#border-and-activity-indicator}
 
-The `TabbedPane` will have a border displayed for the tabs within it by default, placed dependant on which `Placement` has been set. This border helps to visualize the space that the various tabs within the pane take up. 
+The `TabbedPane` will have a border displayed for the tabs within it by default, placed dependant on which `Placement` has been set. This border helps to visualize the space that the various tabs within the pane take up.
 
 When a `Tab` is clicked on, by default, an activity indicator is displayed near that `Tab` to help highlight which is the currently selected `Tab`.
 
@@ -184,11 +184,11 @@ Individual `Tab` elements can be set to be closable. Closable tabs will have a c
 
 - **`Manual`**: By default, removal is set to `MANUAL`, which means that the event is fired, but it is up to the developer to handle this event in whatever way they choose.
 
-- **`Auto`**: Alternatively, `AUTO` can be used which will fire the event, and also remove the `Tab` from the component for the developer, removing the need for the developer to implement this behavior manually. 
+- **`Auto`**: Alternatively, `AUTO` can be used which will fire the event, and also remove the `Tab` from the component for the developer, removing the need for the developer to implement this behavior manually.
 
 ### Segment control <DocChip chip='since' label='26.00' /> {#segment-control}
 
-The `TabbedPane` can be rendered as a segment control by enabling the `segment` property with `setSegment(true)`. In this mode, tabs are displayed with a sliding pill indicator that highlights the active selection, providing a compact alternative to the standard tabbed interface. 
+The `TabbedPane` can be rendered as a segment control by enabling the `segment` property with `setSegment(true)`. In this mode, tabs are displayed with a sliding pill indicator that highlights the active selection, providing a compact alternative to the standard tabbed interface.
 
 <ComponentDemo
 path='/webforj/tabbedpanesegment'

@@ -1,26 +1,29 @@
 ---
 sidebar_position: 2
 title: Testing with Playwright
-_i18n_hash: dffe640edd9d7918a3c8bace8cf0bbe8
+description: >-
+  Drive a webforJ app from JUnit using the Playwright Java bindings to fill
+  fields, click buttons, and assert rendered output in the browser.
+_i18n_hash: d0b58780be88b22c15eef134bbd4755a
 ---
-Esta documentación describe el proceso para probar aplicaciones webforJ utilizando Playwright, enfocándose específicamente en el `HelloWorldView` del `webforj-archetype-hello-world`.
+Esta documentación describe el proceso para probar aplicaciones webforJ utilizando Playwright, centrándose específicamente en el `HelloWorldView` del `webforj-archetype-hello-world`.
 
-:::info Fundamentos de la App
-Para obtener más información sobre el `webforj-archetype-hello-world`, consulta la sección de [Introducción a los Fundamentos de la App](../../introduction/basics).
+:::info Básicos de la Aplicación
+Para obtener más información sobre el `webforj-archetype-hello-world`, consulte la sección [Introducción a los Básicos de la Aplicación](../../introduction/basics).
 :::
 
-## Requisitos previos {#prerequisites}
+## Requisitos Previos {#prerequisites}
 
-Antes de escribir y ejecutar las pruebas de Playwright, asegúrate de lo siguiente:
-- La aplicación webforJ está correctamente configurada y funcionando en tu servidor local.
-- Has instalado:
-  - Las bindings de Java de Playwright.
-  - Un navegador compatible (Playwright puede instalar navegadores automáticamente durante la configuración).
+Antes de escribir y ejecutar las pruebas de Playwright, asegúrese de lo siguiente:
+- La aplicación webforJ está correctamente configurada y en funcionamiento en su servidor local.
+- Ha instalado:
+  - Las vinculaciones de Java de Playwright.
+  - Un navegador compatible (Playwright puede instalar automáticamente los navegadores durante la configuración).
   - Maven para las dependencias del proyecto.
 
 ## Configuración de Maven {#maven-configuration}
 
-Agrega las dependencias necesarias en tu `pom.xml` para Playwright:
+Agregue las dependencias necesarias en su `pom.xml` para Playwright:
 
 ```xml title="pom.xml"
 <dependencies>
@@ -38,7 +41,7 @@ Agrega las dependencias necesarias en tu `pom.xml` para Playwright:
 </dependencies>
 ```
 
-## Ejemplo de prueba: `HelloWorldView` {#testing-example-helloworldview}
+## Ejemplo de Prueba: `HelloWorldView` {#testing-example-helloworldview}
 
 El siguiente código demuestra una prueba basada en Playwright para el componente `HelloWorldView`.
 
@@ -64,7 +67,7 @@ class HelloWorldViewTest {
 
   @BeforeEach
   void setUp() {
-    browser = playwright.chromium().launch(); 
+    browser = playwright.chromium().launch();
     page = browser.newPage();
     page.navigate("http://localhost:" + port + "/");
   }
@@ -75,7 +78,7 @@ class HelloWorldViewTest {
     page.getByText("Say Hello").click();
 
     assertThat(page.locator("dwc-toast").first())
-        .containsText("¡Bienvenido a webforJ Starter webforJ!");
+        .containsText("¡Bienvenido al iniciador webforJ webforJ!");
   }
 }
 ```
@@ -83,31 +86,31 @@ class HelloWorldViewTest {
 ### Pasos clave {#key-steps}
 
 1. **Inicializar Playwright**:
-   - Crea una instancia de `Playwright`.
-   - Lanza una instancia del navegador utilizando `playwright.chromium().launch()`.
+   - Crear una instancia de `Playwright`.
+   - Lanzar una instancia del navegador utilizando `playwright.chromium().launch()`.
 
-2. **Configurar el entorno de prueba**:
-   - Abre una nueva página del navegador con `browser.newPage()`.
-   - Navega a la página `HelloWorldView` utilizando el método `navigate`.
+2. **Configurar el Entorno de Prueba**:
+   - Abrir una nueva página del navegador con `browser.newPage()`.
+   - Navegar a la página `HelloWorldView` utilizando el método `navigate`.
 
-3. **Interactuar con elementos**:
-   - Usa [los localizadores de Playwright](https://playwright.dev/java/docs/api/class-locator) para interactuar con elementos del DOM.
-   - Llena los campos de entrada utilizando `locator("input").fill()` y activa acciones usando `getByText("Say Hello").click()`.
+3. **Interactuar con Elementos**:
+   - Use [localizadores de Playwright](https://playwright.dev/java/docs/api/class-locator) para interactuar con elementos del DOM.
+   - Llenar campos de entrada utilizando `locator("input").fill()` y desencadenar acciones utilizando `getByText("Say Hello").click()`.
 
 4. **Afirmaciones**:
-   - Verifica el mensaje de toast mostrado con `PlaywrightAssertions.assertThat()`.
+   - Verificar el mensaje de tostada mostrado con `PlaywrightAssertions.assertThat()`.
 
 5. **Teardown**:
-   - Playwright maneja automáticamente la limpieza del navegador cuando la prueba concluye. Para limpieza manual, puedes cerrar el navegador utilizando `browser.close()`.
+   - Playwright maneja automáticamente la limpieza del navegador cuando la prueba finaliza. Para la limpieza manual, puede cerrar el navegador utilizando `browser.close()`.
 
-### Ejecutando pruebas {#running-tests}
+### Ejecución de pruebas {#running-tests}
 
-1. Inicia el servidor webforJ:
+1. Inicie el servidor webforJ:
    ```bash
    mvn jetty:run
    ```
 
-2. Ejecuta los casos de prueba:
+2. Ejecute los casos de prueba:
    ```bash
    mvn test
    ```
@@ -115,5 +118,5 @@ class HelloWorldViewTest {
 ## Comportamiento esperado {#expected-behavior}
 
 - Al visitar `http://localhost:<port>/`, se carga la página `HelloWorldView`.
-- Ingresa webforJ en el campo de texto y haz clic en el botón `Say Hello`.
-- Debe aparecer un mensaje de toast con el texto: `¡Bienvenido a webforJ Starter webforJ!`.
+- Ingrese webforJ en el campo de texto y haga clic en el botón `Say Hello`.
+- Debe aparecer un mensaje de tostada con el texto: `¡Bienvenido al iniciador webforJ webforJ!`.

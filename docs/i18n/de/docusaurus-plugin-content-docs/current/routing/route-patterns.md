@@ -1,18 +1,21 @@
 ---
 sidebar_position: 5
 title: Route Patterns
-_i18n_hash: 2f1668e34197bb2f4bb6c5b3ec6e87e5
+description: >-
+  Define dynamic URL segments, optional parameters, wildcards, and regex
+  constraints to match webforJ routes precisely.
+_i18n_hash: a6c1267e034c1562652cc01d0f336640
 ---
-**Routenmuster** werden verwendet, um zu definieren, wie URLs bestimmten Ansichten zugeordnet werden, einschließlich dynamischer und optionaler Segmente, regulärer Ausdrücke und Wildcards. Routenmuster ermöglichen es dem Framework, URLs abzugleichen, Parameter zu extrahieren und URLs dynamisch zu generieren. Sie spielen eine entscheidende Rolle bei der Strukturierung der Navigation und der Komponentendarstellung einer App basierend auf dem Standort des Browsers.
+**Routenmuster** werden verwendet, um zu definieren, wie URLs bestimmten Ansichten zugeordnet werden, einschließlich dynamischer und optionaler Segmente, regulärer Ausdrücke und Wildcards. Routenmuster ermöglichen es dem Framework, URLs abzugleichen, Parameter zu extrahieren und URLs dynamisch zu generieren. Sie spielen eine entscheidende Rolle bei der Strukturierung der Navigation einer Anwendung und der Komponentenanzeige basierend auf dem Standort des Browsers.
 
-## Syntax der Routenmuster {#route-pattern-syntax}
+## Syntax von Routenmustern {#route-pattern-syntax}
 
 Routenmuster in webforJ sind äußerst flexibel und unterstützen die folgenden Funktionen:
 
-- **Benannte Parameter:** Gekennzeichnet durch `:paramName`, sind sie erforderlich, es sei denn, sie sind als optional gekennzeichnet.
-- **Optionale Parameter:** Gekennzeichnet durch `:paramName?`, können sie in der URL weggelassen werden.
-- **Wildcards:** Dargestellt durch `*`, erfassen sie alle verbleibenden Segmente der URL.
-- **Einschränkungen für reguläre Ausdrücke:** Einschränkungen können nur für benannte Parameter hinzugefügt werden (zum Beispiel `:id<[0-9]+>`).
+- **Benannte Parameter:** Durch `:paramName` gekennzeichnet, sind sie erforderlich, es sei denn, sie sind als optional markiert.
+- **Optionale Parameter:** Durch `:paramName?` gekennzeichnet, können sie von der URL weggelassen werden.
+- **Wildcard-Segmente:** Durch `*` dargestellt, erfassen sie alle verbleibenden Segmente der URL.
+- **Einschränkungen durch reguläre Ausdrücke:** Einschränkungen können nur zu benannten Parametern hinzugefügt werden (zum Beispiel `:id<[0-9]+>`).
 
 ### Beispiel für Routenmusterdefinitionen {#example-of-route-pattern-definitions}
 
@@ -40,26 +43,26 @@ In diesem Beispiel:
 
 - `:id<[0-9]+>` erfasst eine numerische Kunden-ID.
 - `:name` erfasst einen Namen.
-- `*` erfasst zusätzliche Pfadsegmente über `named/:name` hinaus.
+- `*` erfasst alle zusätzlichen Pfade über `named/:name`.
 
 ## Benannte Parameter {#named-parameters}
 
-Benannte Parameter werden definiert, indem einem Doppelpunkt `:` der Parametername im Muster vorangestellt wird. Sie sind erforderlich, es sei denn, sie sind als optional gekennzeichnet. Benannte Parameter können auch reguläre Ausdrucks-[Einschränkungen](#regular-expression-constraints) haben, um die Werte zu validieren.
+Benannte Parameter werden definiert, indem man einen Doppelpunkt `:` vor den Parameternamen im Muster setzt. Sie sind erforderlich, es sei denn, sie sind als optional markiert. Benannte Parameter können auch reguläre Ausdrücke [Einschränkungen](#regular-expression-constraints) haben, um die Werte zu validieren.
 
 ### Beispiel: {#example}
 
 ```java
 @Route("product/:id")
 public class ProductView extends Composite<Div> {
-  // Komponentenlogik hier
+  // Logik der Komponente hier
 }
 ```
 
-Dieses Muster entspricht URLs wie `/product/123`, wobei `id` `123` ist.
+Dieses Muster passt zu URLs wie `/product/123`, wobei `id` `123` ist.
 
 ## Optionale Parameter {#optional-parameters}
 
-Optionale Parameter werden angezeigt, indem ein `?` nach dem Parameternamen hinzugefügt wird. Diese Segmente sind nicht erforderlich und können in der URL weggelassen werden.
+Optionale Parameter werden angezeigt, indem man ein `?` nach dem Parameternamen hinzufügt. Diese Segmente sind nicht erforderlich und können von der URL weggelassen werden.
 
 ### Beispiel: {#example-1}
 
@@ -77,11 +80,11 @@ public class OrderView extends Composite<Div> implements DidEnterObserver {
 }
 ```
 
-Dieses Muster entspricht sowohl `/order/123`, um einen numerischen Wert einzuschließen, als auch `/order`, wodurch das Weglassen eines numerischen Wertes beim Eingeben von `/order` ermöglicht wird.
+Dieses Muster passt sowohl zu `/order/123`, um einen numerischen Wert einzuschließen, als auch zu `/order`, was das Weglassen eines numerischen Wertes beim Eingeben von `/order` ermöglicht.
 
-## Einschränkungen für reguläre Ausdrücke {#regular-expression-constraints}
+## Einschränkungen durch reguläre Ausdrücke {#regular-expression-constraints}
 
-Sie können reguläre Ausdruckseinschränkungen auf Parameter anwenden, indem Sie sie in spitze Klammern `<>` einfügen. Dies ermöglicht es Ihnen, strengere Übereinstimmungsregeln für Parameter festzulegen.
+Sie können Einschränkungen durch reguläre Ausdrücke auf Parameter anwenden, indem Sie sie innerhalb von spitzen Klammern `<>` hinzufügen. Dadurch können Sie strengere Übereinstimmungsregeln für Parameter angeben.
 
 ### Beispiel: {#example-2}
 
@@ -98,11 +101,11 @@ public class ProductView extends Composite<FlexLayout> implements DidEnterObserv
 }
 ```
 
-Dieses Muster entspricht nur Produktcodes im Format `ABC-1234`. Zum Beispiel wird `/product/XYZ-5678` übereinstimmen, aber `/product/abc-5678` nicht.
+Dieses Muster passt nur zu Produktcodes im Format `ABC-1234`. Beispielsweise wird `/product/XYZ-5678` übereinstimmen, aber `/product/abc-5678` nicht.
 
 ## Wildcard-Segmente {#wildcard-segments}
 
-Wildcards können verwendet werden, um gesamte Pfade zu erfassen, die einem bestimmten Routensegment folgen, dürfen jedoch nur als letztes Segment im Muster erscheinen und erfassen alle nachfolgenden Werte in der URL. Für eine bessere Lesbarkeit können Wildcard-Segmente benannt werden. Anders als benannte Parameter können Wildcard-Segmente jedoch keine Einschränkungen haben.
+Wildcards können verwendet werden, um gesamte Pfade zu erfassen, die einem bestimmten Routensegment folgen, dürfen jedoch nur als letztes Segment im Muster erscheinen und lösen alle nachfolgenden Werte in der URL auf. Zur besseren Lesbarkeit können Wildcard-Segmente benannt werden. Im Gegensatz zu benannten Parametern können Wildcard-Segmente jedoch keine Einschränkungen haben.
 
 ### Beispiel: {#example-3}
 
@@ -120,25 +123,25 @@ public class FileManagerView extends Composite<Div> implements DidEnterObserver 
 }
 ```
 
-Dieses Muster entspricht jeder URL, die mit `/files` beginnt und den Rest des Pfades als Wildcard erfasst.
+Dieses Muster passt zu jeder URL, die mit `/files` beginnt, und erfasst den Rest des Pfades als Wildcard.
 
-## Routenpriorität {#route-priority}
+## Routenvorrang {#route-priority}
 
-Wenn mehrere Routen mit einer bestimmten URL übereinstimmen, bestimmt das Prioritätsattribut einer Route, welche Route zuerst ausgewählt wird. Dies ist besonders nützlich, wenn zwei oder mehr Routen in ihren Pfadmuster überlappen und Sie eine Möglichkeit benötigen, zu steuern, welche Vorrang hat. Das Prioritätsattribut ist sowohl in den Anmerkungen `@Route` als auch `@RouteAlias` verfügbar.
+Wenn mehrere Routen mit einer bestimmten URL übereinstimmen, bestimmt das Prioritätsattribut einer Route, welche Route zuerst ausgewählt wird. Dies ist besonders nützlich, wenn zwei oder mehr Routen in ihren Pfadmuster überlappen und Sie eine Möglichkeit benötigen, zu steuern, welche Priorität hat. Das Prioritätsattribut ist sowohl in den Annotationen `@Route` als auch `@RouteAlias` verfügbar.
 
 ### Wie das Prioritätssystem funktioniert {#how-the-priority-system-works}
 
-Das Prioritätsattribut ermöglicht es dem Router zu bestimmen, in welcher Reihenfolge Routen bewertet werden, wenn mehrere Routen mit einer bestimmten URL übereinstimmen könnten. Routen werden basierend auf ihren Prioritätswerten sortiert, wobei höhere Priorität (niedrigere numerische Werte) zuerst übereinstimmt. Dies stellt sicher, dass spezifischere Routen Vorrang vor allgemeineren haben.
+Das Prioritätsattribut ermöglicht es dem Router, die Reihenfolge festzulegen, in der Routen bewertet werden, wenn mehrere Routen eine bestimmte URL übereinstimmen könnten. Routen werden basierend auf ihren Prioritätswerten sortiert, wobei höhere Priorität (niedrigere numerische Werte) zuerst abgeglichen werden. Dies stellt sicher, dass spezifischere Routen Vorrang vor allgemeineren haben.
 
-Wenn zwei Routen die gleiche Priorität haben, löst der Router den Konflikt, indem er die Route auswählt, die zuerst registriert wurde. Dieser Mechanismus sorgt dafür, dass die korrekte Route ausgewählt wird, selbst wenn mehrere Routen in ihren URL-Mustern überlappen.
+Wenn zwei Routen die gleiche Priorität haben, löst der Router den Konflikt, indem er die Route auswählt, die zuerst registriert wurde. Dieser Mechanismus stellt sicher, dass die richtige Route ausgewählt wird, auch wenn mehrere Routen in ihren URL-Mustern überlappen.
 
-:::info Standardpriorität  
-Standardmäßig haben alle Routen eine Priorität von `10`.  
+:::info Standardpriorität
+Standardmäßig wird allen Routen eine Priorität von `10` zugewiesen.
 :::
 
 ### Beispiel: Konfliktierende Routen {#example-conflicting-routes}
 
-Betrachten Sie ein Szenario, in dem zwei Routen ähnliche URL-Muster entsprechen:
+Betrachten Sie ein Szenario, in dem zwei Routen ähnliche URL-Muster übereinstimmen:
 
 ```java
 @Route(value = "products/:category", priority = 9)
@@ -160,9 +163,9 @@ public class ProductView extends Composite<Div> implements DidEnterObserver {
 }
 ```
 
-Hier ist, wie das Prioritätssystem bei der Auflösung von Konflikten hilft:
+So hilft das Prioritätssystem, Konflikte aufzulösen:
 
-- **`ProductCategoryView`** entspricht URLs wie `/products/electronics`.
-- **`ProductView`** entspricht spezifischeren URLs wie `/products/electronics/123`, wobei `123` die Produkt-ID ist.
+- **`ProductCategoryView`** passt zu URLs wie `/products/electronics`.
+- **`ProductView`** passt zu spezifischeren URLs wie `/products/electronics/123`, wobei `123` die Produkt-ID ist.
 
-In diesem Fall könnten beide Routen der URL `/products/electronics` entsprechen. Da jedoch `ProductCategoryView` eine höhere Priorität hat (Priorität = 9), wird sie zuerst abgeglichen, wenn keine `productId` in der URL vorhanden ist. Für URLs wie `/products/electronics/123` wird `ProductView` aufgrund der Anwesenheit des `productId`-Parameters abgeglichen.
+In diesem Fall könnten beide Routen die URL `/products/electronics` übereinstimmen. Da jedoch `ProductCategoryView` eine höhere Priorität (Priorität = 9) hat, wird sie zuerst abgeglichen, wenn keine `productId` in der URL vorhanden ist. Für URLs wie `/products/electronics/123` wird `ProductView` aufgrund der Präsenz des Parameters `productId` abgeglichen.

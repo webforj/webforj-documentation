@@ -1,24 +1,27 @@
 ---
 title: Events and updates
 sidebar_position: 5
-_i18n_hash: 0f7a5576086e2922c0549eae23e66061
+description: >-
+  React to repository commits with RepositoryCommitEvent listeners, choose
+  single-entity or bulk updates, and manage listener registrations.
+_i18n_hash: 9ce2e7d25b38cd0d04acd30c80edffb3
 ---
 <!-- vale off -->
-# Ereignisse und Aktualisierungen <DocChip chip='since' label='24.00' />
+# Ereignisse und Updates <DocChip chip='since' label='24.00' />
 <!-- vale on -->
 
-`Repository`-Ereignisse ermöglichen es Ihnen, auf Datenänderungen zu reagieren. Über die automatischen UI-Aktualisierungen hinaus können Sie auf Änderungen hören, um benutzerdefinierte Logik auszulösen.
+`Repository`-Ereignisse ermöglichen es Ihnen, auf Datenänderungen zu reagieren. Neben den automatischen UI-Updates können Sie auf Änderungen hören, um benutzerdefinierte Logik auszulösen.
 
 ## `Repository`-Ereignislebenszyklus {#repository-event-lifecycle}
 
-Jeder Aufruf von `commit()` löst ein <JavadocLink type="data" location="com/webforj/data/repository/event/RepositoryCommitEvent" code="true">RepositoryCommitEvent</JavadocLink> aus. Dieses Ereignis enthält Informationen darüber, was sich geändert hat:
+Jeder `commit()`-Aufruf löst ein <JavadocLink type="data" location="com/webforj/data/repository/event/RepositoryCommitEvent" code="true">RepositoryCommitEvent</JavadocLink> aus. Dieses Ereignis enthält Informationen darüber, was sich geändert hat:
 
 ```java
 repository.onCommit(event -> {
-  // Alle bestätigten Entitäten abrufen
+  // Alle kommittierten Entitäten abrufen
   List<Customer> commits = event.getCommits();
-  
-  // Überprüfen, ob es sich um eine Aktualisierung einer einzelnen Entität handelt
+
+  // Überprüfen, ob es sich um ein Update einer einzelnen Entität handelt
   if (event.isSingleCommit()) {
     Customer updated = event.getFirstCommit();
     System.out.println("Aktualisiert: " + updated.getName());
@@ -26,39 +29,39 @@ repository.onCommit(event -> {
 });
 ```
 
-Das Ereignis informiert Sie:
-- `getCommits()` - Liste der Entitäten, die bestätigt wurden
-- `isSingleCommit()` - Ob es sich um eine gezielte Aktualisierung einer einzigen Entität handelt
-- `getFirstCommit()` - Hilfsmethode, um die erste (oder einzige) Entität abzurufen
+Das Ereignis gibt Ihnen folgende Informationen:
+- `getCommits()` - Liste der Entitäten, die kommittiert wurden
+- `isSingleCommit()` - Ob dies ein gezieltes Update einer einzelnen Entität war
+- `getFirstCommit()` - Hilfsmethode, um die erste (oder einzige) Entität zu erhalten
 
-Für `commit()` ohne Parameter enthält das Ereignis alle Entitäten, die sich derzeit im Repository nach der Filterung befinden.
+Für `commit()` ohne Parameter enthält das Ereignis alle Entitäten, die sich nach der Filterung derzeit im Repository befinden.
 
 ## Aktualisierungsstrategien {#update-strategies}
 
 Die beiden Commit-Signaturen dienen unterschiedlichen Zwecken:
 
 ```java
-// Aktualisierung einer einzelnen Entität - effizient für individuelle Änderungen
+// Update einer einzelnen Entität - effizient für individuelle Änderungen
 Customer customer = customers.get(0);
 customer.setStatus("VIP");
 repository.commit(customer);
 
-// Massenaktualisierung - effizient für mehrere Änderungen
+// Massenupdate - effizient für mehrere Änderungen
 products.clear();
 products.addAll(loadProductsFromCsv());
 repository.commit();
 ```
 
-Aktualisierungen einer einzelnen Entität sind chirurgisch - sie sagen den verbundenen Komponenten genau, welche Zeile sich geändert hat. Die [`Table`](../../components/table/overview) kann nur die Zellen dieser Zeile aktualisieren, ohne etwas anderes zu berühren.
+Commits von einzelnen Entitäten sind gezielt - sie sagen den verbundenen Komponenten genau, welche Zeile sich geändert hat. Der [`Table`](../../components/table/overview) kann nur die Zellen dieser Zeile aktualisieren, ohne andere zu berühren.
 
 Massencommits aktualisieren alles. Verwenden Sie sie, wenn:
-- Mehrere Entitäten verändert wurden
-- Sie Artikel hinzugefügt oder entfernt haben
+- Mehrere Entitäten geändert wurden
+- Sie Elemente hinzugefügt oder entfernt haben
 - Sie sich nicht sicher sind, was sich geändert hat
 
 ## Reaktive UI-Muster {#reactive-ui-patterns}
 
-`Repository`-Ereignisse ermöglichen es Ihnen, Zusammenfassungsanzeigen mit Ihren Daten synchron zu halten:
+`Repository`-Ereignisse ermöglichen es Ihnen, Zusammenfassungen mit Ihren Daten synchron zu halten:
 
 ```java
 // Automatisch aktualisierende Labels
@@ -68,30 +71,30 @@ repository.onCommit(event -> {
   countLabel.setText("Verkäufe: " + sales.size());
 });
 
-// Live-Ergebniszahlen
+// Live-Ergebnisanzahlen
 repository.onCommit(e -> {
   long count = repository.findAll().count();
   resultsLabel.setText(count + " Produkte gefunden");
 });
 ```
 
-Diese Listener werden bei jedem Commit aktiviert, ganz gleich, ob sie durch Benutzeraktionen, Datenimporte oder programmatische Aktualisierungen ausgelöst wurden. Das Ereignis gibt Ihnen Zugriff auf die bestätigten Entitäten, aber oft berechnen Sie erneut aus der Quellsammlung, um alle aktuellen Daten einzuschließen.
+Diese Listener werden bei jedem Commit ausgelöst, egal ob durch Benutzeraktionen, Datenimporte oder programmatische Updates. Das Ereignis gibt Ihnen Zugriff auf die kommittierten Entitäten, aber oft berechnen Sie erneut aus der Quellsammlung, um alle aktuellen Daten einzuschließen.
 
 ## Speicherverwaltung {#memory-management}
 
-Ereignis-Listener halten Referenzen auf Ihre Komponenten. Wenn Sie diese nicht entfernen, behält das `Repository` Ihre Komponenten im Speicher, selbst wenn sie nicht mehr angezeigt werden:
+Ereignis-Listener halten Referenzen zu Ihren Komponenten. Wenn Sie diese nicht entfernen, behält das `Repository` Ihre Komponenten im Speicher, auch nachdem sie nicht mehr angezeigt werden:
 
 ```java
-// Referenz behalten, um später zu entfernen
-ListenerRegistration<RepositoryCommitEvent<Data>> registration = 
+// Referenz behalten, um sie später zu entfernen
+ListenerRegistration<RepositoryCommitEvent<Data>> registration =
   repository.onCommit(event -> {
     updateDisplay(event.getCommits());
   });
 
-// Listener aufräumen, wenn die Komponente zerstört wird
+// Listener bereinigen, wenn die Komponente zerstört wird
 if (registration != null) {
   registration.remove();
 }
 ```
 
-Die Methode `onCommit()` gibt eine `ListenerRegistration` zurück. Speichern Sie diese Referenz und rufen Sie `remove()` auf, wenn Ihre Komponente zerstört wird oder keine Aktualisierungen mehr benötigt. Dies verhindert Speicherlecks in lang laufenden Anwendungen.
+Die Methode `onCommit()` gibt eine `ListenerRegistration` zurück. Bewahren Sie diese Referenz auf und rufen Sie `remove()` auf, wenn Ihre Komponente zerstört wird oder keine Updates mehr benötigt. Dies verhindert Speicherlecks in langlebigen Anwendungen.

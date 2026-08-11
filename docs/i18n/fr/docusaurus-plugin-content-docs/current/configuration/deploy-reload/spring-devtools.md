@@ -4,13 +4,13 @@ sidebar_position: 30
 description: >-
   Pair Spring DevTools with webforJ DevTools to auto-restart the app and refresh
   the browser when Java, CSS, or asset files change.
-_i18n_hash: 3a552976cb9d962eb59dbfa25a10fb58
+_i18n_hash: 183c4eb42a93904e03dff44faf2118e7
 ---
-Spring DevTools fournit un redémarrage automatique de l'application lorsque des modifications de code sont effectuées. webforJ DevTools ajoute un rafraîchissement automatique du navigateur - lorsque Spring redémarre votre application, le navigateur se rafraîchit automatiquement via le serveur LiveReload de webforJ.
+Spring DevTools fournit des redémarrages automatiques de l'application lors des changements de code. webforJ DevTools ajoute un rafraîchissement automatique du navigateur : lorsque Spring redémarre votre application, le navigateur se rafraîchit automatiquement via le serveur LiveReload de webforJ.
 
-Différents types de fichiers déclenchent différents comportements de rechargement. Les modifications de code Java provoquent un redémarrage complet de Spring et un rafraîchissement du navigateur. Les modifications CSS et d'images se mettent à jour sans rechargement de la page, préservant les données de formulaire et l'état de l'application.
+Différents types de fichiers déclenchent des comportements de rechargement différents. Les changements de code Java entraînent un redémarrage complet de Spring et un rafraîchissement du navigateur. Les changements de CSS et d'images se mettent à jour sans rechargement de la page, préservant les données du formulaire et l'état de l'application.
 
-:::tip Changements frontend
+:::tip Changements Frontend
 Les changements sous `src/main/frontend` sont gérés par le [frontend watch](/docs/configuration/deploy-reload/frontend-watch), qui les reconstruit et rafraîchit le navigateur en même temps que le serveur.
 :::
 
@@ -18,7 +18,7 @@ Les changements sous `src/main/frontend` sont gérés par le [frontend watch](/d
 ## Comprendre webforJ DevTools {#understanding-webforj-devtools}
 <!-- vale on -->
 
-webforJ étend Spring DevTools avec une synchronisation du navigateur. Lorsque Spring détecte des modifications de fichiers et redémarre, webforJ DevTools rafraîchit automatiquement votre navigateur.
+webforJ étend Spring DevTools avec une synchronisation du navigateur. Lorsque Spring détecte des changements de fichiers et redémarre, webforJ DevTools rafraîchit automatiquement votre navigateur.
 
 ### Comportement de rechargement {#reload-behavior}
 
@@ -26,7 +26,7 @@ Différents types de fichiers déclenchent différentes stratégies de rechargem
 
 - **Fichiers Java** : Rechargement complet de la page du navigateur après le redémarrage de Spring
 - **Fichiers JavaScript** : Rechargement complet de la page du navigateur après le redémarrage de Spring
-- **Fichiers CSS** : Mises à jour de style sans rechargement de la page  
+- **Fichiers CSS** : Mises à jour de style sans rechargement de la page
 - **Images** : Rafraîchissement sur place sans rechargement de la page
 
 ## Dépendances {#dependencies}
@@ -62,28 +62,28 @@ server.shutdown=immediate
 
 ### Configuration avancée {#advanced-configuration}
 
-Configurer la connexion WebSocket et le comportement de rechargement :
+Configurez la connexion WebSocket et le comportement de rechargement :
 
 ```Ini title="application.properties"
 # Port du serveur WebSocket (par défaut : 35730)
 webforj.devtools.livereload.websocket-port=35730
 
-# Chemin d'accès du point de terminaison WebSocket (par défaut : /webforj-devtools-ws)
+# Chemin d'endpoint WebSocket (par défaut : /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
-# Intervalle de battement en millisecondes (par défaut : 30000)
+# Intervalle de pulsation en millisecondes (par défaut : 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
-# Activer le rechargement à chaud pour les ressources statiques (par défaut : vrai)
+# Activer le rechargement à chaud pour les ressources statiques (par défaut : true)
 webforj.devtools.livereload.static-resources-enabled=true
 ```
 
 <DocChip chip='since' label='25.03' /> Configurez l'ouverture du navigateur au démarrage de l'application :
 
 ```Ini title="application.properties"
-# Activer l'ouverture du navigateur (par défaut : faux)
+# Activer l'ouverture du navigateur (par défaut : false)
 webforj.devtools.browser.open=true
 
-# localhost, nom d'hôte ou adresse IP (par défaut : localhost)
+# localhost, nom d’hôte ou adresse IP (par défaut : localhost)
 webforj.devtools.browser.host=localhost
 ```

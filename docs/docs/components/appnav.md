@@ -9,7 +9,7 @@ description: Build hierarchical side navigation menus with AppNav and AppNavItem
 <DocChip chip="name" label="dwc-app-nav" />
 <DocChip chip="name" label="dwc-app-nav-item" />
 <DocChip chip='since' label='24.12' />
-<JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/> 
+<JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/>
 
 The `AppNav` component creates a side navigation menu out of `AppNavItem` entries. Items can link to internal views or external resources, nest under parent items to form hierarchical menus, and carry icons, badges, or other components to give users more context at a glance.
 
@@ -122,26 +122,26 @@ Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested
 nav.setAutoOpen(true);
 ```
 
-## Pinning <DocChip chip='since' label='26.01' /> {#pinning} 
- 
+## Pinning <DocChip chip='since' label='26.01' /> {#pinning}
+
 Pinning lets a user lift the items they reach for most into a group at the top of the navigation, so a deep menu still keeps a short list of favorites within one click. It's off by default. Turn it on through the pinning configuration:
- 
+
 ```java
 AppNav nav = new AppNav();
 nav.getPinning().setEnabled(true);
 ```
- 
+
 Once enabled, every navigable leaf item shows a pin toggle. The toggle is revealed on hover and on keyboard focus, so it stays reachable without a mouse. Activating it moves the item into the pinned group at the top of the nav.
- 
+
 A few rules govern what can be pinned and how the group behaves:
- 
+
 - Only navigable leaf items are pinnable. Group headers (items with children) are never pinnable.
 - The pinned group appears only once something is pinned, and disappears again when the last item is unpinned.
 - Unpinning returns an item to its exact original position, including items nested several levels deep inside groups.
 - The item is moved, not copied, so any prefix or suffix content and any listeners attached to it keep working while it sits in the pinned group.
 
 The demo below has pinning enabled with a custom group title and Dashboard pinned on load. Hover or focus a leaf item to reveal its pin toggle.
- 
+
 <ComponentDemo
 path='/webforj/appnavpinning/Dashboard'
 frame='desktop'
@@ -150,70 +150,70 @@ files={[
   'src/main/java/com/webforj/samples/views/appnav/AppNavPinningPageView.java',
 ]}
 />
- 
+
 ### Starting an item pinned {#starting-an-item-pinned}
- 
+
 Start an item in the pinned group by setting its pinned state. Use `isPinned()` to read the current state.
- 
+
 ```java
 AppNavItem reports = new AppNavItem("Reports", "/reports");
 reports.setPinned(true);
 ```
- 
+
 :::info Pinning must be enabled
 `setPinned(true)` only takes effect when pinning is enabled on the `AppNav` through `getPinning().setEnabled(true)`. Without it, the call has no effect.
 :::
- 
+
 ### Pinned group title {#pinned-group-title}
- 
+
 The pinned group is labeled `Pinned` by default. Change it to fit your app:
- 
+
 ```java
 nav.getPinning().setTitle("Favorites");
 ```
- 
+
 ### Pin keys {#pin-keys}
- 
+
 Each pinnable item carries a key that identifies it for persistence and for the [pin event](#reacting-to-pin-changes). When you don't set one, the key falls back to the item's path, so `getPinKey()` always returns a usable value.
- 
+
 ```java
 AppNavItem reports = new AppNavItem("Reports", "/reports");
 reports.setPinKey("reports");
 ```
- 
+
 Set an explicit key when the path can change at runtime. A stable key keeps a pin matched to the right item across reloads even if its URL moves.
- 
+
 ### Autosave to local storage {#autosave}
- 
+
 Pins live only for the current page view unless you persist them. Autosave is the simplest option: it stores the set of pinned items in the browser's local storage and restores them on reload. It's off by default. It needs a stable `id` (or name) on the component for the storage key, and the `AppNav(String id)` constructor is the convenient way to set one:
- 
+
 ```java
 AppNav nav = new AppNav("main-nav"); // gives autosave a stable storage key
 nav.getPinning().setAutosave(true);
 ```
- 
+
 :::info Autosave needs an id
 With no `id` (or name) on the component, autosave silently does nothing, since it has no stable key to store under. Persistence is per browser, so pins don't follow a user to another device or browser.
 :::
- 
+
 ### Custom persistence {#custom-persistence}
- 
+
 For persistence you control, for example per user on the server, turn autosave off and drive it yourself through the [pin event](#reacting-to-pin-changes) and `setPinned`:
- 
+
 ```java
 nav.getPinning().setAutosave(false);
- 
+
 // persist the current set of pinned keys whenever it changes
 nav.onPin(event -> savePins(event.getKeys()));
- 
+
 // on load, restore each saved key
 restoredKeys.forEach(key -> findItem(key).setPinned(true));
 ```
- 
+
 ### Reacting to pin changes {#reacting-to-pin-changes}
- 
+
 The pin event fires whenever an item is pinned or unpinned. It carries the item that changed, its key, the new pinned state, and the full ordered set of pinned keys:
- 
+
 ```java
 nav.onPin(event -> {
   AppNavItem item = event.getItem(); // the item that changed, or null if it is no longer in the nav
@@ -222,13 +222,13 @@ nav.onPin(event -> {
   List<String> all = event.getKeys(); // every pinned key, in pinned order
 });
 ```
- 
+
 `getItem()` resolves the item by matching its pin key, and returns `null` when the item is no longer part of the navigation.
- 
+
 ### Pin icons {#pin-icons}
- 
+
 The toggle uses the built in `dwc:pin` icon while an item is unpinned and `dwc:pinned-off` while it's pinned. Swap in your own through `setUnpinnedIcon` and `setPinnedIcon`, which accept any `IconDefinition`:
- 
+
 ```java
 nav.getPinning()
    .setUnpinnedIcon(TablerIcon.create("pin"))
@@ -236,22 +236,22 @@ nav.getPinning()
 ```
 
 ### Pin toggle on touchscreens {#pin-toggle-on-touchscreens}
- 
+
 Touchscreens have no hover to reveal the pin, so the toggle is hidden there by default. Keep it visible and tappable on touchscreens with `setTouchVisible(true)`:
- 
+
 ```java
 nav.getPinning().setTouchVisible(true);
 ```
- 
+
 ## Search <DocChip chip='since' label='26.01' /> {#search}
- 
+
 The search field filters the menu by item label as the user types. It's off by default. You can show it and give it a placeholder through the search configuration:
- 
+
 ```java
 nav.getSearch().setFieldVisible(true);
 nav.getSearch().setPlaceholder("Search");
 ```
- 
+
 As the user types, the nav filters items by label, opens any group that contains a match, and shows an empty message when nothing matches. Pinned shortcuts stay visible while searching, so a user's favorites remain one click away even mid filter.
 
 <ComponentDemo
@@ -262,27 +262,27 @@ files={[
   'src/main/java/com/webforj/samples/views/appnav/AppNavSearchPageView.java',
 ]}
 />
- 
+
 ### Empty message {#search-empty-message}
- 
+
 Set the message shown when a search returns no results. Plain text is rendered as text:
- 
+
 ```java
 nav.getSearch().setEmptyMessage("No items found");
 ```
- 
+
 ### Driving search from your own field {#custom-search-box}
- 
+
 Hide the built in field and feed the filter from an input of your own. Push the current term in through `setTerm`:
- 
+
 ```java
 nav.getSearch().setFieldVisible(false);
- 
+
 myField.onModify(event -> nav.getSearch().setTerm(event.getText()));
 ```
- 
+
 To react to what the user types in the built in field, listen for the search event:
- 
+
 ```java
 nav.onSearch(event -> log(event.getTerm()));
 ```

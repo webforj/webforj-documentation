@@ -32,8 +32,8 @@ Each form should have only one `BindingContext` instance, and you should use thi
 
 ### The bound property {#the-bound-property}
 
-A binding property is a specific field or attribute of a Java Bean that can be linked to a UI component in your app. 
-This linkage allows changes in the UI to directly affect the corresponding property of the data model, and vice versa, 
+A binding property is a specific field or attribute of a Java Bean that can be linked to a UI component in your app.
+This linkage allows changes in the UI to directly affect the corresponding property of the data model, and vice versa,
 so the UI and the data model stay in sync.
 
 When setting up a binding, you should provide the property name as a string. This name must match the field name in the Java Bean class. Here's a simple example:
@@ -59,11 +59,11 @@ is what actually gets the binding added to the context.
 
 ### The bound component {#the-bound-component}
 
-The other side of the binding is the bound component, which refers to the UI component that interacts with the property of the Java Bean. 
-The bound component can be any UI component that supports user interaction and display, such as text fields, combo boxes, checkboxes, or 
+The other side of the binding is the bound component, which refers to the UI component that interacts with the property of the Java Bean.
+The bound component can be any UI component that supports user interaction and display, such as text fields, combo boxes, checkboxes, or
 any custom component that implements the `ValueAware` interface.
 
-The bound component serves as the user's point of interaction with the underlying data model. 
+The bound component serves as the user's point of interaction with the underlying data model.
 It displays data to the user and also captures user inputs which are then propagated back to the model.
 
 ```java
@@ -76,8 +76,8 @@ context.bind(nameTextField, "name").add();
 
 ### Reading data {#reading-data}
 
-Reading data involves populating UI components with values from the data model. 
-This is typically done when a form is initially displayed, or when you need to reload the data due to changes in the underlying model. 
+Reading data involves populating UI components with values from the data model.
+This is typically done when a form is initially displayed, or when you need to reload the data due to changes in the underlying model.
 The `read` method provided by `BindingContext` makes this process straightforward.
 
 ```java
@@ -88,13 +88,13 @@ Hero hero = new Hero("Clark Kent", "Flying");
 context.read(hero);
 ```
 
-In this example, the `read` method takes an instance of `Hero` and updates all bound UI components to reflect the hero's properties. 
-If the hero's name or power changes, the corresponding UI components (like a `TextField` for name and a `ComboBox` for powers) 
+In this example, the `read` method takes an instance of `Hero` and updates all bound UI components to reflect the hero's properties.
+If the hero's name or power changes, the corresponding UI components (like a `TextField` for name and a `ComboBox` for powers)
 display these new values.
 
 ### Writing data {#writing-data}
 
-Writing data involves collecting values from the UI components and updating the data model. 
+Writing data involves collecting values from the UI components and updating the data model.
 This typically occurs when a user submits a form. The `write` method handles validation and model updating in one step.
 
 ```java
@@ -103,7 +103,7 @@ submit.onClick(event -> {
   ValidationResult results = context.write(hero);
   if (results.isValid()) {
     // Data is valid, and hero object has been updated
-    // repository.save(hero); 
+    // repository.save(hero);
   } else {
     // Handle validation errors
     // results.getMessages();
@@ -111,10 +111,10 @@ submit.onClick(event -> {
 });
 ```
 
-In the code above, when the user clicks the submit button, the `write` method is called. 
-It performs all configured validations and, if the data passes all checks, updates the `Hero` object 
-with new values from the bound components. 
-If the data is valid, you might save to a database or processed further. If there are validation errors, 
+In the code above, when the user clicks the submit button, the `write` method is called.
+It performs all configured validations and, if the data passes all checks, updates the `Hero` object
+with new values from the bound components.
+If the data is valid, you might save to a database or processed further. If there are validation errors,
 you should handle appropriately, typically by displaying error messages to the user.
 
 
@@ -163,13 +163,13 @@ The full path is validated when you call `bind`. A typo in any segment, at the t
 ## ReadOnly data {#readonly-data}
 <!-- vale on -->
 
-In certain scenarios, you may want your app to display data without allowing the end-user to modify it directly through the UI. 
-Read-only data bindings address this. webforJ supports configuring bindings as read-only, so 
+In certain scenarios, you may want your app to display data without allowing the end-user to modify it directly through the UI.
+Read-only data bindings address this. webforJ supports configuring bindings as read-only, so
 you can display data, but not edit it through bound UI components.
 
 ### Configuring readonly bindings {#configuring-readonly-bindings}
 
-To set up a read-only binding, you can configure the binding to turn off or ignore UI component input. 
+To set up a read-only binding, you can configure the binding to turn off or ignore UI component input.
 The data then remains unchanged from the UI perspective, while still updating programmatically when needed.
 
 ```java
@@ -180,7 +180,7 @@ context.bind(nameTextField, "name")
   .add();
 ```
 
-In this configuration, `readOnly` stops the `nameTextField` from accepting user input, so the text field displays 
+In this configuration, `readOnly` stops the `nameTextField` from accepting user input, so the text field displays
 the data without allowing modifications.
 
 :::info
@@ -188,14 +188,14 @@ The binding can mark the component as read-only only if the UI components implem
 :::
 
 :::tip Component ReadOnly vs Binding ReadOnly
-It's important to differentiate between bindings you configure as read-only and UI components you set to display as read-only. 
+It's important to differentiate between bindings you configure as read-only and UI components you set to display as read-only.
 When you mark a binding as read-only, it impacts how the binding manages data during the write process, not just the UI behavior.
 
-When you mark a binding as read-only, the system skips data updates. Any changes to the UI component won't transmit back to the data model. 
-As a result, even if the UI component somehow receives user input, it won't update the underlying data model. 
+When you mark a binding as read-only, the system skips data updates. Any changes to the UI component won't transmit back to the data model.
+As a result, even if the UI component somehow receives user input, it won't update the underlying data model.
 Maintaining this separation protects data integrity in scenarios where user actions shouldn't alter the data.
 
-In contrast, setting a UI component as read-only, without configuring the binding itself as read-only, simply stops the user from making changes 
+In contrast, setting a UI component as read-only, without configuring the binding itself as read-only, simply stops the user from making changes
 to the UI component but doesn't stop the binding from updating the data model if changes occur programmatically or through other means.
 :::
 
