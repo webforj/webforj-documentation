@@ -232,7 +232,6 @@ If your assistant still answers without consulting the server, install the [webf
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
     <p>Why isn't the AI assistant using the MCP server?</p>
-    <p>Why isn't the AI assistant using the MCP server?</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>

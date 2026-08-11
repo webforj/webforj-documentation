@@ -225,6 +225,10 @@ module.exports = async function createConfig() {
           {
             from: '/docs/configuration/deploy-reload/jrebel',
             to: '/docs/configuration/deploy-reload/hotswap'
+          },
+          {
+            from: '/docs/building-ui/event-options',
+            to: '/docs/building-ui/events',
           }
         ],
       },
