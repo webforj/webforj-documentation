@@ -1,39 +1,59 @@
 ---
-title: Maven Jetty plugin
+title: Jetty
+sidebar_position: 40
 description: >-
-  Tune the Maven Jetty plugin scan interval and webforJ reload properties to
-  enable hot redeployment during webforJ development.
-_i18n_hash: 6ce3da7be312bb71f2ded56a583d7687
+  Run a webforJ app on the embedded Jetty server with the Maven Jetty plugin,
+  with live reload and hotswap during development.
+_i18n_hash: 73514e3b51a43e4a876aefd5cf933577
 ---
-Maven Jetty 插件是一个流行的工具，允许开发人员直接从他们的 Maven 项目中在嵌入式 Jetty 服务器上运行 Java 网络应用程序。
+Maven Jetty 插件直接在嵌入式 Jetty 服务器上运行应用程序，来自项目。一个原型项目将 `compile webforj:watch jetty:run` 设置为其默认的 Maven 目标，因此没有参数的 `mvn` 将编译应用程序，启动 [frontend watch](/docs/configuration/deploy-reload/frontend-watch)，并在 Jetty 上提供应用程序。
 
-Jetty 插件启动一个嵌入式 Jetty 服务器，监视您应用程序的文件，包括 Java 类和资源，以检测更改。当它检测到更新时，它会自动重新部署应用程序，从而加快开发进程，消除手动构建和部署步骤。
+## 要求 {#requirements}
 
-:::tip 前端更改
-对 `src/main/frontend` 下的更改由 [frontend watch](/docs/configuration/deploy-reload/frontend-watch) 处理，该工具会重建这些更改并在服务器旁边刷新浏览器。
-:::
+Jetty 项目在用于开发运行的配置文件中声明开发工具：
 
-## Jetty 配置 {#jetty-configurations}
+```xml title="pom.xml"
+<profiles>
+  <profile>
+    <id>dev</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <dependencies>
+      <dependency>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-devtools</artifactId>
+      </dependency>
+    </dependencies>
+  </profile>
+</profiles>
+```
 
-以下是一些用于微调插件热部署和服务器交互设置的基本配置：
+版本来自 webforJ 材料清单 (BOM)。该配置文件使依赖项不被打包到 war 文件中。由 [archetype](/docs/introduction/getting-started) 创建的项目具有此配置文件。
 
-| 属性                               | 描述                                                                                                                                                                             | 默认值         |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| **`scan`**         | 配置 Jetty 服务器检查 **`pom.xml`** 中文件更改的频率。骨架项目将此设置为 `2` 秒。增加此间隔可以减少 CPU 负载，但可能会延迟更改在应用程序中的反映。 | `1`            |
+## 开启实时重载 {#turning-live-reload-on}
 
-## webforJ 配置 {#webforj-configurations}
+```ini title="webforj.conf"
+webforj.devtools.livereload.enabled = true
+```
 
-| 属性                               | 描述                                                                                                                                                                             | 默认值         |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| **`webforj.reloadOnServerError`** | 在使用热重新部署时，整个 WAR 文件会被交换。如果在服务器重启期间客户端发送请求，则会发生错误。此设置允许客户端尝试重新加载页面，假设服务器很快会重新上线。仅适用于开发环境，只处理与热重新部署特定的错误。 | `on`           |
-| **`webforj.clientHeartbeatRate`** | 设置客户端 Ping 查询服务器可用性的间隔。这保持客户端与服务器之间的通信开放。对于开发，使用较短的时间间隔以便于更快的错误检测。在生产中，将此设置为至少 50 秒，以避免过多请求。 | `50s`          |
+这些键与 Spring Boot 应用在 `application.properties` 中设置的键相同，列在 [settings](/docs/configuration/deploy-reload/overview#settings) 中。
+
+## 类更改 {#class-changes}
+
+使用 [hotswap tool](/docs/configuration/deploy-reload/hotswap) 配置后，该工具应用类更改，而 Jetty 不会重新部署。两个 Jetty 属性支持这一点，原型项目设置了这两个属性：
+
+- `scan` 的值为 `0`，表示关闭 Jetty 的文件扫描。
+- `deployMode` 保持未设置。热替换需要分叉模式，并且插件会选择它。将 `deployMode` 设置为其他值的构建在没有该工具的情况下启动，并记录该信息。
+
+如果没有热替换工具，将 `scan` 设置为以秒为单位的间隔，Jetty 会在编译的类或资源更改时重新部署应用程序：
+
+| 属性 | 描述 | 默认 |
+|----------|-------------|---------|
+| `scan` | 编译输出的扫描间隔，以秒为单位，设置为 `jetty.scan` 属性。`0` 表示关闭扫描。更长的间隔降低负载并延迟重新部署。 | `1` |
 
 ## 使用注意事项 {#usage-considerations}
 
-虽然 Jetty 插件在开发中非常有效，但它有一些潜在的限制：
-
-- **内存和 CPU 使用**：频繁的文件扫描，如果在 `pom.xml` 中设置较低的 `scan` 值，可能会增加资源消耗，尤其是在大型项目中。增加间隔可能会减少负载，但也会减慢重新部署速度。
-
-- **有限的生产使用**：Jetty 插件设计用于开发，而不是生产环境。它缺乏生产所需的性能优化和安全配置，更适合本地测试。
-
-- **会话管理**：在热重新部署期间，用户会话可能不会被保留，尤其是在代码发生重大结构更改时。这可能会干扰涉及用户会话数据的测试，要求手动管理会话或为开发配置解决方法。
+- **内存和 CPU**：较低的 `scan` 值会在大型项目上增加资源消耗。更长的间隔减少消耗并延迟重新部署。
+- **仅限开发**：Jetty 插件不适用于生产部署。
+- **会话**：重新部署可能会丢失用户会话。[hotswap tool](/docs/configuration/deploy-reload/hotswap) 可以在不重新部署的情况下应用更改，从而保持会话。

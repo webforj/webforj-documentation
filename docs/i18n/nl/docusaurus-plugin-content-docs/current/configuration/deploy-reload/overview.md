@@ -3,29 +3,36 @@ title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
 description: >-
-  Combine automatic redeployment with live browser reload so code changes appear
-  in a running webforJ app without manual restarts.
-_i18n_hash: 1b9e4b7fe64a9bcb0aa2aa16b0866ec9
+  Apply code changes to a running webforJ app during development, on the server
+  through hotswap or a restart, and in the browser through live reload.
+_i18n_hash: 1f91b81b074c81af64ded435e068729c
 ---
-Efficiënte ontwikkelingsworkflows zijn afhankelijk van tools die codewijzigingen detecteren en de app automatisch in real time bijwerken. Continuous Deployment en Dynamic Reload werken samen om het ontwikkelingsproces te vereenvoudigen door handmatige stappen te verminderen, zodat je je wijzigingen snel kunt zien zonder de server handmatig opnieuw te hoeven starten.
+Tijdens de ontwikkeling past webforJ opgeslagen wijzigingen toe op de draaiende app en werkt het de browser bij. Wijzigingen in klassen komen de app binnen via een [hotswap-tool](/docs/configuration/deploy-reload/hotswap) of via een herstart. Live herladen werkt de browser bij na een van beide.
 
-## Heruitrol {#redeployment}
+Projecten die zijn gemaakt vanuit een [archetype](/docs/introduction/getting-started) komen geconfigureerd. Voor een bestaand project volg je [Spring Boot](/docs/configuration/deploy-reload/spring-devtools) of [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin).
 
-Heruitrol in Java-ontwikkeling verwijst naar het automatisch detecteren en implementeren van codewijzigingen, zodat updates in de app worden weerspiegeld zonder een handmatige serverherstart. Dit proces omvat doorgaans het bijwerken van Java-klassen en webresources on-the-fly.
+## Hoe elke wijziging toepast {#how-each-change-applies}
 
-In een webforJ-app betekent dit dat het WAR-bestand wordt gegenereerd telkens wanneer er wijzigingen in de code worden aangebracht.
+| Wijziging | Resultaat | Referentie |
+|---|---|---|
+| Java-klasse, hotswap-tool aangesloten | De klasse wordt bijgewerkt in de draaiende app. Het aangetaste deel van de pagina wordt opnieuw opgebouwd en de app-status blijft behouden. | [Hotswap](/docs/configuration/deploy-reload/hotswap) |
+| Java-klasse, geen hotswap-tool | De app wordt opnieuw gestart. De browser herlaadt wanneer de app klaar is. | [Spring Boot](/docs/configuration/deploy-reload/spring-devtools), [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin) |
+| Stylesheet of afbeelding | De pagina past het ter plaatse toe, zonder een herlaadbeurt. | [Instellingen](#settings) |
+| Bron onder `src/main/frontend` | De watch bouwt het opnieuw op en werkt de browser bij. | [Frontend watch](/docs/configuration/deploy-reload/frontend-watch) |
 
-Wijzigingen aan Java-klassen en resources op het classpath worden doorgaans bewaakt door de IDE. Wanneer een Java-klasse wordt gewijzigd en het bestand wordt opgeslagen, hetzij automatisch door de IDE of handmatig door de ontwikkelaar, treden deze tools in werking om de bijgewerkte klassebestanden in de doeldirectory te compileren en toe te passen.
+## Instellingen {#settings}
 
-Voor de beste ervaring kun je automatische heruitrol gebruiken in combinatie met tools of instellingen die het opnieuw laden van de browser automatiseren.
+Deze instellingen regelen live herladen tijdens de ontwikkeling:
 
-## Live herladen {#live-reload}
+| Eigenschap | Standaard | Beschrijving |
+|----------|---------|-------------|
+| `webforj.devtools.livereload.enabled` | `false` | Zet live herladen aan voor ontwikkelingsruns. |
+| `webforj.devtools.livereload.websocket-port` | `35730` | Poort voor de browserverbinding. |
+| `webforj.devtools.livereload.websocket-path` | `/webforj-devtools-ws` | Pad voor de browserverbinding. |
+| `webforj.devtools.livereload.static-resources-enabled` | `true` | Past wijzigingen in stylesheets en afbeeldingen ter plaatse toe in plaats van de pagina opnieuw te laden. |
+| `webforj.devtools.livereload.heartbeat-interval` | `30000` | Interval in milliseconden voor de verbindingscontroles die een herstartende server detecteren. |
 
-Zodra wijzigingen zijn uitgerold, herlaadt live reload automatisch de app zodat de browser updates onmiddellijk weerspiegelt, zonder dat een handmatige browserverversing nodig is.
-
-In een webforJ-app kan live reload automatisch de weergave vernieuwen, waardoor componenten opnieuw worden gerenderd om de laatste staat van de app weer te geven, of zelfs wijzigingen patchen indien nodig op aanvraag.
-
-Voor frontend-bronnen bouwt de [frontend watch](/docs/configuration/deploy-reload/frontend-watch) opnieuw bij elke wijziging en patcht een stylesheet of afbeelding ter plaatse, en herlaadt de weergave alleen wanneer een script verandert.
+De sleutels hebben geen effect in een verpakte app. Verpakking-apps bevatten geen ontwikkeltools.
 
 ## Onderwerpen {#topics}
 

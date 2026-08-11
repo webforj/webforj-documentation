@@ -1,37 +1,65 @@
 ---
-title: Spring DevTools
+title: Spring Boot
 sidebar_position: 30
 description: >-
-  Pair Spring DevTools with webforJ DevTools to auto-restart the app and refresh
-  the browser when Java, CSS, or asset files change.
-_i18n_hash: 183c4eb42a93904e03dff44faf2118e7
+  Set up live reload in a Spring Boot webforJ app, with the development tools
+  delivered by the webforJ build plugin.
+_i18n_hash: 2fa5b74377a864e82b67db98ee8c9c04
 ---
-Spring DevTools biedt automatische herstart van de app bij codewijzigingen. webforJ DevTools voegt automatische browserverversing toe - wanneer Spring je app herstart, ververst de browser automatisch via de LiveReload-server van webforJ.
+In een Spring Boot-app levert de [webforJ build-plugin](/docs/configuration/build-plugin) de ontwikkelingshulpmiddelen voor ontwikkelingsuitvoeringen. Het project verklaart geen afhankelijkheid voor deze hulpmiddelen en ze zijn nooit onderdeel van de verpakte app.
 
-Verschillende bestandstypen veroorzaken verschillende herlaadgedragingen. Wijzigingen in Java-code veroorzaken een volledige Spring-herstart en browserverversing. Wijzigingen in CSS en afbeeldingen worden bijgewerkt zonder een pagina te herladen, waardoor formuliergegevens en appstatus behouden blijven.
+## Vereisten {#requirements}
 
-:::tip Frontend wijzigingen
-Wijzigingen onder `src/main/frontend` worden afgehandeld door de [frontend watch](/docs/configuration/deploy-reload/frontend-watch), die ze opnieuw opbouwt en de browser ververst naast de server.
-:::
+De starterafhankelijkheid en de build-plugin. Een project dat is gemaakt vanuit een [archetype](/docs/introduction/getting-started) heeft beide.
 
-<!-- vale off -->
-## Understanding webforJ DevTools {#understanding-webforj-devtools}
-<!-- vale on -->
+<Tabs>
+<TabItem value="maven" label="Maven">
 
-webforJ breidt Spring DevTools uit met browser-synchronisatie. Wanneer Spring bestandswijzigingen detecteert en herstart, ververst webforJ DevTools automatisch je browser.
+```xml title="pom.xml"
+<dependency>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-boot-starter</artifactId>
+</dependency>
+```
 
-### Reload behavior {#reload-behavior}
+```xml title="pom.xml"
+<plugin>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-maven-plugin</artifactId>
+  <version>${webforj.version}</version>
+  <extensions>true</extensions>
+</plugin>
+```
 
-Verschillende bestandstypen veroorzaken verschillende herlaadstrategieën:
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-- **Java-bestanden**: Volledige browserpagina-herlading na Spring-herstart
-- **JavaScript-bestanden**: Volledige browserpagina-herlading na Spring-herstart
-- **CSS-bestanden**: Stijlupdates zonder pagina-herlading
-- **Afbeeldingen**: Verversing ter plaatse zonder pagina-herlading
+```groovy title="build.gradle"
+dependencies {
+  implementation 'com.webforj:webforj-spring-boot-starter'
+}
+```
 
-## Dependencies {#dependencies}
+met de [webforJ-plugin toegepast op de build](/docs/configuration/build-plugin#adding-the-plugin).
 
-Voeg zowel Spring DevTools als webforJ DevTools aan je project toe:
+</TabItem>
+</Tabs>
+
+## Live reload inschakelen {#turning-live-reload-on}
+
+```Ini title="application.properties"
+webforj.devtools.livereload.enabled=true
+server.shutdown=immediate
+```
+
+Start de app zoals gebruikelijk, `mvn` met Maven of `./gradlew bootRun` met Gradle. Java-wijzigingen worden toegepast na een compilatie, stylesheet- en afbeeldingswijzigingen worden ter plekke toegepast, en bronnen onder `src/main/frontend` worden opnieuw opgebouwd via de [frontend watch](/docs/configuration/deploy-reload/frontend-watch). De overige sleutels zijn vermeld in de [instellingen](/docs/configuration/deploy-reload/overview#settings).
+
+## Spring DevTools {#spring-devtools}
+
+Spring DevTools is optioneel, live reload werkt er zonder. Om het herstartmodel te gebruiken, voeg je de afhankelijkheid toe:
+
+<Tabs>
+<TabItem value="maven" label="Maven">
 
 ```xml title="pom.xml"
 <dependency>
@@ -39,51 +67,22 @@ Voeg zowel Spring DevTools als webforJ DevTools aan je project toe:
   <artifactId>spring-boot-devtools</artifactId>
   <optional>true</optional>
 </dependency>
-
-<dependency>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-spring-devtools</artifactId>
-  <version>${webforj.version}</version>
-  <optional>true</optional>
-</dependency>
 ```
 
-## Configuration {#configuration}
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-Schakel webforJ DevTools in je `application.properties`-bestand in:
-
-```Ini title="application.properties"
-# Schakel webforJ browser auto-herladen in
-webforj.devtools.livereload.enabled=true
-
-# Schakel directe afsluiting in voor snellere herstarts
-server.shutdown=immediate
+```groovy title="build.gradle"
+dependencies {
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
 ```
 
-### Advanced configuration {#advanced-configuration}
+</TabItem>
+</Tabs>
 
-Configureer de WebSocket-verbinding en herlaadgedrag:
+Met Spring DevTools aanwezig, herstart een gecompileerde wijziging de Spring-context en wordt de browser vernieuwd wanneer de herstart is voltooid. Met een [hotswap-tool](/docs/configuration/deploy-reload/hotswap) ook geconfigureerd, worden de klasse-updates toegepast en blijft de herstart uitgeschakeld.
 
-```Ini title="application.properties"
-# WebSocket-serverpoort (standaard: 35730)
-webforj.devtools.livereload.websocket-port=35730
+## Productiebouw {#production-builds}
 
-# WebSocket-eindpuntpad (standaard: /webforj-devtools-ws)
-webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
-
-# Heartbeat-interval in milliseconden (standaard: 30000)
-webforj.devtools.livereload.heartbeat-interval=30000
-
-# Schakel hot reload in voor statische middelen (standaard: true)
-webforj.devtools.livereload.static-resources-enabled=true
-```
-
-<DocChip chip='since' label='25.03' /> Configureer het openen van de browser bij het starten van de app:
-
-```Ini title="application.properties"
-# Schakel het openen van de browser in (standaard: false)
-webforj.devtools.browser.open=true
-
-# localhost, hostnaam of IP-adres (standaard: localhost)
-webforj.devtools.browser.host=localhost
-```
+`mvn package` en `./gradlew bootJar` produceren een app zonder ontwikkelingshulpmiddelen, zonder dat uitsluiting, profiel of eigenschap vereist is. De eigenschap `webforj.devtools.livereload.enabled` heeft geen effect in een verpakte app.
