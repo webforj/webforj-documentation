@@ -4,7 +4,7 @@ sidebar_position: 7
 description: A coding agent that works inside your running webforJ app, writes Java freely behind a compile gate, and applies changes with your approval.
 ---
 
-craftforJ includes a full coding agent that works inside your **running app**. It writes Java freely, compiles what it wrote before you ever see it, applies the change, and carries on working after your app restarts. Everything it does, it does against the app that's actually running in front of you rather than against a guess made from your repository.
+craftforJ includes a full coding agent that works inside your **running app**. It writes Java freely, compiles what it wrote before you ever see it, applies the change, and carries on working after your app restarts. Everything it does, it does against the app that's actually running in front of you, rather than against a guess made from your repository.
 
 <div class="videos-container">
   <video controls preload="metadata">
@@ -83,4 +83,4 @@ When the work outgrows craftforJ, you can summarize the conversation and hand it
 
 ## Turning it off {#turning-it-off}
 
-The [`ai.enabled`](./configuration.md#feature-flags) property removes the assistant from craftforJ entirely. The [`ai.freeform-changes`](./configuration.md#feature-flags) property keeps the assistant but stops it writing Java of its own.
+The [`ai.enabled`](/docs/craftforj/configuration#feature-flags) property removes the assistant from craftforJ entirely. The [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) property keeps the assistant but stops it writing Java of its own.

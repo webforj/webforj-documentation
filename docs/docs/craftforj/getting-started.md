@@ -30,20 +30,18 @@ Add `webforj-devtools` to your project if it isn't there already:
 
 ### Debug mode and the craftforJ flag {#debug-mode-and-the-craftforj-flag}
 
-Enable both properties. Neither one does anything on its own, so an app that reaches production with debug mode left on still doesn't expose your source tree.
+Add the following properties to your project. If you have a standard webforJ app, set the properites in `webforj.conf`. For a webforJ project using [Spring](/docs/integrations/spring/overview), set the properites in `application.properties`.
 
-```ini title="webforj.conf"
+```ini
 webforj.debug = true
 webforj.devtools.craftforj.enabled = true
 ```
 
-:::tip Spring configuration
-On [Spring](/docs/integrations/spring/overview), set the same property names in `application.properties`.
-:::
+craftforJ only functions when both of the properties are enabled; therefore, an app that goes to production with debug mode left on doesn't expose your source tree. 
 
 ### A local browser and a developer license {#a-local-browser-and-a-developer-license}
 
-Open the app from the machine that runs it, and make sure you have a valid developer license. To reach craftforJ from another machine, add its address to [`hosts-allowed`](./configuration.md#access).
+Open the app from the machine that runs it, and make sure you have a valid developer license. To reach craftforJ from another machine, add its address to [`hosts-allowed`](/docs/craftforj/configuration#access).
 
 Once these are in place, restart the app and reload the page.
 
@@ -57,7 +55,7 @@ When craftforJ is active, a trigger button appears over your app. Click it to op
   </video>
 </div>
 
-Its tabs cover the [component tree](./inspector.md), [routes](./routes.md), the [theme](./theme.md), and the [assistant](./ai.md). Settings and app information sit alongside them.
+Its tabs cover the [component tree](/docs/craftforj/inspector), [routes](/docs/craftforj/routes), the [theme](/docs/craftforj/theme), and the [assistant](/docs/craftforj/ai). Settings and app information sit alongside them.
 
 
 - **The trigger** is the button that opens and closes craftforJ. It stays out of the way while craftforJ is closed. 
@@ -73,7 +71,7 @@ craftforJ writes each shortcut using the modifiers of the platform you're on, so
 craftforJ floats over your app by default. Drag it anywhere on the page, resize it from any edge, and minimize it back to its trigger when you want the app to yourself. Dragging it onto an edge of the page docks it there, full height or full width, and each edge keeps the size you gave it. Dragging it away from the edge floats it again.
 
 :::info Docking covers the app, it doesn't reflow it
-craftforJ is drawn on top of the page. Your app doesn't resize and nothing in it moves out of the way, so whatever sits under craftforJ is hidden while it's there. To see what's underneath, move craftforJ to another edge or take it out of the page.
+craftforJ is drawn on top of the page. Your app doesn't resize, and nothing in it moves out of the way, so whatever sits under craftforJ is hidden while it's there. To see what's underneath, move craftforJ to another edge or take it out of the page.
 :::
 
 ![craftforJ docked to the right of an app page, covering that edge of the app](/img/craftforj/getting-started/docking.png#rounded-border)
@@ -89,7 +87,7 @@ To stop covering the app at all, move craftforJ out of the page and into a brows
 Choose a tab rather than a window if you use Chrome's split view, which puts your app and craftforJ side by side and accepts only real tabs. Right-click your app's tab, add it to a new split view, then pick the craftforJ tab.
 
 :::info Split view is a Chrome feature
-Chrome provides the side-by-side arrangement, not craftforJ. Other browsers have no equivalent, so there craftforJ opens in an ordinary tab you switch to. craftforJ itself works the same either way.
+Chrome provides the side-by-side arrangement, not craftforJ. Other browsers have no equivalent, so craftforJ in other browsers opens in an ordinary tab you switch to. craftforJ itself works the same either way.
 :::
 
 <div class="videos-container">
@@ -109,8 +107,8 @@ Moving craftforJ into another window ends a reply that's still streaming. craftf
 3. The tree selects that component, and the sidebar fills with its properties.
 4. Change a property. The running app updates immediately.
 
-The change affects the app in front of you only. Your files stay untouched until you review the change and apply it, which is covered in [Writing changes to source](./source-changes.md).
+The change affects the app in front of you only. Your files stay untouched until you review the change and apply it, which is covered in [Writing changes to source](/docs/craftforj/source-changes).
 
 ![craftforJ open beside a running app with a component selected](/img/craftforj/getting-started/first-open.png#rounded-border)
 
-If nothing appears at all, work through [Troubleshooting](./troubleshooting.md).
+If nothing appears at all, work through [Troubleshooting](/docs/craftforj/troubleshooting).

@@ -43,4 +43,4 @@ This is the only point where your reload setup matters. craftforJ doesn't need l
 
 ## Turning it off {#turning-it-off}
 
-You can switch off writing to Java for an app in craftforJ settings, or remove it entirely with the [`source-changes`](./configuration.md#feature-flags) property. With either turned off, property editing still works but stays live.
+You can switch off writing to Java for an app in craftforJ settings, or remove it entirely with the [`source-changes`](/docs/craftforj/configuration#feature-flags) property. With either turned off, property editing still works but stays live.
