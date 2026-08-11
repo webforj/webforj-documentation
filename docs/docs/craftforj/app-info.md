@@ -10,7 +10,7 @@ App info reports what your app is actually running with, which isn't always what
 
 Two of these values affect how craftforJ behaves:
 
-- **The project root** is where craftforJ looks for your sources. [Writing to source](/docs/craftforj/source-changes) can't work when it's wrong, so set [`project-root`](/docs/craftforj/configuration.#project-root) if the reported value doesn't match your project.
+- **The project root** is where craftforJ looks for your sources. [Writing to source](/docs/craftforj/source-changes) can't work when it's wrong, so set [`project-root`](/docs/craftforj/configuration#project-root) if the reported value doesn't match your project.
 - **The Java runtime** determines how thoroughly the assistant's [Java changes](/docs/craftforj/ai#it-writes-java) are validated, because full validation needs a compiler.
 
 :::tip Filing an issue
