@@ -2,6 +2,7 @@
 sidebar_position: 4
 title: Route Navigation
 description: Trigger client-side navigation programmatically with Router.navigate, pass parameters, and switch views without reloads.
+sidebar_class_name: updated-content
 ---
 
 In webforJ, navigating between routes is the core mechanism for switching views and components based on user actions or URL changes. Navigation allows users to move seamlessly between different parts of the app without refreshing the page. This client-side navigation keeps the app responsive and smooth while preserving the app's state.
@@ -10,7 +11,7 @@ In webforJ, navigating between routes is the core mechanism for switching views 
 
 You can trigger navigation from anywhere in your app by using the `Router` class. This allows dynamic changes in the displayed components based on events such as button clicks or other user interactions.
 
-Here’s an example of how to navigate to a specific route:
+Here's an example of how to navigate to a specific route:
 
 ```java
 @Route(value = "dashboard")
@@ -39,7 +40,7 @@ When navigating between views, developers have two options: they can either pass
 
 ### Navigation with parameters {#navigation-with-parameters}
 
-When you need to pass parameters along with the route, webforJ allows you to embed parameters in the URL. Here’s how you can navigate to a route with parameters:
+When you need to pass parameters along with the route, webforJ allows you to embed parameters in the URL. Here's how you can navigate to a route with parameters:
 
 ```java
 @Route("user/:id")
@@ -114,28 +115,47 @@ The `NavigationOptions` class provides several methods for customizing navigatio
 Here are the main configuration options available within `NavigationOptions`:
 
 1. **Navigation Type (`setNavigationType`)**
+   
    This option defines whether the new route should be added to the browser's history or replace the current route.
 
    - **`PUSH`**: Adds the new route to the history stack, preserving the current location.
    - **`REPLACE`**: Replaces the current route in the history stack with the new location, preventing the back button from navigating to the previous route.
 
 2. **Fire Events (`setFireEvents`)**
+   
    Determines whether navigation [lifecycle events](./navigation-lifecycle/navigation-events) should be fired during navigation. By default, this is set to `true`, and events are fired. If set to `false`, no events will be fired, which is useful for silent navigation.
 
 3. **Invoke Observers (`setInvokeObservers`)**
+   
    This flag controls whether the navigation should trigger [observers](./navigation-lifecycle/observers) within the navigated components. Observers typically handle events like route entry or exit. Setting this to `false` prevents observers from being invoked.
 
 4. **Update History (`setUpdateHistory`)**
-   When set to `false`, this option prevents the history location from being updated. This is useful when you want to change the view without affecting the browser’s back or forward navigation. It only affects history management, not the component lifecycle or route handling.
+   
+   When set to `false`, this option prevents the history location from being updated. This is useful when you want to change the view without affecting the browser's back or forward navigation. It only affects history management, not the component lifecycle, or route handling.
 
 5. **State Object (`setState`)**
-   [The state object](./state-management#saving-and-restoring-state-in-browser-history) allows you to pass additional information when updating the browser’s history. This object is stored in the browser's history state and can be used later for custom purposes, like saving the state of the app during navigation.
+   
+   [The state object](./state-management#saving-and-restoring-state-in-browser-history) allows you to pass additional information when updating the browser's history. This object is stored in the browser's history state and can be used later for custom purposes, like saving the state of the app during navigation.
+
+6. **Recreating Instances (`setRecreateFrom`)** <DocChip chip='since' label='26.02' />
+    
+    When a route component is specified, this option allows navigation to destroy all rendered instances of that component and components below it before rendering again. This allows that part of the hierarchy to use fresh instances, without touching the rendered instances preceding the given component.
+    
+    ```java
+    NavigationOptions options = new NavigationOptions()
+        .setRecreateFrom(DashboardView.class);
+
+    Router.getCurrent().navigate(
+        new Location("/dashboard"), options);
+    ```
+
+    The default route for `setRecreateFrom()` is `null`, allowing the router to reuse rendered route components that remain in the path. If the given component has no rendered instance, the navigation behaves as usual. Additionally, a lifecycle observer can veto the destruction, which fails the navigation.
 
 ## Generating locations for views {#generating-locations-for-views}
 
 The router can generate the location for views based on the route pattern defined in the view. You can also provide additional parameters for dynamic and required segments in the URL. This can be useful when constructing links or sharing direct access points to specific views in the app.
 
-Here’s how to generate a `Location` based on a view class and route parameters:
+Here's how to generate a `Location` based on a view class and route parameters:
 
 ```java
 Class<UserProfileView> userProfileView = UserProfileView.class;
