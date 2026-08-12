@@ -37,7 +37,7 @@ webforj.debug = true
 webforj.devtools.craftforj.enabled = true
 ```
 
-craftforJ only functions when both of the properties are enabled; therefore, an app that goes to production with debug mode left on doesn't expose your source tree. 
+craftforJ only functions when both of the properties are enabled; therefore, an app that goes to production with debug mode left on doesn't expose your source tree.
 
 ### A local browser and a developer license {#a-local-browser-and-a-developer-license}
 
@@ -58,8 +58,8 @@ When craftforJ is active, a trigger button appears over your app. Click it to op
 Its tabs cover the [component tree](/docs/craftforj/inspector), [routes](/docs/craftforj/routes), the [theme](/docs/craftforj/theme), and the [assistant](/docs/craftforj/ai). Settings and app information sit alongside them.
 
 
-- **The trigger** is the button that opens and closes craftforJ. It stays out of the way while craftforJ is closed. 
-- **The tab strip** runs along the edge nearest the app and switches between what craftforJ shows you. 
+- **The trigger** is the button that opens and closes craftforJ. It stays out of the way while craftforJ is closed.
+- **The tab strip** runs along the edge nearest the app and switches between what craftforJ shows you.
 - **The window menu** holds everything about where craftforJ sits, covered in [Where craftforJ sits](#where-craftforj-sits).
 
 :::info Shortcuts on macOS

@@ -70,5 +70,9 @@
   "item.label.Cookbook": {
     "message": "Livre de recettes",
     "description": "Navbar item with label Cookbook"
+  },
+  "item.label.craftforJ": {
+    "message": "craftforJ",
+    "description": "Navbar item with label craftforJ"
   }
 }
