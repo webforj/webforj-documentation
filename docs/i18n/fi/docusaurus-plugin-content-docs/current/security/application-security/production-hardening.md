@@ -4,42 +4,48 @@ title: Production Hardening
 description: >-
   Practical steps for running a webforJ app safely in production, from transport
   encryption and dependency upkeep to server-side checks and disclosure.
-_i18n_hash: b127e22d65b9a0ee8fc5b58b542aee36
+_i18n_hash: 62e3e574855705f8b97295f4ebe5169b
 ---
-webforJ:n [palvelinohjattu malli](/docs/architecture/client-server) ja sisäänrakennetut suojausmekanismit [yleisiä uhkia](/docs/security/application-security/common-threats) vastaan kattavat paljon, mutta turvallinen käyttöönotto riippuu silti siitä, kuinka sovellusta käytetään. Alla olevat vaiheet täydentävät kuvaa.
+webforJ:n [server-driven model](/docs/architecture/client-server) ja sisäänrakennetut suojat [yleisiä uhkia](/docs/security/application-security/common-threats) vastaan kattavat paljon, mutta turvallinen käyttöönotto riippuu silti siitä, miten käytät sovellusta. Alla olevat vaiheet täydentävät kokonaiskuvaa.
 
-## Salaa jokainen yhteys {#encrypt-every-connection}
+## Salakirjoita jokainen yhteys {#encrypt-every-connection}
 
-Aja tuotantoliikenne vain HTTPS:n yli. Lopeta TLS asti säiliössä, väylässä tai kuormantasaimessa sovelluksen edessä, ja ohjaa kaikki tavallisella HTTP:llä tehdyt pyynnöt niiden turvallisiin vastineisiin, jotta käyttäjätunnukset ja istuntotunnukset eivät koskaan kulje salattomana.
+Käytä tuotantoliikennettä vain HTTPS:n yli. Päätä TLS kontissa, proxyssä tai kuormantasaimessa sovelluksen edessä, ja ohjaa jokaiseen tavalliseen HTTP-pyyntöön sen turvallinen vastine, jotta tunnistetiedot ja istuntotunnukset eivät koskaan kulje salaamattomina.
 
 ## Älä luota mihinkään selaimesta {#trust-nothing-from-the-browser}
 
-Manipuloitu asiakas voi lähettää mitä tahansa. Tarkista jokainen arvo, jonka koodisi vastaanottaa, jopa arvot, joita käyttöliittymäsi on jo rajoittanut, ennen kuin tallennat tai toimit niiden perusteella. [Asiakas/Palvelin vuorovaikutus](/docs/architecture/client-server) -artikkeli selittää, miksi palvelin on ainoa paikka, jossa sääntö voi todella pitää.
+Manipuloitu asiakas voi lähettää mitä tahansa. Vahvista jokainen arvo, jonka koodisi vastaanottaa, jopa arvot, jotka käyttöliittymäsi on jo rajoittanut, ennen kuin tallennat tai käytät niitä. [Asiakas/palvelin -vuorovaikutus](/docs/architecture/client-server) -artikkeli selittää, miksi palvelin on ainoa paikka, jossa sääntö voi todella pitää.
 
-webforJ:n [tietosidonta ja validointi](/docs/data-binding/validation/overview) auttaa tässä: koska sidonta tapahtuu Javassa palvelimella, mallit, joihin liität rajoituksia, mukaan lukien [Jakarta validointi](/docs/data-binding/validation/jakarta-validation), pannaan täytäntöön palvelinpuolella eikä vain selaimessa. Käsittele tätä eheytesi kerroksena, ei puolustuksena injektio- tai merkintähyökkäyksiä vastaan, jotka tarvitsevat silti käsittelyn, joka on kuvattu [Yleisissä uhissa](/docs/security/application-security/common-threats).
+webforJ:n [tietojen sitominen ja validoiminen](/docs/data-binding/validation/overview) auttaa tässä: koska sitominen tapahtuu Javassa palvelimella, mallit, joihin lisäät rajoja, mukaan lukien [Jakarta-validointi](/docs/data-binding/validation/jakarta-validation), valvotaan palvelinpuolella eikä vain selaimessa. Käsittele tätä eheyden kerroksena, ei puolustuksena injektointi- tai muotoilu hyökkäyksiä vastaan, jotka tarvitsevat edelleen käsittelyä, joka on kuvattu [Yleisissä uhkissa](/docs/security/application-security/common-threats) -artikkelissa.
 
-## Poistettu ja piilotettu ei ole turvallisuutta {#disabled-and-hidden-arent-security}
+## Poistettu ja piilotettu eivät ole turvallisuutta {#disabled-and-hidden-arent-security}
 
-`setEnabled(false)` ja `setVisible(false)` ovat käyttöliittymän vihjeitä, eivät pääsynvalvontaa. webforJ peilaa ohjaimen poistettua tilaa asiakkaalle, mutta se ei estä manipuloitua asiakasta palauttamasta ohjainta takaisin toimintakuntoon ja aktivoimasta sen toimintoa. Älä koskaan luota poistettuun tai piilotettuun ohjaimeen estämään jotain tapahtumasta.
+`setEnabled(false)` ja `setVisible(false)` ovat käyttöliittymän vihjeitä, eivät pääsynvalvontaa. webforJ heijastaa ohjaimen poistettua tilaa asiakkaalle, mutta se ei estä manipuloitua asiakasta palauttamasta ohjainta käyttöön ja käynnistämästä sen toimintoa. Älä koskaan luota poistettuun tai piilotettuun ohjaimeen estääksesi jotain tapahtumasta.
 
-Aseta todellinen sääntö palvelinpuolen käsittelijään: varmista, että käyttäjällä on lupa ja ennakkoedellytykset täyttyvät ennen toiminnan suorittamista, aivan kuten tekisit, jos ohjain olisi ollut koko ajan käytössä. Poistettu tila ohjaa rehellisiä käyttäjiä; palvelinpuolen sääntö pysäyttää epärehelliset.
+Laita todellinen sääntö palvelinpuolen käsittelijään: varmista, että käyttäjällä on oikeudet ja että ennakkoehdot ovat voimassa ennen toimintoa, juuri kuten toimisit, jos ohjain olisi ollut koko ajan käytössä. Poistetila opastaa rehellisiä käyttäjiä; palvelinpuolen sääntö estää epärehellisiä.
 
-## Rajoita näkymiäsi {#lock-down-your-views}
+## Rajaa näkymäsi {#lock-down-your-views}
 
-Rajoita näkymiä [reittiturvalla](/docs/security/overview), jotta jokainen niistä vaatii oikean autentikoinnin ja roolit. Anna ihmisille kapein pääsy, joka mahdollistaa työn tekemisen, ja suosii oletusarvoista turvallista lähestymistapaa, jossa merkitsemätön reitti vaatii silti kirjautumisen.
+Rajoita näkymiä [reittiturvalla](/docs/security/overview), jotta jokainen vaatii oikean todistamisen ja roolit. Anna ihmisille kapein mahdollinen pääsy, joka mahdollistaa heidän työnsä, ja suosii oletusarvoista turvattua lähestymistapaa, jossa merkitsemätön reitti vaatii edelleen sisäänkirjautumisen.
 
-## Pidä salaisuudet ulkopuolisina {#keep-secrets-external}
+## Pidä salaisuudet ulkopuolella {#keep-secrets-external}
 
-Käyttäjätunnukset, avaimet ja tunnukset eivät kuulu koodiin tai varastoon. Ota ne sijainnista tai ulkoisesta lähteestä, kuten on esitetty [Salaisuuksien hallinnassa](/docs/security/application-security/managing-secrets).
+Tunnistetiedot, avaimet ja tokenit eivät kuulu koodiin tai varastoosi. Hae ne ympäristöstä tai ulkoisesta lähteestä sen sijaan, kuten on esitetty [Salausten hallinnassa](/docs/security/application-security/managing-secrets).
 
-## Pysy ajan tasalla riippuvuuksista {#stay-current-on-dependencies}
+## Pidä kehitystyökalut pois päältä {#leave-development-tooling-off}
 
-Kirjastot, joita käytät, ovat suurempi riski kuin oma koodisi. Seuraa tiedotteita, päivitä webforJ ja muut riippuvuudet säännöllisesti, ja kun korjattu versio siirtyy siirtokirjastosta ennen kirjastoa, joka ottaa sen käyttöön, valitse korjattu versio `pom.xml`-tiedostossasi.
+[craftforJ](/docs/craftforj) on kehitysympäristö, joka tarkkailee toimivaa sovellusta ja kirjoittaa muutokset takaisin sen Java-lähteeseen. Se vaatii sekä `webforj.debug` että `webforj.devtools.craftforj.enabled`, ja oletuksena se vastaa vain koneelle, jossa sovellus toimii. Projekti, joka on luotu [startforJ](https://docs.webforj.com/startforj) avulla tai webforJ:n [archetypestä](/docs/building-ui/archetypes/overview), on molemmat asetukset käytössä kehitykselle, joten varmista ne sen sijaan, että olettaisit.
 
-## Epäonnistu hiljaa {#fail-quietly}
+Tarkista, että molemmat ominaisuudet ovat asetettuina joko pois päältä tai `false` konfiguraatiossa, jonka todella otat käyttöön, mukaan lukien ympäristömuuttuja tai profiili, joka koskee vain tuotantoa. Lataa sitten otettu sovellus ja varmista, että mitään craftforJ:ta laukaisevaa tapahtumaa ei näy sivulla. Katso [craftforJ:n turvallisuudesta](/docs/craftforj/security) täydellisen kuvan saamiseksi.
 
-Älä anna pinojäljitteiden, tiedostopolkujen tai sisäisten tunnisteiden näkyä loppukäyttäjille. Tallenna yksityiskohdat palvelinlokisi, ja esitä käyttöliittymässä pelkkä, yleinen viesti. Rekisteröi mukautettu käsittelijä webforJ:n [virheiden käsittelyyn](/docs/advanced/error-handling), jotta käsittelemättömät poikkeukset tuottavat hallitun sivun raakojen diagnoosien sijaan.
+## Pidä riippuvuudet ajan tasalla {#stay-current-on-dependencies}
 
-## Paljasta vastuullisesti {#disclose-responsibly}
+Kirjastot, jotka otat käyttöön, ovat suurempi riskilähde kuin oma koodisi. Seuraa ilmoituksia, päivitä webforJ:tä ja muita riippuvuuksia säännöllisesti, ja kun korjattu versio välittömästä kirjastosta julkaistaan ennen kirjastoa, joka tuo sen käyttöön, lukitse korjattu versio `pom.xml`:ssäsi.
 
-Löysitkö mahdollisen virheen webforJ:stä? Ilmoita siitä yksityisesti GitHubin [yksityisen haavoittuvuuden raportoinnin](https://github.com/webforj/webforj/security/advisories) kautta sen sijaan, että avaat julkisen ongelman tai vetopyynnön, jotta korjaus voidaan saada käyttöön ennen kuin yksityiskohdat ovat tiedossa.
+## Epäonnistu hiljaisesti {#fail-quietly}
+
+Älä anna pinojälkien, tiedostopolkujen tai sisäisten tunnisteiden saavuttaa loppukäyttäjiä. Tallenna tiedot palvelinlokkeihisi ja esitä yksinkertainen, yleinen viesti käyttöliittymässä. Rekisteröi mukautettu käsittelijä webforJ:n [virheenkäsittelyssä](/docs/advanced/error-handling), jotta käsittelemättömät poikkeukset näyttävät hallitun sivun raakojen diagnostiikoiden sijaan.
+
+## Ilmoita vastuullisesti {#disclose-responsibly}
+
+Löysitkö mahdollisen virheen itse webforJ:ssä? Ilmoita siitä yksityisesti GitHubin [yksityisen haavoittuvuuden raportoinnin](https://github.com/webforj/webforj/security/advisories) kautta sen sijaan, että avaisit julkisen ongelman tai vetopyynnön, jotta korjaus voi saapua ennen kuin tiedot ovat tiedossa.

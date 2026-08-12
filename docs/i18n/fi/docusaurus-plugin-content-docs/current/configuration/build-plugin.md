@@ -5,20 +5,20 @@ sidebar_class_name: new-content
 description: >-
   Add the webforJ Maven or Gradle plugin to your build, the goals it binds to
   each phase, and the options it accepts.
-_i18n_hash: 0c02e741918864a34c35227387259b40
+_i18n_hash: 7cb4ddbb9aea86ff6f501296b42c5bbf
 ---
 # webforJ build plugin <DocChip chip='since' label='26.01' /> {#webforj-build-plugin}
 
-webforJ build plugin suorittaa webforJ:n rakennusaikatyöt osana Maven- tai Gradle-rakennusta. Lisää se kerran, ja se sitoo tavoitteensa vaiheisiin, joita jo suoritat, ilman erillistä frontend-projektiä, jota pitää synkronoida. Se ohjaa [frontend bundleria](/docs/managing-resources/bundler/overview), kooten frontendin, suorittaen frontend-testit ja palvellen kehityshälytyksen.
+webforJ build -liitin suorittaa webforJ:n rakennusaikatyöt osana Maven- tai Gradle-rakennusta. Lisäät sen kerran, ja se sitoo tavoitteensa jo suoritettuihin vaiheisiin ilman erillistä frontend-projektia, jota pitää synkronoida. Se ohjaa [frontend bundleria](/docs/managing-resources/bundler/overview), kooten frontendin, suorittaen frontend-testit, palvellen kehitykselle tarkoitettua valvontaa ja liittäen [hotswap-työkalun](/docs/configuration/deploy-reload/hotswap) sen sovellukseen, jonka se käynnistää.
 
 ## Adding the plugin {#adding-the-plugin}
 
-webforJ-projekti, joka on luotu [archetypen](/docs/introduction/getting-started) perusteella, sisältää jo liitännäisen. Jotta voit lisätä sen olemassa olevaan projektiin:
+webforJ-projekti, joka on luotu [archetypestä](/docs/introduction/getting-started), sisältää jo liitännäisen. Lisätäksesi sen olemassa olevaan projektiin:
 
 <Tabs>
 <TabItem value="maven" label="Maven">
 
-Julkaise liitännäinen `<extensions>true</extensions>` sitomaan sen tavoitteet rakennukseen ilman suorituskäskyjä:
+Ilmoittamalla liitännäisen `<extensions>true</extensions>` sitoo sen tavoitteet rakennukseen ilman suorituskukkoja, joita tarvitsisi kirjoittaa:
 
 ```xml title="pom.xml"
 <plugin>
@@ -31,7 +31,7 @@ Julkaise liitännäinen `<extensions>true</extensions>` sitomaan sen tavoitteet 
 </TabItem>
 <TabItem value="gradle" label="Gradle">
 
-Lisää liitännäinen `buildscript` luokkakirjaston riippuvuutena ja sovella sitä:
+Lisää liitännäinen `buildscript`-luokan riippuvuutena ja sovella sitä:
 
 ```groovy title="build.gradle"
 buildscript {
@@ -49,37 +49,39 @@ apply plugin: 'com.webforj'
 </TabItem>
 </Tabs>
 
-## Goals {#goals}
+## Goals and tasks {#goals-and-tasks}
 
-Liitännäinen sitoo neljä tavoitetta, jokaisen vaiheen mukaan, jota jo suoritat, niin normaali `mvn package` tai `gradle build` tuottaa sovelluksen, jonka frontend on koottu sisään, ja `mvn test` suorittaa frontend-testit Java-testausten ohessa.
+Kolme tavoitetta sitoo vaiheisiin, joita jo suoritat, joten normaali `mvn package` tai `./gradlew build` tuottaa sovelluksen, jonka frontend on koottu sisään, ja testivaihe suorittaa frontend-testit Java-testien rinnalla. Valvonta on se, jonka käynnistät käsin kehityksen aikana:
 
-| Maven goal | Gradle task | Phase | What it does |
-|------------|-------------|-------|--------------|
-| `bundle` | `webforjBundle` | `prepare-package` | Kääntää frontendin tuotantoa varten |
-| `test` | `webforjTest` | `test` | Suorittaa frontend-testit |
-| `clean` | `webforjCleanFrontend` | `clean` | Poistaa luodun frontendin |
-| `watch` | `webforjWatch` | käsin suoritettava | Uudelleenrakentaa muutoksen yhteydessä kehityksessä |
+| Maven goal | Gradle task | Runs | What it does |
+|------------|-------------|------|--------------|
+| `bundle` | `webforjBundle` | `prepare-package`, ennen jokaista jar- ja war-tiedostoa | Kootaan frontend pakattua sovellusta varten |
+| `test` | `webforjTest` | testivaiheen aikana | Suorittaa frontend-testit |
+| `clean` | `webforjCleanFrontend` | puhdistusvaiheen aikana | Poistaa tuotetun frontendin |
+| `watch` | `webforjWatch` | käsin, sovelluksen rinnalla | Uudelleenrakentaa muutoksen yhteydessä kehityksen aikana |
 
-`watch` -tavoite on se, jota suoritat käsin kehityksen aikana sovelluksen ohella. Sen latauskäyttäytyminen on käsitelty [Frontend watch](/docs/configuration/deploy-reload/frontend-watch).
+Aloita valvonta ennen tavoitetta, joka käynnistää sovelluksen, esimerkiksi `mvn compile webforj:watch spring-boot:run`. Archetype-projekti asettaa tämän oletustavoitteeksi, joten `mvn` yksin käynnistää kaiken. Sen uudelleenlatauskäyttäytyminen käsitellään [Frontend watch](/docs/configuration/deploy-reload/frontend-watch).
+
+Ohita frontend-testit yhdessä Java-testien kanssa, `-DskipTests` tai `-Dmaven.test.skip` Mavenin kanssa ja `-PskipTests` Gradlen kanssa.
 
 ## Options {#options}
 
-Aseta vaihtoehdot Mavenin `<configuration>` (tai `-D` ominaisuudet komentorivillä) ja Gradlen `webforj { }` laajennusarvoina. Kaksi rakennustyökalua peilaavat toisiaan.
+Aseta vaihtoehdot Mavenin `<configuration>`-elementteinä tai Gradlen `webforj { }`-laajennusarvoina. Jokainen Maven-vaihtoehto, paitsi `plugins` ja `hotswap`, hyväksyy myös `-D`-ominaisuuden komentorivillä. Kaksi rakennustyökalua peilaavat toisiaan:
 
-| Option | Maven property | Gradle | Default | Purpose |
-|--------|----------------|--------|---------|---------|
-| Bun version | `webforj.bundler.version` | `bunVersion` | managed | Kiinnittää Bun-version toistettavia rakennuksia varten |
-| Bun binary | `webforj.bundler.path` | `bunPath` | download | Käytää olemassa olevaa Bun-binaaria lataamisen sijaan |
-| Cache directory | `webforj.bundler.cacheDir` | `cacheDir` | `${user.home}/.webforj/bun` | Missä hallinnoidut Bun-binaarit tallennetaan |
-| Source root | `webforj.bundler.sourceRoot` | `sourceRoot` | `src/main/frontend` | Missä frontendin lähtöaineistot sijaitsevat |
-| Work directory | `webforj.bundler.workDir` | `workDir` | `target/bundle` | Missä liitännäinen kirjoittaa luodut rakennustiedostot |
-| Extensions | `plugins` | `plugins` | — | Kytkee [laajennuksen](/docs/managing-resources/bundler/extensions/overview) päälle tai pois id:n mukaan, kuten `webforj-tailwind` |
-| Exclude packages | `webforj.bundler.excludePackages` | `excludePackages` | — | Pakettiesi etuliitteet, jotka jätetään väliin annotointiskannauksen aikana |
-| Eager | `webforj.bundler.eager` | `eager` | `false` | Lataa koko frontend sovelluksen alussa sen sijaan, että lataisi näkymän mukaan, katso [Eager bundle](/docs/managing-resources/bundler/build-and-tests#eager-bundle) |
-| Test arguments | `webforj.bundler.testArgs` | `testArgs` | — | Lisäargumentit, jotka välitetään frontend-testin suorittajalle |
-| Skip tests | `skipTests`, `maven.test.skip` | — | `false` | Ohita frontend-testit |
+| Maven element | Maven property | Gradle | Default | Purpose |
+|---------------|----------------|--------|---------|---------|
+| `bunVersion` | `webforj.bundler.version` | `bunVersion` | managed | Kiinnitä Bun-version yhteensopivia rakennuksia varten |
+| `bunPath` | `webforj.bundler.path` | `bunPath` | download | Käytä olemassa olevaa Bun-binääriä sen sijaan, että ladataan |
+| `cacheDir` | `webforj.bundler.cacheDir` | `cacheDir` | `${user.home}/.webforj/bun` | Missä hallinnoidut Bun-binäärit välimuistissa |
+| `sourceRoot` | `webforj.bundler.sourceRoot` | `sourceRoot` | `src/main/frontend` | Missä frontendin pääsourcedat sijaitsevat |
+| `workDir` | `webforj.bundler.workDir` | `workDir` | `target/bundle` | Missä liitännäinen kirjoittaa tuottamansa rakennustiedostot |
+| `plugins` | — | `plugins` | — | Kytke [laajennus](/docs/managing-resources/bundler/extensions/overview) päälle tai pois päältä id:n mukaan, kuten `webforj-tailwind` |
+| `excludePackages` | `webforj.bundler.excludePackages` | `excludePackages` | — | Pakettien etuliitteet, joita ohitetaan annotaatiopolkujen aikana |
+| `eager` | `webforj.bundler.eager` | `eager` | `false` | Lataa koko frontend sovelluksen alussa sen sijaan, että lataa sen näkymäkohtaisesti, katso [Eager bundle](/docs/managing-resources/bundler/build-and-tests#eager-bundle) |
+| `testArgs` | `webforj.bundler.testArgs` | `testArgs` | — | Lisäargumentit, jotka annetaan frontend-testisuorittimelle |
+| `hotswap` | — | `hotswap` | — | Liitä luokan päivitystyökalu sovellukseen, jonka rakennus käynnistää, katso [Hotswap](/docs/configuration/deploy-reload/hotswap) |
 
-Esimerkiksi, jos haluat kiinnittää Bun-version ja ottaa Tailwindin käyttöön:
+Esimerkiksi, kiinnittääksesi Bun-version ja kytkeäksesi Tailwindin päälle:
 
 <Tabs>
 <TabItem value="maven" label="Maven">
@@ -90,7 +92,7 @@ Esimerkiksi, jos haluat kiinnittää Bun-version ja ottaa Tailwindin käyttöön
   <artifactId>webforj-maven-plugin</artifactId>
   <extensions>true</extensions>
   <configuration>
-    <version>1.3.0</version>
+    <bunVersion>1.3.0</bunVersion>
     <plugins>
       <webforj-tailwind>true</webforj-tailwind>
     </plugins>

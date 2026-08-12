@@ -1,0 +1,9 @@
+{
+  "label": "craftforJ",
+  "position": 10.6,
+  "className": "cat-icon cat-icon--craftforj new-content",
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}

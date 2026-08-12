@@ -70,5 +70,9 @@
   "item.label.Cookbook": {
     "message": "Keittokirja",
     "description": "Navbar item with label Cookbook"
+  },
+  "item.label.craftforJ": {
+    "message": "craftforJ",
+    "description": "Navbar item with label craftforJ"
   }
 }

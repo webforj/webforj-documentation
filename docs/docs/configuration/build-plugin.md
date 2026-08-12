@@ -7,7 +7,7 @@ description: Add the webforJ Maven or Gradle plugin to your build, the goals it 
 
 # webforJ build plugin <DocChip chip='since' label='26.01' /> {#webforj-build-plugin}
 
-The webforJ build plugin runs webforJ's build time work as part of your Maven or Gradle build. You add it once, and it binds its goals to the phases you already run, with no separate frontend project to keep in sync. It drives the [frontend bundler](/docs/managing-resources/bundler/overview), compiling the frontend, running the frontend tests, and serving the development watch.
+The webforJ build plugin runs webforJ's build time work as part of your Maven or Gradle build. You add it once, and it binds its goals to the phases you already run, with no separate frontend project to keep in sync. It drives the [frontend bundler](/docs/managing-resources/bundler/overview), compiling the frontend, running the frontend tests, serving the development watch, and attaching a [hotswap tool](/docs/configuration/deploy-reload/hotswap) to the app it starts.
 
 ## Adding the plugin {#adding-the-plugin}
 
@@ -47,35 +47,37 @@ apply plugin: 'com.webforj'
 </TabItem>
 </Tabs>
 
-## Goals {#goals}
+## Goals and tasks {#goals-and-tasks}
 
-The plugin binds four goals, each to a phase you already run, so a normal `mvn package` or `gradle build` produces an app with its frontend compiled in, and `mvn test` runs the frontend tests alongside the Java tests.
+Three goals bind to phases you already run, so a normal `mvn package` or `./gradlew build` produces an app with its frontend compiled in, and the test phase runs the frontend tests alongside the Java tests. The watch is the one you start by hand during development:
 
-| Maven goal | Gradle task | Phase | What it does |
-|------------|-------------|-------|--------------|
-| `bundle` | `webforjBundle` | `prepare-package` | Compiles the frontend for production |
-| `test` | `webforjTest` | `test` | Runs the frontend tests |
-| `clean` | `webforjCleanFrontend` | `clean` | Removes the generated frontend |
-| `watch` | `webforjWatch` | run by hand | Rebuilds on change during development |
+| Maven goal | Gradle task | Runs | What it does |
+|------------|-------------|------|--------------|
+| `bundle` | `webforjBundle` | `prepare-package`, before every jar and war | Compiles the frontend for the packaged app |
+| `test` | `webforjTest` | with the test phase | Runs the frontend tests |
+| `clean` | `webforjCleanFrontend` | with the clean phase | Removes the generated frontend |
+| `watch` | `webforjWatch` | by hand, alongside the app | Rebuilds on change during development |
 
-The `watch` goal is the one you run by hand during development, alongside the app. Its reload behavior is covered in [Frontend watch](/docs/configuration/deploy-reload/frontend-watch).
+Start the watch as the goal before the one that runs the app, `mvn compile webforj:watch spring-boot:run` for example. An archetype project sets this as the default goal, so `mvn` alone starts everything. Its reload behavior is covered in [Frontend watch](/docs/configuration/deploy-reload/frontend-watch).
+
+Skip the frontend tests together with the Java tests, `-DskipTests` or `-Dmaven.test.skip` with Maven and `-PskipTests` with Gradle.
 
 ## Options {#options}
 
-Set options as Maven `<configuration>` (or `-D` properties on the command line), and as Gradle `webforj { }` extension values. The two build tools mirror each other.
+Set options as Maven `<configuration>` elements, or as Gradle `webforj { }` extension values. Every Maven option except `plugins` and `hotswap` also accepts a `-D` property on the command line. The two build tools mirror each other:
 
-| Option | Maven property | Gradle | Default | Purpose |
-|--------|----------------|--------|---------|---------|
-| Bun version | `webforj.bundler.version` | `bunVersion` | managed | Pin the Bun version for reproducible builds |
-| Bun binary | `webforj.bundler.path` | `bunPath` | download | Use an existing Bun binary instead of downloading |
-| Cache directory | `webforj.bundler.cacheDir` | `cacheDir` | `${user.home}/.webforj/bun` | Where managed Bun binaries are cached |
-| Source root | `webforj.bundler.sourceRoot` | `sourceRoot` | `src/main/frontend` | Where the frontend entry sources live |
-| Work directory | `webforj.bundler.workDir` | `workDir` | `target/bundle` | Where the plugin writes its generated build files |
-| Extensions | `plugins` | `plugins` | — | Turn an [extension](/docs/managing-resources/bundler/extensions/overview) on or off by id, such as `webforj-tailwind` |
-| Exclude packages | `webforj.bundler.excludePackages` | `excludePackages` | — | Package prefixes to skip during the annotation scan |
-| Eager | `webforj.bundler.eager` | `eager` | `false` | Load the whole frontend at app start instead of per view, see [Eager bundle](/docs/managing-resources/bundler/build-and-tests#eager-bundle) |
-| Test arguments | `webforj.bundler.testArgs` | `testArgs` | — | Extra arguments passed to the frontend test runner |
-| Skip tests | `skipTests`, `maven.test.skip` | — | `false` | Skip the frontend tests |
+| Maven element | Maven property | Gradle | Default | Purpose |
+|---------------|----------------|--------|---------|---------|
+| `bunVersion` | `webforj.bundler.version` | `bunVersion` | managed | Pin the Bun version for reproducible builds |
+| `bunPath` | `webforj.bundler.path` | `bunPath` | download | Use an existing Bun binary instead of downloading |
+| `cacheDir` | `webforj.bundler.cacheDir` | `cacheDir` | `${user.home}/.webforj/bun` | Where managed Bun binaries are cached |
+| `sourceRoot` | `webforj.bundler.sourceRoot` | `sourceRoot` | `src/main/frontend` | Where the frontend entry sources live |
+| `workDir` | `webforj.bundler.workDir` | `workDir` | `target/bundle` | Where the plugin writes its generated build files |
+| `plugins` | — | `plugins` | — | Turn an [extension](/docs/managing-resources/bundler/extensions/overview) on or off by id, such as `webforj-tailwind` |
+| `excludePackages` | `webforj.bundler.excludePackages` | `excludePackages` | — | Package prefixes to skip during the annotation scan |
+| `eager` | `webforj.bundler.eager` | `eager` | `false` | Load the whole frontend at app start instead of per view, see [Eager bundle](/docs/managing-resources/bundler/build-and-tests#eager-bundle) |
+| `testArgs` | `webforj.bundler.testArgs` | `testArgs` | — | Extra arguments passed to the frontend test runner |
+| `hotswap` | — | `hotswap` | — | Attach a class update tool to the app the build starts, see [Hotswap](/docs/configuration/deploy-reload/hotswap) |
 
 For example, to pin the Bun version and turn on Tailwind:
 
@@ -88,7 +90,7 @@ For example, to pin the Bun version and turn on Tailwind:
   <artifactId>webforj-maven-plugin</artifactId>
   <extensions>true</extensions>
   <configuration>
-    <version>1.3.0</version>
+    <bunVersion>1.3.0</bunVersion>
     <plugins>
       <webforj-tailwind>true</webforj-tailwind>
     </plugins>

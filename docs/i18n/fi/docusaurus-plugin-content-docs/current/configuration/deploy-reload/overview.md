@@ -3,29 +3,36 @@ title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
 description: >-
-  Combine automatic redeployment with live browser reload so code changes appear
-  in a running webforJ app without manual restarts.
-_i18n_hash: 1b9e4b7fe64a9bcb0aa2aa16b0866ec9
+  Apply code changes to a running webforJ app during development, on the server
+  through hotswap or a restart, and in the browser through live reload.
+_i18n_hash: 1f91b81b074c81af64ded435e068729c
 ---
-Tehokkaat kehitysprosessit perustuvat työkaluihin, jotka havaitsevat koodimuutoksia ja päivittävät sovelluksen automaattisesti reaaliajassa. Jatkuva käyttöönottaminen ja dynaaminen uudelleenlataus toimivat yhdessä yksinkertaistaakseen kehitysprosessia vähentämällä manuaalisia vaiheita, jolloin voit nähdä muutoksesi nopeasti ilman, että sinun tarvitsee käynnistää palvelinta manuaalisesti uudelleen.
+Kehityksen aikana webforJ soveltaa tallennettuja muutoksia käynnissä olevaan sovellukseen ja päivittää selaimen. Luokkamuutokset saavuttavat sovelluksen [hotswap-työkalun](/docs/configuration/deploy-reload/hotswap) tai uudelleenkäynnistyksen kautta. Live reload päivittää selaimen kummankin jälkeen.
 
-## Uudelleenluonti {#redeployment}
+Arkkiteetista luodut projektit ovat valmiiksi konfiguroituja. Olemassa olevalle projektille seuraa [Spring Boot](/docs/configuration/deploy-reload/spring-devtools) tai [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin).
 
-Uudelleenluonti Java-kehityksessä tarkoittaa koodimuutosten automaattista havaitsemista ja käyttöönottoa siten, että päivitykset näkyvät sovelluksessa ilman manuaalista palvelimen käynnistämistä. Tämä prosessi sisältää tyypillisesti Java-luokkien ja verkkoresurssien päivittämisen lennossa.
+## Miten kukin muutos soveltuu {#how-each-change-applies}
 
-webforJ-sovelluksessa tämä tarkoittaa WAR-tiedoston regeneroimista aina, kun koodia muokataan.
+| Muutos | Tulos | Viite |
+|---|---|---|
+| Java-luokka, hotswap-työkalu liitetty | Luokka päivittyy käynnissä olevaan sovellukseen. Vaikuttava osa sivusta rakennetaan uudelleen ja sovellustila pysyy ennallaan. | [Hotswap](/docs/configuration/deploy-reload/hotswap) |
+| Java-luokka, ei hotswap-työkalua | Sovellus käynnistetään uudelleen. Selaimeen ladataan sivu, kun sovellus on valmis. | [Spring Boot](/docs/configuration/deploy-reload/spring-devtools), [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin) |
+| Tyylitiedosto tai kuva | Sivulle sovelletaan se paikan päällä ilman latausta. | [Asetukset](#settings) |
+| Lähde kansiossa `src/main/frontend` | Watch rakentaa sen uudelleen ja päivittää selaimen. | [Frontend watch](/docs/configuration/deploy-reload/frontend-watch) |
 
-Muutoksia Java-luokkiin ja resursseihin luokkamatkalla seurataan tyypillisesti IDE:llä. Kun Java-luokkaa muokataan ja tiedosto tallennetaan, joko IDE:n automaattisesti tai kehittäjän manuaalisesti, nämä työkalut aktivoituvat koostamaan ja sijoittamaan päivitetyt luokkakentät kohdekansioon muutosten soveltamiseksi.
+## Asetukset {#settings}
 
-Parhaan käyttökokemuksen saavuttamiseksi käytä automaattista uudelleenlatausta yhdessä työkalujen tai asetusten kanssa, jotka automatisoivat selaimen lataamisen.
+Nämä asetukset hallitsevat live reloadia kehityksen aikana:
 
-## Reaalilataus {#live-reload}
+| Ominaisuus | Oletusarvo | Kuvaus |
+|----------|---------|-------------|
+| `webforj.devtools.livereload.enabled` | `false` | Kytkee live reloadin päälle kehityskäytöissä. |
+| `webforj.devtools.livereload.websocket-port` | `35730` | Portti selaimen yhteydelle. |
+| `webforj.devtools.livereload.websocket-path` | `/webforj-devtools-ws` | Polku selaimen yhteydelle. |
+| `webforj.devtools.livereload.static-resources-enabled` | `true` | Soveltaa tyylitiedosto- ja kuvamuutoksia paikan päällä ilman sivun lataamista. |
+| `webforj.devtools.livereload.heartbeat-interval` | `30000` | Millisekunteina määritetty aikaväli yhteyden tarkistuksille, jotka havaitsevat uudelleenkäynnistyvän palvelimen. |
 
-Kun muutokset on otettu käyttöön, reaaliuudelleenlataus latautuu automaattisesti sovelluksen niin, että selain heijastaa päivityksiä heti, ilman että manuaalista selaimen uudelleenlatausta tarvitaan.
-
-webforJ-sovelluksessa reaaliuudelleenlataus voi automaattisesti päivittää näkymän, renderöidä komponentit uudelleen näyttämään sovelluksen viimeisintä tilaa, tai jopa korjata muutoksia tarpeen mukaan pyynnöstä.
-
-Frontend-lähteille [frontend watch](/docs/configuration/deploy-reload/frontend-watch) uudelleenrakentaa jokaisen muutoksen yhteydessä ja päivittää tyylitiedoston tai kuvan paikan päällä, lataamalla näkymä uudelleen vain, kun skripti muuttuu.
+Avainasetuksilla ei ole vaikutusta pakatuissa sovelluksissa. Pakatuissa sovelluksissa ei ole kehitystyökaluja.
 
 ## Aiheet {#topics}
 

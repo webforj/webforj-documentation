@@ -3,29 +3,36 @@ title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
 description: >-
-  Combine automatic redeployment with live browser reload so code changes appear
-  in a running webforJ app without manual restarts.
-_i18n_hash: 1b9e4b7fe64a9bcb0aa2aa16b0866ec9
+  Apply code changes to a running webforJ app during development, on the server
+  through hotswap or a restart, and in the browser through live reload.
+_i18n_hash: 1f91b81b074c81af64ded435e068729c
 ---
-Effiziente Entwicklungsarbeitsabläufe beruhen auf Werkzeugen, die Codeänderungen erkennen und die App automatisch in Echtzeit aktualisieren. Continuous Deployment und Dynamic Reload arbeiten zusammen, um den Entwicklungsprozess zu vereinfachen, indem manuelle Schritte reduziert werden, sodass Sie Ihre Änderungen schnell sehen können, ohne den Server manuell neu starten zu müssen.
+Während der Entwicklung wendet webforJ gespeicherte Änderungen auf die laufende App an und aktualisiert den Browser. Klassenänderungen erreichen die App entweder über ein [Hotswap-Tool](/docs/configuration/deploy-reload/hotswap) oder durch einen Neustart. Live-Reload aktualisiert den Browser nach beiden Vorgängen.
 
-## Neuinstallation {#redeployment}
+Projekte, die aus einem [Archetyp](/docs/introduction/getting-started) erstellt wurden, sind vorkonfiguriert. Für ein bestehendes Projekt befolgen Sie [Spring Boot](/docs/configuration/deploy-reload/spring-devtools) oder [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin).
 
-Neuinstallation in der Java-Entwicklung bezieht sich auf das automatische Erkennen und Bereitstellen von Codeänderungen, sodass Updates in der App ohne einen manuellen Serverneustart angezeigt werden. Dieser Prozess umfasst typischerweise die Aktualisierung von Java-Klassen und Webressourcen im laufenden Betrieb.
+## Wie jede Änderung angewendet wird {#how-each-change-applies}
 
-In einer webforJ-App bedeutet dies, dass die WAR-Datei regeneriert wird, wann immer Änderungen am Code vorgenommen werden.
+| Änderung | Ergebnis | Verweis |
+|---|---|---|
+| Java-Klasse, Hotswap-Tool angehängt | Die Klasse wird in der laufenden App aktualisiert. Der betroffene Teile der Seite wird neu aufgebaut, und der App-Zustand bleibt erhalten. | [Hotswap](/docs/configuration/deploy-reload/hotswap) |
+| Java-Klasse, kein Hotswap-Tool | Die App wird neu gestartet. Der Browser lädt neu, wenn die App bereit ist. | [Spring Boot](/docs/configuration/deploy-reload/spring-devtools), [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin) |
+| Stylesheet oder Bild | Die Seite wendet es direkt an, ohne einen Reload. | [Einstellungen](#settings) |
+| Quellcode unter `src/main/frontend` | Die Watch baut es neu und aktualisiert den Browser. | [Frontend Watch](/docs/configuration/deploy-reload/frontend-watch) |
 
-Änderungen an Java-Klassen und Ressourcen im Klassenpfad werden typischerweise von der IDE überwacht. Wenn eine Java-Klasse geändert und die Datei gespeichert wird, entweder automatisch durch die IDE oder manuell durch den Entwickler, treten diese Werkzeuge in Kraft, um die aktualisierten Klassendateien im Zielverzeichnis zu kompilieren und die Änderungen anzuwenden.
+## Einstellungen {#settings}
 
-Für das beste Erlebnis verwenden Sie die automatische Neuinstallation in Kombination mit Werkzeugen oder Einstellungen, die das Neuladen des Browsers automatisieren.
+Diese Einstellungen steuern das Live-Reload während der Entwicklung:
 
-## Live-Neuladung {#live-reload}
+| Eigenschaft | Standard | Beschreibung |
+|----------|---------|-------------|
+| `webforj.devtools.livereload.enabled` | `false` | Aktiviert Live-Reload für Entwicklungsdurchläufe. |
+| `webforj.devtools.livereload.websocket-port` | `35730` | Port für die Browserverbindung. |
+| `webforj.devtools.livereload.websocket-path` | `/webforj-devtools-ws` | Pfad für die Browserverbindung. |
+| `webforj.devtools.livereload.static-resources-enabled` | `true` | Wendet Stylesheet- und Bildänderungen direkt an, anstatt die Seite neu zu laden. |
+| `webforj.devtools.livereload.heartbeat-interval` | `30000` | Intervall in Millisekunden für die Verbindungsprüfungen, die einen neu startenden Server erkennen. |
 
-Sobald Änderungen bereitgestellt sind, lädt die Live-Neuladung die App automatisch neu, sodass der Browser die Updates sofort widerspiegelt, ohne dass ein manuelles Aktualisieren des Browsers erforderlich ist.
-
-In einer webforJ-App kann die Live-Neuladung die Ansicht automatisch aktualisieren und Komponenten neu rendern, um den neuesten Status der App anzuzeigen, oder sogar Änderungen nach Bedarf sofort anwenden.
-
-Für Frontend-Quellen erstellt das [frontend watch](/docs/configuration/deploy-reload/frontend-watch) bei jeder Änderung neu und patcht ein Stylesheet oder Bild vor Ort, wobei die Ansicht nur aktualisiert wird, wenn sich ein Skript ändert.
+Die Schlüssel haben keine Auswirkungen in einer verpackten App. Verpackte Apps enthalten keine Entwicklungstools.
 
 ## Themen {#topics}
 

@@ -223,6 +223,10 @@ module.exports = async function createConfig() {
             to: '/docs/building-ui/composing-components'
           },
           {
+            from: '/docs/configuration/deploy-reload/jrebel',
+            to: '/docs/configuration/deploy-reload/hotswap'
+          },
+          {
             from: '/docs/building-ui/event-options',
             to: '/docs/building-ui/events',
           }
@@ -290,9 +294,9 @@ module.exports = async function createConfig() {
         },
         {
           position: 'left',
-          label: 'Cookbook',
-          to: '/cookbook',
-          activeBasePath: '/cookbook',
+          label: 'craftforJ',
+          to: '/docs/craftforj',
+          activeBasePath: '/docs/craftforj',
         },
         {
           type: 'search',
@@ -330,6 +334,11 @@ module.exports = async function createConfig() {
           label: 'Developers',
           position: 'right',
           items: [
+            {
+              label: 'Cookbook',
+              to: '/cookbook',
+              activeBasePath: '/cookbook',
+            },
             {
               label: "JavaDocs",
               href: 'https://javadoc.io/doc/com.webforj',

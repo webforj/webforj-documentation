@@ -2,6 +2,7 @@
 title: Debugging
 sidebar_position: 15
 description: Attach a remote Java debugger to a running webforJ app from Visual Studio Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+sidebar_class_name: updated-content
 ---
 
 Debugging is an essential part of Java development, helping developers identify and fix issues efficiently. This guide explains how to configure debugging in webforJ for Visual Studio Code, IntelliJ IDEA, and Eclipse.
@@ -87,3 +88,16 @@ Once you’ve configured your IDE:
 1. Make sure port 8000 is available and not blocked by any firewall.
 2. If you are using any of the webforJ archetypes and have changed the port number in the pom.xml file, make sure the port used for debugging matches the updated value.
 :::
+
+## Inspecting the running app {#inspecting-the-running-app}
+
+A debugger shows you what your code is doing. [craftforJ](/docs/craftforj) shows you the app that code produced, including the component tree webforJ built, the properties each component has, which route is active, and who is allowed to reach it. You can change a property, see the result in the running app, and write that change back into the Java it came from.
+
+craftforJ ships with webforJ and uses the same debug mode you already enabled, plus one additional property:
+
+```ini title="webforj.conf"
+webforj.debug = true
+webforj.devtools.craftforj.enabled = true
+```
+
+See [Getting started with craftforJ](/docs/craftforj/getting-started).
