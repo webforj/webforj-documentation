@@ -48,7 +48,7 @@ class TerminalKotlinView: Composite<Terminal>() {
     listOf(
       TimeCommand(),
       DateCommand(),
-      PromptCommand(),
+      ConfirmCommand(),
       MsgCommand(),
       ClearCommand(),
       HelpCommand(commands)

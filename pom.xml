@@ -27,7 +27,7 @@
     <jetty.port>${port}</jetty.port>
     <jetty.stopPort>9966</jetty.stopPort>
 
-      <kotlin.version>2.2.20</kotlin.version>
+      <kotlin.version>2.4.0</kotlin.version>
   </properties>
   <repositories>
     <repository>
