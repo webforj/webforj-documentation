@@ -1,0 +1,14 @@
+.card-region__chart {
+  width: 100%;
+}
+
+.card-regions__total {
+  font-size: var(--dwc-font-size-xl);
+  font-weight: var(--dwc-font-weight-semibold);
+  line-height: 1;
+}
+
+.card-regions__change {
+  font-size: var(--dwc-font-size-xs);
+  color: var(--dwc-color-success-text);
+}

@@ -1,0 +1,7 @@
+.card-density__line {
+  font-size: var(--dwc-font-size-s)
+}
+
+.card-density__total {
+  font-weight: var(--dwc-font-weight-semibold);
+}

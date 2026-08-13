@@ -1,0 +1,4 @@
+.card-appearance__price {
+  font-size: var(--dwc-font-size-xl);
+  font-weight: var(--dwc-font-weight-semibold);
+}
