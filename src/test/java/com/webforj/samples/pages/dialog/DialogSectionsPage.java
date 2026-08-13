@@ -2,8 +2,8 @@ package com.webforj.samples.pages.dialog;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.webforj.samples.pages.SupportedLanguage;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class DialogSectionsPage {
 
