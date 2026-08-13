@@ -73,7 +73,7 @@ card.setOrientation(Card.Orientation.HORIZONTAL);
 
 Because the setting moves the figure and nothing else, a `Card` without a figure looks the same in either orientation.
 
-## Elevation and frame {#elevation-and-frame}
+## Elevation and border {#elevation-and-border}
 
 Two settings determine how far the `Card` separates from the page behind it. `setShadow()` applies a value from the shadow scale, which runs from `NONE` through `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, and `XLARGE` to `XXLARGE`. `setBorderless()` controls whether the `Card` draws its border. The defaults are `Shadow.XSMALL` with the border drawn.
 
@@ -89,9 +89,9 @@ files={['src/main/java/com/webforj/samples/views/card/CardAppearanceView.java']}
 height='250px'
 />
 
-## Dividers and density {#dividers-and-density}
+## Dividers and expanse {#dividers-and-expanse}
 
-While elevation and frame settings control how the `Card` sits against the page, dividers and expanse control how its regions read against each other.
+While elevation and border settings control how the `Card` sits against the page, dividers and expanse control how its regions read against each other.
 
 `setDivided(true)` draws a divider after the header and before the footer, which helps when the regions hold dense content. Dividers are off by default. A divider belonging to a region that holds no content isn't drawn, so a divided card without a footer shows one divider, under the header. Dividers carry more weight on flat cards, where no frame is present to do that work.
 
