@@ -1,7 +1,7 @@
 package com.webforj.samples.views.loading;
 
 import com.webforj.Interval;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route;
 /** Demo to showcase the different customization options for the LoadingSpinner. */
 @Route
 @FrameTitle("Loading Spinners")
-@StyleSheet("ws://css/loadingstyles/loadingspinnerdemo.css")
+@BundleEntry("css/loadingstyles/loadingspinnerdemo.css")
 public class LoadingSpinnerDemoView extends Composite<Div> {
   private final Div self = getBoundComponent();
   // UI Components

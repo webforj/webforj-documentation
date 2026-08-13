@@ -113,22 +113,22 @@ The `NavigationOptions` class provides several methods for customizing navigatio
 
 Here are the main configuration options available within `NavigationOptions`:
 
-1. **Navigation Type (`setNavigationType`)**  
+1. **Navigation Type (`setNavigationType`)**
    This option defines whether the new route should be added to the browser's history or replace the current route.
 
    - **`PUSH`**: Adds the new route to the history stack, preserving the current location.
    - **`REPLACE`**: Replaces the current route in the history stack with the new location, preventing the back button from navigating to the previous route.
 
-2. **Fire Events (`setFireEvents`)**  
+2. **Fire Events (`setFireEvents`)**
    Determines whether navigation [lifecycle events](./navigation-lifecycle/navigation-events) should be fired during navigation. By default, this is set to `true`, and events are fired. If set to `false`, no events will be fired, which is useful for silent navigation.
 
-3. **Invoke Observers (`setInvokeObservers`)**  
+3. **Invoke Observers (`setInvokeObservers`)**
    This flag controls whether the navigation should trigger [observers](./navigation-lifecycle/observers) within the navigated components. Observers typically handle events like route entry or exit. Setting this to `false` prevents observers from being invoked.
 
-4. **Update History (`setUpdateHistory`)**  
+4. **Update History (`setUpdateHistory`)**
    When set to `false`, this option prevents the history location from being updated. This is useful when you want to change the view without affecting the browser’s back or forward navigation. It only affects history management, not the component lifecycle or route handling.
 
-5. **State Object (`setState`)**  
+5. **State Object (`setState`)**
    [The state object](./state-management#saving-and-restoring-state-in-browser-history) allows you to pass additional information when updating the browser’s history. This object is stored in the browser's history state and can be used later for custom purposes, like saving the state of the app during navigation.
 
 ## Generating locations for views {#generating-locations-for-views}

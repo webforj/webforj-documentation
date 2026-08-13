@@ -1,6 +1,6 @@
 package com.webforj.samples.views.refresher;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Route
-@StyleSheet("ws://css/refresher/refresher.css")
+@BundleEntry("css/refresher/refresher.css")
 public class RefresherThemesView extends Composite<Div> {
   // Available themes for cycling
   private static final List<Theme> THEMES =

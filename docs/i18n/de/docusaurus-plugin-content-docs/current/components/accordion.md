@@ -1,7 +1,10 @@
 ---
 sidebar_position: 1
 title: Accordion
-_i18n_hash: 207c70347cc18d88661a8a9279988417
+description: >-
+  Group collapsible panels with the Accordion and AccordionPanel components to
+  toggle visibility and coordinate expand or collapse behavior.
+_i18n_hash: b11e2d2ef8854f757454635c984da1d6
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-accordion" />
@@ -9,25 +12,25 @@ _i18n_hash: 207c70347cc18d88661a8a9279988417
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="accordion" location="com/webforj/component/accordion/Accordion" top='true'/>
 
-Die `Accordion`-Komponente bietet einen vertikal gestapelten Satz von einziehbaren Panels. Jedes Panel hat einen klickbaren Header, der die Sichtbarkeit seines Inhalts umschaltet. Ein `AccordionPanel` kann als eigenständiger Offenlegungsteil verwendet werden oder innerhalb eines `Accordion` gruppiert werden, um das Expandieren und Zusammenklappen mehrerer Panels zu koordinieren.
+Die `Accordion`-Komponente bietet eine vertikal gestapelte Menge von zusammenklappbaren Panels. Jedes Panel hat einen klickbaren Header, der die Sichtbarkeit seines Inhalts umschaltet. Ein `AccordionPanel` kann als eigenständiger Offenlegungsteil verwendet oder innerhalb eines `Accordion` gruppiert werden, um das Erweiterungs- und Zusammenklappverhalten mehrerer Panels zu koordinieren.
 
 <!-- INTRO_END -->
 
 :::tip Wann man ein Accordion verwenden sollte
-Accordions eignen sich gut für FAQs, Einstellungsseiten und Schritt-für-Schritt-Abläufe, bei denen das gleichzeitige Offenlegen aller Inhalte ein überwältigendes Layout schaffen würde. Wenn Abschnitte gleich wichtig sind und die Benutzer davon profitieren, sie gleichzeitig zu sehen, ziehen Sie stattdessen [Tabs](/docs/components/tabbedpane) in Betracht.
+Accordions sind geeignet für FAQs, Einstellungsseiten und Schritt-für-Schritt-Übersichten, bei denen das gleichzeitige Anzeigen aller Inhalte ein überwältigendes Layout erzeugen würde. Wenn Abschnitte gleich wichtig sind und die Benutzer davon profitieren, sie gleichzeitig zu sehen, sollten Sie stattdessen [Tabs](/docs/components/tabbedpane) in Betracht ziehen.
 :::
 
 ## `AccordionPanel` {#accordion-panel}
 
-`AccordionPanel` ist der zentrale Baustein des Accordion-Systems. Übergeben Sie einen Label-String an den Konstruktor, um den Header-Text festzulegen, und fügen Sie dann Kindkomponenten hinzu, um den Body zu befüllen. Ein Panel funktioniert auch ohne eine umgebende `Accordion`-Gruppe, was es zu einem nützlichen, leichten Offenlegungs-Widget macht, wenn Sie nur einen einzelnen einziehbaren Abschnitt benötigen. Der Konstruktor ohne Argumente ist ebenfalls verfügbar, wenn Sie das Panel vollständig nach der Konstruktion konfigurieren möchten.
+`AccordionPanel` ist der zentrale Baustein des Accordion-Systems. Übergeben Sie einen Label-String an den Konstruktor, um den Header-Text festzulegen, und fügen Sie dann Kind-Komponenten hinzu, um den Inhalt des Panels zu füllen. Ein Panel funktioniert eigenständig, ohne eine umgebende `Accordion`-Gruppe, was es zu einem nützlichen, leichten Offenlegungswidget macht, wenn Sie nur einen einzigen zusammenklappbaren Abschnitt benötigen. Der Konstruktor ohne Argumente ist ebenfalls verfügbar, wenn Sie das Panel ganz nach der Erstellung konfigurieren möchten.
 
 ```java
-// Nur Label - fügen Sie den Body-Inhalt separat hinzu
+// Nur Label - Inhalt separat hinzufügen
 AccordionPanel panel = new AccordionPanel("Abschnittsüberschrift");
-panel.add(new Paragraph("Body-Inhalt kommt hierhin."));
+panel.add(new Paragraph("Inhaltsbereich kommt hierhin."));
 
-// Label und Body-Inhalt werden direkt im Konstruktor übergeben
-AccordionPanel panel = new AccordionPanel("Titel", new Paragraph("Body-Inhalt."));
+// Label und Inhaltsbereich direkt im Konstruktor übergeben
+AccordionPanel panel = new AccordionPanel("Titel", new Paragraph("Inhaltsbereich."));
 ```
 
 <!-- vale off -->
@@ -40,20 +43,20 @@ height='550px'
 
 ### Öffnen und Schließen {#opening-and-closing}
 
-Steuern Sie den geöffneten/geschlossenen Status jederzeit programmatisch. `isOpened()` ist nützlich, wenn Sie den aktuellen Status lesen müssen, bevor Sie entscheiden, was zu tun ist. Zum Beispiel könnten Sie ein Panel in den gegenteiligen Status umschalten oder andere Teile der Benutzeroberfläche bedingt anzeigen oder ausblenden.
+Steuern Sie den geöffneten/geschlossenen Zustand programmgesteuert zu jeder Zeit. `isOpened()` ist nützlich, wenn Sie den aktuellen Zustand lesen müssen, bevor Sie entscheiden, was zu tun ist. Zum Beispiel könnten Sie ein Panel in den entgegengesetzten Zustand umschalten oder bedingt andere Teile der Benutzeroberfläche anzeigen oder verbergen.
 
 ```java
 // Panel erweitern
 panel.open();
 
-// Panel schließen
-panel.close();                    
+// Panel zusammenklappen
+panel.close();
 
-// Gibt true zurück, wenn derzeit erweitert
+// Gibt true zurück, wenn es derzeit erweitert ist
 boolean isOpen = panel.isOpened();
 ```
 
-Verwenden Sie `setLabel()`, um den Header-Text nach der Konstruktion zu aktualisieren. `setText()` ist ein Alias für dieselbe Operation, sodass das Label mit dynamischen Daten synchron gehalten werden kann:
+Verwenden Sie `setLabel()`, um den Header-Text nach der Erstellung zu aktualisieren. `setText()` ist ein Alias für dieselbe Operation, sodass das Label mit dynamischen Daten synchronisiert werden kann:
 
 ```java
 panel.setLabel("Aktualisiertes Label");
@@ -61,9 +64,9 @@ panel.setLabel("Aktualisiertes Label");
 
 ## Accordion-Gruppen {#accordion-groups}
 
-Das Gruppieren mehrerer `AccordionPanel`-Instanzen innerhalb eines `Accordion` schafft eine koordinierte Gruppe. Standardmäßig verwendet die Gruppe den **Einzelmodus**: Das Öffnen eines Panels kollabiert automatisch alle anderen, sodass immer nur ein Abschnitt sichtbar bleibt. Dieses Standardverhalten ist absichtlich, da es den Benutzer auf ein Stück Inhalt fokussiert und verhindert, dass die Seite visuell überwältigend wird, wenn Panels umfangreiche Body-Inhalte haben.
+Das Einwickeln mehrerer `AccordionPanel`-Instanzen in ein `Accordion` erzeugt eine koordinierte Gruppe. Standardmäßig verwendet die Gruppe den **Einzelmodus**: Das Öffnen eines Panels klappt automatisch alle anderen zusammen und lässt jeweils nur ein Abschnitt sichtbar. Dieses Standardverhalten ist absichtlich, da es den Benutzer auf ein einzelnes Element fokussiert und verhindert, dass die Seite visuell überwältigend wird, wenn Panels erheblichen Inhalt haben.
 
-Panels werden unabhängig erstellt und an das `Accordion` übergeben, sodass Sie jedes einzeln konfigurieren können, bevor Sie sie gruppieren. Mehrere separate `Accordion`-Instanzen können ebenfalls auf derselben Seite existieren – jede Gruppe verwaltet ihren eigenen Status unabhängig, sodass das Erweitern eines Panels in einer Gruppe keine Auswirkungen auf eine andere hat.
+Panels werden unabhängig konstruiert und dem `Accordion` übergeben, sodass Sie jedes einzelne vor der Gruppierung konfigurieren können. Mehrere separate `Accordion`-Instanzen können ebenfalls auf derselben Seite vorhanden sein – jede Gruppe verwaltet ihren eigenen Zustand unabhängig, sodass das Erweitern eines Panels in einer Gruppe keine Auswirkungen auf eine andere hat.
 
 ```java
 AccordionPanel panel1 = new AccordionPanel("Was ist webforJ?");
@@ -83,20 +86,20 @@ height='400px'
 
 ### Mehrfachmodus {#multiple-mode}
 
-Der Mehrfachmodus ermöglicht es, dass beliebig viele Panels gleichzeitig geöffnet bleiben. Dies ist nützlich, wenn Benutzer den Inhalt mehrere Abschnitte gleichzeitig vergleichen müssen oder wenn jedes Panel kurz genug ist, dass das gleichzeitige Erweitern mehrerer Panels kein unübersichtliches Layout schafft.
+Der Mehrfachmodus ermöglicht es, dass eine beliebige Anzahl von Panels gleichzeitig geöffnet bleibt. Dies ist nützlich, wenn Benutzer den Inhalt mehrerer Abschnitte gleichzeitig vergleichen müssen oder wenn jedes Panel kurz genug ist, dass das gleichzeitige Erweitern mehrerer Panels kein überladenes Layout erzeugt.
 
 ```java
 accordion.setMultiple(true);
 ```
 
-Mit aktiviertem Mehrfachmodus können alle Panels in der Gruppe gleichzeitig mit den Sammelmöglichkeiten erweitert oder geschlossen werden:
+Mit aktivem Mehrfachmodus können alle Panels in der Gruppe gleichzeitig mit den Massenmethoden erweitert oder zusammengeklappt werden:
 
 ```java
-// Jedes Panel in der Gruppe erweitern
+// Alle Panels in der Gruppe erweitern
 accordion.openAll();
 
-// Jedes Panel in der Gruppe schließen
-accordion.closeAll();   
+// Alle Panels in der Gruppe zusammenklappen
+accordion.closeAll();
 ```
 
 <!-- vale off -->
@@ -108,14 +111,14 @@ height='575px'
 <!-- vale on -->
 
 :::info Einschränkung im Einzelmodus
-`openAll()` ist nur verfügbar, wenn der Mehrfachmodus aktiviert ist. Es hat keine Auswirkungen, wenn es im Einzelmodus aufgerufen wird. `closeAll()` funktioniert in beiden Modi.
+`openAll()` ist nur verfügbar, wenn der Mehrfachmodus aktiviert ist. Der Aufruf hat im Einzelmodus keine Auswirkungen. `closeAll()` funktioniert in beiden Modi.
 :::
 
 <!-- vale off -->
 ## Deaktivierter Zustand {#disabled-state}
 <!-- vale on -->
 
-Individuelle Panels können deaktiviert werden, um die Benutzerinteraktion zu verhindern, während sie weiterhin sichtbar bleiben. Dies ist nützlich während Ladezuständen oder wenn bestimmte Abschnitte bedingt nicht verfügbar sind, da die Panelstruktur angezeigt wird, ohne premature Interaktionen zu ermöglichen. Ein deaktiviertes Panel, das bereits geöffnet war, bleibt erweitert, aber sein Header kann nicht mehr angeklickt werden, um es zu schließen. Das Deaktivieren der `Accordion`-Gruppe wendet den deaktivierten Zustand gleichzeitig auf alle enthaltenen Panels an, sodass Sie nicht jedes Panel einzeln durchlaufen müssen.
+Einzelne Panels können deaktiviert werden, um Benutzerinteraktionen zu verhindern, während sie weiterhin sichtbar bleiben. Dies ist nützlich während Ladezuständen oder wenn bestimmte Abschnitte bedingt nicht verfügbar sind, indem die Panelstruktur gezeigt wird, ohne vorzeitige Interaktionen zuzulassen. Ein deaktiviertes Panel, das bereits geöffnet war, bleibt erweitert, aber sein Header kann nicht mehr angeklickt werden, um es zusammenzuklappen. Das Deaktivieren der `Accordion`-Gruppe wendet den deaktivierten Zustand auf alle enthaltenen Panels gleichzeitig an, sodass Sie nicht durch die Panels einzeln iterieren müssen.
 
 ```java
 // Ein einzelnes Panel deaktivieren
@@ -133,13 +136,13 @@ height='650px'
 />
 <!-- vale on -->
 
-## Individualisierung von Panels {#customizing-panels}
+## Anpassung von Panels {#customizing-panels}
 
-Über Labels und das grundlegende Öffnen/Schließen-Verhalten hinaus unterstützt jedes `AccordionPanel` eine reichhaltigere Anpassung sowohl seines Header-Inhalts als auch des Expandieren-/Zuklappen-Icons.
+Über Labels und das grundlegende Öffnen/Schließen hinaus unterstützt jedes `AccordionPanel` eine reichhaltigere Anpassung sowohl seines Header-Inhalts als auch des Erweiterungs-/Zusammenklappsymbols.
 
 ### Benutzerdefinierter Header {#custom-header}
 
-Der Header eines Panels gibt standardmäßig sein Label als normalen Text wieder. Verwenden Sie `addToHeader()`, um diesen Text durch beliebige Komponenten oder Kombinationen von Komponenten zu ersetzen, was das einfache Einfügen von Icons, Abzeichen, Statusanzeigen oder anderem reichhaltigen Markup neben dem Panel-Label erleichtert. Dies ist besonders nützlich in Dashboards oder Einstellungs-Panels, in denen jeder Abschnittsheader zusätzlichen Kontext auf einen Blick vermitteln muss, wie z.B. eine Elementanzahl, ein Warnabzeichen oder einen Abschlussstatus, ohne dass der Benutzer das Panel zuerst erweitern muss.
+Der Header eines Panels zeigt standardmäßig sein Label als einfachen Text an. Verwenden Sie `addToHeader()`, um diesen Text durch jede Komponente oder eine Kombination von Komponenten zu ersetzen, was es einfach macht, Icons, Abzeichen, Statusanzeigen oder andere reichhaltige Markups zusammen mit dem Panel-Label einzufügen. Dies ist besonders nützlich in Dashboards oder Einstellungs-Panels, in denen jeder Abschnittsheader zusätzlichen Kontext auf einen Blick vermitteln muss, wie etwa eine Artikelanzahl, ein Warnabzeichen oder einen Abschlussstatus, ohne dass der Benutzer das Panel zuerst erweitern muss.
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
@@ -151,8 +154,8 @@ headerContent.add(FeatherIcon.SETTINGS.create(), new Span("Benutzerdefinierter H
 panel.addToHeader(headerContent);
 ```
 
-:::info Label-Ersatz
-Inhalt, der über `addToHeader()` hinzugefügt wird, ersetzt vollständig den Standard-Label-Text. `setLabel()` und `setText()` funktionieren weiterhin zusammen mit `addToHeader()`, aber da der Header-Bereich visuelle Priorität hat, wird der Label-Text nicht angezeigt, es sei denn, Sie fügen ihn ausdrücklich in Ihrem slotierten Inhalt hinzu.
+:::info Label-Ersetzung
+Inhalte, die über `addToHeader()` hinzugefügt werden, ersetzen den Standardlabel-Text vollständig. `setLabel()` und `setText()` funktionieren weiterhin neben `addToHeader()`, aber da der Header-Bereich visuelle Priorität hat, wird der Label-Text nicht angezeigt, es sei denn, Sie fügen ihn ausdrücklich in Ihren bereitgestellten Inhalten hinzu.
 :::
 
 <!-- vale off -->
@@ -163,15 +166,15 @@ height='300px'
 />
 <!-- vale on -->
 
-### Benutzerdefiniertes Icon {#custom-icon}
+### Benutzerdefiniertes Symbol {#custom-icon}
 
-Der Expand-/Zuklappen-Indikator wird standardmäßig durch ein Chevron dargestellt, das sowohl im geöffneten als auch im geschlossenen Zustand sichtbar ist. `setIcon()` ersetzt es durch eine beliebige [`Icon`](/docs/components/icon) Komponente, die nützlich für gebrandete Ikonografie ist oder wenn ein anderes visuelles Symbol besser zum Inhalt passt. Das Übergeben von `null` stellt das Standard-Chevron wieder her. `getIcon()` gibt das derzeit eingestellte Icon zurück oder `null`, wenn das Standard-Chevron verwendet wird.
+Der Indikator für das Erweitern/Zusammenklappen ist standardmäßig ein Chevron, der sowohl im geöffneten als auch geschlossenen Zustand sichtbar ist. `setIcon()` ersetzt ihn durch jede [Icon]-Komponente (/docs/components/icon), die nützlich für Marken-Ikonographie oder wenn eine andere visuelle Metapher besser zum Inhalt passt. Das Übergeben von `null` stellt das Standard-Chevron wieder her. `getIcon()` gibt das derzeit gesetzte Symbol zurück oder `null`, wenn das Standard-Chevron verwendet wird.
 
 ```java
-// Ersetzen Sie das Standard-Chevron durch ein Plus-Icon
+// Das Standard-Chevron durch ein Plus-Symbol ersetzen
 panel.setIcon(FeatherIcon.PLUS.create());
 
-// Stellen Sie das Standard-Chevron wieder her
+// Das Standard-Chevron wiederherstellen
 panel.setIcon(null);
 ```
 
@@ -183,9 +186,9 @@ height='200px'
 />
 <!-- vale on -->
 
-## Verschachtelte Accordions {#nested-accordions}
+## NESTED ACCORDIONS {#nested-accordions}
 
-Accordions können in andere Accordion-Panels eingebettet werden, was nützlich ist, um hierarchische Inhalte wie kategorisierte Einstellungen oder mehrstufige Navigation darzustellen. Fügen Sie ein inneres `Accordion` zu einem äußeren `AccordionPanel` als jede andere Kindkomponente hinzu. Halten Sie die Verschachtelung flach. Eins oder zwei Ebenen sind normalerweise ausreichend. Tiefere Hierarchien sind oft schwieriger zu navigieren und deuten häufig darauf hin, dass die Inhaltsstruktur selbst überdacht werden muss.
+Accordions können in andere Accordion-Panels eingebettet werden, was nützlich ist, um hierarchische Inhalte wie kategorisierte Einstellungen oder mehrstufige Navigation darzustellen. Fügen Sie ein inneres `Accordion` zu einem äußeren `AccordionPanel` wie jeder anderen Kindkomponente hinzu. Halten Sie die Verschachtelung flach. Eine oder zwei Ebenen sind normalerweise ausreichend. Tiefergehende Hierarchien tendieren dazu, schwieriger zu navigieren zu sein und signalisieren oft, dass die Inhaltsstruktur selbst überdacht werden muss.
 
 ```java
 AccordionPanel innerA = new AccordionPanel("Inneres Panel A");
@@ -206,27 +209,27 @@ height='550px'
 
 ## Ereignisse {#events}
 
-`AccordionPanel` löst Ereignisse in jeder Phase des Umschaltlebenszyklus aus. Die drei Ereignistypen decken verschiedene Zeitpunkte ab, wählen Sie also basierend darauf, wann Ihre Logik ausgeführt werden muss:
+`AccordionPanel` löst Ereignisse in jeder Phase des Umschaltzyklus aus. Die drei Ereignistypen decken verschiedene Zeitpunkte ab, sodass Sie wählen können, basierend auf wann Ihre Logik ausgeführt werden muss:
 
 | Ereignis | Tritt ein |
 |----------|-----------|
-| `AccordionPanelToggleEvent` | Bevor sich der Status ändert |
+| `AccordionPanelToggleEvent` | Bevor der Zustand sich ändert |
 | `AccordionPanelOpenEvent` | Nachdem das Panel vollständig geöffnet ist |
 | `AccordionPanelCloseEvent` | Nachdem das Panel vollständig geschlossen ist |
 
 ```java
 panel.onToggle(e -> {
-    // Tritt ein, bevor sich das Panel in den Status ändert.
-    // e.isOpened() spiegelt den Status wider, in den gewechselt wird, nicht den aktuellen Status.
+    // Tritt ein, bevor sich das Panelzustand ändert.
+    // e.isOpened() spiegelt den Zustand wider, zu dem übergegangen wird, nicht den aktuellen Zustand.
     String direction = e.isOpened() ? "öffnen" : "schließen";
 });
 
 panel.onOpen(e -> {
-    // Tritt ein, nachdem das Panel vollständig geöffnet ist — gut für das Lazy-Loading von Inhalten.
+    // Tritt ein, nachdem das Panel vollständig geöffnet ist – gut zum Lazy-Loading von Inhalten.
 });
 
 panel.onClose(e -> {
-    // Tritt ein, nachdem das Panel vollständig geschlossen ist — gut für Aufräum- oder Zusammenfassungsaktualisierungen.
+    // Tritt ein, nachdem das Panel vollständig geschlossen ist – gut für Aufräum- oder Zusammenfassungsaktualisierungen.
 });
 ```
 

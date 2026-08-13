@@ -1,7 +1,5 @@
 package com.webforj.samples.views.button;
 
-import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
-
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -10,6 +8,7 @@ import com.webforj.component.field.TextField.Type;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optiondialog.MessageDialog;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -40,7 +39,8 @@ public class ButtonView extends Composite<FlexLayout> {
             e -> {
               String message =
                   "Welcome to the app %s %s!".formatted(firstName.getText(), lastName.getText());
-              showMessageDialog(message, "Welcome");
+              MessageDialog messageDialog = new MessageDialog(message, "Welcome");
+              messageDialog.setRawText(true).show();
             });
 
     clear =

@@ -2,7 +2,6 @@
 sidebar_position: 10
 title: Transitions & Easing
 description: Animate UI changes with consistent DWC duration tokens and cubic-bezier easing curves for natural-feeling transitions.
-sidebar_class_name: updated-content
 ---
 
 Transition variables are used to provide consistent animation durations across your app. They control how long an animation takes to complete.

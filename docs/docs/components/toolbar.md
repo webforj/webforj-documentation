@@ -32,7 +32,7 @@ path='/webforj/toolbarslots'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java',
-  'src/main/resources/static/css/toolbar/toolbar-slots-view.css',
+  'src/main/frontend/css/toolbar/toolbar-slots-view.css',
 ]}
 />
 
@@ -72,7 +72,7 @@ files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.
 <ComponentDemo
 path='/webforj/toolbartheme'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java']}
-height='475px'
+height='590px'
 />
 
 <TableBuilder name="Toolbar" />

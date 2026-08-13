@@ -1,6 +1,6 @@
 package com.webforj.samples.views.viewtransitions.components;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Component;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.H3;
@@ -10,7 +10,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.concern.HasClassName;
 
-@StyleSheet("ws://css/viewtransitions/components/demo-header.css")
+@BundleEntry("css/viewtransitions/components/demo-header.css")
 public class DemoHeader extends Composite<FlexLayout> implements HasClassName<DemoHeader> {
   private final FlexLayout self = getBoundComponent();
   private final FlexLayout actionSlot;

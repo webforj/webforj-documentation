@@ -20,7 +20,7 @@ I built a habit tracker called Streak to test it out. I wanted to see what it ta
 
 ![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/2026-01-30-installable-apps/streak_web.png)
 
-## The one-annotation setup
+## The one-annotation setup {#the-one-annotation-setup}
 
 The core of installable apps in webforJ is the `@AppProfile` annotation. At minimum, you need a name and a short name:
 
@@ -41,7 +41,7 @@ With just this, your app becomes installable. When someone visits it in a browse
 
 But there's more you can configure, and that's where it gets interesting.
 
-## Colors and the launch experience
+## Colors and the launch experience {#colors-and-the-launch-experience}
 
 When you tap an installed app's icon, there's a brief moment while it loads. During that time, the device shows a splash screen. You can control what that looks like with two properties:
 
@@ -64,7 +64,7 @@ These have to be hex values, not CSS variables. The `@AppProfile` annotation gen
 
 Getting these colors right matters more than I expected. When they match your app's actual design, the whole experience from icon tap to running app feels cohesive. When they don't match, you get this jarring flash of the wrong color before your UI shows up.
 
-## Display modes
+## Display modes {#display-modes}
 
 The `display` property controls how much browser UI shows up (or doesn't) when your app runs:
 
@@ -82,7 +82,7 @@ display = ProfileDescriptor.Display.STANDALONE
 
 For Streak, I stuck with `STANDALONE`. It's a simple app with one view, so there was no need for browser navigation.
 
-## Icons
+## Icons {#icons}
 
 webforJ handles icon sizing for you. You put one icon file at `src/main/resources/icons/icon.png`, and the framework generates the other sizes on the fly using the `icons://` protocol.
 
@@ -92,7 +92,7 @@ Request `icons://icon-192x192.png` and it scales your source image to 192x192. R
 
 I generated an icon for Streak, dropped it in the folder, and that was it.
 
-## The full setup
+## The full setup {#the-full-setup}
 
 Here's what Streak's `Application` class looks like with everything configured:
 
@@ -115,7 +115,7 @@ public class Application extends App {
 
 ![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/2026-01-30-installable-apps/streak_app.png)
 
-## A note on HTTPS
+## A note on HTTPS {#a-note-on-https}
 
 Installable apps need to be served over HTTPS. Browsers won't offer the install option if your app is running on plain HTTP.
 
@@ -125,7 +125,7 @@ During development, you can run on `http://localhost:8080` and everything works 
 
 When you deploy, you'll need HTTPS. If you're using a platform like Heroku, Render, or most cloud providers, they handle this for you. If you're running your own server, you'll need to set up a certificate.
 
-## What it actually feels like
+## What it actually feels like {#what-it-actually-feels-like}
 
 So after all that, what's the difference?
 
@@ -137,13 +137,13 @@ It's a small thing, but it does feel different. More like a tool I'm using and l
 
 Whether that matters depends on what you're building. For something like Streak, where the whole point would be checking in daily on habits, having it feel like a "real" app helps with that.
 
-## Screenshots and other options
+## Screenshots and other options {#screenshots-and-other-options}
 
 There's more you can configure that I didn't use for Streak. The `@AppProfile` annotation supports screenshots, which show up in install dialogs to give users a preview of your app. You can specify orientation preferences if your app only works in portrait or landscape.
 
 I didn't need any of that for a simple demo, but it's there if you're building something more substantial.
 
-## Trying it out
+## Trying it out {#trying-it-out}
 
 If you want to see an installable webforJ app in action before building your own, check out [Focus Tracker](https://github.com/webforj/built-with-webforj/tree/main/webforj-focustracker) in the built-with-webforj repository. It's a Pomodoro timer that uses `@AppProfile` along with some other PWA features like notifications and badge updates.
 

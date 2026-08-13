@@ -1,20 +1,23 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: Automated Upgrades
+description: >-
+  Migrate webforJ projects between versions automatically with OpenRewrite
+  recipes that rename APIs, update dependencies, and flag manual fixes.
 sidebar_class_name: new-content
-_i18n_hash: 1681300490f592540c6d96fbdbfd8ee4
+_i18n_hash: 7f4b51fb3daf9ba91f0e755758d8ec52
 ---
-# Verwendung von OpenRewrite {#using-openrewrite}
+# OpenRewrite verwenden {#using-openrewrite}
 
-OpenRewrite ist ein Open-Source-Projekt, das für automatisierte Quellcode-Refactoring entwickelt wurde. Es ermöglicht Ihnen, effizient und automatisch zwischen webforJ-Versionen zu migrieren, für Projekte, die veraltete oder entfernte APIs verwenden.
+OpenRewrite ist ein Open-Source-Projekt, das für automatisiertes Refactoring von Quellcode konzipiert ist und es Ihnen ermöglicht, effizient und automatisch zwischen webforJ-Versionen für Projekte zu migrieren, die veraltete oder entfernte APIs verwenden.
 
-## Wann OpenRewrite verwenden? {#when-to-use-openrewrite}
+## Wann OpenRewrite verwenden? {#when-to-use-openwrite}
 
-Sie können OpenRewrite verwenden, wenn Sie ein Upgrade durchführen, um sich von veralteten APIs zu entfernen, und zwar nicht nur bei Hauptversionen. Dies hilft Ihnen, sich von neu veralteten Methoden zu entfernen, bevor sie in einer späteren Version entfernt werden.
+Sie können OpenRewrite verwenden, wenn Sie ein Upgrade durchführen und von veralteten APIs weg möchten, nicht nur bei größeren Versionen. Dies hilft Ihnen, von neu veralteten Methoden wegzukommen, bevor sie in einer späteren Version entfernt werden.
 
 ## Einrichtung {#setup}
 
-Um Ihr Projekt mit OpenRewrite zu aktualisieren, fügen Sie das OpenRewrite Maven-Plugin zu Ihrer `pom.xml` hinzu, mit [`webforj-rewrite`](https://github.com/webforj/webforj/tree/main/webforj-rewrite) als Abhängigkeit:
+Um Ihr Projekt mit OpenRewrite zu aktualisieren, fügen Sie das OpenRewrite Maven-Plugin zu Ihrem `pom.xml` hinzu, mit [`webforj-rewrite`](https://github.com/webforj/webforj/tree/main/webforj-rewrite) als Abhängigkeit:
 
 ```xml
 <plugin>
@@ -38,9 +41,9 @@ Um Ihr Projekt mit OpenRewrite zu aktualisieren, fügen Sie das OpenRewrite Mave
 
 Ersetzen Sie `TARGET_VERSION` durch die webforJ-Version, auf die Sie aktualisieren, und `RECIPE_NAME` durch eines der Rezepte aus dem Abschnitt [Verfügbare Rezepte](#available-recipes) dieses Artikels.
 
-## Änderungen vorab anzeigen (optional) {#previewing-changes}
+## Änderungen anzeigen (optional) {#previewing-changes}
 
-Wenn Sie es vorziehen würden, die Änderungen, die OpenRewrite mit einem webforJ-Rezept vornehmen wird, vorzuschauen, generiert das Ausführen des folgenden Befehls einen Diff in `target/rewrite/rewrite.patch`, ohne Dateien zu ändern. Überprüfen Sie den Patch, um genau zu sehen, was das Rezept ändern wird.
+Wenn Sie die Änderungen, die OpenRewrite mit einem webforJ-Rezept vornehmen wird, lieber vorab ansehen möchten, erzeugt das Ausführen des folgenden Befehls ein Diff in `target/rewrite/rewrite.patch`, ohne Dateien zu ändern. Überprüfen Sie den Patch, um genau zu sehen, was das Rezept ändern wird.
 
 ```bash
 mvn rewrite:dryRun
@@ -54,14 +57,15 @@ Wenn Sie bereit sind, Änderungen mit OpenRewrite anzuwenden, führen Sie den fo
 mvn rewrite:run
 ```
 
-Das Rezept verarbeitet die meisten Upgrades automatisch, indem es Abhängigkeiten aktualisiert, Methoden umbenennt, Typen ändert und Rückgabetypen anpasst. Für die wenigen Fälle, in denen kein 1:1-Ersatz vorhanden ist, fügt es `TODO`-Kommentare in Ihrem Code mit spezifischen Anweisungen hinzu. Durchsuchen Sie Ihr Projekt nach diesen `TODO`s, um zu finden, was übrig geblieben ist.
+Das Rezept übernimmt den Großteil des Upgrades automatisch, indem es Abhängigkeiten aktualisiert, Methoden umbenennt, Typen ändert und Rückgabetypen anpasst. In den wenigen Fällen, in denen es keinen 1:1-Ersatz gibt, fügt es Ihrem Code `TODO`-Kommentare mit spezifischen Anweisungen hinzu. Durchsuchen Sie Ihr Projekt nach diesen `TODO`s, um zu sehen, was noch zu erledigen ist.
 
-## Aufräumen {#clean-up}
+## Bereinigen {#clean-up}
 
-Nachdem Sie OpenRewrite mit einem webforJ-Rezept ausgeführt und alle `TODO`-Kommentare überprüft haben, entfernen Sie das Plugin aus Ihrer `pom.xml`.
+Nachdem Sie OpenRewrite mit einem webforJ-Rezept ausgeführt und alle `TODO`-Kommentare bearbeitet haben, entfernen Sie das Plugin aus Ihrem `pom.xml`.
 
 ## Verfügbare Rezepte {#available-recipes}
 
-| Version | Standard webforJ-Projekte | Spring Boot-Projekte |
+| Version | Standard webforJ Projekte | Spring Boot Projekte |
 | ------- | ------- | ------- |
+| v26.01 | `com.webforj.rewrite.v26.UpgradeWebforj_26_01` | `com.webforj.rewrite.v26.UpgradeWebforjSpring_26_01` |
 | v26 | `com.webforj.rewrite.v26.UpgradeWebforj` | `com.webforj.rewrite.v26.UpgradeWebforjSpring` |

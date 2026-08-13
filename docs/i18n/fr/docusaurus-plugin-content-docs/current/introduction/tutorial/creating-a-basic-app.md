@@ -2,23 +2,23 @@
 title: Creating a Basic App
 sidebar_position: 2
 description: Step 1 - Add components to an app.
-_i18n_hash: ac74bc5c04bce477a7407c9ff94323a4
+_i18n_hash: d7385c22706cf76508b7e1971186f88d
 ---
-Dans [Configuration du projet](/docs/introduction/tutorial/project-setup), vous avez généré un projet webforJ. Il est maintenant temps de créer la classe principale pour le projet et d'ajouter une interface interactive en utilisant les composants webforJ. Dans cette étape, vous apprendrez sur :
+Dans [Configuration du projet](/docs/introduction/tutorial/project-setup), vous avez généré un projet webforJ. Maintenant, il est temps de créer la classe principale pour le projet et d'ajouter une interface interactive en utilisant les composants webforJ. À cette étape, vous apprendrez à propos de :
 
 - Le point d'entrée pour les applications utilisant webforJ et Spring Boot
-- Les composants de webforJ et d'éléments HTML
-- Utiliser CSS pour styliser les composants
+- Les composants webforJ et éléments HTML
+- Utiliser le CSS pour styliser les composants
 
-Finaliser cette étape crée une version de [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app).
+Compléter cette étape crée une version de [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app).
 
 <!-- Insérez la vidéo ici -->
 
-## Exécution de l'application {#running-the-app}
+## Exécuter l'application {#running-the-app}
 
-Alors que vous développez votre application, vous pouvez utiliser [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) comme comparaison. Pour voir l'application en action :
+Au fur et à mesure que vous développez votre application, vous pouvez utiliser [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) comme point de comparaison. Pour voir l'application en action :
 
-1. Accédez au répertoire principal contenant le fichier `pom.xml`, c'est `1-creating-a-basic-app` si vous suivez la version sur GitHub.
+1. Naviguez jusqu'au répertoire de premier niveau contenant le fichier `pom.xml`, qui est `1-creating-a-basic-app` si vous suivez la version sur GitHub.
 
 2. Utilisez la commande Maven suivante pour exécuter l'application Spring Boot localement :
     ```bash
@@ -29,10 +29,10 @@ L'exécution de l'application ouvre automatiquement un nouveau navigateur à `ht
 
 ## Le point d'entrée {#entry-point}
 
-Chaque application webforJ contient une seule classe qui étend <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>. Pour ce tutoriel, et d'autres projets webforJ publiés, elle est couramment appelée `Application`. Cette classe se trouve dans un paquet qui porte le nom du `groupId` que vous avez utilisé dans [Configuration du projet](/docs/introduction/tutorial/project-setup) :
+Chaque application webforJ contient une seule classe qui s'étend <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>. Pour ce tutoriel, et d'autres projets webforJ publiés, elle est couramment appelée `Application`. Cette classe est à l'intérieur d'un package qui porte le nom de `groupId` que vous avez utilisé dans [Configuration du projet](/docs/introduction/tutorial/project-setup) :
 
 ```
-1-creating-a-basic-app 
+1-creating-a-basic-app
 │   .editorconfig
 │   .gitignore
 │   pom.xml
@@ -40,9 +40,9 @@ Chaque application webforJ contient une seule classe qui étend <JavadocLink typ
 │
 ├───.vscode
 ├───src/main/java
-// surligne-la-prochaine-ligne
+// surligner la ligne suivante
 │   └──com/webforj/tutorial
-// surligne-la-prochaine-ligne
+// surligner la ligne suivante
 │       └──Application.java
 └───target
 ```
@@ -51,7 +51,7 @@ Chaque application webforJ contient une seule classe qui étend <JavadocLink typ
 
 ```java title="Application.java"
 @SpringBootApplication
-@StyleSheet("ws://css/card.css")
+@BundleEntry("css/card.css")
 @AppTheme("system")
 @AppProfile(name = "Application Client", shortName = "CustomerApp")
 public class Application extends App {
@@ -64,91 +64,88 @@ public class Application extends App {
 
 ### Annotations {#annotations}
 
-L'[`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) est une annotation essentielle dans Spring Boot. Vous placez cette annotation sur la classe principale pour la marquer comme le point de départ de votre application.
+L'[`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) est une annotation principale dans Spring Boot. Vous mettez cette annotation sur la classe principale pour la marquer comme le point de départ de votre application.
 
-`@StyleSheet`, `@AppTheme` et `@AppProfile` ne sont que quelques-unes des nombreuses <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">annotations webforJ</JavadocLink> disponibles lorsque vous souhaitez définir explicitement des configurations.
+`@BundleEntry`, `@AppTheme`, et `@AppProfile` ne sont que quelques-unes des <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">annotations webforJ</JavadocLink> disponibles lorsque vous voulez définir explicitement des configurations.
 
-- **`@StyleSheet`** intègre un fichier CSS dans la page Web. Des informations complémentaires sur la façon d'interagir avec un fichier CSS spécifique seront abordées plus tard dans [Styliser avec CSS](#styling-with-css).
+- **`@BundleEntry`** ajoute un fichier de `src/main/frontend` au bundle frontend de l'application. À cette étape, il charge le fichier CSS que vous créerez plus tard dans [Styliser avec CSS](#styling-with-css).
 
-- **`@AppTheme`** gère le thème visuel de l'application. S'il est défini sur `system`, l'application adopte automatiquement le thème préféré de l'utilisateur : `clair`, `sombre` ou `sombre-pur`. Pour des informations sur la création de thèmes personnalisés ou le remplacement des thèmes par défaut, reportez-vous à l'article [Thèmes](/docs/styling/themes).
+- **`@AppTheme`** gère le thème visuel de l'application. S'il est défini sur `system`, l'application adopte automatiquement le thème préféré de l'utilisateur : `light`, `dark`, ou `dark-pure`. Pour des informations sur la création de thèmes personnalisés ou la substitution des thèmes par défaut, veuillez consulter l'article [Thèmes](/docs/styling/themes).
 
-- **`@AppProfile`** aide à configurer comment l'application se présente à l'utilisateur en tant qu'[application installable](/docs/configuration/installable-apps). Au minimum, cette annotation nécessite un `name` pour le nom complet de l'application et un `shortName` à utiliser lorsque l'espace est limité. Le `shortName` ne doit pas dépasser 12 caractères.  
+- **`@AppProfile`** aide à configurer comment l'application se présente à l'utilisateur en tant qu'[application installable](/docs/configuration/installable-apps). Au minimum, cette annotation nécessite un `name` pour le nom complet de l'application et un `shortName` à utiliser lorsque l'espace est limité. Le `shortName` ne doit pas dépasser 12 caractères.
 
-## Création d'une interface utilisateur {#creating-a-ui}
+## Créer une interface utilisateur {#creating-a-ui}
 
-Pour créer votre UI, vous devrez ajouter des [composants d'éléments HTML](/docs/components/html-elements) et des [composants webforJ](/docs/components/overview). Pour l'instant, vous n'avez qu'une application à page unique, donc vous ajouterez directement des composants à la classe `Application`. 
-Pour ce faire, vous devez remplacer la méthode `App.run()` et créer un `Frame` pour y ajouter des composants. 
+Pour créer votre UI, vous devrez ajouter des [éléments HTML ](/docs/components/html-elements) et des [composants webforJ](/docs/components/overview). Pour l’instant, vous n'avez qu'une application monopage, donc vous ajouterez directement des composants dans la classe `Application`. Pour ce faire, vous devez remplacer la méthode `App.run()` et créer un `Frame` pour ajouter des composants.
 
 ```java
 @Override
 public void run() throws WebforjException {
   Frame mainFrame = new Frame();
 
-  // Créez les composants UI et ajoutez-les au cadre
+  // Créer des composants UI et les ajouter au cadre
 
 }
 ```
 
-### Utilisation des éléments HTML {#using-html-elements}
+### Utiliser des éléments HTML {#using-html-elements}
 
-Vous pouvez ajouter des éléments HTML standard à votre application avec des [composants d'éléments HTML](/docs/components/html-elements).
-Créez une nouvelle instance du composant, puis utilisez la méthode `add()` pour l'ajouter au `Frame` :
+Vous pouvez ajouter des éléments HTML standards à votre application avec [éléments HTML](/docs/components/html-elements). Créez une nouvelle instance du composant, puis utilisez la méthode `add()` pour l'ajouter au `Frame` :
 
 ```java
-// Créez le conteneur pour les éléments UI
+// Créer le conteneur pour les éléments UI
 Frame mainFrame = new Frame();
 
-// Créez le composant HTML
+// Créer le composant HTML
 Paragraph tutorial = new Paragraph("Application Tutoriel !");
 
-// Ajoutez le composant au conteneur
+// Ajouter le composant au conteneur
 mainFrame.add(tutorial);
 ```
 
-### Utilisation des composants webforJ {#webforj-components-and-html-elements}
+### Utiliser des composants webforJ {#webforj-components-and-html-elements}
 
-Bien que les éléments HTML soient utiles pour la structure, la sémantique et des besoins UI légers, les [composants webforJ](/docs/components/overview) offrent un comportement plus complexe et dynamique.
+Bien que les éléments HTML soient utiles pour la structure, la sémantique et les besoins UI légers, les [composants webforJ](/docs/components/overview) offrent un comportement plus complexe et dynamique.
 
-Le code ci-dessous ajoute un [Bouton](/docs/components/button) composant, change son apparence avec la méthode `setTheme()`, et ajoute un écouteur d'événements pour créer un composant [Dialogue de message](/docs/components/option-dialogs/message) lorsque le bouton est cliqué.
-La plupart des méthodes des composants webforJ qui modifient un composant retournent le composant lui-même, vous pouvez donc chaîner plusieurs méthodes pour avoir un code plus compact.
+Le code ci-dessous ajoute un [Button](/docs/components/button) composant, change son apparence avec la méthode `setTheme()`, et ajoute un écouteur d'événements pour créer un [Message Dialog](/docs/components/option-dialogs/message) composant lorsque le bouton est cliqué. La plupart des méthodes de composant webforJ qui modifient un composant retournent le composant lui-même, donc vous pouvez chaîner plusieurs méthodes pour un code plus compact.
 
 ```java
-// Créez le conteneur pour les éléments UI
+// Créer le conteneur pour les éléments UI
 Frame mainFrame = new Frame();
 
-// Créez le composant webforJ
+// Créer le composant webforJ
 Button btn = new Button("Info");
 
-// Modifiez le composant webforJ et ajoutez un écouteur d'événements
+// Modifier le composant webforJ et ajouter un écouteur d'événements
 btn.setTheme(ButtonTheme.PRIMARY)
-  .addClickListener(e -> OptionDialog.showMessageDialog("Ceci est un tutoriel !", "Info"));
+  .addClickListener(e -> OptionDialog.showMessageDialog("C'est un tutoriel !", "Info"));
 
-// Ajoutez le composant au conteneur
+// Ajouter le composant au conteneur
 mainFrame.add(btn);
 ```
 
 ## Styliser avec CSS {#styling-with-css}
 
-La plupart des composants webforJ ont des méthodes intégrées pour effectuer des changements de style courants, comme la taille et le thème.
+La plupart des composants webforJ ont des méthodes intégrées pour effectuer des changements de style communs, comme la taille et le thème.
 
 ```java
-// Définir la largeur du Frame en utilisant un mot clé CSS
+//Définir la largeur du cadre en utilisant un mot clé CSS
 mainFrame.setWidth("fit-content");
 
-// Définir la largeur maximale du bouton en pixels
+//Définir la largeur maximale du bouton en utilisant des pixels
 btn.setMaxWidth(200);
 
-// Définir le thème du bouton sur PRIMARY
+//Définir le thème du bouton sur PRIMARY
 btn.setTheme(ButtonTheme.PRIMARY);
 ```
 
-En plus de ces méthodes, vous pouvez styliser votre application en utilisant CSS. La section **Styliser** de la page de documentation de tout composant contient des détails spécifiques sur les propriétés CSS pertinentes.
+En plus de ces méthodes, vous pouvez styliser votre application en utilisant CSS. La section **Stylisation** de la page de documentation de n'importe quel composant contient des détails spécifiques sur les propriétés CSS pertinentes.
 
-webforJ est également accompagné d'un ensemble de variables CSS conçues appelées tokens DWC. Consultez la documentation [Styliser](/docs/styling/overview) pour des informations détaillées sur la façon de styliser les composants webforJ et d'utiliser les tokens.
+webforJ est également livré avec un ensemble de variables CSS conçues appelées tokens DWC. Consultez la documentation [Stylisation](/docs/styling/overview) pour des informations détaillées sur la façon de styliser les composants webforJ, et comment utiliser les tokens.
 
-### Référence à un fichier CSS {#referencing-a-css-file} 
+### Ajouter CSS au bundle frontend {#referencing-a-css-file}
 
-Il est préférable d'avoir un fichier CSS séparé pour garder tout organisé et facile à maintenir. Créez un fichier nommé `card.css` à l'intérieur de `src/main/resources/static/css`, avec la définition de classe CSS suivante :
+Il est préférable d'avoir un fichier CSS séparé pour garder tout organisé et maintenable. Créez un fichier nommé `card.css` à l'intérieur de `src/main/frontend/css`, avec la définition de classe CSS suivante :
 
 ```css title="card.css"
 .card {
@@ -163,27 +160,27 @@ Il est préférable d'avoir un fichier CSS séparé pour garder tout organisé e
 }
 ```
 
-Ensuite, référencez le fichier dans `Application.java` en utilisant l'annotation `@StyleSheet` avec le nom du fichier CSS. Pour cette étape, c'est `@StyleSheet("ws://css/card.css")`.
+Ensuite, ajoutez le fichier au bundle frontend depuis `Application.java` en utilisant `@BundleEntry("css/card.css")`. Le chemin est relatif à `src/main/frontend`.
 
-:::tip Protocole Webserver
-Ce tutoriel utilise le protocole Webserver pour référencer le fichier CSS. Pour en savoir plus sur son fonctionnement, consultez [Gestion des ressources](/docs/managing-resources/overview).
+:::tip Bundler frontend
+La configuration Maven du projet tutoriel exécute le surveillant frontend webforJ lorsque vous démarrez l'application avec `mvn`, de sorte que les changements sous `src/main/frontend` sont reconstruits pendant le développement. Pour en savoir plus, consultez [Bundler frontend](/docs/managing-resources/bundler/overview).
 :::
 
-### Ajout de classes CSS aux composants {#adding-css-classes-to-components}
+### Ajouter des classes CSS aux composants {#adding-css-classes-to-components}
 
-Vous pouvez ajouter ou supprimer dynamiquement des noms de classe aux composants en utilisant les méthodes `addClassName()` et `removeClassName()`. Pour ce tutoriel, il n'y a qu'une seule classe CSS utilisée :
+Vous pouvez ajouter ou supprimer dynamiquement des noms de classe aux composants à l'aide des méthodes `addClassName()` et `removeClassName()`. Pour ce tutoriel, une seule classe CSS est utilisée :
 
 ```java
 mainFrame.addClassName("card");
 ```
 
-## Application `Application` complétée {#completed-application}
+## Application `Application` terminée {#completed-application}
 
-Votre classe `Application` devrait maintenant ressembler à ceci :
+Votre classe `Application` devrait désormais ressembler à ceci :
 
 ```java title="Application.java"
 @SpringBootApplication
-@StyleSheet("ws://css/card.css")
+@BundleEntry("css/card.css")
 @AppTheme("system")
 @AppProfile(name = "Application Client", shortName = "CustomerApp")
 public class Application extends App {
@@ -198,22 +195,22 @@ public class Application extends App {
     Paragraph tutorial = new Paragraph("Application Tutoriel !");
     Button btn = new Button("Info");
 
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .setMaxWidth(200)
-        .addClickListener(e -> OptionDialog.showMessageDialog("Ceci est un tutoriel !", "Info"));
+    btn
+      .setTheme(ButtonTheme.PRIMARY)
+      .setMaxWidth(200)
+      .addClickListener(e ->
+        OptionDialog.showMessageDialog("C'est un tutoriel !", "Info")
+      );
 
-    mainFrame.setWidth("fit-content")
-        .addClassName("card")
-        .add(tutorial, btn);
+    mainFrame.setWidth("fit-content").addClassName("card").add(tutorial, btn);
   }
-
 }
 ```
 
-:::tip Plusieurs pages
-Pour une application plus complexe, vous pouvez diviser l'interface utilisateur en plusieurs pages pour une meilleure organisation. Ce concept est abordé plus tard dans ce tutoriel dans [Routage et composites](/docs/introduction/tutorial/routing-and-composites).
+:::tip Pages multiples
+Pour une application plus complexe, vous pouvez diviser l'UI en plusieurs pages pour une meilleure organisation. Ce concept est couvert plus tard dans ce tutoriel dans [Routage et Composites](/docs/introduction/tutorial/routing-and-composites).
 :::
 
 ## Étape suivante {#next-step}
 
-Après avoir créé une application fonctionnelle avec une interface utilisateur de base, la prochaine étape consiste à ajouter un modèle de données et à afficher les résultats dans un composant `Table` dans [Travailler avec des données](/docs/introduction/tutorial/working-with-data).
+Après avoir créé une application fonctionnelle avec une interface utilisateur de base, l'étape suivante consiste à ajouter un modèle de données et afficher les résultats dans un composant `Table` dans [Travailler avec des données](/docs/introduction/tutorial/working-with-data).

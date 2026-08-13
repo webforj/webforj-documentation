@@ -1,12 +1,12 @@
 package com.webforj.samples.components;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.concern.HasStyle;
 import com.webforj.concern.HasVisibility;
 
-@StyleSheet("ws://css/flexlayout/box.css")
+@BundleEntry("css/flexlayout/box.css")
 public class Box extends Composite<Div> implements HasStyle<Box>, HasVisibility<Box> {
 
   int boxNumber;

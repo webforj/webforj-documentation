@@ -14,7 +14,7 @@ webforJ includes a built-in translation system for looking up localized strings 
 
 The translation resolver is the system that looks up localized strings for a given key and locale. webforJ provides a default resolver, `BundleTranslationResolver`, that loads translations from Java `ResourceBundle` property files on the classpath. This works out of the box with no additional dependencies.
 
-### Resource bundle files
+### Resource bundle files {#resource-bundle-files}
 
 Place your translation files in the `src/main/resources` directory. The default resolver looks for files named `messages` with locale suffixes following the standard Java `ResourceBundle` naming convention:
 

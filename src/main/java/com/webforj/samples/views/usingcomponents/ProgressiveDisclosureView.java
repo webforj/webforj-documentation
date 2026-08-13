@@ -1,6 +1,6 @@
 package com.webforj.samples.views.usingcomponents;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -16,7 +16,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Progressive Disclosure View")
-@StyleSheet("ws://usingcomponents/progressivedisclosure.css")
+@BundleEntry("usingcomponents/progressivedisclosure.css")
 public class ProgressiveDisclosureView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
@@ -25,6 +25,8 @@ public class ProgressiveDisclosureView extends Composite<FlexLayout> {
   private CheckBox pushNotifications;
   private CheckBox marketingEmails;
   private CheckBox autoSave;
+  private CheckBox debugMode;
+  private CheckBox analytics;
   private Div advancedSettings;
   private Button enableAdvanced;
   private Button saveButton;
@@ -56,8 +58,8 @@ public class ProgressiveDisclosureView extends Composite<FlexLayout> {
     advancedSettings.addClassName("advanced-settings");
     advancedSettings.setStyle("display", "none");
 
-    CheckBox debugMode = new CheckBox("Debug mode");
-    CheckBox analytics = new CheckBox("Send analytics");
+    debugMode = new CheckBox("Debug mode");
+    analytics = new CheckBox("Send analytics");
 
     advancedSettings.add(debugMode, analytics);
 
@@ -96,6 +98,8 @@ public class ProgressiveDisclosureView extends Composite<FlexLayout> {
     enableAdvanced.setStyle("margin-top", "var(--dwc-space-m)");
     self.setDirection(FlexDirection.COLUMN);
     self.setAlignment(FlexAlignment.CENTER);
+    self.setStyle("max-height", "100vh");
+    self.setStyle("overflow-y", "auto");
     self.addClassName("settings-container");
     self.add(form);
   }
@@ -105,6 +109,8 @@ public class ProgressiveDisclosureView extends Composite<FlexLayout> {
     pushNotifications.addValueChangeListener(e -> enableSaveButton());
     marketingEmails.addValueChangeListener(e -> enableSaveButton());
     autoSave.addValueChangeListener(e -> enableSaveButton());
+    debugMode.addValueChangeListener(e -> enableSaveButton());
+    analytics.addValueChangeListener(e -> enableSaveButton());
 
     enableAdvanced.onClick(
         event -> {

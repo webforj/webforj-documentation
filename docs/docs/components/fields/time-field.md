@@ -41,7 +41,7 @@ With the `setMin()` and `setMax()` methods, you can specify a range of acceptabl
 
 - **For `setMin()`**: If the value entered into the component is earlier than the specified minimum time, the component will fail constraint validation. When both the min and max values are set, the min value must be a time that's the same as or earlier than the max value.
 
-- **For `setMax()`**: If the value entered into the component is later than the specified maximum time, the component will fail constraint validation. When both the min and max values are set, the max value must be a time that's the same as or later than the min value. 
+- **For `setMax()`**: If the value entered into the component is later than the specified maximum time, the component will fail constraint validation. When both the min and max values are set, the max value must be a time that's the same as or later than the min value.
 
 ## Value handling and localization {#value-handling-and-localization}
 
@@ -60,7 +60,7 @@ timeField.setText("09:15:00"); // valid
 :::
 
 
-:::info Picker UI 
+:::info Picker UI
 The appearance of the time picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
 :::
 

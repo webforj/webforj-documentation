@@ -1,75 +1,60 @@
 ---
 title: Prerequisites
+description: >-
+  What a webforJ development environment needs, a Java 21 or higher JDK, Maven
+  or Gradle, and an editor with Java support.
 sidebar_position: 1
-_i18n_hash: 079539f07a72647e2faa9a9a5eda5634
+_i18n_hash: 038e0cf692852d650329b263c25aaf55
 ---
-Der Einstieg in webforJ ist einfach, da es nur einige Voraussetzungen gibt. Verwenden Sie diesen Leitfaden, um Ihre Entwicklungsumgebung mit den notwendigen Tools einzurichten, die Sie benötigen, um mit webforJ zu starten.
+Der Einstieg in webforJ ist einfach, da es nur ein paar Voraussetzungen gibt. Verwenden Sie diesen Leitfaden, um Ihre Entwicklungsumgebung mit den wesentlichen Werkzeugen einzurichten, die Sie benötigen, um mit webforJ zu beginnen.
 
-<!-- vale off -->
-## Java Development Kit (JDK) 21 {#java-development-kit-jdk-21}
+## Java Development Kit (JDK) {#java-development-kit-jdk-21}
 
-<!-- vale on -->
+webforJ benötigt Java **21** oder höher. Jede Distribution dieser Version funktioniert, wählen Sie also diejenige, die Ihr Team bereits verwendet.
 
-Ein Java Development Kit (JDK) ist die wichtigste Voraussetzung für die Entwicklung mit webforJ und bietet die notwendigen Werkzeuge, um Java-Anwendungen zu kompilieren, auszuführen und zu verwalten. 
-Java **21** wird benötigt, um die Kompatibilität mit webforJ sicherzustellen und Zugang zu den neuesten Funktionen sowie Sicherheitsupdates des Java-Ökosystems zu erhalten. Das webforJ-Framework ist mit den offiziellen Oracle-JDKs und den Open-Source-Eclipse-Temurin-JDKs kompatibel.
-<!-- vale off -->
-### JDK-Installationslinks: {#jdk-installation-links}
-<!-- vale on -->
-:::tip  
-Wenn Sie ein UNIX-basiertes Betriebssystem verwenden, wird empfohlen, [SDKMAN!](https://sdkman.io/) zu verwenden, um Ihre Java-Umgebung zu verwalten. Es ermöglicht Ihnen, problemlos zwischen verschiedenen Java-Anbietern zu wechseln, ohne zusätzlichen Aufwand.  
+:::tip Empfohlen für die Entwicklung
+Entwickeln Sie auf einem [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime/releases)-Build. Es akzeptiert die Option `-XX:+AllowEnhancedClassRedefinition`, die es einem [Hotswap-Tool](/docs/configuration/deploy-reload/hotswap) ermöglicht, eine Änderung an der Struktur einer Klasse, ein neues Feld oder eine neue Methode in die laufende Anwendung zu übertragen.
 
-Alternativ können Sie [Jabba](https://github.com/shyiko/jabba) verwenden, das sowohl auf UNIX-basierten Systemen als auch auf Windows funktioniert. Es ist eine solide plattformübergreifende Lösung zur Verwaltung von Java-Versionen.  
+Bei jeder anderen Build werden Änderungen im Methodenkörper vor Ort angewendet, und eine Änderung an der Struktur einer Klasse wartet auf einen Neustart. Die Entscheidung betrifft nur den Computer, auf dem Sie entwickeln, und hat keine Auswirkungen auf das, was Sie paketieren oder wo Sie es bereitstellen.
 :::
 
-- Offizielle Oracle-JDKs finden Sie auf der [Java Downloads](https://www.oracle.com/java/technologies/downloads/) Seite von Oracle. 
-  - Wählen Sie die Java-Version **21**.
-  - Klicken Sie auf die Registerkarte für Linux, macOS oder Windows.
-  - Klicken Sie auf den Link, der Ihrer Computerarchitektur entspricht. 
-  - Siehe Oracles [JDK-Installationsanleitung](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html) für vollständige Informationen zur Installation eines Oracle JDK.
-- Open-Source-JDKs finden Sie auf der [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) Seite von Adoptium. 
-  - Verwenden Sie die Dropdown-Menüs, um das Betriebssystem, die Architektur, den Pakettyp und die JDK-Version **21** auszuwählen. 
-  - Klicken Sie auf den Link in der Tabelle für den Archivtyp, den Sie herunterladen möchten.
-  - Siehe Adoptiums [Installationsanleitung](https://adoptium.net/installation/) für vollständige Informationen zur Installation eines Eclipse Temurin JDK.
+Ein Versionsmanager ist der einfachste Weg, ein JDK zu installieren, und der einfachste Weg, später zwischen Versionen zu wechseln. [SDKMAN!](https://sdkman.io/) deckt UNIX-Systeme ab, und [Jabba](https://github.com/Jabba-Team/jabba) deckt UNIX-Systeme und Windows ab. Unter SDKMAN! erhalten Sie mit `sdk install java 21.0.11-jbr` eine JetBrains Runtime.
 
-<!-- vale off -->
-### Überprüfen Sie Ihre JDK-Installation {#verify-your-jdk-installation}
-<!-- vale on -->
-Nach der Installation des JDKs überprüfen Sie die Installation, indem Sie den folgenden Befehl in Ihrem Terminal oder Ihrer Eingabeaufforderung ausführen:
+Um ein Build selbst herunterzuladen:
 
-```bash
-java -version
-```
+- **Oracle JDK**: die [Java Downloads](https://www.oracle.com/java/technologies/downloads/) -Seite, mit Oracles [Installationsanleitung](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html).
+- **Eclipse Temurin**: die [neueste Versionen](https://adoptium.net/temurin/releases/) -Seite, mit Adoptiums [Installationsanleitung](https://adoptium.net/installation/).
+- **JetBrains Runtime**: die [Versionshinweise](https://github.com/JetBrains/JetBrainsRuntime/releases) -Seite.
 
-Wenn Ihr JDK korrekt installiert ist, sehen Sie eine Ausgabe mit den Details Ihrer JDK-Version, die die Version **21** angibt.
-<!-- vale off -->
-## Apache Maven {#apache-maven}
-<!-- vale on -->
+Führen Sie `java -version` aus, um zu bestätigen, welche Version in Ihrem Path ist.
 
-[Apache Maven](https://maven.apache.org/index.html) ist ein Tool zur Automatisierung des Builds und zur Verwaltung von Abhängigkeiten, das den Prozess der Einbindung von externen Bibliotheken wie webforJ in Ihr Projekt vereinfacht. 
-Neben der Unterstützung bei der Verwaltung von Abhängigkeiten kann Maven Aufgaben wie das Kompilieren von Code, das Ausführen von Tests und das Paketieren von Anwendungen automatisieren.
+## Build-Tool {#build-tool}
 
-### Maven-Installationslinks {#maven-installation-links}
-- Um die neueste Version von Maven zu installieren, besuchen Sie die [Apache Maven Download Page](https://maven.apache.org/download.cgi). 
-  - Die Seite [Installing Apache Maven](https://maven.apache.org/install.html) bietet einen Überblick über den Installationsprozess. 
-  - Baeldungs [How to Install Maven on Windows, Linux, and Mac](https://www.baeldung.com/install-maven-on-windows-linux-mac) ist eine ausführlichere Installationsanleitung für jedes Betriebssystem.
+webforJ wird mit Maven oder Gradle gebaut. [Archetypen](/docs/introduction/getting-started) generieren Maven-Projekte, sodass Maven der schnellste Weg zu einer neuen App ist, und ein bestehender Gradle-Build funktioniert auf die gleiche Weise.
 
-<!-- vale off -->
-### Überprüfen Sie Ihre Maven-Installation {#verify-your-maven-installation}
+<Tabs>
+<TabItem value="maven" label="Maven">
 
-<!-- vale on -->
+Installieren Sie Maven von der [Apache Maven Download-Seite](https://maven.apache.org/download.cgi), indem Sie die [Installationsanweisungen von Maven](https://maven.apache.org/install.html) oder Baeldungs [Leitfaden für jedes Betriebssystem](https://www.baeldung.com/install-maven-on-windows-linux-mac) befolgen.
 
-Nachdem Sie Maven installiert haben, überprüfen Sie die Installation, indem Sie den folgenden Befehl in Ihrem Terminal oder Ihrer Eingabeaufforderung ausführen:
+Führen Sie `mvn -v` aus, um die Installation zu bestätigen.
 
-```bash
-mvn -v
-```
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-Wenn Maven korrekt installiert ist, sollte die Ausgabe die Maven-Version, die Java-Version und Informationen zum Betriebssystem anzeigen.
+Installieren Sie Gradle, indem Sie Gradles [Installationsanleitung](https://gradle.org/install/) befolgen.
 
-## Java IDE {#java-ide}
+Führen Sie `gradle -v` aus, um die Installation zu bestätigen. Ein Projekt, das einen Gradle-Wrapper bereitstellt, benötigt überhaupt keine Installation, da `./gradlew` die Version abruft, die das Projekt festlegt.
 
-Eine Java IDE bietet eine umfassende Umgebung zum Schreiben, Testen und Debuggen Ihres Codes. Es gibt viele IDEs zur Auswahl, sodass Sie die auswählen können, die am besten zu Ihrem Workflow passt. Einige beliebte Optionen für die Java-Entwicklung sind:
+</TabItem>
+</Tabs>
 
-- **[Visual Studio Code](https://code.visualstudio.com/Download)**: Ein leichter, erweiterbarer Code-Editor mit Java-Unterstützung über Plugins.
-- **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Bekannt für seine leistungsstarke Java-Unterstützung und sein reichhaltiges Plugin-Ökosystem.
-- **[NetBeans](https://netbeans.apache.org/download/index.html)**: Eine kostenlose, Open-Source-IDE für Java und andere Sprachen, die für ihre Benutzerfreundlichkeit und die integrierten Projektvorlagen bekannt ist.
+Jeder Build führt die Arbeitszeit von webforJ über das [webforJ Build-Plugin](/docs/configuration/build-plugin) aus, das ein aus einem Archetypen erstelltes Projekt bereits hat.
+
+## Editor {#java-ide}
+
+Jeder Editor mit Java-Unterstützung funktioniert, verwenden Sie also denjenigen, der zu Ihrem Workflow passt. Häufige Auswahlmöglichkeiten:
+
+- **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Java-Unterstützung und ein Plugin-Ökosystem sofort verfügbar.
+- **[Visual Studio Code](https://code.visualstudio.com/Download)**: Ein leichter Editor, der seine Java-Unterstützung aus Erweiterungen bezieht.
+- **[Zed](https://zed.dev/download)**: Ein Code-Editor, der Java über eine Erweiterung aufnimmt, die den Eclipse-Java-Sprachserver für Sie herunterlädt und verwaltet.

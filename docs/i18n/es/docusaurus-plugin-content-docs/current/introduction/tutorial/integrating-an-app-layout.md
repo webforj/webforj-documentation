@@ -2,23 +2,22 @@
 title: Integrating an App Layout
 sidebar_position: 7
 description: Step 6 - Using the AppLayout and FlexLayout components.
-sidebar_class_name: new-content
-_i18n_hash: 66c364d83c3b6d574acaca5156bbb018
+_i18n_hash: ddf62eb6d62a711c38f9ddaf9caeabad
 ---
-En este paso, reunirás todas las partes de tu aplicación en un diseño cohesivo. Al final de este paso, la estructura de tu aplicación se parecerá mucho al [arquetipo de SideMenu](/docs/building-ui/archetypes/sidemenu), y tendrás una mejor comprensión de cómo funcionan los siguientes componentes y conceptos:
+En este paso, reunirás todas las partes de tu aplicación en un diseño de aplicación cohesivo. Al final de este paso, la estructura de tu aplicación se parecerá mucho al [arquetipo SideMenu](/docs/building-ui/archetypes/sidemenu), y tendrás una mejor comprensión de cómo funcionan los siguientes componentes y conceptos:
 
 - [`FlexLayout`](/docs/components/flex-layout)
-- [Route Outlets](/docs/routing/route-hierarchy/route-outlets)
+- [Puntos de salida de ruta](/docs/routing/route-hierarchy/route-outlets)
 - [`AppLayout`](/docs/components/app-layout)
 - [`AppNav`](/docs/components/appnav)
 
 ## Ejecutando la aplicación {#running-the-app}
 
-A medida que desarrollas tu aplicación, puedes usar [6-integrating-an-app-layout](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout) como comparación. Para ver la aplicación en acción:
+Mientras desarrollas tu aplicación, puedes usar [6-integrating-an-app-layout](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout) como comparación. Para ver la aplicación en acción:
 
-1. Navega al directorio de nivel superior que contiene el archivo `pom.xml`, que es `6-integrating-an-app-layout` si estás siguiendo la versión en GitHub.
+1. Navega hasta el directorio de nivel superior que contiene el archivo `pom.xml`, que es `6-integrating-an-app-layout` si estás siguiendo la versión en GitHub.
 
-2. Usa el siguiente comando de Maven para ejecutar la aplicación de Spring Boot localmente:
+2. Usa el siguiente comando de Maven para ejecutar la aplicación Spring Boot localmente:
     ```bash
     mvn
     ```
@@ -27,15 +26,15 @@ Ejecutar la aplicación abre automáticamente un nuevo navegador en `http://loca
 
 ## Creando un componente reutilizable {#creating-a-reusable-component}
 
-En un paso anterior, [Routing and Composites](/docs/introduction/tutorial/routing-and-composites), creaste dos componentes compuestos que contenían el contenido de la tabla de clientes y el formulario de clientes. Como parte de este paso, crearás un componente compuesto más pequeño y reutilizable para mostrar el nombre de la aplicación dentro del menú lateral y una página de información. Si decides cambiar el nombre de la aplicación en el futuro, solo tendrías que actualizarlo en este componente.
+En un paso anterior, [Ruteo y Compuestos](/docs/introduction/tutorial/routing-and-composites), creaste dos componentes compuestos que contenían el contenido de la tabla de clientes y el formulario de clientes. Como parte de este paso, crearás un componente compuesto más pequeño y reutilizable para mostrar el nombre de la aplicación dentro del menú lateral y una página de información. Si decides cambiar el nombre de la aplicación en el futuro, solo necesitarás actualizarlo en este componente.
 
-En `src/main/java/com/webforj/tutorial/components`, crea una clase llamada `AppTitle`. El componente vinculado para `AppTitle` será un `FlexLayout`, un componente contenedor que se utiliza a lo largo de este paso para mostrarte cómo hacer diseños más complejos. Para este `FlexLayout`, organizarás la dirección de los elementos y el espaciado entre ellos. Eso se logra utilizando los métodos `setDirection()` y `setSpacing()` respectivamente.
+En `src/main/java/com/webforj/tutorial/components`, crea una clase llamada `AppTitle`. El componente vinculado para `AppTitle` será un `FlexLayout`, un componente contenedor que se usa a lo largo de este paso para mostrarte cómo hacer diseños más complejos. Para este `FlexLayout`, organizarás la dirección de los elementos y el espaciado entre los elementos. Eso se hace utilizando los métodos `setDirection()` y `setSpacing()` respectivamente.
 
 ```java title='AppTitle.java'
 // Haz que el componente vinculado sea un FlexLayout
 public class AppTitle extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();
-  
+
   public AppTitle() {
 
     // Organiza los elementos verticalmente
@@ -47,13 +46,13 @@ public class AppTitle extends Composite<FlexLayout> {
 }
 ```
 
-Luego utiliza elementos HTML estándar para crear el título y el subtítulo. Establecer el margen inferior de un elemento de encabezado en `0px` acerca los elementos, y puedes dar estilo al subtítulo utilizando [variables CSS de DWC](/docs/styling/css-variables).
+Luego, usa elementos HTML estándar para crear el título y el subtítulo. Establecer el margen inferior de un elemento encabezado a `0px` acerca los elementos, y puedes estilizar el subtítulo utilizando [variables CSS de DWC](/docs/styling/css-variables).
 
 ```java title='AppTitle.java' {3-4,7-9,13}
 public class AppTitle extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();
   private H2 title = new H2("Gestor de Clientes");
-  private Paragraph subTitle = new Paragraph("Un Sistema de Registros Sencillo");
+  private Paragraph subTitle = new Paragraph("Un Sistema de Registro Simple");
 
   public AppTitle() {
     title.setStyle("margin-bottom", "0px");
@@ -80,8 +79,8 @@ public AppTitle(boolean showSubTitle) {
 
       // Agregar el título por defecto
       .add(title);
-  
-  // Opcionalmente muestra el subtítulo
+
+  // Opcionalmente mostrar el subtítulo
   if (showSubTitle) {
     self.add(subTitle);
   }
@@ -90,13 +89,13 @@ public AppTitle(boolean showSubTitle) {
 
 ### `AppTitle` completado {#completed-app-title}
 
-Juntos, el componente reutilizable debería verse como sigue:
+En conjunto, el componente reutilizable debería verse como el siguiente:
 
 ```java title='AppTitle.java'
 public class AppTitle extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();
   private H2 title = new H2("Gestor de Clientes");
-  private Paragraph subTitle = new Paragraph("Un Sistema de Registros Sencillo");
+  private Paragraph subTitle = new Paragraph("Un Sistema de Registro Simple");
 
   public AppTitle(boolean showSubTitle) {
     title.setStyle("margin-bottom", "0");
@@ -106,7 +105,7 @@ public class AppTitle extends Composite<FlexLayout> {
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("0px")
         .add(title);
-        
+
     if (showSubTitle) {
       self.add(subTitle);
     }
@@ -116,20 +115,20 @@ public class AppTitle extends Composite<FlexLayout> {
 
 ## Creando una página de información {#creating-an-about-page}
 
-El primer lugar para agregar el componente `AppTitle` recién creado será una página de información. Esta página incluye una imagen y el componente `AppTitle`, centrado en la página usando otro `FlexLayout`.
+El primer lugar para agregar el componente `AppTitle` recién creado será una página de información. Esta página incluye una imagen y el componente `AppTitle`, centrado en la página al usar otro `FlexLayout`.
 
-### Centrar contenido usando un `FlexLayout` {#centering-content-using-a-flexlayout}
+### Centrando contenido usando un `FlexLayout` {#centering-content-using-a-flexlayout}
 
-El objetivo es centrar el contenido de la página de información usando el `FlexLayout`. El componente `FlexLayout` sigue el [modelo de diseño de flexbox de CSS](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). Los métodos para el `FlexLayout`, como los utilizados anteriormente para orientar los elementos en una columna, son diferentes maneras de organizar los elementos.
+El objetivo es centrar el contenido de la página de información utilizando el `FlexLayout`. El componente `FlexLayout` sigue el [modelo de diseño flexbox de CSS](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). Los métodos para el `FlexLayout`, como los utilizados anteriormente para orientar los elementos en una columna, son diferentes maneras de organizar los elementos.
 
 Los métodos para organizar elementos en un `FlexLayout` utilizan un sistema direccional relativo. En lugar de pensar en los ejes horizontal y vertical, es mejor pensar en el eje paralelo a los elementos como el eje principal, y el eje perpendicular a los elementos como el eje cruzado.
 
-Establecer tanto las propiedades `FlexJustifyContent` como `FlexAlignment` en `CENTER` centrará los elementos a lo largo de ambos ejes, principal y cruzado, en el `FlexLayout`, y hacer que el `FlexLayout` ocupe la totalidad de su contenedor padre lo hace centrado en la página. 
+Establecer tanto las propiedades `FlexJustifyContent` como `FlexAlignment` a `CENTER` centrará los elementos a lo largo de ambos ejes, principal y cruzado, en el `FlexLayout`, y hacer que el `FlexLayout` ocupe la totalidad de su contenedor padre lo hace centrado en la página.
 
 ```java
 private final FlexLayout layout = new FlexLayout();
 
-// Llenar todo el espacio del elemento padre
+// Rellena todo el espacio del elemento padre
 layout.setSize("100%", "100%");
 
 // Hacer que el eje principal sea vertical
@@ -142,13 +141,13 @@ layout.setAlignment(FlexAlignment.CENTER);
 layout.setJustifyContent(FlexJustifyContent.CENTER);
 ```
 
-Para ayudarte a visualizar cómo funcionan los diferentes métodos, echa un vistazo al blog [FlexWrap your mind around webforJ's FlexLayout](/blog/2025/08/26/flexlayout-container).
+Para ayudar a visualizar cómo funcionan los diferentes métodos, echa un vistazo a la publicación del blog [FlexWrap your mind around webforJ's FlexLayout](/blog/2025/08/26/flexlayout-container).
 
 ### Agregando recursos {#adding-resources}
 
 Uno de los elementos que irá dentro del `FlexLayout` centrado es una imagen. Para este tutorial, puedes ver y descargar la [imagen de la página de información](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout/src/main/resources/static/images/Files.svg) en GitHub. Una vez descargada, agrégala a la carpeta estática de tu proyecto en `src/main/resources/static/images` y nómbrala `Files.svg`.
 
-Colocar esta imagen en la carpeta estática te permite referenciarla utilizando el protocolo del Servidor Web, como hiciste al referenciar el archivo CSS en el primer paso, [Creando una Aplicación Básica](/docs/introduction/tutorial/creating-a-basic-app). Luego, puedes usarla dentro de tu aplicación como un elemento HTML, así:
+Colocar esta imagen en la carpeta estática te permite referenciarla usando el [protocolo del servidor web](/docs/managing-resources/assets-protocols#the-webserver-protocol). Luego, puedes usarla dentro de tu aplicación como un elemento HTML, así:
 
 ```java
 private Img fileImg = new Img("ws://images/Files.svg");
@@ -156,11 +155,11 @@ private Img fileImg = new Img("ws://images/Files.svg");
 
 ### Creando `AboutView` {#creating-about-view}
 
-Al igual que las dos páginas de la aplicación existentes, la página de información será una vista enrutada. En `src/main/java/com/webforj/tutorial/views`, agrega una clase llamada `AboutView`. Usa un `FlexLayout` como el componente vinculado, como lo hiciste para `AppTitle`.
+Al igual que las dos páginas de aplicación existentes, la página de información será una vista ruteable. En `src/main/java/com/webforj/tutorial/views`, agrega una clase llamada `AboutView`. Usa un `FlexLayout` como el componente vinculado, como hiciste para `AppTitle`.
 
-Dado que has nombrado la clase `AboutView`, no hay necesidad de dar un valor personalizado para el mapeo de URL; esta página se renderiza en `http://localhost:8080/about` por defecto.
+Dado que has nombrado la clase `AboutView`, no es necesario dar un valor personalizado para el mapeo de URL; esta página se renderiza en `http://localhost:8080/about` por defecto.
 
-Aquí tienes cómo se ve al usar los conceptos de los pasos anteriores con los componentes recién creados para crear una nueva vista con contenido centrado:
+Así es como se ve cuando usas los conceptos de los pasos anteriores con los componentes recién creados para crear una nueva vista con contenido centrado:
 
 ```java title='AboutView.java'
 @Route()
@@ -182,13 +181,13 @@ public class AboutView extends Composite<FlexLayout> {
 
 ## Creando la ruta `Layout` {#creating-the-layout-route}
 
-Se menciona brevemente en el paso de [Routing and Composites](/docs/introduction/tutorial/routing-and-composites), pero hay dos [tipos de rutas](/docs/routing/route-hierarchy/route-types). `MainView`, `FormView` y `AboutView` son todas rutas de `View`, mientras que el tipo de ruta que usarás para crear el menú lateral de la aplicación es una ruta de `Layout`.
+Se menciona brevemente en el paso de [Ruteo y Compuestos](/docs/introduction/tutorial/routing-and-composites), pero hay dos [tipos de rutas](/docs/routing/route-hierarchy/route-types). `MainView`, `FormView`, y `AboutView` son todas rutas de tipo `View`, mientras que el tipo de ruta que usarás para crear el menú lateral de la aplicación es una ruta de tipo `Layout`.
 
-Las rutas de Layout envuelven las vistas secundarias y permiten que ciertas partes de la UI persistan a través de vistas, como un menú lateral. En `src/main/java/com/webforj/tutorial/layouts`, crea una clase llamada `MainLayout`.
+Las rutas de diseño envuelven las vistas secundarias y permiten que ciertas partes de la interfaz de usuario persistan a través de las vistas, como un menú lateral. En `src/main/java/com/webforj/tutorial/layouts`, crea una clase llamada `MainLayout`.
 
-### Route outlets {#route-outlets}
+### Puntos de salida de ruta {#route-outlets}
 
-Al igual que las rutas de vista, `MainLayout` necesita una anotación `@Route`. Sin embargo, dado que tiene `Layout` como sufijo y las rutas de layout no contribuyen a la URL, esta anotación no necesita argumentos.
+Al igual que las rutas de vista, `MainLayout` necesita una anotación `@Route`. Sin embargo, dado que tiene `Layout` como sufijo y las rutas de diseño no contribuyen a la URL, esta anotación no necesita argumentos.
 
 ```java title="MainLayout.java" {1}
 @Route
@@ -200,7 +199,7 @@ public class MainLayout {
 }
 ```
 
-La aplicación sabe qué vistas renderizar dentro de `MainLayout` declarando la clase de layout como la [salida de ruta](/docs/routing/route-hierarchy/route-outlets) en cada vista. Los pasos anteriores solo tienen un atributo `value` establecido en las anotaciones `@Route`, así que ahora necesitarás declarar explícitamente cuáles son los atributos `value` y `outlet` para las clases de vista.
+La aplicación sabe qué vistas renderizar dentro de `MainLayout` al declarar la clase de diseño como el [punto de salida de ruta](/docs/routing/route-hierarchy/route-outlets) en cada vista. Los pasos anteriores solo tienen una propiedad `value` establecida en las anotaciones `@Route`, así que ahora deberás declarar explícitamente cuáles son las propiedades `value` y `outlet` para las clases de vista.
 
 <!-- vale Google.Quotes = NO -->
 <Tabs>
@@ -222,25 +221,25 @@ La aplicación sabe qué vistas renderizar dentro de `MainLayout` declarando la 
 </Tabs>
 <!-- vale Google.Quotes = YES -->
 
-:::note Toques finales
+:::note Últimos detalles
 Esta es la última modificación requerida para `FormView` y `AboutView` en este paso, así que recuerda actualizar la anotación `@Route` para esas vistas antes de ejecutar tu aplicación.
 :::
 
 ## Usando el componente `AppLayout` {#using-the-app-layout-component}
 
-Ahora que tu aplicación renderiza las vistas dentro de `MainLayout`, puedes elegir dónde se renderizan esos componentes. Elegir el `AppLayout` como el componente vinculado para `MainLayout` te permite almacenar las vistas en un área de contenido principal por defecto, mientras también te da diferentes áreas para agregar elementos para el encabezado y el menú lateral.
+Ahora que tu aplicación renderiza las vistas dentro de `MainLayout`, puedes elegir dónde se renderizan esos componentes. Elegir el `AppLayout` como el componente vinculado para `MainLayout` te permite almacenar las vistas en un área de contenido principal de forma predeterminada, al mismo tiempo que te brinda diferentes áreas para agregar elementos para el encabezado y el menú lateral.
 
 ### Slots {#slots}
 
-Para muchos contenedores webforJ, utilizar los métodos `add()` agrega componentes de UI al área de contenido principal. En el componente `AppLayout`, hay múltiples áreas para agregar componentes de UI, cada una en una ranura separada. Al marcar `MainLayout` como una ruta de layout y establecer su componente vinculado como un `AppLayout`, las vistas se renderizan automáticamente en la ranura de contenido principal.
+Para muchos contenedores de webforJ, usar los métodos `add()` agrega componentes de interfaz de usuario al área de contenido principal. En el componente `AppLayout`, hay múltiples áreas para agregar componentes de interfaz de usuario, cada una en una ranura separada. Al marcar `MainLayout` como una ruta de diseño y establecer su componente vinculado como un `AppLayout`, las vistas se renderizan automáticamente en la ranura de contenido principal.
 
-En este paso, usarás las ranuras `drawer-title` y `drawer` para crear un menú lateral, y la ranura `header` para mostrar qué página está el usuario y un interruptor para el menú lateral.
+En este paso, usarás las ranuras `drawer-title` y `drawer` para crear un menú lateral, y la ranura `header` para mostrar en qué página se encuentra el usuario y un interruptor para el menú lateral.
 
 ### Creando un menú lateral {#making-a-side-menu}
 
-Cuando hay suficiente espacio en la pantalla del dispositivo, el componente `AppLayout` muestra un cajón. Aquí agregarás nuevamente el `AppTitle` y elementos que permitirán a los usuarios navegar por la aplicación.
+Cuando hay suficiente espacio en pantalla en el dispositivo, el componente `AppLayout` muestra un cajón. Aquí es donde agregarás el `AppTitle` nuevamente y elementos que permitirán a los usuarios navegar por la aplicación.
 
-Por defecto, `AppLayout` no muestra un encabezado de cajón, pero usar el método `setDrawerHeaderVisible()` te permite mostrar elementos que están dentro de la ranura `drawer-title`, que será el `AppTitle` con su subtítulo mostrado.
+Por defecto, `AppLayout` no muestra un encabezado del cajón, pero usar el método `setDrawerHeaderVisible()` te permite mostrar elementos que están dentro de la ranura `drawer-title`, que será el `AppTitle` con su subtítulo mostrado.
 
 ```java
 private AppLayout appLayout = new AppLayout();
@@ -252,13 +251,13 @@ appLayout.setDrawerHeaderVisible(true);
 appLayout.addToDrawerTitle(new AppTitle(true));
 ```
 
-La ranura `drawer` debería contener los componentes que permiten a los usuarios navegar en la aplicación. Usar el componente [`AppNav`](/docs/components/appnav) hace fácil crear nuevas opciones de navegación. Para cada enlace, solo necesitas crear un `AppNavItem`. Los componentes `AppNavItem` en este tutorial utilizan tres parámetros:
+La ranura `drawer` debe contener los componentes que permiten a los usuarios navegar en la aplicación. Usar el componente [`AppNav`](/docs/components/appnav) facilita la creación de nuevas opciones de navegación. Para cada enlace, solo necesitas crear un `AppNavItem`. Los componentes `AppNavItem` en este tutorial usan tres parámetros:
 
-- La etiqueta del enlace
+- La etiqueta para el enlace
 - La vista objetivo
-- Un componente [`Icon`](/docs/components/icon) opcional, utilizando imágenes de [Tabler](https://tabler.io/icons)
+- Un componente opcional [`Icon`](/docs/components/icon), utilizando imágenes de [Tabler](https://tabler.io/icons)
 
-Agrupar todas las configuraciones del cajón en `MainLayout` se ve como sigue:
+Agrupando toda la configuración del cajón en `MainLayout` se ve de la siguiente manera:
 
 ```java title="MainLayout"
 @Route
@@ -280,14 +279,13 @@ public class MainLayout extends Composite<AppLayout> {
         TablerIcon.create("info-circle")));
     self.addToDrawer(appNav);
   }
-}
 ```
 
 ### Creando un encabezado {#making-a-header}
 
-La ranura `header` debería incluir dos elementos: un interruptor para mostrar u ocultar el menú lateral y una forma de mostrar el título del marco. Ambos elementos estarán dentro de un componente [Toolbar](/docs/components/toolbar), otra forma de organizar componentes.
+La ranura `header` debe incluir dos elementos: un interruptor para mostrar u ocultar el menú lateral y una forma de mostrar el título del marco. Ambos elementos estarán dentro de un componente [Toolbar](/docs/components/toolbar), otra forma de organizar componentes.
 
-Puedes incluir el interruptor para el cajón `AppLayout` con el componente `AppDrawerToggle`. Este componente ya está estilizado con un ícono comúnmente utilizado para opciones de menú ocultas y apunta al cajón para abrirlo y cerrarlo.
+Puedes incluir el interruptor para el cajón del `AppLayout` con el componente `AppDrawerToggle`. Este componente ya está estilizado con un icono comúnmente utilizado para opciones de menú ocultas, y apunta al cajón para abrirlo y cerrarlo.
 
 ```java
 // Crear los componentes contenedores
@@ -301,7 +299,7 @@ appLayout.addToHeader(toolbar);
 toolbar.addToStart(new AppDrawerToggle());
 ```
 
-El encabezado también puede mostrar el título del marco utilizando el evento de navegación para recuperar detalles sobre el componente entrante, mientras tiene un listener de eventos para eliminar el registro y prevenir fugas de memoria.
+El encabezado también puede mostrar el título del marco utilizando el evento de navegación para recuperar detalles sobre el componente entrante, mientras tiene un escuchador de eventos para eliminar el registro y prevenir pérdidas de memoria.
 
 ```java
 // Crear el elemento H1 y el registro de navegación
@@ -311,7 +309,7 @@ private ListenerRegistration<NavigateEvent> navigateRegistration;
 // Registrar el evento al navegar
 navigateRegistration = Router.getCurrent().onNavigate(this::onNavigate);
 
-// Eliminar escuchadores antes de destruir MainLayout
+// Eliminar escuchas antes de que se destruya MainLayout
 @Override
 protected void onDidDestroy() {
   if (navigateRegistration != null) {
@@ -329,9 +327,9 @@ private void onNavigate(NavigateEvent ev) {
 }
 ```
 
-## `MainLayout` completado
+## `MainLayout` completado {#completed-mainlayout}
 
-Aquí está `MainLayout` con el contenido creado para el cajón y el encabezado dentro de un `AppLayout`:
+Aquí está `MainLayout` con contenido creado para el cajón y el encabezado dentro de un `AppLayout`:
 
 <!-- vale off -->
 <ExpandableCode title="MainLayout.java" language="java">
@@ -389,7 +387,7 @@ Aquí está `MainLayout` con el contenido creado para el cajón y el encabezado 
 
 ## Actualizando `FormView` {#updating-form-view}
 
-Como se mencionó previamente, el único cambio en `FormView` fue en la anotación `@Route`.
+Como se mencionó anteriormente, el único cambio en `FormView` fue en la anotación `@Route`.
 
   ```java
   @Route(value = "customer/:id?<[0-9]+>", outlet = MainLayout.class)
@@ -397,7 +395,7 @@ Como se mencionó previamente, el único cambio en `FormView` fue en la anotaci�
 
 ## Actualizando `MainView` {#updating-main-view}
 
-Para `MainView`, cambiarás el componente vinculado de un `Div` a un `FlexLayout`. Esto te permite centrar la tabla, mientras mueves componentes específicos dentro del diseño. Usar el método `setItemAlignment()` te permite elegir un componente en el diseño y moverlo, así puedes mantener la tabla centrada mientras anclas el botón de agregar cliente en la esquina superior derecha del diseño.
+Para `MainView`, cambiarás el componente vinculado de un `Div` a un `FlexLayout`. Esto te permite centrar la tabla, al mismo tiempo que mover componentes específicos dentro del diseño. Usar el método `setItemAlignment()` te permite seleccionar un componente en el diseño y moverlo, para que puedas mantener la tabla centrada mientras anclas el botón de agregar cliente en la parte superior derecha del diseño.
 
 ```java
 // Cambiar el componente vinculado a un FlexLayout
@@ -407,9 +405,9 @@ private FlexLayout self = getBoundComponent();
 self.setItemAlignment(FlexAlignment.END, addCustomer);
 ```
 
-Otra mejora que puedes hacer aquí es el ancho de la tabla. En lugar de un ancho fijo, puedes establecerlo para que coincida con su contenedor padre, el `FlexLayout`. Luego ese `FlexLayout` puede tener un ancho máximo para que no se estire demasiado en pantallas más grandes. 
+Otra mejora que puedes hacer aquí es el ancho de la tabla. En lugar de un ancho fijo, puedes configurarlo para que coincida con su contenedor padre, el `FlexLayout`. Luego ese `FlexLayout` puede tener un ancho máximo para que no se estire demasiado en pantallas grandes.
 
-```java 
+```java
 private FlexLayout self = getBoundComponent();
 private Table<Customer> table = new Table<>();
 
@@ -419,16 +417,16 @@ self.setMaxWidth(2000);
 table.setSize("100%", "294px");
 ```
 
-Uniendo estos elementos y haciendo otro método para obtener el `FlexLayout` centrado como los anteriores, hace que `MainView` con los cambios resaltados se vea así:
+Juntando estos cambios y haciendo otro método para centrar el `FlexLayout` como en los anteriores, hace que `MainView` tenga los cambios destacados:
 
 <!-- vale off -->
 <ExpandableCode title="MainView.java" language="java">
 {`@Route(value = "/", outlet = MainLayout.class)
   @FrameTitle("Tabla de Clientes")
-  // highlight-next-line
+  // línea de resaltado siguiente
   public class MainView extends Composite<FlexLayout> {
     private final CustomerService customerService;
-    // highlight-next-line
+    // línea de resaltado siguiente
     private FlexLayout self = getBoundComponent();
     private Table<Customer> table = new Table<>();
     private Button addCustomer = new Button("Agregar Cliente", ButtonTheme.PRIMARY,
@@ -438,16 +436,16 @@ Uniendo estos elementos y haciendo otro método para obtener el `FlexLayout` cen
       this.customerService = customerService;
       addCustomer.setWidth(200);
       buildTable();
-      // highlight-next-line
+      // línea de resaltado siguiente
       setFlexLayout();
-      // highlight-next-line
+      // línea de resaltado siguiente
       self.add(addCustomer, table);
-      // highlight-next-line
+      // línea de resaltado siguiente
       self.setItemAlignment(FlexAlignment.END, addCustomer);
     }
 
     private void buildTable() {
-      // highlight-next-line
+      // línea de resaltado siguiente
       table.setSize("100%", "294px");
       table.addColumn("firstName", Customer::getFirstName).setLabel("Nombre");
       table.addColumn("lastName", Customer::getLastName).setLabel("Apellido");
@@ -461,19 +459,19 @@ Uniendo estos elementos y haciendo otro método para obtener el `FlexLayout` cen
       table.addItemClickListener(this::editCustomer);
     }
 
-    // highlight-next-line
+    // línea de resaltado siguiente
     private void setFlexLayout() {
-      // highlight-next-line
+      // línea de resaltado siguiente
       self.setSize("100%", "100%")
-          // highlight-next-line
+          // línea de resaltado siguiente
           .setMargin("auto")
-          // highlight-next-line
+          // línea de resaltado siguiente
           .setMaxWidth(2000)
-          // highlight-next-line
+          // línea de resaltado siguiente
           .setDirection(FlexDirection.COLUMN)
-          // highlight-next-line
+          // línea de resaltado siguiente
           .setAlignment(FlexAlignment.CENTER);
-          // highlight-next-line
+          // línea de resaltado siguiente
     }
 
     private void editCustomer(TableItemClickEvent<Customer> e) {

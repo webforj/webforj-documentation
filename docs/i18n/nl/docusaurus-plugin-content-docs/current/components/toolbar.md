@@ -1,43 +1,47 @@
 ---
 title: Toolbar
 sidebar_position: 145
-_i18n_hash: 54bfdf481b7e149762dc4544c192c6e6
+description: >-
+  Lay out action controls with the Toolbar component, placing components into
+  Start, Title, Content, and End slots with compact mode.
+_i18n_hash: 8dcb4d5bcecce36e656de87218bd3359
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-toolbar" />
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="toolbar" location="com/webforj/component/layout/toolbar/Toolbar" top='true'/>
 
-Toolbars bieden gebruikers snelle toegang tot kernacties en navigatie-elementen. De webforJ `Toolbar` component is een horizontale container die een reeks actieknoppen, pictogrammen of andere componenten kan bevatten. Het is goed geschikt voor het beheren van paginacontroles en het huisvesten van belangrijke functies zoals een zoekbalk of een notificatieknop.
+Toolbars bieden gebruikers snelle toegang tot kernacties en navigatie-elementen. De webforJ `Toolbar` component is een horizontale container die een set actieknoppen, pictogrammen of andere componenten kan bevatten. Het is bijzonder geschikt voor het beheren van pagina bedieningen en het huisvesten van belangrijke functies zoals een zoekbalk of een meldingsknop.
 
 <!-- INTRO_END -->
 
-## Organiseren van toolbarinhoud {#organizing-toolbar-content}
+## Organisatie van toolbarinhoud {#organizing-toolbar-content}
 
-De `Toolbar` organiseert essentiële componenten in een gemakkelijk toegankelijke en consistente indeling. Standaard neemt het de volledige breedte van zijn bovenliggende element in beslag en biedt het vier plaatsingsgebieden, of _slots_, voor het organiseren van componenten:
+De `Toolbar` organiseert essentiële componenten in een eenvoudig toegankelijk en consistent lay-out. Standaard neemt het de volledige breedte van zijn ouder element in en biedt vier plaatsingsgebieden, of _slots_, voor het organiseren van componenten:
 
-- **Start**: Bevat meestal een <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppDrawerToggle" code='true'>AppDrawerToggle</JavadocLink> of een homeknop.
+- **Start**: Bevat doorgaans een <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppDrawerToggle" code='true'>AppDrawerToggle</JavadocLink> of een home-knop.
 - **Titel**: Gebruikt voor app-namen of logo's.
-- **Inhoud**: Voor acties met hoge aandacht zoals zoeken of navigeren.
+- **Inhoud**: Voor acties met hoge aandacht zoals zoeken of navigatie.
 - **Einde**: Minder frequente acties, zoals gebruikersprofiel of hulp.
 
-Elk slot heeft een methode voor het toevoegen van componenten: `addToStart()`, `addToTitle()`, `addToContent()`, en `addToEnd()`.
+Elk slot heeft een methode om componenten toe te voegen: `addToStart()`, `addToTitle()`, `addToContent()`, en `addToEnd()`.
 
-De volgende demo toont hoe je een `Toolbar` aan een [AppLayout](./app-layout) toevoegt en alle ondersteunde slots effectief benut.
-Om meer te lezen over het implementeren van toolbars binnen een `AppLayout`, zie [Sticky toolbars](./app-layout#sticky-toolbars) en [Mobiele navigatie-indeling](./app-layout#mobile-navigation-layout).
+De volgende demo laat zien hoe je een `Toolbar` toevoegt aan een [AppLayout](./app-layout) en gebruik maakt van alle ondersteunde slots.
+
+Om meer te lezen over het implementeren van toolbars binnen een `AppLayout`, zie [Sticky toolbars](./app-layout#sticky-toolbars) en [Mobiel navigatielay-out](./app-layout#mobile-navigation-layout).
 
 <ComponentDemo
 path='/webforj/toolbarslots'
 frame='desktop'
 files={[
   'src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java',
-  'src/main/resources/static/css/toolbar/toolbar-slots-view.css',
+  'src/main/frontend/css/toolbar/toolbar-slots-view.css',
 ]}
 />
 
 ## Compacte modus {#compact-mode}
 
-Gebruik `setCompact(true)` om de padding rond een `Toolbar` te verminderen. Dit is handig wanneer je meer inhoud op het scherm wilt passen, vooral in apps met gestapelde toolbars of beperkte ruimte. De toolbar gedraagt zich nog steeds hetzelfde; alleen de hoogte is verminderd. Deze modus wordt vaak gebruikt in kopteksten, zijbalken of indelingen waar ruimte beperkt is.
+Gebruik `setCompact(true)` om de padding rond een `Toolbar` te verminderen. Dit is handig wanneer je meer inhoud op het scherm wilt passen, vooral in apps met gestapelde toolbars of beperkte ruimte. De toolbar gedraagt zich nog steeds hetzelfde—alleen de hoogte is verminderd. Deze modus wordt vaak gebruikt in kopteksten, zijbalken, of lay-outs waar de ruimte beperkt is.
 
 ```java
 Toolbar toolbar = new Toolbar();
@@ -52,9 +56,9 @@ files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java
 
 ## `ProgressBar` in toolbars {#progressbar-in-toolbars}
 
-Een `ProgressBar` dient als visuele indicator voor lopende processen, zoals het laden van gegevens, het uploaden van bestanden of het voltooien van stappen in een flow. Wanneer deze binnen een `Toolbar` wordt geplaatst, sluit de `ProgressBar` netjes aan de onderrand aan, waardoor deze niet opdringerig is en toch duidelijk de voortgang aan gebruikers communiceert.
+Een `ProgressBar` dient als visuele indicator voor lopende processen, zoals het laden van gegevens, het uploaden van bestanden, of het voltooien van stappen in een flow. Wanneer deze in een `Toolbar` wordt geplaatst, sluit de `ProgressBar` netjes aan de onderrand aan, waardoor deze onopvallend blijft terwijl deze toch duidelijk de voortgang aan gebruikers communiceert.
 
-Je kunt het combineren met andere componenten in de toolbar zoals knoppen of labels zonder de indeling te verstoren.
+Je kunt het combineren met andere componenten in de toolbar zoals knoppen of labels zonder de lay-out te verstoren.
 
 <ComponentDemo
 path='/webforj/toolbarprogressbar'
@@ -62,7 +66,7 @@ frame='desktop'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.java']}
 />
 
-## Stijlen {#styling}
+## Styling {#styling}
 
 ### Thema's {#themes}
 
@@ -71,7 +75,7 @@ files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.
 <ComponentDemo
 path='/webforj/toolbartheme'
 files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java']}
-height='475px'
+height='590px'
 />
 
 <TableBuilder name="Toolbar" />

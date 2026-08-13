@@ -57,7 +57,7 @@ Each `RadioButton` can have its own event listener to detect when a user toggles
 
 **Adding event listeners to each `RadioButton`**
 
-```java 
+```java
 agree.onValueChange(e -> changeEvent());
 neutral.onValueChange(e -> changeEvent());
 disagree.onValueChange(e -> changeEvent());

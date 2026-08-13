@@ -1,17 +1,20 @@
 ---
 sidebar_position: 2
 title: Lifecycle Observers
-_i18n_hash: a584e996523ba2b98ecb9d7ab2f366f3
+description: >-
+  Hook into route lifecycle stages by implementing WillEnter, DidEnter,
+  WillLeave, DidLeave, and Activate observer interfaces.
+_i18n_hash: 3f39161991064d0d2506c0cb1dcd3503
 ---
-Observers stellen componenten in staat om te reageren op levenscyclusgebeurtenissen door interfaces voor specifieke fasen te implementeren. Dit patroon zorgt voor een duidelijke scheiding van verantwoordelijkheden en vereenvoudigt het omgaan met navigatielogica.
+Observers stellen componenten in staat te reageren op levenscyclusgebeurtenissen door interfaces te implementeren voor specifieke fasen. Dit patroon zorgt voor een schone scheiding van verantwoordelijkheden en vereenvoudigt de afhandeling van navigatielogica.
 
 ## Beschikbare observers {#available-observers}
 
-- **`WillEnterObserver`**: Hiermee kunt u taken afhandelen voordat een route wordt betreden, zoals het ophalen van benodigde gegevens of het blokkeren van navigatie.
-- **`DidEnterObserver`**: Ideaal voor het afhandelen van acties nadat de component is bevestigd, zoals het weergeven van gegevens of het activeren van animaties.
-- **`WillLeaveObserver`**: Biedt een manier om logica te beheren voordat een gebruiker een route verlaat, zoals het controleren op niet-opgeslagen wijzigingen.
-- **`DidLeaveObserver`**: Wordt gebruikt voor opruimacties of andere taken die moeten worden uitgevoerd nadat een component van de DOM is losgekoppeld.
-- **`ActivateObserver`**: <DocChip chip='since' label='25.03' /> Geactiveerd wanneer een gecachete component opnieuw wordt geactiveerd, zoals bij navigeren naar dezelfde route met verschillende parameters.
+- **`WillEnterObserver`**: stelt je in staat om taken af te handelen voordat een route wordt betreden, zoals het ophalen van benodigde gegevens of het blokkeren van navigatie.
+- **`DidEnterObserver`**: Ideaal voor het afhandelen van acties nadat de component is gekoppeld, zoals het weergeven van gegevens of het starten van animaties.
+- **`WillLeaveObserver`**: biedt een manier om logica te beheren voordat een gebruiker een route verlaat, zoals het controleren op niet-opgeslagen wijzigingen.
+- **`DidLeaveObserver`**: wordt gebruikt voor opruimacties of andere taken die moeten worden uitgevoerd nadat een component is losgekoppeld van de DOM.
+- **`ActivateObserver`**: <DocChip chip='since' label='25.03' /> Wordt getriggerd wanneer een gecachete component opnieuw geactiveerd wordt, zoals bij navigeren naar dezelfde route met andere parameters.
 
 ## Voorbeeld: authenticatie met `WillEnterObserver` {#example-authentication-with-willenterobserver}
 
@@ -31,15 +34,15 @@ public class DashboardView extends Composite<Div> implements WillEnterObserver {
 }
 ```
 
-Hier controleert `onWillEnter` of de gebruiker is geauthenticeerd. Als dat niet het geval is, wordt de navigatie veto, waardoor de navigatie niet wordt voltooid en in plaats daarvan naar de inlogpagina wordt doorgestuurd.
+Hier controleert `onWillEnter` of de gebruiker is geauthenticeerd. Als dit niet het geval is, wordt de navigatie tegengehouden, waardoor de navigatie incompleet blijft en in plaats daarvan naar de inlogpagina wordt doorgestuurd.
 
-:::warning Voorbeeld van Geauthenticeerde Routes - Niet Klaar Voor Productie
-Dit voorgaande is slechts een voorbeeld van hoe u geauthenticeerde routes kunt gebruiken.
-Dit **Is Geen** voorbeeld van hoe u een productieklare authenticatiesysteem zou schrijven.
-U moet de concepten en patronen die in dit voorbeeld worden gebruikt, nemen en aanpassen zodat ze werken met uw authenticatiestroom/systeem voor uw app.
+:::warning Voorbeeld van Geauthenticeerde Routes - Niet Geschikt voor Productie
+Dit is alleen een voorbeeld van hoe geauthenticeerde routes te gebruiken.
+Dit **is geen** voorbeeld van hoe je een authenticatiesysteem op productieniveau zou schrijven.
+Je moet de concepten en patronen die in dit voorbeeld zijn gebruikt aanpassen om te werken met jouw authenticatiestroom/systeem voor je app.
 :::
 
-## Voorbeeld: gegevens ophalen bij route-ingang met `DidEnterObserver` {#example-fetching-data-on-route-entry-with-didenterobserver}
+## Voorbeeld: gegevens ophalen bij het betreden van een route met `DidEnterObserver` {#example-fetching-data-on-route-entry-with-didenterobserver}
 
 ```java
 @Route(value = "profile")
@@ -58,7 +61,7 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
 }
 ```
 
-Dit voorbeeld toont aan hoe `DidEnterObserver` wordt gebruikt om profielgegevens op te halen en weer te geven zodra de component aan de DOM is bevestigd.
+Dit voorbeeld demonstreert het gebruik van `DidEnterObserver` om profielgegevens op te halen en weer te geven zodra de component aan de DOM is gekoppeld.
 
 ## Voorbeeld: Omgaan met niet-opgeslagen wijzigingen met `WillLeaveObserver` {#example-handling-unsaved-changes-with-willleaveobserver}
 
@@ -77,7 +80,7 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 
     if(hasUnsavedChanges) {
       ConfirmDialog.Result result = showConfirmDialog(
-          "Er zijn niet-opgeslagen wijzigingen. Wilt u ze vervallen of opslaan?",
+          "Er zijn niet-opgeslagen wijzigingen. Wil je ze negeren of opslaan?",
           "Niet-opgeslagen Wijzigingen",
           ConfirmDialog.OptionType.OK_CANCEL,
           ConfirmDialog.MessageType.WARNING);
@@ -86,10 +89,10 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 }
 ```
 
-In dit voorbeeld vraagt `onWillLeave` de gebruiker om bevestiging via een dialoogvenster als er niet-opgeslagen wijzigingen zijn, waarbij de navigatie wordt verworpen als de gebruiker ervoor kiest om te blijven.
+In dit voorbeeld vraagt `onWillLeave` de gebruiker om een bevestigingsdialoog als er niet-opgeslagen wijzigingen zijn, waarbij de navigatie wordt tegengehouden als de gebruiker ervoor kiest om te blijven.
 
-:::info Navigatieblokkering en Veto-afhandeling
-Voor meer informatie over het blokkeren van navigatie, zie [Navigatieblokkering en Veto-afhandeling](./navigation-blocking)
+:::info Navigatieblokkering en Veto-behandeling
+Voor meer informatie over het blokkeren van navigatie, zie [Navigatieblokkering en Veto-behandeling](./navigation-blocking)
 :::
 
 ## Voorbeeld: Opruimen met `DidLeaveObserver` {#example-cleanup-with-didleaveobserver}
@@ -105,7 +108,7 @@ public class NotificationsView extends Composite<Div> implements DidLeaveObserve
 }
 ```
 
-Dit voorbeeld wist meldingen nadat de gebruiker de `NotificationsView` verlaat, gebruikmakend van de `DidLeaveObserver` voor opruiming.
+Dit voorbeeld wist notificaties nadat de gebruiker de `NotificationsView` verlaat, waarbij `DidLeaveObserver` wordt gebruikt voor opruiming.
 
 ## Voorbeeld: Gegevens vernieuwen met `ActivateObserver` <DocChip chip='since' label='25.03' /> {#example-refreshing-data-with-activateobserver}
 
@@ -117,8 +120,8 @@ public class ProductView extends Composite<Div> implements ActivateObserver {
   @Override
   public void onActivate(ActivateEvent event, ParametersBag parameters) {
     String productId = parameters.get("id").orElseThrow();
-    
-    // Component wordt hergebruikt met verschillende parameters
+
+    // Component wordt hergebruikt met andere parameters
     if (!productId.equals(currentProductId)) {
       currentProductId = productId;
       refreshProductData(productId);
@@ -133,8 +136,8 @@ public class ProductView extends Composite<Div> implements ActivateObserver {
 }
 ```
 
-Dit voorbeeld toont aan hoe `ActivateObserver` wordt gebruikt om gegevens te vernieuwen bij navigeren naar dezelfde route met verschillende parameters. De component blijft gecached en wordt opnieuw geactiveerd in plaats van opnieuw te worden aangemaakt, zodat de UI wordt bijgewerkt om de juiste gegevens voor de huidige parameters weer te geven zonder een nieuwe component te instantieren.
+Dit voorbeeld demonstreert het gebruik van `ActivateObserver` om gegevens te vernieuwen wanneer je naar dezelfde route met andere parameters navigeert. De component blijft gecached en wordt geactiveerd in plaats van opnieuw aangemaakt, zodat de UI wordt bijgewerkt om de juiste gegevens voor de huidige parameters weer te geven zonder een nieuwe component te instantiëren.
 
 :::tip Activatie in Componenthiërarchieën
-Bij navigeren naar een route, wordt de `Activate` gebeurtenis geactiveerd voor **alle gecachete componenten in de hiërarchie** die in het huidige pad blijven. Bijvoorbeeld, wanneer je navigeert van `/products/123` naar `/products/456`, ontvangt zowel de bovenliggende `ProductsLayout` component als de onderliggende `ProductView` component de `Activate` gebeurtenis als ze gecached zijn en in de routen hiërarchie blijven.
+Bij het navigeren naar een route wordt de `Activate`-gebeurtenis geactiveerd voor **alle gecachete componenten in de hiërarchie** die in het huidige pad blijven. Bijvoorbeeld, bij het navigeren van `/products/123` naar `/products/456`, ontvangen zowel de bovenliggende `ProductsLayout`-component als de onderliggende `ProductView`-component de `Activate`-gebeurtenis als ze gecached zijn en in de routehiërarchie blijven.
 :::

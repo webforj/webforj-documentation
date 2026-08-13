@@ -1,6 +1,6 @@
 package com.webforj.samples.views.usingcomponents;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -12,6 +12,7 @@ import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
@@ -19,7 +20,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Conditional State View")
-@StyleSheet("ws://usingcomponents/conditionalstate.css")
+@BundleEntry("usingcomponents/conditionalstate.css")
 public class ConditionalStateView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
@@ -70,6 +71,7 @@ public class ConditionalStateView extends Composite<FlexLayout> {
 
     self.setDirection(FlexDirection.COLUMN);
     self.setAlignment(FlexAlignment.CENTER);
+    self.setJustifyContent(FlexJustifyContent.CENTER);
     self.addClassName("conditional-container");
     self.add(card);
   }

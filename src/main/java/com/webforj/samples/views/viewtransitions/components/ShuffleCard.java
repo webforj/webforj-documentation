@@ -1,6 +1,6 @@
 package com.webforj.samples.views.viewtransitions.components;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.FeatherIcon;
@@ -8,7 +8,7 @@ import com.webforj.component.icons.Icon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 
-@StyleSheet("ws://css/viewtransitions/components/shuffle-card.css")
+@BundleEntry("css/viewtransitions/components/shuffle-card.css")
 public class ShuffleCard extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 

@@ -82,6 +82,31 @@
         <to>/$1/blog/tags/$2.html</to>
     </rule>
     <rule>
+        <name>Main Cookbook</name>
+        <from>^/cookbook$</from>
+        <to>/cookbook.html</to>
+    </rule>
+    <rule>
+        <name>Cookbook Tags List</name>
+        <from>^/cookbook/tags$</from>
+        <to>/cookbook/tags.html</to>
+    </rule>
+    <rule>
+        <name>Cookbook Tags Page</name>
+        <from>^/cookbook/tags/([^/]+)$</from>
+        <to>/cookbook/tags/$1.html</to>
+    </rule>
+    <rule>
+        <name>Cookbook First Subdirectory</name>
+        <from>^/cookbook/([^/]+)$</from>
+        <to>/cookbook/$1.html</to>
+    </rule>
+    <rule>
+        <name>Cookbook Second Subdirectory</name>
+        <from>^/cookbook/([^/]+)/([^/]+)$</from>
+        <to>/cookbook/$1/$2.html</to>
+    </rule>
+    <rule>
         <name>CSS Folder</name>
         <from>^/css$</from>
         <set type="status">404</set>

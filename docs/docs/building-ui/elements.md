@@ -1,37 +1,39 @@
 ---
 sidebar_position: 5
 title: Elements
-description: Integrate raw HTML tags and custom web components in webforJ using the Element class to add children, set content, and invoke JavaScript.
+sidebar_class_name: updated-content
+description: Integrate raw HTML tags and custom web components in webforJ using the Element class to add children, set content, and call JavaScript functions.
 slug: element
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/element/Element" top='true'/>
 
-webforJ developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
+webforJ developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components.
 
 :::important
-The `Element` component cannot be extended, and is not the base component for all components within webforJ. To read more about webforJ's component hierarchy, read [this article](../architecture/controls-components.md).
+The `Element` component can't be extended, and isn't the base component for all components within webforJ. To read more about webforJ's component hierarchy, read [this article](../architecture/controls-components.md).
 :::
 
 <ComponentDemo
-path='/webforj/elementinputdemo'
+path='/webforj/elementmeter'
 files={[
-  'src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java',
-  'src/main/resources/static/css/element/elementInput.css',
+  'src/main/java/com/webforj/samples/views/element/ElementMeterView.java',
+  'src/main/resources/static/css/element/elementMeter.css',
 ]}
+height='240px'
 />
 
 ## Adding events {#adding-events}
 
-In order to utilize events that may come with your element, you can use the `Element` component's `addEventListener` methods. Adding an event requires at least the type/name of the event the component expects, and a listener to be added to the event. 
+In order to utilize events that may come with your element, you can use the `Element` component's `addEventListener` methods. Adding an event requires at least the type/name of the event the component expects, and a listener to be added to the event.
 
 There are also additional options to further customize events by using the Event Options configurations.
 
 <ComponentDemo
-path='/webforj/elementinputevent'
+path='/webforj/elementtaginput'
 files={[
-  'src/main/java/com/webforj/samples/views/element/ElementInputEventView.java',
-  'src/main/resources/static/css/element/elementInputEvent.css',
+  'src/main/java/com/webforj/samples/views/element/ElementTagInputView.java',
+  'src/main/resources/static/css/element/elementTagInput.css',
 ]}
 height='240px'
 />
@@ -53,15 +55,15 @@ The `Element` component supports the composition of child components. Developers
 
 
 <ComponentDemo
-path='/webforj/elementinputtext'
+path='/webforj/elementfigure'
 files={[
-  'src/main/java/com/webforj/samples/views/element/ElementInputTextView.java',
-  'src/main/resources/static/css/element/elementInput.css',
+  'src/main/java/com/webforj/samples/views/element/ElementFigureView.java',
+  'src/main/resources/static/css/element/elementFigure.css',
 ]}
-height='175px'
+height='240px'
 />
 
-:::tip
+:::warning Replacing content
 Calling `setHtml()` or `setText()` will replace content currently contained between the element's opening and closing tags.
 :::
 
@@ -77,18 +79,18 @@ In addition to adding components to an `Element`, the following methods are impl
 
 To access the various child components present within an `Element`, or information regarding these components, the following methods are available:
 
-1. **`getComponents()`**: This method returns a Java `List` of all children of the `Element`. 
+1. **`getComponents()`**: This method returns a Java `List` of all children of the `Element`.
 
 2. **`getComponents(String id)`**: This method is similar to the method above, but takes the server-side ID of a specific component and returns it when found.
 
-3. **`getComponentCount()`**: Returns the number of child components present within the `Element`. 
+3. **`getComponentCount()`**: Returns the number of child components present within the `Element`.
 
 
 ## Calling JavaScript functions {#calling-javascript-functions}
 
-The `Element` component provides two API methods which allow for JavaScript functions to be called on HTML elements. 
+The `Element` component provides two API methods which allow for JavaScript functions to be called on HTML elements.
 
-1. **`callJsFunction(String functionName, Object... arguments)`**: This method takes a function name as a string, and optionally takes one or more Objects as parameters for the function. This method is executed synchronously, meaning that the **executing thread is blocked** until the JS method returns, and results in a round trip. The results of the function are returned as an `Object`, which can be cast and used in Java. 
+1. **`callJsFunction(String functionName, Object... arguments)`**: This method takes a function name as a string, and optionally takes one or more Objects as parameters for the function. This method is executed synchronously, meaning that the **executing thread is blocked** until the JS method returns, and results in a round trip. The results of the function are returned as an `Object`, which can be cast and used in Java.
 
 2. **`callJsFunctionAsync(String functionName, Object... arguments)`**: As with the previous method, a function name and optional arguments for the function can be passed. This method executes asynchronously and **doesn't block the executing thread**. It returns a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, which allows for further interaction with the function and its payload.
 
@@ -98,31 +100,21 @@ Arguments that are passed to these methods which are used in the execution of JS
 - `this`: Using the `this` keyword will give the method a reference to the client-side version of the invoking component.
 - `Component`: Any Java component instances passed into one of the JsFunction methods will be replaced with the client-side version of the component.
 
-:::info
+:::warning Waiting for component arguments
 Both synchronous and asynchronous function calling will wait until the `Element` has been added to the DOM before executing a function, but `callJsFunction()` won't wait for any `component` arguments to attach, which can result in failure. Conversely, invoking `callJsFunctionAsync()` may never complete if a component argument is never attached.
 :::
 
-In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> is then used to create another message box once the asynchronous function has been completed.
+In the demo below, selecting **Focus search** calls the native `focus()` method on the search input with `callJsFunctionAsync()`. The resulting <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> is used to confirm the call with a toast once the asynchronous function completes.
 
 <ComponentDemo
-path='/webforj/elementinputfunction'
+path='/webforj/elementsearch'
 files={[
-  'src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java',
-  'src/main/resources/static/css/element/elementInput.css',
+  'src/main/java/com/webforj/samples/views/element/ElementSearchView.java',
+  'src/main/resources/static/css/element/elementSearch.css',
 ]}
 height='240px'
 />
 
 ## Executing JavaScript {#executing-javascript}
 
-In addition to executing JavaScript from the app level, it's possible to execute JavaScript from the `Element` level as well. Performing this execution at the `Element` level allows the context of the HTML element to be included in the execution. This is a powerful tool that acts as a developer's conduit to interactive capabilities with client-side environments.
-
-Similar to function execution, executing JavaScript can be done synchronously or asynchronously with the following methods:
-
-1. **`executeJs(String script)`**: This method takes a `String`, which will be executed as JavaScript code in the client. This script is executed synchronously, meaning that the **executing thread is blocked** until the JS execution returns, and results in a round trip. The results of the function are returned as an `Object`, which can be cast and used in Java.
-
-2. **`executeJsAsync(String script)`**: As with the previous method, a passed `String` parameter will be executed as JavaScript code on the client. This method executes asynchronously and **doesn't block the executing thread**. It returns a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, which allows for further interaction with the function and its payload.
-
-:::tip
-These methods have access to the `component` keyword, which gives the JavaScript code access to the client-side instance of the component executing the JavaScript.
-:::
+Beyond calling named functions, an `Element` can run raw scripts scoped to that element with `executeJs`, `executeJsAsync`, and `executeJsVoidAsync`. See [Execute JavaScript](./execute-javascript.md) for these methods, their synchronous and asynchronous behavior, and how returned values convert to Java types.

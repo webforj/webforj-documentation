@@ -1,16 +1,16 @@
 package com.webforj.samples.views.terminal;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.terminal.Terminal;
 import com.webforj.component.terminal.event.TerminalDataEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.views.terminal.commands.ClearCommand;
+import com.webforj.samples.views.terminal.commands.ConfirmCommand;
 import com.webforj.samples.views.terminal.commands.DateCommand;
 import com.webforj.samples.views.terminal.commands.HelpCommand;
 import com.webforj.samples.views.terminal.commands.MsgCommand;
-import com.webforj.samples.views.terminal.commands.PromptCommand;
 import com.webforj.samples.views.terminal.commands.TerminalCommand;
 import com.webforj.samples.views.terminal.commands.TimeCommand;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Route
 @FrameTitle("Custom Terminal")
-@StyleSheet("ws://css/terminal/terminal-view.css")
+@BundleEntry("css/terminal/terminal-view.css")
 public class TerminalView extends Composite<Terminal> {
   private final Terminal self = getBoundComponent();
   private final StringBuilder commandBuffer = new StringBuilder();
@@ -46,7 +46,7 @@ public class TerminalView extends Composite<Terminal> {
         List.of(
             new TimeCommand(),
             new DateCommand(),
-            new PromptCommand(),
+            new ConfirmCommand(),
             new MsgCommand(),
             new ClearCommand(),
             new HelpCommand(commands));

@@ -1,36 +1,39 @@
 ---
 sidebar_position: 12
 title: Translation
-_i18n_hash: 276130dcd9ff26441b844042d4cdc5dd
+description: >-
+  Resolve localized strings from resource bundles or custom sources with the t()
+  method, MessageFormat placeholders, and browser locale detection.
+_i18n_hash: 565ad5b41fe9fa72e363b2db84809cbe
 ---
 # Vertaling <DocChip chip='since' label='25.12' />
 
-webforJ bevat een ingebouwd vertaalsysteem voor het opzoeken van gelokaliseerde strings op sleutel. Het systeem bestaat uit een vertaalresolver die sleutels aan gelokaliseerde tekst koppelt, een `HasTranslation` concern interface dat een handige `t()` methode biedt, `App.getTranslation()` voor directe toegang overal, automatische provinciale detectie vanuit de browser en ondersteuning voor aangepaste vertaale bronnen zoals databases.
+webforJ omvat een ingebouwd vertalingssysteem voor het opzoeken van gelokaliseerde strings op sleutel. Het systeem bestaat uit een vertaalresolver die sleutels toewijst aan gelokaliseerde teksten, een `HasTranslation` concerninterface die een handige `t()`-methode biedt, `App.getTranslation()` voor directe toegang overal, automatische lokale detectie vanuit de browser, en ondersteuning voor aangepaste vertaalketens zoals databases.
 
 <AISkillTip skill="webforj-localizing-apps" />
 
 ## Vertaalresolver {#translation-resolver}
 
-De vertaalresolver is het systeem dat gelokaliseerde strings voor een gegeven sleutel en provincie opzoekt. webforJ biedt een standaard resolver, `BundleTranslationResolver`, die vertalingen laadt vanuit Java `ResourceBundle` eigenschapsbestanden op het classpath. Dit werkt direct uit de doos zonder extra afhankelijkheden.
+De vertaalresolver is het systeem dat gelokaliseerde strings voor een gegeven sleutel en lokale opzoekt. webforJ biedt een standaard resolver, `BundleTranslationResolver`, die vertalingen laadt uit Java `ResourceBundle`-eigenschappenbestanden op het classpath. Dit werkt direct uit de doos zonder extra afhankelijkheden.
 
-### Hulpbundelbestanden
+### Hulpbronbundelbestanden {#resource-bundle-files}
 
-Plaats uw vertaalbestanden in de `src/main/resources` directory. De standaardresolver zoekt naar bestanden met de naam `messages` met provincie suffixen die de standaard Java `ResourceBundle` naamgevingsconventie volgen:
+Plaats uw vertaalbestanden in de map `src/main/resources`. De standaardresolver zoekt naar bestanden met de naam `messages` met lokale suffixen volgens de standaard Java `ResourceBundle` naamgevingsconventie:
 
 ```text
-messages.properties        # Standaard/noodgevallen vertalingen
+messages.properties        # Standaard/terugvalvertalingen
 messages_en.properties     # Engels
 messages_de.properties     # Duits
 messages_fr_CA.properties  # Frans (Canada)
 ```
 
-Elk bestand bevat sleutel-waarde paren. Sleutels zijn identificatoren die u in de code gebruikt, en waarden zijn de vertaalde strings. U kunt [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) plaatsen zoals `{0}`, `{1}` voor dynamische waarden:
+Elk bestand bevat sleutel-waarde paren. Sleutels zijn identificatoren die u in code gebruikt, en waarden zijn de vertaalde strings. U kunt [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) placeholders zoals `{0}`, `{1}` voor dynamische waarden opnemen:
 
 ```properties title="messages.properties"
 app.title=Mailbox
 menu.inbox=Inbox
-menu.outbox=Verzonden
-greeting=Hallo {0}, u heeft {1} nieuwe berichten
+menu.outbox=Outbox
+greeting=Hallo {0}, je hebt {1} nieuwe berichten
 ```
 
 ```properties title="messages_de.properties"
@@ -40,19 +43,19 @@ menu.outbox=Postausgang
 greeting=Hallo {0}, Sie haben {1} neue Nachrichten
 ```
 
-De resolver delegeert aan Java's standaard [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) resolutie keten, die automatisch provincie matching en fallback behandelt.
+De resolver delegeert aan Java's standaard [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) resolutiechain, die locale-matching en terugval automatisch afhandelt.
 
-### Geconfigureerde ondersteunde provincies {#configuring-supported-locales}
+### Geconfigureerde ondersteunde locales {#configuring-supported-locales}
 
-De instelling `supported-locales` vertelt webforJ welke provincies uw app ondersteunt. Deze lijst wordt gebruikt door autodetectie om de provinciale voorkeur van de gebruiker te vergelijken met beschikbare vertalingen. De eerste provincie in de lijst wordt gebruikt als de standaard fallback wanneer er geen betere match wordt gevonden. De eigenschaps sleutel is `webforj.i18n.supported-locales` en accepteert een lijst van [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) taal tags, bijvoorbeeld `en, de`.
+De instelling `supported-locales` geeft webforJ aan welke locales uw app ondersteunt. Deze lijst wordt gebruikt door autodetectie om de lokale van de browser van de gebruiker te matchen met beschikbare vertalingen. De eerste locale in de lijst wordt gebruikt als de standaard fallback wanneer er geen betere match wordt gevonden. De eigenschaps sleutel is `webforj.i18n.supported-locales` en accepteert een lijst van [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) taaltags, bijvoorbeeld `en, de`.
 
 :::info Meer info
 Zie de [Configuratie](/docs/configuration/properties) sectie om te leren hoe u eigenschappen voor verschillende omgevingen kunt instellen.
 :::
 
-## De `t()` methode {#the-t-method}
+## De `t()`-methode {#the-t-method}
 
-Componenten die de `HasTranslation` concern interface implementeren, krijgen toegang tot de `t()` methode voor het vertalen van tekst. De methode neemt een vertaal sleutel en retourneert de gelokaliseerde string voor de huidige app provincie:
+Componenten die de `HasTranslation` concerninterface implementeren, krijgen toegang tot de `t()`-methode voor het vertalen van tekst. De methode neemt een vertaalsleutel en retourneert de gelokaliseerde string voor de huidige app-locale:
 
 ```java
 public class MainLayout extends Composite<AppLayout> implements HasTranslation {
@@ -61,28 +64,28 @@ public class MainLayout extends Composite<AppLayout> implements HasTranslation {
     // Eenvoudige vertaling
     String title = t("app.title");
 
-    // Vertaling met MessageFormat parameters
+    // Vertaling met MessageFormat-parameters
     String greeting = t("greeting", userName, messageCount);
 
-    // Vertaling voor een specifieke provincie
+    // Vertaling voor een specifieke locale
     String germanTitle = t(Locale.GERMAN, "app.title");
   }
 }
 ```
 
-U kunt ook `App.getTranslation()` rechtstreeks overal gebruiken zonder de interface te implementeren:
+U kunt ook `App.getTranslation()` direct overal gebruiken zonder de interface te implementeren:
 
 ```java
 String title = App.getTranslation("app.title");
 ```
 
-:::info Eerlijke fallback
-Als een vertaal sleutel niet wordt gevonden, retourneert `t()` de sleutel zelf in plaats van een uitzondering te genereren. Dit betekent dat uw app niet crasht als er een vertaling ontbreekt. De sleutel wordt zoals is weergegeven, en er wordt een waarschuwing gelogd zodat u ontbrekende vertalingen tijdens de ontwikkeling kunt bijhouden.
+:::info Soepele terugval
+Als een vertaalsleutel niet wordt gevonden, retourneert `t()` de sleutel zelf in plaats van een uitzondering te gooien. Dit betekent dat uw app niet breekt als een vertaling ontbreekt. De sleutel wordt zoals deze is weergegeven en een waarschuwing wordt gelogd, zodat u ontbrekende vertalingen tijdens de ontwikkeling kunt volgen.
 :::
 
-## Geïmplementeerde vertaalde componenten {#implementing-translated-components}
+## Geëntegreerde vertaalde componenten {#implementing-translated-components}
 
-Een vertaald component combineert doorgaans `HasTranslation` met [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Gebruik `t()` wanneer u UI-elementen creëert om de initiële vertaalde tekst in te stellen. Om runtime taalwisseling te ondersteunen, implementeer `LocaleObserver` en werk dezelfde tekst bij in `onLocaleChange()`.
+Een vertaald component combineert typisch `HasTranslation` met [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Gebruik `t()` wanneer u UI-elementen maakt om de aanvankelijke vertaalde tekst in te stellen. Om runtime-taalwisseling te ondersteunen, implementeer `LocaleObserver` en werk dezelfde tekst bij in `onLocaleChange()`.
 
 ```java title="MainLayout.java"
 @Route
@@ -113,12 +116,12 @@ public class MainLayout extends Composite<AppLayout>
 ```
 
 :::tip Gegevensbinding
-Het gegevensbindingsysteem ondersteunt vertaalde validatie- en transformatieberichten met behulp van `Supplier<String>` met `t()`. Zie [dynamische validatieberichten](/docs/data-binding/validation/validators#dynamic-validation-messages), [dynamische transformeringsberichten](/docs/data-binding/transformation#dynamic-transformer-error-messages), en [provincie-bewuste Jakarta Validatie](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
+Het gegevensbindingsysteem ondersteunt vertaald validatie- en transformatieteksten met behulp van `Supplier<String>` met `t()`. Zie [dynamische validatieteksten](/docs/data-binding/validation/validators#dynamic-validation-messages), [dynamische transformatormeldingen](/docs/data-binding/transformation#dynamic-transformer-error-messages), en [locale-bewuste Jakarta-validatie](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
 :::
 
-## Aangepaste vertaal resolvers {#custom-translation-resolvers}
+## Aangepaste vertaalketens {#custom-translation-resolvers}
 
-De standaard resolver laadt vertalingen vanuit Java `ResourceBundle` eigenschapsbestanden. Om vertalingen vanuit een andere bron te laden, zoals een database of een externe dienst, implementeer `TranslationResolver`:
+De standaardresolver laadt vertalingen uit Java `ResourceBundle`-eigenschappenbestanden. Om vertalingen vanuit een andere bron te laden, zoals een database of een externe service, implementeer `TranslationResolver`:
 
 ```java title="DatabaseTranslationResolver.java"
 public class DatabaseTranslationResolver implements TranslationResolver {
@@ -154,13 +157,13 @@ public class DatabaseTranslationResolver implements TranslationResolver {
 
 ### Registreren van een aangepaste resolver {#registering-a-custom-resolver}
 
-In een eenvoudige webforJ app, stel de resolver in voordat de app start, bijvoorbeeld met een [app levenscyclus luisteraar](/docs/advanced/lifecycle-listeners):
+In een gewone webforJ-app, stel de resolver in voordat de app start, bijvoorbeeld met een [app lifecycle listener](/docs/advanced/lifecycle-listeners):
 
 ```java
 App.setTranslationResolver(new DatabaseTranslationResolver(repository, supportedLocales));
 ```
 
-In een Spring Boot app, expose de resolver als een bean:
+In een Spring Boot-app, stel de resolver bloot als een bean:
 
 ```java title="MessageSourceConfig.java"
 @Configuration
@@ -177,6 +180,6 @@ public class MessageSourceConfig {
 }
 ```
 
-:::info Standaard resolver in Spring Boot
-Wanneer geen aangepaste `TranslationResolver` bean is gedefinieerd, biedt de Spring auto-configuratie een standaard `BundleTranslationResolver` geconfigureerd met de ondersteunde provincies vanuit `application.properties`.
+:::info Standaardresolver in Spring Boot
+Wanneer er geen aangepaste `TranslationResolver`-bean is gedefinieerd, biedt de Spring auto-configuratie een standaard `BundleTranslationResolver` die is geconfigureerd met de ondersteunde locales uit `application.properties`.
 :::

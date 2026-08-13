@@ -1,6 +1,6 @@
 package com.webforj.samples.views.table;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Route
-@StyleSheet("ws://css/table/table-row-styling-view.css")
+@BundleEntry("css/table/table-row-styling-view.css")
 public class TableRowStylingView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Table<Person> table = new Table<>();

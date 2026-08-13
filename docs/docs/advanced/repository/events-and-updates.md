@@ -18,7 +18,7 @@ Every `commit()` call fires a <JavadocLink type="data" location="com/webforj/dat
 repository.onCommit(event -> {
   // Get all committed entities
   List<Customer> commits = event.getCommits();
-  
+
   // Check if single entity update
   if (event.isSingleCommit()) {
     Customer updated = event.getFirstCommit();
@@ -84,7 +84,7 @@ Event listeners hold references to your components. If you don't remove them, th
 
 ```java
 // Keep reference to remove later
-ListenerRegistration<RepositoryCommitEvent<Data>> registration = 
+ListenerRegistration<RepositoryCommitEvent<Data>> registration =
   repository.onCommit(event -> {
     updateDisplay(event.getCommits());
   });

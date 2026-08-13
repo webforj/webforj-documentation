@@ -1,0 +1,31 @@
+.activity-feed {
+  background: var(--dwc-surface-3);
+  border: thin solid var(--dwc-color-default);
+  border-radius: var(--dwc-border-radius-m);
+  padding: var(--dwc-space-m);
+  width: 440px;
+}
+
+.activity-feed__heading {
+  margin: 0 0 var(--dwc-space-s) 0;
+}
+
+.activity-feed__row {
+  padding: var(--dwc-space-s) 0;
+}
+
+.activity-feed__divider {
+  height: 1px;
+  background: var(--dwc-color-default);
+  flex-shrink: 0;
+}
+
+.activity-feed__message {
+  font-size: 0.95rem;
+}
+
+.activity-feed__time {
+  color: var(--dwc-color-default-text-light);
+  font-size: 0.85rem;
+  display: block;
+}

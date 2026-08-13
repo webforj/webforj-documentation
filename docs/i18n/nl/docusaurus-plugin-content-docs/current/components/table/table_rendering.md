@@ -2,16 +2,19 @@
 sidebar_position: 20
 title: Rendering
 slug: rendering
-_i18n_hash: 8eb5ec6f614d406b57a70fb7472636d5
+description: >-
+  Transform Table cells into text, badges, icons, links, or custom HTML with
+  built-in renderers and the setRenderer method.
+_i18n_hash: 314a210c06d9b920038308ed7c357f97
 ---
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/renderer/Renderer" top='true'/>
 
-Een renderer bepaalt hoe elke cel in een kolom wordt weergegeven. In plaats van een ruwe waarde te tonen, transformeert een renderer de gegevens van elke cel in gestileerde tekst, pictogrammen, insignes, links, actieknoppen of andere visuele elementen die de gegevens sneller leesbaar en gemakkelijker handelen maken.
+Een renderer beheert hoe elke cel in een kolom wordt weergegeven. In plaats van een ruwe waarde weer te geven, transformeert een renderer de gegevens van elke cel in gestyled tekst, pictogrammen, badges, links, actieknoppen of een andere visuele weergave die de gegevens sneller leesbaar en gemakkelijker handelbaar maakt.
 
-Rendering gebeurt volledig in de browser. De server verzendt ruwe data en de client behandelt de presentatie, waardoor de 'Tabel' snel blijft ongeacht het aantal rijen.
+Rendering gebeurt volledig in de browser. De server verzendt ruwe gegevens en de client zorgt voor de presentatie, waardoor de 'Tabel' snel blijft, ongeacht het aantal rijen.
 
-Ken een renderer toe aan een kolom met `setRenderer()`. De renderer wordt uniform toegepast op elke cel in die kolom:
+Wijs een renderer toe aan een kolom met `setRenderer()`. De renderer wordt uniform toegepast op elke cel in die kolom:
 
 ```java
 TextRenderer<MusicRecord> renderer = new TextRenderer<>();
@@ -20,19 +23,19 @@ renderer.setTheme(Theme.PRIMARY);
 table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 ```
 
-:::tip Renderers versus waardeproviders
-Als je alleen een celwaarde hoeft te transformeren of formatteren zonder enige DOM-structuur te produceren, gebruik dan in plaats daarvan een [waardeprovider](/docs/components/table/columns#value-providers). Renderers creëren extra DOM-elementen voor elke gerenderde rij, wat kosten met zich meebrengt tijdens het renderen. Reserveer renderers voor visuele output zoals pictogrammen, insignes, knoppen of andere op HTML-gebaseerde presentaties.
+:::tip Renderers vs. waardeproviders
+Als je alleen een celwaarde wilt transformeren of formatteren zonder een DOM-structuur te produceren, gebruik dan in plaats daarvan een [waardeprovider](/docs/components/table/columns#value-providers). Renderers creëren extra DOM-elementen voor elke gerenderde rij, wat kosten met zich meebrengt tijdens het renderen. Reserveer renderers voor visuele output zoals pictogrammen, badges, knoppen of andere op HTML gebaseerde presentaties.
 :::
 
-webforJ wordt geleverd met ingebouwde renderers voor de meest voorkomende gebruikssituaties. Voor alles wat specifiek is voor jouw applicatie, breid `Renderer` uit en implementeer `build()` om een lodash-template-string te retourneren die in de browser wordt uitgevoerd voor elke cel.
+webforJ wordt geleverd met ingebouwde renderers voor de meest voorkomende gebruikssituaties. Voor specifieke behoeften van jouw app, breid `Renderer` uit en implementeer `build()` om een lodash-template string terug te geven die in de browser draait voor elke cel.
 
-## Gemeenschappelijke renderers {#common-renderers}
+## Veelvoorkomende renderers {#common-renderers}
 
-De volgende voorbeelden lopen door vier vaak gebruikte renderers en demonstreren het `setRenderer()`-patroon in de praktijk.
+De onderstaande voorbeelden behandelen vier vaak gebruikte renderers en demonsteren het `setRenderer()` patroon in de praktijk.
 
 ### TextRenderer {#text-renderer}
 
-Toont celinhoud als platte of gestileerde tekst. Pas een thema kleur of tekstdecoratie toe op een kolom zonder de structuur te veranderen, zoals het markeren van een prioriteitsveld in het rood of het vet maken van een sleutelidentificator.
+Toont celleninhoud als gewone of gestylede tekst. Pas een thema kleur of tekstdecoratie toe op een kolom zonder de structuur te veranderen, bijvoorbeeld door een prioriteitsveld in het rood te markeren of een sleutelidentificatie vetgedrukt te maken.
 
 ```java
 TextRenderer<MusicRecord> renderer = new TextRenderer<>();
@@ -44,7 +47,7 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 ### BadgeRenderer {#badge-renderer}
 
-Wikkelt de celwaarde in een badge-element. Ondersteunt thema's, expansies, kleurseeding (automatische onderscheidende kleuren per unieke waarde) en een optioneel leidend pictogram. Gebruik het voor categorische waarden zoals tags, types of labels waar onderscheidende visuele chips gebruikers helpen rijen snel te scannen en te vergelijken.
+Omvat de celwaarde in een badge-element. Ondersteunt thema's, expansies, kleurzaad (automatische onderscheidende kleuren per unieke waarde) en een optioneel leidend pictogram. Gebruik het voor categorische waarden zoals tags, types of labels waarbij onderscheidende visuele chips gebruikers helpen om rijen snel te scannen en te vergelijken.
 
 ```java
 BadgeRenderer<MusicRecord> renderer = new BadgeRenderer<>();
@@ -55,7 +58,7 @@ table.addColumn("musicType", MusicRecord::getMusicType).setRenderer(renderer);
 
 ### BooleanRenderer {#boolean-renderer}
 
-Vervangt `true`, `false` en `null` waarden door pictogrammen. Gebruik het voor elke true/false-kolom waar een pictogram de waarde sneller communiceert dan tekst, zoals functie-vlaggen, actieve/inactieve statussen of opt-in velden.
+Vervangt `true`, `false` en `null` waarden door pictogrammen. Gebruik het voor elke true/false kolom waar een pictogram de waarde sneller communiceert dan tekst, zoals functievlaggen, actieve/inactieve staten of opt-in velden.
 
 ```java
 // Standaard pictogrammen
@@ -72,24 +75,23 @@ table.addColumn("completed", Task::isCompleted).setRenderer(custom);
 
 ### CurrencyRenderer {#currency-renderer}
 
-Formatteert een numerieke waarde als een valutabedrag volgens de regels van de geleverde `Locale`. Gebruik het voor elke monetaire kolom waar locale-correcte opmaak (symbool, scheidingstekens, decimalen) belangrijk is.
+Formatteert een numerieke waarde als een geldbedrag volgens de regels van de opgegeven `Locale`. Gebruik het voor elke monetaire kolom waar locale-waardige formatting (symbool, scheidingstekens, decimalen) van belang is.
 
 ```java
 // Amerikaanse dollars
 table.addColumn("cost", MusicRecord::getCost)
      .setRenderer(new CurrencyRenderer<>(Locale.US));
 
-// Euro's met Duitse locatie
+// Euro's met Duitse locale
 table.addColumn("retail", MusicRecord::getRetail)
      .setRenderer(new CurrencyRenderer<>(Locale.GERMANY));
 ```
 
-## Voorwaardelijk renderen {#conditional-rendering}
+## Voorwaardelijke rendering {#conditional-rendering}
 
-`ConditionalRenderer` selecteert een andere renderer per cel op basis van de waarde van de cel. Voorwaarden worden op volgorde geëvalueerd; de eerste match wint. Een catch-all fallback kan worden ingesteld met `otherwise()`.
+`ConditionalRenderer` selecteert een andere renderer per cel op basis van de waarde van de cel. Voorwaarden worden in volgorde geëvalueerd; de eerste match wint. Een catch-all fallback kan worden ingesteld met `otherwise()`.
 
-
-Het volgende voorbeeld toont voorwaardelijk renderen toegepast op een factuurstatuskolom, die wisselt tussen `BadgeRenderer`-varianten op basis van de waarde:
+Het volgende voorbeeld toont voorwaardelijke rendering toegepast op een kolom met factuurstatus, waarbij tussen `BadgeRenderer` varianten wordt gewisseld op basis van de waarde:
 
 <!-- vale off -->
 <ComponentDemo
@@ -103,7 +105,7 @@ height='600px'
 />
 <!-- vale on -->
 
-Het werkt ook goed voor numerieke drempels. Dit serverdashboard gebruikt `ConditionalRenderer` om de thema's van `ProgressBarRenderer` te wisselen afhankelijk van CPU- en geheugengebruik:
+Het werkt ook goed voor numerieke drempels. Dit serverdashboard gebruikt `ConditionalRenderer` om thema's van de `ProgressBarRenderer` te wisselen op basis van CPU- en geheugengebruik niveaus:
 
 <!-- vale off -->
 <ComponentDemo
@@ -117,9 +119,9 @@ height='600px'
 />
 <!-- vale on -->
 
-### Voorwaarden API {#condition-api}
+### Voorwaarde API {#condition-api}
 
-Voorwaarden worden gebouwd met statische fabrieksmethoden en kunnen worden samengesteld met `and()`, `or()`, en `negate()`.
+Voorwaarden worden gebouwd met statische fabrieksmethoden en kunnen worden samengevoegd met `and()`, `or()`, en `negate()`.
 
 ```java
 // Waarde gelijkheid
@@ -137,7 +139,7 @@ Condition.isTrue()
 Condition.isFalse()
 Condition.isEmpty()
 
-// String matching
+// String overeenkomsten
 Condition.contains("error")
 Condition.containsIgnoreCase("warn")
 
@@ -146,18 +148,18 @@ Condition.greaterThan(0).and(Condition.lessThan(100))
 Condition.isEmpty().or(Condition.equalTo("N/A"))
 Condition.isTrue().negate()
 
-// Cross-kolomcontrole
+// Kruiskolom controle
 Condition.column("status").equalTo("active")
 
-// Roh JavaScript-expressie
+// Rauwe JavaScript-expressie
 Condition.expression("cell.value % 2 === 0")
 ```
 
-## Samengesteld renderen {#composite-rendering}
+## Samengestelde rendering {#composite-rendering}
 
-`CompositeRenderer` combineert meerdere renderers zij-aan-zij in een enkele cel met behulp van een flexindeling. Gebruik het om een pictogram met tekst te combineren, een avatar naast een naam te tonen, of een badge naast een statusindicator te stapelen.
+`CompositeRenderer` combineert meerdere renderers naast elkaar in een enkele cel met behulp van een flex-layout. Gebruik het om een pictogram met tekst te combineren, een avatar naast een naam te tonen, of een badge naast een statusindicator te stapelen.
 
-De medewerkersdirectory hieronder gebruikt een `CompositeRenderer` op de *Employee* kolom om een automatisch gegenereerde avatar naast de naam van elke medewerker weer te geven:
+Het medewerkersregister hieronder gebruikt een `CompositeRenderer` op de *Employee* kolom om een automatisch gegenereerde avatar naast de naam van elke werknemer weer te geven:
 
 <!-- vale off -->
 <ComponentDemo
@@ -169,17 +171,17 @@ height='600px'
 
 ## Aangepaste renderers {#custom-renderers}
 
-Wanneer geen ingebouwde renderer past bij jouw gebruiksgeval, breid `Renderer` uit en implementeer `build()`. De methode retourneert een lodash-template-string die in de browser wordt uitgevoerd voor elke cel in de kolom, weergegeven als een mix van HTML en JavaScript.
+Wanneer er geen ingebouwde renderer geschikt is voor jouw gebruiksgeval, breid `Renderer` uit en implementeer `build()`. De methode retourneert een lodash-template string die in de browser draait voor elke cel in de kolom, uitgedrukt als een mix van HTML en JavaScript.
 
-### Aangemaakte aangepaste renderer {#creating-a-custom-renderer}
+### Een aangepaste renderer maken {#creating-a-custom-renderer}
 
-**Stap 1:** Breid `Renderer` uit met jouw rijn datatype.
+**Stap 1:** Breid `Renderer` uit met jouw rij gegevenstype.
 
 ```java
 public class RatingRenderer extends Renderer<MusicRecord> {
 ```
 
-**Stap 2:** Overschrijf `build()` en retourneer een lodash-template-string.
+**Stap 2:** Overschrijf `build()` en retourneer een lodash-template string.
 
 ```java
   @Override
@@ -198,7 +200,7 @@ public class RatingRenderer extends Renderer<MusicRecord> {
 }
 ```
 
-**Stap 3:** Ken de renderer toe aan een kolom.
+**Stap 3:** Wijs de renderer toe aan een kolom.
 
 ```java
 table.addColumn("rating", MusicRecord::getRating)
@@ -206,12 +208,12 @@ table.addColumn("rating", MusicRecord::getRating)
 ```
 
 :::tip
-Voor meer informatie over hoe de Lodash-syntaxis wordt gebruikt om cell-informatie te verkrijgen en informatieve renderers te maken, zie [deze referentiegedeelte](#template-reference).
+Voor meer informatie over hoe de Lodash-syntaxis gebruikt wordt om informatie uit cellen te halen en informatieve renderers te maken, zie [deze referentiesectie](#template-reference).
 :::
 
 ### Toegang tot meerdere kolommen {#accessing-multiple-columns}
 
-Gebruik `cell.row.getValue("columnId")` om zusterkolommen binnen de template te lezen. Dit is handig voor het combineren van velden, het berekenen van delta's of het cross-referencen van gerelateerde gegevens.
+Gebruik `cell.row.getValue("columnId")` om zusterkolommen binnen de template te lezen. Dit is nuttig voor het combineren van velden, het berekenen van delta's of het kruisrefereren van gerelateerde gegevens.
 
 ```java
 public class ArtistAvatarRenderer extends Renderer<MusicRecord> {
@@ -240,7 +242,7 @@ public class ArtistAvatarRenderer extends Renderer<MusicRecord> {
 
 ### Klikgebeurtenissen {#click-events}
 
-`IconButtonRenderer` en `ButtonRenderer` bieden `addClickListener()` standaard aan. De klikgebeurtenis biedt toegang tot het gegevensobject van de rij via `e.getItem()`.
+`IconButtonRenderer` en `ButtonRenderer` bieden standaard `addClickListener()` aan. De klikgebeurtenis biedt toegang tot het gegevenobject van de rij via `e.getItem()`.
 
 ```java
 IconButtonRenderer<MusicRecord> deleteBtn = new IconButtonRenderer<>(
@@ -255,9 +257,9 @@ deleteBtn.addClickListener(e -> {
 table.addColumn("delete", r -> "").setRenderer(deleteBtn);
 ```
 
-## Prestatie: lui renderen <DocChip chip='since' label='25.12' /> {#lazy-rendering} 
+## Prestatie: luie rendering <DocChip chip='since' label='25.12' /> {#lazy-rendering}
 
-Voor kolommen die visueel dure renderers gebruiken, zoals badges, voortgangsbalken, avatars of webcomponenten, schakel lui renderen in om de scrollprestaties te verbeteren.
+Voor kolommen die visueel dure renderers gebruiken, zoals badges, voortgangsbalken, avatars of webcomponenten, stel luie rendering in om de scrollprestatie te verbeteren.
 
 ```java
 table.addColumn("status", Order::getStatus)
@@ -265,7 +267,7 @@ table.addColumn("status", Order::getStatus)
      .setLazyRender(true);
 ```
 
-Wanneer `setLazyRender(true)` op een kolom is ingesteld, tonen cellen een lichtgewicht geanimeerde placeholder terwijl de gebruiker aan het scrollen is. De daadwerkelijke celinhoud wordt gerenderd zodra het scrollen stopt. Dit is een instelling op kolomniveau, zodat je het selectief kunt inschakelen voor alleen de kolommen die er baat bij hebben.
+Wanneer `setLazyRender(true)` is ingesteld op een kolom, tonen cellen een lichte geanimeerde placeholder terwijl de gebruiker aan het scrollen is. De daadwerkelijke celinhoud wordt gerenderd zodra het scrollen stopt. Dit is een kolom-niveau instelling, dus je kunt het selectief inschakelen voor alleen de kolommen die er baat bij hebben.
 
 <!-- vale off -->
 <ComponentDemo
@@ -275,15 +277,15 @@ height='600px'
 />
 <!-- vale on -->
 
-:::tip Wanneer je Lui Renderen moet Inschakelen
-Celrenderers creëren meer entiteiten binnen de DOM, wat betekent dat er meer CPU-werk komt kijken bij het renderen, ongeacht welke renderer het creëert. 
+:::tip Wanneer luie rendering in te schakelen
+Cell renderers creëren meer entiteiten binnen de DOM, wat meer CPU-werk betekent tijdens het renderen, ongeacht welke renderer het creëert.
 
-Lui renderen kan helpen de prestatie-impact te verminderen als een renderer echt nodig is. Als je alleen de waarde hoeft te veranderen of te formatteren, en je geen complexe DOM creëert, gebruik dan in plaats daarvan een waardeprovider om de waarde te transformeren.
+Luie rendering kan helpen de impact op de prestaties te verminderen als een renderer echt nodig is. Als je alleen de waarde hoeft te wijzigen of te formatteren, en je niet een complexe DOM creëert, gebruik dan in plaats daarvan een waardeprovider om de waarde te transformeren.
 :::
 
-## Ingebouwde renderer referentie {#built-in-renderers} 
+## Ingebouwde renderer referentie {#built-in-renderers}
 
-webforJ wordt geleverd met een uitgebreide set renderers voor de meest voorkomende gebruikssituaties. Ken een van hen toe aan een kolom met `column.setRenderer(renderer)`.
+webforJ wordt geleverd met een uitgebreide set renderers voor de meest voorkomende gebruikssituaties. Wijs een van deze toe aan een kolom met `column.setRenderer(renderer)`.
 
 <!-- vale off -->
 <ComponentDemo
@@ -302,14 +304,14 @@ height='600px'
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>TextRenderer</strong>  -  gestileerde tekst met optioneel thema en decoraties
+<strong>TextRenderer</strong>  -  gestylede tekst met optionele thema en decoraties
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Toont celinhoud als platte of gestileerde tekst. Ondersteunt themakleuren en tekstdecoraties zoals vet, cursief en onderstreept.
+Toont celleninhoud als gewone of gestylede tekst. Ondersteunt thema kleuren en tekstdecoraties zoals vet, cursief en onderstreept.
 
 ```java
 TextRenderer renderer = new TextRenderer<>();
@@ -332,7 +334,7 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 <DocChip chip='since' label='25.12' />
 
-Wikkelt de celwaarde in een badge-element. Ondersteunt thema's, expansies, kleurseeding (automatische onderscheidende kleuren per unieke waarde) en een optioneel leidend pictogram.
+Omvat de celwaarde in een badge-element. Ondersteunt thema's, expansies, kleurzaad (automatische onderscheidende kleuren per unieke waarde) en een optioneel leidend pictogram.
 
 ```java
 BadgeRenderer renderer = new BadgeRenderer<>();
@@ -347,14 +349,14 @@ table.addColumn("musicType", MusicRecord::getMusicType).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>NullRenderer</strong>  -  plaatsvervanger voor null of lege waarden
+<strong>NullRenderer</strong>  -  placeholder voor null of lege waarden
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renders een configureerbare fallback-string wanneer de celwaarde `null` of leeg is; anders wordt de waarde zoals deze is weergegeven.
+Render een configureerbare fallback-string wanneer de celwaarde `null` of leeg is; anders rendert het de waarde zoals deze is.
 
 ```java
 table.addColumn("notes", MusicRecord::getNotes)
@@ -371,14 +373,14 @@ table.addColumn("notes", MusicRecord::getNotes)
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>BooleanRenderer</strong>  -  true/false/null getoond als pictogrammen
+<strong>BooleanRenderer</strong>  -  true/false/null weergegeven als pictogrammen
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Vervangt `true`, `false` en `null` waarden door pictogrammen. Standaard naar een vinkje, kruis en streep.
+Vervangt `true`, `false` en `null` waarden door pictogrammen. Standaard is er een vinkje, kruis en streepje.
 
 ```java
 // Standaard pictogrammen
@@ -398,14 +400,14 @@ BooleanRenderer custom = new BooleanRenderer<>(
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>StatusDotRenderer</strong>  -  gekleurde indicatordot naast celtekst
+<strong>StatusDotRenderer</strong>  -  gekleurde indicator stip naast celtekst
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renders een kleine gekleurde dot aan de linkerkant van de celwaarde. Wijs individuele waarden toe aan thema's, CSS-kleurstrings of `java.awt.Color` instanties.
+Rendert een kleine gekleurde stip links van de celwaarde. Map individuele waarden naar thema's, CSS-kleurstrings of `java.awt.Color` instanties.
 
 ```java
 StatusDotRenderer renderer = new StatusDotRenderer<>();
@@ -421,19 +423,19 @@ table.addColumn("status", Order::getStatus).setRenderer(renderer);
 </Accordion>
 </AccordionGroup>
 
-### Nummers, valuta en data {#numbers-currency-and-dates}
+### Nummers, valuta en datums {#numbers-currency-and-dates}
 
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>CurrencyRenderer</strong>  -  locale-bewust valutaopmaak
+<strong>CurrencyRenderer</strong>  -  locale-bewuste valutafomattering
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Formatteert een numerieke waarde als een valutabedrag volgens de regels van de geleverde `Locale`.
+Formatteert een numerieke waarde als een geldbedrag volgens de regels van de opgegeven `Locale`.
 
 ```java
 // Amerikaanse dollars
@@ -451,7 +453,7 @@ table.addColumn("retail", MusicRecord::getRetail)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>PercentageRenderer</strong>  -  percentage met optionele mini-voortgangsbalk
+<strong>PercentageRenderer</strong>  -  percentage met optionele mini voortgangsbalk
 </AccordionSummary>
 <AccordionDetails>
 <div>
@@ -471,14 +473,14 @@ table.addColumn("completion", Task::getCompletion).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ProgressBarRenderer</strong>  -  volledige voortgangsbalk voor numerieke waarden
+<strong>ProgressBarRenderer</strong>  -  volle voortgangsbalk voor numerieke waarden
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renders een volledige breedte voortgangsbalk met configureerbare minimum- en maximumlimieten, niet-bepaalde modus, en gestreepte of geanimeerde weergave. Gebruik `setText()` met een lodash-expressie om aangepaste tekst op de balk te overlayen.
+Rendert een volle voortgangsbalk met configureerbare minimum- en maximumgrenzen, een onbepaalde modus en een gestreepte of geanimeerde weergave. Gebruik `setText()` met een lodash-expressie om aangepaste tekst op de balk te overlappen.
 
 ```java
 ProgressBarRenderer renderer = new ProgressBarRenderer<>();
@@ -496,14 +498,14 @@ table.addColumn("progress", Task::getProgress).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>MaskedTextRenderer</strong>  -  string opgemaakt met een tekstmasker
+<strong>MaskedTextRenderer</strong>  -  string geformatteerd met een tekstmasker
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Past een tekenmasker toe op een stringwaarde. `#` komt overeen met elk cijfer; letterlijke tekens worden behouden. Zie [tekstmaskerregels](/docs/components/fields/masked/textfield#mask-rules) voor alle ondersteunde maskertekens.
+Past een tekenmasker toe op een string waarde. `#` komt overeen met elk cijfer; letterlijke tekens worden behouden. Zie [tekstmaskerregels](/docs/components/fields/masked/textfield#mask-rules) voor alle ondersteunde maskertekens.
 
 ```java
 table.addColumn("ssn", Employee::getSsn)
@@ -516,14 +518,14 @@ table.addColumn("ssn", Employee::getSsn)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>MaskedNumberRenderer</strong>  -  numerieke waarde opgemaakt met een nummermasker
+<strong>MaskedNumberRenderer</strong>  -  numerieke waarde geformatteerd met een nummermasker
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Formatteert een numerieke waarde met behulp van een patroonstring met locale-bewuste scheidingstekens. `0` dwingt een cijfer af; `#` is optioneel. Zie [nummermaskerregels](/docs/components/fields/masked/numberfield#mask-rules) voor alle ondersteunde maskertekens.
+Formatteert een numerieke waarde met een patroonstring met locale-waardige scheidingstekens. `0` dwingt een cijfer af; `#` is optioneel. Zie [nummermaskerregels](/docs/components/fields/masked/numberfield#mask-rules) voor alle ondersteunde maskertekens.
 
 ```java
 table.addColumn("price", Product::getPrice)
@@ -536,14 +538,14 @@ table.addColumn("price", Product::getPrice)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>MaskedDateTimeRenderer</strong>  -  datum/tijdwaarde met een datummasker
+<strong>MaskedDateTimeRenderer</strong>  -  datum/tijd waarde met een datummasker
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Formatteert een datum- of tijdwaarde met patroon tokens: `%Mz` (maand), `%Dz` (dag), `%Yz` (jaar), en anderen. Zie [datummaskerregels](/docs/components/fields/masked/datefield#mask-rules) voor alle beschikbare tokens.
+Formatteert een datum of tijd waarde met patroon tokens: `%Mz` (maand), `%Dz` (dag), `%Yz` (jaar), en anderen. Zie [datum maskerregels](/docs/components/fields/masked/datefield#mask-rules) voor alle beschikbare tokens.
 
 ```java
 table.addColumn("released", MusicRecord::getReleaseDate)
@@ -560,17 +562,17 @@ table.addColumn("released", MusicRecord::getReleaseDate)
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>EmailRenderer</strong>  -  e-mailadres als een klikbare mailto-link
+<strong>EmailRenderer</strong>  -  e-mailadres als klikbare mailto-link
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Wikkelt de celwaarde in een `mailto:` anker. Een primair-thema mailpictogram dient als visuele aanwijzing standaard.
+Omvat de celwaarde in een `mailto:` anker. Een primair-thema mailpictogram dient standaard als visuele aanwijzing.
 
 ```java
-// Standaard mailpictogram
+// Standaard mail pictogram
 table.addColumn("email", Contact::getEmail)
      .setRenderer(new EmailRenderer<>());
 
@@ -585,14 +587,14 @@ table.addColumn("email", Contact::getEmail)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>PhoneRenderer</strong>  -  telefoonnummer als een klikbare tel-link
+<strong>PhoneRenderer</strong>  -  telefoonnummer als klikbare tel-link
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Wikkelt de celwaarde in een `tel:` anker. Op mobiel opent het klikken de telefoon. Een primair-thema telefoonpictogram wordt standaard weergegeven.
+Omvat de celwaarde in een `tel:` anker. Op mobiel opent tappen de kieser. Een primair-thema telefoonpictogram wordt standaard weergegeven.
 
 ```java
 // Standaard telefoonpictogram
@@ -617,7 +619,7 @@ table.addColumn("phone", Contact::getPhone)
 
 <DocChip chip='since' label='25.12' />
 
-Renders een klikbare anker-element. De `href` ondersteunt lodash-template-expressies, zodat je URLs dynamisch kunt bouwen op basis van de celwaarde.
+Render een klikbaar anker-element. De `href` ondersteunt lodash-template-expressies zodat je URL's dynamisch uit de celwaarde kunt bouwen.
 
 ```java
 AnchorRenderer renderer = new AnchorRenderer<>();
@@ -640,7 +642,7 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 <DocChip chip='since' label='25.12' />
 
-Toont een afbeelding. De `src`-attribuut ondersteunt lodash-template-expressies, zodat elke rij een andere afbeelding kan tonen.
+Toont een afbeelding. De `src`-attribuut ondersteunt lodash-template-expressies zodat elke rij een andere afbeelding kan tonen.
 
 ```java
 ImageRenderer renderer = new ImageRenderer<>();
@@ -667,7 +669,7 @@ table.addColumn("cover", MusicRecord::getArtist).setRenderer(renderer);
 
 <DocChip chip='since' label='25.12' />
 
-Renders een avatarcomponent. Initialen worden automatisch afgeleid van de celwaarde. Ondersteunt thema's en een fallback-pictogram.
+Rendert een avatarcomponent. Initialen worden automatisch afgeleid van de celwaarde. Ondersteunt thema's en een fallback-pictogram.
 
 ```java
 AvatarRenderer renderer = new AvatarRenderer<>();
@@ -687,14 +689,14 @@ table.addColumn("artist", MusicRecord::getArtist).setRenderer(renderer);
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>IconRenderer</strong>  -  op zichzelf staand pictogram, optioneel klikbaar
+<strong>IconRenderer</strong>  -  zelfstandige pictogram, optioneel klikbaar
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Renders een enkel pictogram. Koppel een kliklistener voor interactieve gedragingen.
+Rendert een enkel pictogram. Bevestig een klikluisteraar voor interactieve functionaliteit.
 
 ```java
 IconRenderer renderer = new IconRenderer<>(TablerIcon.create("music"));
@@ -707,14 +709,14 @@ table.addColumn("type", MusicRecord::getMusicType).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>IconButtonRenderer</strong>  -  actie-pictogramknop met rijtoegang
+<strong>IconButtonRenderer</strong>  -  actievolle pictogramknop met toegang tot de rij
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renders een klikbare pictogramknop. De klikgebeurtenis geeft het rijobject weer via `e.getItem()`, waardoor het ideaal is voor rij-niveau acties.
+Rendert een klikbare pictogramknop. De klikgebeurtenis geeft het rij-item bloot via `e.getItem()`, waardoor het ideaal is voor actieniveau activiteiten.
 
 ```java
 IconButtonRenderer renderer = new IconButtonRenderer<>(TablerIcon.create("edit"));
@@ -729,21 +731,21 @@ table.addColumn("actions", r -> "").setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ButtonRenderer</strong>  -  gethematiseerde knop in een cel
+<strong>ButtonRenderer</strong>  -  thema-knop in een cel
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Renders een volledige `Button`-component binnen de cel.
+Rendert een volledige `Button` component binnen de cel.
 
 ```java
-ButtonRenderer renderer = new ButtonRenderer<>("Edit");
+ButtonRenderer renderer = new ButtonRenderer<>("Bewerken");
 renderer.setTheme(ButtonTheme.PRIMARY);
 renderer.addClickListener(e -> openEditor(e.getItem()));
 
-table.addColumn("edit", r -> "Edit").setRenderer(renderer);
+table.addColumn("edit", r -> "Bewerken").setRenderer(renderer);
 ```
 
 </div>
@@ -752,14 +754,14 @@ table.addColumn("edit", r -> "Edit").setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ElementRenderer</strong>  -  ruwe HTML-element met lodash-inhoud
+<strong>ElementRenderer</strong>  -  rauw HTML-element met lodash-inhoud
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Renders elk HTML-element met een lodash-template-inhoudsstring. Dit is de escape hatch voor situaties waarin geen ingebouwde renderer past.
+Rendert elk HTML-element met een lodash-template-inhoudstring. Dit is de ontsnappingsroute voor situaties waarin geen ingebouwde renderer geschikt is.
 
 ```java
 ElementRenderer renderer = new ElementRenderer<>("span", "<%= cell.value %>");
@@ -773,72 +775,72 @@ table.addColumn("custom", MusicRecord::getTitle).setRenderer(renderer);
 
 ## Template referentie {#template-reference}
 
-Renderers bieden een krachtig mechanisme voor het aanpassen van de manier waarop gegevens worden weergegeven binnen een `Table`. De primaire klasse, `Renderer`, is ontworpen om verder uitgebreid te worden om aangepaste renderers te creëren op basis van lodash-templates, waardoor dynamische en interactieve inhoudsrendering mogelijk is. 
+Renderers bieden een krachtige methode voor het aanpassen van de manier waarop gegevens worden weergegeven binnen een `Tabel`. De primaire klasse, `Renderer`, is ontworpen om te worden uitgebreid om aangepaste renderers te maken op basis van lodash-templates, waardoor dynamische en interactieve inhoud rendering mogelijk is.
 
-Lodash-templates maken het mogelijk om HTML direct in tabelcellen in te voegen, waardoor ze zeer effectief zijn voor het renderen van complexe celgegevens in een `Table`. Deze aanpak maakt dynamische generatie van HTML op basis van celgegevens mogelijk, waardoor rijke en interactieve inhoud in tabelcellen wordt gefaciliteerd.
+Lodash-templates maken het mogelijk om HTML direct in tabelcellen in te voegen, waardoor ze zeer effectief zijn voor het renderen van complexe celdata in een `Tabel`. Deze aanpak stelt gebruikers in staat om HTML dynamisch te genereren op basis van celdata, wat bijdraagt aan rijke en interactieve tabelcelinhoud.
 
 ### Lodash-syntaxis {#lodash-syntax}
 
-De volgende sectie schetst de basis van de Lodash-syntaxis. Hoewel dit geen uitputtende of uitgebreide uitleg is, kan het helpen om te beginnen met het gebruik van Lodash binnen de `Table`-component. 
+De volgende sectie schetst de basisprincipes van de Lodash-syntaxis. Hoewel dit geen uitputtend of uitgebreid overzicht is, kan het worden gebruikt om te beginnen met het gebruik van Lodash binnen de `Tabel` component.
 
 #### Syntaxisoverzicht voor lodash-templates: {#syntax-overview-for-lodash-templates}
 
-- `<%= ... %>` - Interpolaties waarden, waarbij het resultaat van de JavaScript-code in de template wordt ingevoegd.
-- `<% ... %>` - Voert JavaScript-code uit, waardoor lussen, conditionals en meer mogelijk zijn.
-- `<%- ... %>` - Ontsnapt HTML-inhoud, zodat geïnterpoleerde gegevens veilig zijn voor HTML-injectieaanvallen.
+- `<%= ... %>` - Interpolaties waardes, waarbij het resultaat van de JavaScript-code in de template wordt ingevoegd.
+- `<% ... %>` - Voert JavaScript-code uit, waardoor loops, conditionals en meer mogelijk zijn.
+- `<%- ... %>` - Ontsnapt HTML-inhoud, zodat de geïnterpoleerde gegevens veilig zijn tegen HTML-injectieaanvallen.
 
-#### Voorbeelden met celgegevens: {#examples-using-cell-data}
+#### Voorbeelden met celdata: {#examples-using-cell-data}
 
-**1. Eenvoudige waarde-interpolatie**: toon de waarde van de cel direct.
+**1. Eenvoudige waarde-interpolatie**: toont direct de waarde van de cel.
 
 `<%= cell.value %>`
 
-**2. Voorwaardelijk renderen**: gebruik JavaScript-logica om inhoud voorwaardelijk weer te geven.
+**2. Voorwaardelijke rendering**: gebruikt JavaScript-logica om inhoud conditioneel weer te geven.
 
 `<% if (cell.value > 100) { %> 'Hoog' <% } else { %> 'Normaal' <% } %>`
 
-**3. Gecombineerde gegevensvelden**: render inhoud met behulp van meerdere gegevensvelden uit de cel.
+**3. Gecombineerde data-velden**: render inhoud met behulp van meerdere data-velden van de cel.
 
 `<%= cell.row.getValue('firstName') + ' ' + cell.row.getValue('lastName') %>`
 
-**4. Ontsnappen van HTML-inhoud**: veilig weergeven van door gebruikers gemaakte inhoud.
+**4. Ontsnappen van HTML-inhoud**: veilig renderen van door gebruikers gegenereerde inhoud.
 
-De renderer heeft toegang tot gedetailleerde eigenschappen van cel, rij en kolom aan de clientzijde:
+De renderer heeft toegang tot gedetailleerde cel-, rij- en kolom-eigenschappen aan de klantzijde:
 
-**Tabelcel-eigenschappen:**
+**TabelCel Eigenschappen:**
 
-|Eigenschap	|Type	|Beschrijving|
-|-|-|-|
-|column|`TableColumn`|Het geassocieerde kolomobject.|
-|first|`boolean`|Geeft aan of de cel de eerste in de rij is.|
-|id|`String`|De cel-ID.|
-|index|`int`|De index van de cel binnen zijn rij.|
-|last|`boolean`|Geeft aan of de cel de laatste in de rij is.|
-|row|`TableRow`|Het bijbehorende rijobject voor de cel.|
-|value|`Object`|De ruwe waarde van de cel, rechtstreeks van de gegevensbron.|
+| Eigenschap | Type | Beschrijving |
+|------------|------|--------------|
+| column     | `TableColumn` | Het bijbehorende kolomobject. |
+| first      | `boolean` | Geeft aan of de cel de eerste in de rij is. |
+| id         | `String` | De cel ID. |
+| index      | `int` | De index van de cel binnen zijn rij. |
+| last       | `boolean` | Geeft aan of de cel de laatste in de rij is. |
+| row        | `TableRow` | Het bijbehorende rijobject voor de cel. |
+| value      | `Object` | De ruwe waarde van de cel, rechtstreeks van de gegevensbron. |
 
-**Tabelrij-eigenschappen:**
+**TabelRij Eigenschappen:**
 
-|Eigenschap|Type|Beschrijving|
-|-|-|-|
-|cells|`TableCell[]`|De cellen binnen de rij.
-|data|`Object`|De gegevens die de app voor de rij biedt.
-|even|`boolean`|Geeft aan of de rij even genummerd is (voor opmaakdoeleinden).
-|first|`boolean`|Geeft aan of de rij de eerste in de tabel is.
-|id|`String`|Unieke ID voor de rij.
-|index|`int`|De rij-index.
-|last|`boolean`|Geeft aan of de rij de laatste in de tabel is.
-|odd|`boolean`|Geeft aan of de rij oneven genummerd is (voor opmaakdoeleinden).
+| Eigenschap | Type | Beschrijving |
+|------------|------|--------------|
+| cells      | `TableCell[]` | De cellen binnen de rij. |
+| data       | `Object` | De gegevens die door de app voor de rij worden geleverd. |
+| even       | `boolean` | Geeft aan of de rij even genummerd is (voor stijl doeleinden). |
+| first      | `boolean` | Geeft aan of de rij de eerste in de tabel is. |
+| id         | `String` | Unieke ID voor de rij. |
+| index      | `int` | De rij-index. |
+| last       | `boolean` | Geeft aan of de rij de laatste in de tabel is. |
+| odd        | `boolean` | Geeft aan of de rij oneven genummerd is (voor stijl doeleinden). |
 
-**Tabelkolom-eigenschappen:**
+**TabelKolom Eigenschappen:**
 
-|Eigenschap	|Type	|Beschrijving|
-|-|-|-|
-|align|ColumnAlignment|De uitlijning van de kolom (links, center, rechts).
-|id|String|Het veld van het rijobject om de gegevens van de cel uit te halen.
-|label|String|De naam die in de kolomkop moet worden weergegeven.
-|pinned|ColumnPinDirection|De pinrichting van de kolom (links, rechts, automatisch).
-|sortable|boolean|Als dit waar is, kan de kolom worden gesorteerd.
-|sort|SortDirection|De sorteervolgorde van de kolom.
-|type|ColumnType|Het type van de kolom (tekst, nummer, boolean, enz.).
-|minWidth|number|De minimale breedte van de kolom in pixels.
+| Eigenschap | Type | Beschrijving |
+|------------|------|--------------|
+| align      | ColumnAlignment | De uitlijning van de kolom (links, midden, rechts). |
+| id         | String | Het veld van het rijobject om de gegevens van de cel uit te halen. |
+| label      | String | De naam om in de kolomkop weer te geven. |
+| pinned     | ColumnPinDirection | De pinrichting van de kolom (links, rechts, auto). |
+| sortable    | boolean | Als het waar is, kan de kolom worden gesorteerd. |
+| sort       | SortDirection | De sorteerordening van de kolom. |
+| type       | ColumnType | Het type van de kolom (tekst, nummer, boolean, enz.). |
+| minWidth   | number | De minimum breedte van de kolom in pixels. |

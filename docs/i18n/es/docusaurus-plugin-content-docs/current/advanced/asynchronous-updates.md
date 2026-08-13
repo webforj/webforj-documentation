@@ -1,27 +1,30 @@
 ---
 sidebar_position: 55
 title: Asynchronous Updates
-_i18n_hash: 44d86e725d9228ead98794da8f6210ff
+description: >-
+  Run background work off the UI thread and push updates back to webforJ
+  components safely with Environment.runLater and PendingResult.
+_i18n_hash: 1f53158dabc9d0270dfe80c1df5bb122
 ---
 <DocChip chip='since' label='25.02' />
 <DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(java.lang.Runnable)" top='true'/>
 
-La API `Environment.runLater()` proporciona un mecanismo para actualizar de manera segura la interfaz de usuario desde hilos de fondo en aplicaciones webforJ. Esta característica experimental permite operaciones asincrónicas mientras se mantiene la seguridad de los hilos para las modificaciones de la interfaz de usuario.
+La API `Environment.runLater()` proporciona un mecanismo para actualizar de manera segura la interfaz de usuario desde hilos en segundo plano en aplicaciones webforJ. Esta característica experimental permite operaciones asincrónicas mientras se mantiene la seguridad de los hilos para las modificaciones de la interfaz de usuario.
 
 <ExperimentalWarning />
 
 <AISkillTip skill="webforj-handling-timers-and-async" />
 
-## Entendiendo el modelo de hilos {#understanding-the-thread-model}
+## Comprendiendo el modelo de hilos {#understanding-the-thread-model}
 
-webforJ impone un modelo de hilos estricto donde todas las operaciones de la interfaz de usuario deben ocurrir en el hilo `Environment`. Esta restricción existe porque:
+webforJ impone un modelo de hilo estricto donde todas las operaciones de la interfaz de usuario deben ocurrir en el hilo `Environment`. Esta restricción existe porque:
 
-1. **Restricciones de la API webforJ**: La API webforJ subyacente se vincula al hilo que creó la sesión.
-2. **Afinidad de hilo de componentes**: Los componentes de la interfaz de usuario mantienen un estado que no es seguro para los hilos.
-3. **Despacho de eventos**: Todos los eventos de la interfaz de usuario se procesan secuencialmente en un solo hilo.
+1. **Restricciones de la API de webforJ**: La API subyacente de webforJ está vinculada al hilo que creó la sesión.
+2. **Afinidad del hilo del componente**: Los componentes de la interfaz de usuario mantienen un estado que no es seguro para múltiples hilos.
+3. **Distribución de eventos**: Todos los eventos de la interfaz de usuario son procesados secuencialmente en un solo hilo.
 
-Este modelo de un solo hilo previene condiciones de carrera y mantiene un estado consistente para todos los componentes de la interfaz de usuario, pero crea desafíos al integrarse con tareas de cálculo asíncronas y de larga duración.
+Este modelo de un solo hilo previene condiciones de carrera y mantiene un estado consistente para todos los componentes de la interfaz de usuario, pero crea desafíos al integrarse con tareas de cálculo asincrónicas y de larga duración.
 
 ## API `RunLater` {#runlater-api}
 
@@ -37,27 +40,27 @@ public static <T> PendingResult<T> runLater(Supplier<T> supplier)
 
 Ambos métodos devuelven un <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> que rastrea la finalización de la tarea y proporciona acceso al resultado o cualquier excepción que haya ocurrido.
 
-## Herencia del contexto de hilo {#thread-context-inheritance}
+## Herencia del contexto del hilo {#thread-context-inheritance}
 
-La herencia de contexto automática es una característica crítica de `Environment.runLater()`. Cuando un hilo que se ejecuta en un `Environment` crea hilos secundarios, esos hijos heredan automáticamente la capacidad de usar `runLater()`.
+La herencia automática del contexto es una característica crítica de `Environment.runLater()`. Cuando un hilo que se ejecuta en un `Environment` crea hilos hijos, esos hijos heredan automáticamente la capacidad de usar `runLater()`.
 
 ### Cómo funciona la herencia {#how-inheritance-works}
 
-Cualquier hilo creado desde un hilo `Environment` tiene automáticamente acceso a ese `Environment`. Esta herencia sucede automáticamente, por lo que no necesitas pasar ningún contexto ni configurar nada.
+Cualquier hilo creado desde dentro de un hilo `Environment` tiene automáticamente acceso a ese `Environment`. Esta herencia ocurre de manera automática, por lo que no necesitas pasar ningún contexto ni configurar nada.
 
 ```java
 @Route
 public class DataView extends Composite<Div> {
   private final ExecutorService executor = Executors.newCachedThreadPool();
-  
+
   public DataView() {
     // Este hilo tiene contexto de Environment
-    
-    // Los hilos secundarios heredan el contexto automáticamente
+
+    // Los hilos hijos heredan el contexto automáticamente
     executor.submit(() -> {
       String data = fetchRemoteData();
-      
-      // Puede usar runLater porque se heredó el contexto
+
+      // Puede usar runLater porque el contexto fue heredado
       Environment.runLater(() -> {
         dataLabel.setText(data);
         loadingSpinner.setVisible(false);
@@ -69,7 +72,7 @@ public class DataView extends Composite<Div> {
 
 ### Hilos sin contexto {#threads-without-context}
 
-Los hilos creados fuera del contexto `Environment` no pueden usar `runLater()` y lanzarán una `IllegalStateException`:
+Los hilos creados fuera del contexto de `Environment` no pueden usar `runLater()` y lanzarán una `IllegalStateException`:
 
 ```java
 // Inicializador estático - sin contexto de Environment
@@ -79,7 +82,7 @@ static {
   }).start();
 }
 
-// Hilos de temporizador del sistema - sin contexto de Environment  
+// Hilos de temporizador del sistema - sin contexto de Environment
 Timer timer = new Timer();
 timer.schedule(new TimerTask() {
   public void run() {
@@ -96,55 +99,55 @@ httpClient.sendAsync(request, responseHandler)
 
 ## Comportamiento de ejecución {#execution-behavior}
 
-El comportamiento de ejecución de `runLater()` depende de qué hilo lo llame:
+El comportamiento de ejecución de `runLater()` depende de qué hilo lo llama:
 
 ### Desde el hilo de la interfaz de usuario {#from-the-ui-thread}
 
-Cuando se llama desde el propio hilo `Environment`, las tareas se ejecutan **sincrónicamente e inmediatamente**:
+Cuando se llama desde el hilo `Environment` mismo, las tareas se ejecutan **síncronamente e inmediatamente**:
 
 ```java
 button.onClick(e -> {
   System.out.println("Antes: " + Thread.currentThread().getName());
-  
+
   PendingResult<String> result = Environment.runLater(() -> {
     System.out.println("Dentro: " + Thread.currentThread().getName());
     return "completado";
   });
-  
+
   System.out.println("Después: " + result.isDone());  // true
 });
 ```
 
-Con este comportamiento sincrónico, las actualizaciones de la interfaz de usuario desde los controladores de eventos se aplican de inmediato y no incurren en sobrecarga de colas innecesaria.
+Con este comportamiento síncrono, las actualizaciones de la interfaz de usuario desde los controladores de eventos se aplican de inmediato y no incurren en ningún costo innecesario de cola.
 
-### Desde hilos de fondo {#from-background-threads}
+### Desde hilos en segundo plano {#from-background-threads}
 
-Cuando se llama desde un hilo de fondo, las tareas se **ponen en cola para ejecución asincrónica**:
+Cuando se llama desde un hilo en segundo plano, las tareas son **enviadas para ejecución asincrónica**:
 
 ```java
 @Override
 public void onDidCreate() {
   CompletableFuture.runAsync(() -> {
-    // Esto se ejecuta en el hilo ForkJoinPool
-    System.out.println("Fondo: " + Thread.currentThread().getName());
-    
+    // Esto se ejecuta en un hilo de ForkJoinPool
+    System.out.println("En segundo plano: " + Thread.currentThread().getName());
+
     PendingResult<Void> result = Environment.runLater(() -> {
       // Esto se ejecuta en el hilo de Environment
-      System.out.println("Actualización de UI: " + Thread.currentThread().getName());
+      System.out.println("Actualización de la UI: " + Thread.currentThread().getName());
       statusLabel.setText("Procesamiento completo");
     });
-    
+
     // result.isDone() sería falso aquí
-    // La tarea está en cola y se ejecutará de forma asincrónica
+    // La tarea está en cola y se ejecutará de manera asincrónica
   });
 }
 ```
 
-webforJ procesa las tareas enviadas desde hilos de fondo en **orden FIFO estricto**, preservando la secuencia de operaciones incluso cuando se envían desde múltiples hilos de forma concurrente. Con esta garantía de orden, las actualizaciones de la interfaz de usuario se aplican en el orden exacto en que fueron enviadas. Así que si el hilo A envía la tarea 1, y luego el hilo B envía la tarea 2, la tarea 1 siempre se ejecutará antes que la tarea 2 en el hilo de la interfaz de usuario. Procesar tareas en orden FIFO previene inconsistencias en la interfaz de usuario.
+webforJ procesa tareas enviadas desde hilos en segundo plano en **estricto orden FIFO**, preservando la secuencia de operaciones incluso cuando se envían desde múltiples hilos de manera concurrente. Con esta garantía de orden, las actualizaciones de la interfaz se aplican en el mismo orden en que fueron enviadas. Entonces, si el hilo A envía la tarea 1 y luego el hilo B envía la tarea 2, la tarea 1 siempre se ejecutará antes que la tarea 2 en el hilo de la interfaz de usuario. Procesar tareas en orden FIFO previene inconsistencias en la interfaz de usuario.
 
 ## Cancelación de tareas {#task-cancellation}
 
-El <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> devuelto por `Environment.runLater()` soporta cancelaciones, permitiéndote evitar que las tareas en cola se ejecuten. Al cancelar tareas pendientes, puedes evitar fugas de memoria y prevenir que operaciones de larga duración actualicen la interfaz de usuario después de que ya no se necesiten.
+El <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> devuelto por `Environment.runLater()` admite la cancelación, lo que te permite evitar que las tareas en cola se ejecuten. Al cancelar tareas pendientes, puedes evitar fugas de memoria y evitar que operaciones de larga duración actualicen la interfaz de usuario después de que ya no son necesarias.
 
 ### Cancelación básica {#basic-cancellation}
 
@@ -159,7 +162,7 @@ if (!result.isDone()) {
 }
 ```
 
-### Gestión de múltiples actualizaciones {#managing-multiple-updates}
+### Administración de múltiples actualizaciones {#managing-multiple-updates}
 
 Al realizar operaciones de larga duración con actualizaciones frecuentes de la interfaz de usuario, rastrea todos los resultados pendientes:
 
@@ -167,29 +170,29 @@ Al realizar operaciones de larga duración con actualizaciones frecuentes de la 
 public class LongRunningTask {
   private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
   private volatile boolean isCancelled = false;
-  
+
   public void startTask() {
     CompletableFuture.runAsync(() -> {
       for (int i = 0; i <= 100; i++) {
         if (isCancelled) return;
-        
+
         final int progress = i;
         PendingResult<Void> update = Environment.runLater(() -> {
           progressBar.setValue(progress);
         });
-        
+
         // Rastrear para posible cancelación
         pendingUpdates.add(update);
-        
+
         Thread.sleep(100);
       }
     });
   }
-  
+
   public void cancelTask() {
     isCancelled = true;
-    
-    // Cancelar todas las actualizaciones de la interfaz de usuario pendientes
+
+    // Cancelar todas las actualizaciones pendientes de la UI
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
         pending.cancel();
@@ -200,20 +203,20 @@ public class LongRunningTask {
 }
 ```
 
-### Gestión del ciclo de vida del componente {#component-lifecycle-management}
+### Gestión del ciclo de vida de componentes {#component-lifecycle-management}
 
-Cuando los componentes son destruidos (por ejemplo, durante la navegación), cancela todas las actualizaciones pendientes para prevenir fugas de memoria:
+Cuando los componentes son destruidos (por ejemplo, durante la navegación), cancela todas las actualizaciones pendientes para evitar fugas de memoria:
 
 ```java
 @Route
 public class CleanupView extends Composite<Div> {
   private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
-  
+
   @Override
   protected void onDestroy() {
     super.onDestroy();
-    
-    // Cancelar todas las actualizaciones pendientes para prevenir fugas de memoria
+
+    // Cancelar todas las actualizaciones pendientes para evitar fugas de memoria
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
         pending.cancel();
@@ -228,11 +231,11 @@ public class CleanupView extends Composite<Div> {
 
 1. **Requisito de contexto**: Los hilos deben haber heredado un contexto de `Environment`. Los hilos de bibliotecas externas, temporizadores del sistema y inicializadores estáticos no pueden usar esta API.
 
-2. **Prevención de fugas de memoria**: Siempre rastrea y cancela los objetos `PendingResult` en los métodos del ciclo de vida del componente. Las lambdas en cola capturan referencias a los componentes de la interfaz de usuario, previniendo la recolección de basura si no se cancelan.
+2. **Prevención de fugas de memoria**: Siempre rastrea y cancela objetos `PendingResult` en métodos de ciclo de vida de componentes. Las lambdas en cola capturan referencias a componentes de la interfaz de usuario, previniendo la recolección de basura si no se cancela.
 
-3. **Ejecución FIFO**: Todas las tareas se ejecutan en un estricto orden FIFO sin importar su importancia. No hay un sistema de prioridades.
+3. **Ejecución FIFO**: Todas las tareas se ejecutan en estricto orden FIFO independientemente de su importancia. No hay un sistema de prioridades.
 
-4. **Limitaciones de cancelación**: La cancelación solo previene la ejecución de tareas en cola. Las tareas que ya se están ejecutando se completarán normalmente.
+4. **Limitaciones de cancelación**: La cancelación solo evita la ejecución de tareas en cola. Las tareas ya en ejecución se completarán normalmente.
 
 ## Estudio de caso completo: `LongTaskView` {#complete-case-study-longtaskview}
 
@@ -244,35 +247,35 @@ Lo siguiente es una implementación completa y lista para producción que demues
 {`
 @Route("/")
 public class LongTaskView extends Composite<FlexLayout> {
-  // Usar un ejecutor de un solo hilo para prevenir el agotamiento de recursos
-  // Para producción, considera usar un grupo de hilos compartido en toda la aplicación
+  // Utiliza un ejecutor de un solo hilo para prevenir la exhaustión de recursos
+  // Para producción, considera usar un grupo de hilos compartido a nivel de aplicación
   private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
     Thread t = new Thread(r, "LongTaskView-Worker");
     t.setDaemon(true);
     return t;
   });
 
-  // Rastrear la tarea actual y actualizaciones de UI pendientes
+  // Rastrear la tarea actual y actualizaciones pendientes de la UI
   private CompletableFuture<Void> currentTask = null;
   private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
   private volatile boolean isCancelled = false;
 
-  // Componentes de UI
+  // Componentes de la UI
   private final FlexLayout self = getBoundComponent();
   private H2 titleLabel = new H2("Demostración de Actualizaciones de UI en Segundo Plano");
   private Paragraph descriptionPara = new Paragraph(
-      "Esta demostración muestra cómo Environment.runLater() permite actualizaciones seguras de UI desde hilos de fondo. " +
-          "Haz clic en 'Iniciar tarea larga' para ejecutar un cálculo de fondo de 10 segundos que actualiza el progreso de la UI. " +
-          "El botón 'Probar UI' prueba que la UI permanece receptiva durante la operación de fondo.");
+      "Esta demostración muestra cómo Environment.runLater() permite actualizaciones seguras de la UI desde hilos en segundo plano. " +
+          "Haz clic en 'Iniciar Tarea Larga' para ejecutar un cálculo en segundo plano de 10 segundos que actualiza el progreso de la UI. " +
+          "El botón 'Probar UI' demuestra que la UI permanece receptiva durante la operación en segundo plano.");
   private TextField statusField = new TextField("Estado");
   private ProgressBar progressBar = new ProgressBar();
   private TextField resultField = new TextField("Resultado");
-  private Button startButton = new Button("Iniciar tarea larga");
-  private Button cancelButton = new Button("Cancelar tarea");
+  private Button startButton = new Button("Iniciar Tarea Larga");
+  private Button cancelButton = new Button("Cancelar Tarea");
   private Button testButton = new Button("Probar UI - ¡Haz clic en mí!");
   private Paragraph footerPara = new Paragraph(
-      "Nota: La tarea se puede cancelar en cualquier momento, demostrando la limpieza adecuada de tanto el " +
-          "hilo de fondo como las actualizaciones de UI en cola.");
+      "Nota: La tarea puede cancelarse en cualquier momento, demostrando la limpieza adecuada tanto del " +
+          "hilo en segundo plano como de las actualizaciones de la UI en cola.");
   private Toast globalToast = new Toast("", 3000, Theme.GRAY);
   private AtomicInteger clickCount = new AtomicInteger(0);
 
@@ -309,7 +312,7 @@ public class LongTaskView extends Composite<FlexLayout> {
 
     testButton.onClick(e -> {
       int count = clickCount.incrementAndGet();
-      showToast("Clic #" + count + " - ¡La UI es receptiva!", Theme.GRAY);
+      showToast("Clic #" + count + " - ¡LA UI es receptiva!", Theme.GRAY);
     });
 
     // Agregar componentes
@@ -321,20 +324,20 @@ public class LongTaskView extends Composite<FlexLayout> {
   protected void onDestroy() {
     super.onDestroy();
 
-    // Cancelar cualquier tarea en ejecución y actualizaciones de UI pendientes
+    // Cancelar cualquier tarea en ejecución y actualizaciones pendientes de la UI
     cancelTask();
 
-    // Limpiar referencia de tarea
+    // Limpiar referencia a la tarea
     currentTask = null;
 
-    // Apagar el ejecutor de instancia de manera ordenada
+    // Apagar el ejecutor de forma ordenada
     executor.shutdown();
   }
 
   private void startLongTask() {
     startButton.setEnabled(false);
     cancelButton.setEnabled(true);
-    statusField.setValue("Iniciando tarea de fondo...");
+    statusField.setValue("Iniciando tarea en segundo plano...");
     progressBar.setValue(0);
     resultField.setValue("");
 
@@ -342,15 +345,15 @@ public class LongTaskView extends Composite<FlexLayout> {
     isCancelled = false;
     pendingUIUpdates.clear();
 
-    // Iniciar tarea de fondo con ejecutor explícito
+    // Iniciar tarea en segundo plano con ejecutor explícito
     // Nota: cancel(true) interrumpirá el hilo, causando que Thread.sleep() lance
     // InterruptedException
     currentTask = CompletableFuture.runAsync(() -> {
       double result = 0;
 
-      // Simular tarea larga con 100 pasos
+      // Simular una tarea larga con 100 pasos
       for (int i = 0; i <= 100; i++) {
-        // Comprobar si se canceló
+        // Verificar si fue cancelada
         if (isCancelled) {
           PendingResult<Void> cancelUpdate = Environment.runLater(() -> {
             statusField.setValue("¡Tarea cancelada!");
@@ -376,7 +379,7 @@ public class LongTaskView extends Composite<FlexLayout> {
         // Produce valores entre 0 y 1
         result += Math.sin(i) * 0.5 + 0.5;
 
-        // Actualizar progreso desde el hilo de fondo
+        // Actualizar el progreso desde el hilo en segundo plano
         final int progress = i;
         PendingResult<Void> updateResult = Environment.runLater(() -> {
           progressBar.setValue(progress);
@@ -409,7 +412,7 @@ public class LongTaskView extends Composite<FlexLayout> {
       // Cancelar la tarea principal (interrumpe el hilo)
       currentTask.cancel(true);
 
-      // Cancelar todas las actualizaciones de UI pendientes
+      // Cancelar todas las actualizaciones pendientes de la UI
       for (PendingResult<?> pending : pendingUIUpdates) {
         if (!pending.isDone()) {
           pending.cancel();
@@ -417,10 +420,10 @@ public class LongTaskView extends Composite<FlexLayout> {
       }
 
       if (!statusField.isDestroyed() && !cancelButton.isDestroyed()) {
-        statusField.setValue("Cancelando tarea...");
+        statusField.setValue("Cancelando la tarea...");
         cancelButton.setEnabled(false);
 
-        showToast("Se solicitó cancelación", Theme.GRAY);
+        showToast("Solicitud de cancelación", Theme.GRAY);
       }
     }
   }
@@ -456,14 +459,14 @@ private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> 
   return t;
 });
 ```
-- Utiliza un **ejecutor de un solo hilo** para prevenir el agotamiento de recursos.
-- Crea **hilos demonio** que no impedirán el apagado de la JVM.
+- Utiliza un **ejecutor de un solo hilo** para prevenir la exhaustión de recursos.
+- Crea **hilos daemon** que no evitarán el apagado de la JVM.
 
-#### 2. Seguimiento de actualizaciones pendientes {#2-tracking-pending-updates}
+#### 2. Rastreo de actualizaciones pendientes {#2-tracking-pending-updates}
 ```java
 private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
 ```
-Cada llamada a `Environment.runLater()` se rastrea para permitir:
+Cada llamada a `Environment.runLater()` es rastreada para permitir:
 - Cancelación cuando el usuario hace clic en cancelar.
 - Prevención de fugas de memoria en `onDestroy()`.
 - Limpieza adecuada durante el ciclo de vida del componente.
@@ -472,7 +475,7 @@ Cada llamada a `Environment.runLater()` se rastrea para permitir:
 ```java
 private volatile boolean isCancelled = false;
 ```
-El hilo de fondo verifica esta bandera en cada iteración, permitiendo:
+El hilo en segundo plano verifica esta bandera en cada iteración, permitiendo:
 - Respuesta inmediata a la cancelación.
 - Salida limpia del bucle.
 - Prevención de actualizaciones adicionales de la interfaz de usuario.
@@ -482,21 +485,21 @@ El hilo de fondo verifica esta bandera en cada iteración, permitiendo:
 @Override
 protected void onDestroy() {
   super.onDestroy();
-  cancelTask();  // Reutiliza la lógica de cancelación.
+  cancelTask();  // Reutiliza la lógica de cancelación
   currentTask = null;
   executor.shutdown();
 }
 ```
 Crítico para prevenir fugas de memoria mediante:
-- Cancelación de todas las actualizaciones de UI pendientes.
+- Cancelación de todas las actualizaciones pendientes de la UI.
 - Interrupción de hilos en ejecución.
 - Apagado del ejecutor.
 
-#### 5. Prueba de la receptividad de la UI {#5-ui-responsiveness-testing}
+#### 5. Pruebas de receptividad de la UI {#5-ui-responsiveness-testing}
 ```java
 testButton.onClick(e -> {
   int count = clickCount.incrementAndGet();
-  showToast("Clic #" + count + " - ¡La UI es receptiva!", Theme.GRAY);
+  showToast("Clic #" + count + " - ¡LA UI es receptiva!", Theme.GRAY);
 });
 ```
-Demuestra que el hilo de la interfaz de usuario permanece receptivo durante las operaciones de fondo.
+Demuestra que el hilo de la interfaz de usuario permanece receptivo durante operaciones en segundo plano.

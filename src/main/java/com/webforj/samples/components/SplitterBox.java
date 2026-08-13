@@ -1,12 +1,12 @@
 package com.webforj.samples.components;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 
-@StyleSheet("ws://css/splitter/splitter-box.css")
+@BundleEntry("css/splitter/splitter-box.css")
 public class SplitterBox extends Composite<FlexLayout> {
   public enum Theme {
     INFO,

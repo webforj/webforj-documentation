@@ -1,26 +1,29 @@
 ---
 sidebar_position: 3
 title: Testing with Selenium
-_i18n_hash: fe85942b4638ef9828b334ef986b4436
+description: >-
+  Drive a webforJ app from JUnit with Selenium WebDriver and WebDriverManager to
+  simulate user interactions and assert UI state.
+_i18n_hash: 865e29cc6d656fb60a0a3332a805c5f4
 ---
-Diese Dokumentation beschreibt den Prozess zum Testen von webforJ-Anwendungen mit Selenium, insbesondere fokussiert auf die `HelloWorldView` aus der `webforj-archetype-hello-world`.
+Diese Dokumentation beschreibt den Prozess zum Testen von webforJ-Anwendungen mit Selenium, wobei der Schwerpunkt auf der `HelloWorldView` aus dem `webforj-archetype-hello-world` liegt.
 
-:::info App Grundlagen
-Um mehr über die `webforj-archetype-hello-world` zu erfahren, lesen Sie den Abschnitt [Einführung in die App-Grundlagen](../../introduction/basics).
+:::info Grundlagen der App
+Um mehr über das `webforj-archetype-hello-world` zu erfahren, siehe den Abschnitt [Einführung in die Grundlagen der App](../../introduction/basics).
 :::
 
 ## Voraussetzungen {#prerequisites}
 
-Bevor Sie die Selenium-Tests ausführen, stellen Sie Folgendes sicher:
+Bevor Sie die Selenium-Tests ausführen, stellen Sie sicher, dass Folgendes erfüllt ist:
 - Die webforJ-App ist korrekt eingerichtet und läuft auf Ihrem lokalen Server.
-- Sie haben Folgendes installiert:
+- Sie haben installiert:
   - Selenium Java-Bindings.
-  - Einen kompatiblen WebDriver für Ihren Browser.
+  - Ein kompatibler WebDriver für Ihren Browser.
   - Maven für Projektabhängigkeiten.
 
 ## Maven-Konfiguration {#maven-configuration}
 
-Fügen Sie die erforderlichen Abhängigkeiten in Ihrer `pom.xml` für Selenium und andere Testbibliotheken hinzu:
+Fügen Sie die erforderlichen Abhängigkeiten in Ihre `pom.xml` für Selenium und andere Testbibliotheken hinzu:
 
 ```xml title="pom.xml"
 <dependencies>
@@ -44,7 +47,7 @@ Fügen Sie die erforderlichen Abhängigkeiten in Ihrer `pom.xml` für Selenium u
 
 ## Testbeispiel: `HelloWorldView` {#testing-example-helloworldview}
 
-Der folgende Code demonstriert einen Selenium-basierten Test für die `HelloWorldView`-Komponente.
+Der folgende Code demonstriert einen auf Selenium basierenden Test für die Komponente `HelloWorldView`.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -108,15 +111,15 @@ class HelloWorldViewTest {
    - Warten Sie, bis der Seitentitel dem erwarteten `webforJ Hello World` entspricht.
 
 3. **Mit Elementen interagieren**:
-   - Lokalisieren Sie Elemente mit `By.tagName`, `By.id` oder anderen Selenium-Selektoren.
-   - Überprüfen Sie erwartete Verhaltensweisen wie das Klicken auf Schaltflächen oder Textänderungen.
+   - Lokalisieren Sie Elemente mit `By.tagName`, `By.id` oder anderen Selenium-Lokatoren.
+   - Überprüfen Sie erwartete Verhaltensweisen wie Button-Klicks oder Textänderungen.
 
   :::info
-  Da webforJ eine einseitige Webanwendung produziert, ist Selenium sich nach dem Laden der ursprünglichen Seite nicht über DOM-Manipulationen bewusst. Sie können die [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) von Selenium verwenden, um zu warten, bis das DOM kompiliert ist.
+  Da webforJ eine Einzelseiten-Webanwendung produziert, ist Selenium sich nach dem Laden der Anfangsseite nicht über die DOM-Manipulation im Klaren. Sie können die [WebDriverWait-API von Selenium](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) verwenden, um zu warten, bis das DOM kompiliert wurde.
   :::
 
-4. **Bereinigung**:
-   - Beenden Sie die WebDriver-Sitzung, um Ressourcen freizugeben.
+4. **Teardown**:
+   - Beenden Sie die WebDriver-Session, um Ressourcen freizugeben.
 
 ### Tests ausführen {#running-tests}
 
@@ -132,5 +135,5 @@ class HelloWorldViewTest {
 
 ## Erwartetes Verhalten {#expected-behavior}
 
-- Beim Besuch von `http://localhost:<port>/` wird die `HelloWorldView`-Seite geladen.
+- Beim Besuch von `http://localhost:<port>/` wird die Seite `HelloWorldView` geladen.
 - Das Element `dwc-button` mit dem Text `Say Hello` sollte vorhanden sein.

@@ -1,37 +1,40 @@
 ---
 title: Querying data
 sidebar_position: 3
-_i18n_hash: 745f13099f9adff4b07124e4c8230600
+description: >-
+  Build typed filters, sorting, and pagination with QueryableRepository and
+  RepositoryCriteria for in-memory collections or external sources.
+_i18n_hash: 4bb2af4f510fd31035042c2f1e3a24c7
 ---
 <!-- vale off -->
 # Consultando datos <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-La interfaz <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> extiende `Repository` con consultas avanzadas a través de <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink>. A diferencia de los repositorios básicos que solo admiten filtrado simple, los repositorios consultables proporcionan consultas estructuradas con tipos de filtro personalizados, ordenación y paginación.
+La interfaz <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> extiende `Repository` con consultas avanzadas a través de <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink>. A diferencia de los repositorios básicos que solo admiten filtrado simple, los repositorios consultables proporcionan consultas estructuradas con tipos de filtros personalizados, ordenación y paginación.
 
-## Comprendiendo los tipos de filtro {#understanding-filter-types}
+## Entendiendo los tipos de filtros {#understanding-filter-types}
 
 <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> introduce un segundo parámetro genérico para el tipo de filtro: `QueryableRepository<T, F>` donde `T` es tu tipo de entidad y `F` es tu tipo de filtro personalizado.
 
-Esta separación existe porque diferentes fuentes de datos utilizan diferentes lenguajes de consulta:
+Esta separación existe porque diferentes fuentes de datos hablan diferentes lenguajes de consulta:
 
 ```java
-// Filtros de predicado para colecciones en memoria
-QueryableRepository<Product, Predicate<Product>> inMemoryRepo = 
+// Filtros de Predicate para colecciones en memoria
+QueryableRepository<Product, Predicate<Product>> inMemoryRepo =
   new CollectionRepository<>(products);
 
-// Objetos de filtro personalizados para APIs REST o bases de datos  
-QueryableRepository<User, UserFilter> apiRepo = 
+// Objetos de filtro personalizados para API REST o bases de datos
+QueryableRepository<User, UserFilter> apiRepo =
   new DelegatingRepository<>(/* implementación */);
 
-// Consultas de cadena para motores de búsqueda
-QueryableRepository<Document, String> searchRepo = 
+// Consultas de cadenas para motores de búsqueda
+QueryableRepository<Document, String> searchRepo =
   new DelegatingRepository<>(/* implementación */);
 ```
 
-`CollectionRepository` utiliza `Predicate<Product>` porque filtra objetos de Java en memoria. El repositorio de la API REST utiliza `UserFilter` - una clase personalizada con campos como `department` y `status` que se mapean a parámetros de consulta. El repositorio de búsqueda utiliza cadenas simples para consultas de texto completo.
+`CollectionRepository` utiliza `Predicate<Product>` porque filtra objetos Java en memoria. El repositorio de API REST utiliza `UserFilter` - una clase personalizada con campos como `department` y `status` que se mapean a parámetros de consulta. El repositorio de búsqueda utiliza cadenas simples para consultas de texto completo.
 
-Los componentes de la interfaz de usuario no se preocupan por estas diferencias. Llaman a `setBaseFilter()` con cualquier tipo de filtro que el repositorio espera, y el repositorio maneja la traducción.
+Los componentes de UI no se preocupan por estas diferencias. Llaman a `setBaseFilter()` con el tipo de filtro que el repositorio espera, y el repositorio se encarga de la traducción.
 
 ## Construyendo consultas con criterios de repositorio {#building-queries-with-repository-criteria}
 
@@ -39,12 +42,12 @@ Los componentes de la interfaz de usuario no se preocupan por estas diferencias.
 
 ```java
 // Consulta completa con todos los parámetros
-RepositoryCriteria<Product, Predicate<Product>> criteria = 
+RepositoryCriteria<Product, Predicate<Product>> criteria =
   new RepositoryCriteria<>(
     20,                                       // desplazamiento - omitir los primeros 20
-    10,                                       // límite - tomar 10 elementos  
-    orderCriteria,                           // reglas de ordenación
-    product -> product.getPrice() < 100.0    // condición de filtrado
+    10,                                       // límite - tomar 10 elementos
+    orderCriteria,                           // reglas de ordenamiento
+    product -> product.getPrice() < 100.0    // condición de filtro
   );
 
 // Ejecutar la consulta
@@ -52,23 +55,23 @@ Stream<Product> results = repository.findBy(criteria);
 int totalMatching = repository.size(criteria);
 ```
 
-El método `findBy()` ejecuta la consulta completa: aplica el filtro, ordena los resultados, omite el desplazamiento y toma el límite. El método `size()` cuenta todos los elementos que coinciden con el filtro, ignorando la paginación.
+El método `findBy()` ejecuta la consulta completa - aplica el filtro, ordena los resultados, omite el desplazamiento y toma el límite. El método `size()` cuenta todos los elementos que coinciden con el filtro, ignorando la paginación.
 
 También puedes crear criterios solo con las partes que necesitas:
 
 ```java
 // Solo filtro
-RepositoryCriteria<Product, Predicate<Product>> filterOnly = 
+RepositoryCriteria<Product, Predicate<Product>> filterOnly =
   new RepositoryCriteria<>(product -> product.isActive());
 
-// Solo paginación  
-RepositoryCriteria<Product, Predicate<Product>> pageOnly = 
+// Solo paginación
+RepositoryCriteria<Product, Predicate<Product>> pageOnly =
   new RepositoryCriteria<>(0, 25);
 ```
 
-## Trabajando con diferentes tipos de filtro {#working-with-different-filter-types}
+## Trabajando con diferentes tipos de filtros {#working-with-different-filter-types}
 
-### Filtros de predicado {#predicate-filters}
+### Filtros Predicate {#predicate-filters}
 
 Para colecciones en memoria, utiliza `Predicate<T>` para componer filtros funcionales:
 
@@ -96,73 +99,73 @@ repository.setBaseFilter(filter);
 
 ### Objetos de filtro personalizados {#custom-filter-objects}
 
-Las fuentes de datos externas no pueden ejecutar predicados de Java. En su lugar, creas clases de filtro que representan lo que tu backend puede buscar:
+Las fuentes de datos externas no pueden ejecutar predicados de Java. En su lugar, debes crear clases de filtro que representen lo que tu backend puede buscar:
 
 ```java
 public class ProductFilter {
   private String category;
   private BigDecimal maxPrice;
   private Boolean inStock;
-  
+
   // getters y setters...
 }
 
-// Usar con repositorio personalizado
+// Uso con repositorio personalizado
 ProductFilter filter = new ProductFilter();
 filter.setCategory("Electrónica");
 filter.setMaxPrice(new BigDecimal("99.99"));
 filter.setInStock(true);
 
-RepositoryCriteria<Product, ProductFilter> criteria = 
+RepositoryCriteria<Product, ProductFilter> criteria =
   new RepositoryCriteria<>(filter);
 
 Stream<Product> results = customRepository.findBy(criteria);
 ```
 
 Dentro del método `findBy()` de tu repositorio personalizado, traducirías este objeto de filtro:
-- Para APIs REST: Convertir a parámetros de consulta como `?category=Electronics&maxPrice=99.99&inStock=true`
-- Para SQL: Construir una cláusula where como `WHERE category = ? AND price <= ? AND stock > 0`
-- Para GraphQL: Construir una consulta con las selecciones de campo apropiadas
+- Para API REST: Convierte a parámetros de consulta como `?category=Electronics&maxPrice=99.99&inStock=true`
+- Para SQL: Construye una cláusula where como `WHERE category = ? AND price <= ? AND stock > 0`
+- Para GraphQL: Construye una consulta con las selecciones de campo apropiadas
 
-La implementación de `Repository` debería manejar esta traducción, manteniendo tu código de UI limpio.
+La implementación de `Repository` debe manejar esta traducción, manteniendo tu código de UI limpio.
 
 ## Ordenando datos {#sorting-data}
 
-<JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> define cómo ordenar tus datos. Cada `OrderCriteria` necesita un proveedor de valor (cómo obtener el valor de tu entidad) y una dirección:
+<JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> define cómo ordenar tus datos. Cada `OrderCriteria` necesita un proveedor de valores (cómo obtener el valor de tu entidad) y una dirección:
 
 ```java
-// Ordenación por un solo campo
-OrderCriteria<Employee, String> byName = 
+// Ordenación por campo único
+OrderCriteria<Employee, String> byName =
   new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC);
 
-// Ordenación multinivel - departamento primero, luego salario, luego nombre
+// Ordenación multi-nivel - departamento primero, luego salario, luego nombre
 OrderCriteriaList<Employee> sorting = new OrderCriteriaList<>();
 sorting.add(new OrderCriteria<>(Employee::getDepartment, OrderCriteria.Direction.ASC));
-sorting.add(new OrderCriteria<>(Employee::getSalary, OrderCriteria.Direction.DESC));  
+sorting.add(new OrderCriteria<>(Employee::getSalary, OrderCriteria.Direction.DESC));
 sorting.add(new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC));
 
-// Usar en criterios
-RepositoryCriteria<Employee, Predicate<Employee>> criteria = 
+// Uso en criterios
+RepositoryCriteria<Employee, Predicate<Employee>> criteria =
   new RepositoryCriteria<>(0, 50, sorting, employee -> employee.isActive());
 ```
 
-El proveedor de valor (`Employee::getName`) funciona para la ordenación en memoria. Pero las fuentes de datos externas no pueden ejecutar funciones de Java. Para esos casos, `OrderCriteria` acepta un nombre de propiedad:
+El proveedor de valores (`Employee::getName`) funciona para ordenación en memoria. Pero las fuentes de datos externas no pueden ejecutar funciones de Java. Para esos casos, OrderCriteria acepta un nombre de propiedad:
 
 ```java
-// Para repositorios externos - proporcionar tanto el getter de valor como el nombre de propiedad
+// Para repositorios externos - proporcionar tanto el getter de valor como el nombre de la propiedad
 OrderCriteria<Employee, String> byName = new OrderCriteria<>(
   Employee::getName,           // Para ordenación en memoria
   Direction.ASC,
   null,                       // Comparador personalizado (opcional)
-  "name"                      // Nombre de propiedad para ordenación en backend
+  "name"                      // Nombre de propiedad para ordenación en el backend
 );
 ```
 
-`CollectionRepository` utiliza el proveedor de valor para ordenar objetos de Java. Las implementaciones de `DelegatingRepository` pueden usar el nombre de propiedad para construir cláusulas de orden en SQL o `sort=name:asc` en APIs REST.
+`CollectionRepository` utiliza el proveedor de valores para ordenar objetos Java. Las implementaciones de `DelegatingRepository` pueden usar el nombre de la propiedad para construir cláusulas de orden en SQL o `sort=name:asc` en API REST.
 
 ## Controlando la paginación {#controlling-pagination}
 
-Configura el desplazamiento y el límite para controlar qué porción de datos cargar:
+Establece desplazamiento y límite para controlar qué porción de datos cargar:
 
 ```java
 // Paginación basada en páginas
@@ -170,10 +173,10 @@ int page = 2;          // número de página basado en cero
 int pageSize = 20;     // elementos por página
 int offset = page * pageSize;
 
-RepositoryCriteria<Product, Predicate<Product>> criteria = 
+RepositoryCriteria<Product, Predicate<Product>> criteria =
   new RepositoryCriteria<>(offset, pageSize, null, yourFilter);
 
-// Carga progresiva - cargar más datos de manera incremental  
+// Carga progresiva - cargar más datos de forma incremental
 int currentlyLoaded = 50;
 int loadMore = 25;
 

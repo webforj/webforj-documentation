@@ -22,7 +22,7 @@ When running with `BBjServices`, the `webforj-engine` dependency should be exclu
         <groupId>com.webforj</groupId>
         <artifactId>webforj-engine</artifactId>
       </exclusion>
-    </exclusions> 
+    </exclusions>
   </dependency>
 </dependencies>
 ```
@@ -58,7 +58,7 @@ Tags within the `<configuration>` tag can be changed to configure your app. Edit
 
 - **`<publishname>`** This tag specifies the name of the app in the published URL. Generally, to run your program, you'll navigate to a URL similar to `http://localhost:8888/webapp/<publishname>`, replacing `<publishname>` with the value in the `<publishname>` tag. Then, the program specified by the `<classname>` tag is run.
 
-- **`<debug>`** The debug tag can be set to true or false, and will determine whether or not the browser's console displays error messages thrown by your program. 
+- **`<debug>`** The debug tag can be set to true or false, and will determine whether or not the browser's console displays error messages thrown by your program.
 
 ## Running a specific program {#running-a-specific-program}
 
@@ -84,7 +84,7 @@ If there are multiple classes that extend `App` and none of them are annotated w
 
 ## Debug mode {#debug-mode}
 
-It's also possible to run your app in debug mode, which allows the console to print comprehensive error messages. 
+It's also possible to run your app in debug mode, which allows the console to print comprehensive error messages.
 
 The first option is to change the `config.bbx` file, found in the `cfg/` directory of your BBj installation. Add the line `SET DEBUG=1` to the file and save your changes.
 

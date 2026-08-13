@@ -1,6 +1,6 @@
 package com.webforj.samples.views.drawer;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @Route
 @FrameTitle("Task Manager Drawer")
-@StyleSheet("ws://css/drawer/drawer-task-view.css")
+@BundleEntry("css/drawer/drawer-task-view.css")
 public class DrawerTaskView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Drawer drawer = new Drawer();

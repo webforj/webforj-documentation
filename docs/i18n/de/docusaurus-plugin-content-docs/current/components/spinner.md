@@ -1,20 +1,23 @@
 ---
 title: Spinner
 sidebar_position: 110
-_i18n_hash: d93d5704fff2acc975910f1a10e34d0b
+description: >-
+  Indicate background activity with the Spinner component, configuring theme,
+  expanse, rotation speed, and pause or resume.
+_i18n_hash: bd35c3da6c5fc265d0bb249bbde86215
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-spinner" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="spinner" location="com/webforj/component/spinner/Spinner" top='true'/>
 
-Die `Spinner`-Komponente bietet ein visuelles Indiz, das anzeigt, dass ein Vorgang oder eine Hintergrundladung gerade stattfindet. Sie wird häufig verwendet, um zu zeigen, dass das System Daten abruft oder wenn ein Prozess Zeit zum Abschluss benötigt. Der `Spinner` bietet Rückmeldung an den Benutzer und signalisiert, dass das System aktiv arbeitet.
+Die `Spinner`-Komponente bietet einen visuellen Indikator, der anzeigt, dass im Hintergrund eine Verarbeitung oder das Laden im Gange ist. Sie wird oft verwendet, um anzuzeigen, dass das System Daten abruft oder wenn ein Prozess Zeit benötigt, um abgeschlossen zu werden. Der `Spinner` bietet dem Benutzer Feedback und signalisiert, dass das System aktiv arbeitet.
 
 <!-- INTRO_END -->
 
 ## Grundlagen {#basics}
 
-Um einen `Spinner` zu erstellen, können Sie das Thema und die Größe angeben. Die grundlegende Syntax besteht darin, eine `Spinner`-Instanz zu erstellen und ihr Aussehen sowie Verhalten durch Methoden wie `setTheme()` und `setExpanse()` zu definieren.
+Um einen `Spinner` zu erstellen, können Sie das Design und die Größe angeben. Die grundlegende Syntax besteht darin, eine `Spinner`-Instanz zu erstellen und ihr Aussehen sowie Verhalten durch Methoden wie `setTheme()` und `setExpanse()` zu definieren.
 
 <ComponentDemo
 path='/webforj/spinnerdemo'
@@ -22,32 +25,32 @@ files={['src/main/java/com/webforj/samples/views/spinner/SpinnerDemoView.java']}
 height='225px'
 />
 
-## Geschwindigkeit verwalten und Pausieren {#managing-speed-and-pausing}
+## Geschwindigkeit steuern und pausieren {#managing-speed-and-pausing}
 
-Es ist möglich, die Geschwindigkeit in Millisekunden für den `Spinner` einzustellen und die Animation einfach zu pausieren/wiederaufzunehmen.
+Es ist möglich, die Geschwindigkeit in Millisekunden für den `Spinner` festzulegen und die Animation einfach zu pausieren oder fortzusetzen.
 
-Anwendungsfälle für Geschwindigkeitsanpassungen umfassen die Differenzierung zwischen Ladeprozessen. Beispielsweise sind schnellere `Spinner` für kleinere Aufgaben geeignet, während langsamere `Spinner` besser für größere Aufgaben sind. Pausen sind nützlich, wenn eine Benutzeraktion oder Bestätigung erforderlich ist, bevor der Prozess fortgesetzt wird.
+Anwendungsfälle für Geschwindigkeitsanpassungen umfassen die Differenzierung zwischen Ladeprozessen. Beispielsweise sind schnellere `Spinner` für kleinere Aufgaben geeignet, während langsamere `Spinner` besser für größere Aufgaben sind. Pausieren ist nützlich, wenn eine Benutzeraktion oder -bestätigung erforderlich ist, bevor der Prozess fortgesetzt wird.
 
 ### Geschwindigkeit anpassen {#adjusting-speed}
 
-Sie können die Rotationsgeschwindigkeit des `Spinner` steuern, indem Sie seine Geschwindigkeit in Millisekunden mit der Methode `setSpeed()` anpassen. Ein niedrigerer Wert lässt den `Spinner` schneller rotieren, während höhere Werte ihn verlangsamen.
+Sie können steuern, wie schnell sich der `Spinner` dreht, indem Sie dessen Geschwindigkeit in Millisekunden mit der Methode `setSpeed()` anpassen. Ein niedrigerer Wert lässt den `Spinner` schneller rotieren, während höhere Werte ihn langsamer machen.
 
 ```java
 spinner.setSpeed(500); // Rotiert schneller
 ```
 
 :::info Standardgeschwindigkeit
-Standardmäßig benötigt der `Spinner` 1000 Millisekunden für eine volle Umdrehung.
+Standardmäßig benötigt der `Spinner` 1000 Millisekunden, um eine vollständige Umdrehung abzuschließen.
 :::
 
 ### Pausieren und Fortsetzen {#pausing-and-resuming}
 
-Das Pausieren des `Spinner` ist nützlich, wenn ein Programm vorübergehend angehalten wird oder auf Benutzereingaben wartet. Es lässt die Benutzer wissen, dass das Programm angehalten ist und nicht aktiv läuft, was die Klarheit während mehrstufiger Prozesse verbessert.
+Das Pausieren des `Spinner` ist nützlich, wenn ein Programm vorübergehend gestoppt oder auf Benutzereingaben wartet. Es lässt die Benutzer wissen, dass das Programm pausiert ist, anstatt aktiv zu laufen, was die Klarheit während mehrstufiger Prozesse verbessert.
 
-Um den Spinner zu pausieren und wieder aufzunehmen, verwenden Sie die Methode `setPaused()`. Dies ist besonders hilfreich, wenn Sie die drehende Animation vorübergehend stoppen müssen.
+Um den Spinner zu pausieren und fortzusetzen, verwenden Sie die Methode `setPaused()`. Dies ist besonders hilfreich, wenn Sie die sich drehende Animation vorübergehend stoppen müssen.
 
 ```java
-spinner.setPaused(true);  // Pausiere den Spinner
+spinner.setPaused(true);  // Pause den Spinner
 spinner.setPaused(false); // Setze den Spinner fort
 ```
 
@@ -59,16 +62,16 @@ files={['src/main/java/com/webforj/samples/views/spinner/SpinnerSpeedDemoView.ja
 height='150px'
 />
 
-## Rotationsrichtung {#spin-direction}
+## Drehrichtung {#spin-direction}
 
-Die Richtung des `Spinner` kann gesteuert werden, um **im Uhrzeigersinn** oder **gegen den Uhrzeigersinn** zu rotieren. Sie können dieses Verhalten mit der Methode `setClockwise()` festlegen.
+Die Drehrichtung des `Spinner` kann so gesteuert werden, dass er **im Uhrzeigersinn** oder **gegen den Uhrzeigersinn** rotiert. Sie können dieses Verhalten mit der Methode `setClockwise()` angeben.
 
 ```java
 spinner.setClockwise(false);  // Rotiert gegen den Uhrzeigersinn
 spinner.setClockwise(true);   // Rotiert im Uhrzeigersinn
 ```
 
-Diese Option zeigt visuell einen besonderen Zustand an oder dient als einzigartige Designwahl. Das Ändern der Rotationsrichtung kann helfen, zwischen verschiedenen Prozessen zu unterscheiden, wie beispielsweise Fortschritt vs. Umkehrung oder einen deutlichen visuellen Hinweis in bestimmten Kontexten zu geben.
+Diese Option zeigt visuell einen besonderen Zustand an oder dient als einzigartige Designentscheidung. Das Ändern der Drehrichtung kann helfen, zwischen verschiedenen Prozessen zu unterscheiden, wie zum Beispiel Fortschritt gegen Rückgängigmachen, oder in bestimmten Kontexten einen klaren visuellen Hinweis zu geben.
 
 <ComponentDemo
 path='/webforj/spinnerdirectiondemo'
@@ -76,29 +79,29 @@ files={['src/main/java/com/webforj/samples/views/spinner/SpinnerDirectionDemoVie
 height='150px'
 />
 
-## Styling {#styling}
+## Stilgestaltung {#styling}
 
 ### Themen {#themes}
 
-Die `Spinner`-Komponente verfügt über mehrere integrierte Themen, die es Ihnen ermöglichen, Stile schnell anzuwenden, ohne benutzerdefiniertes CSS zu benötigen. Diese Themen verändern das visuelle Erscheinungsbild des Spinners und machen ihn für verschiedene Anwendungsfälle und Kontexte geeignet. Durch die Verwendung dieser vordefinierten Themen wird Konsistenz im Styling Ihrer App sichergestellt.
+Die `Spinner`-Komponente kommt mit mehreren integrierten Themen, die es Ihnen ermöglichen, schnell Stile anzuwenden, ohne benutzerdefiniertes CSS schreiben zu müssen. Diese Themen ändern das visuelle Erscheinungsbild des Spinners und machen ihn für unterschiedliche Anwendungsfälle und Kontexte geeignet. Die Verwendung dieser vordefinierten Themen gewährleistet Konsistenz in der Gestaltung über Ihre App hinweg.
 
-Während Spinners verschiedene Situationen bedienen, sind hier einige Anwendungsbeispiele für die unterschiedlichen Themen:
+Während Spinner in verschiedenen Situationen eingesetzt werden, sind hier einige Beispielanwendungsfälle für die verschiedenen Themen:
 
-- **Primär**: Ideal, um einen Ladezustand zu betonen, der ein Schlüsselteil des Benutzerflusses ist, z. B. beim Einreichen eines Formulars oder der Verarbeitung einer wichtigen Aktion.
-  
-- **Erfolg**: Nützlich, um erfolgreiche Hintergrundprozesse darzustellen, z. B. wenn ein Benutzer ein Formular einreicht und die App die letzten Schritte des Prozesses durchführt.
-  
-- **Gefahr**: Verwenden Sie dies für riskante oder hochriskante Operationen, wie das Löschen wichtiger Daten oder das Vornehmen irreversibler Änderungen, bei denen ein visuelles Indiz für Dringlichkeit oder Vorsicht erforderlich ist.
-  
-- **Warnung**: Verwenden Sie dies, um einen vorsichtigen oder weniger dringenden Prozess anzuzeigen, z. B. wenn der Benutzer auf die Datenvalidierung wartet, aber keine sofortige Aktion erforderlich ist.
+- **Primär**: Ideal, um einen Ladezustand zu betonen, der ein zentraler Bestandteil des Benutzerflusses ist, wie beispielsweise beim Einreichen eines Formulars oder bei der Verarbeitung einer wichtigen Aktion.
 
-- **Grau**: Funktioniert gut für subtile Hintergrundprozesse, wie niedrigpriorisierte oder passive Ladeaufgaben, z. B. beim Abrufen zusätzlicher Daten, die die Benutzererfahrung nicht direkt beeinflussen.
-  
-- **Info**: Geeignet für Ladeszenarien, bei denen Sie dem Benutzer zusätzliche Informationen oder Klarstellungen bieten, z. B. indem Sie einen Spinner neben einer Nachricht anzeigen, die den laufenden Prozess erklärt.
+- **Erfolgreich**: Nützlich, um erfolgreiche Hintergrundprozesse darzustellen, wie wenn ein Benutzer ein Formular einreicht und die App die letzten Schritte des Prozesses durchführt.
 
-Sie können diese Themen programmatisch auf den Spinner anwenden und visuelle Hinweise geben, die mit dem Kontext und der Wichtigkeit der Operation übereinstimmen.
+- **Gefahr**: Verwenden Sie dies für riskante oder kritische Operationen, wie das Löschen wichtiger Daten oder das Vornehmen von unumkehrbaren Änderungen, bei denen ein visueller Hinweis auf Dringlichkeit oder Vorsicht erforderlich ist.
 
-Sie können dieses Verhalten mit der Methode `setTheme()` festlegen.
+- **Warnung**: Verwenden Sie dies, um einen vorsichtigen oder weniger dringenden Prozess anzuzeigen, wie wenn der Benutzer auf eine Datenvalidierung wartet, aber keine sofortige Aktion erforderlich ist.
+
+- **Grau**: Funktioniert gut für subtile Hintergrundprozesse, wie niedrigpriorisierte oder passive Ladeaufgaben, wie bei der Abfrage zusätzlicher Daten, die die Benutzererfahrung nicht direkt beeinflussen.
+
+- **Info**: Geeignet für Ladeszenarien, in denen Sie dem Benutzer zusätzliche Informationen oder Klarstellungen bereitstellen, wie das Anzeigen eines Spinners zusammen mit einer Nachricht, die den laufenden Prozess erklärt.
+
+Sie können diese Themen programmgesteuert auf den Spinner anwenden und visuelle Hinweise geben, die mit dem Kontext und der Wichtigkeit der Operation übereinstimmen.
+
+Sie können dieses Verhalten mit der Methode `setTheme()` angeben.
 
 <ComponentDemo
 path='/webforj/spinnerthemedemo'
@@ -108,7 +111,7 @@ height='100px'
 
 ### Größen {#expanses}
 
-Sie können die Größe des Spinners, bekannt als **Größe**, anpassen, um den visuellen Raum zu füllen, den Sie benötigen. Der Spinner unterstützt verschiedene Größen, einschließlich `Expanse.SMALL`, `Expanse.MEDIUM` und `Expanse.LARGE`.
+Sie können die Größe des Spinners, die als **Größe** bekannt ist, anpassen, um den visuellen Raum zu nutzen, den Sie benötigen. Der Spinner unterstützt verschiedene Größen einschließlich `Expanse.SMALL`, `Expanse.MEDIUM` und `Expanse.LARGE`.
 
 <ComponentDemo
 path='/webforj/spinnerexpansedemo'

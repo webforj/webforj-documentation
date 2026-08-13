@@ -37,7 +37,7 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - "Next" - Takes the user to the next page or section of the current application or page.
   > - "Previous" - Returns the user to the previous page of the application or section they're in.
   > - "Back" Returns the user to the first part of the application or page they're in.
-  
+
 The following example demonstrates buttons used for form submission and clearing input:
 
 <ComponentDemo
@@ -92,7 +92,7 @@ Disabling on click not only helps optimize the processing of actions, but also p
 
 ### Themes {#themes}
 
-`Button` components come with <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
+`Button` components come with <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application.
 
 While there are many use cases for each of the various themes, some examples uses are:
 

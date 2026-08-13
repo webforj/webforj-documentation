@@ -26,7 +26,7 @@ path='/webforj/refresher'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/refresher/RefresherView.java',
-  'src/main/resources/static/css/refresher/refresher.css',
+  'src/main/frontend/css/refresher/refresher.css',
 ]}
 />
 
@@ -47,7 +47,7 @@ path='/webforj/refresheri18n'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java',
-  'src/main/resources/static/css/refresher/refresher.css',
+  'src/main/frontend/css/refresher/refresher.css',
 ]}
 />
 
@@ -60,7 +60,7 @@ path='/webforj/refreshericon'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java',
-  'src/main/resources/static/css/refresher/refresher.css',
+  'src/main/frontend/css/refresher/refresher.css',
 ]}
 />
 
@@ -118,7 +118,7 @@ path='/webforj/refresherthemes'
 frame='mobile'
 files={[
   'src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java',
-  'src/main/resources/static/css/refresher/refresher.css',
+  'src/main/frontend/css/refresher/refresher.css',
 ]}
 />
 

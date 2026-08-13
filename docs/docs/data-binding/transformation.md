@@ -82,7 +82,7 @@ In the `bind` method, specifying the type of the bean property as the third para
 
 ### Simplifying transforms with `Transformer.of` {#simplifying-transforms-with-transformerof}
 
-It's possible to simplify the implementation of such transformations using the `Transformer.of` method provided by the `Transformer`. This method is syntactic sugar, and allows you to write a method that handles transformations inline, rather than passing a class implementing the `Transformer` interface. 
+It's possible to simplify the implementation of such transformations using the `Transformer.of` method provided by the `Transformer`. This method is syntactic sugar, and allows you to write a method that handles transformations inline, rather than passing a class implementing the `Transformer` interface.
 
 In the following example, the code handles a checkbox interaction within a travel app where users can opt for additional services like car rental. The checkbox state `boolean` needs to be transformed into a string representation `"yes"` or `"no"` that the backend model uses.
 

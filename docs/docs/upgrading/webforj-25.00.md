@@ -1,7 +1,7 @@
 ---
 title: Upgrade to 25.00
 description: Upgrade from 24.00 to 25.00
-sidebar_position: 10
+sidebar_position: 30
 ---
 
 This documentation serves as a guide to upgrade webforJ apps from 24.00 to 25.00.
@@ -42,7 +42,7 @@ The utility class [`BrowserConsole`](/docs/advanced/browser-console), dedicated 
 
 ```java
 public class Application extends App{
-  
+
   @Override
   public void run() throws WebforjException {
     console().log("Log message");

@@ -64,7 +64,7 @@ The `TextArea` component supports two complementary types of validation: structu
 - `setMinLength(int minChars)` enforces a minimum length, ensuring that enough content is provided.
 
 The following demo allows users to adjust validation limits—such as maximum character count, paragraph length, and line count—in real time and see how the `TextArea` responds.
-	
+
 <ComponentDemo
 path='/webforj/textareavalidation'
 files={['src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java']}
@@ -99,7 +99,7 @@ This predictive behavior enhances both speed and accuracy, especially in repetit
 path='/webforj/textareapredictedtext'
 files={[
   'src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java',
-  'src/main/resources/static/css/textarea/text-area-predicted-text-view.css',
+  'src/main/frontend/css/textarea/text-area-predicted-text-view.css',
 ]}
 height='400px'
 />

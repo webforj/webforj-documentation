@@ -4,10 +4,10 @@ import Link from '@docusaurus/Link';
 import Translate, { translate } from '@docusaurus/Translate';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
-const SETUP_PATH = '/docs/integrations/ai-tooling/agent-skills';
+const SETUP_PATH = '/docs/ai-tooling/agent-skills';
 
 // Single source of truth for skill metadata. Keep in sync with the table
-// rendered by docs/integrations/ai-tooling/agent-skills.md.
+// rendered by docs/ai-tooling/agent-skills.md.
 function getSkills() {
   return {
     'webforj-adding-servlets': {

@@ -1,6 +1,6 @@
 package com.webforj.samples.views.refresher;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.FeatherIcon;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 @Route
-@StyleSheet("ws://css/refresher/refresher.css")
+@BundleEntry("css/refresher/refresher.css")
 public class RefresherI18nView extends Composite<Div> {
   // Names for the item list
   private static final List<String> NAMES =

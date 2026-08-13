@@ -4,7 +4,7 @@ sidebar_position: 5
 description: Step 4 - Use route parameters to control what content loads.
 ---
 
-The app from [Routing and Composites](/docs/introduction/tutorial/routing-and-composites) can only add new customers to the database. Using the following concepts, you’ll give users the ability to also edit the data of existing customers: 
+The app from [Routing and Composites](/docs/introduction/tutorial/routing-and-composites) can only add new customers to the database. Using the following concepts, you’ll give users the ability to also edit the data of existing customers:
 
 - Route patterns
 - Passing parameter values through a URL
@@ -148,7 +148,7 @@ public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
   //When no id is present, continue to FormView for a new customer
   }, () -> event.accept());
-        
+
 }
 ```
 
@@ -203,17 +203,17 @@ public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
   //No id was present, so continue to FormView for a new customer
   }, () -> event.accept());
-        
+
 }
 ```
 
 ## Adding or editing a customer {#adding-or-editing-a-customer}
 
-The previous version of this app only added new customers when the user submitted the form. Now that users can edit existing customers, the `submitCustomer()` method must verify if the customer already exists before updating the database. 
+The previous version of this app only added new customers when the user submitted the form. Now that users can edit existing customers, the `submitCustomer()` method must verify if the customer already exists before updating the database.
 
 Initially, it was unnecessary to assign a variable for the customer `id` in `FormView`, because new customers are assigned a unique `id` when they’re submitted into the database. However, if you declare `customerId` as an initial variable in `FormView` with an `id` value that's not in use, it remains untouched for new customers, and overwritten in `onWillEnter()` for existing ones.
 
-This allows you to use `doesCustomerExist()` to verify whether to add a new customer or update an existing one. 
+This allows you to use `doesCustomerExist()` to verify whether to add a new customer or update an existing one.
 
 ```java
 private Long customerId = 0L;
@@ -232,7 +232,7 @@ private void submitCustomer() {
 
 ## Completed `FormView` {#completed-formview}
 
-Here’s how `FormView` should look, now that it can handle editing existing customers: 
+Here’s how `FormView` should look, now that it can handle editing existing customers:
 
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>

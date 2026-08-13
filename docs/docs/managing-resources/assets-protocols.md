@@ -8,9 +8,9 @@ webforJ supports custom assets protocols that enable structured and efficient re
 
 ## The webserver protocol {#the-webserver-protocol}
 
-The **`ws://`** protocol allows you to retrieve assets hosted in the static folder of a webforJ app. All files located within the app classpath `src/main/resources/static` are directly accessible from the browser. For example, if you have a file named **css/app.css** inside **resources/static**, it can be accessed at: **`/static/css/app.css`**  
+The **`ws://`** protocol allows you to retrieve assets hosted in the static folder of a webforJ app. All files located within the app classpath `src/main/resources/static` are directly accessible from the browser. For example, if you have a file named **css/app.css** inside **resources/static**, it can be accessed at: **`/static/css/app.css`**
 
-The **ws://** protocol removes the need to hardcode the `static` prefix in your resource URLs, safeguarding against changed prefixes depending on the deployment context. If the web app is deployed under a context other than the root, such as **/mycontext**, the URL for **css/app.css** would be: **`/mycontext/static/css/app.css`**  
+The **ws://** protocol removes the need to hardcode the `static` prefix in your resource URLs, safeguarding against changed prefixes depending on the deployment context. If the web app is deployed under a context other than the root, such as **/mycontext**, the URL for **css/app.css** would be: **`/mycontext/static/css/app.css`**
 
 :::tip Configuring the static prefix
 You can control the `static` prefix using the [webforj configuration](../configuration/properties#configuration-options) option `webforj.assetsDir`. This setting specifies the route name used to serve static files, while **the physical folder remains named `static`**. it's particularly useful if the default static route conflicts with a route in your app, as it allows you to change the route name without renaming the folder.
@@ -52,7 +52,7 @@ When an icon is requested using the `icons://` protocol, a base image is dynamic
 If a base image doesn’t exist for the requested icon, the default webforJ logo is used as a fallback.
 
 :::tip `webforj.iconsDir`
-By default, webforJ serves icons from the `resources/icons/` directory. You can change the endpoint name by setting the `webforj.iconsDir` property in the webforJ configuration file. This only changes the URL endpoint used to access the icons, not the actual folder name. The default endpoint is `icons/`. 
+By default, webforJ serves icons from the `resources/icons/` directory. You can change the endpoint name by setting the `webforj.iconsDir` property in the webforJ configuration file. This only changes the URL endpoint used to access the icons, not the actual folder name. The default endpoint is `icons/`.
 :::
 
 ### Overriding Icons {#overriding-icons}
@@ -67,7 +67,7 @@ The `icons://` protocol supports additional parameters that allow you to customi
 
 - **Padding**: The `padding` parameter can be used to control the padding around the icon. Accepted values range from `0`, meaning no padding, to `1`, meaning maximum padding.
   - **Example:** `/icons/icon-192x192.png?padding=0.3`
-  
+
 - **Background Color**: The `background` parameter allows you to set the background color of the icon. It supports the following values:
   - **`transparent`**: No background color.
   <!-- vale off -->
@@ -75,8 +75,8 @@ The `icons://` protocol supports additional parameters that allow you to customi
   <!-- vale on -->
   - **`auto`**: Attempts to detect the background color of the icon automatically.
 
-  For instance: 
-  
+  For instance:
+
   - **Example 1:** `/icons/icon-192x192.png?background=000000`
   - **Example 2:** `/icons/icon-192x192.png?background=auto`
 

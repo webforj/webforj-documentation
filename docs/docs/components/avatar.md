@@ -35,7 +35,7 @@ The example below showcases avatars in a team panel context. Each `Avatar` displ
 path='/webforj/avatar'
 files={[
   'src/main/java/com/webforj/samples/views/avatar/AvatarView.java',
-  'src/main/resources/static/css/avatar/avatar.css',
+  'src/main/frontend/css/avatar/avatar.css',
 ]}
 height='500px'
 />

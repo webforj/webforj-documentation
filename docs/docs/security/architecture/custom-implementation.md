@@ -451,7 +451,7 @@ public class LoginView extends Composite<Login> {
       var result = SecurityManager.getCurrent().login(
         e.getUsername(), e.getPassword()
       );
-      
+
       if (result.isGranted()) {
         Router.getCurrent().navigate(new Location("/"));
       } else {

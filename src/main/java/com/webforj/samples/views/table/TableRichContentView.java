@@ -1,6 +1,6 @@
 package com.webforj.samples.views.table;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.table.Column;
@@ -9,7 +9,7 @@ import com.webforj.component.table.renderer.Renderer;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/table/tableRichContent.css")
+@BundleEntry("css/table/tableRichContent.css")
 @Route
 @FrameTitle("Table Rich Content")
 public class TableRichContentView extends Composite<Div> {

@@ -22,7 +22,7 @@ path='/webforj/splitterbasic'
 files={[
   'src/main/java/com/webforj/samples/views/splitter/SplitterBasicView.java',
   'src/main/java/com/webforj/samples/components/SplitterBox.java',
-  'src/main/resources/static/css/splitter-box.css',
+  'src/main/frontend/css/splitter-box.css',
 ]}
 height='300px'
 />
@@ -42,7 +42,7 @@ path='/webforj/splitterminmax'
 files={[
   'src/main/java/com/webforj/samples/views/splitter/SplitterMinMaxView.java',
   'src/main/java/com/webforj/samples/components/SplitterBox.java',
-  'src/main/resources/static/css/splitter-box.css',
+  'src/main/frontend/css/splitter-box.css',
 ]}
 height='300px'
 />
@@ -58,7 +58,7 @@ path='/webforj/splitterorientation'
 files={[
   'src/main/java/com/webforj/samples/views/splitter/SplitterOrientationView.java',
   'src/main/java/com/webforj/samples/components/SplitterBox.java',
-  'src/main/resources/static/css/splitter-box.css',
+  'src/main/frontend/css/splitter-box.css',
 ]}
 height='300px'
 />
@@ -72,7 +72,7 @@ path='/webforj/splitterposition'
 files={[
   'src/main/java/com/webforj/samples/views/splitter/SplitterPositionView.java',
   'src/main/java/com/webforj/samples/components/SplitterBox.java',
-  'src/main/resources/static/css/splitter-box.css',
+  'src/main/frontend/css/splitter-box.css',
 ]}
 height='300px'
 />
@@ -88,7 +88,7 @@ path='/webforj/splitternested'
 files={[
   'src/main/java/com/webforj/samples/views/splitter/SplitterNestedView.java',
   'src/main/java/com/webforj/samples/components/SplitterBox.java',
-  'src/main/resources/static/css/splitter-box.css',
+  'src/main/frontend/css/splitter-box.css',
 ]}
 height='300px'
 />
@@ -108,7 +108,7 @@ path='/webforj/splitterautosave'
 files={[
   'src/main/java/com/webforj/samples/views/splitter/SplitterAutoSaveView.java',
   'src/main/java/com/webforj/samples/components/SplitterBox.java',
-  'src/main/resources/static/css/splitter-box.css',
+  'src/main/frontend/css/splitter-box.css',
 ]}
 height='400px'
 />
@@ -123,7 +123,7 @@ Clicking the "Clear State" button calls the `cleanState()` method and refreshes 
 
 ## Best practices {#best-practices}
 
-To ensure an optimal user experience when using the `Splitter` component, consider the following best practices: 
+To ensure an optimal user experience when using the `Splitter` component, consider the following best practices:
 
 - **Adjust Based on Content**: When deciding on the orientation and initial sizes of panels, consider the content's priority. For example, in a layout with a navigation sidebar and a main content area, the sidebar should typically remain narrower with a set min size for clear navigation.
 

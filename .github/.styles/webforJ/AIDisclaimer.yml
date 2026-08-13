@@ -1,0 +1,19 @@
+extends: existence
+message: "Remove leftover AI text '%s'. This reads like pasted model output."
+link: "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+level: error
+ignorecase: true
+# NOTE: "AI" is an accepted term in the webforj vocabulary, and Vale masks
+# accepted terms from all checks, so phrases containing the bare word "AI"
+# (e.g. "as an AI language model") cannot be matched directly. The
+# "language model" token below recovers that case.
+tokens:
+  - 'language model'
+  - 'as a large language model'
+  - 'as of my last (?:knowledge )?(?:update|training)'
+  - 'knowledge cut-?off'
+  - 'my training data'
+  - 'I cannot browse'
+  - "I (?:don'?t|do not|cannot) have access to real-time"
+  - "I(?:'m| am) unable to provide real-time"
+  - 'let me know'

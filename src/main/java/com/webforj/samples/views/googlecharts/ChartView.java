@@ -1,6 +1,6 @@
 package com.webforj.samples.views.googlecharts;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Route
-@StyleSheet("ws://css/googlecharts/chart.css")
+@BundleEntry("css/googlecharts/chart.css")
 @FrameTitle("Google Charts")
 public class ChartView extends Composite<Div> {
   private final Div self = getBoundComponent();

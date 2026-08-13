@@ -1,124 +1,119 @@
 ---
 sidebar_position: 5
 title: Elements
+sidebar_class_name: updated-content
+description: >-
+  Integrate raw HTML tags and custom web components in webforJ using the Element
+  class to add children, set content, and call JavaScript functions.
 slug: element
-_i18n_hash: 820bed6c059dad74a523673f245f3b2a
+_i18n_hash: 988b2a49584036eee3b0475215a707ae
 ---
 <JavadocLink type="foundation" location="com/webforj/component/element/Element" top='true'/>
 
-webforJ-kehittäjillä on mahdollisuus valita ei vain rikkaasta komponenttikirjastosta, vaan myös integroida komponentteja muualta. Tämän helpottamiseksi `Element`-komponenttia voidaan käyttää yksinkertaistamaan minkä tahansa integraatiota yksinkertaisista HTML-elementeistä monimutkaisempihin räätälöityihin verkkokomponentteihin.
+webforJ-kehittäjillä on mahdollisuus valita paitsi tarjoamastaan laajasta komponenttikirjastosta, myös integroimalla komponentteja muualta. Tämän helpottamiseksi `Element`-komponenttia voidaan käyttää yksinkertaistamaan kaiken integrointia yksinkertaisista HTML-elementeistä monimutkaisempiin mukautettuihin verkkokomponentteihin.
 
 :::important
-`Element`-komponentti ei ole laajennettavissa, eikä se ole kaikkien webforJ:n komponenttien peruskomponentti. Lue lisää webforJ:n komponenttihierarkiasta lukemalla [tämä artikkeli](../architecture/controls-components.md).
+`Element`-komponenttia ei voi laajentaa, eikä se ole kaikkien webforJ-komponenttien peruskomponentti. Lisätietoja webforJ:n komponenttierarkkitehtuurista saat lukemalla [tämän artikkelin](../architecture/controls-components.md).
 :::
 
 <ComponentDemo
-path='/webforj/elementinputdemo'
+path='/webforj/elementmeter'
 files={[
-  'src/main/java/com.webforj/samples/views/element/ElementInputDemoView.java',
-  'src/main/resources/static/css/element/elementInput.css',
-]}
-/>
-
-## Tapahtumien lisääminen {#adding-events}
-
-Jotta voit hyödyntää elementin mukana tulevia tapahtumia, voit käyttää `Element`-komponentin `addEventListener`-metodeja. Tapahtuman lisääminen vaatii vähintään tapahtuman tyypin/nimen, jota komponentti odottaa, sekä kuuntelijan, joka lisätään tapahtumaan.
-
-On myös lisä vaihtoehtoja, joilla voit mukauttaa tapahtumia edelleen käyttämällä Tapahtumaasetuksia.
-
-<ComponentDemo
-path='/webforj/elementinputevent'
-files={[
-  'src/main/java/com/webforj/samples/views/element/ElementInputEventView.java',
-  'src/main/resources/static/css/element/elementInputEvent.css',
+  'src/main/java/com/webforj/samples/views/element/ElementMeterView.java',
+  'src/main/resources/static/css/element/elementMeter.css',
 ]}
 height='240px'
 />
 
-## Komponenttien interaktiot {#component-interaction}
+## Tapahtumien lisääminen {#adding-events}
 
-`Element`-komponentti toimii säilönä muille komponenteille. Se tarjoaa tavan organisoida ja hankkia tietoa lapsikomponenteista ja tarjoaa selvän joukon toimintoja näiden lapsikomponenttien lisäämiseksi tai poistamiseksi tarvittaessa.
+Jotta voit hyödyntää elementin mukana tulevia tapahtumia, voit käyttää `Element`-komponentin `addEventListener`-menetelmiä. Tapahtuman lisääminen vaatii vähintään tapahtuman tyypin/nimen, jota komponentti odottaa, ja kuuntelijan, joka lisätään tapahtumaan.
+
+Lisäksi on lisävalintoja, joilla voidaan mukauttaa tapahtumia edelleen käyttämällä tapahtumavaihtoehtojen asetuksia.
+
+<ComponentDemo
+path='/webforj/elementtaginput'
+files={[
+  'src/main/java/com/webforj/samples/views/element/ElementTagInputView.java',
+  'src/main/resources/static/css/element/elementTagInput.css',
+]}
+height='240px'
+/>
+
+## Komponenttien vuorovaikutus {#component-interaction}
+
+`Element`-komponentti toimii muiden komponenttien säiliönä. Se tarjoaa tavan organisoida ja hakea tietoja lapsikomponenteista ja tarjoaa selkeän joukon toimintoja lisätä tai poistaa näitä lapsikomponentteja tarpeen mukaan.
 
 ### Lapsikomponenttien lisääminen {#adding-child-components}
 
-`Element`-komponentti tukee lapsikomponenttien koostumista. Kehittäjät voivat organisoida ja hallita monimutkaisia käyttöliittymän rakenteita lisäämällä komponentteja lapsina `Elementille`. Kolme metodia on olemassa sisällön asettamiseksi `Elementiin`:
+`Element`-komponentti tukee lapsikomponenttien yhdistämistä. Kehittäjät voivat järjestää ja hallita monimutkaisia UI-rakenteita lisäämällä komponentteja lapsiksi `Element`-komponenttiin. Kolme menetelmää on olemassa sisällön asettamiseksi `Element`-komponenttiin:
 
-1. **`add(Component... components)`**: Tämä metodi sallii yhden tai useamman komponentin lisäämisen valinnaiseen `String`-arvoon, joka määrittelee erityisen slotin käytettäväksi Verkkokomponentin kanssa. Slotin ohittaminen lisää komponentin HTML-tägien väliin.
+1. **`add(Component... components)`**: Tämä menetelmä mahdollistaa yhden tai useamman komponentin lisäämisen valinnaiseen `String`-arvoon, joka määrittää tarkat sijainnit käytettäessä verkkokomponenttia. Jos sijaintia ei anneta, komponentti lisätään HTML-tunnisteiden väliin.
 
-2. **`setHtml(String html)`**: Tämä metodi ottaa metodille syötetyn `String`-arvon ja injektoi sen HTML:nä komponenttiin. Riippuen `Elementistä`, tämä voidaan renderöidä eri tavoilla.
+2. **`setHtml(String html)`**: Tämä menetelmä ottaa sisään tulevan `String`-arvon ja injektoi sen HTML:nä komponenttiin. `Element`:n mukaan tämä voidaan renderöidä eri tavoin.
 
-3. **`setText(String text)`**: Tämä metodi käyttäytyy samalla tavalla kuin `setHtml()`-metodi, mutta injektoi kirjaimellista tekstiä `Elementtiin`.
+3. **`setText(String text)`**: Tämä menetelmä toimii samalla tavalla kuin `setHtml()`-menetelmä, mutta injektoi kirjaimellisen tekstin `Element`:iin.
 
 <ComponentDemo
-path='/webforj/elementinputtext'
+path='/webforj/elementfigure'
 files={[
-  'src/main/java/com/webforj/samples/views/element/ElementInputTextView.java',
-  'src/main/resources/static/css/element/elementInput.css',
+  'src/main/java/com/webforj/samples/views/element/ElementFigureView.java',
+  'src/main/resources/static/css/element/elementFigure.css',
 ]}
-height='175px'
+height='240px'
 />
 
-:::tip
-`setHtml()`- tai `setText()`-kutsuminen korvataan sisällön, joka tällä hetkellä sijaitsee elementin avaavien ja sulkevien tagien välissä.
+:::warning Sisällön korvaaminen
+`setHtml()`- tai `setText()`-kutsumisen yhteydessä korvataan elementin avaus- ja lopputunnisteiden välillä oleva sisältö.
 :::
 
 ### Komponenttien poistaminen {#removing-components}
 
-Lapsikomponenttien lisäämisen lisäksi `Elementissä` on toteutettu seuraavat metodit erilaisten lapsikomponenttien poistamiseksi:
+Lisäksi komponenttien lisäämiseen `Element`:iin on toteutettu seuraavat menetelmät erilaisten lapsikomponenttien poistamiseksi:
 
-1. **`remove(Component... components)`**: Tämä metodi ottaa yhden tai useamman komponentin ja poistaa ne lapsikomponenteina.
+1. **`remove(Component... components)`**: Tämä menetelmä ottaa yhden tai useamman komponentin ja poistaa ne lapsikomponenteina.
 
-2. **`removeAll()`**: Tämä metodi poistaa kaikki lapsikomponentit `Elementistä`.
+2. **`removeAll()`**: Tämä menetelmä poistaa kaikki lapsikomponentit `Element`:istä.
 
 ### Komponenttien hakeminen {#accessing-components}
 
-Jotta voit hankkia erilaisia lapsikomponentteja, jotka ovat läsnä `Elementissä`, tai tietoa näistä komponenteista, seuraavat metodit ovat käytettävissä:
+Suuntautuaksesi `Element`:issä oleviin lapsikomponentteihin tai näitä komponentteja koskeviin tietoihin, seuraavat menetelmät ovat käytettävissä:
 
-1. **`getComponents()`**: Tämä metodi palauttaa Java `List`:in kaikista `Elementin` lapsista.
+1. **`getComponents()`**: Tämä menetelmä palauttaa Java `List`:n kaikista `Element`:in lapsista.
 
-2. **`getComponents(String id)`**: Tämä metodi on samanlainen kuin yllä oleva metodi, mutta se ottaa palvelinpuolen ID:n tietystä komponentista ja palauttaa sen, kun se löytyy.
+2. **`getComponents(String id)`**: Tämä menetelmä on samanlainen kuin yllä oleva, mutta se ottaa palvelinpuolen tietyn komponentin ID:n ja palauttaa sen, jos se löytyy.
 
-3. **`getComponentCount()`**: Palauttaa lapsikomponenttien määrän, joka on läsnä `Elementissä`.
+3. **`getComponentCount()`**: Palauttaa `Element`:issä olevien lapsikomponenttien määrän.
 
 ## JavaScript-funktioiden kutsuminen {#calling-javascript-functions}
 
-`Element`-komponentti tarjoaa kaksi API-metodia, jotka mahdollistavat JavaScript-funktioiden kutsumisen HTML-elementeissä.
+`Element`-komponentti tarjoaa kaksi API-menetelmää, joiden avulla JavaScript-funktioita voidaan kutsua HTML-elementeissä.
 
-1. **`callJsFunction(String functionName, Object... arguments)`**: Tämä metodi ottaa funktion nimen merkkijonona ja valinnaisesti yhden tai useamman objektin parametrina. Tämä metodi suoritetaan synnkkisesti, mikä tarkoittaa, että **suorittava säie on estetty**, kunnes JS-metodi palauttaa, ja se aiheuttaa kierroksen. Funktion tulokset palautetaan `Object`-tyyppinä, joka voidaan muuntaa ja käyttää Javassa.
+1. **`callJsFunction(String functionName, Object... arguments)`**: Tämä menetelmä ottaa funktion nimen merkkijonona ja valinnaisesti yhden tai useamman objektin funktion parametreina. Tämä menetelmä suoritetaan synkronisesti, mikä tarkoittaa, että **suorittava säie on estetty** kunnes JS-menetelmä palauttaa, ja tämä johtaa vuorovaikutukseen. Funktion tulokset palautetaan `Object`-tyyppisinä, jotka voidaan muuntaa ja käyttää Javassa.
 
-2. **`callJsFunctionAsync(String functionName, Object... arguments)`**: Kuten edellisessä metodissa, funktion nimen ja valinnaiset argumentit voidaan siirtää. Tämä metodi suoritetaan asynkronisesti eikä **estää suorittavaa säiettä**. Se palauttaa <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, joka mahdollistaa lisävuorovaikutuksen funktion ja sen kuorman kanssa.
+2. **`callJsFunctionAsync(String functionName, Object... arguments)`**: Kuten edellisessä menetelmässä, voidaan antaa funktion nimi ja valinnaiset argumentit. Tämä menetelmä suoritetaan asynkronisesti eikä **estää suorittavaa säiettä**. Se palauttaa <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>:n, joka mahdollistaa lisävuorovaikutuksen funktion ja sen datan kanssa.
 
 ### Parametrien välittäminen {#passing-parameters}
 
-Nämä metodit, joita käytetään JS-funktioiden suorittamisessa, vastaanottavat argumentit, jotka sarjoitetaan JSON-taulukoksi. Kaksi huomionarvoista argumenttityyppiä käsitellään seuraavasti:
-- `this`: Käyttämällä `this`-avainsanaa annetaan metodille viittaus kutsuvan komponentin asiakaspuolen versioon.
-- `Component`: Kaikki Java-komponentti-instanssit, jotka siirretään yhteen JsFunction-metodeista, korvataan komponentin asiakaspuolen versiolla.
+Argumentit, jotka jaetaan näille menetelmille, joita käytetään JS-funktioiden suorittamisessa, sarjoitetaan JSON-taulukkona. Kaksi huomattavaa argumenttityyppiä käsitellään seuraavasti:
+- `this`: Käyttämällä `this`-avainsanaa annetulle metodille annetaan viittaus asiakaspuolen version kutsuvasta komponentista.
+- `Component`: Kaikki Java-komponentti-instanssit, jotka annetaan johonkin JsFunction-menetelmistä, korvataan asiakaspuolen version komponentista.
 
-:::info
-Sekä synkroninen että asynkroninen funktion kutsuminen odottavat, että `Element` on lisätty DOM:iin ennen funktion suorittamista, mutta `callJsFunction()` ei odota mitään `component`-argumentteja liitettäväksi, mikä voi johtaa epäonnistumiseen. Toisin sanoen, `callJsFunctionAsync()`-kutsuminen ei ehkä koskaan valmistu, jos komponenttiargumenttia ei koskaan liitetä.
+:::warning Odottaminen komponenttien argumenttien osalta
+Sekä synkroniset että asynkroniset funktiokutsut odottavat, kunnes `Element` on lisätty DOM:iin ennen funktion suorittamista, mutta `callJsFunction()` ei odota, että mitään `component`-argumentteja liitetään, mikä voi johtaa epäonnistumiseen. Toisaalta, `callJsFunctionAsync()`-kutsut voivat jäädä ikuisesti kesken, jos komponenttiargumentteja ei liitetä koskaan.
 :::
 
-Alla olevassa demossa tapahtuma lisätään HTML `Nappiin`. Tämä tapahtuma suoritetaan sitten ohjelmallisesti kutsumalla `callJsFunctionAsync()`-metodia. Saadun <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> -arvoa käytetään sitten luomaan toinen viestiruudukas, kun asynkroninen toiminto on valmis.
+Alla olevassa demossa **Focus search** -valinta kutsuu alkuperäistä `focus()`-menetelmää hakukentässä `callJsFunctionAsync()`-kutsulla. Tämän seurauksena käytetään <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>:ia varmistaakseen kutsun toastilla, kun asynkroninen toiminto on valmis.
 
 <ComponentDemo
-path='/webforj/elementinputfunction'
+path='/webforj/elementsearch'
 files={[
-  'src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java',
-  'src/main/resources/static/css/element/elementInput.css',
+  'src/main/java/com/webforj/samples/views/element/ElementSearchView.java',
+  'src/main/resources/static/css/element/elementSearch.css',
 ]}
 height='240px'
 />
 
 ## JavaScriptin suorittaminen {#executing-javascript}
 
-Lisäksi JavaScriptin suorittaminen sovelluskerroksessa, sen on mahdollista suorittaa JavaScriptiä `Element`-tasolla. Tällä tasolla tapahtuva suorittaminen mahdollistaa HTML-elementin kontekstin sisällyttämisen suoritukseen. Tämä on tehokas työkalu, joka toimii kehittäjän väylänä vuorovaikutteisiin kykyihin asiakaspuolen ympäristöissä.
-
-Samanlainen kuin funktioiden suorittaminen, JavaScriptin suorittaminen voidaan tehdä synkronisesti tai asynkronisesti seuraavilla metodeilla:
-
-1. **`executeJs(String script)`**: Tämä metodi ottaa `String`:in, joka suoritetaan JavaScript-koodina asiakkaalla. Tämä skripti suoritetaan synnkkisesti, mikä tarkoittaa, että **suorittava säie on estetty**, kunnes JS-suoritus palautuu, ja se aiheuttaa kierroksen. Funktion tulokset palautetaan `Object`-tyyppinä, joka voidaan muuntaa ja käyttää Javassa.
-
-2. **`executeJsAsync(String script)`**: Kuten edellisessä metodissa, siirretty `String`-parametri suoritetaan JavaScript-koodina asiakkaalla. Tämä metodi suoritetaan asynkronisesti eikä **estää suorittavaa säiettä**. Se palauttaa <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, joka mahdollistaa lisävuorovaikutuksen funktion ja sen kuorman kanssa.
-
-:::tip
-Nämä metodit pääsevät `component`-avainsanaan, mikä antaa JavaScript-koodille pääsyn komponentin asiakaspuolen instanssiin, joka suorittaa JavaScriptin.
-:::
+Nimettömien funktioiden kutsumisen lisäksi `Element` voi suorittaa raakkaskriptejä, jotka on rajattu kyseiseen elementtiin `executeJs`, `executeJsAsync` ja `executeJsVoidAsync` -menetelmillä. Katso [Suorita JavaScript](./execute-javascript.md) näitä menetelmiä varten, niiden synkronista ja asynkronista käyttäytymistä varten sekä kuinka palautetut arvot muuntuvat Java-tyypeiksi.

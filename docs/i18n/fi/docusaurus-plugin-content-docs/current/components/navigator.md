@@ -1,22 +1,25 @@
 ---
 title: Navigator
 sidebar_position: 75
-_i18n_hash: db351d8f9fdf344a571d374e8d373f22
+description: >-
+  Add pagination controls with the Navigator component, binding to a Paginator
+  or Repository to drive page size, navigation, and labels.
+_i18n_hash: 1223e167b76000411cd73c4bbbbda3d5
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-navigator" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="foundation" location="com/webforj/component/navigator/Navigator" top='true'/>
 
-`Navigator`-komponentti lisää sivuohjausvaihtoehtoja tietoaineistojen tutkimiseen. Se voi näyttää ensimmäiset, viimeiset, seuraavat ja edelliset painikkeet yhdessä sivunumeroiden tai nopean hyppykentän kanssa, ja automaattisesti poistaa käytöstä ohjausvaihtoehdot, kun niitä ei voida käyttää. Se sitoo `Paginator`-instanssin hallitsemaan taustalla olevaa sivuohjauslogiikkaa.
+`Navigator`-komponentti lisää sivutuksen hallintapainikkeet tietojoukoissa navigointia varten. Se voi näyttää ensimmäiset, viimeiset, seuraavat ja edelliset painikkeet yhdessä sivunumeroiden tai pikasiirtymiskentän kanssa, ja se poistaa automaattisesti hallintapainikkeet käytöstä, kun niitä ei ole saatavilla. Se sitoo `Paginator`-instanssin hallitakseen taustalla olevaa sivutusta.
 
 <!-- INTRO_END -->
 
-## Sidonta varastoihin {#binding-to-repositories}
+## Siteille sitoutuminen {#binding-to-repositories}
 
-Usein `Navigator`-komponentti näyttää tietoa, joka löytyy sidotusta `Repository`:sta. Tämä sidonta mahdollistaa `Navigator`:in automaattisen sivuohjauksen varaston hallinnoimasta datasta ja päivitykset muihin sidottaviin komponentteihin, kuten taulukoihin, perustuen navigoituun dataan.
+Usein `Navigator`-komponentti näyttää tietoja, jotka löytyvät sidotusta `Repository`:sta. Tämä sitoutuminen mahdollistaa `Navigator`in automaattisen sivutuksen repositorion hallitsemalle datalle ja muiden sidottavien komponenttien, kuten taulukoiden, päivittämisen, perustuen navigoituun dataan.
 
-Tätä varten siirrä vain haluttu `Repository`-objekti soveltuvan `Navigator`-olion konstruktoriin:
+Tätä varten siirrä haluttu `Repository`-objekti asianmukaiseen `Navigator`-olion konstruktoriin:
 
 <ComponentDemo
 path='/webforj/navigatortable'
@@ -24,31 +27,31 @@ files={['src/main/java/com/webforj/samples/views/navigator/NavigatorTableView.ja
 height='475px'
 />
 
-Tässä esimerkissä luodaan `Navigator` ja [`Table`](table/overview) saman `Repository`-instanssin kanssa. Tämä tarkoittaa, että kun navigoidaan uuteen sivuun `Navigator`:in avulla, [`Table`](table/overview) tunnistaa tämän muutoksen ja renderoi sen uudelleen.
+Tässä esimerkissä luodaan `Navigator` ja [`Table`](table/overview) samalla `Repository`-instanssilla. Tämä tarkoittaa, että kun navigoidaan uuteen sivuun `Navigator`:in avulla, [`Table`](table/overview) tunnistaa tämän muutoksen ja uudelleenrenderöi.
 
-## Sivuohjaus {#pagination}
+## Sivutus {#pagination}
 
-`Navigator`-komponentti on tiiviisti sidottu `Paginator`-malliluokkaan, joka laskee sivuohjaustiedot, kuten sivujen kokonaismäärä, nykyisen sivun alkupään/päätepisteet ja taulukon sivunumeroista navigointia varten.
+`Navigator`-komponentti on tiiviisti sidoksissa `Paginator`-malliluokkaan, joka laskee sivutuksen metatiedot, kuten sivujen kokonaismäärän, nykyisellä sivulla olevien kohteiden aloitus-/lopetusindeksit, sekä taulukon sivunumeroita navigointia varten.
 
-Vaikka se ei ole suorastaan tarpeen, `Paginator`:in käyttäminen mahdollistaa navigoinnin logiikan. Integroitaessa `Paginator`:in kanssa, navigator reagoi kaikkiin muutoksiin `Paginator`:issa. `Navigator`-objekteilla on pääsy sisäänrakennettuun `Paginator`:iin käyttämällä `getPaginator()`-metodia. Se voi myös hyväksyä `Paginator`-instanssin `setPaginator()`-metodin kautta tai hyödyntämällä yhtä soveltuvista konstruktoreista.
+Vaikka se ei ole välttämätöntä, `Paginator`:n käyttäminen mahdollistaa navigointilogiikan taustalla. Kun yhdistetään `Paginator`:in kanssa, navigator reagoi kaikkiin muutoksiin `Paginator`:in sisällä. `Navigator`-oliot voivat käyttää sisäänrakennettua `Paginator`:ia `getPaginator()`-metodin kautta. Se voi myös hyväksyä `Paginator`-instanssin `setPaginator()`-metodilla tai käyttää yhtä soveltuvista konstruktoreista.
 
-Tässä osiossa on käytännön koodinpätkiä, jotka havainnollistavat, miten tämä integraatio toimii käytännössä.
+Tässä osiossa on käytännön koodinpätkiä havainnollistamaan, kuinka tämä integrointi toimii käytännössä.
 
-### Kappaleet {#items}
+### Kohteet {#items}
 
-Termi "kappaleet" tarkoittaa yksittäisiä sivutettuja elementtejä tai datakirjoituksia. Nämä voivat olla tietueita, merkintöjä tai mitä tahansa yksittäisiä yksiköitä tietoaineistossa. Voit asettaa kappaleiden kokonaismäärän käyttämällä `setTotalItems()`-metodia.
+Termi "kohteet" tarkoittaa yksittäisiä sivutettuja elementtejä tai tietueita. Nämä voivat olla tietueita, merkintöjä tai mitä tahansa erillisiä yksiköitä tietojoukkossa. Voit asettaa kohteiden kokonaismäärän käyttämällä `setTotalItems()`-metodia.
 
 ```java
 navigator.getPaginator().setTotalItems(totalItems);
 ```
 
 :::info
-Varastoon liitetty `Paginator`-instanssi hallinnoi suoraan varastoituja kappaleiden kokonaismäärää ja sitä ei voida suoraan asettaa.
+Repositio, joka on sidottu `Paginator`-instanssiin, hallitsee suoraan repositioon liittyvää kohteiden kokonaismäärää ja sitä ei voida suoraan asettaa.
 :::
 
-### Maksimimäntä {#maximum-pages}
+### Maksimi sivut {#maximum-pages}
 
-`setMax()`-metodi sallii sinun määrittää maksimimäärän sivulinkkejä, jotka näytetään sivuohjausnavigoinnissa. Tämä on erityisen hyödyllistä käsiteltäessä suurta sivumäärää, koska se hallitsee näkyvien sivulinkkien määrää käyttäjälle mihin aikaan tahansa.
+`setMax()`-metodi sallii sinun määrittää maksimimäärän sivulinkkejä, jotka näytetään sivutuksen navigoinnissa. Tämä on erityisen hyödyllistä suurten sivumäärien kanssa, koska se ohjaa näkyvien sivulinkkien määrää käyttäjälle minkä tahansa ajan.
 
 ```java
 navigator.getPaginator().setMax(maxPages);
@@ -60,11 +63,11 @@ files={['src/main/java/com/webforj/samples/views/navigator/NavigatorPagesView.ja
 height='125px'
 />
 
-Tämä ohjelma näyttää kerralla maksimissaan viisi sivua `Navigator`:issa käyttämällä `getPaginator()`-metodia `Navigator`-olion mukana olevan `Paginator`in hakemiseen ja sitten käyttäen `setMax()`-metodia määrittämään halutun maksimi sivumäärän näyttämiseksi.
+Tämä ohjelma näyttää maksimissaan viisi sivua `Navigator`:issa kerrallaan käyttämällä `getPaginator()`-metodia saadakseen `Paginator`:in, joka liittyy `Navigator`-olioon, ja sitten käyttämällä `setMax()`-metodia määritelläkseen halutun maksimisivujen määrän, joka näytetään.
 
 ### Sivukoko {#page-size}
 
-`setSize()`-metodi sallii sinun määrittää näytettävien kappaleiden määrän jokaisella sivulla sivuohjauksessa. Kun kutsut tätä metodia ja annat uuden sivukoon, se säätää sivuohjauksen vastaavasti.
+`setSize()`-metodi sallii sinun määrittää, kuinka monta kohdetta näytetään jokaisella sivulla sivutuksessa. Kun kutsut tätä metodia ja annat uuden sivukoon, se säätää sivutusta vastaavasti.
 
 ```java
 navigator.getPaginator().setSize(pageSize);
@@ -72,9 +75,9 @@ navigator.getPaginator().setSize(pageSize);
 
 ## Painikkeiden, tekstin ja työkaluvihjeiden mukauttaminen {#customizing-buttons-text-and-tooltips}
 
-`Navigator`-komponentti tarjoaa laajat mukautusmahdollisuudet painikkeiden, tekstin ja työkaluvihjeiden osalta. Muuttaaksesi näytettävää tekstiä `Navigator`-komponentissa, käytä `setText()`-metodia. Tämä metodi ottaa tekstin sekä halutun `Part`-osan `Navigator`:ista.
+`Navigator`-komponentti tarjoaa laajasti mukauttamisen mahdollisuuksia painikkeille, tekstille ja työkaluvihjeille. Vaihtaaksesi näytettävää tekstiä `Navigator`-komponentissa, käytä `setText()`-metodia. Tämä metodi ottaa tekstin sekä halutun `Part`-osan `Navigator`:ista.
 
-Seuraavassa esimerkissä `setText()`-metodi näyttää numeerisen arvon käyttäjälle. Painikkeiden napsauttaminen laukaisee `Navigator`:in `onChange`-metodin, jonka mukana on `Direction`-arvo napsautetusta painikkeesta.
+Seuraavassa esimerkissä `setText()`-metodi näyttää numerollisen arvon käyttäjälle. Painikkeiden napsauttaminen laukaisee `Navigator`:in `onChange`-metodin, johon tulee `Direction`-arvo napsautetusta painikkeesta.
 
 <ComponentDemo
 path='/webforj/navigatorbasic'
@@ -82,38 +85,38 @@ files={['src/main/java/com/webforj/samples/views/navigator/NavigatorBasicView.ja
 height='100px'
 />
 
-### Painikkeet ja komponentin teksti {#buttons-and-component-text}
+### Painikkeet ja komponentti-teksti {#buttons-and-component-text}
 
-`setText()`-metodi arvioi tekstiparametrin JavaScript-lausekkeen avulla seuraavilla parametreilla:
+`setText()`-metodi arvioi tekstiparametrin Javascript-lausekkeena käyttäen seuraavia parametreja:
 
 - `page` - nykyinen sivunumero
-- `current` - tällä hetkellä valitun sivun numero
-- `x` - alias nykyiselle sivulle
-- `startIndex` - nykyisen sivun alkupään indeksi.
-- `endIndex` - nykyisen sivun päätepiste.
-- `totalItems` - kappaleiden kokonaismäärä.
-- `startPage` - alkusivunumero.
-- `endPage` - päättymissivunumero.
-- `component` - Navigator-asiakas komponentti.
+- `current` - tällä hetkellä valittu sivunumero
+- `x` - nykyisen sivun jäljennös
+- `startIndex` - nykyisen sivun aloitusindeksi.
+- `endIndex` - nykyisen sivun lopetusindeksi.
+- `totalItems` - kohteiden kokonaismäärä.
+- `startPage` - aloitussivun numero.
+- `endPage` - lopetussivun numero.
+- `component` - Navigator-asiakasjäsen.
 
 <!-- vale off -->
-Esimerkiksi, asettaaksesi viimeisen sivupainikkeen tekstin `Navigator`:issa, jossa on 10 sivua, "Siirry sivulle 10", käytä seuraavaa koodinpätkää: 
+Esimerkiksi, asettaaksesi viimeisen sivupainikkeen tekstin `Navigator`:issa, jossa on 10 sivua, tekstiksi "Siirry sivulle 10", käytä seuraavaa koodinpätkää:
 <!-- vale on -->
 
 ```java
 navigator.setText("'Siirry sivulle ' + endPage", Navigator.Part.LAST_BUTTON);
 ```
 
-### Työkaluvihjeen teksti {#tooltip-text}
+### Työkaluvihje-teksti {#tooltip-text}
 
-Voit mukauttaa työkaluvihjeitä `Navigator`-komponentin eri osille käyttämällä `setTooltipText()`-metodia. Työkaluvihjeet antavat käyttäjille hyödyllisiä vihjeitä, kun he vievät hiiren navigointi-elementtien päälle.
+Voit mukauttaa työkaluvihjeitä `Navigator`-komponentin eri osille käyttämällä `setTooltipText()`-metodia. Työkaluvihjeet tarjoavat hyödyllisiä vihjeitä käyttäjille, kun he vievät hiiren navigointielementtien päälle.
 
 :::info
-Työkaluvihjeen teksti ei arvioidu JavaScriptiksi, toisin kuin `setText()`-metodin käytettävä teksti
+Työkaluvihje-tekstiä ei arvioida Javascriptiksi, toisin kuin `setText()`-metodin käyttämä teksti
 :::
 
 <!-- vale off -->
-Esimerkiksi, asettaaksesi viimeisen sivupainikkeen työkaluvihjeen tekstiksi `Navigator`:issa "Siirry viimeiselle sivulle", käytä seuraavaa koodinpätkää:
+Esimerkiksi, asettaaksesi viimeisen sivupainikkeen työkaluvihjeen tekstin `Navigator`-komponentissa "Siirry viimeiselle sivulle", käytä seuraavaa koodinpätkää:
 <!-- vale on -->
 
 ```java
@@ -122,7 +125,7 @@ navigator.setTooltipText("Siirry viimeiselle sivulle", Navigator.Part.LAST_BUTTO
 
 ## Asettelu {#layouts}
 
-`Navigator`-komponentille on olemassa useita asettelu vaihtoehtoja, jotka tarjoavat joustavuutta sivuohjausvaihtoehtojen näyttämisessä. Näiden asettelujen käyttöön saat käyttämällä `Navigator.Layout`-enum:n arvoja. Vaihtoehdot ovat seuraavat:
+`Navigator`-komponentille on olemassa erilaisia asettelu vaihtoehtoja, jotka tarjoavat joustavuutta sivutusohjainten näyttämisessä. Päästäksesi näihin asetteluihin, käytä `Navigator.Layout`-enumeration arvoja. Vaihtoehdot ovat seuraavat:
 
 <ComponentDemo
 path='/webforj/navigatorlayout'
@@ -130,39 +133,39 @@ files={['src/main/java/com/webforj/samples/views/navigator/NavigatorLayoutView.j
 height='200px'
 />
 
-### 1. Ei asettelua {#1-none-layout}
+### 1. Ei asetusta {#1-none-layout}
 
-`NONE`-asettelu ei renderöi mitään tekstiä `Navigator`:issa, vaan näyttää vain navigointipainikkeet ilman oletuksena olevaa tekstinäyttöä. Aktivoi tämä asettelu käyttämällä:
+`NONE`-asettelu ei renderöi tekstiä `Navigator`-komponenttiin, vaan näyttää vain navigointipainikkeet ilman oletustekstinäyttöä. Tämä asettelu aktivoituu käyttämällä:
 
 ```java
 navigator.setLayout(Navigator.Layout.NONE);
 ```
 
-### 2. Numeroitu asettelu {#2-numbered-layout}
+### 2. Numerointi-asettelu {#2-numbered-layout}
 
-Numeroitu asettelu näyttää numeroituja chippejä, jotka vastaavat kutakin sivua `Navigator`:in näyttöalueella. Tämän asettelun käyttäminen on ihanteellista tilanteissa, joissa käyttäjät mieluummin navigoivat suoraan tiettyihin sivuihin. Aktivoi tämä asettelu käyttämällä:
+Numerointi-asettelu näyttää numeroituja chippejä, jotka vastaavat jokaista sivua `Navigator`-komponentin näyttöalueella. Tämän asettelun käyttäminen on ihanteellista tilanteissa, joissa käyttäjät mieluummin navigoivat suoraan tietyille sivuille. Tämä asettelu aktivoituu käyttämällä:
 
 ```java
 navigator.setLayout(Navigator.Layout.PAGES);
 ```
 
-### 3. Esikatselu asettelu {#3-preview-layout}
+### 3. Esikatselu-asettelu {#3-preview-layout}
 
-Esikatselu-asettelu näyttää nykyisen sivun numeron ja sivujen kokonaismäärän, ja se on sopiva tiiviisiin sivuohjausliittymiin, joissa on rajallisesti tilaa.
+Esikatselu-asettelu näyttää nykyisen sivun numeron ja sivujen kokonaismäärän, ja se on sopiva tiiviille sivutusohteluille rajoitetussa tilassa.
 
 :::info
 Esikatselu on oletusarvoinen `Navigator`-asettelu.
 :::
 
-Aktivoi tämä asettelu käyttämällä:
+Aktivoimiseen käytä:
 
 ```java
 navigator.setLayout(Navigator.Layout.PREVIEW);
 ```
 
-### 4. Nopean hyppäämisen asettelu {#4-quick-jump-layout}
+### 4. Pikasiirtymä-asettelu {#4-quick-jump-layout}
 
-Nopean hyppäämisen asettelu tarjoaa [NumberField](./fields/number-field.md) käyttäjille, joiden avulla he voivat syöttää sivun numeron nopeaa navigointia varten. Tämä on hyödyllistä, kun käyttäjät tarvitsevat nopeasti siirtyä tiettyyn sivuun, erityisesti suurilla tietoaineistoilla. Aktivoi tämä asettelu käyttämällä:
+Pikasiirtymä-asettelu tarjoaa [NumberField](./fields/number-field.md)-kentän, johon käyttäjät voivat syöttää sivunumeron nopeaa navigointia varten. Tämä on hyödyllistä, kun käyttäjien täytyy nopeasti navigoida tietylle sivulle, erityisesti suuria tietojoukkoja käsiteltäessä. Aktivoimiseen käytä:
 
 ```java
 navigator.setLayout(Navigator.Layout.QUICK_JUMP);
@@ -174,10 +177,10 @@ navigator.setLayout(Navigator.Layout.QUICK_JUMP);
 
 ## Parhaat käytännöt {#best-practices}
 
-Optimaalisen käyttäjäkokemuksen varmistamiseksi `Navigator`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
+Varmistaaksesi optimaalisen käyttäjäkokemuksen `Navigator`-komponentin käytössä, ota huomioon seuraavat parhaat käytännöt:
 
-- **Ymmärrä tietoaineisto**: Ennen kuin integroi `Navigator`-komponentin sovellukseesi, ymmärrä perusteellisesti käyttäjiesi tietohakutarpeet. Huomioi tekijät, kuten tietoaineiston koko, tyypilliset käyttäjäinteraktiot ja suositut navigointimallit.
+- **Ymmärrä tietojoukko**: Ennen kuin integroi `Navigator`-komponentin sovellukseesi, ymmärrä perusteellisesti käyttäjiesi datan selausvaatimukset. Ota huomioon sellaiset tekijät kuin tietojoukon koko, tyypilliset käyttäjävuorovaikutukset ja suosituimmat navigointimallit.
 
-- **Valitse sopiva asettelu**: Valitse `Navigator`-komponentille asettelu, joka vastaa käyttäjäkokemustavoitteita ja saatavilla olevaa näyttötilaa.
+- **Valitse sopiva asettelu**: Valitse `Navigator`-komponentille asettelu, joka on linjassa käyttäjäkokemustavoitteiden ja käytettävissä olevan näytön real estate -tilan kanssa.
 
-- **Mukauta tekstiä ja työkaluvihjeitä**: Mukauta `Navigator`-komponentin teksti ja työkaluvihjeet vastaamaan sovelluksessasi käytettävää kieltä ja terminologiaa. Tarjoa kuvailevia etikettejä ja hyödyllisiä vinkkejä auttaaksesi käyttäjiä navigoimaan tietoaineistossa tehokkaasti.
+- **Mukauta teksti ja työkaluvihjeet**: Mukauta `Navigator`-komponentin teksti ja työkaluvihjeet vastaamaan sovelluksesi käyttämää kieltä ja terminologiaa. Tarjoa kuvaavia etikettejä ja hyödyllisiä vinkkejä, jotka auttavat käyttäjiä navigoimaan tietojoukossa tehokkaasti.

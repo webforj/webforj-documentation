@@ -26,7 +26,7 @@ import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 
 <!-- vale on -->
 
-To kickstart your webforJ app development, webforJ provides several predefined templates, or **archetypes**, to help you start your app quickly. These archetypes are designed to give you a solid foundation, allowing you to focus on building your app's features without worrying about the initial setup. 
+To kickstart your webforJ app development, webforJ provides several predefined templates, or **archetypes**, to help you start your app quickly. These archetypes are designed to give you a solid foundation, allowing you to focus on building your app's features without worrying about the initial setup.
 
 Choose a template that best fits your project's needs, copy the command, and paste it into your terminal to scaffold your project. Each archetype comes with its own set of features and configurations to help you get started efficiently.
 

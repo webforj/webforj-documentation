@@ -1,6 +1,6 @@
 package com.webforj.samples.views.loading;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
@@ -18,7 +18,7 @@ import com.webforj.router.annotation.Route;
 /** Demo to show Loading basics. */
 @Route
 @FrameTitle("Loading Basics")
-@StyleSheet("ws://css/loadingstyles/loadingdemo.css")
+@BundleEntry("css/loadingstyles/loadingdemo.css")
 public class LoadingDemoView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   // UI Components

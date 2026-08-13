@@ -1,6 +1,6 @@
 package com.webforj.samples.views.flexlayout.container;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.event.ModifyEvent;
 import com.webforj.component.field.MaskedNumberFieldSpinner;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Route
-@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
+@BundleEntry("css/flexlayout/container/flexContainerBuilder.css")
 @FrameTitle("Container Builder")
 public class FlexContainerBuilderView extends Composite<Div> {
   private static final int HUE = 36; // 360 / 10

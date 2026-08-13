@@ -1,13 +1,11 @@
+@use "sidebar-icons";
+
   [data-theme='light'] .navbar-sidebar__item {
     --ifm-menu-link-sublist-icon-filter: none;
   }
 
   [data-theme='light'] .theme-doc-sidebar-container {
     --ifm-menu-link-sublist-icon-filter: none;
-  }
-
-  [data-theme='light'] .theme-doc-sidebar-container .header-github-link:before {
-    filter: invert(1);
   }
 
   #__docusaurus {
@@ -157,5 +155,6 @@
       color: var(--dwc-color-primary-text);
     }
 
+    @include sidebar-icons.category-icons;
 
   }

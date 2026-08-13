@@ -1,6 +1,6 @@
 package com.webforj.samples.views.viewtransitions.components;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.element.event.ElementClickEvent;
 import com.webforj.component.html.elements.Div;
@@ -13,7 +13,7 @@ import com.webforj.concern.HasStyle;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
 
-@StyleSheet("ws://css/viewtransitions/components/blog-card.css")
+@BundleEntry("css/viewtransitions/components/blog-card.css")
 public class BlogCard extends Composite<FlexLayout>
     implements HasClassName<BlogCard>, HasStyle<BlogCard> {
   private final FlexLayout self = getBoundComponent();

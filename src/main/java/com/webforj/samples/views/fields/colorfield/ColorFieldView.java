@@ -1,6 +1,6 @@
 package com.webforj.samples.views.fields.colorfield;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.event.ModifyEvent;
 import com.webforj.component.field.ColorField;
@@ -15,7 +15,7 @@ import com.webforj.router.annotation.Route;
 import java.awt.Color;
 
 @Route
-@StyleSheet("ws://css/fields/colorfield/colorFieldDemo.css")
+@BundleEntry("css/fields/colorfield/colorFieldDemo.css")
 @FrameTitle("Color Field Demo")
 public class ColorFieldView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();

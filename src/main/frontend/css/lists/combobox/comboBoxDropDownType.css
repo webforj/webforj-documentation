@@ -1,0 +1,15 @@
+
+[data-dropdown-for="demo-dropdown-type"]::part(list) {
+  transition: transform 250ms ease-in-out;
+  overflow: hidden;
+}
+
+[data-dropdown-for="demo-dropdown-type"]::part(item) {
+  transition: transform 250ms ease-in-out, background-color 250ms ease-in-out;
+  margin: 1.5px 0;
+}
+
+[data-dropdown-for="demo-dropdown-type"]::part(item):hover {
+  transform: scale3d(1.2, 1.2, 1) translateX(10px);
+  cursor: pointer;
+}

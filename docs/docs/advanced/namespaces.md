@@ -11,7 +11,7 @@ Namespaces in webforJ provide a mechanism for storing and retrieving shared data
 
 ## What's a namespace? {#whats-a-namespace}
 
-A namespace is a named container that stores key-value pairs. These values can be accessed and modified across different parts of your app depending on the namespace type you use. You can think of it like a thread-safe, distributed map with built-in event handling and locking mechanisms.
+A namespace is a named container that stores key-value pairs. These values can be accessed and modified across different parts of your app depending on the namespace type you use. Think of it like a thread-safe, distributed map with built-in event handling and locking mechanisms.
 
 ### When to use namespaces {#when-to-use-namespaces}
 
@@ -35,7 +35,7 @@ webforJ offers three types of namespaces:
 
 
 :::tip Choosing a Default - Prefer `PrivateNamespace`
-When in doubt, use a `PrivateNamespace`. It offers safe, scoped sharing between related sessions without impacting global or server-wide state. This makes it a reliable default for most applications. 
+When in doubt, use a `PrivateNamespace`. It offers safe, scoped sharing between related sessions without impacting global or server-wide state. This makes it a reliable default for most applications.
 :::
 
 ## Creating and using a namespace {#creating-and-using-a-namespace}

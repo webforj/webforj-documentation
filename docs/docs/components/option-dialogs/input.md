@@ -63,7 +63,7 @@ height='350px'
 The `InputDialog` returns the user's input as a string. If the user closes the dialog without providing input, the result will be `null`.
 
 :::important
-The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
+The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below.
 :::
 
 ```java showLineNumbers

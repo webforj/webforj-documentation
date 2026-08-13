@@ -1,7 +1,7 @@
 package com.webforj.samples.views.viewtransitions;
 
 import com.webforj.Page;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.icons.IconButton;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @Route
 @FrameTitle("List Shuffle")
-@StyleSheet("ws://css/viewtransitions/shuffle.css")
+@BundleEntry("css/viewtransitions/shuffle.css")
 public class ViewTransitionShuffleView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final FlexLayout listContainer;

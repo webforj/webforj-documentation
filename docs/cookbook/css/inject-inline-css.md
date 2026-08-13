@@ -1,0 +1,36 @@
+---
+title: "Inject inline CSS into a page from Java"
+description: "Use @InlineStyleSheet to add CSS class definitions directly from a Java component without a separate style sheet file."
+tags: [css, styling]
+components: []
+difficulty: beginner
+---
+
+The `@InlineStyleSheet` annotation injects a CSS string into the page when the annotated component is attached. Use `id` to prevent duplicate injection across multiple component instances.
+
+```java
+import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.component.Composite;
+import com.webforj.component.html.elements.Div;
+import com.webforj.router.annotation.Route;
+
+@Route
+@InlineStyleSheet(
+  value = ".highlight {"
+      + " background-color: var(--dwc-color-warning-alt);"
+      + " color: var(--dwc-color-warning-text);"
+      + " font-weight: var(--dwc-font-weight-semibold);"
+      + " padding: var(--dwc-space-m);"
+      + " }",
+  id = "highlight-styles",
+  once = true
+)
+public class MyView extends Composite<Div> {
+
+  public MyView() {
+    getBoundComponent().addClassName("highlight");
+  }
+}
+```
+
+With `once = true`, the style block is injected a single time, regardless of how many instances of the component are on the page at the same time.

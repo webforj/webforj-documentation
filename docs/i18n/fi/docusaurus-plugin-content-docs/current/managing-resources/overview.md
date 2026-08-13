@@ -1,9 +1,12 @@
 ---
 sidebar_position: 1
 title: Managing Resources
+description: >-
+  Manage JavaScript, CSS, and other assets in webforJ apps with declarative
+  annotations, runtime injection APIs, and custom URL protocols.
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: a18b5fd490eca0891f470c7ccdb44e94
+_i18n_hash: 7aee2ee29fd227575e12f1450422d0a1
 ---
 <Head>
   <style>{`
@@ -18,14 +21,15 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-Sovellukset riippuvat erilaisista resurssityypeistä, kuten JavaScriptistä, CSS:stä ja kuvista. Tämä asiakirja tarjoaa kattavan teknisen tutkimuksen webforJ:n resurssinhallintamekanismeista, kattaen deklaratiiviset annotaatiot, ohjelmalliset API-menetelmät ja mukautetun protokollan käytön.
+Sovellukset luottavat erilaisiin resursseihin, kuten JavaScriptiin, CSS:ään ja kuviin. Tämä dokumentti tarjoaa kattavan teknisen tutkimuksen webforJ:n resurssinkäsittelymekanismeista, kattaen deklaratiiviset annotaatiot, ohjelmalliset API-menetelmät ja mukautettujen protokollien käytön.
 
-webforJ omaksuu moduulipohjaisen lähestymistavan resurssien hallintaan, tarjoten useita mekanismeja erilaisten sovellustarpeiden ratkaisemiseen:
+webforJ omaksuu modulaari lähestymistavan resurssien hallintaan, tarjoten useita mekanismeja erilaisten sovellusten tarpeiden täyttämiseksi:
 
-- **Deklaratiiviset annotaatiot**: Upota JavaScript- ja CSS-resursseja komponenttitasolla tai sovellustasolla.
-- **API-pohjainen dynaaminen injektio**: Injektoi resursseja ajonaikana dynaamisen sovelluskäyttäytymisen mahdollistamiseksi.
+- **Frontend-bundler**: Tuo npm-paketit, komponenttipohjat ja tyylitiedostokielet sovellukseen koottujen sisäänkäyntien kautta. Tämä on oletustie frontend-varoille, ja se tekee kaiken, mitä annotaatiot tekevät.
+- **Deklaratiiviset annotaatiot**: Upota JavaScript- ja CSS-resursseja komponenttien tai sovellustason tasolla ilman rakennusvaihetta.
+- **API-pohjainen dynaaminen injektointi**: Injektoi resursseja ajon aikana, jotta mahdollistetaan dynaaminen sovelluskäyttäytyminen.
 - **Mukautetut protokollat**: Tarjoa standardoituja menetelmiä resurssien käyttöön.
-- **Tiedostovirtauksen ja hallittujen latausten mahdollistaminen**: Helpota resurssitiedostojen hallittua noutoa ja siirtoa.
+- **Tiedostovirtaukset ja hallitut lataukset**: Mahdollista hallittu tiedostojen hakeminen ja siirtäminen.
 
 ## Topics {#topics}
 

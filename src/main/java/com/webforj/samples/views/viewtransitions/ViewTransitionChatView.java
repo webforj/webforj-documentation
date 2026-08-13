@@ -2,7 +2,7 @@ package com.webforj.samples.views.viewtransitions;
 
 import com.webforj.Page;
 import com.webforj.ViewTransition;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -20,7 +20,7 @@ import com.webforj.samples.views.viewtransitions.components.DemoHeader;
 
 @Route
 @FrameTitle("Chat Widget")
-@StyleSheet("ws://css/viewtransitions/chat.css")
+@BundleEntry("css/viewtransitions/chat.css")
 public class ViewTransitionChatView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Div cardContainer;

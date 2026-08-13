@@ -1,33 +1,37 @@
 ---
 sidebar_position: 2
 title: Bindings
-_i18n_hash: c567705312942e83f5e83a77f1d510a4
+sidebar_class_name: updated-content
+description: >-
+  Link Java Bean properties to webforJ UI components through BindingContext to
+  synchronize reads and writes between model and view.
+_i18n_hash: 9a4b6da2f5a3bd524a0b3cf6a1eb86e1
 ---
-Een binding in webforJ koppelt een specifieke eigenschap van een Java Bean aan een UI-component. Deze koppeling maakt automatische updates tussen de UI en het backendmodel mogelijk. Elke binding kan gegevenssynchronisatie, validatie, transformatie en gebeurtenisbeheer afhandelen.
+Een binding in webforJ verbindt een specifieke eigenschap van een Java Bean met een UI-component. Deze koppeling maakt automatische updates mogelijk tussen de UI en het backendmodel. Elke binding kan omgaan met datasynchronisatie, validatie, transformatie en het beheer van gebeurtenissen.
 
-Je kunt bindings alleen initiëren via de `BindingContext`. Het beheert een verzameling bindinginstanties, waarbij elke binding een UI-component koppelt aan een eigenschap van een bean. Het vergemakkelijkt groepsbewerkingen op bindings, zoals validatie en synchronisatie tussen de UI-componenten en de eigenschappen van de bean. Het fungeert als een aggregator, waarmee collectieve acties op meerdere bindings mogelijk zijn, waardoor het beheer van gegevensstroom binnen applicaties wordt gestroomlijnd.
+Je kunt bindingen alleen initiëren via de `BindingContext`. Het beheert een verzameling bindinginstanties, waarbij elke binding een UI-component koppelt aan een eigenschap van een bean. Het vergemakkelijkt groepsbewerkingen op bindingen, zoals validatie en synchronisatie tussen de UI-componenten en de eigenschappen van de bean. Het fungeert als een aggregator, waardoor collectieve acties op meerdere bindingen mogelijk zijn en het beheer van de datastroom binnen applicaties wordt gestroomlijnd.
 
 :::tip Automatische Binding
-In deze sectie worden de basisprincipes van handmatig configureren van bindings geïntroduceerd. Bovendien kun je automatisch bindings creëren op basis van de UI-componenten in je formulier. Zodra je de basis onder de knie hebt, leer je meer door de sectie [Automatische Binding](./automatic-binding) te lezen.
+Dit gedeelte introduceert de basisprincipes van handmatige configuratie van bindingen. Daarnaast kun je automatisch bindingen creëren op basis van de UI-componenten in je formulier. Zodra je de fundamenten begrijpt, leer je meer door de sectie [Automatische Binding](/docs/data-binding/automatic-binding) te lezen.
 :::
 
-## Configureer bindings {#configure-bindings}
+## Configureren van bindingen {#configure-bindings}
 
-Begin met het maken van een nieuwe instantie van `BindingContext` die alle bindings voor een bepaald model beheert. Deze context zorgt ervoor dat alle bindings gezamenlijk kunnen worden gevalideerd en bijgewerkt.
+Begin met het maken van een nieuwe instantie van `BindingContext` die alle bindingen voor een bepaald model beheert. Deze context valideert en werkt alle bindingen collectief bij.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 ```
 
 :::info
-Elk formulier moet slechts één `BindingContext`-instantie hebben, en je moet deze instantie gebruiken voor alle componenten in het formulier.
+Elk formulier moet slechts één instantie van `BindingContext` hebben, en je moet deze instantie gebruiken voor alle componenten in het formulier.
 :::
 
 ### De gebonden eigenschap {#the-bound-property}
 
-Een bindingseigenschap is een specifiek veld of attribuut van een Java Bean dat kan worden gekoppeld aan een UI-component in je app. Deze koppeling zorgt ervoor dat wijzigingen in de UI directe invloed hebben op de bijbehorende eigenschap van het datamodel, en vice versa, wat een reactieve gebruikerservaring vergemakkelijkt.
+Een bindingseigenschap is een specifiek veld of attribuut van een Java Bean dat kan worden gekoppeld aan een UI-component in je app. Deze koppeling zorgt ervoor dat wijzigingen in de UI rechtstreeks invloed hebben op de overeenkomstige eigenschap van het datamodel, en vice versa, zodat de UI en het datamodel in sync blijven.
 
-Bij het instellen van een binding moet je de eigenschapsnaam als een tekenreeks opgeven. Deze naam moet overeenkomen met de veldnaam in de Java Bean-klasse. Hier is een eenvoudig voorbeeld:
+Bij het opzetten van een binding moet je de eigenschapsnaam als een tekenreeks opgeven. Deze naam moet overeenkomen met de veldnaam in de Java Bean-klasse. Hier is een eenvoudig voorbeeld:
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
@@ -45,13 +49,13 @@ public class Hero  {
 }
 ```
 
-De `bind` methode retourneert een `BindingBuilder` die het `Binding` object creëert en waarmee je verschillende instellingen voor de binding kunt configureren, de `add` methode, die de binding daadwerkelijk aan de context toevoegt.
+De `bind`-methode retourneert een `BindingBuilder` die het `Binding`-object creëert en je kunt gebruiken om de binding met verschillende instellingen te configureren, de `add`-methode die de binding daadwerkelijk aan de context toevoegt.
 
 ### De gebonden component {#the-bound-component}
 
-De andere kant van de binding is de gebonden component, die verwijst naar de UI-component die interactie heeft met de eigenschap van de Java Bean. De gebonden component kan elke UI-component zijn die gebruikersinteractie en weergave ondersteunt, zoals tekstvelden, keuzelijsten, selectievakjes of elke aangepaste component die de `ValueAware` interface implementeert.
+De andere kant van de binding is de gebonden component, die verwijst naar de UI-component die interactie heeft met de eigenschap van de Java Bean. De gebonden component kan elke UI-component zijn die gebruikersinteractie en weergave ondersteunt, zoals tekstvelden, comboboxen, selectievakjes of elke aangepaste component die de `ValueAware`-interface implementeert.
 
-De gebonden component dient als het contactpunt voor de gebruiker met het onderliggende datamodel. Het toont gegevens aan de gebruiker en verzamelt ook gebruikersinvoer die vervolgens terug naar het model wordt doorgegeven.
+De gebonden component fungeert als het punt van interactie voor de gebruiker met het onderliggende datamodel. Het toont gegevens aan de gebruiker en vangt ook gebruikersinvoer die vervolgens terug wordt gepromoveerd naar het model.
 
 ```java
 TextField nameTextField = new TextField("Naam");
@@ -63,51 +67,88 @@ context.bind(nameTextField, "name").add();
 
 ### Gegevens lezen {#reading-data}
 
-Gegevens lezen houdt in dat UI-componenten worden gevuld met waarden uit het datamodel. Dit gebeurt meestal wanneer een formulier aanvankelijk wordt weergegeven of wanneer je de gegevens opnieuw moet laden vanwege wijzigingen in het onderliggende model. De `read` methode die door `BindingContext` wordt aangeboden, maakt dit proces eenvoudig.
+Gegevens lezen houdt in dat UI-componenten worden gevuld met waarden uit het datamodel. Dit gebeurt meestal wanneer een formulier aanvankelijk wordt weergegeven, of wanneer je de gegevens opnieuw moet laden vanwege wijzigingen in het onderliggende model. De `read`-methode die door `BindingContext` wordt aangeboden, maakt dit proces eenvoudig.
 
 ```java
-// Veronderstel dat het Hero-object is geïnstantieerd en geïnitialiseerd
+// Stel dat het Hero-object is geïnstantieerd en geïnitialiseerd
 Hero hero = new Hero("Clark Kent", "Vliegen");
 
-// BindingContext is al geconfigureerd met bindings
+// BindingContext is al geconfigureerd met bindingen
 context.read(hero);
 ```
 
-In dit voorbeeld neemt de `read` methode een instantie van `Hero` en werkt alle gebonden UI-componenten bij om de eigenschappen van de held weer te geven. Als de naam of kracht van de held verandert, geven de bijbehorende UI-componenten (zoals een `TextField` voor de naam en een `ComboBox` voor de krachten) deze nieuwe waarden weer.
+In dit voorbeeld neemt de `read`-methode een instantie van `Hero` en werkt alle gebonden UI-componenten bij om de eigenschappen van de held weer te geven. Als de naam of kracht van de held verandert, tonen de overeenkomstige UI-componenten (zoals een `TextField` voor de naam en een `ComboBox` voor krachten) deze nieuwe waarden.
 
 ### Gegevens schrijven {#writing-data}
 
-Gegevens schrijven houdt in dat waarden van de UI-componenten worden verzameld en het datamodel wordt bijgewerkt. Dit gebeurt meestal wanneer een gebruiker een formulier indient. De `write` methode behandelt validatie en model-update in één stap.
+Gegevens schrijven houdt in dat waarden van de UI-componenten worden verzameld en het datamodel worden bijgewerkt. Dit gebeurt meestal wanneer een gebruiker een formulier indient. De `write`-methode behandelt validatie en modelupdates in één stap.
 
 ```java
-// Dit kan worden geactiveerd door een formulierindienevenement
+// Dit kan worden geactiveerd door een formulierindieningsgebeurtenis
 submit.onClick(event -> {
   ValidationResult results = context.write(hero);
   if (results.isValid()) {
-    // Gegevens zijn geldig en het heldenobject is bijgewerkt
-    // repository.save(hero); 
+    // Gegevens zijn geldig, en het heldobject is bijgewerkt
+    // repository.save(hero);
   } else {
-    // Behandel validatiefouten
+    // Verwerking van validatiefouten
     // results.getMessages();
   }
 });
 ```
 
-In de bovenstaande code, wanneer de gebruiker op de verzendknop klikt, wordt de `write` methode aangeroepen. Het voert alle geconfigureerde validaties uit en, als de gegevens alle controles doorstaan, werkt het `Hero`-object bij met nieuwe waarden van de gebonden componenten. Als de gegevens geldig zijn, kun je deze mogelijk opslaan in een database of verder verwerken. Als er validatiefouten zijn, moet je dat op de juiste manier afhandelen, meestal door foutmeldingen aan de gebruiker weer te geven.
+In de bovenstaande code, wanneer de gebruiker op de verzendknop klikt, wordt de `write`-methode aangeroepen. Het voert alle geconfigureerde validaties uit en als de gegevens alle controles doorstaan, werkt het `Hero`-object bij met nieuwe waarden van de gebonden componenten. Als de gegevens geldig zijn, kun je deze naar een database opslaan of verder verwerken. Als er validatiefouten zijn, moet je deze op de juiste manier afhandelen, meestal door foutmeldingen aan de gebruiker weer te geven.
 
 :::tip Rapportage van validatiefouten
-Alle belangrijke componenten van webforJ hebben standaardconfiguraties om automatisch validatiefouten te rapporteren, hetzij inline, hetzij via een popover. Je kunt dit gedrag aanpassen met behulp van [Reporters](./validation/reporters.md).
+Alle kerncomponenten van webforJ hebben standaardconfiguraties om validatiefouten automatisch te rapporteren, hetzij inline of via een popover. Je kunt dit gedrag aanpassen met behulp van [Reporters](./validation/reporters.md).
+:::
+
+## Geneste bean-eigenschappen <DocChip chip='since' label='26.01' /> {#nested-bean-properties}
+
+Een bindingseigenschap kan een gedoteerd pad zijn dat naar een eigenschap binnen een geneste bean wijst. Elk segment in het pad volgt de standaard JavaBean getter- en setterconventies, zodat `address.street` door `getAddress().getStreet()` leest en door `getAddress().setStreet()` schrijft.
+
+```java
+BindingContext<Hero> context = new BindingContext<>(Hero.class);
+context.bind(streetField, "address.street").add();
+context.bind(cityField, "address.city").add();
+```
+
+```java
+public class Hero {
+  private String name;
+  private Address address;
+
+  // getters en setters
+}
+
+public class Address {
+  private String street;
+  private String city;
+  private String zip;
+
+  // getters en setters
+}
+```
+
+Bij het lezen wordt een pad veilig opgelost, zelfs als een tussenliggende bean `null` is. Als een `Hero` geen `Address` heeft, worden de componenten die zijn gekoppeld aan `address.street` en `address.city` als leeg gelezen in plaats van een fout te veroorzaken, zodat het formulier nog steeds wordt gevuld.
+
+Bij het schrijven creëert de context elke ontbrekende tussenliggende bean via de no-argument constructor, zodat het schrijven van het formulier naar een `Hero` zonder `Address` een nieuwe, gevulde `Address` oplevert. Een bestaande `Address` wordt hergebruikt.
+
+[Jakarta validatie](/docs/data-binding/validation/jakarta-validation) annotaties op een geneste eigenschap worden op dezelfde manier gedetecteerd als op een eigenschap op het hoogste niveau. Een annotatie zoals `@NotNull` op `Address.street` markeert de `address.street` binding als [verplicht](/docs/data-binding/automatic-binding#bindingrequired-annotation).
+
+:::info Paden worden vooraf gevalideerd
+Het volledige pad wordt gevalideerd wanneer je `bind` aanroept. Een typfout in een segment, op het hoogste niveau of dieper in het pad, werpt een `IllegalArgumentException`, zodat bindingfouten onmiddellijk aan het licht komen in plaats van bij lees- of schrijftijd.
 :::
 
 <!-- vale off -->
 ## Alleen-lezen gegevens {#readonly-data}
 <!-- vale on -->
 
-In bepaalde scenario's wil je misschien dat je app gegevens weergeeft zonder dat de eindgebruiker deze rechtstreeks via de UI kan aanpassen. Dit is waar alleen-lezen databindingen cruciaal worden. webforJ ondersteunt de configuratie van bindings als alleen-lezen, zodat je gegevens kunt weergeven, maar niet kunt bewerken via gebonden UI-componenten.
+In bepaalde scenario's wil je misschien dat je app gegevens weergeeft zonder dat de eindgebruiker deze rechtstreeks via de UI kan wijzigen. Alleen-lezen data bindingen adresseren dit. webforJ ondersteunt het configureren van bindingen als alleen-lezen, zodat je gegevens kunt weergeven, maar deze niet kunt bewerken via gebonden UI-componenten.
 
-### Configureren van alleen-lezen bindings {#configuring-readonly-bindings}
+### Configureren van alleen-lezen bindingen {#configuring-readonly-bindings}
 
-Om een alleen-lezen binding in te stellen, kun je de binding configureren om gebruikersinvoer op de UI-component uit te schakelen of te negeren. Dit zorgt ervoor dat de gegevens vanuit het UI-perspectief onveranderd blijven, terwijl ze programmaatmatig kunnen worden bijgewerkt indien nodig.
+Om een alleen-lezen binding in te stellen, kun je de binding configureren om gebruikersinvoer uit of te negeren. De gegevens blijven dan onveranderd vanuit het perspectief van de UI, terwijl ze nog steeds programmatisch worden bijgewerkt wanneer dat nodig is.
 
 ```java
 // Een tekstveld configureren als alleen-lezen in de binding context
@@ -117,31 +158,31 @@ context.bind(nameTextField, "name")
   .add();
 ```
 
-In deze configuratie zorgt `readOnly` ervoor dat het `nameTextField` geen gebruikersinvoer accepteert, waardoor het tekstveld de gegevens weergeeft zonder wijzigingen toe te staan.
+In deze configuratie stopt `readOnly` het `nameTextField` van het accepteren van gebruikersinvoer, zodat het tekstveld de gegevens weergeeft zonder modificaties toe te staan.
 
 :::info
-De binding kan de component alleen als alleen-lezen markeren als de UI-component de `ReadOnlyAware` interface implementeert.
+De binding kan de component alleen als alleen-lezen markeren als de UI-component de `ReadOnlyAware`-interface implementeert.
 :::
 
-:::tip Component Alleen-Lezen vs Binding Alleen-Lezen
-Het is belangrijk om te onderscheiden tussen bindings die je configureert als alleen-lezen en UI-componenten die je instelt om als alleen-lezen te worden weergegeven. Wanneer je een binding als alleen-lezen markeert, heeft dat invloed op hoe de binding gegevens beheert tijdens het schrijfproces, niet alleen op het gedrag van de UI.
+:::tip Component Alleen-lezen versus Binding Alleen-lezen
+Het is belangrijk om te onderscheiden tussen bindingen die je configureert als alleen-lezen en UI-componenten die je instelt om als alleen-lezen te worden weergegeven. Wanneer je een binding als alleen-lezen markeert, heeft dit invloed op hoe de binding gegevens beheert tijdens het schrijfproces, niet alleen op het gedrag van de UI.
 
-Wanneer je een binding als alleen-lezen markeert, slaat het systeem gegevensupdates over. Wijzigingen in de UI-component worden niet teruggestuurd naar het datamodel. Dit zorgt ervoor dat zelfs als de UI-component op de een of andere manier gebruikersinvoer ontvangt, het het onderliggende datamodel niet bijwerkt. Het behouden van deze scheiding is cruciaal voor het waarborgen van de gegevensintegriteit in scenario's waarin gebruikersacties de gegevens niet mogen wijzigen.
+Wanneer je een binding als alleen-lezen markeert, slaat het systeem gegevensupdates over. Elke wijziging in de UI-component wordt niet teruggestuurd naar het datamodel. Hierdoor, zelfs als de UI-component op de een of andere manier gebruikersinvoer ontvangt, wordt het onderliggende datamodel niet bijgewerkt. Dit behoudt de integriteit van de gegevens in scenario's waarin gebruikersacties de gegevens niet mogen wijzigen.
 
-Daarentegen stopt het instellen van een UI-component als alleen-lezen, zonder de binding zelf als alleen-lezen te configureren, simpelweg de gebruiker om wijzigingen aan te brengen in de UI-component, maar stopt het de binding niet om het datamodel bij te werken als er programmawijzigingen optreden of op andere manieren.
+In tegenstelling tot het instellen van een UI-component als alleen-lezen, zonder de binding zelf ook als alleen-lezen te configureren, stopt simpelweg de gebruiker van het aanbrengen van wijzigingen in de UI-component, maar stopt niet dat de binding het datamodel kan bijwerken als wijzigingen programmatisch of via andere middelen optreden.
 :::
 
 ## Binding getters en setters {#binding-getters-and-setters}
 
-Setters en getters zijn methoden in Java die respectievelijk de waarden van eigenschappen instellen en ophalen. In de context van databinding worden ze gebruikt om te definiëren hoe eigenschappen binnen het bindingframework worden bijgewerkt en opgehaald.
+Setters en getters zijn methoden in Java die respectievelijk de waarden van eigenschappen instellen en ophalen. In de context van databinding worden ze gebruikt om te definiëren hoe eigenschappen worden bijgewerkt en opgehaald binnen het bindingframework.
 
 ### Aangepaste setters en getters {#customizing-setters-and-getters}
 
-Hoewel webforJ automatisch de standaard JavaBean-naamgevingsconventies kan gebruiken (bijvoorbeeld `getName()`, `setName()` voor een eigenschap `name`), moet je mogelijk aangepast gedrag definiëren. Dit is nodig wanneer de eigenschap niet de conventionele naamgeving volgt of wanneer de gegevensafhandeling extra logica vereist.
+Hoewel webforJ standaard gebruik kan maken van conventionele JavaBean-naamgevingsconventies (bijvoorbeeld `getName()`, `setName()` voor een eigenschap `name`), moet je mogelijk aangepaste gedrag definiëren. Dit is nodig wanneer de eigenschap niet de conventionele naamgeving volgt of wanneer de gegevensverwerking aanvullende logica vereist.
 
 ### Aangepaste getters gebruiken {#using-custom-getters}
 
-Aangepaste getters worden gebruikt wanneer het proces van waardeophaling meer inhoudt dan alleen het retourneren van een eigenschap. Bijvoorbeeld, je wilt misschien de string formatteren, een waarde berekenen of bepaalde acties loggen wanneer een eigenschap wordt benaderd.
+Aangepaste getters worden gebruikt wanneer het ophalen van de waarde meer inhoudt dan alleen het retourneren van een eigenschap. Bijvoorbeeld, je wilt misschien de tekenreeks formatteren, een waarde berekenen of bepaalde acties loggen wanneer een eigenschap wordt geopend.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
@@ -149,13 +190,13 @@ context
   .bind(textField, "power")
   .useGetter(hero -> {
     String name = hero.getName();
-    return name.toUpperCase(); // Aangepaste logica: naam omzetten naar hoofdletters
+    return name.toUpperCase(); // Aangepaste logica: conversie van naam naar hoofdletters
   });
 ```
 
 ### Aangepaste setters gebruiken {#using-custom-setters}
 
-Aangepaste setters komen in beeld wanneer het instellen van een eigenschap extra bewerkingen met zich meebrengt, zoals validatie, transformatie of bijeffecten zoals loggen of andere delen van je app notificeren.
+Aangepaste setters komen in beeld wanneer het instellen van een eigenschap aanvullende bewerkingen met zich meebrengt, zoals validatie, transformatie of bijwerkingen zoals loggen of andere delen van je app notificeren.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
@@ -163,6 +204,6 @@ context
   .bind(textField, "power")
   .useSetter((hero, name) -> {
     System.out.println("Naam bijwerken van " + hero.getName() + " naar " + name);
-    hero.setName(name); // Extra operatie: logging
+    hero.setName(name); // Aanvullende operatie: loggen
   });
 ```

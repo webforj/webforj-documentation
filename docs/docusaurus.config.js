@@ -24,7 +24,7 @@ async function resolveWebforjVersion() {
 module.exports = async function createConfig() {
   const webforjVersion = await resolveWebforjVersion();
   // Demo iframes load from the Maven/Jetty server on this port in local dev.
-  // Mirrors the `-Dport=...` Maven flag from PR #754. Production builds use an
+  // Matches the `-Dport=...` Maven flag from PR #754. Production builds use an
   // empty base so the iframe `src` becomes a relative path on the docs domain.
   const webforjPort = process.env.WEBFORJ_PORT || '8080';
 
@@ -149,6 +149,17 @@ module.exports = async function createConfig() {
   plugins: [
     'docusaurus-plugin-sass',
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'cookbook',
+        path: 'cookbook',
+        routeBasePath: 'cookbook',
+        sidebarPath: require.resolve('./cookbook-sidebars.js'),
+        editUrl: 'https://github.com/webforj/webforj-documentation/edit/main/docs/',
+        exclude: ['recipe-template.md', 'README.md'],
+      },
+    ],
+    [
       'docusaurus-plugin-llms',
       {
         generateLLMsTxt: true,
@@ -167,6 +178,18 @@ module.exports = async function createConfig() {
       {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
+          {
+            from: '/docs/integrations/ai-tooling',
+            to: '/docs/ai-tooling',
+          },
+          {
+            from: '/docs/integrations/ai-tooling/mcp',
+            to: '/docs/ai-tooling/mcp',
+          },
+          {
+            from: '/docs/integrations/ai-tooling/agent-skills',
+            to: '/docs/ai-tooling/agent-skills',
+          },
           {
             from: '/docs/installation/docker',
             to: '/docs/introduction/getting-started',
@@ -194,6 +217,18 @@ module.exports = async function createConfig() {
           {
             from: '/docs/integrations/spring/spring-devtools',
             to: '/docs/configuration/deploy-reload/spring-devtools'
+          },
+          {
+            from: '/docs/building-ui/composite-components',
+            to: '/docs/building-ui/composing-components'
+          },
+          {
+            from: '/docs/configuration/deploy-reload/jrebel',
+            to: '/docs/configuration/deploy-reload/hotswap'
+          },
+          {
+            from: '/docs/building-ui/event-options',
+            to: '/docs/building-ui/events',
           }
         ],
       },
@@ -258,6 +293,12 @@ module.exports = async function createConfig() {
           activeBasePath: '/docs/components'
         },
         {
+          position: 'left',
+          label: 'craftforJ',
+          to: '/docs/craftforj',
+          activeBasePath: '/docs/craftforj',
+        },
+        {
           type: 'search',
           position: 'right',
         },
@@ -294,6 +335,11 @@ module.exports = async function createConfig() {
           position: 'right',
           items: [
             {
+              label: 'Cookbook',
+              to: '/cookbook',
+              activeBasePath: '/cookbook',
+            },
+            {
               label: "JavaDocs",
               href: 'https://javadoc.io/doc/com.webforj',
               rel: null,
@@ -325,6 +371,7 @@ module.exports = async function createConfig() {
         {
           type: 'localeDropdown',
           position: 'right',
+          className: 'localeDropdown',
         },
         {
           href: 'https://github.com/webforj',

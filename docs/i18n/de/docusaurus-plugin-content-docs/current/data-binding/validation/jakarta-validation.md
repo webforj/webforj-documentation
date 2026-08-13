@@ -2,15 +2,18 @@
 sidebar_position: 6
 title: Jakarta Validation
 sidebar_class_name: updated-content
-_i18n_hash: 813ccefe385954366010291f50215611
+description: >-
+  Apply Jakarta Bean Validation annotations to bean properties and activate
+  JakartaValidator on a BindingContext with locale-aware messages.
+_i18n_hash: e5b90cd31ee5ca5eab453a1c087967da
 ---
-[Java Bean Validation](https://beanvalidation.org/) wird allgemein als der Standard für die Integration von Validierungslogik in Java-Anwendungen anerkannt. Es verwendet einen einheitlichen Ansatz zur Validierung, indem es Entwicklern ermöglicht, Eigenschaften des Domainmodells mit deklarativen Validierungsconstraints zu annotieren. Diese Constraints werden zur Laufzeit durchgesetzt, mit Optionen für sowohl integrierte als auch benutzerdefinierte Regeln.
+[Java Bean Validation](https://beanvalidation.org/) wird weithin als der Standard für die Integration von Validierungslogik in Java-Anwendungen anerkannt. Es verwendet einen einheitlichen Ansatz zur Validierung, indem es Entwicklern ermöglicht, Eigenschaften des Domänenmodells mit deklarativen Validierungsbeschränkungen zu annotieren. Diese Beschränkungen werden zur Laufzeit durchgesetzt, mit Optionen sowohl für integrierte als auch für benutzerdefinierte Regeln.
 
-webforJ integriert sich mit Bean Validation über den `JakartaValidator`-Adapter und bietet vollständige Unterstützung direkt out of the box.
+webforJ integriert sich über den `JakartaValidator`-Adapter mit Bean Validation und bietet sofortige volle Unterstützung.
 
 ## Installation {#installation}
 
-Es ist notwendig, eine kompatible Implementierung wie [Hibernate Validator](https://hibernate.org/validator/) in Ihren Klassenpfad aufzunehmen. Wenn Ihre Umgebung standardmäßig nicht mit dieser Implementierung geliefert wird, können Sie sie manuell mit den folgenden Maven-Abhängigkeiten hinzufügen:
+Es ist erforderlich, eine kompatible Implementierung wie [Hibernate Validator](https://hibernate.org/validator/) in Ihren Klassenpfad aufzunehmen. Wenn Ihre Umgebung standardmäßig nicht mit dieser Implementierung kommt, können Sie sie manuell hinzufügen, indem Sie die folgenden Maven-Abhängigkeiten verwenden:
 
 ```xml
 <dependency>
@@ -27,7 +30,7 @@ Es ist notwendig, eine kompatible Implementierung wie [Hibernate Validator](http
 
 ## Der `JakartaValidator` {#the-jakartavalidator}
 
-Die Klasse `JakartaValidator` dient als Adapter und verbindet den webforJ-Bindungskontext mit Jakarta Validation. Diese Integration ermöglicht die Verwendung komplexer Validierungsregeln direkt über Annotationen in der Bean-Klasse.
+Die Klasse `JakartaValidator` dient als Adapter, der den Binding-Kontext von webforJ mit Jakarta Validation verbindet. Diese Integration ermöglicht die Verwendung komplexer Validierungsregeln direkt über Annotations in der Bean-Klasse.
 
 ### Aktivierung des `JakartaValidator` {#activating-jakartavalidator}
 
@@ -37,9 +40,9 @@ Um den `JakartaValidator` im gesamten Kontext zu aktivieren, verwenden Sie typis
 BindingContext<User> context = new BindingContext<>(User.class, true);
 ```
 
-### Definition von Constraints für Bean-Eigenschaften {#defining-constraints-for-bean-properties}
+### Definieren von Einschränkungen für Bean-Eigenschaften {#defining-constraints-for-bean-properties}
 
-Annotation-basierte Constraints werden direkt innerhalb der Bean-Klasse angewendet, um Validierungsbedingungen anzugeben, wie im folgenden Beispiel dargestellt:
+Annotationsbasierte Einschränkungen werden direkt innerhalb der Bean-Klasse angewendet, um Validierungsbedingungen anzugeben, wie im folgenden Beispiel veranschaulicht:
 
 ```java
 public class Hero {
@@ -47,7 +50,7 @@ public class Hero {
   @Length(min = 3, max = 20)
   private String name;
 
-  @NotEmpty(message = "Unspecified power")
+  @NotEmpty(message = "Unbestimmte Kraft")
   @Pattern(regexp = "Fly|Invisible|LaserVision|Speed|Teleportation", message = "Ungültige Kraft")
   private String power;
 
@@ -55,17 +58,48 @@ public class Hero {
 }
 ```
 
-Solche Constraints sind ebenso effektiv wie die, die programmgesteuert während der Bindungsinitialisierung festgelegt werden, und produzieren konsistente Validierungsergebnisse.
+Solche Einschränkungen sind ebenso effektiv wie die programmatisch während der Bindungsinitialisierung festgelegten und führen zu konsistenten Validierungsergebnissen.
 
 :::warning
-Aktuell erkennt der `JakartaValidator` nur Constraints, die direkt den Eigenschaften zugewiesen sind, und ignoriert alle Validierungen, die nicht direkt mit Eigenschaften verbunden sind.
+Derzeit erkennt der `JakartaValidator` nur Einschränkungen, die direkt an Eigenschaften zugewiesen sind, und ignoriert alle Validierungen, die nicht direkt mit Eigenschaften verbunden sind.
 :::
 
-### Lokalisierte Validierungsnachrichten <DocChip chip='since' label='25.12' /> {#locale-aware-validation-messages}
+### Validierung geschachtelter Beans <DocChip chip='since' label='26.01' /> {#validating-nested-beans}
 
-Jakarta Validation unterstützt lokalisierte Constraint-Nachrichten durch standardmäßige Nachrichteninterpolation. Wenn Sie die App-Lokalisierung ändern, muss der `JakartaValidator` die neue Lokalisierung kennen, damit er Nachrichten in der richtigen Sprache auflösen kann.
+Einschränkungen werden direkt auf die eigenen Felder der geschachtelten Bean erklärt. Wenn Sie eines dieser Felder über einen [punktierten Eigenschaftspfad](/docs/data-binding/bindings#nested-bean-properties) binden, gilt die Einschränkung für diese Eigenschaft auf die gleiche Weise wie für eine oberste Eigenschaft.
 
-`JakartaValidator` implementiert das `LocaleAware`-Interface, was bedeutet, dass `BindingContext.setLocale()` automatisch die Lokalisierung an alle Jakarta-Validatoren im Kontext weitergibt. Sie müssen nicht jeden Validator manuell aktualisieren.
+```java
+public class Address {
+  @NotBlank(message = "Straße ist erforderlich")
+  @Size(max = 80, message = "Straße ist zu lang")
+  private String street;
+
+  // Getter und Setter
+}
+```
+
+```java {6-7}
+public class Hero {
+  @NotEmpty(message = "Name darf nicht leer sein")
+  @Length(min = 3, max = 20)
+  private String name;
+
+  // Eine geschachtelte Bean mit den Einschränkungen für address.street
+  private Address address;
+
+  // Getter und Setter
+}
+```
+
+Die Bindung von `address.street` wird gegen `@NotBlank` auf `Address.street` validiert. Jede Bindung validiert die Eigenschaft am Ende ihres Pfades.
+
+Das [Beispiel für geschachtelte Beans](https://github.com/webforj/built-with-webforj) bindet einen `Employee` mit geschachtelten `Address`- und `EmergencyContact`-Beans über einen einzigen `BindingContext`, der dieses Muster verwendet.
+
+### Locale-sensible Validierungsnachrichten <DocChip chip='since' label='25.12' /> {#locale-aware-validation-messages}
+
+Jakarta Validation unterstützt lokalisierte Einschränkungsnachrichten durch standardmäßige Nachrichteninterpolation. Wenn Sie die App-Lokalisierung ändern, muss der `JakartaValidator` die neue Lokalisierung kennen, damit er Nachrichten in der richtigen Sprache auflösen kann.
+
+`JakartaValidator` implementiert das `LocaleAware`-Interface, was bedeutet, dass `BindingContext.setLocale()` die Lokalisierung automatisch an alle Jakarta-Validatoren im Kontext weitergibt. Sie müssen jeden Validator nicht manuell aktualisieren.
 
 ```java {5}
 BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
@@ -75,7 +109,7 @@ BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
 context.setLocale(Locale.GERMAN);
 ```
 
-In einer Komponente, die `LocaleObserver` implementiert, rufen Sie `context.setLocale()` innerhalb von `onLocaleChange()` auf, um die Validierungsnachrichten mit der Benutzeroberflächensprache synchron zu halten:
+In einer Komponente, die `LocaleObserver` implementiert, rufen Sie `context.setLocale()` innerhalb von `onLocaleChange()` auf, um die Validierungsnachrichten mit der UI-Sprache synchron zu halten:
 
 ```java {3}
 @Override
@@ -84,4 +118,4 @@ public void onLocaleChange(LocaleEvent event) {
 }
 ```
 
-Siehe [dynamische Validierungsnachrichten](/docs/data-binding/validation/validators#dynamic-validation-messages) für weitere Informationen zu lokalisierte Validatoren.
+Siehe [dynamische Validierungsnachrichten](/docs/data-binding/validation/validators#dynamic-validation-messages) für weitere Informationen zu lokalen sensiblen Validatoren.

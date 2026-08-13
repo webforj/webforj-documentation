@@ -8,7 +8,7 @@ Once webforJ and its dependencies are set up in your project, you're ready to cr
 
 ## Main app class: `Application.java` {#main-app-class-applicationjava}
 
-The `Application` class serves as the entry point for your webforJ app, setting up essential configurations and routes. To start, notice the class's declaration and annotations. 
+The `Application` class serves as the entry point for your webforJ app, setting up essential configurations and routes. To start, notice the class's declaration and annotations.
 
 This class extends the core `App` class from webforJ, making it recognizable as a webforJ app. Various annotations configure the app's theme, title, and routing.
 
@@ -65,7 +65,7 @@ public class HelloWorldView extends Composite<FlexLayout> {
     self.setStyle("margin", "1em auto");
 
     btn.setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> 
+        .addClickListener(e ->
           Toast.show("Welcome to webforJ Starter " + hello.getValue() + "!", Theme.GRAY));
 
     self.add(hello, btn);

@@ -1,7 +1,7 @@
 package com.webforj.samples.views.markdownviewer;
 
 import com.webforj.Interval;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.event.KeypressEvent;
@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Route
 @FrameTitle("Streaming Demo")
-@StyleSheet("ws://css/markdownviewer/markdownviewerstreaming.css")
+@BundleEntry("css/markdownviewer/markdownviewerstreaming.css")
 public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
 
   private static final List<String> RESPONSES =

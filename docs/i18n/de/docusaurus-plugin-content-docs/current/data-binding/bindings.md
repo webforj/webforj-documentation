@@ -1,19 +1,23 @@
 ---
 sidebar_position: 2
 title: Bindings
-_i18n_hash: c567705312942e83f5e83a77f1d510a4
+sidebar_class_name: updated-content
+description: >-
+  Link Java Bean properties to webforJ UI components through BindingContext to
+  synchronize reads and writes between model and view.
+_i18n_hash: 9a4b6da2f5a3bd524a0b3cf6a1eb86e1
 ---
-Eine Bindung in webforJ verknüpft eine bestimmte Eigenschaft eines Java Beans mit einer UI-Komponente. Diese Verknüpfung ermöglicht automatische Aktualisierungen zwischen der Benutzeroberfläche und dem Backend-Modell. Jede Bindung kann die Daten-Synchronisation, Validierung, Transformation und Ereignisverwaltung übernehmen.
+Ein Binding in webforJ verknüpft eine bestimmte Eigenschaft eines Java Beans mit einer UI-Komponente. Diese Verknüpfung ermöglicht automatische Updates zwischen der Benutzeroberfläche und dem Backend-Modell. Jedes Binding kann die Datensynchronisation, Validierung, Transformation und Ereignisverwaltung übernehmen.
 
-Sie können Bindungen nur über den `BindingContext` initiieren. Dieser verwaltet eine Sammlung von Bindungsinstanzen, die jeweils eine UI-Komponente mit einer Eigenschaft eines Beans verknüpfen. Er erleichtert Gruppenoperationen zu Bindungen, wie z.B. Validierung und Synchronisation zwischen den UI-Komponenten und den Eigenschaften des Beans. Er fungiert als Aggregator, der kollektive Aktionen auf mehreren Bindungen ermöglicht und damit das Management des Datenflusses innerhalb von Anwendungen optimiert.
+Bindings können nur über den `BindingContext` initiiert werden. Dieser verwaltet eine Sammlung von Binding-Instanzen, die jeweils eine UI-Komponente mit einer Eigenschaft eines Beans verknüpfen. Er erleichtert Gruppenoperationen über Bindings, wie Validierung und Synchronisation zwischen den UI-Komponenten und den Eigenschaften des Beans. Er fungiert als Aggregator, der kollektive Aktionen auf mehreren Bindings ermöglicht und somit die Verwaltungs des Datenflusses innerhalb von Anwendungen optimiert.
 
-:::tip Automatische Bindung
-Dieser Abschnitt führt in die Grundlagen der manuellen Konfiguration von Bindungen ein. Darüber hinaus können Sie Bindungen automatisch basierend auf den UI-Komponenten in Ihrem Formular erstellen. Sobald Sie die Grundlagen verstanden haben, lesen Sie mehr im Abschnitt [Automatische Bindung](./automatic-binding).
+:::tip Automatisches Binding
+In diesem Abschnitt werden die Grundlagen der manuellen Konfiguration von Bindings vorgestellt. Darüber hinaus können Sie Bindings automatisch basierend auf den UI-Komponenten in Ihrem Formular erstellen. Sobald Sie die Grundlagen verstanden haben, erfahren Sie mehr in dem Abschnitt [Automatisches Binding](/docs/data-binding/automatic-binding).
 :::
 
-## Bindungen konfigurieren {#configure-bindings}
+## Bindings konfigurieren {#configure-bindings}
 
-Beginnen Sie damit, eine neue Instanz von `BindingContext` zu erstellen, die alle Bindungen für ein bestimmtes Modell verwaltet. Dieser Kontext stellt sicher, dass alle Bindungen kollektiv validiert und aktualisiert werden können.
+Beginnen Sie mit der Erstellung einer neuen Instanz von `BindingContext`, die alle Bindings für ein bestimmtes Modell verwaltet. Dieser Kontext validiert und aktualisiert alle Bindings kollektiv.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
@@ -25,9 +29,9 @@ Jedes Formular sollte nur eine `BindingContext`-Instanz haben, und Sie sollten d
 
 ### Die gebundene Eigenschaft {#the-bound-property}
 
-Eine Bindungseigenschaft ist ein spezifisches Feld oder Attribut eines Java Beans, das mit einer UI-Komponente in Ihrer App verknüpft werden kann. Diese Verknüpfung ermöglicht es, dass Änderungen in der Benutzeroberfläche direkt die entsprechende Eigenschaft des Datenmodells beeinflussen und umgekehrt, was ein reaktives Benutzererlebnis erleichtert.
+Eine Bindungseigenschaft ist ein bestimmtes Feld oder Attribut eines Java Beans, das mit einer UI-Komponente in Ihrer App verknüpft werden kann. Diese Verknüpfung ermöglicht es, Änderungen in der UI direkt auf die entsprechende Eigenschaft des Datenmodells zu übertragen und umgekehrt, so dass die UI und das Datenmodell synchron bleiben.
 
-Beim Einrichten einer Bindung sollten Sie den Eigenschaftsnamen als String bereitstellen. Dieser Name muss mit dem Feldnamen in der Java Bean-Klasse übereinstimmen. Hier ist ein einfaches Beispiel:
+Beim Einrichten eines Bindings sollten Sie den Eigenschaftsnamen als String angeben. Dieser Name muss mit dem Feldnamen in der Java Bean-Klasse übereinstimmen. Hier ist ein einfaches Beispiel:
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
@@ -41,17 +45,17 @@ public class Hero  {
   private String name;
   private String power;
 
-  // setter und getter
+  // Setter und Getter
 }
 ```
 
-Die Methode `bind` gibt ein `BindingBuilder` zurück, mit dem das `Binding`-Objekt erstellt wird und das Sie verwenden können, um die Bindung mit verschiedenen Einstellungen zu konfigurieren; die Methode `add`, die tatsächlich die Bindung zum Kontext hinzufügt.
+Die `bind`-Methode gibt einen `BindingBuilder` zurück, der das `Binding`-Objekt erstellt und mit dem Sie mehrere Einstellungen für das Binding konfigurieren können, sowie die `add`-Methode, mit der das Binding tatsächlich zum Kontext hinzugefügt wird.
 
 ### Die gebundene Komponente {#the-bound-component}
 
-Die andere Seite der Bindung ist die gebundene Komponente, die sich auf die UI-Komponente bezieht, die mit der Eigenschaft des Java Beans interagiert. Die gebundene Komponente kann jede UI-Komponente sein, die Benutzerinteraktion und -darstellung unterstützt, wie z.B. Textfelder, Kombinationsfelder, Kontrollkästchen oder jede benutzerdefinierte Komponente, die das `ValueAware`-Interface implementiert.
+Die andere Seite des Bindings ist die gebundene Komponente, die sich auf die UI-Komponente bezieht, die mit der Eigenschaft des Java Beans interagiert. Die gebundene Komponente kann jede UI-Komponente sein, die Benutzerinteraktionen und Anzeige unterstützt, wie Textfelder, Kombinationsfelder, Kontrollkästchen oder jede benutzerdefinierte Komponente, die das `ValueAware`-Interface implementiert.
 
-Die gebundene Komponente dient als Schnittstelle für den Benutzer zur Interaktion mit dem zugrunde liegenden Datenmodell. Sie zeigt Daten dem Benutzer an und erfasst auch Benutzereingaben, die dann zurück an das Modell weitergeleitet werden.
+Die gebundene Komponente dient als Interaktionspunkt für den Benutzer mit dem zugrunde liegenden Datenmodell. Sie zeigt Daten dem Benutzer an und erfasst Benutzereingaben, die dann zurück an das Modell propagiert werden.
 
 ```java
 TextField nameTextField = new TextField("Name");
@@ -63,85 +67,122 @@ context.bind(nameTextField, "name").add();
 
 ### Daten lesen {#reading-data}
 
-Das Lesen von Daten beinhaltet das Befüllen von UI-Komponenten mit Werten aus dem Datenmodell. Dies geschieht in der Regel, wenn ein Formular anfangs angezeigt wird oder wenn Sie die Daten aufgrund von Änderungen im zugrunde liegenden Modell neu laden müssen. Die `read`-Methode, die von `BindingContext` bereitgestellt wird, erleichtert diesen Prozess.
+Daten lesen umfasst das Befüllen von UI-Komponenten mit Werten aus dem Datenmodell. Dies geschieht typischerweise, wenn ein Formular zunächst angezeigt wird oder wenn die Daten aufgrund von Änderungen im zugrunde liegenden Modell neu geladen werden müssen. Die `read`-Methode, die vom `BindingContext` bereitgestellt wird, macht diesen Prozess einfach.
 
 ```java
 // Angenommen, das Hero-Objekt wurde instanziiert und initialisiert
 Hero hero = new Hero("Clark Kent", "Fliegen");
 
-// BindingContext ist bereits mit Bindungen konfiguriert
+// BindingContext ist bereits mit Bindings konfiguriert
 context.read(hero);
 ```
 
-In diesem Beispiel nimmt die `read`-Methode eine Instanz von `Hero` und aktualisiert alle gebundenen UI-Komponenten, um die Eigenschaften des Helden widerzuspiegeln. Wenn sich der Name oder die Kraft des Helden ändert, zeigen die entsprechenden UI-Komponenten (wie ein `TextField` für den Namen und ein `ComboBox` für die Kräfte) diese neuen Werte an.
+In diesem Beispiel nimmt die `read`-Methode eine Instanz von `Hero` und aktualisiert alle gebundenen UI-Komponenten, um die Eigenschaften des Helden widerzuspiegeln. Wenn sich der Name oder die Kraft des Helden ändert, zeigen die entsprechenden UI-Komponenten (wie ein `TextField` für den Namen und ein `ComboBox` für Kräfte) diese neuen Werte an.
 
 ### Daten schreiben {#writing-data}
 
-Das Schreiben von Daten beinhaltet das Sammeln von Werten aus den UI-Komponenten und das Aktualisieren des Datenmodells. Dies geschieht typischerweise, wenn ein Benutzer ein Formular absendet. Die `write`-Methode kümmert sich um Validierung und Modellaktualisierung in einem Schritt.
+Daten schreiben umfasst das Sammeln von Werten aus den UI-Komponenten und das Aktualisieren des Datenmodells. Dies geschieht typischerweise, wenn ein Benutzer ein Formular absendet. Die `write`-Methode behandelt Validierung und Aktualisierung des Modells in einem Schritt.
 
 ```java
-// Dies könnte durch ein Formularübermittlungsereignis ausgelöst werden
+// Dies könnte durch ein Formularüberreichungsereignis ausgelöst werden
 submit.onClick(event -> {
   ValidationResult results = context.write(hero);
   if (results.isValid()) {
     // Daten sind gültig, und das Hero-Objekt wurde aktualisiert
-    // repository.save(hero); 
+    // repository.save(hero);
   } else {
-    // Validierungsfehler behandeln
+    // Fehler bei der Validierung behandeln
     // results.getMessages();
   }
 });
 ```
 
-Im obigen Code wird die Methode `write` aufgerufen, wenn der Benutzer die Schaltfläche „Abschicken“ klickt. Sie führt alle konfigurierten Validierungen durch, und wenn die Daten alle Prüfungen bestehen, aktualisiert sie das `Hero`-Objekt mit neuen Werten aus den gebundenen Komponenten. Wenn die Daten gültig sind, könnten Sie sie in einer Datenbank speichern oder weiterverarbeiten. Wenn es Validierungsfehler gibt, sollten Sie diese entsprechend behandeln, typischerweise durch die Anzeige von Fehlermeldungen an den Benutzer.
+Im obigen Code wird die `write`-Methode aufgerufen, wenn der Benutzer die Schaltfläche „Absenden“ klickt. Sie führt alle konfigurierten Validierungen durch und aktualisiert das `Hero`-Objekt mit neuen Werten von den gebundenen Komponenten, wenn die Daten alle Prüfungen bestehen. Wenn die Daten gültig sind, möchten Sie sie möglicherweise in einer Datenbank speichern oder weiterverarbeiten. Bei Validierungsfehlern sollten Sie dies angemessen behandeln, typischerweise, indem Sie Fehlermeldungen dem Benutzer anzeigen.
 
 :::tip Berichterstattung über Validierungsfehler
-Alle Kernkomponenten von webforJ haben Standardkonfigurationen, um Validierungsfehler automatisch zu melden, entweder inline oder über ein Popover. Sie können dieses Verhalten mit [Reporters](./validation/reporters.md) anpassen.
+Alle Kernkomponenten von webforJ verfügen über Standardkonfigurationen zur automatischen Berichterstattung über Validierungsfehler, entweder inline oder über ein Popover. Sie können dieses Verhalten mit [Reportern](./validation/reporters.md) anpassen.
+:::
+
+## Verschachtelte Bean-Eigenschaften <DocChip chip='since' label='26.01' /> {#nested-bean-properties}
+
+Eine Bindungseigenschaft kann ein gepunkteter Pfad sein, der auf eine Eigenschaft innerhalb eines verschachtelten Beans verweist. Jedes Segment im Pfad folgt den Standard-JavaBean Getter- und Setter-Konventionen, sodass `address.street` über `getAddress().getStreet()` gelesen und über `getAddress().setStreet()` geschrieben wird.
+
+```java
+BindingContext<Hero> context = new BindingContext<>(Hero.class);
+context.bind(streetField, "address.street").add();
+context.bind(cityField, "address.city").add();
+```
+
+```java
+public class Hero {
+  private String name;
+  private Address address;
+
+  // Getter und Setter
+}
+
+public class Address {
+  private String street;
+  private String city;
+  private String zip;
+
+  // Getter und Setter
+}
+```
+
+Beim Lesen wird ein Pfad sicher aufgelöst, selbst wenn ein Zwischen-Bean `null` ist. Wenn ein `Hero` keine `Address` hat, werden die Komponenten, die an `address.street` und `address.city` gebunden sind, leer gelesen, anstatt eine Ausnahme auszulösen, sodass das Formular trotzdem gefüllt wird.
+
+Beim Schreiben erstellt der Kontext jedes fehlende Zwischen-Bean über dessen Konstruktor ohne Argumente, sodass das Schreiben des Formulars in einen `Hero` ohne `Address` eine neue, befüllte `Address` erzeugt. Eine vorhandene `Address` wird wiederverwendet.
+
+[Jakarta validation](/docs/data-binding/validation/jakarta-validation) Annotationen an einer verschachtelten Eigenschaft werden auf die gleiche Weise erkannt wie an einer obersten Eigenschaft. Eine Annotation wie `@NotNull` auf `Address.street` kennzeichnet das `address.street` Binding als [erforderlich](/docs/data-binding/automatic-binding#bindingrequired-annotation).
+
+:::info Pfade werden vorab validiert
+Der vollständige Pfad wird validiert, wenn Sie `bind` aufrufen. Ein Tippfehler in einem Segment, auf der obersten Ebene oder tiefer im Pfad, wirft eine `IllegalArgumentException`, sodass Bindungsfehler sofort auffallen, anstatt erst beim Lesen oder Schreiben.
 :::
 
 <!-- vale off -->
-## Nur-Lese-Daten {#readonly-data}
+## Nur-Lesen-Daten {#readonly-data}
 <!-- vale on -->
 
-In bestimmten Szenarien möchten Sie möglicherweise, dass Ihre App Daten anzeigt, ohne dass der Endbenutzer diese direkt über die Benutzeroberfläche ändern kann. Hier kommen die Bindungen für Nur-Lese-Daten ins Spiel. webforJ unterstützt die Konfiguration von Bindungen als nur-lesend, wodurch sichergestellt wird, dass Sie Daten anzeigen, aber nicht über gebundene UI-Komponenten bearbeiten können.
+In bestimmten Szenarien möchten Sie möglicherweise, dass Ihre App Daten anzeigt, ohne dem Endbenutzer zu erlauben, diese direkt über die UI zu ändern. Nur-Lesen-Daten-Bindings adressieren dies. webforJ unterstützt die Konfiguration von Bindings als nur-lesend, sodass Sie Daten anzeigen, aber nicht über gebundene UI-Komponenten bearbeiten können.
 
-### Konfigurieren von Nur-Lese-Bindungen {#configuring-readonly-bindings}
+### Konfigurieren von Nur-Lesen-Bindings {#configuring-readonly-bindings}
 
-Um eine Nur-Lese-Bindung einzurichten, können Sie die Bindung so konfigurieren, dass sie die Eingabe der UI-Komponente deaktiviert oder ignoriert. Dies stellt sicher, dass die Daten aus Sicht der Benutzeroberfläche unverändert bleiben, während sie bei Bedarf programmgesteuert aktualisiert werden können.
+Um ein Nur-Lesen-Binding einzurichten, können Sie das Binding so konfigurieren, dass es die Eingabe der UI-Komponente deaktiviert oder ignoriert. Die Daten bleiben somit aus der Sicht der UI unverändert, während sie bei Bedarf programmatisch aktualisiert werden.
 
 ```java
-// Konfigurieren eines Textfelds, das im Binding-Kontext nur-lesend ist
+// Konfigurieren eines Textfelds als nur-lesend im Binding-Kontext
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context.bind(nameTextField, "name")
   .readOnly()
   .add();
 ```
 
-In dieser Konfiguration stellt `readOnly` sicher, dass das `nameTextField` keine Benutzereingaben akzeptiert und das Textfeld daher die Daten anzeigt, ohne Änderungen zuzulassen.
+In dieser Konfiguration verhindert `readOnly`, dass das `nameTextField` Benutzereingaben akzeptiert, sodass das Textfeld die Daten anzeigt, ohne Änderungen zuzulassen.
 
 :::info
-Die Bindung kann die Komponente nur dann als nur-lesend markieren, wenn die UI-Komponenten das `ReadOnlyAware`-Interface implementieren.
+Das Binding kann die Komponente nur dann als nur-lesend markieren, wenn die UI-Komponente das `ReadOnlyAware`-Interface implementiert.
 :::
 
-:::tip Komponenten-Nur-Lese- vs. Binding-Nur-Lese
-Es ist wichtig, zwischen Bindungen, die Sie als nur-lesend konfigurieren, und UI-Komponenten, die Sie als nur-lesend festlegen, zu unterscheiden. Wenn Sie eine Bindung als nur-lesend markieren, wirkt sich dies darauf aus, wie die Bindung die Daten während des Schreibprozesses verwaltet, nicht nur auf das Verhalten der Benutzeroberfläche.
+:::tip Komponente Nur-Lesen vs Binding Nur-Lesen
+Es ist wichtig, zwischen Bindings zu unterscheiden, die Sie als nur-lesend konfigurieren, und UI-Komponenten, die Sie als nur-lesend anzeigen. Wenn Sie ein Binding als nur-lesend markieren, hat das Auswirkungen darauf, wie das Binding Daten während des Schreibprozesses verwaltet, nicht nur auf das Verhalten der UI.
 
-Wenn Sie eine Bindung als nur-lesend markieren, überspringt das System die Datenaktualisierungen. Änderungen an der UI-Komponente werden nicht an das Datenmodell übertragen. So wird sichergestellt, dass selbst wenn die UI-Komponente irgendwie Benutzereingaben erhält, das zugrunde liegende Datenmodell nicht aktualisiert wird. Diese Trennung aufrechtzuerhalten ist entscheidend, um die Datenintegrität in Szenarien zu wahren, in denen Benutzeraktionen die Daten nicht ändern sollten.
+Wenn Sie ein Binding als nur-lesend markieren, überspringt das System die Datenaktualisierungen. Änderungen an der UI-Komponente werden nicht an das Datenmodell übertragen. Selbst wenn die UI-Komponente dennoch Benutzereingaben erhält, wird das zugrunde liegende Datenmodell nicht aktualisiert. Diese Trennung schützt die Datenintegrität in Szenarien, in denen Benutzeraktionen die Daten nicht verändern sollten.
 
-Im Gegensatz dazu wird das Setzen einer UI-Komponente als nur-lesend, ohne die Bindung selbst als nur-lesend zu konfigurieren, einfach den Benutzer daran hindern, Änderungen an der UI-Komponente vorzunehmen, verhindert jedoch nicht, dass die Bindung das Datenmodell aktualisiert, wenn Änderungen programmgesteuert oder auf andere Weise erfolgen.
+Im Gegensatz dazu verhindert das Festlegen einer UI-Komponente als nur-lesend, ohne das Binding selbst als nur-lesend zu konfigurieren, lediglich, dass der Benutzer Änderungen an der UI-Komponente vornimmt, hindert jedoch das Binding nicht daran, das Datenmodell zu aktualisieren, wenn Änderungen programmatisch oder auf andere Weise erfolgen.
 :::
 
-## Bindungsgetter und -setter {#binding-getters-and-setters}
+## Binding-Getter und -Setter {#binding-getters-and-setters}
 
-Setter und Getter sind Methoden in Java, die die Werte von Eigenschaften setzen und abrufen. Im Kontext der Datenbindung werden sie verwendet, um zu definieren, wie Eigenschaften innerhalb des Bindungsrahmens aktualisiert und abgerufen werden.
+Setter und Getter sind Methoden in Java, die die Werte von Eigenschaften setzen bzw. abrufen. Im Kontext des Datenbindens werden sie verwendet, um zu definieren, wie Eigenschaften innerhalb des Binding-Frameworks aktualisiert und abgerufen werden.
 
 ### Anpassen von Settern und Gettern {#customizing-setters-and-getters}
 
-Obwohl webforJ die Standard-JavaBean-Namenskonventionen automatisch verwenden kann (zum Beispiel `getName()`, `setName()` für eine Eigenschaft `name`), müssen Sie möglicherweise benutzerdefinierte Verhaltensweisen definieren. Dies ist erforderlich, wenn die Eigenschaft nicht den konventionellen Namenskonventionen folgt oder wenn die Datenverarbeitung zusätzliche Logik erfordert.
+Obwohl webforJ automatisch die standardmäßigen JavaBean-Namenskonventionen verwenden kann (zum Beispiel `getName()`, `setName()` für eine Eigenschaft `name`), müssen Sie möglicherweise ein benutzerdefiniertes Verhalten definieren. Dies ist notwendig, wenn die Eigenschaft nicht der konventionellen Namensgebung folgt oder wenn die Datenverarbeitung zusätzliche Logik erfordert.
 
-### Verwendung benutzerdefinierter Getter {#using-custom-getters}
+### Verwendung von benutzerdefinierten Gettern {#using-custom-getters}
 
-Benutzerdefinierte Getter werden verwendet, wenn der Prozess des Abrufens des Werts mehr beinhaltet, als nur eine Eigenschaft zurückzugeben. Beispielsweise möchten Sie möglicherweise den String formatieren, einen Wert berechnen oder bestimmte Aktionen protokollieren, wenn auf eine Eigenschaft zugegriffen wird.
+Benutzerdefinierte Getter werden verwendet, wenn der Abrufprozess eines Wertes mehr als nur das Zurückgeben einer Eigenschaft umfasst. Zum Beispiel möchten Sie möglicherweise den String formatieren, einen Wert berechnen oder bestimmte Aktionen protokollieren, wenn auf eine Eigenschaft zugegriffen wird.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
@@ -149,20 +190,20 @@ context
   .bind(textField, "power")
   .useGetter(hero -> {
     String name = hero.getName();
-    return name.toUpperCase(); // Benutzerdefinierte Logik: Name in Großbuchstaben umwandeln
+    return name.toUpperCase(); // Benutzerdefinierte Logik: den Namen in Großbuchstaben umwandeln
   });
 ```
 
-### Verwendung benutzerdefinierter Setter {#using-custom-setters}
+### Verwendung von benutzerdefinierten Settern {#using-custom-setters}
 
-Benutzerdefinierte Setter kommen ins Spiel, wenn das Setzen einer Eigenschaft zusätzliche Operationen erfordert, wie z.B. Validierung, Transformation oder Nebenwirkungen wie Protokollierung oder Benachrichtigung anderer Teile Ihrer App.
+Benutzerdefinierte Setter kommen ins Spiel, wenn das Setzen einer Eigenschaft zusätzliche Operationen wie Validierung, Transformation oder Nebeneffekte erfordert, wie Protokollierung oder Benachrichtigung anderer Teile Ihrer App.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context
   .bind(textField, "power")
   .useSetter((hero, name) -> {
-    System.out.println("Aktualisieren des Namens von " + hero.getName() + " auf " + name);
+    System.out.println("Aktualisiere den Namen von " + hero.getName() + " zu " + name);
     hero.setName(name); // Zusätzliche Operation: Protokollierung
   });
 ```

@@ -1,32 +1,59 @@
 ---
-title: Maven Jetty plugin
-_i18n_hash: 7311fe4d0b6c5382244d898f099b9435
+title: Jetty
+sidebar_position: 40
+description: >-
+  Run a webforJ app on the embedded Jetty server with the Maven Jetty plugin,
+  with live reload and hotswap during development.
+_i18n_hash: 73514e3b51a43e4a876aefd5cf933577
 ---
-Le plugin Maven Jetty est un outil populaire qui permet aux développeurs d'exécuter des applications web Java dans un serveur Jetty intégré directement à partir de leurs projets Maven. 
+Le plugin Maven Jetty exécute l'application dans un serveur Jetty intégré directement à partir du projet. Un projet archétype définit `compile webforj:watch jetty:run` comme son objectif Maven par défaut, donc `mvn` sans arguments compile l'application, démarre le [frontend watch](/docs/configuration/deploy-reload/frontend-watch), et sert l'application sur Jetty.
 
-Le plugin Jetty lance un serveur Jetty intégré qui surveille les fichiers de votre application, y compris les classes Java et les ressources, à la recherche de changements. Lorsqu'il détecte des mises à jour, il redéploie automatiquement l'application, ce qui accélère le développement en éliminant les étapes manuelles de construction et de déploiement. 
+## Exigences {#requirements}
 
-## Configurations Jetty {#jetty-configurations}
+Un projet Jetty déclare lui-même les outils de développement, dans le profil utilisé pour les exécutions de développement :
 
-Voici quelques configurations essentielles pour affiner les paramètres de déploiement à chaud et d'interaction du serveur du plugin :
+```xml title="pom.xml"
+<profiles>
+  <profile>
+    <id>dev</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <dependencies>
+      <dependency>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-devtools</artifactId>
+      </dependency>
+    </dependencies>
+  </profile>
+</profiles>
+```
 
-| Propriété                          | Description                                                                                                                                                                           | Par défaut     |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| **`scan`**                        | Configure la fréquence à laquelle le serveur Jetty recherche des changements de fichiers dans le **`pom.xml`**. Le projet squelette fixe cela à `2` secondes. Augmenter cet intervalle peut réduire la charge du CPU mais peut retarder la mise à jour des modifications dans l'application. | `1`            |
+La version provient du Bill of Materials (BOM) webforJ. Le profil maintient la dépendance hors du war packagé. Un projet créé à partir d'un [archétype](/docs/introduction/getting-started) a ce profil.
 
-## Configurations webforJ {#webforj-configurations}
+## Activer le rechargement en direct {#turning-live-reload-on}
 
-| Propriété                          | Description                                                                                                                                                                           | Par défaut     |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| **`webforj.reloadOnServerError`** | Lors de l'utilisation du déploiement à chaud, le fichier WAR entier est échangé. Si le client envoie une demande pendant que le serveur redémarre, une erreur se produit. Ce paramètre permet au client de tenter un rechargement de la page, en supposant que le serveur sera à nouveau en ligne sous peu. Ne s'applique qu'aux environnements de développement et gère uniquement les erreurs spécifiques au redéploiement à chaud. | `on`           |
-| **`webforj.clientHeartbeatRate`** | Définit l'intervalle pour les pings clients afin de vérifier la disponibilité du serveur. Cela maintient la communication client-serveur ouverte. Pour le développement, utilisez des intervalles plus courts pour une détection d'erreurs plus rapide. En production, définissez cela à au moins 50 secondes pour éviter des demandes excessives. | `50s`          |
+```ini title="webforj.conf"
+webforj.devtools.livereload.enabled = true
+```
+
+Les clés sont les mêmes que celles qu'une application Spring Boot définit dans `application.properties`, répertoriées dans les [paramètres](/docs/configuration/deploy-reload/overview#settings).
+
+## Changements de classe {#class-changes}
+
+Avec un [outil de hotswap](/docs/configuration/deploy-reload/hotswap) configuré, l'outil applique les modifications de classe et Jetty ne redéploie rien. Deux propriétés Jetty soutiennent cela, et un projet archétype définit les deux :
+
+- `scan` est `0`, ce qui désactive le scan de fichiers de Jetty.
+- `deployMode` reste non défini. Hotswap nécessite le mode forké, et le plugin le sélectionne. Une construction qui définit `deployMode` à une autre valeur démarre sans l'outil et le journalise.
+
+Sans un outil de hotswap, réglez `scan` sur un intervalle en secondes et Jetty redéploiera l'application lorsque les classes ou ressources compilées changent :
+
+| Propriété | Description | Par défaut |
+|-----------|-------------|------------|
+| `scan` | Intervalle en secondes entre les scans de la sortie compilée, défini comme la propriété `jetty.scan`. `0` désactive le scan. Des intervalles plus longs diminuent la charge et retardent le redéploiement. | `1` |
 
 ## Considérations d'utilisation {#usage-considerations}
 
-Bien que le plugin Jetty soit très efficace pour le développement, il présente quelques limitations potentielles :
-
-- **Utilisation de la mémoire et du CPU** : Une vérification fréquente des fichiers, définie par de faibles valeurs de `scan` dans le `pom.xml`, peut augmenter la consommation de ressources, en particulier sur de grands projets. Augmenter l'intervalle peut réduire la charge mais ralentit également le redéploiement.
-
-- **Utilisation limitée en production** : Le plugin Jetty est conçu pour le développement, pas pour les environnements de production. Il manque d'optimisation des performances et de configurations de sécurité requises pour la production, ce qui le rend mieux adapté aux tests locaux.
-
-- **Gestion des sessions** : Lors du redéploiement à chaud, les sessions utilisateur peuvent ne pas être préservées, notamment lorsque des changements structurels importants se produisent dans le code. Cela peut perturber les tests impliquant des données de session utilisateur, nécessitant une gestion manuelle des sessions ou des configurations alternatives pour le développement.
+- **Mémoire et CPU** : de faibles valeurs `scan` augmentent la consommation de ressources sur de grands projets. Des intervalles plus longs la diminuent et retardent le redéploiement.
+- **Développement uniquement** : le plugin Jetty n'est pas destiné aux déploiements en production.
+- **Sessions** : un redéploiement peut supprimer les sessions utilisateur. Un [outil de hotswap](/docs/configuration/deploy-reload/hotswap) applique les modifications sans redéploiement, et la session survit.

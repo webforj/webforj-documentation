@@ -2,26 +2,37 @@
 title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: 9b0d2672241250200ed14343e57d3926
+description: >-
+  Apply code changes to a running webforJ app during development, on the server
+  through hotswap or a restart, and in the browser through live reload.
+_i18n_hash: 1f91b81b074c81af64ded435e068729c
 ---
-Les flux de travail de développement efficaces reposent sur des outils qui détectent les changements de code et mettent automatiquement à jour l'application en temps réel. Le déploiement continu et le rechargement dynamique travaillent ensemble pour simplifier le processus de développement en réduisant les étapes manuelles, vous permettant de voir vos modifications rapidement sans avoir besoin de redémarrer manuellement le serveur.
+Pendant le développement, webforJ applique les modifications enregistrées à l'application en cours d'exécution et met à jour le navigateur. Les modifications de classe atteignent l'application par le biais d'un [outil de hotswap](/docs/configuration/deploy-reload/hotswap) ou par un redémarrage. Le rechargement en direct met à jour le navigateur après l'un ou l'autre.
 
-## Redeploiement {#redeployment}
+Les projets créés à partir d'un [archétype](/docs/introduction/getting-started) viennent préconfigurés. Pour un projet existant, suivez [Spring Boot](/docs/configuration/deploy-reload/spring-devtools) ou [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin).
 
-Le redeploiement dans le développement Java fait référence à la détection automatique et au déploiement des changements de code, de sorte que les mises à jour soient reflétées dans l'application sans redémarrage manuel du serveur. Ce processus implique généralement la mise à jour des classes Java et des ressources web à la volée.
+## Comment chaque changement s'applique {#how-each-change-applies}
 
-Dans une application webforJ, cela signifie régénérer le fichier WAR chaque fois que des modifications sont apportées au code.
+| Changement | Résultat | Référence |
+|---|---|---|
+| Classe Java, outil de hotswap attaché | La classe se met à jour dans l'application en cours d'exécution. La partie affectée de la page se reconstruit et l'état de l'application reste. | [Hotswap](/docs/configuration/deploy-reload/hotswap) |
+| Classe Java, sans outil de hotswap | L'application redémarre. Le navigateur se recharge lorsque l'application est prête. | [Spring Boot](/docs/configuration/deploy-reload/spring-devtools), [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin) |
+| Feuille de style ou image | La page l'applique sur place, sans rechargement. | [Settings](#settings) |
+| Source sous `src/main/frontend` | La surveillance la reconstruit et met à jour le navigateur. | [Frontend watch](/docs/configuration/deploy-reload/frontend-watch) |
 
-Les changements apportés aux classes Java et aux ressources sur le classpath sont généralement surveillés par l'IDE. Lorsqu'une classe Java est modifiée et que le fichier est enregistré, soit automatiquement par l'IDE soit manuellement par le développeur, ces outils se déclenchent pour compiler et placer les fichiers de classe mis à jour dans le répertoire cible afin d'appliquer les modifications.
+## Paramètres {#settings}
 
-Pour la meilleure expérience, utilisez le redeploiement automatique en combinaison avec des outils ou des paramètres qui automatisent le rechargement du navigateur.
+Ces paramètres contrôlent le rechargement en direct pendant le développement :
 
-## Rechargement en direct {#live-reload}
+| Propriété | Par défaut | Description |
+|----------|---------|-------------|
+| `webforj.devtools.livereload.enabled` | `false` | Active le rechargement en direct pour les exécutions de développement. |
+| `webforj.devtools.livereload.websocket-port` | `35730` | Port pour la connexion du navigateur. |
+| `webforj.devtools.livereload.websocket-path` | `/webforj-devtools-ws` | Chemin pour la connexion du navigateur. |
+| `webforj.devtools.livereload.static-resources-enabled` | `true` | Applique les modifications de feuille de style et d'image sur place au lieu de recharger la page. |
+| `webforj.devtools.livereload.heartbeat-interval` | `30000` | Intervalle en millisecondes pour les vérifications de connexion qui détectent un serveur redémarrant. |
 
-Une fois les modifications déployées, le rechargement en direct recharge automatiquement l'application afin que le navigateur reflète les mises à jour immédiatement, sans nécessiter un rafraîchissement manuel du navigateur.
-
-Dans une application webforJ, le rechargement en direct peut automatiquement rafraîchir la vue, rendant à nouveau les composants pour montrer l'état le plus récent de l'application, ou même appliquer des changements au besoin à la demande.
+Les clés n'ont aucun effet dans une application packagée. Les applications packagées ne contiennent pas d'outils de développement.
 
 ## Sujets {#topics}
 

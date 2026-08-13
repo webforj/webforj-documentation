@@ -1,32 +1,59 @@
 ---
-title: Maven Jetty plugin
-_i18n_hash: 7311fe4d0b6c5382244d898f099b9435
+title: Jetty
+sidebar_position: 40
+description: >-
+  Run a webforJ app on the embedded Jetty server with the Maven Jetty plugin,
+  with live reload and hotswap during development.
+_i18n_hash: 73514e3b51a43e4a876aefd5cf933577
 ---
-Maven Jetty -lisäosa on suosittu työkalu, joka mahdollistaa kehittäjien suorittaa Java-verkkosovelluksia sisäisessä Jetty-palvelimessa suoraan Maven-projekteistaan.
+Maven Jetty -liitännäinen suorittaa sovelluksen liitetyssä Jetty-palvelimessa suoraan projektista. Arkkitehtuuriprojekti asettaa `compile webforj:watch jetty:run` oletus Maven -tavoitteekseen, joten `mvn` ilman argumentteja kääntää sovelluksen, käynnistää [frontend watch](/docs/configuration/deploy-reload/frontend-watch) ja palvelee sovellusta Jettyllä.
 
-Jetty-lisäosa käynnistää sisäänrakennetun Jetty-palvelimen, joka valvoo sovelluksesi tiedostoja, mukaan lukien Java-luokkia ja resursseja, muutosten varalta. Kun se havaitsee päivityksiä, se ottaa sovelluksen automaattisesti uudelleen käyttöön, mikä nopeuttaa kehitystä poistamalla manuaaliset rakennus- ja käyttöönottoaskeleet.
+## Vaatimukset {#requirements}
 
-## Jetty configurations {#jetty-configurations}
+Jetty-projekti ilmoittaa kehitystyökalut itse, kehityskäytöissä käytetyssä profiilissa:
 
-Tässä on joitakin olennaisia konfiguraatioita lisäosan kuuman käyttöönoton ja palvelinvuorovaikutuksen asetusten hienosäätämiseksi:
+```xml title="pom.xml"
+<profiles>
+  <profile>
+    <id>dev</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <dependencies>
+      <dependency>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-devtools</artifactId>
+      </dependency>
+    </dependencies>
+  </profile>
+</profiles>
+```
 
-| Ominaisuus                          | Kuvaus                                                                                                                                                                           | Oletusarvo     |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| **`scan`**         | Määrittää, kuinka usein Jetty-palvelin skannaa tiedostomuutoksia **`pom.xml`**-tiedostossa. Luonnosprojekti asettaa tämän `2` sekunniksi. Tämän välin pidentäminen voi vähentää prosessorin kuormitusta, mutta se voi myös viivästyttää muutosten näkymistä sovelluksessa. | `1`            |
+Versio tulee webforJ:n materiaaliluettelosta (BOM). Profiili pitää riippuvuuden pakatusta war-tiedostosta eristyksissä. Projekti, joka on luotu [arkkitehtuurista](/docs/introduction/getting-started), sisältää tämän profiilin.
 
-## webforJ configurations {#webforj-configurations}
+## Live-latauksen käyttöönottaminen {#turning-live-reload-on}
 
-| Ominaisuus                          | Kuvaus                                                                                                                                                                           | Oletusarvo     |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| **`webforj.reloadOnServerError`** | Kun käytetään kuumaa uudelleenkäyttöä, koko WAR-tiedosto vaihdetaan. Jos asiakas lähettää pyyntöjä, kun palvelin on käynnistymässä, virhe tapahtuu. Tämä asetus mahdollistaa asiakkaan yrittää ladata sivua uudelleen olettaen, että palvelin on pian käytettävissä. Koskee vain kehitysympäristöjä ja käsittelee vain kuumaan uudelleenkäyttöön liittyviä virheitä. | `on`           |
-| **`webforj.clientHeartbeatRate`** | Määrittää vaiheen asiakaspinguille palvelimen saatavuuden kyselyä varten. Tämä pitää asiakas-palvelin-viestinnän avoimena. Kehityksessä käytä lyhyempiä välejä nopeamman virheiden havaitsemisen vuoksi. Tuotannossa aseta tämä vähintään 50 sekuntiin liiallisten pyyntöjen välttämiseksi. | `50s`          |
+```ini title="webforj.conf"
+webforj.devtools.livereload.enabled = true
+```
 
-## Käytön huomioitavaa {#usage-considerations}
+Avaimet ovat samoja, joita Spring Boot -sovellus asettaa `application.properties`-tiedostossa, lueteltuna [asetuksissa](/docs/configuration/deploy-reload/overview#settings).
 
-Vaikka Jetty-lisäosa on erittäin tehokas kehityksessä, sillä on joitakin mahdollisia rajoituksia:
+## Luokka muutokset {#class-changes}
 
-- **Muistin ja prosessorin käyttö**: Usein tapahtuva tiedostojen skannaus, joka asetetaan matalilla `scan`-arvoilla `pom.xml`-tiedostossa, voi lisätä resurssien kulutusta, erityisesti suurissa projekteissa. Välin pidentäminen voi vähentää kuormitusta, mutta se hidastaa myös uudelleenkäyttöönottoa.
+Kun [hotswap-työkalu](/docs/configuration/deploy-reload/hotswap) on määritetty, työkalu soveltaa luokkamuutokset eikä Jetty julkaise mitään. Kaksi Jetty-ominaisuutta tukevat tätä, ja arkkitehtuuriprojekti asettaa molemmat:
 
-- **Rajoitettu tuotantokäyttö**: Jetty-lisäosa on suunniteltu kehitykseen, ei tuotantoympäristöihin. Siltä puuttuvat tuotantoon tarvittavat suorituskyvyn optimointi- ja suojausasetukset, joten se soveltuu paremmin paikalliseen testaukseen.
+- `scan` on `0`, joka sammuu Jettyn tiedostoskannauksen.
+- `deployMode` jää asettamatta. Hotswap vaatii forkattu tilan, ja liitännäinen valitsee sen. Käännä, joka asettaa `deployMode`:n toiseen arvoon, käynnistyy ilman työkalua ja kirjaa sen.
 
-- **Istunnon hallinta**: Kuuman uudelleenkäytön aikana käyttäjäistuntoja ei välttämättä säilytetä, erityisesti silloin, kun koodissa tapahtuu suuria rakenteellisia muutoksia. Tämä voi häiritä testejä, joissa on käyttäjäistuntoon liittyviä tietoja, mikä vaatii manuaalista istunnon hallintaa tai kiertoratkaisuja kehitykselle.
+Ilman hotswap-työkalua aseta `scan` aikaväli sekunneissa, ja Jetty julkaisee sovelluksen, kun käännetyt luokat tai resurssit muuttuvat:
+
+| Ominaisuus | Kuvaus | Oletus |
+|------------|--------|--------|
+| `scan`     | Sekuntien väli käännetyille tulosteille, asetettuna `jetty.scan`-ominaisuutena. `0` sammuttaa skannaamisen. Pidemmät välin vähentävät kuormitusta ja viivästyttävät julkaisemista. | `1` |
+
+## Käyttöhuomiot {#usage-considerations}
+
+- **Muisti ja CPU**: alhaiset `scan`-arvot lisäävät resurssien kulutusta suurilla projekteilla. Pidemmät välin vähentävät sitä ja viivästyttävät julkaisemista.
+- **Vain kehitykseen**: Jetty-liitännäinen ei ole tarkoitettu tuotantokäyttöön.
+- **Istunnot**: julkaisu voi poistaa käyttäjäistunnot. [Hotswap-työkalu](/docs/configuration/deploy-reload/hotswap) soveltaa muutoksia ilman julkaisemista, ja istunto säilyy.

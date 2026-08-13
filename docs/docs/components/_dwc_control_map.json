@@ -59,5 +59,6 @@
 "Toast": "dwc-toast",
 "Toolbar": "dwc-toolbar",
 "Tree": "dwc-tree",
-"TreeNode": "dwc-tree-node"
+"TreeNode": "dwc-tree-node",
+"Upload": "dwc-upload"
 }

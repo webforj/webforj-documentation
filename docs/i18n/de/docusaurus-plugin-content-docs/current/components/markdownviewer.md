@@ -1,14 +1,17 @@
 ---
 title: MarkdownViewer
 sidebar_position: 74
-_i18n_hash: e50beb488f343e35da80b6d4f9ceddf5
+description: >-
+  Render markdown as HTML with the MarkdownViewer component, supporting append,
+  auto-scroll, and progressive typewriter rendering.
+_i18n_hash: fbd31d2317bf5de95c282a1319f35cf6
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-markdown-viewer" />
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="markdown-viewer" location="com/webforj/component/markdown/MarkdownViewer" top='true'/>
 
-Die `MarkdownViewer`-Komponente rendert Markdown-Text als HTML. Sie unterstützt die standardmäßige Markdown-Syntax, einschließlich Überschriften, Listen, Codeblöcke, Links, Bilder und Emoji-Rendering. Die Komponente bietet auch ein Fortschritts-Rendering, das den Inhalt zeichenweise für einen Schreibmaschinen-Effekt anzeigt.
+Die `MarkdownViewer`-Komponente rendert Markdown-Text als HTML. Sie unterstützt den Standard-Markdown-Syntax, einschließlich Überschriften, Listen, Codeblöcken, Links, Bildern und Emoji-Rendering. Die Komponente bietet auch ein progressives Rendering, das den Inhalt Zeichen für Zeichen für einen Schreibmaschinen-Effekt anzeigt.
 
 ## Konfiguration des Inhalts {#setting-content}
 
@@ -17,7 +20,7 @@ Erstellen Sie einen `MarkdownViewer` mit oder ohne anfänglichen Inhalt und aktu
 ```java
 MarkdownViewer viewer = new MarkdownViewer("# Hallo Welt");
 
-// Ersetzen Sie den Inhalt vollständig
+// Ersetzen Sie den gesamten Inhalt
 viewer.setContent("""
     ## Neuer Inhalt
 
@@ -29,43 +32,44 @@ viewer.setContent("""
 String content = viewer.getContent();
 ```
 :::tip
-Die Komponente implementiert `HasText`, sodass `setText()` und `getText()` als Aliase für die Inhaltsmethoden fungieren.
+Die Komponente implementiert `HasText`, sodass `setText()` und `getText()` als Aliase für die Inhaltsmethoden funktionieren.
 :::
+
 <ComponentDemo
 path='/webforj/markdownviewer'
 files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java']}
 height='650px'
 />
 
-## Hinzufügen von Inhalten {#appending-content}
+## Anfügen von Inhalten {#appending-content}
 
 Die Methode `append()` fügt Inhalte schrittweise hinzu, ohne das bereits Vorhandene zu ersetzen:
 
 ```java
 viewer.append("## Neuer Abschnitt\n\n");
-viewer.append("Hier ist mehr Inhalt...");
+viewer.append("Hier sind weitere Inhalte...");
 ```
 
-Standardmäßig erscheint der hinzugefügte Inhalt sofort. Wenn das [Fortschritts-Rendering](#progressive-rendering) aktiviert ist, wird der hinzugefügte Inhalt in einen Puffer eingefügt und zeichenweise angezeigt.
+Standardmäßig erscheint der angefügte Inhalt sofort. Wenn das [progressive Rendering](#progressive-rendering) aktiviert ist, geht der angefügte Inhalt in einen Puffer und wird Zeichen für Zeichen anstatt sofort angezeigt.
 
 ## Automatisches Scrollen {#auto-scroll}
 
-Aktivieren Sie das automatische Scrollen, um den Ansichtsbereich am unteren Ende zu halten, während der Inhalt wächst. Dies funktioniert mit jeder Methode zum Hinzufügen von Inhalten, sei es `setContent()`, `append()` oder Fortschritts-Rendering. Wenn ein Benutzer manuell nach oben scrollt, um frühere Inhalte anzusehen, pausiert das automatische Scrollen und setzt sich fort, wenn er zurück nach unten scrollt.
+Aktivieren Sie das automatische Scrollen, um den Ansichtsbereich am unteren Rand zu halten, während der Inhalt wächst. Dies funktioniert mit jeder Methode zum Hinzufügen von Inhalten, egal ob `setContent()`, `append()` oder progressives Rendering. Wenn ein Benutzer manuell nach oben scrollt, um frühere Inhalte zu überprüfen, pausiert das automatische Scrollen und wird wieder aktiviert, wenn er zurück nach unten scrollt.
 
 ```java
 viewer.setAutoScroll(true);
 ```
 
-## Fortschritts-Rendering {#progressive-rendering}
+## Progressives Rendering {#progressive-rendering}
 
-Das Fortschritts-Rendering zeigt den Inhalt zeichenweise an, anstatt alles auf einmal darzustellen, was einen Schreibmaschinen-Effekt erzeugt. KI-Chatoberflächen verwenden dies häufig, um Antworten allmählich erscheinen zu lassen:
+Das progressive Rendering zeigt Inhalte Zeichen für Zeichen anstatt alles auf einmal und erzeugt einen Schreibmaschinen-Effekt. KI-Chat-Schnittstellen verwenden dies häufig, um Antworten allmählich anzuzeigen:
 
 ```java
 MarkdownViewer viewer = new MarkdownViewer();
 viewer.setProgressiveRender(true);
 ```
 
-Wenn aktiviert, wird der über `setContent()` oder `append()` hinzugefügte Inhalt in einem Puffer gespeichert und schrittweise angezeigt. Wenn deaktiviert, erscheint der Inhalt sofort.
+Wenn aktiviert, geht der über `setContent()` oder `append()` hinzugefügte Inhalt in einen Puffer und wird schrittweise angezeigt. Wenn deaktiviert, erscheint der Inhalt sofort.
 
 <ComponentDemo
 path='/webforj/markdownviewerprogressive'
@@ -73,9 +77,9 @@ files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerPr
 height='650px'
 />
 
-### Rendervelocity {#render-speed}
+### Rendergeschwindigkeit {#render-speed}
 
-Die Methode `setRenderSpeed()` steuert, wie viele Zeichen pro Animationsframe gerendert werden. Höhere Werte bedeuten schnellere Rendervelocity. Bei 60 fps entspricht die Standardgeschwindigkeit von 4 ungefähr 240 Zeichen pro Sekunde:
+Die Methode `setRenderSpeed()` steuert, wie viele Zeichen pro Animationsrahmen gerendert werden. Höhere Werte bedeuten schnelleres Rendering. Bei 60 fps entspricht die Standardgeschwindigkeit von 4 etwa 240 Zeichen pro Sekunde:
 
 | Geschwindigkeit | Zeichen/Sekunde |
 |-----------------|------------------|
@@ -87,13 +91,13 @@ Die Methode `setRenderSpeed()` steuert, wie viele Zeichen pro Animationsframe ge
 viewer.setRenderSpeed(6);
 ```
 
-:::tip Anpassen Ihrer Datenrate
-Wenn Ihr Server Inhalte schneller sendet, als der Viewer rendert, wächst der Puffer und der angezeigte Inhalt bleibt zurück. Erhöhen Sie die `renderSpeed`, um Schritt zu halten, oder rufen Sie `flush()` auf, wenn alle Inhalte empfangen wurden, um verbleibende Inhalte sofort anzuzeigen.
+:::tip Abstimmung Ihrer Datenrate
+Wenn Ihr Server Inhalte schneller sendet, als der Viewer rendert, wächst der Puffer und der angezeigte Inhalt hinkt hinterher. Erhöhen Sie die `renderSpeed`, um Schritt zu halten, oder rufen Sie `flush()` auf, wenn alle Inhalte empfangen wurden, um die verbleibenden Inhalte sofort anzuzeigen.
 :::
 
-### Renderrstatus {#render-state}
+### Renderstatus {#render-state}
 
-Wenn das Fortschritts-Rendering aktiviert ist, gibt die Methode `isRendering()` `true` zurück, während die Komponente aktiv den gepufferten Inhalt anzeigt. Chatoberflächen verwenden dies häufig, um einen Stop-Button anzuzeigen oder auszublenden:
+Wenn das progressive Rendering aktiviert ist, gibt die Methode `isRendering()` `true` zurück, während die Komponente aktiv Inhalte im Puffer anzeigt. Chat-Schnittstellen verwenden dies oft, um einen Stop-Button anzuzeigen oder auszublenden:
 
 ```java
 if (viewer.isRendering()) {
@@ -101,28 +105,28 @@ if (viewer.isRendering()) {
 }
 ```
 
-Diese Methode gibt immer `false` zurück, wenn das Fortschritts-Rendering deaktiviert ist.
+Diese Methode gibt immer `false` zurück, wenn das progressive Rendering deaktiviert ist.
 
-### Steuerung der Darstellung {#controlling-rendering}
+### Steuerung des Renderings {#controlling-rendering}
 
-Zwei Methoden steuern, wie das Fortschritts-Rendering stoppt:
+Zwei Methoden steuern, wie das progressive Rendering stoppt:
 
-- **`stop()`** stoppt das Rendern und verwirft alle gepufferten Inhalte, die noch nicht angezeigt wurden. Rufen Sie dies auf, wenn der Benutzer abbricht.
-- **`flush()`** stoppt das Rendern, zeigt jedoch sofort alle verbleibenden gepufferten Inhalte an. Rufen Sie dies auf, wenn alle Inhalte empfangen wurden und Sie sie ohne Warten anzeigen möchten.
+- **`stop()`** stoppt das Rendering und verwirft alle gepufferten Inhalte, die noch nicht angezeigt wurden. Rufen Sie dies auf, wenn der Benutzer abbricht.
+- **`flush()`** stoppt das Rendering, zeigt jedoch sofort alle verbleibenden gepufferten Inhalte an. Rufen Sie dies auf, wenn alle Inhalte empfangen wurden und Sie alles ohne Warten anzeigen möchten.
 
 ```java
-// Benutzer hat auf "Stop Generieren" geklickt
+// Benutzer hat auf "Generierung stoppen" geklickt
 viewer.stop();
 
-// Alle Inhalte empfangen, jetzt alles anzeigen
+// Alle Inhalte wurden empfangen, jetzt alles anzeigen
 viewer.flush();
 ```
 
-Diese Methoden haben keine Auswirkungen, wenn das Fortschritts-Rendering deaktiviert ist.
+Diese Methoden haben keine Auswirkung, wenn das progressive Rendering deaktiviert ist.
 
-### Warten auf Vollständigkeit {#waiting-for-completion}
+### Warten auf den Abschluss {#waiting-for-completion}
 
-Die Methode `whenRenderComplete()` gibt ein `PendingResult` zurück, das abgeschlossen ist, wenn das Fortschritts-Rendering alle gepufferten Inhalte angezeigt hat:
+Die Methode `whenRenderComplete()` gibt ein `PendingResult` zurück, das abgeschlossen ist, wenn das progressive Rendering alle gepufferten Inhalte vollständig angezeigt hat:
 
 ```java
 viewer.whenRenderComplete().thenAccept(v -> {
@@ -131,13 +135,13 @@ viewer.whenRenderComplete().thenAccept(v -> {
 });
 ```
 
-Wenn das Fortschritts-Rendering nicht aktiviert ist oder kein Inhalt gerendert wird, wird das `PendingResult` sofort abgeschlossen.
+Wenn das progressive Rendering nicht aktiviert ist oder keine Inhalte gerendert werden, wird das `PendingResult` sofort abgeschlossen.
 
 :::tip UI-Koordination
-Bei der Verwendung des Fortschritts-Renderings aktivieren Sie Eingabefelder nicht nur basierend darauf, wann Sie `append()` abgeschlossen haben. Der Renderer zeigt möglicherweise immer noch gepufferten Inhalt an. Warten Sie auf `whenRenderComplete()`, damit der gesamte Inhalt erscheint, bevor die Benutzer wieder interagieren können.
+Beim Einsatz von progressivem Rendering sollten Sie Eingabefelder nicht nur basierend darauf wieder aktivieren, wenn Sie `append()` fertig aufgerufen haben. Der Renderer könnte weiterhin gepufferte Inhalte anzeigen. Warten Sie auf `whenRenderComplete()`, damit alle Inhalte erscheinen, bevor die Benutzer wieder interagieren können.
 :::
 
-Die folgende Demo simuliert eine KI-Chat-Oberfläche, die `append()` mit aktiviertem Fortschritts-Rendering verwendet:
+Die folgende Demo simuliert eine KI-Chat-Schnittstelle, die mit `append()` und aktiviertem progressivem Rendering arbeitet:
 
 <ComponentDemo
 path='/webforj/markdownviewerstreaming'
@@ -145,31 +149,34 @@ files={['src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerSt
 height='700px'
 />
 
-## Inhalt löschen {#clearing-content}
+## Löschen des Inhalts {#clearing-content}
 
-Entfernen Sie gesamten Inhalt mit `clear()`:
+Entfernen Sie alle Inhalte mit `clear()`:
 
 ```java
 viewer.clear();
 ```
 
-Wenn das Fortschritts-Rendering aktiv ist, stoppt `clear()` auch das Rendern und schließt alle ausstehenden `whenRenderComplete()`-Ergebnisse ab.
+Wenn das progressive Rendering aktiv ist, stoppt `clear()` auch das Rendering und schließt alle ausstehenden `whenRenderComplete()`-Ergebnisse.
 
-## Syntax-Highlighting {#syntax-highlighting}
+## Syntaxhervorhebung {#syntax-highlighting}
 
-Der `MarkdownViewer` unterstützt Syntax-Highlighting für Codeblöcke, wenn [Prism.js](https://prismjs.com/) verfügbar ist. Fügen Sie Prism.js zu Ihrer Anwendung mit den `@JavaScript`- und `@StyleSheet`-Annotationen hinzu:
+Der `MarkdownViewer` unterstützt die Syntaxhervorhebung für Codeblöcke, wenn [Prism.js](https://prismjs.com/) verfügbar ist. Bringen Sie Prism in Ihre App mit dem [Frontend-Bundler](/docs/managing-resources/bundler/overview): Deklarieren Sie das Paket in Ihrer `App`-Klasse und erstellen Sie einen Eintrag, der Prism, das Autoloader-Plugin und ein Design importiert.
 
-```java
-@StyleSheet("https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css")
-@JavaScript(
-  value = "https://cdn.jsdelivr.net/combine/npm/prismjs@1/prism.min.js,npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js",
-  top = true
-)
+```java title="Application.java"
+@BundlePackage(value = "prismjs", version = "^1.29.0")
+@BundleEntry("prism/entry.ts")
 public class Application extends App {
   // ...
 }
 ```
 
-Das Autoloader-Plugin lädt bei Bedarf Sprachdefinitionen, sodass Codeblöcke mit Sprachhinweisen wie ` ```java ` oder ` ```python ` automatisch hervorgehoben werden.
+```ts title="src/main/frontend/prism/entry.ts"
+import "prismjs";
+import "prismjs/plugins/autoloader/prism-autoloader";
+import "prismjs/themes/prism-tomorrow.min.css";
+```
+
+Das Autoloader-Plugin lädt Sprachdefinitionen je nach Bedarf, sodass Codeblöcke mit Sprachhinweisen wie ` ```java ` oder ` ```python ` automatisch hervorgehoben werden.
 
 <TableBuilder name="MarkdownViewer" />

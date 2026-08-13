@@ -1,7 +1,7 @@
 package com.webforj.samples.views.viewtransitions;
 
 import com.webforj.Page;
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.FeatherIcon;
@@ -17,7 +17,7 @@ import com.webforj.samples.views.viewtransitions.components.NotificationCard;
 
 @Route
 @FrameTitle("Custom Transitions")
-@StyleSheet("ws://css/viewtransitions/enterexit.css")
+@BundleEntry("css/viewtransitions/enterexit.css")
 public class ViewTransitionEnterExitView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Div stage;

@@ -1,6 +1,6 @@
 package com.webforj.samples.views.toast;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -16,7 +16,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Toast Basics")
-@StyleSheet("ws://css/toast/toast.css")
+@BundleEntry("css/toast/toast.css")
 public class ToastView extends Composite<Div> {
   private final Toast toast = new Toast("", -1);
 

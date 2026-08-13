@@ -1,30 +1,33 @@
 ---
 sidebar_position: 12
 title: Translation
-_i18n_hash: 276130dcd9ff26441b844042d4cdc5dd
+description: >-
+  Resolve localized strings from resource bundles or custom sources with the t()
+  method, MessageFormat placeholders, and browser locale detection.
+_i18n_hash: 565ad5b41fe9fa72e363b2db84809cbe
 ---
-# Translation <DocChip chip='since' label='25.12' />
+# Traducción <DocChip chip='since' label='25.12' />
 
-webforJ incluye un sistema de traducción incorporado para buscar cadenas localizadas por clave. El sistema consta de un resolvedor de traducciones que mapea claves a texto localizado, una interfaz de preocupación `HasTranslation` que proporciona un conveniente método `t()`, `App.getTranslation()` para acceso directo en cualquier lugar, detección automática de la configuración regional desde el navegador y soporte para fuentes de traducción personalizadas, como bases de datos.
+webforJ incluye un sistema de traducción integrado para buscar cadenas localizadas por clave. El sistema consta de un resolutor de traducción que asigna claves a texto localizado, una interfaz de preocupación `HasTranslation` que proporciona un conveniente método `t()`, `App.getTranslation()` para acceso directo en cualquier lugar, detección automática de la configuración regional desde el navegador y soporte para fuentes de traducción personalizadas como bases de datos.
 
 <AISkillTip skill="webforj-localizing-apps" />
 
-## Resolvedor de traducciones {#translation-resolver}
+## Resolutor de traducción {#translation-resolver}
 
-El resolvedor de traducciones es el sistema que busca cadenas localizadas para una clave y configuración regional dada. webforJ proporciona un resolvedor predeterminado, `BundleTranslationResolver`, que carga traducciones desde archivos de propiedades `ResourceBundle` de Java en el classpath. Esto funciona directamente sin dependencias adicionales.
+El resolutor de traducción es el sistema que busca cadenas localizadas para una clave y configuración regional dada. webforJ proporciona un resolutor predeterminado, `BundleTranslationResolver`, que carga traducciones de archivos de propiedades `ResourceBundle` de Java en el classpath. Esto funciona directamente sin dependencias adicionales.
 
-### Archivos de paquete de recursos
+### Archivos de paquetes de recursos {#resource-bundle-files}
 
-Coloca tus archivos de traducción en el directorio `src/main/resources`. El resolvedor predeterminado busca archivos llamados `messages` con sufijos de configuración regional que siguen la convención de nomenclatura estándar de `ResourceBundle` de Java:
+Coloca tus archivos de traducción en el directorio `src/main/resources`. El resolutor predeterminado busca archivos llamados `messages` con sufijos de configuración regional siguiendo la convención de nomenclatura estándar de `ResourceBundle` de Java:
 
 ```text
-messages.properties        # Traducciones predeterminadas/de respaldo
+messages.properties        # Traducciones predeterminadas/por defecto
 messages_en.properties     # Inglés
 messages_de.properties     # Alemán
 messages_fr_CA.properties  # Francés (Canadá)
 ```
 
-Cada archivo contiene pares clave-valor. Las claves son identificadores que utilizas en el código, y los valores son las cadenas traducidas. Puedes incluir marcadores de posición de [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) como `{0}`, `{1}` para valores dinámicos:
+Cada archivo contiene pares de clave-valor. Las claves son identificadores que usas en el código y los valores son las cadenas traducidas. Puedes incluir marcadores de posición de [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) como `{0}`, `{1}` para valores dinámicos:
 
 ```properties title="messages.properties"
 app.title=Mailbox
@@ -40,13 +43,13 @@ menu.outbox=Postausgang
 greeting=Hallo {0}, Sie haben {1} neue Nachrichten
 ```
 
-El resolvedor delega en la cadena de resolución estándar de [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) de Java, que maneja la coincidencia de configuración regional y el respaldo automáticamente.
+El resolutor delega en la cadena de resolución estándar de [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) de Java, que maneja la coincidencia de configuración regional y la caída automáticamente.
 
 ### Configurando configuraciones regionales soportadas {#configuring-supported-locales}
 
-La configuración `supported-locales` le indica a webforJ qué configuraciones regionales soporta tu aplicación. Esta lista es utilizada por la detección automática para hacer coincidir la configuración regional del navegador del usuario con las traducciones disponibles. La primera configuración regional en la lista se utiliza como la predeterminada de respaldo cuando no se encuentra una mejor coincidencia. La clave de propiedad es `webforj.i18n.supported-locales` y acepta una lista de etiquetas de idioma [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag), por ejemplo `en, de`.
+La configuración `supported-locales` le indica a webforJ qué configuraciones regionales soporta tu aplicación. Esta lista es utilizada por la detección automática para comparar la configuración regional del navegador del usuario con las traducciones disponibles. La primera configuración regional de la lista se utiliza como el fallback predeterminado cuando no se encuentra una coincidencia mejor. La clave de propiedad es `webforj.i18n.supported-locales` y acepta una lista de etiquetas de idiomas [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag), por ejemplo `en, de`.
 
-:::info Más info
+:::info Más información
 Consulta la sección [Configuración](/docs/configuration/properties) para aprender cómo establecer propiedades para diferentes entornos.
 :::
 
@@ -76,13 +79,13 @@ También puedes usar `App.getTranslation()` directamente en cualquier lugar sin 
 String title = App.getTranslation("app.title");
 ```
 
-:::info Respaldo suave
-Si no se encuentra una clave de traducción, `t()` devuelve la clave misma en lugar de lanzar una excepción. Esto significa que tu aplicación no se romperá si falta una traducción. La clave se muestra tal cual, y se registra una advertencia para que puedas rastrear las traducciones faltantes durante el desarrollo.
+:::info Fallback elegante
+Si no se encuentra una clave de traducción, `t()` devuelve la clave en sí en lugar de lanzar una excepción. Esto significa que tu aplicación no se romperá si falta una traducción. La clave se muestra tal cual, y se registra una advertencia para que puedas rastrear traducciones faltantes durante el desarrollo.
 :::
 
 ## Implementando componentes traducidos {#implementing-translated-components}
 
-Un componente traducido combina típicamente `HasTranslation` con [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Usa `t()` al crear elementos de la interfaz de usuario para establecer el texto traducido inicial. Para admitir el cambio de idioma en tiempo de ejecución, implementa `LocaleObserver` y actualiza el mismo texto en `onLocaleChange()`.
+Un componente traducido combina típicamente `HasTranslation` con [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Utiliza `t()` al crear elementos de la interfaz de usuario para establecer el texto traducido inicial. Para soportar el cambio de idioma en tiempo de ejecución, implementa `LocaleObserver` y actualiza el mismo texto en `onLocaleChange()`.
 
 ```java title="MainLayout.java"
 @Route
@@ -113,12 +116,12 @@ public class MainLayout extends Composite<AppLayout>
 ```
 
 :::tip Vinculación de datos
-El sistema de vinculación de datos admite mensajes de validación y transformación traducidos utilizando `Supplier<String>` con `t()`. Consulta [mensajes de validación dinámica](/docs/data-binding/validation/validators#dynamic-validation-messages), [mensajes de transformador dinámico](/docs/data-binding/transformation#dynamic-transformer-error-messages), y [validación consciente de la configuración regional en Jakarta](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
+El sistema de vinculación de datos soporta mensajes de validación y transformación traducidos utilizando `Supplier<String>` con `t()`. Consulta [mensajes de validación dinámicos](/docs/data-binding/validation/validators#dynamic-validation-messages), [mensajes de transformador dinámicos](/docs/data-binding/transformation#dynamic-transformer-error-messages), y [validación consciente de la configuración regional de Jakarta](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
 :::
 
-## Resolvedores de traducción personalizados {#custom-translation-resolvers}
+## Resolutores de traducción personalizados {#custom-translation-resolvers}
 
-El resolvedor predeterminado carga traducciones desde archivos de propiedades `ResourceBundle` de Java. Para cargar traducciones desde una fuente diferente, como una base de datos o un servicio remoto, implementa `TranslationResolver`:
+El resolutor predeterminado carga traducciones de archivos de propiedades `ResourceBundle` de Java. Para cargar traducciones de una fuente diferente, como una base de datos o un servicio remoto, implementa `TranslationResolver`:
 
 ```java title="DatabaseTranslationResolver.java"
 public class DatabaseTranslationResolver implements TranslationResolver {
@@ -152,15 +155,15 @@ public class DatabaseTranslationResolver implements TranslationResolver {
 }
 ```
 
-### Registrando un resolvedor personalizado {#registering-a-custom-resolver}
+### Registrando un resolutor personalizado {#registering-a-custom-resolver}
 
-En una aplicación webforJ simple, establece el resolvedor antes de que la aplicación comience, por ejemplo, utilizando un [escuchador del ciclo de vida de la aplicación](/docs/advanced/lifecycle-listeners):
+En una aplicación webforJ normal, establece el resolutor antes de que la aplicación se inicie, por ejemplo, usando un [escuchador del ciclo de vida de la aplicación](/docs/advanced/lifecycle-listeners):
 
 ```java
 App.setTranslationResolver(new DatabaseTranslationResolver(repository, supportedLocales));
 ```
 
-En una aplicación Spring Boot, expone el resolvedor como un bean:
+En una aplicación de Spring Boot, expón el resolutor como un bean:
 
 ```java title="MessageSourceConfig.java"
 @Configuration
@@ -177,6 +180,6 @@ public class MessageSourceConfig {
 }
 ```
 
-:::info Resolvedor predeterminado en Spring Boot
+:::info Resolutor predeterminado en Spring Boot
 Cuando no se define un bean `TranslationResolver` personalizado, la auto-configuración de Spring proporciona un `BundleTranslationResolver` predeterminado configurado con las configuraciones regionales soportadas de `application.properties`.
 :::

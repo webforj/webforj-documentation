@@ -1,6 +1,6 @@
 package com.webforj.samples.views.viewtransitions.components;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.avatar.Avatar;
 import com.webforj.component.button.Button;
@@ -19,7 +19,7 @@ import com.webforj.concern.HasStyle;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
 
-@StyleSheet("ws://css/viewtransitions/components/chat-card.css")
+@BundleEntry("css/viewtransitions/components/chat-card.css")
 public class ChatCard extends Composite<Div> implements HasClassName<ChatCard>, HasStyle<ChatCard> {
   private final Div self = getBoundComponent();
   private final IconButton closeBtn;

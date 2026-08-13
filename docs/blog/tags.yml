@@ -109,3 +109,7 @@ security:
 javascript:
   label: JavaScript
   description: Integrating JavaScript with webforJ apps.
+
+events:
+  label: Events
+  description: Event handling and custom events in webforJ apps.

@@ -3,13 +3,10 @@ title: Upgrade to 26.00
 description: Upgrade from 25.00 to 26.00
 slug: /upgrading/webforj-26.00
 pagination_next: null
-sidebar_class_name: new-content
 sidebar_position: 1
-_i18n_hash: e62ee79be86c51d62fe19d10af89cc1b
+_i18n_hash: 3b9827a67a81e207508d7db72a650b64
 ---
-Tämä dokumentaatio toimii oppaana webforJ-sovellusten päivittämisessä versioon 26.00. 
-Tässä ovat tarvittavat muutokset, jotta olemassa olevat sovellukset voivat jatkaa sujuvaa toimintaa. 
-Kuten aina, katso [GitHubin julkaisun yleiskatsaus](https://github.com/webforj/webforj/releases) saadaksesi kattavamman luettelon muutoksista versioiden välillä.
+Tämä dokumentaatio toimii oppaana webforJ-sovellusten päivitykselle versioon 25.00–26.00. Tässä ovat muutokset, jotka on tarpeen tehdä nykyisille sovelluksille, jotta ne voivat jatkaa toimintaansa sujuvasti. Kuten aina, katso [GitHubin julkaisun yhteenveto](https://github.com/webforj/webforj/releases) saadaksesi kattavamman listan muutoksista julkaisujen välillä.
 
 <!-- INTRO_END -->
 
@@ -19,10 +16,9 @@ Kuten aina, katso [GitHubin julkaisun yleiskatsaus](https://github.com/webforj/w
 
 ### Java 21 ja 25 {#java-21-and-25}
 
-webforJ 25.12 on viimeinen versio, joka toimii Java 17:n kanssa. 
-Alkaen webforJ 26.00:sta, tarvitset Java-version, joka on joko Java 21 tai Java 25, riippuen asennuksestasi.
+webforJ 25.12 on viimeinen versio, joka toimii Java 17:n kanssa. Alkaen versiosta webforJ 26.00 tarvitset Java-version, joka on joko Java 21 tai Java 25, riippuen asetuksistasi.
 
-Asenna tarvittu Java-versio, kuten on lueteltu [esivaatimuksissa](/docs/introduction/prerequisites), ja päivitä sitten pom.xml-tiedostosi:
+Asenna tarvittava Java-versio, kuten on lueteltu [esivaatimuksissa](/docs/introduction/prerequisites), ja päivitä sitten pom.xml-tiedostosi:
 
 ```xml {3-4}
 <properties>
@@ -34,7 +30,7 @@ Asenna tarvittu Java-versio, kuten on lueteltu [esivaatimuksissa](/docs/introduc
 
 ### Maven-repositorion URL {#maven-repository-url}
 
-Sijainti, jossa tilannekuvat isännöidään, on muuttunut. Oletko ladannut riippuvuutesi projektisi pom.xml-tiedostoon [Central Portalista](https://central.sonatype.com/)?
+Kohta, josta snapshot-artikkelit isännöidään, on muuttunut. Projektisi pom.xml-tiedostossa, oletko ladannut riippuvuutesi [Central Portalista](https://central.sonatype.com/)?
 
 **Ennen:**
 ```xml
@@ -61,8 +57,7 @@ Sijainti, jossa tilannekuvat isännöidään, on muuttunut. Oletko ladannut riip
 
 ### Spring Boot -päivitys {#spring-boot-upgrade}
 
-webforJ 25.12 on viimeinen versio, joka käyttää Spring Boot 3.x:iä. 
-Alkaen webforJ 26.00:sta, projektisi on käytettävä Spring Boot 4.x:ää.
+webforJ 25.12 on viimeinen versio, joka käyttää Spring Boot 3.x:ää. Alkaen versiosta webforJ 26.00, projektisi on käytettävä Spring Boot 4.x:ää.
 
 ```xml {4}
 <parent>
@@ -72,15 +67,15 @@ Alkaen webforJ 26.00:sta, projektisi on käytettävä Spring Boot 4.x:ää.
 </parent>
 ```
 
-:::tip Poista Tomcat-version ohi kirjoitukset
-Spring Boot 4.x:n myötä Tomcat 11.x on nyt mukana riippuvuutena, joten voit poistaa kaikki projektiin liittyvät Tomcat-version ohi kirjoitukset.
+:::tip Poista Tomcat-version ylitykset
+Spring Boot 4.x:llä, Tomcat 11.x sisältyy nyt riippuvuudeksi, joten voit poistaa kaikki projektikohtaiset ylitykset Tomcat-version osalta.
 :::
 
-## Taulukon API-muutokset {#table-api-changes}
+## Taulukko-API:n muutokset {#table-api-changes}
 
-### `IconRenderer`-merkkipohjaiset konstruktorit {#iconrenderer-string-based-constructors}
+### `IconRenderer` merkkijono-pohjaiset konstruktorit {#iconrenderer-string-based-constructors}
 
-Seuraavat merkkipohjaiset konstruktorit on poistettu versiossa 26.00; käytä sen sijaan `IconDefinition`-pohjaisia konstruktoreita:
+Seuraavat merkkijono-pohjaiset konstruktorit on poistettu versiossa 26.00; käytä sen sijaan `IconDefinition`-pohjaisia konstruktoreita:
 
 | v25 | v26 |
 |---|---|
@@ -91,7 +86,7 @@ Seuraavat merkkipohjaiset konstruktorit on poistettu versiossa 26.00; käytä se
 
 ### Poistetut valintamenetelmät {#deprecated-selection-methods}
 
-Alkaen webforJ 26.00:sta, valitsemisen sijaan `Table`:ssa indeksien perusteella, valitse kohteita taulukosta käyttäen kohteen avainta. Voit käyttää `setKeyProvider()`-metodia mukautettujen avainten tarjoamiseen taulukon kohteille.
+Alkaen versiosta webforJ 26.00, valitsemisen sijaan elementtejä `Table`-komponentissa indeksien perusteella, valitse elementtejä taulukosta käyttäen kohteen avainta. Voit käyttää `setKeyProvider()`-menetelmää, jotta voit antaa mukautettuja avaimia taulukon kohteille.
 
 | v25 | v26 |
 |---|---|
@@ -100,18 +95,18 @@ Alkaen webforJ 26.00:sta, valitsemisen sijaan `Table`:ssa indeksien perusteella,
 | `getSelectedIndex()` | `getSelected()` tai `getSelectedItem()` |
 | `getSelectedIndices()` | `getSelectedItems()` |
 
-### Valintatapahtumat {#selection-events}
+### Valinta-tapahtumat {#selection-events}
 
-Korostaaksesi entistä enemmän siirtymistä kohteiden valintaan `Table`:ssa, `TableItemSelectionChange` ei enää toteuta `SelectEvent`-tapahtumaa.
+Vahvistaakseen edelleen siirtymistä tavasta valita elementtejä taulukossa, `TableItemSelectionChange` ei enää toteuta `SelectEvent`-tapahtumaa.
 
 | v25 | v26 |
 |---|---|
 | `event.getSelectedIndex()` | `event.getSelectedItem()` |
 | `event.getSelectedIndices()` | `event.getSelectedItems()` |
 
-## Tuettu Webswingin käynnistysvaihtoehdot {#unsupported-webswing-bootstrap-options}
+## Tuetaan käyttökelvottomia Webswing-buuttivaihtoehtoja {#unsupported-webswing-bootstrap-options}
 
-Seuraavat `WebswingOptions`-metodit on poistettu versiossa 26.00, koska ne eivät enää ole tuettuja Webswing API:ssa.
+Seuraavat `WebswingOptions`-menetelmät on poistettu versiossa 26.00, koska niitä ei enää tueta Webswing API:ssa.
 
 - `getAutoReconnect()` / `setAutoReconnect(Integer)`
 - `isDisableLogout()` / `setDisableLogout(boolean)`
@@ -120,11 +115,11 @@ Seuraavat `WebswingOptions`-metodit on poistettu versiossa 26.00, koska ne eivä
 - `getJavaCallTimeout()` / `setJavaCallTimeout(int)`
 - `getPingParams()` / `setPingParams(PingParams)`
 
-`PingParams`-luokka on myös poistettu käytöstä. Ne, jotka käyttivät näitä metodeja tai `PingParams`-luokkaa, tulisi sen sijaan käyttää Webswingin Hallintopaneelia asetusten suoraan muokkaamiseen.
+`PingParams`-luokka on myös poistettu. Ne, jotka käyttivät näitä menetelmiä tai `PingParams`-luokkaa, tulisi sen sijaan käyttää Webswingin hallintakonsolia vaihtoehtojen suoraan määrittämiseen.
 
-## Suodattimet `Repository` {#filters-for-repository}
+## Suodattimet `Repository`-komponentille {#filters-for-repository}
 
-`RetrievalCriteria` ja `RetrievalBuilder` -rajapinnat on poistettu webforJ 26.00:ssa. Sen sijaan, että käytetään geneeristä `Repository`-rajapintaa, käytä joko `RepositoryCriteria<T, F>`, `CollectionRepository` yksinkertaisille suodattimille, tai [`QueryableRepository`](/docs/advanced/repository/querying-data) kehittyneille suodatusmenetelmille, lajittelulle ja sivutukselle.
+`RetrievalCriteria` ja `RetrievalBuilder` -rajapinnat on poistettu webforJ 26.00:ssa. Sen sijaan, että käytät yleistä `Repository`-rajapintaa, käytä joko `RepositoryCriteria<T, F>`, `CollectionRepository` yksinkertaisia suodattimia varten, tai [`QueryableRepository`](/docs/advanced/repository/querying-data) monimutkaisempien suodatusmuotojen, lajittelun ja sivutuksen varten.
 
 **Ennen:**
 ```java
@@ -135,7 +130,7 @@ Repository<CustomerRecord> repository = new Repository<>();
 repository.setFilter((CustomerRecord r) -> {
   String title = r.getTitle();
   return title.toLowerCase().contains(this.searchTerm);
-  });
+});
 ```
 
 **Jälkeen:**
@@ -147,12 +142,12 @@ CollectionRepository<CustomerRecord> repository = new CollectionRepository<>();
 repository.setBaseFilter((CustomerRecord r) -> {
   String title = r.getTitle();
   return title.toLowerCase().contains(this.searchTerm);
-  });
+});
 ```
 
-### Poistetut repositorion metodit {#deprecated-repository-methods}
+### Poistetut rekisteröintimenetelmät {#deprecated-repository-methods}
 
-Käytä seuraavaa taulukkoa nähdäksesi poistettuja repositorion menetelmiä ja mitä metodeja tulee käyttää jatkossa.
+Käytä seuraavaa taulukkoa nähdäksesi poistetut rekisteröintimenetelmät ja mitä menetelmiä käyttää tulevaisuudessa.
 
 | v25 | v26 |
 |---|---|
@@ -166,60 +161,60 @@ Käytä seuraavaa taulukkoa nähdäksesi poistettuja repositorion menetelmiä ja
 | `getIndex(T)` | `find(key)` tai `findBy(criteria)` |
 | `findByIndex(int)` | `find(key)` tai `findBy(criteria)` |
 
-## `WebforjBBjBridge`-poisto {#removal-of-webforjbbjbridge}
+## `WebforjBBjBridge`-poistaminen {#removal-of-webforjbbjbridge}
 
-Alkaen webforJ 25.11:stä, WebforjBBjBridge ja kaikki sen API:t on poistettu. Sen sijaan, että käytetään siltaa, webforJ käyttää suoraa Java API:a kommunikoidakseen ja päästääkseen käsiksi kaikkiin tarvittaviin BBj API:hin.
+Alkaen webforJ 25.11:stä, WebforjBBjBridge ja kaikki sen API:t on poistettu. Sen sijaan, että käyttäisit siltaa, webforJ käyttää suoraa Java API:a kommunikoidakseen ja päästäkseen käsiksi kaikkiin tarvittaviin BBj API:hin.
 
 ## Suunnittelujärjestelmän muutokset (DWC 26) {#design-system-changes-dwc-26}
 
-webforJ 26.00 toimitetaan DWC-suunnittelujärjestelmän version 26 kanssa. Päivitys on vähittäinen sen sijaan, että se olisi täysi kirjoitus; useimmat v25 CSS-muuttujat ovat edelleen saatavilla, julkinen token API säilyy, ja olemassa olevat mukautukset toimivat edelleen ilman muutoksia.
+webforJ 26.00 julkaisee version 26 DWC-suunnittelujärjestelmästä. Päivitys on vaiheittainen eikä täysin uudelleenkirjoitettu: suurin osa v25 CSS-muuttujista on edelleen käytettävissä, julkinen token-API säilyy ja olemassa olevat räätälöinnit toimivat edelleen ilman muutoksia.
 
-Tässä osiossa luetellaan puuttuvat muutokset, joiden kanssa saatat joutua toimimaan. Kattavan yleiskuvan, joka sisältää sen, miltä uusi värimoottori näyttää, miten `--dwc-dark-mode` leviää, miksi aallot on poistettu ja aluekohtaiset mekanismit, katso [DWC 26 suunnittelujärjestelmä](/docs/upgrading/webforj-26.00/design-system).
+Tässä osiossa luetellaan rikkojaavat muutokset, joihin saatat joutua reagoimaan. Kattavan yleiskuvan, mukaan lukien miltä uusi värimoottori näyttää, kuinka `--dwc-dark-mode` etenee, miksi repeämät on poistettu ja alueittaiset mekanismit, katso [DWC 26 -suunnittelujärjestelmä](/docs/upgrading/webforj-26.00/design-system).
 
-### Nopeita päätelmiä {#design-system-quick-verdict}
+### Nopea arvio {#design-system-quick-verdict}
 
-| Tapahtuma | Mitä odottaa |
+| Tilanne | Mitä odottaa |
 |---|---|
-| Käyttää oletustyylit | Visuaalinen virkistys. Oletuspalletin sävyt on säädetty (pääkohde siirtyi `h: 211 / s: 100%` -> `h: 223 / s: 91%`), varjot näyttävät kerroksellisemmilta, ja komponentit tuntuvat pyöreämmiltä. Ei koodimuutosta tarvita. |
-| Ylikirjoittaa `--dwc-color-{name}-h` ja `-s` | Toimii edelleen. HSL-alkutielle on säilytetty. |
-| Ylikirjoittaa yksittäiset palettiaskeleet (esim. `--dwc-color-primary-40`) | Askel numerot voivat liittyä eri väreihin. Katso [Väripalettimekaniikat](/docs/upgrading/webforj-26.00/design-system#the-color-system). |
-| Perustuu `--dwc-color-{name}-c` | Poista. Vaalea/tumma tekstiripustus lasketaan nyt automaattisesti jokaisen sävyn mukaan. |
-| Viittaa nimettyihin fonttikoon tokeneihin (`--dwc-font-size-m`, `-l` jne.) | Skaala siirtyi alas yhden ämpärin verran. `m` on nyt `14px` sen sijaan, että se olisi `16px`. Katso [Typografia](#design-system-typography). |
-| Käyttää `--dwc-font-weight-semibold` saadakseen `500`-punnituksen | `semibold` on nyt `600`. Vaihda uuteen `--dwc-font-weight-medium`, jotta saat `500`. |
-| Varaa tilaa keskipisteiden ympärille `--dwc-focus-ring-width` | Rengas nyt on rako. Lisää `--dwc-focus-ring-gap`. Katso [Keskitien rengas](#design-system-focus-ring). |
-| Mukautetut painikkeen suurenekomės / aallotusefektit | Aallot on poistettu. Näppäilypalautteena on nyt pieni laajennus. |
+| Käyttää oletustyylitystä | Visuaalinen päivitys. Oletuspaletin värit on säädetty (ensisijainen siirtyminen `h: 211 / s: 100%` → `h: 223 / s: 91%`), varjot näyttävät kerrostetummilta ja komponentit tuntuvat pyöreämmiltä. Ei tarvitse koodimuutosta. |
+| Korvaukset `--dwc-color-{name}-h` ja `-s` | Toimii edelleen. HSL-siemenpolku on säilytetty. |
+| Korvaukset yksittäiset paletti-askeleet (esim. `--dwc-color-primary-40`) | Askelnumerot saattavat johtaa eri väreihin. Katso [Väripaletin mekanismit](/docs/upgrading/webforj-26.00/design-system#the-color-system). |
+| Nojautuu `--dwc-color-{name}-c` | Poista. Vaalean/tumman tekstin vaihto lasketaan nyt automaattisesti per sävy. |
+| Viittaa nimettyihin fonttikokotokenihin (`--dwc-font-size-m`, `-l`, jne.) | Skaala on siirtynyt alas yhteen ämpäriin. `m` on nyt `14px` entisen `16px` sijaan. Katso [Typografia](#design-system-typography). |
+| Käyttää `--dwc-font-weight-semibold` saadakseen `500`-painon | `semibold` on nyt `600`. Vaihda uuteen `--dwc-font-weight-medium` saadaksesi `500`. |
+| Varaa tilaa kohdistettujen elementtien ympärille `--dwc-focus-ring-width` | Vihreä on nyt väli. Lisää `--dwc-focus-ring-gap`. Katso [Keskittymissormus](#design-system-focus-ring). |
+| Räätälöi painikkeen hover/ripple-efektejä | Repeämät on poistettu. Paina palautetta on nyt pieni koon vähennys. |
 
 ### `--dwc-color-{name}-c` on poistettu {#design-system-c-removed}
 
-Jos sinulla on mitään `--dwc-color-{name}-c` -ylikirjoituksia, voit poistaa ne, niillä ei ole vaikutusta. Vaalea/tumma tekstiripustus lasketaan nyt automaattisesti jokaisen sävyn mukaan.
+Jos sinulla on joitakin `--dwc-color-{name}-c`-korvauksia, voit poistaa ne, niillä ei ole vaikutusta. Vaalean/tumman tekstin vaihto lasketaan nyt automaattisesti per sävy.
 
-### `--dwc-color-{name}-alt` -merkitys on muuttunut {#design-system-alt-changed}
-
-| Token | v25 | v26 |
-|---|---|---|
-| `--dwc-color-{name}-alt` | Palettiaste `95` (lähes valkoinen tausta) | Siemen 12% läpinäkyvyydellä (läpinäkyvä sävy) |
-
-Jos käytit `-alt` -sovellusta vahvana lähes valkoisena taustana, se lukee nyt läpinäkyvänä sävytettynä päällekkäisyytenä. Valitse jokin tietty askel (`--dwc-color-{name}-95`) tai suunnittele läpinäkyvän merkityksen ympärille.
-
-### `--dwc-border-color-{name}` -merkitys on muuttunut {#design-system-border-color-changed}
+### `--dwc-color-{name}-alt` merkitys muuttui {#design-system-alt-changed}
 
 | Token | v25 | v26 |
 |---|---|---|
-| `--dwc-border-color-{name}` | Määritelty per variaatioina `var(--dwc-color-{name})` (tämä on kylläinen sävy) | Lasketaan generaattorissa: moodista riippuvainen kevennetty sävy siemenestä |
+| `--dwc-color-{name}-alt` | Palettiaskel `95` (lähes valkoinen tausta) | Siemen 12% läpikuultavuudella (läpinäkyvä sävy) |
 
-Jos CSS:si lukee `--dwc-border-color-primary` ja odotetaan kylläistä pääväriä, visuaali on nyt hienovarainen erottelusävy. Jos haluat nimenomaisesti kylläisen ilmeen, vaihda suoraan `--dwc-color-primary`.
+Jos käytit `-alt` osana kiinteää lähes valkoista taustaa, se luetaan nyt läpinäkyvänä sävynä. Valitse erityinen askel (`--dwc-color-{name}-95`) tai suunnittele läpinäkyvän merkityksen ympärille.
 
-### `--dwc-shadow-color` -muoto on muuttunut {#design-system-shadow-color-changed}
+### `--dwc-border-color-{name}` merkitys muuttui {#design-system-border-color-changed}
+
+| Token | v25 | v26 |
+|---|---|---|
+| `--dwc-border-color-{name}` | Asetettu per muunnelma `var(--dwc-color-{name})` (tiivistetty sävy) | Lasketaan generaattorissa: tilannekohtaisesti vaaleampi sävy siemenestä |
+
+Jos CSS:si lukee `--dwc-border-color-primary` odottaen tiivistettyä ensisijaista väriä, visuaalinen on nyt hienovarainen erotusväri sen sijaan. Jos haluat erityisesti tiivistetyn ilmeen, vaihda suoraan `--dwc-color-primary`-tokeniin.
+
+### `--dwc-shadow-color` formaatti muuttui {#design-system-shadow-color-changed}
 
 |  | v25 | v26 |
 |---|---|---|
-| `--dwc-shadow-color` | HSL-tripletti (`h, s%, l%`) | Täysi OKLCH-väri |
+| `--dwc-shadow-color` | HSL-trio (`h, s%, l%`) | Täysi OKLCH-väri |
 
-Jos CSS:si käyttää perinteistä kolmonenmuotoa, kuten `hsla(var(--dwc-shadow-color), 0.07)`, vaihda täysimittaiseen varjotokeniin (`var(--dwc-shadow-m)`) tai kirjoita uudelleen `oklch(from var(--dwc-shadow-color) l c h / 0.07)`.
+Jos CSS:si käyttää vanhaa triplet-muotoa kuten `hsla(var(--dwc-shadow-color), 0.07)`, vaihda täysimuotoiseen varjosymboliin (`var(--dwc-shadow-m)`) tai kirjoita se uudelleen muodossa `oklch(from var(--dwc-shadow-color) l c h / 0.07)`.
 
 ### Typografia {#design-system-typography}
 
-Fonttikokoja on säätetty siten, että ämpärin nimet ovat siirtyneet alas yhdellä askel tasolla:
+Fonttiskaala on säädetty, joten ämpärin nimet siirtyivät alas yhdestä askeleesta:
 
 | Token | v25 | v26 |
 |---|---|---|
@@ -233,7 +228,7 @@ Fonttikokoja on säätetty siten, että ämpärin nimet ovat siirtyneet alas yhd
 | `--dwc-font-size-2xl` | `28px` | `26px` |
 | `--dwc-font-size-3xl` | `36px` | `34px` |
 
-Oletus `--dwc-font-size` edelleen nousee **14px**, se vain saavutetaan `--dwc-font-size-m`:n (v26) kautta sen sijaan, että se olisi `--dwc-font-size-s`:n (v25) kautta. Jos CSS:si viittaa fonttikoko-otsikoihin nimellä (esim. `font-size: var(--dwc-font-size-l)`), näkyvä tulos on pienempi versiossa v26. Nosta yksi ämpäri säilyttääksesi v25-koko.
+Oletus `--dwc-font-size` ratkaisee edelleen **14px**, se vain saadaan aikaiseksi `--dwc-font-size-m` (v26) kautta sen sijaan, että käytetään `--dwc-font-size-s` (v25). Jos CSS:si viittaa fonttikokotokenien nimeen (esim. `font-size: var(--dwc-font-size-l)`), näkyvä tulos on pienempi v26:ssa. Nosta yksi ämpäri, jotta säilyttää v25-koko.
 
 Fonttipainot saivat kolme tokenia (`thin`, `medium`, `black`) ja yksi olemassa oleva token siirtyi:
 
@@ -242,36 +237,36 @@ Fonttipainot saivat kolme tokenia (`thin`, `medium`, `black`) ja yksi olemassa o
 | `--dwc-font-weight-semibold` | `500` | `600` |
 | `--dwc-font-weight-medium`   | (ei ollut olemassa) | `500` |
 
-Jos käytit `--dwc-font-weight-semibold` saadaksesi 500-painon tekstin, vaihda `--dwc-font-weight-medium` -tokeniin.
+Jos käytit `--dwc-font-weight-semibold` saadaksesi 500-painon tekstiä, vaihda `--dwc-font-weight-medium`-tokeniin.
 
-### Reuna-säteet {#design-system-border-radius}
+### Reunus säde {#design-system-border-radius}
 
 |  | v25 | v26 |
 |---|---|---|
 | Yksikkö | `em` (skaalautuu vanhemman fonttikoon mukaan) | `rem` (skaalautuu juurifonttikoon mukaan) |
 | Oletus `--dwc-border-radius` | `--dwc-border-radius-s` (`4px`) | `--dwc-border-radius-seed` (`8px`) |
-| Saatavilla olevat askeleet | jopa `2xl` | lisää `3xl`, `4xl` |
+| Saatavilla askeleet | jopa `2xl` | lisää `3xl`, `4xl` |
 
-Komponentit tuntuvat pyöreämmiltä suoraan ulos laatikosta. Jos komponentti, joka on suuremman tekstin sisällä, perii aiemmin suuremman säteen `em`-kunnan kautta, tätä skaalausta ei enää tapahdu, säteet on nyt kiinnitetty juurille. Jos haluat takaisin v25 oletuskoko, puolita siemen:
+Komponentit tuntuvat pyöreämmiltä suoraan laatikosta. Jos komponentti, joka on sijoitettu suuremman tekstin sisään, perii isomman säteen `em`:n kautta, tämä skaala ei enää toimi, säteet ovat nyt sidottuja juureen. Jos haluat v25 oletuskoko takaisin, puolita siemen:
 
 ```css
 :root {
-  --dwc-border-radius-seed: 0.25rem; /* 4px, puolittaa koko skaala */
+  --dwc-border-radius-seed: 0.25rem; /* 4px, puolittaa koko mittakaavan */
 }
 ```
 
-### Keskitien rengas {#design-system-focus-ring}
+### Keskittymissormus {#design-system-focus-ring}
 
-Keskitien rengas käyttää nyt kaksoisrenkaan muotoa: pieni pinnanvärinen rako, sitten värirengas.
+Keskittymissormus käyttää nyt kaksinkertaista renkaan mallia: pieni pinnan väri tavara, sitten värillinen rengas.
 
 | Muuttuja | v25 | v26 |
 |---|---|---|
 | `--dwc-focus-ring-width` | `3px` | `2px` |
 | `--dwc-focus-ring-a`     | `0.4` | `0.75` |
-| `--dwc-focus-ring-gap`   | (ei mitään) | `2px` |
-| `--dwc-focus-ring-l`     | `45%` | (poistettu, vaaleus lasketaan moodin mukaan) |
+| `--dwc-focus-ring-gap`   | (ei ollut) | `2px` |
+| `--dwc-focus-ring-l`     | `45%` | (poistettu, vaaleus lasketaan tilannekohtaisesti) |
 
-Jos varaat tilaa keskitie-elementtien ympärille käyttämällä `padding: var(--dwc-focus-ring-width)`, lisää väli tuohon pehmustukseen, jotta uusi rengas on tilassa renderoitavaksi:
+Jos varaat tilaa kohdistettuille elementeille `padding: var(--dwc-focus-ring-width)`, lisää väli tuohon paddingiin, jotta uusi rengas mahtuu:
 
 ```css
 /* v25 */
@@ -283,18 +278,18 @@ dwc-button {
 }
 ```
 
-### Aallot poistettu {#design-system-ripples-removed}
+### Repeämät poistettu {#design-system-ripples-removed}
 
-Materiaalimaisen aallon efektit on poistettu kaikista DWC-komponenteista. Uusi palautus jokaiselle napsautettavalle elementille on pieni alas.
+Materiaalimaiset repeäntäefektit eivät enää ole käytössä yhdessäkään DWC-komponentissa. Uusi palaute kaikille napsautettaville elementeille on pieni koon vähennys:
 
 ```css
---dwc-scale-press: 0.97;      /* Normaalit 3% kutistus */
---dwc-scale-press-deep: 0.93; /* Syvä 7% kutistus painikkeille */
+--dwc-scale-press: 0.97;      /* Standardi 3% kutistus */
+--dwc-scale-press-deep: 0.93; /* Syvempi 7% kutistus painikkeille */
 ```
 
-`ripple` SCSS-mixin ja `--dwc-ripple-color` CSS-muuttuja ovat edelleen olemassa rakentamisessa, mutta mitään tuodaan niistä oletusarvoisesti. Jos omat komponenttisi käyttivät mixiniä, siirry uuden tuntemuksen mukaisiin painoskaala-tokeneihin.
+`ripple` SCSS-mixin ja `--dwc-ripple-color` CSS-muuttuja ovat edelleen olemassa rakenteessa, mutta niitä ei tuoda oletusarvoisesti. Jos omat komponentit optimoitivat mixin, vaihda painoskaalatokeihin vastaamaan uutta tunnetta.
 
-### Siirtymärakenteet tasapainotettu {#design-system-transitions}
+### Siirtymäajat tasapainotettu {#design-system-transitions}
 
 | Muuttuja | v25 | v26 |
 |---|---|---|
@@ -303,14 +298,14 @@ Materiaalimaisen aallon efektit on poistettu kaikista DWC-komponenteista. Uusi p
 | `--dwc-transition-fast`   | `150ms` | `150ms` |
 | `--dwc-transition-x-fast` | `50ms`  | `100ms` |
 
-Jos riippuu tietyistä kestoista, ylikirjoita se `:root`-tasolla.
+Jos riippuu tietyistä ajoista, ylikirjoita ne :root:ssa.
 
-### Käytännön päivityslista {#design-system-checklist}
+### Käytännöllinen päivityslista {#design-system-checklist}
 
-1. Etsi `--dwc-color-*-c` ja poista nuo ilmoitukset.
-2. Etsi `hsla(var(--dwc-shadow-color)` ja vaihda pois varjotokenista (`var(--dwc-shadow-m)`) tai kirjoita se uudelleen `oklch(from ...)`.
-3. Etsi suoria palettiaskeleen viittauksia (`--dwc-color-{name}-{number}`). Jos jotkin syöttävät tumman mukautetun tyylin, vaihda variaatiotokeniksi (`--dwc-color-{name}`, `-dark`, `-light`).
-4. Etsi nimettyjen fonttikoon viittauksia (`--dwc-font-size-m`, `-l` jne.). Jos haluat v25-kokoa, nosta yksi ämpäri.
+1. Etsi `--dwc-color-*-c` ja poista nämä ilmoitukset.
+2. Etsi `hsla(var(--dwc-shadow-color)` ja vaihda varjosymbooliin (`var(--dwc-shadow-m)`) tai kirjoita se uudelleen muodossa `oklch(from ...)`.
+3. Etsi suorat palettiaskelviittaukset (`--dwc-color-{name}-{number}`). Jos ne syöttävät tumma-moodin erityistä tyyliä, vaihda vaihtelua tokenit (`--dwc-color-{name}`, `-dark`, `-light`).
+4. Etsi nimettyjä fonttikoko viittauksia (`--dwc-font-size-m`, `-l`, jne.). Jos haluat v25 koon, nosta yksi ämpäri.
 5. Etsi `--dwc-font-weight-semibold`. Jos halusit `500`, vaihda `--dwc-font-weight-medium`.
-6. Jos varaat tilaa keskitieuritus-elementtien ympärille käyttäen `--dwc-focus-ring-width`, lisää `--dwc-focus-ring-gap` pehmustukseen.
-7. Avaa sovellus, klikkaa ympäri. Useimmat sovellukset eivät tarvitse muuta.
+6. Jos varaat tilaa kohdistettuille elementeille `--dwc-focus-ring-width`, lisää `--dwc-focus-ring-gap` paddingiin.
+7. Avaa sovellus, napsauttele ympäri. Useimmat sovellukset eivät tarvitse muuta.

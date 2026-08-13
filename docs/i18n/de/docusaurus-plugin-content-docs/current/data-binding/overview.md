@@ -3,7 +3,10 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: b05f45d2f2725defb3d5fba7cb0fb622
+description: >-
+  Connect webforJ UI components to Java backend models with two-way
+  synchronization, validation, and transformation through BindingContext.
+_i18n_hash: 75d09e2278ebe54cb17f4dbc69444449
 ---
 <Head>
   <style>{`
@@ -20,26 +23,26 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ bietet eine Datenbindungsfunktion, die UI-Komponenten mit Backend-Datenmodellen in Java-Anwendungen integriert. Diese Funktion überbrückt die Kluft zwischen der Benutzeroberfläche und der Datenschicht, sodass Änderungen in der Benutzeroberfläche im Datenmodell und umgekehrt widergespiegelt werden, wodurch die Komplexität der Ereignisbehandlung und der Datensynchronisation verringert wird.
+webforJ umfasst eine Datenbindung, die UI-Komponenten mit Backend-Datenmodellen in Java-Anwendungen integriert. Diese Funktion überbrückt die Kluft zwischen der Benutzeroberfläche und der Datenschicht, sodass Änderungen in der UI sich im Datenmodell und umgekehrt widerspiegeln. Dadurch wird die Komplexität des Event-Handling und der Daten-Synchronisierung reduziert.
 
 <AISkillTip skill="webforj-building-forms" />
 
 ## Konzept {#concept}
 
-Die folgende Demonstration zeigt eine einfache webforJ-App zur Registrierung von Superhelden unter Verwendung der Datenbindung von webforJ. Die App besteht aus zwei Hauptteilen: `HeroRegistration.java` und `Hero.java`.
+Die folgende Demonstration zeigt eine einfache webforJ-App zur Registrierung von Superhelden mithilfe der Datenbindung von webforJ. Die App besteht aus zwei Hauptteilen: `HeroRegistration.java` und `Hero.java`.
 
-In `HeroRegistration.java` konfiguriert der Code die Benutzeroberfläche mit einem `TextField`, um den Namen des Helden einzugeben, einer `ComboBox`, um eine Superkraft auszuwählen, und einem `Button`, um die Registrierung abzuschicken.
+In `HeroRegistration.java` konfiguriert der Code die Benutzeroberfläche mit einem `TextField` zur Eingabe des Namens des Helden, einem `ComboBox` zur Auswahl einer Superkraft und einem `Button` zur Einreichung der Registrierung.
 
-Die Klasse `Hero` definiert das Datenmodell mit Validierungsbeschränkungen für den Namen und die Kraft des Helden. Die Eingaben müssen gültig sein und bestimmten Kriterien wie Länge und Muster entsprechen.
+Die Klasse `Hero` definiert das Datenmodell mit Validierungsanforderungen für den Namen und die Kraft des Helden. Die Einträge müssen gültig sein und spezifischen Kriterien wie Länge und Muster entsprechen.
 
-Die App verwendet den `BindingContext`, um UI-Komponenten an die Eigenschaften des `Hero`-Objekts zu binden. Wenn ein Benutzer auf die Schaltfläche 'Abschicken' klickt, schreibt die App die im Formular eingegebenen Daten zurück in das `Hero`-Bean, sofern sie gültig sind.
+Die App verwendet den `BindingContext`, um UI-Komponenten an die Eigenschaften des `Hero`-Objekts zu binden. Wenn ein Benutzer auf die Schaltfläche "Absenden" klickt, schreibt die App die im Formular eingegebenen Daten zurück in das `Hero`-Bean, sofern sie gültig sind.
 
 <Tabs>
 <TabItem value="HeroRegistration" label="HeroRegistration.java">
 
 ```java showLineNumbers
 public class HeroRegistration extends App {
-    
+
   private TextField name = new TextField("Text Field");
   private ComboBox power = new ComboBox("Power");
   private Button submit = new Button("Submit Application");
@@ -118,13 +121,13 @@ public class Hero {
 
 ## Hauptmerkmale {#key-features}
 
-- **Bidirektionale Bindung:** Unterstützt bidirektionale Datenbindung, sodass Änderungen im Datenmodell die Benutzeroberfläche aktualisieren und Benutzerinteraktionen in der Benutzeroberfläche das Datenmodell aktualisieren.
+- **Bidirektionale Bindung:** Unterstützt bidirektionale Datenbindung, wodurch Änderungen im Datenmodell die UI aktualisieren und Benutzereingaben in der UI das Datenmodell aktualisieren.
 
-- **Validierungsunterstützung:** Integriert umfassende Validierungsmechanismen, die angepasst und erweitert werden können. Entwickler können eigene Validierungsregeln implementieren oder vorhandene Validierungsframeworks wie Jakarta Validation verwenden, um die Datenintegrität vor der Aktualisierung des Modells zu überprüfen.
+- **Validierungsunterstützung:** Integriert umfassende Validierungsmechanismen, die Sie anpassen und erweitern können. Entwickler können eigene Validierungsregeln implementieren oder vorhandene Validierungsframeworks wie Jakarta Validation verwenden, um die Datenintegrität vor der Aktualisierung des Modells zu überprüfen.
 
-- **Erweiterbarkeit:** Kann leicht erweitert werden, um unterschiedliche Arten von UI-Komponenten, Datenumwandlungen und komplexe Validierungsszenarien zu unterstützen.
+- **Erweiterbarkeit:** Kann leicht erweitert werden, um verschiedene Arten von UI-Komponenten, Datenumwandlungen und komplexe Validierungsszenarien zu unterstützen.
 
-- **Annotierungsgetriebene Konfiguration:** Verwendet Annotations, um Boilerplate-Code zu minimieren, wodurch die Bindungen zwischen UI-Komponenten und Datenmodellen deklarativ und einfach zu verwalten sind.
+- **Annotierungsbasierte Konfiguration:** Verwendet Annotationen, um Boilerplate-Code zu minimieren und die Bindungen zwischen UI-Komponenten und Datenmodellen deklarativ und einfach zu verwalten.
 
 ## Themen {#topics}
 

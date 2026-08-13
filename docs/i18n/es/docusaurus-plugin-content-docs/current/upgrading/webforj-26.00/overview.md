@@ -3,11 +3,10 @@ title: Upgrade to 26.00
 description: Upgrade from 25.00 to 26.00
 slug: /upgrading/webforj-26.00
 pagination_next: null
-sidebar_class_name: new-content
 sidebar_position: 1
-_i18n_hash: e62ee79be86c51d62fe19d10af89cc1b
+_i18n_hash: 3b9827a67a81e207508d7db72a650b64
 ---
-Esta documentación sirve como guía para actualizar las aplicaciones de webforJ de 25.00 a 26.00. Aquí están los cambios necesarios para que las aplicaciones existentes sigan funcionando sin problemas. Como siempre, consulte el [resumen de versiones de GitHub](https://github.com/webforj/webforj/releases) para obtener una lista más completa de cambios entre versiones.
+Esta documentación sirve como una guía para actualizar aplicaciones webforJ de 25.00 a 26.00. Aquí están los cambios necesarios para que las aplicaciones existentes sigan funcionando sin problemas. Como siempre, consulte el [resumen de lanzamientos de GitHub](https://github.com/webforj/webforj/releases) para una lista más completa de cambios entre versiones.
 
 <!-- INTRO_END -->
 
@@ -19,7 +18,7 @@ Esta documentación sirve como guía para actualizar las aplicaciones de webforJ
 
 webforJ 25.12 es la última versión que funciona con Java 17. A partir de webforJ 26.00, necesita una versión de Java que sea Java 21 o Java 25, dependiendo de su configuración.
 
-Instale la versión de Java requerida según se indica en los [prerequisitos](/docs/introduction/prerequisites), luego actualice su archivo pom.xml:
+Instale la versión de Java requerida como se indica en los [prerrequisitos](/docs/introduction/prerequisites), luego actualice su archivo pom.xml:
 
 ```xml {3-4}
 <properties>
@@ -31,7 +30,7 @@ Instale la versión de Java requerida según se indica en los [prerequisitos](/d
 
 ### URL del repositorio de Maven {#maven-repository-url}
 
-La ubicación donde se alojan los artefactos de instantánea ha cambiado. En el archivo pom.xml de su proyecto, ha descargado sus dependencias del [Central Portal](https://central.sonatype.com/).
+La ubicación donde se alojan los artefactos de instantáneas ha cambiado. En el archivo pom.xml de su proyecto, ha descargado sus dependencias desde el [Portal Central](https://central.sonatype.com/).
 
 **Antes:**
 ```xml
@@ -48,7 +47,7 @@ La ubicación donde se alojan los artefactos de instantánea ha cambiado. En el 
 ```xml {3-5}
 <repositories>
   <repository>
-    <name>Central Portal Snapshots</name>
+    <name>Instantáneas del Portal Central</name>
     <id>central-portal-snapshots</id>
     <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     ....
@@ -58,7 +57,7 @@ La ubicación donde se alojan los artefactos de instantánea ha cambiado. En el 
 
 ### Actualización de Spring Boot {#spring-boot-upgrade}
 
-webforJ 25.12 es la última versión que utiliza Spring Boot 3.x. A partir de webforJ 26.00, su proyecto necesita usar Spring Boot 4.x.
+webforJ 25.12 es la última versión que utiliza Spring Boot 3.x. A partir de webforJ 26.00, su proyecto debe utilizar Spring Boot 4.x.
 
 ```xml {4}
 <parent>
@@ -68,15 +67,15 @@ webforJ 25.12 es la última versión que utiliza Spring Boot 3.x. A partir de we
 </parent>
 ```
 
-:::tip Eliminando las anulaciones para la versión de Tomcat
-Con Spring Boot 4.x, Tomcat 11.x ahora está incluido como una dependencia, por lo que puede eliminar cualquier anulación específica del proyecto para la versión de Tomcat.
+:::tip Eliminando sobreeescrituras para la versión de Tomcat
+Con Spring Boot 4.x, Tomcat 11.x se incluye ahora como una dependencia, por lo que puede eliminar cualquier sobreeescritura específica del proyecto para la versión de Tomcat.
 :::
 
 ## Cambios en la API de Tabla {#table-api-changes}
 
-### Constructores basados en cadena de `IconRenderer` {#iconrenderer-string-based-constructors}
+### Constructores basados en cadenas de `IconRenderer` {#iconrenderer- string-based-constructors}
 
-Los siguientes constructores basados en cadena se han eliminado en 26.00; use constructores basados en `IconDefinition` en su lugar:
+Los siguientes constructores basados en cadenas se han eliminado en 26.00; use constructores basados en `IconDefinition` en su lugar:
 
 | v25 | v26 |
 |---|---|
@@ -85,9 +84,9 @@ Los siguientes constructores basados en cadena se han eliminado en 26.00; use co
 | `IconRenderer(String name, EventListener)` | `IconRenderer(IconDefinition,  EventListener)` |
 | `IconRenderer(String name)` | `IconRenderer(IconDefinition)` |
 
-### Métodos de selección en desuso {#deprecated-selection-methods}
+### Métodos de selección obsoletos {#deprecated-selection-methods}
 
-A partir de webforJ 26.00, en lugar de seleccionar elementos en una `Tabla` basándose en índices, seleccione elementos en una Tabla utilizando la clave del elemento. Puede usar el método `setKeyProvider()` para proporcionar claves personalizadas para los elementos en la tabla.
+A partir de webforJ 26.00, en lugar de seleccionar elementos en una `Tabla` en función de índices, seleccione elementos en una Tabla utilizando la clave del elemento. Puede usar el método `setKeyProvider()` para proporcionar claves personalizadas para los elementos en la tabla.
 
 | v25 | v26 |
 |---|---|
@@ -98,16 +97,16 @@ A partir de webforJ 26.00, en lugar de seleccionar elementos en una `Tabla` bas�
 
 ### Eventos de selección {#selection-events}
 
-Para reforzar aún más el cambio en la forma de seleccionar elementos en una `Tabla`, `TableItemSelectionChange` ya no implementa `SelectEvent`.
+Para reforzar aún más el cambio en cómo seleccionar elementos en una `Tabla`, `TableItemSelectionChange` ya no implementa `SelectEvent`.
 
 | v25 | v26 |
 |---|---|
 | `event.getSelectedIndex()` | `event.getSelectedItem()` |
 | `event.getSelectedIndices()` | `event.getSelectedItems()` |
 
-## Opciones de arranque de Webswing no compatibles {#unsupported-webswing-bootstrap-options}
+## Opciones de arranque de Webswing no soportadas {#unsupported-webswing-bootstrap-options}
 
-Los siguientes métodos de `WebswingOptions` están en desuso y se eliminaron en 26.00 porque ya no son compatibles con la API de Webswing.
+Los siguientes métodos `WebswingOptions` están obsoletos y se han eliminado en 26.00 porque ya no son compatibles con la API de Webswing.
 
 - `getAutoReconnect()` / `setAutoReconnect(Integer)`
 - `isDisableLogout()` / `setDisableLogout(boolean)`
@@ -116,7 +115,7 @@ Los siguientes métodos de `WebswingOptions` están en desuso y se eliminaron en
 - `getJavaCallTimeout()` / `setJavaCallTimeout(int)`
 - `getPingParams()` / `setPingParams(PingParams)`
 
-La clase `PingParams` también está en desuso. Aquellos que estaban utilizando estos métodos o la clase `PingParams` deberían utilizar en su lugar la Consola de Administración de Webswing para configurar directamente las opciones.
+La clase `PingParams` también está obsoleta. Quienes usaban estos métodos o la clase `PingParams` deben usar la Consola de Administración de Webswing para configurar directamente las opciones.
 
 ## Filtros para `Repository` {#filters-for-repository}
 
@@ -131,7 +130,7 @@ Repository<CustomerRecord> repository = new Repository<>();
 repository.setFilter((CustomerRecord r) -> {
   String title = r.getTitle();
   return title.toLowerCase().contains(this.searchTerm);
-  });
+});
 ```
 
 **Después:**
@@ -143,12 +142,12 @@ CollectionRepository<CustomerRecord> repository = new CollectionRepository<>();
 repository.setBaseFilter((CustomerRecord r) -> {
   String title = r.getTitle();
   return title.toLowerCase().contains(this.searchTerm);
-  });
+});
 ```
 
-### Métodos de repositorio en desuso {#deprecated-repository-methods}
+### Métodos de repositorio obsoletos {#deprecated-repository-methods}
 
-Utilice la siguiente tabla para ver los métodos de repositorio en desuso y qué métodos utilizar en el futuro.
+Use la siguiente tabla para ver los métodos de repositorio obsoletos y qué métodos usar en el futuro.
 
 | v25 | v26 |
 |---|---|
@@ -164,58 +163,58 @@ Utilice la siguiente tabla para ver los métodos de repositorio en desuso y qué
 
 ## Eliminación de `WebforjBBjBridge` {#removal-of-webforjbbjbridge}
 
-A partir de webforJ 25.11, WebforjBBjBridge y todas sus API han sido eliminadas. En lugar de acceder al puente, webforJ ahora utiliza la API Java directa para comunicarse y acceder a cualquier API BBj requerida.
+A partir de webforJ 25.11, WebforjBBjBridge y todas sus API han sido eliminadas. En lugar de acceder al puente, webforJ ahora utiliza la API de Java directa para comunicarse y acceder a cualquier API de BBj requerida.
 
 ## Cambios en el sistema de diseño (DWC 26) {#design-system-changes-dwc-26}
 
-webforJ 26.00 se entrega con la versión 26 del sistema de diseño DWC. La actualización es incremental en lugar de una reescritura completa: la mayoría de las variables CSS v25 siguen estando disponibles, la API de token público se conserva, y las personalizaciones existentes continúan funcionando sin cambios.
+webforJ 26.00 se entrega con la versión 26 del sistema de diseño DWC. La actualización es incremental en lugar de una reescritura completa: la mayoría de las variables CSS v25 siguen estando disponibles, se preserva la API de tokens pública y las personalizaciones existentes continúan funcionando sin cambios.
 
-Esta sección enumera los cambios importantes que puede necesitar abordar. Para la visión general conceptual, incluyendo cómo se ve el nuevo motor de color, cómo se propaga `--dwc-dark-mode`, por qué se eliminaron los ripples, y la mecánica por área, consulte [sistema de diseño DWC 26](/docs/upgrading/webforj-26.00/design-system).
+Esta sección enumera los cambios importantes sobre los que puede necesitar actuar. Para una visión conceptual, que incluye cómo se ve el nuevo motor de colores, cómo se propaga `--dwc-dark-mode`, por qué se eliminaron los efectos de ondas, y la mecánica por área, consulte [DWC 26 sistema de diseño](/docs/upgrading/webforj-26.00/design-system).
 
 ### Veredicto rápido {#design-system-quick-verdict}
 
 | Escenario | Qué esperar |
 |---|---|
-| Usa estilo predeterminado | Renovación visual. Los matices de la paleta predeterminada fueron ajustados (el primario pasó de `h: 211 / s: 100%` a `h: 223 / s: 91%`), las sombras parecen más estratificadas, y los componentes se sienten más redondeados. No se necesita cambio de código. |
-| Anula `--dwc-color-{name}-h` y `-s` | Sigue funcionando. La ruta de semilla HSL se conserva. |
-| Anula pasos de paleta individuales (por ejemplo `--dwc-color-primary-40`) | Los números de paso pueden resolverse a diferentes colores. Consulte [Mecánica de paleta de colores](/docs/upgrading/webforj-26.00/design-system#the-color-system). |
-| Confía en `--dwc-color-{name}-c` | Eliminar. El cambio de texto claro/oscuro se calcula automáticamente por cada tono. |
-| Hace referencia a tokens de tamaño de fuente nombrados (`--dwc-font-size-m`, `-l`, y así sucesivamente) | La escala se desplazó hacia abajo un nivel. `m` ahora es `14px` en lugar de `16px`. Consulte [Tipografía](#design-system-typography). |
-| Usa `--dwc-font-weight-semibold` para obtener peso `500` | `semibold` ahora es `600`. Cambie a `--dwc-font-weight-medium` nuevo para `500`. |
-| Reserva espacio alrededor de elementos enfocados con `--dwc-focus-ring-width` | El anillo ahora tiene un espacio. Añada `--dwc-focus-ring-gap`. Consulte [Anillo de enfoque](#design-system-focus-ring). |
-| Personaliza efectos de hover / ripple de botones | Los ripples han desaparecido. La retroalimentación al presionar ahora es un ligero disminución de escala. |
+| Usa el estilo predeterminado | Actualización visual. Los tonos de la paleta predeterminada han sido ajustados (el primario pasó de `h: 211 / s: 100%` a `h: 223 / s: 91%`), las sombras se ven más superpuestas y los componentes se sienten más redondeados. No se necesita cambio en el código. |
+| Sobreescribe `--dwc-color-{name}-h` y `-s` | Aún funciona. Se preserva la ruta de semilla HSL. |
+| Sobreescribe pasos individuales de paleta (por ejemplo `--dwc-color-primary-40`) | Los números de paso pueden resultar en diferentes colores. Consulte [Mecánica de la paleta de colores](/docs/upgrading/webforj-26.00/design-system#the-color-system). |
+| Depende de `--dwc-color-{name}-c` | Eliminar. El cambio de texto claro/oscurito ahora se calcula automáticamente por tono. |
+| Referencias tokens de tamaño de fuente nombrados (`--dwc-font-size-m`, `-l`, y así sucesivamente) | La escala ha bajado un nivel. `m` ahora es `14px` en lugar de `16px`. Consulte [Tipografía](#design-system-typography). |
+| Usa `--dwc-font-weight-semibold` para obtener peso `500` | `semibold` ahora es `600`. Cambie a `--dwc-font-weight-medium` para `500`. |
+| Reserva espacio alrededor de elementos enfocados con `--dwc-focus-ring-width` | El anillo ahora tiene un espacio. Agregue `--dwc-focus-ring-gap`. Consulte [Anillo de enfoque](#design-system-focus-ring). |
+| Personalizó efectos de hover / onda de botones | Las ondas han desaparecido. La respuesta al presionar ahora es un pequeño escalado a la baja. |
 
-### `--dwc-color-{name}-c` se ha eliminado {#design-system-c-removed}
+### `--dwc-color-{name}-c` se elimina {#design-system-c-removed}
 
-Si tiene alguna anulación de `--dwc-color-{name}-c`, puede eliminar esas declaraciones, no tienen efecto. El cambio de texto claro/oscuro ahora se calcula automáticamente por cada tono.
+Si tiene alguna sobreescritura de `--dwc-color-{name}-c`, puede eliminarlas, no tienen efecto. El cambio de texto claro/oscurito ahora se calcula automáticamente por tono.
 
-### Semántica de `--dwc-color-{name}-alt` cambiada {#design-system-alt-changed}
-
-| Token | v25 | v26 |
-|---|---|---|
-| `--dwc-color-{name}-alt` | Paso de paleta `95` (fondo casi blanco) | Semilla al 12% de opacidad (tinte translúcido) |
-
-Si utilizó `-alt` como un fondo sólido casi blanco, ahora se leerá como una superposición de tinte translúcido. Elija un paso específico (`--dwc-color-{name}-95`) o diseñe alrededor de la semántica translúcida.
-
-### Semántica de `--dwc-border-color-{name}` cambiada {#design-system-border-color-changed}
+### Semántica de `--dwc-color-{name}-alt` cambió {#design-system-alt-changed}
 
 | Token | v25 | v26 |
 |---|---|---|
-| `--dwc-border-color-{name}` | Establecido por variación como `var(--dwc-color-{name})` (el tono saturado) | Computado en el generador: tono aclarado del modo consciente de la semilla |
+| `--dwc-color-{name}-alt` | Paso de paleta `95` (fondo cercano al blanco) | Semilla al 12% de opacidad (tinte translúcido) |
 
-Si su CSS lee `--dwc-border-color-primary` esperando el color primario saturado, el visual ahora es un tono sutil de separador en su lugar. Si desea específicamente el aspecto saturado, cambie directamente a `--dwc-color-primary`.
+Si usó `-alt` como fondo cercano al blanco sólido, ahora se leerá como una superposición de tinte translúcido. Elija un paso específico (`--dwc-color-{name}-95`) o diseñe alrededor de la semántica translúcida.
+
+### Semántica de `--dwc-border-color-{name}` cambió {#design-system-border-color-changed}
+
+| Token | v25 | v26 |
+|---|---|---|
+| `--dwc-border-color-{name}` | Establecido por variación como `var(--dwc-color-{name})` (el tono saturado) | Calculado en el generador: tono aclarado del modo de la semilla |
+
+Si su CSS lee `--dwc-border-color-primary` esperando el color primario saturado, la visualización ahora es un tono de separación sutil en su lugar. Si desea la apariencia saturada, cambie directamente a `--dwc-color-primary`.
 
 ### Formato de `--dwc-shadow-color` cambiado {#design-system-shadow-color-changed}
 
 |  | v25 | v26 |
 |---|---|---|
-| `--dwc-shadow-color` | Tripleta HSL (`h, s%, l%`) | Color OKLCH completo |
+| `--dwc-shadow-color` | Triplete HSL (`h, s%, l%`) | Color OKLCH completo |
 
-Si su CSS utiliza la forma de tripleta heredada como `hsla(var(--dwc-shadow-color), 0.07)`, cambie a un token de sombra completo (`var(--dwc-shadow-m)`) o reescriba con `oklch(from var(--dwc-shadow-color) l c h / 0.07)`.
+Si su CSS utiliza la forma de triplete heredada como `hsla(var(--dwc-shadow-color), 0.07)`, cambie a un token de sombra completo (`var(--dwc-shadow-m)`) o reescriba con `oklch(from var(--dwc-shadow-color) l c h / 0.07)`.
 
 ### Tipografía {#design-system-typography}
 
-La escala de fuentes se ajustó para que los nombres de los niveles se desplazaran hacia abajo un paso:
+La escala de fuentes se ajustó, por lo que los nombres de los bloques se desplazaron hacia abajo un nivel:
 
 | Token | v25 | v26 |
 |---|---|---|
@@ -229,7 +228,7 @@ La escala de fuentes se ajustó para que los nombres de los niveles se desplazar
 | `--dwc-font-size-2xl` | `28px` | `26px` |
 | `--dwc-font-size-3xl` | `36px` | `34px` |
 
-El `--dwc-font-size` predeterminado sigue resolviendo a **14px**, simplemente llega allí a través de `--dwc-font-size-m` (v26) en lugar de `--dwc-font-size-s` (v25). Si su CSS hace referencia a tokens de tamaño de fuente por nombre (por ejemplo, `font-size: var(--dwc-font-size-l)`), el resultado visible será más pequeño en v26. Aumente un nivel para preservar el tamaño de v25.
+El `--dwc-font-size` predeterminado sigue resolviéndose a **14px**, simplemente lo alcanza a través de `--dwc-font-size-m` (v26) en lugar de `--dwc-font-size-s` (v25). Si su CSS referencia tokens de tamaño de fuente por nombre (por ejemplo, `font-size: var(--dwc-font-size-l)`), el resultado visible será más pequeño en v26. Aumente un nivel para preservar el tamaño v25.
 
 Los pesos de fuente ganaron tres tokens (`thin`, `medium`, `black`) y un token existente se desplazó:
 
@@ -238,17 +237,17 @@ Los pesos de fuente ganaron tres tokens (`thin`, `medium`, `black`) y un token e
 | `--dwc-font-weight-semibold` | `500` | `600` |
 | `--dwc-font-weight-medium`   | (no existía) | `500` |
 
-Si usó `--dwc-font-weight-semibold` para obtener texto de 500, cambie a `--dwc-font-weight-medium`.
+Si usó `--dwc-font-weight-semibold` para obtener texto de peso 500, cambie a `--dwc-font-weight-medium`.
 
 ### Radio de borde {#design-system-border-radius}
 
 |  | v25 | v26 |
 |---|---|---|
-| Unidad | `em` (se escala con el tamaño de fuente del padre) | `rem` (se escala con el tamaño de fuente raíz) |
-| Por defecto `--dwc-border-radius` | `--dwc-border-radius-s` (`4px`) | `--dwc-border-radius-seed` (`8px`) |
-| Pasos disponibles | hasta `2xl` | añade `3xl`, `4xl` |
+| Unidad | `em` (se escala con el tamaño de fuente padre) | `rem` (se escala con el tamaño de fuente raíz) |
+| `--dwc-border-radius` predeterminado | `--dwc-border-radius-s` (`4px`) | `--dwc-border-radius-seed` (`8px`) |
+| Pasos disponibles | hasta `2xl` | agrega `3xl`, `4xl` |
 
-Los componentes se sienten más redondeados de forma predeterminada. Si un componente incrustado dentro de un texto más grande solía heredar un radio más grande a través de `em`, ese escalado ya no ocurre, los radios ahora están anclados a la raíz. Si desea el tamaño predeterminado de v25 de vuelta, reduzca a la mitad la semilla:
+Los componentes se sienten más redondeados de forma predeterminada. Si un componente anidado dentro de un texto más grande solía heredar un radio más grande mediante `em`, ese escalado ya no ocurre, los radios ahora están anclados a la raíz. Si desea el tamaño predeterminado de la v25 nuevamente, reduzca a la mitad la semilla:
 
 ```css
 :root {
@@ -258,7 +257,7 @@ Los componentes se sienten más redondeados de forma predeterminada. Si un compo
 
 ### Anillo de enfoque {#design-system-focus-ring}
 
-El anillo de enfoque ahora utiliza un patrón de doble anillo: un pequeño espacio del color de la superficie, luego el anillo coloreado.
+El anillo de enfoque ahora utiliza un patrón de doble anillo: un pequeño espacio del color de superficie, seguido del anillo de color.
 
 | Variable | v25 | v26 |
 |---|---|---|
@@ -267,7 +266,7 @@ El anillo de enfoque ahora utiliza un patrón de doble anillo: un pequeño espac
 | `--dwc-focus-ring-gap`   | (ninguno) | `2px` |
 | `--dwc-focus-ring-l`     | `45%` | (eliminado, la claridad se calcula por modo) |
 
-Si reserva espacio alrededor de elementos enfocados con `padding: var(--dwc-focus-ring-width)`, añada el espacio a ese padding para que el nuevo anillo tenga espacio para mostrarse:
+Si reserva espacio alrededor de elementos enfocados con `padding: var(--dwc-focus-ring-width)`, agregue el espacio a ese relleno para que el nuevo anillo tenga espacio para renderizar:
 
 ```css
 /* v25 */
@@ -279,16 +278,16 @@ dwc-button {
 }
 ```
 
-### Ripples eliminados {#design-system-ripples-removed}
+### Ondas eliminadas {#design-system-ripples-removed}
 
-Los efectos de ripple al estilo material ya no se utilizan en ningún componente DWC. La nueva retroalimentación para cualquier elemento clickable es una pequeña disminución de escala:
+Los efectos de onda estilo material ya no son utilizados por ningún componente de DWC. La nueva respuesta para cualquier elemento clickeable es un pequeño escalado a la baja:
 
 ```css
 --dwc-scale-press: 0.97;      /* Reducción estándar del 3% */
---dwc-scale-press-deep: 0.93; /* Reducción más profunda del 7% para botones */
+--dwc-scale-press-deep: 0.93; /* Reducción mayor del 7% para botones */
 ```
 
-El mixin SCSS `ripple` y la variable CSS `--dwc-ripple-color` aún existen en la construcción, pero nada los importa por defecto. Si sus propios componentes optaron por el mixin, cambie a los tokens de presión-escala para coincidir con la nueva sensación.
+El mixin SCSS `ripple` y la variable CSS `--dwc-ripple-color` siguen existiendo en la construcción, pero nada las importa por defecto. Si sus propios componentes optarán por el mixin, cambie a los tokens de escala de presión para coincidir con la nueva sensación.
 
 ### Duraciones de transición reequilibradas {#design-system-transitions}
 
@@ -299,14 +298,14 @@ El mixin SCSS `ripple` y la variable CSS `--dwc-ripple-color` aún existen en la
 | `--dwc-transition-fast`   | `150ms` | `150ms` |
 | `--dwc-transition-x-fast` | `50ms`  | `100ms` |
 
-Si dependes de una duración específica, anúlala en `:root`.
+Si depende de una duración específica, sobrescríbala en `:root`.
 
 ### Lista de verificación pragmática de actualización {#design-system-checklist}
 
 1. Busque `--dwc-color-*-c` y elimine esas declaraciones.
 2. Busque `hsla(var(--dwc-shadow-color)` y reemplace con un token de sombra (`var(--dwc-shadow-m)`) o reescriba como `oklch(from ...)`.
-3. Busque referencias directas a pasos de paleta (`--dwc-color-{name}-{number}`). Si alguna alimenta estilos específicos de modo oscuro, cambie a tokens de variación (`--dwc-color-{name}`, `-dark`, `-light`).
-4. Busque referencias de tamaño de fuente nombradas (`--dwc-font-size-m`, `-l`, y así sucesivamente). Si desea el tamaño de v25, suba un nivel.
+3. Busque referencias directas de pasos de paleta (`--dwc-color-{name}-{number}`). Si alguna alimenta estilos específicos del modo oscuro, cambie a tokens de variación (`--dwc-color-{name}`, `-dark`, `-light`).
+4. Busque referencias de tamaño de fuente nombradas (`--dwc-font-size-m`, `-l`, etc.). Si desea el tamaño v25, suba un nivel.
 5. Busque `--dwc-font-weight-semibold`. Si quería `500`, cambie a `--dwc-font-weight-medium`.
-6. Si reserva espacio alrededor de elementos enfocados con `--dwc-focus-ring-width`, añada `--dwc-focus-ring-gap` al padding.
-7. Abra la aplicación, haga clic por ahí. La mayoría de las aplicaciones no necesitan nada más.
+6. Si reserva espacio alrededor de elementos enfocados con `--dwc-focus-ring-width`, agregue `--dwc-focus-ring-gap` al relleno.
+7. Abra la aplicación, haga clic. La mayoría de las aplicaciones no necesitan nada más.

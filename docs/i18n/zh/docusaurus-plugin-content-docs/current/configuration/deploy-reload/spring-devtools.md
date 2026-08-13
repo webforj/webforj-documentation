@@ -1,30 +1,65 @@
 ---
-title: Spring DevTools
+title: Spring Boot
 sidebar_position: 30
-_i18n_hash: 8feae38bceaabbc49e058a8d2f56f3ba
+description: >-
+  Set up live reload in a Spring Boot webforJ app, with the development tools
+  delivered by the webforJ build plugin.
+_i18n_hash: 2fa5b74377a864e82b67db98ee8c9c04
 ---
-Spring DevTools 提供了在代码更改时自动重启应用程序的功能。webforJ DevTools 添加了自动浏览器刷新 - 当 Spring 重启您的应用时，浏览器会通过 webforJ 的 LiveReload 服务器自动刷新。
+在Spring Boot应用程序中，[webforJ构建插件](/docs/configuration/build-plugin)提供了开发运行所需的开发工具。项目未声明对它们的任何依赖，并且它们从未成为打包应用的一部分。
 
-不同类型的文件会触发不同的重载行为。Java 代码更改会导致 Spring 完全重启和浏览器刷新。CSS 和图片更改则无需页面重载，保留表单数据和应用状态。
+## 需求 {#requirements}
 
-<!-- vale off -->
-## 理解 webforJ DevTools {#understanding-webforj-devtools}
-<!-- vale on -->
+启动器依赖和构建插件。由[原型](/docs/introduction/getting-started)创建的项目同时具有这两者。
 
-webforJ 扩展了 Spring DevTools，实现了浏览器同步。当 Spring 检测到文件更改并重启时，webforJ DevTools 会自动刷新您的浏览器。
+<Tabs>
+<TabItem value="maven" label="Maven">
 
-### 重载行为 {#reload-behavior}
+```xml title="pom.xml"
+<dependency>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-boot-starter</artifactId>
+</dependency>
+```
 
-不同类型的文件触发不同的重载策略：
+```xml title="pom.xml"
+<plugin>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-maven-plugin</artifactId>
+  <version>${webforj.version}</version>
+  <extensions>true</extensions>
+</plugin>
+```
 
-- **Java 文件**：在 Spring 重启后完全刷新浏览器页面
-- **JavaScript 文件**：在 Spring 重启后完全刷新浏览器页面
-- **CSS 文件**：样式更新而无需页面重载  
-- **图片**：在不重载页面的情况下刷新
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-## 依赖关系 {#dependencies}
+```groovy title="build.gradle"
+dependencies {
+  implementation 'com.webforj:webforj-spring-boot-starter'
+}
+```
 
-将 Spring DevTools 和 webforJ DevTools 添加到您的项目中：
+并且将[webforJ插件应用于构建](/docs/configuration/build-plugin#adding-the-plugin)。
+
+</TabItem>
+</Tabs>
+
+## 开启实时重载 {#turning-live-reload-on}
+
+```Ini title="application.properties"
+webforj.devtools.livereload.enabled=true
+server.shutdown=immediate
+```
+
+像往常一样启动应用程序，使用Maven运行`mvn`或使用Gradle运行`./gradlew bootRun`。Java更改在编译后应用，样式表和图像更改即时生效，以及位于`src/main/frontend`下的源代码通过[前端监视](/docs/configuration/deploy-reload/frontend-watch)重新构建。其余键列在[设置](/docs/configuration/deploy-reload/overview#settings)中。
+
+## Spring DevTools {#spring-devtools}
+
+Spring DevTools是可选的，实时重载在没有它的情况下也可以工作。要使用其重启模型，请添加它的依赖：
+
+<Tabs>
+<TabItem value="maven" label="Maven">
 
 ```xml title="pom.xml"
 <dependency>
@@ -32,51 +67,22 @@ webforJ 扩展了 Spring DevTools，实现了浏览器同步。当 Spring 检测
   <artifactId>spring-boot-devtools</artifactId>
   <optional>true</optional>
 </dependency>
-
-<dependency>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-spring-devtools</artifactId>
-  <version>${webforj.version}</version>
-  <optional>true</optional>
-</dependency>
 ```
 
-## 配置 {#configuration}
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-在您的 `application.properties` 文件中启用 webforJ DevTools：
-
-```Ini title="application.properties"
-# 启用 webforJ 浏览器自动重载
-webforj.devtools.livereload.enabled=true
-
-# 启用立即关闭以加快重启速度
-server.shutdown=immediate
+```groovy title="build.gradle"
+dependencies {
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
 ```
 
-### 高级配置 {#advanced-configuration}
+</TabItem>
+</Tabs>
 
-配置 WebSocket 连接和重载行为：
+在存在Spring DevTools的情况下，编译更改会重启Spring上下文，并且浏览器在重启完成时刷新。如果同时配置了[热替换工具](/docs/configuration/deploy-reload/hotswap)，该工具将应用类更新并且重启保持关闭状态。
 
-```Ini title="application.properties"
-# WebSocket 服务器端口（默认：35730）
-webforj.devtools.livereload.websocket-port=35730
+## 生产构建 {#production-builds}
 
-# WebSocket 端点路径（默认：/webforj-devtools-ws）
-webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
-
-# 心跳间隔（毫秒）（默认：30000）
-webforj.devtools.livereload.heartbeat-interval=30000
-
-# 启用静态资源的热重载（默认：true）
-webforj.devtools.livereload.static-resources-enabled=true
-```
-
-<DocChip chip='since' label='25.03' /> 配置应用启动时打开浏览器：
-
-```Ini title="application.properties"
-# 启用打开浏览器（默认：false）
-webforj.devtools.browser.open=true
-
-# 本地主机、主机名或 IP 地址（默认：localhost）
-webforj.devtools.browser.host=localhost
-```
+`mvn package`和`./gradlew bootJar`将生成一个不包含开发工具的应用程序，无需排除、配置文件或属性。`webforj.devtools.livereload.enabled`属性在打包应用程序中没有效果。

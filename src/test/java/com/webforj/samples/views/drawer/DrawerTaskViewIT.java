@@ -9,6 +9,9 @@ import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 public class DrawerTaskViewIT extends BaseTest {
 
@@ -45,5 +48,20 @@ public class DrawerTaskViewIT extends BaseTest {
     Locator newTaskCheckbox =
         page.getByRole(AriaRole.CHECKBOX, new Page.GetByRoleOptions().setName("New Task from IT"));
     assertThat(newTaskCheckbox).isVisible();
+  }
+
+  @Test
+  @Disabled(
+      "Pending framework support: webforj.legacyHtmlInText=false is not honored by setText() in 26.01")
+  public void testLiteralCharacters() {
+    Locator newTaskInput =
+        page.getByRole(
+            AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("<html><b>New Task</b></html>"));
+
+    Locator addTaskButton =
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Add Task"));
+    addTaskButton.click();
+
+    assertThat(newTaskInput).hasValue("<html><b>New Task</b></html>");
   }
 }

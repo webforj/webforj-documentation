@@ -1,6 +1,6 @@
 package com.webforj.samples.views.applayout.stickytoolbar;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H3;
@@ -19,7 +19,7 @@ import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
 @Route
-@StyleSheet("ws://css/applayout/applayout.css")
+@BundleEntry("css/applayout/applayout.css")
 @FrameTitle("AppLayout Sticky Toolbar")
 public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
   private final AppLayout self = getBoundComponent();

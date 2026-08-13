@@ -1,6 +1,6 @@
 package com.webforj.samples.views.viewtransitions.components;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.element.event.ElementClickEvent;
 import com.webforj.component.html.elements.Div;
@@ -13,7 +13,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
 
-@StyleSheet("ws://css/viewtransitions/components/notification-card.css")
+@BundleEntry("css/viewtransitions/components/notification-card.css")
 public class NotificationCard extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final IconButton dismissBtn;

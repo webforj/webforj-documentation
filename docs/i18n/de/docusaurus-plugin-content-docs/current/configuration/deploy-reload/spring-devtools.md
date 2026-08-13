@@ -1,80 +1,88 @@
 ---
-title: Spring DevTools
+title: Spring Boot
 sidebar_position: 30
-_i18n_hash: 8feae38bceaabbc49e058a8d2f56f3ba
+description: >-
+  Set up live reload in a Spring Boot webforJ app, with the development tools
+  delivered by the webforJ build plugin.
+_i18n_hash: 2fa5b74377a864e82b67db98ee8c9c04
 ---
-Spring DevTools bietet automatische Neustarts der Anwendung bei Codeänderungen. webforJ DevTools fügt eine automatische Aktualisierung des Browsers hinzu - wenn Spring Ihre Anwendung neu startet, wird der Browser automatisch über den LiveReload-Server von webforJ aktualisiert.
+In einer Spring Boot-App liefert das [webforJ-Build-Plugin](/docs/configuration/build-plugin) die Entwicklungstools für Entwicklungsdurchläufe. Das Projekt erklärt keine Abhängigkeit dafür, und sie sind niemals Teil der verpackten App.
 
-Verschiedene Dateitypen lösen unterschiedliche Neu ladungsverhalten aus. Änderungen im Java-Code verursachen einen vollständigen Spring-Neustart und eine Browseraktualisierung. CSS- und Bildänderungen werden ohne eine Seitenaktualisierung aktualisiert, wobei Formulardaten und Anwendungszustand erhalten bleiben.
+## Anforderungen {#requirements}
 
-## Verständnis von webforJ DevTools {#understanding-webforj-devtools}
+Die Starter-Abhängigkeit und das Build-Plugin. Ein aus einem [Archetyp](/docs/introduction/getting-started) erstelltes Projekt verfügt über beides.
 
-webforJ erweitert Spring DevTools mit Browser-Synchronisation. Wenn Spring Date Änderungen erkennt und neu startet, aktualisiert webforJ DevTools automatisch Ihren Browser.
+<Tabs>
+<TabItem value="maven" label="Maven">
 
-### Reload-Verhalten {#reload-behavior}
+```xml title="pom.xml"
+<dependency>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-boot-starter</artifactId>
+</dependency>
+```
 
-Verschiedene Dateitypen lösen unterschiedliche Reload-Strategien aus:
+```xml title="pom.xml"
+<plugin>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-maven-plugin</artifactId>
+  <version>${webforj.version}</version>
+  <extensions>true</extensions>
+</plugin>
+```
 
-- **Java-Dateien**: Vollständige Aktualisierung der Browserseite nach dem Spring-Neustart
-- **JavaScript-Dateien**: Vollständige Aktualisierung der Browserseite nach dem Spring-Neustart
-- **CSS-Dateien**: Stiländerungen ohne Seitenaktualisierung  
-- **Bilder**: Aktualisierung vor Ort ohne Seitenaktualisierung
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-## Abhängigkeiten {#dependencies}
+```groovy title="build.gradle"
+dependencies {
+  implementation 'com.webforj:webforj-spring-boot-starter'
+}
+```
 
-Fügen Sie sowohl Spring DevTools als auch webforJ DevTools zu Ihrem Projekt hinzu:
+mit dem [webforJ-Plugin, das auf den Build angewendet wird](/docs/configuration/build-plugin#adding-the-plugin).
+
+</TabItem>
+</Tabs>
+
+## Live-Reload aktivieren {#turning-live-reload-on}
+
+```Ini title="application.properties"
+webforj.devtools.livereload.enabled=true
+server.shutdown=immediate
+```
+
+Starten Sie die App wie gewohnt, `mvn` mit Maven oder `./gradlew bootRun` mit Gradle. Java-Änderungen werden nach einer Kompilierung angewendet, Stylesheet- und Bildänderungen erfolgen sofort, und die Quellen in `src/main/frontend` werden über das [Frontend-Watch](/docs/configuration/deploy-reload/frontend-watch) neu kompiliert. Die verbleibenden Schlüssel sind in den [Einstellungen](/docs/configuration/deploy-reload/overview#settings) aufgeführt.
+
+## Spring DevTools {#spring-devtools}
+
+Spring DevTools ist optional, Live-Reload funktioniert auch ohne. Um das Neustartmodell zu verwenden, fügen Sie seine Abhängigkeit hinzu:
+
+<Tabs>
+<TabItem value="maven" label="Maven">
 
 ```xml title="pom.xml"
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-devtools</artifactId>
-  <optionale>true</optionale>
-</dependency>
-
-<dependency>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-spring-devtools</artifactId>
-  <version>${webforj.version}</version>
-  <optionale>true</optionale>
+  <optional>true</optional>
 </dependency>
 ```
 
-## Konfiguration {#configuration}
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-Aktivieren Sie webforJ DevTools in Ihrer `application.properties`-Datei:
-
-```Ini title="application.properties"
-# Aktivieren Sie die automatische Aktualisierung des Browsers von webforJ
-webforj.devtools.livereload.enabled=true
-
-# Sofortiges Herunterfahren für schnellere Neustarts aktivieren
-server.shutdown=immediate
+```groovy title="build.gradle"
+dependencies {
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
 ```
 
-### Erweiterte Konfiguration {#advanced-configuration}
+</TabItem>
+</Tabs>
 
-Konfigurieren Sie die WebSocket-Verbindung und das Reload-Verhalten:
+Mit vorhandenem Spring DevTools startet eine kompilierte Änderung den Spring-Kontext neu, und der Browser wird aktualisiert, wenn der Neustart abgeschlossen ist. Mit einem [Hot-Swap-Tool](/docs/configuration/deploy-reload/hotswap), das ebenfalls konfiguriert ist, werden die Klassenuploads angewendet und der Neustart bleibt deaktiviert.
 
-```Ini title="application.properties"
-# WebSocket-Serverport (Standard: 35730)
-webforj.devtools.livereload.websocket-port=35730
+## Produktionsbuilds {#production-builds}
 
-# WebSocket-Endpunktpfad (Standard: /webforj-devtools-ws)
-webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
-
-# Heartbeat-Intervall in Millisekunden (Standard: 30000)
-webforj.devtools.livereload.heartbeat-interval=30000
-
-# Hot Reload für statische Ressourcen aktivieren (Standard: true)
-webforj.devtools.livereload.static-resources-enabled=true
-```
-
-<DocChip chip='since' label='25.03' /> Konfigurieren Sie das Öffnen des Browsers beim Start der Anwendung:
-
-```Ini title="application.properties"
-# Aktivieren Sie das Öffnen des Browsers (Standard: false)
-webforj.devtools.browser.open=true
-
-# localhost, Hostname oder IP-Adresse (Standard: localhost)
-webforj.devtools.browser.host=localhost
-```
+`mvn package` und `./gradlew bootJar` erzeugen eine App ohne Entwicklungstools, ohne dass eine Ausschluss-, Profil- oder Eigenschaft erforderlich ist. Die `webforj.devtools.livereload.enabled`-Eigenschaft hat in einer verpackten App keine Wirkung.

@@ -1,0 +1,14 @@
+extends: existence
+message: "Remove chatbot artifact '%s' left over from pasted AI output."
+link: "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+level: error
+ignorecase: true
+tokens:
+  - 'oaicite'
+  - 'oai_citation'
+  - 'contentReference'
+  - 'citationturn'
+  - 'turn\d+search\d+'
+  - 'utm_source='
+  - 'grok_card'
+  - 'attached_file'

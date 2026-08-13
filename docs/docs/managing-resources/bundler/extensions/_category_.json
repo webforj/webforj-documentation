@@ -1,0 +1,9 @@
+{
+  "label": "Extensions",
+  "position": 50,
+  "className": "new-content",
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}

@@ -23,13 +23,13 @@ files={['src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView
 height='450px'
 />
 
-:::info Horizontal Layouts 
+:::info Horizontal Layouts
 This can be used in place of, or in combination with, the [`FlexLayout`](./flex-layout) component - an equally powerful tool for horizontal layouts.
 :::
 
 ## Breakpoints {#breakpoints}
 
-At its core, the `ColumnsLayout` is designed to provide a fluid, grid-like system that adapts to the width of its parent container. Unlike traditional fixed-grid systems, this layout allows developers to specify a number of columns at a given width, and dynamically calculates the number of displayed columns based on set `Breakpoint` objects. 
+At its core, the `ColumnsLayout` is designed to provide a fluid, grid-like system that adapts to the width of its parent container. Unlike traditional fixed-grid systems, this layout allows developers to specify a number of columns at a given width, and dynamically calculates the number of displayed columns based on set `Breakpoint` objects.
 
 This allows a `ColumnsLayout` to smoothly adapt from a more constrained space on small screens to a wider area on larger screens, offering a responsive design to a developer without needing custom implementation.
 
@@ -54,7 +54,7 @@ Breakpoints are evaluated in ascending order of the width, meaning the layout wi
 
 ### Applying breakpoints {#applying-breakpoints}
 
-Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construction, or in a `List` using the `setBreakpoints()` method: 
+Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construction, or in a `List` using the `setBreakpoints()` method:
 
 ```java
 ColumnsLayout layout = new ColumnsLayout();
@@ -128,7 +128,7 @@ By default, items are placed in the next available column, filling from left to 
 Button button = new Button("Submit");
 layout.addComponent(button);
 // Place the item in the second column
-layout.setColumn(button, 2);  
+layout.setColumn(button, 2);
 ```
 
 ### Adjusting placement per breakpoint {#adjusting-placement-per-breakpoint}
@@ -146,7 +146,7 @@ List.of(
 )
 //...
 //email field will appear in the second column when medium breakpoint is active
-columnsLayout.setColumn(email, "medium", 2); 
+columnsLayout.setColumn(email, "medium", 2);
 //...
 ```
 
@@ -168,7 +168,7 @@ Each item in the `ColumnsLayout` can be aligned both horizontally and vertically
 
 **Horizontal alignment** of an item is controlled using the `setHorizontalAlignment()` method. This property determines how an item aligns within its column along the horizontal axis.
 
-**Vertical alignment** specifies how an item is positioned within its column along the vertical axis. This is useful when columns have varying heights and you want to control how items are vertically distributed. 
+**Vertical alignment** specifies how an item is positioned within its column along the vertical axis. This is useful when columns have varying heights and you want to control how items are vertically distributed.
 
 Available `Alignment` options include:
 
@@ -195,14 +195,14 @@ To set the horizontal spacing of the layout, use the `setHorizontalSpacing()` me
 
 ```java
 // Set 20px space between columns
-layout.setHorizontalSpacing(20);  
+layout.setHorizontalSpacing(20);
 ```
 
 Similarly, use the `setVerticalSpacing()` method to configure the space between rows of the layout:
 
 ```java
 // Set 15px space between rows
-layout.setVerticalSpacing(15);  
+layout.setVerticalSpacing(15);
 ```
 
 :::tip CSS units

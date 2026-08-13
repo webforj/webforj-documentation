@@ -27,13 +27,13 @@ Container properties will apply to all of the components within a component and 
 
 The `FlexLayout` adds components next to one another according to its direction, either horizontal or vertical. When using the builder, chain the `horizontal()`, `horizontalReverse()`, `vertical()`, or `verticalReverse()` methods with the `FlexLayout.create()` method to configure the layout as the object is created.
 
-To set the direction on an existing `FlexLayout` object, use the `setDirection()` method. The horizontal options are `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). 
+To set the direction on an existing `FlexLayout` object, use the `setDirection()` method. The horizontal options are `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top).
 
 <ComponentDemo
 path='/webforj/flexdirection'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='275px'
 />
@@ -54,7 +54,7 @@ The `setAlignContent()` method controls the space around the cross axis, and wil
 path='/webforj/flexpositioning'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='375px'
 />
@@ -65,14 +65,14 @@ To further customize the `FlexLayout` component, you can specify its behavior wh
 
 ### Spacing {#spacing}
 
-In order to apply minimum spacing between items, you can set the `gap` property. It applies that spacing only between items, not on the outer edges. 
+In order to apply minimum spacing between items, you can set the `gap` property. It applies that spacing only between items, not on the outer edges.
 
 The gap property's behavior can be thought of as a minimum distance between, so it will only take effect if it's the largest calculated
 space between items. If the space between items would otherwise be larger due to another calculated property, such as due to `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, then the gap property will be ignored.
 
 ### Flow {#flow}
 
-Flex flow, which is a combination of both the direction and the wrap properties, can be set using the `setFlow()` method on a `FlexLayout` object. 
+Flex flow, which is a combination of both the direction and the wrap properties, can be set using the `setFlow()` method on a `FlexLayout` object.
 
 :::info
 To configure this property when creating the layout, use the proper directional and wrap methods. For example, to create a column wrap flow,
@@ -87,7 +87,7 @@ The following demo allows you to build a container with the desired flex propert
 path='/webforj/flexcontainerbuilder'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='600px'
 />
@@ -112,7 +112,7 @@ It's important to note that the order property only affects the visual order of 
 path='/webforj/flexorder'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='320px'
 />
@@ -133,7 +133,7 @@ This property is especially useful when you need to align a specific item differ
 path='/webforj/flexselfalign'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java',
-  'src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css',
+  'src/main/frontend/css/flexlayout/container/flexContainerBuilder.css',
 ]}
 height='350px'
 />
@@ -169,7 +169,7 @@ When a container has more space than is needed to accommodate its contents, flex
 Similarly, when a container doesn't have enough space to accommodate its contents, flex items with an `Item Shrink` value greater than 0 will shrink to fit the available space. The amount of space each item gives up is determined by the ratio of its `Item Shrink` value to the total `Item Shrink` value of all items in the container.
 
 ## Example form {#example-form}
-The form below demonstrates how `FlexLayout` organizes input fields into a structured layout. 
+The form below demonstrates how `FlexLayout` organizes input fields into a structured layout.
 
 :::tip
 If you prefer a column-based structure, look at the `ColumnsLayout` version of this form in the [`ColumnsLayout`](../components/columns-layout) article to see how it compares.
@@ -179,7 +179,7 @@ If you prefer a column-based structure, look at the `ColumnsLayout` version of t
 path='/webforj/flexlayout'
 files={[
   'src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java',
-  'src/main/resources/static/css/flexlayout/flexLayout.css',
+  'src/main/frontend/css/flexlayout/flexLayout.css',
 ]}
 height='620px'
 />

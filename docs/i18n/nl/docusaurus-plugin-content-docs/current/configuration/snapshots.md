@@ -1,13 +1,25 @@
 ---
 title: Snapshots
-sidebar_position: 35
-sidebar_class_name: new-content
-_i18n_hash: 5234e12882e2652d440f8861a6341cef
+sidebar_position: 30
+hide_table_of_contents: true
+description: >-
+  Locate the latest webforJ snapshot version and add the Central Portal
+  Snapshots repository to consume pre-release builds.
+_i18n_hash: 646ace835d5ba39ed182935e8d7f33fb
 ---
-Elke webforJ versie release gaat vergezeld van gedetailleerde [release-opmerkingen](https://github.com/webforj/webforj/releases) en een [release blogartikel](/blog/tags/release). Snapshotversies van webforJ geven je toegang tot de nieuwste functies voor testing terwijl de ontwikkeling doorgaat aan de pre-released versie.
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
+
+Elke versie van webforJ wordt vergezeld door gedetailleerde [release-notities](https://github.com/webforj/webforj/releases) en een [release blogartikel](/blog/tags/release).
+Snapshot-versies van webforJ geven je toegang tot de nieuwste functies voor testing terwijl de ontwikkeling van de pre-released versie doorgaat.
 
 <!-- vale Google.Acronyms = NO -->
-Hoewel snapshots niet openbaar worden vermeld op Maven repository sites zoals [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) of [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj), is het eenvoudig om de naam van de snapshot te vinden. Om de nieuwste snapshotversie te vinden, navigeer naar het [webforJ-project](https://github.com/webforj/webforj) op GitHub. Zoek daar het [POM-bestand](https://github.com/webforj/webforj/blob/main/pom.xml) van het project en zoek naar de `version` tag:
+Hoewel snapshots niet publiekelijk worden vermeld op Maven-repository-sites zoals [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) of [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj), is het eenvoudig om de naam van de snapshot te achterhalen. Om de nieuwste snapshotversie te vinden, navigeer je naar het [webforJ-project](https://github.com/webforj/webforj) op GitHub. Zoek vervolgens het [POM-bestand](https://github.com/webforj/webforj/blob/main/pom.xml) van het project en zoek naar de `version`-tag:
 <!-- vale Google.Acronyms = YES -->
 ```xml {3} title="pom.xml"
 <groupId>com.webforj</groupId>
@@ -17,7 +29,7 @@ Hoewel snapshots niet openbaar worden vermeld op Maven repository sites zoals [M
 <name>webforj</name>
 ```
 
-Om die snapshotversie in je app te gebruiken, gebruik je die waarde als de `webforj.version` eigenschap in het POM-bestand van je app:
+Om die snapshotversie in je app te gebruiken, gebruik je die waarde als de `webforj.version`-eigenschap in het POM-bestand van je app:
 ```xml title="pom.xml" {2}
 <properties>
   <webforj.version>26.00-SNAPSHOT</webforj.version>
@@ -28,9 +40,9 @@ Om die snapshotversie in je app te gebruiken, gebruik je die waarde als de `webf
 </properties>
 ```
 
-## Configureer de snapshotrepository {#configure-the-snapshot-repository}
+## Configureer de snapshot-repository {#configure-the-snapshot-repository}
 
-Omdat snapshots niet naar Maven Central worden gepubliceerd, moet je de Central Portal Snapshots-repository toevoegen aan het `pom.xml` van je app, zodat Maven ze kan oplossen. Je hebt twee vermeldingen nodig: een `<repository>` voor de runtime-artifacten van webforJ, en een `<pluginRepository>` voor de Maven-plugins (zoals de install- en minify-plugins), die ook als snapshots worden uitgebracht. Beide vermeldingen schakelen de release-oplossing uit, zodat Maven alleen deze repository gebruikt voor snapshot-artifacten.
+Omdat snapshots niet worden gepubliceerd naar Maven Central, moet je de Central Portal Snapshots-repository toevoegen aan het `pom.xml` van je app, zodat Maven ze kan oplossen. Je hebt twee invoeringen nodig: een `<repository>` voor de runtime-artifacten van webforJ en een `<pluginRepository>` voor de Maven-plugins (zoals de install- en minify-plugins), die ook als snapshots worden uitgebracht. Beide invoeringen schakelen de release-oplossing uit, zodat Maven deze repository alleen gebruikt voor snapshot-artifacten.
 
 ```xml title="pom.xml"
 <repositories>
@@ -61,8 +73,8 @@ Omdat snapshots niet naar Maven Central worden gepubliceerd, moet je de Central 
 </pluginRepositories>
 ```
 
-Als alternatief, als je een nieuwe webforJ-app aanmaakt, ga naar [startforJ](https://docs.webforj.com/startforj/) en kies de webforJ-versie die eindigt met `(pre)`.
+Als alternatief, als je een nieuwe webforJ-app aanmaakt, ga dan naar [startforJ](https://docs.webforj.com/startforj/) en kies de webforJ-versie die eindigt met `(pre)`.
 
 :::warning
-Snapshotversies zijn onder actieve ontwikkeling en kunnen veranderen, dus ze worden niet aanbevolen voor gebruik in live productie-apps.
+Snapshotversies zijn in actieve ontwikkeling en kunnen veranderen, daarom worden ze niet aanbevolen voor gebruik in live productie-apps.
 :::

@@ -38,10 +38,10 @@ By default, the `Slider` starts with a value of 50, assuming the default range o
 You can set the `Slider`'s value during initialization or update it later using the `setValue()` method. To retrieve the current value, use the `getValue()` method.
 
 ```java
-Slider slider = new Slider();  
+Slider slider = new Slider();
 slider.setValue(25); // Sets the slider to 25
 
-Integer value = slider.getValue();  
+Integer value = slider.getValue();
 System.out.println("Current Slider Value: " + value);
 ```
 
@@ -185,14 +185,14 @@ You can also use a JavaScript expression to format the tooltip dynamically. If y
 
 ```java
 // Shows value followed by a dollar sign
-slider.setTooltipText("return x + '$'"); 
+slider.setTooltipText("return x + '$'");
 ```
 
 Or simply:
 
 ```java
 // Interpreted as: return x + ' units';
-slider.setTooltipText("x + ' units'"); 
+slider.setTooltipText("x + ' units'");
 ```
 
 

@@ -24,7 +24,7 @@ The `ColorField` component lets users select a color through the browser's nativ
 path='/webforj/colorfield'
 files={[
   'src/main/java/com/webforj/samples/views/fields/colorfield/ColorFieldView.java',
-  'src/main/resources/static/css/fields/colorfield/colorFieldDemo.css',
+  'src/main/frontend/css/fields/colorfield/colorFieldDemo.css',
 ]}
 height='300px'
 />

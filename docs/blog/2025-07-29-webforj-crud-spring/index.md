@@ -25,7 +25,7 @@ TLDR: It went well.
 
 ![Screenshot of CRUD app](https://cdn.webforj.com/webforj-documentation/blogs/2025-07-29-webforj-crud-spring/app-preview.png)
 
-## The Mission: A Music Artist Management System
+## The Mission: A Music Artist Management System {#the-mission-a-music-artist-management-system}
 
 The task seemed simple enough - build an app to manage music artists, fairly basic stuff:
 
@@ -38,7 +38,7 @@ I started off watching a few tutorial videos, and started hearing things like "d
 
 I'm happy to say, everything was straightforward - I managed to (fairly easily) build a simple CRUD app using Spring Boot and webforJ. For those curious about what I did and in what order, here's the process I followed:
 
-### The Back End
+### The Back End {#the-back-end}
 
 Creating my data layer took exactly three files. I've written CSS files longer than my entire backend. Of course, this is a simple app, but with the help of my AI buddy, I was able to not only get these files created, but finally understand the relationship between the different layers and components. My [data model/entity](https://spring.io/guides/gs/accessing-data-jpa) defines the structure of my data and maps it to the database, my repository provides an interface for CRUD operations and database queries, and my service layer contains business logic and orchestrates communication between controllers and repositories.
 
@@ -98,7 +98,7 @@ public class MusicArtistService {
 
 And like that, I had a working backend. No SQL queries or complex steps to learn.
 
-## webforJ Integration
+## webforJ Integration {#webforj-integration}
 
 Now here's where I thought things might get a little more complex. In my experience, making two frameworks play nice usually involves adapter patterns, configuration nightmares, copious amounts of swearing, etc.
 
@@ -119,11 +119,11 @@ public class MusicArtistsView extends Composite<FlexLayout> {
 
 That's it. Spring automatically knew to provide my service to webforJ, and then I was back to what made sense to me - UI creation.
 
-## Making It Look Decent (My Happy Place)
+## Making It Look Decent (My Happy Place) {#making-it-look-decent-my-happy-place}
 
 With the scary backend stuff handled, I could focus on what I love - making things look good. And webforJ made this part genuinely fun.
 
-### Renderers
+### Renderers {#renderers}
 
 I wanted those trendy Gmail-style avatars with initials to display in my table. There are examples of other renderers on our [docs page](https://docs.webforj.com/docs/components/table/rendering), but a simple renderer was quite easily accomplished. Here's how it works:
 
@@ -157,7 +157,7 @@ public class ArtistAvatarRenderer extends Renderer<MusicArtist> {
 
 My `Table` went from "database dump" to looking like it was built with more intention quite easily. I've spent way too much time with Table renderers, and have been quite enjoying building some cool-looking things with them, like this [dashboard project](https://docs.webforj.com/dashboard/) I completed a little while ago.
 
-### Binding the back end to my form
+### Binding the back end to my form {#binding-the-back-end-to-my-form}
 
 The other thing that took me by surprise was using webforJ's automatic data binding to keep my model and my UI in sync. I remembered a small project in college I'd done, and remembered that getting info from the UI and setting my model's info to match had been a mess of getter and setter calls.
 
@@ -170,13 +170,13 @@ BindingContext.of(this, MusicArtist.class, true);
 
 One line. Truly, I spent more time choosing the button themes than setting up data binding.
 
-## Wrapping up
+## Wrapping up {#wrapping-up}
 
 All in all, my first foray into the Spring world and coupling it with webforJ ended up being way more straightforward and stress free than I'd originally thought.
 
 Both Spring Boot and webforJ seem designed by people who've had to deal with complicated frameworks before. Everything has sensible defaults. A lot of the work I expected to do was done for me. The documentation has real examples.
 
-## The Reality Check
+## The Reality Check {#the-reality-check}
 
 Of course, it wasn't all rainbows and auto-configuration. Here's what tripped me up:
 
@@ -184,7 +184,7 @@ Of course, it wasn't all rainbows and auto-configuration. Here's what tripped me
 
 **The Disappearing Table**: My table wouldn't show up. Why? Because I forgot to set a height. The Table component needs dimensions, weirdly enough :)
 
-## The Verdict
+## The Verdict {#the-verdict}
 
 The term "full-stack" has always intimidated me a bit, mostly because I gravitated so heavily towards the front end, and neglected learning as much as I should have about the rest of the stack. But here's the thing: building this little web app in Java with Spring Boot and webforJ felt just as straightforward as using one of the big names in web development.
 
@@ -197,7 +197,7 @@ I spent most of my time:
 
 For developers who want to build full-stack applications, especially those of you coming from or living in the Java world, this combination is worth trying. You might surprise yourself!
 
-## Get the Source Code
+## Get the Source Code {#get-the-source-code}
 
 Want to explore the complete application? The full source code for this Music Artist Management System is available on GitHub:
 

@@ -1,7 +1,6 @@
 ---
 title: Dialog
 sidebar_position: 30
-sidebar_class_name: new-content
 description: Open modal popups with the Dialog component, including header, content, and footer sections, backdrop blur, and configurable close behavior.
 ---
 
@@ -10,7 +9,7 @@ description: Open modal popups with the Dialog component, including header, cont
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="dialog" location="com/webforj/component/dialog/Dialog" top='true'/>
 
-The `Dialog` component displays a popup window that overlays the current view, drawing attention to focused content like forms, confirmations, or informational messages. 
+The `Dialog` component displays a popup window that overlays the current view, drawing attention to focused content like forms, confirmations, or informational messages.
 
 <!-- INTRO_END -->
 
@@ -21,14 +20,14 @@ The `Dialog` is organized into three sections: a header, a content area, and a f
 <ComponentDemo
 path='/webforj/dialogsections'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java']}
-height='225px'
+height='375px'
 />
 
 ## Usages {#usages}
 
 1. **User Feedback and Confirmation**: `Dialog` components are often used to provide feedback or ask for user confirmation. They can display various important pieces of feedback to a user, such as:
 
-  >- Success messages 
+  >- Success messages
   >- Error alerts
   >- Confirmation submissions
 
@@ -43,12 +42,12 @@ height='225px'
 
 ## Backdrop and blur {#backdrop-and-blur}
 
-By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
+An open `Dialog` component has a dimmed backdrop that subtly draws attention to its contents. Using `setBackdrop()` and `setBlurred()`, you can change how webforJ displays (or obscures) the content behind the `Dialog`. Modifying these attributes can help users by providing depth and visual hierarchy.
 
 <ComponentDemo
 path='/webforj/dialogbackdropblur'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java']}
-height='300px'
+height='600px'
 />
 
 ## Opening and closing the `Dialog` {#opening-and-closing-the-dialog}
@@ -63,7 +62,7 @@ Developers can choose which interactions close the `Dialog` with `setCancelOnEsc
 <ComponentDemo
 path='/webforj/dialogclose'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogCloseView.java']}
-height='350px'
+height='375px'
 />
 
 ## Auto-focus {#auto-focus}
@@ -73,7 +72,7 @@ When enabled, auto-focus will automatically give focus to the first element with
 <ComponentDemo
 path='/webforj/dialogautofocus'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java']}
-height='350px'
+height='400px'
 />
 
 ## Draggable {#draggable}
@@ -81,12 +80,12 @@ height='350px'
 The `Dialog` has built in functionality to be draggable, allowing the user to relocate the `Dialog` window by clicking and dragging. The position of the `Dialog` can be manipulated from any of the fields within it: the header, content or footer.
 
 ### Snap to edge {#snap-to-edge}
-It is also possible to calibrate this behavior to snap to the edge of the screen, meaning the `Dialog` will automatically align itself with the edge of the display when released from its drag and drop date. Snapping can be changed via the `setSnapToEdge()` method. The `setSnapThreshold()` takes a number of pixels, which will set how far the `Dialog` should be from the sides of the screen before it will automatically snap to the edges.  
+It is also possible to calibrate this behavior to snap to the edge of the screen, meaning the `Dialog` will automatically align itself with the edge of the display when released from its drag and drop date. Snapping can be changed via the `setSnapToEdge()` method. The `setSnapThreshold()` takes a number of pixels, which will set how far the `Dialog` should be from the sides of the screen before it will automatically snap to the edges.
 
 <ComponentDemo
 path='/webforj/dialogdraggable'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogDraggableView.java']}
-height='350px'
+height='325px'
 />
 
 ## Positioning {#positioning}
@@ -96,17 +95,17 @@ The dialog's position can be manipulated using the built-in `setPosx()` and `set
 <ComponentDemo
 path='/webforj/dialogpositioning'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogPositioningView.java']}
-height='350px'
+height='400px'
 />
 
 ### Vertical alignment {#vertical-alignment}
 
-In addition to manual assignment of a dialog's X and Y position, it is possible to use the dialog's built-in enum class to align the `Dialog`. There are three possible values, `TOP`, `CENTER` and `BOTTOM`, each of which can be used with the `setAlignment()` method. 
+In addition to manual assignment of a dialog's X and Y position, it is possible to use the dialog's built-in enum class to align the `Dialog`. There are three possible values, `TOP`, `CENTER` and `BOTTOM`, each of which can be used with the `setAlignment()` method.
 
 <ComponentDemo
 path='/webforj/dialogalignments'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.java']}
-height='550px'
+height='450px'
 />
 
 ### Full screen and breakpoints {#full-screen-and-breakpoints}
@@ -127,7 +126,7 @@ height='350px'
 
 ### Themes {#themes}
 
-`Dialog` components come with <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
+`Dialog` components come with <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application.
 
 While there are many use cases for each of the various themes, some examples uses are:
 
@@ -142,7 +141,7 @@ While there are many use cases for each of the various themes, some examples use
 <ComponentDemo
 path='/webforj/dialogthemes'
 files={['src/main/java/com/webforj/samples/views/dialog/DialogThemesView.java']}
-height='500px'
+height='375px'
 />
 
 <TableBuilder name="Dialog" />

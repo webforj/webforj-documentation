@@ -1,6 +1,6 @@
 package com.webforj.samples.views.applayout.mobiledrawer;
 
-import com.webforj.annotation.StyleSheet;
+import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.html.elements.Div;
@@ -25,7 +25,7 @@ import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
 @Route
-@StyleSheet("ws://css/applayout/applayout.css")
+@BundleEntry("css/applayout/applayout.css")
 @FrameTitle("AppLayout Mobile Drawer")
 public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
   private final AppLayout self = getBoundComponent();

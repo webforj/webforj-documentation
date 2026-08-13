@@ -1,64 +1,62 @@
 ---
 title: Prerequisites
+description: >-
+  What a webforJ development environment needs, a Java 21 or higher JDK, Maven
+  or Gradle, and an editor with Java support.
 sidebar_position: 1
-_i18n_hash: 079539f07a72647e2faa9a9a5eda5634
+_i18n_hash: 038e0cf692852d650329b263c25aaf55
 ---
-Aloittaminen webforJ:n kanssa on helppoa, koska vaatimuksia on vain muutama. Käytä tätä opasta kehitysympäristön asettamiseen tarvitsemasi olennaisten työkalujen kanssa, jotta pääset alkuun webforJ:n parissa.
+Getting started with webforJ onko helppoa, koska tarpeita on vain muutama. Käytä tätä oppaata asettaaksesi kehitysympäristösi niillä olennaisilla työkaluilla, joita tarvitset päästäksesi alkuun webforJ:n kanssa.
 
-## Java Development Kit (JDK) 21 {#java-development-kit-jdk-21}
+<!-- vale off -->
+## Java Development Kit (JDK) {#java-development-kit-jdk-21}
+<!-- vale on -->
 
-Java Development Kit (JDK) on tärkein vaatimus webforJ:llä kehittämiselle, sillä se tarjoaa tarvittavat työkalut Java-sovellusten kääntämiseen, suorittamiseen ja hallintaan. Java **21** on vaadittu yhteensopivuuden varmistamiseksi webforJ:n kanssa sekä pääsyn saamiseksi Java-ekosysteemin uusimpiin ominaisuuksiin ja tietoturvapäivityksiin. webforJ-alusta on yhteensopiva virallisten Oracle JDK:iden ja avoimen lähdekoodin Eclipse Temurin JDK:iden kanssa.
+webforJ vaatii Java **21** tai uudemman. Mikä tahansa jakelu, joka on tuossa versiossa, toimii, joten valitse se, jota tiimisi jo käyttää.
 
-### JDK installation links: {#jdk-installation-links}
-:::tip  
-Jos käytät UNIX-pohjaista käyttöjärjestelmää, on suositeltavaa käyttää [SDKMAN!](https://sdkman.io/) -työkalua Java-ympäristösi hallintaan. Sen avulla voit helposti vaihtaa eri Java-toimittajien välillä ilman lisävaivannäköä.  
+:::tip Suositeltu kehitykseen
+Kehitä [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime/releases) -version avulla. Se hyväksyy `-XX:+AllowEnhancedClassRedefinition` -option, joka mahdollistaa [hotswap-työkalun](/docs/configuration/deploy-reload/hotswap) tuoda muutoksen luokan rakenteeseen, uuden kentän tai uuden metodin käynnissä olevaan sovellukseen.
 
-Vaihtoehtoisesti voit käyttää [Jabba](https://github.com/shyiko/jabba), joka toimii sekä UNIX-pohjaisilla järjestelmillä että Windowsilla. Se on hyvä alustojen välinen ratkaisu Java-versioiden hallintaan.  
+Muualla tehdyissä muokkauksissa metodin rungossa päivitykset vaikuttavat paikallisesti, mutta muutos luokan rakenteeseen odottaa uudelleenkäynnistystä. Valinta koskee vain konetta, jolla kehität, eikä vaikuta pakkaamaasi tai minne sen julkaiset.
 :::
 
-- Viralliset Oracle JDK:t löytyvät Oracle:n [Java Downloads](https://www.oracle.com/java/technologies/downloads/) sivulta. 
-  - Valitse Java-versio **21**.
-  - Napsauta Linux-, macOS- tai Windows-välilehteä.
-  - Napsauta linkkiä, joka vastaa tietokoneesi arkkitehtuuria. 
-  - Katso Oracle:n [JDK Installation Guide](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html) saadaksesi täydelliset tiedot Oracle JDK:n asentamisesta.
-- Avoimen lähdekoodin JDK:t löytyvät Adoptiumin [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) sivulta. 
-  - Käytä pudotusvalikoita valitaksesi käyttöjärjestelmä, arkkitehtuuri, pakettityyppi ja JDK-versio **21**. 
-  - Napsauta taulukossa linkkiä haluamasi arkistotyypin lataamiseksi.
-  - Katso Adoptiumin [Installation Guide](https://adoptium.net/installation/) saadaksesi täydelliset tiedot Eclipse Temurin JDK:n asentamisesta.
+Versiohallintaohjelma on helpoin tapa asentaa JDK ja helpoin tapa siirtyä versioiden välillä myöhemmin. [SDKMAN!](https://sdkman.io/) kattaa UNIX-järjestelmät, ja [Jabba](https://github.com/Jabba-Team/jabba) kattaa UNIX-järjestelmät ja Windowsin. SDKMAN!:n alla `sdk install java 21.0.11-jbr` saa sinulle JetBrains Runtime -version.
 
-### Verify your JDK installation {#verify-your-jdk-installation}
-Kun olet asentanut JDK:n, varmista asennus suorittamalla seuraava komento terminaalissasi tai komentokehotteessasi:
+Jos haluat ladata version itse:
 
-```bash
-java -version
-```
+- **Oracle JDK**: [Java Downloads](https://www.oracle.com/java/technologies/downloads/) -sivu, Oracle:n [asennusopas](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html).
+- **Eclipse Temurin**: [viimeisimmät julkaisut](https://adoptium.net/temurin/releases/) -sivu, Adoptiimin [asennusopas](https://adoptium.net/installation/).
+- **JetBrains Runtime**: [julkaisut](https://github.com/JetBrains/JetBrainsRuntime/releases) -sivu.
 
-Jos JDK on asennettu oikein, näet tulosteessa JDK-version tiedot, jotka osoittavat version **21**.
+Suorita `java -version` varmistaaksesi, mikä versio on polullasi.
 
-## Apache Maven {#apache-maven}
+## Build tool {#build-tool}
 
-[Apache Maven](https://maven.apache.org/index.html) on rakennusautomaatio- ja riippuvuuden hallintatyökalu, joka yksinkertaistaa ulkoisten kirjastojen, kuten webforJ:n, lisäämisen prosessia projektiisi. 
-Maven ei ainoastaan auta riippuvuuden hallinnassa, vaan se voi myös automatisoida tehtäviä, kuten koodin kääntämistä, testien suorittamista ja sovellusten pakkaamista.
+webforJ rakennetaan Mavenilla tai Gradlella. [Archetypes](/docs/introduction/getting-started) generoivat Maven-projekteja, joten Maven on nopein tapa uusiin sovelluksiin, ja olemassa oleva Gradle-build toimii samalla tavalla.
 
-### Maven installation links {#maven-installation-links}
-- Asentaaksesi uusimman version Mavenista, siirry [Apache Maven Download Page](https://maven.apache.org/download.cgi) sivulle. 
-  - Mavenin [Installing Apache Maven](https://maven.apache.org/install.html) sivulla on yleiskatsaus asennusprosessista. 
-  - Baeldungin [How to Install Maven on Windows, Linux, and Mac](https://www.baeldung.com/install-maven-on-windows-linux-mac) on syvällisempi asennusopas jokaiselle käyttöjärjestelmälle.
+<Tabs>
+<TabItem value="maven" label="Maven">
 
-### Verify your Maven installation {#verify-your-maven-installation}
+Asenna Maven [Apache Mavenin lataussivulta](https://maven.apache.org/download.cgi), seuraten Maveneiden [asennusohjeita](https://maven.apache.org/install.html) tai Baeldungin [opasta jokaiselle käyttöjärjestelmälle](https://www.baeldung.com/install-maven-on-windows-linux-mac).
 
-Kun olet asentanut Mavenin, varmista asennus suorittamalla seuraava komento terminaalissasi tai komentokehotteessasi:
+Suorita `mvn -v` varmistaaksesi asennuksen.
 
-```bash
-mvn -v
-```
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-Jos Maven on asennettu oikein, tulosteessa tulisi näkyä Mavenin versio, Java-versio ja käyttöjärjestelmän tiedot.
+Asenna Gradle seuraamalla Gradlen [asennusoppaita](https://gradle.org/install/).
 
-## Java IDE {#java-ide}
+Suorita `gradle -v` varmistaaksesi asennuksen. Projekti, joka toimittaa Gradle-wrapperin, ei tarvitse ollenkaan asennusta, sillä `./gradlew` lataa version, jonka projekti määrittää.
 
-Java IDE tarjoaa kattavan ympäristön koodisi kirjoittamiseen, testaamiseen ja virheiden debuggamiseen. Valittavana on monia IDE:itä, joten voit valita sellaisen, joka sopii työskentelytapaasi. Joitakin suosittuja valintoja Java-kehityksessä ovat:
+</TabItem>
+</Tabs>
 
-- **[Visual Studio Code](https://code.visualstudio.com/Download)**: Kevyt, laajennettava koodieditori, jossa on Java-tuki laajennusten avulla.
-- **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Tunnettu voimakkaasta Java-tuestaan ja rikkaasta laajennus-ekosysteemistään.
-- **[NetBeans](https://netbeans.apache.org/download/index.html)**: Ilmainen, avoimen lähdekoodin IDE Java- ja muiden kielten kehittämiseen, joka on tunnettu käytön helppoudesta ja valmiista projektimalleista.
+Molemmat buildit suorittavat webforJ:n build-aika työtä [webforJ build pluginin](/docs/configuration/build-plugin) kautta, jota projekti, joka on luotu archetypestä, jo sisältää.
+
+## Editor {#java-ide}
+
+Mikä tahansa Java-tukea tarjoava editori toimii, joten käytä sitä, joka sopii työskentelytapaasi. Yleisiä valintoja:
+
+- **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Java-tuki ja laajennus-ekosysteemi valmiina.
+- **[Visual Studio Code](https://code.visualstudio.com/Download)**: Kevyt editori, joka saa Java-tukensa laajennuksista.
+- **[Zed](https://zed.dev/download)**: Koodieditori, joka hyödyntää Javaa laajennuksen kautta, joka lataa ja hallinnoi Eclipse Java -kielipalvelinta puolestasi.

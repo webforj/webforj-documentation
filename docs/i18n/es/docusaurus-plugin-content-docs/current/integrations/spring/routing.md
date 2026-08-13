@@ -1,49 +1,52 @@
 ---
 title: Routing
 sidebar_position: 15
-_i18n_hash: 8518a84a9c7a543b73cf4de16658f650
+description: >-
+  Inject Spring services and repositories into webforJ @Route classes through
+  constructor injection while keeping a fresh instance per navigation.
+_i18n_hash: 4bef970301ebc7072162c3dc95b6e544
 ---
-Routing en webforJ con Spring funciona exactamente de la misma manera que en aplicaciones webforJ estándar. Aún utilizas la anotación `@Route` para definir rutas, los mismos patrones de navegación y el mismo ciclo de vida de las rutas. La única diferencia es que cuando Spring está presente, tus rutas también pueden recibir beans de Spring a través de la inyección por constructor.
+El enrutamiento en webforJ con Spring funciona exactamente de la misma manera que en aplicaciones webforJ normales. Aún utilizas la anotación `@Route` para definir rutas, los mismos patrones de navegación y el mismo ciclo de vida de rutas. La única diferencia es que, cuando Spring está presente, tus rutas también pueden recibir beans de Spring a través de la inyección por constructor.
 
-Cuando navegas a una ruta, webforJ crea la instancia de la ruta, pero con Spring en el classpath, utiliza el contenedor de Spring para resolver dependencias. Esto significa que tus rutas pueden utilizar todo el poder del ecosistema de Spring (servicios, repositorios, beans personalizados) mientras mantienen el comportamiento de enrutamiento familiar de webforJ.
+Cuando navegas a una ruta, webforJ crea la instancia de la ruta, pero con Spring en el classpath, utiliza el contenedor de Spring para resolver dependencias. Esto significa que tus rutas pueden usar todo el poder del ecosistema de Spring (servicios, repositorios, beans personalizados) mientras mantienen el comportamiento familiar de enrutamiento de webforJ.
 
 :::tip[Aprende más sobre inyección de dependencias]
-Para una comprensión completa de los patrones de inyección de dependencias y del contenedor IoC de Spring, consulta [la documentación oficial de inyección de dependencias de Spring](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html).
+Para una comprensión integral de los patrones de inyección de dependencias y el contenedor IoC de Spring, consulta [la documentación oficial de inyección de dependencias de Spring](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html).
 :::
 
 ## Cómo webforJ crea rutas con Spring {#how-webforj-creates-routes-with-spring}
 
-webforJ maneja la creación de rutas de manera diferente cuando Spring está presente. El mecanismo de creación de objetos del marco detecta Spring Boot en el classpath y delega a `AutowireCapableBeanFactory` de Spring para crear instancias con inyección de dependencias.
+webforJ maneja la creación de rutas de manera diferente cuando Spring está presente. El mecanismo de creación de objetos del marco detecta Spring Boot en el classpath y delega en `AutowireCapableBeanFactory` de Spring para crear instancias con inyección de dependencias.
 
-Para las clases descubiertas a través del escaneo de `@Routify`, webforJ siempre crea nuevas instancias y nunca reutiliza beans de Spring existentes. Cada navegación de usuario recibe una nueva instancia de ruta sin estado compartido. El proceso de creación:
+Para las clases descubiertas a través del escaneo de `@Routify`, webforJ siempre crea nuevas instancias y nunca reutiliza beans existentes de Spring. Cada navegación de usuario recibe una instancia de ruta limpia sin estado compartido. El proceso de creación:
 
-1. El usuario navega a una ruta.
-2. webforJ solicita una nueva instancia (ignorando cualquier definición de bean de Spring existente).
-3. La fábrica de Spring crea la instancia e inyecta las dependencias del constructor.
-4. La ruta se inicializa con todas las dependencias satisfechas.
+1. El usuario navega a una ruta
+2. webforJ solicita una nueva instancia (ignorando cualquier definición de bean existente en Spring)
+3. La fábrica de Spring crea la instancia e inyecta las dependencias del constructor
+4. La ruta se inicializa con todas las dependencias satisfechas
 
-Este comportamiento es intencional y difiere de los típicos beans de Spring. Incluso si registras una ruta como un bean de Spring con `@Component`, webforJ ignora esa definición de bean y crea una nueva instancia para cada navegación.
+Este comportamiento es intencionado y difiere de los beans típicos de Spring. Incluso si registras una ruta como un bean de Spring con `@Component`, webforJ ignora esa definición de bean y crea una nueva instancia para cada navegación.
 
 ## Usando beans de Spring en rutas {#using-spring-beans-in-routes}
 
-Tus clases de ruta no requieren anotaciones de Spring. La anotación `@Route` por sí sola habilita tanto el descubrimiento de rutas como la inyección de dependencias:
+Tus clases de ruta no requieren anotaciones de Spring. La anotación `@Route` por sí sola permite tanto el descubrimiento de rutas como la inyección de dependencias:
 
 ```java
 @Route("/dashboard")
 public class DashboardView extends Composite<Div> {
-  
+
   private final Div self = getBoundComponent();
   private final MetricsService metricsService;
   private final UserRepository userRepository;
-  
+
   public DashboardView(MetricsService metricsService, UserRepository userRepository) {
     this.metricsService = metricsService;
     this.userRepository = userRepository;
-    
-    // Usar servicios inyectados para construir la UI
+
+    // Usa servicios inyectados para construir UI
     Div metricsPanel = new Div();
     metricsPanel.setText(metricsService.getCurrentMetrics());
-    
+
     self.add(metricsPanel);
   }
 }
@@ -56,11 +59,11 @@ El constructor puede recibir:
 - Beans de infraestructura de Spring (`ApplicationContext`, `Environment`)
 - Cualquier bean registrado en el contexto de Spring
 
-## Ejemplo funcional {#working-example}
+## Ejemplo de trabajo {#working-example}
 
-Este ejemplo demuestra un escenario completo de inyección de dependencias donde un servicio de Spring se inyecta en una ruta de webforJ. El servicio gestiona la lógica de negocio mientras que la ruta maneja la presentación de la UI.
+Este ejemplo demuestra un escenario completo de inyección de dependencias donde un servicio de Spring se inyecta en una ruta de webforJ. El servicio gestiona la lógica empresarial mientras que la ruta maneja la presentación de la interfaz de usuario.
 
-Primero, define un servicio de Spring estándar usando la anotación `@Service`. Este servicio será gestionado por el contenedor de Spring y estará disponible para inyección:
+Primero, define un servicio estándar de Spring utilizando la anotación `@Service`. Este servicio será gestionado por el contenedor de Spring y estará disponible para la inyección:
 
 ```java title="RandomNumberService.java"
 @Service
@@ -95,13 +98,13 @@ public class HelloWorldView extends Composite<FlexLayout> {
 }
 ```
 
-En este ejemplo, el `RandomNumberService` es un bean de servicio estándar de Spring. La ruta `HelloWorldView` lo declara como un parámetro del constructor, y Spring proporciona automáticamente la instancia del servicio cuando webforJ crea la ruta.
+En este ejemplo, el `RandomNumberService` es un bean de servicio de Spring estándar. La ruta `HelloWorldView` lo declara como un parámetro del constructor, y Spring proporciona automáticamente la instancia del servicio cuando webforJ crea la ruta.
 
-Observa que la clase de ruta solo utiliza la anotación `@Route`, no se necesitan estereotipos de Spring como `@Component` o `@Controller`. Cuando un usuario navega a la ruta raíz `/`, webforJ:
+Nota que la clase de ruta solo utiliza la anotación `@Route` - no se necesitan estereotipos de Spring como `@Component` o `@Controller`. Cuando un usuario navega a la ruta raíz `/`, webforJ:
 
-1. Crea una nueva instancia de `HelloWorldView`.
-2. Pide a Spring que resuelva la dependencia `RandomNumberService`.
-3. Pasa el servicio al constructor.
-4. La ruta utiliza el servicio inyectado para manejar los clics de botón.
+1. Crea una nueva instancia de `HelloWorldView`
+2. Pide a Spring que resuelva la dependencia de `RandomNumberService`
+3. Pasa el servicio al constructor
+4. La ruta utiliza el servicio inyectado para manejar los clics del botón
 
-Este patrón funciona con cualquier bean de Spring: servicios, repositorios, clases de configuración o componentes personalizados. La inyección de dependencias ocurre de manera transparente, permitiéndote concentrarte en construir tu UI mientras Spring gestiona el cableado.
+Este patrón funciona con cualquier bean de Spring: servicios, repositorios, clases de configuración o componentes personalizados. La inyección de dependencias ocurre de manera transparente, permitiéndote concentrarte en construir tu interfaz de usuario mientras Spring gestiona el cableado.

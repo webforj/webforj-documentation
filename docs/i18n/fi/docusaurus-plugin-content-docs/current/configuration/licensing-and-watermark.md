@@ -1,12 +1,13 @@
 ---
 title: Licensing and Watermark
-sidebar_position: 20
-_i18n_hash: 9846eb8092fd823df938558446c260cf
+sidebar_position: 45
+description: >-
+  Request a webforJ trial certificate and place certificate.bls in the resources
+  directory to remove the unlicensed runtime watermark.
+_i18n_hash: 98575d4533b0e62a9c8a701b40622a52
 ---
-Oletusarvoisesti webforJ-projektit voidaan suorittaa, mutta niillä ei ole niihin liitettyä lisenssitodistusta. Kun suoritat lisensoimattoman projektin, vesileima näkyy käynnissä olevan sovelluksen käyttöliittymässä, kunnes voimassa oleva lisenssi on syötetty.
+Oletusarvoisesti webforJ-projekteja voi suorittaa, mutta niille ei ole liitetty lisenssitodistusta. Kun suoritat lisenssitöntä projektia, vesileima näkyy käynnissä olevan sovelluksen käyttöliittymässä, kunnes voimassa oleva lisenssi on syötetty.
 
-<!-- TODO add link -->
+Yksittäisille kehittäjille webforJ:n kokeilulisenssitodistuksen hankkiminen on helppoa. Vieraile [webforJ:n hinnoittelusivulla](https://webforj.com/pricing/), valitse sopiva suunnitelma ja seuraa ohjeita lisenssin pyytämiseksi.
 
-Yksittäisten kehittäjien on helppo hankkia kokeellinen lisenssitodistus webforJ:lle. Vieraile lisenssitodistuspyyntölomakkeessa, täytä tiedot ja lähetä lomake. Lomakkeen lähettämisen jälkeen vahvistussähköposti, jossa on liitettynä `certificate.bls`-tiedosto, lähetetään annettuun sähköpostiosoitteeseen.
-
-Aseta tämä tiedosto projektin `resources`-hakemistoon, jolloin vesileima ei enää näy.
+Jos haluat, että webforJ-sovellus voi pyytää lisenssin palvelimelta, joka toimii kehitysmasiinasi tai sisäisessä verkossasi, mene [Paikalliseen BLS-lisenssiin](/docs/configuration/local-bls-license).

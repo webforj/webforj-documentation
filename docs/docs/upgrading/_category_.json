@@ -4,5 +4,6 @@
   "link": {
     "type": "doc",
     "id": "overview"
-  }
+  },
+  "className": "has-new-content cat-icon cat-icon--upgrading"
 }
