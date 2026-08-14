@@ -1,10 +1,12 @@
 ---
-title: Spring Framework
+title: Spring
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: 2bd69e8c9fad1e483d3c087f0e00e229
+description: >-
+  Combine webforJ UI components with Spring Boot for dependency injection,
+  Spring Data repositories, custom scopes, and live reload.
+_i18n_hash: 7af3520db108b976dda9856890c61979
 ---
 <Head>
   <style>{`
@@ -14,11 +16,11 @@ _i18n_hash: 2bd69e8c9fad1e483d3c087f0e00e229
   `}</style>
 </Head>
 
-Monet Java-tiimistä käyttää jo [Spring Bootia](https://spring.io/projects/spring-boot) sovellusten rakentamiseen. Springin integrointi webforJ:hin mahdollistaa webforJ:n käyttöliittymäkomponenttien lisäämisen olemassa oleviin Spring-sovelluksiin tai Springin ominaisuuksien käyttämisen uusissa webforJ-projekteissa.
+Monet Java-tiimeistä käyttää jo [Spring Bootia](https://spring.io/projects/spring-boot) sovellusten rakentamiseen. Springin integrointi webforJ:n kanssa mahdollistaa webforJ:n käyttöliittymäkomponenttien lisäämisen olemassa oleviin Spring-sovelluksiin tai Springin ominaisuuksien hyödyntämisen uusissa webforJ-projekteissa.
 
-Spring-palvelusi, varastot ja konfiguraatio toimivat normaalisti. WebforJ-komponenttisi voivat `@Autowired` mihin tahansa Spring-beaniin. [Spring Data](https://spring.io/projects/spring-data) -varastot yhdistävät suoraan webforJ-tauluihin `SpringDataRepositoryn` kautta. Kehitys nopeutuu automaattisella selainpäivityksellä [Spring DevToolsin ja webforJ LiveReloadin](/docs/configuration/deploy-reload/spring-devtools) avulla.
+Spring-palvelusi, varastosi ja konfiguraatiosi toimivat normaalisti. WebforJ-komponenttisi voivat `@Autowired` mitä tahansa Spring-beania. [Spring Data](https://spring.io/projects/spring-data) varastot yhdistävät suoraan webforJ-tauluihin `SpringDataRepository`-kautta. Kehitys nopeutuu [live reload](/docs/configuration/deploy-reload/spring-devtools), joka päivittää selainta koodimuutosten myötä.
 
-Integraatio pitää molemmat kehykset tekemässä parasta, mitä ne osaavat - Spring hoitaa taustahuoltoa, kun taas webforJ huolehtii käyttöliittymästä.
+Integraatio pitää molemmat kehykset tekemässä sitä, mitä ne osaavat parhaiten - Spring käsittelee taustahuolia samalla kun webforJ hallitsee käyttöliittymää.
 
 ## Topics {#topics}
 

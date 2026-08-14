@@ -4,9 +4,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.webforj.samples</groupId>
-  <artifactId>webforj-samples</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>webforj-documentation</artifactId>
+  <version>1.0</version>
   <packaging>war</packaging>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
@@ -17,17 +18,12 @@
     <playwright.version>1.50.0</playwright.version>
     <threadCount>8</threadCount>
 
-    <!--
-      Configures automatic reload of Jetty server
-      (with 1 second timeout) when new classes are compiled.
-      Should be disabled when using a live reload system, such as JRebel.
-      -->
     <jetty.scan>1</jetty.scan>
     <port>8080</port>
     <jetty.port>${port}</jetty.port>
     <jetty.stopPort>9966</jetty.stopPort>
-
   </properties>
+
   <repositories>
     <repository>
       <name>Central Portal Snapshots</name>
@@ -54,6 +50,7 @@
       <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     </pluginRepository>
   </pluginRepositories>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -72,15 +69,11 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>com.webforj</groupId>
       <artifactId>webforj</artifactId>
-      <version>${webforj.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.webforj</groupId>
-      <artifactId>webforj-engine</artifactId>
       <version>${webforj.version}</version>
     </dependency>
     <dependency>
@@ -96,6 +89,24 @@
       <artifactId>commons-csv</artifactId>
       <version>1.11.0</version>
     </dependency>
+    <dependency>
+      <groupId>org.tuckey</groupId>
+      <artifactId>urlrewritefilter</artifactId>
+      <version>5.1.3</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>6.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.18.0</version>
+    </dependency>
+
+    <!-- Test dependencies -->
     <dependency>
       <groupId>com.microsoft.playwright</groupId>
       <artifactId>playwright</artifactId>
@@ -116,28 +127,60 @@
       <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
-
-    <dependency>
-      <groupId>org.tuckey</groupId>
-      <artifactId>urlrewritefilter</artifactId>
-      <version>5.1.3</version>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-      <version>6.0.0</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.18.0</version>
-    </dependency>
   </dependencies>
+
   <build>
     <defaultGoal>compile webforj:watch jetty:run</defaultGoal>
     <finalName>${warFileName}</finalName>
+
     <plugins>
+      <!-- Build the WAR file -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <filtering>true</filtering>
+              <directory>src/main/webapp</directory>
+              <includes>
+                <include>**/web.xml</include>
+              </includes>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+
+      <!-- Clean also removes the Docusaurus build output and caches (same as `npm run clear`) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.4.1</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>docs/build</directory>
+            </fileset>
+            <fileset>
+              <directory>docs/.docusaurus</directory>
+            </fileset>
+            <fileset>
+              <directory>docs/node_modules/.cache</directory>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
+      <!-- webforJ build plugin -->
+      <plugin>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-maven-plugin</artifactId>
+        <version>${webforj.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+
+      <!-- Formatting-->
       <plugin>
         <groupId>com.diffplug.spotless</groupId>
         <artifactId>spotless-maven-plugin</artifactId>
@@ -162,104 +205,7 @@
         </executions>
       </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
-        <configuration>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>com.webforj</groupId>
-              <artifactId>webforj-minify-foundation</artifactId>
-              <version>${webforj.version}</version>
-            </path>
-          </annotationProcessorPaths>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>com.github.eirslett</groupId>
-        <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.15.1</version>
-        <executions>
-          <execution>
-            <id>install node and npm</id>
-            <goals>
-              <goal>install-node-and-npm</goal>
-            </goals>
-            <phase>generate-resources</phase>
-          </execution>
-          <execution>
-            <id>npm install</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <phase>generate-resources</phase>
-          </execution>
-          <execution>
-            <id>npm run build</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <phase>generate-resources</phase>
-            <configuration>
-              <environmentVariables>
-                <WEBFORJ_VERSION>${webforj.version}</WEBFORJ_VERSION>
-              </environmentVariables>
-              <arguments>run build</arguments>
-            </configuration>
-          </execution>
-        </executions>
-        <configuration>
-          <nodeVersion>v23.5.0</nodeVersion>
-          <npmVersion>10.9.2</npmVersion>
-          <workingDirectory>docs</workingDirectory>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.3.1</version>
-        <executions>
-          <execution>
-            <id>copy static docs</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>docs/build</directory>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.4.0</version>
-        <configuration>
-          <webResources>
-            <resource>
-              <filtering>true</filtering>
-              <directory>src/main/webapp</directory>
-              <includes>
-                <include>**/web.xml</include>
-              </includes>
-            </resource>
-          </webResources>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.webforj</groupId>
-        <artifactId>webforj-maven-plugin</artifactId>
-        <version>${webforj.version}</version>
-        <extensions>true</extensions>
-      </plugin>
+      <!-- Run Jetty server -->
       <plugin>
         <groupId>org.eclipse.jetty.ee10</groupId>
         <artifactId>jetty-ee10-maven-plugin</artifactId>
@@ -299,6 +245,8 @@
           </execution>
         </executions>
       </plugin>
+
+      <!-- Maven plugins  -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -335,6 +283,8 @@
           <rerunFailingTestsCount>2</rerunFailingTestsCount>
         </configuration>
       </plugin>
+
+      <!-- Copy the webforj.conf file to the target directory -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -451,38 +401,86 @@
       </plugin>
     </plugins>
   </build>
+
   <profiles>
+
+    <!-- Profile for production environment -->
     <profile>
       <id>prod</id>
-      <activation>
-      </activation>
       <properties>
         <config.file>webforj-prod.conf</config.file>
       </properties>
       <build>
         <plugins>
+          <!-- docusaurus build (all locales), prod only -->
           <plugin>
-            <groupId>com.webforj</groupId>
-            <artifactId>webforj-minify-maven-plugin</artifactId>
-            <version>${webforj.version}</version>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.15.1</version>
             <executions>
               <execution>
+                <id>install node and npm</id>
                 <goals>
-                  <goal>minify</goal>
+                  <goal>install-node-and-npm</goal>
                 </goals>
+                <phase>generate-resources</phase>
+              </execution>
+              <execution>
+                <id>npm install</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <phase>generate-resources</phase>
+              </execution>
+              <execution>
+                <id>npm run build</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <phase>generate-resources</phase>
+                <configuration>
+                  <environmentVariables>
+                    <WEBFORJ_VERSION>${webforj.version}</WEBFORJ_VERSION>
+                  </environmentVariables>
+                  <arguments>run build</arguments>
+                </configuration>
               </execution>
             </executions>
-            <dependencies>
-              <dependency>
-                <groupId>com.webforj</groupId>
-                <artifactId>webforj-minify-phcss-css</artifactId>
-                <version>${webforj.version}</version>
-              </dependency>
-            </dependencies>
+            <configuration>
+              <nodeVersion>v23.5.0</nodeVersion>
+              <npmVersion>10.9.2</npmVersion>
+              <workingDirectory>docs</workingDirectory>
+            </configuration>
+          </plugin>
+
+          <!-- Copy static docs to the WAR file -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.3.1</version>
+            <executions>
+              <execution>
+                <id>copy static docs</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+                  <resources>
+                    <resource>
+                      <directory>docs/build</directory>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
     </profile>
+
+    <!-- Default dev profile -->
     <profile>
       <id>dev</id>
       <activation>
@@ -497,33 +495,6 @@
           <artifactId>webforj-devtools</artifactId>
         </dependency>
       </dependencies>
-    </profile>
-    <profile>
-      <id>en-only</id>
-      <properties>
-        <config.file>webforj-prod.conf</config.file>
-      </properties>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>com.github.eirslett</groupId>
-            <artifactId>frontend-maven-plugin</artifactId>
-            <version>1.15.0</version>
-            <executions>
-              <execution>
-                <id>npm run build</id>
-                <goals>
-                  <goal>npm</goal>
-                </goals>
-                <phase>generate-resources</phase>
-                <configuration>
-                  <arguments>run build -- --locale en</arguments>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
     </profile>
   </profiles>
 </project>

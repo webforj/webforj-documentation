@@ -4,9 +4,10 @@ sidebar_position: 15
 description: >-
   Attach a remote Java debugger to a running webforJ app from Visual Studio
   Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
-_i18n_hash: d418992cee0dea04f98e4d4760acc2db
+sidebar_class_name: updated-content
+_i18n_hash: c7b0a48745ef8f5793e38a3dd7691176
 ---
-Virheiden korjaaminen on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunnistamaan ja korjaamaan ongelmat tehokkaasti. Tämä opas selittää, kuinka voit määrittää virheiden korjaamisen webforJ:ssä Visual Studio Codessa, IntelliJ IDEA:ssa ja Eclipsessä.
+Virheenkorjaus on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunnistamaan ja korjaamaan ongelmia tehokkaasti. Tämä opas selittää, kuinka konfiguroidaan virheenkorjaus webforJ:ssä Visual Studio Codessa, IntelliJ IDEA:ssa ja Eclipsessä.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -20,8 +21,8 @@ Virheiden korjaaminen on olennainen osa Java-kehitystä, ja se auttaa kehittäji
 1. Avaa webforJ-projektisi VS Codessa.
 2. Paina <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (tai <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> Macilla) avataksesi Suorita ja virheenkorjaus -paneelin.
 3. Napsauta "luo launch.json-tiedosto"
-4. Valitse Java ympäristönä.
-5. Muokkaa `launch.json` seuraavasti:
+4. Valitse ympäristöksi Java.
+5. Muokkaa `launch.json` seuraavaksi:
 
 ```json title="launch.json"
 {
@@ -29,7 +30,7 @@ Virheiden korjaaminen on olennainen osa Java-kehitystä, ja se auttaa kehittäji
   "configurations": [
     {
       "type": "java",
-      "name": "Attach to Jetty",
+      "name": "Liity Jettyyn",
       "request": "attach",
       "hostName": "localhost",
       "port": 8000
@@ -38,7 +39,7 @@ Virheiden korjaaminen on olennainen osa Java-kehitystä, ja se auttaa kehittäji
 }
 ```
 
-6. Tallenna tiedosto ja napsauta Aloita virheenkorjaus.
+6. Tallenna tiedosto ja napsauta Käynnistä virheenkorjaus.
 
 </TabItem>
 <TabItem value="intellij" label="IntelliJ IDEA">
@@ -50,10 +51,10 @@ Virheiden korjaaminen on olennainen osa Java-kehitystä, ja se auttaa kehittäji
 </div>
 
 1. Avaa projektisi IntelliJ IDEA:ssa.
-2. Siirry kohtaan Suorita → Muokkaa asetuksia.
-3. Napsauta <kbd>+</kbd>-painiketta ja valitse Etä-JVM-virheenkorjaus.
+2. Siirry kohtaan Suorita → Muokkaa konfiguraatioita.
+3. Napsauta <kbd>+</kbd> -painiketta ja valitse Etä-JVM-virheenkorjaus.
 4. Aseta isäntäkoneeksi `localhost` ja portiksi `8000`.
-5. Tallenna asetukset ja napsauta Virheenkorjaus liittääksesi meneillään olevaan sovellukseen.
+5. Tallenna konfiguraatio ja napsauta Virheenkorjaus liittääksesi käynnissä olevaan sovellukseen.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -65,9 +66,9 @@ Virheiden korjaaminen on olennainen osa Java-kehitystä, ja se auttaa kehittäji
 </div>
 
 1. Avaa projektisi Eclipsessä.
-2. Mene kohtaan Suorita → Muokkaa asetuksia.
-3. Valitse Etä-Java-sovellus.
-4. Napsauta Uusi asetukset ja aseta:
+2. Siirry kohtaan Suorita → Muokkaa konfiguraatioita.
+3. Valitse Etäinen Java-sovellus.
+4. Napsauta Uusi konfiguraatio ja aseta:
    - Isäntä: `localhost`
    - Portti: `8000`
 5. Tallenna ja käynnistä virheenkorjaus.
@@ -75,17 +76,30 @@ Virheiden korjaaminen on olennainen osa Java-kehitystä, ja se auttaa kehittäji
 </TabItem>
 </Tabs>
 
-## Virheenkorjaus {#running-the-debugger}
+## Virheenkorjaimen käyttö {#running-the-debugger}
 
-Kun olet määrittänyt IDE:n:
+Kun olet konfiguroinut IDE:si:
 
 1. Käynnistä webforJ-sovelluksesi vastaavalla komennolla:
     - Jettylle käytä `mvnDebug jetty:run`
     - Spring Bootille käytä `mvnDebug spring-boot:run`
-2. Suorita virheenkorjausasetukset IDE:ssasi.
-3. Aseta katkaisupisteet ja aloita virheenkorjaus.
+2. Suorita virheenkorjauskonfiguraatio IDE:ssäsi.
+3. Aseta katkokohdat ja ala virheenkorjata.
 
 :::tip Virheenkorjausvinkit
-1. Varmista, että portti 8000 on käytettävissä eikä mitään palomuuria estä sitä.
-2. Jos käytät jotakin webforJ-arkkitehtuureista ja olet muuttanut porttinumeroa pom.xml-tiedostossa, varmista, että virheenkorjaamiseen käytettävä portti vastaa päivittynyttä arvoa.
+1. Varmista, että portti 8000 on käytettävissä eikä minkään palomuurin estämä.
+2. Jos käytät jotain webforJ-mallia ja olet muuttanut porttinumeroa pom.xml-tiedostossa, varmista, että virheenkorjauksessa käytettävä portti vastaa päivitettyä arvoa.
 :::
+
+## Käynnissä olevan sovelluksen tarkastelu {#inspecting-the-running-app}
+
+Virheenkorjausohjelma näyttää, mitä koodisi tekee. [craftforJ](/docs/craftforj) näyttää sinulle sovelluksen, jonka koodi tuotti, mukaan lukien komponenttipuun, jonka webforJ rakensi, kunkin komponentin ominaisuudet, mikä reitti on aktiivinen ja kuka voi käyttää sitä. Voit muuttaa ominaisuutta, nähdä tuloksen käynnissä olevassa sovelluksessa ja kirjoittaa muutoksen takaisin siihen Javaan, josta se tuli.
+
+craftforJ toimitetaan webforJ:n mukana ja käyttää samaa virheenkorjaustilaa, jonka olet jo mahdollistanut, plus yhden lisäominaisuuden:
+
+```ini title="webforj.conf"
+webforj.debug = true
+webforj.devtools.craftforj.enabled = true
+```
+
+Katso [Aloitus craftforJ:n kanssa](/docs/craftforj/getting-started).
