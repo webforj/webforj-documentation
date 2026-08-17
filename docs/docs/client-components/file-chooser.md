@@ -1,21 +1,12 @@
 ---
-sidebar_position: 0
 title: <dwc-file-chooser>
 sidebar_class_name: sidebar--item__hidden
 slug: file-chooser
 description: Customize the dwc-file-chooser client component with CSS variables and shadow parts to theme the picker dialog, breadcrumbs, and list.
-// pagination_prev: null
-// pagination_next: null
 ---
 
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
-
-<br />
-
+    
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-file-chooser>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::
