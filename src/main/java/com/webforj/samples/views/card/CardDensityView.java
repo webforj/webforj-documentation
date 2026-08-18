@@ -23,8 +23,9 @@ public class CardDensityView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public CardDensityView() {
-    self.setMargin("var(--dwc-space-l)")
-        .setSpacing("var(--dwc-space-m")
+    self.setHeight("100vh")
+        .setMargin("var(--dwc-space-l)")
+        .setSpacing("var(--dwc-space-m)")
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setAlignment(FlexAlignment.CENTER)
         .setWrap(FlexWrap.WRAP);

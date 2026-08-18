@@ -26,7 +26,8 @@ public class CardRegionsView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public CardRegionsView() {
-    self.setDirection(FlexDirection.COLUMN)
+    self.setHeight("100vh")
+        .setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-l");
@@ -45,7 +46,7 @@ public class CardRegionsView extends Composite<FlexLayout> {
 
   private GoogleChart buildChart() {
     GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
-    chart.addClassName("card-regions__chart");
+    chart.setWidth("100%");
 
     chart.setOptions(
         Map.of(
