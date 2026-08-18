@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-toolbar>
 sidebar_class_name: sidebar--item__hidden
 slug: toolbar
-description: A user guide article for the toolbar
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 5ddca7821c09d0f46e27af39c3a5e37a
+description: >-
+  Style the dwc-toolbar container, slots, and action items with CSS variables
+  and shadow parts for background and spacing.
+_i18n_hash: 15accc5eefe760d84e9708dc0e63829f
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-toolbar>`**-Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-toolbar>`**-Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

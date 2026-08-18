@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-infinite-scroll>
 sidebar_class_name: sidebar--item__hidden
 slug: infinite-scroll
-description: A user guide article for the infinite-scroll
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 0108c094189619169ffe818cc95568ea
+description: >-
+  Customize the dwc-infinite-scroll client component via CSS variables and
+  shadow parts to theme the loader, sentinel, and scroll container.
+_i18n_hash: 8f29db42bab106da3ecbc06d7a569106
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt die Stilinformationen für die **`<dwc-infinite-scroll>`**-Komponente. Diese Komponente ist **nur auf der Client-Seite** – sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+:::info CLIENT COMPONENT
+Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-infinite-scroll>`** Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

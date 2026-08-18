@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-tree>
 sidebar_class_name: sidebar--item__hidden
 slug: tree
-description: A user guide article for the tree
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 12f8d2aace66c9f44af73f45e340b80a
+description: >-
+  Style the dwc-tree component with CSS variables for indentation, color, and
+  expand-icon theming, plus shadow parts for nodes.
+_i18n_hash: acae4034b3108558c4efc13775b2c677
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt die Stylinginformationen für die **`<dwc-tree>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+:::info CLIENT COMPONENT
+Dieser Abschnitt enthält Stylinginformationen für die **`<dwc-tree>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: spinner
-description: A user guide article for the spinner
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 94d49b319010f10503b0c35bfe072e8c
+description: >-
+  Customize the dwc-spinner loading indicator with CSS variables and shadow
+  parts for size, color, and animation speed.
+_i18n_hash: 0db80ed73509aa703b90513e9a912117
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt Styling-Informationen für die **`<dwc-spinner>`**-Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
+:::info KUNDENKOMPONENTE
+Dieser Abschnitt beschreibt die Stilinformationen für die **`<dwc-spinner>`** Komponente. Diese Komponente ist **nur client-seitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

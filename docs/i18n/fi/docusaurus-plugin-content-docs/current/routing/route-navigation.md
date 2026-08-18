@@ -4,20 +4,21 @@ title: Route Navigation
 description: >-
   Trigger client-side navigation programmatically with Router.navigate, pass
   parameters, and switch views without reloads.
-_i18n_hash: c32517b16f185d4b54682b95c82d38d3
+sidebar_class_name: updated-content
+_i18n_hash: 0284f2481f307d68da728d81f4b3a6a2
 ---
-In webforJ, reittien välillä liikkuminen on keskeinen mekanismi näkymien ja komponenttien vaihtamiseksi käyttäjän toimien tai URL-muutosten perusteella. Navigointi mahdollistaa käyttäjien siirtymisen saumattomasti sovelluksen eri osien välillä ilman sivun lataamista uudelleen. Tämä asiakaspään navigointi pitää sovelluksen responsiivisena ja sujuvana säilyttäen sovelluksen tilan.
+In webforJ, navigointi reittien välillä on keskeinen mekanismi näkymien ja komponenttien vaihtamiseksi käyttäjän toimien tai URL-muutosten perusteella. Navigointi mahdollistaa käyttäjien siirtymisen saumattomasti sovelluksen eri osien välillä ilman, että sivua tarvitsisi päivittää. Tämä asiakaspuolen navigointi pitää sovelluksen responsiivisena ja sujuvana samalla, kun se säilyttää sovelluksen tilan.
 
 ## Ohjelmallinen navigointi {#programmatic-navigation}
 
-Voit laukaista navigoinnin mistä tahansa sovelluksessasi käyttämällä `Router`-luokkaa. Tämä mahdollistaa dynaamiset muutokset näytettävissä komponenteissa tapahtumien, kuten painallusten tai muiden käyttäjäinteraktioiden, perusteella.
+Voit laukaista navigoinnin mistä tahansa sovelluksessasi käyttämällä `Router`-luokkaa. Tämä mahdollistaa dynaamiset muutokset näytettävissä komponenteissa tapahtumien, kuten painikkeen napsautusten tai muiden käyttäjävuorovaikutusten perusteella.
 
-Tässä on esimerkki siitä, miten navigoidaan tiettyyn reittiin:
+Tässä on esimerkki siitä, miten navigoida tiettyyn reittiin:
 
 ```java
 @Route(value = "dashboard")
 public class DashboardView extends Composite<Div> {
-  // Komponentin logiikka täällä
+  // Komponenttilogiikka tähän
 }
 ```
 
@@ -26,21 +27,21 @@ public class DashboardView extends Composite<Div> {
 Router.getCurrent().navigate(DashboardView.class);
 ```
 
-Tässä esimerkissä navigointi `DashboardView`-komponenttiin ohjelmallisesti saa aikaan sen, että `DashboardView`-komponentti renderoidaan ja selaimen URL päivitetään `/dashboard`.
+Tässä esimerkissä navigointi `DashboardView`-komponenttiin ohjelmallisesti aiheuttaa, että `DashboardView`-komponentti renderoidaan ja selaimen URL päivitetään osoitteeseen `/dashboard`.
 
-On myös mahdollista navigoida näkymään siirtämällä uusi `Location`
+On myös mahdollista navigoida näkymään antamalla uusi `Location`
 
 ```java
 Router.getCurrent().navigate(new Location("/dashboard"));
 ```
 
-:::tip Luokka vs. Location: Menetelmät näkymien reitittämiseen 
-Kun navigoidaan näkymien välillä, kehittäjillä on kaksi vaihtoehtoa: he voivat joko siirtää näkymän tai reittiluokan, jolloin reititin luo automaattisesti URL:n ja renderoi näkymän, tai siirtää sijainnin suoraan. Molemmat menetelmät ovat voimassa, mutta **näkymäluokan käyttäminen on suositeltava lähestymistapa**, koska se tarjoaa paremman joustavuuden tuleville muutoksille. Esimerkiksi, jos päätät myöhemmin päivittää reittiä, sinun tarvitsee vain muuttaa `@Route`-annotaatiota, ilman että sinun tarvitsee muuttaa mitään koodia, joka käyttää näkymäluokkaa navigointiin.
+:::tip Luokka vs. Sijainti: Menetelmät näkymän reitittämiseen
+Kun navigoidaan näkymien välillä, kehittäjillä on kaksi vaihtoehtoa: he voivat joko antaa näkymän tai reittiluokan, jolloin reititin voi automaattisesti luoda URL-osoitteen ja renderoida näkymän, tai antaa sijainti suoraan. Molemmat menetelmät ovat voimassa, mutta **näkymäluokan käyttäminen on suositeltava lähestymistapa**, koska se tarjoaa parempaa joustavuutta tulevalle muutokselle. Esimerkiksi, jos päätät myöhemmin päivittää reitin, sinun tarvitsee vain muokata `@Route`-annotaatiota ilman, että sinun tarvitsee muuttaa mitään koodia, joka käyttää näkymäluokkaa navigointiin.
 :::
 
 ### Navigointi parametreilla {#navigation-with-parameters}
 
-Kun tarvitset siirtää parametreja reitin mukana, webforJ mahdollistaa parametrien upottamisen URL:ään. Tässä on, miten voit navigoida reittiin parametreilla:
+Kun sinun tarvitsee lähettää parametreja reitin mukana, webforJ sallii parametrien upottamisen URL-osoitteeseen. Tässä on, miten voit navigoida reittiin parametreilla:
 
 ```java
 @Route("user/:id")
@@ -69,36 +70,36 @@ public class UserProfileView extends Composite<Div> implements DidEnterObserver 
 ```
 
 ```java
-// navigoi näkymään ja siirrä käyttäjän id
+// navigoi näkymään ja lähetä käyttäjän id
 Router.getCurrent().navigate(
   UserProfileView.class,
   ParametersBag.of("id=JohnDoe")
 );
 ```
 
-Tämä navigoi `/user/JohnDoe`, jossa `JohnDoe` voi edustaa käyttäjän ID:tä. Tämän reitin komponentti voi sitten purkaa parametrin ja käyttää sitä tarpeen mukaan.
+Tämä navigoi osoitteeseen `/user/JohnDoe`, jossa `JohnDoe` voi edustaa käyttäjän ID:tä. Tämän reitin komponentti voi sitten poimia parametrin ja käyttää sitä asianmukaisesti.
 
 ## Luotu näkymäinstanssi {#created-view-instance}
 
-`navigate`-menetelmä hyväksyy Java `Consumer`:in, jota kutsutaan, kun navigointi on valmis. `Consumer` saa luodun näkymäkomponentin instanssin, joka on pakattu java `Optional`:iin, jolloin kehittäjä voi vuorovaikuttaa näkymän kanssa onnistuneen navigoinnin jälkeen.
+`navigate`-menetelmä hyväksyy Java `Consumer`-tyypin, jota kutsutaan, kun navigointi on valmis. `Consumer` saa luodun näkymäkomponentin instanssin, joka on pakattu java `Optional`-tyyppiin, mikä mahdollistaa kehittäjän vuorovaikuttaa näkymän kanssa onnistuneen navigoinnin jälkeen.
 
 ```java
 Router.getCurrent().navigate(
   UserProfileView.class,
   ParametersBag.of("id=JohnDoe"), (component) -> {
     component.ifPresent(view -> {
-      console().log("Uusi otsikko on: " + view.getTitle());
+      console().log("Uuden otsikon on: " + view.getTitle());
     });
   });
 ```
 
-:::info Null-instanssit 
-Kuluttaja saa Java `Optional`:n komponentille, koska se saattaa olla `null` tai sitä ei ole luotu eri syistä. Esimerkiksi komponenttia ei ehkä renderöidä, jos navigoinnin tarkkailijat estävät navigoinnin ja pysäyttävät prosessin.
+:::info Null-instanssit
+Kuluttaja saa Java `Optional`-tyypin komponentille, koska se voi olla `null` tai ei luotu erilaisista syistä. Esimerkiksi komponenttia ei ehkä renderöidä, jos navigointihavainnot estävät navigoinnin ja pysäyttävät prosessin.
 :::
 
 ## Navigointivaihtoehdot {#navigation-options}
 
-`NavigationOptions`-luokka mahdollistaa kehittäjille navigoinnin käsittelyn hienosäätämisen sovelluksessa. Asettamalla erityisiä vaihtoehtoja voit hallita navigoinnin käyttäytymistä, kuten selaimen historian päivitystä, elinkaaritarkkailijoiden kutsumista tai jopa navigointitapahtumien laukaiselemista.
+`NavigationOptions`-luokka sallii kehittäjien hienosäätää, kuinka navigointi käsitellään sovelluksessa. Asettamalla erityisiä vaihtoehtoja voit hallita navigoinnin käyttäytymistä, kuten sitä, päivitetäänkö selaimen historiaa, kutsutaanko elinkaarihavainnot tai jopa laukaisiko navigointitapahtumia.
 
 ```java
 NavigationOptions options = new NavigationOptions();
@@ -110,33 +111,52 @@ Router.getCurrent().navigate(
 
 ### Navigointivaihtoehtojen asettaminen {#setting-navigation-options}
 
-`NavigationOptions`-luokka tarjoaa useita menetelmiä navigointikäyttäytymisen mukauttamiseksi. Näihin kuuluvat reittien käsittelyn hallinta, tarkkailijoiden ilmoittaminen ja selaimen historian päivittämisen hallinta.
+`NavigationOptions`-luokka tarjoaa useita menetelmiä navigointikäyttäytymisen mukauttamiseksi. Näihin kuuluu reittien käsittelyn hallinta, havainnoijien ilmoittaminen ja selaimen historian päivittämisen tapa.
 
-Tässä ovat pääkonfiguraatio-optioita, jotka ovat käytettävissä `NavigationOptions`-luokassa:
+Tässä ovat pääasetukset, jotka ovat saatavilla `NavigationOptions`-luokassa:
 
-1. **Navigointityyppi (`setNavigationType`)** 
+1. **Navigointityyppi (`setNavigationType`)**
+
    Tämä vaihtoehto määrittelee, lisätäänkö uusi reitti selaimen historiaan vai korvataanko nykyinen reitti.
 
-   - **`PUSH`**: Lisää uuden reitin historiaan, säilyttäen nykyisen sijainnin.
-   - **`REPLACE`**: Korvataan nykyinen reitti historiassa uudella sijainnilla, estäen takaisin-painikkeen navigoimisen edelliseen reittiin.
+   - **`PUSH`**: Lisää uusi reitti historian pinokseen, säilyttäen nykyisen sijainnin.
+   - **`REPLACE`**: Korvataan nykyinen reitti historian pinossa uudella sijainnilla, estäen takaisinpainikkeen navigoimasta edelliseen reittiin.
 
-2. **Tapahtumien laukaiseminen (`setFireEvents`)** 
-   Määrittää, laukaistaanko navigoinnin [elinkaaritapahtumat](./navigation-lifecycle/navigation-events) navigoinnin aikana. Oletusarvoisesti tämä on asetettu `true`, ja tapahtumat laukaistaan. Jos se asetetaan `false`:ksi, ei tapahtumia laukaista, mikä on hyödyllistä hiljaisessa navigoinnissa.
+2. **Laukaise tapahtumat (`setFireEvents`)**
 
-3. **Tarkkailijoiden kutsuminen (`setInvokeObservers`)** 
-   Tämä lippu hallitsee, laukaiseeko navigointi [tarkkailijoita](./navigation-lifecycle/observers) navigoiduissa komponenteissa. Tarkkailijat käsittelevät tyypillisesti tapahtumia, kuten reittien sisään- tai uloskäyntiä. Asettamalla tämä `false`:ksi estää tarkkailijoiden kutsumisen.
+   Määrittää, laukaisevatko navigoinnin [elinkaaritapahtumat](./navigation-lifecycle/navigation-events). Oletuksena tämä on asetettu `true`, ja tapahtumia laukaistaan. Jos se asetetaan `false`:ksi, tapahtumia ei laukaista, mikä on hyödyllistä hiljaiselle navigoinnille.
 
-4. **Historian päivittäminen (`setUpdateHistory`)** 
-   Kun tämä asetetaan `false`:ksi, tämä vaihtoehto estää historian sijainnin päivittämisen. Tämä on hyödyllistä, kun haluat muuttaa näkymää vaikuttamatta selaimen taakse- tai eteenpäin navigointiin. Se vaikuttaa vain historian hallintaan, ei komponenttien elinkaaren tai reitinhallinnan.
+3. **Kutsu havainnoijia (`setInvokeObservers`)**
 
-5. **Tilaobjekti (`setState`)** 
-   [Tilaobjekti](./state-management#saving-and-restoring-state-in-browser-history) mahdollistaa lisätietojen siirtämisen selaimen historian päivittämisen yhteydessä. Tämä objekti tallennetaan selaimen historian tilaan ja sitä voidaan käyttää myöhemmin mukautettuihin tarkoituksiin, kuten sovelluksen tilan tallentamiseen navigoinnin aikana.
+   Tämä lippu ohjaa sitä, laukaiseeko navigointi [havaitsijoita](./navigation-lifecycle/observers) navigoitavissa komponenteissa. Havaitsejat käsittelevät tyypillisesti tapahtumia, kuten reitin sisään- tai uloskäyntiä. Tämän asettaminen `false`:ksi estää havaitsijoiden kutsumisen.
 
-## Sijaintien generointi näkymille {#generating-locations-for-views}
+4. **Päivitä historia (`setUpdateHistory`)**
 
-Reititin voi generoida sijainnin näkymille reittimallin perusteella, joka on määritelty näkymässä. Voit myös antaa lisäparametreja dynaamisille ja vaadituille segmentoille URL:ssä. Tämä voi olla hyödyllistä linkkien rakentamisessa tai suoran pääsyn tarjoamisessa sovelluksen tiettyihin näkymiin.
+   Kun tämä on asetettu `false`:ksi, tämä vaihtoehto estää historian sijainnin päivittämisen. Tämä on hyödyllistä, kun haluat muuttaa näkymää vaikuttamatta selaimen taaksepäin tai eteenpäin navigointiin. Se vaikuttaa vain historian hallintaan, ei komponenttielinkaaren tai reitin käsittelyn.
 
-Tässä on, miten generoida `Location` näkymäluokan ja reittiparametrien perusteella:
+5. **Tilaobjekti (`setState`)**
+
+   [Tilaobjekti](./state-management#saving-and-restoring-state-in-browser-history) sallii sinun siirtää lisätietoja päivityksen yhteydessä selaimen historiassa. Tämä objekti tallennetaan selaimen historian tilaan ja voidaan käyttää myöhemmin erityisiin tarkoituksiin, kuten sovelluksen tilan tallentamiseen navigoinnin aikana.
+
+6. **Instanssien uudelleenluonti (`setRecreateFrom`)** <DocChip chip='since' label='26.02' />
+
+    Kun reitti komponentti on määritetty, tämä vaihtoehto sallii navigoinnin tuhota kaikki renderöidyt instanssit kyseisestä komponentista ja sen alapuolella olevista komponenteista ennen uudelleen renderöintiä. Tämä sallii kyseisen osan hierarkiasta käyttää tuoreita instansseja ilman, että se vaikuttaa aikaisemmin renderöityihin instansseihin.
+
+    ```java
+    NavigationOptions options = new NavigationOptions()
+        .setRecreateFrom(DashboardView.class);
+
+    Router.getCurrent().navigate(
+        new Location("/dashboard"), options);
+    ```
+
+    Oletusreitti `setRecreateFrom()`-metodille on `null`, mikä sallii reitittimen käyttää uudelleen renderöityjä reitti komponentteja, jotka jäävät polkuun. Jos annettua komponenttia ei ole renderöity, navigointi käyttäytyy normaalisti. Lisäksi elinkaarihavaitsija voi estää tuhon, mikä epäonnistuu navigoinnissa.
+
+## Sijaintien luominen näkymille {#generating-locations-for-views}
+
+Reititin voi luoda sijainteja näkymille reittimallin perusteella, joka on määritelty näkymässä. Voit myös antaa lisäparametreja dynaamisille ja pakollisille segmentoille URL-osoitteessa. Tämä voi olla hyödyllistä linkkien rakentamisessa tai suoran pääsyn tarjoamisessa erityisiin näkymiin sovelluksessa.
+
+Tässä on, miten luoda `Location` näkymäluokan ja reittiparametrien perusteella:
 
 ```java
 Class<UserProfileView> userProfileView = UserProfileView.class;
@@ -146,4 +166,4 @@ Optional<Location> location = Router.getCurrent().getLocation(userProfileView, p
 console().log(location.get());
 ```
 
-Tämä generoi `Location`-objektin polulla `/user/JohnDoe`, täydellinen URI merkkijonona.
+Tämä luo `Location`-objektin, jonka polku on `/user/JohnDoe`, täydellinen URI merkkijonona.

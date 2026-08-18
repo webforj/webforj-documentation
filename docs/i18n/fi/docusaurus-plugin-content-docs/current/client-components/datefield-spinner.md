@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-datefield-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: datefield-spinner
-description: A user guide article for the datefield-spinner
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: a486d1867068c07d63c0ec314038ad6c
+description: >-
+  Style the dwc-datefield-spinner client component with CSS variables and shadow
+  parts to theme date input, spinner buttons, and surface.
+_i18n_hash: 77aa6151344f86ad0282eac7577cdcea
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan tyylitietoja **`<dwc-datefield-spinner>`** komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi luoda itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa kuvataan tyylitietoja **`<dwc-datefield-spinner>`** -komponentille. Tämä komponentti on **asiakaspuolella vain** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylittely {#styling}
+## Tyylitys {#styling}
 
 <TableBuilder name="dwc-datefield-spinner" clientComponent />

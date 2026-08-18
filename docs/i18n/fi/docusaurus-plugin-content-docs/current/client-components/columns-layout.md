@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-columns-layout>
 sidebar_class_name: sidebar--item__hidden
 slug: columns-layout
-description: A user guide article for the columns-layout
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 8e491f5641370cf690c5a70115f84cc5
+description: >-
+  Style the dwc-columns-layout client component using CSS variables to control
+  column gaps, breakpoints, and responsive spacing.
+_i18n_hash: 1728843f565fa09b9716dc5477187d45
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info ASIAKASKOMPONENTTI
-Tässä osiossa käsitellään **`<dwc-columns-layout>`** komponentin tyylitietoja. Tämä komponentti on **asiakaspuolen ainoa** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se saattaa olla osa API-komponentteja.
+:::info ASIA KOMPONENTTI
+Tässä osiossa esitellään tyylitietoja **`<dwc-columns-layout>`** komponentille. Tämä komponentti on **asiakaspäässä** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylittely {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-columns-layout" clientComponent />

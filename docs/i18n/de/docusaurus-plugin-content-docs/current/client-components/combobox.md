@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-combobox>
 sidebar_class_name: sidebar--item__hidden
 slug: combobox
-description: A user guide article for the combobox
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 8c9d93b1863599dc5887d87d395e7850
+description: >-
+  Customize the dwc-combobox client component via CSS variables and shadow parts
+  to theme the input, dropdown, and option items.
+_i18n_hash: ea8e0dcc4597561e3f8f954040819457
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt die Stilinformationen für die **`<dwc-combobox>`**-Komponente. Diese Komponente ist **nur für die Clientseite** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+:::info KUNDENKOMPONENTE
+Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-combobox>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-popover>
 sidebar_class_name: sidebar--item__hidden
 slug: popover
-description: A user guide article for the popover
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: f8a3ac21fe0826265af520c521b2474f
+description: >-
+  Theme dwc-popover placement, surface, arrow visibility, and overlay through
+  component-scoped CSS variables and shadow parts.
+_i18n_hash: 418e6fea21047de9283e1f146cb77b84
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='scoped' />
 
-<br />
-
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa esitellään tyylitietoja **`<dwc-popover>`** komponentille. Tämä komponentti on **vain asiakaspäässä** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa esitellään tyylitietoja **`<dwc-popover>`**-komponentille. Tämä komponentti on **vain asiakaspäätteen puolella** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylit {#styling}
+## Tyylitys {#styling}
 
 <TableBuilder name="dwc-popover" clientComponent />

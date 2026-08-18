@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-dropdown>
 sidebar_class_name: sidebar--item__hidden
 slug: dropdown
-description: A user guide article for the dropdown
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 0181aacb9fab46cbb8e7b5db9593eb25
+description: >-
+  Style the dwc-dropdown client component using CSS variables and shadow parts
+  to theme trigger, panel surface, and positioning.
+_i18n_hash: 6718e41f67646ab99074d3d48a446d27
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info ASIAKASKOMPONENTTI
-Tässä osiossa käsitellään **`<dwc-dropdown>`** komponentin tyylitietoja. Tämä komponentti on **asiakaspuolella** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info ASIA CLIENT COMPONENT
+Tässä osiossa käsitellään tyylitietoja **`<dwc-dropdown>`** -komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylittely {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-dropdown" clientComponent />

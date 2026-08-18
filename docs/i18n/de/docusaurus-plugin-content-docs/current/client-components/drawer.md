@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-drawer>
 sidebar_class_name: sidebar--item__hidden
 slug: drawer
-description: A user guide article for the drawer
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 5f4c52a070f3e5b326422aa1c97a10d8
+description: >-
+  Customize the dwc-drawer client component with CSS variables and shadow parts
+  to theme placement, size, surface, and backdrop overlay.
+_i18n_hash: 8c6a8f8ba8c1d32ee731898ffc4a834a
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info KUNDENKOMPONENTE
-Dieser Abschnitt beschreibt Styling-Informationen für die **`<dwc-drawer>`**-Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
+:::info CLIENT COMPONENT
+Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-drawer>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

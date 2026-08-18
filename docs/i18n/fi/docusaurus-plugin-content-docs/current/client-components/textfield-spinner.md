@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-textfield-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: textfield-spinner
-description: A user guide article for the textfield-spinner
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: bab4e5a82601b243b12543af22c0f94a
+description: >-
+  Style the dwc-textfield-spinner stepper buttons through CSS variables and
+  shadow parts for size, color, and hover states.
+_i18n_hash: 4e2cb825f6ef9f6988ae4fc5fd54ff57
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan tyylitietoja **`<dwc-textfield-spinner>`** komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi luoda itsenäisesti API:n kautta, mutta se saattaa olla osa API-komponentteja.
+Tässä osiossa on tyylitietoja **`<dwc-textfield-spinner>`** komponentille. Tämä komponentti on **vain asiakaspään** - sitä ei voi luoda itsenäisesti API:n kautta, mutta se saattaa olla osa API-komponentteja.
 :::
 
-## Tyylit {#styling}
+## Tyylitys {#styling}
 
 <TableBuilder name="dwc-textfield-spinner" clientComponent />

@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-table>
 sidebar_class_name: sidebar--item__hidden
 slug: table
-description: A user guide article for the table
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 512726b63b985808e900b39b968c1ddf
+description: >-
+  Style the dwc-table grid, header, rows, cells, and selection state with CSS
+  variables and shadow parts for full visual control.
+_i18n_hash: d5f7d8418a263154eb971a32ca5519e9
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan tyylitiedot **`<dwc-table>`** -komponentille. Tämä komponentti on **asiakaspäässä vain** - sitä ei voi alustaa itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info CLIENT COMPONENT
+Tässä osiossa käsitellään tyylitietoja **`<dwc-table>`** -komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi luoda itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylitys {#styling}
+## Styling {#styling}
 
 <TableBuilder name="dwc-table" clientComponent />

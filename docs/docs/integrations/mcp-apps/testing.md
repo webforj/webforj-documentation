@@ -6,11 +6,11 @@ description: Test a webforJ MCP App with an MCP Apps-capable host, including the
 
 webforJ MCP Apps can run in any MCP Apps-capable host. The instructions here cover the Codex app and Claude Desktop through a reachable HTTPS endpoint, and MCPJam through localhost. The minimal no-input `inventory` tool from the [Spring Boot setup](./spring) is enough to confirm that a host can discover the tool and render the Inventory view.
 
-## Remote clients
+## Remote clients {#remote-clients}
 
 The Codex app and Claude Desktop connect from outside the development machine. They can't reach `http://localhost:8080/mcp`, so the running app needs a public HTTPS MCP URL.
 
-### Expose a local app
+### Expose a local app {#expose-a-local-app}
 
 Use a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/setup/) to reserve and print a public HTTPS origin that forwards to the app on the default local port, `8080`. You can start the tunnel before the app:
 
@@ -35,7 +35,7 @@ https://example.trycloudflare.com/mcp
 A development tunnel makes the app publicly reachable. Use test data, expect a new hostname each time the quick tunnel is started, and use a stable managed tunnel when the hostname must stay the same.
 :::
 
-### Codex app
+### Codex app {#codex-app}
 
 <!-- Video: Connect and test the inventory MCP App in the Codex app. -->
 
@@ -58,7 +58,7 @@ Open the inventory app.
 5. Confirm that the rendered Inventory view appears.
 
 <!-- vale Google.Headings = NO -->
-### Claude Desktop
+### Claude Desktop {#claude-desktop}
 
 <!-- Video: Connect and test the inventory MCP App in Claude Desktop. -->
 <!-- vale Google.Headings = YES -->
@@ -88,7 +88,7 @@ If the server requires OAuth 2.0, complete the sign-in flow before invoking the 
 If Codex or Claude doesn't choose the expected action, include the MCP server name in the prompt. This can happen when several tools could apply or the prompt is too vague. For example: `Using the inventory MCP server, open the inventory app.`
 :::
 
-## MCPJam
+## MCPJam {#mcpjam}
 
 [MCPJam](https://github.com/MCPJam/inspector) can connect directly to an MCP server running on the same machine. Use the local inspector for a plain HTTP endpoint; the hosted MCPJam app accepts HTTPS endpoints only.
 
@@ -124,7 +124,7 @@ http://localhost:8080/mcp
 Set **Content Security Policy (CSP) Mode** in the Playground toolbar to **Permissive** before running the tool. Strict mode blocks the dynamic JavaScript evaluation used during current webforJ startup. Use Permissive mode only with MCP servers and app code you trust.
 :::
 
-## Verify the app
+## Verify the app {#verify-the-app}
 
 Use this baseline for each client:
 
@@ -135,7 +135,7 @@ Use this baseline for each client:
 
 After the baseline works, add [opening input](./opening-apps), [actions and updates](./actions-updates), and [host interaction](./host-interaction) when the MCP App needs those features.
 
-## Troubleshooting
+## Troubleshooting {#troubleshooting}
 
 | Problem | Check |
 | --- | --- |

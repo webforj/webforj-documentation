@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-field-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: field-spinner
-description: A user guide article for the field-spinner
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: fec562035feb13636822cd8f61800b41
+description: >-
+  Customize the dwc-field-spinner client component via CSS variables and shadow
+  parts to theme the input field and increment controls.
+_i18n_hash: d3ed67c87156553e5c2525013ba06139
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt Stylinginformationen für die **`<dwc-field-spinner>`**-Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-field-spinner>`** Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
 :::
 
-## Gestaltung {#styling}
+## Styling {#styling}
 
 <TableBuilder name="dwc-field-spinner" clientComponent />

@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-table>
 sidebar_class_name: sidebar--item__hidden
 slug: table
-description: A user guide article for the table
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 512726b63b985808e900b39b968c1ddf
+description: >-
+  Style the dwc-table grid, header, rows, cells, and selection state with CSS
+  variables and shadow parts for full visual control.
+_i18n_hash: d5f7d8418a263154eb971a32ca5519e9
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info KLANTCOMPONENT
-Dit gedeelte beschrijft stylinginformatie voor de **`<dwc-table>`** component. Deze component is **alleen client-side** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan onderdeel zijn van API-componenten.
+:::info CLIËNTCOMPONENT
+Deze sectie beschrijft stylinginformatie voor de **`<dwc-table>`** component. Deze component is **alleen aan de clientzijde** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar kan onderdeel zijn van API-componenten.
 :::
 
 ## Styling {#styling}

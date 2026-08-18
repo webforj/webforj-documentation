@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-menu>
 sidebar_class_name: sidebar--item__hidden
 slug: menu
-description: A user guide article for the menu
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 989d36ed4cfa93e263d5d34c2d2f5989
+description: >-
+  Customize the dwc-menu component appearance through CSS variables and shadow
+  parts for surface, spacing, and item styling.
+_i18n_hash: 9cc218b7bb0fecd98dd779874e2b43aa
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info COMPONENTE DEL CLIENTE
-Esta sección describe información de estilo para el **`<dwc-menu>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí mismo a través de la API, pero puede formar parte de componentes de la API.
+Esta sección describe la información de estilo para el **`<dwc-menu>`** componente. Este componente es **solo del lado del cliente** - no puede ser instanciado por sí solo a través de la API, pero puede formar parte de los componentes de la API.
 :::
 
 ## Estilo {#styling}
