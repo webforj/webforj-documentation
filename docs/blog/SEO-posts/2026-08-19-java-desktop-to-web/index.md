@@ -1,10 +1,10 @@
 ---
 title: "Moving a Java Desktop App to the Web Without Rewriting the Business Logic"
-description: "Three paradigms compete for the desktop-to-web query: screen-stream, full rewrite, UI-swap. The middle path — keep the service, replace only the view — is the one nobody writes about."
+description: "How to move a Java desktop app to the web without rewriting the business logic. A comparison of screen-streaming, full rewrite, and UI-swap — and how to pick."
 slug: java-desktop-to-web
 date: 2026-08-19
 authors: webforJ
-tags: [modernization, tutorial]
+tags: [modernization, web development, front end]
 image: ./cover.png
 hide_table_of_contents: false
 
@@ -13,68 +13,71 @@ hide_table_of_contents: false
 
 ![cover](./cover.png)
 
-The Swing app works fine. It has for fifteen years. The problem is the laptop it runs on, the VPN the field team needs to launch it, the help desk tickets about Java versions, and the sales manager who keeps asking why the competitors have something that works in a browser. Nobody is saying the business logic is wrong. The order service is solid. The validation rules are exactly right. The question is whether "moving it to the web" means blowing all of that up.
+The Swing app has been running in production for a decade. It knows the domain well — the `OrderService`, the pricing rules, the validation logic accumulated through years of edge cases. The problem is delivery: users need it in a browser. IT is asking for a URL. Everyone wants to keep the codebase they understand.
 
-The SERP gives you two answers: screen-stream your existing app with Webswing or AjaxSwing, or hire a consultancy to rewrite everything as REST endpoints with a React frontend. Both are legitimate in some situations. But neither is the answer for the team that has a service layer and just needs a different view on top of it. That answer — keep the services, replace only the UI — is the one nobody writes about.
+The SERP for "java desktop to web" gives you two answers. Screen-stream the Swing UI through something like Webswing — no rewrite, the existing app delivered in a browser tab. Or throw it out and build a React frontend with a REST API behind it. Both approaches are legitimate. Neither is the middle path most teams should consider first.
 
-That is what this post is about.
+That middle path is a UI-swap: keep the service layer, replace only the view. The `OrderService` stays. The domain objects stay. The business rules stay. Only the code that draws the screen changes. This post covers what that looks like, where it holds up, and where it breaks down.
 
 <!-- truncate -->
 
-## Three paradigms competing for the same query
+## Three approaches competing for the same query
 
-When someone searches "migrate Java desktop app to web," they are usually trying to solve one of three different problems, and the tools that come up are not interchangeable.
+**Screen-streaming** renders the Swing UI server-side and sends the visual output to the browser. Webswing is the main implementation of this pattern. The application has no idea it is in a browser — it still paints `JPanel`s and fires `ActionListener`s. The browser receives the rendered result. Advantages: no application changes, immediate web delivery. Trade-off: you are shipping a desktop UX over a wire, because that is what it is.
 
-**Screen-streaming** (Webswing, AjaxSwing, Oracle Remote Desktop) takes your existing Swing or JavaFX app, runs it server-side, and renders it to a browser over a pixel stream or canvas protocol. The app does not change at all. The user gets a browser window that looks like the desktop app — same layout, same widgets, same behavior. The advantage is zero code changes and a production-ready deployment in days. The trade-off is that you are still shipping a desktop app; you have just moved where it runs. You get browser delivery, not a web experience.
+**Full rewrite** builds a new frontend — usually React or Angular — and exposes the existing backend as a JSON API. This is a complete migration to a web paradigm. The trade-off is cost: it is slow, expensive, and burns the institutional knowledge embedded in the service layer. The team that spent years encoding business rules into `OrderService` now has to build a contract over them instead of calling them directly.
 
-**Full rewrite** is what consultancies propose when they want to start fresh. Pull the UI out entirely, expose the domain layer as a REST API, build a React or Angular frontend on top of it. When it works, you get a modern web app. The cost is high, the risk is high, and the institutional knowledge baked into years of UI code often does not survive the translation. Teams underestimate how much business logic lives in ActionListeners and how long "just the API layer" takes.
+**UI-swap** replaces only the view layer. The service classes stay untouched. The new UI calls them directly, as the Swing UI did. No JSON wire, no separate frontend deployment, no REST contract between two processes. One Maven project, one JVM, the same Spring context — if Spring is already in the picture.
 
-**UI-swap** is the middle path: keep the service layer as Java, keep the domain objects and repositories, but replace only the view layer. Instead of a Swing `JFrame` calling `orderService.submit(order)`, you have a webforJ view calling the same `orderService.submit(order)`. The wire between UI and service does not move. Only the presentation layer changes.
-
-Most searches for "Java desktop to web" are really asking about this third option. The first two exist on the SERP. This one mostly does not.
+Most search results argue between the first two. The third is the overlooked one.
 
 ## Where the boundary lives
 
-The argument against UI-swap is usually "our Swing code doesn't have a service layer." That is sometimes true, but less often than teams expect. In any Swing app that has been in production for more than a few years, there is almost always an implicit boundary somewhere — a class that does the database work, a service that handles the business rules, a DAO that insulates the UI from the persistence layer. The ActionListeners call something. That something is the boundary.
+A Swing application that has been in production for a decade almost always has a separation between UI and service, even when nobody designed for one. The `OrderService` has a `submit(Order order)` method. The `JPanel` builds an `Order` from its form fields and calls it. The database access is downstream of the service. Nothing in `javax.swing` appears in the service layer.
 
-Even apps with business logic scattered across ActionListeners have a recoverable structure: the queries hit a database, the mutations go through something that validates them. The work of UI-swap is not inventing a service layer from scratch; it is finding the seam that is already there and building the new view on the other side of it.
-
-Consider a simple order-management piece. The service contract looks like this in both the old and new worlds:
+That separation is the seam a UI-swap fits through. A typical service boundary looks like this:
 
 ```java
 public interface OrderService {
-    List<Order> getOpenOrders(String customerId);
-    void submit(Order order);
-    BigDecimal getTotal(Order order);
+    List<Order> findByCustomer(String customerName);
+    Order submit(Order order);
+    void cancel(Long orderId);
 }
 ```
 
-No Swing imports. No web imports. Plain Java with a clear contract. The `OrderService` does not know whether its caller holds a `JFrame` or a webforJ view. That is the seam.
+No `javax.swing` import. No HTML. No HTTP. The service does not know what the UI is — which means the UI can change without touching the service.
 
-## What the shape looks like
+## What the swap looks like
 
-Here is a representative Swing view fragment — a small order panel that calls into that service:
+The Swing view calling this service might look like this:
 
 ```java
 public class OrderPanel extends JPanel {
     private final OrderService orderService;
     private final JTextField customerField = new JTextField(20);
+    private final JTable orderTable = new JTable();
+    private final JButton submitButton = new JButton("Submit");
 
     public OrderPanel(OrderService orderService) {
         this.orderService = orderService;
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(e -> {
-            String customerId = customerField.getText();
-            orderService.submit(new Order(customerId));
-        });
         setLayout(new BorderLayout());
-        add(customerField, BorderLayout.NORTH);
-        add(submitButton, BorderLayout.SOUTH);
+        JPanel inputRow = new JPanel();
+        inputRow.add(new JLabel("Customer:"));
+        inputRow.add(customerField);
+        inputRow.add(submitButton);
+        add(inputRow, BorderLayout.NORTH);
+        add(new JScrollPane(orderTable), BorderLayout.CENTER);
+        submitButton.addActionListener(e -> submitOrder());
+    }
+
+    private void submitOrder() {
+        Order order = new Order(customerField.getText());
+        orderService.submit(order);
     }
 }
 ```
 
-The equivalent webforJ view calls the same service. The structure follows the `Composite<FlexLayout>` pattern from the [Composing Components](/docs/building-ui/composing-components) docs, with the `ActionListener` replaced by `onClick` and the GridBagLayout dance replaced by `getBoundComponent().setDirection(...).add(...)`:
+The equivalent webforJ view calls the same `orderService.submit(...)`. The component names are different; the structure corresponds:
 
 ```java
 public class OrderView extends Composite<FlexLayout> {
@@ -90,18 +93,18 @@ public class OrderView extends Composite<FlexLayout> {
     }
 
     private void initializeComponents() {
-        customerField = new TextField("Customer ID");
-        submitButton = new Button("Submit");
+        customerField = new TextField("Customer name...");
+        submitButton = new Button("Submit order");
         orderList = new Div();
     }
 
     private void setupLayout() {
-        FlexLayout header = new FlexLayout(customerField, submitButton);
-        header.setAlignment(FlexAlignment.CENTER);
-        header.setSpacing("8px");
+        FlexLayout searchRow = new FlexLayout(customerField, submitButton);
+        searchRow.setAlignment(FlexAlignment.CENTER);
+        searchRow.setSpacing("8px");
         getBoundComponent()
             .setDirection(FlexDirection.COLUMN)
-            .add(header, orderList);
+            .add(searchRow, orderList);
     }
 
     private void configureEvents() {
@@ -109,71 +112,69 @@ public class OrderView extends Composite<FlexLayout> {
     }
 
     private void submitOrder() {
-        // calls orderService.submit(new Order(customerField.getValue()))
+        // Submit order via orderService
     }
 }
 ```
 
-`JTextField` → `TextField`. `JTable` → [`Table<Order>`](/docs/components/table/overview) (not shown here — the Table component covers the column and item binding API). `addActionListener` → `onClick`. The `orderService.submit(...)` call is the same; only the view layer changed.
+`JTextField` → `TextField`. `JButton` → `Button`. `addActionListener` → `onClick`. `BorderLayout` → `FlexLayout`. The results container above is a `Div` for this illustrative example — the [Table component](/docs/components/table/overview) covers the data-grid case, including the `JTable` equivalent, with sorting and filtering built in.
 
-Adding webforJ to the existing Maven project is one dependency:
+**Form fields and data binding.** The `TextField` in the example above can bind directly to a domain object using webforJ's [data binding layer](/docs/data-binding/overview). Where a Swing form would have manual `getText()` calls to pull field values into an `Order`, the webforJ binding layer maps the form fields to the entity automatically. The service call at the end is the same; the field-to-object wiring is less hand-written.
+
+To add webforJ to an existing Maven project:
 
 ```xml
 <dependency>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj</artifactId>
-  <version>26.01</version>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj</artifactId>
+    <version>26.01</version>
 </dependency>
 ```
 
-Not a new project, not a new build system, not a renegotiated Spring context. The existing Maven build gets a new dependency. The existing service layer gets a new caller.
+One dependency added to the existing `pom.xml`. The service and repository code already on the classpath does not move.
 
-## What the peer-reviewed research says
+## What the research says
 
-The question of whether incremental UI-layer modernization works in practice has been studied. A 2024 paper in the CLEI Electronic Journal ([DOI 10.19153/cleiej.27.1.5](https://www.clei.org/cleiej/index.php/cleiej/article/view/647)) examined incremental migration of legacy Java desktop applications and found that phased UI-layer replacement — preserving the service layer and migrating views one at a time — significantly reduced integration risk compared to big-bang rewrites. The study's conclusion is unsurprising to anyone who has watched a big-bang rewrite miss its deadline: the risk concentrates at integration time, and incremental approaches distribute that risk across the delivery schedule.
+The incremental UI-layer approach has backing in the peer-reviewed literature beyond vendor white papers. A study in the CLEI Electronic Journal (DOI [10.19153/cleiej.27.1.5](https://www.clei.org/cleiej/index.php/cleiej/article/view/647)) examined migration strategies for Java desktop applications with a focus on incremental UI-layer approaches. The argument for bounded scope — the migration is limited to the view layer, the domain logic does not move, regression risk stays contained — holds up in the research as well as in practice.
 
-That is not an argument to never do a full rewrite. It is an argument that the incremental path has research behind it, not just intuition.
+## View by view, not big bang
 
-## View-by-view, not big bang
+Nothing about a UI-swap requires migrating the whole application at once. A team can start with one view — one `JPanel`, one `Composite` — validate it against the existing service, and continue. The first screen ships before the second view is started.
 
-The practical version of UI-swap does not require porting every view before shipping anything. You start with one screen — the highest-value one, the one users complain about most, the one with the simplest service interface. You get that screen into a browser and running against the same service as the Swing panel. Users verify that it behaves correctly. You release it.
+This matters for regression risk. Service tests that already pass continue to pass against the unchanged service. Only the new view needs new UI tests. The release cadence a Swing team is used to can survive the migration.
 
-The next sprint, you migrate another screen. The sprint after that, another. The Swing app is still running during this period, and the screens that have not been migrated yet still work. There is no moment when the entire system is broken waiting for the migration to finish.
-
-This is what "view-by-view" buys in practice: regression risk is bounded per sprint, rollback scope is one screen rather than an entire rewrite, and the team is building confidence in the new view layer incrementally rather than betting everything on a single integration week.
+Screen-streaming cannot be done this way. You either stream the whole Swing app or you do not. A full rewrite cannot either — the REST layer, the new frontend, and the authentication wiring all need to land together before the first screen is usable. A UI-swap is the only pattern of the three that delivers a working application after the first sprint.
 
 ## Where the abstraction leaks
 
-The correspondence between Swing and webforJ is not perfect. Some Swing patterns translate awkwardly.
+Not every Swing pattern maps cleanly to a webforJ equivalent.
 
-**Blocking modal dialogs.** Swing's `JOptionPane.showConfirmDialog(...)` and similar blocking calls work because the Swing event thread can block while waiting for user input. webforJ's async event model does not support blocking at the UI layer — dialogs are non-blocking and you provide a callback. Apps that use blocking modals extensively need to rethink those flows, not just find-and-replace them.
+**Blocking modal dialogs.** `JOptionPane.showConfirmDialog(...)` blocks the current thread until the user responds. The webforJ event model does not block; event handlers are callbacks. Views that depend on blocking dialogs for flow control — "ask the user to confirm, then do X based on the answer" — need to be restructured as callback chains, not simply renamed. The behavior can be replicated, but the structure of the code changes.
 
-**`SwingWorker` background patterns.** Swing's `SwingWorker` handles background computation and UI updates across thread boundaries. webforJ handles this differently — background work runs in a server thread and pushes updates to the client over the persistent connection. The pattern exists; the API is different and the mental model requires adjustment.
+**`SwingWorker` background threads.** webforJ manages the UI-server sync without requiring the developer to explicitly manage a UI thread. Swing apps that use `SwingWorker` to offload a long-running query and then `publish()` intermediate results back to the UI will need to rethink the threading model. The service call itself stays the same; the scaffolding around it is different.
 
-**Native file pickers and OS integrations.** If the app opens the native file-system dialog or integrates with OS-level clipboard or drag-and-drop APIs, those integrations need to be re-examined. The browser provides equivalent capabilities via its own APIs, but the mapping is not automatic.
+**Native file pickers.** webforJ ships its own file upload component for the browser context. Apps that rely on direct filesystem access via `JFileChooser` need a rethink of what "open a file" means when the user is remote. The user's local filesystem is not accessible server-side; upload flows replace open-file flows.
 
-**Tight JNI integrations.** If the app calls native libraries through JNI for something core to its function, those calls can usually still run server-side — webforJ views run on the JVM — but anything that expects a local display or a local file path needs to be rethought.
+**JNI and native libraries.** If the Swing app calls into native code via JNI, that code still runs server-side after the migration — nothing about the JVM process changes in that regard. What breaks is any assumption that the native code has access to the user's local machine, because the server is not the user's machine. Local printer drivers, hardware dongles, and device-specific integrations fall into this category.
 
-These are concrete gaps. They are also well-understood failure modes, which means they are auditable before you commit. A quick survey of the codebase for `JOptionPane.showConfirmDialog`, `SwingWorker`, and native library calls tells you whether the view layer will translate cleanly or whether specific screens need extra design work.
+These are material constraints. They affect a fraction of a typical Swing app's surface area — rarely the majority of the codebase. They do not invalidate the pattern; they mark the screens that require more thought than a rename.
 
-## When to reach for the other approaches
+## When the other approaches make more sense
 
-UI-swap is not the right answer in every situation.
+Screen-streaming fits better when the app must reach the web with no application changes at all — a hard compliance deadline, a codebase too entangled to safely separate UI from service, or a team with no capacity for view-layer work in the near term. It is also the right call when the desktop UX is a deliberate product feature rather than a legacy constraint, or when the app needs to run on air-gapped machines where browser-to-server connectivity is not guaranteed but local Swing rendering still is.
 
-If the app is small, greenfield-ish, or the service layer does not exist, a full rewrite may be cheaper than carving out a seam that was never designed to be carved. The rule of thumb: if the migration conversation starts with "we would need to refactor the domain model first," a full rewrite deserves serious consideration.
-
-If the app must run on air-gapped machines, has regulatory requirements that preclude web delivery, or must remain locally installed — screen-streaming may be the right shape. Webswing puts a working browser experience in front of users with zero code changes, and for some organizations that is the right trade.
+A full rewrite is worth the investment when the application is small enough that building a REST layer is fast, when the team wants to move to a different technology stack, or when the Swing UI and the business logic have grown so intertwined that separating them would amount to a rewrite of both layers anyway. That last case is also the case where the UI-swap pattern breaks down — which is the next section.
 
 ## Where this pattern breaks down
 
-The UI-swap pattern depends on one thing: a service layer that the UI is calling, rather than a UI that is the service layer. Apps where most of the business logic lives in `ActionListener` bodies, where the Swing model objects are also the persistence objects, where there is no meaningful boundary between what the UI sees and what the database stores — those apps do not have a seam to build on. You can still migrate them, but you are doing a refactor first, not a UI swap.
+The UI-swap pattern assumes there is a service layer to call. Some Swing apps do not have one. Business logic in `ActionListener` bodies, database queries in `JPanel` methods, `ResultSet` processing directly in the view — when the UI code is also the service code, there is no seam to fit through, and a UI-swap is effectively a rewrite of both layers at once.
 
-It is worth being clear-eyed about this before starting. The seam audit — a few hours reading the codebase for what the listeners call and where those calls go — tells you which category you are in.
+This is worth checking before starting. If a `JPanel` contains SQL strings, the migration scope is not the panel — it is the service that needs to be extracted first, and that is a different project.
 
-## The decision
+## Closing
 
-Most Java desktop apps that are still earning their keep in production have a service layer. The boundary is there. The question is whether the team knows that the UI-swap path exists before they sign up for a two-year full rewrite.
+Three paradigms answer the same query. Screen-stream, full rewrite, UI-swap. The third gets the least attention and is often the one most teams should look at first.
 
-If the services are solid and the view layer is the problem, the migration scope is a lot smaller than the SERP implies. One dependency, a new caller for each screen, the same service contract the desktop app already uses.
+If the application has a service layer — and a decade-old production Swing app almost certainly does — the seam is already there. The view is the part that changes. The business logic that took years to encode does not have to move.
 
-The [getting started guide](/docs/introduction/getting-started) has the first-app walkthrough for the webforJ side, and the [Table component](/docs/components/table/overview) and [data binding overview](/docs/data-binding/overview) cover the two pieces of the view layer that tend to come up most often when porting production Swing apps. The [Spring Boot integration guide](/docs/integrations/spring/spring-boot) is the relevant next step for teams whose service layer is already Spring-managed.
+The webforJ [getting started guide](/docs/introduction/getting-started) covers bootstrapping the new view layer, and [composing components](/docs/building-ui/composing-components) covers the `Composite` pattern in depth. For teams wiring the new view into Spring Boot, the [Spring integration guide](/docs/integrations/spring/spring-boot) covers the setup. webforJ traces its lineage through decades of Java UI modernization work, and the component model reflects that history.
