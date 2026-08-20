@@ -4,7 +4,7 @@ description: "Building a demo to understand custom events taught me more than wr
 slug: the-demo-that-taught-me-events
 date: 2026-07-28
 authors: Lauren Alamo
-tags: [events, components, architecture, front end]
+tags: [events, components, front end]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-events/event-blog-cover.png"
 hide_table_of_contents: true
 ---

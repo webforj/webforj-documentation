@@ -1,37 +1,65 @@
 ---
-title: Spring DevTools
+title: Spring Boot
 sidebar_position: 30
 description: >-
-  Pair Spring DevTools with webforJ DevTools to auto-restart the app and refresh
-  the browser when Java, CSS, or asset files change.
-_i18n_hash: 183c4eb42a93904e03dff44faf2118e7
+  Set up live reload in a Spring Boot webforJ app, with the development tools
+  delivered by the webforJ build plugin.
+_i18n_hash: 2fa5b74377a864e82b67db98ee8c9c04
 ---
-Spring DevTools fournit des redémarrages automatiques de l'application lors des changements de code. webforJ DevTools ajoute un rafraîchissement automatique du navigateur : lorsque Spring redémarre votre application, le navigateur se rafraîchit automatiquement via le serveur LiveReload de webforJ.
+Dans une application Spring Boot, le [plugin de construction webforJ](/docs/configuration/build-plugin) fournit les outils de développement pour les exécutions de développement. Le projet ne déclare aucune dépendance pour eux, et ils ne font jamais partie de l'application empaquetée.
 
-Différents types de fichiers déclenchent des comportements de rechargement différents. Les changements de code Java entraînent un redémarrage complet de Spring et un rafraîchissement du navigateur. Les changements de CSS et d'images se mettent à jour sans rechargement de la page, préservant les données du formulaire et l'état de l'application.
+## Exigences {#requirements}
 
-:::tip Changements Frontend
-Les changements sous `src/main/frontend` sont gérés par le [frontend watch](/docs/configuration/deploy-reload/frontend-watch), qui les reconstruit et rafraîchit le navigateur en même temps que le serveur.
-:::
+La dépendance de démarrage et le plugin de construction. Un projet créé à partir d'un [archetype](/docs/introduction/getting-started) en a les deux.
 
-<!-- vale off -->
-## Comprendre webforJ DevTools {#understanding-webforj-devtools}
-<!-- vale on -->
+<Tabs>
+<TabItem value="maven" label="Maven">
 
-webforJ étend Spring DevTools avec une synchronisation du navigateur. Lorsque Spring détecte des changements de fichiers et redémarre, webforJ DevTools rafraîchit automatiquement votre navigateur.
+```xml title="pom.xml"
+<dependency>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-boot-starter</artifactId>
+</dependency>
+```
 
-### Comportement de rechargement {#reload-behavior}
+```xml title="pom.xml"
+<plugin>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-maven-plugin</artifactId>
+  <version>${webforj.version}</version>
+  <extensions>true</extensions>
+</plugin>
+```
 
-Différents types de fichiers déclenchent différentes stratégies de rechargement :
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-- **Fichiers Java** : Rechargement complet de la page du navigateur après le redémarrage de Spring
-- **Fichiers JavaScript** : Rechargement complet de la page du navigateur après le redémarrage de Spring
-- **Fichiers CSS** : Mises à jour de style sans rechargement de la page
-- **Images** : Rafraîchissement sur place sans rechargement de la page
+```groovy title="build.gradle"
+dependencies {
+  implementation 'com.webforj:webforj-spring-boot-starter'
+}
+```
 
-## Dépendances {#dependencies}
+avec le [plugin webforJ appliqué à la construction](/docs/configuration/build-plugin#adding-the-plugin).
 
-Ajoutez à votre projet à la fois Spring DevTools et webforJ DevTools :
+</TabItem>
+</Tabs>
+
+## Activer le rechargement en direct {#turning-live-reload-on}
+
+```Ini title="application.properties"
+webforj.devtools.livereload.enabled=true
+server.shutdown=immediate
+```
+
+Démarrez l'application comme d'habitude, `mvn` avec Maven ou `./gradlew bootRun` avec Gradle. Les modifications Java s'appliquent après une compilation, les modifications de feuille de style et d'image s'appliquent sur place, et les sources sous `src/main/frontend` se reconstruisent par le [watch frontend](/docs/configuration/deploy-reload/frontend-watch). Les autres clés sont listées dans les [paramètres](/docs/configuration/deploy-reload/overview#settings).
+
+## Spring DevTools {#spring-devtools}
+
+Spring DevTools est optionnel, le rechargement en direct fonctionne sans lui. Pour utiliser son modèle de redémarrage, ajoutez sa dépendance :
+
+<Tabs>
+<TabItem value="maven" label="Maven">
 
 ```xml title="pom.xml"
 <dependency>
@@ -39,51 +67,22 @@ Ajoutez à votre projet à la fois Spring DevTools et webforJ DevTools :
   <artifactId>spring-boot-devtools</artifactId>
   <optional>true</optional>
 </dependency>
-
-<dependency>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-spring-devtools</artifactId>
-  <version>${webforj.version}</version>
-  <optional>true</optional>
-</dependency>
 ```
 
-## Configuration {#configuration}
+</TabItem>
+<TabItem value="gradle" label="Gradle">
 
-Activez webforJ DevTools dans votre fichier `application.properties` :
-
-```Ini title="application.properties"
-# Activer le rechargement automatique du navigateur webforJ
-webforj.devtools.livereload.enabled=true
-
-# Activer l'arrêt immédiat pour des redémarrages plus rapides
-server.shutdown=immediate
+```groovy title="build.gradle"
+dependencies {
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
 ```
 
-### Configuration avancée {#advanced-configuration}
+</TabItem>
+</Tabs>
 
-Configurez la connexion WebSocket et le comportement de rechargement :
+Avec Spring DevTools présent, un changement compilé redémarre le contexte Spring et le navigateur se rafraîchit lorsque le redémarrage est terminé. Avec un [outil de hotswap](/docs/configuration/deploy-reload/hotswap) configuré également, l'outil applique les mises à jour de classe et le redémarrage reste désactivé.
 
-```Ini title="application.properties"
-# Port du serveur WebSocket (par défaut : 35730)
-webforj.devtools.livereload.websocket-port=35730
+## Builds de production {#production-builds}
 
-# Chemin d'endpoint WebSocket (par défaut : /webforj-devtools-ws)
-webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
-
-# Intervalle de pulsation en millisecondes (par défaut : 30000)
-webforj.devtools.livereload.heartbeat-interval=30000
-
-# Activer le rechargement à chaud pour les ressources statiques (par défaut : true)
-webforj.devtools.livereload.static-resources-enabled=true
-```
-
-<DocChip chip='since' label='25.03' /> Configurez l'ouverture du navigateur au démarrage de l'application :
-
-```Ini title="application.properties"
-# Activer l'ouverture du navigateur (par défaut : false)
-webforj.devtools.browser.open=true
-
-# localhost, nom d’hôte ou adresse IP (par défaut : localhost)
-webforj.devtools.browser.host=localhost
-```
+`mvn package` et `./gradlew bootJar` produisent une application sans outils de développement, sans exclusion, profil ou propriété requise. La propriété `webforj.devtools.livereload.enabled` n'a aucun effet dans une application empaquetée.

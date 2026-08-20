@@ -1,5 +1,5 @@
 {
-  "count": 19,
+  "count": 20,
   "recipes": [
     {
       "slug": "components/card-with-slots",
@@ -13,6 +13,17 @@
       ],
       "components": [],
       "difficulty": "beginner"
+    },
+    {
+      "slug": "components/countdown-timer",
+      "url": "/cookbook/components/countdown-timer",
+      "title": "Countdown Timer Component",
+      "description": "A custom component that creates a countdown timer for events.",
+      "tags": [
+        "components"
+      ],
+      "components": [],
+      "difficulty": "intermediate"
     },
     {
       "slug": "components/enum-property-on-element-composite",

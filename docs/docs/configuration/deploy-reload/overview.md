@@ -2,28 +2,35 @@
 title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
-description: Combine automatic redeployment with live browser reload so code changes appear in a running webforJ app without manual restarts.
+description: Apply code changes to a running webforJ app during development, on the server through hotswap or a restart, and in the browser through live reload.
 ---
 
-Efficient development workflows rely on tools that detect code changes and automatically update the app in real time. Continuous Deployment and Dynamic Reload work together to simplify the development process by reducing manual steps, allowing you to see your changes quickly without needing to manually restart the server.
+During development, webforJ applies saved changes to the running app and updates the browser. Class changes reach the app through a [hotswap tool](/docs/configuration/deploy-reload/hotswap) or through a restart. Live reload updates the browser after either.
 
-## Redeployment {#redeployment}
+Projects created from an [archetype](/docs/introduction/getting-started) come configured. For an existing project, follow [Spring Boot](/docs/configuration/deploy-reload/spring-devtools) or [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin).
 
-Redeployment in Java development refers to automatically detecting and deploying code changes, so updates are reflected in the app without a manual server restart. This process typically involves updating Java classes and web resources on the fly.
+## How each change applies {#how-each-change-applies}
 
-In a webforJ app, this means regenerating the WAR file whenever modifications are made to the code.
+| Change | Result | Reference |
+|---|---|---|
+| Java class, hotswap tool attached | The class updates in the running app. The affected part of the page rebuilds and the app state stays. | [Hotswap](/docs/configuration/deploy-reload/hotswap) |
+| Java class, no hotswap tool | The app restarts. The browser reloads when the app is ready. | [Spring Boot](/docs/configuration/deploy-reload/spring-devtools), [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin) |
+| Stylesheet or image | The page applies it in place, without a reload. | [Settings](#settings) |
+| Source under `src/main/frontend` | The watch rebuilds it and updates the browser. | [Frontend watch](/docs/configuration/deploy-reload/frontend-watch) |
 
-Changes to Java classes and resources on the classpath are typically monitored by the IDE. When a Java class is modified and the file is saved, either by the IDE automatically or manually by the developer, these tools kick in to compile and place the updated class files in the target directory to apply the changes.
+## Settings {#settings}
 
-For the best experience, use automatic redeployment in combination with tools or settings that automate browser reloading.
+These settings control live reload during development:
 
-## Live reload {#live-reload}
+| Property | Default | Description |
+|----------|---------|-------------|
+| `webforj.devtools.livereload.enabled` | `false` | Turns live reload on for development runs. |
+| `webforj.devtools.livereload.websocket-port` | `35730` | Port for the browser connection. |
+| `webforj.devtools.livereload.websocket-path` | `/webforj-devtools-ws` | Path for the browser connection. |
+| `webforj.devtools.livereload.static-resources-enabled` | `true` | Applies stylesheet and image changes in place instead of reloading the page. |
+| `webforj.devtools.livereload.heartbeat-interval` | `30000` | Interval in milliseconds for the connection checks that detect a restarting server. |
 
-Once changes are deployed, live reload automatically reloads the app so the browser reflects updates immediately, without requiring a manual browser refresh.
-
-In a webforJ app, live reload can automatically refresh the view, re-rendering components to show the latest state of the app, or even patch changes as needed on demand.
-
-For frontend sources, the [frontend watch](/docs/configuration/deploy-reload/frontend-watch) rebuilds on every change and patches a stylesheet or image in place, reloading the view only when a script changes.
+The keys have no effect in a packaged app. Packaged apps contain no development tools.
 
 ## Topics {#topics}
 

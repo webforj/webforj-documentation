@@ -1,39 +1,59 @@
 ---
-title: Maven Jetty plugin
+title: Jetty
+sidebar_position: 40
 description: >-
-  Tune the Maven Jetty plugin scan interval and webforJ reload properties to
-  enable hot redeployment during webforJ development.
-_i18n_hash: 6ce3da7be312bb71f2ded56a583d7687
+  Run a webforJ app on the embedded Jetty server with the Maven Jetty plugin,
+  with live reload and hotswap during development.
+_i18n_hash: 73514e3b51a43e4a876aefd5cf933577
 ---
-De Maven Jetty-plugin is een populair hulpmiddel dat ontwikkelaars in staat stelt om Java-webapps te draaien binnen een ingebedde Jetty-server, rechtstreeks vanuit hun Maven-projecten.
+De Maven Jetty-plugin draait de app in een ingebedde Jetty-server recht vanuit het project. Een archetype-project stelt `compile webforj:watch jetty:run` in als zijn standaard Maven-doel, zodat `mvn` zonder argumenten de app compileert, de [frontend watch](/docs/configuration/deploy-reload/frontend-watch) start, en de app op Jetty serveert.
 
-De Jetty-plugin start een ingebedde Jetty-server die de bestanden van je app, inclusief Java-classes en bronnen, controleert op wijzigingen. Wanneer het updates detecteert, wordt de app automatisch opnieuw gedeployed, wat de ontwikkeling versnelt door handmatige build- en implementatiestappen te elimineren.
+## Vereisten {#requirements}
 
-:::tip Frontend-wijzigingen
-Wijzigingen onder `src/main/frontend` worden afgehandeld door de [frontend watch](/docs/configuration/deploy-reload/frontend-watch), die deze opnieuw opbouwt en de browser ververst samen met de server.
-:::
+Een Jetty-project declareert zelf de ontwikkeltools, in het profiel dat wordt gebruikt voor ontwikkelrun:
 
-## Jetty-configuraties {#jetty-configurations}
+```xml title="pom.xml"
+<profiles>
+  <profile>
+    <id>dev</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <dependencies>
+      <dependency>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-devtools</artifactId>
+      </dependency>
+    </dependencies>
+  </profile>
+</profiles>
+```
 
-Hier zijn enkele essentiële configuraties voor het fijn afstemmen van de hot deployment en serverinteractie-instellingen van de plugin:
+De versie komt van de webforJ Bill of Materials (BOM). Het profiel houdt de afhankelijkheid uit de verpakte war. Een project dat is gemaakt vanuit een [archetype](/docs/introduction/getting-started) heeft dit profiel.
 
-| Eigenschap                          | Beschrijving                                                                                                                                                                           | Standaard        |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| **`scan`**         | Configureert hoe vaak de Jetty-server bestanden controleert op wijzigingen in de **`pom.xml`**. Het skeletproject stelt dit in op `2` seconden. Het verhogen van dit interval kan de CPU-belasting verminderen, maar kan ook vertraging opleveren bij het reflecteren van wijzigingen in de app. | `1`              |
+## Live reload inschakelen {#turning-live-reload-on}
 
-## webforJ-configuraties {#webforj-configurations}
+```ini title="webforj.conf"
+webforj.devtools.livereload.enabled = true
+```
 
-| Eigenschap                          | Beschrijving                                                                                                                                                                           | Standaard        |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| **`webforj.reloadOnServerError`** | Bij het gebruik van hot redeploy wordt het gehele WAR-bestand verwisseld. Als de client een verzoek stuurt terwijl de server opnieuw opstart, treedt er een fout op. Deze instelling stelt de client in staat om een pagina opnieuw te laden, ervan uitgaande dat de server binnenkort weer online is. Geldt alleen voor ontwikkelomgevingen en verhandelt alleen fouten die specifiek zijn voor hot redeployment. | `on`             |
-| **`webforj.clientHeartbeatRate`** | Stelt het interval in voor client-pings om de beschikbaarheid van de server te controleren. Dit houdt de communicatie tussen client en server open. Voor ontwikkeling, gebruik kortere intervallen voor snellere foutdetectie. In productie moet dit tenminste 50 seconden worden ingesteld om overmatige verzoeken te vermijden. | `50s`            |
+De sleutels zijn dezelfde als die een Spring Boot-app instelt in `application.properties`, vermeld in de [instellingen](/docs/configuration/deploy-reload/overview#settings).
+
+## Klassenwijzigingen {#class-changes}
+
+Met een [hotswap-tool](/docs/configuration/deploy-reload/hotswap) geconfigureerd, past de tool klassenwijzigingen toe en Jetty redeploys niks. Twee Jetty-eigenschappen ondersteunen dit, en een archetype-project stelt beide in:
+
+- `scan` is `0`, wat de bestandsscan van Jetty uitschakelt.
+- `deployMode` blijft niet ingesteld. Hotswap vereist de geforkte modus, en de plugin selecteert deze. Een build die `deployMode` op een andere waarde instelt, start zonder de tool en logt dit.
+
+Zonder een hotswap-tool, stel `scan` in op een interval in seconden en Jetty redeploys de app wanneer gecompileerde klassen of hulpmiddelen veranderen:
+
+| Eigenschap | Beschrijving | Standaard |
+|------------|--------------|-----------|
+| `scan`     | Interval in seconden tussen scans van de gecompileerde output, ingesteld als de `jetty.scan` eigenschap. `0` schakelt scanning uit. Langere intervallen verlagen de belasting en vertragen de redeploy. | `1` |
 
 ## Gebruiksoverwegingen {#usage-considerations}
 
-Hoewel de Jetty-plugin zeer effectief is voor ontwikkeling, heeft deze enkele potentiële beperkingen:
-
-- **Geheugen- en CPU-gebruik**: Frequente bestandsscans, ingesteld door lage `scan`-waarden in de `pom.xml`, kunnen de resourceconsumptie verhogen, vooral bij grote projecten. Het verhogen van het interval kan de belasting verminderen, maar vertraagt ook de redeployment.
-
-- **Beperkte productiegebruik**: De Jetty-plugin is ontworpen voor ontwikkeling, niet voor productieomgevingen. Het mist de prestatieoptimalisatie en beveiligingsconfiguraties die nodig zijn voor productie, waardoor het beter geschikt is voor lokale tests.
-
-- **Sessiebeheer**: Tijdens hot redeployment kunnen gebruikerssessies mogelijk niet worden behouden, vooral wanneer er grote structurele veranderingen in de code plaatsvinden. Dit kan tests met gebruikerssessiegegevens verstoren, waardoor handmatig sessiebeheer of workaround-configuraties voor ontwikkeling nodig zijn.
+- **Geheugen en CPU**: lage `scan`-waarden verhogen het resourceverbruik op grote projecten. Langere intervallen verlagen het en vertragen de redeploy.
+- **Alleen ontwikkeling**: de Jetty-plugin is niet bedoeld voor productie-implementaties.
+- **Sessies**: een redeploy kan gebruikerssessies beëindigen. Een [hotswap-tool](/docs/configuration/deploy-reload/hotswap) past wijzigingen toe zonder een redeploy, en de sessie blijft behouden.

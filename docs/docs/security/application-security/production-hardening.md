@@ -30,6 +30,12 @@ Gate views with [route security](/docs/security/overview) so each one demands th
 
 Credentials, keys, and tokens don't belong in code or in your repository. Pull them from the environment or an external source instead, as shown in [Managing Secrets](/docs/security/application-security/managing-secrets).
 
+## Leave development tooling off {#leave-development-tooling-off}
+
+[craftforJ](/docs/craftforj) is the development environment that inspects a running app and writes changes back to its Java source. It requires both `webforj.debug` and `webforj.devtools.craftforj.enabled`, and by default it answers only the machine running the app. Projects created with [startforJ](https://docs.webforj.com/startforj) or from a webforJ [archetype](/docs/building-ui/archetypes/overview) have both settings enabled for development, so confirm them rather than assuming.
+
+Check that both properties are unset or `false` in the configuration you actually deploy, including any environment variable or profile that applies only in production. Then load the deployed app and confirm that no craftforJ trigger appears on the page. See [craftforJ security](/docs/craftforj/security) for the full picture.
+
 ## Stay current on dependencies {#stay-current-on-dependencies}
 
 The libraries you pull in are a larger source of risk than your own code. Track advisories, update webforJ and your other dependencies regularly, and when a patched version of a transitive library ships ahead of the library that pulls it in, pin the fixed version in your `pom.xml`.
