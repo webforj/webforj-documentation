@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-splitter>
 sidebar_class_name: sidebar--item__hidden
 slug: splitter
-description: A user guide article for the splitter
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 7d271e88bf0f0136df4f3d99022e890e
+description: >-
+  Style the dwc-splitter divider and panes through CSS variables and shadow
+  parts for handle color, width, and hover effects.
+_i18n_hash: 9e7f2058807f55224d39b4ff5bc12cc3
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info COMPOSANT CLIENT
-Cette section décrit les informations de style pour le **`<dwc-splitter>`** composant. Ce composant est **uniquement côté client** - il ne peut pas être instancié seul via l'API, mais peut faire partie des composants de l'API.
+Cette section décrit les informations de style pour le **`<dwc-splitter>`** composant. Ce composant est **uniquement côté client** - il ne peut pas être instancié seul via l'API, mais peut faire partie des composants API.
 :::
 
 ## Style {#styling}

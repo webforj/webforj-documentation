@@ -2,23 +2,23 @@
 title: Working with Data
 sidebar_position: 3
 description: Step 2 - Use Spring to work with data.
-_i18n_hash: c5bf8e9751b676f3490a2f01512647ca
+_i18n_hash: d2e2ee90a1ad908c6884df92fb575c5b
 ---
-In diesem Schritt lernen Sie, wie Sie ein Datenmodell mit Spring erstellen und diese Daten visuell anzeigen. Am Ende dieses Schrittes wird die im vorherigen Schritt erstellte App, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app), eine Tabelle haben, die Daten über Kunden anzeigt. Das Mitverfolgen wird Ihnen Folgendes beibringen:
+In diesem Schritt lernen Sie, wie Sie ein Datenmodell mit Spring erstellen und diese Daten visuell darstellen. Am Ende dieses Schrittes wird die in dem vorherigen Schritt erstellte App, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app), eine Tabelle haben, die Daten über Kunden anzeigt. Das Mitverfolgen dieses Schrittes wird Ihnen Folgendes vermitteln:
 
-- Spring-Anmerkungen
+- Spring Annotationen
 - Datenverwaltung
-- Die webforJ `Table`-Komponente
+- Die webforJ `Table` Komponente
 
-Der Abschluss dieses Schrittes erstellt eine Version von [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data).
+Das Abschließen dieses Schrittes erstellt eine Version von [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data).
 
-## App ausführen {#running-the-app}
+## Die App ausführen {#running-the-app}
 
 Während Sie Ihre App entwickeln, können Sie [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) als Vergleich verwenden. Um die App in Aktion zu sehen:
 
-1. Navigieren Sie zum übergeordneten Verzeichnis, das die `pom.xml`-Datei enthält. Dies ist `2-working-with-data`, wenn Sie mit der Version auf GitHub folgen.
+1. Navigieren Sie zum obersten Verzeichnis, das die `pom.xml`-Datei enthält. Dies ist `2-working-with-data`, wenn Sie der Version auf GitHub folgen.
 
-2. Verwenden Sie den folgenden Maven-Befehl, um die Spring Boot App lokal auszuführen:
+2. Verwenden Sie den folgenden Maven-Befehl, um die Spring Boot-App lokal auszuführen:
     ```bash
     mvn
     ```
@@ -27,10 +27,9 @@ Die Ausführung der App öffnet automatisch einen neuen Browser unter `http://lo
 
 ## Abhängigkeiten und Konfigurationen {#dependencies-and-configurations}
 
-Dieses Tutorial verwendet [H2-Datenbank](https://www.h2database.com/html/main.html) und in einem zukünftigen Schritt die Jakarta Persistence API (JPA) über
-[Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html). Dazu müssen Sie Abhängigkeiten zu `pom.xml` hinzufügen und `application.properties` aktualisieren. Dies wird das letzte Mal sein, dass Sie diese beiden Dateien im Rest des Tutorials ändern müssen.
+Dieses Tutorial verwendet die [H2-Datenbank](https://www.h2database.com/html/main.html) und in einem zukünftigen Schritt die Jakarta Persistence API (JPA) über [Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html). Dazu müssen Sie Abhängigkeiten zu `pom.xml` hinzufügen und `application.properties` aktualisieren. Dies wird das letzte Mal sein, dass Sie diese beiden Dateien für den Rest des Tutorials ändern müssen.
 
-Fügen Sie in Ihrem POM die folgenden Abhängigkeiten hinzu:
+Fügen Sie in Ihrer POM die folgenden Abhängigkeiten hinzu:
 
 ```xml
 <dependency>
@@ -46,46 +45,129 @@ Fügen Sie in Ihrem POM die folgenden Abhängigkeiten hinzu:
 Fügen Sie in `application.properties`, innerhalb von `src/main/resources`, Folgendes hinzu:
 
 ```
-# H2-Datenbankkonfiguration
+# H2 Datenbankkonfiguration
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=
 
-# JPA-Konfiguration
+# JPA Konfiguration
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-:::info Datenzugriff
-Dieses Tutorial verwendet eine In-Memory-Datenbank und die Standardanmeldeinformationen zum Zugriff auf Daten. Besuchen Sie die [Datenzugriffs](https://docs.spring.io/spring-boot/how-to/data-access.html)-Dokumentation von Spring, um mehr über spezifische Spring Boot-Konfigurationsoptionen zu erfahren.
+:::info Zugriff auf Daten
+Dieses Tutorial verwendet eine In-Memory-Datenbank und die Standardanmeldeinformationen für den Datenzugriff. Gehen Sie zu Springs [Data Access](https://docs.spring.io/spring-boot/how-to/data-access.html) Dokumentation, um mehr über die spezifischen Konfigurationsoptionen von Spring Boot zu erfahren.
 :::
 
-## Spring-Beans {#spring-beans}
+## Spring Beans {#spring-beans}
 
-Ein wichtiger Teil der Verwendung des Spring-Frameworks ist das Verständnis, was Beans sind. Beans sind Objekte mit definierten Spring-Anmerkungen, die es Spring erleichtern, sie zu konfigurieren, indem sie den beabsichtigten Zweck der Klasse kennen. Besuchen Sie die [Bean-Übersicht](https://docs.spring.io/spring-framework/reference/core/beans/definition.html)-Dokumentation von Spring, um mehr zu erfahren.
+Ein wichtiger Teil der Verwendung des Spring-Frameworks ist das Verständnis, was Beans sind. Beans sind Objekte mit definierten Spring-Annotationen, die es Spring erleichtern, sie zu konfigurieren, indem sie den beabsichtigten Zweck der Klasse kennen. Gehen Sie zu Springs [Bean-Überblick](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) Dokumentation, um mehr zu erfahren.
 
-## Erstellen eines Datenmodells {#creating-a-data-model}
+## Ein Datenmodell erstellen {#creating-a-data-model}
 
-Bevor die Daten visuell angezeigt oder erstellt werden, benötigt dieses Tutorial eine Möglichkeit, die Daten jedes Kunden darzustellen, einschließlich deren Namen, Land und Firma. Dies wird in Spring mit einer Klasse erreicht, die eine `@Entity`-Anmerkung hat.
+Bevor die Daten visuell angezeigt oder erstellt werden, benötigt dieses Tutorial eine Möglichkeit, die Daten jedes Kunden darzustellen, einschließlich ihres Namens, Landes und Unternehmens. Dies geschieht mit Spring durch eine Klasse mit einer `@Entity` Annotation.
 
-Erstellen Sie eine Klasse in `src/main/java/com/webforj/tutorial/entity` mit dem Namen `Customer.java`. Sie sollte die `@Entity`-Anmerkung haben und Getter- und Setter-Methoden für die Kundenwerte enthalten, mit Ausnahme von `id`. Anstelle einer Methode zur Erstellung von `id`-Werten verwenden Sie die Anmerkungen `@Id` und `@GeneratedValue`, um sicherzustellen, dass jeder Kunde eine eindeutige `id` erhält.
+Erstellen Sie eine Klasse in `src/main/java/com/webforj/tutorial/entity` mit dem Namen `Customer.java`. Sie sollte die `@Entity` Annotation haben und Getter- und Setter-Methoden für die Kundenwerte enthalten, mit Ausnahme von `id`. Anstelle einer Erstellungs-Methode für `id`-Werte verwenden Sie die Annotationen `@Id` und `@GeneratedValue`, um sicherzustellen, dass jeder Kunde eine eindeutige `id` erhält.
 
-Mit dem `Customer`-Datenmodell können Sie nun beginnen, Geschäftslogik in Ihre App einzufügen.
+```java
+@Entity
+@Table(name = "customers")
+public class Customer {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  private String firstName = "";
+  private String lastName = "";
+  private String company = "";
+  private Country country = Country.UNKNOWN;
+
+  public enum Country {
+    UNKNOWN,
+    GERMANY,
+    ENGLAND,
+    ITALY,
+    USA
+  }
+
+  public Customer(String firstName, String lastName, String company, Country country) {
+    setFirstName(firstName);
+    setLastName(lastName);
+    setCompany(company);
+    setCountry(country);
+  }
+
+  public Customer(String firstName, String lastName, String company) {
+    this(firstName, lastName, company, Country.UNKNOWN);
+  }
+
+  public Customer(String firstName, String lastName) {
+    this(firstName, lastName, "");
+  }
+
+  public Customer(String firstName) {
+    this(firstName, "");
+  }
+
+  public Customer() {
+  }
+
+  public void setFirstName(String newName) {
+    firstName = newName;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setLastName(String newName) {
+    lastName = newName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setCompany(String newCompany) {
+    company = newCompany;
+  }
+
+  public String getCompany() {
+    return company;
+  }
+
+  public void setCountry(Country newCountry) {
+    country = newCountry;
+  }
+
+  public Country getCountry() {
+    return country;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+}
+```
+
+Mit dem `Customer` Datenmodell können Sie nun anfangen, Geschäftslogik in Ihre App hinzuzufügen.
 
 ## Daten verwalten {#managing-data}
 
-Nach der Erstellung eines Datenmodells erstellen Sie ein Repository und einen Service, um die Kundendaten zu verwalten. Das Erstellen dieser Typen von Klassen in Ihrer App ermöglicht es Ihnen, Operationen wie das Hinzufügen, Löschen und Aktualisieren von Kundenaufzeichnungen einzuschließen.
+Nachdem Sie ein Datenmodell erstellt haben, erstellen Sie ein Repository und einen Dienst, um die Kundendaten zu verwalten. Die Erstellung dieser Arten von Klassen in Ihrer App ermöglicht es Ihnen, Operationen wie das Hinzufügen, Löschen und Aktualisieren von Kundenaufzeichnungen einzuschließen.
 
-### Repository erstellen {#creating-a-repository}
+### Ein Repository erstellen {#creating-a-repository}
 
-Ein Repository zu erstellen, macht die Daten der Entitäten zugänglich, sodass Ihre App mehrere Kunden enthalten kann. Ziel dieses Tutorials ist es, die Daten bearbeitbar, sortierbar und validierbar zu machen. Die Fähigkeiten eines Repositories bestimmen Sie durch das verwendete Spring Data-Repository.
+Die Erstellung eines Repositories macht die Daten der Entitäten zugänglich, sodass Ihre App mehrere Kunden enthalten kann. Ziel dieses Tutorials ist es, die Daten bearbeitbar, sortierbar und validierbar zu machen. Die Fähigkeiten eines Repositories bestimmen sich durch das Spring Data-Repository, das Sie verwenden.
 
-In einem zukünftigen Schritt, [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data), benötigen Sie Zugriff auf Spring Data JPA, um die Eigenschaften von Kunden zu validieren. Daher ist das geeignete Repository, das zu verwenden ist, das `JpaRepository`.
+In einem zukünftigen Schritt, [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data), benötigen Sie Zugriff auf Spring Data JPA, um Kundenattribute zu validieren. Daher ist das geeignete Repository, das Sie verwenden sollten, das `JpaRepository`.
 
-Erstellen Sie in `src/main/java/com/webforj/tutorial/repository` ein Repository-Interface, das die Spring `@Repository`-Anmerkung hat und `JpaRepository` erweitert. Sie müssen angeben, um welchen Typ von Entitäten es sich in diesem Repository handelt und welchen Typ von Objekt die `id` ist. Um es abzurunden, erweitern Sie auch `JpaSpecificationExecutor`. Diese Ergänzung ermöglicht es Ihnen, später, wenn nötig, erweiterte Filteroptionen umzusetzen.
+Erstellen Sie in `src/main/java/com/webforj/tutorial/repository` eine Repository-Schnittstelle, die die Spring `@Repository` Annotation hat und `JpaRepository` erweitert. Sie müssen angeben, welche Art von Entitäten in diesem Repository enthalten sind und welcher Typ das `id` sein sollte. Zu Ihrer Sicherheit erweitern Sie auch `JpaSpecificationExecutor`. Diese Ergänzung ermöglicht es Ihnen, später bei Bedarf erweiterte Filteroptionen zu implementieren.
 
-```java title="CustomerRepository.java"
+```java
 @Repository
 public interface CustomerRepository
         extends JpaRepository<Customer, Long>,
@@ -93,31 +175,31 @@ public interface CustomerRepository
 }
 ```
 
-Das `CustomerRepository`, das Sie gerade erstellt haben, hat keine deklarierten Methoden. Die Methoden zur Verwaltung der Daten (der Geschäftslogik der App) werden in einer Serviceklasse untergebracht.
+Das `CustomerRepository`, das Sie gerade erstellt haben, wird keine deklarierten Methoden haben. Die Methoden zum Verwalten der Daten (der Geschäftslogik der App) finden sich in einer Dienstklasse.
 
 :::info Links zur Spring-Dokumentation
 
-Hier sind vier Links zur Dokumentation von Spring, die Ihnen helfen werden, Spring-Repositories besser zu verstehen:
+Hier sind vier Links zu Springs Dokumentation, die Ihnen helfen, Spring-Repositories besser zu verstehen:
 
-- [Arbeiten mit Spring Data-Repositories](https://docs.spring.io/spring-data/commons/reference/repositories.html)
-- [Spring Data JPA Überblick](https://docs.spring.io/spring-data/jpa/reference/index.html)
-- [Spring Data JPA-Spezifikationen](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
+- [Working with Spring Data Repositories](https://docs.spring.io/spring-data/commons/reference/repositories.html)
+- [Spring Data JPA Overview](https://docs.spring.io/spring-data/jpa/reference/index.html)
+- [Spring Data JPA Specifications](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
 - [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
 :::
 
-### Service erstellen {#creating-a-service}
+### Einen Dienst erstellen {#creating-a-service}
 
-Erstellen Sie in `src/main/java/com/webforj/tutorial/service` eine `CustomerService`-Klasse. Dieser Service enthält Methoden zum Erstellen, Aktualisieren, Löschen und Abfragen von Kunden mit dem `CustomerRepository`.
+In `src/main/java/com/webforj/tutorial/service` erstellen Sie eine `CustomerService` Klasse. Dieser Dienst enthält Methoden zum Erstellen, Aktualisieren, Löschen und Abfragen von Kunden mit `CustomerRepository`.
 
-Darüber hinaus benötigt dieser Service einen Mechanismus, um Spring Data-Repositories mit den UI-Komponenten von webforJ zu verbinden. Die Verwendung der `SpringDataRepository`-Klasse von webforJ ermöglicht es Ihnen, diese Brücke zu schaffen. Sie vereinfacht die Datenbindung und CRUD-Operationen, indem sie es Ihren webforJ-Tabellen und -Formularen ermöglicht, frei mit Ihrer von Spring verwalteten Datenschicht zu interagieren. Weitere Informationen zur Spring-Integration von webforJ finden Sie im Artikel [Spring Data JPA](/docs/integrations/spring/spring-data-jpa).
+Zusätzlich benötigt dieser Dienst einen Mechanismus, um Spring Data-Repositories mit den UI-Komponenten von webforJ zu verbinden. Die Verwendung der `SpringDataRepository` Klasse von webforJ ermöglicht es Ihnen, diese Brücke zu erstellen. Sie vereinfacht die Datenbindung und CRUD-Operationen, indem sie es Ihren webforJ-Tabellen und -Formularen ermöglicht, problemlos mit Ihrer von Spring verwalteten Datenebene zu arbeiten. Weitere Informationen zur Spring-Integration von webforJ finden Sie im Artikel [Spring Data JPA](/docs/integrations/spring/spring-data-jpa).
 
-Für diese Serviceklasse verwenden Sie zwei Spring-Anmerkungen:
+Für diese Dienstklasse verwenden Sie zwei Spring-Annotationen:
 
-- **`@Service`** - Dies kennzeichnet eine Klasse als Servicekomponente in Spring, sodass sie automatisch als Bean für Geschäftslogik oder wiederverwendbare Operationen erkannt und verwaltet wird.
+- **`@Service`** - Dadurch wird eine Klasse als Dienstkomponente in Spring markiert, sodass sie automatisch als Bean für Geschäftslogik oder wiederverwendbare Operationen erkannt und verwaltet wird.
 
-- **`@Transactional`** - Diese Anmerkung weist Spring an, die Methode oder Klasse innerhalb einer Datenbanktransaktion auszuführen, sodass alle darin enthaltenen Operationen zusammen committet oder zurückgerollt werden. Weitere Details finden Sie in der Spring-Dokumentation, [Verwendung von @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+- **`@Transactional`** - Diese Annotation sagt Spring, dass die Methode oder Klasse innerhalb einer Datenbanktransaktion ausgeführt werden soll, sodass alle Operationen zusammen verpflichtet oder zurückgerollt werden. Weitere Details finden Sie in Springs Dokumentation, [Verwendung von @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
 
-```java title="CustomerService.java"
+```java
 @Service
 @Transactional
 public class CustomerService {
@@ -161,82 +243,81 @@ public class CustomerService {
   public boolean doesCustomerExist(Long id) {
     return repository.existsById(id);
   }
-
 }
 ```
 
-## Initialdaten laden {#loading-initial-data}
+## Initiale Daten laden {#loading-initial-data}
 
-Für dieses Tutorial stammt der initiale Kundendatensatz aus einer JSON-Datei. Die Java-App lädt die Datei, nicht der Browser, also erstellen Sie sie in `src/main/resources/data` mit den folgenden Daten:
+Für dieses Tutorial stammt der Satz anfänglicher Kundendaten aus einer JSON-Datei. Die Java-App lädt die Datei, nicht der Browser. Erstellen Sie sie in `src/main/resources/data` mit den folgenden Daten:
 
 ```json
 [
-    {
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "company": "TechCorp",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "John",
-      "lastName": "Doe",
-      "company": "Innovatech",
-      "country": "ITALY"
-    },
-    {
-      "firstName": "Emma",
-      "lastName": "Brown",
-      "company": "SoftSolutions",
-      "country": "ENGLAND"
-    },
-    {
-      "firstName": "Liam",
-      "lastName": "Jones",
-      "company": "FinWise",
-      "country": "UNKNOWN"
-    },
-    {
-      "firstName": "Sophia",
-      "lastName": "Taylor",
-      "company": "DataWorks",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "Noah",
-      "lastName": "Wilson",
-      "company": "EcoBuild",
-      "country": "ITALY"
-    },
-    {
-      "firstName": "Olivia",
-      "lastName": "Moore",
-      "company": "NextGen",
-      "country": "ENGLAND"
-    },
-    {
-      "firstName": "James",
-      "lastName": "Anderson",
-      "company": "BlueTech",
-      "country": "UNKNOWN"
-    },
-    {
-      "firstName": "Isabella",
-      "lastName": "Thomas",
-      "company": "FutureLogic",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "Lucas",
-      "lastName": "White",
-      "company": "GreenEnergy",
-      "country": "ITALY"
-    }
+  {
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "company": "TechCorp",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Innovatech",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Brown",
+    "company": "SoftSolutions",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Jones",
+    "company": "FinWise",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Taylor",
+    "company": "DataWorks",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Wilson",
+    "company": "EcoBuild",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Moore",
+    "company": "NextGen",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Anderson",
+    "company": "BlueTech",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Thomas",
+    "company": "FutureLogic",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "White",
+    "company": "GreenEnergy",
+    "country": "ITALY"
+  }
 ]
 ```
 
-Nun benötigt die App eine Möglichkeit, diese Daten beim Start abzurufen. Erstellen Sie in `src/main/java/com/webforj/tutorial/config` eine `DataInitializer`-Klasse. Wenn die App läuft, wird sie, wenn keine Kunden erkannt werden, die Kunden aus der JSON-Datei laden und in die H2-Datenbank einfügen:
+Anschließend benötigt die App eine Möglichkeit, diese Daten beim Start abzurufen. Erstellen Sie in `src/main/java/com/webforj/tutorial/config` eine `DataInitializer` Klasse. Wenn die App gestartet wird und keine Kunden erkannt werden, lädt sie Kunden aus der JSON-Datei und fügt sie in die H2-Datenbank ein:
 
-```java title="DataInitializer.java"
+```java
 @Component
 public class DataInitializer implements CommandLineRunner {
   private final CustomerService customerService;
@@ -269,34 +350,34 @@ public class DataInitializer implements CommandLineRunner {
 
 ## Daten visuell anzeigen {#displaying-data-visually}
 
-Der letzte Teil dieses Schrittes besteht darin, die [`Table`](/docs/components/table/overview)-Komponente zu verwenden und sie mit den Spring-Daten zu verbinden.
+Der letzte Teil dieses Schrittes besteht darin, die [`Table`](/docs/components/table/overview) Komponente zu verwenden und sie mit den Spring-Daten zu verbinden.
 
-Eine Instanz einer webforJ `Table` benötigt einen Datentyp, damit sie funktioniert, das ist die zuvor in diesem Schritt erstellte Entitätsklasse:
+Eine Instanz von einer webforJ `Table` benötigt einen Datentyp, um zu funktionieren. Das ist die Entitätsklasse, die zuvor in diesem Schritt erstellt wurde:
 
 ```java
 Table<Customer> table = new Table<>();
 ```
 
-Sobald Sie eine `Table` haben, erhält jede Kunden-Eigenschaft ihre eigene Spalte. Für jede Spalte, die Sie hinzufügen, verwenden Sie den Eigenschaftsnamen, die Getter-Methode in der `Customer`-Entität und die `setLabel()`-Methode, um die Informationen in der gewünschten Reihenfolge anzuzeigen:
+Sobald Sie eine `Table` haben, bekommt jede Kunden-Eigenschaft ihre eigene Spalte. Für jede Spalte, die Sie hinzufügen, verwenden Sie den Eigenschaftsnamen, dessen Getter-Methode in der `Customer` Entität und die Methode `setLabel()`, um die Informationen in der Reihenfolge darzustellen, die Sie wünschen:
 
 ```java
 table.addColumn("firstName", Customer::getFirstName).setLabel("Vorname");
 table.addColumn("lastName", Customer::getLastName).setLabel("Nachname");
-table.addColumn("company", Customer::getCompany).setLabel("Firma");
+table.addColumn("company", Customer::getCompany).setLabel("Unternehmen");
 table.addColumn("country", Customer::getCountry).setLabel("Land");
 ```
 
-Nachdem Sie die Spalten hinzugefügt haben, müssen Sie angeben, welches Repository die `Table` verwenden soll, um ihre Daten zu befüllen. Diese App erhält das Repository über die `getRepositoryAdapter()`-Methode im erstellten `CustomerService`:
+Nachdem Sie die Spalten hinzugefügt haben, müssen Sie angeben, welches Repository die `Table` verwenden soll, um ihre Daten zu befüllen. Diese App erhält das Repository von der Methode `getRepositoryAdapter()` im erstellten `CustomerService`:
 
 ```java
 table.setRepository(customerService.getRepositoryAdapter());
 ```
 
-### Tabellengrößen {#table-sizing}
+### Tabellengröße {#table-sizing}
 
-Für die Tabelle können Sie `setSize()` verwenden, um ihre Größe in Pixeln oder anderen [CSS-Einheiten](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units) festzulegen. Indem Sie eine maximale Breite relativ zur Bildschirmbreite festlegen, helfen Sie Ihrer App, sich an kleinere Bildschirme anzupassen.
+Für die Tabelle können Sie `setSize()` verwenden, um ihre Größe in Pixel oder anderen [CSS-Einheiten](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units) festzulegen. Indem Sie eine maximale Breite relativ zur Bildschirmbreite festlegen, helfen Sie Ihrer App, sich an kleinere Bildschirme anzupassen.
 
-Für die Spalten können Sie die Breiten individuell festlegen oder eine der Methoden der `Table` wie `setColumnsToAutoFit()` verwenden, um die Breiten von webforJ automatisch verwalten zu lassen:
+Für die Spalten können Sie die Breiten einzeln festlegen oder eine der Methoden `Table` wie `setColumnsToAutoFit()` verwenden, um webforJ die Breiten für Sie einstellen zu lassen:
 
 ```java
 table.setSize("1000px", "294px");
@@ -306,23 +387,23 @@ table.setColumnsToAutoFit();
 
 ### Benutzerinteraktionen {#user-interactions}
 
-Die `Table`-Komponente hat auch Methoden zur Steuerung, wie Benutzer mit den Spalten interagieren können:
+Die `Table` Komponente hat auch Methoden, um zu steuern, wie Benutzer mit den Spalten interagieren:
 
 ```java
 table.setColumnsToResizable(false);
 table.getColumns().forEach(column -> column.setSortable(true));
 ```
 
-Die hervorgehobenen Teile der `Application`-Klasse fügen die `Table`-Komponente hinzu, definieren ihre Spalten und verwenden den `CustomerService`, um das Repository abzurufen:
+Die hervorgehobenen Abschnitte der `Application` Klasse fügen die `Table` Komponente hinzu, definieren deren Spalten und verwenden `CustomerService`, um das Repository abzurufen:
 
-```java title="Application.java" {7-12,24-25,30-40,46-47}
+```java
 @SpringBootApplication
 @BundleEntry("css/card.css")
 @AppTheme("system")
 @AppProfile(name = "Kundenanwendung", shortName = "CustomerApp")
 public class Application extends App {
 
-  // Fügen Sie eine Konstruktorinjektion für CustomerService hinzu
+  //Fügen Sie eine Konstruktoreinspritzung für CustomerService hinzu
   private final CustomerService customerService;
 
   public Application(CustomerService customerService) {
@@ -336,21 +417,21 @@ public class Application extends App {
   @Override
   public void run() throws WebforjException {
     Frame mainFrame = new Frame();
-    Paragraph tutorial = new Paragraph("Tutorial App!");
+    Paragraph tutorial = new Paragraph("Tutorial-App!");
     Button btn = new Button("Info");
 
-    // Fügen Sie die Table-Komponente hinzu
+    //Fügen Sie die Table-Komponente hinzu
     Table<Customer> table = new Table<>();
 
     mainFrame.setWidth("fit-content");
     mainFrame.addClassName("card");
 
-    // Stylen Sie die Table-Komponente, setzen Sie die Spalten und setzen Sie das Repository
+    //Stylen Sie die Table-Komponente, legen Sie die Spalten und das Repository fest
     table.setSize("1000px", "294px");
     table.setMaxWidth("90vw");
     table.addColumn("firstName", Customer::getFirstName).setLabel("Vorname");
     table.addColumn("lastName", Customer::getLastName).setLabel("Nachname");
-    table.addColumn("company", Customer::getCompany).setLabel("Firma");
+    table.addColumn("company", Customer::getCompany).setLabel("Unternehmen");
     table.addColumn("country", Customer::getCountry).setLabel("Land");
     table.setColumnsToAutoFit();
     table.setColumnsToResizable(false);
@@ -359,9 +440,9 @@ public class Application extends App {
 
     btn.setTheme(ButtonTheme.PRIMARY)
         .setMaxWidth(200)
-        .addClickListener(e -> OptionDialog.showMessageDialog("Das ist ein Tutorial!", "Info"));
+        .addClickListener(e -> OptionDialog.showMessageDialog("Dies ist ein Tutorial!", "Info"));
 
-    // Fügen Sie die Table zum Frame hinzu
+    //Fügen Sie die Tabelle zum Frame hinzu
     mainFrame.add(tutorial, btn, table);
   }
 
@@ -370,4 +451,4 @@ public class Application extends App {
 
 ## Nächster Schritt {#next-step}
 
-Mit diesen Änderungen lädt die App Kundendaten in die Datenbank und zeigt sie in einer `Table`-Komponente an. Der nächste Schritt, [Routing and Composites](/docs/introduction/tutorial/routing-and-composites), führt in das Routing und mehrere Ansichten zur Hinzufügung neuer Kunden ein.
+Durch diese Änderungen lädt die App Kundendaten in die Datenbank und zeigt sie dann in einer `Table` Komponente an. Der nächste Schritt, [Routing and Composites](/docs/introduction/tutorial/routing-and-composites), führt das Routing und mehrere Ansichten zum Hinzufügen neuer Kunden ein.

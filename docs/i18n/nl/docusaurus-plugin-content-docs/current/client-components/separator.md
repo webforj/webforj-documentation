@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-separator>
 sidebar_class_name: sidebar--item__hidden
 slug: separator
-description: A user guide article for the separator
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 74dd8d342077296e4716c5ae6e61f5e6
+description: >-
+  Style the dwc-separator divider line with CSS variables and shadow parts
+  controlling thickness, color, and orientation.
+_i18n_hash: eb1a9996e34a3c15d51e27e192ab9867
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info CLIËNTCOMPONENT
-Deze sectie bevat stijlinformatie voor de **`<dwc-separator>`** component. Deze component is **alleen client-side** - het kan niet op zichzelf via de API worden geïnstantieerd, maar kan een onderdeel zijn van API-componenten.
+Deze sectie beschrijft stylinginformatie voor de **`<dwc-separator>`** component. Deze component is **alleen client-side** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

@@ -2,35 +2,34 @@
 title: Working with Data
 sidebar_position: 3
 description: Step 2 - Use Spring to work with data.
-_i18n_hash: c5bf8e9751b676f3490a2f01512647ca
+_i18n_hash: d2e2ee90a1ad908c6884df92fb575c5b
 ---
-Tässä vaiheessa opit, kuinka luodaan tietomalli Springissä ja näytetään nämä tiedot visuaalisesti.
-Tämän vaiheen lopussa aiemmin luodussa sovelluksessa, [Perus sovelluksen luominen](/docs/introduction/tutorial/creating-a-basic-app), on taulukko, joka näyttää tietoja asiakkaista. Seuraamalla mukana opit:
+Tässä vaiheessa opit luomaan tietomallin käyttäen Springiä ja näyttämään tiedot visuaalisesti. Tämän vaiheen loppuun mennessä aiemmin luotu sovellus, [Perus sovelluksen luominen](/docs/introduction/tutorial/creating-a-basic-app), sisältää taulukon, joka näyttää asiakasdataa. Seuraamalla mukana opit:
 
-- Spring-anotaatiot
-- Datan hallinta
-- webforJ `Table`-komponentti
+- Spring-annotaatioita
+- Datan hallintaa
+- webforJ `Table` -komponenttia
 
 Tämän vaiheen suorittaminen luo version [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data).
 
-## Sovelluksen suorittaminen {#running-the-app}
+## Sovelluksen käynnistäminen {#running-the-app}
 
-Sovellustasi kehittäessäsi voit käyttää [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) vertailukohtana. Näkyäksesi sovelluksen toiminnassa:
+Sovellusta kehitettäessä voit käyttää [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) vertailupohjana. Näet sovelluksen toiminnassa:
 
-1. Siirry yläpään hakemistoon, jossa `pom.xml`-tiedosto sijaitsee; tämä on `2-working-with-data`, jos seuraat GitHubin versiota.
+1. Siirry ylimmälle tasolle hakemistoon, jossa `pom.xml`-tiedosto sijaitsee, tämä on `2-working-with-data`, jos seuraat GitHubin versiota.
 
-2. Suorita seuraava Maven-komento ajaaksesi Spring Boot -sovelluksen paikallisesti:
+2. Suorita seuraava Maven-komento Spring Boot -sovelluksen ajamiseksi paikallisesti:
     ```bash
     mvn
     ```
 
-Sovelluksen suorittaminen avaa automaattisesti uuden selaimen osoitteessa `http://localhost:8080`.
+Sovelluksen käynnistäminen avaa automaattisesti uuden selaimen osoitteeseen `http://localhost:8080`.
 
-## Riippuvuudet ja konfiguroinnit {#dependencies-and-configurations}
+## Riippuvuudet ja konfiguraatiot {#dependencies-and-configurations}
 
-Tässä oppaassa käytetään [H2-tietokantaa](https://www.h2database.com/html/main.html) ja tulevassa vaiheessa Jakarta Persistence API:ta (JPA) [Spring Data JPA:n](https://docs.spring.io/spring-data/jpa/reference/index.html) kautta. Tämä edellyttää, että lisäät riippuvuuksia `pom.xml`-tiedostoon ja päivität `application.properties`-tiedoston. Tämä on viimeinen kerta, kun sinun tarvitsee muuttaa näitä kahta tiedostoa oppaan loppuosan aikana.
+Tämä opas käyttää [H2-tietokantaa](https://www.h2database.com/html/main.html) ja tulevassa vaiheessa Jakarta Persistence API:ta (JPA) [Spring Data JPA:n](https://docs.spring.io/spring-data/jpa/reference/index.html) kautta. Tämä vaatii, että lisäät riippuvuuksia `pom.xml`-tiedostoon ja päivität `application.properties`. Tämä on viimeinen kerta, kun sinun tarvitsee muokata näitä kahta tiedostoa koko oppaan aikana.
 
-Lisää POM-tiedostoosi seuraavat riippuvuudet:
+Lisää pom-tiedostoon seuraavat riippuvuudet:
 
 ```xml
 <dependency>
@@ -43,133 +42,130 @@ Lisää POM-tiedostoosi seuraavat riippuvuudet:
 </dependency>
 ```
 
-Lisää `application.properties`-tiedostoon, joka sijaitsee `src/main/resources`-hakemistossa seuraavat:
+Lisää `application.properties`:iin, joka sijaitsee `src/main/resources`-hakemistossa, seuraavat:
 
 ```
-# H2 Tietokannan konfigurointi
+# H2-tietokannan konfigurointi
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=
 
-# JPA konfigurointi
+# JPA-konfigurointi
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-:::info Datan käyttämisestä
-Tässä oppaassa käytetään muistin tietokantaa ja oletustunnuksia datan käyttämiseksi. Siirry Springin [Data Access](https://docs.spring.io/spring-boot/how-to/data-access.html) -dokumentaatioon oppiaksesi tiettyjä Spring Boot -konfiguraatio-oppaita.
+:::info Datan hankkiminen
+Tässä oppaassa käytetään muistissa olevaa tietokantaa ja oletustunnistetietoja datan hankkimiseen. Käy Springin [Datan käyttö](https://docs.spring.io/spring-boot/how-to/data-access.html) -dokumentaatiossa oppiaksesi tietyistä Spring Boot -konfigurointivaihtoehdoista.
 :::
 
-## Spring beans {#spring-beans}
+## Springin beanit {#spring-beans}
 
-Yksi tärkeä osa Spring-viitekehyksen käyttöä on ymmärtää, mitä beans ovat. Beans ovat objekteja, joilla on määriteltyjä Spring-anotaatioita, jotka helpottavat Springiä konfiguroimasta niitä tunnistamalla luokan aiotun tarkoituksen. Siirry Springin [Bean Overview](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) -dokumentaatioon saadaksesi lisätietoa.
+Yksi tärkeä osa Spring-kehyksen käyttöä on ymmärtää, mitä beanit ovat. Beanit ovat objekteja, joilla on määriteltyjä Spring-annotaatioita, jolloin Spring voi helpommin konfiguroida niitä tietäen luokan tarkoitetun tarkoituksen. Käy Springin [Beanin yleiskuvaus](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) -dokumentaatiossa saadaksesi lisätietoja.
 
 ## Tietomallin luominen {#creating-a-data-model}
 
-Ennen kuin näytät tai luot tietoja visuaalisesti, tässä oppaassa tarvitaan tapa edustaa kunkin asiakkaan tietoja, mukaan lukien heidän nimensä, maansa ja yrityksensä. Springin avulla tämä tehdään luomalla luokka, jolla on `@Entity`-anotaatio.
+Ennen kuin tiedot voidaan esittää visuaalisesti tai luoda ne, tässä oppaassa tarvitaan tapa edustaa jokaisen asiakkaan tietoja, mukaan lukien nimi, maa ja yritys. Springin avulla tämä tapahtuu luomalla luokka, joka sisältää `@Entity`-annotaation.
 
-Luo luokka hakemistoon `src/main/java/com/webforj/tutorial/entity`, nimeltään `Customer.java`. Sen tulisi sisältää `@Entity`-anotaatio ja getter- ja setter-menetelmät asiakastietojen arvoille, poislukien `id`. Sen sijaan, että käyttäisit luontimenetelmää `id`-arvoille, käytä `@Id` ja `@GeneratedValue` -anotaatioita varmistaaksesi, että jokaisella asiakkaalla on ainutlaatuinen `id`.
+Luo luokka `src/main/java/com/webforj/tutorial/entity`-hakemistoon nimeltä `Customer.java`. Sen tulisi sisältää `@Entity`-annotaatio ja getter- ja setter-metodit asiakasarvoille, paitsi `id`:lle. `id`-arvojen luomismetodin sijasta käytä `@Id`- ja `@GeneratedValue`-annotaatioita varmistaaksesi, että jokaiselle asiakkaalle annetaan ainutlaatuinen `id`.
 
+```java
+@Entity
+@Table(name = "customers")
+public class Customer {
 
-<ExpandableCode title="Customer.java" language="java" startLine={1} endLine={15}>
-{`@Entity
-  @Table(name = "customers")
-  public class Customer {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  private String firstName = "";
+  private String lastName = "";
+  private String company = "";
+  private Country country = Country.UNKNOWN;
 
-    private String firstName = "";
-    private String lastName = "";
-    private String company = "";
-    private Country country = Country.UNKNOWN;
-
-    public enum Country {
-      UNKNOWN,
-      GERMANY,
-      ENGLAND,
-      ITALY,
-      USA
-    }
-
-    public Customer(String firstName, String lastName, String company, Country country) {
-      setFirstName(firstName);
-      setLastName(lastName);
-      setCompany(company);
-      setCountry(country);
-    }
-
-    public Customer(String firstName, String lastName, String company) {
-      this(firstName, lastName, company, Country.UNKNOWN);
-    }
-
-    public Customer(String firstName, String lastName) {
-      this(firstName, lastName, "");
-    }
-
-    public Customer(String firstName) {
-      this(firstName, "");
-    }
-
-    public Customer() {
-    }
-
-    public void setFirstName(String newName) {
-      firstName = newName;
-    }
-
-    public String getFirstName() {
-      return firstName;
-    }
-
-    public void setLastName(String newName) {
-      lastName = newName;
-    }
-
-    public String getLastName() {
-      return lastName;
-    }
-
-    public void setCompany(String newCompany) {
-      company = newCompany;
-    }
-
-    public String getCompany() {
-      return company;
-    }
-
-    public void setCountry(Country newCountry) {
-      country = newCountry;
-    }
-
-    public Country getCountry() {
-      return country;
-    }
-
-    public Long getId() {
-      return id;
-    }
-
+  public enum Country {
+    UNKNOWN,
+    GERMANY,
+    ENGLAND,
+    ITALY,
+    USA
   }
 
-`}
-</ExpandableCode>
+  public Customer(String firstName, String lastName, String company, Country country) {
+    setFirstName(firstName);
+    setLastName(lastName);
+    setCompany(company);
+    setCountry(country);
+  }
 
-Kun `Customer`-tietomalli on luotu, voit nyt alkaa lisätä liiketoimintalogiikkaa sovellukseesi.
+  public Customer(String firstName, String lastName, String company) {
+    this(firstName, lastName, company, Country.UNKNOWN);
+  }
+
+  public Customer(String firstName, String lastName) {
+    this(firstName, lastName, "");
+  }
+
+  public Customer(String firstName) {
+    this(firstName, "");
+  }
+
+  public Customer() {
+  }
+
+  public void setFirstName(String newName) {
+    firstName = newName;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setLastName(String newName) {
+    lastName = newName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setCompany(String newCompany) {
+    company = newCompany;
+  }
+
+  public String getCompany() {
+    return company;
+  }
+
+  public void setCountry(Country newCountry) {
+    country = newCountry;
+  }
+
+  public Country getCountry() {
+    return country;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+}
+```
+
+Kun `Customer`-tietomalli on paikoillaan, voit nyt alkaa lisätä liiketoimintalogiikkaa sovellukseesi.
 
 ## Datan hallinta {#managing-data}
 
-Tietomallin luomisen jälkeen luot repositorion ja palvelun asiakastietojen hallintaan. Tällaiset luokat sovelluksessasi mahdollistavat operaatioiden, kuten asiakastietojen lisäämisen, poistamisen ja päivittämisen.
+Tietomallin luomisen jälkeen luot repositorion ja palvelun asiakasdatan hallitsemiseksi. Tällaiset luokat sovelluksessasi mahdollistavat toimintoja, kuten asiakkaiden tietojen lisäämistä, poistamista ja päivittämistä.
 
 ### Repositorion luominen {#creating-a-repository}
 
-Repositorion luominen tekee entiteettien tiedoista saatavilla olevia, jotta sovelluksesi voi sisältää useita asiakkaita. Tämän oppaan tavoite on tehdä tiedoista muokattavia, lajiteltavia ja validoitavia. Määrität repositorion ominaisuudet käyttämällä Spring Data -repositoriota.
+Repositorion luominen tekee entiteettien datasta saatavilla olevaa, jotta sovelluksesi voi sisältää useita asiakkaita. Tämän oppaan tavoitteena on tehdä datasta muokattava, lajitteltava ja validoitava. Määrität repositorion kyvyt käyttämällä Spring Data -repositorya.
 
-Tulevassa vaiheessa, [Datan validoiminen ja sitominen](/docs/introduction/tutorial/validating-and-binding-data), tarvitset pääsyn Spring Data JPA:han validoidaksesi asiakashallinnan. Siksi asianmukainen repositorio käytettäväksi on `JpaRepository`.
+Tulevassa vaiheessa [Datan validointi ja sitominen](/docs/introduction/tutorial/validating-and-binding-data) tarvitset pääsyn Spring Data JPA:han asiakkaiden ominaisuuksien validoimiseksi. Siksi sopiva repository käyttää on `JpaRepository`.
 
-Hakemistossa `src/main/java/com/webforj/tutorial/repository`, luo repositorio liittymä, jolla on Springin `@Repository`-anotaatio ja joka laajentaa `JpaRepository`-rajapintaa. Sinun on määritettävä, minkä tyyppisiä entiteettejä tässä repositoriossa on ja minkä tyyppinen objekti `id` on. Varmuuden vuoksi laajenna myös `JpaSpecificationExecutor`-rajapintaa. Tämä lisäys mahdollistaa edistyksellisten suodatusvaihtoehtojen toteuttamisen myöhemmin, mikäli tarpeen.
+Luo `src/main/java/com/webforj/tutorial/repository`-hakemistoon repositoryliittymä, jossa on Springin `@Repository`-annotaatio ja joka laajentaa `JpaRepository`:a. Sinun täytyy määrittää, minkä tyyppisiä entiteettejä tämä repository sisältää ja minkä tyyppinen objekti `id` on. Hyvänä käytäntönä laajenna myös `JpaSpecificationExecutor`:ia. Tämä lisäys mahdollistaa kehittyneiden suodatusvaihtoehtojen toteuttamisen myöhemmin, jos tarpeen.
 
 ```java title="CustomerRepository.java"
 @Repository
@@ -179,29 +175,29 @@ public interface CustomerRepository
 }
 ```
 
-Luomassasi `CustomerRepository`-rajapinnassa ei ole määriteltyjä menetelmiä. Datan hallintaan (sovelluksen liiketoimintalogiikkaan) tarvittavat menetelmät löytyvät palveluluokasta.
+Juuri luomasi `CustomerRepository` ei sisällä määriteltyjä metodeja. Datan hallintaan liittyvät (sovelluksen liiketoimintalogiikka) metodit asuvat palveluluokassa.
 
-:::info Spring-dokumentaation linkkejä
+:::info Spring-dokumentaatio-linkit
 
-Tässä on neljä linkkiä Springin dokumentaatioon, jotka auttavat sinua ymmärtämään paremmin Spring-repositorion tyyppejä:
+Tässä on neljä linkkiä Springin dokumentaatioon, jotka auttavat sinua ymmärtämään paremmin Spring-repositoryt:
 
-- [Työskentely Spring Data Repositorien kanssa](https://docs.spring.io/spring-data/commons/reference/repositories.html)
-- [Spring Data JPA:n yleiskatsaus](https://docs.spring.io/spring-data/jpa/reference/index.html)
-- [Spring Data JPA -spesifikaatiot](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
+- [Työskentely Spring Data Repositories -ohjeiden](https://docs.spring.io/spring-data/commons/reference/repositories.html)
+- [Spring Data JPA -yleiskatsaus](https://docs.spring.io/spring-data/jpa/reference/index.html)
+- [Spring Data JPA -erityisominaisuudet](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
 - [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
 :::
 
 ### Palvelun luominen {#creating-a-service}
 
-Hakemistossa `src/main/java/com/webforj/tutorial/service`, luo `CustomerService`-luokka. Tämä palvelu sisältää menetelmiä asiakkaiden luomiseen, päivittämiseen, poistamiseen ja kyselyyn käyttäen `CustomerRepository`-rajapintaa.
+Luo `src/main/java/com/webforj/tutorial/service`-hakemistoon `CustomerService`-luokka. Tämä palvelu sisältää metodeja asiakkaiden luomiseen, päivittämiseen, poistamiseen ja kyselyyn käyttämällä `CustomerRepository`:a.
 
-Lisäksi tämän palvelun on oltava yhteydessä Spring Data -repositorioihin webforJ:n UI-komponenttien kautta. Käyttämällä `SpringDataRepository`-luokkaa webforJ:ssa voit luoda tämän sillan. Se yksinkertaistaa datan sitomista ja CRUD-toimintoja, mikä mahdollistaa webforJ-taulukoiden ja lomakkeiden saumattoman yhteyden Spring-hallittavaan datakerrokseesi. Lisätietoja webforJ:n Spring-integraatiosta on [Spring Data JPA](/docs/integrations/spring/spring-data-jpa) -artikkelissa.
+Lisäksi tällä palvelulla on mekanismi yhdistää Spring Data repositories webforJ:n käyttöliittymäkomponentteihin. Käyttämällä `SpringDataRepository` webforJ-luokkaa voit luoda tämän sillan. Se yksinkertaistaa datan sitomista ja CRUD-toimintoja, jolloin webforJ-taulut ja -lomakkeet voivat toimia vapaasti Spring-hallittavan datakerroksesi kanssa. Lisätietoja webforJ:n Spring-integraatiosta löydät [Spring Data JPA](/docs/integrations/spring/spring-data-jpa) -artikkelista.
 
-Tässä palveluluokassa käytetään kahta Spring-anotaatiota:
+Tätä palveluluokkaa varten käytät kahta Spring-annotaatiota:
 
-- **`@Service`** - Tämä merkitsee luokan palvelukomponentiksi Springissä, jolloin se havaitaan ja hallitaan automaattisesti beanina liiketoimintalogiikkaa tai uudelleenkäytettävää toimintoa varten.
+- **`@Service`** - Tämä merkitsee luokan palvelukomponentiksi Springissä, jolloin se havaitaan ja hallitaan automaattisesti beanina liiketoimintalogiikalle tai uudelleenkäytettäville toiminnoille.
 
-- **`@Transactional`** - Tämä anotaatiota kertoo Springille suorittaa menetelmän tai luokan tietokantatransaktiossa, jotta kaikki operaatioita sisällä sitoutuvat tai peruutetaan yhdessä. Tarkempaa tietoa löytyy Springin dokumentaatiosta, [Käyttämällä @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+- **`@Transactional`** - Tämä annotaatio kertoo Springille, että metodi tai luokka suoritetaan tietokantatransaktiossa, jolloin kaikki sisällä olevat toiminnot vahvistetaan tai peruutetaan yhdessä. Lisätietoja on Springin dokumentaatiossa, [Käyttämällä @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
 
 ```java title="CustomerService.java"
 @Service
@@ -251,77 +247,76 @@ public class CustomerService {
 }
 ```
 
-## Aloitustietojen lataaminen {#loading-initial-data}
+## Alustavan datan lataaminen {#loading-initial-data}
 
-Tässä oppaassa aloitusasiakastiedot tulevat JSON-tiedostosta. Java-sovellus lataa tiedoston, ei selain, joten luo se hakemistoon `src/main/resources/data` käyttäen seuraavia tietoja:
+Tässä oppaassa alustava asiakasdatan kokoelma tulee JSON-tiedostosta. Java-sovellus lataa tiedoston, ei selain, joten luo se `src/main/resources/data`-hakemistoon seuraavilla tiedoilla:
 
-<ExpandableCode title="customers.json" language="json" startLine={1} endLine={13}>
-{`[
-    {
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "company": "TechCorp",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "John",
-      "lastName": "Doe",
-      "company": "Innovatech",
-      "country": "ITALY"
-    },
-    {
-      "firstName": "Emma",
-      "lastName": "Brown",
-      "company": "SoftSolutions",
-      "country": "ENGLAND"
-    },
-    {
-      "firstName": "Liam",
-      "lastName": "Jones",
-      "company": "FinWise",
-      "country": "UNKNOWN"
-    },
-    {
-      "firstName": "Sophia",
-      "lastName": "Taylor",
-      "company": "DataWorks",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "Noah",
-      "lastName": "Wilson",
-      "company": "EcoBuild",
-      "country": "ITALY"
-    },
-    {
-      "firstName": "Olivia",
-      "lastName": "Moore",
-      "company": "NextGen",
-      "country": "ENGLAND"
-    },
-    {
-      "firstName": "James",
-      "lastName": "Anderson",
-      "company": "BlueTech",
-      "country": "UNKNOWN"
-    },
-    {
-      "firstName": "Isabella",
-      "lastName": "Thomas",
-      "company": "FutureLogic",
-      "country": "GERMANY"
-    },
-    {
-      "firstName": "Lucas",
-      "lastName": "White",
-      "company": "GreenEnergy",
-      "country": "ITALY"
-    }
-  ]
-`}
-</ExpandableCode>
+```json
+[
+  {
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "company": "TechCorp",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Innovatech",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Brown",
+    "company": "SoftSolutions",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Jones",
+    "company": "FinWise",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Taylor",
+    "company": "DataWorks",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Wilson",
+    "company": "EcoBuild",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Moore",
+    "company": "NextGen",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Anderson",
+    "company": "BlueTech",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Thomas",
+    "company": "FutureLogic",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "White",
+    "company": "GreenEnergy",
+    "country": "ITALY"
+  }
+]
+```
 
-Sen jälkeen sovellukselle on annettava tapa noutaa nämä tiedot, kun se käynnistyy. Luo `src/main/java/com/webforj/tutorial/config`-hakemistoon `DataInitializer`-luokka. Nyt, kun sovellus käynnistyy, jos asiakkaita ei havaita, se lataa asiakkaita JSON-tiedostosta ja tallentaa ne H2-tietokantaan:
+Sitten sovellukselle tarvitaan tapa hakea tämä data käynnistyessään. Luo `src/main/java/com/webforj/tutorial/config`-hakemistoon `DataInitializer`-luokka. Nyt, kun sovellus toimii, jos asiakkaita ei havaita, se lataa asiakkaita JSON-tiedostosta ja lisää ne H2-tietokantaan:
 
 ```java title="DataInitializer.java"
 @Component
@@ -356,15 +351,15 @@ public class DataInitializer implements CommandLineRunner {
 
 ## Datan näyttäminen visuaalisesti {#displaying-data-visually}
 
-Tämän vaiheen viimeinen osa on käyttää [`Table`](/docs/components/table/overview) komponenttia ja liittää se Spring-dataan.
+Tämän vaiheen viimeinen osa on käyttää [`Table`](/docs/components/table/overview) komponenttia ja yhdistää se Spring-dataan.
 
-webforJ `Table`-instanssin on käytettävä tietotyyppiä toimiakseen, ja se on aikaisemmin luotu entiteettiluokka:
+webforJ `Table`-instanssin on oltava tietotyyppi toimiakseen, ja se on aiemmin tässä vaiheessa luotu entiteettiluokka:
 
 ```java
 Table<Customer> table = new Table<>();
 ```
 
-Kun sinulla on `Table`, jokaiselle asiakastiedolle on oma sarake. Jokaisen lisäämääsi sarakkeen osalta käytä ominaisuusnimeä, sen getter-menetelmää `Customer`-entiteetissä ja `setLabel()`-menetelmää tiedon näyttämiseksi haluamassasi järjestyksessä:
+Kun sinulla on `Table`, jokaisen asiakkaan ominaisuuden tulee saada oma sarake. Jokaiselle lisäämällesi sarakkeelle käytä ominaisuuden nimeä, sen getter-metodia `Customer`-entiteetissä ja `setLabel()`-metodia tietojen näyttämiseen haluamassasi järjestyksessä:
 
 ```java
 table.addColumn("firstName", Customer::getFirstName).setLabel("Etunimi");
@@ -373,7 +368,7 @@ table.addColumn("company", Customer::getCompany).setLabel("Yritys");
 table.addColumn("country", Customer::getCountry).setLabel("Maa");
 ```
 
-Sarakkeet lisäämisen jälkeen sinun on määritettävä, mikä repositorio `Table`-komponentin tulisi käyttää tietojensa täyttämiseen. Tämä sovellus saa repositorion `getRepositoryAdapter()`-menetelmästä luodusta `CustomerService`-luokasta:
+Sarakkeiden lisäämisen jälkeen sinun on määritettävä, mikä repository `Table`n tulisi käyttää datansa täyttämiseen. Tämä sovellus saa repositoryn `getRepositoryAdapter()`-metodista luodusta `CustomerService`:stä:
 
 ```java
 table.setRepository(customerService.getRepositoryAdapter());
@@ -381,9 +376,9 @@ table.setRepository(customerService.getRepositoryAdapter());
 
 ### Taulukon koko {#table-sizing}
 
-Taulukolle voit käyttää `setSize()`-menetelmää asetaksesi sen koon pikseleinä tai muina [CSS-yksikköinä](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units). Asettamalla enimmäisleveyden suhteessa näytön leveyteen autat sovellustasi mukautumaan paremmin pienille näytöille.
+Taulukolle voit käyttää `setSize()`-metodia asettaaksesi sen koon pikseleinä tai muina [CSS-yksikköinä](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units). Asettamalla maksimi-leveyden suhteessa näytön leveyteen autat sovellustasi olemaan mukautuvampi pienille näytöille.
 
-Sarakkeille voit asettaa leveyksiä yksittäin tai käyttää yhtä `Table`-menetelmistä, kuten `setColumnsToAutoFit()`, jotta webforJ käsittelee leveyksiä puolestasi:
+Sarakkeille voit asettaa leveydet yksilöllisesti tai käyttää yhtä `Table`-metodia, kuten `setColumnsToAutoFit()`, jolloin webforJ hoitaa leveydet puolestasi:
 
 ```java
 table.setSize("1000px", "294px");
@@ -391,22 +386,22 @@ table.setMaxWidth("90vw");
 table.setColumnsToAutoFit();
 ```
 
-### Käyttäjävuorovaikutus {#user-interactions}
+### Käyttäjäinteraktiot {#user-interactions}
 
-`Table`-komponentissa on myös menetelmiä käyttäjävuorovaikutuksen hallintaan sarakkeiden kanssa:
+`Table`-komponentilla on myös metodeja, joilla hallita, miten käyttäjät voivat vuorovaikuttaa sarakkeiden kanssa:
 
 ```java
 table.setColumnsToResizable(false);
 table.getColumns().forEach(column -> column.setSortable(true));
 ```
 
-Kohokohdat `Application`-luokasta lisäävät `Table`-komponentin, määrittävät sen sarakkeet ja käyttävät `CustomerService`:ä rekisteröidäkseen repositorion:
+Korostetut osat `Application`-luokasta lisäävät `Table`-komponentin, määrittelevät sen sarakkeet ja käyttävät `CustomerService`-luokkaa repositoryn noutamiseen:
 
 ```java title="Application.java" {7-12,24-25,30-40,46-47}
 @SpringBootApplication
 @BundleEntry("css/card.css")
 @AppTheme("system")
-@AppProfile(name = "Asiakasohjelma", shortName = "CustomerApp")
+@AppProfile(name = "Asiakassovellus", shortName = "CustomerApp")
 public class Application extends App {
 
   // Lisää konstruktorin injektointi CustomerService:lle
@@ -423,8 +418,8 @@ public class Application extends App {
   @Override
   public void run() throws WebforjException {
     Frame mainFrame = new Frame();
-    Paragraph tutorial = new Paragraph("Opetusohjelma!");
-    Button btn = new Button("Tietoa");
+    Paragraph tutorial = new Paragraph("Opastusohjelma!");
+    Button btn = new Button("Info");
 
     // Lisää Table-komponentti
     Table<Customer> table = new Table<>();
@@ -432,7 +427,7 @@ public class Application extends App {
     mainFrame.setWidth("fit-content");
     mainFrame.addClassName("card");
 
-    // Muotoile Table-komponentti, aseta sarakkeet ja aseta repositorio
+    // Muotoile Table-komponentti, aseta sarakkeet ja aseta repository
     table.setSize("1000px", "294px");
     table.setMaxWidth("90vw");
     table.addColumn("firstName", Customer::getFirstName).setLabel("Etunimi");
@@ -446,9 +441,9 @@ public class Application extends App {
 
     btn.setTheme(ButtonTheme.PRIMARY)
         .setMaxWidth(200)
-        .addClickListener(e -> OptionDialog.showMessageDialog("Tämä on opetusohjelma!", "Tietoa"));
+        .addClickListener(e -> OptionDialog.showMessageDialog("Tämä on opastusohjelma!", "Info"));
 
-    // Lisää Table pääikkunaan
+    // Lisää Table Frameen
     mainFrame.add(tutorial, btn, table);
   }
 
@@ -457,4 +452,4 @@ public class Application extends App {
 
 ## Seuraava vaihe {#next-step}
 
-Näiden muutosten myötä sovellus lataa asiakastiedot tietokantaan ja näyttää ne `Table`-komponentissa. Seuraavassa vaiheessa, [Reititys ja yhdistelmät](/docs/introduction/tutorial/routing-and-composites), esitellään reititys ja useita näkymiä uusien asiakkaiden lisäämiseksi.
+Näiden muutosten myötä sovellus lataa asiakasdatan tietokantaan ja näyttää sen sitten `Table`-komponentissa. Seuraavassa vaiheessa, [Reititys ja komposiitit](/docs/introduction/tutorial/routing-and-composites), esitellään reititettäminen ja useita näkymiä uusien asiakkaiden lisäämistä varten.

@@ -1,8 +1,9 @@
 {
   "label": "Kotlin DSL",
-  "position": 15,
+  "position": 10,
   "link": {
     "type": "doc",
     "id": "overview"
-  }
+  },
+  "className": "experimental-content"
 }

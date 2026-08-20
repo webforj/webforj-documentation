@@ -78,5 +78,9 @@
   "item.label.craftforJ": {
     "message": "craftforJ",
     "description": "Navbar item with label craftforJ"
+  },
+  "item.label.Built with webforJ": {
+    "message": "Built with webforJ",
+    "description": "Navbar item with label Built with webforJ"
   }
 }

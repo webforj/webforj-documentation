@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-loading>
 sidebar_class_name: sidebar--item__hidden
 slug: loading
-description: A user guide article for the loading
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 1a281b26e84f26ab54eb363a4b8d4ca6
+description: >-
+  Customize the dwc-loading client component with CSS variables and shadow parts
+  to theme the spinner, backdrop, and loading message.
+_i18n_hash: aff107a73fffca4d0b8cbfe34ac5ff3b
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info CLIËNTCOMPONENT
-Deze sectie beschrijft de stijlinformatie voor de **`<dwc-loading>`** component. Deze component is **alleen clientzijde** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar maakt mogelijk deel uit van API-componenten.
+:::info CLIËNT COMPONENT
+Deze sectie beschrijft de stijlinformatie voor de **`<dwc-loading>`** component. Deze component is **alleen aan de clientzijde** - het kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

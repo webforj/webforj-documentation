@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-toolbar>
 sidebar_class_name: sidebar--item__hidden
 slug: toolbar
-description: A user guide article for the toolbar
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 5ddca7821c09d0f46e27af39c3a5e37a
+description: >-
+  Style the dwc-toolbar container, slots, and action items with CSS variables
+  and shadow parts for background and spacing.
+_i18n_hash: 15accc5eefe760d84e9708dc0e63829f
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info 客户端组件
-本节概述了 **`<dwc-toolbar>`** 组件的样式信息。此组件是**仅限客户端** - 它不能通过 API 单独实例化，但可以成为 API 组件的一部分。
+本节概述了 **`<dwc-toolbar>`** 组件的样式信息。该组件是 **仅客户端** - 它不能通过 API 单独实例化，但可以作为 API 组件的一部分。
 :::
 
 ## 样式 {#styling}

@@ -4,12 +4,12 @@ title: Custom Implementation Example
 description: >-
   Build a session-based security stack by implementing SecurityConfiguration,
   SecurityContext, SecurityManager, and SecurityRegistrar.
-_i18n_hash: 02c468d495da2fc6a00be56e72821d2c
+_i18n_hash: d9c19543624a63acab79e429e6289133
 ---
-Ce guide vous guide à travers la création d'une implémentation complète de sécurité personnalisée en utilisant l'authentification basée sur les sessions. Vous apprendrez comment les quatre interfaces principales interagissent en les mettant en œuvre à partir de zéro.
+Ce guide vous accompagne dans la construction d'une implémentation de sécurité personnalisée complète utilisant l'authentification basée sur les sessions. Vous apprendrez comment les quatre interfaces principales fonctionnent ensemble en les mettant en œuvre à partir de zéro.
 
 :::tip[La plupart des applications devraient utiliser Spring Security]
-L'[intégration de Spring Security](/docs/security/getting-started) configure automatiquement tout ce qui est montré ici. Ne construisez une sécurité personnalisée que si vous avez des exigences spécifiques ou si vous n'utilisez pas Spring Boot.
+L'[intégration Spring Security](/docs/security/getting-started) configure automatiquement tout ce qui est montré ici. Ne créez une sécurité personnalisée que si vous avez des exigences spécifiques ou si vous n'utilisez pas Spring Boot.
 :::
 
 ## Ce que vous allez construire {#what-youll-build}
@@ -18,7 +18,7 @@ Un système de sécurité fonctionnel avec quatre classes :
 
 - **SecurityConfiguration** - Définit le comportement de sécurité et les emplacements de redirection
 - **SecurityContext** - Suit qui est connecté en utilisant des sessions HTTP
-- **SecurityManager** - Coordonne les vérifications de sécurité et fournit la connexion/déconnexion
+- **SecurityManager** - Coordonne les vérifications de sécurité et fournit les fonctionnalités de connexion/déconnexion
 - **SecurityRegistrar** - Connecte tout ensemble au démarrage de l'application
 
 Cet exemple utilise le stockage basé sur les sessions, mais vous pourriez mettre en œuvre les mêmes interfaces en utilisant des requêtes de base de données, LDAP ou tout autre backend d'authentification.
@@ -27,10 +27,10 @@ Cet exemple utilise le stockage basé sur les sessions, mais vous pourriez mettr
 
 ```mermaid
 sequenceDiagram
-  box Startup Phase
+  box Phase de démarrage
   participant Registrar as SecurityRegistrar
   end
-  box Runtime Phase
+  box Phase d'exécution
   participant Observer as RouteSecurityObserver
   participant Manager as SecurityManager
   participant Evaluators
@@ -47,15 +47,15 @@ sequenceDiagram
   Observer->>Manager: Demander une décision
   Manager->>Evaluators: Exécuter les évaluateurs
   Evaluators->>Context: Vérifier l'utilisateur
-  Evaluators->>Config: Obtenir les redirections
+  Evaluators->>Config: Obtenir des redirections
   Evaluators-->>Manager: Décision
   Manager-->>Observer: Accorder ou Refuser
 ```
 
 **Flux :**
-1. **`SecurityRegistrar`** s'exécute au démarrage, crée le gestionnaire, enregistre les évaluateurs et attache l'observateur
+1. **`SecurityRegistrar`** s'exécute au démarrage, crée le manager, enregistre les évaluateurs et attache l'observateur
 2. **`SecurityManager`** coordonne tout - il fournit le contexte et la configuration aux évaluateurs
-3. **`SecurityContext`** répond à la question "Qui est connecté ?" en lisant depuis les sessions HTTP
+3. **`SecurityContext`** répond à la question "Qui est connecté ?" en lisant les sessions HTTP
 4. **`SecurityConfiguration`** répond à la question "Où rediriger ?" pour les pages de connexion et d'accès refusé
 5. **`Evaluators`** prennent des décisions d'accès en utilisant le contexte et la configuration
 
@@ -74,7 +74,7 @@ import java.util.Optional;
  * Configuration de sécurité pour l'application.
  *
  * <p>
- * Définit où rediriger les utilisateurs lorsque l'authentification est requise ou que l'accès est refusé.
+ * Définit où rediriger les utilisateurs lorsque l'authentification est requise ou l'accès est refusé.
  * </p>
  */
 public class SecurityConfiguration implements RouteSecurityConfiguration {
@@ -104,16 +104,18 @@ public class SecurityConfiguration implements RouteSecurityConfiguration {
 - `isEnabled() = true` - La sécurité est active
 - `isSecureByDefault() = false` - Les routes sont publiques sauf annotation (utilisez `true` pour exiger l'authentification sur toutes les routes par défaut)
 - `/login` - Où vont les utilisateurs non authentifiés
-- `/access-denied` - Où vont les utilisateurs authentifiés sans permissions
+- `/access-denied` - Où vont les utilisateurs authentifiés sans autorisations
 
 ## Étape 2 : Implémenter le contexte de sécurité {#step-2-implement-security-context}
 
-Le contexte suit qui est connecté. Cette implémentation utilise des sessions HTTP pour stocker les informations utilisateur :
+Le contexte suit qui est connecté. Cette implémentation utilise des sessions HTTP pour stocker les informations de l'utilisateur :
 
 <!-- vale off -->
 
 <ExpandableCode title="SecurityContext.java" language="java">
-{`package com.securityplain.security;
+
+```java
+package com.securityplain.security;
 
 import com.webforj.Environment;
 import com.webforj.router.security.RouteSecurityContext;
@@ -123,10 +125,10 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Contexte de sécurité basé sur les sessions.
+ * Contexte de sécurité basé sur les sessions simple.
  *
  * <p>
- * Stocke le principal utilisateur et les rôles dans la session HTTP. Il s'agit d'une implémentation minimale à des fins pédagogiques.
+ * Stocke le principal utilisateur et les rôles dans la session HTTP. C'est une implémentation minimale à des fins pédagogiques.
  * </p>
  */
 public class SecurityContext implements RouteSecurityContext {
@@ -219,18 +221,20 @@ public class SecurityContext implements RouteSecurityContext {
     });
     return Optional.ofNullable(result[0]);
   }
-}`}
+}
+```
+
 </ExpandableCode>
 
 <!-- vale on -->
 
-**Comment ça fonctionne :**
+**Comment cela fonctionne :**
 
 - `isAuthenticated()` vérifie si un principal utilisateur existe dans la session
 - `getPrincipal()` récupère le nom d'utilisateur du stockage de session
-- `hasRole()` vérifie si l'ensemble de rôles de l'utilisateur contient le rôle spécifié
+- `hasRole()` vérifie si l'ensemble des rôles de l'utilisateur contient le rôle spécifié
 - `getAttribute()` / `setAttribute()` gèrent les attributs de sécurité personnalisés
-- `Environment.getSessionAccessor()` fournit un accès sécurisé aux sessions
+- `Environment.getSessionAccessor()` fournit un accès aux sessions sûr pour les threads
 
 ## Étape 3 : Créer le gestionnaire de sécurité {#step-3-create-security-manager}
 
@@ -239,7 +243,9 @@ Le gestionnaire coordonne les décisions de sécurité. Il étend `AbstractRoute
 <!-- vale off -->
 
 <ExpandableCode title="SecurityManager.java" language="java">
-{`package com.securityplain.security;
+
+```java
+package com.securityplain.security;
 
 import com.webforj.environment.ObjectTable;
 import com.webforj.environment.SessionObjectTable;
@@ -299,7 +305,7 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Déconnecte l'utilisateur actuel et redirige vers la page de connexion.
+   * Déconnecte l'utilisateur actuel et le redirige vers la page de connexion.
    */
   public void logout() {
     SessionObjectTable.clear(SESSION_USER_KEY);
@@ -337,23 +343,25 @@ public class SecurityManager extends AbstractRouteSecurityManager {
     SessionObjectTable.put(SESSION_USER_KEY, username);
     SessionObjectTable.put(SESSION_ROLES_KEY, roles);
   }
-}`}
+}
+```
+
 </ExpandableCode>
 
 <!-- vale on -->
 
-**Comment ça fonctionne :**
+**Comment cela fonctionne :**
 
 - Étend `AbstractRouteSecurityManager` pour hériter de la logique de chaîne d'évaluateurs
-- Fournit des implémentations pour `getConfiguration()` et `getSecurityContext()`
+- Fournit les implémentations de `getConfiguration()` et `getSecurityContext()`
 - Ajoute `login()` pour authentifier les utilisateurs et stocker les informations d'identification dans la session
-- Ajoute `logout()` pour vider la session et rediriger vers la page de connexion
+- Ajoute `logout()` pour effacer la session et rediriger vers la page de connexion
 - Utilise [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) pour un stockage simple des sessions
-- Se stocke dans [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) pour un accès global à l'application
+- Se stocke dans [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) pour un accès à l'échelle de l'application
 
 ## Étape 4 : Connecter tout au démarrage {#step-4-wire-everything-at-startup}
 
-Le registrar connecte tous les éléments lorsque l'application démarre :
+Le registraire connecte tous les éléments lorsque l'application démarre :
 
 ```java title="SecurityRegistrar.java"
 package com.securityplain.security;
@@ -369,7 +377,7 @@ import com.webforj.router.security.evaluator.PermitAllEvaluator;
 import com.webforj.router.security.evaluator.RolesAllowedEvaluator;
 
 /**
- * Enregistre les composants de sécurité des routes lors du démarrage de l'application.
+ * Enregistre les composants de sécurité des routes pendant le démarrage de l'application.
  *
  * <p>
  * Configure le gestionnaire de sécurité et les évaluateurs avec le routeur.
@@ -413,11 +421,11 @@ com.securityplain.security.SecurityRegistrar
 
 Cela enregistre votre [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners) pour qu'il s'exécute au démarrage de l'application.
 
-**Comment ça fonctionne :**
+**Comment cela fonctionne :**
 
 - S'exécute tôt (`@AppListenerPriority(1)`) pour configurer la sécurité avant le chargement des routes
 - Crée le gestionnaire de sécurité et le stocke globalement
-- Enregistre les évaluateurs intégrés dans l'ordre de priorité (les nombres inférieurs s'exécutent en premier)
+- Enregistre les évaluateurs intégrés par ordre de priorité (les nombres plus bas s'exécutent en premier)
 - Crée l'observateur qui intercepte la navigation
 - Attache l'observateur au routeur afin que les vérifications de sécurité se produisent automatiquement
 

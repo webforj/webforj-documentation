@@ -354,6 +354,10 @@ module.exports = async function createConfig() {
               href: 'https://github.com/webforj/webforj/blob/main/CONTRIBUTING.md',
               rel: null,
             },
+            {
+              label: "Built with webforJ",
+              href: 'https://github.com/webforj/built-with-webforj',
+            },
           ]
         },
         {

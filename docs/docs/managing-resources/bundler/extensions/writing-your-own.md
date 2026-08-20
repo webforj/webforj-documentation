@@ -1,4 +1,5 @@
 ---
+sidebar_class_name: experimental-content
 title: Writing your own extension
 sidebar_position: 70
 description: Add a build step by shipping a BundleExtension that declares packages, contributes a Bun plugin, and activates on a file type, shown by building a Svelte extension end to end.

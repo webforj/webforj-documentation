@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-accordion-panel>
 sidebar_class_name: sidebar--item__hidden
 slug: accordion-panel
-description: A user guide article for the dwc-accordion-panel
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 3e8337316c0a7fdc2ba0846e7c138453
+description: >-
+  Style the dwc-accordion-panel client component using CSS variables, shadow
+  parts, and slots for header, icon, and content customization.
+_i18n_hash: 75840b9f57e2a221fbefb69d50560310
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info CLIËNTCOMPONENT
-Dit gedeelte bevat stijlinformatie voor de **`<dwc-accordion-panel>`** component. Deze component is **alleen clientzijde** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
+Dit gedeelte beschrijft de stylinginformatie voor de **`<dwc-accordion-panel>`** component. Deze component is **alleen client-side** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

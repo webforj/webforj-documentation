@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-navigator>
 sidebar_class_name: sidebar--item__hidden
 slug: navigator
-description: A user guide article for the navigator
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 1c80f24d7a89d5353b41145478f27715
+description: >-
+  Customize the dwc-navigator component appearance with CSS variables and shadow
+  parts for paging controls and indicators.
+_i18n_hash: 45e75134730d87fa5f383a196dc930f4
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info CLIËNTCOMPONENT
-Deze sectie beschrijft stylinginformatie voor de **`<dwc-navigator>`** component. Deze component is **alleen clientzijde** - hij kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
+Dit gedeelte schetst de stylinginformatie voor de **`<dwc-navigator>`** component. Deze component is **enkel client-side** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
-## Stijling {#styling}
+## Styling {#styling}
 
 <TableBuilder name="dwc-navigator" clientComponent />

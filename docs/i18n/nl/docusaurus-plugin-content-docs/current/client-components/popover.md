@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-popover>
 sidebar_class_name: sidebar--item__hidden
 slug: popover
-description: A user guide article for the popover
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: f8a3ac21fe0826265af520c521b2474f
+description: >-
+  Theme dwc-popover placement, surface, arrow visibility, and overlay through
+  component-scoped CSS variables and shadow parts.
+_i18n_hash: 418e6fea21047de9283e1f146cb77b84
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='scoped' />
 
-<br />
-
-:::info KLIëntCOMPONENT
-Deze sectie bevat stijlinformatie voor de **`<dwc-popover>`** component. Deze component is **alleen client-side** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
+:::info KLANTCOMPONENT
+Dit gedeelte beschrijft stijlinformatie voor de **`<dwc-popover>`** component. Deze component is **alleen aan de klantzijde** - deze kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

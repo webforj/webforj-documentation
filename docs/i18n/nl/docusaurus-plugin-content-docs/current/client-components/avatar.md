@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-avatar>
 sidebar_class_name: sidebar--item__hidden
 slug: avatar
-description: A user guide article for the avatar
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 741921fd96cca040c76fa6395226abd6
+description: >-
+  Customize the dwc-avatar client component using CSS variables and shadow parts
+  to style size, background, initials, and image rendering.
+_i18n_hash: 97f5d77b993fe8d49597cb7a2719d38c
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info KLIANTCOMPONENT
-Dit gedeelte beschrijft de stijlinformatie voor de **`<dwc-avatar>`** component. Deze component is **alleen aan de clientzijde** - hij kan niet zelfstandig via de API worden geïnstantieerd, maar kan onderdeel zijn van API-componenten.
+:::info CLIËNTCOMPONENT
+Dit gedeelte beschrijft stijlinformatie voor de **`<dwc-avatar>`** component. Deze component is **alleen clientzijde** - het kan niet op zichzelf via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

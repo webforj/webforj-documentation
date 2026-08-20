@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-backdrop>
 sidebar_class_name: sidebar--item__hidden
 slug: backdrop
-description: A user guide article for the backdrop
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 0c720960769b73ee5df47abd29d7e606
+description: >-
+  Style the dwc-backdrop client component with CSS variables to control overlay
+  color, opacity, blur, and transition timing.
+_i18n_hash: 74d82049a807f207902d886bb9a6a2a3
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info COMPONENTE DEL CLIENTE
-Esta sección describe información de estilo para el **`<dwc-backdrop>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí solo a través de la API, pero puede formar parte de los componentes de la API.
+Esta sección describe la información de estilo para el **`<dwc-backdrop>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí mismo a través de la API, pero puede formar parte de los componentes de la API.
 :::
 
 ## Estilo {#styling}

@@ -166,5 +166,9 @@
   "sidebar.documentationSidebar.category.craftforJ": {
     "message": "craftforJ",
     "description": "The label for category 'craftforJ' in sidebar 'documentationSidebar'"
+  },
+  "sidebar.documentationSidebar.category.MCP Apps": {
+    "message": "Applications MCP",
+    "description": "The label for category 'MCP Apps' in sidebar 'documentationSidebar'"
   }
 }

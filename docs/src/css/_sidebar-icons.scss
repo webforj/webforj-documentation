@@ -117,3 +117,27 @@
     @include _icon("brand-javascript");
   }
 }
+
+@mixin experimental-icons {
+  .menu__list-item.experimental-content > .menu__link > span::after,
+  .menu__list-item.experimental-content
+    > .menu__list-item-collapsible
+    > .menu__link
+    > span::after {
+    content: "";
+    display: inline-block;
+    vertical-align: -0.15em;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-left: 0.35rem;
+    opacity: 0.7;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    @include _icon("flask");
+  }
+}

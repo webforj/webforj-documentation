@@ -1,25 +1,18 @@
 ---
-sidebar_position: 0
 title: <dwc-slider>
 sidebar_class_name: sidebar--item__hidden
 slug: slider
-description: A user guide article for the slider
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 9e0d26d8c94376b6915e68c668573676
+description: >-
+  Theme the dwc-slider track, thumb, tick marks, and labels through CSS
+  variables and shadow parts for visual customization.
+_i18n_hash: 29c191b20a9c9c7241ed588337deb1e7
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan tyylitietoja **`<dwc-slider>`** -komponentille. Tämä komponentti on **asiakaspään vain** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info KLIENTTIKOMPONENTTI
+Tässä osiossa esitellään tyylitiedot **`<dwc-slider>`** komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylittely {#styling}
+## Tyylitys {#styling}
 
 <TableBuilder name="dwc-slider" clientComponent />

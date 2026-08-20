@@ -1,4 +1,5 @@
 ---
+sidebar_class_name: experimental-content
 sidebar_position: 4
 title: PropertyDescriptorTester
 description: Validate PropertyDescriptor fields on wrapped web components by checking getters, setters, and default values with PropertyDescriptorTester.

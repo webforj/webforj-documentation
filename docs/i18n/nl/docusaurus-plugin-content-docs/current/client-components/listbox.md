@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-listbox>
 sidebar_class_name: sidebar--item__hidden
 slug: listbox
-description: A user guide article for the listbox
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: fc4bce43328781c2a124c0c0738c126b
+description: >-
+  Style the dwc-listbox client component using CSS variables and shadow parts to
+  theme the list surface, items, selection, and scrollbars.
+_i18n_hash: a5a9726e727ed30ae27e52df768f33c8
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
-:::info CLIËNTCOMPONENT
-Dit gedeelte beschrijft de opmaakinformatie voor de **`<dwc-listbox>`** component. Deze component is **alleen client-side** - kan niet op zichzelf via de API worden geïnstantieerd, maar maakt mogelijk deel uit van API-componenten.
+:::info CLIëntCOMPONENT
+Dit gedeelte beschrijft de opmaakinformatie voor de **`<dwc-listbox>`** component. Deze component is **alleen clientzijde** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar kan onderdeel zijn van API-componenten.
 :::
 
 ## Opmaak {#styling}

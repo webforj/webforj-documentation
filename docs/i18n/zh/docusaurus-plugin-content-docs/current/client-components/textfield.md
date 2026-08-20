@@ -1,23 +1,16 @@
 ---
-sidebar_position: 0
 title: <dwc-textfield>
 sidebar_class_name: sidebar--item__hidden
 slug: textfield
-description: A user guide article for the textfield
-// pagination_prev: null
-// pagination_next: null
-_i18n_hash: 74e92c72dc271b439bfd7e47053d4323
+description: >-
+  Customize the dwc-textfield input with CSS variables and shadow parts
+  targeting label, border, prefix, suffix, and clear button.
+_i18n_hash: ada21443f7ca8671392737bc82955707
 ---
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
-<br />
-
 :::info 客户端组件
-本节概述了 **`<dwc-textfield>`** 组件的样式信息。该组件为 **仅客户端** - 它不能通过 API 单独实例化，但可以成为 API 组件的一部分。
+本节概述了**`<dwc-textfield>`**组件的样式信息。该组件**仅限客户端** - 它无法通过API单独实例化，但可能构成API组件的一部分。
 :::
 
 ## 样式 {#styling}

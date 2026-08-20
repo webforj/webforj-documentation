@@ -4,33 +4,33 @@ title: Custom Implementation Example
 description: >-
   Build a session-based security stack by implementing SecurityConfiguration,
   SecurityContext, SecurityManager, and SecurityRegistrar.
-_i18n_hash: 02c468d495da2fc6a00be56e72821d2c
+_i18n_hash: d9c19543624a63acab79e429e6289133
 ---
-Tämä opas käy läpi täydellisen mukautetun turvallisuusratkaisun rakentamisen istuntopohjaista todennusta käyttäen. Opit, kuinka neljä keskeistä rajapintaa toimii yhdessä toteuttamalla ne alusta alkaen.
+Tämä opas käy läpi täydellisen mukautetun turvallisuustoteutuksen luomisen, joka käyttää istuntopohjaista todennusta. Opit, miten neljä keskeistä rajapintaa toimivat yhdessä toteuttamalla ne alusta alkaen.
 
-:::tip[Useimmissa sovelluksissa tulisi käyttää Spring Securityä]
-[Spring Security -integraatio](/docs/security/getting-started) konfiguroi automaattisesti kaiken tämän. Rakenna mukautettu turvallisuus vain, jos sinulla on erityisiä vaatimuksia tai et käytä Spring Bootia.
+:::tip[Useimmat sovellukset voivat käyttää Spring Securityä]
+[Spring Security -integraatio](/docs/security/getting-started) määrittää automaattisesti kaiken, mitä tässä on esitetty. Rakenna mukautettu turvallisuus vain, jos sinulla on erityisiä vaatimuksia tai et käytä Spring Bootia.
 :::
 
 ## Mitä rakennat {#what-youll-build}
 
-Toimiva turvallisuusjärjestelmä neljällä luokalla:
+Toimiva turvallisuusjärjestelmä, jossa on neljä luokkaa:
 
 - **SecurityConfiguration** - Määrittelee turvallisuuskäyttäytymisen ja uudelleenohjauspaikat
 - **SecurityContext** - Seuraa, kuka on kirjautuneena HTTP-istuntojen avulla
-- **SecurityManager** - Koordinoi turvallisuustarkastuksia ja tarjoaa kirjautumis-/uloskirjautumisratkaisuja
-- **SecurityRegistrar** - Yhdistää kaiken sovelluksen käynnistyksen yhteydessä
+- **SecurityManager** - Koordinoi turvallisuustarkastuksia ja tarjoaa kirjautumis-/uloskirjautumismahdollisuudet
+- **SecurityRegistrar** - Yhdistää kaiken sovelluksen käynnistyksessä
 
-Tässä esimerkissä käytetään istuntopohjaista tallennusta, mutta voit toteuttaa samat rajapinnat käyttämällä tietokantakyselyitä, LDAP:ia tai mitä tahansa muuta todennusjärjestelmää.
+Tässä esimerkissä käytetään istuntopohjaista tallennusta, mutta voit toteuttaa samat rajapinnat käyttämällä tietokantakyselyitä, LDAP:ia tai mitä tahansa muuta todennuspohjaa.
 
 ## Miten osat toimivat yhdessä {#how-the-pieces-work-together}
 
 ```mermaid
 sequenceDiagram
-  box Käynnistysvaihe
+  box Aloitusvaihe
   participant Registrar as SecurityRegistrar
   end
-  box Suoritusvaihe
+  box Aikaisempi vaihe
   participant Observer as RouteSecurityObserver
   participant Manager as SecurityManager
   participant Evaluators
@@ -47,21 +47,21 @@ sequenceDiagram
   Observer->>Manager: Pyydä päätöstä
   Manager->>Evaluators: Suorita arvioijat
   Evaluators->>Context: Tarkista käyttäjä
-  Evaluators->>Config: Hae uudelleenohjaukset
+  Evaluators->>Config: Hae uudelleenohjauspaikat
   Evaluators-->>Manager: Päätös
   Manager-->>Observer: Myönnä tai Hylkää
 ```
 
-**Virta:**
-1. **`SecurityRegistrar`** toimii käynnistyksessä, luo hallitsijan, rekisteröi arvioijat ja liittää tarkkailijan
-2. **`SecurityManager`** koordinoi kaiken - se tarjoaa kontekstin ja konfiguraation arvioijille
+**Virtaus:**
+1. **`SecurityRegistrar`** toimii käynnistyksen aikana, luo hallitsijan, rekisteröi arvioijat ja liittää tarkkailijan
+2. **`SecurityManager`** koordinoi kaiken - se antaa kontekstin ja määrityksen arvioijille
 3. **`SecurityContext`** vastaa kysymykseen "Kuka on kirjautuneena?" lukemalla HTTP-istunnoista
-4. **`SecurityConfiguration`** vastaa kysymykseen "Minne ohjata?" kirjautumis- ja käyttöoikeuden hylkäämisen sivuille
-5. **`Evaluators`** tekevät käyttöoikeuspäätöksiä käyttäen kontekstia ja konfiguraatiota
+4. **`SecurityConfiguration`** vastaa kysymykseen "Minne ohjata?" kirjautuminen ja pääsy hylätty -sivuille
+5. **`Evaluators`** tekevät pääsypäätöksiä käyttämällä kontekstia ja määritystä
 
-## Vaihe 1: Määrittele turvallisuuskonfiguraatio {#step-1-define-security-configuration}
+## Vaihe 1: Määritä turvallisuusmääritys {#step-1-define-security-configuration}
 
-Konfiguraatio kertoo turvallisuusjärjestelmälle, miten toimia ja minne ohjata käyttäjiä:
+Määritys kertoo turvallisuusjärjestelmälle, miten sen tulisi toimia ja minne käyttäjät tulisi ohjata:
 
 ```java title="SecurityConfiguration.java"
 package com.securityplain.security;
@@ -71,10 +71,10 @@ import com.webforj.router.security.RouteSecurityConfiguration;
 import java.util.Optional;
 
 /**
- * Sovelluksen turvallisuuskonfiguraatio.
+ * Turvallisuusmääritys sovellukselle.
  *
  * <p>
- * Määrittelee, minne ohjata käyttäjiä, kun todennusta vaaditaan tai pääsy hylätään.
+ * Määrittelee, minne käyttäjät ohjataan, kun todennus on vaadittu tai pääsy on hylätty.
  * </p>
  */
 public class SecurityConfiguration implements RouteSecurityConfiguration {
@@ -102,9 +102,9 @@ public class SecurityConfiguration implements RouteSecurityConfiguration {
 ```
 
 - `isEnabled() = true` - Turvallisuus on aktiivinen
-- `isSecureByDefault() = false` - Reitit ovat julkisia, ellei niitä ole merkitty (käytä `true` vaatiaksesi todennusta kaikilta reiteiltä oletuksena)
-- `/login` - Minne tunnistautumattomat käyttäjät menevät
-- `/access-denied` - Minne todennettujen käyttäjien, joilla ei ole lupia, tulee mennä
+- `isSecureByDefault() = false` - Reitit ovat julkisia, ellei niitä ole merkitty (käytä `true`, jos haluat vaatia todennusta kaikilla reiteillä oletuksena)
+- `/login` - Minne toteamattomat käyttäjät menevät
+- `/access-denied` - Minne tunnistetut käyttäjät, joilla ei ole oikeuksia, menevät
 
 ## Vaihe 2: Toteuta turvallisuuskonteksti {#step-2-implement-security-context}
 
@@ -113,7 +113,9 @@ Konteksti seuraa, kuka on kirjautuneena. Tämä toteutus käyttää HTTP-istunto
 <!-- vale off -->
 
 <ExpandableCode title="SecurityContext.java" language="java">
-{`package com.securityplain.security;
+
+```java
+package com.securityplain.security;
 
 import com.webforj.Environment;
 import com.webforj.router.security.RouteSecurityContext;
@@ -126,7 +128,8 @@ import java.util.Set;
  * Yksinkertainen istuntopohjainen turvallisuuskonteksti.
  *
  * <p>
- * Tallentaa käyttäjäprincipaalin ja roolit HTTP-istuntoon. Tämä on minimaalinen toteutus opetustarkoituksiin.
+ * Tallentaa käyttäjän pääsyn ja roolit HTTP-istunnossa. Tämä on minimaalinen toteutus opetus
+ * tarkoituksiin.
  * </p>
  */
 public class SecurityContext implements RouteSecurityContext {
@@ -169,7 +172,7 @@ public class SecurityContext implements RouteSecurityContext {
    */
   @Override
   public boolean hasAuthority(String authority) {
-    // Tässä yksinkertaisessa toteutuksessa lupia käsitellään samoina kuin rooleina
+    // Tässä yksinkertaisessa toteutuksessa, valtuudet ovat samoja kuin roolit
     return hasRole(authority);
   }
 
@@ -219,27 +222,31 @@ public class SecurityContext implements RouteSecurityContext {
     });
     return Optional.ofNullable(result[0]);
   }
-}`}
+}
+```
+
 </ExpandableCode>
 
 <!-- vale on -->
 
 **Miten se toimii:**
 
-- `isAuthenticated()` tarkistaa, onko käyttäjäprincipaali olemassa istunnossa
-- `getPrincipal()` hakee käyttäjätunnuksen istuntovarastosta
-- `hasRole()` tarkistaa, sisältääkö käyttäjän roolijoukko määritellyn roolin
-- `getAttribute()` / `setAttribute()` hallinnoi mukautettuja turvallisuusattribuutteja
-- `Environment.getSessionAccessor()` tarjoaa säikeiden turvallisen pääsyn istuntoon
+- `isAuthenticated()` tarkistaa, onko käyttäjän pääsytieto olemassa istunnossa
+- `getPrincipal()` palauttaa käyttäjänimen istuntoTallennuksesta
+- `hasRole()` tarkistaa, sisältääkö käyttäjän roolijoukko määritetyn roolin
+- `getAttribute()` / `setAttribute()` hallinnoi mukautettuja turvallisuusominaisuuksia
+- `Environment.getSessionAccessor()` tarjoaa säikeen turvallisen pääsyn istuntoon
 
-## Vaihe 3: Luo turvallisuuden hallitsija {#step-3-create-security-manager}
+## Vaihe 3: Luo turvallisuuden hallinta {#step-3-create-security-manager}
 
-Hallitsija koordinoi turvallisuuspäätöksiä. Se laajentaa `AbstractRouteSecurityManager`-luokkaa, joka käsittelee arviointiketjuja ja käyttöoikeuden hylkäystä:
+Hallinta koordinoi turvallisuuspäätöksiä. Se laajentaa `AbstractRouteSecurityManager`-luokkaa, joka käsittelee arvioijaketjuja ja pääsyn hylkäämistä:
 
 <!-- vale off -->
 
 <ExpandableCode title="SecurityManager.java" language="java">
-{`package com.securityplain.security;
+
+```java
+package com.securityplain.security;
 
 import com.webforj.environment.ObjectTable;
 import com.webforj.environment.SessionObjectTable;
@@ -252,10 +259,10 @@ import com.webforj.router.security.RouteSecurityContext;
 import java.util.Set;
 
 /**
- * Yksinkertainen turvallisuuden hallitsijatoteutus.
+ * Yksinkertainen turvallisuuden hallinta toteutus.
  *
  * <p>
- * Tarjoaa staattisia metodeja kirjautumiseen/uloskirjautumiseen ja hallitsee turvallisuuskontextia.
+ * Tarjoaa staattisia menetelmiä sisäänkirjautumiseen/uloskirjautumiseen ja hallitsee turvallisuuskontekstiä.
  * </p>
  */
 public class SecurityManager extends AbstractRouteSecurityManager {
@@ -279,7 +286,7 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Kirjaa käyttäjän rooleineen sisään.
+   * Kirjaa käyttäjän sisään rooleilla.
    *
    * @param username käyttäjänimi
    * @param password salasana
@@ -299,7 +306,7 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Kirjaa nykyisen käyttäjän ulos ja ohjaa kirjautumissivulle.
+   * Kirjaa ulos nykyisen käyttäjän ja ohjaa kirjautumissivulle.
    */
   public void logout() {
     SessionObjectTable.clear(SESSION_USER_KEY);
@@ -312,9 +319,9 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Hanki nykyinen hallitsija-instanssi.
+   * Hanki nykyinen hallinta-instanssi.
    *
-   * @return nykyinen hallitsija-instanssi
+   * @return nykyinen hallinta-instanssi
    */
   public static SecurityManager getCurrent() {
     String key = SecurityManager.class.getName();
@@ -337,23 +344,25 @@ public class SecurityManager extends AbstractRouteSecurityManager {
     SessionObjectTable.put(SESSION_USER_KEY, username);
     SessionObjectTable.put(SESSION_ROLES_KEY, roles);
   }
-}`}
+}
+```
+
 </ExpandableCode>
 
 <!-- vale on -->
 
 **Miten se toimii:**
 
-- Laajentaa `AbstractRouteSecurityManager`-luokkaa perimään arviointiketjun logiikka
-- Tarjoaa `getConfiguration()`- ja `getSecurityContext()`-toteutukset
-- Lisää `login()`-metodin käyttäjien todennusta varten ja tallentaa käyttöoikeudet istuntoon
-- Lisää `logout()`-metodin tyhjentämään istunnon ja ohjaamaan kirjautumissivulle
-- Käyttää [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) yksinkertaista istuntovarastointia varten
-- Tallentaa itsensä [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) sovelluksen laajuista pääsyä varten
+- Laajentaa `AbstractRouteSecurityManager` saadakseen arvioijaketjun logiikan
+- Tarjoaa `getConfiguration()` ja `getSecurityContext()` toteutukset
+- Lisää `login()` autentikoimaan käyttäjiä ja tallentamaan todennustiedot istuntoon
+- Lisää `logout()` tyhjentämään istunnon ja ohjaamaan kirjautumissivulle
+- Käyttää [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) yksinkertaiseen istuntotallennukseen
+- Tallentaa itsensä [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) sovelluksen laajuiseen käyttöön
 
-## Vaihe 4: Liitä kaikki käynnistyksessä {#step-4-wire-everything-at-startup}
+## Vaihe 4: Yhdistä kaikki käynnistyksessä {#step-4-wire-everything-at-startup}
 
-Rekisteröijä yhdistää kaikki osat, kun sovellus käynnistyy:
+Rekisteröijä yhdistää kaikki osat sovelluksen käynnistyessä:
 
 ```java title="SecurityRegistrar.java"
 package com.securityplain.security;
@@ -372,7 +381,7 @@ import com.webforj.router.security.evaluator.RolesAllowedEvaluator;
  * Rekisteröi reitin turvallisuuskomponentit sovelluksen käynnistyksen aikana.
  *
  * <p>
- * Asettuu turvallisuusmanageri ja arvioijat reitittimen kanssa.
+ * Määrittelee turvallisuuden hallinnan ja arvioijat reitittimen kanssa.
  * </p>
  */
 @AppListenerPriority(1)
@@ -383,7 +392,7 @@ public class SecurityRegistrar implements AppLifecycleListener {
    */
   @Override
   public void onWillRun(App app) {
-    // Luo turvallisuusmanageri
+    // Luo turvallisuuden hallinta
     SecurityManager securityManager = new SecurityManager();
     securityManager.saveCurrent(securityManager);
 
@@ -405,29 +414,29 @@ public class SecurityRegistrar implements AppLifecycleListener {
 
 **Rekisteröi kuuntelija:**
 
-Luo `src/main/resources/META-INF/services/com.webforj.AppLifecycleListener` sisältäen:
+Luo `src/main/resources/META-INF/services/com.webforj.AppLifecycleListener` seuraavalla sisällöllä:
 
 ```text
 com.securityplain.security.SecurityRegistrar
 ```
 
-Tämä rekisteröi [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners), jotta se suoritetaan sovelluksen käynnistyessä.
+Tämä rekisteröi sinun [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners), jotta se toimii sovelluksen käynnistyksessä.
 
 **Miten se toimii:**
 
-- Suorittaa aikaisin (`@AppListenerPriority(1)`) asettaakseen turvallisuuden ennen reittien lataamista
-- Luo turvallisuusmanagerin ja tallentaa sen globaalisti
-- Rekisteröi sisäänrakennetut arvioijat prioriteetti järjestyksessä (alac numerot suoritetaan ensin)
-- Luo tarkkailijan, joka puuttuu navigointiin
-- Liittää tarkkailijan reitittimeen, jotta turvallisuustarkastukset tapahtuvat automaattisesti
+- Toimii varhain (`@AppListenerPriority(1)`) määrittämään turvallisuuden ennen reittien lataamista
+- Luo turvallisuuden hallinnan ja tallentaa sen globaalisti
+- Rekisteröi sisäänrakennetut arvioijat prioriteetti järjestyksessä (alhaisemmat numerot suoritetaan ensin)
+- Luo tarkkailijan, joka keskeyttää navigoinnin
+- Liittää tarkkailijan reitittimeen siten, että turvallisuustarkastukset tapahtuvat automaattisesti
 
-Kun tämä on suoritettu, turvallisuus on aktiivinen kaikissa navigoinneissa.
+Kun tämä on suoritettu, turvallisuus on aktivoitu kaikelle navigoinnille.
 
-## Käytä toteutustasi {#using-your-implementation}
+## Toteuttamisesi käyttäminen {#using-your-implementation}
 
-### Luo kirjautumisikkuna {#create-a-login-view}
+### Luo kirjautumissivu {#create-a-login-view}
 
-Seuraava ikkuna käyttää [`Login`](/docs/components/login) -komponenttia.
+Seuraava näkymä käyttää [`Login`](/docs/components/login) -komponenttia.
 
 ```java title="LoginView.java"
 package com.securityplain.views;
@@ -442,7 +451,7 @@ import com.webforj.router.history.Location;
 import com.webforj.router.security.annotation.AnonymousAccess;
 
 @Route("/login")
-@FrameTitle("Kirjaudu sisään")
+@FrameTitle("Kirjautuminen")
 @AnonymousAccess
 public class LoginView extends Composite<Login> {
   private final Login self = getBoundComponent();
