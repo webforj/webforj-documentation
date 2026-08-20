@@ -29,7 +29,7 @@ public class CardRegionsView extends Composite<FlexLayout> {
     self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setAlignment(FlexAlignment.CENTER)
-        .setMargin("var(--dwc-space-l");
+        .addClassName("card-demo");
 
     Card card = new Card(buildBody());
     card.addToFigure(buildChart())
@@ -38,6 +38,7 @@ public class CardRegionsView extends Composite<FlexLayout> {
         .addToCaption(new Paragraph("July 2026"))
         .addToHeaderActions(new Button("Share", ButtonTheme.OUTLINED_PRIMARY))
         .addToFooter(new Button("Read More"))
+        .setWidth("100%")
         .setMaxWidth("380px");
 
     self.add(card);

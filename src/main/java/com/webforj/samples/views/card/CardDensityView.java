@@ -23,17 +23,17 @@ public class CardDensityView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public CardDensityView() {
-    self.setMargin("var(--dwc-space-l)")
-        .setSpacing("var(--dwc-space-m")
-        .setJustifyContent(FlexJustifyContent.CENTER)
+    self.setJustifyContent(FlexJustifyContent.CENTER)
         .setAlignment(FlexAlignment.CENTER)
-        .setWrap(FlexWrap.WRAP);
+        .setWrap(FlexWrap.WRAP)
+        .setSpacing("var(--dwc-space-l)")
+        .addClassName("card-demo");
 
     Card invoice = buildInvoice("INV-2041", "$8,400.00");
-    invoice.setDivided(true).setExpanse(Expanse.LARGE);
+    invoice.setDivided(true).setExpanse(Expanse.LARGE).addClassName("card-density__invoice");
 
     Card compact = buildInvoice("INV-2041", "$8,400.00");
-    compact.setDivided(true).setExpanse(Expanse.SMALL);
+    compact.setDivided(true).setExpanse(Expanse.SMALL).addClassName("card-density__invoice");
 
     self.add(invoice, compact);
   }

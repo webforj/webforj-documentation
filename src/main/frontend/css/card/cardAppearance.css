@@ -1,4 +1,29 @@
+.card-demo {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  padding: var(--dwc-space-l);
+  overflow: auto;
+}
+
+.card-appearance__plan {
+    flex: 1 1 200px;
+    min-width: 0;
+    max-width: 240px;
+}
+
 .card-appearance__price {
   font-size: var(--dwc-font-size-xl);
   font-weight: var(--dwc-font-weight-semibold);
+}
+
+@media (max-width: 480px) {
+  .card-demo {
+    padding: var(--dwc-space-m);
+  }
+
+  .card-density__invoice {
+    flex-basis: 100%;
+    max-width: 320px;
+  }
 }

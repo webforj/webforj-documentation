@@ -71,6 +71,12 @@ Cards are vertical by default, stacking the figure, above the header, body, and 
 card.setOrientation(Card.Orientation.HORIZONTAL);
 ```
 
+<ComponentDemo
+path='/webforj/cardorientation'
+files={['src/main/java/com/webforj/samples/views/card/CardOrientationView.java']}
+height='500px'
+/>
+
 Because the setting moves the figure and nothing else, a `Card` without a figure looks the same in either orientation.
 
 ## Elevation and border {#elevation-and-border}
@@ -101,7 +107,7 @@ Below is an example of two `Card` components with dividers enabled, one using `E
 
 <ComponentDemo
 path='/webforj/carddensity'
-files={['src/main/java/com/webforj/samples/views/card/CardDensity.java']}
+files={['src/main/java/com/webforj/samples/views/card/CardDensityView.java']}
 height='400px'
 />
 

@@ -22,11 +22,11 @@ public class CardAppearanceView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public CardAppearanceView() {
-    self.setMargin("var(--dwc-space-l")
-        .setSpacing("var(--dwc-space-m")
+    self.setSpacing("var(--dwc-space-l")
         .setWrap(FlexWrap.WRAP)
         .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.CENTER);
+        .setAlignment(FlexAlignment.CENTER)
+        .addClassName("card-demo");
 
     Card starter = buildPlan("Starter", "$0", "Up to 3 projects");
     starter.setShadow(Card.Shadow.NONE);
