@@ -86,9 +86,9 @@ Two settings determine how far the `Card` separates from the page behind it. `se
 
 The settings are independent, so any shadow can be paired with or without the border. Three pairings are common enough to have names:
 
-- An **outlined** `Card` keeps the border and sets a `Shadow.NONE`, marking a bounded area without lifting off the page.
-- An **elevated** `Card` drops the border with `setBorderless(true)` and raises the shadow, so it stands above the surface behind it.
-- A **flat** `Card` drops both, grouping its content without any separation of its own.
+- **Outlined**: the border with `Shadow.NONE`. 
+- **Elevated**: `setBorderless(true)` with a larger shadow.
+- **Flat**: `setBorderless(true)` with `Shadow.NONE`
 
 <ComponentDemo
 path='/webforj/cardappearance'
