@@ -22,8 +22,8 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
 
   public TableDynamicStylingView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setMaxWidth(760)
-        .setMargin("var(--dwc-space-xl)")
+        .setSpacing("var(--dwc-space-l)")
+        .setPadding("var(--dwc-space-xl)")
         .add(update, table);
 
     List<Person> data =
@@ -39,14 +39,14 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
             new Person("Frank", 30, "Boston"),
             new Person("Grace", 27, "Seattle"));
 
-    table.addColumn("Name", Person::getName).setSortable(true);
-    table.addColumn("City", Person::getCity).setSortable(true);
-    Column<Person, Integer> ageColumn = table.addColumn("Age", Person::getAge).setSortable(true);
+    table.addColumn("Name", Person::getName).setSortable(true).setFlex(1f).setMinWidth(120f);
+    table.addColumn("City", Person::getCity).setSortable(true).setFlex(1f).setMinWidth(140f);
+    Column<Person, Integer> ageColumn =
+        table.addColumn("Age", Person::getAge).setSortable(true).setFlex(1f).setMinWidth(80f);
 
     table
         .setItems(data)
-        .setWidth("100%")
-        .setHeight("400px")
+        .setSize("100%", "400px")
         .setRowPartProvider(
             p -> {
               List<String> parts = new ArrayList<>();
@@ -66,8 +66,6 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
               }
               return parts;
             });
-
-    table.setColumnsToAutoFit();
 
     update
         .setMaxWidth(200)
