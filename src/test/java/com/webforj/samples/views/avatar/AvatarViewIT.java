@@ -2,58 +2,74 @@ package com.webforj.samples.views.avatar;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.avatar.AvatarPage;
 import com.webforj.samples.views.BaseTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class AvatarViewIT extends BaseTest {
 
   private AvatarPage avatarPage;
 
-  @BeforeEach
-  public void setupAvatarDemo() {
-    navigateToRoute(AvatarPage.getRoute());
+  public void setupAvatarDemo(SupportedLanguage language) {
+    navigateToRoute(AvatarPage.getRoute(language));
     avatarPage = new AvatarPage(page);
   }
 
-  @Test
-  public void testPanelIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testPanelIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getPanel()).isVisible();
   }
 
-  @Test
-  public void testProjectHeaderIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testProjectHeaderIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getProjectHeader()).isVisible();
   }
 
-  @Test
-  public void testTeamLabelIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testTeamLabelIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getTeamLabel()).isVisible();
   }
 
-  @Test
-  public void testSarahAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSarahAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getSarahAvatar()).isVisible();
   }
 
-  @Test
-  public void testMarcusAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testMarcusAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getMarcusAvatar()).isVisible();
   }
 
-  @Test
-  public void testElenaAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testElenaAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getElenaAvatar()).isVisible();
   }
 
-  @Test
-  public void testDavidAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testDavidAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getDavidAvatar()).isVisible();
   }
 
-  @Test
-  public void testDialogOpensWhenAvatarIsClicked() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testDialogOpensWhenAvatarIsClicked(SupportedLanguage language) {
+    setupAvatarDemo(language);
     avatarPage.getSarahAvatar().click();
     assertThat(avatarPage.getDialog()).isVisible();
   }

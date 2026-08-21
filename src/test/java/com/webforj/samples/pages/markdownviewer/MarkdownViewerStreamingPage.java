@@ -2,6 +2,7 @@ package com.webforj.samples.pages.markdownviewer;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class MarkdownViewerStreamingPage {
 
@@ -23,8 +24,8 @@ public class MarkdownViewerStreamingPage {
     this.thinkingIndicator = page.locator(".chat__thinking");
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator getViewer() {
