@@ -133,6 +133,13 @@ comboBox.getSearch()
   .setEmptyMessage("No fruits found");
 ```
 
+<ComponentDemo
+path='/webforj/listsearch'
+files={['src/main/java/com/webforj/samples/views/lists/listbox/ListSearchView.java']}
+height='250px'
+/>
+
+
 Filtering only hides the items that don't match. Item indexes and the current selection are untouched, so `getSelectedIndex()` continues to refer to the full list rather than to the items currently visible.
 
 The search field can be hidden again with `setFieldVisible(false)`.
