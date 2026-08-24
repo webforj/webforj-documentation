@@ -207,6 +207,6 @@ Pages whose rendering depends on JSP-specific mechanisms that have no component 
 
 The JSP-to-Thymeleaf path and the JSP-to-React path exist because they solve real problems. The path described here — replacing the page with a Java component tree — is the one the search results underrepresent, and it is the one most worth considering for teams that already write Java and would rather stop context-switching to a template language.
 
-The [java-desktop-to-web post](/blog/java-desktop-to-web) covers the same UI-swap paradigm from a Swing starting point; the framing there — keep the service layer, replace only the view — applies directly to JSP. The [composing-components doc](/docs/building-ui/composing-components) is the right starting point for the Composite pattern. The [Table overview](/docs/components/table/overview) covers data binding and column configuration.
+The same UI-swap framing applies whether the starting point is JSP or a Swing desktop app: keep the service layer, replace only the view. The [composing-components doc](/docs/building-ui/composing-components) is the right starting point for the Composite pattern. The [Table overview](/docs/components/table/overview) covers data binding and column configuration.
 
 The customers from `customers.jsp` will still appear in the browser. The team will be writing Java the whole way down.
