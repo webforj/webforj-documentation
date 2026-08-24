@@ -15,7 +15,7 @@ hide_table_of_contents: false
 
 The request came from the usual place. A Java team was asked for a web UI. First instinct: add React. Hire a frontend developer, stand up a separate build, expose the backend as a REST API, wire the two halves together with a JSON contract. That is the default answer for most teams in 2026, and for many teams it is the correct one.
 
-For the team described in our [Spring Boot frontend post](/blog/spring-boot-frontend-java), it was not. They shipped a time-tracker on Spring Boot and webforJ — one repo, one language, no `package.json` in sight — and the year after looked meaningfully different from what the React path would have produced. That post covers the build; this one is the decision-shaped version: what the choice cost, what it returned, and when it stops making sense.
+For the team we're going to walk through, it was not. They shipped an internal time-tracker on Spring Boot and webforJ — one repo, one language, no `package.json` in sight — and the year after looked meaningfully different from what the React path would have produced. This is the decision-shaped view of that call: what it cost, what it returned, and when it stops making sense.
 
 <!-- truncate -->
 
@@ -37,7 +37,7 @@ The SERP for "spring boot without react" mostly argues between two options: a fu
 
 **Java imperative UI.** Views as Java objects. State in fields, behavior in methods, the framework diffing the component tree to the browser over a persistent connection. No HTML template layer, no attribute vocabulary to learn alongside the Java code.
 
-All three skip or minimize the full SPA stack. The second and third are compared in more depth in the [htmx-vs-java-components post](/blog/htmx-vs-java-components). This post is about what it looks like to take the third path all the way and what the team noticed afterward.
+All three skip or minimize the full SPA stack. This post is about what it looks like to take the third path all the way and what the team noticed afterward.
 
 The mental model for the Java imperative approach is the closest to how Swing or JavaFX developers already think. Components have constructors. State lives in fields. Events are method calls. For a team whose instinct is to write Java rather than configure a build, the ramp to this model is shorter than the ramp to React — though shorter ramp is not the same as better outcome, and the long-term fit depends on the problem.
 
@@ -93,4 +93,4 @@ The CI pipeline simplified. The build lost a stage — no `npm install`, no lint
 
 The Java-only path is not always the right answer — for teams shipping fine on React it is not an answer at all, and for public marketing sites and visualization-heavy products it is usually the wrong fit. But for a Java-native team standing up a new internal tool on Spring Boot, it is a trade worth pricing out before committing to the SPA default.
 
-The [Spring Boot frontend post](/blog/spring-boot-frontend-java) shows what the concrete build looks like. The [getting started guide](/docs/introduction/getting-started) covers bootstrapping a webforJ project. If the underlying question is modernization rather than greenfield — moving a desktop app to the web rather than starting fresh — the [Java desktop-to-web post](/blog/java-desktop-to-web) covers that path.
+The [getting started guide](/docs/introduction/getting-started) covers bootstrapping a webforJ project, and the [component catalog](/docs/components/overview) shows what ships with the framework so you can gauge fit against your specific requirements before committing.
