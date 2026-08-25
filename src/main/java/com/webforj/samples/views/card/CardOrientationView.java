@@ -39,6 +39,7 @@ public class CardOrientationView extends Composite<FlexLayout> {
     card.setShadow(Card.Shadow.MEDIUM);
     card.setWidth("100%");
     card.setMaxWidth("34rem");
+    card.setStyle("--dwc-card-footer-justify-content", "center");
 
     card.addToFigure(new Img(ALBUM_ART, "Album art for Ghost Harbour by Signal Path"));
     card.addToTitle(new H3("Ghost Harbour"));

@@ -84,19 +84,13 @@ Because the setting moves the figure and nothing else, a `Card` without a figure
 
 Two settings determine how far the `Card` separates from the page behind it. `setShadow()` applies a value from the shadow scale, which runs from `NONE` through `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, and `XLARGE` to `XXLARGE`. `setBorderless()` controls whether the `Card` draws its border. The defaults are `Shadow.XSMALL` with the border drawn.
 
-The settings are independent, so any shadow can be paired with or without the border. Three pairings are common enough to have names:
-
-- **Outlined**: the border with `Shadow.NONE`. 
-- **Elevated**: `setBorderless(true)` with a larger shadow.
-- **Flat**: `setBorderless(true)` with `Shadow.NONE`
+The settings are independent, so any shadow can be paired with or without the border. 
 
 <ComponentDemo
 path='/webforj/cardappearance'
 files={[
-  'src/main/java/com/webforj/samples/views/card/CardAppearanceView.java',
-  'src/main/frontend/css/card/cardAppearance.css',
-]}
-height='250px'
+  'src/main/java/com/webforj/samples/views/card/CardAppearanceView.java']}
+height='300px'
 />
 
 ## Dividers and expanse {#dividers-and-expanse}
