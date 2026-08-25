@@ -66,7 +66,7 @@ npm run start
 When you edit examples that render inside `ComponentDemo`, run the sample app from the documentation repository root in another terminal:
 
 ```bash
-mvn jetty:run -Pen-only
+mvn -Pdev
 ```
 
 The Docusaurus server uses port `3000`, and local demo frames load the sample app from port `8080`. If port `8080` is unavailable, pass the same alternative port to Maven with `-Dport=<port>` and to Docusaurus with `WEBFORJ_PORT`.

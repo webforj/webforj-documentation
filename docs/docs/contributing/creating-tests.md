@@ -78,13 +78,13 @@ npm run review:cookbook-snippets
 Run the full Maven verification from the documentation repository root when Java samples, demo routes, or integration tests change:
 
 ```bash
-mvn -Pen-only verify
+mvn verify
 ```
 
 To run a single integration test, pass the Failsafe test name:
 
 ```bash
-mvn -Pen-only -Dit.test=TableSortingViewIT verify
+mvn -Dit.test=TableSortingViewIT verify
 ```
 
 Add or update integration tests when a sample demonstrates interactive behavior, navigation, validation, dynamic rendering, or a previously broken path.

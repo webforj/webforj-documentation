@@ -60,12 +60,6 @@ Make sure the change has a clear purpose, is limited to one topic, and can be re
 
 For framework code, run the affected module tests and the full Maven build when practical. For documentation-only edits, build the English docs site. Java samples, demos, and integration test changes also require the relevant Maven validation.
 
-To build the English docs site, run the following:
-
-```bash
-mvn jetty:run -Pen-only
-```
-
 ## Contributor guides {#contributor-guides}
 
 <DocCardList className="topics-section" />
