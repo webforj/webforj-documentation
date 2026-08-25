@@ -1,75 +1,88 @@
 package com.webforj.samples.views.card;
 
-import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.html.elements.Img;
 import com.webforj.component.html.elements.Span;
-import com.webforj.component.icons.Icon;
+import com.webforj.component.icons.IconButton;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.optioninput.RadioButton;
-import com.webforj.component.optioninput.RadioButtonGroup;
+import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@FrameTitle("Course Catalog")
-@BundleEntry("css/card/cardOrientation.css")
+@FrameTitle("Now Playing")
 public class CardOrientationView extends Composite<FlexLayout> {
+  private static final String ALBUM_ART = "https://picsum.photos/seed/dwc-card-player/720/720";
+
   private final FlexLayout self = getBoundComponent();
-  private final Card course = buildCourse();
+
+  private final Card card = new Card();
+  private final Slider scrubber = new Slider(38);
 
   public CardOrientationView() {
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-l)")
-        .addClassName("card-demo");
+        .setHeight("100vh")
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setPadding("var(--dwc-space-l)");
 
-    RadioButton vertical = new RadioButton("Vertical", true);
-    vertical.setStyle("align-self", "flex-start");
-    RadioButton horizontal = new RadioButton("Horizontal");
-    horizontal.setStyle("align-self", "flex-start");
+    card.setOrientation(Card.Orientation.HORIZONTAL);
+    card.setShadow(Card.Shadow.MEDIUM);
+    card.setWidth("100%");
+    card.setMaxWidth("34rem");
 
-    RadioButtonGroup orientation = new RadioButtonGroup("orientation", vertical, horizontal);
+    card.addToFigure(new Img(ALBUM_ART, "Album art for Ghost Harbour by Signal Path"));
+    card.addToTitle(new H3("Ghost Harbour"));
+    card.addToCaption(new Span("Signal Path"));
 
-    orientation.onChange(
-        event -> {
-          if (horizontal.isChecked()) {
-            course.setOrientation(Card.Orientation.HORIZONTAL).setMaxWidth("420px");
-          } else {
-            course.setOrientation(Card.Orientation.VERTICAL).setMaxWidth("280px");
-          }
-        });
+    scrubber.setFilled(true);
+    scrubber.setTooltipVisible(false);
+    scrubber.setAttribute("aria-label", "Seek");
+    scrubber.setStyle("--dwc-slider-horizontal-height", "var(--dwc-space-3xl)");
 
-    course.setOrientation(Card.Orientation.VERTICAL).setMaxWidth("280px");
+    card.addToBody(scrubber, buildTimes());
+    card.addToFooter(
+        buildTransportButton("player-track-prev", "Previous Track"),
+        buildPlayButton(),
+        buildTransportButton("player-track-next", "Next track"));
 
-    self.add(orientation, course);
+    self.add(card);
   }
 
-  private Card buildCourse() {
-    Icon cover = TablerIcon.create("book-2");
-    cover.addClassName("card-orientation__icon");
+  private FlexLayout buildTimes() {
+    FlexLayout times = FlexLayout.create(new Span("1:12"), new Span("-2:36")).horizontal().build();
+    times.setJustifyContent(FlexJustifyContent.BETWEEN);
+    times.setStyle("padding-inline", "var(--dwc-space-m)");
+    times.setStyle("font-size", "var(--dwc-font-size-s)");
+    times.setStyle("color", "var(--dwc-color-gray-text-light)");
 
-    Span meta = new Span("12 lessons").addClassName("card-orientation__meta");
+    return times;
+  }
 
-    Card card =
-        new Card(
-            FlexLayout.create(
-                    meta,
-                    new Paragraph(
-                        "Work through guided exercises and finish with a graded project."))
-                .vertical()
-                .build()
-                .setSpacing("var(--dwc-space-xs)"));
+  private Button buildPlayButton() {
+    Button play = new Button(TablerIcon.create("player-play", TablerIcon.Variate.FILLED));
+    play.setTheme(ButtonTheme.PRIMARY);
+    play.setExpanse(Expanse.MEDIUM);
+    play.setAttribute("aria-label", "Play");
+    play.setStyle("--dwc-icon-size", "var(--dwc-font-size-l)");
+    play.setMinWidth("3.5rem");
 
-    return card.addToFigure(cover)
-        .addToTitle(new H3("Data Structures"))
-        .addToFooter(new Button("Enroll", ButtonTheme.OUTLINED_PRIMARY));
+    return play;
+  }
+
+  private IconButton buildTransportButton(String iconName, String label) {
+    IconButton button = new IconButton(TablerIcon.create(iconName, TablerIcon.Variate.FILLED));
+    button.setLabel(label);
+
+    return button;
   }
 }
