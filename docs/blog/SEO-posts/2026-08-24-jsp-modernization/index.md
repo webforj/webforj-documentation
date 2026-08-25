@@ -113,7 +113,7 @@ A JSP include that pulls in a shared header:
 <jsp:include page="/WEB-INF/includes/header.jsp" />
 ```
 
-Behind this is a resolution path — the JSP engine finds the file relative to the WAR structure — and implicit coupling: both the including page and the included file share `pageContext`, and the included file can read session attributes the including page set.
+Behind this is a resolution path — the JSP engine finds the file relative to the WAR structure — and implicit coupling: the included file gets its own `PageContext` and page scope, but it shares the same request, session, and application scope with the including page, and can read request attributes the including page set.
 
 The Composite equivalent is a class:
 
