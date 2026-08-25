@@ -136,7 +136,7 @@ comboBox.getSearch()
 <ComponentDemo
 path='/webforj/listsearch'
 files={['src/main/java/com/webforj/samples/views/lists/listbox/ListSearchView.java']}
-height='250px'
+height='650px'
 />
 
 

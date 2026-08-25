@@ -1,7 +1,9 @@
 package com.webforj.samples.views.lists;
 
 import com.webforj.component.Composite;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.list.ComboBox;
 import com.webforj.router.annotation.FrameTitle;
@@ -44,9 +46,14 @@ public class ListSearchView extends Composite<FlexLayout> {
 
   public ListSearchView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setWidth(280)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setWidth("100%")
+        .setHeight("100vh")
         .setMargin("20px 0 0 20px")
         .setSpacing("20px");
+
+    comboBox.setWidth(280).setMaxRowCount(6);
 
     comboBox.insert(COUNTRIES);
     self.add(comboBox);
