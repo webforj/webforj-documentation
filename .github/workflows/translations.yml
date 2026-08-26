@@ -133,10 +133,27 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          # The translator exits 1 when there is nothing to translate, 0 when it
-          # produced changes. Treat any non-zero exit as "no changes" the same
-          # way the previous version did.
+          # Both translate and translate:titles exit 1 when there is nothing to
+          # do and 0 when they produced changes. We run them sequentially and
+          # OR the results together — either producing changes means we need to
+          # rebuild and commit.
+          #
+          # translate:titles is what keeps sidebar labels consistent: the normal
+          # translate flow only fires when a source file's content hash changes,
+          # so docs whose bodies are stable would otherwise keep their English
+          # frontmatter titles forever. titles-only walks every existing
+          # translated file and translates the title if it still equals source.
+          changed=false
+
           if npm run translate; then
+            changed=true
+          fi
+
+          if npm run translate:titles; then
+            changed=true
+          fi
+
+          if [ "$changed" = "true" ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
           else
             echo "No translations needed - skipping build and commit"
