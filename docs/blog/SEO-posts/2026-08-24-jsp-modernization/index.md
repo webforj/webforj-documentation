@@ -5,13 +5,13 @@ slug: jsp-modernization
 date: 2026-08-24
 authors: webforJ
 tags: [modernization, web development, front end, mvc]
-image: ./cover.png
+image: ./alternate_cover.jpg
 hide_table_of_contents: false
 
 # --- Internal tracking (stripped at publish) ---
 ---
 
-![cover](./cover.png)
+![cover](./alternate_cover.jpg)
 
 The `customers.jsp` has been in production since 2011. The team knows every quirk — the `pageContext.getAttribute` calls that pull in the session-managed customer list, the JSTL loop that renders the rows, the shared header partial included from `/WEB-INF/includes/header.jsp`. It works. Operations knows how to deploy a WAR. The business rules are encoded in the tag libraries. On Monday, leadership asked for a modernization plan.
 
