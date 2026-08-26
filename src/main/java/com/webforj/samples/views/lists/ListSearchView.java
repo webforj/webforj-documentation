@@ -49,14 +49,15 @@ public class ListSearchView extends Composite<FlexLayout> {
         .setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setWidth("100%")
-        .setHeight("100vh")
         .setMargin("20px 0 0 20px")
         .setSpacing("20px");
 
-    comboBox.setWidth(280).setMaxRowCount(6);
+    comboBox.setWidth(280).setMaxRowCount(8);
 
     comboBox.insert(COUNTRIES);
     self.add(comboBox);
+
+    whenAttached().thenAccept(c -> comboBox.open());
 
     comboBox
         .getSearch()
