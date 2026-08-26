@@ -30,7 +30,7 @@ jobs:
           maven-version: 3.9.9
 
       - name: Build WAR with Maven
-        run: mvn clean package -Pen-only
+        run: mvn clean package
 
       - name: Verify WAR File Exists
         run: ls -lh target/*.war || (echo "WAR file not found!" && exit 1)
