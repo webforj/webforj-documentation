@@ -21,7 +21,7 @@ What most tutorials skip is what the feature looks like end to end: the streamin
 
 ## What ghost:ai actually is
 
-A single-page chat app: text area at the bottom, streaming markdown response in the middle, thinking indicator while the model works. Spring AI talks to Mistral, chat memory holds the conversation across turns, and the webforJ MCP server is called for documentation lookups so answers about webforJ come from current docs rather than the model's training data. The full source is one Spring Boot entry class, one view, two services, and a handful of UI components — small enough to read in one sitting.
+A single-page chat app: text area at the bottom, streaming markdown response in the middle, thinking indicator while the model works. The webforJ MCP server is called for documentation lookups so answers about webforJ come from current docs rather than the model's training data. The full source is one Spring Boot entry class, one view, two services, and a handful of UI components — small enough to read in one sitting.
 
 ## The chat service
 
@@ -55,7 +55,7 @@ public class ChatService {
 }
 ```
 
-The system prompt (elided above) is where the feature is actually defined. It has two blocks: a role statement giving the assistant a personality, and an explicit tool-usage block telling the model to always call `webforj_knowledge_base` first, reminding it that its training data is outdated, and instructing it to say "I don't know" instead of guessing. Skip that block and the assistant hallucinates about webforJ features that don't exist.
+The system prompt is where the feature is actually defined. It has two blocks: a role statement giving the assistant a personality, and an explicit tool-usage block telling the model to always call `webforj_knowledge_base` first, reminding it that its training data is outdated, and instructing it to say "I don't know" instead of guessing. Skip that block and the assistant hallucinates about webforJ features that don't exist.
 
 `MessageWindowChatMemory` gives you a sliding window of recent messages in one line, and `MessageChatMemoryAdvisor` wires it into every request. For per-user memory, derive `CONVERSATION_ID` from request context. `stream()` returns a `Flux<String>` so users see text appear token by token instead of waiting for the whole response.
 
@@ -70,7 +70,7 @@ spring.ai.mcp.client.streamable-http.connections.webforj.url=https://mcp.webforj
 spring.ai.mcp.client.streamable-http.connections.webforj.endpoint=/mcp
 ```
 
-That's the entire integration. Spring AI connects to `mcp.webforj.com`, discovers `webforj_knowledge_base`, and hands it to the `ChatClient`. The chat service never touches the tool directly — the MCP server describes itself. That beats stuffing documentation into the prompt as static context, because the knowledge base changes on the server and the client never has to redeploy to pick up new docs.
+Spring AI connects to `mcp.webforj.com`, discovers `webforj_knowledge_base`, and hands it to the `ChatClient`. The chat service never touches the tool directly — the MCP server describes itself. That beats stuffing documentation into the prompt as static context, because the knowledge base changes on the server and the client never has to redeploy to pick up new docs.
 
 ## The view: streaming, thinking, cancel
 
@@ -168,16 +168,6 @@ Each keystroke cancels the pending prediction and schedules a new one 250ms out.
 ghost:ai is a full-page chat, but the pattern is portable. In an app that already has a UI, put a `MarkdownViewer` plus a text input inside a `Drawer` on the right edge, open it from a button in your toolbar, and wire it to a `ChatService` scoped to whatever domain data the current user can see. Swap the MCP tool provider for one connected to your own services, or drop it and put domain context in the system prompt.
 
 The permission story matters here. Because the chat service is just another Spring bean, any domain data it accesses goes through the same repositories and service methods your existing UI uses. Same `@PreAuthorize`, same tenant scoping, same audit trail.
-
-## Where this pattern gets harder
-
-ghost:ai covers the pieces that generalize. The parts it doesn't cover are worth naming so you can decide whether they're in scope:
-
-- **Multi-user memory**: in-memory `MessageWindowChatMemory` is fine for a demo. Production needs a persistent store scoped per user or session.
-- **Long-context RAG**: If the assistant needs to search across large data volumes, you're into embeddings and a vector store.
-- **Agency**: If the assistant should take actions ("book this meeting", "update this record"), you need confirmation UX, undo, and a trust model.
-
-Each of these is a separate post's worth of work. The reference project's job is to get you past the parts everyone has to build regardless.
 
 ## Get the source
 
