@@ -145,7 +145,7 @@ The nav hides a label automatically when its section has no visible items, so a 
 
 ### Label prefix and suffix {#label-prefix-and-suffix}
 
-Like `AppNavItem`, a label supports prefix and suffix components. Pass a prefix to the constructor, or set either one afterward:
+Like `AppNavItem`, a label supports prefix, and suffix components. Pass a prefix to the constructor, or set either one afterward:
 
 ```java
 AppNavLabel analytics = new AppNavLabel("Analytics", TablerIcon.create("chart-pie"));
@@ -153,6 +153,17 @@ analytics.setSuffixComponent(new Badge().setText("2").setTheme(BadgeTheme.WARNIN
 
 nav.add(analytics);
 ```
+
+The example below groups a menu under three labels, the first of which carries an [`Icon`](./icon) prefix and a [`Badge`](./badge) suffix. Dashboard sits above the first label, so it belongs to no section.
+
+<ComponentDemo
+path='/webforj/appnavlabel/Dashboard'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/appnav/AppNavLabelView.java',
+  'src/main/java/com/webforj/samples/views/appnav/AppNavLabelPageView.java',
+]}
+/>
 
 ## Pinning <DocChip chip='since' label='26.01' /> {#pinning}
 
