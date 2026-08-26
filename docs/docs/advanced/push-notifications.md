@@ -8,7 +8,7 @@ description: Use the Push class, PushSender, and PushMessage to subscribe browse
 <DocChip chip='since' label='26.02' />
 <JavadocLink type="push" location="com/webforj/push/Push" top='true'/>
 
-Push notifications can reach users even when the app isn't open. The browser subscribes once, the app stores the subscription, and the server uses it to deliver notifications when an event occurs. <JavadocLink type="push" location="com/webforj/push/Push" code='true'>Push</JavadocLink> manages subscribing and unsubscribing in the browser. On the server, <JavadocLink type="push" location="com/webforj/push/PushSender" code='true'>PushSender</JavadocLink> sends a <JavadocLink type="push" location="com/webforj/push/PushMessage" code='true'>PushMessage</JavadocLink> to a stored subscription.
+Push notifications can reach users even when an app isn't open. The browser subscribes once, the app stores the subscription, and the server uses it to deliver notifications when an event occurs. <JavadocLink type="push" location="com/webforj/push/Push" code='true'>Push</JavadocLink> manages subscribing and unsubscribing in the browser. On the server, <JavadocLink type="push" location="com/webforj/push/PushSender" code='true'>PushSender</JavadocLink> sends a <JavadocLink type="push" location="com/webforj/push/PushMessage" code='true'>PushMessage</JavadocLink> to a stored subscription.
 
 <!-- INTRO_END -->
 
