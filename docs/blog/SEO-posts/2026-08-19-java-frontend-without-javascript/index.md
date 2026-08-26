@@ -5,13 +5,13 @@ slug: java-frontend-without-javascript
 date: 2026-08-19
 authors: webforJ
 tags: [spring, full-stack, front end, web development]
-image: ./cover.png
+image: ./alternative_cover.jpg
 hide_table_of_contents: false
 
 # --- Internal tracking (stripped at publish) ---
 ---
 
-![cover](./cover.png)
+![cover](./alternative_cover.jpg)
 
 The request came from the usual place. A Java team was asked for a web UI. First instinct: add React. Hire a frontend developer, stand up a separate build, expose the backend as a REST API, wire the two halves together with a JSON contract. That is the default answer for most teams in 2026, and for many teams it is the correct one.
 
