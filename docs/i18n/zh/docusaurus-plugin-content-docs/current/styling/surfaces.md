@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: Surfaces
+title: 表面
 _i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
 DWC 定义了三个表面级别，用于组织 UI 层次结构，并结合 [shadows](./shadows)。所有 [palette colors](./colors) 都经过测试，以确保与这些表面具有足够的对比度。

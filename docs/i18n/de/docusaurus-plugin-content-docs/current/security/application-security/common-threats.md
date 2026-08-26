@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Common Threats
+title: Häufige Bedrohungen
 description: >-
   How common web threats such as cross-site scripting (XSS), cross-site request
   forgery (CSRF), and SQL injection apply to a webforJ app, what the framework

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Security Annotations
+title: Annotations de sécurité
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 Les annotations de sécurité fournissent un moyen déclaratif de contrôler l'accès aux routes dans votre application webforJ. En ajoutant des annotations à vos composants de route, vous définissez qui peut accéder à chaque vue sans écrire de vérifications de permission manuelles. Le système de sécurité applique automatiquement ces règles avant que tout composant ne soit rendu.

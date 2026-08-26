@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Route Types
+title: 路由类型
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 路由分为两种主要类型，**视图路由**和**布局路由**。路由类型的选择决定了组件如何映射到 URL 以及它们如何与应用程序的其他部分交互。

@@ -1,5 +1,5 @@
 ---
-title: Object and String Tables
+title: 对象与字符串表
 sidebar_position: 45
 _i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---

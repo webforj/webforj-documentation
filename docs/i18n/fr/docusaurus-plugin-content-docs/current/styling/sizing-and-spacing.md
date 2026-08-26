@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Sizing and Spacing
+title: Dimensions et espacement
 _i18n_hash: 05261a33707bc38ade5e855f5ae5ce47
 ---
 Les jetons d'espacement et de taille sont utilisés pour fournir un espacement et une taille cohérents dans votre application. Toutes les propriétés de taille et d'espacement sont définies en `rem`.

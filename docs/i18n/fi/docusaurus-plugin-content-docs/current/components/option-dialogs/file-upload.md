@@ -1,5 +1,5 @@
 ---
-title: File Upload
+title: Tiedoston lataus
 sidebar_position: 20
 description: >-
   Capture client uploads with the FileUploadDialog, returning an UploadedFile

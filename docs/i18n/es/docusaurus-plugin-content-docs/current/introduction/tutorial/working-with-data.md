@@ -1,5 +1,5 @@
 ---
-title: Working with Data
+title: Trabajando con datos
 sidebar_position: 3
 description: Step 2 - Use Spring to work with data.
 _i18n_hash: d2e2ee90a1ad908c6884df92fb575c5b

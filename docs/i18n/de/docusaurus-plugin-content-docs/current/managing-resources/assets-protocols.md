@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Assets Protocols
+title: Asset-Protokolle
 description: >-
   Reference app resources with the webforJ ws, context, and icons protocols to
   load static files, classpath content, and dynamic icons.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Border
+title: Bordure
 _i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
 Les propriétés de bordure sont utilisées pour contrôler le style et la largeur de la bordure du composant. Voir [les styles de bordure disponibles](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Shadows
+title: Schatten
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 Die Schatteneigenschaften fügen Schatteneffekte um den Rahmen eines Elements hinzu. Schatten signalisieren Elemente, die in der Benutzeroberfläche übereinander gestapelt sind.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Nested Routes
+title: Geneste routes
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Geneste routes stellen het mogelijk om child routes te renderen binnen parent routes, waardoor een modulaire en herbruikbare UI ontstaat. Parent routes definiëren gedeelde componenten, terwijl child routes worden geïnjecteerd in specifieke uitgangen binnen deze parent componenten.

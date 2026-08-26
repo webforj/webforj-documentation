@@ -1,5 +1,5 @@
 ---
-title: Build and tests
+title: Compilation et tests
 sidebar_position: 40
 sidebar_class_name: new-content
 description: >-

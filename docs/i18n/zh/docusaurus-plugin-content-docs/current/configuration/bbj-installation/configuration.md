@@ -1,5 +1,5 @@
 ---
-title: Install Plugin
+title: 安装插件
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
 description: >-

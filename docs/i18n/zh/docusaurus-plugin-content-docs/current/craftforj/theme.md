@@ -1,5 +1,5 @@
 ---
-title: Theme
+title: 主题
 sidebar_position: 6
 description: >-
   Adjust the DWC design tokens of a running webforJ app, preview the result

@@ -1,5 +1,5 @@
 ---
-title: Writing Changes to Source
+title: Escribir cambios en el origen
 sidebar_position: 4
 description: >-
   Review the changes you made in craftforJ as a diff, choose where each one is

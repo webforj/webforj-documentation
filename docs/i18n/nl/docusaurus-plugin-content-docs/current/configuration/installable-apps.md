@@ -1,5 +1,5 @@
 ---
-title: Installable Apps
+title: Installeerbare apps
 sidebar_position: 20
 description: >-
   Annotate a webforJ app with AppProfile to generate a Web App Manifest with

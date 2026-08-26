@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: Surfaces
+title: Oppervlakken
 _i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
 DWC definieert drie niveaus van oppervlakken die worden gebruikt om de UI-hiërarchie te organiseren, gecombineerd met [schaduwen](./shadows). Alle [paletkleuren](./colors) zijn getest om voldoende contraste te hebben met deze oppervlakken.

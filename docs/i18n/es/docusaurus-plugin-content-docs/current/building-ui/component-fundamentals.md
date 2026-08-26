@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Understanding Components
+title: Comprensión de los componentes
 description: >-
   Understand the webforJ component hierarchy, composition over inheritance,
   lifecycle stages, and concern interfaces before building custom components.

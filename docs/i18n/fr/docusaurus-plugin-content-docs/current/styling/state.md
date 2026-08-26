@@ -1,6 +1,6 @@
 ---
 sidebar_position: 9
-title: State
+title: État
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 Les jetons d'état définissent comment les composants réagissent visuellement à l'interaction de l'utilisateur, par exemple lorsque ceux-ci sont désactivés ou en focus. Ces variables aident à assurer un comportement et un style cohérents à travers tous les éléments de l'interface utilisateur, et peuvent être facilement personnalisées pour correspondre à votre système de design.

@@ -1,5 +1,5 @@
 ---
-title: Custom data sources
+title: Fuentes de datos personalizadas
 sidebar_position: 4
 description: >-
   Wire REST APIs, databases, or external services to webforJ components by

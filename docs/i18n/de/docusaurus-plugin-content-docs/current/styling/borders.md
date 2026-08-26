@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Border
+title: Rahmen
 _i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
 Die Rand-Eigenschaften werden verwendet, um den Randstil und die Breite der Komponente zu steuern. Siehe [verfügbare Randstile](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).

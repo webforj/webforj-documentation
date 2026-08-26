@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: Surfaces
+title: Pinnat
 _i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
 DWC määrittelee kolme tasoa pintoja, joita käytetään käyttöliittymän hierarkian järjestämiseen yhdessä [varjojen](./shadows) kanssa. Kaikki [väripaletin värit](./colors) on testattu siten, että niiden ja näiden pintojen välillä on tarpeeksi kontrastia.

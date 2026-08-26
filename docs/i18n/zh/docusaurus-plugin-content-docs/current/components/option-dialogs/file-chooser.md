@@ -1,5 +1,5 @@
 ---
-title: File Chooser
+title: 文件选择器
 sidebar_position: 10
 description: >-
   Open a blocking FileChooserDialog to let users pick files or directories from

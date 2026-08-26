@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Lists
+title: 列表
 hide_giscus_comments: true
 description: >-
   Manage shared list features across ChoiceBox, ComboBox, and ListBox, including

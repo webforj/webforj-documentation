@@ -1,5 +1,5 @@
 ---
-title: Frontend watch
+title: Frontend-tarkkailu
 sidebar_position: 20
 sidebar_class_name: new-content
 description: >-

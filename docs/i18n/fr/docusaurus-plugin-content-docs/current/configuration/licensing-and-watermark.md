@@ -1,5 +1,5 @@
 ---
-title: Licensing and Watermark
+title: Licences et filigrane
 sidebar_position: 45
 description: >-
   Request a webforJ trial certificate and place certificate.bls in the resources

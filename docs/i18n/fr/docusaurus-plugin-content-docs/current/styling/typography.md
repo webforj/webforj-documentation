@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Typography
+title: Typographie
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 Les tokens typographiques sont utilisés pour maintenir un ensemble cohérent de styles de police dans toute votre application.

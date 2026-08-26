@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Query Parameters
+title: Query-Parameter
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Abfrageparameter ermöglichen es Ihnen, zusätzliche Daten über URLs zu übermitteln, und zwar im Format `?key1=value1&key2=value2`. Während Routenparameter verwendet werden, um erforderliche Daten innerhalb des URL-Pfads zu übermitteln, bieten Abfrageparameter einen flexiblen Mechanismus zum Übermitteln von optionalen oder zusätzlichen Daten. Sie sind besonders nützlich beim Filtern von Inhalten, Sortieren oder Verarbeiten mehrerer Werte für denselben Schlüssel.

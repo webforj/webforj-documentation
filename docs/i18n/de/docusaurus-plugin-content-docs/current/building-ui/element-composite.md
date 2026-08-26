@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Element Composite
+title: Element-Komposition
 sidebar_class_name: new-content
 _i18n_hash: b8099816ab51d246d3a69c2ca8bd9108
 ---

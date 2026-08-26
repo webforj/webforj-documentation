@@ -1,5 +1,5 @@
 ---
-title: Redeployment and Live Reload
+title: Redéploiement et rechargement à chaud
 hide_table_of_contents: false
 hide_giscus_comments: true
 description: >-

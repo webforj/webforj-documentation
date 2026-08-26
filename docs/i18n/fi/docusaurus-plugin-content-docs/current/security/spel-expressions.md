@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: SpEL Expressions
+title: SpEL-lausekkeet
 _i18n_hash: 1019aac355c5ef0efc8623660c3501e5
 ---
 Spring Expression Language (`SpEL`) tarjoaa deklaratiivisen tavan määritellä valtuutus sääntöjä suoraan annotaatioissa. `@RouteAccess` annotaatio arvioi `SpEL`-lausekkeita hyödyntäen Spring Securityn sisäänrakennettuja valtuutusfunktioita.

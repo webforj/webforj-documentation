@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: 入门
 sidebar_position: 2
 _i18n_hash: becd2e7bd488a077c08ef5a64dbe0f61
 ---

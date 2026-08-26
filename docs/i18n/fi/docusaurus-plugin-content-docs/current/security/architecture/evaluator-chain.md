@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Evaluator Chain
+title: Arvioijaketju
 _i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
 Evaluointiketju on webforJ:n tietoturvajärjestelmän sydän. Se on priorisoitu arvioijien sekvenssi, joka tutkii reittejä ja tekee pääsypäätöksiä vastuuketjun suunnittelumallin avulla. Ymmärtämällä, miten ketju toimii, voit luoda mukautettuja arvioijia ja ratkaista odottamattomia pääsyn evätyksiä.

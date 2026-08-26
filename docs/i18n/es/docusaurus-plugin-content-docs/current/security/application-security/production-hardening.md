@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Production Hardening
+title: Fortalecimiento para producción
 description: >-
   Practical steps for running a webforJ app safely in production, from transport
   encryption and dependency upkeep to server-side checks and disclosure.
