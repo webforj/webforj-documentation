@@ -175,4 +175,4 @@ The permission story matters here. Because the chat service is just another Spri
 
 You'll need Java 21, Maven 3.9+, and a Mistral API key. `mvn spring-boot:run` starts the app on `http://localhost:8080`. Swap the model provider in `application.properties` for OpenAI, Anthropic, or a local Ollama if you'd prefer.
 
-For deeper reading, see the [`MarkdownViewer` docs](/docs/components/markdown-viewer), the [`TextArea` predicted-text guide](/docs/components/textarea#predicted-text), and [Spring AI's tool-calling reference](https://docs.spring.io/spring-ai/reference/api/tools.html).
+For deeper reading, see the [`MarkdownViewer` docs](/docs/components/markdownviewer), the [`TextArea` predicted-text guide](/docs/components/textarea#predicted-text), and [Spring AI's tool-calling reference](https://docs.spring.io/spring-ai/reference/api/tools.html).
