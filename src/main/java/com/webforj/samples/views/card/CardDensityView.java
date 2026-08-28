@@ -29,16 +29,16 @@ public class CardDensityView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-l)")
         .addClassName("card-demo");
 
-    Card invoice = buildInvoice("INV-2041", "$8,400.00");
-    invoice.setDivided(true).setExpanse(Expanse.LARGE).addClassName("card-density__invoice");
+    Card invoice = buildInvoice("INV-2041", "$8,400.00", Expanse.LARGE);
+    invoice.setDivided(true).addClassName("card-density__invoice");
 
-    Card compact = buildInvoice("INV-2041", "$8,400.00");
-    compact.setDivided(true).setExpanse(Expanse.SMALL).addClassName("card-density__invoice");
+    Card compact = buildInvoice("INV-2041", "$8,400.00", Expanse.SMALL);
+    compact.setDivided(true).addClassName("card-density__invoice");
 
     self.add(invoice, compact);
   }
 
-  private Card buildInvoice(String number, String total) {
+  private Card buildInvoice(String number, String total, Expanse expanse) {
     FlexLayout lines =
         FlexLayout.create(
                 buildLine("Design retainer", "$6,000.00"),
@@ -52,16 +52,23 @@ public class CardDensityView extends Composite<FlexLayout> {
 
     return card.addToTitle(new H3(number))
         .addToCaption(new Paragraph("Due August 30, 2026"))
-        .addToFooter(
-            FlexLayout.create(
-                    new Span("Total " + total).addClassName("card-density__total"),
-                    new Button("Pay", ButtonTheme.PRIMARY))
-                .horizontal()
-                .justify()
-                .between()
-                .align()
-                .center()
-                .build());
+        .addToFooter(buildFooter(total, expanse));
+  }
+
+  private FlexLayout buildFooter(String total, Expanse expanse) {
+    Button pay = new Button("Pay", ButtonTheme.PRIMARY);
+    pay.setExpanse(expanse);
+
+    FlexLayout footer =
+        FlexLayout.create(new Span("Total " + total).addClassName("card-density__total"), pay)
+            .horizontal()
+            .build();
+    footer.setJustifyContent(FlexJustifyContent.END);
+    footer.setAlignment(FlexAlignment.CENTER);
+    footer.setSpacing("var(--dwc-space-m)");
+    footer.setWidth("100%");
+
+    return footer;
   }
 
   private FlexLayout buildLine(String label, String amount) {

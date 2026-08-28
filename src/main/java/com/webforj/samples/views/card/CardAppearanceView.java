@@ -17,6 +17,8 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Card Appearance")
 public class CardAppearanceView extends Composite<FlexLayout> {
+  private static final String CARD_WIDTH = "22rem";
+
   private final FlexLayout self = getBoundComponent();
 
   private final Card card = new Card();
@@ -34,7 +36,7 @@ public class CardAppearanceView extends Composite<FlexLayout> {
 
     card.setShadow(Card.Shadow.MEDIUM);
     card.setWidth("100%");
-    card.setMaxWidth("20rem");
+    card.setMaxWidth(CARD_WIDTH);
     card.addToTitle(new H3("Team"));
     card.addToBody(price, new Paragraph("Unlimited projects"));
 
@@ -53,8 +55,11 @@ public class CardAppearanceView extends Composite<FlexLayout> {
     shadow.onSelect(ev -> card.setShadow((Card.Shadow) ev.getSelectedItem().getKey()));
 
     FlexLayout controls = FlexLayout.create(borderless, shadow).horizontal().build();
-    controls.setSpacing("var(--dwc-space-l");
-    controls.setAlignment(FlexAlignment.CENTER);
+    controls.setJustifyContent(FlexJustifyContent.BETWEEN);
+    controls.setAlignment(FlexAlignment.END);
+    controls.setSpacing("var(--dwc-space-m)");
+    controls.setWidth("100%");
+    controls.setMaxWidth(CARD_WIDTH);
 
     return controls;
   }
