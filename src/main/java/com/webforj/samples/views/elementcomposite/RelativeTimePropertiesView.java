@@ -128,11 +128,11 @@ public class RelativeTimePropertiesView extends Composite<FlexLayout> {
     return divider;
   }
 
-  /** Wrapper for the Shoelace relative-time web component. */
-  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
-  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
-  @BundleEntry("@shoelace-style/shoelace/dist/components/relative-time/relative-time.js")
-  @NodeName("sl-relative-time")
+  /** Wrapper for the Web Awesome relative-time web component. */
+  @BundlePackage(value = "@awesome.me/webawesome", version = "^3.12.0")
+  @BundleEntry("@awesome.me/webawesome/dist/styles/themes/default.css")
+  @BundleEntry("@awesome.me/webawesome/dist/components/relative-time/relative-time.js")
+  @NodeName("wa-relative-time")
   public static final class RelativeTime extends ElementComposite
       implements HasClassName<RelativeTime>, HasStyle<RelativeTime> {
 

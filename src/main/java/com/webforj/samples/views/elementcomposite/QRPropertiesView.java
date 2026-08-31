@@ -7,6 +7,7 @@ import com.webforj.component.element.ElementComposite;
 import com.webforj.component.element.PropertyDescriptor;
 import com.webforj.component.element.annotation.NodeName;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.concern.HasStyle;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import java.awt.Color;
@@ -23,17 +24,16 @@ public class QRPropertiesView extends Composite<FlexLayout> {
     qrCode.setSize(200).setColor("#0059B8");
   }
 
-  /** QRCode Generator using Shoelace QRCode component. */
-  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
-  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
-  @BundleEntry("@shoelace-style/shoelace/dist/components/qr-code/qr-code.js")
-  @NodeName("sl-qr-code")
-  public static final class QRCode extends ElementComposite {
+  /** QRCode Generator using Web Awesome QR code component. */
+  @BundlePackage(value = "@awesome.me/webawesome", version = "^3.12.0")
+  @BundleEntry("@awesome.me/webawesome/dist/styles/themes/default.css")
+  @BundleEntry("@awesome.me/webawesome/dist/components/qr-code/qr-code.js")
+  @NodeName("wa-qr-code")
+  public static final class QRCode extends ElementComposite implements HasStyle<QRCode> {
 
     private final PropertyDescriptor<String> descValue = PropertyDescriptor.property("value", "");
     private final PropertyDescriptor<Integer> descSize = PropertyDescriptor.property("size", 128);
-    private final PropertyDescriptor<String> descColor =
-        PropertyDescriptor.property("fill", "#000000");
+    private String cssColor = "#000000";
 
     /** Create a new QRCode. */
     public QRCode() {
@@ -70,18 +70,22 @@ public class QRPropertiesView extends Composite<FlexLayout> {
     }
 
     public Color getColor() {
-      String hex = get(descColor);
-      return Color.decode(hex);
+      return Color.decode(cssColor);
     }
 
     public QRCode setColor(Color color) {
-      String hex = "#%02x%02x%02x".formatted(color.getRed(), color.getGreen(), color.getBlue());
-      set(descColor, hex);
-      return this;
+      return setColor("#%02x%02x%02x".formatted(color.getRed(), color.getGreen(), color.getBlue()));
     }
 
+    /**
+     * Sets the code color.
+     *
+     * <p>The component derives the code color from the CSS {@code color} property rather than from
+     * a component property, so this setter writes an inline style.
+     */
     public QRCode setColor(String color) {
-      set(descColor, color);
+      this.cssColor = color;
+      setStyle("color", color);
       return this;
     }
   }
