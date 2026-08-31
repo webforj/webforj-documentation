@@ -38,12 +38,13 @@ dependencies {
 </TabItem>
 </Tabs>
 
-Push notifications require a servlet deployment, such as Jetty, Spring Boot, or a WAR file. They also require the deployment to sign notifications with the key pair generated below. The first time the app subscribes, the browser asks the user for permission and remembers the decision for that origin.
+Push notifications require:
 
-:::info Secure Origin Requirement
-The app must be served from a secure origin, such as `https`, before a browser can subscribe.
-Browsers reject subscriptions from insecure origins. The exception is an app served locally from `localhost` during development.
+- A servlet deployment, such as Jetty, Spring Boot, or a WAR file.
+- A key pair, generated below, that the deployment uses to sign notifications.
+- A secure origin. Browsers reject subscriptions served over anything but `https`, except from `localhost` during development.
 
+:::info Secure origins
 <!-- vale off -->
 For more information about secure contexts and why they matter, see the [Secure Contexts MDN documentation](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
 <!-- vale on -->
@@ -92,7 +93,7 @@ Each browser subscribes to one key pair. If the keys change, the push service re
 
 ## How it works {#how-it-works}
 
-The process has three steps, two of which happen in your code:
+The process has three steps:
 
 1. **Subscribe.** From a view, `Push.getCurrent().subscribe()` requests the user's permission and returns a `PushSubscription` that identifies the browser's address.
 2. **Store.** The app saves the subscription with its data and associates it with the corresponding user.
@@ -147,6 +148,8 @@ If the browser is already subscribed, calling `subscribe()` again returns the ex
 
 :::info Browser permission
 The first call to `subscribe()` prompts the user for permission. The browser displays this prompt, it isn't part of the app UI. Because browsers show the prompt only in response to a user action, call `subscribe()` from a click listener instead of the view constructor.
+
+If the user blocks the prompt, the app can't prompt again for that origin. 
 :::
 
 ### Storing subscriptions {#storing-subscriptions}
