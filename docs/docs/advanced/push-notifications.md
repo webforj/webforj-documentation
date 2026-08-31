@@ -149,7 +149,7 @@ If the browser is already subscribed, calling `subscribe()` again returns the ex
 :::info Browser permission
 The first call to `subscribe()` prompts the user for permission. The browser displays this prompt, it isn't part of the app UI. Because browsers show the prompt only in response to a user action, call `subscribe()` from a click listener instead of the view constructor.
 
-If the user blocks the prompt, the app can't prompt again for that origin. 
+If the user blocks the prompt, the app can't prompt again for that origin.
 :::
 
 ### Storing subscriptions {#storing-subscriptions}
