@@ -14,6 +14,7 @@ import com.webforj.component.element.annotation.EventOptions.EventData;
 import com.webforj.component.element.annotation.NodeName;
 import com.webforj.component.event.ComponentEvent;
 import com.webforj.component.html.elements.H3;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
@@ -49,6 +50,9 @@ public class RatingView extends Composite<FlexLayout> {
     FlexLayout container = new FlexLayout(new H3("Rate this product"), rating, submit);
     container.setDirection(FlexDirection.COLUMN);
     container.setSpacing("var(--dwc-space-m)");
+    // The component maps pointer position to a value across its own bounding box, so it has to hug
+    // its symbols rather than stretch to the width of the column.
+    container.setItemAlignment(FlexAlignment.START, rating);
     container.setStyle("background", "var(--dwc-surface-3)");
     container.setStyle("border", "thin solid var(--dwc-color-default)");
     container.setStyle("border-radius", "var(--dwc-border-radius-m)");
@@ -60,11 +64,11 @@ public class RatingView extends Composite<FlexLayout> {
         .add(container);
   }
 
-  /** Wrapper for the Shoelace rating web component. */
-  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
-  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
-  @BundleEntry("@shoelace-style/shoelace/dist/components/rating/rating.js")
-  @NodeName("sl-rating")
+  /** Wrapper for the Web Awesome rating web component. */
+  @BundlePackage(value = "@awesome.me/webawesome", version = "^3.12.0")
+  @BundleEntry("@awesome.me/webawesome/dist/styles/themes/default.css")
+  @BundleEntry("@awesome.me/webawesome/dist/components/rating/rating.js")
+  @NodeName("wa-rating")
   public static final class Rating extends ElementComposite
       implements HasClassName<Rating>, HasStyle<Rating> {
 
@@ -107,7 +111,7 @@ public class RatingView extends Composite<FlexLayout> {
     }
   }
 
-  @EventName("sl-change")
+  @EventName("change")
   @EventOptions(data = {@EventData(key = "value", exp = "event.target.value")})
   public static final class ChangeEvent extends ComponentEvent<Rating> {
 
