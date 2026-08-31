@@ -2,7 +2,7 @@
 sidebar_position: 20
 title: Lists
 hide_giscus_comments: true
-sidebar_class_name: updated-content
+sidebar_class_name: new-content
 description: Manage shared list features across ChoiceBox, ComboBox, and ListBox, including ListItem objects, adding, removing, and selection APIs.
 ---
 
@@ -119,7 +119,7 @@ for (ListItem item : list) {
 }
 ```
 
-## Searching {#searching}
+## Searching <DocChip chip='since' label='26.02' /> {#searching}
 
 All List components have an embedded search field that filters the items by their text. The field is off by default. Use `getSearch()` to reach the search configuration, then `setFieldVisible(true)` to show the field at the top of the component's list.
 
