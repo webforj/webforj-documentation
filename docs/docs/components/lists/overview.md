@@ -2,6 +2,7 @@
 sidebar_position: 20
 title: Lists
 hide_giscus_comments: true
+sidebar_class_name: new-content
 description: Manage shared list features across ChoiceBox, ComboBox, and ListBox, including ListItem objects, adding, removing, and selection APIs.
 ---
 
@@ -117,6 +118,51 @@ for (ListItem item : list) {
    item.setText("Modified2: " + item.getText());
 }
 ```
+
+## Searching <DocChip chip='since' label='26.02' /> {#searching}
+
+All List components have an embedded search field that filters the items by their text. The field is off by default. Use `getSearch()` to reach the search configuration, then `setFieldVisible(true)` to show the field at the top of the component's list.
+
+```java
+ComboBox comboBox = new ComboBox("Fruit");
+comboBox.insert("Apple", "Banana", "Cherry", "Apricot", "Pineapple");
+
+comboBox.getSearch()
+  .setFieldVisible(true)
+  .setPlaceholder("Search fruits")
+  .setEmptyMessage("No fruits found");
+```
+
+<ComponentDemo
+path='/webforj/listsearch'
+files={['src/main/java/com/webforj/samples/views/lists/listbox/ListSearchView.java']}
+height='450px'
+/>
+
+
+Filtering only hides the items that don't match. Item indexes and the current selection are untouched, so `getSelectedIndex()` continues to refer to the full list rather than to the items currently visible.
+
+The search field can be hidden again with `setFieldVisible(false)`.
+
+### Configuring the field {#configuring-the-field}
+
+- `setPlaceholder()` sets the placeholder text of the search field. The default is `Search`.
+
+-  `setEmptyMessage()` sets the message shows when a search returns no results. The default is `No data to display`.
+
+Each setting has a matching getter: `isFieldVisible()`, `getPlaceholder()`, `getEmptyMessage()`, and `getTerm()`.
+
+### Filtering from code {#filtering-from-code}
+
+`setTerm()` sets the search term and filters the list. It works whether or not the field is visible, so a list can be filtered without showing any search UI.
+
+```java
+listBox.getSearch().setTerm("apple");
+```
+
+:::warning `getTerm()` and the search field
+Typing in the search field doesn't write the term back to the configuration. `getTerm()` returns the last value passed to `setTerm()`, not what the user has typed.
+:::
 
 ## Shared list properties {#shared-list-properties}
 
