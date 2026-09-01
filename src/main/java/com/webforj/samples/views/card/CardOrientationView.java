@@ -41,9 +41,9 @@ public class CardOrientationView extends Composite<FlexLayout> {
     card.setMaxWidth("34rem");
     card.setStyle("--dwc-card-footer-justify-content", "center");
 
-    card.addToFigure(new Img(ALBUM_ART, "Album art for Ghost Harbour by Signal Path"));
-    card.addToTitle(new H3("Ghost Harbour"));
-    card.addToCaption(new Span("Signal Path"));
+    card.addToFigure(new Img(ALBUM_ART, "Album art for Hotswap Nights by Ivy & The Composites"));
+    card.addToTitle(new H3("Hotswap Nights"));
+    card.addToCaption(new Span("Ivy & The Composites"));
 
     scrubber.setFilled(true);
     scrubber.setTooltipVisible(false);
