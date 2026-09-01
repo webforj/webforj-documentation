@@ -6,7 +6,7 @@ description: Style the dwc-datefield-spinner client component with CSS variables
 ---
 
 <DocChip chip='shadow' />
-    
+
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-datefield-spinner>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::
