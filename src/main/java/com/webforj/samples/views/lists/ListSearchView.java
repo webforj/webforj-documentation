@@ -52,9 +52,11 @@ public class ListSearchView extends Composite<FlexLayout> {
         .setMargin("20px 0 0 20px")
         .setSpacing("20px");
 
-    comboBox.setWidth(280).setMaxRowCount(8);
+    comboBox.setWidth(280)
+            .setMaxRowCount(8)
+            .insert(COUNTRIES)
+            .selectIndex(0);
 
-    comboBox.insert(COUNTRIES);
     self.add(comboBox);
 
     whenAttached().thenAccept(c -> comboBox.open());
