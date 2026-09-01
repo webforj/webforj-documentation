@@ -1,7 +1,6 @@
 ---
 title: Frontend testing
 sidebar_position: 5
-sidebar_class_name: new-content
 description: Write tests for the frontend sources of a webforJ app with the Bun test runner.
 ---
 

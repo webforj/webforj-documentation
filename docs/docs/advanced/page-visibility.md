@@ -1,7 +1,6 @@
 ---
 title: Page Visibility
 sidebar_position: 32
-sidebar_class_name: new-content
 description: Detect when the tab hosting your app moves between the foreground and the background, and react in Java.
 ---
 
