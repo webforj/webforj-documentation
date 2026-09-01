@@ -1,7 +1,6 @@
 ---
 title: Less
 sidebar_position: 40
-sidebar_class_name: new-content
 description: Compile Less to CSS with the webforj-less extension, bind a class to the stylesheet, and pass Less options through bun.config.ts.
 ---
 

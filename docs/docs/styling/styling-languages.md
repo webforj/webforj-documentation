@@ -1,7 +1,6 @@
 ---
 title: Styling languages
 sidebar_position: 11
-sidebar_class_name: new-content
 description: Author your styles in CSS, compile them from Sass or Less, or generate them with Tailwind, and load the result into a webforJ app.
 ---
 

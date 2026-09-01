@@ -1,7 +1,6 @@
 ---
 sidebar_position: 6
 title: Element Composite
-sidebar_class_name: new-content
 description: Wrap a custom HTML element or third-party web component in Java with ElementComposite, exposing its properties, attributes, and events through the Java API.
 ---
 
@@ -13,7 +12,7 @@ The `ElementComposite` class wraps a custom HTML element or [web component](http
 Reach for `ElementComposite` when wrapping a third-party web component that webforJ doesn't already provide. If a built-in webforJ component covers the use case (`TextField`, `ColorField`, `Button`, and so on), use that instead. For one-off DOM work that doesn't need to be reused, the `Element` class can be used directly without a wrapper.
 :::
 
-This guide demonstrates how to implement the [Shoelace relative-time web component](https://shoelace.style/components/relative-time) using the `ElementComposite` class.
+This guide demonstrates how to implement the [Web Awesome relative-time web component](https://webawesome.com/docs/components/relative-time/) using the `ElementComposite` class.
 
 <ComponentDemo
 path='/webforj/relativetime'
@@ -30,7 +29,7 @@ Three annotations commonly appear at the top of an `ElementComposite` subclass: 
 The `@NodeName` annotation declares the HTML tag the component wraps. webforJ uses this name when creating the underlying element in the DOM.
 
 ```java
-@NodeName("sl-relative-time")
+@NodeName("wa-relative-time")
 public class RelativeTime extends ElementComposite {
   // ...
 }
@@ -45,8 +44,8 @@ Inside a subclass, `getNodeName()` reads back the declared tag, and `getElement(
 The `@JavaScript` annotation loads the script that defines or registers the underlying web component. Place it on the class so the script loads only when the component is used.
 
 ```java
-@NodeName("sl-relative-time")
-@JavaScript("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js")
+@NodeName("wa-relative-time")
+@JavaScript("https://ka-f.webawesome.com/webawesome@3.12.0/webawesome.loader.js")
 public class RelativeTime extends ElementComposite {
   // ...
 }
@@ -61,7 +60,7 @@ See [Importing JavaScript files](../managing-resources/importing-assets#importin
 The `@StyleSheet` annotation loads a CSS file the component depends on. It's useful for third-party components that ship a separate style sheet, or for bundling component-specific styling alongside the wrapper.
 
 ```java
-@StyleSheet("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css")
+@StyleSheet("https://ka-f.webawesome.com/webawesome@3.12.0/styles/themes/default.css")
 ```
 
 For locally bundled assets, use the `ws://` prefix to reference files in `resources/static`:
@@ -140,7 +139,7 @@ The demo below adds properties for relative-time based on the web component's do
 path='/webforj/relativetimeproperties'
 files={[
   'src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimePropertiesView.java',
-  'src/main/frontend/css/elementcomposite/activity-feed.css',
+  'src/main/frontend/element-composite/activityfeed.css',
 ]}
 height='450px'
 />
@@ -379,9 +378,9 @@ Events carry data from the client to your Java code. Access this data through `g
 
 Define custom event classes with `@EventName` and `@EventOptions` to capture client-side data in a typed Java event. Use this when the Java handler needs values from the browser.
 
-`@EventName` binds the Java class to the event the component dispatches in the browser, so a class annotated `@EventName("sl-change")` fires whenever the underlying element emits `sl-change`. `@EventOptions` controls what travels back with that event. Each `@EventData` inside it pairs a key with a JavaScript expression evaluated against the DOM event. The result is available in the Java event class through `getData().get(key)`.
+`@EventName` binds the Java class to the event the component dispatches in the browser, so a class annotated `@EventName("change")` fires whenever the underlying element emits `change`. `@EventOptions` controls what travels back with that event. Each `@EventData` inside it pairs a key with a JavaScript expression evaluated against the DOM event. The result is available in the Java event class through `getData().get(key)`.
 
-The product review form below uses this pattern with [`sl-rating`](https://shoelace.style/components/rating). The custom `ChangeEvent` carries the rating value as a typed `double`, and the listener uses it to enable the submit button:
+The product review form below uses this pattern with [`wa-rating`](https://webawesome.com/docs/components/rating/). The custom `ChangeEvent` carries the rating value as a typed `double`, and the listener uses it to enable the submit button:
 
 <ComponentDemo
 path='/webforj/rating'
@@ -463,7 +462,7 @@ public class Dialog extends ElementCompositeContainer {
 }
 ```
 
-The demo below shows two pricing cards built with [`sl-card`](https://shoelace.style/components/card), populating the `header`, default, and `footer` slots from Java:
+The demo below shows two pricing cards built with [`wa-card`](https://webawesome.com/docs/components/card/), populating the `header`, default, and `footer` slots from Java:
 
 <ComponentDemo
 path='/webforj/card'

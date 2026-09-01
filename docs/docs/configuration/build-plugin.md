@@ -1,7 +1,7 @@
 ---
 title: webforJ Build Plugin
 sidebar_position: 5
-sidebar_class_name: new-content
+sidebar_class_name: updated-content
 description: Add the webforJ Maven or Gradle plugin to your build, the goals it binds to each phase, and the options it accepts.
 ---
 

@@ -2,7 +2,7 @@
   "label": "Application Security",
   "position": 50,
   "key": "security-application-security",
-  "className": "new-content",
+  "className": "has-new-content",
   "link": {
     "type": "doc",
     "id": "overview"

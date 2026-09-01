@@ -1,7 +1,6 @@
 ---
 title: Extensions
 hide_giscus_comments: true
-sidebar_class_name: new-content
 description: Understand how a bundler extension contributes a compiler, the three ways an extension activates, how to configure one through bun.config.ts, and how to write your own.
 ---
 
