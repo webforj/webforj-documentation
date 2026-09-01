@@ -21,7 +21,7 @@ Create a `Card` by passing content to its constructor, which places that content
 ```java
 Card card = new Card(new Paragraph("Sales climbed across every region."));
 
-//Equivalent 
+//Equivalent
 Card card = new Card();
 card.addToBody(new Paragraph("Sales climbed across every region."));
 ```
@@ -64,7 +64,7 @@ height='700px'
 
 ## Orientation {#orientation}
 
-Orientation controls where the figure sits relative to the other regions, and is set with `setOrientation()`. 
+Orientation controls where the figure sits relative to the other regions, and is set with `setOrientation()`.
 
 Cards are vertical by default, so they stack the figure above the header, body, and footer. This suits cards arranged in a grid, where each one occupies a narrow column. Passing `Card.Orientation.HORIZONTAL` to `setOrientation()` makes the card horizontal instead, placing the figure beside those regions.
 
@@ -84,7 +84,7 @@ Because the setting moves the figure and nothing else, a `Card` without a figure
 
 Two settings determine how far the `Card` separates from the page behind it. `setShadow()` applies a value from the shadow scale, which runs from `NONE` through `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, and `XLARGE` to `XXLARGE`. `setBorderless()` controls whether the `Card` draws its border. The defaults are `Shadow.XSMALL` with the border drawn.
 
-The settings are independent, so any shadow can be paired with or without the border. 
+The settings are independent, so any shadow can be paired with or without the border.
 
 <ComponentDemo
 path='/webforj/cardappearance'
