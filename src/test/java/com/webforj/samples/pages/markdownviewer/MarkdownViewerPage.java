@@ -2,6 +2,7 @@ package com.webforj.samples.pages.markdownviewer;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class MarkdownViewerPage {
 
@@ -29,8 +30,8 @@ public class MarkdownViewerPage {
     this.codeBlock = viewer.locator("pre code");
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator getViewer() {

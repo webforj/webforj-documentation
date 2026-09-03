@@ -2,23 +2,25 @@ package com.webforj.samples.views.applayout.multipleheaders;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.applayout.multipleheaders.AppLayoutMultipleHeadersPage;
 import com.webforj.samples.views.BaseTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class AppLayoutMultipleHeadersViewIT extends BaseTest {
 
   private AppLayoutMultipleHeadersPage appLayoutMultipleHeadersPage;
 
-  @BeforeEach
-  public void setupAppLayoutMultipleHeaders() {
-    navigateToRoute(AppLayoutMultipleHeadersPage.getRoute());
+  public void setupAppLayoutMultipleHeaders(SupportedLanguage language) {
+    navigateToRoute(AppLayoutMultipleHeadersPage.getRoute(language));
     appLayoutMultipleHeadersPage = new AppLayoutMultipleHeadersPage(page);
   }
 
-  @Test
-  public void testDwcToolbar() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testDwcToolbar(SupportedLanguage language) {
+    setupAppLayoutMultipleHeaders(language);
     assertThat(appLayoutMultipleHeadersPage.getDwcToolbar()).hasCount(2);
   }
 }
