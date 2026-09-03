@@ -13,8 +13,6 @@ The `MaskedTextField` component provides a configurable text input that enforces
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
 The `MaskedTextField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder text, and a listener in case the value changes.
 
 ```java
@@ -115,7 +113,7 @@ height='200px'
 
 ## `MaskedTextFieldSpinner` {#maskedtextfieldspinner}
 
-The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#basics) by adding spinner controls that let users cycle through a list of predefined values.
+The `MaskedTextFieldSpinner` extends the `MaskedTextField` by adding spinner controls that let users cycle through a list of predefined values.
 This improves the user experience in situations where the input should be constrained to a fixed set of valid options.
 
 <ComponentDemo

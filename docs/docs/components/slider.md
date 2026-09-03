@@ -13,11 +13,7 @@ The `Slider` component gives users a way to select a numeric value by dragging a
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
-The `Slider` is designed to work right out of the box, requiring no additional setup to function effectively. By default, it spans a range from 0 to 100 with a starting value of 50, making it ideal for quick integration into any app. For more specific use cases, the `Slider` can be customized with properties such as orientation, tick marks, labels, and tooltips.
-
-Here’s an example of a `Slider` that allows users to adjust volume levels within a predefined range:
+A new `Slider` spans a range from 0 to 100 with a starting value of 50, so it works without any setup. Properties such as orientation, tick marks, labels, and tooltips cover more specific cases, like the volume control below.
 
 <ComponentDemo
 path='/webforj/slider'
