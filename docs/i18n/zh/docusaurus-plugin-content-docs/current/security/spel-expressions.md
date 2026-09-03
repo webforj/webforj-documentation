@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: SpEL Expressions
+title: SpEL 表达式
 _i18n_hash: 1019aac355c5ef0efc8623660c3501e5
 ---
 Spring表达式语言（`SpEL`）提供了一种声明性的方法，可以直接在注释中定义授权规则。`@RouteAccess`注解使用Spring Security自带的授权函数来评估`SpEL`表达式。

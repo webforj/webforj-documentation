@@ -1,5 +1,5 @@
 ---
-title: Test an MCP App
+title: Probar una app MCP
 sidebar_position: 10
 description: >-
   Test a webforJ MCP App with an MCP Apps-capable host, including the Codex app,

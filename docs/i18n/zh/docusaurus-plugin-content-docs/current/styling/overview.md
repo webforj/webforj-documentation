@@ -1,5 +1,5 @@
 ---
-title: Styling
+title: 样式
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-

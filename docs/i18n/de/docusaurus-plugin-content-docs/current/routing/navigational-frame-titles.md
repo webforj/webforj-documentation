@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Navigational Frame Titles
+title: Navigations-Frame-Titel
 description: >-
   Set browser frame titles per route with the @FrameTitle annotation or generate
   them dynamically using HasFrameTitle.

@@ -1,5 +1,5 @@
 ---
-title: Browser History
+title: Historial del navegador
 sidebar_position: 30
 _i18n_hash: 918006c1e505baa4bbffbfb32eb3d9d7
 ---

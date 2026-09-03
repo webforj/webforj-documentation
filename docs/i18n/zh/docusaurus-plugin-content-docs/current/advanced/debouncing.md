@@ -1,6 +1,6 @@
 ---
 sidebar_position: 21
-title: Debouncing
+title: 防抖
 slug: debouncing
 _i18n_hash: 2096c774627674739fd237aed9a4f79e
 ---

@@ -1,5 +1,5 @@
 ---
-title: Input Dialog
+title: 输入对话框
 sidebar_position: 25
 description: >-
   Prompt users for text, numbers, dates, colors, or other typed values with the

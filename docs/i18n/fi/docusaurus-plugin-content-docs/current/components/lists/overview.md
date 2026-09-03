@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Lists
+title: Luettelot
 hide_giscus_comments: true
 sidebar_class_name: new-content
 description: >-

@@ -1,5 +1,5 @@
 ---
-title: Validating and Binding Data
+title: Tietojen validointi ja sidonta
 sidebar_position: 6
 pagination_next: null
 description: Step 5 - Add validation checks and bind data to the UI.

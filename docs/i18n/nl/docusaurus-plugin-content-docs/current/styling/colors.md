@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Colors
+title: Kleuren
 _i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
 webforJ biedt een kleurensysteem dat is opgebouwd uit CSS aangepaste eigenschappen. Deze kleurvariabelen behouden een consistente visuele stijl in je app terwijl je volledige controle hebt om paletten aan te passen aan je ontwerpeisen.

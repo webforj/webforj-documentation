@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Managing Secrets
+title: 密钥管理
 description: >-
   Keep database passwords, API keys, and other secrets out of your webforJ
   source tree and configuration files by resolving them at runtime.

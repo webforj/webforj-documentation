@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Colors
+title: 颜色
 _i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
 webforJ 提供了一个基于 CSS 自定义属性的颜色系统。这些颜色变量能够保持应用程序的视觉风格一致，同时让您能够根据设计需求完全控制调色板的自定义。

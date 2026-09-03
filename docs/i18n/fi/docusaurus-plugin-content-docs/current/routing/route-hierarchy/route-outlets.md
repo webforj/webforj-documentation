@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Route Outlets
+title: Reittiulostulot
 _i18n_hash: 8a64cd917fe9f1de3f37ee01254e80e7
 ---
 An **outlet** on määritelty komponentti, joko [reittinäkymä](./route-types#layout-routes) tai [reittinäkymä](./route-types#view-routes), jossa lapsireitit renderoidaan dynaamisesti. Se määrittää, mihin lapsireitin sisältö ilmestyy vanhempi-reitillä. Outletit ovat keskeisiä modulaaristen, sisäkkäisten käyttöliittymien ja joustavien navigointirakenteiden luomisessa.

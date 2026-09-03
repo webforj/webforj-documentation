@@ -1,5 +1,5 @@
 ---
-title: Page Visibility
+title: Seiten-Sichtbarkeit
 sidebar_position: 32
 sidebar_class_name: new-content
 description: >-

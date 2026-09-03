@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Sizing and Spacing
+title: 尺寸与间距
 _i18n_hash: 05261a33707bc38ade5e855f5ae5ce47
 ---
 间距和尺寸代币用于在您的应用程序中提供一致的间距和尺寸。所有尺寸和间距属性以`rem`为单位定义。

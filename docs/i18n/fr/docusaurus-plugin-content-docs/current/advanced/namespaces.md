@@ -1,5 +1,5 @@
 ---
-title: Namespaces
+title: Espaces de noms
 sidebar_position: 40
 description: >-
   Share thread-safe key-value state across sessions, thread groups, or the

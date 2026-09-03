@@ -1,5 +1,5 @@
 ---
-title: Routes
+title: Rutas
 sidebar_position: 5
 description: >-
   See every registered route in a running webforJ app, navigate to it from

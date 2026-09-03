@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Using Components
+title: Komponenttien käyttö
 description: >-
   Configure webforJ components in Java by setting text, attributes, IDs, inline
   styles, and CSS classes that drive appearance and behavior.

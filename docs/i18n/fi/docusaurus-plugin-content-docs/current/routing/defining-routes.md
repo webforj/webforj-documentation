@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Defining Routes
+title: Reittien määrittäminen
 _i18n_hash: 4f7189d5ef27386506e9ecf950f145ed
 ---
 Reittien määrittäminen on olennaista URL-osoitteiden yhdistämiseksi tiettyihin komponentteihin. Tämä mahdollistaa sen hallitsemisen, kuinka eri osat käyttöliittymästäsi renderöidään URL-rakenteen perusteella. Kehys käyttää `@Route`-annotaatiota tehdäksesi tämän prosessin deklaratiiviseksi ja suoraviivaiseksi, mikä vähentää manuaalisen konfiguroinnin tarvetta.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 40
-title: View Transitions
+title: Ansichtsübergänge
 description: >-
   Animate DOM changes with the browser View Transition API, applying fade,
   slide, zoom, and shared morph effects between component states.

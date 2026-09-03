@@ -1,5 +1,5 @@
 ---
-title: Security
+title: 安全
 sidebar_position: 9
 description: >-
   What craftforJ can reach in your project, how it restricts access, and how to

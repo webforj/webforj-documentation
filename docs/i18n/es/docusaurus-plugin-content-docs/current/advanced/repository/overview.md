@@ -1,5 +1,5 @@
 ---
-title: Repository
+title: Repositorio
 sidebar_position: 1
 description: >-
   Bridge data collections to UI components with CollectionRepository, commit

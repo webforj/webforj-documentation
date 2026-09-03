@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Shadows
+title: Schaduwen
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 De schaduweigenschappen voegen schaduweffecten toe rond het frame van een element. Schaduwen duiden op items die in de gebruikersinterface bovenop elkaar zijn gestapeld.

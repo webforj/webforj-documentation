@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Route Types
+title: Routen-Typen
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Routen werden in zwei Haupttypen unterteilt: **Ansichts-Routen** und **Layout-Routen**. Die Wahl des Routentyps bestimmt, wie Komponenten den URLs zugeordnet werden und wie sie mit anderen Teilen Ihrer App interagieren.

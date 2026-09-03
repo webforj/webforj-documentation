@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Context Results
+title: Résultats de contexte
 _i18n_hash: b86bc425ad8c1537e99a44fa34a93b3a
 ---
 Lorsque vous écrivez des données de l'UI vers le modèle, la méthode `write` du `BindingContext` déclenche les validations. Les résultats de validation déterminent si les données sont acceptables.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Evaluator Chain
+title: Evaluator-Kette
 _i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
 Die Evaluator-Kette ist das Herzstück des Sicherheitssystems von webforJ. Sie ist eine prioritätsgeordnete Sequenz von Evaluatoren, die Routen überprüfen und Zugangsentscheidungen anhand des Entwurfsmusters der Verantwortungskette treffen. Zu verstehen, wie die Kette funktioniert, hilft Ihnen, benutzerdefinierte Evaluatoren zu erstellen und unerwartete Zugriffverweigerungen zu beheben.

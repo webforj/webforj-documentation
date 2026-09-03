@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Route Outlets
+title: 路由出口
 _i18n_hash: 8a64cd917fe9f1de3f37ee01254e80e7
 ---
 一个 **outlet** 是一个指定的组件，可以是 [路由布局](./route-types#layout-routes) 或 [路由视图](./route-types#view-routes)，子路由将在此动态呈现。它定义了子路由的内容在父路由中的出现位置。 outlets 对创建模块化、嵌套 UI 和灵活导航结构至关重要。

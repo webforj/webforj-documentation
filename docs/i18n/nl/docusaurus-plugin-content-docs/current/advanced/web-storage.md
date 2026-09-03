@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Web Storage
+title: Webopslag
 _i18n_hash: 12a907c67d42dedcc6ca3b62fe99e549
 ---
 <!-- vale off -->

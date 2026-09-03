@@ -1,5 +1,5 @@
 ---
-title: End-to-End (E2E) Testing
+title: Pruebas de extremo a extremo (E2E)
 hide_table_of_contents: true
 hide_giscus_comments: true
 _i18n_hash: 8c83e4aa27d8794fc93f3046c79c332d

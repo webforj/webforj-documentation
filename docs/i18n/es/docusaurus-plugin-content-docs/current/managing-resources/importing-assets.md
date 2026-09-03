@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Importing Assets
+title: Importar recursos
 description: >-
   Attach JavaScript and CSS to webforJ components or the app using JavaScript,
   InlineJavaScript, StyleSheet, and InlineStyleSheet annotations.

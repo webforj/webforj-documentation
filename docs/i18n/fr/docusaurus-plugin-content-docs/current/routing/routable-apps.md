@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Routable Apps
+title: Apps routables
 description: >-
   Enable webforJ routing with the @Routify annotation to scan packages, manage
   frames, and control browser history.

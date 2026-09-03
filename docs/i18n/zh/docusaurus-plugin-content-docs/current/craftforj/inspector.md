@@ -1,5 +1,5 @@
 ---
-title: Inspecting Components
+title: 检查组件
 sidebar_position: 3
 description: >-
   Browse the component tree webforJ built, select components from the page, and

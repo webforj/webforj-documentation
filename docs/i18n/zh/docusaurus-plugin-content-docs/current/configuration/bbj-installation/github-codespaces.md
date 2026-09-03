@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Github Codespaces
+title: GitHub Codespaces
 description: >-
   Run the webforj-hello-world starter in a GitHub Codespace to develop and
   preview webforJ apps directly from the browser.
