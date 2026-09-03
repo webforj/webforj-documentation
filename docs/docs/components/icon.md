@@ -13,13 +13,7 @@ The `Icon` component displays icons that scale to any size without losing qualit
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
-Every `Icon` is designed as a Scalable Vector Graphics (SVG) image, which means it can easily scale to any size without losing clarity or quality.
-Additionally, `Icon` components are loaded on demand from a content delivery network (CDN), which helps reduce latency and improve overall performance.
-
-When creating an `Icon`, you'll need to identify a specific pool and the name of the icon itself.
-Some icons also offer the choice between an outlined or a filled version via [variations](#variations).
+Each `Icon` renders as a Scalable Vector Graphics (SVG) image, loaded on demand from a content delivery network (CDN) to keep latency low. To create one, identify the pool it comes from and the name of the icon itself. Some icons also offer the choice between an outlined or a filled version via [variations](#variations).
 
 <ComponentDemo
 path='/webforj/iconbasics'
@@ -31,7 +25,7 @@ height='100px'
 Some components, like `PasswordField` and `TimeField`, have built-in icons to help convey meaning to end users.
 :::
 
-### Pools {#pools}
+## Pools {#pools}
 
 An icon pool is a collection of commonly used icons that enables easy access and reuse. By using icons from an icon pool, you can ensure that the icons in your app are recognizable and share a consistent style.
 Using webforJ allows you to choose from three pools, or implement a custom pool.
@@ -53,7 +47,7 @@ If you're interested in creating your own icon pool, see [Creating custom pools]
 
 Once you have selected the pool or pools to include in your app, the next step is to specify the name of the icon you want to use.
 
-### Names {#names}
+## Names {#names}
 
 To include an icon in your app, all you need is the icon pool and the icon name. Browse the icon pool website for the icon you wish to use, and use the icon name as the parameter of the `create()` method.
 Additionally, you can to create the icons through enums for the `FeatherIcon` and `DwcIcon` classes, allowing them to appear in code completion.
@@ -65,7 +59,7 @@ Icon image = TablerIcon.create("image");
 Icon image = FeatherIcon.IMAGE.create();
 ```
 
-### Variations {#variations}
+## Variations {#variations}
 
 You can personalize icons even more by utilizing variations.
 Certain icons allow you to choose between an outlined or a filled version, allowing you to emphasize a specific icon based on your preference. `FontAwesomeIcon` and `Tabler` icons offer variations.

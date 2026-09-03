@@ -13,11 +13,7 @@ The `BusyIndicator` is a full-screen overlay that signals an ongoing process and
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
-The `BusyIndicator` in webforJ displays as a simple spinner, making it easy to use without configuration. However, you can customize it by adding a message, adjusting the spinner's theme, or modifying visibility settings. This allows you to provide more context or style while maintaining a functional, out-of-the-box solution.
-
-In this example, the `BusyIndicator` prevents any user actions across the entire interface until the operation completes.
+The `BusyIndicator` displays as a spinner with no configuration required. Add a message, change the spinner's theme, or adjust visibility settings when a process needs more context.
 
 <ComponentDemo
 path='/webforj/busydemo'
