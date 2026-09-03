@@ -1,0 +1,25 @@
+.buttonWrapperWidth {
+  width: 632px;
+  overflow: hidden;
+}
+
+@media (width < 712px) {
+.buttonWrapperWidth {
+  width: 416px;
+}
+}
+
+@media (width < 560px) {
+.buttonWrapperWidth {
+  width: 208px;
+}
+}
+
+@media (width > 1464px) {
+.buttonWrapperWidth {
+  width: 1464px;
+}
+dwc-icon-button {
+  display: none;
+}
+}
