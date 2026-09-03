@@ -17,7 +17,7 @@ This component supports number formatting, localization of decimal/grouping char
 
 The `MaskedNumberField` can be instantiated with or without parameters. It supports setting an initial value, a label, a placeholder, and an event listener to react to value changes.
 
-The example below showcases a **Tip Calculator** that uses `MaskedNumberField` for intuitive numeric input. One field is configured to accept a formatted bill amount, while the other captures a whole-number tip percentage. Both fields apply numeric masks to ensure consistent and predictable formatting.
+The example below showcases a **Tip Calculator** that uses `MaskedNumberField` for intuitive numeric input. One field is configured to accept a formatted bill amount, while the other captures a whole-number tip percentage.
 
 <ComponentDemo
 path='/webforj/maskednumberfield'
