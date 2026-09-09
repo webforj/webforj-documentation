@@ -25,8 +25,8 @@ sidebar_class_name: new-content
 Because craftforJ reads the app through webforJ itself, it describes the app in the terms you wrote it in. The tree lists your components rather than the markup the browser rendered, the properties are the ones your components declare, and the routes are the ones your router registered, together with the access rules you annotated them with.
 
 <div class="videos-container">
-      <video controls>
-        <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/intro.mp4" type="video/mp4" />
+      <video controls preload="metadata">
+        <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/intro.mp4#t=0.5" type="video/mp4" />
       </video>
 </div>
 
