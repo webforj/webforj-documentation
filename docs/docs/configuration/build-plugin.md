@@ -1,7 +1,7 @@
 ---
 title: webforJ Build Plugin
 sidebar_position: 5
-sidebar_class_name: new-content
+sidebar_class_name: updated-content
 description: Add the webforJ Maven or Gradle plugin to your build, the goals it binds to each phase, and the options it accepts.
 ---
 
@@ -57,6 +57,7 @@ Three goals bind to phases you already run, so a normal `mvn package` or `./grad
 | `test` | `webforjTest` | with the test phase | Runs the frontend tests |
 | `clean` | `webforjCleanFrontend` | with the clean phase | Removes the generated frontend |
 | `watch` | `webforjWatch` | by hand, alongside the app | Rebuilds on change during development |
+| `push-keys` | `webforjPushKeys` | by hand, once per deployment | Generates the key pair for [push notifications](/docs/advanced/push-notifications) and prints the configuration lines |
 
 Start the watch as the goal before the one that runs the app, `mvn compile webforj:watch spring-boot:run` for example. An archetype project sets this as the default goal, so `mvn` alone starts everything. Its reload behavior is covered in [Frontend watch](/docs/configuration/deploy-reload/frontend-watch).
 

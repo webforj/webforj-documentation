@@ -1,0 +1,35 @@
+.card-demo {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  padding: var(--dwc-space-l);
+  overflow-y: auto;
+  align-content: safe center;
+  justify-content: safe center;
+}
+
+.card-density__invoice {
+  flex: 1 1 260px;
+  min-width: 0;
+  max-width: 320px;
+}
+
+.card-density__line {
+  font-size: var(--dwc-font-size-s);
+  gap: var(--dwc-space-m);
+}
+
+.card-density__total {
+  font-weight: var(--dwc-font-weight-semibold);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .card-demo {
+    padding: var(--dwc-space-m);
+  }
+
+  .card-density__invoice {
+    flex-basis: 100%;
+  }
+}

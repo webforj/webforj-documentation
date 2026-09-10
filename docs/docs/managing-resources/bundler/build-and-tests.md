@@ -1,7 +1,6 @@
 ---
 title: Build and tests
 sidebar_position: 40
-sidebar_class_name: new-content
 description: What the bundler does across the build, the development watch, running frontend tests, tuning a compiler, and producing a minified production bundle.
 ---
 

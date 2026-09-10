@@ -1,7 +1,6 @@
 ---
 title: Tailwind
 sidebar_position: 60
-sidebar_class_name: new-content
 description: Turn on the webforj-tailwind extension, apply utility classes from a view, and understand how it generates and scans its own stylesheet.
 ---
 

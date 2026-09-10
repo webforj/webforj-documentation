@@ -1,7 +1,6 @@
 ---
 sidebar_position: 5
 title: Elements
-sidebar_class_name: updated-content
 description: Integrate raw HTML tags and custom web components in webforJ using the Element class to add children, set content, and call JavaScript functions.
 slug: element
 ---

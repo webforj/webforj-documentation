@@ -6,7 +6,7 @@ hide_giscus_comments: true
 description: >-
   Expose routed webforJ views as interactive MCP applications that an MCP host
   can open and use inside its own interface.
-_i18n_hash: aa6dae85057948c6bbc1eae5c30e34b2
+_i18n_hash: 27896fdcd80b0f7414e1e41f1087d848
 ---
 <Head>
   <style>{`
@@ -16,17 +16,25 @@ _i18n_hash: aa6dae85057948c6bbc1eae5c30e34b2
   `}</style>
 </Head>
 
+<!-- vale Google.Headings = NO -->
 # MCP Apps <DocChip chip='since' label='26.02' /> <DocChip chip='experimental' />
+<!-- vale Google.Headings = YES -->
 
-MCP Apps ermöglichen einer [MCP](https://modelcontextprotocol.io/)-fähigen KI-App, auch als Host bezeichnet, eine geroutete webforJ-Ansicht innerhalb ihres Gesprächs zu öffnen. Die Ansicht bleibt Teil der Java-App, sodass sie dieselben Komponenten, Dienste, Routing und den Zustand verwendet wie im Browser.
+MCP Apps ermöglichen einer [MCP](https://modelcontextprotocol.io/)-fähigen KI-App, auch als Host bezeichnet, eine geroutete webforJ-Ansicht innerhalb ihres Gesprächs zu öffnen. Die Ansicht bleibt Teil der Java-App, sodass sie dieselben Komponenten, Dienste, Routen und Zustände verwendet wie im Browser.
 
-Die Person und die KI können mit demselben Live-UI arbeiten. Die KI kann Eingaben bereitstellen, wenn sie die Ansicht öffnet, Aktionen aufrufen, die die geöffnete Ansicht ändern, und Kontext aus den Entscheidungen der Person im UI erhalten. Die Person kann weiterhin die gerenderten webforJ-Komponenten direkt verwenden.
+Die Person und die KI können mit derselben live UI arbeiten. Die KI kann Eingaben liefern, wenn sie die Ansicht öffnet, Aktionen aufrufen, die die offene Ansicht ändern, und Kontext aus den Entscheidungen erhalten, die die Person in der UI trifft. Die Person kann weiterhin die gerenderten webforJ-Komponenten direkt verwenden.
 
-Spring Boot mit Spring AI ist der Hauptweg, um eine MCP-App zu veröffentlichen. Die Integration entdeckt markierte Routen und fügt sie dem MCP-Server von Spring AI hinzu. Beginnen Sie mit dem [Spring Boot-Setup](./spring), und testen Sie dann die Verbindung mit der minimal veröffentlichten Ansicht [Testen](./testing). Anwendungen, die Spring Boot nicht verwenden, können stattdessen das [standard servlet setup](./without-spring) nutzen.
+Spring Boot mit Spring AI ist der primäre Weg, um eine MCP-App zu veröffentlichen. Die Integration entdeckt markierte Routen und fügt sie zum MCP-Server von Spring AI hinzu. Beginnen Sie mit der [Spring Boot-Konfiguration](./spring) und testen Sie dann [die Verbindung](./testing) mit der minimal veröffentlichten Ansicht. Anwendungen, die Spring Boot nicht verwenden, können stattdessen die [Standard-Servlet-Konfiguration](./without-spring) verwenden.
 
-:::info[Die Unterstützung durch Hosts variiert]
+<div class="videos-container">
+    <video controls>
+      <source src="https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4" type="video/mp4" />
+    </video>
+</div>
 
-MCP Apps ist eine sich entwickelnde Erweiterung der MCP-Spezifikation, daher übernehmen Hosts deren Überarbeitungen und Sicherheitsrichtlinien in ihrem eigenen Tempo. Die App gibt die Ursprünge an, von denen ihre Ansicht lädt und mit denen sie sich verbindet, und ein Host, der sie zulässt, rendert die Ansicht. Hosts können auch strengere Richtlinien anwenden. Das öffnende Tool gibt immer seinen Textinhalt zurück, und die Route bleibt als reguläre Browser-Seite verfügbar. Überprüfen Sie jeden angestrebten Host mit den Schritten in [Testen](./testing).
+:::info[Die Unterstützung von Hosts variiert]
+
+MCP Apps sind eine sich entwickelnde Erweiterung der MCP-Spezifikation, sodass Hosts ihre Überarbeitungen und Sicherheitsrichtlinien in ihrem eigenen Tempo übernehmen. Die App erklärt die Ursprünge, von denen ihre Ansicht geladen wird und zu denen sie sich verbindet, und ein Host, der diese zulässt, rendert die Ansicht. Hosts können auch strengere Richtlinien anwenden. Das Öffnungswerkzeug gibt immer seinen Textinhalt zurück, und die Route bleibt als reguläre Browserseite verfügbar. Überprüfen Sie jeden Host, den Sie anvisieren, mit den Schritten in [Testing](./testing).
 :::
 
 ## Themen {#topics}

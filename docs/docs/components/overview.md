@@ -66,6 +66,10 @@ The following layout components are designed to handle a wide range of use cases
   <GalleryCard header="TabbedPane" href="tabbedpane" image="/img/components/light/TabbedPane.webp" imageDark="/img/components/dark/TabbedPane.webp">
     <p>A container component that organizes content into multiple tabs, allowing users to switch between different views or sections.</p>
   </GalleryCard>
+
+  <GalleryCard header="Card" href="card" image="/img/components/light/Card.webp" imageDark="/img/components/dark/Card.webp">
+    <p>A surface that groups related content and actions, with regions for media, headers, body content, and footers.</p>
+  </GalleryCard>
 </GalleryGrid>
 
 ## Data entry {#data-entry}

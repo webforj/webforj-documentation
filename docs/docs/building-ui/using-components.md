@@ -2,7 +2,6 @@
 sidebar_position: 3
 title: Using Components
 description: Configure webforJ components in Java by setting text, attributes, IDs, inline styles, and CSS classes that drive appearance and behavior.
-sidebar_class_name: new-content
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>

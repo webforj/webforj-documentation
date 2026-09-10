@@ -45,10 +45,10 @@ public class RelativeTimeView extends Composite<FlexLayout> {
         .add(container);
   }
 
-  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
-  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
-  @BundleEntry("@shoelace-style/shoelace/dist/components/relative-time/relative-time.js")
-  @NodeName("sl-relative-time")
+  @BundlePackage(value = "@awesome.me/webawesome", version = "^3.12.0")
+  @BundleEntry("@awesome.me/webawesome/dist/styles/themes/default.css")
+  @BundleEntry("@awesome.me/webawesome/dist/components/relative-time/relative-time.js")
+  @NodeName("wa-relative-time")
   public static final class RelativeTime extends ElementComposite
       implements HasClassName<RelativeTime>, HasStyle<RelativeTime> {
 

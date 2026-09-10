@@ -23,11 +23,11 @@ public class QRDemoView extends Composite<FlexLayout> {
     self.setMargin("20px").add(code);
   }
 
-  /** QRCode Generator using Shoelace QRCode component. */
-  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
-  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
-  @BundleEntry("@shoelace-style/shoelace/dist/components/qr-code/qr-code.js")
-  @NodeName("sl-qr-code")
+  /** QRCode Generator using Web Awesome QR code component. */
+  @BundlePackage(value = "@awesome.me/webawesome", version = "^3.12.0")
+  @BundleEntry("@awesome.me/webawesome/dist/styles/themes/default.css")
+  @BundleEntry("@awesome.me/webawesome/dist/components/qr-code/qr-code.js")
+  @NodeName("wa-qr-code")
   public static final class QRCode extends ElementComposite {
 
     /** Create a new QRCode. */

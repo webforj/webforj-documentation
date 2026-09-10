@@ -1,5 +1,6 @@
 {
   "label": "Redeployment and Live Reload",
+  "className": "has-new-content",
   "position": 10,
   "link": {
     "type": "doc",

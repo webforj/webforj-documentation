@@ -6,7 +6,7 @@ hide_giscus_comments: true
 description: >-
   Expose routed webforJ views as interactive MCP applications that an MCP host
   can open and use inside its own interface.
-_i18n_hash: aa6dae85057948c6bbc1eae5c30e34b2
+_i18n_hash: 27896fdcd80b0f7414e1e41f1087d848
 ---
 <Head>
   <style>{`
@@ -17,20 +17,26 @@ _i18n_hash: aa6dae85057948c6bbc1eae5c30e34b2
 </Head>
 
 <!-- vale Google.Headings = NO -->
-# MCP Apps <DocChip chip='since' label='26.02' /> <DocChip chip='experimental' />
+# MCP-sovellukset <DocChip chip='since' label='26.02' /> <DocChip chip='experimental' />
 <!-- vale Google.Headings = YES -->
 
-MCP Apps sallivat [MCP](https://modelcontextprotocol.io/)-yhteensopivan AI-sovelluksen, jota kutsutaan myös isäntäksi, avata reititetyn webforJ-näkymän sen keskustelussa. Näkymä pysyy osana Java-sovellusta, joten se käyttää samoja komponentteja, palveluita, reititystä ja tilaa kuin se tekee selaimessa.
+MCP-sovellukset antavat [MCP](https://modelcontextprotocol.io/)-yhteensopivalle AI-sovellukselle, jota kutsutaan myös isännäksi, avata ohjatun webforJ-näkymän keskustelussaan. Näkymä pysyy osana Java-sovellusta, joten se käyttää samoja komponentteja, palveluita, reititystä ja tilaa kuin selainversiossa.
 
-Ihminen ja AI voivat työskennellä saman elävän käyttöliittymän parissa. AI voi antaa syötteen avatessaan näkymän, kutsua toimintoja, jotka muuttavat avattua näkymää, ja saada kontekstia valinnoista, joita ihminen tekee käyttöliittymässä. Ihminen voi jatkaa webforJ-komponenttien suoraa käyttöä.
+Henkilö ja AI voivat työskennellä saman elävän käyttöliittymän kanssa. AI voi tarjota syötteitä avatessaan näkymän, kutsua toimintoja, jotka muuttavat avattua näkymää, ja vastaanottaa asiayhteyttä henkilöltä saatujen valintojen perusteella käyttöliittymässä. Henkilö voi jatkaa renderöityjen webforJ-komponenttien käyttöä suoraan.
 
-Spring Boot Spring AIn kanssa on ensisijainen tapa julkaista MCP-sovellus. Integraatio löytää merkittyjä reittejä ja lisää ne Spring AIn MCP-palvelimeen. Aloita [Spring Boot -asetuksella](./spring), sitten [testaa yhteys](./testing) vähimmäispublished-näkymällä. Sovellukset, jotka eivät käytä Spring Bootia, voivat käyttää [standardi servlet -asetusta](./without-spring).
+Spring Boot ja Spring AI ovat ensisijainen tapa julkaista MCP-sovellus. Integraatio löytää merkittyjä reittejä ja lisää ne Spring AI:n MCP-palvelimeen. Aloita [Spring Boot -asetuksesta](./spring), sitten [testaa yhteys](./testing) vähintään julkaistulla näkymällä. Sovellukset, jotka eivät käytä Spring Bootia, voivat käyttää [standardi servlet-asetusta](./without-spring) sen sijaan.
 
-:::info[Isäntätuki vaihtelee]
+<div class="videos-container">
+    <video controls>
+      <source src="https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4" type="video/mp4" />
+    </video>
+</div>
 
-MCP Apps on kehittyvä laajennus MCP-määritelmälle, joten isännät ottavat sen muutokset ja turvallisuuspolitiikat käyttöön omassa tahdissaan. Sovellus määrittelee, mistä näkymän kuormat tulevat ja mihin se on yhteydessä, ja isäntä, joka sallii ne, renderoi näkymän. Isännät voivat myös soveltaa tiukempia politiikkoja. Avautuva työkalu palauttaa aina sen tekstisisällön, ja reitti pysyy saatavilla tavallisena selain sivuna. Varmista jokainen isäntä, jonka kohdistat, vaiheiden avulla [Testauksessa](./testing).
+:::info[Isäntätuet vaihtelevat]
+
+MCP-sovellukset ovat kehittyvä laajennus MCP-määritykselle, joten isännät omaksuvat sen muutokset ja turvallisuuspolitiikat omaan tahtiinsa. Sovellus ilmoittaa lähteet, joista sen näkymä lataa ja johon se yhdistää, ja isäntä, joka sallii ne, renderöi näkymän. Isännät voivat myös soveltaa tiukempia käytäntöjä. Avautuva työkalu palauttaa aina tekstisisältönsä, ja reitti pysyy saatavilla tavallisena selainversiona. Varmista jokainen isäntä, johon kohdistut, vaiheiden avulla [Testauksessa](./testing).
 :::
 
-## Topics {#topics}
+## Aihealueet {#topics}
 
 <DocCardList className="topics-section" />
