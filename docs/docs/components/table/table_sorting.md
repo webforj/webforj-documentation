@@ -66,7 +66,7 @@ Unless `setSortOrder()` is used, the table defaults to sorting by the order in w
 <ComponentDemo
 path='/webforj/tablesortorder'
 files={[
-  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/TableSortOrderView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
   'src/main/java/com/webforj/samples/views/table/Service.java',
 ]}

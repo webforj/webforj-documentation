@@ -41,7 +41,7 @@ Like row parts, cell parts are defined by a name and targeted using the `::part(
 <ComponentDemo
 path='/webforj/tablecellstyling'
 files={[
-  'src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java',
+  'src/main/java/com/webforj/samples/views/table/TableCellStylingView.java',
   'src/main/frontend/css/table/table-cell-styling-view.css',
 ]}
 height='300px'
