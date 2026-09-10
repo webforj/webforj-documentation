@@ -2,6 +2,7 @@ package com.webforj.samples.pages.alert;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class AlertThemesPage {
 
@@ -16,8 +17,8 @@ public class AlertThemesPage {
                 new Locator.FilterOptions().setHasText("This is an alert with the SUCCESS theme!"));
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator getSuccessAlert() {

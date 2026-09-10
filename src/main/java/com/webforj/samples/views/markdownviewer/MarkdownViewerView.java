@@ -9,9 +9,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("MarkdownViewer")
 public class MarkdownViewerView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public MarkdownViewerView() {
-    Div self = getBoundComponent();
     self.setStyle("display", "flex")
         .setStyle("justifyContent", "center")
         .setStyle("padding", "var(--dwc-space-l)");
