@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Shadows
+title: Sombras
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 Las propiedades de sombra añaden efectos de sombra alrededor del marco de un elemento. Las sombras indican elementos que están apilados uno encima del otro en la interfaz de usuario.

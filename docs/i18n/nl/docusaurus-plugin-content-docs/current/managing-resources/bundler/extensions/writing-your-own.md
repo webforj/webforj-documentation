@@ -1,5 +1,5 @@
 ---
-title: Writing your own extension
+title: Je eigen extensie schrijven
 sidebar_position: 70
 description: >-
   Add a build step by shipping a BundleExtension that declares packages,

@@ -1,7 +1,7 @@
 ---
 sidebar_class_name: experimental-content
 sidebar_position: 55
-title: Asynchronous Updates
+title: Mises à jour asynchrones
 description: >-
   Run background work off the UI thread and push updates back to webforJ
   components safely with Environment.runLater and PendingResult.

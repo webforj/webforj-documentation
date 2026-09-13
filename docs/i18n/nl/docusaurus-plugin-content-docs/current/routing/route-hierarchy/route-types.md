@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Route Types
+title: Routetypen
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Routes zijn ingedeeld in twee hoofdtypen, **View Routes** en **Layout Routes**. De keuze van het roettype bepaalt hoe componenten aan URL's worden gekoppeld en hoe ze interactie hebben met andere delen van uw app.

@@ -1,5 +1,5 @@
 ---
-title: Integrating an App Layout
+title: AppLayoutin integrointi
 sidebar_position: 7
 description: Step 6 - Using the AppLayout and FlexLayout components.
 _i18n_hash: 3a2148bdfb680284a597a17c263609da

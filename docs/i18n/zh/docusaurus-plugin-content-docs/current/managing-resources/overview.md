@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Managing Resources
+title: 资源管理
 description: >-
   Manage JavaScript, CSS, and other assets in webforJ apps with declarative
   annotations, runtime injection APIs, and custom URL protocols.

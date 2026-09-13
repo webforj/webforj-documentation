@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Application Security
+title: Applicatiebeveiliging
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 12
-title: Translation
+title: 翻译
 description: >-
   Resolve localized strings from resource bundles or custom sources with the t()
   method, MessageFormat placeholders, and browser locale detection.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Query Parameters
+title: Kyselyparametrit
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Kyselyparametrit mahdollistavat lisätietojen siirtämisen URL-osoitteiden kautta, käyttämällä muotoa `?key1=value1&key2=value2`. Kun reittiparametreja käytetään vaadittavan tiedon siirtämiseen URL-polussa, kyselyparametrit tarjoavat joustavan mekanismin vapaaehtoisten tai lisätietojen siirtämiseen. Ne ovat erityisen hyödyllisiä sisällön suodattamisessa, lajittelussa tai käsitellessä useita arvoja samalla avaimella.

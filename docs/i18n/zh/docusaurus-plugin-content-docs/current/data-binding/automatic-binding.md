@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Automatic Binding
+title: 自动绑定
 description: >-
   Bind UI fields to bean properties automatically with BindingContext.of using
   UseProperty, BindingExclude, and UseValidator annotations.

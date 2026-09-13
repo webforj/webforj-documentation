@@ -1,5 +1,5 @@
 ---
-title: Property Configuration
+title: Property-Konfiguration
 sidebar_position: 1
 description: >-
   Set webforJ entry points, debug mode, locales, file upload limits, and servlet

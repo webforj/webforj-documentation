@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Routes Registration
+title: Reittien rekisteröinti
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 Lisäksi [reittien rekisteröimisestä `@Route`-annotaatioiden avulla](./defining-routes) on mahdollista rekisteröidä, päivittää tai poistaa reittejä dynaamisesti ajoitusvaiheessa sovelluksen logiikan, käyttäjäroolien tai muiden ehtojen perusteella. Tämä joustavuus mahdollistaa navigoinnin hallitsemisen dynaamisemmin, sen sijaan, että reitit määriteltäisiin staattisesti käännösvaiheessa.

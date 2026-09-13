@@ -1,5 +1,5 @@
 ---
-title: Spring Boot MCP Apps
+title: Spring Boot MCP 应用
 sidebar_position: 5
 description: >-
   Build and publish a routed webforJ view as an MCP App with Spring Boot and

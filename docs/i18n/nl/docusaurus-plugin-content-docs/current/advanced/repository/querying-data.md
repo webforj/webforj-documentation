@@ -1,5 +1,5 @@
 ---
-title: Querying data
+title: Data opvragen
 sidebar_position: 3
 description: >-
   Build typed filters, sorting, and pagination with QueryableRepository and

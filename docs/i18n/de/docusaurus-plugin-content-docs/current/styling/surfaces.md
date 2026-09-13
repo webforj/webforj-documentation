@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: Surfaces
+title: Oberflächen
 _i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
 DWC definiert drei Ebenen von Flächen, die verwendet werden, um die UI-Hierarchie zu organisieren, kombiniert mit [shadows](./shadows). Alle [palette colors](./colors) sind getestet, um sicherzustellen, dass sie ausreichend Kontrast mit diesen Flächen bieten.

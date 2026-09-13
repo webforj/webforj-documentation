@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Flow
+title: Navigointivirta
 _i18n_hash: f2083b0f83ed9e0098250dafdb37a753
 ---
 Turvallisuuden valvonta webforJ:ssä tapahtuu automaattisesti navigoinnin aikana. Kun käyttäjä klikkaa linkkiä tai navigoi reitille, turvallisuusjärjestelmä keskeyttää navigoinnin, arvioi pääsääntöjä ja joko sallii navigoinnin jatkamisen tai ohjaa käyttäjän sopivalle sivulle. Tämä keskeytys on käyttäjille näkymätön, eikä se vaadi manuaalisia turvallisuustarkastuksia komponenttikoodissasi.
