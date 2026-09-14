@@ -13,10 +13,8 @@ The `MaskedTimeField` is a text input that lets users enter times as **numbers**
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
 :::tip Looking for date input?
-The `MaskedTimeField` is built for **time-only** input. If you’re looking for a component to handle **dates** with similar mask-based formatting, take a look at the [`MaskedDateField`](./datefield.md).
+The `MaskedTimeField` is built for **time-only** input. If you're looking for a component to handle **dates** with similar mask-based formatting, take a look at the [`MaskedDateField`](./datefield.md).
 :::
 
 The `MaskedTimeField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
@@ -208,7 +206,7 @@ This ensures the dropdown list contains predictable, evenly spaced values like `
 
 ## `MaskedTimeFieldSpinner` {#maskedtimefieldspinner}
 
-The `MaskedTimeFieldSpinner` extends [`MaskedTimeField`](#basics) by adding spinner controls that let users increment or decrement the time using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
+The `MaskedTimeFieldSpinner` extends the `MaskedTimeField` by adding spinner controls that let users increment or decrement the time using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
 <ComponentDemo
 path='/webforj/maskedtimefieldspinner'

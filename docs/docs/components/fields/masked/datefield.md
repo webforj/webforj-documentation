@@ -13,8 +13,6 @@ The `MaskedDateField` is a text input that lets users enter dates as numbers and
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
 :::tip Looking for time input?
 The `MaskedDateField` is focused solely on **date** values. If you need a similar component for entering and formatting **time**, look into the [`MaskedTimeField`](./timefield) instead.
 :::
@@ -286,7 +284,7 @@ picker.setShowWeeks(true);
 
 ## `MaskedDateFieldSpinner` {#maskeddatefieldspinner}
 
-The `MaskedDateFieldSpinner` extends [`MaskedDateField`](#basics) by adding spinner controls that let users increment or decrement the date using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
+The `MaskedDateFieldSpinner` extends the `MaskedDateField` by adding spinner controls that let users increment or decrement the date using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
 <ComponentDemo
 path='/webforj/maskeddatefieldspinner'
