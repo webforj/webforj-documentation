@@ -21,7 +21,7 @@ This post covers the third option: replace the JSP page with a Java component tr
 
 <!-- truncate -->
 
-## Why JSP is still in production
+## Why JSP is still in production {#why-jsp-is-still-in-production}
 
 Teams keep JSP pages alive for reasons that hold up under inspection.
 
@@ -31,7 +31,7 @@ The reason modernization comes up is usually not that JSP has stopped working. I
 
 That context matters because it shapes what a good answer looks like. A team that needs to run on a modern JVM with Spring Boot and deliver data to a mobile API does not necessarily need to throw away the tag library. It may need to separate the rendering layer from the business logic encoded in those tags. That separation is what makes the third path possible.
 
-## What the SERP recommends
+## What the SERP recommends {#what-the-serp-recommends}
 
 Two paradigms dominate the results.
 
@@ -41,7 +41,7 @@ Two paradigms dominate the results.
 
 Both paths are well-documented because both are common. Neither removes the template layer; they replace one template engine with another, or replace templates with JavaScript components.
 
-## The third path: replace the page with a Java component tree
+## The third path: replace the page with a Java component tree {#the-third-path-replace-the-page-with-a-java-component-tree}
 
 In this model, there is no template. The `customers.jsp` does not become `customers.html`; it becomes `CustomersView.java`. Iteration is a property of a data-bound component, not a loop in the source. The header partial is a Composite class, imported and instantiated like any Java class.
 
@@ -49,7 +49,7 @@ The authoring model shifts: the question is no longer "what does the template fo
 
 The rest of this post maps four substitutions. Each starts with a small JSP fragment and shows what the equivalent structure looks like in a Java component tree.
 
-## Scriptlet → Java method
+## Scriptlet → Java method {#scriptlet--java-method}
 
 A scriptlet that formats data inline in a table cell looks like this:
 
@@ -73,7 +73,7 @@ table.addColumn("phone", Customer::getPhone);
 
 The method reference passes the value; any formatting logic lives in the model or in a dedicated method, called like any other Java code. The JSP compiler is not involved. The logic is reachable by a unit test and navigable in the debugger.
 
-## `<c:forEach>` → Repository-bound Table
+## `<c:forEach>` → Repository-bound Table {#cforeach--repository-bound-table}
 
 A JSTL customer list looks like this:
 
@@ -105,7 +105,7 @@ There is no loop in the source. The `Table` component handles iteration, paginat
 
 The [Table overview](/docs/components/table/overview) covers the full column-configuration and sorting surface.
 
-## `<jsp:include>` → Composite
+## `<jsp:include>` → Composite {#jspinclude--composite}
 
 A JSP include that pulls in a shared header:
 
@@ -144,7 +144,7 @@ add(new HeaderComposite());
 
 No resolution path. No implicit page-context coupling. The `HeaderComposite` is a class: visible to the IDE, navigable in the debugger, injectable as a Spring bean if the view is Spring-managed. The [composing-components](/docs/building-ui/composing-components) doc covers the Composite pattern and how views are composed from smaller pieces.
 
-## The custom tag library problem
+## The custom tag library problem {#the-custom-tag-library-problem}
 
 The section most JSP migration guides skip is the tag library.
 
@@ -181,7 +181,7 @@ The constructor is explicit. The dependencies are declared. The implicit session
 
 Legacyleap's JSP migration guide notes that *"hidden dependencies: shared objects, tag libraries, and legacy connectors are rarely documented."* Audit the tag libraries for implicit `pageContext` reads before estimating scope. Teams that find this coupling late tend to treat it as a bug in the port; it was always there.
 
-## What does not translate cleanly
+## What does not translate cleanly {#what-does-not-translate-cleanly}
 
 **Deep JSTL branching** with request-scoped data — `<c:if test="${not empty requestScope.errors}">` wrapping several conditional branches — translates at the logic level but requires working through where the condition evaluates. In a Java component tree, the condition is a Java `if` and the component is either added or not. That is usually simpler, but it does require understanding where the relevant state lives and moving it into the view's constructor or event handlers.
 
@@ -189,7 +189,7 @@ Legacyleap's JSP migration guide notes that *"hidden dependencies: shared object
 
 **Pages that depend on JSP compilation order**: some legacy JSPs use `<%@ include file="..." %>` — the static include directive, not `<jsp:include>` — to share scriptlet variables across file boundaries. The included file can reference variables declared in the including file because they are merged at compile time. That coupling has no Composite equivalent and must be resolved into explicit data passing before the port.
 
-## When to reach for the other approach
+## When to reach for the other approach {#when-to-reach-for-the-other-approach}
 
 A team running Thymeleaf and shipping without friction has already paid the migration cost. The switch to a Java component tree is not justified unless the team wants to stop writing templates, not just modernize the specific template engine.
 
@@ -197,13 +197,13 @@ A public-facing page where content must be indexable as server-rendered HTML at 
 
 A UI that needs to serve more than one client — a browser view and a mobile API from the same data layer — is better shaped as a REST API behind both. Building business logic into a component tree couples it to one delivery model.
 
-## Where this pattern breaks down
+## Where this pattern breaks down {#where-this-pattern-breaks-down}
 
 Very small legacy pages — a handful of static rows with no business logic — may not be worth porting. If the cost of writing a Composite exceeds the maintenance cost of the JSP page, and the page is unlikely to change, the migration adds cost without return.
 
 Pages whose rendering depends on JSP-specific mechanisms that have no component equivalent — a tag that writes inline JavaScript for a browser interaction tied to the page's render cycle, or a direct `response.setHeader()` call from a tag handler — need those mechanisms extracted before the port can start. That extraction is often the work, and it reveals whether the page is a port candidate or a rewrite.
 
-## Closing
+## Closing {#closing}
 
 The JSP-to-Thymeleaf path and the JSP-to-React path exist because they solve real problems. The path described here — replacing the page with a Java component tree — is the one the search results underrepresent, and it is the one most worth considering for teams that already write Java and would rather stop context-switching to a template language.
 
