@@ -166,7 +166,11 @@ The employee directory below uses a `CompositeRenderer` on the *Employee* column
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/employeedirectory'
-files={['src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Employee.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/EmployeeService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
@@ -274,7 +278,11 @@ When `setLazyRender(true)` is set on a column, cells display a lightweight anima
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/lazyrender'
-files={['src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Server.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/ServerService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
