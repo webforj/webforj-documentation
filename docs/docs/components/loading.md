@@ -13,11 +13,7 @@ The `Loading` component displays an overlay on a specific component or area, sig
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
-The simplest way to create a `Loading` component is by initializing it without any additional settings. By default, this displays a basic spinner over its parent content. However, you can also provide a message for more context.
-
-Here's an example of creating a `Loading` component with a message:
+Initializing a `Loading` component without any additional settings displays a spinner over its parent content. Pass a message, as in the example below, when the process needs more context.
 
 <ComponentDemo
 path='/webforj/loadingdemo'
