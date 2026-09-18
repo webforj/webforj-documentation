@@ -378,6 +378,11 @@ const MANUAL_CHECKS = {
     'Enter a valid email and then clear the field; verify the invalid state clears.',
     'Navigate away while a debounce is pending and verify no delayed update runs.',
   ],
+  'cookbook/forms/auto-save-form-draft.md': [
+    'Type in both fields, reload the page, and verify both values are restored.',
+    'Clear the draft, reload again, and verify neither value returns.',
+    'Inspect local storage and verify the recipe stores only the two namespaced, nonsensitive values.',
+  ],
   'cookbook/forms/dialog-form-with-binding-context.md': [
     'Open the dialog and verify the fields are populated from the Contact bean.',
     'Edit both fields, save, and verify the bean and callback receive the new values.',
@@ -387,6 +392,11 @@ const MANUAL_CHECKS = {
     'Use a deliberately slow persist() implementation and verify the disabled state and Saving label are visibly rendered.',
     'Make persist() throw and verify the button is restored by the finally block.',
     'Confirm repeated clicks cannot start overlapping saves.',
+  ],
+  'cookbook/forms/submit-field-with-enter.md': [
+    'Focus the field, enter a query, press Enter, and verify the result updates.',
+    'Click the Search button and verify it produces the same result as Enter.',
+    'Press a key other than Enter and verify it does not run the action.',
   ],
   'cookbook/javascript/call-dom-method.md': [
     'Click the button and verify the footer scrolls smoothly into view.',
