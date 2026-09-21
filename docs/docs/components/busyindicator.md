@@ -11,9 +11,9 @@ description: Block the entire interface during long-running operations using the
 
 The `BusyIndicator` is a full-screen overlay that signals an ongoing process and blocks user interaction until it completes. It covers the entire interface during operations like initialization or data syncs. While the [`Loading`](../components/loading) component focuses on specific areas within the interface, the `BusyIndicator` applies globally.
 
-<!-- INTRO_END -->
-
 The `BusyIndicator` displays as a spinner with no configuration required. Add a message, change the spinner's theme, or adjust visibility settings when a process needs more context.
+
+<!-- INTRO_END -->
 
 <ComponentDemo
 path='/webforj/busydemo'

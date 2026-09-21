@@ -19,7 +19,6 @@ The `Toast.show()` method creates a `Toast`, adds it to the `Frame`, and display
 Toast.show("Operation completed successfully!", Theme.SUCCESS);
 ```
 
-
 If you want more fine-grained control over the component, you can also create a `Toast` with a standard constructor and use the `open()` method to display it.
 
 ```java

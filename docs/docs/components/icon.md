@@ -11,9 +11,9 @@ description: Render scalable SVG icons with the Icon component from Tabler, Feat
 
 The `Icon` component displays icons that scale to any size without losing quality. You can choose from three built-in icon pools or create custom ones. Icons serve as visual cues for navigation and actions, reducing the need for text labels in your interface.
 
-<!-- INTRO_END -->
+Each `Icon` renders as a Scalable Vector Graphics (SVG) image, loaded on demand from a content delivery network (CDN) to keep latency low. To create one, choose an icon pool, and an icon's name. Some icons also offer the choice between an outlined or a filled version via [variations](#variations).
 
-Each `Icon` renders as a Scalable Vector Graphics (SVG) image, loaded on demand from a content delivery network (CDN) to keep latency low. To create one, identify the pool it comes from and the name of the icon itself. Some icons also offer the choice between an outlined or a filled version via [variations](#variations).
+<!-- INTRO_END -->
 
 <ComponentDemo
 path='/webforj/iconbasics'
@@ -64,13 +64,13 @@ Icon image = FeatherIcon.IMAGE.create();
 You can personalize icons even more by utilizing variations.
 Certain icons allow you to choose between an outlined or a filled version, allowing you to emphasize a specific icon based on your preference. `FontAwesomeIcon` and `Tabler` icons offer variations.
 
-#### `FontAwesomeIcon` variations {#fontawesomeicon-variations}
+### `FontAwesomeIcon` variations {#fontawesomeicon-variations}
 
 1. `REGULAR`: The outlined variation of icons. This is the default.
 2. `SOLID`: The filled variation of icons.
 3. `BRAND`: The variation for when you're using the icons of brands.
 
-#### `TablerIcon` variations {#tablericon-variations}
+### `TablerIcon` variations {#tablericon-variations}
 
 1. `OUTLINE`: The outlined variation of icons. This is the default.
 2. `FILLED`: The filled variation of icons.

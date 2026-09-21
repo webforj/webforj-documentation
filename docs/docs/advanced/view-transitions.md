@@ -14,6 +14,8 @@ description: Animate DOM changes with the browser View Transition API, applying 
 
 View transitions provide animated transitions when the [DOM](/docs/glossary#dom) changes, reducing visual jarring and maintaining spatial context during navigation or content updates. webforJ integrates with the browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) to handle the complexity of coordinating animations between old and new states.
 
+<!-- INTRO_END -->
+
 <ComponentDemo
 path='/webforj/viewtransitionchat'
 files={[
@@ -27,9 +29,7 @@ height='450px'
 
 <ExperimentalWarning />
 
-## Basic usage {#basic-usage}
-
-To create a view transition, use `Page.getCurrent().startViewTransition()`, which returns a builder for configuring the transition:
+Use `Page.getCurrent().startViewTransition()` to create a transition, which returns a builder for configuring the transition:
 
 ```java
 Page.getCurrent().startViewTransition()

@@ -14,7 +14,7 @@ The `MaskedDateField` is a text input that lets users enter dates as numbers and
 <!-- INTRO_END -->
 
 :::tip Looking for time input?
-The `MaskedDateField` is focused solely on **date** values. If you need a similar component for entering and formatting **time**, look into the [`MaskedTimeField`](./timefield) instead.
+The `MaskedDateField` is focused solely on **date** values. If you need a similar component for entering and formatting **time**, look into the [`MaskedTimeField`](/docs/components/fields/masked/timefield) instead.
 :::
 
 The `MaskedDateField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.

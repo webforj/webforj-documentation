@@ -11,9 +11,9 @@ description: Enforce formatted text entry with the MaskedTextField, supporting m
 
 The `MaskedTextField` component provides a configurable text input that enforces formatting rules and validation. It's well-suited for apps requiring structured input, such as financial, e-commerce, and healthcare systems.
 
-<!-- INTRO_END -->
+This component can be instantiated with or without parameters. You can define an initial value, a label, a placeholder text, and a listener in case the value changes.
 
-The `MaskedTextField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder text, and a listener in case the value changes.
+<!-- INTRO_END -->
 
 ```java
 MaskedTextField field = new MaskedTextField("Account ID");
