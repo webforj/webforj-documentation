@@ -2,7 +2,7 @@
 title: "Securing webforJ Routes Before the View Exists"
 description: "Route annotations stop people reaching a view. What they don't do is follow you inside it, and that distinction decides where your access checks belong."
 slug: route-security
-date: 2026-09-16
+date: 2026-09-23
 authors: Lauren Alamo
 tags: [security, routing, web development, tutorial]
 hide_table_of_contents: false
