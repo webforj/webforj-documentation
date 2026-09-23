@@ -80,15 +80,16 @@
 
     h2 {
       font-size: var(--dwc-font-size-2xl);
+      line-height: 1.25;
       margin-bottom: var(--dwc-space-m);
       margin-top: var(--dwc-space-m);
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;
-      line-clamp: 2;
+      line-clamp: 3;
       -webkit-box-orient: vertical;
-      // line-height * 2 lines
-      min-height: calc(var(--dwc-font-size-2xl) * 2);
+      // fixed 3-line height keeps cover images aligned across cards
+      height: calc(var(--dwc-font-size-2xl) * 1.25 * 3);
       word-break: break-word;
       overflow-wrap: break-word;
       hyphens: auto;
