@@ -1,7 +1,6 @@
 ---
 title: Packages and assets
 sidebar_position: 30
-sidebar_class_name: new-content
 description: Declare npm packages, load a module straight from one, install build-only dependencies, rely on tree shaking, and import CSS and assets from a component's entry.
 ---
 

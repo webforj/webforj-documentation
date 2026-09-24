@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2
 title: Validators
-sidebar_class_name: updated-content
 description: Attach validators to bindings with useValidator, implement reusable Validator classes, and override messages per UI field.
 ---
 

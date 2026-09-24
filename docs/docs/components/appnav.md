@@ -8,6 +8,7 @@ description: Build hierarchical side navigation menus with AppNav and AppNavItem
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
 <DocChip chip="name" label="dwc-app-nav-item" />
+<DocChip chip="name" label="dwc-app-nav-label" />
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/>
 
@@ -110,7 +111,7 @@ help.setTarget(AppNavItem.NavigationTarget.BLANK);
 
 ```java
 AppNavItem notifications = new AppNavItem("Alerts");
-notifications.setPrefixComponent(TablerIcon.create("alert");
+notifications.setPrefixComponent(TablerIcon.create("alert"));
 notifications.setSuffixComponent(TablerIcon.create("link"));
 ```
 
@@ -121,6 +122,48 @@ Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested
 ```java
 nav.setAutoOpen(true);
 ```
+
+## Section labels <DocChip chip='since' label='26.02' /> {#section-labels}
+
+`AppNavLabel` is a non-interactive heading that titles a run of items. A label applies to every item that follows it, up to the next label or the end of the menu, which lets a long list of top-level items read as a few named groups without nesting them.
+
+Labels are added with `add()` rather than `addItem()`, and the order of the calls defines the sections:
+
+```java
+AppNav nav = new AppNav();
+nav.addItem(new AppNavItem("Dashboard", DashboardView.class, TablerIcon.create("layout-dashboard")));
+
+nav.add(new AppNavLabel("Analytics"));
+nav.addItem(new AppNavItem("Overview", OverviewView.class));
+nav.addItem(new AppNavItem("Reports", ReportsView.class));
+
+nav.add(new AppNavLabel("Other"));
+nav.addItem(new AppNavItem("Settings", SettingsView.class));
+```
+
+The nav hides a label automatically when its section has no visible items, so a label disappears when a [search](#search) filters its items out or when all of them are [pinned](#pinning) to the top of the menu.
+
+### Label prefix and suffix {#label-prefix-and-suffix}
+
+Like `AppNavItem`, a label supports prefix, and suffix components. Pass a prefix to the constructor, or set either one afterward:
+
+```java
+AppNavLabel analytics = new AppNavLabel("Analytics", TablerIcon.create("chart-pie"));
+analytics.setSuffixComponent(new Badge().setText("2").setTheme(BadgeTheme.WARNING));
+
+nav.add(analytics);
+```
+
+The example below groups a menu under three labels, the first of which carries an [`Icon`](./icon) prefix and a [`Badge`](./badge) suffix. Dashboard sits above the first label, so it belongs to no section.
+
+<ComponentDemo
+path='/webforj/appnavlabel/Dashboard'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/appnav/AppNavLabelView.java',
+  'src/main/java/com/webforj/samples/views/appnav/AppNavLabelPageView.java',
+]}
+/>
 
 ## Pinning <DocChip chip='since' label='26.01' /> {#pinning}
 

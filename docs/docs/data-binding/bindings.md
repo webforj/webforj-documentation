@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2
 title: Bindings
-sidebar_class_name: updated-content
 description: Link Java Bean properties to webforJ UI components through BindingContext to synchronize reads and writes between model and view.
 ---
 

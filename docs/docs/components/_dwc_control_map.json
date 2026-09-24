@@ -9,6 +9,7 @@
 "Badge": "dwc-badge",
 "BusyIndicator": "dwc-loading",
 "Button" :"dwc-button",
+"Card" :"dwc-card",
 "CheckableMenuItem" :"dwc-menuitem",
 "Checkbox" :"dwc-checkbox",
 "ChoiceBox" :"dwc-choicebox",

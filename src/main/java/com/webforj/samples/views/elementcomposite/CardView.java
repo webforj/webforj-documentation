@@ -88,10 +88,10 @@ public class CardView extends Composite<FlexLayout> {
     button.setStyle("width", "100%");
     card.addToFooter(button);
 
-    card.setStyle("--border-color", "var(--dwc-color-default)");
-    card.setStyle("--border-radius", "var(--dwc-border-radius-m)");
-    card.setStyle("--padding", "var(--dwc-space-m)");
-    card.setStyle("--sl-panel-background-color", "var(--dwc-surface-3)");
+    card.setStyle("--spacing", "var(--dwc-space-m)");
+    card.setStyle("background-color", "var(--dwc-surface-3)");
+    card.setStyle("border-color", "var(--dwc-color-default)");
+    card.setStyle("border-radius", "var(--dwc-border-radius-m)");
     card.setStyle("width", "280px");
 
     return card;
@@ -104,10 +104,10 @@ public class CardView extends Composite<FlexLayout> {
     return new ListEntry(check, new Span(text));
   }
 
-  @BundlePackage(value = "@shoelace-style/shoelace", version = "^2.20.1")
-  @BundleEntry("@shoelace-style/shoelace/dist/themes/light.css")
-  @BundleEntry("@shoelace-style/shoelace/dist/components/card/card.js")
-  @NodeName("sl-card")
+  @BundlePackage(value = "@awesome.me/webawesome", version = "^3.12.0")
+  @BundleEntry("@awesome.me/webawesome/dist/styles/themes/default.css")
+  @BundleEntry("@awesome.me/webawesome/dist/components/card/card.js")
+  @NodeName("wa-card")
   public static final class Card extends ElementCompositeContainer
       implements HasClassName<Card>, HasStyle<Card> {
 

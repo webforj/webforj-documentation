@@ -350,6 +350,11 @@ module.exports = async function createConfig() {
               activeBasePath: 'docs/client-components/overview'
             },
             {
+              label: "DWC Design Kit",
+              href: 'https://www.figma.com/community/file/1682060886525639971/dwc-design-kit',
+              rel: null,
+            },
+            {
               label: "Contribution Guide",
               href: 'https://github.com/webforj/webforj/blob/main/CONTRIBUTING.md',
               rel: null,

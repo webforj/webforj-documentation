@@ -5,23 +5,24 @@ sidebar_class_name: new-content
 description: >-
   Build hierarchical side navigation menus with AppNav and AppNavItem, linking
   to routes, registered views, or external URLs.
-_i18n_hash: 7283cd36346dd18b131a5393db8e8fd3
+_i18n_hash: afb61d8d44c3f5dcb03f533954baafc1
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
 <DocChip chip="name" label="dwc-app-nav-item" />
+<DocChip chip="name" label="dwc-app-nav-label" />
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/>
 
-`AppNav`-komponentti luo sivuvalikon `AppNavItem`-merkkien avulla. Kohteet voivat linkittää sisäisiin näkymiin tai ulkoisiin resursseihin, olla vanhempikohteiden alla hierarkkisissa valikoissa ja sisältää ikoneita, merkkejä tai muita komponentteja antaakseen käyttäjille lisää kontekstia yhdellä silmäyksellä.
+`AppNav`-komponentti luo sivuvalikon `AppNavItem`-merkinnöistä. Kohteet voivat linkittää sisäisiin näkymiin tai ulkoisiin resursseihin, pesiytyä vanhempien kohteiden alle muodostaen hierarkkisia valikoita, ja sisältää ikoneita, merkkejä tai muita komponentteja, jotka antavat käyttäjille enemmän kontekstia silmäyksellä.
 
 <!-- INTRO_END -->
 
-## Lisääminen ja sisäkkäin asettaminen {#adding-and-nesting-items}
+## Kohteiden lisääminen ja pesiminen {#adding-and-nesting-items}
 
-`AppNavItem`-instansseja käytetään `AppNav`-rakenteen täyttämiseen. Nämä kohteet voivat olla yksinkertaisia linkkejä tai sisäkkäisiä ryhmäotsikoita, jotka sisältävät lapsikohteita. Ryhmäotsikot ilman linkkejä toimivat laajennettavina kontteina.
+`AppNavItem`-instansseja käytetään `AppNav`-rakenteen täyttämiseen. Nämä kohteet voivat olla yksinkertaisia linkkejä tai pesittyjä ryhmäotsikoita, jotka sisältävät alikohteita. Ryhmäotsikot ilman linkkejä toimivat laajennettavina kontteina.
 
-Käytä `addItem()`-menetelmää lisätäksesi kohteita valikkoon:
+Käytä `addItem()`-metodia lisätäksesi kohteita valikkoon:
 
 ```java
 AppNavItem dashboard = new AppNavItem("Dashboard", "/dashboard");
@@ -34,10 +35,10 @@ nav.addItem(dashboard);
 nav.addItem(admin);
 ```
 
-:::tip Ryhmän kohteiden linkittäminen
-Ylimmät kohteet navigointipuussa on yleensä tarkoitettu laajennettaviksi—ei napsautettaviksi linkeiksi. `path`-asettaminen tällaisille kohteille voi hämmentää käyttäjiä, jotka odottavat niiden paljastavan alikohteita sen sijaan, että ne navigoivat muualle.
+:::tip Linkittäminen ryhmäkohtaisiin kohteisiin
+Ykkötason kohteet navigaatiopuun sisällä on yleensä tarkoitettu laajennettaviksi - eivät klikkattaviksi linkeiksi. `path`-asetuksen asettaminen tällaisille kohteille voi hämmentää käyttäjiä, jotka odottavat niiden paljastavan alikohteita sen sijaan, että navigoivat muualle.
 
-Jos haluat, että ryhmäotsikko laukaisee mukautetun toiminnon (kuten ulkoisten asiakirjojen avaamisen), jätä ryhmän polku tyhjäksi ja lisää sen sijaan interaktiivinen ohjain, kuten [`IconButton`](./icon#icon-buttons), kohteen liitteeksi. Tämä säilyttää käyttökokemuksen johdonmukaisena ja siistinä.
+Jos haluat ryhmäotsikon laukaisevan mukautetun toiminnon (kuten avattaessa ulkoista dokumentaatiota), pidä ryhmän polku tyhjänä ja lisää sen sijaan interaktiivinen ohjaus, kuten [`IconButton`](./icon#icon-buttons), kohteen liitteeseen. Tämä pitää käyttäjäkokemuksen johdonmukaisena ja puhtaana.
 :::
 
 <!--vale off-->
@@ -53,7 +54,7 @@ files={[
 
 ## Kohteiden linkittäminen {#linking-items}
 
-Jokainen `AppNavItem` voi navigoida sisäiseen näkymään tai ulkoiseen linkkiin. Voit määrittää tämän käyttämällä staattisia polkuja tai rekisteröityjä näkymäluokkia.
+Jokainen `AppNavItem` voi navigoida sisäiseen näkymään tai ulkoiseen linkkiin. Voit määrittää tämän käyttämällä staattisia polkuja tai rekisteröityjä näkölausekkeita.
 
 ### Staattiset polut {#static-paths}
 
@@ -66,22 +67,22 @@ AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 
 ### Rekisteröidyt näkymät {#registered-views}
 
-Jos näkymäsi on rekisteröity [reitittimelle](../routing/overview), voit siirtää luokan kovakoodatun URL: n sijaan:
+Jos näkymäsi on rekisteröidyssä [reittilistassa](../routing/overview), voit välittää luokan kovakoodatun URL-osoitteen sijaan:
 
 ```java
 AppNavItem settings = new AppNavItem("Settings", SettingsView.class);
 ```
 
-Jos merkitty reittisi tukee [reitittäjiä](../routing/route-patterns#named-parameters), voit myös siirtää `ParametersBag`:n:
+Jos annotoitu reittisi tukee [reittiparametreja](../routing/route-patterns#named-parameters), voit myös välittää `ParametersBag`-luokan:
 
 ```java
 ParametersBag params = ParametersBag.of("id=123");
 AppNavItem advanced = new AppNavItem("User", UserView.class, params);
 ```
 
-### Kyselyparametrien kanssa {#with-query-parameters}
+### Query-parametrien kanssa {#with-query-parameters}
 
-Siirrä `ParametersBag` sisällyttääksesi kyselymerkkijonot:
+Välitä `ParametersBag` sisällyttääksesi kyselymerkkijonot:
 
 ```java
 ParametersBag params = ParametersBag.of("param1=value1&param2=value2");
@@ -89,26 +90,26 @@ AppNavItem advanced = new AppNavItem("Advanced", SettingsView.class, params);
 advanced.setQueryParameters(params);
 ```
 
-## Kohteen käyttäytyminen {#target-behavior}
+## Kohteiden käyttäytyminen {#target-behavior}
 
-Ohjaa, miten linkit avautuvat käyttämällä `setTarget()`. Tämä on erityisen hyödyllinen ulkoisille linkeille tai pop-out-näkymille.
+Hallitse kuinka linkit avautuvat käyttämällä `setTarget()`. Tämä on erityisen hyödyllistä ulkoisille linkeille tai eristyksille.
 
-- **`SELF`** (oletusarvo): Avataan nykyisessä näkymässä.
-- **`BLANK`**: Avataan uudessa välilehdessä tai ikkunassa.
-- **`PARENT`**: Avataan vanhemmassa selainkontekstissa.
-- **`TOP`**: Avataan ylimmässä selainkontekstissa.
+- **`SELF`** (oletus): Avaa nykyisessä näkymässä.
+- **`BLANK`**: Avaa uudessa välilehdessä tai ikkunassa.
+- **`PARENT`**: Avaa vanhemmassa selauskontekstissa.
+- **`TOP`**: Avaa ylimmällä selauskontekstissa.
 
 ```java
 AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 help.setTarget(AppNavItem.NavigationTarget.BLANK);
 ```
 
-## Etuliite ja jälkiliite {#prefix-and-suffix}
+## Etuliitteet ja liitteet {#prefix-and-suffix}
 
-`AppNavItem` tukee etuliite- ja jälkiliitekomponentteja. Käytä näitä visuaalisen selkeyden tarjoamiseen ikoneilla, merkeillä tai painikkeilla.
+`AppNavItem` tukee etuliite- ja liitekomponentteja. Käytä näitä antaaksesi visuaalista selkeyttä ikoneilla, merkeillä tai painikkeilla.
 
-- **Etuliite**: näkyy ennen merkintää, hyödyllinen ikoneille.
-- **Jälkiliite**: näkyy merkinnän jälkeen, erinomainen merkeille tai toimille.
+- **Etuliite**: näkyy ennen labelia, hyödyllinen ikoneille.
+- **Liite**: näkyy labelin jälkeen, loistava merkeille tai toiminnoille.
 
 ```java
 AppNavItem notifications = new AppNavItem("Alerts");
@@ -116,33 +117,75 @@ notifications.setPrefixComponent(TablerIcon.create("alert"));
 notifications.setSuffixComponent(TablerIcon.create("link"));
 ```
 
-## Ryhmien automaattinen avaaminen {#auto-opening-groups}
+## Automaattisesti avautuvat ryhmät {#auto-opening-groups}
 
-Käytä `setAutoOpen(true)` `AppNav`-komponentissa automaattiseen sisäkkäisten ryhmien laajentamiseen, kun sovellus päivitetään.
+Käytä `setAutoOpen(true)` `AppNav`-komponentissa, jotta pesityt ryhmät laajenevat automaattisesti, kun sovellus uudelleenkäynnistetään.
 
 ```java
 nav.setAutoOpen(true);
 ```
 
+## Osion etiketit <DocChip chip='since' label='26.02' /> {#section-labels}
+
+`AppNavLabel` on ei-interaktiivinen otsikko, joka titoloittaa joukon kohteita. Otsikko soveltuu jokaiselle sen jälkeiselle merkinnälle, seuraavaan otsikkoon tai valikon loppuun saakka, jolloin pitkä lista ykköstason kohteista voidaan lukea muutamina nimettyinä ryhminä ilman, että niitä pesitetään.
+
+Otsikoita lisätään `add()`-metodilla eikä `addItem()`-metodilla, ja kutsujen järjestys määrittelee osiot:
+
+```java
+AppNav nav = new AppNav();
+nav.addItem(new AppNavItem("Dashboard", DashboardView.class, TablerIcon.create("layout-dashboard")));
+
+nav.add(new AppNavLabel("Analytics"));
+nav.addItem(new AppNavItem("Overview", OverviewView.class));
+nav.addItem(new AppNavItem("Reports", ReportsView.class));
+
+nav.add(new AppNavLabel("Other"));
+nav.addItem(new AppNavItem("Settings", SettingsView.class));
+```
+
+Valikko piilottaa otsikon automaattisesti, kun sen osiossa ei ole näkyviä kohteita, joten otsikko katoaa, kun [haku](#search) suodattaa sen kohteet pois tai kun kaikki niistä on [kiinnitetty](#pinning) valikon yläosaan.
+
+### Otsikon etuliite ja liite {#label-prefix-and-suffix}
+
+Kuten `AppNavItem`, myös otsikko tukee etuliite- ja liitekomponentteja. Anna etuliite konstruktorille tai aseta kumpi tahansa jälkikäteen:
+
+```java
+AppNavLabel analytics = new AppNavLabel("Analytics", TablerIcon.create("chart-pie"));
+analytics.setSuffixComponent(new Badge().setText("2").setTheme(BadgeTheme.WARNING));
+
+nav.add(analytics);
+```
+
+Esimerkki alla ryhmittelee valikon kolmeen otsikkoon, joista ensimmäinen kantaa [`Icon`](./icon) etuliitettä ja [`Badge`](./badge) liitettä. Dashboard istuu ensimmäisen otsikon ylle, joten se ei kuulu mihinkään osioon.
+
+<ComponentDemo
+path='/webforj/appnavlabel/Dashboard'
+frame='desktop'
+files={[
+  'src/main/java/com/webforj/samples/views/appnav/AppNavLabelView.java',
+  'src/main/java/com/webforj/samples/views/appnav/AppNavLabelPageView.java',
+]}
+/>
+
 ## Kiinnitys <DocChip chip='since' label='26.01' /> {#pinning}
 
-Kiinnitys antaa käyttäjän nostaa eniten tavoittamansa kohteet ryhmään valikon yläosaan, jotta syvä valikko säilyttää lyhyen suosikkiluettelon yhdellä napsautuksella. Se on pois päältä oletuksena. Ota se käyttöön kiinnityskonfiguraation kautta:
+Kiinnitys antaa käyttäjän nostaa eniten tavoittamansa kohteet ryhmään, joka on valikon yläosassa, joten syvä valikko pitää silti lyhyen listan suosikkeja yhdessä klikkauksessa. Se on oletuksena pois päältä. Kytke se päälle kiinnityskonfiguraation avulla:
 
 ```java
 AppNav nav = new AppNav();
 nav.getPinning().setEnabled(true);
 ```
 
-Kun se on otettu käyttöön, jokainen navigoitava lehtikohde näyttää kiinnitysvaihtoehdon. Vaihtoehto paljastuu hiiren yllä ja näppäimistön fokuksessa, joten se on saavutettavissa ilman hiirtä. Aktivointi siirtää kohteen kiinnitettyyn ryhmään valikon yläosassa.
+Kun se on aktivoitu, jokaisella navigoitavalla lehtikohteella on kiinnitysohjaus. Ohjaus paljastuu hiiren ylle ja näppäimistön fokuksessa, joten se pysyy tavoitettavissa ilman hiirtä. Aktivoiminen siirtää kohteen kiinnitettyyn ryhmään valikon yläosassa.
 
-Muutamia sääntöjä hallitsee, mitä voidaan kiinnittää ja miten ryhmä käyttäytyy:
+Muutamat säännöt säätelevät, mitä voidaan kiinnittää ja miten ryhmä käyttäytyy:
 
-- Vain navigoitavat lehtikohteet voivat olla kiinnitettyjä. Ryhmäotsikoita (kohteet, joilla on lapsia) ei koskaan voida kiinnittää.
-- Kiinnitetty ryhmä näkyy vain, kun jotain on kiinnitetty, ja katoaa uudelleen, kun viimeinen kohde on poistettu kiinnityksestä.
-- Kiinnityksen poistaminen palauttaa kohteen tarkalleen alkuperäiseen paikkaansa, mukaan lukien kohteet, jotka ovat sisäkkäin useilla tasoilla ryhmässä.
-- Kohde siirretään, ei kopioidaan, joten kaikki etuliite- tai jälkiliiteasiat ja siihen liitetyt kuuntelijat toimivat, kun se istuu kiinnitetyssä ryhmässä.
+- Vain navigoitavat lehtikohteet ovat kiinnitettäviä. Ryhmäotsikoita (kohteet, joilla on lapsia) ei voi koskaan kiinnittää.
+- Kiinnitetty ryhmä näkyy vain silloin, kun jotain on kiinnitetty, ja katoaa taas, kun viimeinen kohde poistetaan kiinnityksestä.
+- Kiinnittämättömyys palauttaa kohteen sen tarkkaan alkuperäiseen paikkaan, mukaan lukien usean tason syvälle ryhmiin pesitetyt kohteet.
+- Kohde siirtyy, ei kopioidu, joten kaikki etuliite- tai liiteSisältö ja siihen kiinnitetyt kuuntelijat toimivat edelleen, kun se sijaitsee kiinnitetyssä ryhmässä.
 
-Alla oleva demo on otettu käyttöön kiinnitys mukautetun ryhmän nimen kanssa ja Dashboard kiinnitettyä latauksen yhteydessä. Vie hiiri tai keskity lehtikohteeseen paljastaaksesi sen kiinnitysvalinnan.
+Allaoleva demo on aktivoitu kiinnityksellä, mukautetulla ryhmän nimellä ja Dashboard kiinnitettynä latauksessa. Vie hiiri tai keskity lehtikohteeseen paljastaaksesi sen kiinnitsyn.
 
 <ComponentDemo
 path='/webforj/appnavpinning/Dashboard'
@@ -153,83 +196,83 @@ files={[
 ]}
 />
 
-### Aloittaminen kiinnitettynä {#starting-an-item-pinned}
+### Kohteiden aloittaminen kiinnitettynä {#starting-an-item-pinned}
 
-Aloita kohde kiinnitetyssä ryhmässä asettamalla sen kiinnitys-tila. Käytä `isPinned()` lukeaksesi nykyinen tila.
+Aloita kohde kiinnitetyssä ryhmässä asettamalla sen kiinnitystila. Käytä `isPinned()` lukiaksesi nykyinen tila.
 
 ```java
 AppNavItem reports = new AppNavItem("Reports", "/reports");
 reports.setPinned(true);
 ```
 
-:::info Kiinnitys on otettava käyttöön
-`setPinned(true)` tulee voimaan vain, kun kiinnitys on otettu käyttöön `AppNav`:ssa `getPinning().setEnabled(true)`-menetelmällä. Ilman sitä kutsu ei vaikuta.
+:::info Kiinnityksen on oltava päällä
+`setPinned(true)` tulee voimaan vain, kun kiinnitys on aktivoitu `AppNav`-komponentissa `getPinning().setEnabled(true)` avulla. Ilman sitä kutsulla ei ole vaikutusta.
 :::
 
-### Kiinnitetyn ryhmän nimi {#pinned-group-title}
+### Kiinnitetyn ryhmän otsikko {#pinned-group-title}
 
-Kiinnitetty ryhmä on oletusarvoisesti nimeltään `Pinned`. Voit vaihtaa sen sopivaksi sovelluksellesi:
+Kiinnitetyn ryhmän oletusotsikkona on `Pinned`. Muuta se sopimaan sovellukseesi:
 
 ```java
 nav.getPinning().setTitle("Favorites");
 ```
 
-### Kiinnitysavaimet {#pin-keys}
+### Kiinnitysnäppäimet {#pin-keys}
 
-Jokaisella kiinnitettävällä kohteella on avain, joka tunnistaa sen pysyvyyden ja [kiinnitys-tapahtuman](#reacting-to-pin-changes) varten. Kun et aseta yhtä, avain palautuu kohteen polkuun, joten `getPinKey()` palauttaa aina käyttökelpoisen arvon.
+Jokaisella kiinnitettävällä kohteella on avain, joka tunnistaa sen pysyvyydelle ja [kiinnitys-tapahtumalle](#reacting-to-pin-changes). Kun et aseta yhtä, avain perustuu kohteen polkuun, joten `getPinKey()` palauttaa aina käytettävän arvon.
 
 ```java
 AppNavItem reports = new AppNavItem("Reports", "/reports");
 reports.setPinKey("reports");
 ```
 
-Aseta voimassa oleva avain, kun polku voi muuttua ajoituksen aikana. Vakaa avain pitää kiinnityksen oikean kohteen kohdalla latausten välillä, vaikka sen URL siirtyy.
+Aseta eksplisiittinen avain silloin, kun polku voi muuttua ajonaikana. Vakaa avain pitää kiinnityksen oikean kohteen kanssa oikean kohdalla uudelleen latauksessa, jopa jos sen URL siirtyy.
 
-### Automatisoitu tallennus paikallisessa tallennuksessa {#autosave}
+### Autosave paikalliseen tallennukseen {#autosave}
 
-Kiinnitykset elävät vain nykyisessä sivunäkymässä, ellei niitä tallenneta. Automatisoitu tallennus on yksinkertaisin vaihtoehto: se tallentaa kiinnitettyjen kohteiden joukon selaimen paikalliseen tallennukseen ja palauttaa ne latauksen yhteydessä. Se on pois päältä oletuksena. Se tarvitsee vakaata `id`:tä (tai nimeä) komponentille tallennusavaimet varten, ja `AppNav(String id)`-konstruktori on kätevä tapa asettaa yksi:
+Kiinnitykset elävät vain nykyisen sivun katselun ajan, ellei niitä pysyvöitetä. Autosave on yksinkertaisin vaihtoehto: se tallentaa kiinnitettyjen kohteiden joukon selaimen paikalliseen tallennukseen ja palauttaa ne uudelleen latauksen aikana. Se on oletuksena pois päältä. Se vaatii vakaan `id` (tai nimen) komponentille tallennusavaimeksi, ja `AppNav(String id)`-konstruktori on kätevä tapa asettaa se:
 
 ```java
-AppNav nav = new AppNav("main-nav"); // antaa automatisoidulle tallennukselle vakaat tallennusavaimet
+AppNav nav = new AppNav("main-nav"); // antaa autosave:lle vakaan tallennusavaimen
 nav.getPinning().setAutosave(true);
 ```
 
-:::info Automatisoitu tallennus tarvitsee id:n
-Ilman `id`:tä (tai nimeä) komponentilla, automatisoitu tallennus ei tee mitään, koska sillä ei ole vakaata avainta tallennettavaksi. Pysyvyys on selainkohtainen, joten kiinnitykset eivät seuraa käyttäjää toiseen laitteeseen tai selaimeen.
+:::info Autosave tarvitsee id:n
+Ilman `id` (tai nimeä) komponentilla autosave ei tee mitään hiljaa, koska sillä ei ole vakaata avainta tallennettavaksi. Pysyvyyksien kesto on selainkohtainen, joten kiinnitykset eivät seuraa käyttäjää toiselle laitteelle tai selaimelle.
 :::
 
 ### Mukautettu pysyvyys {#custom-persistence}
 
-Jos suoritat pysyvyyttä, jota hallitset itse, esimerkiksi käyttäjää palvelimella varten, ota automatisoitu tallennus pois päältä ja ohjaa se itse [kiinnitys-tapahtuman](#reacting-to-pin-changes) ja `setPinned`-menetelmän avulla:
+Oman kontrollin kautta pysyvyys, esimerkiksi käyttäjälle palvelimella, käännä autosave pois ja aja se itse [kiinnitys-tapahtuman](#reacting-to-pin-changes) ja `setPinned` avulla:
 
 ```java
 nav.getPinning().setAutosave(false);
 
-// tallenna nykyiset kiinnitettyjen avainten joukko aina kun se muuttuu
+// tallenna nykyinen kiinnitettyjen avaimien joukko aina kun se muuttuu
 nav.onPin(event -> savePins(event.getKeys()));
 
-// latauksen aikana, palauta jokainen tallennettu avain
+// latauksessa, palauttakaamme jokainen tallennettu avain
 restoredKeys.forEach(key -> findItem(key).setPinned(true));
 ```
 
-### Reagointi kiinnityksen muutoksiin {#reacting-to-pin-changes}
+### Reagointi kiinnitysmuutoksiin {#reacting-to-pin-changes}
 
-Kiinnitys-tapahtuma laukaisee aina, kun kohde on kiinnitetty tai poistettu kiinnityksestä. Se kuljettaa muuttunutta kohdetta, sen avainta, uutta kiinnitystä ja koko järjestettyä kiinnitettyjen avainten joukkoa:
+Kiinnitystapahtuma laukaistuu aina, kun kohde kiinnitetään tai irrotetaan. Se kuljettaa muuttuneen kohteen, sen avaimen, uuden kiinnitystilan ja koko tilattujen kiinteiden avainten joukon:
 
 ```java
 nav.onPin(event -> {
-  AppNavItem item = event.getItem(); // muuttunut kohde, tai null, jos se ei enää ole navigaatiossa
+  AppNavItem item = event.getItem(); // muuttunee kohde, tai null jos se ei ole enää valikossa
   boolean pinned = event.isPinned();
   String key = event.getKey();
-  List<String> all = event.getKeys(); // jokainen kiinnitetty avain, kiinnitetty järjestys
+  List<String> all = event.getKeys(); // kaikki kiinnitetyt avaimet, kiinnitetty järjestys
 });
 ```
 
-`getItem()` ratkaisee kohteen avainsuhteella, ja palauttaa `null`, kun kohde ei enää ole osa navigaatiota.
+`getItem()` ratkaisee kohteen vertaamalla sen kiinnitysnäppäimeen ja palauttaa `null`, kun kohde ei enää ole valikossa.
 
-### Kiinnitykselle tarkoitetut ikonit {#pin-icons}
+### Kiinnityspainikkeet {#pin-icons}
 
-Vaihtoehto hyödyntää sisäistä `dwc:pin`-ikonia, kun kohde on kiinnittämätön, ja `dwc:pinned-off`, kun se on kiinnitetty. Voit vaihtaa omasi käyttämällä `setUnpinnedIcon` ja `setPinnedIcon`, jotka hyväksyvät minkä tahansa `IconDefinition`-tyypin:
+Vaihtoehto käyttää sisäänrakennettua `dwc:pin`-ikonia silloin, kun kohde on kiinnitetty ja `dwc:pinned-off`, kun se on kiinnitetty. Vaihda tapasi mukaan `setUnpinnedIcon` ja `setPinnedIcon`, jotka hyväksyvät mikä tahansa `IconDefinition`:
 
 ```java
 nav.getPinning()
@@ -237,9 +280,9 @@ nav.getPinning()
    .setPinnedIcon(TablerIcon.create("pinned-off"));
 ```
 
-### Kiinnitysohjaus kosketusnäytöillä {#pin-toggle-on-touchscreens}
+### Kiinnityksen kytkin kosketusnäytöissä {#pin-toggle-on-touchscreens}
 
-Kosketusnäytöissä ei ole hiiren yllä kiinnitysohjausta, joten valinta on oletuksena piilotettu. Pidä se näkyvissä ja napattavissa kosketusnäytöillä `setTouchVisible(true)`-menetelmällä:
+Kosketusnäytöillä ei ole hover-toimintoa paljastaa kiinnitystä, joten kytkin on oletuksena piilossa. Pidä se näkyvissä ja napsautettavissa kosketusnäytöillä asettamalla `setTouchVisible(true)`:
 
 ```java
 nav.getPinning().setTouchVisible(true);
@@ -247,14 +290,14 @@ nav.getPinning().setTouchVisible(true);
 
 ## Haku <DocChip chip='since' label='26.01' /> {#search}
 
-Hakukenttä suodattaa valikon kohteet merkinnän mukaan, kun käyttäjä kirjoittaa. Se on pois päältä oletuksena. Voit näyttää sen ja antaa sille paikkamerkin hakukonfiguraation kautta:
+Hakukenttä suodattaa valikon kohteita etiketin mukaan käyttäjän kirjoittaessa. Se on oletuksena pois päältä. Voit näyttää sen ja antaa sille paikkamerkin hakukonfiguraation avulla:
 
 ```java
 nav.getSearch().setFieldVisible(true);
-nav.getSearch().setPlaceholder("Hae");
+nav.getSearch().setPlaceholder("Haku");
 ```
 
-Kun käyttäjä kirjoittaa, valikko suodattaa kohteita merkin mukaan, avaa kaikki ryhmät, jotka sisältävät osumia, ja näyttää tyhjää viestiä, kun ei mitään vastaa. Kiinnitetyt pikakuvakkeet pysyvät näkyvissä hakemisen aikana, joten käyttäjän suosikit pysyvät yhdellä napsautuksella saatavilla jopa suodatettaessa.
+Kun käyttäjä kirjoittaa, navigointi suodattaa kohteita etiketin mukaan, avaa kaikki ryhmät, jotka sisältävät osuman, ja näyttää tyhjää viestiä, kun mitään ei löydy. Kiinnitetyt pikakäynnistyset pysyvät näkyvissä hakuaikana, joten käyttäjän suosikit pysyvät käden ulottuvilla jopa suodattamisen keskellä.
 
 <ComponentDemo
 path='/webforj/appnavsearch/Dashboard'
@@ -267,15 +310,15 @@ files={[
 
 ### Tyhjät viestit {#search-empty-message}
 
-Aseta viesti, joka näkyy, kun haku ei palauta tuloksia. Pelkkä teksti renderöidään tekstinä:
+Aseta viesti, joka näytetään, kun hakutulokset eivät tuota mitään. Pelkkä teksti renderoidaan tekstinä:
 
 ```java
-nav.getSearch().setEmptyMessage("Ei löytynyt kohteita");
+nav.getSearch().setEmptyMessage("Ei kohteita löytynyt");
 ```
 
-### Haku omasta kentästä {#custom-search-box}
+### Haitarin hakua omasta kentästä {#custom-search-box}
 
-Piilota sisäänrakennettu kenttä ja syötä suodatin omasta syötteestäsi. Työnnä nykyinen termi sisään `setTerm`-menetelmällä:
+Piilota sisäänrakennettu kenttä ja syötä suodatus omasta syötteestäsi. Työnnä nykyinen termi `setTerm`-metodin kautta:
 
 ```java
 nav.getSearch().setFieldVisible(false);
@@ -283,12 +326,12 @@ nav.getSearch().setFieldVisible(false);
 myField.onModify(event -> nav.getSearch().setTerm(event.getText()));
 ```
 
-Reagoi siihen, mitä käyttäjä kirjoittaa sisäänrakennettuun kenttään, kuuntelemalla hakutapahtumaa:
+Reagoidaksesi käyttäjän teksteihin sisäänrakennetussa kentässä, kuuntele hakutapahtumalle:
 
 ```java
 nav.onSearch(event -> log(event.getTerm()));
 ```
 
-## Tyylitys `AppNavItem` {#styling-appnavitem}
+## `AppNavItem`-komponentin tyylittely {#styling-appnavitem}
 
 <TableBuilder name="AppNavItem" />

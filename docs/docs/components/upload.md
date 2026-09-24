@@ -1,7 +1,6 @@
 ---
 title: Upload
 sidebar_position: 160
-sidebar_class_name: new-content
 description: Select and upload one or more files from the local machine with the Upload component using drag-and-drop, filters, and per-file or batch event tracking.
 ---
 

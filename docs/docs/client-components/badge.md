@@ -6,7 +6,7 @@ description: Customize the dwc-badge client component via CSS variables and shad
 ---
 
 <DocChip chip='shadow' />
-    
+
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-badge>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::

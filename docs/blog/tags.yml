@@ -26,6 +26,18 @@ ai:
   label: AI
   description: Artificial intelligence and AI-assisted development with webforJ.
 
+'spring-ai':
+  label: Spring AI
+  description: Building AI features with Spring AI in webforJ apps.
+
+chat:
+  label: Chat
+  description: Chat and conversational interfaces in webforJ apps.
+
+mcp:
+  label: MCP
+  description: Model Context Protocol integrations for webforJ apps.
+
 showcase:
   label: Showcase
   description: Real-world examples and demos built with webforJ.

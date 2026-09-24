@@ -1,7 +1,6 @@
 ---
 sidebar_position: 6
 title: Jakarta Validation
-sidebar_class_name: updated-content
 description: Apply Jakarta Bean Validation annotations to bean properties and activate JakartaValidator on a BindingContext with locale-aware messages.
 ---
 

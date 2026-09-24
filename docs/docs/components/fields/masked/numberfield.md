@@ -9,17 +9,13 @@ description: Format numeric input with the MaskedNumberField using configurable 
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedNumberField" top='true'/>
 
-The `MaskedNumberField` is a text input designed for structured numeric entry. It ensures numbers are formatted consistently based on a defined mask, making it especially useful for financial forms, pricing fields, or any input where precision and readability matter.
+The `MaskedNumberField` is a text input designed for formatting numeric entries consistently, based on a defined mask. It's useful for financial forms, pricing fields, or any input where precision and readability matter.
 
-This component supports number formatting, localization of decimal/grouping characters, and optional value constraints like minimums or maximums.
+This component can be instantiated with or without parameters. It supports number formatting, localization of decimal/grouping characters, and optional value constraints like minimums or maximums. It also supports setting an initial value, a label, a placeholder, and an event listener to react to value changes.
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
-The `MaskedNumberField` can be instantiated with or without parameters. It supports setting an initial value, a label, a placeholder, and an event listener to react to value changes.
-
-This demo showcases a **Tip Calculator** that uses `MaskedNumberField` for intuitive numeric input. One field is configured to accept a formatted bill amount, while the other captures a whole-number tip percentage. Both fields apply numeric masks to ensure consistent and predictable formatting.
+The example below showcases a **Tip Calculator** that uses `MaskedNumberField` for intuitive numeric input. One field is configured to accept a formatted bill amount, while the other captures a whole-number tip percentage.
 
 <ComponentDemo
 path='/webforj/maskednumberfield'
@@ -153,7 +149,7 @@ height='150px'
 
 ## `MaskedNumberFieldSpinner` {#maskednumberfieldspinner}
 
-The `MaskedNumberFieldSpinner` extends [`MaskedNumberField`](#basics) by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys.
+The `MaskedNumberFieldSpinner` extends the `MaskedNumberField` by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys.
 This is ideal for inputs like quantities, pricing adjustments, rating controls, or any scenario where users make incremental changes.
 
 <ComponentDemo
