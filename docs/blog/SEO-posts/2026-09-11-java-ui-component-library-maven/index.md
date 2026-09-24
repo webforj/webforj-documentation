@@ -33,7 +33,7 @@ The infrastructure isn't new. It's what Java shops have been running for years. 
 
 This is the key premise. In webforJ, a UI component is a Java class that extends [`Composite`](/docs/building-ui/composing-components) or wraps a web component via [`ElementComposite`](/docs/building-ui/element-composite). It has typed constructors, typed properties via `PropertyDescriptor`, and typed event APIs.
 
-A date-picker built on the webforJ `DateTimePicker` component and wrapped with the team's preferred default behavior is a class. A data table component with opinionated column configuration is a class. Both can live in a Maven module alongside the rest of the team's shared Java code.
+A date-picker web component wrapped in the `ElementComposite` confiugured with team's preferred default behavior is a class. A data table component with opinionated column configuration is a class. Both can live in a Maven module alongside the rest of the team's shared Java code.
 
 There's nothing special about UI components from a packaging perspective. The annotation-based API, the component hierarchy, the event model — all of it is Java. The consuming developer imports the class, constructs it, adds it to a layout. The experience from the consuming side is identical to using any other library: a `<dependency>` block in `pom.xml`, then the class is on the classpath.
 
