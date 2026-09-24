@@ -14,11 +14,10 @@ Before starting this tutorial, complete the [Setup and Configuration](./setup) s
 The complete source code for this tutorial is available on GitHub: [webforj/webforj-webswing-integration-tutorial](https://github.com/webforj/webforj-webswing-integration-tutorial)
 :::
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/webswing/modernization-tutorial.mp4#t=5" type="video/mp4"/>
-  </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/tutorials/webswing/modernization-tutorial.mp4#t=5"
+  title="Modernization Tutorial"
+/>
 
 ## The scenario {#the-scenario}
 

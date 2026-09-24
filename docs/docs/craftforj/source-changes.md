@@ -6,11 +6,11 @@ description: Review the changes you made in craftforJ as a diff, choose where ea
 
 Changing a property in craftforJ changes the running app and nothing else. To keep a change, you review it and write it into the Java file it came from. This page describes that step.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4" type="video/mp4" />
-  </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4"
+  title="Writing Changes to Source"
+  aspectRatio="1920 / 992"
+/>
 
 :::warning craftforJ writes to your project
 Keep your work in version control. Read the diff before you apply it, and read it again before you commit.
