@@ -24,6 +24,12 @@ public class ConfirmDialogConstructorView extends Composite<Div> {
             .setTheme(Theme.DANGER)
             .setButtonTheme(ConfirmDialog.Button.FIRST, ButtonTheme.DANGER)
             .setButtonTheme(ConfirmDialog.Button.SECOND, ButtonTheme.OUTLINED_GRAY);
+
+    show();
+  }
+
+  private void show() {
     dialog.show();
+    show();
   }
 }

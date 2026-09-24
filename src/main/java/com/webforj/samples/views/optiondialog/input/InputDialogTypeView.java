@@ -41,5 +41,7 @@ public class InputDialogTypeView extends Composite<Div> {
       OptionDialog.showMessageDialog(
           "Access denied", "Access denied", "Try again", MessageDialog.MessageType.ERROR);
     }
+
+    tryLogin();
   }
 }

@@ -31,5 +31,7 @@ public class FileSaveDialogBasicView extends Composite<Div> {
       OptionDialog.showMessageDialog(
           "No path is selected", "Path Selected", MessageDialog.MessageType.ERROR);
     }
+    
+    show();
   }
 }
