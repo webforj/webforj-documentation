@@ -8,7 +8,7 @@ The Theme tab lets you change how your app looks while it runs. It works with th
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
