@@ -1,5 +1,5 @@
 ---
-title: App Info
+title: Sovelluksen tiedot
 sidebar_position: 10
 description: >-
   Read the versions, Java runtime, and project root of the app craftforJ is

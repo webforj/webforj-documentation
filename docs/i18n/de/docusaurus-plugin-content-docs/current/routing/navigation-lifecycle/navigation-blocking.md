@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Blocking
+title: Navigationsblockierung
 description: >-
   Intercept navigation with WillLeaveObserver veto handlers and the beforeunload
   event to guard unsaved changes.

@@ -1,5 +1,5 @@
 ---
-title: Writing your own extension
+title: 编写你自己的扩展
 sidebar_position: 70
 description: >-
   Add a build step by shipping a BundleExtension that declares packages,

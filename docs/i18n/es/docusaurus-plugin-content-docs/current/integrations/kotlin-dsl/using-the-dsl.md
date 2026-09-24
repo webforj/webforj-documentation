@@ -1,5 +1,5 @@
 ---
-title: Using the DSL
+title: Uso del DSL
 sidebar_position: 10
 _i18n_hash: 05d1319dd97f2d32392408b2e4ae9058
 ---

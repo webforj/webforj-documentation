@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Testing with Selenium
+title: Testen mit Selenium
 description: >-
   Drive a webforJ app from JUnit with Selenium WebDriver and WebDriverManager to
   simulate user interactions and assert UI state.

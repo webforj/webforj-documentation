@@ -1,5 +1,5 @@
 ---
-title: Blank
+title: Tyhjä
 sidebar_position: 1
 hide_table_of_contents: true
 _i18n_hash: 3a773ecf2bc104d51d0cc7aff13cb7b9

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Element Composite
+title: Elementtien koostaminen
 sidebar_class_name: new-content
 description: >-
   Wrap a custom HTML element or third-party web component in Java with

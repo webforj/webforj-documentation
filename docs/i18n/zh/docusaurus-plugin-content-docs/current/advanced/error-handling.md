@@ -1,5 +1,5 @@
 ---
-title: Error Handling
+title: 错误处理
 sidebar_position: 5
 description: >-
   Register custom ErrorHandler implementations through the Java Service Provider

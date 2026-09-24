@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Execute JavaScript
+title: Ejecutar JavaScript
 sidebar_class_name: new-content
 description: >-
   Run client-side JavaScript from Java with executeJs, executeJsAsync, and

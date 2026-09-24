@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Flow
+title: Navigatiestroom
 _i18n_hash: f2083b0f83ed9e0098250dafdb37a753
 ---
 Beveiligingshandhaving in webforJ gebeurt automatisch tijdens navigatie. Wanneer een gebruiker op een link klikt of naar een route navigeert, onderschept het beveiligingssysteem de navigatie, evalueert het toegangsregels en staat het ofwel de navigatie toe om door te gaan of wordt de gebruiker omgeleid naar een geschikte pagina. Deze onderschepping is onzichtbaar voor gebruikers en vereist geen handmatige beveiligingscontroles in uw componentcode.

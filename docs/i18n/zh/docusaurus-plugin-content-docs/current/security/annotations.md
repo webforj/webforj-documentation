@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Security Annotations
+title: 安全注解
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 安全注释提供了一种声明性的方法来控制您在 webforJ 应用中的路由访问。通过将注释添加到路由组件中，您定义了谁可以访问每个视图，而不需要写手动的权限检查。安全系统会在任何组件渲染之前自动强制执行这些规则。

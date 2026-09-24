@@ -1,6 +1,6 @@
 ---
 sidebar_position: 15
-title: Sorting
+title: Sortierung
 slug: sorting
 description: >-
   Enable per-column sorting on the Table, configure multi-column sorting, and

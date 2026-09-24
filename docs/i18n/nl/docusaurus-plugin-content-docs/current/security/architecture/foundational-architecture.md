@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Foundational Architecture
+title: Fundamentele architectuur
 _i18n_hash: 0506f859c3bd22ddca70550b6f3e368a
 ---
 Het webforJ-beveiligingssysteem is gebouwd op een fundament van kerninterfaces die samenwerken om toegangscontrole op route-niveau te bieden. Deze interfaces definiëren de contracten voor beveiligingsgedrag, waardoor verschillende implementaties, of ze nu op sessies zijn gebaseerd, op JSON Web Tokens (JWT), LDAP-geïntegreerd of database-ondersteund zijn, in hetzelfde onderliggende framework kunnen worden geïntegreerd.

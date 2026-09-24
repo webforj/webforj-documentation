@@ -1,5 +1,5 @@
 ---
-title: Build and tests
+title: 构建与测试
 sidebar_position: 40
 sidebar_class_name: new-content
 description: >-

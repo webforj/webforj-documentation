@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Navigation Lifecycle
+title: Navigatielevenscyclus
 hide_giscus_comments: true
 _i18n_hash: 14d81d1a9ff86af17370e0a7eb50608b
 ---

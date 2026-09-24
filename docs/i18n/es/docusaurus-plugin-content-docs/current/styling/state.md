@@ -1,6 +1,6 @@
 ---
 sidebar_position: 9
-title: State
+title: Estado
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 Los tokens de estado definen cómo los componentes responden visualmente a la interacción del usuario, como cuando están deshabilitados o enfocados. Estas variables ayudan a garantizar un comportamiento y un estilo consistentes en todos los elementos de la interfaz de usuario, y se pueden personalizar fácilmente para que coincidan con su sistema de diseño.

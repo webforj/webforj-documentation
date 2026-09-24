@@ -1,5 +1,5 @@
 ---
-title: Upgrading to the v26 Design System
+title: Umstieg auf das v26-Designsystem
 description: >-
   Reference for the design-system updates in DWC 26 - color engine, dark mode,
   surfaces, shadows, typography, radius, focus ring, and interaction feedback.

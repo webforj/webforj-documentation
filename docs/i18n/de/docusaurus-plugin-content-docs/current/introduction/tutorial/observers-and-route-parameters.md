@@ -1,5 +1,5 @@
 ---
-title: Observers and Route Parameters
+title: Observer und Routenparameter
 sidebar_position: 5
 description: Step 4 - Use route parameters to control what content loads.
 _i18n_hash: c87796ee04dafe840b3903ae8a1fa0ab

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 9
-title: State
+title: Status
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 State tokens definiëren hoe componenten visueel reageren op gebruikersinteractie, zoals wanneer ze zijn uitgeschakeld of gefocust. Deze variabelen helpen ervoor te zorgen dat er consistent gedrag en styling is over alle UI-elementen, en kunnen gemakkelijk worden aangepast om overeen te komen met uw ontwerpsysteem.
