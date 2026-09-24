@@ -13,7 +13,7 @@
 "CheckableMenuItem" :"dwc-menuitem",
 "Checkbox" :"dwc-checkbox",
 "ChoiceBox" :"dwc-choicebox",
-"Color-Chooser" :"dwc-color-chooser",
+"ColorField" :"dwc-field",
 "ColumnsLayout" :"dwc-columns-layout",
 "ComboBox" :"dwc-combobox",
 "DateField" :"dwc-datefield",

@@ -24,6 +24,7 @@ import GalleryCard from '@site/src/components/GalleryCard/GalleryCard';
 import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarning';
 import AutomatedUpgradeTip from '@site/src/components/DocsTools/AutomatedUpgradeTip';
+import FieldCommonFeatures from '@site/src/components/DocsTools/FieldCommonFeatures';
 import AISkillTip from '@site/src/components/DocsTools/AISkillTip';
 
 
@@ -51,5 +52,6 @@ export default {
   table: TableWrapper,
   ExperimentalWarning,
   AutomatedUpgradeTip,
+  FieldCommonFeatures,
   AISkillTip
 };
