@@ -13,14 +13,11 @@ A `Toast` is a small, temporary notification that appears to give users feedback
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
-webforJ provides a quick and easy way to create a `Toast` component in a single line of code with the `Toast.show()` method, which creates a `Toast` component, adds it to the `Frame`, and displays it. You can pass parameters to the `show` method to configure the displayed `Toast`:
+The `Toast.show()` method creates a `Toast`, adds it to the `Frame`, and displays it in a single line of code. Pass parameters to `show()` to configure the `Toast` that appears:
 
 ```java
 Toast.show("Operation completed successfully!", Theme.SUCCESS);
 ```
-
 
 If you want more fine-grained control over the component, you can also create a `Toast` with a standard constructor and use the `open()` method to display it.
 
