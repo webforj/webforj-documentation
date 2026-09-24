@@ -3,58 +3,50 @@ package com.webforj.samples.views.button;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.layout.columnslayout.ColumnsLayout;
+import com.webforj.component.layout.columnslayout.ColumnsLayout.Breakpoint;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import java.util.List;
 
 @Route
 @FrameTitle("Button Themes")
 public class ButtonThemesView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
-  private final Div scrollWrapper = new Div();
+  private final ColumnsLayout solidThemeLayout = new ColumnsLayout();
+  private final ColumnsLayout outlinedThemeLayout = new ColumnsLayout();
+  private final List<Breakpoint> breakpoints =
+      List.of(new Breakpoint(0, 1), new Breakpoint(400, 2), new Breakpoint(600, 3));
 
   public ButtonThemesView() {
-    self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-l)")
-        .setMargin("var(--dwc-space-l)")
-        .add(scrollWrapper);
 
-    scrollWrapper
-        .setStyle("overflow-x", "auto")
-        .setStyle("white-space", "nowrap")
-        .setStyle("margin", "var(--dwc-space-l)");
+    self.setSize("100vw", "100vh")
+        .setPadding("var(--dwc-space-xl)")
+        .setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setStyle("overflow-y", "scroll")
+        .add(solidThemeLayout, outlinedThemeLayout);
 
-    FlexLayout solidRow =
-        new FlexLayout()
-            .setDirection(FlexDirection.ROW)
-            .setWrap(FlexWrap.NOWRAP)
-            .setSpacing("var(--dwc-space-s)");
+    setLayout(solidThemeLayout);
+    setLayout(outlinedThemeLayout);
+    setButtonThemes();
+  }
 
-    FlexLayout outlinedRow =
-        new FlexLayout()
-            .setDirection(FlexDirection.ROW)
-            .setWrap(FlexWrap.NOWRAP)
-            .setSpacing("var(--dwc-space-s)")
-            .setStyle("margin-bottom", "var(--dwc-space-l)");
-
+  public void setButtonThemes() {
     for (ButtonTheme theme : ButtonTheme.values()) {
+      Button button = new Button(theme.name(), theme);
       if (theme.name().startsWith("OUTLINE")) {
-        outlinedRow.add(new Button(theme.name(), theme).setMinWidth("200px").setMaxWidth("200px"));
+        outlinedThemeLayout.add(button);
       } else {
-        solidRow.add(new Button(theme.name(), theme).setMinWidth("200px").setMaxWidth("200px"));
+        solidThemeLayout.add(button);
       }
     }
+  }
 
-    FlexLayout scrollContent =
-        FlexLayout.create(solidRow, outlinedRow)
-            .vertical()
-            .nowrap()
-            .build()
-            .setSpacing("var(--dwc-space-l)");
-
-    scrollWrapper.add(scrollContent);
+  public void setLayout(ColumnsLayout layout) {
+    layout.setBreakpoints(breakpoints).setWidth("100%").setMaxWidth(700);
   }
 }
