@@ -5,7 +5,7 @@ hide_giscus_comments: true
 description: >-
   Style webforJ apps with the DWC design system using CSS custom properties,
   palettes, shadow parts, and the Figma kit.
-_i18n_hash: 40e7755b35318ea88eb990c6b6dbd240
+_i18n_hash: bacf450dadef59e4496e78d465a1e44d
 ---
 <Head>
   <style>{`
@@ -20,24 +20,27 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ 自带一个名为 **DWC** 的全面设计系统。它不仅仅是一个主题，它是一个结构化、可扩展的系统，管理着您应用程序的视觉语言。DWC 旨在帮助开发人员和设计师快速而自信地创建一致的、与品牌对齐的界面。
+webforJ 配备了一个全面的设计系统，名为 **DWC**。它不仅仅是一个主题，而是一个结构化、可扩展的系统，管理您应用程序的视觉语言。DWC 的构建旨在帮助开发人员和设计师快速而自信地创建一致的、品牌对齐的界面。
 
-在其核心，DWC 提供了一组经过精心设计的 CSS 变量（设计令牌），覆盖关键视觉元素如颜色、排版、边框和间距。这些令牌作为所有组件样式的基础构建块，使全局自定义变得轻而易举。
+DWC 的核心提供了一组经过精心设计的 CSS 变量（设计令牌），涵盖了关键的视觉元素，如颜色、排版、边框和间距。这些令牌作为所有组件样式的基础构建块，并允许以最小的努力进行全局自定义。
 
-为了支持更高级的样式，webforJ 利用 CSS Shadow Parts，允许选择性地为组件内部样式，以保持封装性。这使得团队可以对组件的外观进行细致的控制，即使在较大的应用程序中。
+为了支持更高级的样式，webforJ 使用 CSS Shadow Parts，允许在不破坏封装的情况下选择性地为组件内部样式。这使团队能够对组件的外观进行精细控制，即使是在更大的应用程序中也是如此。
 
-DWC 还包括一个可自定义的调色板，默认使用干净、明亮的视觉主题，但每个方面都可以根据您的品牌或产品风格进行调整。
+DWC 还包含一个可自定义的颜色调色板，默认采用干净、明亮的视觉主题，但每个方面都可以根据您的品牌或产品风格进行调整。
 
 <AISkillTip skill="webforj-styling-apps" />
 
 ## Figma 设计工具包 {#figma-design-kit}
 
-[DWC Figma 库](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) 是创建现代企业级 web 应用程序的官方设计资源。它包含了一整套与 DWC 设计系统对齐的组件、排版样式和颜色令牌。设计师和开发人员可以使用这个库来构建视觉一致、用户友好的界面，具有可预测的组件行为、精确的间距和可访问的颜色对比。
+[DWC 设计工具包](https://www.figma.com/community/file/1682060886525639971/dwc-design-kit) 是为设计 webforJ 应用程序提供的官方 Figma 资源。它涵盖了每个 DWC 组件的主题、扩展和状态，以及设计系统的颜色调色板、排版、间距和阴影令牌，以 Figma 变量和样式呈现，适用于明亮和黑暗模式。设计师和开发人员可以使用此工具包构建视觉一致、用户友好的界面，确保组件行为的可预测性、精确的间距和可访问的颜色对比度。
 
-<img src="/img/dwc.png" alt="Figma 设计工具包" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
-
->
-<!-- > ![Figma 设计工具包截图](./path-to-your-screenshot.png) -->
+<iframe
+  title="DWC 设计工具包"
+  src="https://embed.figma.com/design/xZVIDRnF7FJ3Dibb5At2lU/DWC-Design-Kit?node-id=6707-254&embed-host=webforj-docs"
+  style={{width: '100%', aspectRatio: '16 / 10', borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}}
+  loading="lazy"
+  allowFullScreen
+/>
 
 ## 主题 {#topics}
 
