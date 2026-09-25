@@ -2,63 +2,81 @@ package com.webforj.samples.views.avatar;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.avatar.AvatarExpansesPage;
 import com.webforj.samples.views.BaseTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class AvatarExpansesViewIT extends BaseTest {
 
   private AvatarExpansesPage avatarPage;
 
-  @BeforeEach
-  public void setupAvatarDemo() {
-    navigateToRoute(AvatarExpansesPage.getRoute());
+  public void setupAvatarDemo(SupportedLanguage language) {
+    navigateToRoute(AvatarExpansesPage.getRoute(language));
     avatarPage = new AvatarExpansesPage(page);
   }
 
-  @Test
-  public void testXxxsmallAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXxxsmallAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getXxxsmallAvatar()).isVisible();
   }
 
-  @Test
-  public void testXxsmallAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXxsmallAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getXxsmallAvatar()).isVisible();
   }
 
-  @Test
-  public void testXsmallAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXsmallAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getXsmallAvatar()).isVisible();
   }
 
-  @Test
-  public void testSmallAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSmallAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getSmallAvatar()).isVisible();
   }
 
-  @Test
-  public void testMediumAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testMediumAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getMediumAvatar()).isVisible();
   }
 
-  @Test
-  public void testLargeAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testLargeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getLargeAvatar()).isVisible();
   }
 
-  @Test
-  public void testXlargeAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXlargeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getXlargeAvatar()).isVisible();
   }
 
-  @Test
-  public void testXxlargeAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXxlargeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getXxlargeAvatar()).isVisible();
   }
 
-  @Test
-  public void testXxxlargeAvatarIsVisible() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXxxlargeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
     assertThat(avatarPage.getXxxlargeAvatar()).isVisible();
   }
 }

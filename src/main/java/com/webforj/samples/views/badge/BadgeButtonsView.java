@@ -75,7 +75,6 @@ public class BadgeButtonsView extends Composite<FlexLayout> {
               .setTheme(ButtonTheme.PRIMARY)
               .setExpanse(expanse)
               .setBadge(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
-
       row.add(btn);
     }
 

@@ -2,6 +2,7 @@ package com.webforj.samples.pages.navigator;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 import java.util.regex.Pattern;
 
 public class NavigatorBasicPage {
@@ -22,6 +23,10 @@ public class NavigatorBasicPage {
     prevButton = page.getByLabel("Goto previous page");
     nextButton = page.getByLabel("Goto next page");
     lastButton = page.getByLabel("Goto last page");
+  }
+
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public static String getRoute() {
@@ -54,10 +59,6 @@ public class NavigatorBasicPage {
 
   public Locator getNextButton() {
     return nextButton;
-  }
-
-  public Locator getLastButton() {
-    return lastButton;
   }
 
   public Locator navigatorValue(int n) {
