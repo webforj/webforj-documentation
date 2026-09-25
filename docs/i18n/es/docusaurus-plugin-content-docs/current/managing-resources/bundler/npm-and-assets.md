@@ -1,5 +1,5 @@
 ---
-title: Packages and assets
+title: Paquetes y recursos
 sidebar_position: 30
 sidebar_class_name: new-content
 description: >-

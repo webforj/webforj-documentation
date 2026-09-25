@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Columns
+title: 列
 slug: columns
 description: >-
   Define Table columns with labels, value providers, visibility, navigability,

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Query Parameters
+title: 查询参数
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 查询参数允许您通过 URL 传递附加数据，使用格式 `?key1=value1&key2=value2`。而路由参数用于在 URL 路径中传递必需的数据，查询参数则提供了一种灵活的机制来传递可选或附加数据。当过滤内容、排序或处理同一键的多个值时，它们特别有用。

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Lifecycle Observers
+title: Observadores de ciclo de vida
 description: >-
   Hook into route lifecycle stages by implementing WillEnter, DidEnter,
   WillLeave, DidLeave, and Activate observer interfaces.

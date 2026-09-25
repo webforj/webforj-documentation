@@ -1,17 +1,18 @@
 ---
 sidebar_position: 5
 title: SpEL Expressions
-_i18n_hash: 1019aac355c5ef0efc8623660c3501e5
+description: >-
+  Author route authorization rules with Spring Expression Language using
+  @RouteAccess for role, authority, and custom checks.
+_i18n_hash: 59601d0d83fe7eb4b05bf8eab47515c3
 ---
-Spring Expression Language (`SpEL`) proporciona una forma declarativa de definir reglas de autorización directamente en anotaciones. La anotación `@RouteAccess` evalúa expresiones `SpEL` utilizando las funciones de autorización integradas de Spring Security.
+Spring Expression Language (`SpEL`) proporciona una forma declarativa de definir reglas de autorización directamente en las anotaciones. La anotación `@RouteAccess` evalúa expresiones `SpEL` utilizando las funciones de autorización integradas de Spring Security.
 
 :::info Solo Spring Security
 Las expresiones `SpEL` están disponibles solo cuando se utiliza la integración de Spring.
 :::
 
-## Uso básico {#basic-usage}
-
-La anotación `@RouteAccess` acepta una expresión `SpEL` que evalúa a un booleano:
+La anotación `@RouteAccess` acepta una expresión `SpEL` que se evalúa como un booleano:
 
 ```java
 @Route("/admin/dashboard")
@@ -21,15 +22,15 @@ public class AdminDashboardView extends Composite<Div> {
 }
 ```
 
-Si la expresión evalúa a `true`, se concede el acceso. Si es `false`, el usuario es redirigido a la página de acceso denegado.
+Si la expresión se evalúa como `true`, se concede el acceso. Si es `false`, el usuario es redirigido a la página de acceso denegado.
 
 ## Funciones de seguridad integradas {#built-in-security-functions}
 
 Spring Security proporciona las siguientes funciones de autorización a través de `SecurityExpressionRoot`:
 
 | Función | Parámetros | Descripción | Ejemplo |
-|----------|-----------|-------------|---------|
-| `hasRole` | `String role` | Verifica si el usuario tiene el rol especificado (automáticamente lo precede con `ROLE_`) | `hasRole('ADMIN')` coincide con `ROLE_ADMIN` |
+|---------|------------|-------------|---------|
+| `hasRole` | `String role` | Verifica si el usuario tiene el rol especificado (prefijo automático `ROLE_`) | `hasRole('ADMIN')` coincide con `ROLE_ADMIN` |
 | `hasAnyRole` | `String... roles` | Verifica si el usuario tiene alguno de los roles especificados | `hasAnyRole('ADMIN', 'MANAGER')` |
 | `hasAuthority` | `String authority` | Verifica si el usuario tiene la cadena de autoridad exacta | `hasAuthority('REPORTS:READ')` |
 | `hasAnyAuthority` | `String... authorities` | Verifica si el usuario tiene alguna de las autoridades especificadas | `hasAnyAuthority('REPORTS:READ', 'REPORTS:WRITE')` |
@@ -64,12 +65,12 @@ public class ProfileView extends Composite<Div> { }
 Utiliza operadores booleanos (`and`, `or`, `!`) para crear reglas de autorización complejas:
 
 ```java
-// Ambas condiciones son requeridas
+// Ambas condiciones requeridas
 @Route("/moderator/reports")
 @RouteAccess("hasRole('MODERATOR') and hasAuthority('REPORTS:VIEW')")
 public class ModeratorReportsView extends Composite<Div> { }
 
-// Cualquiera de las condiciones concede acceso
+// Cualquiera de las condiciones otorga acceso
 @Route("/support")
 @RouteAccess("hasRole('ADMIN') or hasRole('SUPPORT')")
 public class SupportView extends Composite<Div> { }
@@ -90,25 +91,25 @@ public class AdvancedReportsView extends Composite<Div> { }
 
 ## Combinando con otras anotaciones {#combining-with-other-annotations}
 
-`@RouteAccess` funciona junto con anotaciones de seguridad estándar. Los evaluadores se ejecutan en orden de prioridad:
+`@RouteAccess` funciona junto a anotaciones de seguridad estándar. Los evaluadores se ejecutan en orden de prioridad:
 
 ```java
 @Route("/team/admin")
 @RolesAllowed("USER")
 @RouteAccess("hasAuthority('TEAM:ADMIN')")
 public class TeamAdminView extends Composite<Div> {
-  // Debe tener el rol USER Y autoridad TEAM:ADMIN
+  // Debe tener el rol USER Y la autoridad TEAM:ADMIN
 }
 ```
 
 Orden de evaluación:
-1. El evaluador `@RolesAllowed` (prioridad 5) verifica el rol `USER`
+1. Evaluador `@RolesAllowed` (prioridad 5) verifica el rol `USER`
 2. Si se aprueba, el evaluador `@RouteAccess` (prioridad 6) evalúa la expresión `SpEL`
 3. Si se aprueba, se ejecutan los evaluadores personalizados (prioridad 10+)
 
 ## Códigos de error personalizados {#custom-error-codes}
 
-Proporciona códigos de error significativos para las denegaciones de acceso:
+Proporciona códigos de error significativos para los denegados de acceso:
 
 ```java
 @Route("/premium/features")
@@ -119,7 +120,7 @@ Proporciona códigos de error significativos para las denegaciones de acceso:
 public class PremiumFeaturesView extends Composite<Div> { }
 ```
 
-El parámetro `code` identifica la razón de denegación cuando la expresión evalúa a `false`.
+El parámetro `code` identifica la razón de la denegación cuando la expresión se evalúa como `false`.
 
 ## Variables disponibles {#available-variables}
 
@@ -130,10 +131,10 @@ Las expresiones `SpEL` tienen acceso a estas variables en el contexto de evaluac
 | `authentication` | `Authentication` | Objeto de autenticación de Spring Security |
 | `principal` | `Object` | El principal autenticado (generalmente `UserDetails`) |
 | `routeClass` | `Class<? extends Component>` | La clase del componente de ruta que se está accediendo |
-| `context` | `NavigationContext` | contexto de navegación de webforJ |
-| `securityContext` | `RouteSecurityContext` | contexto de seguridad de ruta de webforJ |
+| `context` | `NavigationContext` | contexto de navegación webforJ |
+| `securityContext` | `RouteSecurityContext` | contexto de seguridad de ruta webforJ |
 
-Ejemplo usando variables:
+Ejemplo utilizando variables:
 
 ```java
 @Route("/admin")
@@ -150,7 +151,7 @@ public class SuperAdminView extends Composite<Div> { }
 
 **Usa evaluadores personalizados cuando:**
 - La autorización depende de parámetros de ruta (verificaciones de propiedad)
-- Lógica empresarial compleja que requiere la integración de servicios de Spring
+- Lógica de negocio compleja que requiere integración de servicios de Spring
 - Patrones de autorización reutilizables en múltiples rutas
 - Anotaciones personalizadas que documentan la intención de autorización
 

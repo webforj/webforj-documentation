@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Route Navigation
+title: Navegación de rutas
 description: >-
   Trigger client-side navigation programmatically with Router.navigate, pass
   parameters, and switch views without reloads.

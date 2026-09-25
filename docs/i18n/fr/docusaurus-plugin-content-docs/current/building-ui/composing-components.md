@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Composing Components
+title: Composer des composants
 description: >-
   Combine webforJ components into reusable units by extending Composite,
   configuring the bound component, and overriding initBoundComponent.

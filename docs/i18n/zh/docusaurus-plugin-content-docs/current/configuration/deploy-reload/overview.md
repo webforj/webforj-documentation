@@ -1,5 +1,5 @@
 ---
-title: Redeployment and Live Reload
+title: 重新部署与实时重载
 hide_table_of_contents: false
 hide_giscus_comments: true
 description: >-

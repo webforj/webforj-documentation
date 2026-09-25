@@ -1,6 +1,6 @@
 ---
 sidebar_position: 21
-title: Dynamic Styling
+title: 动态样式
 slug: styling
 description: >-
   Apply data-driven CSS to Table rows and cells using setRowPartProvider and

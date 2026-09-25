@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Colors
+title: Couleurs
 _i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
 webforJ fournit un système de couleurs basé sur les propriétés CSS personnalisées. Ces variables de couleur maintiennent un style visuel cohérent à travers votre application tout en vous donnant un contrôle total pour personnaliser les palettes selon vos besoins en design.

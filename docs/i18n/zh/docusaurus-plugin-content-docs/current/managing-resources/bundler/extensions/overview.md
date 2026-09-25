@@ -1,5 +1,5 @@
 ---
-title: Extensions
+title: 扩展
 hide_giscus_comments: true
 sidebar_class_name: new-content
 description: >-

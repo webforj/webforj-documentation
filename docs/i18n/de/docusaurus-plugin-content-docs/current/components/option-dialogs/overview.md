@@ -1,6 +1,6 @@
 ---
 sidebar_position: 35
-title: Option Dialogs
+title: Options-Dialoge
 hide_giscus_comments: true
 _i18n_hash: 4d818d70f6238be10dc8913d19ed47b7
 ---

@@ -4,22 +4,18 @@ sidebar_position: 65
 description: >-
   Overlay a parent container with the Loading component to block interaction
   during async tasks, with backdrop and spinner customization.
-_i18n_hash: e17c9249d41752ed1f4b98d18028371a
+_i18n_hash: 8106f15ba96904324822afd0169ec09b
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-loading" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="loading" location="com/webforj/component/loading/Loading" top='true'/>
 
-Le composant `Loading` affiche une superposition sur un composant ou une zone spécifique, signalant qu'une opération est en cours et bloquant temporairement l'interaction. Il fonctionne bien pour des tâches telles que le chargement de données, les calculs ou les processus en arrière-plan. Pour des processus globaux au niveau de l'application, le composant [`BusyIndicator`](../components/busyindicator) couvre plutôt toute l'interface.
+Le composant `Loading` affiche un overlay sur un composant ou une zone spécifique, signalant qu'une opération est en cours et bloquant temporairement l'interaction. Il est particulièrement utile pour des tâches comme le chargement de données, des calculs ou des processus en arrière-plan. Pour les processus globaux à l'échelle de l'application, le composant [`BusyIndicator`](../components/busyindicator) couvre l'ensemble de l'interface.
 
 <!-- INTRO_END -->
 
-## Bases {#basics}
-
-La manière la plus simple de créer un composant `Loading` est de l'initialiser sans paramètres supplémentaires. Par défaut, cela affiche un indicateur de chargement de base sur son contenu parent. Cependant, vous pouvez également fournir un message pour plus de contexte.
-
-Voici un exemple de création d'un composant `Loading` avec un message :
+L'initialisation d'un composant `Loading` sans paramètres supplémentaires affiche un spinner au-dessus de son contenu parent. Transmettez un message, comme dans l'exemple ci-dessous, lorsque le processus nécessite plus de contexte.
 
 <ComponentDemo
 path='/webforj/loadingdemo'
@@ -30,25 +26,25 @@ files={[
 height='300px'
 />
 
-## Portée {#scoping}
+## Scoping {#scoping}
 
-Le composant `Loading` dans webforJ peut se limiter à un conteneur parent spécifique, tel qu'un `Div`, garantissant qu'il ne bloque l'interaction utilisateur que dans cet élément. Par défaut, le composant `Loading` est relatif à son parent, ce qui signifie qu'il superpose le composant parent plutôt que l'ensemble de l'application.
+Le composant `Loading` dans webforJ peut se restreindre à un conteneur parent spécifique, tel qu'un `Div`, garantissant qu'il bloque uniquement l'interaction utilisateur à l'intérieur de cet élément. Par défaut, le composant `Loading` est relatif à son parent, ce qui signifie qu'il superpose le composant parent plutôt que l'ensemble de l'application.
 
-Pour limiter le composant `Loading` à son parent, il suffit d'ajouter le composant `Loading` au conteneur parent. Par exemple, si vous l'ajoutez à un `Div`, la superposition de chargement ne s'applique qu'à ce `Div` :
+Pour limiter le composant `Loading` à son parent, il vous suffit d'ajouter le composant `Loading` au conteneur parent. Par exemple, si vous l'ajoutez à un `Div`, l'overlay de chargement ne s'applique qu'à ce `Div` :
 
 ```java
 Div parentDiv = new Div();
 parentDiv.setStyle("position", "relative");
 Loading loading = new Loading();
 parentDiv.add(loading);
-loading.open();  // Le chargement bloquera uniquement l'interaction au sein du parentDiv
+loading.open();  // Le chargement bloquera uniquement l'interaction à l'intérieur du parentDiv
 ```
 
-## Arrière-plan {#backdrop}
+## Backdrop {#backdrop}
 
-Le composant `Loading` dans webforJ vous permet d'afficher un arrière-plan pour bloquer l'interaction utilisateur pendant qu'un processus est en cours. Par défaut, le composant active l'arrière-plan, mais vous avez la possibilité de le désactiver si besoin.
+Le composant `Loading` dans webforJ vous permet d'afficher un arrière-plan pour bloquer l'interaction utilisateur pendant qu'un processus est en cours. Par défaut, le composant active l'arrière-plan, mais vous avez la possibilité de l'éteindre si nécessaire.
 
-Pour le composant `Loading`, l'arrière-plan est visible par défaut. Vous pouvez l'activer ou le désactiver explicitement à l'aide de la méthode `setBackdropVisible()` :
+Pour le composant `Loading`, l'arrière-plan est visible par défaut. Vous pouvez l'activer explicitement ou le désactiver en utilisant la méthode `setBackdropVisible()` :
 
 ```java
 Loading loading = new Loading();
@@ -56,7 +52,7 @@ loading.setBackdropVisible(false);  // Désactive l'arrière-plan
 loading.open();
 ```
 :::info Arrière-plan désactivé
-Même lorsque vous désactivez l'arrière-plan, le composant `Loading` continue de bloquer l'interaction utilisateur pour garantir que le processus sous-jacent se termine sans interruption. L'arrière-plan contrôle simplement la superposition visuelle, pas le comportement de blocage de l'interaction.
+Même lorsque vous désactivez l'arrière-plan, le composant `Loading` continue de bloquer l'interaction utilisateur pour garantir que le processus sous-jacent se termine sans interruption. L'arrière-plan contrôle simplement l'affichage visuel, pas le comportement de blocage de l'interaction.
 :::
 
 ## `Spinner` {#spinner}
@@ -76,14 +72,14 @@ height='300px'
 
 ## Cas d'utilisation {#use-cases}
 - **Récupération de données**
-   Lors de la récupération de données depuis un serveur ou une API, le composant `Loading` superpose une section spécifique de l'interface utilisateur, telle qu'une carte ou un formulaire, pour informer les utilisateurs que le système travaille en arrière-plan. Cela est idéal lorsque vous souhaitez montrer l'avancement d'une seule partie de l'écran sans bloquer l'ensemble de l'interface.
+   Lors de la récupération de données à partir d'un serveur ou d'une API, le composant `Loading` superpose une section spécifique de l'interface utilisateur, comme une carte ou un formulaire, pour informer les utilisateurs que le système travaille en arrière-plan. Cela est idéal lorsque vous souhaitez montrer l'avancement d'une seule partie de l'écran sans bloquer l'ensemble de l'interface.
 
 - **Chargement de contenu dans des cartes/sections**
-   Le composant `Loading` peut être limité à des zones spécifiques d'une page, telles que des cartes individuelles ou des conteneurs. Cela est utile lorsque vous souhaitez indiquer qu'un section particulière de l'interface utilisateur est encore en cours de chargement tout en permettant aux utilisateurs d'interagir avec d'autres parties de la page.
+   Le composant `Loading` peut être restreint à des zones spécifiques d'une page, telles que des cartes ou des conteneurs individuels. Cela est utile lorsque vous souhaitez indiquer qu'une section particulière de l'interface utilisateur est encore en cours de chargement tout en permettant aux utilisateurs d'interagir avec d'autres parties de la page.
 
 - **Soumissions de formulaires complexes**
-   Pour les soumissions de formulaires plus longues où la validation ou le traitement prend du temps, le composant `Loading` fournit un retour visuel aux utilisateurs, les rassurant que leurs données sont en cours de traitement.
+   Pour les soumissions de formulaires plus longues où la validation ou le traitement prend du temps, le composant `Loading` fournit un retour visuel aux utilisateurs, les rassurant sur le fait que leurs saisies sont en cours de traitement.
 
-## Style {#styling}
+## Stylisation {#styling}
 
 <TableBuilder name="Loading" />

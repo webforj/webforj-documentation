@@ -1,5 +1,5 @@
 ---
-title: Local BLS License
+title: Lokale BLS-licentie
 sidebar_class_name: new-content
 sidebar_position: 25
 description: >-

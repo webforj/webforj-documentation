@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Navigation Events
+title: Navigatie-events
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 Naast component-specifieke lifecycle-gebeurtenissen, kunt u **globale gebeurtenisluisteraars** op routersniveau registreren. Dit maakt het mogelijk om navigatie wereldwijd over de gehele app te volgen, wat nuttig is voor logging, analytics of andere dwarsliggende zorgen.

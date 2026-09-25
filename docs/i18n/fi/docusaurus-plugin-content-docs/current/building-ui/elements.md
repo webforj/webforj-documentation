@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Elements
+title: Elementit
 sidebar_class_name: updated-content
 description: >-
   Integrate raw HTML tags and custom web components in webforJ using the Element

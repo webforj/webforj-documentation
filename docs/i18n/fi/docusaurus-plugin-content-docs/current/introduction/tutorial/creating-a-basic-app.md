@@ -1,5 +1,5 @@
 ---
-title: Creating a Basic App
+title: Perussovelluksen luominen
 sidebar_position: 2
 description: Step 1 - Add components to an app.
 _i18n_hash: d7385c22706cf76508b7e1971186f88d

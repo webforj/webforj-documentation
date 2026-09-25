@@ -1,6 +1,6 @@
 ---
 sidebar_position: 15
-title: Browser Console
+title: Browser-Konsole
 description: >-
   Log messages from Java to the browser console with typed levels and styled
   output using the BrowserConsole utility.

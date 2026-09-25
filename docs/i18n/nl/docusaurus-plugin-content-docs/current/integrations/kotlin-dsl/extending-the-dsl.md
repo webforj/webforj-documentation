@@ -1,5 +1,5 @@
 ---
-title: Extending the DSL
+title: De DSL uitbreiden
 sidebar_position: 20
 _i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---

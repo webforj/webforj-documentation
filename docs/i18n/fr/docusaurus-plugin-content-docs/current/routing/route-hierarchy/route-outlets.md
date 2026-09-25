@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Route Outlets
+title: Points de sortie de route
 _i18n_hash: 8a64cd917fe9f1de3f37ee01254e80e7
 ---
 Un **outlet** est un composant désigné, soit une [mise en page de route](./route-types#layout-routes) ou une [vue de route](./route-types#view-routes), où les routes enfants sont rendues dynamiquement. Il définit où le contenu de la route enfant apparaîtra au sein de la route parent. Les outlets sont fondamentaux pour créer des interfaces utilisateur modulaires et imbriquées ainsi que des structures de navigation flexibles.

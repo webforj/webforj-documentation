@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Rendering
+title: 渲染
 slug: rendering
 description: >-
   Transform Table cells into text, badges, icons, links, or custom HTML with

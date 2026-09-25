@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Lifecycle Listeners
+title: Listeners de ciclo de vida
 description: >-
   Hook into webforJ app startup and shutdown phases with AppLifecycleListener to
   initialize services, modify config, or clean up resources.
