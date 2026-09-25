@@ -1,44 +1,45 @@
 ---
 sidebar_position: 5
-title: SpEL-lausekkeet
-_i18n_hash: 1019aac355c5ef0efc8623660c3501e5
+title: SpEL Expressions
+description: >-
+  Author route authorization rules with Spring Expression Language using
+  @RouteAccess for role, authority, and custom checks.
+_i18n_hash: 59601d0d83fe7eb4b05bf8eab47515c3
 ---
-Spring Expression Language (`SpEL`) tarjoaa deklaratiivisen tavan määritellä valtuutus sääntöjä suoraan annotaatioissa. `@RouteAccess` annotaatio arvioi `SpEL`-lausekkeita hyödyntäen Spring Securityn sisäänrakennettuja valtuutusfunktioita.
+Spring Expression Language (`SpEL`) tarjoaa deklaratiivisen tavan määrittää valtuutussäännöt suoraan annotaatioissa. `@RouteAccess`-annotaatio arvioi `SpEL`-ilmaisuja käyttäen Spring Securityn sisäänrakennettuja valtuutustoimintoja.
 
 :::info Vain Spring Security
-`SpEL`-lausekkeet ovat käytettävissä vain Spring-integraation avulla.
+`SpEL`-ilmaisuja on saatavilla vain käytettäessä Spring-integraatiota.
 :::
 
-## Peruskäyttö {#basic-usage}
-
-`@RouteAccess` annotaatio hyväksyy `SpEL`-lausekkeen, joka arvioituu booleaniksi:
+`@RouteAccess`-annotaatio hyväksyy `SpEL`-ilmaisuja, jotka arvioidaan boolean-arvoiksi:
 
 ```java
 @Route("/admin/dashboard")
 @RouteAccess("hasRole('ADMIN')")
 public class AdminDashboardView extends Composite<Div> {
-  // Vain käyttäjät, joilla on ROLE_ADMIN-oikeus, voivat käyttää
+  // Vain käyttäjillä, joilla on ROLE_ADMIN -valtuutus, on pääsy
 }
 ```
 
-Jos lauseke arvioituu `true`, pääsy myönnetään. Jos `false`, käyttäjä ohjataan pääsy kielletty -sivulle.
+Jos ilmaisu arvioidaan `true`:ksi, pääsy myönnetään. Jos `false`, käyttäjä ohjataan pääsyn kielto-sivulle.
 
-## Sisäänrakennetut turvallisuusfunktionit {#built-in-security-functions}
+## Sisäänrakennetut turvallisuustoiminnot {#built-in-security-functions}
 
-Spring Security tarjoaa seuraavat valtuutusfunktiot `SecurityExpressionRoot` kautta:
+Spring Security tarjoaa seuraavat valtuutustoiminnot `SecurityExpressionRoot`in kautta:
 
-| Funktio | Parametrit | Kuvaus | Esimerkki |
-|---------|------------|--------|---------|
-| `hasRole` | `String role` | Tarkistaa, onko käyttäjä määritellyt roolin (automaattisesti etuliite `ROLE_`) | `hasRole('ADMIN')` vastaa `ROLE_ADMIN` |
-| `hasAnyRole` | `String... roles` | Tarkistaa, onko käyttäjällä jokin määritellyistä rooleista | `hasAnyRole('ADMIN', 'MANAGER')` |
-| `hasAuthority` | `String authority` | Tarkistaa, onko käyttäjällä tarkka valtuutusmerkkijono | `hasAuthority('REPORTS:READ')` |
-| `hasAnyAuthority` | `String... authorities` | Tarkistaa, onko käyttäjällä jokin määritellyistä valtuutuksista | `hasAnyAuthority('REPORTS:READ', 'REPORTS:WRITE')` |
-| `isAuthenticated` | Ei mitään | Palauttaa `true`, jos käyttäjä on todennettu | `isAuthenticated()` |
+| Toiminto      | Parametrit            | Kuvaus                                                   | Esimerkki                        |
+|---------------|-----------------------|----------------------------------------------------------|----------------------------------|
+| `hasRole`     | `String role`         | Tarkistaa, onko käyttäjällä määritetty rooli (automaattisesti etuliitteellä `ROLE_`) | `hasRole('ADMIN')` vastaa `ROLE_ADMIN`:ia |
+| `hasAnyRole`  | `String... roles`     | Tarkistaa, onko käyttäjällä jokin määritetty rooli      | `hasAnyRole('ADMIN', 'MANAGER')` |
+| `hasAuthority`| `String authority`    | Tarkistaa, onko käyttäjällä tarkka valtuutusteksti      | `hasAuthority('REPORTS:READ')`  |
+| `hasAnyAuthority`| `String... authorities` | Tarkistaa, onko käyttäjällä jokin määritetty valtuutus   | `hasAnyAuthority('REPORTS:READ', 'REPORTS:WRITE')` |
+| `isAuthenticated` | Ei mitään         | Palauttaa `true`, jos käyttäjä on todennettu            | `isAuthenticated()`              |
 
 ### Esimerkit {#examples}
 
 ```java
-// Roolin tarkistus
+// Roolitarkistus
 @Route("/admin")
 @RouteAccess("hasRole('ADMIN')")
 public class AdminView extends Composite<Div> { }
@@ -48,12 +49,12 @@ public class AdminView extends Composite<Div> { }
 @RouteAccess("hasAnyRole('ADMIN', 'MANAGER', 'SUPERVISOR')")
 public class StaffView extends Composite<Div> { }
 
-// Oikeuden tarkistus
+// Valtuustarkistus
 @Route("/reports")
 @RouteAccess("hasAuthority('REPORTS:READ')")
 public class ReportsView extends Composite<Div> { }
 
-// Vaatii todennuksen
+// Vaatimus todennuksesta
 @Route("/profile")
 @RouteAccess("isAuthenticated()")
 public class ProfileView extends Composite<Div> { }
@@ -61,7 +62,7 @@ public class ProfileView extends Composite<Div> { }
 
 ## Ehtojen yhdistäminen {#combining-conditions}
 
-Käytä boolean-operaattoreita (`and`, `or`, `!`) luodaksesi monimutkaisempia valtuutus sääntöjä:
+Käytä boolean-operaattoreita (`and`, `or`, `!`) luodaksesi monimutkaisempia valtuutussääntöjä:
 
 ```java
 // Molemmat ehdot vaaditaan
@@ -69,17 +70,17 @@ Käytä boolean-operaattoreita (`and`, `or`, `!`) luodaksesi monimutkaisempia va
 @RouteAccess("hasRole('MODERATOR') and hasAuthority('REPORTS:VIEW')")
 public class ModeratorReportsView extends Composite<Div> { }
 
-// Joku ehto myöntää pääsyn
+// Jokin ehto myöntää pääsyn
 @Route("/support")
 @RouteAccess("hasRole('ADMIN') or hasRole('SUPPORT')")
 public class SupportView extends Composite<Div> { }
 
-// Kieltäminen
+// Kieltämistä
 @Route("/trial/features")
 @RouteAccess("isAuthenticated() and !hasAuthority('PREMIUM')")
 public class TrialFeaturesView extends Composite<Div> { }
 
-// Monimutkainen monirivinen lauseke
+// Monimutkainen monirivinen ilmaisu
 @Route("/reports/advanced")
 @RouteAccess("""
   hasRole('ADMIN') or
@@ -88,27 +89,27 @@ public class TrialFeaturesView extends Composite<Div> { }
 public class AdvancedReportsView extends Composite<Div> { }
 ```
 
-## Yhdistäminen muiden annotaatioiden kanssa {#combining-with-other-annotations}
+## Yhdistäminen muihin annotaatioihin {#combining-with-other-annotations}
 
-`@RouteAccess` toimii yhdessä standardin turvallisuusannotaatioiden kanssa. Arvioijia suoritetaan prioriteettijärjestyksessä:
+`@RouteAccess` toimii yhdessä vakioturva-annotaatioiden kanssa. Arvioijat toimivat prioriteettijärjestyksessä:
 
 ```java
 @Route("/team/admin")
 @RolesAllowed("USER")
 @RouteAccess("hasAuthority('TEAM:ADMIN')")
 public class TeamAdminView extends Composite<Div> {
-  // On oltava USER-rooli JA TEAM:ADMIN-oikeus
+  // On oltava USER-rooli JA TEAM:ADMIN -valtuutus
 }
 ```
 
 Arviointijärjestys:
-1. `@RolesAllowed` arvioija (prioriteetti 5) tarkistaa `USER`-roolin
-2. Jos hyväksytty, `@RouteAccess` arvioija (prioriteetti 6) arvioi `SpEL`-lausekkeen
-3. Jos hyväksytty, mukautetut arvioijat suoritetaan (prioriteetti 10+)
+1. `@RolesAllowed`-arvioija (prioriteetti 5) tarkistaa `USER`-roolin
+2. Jos hyväksytään, `@RouteAccess`-arvioija (prioriteetti 6) arvioi `SpEL`-ilmaisuja
+3. Jos hyväksytään, mukautetut arvioijat suoritetaan (prioriteetti 10+)
 
 ## Mukautetut virhekoodit {#custom-error-codes}
 
-Anna merkityksellisiä virkoodeja pääsykieltojen yhteydessä:
+Tarjoa merkityksellisiä virhekoodit pääsyn kieltämiselle:
 
 ```java
 @Route("/premium/features")
@@ -119,19 +120,19 @@ Anna merkityksellisiä virkoodeja pääsykieltojen yhteydessä:
 public class PremiumFeaturesView extends Composite<Div> { }
 ```
 
-`code`-parametri tunnistaa hylkäyssyyn, kun lauseke arvioituu `false`.
+`code`-parametri tunnistaa kieltämisen syyn, kun ilmaisu arvioituu `false`:ksi.
 
 ## Saatavilla olevat muuttujat {#available-variables}
 
-`SpEL`-lausekkeilla on pääsy näihin muuttujiiin arviointikontekstissa:
+`SpEL`-ilmaisuilla on pääsy seuraaviin muuttujii arviointikontekstissa:
 
-| Muuttuja | Tyyppi | Kuvaus |
-|----------|--------|--------|
-| `authentication` | `Authentication` | Spring Securityn todennusobjekti |
-| `principal` | `Object` | Todennettu pääkäyttäjä (yleensä `UserDetails`) |
-| `routeClass` | `Class<? extends Component>` | Käytettävä reittikomponentin luokka |
-| `context` | `NavigationContext` | webforJ navigointikonteksti |
-| `securityContext` | `RouteSecurityContext` | webforJ reitin turvallisuuskonteksti |
+| Muuttuja      | Tyyppi                | Kuvaus                                                   |
+|---------------|-----------------------|----------------------------------------------------------|
+| `authentication` | `Authentication`    | Spring Securityn todennusobjekti                        |
+| `principal`   | `Object`              | Todennettu päähenkilö (yleensä `UserDetails`)           |
+| `routeClass`  | `Class<? extends Component>` | Pääsyssä oleva reititys komponentin luokka          |
+| `context`     | `NavigationContext`   | webforJ navigointikonteksti                              |
+| `securityContext` | `RouteSecurityContext` | webforJ reititys turvallisuuskonteksti                |
 
 Esimerkki muuttujien käytöstä:
 
@@ -141,17 +142,17 @@ Esimerkki muuttujien käytöstä:
 public class SuperAdminView extends Composite<Div> { }
 ```
 
-## Milloin käyttää `SpEL` VERSUS mukautettuja arvioijia {#when-to-use-spel-vs-custom-evaluators}
+## Milloin käyttää `SpEL` VS mukautettuja arvioijia {#when-to-use-spel-vs-custom-evaluators}
 
-**Käytä `@RouteAccess` `SpEL` kun:**
-- Valtuutus perustuu puhtaasti rooleihin tai valtuutuksiin
-- Yhdistetään sisäänrakennettuja turvallisuusfunktioita boolean-logiikan kanssa
-- Reitti-spesifiset säännöt, joita ei tarvitse käyttää uudelleen
+**Käytä `@RouteAccess` `SpEL`:ia kun:**
+- Valtuutus perustuu täysin rooleihin tai valtuutuksiin
+- Yhdistetään sisäänrakennettuja turvallisuustoimintoja boolean-logiikan kanssa
+- Reitti-spesifisiä sääntöjä, joita ei tarvitse käyttää uudelleen
 
 **Käytä mukautettuja arvioijia kun:**
-- Valtuutus riippuu reittiparametreista (omistajuuden tarkistukset)
+- Valtuutus riippuu reitityksen parametreista (omistajuustarkistukset)
 - Monimutkainen liiketoimintalogiikka, joka vaatii Spring-palvelun integraatiota
-- Uudelleen käytettävät valtuutuspatterit useilla reiteillä
-- Mukautetut annotaatiot, jotka dokumentoivat valtuutuksen tarkoituksen
+- Uudelleenkäytettäviä valtuutuspatterneja useilla reiteillä
+- Mukautettuja annotaatioita, jotka dokumentoivat valtuutusintention
 
-Katso [Mukautettujen arvioijien opas](/docs/security/custom-evaluators) edistyneiden valtuutus-skenaarioiden toteuttamiseksi.
+Katso [Mukautettujen arvioijien opas](/docs/security/custom-evaluators) kehitettävien edistyneinä valtuutus-skenaarioiden toteuttamiseen.

@@ -1,15 +1,16 @@
 ---
 sidebar_position: 5
-title: Expressions SpEL
-_i18n_hash: 1019aac355c5ef0efc8623660c3501e5
+title: SpEL Expressions
+description: >-
+  Author route authorization rules with Spring Expression Language using
+  @RouteAccess for role, authority, and custom checks.
+_i18n_hash: 59601d0d83fe7eb4b05bf8eab47515c3
 ---
-Spring Expression Language (`SpEL`) fournit une manière déclarative de définir des règles d'autorisation directement dans les annotations. L'annotation `@RouteAccess` évalue les expressions `SpEL` en utilisant les fonctions d'autorisation intégrées de Spring Security.
+Le langage d'expression Spring (`SpEL`) fournit un moyen déclaratif de définir des règles d'autorisation directement dans les annotations. L'annotation `@RouteAccess` évalue les expressions `SpEL` en utilisant les fonctions d'autorisation intégrées de Spring Security.
 
 :::info Spring Security uniquement
 Les expressions `SpEL` ne sont disponibles que lors de l'utilisation de l'intégration Spring.
 :::
-
-## Utilisation de base {#basic-usage}
 
 L'annotation `@RouteAccess` accepte une expression `SpEL` qui évalue à un booléen :
 
@@ -17,7 +18,7 @@ L'annotation `@RouteAccess` accepte une expression `SpEL` qui évalue à un bool
 @Route("/admin/dashboard")
 @RouteAccess("hasRole('ADMIN')")
 public class AdminDashboardView extends Composite<Div> {
-  // Seuls les utilisateurs avec l'autorité ROLE_ADMIN peuvent accéder
+  // Seuls les utilisateurs ayant l'autorité ROLE_ADMIN peuvent accéder
 }
 ```
 
@@ -29,8 +30,8 @@ Spring Security fournit les fonctions d'autorisation suivantes via `SecurityExpr
 
 | Fonction | Paramètres | Description | Exemple |
 |----------|-----------|-------------|---------|
-| `hasRole` | `String role` | Vérifie si l'utilisateur a le rôle spécifié (préfère automatiquement par `ROLE_`) | `hasRole('ADMIN')` correspond à `ROLE_ADMIN` |
-| `hasAnyRole` | `String... roles` | Vérifie si l'utilisateur a l'un des rôles spécifiés | `hasAnyRole('ADMIN', 'MANAGER')` |
+| `hasRole` | `String role` | Vérifie si l'utilisateur possède le rôle spécifié (prefixe automatiquement avec `ROLE_`) | `hasRole('ADMIN')` correspond à `ROLE_ADMIN` |
+| `hasAnyRole` | `String... roles` | Vérifie si l'utilisateur possède l'un des rôles spécifiés | `hasAnyRole('ADMIN', 'MANAGER')` |
 | `hasAuthority` | `String authority` | Vérifie si l'utilisateur a la chaîne d'autorité exacte | `hasAuthority('REPORTS:READ')` |
 | `hasAnyAuthority` | `String... authorities` | Vérifie si l'utilisateur a l'une des autorités spécifiées | `hasAnyAuthority('REPORTS:READ', 'REPORTS:WRITE')` |
 | `isAuthenticated` | Aucun | Renvoie `true` si l'utilisateur est authentifié | `isAuthenticated()` |
@@ -38,7 +39,7 @@ Spring Security fournit les fonctions d'autorisation suivantes via `SecurityExpr
 ### Exemples {#examples}
 
 ```java
-// Vérification de rôle
+// Vérification du rôle
 @Route("/admin")
 @RouteAccess("hasRole('ADMIN')")
 public class AdminView extends Composite<Div> { }
@@ -48,7 +49,7 @@ public class AdminView extends Composite<Div> { }
 @RouteAccess("hasAnyRole('ADMIN', 'MANAGER', 'SUPERVISOR')")
 public class StaffView extends Composite<Div> { }
 
-// Vérification d'autorité
+// Vérification de l'autorité
 @Route("/reports")
 @RouteAccess("hasAuthority('REPORTS:READ')")
 public class ReportsView extends Composite<Div> { }
@@ -59,7 +60,7 @@ public class ReportsView extends Composite<Div> { }
 public class ProfileView extends Composite<Div> { }
 ```
 
-## Combiner des conditions {#combining-conditions}
+## Combinaison de conditions {#combining-conditions}
 
 Utilisez des opérateurs booléens (`and`, `or`, `!`) pour créer des règles d'autorisation complexes :
 
@@ -79,7 +80,7 @@ public class SupportView extends Composite<Div> { }
 @RouteAccess("isAuthenticated() and !hasAuthority('PREMIUM')")
 public class TrialFeaturesView extends Composite<Div> { }
 
-// Expression multi-ligne complexe
+// Expression complexe multi-lignes
 @Route("/reports/advanced")
 @RouteAccess("""
   hasRole('ADMIN') or
@@ -88,9 +89,9 @@ public class TrialFeaturesView extends Composite<Div> { }
 public class AdvancedReportsView extends Composite<Div> { }
 ```
 
-## Combiner avec d'autres annotations {#combining-with-other-annotations}
+## Combinaison avec d'autres annotations {#combining-with-other-annotations}
 
-`@RouteAccess` fonctionne avec les annotations de sécurité standard. Les évaluateurs s'exécutent dans un ordre de priorité :
+`@RouteAccess` fonctionne en parallèle avec les annotations de sécurité standard. Les évaluateurs s'exécutent dans l'ordre de priorité :
 
 ```java
 @Route("/team/admin")
@@ -129,9 +130,9 @@ Les expressions `SpEL` ont accès à ces variables dans le contexte d'évaluatio
 |----------|------|-------------|
 | `authentication` | `Authentication` | Objet d'authentification Spring Security |
 | `principal` | `Object` | Le principal authentifié (généralement `UserDetails`) |
-| `routeClass` | `Class<? extends Component>` | La classe de composant de route en cours d'accès |
-| `context` | `NavigationContext` | contexte de navigation webforJ |
-| `securityContext` | `RouteSecurityContext` | contexte de sécurité de route webforJ |
+| `routeClass` | `Class<? extends Component>` | La classe du composant de route étant accédée |
+| `context` | `NavigationContext` | Contexte de navigation webforJ |
+| `securityContext` | `RouteSecurityContext` | Contexte de sécurité de route webforJ |
 
 Exemple utilisant des variables :
 
@@ -141,7 +142,7 @@ Exemple utilisant des variables :
 public class SuperAdminView extends Composite<Div> { }
 ```
 
-## Quand utiliser `SpEL` contre des évaluateurs personnalisés {#when-to-use-spel-vs-custom-evaluators}
+## Quand utiliser `SpEL` ou des évaluateurs personnalisés {#when-to-use-spel-vs-custom-evaluators}
 
 **Utilisez `@RouteAccess` `SpEL` lorsque :**
 - L'autorisation est basée uniquement sur des rôles ou des autorités
@@ -150,8 +151,8 @@ public class SuperAdminView extends Composite<Div> { }
 
 **Utilisez des évaluateurs personnalisés lorsque :**
 - L'autorisation dépend des paramètres de la route (vérifications de propriété)
-- Logique métier complexe nécessitant une intégration de service Spring
+- Logique métier complexe nécessitant l'intégration de services Spring
 - Modèles d'autorisation réutilisables à travers plusieurs routes
 - Annotations personnalisées qui documentent l'intention d'autorisation
 
-Consultez le [guide des évaluateurs personnalisés](/docs/security/custom-evaluators) pour la mise en œuvre de scénarios d'autorisation avancés.
+Consultez le [guide des évaluateurs personnalisés](/docs/security/custom-evaluators) pour implémenter des scénarios d'autorisation avancés.

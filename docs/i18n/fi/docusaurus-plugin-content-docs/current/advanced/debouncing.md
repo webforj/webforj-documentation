@@ -2,12 +2,17 @@
 sidebar_position: 21
 title: Debouncing
 slug: debouncing
-_i18n_hash: 2096c774627674739fd237aed9a4f79e
+description: >-
+  Delay actions until activity settles using the Debouncer class for
+  search-as-you-type, autosave, and other rate-limited UI work.
+_i18n_hash: fd81dccbd2aeb6e50922c2d09de536de
 ---
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="foundation" location="com/webforj/Debouncer" top='true'/>
 
-Debounceaminen on tekniikka, joka viivästyttää toiminnan suorittamista, kunnes tietty aika on kulunut viimeisestä kutsusta. Jokainen uusi kutsu nollaa ajastimen. Tämä on hyödyllistä skenaarioissa, kuten kirjoittaessasi hakua, jossa haluat odottaa, että käyttäjä lopettaa kirjoittamisen ennen hakukyselyn suorittamista.
+Debouncing on tekniikka, joka viivyttää toiminnon suorittamista, kunnes määritetty aika on kulunut viimeisestä kutsusta. Jokainen uusi kutsu nollaa ajastimen. Tämä on hyödyllistä tilanteissa, kuten hakeminen kirjoittaessa, joissa haluat odottaa, kunnes käyttäjä lopettaa kirjoittamisen ennen haun suorittamista.
+
+<!-- INTRO_END -->
 
 <ComponentDemo
 path='/webforj/debouncer'
@@ -15,9 +20,7 @@ files={['src/main/java/com/webforj/samples/views/debouncer/DebouncerView.java']}
 height='265px'
 />
 
-## Peruskäyttö {#basic-usage}
-
-`Debouncer`-luokka tarjoaa yksinkertaisen tavan debounce-toimintoja. Luo `Debouncer`, jolla on viive sekunteina, ja kutsu sitten `run()` haluamasi debounce-toiminnon kanssa:
+Luo `Debouncer` viiveellä sekunneissa, ja kutsu sitten `run()` haluamallasi toiminnolla:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);
@@ -27,41 +30,41 @@ textField.onModify(e -> {
 });
 ```
 
-Tässä esimerkissä `search()`-metodia kutsutaan vain sen jälkeen, kun käyttäjä on lopettanut kirjoittamisen 300 millisekunnin ajan. Jokainen näppäinpainallus nollaa ajastimen `onModify`-tapahtuman kautta, joten nopea kirjoittaminen ei käynnistä useita hakuja.
+Tässä esimerkissä `search()`-metodia kutsutaan vain, kun käyttäjä on lopettanut kirjoittamisen 300 millisekunnin ajan. Jokainen näppäinpainallus nollaa ajastimen `onModify`-tapahtuman avulla, joten nopea kirjoittaminen ei laukaise useita hakuja.
 
-## Kuinka se toimii {#how-it-works}
+## Miten se toimii {#how-it-works}
 
-Kun kutsut `run()` toiminnoilla:
+Kun kutsut `run()` toimintoa:
 
-1. Jos ei ole odottavaa toimintoa, `Debouncer` aikatauluttaa toiminnan suoritettavaksi viiveen jälkeen
-2. Jos toiminto on jo odottavana, edellinen toiminto peruutetaan ja ajastin käynnistyy uudelleen uuden toiminnon kanssa
+1. Jos ei ole odottavaa toimintoa, `Debouncer` aikatauluttaa toiminnon suoritettavaksi viiveen jälkeen
+2. Jos toiminto on jo odottamassa, aikaisempi toiminto peruutetaan ja ajastin käynnistyy uudelleen uudella toiminnolla
 3. Kun viive on kulunut ilman uutta kutsua, toiminto suoritetaan
 
-`Debouncer` toimii käyttöliittymän säikeessä käyttäen webforJ:n [`Interval`](/docs/advanced/interval) mekanismia, joten sinun ei tarvitse kääriä käyttöliittymän päivityksiä `Environment.runLater()`-muotoon.
+`Debouncer` käyttää käyttöliittymän säiettä hyödyntäen webforJ:n [`Interval`](/docs/advanced/interval) mekanismia, joten sinun ei tarvitse kääriä käyttöliittymän päivityksiä `Environment.runLater()`-kutsun ympärille.
 
-:::tip Viiveyksiköt
+:::tip Viiveen yksiköt
 Viiveparametri käyttää sekunteja yksikkönä, ei millisekunteja. Käytä `0.3f` 300 ms:lle tai `1.5f` 1,5 sekunnille.
 :::
 
 ## Suorittamisen hallinta {#controlling-execution}
 
-Seuraavia metodeja voidaan käyttää tarkempaan suorituksen käsittelyyn ja `Debouncerin` käyttöön:
+Seuraavia metodeja voidaan käyttää tarkempaan hallintaan `Debouncer`in käyttöön:
 
-### Odottavan toiminnan peruuttaminen {#cancelling-a-pending-action}
+### Odottavan toiminnon peruuttaminen {#cancelling-a-pending-action}
 
-Käytä `cancel()` pysäyttääksesi odottavan toiminnan suorittamisen:
+Käytä `cancel()` estääksesi odottavan toiminnon suorittamisen:
 
 ```java
 Debouncer debounce = new Debouncer(1f);
 
 debounce.run(() -> saveDocument());
 
-// Käyttäjä siirtyy pois ennen tallennuksen suorittamista
+// Käyttäjä navigoi pois ennen kuin tallenus suoritetaan
 debounce.cancel();
 ```
 
-:::tip Odottavien debouncejen peruuttaminen
-Kuten aikaväleissä, on hyvä käytäntö peruuttaa odottavat debounce-toiminnat, kun komponentti tuhotaan. Tämä estää muistivuodot ja virheet tuhoutuneilla komponenteilla suoritettavissa toiminnoissa:
+:::tip Odottavien viivästysten peruuttaminen
+Kuten aikaväleissä, on hyvä käytäntö peruuttaa odottavat viivästyneet toiminnot, kun komponenttia tuhotaan. Tämä estää muistivuotoja ja virheitä, jotka johtuvat toimintojen suorittamisesta tuhoittuissa komponenteissa:
 
 ```java
 public class SearchPanel extends Composite<Div> {
@@ -75,9 +78,9 @@ public class SearchPanel extends Composite<Div> {
 ```
 :::
 
-### Pakotettu välitön suorittaminen {#forcing-immediate-execution}
+### Välitön suorittaminen {#forcing-immediate-execution}
 
-Käytä `flush()` suorittaaksesi odottavan toiminnan heti:
+Käytä `flush()` suorittaaksesi odottavan toiminnon heti:
 
 ```java
 Debouncer debounce = new Debouncer(0.5f);
@@ -86,7 +89,7 @@ textField.onModify(e -> {
   debounce.run(() -> validateInput(textField.getText()));
 });
 
-// Pakota validointi ennen lomakkeen lähettämistä
+// Pakota validoimaan ennen lomakkeen lähettämistä
 submitButton.onClick(e -> {
   debounce.flush();
   if (isValid()) {
@@ -97,7 +100,7 @@ submitButton.onClick(e -> {
 
 ### Odottavan tilan tarkistaminen {#checking-pending-status}
 
-Käytä `isPending()` varmistaaksesi, onko toiminta odottamassa suoritusta:
+Käytä `isPending()` tarkistaaksesi, onko toiminto odottamassa suorittamista:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);
@@ -107,25 +110,25 @@ if (debounce.isPending()) {
 }
 ```
 
-## Tapahtumatason debounce vs `Debouncer` {#event-level-debouncing-vs-debouncer}
+## Tapahtumatason viivästys vs `Debouncer` {#event-level-debouncing-vs-debouncer}
 
-webforJ tarjoaa kaksi lähestymistapaa debounceamiseen:
+webforJ tarjoaa kaksi lähestymistapaa viivästykseen:
 
 | Ominaisuus | `Debouncer` | `ElementEventOptions.setDebounce()` |
-|------------|-------------|-------------------------------------|
-| Laajuus    | Mikä tahansa toiminto | Elementtien tapahtumat vain |
-| Sijainti   | Palvelinpuoleinen | Asiakaspuoleinen |
+|------------|-------------|--------------------------------------|
+| Laajuus    | Mikä tahansa toiminto | Vain elementtitapahtumat |
+| Sijainti   | Palvelinpuolella | Asiakaspuolella |
 | Yksikkö    | Sekunnit (float) | Millisekunnit (int) |
-| Joustavuus | Täydellinen hallinta peruutus/pakota | Automaattinen tapahtuman kanssa |
+| Joustavuus | Täysi hallinta peruutuksen/flushin avulla | Automaattinen tapahtumalla |
 
-Käytä `Debouncer`-luokkaa, kun tarvitset ohjelmallista hallintaa debounceamisessa, kuten odottavien toimintojen peruuttamista tai pakottamista. Käytä `ElementEventOptions`-luokkaa, kun haluat yksinkertaista asiakaspuoleista debounceamista elementtien tapahtumille ilman ylimääräisiä palvelinkierroksia.
+Käytä `Debouncer`-toimintoa, kun tarvitset ohjelmallista hallintaa viivästykseen, kuten odottavien toimintojen peruuttamista tai tyhjentämistä. Käytä `ElementEventOptions`-toimintoa, kun haluat yksinkertaista asiakaspuolen viivästystä elementtitapahtumille ilman lisäpalvelinkierroksia.
 
 ```java
-// Käyttämällä ElementEventOptions-objektia asiakaspuoleisessa debounceamisessa
+// Käyttäen ElementEventOptionsia asiakaspuolen viivästykseen
 ElementEventOptions options = new ElementEventOptions();
 options.setDebounce(300);
 
 element.addEventListener("input", e -> {
-  // Tämä käsittelijä on debounce asiakaspuolella
+  // Tämä käsittelijä on viivästytetty asiakkaalla
 }, options);
 ```

@@ -1,17 +1,18 @@
 ---
+sidebar_class_name: experimental-content
 sidebar_position: 40
-title: Ansichtsübergänge
+title: View Transitions
 description: >-
   Animate DOM changes with the browser View Transition API, applying fade,
   slide, zoom, and shared morph effects between component states.
-_i18n_hash: df97f8dc10601feff6a211aee0b4e9d7
+_i18n_hash: 28ce066594fd539d6265eedfab52c2b0
 ---
 <JavadocLink type="foundation" location="com/webforj/ViewTransition" top='true'/>
 
 <DocChip chip='since' label='25.11' />
 <DocChip chip='experimental' />
 
-View-Übergänge bieten animierte Übergänge, wenn sich der [DOM](/docs/glossary#dom) ändert, wodurch visuelles Ruckeln reduziert und der räumliche Kontext während der Navigation oder Inhaltsaktualisierungen beibehalten wird. webforJ integriert sich mit der [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) des Browsers, um die Komplexität der Koordination von Animationen zwischen alten und neuen Zuständen zu bewältigen.
+Ansichtstransitionen bieten animierte Übergänge, wenn sich der [DOM](/docs/glossary#dom) ändert. Dies reduziert visuelle Störungen und erhält den räumlichen Kontext während der Navigation oder Inhaltsaktualisierungen. webforJ integriert sich mit der [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) des Browsers, um die Komplexität der Koordination von Animationen zwischen alten und neuen Zuständen zu bewältigen.
 
 <ComponentDemo
 path='/webforj/viewtransitionchat'
@@ -26,9 +27,7 @@ height='450px'
 
 <ExperimentalWarning />
 
-## Grundlegende Verwendung {#basic-usage}
-
-Um einen View-Übergang zu erstellen, verwenden Sie `Page.getCurrent().startViewTransition()`, das einen Builder zurückgibt, um den Übergang zu konfigurieren:
+Verwenden Sie `Page.getCurrent().startViewTransition()`, um einen Übergang zu erstellen, der einen Builder für die Konfiguration des Übergangs zurückgibt:
 
 ```java
 Page.getCurrent().startViewTransition()
@@ -40,31 +39,31 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
-Der Übergangsprozess erfasst einen Snapshot des aktuellen Zustands, wendet Ihre DOM-Änderungen im `onUpdate`-Callback an und animiert dann vom alten Snapshot zum neuen Inhalt. Sie müssen `done.run()` aufrufen, um anzuzeigen, wann Ihre Änderungen abgeschlossen sind.
+Der Übergangsprozess erfasst einen Schnappschuss des aktuellen Zustands, wendet Ihre DOM-Änderungen im `onUpdate`-Callback an und animiert dann vom alten Schnappschuss zum neuen Inhalt. Sie müssen `done.run()` aufrufen, um zu signalisieren, wann Ihre Änderungen abgeschlossen sind.
 
 :::warning Der `onUpdate`-Callback ist erforderlich
-Ein Aufruf von `start()` ohne Setzen eines Update-Callbacks löst eine `IllegalStateException` aus.
+Ein Aufruf von `start()` ohne festgelegten Update-Callback wirft eine `IllegalStateException`.
 :::
 
-## Anwendung von Übergängen {#applying-transitions}
+## Übergänge anwenden {#applying-transitions}
 
-webforJ bietet vordefinierte Übergangstypen, die Sie auf Komponenten anwenden können, die in den DOM ein- oder austreten:
+webforJ bietet vordefinierte Übergangstypen, die Sie auf Komponenten anwenden können, die in den DOM eintreten oder ihn verlassen:
 
 | Konstante | Effekt |
 |-----------|--------|
 | `ViewTransition.NONE` | Keine Animation |
-| `ViewTransition.FADE` | Überblenden zwischen alten und neuen Inhalten |
-| `ViewTransition.SLIDE_LEFT` | Inhalt fließt nach links (wie bei einer Vorwärtsnavigation) |
-| `ViewTransition.SLIDE_RIGHT` | Inhalt fließt nach rechts (wie bei einer Rücknavigation) |
+| `ViewTransition.FADE` | Überblenden zwischen altem und neuem Inhalt |
+| `ViewTransition.SLIDE_LEFT` | Inhalt fließt nach links (wie bei vorwärts Navigation) |
+| `ViewTransition.SLIDE_RIGHT` | Inhalt fließt nach rechts (wie bei Rücknavigation) |
 | `ViewTransition.SLIDE_UP` | Inhalt fließt nach oben |
 | `ViewTransition.SLIDE_DOWN` | Inhalt fließt nach unten |
 | `ViewTransition.ZOOM` | Alter Inhalt schrumpft, neuer Inhalt wächst |
 | `ViewTransition.ZOOM_OUT` | Alter Inhalt wächst, neuer Inhalt schrumpft |
 
-Verwenden Sie `enter()`, um eine Komponente hinzuzufügen, und `exit()`, um eine Komponente zu entfernen:
+Verwenden Sie `enter()`, um eine Komponente beim Hinzufügen zu animieren, und `exit()`, um eine Komponente beim Entfernen zu animieren:
 
 ```java
-// Animieren einer Komponente, die in den DOM eintritt
+// Animieren Sie eine Komponente, die in den DOM eintritt
 Page.getCurrent().startViewTransition()
   .enter(chatPanel, ViewTransition.ZOOM)
   .onUpdate(done -> {
@@ -73,7 +72,7 @@ Page.getCurrent().startViewTransition()
   })
   .start();
 
-// Animieren einer Komponente, die den DOM verlässt
+// Animieren Sie eine Komponente, die den DOM verlässt
 Page.getCurrent().startViewTransition()
   .exit(chatPanel, ViewTransition.FADE)
   .onUpdate(done -> {
@@ -83,22 +82,22 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
-## Gemeinsame Komponentenübergänge {#shared-component-transitions}
+## Übergänge für gemeinsame Komponenten {#shared-component-transitions}
 
-Gemeinsame Komponentenübergänge erzeugen einen Morphing-Effekt, bei dem eine Komponente so aussieht, als würde sie sich von ihrer Position im alten View in ihre Position im neuen View verwandeln. Dies wird erreicht, indem Komponenten denselben Übergangsname mit der Methode `setViewTransitionName()` zugewiesen wird, die auf jeder Komponente verfügbar ist, die das <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink>-Interface implementiert.
+Übergänge für gemeinsame Komponenten erzeugen einen Morphing-Effekt, bei dem eine Komponente scheint, sich von ihrer Position in der alten Ansicht zu ihrer Position in der neuen Ansicht zu verwandeln. Dies wird erreicht, indem den Komponenten derselbe Übergangsname mit der Methode `setViewTransitionName()` zugewiesen wird, die auf jeder Komponente verfügbar ist, die das <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink> Interface implementiert.
 
 ```java
-// Im Kartenansicht
+// In der Kartenansicht
 image.setViewTransitionName("blog-image");
 
-// Im Detailansicht - derselbe Name erzeugt den Morph
+// In der Detailansicht - derselbe Name erzeugt das Morph
 image.setViewTransitionName("blog-image");
 ```
 
-Beim Übergang zwischen diesen Ansichten animiert der Browser die Komponente zwischen den Positionen und schafft ein verbundenes visuelles Erlebnis.
+Beim Wechsel zwischen diesen Ansichten animiert der Browser die Komponenten zwischen den Positionen und schafft so eine verbundene visuelle Erfahrung.
 
 :::tip Verwenden Sie eindeutige Namen
-Wenn Sie mit Listen oder wiederholten Komponenten arbeiten, fügen Sie eine eindeutige Identifikation in den Übergangsname ein. Jede Komponente benötigt ihren eigenen ununterscheidbaren Namen, um korrekt zu ihrem entsprechenden Element im neuen View zu morphen. Die Verwendung desselben Namens für mehrere sichtbare Komponenten führt zu undefiniertem Verhalten.
+Wenn Sie mit Listen oder wiederholten Komponenten arbeiten, fügen Sie einen eindeutigen Bezeichner in den Übergangsname ein. Jede Komponente benötigt ihren eigenen unverwechselbaren Namen, um korrekt zu ihrer entsprechenden Komponente in der neuen Ansicht zu morphieren. Die Verwendung desselben Namens für mehrere sichtbare Komponenten führt zu undefiniertem Verhalten.
 :::
 
 <ComponentDemo
@@ -114,15 +113,15 @@ files={[
 height='650px'
 />
 
-### Listenreihenfolge ändern {#list-reordering}
+### Listenumordnung {#list-reordering}
 
-Ein gängiger Anwendungsfall für gemeinsame Komponentenübergänge ist die Animation von Listenelementen, wenn sich ihre Reihenfolge ändert. Durch Zuordnung eines eindeutigen `view-transition-name` zu jedem Element animiert der Browser die Komponenten automatisch zu ihren neuen Positionen:
+Ein häufiger Anwendungsfall für gemeinsame Komponentenübergänge besteht darin, Listenelemente zu animieren, wenn sich ihre Reihenfolge ändert. Durch die Zuweisung eines eindeutigen `view-transition-name` zu jedem Element animiert der Browser automatisch die Komponenten an ihre neuen Positionen:
 
 ```java
 // Jede Karte erhält einen eindeutigen Übergangsname basierend auf ihrer ID
 card.setViewTransitionName("card-" + item.id());
 
-// Beim Mischen einfach den DOM aktualisieren - der Browser übernimmt die Animation
+// Beim Mischen aktualisieren Sie einfach den DOM - der Browser übernimmt die Animation
 Page.getCurrent().startViewTransition()
   .onUpdate(done -> {
     renderList();
@@ -145,10 +144,10 @@ height='550px'
 
 ## Benutzerdefinierte CSS-Animationen {#custom-css-animations}
 
-Für vollständige Kontrolle über Animationen können Sie benutzerdefinierte CSS-Keyframes definieren. webforJ fügt den Übergangsname `-enter` oder `-exit` Suffixe hinzu, die Sie verwenden, um die Pseudo-Elemente des View-Übergangs zu targetieren:
+Für die vollständige Kontrolle über Animationen können Sie benutzerdefinierte CSS-Keyframes definieren. webforJ fügt den Übergangsbezeichnungen die Suffixe `-enter` oder `-exit` hinzu, die Sie verwenden, um die Pseudo-Elemente der Ansichtübergänge anzusprechen:
 
 ```css
-/* Definieren Sie Keyframes für eingehende Komponenten */
+/* Definieren Sie Keyframes für eintretende Komponenten */
 @keyframes flip-enter {
   from {
     opacity: 0;
@@ -160,7 +159,7 @@ Für vollständige Kontrolle über Animationen können Sie benutzerdefinierte CS
   }
 }
 
-/* Auf das Pseudo-Element des View-Übergangs anwenden */
+/* Auf das Pseudo-Element des Ansichtübergangs anwenden */
 ::view-transition-new(flip-in-enter) {
   animation: flip-enter 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-origin: top center;
@@ -171,7 +170,7 @@ Für vollständige Kontrolle über Animationen können Sie benutzerdefinierte CS
 }
 ```
 
-Verweisen Sie auf Ihre benutzerdefinierte Animation, indem Sie ihren Namen (ohne das Suffix) an `enter()` oder `exit()` übergeben:
+Referenzieren Sie Ihre benutzerdefinierte Animation, indem Sie ihren Namen (ohne das Suffix) an `enter()` oder `exit()` übergeben:
 
 ```java
 // Verwenden Sie "flip-in" - webforJ fügt automatisch das Suffix "-enter" hinzu
@@ -183,7 +182,7 @@ Page.getCurrent().startViewTransition()
   })
   .start();
 
-// Verwenden Sie "blur-out" für den Exit - webforJ fügt automatisch das Suffix "-exit" hinzu
+// Verwenden Sie "blur-out" für den Ausgang - webforJ fügt automatisch das Suffix "-exit" hinzu
 Page.getCurrent().startViewTransition()
   .exit(notification, "blur-out")
   .onUpdate(done -> {
@@ -206,11 +205,11 @@ height='400px'
 
 ## CSS-Anpassung {#css-customization}
 
-Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimmungen bereit:
+Jeder vordefinierte Übergangstyp stellt CSS-Benutzereigenschaften zur Feinabstimmung bereit:
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Überblenden</strong>
+    <strong>Fade</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -224,7 +223,7 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Nach links gleiten</strong>
+    <strong>Links rutschen</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -232,14 +231,14 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
       |----------|---------|-------------|
       | `--vt-slide-left-duration` | `200ms` | Animationsdauer |
       | `--vt-slide-left-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-Funktion |
-      | `--vt-slide-left-distance` | `30%` | Gleitdistanz |
+      | `--vt-slide-left-distance` | `30%` | Rutschdistanz |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Nach rechts gleiten</strong>
+    <strong>Rechts rutschen</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -247,14 +246,14 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
       |----------|---------|-------------|
       | `--vt-slide-right-duration` | `200ms` | Animationsdauer |
       | `--vt-slide-right-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-Funktion |
-      | `--vt-slide-right-distance` | `30%` | Gleitdistanz |
+      | `--vt-slide-right-distance` | `30%` | Rutschdistanz |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Nach oben gleiten</strong>
+    <strong>Nach oben rutschen</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -262,14 +261,14 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
       |----------|---------|-------------|
       | `--vt-slide-up-duration` | `200ms` | Animationsdauer |
       | `--vt-slide-up-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-Funktion |
-      | `--vt-slide-up-distance` | `30%` | Gleitdistanz |
+      | `--vt-slide-up-distance` | `30%` | Rutschdistanz |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Nach unten gleiten</strong>
+    <strong>Nach unten rutschen</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -277,7 +276,7 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
       |----------|---------|-------------|
       | `--vt-slide-down-duration` | `200ms` | Animationsdauer |
       | `--vt-slide-down-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-Funktion |
-      | `--vt-slide-down-distance` | `30%` | Gleitdistanz |
+      | `--vt-slide-down-distance` | `30%` | Rutschdistanz |
     </div>
   </AccordionDetails>
 </Accordion>
@@ -292,14 +291,14 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
       |----------|---------|-------------|
       | `--vt-zoom-duration` | `200ms` | Animationsdauer |
       | `--vt-zoom-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-Funktion |
-      | `--vt-zoom-scale` | `0.8` | Skalierungsfaktor (alter zoomt hinaus, neuer zoomt herein) |
+      | `--vt-zoom-scale` | `0.8` | Skalierungsfaktor (alter zoomt darauf hinaus, neuer zoomt davon herein) |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Zoom aus</strong>
+    <strong>Zoom-Out</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -307,7 +306,7 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
       |----------|---------|-------------|
       | `--vt-zoom-out-duration` | `200ms` | Animationsdauer |
       | `--vt-zoom-out-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Easing-Funktion |
-      | `--vt-zoom-out-scale` | `1.2` | Skalierungsfaktor (alter zoomt herein, neuer zoomt hinaus) |
+      | `--vt-zoom-out-scale` | `1.2` | Skalierungsfaktor (alte zoomen hinein, neue zoomen heraus) |
     </div>
   </AccordionDetails>
 </Accordion>
@@ -318,7 +317,7 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Um anzupassen, überschreiben Sie diese Variablen in Ihrem CSS:
+      Um Anpassungen vorzunehmen, überschreiben Sie diese Variablen in Ihrem CSS:
 
       ```css
       :root {
@@ -327,7 +326,7 @@ Jeder vordefinierte Übergangsname stellt CSS-Custom-Properties für Feinabstimm
       }
       ```
 
-      Für erweiterte Anpassungen targeten Sie die Pseudo-Elemente des View-Übergangs direkt:
+      Für erweiterte Anpassungen zielen Sie direkt auf die Pseudo-Elemente der Ansichtübergänge ab:
 
       ```css
       ::view-transition-old(vt-slide-left-exit) {

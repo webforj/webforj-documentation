@@ -1,38 +1,41 @@
 ---
 sidebar_position: 5
-title: SpEL-Ausdrücke
-_i18n_hash: 1019aac355c5ef0efc8623660c3501e5
+title: SpEL Expressions
+description: >-
+  Author route authorization rules with Spring Expression Language using
+  @RouteAccess for role, authority, and custom checks.
+_i18n_hash: 59601d0d83fe7eb4b05bf8eab47515c3
 ---
-Spring Expression Language (`SpEL`) bietet eine deklarative Möglichkeit, Autorisierungsregeln direkt in Annotationen zu definieren. Die Annotation `@RouteAccess` evaluiert `SpEL`-Ausdrücke unter Verwendung der integrierten Autorisierungsfunktionen von Spring Security.
+Spring Expression Language (`SpEL`) bietet eine deklarative Möglichkeit, Autorisierungsregeln direkt in Annotationen zu definieren. Die Annotation `@RouteAccess` bewertet `SpEL`-Ausdrücke mithilfe der integrierten Autorisierungsfunktionen von Spring Security.
+
+<!-- INTRO_END -->
 
 :::info Nur Spring Security
 `SpEL`-Ausdrücke sind nur verfügbar, wenn die Spring-Integration verwendet wird.
 :::
 
-## Grundlegende Verwendung {#basic-usage}
-
-Die Annotation `@RouteAccess` akzeptiert einen `SpEL`-Ausdruck, der zu einem boolean führt:
+Die Annotation `@RouteAccess` akzeptiert einen `SpEL`-Ausdruck, der zu einem Boolean ausgewertet wird:
 
 ```java
 @Route("/admin/dashboard")
 @RouteAccess("hasRole('ADMIN')")
 public class AdminDashboardView extends Composite<Div> {
-  // Nur Benutzer mit der Rolle ROLE_ADMIN können zugreifen
+  // Nur Benutzer mit der Berechtigung ROLE_ADMIN können darauf zugreifen
 }
 ```
 
-Wenn der Ausdruck `true` ergibt, wird der Zugriff gewährt. Wenn `false`, wird der Benutzer zur Seite für den Zugriffsverweigerung umgeleitet.
+Wenn der Ausdruck zu `true` ausgewertet wird, wird der Zugriff gewährt. Bei `false` wird der Benutzer zur Seite für den Zugriff verweigert umgeleitet.
 
 ## Eingebaute Sicherheitsfunktionen {#built-in-security-functions}
 
-Spring Security bietet die folgenden Autorisierungsfunktionen über `SecurityExpressionRoot`:
+Spring Security bietet die folgenden Autorisierungsfunktionen über `SecurityExpressionRoot` an:
 
 | Funktion | Parameter | Beschreibung | Beispiel |
-|----------|-----------|-------------|---------|
+|----------|-----------|--------------|---------|
 | `hasRole` | `String role` | Überprüft, ob der Benutzer die angegebene Rolle hat (automatisch mit `ROLE_` vorangestellt) | `hasRole('ADMIN')` entspricht `ROLE_ADMIN` |
 | `hasAnyRole` | `String... roles` | Überprüft, ob der Benutzer eine der angegebenen Rollen hat | `hasAnyRole('ADMIN', 'MANAGER')` |
-| `hasAuthority` | `String authority` | Überprüft, ob der Benutzer den genauen Autorisierungsstring hat | `hasAuthority('REPORTS:READ')` |
-| `hasAnyAuthority` | `String... authorities` | Überprüft, ob der Benutzer eine der angegebenen Autorisierungen hat | `hasAnyAuthority('REPORTS:READ', 'REPORTS:WRITE')` |
+| `hasAuthority` | `String authority` | Überprüft, ob der Benutzer die genaue Berechtigungszeichenfolge hat | `hasAuthority('REPORTS:READ')` |
+| `hasAnyAuthority` | `String... authorities` | Überprüft, ob der Benutzer eine der angegebenen Berechtigungen hat | `hasAnyAuthority('REPORTS:READ', 'REPORTS:WRITE')` |
 | `isAuthenticated` | Keine | Gibt `true` zurück, wenn der Benutzer authentifiziert ist | `isAuthenticated()` |
 
 ### Beispiele {#examples}
@@ -48,7 +51,7 @@ public class AdminView extends Composite<Div> { }
 @RouteAccess("hasAnyRole('ADMIN', 'MANAGER', 'SUPERVISOR')")
 public class StaffView extends Composite<Div> { }
 
-// Autorisierungsüberprüfung
+// Berechtigungsüberprüfung
 @Route("/reports")
 @RouteAccess("hasAuthority('REPORTS:READ')")
 public class ReportsView extends Composite<Div> { }
@@ -59,7 +62,7 @@ public class ReportsView extends Composite<Div> { }
 public class ProfileView extends Composite<Div> { }
 ```
 
-## Bedingungen kombinieren {#combining-conditions}
+## Kombination von Bedingungen {#combining-conditions}
 
 Verwenden Sie boolesche Operatoren (`and`, `or`, `!`), um komplexe Autorisierungsregeln zu erstellen:
 
@@ -69,7 +72,7 @@ Verwenden Sie boolesche Operatoren (`and`, `or`, `!`), um komplexe Autorisierung
 @RouteAccess("hasRole('MODERATOR') and hasAuthority('REPORTS:VIEW')")
 public class ModeratorReportsView extends Composite<Div> { }
 
-// Jede Bedingung gewährt Zugang
+// Eine der Bedingungen gewährt Zugriff
 @Route("/support")
 @RouteAccess("hasRole('ADMIN') or hasRole('SUPPORT')")
 public class SupportView extends Composite<Div> { }
@@ -97,18 +100,18 @@ public class AdvancedReportsView extends Composite<Div> { }
 @RolesAllowed("USER")
 @RouteAccess("hasAuthority('TEAM:ADMIN')")
 public class TeamAdminView extends Composite<Div> {
-  // Muss die Rolle USER UND die Autorisierung TEAM:ADMIN haben
+  // Muss die Rolle USER UND die Berechtigung TEAM:ADMIN haben
 }
 ```
 
-Evaluierungsreihenfolge:
-1. Der Evaluator von `@RolesAllowed` (Priorität 5) überprüft die Rolle `USER`
-2. Wenn bestanden, wird der Evaluator von `@RouteAccess` (Priorität 6) den `SpEL`-Ausdruck auswerten
-3. Wenn bestanden, werden benutzerdefinierte Evaluatoren (Priorität 10+) ausgeführt
+Auswertungsreihenfolge:
+1. `@RolesAllowed`-Auswerter (Priorität 5) überprüft die Rolle `USER`
+2. Wenn erfolgreich, bewertet der `@RouteAccess`-Auswerter (Priorität 6) den `SpEL`-Ausdruck
+3. Wenn erfolgreich, werden benutzerdefinierte Auswerter ausgeführt (Priorität 10+)
 
-## Benutzerdefinierte Fehlercodes {#custom-error-codes}
+## Benutzerdefinierte Fehlermeldungen {#custom-error-codes}
 
-Liefern Sie aussagekräftige Fehlercodes für Zugriffsverweigerungen:
+Bieten Sie aussagekräftige Fehlermeldungen für Zugriffsverweigerungen an:
 
 ```java
 @Route("/premium/features")
@@ -119,21 +122,21 @@ Liefern Sie aussagekräftige Fehlercodes für Zugriffsverweigerungen:
 public class PremiumFeaturesView extends Composite<Div> { }
 ```
 
-Der Parameter `code` identifiziert den Grund für die Verweigerung, wenn der Ausdruck `false` ergibt.
+Der Parameter `code` identifiziert den Grund für die Verweigerung, wenn der Ausdruck zu `false` ausgewertet wird.
 
 ## Verfügbare Variablen {#available-variables}
 
 `SpEL`-Ausdrücke haben Zugriff auf diese Variablen im Auswertungskontext:
 
 | Variable | Typ | Beschreibung |
-|----------|------|-------------|
-| `authentication` | `Authentication` | Spring Security Authentifizierungsobjekt |
+|----------|------|--------------|
+| `authentication` | `Authentication` | Spring Security-Autorisierungsobjekt |
 | `principal` | `Object` | Der authentifizierte Principal (normalerweise `UserDetails`) |
-| `routeClass` | `Class<? extends Component>` | Die Route-Komponentenklasse, die zugegriffen wird |
-| `context` | `NavigationContext` | webforJ Navigationskontext |
-| `securityContext` | `RouteSecurityContext` | webforJ Routen-Sicherheitskontext |
+| `routeClass` | `Class<? extends Component>` | Die Route-Komponentenklasse, die aufgerufen wird |
+| `context` | `NavigationContext` | webforJ-Navigationskontext |
+| `securityContext` | `RouteSecurityContext` | webforJ-Routen-Sicherheitskontext |
 
-Beispiel für die Verwendung von Variablen:
+Beispiel zur Verwendung von Variablen:
 
 ```java
 @Route("/admin")
@@ -141,17 +144,17 @@ Beispiel für die Verwendung von Variablen:
 public class SuperAdminView extends Composite<Div> { }
 ```
 
-## Wann `SpEL` VS benutzerdefinierte Evaluatoren verwenden {#when-to-use-spel-vs-custom-evaluators}
+## Wann `SpEL` VS benutzerdefinierte Auswerter verwenden {#when-to-use-spel-vs-custom-evaluators}
 
 **Verwenden Sie `@RouteAccess` `SpEL`, wenn:**
 - Die Autorisierung rein auf Rollen oder Berechtigungen basiert
 - Eingebaute Sicherheitsfunktionen mit boolescher Logik kombiniert werden
-- Routenspezifische Regeln benötigt werden, die keine Wiederverwendung erfordern
+- Routen-spezifische Regeln, die keine Wiederverwendung erfordern
 
-**Verwenden Sie benutzerdefinierte Evaluatoren, wenn:**
+**Verwenden Sie benutzerdefinierte Auswerter, wenn:**
 - Die Autorisierung von Routenparametern abhängt (Besitzüberprüfungen)
-- Komplexe Geschäftslogik erforderlich ist, die eine Integration mit Spring-Diensten benötigt
-- Wiederverwendbare Autorisierungsmuster über mehrere Routen hinweg erforderlich sind
-- Benutzerdefinierte Annotationen, die die Autorisierungsabsicht dokumentieren
+- Komplexe Geschäftslogik erforderlich ist, die eine Integration von Spring-Diensten benötigt
+- Wiederverwendbare Autorisierungsmuster über mehrere Routen hinweg
+- Benutzerdefinierte Annotationen, die die Absicht der Autorisierung dokumentieren
 
-Siehe den [Leitfaden für benutzerdefinierte Evaluatoren](/docs/security/custom-evaluators) zur Implementierung fortgeschrittener Autorisierungsszenarien.
+Siehe den [Leitfaden zu benutzerdefinierten Auswertern](/docs/security/custom-evaluators) für die Implementierung fortgeschrittener Autorisierungsszenarien.

@@ -4,22 +4,16 @@ sidebar_position: 55
 description: >-
   Render scalable SVG icons with the Icon component from Tabler, Feather, Font
   Awesome, or custom pools loaded on demand from a CDN.
-_i18n_hash: 0e51ecab262c62fb63cd767ba8167084
+_i18n_hash: c526ee2878756d5dd13fa2972dfef56e
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-icon" />
 <DocChip chip='since' label='24.11' />
 <JavadocLink type="icons" location="com/webforj/component/icons/Icon" top='true'/>
 
-`Icon`-komponentti näyttää ikoneita, jotka skaalautuvat mihin tahansa kokoon menettämättä laatua. Voit valita kolmen sisäänrakennetun ikonikokoelman välillä tai luoda omia. Ikonit toimivat visuaalisina vihjeinä navigoinnissa ja toimissa, vähentäen tekstilappujen tarvetta käyttöliittymässäsi.
+`Icon` komponentti näyttää kuvakkeita, jotka voidaan skaalata mihin tahansa kokoon menettämättä laatua. Voit valita kolmesta sisäänrakennetusta kuvakekokoelmasta tai luoda omia. Kuvakkeet toimivat visuaalisina vihjeinä navigointia ja toimintoja varten, vähentäen tekstimäisten nimilappujen tarvetta käyttöliittymässäsi.
 
-<!-- INTRO_END -->
-
-## Perusteet {#basics}
-
-Jokainen `Icon` on suunniteltu Skaalautuviksi Vektorigrafiikoiksi (SVG), mikä tarkoittaa, että se voi helposti skaalautua mihin tahansa kokoon menettämättä selvyyttä tai laatua. Lisäksi `Icon`-komponentit ladataan tarpeen mukaan sisällönjakeluverkosta (CDN), mikä auttaa vähentämään viivettä ja parantamaan kokonaissuorituskykyä.
-
-Kun luot `Icon`, sinun on tunnistettava tietty kokoelma ja itse ikonin nimi. Jotkut ikonit tarjoavat myös vaihtoehdon korostetun tai täytetyn version välillä [muunnelmien](#variations) kautta.
+Jokainen `Icon` renderöidään skaalautuvana vektorikuvana (SVG), joka ladataan tarpeen mukaan sisällönjakeluverkosta (CDN) latenssin pitäminen alhaisena. Luodaksesi yhden, valitse kuvakekokoelma ja kuvakkeen nimi. Jotkut kuvakkeet tarjoavat myös valinnan ääriviivakuvakkeen tai täytetyn version välillä [variations](#variations) kautta.
 
 <ComponentDemo
 path='/webforj/iconbasics'
@@ -28,59 +22,64 @@ height='100px'
 />
 
 :::tip Tiesitkö?
-Jotkut komponentit, kuten `PasswordField` ja `TimeField`, sisältävät sisäänrakennettuja ikoneita, jotka auttavat välittämään merkitystä loppukäyttäjille.
+Jotkin komponentit, kuten `PasswordField` ja `TimeField`, sisältävät sisäänrakennettuja kuvakkeita auttaakseen välittämään merkitystä loppukäyttäjille.
 :::
 
-### Kokoelmat {#pools}
+## Pools {#pools}
 
-Ikkuna kokoelma on kokoelma yleisesti käytettyjä ikoneita, joka mahdollistaa helpon pääsyn ja käytön uudelleen. Käyttämällä ikoneita ikonikokoelmasta voit varmistaa, että sovelluksesi ikonit ovat tunnistettavia ja jakavat johdonmukaisen tyylin. WebforJ:n käyttö antaa sinun valita kolmen kokoelman väliltä tai toteuttaa mukautetun kokoelman. Jokaisella kokoelmalla on laaja kokoelma avoimen lähdekoodin ikoneita, joita voi käyttää ilmaiseksi. WebforJ:n käyttäminen antaa sinulle joustavuutta valita kolmen kokoelman väliltä ja käyttää niitä ainutlaatuisina luokkina ilman, että sinun tarvitsee ladata yhtään ikoneita suoraan.
+Kuvakekokoelma on kokoelma yleisesti käytettyjä kuvakkeita, joka mahdollistaa helpon pääsyn ja uudelleenkäytön. Käytettäessä kuvakkeita kuvakekokoelmasta voit varmistaa, että sovelluksesi kuvakkeet ovat tunnistettavia ja jakavat yhdenmukaisen tyylin. 
+WebforJ:n käyttäminen antaa sinun valita kolmesta kokoelmasta tai toteuttaa mukautetun kokoelman. 
+Jokaisella kokoelmalla on laaja kokoelma avoimen lähdekoodin kuvakkeita, joita on ilmainen käyttää. 
+WebforJ:n käyttö antaa sinulle joustavuutta valita kolmesta kokoelmasta ja käyttää niitä ainutlaatuisina luokkina ilman, että tarvitsee ladata mitään kuvakkeista suoraan.
 
-| Ikonikerä | webforJ-luokka |
-| -------- | ------- |
-| [Tabler](https://tabler-icons.io/) | `TablerIcon` ja `DwcIcon`.<br/>`DwcIcon` on osa Tabler-ikonien kokoelmaa. |
-| [Feather](https://feathericons.com/) | `FeatherIcon` |
-| [Font Awesome](https://fontawesome.com/search) | `FontAwesomeIcon` |
+| Kuvakekokoelma                                         | WebforJ-luokka |
+| --------                                          | ------- |
+| [Tabler](https://tabler-icons.io/)                | `TablerIcon` ja `DwcIcon`.<br/>`DwcIcon` on alikokoelma Tablerin kuvakkeista.|
+| [Feather](https://feathericons.com/)              | `FeatherIcon`    |
+| [Font Awesome](https://fontawesome.com/search)    | `FontAwesomeIcon`   |
 
 :::tip
 
-Jos olet kiinnostunut oman ikonikeräsi luomisesta, katso [Mukautettujen kokoelmien luominen](#creating-custom-pools).
+Jos olet kiinnostunut luomaan oman kuvakekokoelman, katso [Creating custom pools](#creating-custom-pools).
 
 :::
 
-Kun olet valinnut kokoelman tai kokoelmat, jotka aiot sisällyttää sovellukseesi, seuraava vaihe on määrittää haluamasi ikonin nimi.
+Kun olet valinnut kokoelman tai kokoelmat, jotka haluat sisällyttää sovellukseesi, seuraava vaihe on määrittää käytettävän kuvakkeen nimi.
 
-### Nimet {#names}
+## Names {#names}
 
-Sisällyttääksesi ikonin sovellukseesi tarvitset kaiken ikonikokoelman ja ikonin nimen. Selaa ikonikokoelman verkkosivustoa haluamasi ikonin löytämiseksi ja käytä ikonin nimeä `create()`-metodin parametrina. Voit myös luoda ikoneita enumien avulla `FeatherIcon` ja `DwcIcon` -luokille, jolloin ne näkyvät koodin täydennyksessä.
+Sisällyttääksesi kuvakkeen sovellukseesi, tarvitset vain kuvakekokoelman ja kuvakkeen nimen. Selaa kuvakekokoelman verkkosivustoa sen kuvakkeen löytämiseksi, jota haluat käyttää, ja käytä kuvakkeen nimeä `create()`-menetelmän parametreina. 
+Lisäksi voit luoda kuvakkeita enumien kautta `FeatherIcon` ja `DwcIcon` -luokille, mikä mahdollistaa niiden ilmestymisen koodin täydentämiseen.
 
 ```java
-// Luo ikoni String-nimen avulla
+// Luo kuvake merkkijonon nimestä
 Icon image = TablerIcon.create("image");
-// Luo ikoni enumeroinnin avulla
+// Luo kuvake enumeroinnista
 Icon image = FeatherIcon.IMAGE.create();
 ```
 
-### Muunnelmat {#variations}
+## Variations {#variations}
 
-Voit personoida ikoneita entistä enemmän hyödyntämällä muunnelmia. Tietyt ikonit antavat sinun valita korostetun tai täytetyn version, jolloin voit korostaa tiettyä ikonia mieltymystesi mukaan. `FontAwesomeIcon`- ja `Tabler`-ikonit tarjoavat muunnelmia.
+Voit räätälöidä kuvakkeita entistä enemmän hyödyntämällä variaatioita. 
+Tietyt kuvakkeet antavat sinulle mahdollisuuden valita ääriviivakuvakkeen tai täytetyn version, mikä mahdollistaa tietyn kuvakkeen korostamisen mieltymystesi mukaan. `FontAwesomeIcon` ja `Tabler` kuvakkeet tarjoavat variaatioita.
 
-#### `FontAwesomeIcon` muunnelmat {#fontawesomeicon-variations}
+### `FontAwesomeIcon` variaatiot {#fontawesomeicon-variations}
 
-1. `REGULAR`: Ikoneiden korostettu muunnos. Tämä on oletus.
-2. `SOLID`: Ikoneiden täytetty muunnos.
-3. `BRAND`: Varianti, jota käytetään brändien ikonien kanssa.
+1. `REGULAR`: Kuvakkeiden ääriviivavariaatio. Tämä on oletus.
+2. `SOLID`: Kuvakkeiden täytetty variaatio.
+3. `BRAND`: Variaatio, jota käytetään, kun käytät brändien kuvakkeita.
 
-#### `TablerIcon` muunnelmat {#tablericon-variations}
+### `TablerIcon` variaatiot {#tablericon-variations}
 
-1. `OUTLINE`: Ikoneiden korostettu muunnos. Tämä on oletus.
-2. `FILLED`: Ikoneiden täytetty muunnos.
+1. `OUTLINE`: Kuvakkeiden ääriviivavariaatio. Tämä on oletus.
+2. `FILLED`: Kuvakkeiden täytetty variaatio.
 
 ```java
-// Täytetty muunnos Font Awesome -ikonista
+// Täytetty variaatio kuvakkeesta Font Awesome
 Icon music = FontAwesomeIcon.create("user", FontAwesomeIcon.Variate.SOLID);
 ```
 
-Seuraava demo havainnollistaa, kuinka käyttää ikoneita eri kokoelmista, soveltaa muunnelmia ja integroida ne sujuvasti komponentteihin.
+Seuraava demo havainnollistaa, kuinka käyttää kuvakkeita eri kokoelmista, soveltaa variaatioita ja integrointia komponentteihin.
 
 <ComponentDemo
 path='/webforj/iconvariations'
@@ -88,21 +87,24 @@ files={['src/main/java/com/webforj/samples/views/icon/IconVariationsView.java']}
 height='100px'
 />
 
-## Ikonien lisääminen komponentteihin {#adding-icons-to-components}
+## Adding icons to components {#adding-icons-to-components}
 
-Integroi ikonit komponentteihisi käyttämällä slotteja. Slotit tarjoavat joustavia vaihtoehtoja, jotka tekevät komponentteista hyödyllisempiä. On hyödyllistä lisätä `Icon` komponenttiin, jotta käyttäjille voidaan selventää tarkoitetun merkityksen. Komponentit, jotka toteuttavat `HasPrefixAndSuffix` -käyttöliittymän, voivat sisältää `Icon`- tai muita kelvollisia komponentteja. Lisättyjä komponentteja voidaan sijoittaa `prefix`- ja `suffix`-slotteihin, ja ne voivat parantaa sekä yleistä muotoilua että käyttäjäkokemusta.
+Integroi kuvakkeita komponentteihisi käyttämällä slotteja. Slotit tarjoavat joustavia vaihtoehtoja komponenttien hyödyllisyyden parantamiseksi. On hyödyllistä lisätä `Icon` komponenttiin selventääkseen sen merkitystä käyttäjille. 
+Komponentit, jotka toteuttavat `HasPrefixAndSuffix` -rajapinnan, voivat sisältää `Icon` tai muita kelvollisia komponentteja. Lisätyt komponentit voidaan sijoittaa `prefix` ja `suffix` slotteihin, ja ne voivat parantaa sekä kokonaisdesignia että käyttäjäkokemusta.
 
-Käyttämällä `prefix`- ja `suffix`-slotteja voit päättää, haluatko ikonin ennen vai jälkeen tekstin käyttäen `setPrefixComponent()` ja `setSuffixComponent()` -menetelmiä.
+Käyttäen `prefix` ja `suffix` slotteja, voit määrittää, haluatko kuvakkeen ennen vai jälkeen tekstin `setPrefixComponent()` ja `setSuffixComponent()` -menetelmien avulla.
 
-Päätös siitä, asetetaanko ikoni ennen vai jälkeen komponentin tekstin, riippuu suurelta osin tarkoituksesta ja muotoilukontekstista.
+Päätettäessä, sijoitetaanko kuvake ennen vai jälkeen komponentin tekstin, riippuu suuresti tarkoituksesta ja suunnittelukontekstista.
 
-### Ikonin sijoittaminen: ennen VS jälkeen {#icon-placement-before-vs-after}
+### Kuvakkeen sijoittaminen: ennen VS jälkeen {#icon-placement-before-vs-after}
 
-Ikonit, jotka on sijoitettu ennen komponentin tekstiä, auttavat käyttäjiä nopeasti ymmärtämään komponentin päätoiminnon tai -tarkoituksen, erityisesti yleisesti tunnistetuilla ikoneilla, kuten tallennusikonilla. Ikonit ennen komponentin tekstiä tarjoavat loogisen prosessointijärjestyksen, ohjaten käyttäjiä luonnollisesti tarkoitetun toiminnan läpi, mikä on hyödyllistä painikkeille, joiden ensisijainen tarkoitus on välitön toiminta.
+Komponentin tekstin edellä sijaitsevat kuvakkeet auttavat käyttäjiä ymmärtämään komponentin ensisijaisen toiminnan tai tarkoituksen nopeasti, erityisesti yleisesti tunnistettavien kuvakkeiden, kuten tallenna-ikon, kohdalla. 
+Kuvakkeet ennen komponentin tekstiä tarjoavat loogisen käsittelyjärjestyksen, ohjaten käyttäjiä luonnollisesti haluttuun toimintaan, mikä on hyödyllistä painikkeilla, joiden ensisijainen tehtävä on välitön toiminta.
 
-Toisaalta, ikonien sijoittaminen komponentin tekstin jälkeen on tehokasta toiminnoille, jotka tarjoavat lisäkontekstia tai vaihtoehtoja, parantaen selkeyttä ja navigointivihjeitä. Ikonit komponentin tekstin jälkeen sopivat hyvin komponentteihin, jotka tarjoavat joko täydentävää tietoa tai ohjaavat käyttäjiä suuntaan.
+Toisaalta, kuvakkeiden sijoittaminen komponentin tekstin jälkeen on tehokasta toiminnoille, jotka tarjoavat lisäkontekstia tai vaihtoehtoja, parantaen selkeyttä ja vihjeitä navigointiin. 
+Kuvakkeet komponentin tekstin jälkeen ovat ihanteellisia komponentteihin, jotka tarjoavat joko täydentävää tietoa tai ohjaavat käyttäjiä suuntaan.
 
-Lopulta johdonmukaisuus on avainasia. Kun valitset tyylin, pidä se yllä koko sivustossasi yhtenäiseen ja käyttäjäystävälliseen muotoiluun.
+Lopulta johdonmukaisuus on avain. Kun olet valinnut tyylin, ylläpidä sitä koko sivustollasi johdonmukaisen ja käyttäjäystävällisen suunnittelun varmistamiseksi.
 
 <ComponentDemo
 path='/webforj/iconprefixsuffix'
@@ -110,29 +112,33 @@ files={['src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java'
 height='100px'
 />️
 
-## Mukautettujen kokoelmien luominen {#creating-custom-pools}
+## Creating custom pools {#creating-custom-pools}
 
-Sen lisäksi, että käytät olemassa olevia ikonikokoelmia, voit luoda mukautetun kokoelman, jota voidaan käyttää mukautetuille logoille tai avatarille. Mukautettu ikonikokoelma voidaan tallentaa keskitettyyn hakemistoon tai resursseihin (konteksti), yksinkertaistaen ikonien hallintaprosessia. Mukautettu kokoelma tekee sovelluksen luomisesta johdonmukaisempaa ja vähentää ylläpitotarvetta eri komponenttien ja moduulien välillä.
+Nykyisten kuvakekokoelmien hyödyntämisen lisäksi voit luoda mukautetun kokoelman, jota voidaan käyttää mukautetuissa logoissa tai avatarissa. 
+Mukautettu kuvakekokoelma voidaan tallentaa keskitettyyn hakemistoon tai resurssikansioon (konteksti), mikä yksinkertaistaa kuvakkeiden hallintaprosessia. 
+Mukautetun kokoelman omistaminen tekee sovelluksen luomisesta johdonmukaisempaa ja vähentää ylläpitoa eri komponenttien ja moduulien välillä.
 
-Mukautetut kokoelmat voidaan luoda kansiosta, joka sisältää SVG-kuvia, ja käyttämällä `IconPoolBuilder`-luokkaa. Tämän jälkeen voit valita mukautetun kokoelmasi nimen ja käyttää sitä SVG-tiedoston nimien kanssa luodaksesi mukautettuja ikonikomponentteja.
+Mukautetut kokoelmat voidaan luoda hakemistosta, joka sisältää SVG-kuvia, ja käyttämällä `IconPoolBuilder` -luokkaa. Tämän jälkeen voit valita mukautetun kokoelmasi nimen ja käyttää sitä SVG-tiedostojen nimien kanssa mukautettujen kuvakekomponenttien luomiseksi.
 
 ```java
-// Luodaan mukautettu kokoelma "app-pool", jossa on kuvat logosta ja avatarista.
+// Luodaan mukautettu kokoelma nimeltä "app-pool", jossa on kuvia logosta ja avatarista.
 IconPoolBuilder.fromDirectory("app-pool", "context://icons");
 Icon customLogo = new Icon("logo", "app-pool");
 Icon customAvatar = new Icon("avatar-default", "app-pool");
 ```
 
 :::tip
-Varmista, että suunnittelet ikonit, joilla on yhtä leveys ja korkeus, koska `Icon`-komponentit on suunniteltu täyttämään neliömäinen tila.
+Varmista, että suunnittelet kuvakkeet, joissa on yhtä suuri leveys ja korkeus, sillä `Icon` komponentit on suunniteltu vievän neliömäistä tilaa.
 :::
 
-### Mukautetun kokoelman tehdas {#custom-pool-factory}
+### Custom pool factory {#custom-pool-factory}
 
-Voit myös luoda tehtaaluksen mukautetulle kokoelmalle webforJ:ssä, aivan kuten `FeatherIcon`. Tämä mahdollistaa ikoniresurssien luomisen ja hallinnan tietyn kokoelman sisällä ja mahdollistaa koodin täydentämisen. Jokainen ikoni voidaan instansioida `create()`-menetelmän kautta, joka palauttaa `Icon`-komponentin. Tehdasluokan tulisi tarjota kokoelma-kohtaisia metatietoja, kuten kokoelman nimi ja ikonin tunniste, muotoiltu kuvan tiedostonimeksi. Tämä suunnittelu mahdollistaa helpon, standardoidun pääsyn ikoniresursseihin mukautetusta kokoelmasta käyttämällä enum-vakioita, mikä tukee skaalautuvuutta ja ylläpidettävyyttä ikonihallinnassa.
+Voit myös luoda tehtaaluokan mukautetulle kokoelmalle webforJ:ssä, aivan kuten `FeatherIcon`. Tämä mahdollistaa kuvakevarojen luomisen ja hallinnan määritellyssä kokoelmassa sekä koodin täydentämisen. 
+Jokainen kuvake voidaan instansioida `create()`-menetelmällä, joka palauttaa `Icon`. Tehtaaluokan tulisi tarjota kokoelmaan liittyvää metadataa, kuten kokoelman nimi ja kuvakkeen tunniste, muotoiltuna kuvan tiedostonimeksi. 
+Tämä suunnittelu mahdollistaa helpon, standardoidun pääsyn kuvakevaroihin mukautetusta kokoelmasta käyttämällä enum-konstantteja, tukien skaalautuvuutta ja ylläpidettävyyttä kuvakkeiden hallinnassa.
 
 ```java
-/// Luodaan mukautetun kokoelman tehdas app-pool:lle
+/// Luodaan mukautettu kokoelmatehdas app-poolille
 public enum AppPoolIcon implements IconFactory {
   LOGO, AVATAR_DEFAULT;
 
@@ -141,7 +147,7 @@ public enum AppPoolIcon implements IconFactory {
   }
 
   /**
-   * @return ikonien kokoelman nimi
+   * @return kokoelman nimi kuvakkeille
    */
   @Override
   public String getPool() {
@@ -149,7 +155,7 @@ public enum AppPoolIcon implements IconFactory {
   }
 
   /**
-   * @return ikonin nimi
+   * @return kuvakkeen nimi
    */
   @Override
   public String toString() {
@@ -158,48 +164,48 @@ public enum AppPoolIcon implements IconFactory {
 }
 ```
 
-Seuraava pätkä näyttää kaksi erilaista tapaa käyttää mukautettua kokoelmaa.
+Seuraava koodinpätkä näyttää kaksi eri tapaa käyttää mukautettua kokoelmaa.
 
 ```java
 IconPoolBuilder.fromDirectory("app-pool", "context://icons");
 
-// Luo ikoni käyttäen mukautetun kokoelman ja kuva tiedoston nimiä
+// Luo kuvake käyttämällä mukautetun kokoelman ja kuva tiedostonimi
 Icon customLogo = new Icon("logo", "app-pool");
 
-// Luo ikoni käyttäen edellisessä pätkässä olevaa mukautetun kokoelman tehdasta
+// Luo kuvake käyttämällä mukautetun kokoelmatehtaan aiemmasta pätkästä
 Icon customLogo = AppPoolIcon.LOGO.create();
 ```
 
-## Ikonipainikkeet {#icon-buttons}
-`Icon`-komponentti ei ole valittavissa, mutta toimintoja, jotka on parasta esittää vain ikonilla, kuten ilmoitukset tai hälytykset, voit käyttää `IconButton`-komponenttia.
+## Icon buttons {#icon-buttons}
+`Icon` komponentti ei ole valittavissa, mutta toiminnoille, jotka parhaiten esitetään pelkästään kuvakkeella, kuten ilmoitukset tai hälytykset, voit käyttää `IconButton` -komponenttia.
 
  ```java
 IconButton bell = new IconButton(FeatherIcon.BELL.create());
 bell.onClick(e -> {
   showMessageDialog("Sinulla on uusi viesti!", "Ding Dong!")
-});
+  });
 ```
 
-## Parhaat käytännöt
+## Best practices
 
-- **Esteettömyys:** Käytä työkalun vihjeitä tai etikettiä ikoneissa, jotta sovelluksesi on esteetön näkörajoitteisille käyttäjille, jotka luottavat ruudunlukuohjelmiin.
-- **Vältä epäselvyyksiä:** Vältä ikoneiden käyttöä, jos merkitys ei ole selkeä tai laajasti ymmärrettävä. Jos käyttäjien on arvattava, mitä ikoni edustaa, se kumoaa tarkoituksen.
-- **Käytä ikoneita säästeliäästi:** Liian monta ikonia voi ylivoimaisesti käyttäjiä, joten käytä ikoneita vain silloin, kun ne lisäävät selkeyttä tai vähentävät monimutkaisuutta.
+- **Saavutettavuus:** Käytä työkaluvihjettä tai etikettiä kuvakkeilla, jotta sovelluksesi on saavutettavissa näkövammaisille käyttäjille, jotka riippuvat näytönlukuohjelmista.
+- **Vältä epäselvyyksiä:** Vältä kuvakkeiden käyttöä, jos merkitys ei ole selkeä tai yleisesti ymmärretty. Jos käyttäjien on arvattava, mitä kuvake edustaa, se kumoaa tarkoituksen.
+- **Käytä kuvakkeita säästeliäästi:** Liian monet kuvakkeet voivat ylittää käyttäjiä, joten käytä kuvakkeita vain, kun ne lisäävät selkeyttä tai vähentävät monimutkaisuutta.
 
-## Tyylitys
-Icon perii suoran vanhempikomponenttinsa teeman, mutta voit ylittää sen soveltamalla teemaa `Icon`-komponenttiin suoraan.
+## Styling
+Kuvake perii suoran vanhempikomponenttinsa teeman, mutta voit ohittaa tämän soveltamalla teemaa `Icon` suoraan.
 
-### Teemat
-Ikoni komponentit sisältävät seitsemän erillistä teemaa valmiina nopeaa tyylitystä ilman CSS:n käyttöä. Nämä teemat ovat ennalta määriteltyjä tyylejä, joita voidaan soveltaa ikoneihin, jotta niiden ulkonäköä ja visuaalista esitystä voidaan muuttaa. Ne tarjoavat nopean ja johdonmukaisen tavan mukauttaa ikonien ulkoasua koko sovelluksessa.
+### Themes
+Kuvakekomponenteilla on seitsemän erilaista teemaa sisäänrakennettuna nopeaa muotoilua varten ilman CSS:n käyttöä. Nämä teemat ovat ennakkoon määriteltyjä tyylejä, joita voidaan soveltaa kuvakkeisiin muuttaakseen niiden ulkonäköä ja visuaalista esitystä. Ne tarjoavat nopean ja johdonmukaisen tavan mukauttaa kuvakkeiden ulkoasua sovelluksen sisällä.
 
-Vaikka jokaiselle erilaiselle teematyyliille on monia käyttötarkoituksia, joitakin esimerkkejä käyttötarkoituksista ovat:
+Vaikka jokaisella eri teemalla on monia käyttötapauksia, joitakin esimerkki käyttöjä ovat:
 
-- `DANGER`: Parasta toimille, joilla on vakavia seurauksia, kuten täytetyn tiedon tyhjentäminen tai tilin/tietojen pysyvä poistaminen.
-- `DEFAULT`: Sopii hyvin sovelluksen toimintoihin, jotka eivät vaadi erityistä huomiota ja ovat generisiä, kuten asetuksen kytkeminen.
-- `PRIMARY`: Sopii pää "toimi" -toiminnolle sivulla, kuten rekisteröitymiselle, muutosten tallentamiselle tai siirtymiselle toiseen sivuun.
-- `SUCCESS`: Erinomainen visualisoimaan jonkin sovelluksen elementin onnistunutta loppuunsaattamista, kuten lomakkeen lähettämistä tai rekisteröintiprosessin valmistumista. Onnistumisteemaa voidaan ohjelmallisesti soveltaa sen jälkeen, kun onnistunut toiminta on suoritettu.
-- `WARNING`: Kätevä indikoimaan, että käyttäjä on tekemässä mahdollisesti riskialtista toimintoa, kuten siirtymistä pois sivulta, jossa on tallentamattomia muutoksia. Nämä toimet ovat usein vähemmän vaikuttavia kuin ne, jotka käyttäisivät Danger-teemaa.
-- `GRAY`: Hyvä pienille toimille, kuten vähäisille asetuksille tai toiminnoille, jotka ovat enemmän sivustoa täydentäviä, eikä muuten ole osa sen päätoimintoja.
-- `INFO`: Hyvä lisätiedon tarjoamiseen käyttäjille. 
+- `DANGER`: Paras toiminnoille, joilla on vakavia seurauksia, kuten täytettyjen tietojen tyhjentäminen tai tilin/tietojen pysyvä poistaminen.
+- `DEFAULT`: Sopii toimille koko sovelluksessa, jotka eivät vaadi erityistä huomiota ja ovat yleisiä, kuten asetuksen vaihtaminen.
+- `PRIMARY`: Sopii pää "call-to-action" sivulla, kuten rekisteröityminen, muutosten tallentaminen tai siirtyminen toiselle sivulle.
+- `SUCCESS`: Erinomainen visuaalisena merkkinä jonkin elementin onnistuneesta suorittamisesta sovelluksessa, kuten lomakkeen lähettämisestä tai rekisteröitymisprosessin suorittamisesta. Onnistumisteemaa voidaan ohjelmallisesti soveltaa sen jälkeen, kun onnistunut toiminta on suoritettu.
+- `WARNING`: Hyödyllinen ilmoittamaan, että käyttäjä on tekemässä mahdollisesti riskialtista toimintoa, kuten siirtymistä pois sivulta, jolla on tallentamattomia muutoksia. Nämä toimet ovat usein vähemmän vaikuttavia kuin ne, joille käytettäisiin Danger-teemaa.
+- `GRAY`: Hyvä hienovaraisille toiminnoille, kuten pienille asetuksille tai toiminnoille, jotka ovat enemmän sivuversioita sivusta, eivätkä osa päätoiminnallisuutta.
+- `INFO`: Hyvä tarjoamaan käyttäjälle lisäinformaatioita selventämiseksi.
 
 <TableBuilder name={['Icon', 'IconButton']} />
