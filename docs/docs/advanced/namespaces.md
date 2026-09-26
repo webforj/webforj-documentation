@@ -246,8 +246,8 @@ No external services (like REST or WebSockets) are needed. All coordination is d
 
 Explore the code: [webforj/webforj-tictactoe](https://github.com/webforj/webforj-tictactoe)
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tic-tac-toe.mp4" type="video/mp4"/>
-  </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/tic-tac-toe.mp4"
+  title="Example: Sharing game state in Tic-Tac-Toe"
+  aspectRatio="1660 / 902"
+/>

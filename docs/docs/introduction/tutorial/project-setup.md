@@ -18,11 +18,10 @@ The easiest way to follow this tutorial is to refer to its source code. You can 
 git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
-<!-- <div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
-  </video>
-</div> -->
+<!-- <MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4"
+  title="Using the source code"
+/> -->
 
 ### Project structure {#project-structure}
 
