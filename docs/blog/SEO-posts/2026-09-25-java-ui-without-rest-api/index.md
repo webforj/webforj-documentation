@@ -47,7 +47,7 @@ Each item on this list is a real engineering problem. None of them are about the
 
 In a webforJ application, UI components are Java classes running in the same JVM as the Spring backend. A component can receive a Spring service via injection — the same injection mechanism any other Spring bean uses — and call its methods directly.
 
-The full connection between the Spring integration and the component model is documented at [/docs/integrations/spring/overview](/docs/integrations/spring/overview) and [/docs/building-ui/composing-components](/docs/building-ui/composing-components). The structural consequence: when the component calls a service method, there's no HTTP request, no JSON serialization, no CORS negotiation, no client-side error state separate from server-side error state. A `RuntimeException` thrown in the service is a Java exception in the component, not an HTTP 500 that needs to be decoded.
+The full connection between the Spring integration and the component model is documented in the [Spring integration overview](/docs/integrations/spring/overview) and [composing components](/docs/building-ui/composing-components) guides. The structural consequence: when the component calls a service method, there's no HTTP request, no JSON serialization, no CORS negotiation, no client-side error state separate from server-side error state. A `RuntimeException` thrown in the service is a Java exception in the component, not an HTTP 500 that needs to be decoded.
 
 The state management problem also changes shape. The UI component reads from the service on each render. There's no local cache to invalidate because there's no local copy — the component reads the data it needs when it needs it. The data lives in one place.
 
@@ -63,7 +63,7 @@ If there's any chance the application will later need a public API — for a mob
 
 ## The actual tradeoff
 
-The full-stack Java architecture trades one set of concerns for another. The protocol overhead disappears — no CORS, no fetch(), no JSON serialization between layers, no separate state management. What you take on instead: UI components are Java, which means the developers writing them need to know Java, and the rendering happens server-side. There's no static export of the frontend, no CDN-distributed bundle.
+The full-stack Java architecture trades one set of concerns for another. The protocol overhead disappears — no CORS, no fetch(), no JSON serialization between layers, no separate state management. What you take on instead: UI components are Java, which means the developers writing them need to know Java, and the rendering happens client-side, driven by Java. There's no static export of the frontend, no CDN-distributed bundle.
 
 Whether that's a good trade depends on the team and the product. For applications built by Java teams, targeting internal users or customers on reliable connections, where the protocol overhead between frontend and backend layers is the engineering cost the team most wants to eliminate, it often is.
 
