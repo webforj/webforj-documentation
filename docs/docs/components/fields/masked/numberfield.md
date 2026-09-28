@@ -126,7 +126,7 @@ These constraints help ensure that user input stays within a valid, expected ran
 The `MaskedNumberField` supports a restore feature that resets the field’s value to a predefined state.
 This can be useful when users need to undo changes, revert accidental edits, or return to a known default value.
 
-To enable this behavior, define the target value using `setRestoreValue()`.
+To restore a specific value, define it using `setRestoreValue()`.
 When needed, the field can be reset programmatically using `restoreValue()`.
 
 ```java
@@ -139,7 +139,7 @@ numberField.restoreValue();
 - **Programmatically** using `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden)
 
-The restore value must be explicitly set. If not defined, the feature will not revert the field.
+If no restore value is set, both `restoreValue()` and <kbd>ESC</kbd> set the field value to `null`.
 
 <ComponentDemo
 path='/webforj/maskednumrestore'
