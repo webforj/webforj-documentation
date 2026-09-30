@@ -20,7 +20,6 @@ Die `Element`-Komponente kann nicht erweitert werden und ist nicht die Basiskomp
 path='/webforj/elementmeter'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementMeterView.java',
-  'src/main/resources/static/css/element/elementMeter.css',
 ]}
 height='240px'
 />

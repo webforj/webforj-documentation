@@ -466,7 +466,7 @@ The demo below shows two pricing cards built with [`wa-card`](https://webawesome
 
 <ComponentDemo
 path='/webforj/card'
-files={['src/main/java/com/webforj/samples/views/elementcomposite/CardView.java']}
+files={['src/main/java/com/webforj/samples/views/elementcomposite/WebAwesomeCardView.java']}
 height='400px'
 />
 

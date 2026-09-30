@@ -2,22 +2,20 @@ package com.webforj.samples.views.viewtransitions.components;
 
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.icons.Icon;
-import com.webforj.component.layout.flexlayout.FlexAlignment;
-import com.webforj.component.layout.flexlayout.FlexLayout;
 
 @BundleEntry("css/viewtransitions/components/shuffle-card.css")
-public class ShuffleCard extends Composite<FlexLayout> {
-  private final FlexLayout self = getBoundComponent();
+public class ShuffleCard extends Composite<Card> {
+  private final Card self = getBoundComponent();
 
   public ShuffleCard(
       String id, String title, String subtitle, String colorClass, FeatherIcon icon, int position) {
-    self.setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)")
-        .addClassName("shuffle-card", colorClass);
+    self.addClassName("shuffle-card", colorClass);
     self.setViewTransitionName("card-" + id);
+    self.setBorderless(true);
 
     Div badge = new Div();
     badge.addClassName("shuffle-card-position");
@@ -25,9 +23,6 @@ public class ShuffleCard extends Composite<FlexLayout> {
 
     Icon iconComponent = icon.create();
     iconComponent.addClassName("shuffle-card-icon");
-
-    FlexLayout content = FlexLayout.create().vertical().build();
-    content.setSpacing("0px").setStyle("flex", "1");
 
     Div heading = new Div();
     heading.addClassName("shuffle-card-title");
@@ -37,7 +32,9 @@ public class ShuffleCard extends Composite<FlexLayout> {
     description.addClassName("shuffle-card-subtitle");
     description.setText(subtitle);
 
-    content.add(heading, description);
-    self.add(badge, iconComponent, content);
+    self.addToTitle(heading)
+        .addToHeaderActions(badge)
+        .addToIcon(iconComponent)
+        .addToCaption(description);
   }
 }
