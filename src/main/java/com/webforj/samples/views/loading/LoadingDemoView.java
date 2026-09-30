@@ -5,11 +5,12 @@ import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.icons.Icon;
-import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.loading.Loading;
 import com.webforj.router.annotation.FrameTitle;
@@ -22,36 +23,44 @@ import com.webforj.router.annotation.Route;
 public class LoadingDemoView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   // UI Components
-  private final Div card1;
-  private final Div card2;
+  private final Card guideCard;
+  private final Card videoCard;
   private final Icon guideIcon;
   private final Icon videoIcon;
-  private final Button buyButton1;
-  private final Button buyButton2;
   private final Loading loading;
 
   public LoadingDemoView() {
-    self.setDirection(FlexDirection.ROW).setMargin("var(--dwc-space-l)");
+    self.setHeight("100vh")
+        .setAlignment(FlexAlignment.CENTER)
+        .setSpacing("var(--dwc-space-xl)")
+        .setJustifyContent(FlexJustifyContent.CENTER);
 
-    card1 = new Div().addClassName("card");
+    guideIcon = FeatherIcon.BOOK.create();
+    guideCard = createCard("User Guide", guideIcon);
 
-    guideIcon = FeatherIcon.BOOK.create().addClassName("icon");
-
-    buyButton1 = new Button("Buy").setTheme(ButtonTheme.PRIMARY);
-
-    card2 = new Div().addClassName("card");
-
-    videoIcon = FeatherIcon.YOUTUBE.create().addClassName("icon");
-
-    buyButton2 = new Button("Buy").setTheme(ButtonTheme.PRIMARY);
+    videoIcon = FeatherIcon.YOUTUBE.create();
+    videoCard = createCard("Video Lessons", videoIcon);
 
     loading = new Loading("Loading... Please wait.").addClassName("loading-overlay");
     loading.getSpinner().setTheme(Theme.PRIMARY);
 
-    card1.add(new Paragraph("User Guide"), guideIcon, buyButton1);
-    card2.add(new Paragraph("Video Lessons"), videoIcon, buyButton2, loading);
+    videoCard.add(loading);
 
     loading.open();
-    self.add(card1, card2);
+    self.add(guideCard, videoCard);
+  }
+
+  private Card createCard(String title, Icon icon) {
+    Card card = new Card();
+    Button buyButton = new Button("Buy").setTheme(ButtonTheme.PRIMARY);
+    Icon cardIcon = icon.setSize(100, 100);
+
+    card.setSize(300, 220);
+    card.addToTitle(new Paragraph(title));
+    card.addClassName("card");
+    card.addToTitle(cardIcon);
+    card.addToFooter(buyButton);
+
+    return card;
   }
 }
