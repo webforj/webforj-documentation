@@ -60,10 +60,24 @@
   &:not(.blog-post-page) {
     article {
       background-color: var(--dwc-surface-3);
-      padding: 1rem;
       border: solid 1px var(--dwc-border-color);
       border-radius: var(--dwc-border-radius);
-      padding: 0;
+      // clips the full-bleed cover image to the rounded corners
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // the cover image and excerpt live inside .markdown, so unwrap it to make
+    // them siblings of the header and let the cover image reorder above it
+    .markdown {
+      display: contents;
+    }
+
+    footer {
+      // pin the footer down so leftover space collects above it and the
+      // tag rows stay aligned across cards of differing title lengths
+      margin-top: auto;
     }
 
     header,
@@ -88,8 +102,6 @@
       -webkit-line-clamp: 3;
       line-clamp: 3;
       -webkit-box-orient: vertical;
-      // fixed 3-line height keeps cover images aligned across cards
-      height: calc(var(--dwc-font-size-2xl) * 1.25 * 3);
       word-break: break-word;
       overflow-wrap: break-word;
       hyphens: auto;
@@ -123,14 +135,16 @@
 
       p:has(img) {
         text-align: center;
+        // above the title, flush with the top of the card
+        order: -1;
+        margin: 0 0 var(--dwc-space-m);
       }
 
       p:nth-child(2) {
-        height: 60%;
         overflow: hidden;
         display: -webkit-box;
         -webkit-line-clamp: 5;
-        line-clamp: 2;
+        line-clamp: 5;
         -webkit-box-orient: vertical;
         mask-image: linear-gradient(#000 50%, transparent 100%);
       }
