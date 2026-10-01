@@ -142,13 +142,11 @@ chart.setOptions(options);
 
 ## Updating chart visuals {#updating-chart-visuals}
 
-Refreshing or updating the appearance of your charts in response to data changes, user interactions, or visual option adjustments is straightforward with the `redraw()` method. This method ensures that your charts remain accurate and visually aligned with the underlying data or any modifications to their settings.
+The chart redraws itself when its data, options, type, or selection change, so most updates need no extra work. It also listens for window resize events and redraws automatically.
 
-Invoke `redraw()` in scenarios such as:
+Call `redraw()` when the chart's container changes size without the window resizing, since the chart can't observe that on its own. This happens when a sidebar collapses, a tab panel becomes visible, or a layout expands in response to user interaction.
 
-- **After Data Modifications**: Ensures the chart reflects any updates to its data source.
-- **Upon Changing Options**: Applies new styling or configuration changes to the chart.
-- **For Responsive Adjustments**: Adjusts the chart's layout or size when the container's dimensions change, ensuring optimal display across devices.
+In the example below, updating the values and submitting sets new data on the chart. No `redraw()` call is needed, since the chart picks up the change itself.
 
 <ComponentDemo
 path='/webforj/chartredraw'

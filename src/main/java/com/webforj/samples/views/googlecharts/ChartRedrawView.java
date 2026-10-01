@@ -178,7 +178,6 @@ public class ChartRedrawView extends Composite<Div> {
       Toast.show("Enter a valid number between 1 and " + MAX_ALLOWED, 3000, Theme.DANGER);
     } else {
       chart.setData(newData);
-      chart.redraw();
     }
   }
 }
