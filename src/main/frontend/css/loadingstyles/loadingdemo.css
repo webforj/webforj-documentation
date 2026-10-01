@@ -1,27 +1,13 @@
-.card {
-  border-radius: var(--dwc-border-radius-l);
-  box-shadow: var(--dwc-shadow-s);
-  padding: var(--dwc-space-l);
-  width: 300px;
-  background-color: var(--dwc-surface-2);
-  margin: var(--dwc-space-xl) auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.card-content {
-  font-size: var(--dwc-font-size-m);
-  color: var(--dwc-color-body-text);
+.card::part(control) {
   text-align: center;
-  margin-bottom: var(--dwc-space-l);
+  --dwc-card-title-line-height: var(--dwc-font-size-xl);
+  padding: 0;
 }
-.icon {
-  height: 100px;
-  width: 100px;
-  margin-bottom: var(--dwc-space-l);
+
+.card::part(main) {
+  padding: var(--dwc-space-m);
 }
-.loading-overlay {
-  border-radius: var(--dwc-border-radius-l);
+
+.card::part(footer) {
+  margin-inline: auto;
 }

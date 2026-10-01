@@ -2,30 +2,25 @@ package com.webforj.samples.views.viewtransitions.components;
 
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.card.Card;
 import com.webforj.component.element.event.ElementClickEvent;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H4;
 import com.webforj.component.html.elements.Paragraph;
-import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.concern.HasClassName;
 import com.webforj.concern.HasStyle;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
 
 @BundleEntry("css/viewtransitions/components/blog-card.css")
-public class BlogCard extends Composite<FlexLayout>
+public class BlogCard extends Composite<Card>
     implements HasClassName<BlogCard>, HasStyle<BlogCard> {
-  private final FlexLayout self = getBoundComponent();
+  private final Card self = getBoundComponent();
 
   public BlogCard(String title, String excerpt, String transitionName) {
-    self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-m)")
-        .setPadding("var(--dwc-space-m)")
-        .addClassName("blog-card");
+    self.addClassName("blog-card");
 
     H4 heading = new H4(title);
-    heading.addClassName("blog-card-title");
     heading.setViewTransitionName("blog-title");
 
     Div image = new Div();
@@ -35,11 +30,11 @@ public class BlogCard extends Composite<FlexLayout>
     Paragraph summary = new Paragraph(excerpt);
     summary.addClassName("blog-card-excerpt");
 
-    self.add(heading, image, summary);
+    self.addToTitle(heading).addToBody(image, summary);
   }
 
-  public ListenerRegistration<ElementClickEvent<FlexLayout>> onClick(
-      EventListener<ElementClickEvent<FlexLayout>> listener) {
+  public ListenerRegistration<ElementClickEvent<Card>> onClick(
+      EventListener<ElementClickEvent<Card>> listener) {
     return self.onClick(listener);
   }
 }

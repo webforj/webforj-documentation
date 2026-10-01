@@ -5,10 +5,13 @@ import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.card.Card;
 import com.webforj.component.field.TextField;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Span;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.toast.Toast;
 import com.webforj.component.upload.Upload;
@@ -29,18 +32,22 @@ public class UploadView extends Composite<FlexLayout> {
           ev -> Toast.show("Application submitted", Theme.SUCCESS));
 
   public UploadView() {
-    self.addClassName("upload-demo")
-        .addClassName("upload-demo--narrow")
-        .setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-m)");
-
+    self.setHeight("100vh")
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .add(createCard());
+    submit.setWidth("100%");
     configUpload();
+  }
 
-    self.add(
-        new H3("Submit your application"),
-        name,
-        fieldGroup("Resume", "PDF or DOCX, up to 5 MB.", resumeUpload),
-        submit);
+  private Card createCard() {
+    Card card = new Card();
+    card.setWidth(520);
+    card.addClassName("card-title");
+    card.addToTitle(new H3("Submit your application"));
+    card.addToBody(name, fieldGroup("Resume", "PDF or DOCX, up to 5 MB.", resumeUpload));
+    card.addToFooter(submit);
+    return card;
   }
 
   private void configUpload() {
@@ -75,7 +82,7 @@ public class UploadView extends Composite<FlexLayout> {
     Span helper = new Span(helperText);
     helper.addClassName("upload-demo__helper");
     group.add(fieldLabel, upload, helper);
-
+    group.setMargin("var(--dwc-space-m) 0");
     return group;
   }
 }

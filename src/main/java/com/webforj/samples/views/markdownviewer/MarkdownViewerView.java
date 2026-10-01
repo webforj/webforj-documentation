@@ -1,6 +1,7 @@
 package com.webforj.samples.views.markdownviewer;
 
 import com.webforj.component.Composite;
+import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.markdown.MarkdownViewer;
 import com.webforj.router.annotation.FrameTitle;
@@ -16,13 +17,8 @@ public class MarkdownViewerView extends Composite<Div> {
         .setStyle("justifyContent", "center")
         .setStyle("padding", "var(--dwc-space-l)");
 
-    Div card = new Div();
-    card.setStyle("maxWidth", "600px")
-        .setStyle("width", "100%")
-        .setStyle("padding", "var(--dwc-space-l)")
-        .setStyle("background", "var(--dwc-surface-3)")
-        .setStyle("border", "1px solid var(--dwc-color-default)")
-        .setStyle("borderRadius", "var(--dwc-border-radius-l)");
+    Card card = new Card();
+    card.setMaxWidth("600px").setWidth("100").setStyle("padding", "var(--dwc-space-l)");
 
     MarkdownViewer viewer = new MarkdownViewer();
     viewer.setContent(

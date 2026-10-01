@@ -1,10 +1,13 @@
 package com.webforj.samples.views.textarea;
 
 import com.webforj.component.Composite;
+import com.webforj.component.card.Card;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.field.TextArea;
 import com.webforj.component.icons.TablerIcon;
-import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.columnslayout.ColumnsLayout;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 import java.util.List;
@@ -12,9 +15,11 @@ import java.util.List;
 @Route
 public class TextAreaValidationView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
+  private final Card card = new Card();
   private final TextArea textArea =
       new TextArea("Validation Playground", "The quick brown fox jumps over the lazy dog.");
   private final TextArea status = new TextArea("Current Status");
+  private final ColumnsLayout wrapper = new ColumnsLayout();
 
   private static final int MAX_LENGTH = 256;
   private static final int MAX_PARAGRAPH_LENGTH = 64;
@@ -25,22 +30,19 @@ public class TextAreaValidationView extends Composite<FlexLayout> {
   private int maxLines = MAX_LINES;
 
   public TextAreaValidationView() {
-    self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-m)")
-        .setMargin("50px auto")
-        .setStyle("padding", "var(--dwc-space-m)")
-        .setMaxWidth("500px")
-        .setStyle("background-color", "var(--dwc-surface-3)")
-        .setStyle("border-radius", "var(--dwc-border-radius)")
-        .setStyle("border", "1px solid var(--dwc-color-default)");
+    self.setHeight("100vh")
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .add(card);
 
-    status.setHeight("120px").setReadOnly(true);
+    card.setWidth("500px");
+    status.setSize("100%", "120px").setReadOnly(true);
 
     textArea
         .setMaxLength(maxLength)
         .setParagraphLengthLimit(maxParagraphLength)
         .setLineCountLimit(maxLines)
-        .setHeight("200px")
+        .setSize("100%", "200px")
         .onValueChange(e -> updateStatus());
 
     NumberField maxLengthField = new NumberField("Max Length");
@@ -108,7 +110,8 @@ public class TextAreaValidationView extends Composite<FlexLayout> {
             .wrap()
             .build();
 
-    self.add(textArea, controlRow, status);
+    wrapper.add(textArea, controlRow, status);
+    card.add(wrapper);
 
     whenAttached().thenAccept(e -> updateStatus());
   }

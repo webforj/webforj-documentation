@@ -21,6 +21,8 @@ path='/webforj/viewtransitionchat'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
   'src/main/frontend/css/viewtransitions/chat.css',
+  'src/main/java/com/webforj/samples.views.viewtransitions.components.ChatCard.java',
+  'src/main/frontend/css/viewtransitions/components/chat-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -106,9 +108,10 @@ When working with lists or repeated components, include a unique identifier in t
 path='/webforj/viewtransitionmorph'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
+  'src/main/frontend/css/viewtransitions/morph.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
-  'src/main/frontend/css/viewtransitions/morph.css',
+  'src/main/frontend/css/viewtransitions/components/blog-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -136,8 +139,9 @@ Page.getCurrent().startViewTransition()
 path='/webforj/viewtransitionshuffle'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
-  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
   'src/main/frontend/css/viewtransitions/shuffle.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
+  'src/main/frontend/css/viewtransitions/components/shuffle-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -199,6 +203,8 @@ path='/webforj/viewtransitionenterexit'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
   'src/main/frontend/css/viewtransitions/enterexit.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/NotificationCard.java',
+  'src/main/frontend/css/viewtransitions/components/notification-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}

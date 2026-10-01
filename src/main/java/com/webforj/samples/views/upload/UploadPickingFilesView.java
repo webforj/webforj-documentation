@@ -2,8 +2,10 @@ package com.webforj.samples.views.upload;
 
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.upload.Upload;
 import com.webforj.router.annotation.FrameTitle;
@@ -17,13 +19,21 @@ public class UploadPickingFilesView extends Composite<FlexLayout> {
   private final Upload upload = new Upload();
 
   public UploadPickingFilesView() {
-    self.addClassName("upload-demo")
-        .setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-m)");
+    self.setHeight("100vh")
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .add(createCard());
 
     configUpload();
+  }
 
-    self.add(new H3("Gallery uploader"), upload);
+  private Card createCard() {
+    Card card = new Card();
+    card.setWidth(520);
+    card.addClassName("card-title");
+    card.addToTitle(new H3("Gallery uploader"));
+    card.addToBody(upload);
+    return card;
   }
 
   public void configUpload() {
