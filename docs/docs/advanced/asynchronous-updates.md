@@ -440,10 +440,12 @@ public class LongTaskView extends Composite<FlexLayout> {
 
 </ExpandableCode>
 
-<div class="videos-container" style={{maxWidth: '400px', margin: '0 auto'}}>
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/webforj-long-tasks.mp4" type="video/mp4"/>
-  </video>
+<div style={{maxWidth: '400px', margin: '0 auto'}}>
+  <MediaPlayer
+    src="https://cdn.webforj.com/webforj-documentation/video/webforj-long-tasks.mp4"
+    title="Complete case study: LongTaskView"
+    aspectRatio="1080 / 1288"
+  />
 </div>
 
 <!-- vale on -->

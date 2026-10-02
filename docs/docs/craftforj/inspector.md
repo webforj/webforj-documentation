@@ -12,11 +12,11 @@ The Inspector shows the component tree that your Java code built. A `Composite` 
 
 To select a component from the page, press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> and click it. craftforJ selects the matching node in the tree. Hovering a node in the tree does the reverse and highlights that component in the page, so you can move between the screen and the tree in either direction.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/pick-mode.mp4" type="video/mp4" />
-  </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/pick-mode.mp4"
+  title="Selecting a component"
+  aspectRatio="1920 / 992"
+/>
 
 To search the tree, press <kbd>Cmd/Ctrl</kbd> + <kbd>F</kbd>. Wrapping a term in slashes treats it as a regular expression. Right-clicking a node opens the actions available for it. You can open its source or hand it to the [assistant](/docs/craftforj/ai).
 
@@ -28,11 +28,11 @@ Selecting a component fills the sidebar with its properties, grouped by what the
 A property edit changes the app in front of you and nothing else. Getting it into your source is a separate step that you carry out deliberately, described in [Writing changes to source](/docs/craftforj/source-changes).
 :::
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/property-edit.mp4" type="video/mp4" />
-  </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/property-edit.mp4"
+  title="Reading and changing properties"
+  aspectRatio="1920 / 1000"
+/>
 
 ## Viewing the source of a component {#viewing-the-source-of-a-component}
 

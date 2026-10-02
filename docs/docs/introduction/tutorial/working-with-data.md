@@ -13,11 +13,10 @@ By the end of this step, the app created in the previous step, [Creating a Basic
 
 Completing this step creates a version of [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data).
 
-<!-- <div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/working-with-data.mp4" type="video/mp4"/>
-  </video>
-</div> -->
+<!-- <MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/tutorials/working-with-data.mp4"
+  title="Working with Data"
+/> -->
 
 ## Running the app {#running-the-app}
 
