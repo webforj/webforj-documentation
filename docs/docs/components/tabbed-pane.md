@@ -117,7 +117,7 @@ The `TabbedPane` class has two constituent parts: a `Tab` that's displayed in a 
 
 ### Swiping {#swiping}
 
-The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile application, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swiping are disabled by default, but can be enabled with the `setSwipeable(boolean)` and `setSwipeWithMouse(boolean)` methods, respectively.
+The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile app, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swiping are disabled by default, but can be enabled with the `setSwipeable(boolean)` and `setSwipeWithMouse(boolean)` methods, respectively.
 
 ### Tab placement {#tab-placement}
 
