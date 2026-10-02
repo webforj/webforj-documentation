@@ -146,17 +146,6 @@ The chart redraws itself when its data, options, type, or selection change, so m
 
 Call `redraw()` when the chart's container changes size without the window resizing, since the chart can't observe that on its own. This happens when a sidebar collapses, a tab panel becomes visible, or a layout expands in response to user interaction.
 
-In the example below, updating the values and submitting sets new data on the chart. No `redraw()` call is needed, since the chart picks up the change itself.
-
-<ComponentDemo
-path='/webforj/chartredraw'
-files={[
-  'src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java',
-  'src/main/frontend/css/googlecharts/chartRedraw.css',
-]}
-height='650px'
-/>
-
 ## Exporting charts as images {#exporting-charts-as-images}
 
 The `getImageUri()` method provides a way to export your Google Charts as base64-encoded PNG images. This method is particularly useful for sharing charts outside the web environment, embedding them into emails or documents, or simply for archival purposes.
