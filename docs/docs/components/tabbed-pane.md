@@ -47,7 +47,7 @@ Tabs are comprised of the following properties, which are then used when adding 
 
 1. **Text(`String`)**: The text that will be displayed as a title for the `Tab` within the `TabbedPane`. This is also referred to as the title via the `getTitle()` and `setTitle(String title)` methods.
 
-2. **Tooltip(`String`)**: The tooltip text that is associated with the `Tab`, which will be displayed when the cursor hovers over the `Tab`.
+2. **Tooltip(`String`)**: The tooltip text that's associated with the `Tab`, which will be displayed when the cursor hovers over the `Tab`.
 
 3. **Enabled(`boolean`)**: Represents whether the `Tab` is currently enabled or not. Can be modified with the `setEnabled(boolean enabled)` method.
 
