@@ -16,7 +16,7 @@ Multiple sections of content can be organized under a single `TabbedPane`, where
 
 ## Usages {#usages}
 
-The `TabbedPane` class is gives developers a powerful tool for organizing and presenting multiple tabs or sections within a UI. Here are some typical scenarios where you might utilize a `TabbedPane` in your application:
+The `TabbedPane` class is gives developers a powerful tool for organizing and presenting multiple tabs or sections within a UI. Here are some typical scenarios where you might use a `TabbedPane` in your application:
 
 1. **Document Viewer**: Implementing a document viewer where each tab represents a different document or file. Users can easily switch between open documents for efficient multitasking.
 
