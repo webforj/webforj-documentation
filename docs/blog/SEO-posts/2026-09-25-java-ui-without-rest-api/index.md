@@ -19,7 +19,7 @@ That overhead isn't part of the feature. It's the cost of a protocol boundary be
 
 <!-- truncate -->
 
-## What a REST layer is for
+## What a REST layer is for {#what-a-rest-layer-is-for}
 
 A REST API between a frontend and backend is a formal contract: endpoints with documented shapes, request/response formats, error codes, versioning, CORS headers for cross-origin access. It's the right architecture when multiple consumers need that contract — a mobile app, a third-party integration, a partner system. The contract makes the backend independently deployable and independently testable.
 
@@ -27,7 +27,7 @@ When the only consumer of that contract is your own frontend, deployed alongside
 
 The REST layer in a JS+Spring Boot full-stack app isn't wrong. It's the standard pattern and there are good reasons it became standard. But it's worth being clear about what it costs.
 
-## The incidental complexity inventory
+## The incidental complexity inventory {#the-incidental-complexity-inventory}
 
 When a React frontend calls a Spring Boot backend, a specific set of problems appears — not because of the feature being built, but because of the protocol between the two layers:
 
@@ -43,7 +43,7 @@ When a React frontend calls a Spring Boot backend, a specific set of problems ap
 
 Each item on this list is a real engineering problem. None of them are about the feature the product owner asked for.
 
-## What disappears when both layers are Java
+## What disappears when both layers are Java {#what-disappears-when-both-layers-are-java}
 
 In a webforJ application, UI components are Java classes running in the same JVM as the Spring backend. A component can receive a Spring service via injection — the same injection mechanism any other Spring bean uses — and call its methods directly.
 
@@ -53,7 +53,7 @@ The state management problem also changes shape. The UI component reads from the
 
 This is not a new pattern. GWT used the same model in the 2000s, with Java on both sides and an RPC mechanism in between. The architecture isn't novel; what's changed is that modern Java UI frameworks make it straightforward without requiring a separate RPC layer.
 
-## When the REST API is still the right answer
+## When the REST API is still the right answer {#when-the-rest-api-is-still-the-right-answer}
 
 A mobile app needs an API. A third-party system needs an API. A partner integration needs an API. Anything that isn't your own frontend, running on your own server, needs the formal contract that REST provides.
 
@@ -61,7 +61,7 @@ The argument here isn't that REST APIs are the wrong approach. It's that the RES
 
 If there's any chance the application will later need a public API — for a mobile client, for partner access, for user-facing integrations — build the REST layer now, deliberately, with the external consumer in mind. The full-stack Java pattern isn't a shortcut to a service you'll later need to expose. It's a different choice about who the consumers of your backend are.
 
-## The actual tradeoff
+## The actual tradeoff {#the-actual-tradeoff}
 
 The full-stack Java architecture trades one set of concerns for another. The protocol overhead disappears — no CORS, no fetch(), no JSON serialization between layers, no separate state management. What you take on instead: UI components are Java, which means the developers writing them need to know Java, and the rendering happens client-side, driven by Java. There's no static export of the frontend, no CDN-distributed bundle.
 

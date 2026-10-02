@@ -6,7 +6,7 @@ description: Theme the dwc-tabbed-pane container, tab strip, and active indicato
 ---
 
 <DocChip chip='shadow' />
-    
+
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-tabbed-pane>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::
