@@ -3,6 +3,7 @@ package com.webforj.samples.pages.table;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class DataTablePage {
   private static final String ROUTE = "datatable";
@@ -113,7 +114,7 @@ public class DataTablePage {
     return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto page " + n));
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 }

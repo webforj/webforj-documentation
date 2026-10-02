@@ -3,6 +3,7 @@ package com.webforj.samples.pages.slider;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 import java.util.regex.Pattern;
 
 public class DonationSliderPage {
@@ -24,8 +25,8 @@ public class DonationSliderPage {
     this.twentyDollarsOption = page.getByText("$20");
   }
 
-  public static String getRoute() {
-    return ROUTE;
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
   }
 
   public Locator getDonationLowerHandle() {

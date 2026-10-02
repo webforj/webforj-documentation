@@ -16,6 +16,7 @@ import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,10 +34,9 @@ public class ChartRedrawView extends Composite<Div> {
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
   private final Button redrawButton = new Button("Redraw Chart");
   private final List<String> categories = List.of("Instagram", "Twitter", "Facebook", "LinkedIn");
-  private final Map<String, NumberField> valueFields;
+  private final Map<String, NumberField> valueFields = new HashMap<>();
 
   public ChartRedrawView() {
-    this.valueFields = createValueFields();
     setupLayout();
   }
 
@@ -95,9 +95,7 @@ public class ChartRedrawView extends Composite<Div> {
     return data;
   }
 
-  private Map<String, NumberField> createValueFields() {
-    Map<String, NumberField> fields = new java.util.HashMap<>();
-
+  private FlexLayout createInputContainer() {
     FlexLayout inputContainer =
         new FlexLayout()
             .addClassName("input-container")
@@ -108,10 +106,10 @@ public class ChartRedrawView extends Composite<Div> {
     for (String category : categories) {
       NumberField valueField = createNumberField(category);
       inputContainer.add(valueField);
-      fields.put(category, valueField);
+      valueFields.put(category, valueField);
     }
 
-    return fields;
+    return inputContainer;
   }
 
   private NumberField createNumberField(String category) {
@@ -122,21 +120,6 @@ public class ChartRedrawView extends Composite<Div> {
         .setMax((double) MAX_ALLOWED)
         .setText("100")
         .addClassName("number-field");
-  }
-
-  private FlexLayout createInputContainer() {
-    FlexLayout inputContainer =
-        new FlexLayout()
-            .addClassName("input-container")
-            .setJustifyContent(FlexJustifyContent.CENTER)
-            .setWrap(FlexWrap.WRAP)
-            .setSpacing("10px");
-
-    for (NumberField field : valueFields.values()) {
-      inputContainer.add(field);
-    }
-
-    return inputContainer;
   }
 
   private Div createButtonContainer() {

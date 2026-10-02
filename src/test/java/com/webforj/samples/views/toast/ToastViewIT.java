@@ -5,19 +5,21 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.views.BaseTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ToastViewIT extends BaseTest {
 
-  @BeforeEach
-  public void setupToastView() {
-    navigateToRoute("toast");
+  public void setupToastView(SupportedLanguage language) {
+    navigateToRoute(language.getPath("toast"));
   }
 
-  @Test
-  public void testToastStopButtonClosesToast() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testToastStopButtonClosesToast(SupportedLanguage language) {
+    setupToastView(language);
     Locator toast = page.getByText("System update failed. Restoring to the previous state.");
     assertThat(toast).isVisible();
 
