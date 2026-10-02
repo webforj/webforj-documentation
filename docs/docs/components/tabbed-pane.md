@@ -2,7 +2,7 @@
 title: TabbedPane
 slug: tabbedpane
 sidebar_position: 125
-description: Organize content into switchable Tab sections with the TabbedPane component, supporting icons, keys, and customizable tab properties.
+description: Organize content into switchable Tab sections with the TabbedPane component, supporting icons and customizable tab properties.
 ---
 
 <DocChip chip='shadow' />
@@ -16,7 +16,7 @@ Multiple sections of content can be organized under a single `TabbedPane`, where
 
 ## Usages {#usages}
 
-The `TabbedPane` class is a gives developers a powerful tool for organizing and presenting multiple tabs or sections within a UI. Here are some typical scenarios where you might utilize a `TabbedPane` in your application:
+The `TabbedPane` class is gives developers a powerful tool for organizing and presenting multiple tabs or sections within a UI. Here are some typical scenarios where you might use a `TabbedPane` in your application:
 
 1. **Document Viewer**: Implementing a document viewer where each tab represents a different document or file. Users can easily switch between open documents for efficient multitasking.
 
@@ -45,17 +45,15 @@ Tabs are not intended to be used as standalone components. They are meant to be 
 
 Tabs are comprised of the following properties, which are then used when adding them in a `TabbedPane`. These properties have getters and setters to facilitate customization within a `TabbedPane`.
 
-1. **Key(`Object`)**: Represents the unique identifier for the `Tab`.
+1. **Text(`String`)**: The text that will be displayed as a title for the `Tab` within the `TabbedPane`. This is also referred to as the title via the `getTitle()` and `setTitle(String title)` methods.
 
-2. **Text(`String`)**: The text that will be displayed as a title for the `Tab` within the `TabbedPane`. This is also referred to as the title via the `getTitle()` and `setTitle(String title)` methods.
+2. **Tooltip(`String`)**: The tooltip text that's associated with the `Tab`, which will be displayed when the cursor hovers over the `Tab`.
 
-3. **Tooltip(`String`)**: The tooltip text that is associated with the `Tab`, which will be displayed when the cursor hovers over the `Tab`.
+3. **Enabled(`boolean`)**: Represents whether the `Tab` is currently enabled or not. Can be modified with the `setEnabled(boolean enabled)` method.
 
-4. **Enabled(`boolean`)**: Represents whether the `Tab` is currently enabled or not. Can be modified with the `setEnabled(boolean enabled)` method.
+4. **Closable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setClosable(boolean closable)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The `TabbedPane` component dictates how to handle the removal.
 
-5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The     `TabbedPane` component dictates how to handle the removal.
-
-6. **Slot(`Component`)**:
+5. **Slot(`Component`)**:
     Slots provide flexible options for improving the capability of a `Tab`. You can have icons, labels, loading spinners, clear/reset capability, avatar/profile pictures, and other beneficial components nested within a `Tab` to further clarify intended meaning to users.
     You can add a component to the `prefix` slot of a `Tab` during construction. Alternatively, you can use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the displayed option within a `Tab`.
 
@@ -119,7 +117,7 @@ The `TabbedPane` class has two constituent parts: a `Tab` that's displayed in a 
 
 ### Swiping {#swiping}
 
-The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile application, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swipping are disabled by default, but can be enabled with the `setSwipable(boolean)` and `setSwipableWithMouse(boolean)` methods, respectively.
+The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile app, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swiping are disabled by default, but can be enabled with the `setSwipeable(boolean)` and `setSwipeWithMouse(boolean)` methods, respectively.
 
 ### Tab placement {#tab-placement}
 
