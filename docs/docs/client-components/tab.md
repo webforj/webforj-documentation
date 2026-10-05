@@ -6,7 +6,7 @@ description: Style the dwc-tab label, icon, and indicator with CSS variables and
 ---
 
 <DocChip chip='shadow' />
-
+    
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-tab>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::

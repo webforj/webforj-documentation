@@ -6,7 +6,7 @@ description: Theme the dwc-slider track, thumb, tick marks, and labels through C
 ---
 
 <DocChip chip='shadow' />
-
+    
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-slider>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::
