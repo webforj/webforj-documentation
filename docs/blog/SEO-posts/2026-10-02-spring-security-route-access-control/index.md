@@ -69,10 +69,12 @@ Route-level annotations enforce access; template conditionals reflect access. Bo
 
 ## Where each belongs
 
-A common pattern that creates exposure: the view exists, the route is unannotated, and `sec:authorize` hides the link to it. From the user's perspective, the link is gone. From an attacker's perspective, the route is reachable via direct URL.
+A common pattern that creates exposure in Spring MVC / Thymeleaf apps: the view exists, the route is unannotated, and `sec:authorize` hides the link to it. From the user's perspective, the link is gone. From an attacker's perspective, the route is reachable via direct URL. The template conditional and the route policy live in separate places, and they can drift.
 
-The robust version: `@RolesAllowed` on the view class, then optionally a matching `sec:authorize` or `th:if` in the template to remove the corresponding link. The annotation is the enforcement fact; the hidden link is the UX reflection of that fact. If the annotation changes — a new role is added, a permission is revised — the route policy updates regardless of whether the template conditional was updated to match. If someone removes the template conditional, the route still enforces the correct access.
+In webforJ, this split-layer problem does not arise. There is no template layer to keep synchronized with the route annotation — the annotation on the view class is the complete policy. `@RolesAllowed` on the view stops unauthorized users before the view is constructed, regardless of whether any navigation element points to it.
 
-One layer enforces; the other reflects. For views that carry sensitive data or privileged actions, the enforcement layer is non-negotiable. The reflection layer is a courtesy.
+That means access policy is harder to misconfigure. There is no second surface that can silently diverge from the enforcement fact. If the annotation changes, the policy changes. Nothing else needs updating.
 
-webforJ covers both patterns in the [Security Annotations](/docs/security/annotations) reference — `@RolesAllowed`, `@PermitAll`, `@AnonymousAccess`, and `@DenyAll` for the common cases, and [`@RouteAccess` with SpEL expressions](/docs/security/spel-expressions) for more complex role and authority combinations.
+For views that carry sensitive data or privileged actions, `@RolesAllowed` — or `@RouteAccess` for more nuanced conditions — is the complete solution. The enforcement layer is non-negotiable; in webforJ, it is also the only layer.
+
+webforJ's [Security Annotations](/docs/security/annotations) reference covers `@RolesAllowed`, `@PermitAll`, `@AnonymousAccess`, and `@DenyAll` for common cases, and [`@RouteAccess` with SpEL expressions](/docs/security/spel-expressions) for more complex role and authority combinations.
