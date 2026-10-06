@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 ![cover](./cover.png)
 
-A developer asks: "How do I control which users see which views?" In a webforJ app, the natural answer is to call `setVisible(false)` on a navigation component based on the current user's role, or to conditionally add layout elements depending on permissions. It's direct and it works for what it does — but what it does is different from what the question was asking.
+A developer asks: "How do I control which users see which views?" In a webforJ app, the first instinct might be to call `setVisible(false)` on a navigation component based on the current user's role, or to conditionally add layout elements depending on permissions. It's direct and it works for what it does — but what it does is different from what the question was asking.
 
 Controlling visibility and restricting access are different operations. Treating them as equivalent is how unintended access surfaces in production.
 
@@ -54,7 +54,7 @@ public class TeamsView extends Composite<FlexLayout> {
   public TeamsView() {
     self.setHeight("100%");
     self.setAlignment(FlexAlignment.CENTER);
-    self.add(new Explore("Teams"));
+    self.add(new H1("Teams"));
   }
 }
 ```
@@ -74,6 +74,8 @@ webforJ's production hardening documentation addresses the visibility/security d
 The instruction that follows: put the real rule in the server-side handler. A disabled button is a UX signal. A server-side permission check is what stops a manipulated client.
 
 Component visibility operates on the same principle. Hiding a navigation element guides users by not showing them paths they won't be permitted to follow. A `@RolesAllowed` annotation on the route class stops any client from rendering the view. The former is a courtesy to the user; the latter is a constraint on the system.
+
+For production apps, webforJ exposes a configuration flag that strengthens this posture further. Setting `webforj.security.secure-by-default=true` in `application.properties` means every route requires authentication unless explicitly marked `@AnonymousAccess`. A route that ships without an annotation is protected rather than exposed, which eliminates the "I forgot to add `@RolesAllowed`" failure mode entirely.
 
 ## Server-side authorization for actions
 
@@ -111,6 +113,14 @@ A common pattern that creates exposure in Java web apps: the view exists, the ro
 
 In webforJ, `@RolesAllowed` on the view class is the complete solution. There is no template layer to keep in sync with the annotation — the annotation is the policy. If someone removes the navigation component entirely, the route still enforces the correct access. If the annotation changes, the policy changes, and nothing else needs updating.
 
-For views that carry sensitive data or privileged actions, `@RolesAllowed` — or `@RouteAccess` with SpEL expressions for more nuanced conditions — is non-negotiable.
+For views that carry sensitive data or privileged actions, `@RolesAllowed` — or `@RouteAccess` with SpEL expressions for more nuanced conditions — is non-negotiable. When a role check alone isn't enough, `@RouteAccess` evaluates a Spring Expression Language rule directly in the annotation:
+
+```java title="ReportsView.java"
+@Route(value = "/reports", outlet = MainLayout.class)
+@RouteAccess("hasRole('MODERATOR') and hasAuthority('REPORTS:VIEW')")
+public class ReportsView extends Composite<FlexLayout> { /* ... */ }
+```
+
+The policy sits on the view class, same as `@RolesAllowed`, and runs through the same route-interception pipeline.
 
 webforJ's [Security Annotations](/docs/security/annotations) reference covers `@RolesAllowed`, `@PermitAll`, `@AnonymousAccess`, and `@DenyAll` for common cases, and [`@RouteAccess` with SpEL expressions](/docs/security/spel-expressions) for more complex role and authority combinations.
