@@ -62,7 +62,7 @@ When using `setText()`, an `IllegalArgumentException` is thrown if the input can
 
 
 :::info Picker UI
-The appearance of the time picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
+The appearance of the time picker input UI depends on the selected locale, the browser, and the operating system. This creates automatic consistency with the interface users are already familiar with.
 :::
 
 ## Static utilities {#static-utilities}
@@ -79,6 +79,6 @@ The `TimeField` class also provides the following static utility methods:
 
 - **Provide Clear Time Format Examples**: Clearly show users the expected time format near the `TimeField`. Use examples or placeholders to help them enter the time correctly. If possible, display the time format based on the user's location.
 
-- **Accessibility**: Utilize the `TimeField` component with accessibility in mind, ensuring it meets accessibility standards such as providing proper labels, sufficient color contrast, and compatibility with assistive technologies.
+- **Accessibility**: Use the `TimeField` component with accessibility in mind, meeting accessibility standards such as proper labels, sufficient color contrast, and compatibility with assistive technologies.
 
 - **Reset Option**: Provide a way for users to easily clear the `TimeField` to an empty or default state.
