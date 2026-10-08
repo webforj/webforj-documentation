@@ -5,13 +5,13 @@ slug: spring-security-route-access-control
 date: 2026-10-02
 authors: webforJ
 tags: [spring, security, web development]
-image: ./cover.png
+image: ./cover.jpg
 hide_table_of_contents: false
 
 # --- Internal tracking (stripped at publish) ---
 ---
 
-![cover](./cover.png)
+![cover](./cover.jpg)
 
 A developer asks: "How do I control which users see which views?" In a webforJ app, the first instinct might be to call `setVisible(false)` on a navigation component based on the current user's role, or to conditionally add layout elements depending on permissions. It's direct and it works for what it does — but what it does is different from what the question was asking.
 
