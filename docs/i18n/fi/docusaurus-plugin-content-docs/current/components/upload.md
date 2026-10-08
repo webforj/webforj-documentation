@@ -1,28 +1,27 @@
 ---
 title: Upload
 sidebar_position: 160
-sidebar_class_name: new-content
 description: >-
   Select and upload one or more files from the local machine with the Upload
   component using drag-and-drop, filters, and per-file or batch event tracking.
-_i18n_hash: 76f8c00c7754fed0a87c27e7963e2877
+_i18n_hash: df26b1e4b51f3ba6ece7602ca1a1f33f
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-upload" />
 <DocChip chip='since' label='26.01' />
 <JavadocLink type="foundation" location="com/webforj/component/upload/Upload" top='true'/>
 
-`Upload`-komponentti on rivin sisäinen tiedostovalitsin, jonka avulla käyttäjä voi valita yhden tai useamman tiedoston paikalliselta koneeltaan ja lähettää ne palvelimelle. Toisin kuin [`FileUploadDialog`](/docs/components/option-dialogs/file-upload), joka esittää valitsimen modaalissa, joka estää sovellusta toimimasta, ennen kuin käyttäjä on valmis, `Upload` renderoituu suoraan sivun asetteluun. Se sopii mihin tahansa kohtaan, johon tiedostosyöte kuuluu: profiililomake, liitekenttä kommenttikentän vieressä tai pudotusalue mediahallintapageda.
+`Upload`-komponentti on inline-tiedostovalitsin, joka antaa käyttäjän valita yhden tai useamman tiedoston paikalliselta koneeltaan ja lähettää ne palvelimelle. Toisin kuin [`FileUploadDialog`](/docs/components/option-dialogs/file-upload), joka esittää valitsimen modaalissa, joka estää sovelluksen käytön, kunnes käyttäjä on valmis, `Upload` renderöidään suoraan sivun asettelussa. Se sopii mihin tahansa tiedostosyötteeseen: profiililomakkeeseen, liitetiedostokenttään kommenttiruudun viereen tai pudotusalueeseen mediasivustolla.
 
 <!-- INTRO_END -->
 
-:::tip Milloin käyttää `Upload`-komponenttia
-Käytä `Upload`-komponenttia, kun tiedostovalintaan liittyy muita toimintoja työnkulussa, kuten profiilin muokkaamista tai viestin luomista. Käytä sen sijaan [`FileUploadDialog`](/docs/components/option-dialogs/file-upload), kun tiedostojen lataamisen tulisi olla modaalista, esimerkiksi kun tiedosto on ehdottomasti vaadittu ennen kuin käyttäjä voi jatkaa.
+:::tip Milloin käyttää `Upload`
+Käytä `Upload`-komponenttia, kun tiedoston valinta liittyy muihin toimintoihin työprosessissa, kuten profiilin muokkaamiseen tai artikkelin kirjoittamiseen. Käytä sen sijaan [`FileUploadDialog`](/docs/components/option-dialogs/file-upload), kun latausten on oltava modaalisia, esimerkiksi kun tiedosto on pakollinen ennen kuin käyttäjä voi edetä.
 :::
 
-## Latauksen luominen {#creating-an-upload}
+## Tiedoston lataaminen {#creating-an-upload}
 
-Oletusarvoisesti `Upload`-komponentti näyttää valintapainikkeen, pudotusalueen, nykyisten tiedostojen listan ja latauspainikkeen. Peruutuspainike on piilotettu oletusarvoisesti. `Upload`-komponentin luomisen jälkeen voit lisätä suodattimia, kuten sallitut tiedostotyypit, ja muuttaa mitkä osat ovat näkyvissä.
+Oletusarvoisesti `Upload`-komponentti näyttää valintapainikkeen, pudotusalueen, nykyisten tiedostojen luettelon ja latauspainikkeen. Peruutuspainike on oletusarvoisesti piilotettu. `Upload`-komponentin luomisen jälkeen voit lisätä suodattimia, kuten sallitut tiedostotyypit, ja muuttaa, mitkä osat ovat näkyvissä.
 
 ```java
 Upload upload = new Upload();
@@ -31,7 +30,7 @@ upload.setVisible(false, Upload.Part.LIST);
 layout.add(upload);
 ```
 
-Seuraavassa esimerkissä lisätään työhakemuksen `Upload`, nimikentän ja lähetyspainikkeen oheen.
+Seuraavassa esimerkissä ladataan ansioluettelo `Upload`-komponentti rekrytointilomakkeeseen nimen kentän ja lähetyspainikkeen viereen.
 
 <ComponentDemo
 path='/webforj/upload'
@@ -44,9 +43,9 @@ height='550px'
 
 ## Tiedostojen valinta {#picking-files}
 
-Valitsimen käyttäytymistä hallitaan muutamilla itsenäisillä asetuksilla: kuinka monta tiedostoa käyttäjä voi valita kerralla, mitä paikalliselta tiedostojärjestelmältä on valittavissa, ja mitä tyyppejä näkyy tiedostoselaimessa. Yhdessä ne muokkaavat valintakokemusta sopimaan kenttävaatimuksiin.
+Valitsimen käyttäytymistä ohjataan muutamalla itsenäisellä asetuksella: kuinka monta tiedostoa käyttäjä voi valita kerralla, mitä voidaan valita paikalliselta tiedostojärjestelmältä ja mitä tyyppejä on näkyvissä tiedostovalintaikkunassa. Yhdessä ne muokkaavat valintakokemusta kenttään sopivaksi.
 
-Tässä on galleria-lataaja, joka on määritetty sekä kuvien että videoiden suodattimilla, monivalinta-asetuksella ja 20 tiedoston ylärajalla:
+Tässä on galleria-lataaja, joka on määritetty sekä kuvat että videot suodattavia, monivalintatoimintoa sekä 20 tiedoston ylärajaa varten:
 
 <ComponentDemo
 path='/webforj/uploadpickingfiles'
@@ -54,12 +53,13 @@ files={[
   'src/main/java/com/webforj/samples/views/upload/UploadPickingFilesView.java',
   'src/main/frontend/css/upload/upload.css'
 ]}
+
 height='450px'
 />
 
 ### Valintatila {#selection-mode}
 
-Valintatila rajoittaa valitsinta yhteen tiedostoon tai moneen. `MULTIPLE` on oletus ja sopii erätoimintoihin, kuten valokuvagallerioihin tai laskutusliitteisiin. `SINGLE` sopii kentille, jotka käsittelevät käsitteellisesti yhtä arvoa, kuten profiilikuva tai allekirjoitettu sopimus.
+Valintatila rajoittaa valitsimen yhdelle tai useammalle tiedostolle. `MULTIPLE` on oletusarvo ja sopii erätoiminnoille, kuten valokuvagallerioille tai laskuliitteille. `SINGLE` sopii kentille, joilla on käsitteellisesti vain yksi arvo, kuten profiilivalokuvalle tai allekirjoitetulle sopimukselle.
 
 ```java
 upload.setSelectionMode(Upload.SelectionMode.SINGLE);
@@ -68,76 +68,76 @@ upload.setSelectionMode(Upload.SelectionMode.MULTIPLE);
 
 ### Valitsimen lähde {#picker-source}
 
-Valitsimen lähde määrää, mitä käyttäjä voi valita paikalliselta tiedostojärjestelmältä. Oletusarvoisesti `FILES` avaa tavanomaisen tiedostoselaimen. `DIRECTORY` antaa käyttäjän valita kansion ja lataa sen ylimmät tiedostot. `DIRECTORY_RECURSIVE` kulkee koko rakennetta ja lataa kaikki tiedostot sen sisällä.
+Valitsimen lähde määrittää, mitä käyttäjä voi valita paikalliselta tiedostojärjestelmältä. Oletus, `FILES`, avaa standarditiedostovalintaikkunan. `DIRECTORY` antaa käyttäjän valita kansion ja lataa sen ylimmät tiedostot. `DIRECTORY_RECURSIVE` kulkee koko puun läpi ja lataa jokaisen tiedoston sisällä.
 
 ```java
 upload.setPicker(Upload.Picker.DIRECTORY_RECURSIVE);
 ```
 
-Hakemistolataukset sopivat työkaluille, jotka peilaavat kansiorakenteita, kuten käyttöönottojärjestelmiä, omaisuushallintasovelluksia tai varmuuskopiointityökaluja. Useimmissa lomakekentissä oletustiedostovalitsin on oikea valinta.
+Kansioiden lataaminen sopii työkaluille, jotka peilaavat kansiorakenteita, kuten toteutusjärjestelmille, materiaalinhallintaohjelmille tai varmuuskopiointipalveluille. Useimmissa lomakekentissä oletustiedostovalitsin on oikea valinta.
 
 ### Suodattimet {#filters}
 
-Suodattimet rajoittavat, mitä käyttäjä voi valita paikalliselta tiedostojärjestelmältä. Jokaisella suodattimella on kuvaus ja yksi tai useampi globuskaala, joka on erotettu puolipisteillä. Aktiivinen suodatin näkyy pudotusvalikossa valitsimen painikkeen vieressä, ja käyttäjä voi vaihtaa niiden välillä.
+Suodattimet rajoittavat mitä käyttäjä voi valita paikalliselta tiedostojärjestelmältä. Jokaisella suodattimella on kuvaus ja yksi tai useampi glob-malli erottimena puolipiste. Aktiivinen suodatin näkyy pudotusvalikossa valitsinpainikkeen vieressä, ja käyttäjä voi vaihtaa niiden välillä.
 
 ```java
 upload.addFilter("Kuvat", "*.png;*.jpg;*.jpeg");
-upload.addFilter("Asiakirjat", "*.pdf;*.docx");
+upload.addFilter("Dokumentit", "*.pdf;*.docx");
 upload.setActiveFilter("Kuvat");
 ```
 
-Muutamat siihen liittyvät asetukset muokkaavat, miten suodatinpudotusvalikko käyttäytyy: `setFiltersVisible(false)` piilottaa pudotusvalikon pitäen suodattimet aktiivisina, `setMultiFilterSelection(true)` antaa käyttäjän yhdistää suodattimia, ja `setAllFilesFilterEnabled(false)` poistaa epäsuoran "Kaikki tiedostot" vaihtoehdon.
+Muutamat näihin liittyvät asetukset muokkaavat, miten suodatinpudotusvalikko käyttäytyy: `setFiltersVisible(false)` piilottaa pudotusvalikon mutta pitää suodattimet aktiivisina, `setMultiFilterSelection(true)` antaa käyttäjän yhdistää suodattimia ja `setAllFilesFilterEnabled(false)` poistaa oletusarvoisen "Kaikki tiedostot" vaihtoehdon.
 
-Muutamat näistä asetuksista koskevat vain tavanomaista valitsinta. Kun Tiedostojärjestelmän käytön API on käytössä, paikallinen käyttöjärjestelmän valitsija hallitsee suodatinvalinnan itse, joten `setFiltersVisible(false)` ignoroidaan ja `setMultiFilterSelection(true)` ei vaikuta (paikallinen valitsija hyväksyy vain yhden suodattimen kerrallaan). Poista käytöstä Tiedostojärjestelmän käytön API käyttämällä `setFileSystemAccess(false)` pitämään nämä asetukset luotettavina eri selaimissa.
+Muutama näistä asetuksista koskevat vain standardivalitsinta. Kun tiedostojärjestelmän käyttöliittymä on käytössä, käyttöjärjestelmän natiivivalitsin hallitsee suodattimien valintaa itse, joten `setFiltersVisible(false)` ignoroituu eikä `setMultiFilterSelection(true)` vaikuta (natiivi valitsin hyväksyy vain yhden suodattimen kerrallaan). Poista tiedostojärjestelmän käytön käyttöliittymä käytöstä `setFileSystemAccess(false)` tehdaksesi näistä asetuksista luotettavia eri selaimissa.
 
 ### Pudotusalue {#drop-zone}
 
-Tiedostoja voidaan vetää työpöydältä ja pudottaa komponenttiin. Pudotustunniste muuttuu, kun tiedosto leijuu sen päällä, mikä merkitsee, että pudotus hyväksytään. Pudotus on oletusarvoisesti käytössä ja voidaan poistaa käytöstä, kun valitsimen tulisi hyväksyä vain tiedostoja tiedostoselaimesta.
+Tiedostoja voidaan vetää työpöydältä ja pudottaa komponenttiin. Pudotustunnus muuttuu, kun tiedosto on sen päällä, mikä osoittaa, että pudotus hyväksytään. Pudotus on oletusarvoisesti käytössä ja voidaan poistaa käytöstä, kun valitsimen tulisi hyväksyä vain tiedostoja tiedostovalintaikkunasta.
 
 ```java
 upload.setDrop(false);
 ```
 
-## Validointi ja rajoitukset {#validation-and-limits}
+## Vahvistus ja rajoitukset {#validation-and-limits}
 
-`setMaxFileSize` rajoittaa yksittäisen tiedoston tavu määrää, ja `setMaxFiles` rajoittaa erässä olevien tiedostojen kokonaismäärää. Molemmat suoritetaan ennen kuin mitään tavuja siirretään, joten liian suuri tiedosto hylätään asiakaspuolella ilman kaistanleveyden käyttöä.
+`setMaxFileSize` rajoittaa yksittäisen tiedoston tavumäärää ja `setMaxFiles` rajoittaa kokonaismäärää tiedostoja erässä. Molemmat toimivat ennen kuin yhtäkään tavua siirretään, joten liian suuri tiedosto hylätään asiakkaalla ilman kaistanleveyden kuluttamista.
 
 ```java
 upload.setMaxFileSize(5 * 1024 * 1024); // 5 MB
 upload.setMaxFiles(10);
 ```
 
-Kun valittu tai pudotettu tiedosto ylittää joko rajan, `UploadRejectEvent` laukeaa syyn kanssa. Palvelinpuolen `webforj.fileUpload.maxSize` -ominaisuus on edelleen voimassa ja toimii tiukkana kattorajana, riippumatta asiakaspuolen rajoituksesta.
+Kun valittu tai pudotettu tiedosto ylittää jonkin rajan, `UploadRejectEvent` laukaisee syyn. Palvelinpuolen `webforj.fileUpload.maxSize` -ominaisuus on edelleen voimassa ja toimii kovana kattona riippumatta asiakaspuolen rajasta.
 
-:::warning Palvelinpuolen validointi
-Suodattimia, maksimikokoja ja maksimitiedostomääriä valvotaan käyttöliittymässä ohjaamaan käyttäjää, ei suojaamaan palvelinta. Jokainen ladattu tiedosto tulisi tarkistaa uudelleen palvelimella ennen tallentamista, ja väliaikaisten tiedostojen tulisi siirtyä tai poistua pian latauksen päätyttyä.
+:::warning Palvelinpuolen vahvistus
+Suodattimia, enimmäiskokoa ja enimmäistiedostomääriä säädetään käyttöliittymässä käyttäjän ohjaamiseksi, ei suojatakseen palvelinta. Jokainen ladattu tiedosto tulisi tarkistaa uudelleen palvelimella ennen sen tallentamista, ja tilapäistiedostot tulisi siirtää tai poistaa pian latauksen päätyttyä.
 :::
 
 ## Latauskäyttäytyminen {#upload-behavior}
 
-Kun tiedostot on valittu, kaksi päätöstä jää jäljelle: milloin lataus alkaa ja mitä tapahtuu olemassa oleville merkinnöille, kun käyttäjä valitsee jälleen. Oletusarvoisesti käyttäjän on napsautettava **Lataa** aloittaakseen siirron, ja olemassa olevat merkinnät pysyvät listalla, kunnes ne poistetaan nimenomaan.
+Kun tiedostot on valittu, kaksi päätöstä jää jäljelle: milloin lataus alkaa, ja mitä tapahtuu olemassa oleville kohteille, kun käyttäjä valitsee uudelleen. Oletusarvoisesti käyttäjä napsauttaa **Lataa** aloittaakseen siirron, ja olemassa olevat kohteet pysyvät luettelossa, kunnes ne poistetaan erikseen.
 
 ### Automaattinen lataus {#auto-upload}
 
-Oletustila on `NONE`, jolloin käyttäjän on napsautettava **Lataa** aloittaakseen siirron. `setAutoUpload()` poistaa sen napsautuksen ja aloittaa siirron heti, kun tiedostot on valittu, pudotettu tai molemmat.
+Oletustila on `NONE`, jolloin käyttäjä napsauttaa **Lataa** aloittaakseen siirron. `setAutoUpload()` poistaa tuon napsautuksen ja aloittaa siirron heti, kun tiedostot on valittu, pudotettu tai molemmat.
 
 - **`NONE`** jättää lataamisen käyttäjän tehtäväksi, joka napsauttaa **Lataa**.
-- **`ON_SELECT`** lataa heti, kun tiedostot on valittu tiedostoselaimessa.
+- **`ON_SELECT`** lataa heti, kun tiedostot valitaan tiedostovalintaikkunassa.
 - **`ON_DROP`** lataa heti, kun tiedostot pudotetaan komponenttiin.
-- **`ALWAYS`** kattaa molemmat polut.
+- **`ALWAYS`** kattaa molemmat reitit.
 
-:::tip Yhdistäminen esiasetusten kanssa
-Automaattinen lataus yhdistyy hyvin `BUTTON_ONLY`- tai `INLINE`-esiasetuksiin, joissa ei ole Lataa-painiketta, jota käyttäjän tarvitsee napsauttaa. Työnkuluissa, joissa käyttäjän on tarkistettava valinta ennen lähettämistä, pidä automaattinen lataus pois päältä.
+:::tip Yhdistäminen esiasetuksiin
+Automaattinen lataus toimii hyvin `BUTTON_ONLY` tai `INLINE` -esiasetusten kanssa, jossa käyttäjälle ei ole Lataa-painiketta napsautettavaksi. Työprosesseissa, joissa käyttäjän on tarkistettava valinta ennen lähettämistä, jätä automaattinen lataus pois.
 :::
 
 ### Automaattinen tyhjennys {#auto-clear}
 
-Kun käyttäjä valitsee uuden erän, automaattinen tyhjennys päättää, mitä tehdä listalla jo olevien merkinnöiden kanssa. Tyhjennys tapahtuu seuraavan valinnan hetkellä, ei latauksen päättämisen yhteydessä, joten valmiit lataukset pysyvät näkyvissä, kunnes käyttäjä valitsee jälleen.
+Kun käyttäjä valitsee uuden erän, automaattinen tyhjennys päättää mitä tehdä luettelon aikaisempien kohteiden kanssa. Tyhjennys tapahtuu seuraavan valinnan yhteydessä, ei latauksen päättyessä, joten valmiit lataukset pysyvät näkyvissä, kunnes käyttäjä tekee uuden valinnan.
 
-- **`COMPLETED`** tyhjentää onnistuneesti ladatut merkinnät.
-- **`IN_PROGRESS`** peruuttaa ja tyhjentää edelleen siirrettäviä merkintöjä.
+- **`COMPLETED`** tyhjentää onnistuneesti ladattuja kohteita.
+- **`IN_PROGRESS`** peruuttaa ja tyhjentää vielä siirrettäviä kohteita.
 - **`ALL`** tyhjentää kaiken.
-Jonossa olevat merkinnät, jotka eivät ole vielä aloittaneet lataamista, säilytetään asetuksesta riippumatta.
+Jonoon tarkoitetut kohteet, jotka eivät ole vielä aloittaneet lataamista, säilyvät riippumatta asetuksesta.
 
 ```java
 upload.setAutoClear(Upload.AutoClear.COMPLETED);
@@ -145,64 +145,64 @@ upload.setAutoClear(Upload.AutoClear.IN_PROGRESS);
 upload.setAutoClear(Upload.AutoClear.ALL);
 ```
 
-:::warning Automaattisen tyhjennyksen hienovaraiset laukaisijat
-Automaattinen tyhjennys tulee voimaan vain silloin, kun aiemmin valittu tiedosto on todella aloittanut lataamisen tai päättynyt. Ilman latausta valintojen välillä ei mikään tiedosto vastaa suodattimia, ja lista jatkaa kasvamistaan.
+:::warning Automaattinen tyhjennys on hienovaraisia laukaisimia
+Automaattinen tyhjennys tulee voimaan vain, kun aiemmin valittu tiedosto on todella alkanut latautua tai valmis. Ilman latausta valintojen välillä mikään tiedosto ei vastaa suodatinta, ja luettelo kasvaa.
 :::
 
-Käytä `COMPLETED`-asetusta lataajissa, jotka ovat näkyvissä useiden toimintojen aikana, kuten keskustelukentässä, jossa jokaisella viestillä on omat liitteensä, tai kommenttilomakkeessa, joka käytetään jokaiselle vastaukselle. Ilman sitä aiempien onnistumisien lista kasvaa, kun käyttäjä työskentelee.
+Valitse `COMPLETED` lataajille, jotka ovat näkyvissä useissa toiminnoissa, kuten keskustelukomponentissa, jossa jokaisella viestillä on omat liitteensä, tai kommenttilomakkeessa, jota käytetään jokaiselle vastaukselle. Ilman sitä aiempien onnistumisten luettelo kasautuu, kun käyttäjä työskentelee.
 
-### Ohjelmalliset toiminnot {#programmatic-actions}
+### Ohjelmalliset toimet {#programmatic-actions}
 
-Useimmat lataukset alkavat käyttäjän napsautuksesta, mutta samat toiminnot ovat käytettävissä palvelinkoodista. Molemmat toimivat käyttäjän jo valitsemien tiedostojen kanssa; ei ole mahdollista valita tiedostoja käyttäjän puolesta palvelimelta.
+Useimmat lataukset alkavat käyttäjän napsautuksesta, mutta samat toimet ovat käytettävissä palvelinkoodista. Molemmat toimivat tiedostojen kanssa, jotka käyttäjä on jo valinnut; ei ole tapaa valita tiedostoja käyttäjän puolesta palvelimelta.
 
 ```java
-// Lataa nykyinen valinta, ikään kuin käyttäjä napsauttaisi Lataa
+// Lataa nykyinen valinta ikään kuin käyttäjä napsauttaisi Lataa
 upload.upload();
 
-// Peruuta kaikki käynnissä olevat siirrot
+// Peruuta kaikki meneillään olevat siirrot
 upload.cancel();
 ```
 
-Kutsu `upload()` laukaistaksesi siirron ohjauskomponentista, kuten yhdestä lähetyspainikkeesta, joka jaetaan laajemman lomakkeen kanssa. Kutsu `cancel()` "pysäytä"-painikkeesta, joka on ulkopuolella komponentista, tai reititysvahdista, kun käyttäjä navigoi pois siirron aikana.
+Kutsu `upload()` laukaise siirto ohjausobjektilta komponentin ulkopuolelta, kuten yhdeltä lähetyspainikkeelta, jota jaetaan laajemmassa lomakkeessa. Kutsu `cancel()` "lopeta" -painikkeesta komponentin ulkopuolelta tai reittisuojasta, kun käyttäjä siirtyy pois kesken siirron.
 
 ## Mobiilikuvaus {#mobile-capture}
 
-Mobiililaitteilla kuvaus avaa kameran tai mikrofonin valitsimen lähteen sijasta tiedostoselainta. `USER` kohdistaa etukameran tai mikrofonin, `ENVIRONMENT` kohdistaa takakameran, ja `NONE` (oletus) käyttää tavanomaista tiedostovalitsijaa.
+Mobiililaitteilla kaappaus avaa kameran tai mikrofonin valitsimen lähteeksi sen sijaan, että avattaisiin tiedostotyyppivalitsin. `USER` kohdistaa etukameran tai mikrofonin, `ENVIRONMENT` takakameran, ja `NONE` (oletus) käyttää standarditiedostovalitsinta.
 
 ```java
 upload.setCapture(Upload.Capture.ENVIRONMENT);
-upload.addFilter("Kuva", "*.jpg;*.png");
+upload.addFilter("Valokuva", "*.jpg;*.png");
 ```
 
-:::tip Taltiointi ja suodattimet
-Rajoita valinta kuvaesitteisiin, jotta kamera avautuu still-tilaan, tai videoesitteisiin, jotta se avautuu tallennustilaan. Ilman vastaavaa suodatinmuotoa, kuvaustila palautuu tavanomaiseen valitsijaan useimmilla alustoilla. Työpöytäselaimet ohittavat taltiointa asetuksen kokonaan.
+:::tip Kaappaus ja suodattimet
+Rajoita valinta vain kuva- tai videotiedostotyyppiin, jotta kamera avataan pitäen kuvaustilassa, tai vain videotiedostoihin, jotta se avataan nauhoitustilassa. Ilman vastaavaa suodattinta kaappaustila palaa yleensä standardivalitsimeen useimmilla alustoilla. Työpöytäselaimet ohittavat kaappausasetuksen kokonaan.
 :::
 
-Mobiililähtöisissä sovelluksissa taltiointi yhdistyy hyvin [asennettaviin sovelluksiin](/docs/configuration/installable-apps), joissa kamera ja mikrofoni tulevat luonnolliseksi osaksi aloitusnäytön kokemusta.
+Mobiiliensimmäisissä sovelluksissa kaappaus toimii hyvin [asennettavien sovellusten](/docs/configuration/installable-apps) kanssa, joissa kamera ja mikrofoni ovat luonnollinen osa aloitusnäytön kokemusta.
 
-## Paikallinen tiedostojärjestelmän käyttö {#native-file-system-access}
+## Natiivin tiedostojärjestelmän käyttöoikeus {#native-file-system-access}
 
-Komponentti käyttää selaimen [Tiedostojärjestelmän käytön API:a](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API), kun alusta tukee sitä. Paikallinen valitsija voi myöntää sivulle pysyvän pääsyn kansioon, jolloin käyttäjä valitsee kerran ja myöhemmät lataukset samasta kansiosta ohittavat dialogin. Selaimissa, joissa ei ole tukea, komponentti siirtyy automaattisesti käyttämään tavanomaista valitsijaa.
+Komponentti käyttää selaimen [File System Access API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API) -liittymää, kun alusta tukee sitä. Natiivivalitsin voi myöntää sivulle pysyvän oikeuden kansioon, joten käyttäjän ei tarvitse valita uudelleen samaa kansiota, ja seuraavat lataukset ohittavat valintaikkunan. Selaimissa, joissa ei ole tukea, komponentti palautuu automaattisesti standardivalitsimeen.
 
 ```java
-upload.setFileSystemAccess(false); // pakottaa käyttämään tavanomaista valitsijaa
+upload.setFileSystemAccess(false); // pakota standardivalitsin
 ```
 
-Kytke se pois, kun jokaisen latauksen pitäisi alkaa tuoreesta dialogista, tai kun johdonmukainen käyttäytyminen kaikissa selaimissa on tärkeämpää kuin pysyvän luvan mukavuus.
+Kytke se pois päältä, kun jokaisen latauksen pitäisi alkaa tuoreesta valintaikkunasta, tai kun johdonmukainen käyttäytyminen eri selaimissa on tärkeämpää kuin pysyvän käyttöoikeuden mukavuus.
 
-## Asettelu muokkaaminen {#customizing-the-layout}
+## Asettelun mukauttaminen {#customizing-the-layout}
 
-Komponentti koostuu viidestä osasta: valitsinpainike, pudotustunniste, tiedostolista, latauspainike ja peruutuspainike. Ensimmäiset neljä ovat näkyviä oletusarvoisesti; peruutuspainike on piilotettu ja se voidaan näyttää kutsumalla `setVisible(true, Upload.Part.CANCEL_BUTTON)`. Asettelua voidaan muokata esiasetuksilla tai osakohtaisten näkyvyysohjausten avulla hienovaraisemmiksi säätöjä varten.
+Komponentti koostuu viidestä osasta: valitsinpainikkeesta, pudotustunnuksesta, tiedostoluettelosta, latauspainikkeesta ja peruutuspainikkeesta. Ensimmäiset neljä ovat oletusarvoisesti näkyvissä; peruutuspainike on piilotettu, ja sen voi näyttää komennolla `setVisible(true, Upload.Part.CANCEL_BUTTON)`. Asettelua voidaan muokata esiasetusten avulla yleisiin valitsimen muotoihin tai osakohtaisilla näkyvyysasetuksilla tarkemmiksi säätöiksi.
 
 ### Esiasetukset {#presets}
 
-Esiasetukset kokoavat yhteen useita osan näkyvyysasetuksia nimettyihin valitsimen muotoihin. Ne ovat nopeampi tapa saavuttaa yleinen kokoonpano kuin osien yksilöllinen kytkeminen.
+Esiasetukset kokoavat useita osan näkyvyysasetuksia nimettyihin valitsinmuotoihin. Ne ovat nopeampi tapa saavuttaa yleinen asetus kuin kytkeä osia erikseen.
 
-- **`FULL`**: Valitsinpainike, pudotustunnus, tiedostolista ja latauspainike. Oletus.
-- **`INLINE`**: Valitsinpainike ja pudotustunnus, johon nykyinen valinta renderoidaan tekstinä valitsimen viereen. Kätevä kompaktille lomakekentille.
-- **`BUTTON_ONLY`**: Vain valitsinpainike. Hyödyllinen silloin, kun ympäröivä käyttöliittymä jo näyttää valitut tiedostot.
-- **`DROPZONE`**: Pudotustunnus ja tiedostolista, ilman valitsinpainiketta. Hyödyllinen kun vetäminen ja pudottaminen on ainoa tapa lisätä tiedostoja.
-- **`HEADLESS`**: Jokainen osa piilotettuna, ulkoreuna, säde ja pehmustus romahtavat niin, että projisoitu sisältö istuu tiukasti komponentin rajoissa.
+- **`FULL`**: Valitsinpainike, pudotustunnus, tiedostoluettelo ja latauspainike. Oletus.
+- **`INLINE`**: Valitsinpainike ja pudotustunnus, nykyinen valinta renderoidaan tekstinä valitsimen viereen. Hyödyllinen tiiviissä lomakekentissä.
+- **`BUTTON_ONLY`**: Valitsinpainike yksinään. Hyödyllinen, kun ympäröivä käyttöliittymä näyttää jo valitut tiedostot.
+- **`DROPZONE`**: Pudotustunnus ja tiedostoluettelo, ilman valitsinpainiketta. Hyödyllinen, kun vedä ja pudota on ainoa tapa lisätä tiedostoja.
+- **`HEADLESS`**: Jokainen osa piilotettu, ulkoinen reuna, säde ja pehmeä muoto puristettu niin, että projektin sisältö istuu ihan komponentin rajoissa.
 
 ```java
 upload.setPreset(Upload.Preset.INLINE);
@@ -212,30 +212,29 @@ upload.setPreset(Upload.Preset.INLINE);
 path='/webforj/uploadpresets'
 files={[
   'src/main/java/com/webforj/samples/views/upload/UploadPresetsView.java',
-  'src/main/frontend/css/upload/uploadPresets.css'
 ]}
 height='650px'
 />
 
 ### Osan näkyvyys {#part-visibility}
 
-Kun esiasetus on lähellä haluttua muotoa, mutta ei aivan, yksittäisiä osia voidaan näyttää tai piilottaa. Tämä on hyödyllistä hienovaraisissa säätöissä, kuten peruutuspainikkeen piilottamisessa yhden tiedoston valitsimessa, joka lataa heti, tai pudotustunnuksen piilottamisessa painikeseinä, joka silti sallii pudotukset. Kun käytetään `setPreset()` ja `setVisible()` yhdessä, soita ensin `setPreset()`.
+Kun esiasetus on lähes, mutta ei aivan halutun muotoinen, yksittäisiä osia voidaan näyttää tai piilottaa. Tämä on hyödyllistä pienissä säädöissä, kuten peruutuspainikkeen piilottamisessa yksittäisten tiedostojen lataajalta, joka lataa välittömästi, tai pudotustunnuksen piilottamisessa vain-painoskentältä, joka edelleen sallii pudotukset. Kun käytetään `setPreset()` ja `setVisible()` yhdessä, kutsu `setPreset()` ensin.
 
 ```java
 upload.setVisible(false, Upload.Part.DROP_LABEL);
 upload.setVisible(false, Upload.Part.CANCEL_BUTTON);
 ```
 
-### Oletusslotti {#default-slot}
+### Oletusosa {#default-slot}
 
-`Upload` toteuttaa `HasComponents`. Lapset, jotka on lisätty kautta `add()`, renderoidaan pudotusalueen sisälle, perusvälilehden päällä. Yhdistettynä `HEADLESS`-esiasetukseen, slot antaa sinun ottaa visuaalinen pinta kokonaan haltuun, samalla kun pidät valitsimen, pudotuksen ja latauskäyttäytymisen ehjänä.
+`Upload` toteuttaa `HasComponents`. Lapsia, jotka on lisätty `add()` -komennolla, renderoidaan pudotusalueelle, perinteisen kromin päälle. Yhdistettynä `HEADLESS`-esiasetukseen, osa antaa sinun ottaa täysin hallinta visuaalisesta pinnasta säilyttäen samalla valitsin-, pudotus- ja latauskäyttäytymisen.
 
 ```java
 upload.setPreset(Upload.Preset.HEADLESS);
 upload.add(new Table<>());
 ```
 
-Seuraavassa esimerkissä käytetään `HEADLESS`-esiasetusta projektin `Table` projisoimiseksi lataajan rajoissa. Pudota CSV ja sen rivit renderoidaan suoraan komponentin sisään, sarakkeet rakennetaan tiedoston otsikkorivistä.
+Seuraavassa esimerkissä käytetään `HEADLESS`-esiasetusta, joka projisoi `Table`-komponentin Uploadin rajoihin. Pudota CSV-tiedosto, ja sen rivit renderoidaan suoraan komponentin sisään, sarakkeet rakennetaan tiedoston otsikkorivistä.
 
 <ComponentDemo
 path='/webforj/uploaddefaultslot'
@@ -245,91 +244,90 @@ height='400px'
 
 ## Tapahtumat {#events}
 
-`Upload` lähettää tapahtumia kolmella tasolla: asioista, joita käyttäjä tekee työkalun kanssa, yksittäisen tiedoston siirtotilasta ja koko erän elinkaaresta. Useimmat sovellukset rekisteröivät muutaman kuuntelijan näissä tasoissa riippuen siitä, mihin heidän tarvitsee reagoida. Lomake saattaa tarvita vain `onUpload`, jotta tietää, milloin tiedostot saavuttavat palvelimen; lataaja, jolla on edistymisen käyttöliittymä, tarvitsee `onListProgress` ja `onComplete`; pudotusalue, joka on merkittävä hylkäyksille, tarvitsee `onReject`.
+`Upload` laukaisee tapahtumia kolmella tasolla: asioista, jotka käyttäjä tekee koko komponentille, yksittäisen tiedoston siirtotilasta ja koko erän elinkaarelta. Useimmat sovellukset rekisteröivät muutaman kuuntelijan näillä tasoilla riippuen siitä, mihin heidän tarvitsee reagoida. Lomake voi tarvita vain `onUpload`, jotta se tietää, milloin tiedostot saavuttavat palvelimen; lataaja, jossa on edistymisliittymä, tarvitsee `onListProgress` ja `onComplete`; pudotusalue, joka joutuu näyttämään hylkäykset tarvitsee `onReject`.
 
-Useimmat tiedostot sisältävät tapahtumat tarjoavat sekä `getFile()` (ensimmäinen tai ainoa tiedosto lähetetty) että `getFiles()` (kokonaislista). Käytä `getFile()`-tiedostoille, kuten `onReject`, ja `getFiles()` kun odotat erää. `UploadCompleteEvent` on poikkeus; sillä on omat `getUploadedFiles()` ja `getFailedFiles()`-pääsyt, koska erän tulos on jaettu menestyksien ja epäonnistumisten välillä.
+Useimmat tiedostoja kantavat tapahtumat tarjoavat sekä `getFile()` (ensimmäinen tai ainoa tiedosto kuormassa) että `getFiles()` (täydellinen luettelo). Käytä `getFile()` yksittäisten tiedostojen tapahtumissa, kuten `onReject`, ja `getFiles()` silloin, kun odotat erää. `UploadCompleteEvent` on poikkeus; sillä on oma `getUploadedFiles()` ja `getFailedFiles()` pääsyominaisuudet, koska erätila on jaettu onnistumisten ja epäonnistumisten välillä.
 
-### Käyttäjätoiminnot {#user-actions}
+### Käyttäjän toimet {#user-actions}
 
-Nämä laukeavat vastauksena siihen, mitä käyttäjä tekee koko komponentille. Ne eivät kerro mitään siirron edistymisestä, vain sen, että käyttäjä on tehnyt jotain, johon sovelluksen saattaa olla syytä reagoida.
+Nämä laukaisevat vastauksena siihen, mitä käyttäjä tekee koko komponentilla. Ne eivät kerro mitään siirron etenemisestä, vain että käyttäjä on tehnyt jotain, mihin sovelluksen voisi olla hyvä reagoida.
 
-| Tapahtuma | Laukeaa |
+| Tapahtuma | Laukaisee |
 | --- | --- |
-| `UploadChangeEvent` | Kun valittujen tiedostojen lista muuttuu |
+| `UploadChangeEvent` | Kun valittujen tiedostojen luettelo muuttuu |
 | `UploadEvent` | Kun käyttäjä napsauttaa **Lataa** ja tiedostot saavuttavat palvelimen |
 | `UploadCancelEvent` | Kun käyttäjä napsauttaa **Peruuta** |
 | `UploadFilterChangeEvent` | Kun aktiivinen suodatin muuttuu |
 
 ```java
 upload.onChange(e -> {
-    // Laukeaa, kun valittujen tiedostojen lista muuttuu.
+    // Laukaisee aina, kun valittujen tiedostojen luettelo muuttuu.
     List<UploadedFile> files = e.getFiles();
 });
 
 upload.onUpload(e -> {
-    // Laukeaa, kun lataus laukaistaan; tiedostot ovat saavuttaneet palvelimen.
+    // Laukaisee, kun lataus käynnistyy; tiedostot ovat saavuttaneet palvelimen.
 });
 ```
 
-`UploadEvent` ja `UploadCompleteEvent` näyttävät samanlaisilta vilkaisulla, mutta ne vastaavat eri kysymyksiin. `UploadEvent` laukeaa, kun käyttäjä laukaisee latauksen selvästi (tai `setAutoUpload()` laukaisee sen heidän puolestaan), ja on luonnollinen paikka tallentaa tai siirtää ladatut tiedostot. `UploadCompleteEvent` laukeaa, kun jokaisen jonossa olevan tiedoston siirto on päättynyt, ja on oikea koukku "koko erä on valmis" käyttöliittymään.
+`UploadEvent` ja `UploadCompleteEvent` näyttävät ensi silmäyksellä samankaltaisilta, mutta ne vastaavat eri kysymyksiin. `UploadEvent` laukaisee, kun käyttäjä aloittaa latauksen nimenomaan (tai `setAutoUpload()` laukaisee sen heidän puolestaan), ja on luonnollinen paikka tallentaa tai siirtää ladatut tiedostot. `UploadCompleteEvent` laukaisee, kun kaikkien jonossa olevien tiedostojen siirto on päättynyt, ja on oikea koukku "erä on valmis" käyttöliittymäpäivityksille.
 
-### Erätiedoston siirto {#per-file-transfer}
+### Tiedostokohtainen siirto {#per-file-transfer}
 
-Nämä laukeavat kerran per tiedosto, kun siirto on käynnissä tai heti sen epäonnistuttua. Käytä niitä, kun käyttöliittymä tarvitsee heijastaa yksittäisten tiedostojen tilaa eikä erää.
+Nämä laukaisevat kerran per tiedosto, kun siirto on käynnissä tai juuri sen jälkeen, kun se epäonnistuu. Käytä niitä, kun käyttöliittymän on kuvastettava yksittäisten tiedostojen tilaa pikemminkin kuin erää.
 
-| Tapahtuma | Laukeaa |
+| Tapahtuma | Laukaisee |
 | --- | --- |
 | `UploadProgressEvent` | Kun yksittäistä tiedostoa siirretään |
 | `UploadErrorEvent` | Kun yksittäisen tiedoston siirto epäonnistuu |
-| `UploadRejectEvent` | Kun valittu tai pudotettu tiedosto ei täytä määritettyjä rajoituksia |
+| `UploadRejectEvent` | Kun valittu tai pudotettu tiedosto ei täytä asetettuja vaatimuksia |
 
 ```java
 upload.onProgress(e -> {
-    // Laukeaa useita kertoja, kun yksittäistä tiedostoa siirretään.
+    // Laukaisee toistuvasti yksittäisen tiedoston siirron aikana.
     double percent = e.getProgress();
 });
 
 upload.onReject(e -> {
-    // Laukeaa, kun tiedosto hylätään koon, määrän tai suodatin syistä.
+    // Laukaisee, kun tiedosto hylätään koon, määrän tai suodattimien vuoksi.
     String reason = e.getMessage();
 });
 ```
 
-Tässä ryhmässä `UploadRejectEvent` on outo, koska se laukeaa ennen kuin mitään tavuja siirretään, kun tiedosto hylätään asiakaspuolella olevan rajoituksen, kuten `setMaxFileSize` tai `setMaxFiles`, takia. `UploadErrorEvent` sen sijaan laukeaa sen jälkeen, kun siirto aloitettiin ja jokin meni vikaan matkalla palvelimelle.
+Tässä ryhmässä `UploadRejectEvent` on poikkeus. Se laukaisee ennen kuin yhtäkään tavua siirretään, kun tiedosto epäonnistuu asiakaspuolen rajoituksessa, kuten `setMaxFileSize` tai `setMaxFiles`. `UploadErrorEvent`, puolestaan, laukaisee sen jälkeen, kun siirto on alkanut ja jotain meni pieleen matkalla palvelimelle.
 
 ### Koko erä {#whole-batch}
 
-Nämä laukeavat erälle sen sijaan, että ne laukeaisivat yhdelle tiedostolle. Käytä niitä aggregaatti-käyttöliittymän, kuten kokonaista edistymispalkkia tai "valmiina"-viestiä, joka tiivistää koko valinnan.
+Nämä laukaisevat erälle riippumatta siitä, mihin tiedostoon. Käytä niitä aggregaattikäyttöliittymässä kuten yleisessä edistymispalkissa tai "valmis" viestissä, joka tiivistää koko valinnan.
 
-| Tapahtuma | Laukeaa |
+| Tapahtuma | Laukaisee |
 | --- | --- |
-| `UploadListProgressEvent` | Yhdessä `UploadProgressEvent`-tapahtuman kanssa, koko listan tila |
-| `UploadCompleteEvent` | Kerran erässä, kun jokaisen tiedoston siirto on päättynyt |
+| `UploadListProgressEvent` | Yhdessä `UploadProgressEvent`-tapahtuman kanssa, koko luettelon tilan kanssa |
+| `UploadCompleteEvent` | Kerran erässä, kun jokainen tiedosto on siirretty |
 
 ```java
 upload.onComplete(e -> {
-    // Laukeaa kerran, kun koko erä on valmis.
+    // Laukaisee kerran, kun koko erä on valmis.
     List<UploadedFile> succeeded = e.getUploadedFiles();
     List<UploadedFile> failed = e.getFailedFiles();
 });
 ```
 
-`onProgress` ja `onListProgress` kattaa saman siirron kahdesta näkökulmasta. `onProgress` on per-tiedosto, ja se on oikea koukku, kun jokaisella tiedostolla on oma edistymiskäyttöliittymänsä. `onListProgress` laukeaa sen mukana aggregaattilaskureilla (`getListTotal`, `getListRemaining`, `getListProgress`) yksittäistä eräkokoista indikaattoria varten.
+`onProgress` ja `onListProgress` kattavat saman siirron kahdelta kulmalta. `onProgress` on tiedostokohtainen, ja on oikea koukku, kun jokaisella tiedostolla on oma edistymisliittymä. `onListProgress` laukaisee sen rinnalla aggregaattilaskureilla (`getListTotal`, `getListRemaining`, `getListProgress`) yksittäiselle erälaajuiselle indikaattorille.
 
-Seuraavassa esimerkissä `onChange`, `onListProgress` ja `onComplete` ohjaavat edistymispalkkia ja tila-ruutua, jotka päivittyvät tiedostolistan muuttuessa ja tiedostojen siirtyessä.
+Seuraavassa esimerkissä `onChange`, `onListProgress` ja `onComplete` ohjaavat edistymispalkkia ja tilariviä, jotka päivittyvät, kun tiedostoluettelo muuttuu ja tiedostot siirtyvät.
 
 <ComponentDemo
 path='/webforj/uploadevents'
 files={[
   'src/main/java/com/webforj/samples/views/upload/UploadEventsView.java',
-  'src/main/frontend/css/upload/uploadEvents.css'
 ]}
 height='450px'
 />
 
-## Kansainvälistäminen (i18n) {#internationalization-i18n}
+## Kansainvälisyys (i18n) {#internationalization-i18n}
 
-Komponentin sisäisiä etikettejä ja viestejä voidaan muokata `FileUploadI18n`-paketin kautta. Paketin tyyppi pitää `FileUploadI18n`-nimen, koska se on jaettu modaalin [`FileUploadDialog`](/docs/components/option-dialogs/file-upload) kanssa.
+Komponentin sisällä olevat etiketit ja viestit ovat mukautettavissa `FileUploadI18n`-paketin kautta. Pakettityyppi säilyttää `FileUploadI18n`-nimen, koska se jaetaan modaalisen [`FileUploadDialog`](/docs/components/option-dialogs/file-upload) kanssa.
 
 ```java
 FileUploadI18n bundle = new FileUploadI18n();
@@ -341,7 +339,7 @@ upload.setI18n(bundle);
 
 ## Teemat {#themes}
 
-`UploadTheme` peilaa DWC-teeman oletuspalettia ja sisältää ääriviivavariaatioita kevyemmälle visuaaliselle painolle. Teemat koskevat valitsinta, lataus- ja peruutuspainikkeita. Lista ja pudotusalue pitävät neutraalia tyylittelyä teeman riippumatta.
+`UploadTheme` peilaa standardia DWC-teemaväriä ja sisältää ääriviivaversioita kevyemmän visuaalisen painoarvon saavuttamiseksi. Teemat sovelletaan valitsimeen, lataus- ja peruutuspainikkeisiin. Luettelo ja pudotusalue säilyttävät neutraalin tyylin riippumatta teemasta.
 
 ```java
 upload.setTheme(UploadTheme.PRIMARY);
@@ -349,7 +347,7 @@ upload.setTheme(UploadTheme.SUCCESS);
 upload.setTheme(UploadTheme.OUTLINED_GRAY);
 ```
 
-Alla oleva demo näyttää `PRIMARY`-teeman yhdistettynä `INLINE`-esiasetukseen.
+Alla oleva esimerkki näyttää `PRIMARY`-teeman yhdistettynä `INLINE`-esiasetukseen.
 
 <ComponentDemo
 path='/webforj/uploadthemes'
