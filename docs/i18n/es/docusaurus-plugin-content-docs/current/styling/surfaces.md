@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: Surfaces
+title: Superficies
 _i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
 DWC define tres niveles de superficies que se utilizan para organizar la jerarquía de la interfaz de usuario combinada con [shadows](./shadows). Todos los [palette colors](./colors) se prueban para tener suficiente contraste con estas superficies.

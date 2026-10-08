@@ -1,10 +1,12 @@
 package com.webforj.samples.views.loading;
 
 import com.webforj.Interval;
-import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.card.Card;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.loading.Loading;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
@@ -13,11 +15,10 @@ import com.webforj.router.annotation.Route;
 /** Demo to showcase the different customization options for the LoadingSpinner. */
 @Route
 @FrameTitle("Loading Spinners")
-@BundleEntry("css/loadingstyles/loadingspinnerdemo.css")
-public class LoadingSpinnerDemoView extends Composite<Div> {
-  private final Div self = getBoundComponent();
+public class LoadingSpinnerDemoView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
   // UI Components
-  private final Div parentDiv;
+  private final Card parentCard = new Card();
   private final Loading loading;
   private final Interval interval;
 
@@ -25,7 +26,11 @@ public class LoadingSpinnerDemoView extends Composite<Div> {
   private int state = 1;
 
   public LoadingSpinnerDemoView() {
-    parentDiv = new Div().addClassName("card");
+    self.setHeight("100vh")
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER);
+
+    parentCard.setSize(500, 200);
 
     loading = new Loading("Displaying spinner with all themes...").setBackdropVisible(false);
 
@@ -85,8 +90,8 @@ public class LoadingSpinnerDemoView extends Composite<Div> {
               state++;
             });
 
-    self.add(parentDiv);
-    parentDiv.add(loading);
+    self.add(parentCard);
+    parentCard.add(loading);
     loading.open();
     interval.start();
   }

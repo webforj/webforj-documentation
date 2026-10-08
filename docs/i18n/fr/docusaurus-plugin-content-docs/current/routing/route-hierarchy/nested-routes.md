@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Nested Routes
+title: Routes imbriquées
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Les routes imbriquées permettent de rendre des routes enfants au sein de routes parent, créant ainsi une interface utilisateur modulaire et réutilisable. Les routes parent définissent des composants partagés, tandis que les routes enfants sont injectées dans des points de sortie spécifiques au sein de ces composants parent.

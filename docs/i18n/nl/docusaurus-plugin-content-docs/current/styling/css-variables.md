@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: CSS Variables
+title: CSS-variabelen
 description: >-
   Define, scope, and consume CSS custom properties to control webforJ component
   styling at runtime without preprocessors.

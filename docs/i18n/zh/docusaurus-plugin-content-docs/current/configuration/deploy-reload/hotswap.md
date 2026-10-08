@@ -1,5 +1,5 @@
 ---
-title: Hotswap
+title: 热替换
 sidebar_position: 10
 sidebar_class_name: new-content
 description: >-

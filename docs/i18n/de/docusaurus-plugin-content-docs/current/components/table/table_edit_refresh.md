@@ -1,6 +1,6 @@
 ---
 sidebar_position: 30
-title: Editing and Refreshing
+title: Bearbeiten und Aktualisieren
 slug: refreshing
 description: >-
   Edit Table rows by mutating the bound Repository and call commit to refresh

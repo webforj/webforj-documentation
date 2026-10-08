@@ -6,11 +6,11 @@ description: Author route authorization rules with Spring Expression Language us
 
 Spring Expression Language (`SpEL`) provides a declarative way to define authorization rules directly in annotations. The `@RouteAccess` annotation evaluates `SpEL` expressions using Spring Security's built-in authorization functions.
 
+<!-- INTRO_END -->
+
 :::info Spring Security only
 `SpEL` expressions are available only when using the Spring integration.
 :::
-
-## Basic usage {#basic-usage}
 
 The `@RouteAccess` annotation accepts a `SpEL` expression that evaluates to a boolean:
 

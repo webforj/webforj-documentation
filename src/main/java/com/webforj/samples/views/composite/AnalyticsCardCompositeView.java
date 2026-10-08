@@ -2,10 +2,11 @@ package com.webforj.samples.views.composite;
 
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.Expanse;
 import com.webforj.component.Theme;
+import com.webforj.component.card.Card;
 import com.webforj.component.googlecharts.GoogleChart;
-import com.webforj.component.html.elements.Div;
-import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Span;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
@@ -24,10 +25,15 @@ import java.util.Map;
 @BundleEntry("composite/analyticscomposite.css")
 public class AnalyticsCardCompositeView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
+  private final Card card = new Card();
+  private final H3 title = new H3("Monthly Sales");
 
   public AnalyticsCardCompositeView() {
-    Div card = new Div();
-    card.addClassName("analytics-card").add(buildContent());
+    card.setWidth("100%")
+        .setMaxWidth(500)
+        .setExpanse(Expanse.LARGE)
+        .addToTitle(title)
+        .addToBody(buildContent());
 
     self.setDirection(FlexDirection.COLUMN);
     self.setAlignment(FlexAlignment.CENTER);
@@ -37,25 +43,19 @@ public class AnalyticsCardCompositeView extends Composite<FlexLayout> {
   }
 
   private FlexLayout buildContent() {
+    Span value = new Span("$45,000").addClassName("analytics-value");
+
     ProgressBar progress =
         new ProgressBar("75% of monthly goal reached")
             .setValue(75)
             .setStyle("margin-top", "var(--dwc-space-xs)");
 
-    return FlexLayout.create(buildHeader(), buildChangeRow(), progress, buildChart())
+    return FlexLayout.create(value, buildChangeRow(), progress, buildChart())
         .vertical()
         .align()
         .start()
         .build()
         .setSpacing("var(--dwc-space-m)");
-  }
-
-  private FlexLayout buildHeader() {
-    Paragraph title = new Paragraph("Monthly Sales").addClassName("analytics-title");
-
-    Span value = new Span("$45,000").addClassName("analytics-value");
-
-    return FlexLayout.create(title, value).vertical().build().setSpacing("var(--dwc-space-xs)");
   }
 
   private FlexLayout buildChangeRow() {

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Routes Registration
+title: Enregistrement des routes
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 En plus de [l'enregistrement des routes à l'aide des annotations `@Route`](./defining-routes), il est possible d'enregistrer, de mettre à jour ou de supprimer des routes de manière dynamique à l'exécution en fonction de la logique de l'application, des rôles des utilisateurs ou d'autres conditions. Cette flexibilité permet de gérer la navigation de manière plus dynamique, plutôt que de définir statiquement les routes au moment de la compilation.

@@ -1,6 +1,5 @@
 ---
 sidebar_position: 35
-sidebar_class_name: new-content
 title: Geolocation
 description: Request and watch the device's geographic position using the Geolocation class, with high-accuracy, timeout, and maximum age controls.
 ---

@@ -5,6 +5,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.card.Card;
 import com.webforj.component.event.KeypressEvent;
 import com.webforj.component.field.TextField;
 import com.webforj.component.html.elements.Div;
@@ -13,6 +14,7 @@ import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
@@ -23,8 +25,9 @@ import com.webforj.router.annotation.Route;
 public class CompositeView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final TextField taskInput = new TextField();
-  private final FlexLayout taskContainer = new FlexLayout();
+  private final Card taskContainer = new Card();
   private final H1 title = new H1("To-do List");
+  private final Card frame = new Card();
 
   public CompositeView() {
     initializeComponents();
@@ -35,22 +38,24 @@ public class CompositeView extends Composite<FlexLayout> {
 
   private void initializeComponents() {
     taskInput.setPlaceholder("Enter a new task and press Enter...").setExpanse(Expanse.XLARGE);
-
-    taskContainer
-        .setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-s)")
-        .addClassName("todo--display");
+    taskInput.setWidth("100%");
+    taskContainer.addClassName("todo--display");
   }
 
   private void setupLayout() {
-    Div frame = new Div();
-    frame.addClassName("frame").add(title, taskInput, taskContainer);
+    frame
+        .setWidth(600)
+        .setMaxWidth("100%")
+        .addToTitle(title)
+        .addToBody(taskInput, taskContainer)
+        .setExpanse(Expanse.XLARGE)
+        .addClassName("frame");
 
-    self.setDirection(FlexDirection.COLUMN);
-    self.setAlignment(FlexAlignment.CENTER);
-    self.setJustifyContent(FlexJustifyContent.CENTER);
-    self.addClassName("todo-stage");
-    self.add(frame);
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .addClassName("todo-stage")
+        .add(frame);
   }
 
   private void setupEventHandlers() {
@@ -65,13 +70,14 @@ public class CompositeView extends Composite<FlexLayout> {
   }
 
   private void addSampleTasks() {
-    taskContainer.add(new SimpleTaskItem("Review documentation"));
+    taskContainer.add(new SimpleTaskItem("Review the documentation"));
     taskContainer.add(new SimpleTaskItem("Write unit tests"));
     taskContainer.add(new SimpleTaskItem("Deploy application"));
   }
 
-  public static class SimpleTaskItem extends Composite<FlexLayout> {
-    private final FlexLayout self = getBoundComponent();
+  public static class SimpleTaskItem extends Composite<Toolbar> {
+
+    private final Toolbar self = getBoundComponent();
     private final RadioButton toggleButton = RadioButton.Switch();
     private final Div taskText = new Div();
     private final Button deleteButton = new Button("Delete", ButtonTheme.DANGER);
@@ -83,15 +89,15 @@ public class CompositeView extends Composite<FlexLayout> {
     }
 
     private void initializeComponents(String text) {
-      taskText.setText(text).setStyle("flex-grow", "1").addClassName("todo-text");
+      taskText.setText(text).addClassName("todo-text");
     }
 
     private void setupLayout() {
-      self.setDirection(FlexDirection.ROW)
-          .setAlignment(FlexAlignment.CENTER)
-          .setSpacing("var(--dwc-space-s)")
+      self.addToStart(toggleButton)
+          .addToTitle(taskText)
+          .addToEnd(deleteButton)
           .addClassName("item__todo--display")
-          .add(toggleButton, taskText, deleteButton);
+          .setCompact(true);
     }
 
     private void setupEventHandlers() {
@@ -106,7 +112,7 @@ public class CompositeView extends Composite<FlexLayout> {
 
       deleteButton.onClick(
           e -> {
-            self.setVisible(false);
+            self.destroy();
           });
     }
   }

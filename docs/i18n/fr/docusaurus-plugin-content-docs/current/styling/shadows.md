@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Shadows
+title: Ombres
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 Les propriétés d'ombre ajoutent des effets d'ombre autour du cadre d'un élément. Les ombres signifient des éléments qui sont superposés les uns aux autres dans l'interface utilisateur.

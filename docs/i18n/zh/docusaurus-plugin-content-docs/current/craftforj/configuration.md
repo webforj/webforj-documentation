@@ -1,5 +1,5 @@
 ---
-title: Configuration
+title: 配置
 sidebar_position: 8
 description: >-
   Every craftforJ configuration property, its default, and what turning each

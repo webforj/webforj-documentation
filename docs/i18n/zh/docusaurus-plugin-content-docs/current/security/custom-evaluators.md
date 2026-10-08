@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Custom Evaluators
+title: 自定义评估器
 description: >-
   Write custom RouteSecurityEvaluators for context-aware checks like ownership
   verification beyond role-based permissions.

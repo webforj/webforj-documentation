@@ -5,14 +5,14 @@ slug: timefield
 description: >-
   A component that provides a default browser-based time picker for selecting a
   time value through an input field.
-_i18n_hash: 9688647e85d453578ccd59934e52e26b
+_i18n_hash: 9b4c187f1c86207e13b38812f0eb7e6c
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TimeField" top='true'/>
 
-`TimeField` on käyttöliittymäkomponentti, joka sallii käyttäjien syöttää tai valita aikoja tunneissa, minuuteissa ja tarvittaessa sekunteina. Se tarjoaa intuitiivisen ja tehokkaan tavan käsitellä aikarajoituksia eri sovelluksissa.
+`TimeField` on käyttöliittymäkomponentti, joka mahdollistaa käyttäjien ajan syöttämisen tai valitsemisen tunti-minuutti-tarkkuudella. Jos sekunnit annetaan, komponentti hylkää ne.
 
 <!-- INTRO_END -->
 
@@ -20,7 +20,7 @@ _i18n_hash: 9688647e85d453578ccd59934e52e26b
 
 <ParentLink parent="Field" />
 
-`TimeField` laajentaa jaettua `Field`-luokkaa, joka tarjoaa yleisiä ominaisuuksia kaikille kenttäkomponenteille. Seuraava esimerkki luo muistutus `TimeField`:n, joka on alustettu nykyiseen aikaan.
+`TimeField` laajentaa jaettua `Field`-luokkaa, joka tarjoaa yleisiä ominaisuuksia kaikille kenttäkomponenteille. Seuraava esimerkki luo muistutuksen `TimeField`, joka on alustettu nykyiseen aikaan.
 
 <ComponentDemo
 path='/webforj/timefield'
@@ -29,57 +29,58 @@ files={['src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.
 
 ## Käyttötarkoitukset {#usages}
 
-`TimeField` on ihanteellinen aikojen valitsemiseen ja näyttämiseen sovelluksessa. Tässä on joitakin esimerkkejä, milloin käyttää `TimeField`:ia:
+`TimeField` on ihanteellinen ajan valitsemiseen ja esittämiseen sovelluksessasi. Tässä on joitakin esimerkkejä siitä, milloin käyttää `TimeField`-komponenttia:
 
-1. **Tapahtumien aikataulutus**: Aikakentät ovat välttämättömiä sovelluksissa, joissa asetetaan aikoja tapahtumille, tapaamisille tai kokoontumisille.
+1. **Tapahtumien Aikatauluttaminen**: Aikakentät ovat olennaisia sovelluksissa, jotka sisältävät aikojen asettamisen tapahtumille, tapaamisille tai kokouksille.
 
-2. **Ajan seuranta ja kirjaaminen**: Sovelluksissa, jotka seuraavat aikaa, kuten työaikakirjanpidossa, tarvitaan aikakenttiä tarkkoihin merkintöihin.
+2. **Ajan Seuranta ja Kirjaaminen**: Aikojen seurantaan, kuten työtunteihin, tarvitaan aikakenttiä tarkkojen tietojen syöttämiseen.
 
-3. **Muistutukset ja hälytykset**: Aikakentän käyttäminen yksinkertaistaa syöttöprosessia käyttäjille, jotka asettavat muistutuksia tai hälytyksiä sovelluksessasi.
+3. **Muistutukset ja Hälytykset**: Aikakentän käyttö yksinkertaistaa syöttöprosessia käyttäjille, jotka asettavat muistutuksia tai hälytyksiä sovelluksessasi.
 
-## Minimi- ja maksimiarvo {#min-and-max-value}
+## Minimija maksimiarvo {#min-and-max-value}
 
-`setMin()`- ja `setMax()`-menetelmien avulla voit määrittää hyväksyttävien aikojen alueen.
+`setMin()`- ja `setMax()`-metodien avulla voit määrittää hyväksyttävien aikojen alueen.
 
-- **`setMin()`-menetelmälle**: Jos komponenttiin syötetty arvo on aikaisempi kuin määritetty minimiaika, komponentti epäonnistuu rajoitusvalidoinnissa. Kun sekä minimi- että maksimiarvot on asetettu, minimiarvon on oltava aikaraja, joka on sama tai aikaisempi kuin maksimiaika.
+- **`setMin()`-metodille**: Jos komponenttiin syötetty arvo on aikaisempi kuin määritetty minimiaika, komponentti epäonnistuu rajoitusvalidoinnissa. Kun sekä min- että max-arvot on asetettu, minimiajan on oltava sama tai aikaisempi kuin maksimiaika.
 
-- **`setMax()`-menetelmälle**: Jos komponenttiin syötetty arvo on myöhempi kuin määritetty maksimiaika, komponentti epäonnistuu rajoitusvalidoinnissa. Kun sekä minimi- että maksimiarvot on asetettu, maksimiarvon on oltava aikaraja, joka on sama tai myöhempi kuin minimiaika.
+- **`setMax()`-metodille**: Jos komponenttiin syötetty arvo on myöhäisempi kuin määritetty maksimiaika, komponentti epäonnistuu rajoitusvalidoinnissa. Kun sekä min- että max-arvot on asetettu, maksimiajan on oltava sama tai myöhäisempi kuin minimaika.
 
 ## Arvon käsittely ja lokalisointi {#value-handling-and-localization}
 
-Sisäisesti `TimeField`-komponentti esittää arvonsa käyttäen `LocalTime`-objektia `java.time`-paketista. Tämä mahdollistaa kehittäjille tarkkojen aikojen käsittelyn riippumatta niiden visuaalisesta esittämisestä.
+Sisäisesti `TimeField`-komponentti edustaa arvoaan käyttäen `LocalTime`-objektia `java.time`-paketista. Tämä mahdollistaa kehittäjille vuorovaikuttaa tarkkojen aikojen kanssa riippumatta siitä, miten ne näytetään visuaalisesti.
 
-Vaikka **asiakaspuolen komponentti näyttää ajan käyttäjän selaimen alueasetusten mukaan**, jäsennelty ja tallennettu muoto on aina standardisoitu muotoon `HH:mm:ss`.
+Selaimen perusteella valitaan, miten valitsija esittää ajan käyttäjän paikallisessa ympäristössä. Kentän tekstiarvo käyttää 24 tunnin `HH:mm`-muotoa, ja sen `LocalTime`-arvo on katkaistu minuutteihin.
 
-Jos asetat raakatulojohdon arvon, käytä `setText()`-menetelmää varovasti:
+Jos asetat raakatekstiarvon, käytä `setText()`-metodia huolellisesti:
 
 ```java
-timeField.setText("09:15:00"); // voimassa
+timeField.setText("09:15");    // kelpaa
+timeField.setText("09:15:30"); // myös kelpaa; sekunnit hylätään, jää vain 09:15
 ```
 
 :::warning
- Kun käytät `setText()`-menetelmää, heitetään `IllegalArgumentException`, jos komponentti ei voi jäsentää syötettä muodossa `HH:mm:ss`.
+Kun käytät `setText()`, `IllegalArgumentException` heitetään, jos syötettä ei voida jäsentää kelvolliseksi ajaksi. Sekä `HH:mm`- että `HH:mm:ss`-syötteet hyväksytään, mutta sekunnit hylätään.
 :::
 
 
-:::info Picker UI
-Aikavalitsimen käyttöliittymän ulkoasu riippuu paitsi valitusta alueesta myös käytettävästä selaimesta ja käyttöjärjestelmästä. Tämä varmistaa automaattisen johdonmukaisuuden käyttäjille jo tutussa käyttöliittymässä.
+:::info Valitsijan käyttöliittymä
+Ajanvalitsijan syöttöliittymän ulkonäkö riippuu valitusta paikallisesta ympäristöstä, selaimesta ja käyttöjärjestelmästä. Tämä luo automaattista yhtenäisyyttä käyttöliittymän kanssa, johon käyttäjät ovat jo tottuneet.
 :::
 
-## Staattiset työkalut {#static-utilities}
+## Staattiset työkaluohjelmat {#static-utilities}
 
-`TimeField`-luokka tarjoaa myös seuraavat staattiset apumenetelmät:
+`TimeField`-luokka tarjoaa myös seuraavat staattiset työkalumetodit:
 
-- `fromTime(String timeAsString)`: Muuntaa ajan merkkijonon HH:mm:ss-muodossa `LocalTime`-objektiksi, jota voidaan hyödyntää tässä luokassa tai muualla.
+- `fromTime(String timeAsString)`: Jäsentää aikatekstin, sekunnit mukaan lukien tai ilman, `LocalTime`-objektiksi, joka on katkaistu minuutteihin.
 
-- `toTime(LocalTime time)`: Muuntaa `LocalTime`:n ajaksi merkkijonona HH:mm:ss-muodossa.
+- `toTime(LocalTime time)`: Muuntaa `LocalTime`-objektin merkkijonoksi `HH:mm`-muodossa, hyläten sekunnit.
 
-- `isValidTime(String timeAsString)`: Tarkistaa, onko annettu merkkijono kelvollinen HH:mm:ss-aika. Tämä palauttaa totuusarvon true, jos näin on, false muuten.
+- `isValidTime(String timeAsString)`: Tarkistaa, onko aikamerkkijono kelvollinen, mukaan lukien `HH:mm`- ja `HH:mm:ss`-syötteet. Palauttaa `true`, jos se on kelvollinen, ja `false` muuten.
 
 ## Parhaat käytännöt {#best-practices}
 
-- **Tarjoa selkeitä aikamuotoesimerkkejä**: Näytä käyttäjille selvästi odotettu aikamuoto `TimeField`:in läheisyydessä. Käytä esimerkkejä tai paikkamerkkejä auttaaksesi heitä syöttämään ajan oikein. Jos mahdollista, näytä aikamuoto käyttäjän sijainnin mukaan.
+- **Tarjoa Selkeät Aikamuotoesimerkit**: Näytä käyttäjille selvästi odotettu aikamuoto lähellä `TimeField`-komponenttia. Käytä esimerkkejä tai paikkamerkkejä auttaaksesi heitä syöttämään ajan oikein. Jos mahdollista, näytä aikamuoto käyttäjän sijainnin mukaan.
 
-- **Saatavuus**: Hyödynnä `TimeField`-komponenttia saatavuus huomioiden varmistaen, että se täyttää saatavuusstandardit, kuten tarjoamalla asianmukaiset etiketit, riittävän värieroja ja yhteensopivuutta apuvälineiden kanssa.
+- **Esteettömyys**: Käytä `TimeField`-komponenttia esteettömyys mielessä pitäen, noudattaen esteettömyysstandardeja, kuten asianmukaisia etikettejä, riittävää värieroa ja yhteensopivuutta apuvälineiden kanssa.
 
-- **Nollausvaihtoehto**: Tarjoa käyttäjille tapa tyhjentää `TimeField` helposti tyhjään tai oletustilaan.
+- **Nollausvaihtoehto**: Tarjoa tapa käyttäjille tyhjentää `TimeField` helposti tyhjään tai oletustilaan.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Route Types
+title: Tipos de ruta
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Las rutas se clasifican en dos tipos principales, **Rutas de Vista** y **Rutas de Diseño**. La elección del tipo de ruta determina cómo se mapean los componentes a las URL y cómo interactúan con otras partes de tu aplicación.

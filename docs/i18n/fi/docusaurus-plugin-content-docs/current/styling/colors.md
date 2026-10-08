@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Colors
+title: Värit
 _i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
 webforJ tarjoaa värijärjestelmän, joka perustuu CSS:n mukautettaviin ominaisuuksiin. Nämä väri muuttujat säilyttävät johdonmukaisen visuaalisen tyylin sovelluksessasi, samalla kun annat täyden hallinnan mukauttaa väripaletteja suunnittelutarpeidesi mukaan.

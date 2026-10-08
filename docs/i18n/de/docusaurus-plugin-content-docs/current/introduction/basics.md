@@ -1,5 +1,5 @@
 ---
-title: App Basics
+title: App-Grundlagen
 description: >-
   Walk through the Application and HomeView classes of the hello-world archetype
   to see how routing, annotations, and views shape a webforJ app.

@@ -2,7 +2,6 @@
 sidebar_position: 3
 title: Using Components
 description: Configure webforJ components in Java by setting text, attributes, IDs, inline styles, and CSS classes that drive appearance and behavior.
-sidebar_class_name: new-content
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
@@ -155,7 +154,6 @@ The following login form demonstrates `setEnabled()` in practice. The sign-in bu
 path='/webforj/conditionalstate'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ConditionalStateView.java',
-  'src/main/frontend/usingcomponents/conditionalstate.css',
 ]}
 height='450px'
 />
@@ -194,7 +192,6 @@ The following settings panel demonstrates this: basic notification preferences a
 path='/webforj/progressivedisclosure'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/ProgressiveDisclosureView.java',
-  'src/main/frontend/usingcomponents/progressivedisclosure.css',
 ]}
 height='450px'
 />
@@ -231,7 +228,6 @@ In this contact form, the name field must not be empty, the email must contain a
 path='/webforj/formvalidation'
 files={[
   'src/main/java/com/webforj/samples/views/usingcomponents/FormValidationView.java',
-  'src/main/frontend/usingcomponents/formvalidation.css',
 ]}
 height='500px'
 />

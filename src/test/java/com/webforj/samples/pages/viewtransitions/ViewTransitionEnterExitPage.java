@@ -17,8 +17,8 @@ public class ViewTransitionEnterExitPage {
     this.triggerBtn = page.locator(".trigger-btn");
     this.notificationCard = page.locator(".notification-card");
     this.notificationDismiss = page.locator(".notification-dismiss");
-    this.notificationTitle = page.locator(".notification-title");
-    this.notificationMessage = page.locator(".notification-message");
+    this.notificationTitle = page.locator(".notification-card > [slot='title']");
+    this.notificationMessage = page.locator(".notification-card > [slot='caption']");
   }
 
   public static String getRoute() {

@@ -3,22 +3,6 @@
   padding: var(--dwc-space-l);
 }
 
-.analytics-card {
-  border: thin solid var(--dwc-color-default);
-  border-radius: 16px;
-  padding: var(--dwc-space-m);
-  background-color: var(--dwc-surface-3);
-  box-shadow: var(--dwc-shadow-xs);
-  width: 100%;
-  max-width: 500px;
-}
-
-.analytics-title {
-  font-weight: 600;
-  font-size: var(--dwc-font-size-xl);
-  margin-bottom: 0.25rem;
-}
-
 .analytics-value {
   font-size: var(--dwc-font-size-2xl);
   font-weight: 700;
@@ -26,6 +10,5 @@
 }
 
 .analytics-description {
-  font-size: var(--dwc-font-size-l);
   color: var(--dwc-color-success-text);
 }

@@ -1,5 +1,5 @@
 ---
-title: Frontend testing
+title: Pruebas de frontend
 sidebar_position: 5
 sidebar_class_name: new-content
 description: >-

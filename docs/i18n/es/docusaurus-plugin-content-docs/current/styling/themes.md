@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Themes
+title: Temas
 sidebar_class_name: updated-content
 description: >-
   Apply built-in light, dark, and dark-pure themes with @AppTheme or define

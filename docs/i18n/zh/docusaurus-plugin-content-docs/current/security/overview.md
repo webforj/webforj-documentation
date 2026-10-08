@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Security
+title: 安全
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-

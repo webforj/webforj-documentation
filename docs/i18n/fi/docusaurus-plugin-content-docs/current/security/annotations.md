@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Security Annotations
+title: Suojausannotaatiot
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 Turvallisuusannotaatiot tarjoavat deklaratiivisen tavan hallita pääsyä reitteihin webforJ-sovelluksessa. Lisäämällä annotaatioita reittikomponentteihisi määrittelet, kuka voi käyttää kutakin näkymää ilman manuaalisten käyttöoikeustarkistusten kirjoittamista. Turvallisuusjärjestelmä valvoo näitä sääntöjä automaattisesti ennen kuin mitään komponenttia renderöidään.

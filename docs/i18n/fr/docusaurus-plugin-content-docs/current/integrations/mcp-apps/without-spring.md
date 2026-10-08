@@ -1,5 +1,5 @@
 ---
-title: Standard webforJ setup
+title: Installation webforJ standard
 sidebar_position: 35
 description: >-
   Assemble an MCP server and register webforJ MCP Apps in a standard

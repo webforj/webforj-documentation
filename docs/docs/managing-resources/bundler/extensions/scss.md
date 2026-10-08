@@ -1,7 +1,6 @@
 ---
 title: SCSS and Sass
 sidebar_position: 30
-sidebar_class_name: new-content
 description: Compile SCSS or Sass to CSS with the webforj-scss extension, bind a class to the stylesheet, and set a load path through bun.config.ts.
 ---
 

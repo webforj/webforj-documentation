@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Nested Routes
+title: Rutas anidadas
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Las rutas anidadas permiten que las rutas secundarias se representen dentro de las rutas principales, creando una interfaz de usuario modular y reutilizable. Las rutas principales definen componentes compartidos, mientras que las rutas secundarias se inyectan en salidas específicas dentro de estos componentes principales.

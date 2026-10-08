@@ -1,5 +1,5 @@
 ---
-title: MCP Server
+title: Serveur MCP
 sidebar_position: 5
 description: >-
   Connect AI assistants to the webforJ MCP server for live documentation lookup,

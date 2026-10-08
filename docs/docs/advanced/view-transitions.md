@@ -14,11 +14,15 @@ description: Animate DOM changes with the browser View Transition API, applying 
 
 View transitions provide animated transitions when the [DOM](/docs/glossary#dom) changes, reducing visual jarring and maintaining spatial context during navigation or content updates. webforJ integrates with the browser's [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) to handle the complexity of coordinating animations between old and new states.
 
+<!-- INTRO_END -->
+
 <ComponentDemo
 path='/webforj/viewtransitionchat'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
   'src/main/frontend/css/viewtransitions/chat.css',
+  'src/main/java/com/webforj/samples.views.viewtransitions.components.ChatCard.java',
+  'src/main/frontend/css/viewtransitions/components/chat-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -27,9 +31,7 @@ height='450px'
 
 <ExperimentalWarning />
 
-## Basic usage {#basic-usage}
-
-To create a view transition, use `Page.getCurrent().startViewTransition()`, which returns a builder for configuring the transition:
+Use `Page.getCurrent().startViewTransition()` to create a transition, which returns a builder for configuring the transition:
 
 ```java
 Page.getCurrent().startViewTransition()
@@ -106,9 +108,10 @@ When working with lists or repeated components, include a unique identifier in t
 path='/webforj/viewtransitionmorph'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
+  'src/main/frontend/css/viewtransitions/morph.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
-  'src/main/frontend/css/viewtransitions/morph.css',
+  'src/main/frontend/css/viewtransitions/components/blog-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -136,8 +139,9 @@ Page.getCurrent().startViewTransition()
 path='/webforj/viewtransitionshuffle'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
-  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
   'src/main/frontend/css/viewtransitions/shuffle.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
+  'src/main/frontend/css/viewtransitions/components/shuffle-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -199,6 +203,8 @@ path='/webforj/viewtransitionenterexit'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
   'src/main/frontend/css/viewtransitions/enterexit.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/NotificationCard.java',
+  'src/main/frontend/css/viewtransitions/components/notification-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}

@@ -2,7 +2,6 @@
 sidebar_position: 1
 title: Automated Upgrades
 description: Migrate webforJ projects between versions automatically with OpenRewrite recipes that rename APIs, update dependencies, and flag manual fixes.
-sidebar_class_name: new-content
 ---
 
 # Using OpenRewrite {#using-openrewrite}

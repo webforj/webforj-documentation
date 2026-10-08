@@ -1,5 +1,5 @@
 ---
-title: Setup and Configuration
+title: Asennus ja määritys
 sidebar_position: 2
 _i18n_hash: d948bababbedcfe831d4af62f8b6b088
 ---

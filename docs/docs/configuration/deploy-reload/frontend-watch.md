@@ -1,7 +1,6 @@
 ---
 title: Frontend watch
 sidebar_position: 20
-sidebar_class_name: new-content
 description: Rebuild the sources under src/main/frontend while a webforJ app runs, applying stylesheet and image output in place and reloading the view for script output.
 ---
 

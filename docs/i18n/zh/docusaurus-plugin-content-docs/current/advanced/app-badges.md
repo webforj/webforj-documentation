@@ -1,7 +1,7 @@
 ---
 sidebar_position: 38
 sidebar_class_name: new-content
-title: App badges
+title: 应用徽章
 description: >-
   Paint notification badges onto the operating system app icon and the browser
   tab favicon.

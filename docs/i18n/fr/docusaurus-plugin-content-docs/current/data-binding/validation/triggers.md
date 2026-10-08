@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Triggers
+title: Déclencheurs
 _i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
 import Tabs from '@theme/Tabs';

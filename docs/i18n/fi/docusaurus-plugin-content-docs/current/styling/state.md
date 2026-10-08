@@ -1,6 +1,6 @@
 ---
 sidebar_position: 9
-title: State
+title: Tila
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 State tokens määrittävät, kuinka komponentit visuaalisesti reagoivat käyttäjän vuorovaikutukseen, esimerkiksi kun ne ovat poistettu käytöstä tai fokusoitu. Nämä muuttujat auttavat varmistamaan johdonmukaisen käyttäytymisen ja tyylin kaikissa käyttöliittymäelementeissä, ja niitä voidaan helposti mukauttaa vastaamaan suunnittelujärjestelmääsi.

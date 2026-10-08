@@ -1,6 +1,6 @@
 ---
 sidebar_position: 25
-title: Large Data Sets
+title: 大型数据集
 slug: data
 _i18n_hash: 9431d33c6fea2dd9d4ff4b165877e7d5
 ---

@@ -1,5 +1,5 @@
 ---
-title: Snapshots
+title: 快照
 sidebar_position: 30
 hide_table_of_contents: true
 description: >-

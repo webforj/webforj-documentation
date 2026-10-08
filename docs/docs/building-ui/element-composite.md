@@ -1,7 +1,6 @@
 ---
 sidebar_position: 6
 title: Element Composite
-sidebar_class_name: new-content
 description: Wrap a custom HTML element or third-party web component in Java with ElementComposite, exposing its properties, attributes, and events through the Java API.
 ---
 
@@ -467,7 +466,7 @@ The demo below shows two pricing cards built with [`wa-card`](https://webawesome
 
 <ComponentDemo
 path='/webforj/card'
-files={['src/main/java/com/webforj/samples/views/elementcomposite/CardView.java']}
+files={['src/main/java/com/webforj/samples/views/elementcomposite/WebAwesomeCardView.java']}
 height='400px'
 />
 

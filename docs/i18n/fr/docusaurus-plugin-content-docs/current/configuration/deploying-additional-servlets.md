@@ -1,6 +1,6 @@
 ---
 sidebar_position: 25
-title: Deploying Additional Servlets
+title: Déployer des servlets supplémentaires
 description: >-
   Host REST endpoints and third-party servlets alongside a webforJ app by
   remapping WebforjServlet or proxying through webforj.conf.

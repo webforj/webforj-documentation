@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Context Results
+title: Kontextergebnisse
 _i18n_hash: b86bc425ad8c1537e99a44fa34a93b3a
 ---
 Wenn Sie Daten von der Benutzeroberfläche in das Modell schreiben, löst die `write`-Methode des `BindingContext` die Validierungen aus. Die Validierungsergebnisse bestimmen, ob die Daten akzeptabel sind.

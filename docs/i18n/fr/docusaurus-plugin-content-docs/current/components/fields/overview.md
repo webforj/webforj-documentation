@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Fields
+title: Champs
 hide_giscus_comments: true
 sidebar_class_name: has-new-content
 _i18n_hash: 288d408cb058dbaa417fea651698123a

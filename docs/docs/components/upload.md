@@ -1,7 +1,6 @@
 ---
 title: Upload
 sidebar_position: 160
-sidebar_class_name: new-content
 description: Select and upload one or more files from the local machine with the Upload component using drag-and-drop, filters, and per-file or batch event tracking.
 ---
 
@@ -46,7 +45,7 @@ height='550px'
 How the picker behaves is controlled by a few independent settings: how many files the user can pick at once, what's selectable from the local filesystem, and what types are visible in the file dialog. Together they shape the picking experience to fit the field.
 
 
-Here's a gallery uploader configured with both image and video filters, multi-file selection, and a 20-file cap:s
+Here's a gallery uploader configured with both image and video filters, multi-file selection, and a 20-file cap:
 
 <ComponentDemo
 path='/webforj/uploadpickingfiles'
@@ -213,7 +212,6 @@ upload.setPreset(Upload.Preset.INLINE);
 path='/webforj/uploadpresets'
 files={[
   'src/main/java/com/webforj/samples/views/upload/UploadPresetsView.java',
-  'src/main/frontend/css/upload/uploadPresets.css'
 ]}
 height='650px'
 />
@@ -323,7 +321,6 @@ In the following example, `onChange`, `onListProgress`, and `onComplete` drive a
 path='/webforj/uploadevents'
 files={[
   'src/main/java/com/webforj/samples/views/upload/UploadEventsView.java',
-  'src/main/frontend/css/upload/uploadEvents.css'
 ]}
 height='450px'
 />

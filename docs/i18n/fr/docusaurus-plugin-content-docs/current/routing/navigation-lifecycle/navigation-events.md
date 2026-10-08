@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Navigation Events
+title: Événements de navigation
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 En plus des événements de cycle de vie spécifiques aux composants, vous pouvez enregistrer des **écouteurs d'événements globaux** au niveau du routeur. Cela permet de suivre la navigation de manière globale dans toute l'application, ce qui est utile pour la journalisation, l'analyse ou d'autres préoccupations transversales.

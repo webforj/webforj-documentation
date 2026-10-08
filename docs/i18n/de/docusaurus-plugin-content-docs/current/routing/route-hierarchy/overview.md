@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Route Hierarchy
+title: Routen-Hierarchie
 hide_giscus_comments: true
 description: >-
   Organize webforJ routes into parent-child trees with view routes, layout

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1000
-title: Glossary
+title: Sanasto
 sidebar_class_name: sidebar--item__hidden
 slug: glossary
 description: >-

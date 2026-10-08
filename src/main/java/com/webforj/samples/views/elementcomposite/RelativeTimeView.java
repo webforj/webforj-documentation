@@ -3,11 +3,13 @@ package com.webforj.samples.views.elementcomposite;
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.bundle.annotation.BundlePackage;
 import com.webforj.component.Composite;
+import com.webforj.component.card.Card;
 import com.webforj.component.element.ElementComposite;
 import com.webforj.component.element.PropertyDescriptor;
 import com.webforj.component.element.annotation.NodeName;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.html.elements.Span;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.concern.HasClassName;
@@ -21,6 +23,7 @@ import java.time.Instant;
 @FrameTitle("Launch Countdown")
 public class RelativeTimeView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
+  private final Card card = new Card();
 
   public RelativeTimeView() {
     Span prefix = new Span("🚀 Rocket launching ");
@@ -34,15 +37,12 @@ public class RelativeTimeView extends Composite<FlexLayout> {
     caption.setStyle("margin", "0");
     caption.setStyle("font-size", "1rem");
 
-    FlexLayout container = new FlexLayout(caption);
-    container.setStyle("background", "var(--dwc-surface-3)");
-    container.setStyle("border", "thin solid var(--dwc-color-default)");
-    container.setStyle("border-radius", "var(--dwc-border-radius-m)");
-    container.setStyle("padding", "var(--dwc-space-m)");
+    card.add(caption);
 
-    self.setJustifyContent(FlexJustifyContent.CENTER)
-        .setMargin("var(--dwc-space-l)")
-        .add(container);
+    self.setHeight("100vh")
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .add(card);
   }
 
   @BundlePackage(value = "@awesome.me/webawesome", version = "^3.12.0")

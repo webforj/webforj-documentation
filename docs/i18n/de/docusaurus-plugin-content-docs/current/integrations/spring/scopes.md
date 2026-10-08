@@ -1,5 +1,5 @@
 ---
-title: Scopes
+title: Geltungsbereiche
 sidebar_position: 16
 description: >-
   Use WebforjSessionScope, EnvironmentScope, and RouteScope to control bean

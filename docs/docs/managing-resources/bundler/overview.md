@@ -2,7 +2,6 @@
 title: Frontend bundler
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: new-content
 description: Understand how the webforJ frontend bundler turns class-level annotations into compiled, per-route frontend assets, when to reach for it, and how a class binds to the entry it needs.
 ---
 

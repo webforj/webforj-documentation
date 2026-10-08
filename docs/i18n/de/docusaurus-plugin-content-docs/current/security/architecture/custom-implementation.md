@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Custom Implementation Example
+title: Beispiel für eine eigene Implementierung
 description: >-
   Build a session-based security stack by implementing SecurityConfiguration,
   SecurityContext, SecurityManager, and SecurityRegistrar.

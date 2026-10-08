@@ -1,5 +1,5 @@
 ---
-title: Open a view with input
+title: Een view met invoer openen
 sidebar_position: 15
 description: >-
   Accept structured opening input in a routed MCP App and choose its requested

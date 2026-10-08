@@ -1,5 +1,5 @@
 ---
-title: Upgrade to 26.00
+title: Päivitys versioon 26.00
 description: Upgrade from 25.00 to 26.00
 slug: /upgrading/webforj-26.00
 pagination_next: null

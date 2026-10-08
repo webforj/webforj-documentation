@@ -5,14 +5,14 @@ slug: timefield
 description: >-
   A component that provides a default browser-based time picker for selecting a
   time value through an input field.
-_i18n_hash: 9688647e85d453578ccd59934e52e26b
+_i18n_hash: 9b4c187f1c86207e13b38812f0eb7e6c
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TimeField" top='true'/>
 
-`TimeField` ist eine Benutzeroberflächenkomponente, die es Benutzern ermöglicht, Zeiten in Stunden, Minuten und optional Sekunden einzugeben oder auszuwählen. Es bietet eine intuitive und effiziente Möglichkeit, zeitbezogene Informationen in verschiedenen Anwendungen zu verarbeiten.
+`TimeField` ist ein Benutzeroberflächenkomponente, die es den Benutzern ermöglicht, Zeiten mit Stunden- und Minutenpräzision einzugeben oder auszuwählen. Wenn Sekunden angegeben werden, werden sie von der Komponente verworfen.
 
 <!-- INTRO_END -->
 
@@ -20,7 +20,7 @@ _i18n_hash: 9688647e85d453578ccd59934e52e26b
 
 <ParentLink parent="Field" />
 
-`TimeField` erweitert die gemeinsame `Field`-Klasse, die gemeinsame Funktionen für alle Feldkomponenten bereitstellt. Das folgende Beispiel erstellt ein Erinnerungs-`TimeField`, das auf die aktuelle Zeit initialisiert wird.
+`TimeField` erweitert die gemeinsame `Field`-Klasse, die gemeinsame Funktionen für alle Feldkomponenten bereitstellt. Das folgende Beispiel erstellt ein Erinnerungs-`TimeField`, das auf die aktuelle Zeit initialisiert ist.
 
 <ComponentDemo
 path='/webforj/timefield'
@@ -29,57 +29,57 @@ files={['src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.
 
 ## Verwendungen {#usages}
 
-Das `TimeField` eignet sich ideal zum Auswählen und Anzeigen von Zeiten in Ihrer App. Hier sind einige Beispiele, wann das `TimeField` verwendet werden sollte:
+Das `TimeField` ist ideal zur Auswahl und Anzeige von Zeiten in Ihrer App. Hier sind einige Beispiele, wann das `TimeField` verwendet werden sollte:
 
-1. **Ereignisplanung**: Zeitfelder sind in Apps, die die Festlegung von Zeiten für Veranstaltungen, Termine oder Besprechungen beinhalten, unerlässlich.
+1. **Veranstaltungsplanung**: Zeitfelder sind essenziell in Apps, die Zeiten für Veranstaltungen, Termine oder Meetings festlegen.
 
-2. **Zeitverfolgung und -protokollierung**: Apps, die Zeit verfolgen, wie z. B. Stundennachweise, benötigen Zeitfelder für genaue Einträge.
+2. **Zeitverfolgung und Protokollierung**: Apps, die Zeit verfolgen, wie zum Beispiel Stundenzettel, benötigen Zeitfelder für genaue Einträge.
 
-3. **Erinnerungen und Alarme**: Die Verwendung eines Zeitfelds vereinfacht den Eingabeprozess für Benutzer, die Erinnerungen oder Alarme in Ihrer App festlegen.
+3. **Erinnerungen und Alarme**: Die Verwendung eines Zeitfeldes vereinfacht den Eingabeprozess für Benutzer, die Erinnerungen oder Alarme in Ihrer App einstellen möchten.
 
-## Minimal- und Maximalwert {#min-and-max-value}
+## Min- und Max-Wert {#min-and-max-value}
 
 Mit den Methoden `setMin()` und `setMax()` können Sie einen Bereich akzeptabler Zeiten festlegen.
 
-- **Für `setMin()`**: Wenn der in die Komponente eingegebene Wert früher ist als die angegebene Mindestzeit, schlägt die Validierung der Einschränkung fehl. Wenn sowohl die min- als auch die max-Werte gesetzt sind, muss der min-Wert eine Zeit sein, die gleich oder früher als der max-Wert ist.
+- **Für `setMin()`**: Wenn der eingegebene Wert in die Komponente früher ist als die angegebene minimale Zeit, wird die Eingabe gegen die Validierungsbeschränkung nicht bestanden. Wenn sowohl der Min- als auch der Max-Wert festgelegt sind, muss der Min-Wert eine Zeit sein, die gleich oder früher als der Max-Wert ist.
 
-- **Für `setMax()`**: Wenn der in die Komponente eingegebene Wert später ist als die angegebene Höchstzeit, schlägt die Validierung der Einschränkung fehl. Wenn sowohl die min- als auch die max-Werte gesetzt sind, muss der max-Wert eine Zeit sein, die gleich oder später als der min-Wert ist.
+- **Für `setMax()`**: Wenn der eingegebene Wert in die Komponente später ist als die angegebene maximale Zeit, wird die Eingabe gegen die Validierungsbeschränkung nicht bestanden. Wenn sowohl der Min- als auch der Max-Wert festgelegt sind, muss der Max-Wert eine Zeit sein, die gleich oder später als der Min-Wert ist.
 
-## Werteverarbeitung und Lokalisierung {#value-handling-and-localization}
+## Wertverarbeitung und Lokalisierung {#value-handling-and-localization}
 
-Intern vertreten die `TimeField`-Komponente ihre Werte unter Verwendung eines `LocalTime`-Objekts aus dem `java.time`-Paket. Dies ermöglicht Entwicklern, mit genauen Zeitwerten zu interagieren, unabhängig davon, wie sie visuell dargestellt sind.
+Intern repräsentiert die `TimeField`-Komponente ihren Wert mit einem `LocalTime`-Objekt aus dem `java.time`-Paket. Dies ermöglicht Entwicklern, mit präzisen Zeitwerten zu interagieren, unabhängig davon, wie sie visuell dargestellt werden.
 
-Während die **clientseitige Komponente die Zeit unter Verwendung der Browsersprache des Benutzers anzeigt**, ist das geparste und gespeicherte Format immer als `HH:mm:ss` standardisiert.
+Der Browser bestimmt, wie der Picker die Zeit für die Locale des Benutzers anzeigt. Der Textwert des Feldes verwendet das 24-Stunden-Format `HH:mm`, und der `LocalTime`-Wert wird auf Minuten verkürzt.
 
-Wenn Sie einen raw String-Wert festlegen, verwenden Sie die Methode `setText()` mit Bedacht:
+Beim Setzen eines Rohzeichenwerts verwenden Sie die `setText()`-Methode vorsichtig:
 
 ```java
-timeField.setText("09:15:00"); // gültig
+timeField.setText("09:15");    // gültig
+timeField.setText("09:15:30"); // ebenfalls gültig; Sekunden werden verworfen, was 09:15 ergibt
 ```
 
 :::warning
- Wenn Sie die Methode `setText()` verwenden, wird eine `IllegalArgumentException` ausgelöst, wenn die Komponente den Eingabewert nicht im `HH:mm:ss`-Format parsen kann.
+Bei der Verwendung von `setText()` wird eine `IllegalArgumentException` ausgelöst, wenn die Eingabe nicht als gültige Zeit analysiert werden kann. Sowohl `HH:mm`- als auch `HH:mm:ss`-Eingaben werden akzeptiert, aber Sekunden werden verworfen.
 :::
 
-
-:::info Picker-Benutzeroberfläche
-Das Erscheinungsbild der Benutzeroberfläche für den Zeitwähler hängt nicht nur von der ausgewählten Sprache ab, sondern auch vom verwendeten Browser und Betriebssystem. Dies sorgt für automatische Konsistenz mit der Benutzeroberfläche, die die Benutzer bereits kennen.
+:::info Picker UI
+Das Erscheinungsbild der Benutzeroberfläche des Zeitpicker-Eingabefelds hängt von der ausgewählten Locale, dem Browser und dem Betriebssystem ab. Dies schafft eine automatische Konsistenz mit der Benutzeroberfläche, mit der die Benutzer bereits vertraut sind.
 :::
 
-## Statische Hilfsprogramme {#static-utilities}
+## Statische Hilfsfunktionen {#static-utilities}
 
-Die `TimeField`-Klasse bietet auch die folgenden statischen Hilfsmethoden:
+Die `TimeField`-Klasse bietet auch die folgenden statischen Hilfsfunktionen:
 
-- `fromTime(String timeAsString)`: Konvertiert einen Zeit-String im HH:mm:ss-Format in ein LocalTime-Objekt, das dann mit dieser Klasse oder anderswo verwendet werden kann.
+- `fromTime(String timeAsString)`: Analysiert eine Zeitzeichenfolge, mit oder ohne Sekunden, in ein `LocalTime`, das auf Minuten verkürzt ist.
 
-- `toTime(LocalTime time)`: Konvertiert ein LocalTime in einen Zeit-String im HH:mm:ss-Format.
+- `toTime(LocalTime time)`: Konvertiert ein `LocalTime` in eine Zeichenfolge im `HH:mm`-Format und verwirft Sekunden.
 
-- `isValidTime(String timeAsString)`: Überprüft, ob der angegebene String eine gültige HH:mm:ss-Zeit ist. Dies gibt einen booleschen Wert true zurück, wenn dies der Fall ist, andernfalls false.
+- `isValidTime(String timeAsString)`: Überprüft, ob eine Zeitzeichenfolge gültig ist, einschließlich `HH:mm`- und `HH:mm:ss`-Eingaben. Gibt `true` zurück, wenn es gültig ist, und `false` andernfalls.
 
-## Best Practices {#best-practices}
+## Beste Praktiken {#best-practices}
 
-- **Klare Beispiele für das Zeitformat bereitstellen**: Zeigen Sie den Benutzern das erwartete Zeitformat klar in der Nähe des `TimeField` an. Verwenden Sie Beispiele oder Platzhalter, um ihnen zu helfen, die Zeit korrekt einzugeben. Wenn möglich, zeigen Sie das Zeitformat basierend auf dem Standort des Benutzers an.
+- **Klare Zeitformatbeispiele bereitstellen**: Zeigen Sie den Benutzern klar das erwartete Zeitformat in der Nähe des `TimeField`. Verwenden Sie Beispiele oder Platzhalter, um ihnen zu helfen, die Zeit korrekt einzugeben. Wenn möglich, zeigen Sie das Zeitformat basierend auf dem Standort des Benutzers an.
 
-- **Zugänglichkeit**: Nutzen Sie die `TimeField`-Komponente mit Blick auf die Zugänglichkeit und stellen Sie sicher, dass sie den Standards für Zugänglichkeit entspricht, wie z. B. durch Bereitstellung angemessener Beschriftungen, ausreichendem Farbkontrast und Kompatibilität mit Hilfstechnologien.
+- **Barrierefreiheit**: Verwenden Sie die `TimeField`-Komponente mit Blick auf die Barrierefreiheit und erfüllen Sie Barrierefreiheitsstandards wie richtige Beschriftungen, ausreichenden Farbkontrast und Kompatibilität mit unterstützenden Technologien.
 
-- **Zurücksetzen-Option**: Bieten Sie eine Möglichkeit, für Benutzer die `TimeField`-Eingabe einfach auf einen leeren oder Standardzustand zurückzusetzen.
+- **Zurücksetzen-Option**: Bieten Sie den Benutzern eine Möglichkeit, das `TimeField` einfach auf einen leeren oder standardmäßigen Zustand zurückzusetzen.

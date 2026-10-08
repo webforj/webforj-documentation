@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Border
+title: 边框
 _i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
 边框属性用于控制组件的边框样式和宽度。请参阅[可用边框样式](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style)。

@@ -1,5 +1,5 @@
 ---
-title: Repository
+title: Tietovarasto
 sidebar_position: 1
 description: >-
   Bridge data collections to UI components with CollectionRepository, commit

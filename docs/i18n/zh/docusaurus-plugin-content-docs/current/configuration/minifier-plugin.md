@@ -1,6 +1,6 @@
 ---
 sidebar_position: 40
-title: Minifier Plugin
+title: 压缩插件
 description: >-
   Discover and minify CSS and JavaScript assets referenced by webforJ
   annotations during the Maven or Gradle production build.

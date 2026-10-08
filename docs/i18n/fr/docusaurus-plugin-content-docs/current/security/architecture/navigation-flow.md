@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Flow
+title: Flux de navigation
 _i18n_hash: f2083b0f83ed9e0098250dafdb37a753
 ---
 L'application de la sécurité dans webforJ se fait automatiquement lors de la navigation. Lorsqu'un utilisateur clique sur un lien ou navigue vers une route, le système de sécurité intercepte la navigation, évalue les règles d'accès, et permet soit la poursuite de la navigation, soit redirige l'utilisateur vers une page appropriée. Cette interception est invisible pour les utilisateurs et ne nécessite aucun contrôle de sécurité manuel dans votre code de composant.

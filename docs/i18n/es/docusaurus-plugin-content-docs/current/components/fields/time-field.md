@@ -5,14 +5,14 @@ slug: timefield
 description: >-
   A component that provides a default browser-based time picker for selecting a
   time value through an input field.
-_i18n_hash: 9688647e85d453578ccd59934e52e26b
+_i18n_hash: 9b4c187f1c86207e13b38812f0eb7e6c
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TimeField" top='true'/>
 
-`TimeField` es un componente de interfaz de usuario que permite a los usuarios ingresar o seleccionar horas, minutos y, opcionalmente, segundos. Proporciona una manera intuitiva y eficiente de manejar información relacionada con el tiempo en diversas aplicaciones.
+`TimeField` es un componente de interfaz de usuario que permite a los usuarios ingresar o seleccionar horarios con precisión de horas y minutos. Si se proporcionan segundos, el componente los descartará.
 
 <!-- INTRO_END -->
 
@@ -20,7 +20,7 @@ _i18n_hash: 9688647e85d453578ccd59934e52e26b
 
 <ParentLink parent="Field" />
 
-`TimeField` extiende la clase compartida `Field`, que proporciona características comunes en todos los componentes de campo. El siguiente ejemplo crea un `TimeField` de recordatorio inicializado a la hora actual.
+`TimeField` extiende la clase compartida `Field`, que proporciona características comunes a todos los componentes de campo. El siguiente ejemplo crea un `TimeField` de recordatorio inicializado a la hora actual.
 
 <ComponentDemo
 path='/webforj/timefield'
@@ -29,57 +29,58 @@ files={['src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.
 
 ## Usos {#usages}
 
-El `TimeField` es ideal para elegir y mostrar horas en tu aplicación. Aquí hay algunos ejemplos de cuándo usar el `TimeField`:
+El `TimeField` es ideal para elegir y mostrar horarios en tu aplicación. Aquí hay algunos ejemplos de cuándo usar el `TimeField`:
 
-1. **Programación de Eventos**: Los campos de tiempo son esenciales en aplicaciones que implican la fijación de horas para eventos, citas o reuniones.
+1. **Programación de Eventos**: Los campos de hora son esenciales en aplicaciones que involucran la fijación de horarios para eventos, citas o reuniones.
 
-2. **Seguimiento y Registro de Tiempo**: Las aplicaciones que rastrean el tiempo, como las hojas de tiempo, necesitan campos de tiempo para entradas precisas.
+2. **Seguimiento y Registro de Tiempos**: Las aplicaciones que registran tiempo, como las hojas de horas, necesitan campos de hora para entradas precisas.
 
-3. **Recordatorios y Alarmas**: Usar un campo de tiempo simplifica el proceso de entrada para los usuarios que establecen recordatorios o alarmas en tu aplicación.
+3. **Recordatorios y Alarmas**: Usar un campo de hora simplifica el proceso de entrada para los usuarios que establecen recordatorios o alarmas en tu aplicación.
 
 ## Valor mínimo y máximo {#min-and-max-value}
 
-Con los métodos `setMin()` y `setMax()`, puedes especificar un rango de horas aceptables.
+Con los métodos `setMin()` y `setMax()`, puedes especificar un rango de tiempos aceptables.
 
-- **Para `setMin()`**: Si el valor ingresado en el componente es anterior a la hora mínima especificada, el componente fallará en la validación de restricciones. Cuando tanto el valor mínimo como el máximo están establecidos, el valor mínimo debe ser una hora igual o anterior al valor máximo.
+- **Para `setMin()`**: Si el valor ingresado en el componente es anterior al tiempo mínimo especificado, el componente no pasará la validación de restricción. Cuando se establecen tanto los valores mínimo como máximo, el valor mínimo debe ser un tiempo que sea igual o anterior al valor máximo.
 
-- **Para `setMax()`**: Si el valor ingresado en el componente es posterior a la hora máxima especificada, el componente fallará en la validación de restricciones. Cuando tanto el valor mínimo como el máximo están establecidos, el valor máximo debe ser una hora igual o posterior al valor mínimo.
+- **Para `setMax()`**: Si el valor ingresado en el componente es posterior al tiempo máximo especificado, el componente no pasará la validación de restricción. Cuando se establecen tanto los valores mínimo como máximo, el valor máximo debe ser un tiempo que sea igual o posterior al valor mínimo.
 
 ## Manejo de valores y localización {#value-handling-and-localization}
 
-Internamente, el componente `TimeField` representa su valor utilizando un objeto `LocalTime` del paquete `java.time`. Esto permite a los desarrolladores interactuar con valores de tiempo precisos sin importar cómo se representen visualmente.
+Internamente, el componente `TimeField` representa su valor utilizando un objeto `LocalTime` del paquete `java.time`. Esto permite a los desarrolladores interactuar con valores de hora precisos independientemente de cómo se rendericen visualmente.
 
-Mientras que el **componente del lado del cliente muestra la hora utilizando la configuración regional del navegador del usuario**, el formato parseado y almacenado siempre está estandarizado como `HH:mm:ss`.
+El navegador determina cómo el selector muestra la hora para la localidad del usuario. El valor de texto del campo utiliza el formato de 24 horas `HH:mm`, y su valor `LocalTime` se trunca a minutos.
 
-Si se establece un valor de cadena crudo, utiliza el método `setText()` con cuidado:
+Si se establece un valor de cadena en bruto, usa el método `setText()` con cuidado:
 
 ```java
-timeField.setText("09:15:00"); // válido
+timeField.setText("09:15");    // válido
+timeField.setText("09:15:30"); // también válido; se desprecian los segundos, quedando 09:15
 ```
 
 :::warning
- Al usar el método `setText()`, se lanzará una `IllegalArgumentException` si el componente no puede analizar la entrada en el formato `HH:mm:ss`.
+Al usar `setText()`, se lanzará una `IllegalArgumentException` si la entrada no se puede analizar como una hora válida. Se aceptan entradas tanto `HH:mm` como `HH:mm:ss`, pero se descartan los segundos.
 :::
 
 
-:::info Interfaz de Selector
-La apariencia de la interfaz de entrada del selector de tiempo depende no solo de la configuración regional seleccionada, sino también del navegador y sistema operativo que se estén utilizando. Esto asegura una consistencia automática con la interfaz que los usuarios ya conocen.
+:::info UI del selector
+La apariencia de la UI del selector de hora depende de la localidad seleccionada, el navegador y el sistema operativo. Esto crea una consistencia automática con la interfaz con la que los usuarios ya están familiarizados.
 :::
 
 ## Utilidades estáticas {#static-utilities}
 
 La clase `TimeField` también proporciona los siguientes métodos de utilidad estáticos:
 
-- `fromTime(String timeAsString)`: Convierte una cadena de tiempo en formato HH:mm:ss a un objeto LocalTime que luego puede ser utilizado con esta clase, o en otros lugares.
+- `fromTime(String timeAsString)`: Analiza una cadena de tiempo, con o sin segundos, en un `LocalTime` truncado a minutos.
 
-- `toTime(LocalTime time)`: Convierte un LocalTime a una cadena de tiempo en formato HH:mm:ss.
+- `toTime(LocalTime time)`: Convierte un `LocalTime` a una cadena en formato `HH:mm`, desechando los segundos.
 
-- `isValidTime(String timeAsString)`: Verifica si la cadena dada es una hora válida en HH:mm:ss. Esto retornará un valor booleano verdadero si es así, falso de lo contrario.
+- `isValidTime(String timeAsString)`: Verifica si una cadena de tiempo es válida, incluyendo entradas `HH:mm` y `HH:mm:ss`. Retorna `true` si es válida y `false` en caso contrario.
 
 ## Mejores prácticas {#best-practices}
 
-- **Proporcionar Ejemplos Claros del Formato de Hora**: Muestra claramente a los usuarios el formato de hora esperado cerca del `TimeField`. Usa ejemplos o marcadores de posición para ayudarles a ingresar la hora correctamente. Si es posible, muestra el formato de hora basado en la ubicación del usuario.
+- **Proporcionar Ejemplos Claros del Formato de Hora**: Muestra claramente a los usuarios el formato de hora esperado cerca del `TimeField`. Utiliza ejemplos o marcadores de posición para ayudarles a ingresar la hora correctamente. Si es posible, muestra el formato de hora basado en la ubicación del usuario.
 
-- **Accesibilidad**: Utiliza el componente `TimeField` con la accesibilidad en mente, asegurando que cumpla con los estándares de accesibilidad como proporcionar etiquetas adecuadas, contraste de color suficiente y compatibilidad con tecnologías asistivas.
+- **Accesibilidad**: Usa el componente `TimeField` con la accesibilidad en mente, cumpliendo con los estándares de accesibilidad como etiquetas adecuadas, suficiente contraste de color y compatibilidad con tecnologías asistivas.
 
-- **Opción de Reinicio**: Proporciona una forma para que los usuarios puedan limpiar fácilmente el `TimeField` a un estado vacío o predeterminado.
+- **Opción de Reinicio**: Proporciona una manera para que los usuarios puedan limpiar fácilmente el `TimeField` a un estado vacío o por defecto.

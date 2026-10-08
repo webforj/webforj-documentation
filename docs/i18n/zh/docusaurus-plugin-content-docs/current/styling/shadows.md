@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Shadows
+title: 阴影
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 影子属性在元素框架周围添加阴影效果。阴影表示用户界面中层叠在一起的项目。

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Interval
+title: Intervall
 _i18n_hash: 1fd4c3fc2bf38df65a68d909a6ff77a3
 ---
 <DocChip chip='since' label='24.02' />

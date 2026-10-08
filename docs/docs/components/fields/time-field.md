@@ -10,7 +10,7 @@ description: A component that provides a default browser-based time picker for s
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TimeField" top='true'/>
 
-`TimeField` is a user interface component that allows users to input or select times in hours, minutes, and optionally seconds. It provides an intuitive and efficient way to handle time-related information in various applications.
+`TimeField` is a user interface component that allows users to input or select times with hour-and-minute precision. If seconds are supplied, the component discards them.
 
 <!-- INTRO_END -->
 
@@ -47,37 +47,38 @@ With the `setMin()` and `setMax()` methods, you can specify a range of acceptabl
 
 Internally, the `TimeField` component represents its value using a `LocalTime` object from the `java.time` package. This allows developers to interact with precise time values regardless of how they're visually rendered.
 
-While the **client-side component displays the time using the user's browser locale**, the parsed and stored format is always standardized as `HH:mm:ss`.
+The browser determines how the picker displays the time for the user's locale. The field's text value uses 24-hour `HH:mm` format, and its `LocalTime` value is truncated to minutes.
 
 If setting a raw string value, use the `setText()` method carefully:
 
 ```java
-timeField.setText("09:15:00"); // valid
+timeField.setText("09:15");    // valid
+timeField.setText("09:15:30"); // also valid; seconds are discarded, leaving 09:15
 ```
 
 :::warning
- When using the `setText()` method, an `IllegalArgumentException` will be thrown if the component can't parse the input in the `HH:mm:ss` format.
+When using `setText()`, an `IllegalArgumentException` is thrown if the input can't be parsed as a valid time. Both `HH:mm` and `HH:mm:ss` inputs are accepted, but seconds are discarded.
 :::
 
 
 :::info Picker UI
-The appearance of the time picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
+The appearance of the time picker input UI depends on the selected locale, the browser, and the operating system. This creates automatic consistency with the interface users are already familiar with.
 :::
 
 ## Static utilities {#static-utilities}
 
 The `TimeField` class also provides the following static utility methods:
 
-- `fromTime(String timeAsString)`: Convert a time string in HH:mm:ss format to a LocalTime object which can then be utilized with this class, or elsewhere.
+- `fromTime(String timeAsString)`: Parse a time string, with or without seconds, into a `LocalTime` truncated to minutes.
 
-- `toTime(LocalTime time)`: Convert a LocalTime to a time string in HH:mm:ss format.
+- `toTime(LocalTime time)`: Convert a `LocalTime` to a string in `HH:mm` format, discarding seconds.
 
-- `isValidTime(String timeAsString)`: Check if the given string is a valid HH:mm:ss time. This will return a boolean value true if so, false otherwise.
+- `isValidTime(String timeAsString)`: Check whether a time string is valid, including `HH:mm` and `HH:mm:ss` inputs. Returns `true` if valid and `false` otherwise.
 
 ## Best practices {#best-practices}
 
 - **Provide Clear Time Format Examples**: Clearly show users the expected time format near the `TimeField`. Use examples or placeholders to help them enter the time correctly. If possible, display the time format based on the user's location.
 
-- **Accessibility**: Utilize the `TimeField` component with accessibility in mind, ensuring it meets accessibility standards such as providing proper labels, sufficient color contrast, and compatibility with assistive technologies.
+- **Accessibility**: Use the `TimeField` component with accessibility in mind, meeting accessibility standards such as proper labels, sufficient color contrast, and compatibility with assistive technologies.
 
 - **Reset Option**: Provide a way for users to easily clear the `TimeField` to an empty or default state.

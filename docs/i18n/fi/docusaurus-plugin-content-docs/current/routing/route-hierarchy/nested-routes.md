@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Nested Routes
+title: Sisäkkäiset reitit
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Sisäkkäiset reitit mahdollistavat lapsireittien renderöimisen vanhempien reittien sisällä, luoden modulaarisen ja uudelleenkäytettävän käyttöliittymän. Vanhempireitit määrittävät jaetut komponentit, kun taas lapsireitit injektoidaan erityisiin ulostuloihin näissä vanhempikomponenteissa.

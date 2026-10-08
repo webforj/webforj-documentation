@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1000
-title: Glossary
+title: 术语表
 sidebar_class_name: sidebar--item__hidden
 slug: glossary
 description: >-

@@ -1,5 +1,5 @@
 ---
-title: Querying data
+title: Tietojen kysely
 sidebar_position: 3
 description: >-
   Build typed filters, sorting, and pagination with QueryableRepository and

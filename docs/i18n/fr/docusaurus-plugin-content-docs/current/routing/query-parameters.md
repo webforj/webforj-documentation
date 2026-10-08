@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Query Parameters
+title: Paramètres de requête
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Les paramètres de requête vous permettent de passer des données supplémentaires via les URL, en utilisant le format `?key1=value1&key2=value2`. Alors que les paramètres de route sont utilisés pour passer des données requises dans le chemin de l'URL, les paramètres de requête fournissent un mécanisme flexible pour passer des données optionnelles ou supplémentaires. Ils sont particulièrement utiles lors du filtrage de contenu, du tri ou de la gestion de plusieurs valeurs pour la même clé.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Route Outlets
+title: Salidas de ruta
 _i18n_hash: 8a64cd917fe9f1de3f37ee01254e80e7
 ---
 Un **outlet** es un componente designado, ya sea un [layout de ruta](./route-types#layout-routes) o una [vista de ruta](./route-types#view-routes), donde se renderizan dinámicamente las rutas secundarias. Define dónde aparecerá el contenido de la ruta secundaria dentro de la ruta principal. Los outlets son fundamentales para crear interfaces de usuario modulares y anidadas, así como estructuras de navegación flexibles.

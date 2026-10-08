@@ -1,5 +1,5 @@
 ---
-title: Work with the MCP client
+title: 使用 MCP 客户端
 sidebar_position: 25
 description: Connect a rendered webforJ view to its MCP client.
 _i18n_hash: 082797b568bd8f308b625306c524d7ef

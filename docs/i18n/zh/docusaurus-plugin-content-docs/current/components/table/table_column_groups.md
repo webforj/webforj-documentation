@@ -1,5 +1,5 @@
 ---
-title: Column Groups
+title: 列组
 sidebar_position: 7
 description: >-
   Group Table columns under shared, nestable multi-row headers using

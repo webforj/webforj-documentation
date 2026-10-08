@@ -4,22 +4,18 @@ sidebar_position: 65
 description: >-
   Overlay a parent container with the Loading component to block interaction
   during async tasks, with backdrop and spinner customization.
-_i18n_hash: e17c9249d41752ed1f4b98d18028371a
+_i18n_hash: 6e4493f64eb29033ed8a5d594accdb33
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-loading" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="loading" location="com/webforj/component/loading/Loading" top='true'/>
 
-`Loading`-komponentti näyttää peiton tietyllä komponentilla tai alueella, merkiten, että toimenpide on käynnissä ja väliaikaisesti estäen vuorovaikutuksen. Se toimii hyvin tehtävissä kuten tietojen lataaminen, laskentatehtävät tai taustaprosessit. Globaaleihin, sovelluksen laajuisiin prosesseihin [`BusyIndicator`](../components/busyindicator) -komponentti kattaa koko käyttöliittymän.
+`Loading`-komponentti näyttää peitteen tietyllä komponentilla tai alueella, mikä osoittaa, että operaatio on käynnissä ja estää väliaikaisesti vuorovaikutuksen. Se toimii hyvin tehtävissä, kuten tietojen lataamisessa, laskennassa tai taustaprosesseissa. Globaaleissa, koko sovelluksen laajuisissa prosesseissa [`BusyIndicator`](../components/busyindicator) -komponentti kattaa koko käyttöliittymän.
 
 <!-- INTRO_END -->
 
-## Perusteet {#basics}
-
-Yksinkertaisin tapa luoda `Loading`-komponentti on alustaa se ilman lisäasetuksia. Oletusarvoisesti tämä näyttää peruspyörijän sen vanhempien sisällön päällä. Voit kuitenkin myös antaa viestin lisäkonkreettisuuden vuoksi.
-
-Tässä on esimerkki `Loading`-komponentin luomisesta viestin kanssa:
+`Loading`-komponentin alustus ilman lisäasetuksia näyttää pyörivän kuorman sen vanhempien sisällön päällä. Siirrä viesti, kuten esimerkissä alla, kun prosessi tarvitsee enemmän kontekstia.
 
 <ComponentDemo
 path='/webforj/loadingdemo'
@@ -30,11 +26,11 @@ files={[
 height='300px'
 />
 
-## Rajaus {#scoping}
+## Sopi {#scoping}
 
-`Loading`-komponentti webforJ:ssä voi rajata itsensä tiettyyn vanhempaan säilytykseen, kuten `Div`, varmistaen että se estää käyttäjävuorovaikutuksen vain siinä elementissä. Oletusarvoisesti `Loading`-komponentti on suhteellinen sen vanhemmalle, tarkoittaen että se peittää vanhemman komponentin eikä koko sovellusta.
+`Loading`-komponentti webforJ:ssä voi rajata itsensä tiettyyn vanhempaan säiliöön, kuten `Div`:iin, varmistaen, että se estää käyttäjävuorovaikutuksen vain kyseisessä elementissä. Oletuksena `Loading`-komponentti on suhteellinen sen vanhemmalle, mikä tarkoittaa, että se peittää vanhemman komponentin eikä koko sovellusta.
 
-Rajoittaaksesi `Loading`-komponentin vanhemmalleen, lisää yksinkertaisesti `Loading`-komponentti vanhempaan säilytykseen. Esimerkiksi, jos lisäät sen `Div`:lle, latauspeitto koskee vain sitä `Div`:ä:
+Rajoittaaksesi `Loading`-komponenttia sen vanhempaan, lisää yksinkertaisesti `Loading`-komponentti vanhempaan säiliöön. Esimerkiksi, jos lisäät sen `Div`:iin, latauspeite kohdistuu vain siihen `Div`:iin:
 
 ```java
 Div parentDiv = new Div();
@@ -46,44 +42,43 @@ loading.open();  // Loading estää vuorovaikutuksen vain parentDiv:ssä
 
 ## Tausta {#backdrop}
 
-`Loading`-komponentti webforJ:ssa mahdollistaa taustan näyttämisen, joka estää käyttäjävuorovaikutuksen prosessin aikana. Oletusarvoisesti komponentti ottaa taustan käyttöön, mutta voit valita sen poistamisen tarvittaessa.
+`Loading`-komponentti webforJ:ssä antaa sinun näyttää taustan estääksesi käyttäjävuorovaikutuksen, kun prosessi on käynnissä. Oletuksena komponentti mahdollistaa taustan, mutta voit halutessasi katkaista sen.
 
-`Loading`-komponentille tausta on näkyvissä oletuksena. Voit nimenomaan aktivoida tai poistaa sen käytöstä `setBackdropVisible()` -menetelmällä:
+`Loading`-komponentilla tausta on näkyvissä oletuksena. Voit nimenomaisesti aktivoida tai kytkeä sen pois päältä käyttämällä `setBackdropVisible()`-metodia:
 
 ```java
 Loading loading = new Loading();
 loading.setBackdropVisible(false);  // Poistaa taustan käytöstä
 loading.open();
 ```
-:::info Tausta pois
-Vaikka poistatkin taustan käytöstä, `Loading`-komponentti jatkaa käyttäjävuorovaikutuksen estämistä varmistaakseen, että taustaprosessi suoritetaan keskeytyksettä. Tausta hallitsee vain visuaalista peittoa, ei vuorovaikutuksen estokäyttäytymistä.
+:::info Tausta Pois
+Vaikka kytket taustan pois päältä, `Loading`-komponentti jatkaa käyttäjävuorovaikutuksen estämistä varmistaakseen, että taustaprosessi valmistuu keskeytyksettä. Tausta hallitsee vain visuaalista peitettä, ei vuorovaikutuksen estäytymiskäyttäytymistä.
 :::
 
 ## `Spinner` {#spinner}
 
-`Loading`-komponentti webforJ:ssa sisältää `Spinnerin`, joka visuaalisesti osoittaa että taustatoiminto on käynnissä. Voit mukauttaa tätä pyörijää useilla vaihtoehdoilla, mukaan lukien sen koko, nopeus, suunta, teema ja näkyvyys.
+`Loading`-komponentti webforJ:ssä sisältää `Spinner`:in, joka visuaalisesti osoittaa, että taustatehtävä on käynnissä. Voit mukauttaa tätä pyörivää kuormaa useilla vaihtoehdoilla, mukaan lukien sen koko, nopeus, suunta, teema ja näkyvyys.
 
-Tässä on esimerkki siitä, kuinka voit mukauttaa pyörijää `Loading`-komponentin sisällä:
+Tässä on esimerkki siitä, kuinka voit mukauttaa pyörivää kuormaa `Loading`-komponentin sisällä:
 
 <ComponentDemo
 path='/webforj/loadingspinnerdemo'
 files={[
   'src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java',
-  'src/main/frontend/css/loadingstyles/loadingspinnerdemo.css',
 ]}
 height='300px'
 />
 
 ## Käyttötapaukset {#use-cases}
 - **Tietojen hakeminen**
-   Kun haetaan tietoja palvelimelta tai API:sta, `Loading`-komponentti peittää tietyn osan käyttöliittymästä, kuten kortin tai lomakkeen, kertoakseen käyttäjille, että järjestelmä työskentelee taustalla. Tämä on ihanteellinen, kun haluat näyttää edistymistä vain yhteen osaan näyttöä estämättä koko käyttöliittymää.
+   Kun haet tietoja palvelimelta tai API:sta, `Loading`-komponentti peittää tietyn osan käyttöliittymästä, kuten kortin tai lomakkeen, ilmoittaen käyttäjille, että järjestelmä työskentelee taustalla. Tämä on ihanteellista, kun haluat näyttää edistystä vain yhdessä osassa näyttöä ilman, että koko käyttöliittymä estyy.
 
-- **Sisällön lataaminen korteissa/alueilla**
-   `Loading`-komponentti voidaan rajata tiettyihin alueisiin sivulla, kuten yksittäisiin kortteihin tai säilytyksiin. Tämä on hyödyllistä, kun haluat osoittaa, että tietty käyttöliittymän osa on vielä lataamassa, samalla kun käyttäjät voivat vuorovaikuttaa muihin osiin sivusta.
+- **Sisällön lataaminen korteissa/osioissa**
+   `Loading`-komponentti voidaan rajoittaa tiettyihin sivun alueisiin, kuten yksittäisiin kortteihin tai säiliöihin. Tämä on hyödyllistä, kun haluat osoittaa, että tietty käyttöliittymän osa lataa edelleen, samalla kun käyttäjät voivat vuorovaikuttaa muiden sivun osien kanssa.
 
-- **Monimutkaiset lomakkeen lähetykset**
-   Pitkien lomakkeen lähetyksien kohdalla, joissa validointi tai käsittely vie aikaa, `Loading`-komponentti tarjoaa visuaalista palautetta käyttäjille, rauhoittaen heitä, että heidän syötteensä on aktiivisesti käsittelyssä.
+- **Monimutkaiset lomakesyötteet**
+   Pitkäkestoisille lomakesyötteille, joissa validoimiseen tai käsittelyyn kuluu aikaa, `Loading`-komponentti antaa visuaalista palautetta käyttäjille, rauhoittaen heitä siitä, että heidän syötteensä käsitellään aktiivisesti.
 
-## Tyylittely {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="Loading" />

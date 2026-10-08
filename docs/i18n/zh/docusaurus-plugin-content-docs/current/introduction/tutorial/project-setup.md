@@ -1,5 +1,5 @@
 ---
-title: Project Setup
+title: 项目设置
 sidebar_position: 1
 description: >-
   Discover where to download the tutorial project, how to navigate it, and run

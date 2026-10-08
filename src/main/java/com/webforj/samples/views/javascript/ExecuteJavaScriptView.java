@@ -5,8 +5,8 @@ import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.card.Card;
 import com.webforj.component.field.TextField;
-import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H2;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -29,14 +29,10 @@ public class ExecuteJavaScriptView extends Composite<FlexLayout> {
     self.setAlignment(FlexAlignment.CENTER);
     self.setStyle("min-height", "100vh");
 
-    Div card = new Div();
-    card.setStyle("width", "100%");
-    card.setStyle("max-width", "420px");
-    card.setStyle("padding", "var(--dwc-space-l)");
-    card.setStyle("background", "var(--dwc-surface-3)");
-    card.setStyle(
-        "border", "var(--dwc-border-width) var(--dwc-border-style) var(--dwc-border-color)");
-    card.setStyle("border-radius", "var(--dwc-border-radius-l)");
+    Card card = new Card();
+    card.setWidth("100%");
+    card.setMaxWidth(420);
+    card.setStyle("--dwc-card-title-font-size", "var(--dwc-font-size-2xl)");
 
     TextField link = new TextField();
     link.setValue(INVITE_LINK);
@@ -50,7 +46,8 @@ public class ExecuteJavaScriptView extends Composite<FlexLayout> {
     row.setAlignment(FlexAlignment.CENTER);
     row.setSpacing("var(--dwc-space-s)");
 
-    card.add(new H2("Invite a teammate"), row);
+    card.addToTitle(new H2("Invite a teammate"));
+    card.addToBody(row);
     self.add(card);
   }
 

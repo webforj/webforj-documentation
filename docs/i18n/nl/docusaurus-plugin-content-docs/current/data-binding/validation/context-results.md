@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Context Results
+title: Contextresultaten
 _i18n_hash: b86bc425ad8c1537e99a44fa34a93b3a
 ---
 Wanneer je gegevens van de gebruikersinterface naar het model schrijft, activeert de `write`-methode van de `BindingContext` de validaties. De validatieresultaten bepalen of de gegevens acceptabel zijn.

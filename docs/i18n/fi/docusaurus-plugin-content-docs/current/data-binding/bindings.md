@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Bindings
+title: Sidonnat
 sidebar_class_name: updated-content
 description: >-
   Link Java Bean properties to webforJ UI components through BindingContext to

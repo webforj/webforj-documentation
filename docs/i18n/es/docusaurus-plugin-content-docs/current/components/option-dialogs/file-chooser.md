@@ -1,5 +1,5 @@
 ---
-title: File Chooser
+title: Selector de archivos
 sidebar_position: 10
 description: >-
   Open a blocking FileChooserDialog to let users pick files or directories from
