@@ -35,5 +35,7 @@ public class FileChooserDialogBasicView extends Composite<Div> {
       OptionDialog.showMessageDialog(
           "No directory selected", "Directory Selection Failed", MessageDialog.MessageType.ERROR);
     }
+
+    show();
   }
 }

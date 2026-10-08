@@ -43,5 +43,7 @@ public class FileChooserDialogFiltersView extends Composite<Div> {
       OptionDialog.showMessageDialog(
           "No file selected", "File Selection Failed", MessageDialog.MessageType.ERROR);
     }
+
+    show();
   }
 }
