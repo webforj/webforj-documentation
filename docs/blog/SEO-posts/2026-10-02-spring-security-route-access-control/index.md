@@ -19,7 +19,7 @@ Controlling visibility and restricting access are different operations. Treating
 
 <!-- truncate -->
 
-## Two operations that look the same
+## Two operations that look the same {#two-operations-that-look-the-same}
 
 The developer's intent is usually to prevent unauthorized users from reaching a view. What `setVisible(false)` addresses is whether to render a particular UI component in the current layout.
 
@@ -29,7 +29,7 @@ Route-level enforcement intercepts before any of that. An annotation on the view
 
 The surface result is similar: the user doesn't see the restricted content. The structural difference is significant: one determines the output of a render; the other determines whether the render occurs.
 
-## What component visibility does
+## What component visibility does {#what-component-visibility-does}
 
 `setVisible(false)` on a navigation component removes it from the rendered layout. If the user lacks the required role, the button doesn't appear. The link is absent from the UI.
 
@@ -41,7 +41,7 @@ webforJ's [component documentation](/docs/building-ui/using-components) states t
 
 Component visibility is a presentation-layer decision. It controls what the interface shows. It doesn't control who can reach a view.
 
-## What route-level enforcement does instead
+## What route-level enforcement does instead {#what-route-level-enforcement-does-instead}
 
 Route-level security shifts the enforcement point. When `@RolesAllowed` appears on a Java view class, the security system evaluates it before instantiating the view. The webforJ [Security Annotations](/docs/security/annotations) documentation describes this directly: "the security system automatically enforces these rules before any component is rendered."
 
@@ -65,7 +65,7 @@ This changes the security posture in a concrete way: there is no path to the vie
 
 It also keeps the access policy co-located with the view it governs. Any developer reading the view class can see its security requirements in the annotation — there's no need to search the layout for conditionally rendered navigation components.
 
-## The production hardening rule
+## The production hardening rule {#the-production-hardening-rule}
 
 webforJ's production hardening documentation addresses the visibility/security distinction directly. Under "Disabled and hidden aren't security," the [Production Hardening guide](/docs/security/application-security/production-hardening) states:
 
@@ -77,7 +77,7 @@ Component visibility operates on the same principle. Hiding a navigation element
 
 For production apps, webforJ exposes a configuration flag that strengthens this posture further. Setting `webforj.security.secure-by-default=true` in `application.properties` means every route requires authentication unless explicitly marked `@AnonymousAccess`. A route that ships without an annotation is protected rather than exposed, which eliminates the "I forgot to add `@RolesAllowed`" failure mode entirely.
 
-## Server-side authorization for actions
+## Server-side authorization for actions {#server-side-authorization-for-actions}
 
 Route annotations handle navigation security. Actions inside a view are a separate concern. When a button triggers a destructive operation — a delete, a publish, a role assignment — the view is already open and no route is evaluated when the button fires.
 
@@ -97,7 +97,7 @@ delete.onClick(e -> {
 
 The pattern is the same principle as route annotations but applied one level down: the annotation decides who can reach the view, the handler confirms whether the user is allowed to perform a specific action within it. A button that's conditionally rendered based on role is good UX — it removes a control that serves no purpose for this user — but the handler check is what stops a manipulated client from triggering the action anyway.
 
-## When component visibility is the right tool
+## When component visibility is the right tool {#when-component-visibility-is-the-right-tool}
 
 None of this argues against component visibility as a UX mechanism. The case for using it holds in the right context.
 
@@ -107,7 +107,7 @@ The component visibility check is the right tool for that case. The access contr
 
 Route annotations enforce access; component visibility reflects access. Both are useful. The mistake is using one to do the job of the other.
 
-## Where each belongs
+## Where each belongs {#where-each-belongs}
 
 A common pattern that creates exposure in Java web apps: the view exists, the route is unannotated, and `setVisible(false)` hides the navigation component. From the user's perspective, the control is gone. From anyone who knows the URL, the route is reachable.
 
