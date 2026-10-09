@@ -20,7 +20,7 @@ Navigating this way is a real navigation, so your app's [lifecycle observers](/d
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-navigate.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-navigate.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
@@ -36,6 +36,6 @@ You can also change a route's access rule from craftforJ. craftforJ writes the a
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-security.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-security.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>

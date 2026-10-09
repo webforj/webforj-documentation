@@ -8,7 +8,7 @@ Changing a property in craftforJ changes the running app and nothing else. To ke
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
