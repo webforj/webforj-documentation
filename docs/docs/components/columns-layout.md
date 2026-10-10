@@ -15,7 +15,7 @@ The `ColumnsLayout` component arranges items into a responsive column-based layo
 
 ## Default behavior {#default-behavior}
 
-By default, a `ColumnsLayout` arranges items in two columns and takes the full width of its parent. The display can be further adjusted with breakpoints and alignment settings, covered in the sections below.
+By default, a `ColumnsLayout` takes the full width of its parent and arranges items in a single column, switching to two columns at widths of `40em` and above.
 
 <ComponentDemo
 path='/webforj/columnslayout'
@@ -50,7 +50,6 @@ Specify how many columns a breakpoint should have with this integer.
 :::info `Breakpoint` evaluation
 Breakpoints are evaluated in ascending order of the width, meaning the layout will use the first matching breakpoint.
 :::
-
 
 ### Applying breakpoints {#applying-breakpoints}
 
@@ -88,7 +87,7 @@ By default, each item in the `ColumnsLayout` takes up exactly one column. Howeve
 
 ```java
 Button button = new Button("Click Me");
-layout.addComponent(button);
+layout.add(button);
 // Item spans two columns
 layout.setSpan(button, 2);
 ```
@@ -126,7 +125,7 @@ By default, items are placed in the next available column, filling from left to 
 
 ```java
 Button button = new Button("Submit");
-layout.addComponent(button);
+layout.add(button);
 // Place the item in the second column
 layout.setColumn(button, 2);
 ```
@@ -150,7 +149,7 @@ columnsLayout.setColumn(email, "medium", 2);
 //...
 ```
 
-In the following demonstration, notice that when the `"medium"` breakpoint is triggered, the `email` field spans both columns, and the `confirmPassword` field is placed into the first column, rather than its default placement in the second column:
+In the following demonstration, notice that when the `"medium"` breakpoint is triggered, the `email` field spans both columns:
 
 <ComponentDemo
 path='/webforj/columnslayoutspancolumn'
@@ -172,12 +171,12 @@ Each item in the `ColumnsLayout` can be aligned both horizontally and vertically
 
 Available `Alignment` options include:
 
-- `START`: Aligns the item to the left of the column (default).
+- `START`: Aligns the item to the left of the column.
 - `CENTER`: Centers the item horizontally within the column.
 - `END`: Aligns the item to the right of the column.
 - `STRETCH`: Stretches the component to fill the layout
 - `BASELINE`: Aligns based on the text or content inside the column, aligning items to the text baseline rather than other alignment options.
-- `AUTO`: Auto alignment.
+- `AUTO`: Auto alignment (default).
 
 <ComponentDemo
 path='/webforj/columnslayoutalignment'
@@ -206,7 +205,7 @@ layout.setVerticalSpacing(15);
 ```
 
 :::tip CSS units
-You can use an integer to define the minimum width in pixels or use a `String` to specify other units such as `vw`, `%`, or `em`.
+Spacing accepts an integer for pixels, or a `String` for other units such as `vw` or `%`.
 :::
 
 ## Horizontal and vertical layouts {#horizontal-and-vertical-layouts}
