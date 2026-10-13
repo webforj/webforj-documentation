@@ -8,7 +8,7 @@ craftforJ includes a full coding agent that works inside your **running app**. I
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
