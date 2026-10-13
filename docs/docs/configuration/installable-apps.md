@@ -22,11 +22,11 @@ For more details about secure contexts and their importance, refer to the [Secur
 <!-- vale on -->
 :::
 
-<div class="videos-container">
-  <video controls>
-    <source src="/video/install-chrome.mp4" type="video/mp4"/>
-  </video>
-</div>
+<MediaPlayer
+  src="/video/install-chrome.mp4"
+  title="Installing an app in Chrome"
+  aspectRatio="1908 / 1052"
+/>
 
 ## Browser support {#browser-support}
 
@@ -163,8 +163,10 @@ Screenshots provide a preview of the app in installation dialogs or app stores. 
 )
 ```
 
-<div class="videos-container">
-  <video controls>
-    <source src="/video/install-android.mp4" type="video/mp4"/>
-  </video>
+<div style={{maxWidth: '374px', margin: '0 auto'}}>
+  <MediaPlayer
+    src="/video/install-android.mp4"
+    title="Installing an app on Android"
+    aspectRatio="374 / 824"
+  />
 </div>

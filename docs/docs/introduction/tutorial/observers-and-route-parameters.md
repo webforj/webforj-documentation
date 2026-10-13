@@ -12,11 +12,10 @@ The app from [Routing and Composites](/docs/introduction/tutorial/routing-and-co
 
 Completing this step creates a version of [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters).
 
-<!-- <div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/scaling-with-routing-and-composites.mp4" type="video/mp4"/>
-  </video>
-</div> -->
+<!-- <MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/tutorials/scaling-with-routing-and-composites.mp4"
+  title="Observers and Route Parameters"
+/> -->
 
 ## Running the app {#running-the-app}
 

@@ -49,11 +49,11 @@ Once these are in place, restart the app and reload the page.
 
 When craftforJ is active, a trigger button appears over your app. Click it to open craftforJ, or press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> from anywhere in the app. The same shortcut closes craftforJ again, and you can drag the trigger to whichever corner suits you.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/getting-started.mp4" type="video/mp4" />
-  </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/getting-started.mp4"
+  title="Opening craftforJ"
+  aspectRatio="1920 / 984"
+/>
 
 Its tabs cover the [component tree](/docs/craftforj/inspector), [routes](/docs/craftforj/routes), the [theme](/docs/craftforj/theme), and the [assistant](/docs/craftforj/ai). Settings and app information sit alongside them.
 
@@ -78,11 +78,11 @@ craftforJ is drawn on top of the page. Your app doesn't resize, and nothing in i
 
 To stop covering the app at all, move craftforJ out of the page and into a browser window or tab of its own, which suits a second monitor. It still inspects your app through the page that opened it, so leave that page open. Navigate it away or close it and craftforJ has nothing left to inspect until you open the app again.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/undock-window.mp4" type="video/mp4" />
-  </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/undock-window.mp4"
+  title="Where craftforJ sits"
+  aspectRatio="1920 / 1048"
+/>
 
 Choose a tab rather than a window if you use Chrome's split view, which puts your app and craftforJ side by side and accepts only real tabs. Right-click your app's tab, add it to a new split view, then pick the craftforJ tab.
 
@@ -90,11 +90,10 @@ Choose a tab rather than a window if you use Chrome's split view, which puts you
 Chrome provides the side-by-side arrangement, not craftforJ. Other browsers have no equivalent, so craftforJ in other browsers opens in an ordinary tab you switch to. craftforJ itself works the same either way.
 :::
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/split-view.mp4" type="video/mp4" />
-  </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/split-view.mp4"
+  title="Where craftforJ sits"
+/>
 
 :::tip Moving while the assistant is writing
 Moving craftforJ into another window ends a reply that's still streaming. craftforJ asks first, and everything written up to that point stays in the chat.

@@ -24,11 +24,10 @@ The person and the AI can work with the same live UI. The AI can supply input wh
 
 Spring Boot with Spring AI is the primary way to publish an MCP App. The integration discovers marked routes and adds them to Spring AI's MCP server. Start with the [Spring Boot setup](./spring), then [test the connection](./testing) with the minimal published view. Applications that don't use Spring Boot can use the [standard servlet setup](./without-spring) instead.
 
-<div class="videos-container">
-    <video controls>
-      <source src="https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4" type="video/mp4" />
-    </video>
-</div>
+<MediaPlayer
+  src="https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4"
+  title="MCP Apps"
+/>
 
 :::info[Host support varies]
 
