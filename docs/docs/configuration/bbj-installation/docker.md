@@ -6,6 +6,10 @@ description: Install Docker Desktop on Windows or Mac, pull the webforj/sandbox 
 
 # Docker installation
 
+:::danger Deprecated and will be removed
+The Docker installation with the `webforj/sandbox` image is deprecated and will be removed in a future release. Don't start new projects with it. Move existing projects to [BBjShip](/docs/configuration/bbjship/overview), which installs, deploys and runs webforJ apps in BBjServices. [Existing projects](/docs/configuration/bbjship/existing-projects) lists the changes a project needs.
+:::
+
 This section of the documentation will cover the steps required for users who wish to develop using Docker. Changes to your code
 will be made on your development machine, and the resulting app will be run in Docker.
 

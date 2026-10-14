@@ -5,6 +5,10 @@ displayed_sidebar: documentationSidebar
 description: Configure the webforJ install Maven plugin with deploy URL, class name, publish name, and debug flags for BBjServices deployments.
 ---
 
+:::danger Deprecated and will be removed
+The webforJ install plugin is deprecated and will be removed in a future release. Don't start new projects with it. Move existing projects to [BBjShip](/docs/configuration/bbjship/overview), which installs, deploys and runs webforJ apps in BBjServices. [Existing projects](/docs/configuration/bbjship/existing-projects) lists the changes a project needs.
+:::
+
 You can configure webforJ using a project's POM file, which is designed to make deploying an app easy. The following sections outline the various options you can change to achieve a desired result.
 
 ## Engine exclusion {#engine-exclusion}

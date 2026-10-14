@@ -4,8 +4,8 @@ hide_table_of_contents: true
 description: Set up and deploy webforJ apps that run on BBjServices using Docker or a local BBj installation.
 ---
 
-:::important
-This section will only pertain to developers using `BBjServices`. For most developers, the information in this section won't be necessary for webforJ app development or deployment.
+:::danger Deprecated and will be removed
+This section describes the webforJ install plugin. It's deprecated and will be removed in a future release. Don't start new projects with it. Move existing projects to [BBjShip](/docs/configuration/bbjship/overview), which installs, deploys and runs webforJ apps in BBjServices. [Existing projects](/docs/configuration/bbjship/existing-projects) lists the changes a project needs.
 :::
 
 <Head>

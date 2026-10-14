@@ -31,11 +31,12 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 - webforJ version and Java version
 - Theme Color and Icon
 - Archetype
-- Flavor
+- Runs on
 
-There are two flavor options to choose from with "webforJ Only" being the default:
-  - **webforJ Only**: Standard webforJ app
-  - **webforJ + Spring Boot**: webforJ app with Spring Boot support
+The **Runs on** choice decides where the app runs, with **Servlet container** as the default:
+  - **Servlet container**: a WAR for Jetty, Tomcat or another servlet container
+  - **Spring Boot**: an executable JAR with an embedded server
+  - **BBjServices**: an app that runs in BBjServices through [BBjShip](/docs/configuration/bbjship/overview)
 
 :::tip Available Archetypes
 webforJ comes with several predefined archetypes to help you get started quickly. For a complete list of available archetypes, see the [archetypes catalog](../building-ui/archetypes/overview).
