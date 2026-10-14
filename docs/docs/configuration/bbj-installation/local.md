@@ -6,7 +6,7 @@ description: Install BBj locally and use the Plugin Manager to configure the web
 # Local Installation
 
 :::danger Deprecated and will be removed
-The webforJ plugin of the BBj Plugin Manager described on this page is deprecated and will be removed in a future release. Don't start new projects with it. Move existing projects to [BBjShip](/docs/configuration/bbjship/overview), which installs, deploys and runs webforJ apps in BBjServices. [Existing projects](/docs/configuration/bbjship/existing-projects) lists the changes a project needs.
+The webforJ plugin of the BBj Plugin Manager described on this page is deprecated and will be removed in a future release. Don't start new projects with it. Move existing projects to [BBjShip](/docs/configuration/bbjship/overview), which installs, deploys, and runs webforJ apps in BBjServices. [Existing projects](/docs/configuration/bbjship/existing-projects) lists the changes a project needs.
 :::
 
 This section of the documentation will cover the steps required only for users who wish to use webforJ for web and/or app development with a local BBj instance on their machine. This installation will not allow users to contribute to the webforJ foundation code itself.

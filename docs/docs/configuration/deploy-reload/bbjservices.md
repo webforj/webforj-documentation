@@ -9,7 +9,7 @@ In BBjServices, the build starts no server of its own. `mvn compile webforj:watc
 
 ## Requirements {#requirements}
 
-A Maven project set up for BBjShip, see [Getting started](/docs/configuration/bbjship/getting-started) or [Existing projects](/docs/configuration/bbjship/existing-projects), with BBj installed on the same machine as the project. BBjServices loads the classes from the folders the build compiles into, so a BBj server on another machine gets [deploys](/docs/configuration/bbjship/deploying) only, without live reload or hotswap.
+A Maven project set up for BBjShip, see [Getting started](/docs/configuration/bbjship/getting-started) or [Existing projects](/docs/configuration/bbjship/existing-projects), with BBj installed on the same machine as the project. BBjServices loads the classes from the folders the build compiles into, so a BBj server on another machine gets [deploys](/docs/configuration/bbjship/deploying) only, with neither live reload nor hotswap.
 
 ## Turning live reload on {#turning-live-reload-on}
 

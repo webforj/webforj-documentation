@@ -34,7 +34,7 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 - Runs on
 
 The **Runs on** choice decides where the app runs, with **Servlet container** as the default:
-  - **Servlet container**: a WAR for Jetty, Tomcat or another servlet container
+  - **Servlet container**: a WAR for Jetty, Tomcat, or another servlet container
   - **Spring Boot**: an executable JAR with an embedded server
   - **BBjServices**: an app that runs in BBjServices through [BBjShip](/docs/configuration/bbjship/overview)
 

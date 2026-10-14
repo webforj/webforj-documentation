@@ -15,7 +15,7 @@ You need a Maven project and a BBj installation of the same version as webforJ, 
 You have two options for creating a new webforJ app that runs with BBjServices: using the graphical startforJ tool or the Maven command line.
 
 <!-- vale off -->
-### Option 1: Using startforJ {#option-1-using-startforj}
+### Option 1: using startforJ {#option-1-using-startforj}
 <!-- vale on -->
 
 When you create an app with [startforJ](https://docs.webforj.com/startforj), you can customize it by providing the following information:
@@ -26,7 +26,7 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 - Archetype
 - **Runs on** - Select **BBjServices** to create a project that runs with BBjServices
 
-### Option 2: Using the command line {#option-2-using-the-command-line}
+### Option 2: using the command line {#option-2-using-the-command-line}
 
 If you prefer to use the command line, generate the project with the official webforJ archetypes:
 

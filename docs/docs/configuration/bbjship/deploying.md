@@ -95,7 +95,7 @@ webforj.programArguments = ["mode=demo", "region eu"]
 | `webforj.disallowConsole` | `true` | Whether the console is disallowed in the app. |
 | `webforj.secure` | BBjServices default | Whether the app runs over a secure connection. |
 | `webforj.configFile` | BBjServices default | Path of the BBj configuration file the app runs with, as BBjServices reads it on the BBj machine. The path is passed on as written, so it may name a file only the server has. |
-| `webforj.programArguments` | None | Program arguments of the app, a list of strings or one string. |
+| `webforj.programArguments` | None | Program arguments of the app, as a list of strings or as one string. |
 
 An invalid `webforj.conf` fails the deploy with HTTP 400 and the reason.
 

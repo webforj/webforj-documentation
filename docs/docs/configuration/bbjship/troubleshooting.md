@@ -23,7 +23,7 @@ These messages come from every goal that talks to BBjShip: `bbj-setup`, `bbj-dep
 | `Warning: the BBj factory administrator account admin is in use with its factory password...` | Neither a user name nor a password is configured, so the goal logs in as `admin` with `admin123`. | Change the password in Enterprise Manager and configure the new credentials, see [Settings](/docs/configuration/bbjship/deploying#settings). |
 | `The BBj administration user name is missing`, `The BBj administration password is missing` | Only one of the user name and the password is configured. | Configure both, or neither to use the factory account. `bbj-deploy` and `bbj-undeploy` also accept a token. |
 | `BBj deployment requires bbj.deployment.url...` | No deployment URL is configured. | Set `<bbj><deployment><url>` or pass `-Dwebforj.bbj.deployment.url=<URL>`. |
-| `BBj deployment URL must be an HTTP or HTTPS URL without credentials, query or fragment` | The URL has another scheme, or carries a user name, a query or a fragment. | Use `http://<host>:<port>/webforj-bbjship` or `https://<host>:<port>/webforj-bbjship`, and put the credentials in `<admin>`. |
+| `BBj deployment URL must be an HTTP or HTTPS URL without credentials, query or fragment` | The URL has another scheme, or carries a user name, a query, or a fragment. | Use `http://<host>:<port>/webforj-bbjship` or `https://<host>:<port>/webforj-bbjship`, and put the credentials in `<admin>`. |
 | `Connect to ... failed: Connection refused` | Nothing answers on the host and port of the deployment URL. | Start BBjServices, and check the host and port of the URL against the BBjServices web server. |
 | `could not read the BBjShip version at <URL>, HTTP 404...` | The URL doesn't lead to BBjShip, or BBjShip isn't installed or its endpoint isn't enabled on that port. | Check the path `/webforj-bbjship` and the port. On the BBj machine, run `mvn webforj:bbj-setup`, or `bbjship remote enable` on a server. |
 | `failed with HTTP 401. Check the BBj administration credentials or token` | BBjServices refused the user name and password, or the token. | Check the credentials. Renew a token that expired or was revoked in Enterprise Manager. |
@@ -97,7 +97,7 @@ A deploy that ends with `did not confirm the requested application. Check the BB
 
 ## Development runs {#development-runs}
 
-These messages come from `mvn` or `mvn compile webforj:watch` in a project configured for BBjShip. A failed development run starts with `BBj development run failed. Check the deployment settings and that development runs are enabled on the BBj machine`, followed by the reason from [Setup](#setup), [Credentials and connection](#credentials-and-connection) or [Answers of BBjShip](#answers-of-bbjship).
+These messages come from `mvn` or `mvn compile webforj:watch` in a project configured for BBjShip. A failed development run starts with `BBj development run failed. Check the deployment settings and that development runs are enabled on the BBj machine`, followed by the reason from [Setup](#setup), [Credentials and connection](#credentials-and-connection), or [Answers of BBjShip](#answers-of-bbjship).
 
 | Message | Cause | What to do |
 |---|---|---|
