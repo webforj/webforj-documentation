@@ -5,17 +5,17 @@ description: >-
   Wrap a custom HTML element or third-party web component in Java with
   ElementComposite, exposing its properties, attributes, and events through the
   Java API.
-_i18n_hash: 2a742b2589b096aff73a1fcb67e041c1
+_i18n_hash: 277c6e7e84197ab515cae210cd8207b0
 ---
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-Die Klasse `ElementComposite` umschließt ein benutzerdefiniertes HTML-Element oder [Webkomponente](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). Sie bindet Ihre Java-Klasse an das zugrunde liegende `Element` und ermöglicht Ihnen, mit den Eigenschaften, Attributen und Ereignissen dieses Elements über Java zu arbeiten. Verwenden Sie sie, wenn Sie Webkomponenten in eine webforJ-Anwendung integrieren.
+Die Klasse `ElementComposite` umschließt ein benutzerdefiniertes HTML-Element oder [Webkomponente](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). Sie bindet Ihre Java-Klasse an das zugrunde liegende `Element` und ermöglicht es Ihnen, mit den Eigenschaften, Attributen und Ereignissen dieses Elements über Java zu arbeiten. Verwenden Sie sie, wenn Sie Webkomponenten in eine WebforJ-App integrieren.
 
-:::tip Wann man `ElementComposite` verwenden sollte
-Verwenden Sie `ElementComposite`, wenn Sie eine Drittanbieter-Webkomponente umschließen, die webforJ nicht bereits bereitstellt. Wenn eine integrierte WebforJ-Komponente den Anwendungsfall abdeckt (z. B. `TextField`, `ColorField`, `Button` usw.), nutzen Sie diese stattdessen. Für einmalige DOM-Arbeiten, die nicht wiederverwendet werden müssen, kann die Klasse `Element` direkt ohne eine Wrapper verwendet werden.
+:::tip Wann `ElementComposite` verwenden
+Greifen Sie auf `ElementComposite` zu, wenn Sie eine Drittanbieter-Webkomponente umschließen, die WebforJ nicht bereits bereitstellt. Wenn ein integriertes WebforJ-Element den Anwendungsfall abdeckt (z. B. `TextField`, `ColorField`, `Button` usw.), verwenden Sie stattdessen dieses. Für einmalige DOM-Arbeiten, die nicht wiederverwendet werden müssen, kann die Klasse `Element` direkt ohne eine Umhüllung verwendet werden.
 :::
 
-Dieser Leitfaden zeigt, wie man die [Web Awesome relative-time Webkomponente](https://webawesome.com/docs/components/relative-time/) unter Verwendung der Klasse `ElementComposite` implementiert.
+Diese Anleitung zeigt, wie Sie die [Web Awesome relative-time Webkomponente](https://webawesome.com/docs/components/relative-time/) mithilfe der Klasse `ElementComposite` implementieren.
 
 <ComponentDemo
 path='/webforj/relativetime'
@@ -23,13 +23,13 @@ files={['src/main/java/com/webforj/samples/views/elementcomposite/RelativeTimeVi
 height='150px'
 />
 
-## Klassendeklarationen {#class-annotations}
+## Klassennotation {#class-annotations}
 
-Drei Annotationen erscheinen häufig oben in einer Unterklasse von `ElementComposite`: `@NodeName` erklärt das HTML-Tag, das die Komponente umschließt, während `@JavaScript` und `@StyleSheet` alle clientseitigen Ressourcen laden, von denen die zugrunde liegende Webkomponente abhängt. `@NodeName` ist erforderlich und spezifisch für `ElementComposite`. `@JavaScript` und `@StyleSheet` sind allgemeine webforJ-Ressourcenannotationen und funktionieren bei jeder Klasse, einschließlich Views, Komponenten oder der `App`-Klasse.
+Drei Anmerkungen erscheinen häufig am Anfang einer Unterklasse von `ElementComposite`: `@NodeName` erklärt das HTML-Tag, das die Komponente umschließt, und `@JavaScript` sowie `@StyleSheet` laden alle clientseitigen Komponenten, von denen die zugrunde liegende Webkomponente abhängt. `@NodeName` ist erforderlich und spezifisch für `ElementComposite`. `@JavaScript` und `@StyleSheet` sind allgemeine WebforJ-Asset-Anmerkungen und funktionieren für jede Klasse, einschließlich Views, Komponenten oder der `App`-Klasse.
 
 ### `@NodeName` {#nodename}
 
-Die Annotation `@NodeName` deklariert das HTML-Tag, das die Komponente umschließt. WebforJ verwendet diesen Namen, wenn es das zugrunde liegende Element im DOM erstellt.
+Die Annotation `@NodeName` erklärt das HTML-Tag, das die Komponente umschließt. WebforJ verwendet diesen Namen, wenn das zugrunde liegende Element im DOM erstellt wird.
 
 ```java
 @NodeName("wa-relative-time")
@@ -38,13 +38,13 @@ public class RelativeTime extends ElementComposite {
 }
 ```
 
-Der Tagname muss mit dem benutzerdefinierten Element übereinstimmen, das im Client registriert ist. Ohne diese Annotation kann das Framework nicht bestimmen, welches Element erstellt werden soll.
+Der Tagname muss mit dem benutzerdefinierten Element übereinstimmen, das auf der Clientseite registriert ist. Ohne diese Annotation kann das Framework nicht bestimmen, welches Element zu erstellen ist.
 
-Innerhalb einer Unterklasse liest `getNodeName()` das deklarierte Tag zurück, und `getElement()` gibt das zugrunde liegende `Element` zurück, sodass Sie DOM-Methoden direkt darauf aufrufen können.
+Innerhalb einer Unterklasse liest `getNodeName()` das deklarierte Tag zurück, und `getElement()` gibt das zugrunde liegende `Element` zurück, sodass Sie direkt DOM-Methoden darauf aufrufen können.
 
 ### `@JavaScript` {#javascript}
 
-Die Annotation `@JavaScript` lädt das Skript, das die zugrunde liegende Webkomponente definiert oder registriert. Setzen Sie es auf die Klasse, damit das Skript nur geladen wird, wenn die Komponente verwendet wird.
+Die Annotation `@JavaScript` lädt das Skript, das die zugrunde liegende Webkomponente definiert oder registriert. Platzieren Sie sie auf der Klasse, damit das Skript nur geladen wird, wenn die Komponente verwendet wird.
 
 ```java
 @NodeName("wa-relative-time")
@@ -54,56 +54,56 @@ public class RelativeTime extends ElementComposite {
 }
 ```
 
-Mehrere `@JavaScript`-Annotationen sind erlaubt, und webforJ dedupliziert die Ladungen automatisch. Dasselbe Skript wird nicht zweimal geladen, wenn mehrere Komponenten davon abhängen.
+Mehrere `@JavaScript`-Annotationen sind erlaubt, und WebforJ bereinigt doppelte Ladevorgänge automatisch. Dasselbe Skript wird nicht zweimal geladen, wenn mehrere Komponenten davon abhängen.
 
-Siehe [Importieren von JavaScript-Dateien](../managing-resources/importing-assets#importing-javascript-files) für die vollständige Liste der Optionen, einschließlich `top`, `attributes` und Ladezeitpunkt.
+Siehe [JavaScript-Dateien importieren](../managing-resources/importing-assets#importing-javascript-files) für die vollständige Liste der Optionen, einschließlich `top`, `attributes` und Ladezeitpunkt.
 
 ### `@StyleSheet` {#stylesheet}
 
-Die Annotation `@StyleSheet` lädt eine CSS-Datei, von der die Komponente abhängt. Sie ist nützlich für Drittanbieter-Komponenten, die ein separates Stylesheet mitliefern, oder für das Bündeln von komponentenspezifischem Styling zusammen mit dem Wrapper.
+Die Annotation `@StyleSheet` lädt eine CSS-Datei, von der die Komponente abhängt. Sie ist nützlich für Drittanbieterkomponenten, die ein separates Stylesheet liefern, oder um komponentenspezifisches Styling zusammen mit der Umhüllung zu bündeln.
 
 ```java
 @StyleSheet("https://ka-f.webawesome.com/webawesome@3.12.0/styles/themes/default.css")
 ```
 
-Für lokal gebündelte Ressourcen verwenden Sie das Präfix `ws://`, um auf Dateien in `resources/static` zu verweisen:
+Für lokal gebündelte Assets verwenden Sie das `ws://`-Präfix, um auf Dateien in `resources/static` zu verweisen:
 
 ```java
 @StyleSheet("ws://components/relative-time.css")
 ```
 
-Siehe [Importieren von CSS-Dateien](../managing-resources/importing-assets#importing-css-files) für die vollständige Liste der Optionen.
+Siehe [CSS-Dateien importieren](../managing-resources/importing-assets#importing-css-files) für die vollständige Liste der Optionen.
 
 ## Eigenschaften- und Attributbeschreibungen {#property-and-attribute-descriptors}
 
-Eigenschaften und Attribute repräsentieren den Zustand einer Webkomponente und halten typischerweise Daten oder Konfiguration. `ElementComposite` macht beides über `PropertyDescriptor` zugänglich.
+Eigenschaften und Attribute repräsentieren den Zustand einer Webkomponente und enthalten typischerweise Daten oder Konfigurationen. `ElementComposite` macht beide über `PropertyDescriptor` sichtbar.
 
-Zwei Fabrikmethoden auf `PropertyDescriptor` erstellen den Descriptor selbst, jeweils für das Bindungsziel:
+Zwei Fabrikmethoden auf `PropertyDescriptor` erzeugen den Deskriptor selbst, eine für jedes Bindungsziel:
 
 ```java
 PropertyDescriptor<T> property  = PropertyDescriptor.property(String name, T defaultValue);
 PropertyDescriptor<T> attribute = PropertyDescriptor.attribute(String name, T defaultValue);
 ```
 
-`PropertyDescriptor.property()` bindet an eine JavaScript-Eigenschaft des DOM-Knotens. `PropertyDescriptor.attribute()` bindet an ein HTML-Attribut. Das erste Argument ist der Name, den die Webkomponente erwartet. Das zweite ist ein Standardwert, der auch den Java-Typ des Descriptors festlegt.
+`PropertyDescriptor.property()` bindet an eine JavaScript-Eigenschaft am DOM-Knoten. `PropertyDescriptor.attribute()` bindet an ein HTML-Attribut. Das erste Argument ist der Name, den die Webkomponente erwartet. Das zweite ist ein Standardwert, der auch den Java-Typ des Deskriptors festlegt.
 
-Deklarieren Sie den Descriptor als private Field in der Komponente, und lesen und schreiben Sie über ihn mit `set(PropertyDescriptor<V> property, V value)` und `get(PropertyDescriptor<V> property)`.
+Deklarieren Sie den Deskriptor als privates Feld in der Komponente und lesen und schreiben Sie durch ihn mit `set(PropertyDescriptor<V> property, V value)` und `get(PropertyDescriptor<V> property)`.
 
 :::info
-Eigenschaften sind der interne Zustand des DOM-Knotens und spiegeln sich nicht im Markup wider. Attribute sind HTML-Markup, das für externe Skripte und CSS sichtbar ist.
+Eigenschaften sind interne Zustände des DOM-Knotens und spiegeln sich nicht im Markup wider. Attribute sind HTML-Markup, das für externe Skripte und CSS sichtbar ist.
 :::
 
 ```java
-// Beispiel Eigenschaft namens "title" in einer ElementComposite-Klasse
+// Beispieldaten in einer ElementComposite-Klasse
 private final PropertyDescriptor<String> title = PropertyDescriptor.property("title", "");
-// Beispiel Attribut namens "value" in einer ElementComposite-Klasse
+// Beispieldaten in einer ElementComposite-Klasse
 private final PropertyDescriptor<String> value = PropertyDescriptor.attribute("value", "");
 //...
 set(title, "Mein Titel");
 set(value, "Mein Wert");
 ```
 
-Die obigen Aufrufe verwenden `set()` direkt, um die primitive Form zu zeigen. In der Praxis sind `set()` und `get()` `protected` Methoden in `ElementComposite`. Sie sind die primitive Ebene, die Java-Werte mit dem zugrunde liegenden Element synchronisiert, nicht die öffentliche API, die Verbraucher aufrufen. Das beabsichtigte Muster besteht darin, den `PropertyDescriptor` privat zu halten und öffentliche `setX()`- und `getX()`-Methoden zu schreiben, die an die Primitives delegieren.
+Die obigen Aufrufe verwenden `set()` direkt, um die primitive Form zu zeigen. In der Praxis sind `set()` und `get()` `protected`-Methoden auf `ElementComposite`. Sie sind die primitive Schicht, die Java-Werte mit dem zugrunde liegenden Element synchronisiert, und nicht die öffentliche API, die Verbraucher aufrufen. Das beabsichtigte Muster besteht darin, den `PropertyDescriptor` privat zu halten und öffentliche `setX()`- und `getX()`-Methoden zu schreiben, die auf die primitiven Methoden delegieren.
 
 ```java
 @NodeName("my-card")
@@ -123,20 +123,20 @@ public class Card extends ElementComposite {
 }
 ```
 
-Ein einzelner Aufruf von `set(descriptor, value)` führt drei Dinge gleichzeitig aus. Er überträgt den Wert an den Client über `setProperty()` für Eigenschaften oder `setAttribute()` für Attribute. Er speichert den Wert in einem lokalen serverseitigen Cache, einem Map pro Komponenteninstanz. Schließlich zeichnet er den Laufzeittyp neben dem Wert auf, sodass spätere `get()`-Aufrufe wissen, wie sie deserialisieren.
+Ein einzelner Aufruf von `set(descriptor, value)` erledigt drei Dinge gleichzeitig. Er schiebt den Wert über `setProperty()` für Eigenschaften oder `setAttribute()` für Attribute an den Client. Er speichert den Wert in einem lokalen serverseitigen Cache, einer Map pro Komponenteninstanz. Und er zeichnet den Laufzeittyp zusammen mit dem Wert auf, damit spätere `get()`-Aufrufe wissen, wie sie deserialisieren müssen.
 
-Dieser lokale Cache ist der Grund, warum `get()` standardmäßig kostengünstig sein kann. `get(descriptor)` gibt den zwischengespeicherten Wert aus dem serverseitigen Speicher ohne Netzwerkaufruf zurück, da jeder `set()` den Cache mit dem Client synchron hält. Das optionale `boolean` zweite Argument steuert, ob der Cache umgangen und vom Browser gelesen werden soll.
+Dieser lokale Cache ist der Grund, warum `get()` standardmäßig günstig sein kann. `get(descriptor)` gibt den zwischengespeicherten Wert aus dem serverseitigen Store ohne Netzwerkaufruf zurück, da jedes `set()` den Cache mit dem Client synchron hält. Das optionale `boolean`-zweite Argument steuert, ob der Cache umgangen und stattdessen vom Browser gelesen werden soll.
 
 ```java
 String cached = get(heading);            // liest aus dem serverseitigen Cache
-String live = get(heading, true);        // zwingt zu einem Lesen vom Browser
+String live = get(heading, true);        // zwingt eine Lesung vom Browser
 ```
 
-Setzen Sie `fromClient` auf true, wenn der Wert im Client ohne Wissen des Servers geändert werden kann, z. B. ein eingegebener `<input>`-Wert. Für servergesteuerte Eigenschaften vermeidet der Standard eine Rückreise.
+Setzen Sie `fromClient` auf true, wenn sich der Wert auf dem Client ändern kann, ohne dass der Server informiert wird, z. B. bei einem eingegebenen `<input>`-Wert. Für servergesteuerte Eigenschaften vermeidet die Standardoption eine Runde.
 
-Das optionale dritte Argument ist ein `java.lang.reflect.Type` und steuert, wie das Ergebnis deserialisiert wird. WebforJ löst den Typ in dieser Reihenfolge auf: das explizite `Type`-Argument, wenn angegeben, dann der zur Laufzeit aufgezeichnete Typ von einem vorherigen `set()` auf demselben Descriptor, und schließlich `Object.class`. In der Praxis ist der von einem vorherigen `set()` aufgezeichnete Typ ausreichend, sodass das dritte Argument meist weggelassen werden kann. Es wird benötigt, wenn die aufgezeichnete Klasse Informationen verliert, von denen der Deserializer abhängt, z. B. ein parametrisierten Typ wie `List<String>`, dessen Laufzeitklasse nur `ArrayList` ist.
+Das optionale dritte Argument ist ein `java.lang.reflect.Type` und steuert, wie das Ergebnis deserialisiert wird. WebforJ bestimmt den Typ in dieser Reihenfolge: das explizite `Type`-Argument, falls übergeben, dann der zur Laufzeit gespeicherte Typ, der von einem vorherigen `set()` für denselben Deskriptor aufgezeichnet wurde, dann `Object.class`. In der Praxis reicht der von einem vorherigen `set()` aufgezeichnete Typ, sodass das dritte Argument in der Regel weggelassen werden kann. Es ist erforderlich, wenn die aufgezeichnete Klasse Informationen verliert, die der Deserialisierer benötigt, z. B. einen parametrisierten Typ wie `List<String>`, dessen Laufzeitklasse nur `ArrayList` ist.
 
-Die Demo unten fügt Eigenschaften für die relative Zeit basierend auf den Dokumenten der Webkomponente hinzu und macht sie über Getter und Setter zugänglich. Jede Zeile im Aktivitäts-Feed verwendet unterschiedliche `format`- und `numeric`-Werte, um zu zeigen, wie dieselbe Komponente unter verschiedenen Konfigurationen gerendert wird.
+Die Demo unten fügt Eigenschaften für relative Zeiten basierend auf den Dokumenten der Webkomponente hinzu und macht diese durch Getter und Setter zugänglich. Jede Zeile im Aktivitäts-Feed verwendet unterschiedliche `format`- und `numeric`-Werte, um zu zeigen, wie die gleiche Komponente unter variierenden Konfigurationen gerendert wird.
 
 <ComponentDemo
 path='/webforj/relativetimeproperties'
@@ -147,41 +147,41 @@ files={[
 height='450px'
 />
 
-### Eigenschaften versus Attribute {#properties-versus-attributes}
+### Eigenschaften vs. Attribute {#properties-versus-attributes}
 
-Obwohl `PropertyDescriptor.property()` und `PropertyDescriptor.attribute()` austauschbar aussehen, zielen sie auf verschiedene Teile des zugrunde liegenden Elements ab. Die falsche Wahl führt dazu, dass Werte stillschweigend nicht angewendet werden.
+Obwohl `PropertyDescriptor.property()` und `PropertyDescriptor.attribute()` austauschbar erscheinen, zielen sie auf verschiedene Teile des zugrunde liegenden Elements ab. Die falsche Wahl führt zu Werten, die stillschweigend fehlschlagen.
 
-Eigenschaften sind JavaScript-Objekt-Eigenschaften auf dem DOM-Knoten. Sie können jeden Typ halten, einschließlich Strings, Booleans, Zahlen, Objekten und Arrays, und sie repräsentieren den aktuellen Laufzeitstatus des Elements. Das Setzen einer Eigenschaft ist eine direkte JavaScript-Zuweisung.
+Eigenschaften sind JavaScript-Objekteigenschaften am DOM-Knoten. Sie können jeden Typ halten, einschließlich Zeichenfolgen, Booleans, Zahlen, Objekte und Arrays, und sie repräsentieren den aktuellen Laufzeitzustand des Elements. Das Setzen einer Eigenschaft ist eine direkte JavaScript-Zuweisung.
 
-Attribute sind HTML-Markup. Sie leben im öffnenden Tag des Elements, sind immer Strings und repräsentieren die anfängliche Konfiguration des Elements. Das Setzen eines Attributs löst eine DOM-Veränderung und eine String-Konvertierung aus.
+Attribute sind HTML-Markup. Sie befinden sich am öffnenden Tag des Elements, sind immer Zeichenfolgen und stellen die ursprüngliche Konfiguration des Elements dar. Das Setzen eines Attributs löst eine DOM-Veränderung und eine Zeichenfolgenkonvertierung aus.
 
-In einigen Fällen bleiben die beiden synchron. In anderen weichen sie ab. Der `value` eines `<input>` ist das klassische Beispiel: Das Attribut `value` ist der ursprüngliche Wert, während die `value`-Eigenschaft der aktuelle Wert ist, den der Benutzer eingegeben hat. Das Lesen des Attributs nach der Benutzereingabe gibt das ursprüngliche Markup zurück, während das Lesen der Eigenschaft den aktuellen Inhalt des Feldes zurückgibt.
+In einigen Fällen bleiben die beiden synchron. In anderen divergieren sie. Der `value` eines `<input>` ist das klassische Beispiel: Das `value`-Attribut ist der ursprüngliche Wert, während die `value`-Eigenschaft der aktuelle Wert ist, den der Benutzer eingegeben hat. Das Lesen des Attributs nach der Eingabe des Benutzers gibt das ursprüngliche Markup zurück, aber das Lesen der Eigenschaft gibt den aktuellen Inhalt des Feldes zurück.
 
 Verwenden Sie **Eigenschaften** für:
 
-- **Häufig wechselnden Laufzeitstatus**: Zähler, aktuelle Auswahlen, eingegebene Werte
+- **Häufig wechselnde Laufzeitzustände**: Zähler, aktuelle Auswahlen, eingegebene Werte
 - **Nicht-String-Typen**: Booleans, Zahlen, Objekte, Arrays
-- **Leistungsempfindliche Updates**: Eigenschaften überspringen die für Attribute erforderliche String-Konvertierung
+- **Leistungsbedarf**: Eigenschaften überspringen die Zeichenfolgenkonvertierung, die für Attribute erforderlich ist
 
 Verwenden Sie **Attribute** für:
 
-- **Anfängliche Konfiguration**: Einstellungen, die die Komponente einmal beim Verbinden liest
-- **CSS-Selektoren**: Werte, die Sie mit Selektoren wie `[disabled]` oder `[variant="danger"]` anvisieren möchten
-- **Zugänglichkeitshooks**: `aria-label`, `role` und andere ARIA-Attribute
+- **Ursprüngliche Konfiguration**: Einstellungen, die die Komponente einmal beim Anschluss liest
+- **CSS-Selektoren**: Werte, die Sie mit Selektoren wie `[disabled]` oder `[variant="danger"]` ansprechen möchten
+- **Zugänglichkeits-Hooks**: `aria-label`, `role` und andere ARIA-Attribute
 - **String-ähnliche Einstellungen, die sich selten ändern**
 
-Überprüfen Sie bei der Umschließung einer Drittanbieter-Webkomponente die Dokumentation der Komponente, um zu bestätigen, welcher Name auf eine Eigenschaft und welcher auf ein Attribut abgebildet ist. Die Verwendung von `PropertyDescriptor.attribute()` für etwas, das die Komponente nur als Eigenschaft exponiert, funktioniert nicht, und umgekehrt. Die Komponente ignoriert den Wert stillschweigend.
+Beim Umschließen einer Drittanbieter-Webkomponente überprüfen Sie die Dokumentation der Komponente, um zu bestätigen, welches Name auf eine Eigenschaft und welches auf ein Attribut abgebildet wird. `PropertyDescriptor.attribute()` für etwas zu verwenden, das die Komponente nur als Eigenschaft exposes, funktioniert nicht, und umgekehrt gilt das gleiche. Die Komponente ignoriert den Wert stillschweigend.
 
 ### Typisierung von Eigenschaften {#typing-properties}
 
-Ein Descriptor ist parametrisiert durch den Java-Typ seines Wertes. Die vollständige Deklarationssyntax ist:
+Ein Deskriptor ist parametrisiert durch den Java-Typ seines Wertes. Die vollständige Deklarationssyntax lautet:
 
 ```java
 private final PropertyDescriptor<T> name =
     PropertyDescriptor.property(String name, T defaultValue);
 ```
 
-Der generische Parameter `<T>` erklärt den Typ des Wertes. Der Laufzeittyp des Standardwertes legt ebenfalls `T` fest, sodass das generische Argument selten explizit angegeben werden muss. WebforJ verwendet `T`, um Werte zu serialisieren und zu deserialisieren, wenn mit dem Client kommuniziert wird.
+Der `<T>`-generische Parameter gibt den Typ des Wertes an. Auch der Laufzeittyp des Standardwerts legt `T` fest, sodass das generische Argument selten explizit angegeben werden muss. WebforJ verwendet `T`, um Werte zu serialisieren und zu deserialisieren, wenn mit dem Client kommuniziert wird.
 
 ```java
 private final PropertyDescriptor<String> label =
@@ -197,9 +197,9 @@ private final PropertyDescriptor<Double> step =
     PropertyDescriptor.property("step", 1.0);
 ```
 
-Die Serialisierung erfolgt automatisch für primitive Typen, deren Boxed-Äquivalente und `String`. Für komplexe Typen wird der Wert vor der Zuweisung an die Eigenschaft auf dem Client als JSON serialisiert.
+Die Serialisierung erfolgt automatisch für primitive Typen, ihre Box-Äquivalente und `String`. Für komplexe Typen wird der Wert als JSON serialisiert, bevor er der Eigenschaft auf der Clientseite zugewiesen wird.
 
-### Validierung von Werten {#validating-values}
+### Werte validieren {#validating-values}
 
 Validieren Sie Werte im Setter, bevor Sie `set()` aufrufen. Der Setter ist der natürliche Durchsetzungsort, da jede Mutation durch ihn fließt.
 
@@ -216,7 +216,7 @@ public Slider setMax(int value) {
 }
 ```
 
-Für nullable Referenzen verwenden Sie `Objects.requireNonNull()`, damit der Fehler an der Grenze sichtbar wird und nicht später in der Render-Pipeline.
+Für nullable Referenzen verwenden Sie `Objects.requireNonNull()`, damit der Fehler an der Grenze auftritt und nicht später in der Rendering-Pipeline.
 
 ```java
 public Card setHeading(String value) {
@@ -226,11 +226,11 @@ public Card setHeading(String value) {
 }
 ```
 
-Vermeiden Sie die Validierung in `get()`. Leseoperationen sollten kostengünstig und konsistent bleiben.
+Vermeiden Sie die Validierung in `get()`. Lesevorgänge sollten günstig und konsistent bleiben.
 
-### Enumartige Eigenschaften {#enum-style-properties}
+### Enum-ähnliche Eigenschaften {#enum-style-properties}
 
-Die meisten Webkomponenten erwarten Kleinbuchstaben oder Kebab-Fall-Schreibweisen für enum-ähnliche Eigenschaften (`theme="primary"`, `expanse="xs"`). WebforJ verwendet Gson, um Enums zu serialisieren, aber die Standarddarstellung von Gson ist der Konstantenname in Großbuchstaben. Annotieren Sie jede Konstante mit `@SerializedName`, damit der serialisierte Wert mit dem übereinstimmt, was die Webkomponente erwartet.
+Die meisten Webkomponenten erwarten Kleinbuchstaben- oder Kebab-Case-Zeichenfolgenwerte für enum-ähnliche Eigenschaften (`theme="primary"`, `expanse="xs"`). WebforJ verwendet Gson zur Serialisierung von Enums, aber die Standarddarstellung von Gson ist der Konstantenname in Großbuchstaben. Annotieren Sie jede Konstante mit `@SerializedName`, damit der serialisierte Wert dem entspricht, was die Webkomponente erwartet.
 
 ```java
 import com.google.gson.annotations.SerializedName;
@@ -247,7 +247,7 @@ public enum Variant {
 }
 ```
 
-Deklarieren Sie den Descriptor mit dem Enum-Typ und verwenden Sie das Enum direkt im Setter und Getter.
+Erklären Sie den Deskriptor mit dem Enum-Typ und verwenden Sie das Enum direkt im Setter und Getter.
 
 ```java
 private final PropertyDescriptor<Variant> variant =
@@ -263,11 +263,11 @@ public Variant getVariant() {
 }
 ```
 
-Dies ist dasselbe Muster, das die integrierten Komponenten von webforJ für `Theme`, `Expanse` und ähnliche Enums verwenden. Die öffentliche Java-API bleibt typensicher, und der Wert, den die Webkomponente erhält, ist der String aus `@SerializedName`.
+Dies ist das gleiche Muster, das die integrierten Komponenten von WebforJ für `Theme`, `Expanse` und ähnliche Enums verwenden. Die öffentliche Java-API bleibt typsicher, und der Wert, den die Webkomponente erhält, ist die Zeichenfolge aus `@SerializedName`.
 
-### Testen von Eigenschaften {#testing-properties}
+### Eigenschaften testen {#testing-properties}
 
-`PropertyDescriptorTester` validiert, dass jeder `PropertyDescriptor` in einer Komponente korrekt verbunden ist. Er scannt die Klasse nach Descriptorfeldern, ruft jeden Setter mit dem Standardwert auf und vergleicht das Ergebnis mit dem, was der Getter zurückgibt. Der Tester erkennt Integrationsfehler, bevor sie eine laufende Anwendung erreichen: ein Setter, der in den falschen Descriptor schreibt, ein Getter, der eine andere Eigenschaft liest, ein Standardwert, der nicht zurückgerundet wird, oder ein fehlender Accessor für einen deklarierten Descriptor.
+`PropertyDescriptorTester` validiert, dass jeder `PropertyDescriptor` in einer Komponente korrekt verdrahtet ist. Es scannt die Klasse nach Descriptorfeldern, ruft jeden Setter mit dem Standardwert auf und vergleicht das Ergebnis mit dem, was der Getter zurückgibt. Der Tester fängt Integrationsfehler ab, bevor sie eine laufende App erreichen: ein Setter, der in den falschen Deskriptor schreibt, ein Getter, der eine andere Eigenschaft liest, ein Standardwert, der nicht zurückgegeben wird, oder ein fehlender Zugriff für einen erklärten Deskriptor.
 
 Ein Basistest für eine Komponente sieht so aus:
 
@@ -285,9 +285,9 @@ class CardTest {
 }
 ```
 
-#### Ausschluss von Eigenschaften {#excluding-properties}
+#### Eigenschaften ausschließen {#excluding-properties}
 
-Einige Deskriptoren folgen nicht den Standard-Getter- und Setter-Konventionen oder sind auf externe Zustände angewiesen, die der Test nicht befriedigen kann. Annotieren Sie sie mit `@PropertyExclude`, um sie zu überspringen.
+Einige Deskriptoren folgen nicht den standardmäßigen Getter- und Setter-Konventionen oder sind auf externe Zustände angewiesen, die der Test nicht erfüllen kann. Annotieren Sie sie mit `@PropertyExclude`, um sie zu überspringen.
 
 ```java
 @PropertyExclude
@@ -297,7 +297,7 @@ private final PropertyDescriptor<String> internal =
 
 #### Benutzerdefinierte Getter- und Setter-Namen {#custom-getter-and-setter-names}
 
-Wenn ein Descriptor nicht-standardisierte Zugriffsnamen verwendet, deklarieren Sie diese mit `@PropertyMethods`.
+Wenn ein Deskriptor nicht standardmäßige Zugriffsnamen verwendet, erklären Sie sie mit `@PropertyMethods`.
 
 ```java
 @PropertyMethods(getter = "retrieveValue", setter = "updateValue")
@@ -305,13 +305,13 @@ private final PropertyDescriptor<String> custom =
     PropertyDescriptor.property("custom", "default");
 ```
 
-Der Parameter `target` akzeptiert eine Klasse, wenn die Accessoren an einem anderen Ort als der Komponente selbst leben.
+Der Parameter `target` akzeptiert eine Klasse, wenn die Zugriffsmethoden sich an einem anderen Ort als der Komponente selbst befinden.
 
-Für weitere Detailinformationen zur Testoberfläche siehe [PropertyDescriptorTester](../testing/property-descriptor-tester).
+Weitere Informationen zur Testoberfläche finden Sie unter [PropertyDescriptorTester](../testing/property-descriptor-tester).
 
-## Anliegen-Interfaces {#concern-interfaces}
+## Concern-Schnittstellen {#concern-interfaces}
 
-Anliegen-Interfaces bieten einer `ElementComposite`-Unterklasse Komponentenfähigkeiten, ohne die Implementierung selbst schreiben zu müssen. Die Interfaces leiten Aufrufe an das zugrunde liegende Element weiter. Implementieren Sie die, die die Komponente unterstützen soll, parametriert mit dem Unterklassentyp, damit das Chaining die Komponente zurückgibt:
+Concern-Schnittstellen geben einer `ElementComposite`-Unterklassenkomponente Fähigkeiten, ohne die Implementierung selbst schreiben zu müssen. Die Schnittstellen leiten Aufrufe an das zugrunde liegende Element weiter. Implementieren Sie diejenigen, die die Komponente unterstützen soll, parametrisiert mit dem Unterklassentyp, damit das Verketten die Komponente zurückgibt:
 
 ```java
 @NodeName("my-badge")
@@ -326,42 +326,42 @@ MyBadge badge = new MyBadge()
     .setStyle("color", "var(--dwc-color-primary)");
 ```
 
-Die drei oben genannten Interfaces decken alles ab, was `MyBadge` benötigt, ohne dass Methoden im Klassencode erforderlich sind. `HasText` exponiert `setText()` und schreibt in den Textinhalt des Elements. `HasClassName` exponiert `addClassName()`, wodurch das Abzeichen über CSS angesteuert werden kann. `HasStyle` exponiert `setStyle()` für Inline-Styling.
+Die drei oben genannten Schnittstellen decken alles ab, was `MyBadge` benötigt, ohne dass im Klassencode method body erforderlich ist. `HasText` exponiert `setText()` und schreibt in den Textinhalt des Elements. `HasClassName` exponiert `addClassName()`, damit die Auszeichnung von CSS angesprochen werden kann. `HasStyle` exponiert `setStyle()` für Inline-Styling.
 
-Für die vollständige Liste der verfügbaren Interfaces und was jedes bietet, siehe [Anliegen-Interfaces](./component-fundamentals#concern-interfaces) im Artikel "Understanding Components". Wenn ein Standard-Forwarding nicht dem entspricht, was das umschlossene Element exponiert, überschreiben Sie die Methode in der Unterklasse.
+Für die vollständige Liste der verfügbaren Schnittstellen und was jede einzelne bereitstellt, siehe [Concern-Schnittstellen](./component-fundamentals#concern-interfaces) im Artikel über das Verständnis von Komponenten. Wenn ein Standardweiterleitung nicht dem entspricht, was das umschlossene Element bereitstellt, überschreiben Sie die Methode in der Unterklasse.
 
 ## Ereignisse {#events}
 
 ### Ereignisregistrierung {#event-registration}
 
-Webkomponenten senden DOM-Ereignisse, wenn im Browser etwas passiert. Um von Java aus zu reagieren, hören Sie auf diese Ereignisse mit `addEventListener()`. Die Menge an Ereignissen, die eine Komponente auslöst, variiert, überprüfen Sie daher die eigenen Dokumente der Komponente auf die verfügbaren Namen und Nutzdaten.
+Webkomponenten versenden DOM-Ereignisse, wenn im Browser etwas passiert. Um von Java aus zu reagieren, hören Sie auf diese Ereignisse mit `addEventListener()`. Die Menge der Ereignisse, die eine Komponente sendet, variiert, überprüfen Sie daher die eigene Dokumentation der Komponente für die verfügbaren Namen und Payloads.
 
-`ElementComposite` unterstützt Debouncing, Throttling, Filtern und benutzerdefinierte Ereignisdaten für registrierte Listener.
+`ElementComposite` unterstützt Debouncing, Throttling, Filterung und benutzerdefinierte Ereignisdaten bei registrierten Listenern.
 
-Registrieren Sie Ereignis-Listener mit der Methode `addEventListener()`:
+Registrieren Sie Ereignislistener mit der Methode `addEventListener()`:
 
 ```java
-// Beispiel: Hinzufügen eines Klickereignis-Listeners
+// Beispiel: Hinzufügen eines Click-Ereignis-Listeners
 addEventListener(ElementClickEvent.class, event -> {
-  // Handle das Klickereignis
+  // Behandeln Sie das Click-Ereignis
 });
 ```
 
 :::info
-`ElementComposite` akzeptiert nur Ereignisklassen, die mit `@EventName` annotiert sind, im Gegensatz zu `Element`, das jeden String-Ereignisnamen akzeptiert.
+`ElementComposite` akzeptiert nur Ereignisklassen, die mit `@EventName` annotiert sind, im Gegensatz zu `Element`, das jedes String-Ereignisnamen akzeptiert.
 :::
 
 ### Eingebaute Ereignisklassen {#built-in-event-classes}
 
-`ElementClickEvent` ist die einzige eingebaute Ereignisklasse, die `ElementComposite` mitliefert. Sie gibt Mausklickereignisse auf dem zugrunde liegenden Element mit typisierten Zugriffsmethoden für Koordinaten (`getClientX()`, `getClientY()`), Button-Informationen (`getButton()`) und Modifikatortasten (`isCtrlKey()`, `isShiftKey()` usw.) weiter.
+`ElementClickEvent` ist die einzige eingebaute Ereignisklasse, die `ElementComposite` mitbringt. Sie gibt Mausklickereignisse auf dem zugrunde liegenden Element mit typisierten Zugriffsmethoden für die Koordinaten (`getClientX()`, `getClientY()`), die Schaltflächeninformation (`getButton()`) und die Modifikatortasten (`isCtrlKey()`, `isShiftKey()` usw.) zurück.
 
-Um die Klickverarbeitung in der öffentlichen API einer Unterklasse verfügbar zu machen, implementieren Sie das Ansatz-Interface `HasElementClickListener<T>`. Es stellt die Standardmethoden `onClick()` und `addClickListener()` zur Verfügung, die an die geschützte primitive Methode `addEventListener()` delegieren.
+Um die Click-Behandlung in der öffentlichen API einer Unterklasse verfügbar zu machen, implementieren Sie die Concern-Schnittstelle `HasElementClickListener<T>`. Sie bietet standardmäßig `onClick()` und `addClickListener()`-Methoden, die sich auf die geschützte `addEventListener()`-primitive beziehen.
 
 ```java
 @NodeName("my-badge")
 public class MyBadge extends ElementComposite
     implements HasElementClickListener<MyBadge> {
-  // onClick() und addClickListener() sind jetzt für MyBadge verfügbar
+  // onClick() und addClickListener() sind jetzt auf MyBadge verfügbar
 }
 
 new MyBadge().onClick(event -> {
@@ -373,17 +373,17 @@ new MyBadge().onClick(event -> {
 
 Für jedes andere Ereignis, das die zugrunde liegende Webkomponente auslöst, definieren Sie eine benutzerdefinierte Ereignisklasse. Siehe [Benutzerdefinierte Ereignisklassen](#custom-event-classes).
 
-### Ereignisdaten {#event-payloads}
+### Ereignis-Payloads {#event-payloads}
 
-Ereignisse übertragen Daten vom Client an Ihren Java-Code. Greifen Sie über `getData()` auf die rohen Ereignisdaten zu oder verwenden Sie typisierte Methoden, wenn diese in den eingebauten Ereignisklassen verfügbar sind. Siehe den [Ereignisse-Leitfaden](../building-ui/events) für weitere Informationen zur effizienten Handhabung von Nutzdaten.
+Ereignisse tragen Daten vom Client zu Ihrem Java-Code. Greifen Sie über `getData()` auf diese Daten für rohe Ereignisdaten zu oder verwenden Sie typisierte Methoden, wenn sie in den eingebauten Ereignisklassen verfügbar sind. Weitere Informationen zur effizienten Handhabung von Payloads finden Sie im [Ereignisse-Guide](../building-ui/events).
 
 ### Benutzerdefinierte Ereignisklassen {#custom-event-classes}
 
-Definieren Sie benutzerdefinierte Ereignisklassen mit `@EventName` und `@EventOptions`, um clientseitige Daten in einem typisierten Java-Ereignis zu erfassen. Verwenden Sie dies, wenn der Java-Handler Werte vom Browser benötigt.
+Definieren Sie benutzerdefinierte Ereignisklassen mit `@EventName` und `@EventOptions`, um clientseitige Daten in einem typisierten Java-Ereignis zu erfassen. Verwenden Sie dies, wenn der Java-Handler Werte aus dem Browser benötigt.
 
-`@EventName` bindet die Java-Klasse an das Ereignis, das die Komponente im Browser auslöst. Eine Klasse mit der Annotation `@EventName("change")` feuert jedes Mal, wenn das zugrunde liegende Element `change` auslöst. `@EventOptions` steuert, was zusammen mit diesem Ereignis zurückkommt. Jede `@EventData` darin koppelt einen Schlüssel mit einem JavaScript-Ausdruck, der gegen das DOM-Ereignis ausgewertet wird. Das Ergebnis ist über `getData().get(key)` in der Java-Ereignisklasse verfügbar.
+`@EventName` bindet die Java-Klasse an das Ereignis, das die Komponente im Browser auslöst, sodass eine Klasse mit `@EventName("change")` immer dann ausgelöst wird, wenn das zugrunde liegende Element `change` ausgibt. `@EventOptions` steuert, was mit diesem Ereignis übertragen wird. Jede `@EventData`-Annotation darin paaren einen Schlüssel mit einem JavaScript-Ausdruck, der gegen das DOM-Ereignis ausgewertet wird. Das Ergebnis ist in der Java-Ereignisklasse über `getData().get(key)` verfügbar.
 
-Das untenstehende Produktbewertungsformular verwendet dieses Muster mit [`wa-rating`](https://webawesome.com/docs/components/rating/). Das benutzerdefinierte `ChangeEvent` trägt den Bewertungswert als typisierten `double`, und der Listener verwendet ihn, um die Schaltfläche "Absenden" zu aktivieren:
+Das Produktbewertungsformular unten verwendet dieses Muster mit [`wa-rating`](https://webawesome.com/docs/components/rating/). Das benutzerdefinierte `ChangeEvent` trägt den Bewertungswert als typisiertes `double`, und der Listener verwendet ihn, um die Schaltfläche "Einreichen" zu aktivieren:
 
 <ComponentDemo
 path='/webforj/rating'
@@ -393,11 +393,11 @@ height='220px'
 
 ### Ereignisoptionen {#event-options}
 
-`ElementEventOptions` konfiguriert die Ereignisnutzdaten, Debounce- oder Throttle-Zeitgeber, Filterausdrücke und Pre-Execution-Code. Der folgende Code zeigt die Optionen:
+`ElementEventOptions` konfiguriert die Event-Payload, Debounce- oder Throttle-Zeitpunkte, Filterausdrücke und vorab ausgeführte Codes. Der folgende Ausschnitt zeigt die Optionen:
 
 ```java
 ElementEventOptions options = new ElementEventOptions()
-  // Erfassen Sie benutzerdefinierte Daten vom Client
+  // Relevante Daten vom Client sammeln
   .addData("query", "component.value")
   .addData("timestamp", "Date.now()")
   .addData("isValid", "component.checkValidity()")
@@ -408,16 +408,16 @@ ElementEventOptions options = new ElementEventOptions()
   // Nur auslösen, wenn Bedingungen erfüllt sind
   .setFilter("component.value.length >= 2")
 
-  // Verzögerung der Ausführung, bis der Benutzer das Tippen stoppt (300ms)
+  // Verzögere die Ausführung, bis der Benutzer aufhört zu tippen (300ms)
   .setDebounce(300, DebouncePhase.TRAILING);
 
 // Wenden Sie diese Optionen beim Registrieren eines Listeners für eine benutzerdefinierte Ereignisklasse an
-// (siehe den Abschnitt über benutzerdefinierte Ereignisklassen oben, um zu erfahren, wie man eine definiert):
+// (siehe den Abschnitt Benutzerdefinierte Ereignisklassen oben, um zu erfahren, wie man eine definiert):
 addEventListener(InputEvent.class, this::handleSearch, options);
 ```
 
 :::info
-`ElementComposite` bietet nur die klassenspezifische Form `addEventListener(Class, listener, options)` an. Verwenden Sie sie mit einer Ereignisklasse, die mit `@EventName` annotiert ist. Um direkt gegen einen String-Ereignisnamen zu registrieren, rufen Sie `getElement().addEventListener("input", listener, options)` auf.
+`ElementComposite` bietet nur die klassenbasierte Form `addEventListener(Class, listener, options)` an. Verwenden Sie dies mit einer Ereignisklasse, die mit `@EventName` annotiert ist. Um direkt gegen einen String-Ereignisnamen zu registrieren, rufen Sie `getElement().addEventListener("input", listener, options)` auf.
 :::
 
 #### Leistungssteuerung {#performance-control}
@@ -425,26 +425,26 @@ addEventListener(InputEvent.class, this::handleSearch, options);
 **Debouncing** verzögert die Ausführung, bis die Aktivität stoppt:
 
 ```java
-options.setDebounce(300, DebouncePhase.TRAILING); // Warte 300ms nach dem letzten Ereignis
+options.setDebounce(300, DebouncePhase.TRAILING); // Warte 300 ms nach dem letzten Ereignis
 ```
 
 Verfügbare Debounce-Phasen:
 
 - `LEADING`: Sofort auslösen, dann warten
-- `TRAILING`: Warte auf eine stille Phase, dann auslösen (Standard)
-- `BOTH`: Sowohl sofort als auch nach einer stillen Phase auslösen
+- `TRAILING`: Warte auf eine ruhige Periode, dann auslösen (Standard)
+- `BOTH`: Sofort und nach einer ruhigen Periode auslösen
 
 **Throttling** begrenzt die Ausführungsfrequenz:
 
 ```java
-options.setThrottle(100); // Höchstens einmal pro 100ms auslösen
+options.setThrottle(100); // Maximal einmal alle 100 ms auslösen
 ```
 
-## Interagieren mit Slots {#interacting-with-slots}
+## Interaktion mit Slots {#interacting-with-slots}
 
-Slots sind Platzhalter innerhalb einer Webkomponente, die Benutzer mit Inhalten füllen. Die Webkomponente deklariert ihre Slots in ihrer Vorlage mit `<slot>` oder `<slot name="...">`, und der Wrapper stellt Methoden zur Verfügung, die Java-Komponenten in diese Slots einfügen.
+Slots sind Platzhalter innerhalb einer Webkomponente, die Benutzer mit Inhalten füllen. Die Webkomponente deklariert ihre Slots in ihrer Vorlage mit `<slot>` oder `<slot name="...">`, und die Wrapper-Klasse bietet Methoden an, um Java-Komponenten in diese Slots einzufügen.
 
-Um Inhalte zu Slots hinzuzufügen, erweitern Sie `ElementCompositeContainer` anstelle von `ElementComposite`. Der Container enthält die gleiche Eigenschaften- und Attributmechanik sowie die Methoden, die benötigt werden, um Kinder hinzuzufügen. Kinder, die über `add()` hinzugefügt werden, gehen in den Standardslot. Kinder, die über `getElement().add(slotName, components)` hinzugefügt werden, gehen in den benannten Slot.
+Um Inhalte in Slots hinzuzufügen, erweitern Sie `ElementCompositeContainer` anstelle von `ElementComposite`. Der Container trägt dasselbe Eigenschaften- und Attribut-System, plus die Methoden, die erforderlich sind, um Kinder hinzuzufügen. Kinder, die über `add()` hinzugefügt werden, gehen in den Standard-Slot. Kinder, die über `getElement().add(slotName, components)` hinzugefügt werden, gehen in den benannten Slot.
 
 ```java
 @NodeName("my-dialog")
@@ -465,18 +465,18 @@ public class Dialog extends ElementCompositeContainer {
 }
 ```
 
-Die Demo unten zeigt zwei Preis-Karten, die mit [`wa-card`](https://webawesome.com/docs/components/card/) erstellt wurden und die `header`, den Standardslot und die `footer`-Slots aus Java befüllen:
+Die Demo unten zeigt zwei Preis-Karten, die mit [`wa-card`](https://webawesome.com/docs/components/card/) erstellt wurden, wobei die `header`, der Standard- und der `footer`-Slot von Java aus gefüllt werden:
 
 <ComponentDemo
-path='/webforj/card'
+path='/webforj/webawesomecard'
 files={['src/main/java/com/webforj/samples/views/elementcomposite/WebAwesomeCardView.java']}
 height='400px'
 />
 
-### Überprüfen des Inhalts von Slots {#inspecting-slot-contents}
+### Slot-Inhalte inspizieren {#inspecting-slot-contents}
 
-Das zugrunde liegende `Element` (erreichbar über `getElement()`) stellt Methoden zum Lesen dessen bereit, was derzeit den Slots zugewiesen ist:
+Das zugrunde liegende `Element` (erreichbar über `getElement()`) bietet Methoden, um zurückzulesen, was momentan an Slots zugewiesen ist:
 
-- **`findComponentSlot()`**: durchsucht alle Slots nach einer bestimmten Komponente und gibt den Namen des Slots zurück, der sie enthält, oder einen leeren String, wenn die Komponente sich in keinem Slot befindet.
-- **`getComponentsInSlot()`**: gibt die Liste der Komponenten zurück, die einem bestimmten Slot zugewiesen sind. Optional kann ein Klassentyp zur Filterung der Ergebnisse übergeben werden.
-- **`getFirstComponentInSlot()`**: gibt die erste Komponente zurück, die einem Slot zugewiesen ist. Optional kann ein Klassentyp zur Filterung übergeben werden.
+- **`findComponentSlot()`**: durchsucht alle Slots nach einer bestimmten Komponente und gibt den Namen des Slots zurück, der sie enthält, oder eine leere Zeichenfolge, wenn die Komponente nicht in einem Slot vorhanden ist.
+- **`getComponentsInSlot()`**: gibt die Liste der Komponenten zurück, die einem gegebenen Slot zugewiesen sind. Optional kann ein Klassentyp übergeben werden, um die Ergebnisse zu filtern.
+- **`getFirstComponentInSlot()`**: gibt die erste Komponente zurück, die einem Slot zugewiesen ist. Optional kann ein Klassentyp übergeben werden, um zu filtern.
