@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover](./cover.png)
 
-I first got my hands on craftforJ to test it out and play around with it as I was reviewing the docs written for it as it was being released. I wasn't sure what to expect from a "visual development environment" shipping with a Java framework. Not having any idea what to expect, it's safe to say I was thoroughly impressed at my first impression.
+I first got my hands on [craftforJ](/docs/craftforj/) to test it out and play around with it as I was reviewing its documentation when it was being released with [webforJ 26.02](/blog/whats-new-v26.02). I wasn't sure what to expect from a "visual development environment" shipping with a Java framework. Not having any idea what to expect, it's safe to say I was thoroughly impressed at my first impression.
 
 craftforJ opens next to your running app and shows you a tree. The tree isn't the browser's DOM, it's the components your Java code created, listed by the class names you wrote. If you click a `TextField` on the page, the inspector highlights the exact Java variable it came from. If you change a property, the running app updates and the diff lands in your source file.
 
@@ -25,15 +25,15 @@ The practical consequence is that everything craftforJ names is a thing you can 
 
 ## The inspector feels familiar
 
-If you've used the Chrome or Firefox devtools inspector, the first thing you'll notice is how recognizable the interaction is. Click an element in the page, see it highlighted in the tree, see its properties in a side panel. craftforJ picks up the same mental model and applies it to Java objects. It was designed this way on purpose to keep the barrier to entry for developers familiar with dev tools practically non-existant. 
+If you've used the Chrome or Firefox DevTools inspectors, the first thing you'll notice is how recognizable the interaction is. Click an element in the page, see it highlighted in the tree, see its properties in a side panel. craftforJ picks up the same mental model and applies it to Java objects. It was designed this way on purpose to keep the barrier to entry practically non-existent for developers familiar with DevTools. 
 
 <video src="./craftforj-walkthrough.mp4" autoPlay muted loop playsInline style={{width: '100%', borderRadius: '8px', marginBottom: '1rem'}}></video>
 
-The difference, which the familiarity makes easy to miss at first, is that the properties you're editing are the ones your code already knows about. Changing a `Button`'s theme in the side panel doesn't inject a style override. It calls the setter on the same instance your code built, exactly as if your Java had done it. The running app updates because the underlying object changed, not because craftforJ layered a visual on top.
+The difference, which is easy to miss at first, is that the properties you're editing are the ones your code already knows about. Changing a `Button`'s theme in the side panel doesn't inject a style override. It calls the setter on the same instance your code built, exactly as if your Java had done it. The running app updates because the underlying object changed, not because craftforJ layered a visual on top.
 
 ![inspector showing a Button component selected with its Java-side properties](./craftforj-inspector.png)
 
-That part isn't new conceptually. It's just more direct than I was used to.
+That part isn't new conceptually, it's just more direct than I was used to.
 
 ## Writing changes back to source
 
@@ -51,7 +51,7 @@ I expected the inspector and source write-back to feel like polish on top of web
 
 This feels similar to other AI coding paradigm: it plans, reads your source, writes Java, compiles what it wrote through a real Java compiler before you ever see it, but it also applies the change, and if the change requires a restart, waits for the app to come back and picks its plan up where it left off. Each step shows up in the transcript as it happens, and you can expand any of them to see exactly what the agent did and what came back.
 
-The compile-before-you-see-it part is what elevates this. Most coding agents hand you code and leave verification to you. craftforJ hands you code that already compiled against the exact app running in front of you. Full validation needs a JDK; on a JRE it falls back to parsing and marks the edit as unverified.
+The compile-before-you-see-it part is what elevates this. Most coding agents hand you code and leave verification to you. craftforJ hands you code that already compiled against the exact app running in front of you. Full validation requires a JDK; on a JRE it falls back to parsing and marks the edit as unverified.
 
 I'll do a dedicated post on the agent later, and other craftforJ areas are getting their own posts after that. For now, know that it's there, and know that it writes Java rather than suggesting snippets while waiting patiently through restarts rather than needing to be re-prompted.
 
@@ -77,7 +77,7 @@ Now, craftforJ requires two separate settings to be enabled, and by default only
 
 If you want to see craftforJ in action from another angle, my colleague put together a short walkthrough video that's worth a watch: [craftforJ on YouTube Shorts](https://www.youtube.com/shorts/dVCMJJtWjBM).
 
-More posts on the individual features (inspector, source changes, theming, the AI agent) are coming — I'll link back to this one from each as they land.
+More posts on the individual features (inspector, source changes, theming, the AI agent) are coming. I'll link back to this one from each as they land.
 
 ## Where to go next
 
