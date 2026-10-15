@@ -6,7 +6,7 @@ description: Style the dwc-markdown-viewer component with CSS variables and shad
 ---
 
 <DocChip chip='shadow' />
-
+    
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-markdown-viewer>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::
