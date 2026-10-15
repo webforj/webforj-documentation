@@ -179,7 +179,7 @@ Development runs are off on a new installation, and the first `webforj:watch` on
 bbjship development enable
 ```
 
-Turns [development runs](/docs/configuration/deploy-reload/bbjservices) on on this machine.
+Turns on [development runs](/docs/configuration/deploy-reload/bbjservices) on this machine.
 
 ### `development disable` {#development-disable}
 
@@ -187,7 +187,7 @@ Turns [development runs](/docs/configuration/deploy-reload/bbjservices) on on th
 bbjship development disable
 ```
 
-Turns [development runs](/docs/configuration/deploy-reload/bbjservices) off on this machine.
+Turns off [development runs](/docs/configuration/deploy-reload/bbjservices) on this machine.
 
 ## Reset {#reset}
 
