@@ -37,9 +37,9 @@ That part isn't new conceptually. It's just more direct than I was used to.
 
 ## Writing changes back to source
 
-Live edits are nice. Changes that make it into my source files are what actually matters. craftforJ handles that through a diff view: everything you change in the inspector is staged, and when you're ready to commit the work, you review the diff of the Java the tool wants to write.
+Live edits are nice, but being able to apply those changes back to my source files is what makes this particularly powerful. craftforJ handles that through a diff view: everything you change in the inspector is staged, and when you're ready to commit the work, you review the diff of the Java the tool wants to write.
 
-The diff shows the before and after for each affected file, so you can see exactly what will land before it does. You can accept the whole thing, back out individual changes, or discard the staged edits entirely. The policy stays yours.
+The diff shows the before and after for each affected file, so you can see exactly what will change before it's saved. You can accept the whole thing, back out individual changes, or discard the staged edits entirely. The policy stays yours.
 
 What I appreciated about this flow is that it removes the gap between "I made it look right in the running app" and "the source file reflects that." Those two states tend to drift when you're iterating fast, and this closes the loop without me having to think about it.
 
@@ -49,11 +49,11 @@ I expected the inspector and source write-back to feel like polish on top of web
 
 <video src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4" controls preload="metadata" style={{width: '100%', borderRadius: '8px', marginBottom: '1rem'}}></video>
 
-You give it a goal, not a command. It plans, reads your source, writes Java, compiles what it wrote through a real Java compiler before you ever see it, applies the change, and if the change requires a restart, waits for the app to come back and picks its plan up where it left off. Each step shows up in the transcript as it happens, and you can expand any of them to see exactly what the agent did and what came back.
+This feels similar to other AI coding paradigm: it plans, reads your source, writes Java, compiles what it wrote through a real Java compiler before you ever see it, but it also applies the change, and if the change requires a restart, waits for the app to come back and picks its plan up where it left off. Each step shows up in the transcript as it happens, and you can expand any of them to see exactly what the agent did and what came back.
 
-The compile-before-you-see-it part is what elevates this. Most coding agents hand you code and leave verification to you. craftforJ hands you code that already compiled against the exact app running in front of you. Full validation needs a JDK; on a JRE it falls back to parsing and marks the edit as unverified, which is the honest fallback.
+The compile-before-you-see-it part is what elevates this. Most coding agents hand you code and leave verification to you. craftforJ hands you code that already compiled against the exact app running in front of you. Full validation needs a JDK; on a JRE it falls back to parsing and marks the edit as unverified.
 
-I'll do a dedicated post on the agent later, and the other craftforJ areas (inspector internals, source-change workflows, theming) are getting their own posts after that. For now, know that it's there, and know that it writes Java rather than suggesting snippets while waiting patiently through restarts rather than needing to be re-prompted.
+I'll do a dedicated post on the agent later, and other craftforJ areas are getting their own posts after that. For now, know that it's there, and know that it writes Java rather than suggesting snippets while waiting patiently through restarts rather than needing to be re-prompted.
 
 ## Routes and theme
 
