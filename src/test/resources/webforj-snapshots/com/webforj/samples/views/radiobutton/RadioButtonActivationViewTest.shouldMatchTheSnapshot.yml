@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- RadioButtonActivationView [route=radiobuttonactivation]:
+- RadioButtonActivationView [route=radiobuttonactivation] [composite=FlexLayout] [node=div]:
   - RadioButton "Auto Activated" [focused]
   - RadioButton "Auto Activated"
   - RadioButton "Manually Activated"

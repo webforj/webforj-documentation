@@ -1,15 +1,15 @@
 # webforJ testbed snapshot v1
-- FlexLayoutView [route=flexlayout]:
-  - FlexLayout:
-    - FlexLayout:
+- FlexLayoutView [route=flexlayout] [composite=FlexLayout] [node=div]:
+  - FlexLayout [composite=Element] [node=div]:
+    - FlexLayout [composite=Element] [node=div]:
       - TextField [label=Email]
       - PasswordField [label=Password]
-    - FlexLayout:
+    - FlexLayout [composite=Element] [node=div]:
       - TextField [label="First Name"]
       - TextField [label="Last Name"]
-    - FlexLayout:
+    - FlexLayout [composite=Element] [node=div]:
       - TextField [label=Address]
-    - FlexLayout:
+    - FlexLayout [composite=Element] [node=div]:
       - TextField [label=City]
       - ChoiceBox [label=State]:
         - ListItem "Alabama" [key=AL]
@@ -24,6 +24,6 @@
         - ListItem "Georgia" [key=GA]
         - … 40 more
       - MaskedNumberField [label=Zip] [mask="-########"]
-    - FlexLayout:
+    - FlexLayout [composite=Element] [node=div]:
       - Button "Cancel"
       - Button "Submit" [theme=primary]

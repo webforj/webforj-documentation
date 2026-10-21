@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- ListSearchView [route=listsearch]:
+- ListSearchView [route=listsearch] [composite=FlexLayout] [node=div]:
   - ComboBox [label="Country of residence"]:
     - ListItem "Argentina" [key=Argentina] [selected]
     - ListItem "Australia" [key=Australia]

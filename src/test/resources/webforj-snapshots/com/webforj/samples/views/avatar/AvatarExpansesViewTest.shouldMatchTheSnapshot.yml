@@ -1,11 +1,11 @@
 # webforJ testbed snapshot v1
-- AvatarExpansesView [route=avatarexpanses]:
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xxxsmall]
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xxsmall]
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xsmall]
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=small]
-  - Avatar "John Doe" [tooltip="John Doe"]
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=large]
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xlarge]
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xxlarge]
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xxxlarge]
+- AvatarExpansesView [route=avatarexpanses] [composite=FlexLayout] [node=div]:
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=xxxsmall]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=xxsmall]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=xsmall]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=small]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=large]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=xlarge]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=xxlarge]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=xxxlarge]

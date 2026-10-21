@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- ComboBoxPlaceholderView [route=comboboxplaceholder]:
+- ComboBoxPlaceholderView [route=comboboxplaceholder] [composite=FlexLayout] [node=div]:
   - ComboBox [placeholder="Example Placeholder"]:
     - ListItem "Electronics" [key=Electronics]
     - ListItem "Health and Beauty" [key="Health and Beauty"]

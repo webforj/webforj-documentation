@@ -1,4 +1,4 @@
 # webforJ testbed snapshot v1
-- QRDemoView [route=qrdemo]:
-  - Div:
-    - QRCode
+- QRDemoView [route=qrdemo] [composite=FlexLayout] [node=div]:
+  - Div [composite=Element] [node=div]:
+    - QRCode [composite=Element] [node=wa-qr-code]

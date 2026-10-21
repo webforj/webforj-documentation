@@ -1,35 +1,35 @@
 # webforJ testbed snapshot v1
-- WebAwesomeCardView [route=webawesomecard]:
-  - WebAwesomeCard:
-    - H3 "Basic Plan" [slot=header]
-    - Span "Perfect for individuals" [slot=header]
-    - H4 "$9/month"
-    - UnorderedList:
-      - ListEntry:
-        - Icon [name=check]
-        - Span "Up to 10 projects"
-      - ListEntry:
-        - Icon [name=check]
-        - Span "Email support"
-      - ListEntry:
-        - Icon [name=check]
-        - Span "Standard analytics"
+- WebAwesomeCardView [route=webawesomecard] [composite=FlexLayout] [node=div]:
+  - WebAwesomeCard [composite=Element] [node=wa-card]:
+    - H3 "Basic Plan" [slot=header] [composite=Element] [node=h3]
+    - Span "Perfect for individuals" [slot=header] [composite=Element] [node=span]
+    - H4 "$9/month" [composite=Element] [node=h4]
+    - UnorderedList [composite=Element] [node=ul]:
+      - ListEntry [composite=Element] [node=li]:
+        - Icon [name=check] [composite=Element] [node=dwc-icon]
+        - Span "Up to 10 projects" [composite=Element] [node=span]
+      - ListEntry [composite=Element] [node=li]:
+        - Icon [name=check] [composite=Element] [node=dwc-icon]
+        - Span "Email support" [composite=Element] [node=span]
+      - ListEntry [composite=Element] [node=li]:
+        - Icon [name=check] [composite=Element] [node=dwc-icon]
+        - Span "Standard analytics" [composite=Element] [node=span]
     - Button "Choose Basic" [slot=footer] [theme=primary]
-  - WebAwesomeCard:
-    - H3 "Pro Plan" [slot=header]
-    - Span "Best for growing teams" [slot=header]
-    - H4 "$19/month"
-    - UnorderedList:
-      - ListEntry:
-        - Icon [name=check]
-        - Span "Unlimited projects"
-      - ListEntry:
-        - Icon [name=check]
-        - Span "Priority email support"
-      - ListEntry:
-        - Icon [name=check]
-        - Span "Advanced analytics"
-      - ListEntry:
-        - Icon [name=check]
-        - Span "Custom integrations"
+  - WebAwesomeCard [composite=Element] [node=wa-card]:
+    - H3 "Pro Plan" [slot=header] [composite=Element] [node=h3]
+    - Span "Best for growing teams" [slot=header] [composite=Element] [node=span]
+    - H4 "$19/month" [composite=Element] [node=h4]
+    - UnorderedList [composite=Element] [node=ul]:
+      - ListEntry [composite=Element] [node=li]:
+        - Icon [name=check] [composite=Element] [node=dwc-icon]
+        - Span "Unlimited projects" [composite=Element] [node=span]
+      - ListEntry [composite=Element] [node=li]:
+        - Icon [name=check] [composite=Element] [node=dwc-icon]
+        - Span "Priority email support" [composite=Element] [node=span]
+      - ListEntry [composite=Element] [node=li]:
+        - Icon [name=check] [composite=Element] [node=dwc-icon]
+        - Span "Advanced analytics" [composite=Element] [node=span]
+      - ListEntry [composite=Element] [node=li]:
+        - Icon [name=check] [composite=Element] [node=dwc-icon]
+        - Span "Custom integrations" [composite=Element] [node=span]
     - Button "Choose Pro" [slot=footer] [theme=primary]

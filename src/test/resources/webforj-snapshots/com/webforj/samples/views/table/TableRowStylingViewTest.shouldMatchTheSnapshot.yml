@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableRowStylingView [route=tablerowstyling]:
-  - Table [itemType=Person]:
+- TableRowStylingView [route=tablerowstyling] [composite=FlexLayout] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=Person]:
     - Column [id=Name] [sortable]
     - Column [id=Age] [sortable]
     - Column [id=City] [sortable]

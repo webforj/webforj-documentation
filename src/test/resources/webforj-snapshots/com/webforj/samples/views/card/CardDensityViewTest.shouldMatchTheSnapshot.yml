@@ -1,34 +1,34 @@
 # webforJ testbed snapshot v1
-- CardDensityView [route=carddensity]:
-  - Card:
-    - FlexLayout:
-      - FlexLayout:
-        - Span "Design retainer"
-        - Span "$6,000.00"
-      - FlexLayout:
-        - Span "Accessibility audit"
-        - Span "$1,800.00"
-      - FlexLayout:
-        - Span "Hosting"
-        - Span "$600.00"
-    - H3 "INV-2041" [slot=title]
-    - Paragraph "Due August 30, 2026" [slot=caption]
-    - FlexLayout [slot=footer]:
-      - Span "Total $8,400.00"
+- CardDensityView [route=carddensity] [composite=FlexLayout] [node=div]:
+  - Card [composite=Element] [node=dwc-card]:
+    - FlexLayout [composite=Element] [node=div]:
+      - FlexLayout [composite=Element] [node=div]:
+        - Span "Design retainer" [composite=Element] [node=span]
+        - Span "$6,000.00" [composite=Element] [node=span]
+      - FlexLayout [composite=Element] [node=div]:
+        - Span "Accessibility audit" [composite=Element] [node=span]
+        - Span "$1,800.00" [composite=Element] [node=span]
+      - FlexLayout [composite=Element] [node=div]:
+        - Span "Hosting" [composite=Element] [node=span]
+        - Span "$600.00" [composite=Element] [node=span]
+    - H3 "INV-2041" [slot=title] [composite=Element] [node=h3]
+    - Paragraph "Due August 30, 2026" [slot=caption] [composite=Element] [node=p]
+    - FlexLayout [slot=footer] [composite=Element] [node=div]:
+      - Span "Total $8,400.00" [composite=Element] [node=span]
       - Button "Pay" [theme=primary] [expanse=large]
-  - Card:
-    - FlexLayout:
-      - FlexLayout:
-        - Span "Design retainer"
-        - Span "$6,000.00"
-      - FlexLayout:
-        - Span "Accessibility audit"
-        - Span "$1,800.00"
-      - FlexLayout:
-        - Span "Hosting"
-        - Span "$600.00"
-    - H3 "INV-2041" [slot=title]
-    - Paragraph "Due August 30, 2026" [slot=caption]
-    - FlexLayout [slot=footer]:
-      - Span "Total $8,400.00"
+  - Card [composite=Element] [node=dwc-card]:
+    - FlexLayout [composite=Element] [node=div]:
+      - FlexLayout [composite=Element] [node=div]:
+        - Span "Design retainer" [composite=Element] [node=span]
+        - Span "$6,000.00" [composite=Element] [node=span]
+      - FlexLayout [composite=Element] [node=div]:
+        - Span "Accessibility audit" [composite=Element] [node=span]
+        - Span "$1,800.00" [composite=Element] [node=span]
+      - FlexLayout [composite=Element] [node=div]:
+        - Span "Hosting" [composite=Element] [node=span]
+        - Span "$600.00" [composite=Element] [node=span]
+    - H3 "INV-2041" [slot=title] [composite=Element] [node=h3]
+    - Paragraph "Due August 30, 2026" [slot=caption] [composite=Element] [node=p]
+    - FlexLayout [slot=footer] [composite=Element] [node=div]:
+      - Span "Total $8,400.00" [composite=Element] [node=span]
       - Button "Pay" [theme=primary] [expanse=small]

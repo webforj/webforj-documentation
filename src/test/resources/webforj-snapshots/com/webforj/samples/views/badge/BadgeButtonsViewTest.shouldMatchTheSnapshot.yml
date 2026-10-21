@@ -1,24 +1,24 @@
 # webforJ testbed snapshot v1
-- BadgeButtonsView [route=badgebuttons]:
-  - H3 "Badge on Buttons"
-  - FlexLayout:
+- BadgeButtonsView [route=badgebuttons] [composite=FlexLayout] [node=div]:
+  - H3 "Badge on Buttons" [composite=Element] [node=h3]
+  - FlexLayout [composite=Element] [node=div]:
     - Button "Notifications" [theme=primary]:
-      - Icon [slot=prefix] [name=bell]
-      - Badge "5" [slot=badge] [theme=danger] [expanse=xsmall]
+      - Icon [slot=prefix] [name=bell] [composite=Element] [node=dwc-icon]
+      - Badge "5" [slot=badge] [composite=Element] [node=dwc-badge] [theme=danger] [expanse=xsmall]
     - Button "Messages":
-      - Icon [slot=prefix] [name=mail]
-      - Badge "12" [slot=badge] [theme=primary] [expanse=xsmall]
-  - H3 "Button Sizes with Badge"
-  - FlexLayout:
+      - Icon [slot=prefix] [name=mail] [composite=Element] [node=dwc-icon]
+      - Badge "12" [slot=badge] [composite=Element] [node=dwc-badge] [theme=primary] [expanse=xsmall]
+  - H3 "Button Sizes with Badge" [composite=Element] [node=h3]
+  - FlexLayout [composite=Element] [node=div]:
     - Button "xl" [theme=primary] [expanse=xlarge]:
-      - Badge "3" [slot=badge] [theme=danger] [expanse=xsmall]
+      - Badge "3" [slot=badge] [composite=Element] [node=dwc-badge] [theme=danger] [expanse=xsmall]
     - Button "l" [theme=primary] [expanse=large]:
-      - Badge "3" [slot=badge] [theme=danger] [expanse=xsmall]
+      - Badge "3" [slot=badge] [composite=Element] [node=dwc-badge] [theme=danger] [expanse=xsmall]
     - Button "m" [theme=primary]:
-      - Badge "3" [slot=badge] [theme=danger] [expanse=xsmall]
+      - Badge "3" [slot=badge] [composite=Element] [node=dwc-badge] [theme=danger] [expanse=xsmall]
     - Button "s" [theme=primary] [expanse=small]:
-      - Badge "3" [slot=badge] [theme=danger] [expanse=xsmall]
+      - Badge "3" [slot=badge] [composite=Element] [node=dwc-badge] [theme=danger] [expanse=xsmall]
     - Button "xs" [theme=primary] [expanse=xsmall]:
-      - Badge "3" [slot=badge] [theme=danger] [expanse=xsmall]
+      - Badge "3" [slot=badge] [composite=Element] [node=dwc-badge] [theme=danger] [expanse=xsmall]
     - Button "n" [theme=primary]:
-      - Badge "3" [slot=badge] [theme=danger] [expanse=xsmall]
+      - Badge "3" [slot=badge] [composite=Element] [node=dwc-badge] [theme=danger] [expanse=xsmall]

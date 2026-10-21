@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- RadioButtonTextView [route=radiobuttontext]:
+- RadioButtonTextView [route=radiobuttontext] [composite=FlexLayout] [node=div]:
   - RadioButton "Right aligned (default)"
   - RadioButton "Left aligned"
   - CheckBox "CheckBox"

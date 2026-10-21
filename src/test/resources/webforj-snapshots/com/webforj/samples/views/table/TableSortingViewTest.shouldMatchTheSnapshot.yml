@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableSortingView [route=tablesorting]:
-  - Table [itemType=MusicRecord]:
+- TableSortingView [route=tablesorting] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
     - Column [id=Title] [sortable]
     - Column [id=Artist] [sortable]
     - Column [id=Genre] [sortable]

@@ -1,26 +1,26 @@
 # webforJ testbed snapshot v1
-- AppLayoutDrawerUtilityView [route=applayoutdrawerutility]:
-  - Toolbar:
-    - AppDrawerToggle [slot=start] [name=menu-2]
-    - H3 "Application" [slot=title]
-  - Div:
-    - DrawerLogo:
-      - Img [src=/img/webforj_icon.svg] [alt=logo]
-    - AppNav:
-      - AppNavItem "Dashboard" [path=/applayoutdrawerutility/content/Dashboard]:
-        - Icon [slot=prefix] [name=dashboard]
-      - AppNavItem "Orders" [path=/applayoutdrawerutility/content/Orders]:
-        - Icon [slot=prefix] [name=shopping-cart]
-      - AppNavItem "Customers" [path=/applayoutdrawerutility/content/Customers]:
-        - Icon [slot=prefix] [name=users]
-      - AppNavItem "Products" [path=/applayoutdrawerutility/content/Products]:
-        - Icon [slot=prefix] [name=box]
-      - AppNavItem "Documents" [path=/applayoutdrawerutility/content/Documents]:
-        - Icon [slot=prefix] [name=files]
-      - AppNavItem "Tasks" [path=/applayoutdrawerutility/content/Tasks]:
-        - Icon [slot=prefix] [name=checklist]
-      - AppNavItem "Analytics" [path=/applayoutdrawerutility/content/Analytics]:
-        - Icon [slot=prefix] [name=chart-dots-2]
-  - Div "Joe Smith"
-  - IconButton [name=pin] [tooltip="Pin drawer"]
-  - IconButton [name=rocket] [tooltip="Buy premium"]
+- AppLayoutDrawerUtilityView [route=applayoutdrawerutility] [composite=AppLayout] [node=dwc-app-layout]:
+  - Toolbar [composite=Element] [node=dwc-toolbar]:
+    - AppDrawerToggle [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - H3 "Application" [slot=title] [composite=Element] [node=h3]
+  - Div [composite=Element] [node=div]:
+    - DrawerLogo [composite=Div] [node=div]:
+      - Img [composite=Element] [node=img] [src=/img/webforj_icon.svg] [alt=logo]
+    - AppNav [composite=Element] [node=dwc-app-nav]:
+      - AppNavItem "Dashboard" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutdrawerutility/content/Dashboard]:
+        - Icon [slot=prefix] [name=dashboard] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Orders" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutdrawerutility/content/Orders]:
+        - Icon [slot=prefix] [name=shopping-cart] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Customers" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutdrawerutility/content/Customers]:
+        - Icon [slot=prefix] [name=users] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Products" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutdrawerutility/content/Products]:
+        - Icon [slot=prefix] [name=box] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Documents" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutdrawerutility/content/Documents]:
+        - Icon [slot=prefix] [name=files] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Tasks" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutdrawerutility/content/Tasks]:
+        - Icon [slot=prefix] [name=checklist] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Analytics" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutdrawerutility/content/Analytics]:
+        - Icon [slot=prefix] [name=chart-dots-2] [composite=Element] [node=dwc-icon]
+  - Div "Joe Smith" [composite=Element] [node=div]
+  - IconButton [name=pin] [composite=Element] [node=dwc-icon-button] [tooltip="Pin drawer"]
+  - IconButton [name=rocket] [composite=Element] [node=dwc-icon-button] [tooltip="Buy premium"]

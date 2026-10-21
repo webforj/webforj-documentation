@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- InvoiceListView [route=invoicelist]:
-  - Table [itemType=Invoice]:
+- InvoiceListView [route=invoicelist] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=Invoice]:
     - "Column [id=invoiceNumber] [label=\"Invoice #\"]"
     - Column [id=customer]
     - Column [id=issueDate] [label=Issued]

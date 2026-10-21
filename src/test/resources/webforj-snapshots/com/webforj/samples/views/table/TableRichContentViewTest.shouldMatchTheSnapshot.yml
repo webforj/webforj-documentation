@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableRichContentView [route=tablerichcontent]:
-  - Table [itemType=MusicRecord] [multiple]:
+- TableRichContentView [route=tablerichcontent] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord] [multiple]:
     - Column [id=Title] [hidden]
     - Column [id=Artist] [hidden]
     - Column [id="Title & Artist"]

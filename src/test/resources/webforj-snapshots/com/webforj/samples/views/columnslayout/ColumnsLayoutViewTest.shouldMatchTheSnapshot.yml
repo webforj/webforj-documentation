@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- ColumnsLayoutView [route=columnslayout]:
-  - ColumnsLayout:
+- ColumnsLayoutView [route=columnslayout] [composite=Div] [node=div]:
+  - ColumnsLayout [composite=Element] [node=dwc-columns-layout]:
     - TextField [label="First Name"]
     - TextField [label="Last Name"]
     - TextField [label=Email]

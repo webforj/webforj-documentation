@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- ColumnsLayoutBreakpointsView [route=columnslayoutbreakpoints]:
-  - ColumnsLayout:
+- ColumnsLayoutBreakpointsView [route=columnslayoutbreakpoints] [composite=Div] [node=div]:
+  - ColumnsLayout [composite=Element] [node=dwc-columns-layout]:
     - TextField [label="First Name"]
     - TextField [label="Last Name"]
     - TextField [label=Email]

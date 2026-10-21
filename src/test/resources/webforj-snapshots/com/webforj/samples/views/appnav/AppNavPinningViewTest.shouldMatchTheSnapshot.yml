@@ -1,32 +1,32 @@
 # webforJ testbed snapshot v1
-- AppNavPinningView [route=appnavpinning]:
-  - Toolbar [theme=primary]:
-    - AppDrawerToggle [slot=start] [name=menu-2]
-    - H1 "Admin" [slot=title]
-  - AppNav:
-    - AppNavItem "Dashboard" [path=/appnavpinning/Dashboard]:
-      - Icon [slot=prefix] [name=layout-dashboard]
-    - AppNavItem "Reports" [path=/appnavpinning/Reports]:
-      - Icon [slot=prefix] [name=chart-bar]
-    - AppNavItem "Invoices":
-      - Icon [slot=prefix] [name=file-invoice]
-      - AppNavItem "Outstanding" [slot=items] [path=/appnavpinning/Outstanding]:
-        - Icon [slot=prefix] [name=clock]
-      - AppNavItem "Paid" [slot=items] [path=/appnavpinning/Paid]:
-        - Icon [slot=prefix] [name=check]
-      - AppNavItem "Drafts" [slot=items] [path=/appnavpinning/Drafts]:
-        - Icon [slot=prefix] [name=pencil]
-    - AppNavItem "Customers" [path=/appnavpinning/Customers]:
-      - Icon [slot=prefix] [name=address-book]
-    - AppNavItem "Orders" [path=/appnavpinning/Orders]:
-      - Icon [slot=prefix] [name=shopping-cart]
-    - AppNavItem "Products" [path=/appnavpinning/Products]:
-      - Icon [slot=prefix] [name=box]
-    - AppNavItem "Settings":
-      - Icon [slot=prefix] [name=settings]
-      - AppNavItem "Profile" [slot=items] [path=/appnavpinning/Profile]:
-        - Icon [slot=prefix] [name=user]
-      - AppNavItem "Billing" [slot=items] [path=/appnavpinning/Billing]:
-        - Icon [slot=prefix] [name=credit-card]
-      - AppNavItem "Team" [slot=items] [path=/appnavpinning/Team]:
-        - Icon [slot=prefix] [name=users]
+- AppNavPinningView [route=appnavpinning] [composite=AppLayout] [node=dwc-app-layout]:
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=primary]:
+    - AppDrawerToggle [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - H1 "Admin" [slot=title] [composite=Element] [node=h1]
+  - AppNav [composite=Element] [node=dwc-app-nav]:
+    - AppNavItem "Dashboard" [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Dashboard]:
+      - Icon [slot=prefix] [name=layout-dashboard] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Reports" [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Reports]:
+      - Icon [slot=prefix] [name=chart-bar] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Invoices" [composite=Element] [node=dwc-app-nav-item]:
+      - Icon [slot=prefix] [name=file-invoice] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Outstanding" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Outstanding]:
+        - Icon [slot=prefix] [name=clock] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Paid" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Paid]:
+        - Icon [slot=prefix] [name=check] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Drafts" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Drafts]:
+        - Icon [slot=prefix] [name=pencil] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Customers" [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Customers]:
+      - Icon [slot=prefix] [name=address-book] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Orders" [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Orders]:
+      - Icon [slot=prefix] [name=shopping-cart] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Products" [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Products]:
+      - Icon [slot=prefix] [name=box] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Settings" [composite=Element] [node=dwc-app-nav-item]:
+      - Icon [slot=prefix] [name=settings] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Profile" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Profile]:
+        - Icon [slot=prefix] [name=user] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Billing" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Billing]:
+        - Icon [slot=prefix] [name=credit-card] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Team" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnavpinning/Team]:
+        - Icon [slot=prefix] [name=users] [composite=Element] [node=dwc-icon]

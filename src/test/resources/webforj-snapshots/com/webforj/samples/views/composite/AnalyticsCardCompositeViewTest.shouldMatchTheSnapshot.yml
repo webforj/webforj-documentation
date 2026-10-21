@@ -1,14 +1,14 @@
 # webforJ testbed snapshot v1
-- AnalyticsCardCompositeView [route=analyticscardcomposite]:
-  - Card [expanse=large]:
-    - H3 "Monthly Sales" [slot=title]
-    - FlexLayout:
-      - Span "$45,000"
-      - FlexLayout:
-        - Icon [name=arrow-up] [theme=success]
-        - Span "12% from last month"
+- AnalyticsCardCompositeView [route=analyticscardcomposite] [composite=FlexLayout] [node=div]:
+  - Card [composite=Element] [node=dwc-card] [expanse=large]:
+    - H3 "Monthly Sales" [slot=title] [composite=Element] [node=h3]
+    - FlexLayout [composite=Element] [node=div]:
+      - Span "$45,000" [composite=Element] [node=span]
+      - FlexLayout [composite=Element] [node=div]:
+        - Icon [name=arrow-up] [composite=Element] [node=dwc-icon] [theme=success]
+        - Span "12% from last month" [composite=Element] [node=span]
       - ProgressBar "75% of monthly goal reached" [value=75] [min=0] [max=100]
-      - GoogleChart [type=line]:
+      - GoogleChart [composite=Element] [node=google-chart] [type=line]:
         - Row [Month=Jan] [Sales=25000]
         - Row [Month=Feb] [Sales=32000]
         - Row [Month=Mar] [Sales=27000]

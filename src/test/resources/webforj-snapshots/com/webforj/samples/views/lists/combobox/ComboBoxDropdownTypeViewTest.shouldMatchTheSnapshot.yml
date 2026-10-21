@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- ComboBoxDropdownTypeView [route=comboboxdropdowntype]:
+- ComboBoxDropdownTypeView [route=comboboxdropdowntype] [composite=FlexLayout] [node=div]:
   - ComboBox [label=Department]:
     - ListItem "Electronics" [key=Electronics] [selected]
     - ListItem "Health and Beauty" [key="Health and Beauty"]

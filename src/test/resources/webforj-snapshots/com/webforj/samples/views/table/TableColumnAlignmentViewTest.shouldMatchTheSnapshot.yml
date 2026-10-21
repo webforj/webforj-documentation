@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableColumnAlignmentView [route=tablecolumnalignment]:
-  - Table [itemType=MusicRecord]:
+- TableColumnAlignmentView [route=tablecolumnalignment] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
     - Column [id=Number]
     - Column [id=Title]
     - Column [id=Genre]

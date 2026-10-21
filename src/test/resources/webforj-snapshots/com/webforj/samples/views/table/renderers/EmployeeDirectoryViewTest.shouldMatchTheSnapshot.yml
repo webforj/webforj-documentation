@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- EmployeeDirectoryView [route=employeedirectory]:
-  - Table [itemType=Employee]:
+- EmployeeDirectoryView [route=employeedirectory] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=Employee]:
     - Column [id=name] [label=Employee] [sortable]
     - Column [id=department] [sortable]
     - Column [id=status] [sortable]

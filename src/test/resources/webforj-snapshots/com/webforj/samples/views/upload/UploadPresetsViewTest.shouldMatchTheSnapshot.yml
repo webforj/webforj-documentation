@@ -1,18 +1,18 @@
 # webforJ testbed snapshot v1
-- UploadPresetsView [route=uploadpresets]:
-  - Card:
-    - H4 "FULL" [slot=title]
+- UploadPresetsView [route=uploadpresets] [composite=FlexLayout] [node=div]:
+  - Card [composite=Element] [node=dwc-card]:
+    - H4 "FULL" [slot=title] [composite=Element] [node=h4]
     - Upload [drop] [multiple]:
       - Filter "Files" [pattern="*.*"]
-  - Card:
-    - H4 "INLINE" [slot=title]
+  - Card [composite=Element] [node=dwc-card]:
+    - H4 "INLINE" [slot=title] [composite=Element] [node=h4]
     - Upload [drop] [multiple]:
       - Filter "Files" [pattern="*.*"]
-  - Card:
-    - H4 "BUTTON_ONLY" [slot=title]
+  - Card [composite=Element] [node=dwc-card]:
+    - H4 "BUTTON_ONLY" [slot=title] [composite=Element] [node=h4]
     - Upload [drop] [multiple]:
       - Filter "Files" [pattern="*.*"]
-  - Card:
-    - H4 "DROPZONE" [slot=title]
+  - Card [composite=Element] [node=dwc-card]:
+    - H4 "DROPZONE" [slot=title] [composite=Element] [node=h4]
     - Upload [drop] [multiple]:
       - Filter "Files" [pattern="*.*"]

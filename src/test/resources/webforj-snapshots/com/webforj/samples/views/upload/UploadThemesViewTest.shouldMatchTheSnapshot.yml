@@ -1,4 +1,4 @@
 # webforJ testbed snapshot v1
-- UploadThemesView [route=uploadthemes]:
+- UploadThemesView [route=uploadthemes] [composite=FlexLayout] [node=div]:
   - Upload [theme=primary] [drop] [multiple]:
     - Filter "Files" [pattern="*.*"]

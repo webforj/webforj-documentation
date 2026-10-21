@@ -1,35 +1,35 @@
 # webforJ testbed snapshot v1
-- AppNavView [route=appnav]:
-  - Toolbar [theme=primary]:
-    - AppDrawerToggle [slot=start] [name=menu-2]
-    - H1 "Application" [slot=title]
-  - AppNav:
-    - AppNavItem "Inbox":
-      - Icon [slot=prefix] [name=inbox]
-      - Strong "54" [slot=suffix]
-      - AppNavItem "Primary" [slot=items] [path=/appnav/Primary]:
-        - Icon [slot=prefix] [name=mailbox]
-      - AppNavItem "Promotions" [slot=items] [path=/appnav/Promotions]:
-        - Icon [slot=prefix] [name=tag]
-      - AppNavItem "Social" [slot=items] [path=/appnav/Social]:
-        - Icon [slot=prefix] [name=users]
-      - AppNavItem "Updates" [slot=items] [path=/appnav/Updates]:
-        - Icon [slot=prefix] [name=bell]
-      - AppNavItem "Forums" [slot=items] [path=/appnav/Forums]:
-        - Icon [slot=prefix] [name=message-circle]
-    - AppNavItem "Sent" [path=/appnav/Sent]:
-      - Icon [slot=prefix] [name=send]
-    - AppNavItem "Archived" [path=/appnav/Archived]:
-      - Icon [slot=prefix] [name=archive]
-    - AppNavItem "Trash" [path=/appnav/Trash]:
-      - Icon [slot=prefix] [name=trash]
-    - AppNavItem "Spam" [path=/appnav/Spam]:
-      - Icon [slot=prefix] [name=alert-hexagon]
-    - AppNavItem "About":
-      - Icon [slot=prefix] [name=info-circle]
-      - AppNavItem "webforJ" [slot=items] [path="https://webforj.com/"]:
-        - Icon [slot=prefix] [name=external-link]
-      - AppNavItem "GitHub" [slot=items] [path="https://github.com/webforj/webforj"]:
-        - Icon [slot=prefix] [name=brand-github]
-      - AppNavItem "Documentation" [slot=items] [path="https://documentation.webforj.com/"]:
-        - Icon [slot=prefix] [name=book]
+- AppNavView [route=appnav] [composite=AppLayout] [node=dwc-app-layout]:
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=primary]:
+    - AppDrawerToggle [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - H1 "Application" [slot=title] [composite=Element] [node=h1]
+  - AppNav [composite=Element] [node=dwc-app-nav]:
+    - AppNavItem "Inbox" [composite=Element] [node=dwc-app-nav-item]:
+      - Icon [slot=prefix] [name=inbox] [composite=Element] [node=dwc-icon]
+      - Strong "54" [slot=suffix] [composite=Element] [node=strong]
+      - AppNavItem "Primary" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Primary]:
+        - Icon [slot=prefix] [name=mailbox] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Promotions" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Promotions]:
+        - Icon [slot=prefix] [name=tag] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Social" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Social]:
+        - Icon [slot=prefix] [name=users] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Updates" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Updates]:
+        - Icon [slot=prefix] [name=bell] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Forums" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Forums]:
+        - Icon [slot=prefix] [name=message-circle] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Sent" [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Sent]:
+      - Icon [slot=prefix] [name=send] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Archived" [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Archived]:
+      - Icon [slot=prefix] [name=archive] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Trash" [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Trash]:
+      - Icon [slot=prefix] [name=trash] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Spam" [composite=Element] [node=dwc-app-nav-item] [path=/appnav/Spam]:
+      - Icon [slot=prefix] [name=alert-hexagon] [composite=Element] [node=dwc-icon]
+    - AppNavItem "About" [composite=Element] [node=dwc-app-nav-item]:
+      - Icon [slot=prefix] [name=info-circle] [composite=Element] [node=dwc-icon]
+      - AppNavItem "webforJ" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path="https://webforj.com/"]:
+        - Icon [slot=prefix] [name=external-link] [composite=Element] [node=dwc-icon]
+      - AppNavItem "GitHub" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path="https://github.com/webforj/webforj"]:
+        - Icon [slot=prefix] [name=brand-github] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Documentation" [slot=items] [composite=Element] [node=dwc-app-nav-item] [path="https://documentation.webforj.com/"]:
+        - Icon [slot=prefix] [name=book] [composite=Element] [node=dwc-icon]

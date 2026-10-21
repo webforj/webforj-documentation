@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableOlympicWinnersView [route=tableolympicwinners]:
-  - Table [itemType=JsonObject]:
+- TableOlympicWinnersView [route=tableolympicwinners] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=JsonObject]:
     - Column [id=athlete] [sortable]
     - Column [id=age] [sortable]
     - Column [id=country] [sortable]

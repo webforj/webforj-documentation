@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- TreeIconsView [route=treeicons]:
+- TreeIconsView [route=treeicons] [composite=FlexLayout] [node=div]:
   - Tree [multiple]:
     - TreeNode "Documents" [key=Documents] [expanded]:
       - TreeNode "Reports" [key=Reports]:

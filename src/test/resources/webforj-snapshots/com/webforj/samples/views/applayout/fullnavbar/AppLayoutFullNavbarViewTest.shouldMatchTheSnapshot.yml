@@ -1,20 +1,20 @@
 # webforJ testbed snapshot v1
-- AppLayoutFullNavbarView [route=applayoutfullnavbar]:
-  - Toolbar:
-    - AppDrawerToggle [slot=start] [name=menu-2]
-    - H3 " Application" [slot=title]
-  - AppNav:
-    - AppNavItem "Dashboard" [path=/applayoutfullnavbar/content/Dashboard]:
-      - Icon [slot=prefix] [name=dashboard]
-    - AppNavItem "Orders" [path=/applayoutfullnavbar/content/Orders]:
-      - Icon [slot=prefix] [name=shopping-cart]
-    - AppNavItem "Customers" [path=/applayoutfullnavbar/content/Customers]:
-      - Icon [slot=prefix] [name=users]
-    - AppNavItem "Products" [path=/applayoutfullnavbar/content/Products]:
-      - Icon [slot=prefix] [name=box]
-    - AppNavItem "Documents" [path=/applayoutfullnavbar/content/Documents]:
-      - Icon [slot=prefix] [name=files]
-    - AppNavItem "Tasks" [path=/applayoutfullnavbar/content/Tasks]:
-      - Icon [slot=prefix] [name=checklist]
-    - AppNavItem "Analytics" [path=/applayoutfullnavbar/content/Analytics]:
-      - Icon [slot=prefix] [name=chart-dots-2]
+- AppLayoutFullNavbarView [route=applayoutfullnavbar] [composite=AppLayout] [node=dwc-app-layout]:
+  - Toolbar [composite=Element] [node=dwc-toolbar]:
+    - AppDrawerToggle [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - H3 " Application" [slot=title] [composite=Element] [node=h3]
+  - AppNav [composite=Element] [node=dwc-app-nav]:
+    - AppNavItem "Dashboard" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutfullnavbar/content/Dashboard]:
+      - Icon [slot=prefix] [name=dashboard] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Orders" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutfullnavbar/content/Orders]:
+      - Icon [slot=prefix] [name=shopping-cart] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Customers" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutfullnavbar/content/Customers]:
+      - Icon [slot=prefix] [name=users] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Products" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutfullnavbar/content/Products]:
+      - Icon [slot=prefix] [name=box] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Documents" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutfullnavbar/content/Documents]:
+      - Icon [slot=prefix] [name=files] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Tasks" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutfullnavbar/content/Tasks]:
+      - Icon [slot=prefix] [name=checklist] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Analytics" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutfullnavbar/content/Analytics]:
+      - Icon [slot=prefix] [name=chart-dots-2] [composite=Element] [node=dwc-icon]

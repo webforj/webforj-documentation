@@ -1,4 +1,4 @@
 # webforJ testbed snapshot v1
-- MarkdownViewerView [route=markdownviewer]:
-  - Card:
-    - MarkdownViewer "# Welcome to MarkdownViewer\n\nThis component renders **bold**, *italic*, ~~strikethrough~~, and `inline code`.\n\n## Lists\n\n- First item\n- Second item\n- Third item\n\n## Blockquote\n\n> Markdown makes formatting easy\n> without writing HTML.\n\n## Code Block\n\n```java\nMarkdownViewer viewer = new MarkdownViewer();\nviewer.setContent(\"# Hello World\");\n```\n\n## Emoticons\n\nFeeling happy :) or sad :( or surprised :o\n\nThat's awesome! :D\n"
+- MarkdownViewerView [route=markdownviewer] [composite=Div] [node=div]:
+  - Card [composite=Element] [node=dwc-card]:
+    - MarkdownViewer "# Welcome to MarkdownViewer\n\nThis component renders **bold**, *italic*, ~~strikethrough~~, and `inline code`.\n\n## Lists\n\n- First item\n- Second item\n- Third item\n\n## Blockquote\n\n> Markdown makes formatting easy\n> without writing HTML.\n\n## Code Block\n\n```java\nMarkdownViewer viewer = new MarkdownViewer();\nviewer.setContent(\"# Hello World\");\n```\n\n## Emoticons\n\nFeeling happy :) or sad :( or surprised :o\n\nThat's awesome! :D\n" [composite=Element] [node=dwc-markdown-viewer]

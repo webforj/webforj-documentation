@@ -1,9 +1,9 @@
 # webforJ testbed snapshot v1
-- DrawerAutoFocusView [route=drawerautofocus]:
+- DrawerAutoFocusView [route=drawerautofocus] [composite=FlexLayout] [node=div]:
   - Button "Open Preferences"
-  - Drawer [label="Notification Preferences"] [opened]:
+  - Drawer [composite=Element] [node=dwc-drawer] [label="Notification Preferences"] [opened]:
     - Button "Save Preferences" [slot=footer] [theme=primary]
-    - FlexLayout:
+    - FlexLayout [composite=Element] [node=div]:
       - CheckBox "Email Notifications"
       - CheckBox "SMS Notifications"
       - CheckBox "Push Notifications"

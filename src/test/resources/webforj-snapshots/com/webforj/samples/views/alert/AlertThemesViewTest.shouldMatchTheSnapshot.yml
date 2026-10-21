@@ -1,30 +1,30 @@
 # webforJ testbed snapshot v1
-- AlertThemesView [route=alertthemes]:
-  - Alert [theme=danger]:
-    - FlexLayout:
-      - Icon [name=alert-square-rounded]
-      - Paragraph "This is an alert with the DANGER theme!"
-  - Alert:
-    - FlexLayout:
-      - Icon [name=alert-square-rounded]
-      - Paragraph "This is an alert with the DEFAULT theme!"
-  - Alert [theme=gray]:
-    - FlexLayout:
-      - Icon [name=alert-square-rounded]
-      - Paragraph "This is an alert with the GRAY theme!"
-  - Alert [theme=info]:
-    - FlexLayout:
-      - Icon [name=alert-square-rounded]
-      - Paragraph "This is an alert with the INFO theme!"
-  - Alert [theme=primary]:
-    - FlexLayout:
-      - Icon [name=alert-square-rounded]
-      - Paragraph "This is an alert with the PRIMARY theme!"
-  - Alert [theme=success]:
-    - FlexLayout:
-      - Icon [name=alert-square-rounded]
-      - Paragraph "This is an alert with the SUCCESS theme!"
-  - Alert [theme=warning]:
-    - FlexLayout:
-      - Icon [name=alert-square-rounded]
-      - Paragraph "This is an alert with the WARNING theme!"
+- AlertThemesView [route=alertthemes] [composite=FlexLayout] [node=div]:
+  - Alert [composite=Element] [node=dwc-alert] [theme=danger]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This is an alert with the DANGER theme!" [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This is an alert with the DEFAULT theme!" [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=gray]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This is an alert with the GRAY theme!" [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=info]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This is an alert with the INFO theme!" [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=primary]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This is an alert with the PRIMARY theme!" [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=success]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This is an alert with the SUCCESS theme!" [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=warning]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This is an alert with the WARNING theme!" [composite=Element] [node=p]

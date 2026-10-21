@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableMultiSortingView [route=tablemultisorting]:
-  - Table [itemType=MusicRecord]:
+- TableMultiSortingView [route=tablemultisorting] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
     - Column [id=Title] [sortable]
     - Column [id=Artist] [sortable]
     - Column [id=Genre] [sortable]

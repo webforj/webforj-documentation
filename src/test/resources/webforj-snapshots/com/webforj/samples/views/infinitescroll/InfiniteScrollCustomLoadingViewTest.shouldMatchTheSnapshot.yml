@@ -1,7 +1,7 @@
 # webforJ testbed snapshot v1
-- InfiniteScrollCustomLoadingView [route=infinitescrollcustomloading]:
-  - InfiniteScroll "Loading data":
-    - Div
-    - Div [slot=content]:
-      - Icon [name=cloud]
-      - Span "Loading awesome content..."
+- InfiniteScrollCustomLoadingView [route=infinitescrollcustomloading] [composite=Div] [node=div]:
+  - InfiniteScroll "Loading data" [composite=Element] [node=dwc-infinite-scroll]:
+    - Div [composite=Element] [node=div]
+    - Div [slot=content] [composite=Element] [node=div]:
+      - Icon [name=cloud] [composite=Element] [node=dwc-icon]
+      - Span "Loading awesome content..." [composite=Element] [node=span]

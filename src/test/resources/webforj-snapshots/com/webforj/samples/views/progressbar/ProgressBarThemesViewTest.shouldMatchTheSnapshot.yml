@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- ProgressBarThemesView [route=progressbarthemes]:
+- ProgressBarThemesView [route=progressbarthemes] [composite=FlexLayout] [node=div]:
   - ProgressBar "DANGER {{x}}%" [value=50] [min=0] [max=100] [theme=danger]
   - ProgressBar "DEFAULT {{x}}%" [value=50] [min=0] [max=100]
   - ProgressBar "GRAY {{x}}%" [value=50] [min=0] [max=100] [theme=gray]

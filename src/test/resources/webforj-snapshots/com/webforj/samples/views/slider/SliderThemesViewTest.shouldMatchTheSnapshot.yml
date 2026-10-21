@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- SliderThemesView [route=sliderthemes]:
+- SliderThemesView [route=sliderthemes] [composite=FlexLayout] [node=div]:
   - Slider [value=50] [min=0] [max=100]
   - Slider [value=50] [min=0] [max=100] [theme=danger]
   - Slider [value=50] [min=0] [max=100] [theme=gray]

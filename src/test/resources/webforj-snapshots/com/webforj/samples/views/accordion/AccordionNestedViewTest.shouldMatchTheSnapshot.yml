@@ -1,14 +1,14 @@
 # webforJ testbed snapshot v1
-- AccordionNestedView [route=accordionnested]:
-  - H3 "Nested Accordions"
-  - Paragraph "Accordions can be nested inside other accordion panels."
-  - AccordionPanel "Outer Panel (contains nested accordion)" [expanded]:
-    - Accordion:
-      - AccordionPanel "Inner Panel A":
-        - Paragraph "Nested content A"
-      - AccordionPanel "Inner Panel B":
-        - Paragraph "Nested content B"
-      - AccordionPanel "Inner Panel C":
-        - Paragraph "Nested content C"
-  - AccordionPanel "Sibling Panel":
-    - Paragraph "This is a sibling of the outer panel."
+- AccordionNestedView [route=accordionnested] [composite=FlexLayout] [node=div]:
+  - H3 "Nested Accordions" [composite=Element] [node=h3]
+  - Paragraph "Accordions can be nested inside other accordion panels." [composite=Element] [node=p]
+  - AccordionPanel "Outer Panel (contains nested accordion)" [composite=Element] [node=dwc-accordion-panel] [expanded]:
+    - Accordion [composite=Element] [node=dwc-accordion]:
+      - AccordionPanel "Inner Panel A" [composite=Element] [node=dwc-accordion-panel]:
+        - Paragraph "Nested content A" [composite=Element] [node=p]
+      - AccordionPanel "Inner Panel B" [composite=Element] [node=dwc-accordion-panel]:
+        - Paragraph "Nested content B" [composite=Element] [node=p]
+      - AccordionPanel "Inner Panel C" [composite=Element] [node=dwc-accordion-panel]:
+        - Paragraph "Nested content C" [composite=Element] [node=p]
+  - AccordionPanel "Sibling Panel" [composite=Element] [node=dwc-accordion-panel]:
+    - Paragraph "This is a sibling of the outer panel." [composite=Element] [node=p]

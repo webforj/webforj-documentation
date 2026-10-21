@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableColumnComparatorView [route=tablecolumncomparator]:
-  - Table [itemType=MusicRecord]:
+- TableColumnComparatorView [route=tablecolumncomparator] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
     - Column [id=Number] [sortable]
     - Column [id=Title] [sortable]
     - Column [id=Artist] [sortable]

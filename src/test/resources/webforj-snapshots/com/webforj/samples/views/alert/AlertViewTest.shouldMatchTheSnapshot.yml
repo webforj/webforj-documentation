@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- AlertView [route=alert]:
-  - Alert [theme=primary]:
-    - Paragraph "The requested information is ready to be viewed."
+- AlertView [route=alert] [composite=FlexLayout] [node=div]:
+  - Alert [composite=Element] [node=dwc-alert] [theme=primary]:
+    - Paragraph "The requested information is ready to be viewed." [composite=Element] [node=p]
     - Button "View" [theme=primary]

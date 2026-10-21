@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableBasicView [route=tablebasic]:
-  - Table [itemType=MusicRecord]:
+- TableBasicView [route=tablebasic] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
     - Column [id=Number]
     - Column [id=Title]
     - Column [id=Artist]

@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- CheckboxExpanseView [route=checkboxexpanse]:
+- CheckboxExpanseView [route=checkboxexpanse] [composite=FlexLayout] [node=div]:
   - CheckBox "NONE"
   - CheckBox "XSMALL" [expanse=xsmall]
   - CheckBox "SMALL" [expanse=small]

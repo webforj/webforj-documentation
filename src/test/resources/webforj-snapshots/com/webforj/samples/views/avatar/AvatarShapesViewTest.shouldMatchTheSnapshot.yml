@@ -1,4 +1,4 @@
 # webforJ testbed snapshot v1
-- AvatarShapesView [route=avatarshapes]:
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xlarge]
-  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xlarge]
+- AvatarShapesView [route=avatarshapes] [composite=FlexLayout] [node=div]:
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=xlarge]
+  - Avatar "John Doe" [composite=Element] [node=dwc-avatar] [tooltip="John Doe"] [expanse=xlarge]

@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- ProductCatalogView [route=productcatalog]:
-  - Table [itemType=Product]:
+- ProductCatalogView [route=productcatalog] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=Product]:
     - Column [id=name] [label=Product] [sortable]
     - Column [id=category] [sortable]
     - Column [id=price] [sort=desc] [sortable]

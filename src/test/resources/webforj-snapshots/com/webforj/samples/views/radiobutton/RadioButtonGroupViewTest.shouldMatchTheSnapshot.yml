@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- RadioButtonGroupView [route=radiobuttongroup]:
+- RadioButtonGroupView [route=radiobuttongroup] [composite=FlexLayout] [node=div]:
   - RadioButtonGroup:
     - RadioButton "Strongly Disagree"
     - RadioButton "Disagree"

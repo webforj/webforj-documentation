@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableNestedColumnGroupsView [route=tablenestedcolumngroups]:
-  - Table [itemType=MusicRecord]:
+- TableNestedColumnGroupsView [route=tablenestedcolumngroups] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
     - Column [id=Title]
     - Column [id=Artist]
     - Column [id=Genre]

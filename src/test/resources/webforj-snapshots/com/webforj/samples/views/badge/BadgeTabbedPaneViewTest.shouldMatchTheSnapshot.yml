@@ -1,26 +1,26 @@
 # webforJ testbed snapshot v1
-- BadgeTabbedPaneView [route=badgetabbedpane]:
-  - H3 "Badge in Tabbed Pane"
+- BadgeTabbedPaneView [route=badgetabbedpane] [composite=FlexLayout] [node=div]:
+  - H3 "Badge in Tabbed Pane" [composite=Element] [node=h3]
   - TabbedPane:
     - Tab "Inbox" [selected]:
-      - Badge "12" [slot=suffix] [theme=primary] [expanse=xsmall]
-      - Paragraph "You have 12 messages in your inbox."
+      - Badge "12" [slot=suffix] [composite=Element] [node=dwc-badge] [theme=primary] [expanse=xsmall]
+      - Paragraph "You have 12 messages in your inbox." [composite=Element] [node=p]
     - Tab "Notifications":
-      - Badge "3" [slot=suffix] [theme=danger] [expanse=xsmall]
-      - Paragraph "You have 3 unread notifications."
+      - Badge "3" [slot=suffix] [composite=Element] [node=dwc-badge] [theme=danger] [expanse=xsmall]
+      - Paragraph "You have 3 unread notifications." [composite=Element] [node=p]
     - Tab "Drafts":
-      - Badge "1" [slot=suffix] [theme=gray] [expanse=xsmall]
-      - Paragraph "You have 1 draft saved."
+      - Badge "1" [slot=suffix] [composite=Element] [node=dwc-badge] [theme=gray] [expanse=xsmall]
+      - Paragraph "You have 1 draft saved." [composite=Element] [node=p]
     - Tab "Sent":
-      - Paragraph "Your sent messages."
-  - H3 "Outlined Badges in Tabs"
+      - Paragraph "Your sent messages." [composite=Element] [node=p]
+  - H3 "Outlined Badges in Tabs" [composite=Element] [node=h3]
   - TabbedPane:
     - Tab "Tasks" [selected]:
-      - Badge "5" [slot=suffix] [theme=outlined-primary] [expanse=xsmall]
-      - Paragraph "Your pending tasks."
+      - Badge "5" [slot=suffix] [composite=Element] [node=dwc-badge] [theme=outlined-primary] [expanse=xsmall]
+      - Paragraph "Your pending tasks." [composite=Element] [node=p]
     - Tab "Issues":
-      - Badge "8" [slot=suffix] [theme=outlined-danger] [expanse=xsmall]
-      - Paragraph "Open issues that need attention."
+      - Badge "8" [slot=suffix] [composite=Element] [node=dwc-badge] [theme=outlined-danger] [expanse=xsmall]
+      - Paragraph "Open issues that need attention." [composite=Element] [node=p]
     - Tab "Done":
-      - Badge "24" [slot=suffix] [theme=outlined-success] [expanse=xsmall]
-      - Paragraph "Completed items."
+      - Badge "24" [slot=suffix] [composite=Element] [node=dwc-badge] [theme=outlined-success] [expanse=xsmall]
+      - Paragraph "Completed items." [composite=Element] [node=p]

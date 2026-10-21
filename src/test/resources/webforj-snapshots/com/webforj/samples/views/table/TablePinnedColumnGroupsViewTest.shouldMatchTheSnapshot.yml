@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TablePinnedColumnGroupsView [route=tablepinnedcolumngroups]:
-  - Table [itemType=MusicRecord]:
+- TablePinnedColumnGroupsView [route=tablepinnedcolumngroups] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
     - Column [id=Number]
     - Column [id=Title]
     - Column [id=Artist]

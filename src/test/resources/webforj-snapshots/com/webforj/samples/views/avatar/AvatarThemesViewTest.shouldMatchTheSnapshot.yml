@@ -1,18 +1,18 @@
 # webforJ testbed snapshot v1
-- AvatarThemesView [route=avatarthemes]:
-  - FlexLayout:
-    - Avatar "Default" [tooltip=Default]
-    - Avatar "Gray" [tooltip=Gray] [theme=gray]
-    - Avatar "Primary" [tooltip=Primary] [theme=primary]
-    - Avatar "Success" [tooltip=Success] [theme=success]
-    - Avatar "Warning" [tooltip=Warning] [theme=warning]
-    - Avatar "Danger" [tooltip=Danger] [theme=danger]
-    - Avatar "Info" [tooltip=Info] [theme=info]
-  - FlexLayout:
-    - Avatar "Default" [tooltip=Default] [theme=outlined-default]
-    - Avatar "Gray" [tooltip=Gray] [theme=outlined-gray]
-    - Avatar "Primary" [tooltip=Primary] [theme=outlined-primary]
-    - Avatar "Success" [tooltip=Success] [theme=outlined-success]
-    - Avatar "Warning" [tooltip=Warning] [theme=outlined-warning]
-    - Avatar "Danger" [tooltip=Danger] [theme=outlined-danger]
-    - Avatar "Info" [tooltip=Info] [theme=outlined-info]
+- AvatarThemesView [route=avatarthemes] [composite=FlexLayout] [node=div]:
+  - FlexLayout [composite=Element] [node=div]:
+    - Avatar "Default" [composite=Element] [node=dwc-avatar] [tooltip=Default]
+    - Avatar "Gray" [composite=Element] [node=dwc-avatar] [tooltip=Gray] [theme=gray]
+    - Avatar "Primary" [composite=Element] [node=dwc-avatar] [tooltip=Primary] [theme=primary]
+    - Avatar "Success" [composite=Element] [node=dwc-avatar] [tooltip=Success] [theme=success]
+    - Avatar "Warning" [composite=Element] [node=dwc-avatar] [tooltip=Warning] [theme=warning]
+    - Avatar "Danger" [composite=Element] [node=dwc-avatar] [tooltip=Danger] [theme=danger]
+    - Avatar "Info" [composite=Element] [node=dwc-avatar] [tooltip=Info] [theme=info]
+  - FlexLayout [composite=Element] [node=div]:
+    - Avatar "Default" [composite=Element] [node=dwc-avatar] [tooltip=Default] [theme=outlined-default]
+    - Avatar "Gray" [composite=Element] [node=dwc-avatar] [tooltip=Gray] [theme=outlined-gray]
+    - Avatar "Primary" [composite=Element] [node=dwc-avatar] [tooltip=Primary] [theme=outlined-primary]
+    - Avatar "Success" [composite=Element] [node=dwc-avatar] [tooltip=Success] [theme=outlined-success]
+    - Avatar "Warning" [composite=Element] [node=dwc-avatar] [tooltip=Warning] [theme=outlined-warning]
+    - Avatar "Danger" [composite=Element] [node=dwc-avatar] [tooltip=Danger] [theme=outlined-danger]
+    - Avatar "Info" [composite=Element] [node=dwc-avatar] [tooltip=Info] [theme=outlined-info]

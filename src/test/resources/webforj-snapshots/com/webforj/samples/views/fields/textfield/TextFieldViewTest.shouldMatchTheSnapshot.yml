@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TextFieldView [route=textfield]:
-  - ColumnsLayout:
+- TextFieldView [route=textfield] [composite=FlexLayout] [node=div]:
+  - ColumnsLayout [composite=Element] [node=dwc-columns-layout]:
     - TextField "John Doe" [label="Enter Name"] [placeholder=Name]
     - TextField "example@email.com" [label="Enter Email"] [placeholder=Email]
     - TextField "(123) 456-7890" [label="Enter Phone Number"] [placeholder="Phone Number"]

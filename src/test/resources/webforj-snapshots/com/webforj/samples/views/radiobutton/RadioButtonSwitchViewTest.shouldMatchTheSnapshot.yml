@@ -1,4 +1,4 @@
 # webforJ testbed snapshot v1
-- RadioButtonSwitchView [route=radiobuttonswitch]:
+- RadioButtonSwitchView [route=radiobuttonswitch] [composite=FlexLayout] [node=div]:
   - RadioButton "Normal RadioButton" [expanse=xlarge]
   - RadioButton "Switch RadioButton" [expanse=xlarge]

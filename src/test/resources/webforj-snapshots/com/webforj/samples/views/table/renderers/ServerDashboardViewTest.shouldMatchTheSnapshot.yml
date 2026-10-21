@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- ServerDashboardView [route=serverdashboard]:
-  - Table [itemType=Server]:
+- ServerDashboardView [route=serverdashboard] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=Server]:
     - Column [id=hostname] [sortable]
     - Column [id=online] [sortable]
     - Column [id=status] [label=Health] [sortable]

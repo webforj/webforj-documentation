@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- IconPrefixSuffixView [route=iconprefixsuffix]:
+- IconPrefixSuffixView [route=iconprefixsuffix] [composite=FlexLayout] [node=div]:
   - Button "Next" [theme=primary]:
-    - Icon [slot=suffix] [name=arrow-narrow-right]
+    - Icon [slot=suffix] [name=arrow-narrow-right] [composite=Element] [node=dwc-icon]
   - Button "Filter":
-    - Icon [slot=prefix] [name=filter]
+    - Icon [slot=prefix] [name=filter] [composite=Element] [node=dwc-icon]

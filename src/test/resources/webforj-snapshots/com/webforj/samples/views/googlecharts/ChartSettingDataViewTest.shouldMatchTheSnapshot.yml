@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- ChartSettingDataView [route=chartsettingdata]:
-  - GoogleChart "Sales Distribution by Region" [type=pie]:
+- ChartSettingDataView [route=chartsettingdata] [composite=FlexLayout] [node=div]:
+  - GoogleChart "Sales Distribution by Region" [composite=Element] [node=google-chart] [type=pie]:
     - Row [Region="North America"] [Sales=500]
     - Row [Region=Europe] [Sales=300]
     - Row [Region=Asia] [Sales=200]

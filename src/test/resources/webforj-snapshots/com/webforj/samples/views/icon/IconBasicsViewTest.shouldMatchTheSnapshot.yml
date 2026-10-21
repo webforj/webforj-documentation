@@ -1,5 +1,5 @@
 # webforJ testbed snapshot v1
-- IconBasicsView [route=iconbasics]:
-  - Icon [name=message]
-  - Icon [name=trash]
-  - Icon [name=edit]
+- IconBasicsView [route=iconbasics] [composite=FlexLayout] [node=div]:
+  - Icon [name=message] [composite=Element] [node=dwc-icon]
+  - Icon [name=trash] [composite=Element] [node=dwc-icon]
+  - Icon [name=edit] [composite=Element] [node=dwc-icon]

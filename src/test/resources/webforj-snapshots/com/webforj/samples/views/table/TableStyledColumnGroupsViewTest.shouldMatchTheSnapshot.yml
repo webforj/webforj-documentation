@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- TableStyledColumnGroupsView [route=tablestyledcolumngroups]:
-  - Table [itemType=MusicRecord]:
+- TableStyledColumnGroupsView [route=tablestyledcolumngroups] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
     - Column [id=Title]
     - Column [id=Artist]
     - Column [id=Genre]

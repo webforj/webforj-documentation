@@ -1,11 +1,11 @@
 # webforJ testbed snapshot v1
-- AccordionGroupView [route=accordiongroup]:
-  - H3 "Accordion Group (single mode)"
-  - Paragraph "Only one panel can be open at a time."
-  - Accordion:
-    - AccordionPanel "What is webforJ?" [expanded]:
-      - Paragraph "webforJ is a Java framework for building web applications."
-    - AccordionPanel "How do grouped panels work?":
-      - Paragraph "Panels inside an Accordion are coordinated. By default, expanding one collapses the others."
-    - AccordionPanel "Can I have multiple groups?":
-      - Paragraph "Yes, each Accordion instance manages its own set of panels independently."
+- AccordionGroupView [route=accordiongroup] [composite=FlexLayout] [node=div]:
+  - H3 "Accordion Group (single mode)" [composite=Element] [node=h3]
+  - Paragraph "Only one panel can be open at a time." [composite=Element] [node=p]
+  - Accordion [composite=Element] [node=dwc-accordion]:
+    - AccordionPanel "What is webforJ?" [composite=Element] [node=dwc-accordion-panel] [expanded]:
+      - Paragraph "webforJ is a Java framework for building web applications." [composite=Element] [node=p]
+    - AccordionPanel "How do grouped panels work?" [composite=Element] [node=dwc-accordion-panel]:
+      - Paragraph "Panels inside an Accordion are coordinated. By default, expanding one collapses the others." [composite=Element] [node=p]
+    - AccordionPanel "Can I have multiple groups?" [composite=Element] [node=dwc-accordion-panel]:
+      - Paragraph "Yes, each Accordion instance manages its own set of panels independently." [composite=Element] [node=p]

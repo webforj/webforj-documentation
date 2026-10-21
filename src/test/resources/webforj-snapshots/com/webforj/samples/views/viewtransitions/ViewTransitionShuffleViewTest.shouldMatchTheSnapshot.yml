@@ -1,28 +1,28 @@
 # webforJ testbed snapshot v1
-- ViewTransitionShuffleView [route=viewtransitionshuffle]:
-  - DemoHeader:
-    - H3 "List Reorder"
-    - Paragraph "Click shuffle to reorder items. Each item animates to its new position."
-    - FlexLayout:
-      - IconButton [name=shuffle]
-  - FlexLayout:
-    - ShuffleCard:
-      - Div "Messages"
-      - Div "#1"
-      - Icon [name=mail]
-      - Div "3 unread"
-    - ShuffleCard:
-      - Div "Tasks"
-      - Div "#2"
-      - Icon [name=check-square]
-      - Div "5 pending"
-    - ShuffleCard:
-      - Div "Calendar"
-      - Div "#3"
-      - Icon [name=calendar]
-      - Div "2 events today"
-    - ShuffleCard:
-      - Div "Settings"
-      - Div "#4"
-      - Icon [name=settings]
-      - Div "Last updated"
+- ViewTransitionShuffleView [route=viewtransitionshuffle] [composite=FlexLayout] [node=div]:
+  - DemoHeader [composite=FlexLayout] [node=div]:
+    - H3 "List Reorder" [composite=Element] [node=h3]
+    - Paragraph "Click shuffle to reorder items. Each item animates to its new position." [composite=Element] [node=p]
+    - FlexLayout [composite=Element] [node=div]:
+      - IconButton [name=shuffle] [composite=Element] [node=dwc-icon-button]
+  - FlexLayout [composite=Element] [node=div]:
+    - ShuffleCard [composite=Card] [node=dwc-card]:
+      - Div "Messages" [composite=Element] [node=div]
+      - Div "#1" [composite=Element] [node=div]
+      - Icon [name=mail] [composite=Element] [node=dwc-icon]
+      - Div "3 unread" [composite=Element] [node=div]
+    - ShuffleCard [composite=Card] [node=dwc-card]:
+      - Div "Tasks" [composite=Element] [node=div]
+      - Div "#2" [composite=Element] [node=div]
+      - Icon [name=check-square] [composite=Element] [node=dwc-icon]
+      - Div "5 pending" [composite=Element] [node=div]
+    - ShuffleCard [composite=Card] [node=dwc-card]:
+      - Div "Calendar" [composite=Element] [node=div]
+      - Div "#3" [composite=Element] [node=div]
+      - Icon [name=calendar] [composite=Element] [node=dwc-icon]
+      - Div "2 events today" [composite=Element] [node=div]
+    - ShuffleCard [composite=Card] [node=dwc-card]:
+      - Div "Settings" [composite=Element] [node=div]
+      - Div "#4" [composite=Element] [node=div]
+      - Icon [name=settings] [composite=Element] [node=dwc-icon]
+      - Div "Last updated" [composite=Element] [node=div]
