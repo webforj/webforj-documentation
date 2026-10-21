@@ -1,0 +1,205 @@
+# webforJ testbed snapshot v1
+- ChartGalleryView [route=chartgallery]:
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/PieChart.java"]:
+    - Div:
+      - Paragraph "Pie Chart"
+      - GoogleChart "Social Media Distribution" [type=pie]:
+        - Row [Task=Work] ["Hours per Day"=11]
+        - Row [Task=Eat] ["Hours per Day"=2]
+        - Row [Task=Commute] ["Hours per Day"=2]
+        - Row [Task="Watch TV"] ["Hours per Day"=2]
+        - Row [Task=Sleep] ["Hours per Day"=7]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/ColumnChart.java"]:
+    - Div:
+      - Paragraph "Column Chart"
+      - GoogleChart "Annual Sales" [type=column]:
+        - Row [Year=2014] [Sales=1000] [Expenses=400]
+        - Row [Year=2015] [Sales=1170] [Expenses=460]
+        - Row [Year=2016] [Sales=660] [Expenses=1120]
+        - Row [Year=2017] [Sales=1030] [Expenses=540]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/BarChart.java"]:
+    - Div:
+      - Paragraph "Bar Chart"
+      - GoogleChart "Comparison of Quarterly Revenue" [type=bar]:
+        - Row [Quarter=Q1] [Revenue=10000]
+        - Row [Quarter=Q2] [Revenue=11700]
+        - Row [Quarter=Q3] [Revenue=6600]
+        - Row [Quarter=Q4] [Revenue=10300]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/LineChart.java"]:
+    - Div:
+      - Paragraph "Line Chart"
+      - GoogleChart "Annual Growth" [type=line]:
+        - Row [Year=2004] [Sales=1000] [Expenses=400]
+        - Row [Year=2005] [Sales=1170] [Expenses=460]
+        - Row [Year=2006] [Sales=660] [Expenses=1120]
+        - Row [Year=2007] [Sales=1030] [Expenses=540]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/GeoChart.java"]:
+    - Div:
+      - Paragraph "Geo Chart"
+      - GoogleChart "Geo Chart" [type=geo]:
+        - Row [Country=Germany] [Popularity=200]
+        - Row [Country="United States"] [Popularity=300]
+        - Row [Country=Brazil] [Popularity=400]
+        - Row [Country=Canada] [Popularity=500]
+        - Row [Country=France] [Popularity=600]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/ScatterChart.java"]:
+    - Div:
+      - Paragraph "Scatter Chart"
+      - GoogleChart "Scatter Chart" [type=scatter]:
+        - Row [Age=8] [Weight=12]
+        - Row [Age=4] [Weight=5.5]
+        - Row [Age=11] [Weight=14]
+        - Row [Age=4] [Weight=5]
+        - Row [Age=3] [Weight=3.5]
+        - Row [Age=6.5] [Weight=7]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/HistogramChart.java"]:
+    - Div:
+      - Paragraph "Histogram Chart"
+      - GoogleChart "Distribution of Weight" [type=histogram]:
+        - Row [Age=18]
+        - Row [Age=20]
+        - Row [Age=22]
+        - Row [Age=24]
+        - Row [Age=26]
+        - Row [Age=28]
+        - Row [Age=30]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/ComboChart.java"]:
+    - Div:
+      - Paragraph "Combo Chart"
+      - GoogleChart "Revenue vs. Expenses" [type=combo]:
+        - Row [Month=January] [Revenue=800] [Expenses=500]
+        - Row [Month=February] [Revenue=900] [Expenses=700]
+        - Row [Month=March] [Revenue=1000] [Expenses=600]
+        - Row [Month=April] [Revenue=1100] [Expenses=900]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/AreaChart.java"]:
+    - Div:
+      - Paragraph "Area Chart"
+      - GoogleChart "Market Trends" [type=area]:
+        - Row [Year=2013] [Sales=1000] [Expenses=400]
+        - Row [Year=2014] [Sales=1170] [Expenses=460]
+        - Row [Year=2015] [Sales=660] [Expenses=600]
+        - Row [Year=2016] [Sales=1030] [Expenses=540]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/SteppedAreaChart.java"]:
+    - Div:
+      - Paragraph "Stepped Area Chart"
+      - GoogleChart "Energy Consumption" [type=stepped-area]:
+        - Row ["Director (Year)"="Alfred Hitchcock (1935)"] ["Rotten Tomatoes"=8.4] [IMDB=7.9]
+        - Row ["Director (Year)"="Ridley Scott (1979)"] ["Rotten Tomatoes"=8.5] [IMDB=8.4]
+        - Row ["Director (Year)"="Peter Jackson (2001)"] ["Rotten Tomatoes"=9.0] [IMDB=8.8]
+        - Row ["Director (Year)"="Christopher Nolan (2008)"] ["Rotten Tomatoes"=9.0] [IMDB=9.0]
+        - Row ["Director (Year)"="Martin Scorsese (1980)"] ["Rotten Tomatoes"=8.7] [IMDB=8.8]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/BubbleChart.java"]:
+    - Div:
+      - Paragraph "Bubble Chart"
+      - GoogleChart "Investment vs. Profit" [type=bubble]:
+        - Row [ID=1] [X=80] [Y=167] [Temperature=120]
+        - Row [ID=2] [X=79] [Y=136] [Temperature=130]
+        - Row [ID=3] [X=78] [Y=184] [Temperature=50]
+        - Row [ID=4] [X=72] [Y=278] [Temperature=230]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/OrgChart.java"]:
+    - Div:
+      - Paragraph "Org Chart"
+      - GoogleChart "Company Organization Structure" [type=org]:
+        - Row [Name=President] [Tooltip="The President"]
+        - Row [Name="VP of Sales"] [Manager=President] [Tooltip="VP of Sales"]
+        - Row [Name="VP of Marketing"] [Manager=President] [Tooltip="VP of Marketing"]
+        - Row [Name="Sales Manager 1"] [Manager="VP of Sales"] [Tooltip="Sales Manager 1"]
+        - Row [Name="Sales Manager 2"] [Manager="VP of Sales"] [Tooltip="Sales Manager 2"]
+        - Row [Name="Marketing Manager 1"] [Manager="VP of Marketing"] [Tooltip="Marketing Manager 1"]
+        - Row [Name="Marketing Manager 2"] [Manager="VP of Marketing"] [Tooltip="Marketing Manager 2"]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/TreemapChart.java"]:
+    - Div:
+      - Paragraph "Treemap Chart"
+      - GoogleChart "Market Segmentation" [type=treemap]:
+        - Row [Location=Global] ["Market trade volume (size)"=0] ["Market increase/decrease (color)"=0]
+        - Row [Location=America] [Parent=Global] ["Market trade volume (size)"=0] ["Market increase/decrease (color)"=0]
+        - Row [Location=Europe] [Parent=Global] ["Market trade volume (size)"=0] ["Market increase/decrease (color)"=0]
+        - Row [Location=Asia] [Parent=Global] ["Market trade volume (size)"=0] ["Market increase/decrease (color)"=0]
+        - Row [Location=Australia] [Parent=Global] ["Market trade volume (size)"=0] ["Market increase/decrease (color)"=0]
+        - Row [Location=Africa] [Parent=Global] ["Market trade volume (size)"=0] ["Market increase/decrease (color)"=0]
+        - Row [Location=Brazil] [Parent=America] ["Market trade volume (size)"=11] ["Market increase/decrease (color)"=10]
+        - Row [Location=USA] [Parent=America] ["Market trade volume (size)"=52] ["Market increase/decrease (color)"=31]
+        - Row [Location=Mexico] [Parent=America] ["Market trade volume (size)"=24] ["Market increase/decrease (color)"=12]
+        - Row [Location=Canada] [Parent=America] ["Market trade volume (size)"=16] ["Market increase/decrease (color)"=-23]
+        - …
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/TableChart.java"]:
+    - Div:
+      - Paragraph "Table Chart"
+      - GoogleChart "Sales Data" [type=table]:
+        - Row [Name="John Smith"] [Salary=30000] ["Full Time"=true] ["Start Date"=2019-01-10]
+        - Row [Name="Jane Doe"] [Salary=50000] ["Full Time"=true] ["Start Date"=2020-05-29]
+        - Row [Name="Emily Johnson"] [Salary=45000] ["Full Time"=false] ["Start Date"=2018-06-15]
+        - Row [Name="Michael Brown"] [Salary=55000] ["Full Time"=true] ["Start Date"=2021-03-30]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/GaugeChart.java"]:
+    - Div:
+      - Paragraph "Gauge Chart"
+      - GoogleChart "Performance Metrics" [type=gauge]:
+        - Row [Label=Memory] [Value=80]
+        - Row [Label=CPU] [Value=55]
+        - Row [Label=Network] [Value=68]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/CandlestickChart.java"]:
+    - Div:
+      - Paragraph "Candlestick Chart"
+      - GoogleChart "Stock Market Trends" [type=candlestick]:
+        - Row [Day=Mon] [Low=20] [Opening=28] [Closing=38] [High=45]
+        - Row [Day=Tue] [Low=31] [Opening=38] [Closing=55] [High=66]
+        - Row [Day=Wed] [Low=50] [Opening=55] [Closing=60] [High=70]
+        - Row [Day=Thu] [Low=35] [Opening=40] [Closing=50] [High=55]
+        - Row [Day=Fri] [Low=20] [Opening=22] [Closing=30] [High=50]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/SankeyChart.java"]:
+    - Div:
+      - Paragraph "Sankey Chart"
+      - GoogleChart "Flow of Resources" [type=sankey]:
+        - Row [From=Brazil] [To=Portugal] [Weight=5]
+        - Row [From=Brazil] [To=France] [Weight=1]
+        - Row [From=Brazil] [To=Spain] [Weight=1]
+        - Row [From=Canada] [To=Portugal] [Weight=1]
+        - Row [From=Canada] [To=France] [Weight=5]
+        - Row [From=Canada] [To=England] [Weight=1]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/WordtreeChart.java"]:
+    - Div:
+      - Paragraph "Wordtree Chart"
+      - GoogleChart "Word Usage Tree" [type=wordtree]:
+        - Row [Phrases="cats are better than dogs"]
+        - Row [Phrases="cats eat kibble"]
+        - Row [Phrases="cats are better than hamsters"]
+        - Row [Phrases="cats are awesome"]
+        - Row [Phrases="cats are people too"]
+        - Row [Phrases="cats eat mice"]
+        - Row [Phrases="cats meowing"]
+        - Row [Phrases="cats in the cradle"]
+        - Row [Phrases="cats eat mice"]
+        - Row [Phrases="cats in the cradle lyrics"]
+        - …
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/TimelineChart.java"]:
+    - Div:
+      - Paragraph "Timeline Chart"
+      - GoogleChart "Presidential Terms" [type=timeline]:
+        - Row [Term=1] [President="George Washington"] [Start="Date(1789, 3, 30)"] [End="Date(1797, 2, 4)"]
+        - Row [Term=2] [President="John Adams"] [Start="Date(1797, 2, 4)"] [End="Date(1801, 2, 4)"]
+        - Row [Term=3] [President="Thomas Jefferson"] [Start="Date(1801, 2, 4)"] [End="Date(1809, 2, 4)"]
+        - Row [Term=4] [President="James Madison"] [Start="Date(1809, 2, 4)"] [End="Date(1817, 2, 4)"]
+        - Row [Term=5] [President="James Monroe"] [Start="Date(1817, 2, 4)"] [End="Date(1825, 2, 4)"]
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/CalendarChart.java"]:
+    - Div:
+      - Paragraph "Calendar Chart"
+      - GoogleChart "Attendance Calendar" [type=calendar]:
+        - Row [Date="Date(2022, 0, 1)"] [Attendance=300]
+        - Row [Date="Date(2022, 0, 4)"] [Attendance=600]
+        - Row [Date="Date(2022, 0, 5)"] [Attendance=200]
+        - Row [Date="Date(2022, 0, 7)"] [Attendance=300]
+        - Row [Date="Date(2022, 0, 8)"] [Attendance=400]
+        - Row [Date="Date(2022, 0, 11)"] [Attendance=200]
+        - Row [Date="Date(2022, 0, 14)"] [Attendance=400]
+        - Row [Date="Date(2022, 0, 18)"] [Attendance=300]
+        - Row [Date="Date(2022, 0, 19)"] [Attendance=400]
+        - Row [Date="Date(2022, 0, 21)"] [Attendance=600]
+        - …
+  - Anchor [href="https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/GanttChart.java"]:
+    - Div:
+      - Paragraph "Gantt Chart"
+      - GoogleChart "Project Schedule" [type=gantt]:
+        - Row ["Task ID"=Research] ["Task Name"="Find Topics"] ["Start Date"="Date(2022, 0, 1)"] ["End Date"="Date(2022, 0, 3)"] ["Percent Complete"=100]
+        - Row ["Task ID"=Write] ["Task Name"="Draft Outline"] ["Start Date"="Date(2022, 0, 4)"] ["End Date"="Date(2022, 0, 6)"] ["Percent Complete"=25] [Dependencies=Research]
+        - Row ["Task ID"=Review] ["Task Name"="Revise Draft"] ["Start Date"="Date(2022, 0, 7)"] ["End Date"="Date(2022, 0, 9)"] ["Percent Complete"=0] [Dependencies=Write]
+        - Row ["Task ID"=Finalize] ["Task Name"="Complete Article"] ["Start Date"="Date(2022, 0, 10)"] ["End Date"="Date(2022, 0, 12)"] ["Percent Complete"=0] [Dependencies=Review]

@@ -1,0 +1,18 @@
+# webforJ testbed snapshot v1
+- UploadPresetsView [route=uploadpresets]:
+  - FlexLayout:
+    - H4 "FULL"
+    - Upload [drop] [multiple]:
+      - Filter "Files" [pattern="*.*"]
+  - FlexLayout:
+    - H4 "INLINE"
+    - Upload [drop] [multiple]:
+      - Filter "Files" [pattern="*.*"]
+  - FlexLayout:
+    - H4 "BUTTON_ONLY"
+    - Upload [drop] [multiple]:
+      - Filter "Files" [pattern="*.*"]
+  - FlexLayout:
+    - H4 "DROPZONE"
+    - Upload [drop] [multiple]:
+      - Filter "Files" [pattern="*.*"]

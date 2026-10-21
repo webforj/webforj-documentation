@@ -1,0 +1,8 @@
+# webforJ testbed snapshot v1
+- ToolbarProgressbarView [route=toolbarprogressbar]:
+  - H1 "Application Title"
+  - Paragraph "Content goes here"
+  - Toolbar:
+    - H3 "Application" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - ProgressBar [value=75] [min=0] [max=100] [theme=primary]

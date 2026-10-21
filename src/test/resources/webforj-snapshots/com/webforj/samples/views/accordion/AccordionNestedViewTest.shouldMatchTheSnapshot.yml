@@ -1,0 +1,14 @@
+# webforJ testbed snapshot v1
+- AccordionNestedView [route=accordionnested]:
+  - H3 "Nested Accordions"
+  - Paragraph "Accordions can be nested inside other accordion panels."
+  - AccordionPanel "Outer Panel (contains nested accordion)" [expanded]:
+    - Accordion:
+      - AccordionPanel "Inner Panel A":
+        - Paragraph "Nested content A"
+      - AccordionPanel "Inner Panel B":
+        - Paragraph "Nested content B"
+      - AccordionPanel "Inner Panel C":
+        - Paragraph "Nested content C"
+  - AccordionPanel "Sibling Panel":
+    - Paragraph "This is a sibling of the outer panel."

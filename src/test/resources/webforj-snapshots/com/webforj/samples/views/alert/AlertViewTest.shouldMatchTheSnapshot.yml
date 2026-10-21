@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- AlertView [route=alert]:
+  - Alert [theme=primary]:
+    - Paragraph "The requested information is ready to be viewed."
+    - Button "View" [theme=primary]

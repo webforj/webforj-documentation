@@ -1,0 +1,9 @@
+# webforJ testbed snapshot v1
+- SpinnerThemeDemoView [route=spinnerthemedemo]:
+  - Spinner
+  - Spinner [theme=primary]
+  - Spinner [theme=success]
+  - Spinner [theme=danger]
+  - Spinner [theme=warning]
+  - Spinner [theme=gray]
+  - Spinner [theme=info]

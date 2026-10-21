@@ -1,0 +1,37 @@
+# webforJ testbed snapshot v1
+- ToolbarThemeView [route=toolbartheme]:
+  - Toolbar [theme=danger]:
+    - H1 "DANGER" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - IconButton [slot=end] [name=settings]
+    - IconButton [slot=end] [name=user]
+  - Toolbar:
+    - H1 "DEFAULT" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - IconButton [slot=end] [name=settings]
+    - IconButton [slot=end] [name=user]
+  - Toolbar [theme=gray]:
+    - H1 "GRAY" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - IconButton [slot=end] [name=settings]
+    - IconButton [slot=end] [name=user]
+  - Toolbar [theme=info]:
+    - H1 "INFO" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - IconButton [slot=end] [name=settings]
+    - IconButton [slot=end] [name=user]
+  - Toolbar [theme=primary]:
+    - H1 "PRIMARY" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - IconButton [slot=end] [name=settings]
+    - IconButton [slot=end] [name=user]
+  - Toolbar [theme=success]:
+    - H1 "SUCCESS" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - IconButton [slot=end] [name=settings]
+    - IconButton [slot=end] [name=user]
+  - Toolbar [theme=warning]:
+    - H1 "WARNING" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - IconButton [slot=end] [name=settings]
+    - IconButton [slot=end] [name=user]

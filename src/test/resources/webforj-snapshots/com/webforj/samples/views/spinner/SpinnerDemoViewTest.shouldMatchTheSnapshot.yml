@@ -1,0 +1,9 @@
+# webforJ testbed snapshot v1
+- SpinnerDemoView [route=spinnerdemo]:
+  - H3 "Complete your job application:"
+  - Icon [name=checks] [theme=success]
+  - Paragraph "Select the position you wish to apply for"
+  - Icon [name=checks] [theme=success]
+  - Paragraph "Provide your current location details"
+  - Spinner [theme=primary] [expanse=xxxsmall]
+  - Paragraph "Uploading your resume"

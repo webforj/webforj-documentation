@@ -1,0 +1,6 @@
+# webforJ testbed snapshot v1
+- UploadPickingFilesView [route=uploadpickingfiles]:
+  - H3 "Gallery uploader"
+  - Upload [maxFiles=20.0] [drop] [multiple]:
+    - Filter "Photos" [pattern="*.jpg;*.jpeg;*.png;*.heic"] [selected]
+    - Filter "Videos" [pattern="*.mp4;*.mov"]

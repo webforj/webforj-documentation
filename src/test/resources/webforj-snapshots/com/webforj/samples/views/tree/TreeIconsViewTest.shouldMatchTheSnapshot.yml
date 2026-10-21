@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- TreeIconsView [route=treeicons]:
+  - Tree [multiple]:
+    - TreeNode "Documents" [key=Documents] [expanded]:
+      - TreeNode "Reports" [key=Reports]:
+        - TreeNode "2023" [key=2023]:
+          - TreeNode "January.pdf" [key=January.pdf]
+          - TreeNode "February.pdf" [key=February.pdf]
+        - TreeNode "2022" [key=2022]:
+          - TreeNode "Q4.pdf" [key=Q4.pdf]
+          - TreeNode "Q3.pdf" [key=Q3.pdf]
+      - TreeNode "Invoices" [key=Invoices]:
+        - TreeNode "ClientA.pdf" [key=ClientA.pdf]
+        - TreeNode "ClientB.pdf" [key=ClientB.pdf]
+    - TreeNode "Pictures" [key=Pictures] [expanded]:
+      - TreeNode "Vacations" [key=Vacations] [expanded]:
+        - TreeNode "Beach.png" [key=Beach.png]
+        - TreeNode "Mountains.png" [key=Mountains.png] [selected]
+      - TreeNode "Events" [key=Events]:
+        - TreeNode "Birthday.jpg" [key=Birthday.jpg]

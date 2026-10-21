@@ -1,0 +1,10 @@
+# webforJ testbed snapshot v1
+- AccordionBasicView [route=accordionbasic]:
+  - H3 "Standalone Panels"
+  - Paragraph "Each panel works independently without a group wrapper."
+  - AccordionPanel "Section One" [expanded]:
+    - Paragraph "This panel starts opened. Each panel operates independently."
+  - AccordionPanel "Section Two":
+    - Paragraph "Content for section two. Click the header to expand."
+  - AccordionPanel "Section Three":
+    - Paragraph "Content for section three."

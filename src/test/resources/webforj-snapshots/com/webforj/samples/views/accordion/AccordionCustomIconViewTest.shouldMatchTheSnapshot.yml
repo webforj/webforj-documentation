@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- AccordionCustomIconView [route=accordioncustomicon]:
+  - AccordionPanel "Plus Icon Panel":
+    - Paragraph "This panel uses a custom expand/collapse icon via the icon slot."
+    - Icon [slot=icon] [name=plus]

@@ -1,0 +1,54 @@
+# webforJ testbed snapshot v1
+- DrawerContactView [route=drawercontact]:
+  - Button "Open Contacts"
+  - Drawer [label=Contacts] [opened]:
+    - FlexLayout:
+      - FlexLayout:
+        - FlexLayout "GB"
+        - FlexLayout:
+          - Paragraph "Gregory Baldrake"
+          - Paragraph "US - Albuquerque"
+        - Button:
+          - Icon [name=phone]
+      - FlexLayout:
+        - FlexLayout "BH"
+        - FlexLayout:
+          - Paragraph "Betsy Heebink"
+          - Paragraph "US - Madison"
+        - Button:
+          - Icon [name=phone]
+      - FlexLayout:
+        - FlexLayout "WO"
+        - FlexLayout:
+          - Paragraph "Wesley Osborn"
+          - Paragraph "US - Seattle"
+        - Button:
+          - Icon [name=phone]
+      - FlexLayout:
+        - FlexLayout "HC"
+        - FlexLayout:
+          - Paragraph "Harry Chuckie"
+          - Paragraph "US - Palm Springs"
+        - Button:
+          - Icon [name=phone]
+      - FlexLayout:
+        - FlexLayout "SM"
+        - FlexLayout:
+          - Paragraph "Stephanie McIntyre"
+          - Paragraph "US - Modesto"
+        - Button:
+          - Icon [name=phone]
+      - FlexLayout:
+        - FlexLayout "DS"
+        - FlexLayout:
+          - Paragraph "Dave Strum"
+          - Paragraph "US - Hagerstown"
+        - Button:
+          - Icon [name=phone]
+      - FlexLayout:
+        - FlexLayout "DB"
+        - FlexLayout:
+          - Paragraph "Dr. Jane Booker"
+          - Paragraph "US - Hagerstown"
+        - Button:
+          - Icon [name=phone]

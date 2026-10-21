@@ -1,0 +1,3 @@
+# webforJ testbed snapshot v1
+- MaskedTextFieldSpinnerView [route=maskedtextfieldspinner]:
+  - MaskedTextFieldSpinner "PRJ-002" [label="Project Code:"] [mask=AAA-000] [helperText="Select or spin through project codes"]

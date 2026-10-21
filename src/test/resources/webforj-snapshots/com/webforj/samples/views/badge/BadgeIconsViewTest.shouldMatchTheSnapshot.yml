@@ -1,0 +1,34 @@
+# webforJ testbed snapshot v1
+- BadgeIconsView [route=badgeicons]:
+  - H3 "Icon + Text (label prop)"
+  - FlexLayout:
+    - Badge "Done" [theme=success]:
+      - Icon [name=check-circle]
+    - Badge "Error" [theme=danger]:
+      - Icon [name=x-circle]
+    - Badge "Info" [theme=primary]:
+      - Icon [name=info]
+    - Badge "Warning" [theme=warning]:
+      - Icon [name=alert-triangle]
+  - H3 "Icon Only"
+  - FlexLayout:
+    - Badge [theme=success]:
+      - Icon [name=check]
+    - Badge [theme=danger]:
+      - Icon [name=x]
+    - Badge [theme=primary]:
+      - Icon [name=bell]
+    - Badge [theme=gray]:
+      - Icon [name=star]
+  - H3 "All Themes with Icon + Text"
+  - FlexLayout:
+    - Badge "New" [theme=primary]:
+      - Icon [name=star]
+    - Badge "Live" [theme=success]:
+      - Icon [name=radio]
+    - Badge "Alert" [theme=danger]:
+      - Icon [name=alert-circle]
+    - Badge "Draft" [theme=gray]:
+      - Icon [name=edit]
+    - Badge "Beta" [theme=warning]:
+      - Icon [name=zap]

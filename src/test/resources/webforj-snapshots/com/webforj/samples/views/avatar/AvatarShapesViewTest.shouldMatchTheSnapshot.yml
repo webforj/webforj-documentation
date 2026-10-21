@@ -1,0 +1,4 @@
+# webforJ testbed snapshot v1
+- AvatarShapesView [route=avatarshapes]:
+  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xlarge]
+  - Avatar "John Doe" [tooltip="John Doe"] [expanse=xlarge]

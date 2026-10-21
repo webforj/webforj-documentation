@@ -1,0 +1,29 @@
+# webforJ testbed snapshot v1
+- AppNavLabelView [route=appnavlabel]:
+  - Toolbar [theme=primary]:
+    - AppDrawerToggle [slot=start] [name=menu-2]
+    - H1 "Admin" [slot=title]
+  - AppNav:
+    - AppNavItem "Dashboard" [path=/appnavlabel/Dashboard]:
+      - Icon [slot=prefix] [name=layout-dashboard]
+    - AppNavLabel "Analytics":
+      - Icon [slot=prefix] [name=chart-pie]
+      - Badge "2" [slot=suffix] [theme=primary]
+    - AppNavItem "Overview" [path=/appnavlabel/Overview]:
+      - Icon [slot=prefix] [name=eye]
+    - AppNavItem "Reports" [path=/appnavlabel/Reports]:
+      - Icon [slot=prefix] [name=chart-bar]
+    - AppNavLabel "Commerce":
+      - Icon [slot=prefix] [name=shopping-bag]
+    - AppNavItem "Orders" [path=/appnavlabel/Orders]:
+      - Icon [slot=prefix] [name=shopping-cart]
+    - AppNavItem "Products" [path=/appnavlabel/Products]:
+      - Icon [slot=prefix] [name=box]
+    - AppNavItem "Customers" [path=/appnavlabel/Customers]:
+      - Icon [slot=prefix] [name=address-book]
+    - AppNavLabel "Account":
+      - Icon [slot=prefix] [name=user-cog]
+    - AppNavItem "Profile" [path=/appnavlabel/Profile]:
+      - Icon [slot=prefix] [name=user]
+    - AppNavItem "Billing" [path=/appnavlabel/Billing]:
+      - Icon [slot=prefix] [name=credit-card]

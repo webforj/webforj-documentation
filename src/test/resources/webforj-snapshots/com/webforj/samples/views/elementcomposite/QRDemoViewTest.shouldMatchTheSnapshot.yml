@@ -1,0 +1,4 @@
+# webforJ testbed snapshot v1
+- QRDemoView [route=qrdemo]:
+  - Div:
+    - QRCode

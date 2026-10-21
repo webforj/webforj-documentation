@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- BadgeSizesView [route=badgesizes]:
+  - H3 "All Sizes"
+  - FlexLayout:
+    - Badge "3xs" [theme=primary] [expanse=xxxsmall]
+    - Badge "2xs" [theme=primary] [expanse=xxsmall]
+    - Badge "xs" [theme=primary] [expanse=xsmall]
+    - Badge "s" [theme=primary]
+    - Badge "m" [theme=primary] [expanse=medium]
+    - Badge "l" [theme=primary] [expanse=large]
+    - Badge "xl" [theme=primary] [expanse=xlarge]
+    - Badge "2xl" [theme=primary] [expanse=xxlarge]
+    - Badge "3xl" [theme=primary] [expanse=xxxlarge]
+  - H3 "Single Character (circular)"
+  - FlexLayout:
+    - Badge "5" [theme=primary] [expanse=xsmall]
+    - Badge "5" [theme=primary]
+    - Badge "5" [theme=primary] [expanse=medium]
+    - Badge "5" [theme=primary] [expanse=large]
+    - Badge "5" [theme=primary] [expanse=xlarge]

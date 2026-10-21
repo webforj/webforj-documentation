@@ -1,0 +1,7 @@
+# webforJ testbed snapshot v1
+- ElementFigureView [route=elementfigure]:
+  - Div:
+    - H2 "Testimonial"
+    - Element [node=figure]:
+      - Element "Building the entire UI in Java kept our team on one stack." [node=blockquote]
+      - Element [node=figcaption]

@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- BadgeThemesView [route=badgethemes]:
+  - H3 "Default"
+  - FlexLayout:
+    - Badge "Default"
+    - Badge "Primary" [theme=primary]
+    - Badge "Success" [theme=success]
+    - Badge "Warning" [theme=warning]
+    - Badge "Danger" [theme=danger]
+    - Badge "Info" [theme=info]
+    - Badge "Gray" [theme=gray]
+  - H3 "Outlined"
+  - FlexLayout:
+    - Badge "Default" [theme=outlined-default]
+    - Badge "Primary" [theme=outlined-primary]
+    - Badge "Success" [theme=outlined-success]
+    - Badge "Warning" [theme=outlined-warning]
+    - Badge "Danger" [theme=outlined-danger]
+    - Badge "Info" [theme=outlined-info]
+    - Badge "Gray" [theme=outlined-gray]

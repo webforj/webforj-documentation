@@ -1,0 +1,14 @@
+# webforJ testbed snapshot v1
+- CardOrientationView [route=cardorientation]:
+  - Card:
+    - Img [slot=figure] [src="https://picsum.photos/seed/dwc-card-player/720/720"] [alt="Album art for Hotswap Nights by Ivy & The Composites"]
+    - H3 "Hotswap Nights" [slot=title]
+    - Span "Ivy & The Composites" [slot=caption]
+    - Slider [value=38] [min=0] [max=100]
+    - FlexLayout:
+      - Span "1:12"
+      - Span "-2:36"
+    - IconButton [slot=footer] [name=filled-player-track-prev] [label="Previous Track"]
+    - Button [slot=footer] [theme=primary]:
+      - Icon [name=filled-player-play]
+    - IconButton [slot=footer] [name=filled-player-track-next] [label="Next track"]

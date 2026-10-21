@@ -1,0 +1,30 @@
+# webforJ testbed snapshot v1
+- AppNavSearchView [route=appnavsearch]:
+  - Toolbar [theme=primary]:
+    - AppDrawerToggle [slot=start] [name=menu-2]
+    - H1 "Admin" [slot=title]
+  - AppNav:
+    - AppNavItem "Dashboard" [path=/appnavsearch/Dashboard]:
+      - Icon [slot=prefix] [name=layout-dashboard]
+    - AppNavItem "Reports" [path=/appnavsearch/Reports]:
+      - Icon [slot=prefix] [name=chart-bar]
+    - AppNavItem "Invoices":
+      - Icon [slot=prefix] [name=file-invoice]
+      - AppNavItem "Paid" [slot=items] [path=/appnavsearch/Paid]:
+        - Icon [slot=prefix] [name=check]
+      - AppNavItem "Drafts" [slot=items] [path=/appnavsearch/Drafts]:
+        - Icon [slot=prefix] [name=pencil]
+    - AppNavItem "Customers" [path=/appnavsearch/Customers]:
+      - Icon [slot=prefix] [name=address-book]
+    - AppNavItem "Orders" [path=/appnavsearch/Orders]:
+      - Icon [slot=prefix] [name=shopping-cart]
+    - AppNavItem "Products" [path=/appnavsearch/Products]:
+      - Icon [slot=prefix] [name=box]
+    - AppNavItem "Settings":
+      - Icon [slot=prefix] [name=settings]
+      - AppNavItem "Profile" [slot=items] [path=/appnavsearch/Profile]:
+        - Icon [slot=prefix] [name=user]
+      - AppNavItem "Billing" [slot=items] [path=/appnavsearch/Billing]:
+        - Icon [slot=prefix] [name=credit-card]
+      - AppNavItem "Team" [slot=items] [path=/appnavsearch/Team]:
+        - Icon [slot=prefix] [name=users]

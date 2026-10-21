@@ -1,0 +1,17 @@
+# webforJ testbed snapshot v1
+- ToolbarCompactView [route=toolbarcompact]:
+  - H1 "Application Title"
+  - Paragraph "Content goes here"
+  - Toolbar:
+    - H3 "Application" [slot=title]
+    - AppDrawerToggle [slot=start] [name=menu-2]
+  - Toolbar:
+    - TabbedPane:
+      - Tab "Sales" [selected]:
+        - Icon [slot=prefix] [name=report-money]
+      - Tab "Enterprise":
+        - Icon [slot=prefix] [name=building]
+      - Tab "Payments":
+        - Icon [slot=prefix] [name=credit-card]
+      - Tab "History":
+        - Icon [slot=prefix] [name=history]

@@ -1,0 +1,12 @@
+# webforJ testbed snapshot v1
+- AccordionCustomHeaderView [route=accordioncustomheader]:
+  - AccordionPanel:
+    - FlexLayout [slot=header]:
+      - Icon [name=settings]
+      - Span "Custom Header with Icon"
+    - Paragraph "The header slot lets you fully customize the header content."
+  - AccordionPanel:
+    - FlexLayout [slot=header]:
+      - Icon [name=user]
+      - Span "User Settings"
+    - Paragraph "Another panel with a custom header using the user icon."

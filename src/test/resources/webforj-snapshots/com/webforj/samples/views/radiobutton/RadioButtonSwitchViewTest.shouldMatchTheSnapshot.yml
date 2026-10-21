@@ -1,0 +1,4 @@
+# webforJ testbed snapshot v1
+- RadioButtonSwitchView [route=radiobuttonswitch]:
+  - RadioButton "Normal RadioButton" [expanse=xlarge]
+  - RadioButton "Switch RadioButton" [expanse=xlarge]

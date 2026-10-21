@@ -1,0 +1,14 @@
+# webforJ testbed snapshot v1
+- CheckboxHorizontalTextView [route=checkboxhorizontaltext]:
+  - FlexLayout:
+    - CheckBox "Daily" [value=true]
+    - CheckBox "Weekly"
+    - CheckBox "Bi-Weekly"
+    - CheckBox "Monthly"
+    - CheckBox "Annually"
+  - FlexLayout:
+    - CheckBox "Daily" [value=true]
+    - CheckBox "Weekly"
+    - CheckBox "Bi-Weekly"
+    - CheckBox "Monthly"
+    - CheckBox "Annually"

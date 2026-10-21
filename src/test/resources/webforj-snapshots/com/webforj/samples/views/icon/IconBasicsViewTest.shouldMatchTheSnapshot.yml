@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- IconBasicsView [route=iconbasics]:
+  - Icon [name=message]
+  - Icon [name=trash]
+  - Icon [name=edit]

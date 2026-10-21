@@ -1,0 +1,10 @@
+# webforJ testbed snapshot v1
+- ToolbarSlotsView [route=toolbarslots]:
+  - H1 "Application Title"
+  - Paragraph "Content goes here"
+  - Toolbar [theme=info]:
+    - H3 "Application" [slot=title]
+    - IconButton [slot=start] [name=menu-2]
+    - IconButton [slot=end] [name=settings]
+    - IconButton [slot=end] [name=user]
+    - H3 "Toolbar Content"

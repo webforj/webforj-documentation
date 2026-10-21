@@ -1,0 +1,35 @@
+# webforJ testbed snapshot v1
+- AppNavView [route=appnav]:
+  - Toolbar [theme=primary]:
+    - AppDrawerToggle [slot=start] [name=menu-2]
+    - H1 "Application" [slot=title]
+  - AppNav:
+    - AppNavItem "Inbox":
+      - Icon [slot=prefix] [name=inbox]
+      - Strong "54" [slot=suffix]
+      - AppNavItem "Primary" [slot=items] [path=/appnav/Primary]:
+        - Icon [slot=prefix] [name=mailbox]
+      - AppNavItem "Promotions" [slot=items] [path=/appnav/Promotions]:
+        - Icon [slot=prefix] [name=tag]
+      - AppNavItem "Social" [slot=items] [path=/appnav/Social]:
+        - Icon [slot=prefix] [name=users]
+      - AppNavItem "Updates" [slot=items] [path=/appnav/Updates]:
+        - Icon [slot=prefix] [name=bell]
+      - AppNavItem "Forums" [slot=items] [path=/appnav/Forums]:
+        - Icon [slot=prefix] [name=message-circle]
+    - AppNavItem "Sent" [path=/appnav/Sent]:
+      - Icon [slot=prefix] [name=send]
+    - AppNavItem "Archived" [path=/appnav/Archived]:
+      - Icon [slot=prefix] [name=archive]
+    - AppNavItem "Trash" [path=/appnav/Trash]:
+      - Icon [slot=prefix] [name=trash]
+    - AppNavItem "Spam" [path=/appnav/Spam]:
+      - Icon [slot=prefix] [name=alert-hexagon]
+    - AppNavItem "About":
+      - Icon [slot=prefix] [name=info-circle]
+      - AppNavItem "webforJ" [slot=items] [path="https://webforj.com/"]:
+        - Icon [slot=prefix] [name=external-link]
+      - AppNavItem "GitHub" [slot=items] [path="https://github.com/webforj/webforj"]:
+        - Icon [slot=prefix] [name=brand-github]
+      - AppNavItem "Documentation" [slot=items] [path="https://documentation.webforj.com/"]:
+        - Icon [slot=prefix] [name=book]

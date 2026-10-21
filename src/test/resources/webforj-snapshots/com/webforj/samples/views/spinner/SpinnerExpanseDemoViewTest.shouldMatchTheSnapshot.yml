@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- SpinnerExpanseDemoView [route=spinnerexpansedemo]:
+  - Spinner [theme=primary] [expanse=small]
+  - Spinner [theme=primary]
+  - Spinner [theme=primary] [expanse=large]

@@ -1,0 +1,11 @@
+# webforJ testbed snapshot v1
+- ViewTransitionMorphView [route=viewtransitionmorph]:
+  - DemoHeader:
+    - H3 "Shared Element Morph"
+    - Paragraph "Click the card to expand. The image and title morph between states."
+    - FlexLayout
+  - Div:
+    - BlogCard:
+      - H4 "The Art of Writing"
+      - Div
+      - Paragraph "Discover techniques that transform words into compelling stories."

@@ -1,0 +1,7 @@
+# webforJ testbed snapshot v1
+- FlexWrappingView [route=flexwrapping]:
+  - Div:
+    - FlexLayout:
+      - Button "Button 1" [theme=primary]
+      - Button "Button 2"
+      - Button "Button 3"

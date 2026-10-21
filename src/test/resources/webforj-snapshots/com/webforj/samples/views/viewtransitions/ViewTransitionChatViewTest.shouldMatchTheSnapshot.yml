@@ -1,0 +1,10 @@
+# webforJ testbed snapshot v1
+- ViewTransitionChatView [route=viewtransitionchat]:
+  - DemoHeader:
+    - H3 "Chat Widget"
+    - Paragraph "Click the button to toggle the chat panel with zoom transitions."
+    - FlexLayout
+  - Div
+  - Div:
+    - Button [theme=primary]:
+      - Icon [name=message-circle]

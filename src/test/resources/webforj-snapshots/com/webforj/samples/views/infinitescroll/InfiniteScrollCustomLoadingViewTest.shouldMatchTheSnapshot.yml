@@ -1,0 +1,7 @@
+# webforJ testbed snapshot v1
+- InfiniteScrollCustomLoadingView [route=infinitescrollcustomloading]:
+  - InfiniteScroll "Loading data":
+    - Div
+    - Div [slot=content]:
+      - Icon [name=cloud]
+      - Span "Loading awesome content..."

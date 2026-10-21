@@ -1,0 +1,33 @@
+# webforJ testbed snapshot v1
+- AppLayoutStickyToolbarView [route=applayoutstickytoolbar]:
+  - Toolbar:
+    - AppDrawerToggle [slot=start] [name=menu-2]
+    - H3 "Application" [slot=title]
+  - Toolbar:
+    - TabbedPane [slot=start]:
+      - Tab "Sales" [selected]:
+        - Icon [slot=prefix] [name=report-money]
+      - Tab "Enterprise":
+        - Icon [slot=prefix] [name=building]
+      - Tab "Payments":
+        - Icon [slot=prefix] [name=credit-card]
+      - Tab "History":
+        - Icon [slot=prefix] [name=history]
+  - DrawerLogo:
+    - Img [src=/img/webforj_icon.svg] [alt=logo]
+  - Div:
+    - AppNav:
+      - AppNavItem "Dashboard" [path=/applayoutstickytoolbar/content/Dashboard]:
+        - Icon [slot=prefix] [name=dashboard]
+      - AppNavItem "Orders" [path=/applayoutstickytoolbar/content/Orders]:
+        - Icon [slot=prefix] [name=shopping-cart]
+      - AppNavItem "Customers" [path=/applayoutstickytoolbar/content/Customers]:
+        - Icon [slot=prefix] [name=users]
+      - AppNavItem "Products" [path=/applayoutstickytoolbar/content/Products]:
+        - Icon [slot=prefix] [name=box]
+      - AppNavItem "Documents" [path=/applayoutstickytoolbar/content/Documents]:
+        - Icon [slot=prefix] [name=files]
+      - AppNavItem "Tasks" [path=/applayoutstickytoolbar/content/Tasks]:
+        - Icon [slot=prefix] [name=checklist]
+      - AppNavItem "Analytics" [path=/applayoutstickytoolbar/content/Analytics]:
+        - Icon [slot=prefix] [name=chart-dots-2]

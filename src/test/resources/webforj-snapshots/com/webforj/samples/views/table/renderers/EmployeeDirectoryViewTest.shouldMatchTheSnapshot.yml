@@ -1,0 +1,19 @@
+# webforJ testbed snapshot v1
+- EmployeeDirectoryView [route=employeedirectory]:
+  - Table [itemType=Employee]:
+    - Column [id=name] [label=Employee] [sortable]
+    - Column [id=department] [sortable]
+    - Column [id=status] [sortable]
+    - Column [id=fullTime] [label=Full-time] [sortable]
+    - Column [id=email] [sortable]
+    - Row [name="Alice Martin"] [department=Engineering] [status=Active] [fullTime=true] [email="alice@example.com"]
+    - Row [name="Bob Chen"] [department=Design] [status=Remote] [fullTime=true] [email="bob@example.com"]
+    - Row [name="Carol Smith"] [department=HR] [status="On Leave"] [fullTime=false] [email="carol@example.com"]
+    - Row [name="David Lee"] [department=Engineering] [status=Active] [fullTime=true] [email="david@example.com"]
+    - Row [name="Eva Brown"] [department=Marketing] [status=Remote] [fullTime=true] [email="eva@example.com"]
+    - Row [name="Frank White"] [department=Engineering] [status=Active] [fullTime=false] [email="frank@example.com"]
+    - Row [name="Grace Kim"] [department=Finance] [status=Active] [fullTime=true] [email="grace@example.com"]
+    - Row [name="Henry Davis"] [department=Design] [status=Remote] [fullTime=true] [email="henry@example.com"]
+    - Row [name="Isla Thompson"] [department=Engineering] [status=Active] [fullTime=true] [email="isla@example.com"]
+    - Row [name="Jack Wilson"] [department=Marketing] [status=Active] [fullTime=false] [email="jack@example.com"]
+    - …

@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- ProductCatalogView [route=productcatalog]:
+  - Table [itemType=Product]:
+    - Column [id=name] [label=Product] [sortable]
+    - Column [id=category] [sortable]
+    - Column [id=price] [sort=desc] [sortable]
+    - Column [id=discount] [sortable]
+    - Column [id=rating] [sortable]
+    - Column [id=inStock] [label="In Stock"] [sortable]
+    - Row [name="Mechanical Keyboard"] [category=Electronics] [price=129.99] [discount=5] [rating=4.7] [inStock=true]
+    - Row [name="Portable SSD 1TB"] [category=Electronics] [price=89.99] [discount=12] [rating=4.8] [inStock=true]
+    - Row [name="Wireless Headphones"] [category=Electronics] [price=79.99] [discount=10] [rating=4.5] [inStock=true]
+    - Row [name="Webcam 1080p"] [category=Electronics] [price=59.99] [discount=8] [rating=4.1] [inStock=true]
+    - Row [name="Standing Desk Mat"] [category=Office] [price=49.99] [discount=5] [rating=4.5] [inStock=true]
+    - Row [name="Monitor Stand"] [category=Office] [price=45.0] [discount=0] [rating=4.4] [inStock=true]
+    - Row [name="Ergonomic Mouse"] [category=Electronics] [price=39.99] [discount=0] [rating=4.6] [inStock=false]
+    - Row [name="Whiteboard 60x45cm"] [category=Office] [price=38.0] [discount=8] [rating=4.3] [inStock=true]
+    - Row [name="USB-C Hub"] [category=Electronics] [price=34.99] [discount=20] [rating=4.2] [inStock=true]
+    - Row [name="Desk Organiser"] [category=Office] [price=29.99] [discount=0] [rating=4.1] [inStock=true]
+    - …

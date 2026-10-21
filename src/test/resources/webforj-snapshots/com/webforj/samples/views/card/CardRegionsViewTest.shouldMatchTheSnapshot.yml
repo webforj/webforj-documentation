@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- CardRegionsView [route=cardregions]:
+  - Card:
+    - FlexLayout:
+      - FlexLayout:
+        - Span "$412,800"
+        - Span "Up 12% over June"
+      - Paragraph "Sales climbed across every region, with the strongest growth in the Northeast."
+    - GoogleChart [slot=figure] [type=column]:
+      - Row [Month=Feb] [Sales=268000]
+      - Row [Month=Mar] [Sales=291000]
+      - Row [Month=Apr] [Sales=334000]
+      - Row [Month=May] [Sales=356000]
+      - Row [Month=Jun] [Sales=368000]
+      - Row [Month=Jul] [Sales=412800]
+    - Icon [slot=icon] [name=chart-bar]
+    - H3 "Monthly Report" [slot=title]
+    - Paragraph "July 2026" [slot=caption]
+    - Button "Share" [slot=header-actions] [theme=outlined-primary]
+    - Button "Read More" [slot=footer]

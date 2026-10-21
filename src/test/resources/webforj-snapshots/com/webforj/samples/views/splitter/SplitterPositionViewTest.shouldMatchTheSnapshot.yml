@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- SplitterPositionView [route=splitterposition]:
+  - Splitter:
+    - SplitterBox [slot=master]
+    - SplitterBox [slot=detail]

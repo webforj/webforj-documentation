@@ -1,0 +1,13 @@
+# webforJ testbed snapshot v1
+- SplitterAutoSaveView [route=splitterautosave]:
+  - FlexLayout:
+    - FlexLayout:
+      - Element [node=dwc-icon-button]
+      - Button "Clear State"
+    - Splitter:
+      - Splitter [slot=master]:
+        - SplitterBox [slot=master]
+        - SplitterBox [slot=detail]
+      - Splitter [slot=detail]:
+        - SplitterBox [slot=master]
+        - SplitterBox [slot=detail]

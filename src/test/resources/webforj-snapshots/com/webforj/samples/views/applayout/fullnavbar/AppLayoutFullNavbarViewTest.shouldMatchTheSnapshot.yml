@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- AppLayoutFullNavbarView [route=applayoutfullnavbar]:
+  - Toolbar:
+    - AppDrawerToggle [slot=start] [name=menu-2]
+    - H3 " Application" [slot=title]
+  - AppNav:
+    - AppNavItem "Dashboard" [path=/applayoutfullnavbar/content/Dashboard]:
+      - Icon [slot=prefix] [name=dashboard]
+    - AppNavItem "Orders" [path=/applayoutfullnavbar/content/Orders]:
+      - Icon [slot=prefix] [name=shopping-cart]
+    - AppNavItem "Customers" [path=/applayoutfullnavbar/content/Customers]:
+      - Icon [slot=prefix] [name=users]
+    - AppNavItem "Products" [path=/applayoutfullnavbar/content/Products]:
+      - Icon [slot=prefix] [name=box]
+    - AppNavItem "Documents" [path=/applayoutfullnavbar/content/Documents]:
+      - Icon [slot=prefix] [name=files]
+    - AppNavItem "Tasks" [path=/applayoutfullnavbar/content/Tasks]:
+      - Icon [slot=prefix] [name=checklist]
+    - AppNavItem "Analytics" [path=/applayoutfullnavbar/content/Analytics]:
+      - Icon [slot=prefix] [name=chart-dots-2]

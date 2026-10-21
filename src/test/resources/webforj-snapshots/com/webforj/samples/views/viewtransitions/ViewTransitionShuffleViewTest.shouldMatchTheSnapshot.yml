@@ -1,0 +1,32 @@
+# webforJ testbed snapshot v1
+- ViewTransitionShuffleView [route=viewtransitionshuffle]:
+  - DemoHeader:
+    - H3 "List Reorder"
+    - Paragraph "Click shuffle to reorder items. Each item animates to its new position."
+    - FlexLayout:
+      - IconButton [name=shuffle]
+  - FlexLayout:
+    - ShuffleCard:
+      - Div "#1"
+      - Icon [name=mail]
+      - FlexLayout:
+        - Div "Messages"
+        - Div "3 unread"
+    - ShuffleCard:
+      - Div "#2"
+      - Icon [name=check-square]
+      - FlexLayout:
+        - Div "Tasks"
+        - Div "5 pending"
+    - ShuffleCard:
+      - Div "#3"
+      - Icon [name=calendar]
+      - FlexLayout:
+        - Div "Calendar"
+        - Div "2 events today"
+    - ShuffleCard:
+      - Div "#4"
+      - Icon [name=settings]
+      - FlexLayout:
+        - Div "Settings"
+        - Div "Last updated"

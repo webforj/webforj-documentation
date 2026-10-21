@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- SplitterOrientationView [route=splitterorientation]:
+  - Splitter:
+    - SplitterBox [slot=master]
+    - SplitterBox [slot=detail]

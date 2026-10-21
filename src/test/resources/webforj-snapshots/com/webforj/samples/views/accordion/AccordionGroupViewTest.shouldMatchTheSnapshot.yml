@@ -1,0 +1,11 @@
+# webforJ testbed snapshot v1
+- AccordionGroupView [route=accordiongroup]:
+  - H3 "Accordion Group (single mode)"
+  - Paragraph "Only one panel can be open at a time."
+  - Accordion:
+    - AccordionPanel "What is webforJ?" [expanded]:
+      - Paragraph "webforJ is a Java framework for building web applications."
+    - AccordionPanel "How do grouped panels work?":
+      - Paragraph "Panels inside an Accordion are coordinated. By default, expanding one collapses the others."
+    - AccordionPanel "Can I have multiple groups?":
+      - Paragraph "Yes, each Accordion instance manages its own set of panels independently."

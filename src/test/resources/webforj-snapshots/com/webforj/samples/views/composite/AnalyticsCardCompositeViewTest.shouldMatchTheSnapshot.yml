@@ -1,0 +1,17 @@
+# webforJ testbed snapshot v1
+- AnalyticsCardCompositeView [route=analyticscardcomposite]:
+  - Div:
+    - FlexLayout:
+      - FlexLayout:
+        - Paragraph "Monthly Sales"
+        - Span "$45,000"
+      - FlexLayout:
+        - Icon [name=arrow-up] [theme=success]
+        - Span "12% from last month"
+      - ProgressBar "75% of monthly goal reached" [value=75] [min=0] [max=100]
+      - GoogleChart [type=line]:
+        - Row [Month=Jan] [Sales=25000]
+        - Row [Month=Feb] [Sales=32000]
+        - Row [Month=Mar] [Sales=27000]
+        - Row [Month=Apr] [Sales=35000]
+        - Row [Month=May] [Sales=45000]

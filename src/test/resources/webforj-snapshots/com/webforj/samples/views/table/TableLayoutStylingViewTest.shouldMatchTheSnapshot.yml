@@ -1,0 +1,12 @@
+# webforJ testbed snapshot v1
+- TableLayoutStylingView [route=tablelayoutstyling]:
+  - Table [itemType=Person]:
+    - Column [id=Name] [sortable]
+    - Column [id=Age] [sortable]
+    - Column [id=City] [sortable]
+    - Row [Name=Alice] [Age=28] [City="New York"]
+    - Row [Name=Bob] [Age=35] [City=Chicago]
+    - Row [Name=Charlie] [Age=25] [City="Los Angeles"]
+    - Row [Name=David] [Age=40] [City="San Francisco"]
+    - Row [Name=Eve] [Age=30] [City=Boston]
+    - Row [Name=Frank] [Age=45] [City=Miami]

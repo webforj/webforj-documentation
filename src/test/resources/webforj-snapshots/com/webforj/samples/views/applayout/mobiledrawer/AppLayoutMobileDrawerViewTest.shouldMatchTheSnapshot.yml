@@ -1,0 +1,36 @@
+# webforJ testbed snapshot v1
+- AppLayoutMobileDrawerView [route=applayoutmobiledrawer]:
+  - Toolbar:
+    - AppDrawerToggle [slot=start] [name=menu-2]
+    - H3 "Application" [slot=title]
+  - Div:
+    - DrawerLogo:
+      - Img [src=/img/webforj_icon.svg] [alt=logo]
+    - AppNav:
+      - AppNavItem "Dashboard" [path=/applayoutmobiledrawer/content/Dashboard]:
+        - Icon [slot=prefix] [name=dashboard]
+      - AppNavItem "Orders" [path=/applayoutmobiledrawer/content/Orders]:
+        - Icon [slot=prefix] [name=shopping-cart]
+      - AppNavItem "Customers" [path=/applayoutmobiledrawer/content/Customers]:
+        - Icon [slot=prefix] [name=users]
+      - AppNavItem "Products" [path=/applayoutmobiledrawer/content/Products]:
+        - Icon [slot=prefix] [name=box]
+      - AppNavItem "Documents" [path=/applayoutmobiledrawer/content/Documents]:
+        - Icon [slot=prefix] [name=files]
+      - AppNavItem "Tasks" [path=/applayoutmobiledrawer/content/Tasks]:
+        - Icon [slot=prefix] [name=checklist]
+      - AppNavItem "Analytics" [path=/applayoutmobiledrawer/content/Analytics]:
+        - Icon [slot=prefix] [name=chart-dots-2]
+  - H1 "Application Title"
+  - Paragraph "Content goes here..."
+  - TabbedPane [expanse=xlarge]:
+    - Tab [selected]:
+      - IconButton [slot=prefix] [name=dashboard]
+    - Tab:
+      - IconButton [slot=prefix] [name=shopping-cart]
+    - Tab:
+      - IconButton [slot=prefix] [name=users]
+    - Tab:
+      - IconButton [slot=prefix] [name=box]
+    - Tab:
+      - IconButton [slot=prefix] [name=files]

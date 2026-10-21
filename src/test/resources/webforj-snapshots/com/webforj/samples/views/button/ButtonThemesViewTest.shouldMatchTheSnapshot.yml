@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- ButtonThemesView [route=buttonthemes]:
+  - Div:
+    - FlexLayout:
+      - FlexLayout:
+        - Button "DANGER" [theme=danger]
+        - Button "DEFAULT"
+        - Button "GRAY" [theme=gray]
+        - Button "INFO" [theme=info]
+        - Button "PRIMARY" [theme=primary]
+        - Button "SUCCESS" [theme=success]
+        - Button "WARNING" [theme=warning]
+      - FlexLayout:
+        - Button "OUTLINED_DANGER" [theme=outlined-danger]
+        - Button "OUTLINED_DEFAULT" [theme=outlined-default]
+        - Button "OUTLINED_GRAY" [theme=outlined-gray]
+        - Button "OUTLINED_INFO" [theme=outlined-info]
+        - Button "OUTLINED_PRIMARY" [theme=outlined-primary]
+        - Button "OUTLINED_SUCCESS" [theme=outlined-success]
+        - Button "OUTLINED_WARNING" [theme=outlined-warning]

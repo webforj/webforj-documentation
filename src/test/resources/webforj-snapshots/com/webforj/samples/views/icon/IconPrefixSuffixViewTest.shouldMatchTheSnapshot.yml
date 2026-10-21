@@ -1,0 +1,6 @@
+# webforJ testbed snapshot v1
+- IconPrefixSuffixView [route=iconprefixsuffix]:
+  - Button "Next" [theme=primary]:
+    - Icon [slot=suffix] [name=arrow-narrow-right]
+  - Button "Filter":
+    - Icon [slot=prefix] [name=filter]

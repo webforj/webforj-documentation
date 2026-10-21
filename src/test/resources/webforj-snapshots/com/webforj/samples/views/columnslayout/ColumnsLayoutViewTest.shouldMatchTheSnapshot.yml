@@ -1,0 +1,9 @@
+# webforJ testbed snapshot v1
+- ColumnsLayoutView [route=columnslayout]:
+  - ColumnsLayout:
+    - TextField [label="First Name"]
+    - TextField [label="Last Name"]
+    - TextField [label=Email]
+    - PasswordField [label=Password]
+    - PasswordField [label="Confirm Password"]
+    - Button "Submit" [theme=primary]

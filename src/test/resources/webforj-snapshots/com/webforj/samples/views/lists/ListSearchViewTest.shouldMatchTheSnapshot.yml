@@ -1,0 +1,14 @@
+# webforJ testbed snapshot v1
+- ListSearchView [route=listsearch]:
+  - ComboBox [label="Country of residence"]:
+    - ListItem "Argentina" [key=Argentina] [selected]
+    - ListItem "Australia" [key=Australia]
+    - ListItem "Austria" [key=Austria]
+    - ListItem "Belgium" [key=Belgium]
+    - ListItem "Brazil" [key=Brazil]
+    - ListItem "Canada" [key=Canada]
+    - ListItem "Chile" [key=Chile]
+    - ListItem "Denmark" [key=Denmark]
+    - ListItem "Finland" [key=Finland]
+    - ListItem "France" [key=France]
+    - … 13 more

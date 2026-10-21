@@ -1,0 +1,35 @@
+# webforJ testbed snapshot v1
+- CardView [route=card]:
+  - Card:
+    - H3 "Basic Plan" [slot=header]
+    - Span "Perfect for individuals" [slot=header]
+    - H4 "$9/month"
+    - UnorderedList:
+      - ListEntry:
+        - Icon [name=check]
+        - Span "Up to 10 projects"
+      - ListEntry:
+        - Icon [name=check]
+        - Span "Email support"
+      - ListEntry:
+        - Icon [name=check]
+        - Span "Standard analytics"
+    - Button "Choose Basic" [slot=footer] [theme=primary]
+  - Card:
+    - H3 "Pro Plan" [slot=header]
+    - Span "Best for growing teams" [slot=header]
+    - H4 "$19/month"
+    - UnorderedList:
+      - ListEntry:
+        - Icon [name=check]
+        - Span "Unlimited projects"
+      - ListEntry:
+        - Icon [name=check]
+        - Span "Priority email support"
+      - ListEntry:
+        - Icon [name=check]
+        - Span "Advanced analytics"
+      - ListEntry:
+        - Icon [name=check]
+        - Span "Custom integrations"
+    - Button "Choose Pro" [slot=footer] [theme=primary]

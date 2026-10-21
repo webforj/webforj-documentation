@@ -1,0 +1,26 @@
+# webforJ testbed snapshot v1
+- BadgeTabbedPaneView [route=badgetabbedpane]:
+  - H3 "Badge in Tabbed Pane"
+  - TabbedPane:
+    - Tab "Inbox" [selected]:
+      - Badge "12" [slot=suffix] [theme=primary] [expanse=xsmall]
+      - Paragraph "You have 12 messages in your inbox."
+    - Tab "Notifications":
+      - Badge "3" [slot=suffix] [theme=danger] [expanse=xsmall]
+      - Paragraph "You have 3 unread notifications."
+    - Tab "Drafts":
+      - Badge "1" [slot=suffix] [theme=gray] [expanse=xsmall]
+      - Paragraph "You have 1 draft saved."
+    - Tab "Sent":
+      - Paragraph "Your sent messages."
+  - H3 "Outlined Badges in Tabs"
+  - TabbedPane:
+    - Tab "Tasks" [selected]:
+      - Badge "5" [slot=suffix] [theme=outlined-primary] [expanse=xsmall]
+      - Paragraph "Your pending tasks."
+    - Tab "Issues":
+      - Badge "8" [slot=suffix] [theme=outlined-danger] [expanse=xsmall]
+      - Paragraph "Open issues that need attention."
+    - Tab "Done":
+      - Badge "24" [slot=suffix] [theme=outlined-success] [expanse=xsmall]
+      - Paragraph "Completed items."

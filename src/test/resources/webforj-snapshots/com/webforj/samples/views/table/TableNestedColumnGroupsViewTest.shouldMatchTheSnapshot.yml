@@ -1,0 +1,21 @@
+# webforJ testbed snapshot v1
+- TableNestedColumnGroupsView [route=tablenestedcolumngroups]:
+  - Table [itemType=MusicRecord]:
+    - Column [id=Title]
+    - Column [id=Artist]
+    - Column [id=Genre]
+    - Column [id=Tracks]
+    - Column [id="Playing Time"]
+    - Column [id=Cost]
+    - Column [id=Retail]
+    - Row [Title="Mississippi Blues"] [Artist="John Hurt & The Ramblers"] [Genre=Blues] [Tracks=12] ["Playing Time"=72] [Cost="$5.99"] [Retail="$12.99"]
+    - Row [Title="Gold - Greatest Hits"] [Artist=ABBA] [Genre=Pop] [Tracks=19] ["Playing Time"=76] [Cost="$8.73"] [Retail="$12.99"]
+    - Row [Title="The Kids Are Alright"] [Artist="The Who"] [Genre="Classic Rock"] [Tracks=16] ["Playing Time"=71] [Cost="$7.67"] [Retail="$11.28"]
+    - Row [Title="Abbey Road"] [Artist="The Beatles"] [Genre="Classic Rock"] [Tracks=17] ["Playing Time"=47] [Cost="$12.27"] [Retail="$14.99"]
+    - Row [Title="Urban Blues"] [Artist="Various Artists"] [Genre=Blues] [Tracks=10] ["Playing Time"=56] [Cost="$4.56"] [Retail="$10.98"]
+    - Row [Title="Jagged Little Pill"] [Artist="Alanis Morissette"] [Genre="Alt Rock"] [Tracks=13] ["Playing Time"=57] [Cost="$9.71"] [Retail="$12.99"]
+    - Row [Title="The Bends"] [Artist=Radiohead] [Genre="Alt Rock"] [Tracks=12] ["Playing Time"=46] [Cost="$9.71"] [Retail="$12.99"]
+    - Row [Title="Life's Rich Pagent"] [Artist=R.E.M.] [Genre="Alt Rock"] [Tracks=12] ["Playing Time"=37] [Cost="$9.14"] [Retail="$12.99"]
+    - Row [Title="Too Bad Jim"] [Artist="R.L. Burnside"] [Genre=Blues] [Tracks=15] ["Playing Time"=61] [Cost="$6.56"] [Retail="$15.99"]
+    - Row [Title=Dookie] [Artist="Green Day"] [Genre=Punk] [Tracks=14] ["Playing Time"=39] [Cost="$6.71"] [Retail="$9.99"]
+    - …

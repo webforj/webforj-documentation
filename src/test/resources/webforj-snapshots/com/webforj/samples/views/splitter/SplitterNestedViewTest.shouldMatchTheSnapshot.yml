@@ -1,0 +1,7 @@
+# webforJ testbed snapshot v1
+- SplitterNestedView [route=splitternested]:
+  - Splitter:
+    - SplitterBox [slot=master]
+    - Splitter [slot=detail]:
+      - SplitterBox [slot=master]
+      - SplitterBox [slot=detail]

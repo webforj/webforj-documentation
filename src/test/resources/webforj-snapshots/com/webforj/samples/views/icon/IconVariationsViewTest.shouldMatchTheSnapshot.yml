@@ -1,0 +1,7 @@
+# webforJ testbed snapshot v1
+- IconVariationsView [route=iconvariations]:
+  - Icon [name=envelope]
+  - Icon [name=fas-envelope]
+  - Icon [name=fab-instagram]
+  - Icon [name=calendar]
+  - Icon [name=filled-calendar]

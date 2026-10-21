@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- SplitterMinMaxView [route=splitterminmax]:
+  - Splitter:
+    - SplitterBox [slot=master]
+    - SplitterBox [slot=detail]
