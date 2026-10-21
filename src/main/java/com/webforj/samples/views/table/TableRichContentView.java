@@ -37,7 +37,7 @@ public class TableRichContentView extends Composite<Div> {
   }
 
   // Inner renderer class for avatar display
-  static class AvatarRenderer extends Renderer<MusicRecord> {
+  public static class AvatarRenderer extends Renderer<MusicRecord> {
     @Override
     public String build() {
       return /* html */ """
@@ -61,7 +61,7 @@ public class TableRichContentView extends Composite<Div> {
   }
 
   // Inner renderer class for cost badge
-  static class BadgeRenderer extends Renderer<MusicRecord> {
+  public static class BadgeRenderer extends Renderer<MusicRecord> {
     @Override
     public String build() {
       return """
