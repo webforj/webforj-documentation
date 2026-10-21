@@ -87,3 +87,14 @@ When you switch to Spring Boot, several configuration aspects change:
 | **Main config** | `webforj.conf` only | `application.properties` + `webforj.conf`  |
 | **Profiles** | `webforj-dev.conf`, `webforj-prod.conf` | Spring profiles with `application-{profile}.properties` |
 | **Port config** | In plugin configuration | `server.port` in properties |
+
+### Using variables {#using-variables}
+
+In `application.properties`, use Spring's placeholder syntax to reference environment variables and other properties. Spring resolves these placeholders before webforJ receives the values, and `${NAME:default}` supplies a default when `NAME` isn't set:
+
+```properties
+webforj.entry=${APP_ENTRY}
+webforj.debug=${WEBFORJ_DEBUG:false}
+```
+
+The `${?NAME}` syntax from [`webforj.conf`](/docs/configuration/properties#using-variables) doesn't apply in `application.properties`. Values from `application.properties` take precedence over `webforj.conf`, so a reference in `webforj.conf` reads the value set in `application.properties`.
