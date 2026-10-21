@@ -1,9 +1,9 @@
 # webforJ testbed snapshot v1
 - ElementSearchView [route=elementsearch]:
-  - Div:
-    - H2 "Search"
+  - Card [expanse=xlarge]:
     - FlexLayout:
       - Div:
         - Icon [name=search]
         - Element [node=input]
       - Button "Focus search" [theme=primary]
+    - H2 "Search" [slot=title]

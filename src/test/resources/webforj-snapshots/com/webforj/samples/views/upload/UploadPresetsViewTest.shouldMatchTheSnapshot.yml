@@ -1,18 +1,18 @@
 # webforJ testbed snapshot v1
 - UploadPresetsView [route=uploadpresets]:
-  - FlexLayout:
-    - H4 "FULL"
+  - Card:
+    - H4 "FULL" [slot=title]
     - Upload [drop] [multiple]:
       - Filter "Files" [pattern="*.*"]
-  - FlexLayout:
-    - H4 "INLINE"
+  - Card:
+    - H4 "INLINE" [slot=title]
     - Upload [drop] [multiple]:
       - Filter "Files" [pattern="*.*"]
-  - FlexLayout:
-    - H4 "BUTTON_ONLY"
+  - Card:
+    - H4 "BUTTON_ONLY" [slot=title]
     - Upload [drop] [multiple]:
       - Filter "Files" [pattern="*.*"]
-  - FlexLayout:
-    - H4 "DROPZONE"
+  - Card:
+    - H4 "DROPZONE" [slot=title]
     - Upload [drop] [multiple]:
       - Filter "Files" [pattern="*.*"]

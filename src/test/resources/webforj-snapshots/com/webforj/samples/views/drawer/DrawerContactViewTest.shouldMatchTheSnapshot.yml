@@ -3,52 +3,38 @@
   - Button "Open Contacts"
   - Drawer [label=Contacts] [opened]:
     - FlexLayout:
-      - FlexLayout:
-        - FlexLayout "GB"
-        - FlexLayout:
-          - Paragraph "Gregory Baldrake"
-          - Paragraph "US - Albuquerque"
-        - Button:
-          - Icon [name=phone]
-      - FlexLayout:
-        - FlexLayout "BH"
-        - FlexLayout:
-          - Paragraph "Betsy Heebink"
-          - Paragraph "US - Madison"
-        - Button:
-          - Icon [name=phone]
-      - FlexLayout:
-        - FlexLayout "WO"
-        - FlexLayout:
-          - Paragraph "Wesley Osborn"
-          - Paragraph "US - Seattle"
-        - Button:
-          - Icon [name=phone]
-      - FlexLayout:
-        - FlexLayout "HC"
-        - FlexLayout:
-          - Paragraph "Harry Chuckie"
-          - Paragraph "US - Palm Springs"
-        - Button:
-          - Icon [name=phone]
-      - FlexLayout:
-        - FlexLayout "SM"
-        - FlexLayout:
-          - Paragraph "Stephanie McIntyre"
-          - Paragraph "US - Modesto"
-        - Button:
-          - Icon [name=phone]
-      - FlexLayout:
-        - FlexLayout "DS"
-        - FlexLayout:
-          - Paragraph "Dave Strum"
-          - Paragraph "US - Hagerstown"
-        - Button:
-          - Icon [name=phone]
-      - FlexLayout:
-        - FlexLayout "DB"
-        - FlexLayout:
-          - Paragraph "Dr. Jane Booker"
-          - Paragraph "US - Hagerstown"
-        - Button:
-          - Icon [name=phone]
+      - Card:
+        - Avatar "Gregory Baldrake" [slot=icon] [tooltip="Gregory Baldrake"] [theme=danger] [expanse=large]
+        - Paragraph "Gregory Baldrake" [slot=title]
+        - Paragraph "US - Albuquerque" [slot=caption]
+        - IconButton [slot=header-actions] [name=phone]
+      - Card:
+        - Avatar "Betsy Heebink" [slot=icon] [tooltip="Betsy Heebink"] [expanse=large]
+        - Paragraph "Betsy Heebink" [slot=title]
+        - Paragraph "US - Madison" [slot=caption]
+        - IconButton [slot=header-actions] [name=phone]
+      - Card:
+        - Avatar "Wesley Osborn" [slot=icon] [tooltip="Wesley Osborn"] [theme=info] [expanse=large]
+        - Paragraph "Wesley Osborn" [slot=title]
+        - Paragraph "US - Seattle" [slot=caption]
+        - IconButton [slot=header-actions] [name=phone]
+      - Card:
+        - Avatar "Harry Chuckie" [slot=icon] [tooltip="Harry Chuckie"] [theme=primary] [expanse=large]
+        - Paragraph "Harry Chuckie" [slot=title]
+        - Paragraph "US - Palm Springs" [slot=caption]
+        - IconButton [slot=header-actions] [name=phone]
+      - Card:
+        - Avatar "Stephanie McIntyre" [slot=icon] [tooltip="Stephanie McIntyre"] [theme=success] [expanse=large]
+        - Paragraph "Stephanie McIntyre" [slot=title]
+        - Paragraph "US - Modesto" [slot=caption]
+        - IconButton [slot=header-actions] [name=phone]
+      - Card:
+        - Avatar "Dave Strum" [slot=icon] [tooltip="Dave Strum"] [theme=warning] [expanse=large]
+        - Paragraph "Dave Strum" [slot=title]
+        - Paragraph "US - Hagerstown" [slot=caption]
+        - IconButton [slot=header-actions] [name=phone]
+      - Card:
+        - Avatar "Jane Booker" [slot=icon] [tooltip="Jane Booker"] [theme=gray] [expanse=large]
+        - Paragraph "Jane Booker" [slot=title]
+        - Paragraph "US - Hagerstown" [slot=caption]
+        - IconButton [slot=header-actions] [name=phone]

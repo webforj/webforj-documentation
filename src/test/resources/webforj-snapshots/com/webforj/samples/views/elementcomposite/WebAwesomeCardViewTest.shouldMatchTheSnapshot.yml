@@ -1,6 +1,6 @@
 # webforJ testbed snapshot v1
-- CardView [route=card]:
-  - Card:
+- WebAwesomeCardView [route=webawesomecard]:
+  - WebAwesomeCard:
     - H3 "Basic Plan" [slot=header]
     - Span "Perfect for individuals" [slot=header]
     - H4 "$9/month"
@@ -15,7 +15,7 @@
         - Icon [name=check]
         - Span "Standard analytics"
     - Button "Choose Basic" [slot=footer] [theme=primary]
-  - Card:
+  - WebAwesomeCard:
     - H3 "Pro Plan" [slot=header]
     - Span "Best for growing teams" [slot=header]
     - H4 "$19/month"

@@ -7,10 +7,10 @@ import com.webforj.testbed.annotation.WebforjTest;
 import org.junit.jupiter.api.Test;
 
 @WebforjTest
-class CardViewTest {
+class WebAwesomeCardViewTest {
   @Test
   void shouldMatchTheSnapshot(WebforjTestbed context) {
-    var view = new CardView();
+    var view = new WebAwesomeCardView();
     context.add(view);
 
     verifyThat(view).matchesSnapshot();

@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.webforj.UploadedFile;
 import com.webforj.automation.act.UserInteraction;
 import com.webforj.automation.find.ComponentLocator;
+import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.H4;
-import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.upload.Upload;
 import com.webforj.component.upload.event.UploadChangeEvent;
 import com.webforj.testbed.WebforjTestbed;
@@ -40,10 +40,7 @@ class UploadPresetsViewTest {
     context.add(new UploadPresetsView());
 
     var card =
-        ComponentLocator.of(FlexLayout.class)
-            .byClassName("upload-presets__subcard")
-            .has(ComponentLocator.of(H4.class).byText(heading))
-            .locate();
+        ComponentLocator.of(Card.class).has(ComponentLocator.of(H4.class).byText(heading)).locate();
     var upload = ComponentLocator.of(Upload.class).within(card).locate();
 
     assertEquals(preset, upload.getPreset());

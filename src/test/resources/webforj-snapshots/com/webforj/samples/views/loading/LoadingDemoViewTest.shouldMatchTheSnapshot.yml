@@ -1,11 +1,11 @@
 # webforJ testbed snapshot v1
 - LoadingDemoView [route=loadingdemo]:
-  - Div:
-    - Paragraph "User Guide"
-    - Icon [name=book]
-    - Button "Buy" [theme=primary]
-  - Div:
-    - Paragraph "Video Lessons"
-    - Icon [name=youtube]
-    - Button "Buy" [theme=primary]
+  - Card:
+    - Paragraph "User Guide" [slot=title]
+    - Icon [slot=title] [name=book]
+    - Button "Buy" [slot=footer] [theme=primary]
+  - Card:
+    - Paragraph "Video Lessons" [slot=title]
+    - Icon [slot=title] [name=youtube]
+    - Button "Buy" [slot=footer] [theme=primary]
     - Loading "Loading... Please wait."

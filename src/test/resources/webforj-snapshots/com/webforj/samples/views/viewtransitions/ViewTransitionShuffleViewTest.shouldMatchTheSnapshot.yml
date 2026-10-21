@@ -7,26 +7,22 @@
       - IconButton [name=shuffle]
   - FlexLayout:
     - ShuffleCard:
+      - Div "Messages"
       - Div "#1"
       - Icon [name=mail]
-      - FlexLayout:
-        - Div "Messages"
-        - Div "3 unread"
+      - Div "3 unread"
     - ShuffleCard:
+      - Div "Tasks"
       - Div "#2"
       - Icon [name=check-square]
-      - FlexLayout:
-        - Div "Tasks"
-        - Div "5 pending"
+      - Div "5 pending"
     - ShuffleCard:
+      - Div "Calendar"
       - Div "#3"
       - Icon [name=calendar]
-      - FlexLayout:
-        - Div "Calendar"
-        - Div "2 events today"
+      - Div "2 events today"
     - ShuffleCard:
+      - Div "Settings"
       - Div "#4"
       - Icon [name=settings]
-      - FlexLayout:
-        - Div "Settings"
-        - Div "Last updated"
+      - Div "Last updated"

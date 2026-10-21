@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.webforj.automation.find.ComponentLocator;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.loading.Loading;
 import com.webforj.testbed.WebforjTestbed;
@@ -28,11 +28,11 @@ class LoadingDemoViewTest {
 
     var loading = ComponentLocator.of(Loading.class).locate();
     var lessons =
-        ComponentLocator.of(Div.class)
+        ComponentLocator.of(Card.class)
             .has(ComponentLocator.of(Paragraph.class).byText("Video Lessons"))
             .locate();
     var guide =
-        ComponentLocator.of(Div.class)
+        ComponentLocator.of(Card.class)
             .has(ComponentLocator.of(Paragraph.class).byText("User Guide"))
             .locate();
 

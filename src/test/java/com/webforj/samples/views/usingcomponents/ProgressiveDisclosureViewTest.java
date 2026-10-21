@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.webforj.automation.act.UserInteraction;
 import com.webforj.automation.find.ComponentLocator;
 import com.webforj.component.button.Button;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.html.elements.Fieldset;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.component.toast.Toast;
 import com.webforj.testbed.WebforjTestbed;
@@ -20,10 +20,7 @@ class ProgressiveDisclosureViewTest {
   void shouldRevealAdvancedSettingsAndResetSaveAfterChanges(WebforjTestbed context) {
     context.add(new ProgressiveDisclosureView());
 
-    var advanced =
-        ComponentLocator.of(Div.class)
-            .filter(d -> "advanced-settings".equals(d.getAttribute("class")))
-            .locate();
+    var advanced = ComponentLocator.of(Fieldset.class).locate();
     var toggle = ComponentLocator.of(Button.class).byText("Show advanced settings").locate();
     var save = ComponentLocator.of(Button.class).byText("Save Settings").locate();
 
@@ -32,7 +29,7 @@ class ProgressiveDisclosureViewTest {
 
     UserInteraction.click(toggle);
 
-    assertEquals("flex", advanced.getStyle("display"));
+    assertEquals("grid", advanced.getStyle("display"));
     assertEquals("Hide advanced settings", toggle.getText());
 
     UserInteraction.check(ComponentLocator.of(CheckBox.class).byText("Debug mode").locate());

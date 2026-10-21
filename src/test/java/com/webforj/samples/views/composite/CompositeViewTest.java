@@ -9,7 +9,6 @@ import com.webforj.component.button.Button;
 import com.webforj.component.event.KeypressEvent;
 import com.webforj.component.field.TextField;
 import com.webforj.component.html.elements.Div;
-import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.samples.views.composite.CompositeView.SimpleTaskItem;
 import com.webforj.testbed.WebforjTestbed;
@@ -48,20 +47,22 @@ class CompositeViewTest {
   void shouldHideATaskWhenTheUserDeletesIt(WebforjTestbed context) {
     context.add(new CompositeView());
 
-    var row = ComponentLocator.of(FlexLayout.class).byClassName("item__todo--display").all().get(0);
+    var row = ComponentLocator.of(SimpleTaskItem.class).all().get(0);
 
     UserInteraction.click(ComponentLocator.of(Button.class).within(row).byText("Delete").locate());
 
-    verifyThat(row).isHidden();
+    verifyThat(row).isDestroyed();
+    assertEquals(2, ComponentLocator.of(SimpleTaskItem.class).count());
   }
 
   @Test
   void shouldStrikeThroughATaskWhenTheUserTogglesIt(WebforjTestbed context) {
     context.add(new CompositeView());
 
-    var row = ComponentLocator.of(FlexLayout.class).byClassName("item__todo--display").all().get(0);
+    var row = ComponentLocator.of(SimpleTaskItem.class).all().get(0);
     var toggle = ComponentLocator.of(RadioButton.class).within(row).locate();
-    var text = ComponentLocator.of(Div.class).within(row).byText("Review documentation").locate();
+    var text =
+        ComponentLocator.of(Div.class).within(row).byText("Review the documentation").locate();
 
     UserInteraction.check(toggle);
     assertEquals("line-through", text.getStyle("text-decoration"));

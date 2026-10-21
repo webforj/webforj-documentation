@@ -1,10 +1,9 @@
 # webforJ testbed snapshot v1
 - AnalyticsCardCompositeView [route=analyticscardcomposite]:
-  - Div:
+  - Card [expanse=large]:
+    - H3 "Monthly Sales" [slot=title]
     - FlexLayout:
-      - FlexLayout:
-        - Paragraph "Monthly Sales"
-        - Span "$45,000"
+      - Span "$45,000"
       - FlexLayout:
         - Icon [name=arrow-up] [theme=success]
         - Span "12% from last month"
