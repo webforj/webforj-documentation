@@ -1,0 +1,9 @@
+{
+  "label": "TestBed",
+  "position": 1,
+  "className": "new-content",
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}
