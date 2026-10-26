@@ -29,6 +29,32 @@ webforj.reloadOnServerError = on
 webforj.clientHeartbeatRate = 1s
 ```
 
+### Using variables {#using-variables}
+<DocChip chip='since' label='26.03' />
+
+Values in `webforj.conf` can reference environment variables and other configuration keys with the `${...}` substitution syntax. webforJ resolves these references when it loads the configuration, so you can keep secrets and per-environment values out of the file.
+
+```Ini
+# Required: startup fails if the variable isn't set
+webforj.entry = ${APP_ENTRY}
+
+# Optional: keeps the earlier value if the variable isn't set
+webforj.debug = false
+webforj.debug = ${?WEBFORJ_DEBUG}
+
+# Reference another configuration key
+webforj.locale = "en-US"
+my.app.language = ${webforj.locale}
+```
+
+- **Required reference.** `${NAME}` must resolve to an environment variable or a configuration key. If it doesn't, the app fails to start with an unresolved substitution error.
+- **Optional reference.** `${?NAME}` is ignored when nothing matches. Place it after a default assignment of the same key so the default stays when the variable is missing.
+- **Precedence.** A reference resolves against the fully merged configuration. When another source overrides the referenced key, for example through the `WebforjServlet` init configuration, the reference reads the overriding value.
+
+:::info
+Variable resolution uses environment variables and configuration keys. It doesn't read Java system properties.
+:::
+
 ### Configuration options {#configuration-options}
 
 <!-- Fixed many vale issues, but turning it off for the table since these descriptions come directly from comments in the code -->
