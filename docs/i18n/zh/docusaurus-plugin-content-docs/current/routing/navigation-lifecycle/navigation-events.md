@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Navigation Events
+title: 导航事件
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 除了组件特定的生命周期事件外，您可以在路由器级别注册 **全局事件监听器**。这允许在整个应用程序中全局跟踪导航，对于日志记录、分析或其他跨切关注点非常有用。

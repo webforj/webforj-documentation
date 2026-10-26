@@ -1,5 +1,5 @@
 ---
-title: Debugging
+title: Depuración
 sidebar_position: 15
 description: >-
   Attach a remote Java debugger to a running webforJ app from Visual Studio

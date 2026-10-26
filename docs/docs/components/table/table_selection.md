@@ -65,7 +65,7 @@ files={[
 height='600px'
 />
 
-## Programatic selection {#programatic-selection}
+## Programmatic selection {#programmatic-selection}
 
 The `Table` component provides programmatic selection methods, allowing you to manipulate selected items either by their keys or by the entire items.
 

@@ -16,9 +16,9 @@ public class ViewTransitionChatPage {
 
   public ViewTransitionChatPage(Page page) {
     this.chatToggleBtn = page.locator(".chat-toggle-btn dwc-button");
-    this.chatCard = page.locator(".chat-card");
+    this.chatCard = page.locator("dwc-card:has(.chat-greeting)");
     this.chatClose = page.locator(".chat-close");
-    this.chatName = page.locator(".chat-name");
+    this.chatName = page.locator("dwc-card:has(.chat-greeting) > h4[slot='title']");
     this.chatStatus = page.locator(".chat-status");
     this.chatGreeting = page.locator(".chat-greeting");
   }

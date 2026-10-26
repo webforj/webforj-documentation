@@ -1,5 +1,5 @@
 ---
-title: Validating and Binding Data
+title: 校验与绑定数据
 sidebar_position: 6
 pagination_next: null
 description: Step 5 - Add validation checks and bind data to the UI.

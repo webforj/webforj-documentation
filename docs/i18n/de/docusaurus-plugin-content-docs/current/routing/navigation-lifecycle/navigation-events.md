@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Navigation Events
+title: Navigationsereignisse
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 Zusätzlich zu komponentenspezifischen Lebenszyklusereignissen können Sie **globale Ereignislistener** auf Routerniveau registrieren. Dies ermöglicht das Tracking der Navigation global über die gesamte App hinweg, was nützlich für Protokollierung, Analytik oder andere bereichsübergreifende Anliegen ist.

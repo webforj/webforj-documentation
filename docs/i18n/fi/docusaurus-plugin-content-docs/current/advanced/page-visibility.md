@@ -1,5 +1,5 @@
 ---
-title: Page Visibility
+title: Sivun näkyvyys
 sidebar_position: 32
 sidebar_class_name: new-content
 description: >-

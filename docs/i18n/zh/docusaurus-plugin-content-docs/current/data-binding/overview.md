@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Data Binding
+title: 数据绑定
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-

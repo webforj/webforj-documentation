@@ -1,0 +1,9 @@
+{
+  "label": "BBjShip",
+  "className": "new-content",
+  "position": 34,
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}

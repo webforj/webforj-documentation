@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Context Results
+title: Kontekstitulokset
 _i18n_hash: b86bc425ad8c1537e99a44fa34a93b3a
 ---
 When you write data from the UI to the model, the `write` method of the `BindingContext` triggers the validations. The validation results determine whether the data is acceptable.

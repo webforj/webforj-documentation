@@ -1,5 +1,6 @@
 package com.webforj.samples.views.applayout.stickytoolbar;
 
+import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.Paragraph;
@@ -12,13 +13,12 @@ public class AppLayoutStickyToolbarContentView extends AbstractContentView {
 
   public AppLayoutStickyToolbarContentView() {
     for (int i = 0; i < 10; i++) {
-      Div content = new Div();
-      content
-          .addClassName("card")
-          .add(
-              new H2("What is Lorem Ipsum ?"),
-              new Paragraph(
-                  """
+      Card content = new Card();
+      content.addClassName("card--margin");
+      content.add(
+          new H2("What is Lorem Ipsum ?"),
+          new Paragraph(
+              """
                       Lorem Ipsum is simply dummy text of the printing and typesetting \
                       industry. Lorem Ipsum has been the industry's standard dummy text \
                       ever since the 1500s when an unknown printer took a galley of type \
@@ -28,6 +28,7 @@ public class AppLayoutStickyToolbarContentView extends AbstractContentView {
                       in the 1960s with the release of Letraset sheets containing Lorem \
                       Ipsum passages, and more recently with desktop publishing software \
                       like Aldus PageMaker including versions of Lorem Ipsum."""));
+      content.setMaxWidth("600px");
       self.add(content);
     }
 

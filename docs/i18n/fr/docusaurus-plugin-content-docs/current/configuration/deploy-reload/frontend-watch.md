@@ -1,5 +1,5 @@
 ---
-title: Frontend watch
+title: Surveillance du frontend
 sidebar_position: 20
 sidebar_class_name: new-content
 description: >-

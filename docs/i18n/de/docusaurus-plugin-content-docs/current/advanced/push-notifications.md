@@ -1,7 +1,7 @@
 ---
 sidebar_position: 39
 sidebar_class_name: new-content
-title: Push Notifications
+title: Push-Benachrichtigungen
 description: >-
   Use the Push class, PushSender, and PushMessage to subscribe browsers and send
   notifications from the server, even when the app isn't open.

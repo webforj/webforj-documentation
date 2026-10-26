@@ -1,5 +1,5 @@
 ---
-title: Writing your own extension
+title: Oman laajennuksen kirjoittaminen
 sidebar_position: 70
 description: >-
   Add a build step by shipping a BundleExtension that declares packages,

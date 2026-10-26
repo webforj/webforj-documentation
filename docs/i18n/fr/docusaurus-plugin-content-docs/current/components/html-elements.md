@@ -1,6 +1,6 @@
 ---
 sidebar_position: 52
-title: HTML Components
+title: Composants HTML
 description: >-
   Compose pages with typed Java wrappers for standard HTML elements like Div,
   Anchor, Paragraph, Img, headings, and semantic containers.

@@ -63,7 +63,6 @@ Here's an example of how you can customize the spinner within a `Loading` compon
 path='/webforj/loadingspinnerdemo'
 files={[
   'src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java',
-  'src/main/frontend/css/loadingstyles/loadingspinnerdemo.css',
 ]}
 height='300px'
 />

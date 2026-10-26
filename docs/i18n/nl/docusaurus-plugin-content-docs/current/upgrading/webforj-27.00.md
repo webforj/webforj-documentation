@@ -1,5 +1,5 @@
 ---
-title: Upgrade to 27.00
+title: Upgraden naar 27.00
 description: Upgrade from 26.00 to 27.00
 sidebar_position: 10
 sidebar_class_name: new-content

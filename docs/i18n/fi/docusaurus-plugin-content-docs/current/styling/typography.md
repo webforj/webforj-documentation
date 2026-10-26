@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Typography
+title: Typografia
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 Typografia-tokeneita käytetään säilyttämään johdonmukainen fontti-estetiikka sovelluksessasi.

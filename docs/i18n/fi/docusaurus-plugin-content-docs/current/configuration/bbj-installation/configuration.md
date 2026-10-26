@@ -1,5 +1,5 @@
 ---
-title: Install Plugin
+title: Asenna liitännäinen
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
 description: >-

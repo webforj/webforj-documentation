@@ -4,127 +4,125 @@ slug: tabbedpane
 sidebar_position: 125
 description: >-
   Organize content into switchable Tab sections with the TabbedPane component,
-  supporting icons, keys, and customizable tab properties.
-_i18n_hash: 563f9251b928e2e9426d69d4b5192880
+  supporting icons and customizable tab properties.
+_i18n_hash: 544ab11783e8369075f1c02aba2d8dc8
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-tabbed-pane" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/tabbedpane/TabbedPane" top='true'/>
 
-Useamman sisällön osion voi organisoida yhden `TabbedPane` alle, missä jokainen osio liittyy klikkattavaan `Tab`:iin. Vain yksi osio on näkyvissä kerrallaan, ja välilehdet voivat näyttää tekstiä, kuvakkeita tai molempia auttaakseen käyttäjiä navigoimaan niiden välillä.
+Useita sisältöosiota voidaan järjestää yhden `TabbedPane` alle, jossa jokainen osa on sidottu klikattavaan `Tab`. Vain yksi osa on näkyvissä kerrallaan, ja välilehdet voivat näyttää tekstiä, kuvakkeita tai molempia auttaakseen käyttäjiä navigoimaan niiden välillä.
 
 <!-- INTRO_END -->
 
-## Käyttöesimerkit {#usages}
+## Käyttötapaukset {#usages}
 
-`TabbedPane`-luokka tarjoaa kehittäjille tehokkaan työkalun useiden välilehtien tai osioiden järjestämiseen ja esittämiseen käyttöliittymässä. Tässä on joitain tyypillisiä skenaarioita, joissa saatat hyödyntää `TabbedPane`:a sovelluksessasi:
+`TabbedPane`-luokka antaa kehittäjille voimakkaan työkalun useiden välilehtien tai osien järjestämiseen ja esittämiseen käyttöliittymässä. Tässä on joitakin tyypillisiä skenaarioita, joissa saatat käyttää `TabbedPane`-komponenttia sovelluksessasi:
 
-1. **Asiakirjan katselu**: Asiakirjakatselun toteuttaminen, jossa jokainen välilehti edustaa eri asiakirjaa tai tiedostoa. Käyttäjät voivat helposti siirtyä avoimien asiakirjojen välillä tehokasta moniajokykyä varten.
+1. **Dokumentin katselu**: Dokumentin katseluohjelman toteuttaminen, jossa jokainen välilehti edustaa eri dokumenttia tai tiedostoa. Käyttäjät voivat helposti siirtyä auki olevien dokumenttien välillä tehokasta moniajoa varten.
 
-2. **Datan hallinta:** Hyödynnä `TabbedPane`-elementtiä järjestääksesi datan hallintatehtäviä, kuten:
-    >- Eri datasetit, jotka näytetään sovelluksessa
-    >- Erilaisia käyttäjäprofiileja voidaan näyttää erillisissä välilehdissä
-    >- Eri profiilat käyttäjähallintajärjestelmässä
+2. **Tietojen hallinta**: Käytä `TabbedPane`-komponenttia tietojen hallintatehtävien järjestämiseen, esimerkiksi:
+    - Eri tietojoukkojen esittäminen sovelluksessa
+    - Eri käyttäjäprofiilien esittäminen erillisissä välilehdissä
+    - Eri profiilien esittäminen käyttäjähallintajärjestelmässä
 
-3. **Moduulivalinta**: `TabbedPane` voi edustaa eri moduuleja tai osioita. Jokainen välilehti voi kapseloida tietyn moduulin toiminnallisuudet, jolloin käyttäjät voivat keskittyä yhteen sovelluksen osa-alueeseen kerrallaan.
+3. **Moduulin valinta**: `TabbedPane` voi edustaa erilaisia moduuleja tai osia. Jokainen välilehti voi kätkeä tiettyjen modulien toiminnallisuudet, mahdollistaen käyttäjien keskittyä yhteen sovelluksen osa-alueeseen kerrallaan.
 
-4. **Tehtävien hallinta**: Tehtävienhallintasovellukset voivat käyttää `TabbedPane`-elementtiä edustamaan erilaisia projekteja tai tehtäviä. Jokainen välilehti voisi vastata tietyille projektille, jolloin käyttäjät voivat hallita ja seurata tehtäviä erikseen.
+4. **Tehtävien hallinta**: Tehtävien hallintasovellukset voivat käyttää `TabbedPane`-komponenttia eri projekteiden tai tehtävien edustamiseen. Jokainen välilehti voi vastata tiettyä projektia, jolloin käyttäjät voivat hallita ja seurata tehtäviä erikseen.
 
-5. **Sovelluksen navigointi**: Sovelluksessa, joka tarvitsee ajaa erilaisia ohjelmia, `TabbedPane` voisi:
-    >- Toimia sivupalkkina, joka mahdollistaa eri sovellusten tai ohjelmien käynnistämisen yhdessä sovelluksessa, kuten mitä esitetään [`AppLayout`](./app-layout.md) mallissa
-    >- Luoda yläpalkin, joka voi palvella samankaltaista tarkoitusta tai edustaa ali-sovelluksia jo valitussa sovelluksessa.
+5. **Sovelluksen navigointi**: Sovelluksessa, joka tarvitsee ajaa erilaisia ohjelmia, `TabbedPane` voi:
+    - Palvella sivupalkkina, joka mahdollistaa eri sovellusten tai ohjelmien ajamisen yhden sovelluksen sisällä, kuten mikä on osoitettu [`AppLayout`](./app-layout.md) -mallissa
+    - Luoda yläpalkin, joka voi palvella samankaltaista tarkoitusta tai edustaa alisovelluksia jo valitun sovelluksen sisällä
 
 ## Välilehdet {#tabs}
 
-Välilehdet ovat käyttöliittymäelementtejä, jotka voidaan lisätä välilehtipaneeleihin erilaisten sisältönäyttöjen järjestämiseksi ja vaihtamiseksi.
+Välilehdet ovat käyttöliittymän elementtejä, joita voidaan lisätä tabulaarisiin paneeleihin erilaisten sisältönäkymien järjestämiseksi ja niiden välillä siirtymiseksi.
 
 :::important
-Välilehtiä ei ole tarkoitettu käytettäväksi itsenäisinä komponentteina. Niitä tulee käyttää yhdessä välilehtipaneelien kanssa. Tämä luokka ei ole `Component` eikä sitä tule käyttää sellaisena.
+Välilehtiä ei ole tarkoitettu käytettäväksi itsenäisinä komponentteina. Niitä on tarkoitus käyttää yhdessä tabulaaristen paneelien kanssa. Tämä luokka ei ole `Component` eikä sitä tule käyttää sellaisena.
 :::
 
 ### Ominaisuudet {#properties}
 
-Välilehdet koostuvat seuraavista ominaisuuksista, joita käytetään niiden lisäämiseen `TabbedPane`-elementtiin. Näillä ominaisuuksilla on hakijat ja asettajat, jotka helpottavat mukauttamista `TabbedPane`-elementissä.
+Välilehdet koostuvat seuraavista ominaisuuksista, joita käytetään lisättäessä niitä `TabbedPane`-komponenttiin. Näillä ominaisuuksilla on getterit ja setterit, jotka helpottavat mukauttamista `TabbedPane`-komponentissa.
 
-1. **Avain(`Object`)**: Edustaa välilehden ainutlaatuista tunnistetta.
+1. **Teksti(`String`)**: Teksti, joka näytetään nimikkeenä `Tab`:lle `TabbedPane`-komponentissa. Tätä kutsutaan myös nimellä otsikko `getTitle()` ja `setTitle(String title)` -menetelmien kautta.
 
-2. **Teksti(`String`)**: Teksti, joka näkyy välilehden otsikkona `TabbedPane`-elementissä. Tätä kutsutaan myös nimellä otsikko `getTitle()` ja `setTitle(String title)` menetelmien kautta.
+2. **Työkaluvinkki(`String`)**: Työkaluvinkkiteksti, joka liittyy `Tab`:iin ja näytetään, kun kursori leijuu `Tab`:in päällä.
 
-3. **Työkaluvihje(`String`)**: Työkaluvihjeteksti, joka liittyy välilehteen ja näkyy, kun kursori liikkuu välilehden päälle.
+3. **Oletus(`boolean`)**: Edustaa, onko `Tab` käytössä vai ei. Voidaan muuttaa `setEnabled(boolean enabled)` -menetelmällä.
 
-4. **Otetaan käyttöön(`boolean`)**: Edustaa, onko välilehti tällä hetkellä käytössä vai ei. Voidaan muuttaa `setEnabled(boolean enabled)` menetelmällä.
+4. **Suljettavissa(`boolean`)**: Edustaa, voidaanko `Tab` sulkea. Voidaan muuttaa `setClosable(boolean closable)` -menetelmällä. Tämä lisää sulje-painikkeen `Tab`:iin, jota voidaan klikata, ja laukaisee poistotapahtuman. `TabbedPane`-komponentti määrää, miten poisto käsitellään.
 
-5. **Suljettava(`boolean`)**: Edustaa, voiko välilehden sulkea. Voidaan muuttaa `setCloseable(boolean enabled)` menetelmällä. Tämä lisää sulkupainikkeen välilehteen, jota käyttäjä voi klikata, ja laukaisee poistotapahtuman. `TabbedPane`-komponentti määrää, kuinka poistaminen käsitellään.
-
-6. **Slot(`Component`)**: 
-    Slotit tarjoavat joustavia vaihtoehtoja `Tab`:in kyvykkyyden parantamiseksi. Voit lisätä kuvakkeita, etikettejä, lataussiruja, tyhjennys/nollausmahdollisuuksia, avatar/profiilikuvaa ja muita hyödyllisiä komponentteja sisäkkäin `Tab`:issa käyttäjien tarkoitetun merkityksen selvittämiseksi.
-    Voit lisätä komponentin `prefix`-paikkaan `Tab`:in rakentamisen yhteydessä. Vaihtoehtoisesti voit käyttää `setPrefixComponent()` ja `setSuffixComponent()` menetelmiä lisätäksesi erilaisia komponentteja ennen ja jälkeen näkyvän vaihtoehdon `Tab`:issa.
+5. **Slot(`Component`)**:
+    Slotit tarjoavat joustavia vaihtoehtoja `Tab`:in kykyjen parantamiseksi. Voit lisätä kuvakkeita, etikettejä, latauspyöriä, tyhjennys/palautusmahdollisuuksia, avatar/profiilikuvia ja muita hyödyllisiä komponentteja `Tab`:in sisään, jotta käyttäjät ymmärtäisivät sen merkityksen paremmin.
+    Voit lisätä komponentin `Tab`:in `prefix`-slotille rakentamisen aikana. Vaihtoehtoisesti voit käyttää `setPrefixComponent()` ja `setSuffixComponent()` -menetelmiä erilaisten komponenttien lisäämiseksi ennen ja jälkeen `Tab`:issa näytettävän vaihtoehdon.
 
         ```java
         TabbedPane pane = new TabbedPane();
-        pane.addTab(new Tab("Documents", TablerIcon.create("files")));
+        pane.addTab(new Tab("Dokumentit", TablerIcon.create("files")));
         ```
 
-## `Tab` manipulointi {#tab-manipulation}
+## `Tab`-manipulointi {#tab-manipulation}
 
-Eri menetelmiä on olemassa, jotta kehittäjät voivat lisätä, lisätä, poistaa ja manipuloida eri ominaisuuksia `Tab`-elementeistä `TabbedPane`-elementissä.
+Useita menetelmiä on olemassa, joiden avulla kehittäjät voivat lisätä, lisätä, poistaa ja manipuloida erilaisia `Tab`-elementtien ominaisuuksia `TabbedPane`-komponentissa.
 
-### `Tab`:n lisääminen {#adding-a-tab}
+### Välilehden lisääminen {#adding-a-tab}
 
-`addTab()` ja `add()` menetelmät ovat olemassa eri ylikuormitettuna kapasiteettina antaakseen kehittäjille joustavuutta lisätä uusia välilehtiä `TabbedPane`:en. Välilehden lisääminen sijoittaa sen aiemmin olemassa olevien välilehtien jälkeen.
+`addTab()` ja `add()` -menetelmiä on olemassa eri ylikuormitettuna versioina, jotka antavat kehittäjille joustavuutta uusien välilehtien lisäämiseen `TabbedPane`-komponenttiin. Välilehden lisääminen sijoittaa sen kaikkien aiemmin olemassa olevien välilehtien jälkeen.
 
-1. **`addTab(String text)`** - Lisää `Tab`:in `TabbedPane`:en määritellyllä `String`:lla, joka on puolestaan välilehden teksti.
-2. **`addTab(Tab tab)`** - Lisää annettu `Tab` parametrina `TabbedPane`:en.
-3. **`addTab(String text, Component component)`** - Lisää `Tab`:in, jossa annettu `String` on välilehden teksti, ja annettu `Component` näytetään `TabbedPane`-elementin sisällössä.
-4. **`addTab(Tab tab, Component component)`** - Lisää annettu `Tab`, ja esittää annetun `Component`-elementin `TabbedPane`-elementin sisällössä.
-5. **`add(Component... component)`** - Lisää yksi tai useampi `Component`-instanssi `TabbedPane`:en, luoden erillisen `Tab`:in jokaiselle, ja tekstin asettaminen `Component`-nimen mukaan.
-
-:::info
-`add(Component... component)` määrittää siirretyn `Component`-nimen kutsumalla `component.getName()` siirretylle argumentille.
-:::
-
-### `Tab`:in lisääminen tiettyyn kohtaan {#inserting-a-tab}
-
-Välilehden lisäämisen lisäksi olemassa olevien välilehtien päähän on myös mahdollista luoda uusi tiettyyn kohtaan. Tätä varten on saatavilla useita ylikuormitettuja versioita `insertTab()`-menetelmälle.
-
-1. **`insertTab(int index, String text)`** - Lisää `Tab`:in `TabbedPane`:en annetussa indeksissä määritellyllä `String`:lla.
-2. **`insertTab(int index, Tab tab)`** - Lisää annettu `Tab` parametrina `TabbedPane`:en määritellyssä indeksissä.
-3. **`insertTab(int index, String text, Component component)`** - Lisää `Tab`:in, jossa annettu `String` on välilehden teksti, ja annettu `Component` näytetään `TabbedPane`-elementin sisällössä.
-4. **`insertTab(int index, Tab tab, Component component)`** - Lisää annettu `Tab` ja esittää annetun `Component`-elementin `TabbedPane`-elementin sisällössä.
-
-### `Tab`:in poistaminen {#removing-a-tab}
-
-Poistaaksesi yhden `Tab`:in `TabbedPane`:sta, käytä jotakin seuraavista menetelmistä:
-
-1. **`removeTab(Tab tab)`** - Poistaa `Tab`:in `TabbedPane`:sta välilehti-instanin välityksellä.
-2. **`removeTab(int index)`** - Poistaa `Tab`:in `TabbedPane`:sta määrittelemällä poistettavan välilehden indeksin.
-
-Yksittäisen `Tab`:in poistamiseksi edellä mainittujen kahden menetelmän lisäksi käytä **`removeAllTabs()`**-menetelmää tyhjentääksesi `TabbedPane`:n kaikista välilehdistä.
+1. **`addTab(String text)`**: lisää `Tab`:in `TabbedPane`-komponenttiin, jossa annettu `String` on `Tab`:in teksti.
+2. **`addTab(Tab tab)`**: lisää annetun `Tab`:in `TabbedPane`-komponenttiin.
+3. **`addTab(String text, Component component)`**: lisää `Tab`, jossa annettu `String` on `Tab`:in teksti, ja annettu `Component` näytetään `TabbedPane`-komponentin sisältöosiossa.
+4. **`addTab(Tab tab, Component component)`**: lisää annettu `Tab` ja näyttää annetun `Component` `TabbedPane`-komponentin sisältöosiossa.
+5. **`add(Component... component)`**: lisää yksi tai useampi `Component`-instanssi `TabbedPane`-komponenttiin, luomalla erillisen `Tab` jokaiselle, ja teksti asetetaan `Component`in nimeksi.
 
 :::info
-`remove()` ja `removeAll()` menetelmät eivät poista välilehtiä komponentin sisällä.
+`add(Component... component)` määrittää annetun `Component`:in nimen kutsumalla `component.getName()` annetusta argumentista.
 :::
 
-### Tab/Component-yhdistämisen hallinta {#tabcomponent-association}
+### Välilehden lisääminen sijaintiin {#inserting-a-tab}
 
-Muuta näytettävä `Component` tietylle `Tab`:ille kutsumalla `setComponentFor()`-menetelmää ja antaen joko `Tab`-instanssin tai kyseisen Tabin indeksin `TabbedPane`:ssa.
+Lisäksi kuin lisätäksesi `Tab`:in olemassa olevien välilehtien loppuun, on myös mahdollista luoda uusi tiettyyn sijaintiin. Tätä varten on olemassa useita ylikuormitettuna versioita `insertTab()`-menetelmästä.
+
+1. **`insertTab(int index, String text)`**: lisää `Tab`:in `TabbedPane`-komponenttiin annettuun indeksiin, jossa annettu `String` on `Tab`:in teksti.
+2. **`insertTab(int index, Tab tab)`**: lisää annettu `Tab` `TabbedPane`-komponenttiin määritettyyn indeksiin.
+3. **`insertTab(int index, String text, Component component)`**: lisää `Tab`, jossa annettu `String` on `Tab`:in teksti, ja annettu `Component` näytetään `TabbedPane`-komponentin sisältöosiossa.
+4. **`insertTab(int index, Tab tab, Component component)`**: lisää annettu `Tab` ja näyttää annetun `Component` `TabbedPane`-komponentin sisältöosiossa.
+
+### Välilehden poistaminen {#removing-a-tab}
+
+Poistaaksesi yhden `Tab`-komponentin `TabbedPane`-komponentista, käytä jotakin seuraavista menetelmistä:
+
+1. **`removeTab(Tab tab)`**: poistaa `Tab`:in `TabbedPane`-komponentista välittämällä poistettavan Tab-instanssin.
+2. **`removeTab(int index)`**: poistaa `Tab`:in `TabbedPane`-komponentista määrittämällä poistettavan `Tab`:in indeksin.
+
+Yksittäisen `Tab`-poiston lisäksi voit käyttää **`removeAllTabs()`** -menetelmää tyhjentääksesi `TabbedPane`-komponentin kaikista välilehdistä.
 
 :::info
-Jos tätä menetelmää käytetään `Tab`:illa, joka on jo yhdistetty `Component`:iin, aiemmin yhdistetty `Component` tuhotaan.
+`remove()` ja `removeAll()` -menetelmät eivät poista välilehtiä komponentin sisältä.
 :::
 
-## Asetus ja asettelu {#configuration-and-layout}
+### Välilehti/Komponentti-assosiaatio {#tabcomponent-association}
 
-`TabbedPane`-luokalla on kaksi osaa: `Tab`, joka näytetään määritellyssä sijainnissa, ja näytettävä komponentti. Tämä voi olla yksi komponentti tai [`Composite`](/docs/building-ui/composing-components) komponentti, joka mahdollistaa monimutkaisempien komponenttien näyttämisen välilehden sisältöosiossa.
+Muuttaaksesi, mikä `Component` näytetään tietylle `Tab`:ille, kutsu `setComponentFor()` -menetelmää ja välitä joko `Tab`:in instanssi tai indeksin kyseisen Tabin sijainnista `TabbedPane`-komponentissa.
+
+:::info
+Jos tätä menetelmää käytetään `Tab`:ille, joka on jo liitetty `Component`:iin, aikaisemmin liitetty `Component` tuhotaan.
+:::
+
+## Kokoonpano ja asettelu {#configuration-and-layout}
+
+`TabbedPane`-luokassa on kaksi osaa: `Tab`, joka näytetään määritettyyn sijaintiin, ja komponentti, joka näytetään. Tämä voi olla yksi komponentti tai [`Composite`](/docs/building-ui/composing-components) -komponentti, mikä mahdollistaa monimutkaisempien komponenttien näyttämisen välilehden sisältöosassa.
 
 ### Pyyhkäisy {#swiping}
 
-`TabbedPane` tukee navigointia eri välilehtien välillä pyyhkäisemällä. Tämä on ihanteellinen mobiilisovelluksessa, mutta se voidaan myös konfiguroida sisäänrakennetun menetelmän kautta tukemaan hiiren pyyhkäisyä. Sekä pyyhkäisy että hiiren pyyhkäisy ovat poissa käytöstä oletuksena, mutta ne voidaan aktivoida `setSwipable(boolean)` ja `setSwipableWithMouse(boolean)` menetelmillä, vastaavasti.
+`TabbedPane` tukee navigointia eri välilehtien läpi pyyhkäisemällä. Tämä on ihanteellinen mobiilisovelluksille, mutta sitä voidaan myös konfiguroida sisäänrakennetun menetelmän avulla tukemaan hiiren pyyhkäisyä. Sekä pyyhkäisy että hiiren pyyhkäisy ovat oletuksena pois päältä, mutta ne voidaan aktivoida `setSwipeable(boolean)` ja `setSwipeWithMouse(boolean)` -menetelmillä vastaavasti.
 
-### Välilehtien sijoittelu {#tab-placement}
+### Välilehtien sijoittaminen {#tab-placement}
 
-`Tabs`-elementit `TabbedPane`:ssa voidaan sijoittaa eri sijainteihin komponentin sisällä sovelluskehittäjän mieltymyksen mukaan. Tarjotut vaihtoehdot asetetaan annetun enum-arvon avulla, joka sisältää arvot `TOP`, `BOTTOM`, `LEFT`, `RIGHT` tai `HIDDEN`. Oletusasetuksena on `TOP`.
+`Tabs`-komponentit `TabbedPane`-komponentissa voidaan sijoittaa eri sijainteihin komponentin mukaan sovelluskehittäjän mieltymysten mukaan. Tarjotut vaihtoehdot asetetaan tarjoamalla enum, jonka arvot ovat `TOP`, `BOTTOM`, `LEFT`, `RIGHT` tai `HIDDEN`. Oletusasetus on `TOP`.
 
 <ComponentDemo
 path='/webforj/tabbedpaneplacement'
@@ -134,9 +132,9 @@ height='400px'
 
 ### Kohdistus {#alignment}
 
-Väliavien muuttamisen lisäksi on myös mahdollista konfiguroida se, kuinka välilehdet kohdistuvat komponentin sisällä `TabbedPane`:ssa. Oletuksena `AUTO`-asetus on käytössä, mikä antaa välilehtien sijoituksen määrätä niiden kohdistuksen.
+Lisäksi kuin muuttaaksesi `Tab`-elementtien sijoittelua `TabbedPane`-komponentissa, on myös mahdollista määrittää, kuinka välilehdet kohdistuvat komponenttiin. Oletuksena asetuksena on `AUTO`, joka sallii välilehtien sijoittelun määrittää niiden kohdistuksen.
 
-Muut vaihtoehdot ovat `START`, `END`, `CENTER` ja `STRETCH`. Ensimmäiset kolme kuvaavat sijaintia suhteessa komponenttiin, kun taas `STRETCH` saa välilehdet täyttämään käytettävissä olevan tilan.
+Muut vaihtoehdot ovat `START`, `END`, `CENTER` ja `STRETCH`. Ensimmäiset kolme kuvaavat asemaa suhteessa komponenttiin, kun taas `STRETCH` sallii välilehtien täyttää käytettävissä olevan tilan.
 
 <ComponentDemo
 path='/webforj/tabbedpanealignment'
@@ -144,19 +142,19 @@ files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneAlignmentV
 height='250px'
 />
 
-### Raja ja aktiviteetti-indikaattori {#border-and-activity-indicator}
+### Reunus ja aktiviteetti-indikaattori {#border-and-activity-indicator}
 
-`TabbedPane`:lla on oletuksena rajaus, joka näytetään sen sisällä oleville välilehdille, sijoitettuna sen mukaan, mikä `Placement` on asetettu. Tämä raja auttaa visualisoimaan tilan, jonka eri välilehdet paneelissa vievät.
+`TabbedPane`-komponentissa on oletuksena näkyvissä reuna, joka on sijoitettu sen mukaan, mikä `Placement` on asetettu. Tämä reuna auttaa visualisoimaan tilaa, jonka eri välilehdet paneelissa vievät.
 
-Kun `Tab`:ia klikataan, oletuksena aktiviteetti-indikaattori näkyy kyseisen `Tab`:in lähellä, mikä auttaa korostamaan, mikä on tällä hetkellä käytetty `Tab`.
+Kun `Tab`:ia napsautetaan, oletuksena aktiviteetti-indikaattori näytetään lähellä kyseistä `Tab`:ia, jotta voidaan korostaa, mikä on tällä hetkellä valittu `Tab`.
 
-Molempia näitä vaihtoehtoja voidaan muokata kehittäjän toimesta muuttamalla totuusarvoja käyttäen asianmukaisia asettamismenetelmiä. Jos haluat muuttaa, näytetäänkö raja vai ei, voit käyttää `setBorderless(boolean)` -menetelmää, jolloin `true` piilottaa rajan ja `false`, oletusasetuksena, näyttää rajauksen.
+Molempia näitä vaihtoehtoja voidaan mukauttaa muuttamalla boolean-arvoja asianmukaisten setter-menettelyjen avulla. Muuttaakseen, näytetäänkö reuna vai ei, voidaan käyttää `setBorderless(boolean)` -menetelmää, jolloin `true` piilottaa reunan ja `false`, oletusarvo, näyttää reunan.
 
 :::info
-Tämä raja ei vaikuta koko `TabbedPane`-komponenttiin, vaan toimii vain erottimena välilehden ja komponentin sisällön välillä.
+Tämä reuna ei koske koko `TabbedPane` -komponenttia, vaan palvelee vain rajana välilehtien ja komponentin sisällön välillä.
 :::
 
-Aktiviteetti-indikaattorin näkyvyyden asettamiseksi voit käyttää `setHideActiveIndicator(boolean)` -menetelmää. Täsmällisesti, jos kutsut `true` tätä menetelmää, se piilottaa aktiivisen indikaattorin aktiivisen `Tab`:in alla, kun taas `false`, oletusasetuksena, pitää indikaattorin näkyvissä.
+Aktivoidun indikaattorin näkyvyyden määrittämiseksi voidaan käyttää `setHideActiveIndicator(boolean)` -menetelmää. Jos menetelmälle annetaan parametri `true`, se piilottaa aktiivisen indikaattorin aktiivisen `Tab`:in alla, kun taas `false`, oletusarvo, pitää indikaattorin näkyvissä.
 
 <ComponentDemo
 path='/webforj/tabbedpaneborder'
@@ -164,13 +162,13 @@ files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneBorderView
 height='300px'
 />
 
-### Aktivointitilat {#activation-modes}
+### Aktivointitavat {#activation-modes}
 
-Kehittäjät voivat saada enemmän tarkkuutta siihen, kuinka `TabbedPane` käyttäytyy, kun sitä navigoidaan näppäimistöllä, aktivointitila voidaan asettaa määrittämään, kuinka komponentin pitäisi käyttäytyä.
+Hienojakoisempaan hallintaan siitä, miten `TabbedPane` käyttäytyy näppäimistön navigoinnissa, aktivointitila voidaan asettaa määrittämään, miten komponentin tulisi käyttäytyä.
 
-- **`Auto`**: Kun asetetaan automaattiseksi, välilehteä navigoitaessa nuoli-näppäimillä vastaava välilehti komponentti näkyy heti.
+- **`Auto`**: kun asetetaan automaattiseksi, nuolinäppäimillä navigoiminen välilehtien läpi näyttää heti vastaavan välilehden komponentin.
 
-- **`Manual`**: Kun asetetaan manuaaliseksi, välilehti saa fokuksen, mutta ei näy ennen kuin käyttäjä painaa välilyöntiä tai enteriä.
+- **`Manual`**: kun asetetaan manuaaliseksi, välilehti saa fokuksen, mutta sitä ei näytetä ennen kuin käyttäjä painaa väli- tai enter-näppäintä.
 
 <ComponentDemo
 path='/webforj/tabbedpaneactivation'
@@ -178,17 +176,17 @@ files={['src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneActivation
 height='250px'
 />
 
-### Poisto-ominaisuudet {#removal-options}
+### Poistamisvaihtoehdot {#removal-options}
 
-Yksittäiset `Tab` elementit voidaan asettaa suljettaviksi. Suljettavat välilehdet saavat sulkupainikkeen lisättäväksi välilehdelle, joka laukaisee sulkeutumis tapahtuman, kun sitä klikataan. `TabbedPane` määrää, kuinka tämä toiminta käsitellään.
+Yksittäiset `Tab`-elementit voidaan asettaa suljettaviksi. Suljettavat välilehdet saavat sulkemispainikkeen lisäämistä välilehteen, mikä laukaisee sulkeutumistapahtuman napsautettaessa. `TabbedPane` määrää, miten tämä käytös käsitellään.
 
-- **`Manual`**: Oletuksena poisto on asetettu `MANUAL`-tilaan, mikä tarkoittaa, että tapahtuma laukaistaan, mutta kehittäjän on käsiteltävä tämä tapahtuma haluamallaan tavalla.
+- **`Manual`**: oletuksena poisto on asetettu `MANUAL`, mikä tarkoittaa, että tapahtuma laukaistaan, mutta kehittäjä päättää, miten tämä tapahtuma käsitellään.
 
-- **`Auto`**: Vaihtoehtoisesti `AUTO` voidaan käyttää, mikä laukaisee tapahtuman ja poistaa `Tab`:in komponentista kehittäjälle, poistaen tarpeen kehittäjän itse toteuttaa tätä toimintoa.
+- **`Auto`**: vaihtoehtoisesti voidaan käyttää `AUTO`, joka laukaisee tapahtuman ja myös poistaa `Tab`:in komponentista kehittäjälle, jolloin kehittäjälle ei tarvitse toteuttaa tätä käyttäytymistä manuaalisesti.
 
-### Segmenttivalinta <DocChip chip='since' label='26.00' /> {#segment-control}
+### Segmentinhallinta <DocChip chip='since' label='26.00' /> {#segment-control}
 
-`TabbedPane` voidaan renderoida segmenttivalinnaksi aktivoimalla `segment`-ominaisuus `setSegment(true)`. Tässä tilassa välilehdet näytetään liukuvalla pillindikaattorilla, joka korostaa aktiivista valintaa, tarjoten kompaktin vaihtoehdon tavanomaiselle välilehti käyttöliittymälle.
+`TabbedPane` voidaan esittää segmentinhallintana ottamalla käyttöön `segment`-ominaisuus `setSegment(true)` -menetelmällä. Tällä tilalla välilehdet näytetään liukuvalla pilleri-indikaattorilla, joka korostaa aktiivisen valinnan, tarjoten kompaktin vaihtoehdon standardille välilehtiliittymälle.
 
 <ComponentDemo
 path='/webforj/tabbedpanesegment'
@@ -200,7 +198,7 @@ height='250px'
 
 ### Laajuus ja teema {#expanse-and-theme}
 
-`TabbedPane` sisältää sisäänrakennetut `Expanse` ja `Theme` vaihtoehdot, jotka ovat samanlaisia kuin muut webforJ komponentit. Näitä voidaan käyttää nopeasti tyylittämään, joka välittää eri merkityksiä loppukäyttäjälle ilman tarvetta tyylittää komponenttia CSS:llä.
+`TabbedPane` tulee esivalmisteltuina `Expanse` ja `Theme` vaihtoehtojen kanssa samankaltaisesti kuin muut webforJ komponentit. Näitä voidaan käyttää nopeasti lisäämään tyylittelyä, joka välittää erilaisia merkityksiä loppukäyttäjälle ilman, että komponenttia tarvitsee muotoilla CSS:llä.
 
 <ComponentDemo
 path='/webforj/tabbedpaneexpansetheme'
@@ -212,19 +210,19 @@ height='250px'
 
 ## Parhaat käytännöt {#best-practices}
 
-Seuraavia käytäntöjä suositellaan käytettäväksi `TabbedPane` -elementissä sovelluksissa:
+Seuraavat käytännöt on suositeltu `TabbedPane`-komponentin käytölle sovelluksissa:
 
-- **Looginen ryhmittely**: Käytä välilehtiä loogisesti ryhmittämään liittyvää sisältöä
-    >- Jokaisen välilehden tulisi edustaa erillistä kategoriaa tai toiminnallisuutta sovelluksessasi
-    >- Ryhmittele samankaltaisia tai loogisia välilehtiä lähelle toisiaan
+- **Looginen ryhmittely**: Käytä välilehtiä loogisesti ryhmittämään liittyvää sisältöä:
+    - Jokaisen välilehden tulisi edustaa erilaista kategoriaa tai toiminnallisuutta sovelluksessasi.
+    - Ryhmäsijoita samanlaisia tai loogisia välilehtiä lähelle toisiaan.
 
-- **Rajoitettu määrä välilehtiä**: Vältä käyttäjien ylivoimaamista liian monilla välilehdillä. Ota huomioon hierarkkinen rakenne tai muut navigointimallit, joissa soveltuu siisti käyttöliittymä
+- **Rajalliset välilehdet**: Vältä käyttäjien ylivoimaisuutta liian monilla välilehdillä. Harkitse hierarkkisen rakenteen tai muiden navigointikaavioiden käyttöä, kun se on sovellettavissa puhdistettavan käyttöliittymän saavuttamiseksi.
 
-- **Selkeät etiketit**: Merkitse välilehdet selkeästi intuitiivista käyttöä varten
-    >- Tarjoa selkeät ja tiiviit etiketit jokaiselle välilehdelle
-    >- Etiketit tulisi kuvastaa sisältöä tai tarkoitusta, jotta käyttäjien on helppo ymmärtää
-    >- Hyödynnä kuvakkeita ja erottuvia värejä, kun soveltuu
+- **Selkeät etiketit**: Merkitse välilehtesi selkeästi intuitiivista käyttöä varten:
+    - Anna jokaiselle välilehdelle selkeät ja ytimekkäät etiketit.
+    - Etikettien tulisi heijastaa sisältöä tai tarkoitusta, jotta käyttäjät ymmärtävät sen helposti.
+    - Käytä kuvakkeita ja erottuvia värejä, kun se on mahdollista.
 
-- **Näppäimistön navigointi**: Hyödynnä webforJ:n `TabbedPane` näppäimistön navigointitukea varmistaaksesi, että vuorovaikutus `TabbedPane`:n kanssa on sujuvampaa ja intuitiivisempaa loppukäyttäjälle
+- **Näppäimistön navigointi**: Käytä webforJ:n `TabbedPane`-näppäimistön navigointituen hyödyntämistä, jotta interaktio `TabbedPane`-komponentin kanssa olisi sujuvampaa ja intuitiivisempaa loppukäyttäjälle.
 
-- **Oletusvälilehti**: Jos oletusvälilehti ei ole asetettu `TabbedPane`:n alkuun, harkitse tämän välilehden asettamista oletukseksi välttämättömän tai usein käytetyn tiedon esittämiseksi.
+- **Oletusvälilehti**: Jos oletusvälilehti ei ole asetettu `TabbedPane`-komponentin alkuun, harkitse tämän välilehden asettamista oletukseksi tärkeälle tai usein käytetyn tiedolle.
