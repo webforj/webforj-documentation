@@ -6,7 +6,7 @@ description: Style the dwc-tree-node label, icon, and expand toggle with CSS var
 ---
 
 <DocChip chip='shadow' />
-
+    
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-tree-node>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::
