@@ -72,7 +72,7 @@ The server won't validate the uploaded file against the filters. The filters are
 
 ## Max size {#max-size}
 
-It's possible to set the maximum file size for uploads to ensure that users don't upload files that are too large for your app to handle. This can be configured using the `setMaxFileSize(Number maxSize)` method, where `maxSize` is specified in bytes.
+Use `setMaxFileSize(Number maxSize)` to set the maximum upload size in bytes.
 
 ```java
 dialog.setMaxFileSize(2 * 1024 * 1024); // Set max size to 2 MB
@@ -95,5 +95,5 @@ UploadedFile result = dialog.show();
 
 1. **Clear and Concise Prompts**: Ensure the prompt message clearly explains what the user is being asked to upload.
 2. **Appropriate Filters**: Set file filters that match the required file types to ensure users upload relevant files.
-3. **Consistent Theming**: Align the dialog and upload field themes with your app's design for a cohesive user experience.
-4. **Minimize Overuse**: Use file upload dialogs sparingly to avoid user frustration. Reserve them for actions requiring specific user file uploads.
+3. **Consistent Theming**: match the dialog and upload field themes to your app's design.
+4. **Minimize Overuse**: use file upload dialogs sparingly to avoid user frustration. Reserve them for actions requiring specific user file uploads.
