@@ -102,7 +102,7 @@ String result = dialog.show();
 
 ## Internationalization (i18n) {#internationalization-i18n}
 
-The titles, descriptions, labels, and messages within the component are fully customizable using the `FileChooserI18n` class. This ensures the dialog can be tailored to various localization or personalization requirements.
+Use `FileChooserI18n` to customize the dialog's titles, descriptions, labels, and messages for different locales or app requirements.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog("Speichern Sie Ihre Datei");
