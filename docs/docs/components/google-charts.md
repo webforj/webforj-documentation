@@ -146,7 +146,7 @@ The `GoogleChart` updates automatically when its data, options, type, or selecti
 
 The component also listens for browser window resize events and redraws automatically to fit the new dimensions.
 
-Call `redraw()` for container size changes that don't trigger a window resize event, such as expanding a panel or resizing a sidebar. Call it after the container's new dimensions have been applied.
+Call `redraw()` for container size changes that don't trigger a window resize event. Examples include expanding a panel and resizing a sidebar. Call it after the container's new dimensions have been applied.
 
 The following demo updates the chart's data with `setData()`. The chart redraws automatically when the new data is applied.
 
