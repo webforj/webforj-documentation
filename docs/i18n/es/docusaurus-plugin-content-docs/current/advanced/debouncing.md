@@ -2,12 +2,17 @@
 sidebar_position: 21
 title: Debouncing
 slug: debouncing
-_i18n_hash: 2096c774627674739fd237aed9a4f79e
+description: >-
+  Delay actions until activity settles using the Debouncer class for
+  search-as-you-type, autosave, and other rate-limited UI work.
+_i18n_hash: fd81dccbd2aeb6e50922c2d09de536de
 ---
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="foundation" location="com/webforj/Debouncer" top='true'/>
 
-El rebote (debouncing) es una técnica que retrasa la ejecución de una acción hasta que ha transcurrido un tiempo específico desde la última llamada. Cada nueva llamada reinicia el temporizador. Esto es útil para escenarios como la búsqueda mientras se escribe, donde deseas esperar a que el usuario deje de escribir antes de ejecutar una consulta de búsqueda.
+El debouncing es una técnica que retrasa la ejecución de una acción hasta que ha transcurrido un tiempo especificado desde la última llamada. Cada nueva llamada reinicia el temporizador. Esto es útil en escenarios como la búsqueda mientras escribes, donde deseas esperar hasta que el usuario deje de escribir antes de ejecutar una consulta de búsqueda.
+
+<!-- INTRO_END -->
 
 <ComponentDemo
 path='/webforj/debouncer'
@@ -15,9 +20,7 @@ files={['src/main/java/com/webforj/samples/views/debouncer/DebouncerView.java']}
 height='265px'
 />
 
-## Uso básico {#basic-usage}
-
-La clase `Debouncer` proporciona una forma sencilla de debilitar acciones. Crea un `Debouncer` con un retraso en segundos y luego llama a `run()` con la acción que deseas debilitar:
+Crea un `Debouncer` con un retraso en segundos, luego llama a `run()` con la acción que deseas debouncing:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);
@@ -27,7 +30,7 @@ textField.onModify(e -> {
 });
 ```
 
-En este ejemplo, el método `search()` se llama solo después de que el usuario deja de escribir durante 300 milisegundos. Cada pulsación de tecla reinicia el temporizador a través del evento `onModify`, por lo que escribir rápidamente no activará múltiples búsquedas.
+En este ejemplo, el método `search()` se llama solo después de que el usuario deja de escribir durante 300 milisegundos. Cada pulsación de tecla reinicia el temporizador a través del evento `onModify`, por lo que escribir rápidamente no disparará múltiples búsquedas.
 
 ## Cómo funciona {#how-it-works}
 
@@ -35,9 +38,9 @@ Cuando llamas a `run()` con una acción:
 
 1. Si no hay acción pendiente, el `Debouncer` programa la acción para que se ejecute después del retraso.
 2. Si ya hay una acción pendiente, la acción anterior se cancela y el temporizador se reinicia con la nueva acción.
-3. Una vez que transcurre el retraso sin otra llamada, se ejecuta la acción.
+3. Una vez que transcurre el retraso sin otra llamada, la acción se ejecuta.
 
-El `Debouncer` se ejecuta en el hilo de la interfaz de usuario utilizando el mecanismo de [`Interval`](/docs/advanced/interval) de webforJ, por lo que no necesitas envolver las actualizaciones de la interfaz de usuario en `Environment.runLater()`.
+El `Debouncer` se ejecuta en el hilo de la UI utilizando el mecanismo [`Interval`](/docs/advanced/interval) de webforJ, por lo que no necesitas envolver las actualizaciones de la UI en `Environment.runLater()`.
 
 :::tip Unidades de retraso
 El parámetro de retraso utiliza segundos como unidad, no milisegundos. Usa `0.3f` para 300 ms o `1.5f` para 1.5 segundos.
@@ -45,11 +48,11 @@ El parámetro de retraso utiliza segundos como unidad, no milisegundos. Usa `0.3
 
 ## Controlando la ejecución {#controlling-execution}
 
-Los siguientes métodos se pueden utilizar para manejar de manera más precisa la ejecución y uso del `Debouncer`:
+Los siguientes métodos se pueden usar para manejar de manera más precisa la ejecución y uso del `Debouncer`:
 
 ### Cancelando una acción pendiente {#cancelling-a-pending-action}
 
-Usa `cancel()` para detener la ejecución de una acción pendiente:
+Usa `cancel()` para detener una acción pendiente de ejecutarse:
 
 ```java
 Debouncer debounce = new Debouncer(1f);
@@ -60,8 +63,8 @@ debounce.run(() -> saveDocument());
 debounce.cancel();
 ```
 
-:::tip Cancelando rebotes pendientes
-Al igual que con los intervalos, es buena práctica cancelar las acciones debiladas pendientes cuando un componente se destruye. Esto previene fugas de memoria y evita errores de acciones que se ejecutan en componentes destruidos:
+:::tip Cancelando debounces pendientes
+Al igual que con los intervalos, es una buena práctica cancelar acciones de debouncing pendientes cuando un componente se destruye. Esto previene fugas de memoria y evita errores de acciones ejecutándose en componentes destruidos:
 
 ```java
 public class SearchPanel extends Composite<Div> {
@@ -86,7 +89,7 @@ textField.onModify(e -> {
   debounce.run(() -> validateInput(textField.getText()));
 });
 
-// Fuerza la validación antes del envío del formulario
+// Forzar la validación antes de la presentación del formulario
 submitButton.onClick(e -> {
   debounce.flush();
   if (isValid()) {
@@ -95,9 +98,9 @@ submitButton.onClick(e -> {
 });
 ```
 
-### Verificando el estado pendiente {#checking-pending-status}
+### Comprobando el estado pendiente {#checking-pending-status}
 
-Usa `isPending()` para verificar si hay una acción esperando para ejecutarse:
+Usa `isPending()` para verificar si una acción está esperando ejecutar:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);
@@ -107,25 +110,25 @@ if (debounce.isPending()) {
 }
 ```
 
-## Rebote a nivel de evento vs `Debouncer` {#event-level-debouncing-vs-debouncer}
+## Debouncing a nivel de evento vs `Debouncer` {#event-level-debouncing-vs-debouncer}
 
-webforJ proporciona dos enfoques para rebotes:
+webforJ proporciona dos enfoques para debouncing:
 
 | Característica | `Debouncer` | `ElementEventOptions.setDebounce()` |
 |----------------|-------------|-------------------------------------|
-| Alcance        | Cualquier acción | Solo eventos de elementos |
-| Ubicación      | Lado del servidor | Lado del cliente |
-| Unidad         | Segundos (float) | Milisegundos (int) |
-| Flexibilidad   | Control total con cancel/flush | Automático con evento |
+| Alcance        | Cualquier acción | Solo eventos de elementos       |
+| Ubicación      | Lado del servidor | Lado del cliente                 |
+| Unidad         | Segundos (float) | Milisegundos (int)               |
+| Flexibilidad   | Control total con cancelación/flush | Automático con evento           |
 
-Usa `Debouncer` cuando necesites control programático sobre el rebote, como cancelar o forzar la ejecución de acciones pendientes. Usa `ElementEventOptions` cuando quieras rebotes simples del lado del cliente para eventos de elementos sin viajes adicionales al servidor.
+Usa `Debouncer` cuando necesites control programático sobre el debouncing, como cancelar o vaciar acciones pendientes. Usa `ElementEventOptions` cuando desees un debouncing simple del lado del cliente para eventos de elementos sin viajes adicionales al servidor.
 
 ```java
-// Usando ElementEventOptions para rebotes del lado del cliente
+// Usando ElementEventOptions para debouncing del lado del cliente
 ElementEventOptions options = new ElementEventOptions();
 options.setDebounce(300);
 
 element.addEventListener("input", e -> {
-  // Este manejador está reboteado en el cliente
+  // Este controlador se debounces en el cliente
 }, options);
 ```

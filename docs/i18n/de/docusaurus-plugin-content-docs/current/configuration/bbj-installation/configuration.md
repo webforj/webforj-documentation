@@ -1,17 +1,21 @@
 ---
-title: Install Plugin
+title: Plugin installieren
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
 description: >-
   Configure the webforJ install Maven plugin with deploy URL, class name,
   publish name, and debug flags for BBjServices deployments.
-_i18n_hash: b01357f571ce256abb8b390cebdbf5cc
+_i18n_hash: 1019285125db3439621951fe22047837
 ---
-Sie können webforJ über die POM-Datei eines Projekts konfigurieren, die dafür entwickelt wurde, die Bereitstellung einer Anwendung zu erleichtern. Die folgenden Abschnitte skizzieren die verschiedenen Optionen, die Sie ändern können, um ein gewünschtes Ergebnis zu erzielen.
+:::danger Abgelehnt und wird entfernt
+Das webforJ Installationsplugin ist veraltet und wird in einer zukünftigen Veröffentlichung entfernt. Beginnen Sie keine neuen Projekte damit. Verschieben Sie bestehende Projekte zu [BBjShip](/docs/configuration/bbjship/overview), das webforJ-Apps in BBjServices installiert, bereitstellt und ausführt. [Bestehende Projekte](/docs/configuration/bbjship/existing-projects) listet die Änderungen auf, die ein Projekt benötigt.
+:::
 
-## Engine-Ausschluss {#engine-exclusion}
+Sie können webforJ mit der POM-Datei eines Projekts konfigurieren, die so gestaltet ist, dass die Bereitstellung einer App einfach ist. Die folgenden Abschnitte umreißen die verschiedenen Optionen, die Sie ändern können, um ein gewünschtes Ergebnis zu erzielen.
 
-Beim Ausführen mit `BBjServices` sollte die `webforj-engine`-Abhängigkeit ausgeschlossen werden, da die von der Engine bereitgestellten Funktionen bereits verfügbar sind.
+## Ausschluss des Engines {#engine-exclusion}
+
+Beim Ausführen mit `BBjServices` sollte die `webforj-engine` Abhängigkeit ausgeschlossen werden, da die von der Engine bereitgestellten Funktionen bereits verfügbar sind.
 
 ```xml
 <dependencies>
@@ -31,7 +35,7 @@ Beim Ausführen mit `BBjServices` sollte die `webforj-engine`-Abhängigkeit ausg
 
 ## POM-Datei-Tags {#pom-file-tags}
 
-Tags innerhalb des `<configuration>`-Tags können geändert werden, um Ihre App zu konfigurieren. Das Bearbeiten der folgenden Zeilen in der Standard-POM-Datei, die mit dem [`HelloWorldJava`](https://github.com/webforj/HelloWorldJava) Start-Repository geliefert wird, führt zu diesen Änderungen:
+Tags innerhalb des `<configuration>` Tags können geändert werden, um Ihre App zu konfigurieren. Durch Bearbeiten der folgenden Zeilen in der standardmäßigen POM-Datei, die mit dem [`HelloWorldJava`](https://github.com/webforj/HelloWorldJava) Start-Repository geliefert wird, ergeben sich diese Änderungen:
 
 ```xml {13-16} showLineNumbers
 <plugin>
@@ -54,41 +58,41 @@ Tags innerhalb des `<configuration>`-Tags können geändert werden, um Ihre App 
 </plugin>
 ```
 
-- **`<deployurl>`** Dieses Tag ist die URL, unter der der webforJ-Endpunkt für die Projektinstallation erreichbar ist. Für Benutzer, die ihre App lokal ausführen, wird ein Standardport von 8888 verwendet. Für Benutzer, die Docker verwenden, sollte der Port auf den Port geändert werden, der bei [der Konfiguration des Docker-Containers](./docker#2-configuration) eingegeben wurde.
+- **`<deployurl>`** Dieses Tag ist die URL, unter der der webforJ-Endpunkt für die Projektinstallation erreicht werden kann. Für Benutzer, die ihre App lokal ausführen, wird ein Standardport von 8888 verwendet. Für Benutzer, die Docker ausführen, sollte der Port auf den Port geändert werden, der bei [der Konfiguration des Docker-Containers](./docker#2-configuration) eingegeben wurde.
 
-- **`<classname>`** Dieses Tag sollte den Paket- und Klassennamen der App enthalten, die Sie ausführen möchten. Dies wird die einzige Klasse in Ihrem Projekt sein, die die `App`-Klasse erweitert und von der Basis-URL aus ausgeführt wird.
+- **`<classname>`** Dieses Tag sollte den Paket- und Klassennamen der App enthalten, die Sie ausführen möchten. Dies wird die einzige Klasse in Ihrem Projekt sein, die die `App` Klasse erweitert und von der Basis-URL ausläuft.
 
-- **`<publishname>`** Dieses Tag gibt den Namen der App in der veröffentlichten URL an. Um Ihr Programm auszuführen, navigieren Sie in der Regel zu einer URL wie `http://localhost:8888/webapp/<publishname>`, wobei `<publishname>` durch den Wert im `<publishname>`-Tag ersetzt wird. Dann wird das durch das `<classname>`-Tag angegebene Programm ausgeführt.
+- **`<publishname>`** Dieses Tag gibt den Namen der App in der veröffentlichten URL an. Um Ihr Programm auszuführen, navigieren Sie in der Regel zu einer URL wie `http://localhost:8888/webapp/<publishname>`, wobei `<publishname>` den Wert im `<publishname>` Tag ersetzt. Dann wird das durch das `<classname>` Tag angegebene Programm ausgeführt.
 
-- **`<debug>`** Das Debug-Tag kann auf true oder false gesetzt werden und bestimmt, ob die Konsole des Browsers Fehlermeldungen anzeigt, die von Ihrem Programm ausgelöst werden.
+- **`<debug>`** Das Debug-Tag kann auf true oder false gesetzt werden und bestimmt, ob die Konsole des Browsers Fehlermeldungen anzeigt, die von Ihrem Programm ausgegeben werden.
 
-## Ausführen eines bestimmten Programms {#running-a-specific-program}
+## Ausführen eines spezifischen Programms {#running-a-specific-program}
 
-Es gibt zwei Möglichkeiten, ein spezifisches Programm in Ihrer App auszuführen:
+Es gibt zwei Möglichkeiten, ein bestimmtes Programm in Ihrer App auszuführen:
 
-1. Platzieren Sie das Programm innerhalb der `run()`-Methode der Klasse, die `App` erweitert.
+1. Platzieren Sie das Programm innerhalb der `run()` Methode der Klasse, die `App` erweitert.
 2. Nutzen Sie [Routing](../../routing/overview) in Ihrer webforJ-App, um dem Programm eine dedizierte URL zu geben.
 
 ## Wie webforJ einen Einstiegspunkt auswählt {#how-webforj-selects-an-entry-point}
 
-Der Einstiegspunkt für eine App wird durch das `<classname>` im POM-Datei bestimmt. Wenn im POM-Datei kein Einstiegspunkt angegeben ist, startet das System eine Suche nach einem Einstiegspunkt.
+Der Einstiegspunkt für eine App wird durch das in der POM-Datei angegebene `<classname>` bestimmt. Wenn in der POM-Datei kein Einstiegspunkt angegeben ist, beginnt das System mit einer Suche nach einem Einstiegspunkt.
 
 ### Einstiegspunkt-Suche {#entry-point-search}
 
-1. Wenn es eine einzelne Klasse gibt, die die `App`-Klasse erweitert, wird dies der Einstiegspunkt.
-2. Wenn mehrere Klassen `App` erweitern, prüft das System, ob eine die `com.webforj.annotation.AppEntry`-Annotation hat. Die einzelne Klasse, die mit `@AppEntry` annotiert ist, wird der Einstiegspunkt.
+1. Wenn es eine einzige Klasse gibt, die die `App` Klasse erweitert, wird diese der Einstiegspunkt.
+2. Wenn mehrere Klassen `App` erweitern, prüft das System, ob eine die `com.webforj.annotation.AppEntry` Annotation hat. Die einzelne Klasse, die mit `@AppEntry` annotiert ist, wird der Einstiegspunkt.
     :::warning
-    Wenn mehrere Klassen mit `@AppEntry` annotiert sind, wird eine Ausnahme ausgelöst, in der alle entdeckten Klassen aufgelistet werden.
+    Wenn mehrere Klassen mit `@AppEntry` annotiert sind, wird eine Ausnahme ausgelöst, die alle entdeckten Klassen auflistet.
     :::
 
-Wenn es mehrere Klassen gibt, die `App` erweitern und keine von ihnen mit `@AppEntry` annotiert ist, wird eine Ausnahme ausgelöst, die jede Unterklasse auflistet.
+Wenn es mehrere Klassen gibt, die `App` erweitern und keine von ihnen mit `@AppEntry` annotiert sind, wird eine Ausnahme ausgelöst, die jede Unterklasse detailliert beschreibt.
 
 ## Debug-Modus {#debug-mode}
 
-Es ist auch möglich, Ihre App im Debug-Modus auszuführen, der es der Konsole ermöglicht, umfassende Fehlermeldungen auszugeben.
+Es ist auch möglich, Ihre App im Debug-Modus auszuführen, der es der Konsole ermöglicht, umfassende Fehlermeldungen anzuzeigen.
 
-Die erste Option besteht darin, die `config.bbx`-Datei zu ändern, die sich im `cfg/`-Verzeichnis Ihrer BBj-Installation befindet. Fügen Sie die Zeile `SET DEBUG=1` zur Datei hinzu und speichern Sie Ihre Änderungen.
+Die erste Möglichkeit besteht darin, die `config.bbx` Datei im `cfg/` Verzeichnis Ihrer BBj-Installation zu ändern. Fügen Sie die Zeile `SET DEBUG=1` in die Datei ein und speichern Sie Ihre Änderungen.
 
-Darüber hinaus können Sie im Enterprise Manager das Folgende als Programmargument hinzufügen: `DEBUG`
+Außerdem können Sie im Enterprise Manager folgendes als Programmargument hinzufügen: `DEBUG`
 
-Das Abschließen einer dieser Optionen ermöglicht es der Browserkonsole, Fehlermeldungen auszugeben.
+Wenn eine dieser Optionen abgeschlossen ist, kann die Konsole des Browsers Fehlermeldungen drucken.

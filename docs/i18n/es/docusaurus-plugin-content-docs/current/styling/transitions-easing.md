@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Transitions & Easing
+title: Transiciones y easing
 description: >-
   Animate UI changes with consistent DWC duration tokens and cubic-bezier easing
   curves for natural-feeling transitions.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 35
-title: Filtering
+title: Filteren
 slug: filtering
 description: >-
   Narrow Table rows by applying a Predicate through the bound Repository,

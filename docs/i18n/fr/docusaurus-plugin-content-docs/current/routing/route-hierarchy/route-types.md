@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Route Types
+title: Types de route
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Les routes sont classées en deux types principaux, **Routes de Vue** et **Routes de Mise en Page**. Le choix du type de route détermine comment les composants sont mappés aux URL et comment ils interagissent avec d'autres parties de votre application.

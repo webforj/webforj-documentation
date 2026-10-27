@@ -19,11 +19,11 @@ public class ViewTransitionMorphPage {
 
   public ViewTransitionMorphPage(Page page) {
     this.blogCard = page.locator(".blog-card");
-    this.blogCardTitle = page.locator(".blog-card-title");
+    this.blogCardTitle = page.locator(".blog-card > [slot='title']");
     this.blogImage = page.locator(".blog-card .blog-image");
 
     this.blogDetail = page.locator(".blog-detail");
-    this.blogDetailTitle = page.locator(".blog-detail-title");
+    this.blogDetailTitle = page.locator(".blog-detail > [slot='title']");
     this.blogDetailImage = page.locator(".blog-detail .blog-image");
     this.blogDetailClose = page.locator(".blog-detail-close");
   }

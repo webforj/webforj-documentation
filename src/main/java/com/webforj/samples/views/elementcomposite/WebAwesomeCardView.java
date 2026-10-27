@@ -25,11 +25,11 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Pricing Cards")
-public class CardView extends Composite<FlexLayout> {
+public class WebAwesomeCardView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
-  public CardView() {
-    Card basic =
+  public WebAwesomeCardView() {
+    WebAwesomeCard basic =
         buildPlanCard(
             "Basic Plan",
             "Perfect for individuals",
@@ -39,7 +39,7 @@ public class CardView extends Composite<FlexLayout> {
             "Email support",
             "Standard analytics");
 
-    Card pro =
+    WebAwesomeCard pro =
         buildPlanCard(
             "Pro Plan",
             "Best for growing teams",
@@ -59,9 +59,9 @@ public class CardView extends Composite<FlexLayout> {
         .add(basic, pro);
   }
 
-  private Card buildPlanCard(
+  private WebAwesomeCard buildPlanCard(
       String title, String tagline, String price, String cta, String... features) {
-    Card card = new Card();
+    WebAwesomeCard card = new WebAwesomeCard();
 
     card.addToHeader(new H3(title));
     Span taglineSpan = new Span(tagline);
@@ -108,15 +108,15 @@ public class CardView extends Composite<FlexLayout> {
   @BundleEntry("@awesome.me/webawesome/dist/styles/themes/default.css")
   @BundleEntry("@awesome.me/webawesome/dist/components/card/card.js")
   @NodeName("wa-card")
-  public static final class Card extends ElementCompositeContainer
-      implements HasClassName<Card>, HasStyle<Card> {
+  public static final class WebAwesomeCard extends ElementCompositeContainer
+      implements HasClassName<WebAwesomeCard>, HasStyle<WebAwesomeCard> {
 
-    public Card addToHeader(Component... components) {
+    public WebAwesomeCard addToHeader(Component... components) {
       getElement().add("header", components);
       return this;
     }
 
-    public Card addToFooter(Component... components) {
+    public WebAwesomeCard addToFooter(Component... components) {
       getElement().add("footer", components);
       return this;
     }

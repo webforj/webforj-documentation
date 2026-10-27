@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Triggers
+title: Disparadores
 _i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
 Por defecto, las vinculaciones validan automáticamente los componentes cuando los usuarios modifican sus datos, como al ingresar nuevo texto, marcar una casilla de verificación o seleccionar una nueva opción en un botón de radio. Si prefieres desactivar las validaciones automáticas y solo informar sobre ellas al escribir en el modelo de datos, puedes configurar la vinculación para desactivarlas. Esto te da control sobre cuándo y cómo ocurren las validaciones, lo que te permite gestionar las validaciones según las necesidades específicas de la aplicación o las interacciones del usuario.

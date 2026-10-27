@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Query Parameters
+title: Query-parameters
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Queryparameters stellen je in staat om extra gegevens via URL's door te geven, met het formaat `?key1=value1&key2=value2`. Terwijl routeparameters worden gebruikt om vereiste gegevens binnen het URL-pad door te geven, bieden queryparameters een flexibele methode voor het doorgeven van optionele of extra gegevens. Ze zijn vooral nuttig bij het filteren van inhoud, sorteren of het verwerken van meerdere waarden voor dezelfde sleutel.

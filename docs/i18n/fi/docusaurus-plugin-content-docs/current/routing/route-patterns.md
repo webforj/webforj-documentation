@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Route Patterns
+title: Reittimallit
 description: >-
   Define dynamic URL segments, optional parameters, wildcards, and regex
   constraints to match webforJ routes precisely.

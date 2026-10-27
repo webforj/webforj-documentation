@@ -1,5 +1,5 @@
 ---
-title: Styling languages
+title: Tyylikielet
 sidebar_position: 11
 sidebar_class_name: new-content
 description: >-

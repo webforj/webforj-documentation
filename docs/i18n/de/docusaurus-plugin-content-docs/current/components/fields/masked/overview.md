@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Masked Fields
+title: Maskierte Felder
 hide_table_of_contents: true
 hide_giscus_comments: true
 _i18n_hash: f613888a848d8f0b2da31066485b9bfc

@@ -1,5 +1,5 @@
 ---
-title: Terminate and Error Actions
+title: Beendigungs- und Fehleraktionen
 sidebar_position: 40
 _i18n_hash: 1a250a51020b32c8b3471ae75ea8f750
 ---

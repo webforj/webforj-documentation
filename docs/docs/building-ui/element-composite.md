@@ -465,8 +465,8 @@ public class Dialog extends ElementCompositeContainer {
 The demo below shows two pricing cards built with [`wa-card`](https://webawesome.com/docs/components/card/), populating the `header`, default, and `footer` slots from Java:
 
 <ComponentDemo
-path='/webforj/card'
-files={['src/main/java/com/webforj/samples/views/elementcomposite/CardView.java']}
+path='/webforj/webawesomecard'
+files={['src/main/java/com/webforj/samples/views/elementcomposite/WebAwesomeCardView.java']}
 height='400px'
 />
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: State Management
+title: Statusbeheer
 _i18n_hash: 0766f2c08642792af2fe62e832b4fa1a
 ---
 Creating seamless, dynamische gebruikerservaringen vereist vaak dat de staat van uw webapp in de URL wordt weerspiegeld en behouden blijft tijdens browsernavigatie-evenementen. U kunt dit bereiken zonder de pagina te herladen door gebruik te maken van URL-parameterupdates en het beheer van de geschiedenisstatus van de browser. Dit zorgt ervoor dat gebruikers specifieke weergaven kunnen delen, bookmarken of terugkeren naar de app, waarbij deze volledig op de hoogte is van hun eerdere interacties.

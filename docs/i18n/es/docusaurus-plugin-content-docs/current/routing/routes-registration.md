@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Routes Registration
+title: Registro de rutas
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 Además de [registrar rutas utilizando las anotaciones `@Route`](./defining-routes), es posible registrar, actualizar o eliminar rutas dinámicamente en tiempo de ejecución según la lógica de la aplicación, los roles de usuario u otras condiciones. Esta flexibilidad permite gestionar la navegación de forma más dinámica, en lugar de definir rutas de manera estática en el momento de la compilación.

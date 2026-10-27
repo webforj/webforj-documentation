@@ -13,9 +13,7 @@ The `Spinner` component provides a visual indicator that indicates ongoing proce
 
 <!-- INTRO_END -->
 
-## Basics {#basics}
-
-To create a `Spinner`, you can specify the theme and expanse. The basic syntax involves creating a `Spinner` instance and defining its appearance and behavior through methods such as `setTheme()` and `setExpanse()`.
+Create a `Spinner` instance, then define its appearance and behavior with methods such as `setTheme()` and `setExpanse()`.
 
 <ComponentDemo
 path='/webforj/spinnerdemo'

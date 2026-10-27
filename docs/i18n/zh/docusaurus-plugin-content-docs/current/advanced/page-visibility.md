@@ -1,5 +1,5 @@
 ---
-title: Page Visibility
+title: 页面可见性
 sidebar_position: 32
 sidebar_class_name: new-content
 description: >-

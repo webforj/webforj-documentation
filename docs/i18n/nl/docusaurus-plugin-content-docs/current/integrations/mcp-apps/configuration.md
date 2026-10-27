@@ -1,5 +1,5 @@
 ---
-title: Configure an MCP App
+title: Een MCP-app configureren
 sidebar_position: 30
 description: >-
   Configure the public app origin, allowed embedding clients, and external

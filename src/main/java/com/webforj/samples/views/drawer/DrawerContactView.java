@@ -2,18 +2,19 @@ package com.webforj.samples.views.drawer;
 
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.avatar.Avatar;
+import com.webforj.component.avatar.AvatarExpanse;
+import com.webforj.component.avatar.AvatarTheme;
 import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.card.Card;
+import com.webforj.component.card.Card.Shadow;
 import com.webforj.component.drawer.Drawer;
 import com.webforj.component.drawer.Drawer.Placement;
 import com.webforj.component.html.elements.Paragraph;
-import com.webforj.component.icons.Icon;
+import com.webforj.component.icons.IconButton;
 import com.webforj.component.icons.TablerIcon;
-import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -31,16 +32,15 @@ public class DrawerContactView extends Composite<FlexLayout> {
             .addClassName("contact-drawer")
             .open();
 
-    FlexLayout list =
-        new FlexLayout().addClassName("contact-list").setDirection(FlexDirection.COLUMN);
+    FlexLayout list = new FlexLayout().setDirection(FlexDirection.COLUMN).setSpacing("0px");
 
-    list.add(createContact("Gregory Baldrake", "US - Albuquerque", "GB", "#fdca8b"));
-    list.add(createContact("Betsy Heebink", "US - Madison", "BH", "#85cf8a"));
-    list.add(createContact("Wesley Osborn", "US - Seattle", "WO", "#d4df4a"));
-    list.add(createContact("Harry Chuckie", "US - Palm Springs", "HC", "#00ffb7"));
-    list.add(createContact("Stephanie McIntyre", "US - Modesto", "SM", "#ff6230"));
-    list.add(createContact("Dave Strum", "US - Hagerstown", "DS", "#b88bfa"));
-    list.add(createContact("Dr. Jane Booker", "US - Hagerstown", "DB", "#4c7c4b"));
+    list.add(createContact("Gregory Baldrake", "US - Albuquerque", AvatarTheme.DANGER));
+    list.add(createContact("Betsy Heebink", "US - Madison", AvatarTheme.DEFAULT));
+    list.add(createContact("Wesley Osborn", "US - Seattle", AvatarTheme.INFO));
+    list.add(createContact("Harry Chuckie", "US - Palm Springs", AvatarTheme.PRIMARY));
+    list.add(createContact("Stephanie McIntyre", "US - Modesto", AvatarTheme.SUCCESS));
+    list.add(createContact("Dave Strum", "US - Hagerstown", AvatarTheme.WARNING));
+    list.add(createContact("Jane Booker", "US - Hagerstown", AvatarTheme.GRAY));
 
     Button openDrawerButton = new Button("Open Contacts");
     openDrawerButton.onClick(e -> drawer.open());
@@ -49,29 +49,31 @@ public class DrawerContactView extends Composite<FlexLayout> {
     self.setMargin("var(--dwc-space-l)").add(openDrawerButton, drawer);
   }
 
-  private FlexLayout createContact(String name, String location, String initials, String color) {
-    FlexLayout avatar =
-        new FlexLayout()
-            .addClassName("contact-avatar")
-            .setText(initials)
-            .setStyle("background-color", color);
+  private Card createContact(String name, String location, AvatarTheme theme) {
 
-    Paragraph namePara = new Paragraph(name).addClassName("contact-name");
-    Paragraph locationPara = new Paragraph(location).addClassName("contact-location");
+    Avatar avatar =
+        new Avatar(name)
+            .setTheme(theme)
+            .addClassName("avatar-margin")
+            .setExpanse(AvatarExpanse.LARGE);
 
-    FlexLayout textBlock =
-        new FlexLayout(namePara, locationPara)
-            .addClassName("contact-text")
-            .setDirection(FlexDirection.COLUMN);
+    Paragraph namePara = new Paragraph(name);
+    Paragraph locationPara = new Paragraph(location);
 
-    Icon phoneIcon = TablerIcon.create("phone");
-    Button callButton = new Button().addClassName("contact-call").setTheme(ButtonTheme.DEFAULT);
-    callButton.setIcon(phoneIcon);
+    IconButton callButton = new IconButton(TablerIcon.create("phone"));
 
-    return new FlexLayout(avatar, textBlock, callButton)
-        .addClassName("contact-row")
-        .setWrap(FlexWrap.NOWRAP)
-        .setAlignment(FlexAlignment.AUTO)
-        .setJustifyContent(FlexJustifyContent.EVENLY);
+    Card contactCard =
+        new Card()
+            .addClassName("contact-row")
+            .setShadow(Shadow.NONE)
+            .setOrientation(Card.Orientation.HORIZONTAL)
+            .setBorderless(true)
+            .setWidth("100%")
+            .addToIcon(avatar)
+            .addToTitle(namePara)
+            .addToCaption(locationPara)
+            .addToHeaderActions(callButton);
+
+    return contactCard;
   }
 }

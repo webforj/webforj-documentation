@@ -1,10 +1,12 @@
 package com.webforj.samples.views.upload;
 
-import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.card.Card;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Span;
-import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.columnslayout.ColumnsLayout;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.progressbar.ProgressBar;
 import com.webforj.component.upload.Upload;
@@ -12,7 +14,6 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@BundleEntry("css/upload/uploadEvents.css")
 @FrameTitle("Upload Events")
 public class UploadEventsView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
@@ -21,9 +22,9 @@ public class UploadEventsView extends Composite<FlexLayout> {
   private final Span status = new Span("Idle");
 
   public UploadEventsView() {
-    self.addClassName("upload-events")
-        .setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-m)");
+    self.setHeight("100vh")
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER);
 
     upload.setMaxFiles(25d);
     upload.setMaxFileSize(5d * 1024d * 1024d);
@@ -41,7 +42,6 @@ public class UploadEventsView extends Composite<FlexLayout> {
                     }));
 
     progress.setValue(0).setText("{{x}}%");
-    status.addClassName("upload-events__status");
 
     upload.onChange(
         ev -> {
@@ -64,6 +64,17 @@ public class UploadEventsView extends Composite<FlexLayout> {
           status.setText("Done. " + uploaded + " uploaded, " + failed + " failed.");
         });
 
-    self.add(new H3("File uploader"), upload, progress, status);
+    self.add(createCard());
+  }
+
+  private Card createCard() {
+    Card card = new Card();
+    card.setWidth(520);
+    // card.addClassName("card");
+    card.setStyle("--dwc-card-title-font-size", "var(--dwc-font-size-xl)");
+    card.addToTitle(new H3("File uploader"));
+    ColumnsLayout wrapper = new ColumnsLayout(upload, progress, status);
+    card.addToBody(wrapper);
+    return card;
   }
 }

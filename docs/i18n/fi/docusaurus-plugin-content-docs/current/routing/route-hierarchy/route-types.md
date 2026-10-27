@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Route Types
+title: Reittityypit
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Reitit jaotellaan kahteen päätyyppiin, **Näyttöreitit** ja **Asettelureitit**. Reittityypin valinta määrää, miten komponentit kytkeytyvät URL-osoitteisiin ja miten ne vuorovaikuttavat sovelluksen muiden osien kanssa.

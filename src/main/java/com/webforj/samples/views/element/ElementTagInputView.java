@@ -2,28 +2,47 @@ package com.webforj.samples.views.element;
 
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.Expanse;
+import com.webforj.component.card.Card;
 import com.webforj.component.element.Element;
 import com.webforj.component.element.event.ElementEventOptions;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H2;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
 @BundleEntry("css/element/elementtaginput.css")
 @FrameTitle("Tag Input")
-public class ElementTagInputView extends Composite<Div> {
-  private final Div self = getBoundComponent();
+public class ElementTagInputView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
+  private final Card card = new Card();
   private final Element input = new Element("input");
   private final Div chips = new Div();
 
   public ElementTagInputView() {
-    self.addClassName("element-demo-frame");
+    setCard();
+    createInput();
 
-    Div card = new Div();
-    card.addClassName("element-demo-card");
+    self.setHeight("100vh")
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .add(card);
+  }
+
+  private void setCard() {
+    card.setWidth("100%")
+        .setMaxWidth(420)
+        .setExpanse(Expanse.XLARGE)
+        .addToTitle(new H2("Add tags"));
+  }
+
+  private void createInput() {
 
     Icon tagIcon = TablerIcon.create("tag");
     tagIcon.addClassName("tag-input-icon");
@@ -55,8 +74,7 @@ public class ElementTagInputView extends Composite<Div> {
         },
         options);
 
-    card.add(new H2("Add tags"), field, chips);
-    self.add(card);
+    card.addToBody(field, chips);
   }
 
   private void addChip(String text) {

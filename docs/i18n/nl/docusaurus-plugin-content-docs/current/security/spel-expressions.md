@@ -1,39 +1,42 @@
 ---
 sidebar_position: 5
 title: SpEL Expressions
-_i18n_hash: 1019aac355c5ef0efc8623660c3501e5
+description: >-
+  Author route authorization rules with Spring Expression Language using
+  @RouteAccess for role, authority, and custom checks.
+_i18n_hash: 59601d0d83fe7eb4b05bf8eab47515c3
 ---
-Spring Expression Language (`SpEL`) biedt een declaratieve manier om autorisatieregels direct in annotaties te definiëren. De `@RouteAccess` annotatie evalueert `SpEL`-uitdrukkingen met behulp van de ingebouwde autorisatiefuncties van Spring Security.
+Spring Expression Language (`SpEL`) biedt een declaratieve manier om autorisatieregels rechtstreeks in annotaties te definiëren. De annotatie `@RouteAccess` evalueert `SpEL`-expressies met behulp van de ingebouwde autorisatiefuncties van Spring Security.
+
+<!-- INTRO_END -->
 
 :::info Alleen Spring Security
-`SpEL`-uitdrukkingen zijn alleen beschikbaar bij gebruik van de Spring-integratie.
+`SpEL`-expressies zijn alleen beschikbaar bij gebruik van de Spring-integratie.
 :::
 
-## Basisgebruik {#basic-usage}
-
-De `@RouteAccess` annotatie accepteert een `SpEL`-uitdrukking die evalueert naar een boolean:
+De annotatie `@RouteAccess` accepteert een `SpEL`-expressie die evalueert naar een boolean:
 
 ```java
 @Route("/admin/dashboard")
 @RouteAccess("hasRole('ADMIN')")
 public class AdminDashboardView extends Composite<Div> {
-  // Alleen gebruikers met de rol ROLE_ADMIN kunnen toegang krijgen
+  // Alleen gebruikers met de autoriteit ROLE_ADMIN hebben toegang
 }
 ```
 
-Als de uitdrukking evalueert naar `true`, wordt toegang verleend. Als `false`, wordt de gebruiker doorgestuurd naar de toegang geweigerd pagina.
+Als de expressie evalueert naar `true`, wordt de toegang verleend. Bij `false` wordt de gebruiker doorgestuurd naar de pagina voor toegang geweigerd.
 
 ## Ingebouwde beveiligingsfuncties {#built-in-security-functions}
 
 Spring Security biedt de volgende autorisatiefuncties via `SecurityExpressionRoot`:
 
-| Functie | Parameters | Beschrijving | Voorbeeld |
-|----------|-----------|-------------|---------|
-| `hasRole` | `String rol` | Controleert of de gebruiker de opgegeven rol heeft (voegt automatisch `ROLE_` vooraan toe) | `hasRole('ADMIN')` komt overeen met `ROLE_ADMIN` |
+| Functie | Parameters | Omschrijving | Voorbeeld |
+|---------|------------|--------------|-----------|
+| `hasRole` | `String rol` | Controleert of de gebruiker de opgegeven rol heeft (voegt automatisch `ROLE_` voorop) | `hasRole('ADMIN')` komt overeen met `ROLE_ADMIN` |
 | `hasAnyRole` | `String... rollen` | Controleert of de gebruiker een van de opgegeven rollen heeft | `hasAnyRole('ADMIN', 'MANAGER')` |
 | `hasAuthority` | `String autoriteit` | Controleert of de gebruiker de exacte autoriteitstring heeft | `hasAuthority('REPORTS:READ')` |
 | `hasAnyAuthority` | `String... autoriteiten` | Controleert of de gebruiker een van de opgegeven autoriteiten heeft | `hasAnyAuthority('REPORTS:READ', 'REPORTS:WRITE')` |
-| `isAuthenticated` | Geen | Retourneert `true` als de gebruiker geauthenticeerd is | `isAuthenticated()` |
+| `isAuthenticated` | Geen | Geeft `true` terug als de gebruiker geauthenticeerd is | `isAuthenticated()` |
 
 ### Voorbeelden {#examples}
 
@@ -59,9 +62,9 @@ public class ReportsView extends Composite<Div> { }
 public class ProfileView extends Composite<Div> { }
 ```
 
-## Combineren van voorwaarden {#combining-conditions}
+## Voorwaarden combineren {#combining-conditions}
 
-Gebruik boolean-operatoren (`and`, `or`, `!`) om complexe autorisatieregels te creëren:
+Gebruik boolean-operatoren (`and`, `or`, `!`) om complexe autorisatieregels te maken:
 
 ```java
 // Beide voorwaarden vereist
@@ -69,7 +72,7 @@ Gebruik boolean-operatoren (`and`, `or`, `!`) om complexe autorisatieregels te c
 @RouteAccess("hasRole('MODERATOR') and hasAuthority('REPORTS:VIEW')")
 public class ModeratorReportsView extends Composite<Div> { }
 
-// Toegang op basis van één van de voorwaarden
+// Een van de voorwaarden verleent toegang
 @Route("/support")
 @RouteAccess("hasRole('ADMIN') or hasRole('SUPPORT')")
 public class SupportView extends Composite<Div> { }
@@ -79,7 +82,7 @@ public class SupportView extends Composite<Div> { }
 @RouteAccess("isAuthenticated() and !hasAuthority('PREMIUM')")
 public class TrialFeaturesView extends Composite<Div> { }
 
-// Complexe meerlinie-uitdrukking
+// Complexe multi-regel expressie
 @Route("/reports/advanced")
 @RouteAccess("""
   hasRole('ADMIN') or
@@ -97,18 +100,18 @@ public class AdvancedReportsView extends Composite<Div> { }
 @RolesAllowed("USER")
 @RouteAccess("hasAuthority('TEAM:ADMIN')")
 public class TeamAdminView extends Composite<Div> {
-  // Moet zowel rol USER hebben EN autoriteit TEAM:ADMIN
+  // Moet de rol USER EN de autoriteit TEAM:ADMIN hebben
 }
 ```
 
 Evaluatievolgorde:
-1. `@RolesAllowed` evaluator (prioriteit 5) verifieert rol `USER`
-2. Als dit is geslaagd, evalueert `@RouteAccess` evaluator (prioriteit 6) de `SpEL`-uitdrukking
-3. Als dit is geslaagd, worden aangepaste evaluatoren uitgevoerd (prioriteit 10+)
+1. `@RolesAllowed` evaluatoren (prioriteit 5) controleren de rol `USER`
+2. Als deze slaagt, evalueert `@RouteAccess` evaluatoren (prioriteit 6) de `SpEL`-expressie
+3. Als deze slaagt, worden de aangepaste evaluatoren uitgevoerd (prioriteit 10+)
 
 ## Aangepaste foutcodes {#custom-error-codes}
 
-Bied zinvolle foutcodes voor toegang weigeringen:
+Geef betekenisvolle foutcodes voor toegang weigeringen:
 
 ```java
 @Route("/premium/features")
@@ -119,21 +122,21 @@ Bied zinvolle foutcodes voor toegang weigeringen:
 public class PremiumFeaturesView extends Composite<Div> { }
 ```
 
-De parameter `code` identificeert de reden voor weigering wanneer de uitdrukking evalueert naar `false`.
+De parameter `code` identificeert de reden voor de weigering wanneer de expressie evalueert naar `false`.
 
 ## Beschikbare variabelen {#available-variables}
 
-`SpEL`-uitdrukkingen hebben toegang tot deze variabelen in de evaluatiecontext:
+`SpEL`-expressies hebben toegang tot deze variabelen in de evaluatiecontext:
 
-| Variabele | Type | Beschrijving |
-|----------|------|-------------|
+| Variabele | Type | Omschrijving |
+|-----------|------|--------------|
 | `authentication` | `Authentication` | Spring Security authenticatieobject |
-| `principal` | `Object` | De geauthenticeerde principal (gewoonlijk `UserDetails`) |
-| `routeClass` | `Class<? extends Component>` | De routecomponentklasse die wordt benaderd |
+| `principal` | `Object` | De geauthenticeerde principal (meestal `UserDetails`) |
+| `routeClass` | `Class<? extends Component>` | De routecomponentklasse die wordt geopend |
 | `context` | `NavigationContext` | webforJ navigatiecontext |
-| `securityContext` | `RouteSecurityContext` | webforJ route beveiligingscontext |
+| `securityContext` | `RouteSecurityContext` | webforJ routebeveiligingscontext |
 
-Voorbeeld van het gebruik van variabelen:
+Voorbeeld met variabelen:
 
 ```java
 @Route("/admin")
@@ -144,14 +147,14 @@ public class SuperAdminView extends Composite<Div> { }
 ## Wanneer `SpEL` VS aangepaste evaluatoren te gebruiken {#when-to-use-spel-vs-custom-evaluators}
 
 **Gebruik `@RouteAccess` `SpEL` wanneer:**
-- Autorisatie uitsluitend is gebaseerd op rollen of autoriteiten
-- Combineren van ingebouwde beveiligingsfuncties met boolean logica
-- Specifieke regels voor routes die geen hergebruik vereisen
+- Autorisatie puur gebaseerd is op rollen of autoriteiten
+- Gecombineerd met ingebouwde beveiligingsfuncties en boolean-logica
+- Routespecifieke regels die geen hergebruik vereisen
 
 **Gebruik aangepaste evaluatoren wanneer:**
-- Autorisatie afhankelijk is van routeparameters (eigenaarschapscontroles)
-- Complexe zakelijke logica die integratie met de Spring-service vereist
+- Autorisatie afhankelijk is van routeparameters (eigendomcontroles)
+- Complexe bedrijfslogica die integratie met Spring-services vereist
 - Herbruikbare autorisatiepatronen over meerdere routes
 - Aangepaste annotaties die de autorisatie-intentie documenteren
 
-Zie de [Custom Evaluators gids](/docs/security/custom-evaluators) voor het implementeren van geavanceerde autorisatiescenario's.
+Zie de [Custom Evaluators-gids](/docs/security/custom-evaluators) voor het implementeren van geavanceerde autorisatiescenario's.

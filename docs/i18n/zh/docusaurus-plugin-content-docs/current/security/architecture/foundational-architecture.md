@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Foundational Architecture
+title: 基础架构
 _i18n_hash: 0506f859c3bd22ddca70550b6f3e368a
 ---
 webforJ安全系统建立在核心接口的基础之上，这些接口共同工作以提供基于路由的访问控制。这些接口定义了安全行为的契约，允许不同的实现方式，无论是基于会话的、基于JSON Web令牌（JWT）的、集成LDAP的还是基于数据库的，都可以接入相同的底层框架。

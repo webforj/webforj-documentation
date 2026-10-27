@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: State Management
+title: Gestion de l'état
 _i18n_hash: 0766f2c08642792af2fe62e832b4fa1a
 ---
 Créer des expériences utilisateur fluides et dynamiques nécessite souvent que l'état de votre application web soit reflété dans l'URL et conservé lors des événements de navigation dans le navigateur. Vous pouvez y parvenir sans recharger la page en profitant des mises à jour des paramètres URL et de la gestion de l'état de l'historique du navigateur. Cela garantit que les utilisateurs peuvent partager, ajouter à leurs favoris ou revenir à des vues spécifiques avec l'application pleinement consciente de leurs interactions précédentes.

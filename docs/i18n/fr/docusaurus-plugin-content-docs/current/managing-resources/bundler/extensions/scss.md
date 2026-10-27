@@ -1,5 +1,5 @@
 ---
-title: SCSS and Sass
+title: SCSS et Sass
 sidebar_position: 30
 sidebar_class_name: new-content
 description: >-

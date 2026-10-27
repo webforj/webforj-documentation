@@ -1,6 +1,6 @@
 ---
 sidebar_position: 12
-title: Route Transitions
+title: Transiciones de ruta
 _i18n_hash: 98050ac6a061f4dc3728af3888aa44b0
 ---
 <JavadocLink type="foundation" location="com/webforj/router/annotation/RouteTransition" top='true'/>

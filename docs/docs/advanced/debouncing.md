@@ -10,15 +10,15 @@ description: Delay actions until activity settles using the Debouncer class for 
 
 Debouncing is a technique that delays executing an action until a specified time has elapsed since the last call. Each new call resets the timer. This is useful for scenarios like search-as-you-type, where you want to wait until the user stops typing before executing a search query.
 
+<!-- INTRO_END -->
+
 <ComponentDemo
 path='/webforj/debouncer'
 files={['src/main/java/com/webforj/samples/views/debouncer/DebouncerView.java']}
 height='265px'
 />
 
-## Basic usage {#basic-usage}
-
-The `Debouncer` class provides a simple way to debounce actions. Create a `Debouncer` with a delay in seconds, then call `run()` with the action you want to debounce:
+Create a `Debouncer` with a delay in seconds, then call `run()` with the action you want to debounce:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);

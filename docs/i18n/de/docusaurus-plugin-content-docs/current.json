@@ -170,5 +170,9 @@
   "sidebar.documentationSidebar.category.MCP Apps": {
     "message": "MCP-Apps",
     "description": "The label for category 'MCP Apps' in sidebar 'documentationSidebar'"
+  },
+  "sidebar.documentationSidebar.category.BBjShip": {
+    "message": "BBjShip",
+    "description": "The label for category 'BBjShip' in sidebar 'documentationSidebar'"
   }
 }

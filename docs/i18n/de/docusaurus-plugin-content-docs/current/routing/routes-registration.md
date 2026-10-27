@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Routes Registration
+title: Routen-Registrierung
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 Neben der [Registrierung von Routen mit den `@Route`-Anmerkungen](./defining-routes) ist es möglich, Routen zur Laufzeit dynamisch zu registrieren, zu aktualisieren oder zu entfernen, basierend auf der Anwendungslogik, Benutzerrollen oder anderen Bedingungen. Diese Flexibilität ermöglicht es Ihnen, die Navigation dynamischer zu verwalten, anstatt Routen zur Compile-Zeit statisch zu definieren.

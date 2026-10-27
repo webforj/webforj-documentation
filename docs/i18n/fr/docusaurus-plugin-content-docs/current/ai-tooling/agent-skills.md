@@ -1,5 +1,5 @@
 ---
-title: Agent Skills
+title: Compétences de l'agent
 sidebar_position: 10
 description: >-
   Install Agent Skills so AI coding assistants follow webforJ workflows for
