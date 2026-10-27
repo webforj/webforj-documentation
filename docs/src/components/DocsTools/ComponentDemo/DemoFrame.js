@@ -109,6 +109,11 @@ function useIframeBehavior(iframeRef) {
   }, [colorMode]);
 }
 
+// Narrowest width the resizable frame can be dragged to. 375px is the smallest
+// viewport phones ship with, so anything narrower previews a layout no real
+// device would show.
+const MIN_FRAME_WIDTH = 375;
+
 /**
  * Drag-to-resize hook for the resizable frame variant.
  *
@@ -118,9 +123,12 @@ function useIframeBehavior(iframeRef) {
  * listener-attaching effect needs to react to it.
  *
  * Container width is tracked via ResizeObserver so the min/max clamps stay
- * correct after viewport changes.
+ * correct after viewport changes. The frame is clamped to
+ * [`minWidth`, container width]; when the container is itself narrower than
+ * `minWidth`, the container width becomes the floor so the frame never
+ * overflows it.
  */
-function useResizable({ minWidthFactor = 1 / 3, minRight = 25 } = {}) {
+function useResizable({ minWidth = MIN_FRAME_WIDTH, minRight = 25 } = {}) {
   const containerRef = useRef(null);
   const elementRef = useRef(null);
   const containerWidthRef = useRef(0);
@@ -156,9 +164,9 @@ function useResizable({ minWidthFactor = 1 / 3, minRight = 25 } = {}) {
       if (!containerWidth) return;
       const dx = e.clientX - drag.startX;
 
-      const minWidth = containerWidth * minWidthFactor;
+      const floor = Math.min(minWidth, containerWidth);
       const proposed = drag.startWidth + dx;
-      const nextWidth = Math.max(minWidth, Math.min(containerWidth, proposed));
+      const nextWidth = Math.max(floor, Math.min(containerWidth, proposed));
 
       if (elementRef.current) {
         elementRef.current.style.width = `${nextWidth}px`;
@@ -172,7 +180,7 @@ function useResizable({ minWidthFactor = 1 / 3, minRight = 25 } = {}) {
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
     };
-  }, [isResizing, minWidthFactor, minRight]);
+  }, [isResizing, minWidth, minRight]);
 
   return { containerRef, elementRef, isResizing, startResizing };
 }
