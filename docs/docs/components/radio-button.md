@@ -30,8 +30,8 @@ Use a [`RadioButtonGroup`](/docs/components/radiobuttongroup) to manage a set of
 
 ## Text and positioning {#text-and-positioning}
 
-Radio buttons can utilize the ```setText(String text)``` method, which will be positioned near the radio button according to the built-in `Position`.
-Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
+Use `setText(String text)` to set a radio button's label. By default, the text appears to the right of the component.
+To change its position, use `setTextPosition(Position.LEFT)` or `setTextPosition(Position.RIGHT)` with the `HasTextPosition.Position` enum.
 
 <ComponentDemo
 path='/webforj/radiobuttontext'
@@ -42,7 +42,7 @@ height='120px'
 
 ## Activation {#activation}
 
-Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
+Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state. The default is `Activation.MANUAL`, from the `RadioButton.Activation` enum.
 
 <ComponentDemo
 path='/webforj/radiobuttonactivation'
@@ -61,12 +61,7 @@ Manual activation provides finer control over the selection process, requiring a
 
 ### Auto activation {#auto-activation}
 
-Automatic activation is the default state for a `RadioButton`, and means that the button will be checked on whenever it gains focus for any reason. This means that
-not only clicking, but auto-focus or tab navigation will also check the button.
-
-:::tip Note
-The default activation value is **`MANUAL`** activation.
-:::
+Enable automatic activation with `setActivation(Activation.AUTO)`. In this mode, the radio button is checked whenever it gains focus, including through clicking, auto-focus, or tab navigation.
 
 
 ## Switches {#switches}
@@ -111,8 +106,8 @@ The behavior of the `RadioButton` remains the same when being rendered as a Swit
 ## Styling {#styling}
 
 ### Expanses {#expanses}
-There are five checkbox expanses that are supported which allow for quick styling without using CSS.
-Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
+
+Use `setExpanse()` with the `Expanse` enum to adjust the size of a `RadioButton` without writing CSS. The available values are `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, `XLARGE`, and `NONE`.
 
 <TableBuilder name="RadioButton" />
 
