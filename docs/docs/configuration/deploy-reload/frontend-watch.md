@@ -18,6 +18,12 @@ mvn compile webforj:watch spring-boot:run
 mvn compile webforj:watch jetty:run
 ```
 
+In BBjServices, the watch starts the [development run](/docs/configuration/deploy-reload/bbjservices) itself:
+
+```bash
+mvn compile webforj:watch
+```
+
 To run the watch as a standalone build step, see [Build and tests](/docs/managing-resources/bundler/build-and-tests#the-development-watch).
 
 ## How the output applies {#how-the-output-applies}

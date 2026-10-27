@@ -1,23 +1,28 @@
 ---
+sidebar_class_name: experimental-content
 sidebar_position: 40
 title: View Transitions
 description: >-
   Animate DOM changes with the browser View Transition API, applying fade,
   slide, zoom, and shared morph effects between component states.
-_i18n_hash: df97f8dc10601feff6a211aee0b4e9d7
+_i18n_hash: 3440413f572744ea709085a2975c0023
 ---
 <JavadocLink type="foundation" location="com/webforj/ViewTransition" top='true'/>
 
 <DocChip chip='since' label='25.11' />
 <DocChip chip='experimental' />
 
-Les transitions de vue offrent des transitions animées lorsque le [DOM](/docs/glossary#dom) change, réduisant la discontinuité visuelle et maintenant le contexte spatial lors de la navigation ou des mises à jour de contenu. webforJ s'intègre à l'[API de transition de vue](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) du navigateur pour gérer la complexité de la coordination des animations entre les anciens et les nouveaux états.
+Les transitions de vue offrent des transitions animées lorsque le [DOM](/docs/glossary#dom) change, réduisant ainsi les perturbations visuelles et maintenant le contexte spatial pendant la navigation ou les mises à jour de contenu. webforJ s'intègre à l'[API de transition de vue](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) du navigateur pour gérer la complexité de la coordination des animations entre les anciens et les nouveaux états.
+
+<!-- INTRO_END -->
 
 <ComponentDemo
 path='/webforj/viewtransitionchat'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionChatView.java',
   'src/main/frontend/css/viewtransitions/chat.css',
+  'src/main/java/com/webforj/samples.views.viewtransitions.components.ChatCard.java',
+  'src/main/frontend/css/viewtransitions/components/chat-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -26,9 +31,7 @@ height='450px'
 
 <ExperimentalWarning />
 
-## Utilisation de base {#basic-usage}
-
-Pour créer une transition de vue, utilisez `Page.getCurrent().startViewTransition()`, qui retourne un constructeur pour configurer la transition :
+Utilisez `Page.getCurrent().startViewTransition()` pour créer une transition, qui renvoie un constructeur pour configurer la transition :
 
 ```java
 Page.getCurrent().startViewTransition()
@@ -40,10 +43,10 @@ Page.getCurrent().startViewTransition()
   .start();
 ```
 
-Le processus de transition capture un instantané de l'état actuel, applique vos modifications de DOM dans le rappel `onUpdate`, puis anime de l'ancien instantané au nouveau contenu. Vous devez appeler `done.run()` pour indiquer quand vos changements sont terminés.
+Le processus de transition capture un instantané de l'état actuel, applique vos modifications du DOM dans le rappel `onUpdate`, puis anime de l'ancien instantané au nouveau contenu. Vous devez appeler `done.run()` pour signaler quand vos modifications sont complètes.
 
 :::warning Le rappel `onUpdate` est requis
-Appeler `start()` sans définir de rappel de mise à jour lance une `IllegalStateException`.
+Appeler `start()` sans définir un rappel de mise à jour lance une `IllegalStateException`.
 :::
 
 ## Application des transitions {#applying-transitions}
@@ -53,15 +56,15 @@ webforJ fournit des types de transition prédéfinis que vous pouvez appliquer a
 | Constante | Effet |
 |----------|--------|
 | `ViewTransition.NONE` | Pas d'animation |
-| `ViewTransition.FADE` | Fondu entre l'ancien et le nouveau contenu |
-| `ViewTransition.SLIDE_LEFT` | Le contenu coule à gauche (comme une navigation vers l'avant) |
-| `ViewTransition.SLIDE_RIGHT` | Le contenu coule à droite (comme une navigation vers l'arrière) |
-| `ViewTransition.SLIDE_UP` | Le contenu coule vers le haut |
-| `ViewTransition.SLIDE_DOWN` | Le contenu coule vers le bas |
+| `ViewTransition.FADE` | Crossfade entre l'ancien et le nouveau contenu |
+| `ViewTransition.SLIDE_LEFT` | Le contenu s'écoule à gauche (comme une navigation vers l'avant) |
+| `ViewTransition.SLIDE_RIGHT` | Le contenu s'écoule à droite (comme une navigation arrière) |
+| `ViewTransition.SLIDE_UP` | Le contenu s'écoule vers le haut |
+| `ViewTransition.SLIDE_DOWN` | Le contenu s'écoule vers le bas |
 | `ViewTransition.ZOOM` | L'ancien contenu rétrécit, le nouveau contenu grandit |
 | `ViewTransition.ZOOM_OUT` | L'ancien contenu grandit, le nouveau contenu rétrécit |
 
-Utilisez `enter()` pour animer un composant ajouté et `exit()` pour animer un composant retiré :
+Utilisez `enter()` pour animer un composant en cours d'ajout et `exit()` pour animer un composant en cours de suppression :
 
 ```java
 // Animer un composant entrant dans le DOM
@@ -85,29 +88,30 @@ Page.getCurrent().startViewTransition()
 
 ## Transitions de composants partagés {#shared-component-transitions}
 
-Les transitions de composants partagés créent un effet de morphisme où un composant semble se transformer de sa position dans l'ancienne vue à sa position dans la nouvelle vue. Cela se fait en donnant aux composants le même nom de transition à l'aide de la méthode `setViewTransitionName()`, disponible sur tout composant qui implémente l'interface <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink>.
+Les transitions de composants partagés créent un effet de morphing où un composant semble se transformer de sa position dans l'ancienne vue à sa position dans la nouvelle vue. Cela est réalisé en donnant aux composants le même nom de transition en utilisant la méthode `setViewTransitionName()`, disponible sur tout composant qui implémente l'interface <JavadocLink type="foundation" location="com/webforj/concern/HasStyle" code='true'>HasStyle</JavadocLink>.
 
 ```java
-// Dans la vue de carte
+// Dans la vue de la carte
 image.setViewTransitionName("blog-image");
 
-// Dans la vue de détail - le même nom crée le morphisme
+// Dans la vue de détail - même nom crée le morph
 image.setViewTransitionName("blog-image");
 ```
 
 Lors de la transition entre ces vues, le navigateur anime le composant entre les positions, créant une expérience visuelle connectée.
 
 :::tip Utilisez des noms uniques
-Lorsqu'il s'agit de listes ou de composants répétés, incluez un identifiant unique dans le nom de transition. Chaque composant nécessite son propre nom distinct pour se modifier correctement dans le composant correspondant de la nouvelle vue. Utiliser le même nom pour plusieurs composants visibles entraîne un comportement indéfini.
+Lorsque vous travaillez avec des listes ou des composants répétés, incluez un identifiant unique dans le nom de la transition. Chaque composant nécessite son propre nom distinct pour se morph correctement avec son composant correspondant dans la nouvelle vue. Utiliser le même nom pour plusieurs composants visibles provoque un comportement indéfini.
 :::
 
 <ComponentDemo
 path='/webforj/viewtransitionmorph'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionMorphView.java',
+  'src/main/frontend/css/viewtransitions/morph.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogCard.java',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/BlogDetail.java',
-  'src/main/frontend/css/viewtransitions/morph.css',
+  'src/main/frontend/css/viewtransitions/components/blog-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -116,13 +120,13 @@ height='650px'
 
 ### Réorganisation de la liste {#list-reordering}
 
-Un cas d'utilisation courant des transitions de composants partagés est d'animer les éléments de liste lorsque leur ordre change. En assignant un `view-transition-name` unique à chaque élément, le navigateur anime automatiquement les composants vers leurs nouvelles positions :
+Un cas d'utilisation courant pour les transitions de composants partagés consiste à animer les éléments de liste lorsque leur ordre change. En attribuant un `view-transition-name` unique à chaque élément, le navigateur anime automatiquement les composants vers leurs nouvelles positions :
 
 ```java
-// Chaque carte reçoit un nom de transition unique basé sur son ID
+// Chaque carte obtient un nom de transition unique basé sur son ID
 card.setViewTransitionName("card-" + item.id());
 
-// Lors de la permutation, il suffit de mettre à jour le DOM - le navigateur gère l'animation
+// Lors du mélange, mettez simplement à jour le DOM - le navigateur gère l'animation
 Page.getCurrent().startViewTransition()
   .onUpdate(done -> {
     renderList();
@@ -135,8 +139,9 @@ Page.getCurrent().startViewTransition()
 path='/webforj/viewtransitionshuffle'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionShuffleView.java',
-  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
   'src/main/frontend/css/viewtransitions/shuffle.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/ShuffleCard.java',
+  'src/main/frontend/css/viewtransitions/components/shuffle-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -160,7 +165,7 @@ Pour un contrôle total sur les animations, vous pouvez définir des keyframes C
   }
 }
 
-/* Appliquer au pseudo-élément de transition de vue */
+/* Appliquez au pseudo-élément de transition de vue */
 ::view-transition-new(flip-in-enter) {
   animation: flip-enter 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-origin: top center;
@@ -171,7 +176,7 @@ Pour un contrôle total sur les animations, vous pouvez définir des keyframes C
 }
 ```
 
-Référencez votre animation personnalisée en passant son nom (sans le suffixe) à `enter()` ou `exit()` :
+Référez votre animation personnalisée en passant son nom (sans le suffixe) à `enter()` ou `exit()` :
 
 ```java
 // Utilisez "flip-in" - webforJ ajoute automatiquement le suffixe "-enter"
@@ -183,7 +188,7 @@ Page.getCurrent().startViewTransition()
   })
   .start();
 
-// Utilisez "blur-out" pour exit - webforJ ajoute automatiquement le suffixe "-exit"
+// Utilisez "blur-out" pour sortir - webforJ ajoute le suffixe "-exit"
 Page.getCurrent().startViewTransition()
   .exit(notification, "blur-out")
   .onUpdate(done -> {
@@ -198,6 +203,8 @@ path='/webforj/viewtransitionenterexit'
 files={[
   'src/main/java/com/webforj/samples/views/viewtransitions/ViewTransitionEnterExitView.java',
   'src/main/frontend/css/viewtransitions/enterexit.css',
+  'src/main/java/com/webforj/samples/views/viewtransitions/components/NotificationCard.java',
+  'src/main/frontend/css/viewtransitions/components/notification-card.css',
   'src/main/java/com/webforj/samples/views/viewtransitions/components/DemoHeader.java',
   'src/main/frontend/css/viewtransitions/components/demo-header.css',
 ]}
@@ -224,7 +231,7 @@ Chaque type de transition prédéfini expose des propriétés CSS personnalisée
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Glisser à gauche</strong>
+    <strong>Glissière à gauche</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -239,7 +246,7 @@ Chaque type de transition prédéfini expose des propriétés CSS personnalisée
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Glisser à droite</strong>
+    <strong>Glissière à droite</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -254,7 +261,7 @@ Chaque type de transition prédéfini expose des propriétés CSS personnalisée
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Glisser vers le haut</strong>
+    <strong>Glissière vers le haut</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -269,7 +276,7 @@ Chaque type de transition prédéfini expose des propriétés CSS personnalisée
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Glisser vers le bas</strong>
+    <strong>Glissière vers le bas</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -292,7 +299,7 @@ Chaque type de transition prédéfini expose des propriétés CSS personnalisée
       |----------|---------|-------------|
       | `--vt-zoom-duration` | `200ms` | Durée de l'animation |
       | `--vt-zoom-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Fonction d'assouplissement |
-      | `--vt-zoom-scale` | `0.8` | Facteur d'échelle (ancien rétrécit à cela, nouveau grandit à partir de cela) |
+      | `--vt-zoom-scale` | `0.8` | Facteur de mise à l'échelle (ancien zoom réduit à cela, nouveau zoom affiché à partir de cela) |
     </div>
   </AccordionDetails>
 </Accordion>
@@ -307,18 +314,18 @@ Chaque type de transition prédéfini expose des propriétés CSS personnalisée
       |----------|---------|-------------|
       | `--vt-zoom-out-duration` | `200ms` | Durée de l'animation |
       | `--vt-zoom-out-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | Fonction d'assouplissement |
-      | `--vt-zoom-out-scale` | `1.2` | Facteur d'échelle (ancien grandit à cela, nouveau rétrécit à partir de cela) |
+      | `--vt-zoom-out-scale` | `1.2` | Facteur de mise à l'échelle (ancien zoom affiché à partir de cela, nouveau zoom réduit à cela) |
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong>Substitution des variables</strong>
+    <strong>Surcharger les variables</strong>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Pour personnaliser, substituez ces variables dans votre CSS :
+      Pour personnaliser, surchargez ces variables dans votre CSS :
 
       ```css
       :root {

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Testing with Playwright
+title: 使用 Playwright 测试
 description: >-
   Drive a webforJ app from JUnit using the Playwright Java bindings to fill
   fields, click buttons, and assert rendered output in the browser.

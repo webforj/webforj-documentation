@@ -1,5 +1,5 @@
 ---
-title: Message
+title: Nachricht
 sidebar_position: 30
 _i18n_hash: b90d101884ed5ce8f6be2604ec637aee
 ---

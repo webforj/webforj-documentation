@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Route Outlets
+title: Route-outlets
 _i18n_hash: 8a64cd917fe9f1de3f37ee01254e80e7
 ---
 Een **outlet** is een aangewezen component, hetzij een [route layout](./route-types#layout-routes) of een [route view](./route-types#view-routes), waar kindroutes dynamisch worden weergegeven. Het definieert waar de inhoud van de kindroute zal verschijnen binnen de ouderroute. Outlets zijn fundamenteel voor het creëren van modulaire, geneste UI's en flexibele navigatiestructuren.

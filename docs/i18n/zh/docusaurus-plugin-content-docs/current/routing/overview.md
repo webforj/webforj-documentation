@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Routing
+title: 路由
 hide_table_of_contents: true
 hide_giscus_comments: true
 _i18n_hash: ca4837305e1ca2ca2b6a4a244c8103f1

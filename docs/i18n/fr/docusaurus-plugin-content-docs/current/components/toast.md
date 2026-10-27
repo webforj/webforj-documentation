@@ -4,26 +4,24 @@ sidebar_position: 140
 description: >-
   Show transient notifications with the Toast component, configuring duration,
   theme, and placement via Toast.show or open.
-_i18n_hash: 07365e349ec9393e79a13969504861bd
+_i18n_hash: e0312bf77de08272221f84c9c231c2df
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-toast" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="toast" location="com/webforj/component/toast/Toast" top='true'/>
 
-Un `Toast` est une petite notification temporaire qui apparaît pour donner aux utilisateurs un retour sur une action ou un événement. Les toasts affichent des messages tels que des confirmations de réussite, des avertissements ou des erreurs sans interrompre le flux de travail actuel, et disparaissent automatiquement après une durée déterminée.
+Un `Toast` est une notification temporaire et de petite taille qui apparaît pour donner aux utilisateurs un retour d'information sur une action ou un événement. Les toasts affichent des messages de confirmation de succès, d'avertissements ou d'erreurs sans interrompre le flux de travail actuel et disparaissent automatiquement après une durée définie.
 
 <!-- INTRO_END -->
 
-## Basique {#basics}
-
-webforJ fournit un moyen rapide et facile de créer un composant `Toast` en une seule ligne de code avec la méthode `Toast.show()`, qui crée un composant `Toast`, l'ajoute au `Frame`, et l'affiche. Vous pouvez passer des paramètres à la méthode `show` pour configurer le `Toast` affiché :
+La méthode `Toast.show()` crée un `Toast`, l'ajoute au `Frame` et l'affiche en une seule ligne de code. Passez des paramètres à `show()` pour configurer le `Toast` qui apparaît :
 
 ```java
 Toast.show("L'opération s'est terminée avec succès !", Theme.SUCCESS);
 ```
 
-Si vous souhaitez un contrôle plus granulaire sur le composant, vous pouvez également créer un `Toast` avec un constructeur standard et utiliser la méthode `open()` pour l'afficher.
+Si vous souhaitez un contrôle plus précis sur le composant, vous pouvez également créer un `Toast` avec un constructeur standard et utiliser la méthode `open()` pour l'afficher.
 
 ```java
 Toast toast = new Toast("L'opération s'est terminée avec succès !", 3000, Theme.SUCCESS, Placement.TOP);
@@ -43,32 +41,32 @@ height='200px'
 Contrairement à d'autres composants, un `Toast` n'a pas besoin d'être explicitement ajouté à un conteneur comme un `Frame`. Lorsque vous appelez la méthode `open()`, le `Toast` est automatiquement attaché au premier `Frame` de l'application.
 :::
 
-Les toasts sont polyvalents et fournissent des notifications subtiles pour un retour en temps réel. Par exemple :
+Les toasts sont polyvalents et fournissent des notifications subtiles pour un retour d'information en temps réel. Par exemple :
 
-- **Retour en temps réel** pour des actions comme des soumissions de formulaires, des sauvegardes de données ou des erreurs.
+- **Retour d'information en temps réel** pour des actions telles que l'envoi de formulaires, les sauvegardes de données ou les erreurs.
 - **Thèmes personnalisables** pour différencier les messages de succès, d'erreur, d'avertissement ou d'information.
 - **Options de placement flexibles** pour afficher les notifications dans différentes zones de l'écran sans interrompre le flux de travail de l'utilisateur.
 
 ## Durée {#duration}
 
-Vous pouvez configurer les notifications `Toast` pour disparaître après une durée déterminée ou persister à l'écran jusqu'à ce qu'elles soient rejetées, en fonction de vos besoins. Vous pouvez personnaliser la durée avec la méthode `setDuration()`, ou simplement fournir un paramètre de durée au constructeur ou à la méthode `show()`.
+Vous pouvez configurer les notifications `Toast` pour disparaître après une durée définie ou persister sur l'écran jusqu'à ce qu'elles soient rejetées, selon vos besoins. Vous pouvez personnaliser la durée avec la méthode `setDuration()`, ou simplement fournir un paramètre de durée au constructeur ou à la méthode `show()`.
 
 :::info Durée par défaut
 Par défaut, un `Toast` se ferme automatiquement après 5000 millisecondes.
 :::
 
 ```java
-Toast toast = new Toast("Notification Exemple");
+Toast toast = new Toast("Notification d'exemple");
 toast.setDuration(10000);
 toast.open();
 ```
 
 ### Toasts persistants {#persistent-toasts}
 
-Vous pouvez créer un `Toast` persistant en définissant une durée négative. Les notifications de `Toast` persistantes ne se ferment pas automatiquement, ce qui peut être utile pour des alertes critiques ou dans des cas où une interaction ou une reconnaissance de l'utilisateur est requise.
+Vous pouvez créer un `Toast` persistant en définissant une durée négative. Les notifications `Toast` persistantes ne se ferment pas automatiquement, ce qui peut être utile pour des alertes critiques ou dans des cas où une interaction ou une reconnaissance est requise de la part de l'utilisateur.
 
 :::caution
-Faites attention avec les notifications `Toast` persistantes, et assurez-vous de fournir un moyen pour l'utilisateur de rejeter la notification. Utilisez la méthode `close()` pour cacher le `Toast` une fois que l'utilisateur l'a reconnu ou a terminé toute interaction requise.
+Soyez prudent avec les notifications `Toast` persistantes et assurez-vous de fournir un moyen à l'utilisateur de rejeter la notification. Utilisez la méthode `close()` pour cacher le `Toast` une fois que l'utilisateur l'a reconnu ou a complété toute interaction requise.
 :::
 
 ```java
@@ -78,21 +76,21 @@ toast.open();
 
 ## Placement {#placement}
 
-Avec le composant `Toast` de webforJ, vous pouvez choisir où la notification apparaît à l'écran pour répondre aux exigences de conception et d'utilisabilité de votre application. Par défaut, les notifications `Toast` apparaissent au centre bas de l'écran.
+Avec le composant `Toast` de webforJ, vous pouvez choisir où la notification apparaît sur l'écran pour s'adapter aux exigences de conception et d'utilisabilité de votre application. Par défaut, les notifications `Toast` apparaissent en bas au centre de l'écran.
 
 Vous pouvez définir le `placement` d'une notification `Toast` avec la méthode `setPlacement` en utilisant l'énumération `Toast.Placement` avec l'une des valeurs suivantes :
 
-- **BOTTOM** : Place la notification au centre bas de l'écran.
+- **BOTTOM** : Place la notification en bas au centre de l'écran.
 - **BOTTOM_LEFT** : Place la notification dans le coin inférieur gauche de l'écran.
 - **BOTTOM_RIGHT** : Place la notification dans le coin inférieur droit de l'écran.
-- **TOP** : Place la notification au centre haut de l'écran.
+- **TOP** : Place la notification en haut au centre de l'écran.
 - **TOP_LEFT** : Place la notification dans le coin supérieur gauche de l'écran.
 - **TOP_RIGHT** : Place la notification dans le coin supérieur droit de l'écran.
 
 Ces options vous permettent de contrôler le placement de la notification `Toast` en fonction des besoins de conception et d'utilisabilité de votre application.
 
 ```java
-Toast toast = new Toast("Notification Exemple");
+Toast toast = new Toast("Notification d'exemple");
 toast.setPlacement(Toast.Placement.TOP_LEFT);
 toast.open();
 ```
@@ -103,11 +101,11 @@ files={['src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java']
 height='600px'
 />
 
-En personnalisant le placement de vos notifications `Toast`, vous pouvez vous assurer que les utilisateurs reçoivent des informations d'une manière qui convient à toute application, mise en page d'écran et contexte donnés.
+En personnalisant le placement de vos notifications `Toast`, vous pouvez vous assurer que les utilisateurs reçoivent des informations de manière appropriée pour toute application, mise en page d'écran et contexte donné.
 
-## Empilage {#stacking}
+## Empilement {#stacking}
 
-Le composant `Toast` peut afficher plusieurs notifications simultanément, les empilant verticalement en fonction de leur placement. Les notifications plus récentes apparaissent plus près du bord de placement, repoussant les notifications plus anciennes plus loin. Cela garantit que les utilisateurs ne manquent pas d'informations importantes, même lorsqu'il y a beaucoup d'activités en cours.
+Le composant `Toast` peut afficher plusieurs notifications simultanément, les empilant verticalement en fonction de leur placement. Les nouvelles notifications apparaissent plus près du bord de placement, repoussant les notifications plus anciennes plus loin. Cela garantit que les utilisateurs ne manquent pas d'informations importantes, même lorsqu'il se passe beaucoup de choses.
 
 ## Actions et interactivité {#actions-and-interactivity}
 
@@ -121,16 +119,16 @@ height='350px'
 
 En ajoutant ce type d'interactivité, vous pouvez donner aux utilisateurs la possibilité de gérer des tâches et d'effectuer des actions sans quitter leur écran actuel, transformant une notification `Toast` en un canal d'interaction et d'engagement précieux.
 
-## Styles {#styling}
+## Style {#styling}
 
-Vous pouvez styliser les notifications `Toast` avec des thèmes tout comme d'autres composants webforJ, fournissant aux utilisateurs un contexte précieux sur le type d'informations affichées, et créant un style cohérent dans toute votre application. Vous pouvez soit définir le thème lorsque vous créez le `Toast`, soit utiliser la méthode `setTheme()`.
+Vous pouvez styliser les notifications `Toast` avec des thèmes tout comme d'autres composants webforJ, fournissant aux utilisateurs un contexte précieux sur le type d'information affichée et créant un style cohérent dans toute votre application. Vous pouvez soit définir le thème lors de la création du Toast, soit utiliser la méthode `setTheme()`.
 
 ```java
-Toast toast = new Toast("Notification Exemple", Theme.INFO);
+Toast toast = new Toast("Notification d'exemple", Theme.INFO);
 ```
 
 ```java
-Toast toast = new Toast("Notification Exemple");
+Toast toast = new Toast("Notification d'exemple");
 toast.setTheme(Theme.INFO);
 ```
 
@@ -140,8 +138,8 @@ En plus d'utiliser des thèmes intégrés, vous pouvez créer vos propres thème
 
 Pour ajouter un thème personnalisé à un `Toast`, vous pouvez définir des variables CSS personnalisées, qui modifient l'apparence du composant. L'exemple suivant montre comment créer un `Toast` avec un thème personnalisé en utilisant webforJ.
 
-:::info Ciblage des `Toast`
-Puisque le `Toast` n'est pas situé à un endroit spécifique dans le DOM, vous pouvez le cibler en utilisant des variables CSS. Ces variables facilitent l'application de styles personnalisés cohérents à toutes les notifications `Toast`.
+:::info Ciblage de `Toast`
+Puisque le `Toast` n'est pas situé à une position spécifique dans le DOM, vous pouvez le cibler à l'aide de variables CSS. Ces variables facilitent l'application de styles personnalisés cohérents à tous les notifications Toast.
 :::
 
 <ComponentDemo

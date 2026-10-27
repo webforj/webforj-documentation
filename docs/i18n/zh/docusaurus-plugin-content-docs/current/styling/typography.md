@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Typography
+title: 字体排印
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 排版令牌用于在您的应用程序中保持一致的字体样式集。

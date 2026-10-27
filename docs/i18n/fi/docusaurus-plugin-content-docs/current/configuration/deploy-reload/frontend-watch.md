@@ -1,17 +1,16 @@
 ---
 title: Frontend watch
 sidebar_position: 20
-sidebar_class_name: new-content
 description: >-
   Rebuild the sources under src/main/frontend while a webforJ app runs, applying
   stylesheet and image output in place and reloading the view for script output.
-_i18n_hash: 8307e05aa7a4c55b75fe8667be1f6b27
+_i18n_hash: 065e4f5ad8868a6758e682f38e2dd3b9
 ---
-Frontend-watch rakentaa lähteet `src/main/frontend` -hakemistossa sovelluksen ollessa käynnissä ja lähettää tulosten selaimelle. Se on [frontend-bundler](/docs/managing-resources/bundler/overview) kehityspuoli ja edellyttää, että `webforj.devtools.livereload.enabled` on päällä, katso [asetukset](/docs/configuration/deploy-reload/overview#settings).
+Frontend-watch rakennuslähteet `src/main/frontend`-kansiossa, kun sovellus on käynnissä, ja lähettää ulostuloa selaimeen. Se on [frontend-bundlerin](/docs/managing-resources/bundler/overview) kehityspuoli ja vaatii `webforj.devtools.livereload.enabled`-asetuksen olevan päällä, katso [asetukset](/docs/configuration/deploy-reload/overview#settings).
 
-## Running the watch {#running-the-watch}
+## Katselun ajaminen {#running-the-watch}
 
-Suorita `watch` -tavoite ennen tavoitetta, joka käynnistää sovelluksen. Arkkitehti-projekti asettaa tämän oletustavoitteekseen, joten ilman argumentteja `mvn` suorittaa molemmat:
+Suorita `watch`-tavoite ennen tavoitetta, joka käynnistää sovelluksen. Archetype-projekti asettaa tämän oletustavoitteekseen, joten `mvn` ilman argumentteja suorittaa molemmat:
 
 ```bash
 mvn compile webforj:watch spring-boot:run
@@ -21,26 +20,32 @@ mvn compile webforj:watch spring-boot:run
 mvn compile webforj:watch jetty:run
 ```
 
-Voit suorittaa watchin erillisenä rakennusvaiheena, katso [Build and tests](/docs/managing-resources/bundler/build-and-tests#the-development-watch).
+BBjServices-sovelluksessa katselu aloittaa [kehityksen](/docs/configuration/deploy-reload/bbjservices) itse:
 
-## How the output applies {#how-the-output-applies}
+```bash
+mvn compile webforj:watch
+```
 
-Selaimen toiminta riippuu tuotetusta tuloksesta, ei muokatusta tiedostosta:
+Jos haluat suorittaa katselun itsenäisenä rakennusvaiheena, katso [Rakennus ja testit](/docs/managing-resources/bundler/build-and-tests#the-development-watch).
 
-| Output | Browser action |
+## Kuinka ulostulo vaikuttaa {#how-the-output-applies}
+
+Selaimen toiminta riippuu tuotetusta ulostulosta, ei muuratusta tiedostosta:
+
+| Ulostulo | Selaimen toiminta |
 |---|---|
-| Tyylitiedosto, joka tulee `.css`, `.scss`, `.sass` tai `.less` -lähteestä | Sovelletaan paikalleen. Ei latausta, lomaketiedot ja vierityspaikka pysyvät. |
+| Tyylitiedosto, lähteinä `.css`, `.scss`, `.sass` tai `.less` | Kohdistuu paikalleen. Ei latausta, lomaketiedot ja vierityspaikka pysyvät. |
 | Kuva | Vaihdetaan paikalleen. Ei latausta. |
-| Mikä tahansa muu tulos, kuten käännetty `.ts`, `.tsx` tai `.js` | Näkymä lataa uudelleen. |
+| Kaikki muut ulostulot, kuten käännetyt `.ts`, `.tsx` tai `.js` | Näkymä latautuu uudelleen. |
 
-Kun yksi uudelleenrakennus tuottaa useita tiedostoja, selain soveltaa niitä paikalleen vain, jos jokainen tiedosto täyttää vaatimukset. Muuten se lataa kerran, joten muutos ei koskaan päivity osittain.
+Kun yksi uudelleenrakennus tuottaa useita tiedostoja, selain kohdistaa ne paikalleen vain, jos jokainen tiedosto täyttää vaatimukset. Muussa tapauksessa se latautuu kerran, joten muutos ei koskaan päivity osittain.
 
-## During a server restart {#during-a-server-restart}
+## Palvelimen uudelleenkäynnistyksen aikana {#during-a-server-restart}
 
 Java-muutos ilman [hotswap-työkalua](/docs/configuration/deploy-reload/hotswap) käynnistää palvelimen uudelleen. Uudelleenkäynnistyksen aikana:
 
-- Sovelletut tyylit pysyvät sivulla.
-- Indikaattori näkyy, kun palvelin on alas. Se ilmestyy vain uudelleenkäynnistyksen ajaksi, ei manuaaliselle lataukselle.
-- Sivu lataa uudelleen, kun sovellus on valmis, ei ennen.
+- Käytössä olevat tyylit säilyvät sivulla.
+- Indikaattori näyttää, kun palvelin on pois päältä. Se ilmestyy vain uudelleenkäynnistystä varten, ei manuaalista latausta varten.
+- Sivua latautuu, kun sovellus on valmis, ei ennen sitä.
 
-`@BundleEntry` -lisäys tai poisto tulee voimaan, kun tämä uudelleenkäynnistys on valmis.
+`@BundleEntry`-lisäys tai -poisto tulee voimaan, kun kyseinen uudelleenkäynnistys on valmis.

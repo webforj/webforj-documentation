@@ -7,8 +7,10 @@ import com.webforj.component.avatar.AvatarExpanse;
 import com.webforj.component.avatar.AvatarTheme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.card.Card;
+import com.webforj.component.card.Card.Shadow;
 import com.webforj.component.dialog.Dialog;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.H4;
 import com.webforj.component.html.elements.Img;
 import com.webforj.component.html.elements.Span;
@@ -24,32 +26,26 @@ import com.webforj.router.annotation.Route;
 @BundleEntry("css/avatar/avatar.css")
 public class AvatarView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
-  private final Div panel = new Div();
+  private final Card panel = new Card();
+  private final H3 panelHeader = new H3("Project Alpha");
+  private final Span sectionLabel = new Span("Team");
 
   public AvatarView() {
-    self.setDirection(FlexDirection.COLUMN).setMargin("var(--dwc-space-l)").add(panel);
+    self.setDirection(FlexDirection.COLUMN)
+        .setMargin("var(--dwc-space-l)")
+        .setAlignment(FlexAlignment.CENTER)
+        .add(panel);
     setupPanel();
     addMembers();
   }
 
   private void setupPanel() {
-    panel.addClassName("avatar-demo__panel");
-
-    FlexLayout projectHeader =
-        new FlexLayout()
-            .addClassName("avatar-demo__project-header")
-            .setDirection(FlexDirection.ROW)
-            .setSpacing("var(--dwc-space-m)")
-            .setAlignment(FlexAlignment.CENTER);
-
-    H4 projectName = new H4("Project Alpha").addClassName("avatar-demo__project-name");
-
-    projectHeader.add(TablerIcon.create("folder"), projectName);
-
-    Span sectionLabel = new Span("Team").addClassName("avatar-demo__section-label");
-
-    panel.add(projectHeader);
-    panel.add(sectionLabel);
+    panel
+        .setWidth(300)
+        .addToIcon(TablerIcon.create("folder"))
+        .addToTitle(panelHeader)
+        .setDivided(true)
+        .addToBody(sectionLabel.addClassName("avatar-demo__section-label"));
   }
 
   private void addMembers() {
@@ -64,40 +60,32 @@ public class AvatarView extends Composite<FlexLayout> {
     panel.add(createInviteMember());
   }
 
-  private FlexLayout createMember(String name, String role, String imageUrl, AvatarTheme theme) {
+  private Card createMember(String name, String role, String imageUrl, AvatarTheme theme) {
+    Card card = new Card();
     Avatar avatar = imageUrl != null ? new Avatar(name, new Img(imageUrl, name)) : new Avatar(name);
-    avatar.setTheme(theme).onClick(e -> showProfileDialog(name, role, imageUrl, theme));
+    avatar.setTheme(theme);
+    card.setBorderless(true)
+        .setShadow(Shadow.NONE)
+        .addClassName("card-hover")
+        .addToIcon(avatar)
+        .addToTitle(new H4(name))
+        .addToCaption(new Span(role))
+        .onClick(e -> showProfileDialog(name, role, imageUrl, theme));
 
-    Span nameLabel = new Span(name).addClassName("avatar-demo__name");
-    Span roleLabel = new Span(role).addClassName("avatar-demo__role");
-
-    FlexLayout info =
-        FlexLayout.create(nameLabel, roleLabel)
-            .vertical()
-            .build()
-            .addClassName("avatar-demo__info");
-
-    return FlexLayout.create(avatar, info)
-        .horizontal()
-        .align()
-        .center()
-        .build()
-        .addClassName("avatar-demo__row")
-        .setSpacing("var(--dwc-space-m)");
+    return card;
   }
 
-  private FlexLayout createInviteMember() {
+  private Card createInviteMember() {
+    Card card = new Card();
     Avatar avatar = new Avatar("", TablerIcon.create("user")).setTheme(AvatarTheme.OUTLINED_GRAY);
+    card.setBorderless(true)
+        .setShadow(Shadow.NONE)
+        .addClassName("card-hover")
+        .addToIcon(avatar)
+        .addToTitle(new H4("New User"))
+        .addToCaption(new Span("Invite a Member"));
 
-    Span label = new Span("Invite Member").addClassName("avatar-demo__name");
-
-    return FlexLayout.create(avatar, label)
-        .horizontal()
-        .align()
-        .center()
-        .build()
-        .addClassName("avatar-demo__row")
-        .setSpacing("var(--dwc-space-m)");
+    return card;
   }
 
   private void showProfileDialog(String name, String role, String imageUrl, AvatarTheme theme) {

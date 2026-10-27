@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Query Parameters
+title: Parámetros de consulta
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Los parámetros de consulta te permiten pasar datos adicionales a través de las URL, utilizando el formato `?key1=value1&key2=value2`. Mientras que los parámetros de ruta se utilizan para pasar datos requeridos dentro de la ruta de la URL, los parámetros de consulta proporcionan un mecanismo flexible para pasar datos opcionales o adicionales. Son especialmente útiles al filtrar contenido, ordenar o manejar múltiples valores para la misma clave.

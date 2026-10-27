@@ -1,27 +1,27 @@
 ---
 sidebar_position: 4
-title: Composing Components
+title: Komponenttien Koostaminen
 description: >-
   Combine webforJ components into reusable units by extending Composite,
   configuring the bound component, and overriding initBoundComponent.
-_i18n_hash: 96d22d0dc6ba882867ca35edcf1edcca
+_i18n_hash: 7ca404aa73a9fd445ce7cd3da09b8155
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-`Composite`-komponentti yhdistää olemassa olevia webforJ-komponentteja itseensä sisältäviin, uudelleenkäytettäviin komponentteihin, joilla on mukautettu käyttäytyminen. Käytä sitä kääriäksesi sisäisiä webforJ-komponentteja uudelleenkäytettäviksi liiketoimintalogiikkayksiköiksi, uudelleenkäytä komponenttipohjia koko sovelluksessasi ja yhdistä useita komponentteja paljastamatta toteutustietoja.
+`Composite`-komponentti yhdistää olemassa olevat webforJ-komponentit itsenäisiksi, uudelleenkäytettäviksi komponenteiksi, joilla on mukautettua käyttäytymistä. Käytä sitä sisäisten webforJ-komponenttien kääreenä uudelleenkäytettävien liiketoimintalogiikkayksiköiden luomiseksi, komponenttimallien uudelleenkäytöksi sovelluksessasi ja useiden komponenttien yhdistämiseksi ilman toteutustietojen paljastamista.
 
-`Composite`-komponentilla on vahva yhteys taustalla olevaan sidottuun komponenttiin. Tämä antaa sinulle valvonnan siihen, mitkä menetelmät ja ominaisuudet ovat käyttäjien käytettävissä, toisin kuin perinteisessä perinnössä, jossa kaikki on paljastettu.
+`Composite`-komponentilla on vahva yhteys taustalla olevaan sidottuun komponenttiin. Tämä antaa sinulle hallinnan siitä, mitkä menetelmät ja ominaisuudet käyttäjät voivat käyttää, toisin kuin perinteisessä perinnössä, jossa kaikki on paljastettu.
 
-Jos tarvitset integraatiota web-komponenttien kanssa toisesta lähteestä, käytä erikoistuneita vaihtoehtoja:
+Jos sinun tarvitsee integroida web-komponentteja toisesta lähteestä, käytä erikoistuneita vaihtoehtoja:
 
-- [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): Web-komponenteille, joilla on tyyppiturvallinen ominaisuusmanagement
-- [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): Web-komponenteille, jotka hyväksyvät slotattua sisältöä
+- [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): Web-komponentteihin, joissa on tyyppiturvallinen ominaisuusjohtaminen
+- [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): Web-komponentteihin, jotka hyväksyvät slottit sisältöä
 
 <AISkillTip skill="webforj-creating-components" />
 
 ## Käyttö {#usage}
 
-Määritelläksesi `Composite`-komponentin, laajenna `Composite`-luokkaa ja määritä hallitsemasi komponentin tyyppi. Tämä muodostaa sidotun komponenttisi, joka on juurialustasi, joka pitää sisäistä rakennettasi:
+Määritelläksesi `Composite`-komponentin, laajenna `Composite`-luokkaa ja määritä sen hallitseman komponentin tyyppi. Tämä tulee olemaan sidottu komponenttisi, joka on juuripurkkisi, joka pitää sisäisen rakenteesi:
 
 ```java title="BasicComposite.java"
 public class BasicComposite extends Composite<FlexLayout> {
@@ -36,15 +36,15 @@ public class BasicComposite extends Composite<FlexLayout> {
 }
 ```
 
-`getBoundComponent()`-metodi tarjoaa pääsyn taustalla olevaan komponenttiisi, jolloin voit konfiguroida sen ominaisuuksia, lisätä lapsikomponentteja ja hallita sen käyttäytymistä suoraan.
+`getBoundComponent()`-metodi tarjoaa pääsyn taustalla olevaan komponenttiisi, jolloin voit konfiguroida sen ominaisuudet, lisätä lapsikomponentteja ja hallita sen käyttäytymistä suoraan.
 
-Sidottu komponentti voi olla mikä tahansa [webforJ-komponentti](/docs/components/overview) tai [HTML-elementtikomponentti](/docs/components/html-elements). Joustavien asettelujen osalta harkitse [`FlexLayout`](/docs/components/flex-layout) tai [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) käyttöä sidottuna komponenttinasi.
+Sidottu komponentti voi olla mikä tahansa [webforJ-komponentti](/docs/components/overview) tai [HTML-elementtikomponentti](/docs/components/html-elements). Joustavia asetteluja varten harkitse [`FlexLayout`](/docs/components/flex-layout) tai [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) sidottuna komponenttina.
 
 :::note Komponentin laajentaminen
-Älä koskaan laajenna `Component`- tai `DwcComponent`-luokkia suoraan. Käytä aina koostumusmalleja `Composite`:n kanssa rakentaaksesi mukautettuja komponentteja.
+Älä koskaan laajenna `Component`- tai `DwcComponent`-luokkia suoraan. Käytä aina koostumismalleja `Composite`-komponenttien rakentamiseen.
 :::
 
-Korvaa `initBoundComponent()` silloin, kun tarvitset suurempaa joustavuutta sidotun komponentin luomisessa ja hallinnassa, esimerkiksi käyttäen parametrisoituja konstruktoreita oletusilman argumentteja olevaan konstruktoriin verrattuna. Käytä tätä mallia, kun sidottu komponentti vaatii komponenttien siirtämistä sen konstruktorin kautta sen sijaan, että ne lisättäisiin sen jälkeen.
+Ylikirjoita `initBoundComponent()`, kun tarvitset enemmän joustavuutta sidotun komponentin luomisessa ja hallinnassa, esimerkiksi kun käytät parametrisoituja konstruktoreita oletus ilman argumentteja konstruktorin sijaan. Käytä tätä mallia, kun sidottu komponentti vaatii komponentteja annettavaksi sen konstruktorille sen jälkeen, kun ne on lisätty.
 
 ```java title="CustomFormLayout.java"
 public class CustomFormLayout extends Composite<FlexLayout> {
@@ -69,7 +69,7 @@ public class CustomFormLayout extends Composite<FlexLayout> {
 
 ## Komponentin elinkaari {#component-lifecycle}
 
-webforJ hoitaa kaikki `Composite`-komponenttien elinkaaren hallinnan automaattisesti. Käyttämällä `getBoundComponent()`-metodia, suurin osa mukautetusta käyttäytymisestä voidaan hoitaa konstruktorissa, mukaan lukien lapsikomponenttien lisääminen, ominaisuuksien asettaminen, perusasetusten tekeminen ja tapahtumien rekisteröinti.
+webforJ hoitaa kaikkien `Composite`-komponenttien elinkaarihallinnan automaattisesti. Käyttämällä `getBoundComponent()`-metodia, suurin osa erityisestä käyttäytymisestä voidaan käsitellä konstruktorissa, mukaan lukien lapsikomponenttien lisääminen, ominaisuuksien asettaminen, perusasetelun luominen ja tapahtumien rekisteröinti.
 
 ```java
 public class UserDashboard extends Composite<FlexLayout> {
@@ -110,7 +110,7 @@ public class UserDashboard extends Composite<FlexLayout> {
 }
 ```
 
-Jos sinulla on ylimääräisiä erityisiä asetuksia tai siivoustarpeita, saatat tarvita valinnaisia elinkaaren koukkuja `onDidCreate()` ja `onDidDestroy()`:
+Jos sinulla on erityisiä asetus- tai puhdistusvaatimuksia, saatat joutua käyttämään valinnaisia elinkaarihakuja `onDidCreate()` ja `onDidDestroy()`:
 
 ```java
 public class DataVisualizationPanel extends Composite<Div> {
@@ -132,12 +132,12 @@ public class DataVisualizationPanel extends Composite<Div> {
  }
 
  private void updateData() {
-   // Datan päivityslogiikka
+   // Tietojen päivittämisen logiikka
  }
 }
 ```
 
-Jos sinun täytyy suorittaa toimintoja sen jälkeen, kun komponentti on liitetty DOM:iin, käytä `whenAttached()`-metodia:
+Jos sinun on suoritettava toimenpiteitä komponentin liittämisen jälkeen DOMiin, käytä `whenAttached()`-metodia:
 
 ```java title="InteractiveMap.java"
 public class InteractiveMap extends Composite<Div> {
@@ -154,7 +154,7 @@ public class InteractiveMap extends Composite<Div> {
 
 ## Esimerkki `Composite`-komponentista {#example-composite-component}
 
-Seuraava esimerkki esittelee Todo-sovelluksen, jossa jokainen kohta on `Composite`-komponentti, joka koostuu [`RadioButton`](../components/radiobutton) -komponentista, joka on tyylitelty kytkimeksi, ja Div:stä, jossa on teksti:
+Seuraava esimerkki havainnollistaa tehtävälistaa, jossa jokainen kohde on `Composite`-komponentti, joka sisältää [`RadioButton`](/docs/components/radiobutton), `Div`:n tekstillä ja [`Button`](/docs/components/button).
 
 <ComponentDemo
 path='/webforj/composite'
@@ -167,7 +167,7 @@ height='500px'
 
 ## Esimerkki: Komponenttien ryhmittely {#example-component-grouping}
 
-Joskus saatat haluta käyttää `Composite`:a ryhmitelläksesi samankaltaiset komponentit yhdeksi kokonaisuudeksi, vaikka uudelleenkäytettävyys ei olisikaan päähuolenaihe:
+Joskus saatat haluta käyttää `Composite`-komponenttia ryhmittämään liittyviä komponentteja yhteen yksikköön, vaikka uudelleenkäytettävyys ei olisikaan pääasia:
 
 <ComponentDemo
 path='/webforj/analyticscardcomposite'

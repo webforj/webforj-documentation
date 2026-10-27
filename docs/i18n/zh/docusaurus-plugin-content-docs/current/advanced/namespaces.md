@@ -1,5 +1,5 @@
 ---
-title: Namespaces
+title: 命名空间
 sidebar_position: 40
 description: >-
   Share thread-safe key-value state across sessions, thread groups, or the

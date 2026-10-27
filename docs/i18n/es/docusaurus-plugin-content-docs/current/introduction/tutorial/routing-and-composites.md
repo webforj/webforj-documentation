@@ -1,5 +1,5 @@
 ---
-title: Routing and Composites
+title: Enrutamiento y Composites
 sidebar_position: 4
 description: Step 3 - Make your app navigable.
 _i18n_hash: f32a8552d85a9c85b565fe6f026c93bb

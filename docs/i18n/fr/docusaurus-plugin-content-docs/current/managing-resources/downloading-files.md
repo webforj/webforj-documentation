@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Downloading Files
+title: Téléchargement de fichiers
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ fournit des méthodes pour initier des téléchargements de fichiers, facilitant ainsi la livraison de fichiers aux utilisateurs via le navigateur. La <JavadocLink type="foundation" location="com/webforj/Page" code='true'>classe Page</JavadocLink> offre plusieurs façons de télécharger des fichiers, qu'ils proviennent de flux d'entrée, de tableaux d'octets, de fichiers physiques ou de ressources.

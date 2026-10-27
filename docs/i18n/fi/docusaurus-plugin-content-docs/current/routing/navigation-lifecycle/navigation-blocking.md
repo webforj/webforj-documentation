@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Blocking
+title: Navigoinnin estäminen
 description: >-
   Intercept navigation with WillLeaveObserver veto handlers and the beforeunload
   event to guard unsaved changes.

@@ -1,5 +1,5 @@
 ---
-title: Confirm
+title: Confirmar
 sidebar_position: 5
 description: >-
   Show a blocking ConfirmDialog with up to three options, configurable button

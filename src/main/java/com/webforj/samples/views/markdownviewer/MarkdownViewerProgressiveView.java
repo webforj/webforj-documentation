@@ -3,6 +3,7 @@ package com.webforj.samples.views.markdownviewer;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.card.Card;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.list.ChoiceBox;
@@ -18,6 +19,8 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
   private final Button startButton = new Button("Start", ButtonTheme.PRIMARY);
   private final Button stopButton = new Button("Stop", ButtonTheme.DANGER);
   private final ChoiceBox speedChoice = new ChoiceBox();
+  private final FlexLayout viewerWrapper = new FlexLayout(viewer);
+  private final Card viewerArea = new Card(viewerWrapper);
 
   private static final String SAMPLE_CONTENT =
       """
@@ -69,15 +72,10 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
         });
 
     viewer.setProgressiveRender(true).setRenderSpeed(4);
-
-    FlexLayout viewerArea = FlexLayout.create(viewer).vertical().build();
-    viewerArea
-        .setStyle("overflow-y", "auto")
-        .setStyle("min-height", "0")
-        .setStyle("background", "var(--dwc-surface-3)")
-        .setStyle("border", "1px solid var(--dwc-color-default)")
-        .setStyle("border-radius", "var(--dwc-border-radius-m)")
-        .setStyle("padding", "var(--dwc-space-m)");
+    viewer.setMinHeight("0");
+    viewerArea.setMaxHeight("60vh");
+    viewerWrapper.setMaxHeight("60vh");
+    viewerWrapper.setStyle("overflow-y", "auto");
 
     FlexLayout buttons = new FlexLayout();
     buttons.setSpacing("var(--dwc-space-s)");

@@ -229,6 +229,10 @@ module.exports = async function createConfig() {
           {
             from: '/docs/building-ui/event-options',
             to: '/docs/building-ui/events',
+          },
+          {
+            from: '/docs/configuration/bbj-installation/github-codespaces',
+            to: '/docs/configuration/bbj-installation/overview',
           }
         ],
       },

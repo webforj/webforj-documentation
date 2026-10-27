@@ -18,14 +18,14 @@ public class AvatarPage {
   private final Locator dialog;
 
   public AvatarPage(Page page) {
-    this.panel = page.locator(".avatar-demo__panel");
-    this.projectHeader = page.locator(".avatar-demo__project-header");
+    this.panel = page.locator("dwc-card:not(.card-hover)");
+    this.projectHeader = page.locator("dwc-card:not(.card-hover) > h3[slot='title']");
     this.teamLabel = page.getByText("Team", new Page.GetByTextOptions().setExact(true));
     this.sarahAvatar = page.locator("dwc-avatar[tooltip='Sarah Chen']");
     this.marcusAvatar = page.locator("dwc-avatar[tooltip='Marcus Johnson']");
     this.elenaAvatar = page.locator("dwc-avatar[tooltip='Elena Rodriguez']");
     this.davidAvatar = page.locator("dwc-avatar[tooltip='David Kim']");
-    this.inviteRow = page.getByText("Invite Member");
+    this.inviteRow = page.getByText("Invite a Member");
     this.dialog = page.locator("dwc-dialog");
   }
 

@@ -3,95 +3,99 @@ sidebar_position: 4
 description: >-
   Install BBj locally and use the Plugin Manager to configure the webforJ plugin
   for running apps against a local BBjServices instance.
-_i18n_hash: c6cfdc6b07db675d741ea4a096f286ca
+_i18n_hash: 5fbe602fa83b6147a07c4e2ad8ac3230
 ---
 # Lokale Installatie
 
-Dit gedeelte van de documentatie behandelt de stappen die alleen vereist zijn voor gebruikers die webforJ willen gebruiken voor web- en/of app-ontwikkeling met een lokale BBj-instantie op hun machine. Deze installatie stelt gebruikers niet in staat bij te dragen aan de webforJ foundation code zelf.
+:::danger Verouderd en zal worden verwijderd
+De webforJ-plugin van de BBj Plugin Manager die op deze pagina wordt beschreven, is verouderd en zal in een toekomstige release worden verwijderd. Begin geen nieuwe projecten met deze plugin. Verplaats bestaande projecten naar [BBjShip](/docs/configuration/bbjship/overview), dat webforJ-apps installeert, implementeert en uitvoert in BBjServices. [Bestaande projecten](/docs/configuration/bbjship/existing-projects) vermeldt de wijzigingen die een project moet ondergaan.
+:::
+
+Dit sectie van de documentatie behandelt de stappen die alleen vereist zijn voor gebruikers die webforJ willen gebruiken voor web- en/of app-ontwikkeling met een lokale BBj-instantie op hun machine. Deze installatie maakt het gebruikers niet mogelijk om bij te dragen aan de webforJ-fondscode zelf.
 <br/>
 
 :::info
-Deze handleiding behandelt de installatie op een Windows-systeem - de installatie
-stappen kunnen variëren voor Mac/Linux OS-apparaten.
+Deze handleiding behandelt de installatie op een Windows-systeem - de installatie stappen kunnen variëren voor Mac/Linux OS-apparaten.
 :::
 <br/>
 
-De installatie wordt opgesplitst in de volgende stappen:
+De installatie zal worden onderverdeeld in de volgende stappen:
 
-1. BBj-download en installatie
-2. Gebruik van de BBj Plugin Manager om je app te maken
-3. Je app starten
+
+1. BBj downloaden en installeren
+2. Gebruik maken van de BBj Plugin Manager om uw app te creëren
+3. Uw app starten
+
 
 :::tip Vereisten
-Voordat je begint, zorg ervoor dat je de noodzakelijke [vereisten](../../introduction/prerequisites) voor het opzetten en gebruiken van webforJ hebt doorgenomen. Dit zorgt ervoor dat je alle benodigde tools en configuraties hebt voordat je met je project begint.
+Voordat u begint, zorg ervoor dat u de nodige [vereisten](../../introduction/prerequisites) hebt doorgenomen voor het instellen en gebruiken van webforJ. Dit zorgt ervoor dat u alle vereiste tools en configuraties hebt voordat u met uw project begint.
 :::
 
 
-## 1. BBj-download en installatie {#1-bbj-download-and-installation}
+## 1. BBj downloaden en installeren {#1-bbj-download-and-installation}
 
-<b>Bij het volgen van deze stap, zorg ervoor dat je de BBj-versie installeert die overeenkomt met dezelfde webforJ-versie.</b><br/><br/>
+<b>Wanneer u deze stap volgt, zorg ervoor dat u de BBj-versie installeert die overeenkomt met dezelfde webforJ-versie. </b><br/><br/>
 
-[Deze video](https://www.youtube.com/watch?v=Ovk8kznQfGs&ab_channel=BBxCluesbyBASISEurope) kan helpen bij de installatie van BBj als je hulp nodig hebt bij de opzet. Het installatiegedeelte van de BASIS-website is te vinden [via deze link](https://basis.cloud/download-product).
+[Deze video](https://www.youtube.com/watch?v=Ovk8kznQfGs&ab_channel=BBxCluesbyBASISEurope) kan helpen bij de installatie van BBj als u hulp nodig heeft bij de setup. Het installatiegedeelte van de BASIS-website is te vinden [via deze link](https://basis.cloud/download-product)
 
 :::tip
-Het wordt aanbevolen om de nieuwste stabiele revisie van BBj te gebruiken, en om "BBj" te selecteren uit de lijst van opties, zonder Barista of Addon.
+Het wordt aanbevolen om de nieuwste stabiele revisie van BBj te gebruiken en "BBj" te selecteren uit de lijst met opties, zonder Barista of Addon.
 :::
-
 
 <a name='section3'></a>
 
 ## 2. Installeer en configureer de webforJ-plugin
 
-Zodra BBj is geïnstalleerd, kan de Plugin Manager worden geopend om de nodige tools voor het configureren van webforJ te installeren. Om te beginnen, typ "Plugin Manager" in het startmenu of Finder.
+Zodra BBj is geïnstalleerd, kan de Plugin Manager worden geopend om tools te installeren die nodig zijn om webforJ te configureren. Typ om te beginnen "Plugin Manager" in het startmenu of Finder.
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_1l.png#rounded-border)
 
-Nadat de plugin manager is geopend, navigeer naar het tabblad "Beschikbare Plugins" bovenaan.
+Nadat de pluginmanager is geopend, navigeert u naar het tabblad "Beschikbare Plugins" bovenaan.
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_2l.png#rounded-border)
 
-Zodra je in dit gedeelte bent, vink je het selectievakje "Toon versies in ontwikkeling" aan.
+Selecteer in dit gedeelte het selectievakje "Toon versies onder ontwikkeling"
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_3l.png#rounded-border)
 
-De DWCJ-invoer zou nu zichtbaar moeten zijn in de lijst met beschikbare plugins voor download. Klik op deze invoer in de lijst om het te selecteren.
+De DWCJ-invoer zou nu zichtbaar moeten zijn in de lijst met beschikbare plugins voor download. Klik op deze invoer in de lijst om deze te selecteren.
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_4l.png#rounded-border)
 
-Met de DWCJ-invoer geselecteerd, klik je op de knop "Installeren".
+Met de DWCJ-invoer geselecteerd, klikt u op de knop "Installeren".
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_5l.png#rounded-border)
 
-Zodra de plugin is geïnstalleerd, klik je op het tabblad "Geïnstalleerde Plugins" bovenaan.
+Zodra de plugin is geïnstalleerd, klikt u op het tabblad "Geïnstalleerde Plugins" bovenaan.
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_6l.png#rounded-border)
 
-Dit tabblad toont geïnstalleerde plugins, die nu de DWCJ-invoer moeten bevatten. Klik op de invoer in de lijst.
+Dit tabblad toont de geïnstalleerde plugins, die nu de DWCJ-invoer moeten bevatten. Klik op de invoer binnen de lijst.
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_7l.png#rounded-border)
 
-Met de DWCJ-invoer geselecteerd, klik je op de knop "Configureren".
+Met de DWCJ-invoer geselecteerd, klikt u op de knop "Configureer".
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_8l.png#rounded-border)
 
-In het geopende venster klik je op de knop "Maven Remote Install inschakelen" linksonder in het venster.
+In het geopende venster, klikt u op de knop "Remote Install Maven inschakelen" linksonder in het venster.
+
 
 ![Plugin manager configuratie](/img/bbj-installation/local/Step_9l.png#rounded-border)
 
 :::tip
 
-Alternatief kun je navigeren naar de `bin`-directory binnen je `bbx`-map en de volgende opdracht uitvoeren:
+U kunt ook navigeren naar de `bin` map binnen uw `bbx` map en de volgende opdracht uitvoeren:
 
 ```bbj
 ./bbj -tIO DWCJ/cli.bbj - enable_remote_install
 ```
 :::
 
-Een dialoogvenster zou moeten verschijnen waarin staat dat de externe installatie is ingeschakeld. Klik op "OK" om dit dialoogvenster te sluiten.
-
+Een dialoogvenster moet verschijnen waarin staat dat de externe installatie is ingeschakeld. Klik op "OK" om dit dialoogvenster te sluiten.
 
 ## 3. Gebruik het starterproject
-Zodra BBj en de vereiste webforJ-plugin zijn geïnstalleerd en geconfigureerd, kun je een nieuw, gestructureerd project vanaf de opdrachtregel maken. Dit project wordt geleverd met de nodige tools om je eerste webforJ-programma uit te voeren.
+Zodra BBj en de vereiste webforJ-plugin zijn geïnstalleerd en geconfigureerd, kunt u een nieuw, gestructureerd project maken vanuit de opdrachtregel. Dit project wordt geleverd met de nodige tools om uw eerste webforJ-programma uit te voeren.
 
 <ComponentArchetype
 project="bbj-hello-world"
@@ -99,8 +103,9 @@ project="bbj-hello-world"
 
 ## 4. De app starten
 
-Zodra dit is gedaan, voer je `mvn install` uit in je projectdirectory. Dit zal de webforJ-installatieplugin uitvoeren, en je in staat stellen toegang te krijgen tot je app. Om de app te zien, moet je naar de volgende URL gaan:
+Zodra dit is gedaan, voert u een `mvn install` uit in uw projectdirectory. Dit zal de webforJ-installatieplugin uitvoeren en u in staat stellen om toegang te krijgen tot uw app. Om de app te zien, gaat u naar de volgende URL:
 
 `http://localhost:YourHostPort/webapp/YourPublishName`
 
-Vervang `YourHostPort` door de Host-poort die je met Docker hebt geconfigureerd, en `YourPublishName` wordt vervangen door de tekst binnen de `<publishname>`-tag van de POM. Als het correct is gedaan, zou je moeten zien dat je app wordt weergegeven.
+Vervang `YourHostPort` door de Host-poort die u met Docker heeft geconfigureerd, en `YourPublishName` wordt vervangen door de tekst binnen het `<publishname>`-tag van de POM.
+Als het correct is gedaan, zou u uw app moeten zien renderen.

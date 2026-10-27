@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Navigation Events
+title: Navigointitapahtumat
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 Lisäksi komponenttikohtaisten elinkaaritapahtumien ohella voit rekisteröidä **globaalit tapahtumakuuntelijat** reitittimen tasolla. Tämä mahdollistaa navigoinnin seuraamisen globaalisti koko sovelluksessa, mikä on hyödyllistä lokitusta, analytiikkaa tai muita poikkileikkavia huolenaiheita varten.

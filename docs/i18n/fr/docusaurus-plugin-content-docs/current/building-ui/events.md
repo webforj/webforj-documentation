@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Events
+title: Événements
 description: >-
   Listen for component events, read the event payload, configure element events,
   and dispatch your own custom events with the EventDispatcher.

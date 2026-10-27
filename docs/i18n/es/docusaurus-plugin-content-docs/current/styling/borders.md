@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Border
+title: Borde
 _i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
 Las propiedades de borde se utilizan para controlar el estilo y el ancho del borde del componente. Consulta los [estilos de borde disponibles](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).

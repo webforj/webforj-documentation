@@ -1,5 +1,5 @@
 ---
-title: Upgrade to 25.00
+title: 升级到 25.00
 description: Upgrade from 24.00 to 25.00
 sidebar_position: 30
 _i18n_hash: 6fdaf15e67e0015f7319572200ccc353

@@ -1,5 +1,5 @@
 ---
-title: Packages and assets
+title: Paketit ja resurssit
 sidebar_position: 30
 sidebar_class_name: new-content
 description: >-

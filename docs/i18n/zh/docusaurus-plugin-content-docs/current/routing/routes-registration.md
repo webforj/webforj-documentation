@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Routes Registration
+title: 路由注册
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 除了[使用 `@Route` 注释注册路由](./defining-routes)之外，可以根据应用逻辑、用户角色或其他条件动态注册、更新或删除路由。这种灵活性使您能够更动态地管理导航，而不是在编译时静态定义路由。

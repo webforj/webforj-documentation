@@ -1,5 +1,5 @@
 ---
-title: Route Registry Provider
+title: 路由注册提供程序
 sidebar_position: 60
 sidebar_class_name: new-content
 _i18n_hash: 03f86cbc79737ca141cc9d2e1ad2e28f

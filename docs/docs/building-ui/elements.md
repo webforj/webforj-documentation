@@ -16,10 +16,9 @@ The `Element` component can't be extended, and isn't the base component for all 
 <ComponentDemo
 path='/webforj/elementmeter'
 files={[
-  'src/main/java/com/webforj/samples/views/element/ElementMeterView.java',
-  'src/main/resources/static/css/element/elementMeter.css',
+  'src/main/java/com/webforj/samples/views/element/ElementMeterView.java'
 ]}
-height='240px'
+height='250px'
 />
 
 ## Adding events {#adding-events}
@@ -32,9 +31,9 @@ There are also additional options to further customize events by using the Event
 path='/webforj/elementtaginput'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementTagInputView.java',
-  'src/main/resources/static/css/element/elementTagInput.css',
+  'src/main/frontend/css/element/elementtaginput.css',
 ]}
-height='240px'
+height='250px'
 />
 
 ## Component interaction {#component-interaction}
@@ -57,9 +56,9 @@ The `Element` component supports the composition of child components. Developers
 path='/webforj/elementfigure'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementFigureView.java',
-  'src/main/resources/static/css/element/elementFigure.css',
+  'src/main/frontend/css/element/elementfigure.css',
 ]}
-height='240px'
+height='250px'
 />
 
 :::warning Replacing content
@@ -109,9 +108,9 @@ In the demo below, selecting **Focus search** calls the native `focus()` method 
 path='/webforj/elementsearch'
 files={[
   'src/main/java/com/webforj/samples/views/element/ElementSearchView.java',
-  'src/main/resources/static/css/element/elementSearch.css',
+  'src/main/frontend/css/element/elementsearch.css',
 ]}
-height='240px'
+height='250px'
 />
 
 ## Executing JavaScript {#executing-javascript}

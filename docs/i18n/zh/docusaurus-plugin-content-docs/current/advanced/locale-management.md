@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Locale Management
+title: 区域设置管理
 sidebar_class_name: new-content
 _i18n_hash: d3dcb4b1ded50923232cb33225364239
 ---

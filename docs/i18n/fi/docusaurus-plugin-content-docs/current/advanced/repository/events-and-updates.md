@@ -1,5 +1,5 @@
 ---
-title: Events and updates
+title: Tapahtumat ja päivitykset
 sidebar_position: 5
 description: >-
   React to repository commits with RepositoryCommitEvent listeners, choose

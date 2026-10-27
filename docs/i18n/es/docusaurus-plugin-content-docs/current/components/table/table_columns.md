@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Columns
+title: Columnas
 slug: columns
 description: >-
   Define Table columns with labels, value providers, visibility, navigability,
