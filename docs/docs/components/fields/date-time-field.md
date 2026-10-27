@@ -59,7 +59,7 @@ dateTimeField.setValue(LocalDateTime.of(2024, 4, 27, 14, 30));
 
 ### Using `setText()` {#using-settext}
 
-To set the value from a raw string, use `setText()` with an ISO local date-time, such as `yyyy-MM-ddTHH:mm`. Input can also include seconds or fractional seconds, which are discarded.
+To set the value from a raw string, use `setText()` with a local date-time, such as `yyyy-MM-ddTHH:mm`. Input can also include seconds or fractional seconds, which are discarded.
 
 ```java
 dateTimeField.setText("2024-04-27T14:30");       // valid
@@ -77,11 +77,11 @@ When using `setText()`, an `IllegalArgumentException` is thrown if the input can
 
 The DateTimeField class also provides the following static utility methods:
 
-- `fromDateTime(String dateTimeAsString)`: Parse a local date-time string, with or without seconds, into a `LocalDateTime` truncated to minutes.
+- `fromDateTime(String dateTimeAsString)`: parse a local date-time string, with or without seconds, into a `LocalDateTime` truncated to minutes.
 
-- `toDateTime(LocalDateTime dateTime)`: Convert a `LocalDateTime` to a string in `yyyy-MM-ddTHH:mm` format, discarding seconds and fractional seconds.
+- `toDateTime(LocalDateTime dateTime)`: convert a `LocalDateTime` to a string in `yyyy-MM-ddTHH:mm` format. Seconds and fractional seconds are discarded.
 
-- `isValidDateTime(String dateTimeAsString)`: Check whether a string is a valid local date-time, including input with seconds or fractional seconds. Returns `false` for invalid input or time zone suffixes.
+- `isValidDateTime(String dateTimeAsString)`: check whether a string is a valid local date-time. Input with seconds or fractional seconds is accepted. Returns `false` for invalid input or time zone suffixes.
 
 ## Min and max value {#min-and-max-value}
 
@@ -109,8 +109,8 @@ To ensure an optimal user experience when using the `DateTimeField` component, c
 
 - **Localized Date Display**: Localizing the date format and incorporating regional preferences ensures dates are presented in a familiar format to the user.
 
-- **Handle Time Zones Separately**: If your app works across time zones, provide a separate time zone selector and handle conversions in your app. The `DateTimeField` stores only the local date and time.
+- **Handle Time Zones Separately**: if your app works across time zones, provide a separate time zone selector and handle conversions in your app. The `DateTimeField` stores only the local date and time.
 
 - **Accessibility**: Utilize the `DateTimeField` with accessibility in mind. Ensure that it meets accessibility standards, such as providing proper labels and being compatible with assistive technologies.
 
-- **Auto-Populate Current Date**: Consider providing an option to auto-populate the current date and time as a default value in the date time field, if appropriate for your app's use case.
+- **Auto-Populate Current Date**: consider providing an option to auto-populate the current date and time as a default value in the date time field, if appropriate for your app's use case.
