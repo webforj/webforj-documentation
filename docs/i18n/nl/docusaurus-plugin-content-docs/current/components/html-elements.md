@@ -1,46 +1,46 @@
 ---
 sidebar_position: 52
-title: HTML-componenten
+title: HTML Components
 description: >-
   Compose pages with typed Java wrappers for standard HTML elements like Div,
   Anchor, Paragraph, Img, headings, and semantic containers.
-_i18n_hash: 40b5b7346cf57ebc6795c87e25fe3a74
+_i18n_hash: b8c2cd3c3c48b561e6796ef23aa73fe7
 ---
-webforJ levert een set componenten die direct overeenkomen met standaard HTML-elementen, waarmee je een getypte Java API krijgt voor de meest voorkomende bouwstenen van webpagina's. Voor een uitgebreide referentie over elk onderliggend HTML-element, zie de [MDN HTML-elementreferentie](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
+webforJ biedt een set componenten die rechtstreeks overeenkomen met standaard HTML-elementen, waardoor je een getypeerde Java API krijgt voor de meest voorkomende bouwstenen van webpagina's. Voor een uitgebreide referentie van elk onderliggend HTML-element, zie de [MDN HTML-elementreferentie](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
 
 ## Beschikbare componenten {#available-components}
 
 De volgende componenten zijn beschikbaar en komen overeen met hun bijbehorende HTML-elementen:
 
-| webforJ Klasse | HTML Element | Beschrijving | Kinderen |
+| webforJ Class | HTML Element | Beschrijving | Kinderen |
 |:--|:--:|:--|:--:|
-| `Anchor` | `<a>` | Creëert een hyperlink naar een URL, e-mailadres of locatie op de pagina. | ✔️ |
-| `Article` | `<article>` | Vertegenwoordigt een zelf-contained compositie zoals een blogpost, nieuwsartikel of forumvermelding. | ✔️ |
-| `Aside` | `<aside>` | Vertegenwoordigt inhoud die indirect verband houdt met de hoofdinhoud, meestal weergegeven als een zijbalk. | ✔️ |
-| `Break` | `<hr>` | Vertegenwoordigt een thematische onderbreking tussen alinea-niveau elementen, weergegeven als een horizontale lijn. | ❌ |
-| `Div` | `<div>` | Een generieke container op blokniveau voor het groeperen en styliseren van inhoud. | ✔️ |
-| `Emphasis` | `<em>` | Markeert tekst met nadruk, wat de betekenis van een zin verandert. | ✔️ |
-| `Fieldset` | `<fieldset>` | Groepeert gerelateerde formulierbesturingselementen en hun labels. | ✔️ |
-| `Footer` | `<footer>` | Vertegenwoordigt de voetnoot van de dichtstbijzijnde sectie-voorouder, meestal met auteursinformatie of navigatie-informatie. | ✔️ |
-| `FormattedText` | `<pre>` | Toont vooraf opgemaakte tekst, waarbij witruimtes en regeleinden exact worden behouden zoals geschreven. | ✔️ |
-| `H1` – `H6` | `<h1>` – `<h6>` | Vertegenwoordigen zes niveaus van sectiekoppen, waarbij `H1` het belangrijkste en `H6` het minst belangrijke is. | ✔️ |
+| `Anchor` | `<a>` | Creëert een hyperlink naar een URL, e-mailadres of locatie binnen de pagina. | ✔️ |
+| `Article` | `<article>` | Vertegenwoordigt een zelf-contained compositie zoals een blogpost, nieuwsartikel of forumitem. | ✔️ |
+| `Aside` | `<aside>` | Vertegenwoordigt content die indirect gerelateerd is aan de hoofdinhoud, meestal weergegeven als een zijbalk. | ✔️ |
+| `Break` | `<hr>` | Vertegenwoordigt een thematische scheiding tussen paragraafniveau-elementen, weergegeven als een horizontale lijn. | ❌ |
+| `Div` | `<div>` | Een generieke blokniveau-container voor het groeperen en stylen van inhoud. | ✔️ |
+| `Emphasis` | `<em>` | Markeert tekst met nadruk, waardoor de betekenis van een zin verandert. | ✔️ |
+| `Fieldset` | `<fieldset>` | Groepeert gerelateerde formulierelementen en hun labels. | ✔️ |
+| `Footer` | `<footer>` | Vertegenwoordigt de voettekst van zijn dichtstbijzijnde sectie-voorouder, meestal met auteurs- of navigatie-informatie. | ✔️ |
+| `FormattedText` | `<pre>` | Weergeeft opgemaakte tekst, waarbij witruimtes en regelafbrekingen precies worden behouden zoals geschreven. | ✔️ |
+| `H1` – `H6` | `<h1>` – `<h6>` | Vertegenwoordigt zes niveaus van sectiekoppen, waarbij `H1` de belangrijkste is en `H6` de minst belangrijke. | ✔️ |
 | `Header` | `<header>` | Vertegenwoordigt inleidende inhoud, meestal met een kop, logo of navigatielinks. | ✔️ |
-| `Iframe` | `<iframe>` | Inbedden van een andere HTML-pagina als een geneste browsecontext binnen de huidige pagina. | ❌ |
-| `Img` | `<img>` | Voegt een afbeelding in het document in. | ❌ |
-| `Legend` | `<legend>` | Biedt een onderschrift voor de inhoud van een `Fieldset`. | ❌ |
-| `ListEntry` | `<li>` | Vertegenwoordigt een enkel item in een `OrderedList` of `UnorderedList`. | ✔️ |
-| `Main` | `<main>` | Vertegenwoordigt de dominante inhoud van de documentbody, uniek voor de pagina. | ✔️ |
+| `Iframe` | `<iframe>` | Embed een andere HTML-pagina als een genest browsen context binnen de huidige pagina. | ❌ |
+| `Img` | `<img>` | Embed een afbeelding in het document. | ❌ |
+| `Legend` | `<legend>` | Biedt een bijschrift voor de inhoud van een `Fieldset`. | ❌ |
+| `ListEntry` | `<li>` | Vertegenwoordigt een individueel item in een `OrderedList` of `UnorderedList`. | ✔️ |
+| `Main` | `<main>` | Vertegenwoordigt de dominante inhoud van de documentinhoud, uniek voor de pagina. | ✔️ |
 | `NativeButton` | `<button>` | Een native interactieve knop die acties kan triggeren of formulieren kan indienen. | ✔️ |
 | `Nav` | `<nav>` | Vertegenwoordigt een sectie van de pagina met navigatielinks. | ✔️ |
-| `OrderedList` | `<ol>` | Vertegenwoordigt een genummerde, gesorteerde lijst van items. | ✔️ |
+| `OrderedList` | `<ol>` | Vertegenwoordigt een genummerde lijst van items. | ✔️ |
 | `Paragraph` | `<p>` | Vertegenwoordigt een alinea tekst. | ✔️ |
-| `Section` | `<section>` | Vertegenwoordigt een generieke op zichzelf staande sectie van een document, meestal met een kop. | ✔️ |
+| `Section` | `<section>` | Vertegenwoordigt een generieke zelfstandige sectie van een document, meestal met een kop. | ✔️ |
 | `Span` | `<span>` | Een generieke inline-container voor tekst en andere inline-inhoud. | ✔️ |
 | `Strong` | `<strong>` | Geeft inhoud van sterke belangrijkheid aan, meestal vet weergegeven. | ✔️ |
-| `UnorderedList` | `<ul>` | Vertegenwoordigt een opsomming, ongeordende lijst van items. | ✔️ |
+| `UnorderedList` | `<ul>` | Vertegenwoordigt een opsommingstekens-lijst van items. | ✔️ |
 
 ## Werken met kinderen {#working-with-children}
 
-Componenten gemarkeerd met ✔️ in de **Kinderen** kolom ondersteunen het toevoegen, verwijderen en benaderen van kindcomponenten. Deze methoden worden geleverd via de [`Element`](../building-ui/element#component-interaction) klasse.
+Elke HTML-component breidt `HtmlComponent` uit. Componenten gemarkeerd met ✔️ in de **Kinderen**-kolom breiden `HtmlComponentContainer` uit, wat de methoden toevoegt voor het toevoegen, verwijderen en benaderen van kindcomponenten. Componenten zonder kinderen, zoals `Break`, breiden `HtmlComponent` rechtstreeks uit.
 
-Voor het maken van willekeurige HTML-elementen buiten die hier zijn vermeld, of voor het insluiten van aangepaste webcomponenten, zie de [`Element`](../building-ui/element) documentatie.
+Voor het creëren van willekeurige HTML-elementen buiten die hier vermeld staan, of voor het insluiten van aangepaste webcomponenten, zie de [`Element`](../building-ui/element) documentatie.

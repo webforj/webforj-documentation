@@ -170,5 +170,9 @@
   "sidebar.documentationSidebar.category.MCP Apps": {
     "message": "MCP 应用程序",
     "description": "The label for category 'MCP Apps' in sidebar 'documentationSidebar'"
+  },
+  "sidebar.documentationSidebar.category.BBjShip": {
+    "message": "BBj运输",
+    "description": "The label for category 'BBjShip' in sidebar 'documentationSidebar'"
   }
 }
