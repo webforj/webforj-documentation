@@ -27,7 +27,6 @@ public class ListSearchView extends Composite<FlexLayout> {
     "Germany",
     "Ireland",
     "Italy",
-    "Italy",
     "Japan",
     "Mexico",
     "Netherlands",

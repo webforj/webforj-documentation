@@ -1,5 +1,5 @@
 ---
-title: Prerequisites
+title: 前提条件
 description: >-
   What a webforJ development environment needs, a Java 21 or higher JDK, Maven
   or Gradle, and an editor with Java support.

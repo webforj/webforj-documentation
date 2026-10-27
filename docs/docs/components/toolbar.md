@@ -30,10 +30,7 @@ To read more about implementing toolbars within an `AppLayout`, see [Sticky tool
 <ComponentDemo
 path='/webforj/toolbarslots'
 frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java',
-  'src/main/frontend/css/toolbar/toolbar-slots-view.css',
-]}
+files={['src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java']}
 />
 
 ## Compact mode {#compact-mode}

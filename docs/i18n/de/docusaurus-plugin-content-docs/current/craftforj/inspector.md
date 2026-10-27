@@ -1,5 +1,5 @@
 ---
-title: Inspecting Components
+title: Komponenten untersuchen
 sidebar_position: 3
 description: >-
   Browse the component tree webforJ built, select components from the page, and

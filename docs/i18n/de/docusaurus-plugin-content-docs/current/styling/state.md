@@ -1,6 +1,6 @@
 ---
 sidebar_position: 9
-title: State
+title: Zustand
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 State-Tokens definieren, wie Komponenten visuell auf Benutzerinteraktionen reagieren, wie beispielsweise, wenn sie deaktiviert oder fokussiert sind. Diese Variablen helfen, ein konsistentes Verhalten und Styling über alle UI-Elemente hinweg sicherzustellen und können leicht an Ihr Designsystem angepasst werden.

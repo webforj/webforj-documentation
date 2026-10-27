@@ -2,6 +2,8 @@ package com.webforj.samples.views.googlecharts;
 
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.component.Composite;
+import com.webforj.component.Expanse;
+import com.webforj.component.card.Card;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Anchor;
 import com.webforj.component.html.elements.Div;
@@ -37,18 +39,22 @@ public class ChartGalleryView extends Composite<Div> {
 
   private Anchor createChartLink(String chartKey, GoogleChart chart) {
     String formattedTitle = formatTitle(chartKey);
-
-    Div chartDiv = new Div().addClassName("chart-div");
-
-    Paragraph chartName = new Paragraph().setText(formattedTitle).addClassName("chartname");
-
-    chartDiv.add(chartName, chart);
-
     Anchor anchor = new Anchor();
     anchor.setHref(GITHUB_BASE_URL + formattedTitle.replace(" ", "") + ".java");
     anchor.setTarget("_blank");
-    anchor.add(chartDiv);
+    anchor.add(createChartCard(formattedTitle, chart));
     return anchor;
+  }
+
+  private Card createChartCard(String formattedTitle, GoogleChart chart) {
+    Paragraph chartName = new Paragraph().setText(formattedTitle);
+    Card chartCard = new Card().addClassName("chart-card");
+    chartCard.setSize(420, 270);
+    chartCard.setExpanse(Expanse.SMALL);
+    chartCard.addToTitle(chartName);
+    chartCard.addToBody(chart);
+    chartCard.setBorderless(true);
+    return chartCard;
   }
 
   private List<String> getChartKeys() {

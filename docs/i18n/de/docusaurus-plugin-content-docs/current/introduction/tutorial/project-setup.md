@@ -1,16 +1,16 @@
 ---
-title: Project Setup
+title: Projektsetup
 sidebar_position: 1
 description: >-
   Discover where to download the tutorial project, how to navigate it, and run
   the apps within.
-_i18n_hash: 1704f647af5396bd4efd4fdbcc4da978
+_i18n_hash: 8c9cc05d141898612beff7f1c3f73fae
 ---
 Um dieses Tutorial zu beginnen, benötigen Sie einen Speicherort für Ihr Projekt, an dem Sie Ihre Klassen und Ressourcen verwalten können. Die folgenden Abschnitte beschreiben die verschiedenen Möglichkeiten, wie Sie Ihr webforJ-Projekt für dieses Tutorial erstellen können.
 
 ## Verwendung des Quellcodes {#using-source-code}
 
-Der einfachste Weg, diesem Tutorial zu folgen, besteht darin, sich auf den Quellcode zu beziehen. Sie können das gesamte Projekt herunterladen oder es von GitHub klonen:
+Der einfachste Weg, dieses Tutorial zu verfolgen, besteht darin, sich auf den Quellcode zu beziehen. Sie können das gesamte Projekt herunterladen oder es von GitHub klonen:
 
 <!-- vale off -->
 - ZIP herunterladen: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
@@ -19,12 +19,6 @@ Der einfachste Weg, diesem Tutorial zu folgen, besteht darin, sich auf den Quell
 ```bash
 git clone https://github.com/webforj/webforj-tutorial.git
 ```
-
-<!-- <div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
-  </video>
-</div> -->
 
 ### Projektstruktur {#project-structure}
 
@@ -44,15 +38,13 @@ webforj-tutorial
 └───6-integrating-an-app-layout
 ```
 
-<!-- vale off -->
 ## Verwendung von startforJ {#using-startforj}
-<!-- vale on -->
 
-Wenn Sie lieber ein neues Projekt erstellen möchten, können Sie [startforJ](https://docs.webforj.com/startforj) verwenden, um ein minimales Starterprojekt zu generieren. Weitere Informationen zur Verwendung von startforJ finden Sie unter [Erste Schritte](/docs/introduction/getting-started).
+Wenn Sie lieber ein neues Projekt erstellen möchten, können Sie [startforJ](https://docs.webforj.com/startforj) verwenden, um ein minimales Starterprojekt zu generieren. Weitere detaillierte Informationen zur Verwendung von startforJ finden Sie unter [Erste Schritte](/docs/introduction/getting-started).
 
 :::note Erforderliche Einstellungen
-- Wählen Sie im Dropdown-Menü **webforJ-Version** die webforJ-Version **26.01 oder höher**.
-- Wählen Sie im Dropdown-Menü **Flavor** die Option **webforJ + Spring Boot**.
+- Wählen Sie im Dropdown „**webforJ-Version**“ die webforJ-Version **26.01 oder höher**.
+- Wählen Sie unter „**Läuft auf**“ **Spring Boot**.
 
 ## Verwendung der Befehlszeile {#using-command-line}
 
@@ -101,10 +93,10 @@ mvn -B archetype:generate ^
 
 ## Konfigurationen {#configurations}
 
-Die beiden genannten Methoden zur Erstellung eines neuen Projekts verwenden die webforJ [Archetypen](/docs/building-ui/archetypes/overview), die automatisch die benötigten Konfigurationen zu Ihrem Projekt hinzufügen. Dazu gehören Spring [Abhängigkeiten](/docs/integrations/spring/spring-boot), das webforJ Maven-Plugin, das die Frontend-Quellen erstellt und überwacht, und die folgenden Eigenschaften in `src/main/resources/application.properties`:
+Die beiden genannten Möglichkeiten zur Erstellung eines neuen Projekts verwenden webforJ [Archetypen](/docs/building-ui/archetypes/overview), die automatisch die erforderlichen Konfigurationen zu Ihrem Projekt hinzufügen. Dazu gehören Spring [Abhängigkeiten](/docs/integrations/spring/spring-boot), das webforJ Maven-Plugin, das die Frontend-Quellen erstellt und überwacht, sowie die folgenden Eigenschaften in `src/main/resources/application.properties`:
 
 ```
-spring.application.name=CustomerApplication
+spring.application.name=Kundenanwendung
 server.port=8080
 webforj.entry = com.webforj.tutorial.Application
 webforj.debug=true
@@ -114,15 +106,13 @@ webforj.debug=true
 
 Um die Anwendung in Aktion zu sehen, während Sie das Tutorial durchlaufen:
 
-1. Navigieren Sie zu dem Verzeichnis für den gewünschten Schritt. Dies sollte das oberste Verzeichnis für diesen Schritt sein, das die `pom.xml` enthält.
+1. Navigieren Sie zum Verzeichnis des gewünschten Schrittes. Dies sollte das oberste Verzeichnis für diesen Schritt sein, das die `pom.xml` enthält.
 
 2. Verwenden Sie den folgenden Maven-Befehl, um die Spring Boot-Anwendung lokal auszuführen:
     ```bash
     mvn
     ```
 
-   Die generierte POM konfiguriert diesen Standardbefehl so, dass die Anwendung kompiliert, der webforJ-Frontend-Watcher gestartet und Spring Boot ausgeführt wird.
+   Die generierte POM konfiguriert diesen Standardbefehl, um die Anwendung zu kompilieren, den webforJ-Frontend-Watcher zu starten und Spring Boot auszuführen.
 
-<!-- vale Google.WordList = NO -->
 Das Ausführen der Anwendung öffnet automatisch einen neuen Browser unter `http://localhost:8080`.
-<!-- vale Google.WordList = YES -->

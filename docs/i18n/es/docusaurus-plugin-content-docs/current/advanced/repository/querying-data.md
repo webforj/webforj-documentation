@@ -1,5 +1,5 @@
 ---
-title: Querying data
+title: Consulta de datos
 sidebar_position: 3
 description: >-
   Build typed filters, sorting, and pagination with QueryableRepository and

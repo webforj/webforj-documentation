@@ -1,5 +1,5 @@
 ---
-title: Add tools for an open view
+title: Ajouter des outils pour une vue ouverte
 sidebar_position: 20
 description: Add tools that work with an MCP App already open in the current conversation.
 _i18n_hash: 0ad6819ba9550e2ffd2372c09b91a746

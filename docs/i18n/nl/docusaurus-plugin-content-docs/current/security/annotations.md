@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Security Annotations
+title: Beveiligingsannotaties
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 Beveiligingsannotaties bieden een declaratieve manier om toegang tot routes in jouw webforJ-app te controleren. Door annotaties aan jouw routecomponenten toe te voegen, definieer je wie toegang heeft tot elke weergave zonder handmatige machtigingscontroles te schrijven. Het beveiligingssysteem handhaaft automatisch deze regels voordat een component wordt weergegeven.

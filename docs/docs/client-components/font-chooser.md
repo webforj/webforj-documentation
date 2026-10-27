@@ -6,7 +6,7 @@ description: Customize the dwc-font-chooser client component via CSS variables a
 ---
 
 <DocChip chip='scoped' />
-    
+
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-font-chooser>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::

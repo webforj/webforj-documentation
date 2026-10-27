@@ -3,9 +3,11 @@ package com.webforj.samples.views.elementcomposite;
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.bundle.annotation.BundlePackage;
 import com.webforj.component.Composite;
+import com.webforj.component.Expanse;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.card.Card;
 import com.webforj.component.element.ElementComposite;
 import com.webforj.component.element.PropertyDescriptor;
 import com.webforj.component.element.annotation.EventName;
@@ -14,8 +16,6 @@ import com.webforj.component.element.annotation.EventOptions.EventData;
 import com.webforj.component.element.annotation.NodeName;
 import com.webforj.component.event.ComponentEvent;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.layout.flexlayout.FlexAlignment;
-import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.toast.Toast;
@@ -33,6 +33,7 @@ public class RatingView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
   private final Rating rating = new Rating();
   private final Button submit = new Button("Submit review");
+  private final Card container = new Card();
 
   public RatingView() {
     rating.setMax(5);
@@ -47,17 +48,12 @@ public class RatingView extends Composite<FlexLayout> {
           submit.setEnabled(false);
         });
 
-    FlexLayout container = new FlexLayout(new H3("Rate this product"), rating, submit);
-    container.setDirection(FlexDirection.COLUMN);
-    container.setSpacing("var(--dwc-space-m)");
-    // The component maps pointer position to a value across its own bounding box, so it has to hug
-    // its symbols rather than stretch to the width of the column.
-    container.setItemAlignment(FlexAlignment.START, rating);
-    container.setStyle("background", "var(--dwc-surface-3)");
-    container.setStyle("border", "thin solid var(--dwc-color-default)");
-    container.setStyle("border-radius", "var(--dwc-border-radius-m)");
-    container.setStyle("padding", "var(--dwc-space-m)");
-    container.setStyle("width", "400px");
+    container
+        .addToTitle(new H3("Rate this product"))
+        .setExpanse(Expanse.LARGE)
+        .addToBody(rating)
+        .addToFooter(submit)
+        .setWidth(400);
 
     self.setJustifyContent(FlexJustifyContent.CENTER)
         .setMargin("var(--dwc-space-l)")

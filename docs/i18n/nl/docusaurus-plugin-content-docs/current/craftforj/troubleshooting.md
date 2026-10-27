@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting
+title: Probleemoplossing
 sidebar_position: 11
 description: >-
   Fix the common cases where craftforJ doesn't appear, a feature is unavailable,

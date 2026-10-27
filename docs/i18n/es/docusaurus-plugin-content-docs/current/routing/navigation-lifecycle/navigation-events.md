@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Navigation Events
+title: Eventos de navegación
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 Además de los eventos del ciclo de vida específicos de los componentes, puedes registrar **escuchas de eventos globales** a nivel del enrutador. Esto permite el seguimiento de la navegación a nivel global a través de toda la aplicación, lo que resulta útil para el registro, la analítica u otras preocupaciones transversales.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Jakarta Validation
+title: Validación Jakarta
 sidebar_class_name: updated-content
 description: >-
   Apply Jakarta Bean Validation annotations to bean properties and activate

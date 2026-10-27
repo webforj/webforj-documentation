@@ -229,6 +229,10 @@ module.exports = async function createConfig() {
           {
             from: '/docs/building-ui/event-options',
             to: '/docs/building-ui/events',
+          },
+          {
+            from: '/docs/configuration/bbj-installation/github-codespaces',
+            to: '/docs/configuration/bbj-installation/overview',
           }
         ],
       },
@@ -348,6 +352,11 @@ module.exports = async function createConfig() {
               label: "Client Components",
               to: '/docs/client-components/overview',
               activeBasePath: 'docs/client-components/overview'
+            },
+            {
+              label: "DWC Design Kit",
+              href: 'https://www.figma.com/community/file/1682060886525639971/dwc-design-kit',
+              rel: null,
             },
             {
               label: "Contribution Guide",

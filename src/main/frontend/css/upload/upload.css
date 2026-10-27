@@ -1,13 +1,6 @@
-.upload-demo {
-  margin: var(--dwc-space-l) auto;
-  max-width: 560px;
-  padding: var(--dwc-space-m);
-  border: 1px solid var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius-m);
-  background: var(--dwc-surface-3);
+.card-title {
+  --dwc-card-title-font-size: var(--dwc-font-size-xl);
 }
-
-.upload-demo--narrow { max-width: 520px; }
 
 .upload-demo__field-label {
   font-weight: var(--dwc-font-weight-semibold);

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Shadows
+title: Varjot
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 Varjostusominaisuudet lisäävät varjotehosteita elementin kehän ympärille. Varjostukset merkitsevät käyttöliittymässä päällekkäin olevia kohteita.

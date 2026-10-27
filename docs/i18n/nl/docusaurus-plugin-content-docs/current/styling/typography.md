@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Typography
+title: Typografie
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 Typografie tokens worden gebruikt om een consistente set van letterstijlletjes door je app heen te handhaven.

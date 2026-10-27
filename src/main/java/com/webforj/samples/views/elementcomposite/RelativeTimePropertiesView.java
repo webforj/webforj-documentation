@@ -3,12 +3,13 @@ package com.webforj.samples.views.elementcomposite;
 import com.webforj.bundle.annotation.BundleEntry;
 import com.webforj.bundle.annotation.BundlePackage;
 import com.webforj.component.Composite;
+import com.webforj.component.Expanse;
 import com.webforj.component.avatar.Avatar;
 import com.webforj.component.avatar.AvatarTheme;
+import com.webforj.component.card.Card;
 import com.webforj.component.element.ElementComposite;
 import com.webforj.component.element.PropertyDescriptor;
 import com.webforj.component.element.annotation.NodeName;
-import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Span;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
@@ -27,15 +28,11 @@ import java.time.Instant;
 @BundleEntry("element-composite/activityfeed.css")
 public class RelativeTimePropertiesView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
+  private final Card container = new Card();
 
   public RelativeTimePropertiesView() {
-    FlexLayout container = new FlexLayout();
-    container.setDirection(FlexDirection.COLUMN);
-    container.addClassName("activity-feed");
 
-    H3 heading = new H3("Recent activity");
-    heading.addClassName("activity-feed__heading");
-    container.add(heading);
+    container.addToTitle(new H3("Recent activity")).setExpanse(Expanse.LARGE).setWidth(440);
 
     container.add(
         row(
@@ -45,7 +42,6 @@ public class RelativeTimePropertiesView extends Composite<FlexLayout> {
             min(2),
             RelativeTime.Format.LONG,
             RelativeTime.Numeric.AUTO));
-    container.add(divider());
     container.add(
         row(
             "Bob Martinez",
@@ -54,7 +50,6 @@ public class RelativeTimePropertiesView extends Composite<FlexLayout> {
             hr(3),
             RelativeTime.Format.SHORT,
             RelativeTime.Numeric.AUTO));
-    container.add(divider());
     container.add(
         row(
             "Carlos Singh",
@@ -63,7 +58,6 @@ public class RelativeTimePropertiesView extends Composite<FlexLayout> {
             day(1),
             RelativeTime.Format.LONG,
             RelativeTime.Numeric.ALWAYS));
-    container.add(divider());
     container.add(
         row(
             "Dana Park",
@@ -120,12 +114,6 @@ public class RelativeTimePropertiesView extends Composite<FlexLayout> {
     row.setAlignment(FlexAlignment.START);
     row.addClassName("activity-feed__row");
     return row;
-  }
-
-  private Div divider() {
-    Div divider = new Div();
-    divider.addClassName("activity-feed__divider");
-    return divider;
   }
 
   /** Wrapper for the Web Awesome relative-time web component. */

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Validators
+title: Validateurs
 sidebar_class_name: updated-content
 _i18n_hash: 996b617e97e439660bbe69f15d6355b9
 ---
