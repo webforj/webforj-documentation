@@ -107,7 +107,7 @@ demoList.selectIndex(0);
 
 ### Iterating over lists {#iterating-over-lists}
 
-All list components implement the Java [`Iterable`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html) interface, providing an efficient and intuitive way to iterate through a list's contents. With this interface, you can easily loop through every `ListItem`, making it simple to access, modify, or perform actions on each item with minimal effort. The `Iterable` interface is a standard pattern of the Java language, ensuring your code is familiar and maintainable for any Java developer.
+All list components implement the Java [`Iterable`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html) interface. Use `forEach()` or a `for` loop to access or modify each `ListItem`.
 
 The code snippet below demonstrates two easy ways to iterate through a list:
 
