@@ -39,7 +39,7 @@ String result = OptionDialog.showFileSaveDialog(
     "Save your file", "/home/user/documents", "report.xls");
 
 if (result != null) {
-  OptionDialog.showMessageDialog("Saved file to: " + path, "Path Selected");
+  OptionDialog.showMessageDialog("Selected path: " + result, "Path Selected");
 } else {
   OptionDialog.showMessageDialog("No path is selected", "Path Selected",
       MessageDialog.MessageType.ERROR);
@@ -102,7 +102,7 @@ String result = dialog.show();
 
 ## Internationalization (i18n) {#internationalization-i18n}
 
-The titles, descriptions, labels, and messages within the component are fully customizable using the `FileSaveI18n` class. This ensures the dialog can be tailored to various localization or personalization requirements.
+The titles, descriptions, labels, and messages within the component are fully customizable using the `FileChooserI18n` class. This ensures the dialog can be tailored to various localization or personalization requirements.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog("Speichern Sie Ihre Datei");
@@ -114,7 +114,7 @@ dialog.setI18n(i18n);
 
 ## Filters {#filters}
 
-The `FileSaveDialog` allows you to set filters to limit the types of files that can be saved using the `setFilters(List<FileSaveFilter> filters)` method.
+The `FileSaveDialog` allows you to set filters to limit the types of files that can be saved using the `setFilters(List<FileChooserFilter> filters)` method.
 
 <ComponentDemo
 path='/webforj/filesavedialogfilters'
