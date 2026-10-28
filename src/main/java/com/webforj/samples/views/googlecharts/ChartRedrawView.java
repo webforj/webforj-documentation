@@ -31,7 +31,7 @@ public class ChartRedrawView extends Composite<Div> {
   private static final long MAX_ALLOWED = 1_000L;
 
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
-  private final Button redrawButton = new Button("Redraw Chart");
+  private final Button redrawButton = new Button("Update Chart");
   private final List<String> categories = List.of("Instagram", "Twitter", "Facebook", "LinkedIn");
   private final Map<String, NumberField> valueFields;
 
@@ -178,7 +178,6 @@ public class ChartRedrawView extends Composite<Div> {
       Toast.show("Enter a valid number between 1 and " + MAX_ALLOWED, 3000, Theme.DANGER);
     } else {
       chart.setData(newData);
-      chart.redraw();
     }
   }
 }
