@@ -34,7 +34,7 @@ End-to-end testing validates what users experience in webforJ apps, which genera
 
 Using tools like [**Selenium**](https://www.selenium.dev/) and [**Playwright**](https://playwright.dev/java/docs/intro), you can:
 
-- Automate browser interactions, such as button clicks and form submissions.
+- Automate browser interactions by simulating button clicks and form submissions.
 - Verify consistent rendering and interactivity of dynamic UI components.
 - Confirm that behavior stays consistent across browsers and devices.
 
@@ -42,8 +42,8 @@ Using tools like [**Selenium**](https://www.selenium.dev/) and [**Playwright**](
 
 By combining unit and E2E testing:
 
-1. **Isolate issues**: Detect and resolve component-level bugs early with unit testing.
-2. **Confirm reliability**: Validate complete user journeys and system integrations with E2E testing.
+1. **Isolate issues**: detect and resolve component-level bugs early with unit testing.
+2. **Confirm reliability**: validate complete user journeys and system integrations with E2E testing.
 
 ## Topics {#topics}
 

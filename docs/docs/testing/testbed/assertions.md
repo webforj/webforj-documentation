@@ -62,10 +62,10 @@ Every state has a check for each side, such as `isReadOnly()` and `isEditable()`
 
 A check reads the component through a [concern interface](/docs/building-ui/component-fundamentals#concern-interfaces), so it works on every component that implements that interface, a component of your app included. `hasLabel` works on every component with a label, and `isReadOnly` on every component that can be read only. The checks cover:
 
-- What the user reads: text, HTML content, label, placeholder, helper text and tooltip.
-- The state of the component: visible, enabled, read only, required, valid and focused.
-- The value of a field, and the items and selection of lists, tables and trees.
-- What the app set: name, attributes, properties, style, theme and expanse.
+- What the user reads: text, HTML content, label, placeholder, helper text, and tooltip.
+- The state of the component: visible, enabled, read only, required, valid, and focused.
+- The value of a field, and the items and selection of lists, tables, and trees.
+- What the app set: name, attributes, properties, style, theme, and expanse.
 - The components a container holds, and whether a component is attached or destroyed.
 
 The <JavadocLink type="testbed-foundation" location="com/webforj/testbed/assertion/AbstractComponentAssert" code="true">AbstractComponentAssert</JavadocLink> reference lists every check with the interface it reads.

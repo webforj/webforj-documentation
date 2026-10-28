@@ -67,8 +67,8 @@ Typing reports the change to the modify listener of the field, which enables the
 
 - `click` and `doubleClick` press a component, or an item it holds such as a row of a table or a node of a tree.
 - `type` replaces the text of a field, `keypress` presses a key in it, and `focus` moves the focus onto a component.
-- `check` and `uncheck` set a checkbox, a radio button or a switch.
-- `select`, `selectIndex`, `selectKey` and `deselect` change the selection of lists, tables, trees and tabbed panes.
+- `check` and `uncheck` set a checkbox, a radio button, or a switch.
+- `select`, `selectIndex`, `selectKey` and `deselect` change the selection of lists, tables, trees, and tabbed panes.
 - `open`, `close` and `cancel` open and close panels, dialogs, drawers and dropdowns, and cancel a login or an upload.
 
 A verb reports what a user's gesture reports, in the same order. Selecting a tab reports that the previous tab lost the selection before it reports the new one. The mouse button, the position and the modifier keys of a gesture go in `MouseOptions` and `KeyOptions`, the last argument of `click`, `doubleClick` and `keypress`.
