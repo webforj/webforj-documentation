@@ -1,23 +1,22 @@
 ---
 sidebar_position: 1
-title: Automatisoidut päivitykset
+title: Automaattiset päivitykset
 description: >-
   Migrate webforJ projects between versions automatically with OpenRewrite
   recipes that rename APIs, update dependencies, and flag manual fixes.
-sidebar_class_name: new-content
-_i18n_hash: 7f4b51fb3daf9ba91f0e755758d8ec52
+_i18n_hash: 8c889d8dea5c90aad2ef224d152e611e
 ---
-# Using OpenRewrite {#using-openrewrite}
+# OpenRewrite käyttö {#using-openrewrite}
 
-OpenRewrite on avoin lähdekoodirefaktoroinnin projekti, joka mahdollistaa tehokkaan ja automaattisen siirtymisen webforJ-versioiden välillä projekteille, jotka käyttävät vanhentuneita tai poistettuja API:ita.
+OpenRewrite on avoimen lähdekoodin projekti, joka on suunniteltu automaattiseen lähdekoodin refaktorointiin, jolloin voit tehokkaasti ja automaattisesti siirtää webforJ-versioiden välillä projekteissa, jotka käyttävät poistettuja tai vanhentuneita API:ita.
 
-## When to use OpenRewrite? {#when-to-use-openrewrite}
+## Milloin käyttää OpenRewritea? {#when-to-use-openrewrite}
 
-Voit käyttää OpenRewriteä päivittäessäsi siirtyäksesi vanhentuneista API:ista, ei vain suurissa julkaisussa. Tämä auttaa sinua siirtymään uusista vanhentuneista metodeista ennen kuin ne poistetaan myöhemmässä versiossa.
+Voit käyttää OpenRewritea päivittääksesi poistumista vanhentuneista API:ista, ei vain suurten julkaisujen yhteydessä. Tämä auttaa sinua siirtymään uusiin vanhentuneisiin menetelmiin ennen niiden poistamista myöhemmissä versioissa.
 
-## Setup {#setup}
+## Asennus {#setup}
 
-Päivittääksesi projektisi OpenRewrite:llä, lisää OpenRewrite Maven -laajennus `pom.xml`-tiedostoon, jossa on [`webforj-rewrite`](https://github.com/webforj/webforj/tree/main/webforj-rewrite) riippuvuutena:
+Päivittääksesi projektisi OpenRewriteilla, lisää OpenRewrite Maven -lisäosa `pom.xml`-tiedostoon, missä [`webforj-rewrite`](https://github.com/webforj/webforj/tree/main/webforj-rewrite) on riippuvuus:
 
 ```xml
 <plugin>
@@ -39,33 +38,34 @@ Päivittääksesi projektisi OpenRewrite:llä, lisää OpenRewrite Maven -laajen
 </plugin>
 ```
 
-Korvata `TARGET_VERSION` webforJ-versiolla, johon päivität, ja `RECIPE_NAME` yhdellä resepteistä [Available recipes](#available-recipes) tämän artikkelin osiossa.
+Korvaa `TARGET_VERSION` sillä webforJ-versiolla, johon päivität, ja `RECIPE_NAME` jollain resepteistä [Saatavilla olevat reseptit](#available-recipes) -osion kohdalla.
 
-## Previewing changes (optional) {#previewing-changes}
+## Muutosten esikatselu (valinnainen) {#previewing-changes}
 
-Jos haluat ennakoida, mitä muutoksia OpenRewrite tekee webforJ-reseptillä, seuraavan komennon suorittaminen luo eron `target/rewrite/rewrite.patch` ilman, että se muuttaa mitään tiedostoja. Tarkista korjaus nähdäksesi tarkalleen, mitä resepti muuttaa.
+Jos haluat esikatsella, mitä muutoksia OpenRewrite tekee webforJ-reseptillä, voit suorittaa seuraavan komennon, joka luo diffin `target/rewrite/rewrite.patch` ilman tiedostojen muuttamista. Käy läpi patch-tiedosto nähdäksesi tarkasti, mitä resepti muuttaa.
 
 ```bash
 mvn rewrite:dryRun
 ```
 
-## Running OpenRewrite {#running-openrewrite}
+## OpenRewrite-noudon suorittaminen {#running-openrewrite}
 
-Kun olet valmis soveltamaan muutoksia OpenRewrite:llä, suorita seuraava komento:
+Kun olet valmis tekemään muutoksia OpenRewritella, suorita seuraava komento:
 
 ```bash
 mvn rewrite:run
 ```
 
-Resepti hoitaa suurimman osan päivityksistä automaattisesti päivittämällä riippuvuuksia, nimeämällä metodeja uudelleen, muuttamalla tyyppejä ja säätämällä palautustyyppejä. Harvinaisissa tapauksissa, joissa 1:1 korvausta ei ole, se lisää `TODO`-kommentteja koodiisi erityisillä ohjeilla. Etsi projektistasi nämä `TODO`-kommentit selvittääksesi, mitä on jäljellä.
+Resepti hoitaa suurimman osan päivityksestä automaattisesti päivittämällä riippuvuuksia, nimeämällä menetelmiä uudelleen, muuntamalla tyyppejä ja säätämällä palautustyyppejä. Niissä harvoissa tapauksissa, joissa 1:1 korvausta ei ole, se lisää koodisi `TODO`-kommentteja tarkkoine ohjeineen. Etsi projektistasi nämä `TODO`:t nähdäksesi, mitä on vielä jäljellä.
 
-## Clean up {#clean-up}
+## Siivous {#clean-up}
 
-Kun olet suorittanut OpenRewrite:n webforJ-reseptillä ja ratkaissut mahdolliset `TODO`-kommentit, poista laajennus `pom.xml`:stäsi.
+Kun olet suorittanut OpenRewritea webforJ-reseptillä ja ratkaissut kaikki `TODO`-kommentit, poista lisäosa `pom.xml`-tiedostostasi.
 
-## Available recipes {#available-recipes}
+## Saatavilla olevat reseptit {#available-recipes}
 
-| Version | Standard webforJ Projects | Spring Boot Projects |
+| Versio | Standard webforJ Projectit | Spring Boot Projektit |
 | ------- | ------- | ------- |
+| v26.03 | `com.webforj.rewrite.v26.UpgradeWebforj_26_03` | `com.webforj.rewrite.v26.UpgradeWebforjSpring_26_01` |
 | v26.01 | `com.webforj.rewrite.v26.UpgradeWebforj_26_01` | `com.webforj.rewrite.v26.UpgradeWebforjSpring_26_01` |
 | v26 | `com.webforj.rewrite.v26.UpgradeWebforj` | `com.webforj.rewrite.v26.UpgradeWebforjSpring` |
