@@ -34,7 +34,7 @@ public class ChartRedrawPage {
         page.getByRole(
             AriaRole.SPINBUTTON, new Page.GetByRoleOptions().setName("Value for LinkedIn"));
     this.redrawChartButton =
-        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Redraw Chart"));
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Update Chart"));
 
     this.warningToast =
         page.getByRole(
