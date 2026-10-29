@@ -177,12 +177,12 @@ Open the settings and turn on these options:
 <Tabs>
 <TabItem value="windows-linux" label="Windows and Linux">
 
-Press `Ctrl+Alt+S`, or choose **File** > **Settings**.
+Press <kbd>Ctrl+ALt+S</kbd>, or choose **File** > **Settings**.
 
 </TabItem>
 <TabItem value="macos" label="macOS">
 
-Press `Cmd+,`, or choose **IntelliJ IDEA** > **Settings**.
+Press <kbd>Cmd+,</kbd>, or choose **IntelliJ IDEA** > **Settings**.
 
 </TabItem>
 </Tabs>
