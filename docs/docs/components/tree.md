@@ -15,7 +15,7 @@ The `Tree` component organizes data as a hierarchy of nodes. Each node holds a u
 
 ## Node model and tree structure {#node-model-and-tree-structure}
 
-### The role of `TreeNode` {#the-role-of-treenode}
+### The role of `TreeNode` <DocChip chip="name" label="dwc-tree-node" /> {#the-role-of-treenode}
 
 Every piece of data in the tree is wrapped in a `TreeNode`. This object holds the key, the text label, and links to its parent and children nodes. The root node is special: it exists in every tree but isn’t visible. It serves as the container for all top-level nodes, making the tree structure easier to manage internally.
 

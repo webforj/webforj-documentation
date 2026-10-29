@@ -33,7 +33,7 @@ The `TabbedPane` class gives developers a powerful tool for organizing and prese
     - Serve as a sidebar which allows for different apps or programs to be run within a single app, such as what's shown in the [`AppLayout`](./app-layout.md) template
     - Create a top bar which can serve a similar purpose, or represent sub-applications within an already selected app
 
-## Tabs {#tabs}
+## Tabs <DocChip chip='name' label="dwc-tab" /> {#tabs}
 
 Tabs are UI elements that can be added to tabbed panes to organize and switch between different content views.
 
