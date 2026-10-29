@@ -1,0 +1,24 @@
+# webforJ testbed snapshot v1
+- ColumnsLayoutFormView [route=columnslayoutform] [composite=Div] [node=div]:
+  - ColumnsLayout [composite=Element] [node=dwc-columns-layout]:
+    - TextField [label="First Name"]
+    - TextField [label="Last Name"]
+    - TextField [label=Email]
+    - PasswordField [label=Password]
+    - PasswordField [label="Confirm Password"]
+    - TextField [label=Address]
+    - ChoiceBox [label=State]:
+      - ListItem "Alabama" [key=AL]
+      - ListItem "Alaska" [key=AK]
+      - ListItem "Arizona" [key=AZ]
+      - ListItem "Arkansas" [key=AR]
+      - ListItem "California" [key=CA]
+      - ListItem "Colorado" [key=CO]
+      - ListItem "Connecticut" [key=CT]
+      - ListItem "Delaware" [key=DE]
+      - ListItem "Florida" [key=FL]
+      - ListItem "Georgia" [key=GA]
+      - … 40 more
+    - TextField [label=Zip]
+    - Button "Cancel" [theme=outlined-primary]
+    - Button "Submit" [theme=primary]

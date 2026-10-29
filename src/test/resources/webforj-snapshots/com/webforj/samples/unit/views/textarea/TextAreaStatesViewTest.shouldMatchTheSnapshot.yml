@@ -1,0 +1,4 @@
+# webforJ testbed snapshot v1
+- TextAreaStatesView [route=textareastates] [composite=FlexLayout] [node=div]:
+  - TextArea "Value" [label=Read-Only] [readonly]
+  - TextArea "Value" [label=Disabled] [disabled]

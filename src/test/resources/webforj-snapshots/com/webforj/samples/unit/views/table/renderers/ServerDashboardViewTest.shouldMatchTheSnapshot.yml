@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- ServerDashboardView [route=serverdashboard] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=Server]:
+    - Column [id=hostname] [sortable]
+    - Column [id=online] [sortable]
+    - Column [id=status] [label=Health] [sortable]
+    - Column [id=cpuUsage] [label="CPU %"] [sortable]
+    - Column [id=memoryUsage] [label="Memory %"] [sortable]
+    - Column [id=diskUsage] [label="Disk %"] [sortable]
+    - Row [hostname=web-01] [online=true] [status=Healthy] [cpuUsage=42] [memoryUsage=58] [diskUsage=61]
+    - Row [hostname=web-02] [online=true] [status=Warning] [cpuUsage=71] [memoryUsage=83] [diskUsage=74]
+    - Row [hostname=web-03] [online=true] [status=Healthy] [cpuUsage=38] [memoryUsage=45] [diskUsage=52]
+    - Row [hostname=api-01] [online=true] [status=Critical] [cpuUsage=92] [memoryUsage=88] [diskUsage=91]
+    - Row [hostname=api-02] [online=true] [status=Warning] [cpuUsage=67] [memoryUsage=74] [diskUsage=68]
+    - Row [hostname=api-03] [online=true] [status=Healthy] [cpuUsage=29] [memoryUsage=41] [diskUsage=37]
+    - Row [hostname=db-01] [online=true] [status=Healthy] [cpuUsage=55] [memoryUsage=69] [diskUsage=48]
+    - Row [hostname=db-02] [online=true] [status=Critical] [cpuUsage=88] [memoryUsage=91] [diskUsage=95]
+    - Row [hostname=db-03] [online=true] [status=Warning] [cpuUsage=73] [memoryUsage=78] [diskUsage=82]
+    - Row [hostname=cache-01] [online=true] [status=Healthy] [cpuUsage=18] [memoryUsage=32] [diskUsage=24]
+    - …

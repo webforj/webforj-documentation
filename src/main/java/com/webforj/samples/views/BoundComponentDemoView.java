@@ -32,11 +32,14 @@ public class BoundComponentDemoView extends Composite<FlexLayout> {
 
   // Overrides initBoundComponent() to use a parameterized constructor
   public static class OverrideComposite extends Composite<FlexLayout> {
-    private final TextField nameField = new TextField();
-    private final Button submit = new Button("Submit");
+    private TextField nameField;
+    private Button submit;
 
     @Override
     protected FlexLayout initBoundComponent() {
+      nameField = new TextField();
+      submit = new Button("Submit");
+
       return new FlexLayout(nameField, submit);
     }
   }

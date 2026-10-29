@@ -1,0 +1,17 @@
+# webforJ testbed snapshot v1
+- ToolbarCompactView [route=toolbarcompact] [composite=AppLayout] [node=dwc-app-layout]:
+  - H1 "Application Title" [composite=Element] [node=h1]
+  - Paragraph "Content goes here" [composite=Element] [node=p]
+  - Toolbar [composite=Element] [node=dwc-toolbar]:
+    - H3 "Application" [slot=title] [composite=Element] [node=h3]
+    - AppDrawerToggle [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+  - Toolbar [composite=Element] [node=dwc-toolbar]:
+    - TabbedPane:
+      - Tab "Sales" [selected]:
+        - Icon [slot=prefix] [name=report-money] [composite=Element] [node=dwc-icon]
+      - Tab "Enterprise":
+        - Icon [slot=prefix] [name=building] [composite=Element] [node=dwc-icon]
+      - Tab "Payments":
+        - Icon [slot=prefix] [name=credit-card] [composite=Element] [node=dwc-icon]
+      - Tab "History":
+        - Icon [slot=prefix] [name=history] [composite=Element] [node=dwc-icon]

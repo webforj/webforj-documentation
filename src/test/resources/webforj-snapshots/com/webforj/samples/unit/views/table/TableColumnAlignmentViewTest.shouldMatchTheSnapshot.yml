@@ -1,0 +1,18 @@
+# webforJ testbed snapshot v1
+- TableColumnAlignmentView [route=tablecolumnalignment] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
+    - Column [id=Number]
+    - Column [id=Title]
+    - Column [id=Genre]
+    - Column [id=Cost]
+    - Row [Number=000001] [Title="Mississippi Blues"] [Genre=Blues] [Cost="$5.99"]
+    - Row [Number=000002] [Title="Gold - Greatest Hits"] [Genre=Pop] [Cost="$8.73"]
+    - Row [Number=000004] [Title="The Kids Are Alright"] [Genre="Classic Rock"] [Cost="$7.67"]
+    - Row [Number=000005] [Title="Abbey Road"] [Genre="Classic Rock"] [Cost="$12.27"]
+    - Row [Number=000006] [Title="Urban Blues"] [Genre=Blues] [Cost="$4.56"]
+    - Row [Number=000007] [Title="Jagged Little Pill"] [Genre="Alt Rock"] [Cost="$9.71"]
+    - Row [Number=000008] [Title="The Bends"] [Genre="Alt Rock"] [Cost="$9.71"]
+    - Row [Number=000009] [Title="Life's Rich Pagent"] [Genre="Alt Rock"] [Cost="$9.14"]
+    - Row [Number=000011] [Title="Too Bad Jim"] [Genre=Blues] [Cost="$6.56"]
+    - Row [Number=000012] [Title=Dookie] [Genre=Punk] [Cost="$6.71"]
+    - …

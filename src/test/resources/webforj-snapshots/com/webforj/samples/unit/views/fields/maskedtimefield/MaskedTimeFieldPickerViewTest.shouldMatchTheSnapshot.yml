@@ -1,0 +1,3 @@
+# webforJ testbed snapshot v1
+- MaskedTimeFieldPickerView [route=maskedtimefieldpicker] [composite=FlexLayout] [node=div]:
+  - MaskedTimeField "09:30 am" [label="Meeting Time"] [value="09:30"] [mask="%hz:%mz %p"] [helperText="Click the icon to open the time picker."]

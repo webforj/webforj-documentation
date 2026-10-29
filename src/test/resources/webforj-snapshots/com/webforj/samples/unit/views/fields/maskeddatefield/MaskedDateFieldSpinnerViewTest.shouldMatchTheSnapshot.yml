@@ -1,0 +1,3 @@
+# webforJ testbed snapshot v1
+- MaskedDateFieldSpinnerView [route=maskeddatefieldspinner] [composite=FlexLayout] [node=div]:
+  - MaskedDateFieldSpinner "15/01/2024" [label="Available Appointments"] [placeholder=DD/MM/YYYY] [value=2024-01-15] [min=2024-01-15] [max=2024-07-15] [mask="%Dz/%Mz/%Yl"] [helperText="<b>Min:</b> today, <b>Max:</b> 6 months from now. Use the spinner to select a date."]

@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- SpinnerExpanseDemoView [route=spinnerexpansedemo] [composite=FlexLayout] [node=div]:
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=primary] [expanse=small]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=primary]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=primary] [expanse=large]

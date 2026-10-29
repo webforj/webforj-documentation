@@ -1,0 +1,36 @@
+# webforJ testbed snapshot v1
+- AppLayoutMobileDrawerView [route=applayoutmobiledrawer] [composite=AppLayout] [node=dwc-app-layout]:
+  - Toolbar [composite=Element] [node=dwc-toolbar]:
+    - AppDrawerToggle [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - H3 "Application" [slot=title] [composite=Element] [node=h3]
+  - Div [composite=Element] [node=div]:
+    - DrawerLogo [composite=Div] [node=div]:
+      - Img [composite=Element] [node=img] [src=/img/webforj_icon.svg] [alt=logo]
+    - AppNav [composite=Element] [node=dwc-app-nav]:
+      - AppNavItem "Dashboard" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutmobiledrawer/content/Dashboard]:
+        - Icon [slot=prefix] [name=dashboard] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Orders" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutmobiledrawer/content/Orders]:
+        - Icon [slot=prefix] [name=shopping-cart] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Customers" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutmobiledrawer/content/Customers]:
+        - Icon [slot=prefix] [name=users] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Products" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutmobiledrawer/content/Products]:
+        - Icon [slot=prefix] [name=box] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Documents" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutmobiledrawer/content/Documents]:
+        - Icon [slot=prefix] [name=files] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Tasks" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutmobiledrawer/content/Tasks]:
+        - Icon [slot=prefix] [name=checklist] [composite=Element] [node=dwc-icon]
+      - AppNavItem "Analytics" [composite=Element] [node=dwc-app-nav-item] [path=/applayoutmobiledrawer/content/Analytics]:
+        - Icon [slot=prefix] [name=chart-dots-2] [composite=Element] [node=dwc-icon]
+  - H1 "Application Title" [composite=Element] [node=h1]
+  - Paragraph "Content goes here..." [composite=Element] [node=p]
+  - TabbedPane [expanse=xlarge]:
+    - Tab [selected]:
+      - IconButton [slot=prefix] [name=dashboard] [composite=Element] [node=dwc-icon-button]
+    - Tab:
+      - IconButton [slot=prefix] [name=shopping-cart] [composite=Element] [node=dwc-icon-button]
+    - Tab:
+      - IconButton [slot=prefix] [name=users] [composite=Element] [node=dwc-icon-button]
+    - Tab:
+      - IconButton [slot=prefix] [name=box] [composite=Element] [node=dwc-icon-button]
+    - Tab:
+      - IconButton [slot=prefix] [name=files] [composite=Element] [node=dwc-icon-button]

@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- BadgeThemesView [route=badgethemes] [composite=FlexLayout] [node=div]:
+  - H3 "Default" [composite=Element] [node=h3]
+  - FlexLayout [composite=Element] [node=div]:
+    - Badge "Default" [composite=Element] [node=dwc-badge]
+    - Badge "Primary" [composite=Element] [node=dwc-badge] [theme=primary]
+    - Badge "Success" [composite=Element] [node=dwc-badge] [theme=success]
+    - Badge "Warning" [composite=Element] [node=dwc-badge] [theme=warning]
+    - Badge "Danger" [composite=Element] [node=dwc-badge] [theme=danger]
+    - Badge "Info" [composite=Element] [node=dwc-badge] [theme=info]
+    - Badge "Gray" [composite=Element] [node=dwc-badge] [theme=gray]
+  - H3 "Outlined" [composite=Element] [node=h3]
+  - FlexLayout [composite=Element] [node=div]:
+    - Badge "Default" [composite=Element] [node=dwc-badge] [theme=outlined-default]
+    - Badge "Primary" [composite=Element] [node=dwc-badge] [theme=outlined-primary]
+    - Badge "Success" [composite=Element] [node=dwc-badge] [theme=outlined-success]
+    - Badge "Warning" [composite=Element] [node=dwc-badge] [theme=outlined-warning]
+    - Badge "Danger" [composite=Element] [node=dwc-badge] [theme=outlined-danger]
+    - Badge "Info" [composite=Element] [node=dwc-badge] [theme=outlined-info]
+    - Badge "Gray" [composite=Element] [node=dwc-badge] [theme=outlined-gray]

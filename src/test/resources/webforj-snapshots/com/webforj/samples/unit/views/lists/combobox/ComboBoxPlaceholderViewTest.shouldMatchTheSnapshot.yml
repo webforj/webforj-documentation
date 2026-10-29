@@ -1,0 +1,10 @@
+# webforJ testbed snapshot v1
+- ComboBoxPlaceholderView [route=comboboxplaceholder] [composite=FlexLayout] [node=div]:
+  - ComboBox [placeholder="Example Placeholder"]:
+    - ListItem "Electronics" [key=Electronics]
+    - ListItem "Health and Beauty" [key="Health and Beauty"]
+    - ListItem "Fashion" [key=Fashion]
+    - ListItem "Kitchen" [key=Kitchen]
+    - ListItem "Furniture" [key=Furniture]
+    - ListItem "Pet Supplies" [key="Pet Supplies"]
+    - ListItem "Toys and Games" [key="Toys and Games"]

@@ -1,0 +1,11 @@
+# webforJ testbed snapshot v1
+- LoadingDemoView [route=loadingdemo] [composite=FlexLayout] [node=div]:
+  - Card [composite=Element] [node=dwc-card]:
+    - Paragraph "User Guide" [slot=title] [composite=Element] [node=p]
+    - Icon [slot=title] [name=book] [composite=Element] [node=dwc-icon]
+    - Button "Buy" [slot=footer] [theme=primary]
+  - Card [composite=Element] [node=dwc-card]:
+    - Paragraph "Video Lessons" [slot=title] [composite=Element] [node=p]
+    - Icon [slot=title] [name=youtube] [composite=Element] [node=dwc-icon]
+    - Button "Buy" [slot=footer] [theme=primary]
+    - Loading "Loading... Please wait." [composite=Element] [node=dwc-loading]

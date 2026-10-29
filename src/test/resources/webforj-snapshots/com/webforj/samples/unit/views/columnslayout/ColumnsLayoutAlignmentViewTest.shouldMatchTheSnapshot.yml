@@ -1,0 +1,10 @@
+# webforJ testbed snapshot v1
+- ColumnsLayoutAlignmentView [route=columnslayoutalignment] [composite=Div] [node=div]:
+  - ColumnsLayout [composite=Element] [node=dwc-columns-layout]:
+    - TextField [label="First Name"]
+    - TextField [label="Last Name"]
+    - TextField [label=Email]
+    - DateField [label="Date of Birth"]
+    - TextArea [label=Bio]
+    - CheckBox "I agree to the terms and conditions"
+    - Button "Submit" [theme=primary]

@@ -34,3 +34,12 @@ jobs:
 
       - name: Verify WAR File Exists
         run: ls -lh target/*.war || (echo "WAR file not found!" && exit 1)
+
+      - name: Upload unit test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-unit-test-results
+          path: target/surefire-reports/
+          if-no-files-found: ignore
+          retention-days: 2

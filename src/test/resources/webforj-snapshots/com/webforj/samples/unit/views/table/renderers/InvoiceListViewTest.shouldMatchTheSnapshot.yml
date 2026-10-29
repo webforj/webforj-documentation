@@ -1,0 +1,21 @@
+# webforJ testbed snapshot v1
+- InvoiceListView [route=invoicelist] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=Invoice]:
+    - "Column [id=invoiceNumber] [label=\"Invoice #\"]"
+    - Column [id=customer]
+    - Column [id=issueDate] [label=Issued]
+    - Column [id=dueDate] [label=Due]
+    - Column [id=amount] [sort=desc]
+    - Column [id=status]
+    - Column [id=actions]
+    - Row [invoiceNumber=INV-012] [customer="Oceanic Air"] [issueDate=05/01/2025] [dueDate=06/01/2025] [amount=12400.0] [status=Paid]
+    - Row [invoiceNumber=INV-009] [customer="Sterling Cooper"] [issueDate=03/18/2025] [dueDate=04/18/2025] [amount=9200.0] [status=Paid]
+    - Row [invoiceNumber=INV-016] [customer="Acme Corp"] [issueDate=06/12/2025] [dueDate=07/12/2025] [amount=8900.0] [status=Paid]
+    - Row [invoiceNumber=INV-004] [customer="Umbrella Ltd"] [issueDate=02/03/2025] [dueDate=03/03/2025] [amount=7500.0] [status=Paid]
+    - Row [invoiceNumber=INV-007] [customer="Vandelay Ind"] [issueDate=03/01/2025] [dueDate=04/01/2025] [amount=6750.0] [status=Paid]
+    - Row [invoiceNumber=INV-014] [customer="Soylent Corp"] [issueDate=05/18/2025] [dueDate=06/18/2025] [amount=6100.0] [status=Paid]
+    - Row [invoiceNumber=INV-018] [customer="Globex Inc"] [issueDate=07/05/2025] [dueDate=08/05/2025] [amount=5500.0] [status=Paid]
+    - Row [invoiceNumber=INV-011] [customer="Bluth Company"] [issueDate=04/15/2025] [dueDate=05/15/2025] [amount=5100.5] [status=Pending]
+    - Row [invoiceNumber=INV-020] [customer="Massive Dynamic"] [issueDate=07/22/2025] [dueDate=08/22/2025] [amount=4300.0] [status=Pending]
+    - Row [invoiceNumber=INV-001] [customer="Acme Corp"] [issueDate=01/05/2025] [dueDate=02/05/2025] [amount=4200.0] [status=Paid]
+    - …

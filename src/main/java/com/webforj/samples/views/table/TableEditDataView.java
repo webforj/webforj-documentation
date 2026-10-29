@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route;
 public class TableEditDataView extends Composite<Div> {
   private final Div self = getBoundComponent();
   TitleEditorComponent editor = new TitleEditorComponent();
-  Table<MusicRecord> table = new Table<>();
+  public Table<MusicRecord> table = new Table<>();
 
   public TableEditDataView() {
     table

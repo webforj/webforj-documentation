@@ -1,0 +1,7 @@
+# webforJ testbed snapshot v1
+- UploadDefaultSlotView [route=uploaddefaultslot] [composite=FlexLayout] [node=div]:
+  - H3 "Import contacts" [composite=Element] [node=h3]
+  - Upload [drop] [multiple]:
+    - Table [composite=Element] [node=dwc-table]:
+      - Column [id="Drop a CSV file here to load rows"]
+    - Filter "CSV Files" [pattern="*.csv"]

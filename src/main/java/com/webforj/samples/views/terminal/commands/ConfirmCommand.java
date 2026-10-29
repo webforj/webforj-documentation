@@ -23,7 +23,7 @@ public class ConfirmCommand implements TerminalCommand {
       term.writeln("Usage: confirm <text>");
       return;
     }
-    String confirmText = String.join(" ", args).substring(7);
+    String confirmText = String.join(" ", args).substring(NAME.length() + 1);
     ConfirmDialog confirmDialog =
         new ConfirmDialog(
             confirmText,
