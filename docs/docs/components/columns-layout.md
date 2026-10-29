@@ -92,7 +92,7 @@ layout.add(button);
 layout.setSpan(button, 2);
 ```
 
-In the above example, the button occupies two columns instead of the default one. The `setSpan()` method allows you to specify how many columns a component should span within the layout.
+In the above example, the button occupies two columns instead of the default of one. The `setSpan()` method allows you to specify how many columns a component should span within the layout.
 
 ### Adjusting column spans with breakpoints {#adjusting-column-spans-with-breakpoints}
 
@@ -188,7 +188,7 @@ In the demo above, the `Submit` button has been given `ColumnsLayout.Alignment.E
 
 ## Item spacing {#item-spacing}
 
-Controlling the space between columns in the `ColumnsLayout` between columns (horizontal spacing) and between rows (vertical spacing) helps developers fine-tune the layout.
+Controlling the space in the `ColumnsLayout` between columns (horizontal spacing) and between rows (vertical spacing) helps developers fine-tune the layout.
 
 To set the horizontal spacing of the layout, use the `setHorizontalSpacing()` method:
 
