@@ -95,5 +95,5 @@ UploadedFile result = dialog.show();
 
 1. **Clear and Concise Prompts**: Ensure the prompt message clearly explains what the user is being asked to upload.
 2. **Appropriate Filters**: Set file filters that match the required file types to ensure users upload relevant files.
-3. **Consistent Theming**: match the dialog and upload field themes to your app's design.
-4. **Minimize Overuse**: use file upload dialogs sparingly to avoid user frustration. Reserve them for actions requiring specific user file uploads.
+3. **Consistent Theming**: Match the dialog and upload field themes to your app's design.
+4. **Minimize Overuse**: Use file upload dialogs sparingly to avoid user frustration. Reserve them for actions requiring specific user file uploads.
