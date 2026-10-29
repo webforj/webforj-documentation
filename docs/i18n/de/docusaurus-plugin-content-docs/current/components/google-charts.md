@@ -4,21 +4,21 @@ sidebar_position: 50
 description: >-
   Render bar, line, pie, geo, and other Google Charts in webforJ using the
   GoogleChart component with a typed Java options map and data API.
-_i18n_hash: a733a52b4d9ffb87eae039e9729b9cb9
+_i18n_hash: 8e1916e526ef45c55ca75c6cd32a4e7f
 ---
 <DocChip chip='shadow' />
-<DocChip chip='name' label="google-chart" exclude= 'true' />
+<DocChip chip='name' label="google-chart" exclude='true' />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="googlecharts" location="com/webforj/component/googlecharts/GoogleChart" top='true'/>
 
-Die `GoogleChart`-Komponente integriert die [Google Charts](https://developers.google.com/chart) Bibliothek in webforJ und ermöglicht den Zugriff auf Diagrammtypen wie Balken, Linien, Kuchen, Geo und mehr. Diagramme werden mit Java konfiguriert, indem ein Typ, ein Datensatz und eine Optionskarte angegeben werden, die das Aussehen und Verhalten steuert.
+Die `GoogleChart`-Komponente integriert die [Google Charts](https://developers.google.com/chart)-Bibliothek in webforJ und gibt Ihnen Zugriff auf Diagrammtypen wie Balken, Linien, Tortendiagramme, geografische Diagramme und mehr. Diagramme werden mit Java konfiguriert, indem ein Typ, ein Datensatz und eine Optionen-Karte angegeben werden, die das Erscheinungsbild und das Verhalten steuert.
 
 <!-- INTRO_END -->
 
-## Diagramm erstellen {#creating-a-chart}
+## Erstellen eines Diagramms {#creating-a-chart}
 
 :::info Importieren von Google Charts
-Um die `GoogleChart`-Klasse in Ihrer App zu verwenden, fügen Sie die folgende XML in Ihre POM-Datei ein:
+Um die `GoogleChart`-Klasse in Ihrer Anwendung zu verwenden, fügen Sie die folgende XML in Ihre POM-Datei ein:
 
 ```xml
 <dependency>
@@ -29,9 +29,9 @@ Um die `GoogleChart`-Klasse in Ihrer App zu verwenden, fügen Sie die folgende X
 ```
 :::
 
-Um ein Diagramm zu erstellen, geben Sie einen Diagrammtyp an, konfigurieren Sie die visuellen Optionen und stellen Sie die anzuzeigenden Daten bereit.
+Um ein Diagramm zu erstellen, spezifizieren Sie einen Diagrammtyp, konfigurieren dessen visuelle Optionen und geben die anzuzeigenden Daten an.
 
-Dieses Beispiel erstellt ein Geo-Diagramm, das Umsatzdaten aus verschiedenen Ländern abbildet, mit benutzerdefinierten Farben, Legendenpositionierung und Diagrammansichtsgrößen:
+Dieses Beispiel erstellt ein geografisches Diagramm, das Umsatzdaten aus verschiedenen Ländern mit benutzerdefinierten Farben, Positionierung der Legende und Größenanpassung des Diagrammbereichs darstellt:
 
 <ComponentDemo
 path='/webforj/chart'
@@ -44,7 +44,7 @@ height='300px'
 
 ## Diagrammtypen {#chart-types}
 
-Das `GoogleChart`-Add-on bietet eine umfassende Auswahl an Diagrammtypen, um verschiedenen Anforderungen an die Datenvisualisierung gerecht zu werden. Die Auswahl des geeigneten Diagrammtyps ist entscheidend, um die Geschichte der Daten effektiv zu kommunizieren. Siehe die Galerie unten für Beispiele gängiger Diagramme, die in einer webforJ-App verwendet werden können.
+Das `GoogleChart`-Addon bietet eine umfassende Auswahl an Diagrammtypen, die verschiedenen Anforderungen an die Datenvisualisierung gerecht werden. Die Auswahl des geeigneten Diagrammtyps ist entscheidend, um die Geschichte der Daten effektiv zu kommunizieren. Siehe die Galerie unten für Beispiele gängiger Diagramme, die in einer webforJ-App verwendet werden können.
 
 <ComponentDemo
 path='/webforj/chartgallery'
@@ -57,9 +57,9 @@ height='600px'
 
 ## Optionen {#options}
 
-Das `GoogleChart`-Add-on ermöglicht umfassende Anpassungen durch eine Vielzahl von Optionen. Diese Optionen erlauben es Ihnen, das Aussehen und die Funktionalität Ihrer Diagramme an die Bedürfnisse Ihrer App anzupassen. Optionen werden als `Map<String, Object>` an die Methode `setOptions()` des Diagramms übergeben.
+Das `GoogleChart`-Addon ermöglicht umfassende Anpassungen durch eine Vielzahl von Optionen. Diese Optionen erlauben es Ihnen, das Aussehen und die Funktionalität Ihrer Diagramme an die Bedürfnisse Ihrer App anzupassen. Optionen werden als `Map<String, Object>` an die Methode `setOptions()` des Diagramms übergeben.
 
-Hier ist ein Beispiel für das Setzen der Optionen eines Diagramms:
+Hier ist ein Beispiel zur Einstellung der Optionen eines Diagramms:
 
 ```java
 Map<String, Object> options = new HashMap<>();
@@ -70,20 +70,20 @@ options.put("backgroundColor", "#EFEFEF");
 chart.setOptions(options);
 ```
 
-Für weitere Informationen zu den verfügbaren Optionen für bestimmte Diagramme siehe die [Google Visualization API-Referenz (Diagrammgallerie)](https://developers.google.com/chart/interactive/docs/gallery).
+Für weitere Informationen zu den verfügbaren Optionen für spezifische Diagramme siehe die [Google Visualization API-Referenz (Diagrammgallerie)](https://developers.google.com/chart/interactive/docs/gallery).
 
 ## Daten festlegen {#setting-data}
 
-Die Visualisierung von Daten mit `GoogleChart` erfordert eine korrekte Strukturierung und Festlegung der Daten. Dieser Leitfaden führt Sie durch die Vorbereitung Ihrer Daten und deren Anwendung auf Ihre Diagramme.
+Die Visualisierung von Daten mit `GoogleChart` erfordert eine ordnungsgemäße Strukturierung und Festlegung der Daten. Dieser Leitfaden führt Sie durch die Vorbereitung Ihrer Daten und deren Anwendung auf Ihre Diagramme.
 
-### Basisdaten einrichten {#basic-data-setup}
+### Grundlegende Datenkonfiguration {#basic-data-setup}
 
 Die einfachste Möglichkeit, die Daten zu definieren, besteht darin, `List<Object>` zu verwenden, wobei jede Zeile eine Liste von Werten ist.
 
 ```java
 List<Object> data = new ArrayList<>();
 data.add(Arrays.asList("Aufgabe", "Stunden pro Tag"));
-data.add(Arrays.asList("Arbeit", 11));
+data.add(Arrays.asList("Arbeiten", 11));
 data.add(Arrays.asList("Essen", 2));
 data.add(Arrays.asList("Pendeln", 2));
 data.add(Arrays.asList("Fernsehen", 2));
@@ -113,7 +113,7 @@ data.add(new ArrayList<>(row3.values()));
 chart.setData(data);
 ```
 
-Sobald die Daten vorbereitet sind, können sie mit der `setData`-Methode auf den GoogleChart angewendet werden.
+Sobald die Daten vorbereitet sind, können sie mit der Methode setData auf das GoogleChart angewendet werden.
 
 <ComponentDemo
 path='/webforj/chartsettingdata'
@@ -123,11 +123,11 @@ height='300px'
 
 ### Laden von Daten und Optionen aus JSON {#loading-data-and-options-from-json}
 
-Sie können auch Daten und Optionen aus JSON-Dateien mit Gson laden, um eine einfachere Verwaltung zu ermöglichen. Dieser Ansatz hilft, Ihre Daten und Optionen organisiert und leicht aktualisierbar zu halten.
+Sie können auch Daten und Optionen aus JSON-Dateien mit Gson laden, um eine einfachere Verwaltung zu ermöglichen. Dieser Ansatz hilft, Ihre Daten und Optionen organisiert und einfach zu aktualisieren zu halten.
 
 ```java
 List<Object> data = new ArrayList<>();
-data.add(Arrays.asList("Jahr", "Verkäufe", "Ausgaben"));
+data.add(Arrays.asList("Jahr", "Umsatz", "Ausgaben"));
 data.add(Arrays.asList("2013", 1000, 400));
 data.add(Arrays.asList("2014", 1170, 460));
 data.add(Arrays.asList("2015", 660, null));
@@ -141,15 +141,15 @@ Map<String, Object> options = new Gson().fromJson(
 chart.setOptions(options);
 ```
 
-## Aktualisieren der Diagrammansicht {#updating-chart-visuals}
+## Aktualisierung der Diagrammdarstellung {#updating-chart-visuals}
 
-Das Aktualisieren oder Neuzeichnen des Aussehens Ihrer Diagramme als Reaktion auf Datenänderungen, Benutzerinteraktionen oder Anpassungen der visuellen Optionen ist einfach mit der Methode `redraw()`. Diese Methode stellt sicher, dass Ihre Diagramme genau und visuell mit den zugrunde liegenden Daten oder Änderungen ihrer Einstellungen abgestimmt bleiben.
+Das `GoogleChart` aktualisiert sich automatisch, wenn sich die Daten, Optionen, der Typ oder die Auswahl ändern. Sie müssen `redraw()` nach der Verwendung von `setData()`, `setOptions()`, `setType()` oder `setSelection()` nicht aufrufen.
 
-Rufen Sie `redraw()` in Szenarien wie diesen auf:
+Die Komponente hört auch auf Ereignisse zur Größenänderung des Browserfensters und zeichnet automatisch neu, um sich an die neuen Maße anzupassen.
 
-- **Nach Datenänderungen**: Stellt sicher, dass das Diagramm Updates aus seiner Datenquelle widerspiegelt.
-- **Bei Änderung der Optionen**: Wendet neue Stile oder Konfigurationsänderungen auf das Diagramm an.
-- **Für responsive Anpassungen**: Passt das Layout oder die Größe des Diagramms an, wenn sich die Abmessungen des Containers ändern, um eine optimale Anzeige auf verschiedenen Geräten zu gewährleisten.
+Rufen Sie `redraw()` bei Änderungen der Containergröße auf, die kein Fenstergröße-Änderungsereignis auslösen. Beispiele hierfür sind das Erweitern eines Panels und das Ändern der Größe einer Seitenleiste. Rufen Sie es auf, nachdem die neuen Maße des Containers angewendet wurden.
+
+Die folgende Demo aktualisiert die Daten des Diagramms mit `setData()`. Das Diagramm wird automatisch neu gezeichnet, wenn die neuen Daten angewendet werden.
 
 <ComponentDemo
 path='/webforj/chartredraw'
@@ -160,24 +160,24 @@ files={[
 height='650px'
 />
 
-## Diagramme als Bilder exportieren {#exporting-charts-as-images}
+## Exportieren von Diagrammen als Bilder {#exporting-charts-as-images}
 
-Die Methode `getImageUri()` bietet eine Möglichkeit, Ihre Google-Diagramme als base64-kodierte PNG-Bilder zu exportieren. Diese Methode ist insbesondere nützlich, um Diagramme außerhalb der Webumgebung zu teilen, sie in E-Mails oder Dokumente einzubetten oder einfach für Archivierungszwecke zu verwenden.
+Die Methode `getImageUri()` ermöglicht es, Ihre Google Charts als base64-kodierte PNG-Bilder zu exportieren. Diese Methode ist besonders nützlich, um Diagramme außerhalb der Webumgebung zu teilen, sie in E-Mails oder Dokumente einzubetten oder einfach für Archivierungszwecke zu verwenden.
 
-Rufen Sie `getImageUri()` auf Ihrem Diagramm-Instanz auf, nachdem das Diagramm vollständig gerendert wurde. In der Regel wird diese Methode innerhalb eines "ready"-Ereignis-Listeners verwendet, um sicherzustellen, dass das Diagramm bereit zum Export ist:
+Rufen Sie `getImageUri()` auf Ihrer Diagramminstanz auf, nachdem das Diagramm vollständig gerendert wurde. Typischerweise wird diese Methode innerhalb eines "ready"-Ereignislisteners verwendet, um sicherzustellen, dass das Diagramm bereit zum Export ist:
 
 ```java
 chart.addReadyListener(e -> {
   String imageUri = chart.getImageUri();
-  // Jetzt können Sie das imageUri verwenden, zum Beispiel als src-Attribut eines img-Tags
+  // Jetzt können Sie die imageUri verwenden, z. B. als src-Attribut eines img-Tags
 });
 ```
 
 ## `GoogleChartSelectedEvent` {#googlechartselectedevent}
 
-Das `GoogleChartSelectedEvent` wird ausgelöst, wann immer ein Benutzer einen Datenpunkt oder ein Segment in einer Google Chart-Komponente auswählt. Dieses Ereignis ermöglicht die Interaktion mit den ausgewählten Chart-Daten und liefert Informationen darüber, was ausgewählt wurde. Das Ereignis kann durch die Verwendung der Methode `addSelectedListener()` auf der Instanz von `GoogleChart` abgehört werden.
+Das `GoogleChartSelectedEvent` wird ausgelöst, wann immer ein Benutzer einen Datenpunkt oder ein Segment in einer Google Chart-Komponente auswählt. Dieses Ereignis ermöglicht die Interaktion mit den ausgewählten Diagrammdaten und bietet Details darüber, was ausgewählt wurde. Das Ereignis kann abgehört werden, indem die Methode `addSelectedListener()` auf der `GoogleChart`-Instanz verwendet wird.
 
-Das `GoogleChartSelectedEvent` ist nützlich in Anwendungen, in denen die Benutzerinteraktion mit dem Diagramm erforderlich ist.
+Das `GoogleChartSelectedEvent` ist nützlich in Anwendungen, in denen die Interaktion des Benutzers mit dem Diagramm erforderlich ist.
 
 ```java
 GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
@@ -187,7 +187,7 @@ chart.addSelectedListener(event -> {
   // Holen Sie die Auswahl
   List<Object> selection = chart.getSelection();
 
-  // Bearbeiten Sie das ausgewählte Ereignis
+  // Verarbeiten Sie das ausgewählte Ereignis
   if (!selection.isEmpty()) {
     System.out.println("Ausgewählte Zeile: " + selection.get(0));
     // Weitere Verarbeitung basierend auf der Zeilen-/Spaltenauswahl
@@ -199,9 +199,9 @@ chart.addSelectedListener(event -> {
 Das `GoogleChartSelectedEvent` bietet Zugriff auf die Auswahldaten, die mit der Methode `getSelection()` auf dem Diagrammobjekt abgerufen werden können. Diese Methode gibt eine Liste von Objekten zurück, wobei jedes Objekt die folgenden Eigenschaften enthält:
 
 - **row**: Der Index der Zeile in der Datentabelle des Diagramms, die ausgewählt wurde.
-- **column**: Der Index der Spalte in der Datentabelle, der optional ist und für Diagramme gilt, die die Auswahl einzelner Zellen zulassen, wie zum Beispiel ein Tabellen-Diagramm.
+- **column**: Der Index der Spalte in der Datentabelle, der optional ist und für Diagramme gilt, die die Auswahl einzelner Zellen erlauben, wie z. B. ein Tabellendiagramm.
 
-Bei Diagrammen wie Kuchen- oder Balkendiagrammen wird normalerweise nur die `row` bereitgestellt, die den ausgewählten Datenpunkt angibt.
+Für Diagramme wie Tortendiagramme oder Balkendiagramme wird typischerweise nur die `row` bereitgestellt, die den ausgewählten Datenpunkt angibt.
 
 Hier ist ein Beispiel für die Nutzdaten:
 ```java
@@ -213,6 +213,6 @@ Hier ist ein Beispiel für die Nutzdaten:
 ]
 ```
 
-:::info Auswahl mehrerer Datenpunkte
-Wenn der Benutzer mehrere Datenpunkte auswählt, gibt die Methode `getSelection()` ein Array von Objekten zurück, von denen jedes ein ausgewähltes Element darstellt. Die Nutzdaten können je nach Diagrammtyp und der Interaktion, die der Benutzer ausführt, variieren.
+:::info Mehrere Datenpunkte auswählen
+Wenn der Benutzer mehrere Datenpunkte wählt, gibt die Methode `getSelection()` ein Array von Objekten zurück, die jeweils ein ausgewähltes Element darstellen. Die Nutzdaten können je nach Diagrammtyp und der Interaktion, die der Benutzer ausführt, variieren.
 :::

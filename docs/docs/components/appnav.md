@@ -7,8 +7,6 @@ description: Build hierarchical side navigation menus with AppNav and AppNavItem
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
-<DocChip chip="name" label="dwc-app-nav-item" />
-<DocChip chip="name" label="dwc-app-nav-label" />
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/layout/appnav/AppNav" top='true'/>
 
@@ -16,7 +14,7 @@ The `AppNav` component creates a side navigation menu out of `AppNavItem` entrie
 
 <!-- INTRO_END -->
 
-## Adding and nesting items {#adding-and-nesting-items}
+## Adding and nesting items <DocChip chip="name" label="dwc-app-nav-item" /> {#adding-and-nesting-items}
 
 `AppNavItem` instances are used to populate the `AppNav` structure. These items can be simple links or nested group headers that contain child items. Group headers without links act as expandable containers.
 
@@ -123,7 +121,7 @@ Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested
 nav.setAutoOpen(true);
 ```
 
-## Section labels <DocChip chip='since' label='26.02' /> {#section-labels}
+## Section labels <DocChip chip='since' label='26.02' /> <DocChip chip="name" label="dwc-app-nav-label" /> {#section-labels}
 
 `AppNavLabel` is a non-interactive heading that titles a run of items. A label applies to every item that follows it, up to the next label or the end of the menu, which lets a long list of top-level items read as a few named groups without nesting them.
 

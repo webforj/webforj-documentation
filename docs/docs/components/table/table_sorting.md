@@ -51,16 +51,16 @@ files={[
 height='600px'
 />
 
-You can also define sorting priority programmatically for server-side sorting. Use `setSortOrder()` on the columns you want to sort, in order of priority:
+You can also define sorting priority programmatically for server-side sorting. Use `setSortIndex()` on the columns you want to sort, in order of priority:
 
 ```java
 // Server-side sort order
-nameColumn.setSortOrder(1);
-ageColumn.setSortOrder(2);
+nameColumn.setSortIndex(1);
+ageColumn.setSortIndex(2);
 ```
 
 :::info Column Order Matters
-Unless `setSortOrder()` is used, the table defaults to sorting by the order in which columns are declared.
+Unless `setSortIndex()` is used, the table defaults to sorting by the order in which columns are declared.
 :::
 
 <ComponentDemo

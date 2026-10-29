@@ -81,6 +81,7 @@ You can set the `placement` of a Toast notification with the `setPlacement` meth
 - **BOTTOM**: Places the notification at the bottom center of the screen.
 - **BOTTOM_LEFT**: Places the notification at the bottom-left corner of the screen.
 - **BOTTOM_RIGHT**: Places the notification at the bottom-right corner of the screen.
+- **CENTER**: places the notification at the center of the screen.
 - **TOP**: Places the notification at the top center of the screen.
 - **TOP_LEFT**: Places the notification at the top-left corner of the screen.
 - **TOP_RIGHT**: Places the notification at the top-right corner of the screen.

@@ -200,7 +200,7 @@ files={[
 <!--vale on-->
 
 
-## `AppDrawerToggle` <DocChip chip='since' label='24.12' /> {#appdrawertoggle-docchip-chipsince-label2412-}
+## `AppDrawerToggle` <DocChip chip='name' label="dwc-icon-button" /> <DocChip chip='since' label='24.12' /> {#appdrawertoggle-docchip-chipsince-label2412-}
 
 The [`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) component is a server-side webforJ class that represents a button used to toggle the visibility of a navigation drawer in an `AppLayout`. It maps to the client-side `<dwc-app-drawer-toggle>` element and is styled by default to behave like a traditional hamburger menu icon, this behaviour can be customized.
 

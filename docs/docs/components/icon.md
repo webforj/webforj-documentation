@@ -177,7 +177,7 @@ Icon customLogo = new Icon("logo", "app-pool");
 Icon customLogo = AppPoolIcon.LOGO.create();
 ```
 
-## Icon buttons {#icon-buttons}
+## Icon buttons <DocChip chip="name" label="dwc-icon-button" /> {#icon-buttons}
 An `Icon` component is nonselectable, but for actions that are best represented with just an icon, such as notifications or alerts, you can use the `IconButton`.
 
  ```java

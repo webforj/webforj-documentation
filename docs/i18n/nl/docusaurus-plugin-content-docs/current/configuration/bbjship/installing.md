@@ -1,5 +1,5 @@
 ---
-title: Installing BBjShip
+title: Installatie van BBjShip
 sidebar_position: 4
 description: >-
   Install BBjShip on your own machine with the webforJ Maven plugin, or on a

@@ -1,44 +1,45 @@
 ---
 sidebar_position: 20
-title: Champs
+title: Fields
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: 288d408cb058dbaa417fea651698123a
+description: >-
+  Share common field properties across webforJ input components, including
+  labels, helper text, required state, spellcheck, and prefix or suffix slots.
+_i18n_hash: 56462cf4d659ce15f72a624acae60f0f
 ---
-<JavadocLink type="foundation" location="com/webforj/component/field/AbstractField"/>
+<JavadocLink type="foundation" location="com/webforj/component/field/DwcField"/>
 
-Le framework webforJ prend en charge sept types différents de composants de champ, chacun ayant des comportements et des implémentations différents qui répondent à divers besoins pour les saisies.
-Bien que chacun de ces composants ait des variations dans leurs implémentations, cet article décrit les propriétés partagées parmi toutes les classes de champ.
+Le framework webforJ prend en charge onze types de composants de champ, y compris quatre champs masqués, chacun ayant des comportements et des implémentations différents adaptés à divers besoins d'entrée. Bien que chacun de ces composants ait des variations dans leurs implémentations, cet article décrit les propriétés communes parmi toutes les classes de champ.
 
 :::info
-Cette section décrit les caractéristiques communes de divers composants de champ dans webforJ et n'est pas elle-même une classe qui peut être instanciée et utilisée.
+Cette section décrit les caractéristiques communes de divers composants de champ dans webforJ, et n'est pas elle-même une classe qui peut être instanciée et utilisée.
 :::
 
-## Propriétés de champ partagées {#shared-field-properties}
+## Propriétés partagées des champs {#shared-field-properties}
 
-### Label {#label}
+### Étiquette {#label}
 
-Un label de champ est un texte descriptif ou un titre qui est associé au champ et qui peut être défini dans le constructeur ou en utilisant la méthode `setLabel()`. Les labels fournissent une brève explication ou une invite pour aider les utilisateurs à comprendre le but ou l'entrée attendue pour ce champ particulier. Les labels de champ sont importants pour l'utilisabilité et jouent un rôle crucial dans l'accessibilité, car ils permettent aux lecteurs d'écran et aux technologies d'assistance de fournir des informations précises et de faciliter la navigation au clavier.
+Une étiquette de champ est un texte descriptif ou un titre associé au champ qui peut être défini dans le constructeur ou en utilisant la méthode `setLabel()`. Les étiquettes fournissent une brève explication ou un prompt pour aider les utilisateurs à comprendre l'objectif ou l'entrée attendue pour ce champ particulier. Les étiquettes de champ sont importantes pour la convivialité et jouent un rôle crucial dans l'accessibilité, car elles permettent aux lecteurs d'écran et aux technologies d'assistance de fournir des informations précises et de faciliter la navigation au clavier.
 
 ### Texte d'aide {#helper-text}
 
-Chaque champ peut afficher un texte d'aide sous la saisie en utilisant la méthode `setHelperText()`. Ce texte d'aide offre un contexte ou des explications supplémentaires sur les saisies disponibles, garantissant que les utilisateurs disposent des informations nécessaires pour faire des choix éclairés.
+Chaque champ peut afficher un texte d'aide sous l'entrée en utilisant la méthode `setHelperText()`. Ce texte d'aide offre un contexte ou des explications supplémentaires sur les entrées disponibles, garantissant que les utilisateurs disposent des informations nécessaires pour faire des choix éclairés.
 
 ### Requis {#required}
 
-Vous pouvez appeler la méthode `setRequired(true)` pour obliger les utilisateurs à fournir une valeur avant de soumettre un formulaire. Cette propriété fonctionne en tandem avec le label de champ, fournissant une indication visuelle qu'un champ est nécessaire. Cet indice visuel aide les individus à remplir les formulaires avec précision.
+Vous pouvez appeler la méthode `setRequired(true)` pour exiger que les utilisateurs fournissent une valeur avant de soumettre un formulaire. Cette propriété fonctionne en tandem avec l'étiquette du champ, fournissant une indication visuelle qu'un champ est nécessaire. Cette indication visuelle aide les individus à remplir les formulaires avec précision.
 
 :::info
-Les composants de champ contiennent une validation visuelle intégrée pour notifier les utilisateurs lorsqu'un champ requis est vide ou si un utilisateur a supprimé une valeur.
+Les composants de champ contiennent une validation visuelle intégrée pour informer les utilisateurs lorsqu'un champ requis est vide ou si un utilisateur a supprimé une valeur.
 :::
 
 ### Vérification orthographique {#spellcheck}
 
-En utilisant `setSpellCheck(true)`, vous pouvez permettre au navigateur ou à l'agent utilisateur de vérifier l'orthographe du texte saisi par l'utilisateur et d'identifier toute erreur.
+En utilisant `setSpellCheck(true)`, vous pouvez permettre au navigateur ou à l'agent utilisateur de vérifier l'orthographe du texte saisi par l'utilisateur et d'identifier les erreurs éventuelles.
 
 ### Préfixe et suffixe {#prefix-and-suffix}
 
-Les emplacements offrent des options flexibles pour améliorer les capacités des composants de champ. Vous pouvez avoir des icônes, des labels, des indicateurs de chargement, une capacité de nettoyage/réinitialisation, des photos de profil/avatar, et d'autres composants bénéfiques imbriqués dans un champ pour clarifier davantage le sens destiné aux utilisateurs.
+Les emplacements offrent des options flexibles pour améliorer la capacité des composants de champ. Vous pouvez avoir des icônes, des étiquettes, des indicateurs de chargement, la possibilité de supprimer/réinitialiser, des images de profil/avatar, et d'autres composants bénéfiques imbriqués dans un champ pour clarifier l'intention auprès des utilisateurs.
 Les champs ont deux emplacements : les emplacements `prefix` et `suffix`. Utilisez les méthodes `setPrefixComponent()` et `setSuffixComponent()` pour insérer divers composants avant et après l'option affichée dans un champ. Voici un exemple utilisant le champ `TextField` :
 
 ```java
@@ -50,8 +51,8 @@ textField.setSuffixComponent(TablerIcon.create("box"));
 ## Style {#styling}
 
 :::info
-Parce que tous les composants de champ sont construits à partir d'un composant web unique, ils partagent tous les
-éléments Shadow Parts et les valeurs de propriété CSS suivantes
+Étant donné que tous les composants de champ sont construits à partir d'un unique composant web, ils partagent tous les
+parties de Shadow et les valeurs de propriété CSS suivantes.
 :::
 
 <TableBuilder name="Field" />
