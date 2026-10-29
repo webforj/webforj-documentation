@@ -1,5 +1,5 @@
 {
-  "count": 20,
+  "count": 23,
   "recipes": [
     {
       "slug": "components/card-with-slots",
@@ -86,6 +86,21 @@
       "difficulty": "beginner"
     },
     {
+      "slug": "forms/auto-save-form-draft",
+      "url": "/cookbook/forms/auto-save-form-draft",
+      "title": "Auto-save a form draft in LocalStorage",
+      "description": "Preserve unfinished TextField and TextArea values across reloads by saving them to LocalStorage.",
+      "tags": [
+        "forms",
+        "components"
+      ],
+      "components": [
+        "TextField",
+        "TextArea"
+      ],
+      "difficulty": "beginner"
+    },
+    {
       "slug": "forms/debounced-email-validation",
       "url": "/cookbook/forms/debounced-email-validation",
       "title": "Validate an email field as the user types, debounced",
@@ -123,6 +138,21 @@
         "components"
       ],
       "components": [
+        "Button"
+      ],
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "forms/submit-field-with-enter",
+      "url": "/cookbook/forms/submit-field-with-enter",
+      "title": "Run an action when Enter is pressed in a field",
+      "description": "Attach a keypress listener to a TextField so Enter triggers the same action as a button click.",
+      "tags": [
+        "forms",
+        "components"
+      ],
+      "components": [
+        "TextField",
         "Button"
       ],
       "difficulty": "beginner"
@@ -236,6 +266,19 @@
         "Table"
       ],
       "difficulty": "beginner"
+    },
+    {
+      "slug": "table/persist-column-widths",
+      "url": "/cookbook/table/persist-column-widths",
+      "title": "Persist resized Table column widths",
+      "description": "Save user-resized Table column widths in LocalStorage and restore them on the next visit.",
+      "tags": [
+        "table"
+      ],
+      "components": [
+        "Table"
+      ],
+      "difficulty": "intermediate"
     },
     {
       "slug": "theme/app-theme-toggle",
