@@ -4,29 +4,28 @@ title: Accordion
 description: >-
   Group collapsible panels with the Accordion and AccordionPanel components to
   toggle visibility and coordinate expand or collapse behavior.
-_i18n_hash: b11e2d2ef8854f757454635c984da1d6
+_i18n_hash: 6537c2d24bfc99dd866f27277ed4f197
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-accordion" />
-<DocChip chip='name' label="dwc-accordion-panel" />
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="accordion" location="com/webforj/component/accordion/Accordion" top='true'/>
 
-El componente `Accordion` proporciona un conjunto apilado verticalmente de paneles colapsables. Cada panel tiene un encabezado clickeable que alterna la visibilidad de su contenido principal. Un `AccordionPanel` puede ser utilizado como una sección de divulgación independiente, o agrupado dentro de un `Accordion` para coordinar el comportamiento de expansión y colapso entre múltiples paneles.
+El componente `Accordion` proporciona un conjunto apilado verticalmente de paneles colapsables. Cada panel tiene un encabezado clicable que alterna la visibilidad de su contenido. Un `AccordionPanel` puede usarse como una sección de divulgación independiente, o agrupada dentro de un `Accordion` para coordinar el comportamiento de expansión y colapso entre múltiples paneles.
 
 <!-- INTRO_END -->
 
 :::tip Cuándo usar un acordeón
-Los acordeones funcionan bien para preguntas frecuentes, páginas de configuración y flujos paso a paso donde revelar todo el contenido a la vez crearía un diseño abrumador. Si las secciones son igualmente importantes y los usuarios se benefician al verlas simultáneamente, considere [pestañas](/docs/components/tabbedpane) en su lugar.
+Los acordeones funcionan bien para preguntas frecuentes, páginas de configuraciones y flujos paso a paso donde revelar todo el contenido a la vez podría crear un diseño abrumador. Si las secciones son igualmente importantes y los usuarios se benefician de verlas simultáneamente, considera [pestañas](/docs/components/tabbedpane) en su lugar.
 :::
 
-## `AccordionPanel` {#accordion-panel}
+## `AccordionPanel` <DocChip chip='name' label="dwc-accordion-panel" /> {#accordion-panel}
 
-`AccordionPanel` es el bloque de construcción fundamental del sistema de acordeones. Pase una cadena de etiqueta al constructor para establecer el texto del encabezado, luego agregue componentes secundarios para llenar el cuerpo. Un panel funciona por sí mismo sin ningún grupo `Accordion` circundante, lo que lo convierte en un útil widget de divulgación liviano cuando solo necesita una única sección colapsable. También está disponible un constructor sin argumentos cuando prefiere configurar el panel completamente después de la construcción.
+`AccordionPanel` es el bloque de construcción principal del sistema de acordeones. Pasa una cadena de etiquetas al constructor para establecer el texto del encabezado, luego agrega componentes secundarios para poblar el cuerpo. Un panel funciona por sí solo sin ningún grupo `Accordion` que lo rodee, lo que lo convierte en un útil widget de divulgación ligero cuando solo necesitas una sola sección colapsable. También está disponible el constructor sin argumentos cuando prefieres configurar el panel completamente después de la construcción.
 
 ```java
-// Solo etiqueta - agregar contenido del cuerpo por separado
-AccordionPanel panel = new AccordionPanel("Título de Sección");
+// Solo etiqueta - agrega contenido del cuerpo por separado
+AccordionPanel panel = new AccordionPanel("Título de la Sección");
 panel.add(new Paragraph("El contenido del cuerpo va aquí."));
 
 // Etiqueta y contenido del cuerpo pasados directamente en el constructor
@@ -43,20 +42,20 @@ height='550px'
 
 ### Apertura y cierre {#opening-and-closing}
 
-Controle el estado abierto/cerrado programáticamente en cualquier momento. `isOpened()` es útil cuando necesita leer el estado actual antes de decidir qué hacer. Por ejemplo, podría alternar un panel al estado opuesto o mostrar u ocultar condicionalmente otras partes de la UI.
+Controla el estado abierto/cerrado programáticamente en cualquier momento. `isOpened()` es útil cuando necesitas leer el estado actual antes de decidir qué hacer. Por ejemplo, podrías alternar un panel al estado opuesto o mostrar u ocultar condicionalmente otras partes de la interfaz de usuario.
 
 ```java
-// Expandir el panel
+// Expande el panel
 panel.open();
 
-// Colapsar el panel
+// Colapsa el panel
 panel.close();
 
-// Devuelve verdadero si está actualmente expandido
+// Devuelve true si está actualmente expandido
 boolean isOpen = panel.isOpened();
 ```
 
-Use `setLabel()` para actualizar el texto del encabezado después de la construcción. `setText()` es un alias para la misma operación, por lo que la etiqueta puede mantenerse sincronizada con datos dinámicos:
+Usa `setLabel()` para actualizar el texto del encabezado después de la construcción. `setText()` es un alias para la misma operación, por lo que la etiqueta puede mantenerse sincronizada con datos dinámicos:
 
 ```java
 panel.setLabel("Etiqueta Actualizada");
@@ -64,9 +63,9 @@ panel.setLabel("Etiqueta Actualizada");
 
 ## Grupos de acordeones {#accordion-groups}
 
-Agrupar múltiples instancias de `AccordionPanel` dentro de un `Accordion` crea un grupo coordinado. Por defecto, el grupo utiliza **modo único**: abrir un panel colapsa automáticamente todos los demás, manteniendo solo una sección visible a la vez. Este ajuste predeterminado es intencional, mantiene al usuario enfocado en un solo contenido y evita que la página se vuelva visualmente abrumadora cuando los paneles tienen contenido sustancial en el cuerpo.
+Envuelto múltiples instancias de `AccordionPanel` dentro de un `Accordion` crea un grupo coordinado. Por defecto, el grupo usa **modo único**: abrir un panel colapsa automáticamente todos los demás, manteniendo solo una sección visible a la vez. Este comportamiento por defecto es intencional, mantiene al usuario enfocado en un solo contenido y evita que la página se vuelva visualmente abrumadora cuando los paneles tienen contenido considerable.
 
-Los paneles se construyen de forma independiente y se pasan al `Accordion`, por lo que puede configurar cada uno antes de agruparlos. También pueden existir múltiples instancias separadas de `Accordion` en la misma página; cada grupo gestiona su propio estado de forma independiente, por lo que expandir un panel en un grupo no afecta a otro.
+Los paneles se construyen de forma independiente y se pasan al `Accordion`, por lo que puedes configurar cada uno antes de agruparlos. Múltiples instancias de `Accordion` separadas también pueden existir en la misma página; cada grupo gestiona su propio estado de forma independiente, por lo que expandir un panel en un grupo no afecta a otro.
 
 ```java
 AccordionPanel panel1 = new AccordionPanel("¿Qué es webforJ?");
@@ -92,13 +91,13 @@ El modo múltiple permite que cualquier número de paneles permanezca expandido 
 accordion.setMultiple(true);
 ```
 
-Con el modo múltiple activado, todos los paneles en el grupo pueden ser expandidos o colapsados a la vez usando los métodos de agrupación:
+Con el modo múltiple activo, todos los paneles en el grupo pueden expandirse o colapsarse a la vez usando los métodos masivos:
 
 ```java
-// Expandir cada panel en el grupo
+// Expande todos los paneles en el grupo
 accordion.openAll();
 
-// Colapsar cada panel en el grupo
+// Colapsa todos los paneles en el grupo
 accordion.closeAll();
 ```
 
@@ -118,7 +117,7 @@ height='575px'
 ## Estado deshabilitado {#disabled-state}
 <!-- vale on -->
 
-Los paneles individuales se pueden deshabilitar para evitar la interacción del usuario mientras siguen siendo visibles. Esto es útil durante estados de carga o cuando ciertas secciones no están disponibles condicionalmente, mostrando la estructura del panel sin permitir la interacción prematura. Un panel deshabilitado que ya estaba abierto permanece expandido, pero su encabezado ya no se puede hacer clic para colapsarlo. Deshabilitar el grupo `Accordion` aplica el estado deshabilitado a todos los paneles contenidos a la vez, por lo que no necesita recorrer los paneles individualmente.
+Los paneles individuales pueden ser deshabilitados para prevenir interacciones del usuario mientras siguen siendo visibles. Esto es útil durante los estados de carga o cuando ciertas secciones están condicionalmente no disponibles, mostrando la estructura del panel sin permitir interacciones prematuras. Un panel deshabilitado que ya está abierto permanece expandido, pero su encabezado ya no se puede hacer clic para colapsarlo. Deshabilitar el grupo `Accordion` aplica el estado deshabilitado a todos los paneles contenidos a la vez, por lo que no necesitas iterar por los paneles individualmente.
 
 ```java
 // Deshabilitar un solo panel
@@ -136,13 +135,13 @@ height='650px'
 />
 <!-- vale on -->
 
-## Personalizando paneles {#customizing-panels}
+## Personalización de paneles {#customizing-panels}
 
-Más allá de las etiquetas y el comportamiento básico de abrir/cerrar, cada `AccordionPanel` admite una personalización más rica de tanto su contenido de encabezado como el ícono de expansión/colapso.
+Más allá de etiquetas y el comportamiento básico de apertura/cierre, cada `AccordionPanel` admite una rica personalización tanto de su contenido de encabezado como del ícono de expandir/colapsar.
 
 ### Encabezado personalizado {#custom-header}
 
-El encabezado de un panel renderiza su etiqueta como texto simple por defecto. Use `addToHeader()` para reemplazar ese texto con cualquier componente o combinación de componentes, facilitando incluir íconos, insignias, indicadores de estado u otro marcado enriquecido junto con la etiqueta del panel. Esto es particularmente útil en tableros o paneles de configuración donde cada encabezado de sección necesita transmitir contexto adicional de un vistazo, como un conteo de elementos, una insignia de advertencia o un estado de finalización, sin requerir que el usuario expanda el panel primero.
+El encabezado de un panel renderiza su etiqueta como texto plano por defecto. Usa `addToHeader()` para reemplazar ese texto con cualquier componente o combinación de componentes, facilitando incluir íconos, insignias, indicadores de estado u otro marcado rico junto a la etiqueta del panel. Esto es particularmente útil en tableros o paneles de configuración donde cada encabezado de sección necesita transmitir contexto adicional de un vistazo, como un recuento de elementos, una insignia de advertencia o un estado de finalización, sin requerir que el usuario expanda el panel primero.
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
@@ -150,12 +149,12 @@ FlexLayout headerContent = FlexLayout.create()
     .build()
     .setSpacing("var(--dwc-space-s)");
 
-headerContent.add(FeatherIcon.SETTINGS.create(), new Span("Encabezado Personalizado con Icono"));
+headerContent.add(FeatherIcon.SETTINGS.create(), new Span("Encabezado Personalizado con Ícono"));
 panel.addToHeader(headerContent);
 ```
 
 :::info Reemplazo de etiqueta
-El contenido agregado a través de `addToHeader()` reemplaza completamente el texto de la etiqueta predeterminada. `setLabel()` y `setText()` continúan funcionando junto a `addToHeader()`, pero dado que el espacio de encabezado tiene precedencia visual, el texto de la etiqueta no se mostrará a menos que lo incluya explícitamente en su contenido asignado.
+El contenido agregado a través de `addToHeader()` reemplaza completamente el texto de la etiqueta por defecto. `setLabel()` y `setText()` siguen funcionando junto con `addToHeader()`, pero dado que la ranura de encabezado tiene precedencia visual, el texto de la etiqueta no se mostrará a menos que lo incluyas explícitamente en tu contenido ranurado.
 :::
 
 <!-- vale off -->
@@ -168,13 +167,13 @@ height='300px'
 
 ### Ícono personalizado {#custom-icon}
 
-El indicador de expansión/colapso predeterminado es un chevron que es visible tanto en los estados abierto como cerrado. `setIcon()` lo reemplaza con cualquier componente de [`Icon`](/docs/components/icon), útil para iconografía de marca o cuando una metáfora visual diferente se ajusta mejor al contenido. Pasar `null` restaura el chevron predeterminado. `getIcon()` devuelve el ícono actualmente establecido, o `null` si se está utilizando el chevron predeterminado.
+El indicador de expandir/colapsar por defecto es un chevron que es visible tanto en los estados abierto como cerrado. `setIcon()` lo reemplaza con cualquier componente [`Icon`](/docs/components/icon), útil para iconografía de marca o cuando una metáfora visual diferente se ajusta mejor al contenido. Pasar `null` restaura el chevron por defecto. `getIcon()` devuelve el ícono actualmente configurado, o `null` si se está usando el chevron por defecto.
 
 ```java
-// Reemplazar el chevron predeterminado con un ícono de más
+// Reemplaza el chevron por defecto con un ícono de más
 panel.setIcon(FeatherIcon.PLUS.create());
 
-// Restaurar el chevron predeterminado
+// Restaura el chevron por defecto
 panel.setIcon(null);
 ```
 
@@ -188,7 +187,7 @@ height='200px'
 
 ## Acordeones anidados {#nested-accordions}
 
-Los acordeones pueden estar anidados dentro de otros paneles de acordeón, lo que es útil para representar contenido jerárquico como configuraciones categorizadas o navegación multinivel. Agregue un `Accordion` interno a un `AccordionPanel` externo como cualquier otro componente secundario. Mantenga la anidación superficial. Uno o dos niveles suelen ser suficientes. Las jerarquías más profundas tienden a ser más difíciles de navegar y a menudo indican que la estructura del contenido necesita ser repensada.
+Los acordeones se pueden anidar dentro de otros paneles de acordeón, lo que es útil para representar contenido jerárquico como configuraciones categorizadas o navegación de múltiples niveles. Agrega un `Accordion` interno a un `AccordionPanel` externo como cualquier otro componente secundario. Mantén la anidación superficial. Uno o dos niveles suele ser suficiente. Jerarquías más profundas tienden a ser más difíciles de navegar y a menudo señalan que la estructura del contenido necesita ser repensada.
 
 ```java
 AccordionPanel innerA = new AccordionPanel("Panel Interno A");
@@ -209,30 +208,30 @@ height='550px'
 
 ## Eventos {#events}
 
-`AccordionPanel` dispara eventos en cada etapa del ciclo de vida del cambio. Los tres tipos de eventos cubren diferentes momentos, así que elija según cuándo necesita que su lógica se ejecute:
+`AccordionPanel` dispara eventos en cada etapa del ciclo de vida del alternador. Los tres tipos de eventos cubren diferentes momentos, así que elige según cuándo necesites que tu lógica se ejecute:
 
-| Evento | Ocurre |
-|--------|--------|
+| Evento | Se dispara |
+|-------|-------|
 | `AccordionPanelToggleEvent` | Antes de que cambie el estado |
 | `AccordionPanelOpenEvent` | Después de que el panel se haya abierto completamente |
 | `AccordionPanelCloseEvent` | Después de que el panel se haya cerrado completamente |
 
 ```java
 panel.onToggle(e -> {
-    // Ocurre antes de que el panel cambie de estado.
-    // e.isOpened() refleja el estado al que se está cambiando, no el estado actual.
+    // Se dispara antes de que el panel cambie de estado.
+    // e.isOpened() refleja el estado al que se está transitando, no el estado actual.
     String direction = e.isOpened() ? "abriendo" : "cerrando";
 });
 
 panel.onOpen(e -> {
-    // Ocurre después de que el panel esté completamente abierto — bueno para cargar contenido de forma perezosa.
+    // Se dispara después de que el panel está completamente abierto — bueno para cargar contenido de forma perezosa.
 });
 
 panel.onClose(e -> {
-    // Ocurre después de que el panel esté completamente cerrado — bueno para limpieza o actualizaciones de resumen.
+    // Se dispara después de que el panel está completamente cerrado — bueno para limpieza o actualizaciones de resumen.
 });
 ```
 
-## Estilizando {#styling}
+## Estilo {#styling}
 
 <TableBuilder name={['Accordion', 'AccordionPanel']} />

@@ -4,23 +4,23 @@ sidebar_position: 2
 description: >-
   Add the devtools dependency, enable craftforJ in your configuration, and open
   craftforJ over a running webforJ app.
-_i18n_hash: 81825a3ba8656a8aee4820dee71da732
+_i18n_hash: fb5860ba7349ef5523c2dfb6bc425d9b
 ---
 <DocChip chip='since' label='26.02' />
 
-craftforJ toimitetaan webforJ:n kanssa, joten mitään ei tarvitse ladata erikseen. Tämä sivu käsittelee mitä sovelluksesi tarvitsee ennen kuin craftforJ tulee näkyviin, ja miten sen voi avata.
+craftforJ toimitetaan webforJ:n mukana, joten erikseen ei tarvitse ladata mitään. Tämä sivu käsittelee, mitä sovelluksesi tarvitsee ennen craftforJ:n ilmestymistä, ja kuinka avata se.
 
-:::tip Jo aktivoitu generoituissa projekteissa
-Projekti, joka on luotu [startforJ](https://docs.webforj.com/startforj) -työkalun tai webforJ [archetypen](/docs/building-ui/archetypes/overview) avulla, sisältää craftforJ:n oletuksena. Jos aloitit jostain näistä, suorita sovelluksesi ja siirry suoraan kohtaan [Avata craftforJ](#opening-craftforj).
+:::tip Jo aktivoitu luoduissa projekteissa
+Projekti, joka on luotu [startforJ](https://docs.webforj.com/startforj) -työkalulla tai webforJ [archetypelta](/docs/building-ui/archetypes/overview), tulee craftforJ aktivoituna. Jos aloitit yhdestä näistä, käytä sovellustasi ja siirry suoraan osioon [Avaaminen craftforJ](#opening-craftforj).
 :::
 
 ## Vaatimukset {#requirements}
 
-craftforJ liitetään sovellukseen vain, kun kaikki seuraavat ehdot täyttyvät. Jos jokin niistä ei täyty, mitään ei näy sivulla.
+craftforJ liitetään sovellukseen vain, jos kaikki seuraavat ovat totta. Jos mikään näistä ei täyty, mitään ei näy sivulla.
 
 ### Lisää riippuvuus {#add-the-dependency}
 
-Lisää `webforj-devtools` projektiisi, jos se ei ole siellä jo:
+Lisää `webforj-devtools` projektiisi, jos sitä ei vielä ole:
 
 ```xml title="pom.xml"
 <dependency>
@@ -32,84 +32,84 @@ Lisää `webforj-devtools` projektiisi, jos se ei ole siellä jo:
 
 ### Virheenkorjaustila ja craftforJ-lippu {#debug-mode-and-the-craftforj-flag}
 
-Lisää seuraavat ominaisuudet projektiisi. Jos sinulla on tavanomainen webforJ-sovellus, aseta ominaisuudet `webforj.conf` -tiedostoon. webforJ-projektissa, joka käyttää [Springia](/docs/integrations/spring/overview), aseta ominaisuudet `application.properties` -tiedostoon.
+Lisää seuraavat ominaisuudet projektiisi. Jos sinulla on standardi webforJ -sovellus, aseta ominaisuudet `webforj.conf` -tiedostoon. WebforJ-projektissa, joka käyttää [Spring](/docs/integrations/spring/overview), aseta ominaisuudet `application.properties` -tiedostoon.
 
 ```ini
 webforj.debug = true
 webforj.devtools.craftforj.enabled = true
 ```
 
-craftforJ toimii vain, kun molemmat ominaisuudet ovat käytössä; joten sovellus, joka menee tuotantoon virheenkorjaustila päällä, ei paljasta lähdekoodipuun rakennetta.
+craftforJ toimii vain, kun molemmat ominaisuudet ovat käytössä; sen vuoksi sovellus, joka siirtyy tuotantoon virheenkorjaustila päällä, ei paljasta lähdepuuasi.
 
-### Paikallinen selain ja kehittäjälisenssi {#a-local-browser-and-a-developer-license}
+### Paikallinen selaimen ja kehittäjälisenssi {#a-local-browser-and-a-developer-license}
 
-Avaa sovellus koneelta, joka sen ajaa, ja varmista, että sinulla on voimassa oleva kehittäjälisenssi. Jos haluat käyttää craftforJ:ta toiselta koneelta, lisää sen osoite [`hosts-allowed`](/docs/craftforj/configuration#access).
+Avaa sovellus koneelta, joka sen ajaa, ja varmista, että sinulla on voimassa oleva kehittäjälisenssi. Jos haluat käyttää craftforJ:ta toiselta koneelta, lisää sen osoite [`hosts-allowed`](/docs/craftforj/configuration#access) -asetuksiin.
 
-Kun nämä asiat on kunnossa, käynnistä sovellus uudelleen ja lataa sivu.
+Kun nämä asiat ovat kunnossa, käynnistä sovellus uudelleen ja lataa sivu.
 
-## Avata craftforJ {#opening-craftforj}
+## Avaaminen craftforJ {#opening-craftforj}
 
-Kun craftforJ on aktiivinen, sovelluksesi ylle ilmestyy aktivointipainike. Klikkaa sitä avataksesi craftforJ, tai paina <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> mistä tahansa sovelluksessa. Sama pikanäppäin sulkee craftforJ:n taas, ja voit vetää aktivointipainiketta haluamaasi nurkkaan.
+Kun craftforJ on aktiivinen, käyttöliittymän ylle ilmestyy triggereinä toimiva painike. Napsauta sitä avataksesi craftforJ:n tai paina <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> mistä tahansa sovelluksesta. Sama pikakuvake sulkee craftforJ:n uudelleen, ja voit vetää triggereitä mihin tahansa kulmaan, joka sinulle sopii.
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/getting-started.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/getting-started.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
 Sen välilehdet kattavat [komponenttipuun](/docs/craftforj/inspector), [reitit](/docs/craftforj/routes), [teeman](/docs/craftforj/theme) ja [avustajan](/docs/craftforj/ai). Asetukset ja sovellustiedot sijaitsevat niiden vieressä.
 
-- **Aktivointipainike** on nappi, joka avaa ja sulkee craftforJ:n. Se pysyy syrjässä niin kauan kuin craftforJ on suljettuna.
-- **Välilehtipalkki** kulkee sovellusta lähimpänä reunassa ja vaihtaa sitä, mitä craftforJ sinulle näyttää.
-- **Ikkunavalikko** sisältää kaiken artikkelin craftforJ:n sijainnista, joka käsitellään kohdassa [Missä craftforJ sijaitsee](#where-craftforj-sits).
+- **Triggeri** on painike, joka avaa ja sulkee craftforJ:n. Se pysyy sivussa, kun craftforJ on suljettu.
+- **Välinelistus** kulkee sovelluksen lähimmällä reunalla ja vaihtaa sen välillä, mitä craftforJ näyttää.
+- **Ikkunavalikko** pitää sisällään kaiken, mikä liittyy craftforJ:n sijaintiin, käsitellään osiossa [Missä craftforJ sijaitsee](#where-craftforj-sits).
 
-:::info Pikanäppäimet macOS:llä
-craftforJ kirjoittaa jokaisen pikanäppäimen käyttäen alustan modifioijia, joten <kbd>Alt</kbd> näkyy <kbd>⌥</kbd> ja <kbd>Ctrl</kbd> <kbd>⌘</kbd> -näppäimenä. Paina <kbd>Shift</kbd> + <kbd>?</kbd> craftforJ:ssa nähdäksesi nykyisen luettelon.
+:::info Pikakuvakkeet macOS:llä
+craftforJ näyttää jokaisen pikakuvakkeen käytettävissä olevilla muunnoksilla valitsemallasi alustalla, joten <kbd>Alt</kbd> näkyy <kbd>⌥</kbd> ja <kbd>Ctrl</kbd> <kbd>⌘</kbd>:nä. Paina <kbd>Shift</kbd> + <kbd>?</kbd> craftforJ:ssa nähdäksesi nykyisen luettelon.
 :::
 
 ## Missä craftforJ sijaitsee {#where-craftforj-sits}
 
-craftforJ kelluu oletuksena sovelluksesi ylle. Voit vetää sitä mihin tahansa sivulle, muuttaa sen kokoa mistä tahansa reunasta tai pienentää sen takaisin aktivointipainikkeeksi, jotta voit käyttää sovellusta rauhassa. Vetäminen sivun reunalle kiinnittää sen sinne, täysikorkeudelle tai -leveydelle, ja jokainen reuna pitää koon, jonka annoit sille. Vetäminen pois reunasta kelluttaa sen jälleen.
+craftforJ leijuu oletuksena sovelluksesi päällä. Voit vetää sen mihin tahansa sivun osaan, muuttaa sen kokoa mistä tahansa reunasta, ja pienentää sen takaisin triggereen, kun haluat sovelluksen itsellesi. Vetämällä sen sivun reunalle se kiinnittyy siihen, täydellä korkeudella tai leveydellä, ja jokainen reuna säilyttää antamasi koon. Vetämällä sen kauemmas reunasta se leijuu jälleen.
 
-:::info Kiinnitys peittää sovelluksen, se ei muokkaa sitä
-craftforJ piirretään sivun päälle. Sovelluksesi ei muutu koossa, eikä mikään siinä siirry pois tieltä, joten kaikki, mikä on craftforJ:n alla, on piilossa niin kauan kuin se on siinä. Näkymättömän sisällön näkemiseksi siirrä craftforJ toiseen reunaan tai poista se kokonaan sivulta.
+:::info Kiinnitys peittää sovelluksen, se ei mukautu
+craftforJ on piirtänyt sivun päälle. Sovelluksesi ei muutu koossa, eikä mikään sen osista siirry pois tieltä, joten kaikki, mitä craftforJ:n alla on, piiloutuu sen ollessa siellä. Näet sen alla olevan siirtämällä craftforJ:n toiseen reunaan tai viemällä sen ulos sivulta.
 :::
 
-![craftforJ kiinnitettynä sovellussivun oikealle puolelle, peittäen sen reunan](/img/craftforj/getting-started/docking.png#rounded-border)
+![craftforJ kiinnitetty sovelluksen sivun oikealle puolelle, peittäen sovelluksen sen reunan](/img/craftforj/getting-started/docking.png#rounded-border)
 
-Jos haluat lopettaa sovelluksen peittämisen kokonaan, siirrä craftforJ pois sivulta ja omaan selainikkunaan tai -välilehteen, joka sopii toiseen näyttöön. Se tarkistaa edelleen sovellustasi sen sivun kautta, joka avasi sen, joten jätä se sivu auki. Navigoi pois tai sulje se, ja craftforJ:llä ei ole mitään tarkistettavaa, kunnes avaat sovelluksen uudelleen.
+Jos haluat lopettaa sovelluksen peittämisen, siirrä craftforJ sivun ulkopuolelle ja omaan selaimen ikkunaan tai välilehteen, mikä sopii toiseen näyttöön. Se tarkistaa edelleen sovellustasi sen sivun kautta, joka avasi sen, joten pidä kyseinen sivu auki. Siirrä se pois tai sulje se, ja craftforJ:llä ei ole enää mitään tarkistettavaa, kunnes avaat sovelluksen uudelleen.
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/undock-window.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/undock-window.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
-Valitse välilehti ikkunoiden sijasta, jos käytät Chromen jakonäkymää, joka asettaa sovelluksesi ja craftforJ:n vierekkäin ja hyväksyy vain todelliset välilehdet. Napsauta hiiren oikealla sovelluksesi välilehteä, lisää se uuteen jakonäkymään ja valitse sitten craftforJ:n välilehti.
+Valitse välinelista sen sijaan, että käyttäisit ikkunaa, jos käytät Chrome:n jakosivua, joka asettaa sovelluksesi ja craftforJ:n rinnakkain ja hyväksyy vain oikeita välilehtiä. Napsauta hiiren kakkospainiketta sovelluksesi välilehdessä, lisää se uuteen jakonäkymään, ja valitse sitten craftforJ:n välinelista.
 
-:::info Jakonäkymä on Chromen ominaisuus
-Chrome tarjoaa vierekkäisen asettelun, ei craftforJ. Muilla selaimilla ei ole vastaavaa toimintoa, joten craftforJ muissa selaimissa avautuu tavallisessa välilehdessä, johon vaihdat. craftforJ toimii kummassakin tapauksessa samalla tavalla.
+:::info Jakonäkymä on Chrome-ominaisuus
+Chrome tarjoaa vierekkäisen järjestelyn, ei craftforJ. Muilla selaimilla ei ole vastaavaa, joten craftforJ muissa selaimissa avautuu normaalissa välilehdessä, johon vaihdat. craftforJ itsessään toimii samalla tavalla kummassakin tapauksessa.
 :::
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/split-view.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/split-view.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
 :::tip Liikkuminen avustajan kirjoittaessa
-craftforJ:n siirtäminen toiseen ikkunaan lopettaa vastauksen, joka on vielä käynnissä. craftforJ kysyy ensin, ja kaikki siihen asti kirjoitettu pysyy keskustelussa.
+CraftforJ:n siirtäminen toiseen ikkunaan päättää vielä kesken olevan vastauksen. craftforJ kysyy ensin, ja kaikki siihen mennessä kirjoitettu pysyy keskustelussa.
 :::
 
-## Ensimmäinen muutos {#making-a-first-change}
+## Ensimmäisen muutoksen tekeminen {#making-a-first-change}
 
 1. Paina <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> aloittaaksesi komponentin valitsemisen.
-2. Vie hiiri jotakin kohdetta yli sovelluksessasi ja napsauta sitä.
+2. Vie hiiri jonkin kohdalle sovelluksessasi ja napsauta sitä.
 3. Puu valitsee kyseisen komponentin, ja sivupaneeli täyttyy sen ominaisuuksista.
-4. Muuta ominaisuus. Toiminnassa oleva sovellus päivitetään heti.
+4. Muuta ominaisuus. Toimiva sovellus päivittyy heti.
 
-Muutos vaikuttaa vain edessäsi olevaan sovellukseen. Tiedostosi jäävät koskemattomiksi, kunnes tarkistat muutoksen ja vahvistat sen, mikä käsitellään kohdassa [Muutosten kirjoittaminen lähteeseen](/docs/craftforj/source-changes).
+Muutokset vaikuttavat vain sinulle näkyvään sovellukseen. Tiedostosi jäävät koskemattomiksi, kunnes tarkistat muutoksen ja hyväksyt sen, mikä kattaa osion [Muutosten kirjoittaminen lähteeseen](/docs/craftforj/source-changes).
 
-![craftforJ auki juoksevan sovelluksen vieressä valitun komponentin kanssa](/img/craftforj/getting-started/first-open.png#rounded-border)
+![craftforJ avoinna rinnakkain toimivan sovelluksen kanssa, komponentti valittuna](/img/craftforj/getting-started/first-open.png#rounded-border)
 
-Jos mitään ei näy, tutustu [Vianetsintään](/docs/craftforj/troubleshooting).
+Jos mitään ei näy, käy läpi osio [Vianetsintä](/docs/craftforj/troubleshooting).

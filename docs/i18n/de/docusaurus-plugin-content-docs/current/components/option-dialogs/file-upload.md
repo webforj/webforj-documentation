@@ -1,26 +1,26 @@
 ---
-title: Datei-Upload
+title: File Upload
 sidebar_position: 20
 description: >-
   Capture client uploads with the FileUploadDialog, returning an UploadedFile
   that you can filter, move, and process server-side.
-_i18n_hash: 708f41fa227a5a346bf58be64964dc9c
+_i18n_hash: 411ef7de8459154002fa2a620f073b0d
 ---
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileUploadDialog" top='true'/>
 
-Ein `FileUploadDialog` ist ein modales Dialogfeld, das entwickelt wurde, um es dem Benutzer zu ermöglichen, Dateien von seinem lokalen Dateisystem hochzuladen. Der Dialog blockiert die Ausführung der Anwendung, bis der Benutzer Dateien zum Hochladen auswählt oder den Dialog schließt.
+Ein `FileUploadDialog` ist ein modales Dialogfeld, das entwickelt wurde, um dem Benutzer das Hochladen von Dateien aus seinem lokalen Dateisystem zu ermöglichen. Das Dialogfeld blockiert die Ausführung der Anwendung, bis der Benutzer Dateien zum Hochladen auswählt oder das Dialogfeld schließt.
 
 <!-- INTRO_END -->
 
 :::tip Inline-Komponente
-Wenn Sie einen Dateiauswähler wünschen, der direkt im Seitenlayout und nicht in einem Dialog angezeigt wird, sollten Sie die [`Upload`](/docs/components/upload) Komponente in Betracht ziehen.
+Wenn Sie einen Dateiauswähler möchten, der direkt im Seitenlayout anstelle eines Dialogfelds gerendert wird, sollten Sie die [`Upload`](/docs/components/upload) Komponente in Betracht ziehen.
 :::
 
 ## Verwendungen {#usages}
 
-Der `FileUploadDialog` bietet eine Möglichkeit, Dateien auszuwählen und hochzuladen, sodass Benutzer Dokumente, Bilder oder andere Dateitypen, die von der Anwendung benötigt werden, einreichen können. Verwenden Sie `showFileUploadDialog()`, um den Dialog anzuzeigen und die hochgeladene Datei zu erfassen.
+Der `FileUploadDialog` bietet eine Möglichkeit, Dateien auszuwählen und hochzuladen, sodass Benutzer Dokumente, Bilder oder andere Dateitypen, die von der Anwendung benötigt werden, einreichen können. Verwenden Sie `showFileUploadDialog()`, um das Dialogfeld anzuzeigen und die hochgeladene Datei zu erfassen.
 
 ```java
 UploadedFile result = OptionDialog.showFileUploadDialog("Eine Datei hochladen");
@@ -28,10 +28,10 @@ UploadedFile result = OptionDialog.showFileUploadDialog("Eine Datei hochladen");
 
 ## Ergebnis {#result}
 
-Der `FileUploadDialog` gibt ein `UploadedFile`-Objekt zurück, das Informationen über die hochgeladene Datei enthält, wie z.B. ihren Namen, ihre Größe und ihren Inhalt. Wenn der Benutzer den Dialog schließt, ohne eine Datei auszuwählen, wird das Ergebnis `null` sein.
+Der `FileUploadDialog` gibt ein `UploadedFile`-Objekt zurück, das Informationen über die hochgeladene Datei enthält, wie ihren Namen, ihre Größe und ihren Inhalt. Wenn der Benutzer das Dialogfeld schließt, ohne eine Datei auszuwählen, wird das Ergebnis `null` sein.
 
 :::important
-Der resultierende String wird von der `show()`-Methode oder der äquivalenten `OptionDialog`-Methode wie unten gezeigt zurückgegeben.
+Das resultierende `UploadedFile`-Objekt wird von der `show()`-Methode oder der entsprechenden `OptionDialog`-Methode wie unten gezeigt zurückgegeben.
 :::
 
 <ComponentDemo
@@ -40,9 +40,9 @@ files={['src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUpl
 height='400px'
 />
 
-### Verschieben hochgeladener Dateien {#moving-uploaded-files}
+### Hochgeladene Dateien verschieben {#moving-uploaded-files}
 
-Standardmäßig speichert webforJ hochgeladene Dateien in einem temporären Ordner, der regelmäßig gereinigt wird. Wenn Sie die Datei nicht anderswo verschieben, wird sie gelöscht. Um die Datei zu verschieben, verwenden Sie die `move`-Methode und geben Sie den Zielpfad an.
+Standardmäßig speichert webforJ hochgeladene Dateien in einem temporären Ordner, der regelmäßig gereinigt wird. Wenn Sie eine Datei nicht an einen anderen Ort verschieben, wird sie gelöscht. Um die Datei zu verschieben, verwenden Sie die `move`-Methode und geben Sie den Zielpfad an.
 
 ```java showLineNumbers
 UploadedFile uploadedFile = OptionDialog.showFileUploadDialog("Wählen Sie eine Datei zum Hochladen aus");
@@ -54,12 +54,12 @@ try {
 }
 ```
 :::tip Sanitized Client Name
-Verwenden Sie die Methode `getSanitizedClientName`, um eine sanitisierte Version des Namens der hochgeladenen Datei zu erhalten. Diese Methode hilft, Sicherheitsrisiken wie Verzeichnistraversierungsangriffe oder ungültige Zeichen in Dateinamen zu verhindern, und gewährleistet die Integrität und Sicherheit Ihres Dateispeichersystems.
+Verwenden Sie die Methode `getSanitizedClientName`, um eine sanierte Version des Namens der hochgeladenen Datei zu erhalten. Diese Methode hilft, Sicherheitsrisiken wie Verzeichnisdurchlaufangriffe oder ungültige Zeichen in Dateinamen zu verhindern und gewährleistet die Integrität und Sicherheit Ihres Dateispeichersystems.
 :::
 
 ## Filter {#filters}
 
-Der `FileUploadDialog` ermöglicht es Ihnen, Filter festzulegen, um die Arten von Dateien zu begrenzen, die für das Hochladen ausgewählt werden können. Sie können Filter mit der Methode `setFilters(List<FileChooserFilter> filters)` konfigurieren.
+Der `FileUploadDialog` ermöglicht es Ihnen, Filter festzulegen, um die Arten von Dateien, die zum Hochladen ausgewählt werden können, einzuschränken. Sie können die Filter mit der Methode `setFilters(List<FileChooserFilter> filters)` konfigurieren.
 
 ```java showLineNumbers
 FileUploadDialog dialog = new FileUploadDialog(
@@ -69,35 +69,33 @@ UploadedFile result = dialog.show();
 ```
 
 :::warning Filtervalidierung
-Der Server überprüft die hochgeladene Datei nicht gegen die Filter. Die Filter werden nur in der Benutzeroberfläche angewendet, um die Auswahl des Benutzers zu leiten. Sie müssen eine serverseitige Validierung implementieren, um sicherzustellen, dass die hochgeladenen Dateien den Anforderungen Ihrer Anwendung entsprechen.
+Der Server validiert die hochgeladene Datei nicht gegen die Filter. Die Filter werden nur in der Benutzeroberfläche angewendet, um die Auswahl des Benutzers zu leiten. Sie müssen serverseitige Validierungen implementieren, um sicherzustellen, dass die hochgeladenen Dateien den Anforderungen Ihrer Anwendung entsprechen.
 :::
 
 ## Maximale Größe {#max-size}
 
-Es ist möglich, die maximale Dateigröße für Uploads festzulegen, um sicherzustellen, dass Benutzer keine Dateien hochladen, die zu groß sind, um von Ihrer Anwendung verarbeitet zu werden. Dies kann mit der Methode `setMaxFileSize(long maxSize)` konfiguriert werden, wobei maxSize in Byte angegeben wird.
+Verwenden Sie `setMaxFileSize(Number maxSize)`, um die maximale Uploadgröße in Bytes festzulegen.
 
 ```java
-dialog.setMaxFileSize(2 * 1024 * 1024); // Setze die maximale Größe auf 2 MB
+dialog.setMaxFileSize(2 * 1024 * 1024); // Maximale Größe auf 2 MB festlegen
 ```
 
 ## Internationalisierung (i18n) {#internationalization-i18n}
 
-Die Titel, Beschreibungen, Beschriftungen und Nachrichten innerhalb der Komponente sind vollständig anpassbar, indem die Klasse `FileUploadI18n` verwendet wird. Diese Flexibilität ermöglicht es Ihnen, die Dialogoberfläche an spezifische Lokalisierungsanforderungen oder Personalisierungsvorlieben anzupassen.
+Die Titel, Beschreibungen, Labels und Nachrichten innerhalb der Komponente sind vollständig anpassbar mit der `FileUploadI18n`-Klasse. Diese Flexibilität ermöglicht es Ihnen, die Dialogoberfläche an spezifische Lokalisierungsanforderungen oder Personalisierungspräferenzen anzupassen.
 
 ```java showLineNumbers
 FileUploadDialog dialog = new FileUploadDialog("Datei hochladen");
 FileUploadI18n i18n = new FileUploadI18n();
 i18n.setUpload("Hochladen");
-i18n.setCancel("Stornieren");
+i18n.setCancel("Abbrechen");
 dialog.setI18n(i18n);
 UploadedFile result = dialog.show();
 ```
 
-## Best Practices {#best-practices}
+## Beste Praktiken {#best-practices}
 
-1. **Klarheit und Prägnanz**: Stellen Sie sicher, dass die Eingabeaufforderung klar erklärt, was der Benutzer hochladen soll.
-2. **Angemessene Filter**: Setzen Sie Dateifilter, die den erforderlichen Dateitypen entsprechen, um sicherzustellen, dass die Benutzer relevante Dateien hochladen.
-3. **Logische Anfangsverzeichnisse**: Legen Sie Anfangsverzeichnisse fest, die den Benutzern einen nützlichen Ausgangspunkt für ihre Dateiauswahl bieten.
-4. **Einschränkung der Verzeichnisnavigation**: Beschränken Sie den Dialog bei Bedarf auf ein bestimmtes Verzeichnis, um zu verhindern, dass Benutzer nicht autorisierte Bereiche durchsuchen.
-5. **Konsistente Gestaltung**: Richten Sie die Themen des Dialogs und des Upload-Felds nach dem Design Ihrer Anwendung aus, um ein kohärentes Benutzererlebnis zu gewährleisten.
-6. **Übermäßige Nutzung minimieren**: Verwenden Sie Datei-Upload-Dialoge sparsam, um Benutzerfrustration zu vermeiden. Reservieren Sie sie für Aktionen, die spezifische Benutzer-Datei-Uploads erfordern.
+1. **Klare und prägnante Aufforderungen**: Stellen Sie sicher, dass die Aufforderungsnachricht klar erklärt, was der Benutzer hochladen soll.
+2. **Angemessene Filter**: Setzen Sie Dateifilter, die den erforderlichen Dateitypen entsprechen, um sicherzustellen, dass Benutzer relevante Dateien hochladen.
+3. **Konsistentes Design**: Passen Sie die Designs des Dialogs und des Uploadfelds an das Design Ihrer Anwendung an.
+4. **Übermäßigen Gebrauch minimieren**: Verwenden Sie Dateiuploaddialoge sparsam, um Frustrationen bei den Benutzern zu vermeiden. Reservieren Sie sie für Aktionen, die spezifische Benutzer-Dateiuploads erfordern.

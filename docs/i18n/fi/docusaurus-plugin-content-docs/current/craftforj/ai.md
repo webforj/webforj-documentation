@@ -1,88 +1,88 @@
 ---
-title: Tekoälyavustaja
+title: AI Assistant
 sidebar_position: 7
 description: >-
   A coding agent that works inside your running webforJ app, writes Java freely
   behind a compile gate, and applies changes with your approval.
-_i18n_hash: 863d36cce987eedd9b580968afadcc18
+_i18n_hash: 716e267ebccf57080f5238335670d1b7
 ---
-craftforJ sisältää täydellisen koodausagentin, joka toimii **käynnissä olevan sovelluksesi** sisällä. Se kirjoittaa Javaa vapaasti, kääntää kirjoittamansa koodin ennen kuin näet sen, soveltaa muutoksen ja jatkaa työskentelyä sen jälkeen, kun sovelluksesi on käynnistetty uudelleen. Kaiken, mitä se tekee, se tekee oikeassa sovelluksessa, joka on todella käynnissä edessäsi, eikä arvauksesta, joka on tehty varastostasi.
+craftforJ sisältää täydellisen koodausagentin, joka toimii sisällä **käynnistyneessä sovelluksessa**. Se kirjoittaa Javaa vapaasti, kääntää aiemmin kirjoittamansa koodin ennen kuin näet sen, soveltaa muutokset ja jatkaa työtään sovelluksesi uudelleenkäynnistyksen jälkeen. Kaiken, mitä se tekee, se tekee suoraan sovelluksen kanssa, joka on oikeasti käytössäsi, sen sijaan että se perustuisi arvaukseen, joka on tehty arkistostasi.
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
 :::warning AI voi silti tehdä virheitä
-Työskentely käynnissä olevan sovelluksen parissa ja oman tuotoksensa kääntäminen tekee agentista huomattavasti tarkemman kuin sokeasti kirjoittava. Se voi silti olla väärässä. Tarkista, mitä se teki, ennen kuin hyväksyt sen.
+Toimiminen käynnissä olevan sovelluksen kanssa ja oman lähtökohtansa kääntäminen tekee agentista huomattavasti tarkemman kuin sokkona kirjoittavasta agentista. Se voi silti olla väärässä. Tarkista, mitä se teki ennen kuin hyväksyt sen.
 :::
 
 ## Se kirjoittaa Javaa {#it-writes-java}
 
-Agentti ei ole rajoittunut vain ominaisuuden muutoksiin, joita voit tehdä käsin. Kuvaa ongelma, ja se kirjoittaa koodin sille, lisäten metodeja, muuttaen logiikkaa ja rakentaen näkymää uudelleen tehtävän vaatimusten mukaan.
+Agentti ei rajoitu vain niihin ominaisuuksien muutoksiin, jotka voit tehdä käsin. Kuvailu ongelmasta riittää, ja se kirjoittaa siihen liittyvän koodin, lisäten metodeja, muuttaen logiikkaa ja jäsentenäkymää tehtävän vaatimusten mukaan.
 
-Jokainen tekemä se muutos on vaiheen alla, ei suoraan levylle kirjoitettu. Vaiheessa olevat muokkaukset siirtyvät suoraan oikeaan Java-kääntäjään, ja agentti lukee takaisin tulevat diagnostiikat ja korjaa omat virheensä ennen kuin muutos koskaan tarjotaan sinulle. Arvioitava koodi on sellaista, joka jo kääntyy käynnissä olevan sovelluksesi kanssa.
+Jokainen kirjoitettu muokkaus on vaiheistettu eikä kirjoiteta suoraan levylle. Vaiheistetut muokkaukset menevät suoraan todelliseen Java-kääntäjään, ja agentti lukee palautuvat virheraportit ja korjaa omat virheensä ennen kuin muutos tarjotaan sinulle. Se, mitä saat tarkistettavaksesi, on koodi, joka jo kääntyy käynnistyvän sovelluksesi kanssa.
 
-Kokonainen validointi vaatii JDK:n. JRE:ssä craftforJ turvautuu koodin analysoimiseen, merkitsee muokkauksen varmennettuna, ja ohjaa agenttia sanomaan niin sen sijaan, että esittäisi sen tarkistettuna.
+Kattava validointi vaatii JDK:n. JRE:llä craftforJ siirtyy koodin jäsentämiseen, merkitsee muokkauksen vahvistamattomaksi ja käskee agenttia ilmoittamaan siitä sen sijaan, että esittäisi sen tarkastettuna.
 
-Muutoksen soveltaminen käynnistää sovelluksesi uudelleen. Agentti odottaa uudelleenkäynnistystä, koppaa yhteyden ja jatkaa suunnitelmansa siitä, mihin se jäi, joten tehtävä, joka kattaa useita muokkauksia ja uudelleenkäynnistyksiä, etenee loppuun saakka.
+Muutosten soveltaminen käynnistää sovelluksesi uudelleen. Agentti odottaa uudelleenkäynnistystä, muodostaa yhteyden uudelleen ja jatkaa suunnitelmaansa siitä, mihin se jäi, joten useita muokkauksia ja uudelleenkäynnistyksiä kattava tehtävä etenee loppuun asti.
 
 ## Se toimii vaiheittain {#it-works-in-steps}
 
-Annat agentille tavoitteen, et käskyä. Se suunnittelee, tarkistaa mitä tarvitsee, toimii, tarkistaa tuloksen ja korjaa itseään, suorittaen monia vaiheita yhdessä vuorossa ilman, että sinun tarvitsee ohjata jokaista niistä. Jokainen vaihe näkyy transkriptiossa sen tapahtuessa, ja voit laajentaa mitä tahansa niistä nähdäksesi tarkalleen, mitä agentti kutsui ja mitä siitä tuli takaisin.
+Annetaan agentille tavoite, ei käsky. Se suunnittelee, tarkistaa mitä tarvitsee, toimii, tarkistaa tuloksen ja korjaa itseään, suorittaen monia vaiheita yhdellä kerralla ilman, että sinun tarvitsee ohjata jokaista toimintoa. Jokainen vaihe näkyy transkriptiossa sen tapahtuessa, ja voit laajentaa mitä tahansa vaihetta nähdäksesi tarkalleen, mitä agentti kutsui ja mitä palautui.
 
 ## Mitä se voi saavuttaa {#what-it-can-reach}
 
-Agentilla on laaja työkalupakki, joka kattaa kaiken craftforJ:n tietämyksestä sovelluksestasi, mukaan lukien:
+Agentilla on laaja työkalupakki, joka kattaa kaiken craftforJ:n tiedon sovelluksestasi, mukaan lukien:
 
-- **Omat komponenttisi** - elävä puu, todelliset ominaisuuden arvot ja Java, joka rakensi jokaisen niistä. Se voi muuttaa ominaisuuksia, poistaa komponentteja ja korostaa yhtä sivulla.
-- **Oma lähdekoodisi** - lukea mitä tahansa tiedostoa projektin juuresta, asettaa muokkauksia, näyttää eroja ja soveltaa niitä.
-- **Reitit** - reititystaulukko, aktiivinen reitti, navigointi mihin tahansa ja pääsääntöjen muuttaminen, jotka on ilmoitettu reitillä.
-- **Teema ja tyylit** - suunnittelutunnusten lukeminen ja asettaminen, teeman tallentaminen ja saatavilla olevien fonttien ja ikonien etsiminen.
-- **Sivu itse** - CSS:n ja JavaScriptin injektoiminen elävään sivuun sekä komponentin näyttökuvan ottaminen tarkasteltavaksi.
-- **webforJ:n tietopohja** - sama dokumentaatio, komponenttien tyylipinta ja `--dwc-*` tunnustyökalut, joita [webforJ MCP -palvelin](/docs/ai-tooling/mcp) tarjoaa muokkaimellasi. Se on sisäänrakennettu ja aina käytettävissä.
+- **Komponenttisi** - elävä puu, oikeat ominaisuusarvot ja Java, joka rakensi jokaisen niistä. Se voi muuttaa ominaisuuksia, poistaa komponentteja ja korostaa yhtä sivulla.
+- **Lähdekoodisi** - lukee mitä tahansa tiedostoa projektijuuristasi, vaiheistaa muokkauksia, näyttää eroja ja soveltaa niitä.
+- **Reitit** - reititystaulukko, aktiivinen reitti, navigointi minne tahansa ja reitille määritettyjen pääsyrajoitusten muuttaminen.
+- **Teemasi ja tyylit** - lukee ja asettaa suunnittelutunnuksia, tallentaa teeman ja etsii saatavilla olevia fontteja ja ikoneita.
+- **Sivu itsessään** - upottaa CSS:n ja JavaScriptin elävään sivuun ja ottaa näyttökuvan komponentista, jotta voit tarkistaa sen.
+- **webforJ:n tietopankki** - sama dokumentaatio, komponenttityylitason ja `--dwc-*` tunnustyökalut, jotka [webforJ MCP -palvelin](/docs/ai-tooling/mcp) tarjoaa editorillesi. Se on sisäänrakennettu ja aina käytettävissä.
 
-Koska se saavuttaa kaiken tämän craftforJ:n kautta, se toimii samaa tietoa käyttäen kuin sinä. Se lukee todellisia arvoja, ei niitä, joita lähdekoodisi antaa ymmärtää.
+Koska se pääsee kaikkeen tähän craftforJ:n kautta, se toimii saman tiedon kanssa kuin sinä. Se lukee todellisia arvoja, ei niitä, joita lähdekoodisi viittaa.
 
 ## Hyväksynnät {#approvals}
 
-Päätät etukäteen, kuinka paljon agentti saa tehdä itsenäisesti:
+Päätät etukäteen, kuinka paljon agentti voi toimia itsenäisesti:
 
-- **Kysy ennen toimintaa** - jokainen vaikutusta aiheuttava toiminto pysähtyy hyväksyntääsi varten.
-- **Sovella muokkauksia automaattisesti** - agentti työskentelee vapaasti, mutta kysyy silti ennen kuin poistaa jotain tai suorittaa skriptin.
-- **Toimi autonomisesti** - agentti työskentelee ilman keskeytyksiä.
+- **Kysy ennen toimintaa** - jokainen vaikutusta aiheuttava toiminta pysähtyy hyväksyntääsi varten.
+- **Sovella muokkauksia automaattisesti** - agentti toimii vapaasti, mutta kysyy silti ennen kuin se poistaa jotain tai suorittaa skriptin.
+- **Toimi itsenäisesti** - agentti toimii ilman keskeytyksiä.
 
-Kun agentti kysyy, pyyntö näkyy inline-transkriptiossa sen haluamastasi toiminnasta, ja voit sallia sen kerran tai koko keskustelun ajaksi.
+Kun agentti kysyy, pyyntö näkyy rivissä transkriptiossa sen toiminnan kanssa, jonka se haluaa suorittaa, ja voit sallia sen kerran tai loppukeskustelun ajaksi.
 
-![Avustaja kysyy ennen kuin se toimii, inline-transkriptiossa](/img/craftforj/ai/approval-prompt.png#rounded-border)
+![Avustaja kysyy ennen kuin se toimii, rivissä transkriptiossa](/img/craftforj/ai/approval-prompt.png#rounded-border)
 
-Jos olet uusi agentin kanssa, aloita antamalla sen kysyä kaikesta. Kun olet katsonut sen työskentelevän, sen omien muokkauksien hyväksyminen vähentää useimpia keskeytyksiä samalla kun säilyttää sinulle tärkeät päätökset.
+Jos olet uusi agentin käytössä, aloita antamalla sen kysyä kaikesta. Kun olet katsellut sen toimintaa, sen omien muokkausten hyväksyminen vähentää suurinta osaa keskeytyksistä ja pitää tärkeät päätökset mukanasi.
 
 ## Työskentely sovelluksen kanssa keskustelussa {#working-with-the-app-in-a-conversation}
 
-Agentti lukee tarvitsemaansa juuri silloin, kun sitä tarvitsee, sen sijaan että saisi heti kaikki sovelluksesi tiedot, ja craftforJ näyttää, mikä on liitetty keskusteluun. Voit antaa sen suoraan komponentin puusta tai valita yhden sivulta keskustelun keskellä. Kysymyksiin siitä, miltä jokin näyttää, agentti voi ottaa näyttökuvan komponentista. Tämä vaatii mallin, joka hyväksyy kuvia.
+Agentti lukee kaiken tarvitsemansa sen mukaan, mitä se tarvitsee, sen sijaan että sille annettaisiin koko sovelluksesi etukäteen, ja craftforJ näyttää, mitä keskusteluun on liitetty. Voit antaa sille komponentin suoraan puusta tai valita yhden sivulta keskustelun aikana. Kysymyksiin siitä, miltä jokin näyttää, agentti voi ottaa näyttökuvan komponentista. Tämä vaatii mallin, joka hyväksyy kuvia.
 
 :::warning Näyttökuvat sisältävät kaiken näytöllä olevan
-Näyttökuva kantaa kaiken datan, jota sovelluksesi näyttää tuolloin. Ota tämä huomioon ennen kuin osoitat isännöityä mallia sovellukseen, joka toimii todellisen datan parissa.
+Näyttökuva sisältää kaiken datan, jonka sovelluksesi näyttää sinä hetkenä. Ota tämä huomioon ennen kuin osoitat isännöityä mallia oikeita tietoja näyttävään sovellukseen.
 :::
 
-## Mallin konfigurointi {#configuring-a-model}
+## Mallin määrittäminen {#configuring-a-model}
 
-craftforJ ei sisällä omaa mallia, joten valitset sen, joka sitä ajaa. Lisää API-avain yhdelle tuetuista tarjoajista tai osoita craftforJ paikallisesti käynnistyvään malliin. Avainsi säilytetään koneella, joka ajaa sovellustasi, ja avustaja pitää sen mielessä vain niin kauan kuin sivu on auki, eikä koskaan selaimen tallennuksessa. Se puhuu valitsemasi tarjoajan kanssa selaimen kautta, ei palvelimesi kautta, eikä kenenkään muun kanssa.
+craftforJ ei toimita omaa mallia, joten valitset sen, joka sen ajaa. Lisää API-avain yhden tuetun toimittajan toimesta tai osoita craftforJ paikallisesti ajettavaan malliin. Avainsi on tallennettu koneelle, jolla sovelluksesi toimii, ja avustaja pitää sen muistissa vain niin kauan kuin sivu on auki, ei koskaan selainvarastossa. Se kommunikoi valitsemasi toimittajan kanssa selaimesta sen sijaan, että se menisi palvelimesi kautta, eikä sen kanssa keskustella ketään muuta.
 
-Mallin valitsin näyttää, mitä yksi malli eroaa toisesta, mukaan lukien, kuinka paljon sovelluksestasi ja keskustelustasi mahtuu yhdellä kertaa, mitä keskustelu maksaa ja hyväksyykö malli kuvia tai järkeilee ennen vastaamista. Malli, joka ei voi kutsua työkaluja, voi pitää keskustelua, mutta ei voi tarkastella tai muuttaa mitään.
+Mallivalitsin näyttää, mikä erottaa mallin toisista, mukaan lukien kuinka suuren osan sovelluksesta ja keskustelusta se kykenee käsittelemään kerralla, mitä keskustelu maksaa ja hyväksyykö malli kuvia tai järkeilee ennen vastaamista. Malli, joka ei voi kutsua työkaluja, voi pitää keskustelun mutta ei voi tarkastella tai muuttaa mitään.
 
-![Mallin valitsin, joka näyttää, mitä erottaa käytettävissä olevat mallit](/img/craftforj/ai/model-picker.png#rounded-border)
+![Mallivalitsin näyttää, mikä erottaa käytettävissä olevat mallit](/img/craftforj/ai/model-picker.png#rounded-border)
 
-Käynnistämällä mallin paikallisesti pidät kaiken koneellasi. Paikalliset mallit toimivat usein pienessä kontekstitilassa, joka täyttyy nopeasti keskustelusta todellisen sovelluksen kanssa, joten anna mallille niin paljon kontekstia kuin koneesi pystyy kantamaan.
+Mallin paikallinen ajaminen pitää kaiken koneellasi. Paikalliset mallit täyttävät usein pienen konteksti-ikkunan, jonka todellinen sovelluskeskustelu täyttää nopeasti, joten anna mallille niin paljon kontekstia kuin koneesi pystyy käsittelemään.
 
 ## Keskustelut {#conversations}
 
-Keskustelut säilytetään sovelluskohtaisesti, ja agentti voi katsoa aiempia keskusteluja, kun kysymys viittaa aiempaan tekemääsi työhön. Kun keskustelu kasvaa mallin kontekstin yli, craftforJ tiivistää vanhemmat viestit, jotta työ jatkuu sen sijaan, että se epäonnistuisi, ja merkitsee keskusteluun, että se teki niin.
+Keskustelut pidetään per sovellus, ja agentti voi palata aikaisempiin keskusteluihin, kun kysymys viittaa aikaisempiin töihisi. Kun keskustelu ylittää mallin kontekstin, craftforJ tiivistää vanhemmat viestit, jotta työ jatkuu eikä epäonnistu, ja mainitsee sen keskustelussa.
 
-Kun työ ylittää craftforJ:n, voit tiivistää keskustelun ja antaa sen muokkaimesi avustajalle. Se avustaja nappaa työn tarkemmin, kun [webforJ AI -lisäosa](/docs/ai-tooling) on asennettuna.
+Kun työ ylittää craftforJ:n rajoitukset, voit tiivistää keskustelun ja antaa sen editorisi avustajalle. Se avustaja ottaa työn tarkemmin vastaan asennettuna [webforJ AI -laajennuksella](/docs/ai-tooling).
 
-## Sen poistaminen käytöstä {#turning-it-off}
+## Sammuttaminen {#turning-it-off}
 
-[`ai.enabled`](/docs/craftforj/configuration#feature-flags) ominaisuuden käyttö poistaa avustajan kokonaan craftforJ:stä. [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) ominaisuuden käyttö säilyttää avustajan, mutta estää sen kirjoittamasta Javaa oman halunsa mukaan.
+[`ai.enabled`](/docs/craftforj/configuration#feature-flags) -ominaisuus poistaa avustajan craftforJ:stä kokonaan. [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) -ominaisuus pitää avustajan käytössä, mutta estää sen kirjoittamasta omaa Java-koodiaan.
