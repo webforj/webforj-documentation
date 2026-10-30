@@ -1,4 +1,4 @@
-name: Test WAR Build
+name: Test Build
 
 on:
   pull_request:
@@ -34,3 +34,33 @@ jobs:
 
       - name: Verify WAR File Exists
         run: ls -lh target/*.war || (echo "WAR file not found!" && exit 1)
+
+  # `mvn clean package` above does not build the Docusaurus site: the
+  # frontend-maven-plugin only runs under the `prod` profile. This job closes
+  # that gap so a PR cannot merge with a broken docs build.
+  test-frontend-build:
+    name: Test Frontend Build
+    # Docusaurus builds are memory- and CPU-hungry; use the standard runner
+    # (same as translations.yml) rather than ubuntu-slim.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '25.1.0'
+          cache: 'npm'
+          cache-dependency-path: 'docs/package-lock.json'
+
+      - name: Install Node.js dependencies
+        working-directory: ./docs
+        run: npm ci
+
+      # English only: building all seven locales multiplies build time for a
+      # PR check, and the nightly translations workflow already runs the full
+      # all-locale `mvn clean package -Pprod` build.
+      - name: Build Docusaurus site (English only)
+        working-directory: ./docs
+        run: npm run build -- --locale en
