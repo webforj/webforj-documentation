@@ -1,0 +1,76 @@
+name: Sync Vale Styles
+
+on:
+  schedule:
+    # Run weekly on Wednesdays at 06:00 UTC. Offset from translations.yml's
+    # 23:00 UTC nightly run and regenerate-client-component-docs.yml's Monday
+    # 06:00 UTC run so no two bot commits land at the same time.
+    - cron: '0 6 * * 3'
+  workflow_dispatch:
+
+env:
+  # Vale release used to run `vale sync`. Bump this one line to upgrade; the
+  # download URL and checksum file below are derived from it.
+  # Releases: https://github.com/vale-cli/vale/releases
+  VALE_VERSION: '3.25.1'
+
+jobs:
+  sync:
+    name: Sync Vale Google style package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACTOR_TOKEN }}
+
+      - name: Install Vale
+        working-directory: ${{ runner.temp }}
+        run: |
+          base="https://github.com/vale-cli/vale/releases/download/v${VALE_VERSION}"
+          asset="vale_${VALE_VERSION}_Linux_64-bit.tar.gz"
+
+          curl -fsSL -o "$asset" "$base/$asset"
+          curl -fsSL -o checksums.txt "$base/vale_${VALE_VERSION}_checksums.txt"
+          sha256sum --check --ignore-missing checksums.txt
+
+          mkdir -p vale-bin
+          tar -xzf "$asset" -C vale-bin vale
+          echo "$PWD/vale-bin" >> "$GITHUB_PATH"
+          ./vale-bin/vale --version
+
+      # Downloads every package listed under `Packages` in .vale.ini (currently
+      # Google) into StylesPath (.github/.styles), replacing the committed copy.
+      - name: Sync Vale packages
+        run: vale sync
+
+      - name: Commit and push synced styles
+        run: |
+          git config --local user.email "${{ secrets.ACTOR_EMAIL }}"
+          git config --local user.name "${{ secrets.ACTOR_NAME }}"
+
+          if [ -n "$(git status --porcelain .github/.styles/Google/)" ]; then
+            git add .github/.styles/Google/
+            git commit -m "chore: sync Vale Google style package"
+            git push
+          else
+            echo "::notice::Vale Google style package is already up to date - nothing to commit"
+          fi
+
+      - name: Open issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "Sync Vale Styles workflow failed" \
+            --body "The \"Sync Vale Styles\" workflow failed.
+
+          Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          Commit: ${{ github.sha }}
+          Triggered by: ${{ github.event_name }}"
