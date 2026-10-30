@@ -40,7 +40,7 @@ sequenceDiagram
   participant Component as Route Component
 
   User->>Router: Navigate to /admin
-  Router->>Observer: onRouteRendererLifecycleEvent(BEFORE_CREATE)
+  Router->>Observer: onInstantiate(routeClass, context)
   Observer->>Manager: evaluate(routeClass, context)
   Manager->>Manager: Run evaluators by priority
   Manager-->>Observer: RouteAccessDecision
@@ -62,7 +62,7 @@ This flow shows that security evaluation happens before any sensitive route code
 
 The observer intercepts navigation at a specific point in the routing lifecycle:
 
-**Before rendering** The observer's `onRouteRendererLifecycleEvent()` method is called with the `LifecycleEvent.BEFORE_CREATE` event after the route is resolved but before the component is created. This is the critical security checkpoint.
+**Before instantiation** The observer's `onInstantiate()` method is called with the route class after the route is resolved and before the component is instantiated. This is the security checkpoint.
 
 At this point, the router knows which route class will be rendered, but the route hasn't been instantiated yet. The observer can evaluate security annotations on the class without executing route logic.
 
@@ -113,4 +113,4 @@ This is useful during development or for applications that don't require securit
 
 The security observer integrates with the broader [navigation lifecycle](/docs/routing/navigation-lifecycle/overview), where multiple observers can hook into navigation events. Security evaluation happens early in this lifecycle, before navigation blocking or component lifecycle events.
 
-If you implement custom navigation observers, be aware that security evaluation occurs first. If access is denied, your observer's `onRouteRendererLifecycleEvent()` won't be called with `BEFORE_CREATE` because navigation is stopped.
+If you implement custom navigation observers, be aware that security evaluation occurs first. If access is denied, neither your observer's `onInstantiate()` nor its `onRouteRendererLifecycleEvent()` is called, because the route is never instantiated.
