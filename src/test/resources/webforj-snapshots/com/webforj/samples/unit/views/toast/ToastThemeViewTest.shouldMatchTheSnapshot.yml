@@ -1,0 +1,4 @@
+# webforJ testbed snapshot v1
+- Frame:
+  - Toast "The application has a new update available" [composite=Element] [node=dwc-toast]
+  - ToastThemeView [route=toasttheme] [composite=FlexLayout] [node=div]

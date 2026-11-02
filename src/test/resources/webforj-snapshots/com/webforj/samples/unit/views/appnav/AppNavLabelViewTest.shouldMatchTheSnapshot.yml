@@ -1,0 +1,29 @@
+# webforJ testbed snapshot v1
+- AppNavLabelView [route=appnavlabel] [composite=AppLayout] [node=dwc-app-layout]:
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=primary]:
+    - AppDrawerToggle [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - H1 "Admin" [slot=title] [composite=Element] [node=h1]
+  - AppNav [composite=Element] [node=dwc-app-nav]:
+    - AppNavItem "Dashboard" [composite=Element] [node=dwc-app-nav-item] [path=/appnavlabel/Dashboard]:
+      - Icon [slot=prefix] [name=layout-dashboard] [composite=Element] [node=dwc-icon]
+    - AppNavLabel "Analytics" [composite=Element] [node=dwc-app-nav-label]:
+      - Icon [slot=prefix] [name=chart-pie] [composite=Element] [node=dwc-icon]
+      - Badge "2" [slot=suffix] [composite=Element] [node=dwc-badge] [theme=primary]
+    - AppNavItem "Overview" [composite=Element] [node=dwc-app-nav-item] [path=/appnavlabel/Overview]:
+      - Icon [slot=prefix] [name=eye] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Reports" [composite=Element] [node=dwc-app-nav-item] [path=/appnavlabel/Reports]:
+      - Icon [slot=prefix] [name=chart-bar] [composite=Element] [node=dwc-icon]
+    - AppNavLabel "Commerce" [composite=Element] [node=dwc-app-nav-label]:
+      - Icon [slot=prefix] [name=shopping-bag] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Orders" [composite=Element] [node=dwc-app-nav-item] [path=/appnavlabel/Orders]:
+      - Icon [slot=prefix] [name=shopping-cart] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Products" [composite=Element] [node=dwc-app-nav-item] [path=/appnavlabel/Products]:
+      - Icon [slot=prefix] [name=box] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Customers" [composite=Element] [node=dwc-app-nav-item] [path=/appnavlabel/Customers]:
+      - Icon [slot=prefix] [name=address-book] [composite=Element] [node=dwc-icon]
+    - AppNavLabel "Account" [composite=Element] [node=dwc-app-nav-label]:
+      - Icon [slot=prefix] [name=user-cog] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Profile" [composite=Element] [node=dwc-app-nav-item] [path=/appnavlabel/Profile]:
+      - Icon [slot=prefix] [name=user] [composite=Element] [node=dwc-icon]
+    - AppNavItem "Billing" [composite=Element] [node=dwc-app-nav-item] [path=/appnavlabel/Billing]:
+      - Icon [slot=prefix] [name=credit-card] [composite=Element] [node=dwc-icon]

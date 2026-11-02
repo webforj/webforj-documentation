@@ -6,7 +6,7 @@ date: 2025-08-21
 authors: Lauren Alamo
 tags: [styling, front end, responsive design, themes]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/buildingbettercss/cover.png"
-hide_table_of_contents: true
+hide_table_of_contents: false
 ---
 
 <!-- vale Google.FirstPerson = NO -->

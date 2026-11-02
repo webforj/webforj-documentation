@@ -1,0 +1,7 @@
+# webforJ testbed snapshot v1
+- ElementFigureView [route=elementfigure] [composite=FlexLayout] [node=div]:
+  - Card [composite=Element] [node=dwc-card] [expanse=xlarge]:
+    - Element [node=figure]:
+      - Element "Building the entire UI in Java kept our team on one stack." [node=blockquote]
+      - Element [node=figcaption]
+    - H2 "Testimonial" [slot=title] [composite=Element] [node=h2]

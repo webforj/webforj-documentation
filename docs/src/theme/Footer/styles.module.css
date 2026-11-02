@@ -1,0 +1,261 @@
+/* The site footer: the dark surface of the navbar in both themes, so the
+   page is framed top and bottom. Links change color on hover, nothing moves. */
+
+.footer {
+  --ft-bg: #242526; /* the dark navbar */
+  --ft-line: rgb(255 255 255 / 0.1);
+  --ft-text: #f2f3f5;
+  --ft-muted: rgb(255 255 255 / 0.62);
+
+  background-color: var(--ft-bg);
+  color: var(--ft-text);
+}
+
+.inner {
+  max-width: var(--ifm-container-width-xl);
+  margin: 0 auto;
+  padding: var(--dwc-space-3xl) var(--dwc-space-l) var(--dwc-space-l);
+}
+
+/* --- brand and calls to action ------------------------------------------- */
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dwc-space-l);
+  padding-bottom: var(--dwc-space-2xl);
+  border-bottom: 1px solid var(--ft-line);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dwc-space-s);
+}
+
+/* the white logo, as in the navbar */
+.logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.pitch {
+  margin: 0;
+  color: var(--ft-muted);
+  font-size: var(--dwc-font-size-l);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dwc-space-s);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  border-radius: var(--dwc-border-radius);
+  color: var(--ft-text);
+  font-weight: 600;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* the full border again on hover: the site's link styles drop link borders
+   on hover and focus, which made the buttons shrink and shift */
+.button:hover,
+.button:focus {
+  border: 1px solid rgb(255 255 255 / 0.5);
+  background-color: rgb(255 255 255 / 0.06);
+  color: var(--ft-text);
+  text-decoration: none;
+}
+
+.primary {
+  border-color: var(--dwc-color-primary);
+  background-color: var(--dwc-color-primary);
+  color: var(--dwc-color-on-primary-text);
+}
+
+.primary:hover,
+.primary:focus {
+  border: 1px solid var(--dwc-color-primary-light);
+  background-color: var(--dwc-color-primary-light);
+  color: var(--dwc-color-on-primary-text-light);
+}
+
+/* --- link columns ---------------------------------------------------------- */
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--dwc-space-xl) var(--dwc-space-l);
+  padding: var(--dwc-space-2xl) 0;
+}
+
+.title {
+  margin: 0 0 var(--dwc-space-m);
+  color: var(--ft-muted);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  font-weight: var(--dwc-font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.links {
+  display: grid;
+  gap: var(--dwc-space-s);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  color: var(--ft-text);
+  font-size: var(--dwc-font-size-s);
+  transition: color 0.15s ease;
+}
+
+.link:hover,
+.link:focus {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.button:focus-visible,
+.link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* --- copyright ------------------------------------------------------------ */
+
+.bottom {
+  padding-top: var(--dwc-space-l);
+  border-top: 1px solid var(--ft-line);
+}
+
+.copyright {
+  margin: 0;
+  color: var(--ft-muted);
+  font-size: var(--dwc-font-size-s);
+}
+
+.copyright a {
+  color: var(--ft-text);
+}
+
+/* the shared icon row, in the footer's colors in both themes; each icon
+   still takes its network's color on hover */
+.socials {
+  margin-top: var(--dwc-space-xs);
+}
+
+.footer .socials a:not(:hover, :focus) {
+  background-color: rgb(255 255 255 / 0.08);
+  color: var(--ft-text);
+}
+
+/* the phone toggle stays hidden until the phone layout */
+.toggle {
+  display: none;
+}
+
+/* --- smaller screens ------------------------------------------------------- */
+
+/* tablets: the groups flow into three balanced columns, so short groups
+   stack under each other instead of leaving gaps in a grid */
+@media (max-width: 996px) {
+  .columns {
+    display: block;
+    column-count: 3;
+    column-gap: var(--dwc-space-l);
+  }
+
+  .column {
+    break-inside: avoid;
+    margin-bottom: var(--dwc-space-xl);
+  }
+}
+
+/* phones: each group collapses under its title; a tap opens it */
+@media (max-width: 600px) {
+  .inner {
+    /* room under the copyright for the floating "Questions?" launcher */
+    padding: var(--dwc-space-2xl) var(--dwc-space-m) 5.5rem;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .button {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .columns {
+    column-count: 1;
+    padding: var(--dwc-space-s) 0;
+  }
+
+  .column {
+    margin: 0;
+  }
+
+  /* lines between the groups; the copyright's own line closes the last */
+  .column + .column {
+    border-top: 1px solid var(--ft-line);
+  }
+
+  .title {
+    display: none;
+  }
+
+  .toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--dwc-space-m) 0;
+    border: 0;
+    background: none;
+    color: var(--ft-text);
+    font-family: var(--dwc-font-family-mono);
+    font-size: var(--dwc-font-size-xs);
+    font-weight: var(--dwc-font-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .toggle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .chevron {
+    color: var(--ft-muted);
+    transition: transform 0.2s ease;
+  }
+
+  .open .chevron {
+    transform: rotate(180deg);
+  }
+
+  .links {
+    display: none;
+    padding-bottom: var(--dwc-space-m);
+  }
+
+  .open .links {
+    display: grid;
+  }
+}

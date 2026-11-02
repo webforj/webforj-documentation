@@ -1,0 +1,202 @@
+/* "Explore" in the docs sidebar: one suggestion at a time, at one height.
+   The item takes a fill on hover; nothing moves. */
+
+.card {
+  margin-top: var(--dwc-space-m);
+  padding: var(--dwc-space-s);
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-l);
+  background-color: var(--dwc-surface-3);
+}
+
+/* the card's place, held empty until the browser draws the suggestions */
+.pending {
+  height: 137px;
+  visibility: hidden;
+}
+
+/* on short screens the table of contents needs the room */
+@media (max-height: 820px) {
+  .card {
+    display: none;
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dwc-space-s);
+  padding: 0 0 var(--dwc-space-xs) var(--dwc-space-s);
+}
+
+.heading {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  font-weight: var(--dwc-font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.count {
+  min-width: 2.25rem;
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  text-align: center;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--dwc-border-radius);
+  background: none;
+  color: var(--ifm-color-emphasis-800);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.arrow:hover {
+  background-color: var(--dwc-color-primary-alt);
+  color: var(--dwc-color-primary-text);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid var(--dwc-color-primary-text);
+  outline-offset: 1px;
+}
+
+/* the item: one height for tall and wide thumbnails alike */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  height: 5.6rem;
+  padding: var(--dwc-space-s);
+  border: 0 !important;
+  border-radius: var(--dwc-border-radius);
+  color: var(--ifm-font-color-base);
+  transition: background-color 0.15s ease;
+}
+
+.item:hover,
+.item:focus {
+  background-color: var(--dwc-color-primary-alt);
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--dwc-color-primary-text);
+  outline-offset: -2px;
+}
+
+.thumb {
+  position: relative;
+  flex: none;
+  overflow: hidden;
+  border-radius: calc(var(--dwc-border-radius) - 2px);
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* the portrait shape of a short's thumbnail (4:5) */
+.tall {
+  width: 3.8rem;
+  height: 4.75rem;
+}
+
+.wide {
+  width: 5.5rem;
+  height: 3.1rem;
+}
+
+.play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.7rem;
+}
+
+.play svg {
+  box-sizing: content-box;
+  padding: 0.4rem 0.4rem 0.4rem 0.5rem;
+  border-radius: 50%;
+  background-color: rgb(0 0 0 / 0.55);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.kind {
+  color: var(--ifm-color-emphasis-700);
+  font-size: var(--dwc-font-size-xs);
+}
+
+.title {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: var(--dwc-font-size-s);
+  font-weight: 600;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* a narrow sidebar (smaller desktops): the thumbnail goes above the text, the
+   title takes the full width, and the counter steps aside for the arrows */
+@container (max-width: 240px) {
+  .count {
+    display: none;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: stretch;
+    height: 9.25rem;
+  }
+
+  .thumb.wide,
+  .thumb.tall {
+    width: 100%;
+    height: 4.25rem;
+  }
+
+  .title {
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* the narrowest sidebar: the card steps aside for the table of contents */
+@container (max-width: 200px) {
+  .card {
+    display: none;
+  }
+}

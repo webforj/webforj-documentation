@@ -1,0 +1,3 @@
+# webforJ testbed snapshot v1
+- MaskedTimeFieldSpinnerView [route=maskedtimefieldspinner] [composite=FlexLayout] [node=div]:
+  - MaskedTimeFieldSpinner "09:00 am" [label="Available Time Slots"] [placeholder="hh:mm AM/PM"] [value="09:00"] [min="09:00"] [max="17:00"] [step=1.0] [mask="%hz:%mz %p"] [helperText="<b>Min:</b> 09:00 AM, <b>Max:</b> 05:00 PM. Use the spinner to select a time."]

@@ -1,7 +1,7 @@
 .subtitle {
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-color-emphasis-800);
   font-size: 1.05rem;
-  margin-top: 0.5rem;
+  margin: 0.5rem 0 2.5rem;
 }
 
 .tagsGrid {
@@ -16,7 +16,7 @@
   gap: 0.6rem;
   padding: 0.6rem 1.1rem;
   border: 1px solid var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius);
+  border-radius: 2rem;
   background-color: var(--dwc-surface-3);
   color: var(--ifm-font-color-base);
   text-decoration: none;
@@ -27,7 +27,7 @@
 
 .tagCard:hover, .tagCard:focus {
   border: 1px solid var(--dwc-color-primary);
-  color: var(--dwc-color-primary);
+  color: var(--dwc-color-primary-text);
   background-color: var(--dwc-color-primary-alt, var(--dwc-surface-3));
   text-decoration: none;
 }

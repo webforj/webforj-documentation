@@ -6,7 +6,7 @@ date: 2025-09-25
 authors: Lauren Alamo
 tags: [themes, styling]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/webforj-themes/cover.png"
-hide_table_of_contents: true
+hide_table_of_contents: false
 ---
 
 <!-- vale Google.FirstPerson = NO -->
