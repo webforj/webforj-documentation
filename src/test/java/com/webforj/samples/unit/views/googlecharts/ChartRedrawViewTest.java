@@ -24,7 +24,7 @@ class ChartRedrawViewTest {
         ComponentLocator.of(NumberField.class).byLabel("Value for Instagram").locate(), "250");
     UserInteraction.type(
         ComponentLocator.of(NumberField.class).byLabel("Value for LinkedIn").locate(), "900");
-    UserInteraction.click(ComponentLocator.of(Button.class).byText("Redraw Chart").locate());
+    UserInteraction.click(ComponentLocator.of(Button.class).byText("Update Chart").locate());
 
     assertEquals(
         List.of(
@@ -45,7 +45,7 @@ class ChartRedrawViewTest {
 
     UserInteraction.type(
         ComponentLocator.of(NumberField.class).byLabel("Value for Instagram").locate(), "1001");
-    UserInteraction.click(ComponentLocator.of(Button.class).byText("Redraw Chart").locate());
+    UserInteraction.click(ComponentLocator.of(Button.class).byText("Update Chart").locate());
 
     assertEquals(shown, chart.getData());
     assertEquals(
