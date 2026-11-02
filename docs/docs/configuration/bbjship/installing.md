@@ -74,7 +74,7 @@ Enabled http://localhost:8888/webforj-bbjship
 Enabled https://localhost:8443/webforj-bbjship
 ```
 
-Without `--port`, the endpoint uses port 8888. Without `--ssl-port`, it has no HTTPS address. BBjServices must be running. See [Command line](/docs/configuration/bbjship/command-line) for every command.
+Without `--port`, the endpoint uses port 8888. Without `--ssl-port`, it has no HTTPS address. Builds on other machines deploy to the HTTPS address, the endpoint answers HTTP 403 to their requests over HTTP unless `--allow-unencrypted` is given. BBjServices must be running. See [Command line](/docs/configuration/bbjship/command-line) for every command.
 
 :::tip Password on Windows
 On Windows, run `bbjship.cmd` and pass the password with `--password` or `WEBFORJ_BBJ_PASSWORD`. `--password-stdin` isn't available there and ends with exit code `2`.
