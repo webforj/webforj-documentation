@@ -1,0 +1,26 @@
+# webforJ testbed snapshot v1
+- AlertExpansesView [route=alertexpanses] [composite=FlexLayout] [node=div]:
+  - Alert [composite=Element] [node=dwc-alert] [theme=success]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This alert uses the NONE expanse." [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=success] [expanse=xsmall]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This alert uses the XSMALL expanse." [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=success] [expanse=small]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This alert uses the SMALL expanse." [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=success]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This alert uses the MEDIUM expanse." [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=success] [expanse=large]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This alert uses the LARGE expanse." [composite=Element] [node=p]
+  - Alert [composite=Element] [node=dwc-alert] [theme=success] [expanse=xlarge]:
+    - FlexLayout [composite=Element] [node=div]:
+      - Icon [name=alert-square-rounded] [composite=Element] [node=dwc-icon]
+      - Paragraph "This alert uses the XLARGE expanse." [composite=Element] [node=p]

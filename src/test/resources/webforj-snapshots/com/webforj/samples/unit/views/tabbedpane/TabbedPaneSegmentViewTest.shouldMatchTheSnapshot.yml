@@ -1,0 +1,10 @@
+# webforJ testbed snapshot v1
+- TabbedPaneSegmentView [route=tabbedpanesegment] [composite=FlexLayout] [node=div]:
+  - FlexLayout [composite=Element] [node=div]:
+    - TabbedPane [theme=primary]:
+      - Tab "Dashboard" [selected]:
+        - Icon [slot=prefix] [name=dashboard] [composite=Element] [node=dwc-icon]
+      - Tab "Orders":
+        - Icon [slot=prefix] [name=shopping-cart] [composite=Element] [node=dwc-icon]
+      - Tab "Customers":
+        - Icon [slot=prefix] [name=users] [composite=Element] [node=dwc-icon]

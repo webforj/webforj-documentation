@@ -1,0 +1,3 @@
+# webforJ testbed snapshot v1
+- LoginInternationalizationView [route=logininternationalization] [composite=Div] [node=div]:
+  - Login [composite=Element] [node=dwc-login] [opened]

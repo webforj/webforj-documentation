@@ -1,0 +1,11 @@
+# webforJ testbed snapshot v1
+- DialogSectionsView [route=dialogsections] [composite=FlexLayout] [node=div]:
+  - Button "Edit profile" [theme=primary]
+  - Dialog [composite=Element] [node=dwc-dialog] [opened]:
+    - Div "Edit profile" [slot=header] [composite=Element] [node=div]
+    - FlexLayout [slot=content] [composite=Element] [node=div]:
+      - TextField "Alex Morgan" [label=Name]
+      - TextField "alex.morgan@example.com" [label="Email address"]
+    - FlexLayout [slot=footer] [composite=Element] [node=div]:
+      - Button "Cancel"
+      - Button "Save changes" [theme=primary]

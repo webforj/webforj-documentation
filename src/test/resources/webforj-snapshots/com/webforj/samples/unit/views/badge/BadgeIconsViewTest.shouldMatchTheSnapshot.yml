@@ -1,0 +1,34 @@
+# webforJ testbed snapshot v1
+- BadgeIconsView [route=badgeicons] [composite=FlexLayout] [node=div]:
+  - H3 "Icon + Text (label prop)" [composite=Element] [node=h3]
+  - FlexLayout [composite=Element] [node=div]:
+    - Badge "Done" [composite=Element] [node=dwc-badge] [theme=success]:
+      - Icon [name=check-circle] [composite=Element] [node=dwc-icon]
+    - Badge "Error" [composite=Element] [node=dwc-badge] [theme=danger]:
+      - Icon [name=x-circle] [composite=Element] [node=dwc-icon]
+    - Badge "Info" [composite=Element] [node=dwc-badge] [theme=primary]:
+      - Icon [name=info] [composite=Element] [node=dwc-icon]
+    - Badge "Warning" [composite=Element] [node=dwc-badge] [theme=warning]:
+      - Icon [name=alert-triangle] [composite=Element] [node=dwc-icon]
+  - H3 "Icon Only" [composite=Element] [node=h3]
+  - FlexLayout [composite=Element] [node=div]:
+    - Badge [composite=Element] [node=dwc-badge] [theme=success]:
+      - Icon [name=check] [composite=Element] [node=dwc-icon]
+    - Badge [composite=Element] [node=dwc-badge] [theme=danger]:
+      - Icon [name=x] [composite=Element] [node=dwc-icon]
+    - Badge [composite=Element] [node=dwc-badge] [theme=primary]:
+      - Icon [name=bell] [composite=Element] [node=dwc-icon]
+    - Badge [composite=Element] [node=dwc-badge] [theme=gray]:
+      - Icon [name=star] [composite=Element] [node=dwc-icon]
+  - H3 "All Themes with Icon + Text" [composite=Element] [node=h3]
+  - FlexLayout [composite=Element] [node=div]:
+    - Badge "New" [composite=Element] [node=dwc-badge] [theme=primary]:
+      - Icon [name=star] [composite=Element] [node=dwc-icon]
+    - Badge "Live" [composite=Element] [node=dwc-badge] [theme=success]:
+      - Icon [name=radio] [composite=Element] [node=dwc-icon]
+    - Badge "Alert" [composite=Element] [node=dwc-badge] [theme=danger]:
+      - Icon [name=alert-circle] [composite=Element] [node=dwc-icon]
+    - Badge "Draft" [composite=Element] [node=dwc-badge] [theme=gray]:
+      - Icon [name=edit] [composite=Element] [node=dwc-icon]
+    - Badge "Beta" [composite=Element] [node=dwc-badge] [theme=warning]:
+      - Icon [name=zap] [composite=Element] [node=dwc-icon]
