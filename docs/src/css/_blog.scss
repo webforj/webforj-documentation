@@ -686,9 +686,10 @@ html.plugin-blog:not(.blog-wrapper) {
     clip-path: inset(0 -160px);
   }
 
-  // posts keep their space below the navbar
+  // posts keep their space below the navbar, and above the footer
   &.blog-post-page main {
     padding-top: calc(var(--dwc-space-3xl) * 1.5);
+    padding-bottom: calc(var(--dwc-space-3xl) * 1.5);
   }
 }
 
@@ -831,6 +832,9 @@ html.plugin-blog:not(.blog-wrapper) {
       padding: var(--dwc-space-s) 0;
       background-color: var(--dwc-surface-3);
       box-shadow: 0 0 40px 28px var(--dwc-surface-3);
+      // like the post column's, the halo only spreads sideways, never over
+      // the navbar or the footer
+      clip-path: inset(0 -80px);
     }
 
     [class*="tableOfContents"] {
