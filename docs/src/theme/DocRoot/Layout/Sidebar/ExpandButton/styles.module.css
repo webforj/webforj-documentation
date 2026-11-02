@@ -1,0 +1,44 @@
+/* The hidden sidebar's thin column: transparent, with the expand icon held
+   in the middle of the screen as the page scrolls */
+
+@media (min-width: 997px) {
+  .column {
+    position: absolute;
+    inset: 0;
+    /* lay the icon out from the top, so it can stay in the middle of the
+       screen while the column scrolls past */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .column:hover {
+    background-color: var(--dwc-color-primary-alt);
+  }
+
+  .column:focus-visible {
+    outline: 2px solid var(--dwc-color-primary-text);
+    outline-offset: -2px;
+  }
+
+  .icon {
+    position: sticky;
+    top: calc(50vh - 0.6rem);
+    display: flex;
+    justify-content: center;
+    margin-top: calc(50vh - var(--ifm-navbar-height));
+    color: var(--ifm-color-emphasis-600);
+    font-size: 1.15rem;
+    transition: color 0.15s ease;
+  }
+
+  .column:hover .icon {
+    color: var(--dwc-color-primary-text);
+  }
+}

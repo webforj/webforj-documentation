@@ -1,0 +1,416 @@
+/* The navbar's mega menus. Panels follow the site theme, with webforJ's own
+   details: an editor-window preview like the blog cards, mono labels, and
+   the brand blue accent. The preview stage stays dark in both themes, as
+   the screen it shows. */
+
+.root {
+  --mm-bg: var(--dwc-surface-3);
+  --mm-raised: var(--ifm-color-emphasis-100);
+  --mm-line: var(--dwc-border-color);
+  --mm-text: #1c1e21;
+  --mm-muted: #525860;
+  /* the site's own menu hover, as in the docs sidebar and dropdowns */
+  --mm-hover: var(--dwc-color-primary-alt);
+  --mm-accent: var(--dwc-color-primary-text);
+  --mm-dot: var(--ifm-color-emphasis-400);
+  --mm-shadow: 0 18px 44px rgb(15 23 42 / 0.14);
+
+  position: static;
+  padding: 0;
+}
+
+[data-theme='dark'] .root {
+  --mm-bg: #1b1c1f;
+  --mm-raised: #232428;
+  --mm-line: rgb(255 255 255 / 0.09);
+  --mm-text: #f2f3f5;
+  --mm-muted: rgb(255 255 255 / 0.6);
+  --mm-accent: #47a8ff;
+  --mm-dot: rgb(255 255 255 / 0.22);
+  --mm-shadow: 0 18px 44px rgb(0 0 0 / 0.35);
+}
+
+/* Radix wraps the list in a positioned div; release it so the panel
+   anchors to the navbar */
+.root > div {
+  position: static !important;
+}
+
+.list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--ifm-font-weight-semibold);
+  cursor: pointer;
+}
+
+.chevron {
+  font-size: 0.65rem;
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.trigger[data-state='open'] .chevron {
+  transform: rotate(180deg);
+}
+
+/* --- panel ---------------------------------------------------------------- */
+
+/* hangs from the navbar; MegaMenu.js places it under its own trigger and
+   keeps it on the screen */
+.panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: calc(var(--ifm-z-index-fixed) + 5);
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  padding: var(--dwc-space-l);
+  border: 1px solid var(--mm-line);
+  border-radius: var(--dwc-border-radius-l);
+  background-color: var(--mm-bg);
+  color: var(--mm-text);
+  box-shadow: var(--mm-shadow);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .panel[data-state='open'] {
+    transform-origin: 0 0;
+    animation: panel-in 200ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+}
+
+.items {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.groupTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  margin: 0 0 var(--dwc-space-s) var(--dwc-space-s);
+  color: var(--mm-muted);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  font-weight: var(--dwc-font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.label {
+  color: var(--mm-text);
+  font-size: var(--dwc-font-size-m);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tagline {
+  color: var(--mm-muted);
+  font-size: var(--dwc-font-size-s);
+  line-height: 1.4;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tile {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--dwc-border-radius);
+  background-color: rgb(71 168 255 / 0.12);
+  color: var(--mm-accent);
+  font-size: 1rem;
+}
+
+/* the webforJ logo sits on white, as the brand mark is drawn for */
+.tile:has(> img) {
+  background-color: #fff;
+  box-shadow: inset 0 0 0 1px var(--mm-line);
+}
+
+/* entries: the fill changes on hover and focus, nothing moves */
+.product {
+  width: 100%;
+}
+
+.product,
+.compact {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-m);
+  padding: var(--dwc-space-s);
+  border: 0 !important;
+  border-radius: var(--dwc-border-radius);
+  color: var(--mm-text);
+  transition: background-color 0.15s ease;
+}
+
+.product:hover,
+.product:focus,
+.compact:hover,
+.compact:focus {
+  background-color: var(--mm-hover);
+  color: var(--mm-text);
+  text-decoration: none;
+}
+
+/* the product being previewed keeps the hover fill */
+.productActive {
+  background-color: var(--mm-hover);
+}
+
+.product:focus-visible,
+.compact:focus-visible {
+  outline: 2px solid var(--mm-accent);
+  outline-offset: -2px;
+}
+
+/* --- products layout: list and editor-window preview --------------------- */
+
+.products {
+  display: grid;
+  grid-template-columns: minmax(17rem, 20rem) 21rem;
+  gap: var(--dwc-space-l);
+}
+
+.window {
+  display: flex;
+  flex-direction: column;
+  /* its own height, never stretched to the list beside it */
+  align-self: start;
+  overflow: hidden;
+  border: 1px solid var(--mm-line);
+  border-radius: var(--dwc-border-radius-l);
+  background-color: var(--mm-raised);
+}
+
+.windowBar {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-m);
+  height: 2rem;
+  padding: 0 var(--dwc-space-m);
+  border-bottom: 1px solid var(--mm-line);
+}
+
+.dots {
+  flex: none;
+  width: 2.25rem;
+  height: 8px;
+  background:
+    radial-gradient(circle, var(--mm-dot) 0 3px, transparent 3.5px) 0 50% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--mm-dot) 0 3px, transparent 3.5px) 14px 50% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--mm-dot) 0 3px, transparent 3.5px) 28px 50% / 8px 8px no-repeat;
+}
+
+.windowPath {
+  overflow: hidden;
+  color: var(--mm-muted);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.windowBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--dwc-space-m);
+}
+
+/* a fixed stage, so switching products never resizes the panel */
+.previewArea {
+  height: 10.5rem;
+  margin-bottom: var(--dwc-space-m);
+  overflow: hidden;
+  border-radius: var(--dwc-border-radius);
+  background-color: #0f1012;
+}
+
+.previewTitle {
+  margin: 0 0 var(--dwc-space-xs);
+  font-size: var(--dwc-font-size-l);
+  font-weight: 700;
+}
+
+.previewText {
+  min-height: 3.6em;
+  margin: 0 0 var(--dwc-space-m);
+  color: var(--mm-muted);
+  font-size: var(--dwc-font-size-s);
+  line-height: 1.5;
+}
+
+.previewLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  color: var(--mm-accent);
+  font-size: var(--dwc-font-size-s);
+  font-weight: 600;
+}
+
+.previewLink:hover,
+.previewLink:focus {
+  color: var(--mm-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* previews */
+.shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--dwc-border-radius) - 2px);
+  object-fit: cover;
+}
+
+.shot {
+  object-position: 50% 30%;
+}
+
+.videoStage {
+  position: relative;
+  height: 100%;
+}
+
+/* full screen button over a video, shown on hover or keyboard focus */
+.expand {
+  position: absolute;
+  top: var(--dwc-space-s);
+  right: var(--dwc-space-s);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--dwc-border-radius);
+  background-color: rgb(0 0 0 / 0.65);
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.videoStage:hover .expand,
+.expand:focus-visible {
+  opacity: 1;
+}
+
+.expand:hover {
+  background-color: rgb(0 0 0 / 0.85);
+}
+
+@media (hover: none) {
+  .expand {
+    opacity: 1;
+  }
+}
+
+.code {
+  height: 100%;
+  margin: 0;
+  padding: var(--dwc-space-s) 0;
+  overflow: hidden;
+  border-radius: 0;
+  background: none;
+  color: #d4d7dd;
+  font-family: var(--dwc-font-family-mono);
+  font-size: 0.66rem;
+  line-height: 1.6;
+}
+
+.codeLine {
+  display: block;
+  white-space: pre;
+}
+
+.lineNumber {
+  display: inline-block;
+  width: 1.8rem;
+  padding-right: var(--dwc-space-s);
+  color: rgb(255 255 255 / 0.25);
+  text-align: right;
+}
+
+.tokKeyword {
+  color: #c678dd;
+}
+
+.tokType {
+  color: #61afef;
+}
+
+.tokString {
+  color: #98c379;
+}
+
+.tokAnnotation {
+  color: #e5c07b;
+}
+
+.tokComment {
+  color: #7f848e;
+}
+
+/* --- columns layout ------------------------------------------------------ */
+
+.columns {
+  display: grid;
+  grid-auto-columns: minmax(16rem, 1fr);
+  grid-auto-flow: column;
+  gap: var(--dwc-space-xl);
+}
+
+/* the same roomy rows as the product list: an icon tile, title and line */
+.columns .items {
+  gap: var(--dwc-space-xs);
+}
+
+/* --- narrower desktops: stack so the panel stays on the screen ------------ */
+
+@media (max-width: 1180px) {
+  .products {
+    grid-template-columns: minmax(16rem, 18rem) 18rem;
+  }
+
+  .previewArea {
+    height: 8.5rem;
+  }
+
+}

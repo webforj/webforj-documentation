@@ -1,0 +1,387 @@
+.root {
+  position: fixed;
+  right: 1.3rem;
+  bottom: 1.3rem;
+  z-index: calc(var(--ifm-z-index-fixed) + 2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--dwc-space-s);
+}
+
+/* the launcher: a dark pill like the navbar, with a small live dot */
+.launcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  padding: 0.35rem 1.1rem 0.35rem 0.35rem;
+  border: 0;
+  border-radius: 2rem;
+  background-color: var(--dwc-color-primary);
+  color: var(--dwc-color-on-primary-text);
+  font-family: inherit;
+  font-size: var(--dwc-font-size-m);
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.18);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.launcher:hover {
+  background-color: var(--dwc-color-primary-light);
+  color: var(--dwc-color-on-primary-text-light);
+}
+
+.launcher:focus-visible {
+  outline: 2px solid var(--dwc-color-primary-text);
+  outline-offset: 3px;
+}
+
+/* the webforJ mark as the team's avatar, with a small green dot */
+.avatar {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.avatar img {
+  display: block;
+  border-radius: 50%;
+}
+
+.online {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 2px solid var(--dwc-color-primary);
+  border-radius: 50%;
+  background-color: #22c55e;
+}
+
+.panel .online {
+  border-color: var(--dwc-surface-3);
+}
+
+.hello {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  /* just clear of the close button in the corner */
+  margin: 0 var(--dwc-space-m) var(--dwc-space-s) 0;
+}
+
+/* one-click reasons to write */
+.topics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dwc-space-xs);
+  margin: var(--dwc-space-s) 0 var(--dwc-space-m);
+  padding: 0;
+  list-style: none;
+}
+
+.topic {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  padding: 0.5rem 0.75rem;
+  border: 0 !important;
+  border-radius: var(--dwc-border-radius);
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-font-color-base);
+  font-size: var(--dwc-font-size-s);
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.topic svg {
+  flex: none;
+  color: var(--dwc-color-primary-text);
+}
+
+.topic:hover,
+.topic:focus {
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}
+
+[data-theme="dark"] .topic {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+[data-theme="dark"] .topic:hover,
+[data-theme="dark"] .topic:focus {
+  background-color: var(--ifm-color-emphasis-300);
+}
+
+/* the greeting, arriving like a chat message from the team */
+.greeting {
+  position: relative;
+  width: min(18rem, calc(100vw - 2.6rem));
+  padding: var(--dwc-space-m);
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-l) var(--dwc-border-radius-l) var(--dwc-border-radius-s) var(--dwc-border-radius-l);
+  background-color: var(--dwc-surface-3);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.16);
+}
+
+.greetingFrom {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  margin-bottom: var(--dwc-space-s);
+}
+
+.greetingName {
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  font-weight: var(--dwc-font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.greeting .online {
+  border-color: var(--dwc-surface-3);
+}
+
+.greetingText {
+  margin: 0 0 var(--dwc-space-m);
+  color: var(--ifm-font-color-base);
+  font-size: var(--dwc-font-size-m);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.greetingReplies {
+  display: flex;
+  gap: var(--dwc-space-s);
+}
+
+.replyYes,
+.replyNo {
+  padding: 0.4rem 0.85rem;
+  border: 0;
+  border-radius: 2rem;
+  font-family: inherit;
+  font-size: var(--dwc-font-size-s);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.replyYes {
+  background-color: var(--dwc-color-primary);
+  color: var(--dwc-color-on-primary-text);
+}
+
+.replyYes:hover {
+  background-color: var(--dwc-color-primary-light);
+  color: var(--dwc-color-on-primary-text-light);
+}
+
+.replyNo {
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-font-color-base);
+}
+
+.replyNo:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+[data-theme="dark"] .replyNo {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.greetingClose {
+  position: absolute;
+  top: var(--dwc-space-xs);
+  right: var(--dwc-space-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+}
+
+.greetingClose:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .greeting {
+    transform-origin: 100% 100%;
+    animation: greeting-in 260ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  }
+}
+
+@keyframes greeting-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+}
+
+.panel {
+  position: relative;
+  width: min(20rem, calc(100vw - 2.6rem));
+  padding: var(--dwc-space-l);
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-l);
+  background-color: var(--dwc-surface-3);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.16);
+}
+
+.close {
+  position: absolute;
+  top: var(--dwc-space-s);
+  right: var(--dwc-space-s);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+}
+
+.close:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+/* the greeting stays on one line, wave included */
+.title {
+  margin: 0;
+  font-size: var(--dwc-font-size-m);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.text {
+  margin: 0 0 var(--dwc-space-m);
+  color: var(--ifm-color-emphasis-800);
+  font-size: var(--dwc-font-size-m);
+  line-height: 1.5;
+}
+
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--dwc-space-s);
+  padding: 0.6rem 1rem;
+  border: 0 !important;
+  border-radius: var(--dwc-border-radius);
+  background-color: var(--dwc-color-primary);
+  color: var(--dwc-color-on-primary-text);
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.primary:hover,
+.primary:focus {
+  background-color: var(--dwc-color-primary-light);
+  color: var(--dwc-color-on-primary-text-light);
+  text-decoration: none;
+}
+
+.callNote {
+  margin: var(--dwc-space-s) 0 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: var(--dwc-font-size-xs);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.callNote strong {
+  color: var(--ifm-font-color-base);
+  font-weight: 600;
+}
+
+.follow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dwc-space-s);
+  margin-top: var(--dwc-space-m);
+  padding-top: var(--dwc-space-m);
+  border-top: 1px solid var(--dwc-border-color);
+}
+
+.label {
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  font-weight: var(--dwc-font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* a little closer to the corner on phones */
+@media (max-width: 640px) {
+  .root {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+/* the unread badge on the launcher while the greeting waits */
+.badge {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  border: 2px solid var(--dwc-surface-3);
+  border-radius: 1rem;
+  background-color: #ef4444;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* the panel grows out of the launcher in the corner and shrinks back into
+   it, with the same easing as the blog's hero morph */
+@media (prefers-reduced-motion: no-preference) {
+  .panel {
+    transform-origin: 100% 100%;
+    animation: panel-in 220ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  }
+
+  .panel.closing {
+    animation: panel-out 150ms ease-in both;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+@keyframes panel-out {
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}

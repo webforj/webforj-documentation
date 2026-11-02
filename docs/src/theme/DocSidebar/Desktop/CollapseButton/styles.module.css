@@ -1,0 +1,43 @@
+/* The collapse button: a small icon at the foot of the sidebar, muted until
+   hovered. The bar is transparent: the menu scrolls in its own box above it,
+   and the sidebar's right border shows through beside it. */
+
+.bar {
+  display: none;
+}
+
+@media (min-width: 997px) {
+  .bar {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--dwc-space-s) var(--dwc-space-s) var(--dwc-space-s) 0;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--dwc-border-radius);
+  background: none;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.button:hover {
+  background-color: var(--dwc-color-primary-alt);
+  color: var(--dwc-color-primary-text);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--dwc-color-primary-text);
+  outline-offset: 1px;
+}

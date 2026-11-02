@@ -1,0 +1,184 @@
+.label {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  font-weight: var(--dwc-font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* follow row under the share buttons */
+.follow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  margin-top: var(--dwc-space-m);
+}
+
+.follow .label {
+  margin-right: var(--dwc-space-xs);
+}
+
+/* the invitation to talk: one quiet panel on the page surface */
+.talk {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dwc-space-l);
+  margin-top: calc(var(--dwc-space-xl) * 1.5);
+  padding: var(--dwc-space-l) var(--dwc-space-xl);
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-l);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.talkTitle {
+  margin: 0 0 var(--dwc-space-xs);
+  font-size: var(--dwc-font-size-l);
+  font-weight: 700;
+}
+
+.talkText {
+  margin: 0;
+  color: var(--ifm-color-emphasis-800);
+  font-size: var(--dwc-font-size-m);
+}
+
+.talkButton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  padding: 0.6rem 1.1rem;
+  border: 0 !important;
+  border-radius: var(--dwc-border-radius);
+  background-color: var(--dwc-color-primary);
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.talkButton:hover,
+.talkButton:focus {
+  background-color: color-mix(in srgb, var(--dwc-color-primary) 85%, #000);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* related posts as small editor windows, like the blog cards */
+.related {
+  margin-top: calc(var(--dwc-space-xl) * 2);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--dwc-space-l);
+  margin-top: var(--dwc-space-m);
+}
+
+@media (max-width: 996px) {
+  .relatedGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.window {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-l);
+  background-color: var(--dwc-surface-3);
+  color: var(--ifm-font-color-base);
+}
+
+.window:hover,
+.window:focus {
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-m);
+  height: 2rem;
+  padding: 0 var(--dwc-space-m);
+  border-bottom: 1px solid var(--dwc-border-color);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.dots {
+  flex: none;
+  width: 2.25rem;
+  height: 8px;
+  background:
+    radial-gradient(circle, var(--ifm-color-emphasis-400) 0 3px, transparent 3.5px) 0 50% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--ifm-color-emphasis-400) 0 3px, transparent 3.5px) 14px 50% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--ifm-color-emphasis-400) 0 3px, transparent 3.5px) 28px 50% / 8px 8px no-repeat;
+}
+
+[data-theme="dark"] .dots {
+  background:
+    radial-gradient(circle, var(--ifm-color-emphasis-200) 0 3px, transparent 3.5px) 0 50% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--ifm-color-emphasis-200) 0 3px, transparent 3.5px) 14px 50% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--ifm-color-emphasis-200) 0 3px, transparent 3.5px) 28px 50% / 8px 8px no-repeat;
+}
+
+.file {
+  overflow: hidden;
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* the cover fills the window under the bar, like the blog cards */
+.cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  border-bottom: 1px solid var(--dwc-border-color);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--dwc-space-s);
+  padding: var(--dwc-space-l);
+}
+
+.title {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: var(--dwc-font-size-l);
+  font-weight: 700;
+  line-height: 1.35;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--ifm-color-emphasis-700);
+  font-size: var(--dwc-font-size-m);
+  line-height: 1.6;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.meta {
+  margin-top: auto;
+  color: var(--ifm-color-emphasis-700);
+  font-size: var(--dwc-font-size-s);
+}

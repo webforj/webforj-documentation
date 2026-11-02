@@ -1,0 +1,129 @@
+/* a quiet card in the side column: a light brand tint and a soft blue edge,
+   with the Contact us button as its one strong element */
+.card {
+  flex: none;
+  margin-top: var(--dwc-space-xl);
+  padding: var(--dwc-space-l);
+  border: 1px solid color-mix(in srgb, var(--dwc-color-primary) 20%, transparent);
+  border-radius: var(--dwc-border-radius-l);
+  background-color: color-mix(in srgb, var(--dwc-color-primary) 5%, var(--dwc-surface-3));
+}
+
+[data-theme="dark"] .card {
+  border-color: color-mix(in srgb, var(--dwc-color-primary-text) 30%, transparent);
+  background-color: color-mix(in srgb, var(--dwc-color-primary) 12%, var(--dwc-surface-3));
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+  margin-bottom: var(--dwc-space-m);
+}
+
+.avatar {
+  position: relative;
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.avatar img {
+  display: block;
+  border-radius: 50%;
+}
+
+/* the team is there: a small green dot on the mark */
+.online {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 2px solid var(--dwc-surface-3);
+  border-radius: 50%;
+  background-color: #22c55e;
+}
+
+.teamName {
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  font-weight: var(--dwc-font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 var(--dwc-space-xs);
+  font-size: var(--dwc-font-size-m);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.text {
+  margin: 0 0 var(--dwc-space-l);
+  color: var(--ifm-color-emphasis-800);
+  font-size: var(--dwc-font-size-s);
+  line-height: 1.55;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--dwc-space-s);
+  padding: 0.5rem 1rem;
+  border: 0 !important;
+  border-radius: var(--dwc-border-radius);
+  background-color: var(--dwc-color-primary);
+  color: var(--dwc-color-on-primary-text);
+  font-size: var(--dwc-font-size-s);
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.contact:hover,
+.contact:focus {
+  background-color: var(--dwc-color-primary-light);
+  color: var(--dwc-color-on-primary-text-light);
+  text-decoration: none;
+}
+
+.contact:focus-visible {
+  outline: 2px solid var(--dwc-color-primary-text);
+  outline-offset: 2px;
+}
+
+.icons {
+  justify-content: center;
+  margin-top: var(--dwc-space-l);
+}
+
+/* a narrow sidebar (smaller desktops): the card keeps its title, button and
+   icons, and drops the team line and the sentence, so the table of contents
+   above keeps its room */
+@container (max-width: 240px) {
+  .card {
+    padding: var(--dwc-space-m);
+  }
+
+  .team,
+  .text {
+    display: none;
+  }
+
+  .title {
+    margin-bottom: var(--dwc-space-s);
+  }
+}
+
+/* the narrowest sidebar (just above the phone layout): the card steps aside
+   so the table of contents has the column; the navbar "Contact us" link and
+   the "Questions?" launcher stay in reach */
+@container (max-width: 200px) {
+  .card {
+    display: none;
+  }
+}

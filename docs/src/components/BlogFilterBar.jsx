@@ -2,20 +2,78 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import clsx from 'clsx';
+import Translate, { translate } from '@docusaurus/Translate';
+import { useBlogListingCount } from './BlogListingCount';
 import styles from './BlogFilterBar.module.css';
 
-const CATEGORIES = [
-  { label: 'All', path: '/blog' },
-  { label: 'Release', path: '/blog/tags/release' },
-  { label: 'Tutorial', path: '/blog/tags/tutorial' },
-  { label: 'Components', path: '/blog/tags/components' },
-  { label: 'Integrations', path: '/blog/tags/integrations' },
-  { label: 'Styling', path: '/blog/tags/styling' },
-  { label: 'Community', path: '/blog/tags/community' },
-];
+function getCategories() {
+  return [
+    {
+      label: translate({ id: 'component.blogFilterBar.all', message: 'All' }),
+      path: '/blog',
+    },
+    {
+      label: translate({ id: 'component.blogFilterBar.release', message: 'Release' }),
+      path: '/blog/tags/release',
+    },
+    {
+      label: translate({ id: 'component.blogFilterBar.tutorial', message: 'Tutorial' }),
+      path: '/blog/tags/tutorial',
+    },
+    {
+      label: translate({ id: 'component.blogFilterBar.components', message: 'Components' }),
+      path: '/blog/tags/components',
+    },
+    {
+      label: translate({ id: 'component.blogFilterBar.integrations', message: 'Integrations' }),
+      path: '/blog/tags/integrations',
+    },
+    {
+      label: translate({ id: 'component.blogFilterBar.styling', message: 'Styling' }),
+      path: '/blog/tags/styling',
+    },
+    {
+      label: translate({ id: 'component.blogFilterBar.community', message: 'Community' }),
+      path: '/blog/tags/community',
+    },
+  ];
+}
+
+// The command shown in the terminal line above the filter, echoing the
+// current listing
+function promptCommand(pathname) {
+  const path = pathname.replace(/\/+$/, '');
+  const tag = path.match(/^\/blog\/tags\/([^/]+)/);
+  if (tag) {
+    return `ls --tag=${tag[1]}`;
+  }
+  if (path === '/blog/tags') {
+    return 'ls --tags';
+  }
+  const page = path.match(/^\/blog\/page\/(\d+)/);
+  return page ? `ls --latest --page=${page[1]}` : 'ls --latest';
+}
+
+// The count printed as the output of the command, e.g. "12 posts"
+function listingOutput({ count, unit }) {
+  if (unit === 'tag') {
+    return count === 1
+      ? translate({ id: 'component.blogFilterBar.tags.one', message: '{count} tag' }, { count })
+      : translate({ id: 'component.blogFilterBar.tags.other', message: '{count} tags' }, { count });
+  }
+  return count === 1
+    ? translate({ id: 'component.blogFilterBar.posts.one', message: '{count} post' }, { count })
+    : translate({ id: 'component.blogFilterBar.posts.other', message: '{count} posts' }, { count });
+}
+
+// Must match `blog.postsPerPage` in docusaurus.config.js
+const POSTS_PER_PAGE = 12;
 
 export default function BlogFilterBar() {
   const { pathname } = useLocation();
+  const listing = useBlogListingCount();
+  const categories = getCategories();
+  const page = Number(pathname.match(/^\/blog\/page\/(\d+)/)?.[1] ?? 1);
 
   const isActive = (path) => {
     if (path === '/blog') {
@@ -25,18 +83,41 @@ export default function BlogFilterBar() {
   };
 
   return (
-    <div className={styles.filterBar}>
-      {CATEGORIES.map(({ label, path }) => (
-        <Link
-          key={label}
-          to={path}
-          className={clsx(styles.filterButton, {
-            [styles.active]: isActive(path),
-          })}
-        >
-          {label}
-        </Link>
-      ))}
-    </div>
+    <>
+      {/* a command that has already run, with its output, so it reads as a
+          log line rather than a field to type into */}
+      {/* the issue numbers of the posts below continue across pages */}
+      <p
+        className={styles.prompt}
+        style={{ counterReset: `blog-issue ${(page - 1) * POSTS_PER_PAGE}` }}>
+        ~/webforj/blog $ {promptCommand(pathname)}
+        {listing && (
+          <span className={styles.output}>
+            {' '}→ {listingOutput(listing)}
+          </span>
+        )}
+        <span className={styles.caret} aria-hidden="true" />
+        {' '}
+        <a className={styles.rss} href="/blog/rss.xml" title={translate({
+          id: 'component.blogFilterBar.rssTitle',
+          message: 'Subscribe to the blog feed',
+        })}>
+          rss
+        </a>
+      </p>
+      <div className={styles.filterBar}>
+        {categories.map(({ label, path }) => (
+          <Link
+            key={label}
+            to={path}
+            className={clsx(styles.filterButton, {
+              [styles.active]: isActive(path),
+            })}
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+    </>
   );
 }

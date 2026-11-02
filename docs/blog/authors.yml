@@ -2,10 +2,12 @@ webforJ:
   name: webforJ Team
   image_url: /img/webforj_icon.svg
   title: webforJ Development Team
-  page: true
+  page:
+    permalink: /webforj
   socials:
     github: webforj
     linkedin: https://www.linkedin.com/company/webforj/
+    youtube: https://www.youtube.com/@webforJ
 Matthew Hawkins:
   name: Matthew Hawkins
   image_url: /img/authors/mhawkins.jpg
