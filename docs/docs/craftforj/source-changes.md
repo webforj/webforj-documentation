@@ -1,6 +1,7 @@
 ---
-title: Writing Changes to Source
+title: Applying Changes
 sidebar_position: 4
+sidebar_class_name: new-content
 description: Review the changes you made in craftforJ as a diff, choose where each one is written, and apply them to your Java source.
 ---
 

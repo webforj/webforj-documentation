@@ -1,6 +1,7 @@
 ---
 title: Inspecting Components
 sidebar_position: 3
+sidebar_class_name: new-content
 description: Browse the component tree webforJ built, select components from the page, and change their properties while the app runs.
 ---
 
@@ -44,7 +45,11 @@ You can trace any component back to the Java that built it. By default, the sour
 
 Right-clicking a component in the tree and choosing **Remove Component** offers two ways to take it out. One removes it from the app in front of you, and the other removes it from your project.
 
-<!-- TODO: add recording -->
+<div class="videos-container">
+  <video controls preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/delete-components.mp4#t=0.5" type="video/mp4" />
+  </video>
+</div>
 
 ### Removing from the browser only {#removing-from-the-browser-only}
 
