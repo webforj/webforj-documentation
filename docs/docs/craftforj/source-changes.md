@@ -43,7 +43,7 @@ This is the only point where your reload setup matters. craftforJ doesn't need l
 
 ## Undoing and redoing <DocChip chip='since' label='26.03' /> {#undoing-and-redoing}
 
-Press <kbd>Cmd/Ctrl</kbd> + <kbd>Z</kbd> in craftforJ to undo your last change, and <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> to redo it. While you're typing in a field, these shortcuts act on the field's text instead.
+Press <kbd>Cmd/Ctrl</kbd> + <kbd>Z</kbd> in craftforJ to undo your last change, and <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> to redo it.
 
 Undo works on the changes you make in the running app, from [property edits](/docs/craftforj/inspector#reading-and-changing-properties) to [theme adjustments](/docs/craftforj/theme#adjusting-a-theme). It also works on changes craftforJ has written to your project, such as applied property changes, a [saved theme](/docs/craftforj/theme#saving-a-theme), or a [component removed from source](/docs/craftforj/inspector#removing-a-component). Undoing a written change puts the file back the way it was. When that file is Java, your app has to rebuild before the change shows, the same as [after you apply](#after-you-apply).
 
