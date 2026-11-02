@@ -170,6 +170,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          cache: 'maven'
 
       - name: Set up Maven
         if: steps.translate.outputs.has_changes == 'true'
