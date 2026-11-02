@@ -24,7 +24,7 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 - webforJ version and Java version
 - Theme Color and Icon
 - Archetype
-- **Flavor** - Select **webforJ Spring** to create a Spring Boot project
+- **Runs on** - Select **Spring Boot** to create a Spring Boot project
 
 Using this information, startforJ will create a basic project from your chosen archetype configured for Spring Boot.
 You can choose to download your project as a ZIP file or publish it directly to GitHub.

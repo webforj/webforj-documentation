@@ -39,6 +39,6 @@ The following components are available and map to their corresponding HTML eleme
 
 ## Working with children {#working-with-children}
 
-Components marked with ✔️ in the **Children** column support adding, removing, and accessing child components. These methods are provided through the [`Element`](../building-ui/element#component-interaction) class.
+Every HTML component extends `HtmlComponent`. Components marked with ✔️ in the **Children** column extend `HtmlComponentContainer`, which adds the methods for adding, removing, and accessing child components. Components without children, such as `Break`, extend `HtmlComponent` directly.
 
 For creating arbitrary HTML elements beyond those listed here, or for embedding custom web components, see the [`Element`](../building-ui/element) documentation.

@@ -12,6 +12,8 @@ path='/webforj/tableeditdata'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableEditDataView.java',
   'src/main/java/com/webforj/samples/views/table/TitleEditorComponent.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
 ]}
 height='600px'
 />

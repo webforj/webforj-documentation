@@ -28,7 +28,7 @@ The `BusyIndicator` component in webforJ allows you to display a backdrop to blo
 The `BusyIndicator` shows a backdrop by default. You can control the visibility of the backdrop using the `setBackdropVisible()` method, as shown below:
 
 ```java
-BusyIndicator busyIndicator = getBusyIndicator();
+BusyIndicator busyIndicator = App.getBusyIndicator();
 busyIndicator.setBackdropVisible(false);  // Disables the backdrop
 busyIndicator.open();
 ```

@@ -58,6 +58,10 @@ Three goals bind to phases you already run, so a normal `mvn package` or `./grad
 | `clean` | `webforjCleanFrontend` | with the clean phase | Removes the generated frontend |
 | `watch` | `webforjWatch` | by hand, alongside the app | Rebuilds on change during development |
 | `push-keys` | `webforjPushKeys` | by hand, once per deployment | Generates the key pair for [push notifications](/docs/advanced/push-notifications) and prints the configuration lines |
+| `bbj-setup` | Maven only | by hand, on the BBj machine | Installs [BBjShip](/docs/configuration/bbjship/installing#through-the-maven-plugin) in the local BBj and enables its deployment endpoint |
+| `bbj-package` | Maven only | with the package phase, with a `<bbj>` block | Writes the [BBj deployment archive](/docs/configuration/bbjship/deploying#package-without-deploying) |
+| `bbj-deploy` | Maven only | with the install phase, with a `<bbj>` block | [Deploys the app](/docs/configuration/bbjship/deploying#deploy) to BBjServices |
+| `bbj-undeploy` | Maven only | by hand | [Removes the app](/docs/configuration/bbjship/deploying#undeploy) from BBjServices |
 
 Start the watch as the goal before the one that runs the app, `mvn compile webforj:watch spring-boot:run` for example. An archetype project sets this as the default goal, so `mvn` alone starts everything. Its reload behavior is covered in [Frontend watch](/docs/configuration/deploy-reload/frontend-watch).
 

@@ -7,7 +7,7 @@ description: Apply code changes to a running webforJ app during development, on 
 
 During development, webforJ applies saved changes to the running app and updates the browser. Class changes reach the app through a [hotswap tool](/docs/configuration/deploy-reload/hotswap) or through a restart. Live reload updates the browser after either.
 
-Projects created from an [archetype](/docs/introduction/getting-started) come configured. For an existing project, follow [Spring Boot](/docs/configuration/deploy-reload/spring-devtools) or [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin).
+Projects created from an [archetype](/docs/introduction/getting-started) come configured. For an existing project, follow [Spring Boot](/docs/configuration/deploy-reload/spring-devtools), [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin), or [BBjServices](/docs/configuration/deploy-reload/bbjservices).
 
 ## How each change applies {#how-each-change-applies}
 
@@ -15,6 +15,7 @@ Projects created from an [archetype](/docs/introduction/getting-started) come co
 |---|---|---|
 | Java class, hotswap tool attached | The class updates in the running app. The affected part of the page rebuilds and the app state stays. | [Hotswap](/docs/configuration/deploy-reload/hotswap) |
 | Java class, no hotswap tool | The app restarts. The browser reloads when the app is ready. | [Spring Boot](/docs/configuration/deploy-reload/spring-devtools), [Jetty](/docs/configuration/deploy-reload/maven-jetty-plugin) |
+| Java class in BBjServices, no hotswap tool | The change doesn't apply until the watch starts again. | [BBjServices](/docs/configuration/deploy-reload/bbjservices) |
 | Stylesheet or image | The page applies it in place, without a reload. | [Settings](#settings) |
 | Source under `src/main/frontend` | The watch rebuilds it and updates the browser. | [Frontend watch](/docs/configuration/deploy-reload/frontend-watch) |
 

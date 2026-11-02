@@ -1,43 +1,45 @@
 ---
 sidebar_position: 20
-title: Kentät
+title: Fields
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: 288d408cb058dbaa417fea651698123a
+description: >-
+  Share common field properties across webforJ input components, including
+  labels, helper text, required state, spellcheck, and prefix or suffix slots.
+_i18n_hash: 56462cf4d659ce15f72a624acae60f0f
 ---
-<JavadocLink type="foundation" location="com/webforj/component/field/AbstractField"/>
+<JavadocLink type="foundation" location="com/webforj/component/field/DwcField"/>
 
-webforJ-kehys tukee seitsemää erilaista kenttäkomponenttia, joilla on erilaiset käyttäytymis- ja toteutusominaisuudet, jotka sopivat erilaisiin syöttötarpeisiin. Vaikka jokaisella näistä komponenteista on eroja toteutuksissaan, tämä artikkeli kuvaa yhteisiä ominaisuuksia kaikille kenttäluokille.
+webforJ-kehys tukee yksitoista eri kenttäkomponenttityyppiä, mukaan lukien neljä maskattua kenttää, joilla on erilaisia käyttäytymisiä ja toteutuksia, jotka sopivat erilaisiin syöttötarpeisiin. Vaikka jokaisella näistä komponenteista on eroja toteutuksissaan, tämä artikkeli kuvaa yhteiset ominaisuudet kaikille kenttäluokille.
 
 :::info
-Tämä osio kuvaa erilaisia kenttäkomponentteja koskevia yhteisiä ominaisuuksia webforJ:ssä, eikä se itsessään ole luokka, jota voidaan instanssia ja käyttää.
+Tässä osiossa kuvataan monien kenttäkomponenttien yleisiä ominaisuuksia webforJ:ssä, ja se ei itsessään ole luokka, jota voidaan instansioida ja käyttää.
 :::
 
 ## Yhteiset kenttäominaisuudet {#shared-field-properties}
 
 ### Otsikko {#label}
 
-Kenttäotsikko on kuvaileva teksti tai nimi, joka liittyy kenttään ja joka voidaan määrittää konstruktorissa tai käyttämällä `setLabel()`-metodia. Otsikot tarjoavat lyhyen selityksen tai kehotuksen auttaakseen käyttäjiä ymmärtämään kyseisen kentän tarkoituksen tai odotetun syötteen. Kenttäotsikoilla on tärkeä merkitys käytettävyyden kannalta ja ne ovat ratkaisevassa roolissa esteettömyydessä, sillä ne mahdollistavat ruudunlukijoiden ja apuvälineiden tarjoavan tarkkaa tietoa ja helpottavan näppäimistön navigointia.
+Kenttäotsikko on kuvaileva teksti tai nimike, joka liittyy kenttään ja jonka voi määrittää konstruktiossa tai käyttämällä `setLabel()`-menetelmää. Otsikot tarjoavat lyhyen selityksen tai vihjeen, joka auttaa käyttäjiä ymmärtämään kyseisen kentän tarkoitusta tai odotettua syötettä. Kenttäotsikot ovat tärkeitä käytettävyyden kannalta ja niillä on keskeinen rooli saavutettavuudessa, sillä ne mahdollistavat ruudunlukijoiden ja apuvälineiden tarjoavan tarkkaa tietoa ja helpottavan näppäimistön navigointia.
 
 ### Aputeksti {#helper-text}
 
-Jokainen kenttä voi näyttää aputekstiä syötteen alla käyttämällä `setHelperText()`-metodia. Tämä aputeksti tarjoaa lisäkontekstia tai selityksiä saatavilla olevista syötteistä, varmistaen että käyttäjillä on tarvittavat tiedot tehdä informoituja valintoja.
+Jokainen kenttä voi näyttää aputekstiä syötteen alapuolella käyttämällä `setHelperText()`-menetelmää. Tämä aputeksti tarjoaa lisäkontekstia tai selityksiä käytettävissä olevista syötteistä varmistaen, että käyttäjillä on tarvittavat tiedot harkittujen valintojen tekemiseksi.
 
 ### Pakollinen {#required}
 
-Voit kutsua `setRequired(true)`-metodia vaatiaksesi käyttäjiä antamaan arvon ennen lomakkeen lähettämistä. Tämä ominaisuus toimii yhdessä kenttäotsikon kanssa, tarjoten visuaalisen vihjeen siitä, että kenttä on välttämätön. Tämä visuaalinen vihje auttaa henkilöitä täyttämään lomakkeita tarkasti.
+Voit kutsua `setRequired(true)`-menetelmää vaatiaksesi, että käyttäjä antaa arvon ennen lomakkeen lähettämistä. Tämä ominaisuus toimii yhdessä kenttäotsikon kanssa, tarjoten visuaalisen indikaation siitä, että kenttä on välttämätön. Tämä visuaalinen vihje auttaa yksilöitä täyttämään lomakkeita tarkasti.
 
 :::info
-Kenttäkomponenteissa on sisäänrakennettua visuaalista validointia, joka ilmoittaa käyttäjille, kun pakollinen kenttä on tyhjillään tai jos käyttäjä on poistanut arvon.
+Kenttäkomponentit sisältävät sisäänrakennettua visuaalista validoimista ilmoittaakseen käyttäjille, kun pakollinen kenttä on tyhjää tai jos käyttäjä on poistanut arvon.
 :::
 
 ### Oikoluku {#spellcheck}
 
-Käyttämällä `setSpellCheck(true)`, voit antaa selaimen tai käyttäjäagentin tarkistaa käyttäjän syöttämän tekstin oikeinkirjoituksen ja tunnistaa virheet.
+Käyttämällä `setSpellCheck(true)` voit sallia selaimen tai käyttäjäagentin tarkistaa syötetyn tekstin oikeinkirjoituksen ja tunnistaa mahdolliset virheet.
 
-### Etuliite ja jälkiliite {#prefix-and-suffix}
+### Etuliite ja pääte {#prefix-and-suffix}
 
-Paikat tarjoavat joustavia vaihtoehtoja kenttäkomponenttien toimintakyvyn parantamiseksi. Voit liittää kenttään kuvakkeita, nimilappuja, lataussymboleita, tyhjennys/nollausmahdollisuuksia, avatar/profiilikuvaleita sekä muita hyödyllisiä komponentteja, jotta käyttäjille voidaan selkeyttää tarkoitetut merkitykset. Kentillä on kaksi paikkaa: `prefix`- ja `suffix`-paikat. Käytä `setPrefixComponent()`- ja `setSuffixComponent()`-metodeja lisätäksesi erilaisia komponentteja ennen ja jälkeen näytettävän vaihtoehdon kentässä. Tässä on esimerkki käytettäessä `TextField`-kenttää:
+Slotit tarjoavat joustavia vaihtoehtoja kenttäkomponenttien kyvykkyyden parantamiseksi. Voit liittää kentän sisään kuvakkeita, otsikoita, latauspyörijöitä, tyhjennys/palautusmahdollisuuksia, avatar/profiilikuvia ja muita hyödyllisiä komponentteja, jotta käyttäjille selvennetään aikomuksia. Kentillä on kaksi slotia: `prefix` ja `suffix` -slotit. Käytä `setPrefixComponent()` ja `setSuffixComponent()` -menetelmiä eri komponenttien lisäämiseksi näyttövalinnan eteen ja taakse kentässä. Tässä on esimerkki `TextField`-kentän käytöstä:
 
 ```java
 TextField textField = new TextField();
@@ -45,10 +47,10 @@ textField.setPrefixComponent(TablerIcon.create("box"));
 textField.setSuffixComponent(TablerIcon.create("box"));
 ```
 
-## Tyylittely {#styling}
+## Tyylitys {#styling}
 
 :::info
-Koska kaikki kenttäkomponentit on rakennettu yhdestä verkkokomponentista, ne jakavat kaikki seuraavat Shadow Parts ja CSS-ominaisuus arvot.
+Koska kaikki kenttäkomponentit on rakennettu yhdestä verkkokomponentista, ne jakavat kaikki seuraavat Shadow Parts ja CSS-ominaisuusasetukset.
 :::
 
 <TableBuilder name="Field" />

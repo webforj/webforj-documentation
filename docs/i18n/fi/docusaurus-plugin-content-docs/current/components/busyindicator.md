@@ -4,16 +4,16 @@ sidebar_position: 10
 description: >-
   Block the entire interface during long-running operations using the
   BusyIndicator overlay with a customizable spinner, message, and backdrop.
-_i18n_hash: 663fb0d605695631bad3753aadf178e5
+_i18n_hash: a6ab827c0422e8f10369500acc310007
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-loading" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BusyIndicator" top='true'/>
 
-`BusyIndicator` on täysikokoiseen peittoon, joka ilmoittaa meneillään olevasta prosessista ja estää käyttäjäinteraktion, kunnes prosessi on valmis. Se peittää koko käyttöliittymän toimien aikana, kuten alustamis- tai tietosynkronoinneissa. Kun [`Loading`](../components/loading) komponentti keskittyy käyttöliittymän tiettyihin alueisiin, `BusyIndicator` soveltuu globaaliin käyttöön.
+`BusyIndicator` on koko näytön peite, joka merkitsee meneillään olevaa prosessia ja estää käyttäjäinteraktion, kunnes se on valmis. Se kattaa koko käyttöliittymän toimenpiteiden, kuten alustamisen tai tietojen synkronoinnin aikana. Vaikka [`Loading`](../components/loading) komponentti keskittyy tiettyihin alueisiin käyttöliittymässä, `BusyIndicator` vaikuttaa globaalisti.
 
-`BusyIndicator` näkyy spinaajana ilman erityistä konfiguraatiota. Voit lisätä viestin, vaihtaa spinaajan teeman tai säätää näkyvyysasetuksia, kun prosessi tarvitsee lisää kontekstia.
+`BusyIndicator` näkyy pyörijänä ilman, että määrityksiä tarvitaan. Voit lisätä viestin, vaihtaa pyörijän teeman tai säätää näkyvyysasetuksia, kun prosessille tarvitaan enemmän kontekstia.
 
 <!-- INTRO_END -->
 
@@ -25,24 +25,24 @@ height='300px'
 
 ## Taustat {#backdrops}
 
-`BusyIndicator` komponentti webforJ:ssä mahdollistaa taustan näyttämisen, joka estää käyttäjäinteraktion prosessin aikana. Oletuksena komponentti mahdollistaa taustan, mutta voit halutessasi kytkeä sen pois päältä.
+`BusyIndicator` komponentti webforJ:ssä mahdollistaa taustan näyttämisen, joka estää käyttäjäinteraktion, kun prosessi on käynnissä. Oletusarvoisesti komponentti mahdollistaa taustan, mutta voit valita sen poistamisen tarvittaessa.
 
-`BusyIndicator` näyttää taustan oletuksena. Voit hallita taustan näkyvyyttä käyttämällä `setBackdropVisible()` menetelmää, kuten alla on esitetty:
+`BusyIndicator` näyttää taustan oletuksena. Voit hallita taustan näkyvyyttä `setBackdropVisible()` -metodin avulla, kuten alla on esitetty:
 
 ```java
-BusyIndicator busyIndicator = getBusyIndicator();
+BusyIndicator busyIndicator = App.getBusyIndicator();
 busyIndicator.setBackdropVisible(false);  // Poistaa taustan käytöstä
 busyIndicator.open();
 ```
-:::info Taustan Poistaminen
-Vaikka poistat taustan käytöstä, `BusyIndicator` komponentti jatkaa käyttäjäinteraktion estämistä varmistaakseen, että taustalla oleva prosessi valmistuu keskeytyksettä. Tausta hallitsee vain visuaalista peittoa, ei interaktion estäytymistä.
+:::info Taustan poistaminen
+Vaikka poistat taustan käytöstä, `BusyIndicator` komponentti jatkaa käyttäjäinteraktion estämistä varmistaakseen, että taustalla oleva prosessi valmistuu keskeytyksettä. Tausta ohjaa vain visuaalista peitettä, ei interaktion estokäyttäytymistä.
 :::
 
 ## `Spinner` {#spinner}
 
-`BusyIndicator` komponentti webforJ:ssä sisältää `Spinner`-osion, joka visuaalisesti ilmoittaa, että taustaprosessi on käynnissä. Voit mukauttaa tätä spinaajaa useilla vaihtoehdoilla, kuten sen koossa, nopeudessa, suunnassa, teemassa ja näkyvyydessä.
+`BusyIndicator` komponentti webforJ:ssä sisältää `Spinnerin`, joka visuaalisesti osoittaa, että taustalla oleva operaatio on käynnissä. Voit mukauttaa tätä pyörijää useilla vaihtoehdoilla, mukaan lukien sen koko, nopeus, suunta, teema ja näkyvyys.
 
-Tässä on esimerkki siitä, kuinka voit mukauttaa spinaajaa `BusyIndicator` komponentin sisällä:
+Tässä on esimerkki siitä, miten voit mukauttaa pyörijää `BusyIndicator` komponentissa:
 
 <ComponentDemo
 path='/webforj/busyspinnerdemo'
@@ -51,14 +51,14 @@ height='200px'
 />
 
 ## Käyttötapaukset {#use-cases}
-- **Koko Sivun Prosessointi**
-   `BusyIndicator` soveltuu hyvin suuremmille, koko sivun laajuisille toiminnoille, kuten kun käyttäjä aloittaa tehtävän, joka vaikuttaa koko sivuun, kuten tiedoston lataaminen tai tietojen käsittely useilla alueilla. Se voi ilmoittaa käyttäjille, että koko sovellus on työn alla, estäen lisäinteraktiot prosessin täydelliseen valmistumiseen saakka.
+- **Koko sivun käsittely**
+   `BusyIndicator` on hyvin soveltuva suuremmille, koko sivun operaatioille, kuten silloin, kun käyttäjä käynnistää tehtävän, joka vaikuttaa koko sivuun, kuten tiedoston lataamiseen tai tietojen käsittelyyn useilla alueilla. Se voi tiedottaa käyttäjille, että koko sovellus on toiminnassa, estäen lisäinteraktion, kunnes prosessi on valmis.
 
-- **Kriittiset Järjestelmätoiminnat**
-   Kun suoritat järjestelmän kriittisiä tehtäviä, kuten tietojen synkronointia, järjestelmälaajuisia päivityksiä tai arkaluontoisten tietojen käsittelyä, `BusyIndicator` antaa selkeää visuaalista palautetta siitä, että merkittävä toimintaprosessi on käynnissä, jolloin käyttäjä voi odottaa sen valmistumista.
+- **Kriittiset järjestelmätoimenpiteet**
+   Kun suoritetaan järjestelmän kriittisiä tehtäviä, kuten tietojen synkronointia, järjestelmälaajuisten päivitysten tekemistä tai arkaluontoisten tietojen käsittelyä, `BusyIndicator` antaa selvää visuaalista palautetta siitä, että merkittävä operaatio on käynnissä, jolloin käyttäjä voi odottaa sen valmistuvan.
 
-- **Asynkroniset Tiedon Lataukset**
-   Tapahtumissa, joissa on mukana asynkronista tietojenkäsittelyä, kuten useiden API:iden kutsuminen tai monimutkaisten laskentatehtävien odottaminen, `BusyIndicator` komponentti aktiivisesti ilmoittaa, että järjestelmä on varattu, kehottaen käyttäjiä odottamaan ennen lisätoimenpiteitä.
+- **Asynkroniset tietokuormat**
+   Skenaarioissa, joissa on mukana asynkronista tietojenkäsittelyä, kuten useiden API:en kutsuminen tai monimutkaisten laskentojen odottaminen, `BusyIndicator` komponentti osoittaa aktiivisesti, että järjestelmä on kiireinen, kehottamalla käyttäjiä odottamaan ennen lisätoimintojen suorittamista.
 
 ## Tyylittely {#styling}
 

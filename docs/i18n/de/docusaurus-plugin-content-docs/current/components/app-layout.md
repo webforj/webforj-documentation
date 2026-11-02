@@ -4,39 +4,39 @@ sidebar_position: 5
 description: >-
   Build dashboards and admin shells with the AppLayout component, providing a
   fixed header, footer, sliding drawer, and scrollable content area.
-_i18n_hash: 559d0c63a8e61e2e3d79086aa08922c1
+_i18n_hash: 4e36be1fd55d6c17c810ace6ef3f1fd8
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-app-layout" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppLayout" top='true'/>
 
-Die `AppLayout`-Komponente bietet Ihnen eine fertige Seitenstruktur mit einem festen Header und Footer, einem Drawer, der ein- und ausgeblendet werden kann, und einem scrollbaren Inhaltsbereich. Zusammen decken diese Abschnitte die Layout-Anforderungen für Dashboards, Administrationspanels und die meisten mehrteiligen Benutzeroberflächen ab.
+Die `AppLayout`-Komponente bietet Ihnen eine gebrauchsfertige Seitenstruktur mit einem festen Header und Footer, einem Schrank, der hinein- und herausgleitet, sowie einem scrollbaren Inhaltsbereich. Zusammen decken diese Abschnitte die Layoutbedürfnisse von Dashboards, Admin-Panels und den meisten mehrteiligen Schnittstellen ab.
 
 <!-- INTRO_END -->
 
 ## Funktionen {#features}
 
-Das webforJ App Layout ist eine Komponente, die den Aufbau gängiger App-Layouts ermöglicht.
+Das webforJ App Layout ist eine Komponente, die es ermöglicht, gängige App-Layouts zu erstellen.
 
 <ul>
     <li>Einfach zu bedienen und anzupassen</li>
     <li>Responsives Design</li>
-    <li>Mehrere Layout-Optionen</li>
-    <li>Funktioniert mit dem webforJ Dunkelmodus</li>
+    <li>Verschiedene Layout-Optionen</li>
+    <li>Kompatibel mit dem webforJ Dunkelmodus</li>
 </ul>
 
-Es bietet einen Header, einen Footer, einen Drawer und einen Inhaltsbereich, die alle in eine responsive Komponente integriert sind, die leicht angepasst werden kann, um gängige App-Layouts wie ein Dashboard schnell zu erstellen. Der Header und der Footer sind fest, der Drawer gleitet in und aus dem Ansichtsbereich, und der Inhalt ist scrollbar.
+Es bietet einen Header, Footer, Schrank und einen Inhaltsbereich, die alle in eine responsive Komponente integriert sind, die leicht angepasst werden kann, um schnell gängige App-Layouts wie ein Dashboard zu erstellen. Der Header und Footer sind fixiert, der Schrank gleitet in und aus dem Ansichtsfenster und der Inhalt ist scrollbar.
 
-Jeder Teil des Layouts ist ein `Div`, der jede gültige webforJ-Steuerung enthalten kann. Für die besten Ergebnisse sollte die App ein Viewport-Meta-Tag enthalten, das viewport-fit=cover enthält. Das Meta-Tag sorgt dafür, dass der Viewport so skaliert wird, dass er den Bildschirm des Geräts ausfüllt.
+Jeder Teil des Layouts ist ein `Div`, das jede gültige webforJ-Steuerung enthalten kann. Für beste Ergebnisse sollte die App ein Viewport-Meta-Tag enthalten, das viewport-fit=cover enthält. Das Meta-Tag bewirkt, dass das Viewport an die Anzeige des Geräts skaliert wird.
 
 ```java
 @AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
 ```
 
-## Überblick {#overview}
+## Übersicht {#overview}
 
-Das folgende Codebeispiel führt zu einer App mit einem umklappbaren Sidebar, das ein Logo und Registerkarten für verschiedene Inhaltsoptionen sowie einem Header enthält. Die Demo verwendet die dwc-icon-button-Webkomponente, um einen Schalter für den Drawer zu erstellen. Der Button hat das Attribut data-drawer-toggle, das den DwcAppLayout anweist, auf Klickereignisse von dieser Komponente zu hören, um den Status des Drawers umzuschalten.
+Das folgende Codebeispiel ergibt eine App mit einer einklappbaren Seitenleiste, die ein Logo und Registerkarten für verschiedene Inhaltsoptionen sowie einen Header enthält. Die Demo verwendet die webkomponente dwc-icon-button, um einen Schrank-Umschaltknopf zu erstellen. Der Knopf hat das Attribut data-drawer-toggle, das den DwcAppLayout anweist, auf Klickereignisse von dieser Komponente zu hören, um den Schrankstatus umzuschalten.
 
 <!--vale off-->
 <ComponentDemo
@@ -53,7 +53,7 @@ files={[
 
 ## Vollbreite Navbar {#full-width-navbar}
 
-Standardmäßig rendert das AppLayout den Header und den Footer im Off-Screen-Modus. Der Off-Screen-Modus bedeutet, dass die Position von Header und Footer angepasst wird, um neben dem geöffneten Drawer zu passen. Wenn dieser Modus deaktiviert wird, nehmen der Header und der Footer den gesamten verfügbaren Platz ein und verschieben die obere und untere Position des Drawers, um mit dem Header und dem Footer übereinzustimmen.
+Standardmäßig rendert das AppLayout den Header und den Footer im Offscreen-Modus. Der Offscreen-Modus bedeutet, dass die Position von Header und Footer verschoben wird, um neben dem geöffneten Schrank zu passen. Das Deaktivieren dieses Modus führt dazu, dass Header und Footer den gesamten verfügbaren Platz einnehmen und die Position von Schrank oben und unten verschoben wird, um mit dem Header und Footer übereinzustimmen.
 
 ```java showLineNumbers
 AppLayout myApp = new AppLayout();
@@ -75,11 +75,11 @@ files={[
 />
 <!--vale on-->
 
-## Mehrere Toolbars {#multiple-toolbars}
+## Mehrere Werkzeugleisten {#multiple-toolbars}
 
-Die Navbar hat keine Einschränkung in der Anzahl der Toolbars, die Sie hinzufügen können. Eine `Toolbar` ist eine horizontale Containerkomponente, die eine Reihe von Aktionsbuttons, Symbolen oder anderen Steuerelementen enthält. Um eine zusätzliche Toolbar hinzuzufügen, verwenden Sie einfach die Methode `addToHeader()`, um eine weitere `Toolbar`-Komponente hinzuzufügen.
+Die Navbar hat keine Begrenzung für die Anzahl der Werkzeugleisten, die Sie hinzufügen können. Eine `Toolbar` ist eine horizontale Containerkomponente, die eine Reihe von Aktionsschaltflächen, Symbolen oder anderen Steuerelementen enthält. Um eine zusätzliche Werkzeugleiste hinzuzufügen, verwenden Sie einfach die Methode `addToHeader()`, um eine weitere `Toolbar`-Komponente hinzuzufügen.
 
-Die folgende Demo zeigt, wie man zwei Toolbars verwendet. Die erste enthält den Schalter für den Drawer und den Titel der App. Die zweite Toolbar enthält ein sekundäres Navigationsmenü.
+Die folgende Demo zeigt, wie man zwei Werkzeugleisten verwendet. Die erste beherbergt den Schrank-Umschaltknopf und den Titel der App. Die zweite Werkzeugleiste enthält ein sekundäres Navigationsmenü.
 
 <!--vale off-->
 <ComponentDemo
@@ -95,15 +95,15 @@ files={[
 />
 <!--vale on-->
 
-## Sticky Toolbars {#sticky-toolbars}
+## Sticky Werkzeugleisten {#sticky-toolbars}
 
-Eine sticky Toolbar ist eine Toolbar, die oben auf der Seite sichtbar bleibt, wenn der Benutzer nach unten scrollt, während die Höhe der Navbar verkleinert wird, um mehr Platz für den Inhalt der Seite verfügbar zu machen. In der Regel enthält diese Art von Toolbar ein festes Navigationsmenü, das für die aktuelle Seite relevant ist.
+Eine sticky Werkzeugleiste ist eine Werkzeugleiste, die oben auf der Seite sichtbar bleibt, wenn der Benutzer nach unten scrollt, während die Höhe der Navbar zusammengeklappt wird, um mehr Platz für den Seiteninhalt zu schaffen. Normalerweise enthält diese Art von Werkzeugleiste ein festes Navigationsmenü, das für die aktuelle Seite relevant ist.
 
-Es ist möglich, sticky Toolbars mit der CSS-Benutzerdefinierten Eigenschaft `--dwc-app-layout-header-collapse-height` und der Option `AppLayout.setHeaderReveal()` zu erstellen.
+Es ist möglich, sticky Werkzeugleisten mit der CSS-Custom-Property `--dwc-app-layout-header-collapse-height` und der Option `AppLayout.setHeaderReveal()` zu erstellen.
 
-Wenn `AppLayout.setHeaderReveal(true)` aufgerufen wird, ist der Header beim ersten Rendern sichtbar und wird dann ausgeblendet, wenn der Benutzer anfängt, nach unten zu scrollen. Sobald der Benutzer wieder nach oben scrollt, wird der Header wieder sichtbar.
+Wenn `AppLayout.setHeaderReveal(true)` aufgerufen wird, wird der Header beim ersten Rendern sichtbar und dann ausgeblendet, wenn der Benutzer beginnt, nach unten zu scrollen. Sobald der Benutzer wieder nach oben scrollt, wird der Header wieder angezeigt.
 
-Mit Hilfe der CSS-Benutzerdefinierten Eigenschaft `--dwc-app-layout-header-collapse-height` kann gesteuert werden, wie viel von der Header-Navbar ausgeblendet wird.
+Mit Hilfe der CSS-Custom-Property `--dwc-app-layout-header-collapse-height` kann gesteuert werden, wie viel von der Header-Navi ausgeblendet wird.
 
 <!--vale off-->
 <ComponentDemo
@@ -114,20 +114,20 @@ files={[
   'src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
   'src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarContentView.java',
   'src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java',
-  'src/main/java/com/webforj/samples/views/applayout/applayout.css',
+  'src/main/frontend/css/applayout/applayout.css',
 ]}
 />
 <!--vale on-->
 
-## Mobile Navigationslayout {#mobile-navigation-layout}
+## Mobiles Navigationslayout {#mobile-navigation-layout}
 
-Die untere Navbar kann verwendet werden, um eine andere Version der Navigation am unteren Rand der App bereitzustellen. Diese Art der Navigation ist besonders in mobilen Apps beliebt.
+Die untere Navbar kann verwendet werden, um eine andere Version der Navigation am unteren Ende der App bereitzustellen. Diese Art der Navigation ist insbesondere in mobilen Apps beliebt.
 
-Beachten Sie, wie der Drawer in der folgenden Demo ausgeblendet ist. Das AppLayout-Widget unterstützt drei Drawer-Positionen: `DrawerPlacement.LEFT`, `DrawerPlacement.RIGHT` und `DrawerPlacement.HIDDEN`.
+Beachten Sie, wie der Schrank in der folgenden Demo ausgeblendet ist. Das AppLayout-Widget unterstützt drei Schrankpositionen: `DrawerPlacement.LEFT`, `DrawerPlacement.RIGHT` und `DrawerPlacement.HIDDEN`.
 
-Genauso wie `AppLayout.setHeaderReveal()`, wird `AppLayout.setFooterReveal()` unterstützt. Wenn `AppLayout.setFooterReveal(true)` aufgerufen wird, ist der Footer beim ersten Rendern sichtbar und wird ausgeblendet, wenn der Benutzer anfängt, nach oben zu scrollen. Sobald der Benutzer wieder nach unten scrollt, wird der Footer wieder sichtbar.
+Ähnlich wie `AppLayout.setHeaderReveal()` wird auch `AppLayout.setFooterReveal()` unterstützt. Wenn `AppLayout.setFooterReveal(true)` aufgerufen wird, wird der Footer beim ersten Rendern sichtbar und dann ausgeblendet, wenn der Benutzer beginnt, nach oben zu scrollen. Sobald der Benutzer wieder nach unten scrollt, wird der Footer wieder angezeigt.
 
-Standardmäßig, wenn die Bildschirmbreite 800px oder weniger beträgt, wechselt der Drawer in den Popover-Modus. Dies wird als Breakpoint bezeichnet. Der Popover-Modus bedeutet, dass der Drawer über den Inhaltsbereich mit einem Overlay angezeigt wird. Es ist möglich, den Breakpoint zu konfigurieren, indem Sie die Methode `setDrawerBreakpoint()` verwenden und der Breakpoint muss eine gültige [Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) sein.
+Standardmäßig wird der Schrank bei einer Bildschirmbreite von 800px oder weniger in den Popover-Modus geschaltet. Dies wird als Breakpoint bezeichnet. Der Popover-Modus bedeutet, dass der Schrank über den Inhaltsbereich mit einer Überlagerung poppt. Es ist möglich, den Breakpoint mit der Methode `setDrawerBreakpoint()` zu konfigurieren, und der Breakpoint muss eine gültige [Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) sein.
 
 <!--vale off-->
 <ComponentDemo
@@ -143,32 +143,32 @@ files={[
 />
 <!--vale on-->
 
-## Drawer-Dienstprogramme {#drawer-utilities}
+## Schrankdienstprogramme {#drawer-utilities}
 
-Die Drawer-Dienstprogramme der `AppLayout` sind für die integrierte Navigation und kontextuelle Menüs innerhalb des Haupt-App-Layouts konzipiert, während Standalone [`Drawer`](https://docs.webforj.com/docs/components/drawer) Komponenten flexible, unabhängige Schiebe-Panels bieten, die überall in Ihrer App für zusätzlichen Inhalt, Filter oder Benachrichtigungen verwendet werden können. Dieser Abschnitt konzentriert sich auf die integrierten Drawer-Funktionen und -Dienstprogramme, die von AppLayout bereitgestellt werden.
+Die `AppLayout`-Schrankdienstprogramme sind für die integrierte Navigation und kontextbezogene Menüs innerhalb des Haupt-App-Layouts ausgelegt, während eigenständige [`Drawer`](https://docs.webforj.com/docs/components/drawer) Komponenten flexible, unabhängige Schiebepanels bieten, die überall in Ihrer App für zusätzliche Inhalte, Filter oder Benachrichtigungen verwendet werden können. Dieser Abschnitt konzentriert sich auf die integrierten Schrankfunktionen und -dienstprogramme, die von AppLayout bereitgestellt werden.
 
-### Drawer-Breakpoint {#drawer-breakpoint}
+### Schrank-Breakpoint {#drawer-breakpoint}
 
-Standardmäßig, wenn die Bildschirmbreite 800px oder weniger beträgt, wechselt der Drawer in den Popover-Modus. Dies wird als Breakpoint bezeichnet. Der Popover-Modus bedeutet, dass der Drawer über den Inhaltsbereich mit einem Overlay angezeigt wird. Es ist möglich, den Breakpoint zu konfigurieren, indem Sie die Methode `setDrawerBreakpoint()` verwenden und der Breakpoint muss eine gültige Media Query sein.
+Standardmäßig wird der Schrank bei einer Bildschirmbreite von 800px oder weniger in den Popover-Modus geschaltet. Dies wird als Breakpoint bezeichnet. Der Popover-Modus bedeutet, dass der Schrank über den Inhaltsbereich mit einer Überlagerung poppt. Es ist möglich, den Breakpoint mit der Methode `setDrawerBreakpoint()` zu konfigurieren, und der Breakpoint muss eine gültige Media Query sein.
 
-Zum Beispiel wird im folgenden Beispiel der Drawer-Breakpoint auf 500px oder weniger konfiguriert.
+Zum Beispiel wird im folgenden Beispiel der Schrank-Breakpoint auf 500px oder weniger konfiguriert.
 
 ```java
 AppLayout demo = new AppLayout();
 demo.setDrawerBreakpoint("(max-width:500px)");
 ```
 
-### Drawer-Titel {#drawer-title}
+### Schranktitel {#drawer-title}
 
-Die `AppLayout`-Komponente bietet eine Methode `addToDrawerTitle()`, um einen benutzerdefinierten Titel zu definieren, der in der Drawer-Header angezeigt wird.
+Die `AppLayout`-Komponente bietet eine Methode `addToDrawerTitle()`, um einen benutzerdefinierten Titel im Schrankheader anzuzeigen.
 
 ```java
 layout.addToDrawerTitle(new Div("Menü"));
 ```
 
-### Drawer-Aktionen {#drawer-actions}
+### Schrankaktionen {#drawer-actions}
 
-Die `AppLayout`-Komponente ermöglicht es Ihnen, benutzerdefinierte Komponenten wie Buttons oder Icons in den **Aktionen des Drawer-Headers** unter Verwendung der Methode `addToDrawerHeaderActions()` zu platzieren.
+Die `AppLayout`-Komponente ermöglicht es Ihnen, benutzerdefinierte Komponenten wie Schaltflächen oder Symbole in den **Schrankheader-Aktionsbereich** mithilfe der Methode `addToDrawerHeaderActions()` zu platzieren.
 
 ```java
 layout.addToDrawerHeaderActions(
@@ -185,7 +185,7 @@ layout.addToDrawerHeaderActions(
 );
 ```
 
-Drawer-Aktionen erscheinen im **rechtsbündigen Abschnitt** des Headers des Drawers.
+Schrankaktionen erscheinen im **rechtsbündigen Abschnitt** des Headers des Schranks.
 
 <!--vale off-->
 <ComponentDemo
@@ -202,20 +202,20 @@ files={[
 <!--vale on-->
 
 
-## `AppDrawerToggle` <DocChip chip='since' label='24.12' /> {#appdrawertoggle-docchip-chipsince-label2412-}
+## `AppDrawerToggle` <DocChip chip='name' label="dwc-icon-button" /> <DocChip chip='since' label='24.12' /> {#appdrawertoggle-docchip-chipsince-label2412-}
 
-Die [`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) Komponente ist eine serverseitige webforJ-Klasse, die einen Button darstellt, der verwendet wird, um die Sichtbarkeit eines Navigationsdrawers in einem `AppLayout` umzuschalten. Sie korreliert mit dem clientseitigen `<dwc-app-drawer-toggle>`-Element und ist standardmäßig so gestaltet, dass sie sich wie ein traditionelles Hamburger-Menü-Icon verhält; dieses Verhalten kann angepasst werden.
+Die [`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) Komponente ist eine serverseitige webforJ-Klasse, die einen Knopf darstellt, der verwendet wird, um die Sichtbarkeit eines Navigationsschranks in einem `AppLayout` umzuschalten. Es entspricht dem clientseitigen `<dwc-app-drawer-toggle>`-Element und ist standardmäßig so gestaltet, dass es wie ein traditionelles Hamburger-Symbol funktioniert. Dieses Verhalten kann angepasst werden.
 
-### Überblick {#overview-1}
+### Übersicht {#overview-1}
 
-Der `AppDrawerToggle` erweitert `IconButton` und verwendet standardmäßig das "menu-2"-Symbol aus dem Tabler-Symbolset. Es wird automatisch das Attribut `data-drawer-toggle` angewendet, um sich mit dem clientseitigen Drawer-Verhalten zu integrieren.
+Der `AppDrawerToggle` erweitert `IconButton` und verwendet standardmäßig das "menu-2"-Symbol aus dem Tabler-Symbolsatz. Es wird automatisch das `data-drawer-toggle`-Attribut angewendet, um sich in das clientseitige Verhalten des Schranks zu integrieren.
 
 ```java
 // Keine Ereignisregistrierung erforderlich:
 AppLayout layout = new AppLayout();
 layout.addToHeader(new AppDrawerToggle());
-// Der Drawer-Toggle funktioniert sofort—keine manuellen Ereignis-Listener erforderlich.
+// Der Schrank-Umschalter funktioniert sofort – keine manuellen Ereignislistener erforderlich.
 ```
-## Styling {#styling}
+## Stilgebung {#styling}
 
 <TableBuilder name="AppLayout" />

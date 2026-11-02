@@ -27,11 +27,7 @@ The below `Table` shows all olympic winners - a large dataset that benefits grea
 
 <ComponentDemo
 path='/webforj/tableolympicwinners'
-files={[
-  'src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java',
-  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
-  'src/main/java/com/webforj/samples/views/table/Service.java',
-]}
+files={['src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java']}
 height='600px'
 />
 

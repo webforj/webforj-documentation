@@ -5,30 +5,26 @@ sidebar_class_name: new-content
 description: >-
   Build hierarchical side navigation menus with AppNav and AppNavItem, linking
   to routes, registered views, or external URLs.
-_i18n_hash: afb61d8d44c3f5dcb03f533954baafc1
+_i18n_hash: c4ad786639b189058a38c808bd99ec8b
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
-<DocChip chip="name" label="dwc-app-nav-item" />
-<DocChip chip="name" label="dwc-app-nav-label" />
 <DocChip chip='since' label='24.12' />
-<JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/>
+<JavadocLink type="appnav" location="com/webforj/component/layout/appnav/AppNav" top='true'/>
 
-El componente `AppNav` crea un menú de navegación lateral a partir de entradas `AppNavItem`. Los elementos pueden enlazar a vistas internas o recursos externos, anidarse bajo elementos padres para formar menús jerárquicos y llevar íconos, insignias u otros componentes para dar a los usuarios un contexto adicional de un vistazo.
+El componente `AppNav` crea un menú de navegación lateral a partir de entradas de `AppNavItem`. Los elementos pueden vincularse a vistas internas o recursos externos, anidarse bajo elementos parentales para formar menús jerárquicos y llevar iconos, insignias u otros componentes para dar a los usuarios más contexto de un vistazo.
 
-<!-- INTRO_END -->
+## Agregar y anidar elementos <DocChip chip="name" label="dwc-app-nav-item" /> {#adding-and-nesting-items}
 
-## Agregar y anidar elementos {#adding-and-nesting-items}
+Las instancias de `AppNavItem` se utilizan para poblar la estructura de `AppNav`. Estos elementos pueden ser enlaces simples o encabezados de grupo anidados que contienen elementos secundarios. Los encabezados de grupo sin enlaces actúan como contenedores expandibles.
 
-Las instancias `AppNavItem` se utilizan para poblar la estructura `AppNav`. Estos elementos pueden ser enlaces simples o encabezados de grupos anidados que contienen elementos hijos. Los encabezados de grupo sin enlaces actúan como contenedores expandibles.
-
-Utilice `addItem()` para incluir elementos en la navegación:
+Utiliza `addItem()` para incluir elementos en la navegación:
 
 ```java
-AppNavItem dashboard = new AppNavItem("Tablero", "/dashboard");
-AppNavItem admin = new AppNavItem("Administrar");
-admin.addItem(new AppNavItem("Usuarios", "/admin/users"));
-admin.addItem(new AppNavItem("Configuración", "/admin/settings"));
+AppNavItem dashboard = new AppNavItem("Dashboard", "/dashboard");
+AppNavItem admin = new AppNavItem("Admin");
+admin.addItem(new AppNavItem("Users", "/admin/users"));
+admin.addItem(new AppNavItem("Settings", "/admin/settings"));
 
 AppNav nav = new AppNav();
 nav.addItem(dashboard);
@@ -36,53 +32,42 @@ nav.addItem(admin);
 ```
 
 :::tip Vinculando elementos de grupo
-Los elementos de nivel superior en un árbol de navegación suelen estar destinados a ser expandibles, no enlaces clicables. Establecer un `path` en dichos elementos puede confundir a los usuarios que esperan que revelen subelementos en lugar de navegar a otra parte.
+Los elementos de nivel superior en un árbol de navegación están típicamente destinados a ser expandibles, no enlaces clickeables. Establecer un `path` en tales elementos puede confundir a los usuarios que esperan que revelen elementos secundarios en lugar de navegar a otro lugar.
 
-Si desea que el encabezado del grupo desencadene una acción personalizada (como abrir documentos externos), mantenga el path del grupo vacío y en su lugar agregue un control interactivo como un [`IconButton`](./icon#icon-buttons) al sufijo del elemento. Esto mantiene la experiencia de usuario consistente y limpia.
+Si deseas que el encabezado del grupo active una acción personalizada (como abrir documentos externos), deja el path del grupo vacío y agrega un control interactivo como un [`IconButton`](./icon#icon-buttons) al sufijo del elemento. Esto mantiene la experiencia de usuario consistente y limpia.
 :::
-
-<!--vale off-->
-<ComponentDemo
-path='/webforj/appnav/Social'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/appnav/AppNavView.java',
-  'src/main/java/com/webforj/samples/views/appnav/AppNavPageView.java',
-]}
-/>
-<!--vale on-->
 
 ## Vinculando elementos {#linking-items}
 
-Cada `AppNavItem` puede navegar a una vista interna o a un enlace externo. Puede definir esto utilizando rutas estáticas o clases de vista registradas.
+Cada `AppNavItem` puede navegar a una vista interna o a un enlace externo. Puedes definir esto utilizando rutas estáticas o clases de vista registradas.
 
 ### Rutas estáticas {#static-paths}
 
-Utilice rutas de cadenas para definir enlaces directamente:
+Utiliza rutas de cadena para definir enlaces directamente:
 
 ```java
-AppNavItem docs = new AppNavItem("Documentos", "/docs");
-AppNavItem help = new AppNavItem("Ayuda", "https://support.example.com");
+AppNavItem docs = new AppNavItem("Docs", "/docs");
+AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 ```
 
 ### Vistas registradas {#registered-views}
 
-Si sus vistas están registradas con el [router](../routing/overview), puede pasar la clase en lugar de una URL codificada:
+Si tus vistas están registradas con el [router](../routing/overview), puedes pasar la clase en lugar de una URL codificada de forma rígida:
 
 ```java
-AppNavItem settings = new AppNavItem("Configuración", SettingsView.class);
+AppNavItem settings = new AppNavItem("Settings", SettingsView.class);
 ```
 
-Si su ruta anotada admite [parámetros de ruta](../routing/route-patterns#named-parameters), también puede pasar un `ParametersBag`:
+Si tu ruta anotada soporta [parámetros de ruta](../routing/route-patterns#named-parameters), también puedes pasar un `ParametersBag`:
 
 ```java
 ParametersBag params = ParametersBag.of("id=123");
-AppNavItem advanced = new AppNavItem("Usuario", UserView.class, params);
+AppNavItem advanced = new AppNavItem("User", UserView.class, params);
 ```
 
 ### Con parámetros de consulta {#with-query-parameters}
 
-Pase un `ParametersBag` para incluir cadenas de consulta:
+Pasa un `ParametersBag` para incluir cadenas de consulta:
 
 ```java
 ParametersBag params = ParametersBag.of("param1=value1&param2=value2");
@@ -92,126 +77,108 @@ advanced.setQueryParameters(params);
 
 ## Comportamiento objetivo {#target-behavior}
 
-Controle cómo se abren los enlaces utilizando `setTarget()`. Esto es especialmente útil para enlaces externos o vistas emergentes.
+Controla cómo se abren los enlaces utilizando `setTarget()`. Esto es especialmente útil para enlaces externos o vistas emergentes.
 
-- **`SELF`** (predeterminado): Abre en la vista actual.
-- **`BLANK`**: Abre en una nueva pestaña o ventana.
-- **`PARENT`**: Abre en el contexto de navegación padre.
-- **`TOP`**: Abre en el contexto de navegación de nivel superior.
+- **`SELF`** (predeterminado): Se abre en la vista actual.
+- **`BLANK`**: Se abre en una nueva pestaña o ventana.
+- **`PARENT`**: Se abre en el contexto de navegación padre.
+- **`TOP`**: Se abre en el contexto de navegación de nivel superior.
 
 ```java
-AppNavItem help = new AppNavItem("Ayuda", "https://support.example.com");
+AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 help.setTarget(AppNavItem.NavigationTarget.BLANK);
 ```
 
 ## Prefijo y sufijo {#prefix-and-suffix}
 
-`AppNavItem` admite componentes de prefijo y sufijo. Úselos para proporcionar claridad visual con íconos, insignias o botones.
+`AppNavItem` soporta componentes de prefijo y sufijo. Utiliza estos para proporcionar claridad visual con iconos, insignias o botones.
 
-- **Prefijo**: aparece antes de la etiqueta, útil para íconos.
-- **Sufijo**: aparece después de la etiqueta, excelente para insignias o acciones.
+- **Prefijo**: aparece antes de la etiqueta, útil para iconos.
+- **Sufijo**: aparece después de la etiqueta, ideal para insignias o acciones.
 
 ```java
-AppNavItem notifications = new AppNavItem("Alertas");
+AppNavItem notifications = new AppNavItem("Alerts");
 notifications.setPrefixComponent(TablerIcon.create("alert"));
 notifications.setSuffixComponent(TablerIcon.create("link"));
 ```
 
 ## Grupos de apertura automática {#auto-opening-groups}
 
-Utilice `setAutoOpen(true)` en el componente `AppNav` para expandir automáticamente grupos anidados cuando se actualiza la aplicación.
+Utiliza `setAutoOpen(true)` en el componente `AppNav` para expandir automáticamente los grupos anidados cuando se actualiza la aplicación.
 
 ```java
 nav.setAutoOpen(true);
 ```
 
-## Etiquetas de sección <DocChip chip='since' label='26.02' /> {#section-labels}
+## Etiquetas de sección <DocChip chip='since' label='26.02' /> <DocChip chip="name" label="dwc-app-nav-label" /> {#section-labels}
 
-`AppNavLabel` es un encabezado no interactivo que titula un conjunto de elementos. Una etiqueta se aplica a cada elemento que la sigue, hasta la siguiente etiqueta o el final del menú, lo que permite que una larga lista de elementos de nivel superior se lea como algunos grupos nombrados sin anidarlos.
+`AppNavLabel` es un encabezado no interactivo que titula una serie de elementos. Una etiqueta se aplica a cada elemento que la sigue, hasta la siguiente etiqueta o el final del menú, lo que permite que una larga lista de elementos de nivel superior se lea como unos pocos grupos nombrados sin anidarlos.
 
 Las etiquetas se agregan con `add()` en lugar de `addItem()`, y el orden de las llamadas define las secciones:
 
 ```java
 AppNav nav = new AppNav();
-nav.addItem(new AppNavItem("Tablero", DashboardView.class, TablerIcon.create("layout-dashboard")));
+nav.addItem(new AppNavItem("Dashboard", DashboardView.class, TablerIcon.create("layout-dashboard")));
 
-nav.add(new AppNavLabel("Analítica"));
-nav.addItem(new AppNavItem("Resumen", OverviewView.class));
-nav.addItem(new AppNavItem("Informes", ReportsView.class));
+nav.add(new AppNavLabel("Analytics"));
+nav.addItem(new AppNavItem("Overview", OverviewView.class));
+nav.addItem(new AppNavItem("Reports", ReportsView.class));
 
-nav.add(new AppNavLabel("Otro"));
-nav.addItem(new AppNavItem("Configuración", SettingsView.class));
+nav.add(new AppNavLabel("Other"));
+nav.addItem(new AppNavItem("Settings", SettingsView.class));
 ```
 
-La navegación oculta automáticamente una etiqueta cuando su sección no tiene elementos visibles, por lo que una etiqueta desaparece cuando una [búsqueda](#search) filtra sus elementos o cuando todos ellos están [fijados](#pinning) en la parte superior del menú.
+La navegación oculta una etiqueta automáticamente cuando su sección no tiene elementos visibles, por lo que una etiqueta desaparece cuando una [búsqueda](#search) filtra sus elementos o cuando todos ellos están [fijados](#pinning) en la parte superior del menú.
 
 ### Prefijo y sufijo de etiqueta {#label-prefix-and-suffix}
 
-Al igual que `AppNavItem`, una etiqueta admite componentes de prefijo y sufijo. Pase un prefijo al constructor, o establezca cualquiera de los dos después:
+Al igual que `AppNavItem`, una etiqueta soporta componentes de prefijo y sufijo. Pasa un prefijo al constructor, o establece cualquiera de los dos después:
 
 ```java
-AppNavLabel analytics = new AppNavLabel("Analítica", TablerIcon.create("chart-pie"));
+AppNavLabel analytics = new AppNavLabel("Analytics", TablerIcon.create("chart-pie"));
 analytics.setSuffixComponent(new Badge().setText("2").setTheme(BadgeTheme.WARNING));
 
 nav.add(analytics);
 ```
 
-El ejemplo a continuación agrupa un menú bajo tres etiquetas, la primera de las cuales lleva un prefijo de [`Icon`](./icon) y un sufijo de [`Badge`](./badge). El tablero se encuentra por encima de la primera etiqueta, por lo que no pertenece a ninguna sección.
-
-<ComponentDemo
-path='/webforj/appnavlabel/Dashboard'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/appnav/AppNavLabelView.java',
-  'src/main/java/com/webforj/samples/views/appnav/AppNavLabelPageView.java',
-]}
-/>
+El siguiente ejemplo agrupa un menú bajo tres etiquetas, la primera de las cuales lleva un prefijo de [`Icon`](./icon) y un sufijo de [`Badge`](./badge). Dashboard se sitúa encima de la primera etiqueta, por lo que no pertenece a ninguna sección.
 
 ## Fijación <DocChip chip='since' label='26.01' /> {#pinning}
 
-La fijación permite a un usuario levantar los elementos que busca con más frecuencia en un grupo en la parte superior de la navegación, por lo que un menú profundo mantiene una lista corta de favoritos en un solo clic. Está desactivado por defecto. Actívelo a través de la configuración de fijación:
+Fijar permite que un usuario eleve los elementos que busca con más frecuencia a un grupo en la parte superior de la navegación, de modo que un menú profundo mantenga una lista corta de favoritos a un solo clic. Está desactivado por defecto. Actívalo a través de la configuración de fijación:
 
 ```java
 AppNav nav = new AppNav();
 nav.getPinning().setEnabled(true);
 ```
 
-Una vez habilitado, cada elemento hoja navegable muestra un interruptor de fijación. El interruptor se revela al pasar el mouse y al enfocarse con el teclado, por lo que se mantiene accesible sin un mouse. Activarlo mueve el elemento al grupo fijo en la parte superior de la navegación.
+Una vez habilitado, cada elemento hoja navegable muestra un toggle de fijación. El toggle se revela al pasar el cursor y al enfocar con el teclado, por lo que permanece accesible sin ratón. Activarlo mueve el elemento al grupo fijado en la parte superior de la navegación.
 
-Algunas reglas rigen qué se puede fijar y cómo se comporta el grupo:
+Unas pocas reglas rigen lo que puede ser fijado y cómo se comporta el grupo:
 
 - Solo los elementos hoja navegables son fijables. Los encabezados de grupo (elementos con hijos) nunca son fijables.
-- El grupo fijado aparece solo una vez que se ha fijado algo, y desaparece nuevamente cuando el último elemento se desfija.
+- El grupo fijado aparece solo una vez que algo se ha fijado, y desaparece nuevamente cuando se desfija el último elemento.
 - Desfijar devuelve un elemento a su posición original exacta, incluidos los elementos anidados varios niveles dentro de grupos.
-- El elemento se mueve, no se copia, por lo que cualquier contenido de prefijo o sufijo y cualquier oyente adjunto siguen funcionando mientras está en el grupo fijado.
+- El elemento se mueve, no se copia, por lo que cualquier contenido de prefijo o sufijo y cualquier oyente adjunto permanece funcionando mientras está en el grupo fijado.
 
-La demostración a continuación tiene la fijación habilitada con un título de grupo personalizado y el tablero fijado al cargar. Pase el mouse o enfóquese en un elemento hoja para revelar su interruptor de fijación.
+La demostración siguiente tiene la fijación habilitada con un título de grupo personalizado y Dashboard fijado al cargar. Pasa el cursor o enfoca un elemento hoja para revelar su toggle de fijación.
 
-<ComponentDemo
-path='/webforj/appnavpinning/Dashboard'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/appnav/AppNavPinningView.java',
-  'src/main/java/com/webforj/samples/views/appnav/AppNavPinningPageView.java',
-]}
-/>
+### Iniciar un elemento fijado {#starting-an-item-pinned}
 
-### Comenzar un elemento fijado {#starting-an-item-pinned}
-
-Inicie un elemento en el grupo fijado estableciendo su estado como fijado. Utilice `isPinned()` para leer el estado actual.
+Inicia un elemento en el grupo fijado estableciendo su estado fijado. Usa `isPinned()` para leer el estado actual.
 
 ```java
-AppNavItem reports = new AppNavItem("Informes", "/reports");
+AppNavItem reports = new AppNavItem("Reports", "/reports");
 reports.setPinned(true);
 ```
 
 :::info La fijación debe estar habilitada
-`setPinned(true)` solo tiene efecto cuando la fijación está habilitada en el `AppNav` a través de `getPinning().setEnabled(true)`. Sin ella, la llamada no tiene efecto.
+`setPinned(true)` solo tiene efecto cuando la fijación está habilitada en el `AppNav` a través de `getPinning().setEnabled(true)`. Sin ello, la llamada no tiene efecto.
 :::
 
 ### Título del grupo fijado {#pinned-group-title}
 
-El grupo fijado se etiqueta como `Fijado` de forma predeterminada. Cambie el nombre para adaptarlo a su aplicación:
+El grupo fijado se etiqueta como `Fijados` por defecto. Cambia esto para que se ajuste a tu aplicación:
 
 ```java
 nav.getPinning().setTitle("Favoritos");
@@ -219,31 +186,31 @@ nav.getPinning().setTitle("Favoritos");
 
 ### Claves de fijación {#pin-keys}
 
-Cada elemento fijable lleva una clave que lo identifica para la persistencia y para el [evento de fijación](#reacting-to-pin-changes). Cuando no establece una, la clave se basa en la ruta del elemento, por lo que `getPinKey()` siempre devuelve un valor utilizable.
+Cada elemento fijable lleva una clave que lo identifica para la persistencia y para el [evento de fijación](#reacting-to-pin-changes). Cuando no estableces una, la clave se basa en el path del elemento, por lo que `getPinKey()` siempre devuelve un valor utilizable.
 
 ```java
-AppNavItem reports = new AppNavItem("Informes", "/reports");
+AppNavItem reports = new AppNavItem("Reports", "/reports");
 reports.setPinKey("reports");
 ```
 
-Establezca una clave explícita cuando la ruta pueda cambiar en tiempo de ejecución. Una clave estable mantiene una fijación emparejada con el elemento correcto a través de recargas incluso si su URL se mueve.
+Establece una clave explícita cuando el path pueda cambiar en tiempo de ejecución. Una clave estable mantiene una fijación emparejada con el elemento correcto a través de recargas, incluso si su URL se mueve.
 
-### Guardar automáticamente en el almacenamiento local {#autosave}
+### Autosalvado en almacenamiento local {#autosave}
 
-Las fijaciones solo viven para la vista actual de la página a menos que las persista. La función de guardado automático es la opción más simple: almacena el conjunto de elementos fijados en el almacenamiento local del navegador y los restaura al recargar. Está desactivado por defecto. Necesita un `id` (o nombre) estable en el componente para la clave de almacenamiento, y el constructor `AppNav(String id)` es la forma conveniente de establecer uno:
+Los elementos fijados viven solo para la vista de página actual a menos que los persistencias. El autosalvado es la opción más simple: almacena el conjunto de elementos fijados en el almacenamiento local del navegador y los restaura al recargar. Está desactivado por defecto. Necesita un `id` (o nombre) estable en el componente para la clave de almacenamiento, y el constructor `AppNav(String id)` es la forma conveniente de establecer uno:
 
 ```java
-AppNav nav = new AppNav("main-nav"); // da a autosave una clave de almacenamiento estable
+AppNav nav = new AppNav("main-nav"); // da al autosalvado una clave de almacenamiento estable
 nav.getPinning().setAutosave(true);
 ```
 
-:::info El guardado automático necesita un id
-Sin un `id` (o nombre) en el componente, el guardado automático no hace nada silenciosamente, ya que no tiene una clave estable para almacenar. La persistencia es por navegador, por lo que las fijaciones no siguen a un usuario a otro dispositivo o navegador.
+:::info El autosalvado necesita un id
+Sin un `id` (o nombre) en el componente, el autosalvado simplemente no hace nada, ya que no tiene una clave estable para almacenar. La persistencia es por navegador, por lo que los elementos fijados no siguen a un usuario a otro dispositivo o navegador.
 :::
 
 ### Persistencia personalizada {#custom-persistence}
 
-Para la persistencia que controla, por ejemplo, por usuario en el servidor, desactive el guardado automático y controle manualmente a través del [evento de fijación](#reacting-to-pin-changes) y `setPinned`:
+Para la persistencia que controlas, por ejemplo por usuario en el servidor, desactiva el autosalvado y controla el mismo a través del [evento de fijación](#reacting-to-pin-changes) y `setPinned`:
 
 ```java
 nav.getPinning().setAutosave(false);
@@ -255,9 +222,9 @@ nav.onPin(event -> savePins(event.getKeys()));
 restoredKeys.forEach(key -> findItem(key).setPinned(true));
 ```
 
-### Reaccionando a los cambios de fijación {#reacting-to-pin-changes}
+### Reacción a cambios de fijación {#reacting-to-pin-changes}
 
-El evento de fijación se activa cada vez que un elemento es fijado o desfijado. Lleva el elemento que cambió, su clave, el nuevo estado fijado y el conjunto completo y ordenado de claves fijadas:
+El evento de fijación se activa cada vez que un elemento se fija o se desfixa. Lleva el elemento que cambió, su clave, el nuevo estado fijado y el conjunto completo ordenado de claves fijadas:
 
 ```java
 nav.onPin(event -> {
@@ -268,11 +235,11 @@ nav.onPin(event -> {
 });
 ```
 
-`getItem()` resuelve el elemento emparejando su clave de fijación, y devuelve `null` cuando el elemento ya no forma parte de la navegación.
+`getItem()` resuelve el elemento haciendo coincidir su clave de fijación y devuelve `null` cuando el elemento ya no es parte de la navegación.
 
-### Íconos de fijación {#pin-icons}
+### Iconos de fijación {#pin-icons}
 
-El interruptor utiliza el ícono incorporado `dwc:pin` mientras un elemento no está fijado y `dwc:pinned-off` mientras está fijado. Sustitúyalo por el suyo a través de `setUnpinnedIcon` y `setPinnedIcon`, que aceptan cualquier `IconDefinition`:
+El toggle utiliza el icono incorporado `dwc:pin` mientras un elemento está desfijado y `dwc:pinned-off` mientras está fijado. Cambia a tus propios a través de `setUnpinnedIcon` y `setPinnedIcon`, que aceptan cualquier `IconDefinition`:
 
 ```java
 nav.getPinning()
@@ -280,9 +247,9 @@ nav.getPinning()
    .setPinnedIcon(TablerIcon.create("pinned-off"));
 ```
 
-### Interruptor de fijación en pantallas táctiles {#pin-toggle-on-touchscreens}
+### Toggle de fijación en pantallas táctiles {#pin-toggle-on-touchscreens}
 
-Las pantallas táctiles no tienen hover para revelar la fijación, por lo que el interruptor está oculto allí de forma predeterminada. Manténgalo visible y táctil en pantallas táctiles con `setTouchVisible(true)`:
+Las pantallas táctiles no tienen un hover para revelar la fijación, por lo que el toggle está oculto por defecto. Mantenlo visible y tocable en pantallas táctiles con `setTouchVisible(true)`:
 
 ```java
 nav.getPinning().setTouchVisible(true);
@@ -290,35 +257,26 @@ nav.getPinning().setTouchVisible(true);
 
 ## Búsqueda <DocChip chip='since' label='26.01' /> {#search}
 
-El campo de búsqueda filtra el menú por la etiqueta del elemento a medida que el usuario escribe. Está desactivado por defecto. Puede mostrarlo y darle un marcador de posición a través de la configuración de búsqueda:
+El campo de búsqueda filtra el menú por etiqueta de elemento a medida que el usuario escribe. Está desactivado por defecto. Puedes mostrarlo y darle un placeholder a través de la configuración de búsqueda:
 
 ```java
 nav.getSearch().setFieldVisible(true);
 nav.getSearch().setPlaceholder("Buscar");
 ```
 
-A medida que el usuario escribe, la navegación filtra los elementos por etiqueta, abre cualquier grupo que contenga una coincidencia y muestra un mensaje vacío cuando no hay coincidencias. Los accesos directos fijados permanecen visibles mientras se busca, por lo que los favoritos de un usuario siguen a un clic de distancia incluso en medio del filtro.
-
-<ComponentDemo
-path='/webforj/appnavsearch/Dashboard'
-frame='desktop'
-files={[
-  'src/main/java/com/webforj/samples/views/appnav/AppNavSearchView.java',
-  'src/main/java/com/webforj/samples/views/appnav/AppNavSearchPageView.java',
-]}
-/>
+Mientras el usuario escribe, la navegación filtra elementos por etiqueta, abre cualquier grupo que contenga una coincidencia y muestra un mensaje vacío cuando nada coincide. Los accesos directos fijados permanecen visibles mientras se busca, por lo que los favoritos del usuario siguen a un clic de distancia incluso durante el filtrado.
 
 ### Mensaje vacío {#search-empty-message}
 
-Establezca el mensaje que se muestra cuando una búsqueda no devuelve resultados. El texto plano se renderiza como texto:
+Establece el mensaje que se muestra cuando una búsqueda no devuelve resultados. El texto plano se renderiza como texto:
 
 ```java
 nav.getSearch().setEmptyMessage("No se encontraron elementos");
 ```
 
-### Conduciendo la búsqueda desde su propio campo {#custom-search-box}
+### Impulsando la búsqueda desde tu propio campo {#custom-search-box}
 
-Oculte el campo incorporado y alimente el filtro desde una entrada propia. Introduzca el término actual a través de `setTerm`:
+Oculta el campo incorporado y alimenta el filtro desde un input propio. Envía el término actual a través de `setTerm`:
 
 ```java
 nav.getSearch().setFieldVisible(false);
@@ -326,7 +284,7 @@ nav.getSearch().setFieldVisible(false);
 myField.onModify(event -> nav.getSearch().setTerm(event.getText()));
 ```
 
-Para reaccionar a lo que el usuario escribe en el campo incorporado, escuche el evento de búsqueda:
+Para reaccionar a lo que el usuario escribe en el campo incorporado, escucha el evento de búsqueda:
 
 ```java
 nav.onSearch(event -> log(event.getTerm()));

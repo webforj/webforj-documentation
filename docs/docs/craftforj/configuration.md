@@ -35,9 +35,19 @@ craftforJ reads and writes your project sources. Only use `*` on a network where
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| **`webforj.devtools.craftforj.project-root`** | String | detected | The directory your sources live in |
+| **`webforj.devtools.project-root`** | String | detected | The directory your sources live in |
 
 craftforJ determines where your project is from how the app was started. Unusual project layouts and some container setups defeat that detection. If [App info](/docs/craftforj/app-info) reports the wrong project root, set it here
+
+```ini title="webforj.conf"
+webforj.devtools.project-root = "/home/me/projects/my-app"
+```
+
+On Spring, set the same key in `application.properties`.
+
+:::info Renamed in 26.03
+This setting was previously `webforj.devtools.craftforj.project-root`. The old key still works as a fallback, but it's deprecated and logs a warning when used. If both keys are set, `webforj.devtools.project-root` takes precedence.
+:::
 
 ## Feature flags {#feature-flags}
 

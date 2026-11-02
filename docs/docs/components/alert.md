@@ -31,7 +31,7 @@ If you’d like to give users the option to dismiss the `Alert`, you can make it
 
 ```java
 Alert alert = new Alert("Heads up! This alert can be dismissed.");
-closableAlert.setClosable(true);
+alert.setClosable(true);
 ```
 Alerts often do more than display messages—they can trigger follow-up actions when dismissed. Use the `AlertCloseEvent` to handle these cases and respond when the user dismisses the `Alert`.
 
@@ -61,7 +61,7 @@ height='650px'
 
 ### Expanses {#expanses}
 
-The expanse defines the visual size of the `Alert` component. You can set it using the `setExpanse()` method or pass it directly to the constructor. The available options come from the Expanse enum: `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, and `XLARGE`.
+The expanse defines the visual size of the `Alert` component. You can set it using the `setExpanse()` method. The available options come from the Expanse enum: `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, and `XLARGE`.
 
 <ComponentDemo
 path='/webforj/alertexpanses'

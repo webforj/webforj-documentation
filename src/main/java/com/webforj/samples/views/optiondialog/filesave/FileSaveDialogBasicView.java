@@ -15,7 +15,8 @@ public class FileSaveDialogBasicView extends Composite<Div> {
   private final FileSaveDialog dialog;
 
   public FileSaveDialogBasicView() {
-    dialog = new FileSaveDialog("Save As", "/usr2/bbx/demos", "report.xls");
+    dialog =
+        new FileSaveDialog("Save As", System.getProperty("filechooser-files.path"), "report.xls");
     dialog.setRestricted(true);
 
     show();
@@ -31,5 +32,7 @@ public class FileSaveDialogBasicView extends Composite<Div> {
       OptionDialog.showMessageDialog(
           "No path is selected", "Path Selected", MessageDialog.MessageType.ERROR);
     }
+
+    show();
   }
 }

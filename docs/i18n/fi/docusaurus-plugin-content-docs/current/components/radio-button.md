@@ -5,34 +5,35 @@ sidebar_position: 95
 description: >-
   Add a single-choice RadioButton with text positioning, activation modes, and
   grouping for mutually exclusive selections.
-_i18n_hash: 32d2e2f74e7f255b901de15622e8e2cc
+_i18n_hash: b261deb2944ba67d2e9ae8cbbb8b26eb
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-radio" />
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButton" top='true'/>
 
-`RadioButton`-komponentti edustaa yhtä vaihtoehtoa, joka voidaan valita tai poistaa valinnasta. Radiosäätimet on tyypillisesti ryhmitelty yhteen siten, että valitseminen poistaa automaattisesti muiden valinnan, mahdollistaen käyttäjille yhden valinnan tekemisen keskenään eksklusiivisista vaihtoehdoista.
+`RadioButton`-komponentti edustaa yhtä vaihtoehtoa, joka voidaan valita tai poistaa käytöstä. Radiopainikkeet ryhmitellään yleensä yhteen siten, että yhden valitseminen poistaa automaattisesti muiden valinnan, jolloin käyttäjä voi tehdä ainoan valinnan keskenään poissulkevista vaihtoehdoista.
 
 <!-- INTRO_END -->
 
-## Käyttötapaukset {#usages}
+## Käytöt {#usages}
 
-`RadioButton`-komponenttia käytetään parhaiten tilanteissa, joissa käyttäjien on tehtävä yksi valinta ennalta määritetystä vaihtoehtojen joukosta. Tässä on joitakin esimerkkejä, milloin käyttää `RadioButton`-komponenttia:
+`RadioButton`-komponenttia käytetään parhaiten tilanteissa, joissa käyttäjien on tehtävä yksi valinta ennalta määritellystä vaihtoehtojen joukosta. Tässä on joitakin esimerkkejä siitä, milloin käyttää `RadioButton`-komponenttia:
 
-1. **Kyselyt tai Lomakkeet**: Radiosäätimiä käytetään yleisesti kyselyissä tai lomakkeissa, joissa käyttäjien on valittava yksi vastaus vaihtoehtojen luettelosta.
+1. **Kyselyt tai kyselylomakkeet**: Radiopainikkeita käytetään yleisesti kyselyissä tai kyselylomakkeissa, joissa käyttäjien on valittava yksi vastaus vaihtoehtojen listasta.
 
-2. **Preferenssiasetukset**: Sovelluksissa, jotka sisältävät asetuspaneeleita, käytetään usein radiosäätimiä, jotta käyttäjät voivat valita yhden vaihtoehdon keskenään eksklusiivisten valintojen joukosta.
+2. **Asetusvalinnat**: Sovelluksissa, jotka sisältävät asetuksia tai preferenssejä, käytetään usein radiopainikkeita, jotta käyttäjät voivat valita yhden vaihtoehdon keskenään poissulkevista valinnoista.
 
-3. **Suodatus tai Lajittelu**: `RadioButton`-komponenttia voidaan käyttää sovelluksissa, jotka edellyttävät käyttäjien valitsevan yhden suodatus- tai lajitteluvaihtoehdon, kuten luettelon lajitteleminen eri kriteerien mukaan.
+3. **Suodatus tai lajittelu**: `RadioButton` voi olla mukana sovelluksissa, jotka vaativat käyttäjiä valitsemaan yhden suodatus- tai lajitteluvaihtoehdon, kuten erilaisten kriteerien mukaan lajittelun.
 
 :::tip `RadioButton`-komponenttien ryhmittely
-Käytä [`RadioButtonGroup`](/docs/components/radiobuttongroup)-komponenttia hallitaksesi radiosäätimiä, kun haluat käyttäjien valitsevan yhden vaihtoehdon.
+Käytä [`RadioButtonGroup`](/docs/components/radiobuttongroup) ryhmittääksesi joukko radiopainikkeita, kun haluat käyttäjien valitsevan yhden vaihtoehdon.
 :::
 
-## Teksti ja sijoittelu {#text-and-positioning}
+## Teksti ja asettelu {#text-and-positioning}
 
-Radiosäätimet voivat hyödyntää ```setText(String text)```-metodia, johon teksti sijoitetaan radiosäätimen läheisyyteen sisäänrakennetun `Position`-toiminnallisuuden mukaan. Radiosäätimillä on sisäänrakennettu toiminnallisuus asettaa teksti näytettäväksi joko komponentin oikealla tai vasemmalla puolella. Oletusarvoisesti teksti näytetään komponentin oikealla puolella. Vaakasuoran tekstin sijoittelu tuetaan `HorizontalAlignment`-enum-luokan avulla. Alla on esitetty kaksi asetusta: <br/>
+Käytä `setText(String text)` asettaaksesi radiopainikkeen labelin. Oletuksena teksti näkyy komponentin oikealla puolella. 
+Muuta sen sijaintia käyttämällä `setTextPosition(Position.LEFT)` tai `setTextPosition(Position.RIGHT)` yhdessä `HasTextPosition.Position` -enumeroinnin kanssa.
 
 <ComponentDemo
 path='/webforj/radiobuttontext'
@@ -42,7 +43,7 @@ height='120px'
 
 ## Aktivointi {#activation}
 
-Radiosäätimiä voidaan ohjata kahdella aktivointityypillä: manuaalinen aktivointi ja automaattinen aktivointi. Nämä määrittävät, milloin `RadioButton` vaihtaa tilaansa.
+Radiopainikkeiden aktivointia voidaan hallita kahdella aktivointityypillä: manuaalisella aktivoinnilla ja automaattisella aktivoinnilla. Nämä määrittävät, milloin `RadioButton` muuttaa tilaansa. Oletus on `Activation.MANUAL` `RadioButton.Activation` -enumeroinnista.
 
 <ComponentDemo
 path='/webforj/radiobuttonactivation'
@@ -52,22 +53,17 @@ height='175px'
 
 ### Manuaalinen aktivointi {#manual-activation}
 
-Kun radiosäädin on asetettu manuaaliseen aktivointiin, se tarkoittaa, että se ei tarkisteta automaattisesti, kun se saa fokuksen. Manuaalinen aktivointi mahdollistaa käyttäjän navigoida radiosäätimien vaihtoehdoissa näppäimistön tai muiden syöttömenetelmien avulla ilman, että valittua vaihtoehtoa vaihdetaan välittömästi.
+Kun radiopainike on asetettu manuaaliseen aktivointiin, se ei tarkoita, että se automaattisesti tarkastetaan saadessaan fokuksen. Manuaalinen aktivointi mahdollistaa käyttäjän navigoida radiopainikkeiden vaihtoehtojen välillä näppäimistön tai muiden syöttötapojen avulla muuttamatta heti valittua vaihtoehtoa.
 
-Jos radiosäädin on osa ryhmää, toisen radiosäätimen valitseminen ryhmässä poistaa automaattisesti aikaisemmin valitun radiosäätimen valinnan. Manuaalinen aktivointi tarjoaa tarkempaa hallintaa valintaprosessissa, jotta käyttäjän on suoritettava selkeä toiminto valitun vaihtoehdon muuttamiseksi.
+Jos radiopainike on osa ryhmää, toisen radiopainikkeen valitseminen ryhmän sisällä poistaa automaattisesti aikaisemmin valitun radiopainikkeen valinnan. Manuaalinen aktivointi antaa tarkempaa hallintaa valintaprosessiin, vaatiessaan käyttäjältä eksplisiittistä toimintaa valitun vaihtoehdon muuttamiseksi.
 
 ### Automaattinen aktivointi {#auto-activation}
 
-Automaattinen aktivointi on `RadioButton`-komponentin oletustila, ja se tarkoittaa, että nappi tarkistetaan aina, kun se saa fokuksen mistä tahansa syystä. Tämä tarkoittaa, että
-ei vain klikkaaminen, vaan myös automaattinen fokusoituminen tai välilehden navigointi tarkistaa napin.
+Ota käyttöön automaattinen aktivointi käytämällä `setActivation(Activation.AUTO)`. Tässä tilassa radiopainike tarkastetaan aina, kun se saa fokuksen, mukaan lukien napsautuksen, automaattisen fokuksen tai tabulaattorin navigoinnin kautta.
 
-:::tip Huomio
-Oletusaktivointiarvo on **`MANUAL`** aktivointi.
-:::
+## Kytkimet {#switches}
 
-## Kytkimiä {#switches}
-
-`RadioButton` voidaan myös asettaa näyttämään kytkimenä, mikä tarjoaa vaihtoehtoisen visuaalisen esityksen vaihtoehtojen valitsemiseksi. Normaalisti radiosäätimet ovat ympyrän tai pyöreän muotoisia ja osoittavat yksittäistä valintaa vaihtoehtojen ryhmästä.
+`RadioButton` voidaan myös asettaa näyttämään kytkimenä, mikä tarjoaa vaihtoehtoisen visuaalisen esityksen vaihtoehtojen valitsemiseksi. Normaalisti radiopainikkeet ovat pyöreitä tai kaarevia ja ilmoittavat yhdestä valinnasta vaihtoehtoryhmästä.
 
 <ComponentDemo
 path='/webforj/radiobuttonswitch'
@@ -75,9 +71,9 @@ files={['src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchVi
 height='120px'
 />
 
-`RadioButton` voidaan muuttaa kytkimeksi, joka muistuttaa kytkin- tai liukusäätöä käyttämällä kahta eri menetelmää:
+`RadioButton` voidaan muuttaa kytkimeksi, joka muistuttaa kytkintä tai liukusäädintä, käyttämällä yhtä kahdesta menetelmästä:
 
-1. **Tehdasmetodi**: Radiosäädin voidaan luoda käyttämällä seuraavia tehdasmetodeja:
+1. **Tehdasmenetelmä**: Radiopainike voidaan luoda seuraavilla tehdasmenetelmillä:
 
 ```java
 Switch(String text, boolean checked);
@@ -85,37 +81,38 @@ Switch(String text);
 Switch();
 ```
 
-Nämä metodit vastaavat `RadioButton`-konstruktorin toimintaa ja luovat komponentin, jonka kytkin-ominaisuus on jo kytketty päälle.
+Nämä menetelmät vastaavat `RadioButton`-konstruktoria ja luovat komponentin, jolla on kytkinominaisuus jo päällä.
 
-2. **Setter**: On myös mahdollista muuttaa jo olemassa oleva `RadioButton` kytkimeksi käyttämällä sopivaa setteriä:
+2. **Setter**: On myös mahdollista muuttaa olemassa oleva `RadioButton` kytkimeksi käyttämällä asianmukaista setteria:
 
 ```java
 myRadioButton.setSwitch(true);
 ```
 
-Kun `RadioButton` esitetään kytkimenä, se näyttää yleensä pitkältä muodolta, jossa on indikaattori, jota voidaan kytkeä päälle tai pois. Tämä visuaalinen esitys tarjoaa käyttäjille intuitiivisemman ja tutumman käyttöliittymän, joka muistuttaa fyysisistä kytkimistä, joita löytyy yleisesti elektronisista laitteista.
+Kun `RadioButton` näytetään kytkimenä, se näkyy tyypillisesti pitkänomaisena muotona, jossa on merkkivalo, jota voidaan kytkeä päälle tai pois. Tämä visuaalinen esitys tarjoaa käyttäjille intuitiivisemman ja tutumman käyttöliittymän, joka muistuttaa sähköisissä laitteissa yleisesti esiintyviä fyysisiä kytkimiä.
 
-Asettaessasi `RadioButton`-komponentin esitettäväksi kytkimenä voidaan parantaa käyttäjäkokemusta selkeällä ja suoraviivaisella tavalla valita vaihtoehtoja. Se voi parantaa visuaalista vetovoimaa ja käytettävyyttä lomakkeissa, asetuspaneeleissa tai muissa käyttöliittymäelementeissä, jotka vaativat useita valintoja.
+`RadioButton`-näytön asettaminen kytkimeksi voi parantaa käyttäjäkokemusta tarjoamalla selkeän ja yksinkertaisen tavan valita vaihtoehtoja. Se voi parantaa visuaalista vetovoimaa ja käytettävyyttä lomakkeissa, asetuspaneeleissa tai muissa käyttöliittymäelementeissä, joissa tarvitaan useita valintoja.
 
 :::info
-`RadioButton`-komponentin toiminta on sama, kun se renderöidään kytkimeksi, eli vain yksi vaihtoehto voidaan valita kerrallaan ryhmässä. Kytkimen näköinen ulkonäkö on visuaalinen muunnos, joka säilyttää `RadioButton`-komponentin toimintallisuuden.
+`RadioButton`-käyttäytyminen pysyy samana, vaikka se renderöidään kytkimenä, mikä tarkoittaa, että vain yksi vaihtoehto voidaan valita kerrallaan ryhmässä. Kytkimen kaltainen ulkoasu on visuaalinen muunnos, joka säilyttää `RadioButton`-toiminnallisuuden.
 :::
 
 <br/>
 
 ## Tyylittely {#styling}
 
-### Laajennukset {#expanses}
-On olemassa viisi valintaruutuvaihtoehtoa, joita tuetaan ja jotka mahdollistavat nopean tyylittelyn ilman CSS:ää. Laajennukset tuetaan `Expanse`-enum-luokan avulla. Alla ovat valintaruudelle tuetut laajennukset: <br/>
+### Laajuudet {#expanses}
+
+Käytä `setExpanse()` yhdessä `Expanse`-enumeroinnin kanssa säätääksesi `RadioButton`-koon ilman CSS:n kirjoittamista. Saatavilla olevat arvot ovat `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, `XLARGE` ja `NONE`.
 
 <TableBuilder name="RadioButton" />
 
 ## Parhaat käytännöt {#best-practices}
 
-Jotta `RadioButton`-komponentin käyttö tarjoaisi optimaalisen käyttäjäkokemuksen, harkitse seuraavia parhaita käytäntöjä:
+Varmistaaksesi optimaalisen käyttäjäkokemuksen käytettäessä `RadioButton`-komponenttia, harkitse seuraavia parhaita käytäntöjä:
 
-1. **Selkeät vaihtoehtojen merkinnät**: Tarjoa selkeä ja ytimekäs teksti jokaiselle `RadioButton`-vaihtoehdolle, joka kuvaa tarkasti valintaa. Tekstin tulisi olla helppolukuista ja erottua toisistaan.
+1. **Selkeät vaihtoehto-otsikot**: Anna jokaiselle `RadioButton`-vaihtoehdolle selkeä ja tiivis teksti, joka kuvaa valintaa tarkasti. Tekstin tulisi olla helposti ymmärrettävää ja erottuvaa toisistaan.
 
-2. **Ryhmän radiosäätimet**: Ryhmittele liittyvät radiosäätimet yhteen osoittaaksesi niiden yhteyden. Tämä auttaa käyttäjiä ymmärtämään, että vain yksi vaihtoehto voidaan valita tietyssä ryhmässä. Tämä voidaan tehdä tehokkaasti käyttämällä [`RadioButtonGroup`](/docs/components/radiobuttongroup)-komponenttia.
+2. **Ryhmittele radiopainikkeet**: Ryhmittele liittyvät radiopainikkeet yhteen osoittaaksesi niiden yhteyden. Tämä auttaa käyttäjiä ymmärtämään, että vain yksi vaihtoehto voidaan valita tietyssä ryhmässä. Tämä voidaan tehdä tehokkaasti käyttämällä [`RadioButtonGroup`](/docs/components/radiobuttongroup) -komponenttia.
 
-3. **Tarjoa oletusvalinta**: Jos mahdollista, harkitse oletusvalinnan tarjoamista radiosäätimille ohjataksesi käyttäjiä, kun he kohtaavat vaihtoehdot ensimmäistä kertaa. Oletusvalinnan tulisi vastata yleisintä tai toivottua valintaa.
+3. **Tarjoa oletusvalinta**: Jos mahdollista, harkitse oletusvalinnan tarjoamista radiopainikkeille ohjataksesi käyttäjiä, kun he kohtaavat vaihtoehdot ensimmäisen kerran. Oletusvalinnan tulisi olla linjassa yleisimmän tai suosituimman valinnan kanssa.

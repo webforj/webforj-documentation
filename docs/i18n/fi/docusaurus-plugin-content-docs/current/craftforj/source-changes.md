@@ -1,48 +1,48 @@
 ---
-title: Muutosten kirjoittaminen lähteeseen
+title: Kirjoittaminen Lähteeseen
 sidebar_position: 4
 description: >-
   Review the changes you made in craftforJ as a diff, choose where each one is
   written, and apply them to your Java source.
-_i18n_hash: c79e8574cbf260fd784a2cffc00a0ab5
+_i18n_hash: dd96407889e9e9fa1de4af299809dcad
 ---
-Changing a property in craftforJ changes the running app and nothing else. To keep a change, you review it and write it into the Java file it came from. This page describes that step.
+Muuttamalla ominaisuutta craftforJ:ssä muutat toimintoa sovelluksessa eikä mitään muuta. Muutoksen säilyttämiseksi tarkistat sen ja kirjoitat sen takaisin alkuperäiseen Java-tiedostoon. Tämä sivu kuvaa tämän vaiheen.
 
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4#t=0.5" type="video/mp4" />
   </video>
 </div>
 
-:::warning craftforJ writes to your project
-Keep your work in version control. Read the diff before you apply it, and read it again before you commit.
+:::warning craftforJ kirjoittaa projektiisi
+Pidä työsi versionhallinnassa. Lue muutos ennen sen soveltamista ja lue se uudelleen ennen sitoutumista.
 :::
 
-## Pending changes {#pending-changes}
+## Odottavat muutokset {#pending-changes}
 
-Every property you change is recorded as a pending change, and craftforJ shows how many are waiting. Pending changes survive a page reload and a route change, because craftforJ reapplies them when your components are rebuilt.
+Jokainen muuttamasi ominaisuus tallennetaan odottavaksi muutokseksi, ja craftforJ näyttää, kuinka monta on odottamassa. Odottavat muutokset säilyvät sivun uudelleenlatauksessa ja reitin muutoksessa, koska craftforJ soveltaa ne uudelleen, kun komponenttisi rakennetaan.
 
-## Reviewing and applying {#reviewing-and-applying}
+## Tarkistaminen ja soveltaminen {#reviewing-and-applying}
 
-Press <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> to open the review. Changes are grouped by the file they'll land in. Each one shows the property with its old and new value, and expands into the diff of the file. If a change would replace a computed value with a fixed one, craftforJ warns you and names the expression it's about to replace. Nothing is written until you apply. Before you do, you can revert or discard each change on its own.
+Paina <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> avataksesi tarkastelun. Muutokset on ryhmitelty sen tiedoston mukaan, johon ne menevät. Jokainen niistä näyttää ominaisuuden vanhan ja uuden arvon, ja laajenee tiedoston diffiin. Jos muutos korvaisi lasketun arvon kiinteällä, craftforJ varoittaa sinua ja nimeää ilmaisun, jonka se on juuri korvaamassa. Mikään ei tallenneta ennen kuin sovellat sen. Ennen soveltamista voit peruuttaa tai hylätä jokaisen muutoksen erikseen.
 
-![The review with changes grouped by file and one expanded to its diff](/img/craftforj/source-changes/review.png#rounded-border)
+![Tarkastelu, jossa muutokset ryhmitellään tiedoston mukaan ja yksi on laajennettu sen diffiin](/img/craftforj/source-changes/review.png#rounded-border)
 
-## Choosing where a change is written {#choosing-where-a-change-is-written}
+## Muutoksen kirjoituspaikan valitseminen {#choosing-where-a-change-is-written}
 
-Where a change is written determines how far it reaches. When a component is built directly in a view, the change goes into that view. When it's built inside a reusable class, you have two options:
+Se, mihin muutosta kirjoitetaan, määrää, kuinka pitkälle se ulottuu. Kun komponentti rakennetaan suoraan näkymässä, muutos menee siihen näkymään. Kun se rakennetaan uudelleenkäytettävän luokan sisälle, sinulla on kaksi vaihtoehtoa:
 
-- **The usage** - the place the component is used, which changes only the screen in front of you. This is the default.
-- **The definition** - the place the component is built, which changes every screen that uses it.
+- **Käyttö** - paikka, jossa komponenttia käytetään, mikä muuttaa vain sen näytön, joka on edessäsi. Tämä on oletus.
+- **Määrittely** - paikka, jossa komponentti rakennetaan, mikä muuttaa jokaista näyttöä, joka käyttää sitä.
 
-Each pending change shows which of the two applies and lets you switch between them. Some properties can only be written at the definition, because the component sets them itself rather than accepting them from the caller. craftforJ marks those before you apply.
+Jokainen odottava muutos näyttää, mikä kahdesta pätee ja antaa sinun vaihtaa niiden välillä. Jotkin ominaisuudet voidaan kirjoittaa vain määrittelyssä, koska komponentti asettaa ne itse sen sijaan, että vastaanottaisi ne kutsujalta. craftforJ merkitsee nämä ennen soveltamista.
 
-## After you apply {#after-you-apply}
+## Sen jälkeen kun olet soveltanut {#after-you-apply}
 
-Writing Java causes your app to rebuild and restart. craftforJ reports the restart, waits for it, and reconnects with your selection and your remaining pending changes intact. Applied changes leave the pending list once they're in your files.
+Javaan kirjoittaminen aiheuttaa sovelluksen uudelleenrakentamisen ja uudelleenkäynnistyksen. craftforJ raportoi uudelleenkäynnistyksen, odottaa sitä ja yhdistää valintasi ja jäljellä olevat odottavat muutoksesi ehjinä. Sovelletut muutokset poistuvat odottavalta listalta, kun ne ovat tiedostoissasi.
 
-This is the only point where your reload setup matters. craftforJ doesn't need live reload to work, because everything you change while inspecting takes effect in the running app straight away, with no rebuild involved. Writing to source is different: it changes a file your app was built from, so the app has to rebuild before the change comes from your code rather than from craftforJ. With [live reload](/docs/configuration/deploy-reload/overview) configured, that happens on its own. Without it, restart the app yourself.
+Tämä on ainoa hetki, jolloin uudelleenlatausasetuksesi on merkityksellinen. craftforJ ei tarvitse live-reloadia toimiakseen, koska kaikki, mitä muutat tarkistettaessa, vaikuttaa heti käynnissä olevaan sovellukseen ilman uudelleenrakentamista. Tiedostoon kirjoittaminen on erilaista: se muuttaa tiedostoa, josta sovelluksesi rakennettiin, joten sovelluksen on rakennettava uudelleen, ennen kuin muutos tulee koodistasi eikä craftforJ:stä. Kun [live-reload](/docs/configuration/deploy-reload/overview) on määritetty, se tapahtuu automaattisesti. Ilman sitä käynnistä sovellus itse uudelleen.
 
-## Turning it off {#turning-it-off}
+## Sammuttaminen {#turning-it-off}
 
-You can switch off writing to Java for an app in craftforJ settings, or remove it entirely with the [`source-changes`](/docs/craftforj/configuration#feature-flags) property. With either turned off, property editing still works but stays live.
+Voit kytkeä kirjoittamisen Javaan pois päältä craftforJ-asetuksissa tai poistaa sen kokonaan käytöstä [`source-changes`](/docs/craftforj/configuration#feature-flags) ominaisuuden avulla. Molempien ollessa pois päältä, ominaisuuden muokkaaminen toimii edelleen, mutta pysyy live-tilassa.

@@ -21,7 +21,9 @@ This page outlines the shared features and behavior of all list components, whil
 List components are composed of <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects, which represent individual items within a list. Each <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> is associated with a unique key and display text. Important features of the <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> class include:
 
 - A <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> encapsulates a unique key `Object` and a text `String` to display within the list component.
-- You can construct a <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> by providing a key and text, or by specifying only the text so that a random key is generated.
+- You can construct a <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> by providing a key and text, or by specifying only the text, which is also used as the key.
+
+Keys must be unique within a list. Adding a second text-only item with the same text throws an `IllegalArgumentException`. To display duplicate labels, supply distinct keys for those items.
 
 ## Managing `ListItem` objects with the API {#managing-listitem-objects-with-the-api}
 
@@ -66,7 +68,7 @@ All of the list types implement the `SelectableList` interface. This interface a
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#select(com.webforj.component.list.ListItem)' code="true">select(ListItem item)</JavadocLink> takes a `ListItem` as parameter to select.
 
 ```java {4}
-List demoList = new List();
+ListBox demoList = new ListBox();
 ListItem demoItem = new ListItem("demo","Demo Item");
 demoList.add(demoItem);
 demoList.select(demoItem);
@@ -77,19 +79,19 @@ demoList.select(demoItem);
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectKey(java.lang.Object)' code="true">selectKey(Object key)</JavadocLink> takes a key to a `ListItem` as parameter to select.
 
 ```java {3}
-List demoList = new List();
+ListBox demoList = new ListBox();
 demoList.add("demo","Demo Item");
 demoList.selectKey("demo");
 ```
 
 #### With a given index of a `ListItem` {#with-a-given-index-of-a-listitem}
 
-<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectIndex(int)' code="true">selectIndex(int index)</JavadocLink> takes an index to a `ListItem`as a parameter to select.
+<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectIndex(int)' code="true">selectIndex(int index)</JavadocLink> takes an index to a `ListItem` as a parameter to select.
 
 ```java {3}
-List demoList = new List();
+ListBox demoList = new ListBox();
 demoList.add("demo","Demo Item");
-demoList.selectKey(0);
+demoList.selectIndex(0);
 ```
 
 ### Other list operations {#other-list-operations}
@@ -105,7 +107,7 @@ demoList.selectKey(0);
 
 ### Iterating over lists {#iterating-over-lists}
 
-All List components implement the Java [`Iteratable`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html) interface, providing an efficient and intuitive way to iterate through a list's contents. With this interface, you can easily loop through every `ListItem`, making it simple to access, modify, or perform actions on each item with minimal effort. The `Iterable` interface is a standard pattern of the Java language, ensuring your code is familiar and maintainable for any Java developer.
+All list components implement the Java [`Iterable`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html) interface. Use `forEach()` or a `for` loop to access or modify each `ListItem`.
 
 The code snippet below demonstrates two easy ways to iterate through a list:
 
@@ -178,20 +180,20 @@ Each List component can display helper text beneath the list using the `setHelpe
 
 All list components implement the <JavadocLink type="foundation" location="com/webforj/concern/HasHorizontalAlignment" code='true'>HasHorizontalAlignment</JavadocLink> interface, giving you control over how text and content are aligned inside the component.
 
-Use the `setHorizontalAlignment()` method to set alignment:
+Use the `setHorizontalAlignment()` method with the `HasHorizontalAlignment.Alignment` enum to set alignment:
 
-- `HorizontalAlignment.LEFT` (default)
-- `HorizontalAlignment.MIDDLE`
-- `HorizontalAlignment.RIGHT`
+- `Alignment.LEFT` (default)
+- `Alignment.MIDDLE`
+- `Alignment.RIGHT`
 
 ```java
-ListBox<String> listBox = new ListBox<>();
-listBox.setHorizontalAlignment(HorizontalAlignment.LEFT);
+ListBox listBox = new ListBox();
+listBox.setHorizontalAlignment(Alignment.LEFT);
 ```
 
 To get the current alignment:
 ```java
-HorizontalAlignment alignment = listBox.getHorizontalAlignment();
+Alignment alignment = listBox.getHorizontalAlignment();
 ```
 
 ### Expanses {#expanses}
@@ -208,7 +210,7 @@ Use the `setExpanse()` method to set the expanse level. Options include:
 - `Expanse.XLARGE`
 
 ```java
-ListBox<String> listBox = new ListBox<>();
+ListBox listBox = new ListBox();
 listBox.setExpanse(Expanse.LARGE);
 ```
 
