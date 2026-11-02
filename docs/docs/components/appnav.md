@@ -1,7 +1,6 @@
 ---
 title: AppNav
 sidebar_position: 6
-sidebar_class_name: new-content
 description: Build hierarchical side navigation menus with AppNav and AppNavItem, linking to routes, registered views, or external URLs.
 ---
 
