@@ -4,7 +4,7 @@ description: "A visual UI designer for Java that works on the running app. Inspe
 slug: java-visual-ui-designer
 date: 2026-10-08
 authors: webforJ
-tags: [tutorial, ui customization, web development]
+tags: [tutorial, ai, ui customization, web development]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-08-java-visual-ui-designer/cover.jpg
 hide_table_of_contents: false
 ---

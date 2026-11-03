@@ -4,7 +4,7 @@ description: "Plan a Swing to web migration screen by screen. Keep your domain l
 slug: swing-to-web-migration
 date: 2026-10-15
 authors: webforJ
-tags: [integrations, modernization, webswing]
+tags: [integrations, ai, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-15-swing-to-web-migration/cover.jpg
 hide_table_of_contents: false
 ---

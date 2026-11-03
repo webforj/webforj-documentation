@@ -4,7 +4,7 @@ description: "Looking for a GWT alternative? webforJ keeps the whole UI in Java 
 slug: gwt-alternative
 date: 2026-09-04
 authors: webforJ
-tags: [community, modernization, spring]
+tags: [community, ai, modernization, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-04-gwt-alternative/cover.jpg
 hide_table_of_contents: false
 ---
