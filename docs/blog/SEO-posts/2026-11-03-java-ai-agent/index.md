@@ -4,7 +4,7 @@ description: "Build an AI agent in Java with Spring AI and webforJ that reads th
 slug: java-ai-agent
 date: 2026-11-03T11:00:00Z
 authors: Hyyan Abo Fakher
-tags: [tutorial, ai, spring-ai, spring]
+tags: [ai, spring-ai, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ai-agent/cover.jpg
 hide_table_of_contents: false
 ---

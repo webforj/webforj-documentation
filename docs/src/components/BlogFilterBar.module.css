@@ -1,9 +1,6 @@
 /* one pill-shaped bar with a solid surface, so the page background never
    shows through between the buttons */
 .filterBar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
   justify-self: center;
   width: fit-content;
   max-width: 100%;
@@ -12,6 +9,35 @@
   border-radius: 1.5rem;
   background-color: var(--dwc-surface-3);
   grid-column: 1 / -1;
+}
+
+/* the buttons stay on one line; when they don't fit, the row scrolls
+   sideways like a tab strip, with no visible scrollbar */
+.track {
+  --fade-start: 0px;
+  --fade-end: 0px;
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-radius: 2rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade-start),
+    #000 calc(100% - var(--fade-end)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--fade-start),
+    #000 calc(100% - var(--fade-end)), transparent);
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+/* an edge fades only while there is more to scroll towards it */
+.fadeStart {
+  --fade-start: 2.5rem;
+}
+
+.fadeEnd {
+  --fade-end: 2.5rem;
 }
 
 .filterButton {
@@ -41,7 +67,7 @@
 
 .filterButton:focus-visible {
   outline: 2px solid var(--dwc-color-primary-text);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .filterButton.active {

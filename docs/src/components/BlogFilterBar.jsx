@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import clsx from 'clsx';
@@ -15,6 +15,10 @@ function getCategories() {
     {
       label: translate({ id: 'component.blogFilterBar.release', message: 'Release' }),
       path: '/blog/tags/release',
+    },
+    {
+      label: translate({ id: 'component.blogFilterBar.ai', message: 'AI' }),
+      path: '/blog/tags/ai',
     },
     {
       label: translate({ id: 'component.blogFilterBar.tutorial', message: 'Tutorial' }),
@@ -75,6 +79,35 @@ export default function BlogFilterBar() {
   const categories = getCategories();
   const page = Number(pathname.match(/^\/blog\/page\/(\d+)/)?.[1] ?? 1);
 
+  // on narrow screens the categories scroll sideways; each edge fades only
+  // while there is more to scroll in that direction
+  const trackRef = useRef(null);
+  const [fade, setFade] = useState({ start: false, end: false });
+  const updateFade = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) {
+      return;
+    }
+    const max = track.scrollWidth - track.clientWidth;
+    setFade({ start: track.scrollLeft > 1, end: track.scrollLeft < max - 1 });
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) {
+      return undefined;
+    }
+    // keep the selected category in view after navigating
+    const active = track.querySelector(`.${styles.active}`);
+    if (active && track.scrollWidth > track.clientWidth) {
+      track.scrollLeft = active.offsetLeft - (track.clientWidth - active.offsetWidth) / 2;
+    }
+    updateFade();
+    const observer = new ResizeObserver(updateFade);
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, [pathname, updateFade]);
+
   const isActive = (path) => {
     if (path === '/blog') {
       return !pathname.startsWith('/blog/tags/');
@@ -106,17 +139,26 @@ export default function BlogFilterBar() {
         </a>
       </p>
       <div className={styles.filterBar}>
-        {categories.map(({ label, path }) => (
-          <Link
-            key={label}
-            to={path}
-            className={clsx(styles.filterButton, {
-              [styles.active]: isActive(path),
-            })}
-          >
-            {label}
-          </Link>
-        ))}
+        <div
+          ref={trackRef}
+          onScroll={updateFade}
+          className={clsx(styles.track, {
+            [styles.fadeStart]: fade.start,
+            [styles.fadeEnd]: fade.end,
+          })}
+        >
+          {categories.map(({ label, path }) => (
+            <Link
+              key={label}
+              to={path}
+              className={clsx(styles.filterButton, {
+                [styles.active]: isActive(path),
+              })}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
       </div>
     </>
   );

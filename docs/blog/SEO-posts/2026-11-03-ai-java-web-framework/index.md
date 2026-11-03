@@ -4,7 +4,7 @@ description: "webforJ is the AI Java web framework: assistants that know its API
 slug: ai-java-web-framework
 date: 2026-11-03T10:00:00Z
 authors: Hyyan Abo Fakher
-tags: [community, ai, mcp, spring]
+tags: [ai, mcp, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-ai-java-web-framework/cover.jpg
 hide_table_of_contents: false
 ---
