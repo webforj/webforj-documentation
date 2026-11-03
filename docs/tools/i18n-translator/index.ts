@@ -10,8 +10,8 @@ import fg from 'fast-glob';
 import matter from 'gray-matter';
 import fs from 'fs-extra';
 import md5 from 'md5';
-import { translate, translateBatch, translateTitle, TranslationTask } from './translate';
-import os from 'os';
+import { translateBatch, translateTitle, TranslationResult, TranslationTask } from './translate';
+import { validateTranslatedMdx } from './validate';
 
 const siteDir = options.project;
 
@@ -72,6 +72,17 @@ function saveStringHashes(locale: string, newHashes: StringHashes): void {
   } catch (error) {
     console.error(`Failed to save hashes for ${locale}:`, error);
   }
+}
+
+// Drops hashes for strings whose translation failed so the next run retries them
+function withoutFailedKeys(hashes: StringHashes, results: TranslationResult[]): StringHashes {
+  const kept = { ...hashes };
+  for (const result of results) {
+    if (result.error && result.key) {
+      delete kept[result.key];
+    }
+  }
+  return kept;
 }
 
 function hashString(content: string): string {
@@ -203,7 +214,8 @@ async function translateDocs(locale: string) {
       content,
       locale,
       isUIString: false,
-      file
+      file,
+      validate: (translated) => validateTranslatedMdx(content, translated)
     });
   }
 
@@ -211,9 +223,6 @@ async function translateDocs(locale: string) {
     console.log('  No files need translation.');
     return;
   }
-
-  // Mark that we're making changes
-  hasChanges = true;
 
   console.log(`  Translating ${tasks.length} files with batch size ${options.batchSize}...`);
 
@@ -225,7 +234,14 @@ async function translateDocs(locale: string) {
 
   // Process results and translate titles
   let totalTokens = 0;
+  let skipped = 0;
   for (const result of results) {
+    totalTokens += result.usage?.total_tokens ?? 0;
+    if (result.error) {
+      // Leave the existing translation (and its stale hash) so the next run retries
+      skipped++;
+      continue;
+    }
     if (result.file) {
       const fileInfo = fileInfoMap.get(result.file);
       if (fileInfo) {
@@ -255,15 +271,12 @@ async function translateDocs(locale: string) {
         // Ensure LF line endings for consistency across platforms
         const normalizedContent = targetFileContent.replace(/\r\n/g, '\n');
         fs.writeFileSync(fileInfo.targetPath, normalizedContent);
-
-        if (result.usage?.total_tokens) {
-          totalTokens += result.usage.total_tokens;
-        }
+        hasChanges = true;
       }
     }
   }
 
-  console.log(`  Completed translation of ${results.length} files. Total token usage: ${totalTokens}`);
+  console.log(`  Completed translation of ${results.length - skipped} files (${skipped} skipped). Total token usage: ${totalTokens}`);
 }
 
 async function translateDocsTitlesOnly(locale: string) {
@@ -434,7 +447,7 @@ async function translateJSON(
 
   // Update JSON with translations
   for (const result of results) {
-    if (result.key && targetJson[result.key]) {
+    if (!result.error && result.key && targetJson[result.key]) {
       (targetJson[result.key] as any).message = result.translatedText;
     }
   }
@@ -444,7 +457,7 @@ async function translateJSON(
   fs.writeFileSync(jsonPath, jsonString);
   
   // Save hashes after successful translation
-  saveStringHashes(locale, newHashes);
+  saveStringHashes(locale, withoutFailedKeys(newHashes, results));
   
   console.log(`  Wrote translated file: ${jsonPath}`);
 }
@@ -483,7 +496,7 @@ async function translateJSONOldWay(
   const results = await translateBatch(tasks);
 
   for (const result of results) {
-    if (result.key && json[result.key]) {
+    if (!result.error && result.key && json[result.key]) {
       (json[result.key] as any).message = result.translatedText;
     }
   }
@@ -573,7 +586,7 @@ async function translateCodeJSON(locale: string) {
 
   // Update JSON with translations
   for (const result of results) {
-    if (result.key && targetJson[result.key]) {
+    if (!result.error && result.key && targetJson[result.key]) {
       (targetJson[result.key] as any).message = result.translatedText;
     }
   }
@@ -583,7 +596,7 @@ async function translateCodeJSON(locale: string) {
   fs.writeFileSync(jsonPath, codeJsonString);
   
   // Save hashes after successful translation
-  saveStringHashes(locale, newHashes);
+  saveStringHashes(locale, withoutFailedKeys(newHashes, results));
   
   console.log(`  Wrote translated file: ${jsonPath}`);
 }
@@ -628,7 +641,7 @@ async function translateCodeJSONOldWay(locale: string, jsonPath: string) {
   const results = await translateBatch(tasks);
 
   for (const result of results) {
-    if (result.key && json[result.key]) {
+    if (!result.error && result.key && json[result.key]) {
       (json[result.key] as any).message = result.translatedText;
     }
   }
@@ -638,4 +651,8 @@ async function translateCodeJSONOldWay(locale: string, jsonPath: string) {
   console.log(`  Wrote translated file: ${jsonPath}`);
 }
 
-main().catch(console.error);
+// Exit 2 on a crash so the workflow can tell it apart from "no changes" (exit 1)
+main().catch((error) => {
+  console.error(error);
+  process.exit(2);
+});

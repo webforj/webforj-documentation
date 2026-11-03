@@ -3,14 +3,17 @@ import { ProxyAgent } from 'proxy-agent';
 import { options } from './config';
 import pLimit from 'p-limit';
 
-export async function translateTitle(title: string, targetLanguage: string) {
-  const client = new OpenAI({
-    baseURL: options.baseUrl,
-    apiKey: options.apiKey,
-    organization: options.organization,
-    httpAgent: new ProxyAgent(),
-  });
+const client = new OpenAI({
+  baseURL: options.baseUrl,
+  apiKey: options.apiKey,
+  organization: options.organization,
+  httpAgent: new ProxyAgent(),
+});
 
+// Attempts per task before giving up; a failed task is skipped, not fatal
+const MAX_ATTEMPTS = 3;
+
+export async function translateTitle(title: string, targetLanguage: string) {
   const titlePrompt = `You are translating ONLY a document title (from YAML front matter) to ${targetLanguage}.
 
 🎯 YOUR ONLY JOB: Decide if this title should be translated, then either translate it or return it unchanged.
@@ -93,13 +96,6 @@ Return ONLY the title (translated or unchanged), nothing else.`;
 }
 
 export async function translate(content: string, targetLanguage: string, isUIString: boolean = false) {
-  const client = new OpenAI({
-    baseURL: options.baseUrl,
-    apiKey: options.apiKey,
-    organization: options.organization,
-    httpAgent: new ProxyAgent(),
-  });
-
   const systemPrompt = isUIString 
     ? `You are a UI translator. Translate the following short UI text to ${targetLanguage}. 
        Keep the translation concise and appropriate for UI elements like buttons, menu items, and labels.
@@ -204,6 +200,8 @@ export interface TranslationTask {
   isUIString: boolean;
   key?: string; // for JSON translations
   file?: string; // for markdown translations
+  // Returns an error message when the translation is unusable, triggering a retry
+  validate?: (translatedText: string) => Promise<string | null>;
 }
 
 export interface TranslationResult {
@@ -211,6 +209,7 @@ export interface TranslationResult {
   usage?: any;
   key?: string;
   file?: string;
+  error?: string; // set when every attempt failed; translatedText is then empty
 }
 
 export async function translateBatch(
@@ -219,39 +218,54 @@ export async function translateBatch(
 ): Promise<TranslationResult[]> {
   const batchSize = parseInt(options.batchSize, 10) || 200;
   const limit = pLimit(batchSize);
-  
-  const results: TranslationResult[] = [];
-  const promises = tasks.map((task, index) => 
-    limit(async () => {
-      try {
-        const { translatedText, usage } = await translate(
-          task.content,
-          task.locale,
-          task.isUIString
-        );
-        
-        const result: TranslationResult = {
-          translatedText,
-          usage,
+  let completed = 0;
+
+  return Promise.all(
+    tasks.map((task) =>
+      limit(async (): Promise<TranslationResult> => {
+        const label = `${task.locale}/${task.file || task.key}`;
+        let lastError = '';
+        let totalTokens = 0;
+
+        for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+          try {
+            const { translatedText, usage } = await translate(
+              task.content,
+              task.locale,
+              task.isUIString
+            );
+            totalTokens += usage?.total_tokens ?? 0;
+
+            const validationError = task.validate
+              ? await task.validate(translatedText)
+              : null;
+            if (!validationError) {
+              onProgress?.(++completed, tasks.length);
+              return {
+                translatedText,
+                usage: { total_tokens: totalTokens },
+                key: task.key,
+                file: task.file,
+              };
+            }
+            lastError = validationError;
+          } catch (error) {
+            lastError = String(error);
+          }
+          console.warn(`\n  Attempt ${attempt}/${MAX_ATTEMPTS} failed for ${label}: ${lastError}`);
+        }
+
+        // Surface as a GitHub Actions annotation without failing the run
+        console.log(`::warning::Skipped translation of ${label} after ${MAX_ATTEMPTS} attempts: ${lastError}`);
+        onProgress?.(++completed, tasks.length);
+        return {
+          translatedText: '',
+          usage: { total_tokens: totalTokens },
           key: task.key,
           file: task.file,
+          error: lastError,
         };
-        
-        results[index] = result;
-        
-        if (onProgress) {
-          const completed = results.filter(r => r !== undefined).length;
-          onProgress(completed, tasks.length);
-        }
-        
-        return result;
-      } catch (error) {
-        console.error(`Translation failed for ${task.file || task.key}: ${error}`);
-        throw error;
-      }
-    })
+      })
+    )
   );
-  
-  await Promise.all(promises);
-  return results;
 }
