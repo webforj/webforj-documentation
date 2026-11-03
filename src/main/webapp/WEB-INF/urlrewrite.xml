@@ -89,12 +89,12 @@
     <rule>
         <name>Cookbook Tags List</name>
         <from>^/cookbook/tags$</from>
-        <to>/cookbook/tags.html</to>
+        <to last="true">/cookbook/tags.html</to>
     </rule>
     <rule>
         <name>Cookbook Tags Page</name>
         <from>^/cookbook/tags/([^/]+)$</from>
-        <to>/cookbook/tags/$1.html</to>
+        <to last="true">/cookbook/tags/$1.html</to>
     </rule>
     <rule>
         <name>Cookbook First Subdirectory</name>
