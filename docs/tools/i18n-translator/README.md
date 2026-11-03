@@ -190,8 +190,8 @@ The whitelist is automatically loaded from:
 **Issue**: Translation tool misses some strings
 **Solution**: Check that strings match the English detection patterns in `translateCodeJSON()`
 
-**Issue**: Workflow shows `Skipped translation of <locale>/<file> after 3 attempts`
-**Solution**: The model kept producing MDX that doesn't compile (often a mangled JSX tag). The file keeps its old translation and is retried on the next run. If it keeps failing, simplify the inline JSX in the English source or fix the translation by hand.
+**Issue**: The run fails on the **Skipped translations need review** job (GitHub's failure email names this job)
+**Solution**: The run summary lists each skipped file or string with its error. Successful translations were still committed. The model kept producing MDX that doesn't compile (often a mangled JSX tag), or the API kept erroring. The file keeps its old translation and is retried on the next run. If it keeps failing, simplify the inline JSX in the English source or fix the translation by hand.
 
 **Issue**: Technical terms are being translated
 **Solution**: Add them to `.github/.styles/config/vocabularies/webforj/accept.txt` or the whitelist in the `config.ts` file.

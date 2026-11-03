@@ -75,6 +75,8 @@ jobs:
     needs: check-changes
     if: needs.check-changes.outputs.should_run == 'true'
     runs-on: ubuntu-latest
+    outputs:
+      skipped: ${{ steps.translate.outputs.skipped }}
 
     steps:
       - name: Checkout Repository
@@ -132,6 +134,9 @@ jobs:
         working-directory: ./docs
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # The translator appends a line here for each file or string it gave
+          # up on; the report-skipped job turns that into a failed run.
+          SKIPPED_REPORT: ${{ runner.temp }}/translation-skipped.txt
         run: |
           # Both translate and translate:titles exit 0 when they produced
           # changes, 1 when there is nothing to do, and anything else on a
@@ -155,6 +160,14 @@ jobs:
               *) echo "::error::npm run $script crashed with exit code $status"; exit "$status" ;;
             esac
           done
+
+          if [ -s "$SKIPPED_REPORT" ]; then
+            {
+              echo 'skipped<<EOF_SKIPPED'
+              cat "$SKIPPED_REPORT"
+              echo 'EOF_SKIPPED'
+            } >> "$GITHUB_OUTPUT"
+          fi
 
           if [ "$changed" = "true" ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
@@ -208,3 +221,31 @@ jobs:
           else
             echo "No translation changes to commit"
           fi
+
+  # Runs after translate (even if its build failed) and fails on purpose when
+  # any translation was skipped, so the run triggers GitHub's failure email.
+  # The job name shows up in that email; the file list is in the run summary.
+  report-skipped:
+    name: Skipped translations need review
+    needs: translate
+    if: always() && needs.translate.outputs.skipped != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: List skipped translations
+        env:
+          SKIPPED: ${{ needs.translate.outputs.skipped }}
+        run: |
+          count=$(printf '%s\n' "$SKIPPED" | grep -c .)
+          {
+            echo "## $count translation(s) skipped after 3 attempts"
+            echo
+            echo "Successful translations were still committed. Skipped items keep their"
+            echo "previous translation and are retried on the next run. Tweak the English"
+            echo "source (often a mangled inline JSX tag) if they keep failing."
+            echo
+            printf '%s\n' "$SKIPPED" | sed 's/^/- /'
+          } >> "$GITHUB_STEP_SUMMARY"
+          printf '%s\n' "$SKIPPED" | while IFS= read -r line; do
+            [ -n "$line" ] && echo "::error title=Skipped translation::$line"
+          done
+          exit 1

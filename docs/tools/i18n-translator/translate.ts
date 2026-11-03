@@ -2,6 +2,7 @@ import OpenAI from 'openai';
 import { ProxyAgent } from 'proxy-agent';
 import { options } from './config';
 import pLimit from 'p-limit';
+import fs from 'fs';
 
 const client = new OpenAI({
   baseURL: options.baseUrl,
@@ -257,6 +258,11 @@ export async function translateBatch(
 
         // Surface as a GitHub Actions annotation without failing the run
         console.log(`::warning::Skipped translation of ${label} after ${MAX_ATTEMPTS} attempts: ${lastError}`);
+        // The workflow reads this report after committing and fails the run,
+        // so the skipped files land in GitHub's failure email
+        if (process.env.SKIPPED_REPORT) {
+          fs.appendFileSync(process.env.SKIPPED_REPORT, `${label}: ${lastError.replace(/\s+/g, ' ')}\n`);
+        }
         onProgress?.(++completed, tasks.length);
         return {
           translatedText: '',
