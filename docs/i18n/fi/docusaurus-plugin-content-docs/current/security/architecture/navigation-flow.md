@@ -1,20 +1,23 @@
 ---
 sidebar_position: 3
 title: Navigointivirta
-_i18n_hash: f2083b0f83ed9e0098250dafdb37a753
+description: >-
+  Trace how RouteSecurityObserver intercepts navigation, runs evaluators, and
+  redirects users before any view renders.
+_i18n_hash: bf6b927b675a5784340999a5e268581c
 ---
-Turvallisuuden valvonta webforJ:ssä tapahtuu automaattisesti navigoinnin aikana. Kun käyttäjä klikkaa linkkiä tai navigoi reitille, turvallisuusjärjestelmä keskeyttää navigoinnin, arvioi pääsääntöjä ja joko sallii navigoinnin jatkamisen tai ohjaa käyttäjän sopivalle sivulle. Tämä keskeytys on käyttäjille näkymätön, eikä se vaadi manuaalisia turvallisuustarkastuksia komponenttikoodissasi.
+webforJ:n tietoturvan valvonta tapahtuu automaattisesti navigoinnin aikana. Kun käyttäjä napsauttaa linkkiä tai siirtyy reitille, tietoturvajärjestelmä sieppaa navigoinnin, arvioi käyttöoikeussäännöt ja joko sallii navigoinnin jatkua tai ohjaa käyttäjän sopivalle sivulle. Käyttäjät eivät huomaa tätä sieppausta, eikä komponenttikoodiin tarvitse lisätä manuaalisia tietoturvatarkistuksia.
 
-Ymmärtäminen siitä, kuinka navigoinnin keskeytys toimii, auttaa sinua vianetsimään turvallisuuteen liittyviä ongelmia ja rakentamaan mukautettua navigaatiologia, joka integroituu turvallisuusjärjestelmään.
+Navigoinnin sieppauksen toiminnan ymmärtäminen auttaa selvittämään tietoturvaongelmia ja rakentamaan mukautettua navigointilogiikkaa, joka integroituu tietoturvajärjestelmään.
 
-## The `RouteSecurityObserver` {#the-routesecurityobserver}
+## `RouteSecurityObserver` {#the-routesecurityobserver}
 
-`RouteSecurityObserver` on navigointivalvoja, joka kytkeytyy reitittimen elinkaarimekanismiin. Se kuuntelee navigointitapahtumia ja arvioi turvallisuussääntöjä ennen kuin mitään komponenttia renderöidään.
+`RouteSecurityObserver` on navigoinnin tarkkailija, joka kytkeytyy reitittimen elinkaareen. Se kuuntelee navigointitapahtumia ja arvioi tietoturvasäännöt ennen komponentin renderöintiä.
 
-Valvoja liitetään reitittimen renderöijään sovelluksen käynnistyksen aikana:
+Tarkkailija liitetään reitittimen renderöijään sovelluksen käynnistyksen aikana:
 
 ```java
-// Luo valvoja turvallisuusmanagerisi kanssa
+// Luo tarkkailija tietoturvan hallinnan avulla
 RouteSecurityObserver observer = new RouteSecurityObserver(securityManager);
 
 // Liitä se reitittimen renderöijään
@@ -24,11 +27,11 @@ if (router != null) {
 }
 ```
 
-Kun valvoja on liitetty, se keskeyttää jokaisen navigointipyyntö. Valvoja istuu navigointipyyntöjen ja komponentin renderöinnin välissä, ja kun navigointi alkaa, se pyytää turvallisuusmanagerilta pääsyn arvioimiseksi. Vasta jos pääsy myönnetään, komponentti renderöidään.
+Liittämisen jälkeen tarkkailija sieppaa jokaisen navigointipyynnön. Tarkkailija toimii navigointipyyntöjen ja komponentin renderöinnin välissä. Kun navigointi alkaa, se pyytää tietoturvan hallintaa arvioimaan käyttöoikeudet. Komponentti renderöidään vain, jos käyttöoikeus myönnetään.
 
-## Navigoinnin keskeytyksen kulku {#navigation-interception-flow}
+## Navigoinnin sieppauksen kulku {#navigation-interception-flow}
 
-Kun käyttäjä navigoi reitille, seuraava sekvenssi tapahtuu:
+Kun käyttäjä siirtyy reitille, tapahtumat etenevät seuraavasti:
 
 ```mermaid
 sequenceDiagram
@@ -38,78 +41,78 @@ sequenceDiagram
   participant Manager as RouteSecurityManager
   participant Component as Route Component
 
-  User->>Router: Navigate to /admin
-  Router->>Observer: onRouteRendererLifecycleEvent(BEFORE_CREATE)
+  User->>Router: Siirry reitille /admin
+  Router->>Observer: onInstantiate(routeClass, context)
   Observer->>Manager: evaluate(routeClass, context)
-  Manager->>Manager: Run evaluators by priority
+  Manager->>Manager: Suorita arvioijat prioriteettijärjestyksessä
   Manager-->>Observer: RouteAccessDecision
 
-  alt Access Granted
-    Observer-->>Router: Allow rendering
-    Router->>Component: Create component
-    Component-->>User: Display view
-  else Access Denied
+  alt Käyttöoikeus myönnetty
+    Observer-->>Router: Salli renderöinti
+    Router->>Component: Luo komponentti
+    Component-->>User: Näytä näkymä
+  else Käyttöoikeus evätty
     Observer->>Manager: onAccessDenied(decision, context)
-    Manager->>Router: Redirect to login/deny page
-    Router-->>User: Show login page
+    Manager->>Router: Uudelleenohjaa kirjautumis- tai pääsy estetty -sivulle
+    Router-->>User: Näytä kirjautumissivu
   end
 ```
 
-Tämä kulku osoittaa, että turvallisuusarviointi tapahtuu ennen kuin mikään arkaluonteinen reittikoodi suoritetaan. Jos pääsy kielletään, komponenttia ei koskaan instansioida, minkä vuoksi valtuuttamattomat käyttäjät eivät voi käynnistää liiketoimintalogiikkaa tai päästä käsiksi suojattuihin tietoihin.
+Tämä kulku osoittaa, että tietoturvan arviointi tapahtuu ennen suojatun reitin koodin suorittamista. Jos käyttöoikeus evätään, komponenttia ei koskaan luoda, joten luvattomat käyttäjät eivät voi käynnistää liiketoimintalogiikkaa tai käyttää suojattuja tietoja.
 
-## Keskeytyspisteet {#interception-points}
+## Sieppauskohdat {#interception-points}
 
-Valvoja keskeyttää navigoinnin tiettyyn kohtaan reititysjaksoa:
+Tarkkailija sieppaa navigoinnin tietyssä reitityksen elinkaaren vaiheessa:
 
-**Ennen renderöintiä** Valvojan `onRouteRendererLifecycleEvent()`-metodia kutsutaan `LifecycleEvent.BEFORE_CREATE`-tapahtumalla reitin ratkaisemisen jälkeen, mutta ennen kuin komponentti luodaan. Tämä on kriittinen turvallisuuspiste.
+**Ennen instanssin luontia** Tarkkailijan `onInstantiate()`-metodia kutsutaan reitin luokan kanssa sen jälkeen, kun reitti on ratkaistu mutta ennen komponentin instanssin luontia. Tämä on tietoturvatarkistuksen kohta.
 
-Tässä vaiheessa reititin tietää, mikä reittiluokka renderöidään, mutta reittiä ei ole vielä instansioitu. Valvoja voi arvioida turvallisuusanotaatioita luokassa suorittamatta reittilogikkaa.
+Tässä vaiheessa reititin tietää, mikä reittiluokka renderöidään, mutta reitistä ei ole vielä luotu instanssia. Tarkkailija voi arvioida luokan tietoturvamerkintöjä suorittamatta reitin logiikkaa.
 
-Jos pääsy kielletään, valvoja estää renderöinnin ja laukaisee ohjauksen. Alkuperäistä reittiä ei koskaan instansioida.
+Jos käyttöoikeus evätään, tarkkailija estää renderöinnin ja käynnistää uudelleenohjauksen. Alkuperäisestä reitistä ei koskaan luoda instanssia.
 
 ## Arviointiprosessi {#the-evaluation-process}
 
-Kun valvoja keskeyttää navigoinnin, se delegoi arvioinnin turvallisuusmanagerille. Valvoja noutaa reittiluokan navigointikontekstista ja pyytää manageria arvioimaan pääsyä. Jos päätös myöntää pääsyn, navigointi etenee normaalisti. Jos päätös kieltää pääsyn, valvoja estää propagoinnin estääkseen renderöinnin ja antaa managerin käsitellä kieltämistä.
+Kun tarkkailija sieppaa navigoinnin, se delegoi arvioinnin tietoturvan hallinnalle. Tarkkailija hakee reittiluokan navigointikontekstista ja pyytää hallintaa arvioimaan käyttöoikeudet. Jos päätös myöntää käyttöoikeuden, navigointi jatkuu normaalisti. Jos päätös evää käyttöoikeuden, tarkkailija pysäyttää tapahtuman etenemisen renderöinnin estämiseksi ja antaa hallinnan käsitellä eväyksen.
 
-Manageri koordinoi arviointia:
+Hallinta koordinoi arviointia seuraavasti:
 
-1. Tarkistamalla, onko turvallisuus aktivoitu kokoonpanossa
-2. Saamalla nykyisen turvallisuuskontekstin (käyttäjätiedot)
-3. Suorittamalla arvioijaketju prioriteetti järjestyksessä
-4. Palauttamalla lopullinen pääsypäätös
+1. Tarkistaa, onko tietoturva otettu käyttöön määrityksissä
+2. Hakee nykyisen tietoturvakontekstin (käyttäjätiedot)
+3. Suorittaa arvioijaketjun prioriteettijärjestyksessä
+4. Palauttaa lopullisen käyttöoikeuspäätöksen
 
-Valvoja toimii päätöksen mukaan: jos myönnetty, navigointi etenee; jos kielletty, valvoja pysäyttää propagoinnin ja antaa managerin käsitellä kieltämistä.
+Tarkkailija toimii päätöksen mukaisesti: jos käyttöoikeus myönnetään, navigointi jatkuu; jos se evätään, tarkkailija pysäyttää tapahtuman etenemisen ja antaa hallinnan käsitellä eväyksen.
 
-## Kuinka pääsypäätökset tehdään {#how-access-decisions-are-made}
+## Miten käyttöoikeuspäätökset tehdään {#how-access-decisions-are-made}
 
-Turvallisuusmanageri luo arvioijaketjun ja suorittaa jokaisen arvioijan prioriteetti järjestyksessä. Arvioijat voivat tehdä kolmenlaisia päätöksiä:
+Tietoturvan hallinta luo arvioijaketjun ja suorittaa sen jokaisen arvioijan prioriteettijärjestyksessä. Arvioijat voivat tehdä kolmenlaisia päätöksiä:
 
-- **Myöntää pääsy:** Arvioija hyväksyy navigoinnin ja reitti renderöidään. Enempää arvioijia ei kysytä. Arvioija palauttaa päätöksen, joka osoittaa, että pääsy on myönnetty.
+- **Myönnä käyttöoikeus:** Arvioija hyväksyy navigoinnin, ja reitti renderöidään. Muita arvioijia ei enää kutsuta. Arvioija palauttaa päätöksen, joka ilmaisee käyttöoikeuden myönnetyksi.
 
-- **Kieltää pääsy:** Arvioija estää navigoinnin. Valvoja pysäyttää renderöinnin ja laukaisee ohjauksen. Arvioija palauttaa kieltämispäätöksen, mahdollisesti syyviestin kanssa. Kieltäminen voi johtua autentikoinnin puutteesta (vaaditaan kirjautuminen) tai valtuutuksen puutteesta (riittämättömät oikeudet).
+- **Evä käyttöoikeus:** Arvioija estää navigoinnin. Tarkkailija pysäyttää renderöinnin ja käynnistää uudelleenohjauksen. Arvioija palauttaa eväyspäätöksen, johon voidaan liittää syyviesti. Eväyksen syynä voi olla tunnistautumisen puuttuminen (jolloin käyttäjän on kirjauduttava sisään) tai valtuutuksen puuttuminen (käyttöoikeudet eivät riitä).
 
-- **Delegoi seuraavalle arvioijalle:** Arvioija ei tee päätöstä ja siirtää kontrollin ketjun seuraavalle arvioijalle. Arvioija kutsuu ketjun arviointimetodia, joka etenee seuraavalle arvioijalle prioriteetti järjestyksessä.
+- **Delegoi seuraavalle arvioijalle:** Arvioija ei tee päätöstä, vaan siirtää käsittelyn ketjun seuraavalle arvioijalle. Arvioija kutsuu ketjun `evaluate`-metodia, joka siirtyy seuraavaan arvioijaan prioriteettijärjestyksessä.
 
-Useimmat arvioijat käsittelevät vain reittejä, joilla on erityisiä anotaatiota. Esimerkiksi `RolesAllowedEvaluator` arvioi vain reittejä, joilla on anotaatio `@RolesAllowed`. Jos anotaatiota ei ole, se delegoi seuraavalle arvioijalle.
+Useimmat arvioijat käsittelevät vain reittejä, joilla on tietty merkintä. Esimerkiksi `RolesAllowedEvaluator` arvioi vain reittejä, joihin on lisätty `@RolesAllowed`-merkintä. Jos merkintää ei ole, se delegoi käsittelyn seuraavalle arvioijalle.
 
-## Kieltämisen käsittely {#handling-access-denial}
+## Käyttöoikeuden eväämisen käsittely {#handling-access-denial}
 
-Kun pääsy kielletään, managerin `onAccessDenied()`-metodi käsittelee kieltämistä kieltotyypin perusteella:
+Kun käyttöoikeus evätään, hallinnan `onAccessDenied()`-metodi käsittelee tilanteen eväyksen tyypin mukaan:
 
-- **Autentikointi vaaditaan:** Käyttäjä ei ole kirjautunut sisään. Ohjaa kirjautumissivulle, joka on määritetty `RouteSecurityConfiguration.getAuthenticationLocation()`.
+- **Tunnistautuminen vaaditaan:** Käyttäjä ei ole kirjautunut sisään. Käyttäjä ohjataan kirjautumissivulle, joka on määritetty kohdassa `RouteSecurityConfiguration.getAuthenticationLocation()`.
 
-- **Pääsy kielletty:** Käyttäjä on kirjautunut sisään mutta ei omaa oikeuksia. Ohjaa pääsy kielletty -sivulle, joka on määritetty `RouteSecurityConfiguration.getDenyLocation()`.
+- **Pääsy evätty:** Käyttäjä on kirjautunut sisään, mutta hänellä ei ole tarvittavia käyttöoikeuksia. Käyttäjä ohjataan pääsyn estämisestä kertovalle sivulle, joka on määritetty kohdassa `RouteSecurityConfiguration.getDenyLocation()`.
 
-Ennen ohjausta manageri tallentaa alkuperäisesti pyydetyn sijainnin HTTP-istuntoon. Onnistuneen kirjautumisen jälkeen tämä sijainti voidaan noutaa managerin `consumePreAuthenticationLocation()`-metodilla, joka palauttaa tallennetun sijainnin ja tyhjentää sen istunnosta. Jos sijainti oli tallennettuna, sovellus voi navigoida sinne; muuten se navigoi oletussivulle.
+Ennen uudelleenohjausta hallinta tallentaa alun perin pyydetyn sijainnin HTTP-istuntoon. Onnistuneen kirjautumisen jälkeen tämän sijainnin voi hakea hallinnan `consumePreAuthenticationLocation()`-metodilla, joka palauttaa tallennetun sijainnin ja poistaa sen istunnosta. Jos sijainti oli tallennettu, sovellus voi navigoida sinne; muussa tapauksessa se navigoi oletussivulle.
 
-## Kun turvallisuus on poistettu käytöstä {#when-security-is-disabled}
+## Kun tietoturva on poistettu käytöstä {#when-security-is-disabled}
 
-Jos `RouteSecurityConfiguration.isEnabled()` palauttaa `false`, manageri ohittaa kaikki arvioinnit ja myöntää pääsyn heti jokaiselle reitille. Arvioijaketjua ei koskaan käynnistetä, eikä turvallisuustarkastuksia suoriteta.
+Jos `RouteSecurityConfiguration.isEnabled()` palauttaa arvon `false`, hallinta ohittaa kaikki arvioinnit ja myöntää välittömästi käyttöoikeuden kaikille reiteille. Arvioijaketjua ei suoriteta eikä tietoturvatarkistuksia tehdä.
 
-Tämä on hyödyllistä kehitysvaiheessa tai sovelluksille, jotka eivät vaadi turvallisuutta. Voit vaihtaa turvallisuuden päälle ja pois ilman, että sinun tarvitsee poistaa anotaatiota tai poistaa valvojaa rekisteristä.
+Tämä on hyödyllistä kehityksen aikana tai sovelluksissa, jotka eivät tarvitse tietoturvaa. Voit ottaa tietoturvan käyttöön ja poistaa sen käytöstä poistamatta merkintöjä tai irrottamatta tarkkailijaa.
 
-## Integrointi navigointielinkaaren kanssa {#integration-with-navigation-lifecycle}
+## Integrointi navigoinnin elinkaareen {#integration-with-navigation-lifecycle}
 
-Turvallisuusvalvoja integroituu laajempaan [navigointielinkaaren](/docs/routing/navigation-lifecycle/overview) kanssa, jossa useat valvojat voivat kytkeytyä navigointitapahtumiin. Turvallisuusarviointi tapahtuu aikaisessa vaiheessa tätä elinkaarta, ennen navigoinnin estämistä tai komponentin elinkaaritapahtumia.
+Tietoturvatarkkailija integroituu laajempaan [navigoinnin elinkaareen](/docs/routing/navigation-lifecycle/overview), jossa useat tarkkailijat voivat kytkeytyä navigointitapahtumiin. Tietoturvan arviointi tapahtuu elinkaaren alkuvaiheessa, ennen navigoinnin estämistä tai komponentin elinkaaritapahtumia.
 
-Jos toteutat mukautettuja navigointivalvojia, ole tietoinen siitä, että turvallisuusarviointi tapahtuu ensin. Jos pääsy kielletään, valvojan `onRouteRendererLifecycleEvent()`-metodia ei kutsuta `BEFORE_CREATE` vaiheessa, koska navigointi estetään.
+Jos toteutat mukautettuja navigointitarkkailijoita, huomaa, että tietoturvan arviointi tapahtuu ensin. Jos käyttöoikeus evätään, tarkkailijasi `onInstantiate()`- tai `onRouteRendererLifecycleEvent()`-metodia ei kutsuta, koska reittiä ei koskaan instansioida.

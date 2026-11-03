@@ -174,5 +174,9 @@
   "sidebar.documentationSidebar.category.BBjShip": {
     "message": "BBjShip",
     "description": "The label for category 'BBjShip' in sidebar 'documentationSidebar'"
+  },
+  "sidebar.documentationSidebar.category.TestBed": {
+    "message": "Testiympäristö",
+    "description": "The label for category 'TestBed' in sidebar 'documentationSidebar'"
   }
 }

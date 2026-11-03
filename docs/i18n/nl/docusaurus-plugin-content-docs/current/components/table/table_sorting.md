@@ -5,12 +5,12 @@ slug: sorting
 description: >-
   Enable per-column sorting on the Table, configure multi-column sorting, and
   set sort priority programmatically.
-_i18n_hash: f577bea532193b97e6fef03a8bcb641b
+_i18n_hash: 7a910f5bdcaa8a9e053bcda6706808c2
 ---
-Sorteren stelt gebruikers in staat om gegevens in kolommen op volgorde te rangschikken, waardoor informatie gemakkelijker te lezen en te analyseren is. Dit is nuttig wanneer gebruikers snel de hoogste of laagste waarden in een bepaalde kolom moeten vinden.
+Sorteren laat gebruikers gegevens in kolommen ordenen, waardoor informatie makkelijker te lezen en te analyseren is. Dit is handig wanneer gebruikers snel de hoogste of laagste waarden in een bepaalde kolom willen vinden.
 
-:::tip Beheren en opvragen van gegevens
-Voor informatie over hoe u het `Repository`-patroon kunt gebruiken om verzamelingen te beheren en op te vragen, zie de [Repository-artikelen](/docs/advanced/repository/overview).
+:::tip Gegevens beheren en opvragen
+Zie de [artikelen over Repository](/docs/advanced/repository/overview) voor informatie over het gebruik van het patroon `Repository` voor het beheren en opvragen van verzamelingen.
 :::
 
 <ComponentDemo
@@ -23,25 +23,25 @@ files={[
 height='600px'
 />
 
-Standaard is een kolom niet sorteerbaar tenzij dit expliciet is ingeschakeld. Om sorteren op een specifieke kolom toe te staan, gebruikt u de methode `setSortable(true)`:
+Kolommen kunnen standaard niet worden gesorteerd, tenzij dit expliciet is ingeschakeld. Gebruik de methode `setSortable(true)` om sorteren voor een specifieke kolom toe te staan:
 
 ```java
 table.getColumn("Age").setSortable(true);
 ```
 
-## Multi-sorteren {#multi-sorting}
+## Meerdere kolommen sorteren {#multi-sorting}
 
-:::warning Multi-Column Sorteren Standaard Uitgeschakeld in webforJ `25.00`
-Voordat webforj `25.00`, ondersteunden tabellen standaard multi-kolom sorteren. Vanaf versie `25.00` is dit gedrag veranderd—ontwikkelaars moeten nu expliciet multi-kolom sorteren inschakelen.
+:::warning Sorteren op meerdere kolommen standaard uitgeschakeld in webforJ `25.00`
+Vóór webforj `25.00` ondersteunden tabellen standaard sorteren op meerdere kolommen. Vanaf versie `25.00` is dit gedrag gewijzigd: ontwikkelaars moeten sorteren op meerdere kolommen nu expliciet inschakelen.
 :::
 
-Als multi-sorteren nodig is, moet `setMultiSorting(true)` op de tabel worden toegepast. Dit stelt gebruikers in staat om meerdere kolommen op volgorde te sorteren:
+Als sorteren op meerdere kolommen nodig is, moet `setMultiSorting(true)` op de tabel worden toegepast. Hiermee kunnen gebruikers meerdere kolommen achtereenvolgens sorteren:
 
 ```java
 table.setMultiSorting(true);
 ```
 
-Met multi-sorteren ingeschakeld, zal het klikken op meerdere kolomstoppers ze sequentieel sorteren. De sorteerprioriteit wordt visueel in de tabelgebruikersinterface weergegeven.
+Wanneer sorteren op meerdere kolommen is ingeschakeld, worden kolommen achtereenvolgens gesorteerd als er op meerdere kolomkoppen wordt geklikt. De sorteervolgorde wordt visueel aangegeven in de tabelinterface.
 
 <ComponentDemo
 path='/webforj/tablemultisorting'
@@ -53,22 +53,22 @@ files={[
 height='600px'
 />
 
-U kunt ook programmatically sorteerprioriteit definiëren voor server-side sorteren. Gebruik `setSortOrder()` op de kolommen die u wilt sorteren, in volgorde van prioriteit:
+Je kunt de sorteervolgorde ook programmatisch instellen voor sorteren op de server. Gebruik `setSortIndex()` op de kolommen die je wilt sorteren, in volgorde van prioriteit:
 
 ```java
-// Server-side sorteer volgorde
-nameColumn.setSortOrder(1);
-ageColumn.setSortOrder(2);
+// Server-side sort order
+nameColumn.setSortIndex(1);
+ageColumn.setSortIndex(2);
 ```
 
-:::info Kolomvolgorde Is Belangrijk
-Tenzij `setSortOrder()` wordt gebruikt, sorteert de tabel standaard op de volgorde waarin kolommen zijn gedeclareerd.
+:::info De kolomvolgorde is van belang
+Als `setSortIndex()` niet wordt gebruikt, sorteert de tabel standaard op basis van de volgorde waarin de kolommen zijn gedeclareerd.
 :::
 
 <ComponentDemo
 path='/webforj/tablesortorder'
 files={[
-  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/TableSortOrderView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
   'src/main/java/com/webforj/samples/views/table/Service.java',
 ]}
@@ -81,21 +81,22 @@ Er zijn drie beschikbare instellingen voor de richting waarin een kolom kan word
 
 - `SortDirection.ASC`: Sorteert de kolom in oplopende volgorde.
 - `SortDirection.DESC`: Sorteert de kolom in aflopende volgorde.
-- `SortDirection.NONE`: Geen sortering toegepast op de kolom.
+- `SortDirection.NONE`: De kolom wordt niet gesorteerd.
 
-Wanneer een kolom sorteren heeft ingeschakeld, ziet u een set verticale pijlindicatoren verschijnen bovenaan de betreffende kolom. Deze pijlen stellen de gebruiker in staat om tussen de verschillende sorteerrichtingen te schakelen.
+Wanneer sorteren voor een kolom is ingeschakeld, worden bovenaan de betreffende kolom verticale pijlen weergegeven. Met deze pijlen kan de gebruiker schakelen tussen de verschillende sorteerrichtingen.
 
-Wanneer de oplopende volgorde is geselecteerd, wordt er een `^` weergegeven, terwijl de aflopende volgorde een `v` zal weergeven.
+Bij selectie van de oplopende volgorde wordt `^` weergegeven; bij de aflopende volgorde wordt `v` weergegeven.
 
-## Client vs. server-side sorteren {#client-vs-server-side-sorting}
 
-Sorteren van gegevens kan grofweg worden gecategoriseerd in twee hoofdbenaderingen: **Client Sorteren** en **Server Sorteren**.
+## Sorteren aan client- versus serverzijde {#client-vs-server-side-sorting}
 
-### Client sorteren {#client-sorting}
+Gegevens sorteren kan grofweg worden onderverdeeld in twee hoofdmethoden: **sorteren aan de clientzijde** en **sorteren aan de serverzijde**.
 
-Client sorteren houdt in dat gegevens direct binnen de gebruikersinterface van de clientapplicatie worden gerangschikt en weergegeven. Het is de sortering waarmee gebruikers interactie hebben wanneer ze op kolomkoppen klikken, wat de visuele representatie van gegevens op het scherm beïnvloedt.
+### Sorteren aan clientzijde {#client-sorting}
 
-De ontwikkelaar heeft geen directe controle over client-side sorteren, maar dit wordt bepaald door het kolomtype dat in Java is opgegeven. De volgende typen worden momenteel ondersteund:
+Bij sorteren aan de clientzijde worden gegevens rechtstreeks in de gebruikersinterface van de clienttoepassing geordend en weergegeven. Dit is de sortering waarmee gebruikers werken wanneer ze op kolomkoppen klikken en zo bepalen hoe de gegevens op het scherm worden weergegeven.
+
+De ontwikkelaar heeft geen directe controle over sorteren aan de clientzijde. De sortering wordt bepaald door het kolomtype dat in Java is opgegeven. De volgende typen worden momenteel ondersteund:
 
 - TEXT
 - NUMBER
@@ -105,49 +106,50 @@ De ontwikkelaar heeft geen directe controle over client-side sorteren, maar dit 
 - TIME
 
 :::info
-Client sorteren werkt niet wanneer slechts een deel van de gegevens beschikbaar is in de client.
+Sorteren aan de clientzijde werkt niet wanneer slechts een deel van de gegevens beschikbaar is op de client.
 :::
 
-### Server sorteren {#server-sorting}
+### Sorteren aan serverzijde {#server-sorting}
 
-In tegenstelling tot client-side sorteren, houdt server sorteren in dat gegevens op de server worden gerangschikt en georganiseerd voordat ze naar de client worden verzonden. Deze benadering is bijzonder voordelig bij het omgaan met grote datasets die mogelijk niet praktisch in hun geheel naar de client kunnen worden overgebracht.
+In tegenstelling tot sorteren aan de clientzijde worden gegevens bij sorteren aan de serverzijde op de server geordend voordat ze naar de client worden verzonden. Deze aanpak is bijzonder nuttig bij grote gegevensverzamelingen die niet praktisch in hun geheel naar de client kunnen worden overgebracht.
 
-Ontwikkelaars hebben meer controle over de logica van server sorteren. Dit maakt het mogelijk om complexe sorteeralgoritmen en optimalisaties te implementeren, waardoor het geschikt is voor scenario's met uitgebreide data. Dit zorgt ervoor dat de client vooraf gesorteerde gegevens ontvangt, waardoor de behoefte aan uitgebreide verwerking aan de clientzijde wordt geminimaliseerd.
+Ontwikkelaars hebben meer controle over de logica voor sorteren aan de serverzijde. Hierdoor kunnen complexe sorteeralgoritmen en optimalisaties worden geïmplementeerd, wat deze methode geschikt maakt voor situaties met grote hoeveelheden gegevens. Zo ontvangt de client vooraf gesorteerde gegevens en is er minder uitgebreide verwerking aan de clientzijde nodig.
+
 
 :::info
-Server sorteren is een prestatiegerichte strategie voor het omgaan met datasets die de capaciteiten van efficiënte client-side verwerking overschrijden, en is de standaardmethode die door de `Table` wordt gebruikt.
+Sorteren aan de serverzijde is een prestatiegerichte strategie voor gegevensverzamelingen die de mogelijkheden van efficiënte verwerking aan de clientzijde te boven gaan. Dit is de standaardmethode die door `Table` wordt gebruikt.
 :::
 
-### Kolom eigenschapsnaam {#column-property-name}
+### Naam van de kolomeigenschap {#column-property-name}
 
-Standaard gebruikt de `Table` de ID van een kolom als de eigenschapsnaam bij het opbouwen van sorteerkriteria voor een backend-repository. Wanneer de weergave-ID van een kolom niet overeenkomt met de onderliggende dataprop voorwaarde, of wanneer de kolom een berekende waarde weergeeft, gebruik dan `setPropertyName()` om expliciet aan de `Table` te vertellen op welke eigenschap moet worden gesorteerd.
+Standaard gebruikt `Table` de ID van een kolom als eigenschapsnaam bij het opstellen van sorteercriteria voor een backendrepository. Als de weergave-ID van een kolom niet overeenkomt met de onderliggende gegevenseigenschap, of als de kolom een berekende waarde weergeeft, gebruik dan `setPropertyName()` om expliciet aan `Table` door te geven op welke eigenschap moet worden gesorteerd.
 
 ```java
-// Kolom-ID is "Volledige Naam", maar de backend-eigenschap is "fullName"
-table.addColumn("Volledige Naam", Person::getFullName)
+// Column ID is "Full Name", but the backend property is "fullName"
+table.addColumn("Full Name", Person::getFullName)
      .setSortable(true)
      .setPropertyName("fullName");
 ```
 
-De eigenschapsnaam wordt doorgegeven aan de `OrderCriteria` wanneer een sorteerevenement plaatsvindt, waardoor backend-repositories zoals Spring Data JPA of REST-adapters de juiste `ORDER BY`-clausule kunnen bouwen.
+De eigenschapsnaam wordt doorgegeven aan `OrderCriteria` wanneer een sorteergebeurtenis plaatsvindt. Zo kunnen backendrepositories zoals Spring Data JPA of REST-adapters de juiste `ORDER BY`-clausule opstellen.
 
 :::warning
-Zonder `setPropertyName()` valt de `Table` terug op de kolom-ID. Als deze niet overeenkomt met een geldige backend-eigenschap, zal sorteren stilletjes mislukken of onjuist geordende gegevens retourneren.
+Zonder `setPropertyName()` valt `Table` terug op de kolom-ID. Als deze niet overeenkomt met een geldige backend-eigenschap, mislukt het sorteren stilzwijgend of worden de gegevens in de verkeerde volgorde geretourneerd.
 :::
 
-Geneste eigenschaps paden worden ook ondersteund met behulp van puntnotatie:
+Geneste eigenschapspaden worden ook ondersteund met puntnotatie:
 
 ```java
-table.addColumn("Stad", Person::getCity)
+table.addColumn("City", Person::getCity)
      .setSortable(true)
      .setPropertyName("address.city");
 ```
 
-#### Vergelijkers {#comparators}
+#### Comparators {#comparators}
 
-De `Column`-component staat ontwikkelaars toe om Java `Comparators` te gebruiken voor dynamisch en aangepast sorteren. Een `Comparator` is een mechanisme dat wordt gebruikt om twee objecten van dezelfde klasse te ordenen, zelfs als die klasse door de gebruiker is gedefinieerd. Deze functionaliteit biedt ontwikkelaars de flexibiliteit om aan te passen hoe gegevens worden gesorteerd, wat hogere controle biedt over het standaard sorteergedrag op basis van natuurlijke ordening.
+Met de component `Column` kunnen ontwikkelaars Java-`Comparators` gebruiken voor dynamisch en aangepast sorteren. Een `Comparator` is een mechanisme om twee objecten van dezelfde klasse te ordenen, zelfs als die klasse door de gebruiker is gedefinieerd. Zo kunnen ontwikkelaars flexibel bepalen hoe gegevens worden gesorteerd en meer controle uitoefenen over het standaard sorteergedrag op basis van natuurlijke volgorde.
 
-Om `Comparator`-sorteren in een `Column` te benutten, kunt u de methode `setComparator()` gebruiken. Deze methode stelt u in staat om een aangepaste `Comparator`-functie te definiëren die de sorteervlogica bepaalt.
+Gebruik de methode `setComparator()` om sorteren met `Comparator` in een `Column` toe te passen. Met deze methode kun je een aangepaste `Comparator`-functie definiëren die de sorteervolgorde bepaalt.
 
 <ComponentDemo
 path='/webforj/tablecolumncomparator'
@@ -159,10 +161,10 @@ files={[
 height='600px'
 />
 
-In het bovenstaande voorbeeld wordt een aangepaste vergelijkerfunctie gespecificeerd die twee elementen (a en b) neemt en de sorteervolgorde definieert op basis van de geparseerde gehele waarden van de `Number`-attribuut.
+In het bovenstaande voorbeeld wordt een aangepaste comparatorfunctie opgegeven die twee elementen (a en b) ontvangt en de sorteervolgorde bepaalt op basis van de geparseerde gehele getallen van het kenmerk `Number`.
 
-Het gebruik van vergelijkers voor kolomsorteren is bijzonder nuttig bij het omgaan met niet-numerieke waarden. Ze zijn ook nuttig voor het implementeren van complexe sorteeralgoritmen.
+Comparators gebruiken om kolommen te sorteren is vooral nuttig bij niet-numerieke waarden. Ze zijn ook handig voor het implementeren van complexe sorteeralgoritmen.
 
 :::info
-Standaard gebruikt de `Table` server-side sorteren en sorteert niet-primitieve waarden met behulp van de `toString()`-methode van Object, waarbij ze worden omgezet naar hun stringwaarden en vervolgens worden gesorteerd.
+Standaard sorteert `Table` aan de serverzijde. Niet-primitieve waarden worden gesorteerd met de methode `toString()` van Object, die de waarden omzet naar tekenreeksen en ze vervolgens sorteert.
 :::

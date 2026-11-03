@@ -59,6 +59,6 @@ public class InputDialogBasicView extends Composite<Div> {
             "Repository Deletion Failed",
             MessageDialog.MessageType.ERROR);
       }
-    } while (input == null || !input.equals(CONFIRMATION_CODE));
+    } while (input != null && !input.equals(CONFIRMATION_CODE));
   }
 }

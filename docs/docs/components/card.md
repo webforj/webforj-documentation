@@ -1,7 +1,6 @@
 ---
 title: Card
 sidebar_position: 17
-sidebar_class_name: new-content
 description: Group related content and actions with the Card component, including slotted regions. orientation, elevation, dividers, and click handling.
 ---
 

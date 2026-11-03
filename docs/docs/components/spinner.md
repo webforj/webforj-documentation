@@ -107,7 +107,11 @@ height='100px'
 
 ### Expanses {#expanses}
 
-You can adjust the size of the spinner, known as **expanse**, to fit the visual space you need. The spinner supports various sizes including `Expanse.SMALL`, `Expanse.MEDIUM`, and `Expanse.LARGE`.
+You can adjust the size of the spinner, known as **expanse**, using `setExpanse()` with the `SpinnerExpanse` enum. The nine available sizes are `XXXSMALL`, `XXSMALL`, `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, `XLARGE`, `XXLARGE`, and `XXXLARGE`. The default value is `SpinnerExpanse.NONE`.
+
+```java
+spinner.setExpanse(SpinnerExpanse.LARGE);
+```
 
 <ComponentDemo
 path='/webforj/spinnerexpansedemo'

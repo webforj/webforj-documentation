@@ -78,5 +78,17 @@
   "item.label.Built with webforJ": {
     "message": "Rakennettu webforJ:llä",
     "description": "Navbar item with label Built with webforJ"
+  },
+  "item.label.Products": {
+    "message": "Tuotteet",
+    "description": "Navbar item with label Products"
+  },
+  "item.label.Resources": {
+    "message": "Resurssit",
+    "description": "Navbar item with label Resources"
+  },
+  "item.label.Pricing": {
+    "message": "Hinnoittelu",
+    "description": "Navbar item with label Pricing"
   }
 }

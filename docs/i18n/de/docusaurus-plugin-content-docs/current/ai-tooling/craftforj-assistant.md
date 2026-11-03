@@ -1,5 +1,5 @@
 ---
-title: craftforJ Assistant
+title: craftforJ-Assistent
 sidebar_position: 2
 sidebar_class_name: new-content
 description: >-

@@ -5,7 +5,7 @@ slug: reading-position-indicator
 date: 2026-05-27
 authors: Ben Brennan
 tags: [components, showcase, tutorial, javascript]
-hide_table_of_contents: true
+hide_table_of_contents: false
 ---
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-reading-position-indicator/blog-reading-progress-cover.png)

@@ -3,7 +3,6 @@ sidebar_position: 7
 title: Events
 description: Listen for component events, read the event payload, configure element events, and dispatch your own custom events with the EventDispatcher.
 slug: events
-sidebar_class_name: new-content
 ---
 
 Components, whether custom or part of the framework, support event handling. You can add event listeners to capture various types of events, such as user interactions, changes in state, or events you define yourself. These listeners let you trigger specific behavior in response to what happens in your app.

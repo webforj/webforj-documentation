@@ -5,16 +5,18 @@ slug: rendering
 description: >-
   Transform Table cells into text, badges, icons, links, or custom HTML with
   built-in renderers and the setRenderer method.
-_i18n_hash: 314a210c06d9b920038308ed7c357f97
+_i18n_hash: 7d9beff25d6b372fb4309fe491ecad08
 ---
+<!-- vale Google.Headings = NO -->
+<!-- vale Google.Colons = NO -->
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/renderer/Renderer" top='true'/>
 
-Un renderizador controla cómo se muestra cada celda en una columna. En lugar de mostrar un valor en bruto, un renderizador transforma los datos de cada celda en texto estilizado, íconos, insignias, enlaces, botones de acción o cualquier otro elemento visual que haga que los datos sean más fáciles de leer y de actuar.
+Un renderizador controla cómo se muestra cada celda de una columna. En lugar de mostrar un valor sin procesar, transforma los datos de cada celda en texto con estilo, iconos, insignias, enlaces, botones de acción o cualquier otro elemento visual que permita leer los datos con mayor rapidez y actuar sobre ellos con más facilidad.
 
-El renderizado ocurre completamente en el navegador. El servidor envía datos en bruto y el cliente maneja la presentación, haciendo que la 'Tabla' sea rápida sin importar la cantidad de filas.
+El renderizado se realiza íntegramente en el navegador. El servidor envía los datos sin procesar y el cliente se encarga de la presentación, lo que hace que `Table` sea rápido sin importar la cantidad de filas.
 
-Asigna un renderizador a una columna usando `setRenderer()`. El renderizador se aplica de manera uniforme a cada celda de esa columna:
+Asigna un renderizador a una columna con `setRenderer()`. El renderizador se aplica de manera uniforme a todas las celdas de esa columna:
 
 ```java
 TextRenderer<MusicRecord> renderer = new TextRenderer<>();
@@ -23,19 +25,19 @@ renderer.setTheme(Theme.PRIMARY);
 table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 ```
 
-:::tip Renderizadores vs. proveedores de valores
-Si solo necesitas transformar o formatear un valor de celda sin producir ninguna estructura DOM, utiliza un [proveedor de valores](/docs/components/table/columns#value-providers) en su lugar. Los renderizadores crean elementos DOM adicionales para cada fila renderizada, lo que implica un costo en el tiempo de renderizado. Reserva los renderizadores para salidas visuales como íconos, insignias, botones o cualquier presentación basada en HTML.
+:::tip Renderizadores frente a proveedores de valores
+Si solo necesitas transformar o dar formato al valor de una celda, sin generar una estructura DOM, usa un [proveedor de valores](/docs/components/table/columns#value-providers). Los renderizadores crean elementos DOM adicionales para cada fila renderizada, lo que tiene un costo durante el renderizado. Reserva los renderizadores para contenido visual como iconos, insignias, botones o cualquier presentación basada en HTML.
 :::
 
-webforJ incluye renderizadores integrados para los casos de uso más comunes. Para cualquier cosa específica de tu aplicación, extiende `Renderer` e implementa `build()` para devolver una cadena de plantilla de lodash que se ejecute en el navegador para cada celda.
+webforJ incluye renderizadores integrados para los casos de uso más habituales. Si necesitas algo específico para tu aplicación, amplía `Renderer` e implementa `build()` para devolver una cadena de plantilla de lodash que se ejecuta en el navegador para cada celda.
 
-## Renderizadores comunes {#common-renderers}
+## Renderizadores habituales {#common-renderers}
 
-Los siguientes ejemplos repasan cuatro renderizadores utilizados con frecuencia y demuestran el patrón `setRenderer()` en la práctica.
+En los siguientes ejemplos se presentan cuatro renderizadores de uso frecuente y se muestra en la práctica el patrón `setRenderer()`.
 
 ### TextRenderer {#text-renderer}
 
-Muestra el contenido de la celda como texto plano o estilizado. Aplica un color de tema o decoración de texto a una columna sin cambiar su estructura, como resaltar un campo de prioridad en rojo o hacer que un identificador clave sea negrita.
+Muestra el contenido de una celda como texto sin formato o con estilo. Aplica un color de tema o una decoración de texto a una columna sin cambiar su estructura, por ejemplo, para resaltar en rojo un campo de prioridad o poner en negrita un identificador clave.
 
 ```java
 TextRenderer<MusicRecord> renderer = new TextRenderer<>();
@@ -47,7 +49,7 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 ### BadgeRenderer {#badge-renderer}
 
-Envuelve el valor de la celda en un elemento de insignia. Soporta temas, expansiones, coloreado automático (colores distintos automáticos por valor único) y un ícono opcional al principio. Úsalo para valores categóricos como etiquetas, tipos o etiquetas donde chips visuales distintos ayudan a los usuarios a escanear y comparar filas rápidamente.
+Envuelve el valor de la celda en un elemento de insignia. Admite temas, tamaños, asignación automática de colores (colores distintos para cada valor único) y un icono inicial opcional. Úsalo para valores categóricos como etiquetas, tipos o rótulos, donde las insignias visuales diferenciadas ayudan a los usuarios a recorrer y comparar filas rápidamente.
 
 ```java
 BadgeRenderer<MusicRecord> renderer = new BadgeRenderer<>();
@@ -58,14 +60,14 @@ table.addColumn("musicType", MusicRecord::getMusicType).setRenderer(renderer);
 
 ### BooleanRenderer {#boolean-renderer}
 
-Reemplaza los valores `true`, `false` y `null` con íconos. Úsalo para cualquier columna de verdadero/falso donde un ícono comunique el valor más rápidamente que el texto, como indicadores de características, estados activos/inactivos o campos de opt-in.
+Reemplaza los valores `true`, `false` y `null` por iconos. Úsalo en cualquier columna de valores verdadero/falso donde un icono comunique el valor más rápido que el texto, por ejemplo, en indicadores de funciones, estados activos/inactivos o campos de suscripción voluntaria.
 
 ```java
-// Íconos predeterminados
+// Default icons
 BooleanRenderer<Task> renderer = new BooleanRenderer<>();
 table.addColumn("completed", Task::isCompleted).setRenderer(renderer);
 
-// Íconos personalizados
+// Custom icons
 BooleanRenderer<Task> custom = new BooleanRenderer<>(
   TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
   TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
@@ -75,23 +77,25 @@ table.addColumn("completed", Task::isCompleted).setRenderer(custom);
 
 ### CurrencyRenderer {#currency-renderer}
 
-Formatea un valor numérico como una cantidad monetaria utilizando las reglas del `Locale` suministrado. Úsalo para cualquier columna monetaria donde el formateo correcto del locale (símbolo, separadores, lugares decimales) sea importante.
+Da formato a un valor numérico como importe monetario usando las reglas del `Locale` proporcionado. Úsalo en cualquier columna monetaria donde sea importante que el formato respete la configuración regional (símbolo, separadores y decimales).
 
 ```java
-// Dólares estadounidenses
+// US dollars
 table.addColumn("cost", MusicRecord::getCost)
      .setRenderer(new CurrencyRenderer<>(Locale.US));
 
-// Euros con locale alemán
+// Euros with German locale
 table.addColumn("retail", MusicRecord::getRetail)
      .setRenderer(new CurrencyRenderer<>(Locale.GERMANY));
 ```
 
 ## Renderizado condicional {#conditional-rendering}
 
-`ConditionalRenderer` selecciona un renderizador diferente por celda basado en el valor de la celda. Las condiciones se evalúan en orden; la primera coincidencia gana. Se puede establecer un fondo de captura general con `otherwise()`.
+`ConditionalRenderer` selecciona un renderizador diferente para cada celda según su valor. Las condiciones se evalúan en orden; se aplica la primera que coincide. Puedes establecer una condición alternativa para todos los demás casos con `otherwise()`.
 
-El siguiente ejemplo muestra el renderizado condicional aplicado a una columna de estado de factura, alternando entre variantes de `BadgeRenderer` según el valor:
+
+En el siguiente ejemplo se muestra el renderizado condicional de una columna de estado de factura, que alterna entre variantes de `BadgeRenderer` según el valor:
+
 
 <!-- vale off -->
 <ComponentDemo
@@ -105,7 +109,7 @@ height='600px'
 />
 <!-- vale on -->
 
-También funciona bien para umbrales numéricos. Este panel del servidor utiliza `ConditionalRenderer` para cambiar los temas de `ProgressBarRenderer` según los niveles de uso de CPU y memoria:
+También funciona bien con umbrales numéricos. Este panel de servidores usa `ConditionalRenderer` para alternar los temas de `ProgressBarRenderer` según los niveles de uso de la CPU y la memoria:
 
 <!-- vale off -->
 <ComponentDemo
@@ -119,63 +123,67 @@ height='600px'
 />
 <!-- vale on -->
 
-### API de condición {#condition-api}
+### API de condiciones {#condition-api}
 
-Las condiciones se construyen con métodos de fábrica estáticos y pueden combinarse con `and()`, `or()` y `negate()`.
+Las condiciones se crean con métodos de fábrica estáticos y se pueden combinar con `and()`, `or()` y `negate()`.
 
 ```java
-// Igualdad de valor
+// Value equality
 Condition.equalTo("active")
 Condition.equalToIgnoreCase("active")
 Condition.in("active", "pending", "new")
 
-// Comparaciones numéricas
+// Numeric comparisons
 Condition.greaterThan(100)
 Condition.lessThanOrEqual(0)
 Condition.between(10, 50)
 
-// Booleano / vacío
+// Boolean / emptiness
 Condition.isTrue()
 Condition.isFalse()
 Condition.isEmpty()
 
-// Coincidencia de cadena
+// String matching
 Condition.contains("error")
 Condition.containsIgnoreCase("warn")
 
-// Composición
+// Composition
 Condition.greaterThan(0).and(Condition.lessThan(100))
 Condition.isEmpty().or(Condition.equalTo("N/A"))
 Condition.isTrue().negate()
 
-// Verificación entre columnas
+// Cross-column check
 Condition.column("status").equalTo("active")
 
-// Expresión de JavaScript cruda
+// Raw JavaScript expression
 Condition.expression("cell.value % 2 === 0")
 ```
 
 ## Renderizado compuesto {#composite-rendering}
 
-`CompositeRenderer` combina múltiples renderizadores uno al lado del otro en una única celda utilizando un diseño flexible. Úsalo para emparejar un ícono con texto, mostrar un avatar junto a un nombre o apilar una insignia junto a un indicador de estado.
+`CompositeRenderer` combina varios renderizadores en una misma celda, uno al lado del otro, mediante un diseño flex. Úsalo para combinar un icono con texto, mostrar un avatar junto a un nombre o colocar una insignia al lado de un indicador de estado.
 
-El directorio de empleados a continuación utiliza un `CompositeRenderer` en la columna *Employee* para mostrar un avatar autogenerado junto al nombre de cada empleado:
+El directorio de empleados que aparece a continuación usa `CompositeRenderer` en la columna *Employee* para mostrar un avatar generado automáticamente junto al nombre de cada empleado:
 
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/employeedirectory'
-files={['src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Employee.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/EmployeeService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
 
 ## Renderizadores personalizados {#custom-renderers}
 
-Cuando ningún renderizador integrado se adapta a tu caso de uso, extiende `Renderer` e implementa `build()`. El método devuelve una cadena de plantilla de lodash que se ejecuta en el navegador para cada celda en la columna, expresada como una mezcla de HTML y JavaScript.
+Si ningún renderizador integrado se ajusta a tu caso de uso, amplía `Renderer` e implementa `build()`. El método devuelve una cadena de plantilla de lodash que se ejecuta en el navegador para cada celda de la columna y que combina HTML y JavaScript.
 
-### Creando un renderizador personalizado {#creating-a-custom-renderer}
+### Crear un renderizador personalizado {#creating-a-custom-renderer}
 
-**Paso 1:** Extiende `Renderer` con tu tipo de dato de fila.
+**Paso 1:** Amplía `Renderer` con el tipo de datos de tus filas.
 
 ```java
 public class RatingRenderer extends Renderer<MusicRecord> {
@@ -208,12 +216,12 @@ table.addColumn("rating", MusicRecord::getRating)
 ```
 
 :::tip
-Para más información sobre cómo se utiliza la sintaxis de Lodash para acceder a la información de la celda y crear renderizadores informativos, consulta [esta sección de referencia](#template-reference).
+Para obtener más información sobre cómo usar la sintaxis de Lodash para acceder a la información de las celdas y crear renderizadores informativos, consulta [esta sección de referencia](#template-reference).
 :::
 
-### Accediendo a múltiples columnas {#accessing-multiple-columns}
+### Acceder a varias columnas {#accessing-multiple-columns}
 
-Utiliza `cell.row.getValue("columnId")` para leer columnas hermanas dentro de la plantilla. Esto es útil para combinar campos, calcular diferencias o hacer referencia a datos relacionados.
+Usa `cell.row.getValue("columnId")` para leer columnas relacionadas dentro de la plantilla. Esto resulta útil para combinar campos, calcular diferencias o cruzar datos relacionados.
 
 ```java
 public class ArtistAvatarRenderer extends Renderer<MusicRecord> {
@@ -242,7 +250,7 @@ public class ArtistAvatarRenderer extends Renderer<MusicRecord> {
 
 ### Eventos de clic {#click-events}
 
-`IconButtonRenderer` y `ButtonRenderer` exponen `addClickListener()` de forma predeterminada. El evento de clic proporciona acceso al objeto de datos de la fila a través de `e.getItem()`.
+`IconButtonRenderer` y `ButtonRenderer` incluyen el método `addClickListener()`. El evento de clic permite acceder al objeto de datos de la fila mediante `e.getItem()`.
 
 ```java
 IconButtonRenderer<MusicRecord> deleteBtn = new IconButtonRenderer<>(
@@ -257,9 +265,9 @@ deleteBtn.addClickListener(e -> {
 table.addColumn("delete", r -> "").setRenderer(deleteBtn);
 ```
 
-## Rendimiento: renderizado perezoso <DocChip chip='since' label='25.12' /> {#lazy-rendering}
+## Rendimiento: renderizado diferido <DocChip chip='since' label='25.12' /> {#lazy-rendering}
 
-Para columnas que utilizan renderizadores visualmente costosos como insignias, barras de progreso, avatares o componentes web, habilita el renderizado perezoso para mejorar el rendimiento de desplazamiento.
+En las columnas que usan renderizadores visualmente costosos, como insignias, barras de progreso, avatares o componentes web, activa el renderizado diferido para mejorar el rendimiento del desplazamiento.
 
 ```java
 table.addColumn("status", Order::getStatus)
@@ -267,25 +275,29 @@ table.addColumn("status", Order::getStatus)
      .setLazyRender(true);
 ```
 
-Cuando se establece `setLazyRender(true)` en una columna, las celdas muestran un marcador de posición animado ligero mientras el usuario está desplazándose. El contenido real de la celda se renderiza una vez que se detiene el desplazamiento. Esta es una configuración a nivel de columna, por lo que puedes habilitarla selectivamente solo para las columnas que se benefician.
+Cuando se establece `setLazyRender(true)` en una columna, las celdas muestran un marcador de posición animado y ligero mientras el usuario se desplaza. El contenido real de la celda se renderiza cuando se detiene el desplazamiento. Esta configuración se aplica a nivel de columna, por lo que puedes activarla selectivamente solo en las columnas que se beneficien de ella.
 
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/lazyrender'
-files={['src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Server.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/ServerService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
 
-:::tip Cuándo habilitar el renderizado perezoso
-Los renderizadores de celda crean más entidades dentro del DOM, lo que significa más trabajo de CPU durante el renderizado, sin importar qué renderizador lo cree.
+:::tip Cuándo activar el renderizado diferido
+Los renderizadores de celdas crean más entidades en el DOM, lo que implica más trabajo para la CPU durante el renderizado, independientemente de lo que cree el renderizador.
 
-El renderizado perezoso puede ayudar a reducir el impacto en el rendimiento si un renderizador es realmente necesario. Si solo necesitas cambiar o formatear el valor, y no estás creando un DOM complejo, utiliza un proveedor de valores en su lugar para transformar el valor.
+El renderizado diferido puede ayudar a reducir el impacto en el rendimiento si realmente necesitas un renderizador. Si solo necesitas cambiar o dar formato al valor y no estás creando un DOM complejo, usa un proveedor de valores para transformar el valor.
 :::
 
 ## Referencia de renderizadores integrados {#built-in-renderers}
 
-webforJ incluye un conjunto completo de renderizadores para los casos de uso más comunes. Asigna cualquiera de ellos a una columna utilizando `column.setRenderer(renderer)`.
+webforJ incluye un conjunto completo de renderizadores para los casos de uso más habituales. Asigna cualquiera de ellos a una columna con `column.setRenderer(renderer)`.
 
 <!-- vale off -->
 <ComponentDemo
@@ -304,14 +316,14 @@ height='600px'
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>TextRenderer</strong>  -  texto estilizado con tema y decoraciones opcionales
+<strong>TextRenderer</strong>  -  texto con estilo y tema y decoraciones opcionales
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Muestra el contenido de la celda como texto plano o estilizado. Soporta colores de tema y decoraciones de texto como negrita, cursiva y subrayado.
+Muestra el contenido de una celda como texto sin formato o con estilo. Admite colores de tema y decoraciones de texto como negrita, cursiva y subrayado.
 
 ```java
 TextRenderer renderer = new TextRenderer<>();
@@ -334,7 +346,7 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 <DocChip chip='since' label='25.12' />
 
-Envuelve el valor de la celda en un elemento de insignia. Soporta temas, expansiones, coloreado automático (colores distintos automáticos por valor único) y un ícono opcional al principio.
+Envuelve el valor de la celda en un elemento de insignia. Admite temas, tamaños, asignación automática de colores (colores distintos para cada valor único) y un icono inicial opcional.
 
 ```java
 BadgeRenderer renderer = new BadgeRenderer<>();
@@ -356,7 +368,7 @@ table.addColumn("musicType", MusicRecord::getMusicType).setRenderer(renderer);
 
 <DocChip chip='since' label='25.12' />
 
-Rinde una cadena de respaldo configurable cuando el valor de la celda es `null` o está vacío; de lo contrario, rinde el valor tal cual.
+Muestra una cadena alternativa configurable cuando el valor de la celda es `null` o está vacío; en caso contrario, muestra el valor tal cual.
 
 ```java
 table.addColumn("notes", MusicRecord::getNotes)
@@ -368,26 +380,27 @@ table.addColumn("notes", MusicRecord::getNotes)
 </Accordion>
 </AccordionGroup>
 
-### Estado e indicadores {#status-and-indicators}
+### Estados e indicadores {#status-and-indicators}
 
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>BooleanRenderer</strong>  -  verdadero/falso/nulo mostrado como íconos
+<strong>BooleanRenderer</strong>  -  valores true/false/null representados como iconos
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Reemplaza los valores `true`, `false` y `null` con íconos. Por defecto, utiliza un signo de verificación, una cruz y un guion.
+Reemplaza los valores `true`, `false` y `null` por iconos. De forma predeterminada, muestra una marca de verificación, una cruz y un guion.
+
 
 ```java
-// Íconos predeterminados
+// Default icons
 BooleanRenderer renderer = new BooleanRenderer<>();
 table.addColumn("completed", Task::isCompleted).setRenderer(renderer);
 
-// Íconos personalizados
+// Custom icons
 BooleanRenderer custom = new BooleanRenderer<>(
   TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
   TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
@@ -400,14 +413,14 @@ BooleanRenderer custom = new BooleanRenderer<>(
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>StatusDotRenderer</strong>  -  punto indicador coloreado al lado del texto de la celda
+<strong>StatusDotRenderer</strong>  -  punto indicador de color junto al texto de la celda
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Rinde un pequeño punto coloreado a la izquierda del valor de la celda. Asocia valores individuales a temas, cadenas de color CSS o instancias de `java.awt.Color`.
+Muestra un pequeño punto de color a la izquierda del valor de la celda. Asigna valores individuales a temas, cadenas de color CSS o instancias de `java.awt.Color`.
 
 ```java
 StatusDotRenderer renderer = new StatusDotRenderer<>();
@@ -428,21 +441,21 @@ table.addColumn("status", Order::getStatus).setRenderer(renderer);
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>CurrencyRenderer</strong>  -  formateo de moneda consciente del locale
+<strong>CurrencyRenderer</strong>  -  formato de moneda según la configuración regional
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Formatea un valor numérico como una cantidad monetaria utilizando las reglas del `Locale` suministrado.
+Da formato a un valor numérico como importe monetario usando las reglas del `Locale` proporcionado.
 
 ```java
-// Dólares estadounidenses
+// US dollars
 table.addColumn("cost", MusicRecord::getCost)
      .setRenderer(new CurrencyRenderer<>(Locale.US));
 
-// Euros con locale alemán
+// Euros with German locale
 table.addColumn("retail", MusicRecord::getRetail)
      .setRenderer(new CurrencyRenderer<>(Locale.GERMANY));
 ```
@@ -453,14 +466,14 @@ table.addColumn("retail", MusicRecord::getRetail)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>PercentageRenderer</strong>  -  porcentaje con barra de progreso opcional
+<strong>PercentageRenderer</strong>  -  porcentaje con barra de progreso pequeña opcional
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Muestra un valor numérico como un porcentaje. Establece el segundo argumento del constructor en `false` para evitar renderizar una barra de progreso delgada debajo del texto.
+Muestra un valor numérico como porcentaje. Establece el segundo argumento del constructor en `false` para evitar que se muestre una barra de progreso fina debajo del texto.
 
 ```java
 PercentageRenderer renderer = new PercentageRenderer<>(Theme.PRIMARY, true);
@@ -480,7 +493,7 @@ table.addColumn("completion", Task::getCompletion).setRenderer(renderer);
 
 <DocChip chip='since' label='25.12' />
 
-Rinde una barra de progreso de ancho completo con límites mínimos y máximos configurables, modo indeterminado y visualización a rayas o animada. Usa `setText()` con una expresión de lodash para superponer texto personalizado en la barra.
+Muestra una barra de progreso de ancho completo con límites mínimo y máximo configurables, modo indeterminado y presentación rayada o animada. Usa `setText()` con una expresión de lodash para superponer texto personalizado en la barra.
 
 ```java
 ProgressBarRenderer renderer = new ProgressBarRenderer<>();
@@ -498,14 +511,14 @@ table.addColumn("progress", Task::getProgress).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>MaskedTextRenderer</strong>  -  cadena formateada con una máscara de texto
+<strong>MaskedTextRenderer</strong>  -  cadena con formato aplicado mediante una máscara de texto
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Aplica una máscara de caracteres a un valor de cadena. `#` coincide con cualquier dígito; los caracteres literales se conservan. Consulta [reglas de máscara de texto](/docs/components/fields/masked/textfield#mask-rules) para conocer todos los caracteres de máscara soportados.
+Aplica una máscara de caracteres a un valor de cadena. `#` coincide con cualquier dígito; los caracteres literales se conservan. Consulta las [reglas de máscaras de texto](/docs/components/fields/masked/textfield#mask-rules) para ver todos los caracteres de máscara admitidos.
 
 ```java
 table.addColumn("ssn", Employee::getSsn)
@@ -518,14 +531,14 @@ table.addColumn("ssn", Employee::getSsn)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>MaskedNumberRenderer</strong>  -  valor numérico formateado con una máscara de número
+<strong>MaskedNumberRenderer</strong>  -  valor numérico con formato aplicado mediante una máscara numérica
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Formatea un valor numérico utilizando una cadena de patrón con separadores conscientes del locale. `0` fuerza un dígito; `#` es opcional. Consulta [reglas de máscara de número](/docs/components/fields/masked/numberfield#mask-rules) para conocer todos los caracteres de máscara soportados.
+Da formato a un valor numérico mediante una cadena de patrón con separadores que respetan la configuración regional. `0` obliga a mostrar un dígito; `#` es opcional. Consulta las [reglas de máscaras numéricas](/docs/components/fields/masked/numberfield#mask-rules) para ver todos los caracteres de máscara admitidos.
 
 ```java
 table.addColumn("price", Product::getPrice)
@@ -545,7 +558,7 @@ table.addColumn("price", Product::getPrice)
 
 <DocChip chip='since' label='25.12' />
 
-Formatea un valor de fecha u hora utilizando tokens de patrón: `%Mz` (mes), `%Dz` (día), `%Yz` (año), y otros. Consulta [reglas de máscara de fecha](/docs/components/fields/masked/datefield#mask-rules) para conocer todos los tokens disponibles.
+Da formato a un valor de fecha u hora mediante tokens de patrón: `%Mz` (mes), `%Dz` (día), `%Yz` (año), entre otros. Consulta las [reglas de máscaras de fecha](/docs/components/fields/masked/datefield#mask-rules) para ver todos los tokens disponibles.
 
 ```java
 table.addColumn("released", MusicRecord::getReleaseDate)
@@ -562,21 +575,21 @@ table.addColumn("released", MusicRecord::getReleaseDate)
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>EmailRenderer</strong>  -  dirección de correo electrónico como un enlace mailto clickable
+<strong>EmailRenderer</strong>  -  dirección de correo electrónico como enlace mailto en el que se puede hacer clic
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Envuelve el valor de la celda en un ancla `mailto:`. Un ícono de correo de tema primario sirve como la pista visual por defecto.
+Envuelve el valor de la celda en un enlace `mailto:`. De forma predeterminada, un icono de correo con el tema principal sirve como indicador visual.
 
 ```java
-// Ícono de correo predeterminado
+// Default mail icon
 table.addColumn("email", Contact::getEmail)
      .setRenderer(new EmailRenderer<>());
 
-// Ícono personalizado
+// Custom icon
 table.addColumn("email", Contact::getEmail)
      .setRenderer(new EmailRenderer<>(TablerIcon.create("at")));
 ```
@@ -587,21 +600,21 @@ table.addColumn("email", Contact::getEmail)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>PhoneRenderer</strong>  -  número de teléfono como un enlace tel clickable
+<strong>PhoneRenderer</strong>  -  número de teléfono como enlace tel en el que se puede hacer clic
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Envuelve el valor de la celda en un ancla `tel:`. En dispositivos móviles, al tocar se abre el marcador. Un ícono de teléfono de tema primario se muestra por defecto.
+Envuelve el valor de la celda en un enlace `tel:`. En dispositivos móviles, al tocarlo se abre el marcador. De forma predeterminada, se muestra un icono de teléfono con el tema principal.
 
 ```java
-// Ícono de teléfono predeterminado
+// Default phone icon
 table.addColumn("phone", Contact::getPhone)
      .setRenderer(new PhoneRenderer<>());
 
-// Ícono personalizado
+// Custom icon
 table.addColumn("phone", Contact::getPhone)
      .setRenderer(new PhoneRenderer<>(TablerIcon.create("device-mobile")));
 ```
@@ -612,14 +625,14 @@ table.addColumn("phone", Contact::getPhone)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>AnchorRenderer</strong>  -  valor de celda como un hipervínculo configurable
+<strong>AnchorRenderer</strong>  -  valor de celda como hipervínculo configurable
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Rinde un elemento ancla clickable. El `href` soporta expresiones de plantilla de lodash para que puedas construir URLs dinámicamente a partir del valor de la celda.
+Muestra un elemento de anclaje en el que se puede hacer clic. `href` admite expresiones de plantilla de lodash, por lo que puedes crear URL dinámicamente a partir del valor de la celda.
 
 ```java
 AnchorRenderer renderer = new AnchorRenderer<>();
@@ -635,14 +648,14 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ImageRenderer</strong>  -  imagen en línea en una celda
+<strong>ImageRenderer</strong>  -  imagen integrada en una celda
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Muestra una imagen. El atributo `src` soporta expresiones de plantilla de lodash para que cada fila pueda mostrar una imagen diferente.
+Muestra una imagen. El atributo `src` admite expresiones de plantilla de lodash, por lo que cada fila puede mostrar una imagen diferente.
 
 ```java
 ImageRenderer renderer = new ImageRenderer<>();
@@ -662,14 +675,14 @@ table.addColumn("cover", MusicRecord::getArtist).setRenderer(renderer);
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>AvatarRenderer</strong>  -  avatar con iniciales autogeneradas
+<strong>AvatarRenderer</strong>  -  avatar con iniciales generadas automáticamente
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Rinde un componente de avatar. Las iniciales se derivan automáticamente del valor de la celda. Soporta temas y un ícono de respaldo.
+Muestra un componente de avatar. Las iniciales se obtienen automáticamente a partir del valor de la celda. Admite temas y un icono alternativo.
 
 ```java
 AvatarRenderer renderer = new AvatarRenderer<>();
@@ -684,19 +697,19 @@ table.addColumn("artist", MusicRecord::getArtist).setRenderer(renderer);
 </Accordion>
 </AccordionGroup>
 
-### Íconos y acciones {#icons-and-actions}
+### Iconos y acciones {#icons-and-actions}
 
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>IconRenderer</strong>  -  ícono independiente, opcionalmente clickable
+<strong>IconRenderer</strong>  -  icono independiente, con opción de interacción
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Rinde un solo ícono. Adjunta un listener de clic para un comportamiento interactivo.
+Muestra un único icono. Añade un detector de clics para habilitar interacciones.
 
 ```java
 IconRenderer renderer = new IconRenderer<>(TablerIcon.create("music"));
@@ -709,14 +722,14 @@ table.addColumn("type", MusicRecord::getMusicType).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>IconButtonRenderer</strong>  -  botón de ícono accionable con acceso a la fila
+<strong>IconButtonRenderer</strong>  -  botón de icono con acciones y acceso a la fila
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Rinde un botón de ícono clickable. El evento de clic expone el elemento de la fila a través de `e.getItem()`, lo que lo hace ideal para acciones a nivel de fila.
+Muestra un botón de icono en el que se puede hacer clic. El evento de clic proporciona el elemento de la fila mediante `e.getItem()`, por lo que resulta ideal para acciones por fila.
 
 ```java
 IconButtonRenderer renderer = new IconButtonRenderer<>(TablerIcon.create("edit"));
@@ -731,14 +744,14 @@ table.addColumn("actions", r -> "").setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ButtonRenderer</strong>  -  botón temático en una celda
+<strong>ButtonRenderer</strong>  -  botón con tema dentro de una celda
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Rinde un componente `Button` completo dentro de la celda.
+Muestra un componente `Button` completo dentro de la celda.
 
 ```java
 ButtonRenderer renderer = new ButtonRenderer<>("Edit");
@@ -754,14 +767,14 @@ table.addColumn("edit", r -> "Edit").setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ElementRenderer</strong>  -  elemento HTML en bruto con contenido de lodash
+<strong>ElementRenderer</strong>  -  elemento HTML sin procesar con contenido de lodash
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Rinde cualquier elemento HTML con una cadena de contenido de plantilla de lodash. Este es el enfoque de escape para situaciones donde ningún renderizador integrado se adapta.
+Muestra cualquier elemento HTML con una cadena de contenido de plantilla de lodash. Es la opción flexible para los casos en los que ningún renderizador integrado resulta adecuado.
 
 ```java
 ElementRenderer renderer = new ElementRenderer<>("span", "<%= cell.value %>");
@@ -773,74 +786,74 @@ table.addColumn("custom", MusicRecord::getTitle).setRenderer(renderer);
 </Accordion>
 </AccordionGroup>
 
-## Referencia de plantilla {#template-reference}
+## Referencia de plantillas {#template-reference}
 
-Los renderizadores ofrecen un mecanismo poderoso para personalizar la forma en que se muestra la información dentro de una `Tabla`. La clase principal, `Renderer`, está diseñada para ser extendida para crear renderizadores personalizados basados en plantillas de lodash, lo que permite un renderizado dinámico e interactivo de contenido.
+Los renderizadores ofrecen un mecanismo eficaz para personalizar la forma en que se muestran los datos en un `Table`. La clase principal, `Renderer`, está diseñada para ampliarse y crear renderizadores personalizados basados en plantillas de lodash, que permiten generar contenido dinámico e interactivo.
 
-Las plantillas de lodash permiten la inserción de HTML directamente en las celdas de la tabla, haciéndolas muy efectivas para renderizar datos de celdas complejos en una `Tabla`. Este enfoque permite la generación dinámica de HTML basado en los datos de la celda, facilitando contenido rico e interactivo en las celdas de la tabla.
+Las plantillas de lodash permiten insertar HTML directamente en las celdas de la tabla, lo que las hace muy eficaces para renderizar datos de celda complejos en un `Table`. Este enfoque permite generar HTML dinámicamente a partir de los datos de las celdas y facilita la creación de contenido de celda enriquecido e interactivo.
 
-### Sintaxis de Lodash {#lodash-syntax}
+### Sintaxis de lodash {#lodash-syntax}
 
-La siguiente sección describe los conceptos básicos de la sintaxis de Lodash. Si bien no es una descripción exhaustiva o completa, se puede usar para comenzar a utilizar Lodash dentro del componente `Tabla`.
+En la siguiente sección se describen los fundamentos de la sintaxis de Lodash. Aunque no es un resumen exhaustivo ni completo, puede servirte para empezar a usar Lodash en el componente `Table`.
 
-#### Resumen de sintaxis para plantillas de lodash: {#syntax-overview-for-lodash-templates}
+#### Resumen de la sintaxis de las plantillas de lodash: {#syntax-overview-for-lodash-templates}
 
-- `<%= ... %>` - Interpole valores, insertando el resultado del código JavaScript en la plantilla.
-- `<% ... %>` - Ejecuta código JavaScript, permitiendo bucles, condicionales y más.
-- `<%- ... %>` - Escapa el contenido HTML, asegurando que los datos interpolados sean seguros contra ataques de inyección HTML.
+- `<%= ... %>` - Interpola valores e inserta en la plantilla el resultado del código JavaScript.
+- `<% ... %>` - Ejecuta código JavaScript y permite usar bucles, condicionales y más.
+- `<%- ... %>` - Escapa el contenido HTML para proteger los datos interpolados frente a ataques de inyección HTML.
 
-#### Ejemplos utilizando datos de celdas: {#examples-using-cell-data}
+#### Ejemplos con datos de celdas: {#examples-using-cell-data}
 
-**1. Interpolación de valor simple**: muestra directamente el valor de la celda.
+**1. Interpolación de valores sencilla**: muestra directamente el valor de la celda.
 
 `<%= cell.value %>`
 
-**2. Renderizado condicional**: utiliza lógica de JavaScript para renderizar condicionalmente contenido.
+**2. Renderizado condicional**: usa la lógica de JavaScript para mostrar contenido de forma condicional.
 
-`<% if (cell.value > 100) { %> 'Alto' <% } else { %> 'Normal' <% } %>`
+`<% if (cell.value > 100) { %> 'High' <% } else { %> 'Normal' <% } %>`
 
-**3. Combinando campos de datos**: renderiza contenido usando múltiples campos de datos de la celda.
+**3. Combinar campos de datos**: renderiza contenido usando varios campos de datos de la celda.
 
 `<%= cell.row.getValue('firstName') + ' ' + cell.row.getValue('lastName') %>`
 
-**4. Escapando contenido HTML**: rinde de forma segura el contenido generado por el usuario.
+**4. Escapar contenido HTML**: muestra de forma segura el contenido generado por el usuario.
 
-El renderizador tiene acceso a propiedades detalladas de la celda, fila y columna en el lado del cliente:
+El renderizador tiene acceso a propiedades detalladas de la celda, la fila y la columna en el cliente:
 
 **Propiedades de TableCell:**
 
 |Propiedad	|Tipo	|Descripción|
 |-|-|-|
 |column|`TableColumn`|El objeto de columna asociado.|
-|first|`boolean`|Indica si la celda es la primera en la fila.|
-|id|`String`|La ID de la celda.|
+|first|`boolean`|Indica si la celda es la primera de la fila.|
+|id|`String`|El ID de la celda.|
 |index|`int`|El índice de la celda dentro de su fila.|
-|last|`boolean`|Indica si la celda es la última en la fila.|
-|row|`TableRow`|El objeto de fila asociado para la celda.|
-|value|`Object`|El valor en bruto de la celda, directamente de la fuente de datos.|
+|last|`boolean`|Indica si la celda es la última de la fila.|
+|row|`TableRow`|El objeto de fila asociado a la celda.|
+|value|`Object`|El valor sin procesar de la celda, obtenido directamente del origen de datos.|
 
 **Propiedades de TableRow:**
 
 |Propiedad|Tipo|Descripción|
 |-|-|-|
-|cells|`TableCell[]`|Las celdas dentro de la fila.
-|data|`Object`|Los datos proporcionados por la aplicación para la fila.
-|even|`boolean`|Indica si la fila es de número par (para propósitos de estilo).
-|first|`boolean`|Indica si la fila es la primera en la tabla.
-|id|`String`|ID única para la fila.
+|cells|`TableCell[]`|Las celdas de la fila.
+|data|`Object`|Los datos que proporciona la aplicación para la fila.
+|even|`boolean`|Indica si la fila tiene un número par (para fines de estilo).
+|first|`boolean`|Indica si la fila es la primera de la tabla.
+|id|`String`|ID único de la fila.
 |index|`int`|El índice de la fila.
-|last|`boolean`|Indica si la fila es la última en la tabla.
-|odd|`boolean`|Indica si la fila es de número impar (para propósitos de estilo).
+|last|`boolean`|Indica si la fila es la última de la tabla.
+|odd|`boolean`|Indica si la fila tiene un número impar (para fines de estilo).
 
 **Propiedades de TableColumn:**
 
 |Propiedad	|Tipo	|Descripción|
 |-|-|-|
-|align|ColumnAlignment|La alineación de la columna (izquierda, centro, derecha).
-|id|String|El campo del objeto de fila del que obtener los datos de la celda.
-|label|String|El nombre que se renderiza en el encabezado de la columna.
-|pinned|ColumnPinDirection|La dirección de fijación de la columna (izquierda, derecha, automática).
-|sortable|boolean|Si es verdadero, la columna se puede ordenar.
-|sort|SortDirection|El orden de clasificación de la columna.
-|type|ColumnType|El tipo de la columna (texto, número, booleano, etc.).
-|minWidth|number|El ancho mínimo de la columna en píxeles.
+|align|ColumnAlignment|La alineación de la columna (izquierda, centro, derecha).|
+|id|String|El campo del objeto de fila del que se obtienen los datos de la celda.|
+|label|String|El nombre que se muestra en el encabezado de la columna.|
+|pinned|ColumnPinDirection|La dirección de fijación de la columna (izquierda, derecha, automática).|
+|sortable|boolean|Si es true, la columna se puede ordenar.|
+|sort|SortDirection|El orden de clasificación de la columna.|
+|type|ColumnType|El tipo de la columna (texto, número, booleano, etc.).|
+|minWidth|number|El ancho mínimo de la columna en píxeles.|

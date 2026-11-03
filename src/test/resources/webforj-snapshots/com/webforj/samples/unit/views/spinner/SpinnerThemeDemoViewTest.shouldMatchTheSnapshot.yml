@@ -1,0 +1,9 @@
+# webforJ testbed snapshot v1
+- SpinnerThemeDemoView [route=spinnerthemedemo] [composite=FlexLayout] [node=div]:
+  - Spinner [composite=Element] [node=dwc-spinner]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=primary]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=success]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=danger]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=warning]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=gray]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=info]

@@ -4,19 +4,19 @@ sidebar_position: 5
 description: >-
   Package, deploy and undeploy webforJ apps in BBjServices with the bbj-package,
   bbj-deploy and bbj-undeploy goals of the webforJ Maven plugin.
-_i18n_hash: 19fc6feafc7d9e17580d710ced7b962b
+_i18n_hash: 77099210b317740da114b7881490bd09
 ---
-# Déploiement de <DocChip chip='since' label='26.03' /> {#deploying}
+# Déploiement <DocChip chip='since' label='26.03' /> {#deploying}
 
-Le plugin Maven webforJ déploie une application sur [BBjShip](/docs/configuration/bbjship/overview) avec trois objectifs :
+Le plugin Maven webforJ déploie une application sur [BBjShip](/docs/configuration/bbjship/overview) à l’aide de trois objectifs :
 
-| Objectif | Exécute | Ce qu'il fait |
+| Objectif | S’exécute | Fonction |
 |---|---|---|
-| `bbj-package` | avec la phase `package` | Écrit l'archive de déploiement `target/bbj/<nom de publication>.zip` |
-| `bbj-deploy` | avec la phase `install` | Écrit l'archive et la déploie sur BBjShip |
-| `bbj-undeploy` | manuellement | Supprime l'application des BBjServices |
+| `bbj-package` | avec la phase `package` | Écrit l’archive de déploiement `target/bbj/<publish name>.zip` |
+| `bbj-deploy` | avec la phase `install` | Écrit l’archive et la déploie sur BBjShip |
+| `bbj-undeploy` | manuellement | Supprime l’application de BBjServices |
 
-Les phases s'appliquent lorsque le plugin est déclaré avec `<extensions>true</extensions>` et un bloc `<bbj>`, voir [Configurer un projet](/docs/configuration/bbjship/existing-projects).
+Ces phases s’appliquent lorsque le plugin est déclaré avec `<extensions>true</extensions>` et un bloc `<bbj>`. Voir [Configuration d’un projet](/docs/configuration/bbjship/existing-projects).
 
 ## Déployer {#deploy}
 
@@ -24,53 +24,53 @@ Les phases s'appliquent lorsque le plugin est déclaré avec `<extensions>true</
 mvn install
 ```
 
-Sans l'extension, exécutez `mvn package webforj:bbj-deploy`. L'objectif imprime l'adresse de l'application lorsque le déploiement est terminé :
+Sans l’extension, exécutez `mvn package webforj:bbj-deploy`. À la fin du déploiement, l’objectif affiche l’adresse de l’application :
 
 ```text
-[INFO] Déploiement BBj de l'inventaire terminé à http://localhost:8888/webapp/inventory
+[INFO] BBj deployment of inventory completed at http://localhost:8888/webapp/inventory
 ```
 
-Lorsqu'un déploiement échoue, la version précédente continue à fonctionner.
+En cas d’échec du déploiement, la version précédente continue de fonctionner.
 
-:::warning Remplace l'application
-Un déploiement remplace l'application qui a déjà le même nom de publication. Le dossier de déploiement précédent est supprimé et les sessions en cours de cette application se terminent. Conservez l'archive de la version précédente si vous devez revenir en arrière.
+:::warning Remplace l’application
+Un déploiement remplace l’application portant déjà le même nom de publication. Le dossier du déploiement précédent est supprimé et les sessions actives de cette application prennent fin. Conservez l’archive de la version précédente si vous risquez de devoir revenir en arrière.
 :::
 
-[Troubleshooting](/docs/configuration/bbjship/troubleshooting#deploy-and-undeploy) répertorie les messages d'un déploiement échoué et ce qu'il faut faire pour chacun.
+La section [Résolution des problèmes](/docs/configuration/bbjship/troubleshooting#deploy-and-undeploy) répertorie les messages associés à un déploiement échoué et indique la marche à suivre pour chacun.
 
-## Packager sans déployer {#package-without-deploying}
+## Empaqueter sans déployer {#package-without-deploying}
 
-`bbj-package` écrit la même archive sans URL de déploiement ni identifiants. Un job CI peut attacher `target/bbj/<nom de publication>.zip` à la construction, et un administrateur BBj le déploie sur la machine BBj avec [`bbjship apps deploy`](/docs/configuration/bbjship/command-line#apps).
+`bbj-package` écrit la même archive, sans URL de déploiement ni identifiants. Une tâche CI peut joindre `target/bbj/<publish name>.zip` à la compilation, puis un administrateur BBj la déploie sur la machine BBj à l’aide de [`bbjship apps deploy`](/docs/configuration/bbjship/command-line#apps).
 
-## Désinstaller {#undeploy}
+## Annuler le déploiement {#undeploy}
 
 ```bash
 mvn webforj:bbj-undeploy
 ```
 
-L'application s'arrête et est supprimée de l'Enterprise Manager, avec ses fichiers.
+L’application s’arrête et est supprimée d’Enterprise Manager, ainsi que ses fichiers.
 
-:::warning Impossible à annuler
-`bbj-undeploy` met fin aux sessions en cours de l'application et supprime son dossier de déploiement. Cela ne peut pas être annulé. Conservez l'archive de `target/bbj/<nom de publication>.zip` si vous souhaitez redéployer l'application.
+:::warning Opération irréversible
+`bbj-undeploy` met fin aux sessions actives de l’application et supprime son dossier de déploiement. Cette opération est irréversible. Conservez l’archive `target/bbj/<publish name>.zip` si vous risquez de vouloir redéployer l’application.
 :::
 
 ## Noms de publication {#publish-names}
 
-Le nom de publication est par défaut le nom final de la construction et apparaît dans l'adresse de l'application. Il commence par une lettre ou un chiffre, ne contient que des lettres, des chiffres, `_`, `.` et `-`, et ne se termine pas par un point. Les noms réservés, tels que les chemins BBjServices `webapp` et `files` ou le nom de périphérique Windows `con`, sont refusés avant que l'archive ne soit écrite.
+Par défaut, le nom de publication correspond au nom final de la compilation et figure dans l’adresse de l’application. Il commence par une lettre ou un chiffre, contient uniquement des lettres, des chiffres, `_`, `.` et `-`, et ne se termine pas par un point. Les noms réservés, tels que les chemins BBjServices `webapp` et `files` ou le nom de périphérique Windows `con`, sont refusés avant l’écriture de l’archive.
 
-Chaque classe d'entrée appartient à une application déployée. La déployer sous un second nom échoue avec :
+Chaque classe d’entrée appartient à une seule application déployée. Le déploiement de cette classe sous un deuxième nom échoue avec le message suivant :
 
 ```text
-Échec du déploiement BBj avec HTTP 409. La classe d'entrée com.example.Application est déjà publiée sous le nom d’inventaire. Désinstallez d'abord l'inventaire.
+BBj deployment failed with HTTP 409. Entry class com.example.Application is already published as inventory. Undeploy inventory first
 ```
 
-## Déploiement depuis une autre machine {#deploying-from-another-machine}
+## Déployer depuis une autre machine {#deploying-from-another-machine}
 
-Un déploiement depuis une autre machine, comme un serveur CI, utilise un jeton d'autorisation via HTTPS :
+Un déploiement depuis une autre machine, par exemple un serveur CI, utilise un jeton d’autorisation sur HTTPS :
 
 1. Sur la machine BBj, [activez le point de terminaison](/docs/configuration/bbjship/installing#enabling-the-deployment-endpoint) avec un port SSL.
-2. Dans l'Enterprise Manager, créez un jeton sous Sécurité, Jetons d'authentification. Renouveler et révoquer également là-bas.
-3. Transmettez le jeton à la construction :
+2. Dans Enterprise Manager, créez un jeton sous Security, Authentication Tokens. Vous pouvez également le renouveler et le révoquer à cet endroit.
+3. Transmettez le jeton à la compilation :
 
 ```bash
 mvn package webforj:bbj-deploy \
@@ -78,11 +78,23 @@ mvn package webforj:bbj-deploy \
   -Dwebforj.bbj.admin.token="$BBJ_ADMIN_TOKEN"
 ```
 
-Le certificat du serveur web BBjServices doit correspondre au nom d'hôte de l'URL, ou être dans le magasin de confiance Java de la construction. Java ne fait pas confiance au certificat par défaut de BBj, qui est auto-signé. Une URL `http://` vers une autre machine envoie les identifiants lisibles sur le réseau, et les objectifs impriment un avertissement à cet égard.
+Le certificat du serveur web BBjServices doit correspondre au nom d’hôte de l’URL ou se trouver dans le truststore Java de la compilation. Java ne fait pas confiance au certificat par défaut de BBj, car il est auto-signé.
 
-## Paramètres de l'application {#app-settings}
+Une URL `http://` vers une autre machine est refusée des deux côtés. L’objectif s’arrête avant d’envoyer quoi que ce soit, et BBjShip répond HTTP 403 à toute requête reçue via HTTP depuis une autre machine. Une URL désignant la machine BBj elle-même — `localhost` ou l’une de ses propres adresses — fonctionne avec HTTP.
 
-BBjShip lit le `webforj.conf` de l'application à chaque déploiement et applique ces propriétés à l'application dans l'Enterprise Manager. Un redéploiement prend en compte une valeur modifiée. Une propriété qui n'est pas définie conserve la valeur par défaut de BBjServices.
+Pour déployer malgré tout via HTTP vers une autre machine, par exemple une machine virtuelle sur votre ordinateur, autorisez cette méthode des deux côtés. Sur la machine BBj, exécutez `bbjship remote enable --allow-unencrypted` avec les ports du point de terminaison. Dans la compilation, définissez `<deployment><allowUnencrypted>true</allowUnencrypted>` ou transmettez la propriété :
+
+```bash
+mvn package webforj:bbj-deploy \
+  -Dwebforj.bbj.deployment.url=http://bbj.example.com:8888/webforj-bbjship \
+  -Dwebforj.bbj.deployment.allowUnencrypted=true
+```
+
+L’objectif affiche alors un avertissement et procède au déploiement. Les identifiants sont transmis en clair sur le réseau pour cette connexion.
+
+## Paramètres de l’application {#app-settings}
+
+À chaque déploiement, BBjShip lit le fichier `webforj.conf` de l’application et applique ces propriétés à l’application dans Enterprise Manager. Un redéploiement prend en compte toute valeur modifiée. Une propriété non définie conserve la valeur par défaut de BBjServices.
 
 ```hocon title="webforj.conf"
 webforj.assetsSource = packaged
@@ -90,31 +102,32 @@ webforj.disallowConsole = true
 webforj.programArguments = ["mode=demo", "region eu"]
 ```
 
-| Propriété | Par défaut | Description |
+| Propriété | Valeur par défaut | Description |
 |---|---|---|
-| `webforj.assetsSource` | Non défini | `packaged` sert les fichiers statiques `ws://` et les icônes `icons://` de l'application, à `/webforj/<nom de publication>/`. Sans cela, une application qui utilise `icons://` échoue au démarrage. |
+| `webforj.assetsSource` | Non définie | `packaged` sert les fichiers statiques `ws://` et les icônes `icons://` de l’application à l’adresse `/webforj/<publish name>/`. Sans cette propriété, une application utilisant `icons://` ne démarre pas. |
 | `webforj.showClientConfirmationDialog` | `false` | Indique si le navigateur demande une confirmation avant la fermeture de la page. |
-| `webforj.disallowConsole` | `true` | Indique si la console est interdite dans l'application. |
-| `webforj.secure` | Par défaut de BBjServices | Indique si l'application fonctionne sur une connexion sécurisée. |
-| `webforj.configFile` | Par défaut de BBjServices | Chemin du fichier de configuration BBj avec lequel l'application fonctionne, tel que lu par BBjServices sur la machine BBj. Le chemin est transmis tel quel, il peut donc nommer un fichier que seul le serveur possède. |
-| `webforj.programArguments` | Aucun | Arguments du programme de l'application, sous forme de liste de chaînes ou d'une seule chaîne. |
+| `webforj.disallowConsole` | `true` | Indique si la console est désactivée dans l’application. |
+| `webforj.secure` | Valeur par défaut de BBjServices | Indique si l’application s’exécute sur une connexion sécurisée. |
+| `webforj.configFile` | Valeur par défaut de BBjServices | Chemin du fichier de configuration BBj utilisé par l’application, tel que BBjServices le lit sur la machine BBj. Le chemin est transmis tel quel ; il peut donc désigner un fichier accessible uniquement au serveur. |
+| `webforj.programArguments` | Aucun | Arguments du programme de l’application, sous forme de liste de chaînes ou d’une seule chaîne. |
 
-Un `webforj.conf` invalide échoue au déploiement avec HTTP 400 et la raison.
+Un fichier `webforj.conf` non valide fait échouer le déploiement avec une réponse HTTP 400 et la raison de l’échec.
 
 ## Paramètres {#settings}
 
-Les paramètres se trouvent dans le bloc `<bbj>` de la configuration du `webforj-maven-plugin`, comme indiqué dans [Plugin de construction](/docs/configuration/bbjship/existing-projects#the-build-plugin). Chaque propriété remplace son élément sur la ligne de commande.
+Les paramètres se trouvent dans le bloc `<bbj>` de la configuration de `webforj-maven-plugin`, comme indiqué dans [Plugin de compilation](/docs/configuration/bbjship/existing-projects#the-build-plugin). Chaque propriété remplace l’élément correspondant sur la ligne de commande.
 
-| Élément Maven | Propriété Maven | Par défaut | Description |
+| Élément Maven | Propriété Maven | Valeur par défaut | Description |
 |---|---|---|---|
-| `<home>` | `webforj.bbj.home` | Détecté | Dossier d'installation de BBj, utilisé par `bbj-setup` et `watch`. |
-| `<publishName>` | `webforj.bbj.publishName` | Nom final de la construction | Nom sous lequel l'application est publiée, voir [Noms de publication](#publish-names). |
-| `<deployment><url>` | `webforj.bbj.deployment.url` | Aucun, requis | Adresse de BBjShip, `http://<hôte>:<port HTTP>/webforj-bbjship` ou `https://<hôte>:<port SSL>/webforj-bbjship`. |
-| `<admin><username>` | `webforj.bbj.admin.username` | `admin` lorsque le nom d'utilisateur et le mot de passe sont tous deux absents | Nom d'utilisateur administrateur BBj. |
-| `<admin><password>` | `webforj.bbj.admin.password` | `admin123` lorsque le nom d'utilisateur et le mot de passe sont tous deux absents | Mot de passe administrateur BBj. |
-| `<admin><token>` | `webforj.bbj.admin.token` | Vide | Jeton d'autorisation pour `bbj-deploy` et `bbj-undeploy`. Prend la priorité sur le nom d'utilisateur et le mot de passe. |
-| `<properties>` | `webforj.bbj.properties` | `<home>/cfg/BBj.properties` | Fichier de propriétés BBjServices dans lequel un [exécution de développement](/docs/configuration/deploy-reload/bbjservices) écrit les paramètres de hotswap. |
-| `<development><classFolder>` | — | Répertoire de sortie de construction | Dossier de classe d'une exécution de développement tel que lu par BBjServices. |
-| — | `webforj.bbj.force` | `false` | Permet à `bbj-setup` de remplacer une installation de BBjShip d'une autre version. Propriété uniquement. |
+| `<home>` | `webforj.bbj.home` | Détecté automatiquement | Dossier d’installation de BBj, utilisé par `bbj-setup` et `watch`. |
+| `<publishName>` | `webforj.bbj.publishName` | Nom final de la compilation | Nom sous lequel l’application est publiée ; voir [Noms de publication](#publish-names). |
+| `<deployment><url>` | `webforj.bbj.deployment.url` | Aucune, obligatoire | Adresse de BBjShip : `http://<host>:<HTTP port>/webforj-bbjship` ou `https://<host>:<SSL port>/webforj-bbjship`. |
+| `<deployment><allowUnencrypted>` | `webforj.bbj.deployment.allowUnencrypted` | `false` | Autorise `bbj-deploy` et `bbj-undeploy` à transmettre les identifiants via une URL `http://` vers une autre machine ; voir [Déployer depuis une autre machine](#deploying-from-another-machine). |
+| `<admin><username>` | `webforj.bbj.admin.username` | `admin` si le nom d’utilisateur et le mot de passe sont tous deux absents | Nom d’utilisateur de l’administrateur BBj. |
+| `<admin><password>` | `webforj.bbj.admin.password` | `admin123` si le nom d’utilisateur et le mot de passe sont tous deux absents | Mot de passe de l’administrateur BBj. |
+| `<admin><token>` | `webforj.bbj.admin.token` | Vide | Jeton d’autorisation pour `bbj-deploy` et `bbj-undeploy`. Prioritaire sur le nom d’utilisateur et le mot de passe. |
+| `<properties>` | `webforj.bbj.properties` | `<home>/cfg/BBj.properties` | Fichier de propriétés BBjServices dans lequel une [exécution de développement](/docs/configuration/deploy-reload/bbjservices) écrit les paramètres de remplacement à chaud. |
+| `<development><classFolder>` | — | Répertoire de sortie de la compilation | Dossier de classes d’une exécution de développement, tel que BBjServices le lit. |
+| — | `webforj.bbj.force` | `false` | Permet à `bbj-setup` de remplacer une installation de BBjShip d’une autre version. Propriété uniquement. |
 
-Un nom d'utilisateur sans mot de passe, ou un mot de passe sans nom d'utilisateur, interrompt l'objectif.
+Si le nom d’utilisateur est fourni sans mot de passe, ou le mot de passe sans nom d’utilisateur, l’objectif s’arrête.

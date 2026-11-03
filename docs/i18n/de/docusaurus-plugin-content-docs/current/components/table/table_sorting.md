@@ -5,12 +5,12 @@ slug: sorting
 description: >-
   Enable per-column sorting on the Table, configure multi-column sorting, and
   set sort priority programmatically.
-_i18n_hash: f577bea532193b97e6fef03a8bcb641b
+_i18n_hash: 7a910f5bdcaa8a9e053bcda6706808c2
 ---
-Die Sortierung ermöglicht es Benutzern, Daten in Spalten nach Reihenfolge anzuordnen, wodurch Informationen leichter lesbar und analysierbar werden. Dies ist nützlich, wenn Benutzer schnell die höchsten oder niedrigsten Werte in einer bestimmten Spalte finden müssen.
+Die Sortierung ermöglicht es Benutzern, Daten in Spalten nach Reihenfolge anzuordnen, sodass Informationen leichter zu lesen und zu analysieren sind. Das ist hilfreich, wenn Benutzer schnell die höchsten oder niedrigsten Werte in einer bestimmten Spalte finden müssen.
 
-:::tip Verwaltung und Abfrage von Daten
-Für Informationen zur Verwendung des `Repository`-Musters zur Verwaltung und Abfrage von Sammlungen siehe die [Repository-Artikel](/docs/advanced/repository/overview).
+:::tip Daten verwalten und abfragen
+Informationen zur Verwendung des `Repository`-Musters zum Verwalten und Abfragen von Sammlungen finden Sie in den [Repository-Artikeln](/docs/advanced/repository/overview).
 :::
 
 <ComponentDemo
@@ -23,25 +23,25 @@ files={[
 height='600px'
 />
 
-Standardmäßig ist eine Spalte nicht sortierbar, es sei denn, sie wird ausdrücklich aktiviert. Um das Sortieren in einer bestimmten Spalte zu ermöglichen, verwenden Sie die Methode `setSortable(true)`:
+Standardmäßig ist eine Spalte nicht sortierbar, sofern dies nicht ausdrücklich aktiviert wird. Verwenden Sie die Methode `setSortable(true)`, um die Sortierung einer bestimmten Spalte zuzulassen:
 
 ```java
 table.getColumn("Age").setSortable(true);
 ```
 
-## Mehrfachsortierung {#multi-sorting}
+## Mehrspaltige Sortierung {#multi-sorting}
 
-:::warning Mehrspalten-Sortierung standardmäßig in webforJ `25.00` deaktiviert
-Vor webforj `25.00` unterstützten Tabellen standardmäßig die Mehrspalten-Sortierung. Ab der Version `25.00` hat sich dieses Verhalten geändert – Entwickler müssen jetzt die Mehrspalten-Sortierung ausdrücklich aktivieren.
+:::warning Mehrspaltige Sortierung ist in webforJ `25.00` standardmäßig deaktiviert
+Vor webforJ `25.00` unterstützten Tabellen standardmäßig die Sortierung nach mehreren Spalten. Ab Version `25.00` hat sich dieses Verhalten geändert – Entwickler müssen die mehrspaltige Sortierung jetzt ausdrücklich aktivieren.
 :::
 
-Wenn eine Mehrfachsortierung erforderlich ist, muss `setMultiSorting(true)` auf die Tabelle angewendet werden. Dies ermöglicht es Benutzern, mehrere Spalten nacheinander zu sortieren:
+Wenn eine mehrspaltige Sortierung erforderlich ist, muss `setMultiSorting(true)` auf die Tabelle angewendet werden. Dadurch können Benutzer mehrere Spalten nacheinander sortieren:
 
 ```java
 table.setMultiSorting(true);
 ```
 
-Mit aktivierter Mehrfachsortierung werden mehrere Spaltenüberschriften nacheinander sortiert. Die Sortierpriorität wird visuell in der Tabellenbenutzeroberfläche angezeigt.
+Bei aktivierter mehrspaltiger Sortierung werden mehrere Spalten beim Klicken auf ihre Spaltenüberschriften nacheinander sortiert. Die Sortierpriorität wird in der Tabellenoberfläche visuell angezeigt.
 
 <ComponentDemo
 path='/webforj/tablemultisorting'
@@ -53,22 +53,22 @@ files={[
 height='600px'
 />
 
-Sie können auch die Sortierpriorität programmatisch für die serverseitige Sortierung definieren. Verwenden Sie `setSortOrder()` für die Spalten, die Sie in der Reihenfolge der Priorität sortieren möchten:
+Für die serverseitige Sortierung können Sie die Sortierpriorität auch programmgesteuert festlegen. Verwenden Sie `setSortIndex()` für die zu sortierenden Spalten und geben Sie dabei die Priorität an:
 
 ```java
-// Serverseitige Sortierreihenfolge
-nameColumn.setSortOrder(1);
-ageColumn.setSortOrder(2);
+// Server-side sort order
+nameColumn.setSortIndex(1);
+ageColumn.setSortIndex(2);
 ```
 
-:::info Die Reihenfolge der Spalten ist wichtig
-Sofern `setSortOrder()` nicht verwendet wird, sortiert die Tabelle standardmäßig in der Reihenfolge, in der die Spalten deklariert sind.
+:::info Die Spaltenreihenfolge ist wichtig
+Sofern `setSortIndex()` nicht verwendet wird, sortiert die Tabelle standardmäßig in der Reihenfolge, in der die Spalten deklariert wurden.
 :::
 
 <ComponentDemo
 path='/webforj/tablesortorder'
 files={[
-  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/TableSortOrderView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
   'src/main/java/com/webforj/samples/views/table/Service.java',
 ]}
@@ -77,25 +77,26 @@ height='600px'
 
 ## Sortierrichtung {#sort-direction}
 
-Es gibt drei verfügbare Einstellungen für die Richtung, in der eine Spalte sortiert werden kann:
+Für die Sortierrichtung einer Spalte stehen drei Einstellungen zur Verfügung:
 
-- `SortDirection.ASC`: Sortiert die Spalte in aufsteigender Reihenfolge.
-- `SortDirection.DESC`: Sortiert die Spalte in absteigender Reihenfolge.
-- `SortDirection.NONE`: Keine Sortierung auf die Spalte angewendet.
+- `SortDirection.ASC`: Sortiert die Spalte aufsteigend.
+- `SortDirection.DESC`: Sortiert die Spalte absteigend.
+- `SortDirection.NONE`: Die Spalte wird nicht sortiert.
 
-Wenn eine Spalte die Sortierung ermöglicht, sehen Sie am oberen Ende der Spalte eine Reihe von vertikalen Pfeilen erscheinen. Diese Pfeile ermöglichen es dem Benutzer, zwischen den verschiedenen Sortierrichtungen umzuschalten.
+Wenn die Sortierung für eine Spalte aktiviert ist, werden oben in der Spalte vertikale Pfeile angezeigt. Mit diesen Pfeilen kann der Benutzer zwischen den verschiedenen Sortierrichtungen wechseln.
 
-Wenn die aufsteigende Reihenfolge ausgewählt ist, wird ein `^` angezeigt, während bei absteigender Reihenfolge ein `v` angezeigt wird.
+Bei aufsteigender Sortierung wird ein `^` angezeigt, bei absteigender Sortierung ein `v`.
 
-## Client- vs. serverseitige Sortierung {#client-vs-server-side-sorting}
 
-Die Sortierung von Daten kann grob in zwei Hauptansätze unterteilt werden: **Client-Sortierung** und **Server-Sortierung**.
+## Client- und serverseitige Sortierung {#client-vs-server-side-sorting}
 
-### Client-Sortierung {#client-sorting}
+Die Datensortierung lässt sich grundsätzlich in zwei Ansätze unterteilen: **clientseitige Sortierung** und **serverseitige Sortierung**.
 
-Die Client-Sortierung beinhaltet das Anordnen und Darstellen von Daten direkt innerhalb der Benutzeroberfläche der Client-Anwendung. Es ist die Sortierung, mit der Benutzer interagieren, wenn sie auf Spaltenüberschriften klicken, und Einfluss auf die visuelle Darstellung der Daten auf dem Bildschirm nehmen.
+### Clientseitige Sortierung {#client-sorting}
 
-Der Entwickler hat keine direkte Kontrolle über die clientseitige Sortierung, die vielmehr durch den Spaltentyp bestimmt wird, der in Java bereitgestellt wird. Die folgenden Typen werden derzeit unterstützt:
+Bei der clientseitigen Sortierung werden Daten direkt in der Benutzeroberfläche der Clientanwendung angeordnet und angezeigt. Dies ist die Sortierung, mit der Benutzer interagieren, wenn sie auf Spaltenüberschriften klicken und so die visuelle Darstellung der Daten auf dem Bildschirm beeinflussen.
+
+Entwickler haben keine direkte Kontrolle über die clientseitige Sortierung. Sie wird stattdessen durch den in Java angegebenen Spaltentyp bestimmt. Derzeit werden folgende Typen unterstützt:
 
 - TEXT
 - NUMBER
@@ -105,49 +106,50 @@ Der Entwickler hat keine direkte Kontrolle über die clientseitige Sortierung, d
 - TIME
 
 :::info
-Die Client-Sortierung funktioniert nicht, wenn nur ein Teil der Daten im Client verfügbar ist.
+Die clientseitige Sortierung funktioniert nicht, wenn dem Client nur ein Teil der Daten zur Verfügung steht.
 :::
 
-### Server-Sortierung {#server-sorting}
+### Serverseitige Sortierung {#server-sorting}
 
-Im Gegensatz zur clientseitigen Sortierung bedeutet die Server-Sortierung, dass die Daten auf dem Server angeordnet und organisiert werden, bevor sie an den Client übertragen werden. Dieser Ansatz ist besonders vorteilhaft bei der Verarbeitung großer Datensätze, die möglicherweise nicht vollständig an den Client übertragen werden können.
+Im Gegensatz zur clientseitigen Sortierung werden Daten bei der serverseitigen Sortierung auf dem Server angeordnet und organisiert, bevor sie an den Client übertragen werden. Dieser Ansatz ist besonders vorteilhaft bei großen Datensätzen, deren vollständige Übertragung an den Client möglicherweise nicht praktikabel ist.
 
-Entwickler haben mehr Kontrolle über die Logik der Server-Sortierung. Dies ermöglicht die Implementierung komplexer Sortieralgorithmen und Optimierungen, was es für Szenarien mit umfangreichen Daten geeignet macht. Dadurch wird sichergestellt, dass der Client vor-sortierte Daten erhält, was die Notwendigkeit umfangreicher clientseitiger Verarbeitung minimiert.
+Entwickler haben mehr Kontrolle über die Logik der serverseitigen Sortierung. Dadurch können komplexe Sortieralgorithmen und Optimierungen implementiert werden, was diesen Ansatz für umfangreiche Datenmengen geeignet macht. So erhält der Client vorsortierte Daten, wodurch der erforderliche clientseitige Verarbeitungsaufwand reduziert wird.
+
 
 :::info
-Die Server-Sortierung ist eine leistungsorientierte Strategie für den Umgang mit Datensätzen, die die Möglichkeiten einer effizienten clientseitigen Verarbeitung übersteigen, und ist die Standardmethode, die von der `Table` verwendet wird.
+Die serverseitige Sortierung ist eine leistungsorientierte Strategie für Datensätze, die die Möglichkeiten einer effizienten clientseitigen Verarbeitung übersteigen. Sie ist die von `Table` standardmäßig verwendete Methode.
 :::
 
-### Spalteneigenschaftsname {#column-property-name}
+### Eigenschaftsname der Spalte {#column-property-name}
 
-Standardmäßig verwendet die `Table` die ID einer Spalte als Eigenschaftsnamen, wenn sie Sortierkriterien für ein Backend-Repository aufbaut. Wenn die angezeigte ID einer Spalte nicht mit der zugrunde liegenden Dateneigenschaft übereinstimmt oder wenn die Spalte einen berechneten Wert anzeigt, verwenden Sie `setPropertyName()`, um der `Table` ausdrücklich mitzuteilen, nach welcher Eigenschaft sortiert werden soll.
+Standardmäßig verwendet `Table` die ID einer Spalte als Eigenschaftsnamen, wenn Sortierkriterien für ein Backend-Repository erstellt werden. Wenn die Anzeige-ID einer Spalte nicht mit der zugrunde liegenden Dateneigenschaft übereinstimmt oder die Spalte einen berechneten Wert anzeigt, verwenden Sie `setPropertyName()`, um `Table` explizit mitzuteilen, nach welcher Eigenschaft sortiert werden soll.
 
 ```java
-// Spalten-ID ist "Vollständiger Name", aber die Backend-Eigenschaft ist "fullName"
-table.addColumn("Vollständiger Name", Person::getFullName)
+// Column ID is "Full Name", but the backend property is "fullName"
+table.addColumn("Full Name", Person::getFullName)
      .setSortable(true)
      .setPropertyName("fullName");
 ```
 
-Der Eigenschaftsname wird an die `OrderCriteria` weitergeleitet, wenn ein Sortierereignis ausgelöst wird, damit Backend-Repositories wie Spring Data JPA oder REST-Adapter die korrekte `ORDER BY`-Klausel aufbauen können.
+Der Eigenschaftsname wird beim Auslösen eines Sortierereignisses an `OrderCriteria` weitergegeben. Dadurch können Backend-Repositorys wie Spring Data JPA oder REST-Adapter die korrekte `ORDER BY`-Klausel erstellen.
 
 :::warning
-Ohne `setPropertyName()` fällt die `Table` auf die Spalten-ID zurück. Wenn dies nicht mit einer gültigen Backend-Eigenschaft übereinstimmt, schlägt die Sortierung stillschweigend fehl oder gibt falsche Daten zurück.
+Ohne `setPropertyName()` verwendet `Table` ersatzweise die Spalten-ID. Wenn diese nicht mit einer gültigen Backend-Eigenschaft übereinstimmt, schlägt die Sortierung unbemerkt fehl oder liefert falsch sortierte Daten.
 :::
 
-Verschachtelte Eigenschaftspfad sind ebenfalls unter Verwendung der Punktnotation unterstützt:
+Verschachtelte Eigenschaftspfade werden ebenfalls unterstützt und können mit Punktnotation angegeben werden:
 
 ```java
-table.addColumn("Stadt", Person::getCity)
+table.addColumn("City", Person::getCity)
      .setSortable(true)
      .setPropertyName("address.city");
 ```
 
-#### Vergleichsoperatoren {#comparators}
+#### Comparatoren {#comparators}
 
-Die `Column`-Komponente ermöglicht es Entwicklern, Java `Comparators` für dynamisches und benutzerdefiniertes Sortieren zu verwenden. Ein `Comparator` ist ein Mechanismus, der verwendet wird, um zwei Objekte derselben Klasse zu ordnen, selbst wenn diese Klasse benutzerdefiniert ist. Diese Funktionalität bietet Entwicklern Flexibilität, wie Daten sortiert werden, und ermöglicht eine höhere Kontrolle über das Standard-Sortierverhalten basierend auf natürlicher Ordnung.
+Die Komponente `Column` ermöglicht Entwicklern die Verwendung von Java-`Comparator`en für dynamische und benutzerdefinierte Sortierungen. Ein `Comparator` ist ein Mechanismus, mit dem zwei Objekte derselben Klasse geordnet werden können, auch wenn diese Klasse benutzerdefiniert ist. Diese Funktion bietet Entwicklern die Flexibilität, die Sortierung von Daten anzupassen und das standardmäßige Sortierverhalten anhand der natürlichen Ordnung gezielt zu steuern.
 
-Um `Comparator`-Sortierung in einer `Column` zu nutzen, können Sie die Methode `setComparator()` verwenden. Diese Methode ermöglicht es Ihnen, eine benutzerdefinierte `Comparator`-Funktion zu definieren, die die Sortierlogik bestimmt.
+Um die Sortierung mit `Comparator` in einer `Column` zu verwenden, können Sie die Methode `setComparator()` einsetzen. Mit dieser Methode lässt sich eine benutzerdefinierte `Comparator`-Funktion festlegen, die die Sortierlogik bestimmt.
 
 <ComponentDemo
 path='/webforj/tablecolumncomparator'
@@ -159,10 +161,10 @@ files={[
 height='600px'
 />
 
-Im obigen Beispiel wird eine benutzerdefinierte Vergleichsfunktion angegeben, die zwei Elemente (a und b) annimmt und die Sortierreihenfolge basierend auf den geparsten Ganzzahlwerten des `Number`-Attributs definiert.
+Im obigen Beispiel wird eine benutzerdefinierte Comparator-Funktion angegeben, die zwei Elemente (a und b) entgegennimmt und die Sortierreihenfolge anhand der geparsten Ganzzahlwerte des Attributs `Number` bestimmt.
 
-Die Verwendung von Comparators für die Spalten-Sortierung ist besonders nützlich, wenn nicht-numerische Werte behandelt werden. Sie sind auch nützlich, um komplexe Sortieralgorithmen zu implementieren.
+Die Verwendung von Comparatoren für die Sortierung von Spalten ist besonders hilfreich beim Umgang mit nicht numerischen Werten. Sie eignen sich auch zur Implementierung komplexer Sortieralgorithmen.
 
 :::info
-Standardmäßig verwendet die `Table` die serverseitige Sortierung und sortiert nicht-primitiven Werte mithilfe der `toString()`-Methode von Object, wobei diese in ihre String-Werte umgewandelt und dann sortiert werden.
+Standardmäßig verwendet `Table` die serverseitige Sortierung und sortiert nicht primitive Werte mithilfe der Methode `toString()` von Object, indem die Werte in Zeichenfolgen umgewandelt und anschließend sortiert werden.
 :::

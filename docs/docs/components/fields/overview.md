@@ -5,9 +5,9 @@ hide_giscus_comments: true
 description: Share common field properties across webforJ input components, including labels, helper text, required state, spellcheck, and prefix or suffix slots.
 ---
 
-<JavadocLink type="foundation" location="com/webforj/component/field/AbstractField"/>
+<JavadocLink type="foundation" location="com/webforj/component/field/DwcField"/>
 
-The webforJ framework supports seven different types of field components, each with different behaviors and implementations that suit various needs for inputs.
+The webforJ framework supports eleven types of field components, including four masked fields, each with different behaviors and implementations that suit various input needs.
 While each of these components has variations in their implementations, this article describes the shared properties among all of the field classes.
 
 :::info

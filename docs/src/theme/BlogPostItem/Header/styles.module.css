@@ -1,0 +1,14 @@
+.back {
+  display: inline-block;
+  margin-bottom: var(--dwc-space-l);
+  color: var(--dwc-color-primary-text);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-s);
+}
+
+.back:hover,
+.back:focus {
+  color: var(--dwc-color-primary-text);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}

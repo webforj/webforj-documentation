@@ -1,0 +1,5 @@
+# webforJ testbed snapshot v1
+- SplitterMinMaxView [route=splitterminmax] [composite=Div] [node=div]:
+  - Splitter [composite=Element] [node=dwc-splitter]:
+    - SplitterBox [slot=master] [composite=FlexLayout] [node=div]
+    - SplitterBox [slot=detail] [composite=FlexLayout] [node=div]

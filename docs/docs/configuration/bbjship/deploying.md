@@ -76,7 +76,19 @@ mvn package webforj:bbj-deploy \
   -Dwebforj.bbj.admin.token="$BBJ_ADMIN_TOKEN"
 ```
 
-The certificate of the BBjServices web server must match the host name of the URL, or be in the Java truststore of the build. Java doesn't trust the BBj default certificate, which is self signed. An `http://` URL to another machine sends the credentials readable over the network, and the goals print a warning for it.
+The certificate of the BBjServices web server must match the host name of the URL, or be in the Java truststore of the build. Java doesn't trust the BBj default certificate, which is self signed.
+
+An `http://` URL to another machine is refused on both sides. The goal stops before it sends anything, and BBjShip answers HTTP 403 to a request that arrives over HTTP from another machine. A URL that names the BBj machine itself, `localhost` or one of its own addresses, works over HTTP.
+
+To deploy over HTTP to another machine anyway, for example a virtual machine on your own computer, allow it on both sides. On the BBj machine, run `bbjship remote enable --allow-unencrypted` with the ports of the endpoint. In the build, set `<deployment><allowUnencrypted>true</allowUnencrypted>` or pass the property:
+
+```bash
+mvn package webforj:bbj-deploy \
+  -Dwebforj.bbj.deployment.url=http://bbj.example.com:8888/webforj-bbjship \
+  -Dwebforj.bbj.deployment.allowUnencrypted=true
+```
+
+The goal then prints a warning and deploys. The credentials travel readable over the network on that connection.
 
 ## App settings {#app-settings}
 
@@ -108,6 +120,7 @@ The settings live in the `<bbj>` block of the `webforj-maven-plugin` configurati
 | `<home>` | `webforj.bbj.home` | Detected | BBj installation folder, used by `bbj-setup` and `watch`. |
 | `<publishName>` | `webforj.bbj.publishName` | Final name of the build | Name the app is published under, see [Publish names](#publish-names). |
 | `<deployment><url>` | `webforj.bbj.deployment.url` | None, required | Address of BBjShip, `http://<host>:<HTTP port>/webforj-bbjship` or `https://<host>:<SSL port>/webforj-bbjship`. |
+| `<deployment><allowUnencrypted>` | `webforj.bbj.deployment.allowUnencrypted` | `false` | Lets `bbj-deploy` and `bbj-undeploy` send the credentials over an `http://` URL to another machine, see [Deploying from another machine](#deploying-from-another-machine). |
 | `<admin><username>` | `webforj.bbj.admin.username` | `admin` when user name and password are both absent | BBj administrator user name. |
 | `<admin><password>` | `webforj.bbj.admin.password` | `admin123` when user name and password are both absent | BBj administrator password. |
 | `<admin><token>` | `webforj.bbj.admin.token` | Empty | Authorization token for `bbj-deploy` and `bbj-undeploy`. Takes precedence over the user name and password. |

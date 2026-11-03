@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Shadow Parts
+title: Partes de sombra
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **Partes de Sombra** le dan a los desarrolladores una forma de estilizar elementos dentro del shadow DOM de un componente desde el exterior, mientras se preserva la encapsulación.

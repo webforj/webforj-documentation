@@ -2,10 +2,11 @@
 
 ## Overview
 
-This tool automates the translation of webforJ documentation using OpenAI's GPT-4 API. It intelligently translates both Markdown documentation files and UI strings while preserving technical accuracy.
+This tool automates the translation of webforJ documentation using the OpenAI API (default model: `gpt-6-luna`, override with `--model`). It intelligently translates both Markdown documentation files and UI strings while preserving technical accuracy.
 
 **Key Features:**
-- 🤖 **AI-Powered**: Uses OpenAI GPT-4 for high-quality, context-aware translations
+- 🤖 **AI-Powered**: Uses an OpenAI model for high-quality, context-aware translations
+- ✅ **MDX Validation**: Rejects translated docs that no longer compile, retries them, and skips any that keep failing so one bad file can't break the build
 - 🎯 **Smart Caching**: Tracks file changes using MD5 hashes to avoid re-translating unchanged content
 - 🛡️ **Technical Term Protection**: Automatically preserves technical terms from Vale's vocabulary
 - 📦 **Batch Processing**: Efficiently handles large documentation sets with configurable batch sizes
@@ -30,7 +31,8 @@ tools/i18n-translator/
 ├── config.ts         # Configuration and whitelist management
 ├── index.ts          # Main entry point and orchestration
 ├── translate.ts      # Translation logic and API calls
-└── utils.ts          # Utility functions for file handling
+├── utils.ts          # Utility functions for file handling
+└── validate.ts       # MDX compile check for translated docs
 ```
 
 ## 🔧 Tool Descriptions
@@ -63,7 +65,7 @@ tools/i18n-translator/
   - Batch translation support for efficiency
   - Progress tracking for long-running operations
   - Handles both documentation and UI string translations
-  - Uses GPT-4 for high-quality translations
+  - Retries each failed or invalid translation up to 3 times, then skips it with a `::warning::` annotation instead of failing the run
 - **Translation Modes**:
   - **Documentation mode**: Preserves Markdown formatting, code blocks, and frontmatter
   - **UI String mode**: Focused, concise translations for interface elements
@@ -74,6 +76,13 @@ tools/i18n-translator/
   - Loads Docusaurus configuration from various file formats
   - Supports TypeScript, JavaScript, and module configurations
   - Uses jiti for transpilation of configuration files
+
+### validate.ts
+**Purpose**: Catches translations that would break the Docusaurus build
+- **Key Features**:
+  - Compiles each translated doc body with `@mdx-js/mdx`, the same compiler Docusaurus uses
+  - Only judges translations whose English source passes the same check, so pre-existing quirks in a source file never block its translation
+  - A skipped doc keeps its previous translation and stale `_i18n_hash`, so the next run retries it automatically
 
 ## 🔗 Heading IDs for Stable Links
 
@@ -170,7 +179,6 @@ The whitelist is automatically loaded from:
    - Frontmatter metadata
 
 3. **Translation quality**:
-   - Uses GPT-4 for accuracy
    - Maintains context awareness
    - Preserves technical accuracy
 
@@ -181,6 +189,9 @@ The whitelist is automatically loaded from:
 
 **Issue**: Translation tool misses some strings
 **Solution**: Check that strings match the English detection patterns in `translateCodeJSON()`
+
+**Issue**: The run fails on the **Skipped translations need review** job (GitHub's failure email names this job)
+**Solution**: The run summary lists each skipped file or string with its error. Successful translations were still committed. The model kept producing MDX that doesn't compile (often a mangled JSX tag), or the API kept erroring. The file keeps its old translation and is retried on the next run. If it keeps failing, simplify the inline JSX in the English source or fix the translation by hand.
 
 **Issue**: Technical terms are being translated
 **Solution**: Add them to `.github/.styles/config/vocabularies/webforj/accept.txt` or the whitelist in the `config.ts` file.

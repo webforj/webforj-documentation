@@ -1,5 +1,5 @@
 ---
-title: Login
+title: Inloggen
 sidebar_position: 70
 description: >-
   Display an authentication dialog with the Login component, handling

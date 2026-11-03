@@ -4,20 +4,20 @@ sidebar_position: 30
 description: >-
   Open modal popups with the Dialog component, including header, content, and
   footer sections, backdrop blur, and configurable close behavior.
-_i18n_hash: 901c54134f4c21092deb23457747a29b
+_i18n_hash: 8f78bdc280006c73955232e7f52ed365
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-dialog" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="dialog" location="com/webforj/component/dialog/Dialog" top='true'/>
 
-Die `Dialog`-Komponente zeigt ein Popup-Fenster an, das die aktuelle Ansicht überlagert und die Aufmerksamkeit auf fokussierte Inhalte wie Formulare, Bestätigungen oder Informationsnachrichten lenkt.
+Die `Dialog`-Komponente zeigt ein Popup-Fenster an, das die aktuelle Ansicht überlagert und die Aufmerksamkeit auf fokussierten Inhalt wie Formulare, Bestätigungen oder Informationsnachrichten lenkt.
 
 <!-- INTRO_END -->
 
 ## `Dialog`-Struktur {#dialog-structure}
 
-Der `Dialog` ist in drei Abschnitte unterteilt: einen Header, einen Inhaltsbereich und eine Fußzeile. Komponenten können in jeden Abschnitt mit `addToHeader()`, `addToContent()` und `addToFooter()` hinzugefügt werden.
+Der `Dialog` ist in drei Abschnitte unterteilt: einen Header, einen Inhaltsbereich und einen Footer. Komponenten können zu jedem Abschnitt mit `addToHeader()`, `addToContent()` und `addToFooter()` hinzugefügt werden.
 
 <ComponentDemo
 path='/webforj/dialogsections'
@@ -25,26 +25,26 @@ files={['src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java'
 height='375px'
 />
 
-## Verwendungen {#usages}
+## Verwendung {#usages}
 
-1. **Benutzerrückmeldungen und Bestätigungen**: `Dialog`-Komponenten werden häufig verwendet, um Rückmeldungen zu geben oder eine Bestätigung vom Benutzer zu verlangen. Sie können verschiedene wichtige Rückmeldungen an einen Benutzer anzeigen, wie zum Beispiel:
+1. **Benutzerfeedback und Bestätigung**: `Dialog`-Komponenten werden häufig verwendet, um Feedback zu geben oder eine Bestätigung des Benutzers anzufordern. Sie können verschiedene wichtige Rückmeldungen an den Benutzer anzeigen, z. B.:
 
-  >- Erfolgsmeldungen
+  >- Erfolgsnachrichten
   >- Fehlermeldungen
-  >- Bestätigungen von Einsendungen
+  >- Bestätigungsanfragen
 
-2. **Formulareingabe und -bearbeitung**: Sie können Dialoge verwenden, um Benutzereingaben zu sammeln oder ihnen zu ermöglichen, Informationen in kontrollierter und fokussierter Weise zu bearbeiten. Beispielsweise kann ein Dialog erscheinen, um die Benutzerdaten zu bearbeiten oder ein mehrstufiges Formular abzuschließen.
+2. **Formulareingabe und Bearbeitung**: Sie können Dialoge verwenden, um Benutzereingaben zu sammeln oder ihnen zu ermöglichen, Informationen in einer kontrollierten und fokussierten Weise zu bearbeiten. Zum Beispiel kann ein Dialog erscheinen, um die Profilinformationen eines Benutzers zu bearbeiten oder ein mehrstufiges Formular abzuschließen.
 
-3. **Kontextuelle Informationen**: Das Anzeigen zusätzlicher kontextueller Informationen oder Tooltips in einem Dialog kann Benutzern helfen, komplexe Funktionen oder Daten zu verstehen. Dialoge können tiefere Erklärungen, Diagramme oder Hilfedokumentationen bieten.
+3. **Kontextbezogene Informationen**: Das Anzeigen zusätzlicher kontextbezogener Informationen oder Tooltips in einem Dialog kann den Benutzern helfen, komplexe Funktionen oder Daten zu verstehen. Dialoge können ausführliche Erklärungen, Diagramme oder Hilfedokumentationen bieten.
 
-4. **Bild- und Medienvorschauen**: Wenn Benutzer Medieninhalte anzeigen müssen, kann ein `Dialog` verwendet werden, um größere Vorschauen oder Galerien anzuzeigen, z. B. beim Interagieren mit:
+4. **Bild- und Medienvorschauen**: Wenn Benutzer Medieninhalte anzeigen müssen, kann ein `Dialog` verwendet werden, um größere Vorschauen oder Galerien zu zeigen, wie z. B. beim Interagieren mit:
   >- Bildern
   >- Videos
   >- Anderen Medien
 
 ## Hintergrund und Unschärfe {#backdrop-and-blur}
 
-Ein geöffneter `Dialog`-Komponente hat einen gedämpften Hintergrund, der subtil die Aufmerksamkeit auf seinen Inhalt lenkt. Mit `setBackdrop()` und `setBlurred()` können Sie ändern, wie webforJ den Inhalt hinter dem `Dialog` anzeigt (oder verdeckt). Die Anpassung dieser Attribute kann den Benutzern helfen, indem sie Tiefe und visuelle Hierarchie bieten.
+Ein geöffneter `Dialog` hat einen gedämpften Hintergrund, der subtil die Aufmerksamkeit auf seinen Inhalt lenkt. Mit `setBackdrop()` und `setBlurred()` können Sie ändern, wie webforJ den Inhalt hinter dem `Dialog` anzeigt (oder verdeckt). Das Ändern dieser Eigenschaften kann den Benutzern helfen, indem es Tiefe und visuelle Hierarchie bereitstellt.
 
 <ComponentDemo
 path='/webforj/dialogbackdropblur'
@@ -54,12 +54,12 @@ height='600px'
 
 ## Öffnen und Schließen des `Dialogs` {#opening-and-closing-the-dialog}
 
-Nach dem Erstellen eines neuen `Dialog`-Objekts verwenden Sie die Methode `open()`, um den Dialog anzuzeigen. Danach kann die `Dialog`-Komponente durch eine dieser Aktionen geschlossen werden:
-- Nutzung der Methode `close()`
-- Drücken der <kbd>ESC</kbd>-Taste
-- Klicken außerhalb des `Dialogs`
+Nachdem Sie ein neues `Dialog`-Objekt erstellt haben, verwenden Sie die Methode `open()`, um den Dialog anzuzeigen. Um ihn programmgesteuert zu schließen, verwenden Sie die Methode `close()`. Sie können auch steuern, welche Benutzerinteraktionen den Dialog schließen:
 
-Entwickler können wählen, welche Interaktionen den `Dialog` schließen, mit `setCancelOnEscKey()` und `setCancelOnOutsideClick()`. Darüber hinaus kann die Methode `setClosable()` das Schließen der Komponente entweder durch Drücken der <kbd>ESC</kbd>-Taste oder durch Klicken außerhalb des `Dialogs` verhindern oder erlauben.
+- **Klicken Sie außerhalb** schließt den `Dialog` standardmäßig, da `cancelOnOutsideClick` standardmäßig auf `true` gesetzt ist. Verwenden Sie `setCancelOnOutsideClick(false)`, um dieses Verhalten zu deaktivieren.
+- **Drücken der <kbd>ESC</kbd>** schließt den `Dialog` standardmäßig nicht, da `cancelOnEscKey` standardmäßig auf `false` gesetzt ist. Verwenden Sie `setCancelOnEscKey(true)`, um dieses Verhalten zu aktivieren.
+
+Verwenden Sie `setCloseable(true)`, um beide Interaktionen zu aktivieren, oder `setCloseable(false)`, um beide zu deaktivieren. Das folgende Demo aktiviert beide Interaktionen.
 
 <ComponentDemo
 path='/webforj/dialogclose'
@@ -69,7 +69,7 @@ height='375px'
 
 ## Autofokus {#auto-focus}
 
-Wenn aktiviert, gibt der Autofokus automatisch den Fokus auf das erste Element innerhalb des Dialogs, das fokussiert werden kann. Dies ist nützlich, um die Aufmerksamkeit der Benutzer zu lenken, und ist über die Methode `setAutoFocus()` anpassbar.
+Wenn aktiviert, gibt der Autofokus automatisch den Fokus auf das erste fokussierbare Element innerhalb des Dialogs. Dies ist nützlich, um die Aufmerksamkeit der Benutzer zu lenken, und ist über die Methode `setAutoFocus()` anpassbar.
 
 <ComponentDemo
 path='/webforj/dialogautofocus'
@@ -77,12 +77,12 @@ files={['src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java
 height='400px'
 />
 
-## Änderbar {#draggable}
+## Ziehbar {#draggable}
 
-Der `Dialog` verfügt über eine integrierte Funktionalität, um verschoben zu werden, sodass der Benutzer das `Dialog`-Fenster durch Klicken und Ziehen an einen anderen Ort verschieben kann. Die Position des `Dialogs` kann von einem der Felder innerhalb davon manipuliert werden: dem Header, dem Inhalt oder der Fußzeile.
+Der `Dialog` verfügt über eine eingebaute Funktionalität zum Ziehen, die es dem Benutzer ermöglicht, das `Dialog`-Fenster durch Klicken und Ziehen zu verschieben. Die Position des `Dialogs` kann von jedem der Felder innerhalb davon manipuliert werden: dem Header, dem Inhalt oder dem Footer.
 
 ### Am Rand einrasten {#snap-to-edge}
-Es ist auch möglich, dieses Verhalten so anzupassen, dass es am Rand des Bildschirms einrastet, was bedeutet, dass sich der `Dialog` automatisch am Rand des Displays ausrichtet, wenn er aus seinem Ziehen und Ablegen abgegeben wird. Das Einklinken kann über die Methode `setSnapToEdge()` geändert werden. Die `setSnapThreshold()`-Methode akzeptiert eine Anzahl von Pixeln, die festlegt, wie weit der `Dialog` von den Seiten des Bildschirms entfernt sein sollte, bevor er automatisch an den Rändern einrastet.
+Es ist auch möglich, dieses Verhalten so zu kalibrieren, dass es am Rand des Bildschirms einrastet, was bedeutet, dass sich der `Dialog` automatisch am Rand der Anzeige anpasst, wenn er aus seinem Zieh- und Ablagedatum freigegeben wird. Das Einrasten kann über die Methode `setSnapToEdge()` geändert werden. Die `setSnapThreshold()`-Methode nimmt eine Anzahl von Pixeln an, die festlegt, wie weit der `Dialog` von den Rändern des Bildschirms entfernt sein soll, bevor er automatisch an die Ränder einrastet.
 
 <ComponentDemo
 path='/webforj/dialogdraggable'
@@ -92,7 +92,7 @@ height='325px'
 
 ## Positionierung {#positioning}
 
-Die Position des Dialogs kann mit den integrierten Methoden `setPosx()` und `setPosy()` manipuliert werden. Diese Methoden akzeptieren ein String-Argument, das jede anwendbare CSS-Längeneinheit repräsentieren kann, z. B. Pixel oder Ansichts-Höhe/-Breite. Eine Liste dieser Maße [finden Sie unter diesem Link](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages).
+Die Position des Dialogs kann mit den integrierten Methoden `setPosx()` und `setPosy()` manipuliert werden. Diese Methoden nehmen ein String-Argument an, das jede anwendbare CSS-Länge darstellen kann, z. B. Pixel oder Ansichtshöhe/-breite. Eine Liste dieser Maße [finden Sie unter diesem Link](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages).
 
 <ComponentDemo
 path='/webforj/dialogpositioning'
@@ -102,7 +102,7 @@ height='400px'
 
 ### Vertikale Ausrichtung {#vertical-alignment}
 
-Zusätzlich zur manuellen Zuweisung der X- und Y-Position eines Dialogs ist es möglich, die integrierte Enum-Klasse des Dialogs zu verwenden, um den `Dialog` auszurichten. Es stehen drei mögliche Werte zur Verfügung: `TOP`, `CENTER` und `BOTTOM`, die jeweils mit der Methode `setAlignment()` verwendet werden können.
+Zusätzlich zur manuellen Zuweisung der X- und Y-Position eines Dialogs ist es möglich, die integrierte Enum-Klasse des Dialogs zu verwenden, um den `Dialog` auszurichten. Es gibt drei mögliche Werte: `TOP`, `CENTER` und `BOTTOM`, die jeweils mit der Methode `setAlignment()` verwendet werden können.
 
 <ComponentDemo
 path='/webforj/dialogalignments'
@@ -110,13 +110,13 @@ files={['src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.jav
 height='450px'
 />
 
-### Vollbild und Breakpoints {#full-screen-and-breakpoints}
+### Vollbildmodus und Breakpoints {#full-screen-and-breakpoints}
 
-Der `Dialog` kann so eingestellt werden, dass er in den Vollbildmodus wechselt. Wenn der Vollbildmodus aktiviert ist, kann der `Dialog` nicht bewegt oder positioniert werden. Dieser Modus kann über das Breakpoint-Attribut des `Dialogs` manipuliert werden. Der Breakpoint ist eine Medienabfrage, die anzeigt, wann der `Dialog` automatisch in den Vollbildmodus wechselt. Wenn die Abfrage übereinstimmt, wird der `Dialog` auf Vollbild gewechselt - andernfalls wird er positioniert.
+Der `Dialog` kann so eingestellt werden, dass er in den Vollbildmodus wechselt. Wenn der Vollbildmodus aktiviert ist, kann der `Dialog` nicht verschoben oder positioniert werden. Dieser Modus kann mit dem Breakpoint-Attribut des `Dialogs` manipuliert werden. Der Breakpoint ist eine Medienabfrage, die angibt, wann der `Dialog` automatisch in den Vollbildmodus wechselt. Wenn die Abfrage übereinstimmt, wechselt der `Dialog` in den Vollbildmodus - andernfalls wird er positioniert.
 
 ### Automatische Breite <DocChip chip='since' label='26.00' /> {#auto-width}
 
-Standardmäßig streckt sich der `Dialog`, um den verfügbaren horizontalen Platz auszufüllen. Wenn die automatische Breite über `setAutoWidth(true)` aktiviert ist, passt sich der `Dialog` stattdessen an die Breite seines Inhalts an.
+Standardmäßig dehnt sich der `Dialog` aus, um den verfügbaren horizontalen Raum auszufüllen. Wenn die automatische Breite über `setAutoWidth(true)` aktiviert ist, passt sich der `Dialog` stattdessen an die Breite seines Inhalts an.
 
 <ComponentDemo
 path='/webforj/dialogautowidth'
@@ -126,19 +126,19 @@ height='350px'
 
 ## Styling {#styling}
 
-### Themen {#themes}
+### Themes {#themes}
 
-`Dialog`-Komponenten sind mit <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 diskreten Themen</JavadocLink> ausgestattet, die eine schnelle Gestaltung ohne Verwendung von CSS ermöglichen. Diese Themen sind vordefinierte Stile, die auf Schaltflächen angewendet werden können, um deren Erscheinungsbild und visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Aussehen von Schaltflächen in einer Anwendung anzupassen.
+`Dialog`-Komponenten verfügen über <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 diskrete Themes</JavadocLink>, die eine schnelle Stilisierung ohne CSS ermöglichen. Diese Themes sind vordefinierte Stile, die auf Schaltflächen angewendet werden können, um deren Erscheinungsbild und visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Aussehen von Schaltflächen in einer Anwendung anzupassen.
 
-Während es viele Anwendungsfälle für jedes der verschiedenen Themen gibt, sind hier einige Beispiele:
+Während es viele Anwendungsfälle für jedes der verschiedenen Themes gibt, sind einige Beispiele:
 
-  - **Gefahr**: Aktionen mit schwerwiegenden Folgen, wie das Löschen ausgefüllter Informationen oder das permanente Löschen eines Kontos/Daten, stellen einen guten Anwendungsfall für Dialoge mit dem Gefahr-Thema dar.
-  - **Standard**: Das Standard-Thema ist für Aktionen in einer Anwendung geeignet, die keine besondere Aufmerksamkeit erfordern und allgemein sind, z. B. das Umschalten einer Einstellung.
-  - **Primär**: Dieses Thema eignet sich als Haupt-"Call-to-Action" auf einer Seite, z. B. sich anzumelden, Änderungen zu speichern oder zu einer anderen Seite zu gelangen.
-  - **Erfolg**: Erfolgsthemedialoge sind hervorragend geeignet, um die erfolgreiche Durchführung eines Elements in einer Anwendung zu visualisieren, wie z. B. das Einreichen eines Formulars oder den Abschluss eines Anmeldevorgangs. Das Erfolgsthema kann programmgesteuert angewendet werden, sobald eine erfolgreiche Aktion abgeschlossen ist.
-  - **Warnung**: Warnung-Dialoge sind nützlich, um Benutzer darauf hinzuweisen, dass sie eine potenziell riskante Aktion ausführen, beispielsweise beim Navigieren von einer Seite mit nicht gespeicherten Änderungen. Diese Aktionen sind oft weniger stark als solche, die das Gefahr-Thema verwenden würden.
-  - **Grau**: Gut für subtile Aktionen, wie geringfügige Einstellungen oder Aktionen, die eher ergänzend zu einer Seite sind und nicht Teil der Hauptfunktionalität.
-  - **Info**: Das Info-Thema ist eine gute Wahl, um einem Benutzer zusätzliche klarstellende Informationen bereitzustellen, wenn dies erforderlich ist.
+  - **Gefahr**: Aktionen mit schwerwiegenden Konsequenzen, wie das Löschen ausgefüllter Informationen oder das permanente Löschen eines Kontos/Daten, stellt einen guten Anwendungsfall für Dialoge mit dem Gefahr-Thema dar.
+  - **Standard**: Das Standard-Theme ist für Aktionen in einer Anwendung geeignet, die keine besondere Aufmerksamkeit erfordern und allgemein sind, wie z. B. das Umschalten eines Einstellungs.
+  - **Primär**: Dieses Thema eignet sich als Haupt-"Handlungsaufforderung" auf einer Seite, z. B. für das Anmelden, das Speichern von Änderungen oder den Übergang zu einer anderen Seite.
+  - **Erfolg**: Erfolgs-themen Dialoge sind ausgezeichnet, um den erfolgreichen Abschluss eines Elements in einer Anwendung zu visualisieren, wie z. B. die Einreichung eines Formulars oder den Abschluss eines Anmeldevorgangs. Das Erfolgsthema kann programmatisch angewendet werden, sobald eine erfolgreiche Aktion abgeschlossen ist.
+  - **Warnung**: Warnungsdialoge sind nützlich, um den Benutzern anzuzeigen, dass sie im Begriff sind, eine potenziell riskante Aktion auszuführen, z. B. beim Navigieren von einer Seite mit ungespeicherten Änderungen. Diese Aktionen sind oft weniger weitreichend als solche, die das Gefahr-Thema verwenden würden.
+  - **Grau**: Gut für subtile Aktionen, wie kleinere Einstellungen oder Aktionen, die mehr ergänzend zu einer Seite sind und nicht Teil der Hauptfunktionalität.
+  - **Info**: Das Info-Thema ist eine gute Wahl, um einem Benutzer klärende, zusätzliche Informationen bereitzustellen, wenn er gedrängt wird.
 
 <ComponentDemo
 path='/webforj/dialogthemes'

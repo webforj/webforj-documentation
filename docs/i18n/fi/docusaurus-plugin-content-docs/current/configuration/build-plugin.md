@@ -1,5 +1,5 @@
 ---
-title: webforJ Build Plugin
+title: 'webforJ:n koontiliitännäinen'
 sidebar_position: 5
 sidebar_class_name: updated-content
 description: >-

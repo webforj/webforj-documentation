@@ -6,7 +6,7 @@ date: 2026-05-07
 authors: Matthew Hawkins
 tags: [community, release]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/webforj-v26.00/video-cover.jpg"
-hide_table_of_contents: true
+hide_table_of_contents: false
 ---
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webforj-v26.00/video-cover.jpg)

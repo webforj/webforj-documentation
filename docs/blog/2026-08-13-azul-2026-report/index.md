@@ -6,7 +6,7 @@ date: 2026-08-13
 authors: Ben Brennan
 tags: [ai, community, modernization, performance]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/2026-08-13-azul-2026-report/blog-cover.png"
-hide_table_of_contents: true
+hide_table_of_contents: false
 ---
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-13-azul-2026-report/blog-cover.png)

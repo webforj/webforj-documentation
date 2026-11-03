@@ -6,7 +6,7 @@ description: >-
   validate webforJ components, logic, and full user journeys.
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
+_i18n_hash: 58ac266506a221d71e22c723189aa08f
 ---
 <Head>
   <style>{`
@@ -18,32 +18,34 @@ _i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
 
 # Pruebas en webforJ
 
-Las pruebas en aplicaciones webforJ combinan pruebas unitarias, de frontend y de extremo a extremo (E2E), cada una sirviendo a un propósito distinto para mantener la aplicación estable y confiable.
+Las pruebas en las aplicaciones webforJ combinan pruebas unitarias, de frontend y de extremo a extremo (E2E), cada una con un propósito distinto para mantener la estabilidad y la fiabilidad de la aplicación.
 
 ## Pruebas unitarias {#unit-testing}
 
-Las pruebas unitarias se centran en verificar componentes individuales o la lógica del backend de forma aislada. Al seguir prácticas estándar de pruebas en Java, como el uso de [JUnit](https://junit.org/junit5/), los desarrolladores pueden validar de manera eficiente la lógica específica de la aplicación y asegurarse de que cada "unidad" funcione como se espera.
+Las pruebas unitarias se centran en verificar componentes individuales o la lógica del backend de forma aislada. Al seguir las prácticas habituales de pruebas de Java, como usar [JUnit](https://junit.org/junit5/), los desarrolladores pueden validar la lógica específica de la aplicación y comprobar que cada «unidad» funciona según lo esperado.
+
+Para las vistas y los componentes, [TestBed](./testbed/overview) permite hacer pruebas sin navegador en pruebas JUnit normales, sin necesidad de un navegador ni de un servidor. Una prueba añade una vista a la página, interactúa con ella como lo haría un usuario y comprueba el resultado desde Java.
 
 ## Pruebas de frontend {#frontend-testing}
 
-Las pruebas de frontend cubren las fuentes que un proyecto autoriza con el [paquete de frontend](/docs/managing-resources/bundler/overview). El ejecutor de pruebas [Bun](https://bun.sh/) las ejecuta como parte del mismo proceso de construcción que ejecuta las pruebas de Java, por lo que un componente TypeScript o una pieza de lógica del cliente se verifica de la misma manera que el backend. Consulta [Pruebas de frontend](./frontend-testing).
+Las pruebas de frontend abarcan el código fuente que un proyecto crea con el [empaquetador de frontend](/docs/managing-resources/bundler/overview). El ejecutor de pruebas de [Bun](https://bun.sh/) las ejecuta como parte de la misma compilación que ejecuta las pruebas de Java, de modo que un componente de TypeScript o una parte de la lógica del cliente se verifica igual que el backend. Consulta [Pruebas de frontend](./frontend-testing).
 
 ## Pruebas de extremo a extremo (E2E) {#end-to-end-e2e-testing}
 
-Las pruebas de extremo a extremo son importantes para validar la experiencia del usuario en aplicaciones webforJ, que generan interfaces web dinámicas de una sola página. Estas pruebas simulan interacciones del usuario y verifican las características de toda la aplicación.
+Las pruebas de extremo a extremo validan la experiencia de los usuarios en las aplicaciones webforJ, que generan interfaces web dinámicas de una sola página. Estas pruebas simulan las interacciones de los usuarios y verifican las funciones de toda la aplicación.
 
-Usando herramientas como [**Selenium**](https://www.selenium.dev/) y [**Playwright**](https://playwright.dev/java/docs/intro), puedes:
+Con herramientas como [**Selenium**](https://www.selenium.dev/) y [**Playwright**](https://playwright.dev/java/docs/intro), puedes:
 
-- Automatizar interacciones en el navegador, como clics en botones y envíos de formularios.
-- Verificar el renderizado consistente y la interactividad de los componentes de la UI dinámica.
-- Asegurar la consistencia de comportamiento en diferentes navegadores y dispositivos.
+- Automatizar las interacciones con el navegador simulando clics en botones y envíos de formularios.
+- Verificar la representación y la interactividad coherentes de los componentes dinámicos de la interfaz de usuario.
+- Confirmar que el comportamiento es coherente en distintos navegadores y dispositivos.
 
-## Combinando estrategias de pruebas {#combining-testing-strategies}
+## Combinación de estrategias de prueba {#combining-testing-strategies}
 
-Al combinar pruebas unitarias y E2E:
+Al combinar las pruebas unitarias y las pruebas E2E:
 
-1. **Aislar problemas**: Detectar y resolver errores a nivel de componente con pruebas unitarias.
-2. **Asegurar confiabilidad**: Validar recorridos completos del usuario e integraciones del sistema con pruebas E2E.
+1. **Aislar problemas**: detectar y resolver pronto los errores de los componentes mediante pruebas unitarias.
+2. **Confirmar la fiabilidad**: validar los recorridos completos de los usuarios y las integraciones del sistema mediante pruebas E2E.
 
 ## Temas {#topics}
 

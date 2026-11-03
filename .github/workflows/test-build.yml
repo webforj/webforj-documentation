@@ -14,6 +14,9 @@ jobs:
   test-build-war:
     name: Test WAR Build (No Deployment)
     runs-on: ubuntu-slim
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -23,6 +26,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          cache: 'maven'
 
       - name: Set up Maven
         uses: stCarolas/setup-maven@v5
@@ -64,3 +68,30 @@ jobs:
       - name: Build Docusaurus site (English only)
         working-directory: ./docs
         run: npm run build -- --locale en
+      - name: Jacoco Report
+        if: github.event_name == 'pull_request'
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.7.2
+        with:
+          paths: |
+            ${{ github.workspace }}/target/site/jacoco/jacoco.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 80
+          min-coverage-changed-files: 80
+          title: Code Coverage
+          update-comment: true
+
+      - name: Get the Coverage info
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "Total coverage ${{ steps.jacoco.outputs.coverage-overall }}"
+          echo "Changed Files coverage ${{ steps.jacoco.outputs.coverage-changed-files }}"
+
+      - name: Upload unit test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-unit-test-results
+          path: target/surefire-reports/
+          if-no-files-found: ignore
+          retention-days: 2

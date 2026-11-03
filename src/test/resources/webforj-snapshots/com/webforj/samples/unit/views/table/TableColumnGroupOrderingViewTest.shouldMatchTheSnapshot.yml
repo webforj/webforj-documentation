@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- TableColumnGroupOrderingView [route=tablecolumngroupordering] [composite=Div] [node=div]:
+  - Table [composite=Element] [node=dwc-table] [itemType=MusicRecord]:
+    - Column [id=Number]
+    - Column [id=Title]
+    - Column [id=Artist]
+    - Column [id=Genre]
+    - Column [id=Label]
+    - Column [id=Cost]
+    - Row [Number=000001] [Title="Mississippi Blues"] [Artist="John Hurt & The Ramblers"] [Genre=Blues] [Label="Blind Pig"] [Cost="$5.99"]
+    - Row [Number=000002] [Title="Gold - Greatest Hits"] [Artist=ABBA] [Genre=Pop] [Label=Universal] [Cost="$8.73"]
+    - Row [Number=000004] [Title="The Kids Are Alright"] [Artist="The Who"] [Genre="Classic Rock"] [Label=MCA] [Cost="$7.67"]
+    - Row [Number=000005] [Title="Abbey Road"] [Artist="The Beatles"] [Genre="Classic Rock"] [Label=Capitol] [Cost="$12.27"]
+    - Row [Number=000006] [Title="Urban Blues"] [Artist="Various Artists"] [Genre=Blues] [Label=Alligator] [Cost="$4.56"]
+    - Row [Number=000007] [Title="Jagged Little Pill"] [Artist="Alanis Morissette"] [Genre="Alt Rock"] [Label=Reprise] [Cost="$9.71"]
+    - Row [Number=000008] [Title="The Bends"] [Artist=Radiohead] [Genre="Alt Rock"] [Label=Capitol] [Cost="$9.71"]
+    - Row [Number=000009] [Title="Life's Rich Pagent"] [Artist=R.E.M.] [Genre="Alt Rock"] [Label=Capitol] [Cost="$9.14"]
+    - Row [Number=000011] [Title="Too Bad Jim"] [Artist="R.L. Burnside"] [Genre=Blues] [Label=Alligator] [Cost="$6.56"]
+    - Row [Number=000012] [Title=Dookie] [Artist="Green Day"] [Genre=Punk] [Label=Reprise] [Cost="$6.71"]
+    - …

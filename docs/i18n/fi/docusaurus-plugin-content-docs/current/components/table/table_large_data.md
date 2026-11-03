@@ -1,41 +1,40 @@
 ---
 sidebar_position: 25
-title: Suuret tietoaineistot
+title: Suuret tietojoukot
 slug: data
-_i18n_hash: 9431d33c6fea2dd9d4ff4b165877e7d5
+description: >-
+  Handle large Table datasets efficiently with virtual scrolling, dynamic row
+  loading, DOM recycling, and overscan tuning.
+_i18n_hash: 63e45952d3d3f88d3aa435435c0905e6
 ---
-## Virtuaalinen vieritys {#virtual-scrolling}
+## Virtuaalivieritys {#virtual-scrolling}
 
-`Table`-komponentti on rakennettu käsittelemään suuria tietoaineistoja tehokkaasti käyttämällä virtuaalista vieritystä, joka on tekniikka, jota käytetään verkkosovelluksissa suurten luetteloiden tai taulukoiden renderöinnin ja suorituskyvyn optimoimiseksi renderöimällä vain näkyvät kohteet näytöllä.
+`Table`-komponentti on suunniteltu käsittelemään suuria tietojoukkoja tehokkaasti virtuaalivierityksen avulla. Virtuaalivieritys on verkkosovelluksissa käytetty tekniikka, jolla optimoidaan suurten luetteloiden tai taulukoiden renderöintiä ja suorituskykyä renderöimällä vain näytöllä näkyvät kohteet.
 
-### Alkuperäinen renderointi {#initial-render}
+### Ensimmäinen renderöinti {#initial-render}
 
-Virtuaalinen vieritys on suunnittelumalli, jossa aluksi renderöidään vain pieni osa kohteista, jotka mahtuvat vieritettävän säilön näkyvään alueeseen. Tämä minimoi luotujen DOM-elementtien määrän ja nopeuttaa alkuperäistä renderointiprosessia.
+Virtuaalivieritys on suunnittelumalli, jossa aluksi renderöidään vain pieni osajoukko kohteista, jotka mahtuvat vieritettävän säilön näkyvälle alueelle. Tämä minimoi luotavien DOM-elementtien määrän ja nopeuttaa ensimmäistä renderöintikertaa.
 
-### Dynaaminen lataus {#dynamic-loading}
-Kun käyttäjä vierittää alaspäin tai ylöspäin, uusia kohteita ladataan dynaamisesti näkymään. Nämä kohteet haetaan yleensä tietolähteestä nykyisen vieritysposition perusteella.
+### Dynaaminen lataaminen {#dynamic-loading}
+Kun käyttäjä vierittää näkymää ylös tai alas, uusia kohteita ladataan näkymään dynaamisesti. Nämä kohteet haetaan yleensä tietolähteestä nykyisen vierityskohdan perusteella.
 
-### Kohteiden kierrätys {#item-recycling}
-Sen sijaan, että jokaiselle kohteelle luotaisiin uusi DOM-elementti, virtuaalinen vieritys usein hyödyntää olemassa olevia DOM-elementtejä. Kun kohde liikkuu näkyviltä alueilta, sen DOM-elementti kierrätetään ja käytetään uudelleen uudelle näkyvälle kohteelle. Tämä kierrätysprosessi auttaa vähentämään muistinkäyttöä ja parantaa suorituskykyä.
+### Kohteiden kierrättäminen {#item-recycling}
+Jokaiselle kohteelle ei luoda uutta DOM-elementtiä, vaan virtuaalivierityksessä käytetään usein olemassa olevia DOM-elementtejä uudelleen. Kun kohde siirtyy pois näkyvältä alueelta, sen DOM-elementti kierrätetään ja otetaan käyttöön uudelle näkyvälle alueelle tulevalle kohteelle. Tämä kierrätysprosessi vähentää muistin käyttöä ja parantaa suorituskykyä.
 
-### Suorituskykyedut: {#performance-benefits}
+### Suorituskykyedut {#performance-benefits}
 
-Virtuaalisen vierityksen pääetu on parantunut suorituskyky, erityisesti käsiteltäessä suurta määrää kohteita. Se vähentää DOM-manipulaation määrää ja parantaa käyttöliittymän yleistä reaktiivisuutta.
+Virtuaalivierityksen tärkein etu on suorituskyvyn paraneminen erityisesti silloin, kun käsitellään suuria määriä kohteita. Se vähentää DOM-muokkauksia ja parantaa käyttöliittymän yleistä reagointikykyä.
 
-Alla oleva `Table` näyttää kaikki olympiavoittajat - suuren tietoaineiston, joka hyötyy suuresti taulukon virtuaalisen vieritysominaisuuden käytöstä:
+Alla oleva `Table` näyttää kaikki olympiavoittajat. Kyseessä on suuri tietojoukko, joka hyötyy merkittävästi taulukon virtuaalivieritystoiminnosta:
 
 <ComponentDemo
 path='/webforj/tableolympicwinners'
-files={[
-  'src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java',
-  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
-  'src/main/java/com/webforj/samples/views/table/Service.java',
-]}
+files={['src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java']}
 height='600px'
 />
 
-## Ylikatselu {#overscan}
+## Ylirenderöinti {#overscan}
 
-Taulukon `Overscan`-ominaisuuden asettaminen määrää, kuinka monta riviä renderöidään näkyvän alueen ulkopuolella. Tämän asetuksen voi määrittää `setOverscan(double value)`-menetelmällä.
+Taulukon `Overscan`-ominaisuus määrittää, kuinka monta riviä renderöidään näkyvän alueen ulkopuolelta. Asetuksen voi määrittää `setOverscan(double value)`-metodilla.
 
-Korkeampi ylikatseluarvo voi vähentää renderoinnin tiheyttä vieritettäessä, mutta se maksaa enemmän näkyvissä olevia rivejä renderöimällä kerralla. Tämä voi olla kauppatapa renderoinnin suorituskyvyn ja vierityksen sulavuuden välillä.
+Suurempi ylirenderöinnin arvo voi vähentää renderöintikertojen tiheyttä vieritettäessä, mutta samalla renderöidään enemmän rivejä kuin kerralla on näkyvissä. Tämä voi muodostaa kompromissin renderöintisuorituskyvyn ja vierityksen sulavuuden välillä.

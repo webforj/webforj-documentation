@@ -1,0 +1,10 @@
+# webforJ testbed snapshot v1
+- ToolbarSlotsView [route=toolbarslots] [composite=AppLayout] [node=dwc-app-layout]:
+  - H1 "Application Title" [composite=Element] [node=h1]
+  - Paragraph "Content goes here" [composite=Element] [node=p]
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=info]:
+    - H3 "Application" [slot=title] [composite=Element] [node=h3]
+    - IconButton [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=settings] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=user] [composite=Element] [node=dwc-icon-button]
+    - H3 "Toolbar Content" [composite=Element] [node=h3]

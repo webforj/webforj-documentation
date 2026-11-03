@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Shadow Parts
+title: Varjo-osat
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **Varjostin osat** antavat kehittäjille keinon tyylitellä elementtejä komponentin varjostin DOM:issa ulkopuolelta, samalla säilyttäen kapseloinnin.

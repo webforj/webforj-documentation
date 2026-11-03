@@ -32,13 +32,14 @@ DWC also includes a customizable color palette and defaults to a clean, light vi
 
 The [DWC Design Kit](https://www.figma.com/community/file/1682060886525639971/dwc-design-kit) is the official Figma resource for designing webforJ apps. It covers every DWC component with its themes, expanses, and states, along with the color palettes, typography, spacing, and shadow tokens of the design system as Figma variables and styles in both light and dark mode. Designers and developers can use the kit to build visually consistent, user-friendly interfaces with predictable component behavior, precise spacing, and accessible color contrast.
 
-<iframe
-  title="DWC Design Kit"
-  src="https://embed.figma.com/design/xZVIDRnF7FJ3Dibb5At2lU/DWC-Design-Kit?node-id=6707-254&embed-host=webforj-docs"
-  style={{width: '100%', aspectRatio: '16 / 10', borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}}
-  loading="lazy"
-  allowFullScreen
-/>
+<a href="https://www.figma.com/community/file/1682060886525639971/dwc-design-kit" target="_blank" rel="noopener noreferrer">
+  <img
+    src="https://cdn.webforj.com/webforj-documentation/figma/dwc-design-kit-cover.jpg"
+    alt="DWC Design Kit on Figma Community"
+    style={{width: '100%', borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}}
+    loading="lazy"
+  />
+</a>
 
 ## Topics {#topics}
 

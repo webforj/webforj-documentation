@@ -5,12 +5,12 @@ slug: sorting
 description: >-
   Enable per-column sorting on the Table, configure multi-column sorting, and
   set sort priority programmatically.
-_i18n_hash: f577bea532193b97e6fef03a8bcb641b
+_i18n_hash: 7a910f5bdcaa8a9e053bcda6706808c2
 ---
-Le tri permet aux utilisateurs d'organiser les données en colonnes par ordre, ce qui rend l'information plus facile à lire et à analyser. Cela est utile lorsque les utilisateurs doivent rapidement trouver les valeurs les plus élevées ou les plus basses dans une colonne particulière.
+Le tri permet aux utilisateurs d’organiser les données des colonnes selon un ordre donné, ce qui facilite leur lecture et leur analyse. Cette fonctionnalité est utile lorsque les utilisateurs doivent rapidement trouver les valeurs les plus élevées ou les plus faibles d’une colonne donnée.
 
-:::tip Gestion et requêtes de données
-Pour des informations sur la façon d'utiliser le modèle `Repository` pour gérer et interroger des collections, consultez les [articles sur le Repository](/docs/advanced/repository/overview).
+:::tip Gestion et interrogation des données
+Pour savoir comment utiliser le modèle `Repository` pour gérer et interroger des collections, consultez les [articles sur Repository](/docs/advanced/repository/overview).
 :::
 
 <ComponentDemo
@@ -23,25 +23,25 @@ files={[
 height='600px'
 />
 
-Par défaut, une colonne n'est pas triable à moins d'être explicitement activée. Pour permettre le tri sur une colonne spécifique, utilisez la méthode `setSortable(true)` :
+Par défaut, une colonne ne peut pas être triée, sauf si cette fonctionnalité est activée explicitement. Pour autoriser le tri sur une colonne spécifique, utilisez la méthode `setSortable(true)` :
 
 ```java
 table.getColumn("Age").setSortable(true);
 ```
 
-## Multi-tri {#multi-sorting}
+## Tri sur plusieurs colonnes {#multi-sorting}
 
-:::warning Tri multi-colonnes désactivé par défaut dans webforJ `25.00`
-Avant webforj `25.00`, les tableaux supportaient le tri multi-colonnes par défaut. À partir de la version `25.00`, ce comportement a changé : les développeurs doivent désormais activer explicitement le tri multi-colonnes.
+:::warning Le tri sur plusieurs colonnes est désactivé par défaut dans webforJ `25.00`
+Avant webforJ `25.00`, le tri sur plusieurs colonnes était activé par défaut dans les tableaux. À partir de la version `25.00`, ce comportement a changé : les développeurs doivent désormais activer explicitement le tri sur plusieurs colonnes.
 :::
 
-Si un multi-tri est nécessaire, `setMultiSorting(true)` doit être appliqué au tableau. Cela permet aux utilisateurs de trier plusieurs colonnes en séquence :
+Pour utiliser le tri sur plusieurs colonnes, il faut appliquer `setMultiSorting(true)` au tableau. Les utilisateurs peuvent ainsi trier plusieurs colonnes successivement :
 
 ```java
 table.setMultiSorting(true);
 ```
 
-Avec le multi-tri activé, le fait de cliquer sur plusieurs en-têtes de colonnes les triera séquentiellement. La priorité de tri est indiquée visuellement dans l'interface utilisateur du tableau.
+Lorsque le tri sur plusieurs colonnes est activé, cliquer sur plusieurs en-têtes de colonne les trie successivement. La priorité de tri est indiquée visuellement dans l’interface du tableau.
 
 <ComponentDemo
 path='/webforj/tablemultisorting'
@@ -53,50 +53,50 @@ files={[
 height='600px'
 />
 
-Vous pouvez également définir la priorité de tri de manière programmatique pour le tri côté serveur. Utilisez `setSortOrder()` sur les colonnes que vous souhaitez trier, dans l'ordre de priorité :
+Vous pouvez également définir par programmation la priorité de tri pour le tri côté serveur. Utilisez `setSortIndex()` sur les colonnes à trier, dans l’ordre de priorité :
 
 ```java
 // Ordre de tri côté serveur
-nameColumn.setSortOrder(1);
-ageColumn.setSortOrder(2);
+nameColumn.setSortIndex(1);
+ageColumn.setSortIndex(2);
 ```
 
-:::info L'ordre des colonnes est important
-À moins que `setSortOrder()` ne soit utilisé, le tableau par défaut trie selon l'ordre dans lequel les colonnes sont déclarées.
+:::info L’ordre des colonnes est important
+Si `setSortIndex()` n’est pas utilisé, le tableau trie par défaut les colonnes dans l’ordre où elles sont déclarées.
 :::
 
 <ComponentDemo
 path='/webforj/tablesortorder'
 files={[
-  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/TableSortOrderView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
   'src/main/java/com/webforj/samples/views/table/Service.java',
 ]}
 height='600px'
 />
 
-## Direction de tri {#sort-direction}
+## Sens du tri {#sort-direction}
 
-Il existe trois paramètres disponibles pour la direction dans laquelle une colonne peut être triée :
+Trois paramètres permettent de définir le sens du tri d’une colonne :
 
-- `SortDirection.ASC` : Trie la colonne par ordre croissant.
-- `SortDirection.DESC` : Trie la colonne par ordre décroissant.
-- `SortDirection.NONE` : Aucun tri appliqué à la colonne.
+- `SortDirection.ASC` : trie la colonne par ordre croissant.
+- `SortDirection.DESC` : trie la colonne par ordre décroissant.
+- `SortDirection.NONE` : aucun tri n’est appliqué à la colonne.
 
-Lorsqu'une colonne a le tri activé, vous verrez un ensemble d'indicateurs flèches verticales apparaître en haut de la colonne définie. Ces flèches permettent à l'utilisateur de basculer entre les différentes directions de tri.
+Lorsque le tri est activé pour une colonne, des flèches verticales apparaissent en haut de celle-ci. Elles permettent à l’utilisateur de basculer entre les différents sens de tri.
 
-Lorsque l'ordre croissant est sélectionné, un `^` sera affiché, tandis que l'ordre décroissant affichera un `v`.
+Lorsque l’ordre croissant est sélectionné, un `^` s’affiche, tandis qu’un `v` s’affiche pour l’ordre décroissant.
 
 
-## Tri côté client vs côté serveur {#client-vs-server-side-sorting}
+## Tri côté client et côté serveur {#client-vs-server-side-sorting}
 
-Le tri des données peut être largement catégorisé en deux approches principales : **Tri côté client** et **Tri côté serveur**.
+Le tri des données se divise généralement en deux approches principales : le **tri côté client** et le **tri côté serveur**.
 
 ### Tri côté client {#client-sorting}
 
-Le tri côté client consiste à organiser et afficher les données directement dans l'interface utilisateur de l'application cliente. C'est le tri avec lequel les utilisateurs interagissent lorsqu'ils cliquent sur des en-têtes de colonnes, ce qui influence la représentation visuelle des données à l'écran.
+Le tri côté client consiste à organiser et à afficher les données directement dans l’interface utilisateur de l’application cliente. Il s’agit du tri que les utilisateurs déclenchent en cliquant sur les en-têtes de colonne, ce qui modifie la représentation visuelle des données à l’écran.
 
-Le développeur n'a aucun contrôle direct sur le tri côté client, qui est plutôt déterminé par le type de colonne fourni en Java. Les types suivants sont actuellement supports :
+Le développeur ne contrôle pas directement le tri côté client, qui est plutôt déterminé par le type de colonne défini en Java. Les types suivants sont actuellement pris en charge :
 
 - TEXT
 - NUMBER
@@ -106,50 +106,50 @@ Le développeur n'a aucun contrôle direct sur le tri côté client, qui est plu
 - TIME
 
 :::info
-Le tri côté client ne fonctionne pas lorsque seule une partie des données est disponible dans le client.
+Le tri côté client ne fonctionne pas lorsque seules certaines données sont disponibles sur le client.
 :::
 
 ### Tri côté serveur {#server-sorting}
 
-Contrairement au tri côté client, le tri côté serveur consiste à organiser et trier les données sur le serveur avant de les transmettre au client. Cette approche est particulièrement bénéfique lorsqu'il s'agit de grands ensembles de données qui pourraient être peu pratiques à transférer entièrement au client.
+Contrairement au tri côté client, le tri côté serveur consiste à organiser les données sur le serveur avant de les transmettre au client. Cette approche est particulièrement utile pour les grands ensembles de données qu’il serait peu pratique de transférer intégralement au client.
 
-Les développeurs ont plus de contrôle sur la logique du tri côté serveur. Cela permet la mise en œuvre d'algorithmes de tri complexes et d'optimisations, ce qui le rend approprié pour des scénarios avec des données étendues. Cela garantit ensuite que le client reçoit des données déjà triées, minimisant le besoin de traitements lourds côté client.
+Les développeurs ont davantage de contrôle sur la logique de tri côté serveur. Ils peuvent ainsi mettre en œuvre des algorithmes de tri complexes et des optimisations, ce qui convient aux situations impliquant de grandes quantités de données. Le client reçoit alors des données déjà triées, ce qui limite le traitement nécessaire de son côté.
 
 
 :::info
-Le tri côté serveur est une stratégie orientée performance pour gérer des ensembles de données qui dépassent les capacités d'un traitement efficace côté client, et est la méthode par défaut utilisée par le `Table`.
+Le tri côté serveur est une stratégie axée sur les performances pour gérer les ensembles de données qui dépassent les capacités de traitement efficace côté client. C’est également la méthode utilisée par défaut par `Table`.
 :::
 
-### Nom de propriété de colonne {#column-property-name}
+### Nom de propriété de la colonne {#column-property-name}
 
-Par défaut, le `Table` utilise l'ID d'une colonne comme nom de propriété lors de la construction des critères de tri pour un repository de backend. Lorsque l'ID d'affichage d'une colonne ne correspond pas à la propriété de données sous-jacente, ou lorsque la colonne affiche une valeur calculée, utilisez `setPropertyName()` pour indiquer explicitement au `Table` quelle propriété trier.
+Par défaut, `Table` utilise l’ID d’une colonne comme nom de propriété lors de la création des critères de tri pour un référentiel backend. Lorsque l’ID affiché d’une colonne ne correspond pas à la propriété de données sous-jacente, ou lorsque la colonne affiche une valeur calculée, utilisez `setPropertyName()` pour indiquer explicitement à `Table` quelle propriété utiliser pour le tri.
 
 ```java
-// L'ID de colonne est "Nom Complet", mais la propriété backend est "fullName"
-table.addColumn("Nom Complet", Person::getFullName)
+// L’ID de la colonne est « Full Name », mais la propriété backend est « fullName »
+table.addColumn("Full Name", Person::getFullName)
      .setSortable(true)
      .setPropertyName("fullName");
 ```
 
-Le nom de la propriété est transmis au `OrderCriteria` lorsqu'un événement de tri se déclenche, permettant aux repositories backend tels que Spring Data JPA ou aux adaptateurs REST de construire la clause `ORDER BY` correcte.
+Le nom de propriété est transmis à `OrderCriteria` lorsqu’un événement de tri se déclenche. Les référentiels backend, comme Spring Data JPA ou les adaptateurs REST, peuvent alors créer la clause `ORDER BY` appropriée.
 
 :::warning
-Sans `setPropertyName()`, le `Table` revient à l'ID de colonne. Si cela ne correspond pas à une propriété backend valide, le tri échouera silencieusement ou retournera des données mal triées.
+Sans `setPropertyName()`, `Table` utilise l’ID de la colonne. Si celui-ci ne correspond pas à une propriété backend valide, le tri échouera silencieusement ou renverra des données dans un ordre incorrect.
 :::
 
-Les chemins de propriétés imbriquées sont également pris en charge en utilisant la notation par point :
+Les chemins de propriétés imbriquées sont également pris en charge avec la notation par points :
 
 ```java
-table.addColumn("Ville", Person::getCity)
+table.addColumn("City", Person::getCity)
      .setSortable(true)
      .setPropertyName("address.city");
 ```
 
 #### Comparateurs {#comparators}
 
-Le composant `Column` permet aux développeurs d'utiliser des `Comparators` Java pour un tri dynamique et personnalisé. Un `Comparator` est un mécanisme utilisé pour ordonner deux objets de la même classe, même si cette classe est définie par l'utilisateur. Cette fonctionnalité offre aux développeurs la flexibilité de personnaliser la façon dont les données sont triées, offrant un contrôle supérieur sur le comportement de tri par défaut basé sur l'ordre naturel.
+Le composant `Column` permet aux développeurs d’utiliser les `Comparators` Java pour effectuer des tris dynamiques et personnalisés. Un `Comparator` est un mécanisme qui sert à ordonner deux objets de la même classe, même si celle-ci est définie par l’utilisateur. Cette fonctionnalité permet aux développeurs de personnaliser le tri des données et de mieux contrôler le comportement de tri par défaut, fondé sur l’ordre naturel.
 
-Pour tirer parti du tri avec `Comparator` dans une `Column`, vous pouvez utiliser la méthode `setComparator()`. Cette méthode vous permet de définir une fonction `Comparator` personnalisée qui dicte la logique de tri.
+Pour utiliser un tri avec `Comparator` dans une `Column`, vous pouvez recourir à la méthode `setComparator()`. Elle permet de définir une fonction `Comparator` personnalisée qui détermine la logique de tri.
 
 <ComponentDemo
 path='/webforj/tablecolumncomparator'
@@ -161,10 +161,10 @@ files={[
 height='600px'
 />
 
-Dans l'exemple ci-dessus, une fonction de comparateur personnalisée est spécifiée, qui prend deux éléments (a et b) et définit l'ordre de tri basé sur les valeurs entières analysées de l'attribut `Number`.
+Dans l’exemple ci-dessus, une fonction de comparaison personnalisée prend deux éléments (a et b) et définit l’ordre de tri en fonction des valeurs entières analysées de l’attribut `Number`.
 
-L'utilisation de comparateurs pour le tri des colonnes est particulièrement utile lors de la gestion de valeurs non numériques. Ils sont également utiles pour la mise en œuvre d'algorithmes de tri complexes.
+L’utilisation de comparateurs pour trier les colonnes est particulièrement utile avec des valeurs non numériques. Ils sont également utiles pour mettre en œuvre des algorithmes de tri complexes.
 
 :::info
-Par défaut, le `Table` utilise le tri côté serveur et trie les valeurs non primitives en utilisant la méthode `toString()` de l'Objet, les convertissant en leurs valeurs de chaîne et ensuite les triant.
+Par défaut, `Table` effectue le tri côté serveur et trie les valeurs non primitives à l’aide de la méthode `toString()` de Object, en les convertissant en chaînes de caractères avant de les trier.
 :::

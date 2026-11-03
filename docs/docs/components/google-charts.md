@@ -142,13 +142,13 @@ chart.setOptions(options);
 
 ## Updating chart visuals {#updating-chart-visuals}
 
-Refreshing or updating the appearance of your charts in response to data changes, user interactions, or visual option adjustments is straightforward with the `redraw()` method. This method ensures that your charts remain accurate and visually aligned with the underlying data or any modifications to their settings.
+The `GoogleChart` updates automatically when its data, options, type, or selection changes. You don't need to call `redraw()` after using `setData()`, `setOptions()`, `setType()`, or `setSelection()`.
 
-Invoke `redraw()` in scenarios such as:
+The component also listens for browser window resize events and redraws automatically to fit the new dimensions.
 
-- **After Data Modifications**: Ensures the chart reflects any updates to its data source.
-- **Upon Changing Options**: Applies new styling or configuration changes to the chart.
-- **For Responsive Adjustments**: Adjusts the chart's layout or size when the container's dimensions change, ensuring optimal display across devices.
+Call `redraw()` for container size changes that don't trigger a window resize event. Examples include expanding a panel and resizing a sidebar. Call it after the container's new dimensions have been applied.
+
+The following demo updates the chart's data with `setData()`. The chart redraws automatically when the new data is applied.
 
 <ComponentDemo
 path='/webforj/chartredraw'

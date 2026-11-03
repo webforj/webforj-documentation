@@ -1,0 +1,3 @@
+# webforJ testbed snapshot v1
+- MaskedTimeFieldView [route=maskedtimefield] [composite=FlexLayout] [node=div]:
+  - MaskedTimeField "10:30 am" [label="Meeting Time"] [value="10:30"] [mask="%h:%mz %p"] [helperText="Meeting time is formatted as %h:%mz %p."]

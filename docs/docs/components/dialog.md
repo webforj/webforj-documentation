@@ -52,12 +52,12 @@ height='600px'
 
 ## Opening and closing the `Dialog` {#opening-and-closing-the-dialog}
 
-After creating a new `Dialog` object, use the `open()` method to display the dialog. Then, the `Dialog` component can close from one of these actions:
-- Using the `close()` method
-- Hitting the <kbd>ESC</kbd> key
-- Clicking outside of the `Dialog`
+After creating a new `Dialog` object, use the `open()` method to display the dialog. To close it programmatically, use the `close()` method. You can also control which user interactions close the dialog:
 
-Developers can choose which interactions close the `Dialog` with `setCancelOnEscKey()` and `setCancelOnOutsideClick()`. Additionally, the `setClosable()` method can prevent or allow both hitting the <kbd>ESC</kbd> key and clicking outside the `Dialog` to close the component.
+- **Clicking outside** closes the `Dialog` by default, because `cancelOnOutsideClick` defaults to `true`. Use `setCancelOnOutsideClick(false)` to disable this behavior.
+- **Pressing <kbd>ESC</kbd>** doesn't close the `Dialog` by default, because `cancelOnEscKey` defaults to `false`. Use `setCancelOnEscKey(true)` to enable this behavior.
+
+Use `setCloseable(true)` to enable both interactions, or `setCloseable(false)` to disable both. The following demo enables both interactions.
 
 <ComponentDemo
 path='/webforj/dialogclose'

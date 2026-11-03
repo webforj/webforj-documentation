@@ -1,7 +1,3 @@
-  [data-theme='light'] .menu__list-item .header-github-link::before {
-    filter: brightness(0);
-  }
-
 #__docusaurus {
   .navbar {
     border-bottom: 1px solid var(--dwc-border-color);
@@ -23,19 +19,12 @@
     }
   }
 
-  .header-github-link::before {
-    background: var(--header-github-link) no-repeat;
-    content: "";
-    display: flex;
-    height: 24px;
-    width: 24px;
-  }
 
+  // a quiet divider on the dark navbar, in both themes
   .separator {
-    background: var(--dwc-color-default);
-    height: 1.75rem;
+    background: rgb(255 255 255 / 0.16);
+    height: 1.5rem;
     width: 1px;
-    filter: brightness(0) invert(1);
   }
 
   .navbar__logo img {
@@ -86,7 +75,15 @@
     border: thin solid var(--dwc-border-color);
   }
 
+  // the logo keeps its size; when room runs out, items to its right step
+  // aside (below) instead of sliding over it
+  .navbar__brand {
+    flex-shrink: 0;
+  }
+
   #webforj-version-badge {
+    // room between the badge and the menus that follow it
+    margin-right: var(--dwc-space-s);
     border: solid 1px var(--dwc-color-default-50);
     border-radius: var(--dwc-border-radius-pill);
     transition: border-color var(--dwc-transition-x-fast), color var(--dwc-transition-x-fast);
@@ -146,8 +143,41 @@
     }
   }
 
-  @media (max-width: 1260px) {
-    .theme-layout-navbar-left .navbar__item:nth-last-child(-n + 2) {
+  // "Pricing" and "Contact us" read like the menus beside them: no
+  // external-link icon
+  .navbar-plain-link svg {
+    display: none;
+  }
+
+  // Between the full navbar and the hamburger (996px and below), items step
+  // aside in order so the menus never crowd the logo or search. Each
+  // breakpoint is the measured width the remaining items need, plus a 20px
+  // margin. Add a navbar item, and these need measuring again. First the version
+  // badge, then the search label (search still opens with a click or
+  // Cmd/Ctrl+K), then "Start your app" (startforJ is also in the Developers
+  // menu), then the divider before the language menu. "Contact us" always stays
+  @media (min-width: 997px) and (max-width: 1380px) {
+    .navbar__items:not(.navbar__items--right) > #webforj-version-badge,
+    .navbar__items:not(.navbar__items--right) > .navbar__item:has(#webforj-version-badge) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 997px) and (max-width: 1299px) {
+    .DocSearch-Button-Placeholder,
+    .DocSearch-Button-Keys {
+      display: none;
+    }
+  }
+
+  @media (min-width: 997px) and (max-width: 1172px) {
+    .navbar__items--right > .navbar__item:has(#startforj-link) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 997px) and (max-width: 1016px) {
+    .navbar__items--right > .navbar__item:has(> .separator) {
       display: none;
     }
   }
