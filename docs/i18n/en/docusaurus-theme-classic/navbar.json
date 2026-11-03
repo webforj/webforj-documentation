@@ -82,5 +82,17 @@
   "item.label.Built with webforJ": {
     "message": "Built with webforJ",
     "description": "Navbar item with label Built with webforJ"
+  },
+  "item.label.Products": {
+    "message": "Products",
+    "description": "Navbar item with label Products"
+  },
+  "item.label.Resources": {
+    "message": "Resources",
+    "description": "Navbar item with label Resources"
+  },
+  "item.label.Pricing": {
+    "message": "Pricing",
+    "description": "Navbar item with label Pricing"
   }
 }

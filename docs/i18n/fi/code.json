@@ -1061,5 +1061,633 @@
   "componentDemo.iframeTitle": {
     "message": "Component demo",
     "description": "Accessible title for the demo iframe"
+  },
+  "component.blogFilterBar.all": {
+    "message": "Kaikki"
+  },
+  "component.blogFilterBar.release": {
+    "message": "Julkaisu"
+  },
+  "component.blogFilterBar.ai": {
+    "message": "AI"
+  },
+  "component.blogFilterBar.tutorial": {
+    "message": "Opetusohjelma"
+  },
+  "component.blogFilterBar.components": {
+    "message": "Komponentit"
+  },
+  "component.blogFilterBar.integrations": {
+    "message": "Integraatiot"
+  },
+  "component.blogFilterBar.styling": {
+    "message": "Tyylit"
+  },
+  "component.blogFilterBar.community": {
+    "message": "Yhteisö"
+  },
+  "component.blogFilterBar.tags.one": {
+    "message": "{count} tunnistetta"
+  },
+  "component.blogFilterBar.tags.other": {
+    "message": "{count} tunnistetta"
+  },
+  "component.blogFilterBar.posts.one": {
+    "message": "{count} julkaisua"
+  },
+  "component.blogFilterBar.posts.other": {
+    "message": "{count} julkaisua"
+  },
+  "component.blogFilterBar.rssTitle": {
+    "message": "Tilaa blogin syöte"
+  },
+  "component.blogShare.label": {
+    "message": "Jaa",
+    "description": "Label before the share buttons"
+  },
+  "component.blogShare.linkedin": {
+    "message": "Jaa LinkedInissä\n"
+  },
+  "component.blogShare.x": {
+    "message": "Jaa X:ssä"
+  },
+  "component.blogShare.reddit": {
+    "message": "Jaa Redditissä"
+  },
+  "component.blogShare.bluesky": {
+    "message": "Jaa Blueskyssä"
+  },
+  "component.blogShare.email": {
+    "message": "Jaa sähköpostitse"
+  },
+  "component.connectCard.teamName": {
+    "message": "webforJ-tiimi"
+  },
+  "component.connectCard.title.blog": {
+    "message": "Rakennatko webforJ:llä?"
+  },
+  "component.connectCard.title.docs": {
+    "message": "Tarvitsetko apua?"
+  },
+  "component.connectCard.text.blog": {
+    "message": "Keskustele projektistasi sen kehittäneiden insinöörien kanssa."
+  },
+  "component.connectCard.text.docs": {
+    "message": "Keskustele webforJ:n insinöörien kanssa projektistasi."
+  },
+  "component.connectCard.contact": {
+    "message": "Ota yhteyttä"
+  },
+  "component.connectLauncher.topics.evaluating": {
+    "message": "webforJ:n arviointi projektia varten"
+  },
+  "component.connectLauncher.topics.evaluating.subject": {
+    "message": "webforJ:n arviointi projektia varten"
+  },
+  "component.connectLauncher.topics.modernizing": {
+    "message": "Olemassa olevan sovelluksen modernisointi"
+  },
+  "component.connectLauncher.topics.modernizing.subject": {
+    "message": "Olemassa olevan sovelluksen modernisointi webforJ:llä"
+  },
+  "component.connectLauncher.topics.stuck": {
+    "message": "Jäikö jokin dokumentaation kohta epäselväksi?"
+  },
+  "component.connectLauncher.topics.stuck.subject": {
+    "message": "Kysymys webforJ-dokumentaatiosta"
+  },
+  "component.connectLauncher.mailBody": {
+    "message": "Hei webforJ-tiimi,\n\n(Olin lukemassa: {title} – {url})"
+  },
+  "component.connectLauncher.copy.docs.text": {
+    "message": "Rakennatko jotain webforJ:llä tai oletko jumissa dokumentaatiosivulla? Kerro meille, niin insinööri auttaa sinua eteenpäin."
+  },
+  "component.connectLauncher.copy.docs.greetingTitled": {
+    "message": "Kysyttävää aiheesta {title}? Kysy tiimiltä."
+  },
+  "component.connectLauncher.copy.greeting": {
+    "message": "Kysyttävää webforJ:stä? Kysy tiimiltä."
+  },
+  "component.connectLauncher.copy.blog.text": {
+    "message": "Rakennatko jotain tällaista tai harkitsetko webforJ:n käyttöä projektissasi? Kerro siitä meille, niin autamme löytämään parhaan tavan toteuttaa se."
+  },
+  "component.connectLauncher.copy.blog.greeting": {
+    "message": "Rakennatko jotain tällaista? Ota yhteyttä tiimiin."
+  },
+  "component.connectLauncher.copy.default.text": {
+    "message": "Kerro, mitä olet rakentamassa, niin autamme löytämään parhaan tavan toteuttaa se webforJ:llä."
+  },
+  "component.connectLauncher.panelLabel": {
+    "message": "Keskustele webforJ-tiimin kanssa\n"
+  },
+  "component.connectLauncher.close": {
+    "message": "Sulje"
+  },
+  "component.connectLauncher.hello": {
+    "message": "Hei, olemme webforJ-tiimi 👋"
+  },
+  "component.connectLauncher.topicsLabel": {
+    "message": "Miten voimme auttaa?"
+  },
+  "component.connectLauncher.primary": {
+    "message": "Varaa kartoituspuhelu"
+  },
+  "component.connectLauncher.callNote.strong": {
+    "message": "Ei kustannuksia, ei sitoumuksia."
+  },
+  "component.connectLauncher.callNote.text": {
+    "message": "Tiimeille, jotka arvioivat webforJ:n käyttöä tai rakentavat projektia sen avulla. Nopeisiin kysymyksiin valitse aihe yllä."
+  },
+  "component.connectLauncher.follow": {
+    "message": "Seuraa webforJ:tä\n"
+  },
+  "component.connectLauncher.dismiss": {
+    "message": "Sulje"
+  },
+  "component.connectLauncher.teamName": {
+    "message": "webforJ-tiimi"
+  },
+  "component.connectLauncher.replyYes": {
+    "message": "Kyllä, jutellaan."
+  },
+  "component.connectLauncher.replyNo": {
+    "message": "Ei nyt"
+  },
+  "component.connectLauncher.button": {
+    "message": "Kysyttävää? Kysy meiltä."
+  },
+  "component.connectLauncher.newMessage": {
+    "message": "1 uusi viesti"
+  },
+  "component.connectLinks.followLinkedIn": {
+    "message": "Seuraa LinkedInissä"
+  },
+  "component.connectLinks.subscribeYouTube": {
+    "message": "Tilaa YouTubessa"
+  },
+  "component.connectLinks.starGitHub": {
+    "message": "Anna tähti GitHubissa"
+  },
+  "component.connectLinks.subscribeRss": {
+    "message": "Tilaa blogin syöte"
+  },
+  "component.exploreCard.short": {
+    "message": "Lyhyt · YouTube"
+  },
+  "component.exploreCard.video": {
+    "message": "Video · YouTube"
+  },
+  "component.exploreCard.post": {
+    "message": "Blog · {date}"
+  },
+  "component.exploreCard.label": {
+    "message": "Tutustu"
+  },
+  "component.exploreCard.previous": {
+    "message": "Edellinen ehdotus"
+  },
+  "component.exploreCard.next": {
+    "message": "Seuraava ehdotus"
+  },
+  "component.megaMenu.playFullScreen": {
+    "message": "Toista koko näytössä"
+  },
+  "component.megaMenu.learnMore": {
+    "message": "Lue lisää"
+  },
+  "component.megaMenu.products.webforJ.label": {
+    "message": "webforJ"
+  },
+  "component.megaMenu.products.webforJ.tagline": {
+    "message": "100 % Javaa alusta loppuun\n"
+  },
+  "component.megaMenu.products.webforJ.description": {
+    "message": "Rakenna koko verkkosovellus Javalla, myös käyttöliittymä. Sinun ei tarvitse kirjoittaa JavaScriptiä, eikä käyttöliittymän ja taustajärjestelmän väliin tarvita REST-kerrosta."
+  },
+  "component.megaMenu.products.webforJ.cta": {
+    "message": "Aloita"
+  },
+  "component.megaMenu.products.kotlinDSL.label": {
+    "message": "Kotlin DSL"
+  },
+  "component.megaMenu.products.kotlinDSL.tagline": {
+    "message": "Samat käyttöliittymät Kotlinissa\n"
+  },
+  "component.megaMenu.products.kotlinDSL.description": {
+    "message": "Rakenna webforJ-käyttöliittymiä deklaratiivisesti Kotlinilla tyyppiturvallisia rakentajia ja sisäkkäisiä lohkoja käyttäen Java-koodisi rinnalla. Kokeellinen."
+  },
+  "component.megaMenu.products.kotlinDSL.cta": {
+    "message": "Tutustu Kotlin DSL:ään\n"
+  },
+  "component.megaMenu.products.uIComponents.label": {
+    "message": "Käyttöliittymäkomponentit"
+  },
+  "component.megaMenu.products.uIComponents.tagline": {
+    "message": "Valmis käyttöön ja suunniteltu yhdisteltäväksi\n"
+  },
+  "component.megaMenu.products.uIComponents.description": {
+    "message": "Asettelut, tietojen syöttö, navigointi, palaute ja visualisointi – kaikki Javalla. Yhdistä ne Compositen avulla omiksi uudelleenkäytettäviksi komponenteiksesi ja tuo esiin vain valitsemasi API."
+  },
+  "component.megaMenu.products.uIComponents.cta": {
+    "message": "Tutustu komponentteihin"
+  },
+  "component.megaMenu.products.swingModernization.label": {
+    "message": "Swingin modernisointi"
+  },
+  "component.megaMenu.products.swingModernization.tagline": {
+    "message": "Tuo Swing-sovellukset verkkoon\n"
+  },
+  "component.megaMenu.products.swingModernization.description": {
+    "message": "Suorita olemassa olevia Swing-, JavaFX- tai SWT-sovelluksia selaimessa Webswingin kautta ja siirrä ne sitten webforJ:hin näyttö kerrallaan."
+  },
+  "component.megaMenu.products.swingModernization.cta": {
+    "message": "Aloita modernisointi"
+  },
+  "component.megaMenu.products.craftforJ.label": {
+    "message": "craftforJ"
+  },
+  "component.megaMenu.products.craftforJ.tagline": {
+    "message": "Muokkaa käynnissä olevaa sovellustasi visuaalisesti."
+  },
+  "component.megaMenu.products.craftforJ.description": {
+    "message": "Tarkastele käynnissä olevan sovelluksen komponenttipuuta, muokkaa komponentteja reaaliaikaisesti ja kirjoita säilyttämäsi muutokset takaisin Java-lähdekoodiisi."
+  },
+  "component.megaMenu.products.craftforJ.cta": {
+    "message": "Tutustu craftforJ:hin"
+  },
+  "component.megaMenu.products.aITooling.label": {
+    "message": "Tekoälytyökalut"
+  },
+  "component.megaMenu.products.aITooling.tagline": {
+    "message": "Opeta tekoälyavustajallesi webforJ\n"
+  },
+  "component.megaMenu.products.aITooling.description": {
+    "message": "Yksi lisäosa tuo Claude Coden, Copilotin, Cursorin, Geminin ja Codexin käyttöön ajantasaiset webforJ-dokumentit, projektirungon luonnin, teemojen generoinnin ja webforJ:n käytäntöjä noudattavat työnkulut."
+  },
+  "component.megaMenu.products.aITooling.cta": {
+    "message": "Asenna AI-lisäosa"
+  },
+  "component.megaMenu.products.mCPApps.label": {
+    "message": "MCP-sovellukset"
+  },
+  "component.megaMenu.products.mCPApps.tagline": {
+    "message": "webforJ-näkymäsi tekoälysovelluksissa"
+  },
+  "component.megaMenu.products.mCPApps.description": {
+    "message": "Salli MCP-yhteensopivan tekoälysovelluksen avata keskustelussaan reititetty webforJ-näkymä, jossa käyttäjä ja tekoäly työskentelevät yhdessä saman reaaliaikaisen käyttöliittymän parissa. Kokeellinen."
+  },
+  "component.megaMenu.products.mCPApps.cta": {
+    "message": "Tutustu MCP Appsiin\n"
+  },
+  "component.megaMenu.products.figmaDesignKit.label": {
+    "message": "Figma-suunnittelupaketti"
+  },
+  "component.megaMenu.products.figmaDesignKit.tagline": {
+    "message": "Suunnittele oikeilla komponenteilla\n"
+  },
+  "component.megaMenu.products.figmaDesignKit.description": {
+    "message": "DWC Design Kit tuo webforJ-komponentit Figmaan, joten suunnittelemasi vastaa sitä, mitä rakennat."
+  },
+  "component.megaMenu.products.figmaDesignKit.cta": {
+    "message": "Avaa suunnittelupaketti"
+  },
+  "component.megaMenu.developers.learn.title": {
+    "message": "Opi"
+  },
+  "component.megaMenu.developers.learn.gettingStarted.label": {
+    "message": "Aloittaminen"
+  },
+  "component.megaMenu.developers.learn.gettingStarted.description": {
+    "message": "Luo ja käynnistä ensimmäinen sovelluksesi\n"
+  },
+  "component.megaMenu.developers.learn.tutorial.label": {
+    "message": "Opastus"
+  },
+  "component.megaMenu.developers.learn.tutorial.description": {
+    "message": "Rakenna valmis sovellus vaihe vaiheelta\n"
+  },
+  "component.megaMenu.developers.learn.appBasics.label": {
+    "message": "Sovelluksen perusteet"
+  },
+  "component.megaMenu.developers.learn.appBasics.description": {
+    "message": "Miten webforJ-sovellus rakentuu"
+  },
+  "component.megaMenu.developers.learn.components.label": {
+    "message": "Komponentit"
+  },
+  "component.megaMenu.developers.learn.components.description": {
+    "message": "Jokainen komponentti live-esittelyineen"
+  },
+  "component.megaMenu.developers.learn.cookbook.label": {
+    "message": "Reseptikirja"
+  },
+  "component.megaMenu.developers.learn.cookbook.description": {
+    "message": "Lyhyitä ohjeita arjen askareisiin\n"
+  },
+  "component.megaMenu.developers.learn.javaDocs.label": {
+    "message": "JavaDocs"
+  },
+  "component.megaMenu.developers.learn.javaDocs.description": {
+    "message": "Koko Java API"
+  },
+  "component.megaMenu.developers.learn.clientComponents.label": {
+    "message": "Asiakaspuolen komponentit"
+  },
+  "component.megaMenu.developers.learn.clientComponents.description": {
+    "message": "Tyylittelyn osat ja ominaisuudet"
+  },
+  "component.megaMenu.developers.buildAndShip.title": {
+    "message": "Rakenna ja julkaise"
+  },
+  "component.megaMenu.developers.buildAndShip.startforJ.label": {
+    "message": "startforJ"
+  },
+  "component.megaMenu.developers.buildAndShip.startforJ.description": {
+    "message": "Luo uusi projekti selaimessa\n"
+  },
+  "component.megaMenu.developers.buildAndShip.springBoot.label": {
+    "message": "Spring Boot"
+  },
+  "component.megaMenu.developers.buildAndShip.springBoot.description": {
+    "message": "Riippuvuuksien injektointi, Spring Data ja muuta\n"
+  },
+  "component.megaMenu.developers.buildAndShip.jBang.label": {
+    "message": "JBang"
+  },
+  "component.megaMenu.developers.buildAndShip.jBang.description": {
+    "message": "Käynnistä webforJ-sovellus yhdestä tiedostosta\n"
+  },
+  "component.megaMenu.developers.buildAndShip.hotswap.label": {
+    "message": "Hotswap"
+  },
+  "component.megaMenu.developers.buildAndShip.hotswap.description": {
+    "message": "Ota koodimuutokset käyttöön ilman uudelleenkäynnistystä"
+  },
+  "component.megaMenu.developers.buildAndShip.browserlessTesting.label": {
+    "message": "Testaus ilman selainta"
+  },
+  "component.megaMenu.developers.buildAndShip.browserlessTesting.description": {
+    "message": "Testaa näkymiä JUnitilla – selainta ei tarvita\n"
+  },
+  "component.megaMenu.developers.buildAndShip.bBjShip.label": {
+    "message": "BBjShip"
+  },
+  "component.megaMenu.developers.buildAndShip.bBjShip.description": {
+    "message": "Julkaise sovellukset BBjServicesiin\n"
+  },
+  "component.megaMenu.developers.buildAndShip.automatedUpgrades.label": {
+    "message": "Automaattiset päivitykset"
+  },
+  "component.megaMenu.developers.buildAndShip.automatedUpgrades.description": {
+    "message": "Siirry uuteen versioon OpenRewriten avulla\n"
+  },
+  "component.megaMenu.resources.readAndWatch.title": {
+    "message": "Lue ja katso"
+  },
+  "component.megaMenu.resources.readAndWatch.blog.label": {
+    "message": "Blog"
+  },
+  "component.megaMenu.resources.readAndWatch.blog.description": {
+    "message": "Julkaisut, opetusohjelmat ja syventävät katsaukset"
+  },
+  "component.megaMenu.resources.readAndWatch.successStories.label": {
+    "message": "Menestystarinat"
+  },
+  "component.megaMenu.resources.readAndWatch.successStories.description": {
+    "message": "webforJ:llä kehittävät tiimit"
+  },
+  "component.megaMenu.resources.readAndWatch.whitepapers.label": {
+    "message": "Whitepaperit"
+  },
+  "component.megaMenu.resources.readAndWatch.whitepapers.description": {
+    "message": "Perusteellisia artikkeleita webforJ:stä"
+  },
+  "component.megaMenu.resources.readAndWatch.webinars.label": {
+    "message": "Webinaarit"
+  },
+  "component.megaMenu.resources.readAndWatch.webinars.description": {
+    "message": "Live-istunnot ja tallenteet"
+  },
+  "component.megaMenu.resources.connect.title": {
+    "message": "Yhdistä"
+  },
+  "component.megaMenu.resources.connect.events.label": {
+    "message": "Tapahtumat"
+  },
+  "component.megaMenu.resources.connect.events.description": {
+    "message": "Puheenvuorot, konferenssit ja tapaamiset"
+  },
+  "component.megaMenu.resources.connect.youTube.label": {
+    "message": "YouTube"
+  },
+  "component.megaMenu.resources.connect.youTube.description": {
+    "message": "Videot ja opastukset"
+  },
+  "component.megaMenu.resources.connect.linkedIn.label": {
+    "message": "LinkedIn"
+  },
+  "component.megaMenu.resources.connect.linkedIn.description": {
+    "message": "Tiimin uutisia"
+  },
+  "component.megaMenu.resources.connect.gitHub.label": {
+    "message": "GitHub"
+  },
+  "component.megaMenu.resources.connect.gitHub.description": {
+    "message": "Lähdekoodi ja julkaisut"
+  },
+  "component.megaMenu.support.getHelp.title": {
+    "message": "Hae apua"
+  },
+  "component.megaMenu.support.getHelp.reportAnIssue.label": {
+    "message": "Ilmoita ongelmasta"
+  },
+  "component.megaMenu.support.getHelp.reportAnIssue.description": {
+    "message": "Virheet ja ominaisuuspyynnöt"
+  },
+  "component.megaMenu.support.getHelp.emailSupport.label": {
+    "message": "Sähköpostituki"
+  },
+  "component.megaMenu.support.getHelp.emailSupport.description": {
+    "message": "support@basis.cloud"
+  },
+  "component.megaMenu.support.getHelp.contactUs.label": {
+    "message": "Ota yhteyttä"
+  },
+  "component.megaMenu.support.getHelp.contactUs.description": {
+    "message": "Varaa puhelu webforJ-tiimin kanssa"
+  },
+  "component.megaMenu.support.workWithUs.title": {
+    "message": "Työskentele kanssamme"
+  },
+  "component.megaMenu.support.workWithUs.lTSPlusSupportPlans.label": {
+    "message": "LTS+-tukisuunnitelmat"
+  },
+  "component.megaMenu.support.workWithUs.lTSPlusSupportPlans.description": {
+    "message": "Pitkäaikainen tuki tuotantokäyttöön"
+  },
+  "component.megaMenu.support.workWithUs.partners.label": {
+    "message": "Kumppanit"
+  },
+  "component.megaMenu.support.workWithUs.partners.description": {
+    "message": "Etsi webforJ-kumppani"
+  },
+  "component.megaMenu.support.workWithUs.company.label": {
+    "message": "Yritys"
+  },
+  "component.megaMenu.support.workWithUs.company.description": {
+    "message": "BASIS, webforJ:n taustatiimi"
+  },
+  "component.blogTagsListPage.subtitle.one": {
+    "message": "Selaa kaikkia {count} webforJ Blogissa käsiteltyjä aiheita."
+  },
+  "component.blogTagsListPage.subtitle.other": {
+    "message": "Selaa kaikkia {count} webforJ Blogissa käsiteltyjä aiheita."
+  },
+  "component.footer.pitch": {
+    "message": "Tee kaikki Javalla! Rakenna Javalla, julkaise verkkoon."
+  },
+  "component.footer.action.startYourApp": {
+    "message": "Käynnistä sovelluksesi"
+  },
+  "component.footer.action.contactUs": {
+    "message": "Ota yhteyttä"
+  },
+  "component.footer.products.title": {
+    "message": "Tuotteet"
+  },
+  "component.footer.products.webforJ": {
+    "message": "webforJ"
+  },
+  "component.footer.products.kotlinDSL": {
+    "message": "Kotlin DSL"
+  },
+  "component.footer.products.uIComponents": {
+    "message": "Käyttöliittymäkomponentit"
+  },
+  "component.footer.products.swingModernization": {
+    "message": "Swingin modernisointi"
+  },
+  "component.footer.products.craftforJ": {
+    "message": "craftforJ"
+  },
+  "component.footer.products.aITooling": {
+    "message": "Tekoälytyökalut"
+  },
+  "component.footer.products.mCPApps": {
+    "message": "MCP-sovellukset"
+  },
+  "component.footer.products.figmaDesignKit": {
+    "message": "Figman suunnittelupaketti"
+  },
+  "component.footer.developers.title": {
+    "message": "Kehittäjät"
+  },
+  "component.footer.developers.gettingStarted": {
+    "message": "Aloittaminen"
+  },
+  "component.footer.developers.tutorial": {
+    "message": "Opas"
+  },
+  "component.footer.developers.cookbook": {
+    "message": "Keittokirja"
+  },
+  "component.footer.developers.javaDocs": {
+    "message": "JavaDocs"
+  },
+  "component.footer.developers.startforJ": {
+    "message": "startforJ"
+  },
+  "component.footer.developers.springBoot": {
+    "message": "Spring Boot"
+  },
+  "component.footer.developers.hotswap": {
+    "message": "Hotswap"
+  },
+  "component.footer.developers.browserlessTesting": {
+    "message": "Testaus ilman selainta"
+  },
+  "component.footer.resources.title": {
+    "message": "Resurssit"
+  },
+  "component.footer.resources.blog": {
+    "message": "Blog"
+  },
+  "component.footer.resources.successStories": {
+    "message": "Menestystarinat"
+  },
+  "component.footer.resources.whitepapers": {
+    "message": "Valkopaperit"
+  },
+  "component.footer.resources.webinars": {
+    "message": "Webinaarit"
+  },
+  "component.footer.resources.events": {
+    "message": "Tapahtumat"
+  },
+  "component.footer.support.title": {
+    "message": "Tuki"
+  },
+  "component.footer.support.reportAnIssue": {
+    "message": "Ilmoita ongelmasta"
+  },
+  "component.footer.support.emailSupport": {
+    "message": "Sähköpostituki"
+  },
+  "component.footer.support.contactUs": {
+    "message": "Ota yhteyttä"
+  },
+  "component.footer.support.lTSPlusSupportPlans": {
+    "message": "LTS+-tukisuunnitelmat"
+  },
+  "component.footer.support.partners": {
+    "message": "Kumppanit"
+  },
+  "component.footer.company.title": {
+    "message": "Yritys"
+  },
+  "component.footer.company.aboutBASIS": {
+    "message": "Tietoja BASISista"
+  },
+  "component.footer.company.pricing": {
+    "message": "Hinnoittelu"
+  },
+  "component.footer.company.webforjCom": {
+    "message": "webforj.com"
+  },
+  "component.footer.company.legal": {
+    "message": "Oikeudelliset tiedot"
+  },
+  "component.footer.homeLabel": {
+    "message": "webforJ-dokumentaation etusivu"
+  },
+  "component.footer.navLabel": {
+    "message": "Alatunniste"
+  },
+  "component.footer.copyright": {
+    "message": "Tekijänoikeudet © {year} {company}. Kaikki oikeudet pidätetään."
+  },
+  "component.blogPostFooter.keepReading": {
+    "message": "Jatka lukemista",
+    "description": "Heading of the related posts section"
+  },
+  "component.blogPostFooter.follow": {
+    "message": "Seuraa",
+    "description": "Label before the follow icons"
+  },
+  "component.blogPostFooter.talkTitle": {
+    "message": "Rakennatko jotain webforJ:llä?",
+    "description": "Heading of the contact invitation"
+  },
+  "component.blogPostFooter.talkText": {
+    "message": "Keskustele tiimin kanssa projektistasi, migraatiosta tai siitä, sopiiko webforJ sinulle.",
+    "description": "Text of the contact invitation"
+  },
+  "component.blogPostFooter.contactUs": {
+    "message": "Ota yhteyttä",
+    "description": "Contact button label"
+  },
+  "component.blogPostHeader.back": {
+    "message": "← Blog",
+    "description": "Link back to the blog list above a post title"
   }
 }

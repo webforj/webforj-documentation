@@ -1061,5 +1061,633 @@
   "componentDemo.iframeTitle": {
     "message": "Component demo",
     "description": "Accessible title for the demo iframe"
+  },
+  "component.blogFilterBar.all": {
+    "message": "全部"
+  },
+  "component.blogFilterBar.release": {
+    "message": "发布"
+  },
+  "component.blogFilterBar.ai": {
+    "message": "AI"
+  },
+  "component.blogFilterBar.tutorial": {
+    "message": "教程"
+  },
+  "component.blogFilterBar.components": {
+    "message": "组件"
+  },
+  "component.blogFilterBar.integrations": {
+    "message": "集成"
+  },
+  "component.blogFilterBar.styling": {
+    "message": "样式"
+  },
+  "component.blogFilterBar.community": {
+    "message": "社区"
+  },
+  "component.blogFilterBar.tags.one": {
+    "message": "{count} 个标签"
+  },
+  "component.blogFilterBar.tags.other": {
+    "message": "{count} 个标签"
+  },
+  "component.blogFilterBar.posts.one": {
+    "message": "{count} 条帖子"
+  },
+  "component.blogFilterBar.posts.other": {
+    "message": "{count} 篇帖子"
+  },
+  "component.blogFilterBar.rssTitle": {
+    "message": "订阅博客源"
+  },
+  "component.blogShare.label": {
+    "message": "分享",
+    "description": "Label before the share buttons"
+  },
+  "component.blogShare.linkedin": {
+    "message": "分享到 LinkedIn"
+  },
+  "component.blogShare.x": {
+    "message": "分享到 X"
+  },
+  "component.blogShare.reddit": {
+    "message": "分享到 Reddit\n"
+  },
+  "component.blogShare.bluesky": {
+    "message": "分享到 Bluesky"
+  },
+  "component.blogShare.email": {
+    "message": "通过邮件分享"
+  },
+  "component.connectCard.teamName": {
+    "message": "webforJ 团队"
+  },
+  "component.connectCard.title.blog": {
+    "message": "正在使用 webforJ 构建？"
+  },
+  "component.connectCard.title.docs": {
+    "message": "需要帮助吗？"
+  },
+  "component.connectCard.text.blog": {
+    "message": "与背后的工程师聊聊您的项目。"
+  },
+  "component.connectCard.text.docs": {
+    "message": "与 webforJ 的工程师聊聊您的项目。"
+  },
+  "component.connectCard.contact": {
+    "message": "联系我们"
+  },
+  "component.connectLauncher.topics.evaluating": {
+    "message": "正在为项目评估 webforJ"
+  },
+  "component.connectLauncher.topics.evaluating.subject": {
+    "message": "正在为项目评估 webforJ"
+  },
+  "component.connectLauncher.topics.modernizing": {
+    "message": "将现有应用现代化"
+  },
+  "component.connectLauncher.topics.modernizing.subject": {
+    "message": "使用 webforJ 让现有应用焕然一新"
+  },
+  "component.connectLauncher.topics.stuck": {
+    "message": "在文档中遇到问题？"
+  },
+  "component.connectLauncher.topics.stuck.subject": {
+    "message": "关于 webforJ 文档的问题"
+  },
+  "component.connectLauncher.mailBody": {
+    "message": "webforJ 团队，您好：\n\n（我正在阅读：{title} - {url}）"
+  },
+  "component.connectLauncher.copy.docs.text": {
+    "message": "正在使用 webforJ 构建项目，或在文档中遇到问题？告诉我们，工程师会帮你找到解决方案。"
+  },
+  "component.connectLauncher.copy.docs.greetingTitled": {
+    "message": "关于 {title} 有疑问？联系团队。"
+  },
+  "component.connectLauncher.copy.greeting": {
+    "message": "对 webforJ 有疑问？请咨询团队。"
+  },
+  "component.connectLauncher.copy.blog.text": {
+    "message": "正在构建类似的项目，或考虑在项目中使用 webforJ？告诉我们，我们将帮您找到最佳实现方式。"
+  },
+  "component.connectLauncher.copy.blog.greeting": {
+    "message": "想打造类似的产品？联系团队。"
+  },
+  "component.connectLauncher.copy.default.text": {
+    "message": "告诉我们你正在构建什么，我们会帮你找到使用 webforJ 实现它的最佳方式。"
+  },
+  "component.connectLauncher.panelLabel": {
+    "message": "联系 webforJ 团队"
+  },
+  "component.connectLauncher.close": {
+    "message": "关闭"
+  },
+  "component.connectLauncher.hello": {
+    "message": "嗨，我们是 webforJ 团队 👋"
+  },
+  "component.connectLauncher.topicsLabel": {
+    "message": "我们能为您提供什么帮助？"
+  },
+  "component.connectLauncher.primary": {
+    "message": "预约初步沟通"
+  },
+  "component.connectLauncher.callNote.strong": {
+    "message": "无需付费，无需承诺。"
+  },
+  "component.connectLauncher.callNote.text": {
+    "message": "适用于正在评估 webforJ 或使用 webforJ 构建项目的团队。如有简单问题，请选择上方的主题。"
+  },
+  "component.connectLauncher.follow": {
+    "message": "关注 webforJ"
+  },
+  "component.connectLauncher.dismiss": {
+    "message": "关闭"
+  },
+  "component.connectLauncher.teamName": {
+    "message": "webforJ 团队"
+  },
+  "component.connectLauncher.replyYes": {
+    "message": "好，我们聊聊\n"
+  },
+  "component.connectLauncher.replyNo": {
+    "message": "暂不"
+  },
+  "component.connectLauncher.button": {
+    "message": "有问题？联系我们。"
+  },
+  "component.connectLauncher.newMessage": {
+    "message": "1 条新消息"
+  },
+  "component.connectLinks.followLinkedIn": {
+    "message": "在 LinkedIn 上关注"
+  },
+  "component.connectLinks.subscribeYouTube": {
+    "message": "在 YouTube 上订阅"
+  },
+  "component.connectLinks.starGitHub": {
+    "message": "在 GitHub 上加星标"
+  },
+  "component.connectLinks.subscribeRss": {
+    "message": "订阅博客源"
+  },
+  "component.exploreCard.short": {
+    "message": "短视频 · YouTube"
+  },
+  "component.exploreCard.video": {
+    "message": "视频 · YouTube"
+  },
+  "component.exploreCard.post": {
+    "message": "Blog · {date}"
+  },
+  "component.exploreCard.label": {
+    "message": "探索"
+  },
+  "component.exploreCard.previous": {
+    "message": "上一个建议"
+  },
+  "component.exploreCard.next": {
+    "message": "下一条建议"
+  },
+  "component.megaMenu.playFullScreen": {
+    "message": "全屏播放"
+  },
+  "component.megaMenu.learnMore": {
+    "message": "了解更多"
+  },
+  "component.megaMenu.products.webforJ.label": {
+    "message": "webforJ"
+  },
+  "component.megaMenu.products.webforJ.tagline": {
+    "message": "全程 100% Java"
+  },
+  "component.megaMenu.products.webforJ.description": {
+    "message": "使用 Java 构建整个 Web 应用，包括 UI。无需编写 JavaScript，UI 与后端之间也无需 REST 层。"
+  },
+  "component.megaMenu.products.webforJ.cta": {
+    "message": "开始使用"
+  },
+  "component.megaMenu.products.kotlinDSL.label": {
+    "message": "Kotlin DSL"
+  },
+  "component.megaMenu.products.kotlinDSL.tagline": {
+    "message": "相同的界面，使用 Kotlin\n"
+  },
+  "component.megaMenu.products.kotlinDSL.description": {
+    "message": "使用 Kotlin 以声明式方式构建 webforJ UI，借助类型安全构建器和嵌套代码块，与 Java 代码并行使用。实验性功能。"
+  },
+  "component.megaMenu.products.kotlinDSL.cta": {
+    "message": "探索 Kotlin DSL"
+  },
+  "component.megaMenu.products.uIComponents.label": {
+    "message": "UI 组件"
+  },
+  "component.megaMenu.products.uIComponents.tagline": {
+    "message": "开箱即用，灵活组合"
+  },
+  "component.megaMenu.products.uIComponents.description": {
+    "message": "布局、数据录入、导航、反馈和可视化，全部由 Java 实现。将它们与 Composite 结合，构建自己的可复用组件，只公开你选择的 API。"
+  },
+  "component.megaMenu.products.uIComponents.cta": {
+    "message": "探索组件"
+  },
+  "component.megaMenu.products.swingModernization.label": {
+    "message": "Swing 现代化"
+  },
+  "component.megaMenu.products.swingModernization.tagline": {
+    "message": "将 Swing 应用带到 Web\n"
+  },
+  "component.megaMenu.products.swingModernization.description": {
+    "message": "通过 Webswing 在浏览器中运行现有的 Swing、JavaFX 或 SWT 应用，然后逐个界面迁移到 webforJ。"
+  },
+  "component.megaMenu.products.swingModernization.cta": {
+    "message": "开始现代化改造"
+  },
+  "component.megaMenu.products.craftforJ.label": {
+    "message": "craftforJ"
+  },
+  "component.megaMenu.products.craftforJ.tagline": {
+    "message": "可视化编辑正在运行的应用\n"
+  },
+  "component.megaMenu.products.craftforJ.description": {
+    "message": "检查正在运行的应用的组件树，实时更改组件，并将保留的更改写回 Java 源代码。"
+  },
+  "component.megaMenu.products.craftforJ.cta": {
+    "message": "探索 craftforJ"
+  },
+  "component.megaMenu.products.aITooling.label": {
+    "message": "AI 工具"
+  },
+  "component.megaMenu.products.aITooling.tagline": {
+    "message": "教你的 AI 助手了解 webforJ"
+  },
+  "component.megaMenu.products.aITooling.description": {
+    "message": "一个插件即可为 Claude Code、Copilot、Cursor、Gemini 和 Codex 提供实时 webforJ 文档、项目脚手架、主题生成，以及遵循 webforJ 规范的工作流。"
+  },
+  "component.megaMenu.products.aITooling.cta": {
+    "message": "安装 AI 插件"
+  },
+  "component.megaMenu.products.mCPApps.label": {
+    "message": "MCP 应用"
+  },
+  "component.megaMenu.products.mCPApps.tagline": {
+    "message": "将您的 webforJ 视图融入 AI 应用\n"
+  },
+  "component.megaMenu.products.mCPApps.description": {
+    "message": "让支持 MCP 的 AI 应用在对话中打开路由到的 webforJ 视图，让用户和 AI 共用同一实时界面。实验性功能。"
+  },
+  "component.megaMenu.products.mCPApps.cta": {
+    "message": "探索 MCP 应用"
+  },
+  "component.megaMenu.products.figmaDesignKit.label": {
+    "message": "Figma 设计套件"
+  },
+  "component.megaMenu.products.figmaDesignKit.tagline": {
+    "message": "使用真实组件进行设计"
+  },
+  "component.megaMenu.products.figmaDesignKit.description": {
+    "message": "DWC Design Kit 将 webforJ 组件引入 Figma，让设计与构建结果一致。"
+  },
+  "component.megaMenu.products.figmaDesignKit.cta": {
+    "message": "打开设计套件"
+  },
+  "component.megaMenu.developers.learn.title": {
+    "message": "学习"
+  },
+  "component.megaMenu.developers.learn.gettingStarted.label": {
+    "message": "快速入门"
+  },
+  "component.megaMenu.developers.learn.gettingStarted.description": {
+    "message": "创建并运行你的第一个应用\n"
+  },
+  "component.megaMenu.developers.learn.tutorial.label": {
+    "message": "教程"
+  },
+  "component.megaMenu.developers.learn.tutorial.description": {
+    "message": "逐步构建完整应用"
+  },
+  "component.megaMenu.developers.learn.appBasics.label": {
+    "message": "应用基础"
+  },
+  "component.megaMenu.developers.learn.appBasics.description": {
+    "message": "webforJ 应用如何协同工作"
+  },
+  "component.megaMenu.developers.learn.components.label": {
+    "message": "组件"
+  },
+  "component.megaMenu.developers.learn.components.description": {
+    "message": "每个组件均提供实时演示"
+  },
+  "component.megaMenu.developers.learn.cookbook.label": {
+    "message": "实用指南"
+  },
+  "component.megaMenu.developers.learn.cookbook.description": {
+    "message": "日常任务简明指南"
+  },
+  "component.megaMenu.developers.learn.javaDocs.label": {
+    "message": "JavaDocs"
+  },
+  "component.megaMenu.developers.learn.javaDocs.description": {
+    "message": "完整的 Java API"
+  },
+  "component.megaMenu.developers.learn.clientComponents.label": {
+    "message": "客户端组件"
+  },
+  "component.megaMenu.developers.learn.clientComponents.description": {
+    "message": "用于样式设置的部件和属性"
+  },
+  "component.megaMenu.developers.buildAndShip.title": {
+    "message": "构建并发布"
+  },
+  "component.megaMenu.developers.buildAndShip.startforJ.label": {
+    "message": "startforJ"
+  },
+  "component.megaMenu.developers.buildAndShip.startforJ.description": {
+    "message": "在浏览器中创建新项目"
+  },
+  "component.megaMenu.developers.buildAndShip.springBoot.label": {
+    "message": "Spring Boot"
+  },
+  "component.megaMenu.developers.buildAndShip.springBoot.description": {
+    "message": "依赖注入、Spring Data 等功能"
+  },
+  "component.megaMenu.developers.buildAndShip.jBang.label": {
+    "message": "JBang"
+  },
+  "component.megaMenu.developers.buildAndShip.jBang.description": {
+    "message": "从单个文件运行 webforJ 应用\n"
+  },
+  "component.megaMenu.developers.buildAndShip.hotswap.label": {
+    "message": "热替换"
+  },
+  "component.megaMenu.developers.buildAndShip.hotswap.description": {
+    "message": "应用代码更改，无需重启"
+  },
+  "component.megaMenu.developers.buildAndShip.browserlessTesting.label": {
+    "message": "无浏览器测试"
+  },
+  "component.megaMenu.developers.buildAndShip.browserlessTesting.description": {
+    "message": "在 JUnit 中测试视图，无需浏览器"
+  },
+  "component.megaMenu.developers.buildAndShip.bBjShip.label": {
+    "message": "BBjShip"
+  },
+  "component.megaMenu.developers.buildAndShip.bBjShip.description": {
+    "message": "将应用部署到 BBjServices"
+  },
+  "component.megaMenu.developers.buildAndShip.automatedUpgrades.label": {
+    "message": "自动升级"
+  },
+  "component.megaMenu.developers.buildAndShip.automatedUpgrades.description": {
+    "message": "使用 OpenRewrite 升级到新版本"
+  },
+  "component.megaMenu.resources.readAndWatch.title": {
+    "message": "阅读并观看"
+  },
+  "component.megaMenu.resources.readAndWatch.blog.label": {
+    "message": "Blog"
+  },
+  "component.megaMenu.resources.readAndWatch.blog.description": {
+    "message": "版本发布、教程与深度解析"
+  },
+  "component.megaMenu.resources.readAndWatch.successStories.label": {
+    "message": "成功案例"
+  },
+  "component.megaMenu.resources.readAndWatch.successStories.description": {
+    "message": "使用 webforJ 构建的团队"
+  },
+  "component.megaMenu.resources.readAndWatch.whitepapers.label": {
+    "message": "白皮书"
+  },
+  "component.megaMenu.resources.readAndWatch.whitepapers.description": {
+    "message": "关于 webforJ 的深度文章"
+  },
+  "component.megaMenu.resources.readAndWatch.webinars.label": {
+    "message": "网络研讨会"
+  },
+  "component.megaMenu.resources.readAndWatch.webinars.description": {
+    "message": "实时会话和录制内容"
+  },
+  "component.megaMenu.resources.connect.title": {
+    "message": "连接"
+  },
+  "component.megaMenu.resources.connect.events.label": {
+    "message": "活动"
+  },
+  "component.megaMenu.resources.connect.events.description": {
+    "message": "讲座、会议和聚会"
+  },
+  "component.megaMenu.resources.connect.youTube.label": {
+    "message": "YouTube"
+  },
+  "component.megaMenu.resources.connect.youTube.description": {
+    "message": "视频和操作指南"
+  },
+  "component.megaMenu.resources.connect.linkedIn.label": {
+    "message": "LinkedIn"
+  },
+  "component.megaMenu.resources.connect.linkedIn.description": {
+    "message": "团队新闻"
+  },
+  "component.megaMenu.resources.connect.gitHub.label": {
+    "message": "GitHub"
+  },
+  "component.megaMenu.resources.connect.gitHub.description": {
+    "message": "源代码和发行版"
+  },
+  "component.megaMenu.support.getHelp.title": {
+    "message": "获取帮助"
+  },
+  "component.megaMenu.support.getHelp.reportAnIssue.label": {
+    "message": "报告问题"
+  },
+  "component.megaMenu.support.getHelp.reportAnIssue.description": {
+    "message": "缺陷与功能请求"
+  },
+  "component.megaMenu.support.getHelp.emailSupport.label": {
+    "message": "邮件支持"
+  },
+  "component.megaMenu.support.getHelp.emailSupport.description": {
+    "message": "support@basis.cloud"
+  },
+  "component.megaMenu.support.getHelp.contactUs.label": {
+    "message": "联系我们"
+  },
+  "component.megaMenu.support.getHelp.contactUs.description": {
+    "message": "预约与 webforJ 团队通话"
+  },
+  "component.megaMenu.support.workWithUs.title": {
+    "message": "与我们合作"
+  },
+  "component.megaMenu.support.workWithUs.lTSPlusSupportPlans.label": {
+    "message": "LTS+ 支持计划"
+  },
+  "component.megaMenu.support.workWithUs.lTSPlusSupportPlans.description": {
+    "message": "生产环境长期支持"
+  },
+  "component.megaMenu.support.workWithUs.partners.label": {
+    "message": "合作伙伴"
+  },
+  "component.megaMenu.support.workWithUs.partners.description": {
+    "message": "查找 webforJ 合作伙伴"
+  },
+  "component.megaMenu.support.workWithUs.company.label": {
+    "message": "公司"
+  },
+  "component.megaMenu.support.workWithUs.company.description": {
+    "message": "BASIS，webforJ 背后的团队"
+  },
+  "component.blogTagsListPage.subtitle.one": {
+    "message": "浏览 webforJ 博客涵盖的所有 {count} 个主题。"
+  },
+  "component.blogTagsListPage.subtitle.other": {
+    "message": "浏览 webforJ Blog 涵盖的所有 {count} 个主题。"
+  },
+  "component.footer.pitch": {
+    "message": "全程用 Java！用 Java 构建，部署到 Web。"
+  },
+  "component.footer.action.startYourApp": {
+    "message": "启动应用"
+  },
+  "component.footer.action.contactUs": {
+    "message": "联系我们"
+  },
+  "component.footer.products.title": {
+    "message": "产品"
+  },
+  "component.footer.products.webforJ": {
+    "message": "webforJ"
+  },
+  "component.footer.products.kotlinDSL": {
+    "message": "Kotlin DSL"
+  },
+  "component.footer.products.uIComponents": {
+    "message": "UI 组件"
+  },
+  "component.footer.products.swingModernization": {
+    "message": "Swing 现代化\n"
+  },
+  "component.footer.products.craftforJ": {
+    "message": "craftforJ"
+  },
+  "component.footer.products.aITooling": {
+    "message": "AI 工具"
+  },
+  "component.footer.products.mCPApps": {
+    "message": "MCP 应用"
+  },
+  "component.footer.products.figmaDesignKit": {
+    "message": "Figma 设计套件"
+  },
+  "component.footer.developers.title": {
+    "message": "开发者"
+  },
+  "component.footer.developers.gettingStarted": {
+    "message": "开始使用"
+  },
+  "component.footer.developers.tutorial": {
+    "message": "教程"
+  },
+  "component.footer.developers.cookbook": {
+    "message": "实用指南"
+  },
+  "component.footer.developers.javaDocs": {
+    "message": "JavaDocs"
+  },
+  "component.footer.developers.startforJ": {
+    "message": "startforJ"
+  },
+  "component.footer.developers.springBoot": {
+    "message": "Spring Boot"
+  },
+  "component.footer.developers.hotswap": {
+    "message": "Hotswap"
+  },
+  "component.footer.developers.browserlessTesting": {
+    "message": "无浏览器测试"
+  },
+  "component.footer.resources.title": {
+    "message": "资源"
+  },
+  "component.footer.resources.blog": {
+    "message": "Blog"
+  },
+  "component.footer.resources.successStories": {
+    "message": "成功案例"
+  },
+  "component.footer.resources.whitepapers": {
+    "message": "白皮书"
+  },
+  "component.footer.resources.webinars": {
+    "message": "网络研讨会"
+  },
+  "component.footer.resources.events": {
+    "message": "事件"
+  },
+  "component.footer.support.title": {
+    "message": "支持"
+  },
+  "component.footer.support.reportAnIssue": {
+    "message": "报告问题"
+  },
+  "component.footer.support.emailSupport": {
+    "message": "邮件支持"
+  },
+  "component.footer.support.contactUs": {
+    "message": "联系我们"
+  },
+  "component.footer.support.lTSPlusSupportPlans": {
+    "message": "LTS+ 支持计划"
+  },
+  "component.footer.support.partners": {
+    "message": "合作伙伴"
+  },
+  "component.footer.company.title": {
+    "message": "公司"
+  },
+  "component.footer.company.aboutBASIS": {
+    "message": "关于 BASIS"
+  },
+  "component.footer.company.pricing": {
+    "message": "定价"
+  },
+  "component.footer.company.webforjCom": {
+    "message": "webforj.com"
+  },
+  "component.footer.company.legal": {
+    "message": "法律信息"
+  },
+  "component.footer.homeLabel": {
+    "message": "webforJ 文档首页"
+  },
+  "component.footer.navLabel": {
+    "message": "页脚"
+  },
+  "component.footer.copyright": {
+    "message": "版权所有 © {year} {company}。保留所有权利。"
+  },
+  "component.blogPostFooter.keepReading": {
+    "message": "继续阅读",
+    "description": "Heading of the related posts section"
+  },
+  "component.blogPostFooter.follow": {
+    "message": "关注",
+    "description": "Label before the follow icons"
+  },
+  "component.blogPostFooter.talkTitle": {
+    "message": "正在用 webforJ 构建项目？",
+    "description": "Heading of the contact invitation"
+  },
+  "component.blogPostFooter.talkText": {
+    "message": "与团队聊聊您的项目、迁移事宜，或 webforJ 是否适合您。",
+    "description": "Text of the contact invitation"
+  },
+  "component.blogPostFooter.contactUs": {
+    "message": "联系我们",
+    "description": "Contact button label"
+  },
+  "component.blogPostHeader.back": {
+    "message": "← Blog",
+    "description": "Link back to the blog list above a post title"
   }
 }

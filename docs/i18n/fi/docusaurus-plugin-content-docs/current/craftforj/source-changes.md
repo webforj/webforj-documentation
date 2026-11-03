@@ -1,12 +1,13 @@
 ---
-title: Kirjoittaminen Lähteeseen
+title: Muutosten käyttöönotto
 sidebar_position: 4
+sidebar_class_name: new-content
 description: >-
   Review the changes you made in craftforJ as a diff, choose where each one is
   written, and apply them to your Java source.
-_i18n_hash: dd96407889e9e9fa1de4af299809dcad
+_i18n_hash: de9ef40848946a35567c308c132dce0d
 ---
-Muuttamalla ominaisuutta craftforJ:ssä muutat toimintoa sovelluksessa eikä mitään muuta. Muutoksen säilyttämiseksi tarkistat sen ja kirjoitat sen takaisin alkuperäiseen Java-tiedostoon. Tämä sivu kuvaa tämän vaiheen.
+craftforJ-sovelluksessa ominaisuuden muuttaminen muuttaa käynnissä olevaa sovellusta eikä mitään muuta. Jos haluat säilyttää muutoksen, tarkista se ja kirjoita se takaisin Java-tiedostoon, josta se on peräisin. Tällä sivulla kuvataan tämä vaihe.
 
 <div class="videos-container">
   <video controls preload="metadata">
@@ -15,34 +16,57 @@ Muuttamalla ominaisuutta craftforJ:ssä muutat toimintoa sovelluksessa eikä mit
 </div>
 
 :::warning craftforJ kirjoittaa projektiisi
-Pidä työsi versionhallinnassa. Lue muutos ennen sen soveltamista ja lue se uudelleen ennen sitoutumista.
+Pidä työsi versionhallinnassa. Lue muutokset ennen niiden käyttöönottoa ja lue ne uudelleen ennen commitin tekemistä.
 :::
 
 ## Odottavat muutokset {#pending-changes}
 
-Jokainen muuttamasi ominaisuus tallennetaan odottavaksi muutokseksi, ja craftforJ näyttää, kuinka monta on odottamassa. Odottavat muutokset säilyvät sivun uudelleenlatauksessa ja reitin muutoksessa, koska craftforJ soveltaa ne uudelleen, kun komponenttisi rakennetaan.
+Jokainen muuttamasi ominaisuus kirjataan odottavaksi muutokseksi, ja craftforJ näyttää, kuinka monta muutosta odottaa käsittelyä. Odottavat muutokset säilyvät sivun uudelleenlatauksen ja reitinvaihdon yli, koska craftforJ ottaa ne uudelleen käyttöön, kun komponentit luodaan uudelleen.
 
-## Tarkistaminen ja soveltaminen {#reviewing-and-applying}
+## Muutosten tarkastelu ja käyttöönotto {#reviewing-and-applying}
 
-Paina <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> avataksesi tarkastelun. Muutokset on ryhmitelty sen tiedoston mukaan, johon ne menevät. Jokainen niistä näyttää ominaisuuden vanhan ja uuden arvon, ja laajenee tiedoston diffiin. Jos muutos korvaisi lasketun arvon kiinteällä, craftforJ varoittaa sinua ja nimeää ilmaisun, jonka se on juuri korvaamassa. Mikään ei tallenneta ennen kuin sovellat sen. Ennen soveltamista voit peruuttaa tai hylätä jokaisen muutoksen erikseen.
+Avaa tarkastelu painamalla <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd>. Muutokset ryhmitellään tiedoston mukaan, johon ne kirjoitetaan. Jokaisessa näkyy ominaisuus vanhoine ja uusine arvoineen, ja sen voi avata tiedoston muutosten tarkastelua varten. Jos muutos korvaisi lasketun arvon kiinteällä arvolla, craftforJ varoittaa siitä ja näyttää korvattavan lausekkeen. Mitään ei kirjoiteta ennen kuin otat muutokset käyttöön. Sitä ennen voit palauttaa tai hylätä kunkin muutoksen erikseen.
 
-![Tarkastelu, jossa muutokset ryhmitellään tiedoston mukaan ja yksi on laajennettu sen diffiin](/img/craftforj/source-changes/review.png#rounded-border)
+![Tarkastelu, jossa muutokset on ryhmitelty tiedostoittain ja yhden muutoksen erotus on avattu](/img/craftforj/source-changes/review.png#rounded-border)
 
-## Muutoksen kirjoituspaikan valitseminen {#choosing-where-a-change-is-written}
+## Muutoksen kirjoituskohteen valitseminen {#choosing-where-a-change-is-written}
 
-Se, mihin muutosta kirjoitetaan, määrää, kuinka pitkälle se ulottuu. Kun komponentti rakennetaan suoraan näkymässä, muutos menee siihen näkymään. Kun se rakennetaan uudelleenkäytettävän luokan sisälle, sinulla on kaksi vaihtoehtoa:
+Muutoksen kirjoituskohde määrittää, kuinka laajalle sen vaikutus ulottuu. Kun komponentti luodaan suoraan näkymässä, muutos kirjoitetaan kyseiseen näkymään. Kun komponentti luodaan uudelleenkäytettävän luokan sisällä, voit valita kahdesta vaihtoehdosta:
 
-- **Käyttö** - paikka, jossa komponenttia käytetään, mikä muuttaa vain sen näytön, joka on edessäsi. Tämä on oletus.
-- **Määrittely** - paikka, jossa komponentti rakennetaan, mikä muuttaa jokaista näyttöä, joka käyttää sitä.
+- **Käyttökohta** – paikka, jossa komponenttia käytetään. Muutos vaikuttaa vain edessäsi olevaan näkymään. Tämä on oletusvalinta.
+- **Määritelmä** – paikka, jossa komponentti luodaan. Muutos vaikuttaa kaikkiin näkymiin, joissa sitä käytetään.
 
-Jokainen odottava muutos näyttää, mikä kahdesta pätee ja antaa sinun vaihtaa niiden välillä. Jotkin ominaisuudet voidaan kirjoittaa vain määrittelyssä, koska komponentti asettaa ne itse sen sijaan, että vastaanottaisi ne kutsujalta. craftforJ merkitsee nämä ennen soveltamista.
+Kunkin odottavan muutoksen kohdalla näkyy, kumpaa vaihtoehtoa se koskee, ja voit vaihtaa vaihtoehtoa. Jotkin ominaisuudet voidaan kirjoittaa vain määritelmään, koska komponentti asettaa ne itse sen sijaan, että se vastaanottaisi ne kutsujalta. craftforJ merkitsee nämä ennen muutosten käyttöönottoa.
 
-## Sen jälkeen kun olet soveltanut {#after-you-apply}
+## Käyttöönoton jälkeen {#after-you-apply}
 
-Javaan kirjoittaminen aiheuttaa sovelluksen uudelleenrakentamisen ja uudelleenkäynnistyksen. craftforJ raportoi uudelleenkäynnistyksen, odottaa sitä ja yhdistää valintasi ja jäljellä olevat odottavat muutoksesi ehjinä. Sovelletut muutokset poistuvat odottavalta listalta, kun ne ovat tiedostoissasi.
+Java-koodiin kirjoittaminen käynnistää sovelluksen uudelleenrakennuksen ja uudelleenkäynnistyksen. craftforJ ilmoittaa uudelleenkäynnistyksestä, odottaa sen valmistumista ja muodostaa yhteyden uudelleen valintasi ja jäljellä olevien odottavien muutosten säilyessä ennallaan. Käyttöönotetut muutokset poistuvat odottavien muutosten luettelosta, kun ne on kirjoitettu tiedostoihisi.
 
-Tämä on ainoa hetki, jolloin uudelleenlatausasetuksesi on merkityksellinen. craftforJ ei tarvitse live-reloadia toimiakseen, koska kaikki, mitä muutat tarkistettaessa, vaikuttaa heti käynnissä olevaan sovellukseen ilman uudelleenrakentamista. Tiedostoon kirjoittaminen on erilaista: se muuttaa tiedostoa, josta sovelluksesi rakennettiin, joten sovelluksen on rakennettava uudelleen, ennen kuin muutos tulee koodistasi eikä craftforJ:stä. Kun [live-reload](/docs/configuration/deploy-reload/overview) on määritetty, se tapahtuu automaattisesti. Ilman sitä käynnistä sovellus itse uudelleen.
+Vain tässä vaiheessa uudelleenlatausasetuksillasi on merkitystä. craftforJ ei tarvitse live reload -toimintoa, sillä kaikki tarkastelun aikana tekemäsi muutokset tulevat voimaan käynnissä olevassa sovelluksessa heti ilman uudelleenrakennusta. Lähdekoodiin kirjoittaminen on eri asia: se muuttaa tiedostoa, josta sovellus on rakennettu, joten sovellus on rakennettava uudelleen, jotta muutos tulee koodistasi eikä craftforJ:stä. Kun [live reload](/docs/configuration/deploy-reload/overview) on määritetty, tämä tapahtuu automaattisesti. Muussa tapauksessa käynnistä sovellus itse uudelleen.
 
-## Sammuttaminen {#turning-it-off}
+## Kumoa ja tee uudelleen <DocChip chip='since' label='26.03' /> {#undoing-and-redoing}
 
-Voit kytkeä kirjoittamisen Javaan pois päältä craftforJ-asetuksissa tai poistaa sen kokonaan käytöstä [`source-changes`](/docs/craftforj/configuration#feature-flags) ominaisuuden avulla. Molempien ollessa pois päältä, ominaisuuden muokkaaminen toimii edelleen, mutta pysyy live-tilassa.
+Kumoa viimeisin muutos craftforJ:ssä painamalla <kbd>Cmd/Ctrl</kbd> + <kbd>Z</kbd>. Tee muutos uudelleen painamalla <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd>.
+
+Kumoa-toiminto koskee käynnissä olevassa sovelluksessa tekemiäsi muutoksia [ominaisuuksien muokkauksista](/docs/craftforj/inspector#reading-and-changing-properties) [teeman säätämiseen](/docs/craftforj/theme#adjusting-a-theme). Se koskee myös muutoksia, jotka craftforJ on kirjoittanut projektiisi, kuten käyttöönotettuja ominaisuusmuutoksia, [tallennettua teemaa](/docs/craftforj/theme#saving-a-theme) tai [lähdekoodista poistettua komponenttia](/docs/craftforj/inspector#removing-a-component). Kirjoitetun muutoksen kumoaminen palauttaa tiedoston aiempaan tilaansa. Jos kyseessä on Java-tiedosto, sovellus on rakennettava uudelleen ennen kuin muutos näkyy, kuten [käyttöönoton jälkeenkin](#after-you-apply).
+
+<!-- TODO: add undo/redo recording -->
+
+Kun kumoat useita kertoja, muutokset palautetaan yksi kerrallaan uusimmasta alkaen. Tee uudelleen -toiminto toistaa muutokset siinä järjestyksessä kuin teit ne. Jos teet uuden muutoksen kumoamisen jälkeen, kaikkia uudelleen tehtävissä olleita muutoksia ei enää voi palauttaa.
+
+### Kun muutoksen kumoaminen estyy {#when-an-undo-is-blocked}
+
+Jos muokkaat tiedostoa omassa editorissasi ja tallennat sen sen jälkeen, kun craftforJ on kirjoittanut siihen, kyseisen vaiheen kumoaminen tai uudelleen tekeminen korvaisi muokkauksesi. craftforJ kieltäytyy toiminnosta, jättää tiedoston ennalleen ja ilmoittaa tiedoston nimen:
+
+```
+Muokattu craftforJ:n ulkopuolella: ContactFormView.java. Kumoa muokkaus editorissasi tai ohita tämä vaihe.
+```
+
+Voit jatkaa kahdella tavalla:
+
+- Kumoa muokkauksesi editorissasi, jotta tiedosto vastaa craftforJ:n kirjoittamaa versiota, ja yritä sitten uudelleen.
+- Valitse **Ohita**. Tiedosto jää ennalleen ja kyseinen vaihe poistetaan historiasta. Ohittaminen ei palauta mitään, joten samaan tiedostoon vaikuttaneet aiemmat vaiheet voivat edelleen estyä.
+
+## Poistaminen käytöstä {#turning-it-off}
+
+Voit poistaa Java-kirjoitukset käytöstä sovelluksessa craftforJ:n asetuksista tai poistaa ominaisuuden kokonaan [`source-changes`](/docs/craftforj/configuration#feature-flags)-ominaisuudella. Kun kumpi tahansa on poistettu käytöstä, ominaisuuksia voi edelleen muokata, mutta muutokset näkyvät vain käynnissä olevassa sovelluksessa.

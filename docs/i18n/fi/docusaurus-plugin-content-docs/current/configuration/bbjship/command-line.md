@@ -1,90 +1,93 @@
 ---
-title: Command Line
+title: Komentorivi
 sidebar_position: 7
 description: >-
   The bbjship commands a BBj administrator runs on the BBj machine to manage the
   deployment endpoint, deployed apps, development runs and BBjServices.
-_i18n_hash: 976400b6e439ac682858351e8f9ade17
+_i18n_hash: a80e91a6626a5c018604f40e37a5ff00
 ---
-# Komentorivillä <DocChip chip='since' label='26.03' /> {#command-line}
+# Komentorivi <DocChip chip='since' label='26.03' /> {#command-line}
 
-`bbjship` komento hallitsee BBjShipiä BBj-koneella. Se sijaitsee kohdassa `<BBj home>/plugins/webforj-bbjship`, nimellä `bbjship.cmd` Windowsissa. Jokainen komento suoritetaan BBjServicesin sisällä, joten BBjServicesin on oltava käynnissä jokaiselle komennolle.
+`bbjship`-komentoriviohjelmalla hallitaan BBjShipiä BBj-koneessa. Se sijaitsee polussa `<BBj home>/plugins/webforj-bbjship`, ja Windowsissa sen nimi on `bbjship.cmd`. Jokainen komento suoritetaan BBjServicesissä, joten BBjServicesin on oltava käynnissä jokaista komentoa varten.
 
 ```text
-bbjship <ryhmä> <komento> [vaihtoehdot]
+bbjship <group> <command> [options]
 ```
 
 ## Komennot {#commands}
 
 | Komento | Kuvaus |
 |---|---|
-| [`remote enable [--port PORT] [--ssl-port PORT]`](#remote-enable) | Aktivoi tai päivittää käyttöönotto-osoitteen ja tulostaa sen osoitteet. |
-| [`remote disable`](#remote-disable) | Poistaa käyttöönotto-osoitteen. Käynnistetyt sovellukset jatkavat toimintaa. |
-| [`remote status`](#remote-status) | Tulostaa osoitteet ja onko kehityskäynnistykset aktivoitu. |
-| [`apps deploy ARCHIVE`](#apps-deploy) | Käynnistää käyttöönottoarkiston. |
-| [`apps list [--long]`](#apps-list) | Listaa BBjShipin käyttöönotetut sovellukset. |
-| [`apps undeploy NAME`, `apps undeploy --all`](#apps-undeploy) | Poistaa yhden tai kaikki BBjShipin käyttöönotetut sovellukset. |
-| [`development enable`, `development disable`](#development) | Kytkee [kehityskäynnistykset](/docs/configuration/deploy-reload/bbjservices) päälle tai pois päältä tällä koneella. |
-| [`reset [--yes] [--properties FILE]`](#reset) | Poistaa kaikki sovellukset ja kaiken, mitä BBjShip on asettanut. |
+| [`remote enable [--port PORT] [--ssl-port PORT] [--allow-unencrypted]`](#remote-enable) | Ottaa käyttöön käyttöönottopäätepisteen tai päivittää sen ja tulostaa sen osoitteet. |
+| [`remote disable`](#remote-disable) | Poistaa käyttöönottopäätepisteen. Käyttöönotetut sovellukset jatkavat toimintaansa. |
+| [`remote status`](#remote-status) | Tulostaa päätepisteen osoitteet, tiedon siitä, ovatko kehitysajot käytössä, sekä tiedon siitä, sallitaanko salaamattomat pyynnöt toisesta koneesta. |
+| [`apps deploy ARCHIVE`](#apps-deploy) | Ottaa käyttöön käyttöönottopaketin. |
+| [`apps list [--long]`](#apps-list) | Näyttää BBjShipillä käyttöönotetut sovellukset. |
+| [`apps undeploy NAME`, `apps undeploy --all`](#apps-undeploy) | Poistaa yhden tai kaikki BBjShipillä käyttöönotetut sovellukset. |
+| [`development enable`, `development disable`](#development) | Ottaa [kehitysajot](/docs/configuration/deploy-reload/bbjservices) käyttöön tai poistaa ne käytöstä tässä koneessa. |
+| [`reset [--yes] [--properties FILE]`](#reset) | Poistaa kaikki sovellukset ja kaiken BBjShipin tekemän määrityksen. |
 
-## Yhteiset vaihtoehdot {#options}
+## Yhteiset valitsimet {#options}
 
 | Asetus | Oletus | Kuvaus |
 |---|---|---|
-| `--username KÄYTTÄJÄ` | Asetettu | BBj-järjestelmänvalvojan käyttäjänimi. |
-| `--password SALASANA` | Asetettu | BBj-järjestelmänvalvojan salasana. |
-| `--password-stdin` | Pois päältä | Lukee salasanan ensimmäiseltä riviltä vakiotuloa. Ei saatavilla Windowsissa. |
-| `--help`, `-h` | | Tulostaa komentorivin tai yhden komennon käytön. |
-| `--version`, `-V` | | Tulostaa BBjShipin version. |
+| `--username USER` | Ei asetettu | BBj-järjestelmänvalvojan käyttäjätunnus. |
+| `--password PASSWORD` | Ei asetettu | BBj-järjestelmänvalvojan salasana. |
+| `--password-stdin` | Pois käytöstä | Lukee salasanan vakiosyötteen ensimmäiseltä riviltä. Ei käytettävissä Windowsissa. |
+| `--help`, `-h` | | Tulostaa komentorivin tai yksittäisen komennon käyttöohjeen. |
+| `--version`, `-V` | | Tulostaa BBjShip-version. |
 
-`--password` -vaihtoehdolla annettu salasana näkyy muille koneen käyttäjille prosessiluettelossa komennon suorittamisen aikana. macOS:ssä ja Linuxissa skripti siirtää salasanan vakiotuloon näin:
-
-```bash
-printf '%s\n' "$SENALASANA" | bbjship remote enable --username admin --password-stdin
-```
-
-Jokaisella järjestelmällä muuttujat pitävät salasanan komentorivin ulkopuolella:
+`--password`-valitsimella annettu salasana näkyy koneen muille käyttäjille prosessiluettelossa komennon suorituksen ajan. macOS- ja Linux-järjestelmissä komentosarja välittää salasanan sen sijaan vakiosyötteestä:
 
 ```bash
-WEBFORJ_BBJ_USERNAME=admin WEBFORJ_BBJ_PASSWORD="$SENALASANA" bbjship remote enable
+printf '%s\n' "$PASSWORD" | bbjship remote enable --username admin --password-stdin
 ```
 
-Windowsissa vakiotulo ei ole saatavilla, joten `--password-stdin` päättyy poistumiskoodilla `2`. Siirrä salasana arvona tai muuttujien kautta:
+Kaikissa järjestelmissä muuttujien avulla salasana pysyy poissa komentoriviltä:
+
+```bash
+WEBFORJ_BBJ_USERNAME=admin WEBFORJ_BBJ_PASSWORD="$PASSWORD" bbjship remote enable
+```
+
+Windowsissa vakiosyöte ei ole käytettävissä, joten `--password-stdin` palauttaa poistumiskoodin `2`. Anna salasana arvona tai muuttujien kautta:
 
 ```text
-bbjship.cmd remote enable --username admin --password <arvo>
+bbjship.cmd remote enable --username admin --password <value>
 ```
 
-Antaminen sekä `--password` että `--password-stdin`, käyttäjänimi ilman salasanaa tai salasana ilman käyttäjänimeä päättyy poistumiskoodiin `2` ja viestiin, joka ilmoittaa, mitä määrittää.
+Jos annat sekä `--password`- että `--password-stdin`-valitsimen, käyttäjätunnuksen ilman salasanaa tai salasanan ilman käyttäjätunnusta, komento päättyy poistumiskoodiin `2` ja tulostaa viestin, jossa kerrotaan, mitä pitää määrittää.
 
-Ilman käyttäjätietoja komento käyttää tehdastiliä `admin` ja salasanaa `admin123` ja tulostaa varoituksen.
+Jos tunnistetietoja ei anneta, komento käyttää tehdastiliä `admin` salasanalla `admin123` ja tulostaa varoituksen.
 
 ## Ympäristömuuttujat {#environment-variables}
 
 | Muuttuja | Oletus | Kuvaus |
 |---|---|---|
-| `WEBFORJ_BBJ_USERNAME` | Asetettu | Käyttäjänimi, kun `--username` ei ole käytössä. |
-| `WEBFORJ_BBJ_PASSWORD` | Asetettu | Salasana, kun kumpikaan `--password` tai `--password-stdin` ei ole annettu. |
-| `NO_COLOR` | Asetettu | Poistaa värillisen tulosteen. |
+| `WEBFORJ_BBJ_USERNAME` | Ei asetettu | Käyttäjätunnus, kun `--username`-valitsinta ei ole annettu. |
+| `WEBFORJ_BBJ_PASSWORD` | Ei asetettu | Salasana, kun `--password`- tai `--password-stdin`-valitsinta ei ole annettu. |
+| `NO_COLOR` | Ei asetettu | Poistaa värillisen tulosteen käytöstä. |
 
-## Etä {#remote}
+## Etäkäyttö {#remote}
 
-`remote` komennot hallitsevat käyttöönotto-osoitetta.
+`remote`-komennoilla hallitaan käyttöönottopäätepistettä.
 
 ### `remote enable` {#remote-enable}
 
 ```text
-bbjship remote enable [--port PORT] [--ssl-port PORT]
+bbjship remote enable [--port PORT] [--ssl-port PORT] [--allow-unencrypted]
 ```
 
-Aktivoi tai päivittää käyttöönotto-osoitteen ja tulostaa sen osoitteet.
+Ottaa käyttöön käyttöönottopäätepisteen tai päivittää sen ja tulostaa sen osoitteet.
 
 | Asetus | Oletus | Kuvaus |
 |---|---|---|
-| `--port PORT` | `8888` | BBjServicesin verkkopalvelimen HTTP-portti osoitteelle. |
-| `--ssl-port PORT` | Ei mitään | BBjServicesin verkkopalvelimen SSL-portti osoitteelle. Ilman sitä käyttöosoitteella ei ole HTTPS-osoitetta. |
+| `--port PORT` | `8888` | Päätepisteen HTTP-portti BBjServices-verkkopalvelimessa. |
+| `--ssl-port PORT` | Ei mitään | Päätepisteen SSL-portti BBjServices-verkkopalvelimessa. Ilman tätä päätepisteellä ei ole HTTPS-osoitetta. |
+| `--allow-unencrypted` | Pois käytöstä | Sallii järjestelmänvalvojan tunnistetietojen lähettämisen HTTP-yhteydellä toisesta koneesta. Ilman tätä toisen koneen pyynnössä on käytettävä SSL-porttia, ja päätepiste vastaa siihen HTTP 403 -virheellä. BBj-koneesta tulevat pyynnöt käyttävät HTTP-yhteyttä kummassakin tapauksessa. |
 
-Porttien on oltava portteja, joihin BBjServicesin verkkopalvelin jo kuuntelee. Muutoin `remote enable` päättyy poistumiskoodiin `1`, nimetään portti, joka ei vastaa, ja säilyttää edellinen käyttöosoite.
+Porttien on oltava sellaisia, joissa BBjServices-verkkopalvelin jo kuuntelee. Muussa tapauksessa `remote enable` päättyy poistumiskoodiin `1`, ilmoittaa vastaamattoman portin ja säilyttää edellisen päätepisteen.
+
+Jokainen `remote enable` tallentaa portit ja `--allow-unencrypted`-asetuksen uudelleen. Kun komento suoritetaan ilman valitsinta, asetus poistetaan käytöstä ja tulostetaan `Refused unencrypted requests from another machine`. Kun se suoritetaan valitsimen kanssa, tulostetaan `Allowed unencrypted requests from another machine`. Koontiversio, joka ottaa sovelluksen käyttöön HTTP-yhteydellä toisesta koneesta, määrittää myös [`allowUnencrypted`](/docs/configuration/bbjship/deploying#deploying-from-another-machine)-asetuksen.
 
 ### `remote disable` {#remote-disable}
 
@@ -92,11 +95,13 @@ Porttien on oltava portteja, joihin BBjServicesin verkkopalvelin jo kuuntelee. M
 bbjship remote disable
 ```
 
-Poistaa käyttöönotto-osoitteen. Käynnistetyt sovellukset jatkavat toimintaa.
+Poistaa käyttöönottopäätepisteen. Käyttöönotetut sovellukset jatkavat toimintaansa.
 
-:::warning Käyttöönottoa ei voi palauttaa
-`remote disable` poistaa käyttöönotto-osoitteen. Rakennukset ja CI-työt, jotka käyttävät sitä, epäonnistuvat, kunnes suoritat `remote enable` jälleen. Huomaa portit ja käyttöosoitteen osoite ennen kuin poistat sen. Käynnistetyt sovellukset jatkavat toimintaa.
+<!-- vale Google.WordListCase = NO -->
+:::warning Koontiversiot eivät voi ottaa sovelluksia käyttöön
+`remote disable` poistaa käyttöönottopäätepisteen. Koontiversioiden ja CI-töiden käyttöönotot epäonnistuvat, kunnes suoritat `remote enable` -komennon uudelleen. Kirjaa portit ja päätepisteen osoite muistiin ennen sen poistamista käytöstä. Käyttöönotetut sovellukset jatkavat toimintaansa.
 :::
+<!-- vale Google.WordListCase = YES -->
 
 ### `remote status` {#remote-status}
 
@@ -104,34 +109,35 @@ Poistaa käyttöönotto-osoitteen. Käynnistetyt sovellukset jatkavat toimintaa.
 bbjship remote status
 ```
 
-Tulostaa osoitteet ja onko kehityskäynnistykset aktivoitu.
+Tulostaa päätepisteen osoitteet, tiedon siitä, ovatko kehitysajot käytössä, sekä tiedon siitä, sallitaanko salaamattomat pyynnöt toisesta koneesta.
 
 ```text
 $ bbjship remote status
-Aktivoitu http://localhost:8888/webforj-bbjship
-Aktivoitu https://localhost:8443/webforj-bbjship
-Kehityskäynnistykset  pois päältä
+Enabled http://localhost:8888/webforj-bbjship
+Enabled https://localhost:8443/webforj-bbjship
+Development runs  disabled
+Unencrypted requests  refused
 ```
 
 ## Sovellukset {#apps}
 
-`sovellus` komennot listaavat ja poistavat vain sovelluksia, jotka BBjShip on käyttöönotanut. Enterprise Manageriin rekisteröityjä sovelluksia ei vaikuta.
+`apps`-komennoilla voi luetella ja poistaa vain BBjShipillä käyttöönotettuja sovelluksia. Enterprise Managerissa rekisteröityihin sovelluksiin ne eivät vaikuta.
 
 ### `apps deploy` {#apps-deploy}
 
 ```text
-bbjship apps deploy ARKISTO
+bbjship apps deploy ARCHIVE
 ```
 
-Käynnistää käyttöönottoarkiston. `apps deploy` asentaa arkiston, jonka on kirjoittanut [`bbj-package`](/docs/configuration/bbjship/deploying#package-without-deploying), ilman käyttöönotto-osoitetta. Tiedostonimi ilman `.zip`-päätettä on [julkaisu nimi](/docs/configuration/bbjship/deploying#publish-names). BBjServices lukee arkiston, joten BBjServicesin käyttöjärjestelmän käyttäjällä on oltava lukuoikeus siihen.
+Ottaa käyttöön käyttöönottopaketin. `apps deploy` asentaa [`bbj-package`](/docs/configuration/bbjship/deploying#package-without-deploying)-komennolla luodun paketin ilman käyttöönottopäätepistettä. `.zip`-päätteetön tiedostonimi on [julkaisun nimi](/docs/configuration/bbjship/deploying#publish-names). BBjServices lukee paketin, joten BBjServicesin käyttöjärjestelmäkäyttäjällä on oltava siihen lukuoikeus.
 
 ```text
 $ bbjship apps deploy inventory.zip
-Käyttöönotettu inventory /webapp/inventory
+Deployed inventory /webapp/inventory
 ```
 
-:::warning Korvataan sovellus
-Arkiston käyttöönotto sovelluksen nimellä, joka on jo otettu käyttöön, korvataan se sovellus. Aiempi käyttöönotto hakemisto poistetaan ja sovelluksen käynnissä olevat istunnot päättyvät. Säilytä aikaisempi arkisto, jos saatat tarvita palaamista.
+:::warning Korvaa sovelluksen
+Jos paketti otetaan käyttöön jo käytössä olevan sovelluksen nimellä, se korvaa sovelluksen. Edellinen käyttöönottokansio poistetaan ja sovelluksen käynnissä olevat istunnot päättyvät. Säilytä edellinen paketti, jos saatat tarvita sen palauttamista.
 :::
 
 ### `apps list` {#apps-list}
@@ -140,38 +146,38 @@ Arkiston käyttöönotto sovelluksen nimellä, joka on jo otettu käyttöön, ko
 bbjship apps list [--long]
 ```
 
-Listaa BBjShipin käyttöönotetut sovellukset.
+Näyttää BBjShipillä käyttöönotetut sovellukset.
 
 | Asetus | Oletus | Kuvaus |
 |---|---|---|
-| `--long`, `-l` | Pois päältä | Lisää käyttöönottokansion ja jokaisen sovelluksen luokkakansio. |
+| `--long`, `-l` | Pois käytöstä | Lisää kunkin sovelluksen käyttöönottokansion ja luokkakansiot. |
 
 ```text
 $ bbjship apps list
-NIMI       URL
+NAME       URL
 inventory  /webapp/inventory
 ```
 
 ### `apps undeploy` {#apps-undeploy}
 
 ```text
-bbjship apps undeploy NIMI
+bbjship apps undeploy NAME
 bbjship apps undeploy --all
 ```
 
-Poistaa yhden tai kaikki BBjShipin käyttöönotetut sovellukset.
+Poistaa yhden tai kaikki BBjShipillä käyttöönotetut sovellukset.
 
 | Asetus | Oletus | Kuvaus |
 |---|---|---|
-| `--all` | Pois päältä | Poistaa kaikki BBjShipin käyttöönotetut sovellukset. |
+| `--all` | Pois käytöstä | Poistaa kaikki BBjShipillä käyttöönotetut sovellukset. |
 
-:::warning Ei voi peruuttaa
-`apps undeploy` poistaa sovelluksen Enterprise Managerista, lopettaa sen käynnissä olevat istunnot ja poistaa sen käyttöönottohakemiston. `apps undeploy --all` tekee tämän kaikille BBjShipin käyttöönotetuille sovelluksille. Tätä ei voi peruuttaa. Säilytä jokaisen sovelluksen käyttöönottoarkisto, esimerkiksi `target/bbj/<publish name>.zip`, jotta voit ottaa sen uudelleen käyttöön.
+:::warning Toimintoa ei voi kumota
+`apps undeploy` poistaa sovelluksen Enterprise Managerista, päättää sen käynnissä olevat istunnot ja poistaa sen käyttöönottokansion. `apps undeploy --all` tekee tämän kaikille BBjShipillä käyttöönotetuille sovelluksille. Toimintoa ei voi kumota. Säilytä kunkin sovelluksen käyttöönottopaketti, esimerkiksi `target/bbj/<publish name>.zip`, jotta voit ottaa sovelluksen uudelleen käyttöön.
 :::
 
 ## Kehitys {#development}
 
-Kehityskäynnistykset ovat pois päältä uudessa asennuksessa, ja ensimmäinen `webforj:watch` samalla koneella kytkee ne päälle. `bbjship development disable` kytkee ne pois päältä, kunnes seuraava `webforj:watch` tällä koneella kytkee ne uudelleen päälle. Kehityskäynnistys toiselta koneelta hylätään, koska sen suorittama asennus toimii vain BBj-koneella.
+Kehitysajot ovat uudessa asennuksessa pois käytöstä, ja ensimmäinen `webforj:watch` samassa koneessa ottaa ne käyttöön. `bbjship development disable` poistaa ne käytöstä, kunnes seuraava `webforj:watch` tässä koneessa ottaa ne jälleen käyttöön. Toisesta koneesta käynnistetty kehitysajo hylätään, koska sen aluksi suorittama määritys toimii vain BBj-koneessa.
 
 ### `development enable` {#development-enable}
 
@@ -179,7 +185,7 @@ Kehityskäynnistykset ovat pois päältä uudessa asennuksessa, ja ensimmäinen 
 bbjship development enable
 ```
 
-Kytkee [kehityskäynnistykset](/docs/configuration/deploy-reload/bbjservices) päälle tällä koneella.
+Ottaa [kehitysajot](/docs/configuration/deploy-reload/bbjservices) käyttöön tässä koneessa.
 
 ### `development disable` {#development-disable}
 
@@ -187,25 +193,25 @@ Kytkee [kehityskäynnistykset](/docs/configuration/deploy-reload/bbjservices) p�
 bbjship development disable
 ```
 
-Kytkee [kehityskäynnistykset](/docs/configuration/deploy-reload/bbjservices) pois päältä tällä koneella.
+Poistaa [kehitysajot](/docs/configuration/deploy-reload/bbjservices) käytöstä tässä koneessa.
 
-## Nollaa {#reset}
+## Nollaus {#reset}
 
 ```text
-bbjship reset [--yes] [--properties TIEDOSTO]
+bbjship reset [--yes] [--properties FILE]
 ```
 
-`reset` poistaa kaikki sovellukset, jotka BBjShip on ottanut käyttöön, poistaa käyttöönotto-osoitteen ja kehityskytkimen, palauttaa BBjServicesin ominaisuustiedoston, jota kehityskäynnistys muutti, ja poistaa BBjShipin kirjoittamat tiedostot. Komento ei koskaan pysäytä BBjServicesia. Kun se palautti ominaisuustiedoston, käynnistä BBjServices uudelleen sen käyttöönottamiseksi. Liitteen hakemisto pysyy.
+`reset` poistaa kaikki BBjShipillä käyttöönotetut sovellukset, käyttöönottopäätepisteen, kehityksen käyttöönottoasetuksen ja `--allow-unencrypted`-asetuksen, palauttaa kehitysajon muuttaman BBjServicesin ominaisuustiedoston ja poistaa BBjShipin kirjoittamat tiedostot. Komento ei koskaan pysäytä BBjServicesiä. Kun ominaisuustiedosto on palautettu, käynnistä BBjServices uudelleen, jotta muutokset tulevat voimaan. Liitännäiskansio säilyy.
 
 | Asetus | Oletus | Kuvaus |
 |---|---|---|
-| `--yes` | Pois päältä | Ohittaa vahvistuksen. |
-| `--properties TIEDOSTO` | `<BBj home>/cfg/BBj.properties` | BBjServicesin ominaisuustiedosto, jonka `reset` palauttaa. |
+| `--yes` | Pois käytöstä | Ohittaa vahvistuspyynnön. |
+| `--properties FILE` | `<BBj home>/cfg/BBj.properties` | BBjServicesin ominaisuustiedosto, jonka `reset` palauttaa. |
 
-Komento tulostaa, mitä se tekee, ja kysyy vahvistusta, ellei `--yes` anneta. Windowsissa `reset`, ilman `--yes`, päättyy poistumiskoodiin `2`, ennen kuin se kirjautuu sisään.
+Komento tulostaa tekemänsä toimet ja pyytää vahvistusta, ellei `--yes`-valitsinta ole annettu. Windowsissa `reset` ilman `--yes`-valitsinta päättyy poistumiskoodiin `2` ennen sisäänkirjautumista.
 
-:::warning Ennen varmuuskopiointia
-`reset` ei voi peruuttaa. Se poistaa jokaisen BBjShipin käyttöönotetun sovelluksen hakemiston ja lopettaa niiden käynnissä olevat istunnot. Ennen kuin suoritat sen, säilytä jokaisen sovelluksen käyttöönottoarkisto, esimerkiksi `target/bbj/<publish name>.zip` ja varmuuskopioi `<BBj home>/cfg/BBj.properties`. Kun tiedoston kopio oli tallennettuna BBjShipin suoritusympäristön hakemistoon, `reset` palauttaa sen kopion takaisin `cfg/BBj.properties`:ään, joten kaikki tiedostoon tekemäsi muutokset ensimmäisen kehityskäynnistyksen jälkeen menetetään. Käynnistä BBjServices uudelleen sen jälkeen, jotta voit ottaa palautetut Java-asetukset käyttöön.
+:::warning Tee ensin varmuuskopio
+`reset`-toimintoa ei voi kumota. Se poistaa kaikkien BBjShipillä käyttöönotettujen sovellusten kansiot ja päättää niiden käynnissä olevat istunnot. Ennen komennon suorittamista säilytä kunkin sovelluksen käyttöönottopaketti, esimerkiksi koontiversion `target/bbj/<publish name>.zip`, ja varmuuskopioi `<BBj home>/cfg/BBj.properties`. Jos tiedostosta on tallennettu kopio BBjShipin ajonaikaiseen kansioon, `reset` palauttaa kyseisen kopion tiedoston `cfg/BBj.properties` päälle, jolloin kaikki ensimmäisen kehitysajon jälkeen tekemäsi muutokset menetetään. Käynnistä BBjServices sen jälkeen uudelleen, jotta palautetut Java-asetukset tulevat voimaan.
 :::
 
 ## Poistumiskoodit {#exit-codes}
@@ -214,6 +220,6 @@ Komento tulostaa, mitä se tekee, ja kysyy vahvistusta, ellei `--yes` anneta. Wi
 |---|---|
 | `0` | Komento onnistui. |
 | `1` | Komento epäonnistui ja tulosti syyn, tai `reset` peruutettiin. |
-| `2` | Argumentit ovat virheellisiä tai komento tarvitsee vakiotuloa Windowsissa. Viesti näyttää, mitä määrittää. |
+| `2` | Argumentit eivät kelpaa tai komento tarvitsee Windowsissa vakiosyötettä. Viestissä kerrotaan, mitä pitää määrittää. |
 
-[Ongelmanratkaisu](/docs/configuration/bbjship/troubleshooting#command-line) luettelee viestit ja mitä tehdä jokaiselle.
+[Vianmääritys](/docs/configuration/bbjship/troubleshooting#command-line) sisältää viestit ja ohjeet niiden käsittelyyn.

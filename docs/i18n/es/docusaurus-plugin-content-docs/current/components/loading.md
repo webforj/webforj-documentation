@@ -1,5 +1,5 @@
 ---
-title: Loading
+title: Cargando
 sidebar_position: 65
 description: >-
   Overlay a parent container with the Loading component to block interaction

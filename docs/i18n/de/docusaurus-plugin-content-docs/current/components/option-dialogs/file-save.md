@@ -1,5 +1,5 @@
 ---
-title: File Save
+title: Datei speichern
 sidebar_position: 15
 description: >-
   Prompt users for a save location with the FileSaveDialog, configuring initial

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Fields
+title: 字段
 hide_giscus_comments: true
 description: >-
   Share common field properties across webforJ input components, including

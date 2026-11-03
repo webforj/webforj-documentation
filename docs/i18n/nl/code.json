@@ -1061,5 +1061,633 @@
   "componentDemo.iframeTitle": {
     "message": "Component demo",
     "description": "Accessible title for the demo iframe"
+  },
+  "component.blogFilterBar.all": {
+    "message": "Alles"
+  },
+  "component.blogFilterBar.release": {
+    "message": "Vrijgeven"
+  },
+  "component.blogFilterBar.ai": {
+    "message": "AI"
+  },
+  "component.blogFilterBar.tutorial": {
+    "message": "Handleiding"
+  },
+  "component.blogFilterBar.components": {
+    "message": "Componenten"
+  },
+  "component.blogFilterBar.integrations": {
+    "message": "Integraties"
+  },
+  "component.blogFilterBar.styling": {
+    "message": "Opmaak"
+  },
+  "component.blogFilterBar.community": {
+    "message": "Community"
+  },
+  "component.blogFilterBar.tags.one": {
+    "message": "{count} tag"
+  },
+  "component.blogFilterBar.tags.other": {
+    "message": "{count} tags"
+  },
+  "component.blogFilterBar.posts.one": {
+    "message": "{count} berichten"
+  },
+  "component.blogFilterBar.posts.other": {
+    "message": "{count} berichten"
+  },
+  "component.blogFilterBar.rssTitle": {
+    "message": "Abonneren op de blogfeed"
+  },
+  "component.blogShare.label": {
+    "message": "Delen",
+    "description": "Label before the share buttons"
+  },
+  "component.blogShare.linkedin": {
+    "message": "Delen op LinkedIn"
+  },
+  "component.blogShare.x": {
+    "message": "Delen op X"
+  },
+  "component.blogShare.reddit": {
+    "message": "Delen op Reddit"
+  },
+  "component.blogShare.bluesky": {
+    "message": "Delen op Bluesky"
+  },
+  "component.blogShare.email": {
+    "message": "Delen via e-mail"
+  },
+  "component.connectCard.teamName": {
+    "message": "webforJ-team"
+  },
+  "component.connectCard.title.blog": {
+    "message": "Bouw je met webforJ?"
+  },
+  "component.connectCard.title.docs": {
+    "message": "Hulp nodig?"
+  },
+  "component.connectCard.text.blog": {
+    "message": "Bespreek je project met de engineers erachter."
+  },
+  "component.connectCard.text.docs": {
+    "message": "Bespreek je project met de engineers van webforJ."
+  },
+  "component.connectCard.contact": {
+    "message": "Neem contact met ons op"
+  },
+  "component.connectLauncher.topics.evaluating": {
+    "message": "webforJ evalueren voor een project"
+  },
+  "component.connectLauncher.topics.evaluating.subject": {
+    "message": "webforJ evalueren voor een project"
+  },
+  "component.connectLauncher.topics.modernizing": {
+    "message": "Een bestaande app moderniseren"
+  },
+  "component.connectLauncher.topics.modernizing.subject": {
+    "message": "Een bestaande app moderniseren met webforJ"
+  },
+  "component.connectLauncher.topics.stuck": {
+    "message": "Loop je ergens vast in de documentatie?"
+  },
+  "component.connectLauncher.topics.stuck.subject": {
+    "message": "Vraag over de webforJ-documentatie"
+  },
+  "component.connectLauncher.mailBody": {
+    "message": "Hoi webforJ-team,\n\n\n\n(Ik was aan het lezen: {title} - {url})"
+  },
+  "component.connectLauncher.copy.docs.text": {
+    "message": "Bouw je iets met webforJ of loop je vast op een pagina in de documentatie? Laat het ons weten, dan helpt een engineer je op weg."
+  },
+  "component.connectLauncher.copy.docs.greetingTitled": {
+    "message": "Vragen over {title}? Vraag het aan het team."
+  },
+  "component.connectLauncher.copy.greeting": {
+    "message": "Vragen over webforJ? Vraag het aan het team."
+  },
+  "component.connectLauncher.copy.blog.text": {
+    "message": "Bouw je iets zoals dit, of overweeg je webforJ voor een project? Vertel het ons, dan helpen we je de beste manier te vinden om het te bouwen."
+  },
+  "component.connectLauncher.copy.blog.greeting": {
+    "message": "Iets soortgelijks aan het bouwen? Neem contact op met het team."
+  },
+  "component.connectLauncher.copy.default.text": {
+    "message": "Vertel ons wat je bouwt, dan helpen we je de beste manier te vinden om dit met webforJ te doen."
+  },
+  "component.connectLauncher.panelLabel": {
+    "message": "Praat met het webforJ-team"
+  },
+  "component.connectLauncher.close": {
+    "message": "Sluiten"
+  },
+  "component.connectLauncher.hello": {
+    "message": "Hoi, wij zijn het webforJ-team 👋"
+  },
+  "component.connectLauncher.topicsLabel": {
+    "message": "Waarmee kunnen we je helpen?"
+  },
+  "component.connectLauncher.primary": {
+    "message": "Plan een kennismakingsgesprek"
+  },
+  "component.connectLauncher.callNote.strong": {
+    "message": "Geen kosten, nergens aan vast."
+  },
+  "component.connectLauncher.callNote.text": {
+    "message": "Voor teams die een project met webforJ evalueren of bouwen. Kies hierboven een onderwerp voor snelle vragen."
+  },
+  "component.connectLauncher.follow": {
+    "message": "Volg webforJ"
+  },
+  "component.connectLauncher.dismiss": {
+    "message": "Sluiten"
+  },
+  "component.connectLauncher.teamName": {
+    "message": "webforJ-team"
+  },
+  "component.connectLauncher.replyYes": {
+    "message": "Ja, laten we praten."
+  },
+  "component.connectLauncher.replyNo": {
+    "message": "Niet nu"
+  },
+  "component.connectLauncher.button": {
+    "message": "Vragen? Vraag het ons."
+  },
+  "component.connectLauncher.newMessage": {
+    "message": "1 nieuw bericht"
+  },
+  "component.connectLinks.followLinkedIn": {
+    "message": "Volg ons op LinkedIn"
+  },
+  "component.connectLinks.subscribeYouTube": {
+    "message": "Abonneren op YouTube"
+  },
+  "component.connectLinks.starGitHub": {
+    "message": "Geef een ster op GitHub"
+  },
+  "component.connectLinks.subscribeRss": {
+    "message": "Abonneer je op de Blog-feed"
+  },
+  "component.exploreCard.short": {
+    "message": "Kort · YouTube"
+  },
+  "component.exploreCard.video": {
+    "message": "Video · YouTube"
+  },
+  "component.exploreCard.post": {
+    "message": "Blog · {date}"
+  },
+  "component.exploreCard.label": {
+    "message": "Verkennen"
+  },
+  "component.exploreCard.previous": {
+    "message": "Vorige suggestie"
+  },
+  "component.exploreCard.next": {
+    "message": "Volgende suggestie"
+  },
+  "component.megaMenu.playFullScreen": {
+    "message": "Op volledig scherm afspelen"
+  },
+  "component.megaMenu.learnMore": {
+    "message": "Meer informatie"
+  },
+  "component.megaMenu.products.webforJ.label": {
+    "message": "webforJ"
+  },
+  "component.megaMenu.products.webforJ.tagline": {
+    "message": "100% Java, van begin tot eind\n"
+  },
+  "component.megaMenu.products.webforJ.description": {
+    "message": "Bouw de volledige webapp in Java, inclusief de gebruikersinterface. Je hoeft geen JavaScript te schrijven en er is geen REST-laag tussen de gebruikersinterface en je backend."
+  },
+  "component.megaMenu.products.webforJ.cta": {
+    "message": "Aan de slag"
+  },
+  "component.megaMenu.products.kotlinDSL.label": {
+    "message": "Kotlin DSL"
+  },
+  "component.megaMenu.products.kotlinDSL.tagline": {
+    "message": "Dezelfde UI's, in Kotlin"
+  },
+  "component.megaMenu.products.kotlinDSL.description": {
+    "message": "Bouw declaratief webforJ-interfaces in Kotlin met typeveilige builders en geneste blokken, naast je Java-code. Experimenteel."
+  },
+  "component.megaMenu.products.kotlinDSL.cta": {
+    "message": "Ontdek de Kotlin DSL"
+  },
+  "component.megaMenu.products.uIComponents.label": {
+    "message": "UI-componenten"
+  },
+  "component.megaMenu.products.uIComponents.tagline": {
+    "message": "Kant-en-klaar en gemaakt om te combineren"
+  },
+  "component.megaMenu.products.uIComponents.description": {
+    "message": "Lay-outs, gegevensinvoer, navigatie, feedback en visualisatie, allemaal in Java. Combineer ze met Composite tot je eigen herbruikbare componenten en stel alleen de API beschikbaar die jij kiest."
+  },
+  "component.megaMenu.products.uIComponents.cta": {
+    "message": "Componenten verkennen"
+  },
+  "component.megaMenu.products.swingModernization.label": {
+    "message": "Swing-modernisering"
+  },
+  "component.megaMenu.products.swingModernization.tagline": {
+    "message": "Breng Swing-apps naar het web\n"
+  },
+  "component.megaMenu.products.swingModernization.description": {
+    "message": "Voer bestaande Swing-, JavaFX- of SWT-apps via Webswing uit in de browser en migreer ze vervolgens scherm voor scherm naar webforJ."
+  },
+  "component.megaMenu.products.swingModernization.cta": {
+    "message": "Begin met moderniseren"
+  },
+  "component.megaMenu.products.craftforJ.label": {
+    "message": "craftforJ"
+  },
+  "component.megaMenu.products.craftforJ.tagline": {
+    "message": "Bewerk je draaiende app visueel"
+  },
+  "component.megaMenu.products.craftforJ.description": {
+    "message": "Inspecteer de componentenstructuur van een actieve app, wijzig componenten live en schrijf behouden wijzigingen terug naar je Java-broncode."
+  },
+  "component.megaMenu.products.craftforJ.cta": {
+    "message": "Ontdek craftforJ"
+  },
+  "component.megaMenu.products.aITooling.label": {
+    "message": "AI-tools"
+  },
+  "component.megaMenu.products.aITooling.tagline": {
+    "message": "Leer je AI-assistent over webforJ"
+  },
+  "component.megaMenu.products.aITooling.description": {
+    "message": "Eén plugin biedt Claude Code, Copilot, Cursor, Gemini en Codex actuele webforJ-documentatie, projectopzet, themageneratie en workflows volgens de webforJ-conventies."
+  },
+  "component.megaMenu.products.aITooling.cta": {
+    "message": "Installeer de AI-plug-in"
+  },
+  "component.megaMenu.products.mCPApps.label": {
+    "message": "MCP Apps"
+  },
+  "component.megaMenu.products.mCPApps.tagline": {
+    "message": "Je webforJ-weergaven, in AI-apps"
+  },
+  "component.megaMenu.products.mCPApps.description": {
+    "message": "Laat een MCP-compatibele AI-app een gerouteerde webforJ-weergave openen in het gesprek, zodat de gebruiker en de AI met dezelfde live-UI werken. Experimenteel."
+  },
+  "component.megaMenu.products.mCPApps.cta": {
+    "message": "Ontdek MCP Apps"
+  },
+  "component.megaMenu.products.figmaDesignKit.label": {
+    "message": "Figma-designkit"
+  },
+  "component.megaMenu.products.figmaDesignKit.tagline": {
+    "message": "Ontwerp met de echte componenten"
+  },
+  "component.megaMenu.products.figmaDesignKit.description": {
+    "message": "De DWC Design Kit brengt de webforJ-componenten naar Figma, zodat wat je ontwerpt overeenkomt met wat je bouwt."
+  },
+  "component.megaMenu.products.figmaDesignKit.cta": {
+    "message": "Open de ontwerpset"
+  },
+  "component.megaMenu.developers.learn.title": {
+    "message": "Leren"
+  },
+  "component.megaMenu.developers.learn.gettingStarted.label": {
+    "message": "Aan de slag"
+  },
+  "component.megaMenu.developers.learn.gettingStarted.description": {
+    "message": "Maak en start je eerste app"
+  },
+  "component.megaMenu.developers.learn.tutorial.label": {
+    "message": "Handleiding"
+  },
+  "component.megaMenu.developers.learn.tutorial.description": {
+    "message": "Bouw stap voor stap een complete app."
+  },
+  "component.megaMenu.developers.learn.appBasics.label": {
+    "message": "Basis van de app"
+  },
+  "component.megaMenu.developers.learn.appBasics.description": {
+    "message": "Hoe een webforJ-app in elkaar zit"
+  },
+  "component.megaMenu.developers.learn.components.label": {
+    "message": "Componenten"
+  },
+  "component.megaMenu.developers.learn.components.description": {
+    "message": "Alle componenten, met live demo's"
+  },
+  "component.megaMenu.developers.learn.cookbook.label": {
+    "message": "Kookboek"
+  },
+  "component.megaMenu.developers.learn.cookbook.description": {
+    "message": "Korte recepten voor dagelijkse taken"
+  },
+  "component.megaMenu.developers.learn.javaDocs.label": {
+    "message": "JavaDocs"
+  },
+  "component.megaMenu.developers.learn.javaDocs.description": {
+    "message": "De volledige Java-API"
+  },
+  "component.megaMenu.developers.learn.clientComponents.label": {
+    "message": "Clientcomponenten"
+  },
+  "component.megaMenu.developers.learn.clientComponents.description": {
+    "message": "Onderdelen en stijleigenschappen"
+  },
+  "component.megaMenu.developers.buildAndShip.title": {
+    "message": "Bouwen en leveren"
+  },
+  "component.megaMenu.developers.buildAndShip.startforJ.label": {
+    "message": "startforJ"
+  },
+  "component.megaMenu.developers.buildAndShip.startforJ.description": {
+    "message": "Maak een nieuw project in de browser"
+  },
+  "component.megaMenu.developers.buildAndShip.springBoot.label": {
+    "message": "Spring Boot"
+  },
+  "component.megaMenu.developers.buildAndShip.springBoot.description": {
+    "message": "Dependency injection, Spring Data en meer"
+  },
+  "component.megaMenu.developers.buildAndShip.jBang.label": {
+    "message": "JBang"
+  },
+  "component.megaMenu.developers.buildAndShip.jBang.description": {
+    "message": "Een webforJ-app vanuit één bestand uitvoeren"
+  },
+  "component.megaMenu.developers.buildAndShip.hotswap.label": {
+    "message": "Hotswap"
+  },
+  "component.megaMenu.developers.buildAndShip.hotswap.description": {
+    "message": "Codewijzigingen toepassen zonder opnieuw op te starten"
+  },
+  "component.megaMenu.developers.buildAndShip.browserlessTesting.label": {
+    "message": "Testen zonder browser"
+  },
+  "component.megaMenu.developers.buildAndShip.browserlessTesting.description": {
+    "message": "Test weergaven in JUnit, geen browser nodig."
+  },
+  "component.megaMenu.developers.buildAndShip.bBjShip.label": {
+    "message": "BBjShip"
+  },
+  "component.megaMenu.developers.buildAndShip.bBjShip.description": {
+    "message": "Apps uitrollen naar BBjServices"
+  },
+  "component.megaMenu.developers.buildAndShip.automatedUpgrades.label": {
+    "message": "Automatische upgrades"
+  },
+  "component.megaMenu.developers.buildAndShip.automatedUpgrades.description": {
+    "message": "Upgrade naar een nieuwe release met OpenRewrite"
+  },
+  "component.megaMenu.resources.readAndWatch.title": {
+    "message": "Lezen en kijken"
+  },
+  "component.megaMenu.resources.readAndWatch.blog.label": {
+    "message": "Blog"
+  },
+  "component.megaMenu.resources.readAndWatch.blog.description": {
+    "message": "Releases, tutorials en diepgaande artikelen"
+  },
+  "component.megaMenu.resources.readAndWatch.successStories.label": {
+    "message": "Succesverhalen"
+  },
+  "component.megaMenu.resources.readAndWatch.successStories.description": {
+    "message": "Teams die bouwen met webforJ"
+  },
+  "component.megaMenu.resources.readAndWatch.whitepapers.label": {
+    "message": "Whitepapers"
+  },
+  "component.megaMenu.resources.readAndWatch.whitepapers.description": {
+    "message": "Diepgaande artikelen over webforJ"
+  },
+  "component.megaMenu.resources.readAndWatch.webinars.label": {
+    "message": "Webinars"
+  },
+  "component.megaMenu.resources.readAndWatch.webinars.description": {
+    "message": "Livesessies en opnames"
+  },
+  "component.megaMenu.resources.connect.title": {
+    "message": "Verbinden"
+  },
+  "component.megaMenu.resources.connect.events.label": {
+    "message": "Evenementen"
+  },
+  "component.megaMenu.resources.connect.events.description": {
+    "message": "Lezingen, conferenties en meetups"
+  },
+  "component.megaMenu.resources.connect.youTube.label": {
+    "message": "YouTube"
+  },
+  "component.megaMenu.resources.connect.youTube.description": {
+    "message": "Video's en stapsgewijze handleidingen"
+  },
+  "component.megaMenu.resources.connect.linkedIn.label": {
+    "message": "LinkedIn"
+  },
+  "component.megaMenu.resources.connect.linkedIn.description": {
+    "message": "Nieuws van het team"
+  },
+  "component.megaMenu.resources.connect.gitHub.label": {
+    "message": "GitHub"
+  },
+  "component.megaMenu.resources.connect.gitHub.description": {
+    "message": "Broncode en releases"
+  },
+  "component.megaMenu.support.getHelp.title": {
+    "message": "Hulp krijgen"
+  },
+  "component.megaMenu.support.getHelp.reportAnIssue.label": {
+    "message": "Probleem melden"
+  },
+  "component.megaMenu.support.getHelp.reportAnIssue.description": {
+    "message": "Bugs en functieverzoeken"
+  },
+  "component.megaMenu.support.getHelp.emailSupport.label": {
+    "message": "E-mailondersteuning"
+  },
+  "component.megaMenu.support.getHelp.emailSupport.description": {
+    "message": "support@basis.cloud"
+  },
+  "component.megaMenu.support.getHelp.contactUs.label": {
+    "message": "Neem contact met ons op"
+  },
+  "component.megaMenu.support.getHelp.contactUs.description": {
+    "message": "Plan een gesprek met het webforJ-team"
+  },
+  "component.megaMenu.support.workWithUs.title": {
+    "message": "Werk met ons samen"
+  },
+  "component.megaMenu.support.workWithUs.lTSPlusSupportPlans.label": {
+    "message": "LTS+-ondersteuningsplannen"
+  },
+  "component.megaMenu.support.workWithUs.lTSPlusSupportPlans.description": {
+    "message": "Langetermijnondersteuning voor productie"
+  },
+  "component.megaMenu.support.workWithUs.partners.label": {
+    "message": "Partners"
+  },
+  "component.megaMenu.support.workWithUs.partners.description": {
+    "message": "Vind een webforJ-partner"
+  },
+  "component.megaMenu.support.workWithUs.company.label": {
+    "message": "Bedrijf"
+  },
+  "component.megaMenu.support.workWithUs.company.description": {
+    "message": "BASIS, het team achter webforJ"
+  },
+  "component.blogTagsListPage.subtitle.one": {
+    "message": "Bekijk alle {count} onderwerpen die aan bod komen op de webforJ Blog."
+  },
+  "component.blogTagsListPage.subtitle.other": {
+    "message": "Bekijk alle {count} onderwerpen op de webforJ Blog."
+  },
+  "component.footer.pitch": {
+    "message": "Doe alles in Java! Bouw in Java, zet het online."
+  },
+  "component.footer.action.startYourApp": {
+    "message": "Start je app"
+  },
+  "component.footer.action.contactUs": {
+    "message": "Neem contact met ons op"
+  },
+  "component.footer.products.title": {
+    "message": "Producten"
+  },
+  "component.footer.products.webforJ": {
+    "message": "webforJ"
+  },
+  "component.footer.products.kotlinDSL": {
+    "message": "Kotlin DSL"
+  },
+  "component.footer.products.uIComponents": {
+    "message": "UI-componenten"
+  },
+  "component.footer.products.swingModernization": {
+    "message": "Modernisering van Swing"
+  },
+  "component.footer.products.craftforJ": {
+    "message": "craftforJ"
+  },
+  "component.footer.products.aITooling": {
+    "message": "AI-tools"
+  },
+  "component.footer.products.mCPApps": {
+    "message": "MCP Apps"
+  },
+  "component.footer.products.figmaDesignKit": {
+    "message": "Figma-ontwerpset"
+  },
+  "component.footer.developers.title": {
+    "message": "Ontwikkelaars"
+  },
+  "component.footer.developers.gettingStarted": {
+    "message": "Aan de slag"
+  },
+  "component.footer.developers.tutorial": {
+    "message": "Handleiding"
+  },
+  "component.footer.developers.cookbook": {
+    "message": "Kookboek"
+  },
+  "component.footer.developers.javaDocs": {
+    "message": "JavaDocs"
+  },
+  "component.footer.developers.startforJ": {
+    "message": "startforJ"
+  },
+  "component.footer.developers.springBoot": {
+    "message": "Spring Boot"
+  },
+  "component.footer.developers.hotswap": {
+    "message": "Hotswap"
+  },
+  "component.footer.developers.browserlessTesting": {
+    "message": "Testen zonder browser"
+  },
+  "component.footer.resources.title": {
+    "message": "Bronnen"
+  },
+  "component.footer.resources.blog": {
+    "message": "Blog"
+  },
+  "component.footer.resources.successStories": {
+    "message": "Succesverhalen"
+  },
+  "component.footer.resources.whitepapers": {
+    "message": "Whitepapers"
+  },
+  "component.footer.resources.webinars": {
+    "message": "Webinars"
+  },
+  "component.footer.resources.events": {
+    "message": "Evenementen"
+  },
+  "component.footer.support.title": {
+    "message": "Ondersteuning"
+  },
+  "component.footer.support.reportAnIssue": {
+    "message": "Meld een probleem"
+  },
+  "component.footer.support.emailSupport": {
+    "message": "E-mailondersteuning"
+  },
+  "component.footer.support.contactUs": {
+    "message": "Neem contact met ons op"
+  },
+  "component.footer.support.lTSPlusSupportPlans": {
+    "message": "LTS+-ondersteuningsplannen"
+  },
+  "component.footer.support.partners": {
+    "message": "Partners"
+  },
+  "component.footer.company.title": {
+    "message": "Bedrijf"
+  },
+  "component.footer.company.aboutBASIS": {
+    "message": "Over BASIS"
+  },
+  "component.footer.company.pricing": {
+    "message": "Prijzen"
+  },
+  "component.footer.company.webforjCom": {
+    "message": "webforj.com"
+  },
+  "component.footer.company.legal": {
+    "message": "Juridisch"
+  },
+  "component.footer.homeLabel": {
+    "message": "Startpagina van de webforJ-documentatie"
+  },
+  "component.footer.navLabel": {
+    "message": "Voettekst"
+  },
+  "component.footer.copyright": {
+    "message": "Copyright © {year} {company} Alle rechten voorbehouden."
+  },
+  "component.blogPostFooter.keepReading": {
+    "message": "Verder lezen",
+    "description": "Heading of the related posts section"
+  },
+  "component.blogPostFooter.follow": {
+    "message": "Volgen",
+    "description": "Label before the follow icons"
+  },
+  "component.blogPostFooter.talkTitle": {
+    "message": "Bouw je iets met webforJ?",
+    "description": "Heading of the contact invitation"
+  },
+  "component.blogPostFooter.talkText": {
+    "message": "Bespreek je project, migratie of de geschiktheid van webforJ met het team.",
+    "description": "Text of the contact invitation"
+  },
+  "component.blogPostFooter.contactUs": {
+    "message": "Neem contact met ons op",
+    "description": "Contact button label"
+  },
+  "component.blogPostHeader.back": {
+    "message": "← Blog",
+    "description": "Link back to the blog list above a post title"
   }
 }

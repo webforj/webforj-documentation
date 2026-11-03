@@ -224,7 +224,7 @@ The files belong in version control next to the tests. The first line of each fi
 When the view no longer matches the stored file, the check fails and prints what changed. After the text of the **Pay** button in the [order summary](#matching-a-snapshot) changes to **Pay now**, `mvn test` reports:
 
 ```diff title="Terminal"
-java.lang.AssertionError: 
+java.lang.AssertionError:
 Snapshot <shouldMatchTheSnapshot> does not match src/test/resources/webforj-snapshots/…/OrderSummaryTest.shouldMatchTheSnapshot.yml.
 First difference at line 5.
 --- stored

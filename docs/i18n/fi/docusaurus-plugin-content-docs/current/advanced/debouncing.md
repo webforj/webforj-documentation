@@ -1,6 +1,6 @@
 ---
 sidebar_position: 21
-title: Debouncing
+title: Viiveellinen käsittely
 slug: debouncing
 description: >-
   Delay actions until activity settles using the Debouncer class for

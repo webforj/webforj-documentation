@@ -1,35 +1,37 @@
 ---
 sidebar_position: 30
-title: Muokkaus ja päivitys
+title: Muokkaaminen ja päivittäminen
 slug: refreshing
 description: >-
   Edit Table rows by mutating the bound Repository and call commit to refresh
   the UI through RepositoryCommitEvent.
-_i18n_hash: 6ecf362668be7d0633c3c13e7da068ec
+_i18n_hash: 84dec48293e6fa794713881310b6f303
 ---
-Tietojen muokkaaminen `Table`-komponentissa tapahtuu vuorovaikutuksessa `Repositoryn` kanssa, joka sisältää `Table`:n tiedot. `Repository` toimii silta `Table`:n ja taustalla olevan tietojoukon välillä, tarjoten menetelmiä tietojen hakemiseen, muokkaamiseen ja päivittämiseen. Alla on esimerkki, joka toteuttaa käyttäytymisen muokatakseen halutun rivin "Otsikon".
+`Table`-taulukon tietojen muokkaaminen tapahtuu käsittelemällä `Repository`-säilöä, joka sisältää taulukon tiedot. `Repository` toimii siltana `Table`-taulukon ja taustalla olevan tietojoukon välillä ja tarjoaa menetelmiä tietojen hakemiseen, muokkaamiseen ja päivittämiseen. Alla olevassa esimerkissä toteutetaan toiminta, jolla halutun rivin ”Otsikko”-kenttää voidaan muokata.
 
 <ComponentDemo
 path='/webforj/tableeditdata'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableEditDataView.java',
   'src/main/java/com/webforj/samples/views/table/TitleEditorComponent.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
 ]}
 height='600px'
 />
 
-Yllä olevassa esimerkissä `TitleEditorComponent`-luokka helpottaa "Otsikko" kentän muokkaamista valitulle `MusicRecord`:lle. Komponentissa on syöttökenttä uudelle otsikolle sekä "Tallenna" ja "Peruuta" painikkeet.
+Yllä olevassa esimerkissä `TitleEditorComponent`-luokka mahdollistaa valitun `MusicRecord`-tietueen ”Otsikko”-kentän muokkaamisen. Komponentissa on uuden otsikon syöttökenttä sekä ”Tallenna”- ja ”Peruuta”-painikkeet.
 
-Yhdistääksemme muokkauskomponentin `Table`:en, "Muokkaa" painike lisätään `Table`:n kautta `VoidElementRenderer`in avulla. Tämän painikkeen klikkaaminen aktivoi `TitleEditorComponent`:n `edit()`-metodin, jolloin käyttäjät voivat muokata "Otsikko" arvoa.
+Muokkauskomponentti yhdistetään `Table`-taulukkoon lisäämällä siihen ”Muokkaa”-painike `VoidElementRenderer`-komponentin avulla. Painikkeen napsauttaminen käynnistää `TitleEditorComponent`-komponentin `edit()`-menetelmän, jonka avulla käyttäjä voi muuttaa ”Otsikko”-arvoa.
 
 ## Commit-menetelmä {#commit-method}
 
-Kun käyttäjä muokkaa otsikkoa ja napsauttaa "Tallenna" painiketta, `TitleEditorComponent` aktivoi `save()`-metodin. Tämä metodi päivittää vastaavan `MusicRecord`:n otsikon ja lähettää mukautetun `SaveEvent`:in.
+Kun käyttäjä on muokannut otsikkoa ja napsauttanut ”Tallenna”-painiketta, `TitleEditorComponent` käynnistää `save()`-menetelmän. Tämä menetelmä päivittää vastaavan `MusicRecord`-tietueen otsikon ja lähettää mukautetun `SaveEvent`-tapahtuman.
 
-Reaaliaikainen tietojen päivitys repositoriossa saavutetaan `commit()`-menetelmällä. Tätä menetelmää käytetään `onSave`-tapahtuman kuuntelijassa, varmistaen että muokkauskomponentin kautta tehdyt muutokset heijastuvat taustalla olevaan tietojoukkoon.
+Tietojen reaaliaikainen päivittäminen säilössä tapahtuu `commit()`-menetelmän avulla. Menetelmää käytetään `onSave`-tapahtumankuuntelijassa, jotta muokkauskomponentilla tehdyt muutokset päivittyvät taustalla olevaan tietojoukkoon.
 
-`commit()`-metodia kutsutaan ilmoittamaan kaikille kiinnostuneille komponenteille, että tiedot ovat muuttuneet. `Table` nappaa `RepositoryCommitEvent`:in ja päivittää tietojen perusteella uuden tiedon.
+`commit()`-menetelmää kutsutaan ilmoittamaan kaikille asiasta kiinnostuneille komponenteille, että tietoja on muutettu. `Table` vastaanottaa `RepositoryCommitEvent`-tapahtuman ja päivittää tietonsa uusien tietojen perusteella.
 
-:::tip Muokkaaminen ja entryjen luominen
-`commit()`-metodin kutsuminen sekä päivittää olemassa olevia entryjä että **lisää kaikki uudet entryt, jotka on luotu**.
+:::tip Tietueiden päivittäminen ja luominen
+`commit()`-menetelmän kutsuminen sekä päivittää olemassa olevia tietueita että **lisää kaikki luodut uudet tietueet**.
 :::

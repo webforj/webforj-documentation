@@ -1,5 +1,5 @@
 ---
-title: AI Assistant
+title: Asistente de IA
 sidebar_position: 7
 description: >-
   A coding agent that works inside your running webforJ app, writes Java freely

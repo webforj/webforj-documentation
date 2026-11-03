@@ -6,7 +6,7 @@ description: >-
   validate webforJ components, logic, and full user journeys.
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
+_i18n_hash: 58ac266506a221d71e22c723189aa08f
 ---
 <Head>
   <style>{`
@@ -16,35 +16,37 @@ _i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
   `}</style>
 </Head>
 
-# webforJ Testing
+# Tests webforJ
 
-Les tests dans les applications webforJ combinent des tests unitaires, frontend et de bout en bout (E2E), chacun ayant un objectif distinct pour maintenir l'application stable et fiable.
+Les tests dans les applications webforJ combinent les tests unitaires, frontend et de bout en bout (E2E). Chacun remplit un objectif distinct pour assurer la stabilité et la fiabilité de l’application.
 
-## Unit testing {#unit-testing}
+## Tests unitaires {#unit-testing}
 
-Les tests unitaires se concentrent sur la vérification des composants individuels ou de la logique backend en isolation. En suivant les pratiques standard de test Java, telles que l'utilisation de [JUnit](https://junit.org/junit5/), les développeurs peuvent valider efficacement une logique d'application spécifique et s'assurer que chaque "unité" fonctionne comme prévu.
+Les tests unitaires visent à vérifier individuellement les composants ou la logique du backend, de façon isolée. En suivant les pratiques habituelles de test en Java, comme l’utilisation de [JUnit](https://junit.org/junit5/), les développeurs peuvent valider la logique spécifique de l’application et vérifier que chaque « unité » fonctionne comme prévu.
 
-## Frontend testing {#frontend-testing}
+Pour les vues et les composants, le [TestBed](./testbed/overview) permet d’effectuer des tests sans navigateur dans de simples tests JUnit, sans navigateur ni serveur. Un test ajoute une vue à la page, interagit avec elle comme le ferait un utilisateur, puis vérifie le résultat depuis Java.
 
-Les tests frontend couvrent les sources que les auteurs de projet utilisent avec le [frontend bundler](/docs/managing-resources/bundler/overview). Le moteur de test [Bun](https://bun.sh/) les exécute dans le cadre de la même construction qui exécute les tests Java, de sorte qu'un composant TypeScript ou une partie de la logique côté client est vérifiée de la même manière que le backend. Voir [Frontend testing](./frontend-testing).
+## Tests frontend {#frontend-testing}
 
-## End-to-End (E2E) testing {#end-to-end-e2e-testing}
+Les tests frontend couvrent le code source écrit par un projet avec le [bundler frontend](/docs/managing-resources/bundler/overview). Le lanceur de tests [Bun](https://bun.sh/) exécute ces tests dans le cadre de la même compilation que celle qui lance les tests Java. Ainsi, un composant TypeScript ou une partie de la logique côté client est vérifié de la même manière que le backend. Consultez la page [Tests frontend](./frontend-testing).
 
-Les tests de bout en bout sont importants pour valider l'expérience utilisateur dans les applications webforJ, qui génèrent des interfaces web dynamiques à page unique. Ces tests simulent les interactions utilisateur et vérifient les fonctionnalités de l'ensemble de l'application.
+## Tests de bout en bout (E2E) {#end-to-end-e2e-testing}
 
-En utilisant des outils tels que [**Selenium**](https://www.selenium.dev/) et [**Playwright**](https://playwright.dev/java/docs/intro), vous pouvez :
+Les tests de bout en bout valident l’expérience des utilisateurs dans les applications webforJ, qui génèrent des interfaces web dynamiques à page unique. Ces tests simulent les interactions des utilisateurs et vérifient les fonctionnalités de l’application dans son ensemble.
 
-- Automatiser les interactions du navigateur, telles que les clics sur les boutons et les soumissions de formulaires.
-- Vérifier le rendu cohérent et l'interactivité des composants d'interface utilisateur dynamiques.
-- Assurer la cohérence du comportement à travers différents navigateurs et appareils.
+À l’aide d’outils comme [**Selenium**](https://www.selenium.dev/) et [**Playwright**](https://playwright.dev/java/docs/intro), vous pouvez :
 
-## Combining testing strategies {#combining-testing-strategies}
+- Automatiser les interactions avec le navigateur en simulant des clics sur des boutons et l’envoi de formulaires.
+- Vérifier le rendu cohérent et l’interactivité des composants d’interface utilisateur dynamiques.
+- Confirmer que le comportement reste cohérent d’un navigateur et d’un appareil à l’autre.
 
-En combinant les tests unitaires et E2E :
+## Combiner les stratégies de test {#combining-testing-strategies}
 
-1. **Isoler les problèmes** : Détecter et résoudre les bogues au niveau des composants tôt grâce aux tests unitaires.
-2. **Assurer la fiabilité** : Valider les parcours utilisateurs complets et les intégrations système avec les tests E2E.
+En combinant les tests unitaires et les tests E2E :
 
-## Topics {#topics}
+1. **Isoler les problèmes** : détecter et corriger rapidement les bogues au niveau des composants grâce aux tests unitaires.
+2. **Confirmer la fiabilité** : valider les parcours utilisateur complets et les intégrations système grâce aux tests E2E.
+
+## Sujets {#topics}
 
 <DocCardList className="topics-section" />

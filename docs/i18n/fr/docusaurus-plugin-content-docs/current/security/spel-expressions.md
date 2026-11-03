@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: SpEL Expressions
+title: Expressions SpEL
 description: >-
   Author route authorization rules with Spring Expression Language using
   @RouteAccess for role, authority, and custom checks.

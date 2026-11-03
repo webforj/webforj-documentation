@@ -1,12 +1,13 @@
 ---
-title: 编写源代码的更改
+title: 应用更改
 sidebar_position: 4
+sidebar_class_name: new-content
 description: >-
   Review the changes you made in craftforJ as a diff, choose where each one is
   written, and apply them to your Java source.
-_i18n_hash: dd96407889e9e9fa1de4af299809dcad
+_i18n_hash: de9ef40848946a35567c308c132dce0d
 ---
-在 craftforJ 中更改属性仅会影响运行中的应用程序，而不会影响其他任何内容。要保留更改，您需要审查并将其写入原始 Java 文件。此页面描述了该步骤。
+在 craftforJ 中更改属性会立即反映在正在运行的应用中，但不会更改其他内容。要保留更改，你需要先检查，然后将其写入对应的 Java 文件。本页介绍这一操作。
 
 <div class="videos-container">
   <video controls preload="metadata">
@@ -14,35 +15,58 @@ _i18n_hash: dd96407889e9e9fa1de4af299809dcad
   </video>
 </div>
 
-:::warning craftforJ 会写入您的项目
-请确保您的工作在版本控制中。应用更改之前，请先阅读差异，并在提交之前再次阅读。
+:::warning craftforJ 会写入你的项目
+请使用版本控制保存你的工作。应用更改前先查看差异，提交前再检查一遍。
 :::
 
-## 待处理更改 {#pending-changes}
+## 待处理的更改 {#pending-changes}
 
-您更改的每个属性都会被记录为待处理更改，并且 craftforJ 会显示有多少更改在等待。待处理更改会在页面重新加载和路由更改后保存，因为 craftforJ 会在您的组件重建时重新应用它们。
+你更改的每个属性都会记录为一项待处理更改，craftforJ 会显示等待处理的更改数量。即使重新加载页面或切换路由，待处理的更改也会保留，因为组件重建时 craftforJ 会重新应用这些更改。
 
-## 审查和应用 {#reviewing-and-applying}
+## 检查并应用 {#reviewing-and-applying}
 
-按 <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> 以打开审查界面。更改按文件分组，每个更改显示属性及其旧值和新值，并扩展为文件的差异。如果更改将用固定值替换计算值，craftforJ 会警告您并命名即将被替换的表达式。在您应用之前，什么都不会被写入。您可以单独恢复或放弃每个更改。
+按 <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> 打开检查视图。更改会按目标文件分组。每项更改都会显示属性的旧值和新值，并可展开查看文件差异。如果某项更改会用固定值替换计算值，craftforJ 会发出警告，并指出即将被替换的表达式。应用之前，不会写入任何内容。应用前，你可以单独还原或丢弃每项更改。
 
-![更改按文件分组的审查界面，其中一个文件展开显示其差异](/img/craftforj/source-changes/review.png#rounded-border)
+![按文件分组的更改检查视图，其中一项已展开以显示文件差异](/img/craftforj/source-changes/review.png#rounded-border)
 
 ## 选择更改的写入位置 {#choosing-where-a-change-is-written}
 
-更改写入的位置决定了其影响范围。当组件直接在视图中构建时，变更将进入该视图。当它在可重用类内部构建时，您有两个选项：
+更改的写入位置决定了它的影响范围。如果组件直接在视图中构建，更改会写入该视图。如果组件在可复用类中构建，则有两种选择：
 
-- **使用** - 组件被使用的地方，仅更改您面前的屏幕。这是默认选项。
-- **定义** - 构建组件的地方，更改所有使用它的屏幕。
+- **使用位置** - 使用该组件的位置，只更改当前显示的屏幕。这是默认选项。
+- **定义位置** - 构建组件的位置，会更改所有使用该组件的屏幕。
 
-每个待处理更改都会显示适用的选项，并允许您在两者之间切换。某些属性只能在定义中写入，因为组件自己设置这些属性，而不是从调用方那里接受它们。craftforJ 在您应用之前会标记这些属性。
+每项待处理的更改都会显示当前选择的位置，并允许你在两者之间切换。有些属性只能写入定义位置，因为组件会自行设置这些属性，而不是由调用方传入。craftforJ 会在应用前标记这些属性。
 
 ## 应用之后 {#after-you-apply}
 
-写入 Java 会导致您的应用重建并重新启动。craftforJ 反馈重启状态，等待重启完成，并保持您的选择和剩余未处理更改不变。已应用的更改一旦写入文件就会从待处理列表中移除。
+写入 Java 文件会导致应用重新构建并重启。craftforJ 会报告重启状态、等待重启完成，然后重新连接，同时保留当前选择和剩余的待处理更改。更改写入文件后，就会从待处理列表中移除。
 
-这是唯一一个重载设置重要的时刻。craftforJ 不需要实时重载来工作，因为您在检查期间所做的所有更改都会立即在运行的应用中生效，无需重建。写入源文件则不同：这会更改构建应用的文件，因此在您的代码更改生效之前，应用必须重建，并且该变化不是来自 craftforJ。如果配置了[实时重载](/docs/configuration/deploy-reload/overview)，这会自动发生。如果没有，需要您手动重启应用。
+只有在这一步，重新加载配置才会起作用。craftforJ 无需实时重新加载也能工作，因为你在检查过程中所做的更改会立即在正在运行的应用中生效，无需重新构建。写入源文件则不同：它会修改构建应用时使用的文件，因此应用必须重新构建，才能让更改来自你的代码，而不是 craftforJ。如果已配置[实时重新加载](/docs/configuration/deploy-reload/overview)，应用会自动重新构建。否则，请手动重启应用。
 
-## 关闭它 {#turning-it-off}
+## 撤销和重做 <DocChip chip='since' label='26.03' /> {#undoing-and-redoing}
 
-您可以在 craftforJ 设置中关闭写入 Java 的功能，或者通过 [`source-changes`](/docs/craftforj/configuration#feature-flags) 属性完全移除它。关闭这两者后，属性编辑仍然有效，但保持实时状态。
+在 craftforJ 中按 <kbd>Cmd/Ctrl</kbd> + <kbd>Z</kbd> 可撤销上一次更改，按 <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> 可重做。
+
+撤销适用于你在正在运行的应用中所做的更改，包括[属性编辑](/docs/craftforj/inspector#reading-and-changing-properties)和[主题调整](/docs/craftforj/theme#adjusting-a-theme)。它也适用于 craftforJ 写入项目的更改，例如已应用的属性更改、[已保存的主题](/docs/craftforj/theme#saving-a-theme)，或[从源代码中移除的组件](/docs/craftforj/inspector#removing-a-component)。撤销已写入的更改会将文件恢复到之前的状态。如果该文件是 Java 文件，你的应用必须重新构建才能显示更改，与[应用之后](#after-you-apply)的情况相同。
+
+<!-- TODO: add undo/redo recording -->
+
+多次按撤销会逐项撤回更改，按时间从近到远；重做则会按更改发生的顺序重新执行。撤销后进行新更改，会清除所有可重做的操作。
+
+### 撤销受阻时 {#when-an-undo-is-blocked}
+
+如果 craftforJ 写入文件后，你在自己的编辑器中修改并保存了该文件，那么撤销或重做这一步会覆盖你的编辑。craftforJ 会拒绝执行，保留文件当前内容，并指出文件名：
+
+```
+Changed outside craftforJ: ContactFormView.java. Undo that edit in your editor, or skip this step.
+```
+
+你有两种处理方式：
+
+- 在编辑器中撤销你的修改，使文件恢复为 craftforJ 写入后的状态，然后重试。
+- 选择 **跳过**。这会保留文件当前内容，并从历史记录中移除该步骤。跳过不会还原任何内容，因此更早的、涉及同一文件的步骤仍可能受阻。
+
+## 关闭此功能 {#turning-it-off}
+
+你可以在 craftforJ 设置中关闭某个应用的 Java 写入功能，也可以通过 [`source-changes`](/docs/craftforj/configuration#feature-flags) 属性将其彻底移除。关闭后，属性编辑仍然可用，但只会在运行时生效。

@@ -1,90 +1,93 @@
 ---
-title: Command Line
+title: Befehlszeile
 sidebar_position: 7
 description: >-
   The bbjship commands a BBj administrator runs on the BBj machine to manage the
   deployment endpoint, deployed apps, development runs and BBjServices.
-_i18n_hash: 976400b6e439ac682858351e8f9ade17
+_i18n_hash: a80e91a6626a5c018604f40e37a5ff00
 ---
 # Befehlszeile <DocChip chip='since' label='26.03' /> {#command-line}
 
-Der `bbjship` Befehl verwaltet BBjShip auf der BBj-Maschine. Er befindet sich in `<BBj home>/plugins/webforj-bbjship`, als `bbjship.cmd` unter Windows. Jeder Befehl wird innerhalb von BBjServices ausgeführt, daher muss BBjServices für jeden Befehl ausgeführt werden.
+Die Befehlszeile `bbjship` verwaltet BBjShip auf dem BBj-Rechner. Sie befindet sich unter `<BBj home>/plugins/webforj-bbjship` und heißt unter Windows `bbjship.cmd`. Jeder Befehl wird innerhalb von BBjServices ausgeführt. Daher muss BBjServices für jeden Befehl laufen.
 
 ```text
-bbjship <gruppe> <befehl> [optionen]
+bbjship <group> <command> [options]
 ```
 
 ## Befehle {#commands}
 
 | Befehl | Beschreibung |
 |---|---|
-| [`remote enable [--port PORT] [--ssl-port PORT]`](#remote-enable) | Aktiviert oder aktualisiert den Bereitstellungspunkt und druckt seine Adressen aus. |
-| [`remote disable`](#remote-disable) | Entfernt den Bereitstellungspunkt. Bereitgestellte Apps laufen weiter. |
-| [`remote status`](#remote-status) | Druckt die Adressen des Endpunkts und ob Entwicklungsdurchläufe aktiviert sind. |
-| [`apps deploy ARCHIV`](#apps-deploy) | Stellt ein Bereitstellungsarchiv bereit. |
-| [`apps list [--long]`](#apps-list) | Listet die Apps auf, die BBjShip bereitgestellt hat. |
-| [`apps undeploy NAME`, `apps undeploy --all`](#apps-undeploy) | Entfernt eine oder alle Apps, die BBjShip bereitgestellt hat. |
-| [`development enable`, `development disable`](#development) | Aktiviert oder deaktiviert [Entwicklungsdurchläufe](/docs/configuration/deploy-reload/bbjservices) auf dieser Maschine. |
-| [`reset [--yes] [--properties DATEI]`](#reset) | Entfernt jede App und alles, was BBjShip eingerichtet hat. |
+| [`remote enable [--port PORT] [--ssl-port PORT] [--allow-unencrypted]`](#remote-enable) | Aktiviert oder aktualisiert den Bereitstellungsendpunkt und gibt seine Adressen aus. |
+| [`remote disable`](#remote-disable) | Entfernt den Bereitstellungsendpunkt. Bereitgestellte Apps laufen weiter. |
+| [`remote status`](#remote-status) | Gibt die Adressen des Endpunkts aus und zeigt an, ob Entwicklungsläufe aktiviert sind und ob unverschlüsselte Anfragen von einem anderen Rechner zulässig sind. |
+| [`apps deploy ARCHIVE`](#apps-deploy) | Stellt ein Bereitstellungsarchiv bereit. |
+| [`apps list [--long]`](#apps-list) | Listet die von BBjShip bereitgestellten Apps auf. |
+| [`apps undeploy NAME`, `apps undeploy --all`](#apps-undeploy) | Entfernt eine oder alle von BBjShip bereitgestellten Apps. |
+| [`development enable`, `development disable`](#development) | Aktiviert oder deaktiviert [Entwicklungsläufe](/docs/configuration/deploy-reload/bbjservices) auf diesem Rechner. |
+| [`reset [--yes] [--properties FILE]`](#reset) | Entfernt alle Apps und alles, was BBjShip eingerichtet hat. |
 
 ## Gemeinsame Optionen {#options}
 
-| Einstellung | Standard | Beschreibung |
+| Einstellung | Standardwert | Beschreibung |
 |---|---|---|
-| `--username BENUTZER` | Nicht gesetzt | Benutzername des BBj-Administrators. |
-| `--password PASSWORT` | Nicht gesetzt | Passwort des BBj-Administrators. |
+| `--username USER` | Nicht festgelegt | Benutzername des BBj-Administrators. |
+| `--password PASSWORD` | Nicht festgelegt | Passwort des BBj-Administrators. |
 | `--password-stdin` | Aus | Liest das Passwort aus der ersten Zeile der Standardeingabe. Unter Windows nicht verfügbar. |
-| `--help`, `-h` | | Druckt die Verwendung der Befehlszeile oder eines Befehls aus. |
-| `--version`, `-V` | | Druckt die BBjShip-Version aus. |
+| `--help`, `-h` | | Gibt die Verwendung der Befehlszeile oder eines einzelnen Befehls aus. |
+| `--version`, `-V` | | Gibt die BBjShip-Version aus. |
 
-Ein mit `--password` angegebenes Passwort ist während der Ausführung des Befehls für andere Benutzer der Maschine in der Prozessliste sichtbar. Unter macOS und Linux übergibt ein Skript das Passwort über die Standardeingabe:
-
-```bash
-printf '%s\n' "$PASSWORT" | bbjship remote enable --username admin --password-stdin
-```
-
-Auf jedem System halten die Variablen das Passwort aus der Befehlszeile heraus:
+Ein mit `--password` angegebenes Passwort ist während der Ausführung des Befehls für andere Benutzer des Rechners in der Prozessliste sichtbar. Unter macOS und Linux kann ein Skript das Passwort stattdessen über die Standardeingabe übergeben:
 
 ```bash
-WEBFORJ_BBJ_USERNAME=admin WEBFORJ_BBJ_PASSWORD="$PASSWORT" bbjship remote enable
+printf '%s\n' "$PASSWORD" | bbjship remote enable --username admin --password-stdin
 ```
 
-Unter Windows ist die Standardeingabe nicht verfügbar, sodass `--password-stdin` mit dem Exit-Code `2` endet. Übergeben Sie das Passwort als Wert oder über die Variablen:
+Auf jedem System halten Umgebungsvariablen das Passwort aus der Befehlszeile heraus:
+
+```bash
+WEBFORJ_BBJ_USERNAME=admin WEBFORJ_BBJ_PASSWORD="$PASSWORD" bbjship remote enable
+```
+
+Unter Windows ist die Standardeingabe nicht verfügbar, daher endet `--password-stdin` mit dem Exitcode `2`. Übergeben Sie das Passwort als Wert oder über die Variablen:
 
 ```text
-bbjship.cmd remote enable --username admin --password <wert>
+bbjship.cmd remote enable --username admin --password <value>
 ```
 
-Wenn sowohl `--password` als auch `--password-stdin`, ein Benutzername ohne Passwort oder ein Passwort ohne Benutzernamen angegeben werden, endet dies mit dem Exit-Code `2` und einer Nachricht, die angibt, was spezifiziert werden muss.
+Wenn Sie sowohl `--password` als auch `--password-stdin`, einen Benutzernamen ohne Passwort oder ein Passwort ohne Benutzernamen angeben, endet der Befehl mit dem Exitcode `2` und einer Meldung, die angibt, was festgelegt werden muss.
 
-Ohne Anmeldeinformationen verwendet der Befehl das Standardkonto `admin` mit `admin123` und gibt eine Warnung aus.
+Ohne Anmeldedaten verwendet der Befehl das Werkskonto `admin` mit dem Passwort `admin123` und gibt eine Warnung aus.
 
 ## Umgebungsvariablen {#environment-variables}
 
-| Variable | Standard | Beschreibung |
+| Variable | Standardwert | Beschreibung |
 |---|---|---|
-| `WEBFORJ_BBJ_USERNAME` | Nicht gesetzt | Benutzername, wenn `--username` fehlt. |
-| `WEBFORJ_BBJ_PASSWORD` | Nicht gesetzt | Passwort, wenn weder `--password` noch `--password-stdin` angegeben ist. |
-| `NO_COLOR` | Nicht gesetzt | Deaktiviert farbige Ausgaben. |
+| `WEBFORJ_BBJ_USERNAME` | Nicht festgelegt | Benutzername, wenn `--username` nicht angegeben ist. |
+| `WEBFORJ_BBJ_PASSWORD` | Nicht festgelegt | Passwort, wenn weder `--password` noch `--password-stdin` angegeben ist. |
+| `NO_COLOR` | Nicht festgelegt | Deaktiviert die farbige Ausgabe. |
 
 ## Remote {#remote}
 
-Die `remote`-Befehle verwalten den Bereitstellungspunkt.
+Die Befehle von `remote` verwalten den Bereitstellungsendpunkt.
 
 ### `remote enable` {#remote-enable}
 
 ```text
-bbjship remote enable [--port PORT] [--ssl-port PORT]
+bbjship remote enable [--port PORT] [--ssl-port PORT] [--allow-unencrypted]
 ```
 
-Aktiviert oder aktualisiert den Bereitstellungspunkt und druckt seine Adressen aus.
+Aktiviert oder aktualisiert den Bereitstellungsendpunkt und gibt seine Adressen aus.
 
-| Einstellung | Standard | Beschreibung |
+| Einstellung | Standardwert | Beschreibung |
 |---|---|---|
 | `--port PORT` | `8888` | HTTP-Port des BBjServices-Webservers für den Endpunkt. |
-| `--ssl-port PORT` | Keine | SSL-Port des BBjServices-Webservers für den Endpunkt. Ohne ihn hat der Endpunkt keine HTTPS-Adresse. |
+| `--ssl-port PORT` | Keiner | SSL-Port des BBjServices-Webservers für den Endpunkt. Ohne diesen Port hat der Endpunkt keine HTTPS-Adresse. |
+| `--allow-unencrypted` | Aus | Akzeptiert die Administrationsanmeldedaten über HTTP von einem anderen Rechner. Ohne diese Option muss eine Anfrage von einem anderen Rechner den SSL-Port verwenden; andernfalls antwortet der Endpunkt mit HTTP 403. Anfragen vom BBj-Rechner selbst verwenden unabhängig davon HTTP. |
 
-Die Ports müssen Ports sein, auf denen der BBjServices-Webserver bereits hört. Andernfalls endet `remote enable` mit dem Exit-Code `1`, nennt den Port, der nicht antwortet, und behält den vorherigen Endpunkt.
+Die Ports müssen bereits vom BBjServices-Webserver überwachte Ports sein. Andernfalls endet `remote enable` mit dem Exitcode `1`, nennt den Port, der nicht antwortet, und behält den vorherigen Endpunkt bei.
+
+Bei jedem Aufruf von `remote enable` werden die Ports und die Einstellung `--allow-unencrypted` erneut gespeichert. Wird die Option weggelassen, wird die Einstellung deaktiviert und `Refused unencrypted requests from another machine` ausgegeben. Wird sie angegeben, wird `Allowed unencrypted requests from another machine` ausgegeben. Der Build, der über HTTP von einem anderen Rechner bereitstellt, muss außerdem [`allowUnencrypted`](/docs/configuration/bbjship/deploying#deploying-from-another-machine) festlegen.
 
 ### `remote disable` {#remote-disable}
 
@@ -92,11 +95,13 @@ Die Ports müssen Ports sein, auf denen der BBjServices-Webserver bereits hört.
 bbjship remote disable
 ```
 
-Entfernt den Bereitstellungspunkt. Bereitgestellte Apps laufen weiter.
+Entfernt den Bereitstellungsendpunkt. Bereitgestellte Apps laufen weiter.
 
-:::warning Builds können nicht bereitgestellt werden
-`remote disable` entfernt den Bereitstellungspunkt. Builds und CI-Jobs, die darauf bereitstellen, schlagen fehl, bis Sie `remote enable` erneut ausführen. Beachten Sie die Ports und die Adresse des Endpunkts, bevor Sie ihn deaktivieren. Bereitgestellte Apps laufen weiter.
+<!-- vale Google.WordListCase = NO -->
+:::warning Builds können nicht bereitstellen
+`remote disable` entfernt den Bereitstellungsendpunkt. Builds und CI-Jobs, die dort bereitstellen, schlagen fehl, bis Sie `remote enable` erneut ausführen. Notieren Sie die Ports und die Endpunktadresse, bevor Sie den Endpunkt deaktivieren. Bereitgestellte Apps laufen weiter.
 :::
+<!-- vale Google.WordListCase = YES -->
 
 ### `remote status` {#remote-status}
 
@@ -104,34 +109,35 @@ Entfernt den Bereitstellungspunkt. Bereitgestellte Apps laufen weiter.
 bbjship remote status
 ```
 
-Druckt die Adressen des Endpunkts und ob Entwicklungsdurchläufe aktiviert sind.
+Gibt die Adressen des Endpunkts aus und zeigt an, ob Entwicklungsläufe aktiviert sind und ob unverschlüsselte Anfragen von einem anderen Rechner zulässig sind.
 
 ```text
 $ bbjship remote status
-Aktiviert http://localhost:8888/webforj-bbjship
-Aktiviert https://localhost:8443/webforj-bbjship
-Entwicklungsdurchläufe deaktiviert
+Enabled http://localhost:8888/webforj-bbjship
+Enabled https://localhost:8443/webforj-bbjship
+Development runs  disabled
+Unencrypted requests  refused
 ```
 
 ## Apps {#apps}
 
-Die `apps`-Befehle listen und entfernen nur Apps, die BBjShip bereitgestellt hat. In Enterprise Manager registrierte Apps sind nicht betroffen.
+Die Befehle von `apps` listen ausschließlich von BBjShip bereitgestellte Apps auf und entfernen sie. Apps, die im Enterprise Manager registriert sind, sind davon nicht betroffen.
 
 ### `apps deploy` {#apps-deploy}
 
 ```text
-bbjship apps deploy ARCHIV
+bbjship apps deploy ARCHIVE
 ```
 
-Stellt ein Bereitstellungsarchiv bereit. `apps deploy` installiert ein Archiv, das von [`bbj-package`](/docs/configuration/bbjship/deploying#package-without-deploying) erstellt wurde, ohne den Bereitstellungspunkt. Der Dateiname ohne `.zip` ist der [Veröffentlichungsname](/docs/configuration/bbjship/deploying#publish-names). BBjServices liest das Archiv, sodass der Betriebssystembenutzer von BBjServices Lesezugriff darauf benötigt.
+Stellt ein Bereitstellungsarchiv bereit. `apps deploy` installiert ein mit [`bbj-package`](/docs/configuration/bbjship/deploying#package-without-deploying) erstelltes Archiv, ohne den Bereitstellungsendpunkt zu verwenden. Der Dateiname ohne `.zip` ist der [Veröffentlichungsname](/docs/configuration/bbjship/deploying#publish-names). BBjServices liest das Archiv. Daher benötigt der Betriebssystembenutzer von BBjServices Lesezugriff darauf.
 
 ```text
 $ bbjship apps deploy inventory.zip
-Bereitgestellt inventory /webapp/inventory
+Deployed inventory /webapp/inventory
 ```
 
-:::warning Überschreibt die App
-Das Bereitstellen eines Archivs unter dem Namen einer bereits bereitgestellten App ersetzt diese App. Der vorherige Bereitstellungsordner wird entfernt und die laufenden Sitzungen der App werden beendet. Bewahren Sie das vorherige Archiv auf, falls Sie zurückgehen müssen.
+:::warning Ersetzt die App
+Wenn Sie ein Archiv unter dem Namen einer bereits bereitgestellten App bereitstellen, wird diese App ersetzt. Der vorherige Bereitstellungsordner wird entfernt und die laufenden Sitzungen der App werden beendet. Bewahren Sie das vorherige Archiv auf, falls Sie es möglicherweise wiederherstellen müssen.
 :::
 
 ### `apps list` {#apps-list}
@@ -140,11 +146,11 @@ Das Bereitstellen eines Archivs unter dem Namen einer bereits bereitgestellten A
 bbjship apps list [--long]
 ```
 
-Listet die Apps auf, die BBjShip bereitgestellt hat.
+Listet die von BBjShip bereitgestellten Apps auf.
 
-| Einstellung | Standard | Beschreibung |
+| Einstellung | Standardwert | Beschreibung |
 |---|---|---|
-| `--long`, `-l` | Aus | Fügt den Bereitstellungsordner und die Klassenordner jeder App hinzu. |
+| `--long`, `-l` | Aus | Gibt zusätzlich den Bereitstellungsordner und die Klassenordner jeder App aus. |
 
 ```text
 $ bbjship apps list
@@ -159,19 +165,19 @@ bbjship apps undeploy NAME
 bbjship apps undeploy --all
 ```
 
-Entfernt eine oder alle Apps, die BBjShip bereitgestellt hat.
+Entfernt eine oder alle von BBjShip bereitgestellten Apps.
 
-| Einstellung | Standard | Beschreibung |
+| Einstellung | Standardwert | Beschreibung |
 |---|---|---|
-| `--all` | Aus | Deplistet jede App, die BBjShip bereitgestellt hat. |
+| `--all` | Aus | Hebt die Bereitstellung aller von BBjShip bereitgestellten Apps auf. |
 
 :::warning Kann nicht rückgängig gemacht werden
-`apps undeploy` entfernt die App aus dem Enterprise Manager, beendet ihre laufenden Sitzungen und löscht ihren Bereitstellungsordner. `apps undeploy --all` macht dies für jede App, die BBjShip bereitgestellt hat. Dies kann nicht rückgängig gemacht werden. Bewahren Sie das Bereitstellungsarchiv jeder App auf, beispielsweise `target/bbj/<publish name>.zip`, damit Sie es erneut bereitstellen können.
+`apps undeploy` entfernt die App aus dem Enterprise Manager, beendet ihre laufenden Sitzungen und löscht ihren Bereitstellungsordner. `apps undeploy --all` führt dies für jede von BBjShip bereitgestellte App aus. Dieser Vorgang kann nicht rückgängig gemacht werden. Bewahren Sie das Bereitstellungsarchiv jeder App auf, zum Beispiel `target/bbj/<publish name>.zip`, damit Sie sie erneut bereitstellen können.
 :::
 
 ## Entwicklung {#development}
 
-Entwicklungsdurchläufe sind bei einer Neuinstallation deaktiviert, und der erste `webforj:watch` auf derselben Maschine aktiviert sie. `bbjship development disable` schaltet sie aus, bis der nächste `webforj:watch` auf dieser Maschine sie wieder einschaltet. Ein Entwicklungsdurchlauf von einer anderen Maschine wird abgelehnt, da die Einrichtung, die er zuerst ausführt, nur auf der BBj-Maschine funktioniert.
+Bei einer Neuinstallation sind Entwicklungsläufe deaktiviert. Der erste Aufruf von `webforj:watch` auf demselben Rechner aktiviert sie. `bbjship development disable` deaktiviert sie, bis der nächste Aufruf von `webforj:watch` auf diesem Rechner sie wieder aktiviert. Ein Entwicklungslauf von einem anderen Rechner wird abgelehnt, da die dabei zuerst ausgeführte Einrichtung nur auf dem BBj-Rechner funktioniert.
 
 ### `development enable` {#development-enable}
 
@@ -179,7 +185,7 @@ Entwicklungsdurchläufe sind bei einer Neuinstallation deaktiviert, und der erst
 bbjship development enable
 ```
 
-Aktiviert [Entwicklungsdurchläufe](/docs/configuration/deploy-reload/bbjservices) auf dieser Maschine.
+Aktiviert [Entwicklungsläufe](/docs/configuration/deploy-reload/bbjservices) auf diesem Rechner.
 
 ### `development disable` {#development-disable}
 
@@ -187,33 +193,33 @@ Aktiviert [Entwicklungsdurchläufe](/docs/configuration/deploy-reload/bbjservice
 bbjship development disable
 ```
 
-Deaktiviert [Entwicklungsdurchläufe](/docs/configuration/deploy-reload/bbjservices) auf dieser Maschine.
+Deaktiviert [Entwicklungsläufe](/docs/configuration/deploy-reload/bbjservices) auf diesem Rechner.
 
 ## Zurücksetzen {#reset}
 
 ```text
-bbjship reset [--yes] [--properties DATEI]
+bbjship reset [--yes] [--properties FILE]
 ```
 
-`reset` entfernt jede App, die BBjShip bereitgestellt hat, entfernt den Bereitstellungspunkt und den Entwicklungsumschalter, stellt die BBjServices-Eigenschaftsdatei, die ein Entwicklungsdurchlauf geändert hat, wieder her und löscht die Dateien, die BBjShip geschrieben hat. Der Befehl stoppt niemals BBjServices. Wenn die Eigenschaften-Datei wiederhergestellt wurde, starten Sie BBjServices neu, um sie anzuwenden. Der Plugin-Ordner bleibt.
+`reset` hebt die Bereitstellung aller von BBjShip bereitgestellten Apps auf, entfernt den Bereitstellungsendpunkt, den Entwicklungsmodus und die Einstellung `--allow-unencrypted`, stellt die durch einen Entwicklungslauf geänderte BBjServices-Properties-Datei wieder her und löscht die von BBjShip geschriebenen Dateien. Der Befehl hält BBjServices niemals an. Nach dem Wiederherstellen der Properties-Datei müssen Sie BBjServices neu starten, damit die Änderungen wirksam werden. Der Plugin-Ordner bleibt erhalten.
 
-| Einstellung | Standard | Beschreibung |
+| Einstellung | Standardwert | Beschreibung |
 |---|---|---|
-| `--yes` | Aus | Überspringt die Bestätigung. |
-| `--properties DATEI` | `<BBj home>/cfg/BBj.properties` | BBjServices-Eigenschaftsdatei, die `reset` wiederherstellt. |
+| `--yes` | Aus | Überspringt die Bestätigungsabfrage. |
+| `--properties FILE` | `<BBj home>/cfg/BBj.properties` | BBjServices-Properties-Datei, die `reset` wiederherstellt. |
 
-Der Befehl druckt, was er tut und fragt nach einer Bestätigung, es sei denn, `--yes` wird angegeben. Unter Windows endet `reset` ohne `--yes` mit dem Exit-Code `2`, bevor es sich anmeldet.
+Der Befehl gibt seine Aktionen aus und fordert zur Bestätigung auf, sofern `--yes` nicht angegeben ist. Unter Windows endet `reset` ohne `--yes` mit dem Exitcode `2`, bevor die Anmeldung erfolgt.
 
-:::warning Zuerst sichern
-`reset` kann nicht rückgängig gemacht werden. Es entfernt den Ordner jeder App, die BBjShip bereitgestellt hat, und beendet deren laufende Sitzungen. Bevor Sie es ausführen, bewahren Sie das Bereitstellungsarchiv jeder App auf, beispielsweise `target/bbj/<publish name>.zip` des Builds, und sichern Sie `<BBj home>/cfg/BBj.properties`. Wenn eine Kopie der Datei im BBjShip-Laufzeitordner aufbewahrt wurde, legt `reset` diese Kopie wieder über `cfg/BBj.properties`, sodass jede Änderung, die Sie an der Datei nach dem ersten Entwicklungsdurchlauf vorgenommen haben, verloren geht. Starten Sie anschließend BBjServices neu, um die wiederhergestellten Java-Einstellungen anzuwenden.
+:::warning Zuerst eine Sicherung erstellen
+`reset` kann nicht rückgängig gemacht werden. Der Befehl entfernt den Ordner jeder von BBjShip bereitgestellten App und beendet deren laufende Sitzungen. Bewahren Sie vor der Ausführung das Bereitstellungsarchiv jeder App auf, zum Beispiel die Datei `target/bbj/<publish name>.zip` des Builds, und sichern Sie `<BBj home>/cfg/BBj.properties`. Wenn eine Kopie der Datei im BBjShip-Laufzeitordner aufbewahrt wurde, ersetzt `reset` damit `cfg/BBj.properties`. Dadurch gehen alle Änderungen verloren, die Sie nach dem ersten Entwicklungslauf an der Datei vorgenommen haben. Starten Sie BBjServices anschließend neu, damit die wiederhergestellten Java-Einstellungen wirksam werden.
 :::
 
-## Exit-Codes {#exit-codes}
+## Exitcodes {#exit-codes}
 
 | Code | Bedeutung |
 |---|---|
-| `0` | Der Befehl war erfolgreich. |
-| `1` | Der Befehl ist fehlgeschlagen und hat die Ursache ausgedruckt, oder `reset` wurde abgebrochen. |
-| `2` | Die Argumente sind ungültig oder der Befehl benötigt die Standardeingabe unter Windows. Die Nachricht zeigt an, was angegeben werden muss. |
+| `0` | Der Befehl wurde erfolgreich ausgeführt. |
+| `1` | Der Befehl ist fehlgeschlagen und hat die Ursache ausgegeben, oder `reset` wurde abgebrochen. |
+| `2` | Die Argumente sind ungültig oder der Befehl benötigt unter Windows die Standardeingabe. Die Meldung gibt an, was festgelegt werden muss. |
 
-Die [Fehlerbehebung](/docs/configuration/bbjship/troubleshooting#command-line) listet die Nachrichten auf und was in jedem Fall zu tun ist.
+Unter [Fehlerbehebung](/docs/configuration/bbjship/troubleshooting#command-line) finden Sie die Meldungen und Hinweise dazu, was jeweils zu tun ist.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 21
-title: Debouncing
+title: 防抖
 slug: debouncing
 description: >-
   Delay actions until activity settles using the Debouncer class for

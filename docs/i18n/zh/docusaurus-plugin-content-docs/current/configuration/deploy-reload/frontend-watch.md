@@ -1,5 +1,5 @@
 ---
-title: Frontend watch
+title: 前端监听
 sidebar_position: 20
 description: >-
   Rebuild the sources under src/main/frontend while a webforJ app runs, applying

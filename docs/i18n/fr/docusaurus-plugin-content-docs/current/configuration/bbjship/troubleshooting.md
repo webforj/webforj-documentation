@@ -5,161 +5,162 @@ description: >-
   What the messages of the BBjShip goals and the bbjship command line mean, and
   what to do about each, for setup, deploys, development runs, the command line
   and Windows.
-_i18n_hash: d9235c64dc2d56c5acc41e60b2a2f7df
+_i18n_hash: c517c84b00b3b7eb6bb9d485c528c4f7
 ---
 # Dépannage <DocChip chip='since' label='26.03' /> {#troubleshooting}
 
-Cette page répertorie les messages que vous pouvez rencontrer lors de la configuration de BBjShip, du déploiement d'une application, du démarrage d'une exécution de développement ou de l'utilisation de la ligne de commande `bbjship`. Pour chaque message, elle donne la cause et ce qu'il faut faire.
+Cette page répertorie les messages que vous pouvez rencontrer lors de la configuration de BBjShip, du déploiement d’une application, du démarrage d’une exécution de développement ou de l’utilisation de la ligne de commande `bbjship`. Pour chaque message, elle indique la cause et la marche à suivre.
 
-Un objectif Maven échouant termine la construction avec un message court sur l'objectif, suivi de la raison. La raison est la partie que cette page liste :
+Un objectif Maven en échec arrête la compilation avec un message court indiquant l’objectif, suivi de la raison. Cette page répertorie la raison :
 
 ```text
-Le déploiement BBj a échoué. Vérifiez le package d'application, les dépendances et les paramètres de déploiement : le déploiement BBj a échoué avec HTTP 409. La classe d'entrée com.example.Application est déjà publiée comme inventaire. Retirez d'abord l'inventaire.
+BBj deployment failed. Check the application package, dependencies and deployment settings: BBj deployment failed with HTTP 409. Entry class com.example.Application is already published as inventory. Undeploy inventory first
 ```
 
 ## Identifiants et connexion {#credentials-and-connection}
 
-Ces messages proviennent de chaque objectif qui communique avec BBjShip : `bbj-setup`, `bbj-deploy`, `bbj-undeploy` et `watch`.
+Ces messages peuvent être générés par tout objectif qui communique avec BBjShip : `bbj-setup`, `bbj-deploy`, `bbj-undeploy` et `watch`.
 
-| Message | Cause | Que faire |
+| Message | Cause | Marche à suivre |
 |---|---|---|
-| `Avertissement : le compte administrateur de la fabrique BBj admin est utilisé avec son mot de passe de fabrique...` | Aucun nom d'utilisateur ni mot de passe n'est configuré, donc l'objectif se connecte en tant que `admin` avec `admin123`. | Changez le mot de passe dans Enterprise Manager et configurez les nouveaux identifiants, voir [Paramètres](/docs/configuration/bbjship/deploying#settings). |
-| `Le nom d'utilisateur d'administration BBj est manquant`, `Le mot de passe d'administration BBj est manquant` | Un seul des noms d'utilisateur et du mot de passe est configuré. | Configurez les deux, ou aucun pour utiliser le compte de fabrique. `bbj-deploy` et `bbj-undeploy` acceptent également un jeton. |
-| `Le déploiement BBj nécessite bbj.deployment.url...` | Aucune URL de déploiement n'est configurée. | Définissez `<bbj><deployment><url>` ou passez `-Dwebforj.bbj.deployment.url=<URL>`. |
-| `L'URL de déploiement BBj doit être une URL HTTP ou HTTPS sans identifiants, requête ou fragment` | L'URL a un autre schéma, ou contient un nom d'utilisateur, une requête ou un fragment. | Utilisez `http://<host>:<port>/webforj-bbjship` ou `https://<host>:<port>/webforj-bbjship`, et mettez les identifiants dans `<admin>`. |
-| `Échec de la connexion à ... : Connection refusée` | Rien ne répond sur l'hôte et le port de l'URL de déploiement. | Démarrez BBjServices, et vérifiez l'hôte et le port de l'URL par rapport au serveur web de BBjServices. |
-| `Impossible de lire la version de BBjShip à <URL>, HTTP 404...` | L'URL ne mène pas à BBjShip, ou BBjShip n'est pas installé ou son point de terminaison n'est pas activé sur ce port. | Vérifiez le chemin `/webforj-bbjship` et le port. Sur la machine BBj, exécutez `mvn webforj:bbj-setup`, ou `bbjship remote enable` sur un serveur. |
-| `échec avec HTTP 401. Vérifiez les identifiants d'administration BBj ou le jeton` | BBjServices a refusé le nom d'utilisateur et le mot de passe, ou le jeton. | Vérifiez les identifiants. Renouvelez un jeton qui a expiré ou a été révoqué dans Enterprise Manager. |
-| `La version de BBjShip <version> à <URL> ne correspond pas à la version de webforJ <version>...` | La BBjShip installée et le `webforj-maven-plugin` ont des versions différentes. | Sur votre propre machine, exécutez `mvn webforj:bbj-setup -Dwebforj.bbj.force=true`. Sur un serveur, installez la BBjShip correspondante avec le BBj Plugin Manager. |
-| `Impossible d'établir une connexion HTTPS de confiance à <URL>...` | Java ne fait pas confiance au certificat du serveur web de BBjServices. | Installez un certificat pour le nom d'hôte de l'URL sur la machine BBj, ou ajoutez son certificat au magasin de confiance Java de la construction. |
-| `L'URL de déploiement BBj <URL> envoie les identifiants d'administration lisibles sur le réseau...` | Un avertissement pour une URL `http://` vers une autre machine. | Utilisez une URL `https://` avec le port SSL, voir [Déploiement depuis une autre machine](/docs/configuration/bbjship/deploying#deploying-from-another-machine). |
+| `Warning: the BBj factory administrator account admin is in use with its factory password...` | Aucun nom d’utilisateur ni mot de passe n’est configuré ; l’objectif se connecte donc en tant que `admin` avec le mot de passe `admin123`. | Changez le mot de passe dans Enterprise Manager et configurez les nouveaux identifiants. Consultez [Paramètres](/docs/configuration/bbjship/deploying#settings). |
+| `The BBj administration user name is missing`, `The BBj administration password is missing` | Un seul des deux éléments — nom d’utilisateur ou mot de passe — est configuré. | Configurez les deux, ou aucun pour utiliser le compte par défaut. `bbj-deploy` et `bbj-undeploy` acceptent aussi un jeton. |
+| `BBj deployment requires bbj.deployment.url...` | Aucune URL de déploiement n’est configurée. | Définissez `<bbj><deployment><url>` ou passez `-Dwebforj.bbj.deployment.url=<URL>`. |
+| `BBj deployment URL must be an HTTP or HTTPS URL without credentials, query or fragment` | L’URL utilise un autre schéma, ou contient un nom d’utilisateur, une chaîne de requête ou un fragment. | Utilisez `http://<host>:<port>/webforj-bbjship` ou `https://<host>:<port>/webforj-bbjship`, et placez les identifiants dans `<admin>`. |
+| `Connect to ... failed: Connection refused` | Aucun service ne répond sur l’hôte et le port de l’URL de déploiement. | Démarrez BBjServices et vérifiez que l’hôte et le port de l’URL correspondent au serveur Web de BBjServices. |
+| `could not read the BBjShip version at <URL>, HTTP 404...` | L’URL ne pointe pas vers BBjShip, BBjShip n’est pas installé ou son point de terminaison n’est pas activé sur ce port. | Vérifiez le chemin `/webforj-bbjship` et le port. Sur la machine BBj, exécutez `mvn webforj:bbj-setup` ou, sur un serveur, `bbjship remote enable`. |
+| `failed with HTTP 401. Check the BBj administration credentials or token` | BBjServices a refusé le nom d’utilisateur et le mot de passe, ou le jeton. | Vérifiez les identifiants. Renouvelez dans Enterprise Manager tout jeton expiré ou révoqué. |
+| `BBjShip <version> at <URL> does not match webforJ <version>...` | Les versions de BBjShip installé et de `webforj-maven-plugin` sont différentes. | Sur votre machine, exécutez `mvn webforj:bbj-setup -Dwebforj.bbj.force=true`. Sur un serveur, installez la version de BBjShip correspondante avec le BBj Plugin Manager. |
+| `could not establish a trusted HTTPS connection to <URL>...` | Java ne fait pas confiance au certificat du serveur Web BBjServices. | Installez sur la machine BBj un certificat correspondant au nom d’hôte de l’URL, ou ajoutez ce certificat au magasin de confiance Java de la compilation. |
+| `BBj deployment URL <URL> sends the administration credentials over an unencrypted connection to another machine...` | L’URL de déploiement est une URL `http://` vers une autre machine. L’objectif s’arrête avant d’envoyer quoi que ce soit. Avec `allowUnencrypted`, le même message devient un avertissement et l’objectif continue. | Utilisez une URL `https://` avec le port SSL, ou autorisez HTTP des deux côtés. Consultez [Déployer depuis une autre machine](/docs/configuration/bbjship/deploying#deploying-from-another-machine). |
 
 ## Configuration {#setup}
 
-Ces messages proviennent de `mvn webforj:bbj-setup` et de la première [exécution de développement](/docs/configuration/deploy-reload/bbjservices) d'un projet, qui configure BBjShip de la même manière.
+Ces messages proviennent de `mvn webforj:bbj-setup` et de la première [exécution de développement](/docs/configuration/deploy-reload/bbjservices) d’un projet, qui configure BBjShip de la même manière.
 
-| Message | Cause | Que faire |
+| Message | Cause | Marche à suivre |
 |---|---|---|
-| `Échec de la configuration BBj. Vérifiez l'artefact du plugin BBj et les paramètres de configuration` | L'objectif a échoué. La raison est indiquée ensuite. Une raison concernant la résolution d'artefact signifie que Maven n'a pas pu télécharger `webforj-bbjship-plugin` dans la version du `webforj-maven-plugin`. | Lisez la raison. Pour la résolution d'artefact, vérifiez les dépôts et l'accès réseau de la construction. |
-| `La configuration BBj est uniquement locale. Exécutez la configuration sur l'hôte BBj` | L'URL de déploiement nomme une autre machine. | Exécutez la configuration sur la machine BBj, ou installez BBjShip là avec le [BBj Plugin Manager](/docs/configuration/bbjship/installing#through-the-bbj-plugin-manager). |
-| `La configuration BBj ne peut pas résoudre le nom d'hôte de l'URL de déploiement <host>...` | Le nom d'hôte de l'URL de déploiement est inconnu. | Utilisez `localhost` ou un nom de cette machine. |
-| `La configuration BBj nécessite le mot de passe d'administration. Configurez bbj.admin.password à la place d'un jeton` | Une exécution de développement a un jeton configuré. Les exécutions de développement se connectent uniquement avec un nom d'utilisateur et un mot de passe. | Configurez `<admin><username>` et `<admin><password>`. |
-| `Impossible de détecter une installation BBj. Configurez bbj.home ou BBJ_HOME` | L'objectif n'a trouvé aucune installation BBj sur cette machine. | Définissez `<bbj><home>`, `-Dwebforj.bbj.home` ou la variable `BBJ_HOME` vers le dossier d'installation de BBj. |
-| `BBj home invalide. Configurez une installation BBj locale`, `L'exécutable BBj est manquant ou non exécutable. Vérifiez bbj.home` | Le dossier configuré n'est pas une installation BBj complète. | Orientez le paramètre vers le dossier contenant `bin` et `cfg` de BBj. |
-| `La version de BBjShip installée <version> ne correspond pas à <version>...` | Une autre version de BBjShip est installée, par exemple après une mise à jour de webforJ. | Exécutez `mvn webforj:bbj-setup -Dwebforj.bbj.force=true`. Les applications déployées restent déployées. |
-| `La version de BBjShip installée est manquante...` | Le dossier BBjShip installé est incomplet. | Exécutez `mvn webforj:bbj-setup -Dwebforj.bbj.force=true`. |
-| `Le répertoire des plugins est un lien symbolique...`, `La destination du plugin BBj ne doit pas contenir de liens symboliques` | Le dossier `plugins` de BBj, ou le dossier BBjShip à l'intérieur, est un lien symbolique ou en contient un. | Installez dans un dossier régulier. |
-| `La commande de configuration BBj a échoué. Vérifiez les identifiants et les BBjServices locaux.` suivi de la sortie de la commande | La commande qui active le point de terminaison de déploiement a échoué. La sortie nomme la raison, par exemple un login refusé ou un port sur lequel le serveur web n'écoute pas. | Vérifiez les identifiants, que BBjServices fonctionne, et que le port de l'URL de déploiement est un port du serveur web BBjServices. |
-| `La commande de configuration BBj a expiré. Vérifiez les BBjServices locaux` | La commande n'a pas fini dans les 120 secondes. | Vérifiez que BBjServices fonctionne et répond, puis exécutez de nouveau l'objectif. |
-| `Les fichiers BBjShip précédents sont conservés à <folder>` | Un remplacement a échoué, et les fichiers de la version précédente ont été conservés dans ce dossier. | Corrigez la raison de l'échec et exécutez de nouveau l'objectif. |
+| `BBj setup failed. Check the BBj plugin artifact and setup settings` | L’objectif a échoué. La raison suit ce message. Une raison relative à la résolution de l’artefact signifie que Maven n’a pas pu télécharger `webforj-bbjship-plugin` dans la version de `webforj-maven-plugin`. | Consultez la raison. En cas de problème de résolution de l’artefact, vérifiez les dépôts et l’accès réseau de la compilation. |
+| `BBj setup is local only. Run setup on the BBj host` | L’URL de déploiement désigne une autre machine. | Exécutez la configuration sur la machine BBj, ou installez-y BBjShip avec le [BBj Plugin Manager](/docs/configuration/bbjship/installing#through-the-bbj-plugin-manager). |
+| `BBj setup cannot resolve the deployment URL host <host>...` | Le nom d’hôte de l’URL de déploiement est inconnu. | Utilisez `localhost` ou le nom de cette machine. |
+| `BBj setup requires the administration password. Configure bbj.admin.password instead of a token` | Un jeton est configuré pour une exécution de développement. Les exécutions de développement se connectent uniquement avec un nom d’utilisateur et un mot de passe. | Configurez `<admin><username>` et `<admin><password>`. |
+| `Cannot detect a BBj installation. Configure bbj.home or BBJ_HOME` | L’objectif n’a trouvé aucune installation de BBj sur cette machine. | Définissez `<bbj><home>`, `-Dwebforj.bbj.home` ou la variable `BBJ_HOME` sur le dossier d’installation de BBj. |
+| `Invalid BBj home. Configure a local BBj installation`, `BBj executable is missing or not executable. Check bbj.home` | Le dossier configuré ne correspond pas à une installation BBj complète. | Indiquez le dossier contenant les répertoires `bin` et `cfg` de BBj. |
+| `Installed BBjShip version <version> does not match <version>...` | Une autre version de BBjShip est installée, par exemple après une mise à niveau de webforJ. | Exécutez `mvn webforj:bbj-setup -Dwebforj.bbj.force=true`. Les applications déployées restent déployées. |
+| `Installed BBjShip version is missing...` | Le dossier BBjShip installé est incomplet. | Exécutez `mvn webforj:bbj-setup -Dwebforj.bbj.force=true`. |
+| `The plugin directory is a symbolic link...`, `BBj plugin destination must not contain symbolic links` | Le dossier `plugins` de BBj, ou le dossier BBjShip qu’il contient, est un lien symbolique ou en contient un. | Effectuez l’installation dans un dossier normal. |
+| `BBj setup command failed. Check credentials and local BBjServices.` suivi de la sortie de la commande | La commande qui active le point de terminaison de déploiement a échoué. La sortie indique la raison, par exemple un refus de connexion ou un port sur lequel le serveur Web n’écoute pas. | Vérifiez les identifiants, le fonctionnement de BBjServices et que le port de l’URL de déploiement est bien un port du serveur Web BBjServices. |
+| `BBj setup command timed out. Check local BBjServices` | La commande ne s’est pas terminée dans les 120 secondes. | Vérifiez que BBjServices fonctionne et répond, puis relancez l’objectif. |
+| `Previous BBjShip files are preserved at <folder>` | Le remplacement a échoué et les fichiers de la version précédente ont été conservés dans ce dossier. | Corrigez la cause de l’échec et relancez l’objectif. |
 
-## Déployer et retirer {#deploy-and-undeploy}
+## Déploiement et retrait du déploiement {#deploy-and-undeploy}
 
-### Avant le téléchargement {#before-the-upload}
+### Avant le transfert {#before-the-upload}
 
-Ces messages proviennent de `bbj-package`, `bbj-deploy` et `bbj-undeploy` avant que quoi que ce soit n'atteigne BBjShip.
+Ces messages proviennent de `bbj-package`, `bbj-deploy` et `bbj-undeploy`, avant que quoi que ce soit n’atteigne BBjShip.
 
-| Message | Cause | Que faire |
+| Message | Cause | Marche à suivre |
 |---|---|---|
-| `Le déploiement BBj nécessite un packaging jar, ce projet est empaqueté en tant que <packaging>` | Le projet n'est pas empaqueté en tant que jar. | Définissez `<packaging>jar</packaging>`. |
-| `Le déploiement BBj nécessite le jar de l'application empaquetée...` | L'objectif a été exécuté sans la phase `package` dans la même construction. | Exécutez `mvn install`, ou `mvn package webforj:bbj-deploy`. |
-| `Le déploiement BBj ne doit pas comporter webforj-engine, BBj est le moteur...` | `webforj-engine` est sur le classpath d'exécution de l'application. | Excluez-le de la dépendance `webforj`, voir [Sans le plugin d'installation](/docs/configuration/bbjship/existing-projects#without-the-install-plugin). |
-| `Le déploiement BBj nécessite webforj-foundation sur le classpath d'exécution` | L'application n'a pas de dépendance webforJ à l'exécution. | Ajoutez la dépendance `webforj` dans le scope `compile`. |
-| `La dépendance de déploiement BBj est non résolue...` | Une dépendance de l'application n'a pas de fichier. | Vérifiez que Maven résout chaque dépendance du projet. |
-| `Le nom de publication <name> est invalide...` | Le nom de publication enfreint les règles dans [Noms de publication](/docs/configuration/bbjship/deploying#publish-names). | Choisissez un autre `<publishName>`. |
-| `Le nom de publication <name> est réservé par BBjServices pour ses propres chemins web...` | BBjServices utilise ce nom pour ses propres adresses. | Choisissez un autre `<publishName>`. |
-| `L'archive de déploiement BBj n'a pas pu être écrite...` | `bbj-package` n'a pas pu écrire `target/bbj/<publish name>.zip`. La raison suit. | Lisez la raison. |
+| `BBj deployment requires jar packaging, this project is packaged as <packaging>` | Le projet n’est pas empaqueté sous forme de fichier JAR. | Définissez `<packaging>jar</packaging>`. |
+| `BBj deployment requires the packaged application jar...` | L’objectif a été exécuté sans la phase `package` dans la même compilation. | Exécutez `mvn install` ou `mvn package webforj:bbj-deploy`. |
+| `BBj deployment must not carry webforj-engine, BBj is the engine...` | `webforj-engine` figure dans le classpath d’exécution de l’application. | Excluez-le de la dépendance `webforj`. Consultez [Sans le plug-in d’installation](/docs/configuration/bbjship/existing-projects#without-the-install-plugin). |
+| `BBj deployment requires webforj-foundation on the runtime classpath` | L’application n’a aucune dépendance webforJ à l’exécution. | Ajoutez la dépendance `webforj` avec la portée `compile`. |
+| `BBj deployment dependency is unresolved...` | Un fichier est manquant pour une dépendance de l’application. | Vérifiez que Maven résout toutes les dépendances du projet. |
+| `Publish name <name> is invalid...` | Le nom de publication ne respecte pas les règles de la section [Noms de publication](/docs/configuration/bbjship/deploying#publish-names). | Choisissez une autre valeur pour `<publishName>`. |
+| `The publish name <name> is reserved by BBjServices for its own web paths...` | BBjServices utilise ce nom pour ses propres adresses. | Choisissez une autre valeur pour `<publishName>`. |
+| `BBj deployment archive could not be written...` | `bbj-package` n’a pas pu écrire `target/bbj/<publish name>.zip`. La raison suit ce message. | Consultez la raison. |
 
 ### Réponses de BBjShip {#answers-of-bbjship}
 
-Lorsque BBjShip refuse un déploiement ou un retrait, le message commence par `Le déploiement BBj a échoué avec HTTP <status>` ou `Le retrait BBj a échoué avec HTTP <status>`, suivi de la raison.
+Lorsque BBjShip refuse un déploiement ou un retrait du déploiement, le message commence par `BBj deployment failed with HTTP <status>` ou `BBj undeployment failed with HTTP <status>`, suivi de la raison.
 
-| Statut | Raison | Cause | Que faire |
+| Statut | Raison | Cause | Marche à suivre |
 |---|---|---|---|
-| 400 | `Le nom de publication <name> est invalide...` ou `...est réservé par BBjServices...` | Le nom de publication est refusé. | Choisissez un autre nom de publication. |
-| 400 | `Le fichier webforj.conf de déploiement BBj est invalide. <detail>` | Le `webforj.conf` de l'application ne peut pas être lu, ou un [paramètre d'application](/docs/configuration/bbjship/deploying#app-settings) a le mauvais type. | Corrigez le fichier comme le détail le dit. |
-| 400 | `Le corps téléchargé n'est pas une archive de déploiement BBj...`, `Entrée d'archive de déploiement BBj invalide : <entry>` ou une autre raison concernant l'archive | L'archive n'a pas été écrite par le plugin de construction, ou a été modifiée par la suite. | Déployez l'archive que la construction écrit, avec la même version de webforJ que BBjShip. |
-| 401 | `Vérifiez les identifiants d'administration BBj ou le jeton` | La connexion a été refusée. | Vérifiez les identifiants ou renouvelez le jeton. |
-| 403 | `Les exécutions de développement ne sont pas activées sur cette machine BBj. Exécutez bbjship development enable` | Une exécution de développement a atteint une machine où les exécutions de développement sont désactivées. | Exécutez `bbjship development enable` sur la machine BBj. |
-| 404 | `Aucune application BBj nommée <name> n'a été déployée par BBjShip. Vérifiez le nom de publication` | Un retrait a nommé une application que BBjShip n'a pas déployée. | Vérifiez le nom de publication avec `bbjship apps list`. |
-| 409 | `La classe d'entrée <class> est déjà publiée comme <name>. Retirez d'abord <name>` | La classe d'entrée de l'application fonctionne déjà sous un autre nom de publication. | Retirez l'autre application ou déployez sous son nom. |
-| 409 | `L'application BBj publiée <name> n'est pas détenue par BBjShip...` | Une application enregistrée dans Enterprise Manager utilise déjà le nom. | Choisissez un autre nom de publication, ou retirez cette application dans Enterprise Manager. |
-| 409 | `L'application BBj publiée <other> diffère de <name> uniquement par la casse...` | Une autre application utilise le même nom avec une autre casse. | Choisissez un autre nom de publication. |
-| 409 | `<name> est une exécution de développement. Arrêtez d'abord le watch` | Une exécution de développement de l'application est active. | Arrêtez le watch avec `Ctrl+C`, puis déployez. |
-| 409 | `<name> est déployé à partir d'une archive. Retirez-le d'abord` | Une exécution de développement utilise le nom d'une application déployée. | Retirez l'application, ou définissez un autre `<publishName>` pour l'exécution de développement. |
-| 413 | `L'archive de déploiement BBj dépasse la taille autorisée de 1 GiB` | L'archive est plus grande que ce que BBjShip accepte. | Supprimez les dépendances dont l'application n'a pas besoin à l'exécution. |
-| 500 | `Le déploiement BBj a échoué. Vérifiez le journal de BBjServices` | BBjServices a échoué lors de l'installation ou de la suppression de l'application. | Lisez les journaux de BBjServices. |
+| 400 | `Publish name <name> is invalid...` ou `...is reserved by BBjServices...` | Le nom de publication est refusé. | Choisissez un autre nom de publication. |
+| 400 | `BBj deployment webforj.conf is invalid. <detail>` | Le fichier `webforj.conf` de l’application est illisible, ou un [paramètre d’application](/docs/configuration/bbjship/deploying#app-settings) est du mauvais type. | Corrigez le fichier selon les indications fournies. |
+| 400 | `The uploaded body is not a BBj deployment archive...`, `Invalid BBj deployment archive entry: <entry>` ou une autre raison relative à l’archive | L’archive n’a pas été créée par le plug-in de compilation, ou a été modifiée par la suite. | Déployez l’archive produite par la compilation, avec la même version de webforJ que BBjShip. |
+| 401 | `Check the BBj administration credentials or token` | La connexion a été refusée. | Vérifiez les identifiants ou renouvelez le jeton. |
+| 403 | `BBjShip refuses the administration credentials over an unencrypted connection from another machine. Use the SSL port of the BBjServices web server` | La requête est arrivée par HTTP depuis une autre machine. | Utilisez l’adresse HTTPS du point de terminaison ou exécutez `bbjship remote enable --allow-unencrypted` sur la machine BBj. |
+| 403 | `Development runs are not enabled on this BBj machine. Run bbjship development enable` | Une exécution de développement a atteint une machine où ces exécutions sont désactivées. | Exécutez `bbjship development enable` sur la machine BBj. |
+| 404 | `No BBj application named <name> was deployed by BBjShip. Check the publish name` | La commande de retrait du déploiement désigne une application que BBjShip n’a pas déployée. | Vérifiez le nom de publication avec `bbjship apps list`. |
+| 409 | `Entry class <class> is already published as <name>. Undeploy <name> first` | La classe d’entrée de l’application est déjà exécutée sous un autre nom de publication. | Retirez le déploiement de l’autre application ou déployez sous son nom. |
+| 409 | `Published BBj application <name> is not owned by BBjShip...` | Une application enregistrée dans Enterprise Manager utilise déjà ce nom. | Choisissez un autre nom de publication ou supprimez cette application dans Enterprise Manager. |
+| 409 | `Published BBj application <other> differs from <name> only by letter case...` | Une autre application utilise le même nom, avec une casse différente. | Choisissez un autre nom de publication. |
+| 409 | `<name> is a development run. Stop the watch first` | Une exécution de développement de l’application est active. | Arrêtez le processus `watch` avec `Ctrl+C`, puis déployez l’application. |
+| 409 | `<name> is deployed from an archive. Undeploy it first` | Une exécution de développement utilise le nom d’une application déployée. | Retirez le déploiement de l’application ou définissez une autre valeur pour `<publishName>` dans l’exécution de développement. |
+| 413 | `BBj deployment archive exceeds the allowed size of 1 GiB` | L’archive dépasse la taille maximale acceptée par BBjShip. | Supprimez les dépendances dont l’application n’a pas besoin à l’exécution. |
+| 500 | `BBj deployment failed. Check the BBjServices log` | BBjServices a échoué lors de l’installation ou du retrait de l’application. | Consultez les journaux de BBjServices. |
 
-Un déploiement qui se termine par `n'a pas confirmé l'application demandée. Vérifiez la version de BBjShip et le journal de BBjServices` a atteint BBjShip mais n'a pas reçu de confirmation pour l'application. Vérifiez que BBjShip et le `webforj-maven-plugin` ont la même version, puis lisez le journal de BBjServices.
+Un déploiement qui se termine par `did not confirm the requested application. Check the BBjShip version and BBjServices log` a bien atteint BBjShip, mais n’a reçu aucune confirmation pour l’application. Vérifiez que BBjShip et `webforj-maven-plugin` ont la même version, puis consultez le journal de BBjServices.
 
-### L'application en cours d'exécution {#the-running-app}
+### Application en cours d’exécution {#the-running-app}
 
-| Message | Cause | Que faire |
+| Message | Cause | Marche à suivre |
 |---|---|---|
-| `Le protocole des icônes nécessite webforj.assetsSource = packaged lors de l'exécution avec BBj Services` | L'application utilise `icons://` sans actifs empaquetés. | Ajoutez `webforj.assetsSource = packaged` à `webforj.conf` et déployez à nouveau. |
+| `Icons protocol requires webforj.assetsSource = packaged when running with BBj Services` | L’application utilise `icons://` sans ressources empaquetées. | Ajoutez `webforj.assetsSource = packaged` à `webforj.conf`, puis redéployez l’application. |
 
 ## Exécutions de développement {#development-runs}
 
-Ces messages proviennent de `mvn` ou `mvn compile webforj:watch` dans un projet configuré pour BBjShip. Une exécution de développement échouée commence par `L'exécution de développement BBj a échoué. Vérifiez les paramètres de déploiement et que les exécutions de développement sont activées sur la machine BBj`, suivi de la raison provenant de [Configuration](#setup), [Identifiants et connexion](#credentials-and-connection), ou [Réponses de BBjShip](#answers-of-bbjship).
+Ces messages proviennent de `mvn` ou de `mvn compile webforj:watch` dans un projet configuré pour BBjShip. Une exécution de développement qui échoue commence par `BBj development run failed. Check the deployment settings and that development runs are enabled on the BBj machine`, suivi de la raison provenant de la section [Configuration](#setup), [Identifiants et connexion](#credentials-and-connection) ou [Réponses de BBjShip](#answers-of-bbjship).
 
-| Message | Cause | Que faire |
+| Message | Cause | Marche à suivre |
 |---|---|---|
-| `Le dossier de classe <folder> n'existe pas. Exécutez compile avant webforj:watch` | Le watch a démarré avant que le projet ne soit compilé. | Exécutez `mvn compile webforj:watch`, ou `mvn` dans un projet archétype. |
-| `Le dossier de classe de développement BBj doit être un répertoire absolu sur la machine BBj` | `<development><classFolder>` nomme un dossier que BBjServices ne peut pas trouver. | Définissez le chemin absolu du dossier de classe sur la machine BBj. |
-| `Fichier de propriétés de BBjServices non trouvé à <file>. Configurez bbj.properties` | Le fichier de propriétés de BBjServices n'est pas à l'endroit où l'exécution le recherche. | Définissez `<bbj><properties>` ou `-Dwebforj.bbj.properties` vers le fichier. |
-| `BBjServices n'a pas arrêté dans les 180 secondes` | L'exécution a demandé à BBjServices de s'arrêter pour appliquer les paramètres de hotswap, et il a continué à fonctionner. | Arrêtez BBjServices vous-même, redémarrez-le, et exécutez le watch à nouveau. |
-| `Le programme de démarrage BBjServices est manquant : <program>` | L'installation BBj n'a pas de programme pour démarrer BBjServices. | Démarrez BBjServices vous-même et exécutez le watch à nouveau. |
-| `BBjServices n'a pas démarré. Le programme s'est terminé avec le code de sortie <code>`, `BBjServices n'a pas démarré dans les 120 secondes` | BBjServices n'est pas revenu après le redémarrage. | Démarrez BBjServices vous-même, puis exécutez le watch à nouveau. |
-| `BBjShip n'a pas répondu dans les 120 secondes` | BBjServices a démarré, mais le point de terminaison de déploiement n'a pas répondu. | Vérifiez le journal de BBjServices, puis exécutez le watch à nouveau. |
-| `BBjServices a redémarré sans les paramètres de hotswap. Vérifiez <file>` | BBjServices a démarré avec des arguments Java autres que ceux écrits dans le fichier de propriétés. | Vérifiez les paramètres Java de BBjServices dans Enterprise Manager et dans ce fichier. |
-| `webforJ watch : l'exécution de développement de <name> n'a pas été arrêtée. <reason>` | L'application n'a pas pu être supprimée lorsque la construction s'est arrêtée. | Retirez-la avec `bbjship apps undeploy <name>`, ou redémarrez à nouveau le watch, ce qui la remplace. |
+| `The class folder <folder> does not exist. Run compile before webforj:watch` | Le processus `watch` a démarré avant la compilation du projet. | Exécutez `mvn compile webforj:watch`, ou `mvn` dans un projet d’archétype. |
+| `BBj development class folder must be an absolute directory on the BBj machine` | `<development><classFolder>` désigne un dossier introuvable par BBjServices. | Définissez le chemin absolu du dossier de classes sur la machine BBj. |
+| `BBjServices properties file not found at <file>. Configure bbj.properties` | Le fichier de propriétés BBjServices ne se trouve pas à l’emplacement recherché par l’exécution. | Définissez `<bbj><properties>` ou `-Dwebforj.bbj.properties` sur le fichier. |
+| `BBjServices did not stop within 180 seconds` | L’exécution a demandé l’arrêt de BBjServices pour appliquer les paramètres de hotswap, mais le service est resté actif. | Arrêtez BBjServices vous-même, redémarrez-le, puis relancez `watch`. |
+| `BBjServices start program is missing: <program>` | L’installation de BBj ne contient aucun programme permettant de démarrer BBjServices. | Démarrez BBjServices vous-même, puis relancez `watch`. |
+| `BBjServices did not start. The program ended with exit code <code>`, `BBjServices did not start within 120 seconds` | BBjServices n’a pas redémarré après son arrêt. | Démarrez BBjServices vous-même, puis relancez `watch`. |
+| `BBjShip did not answer within 120 seconds` | BBjServices a démarré, mais le point de terminaison de déploiement n’a pas répondu. | Consultez le journal de BBjServices, puis relancez `watch`. |
+| `BBjServices restarted without the hotswap settings. Check <file>` | BBjServices a démarré avec des arguments Java différents de ceux inscrits dans le fichier de propriétés. | Vérifiez les paramètres Java de BBjServices dans Enterprise Manager et dans ce fichier. |
+| `webforJ watch: development run of <name> was not stopped. <reason>` | L’application n’a pas pu être supprimée à l’arrêt de la compilation. | Supprimez-la avec `bbjship apps undeploy <name>` ou redémarrez `watch`, qui la remplacera. |
 
-La première exécution de développement qui ajoute les paramètres de hotswap redémarre BBjServices. Elle démarre BBjServices avec `bin/bbjservices` sur macOS et Linux. Sous Windows, elle démarre le service Windows `BBjServices` lorsqu'un service est enregistré, et exécute `bin\BBjServices.exe -noservice` sinon. Un BBjServices démarré par `bin/bbjservices` ou `-noservice` fonctionne en dehors du gestionnaire de services du système d'exploitation jusqu'à ce que la machine redémarre.
+La première exécution de développement qui ajoute les paramètres de hotswap redémarre BBjServices. Elle démarre BBjServices avec `bin/bbjservices` sur macOS et Linux. Sur Windows, elle démarre le service Windows `BBjServices` s’il est enregistré, et exécute `bin\BBjServices.exe -noservice` dans le cas contraire. Un BBjServices démarré avec `bin/bbjservices` ou `-noservice` s’exécute en dehors du gestionnaire de services du système d’exploitation jusqu’au redémarrage de la machine.
 
 ## Ligne de commande {#command-line}
 
-Chaque commande `bbjship` s'exécute à l'intérieur de BBjServices, donc BBjServices doit être en cours d'exécution. Sans lui, la commande ne peut pas démarrer.
+Chaque commande `bbjship` s’exécute dans BBjServices ; BBjServices doit donc être en cours d’exécution. Sans lui, la commande ne peut pas démarrer.
 
-Les arguments invalides se terminent par le code de sortie `2` et un message qui indique ce qu'il faut spécifier :
+Les arguments non valides entraînent le code de sortie `2` et un message indiquant ce qu’il faut spécifier :
 
-| Message | Que faire |
+| Message | Marche à suivre |
 |---|---|
-| `Spécifiez une commande. Utilisez --help pour les commandes disponibles`, `Commande inconnue <command>...` | Nommez une commande, voir [Ligne de commande](/docs/configuration/bbjship/command-line). |
-| `Option inconnue <option>...`, `L'option <option> n'est pas disponible pour <command>...` | Utilisez une option de cette commande, comme l'énumère `--help`. |
-| `Spécifiez un nom d'utilisateur après --username`, `Spécifiez un mot de passe après --password`, `Spécifiez un port après --port` | Donnez une valeur à l'option. |
-| `Spécifiez --port de 1 à 65535`, `Spécifiez --ssl-port de 1 à 65535` | Donnez un numéro de port. |
-| `Spécifiez <option> une seule fois` | Supprimez l'option répétée. |
-| `Spécifiez seulement un des deux --password et --password-stdin` | Conservez l'un des deux. |
-| `Le mot de passe d'administration BBj est manquant. Spécifiez --username et --password <value> ou --password-stdin, ou définissez WEBFORJ_BBJ_USERNAME et WEBFORJ_BBJ_PASSWORD` | Donnez le nom d'utilisateur et le mot de passe ensemble. Le message nomme celui qui manque. |
-| `Spécifiez un nom d'application ou --all`, `Spécifiez un seul nom d'application` | Donnez à `apps undeploy` un nom de publication, ou `--all`. |
-| `Spécifiez le chemin d'une archive de déploiement se terminant par .zip`, `Spécifiez une archive de déploiement` | Donnez à `apps deploy` un fichier `.zip`. |
-| `L'archive de déploiement <path> n'existe pas`, `L'archive de déploiement <path> ne peut pas être lue` | Vérifiez le chemin. BBjServices lit le fichier, donc l'utilisateur du système d'exploitation de BBjServices doit avoir accès en lecture. |
-| `Les archives de développement sont déployées par le watch, pas par apps deploy` | Déployez l'archive de `bbj-package`, pas celle d'une exécution de développement. |
-| `Le nom de publication <name> est invalide...`, `Le nom de publication <name> est réservé...` | Renommez l'archive. Son nom de fichier sans `.zip` est le nom de publication. |
+| `Specify a command. Use --help for available commands`, `Unknown command <command>...` | Indiquez une commande. Consultez la [ligne de commande](/docs/configuration/bbjship/command-line). |
+| `Unknown option <option>...`, `Option <option> is not available for <command>...` | Utilisez une option disponible pour cette commande, comme indiqué par `--help`. |
+| `Specify a user name after --username`, `Specify a password after --password`, `Specify a port after --port` | Fournissez une valeur pour l’option. |
+| `Specify --port from 1 to 65535`, `Specify --ssl-port from 1 to 65535` | Fournissez un numéro de port. |
+| `Specify <option> only once` | Supprimez l’option en double. |
+| `Specify only one of --password and --password-stdin` | Conservez une seule des deux options. |
+| `The BBj administration password is missing. Specify --username and --password <value> or --password-stdin, or set WEBFORJ_BBJ_USERNAME and WEBFORJ_BBJ_PASSWORD` | Fournissez le nom d’utilisateur et le mot de passe ensemble. Le message indique l’élément manquant. |
+| `Specify an application name or --all`, `Specify one application name` | Fournissez à `apps undeploy` un nom de publication ou `--all`. |
+| `Specify the path of a deployment archive ending in .zip`, `Specify one deployment archive` | Fournissez un fichier `.zip` à `apps deploy`. |
+| `Deployment archive <path> does not exist`, `Deployment archive <path> cannot be read` | Vérifiez le chemin. BBjServices lit le fichier ; l’utilisateur du système d’exploitation qui exécute BBjServices doit donc pouvoir le lire. |
+| `Development archives are deployed by the watch, not by apps deploy` | Déployez l’archive créée par `bbj-package`, et non celle d’une exécution de développement. |
+| `Publish name <name> is invalid...`, `The publish name <name> is reserved...` | Renommez l’archive. Son nom de fichier sans `.zip` correspond au nom de publication. |
 
-Une commande qui échoue se termine par le code de sortie `1` et `Commande échouée.` suivie de la raison :
+Une commande qui échoue se termine avec le code de sortie `1` et affiche `Command failed.`, suivi de la raison :
 
-| Raison | Cause | Que faire |
+| Raison | Cause | Marche à suivre |
 |---|---|---|
-| Un échec de connexion de BBjServices | Le nom d'utilisateur ou le mot de passe est incorrect. | Vérifiez les identifiants. |
-| `Le serveur web de BBjServices ne répond pas sur le port <port>. Utilisez le port HTTP du serveur web de BBjServices` | `--port` ou `--ssl-port` n'est pas un port sur lequel le serveur web de BBjServices écoute. Le point de terminaison précédent reste. | Utilisez les ports configurés pour le serveur web dans Enterprise Manager. |
-| `L'application <name> n'est pas déployée par BBjShip` | `apps undeploy` a nommé une application que BBjShip n'a pas déployée. | Vérifiez le nom avec `bbjship apps list`. |
-| `Un autre déploiement est en cours` | Un autre déploiement ou retrait a occupé la machine pendant 30 secondes. | Attendez qu'il se termine, puis exécutez de nouveau la commande. |
-| `Le contexte de BBjShip appartient à une autre application`, `Le contexte des actifs appartient à une autre application` | Une autre application dans Enterprise Manager utilise le contexte web `webforj-bbjship` ou `webforj-bbjship-assets`. | Renommez ou retirez ce contexte dans Enterprise Manager. |
-| `Le classpath de commande BBjShip appartient à une autre application`, `Le classpath de base de BBjShip contient une bibliothèque non détenue` | Les classpaths `_webforj_bbjship_cli` ou `_webforj_bbjship` dans Enterprise Manager ont été modifiés. | Supprimez les deux classpaths dans Enterprise Manager et exécutez de nouveau la commande, ce qui les recréera. |
-| `Le servlet BBjShip est manquant. Vérifiez l'installation du plugin`, `La bibliothèque BBjShip est manquante. Vérifiez l'installation du plugin` | Le dossier BBjShip est incomplet. | Installez de nouveau BBjShip. |
-| `BBjServices ne gère pas les contextes web. Mettez à jour BBj` | La version de BBj est trop ancienne pour BBjShip. | Installez la version de BBj qui correspond à webforJ. |
+| Échec de connexion à BBjServices | Le nom d’utilisateur ou le mot de passe est incorrect. | Vérifiez les identifiants. |
+| `The BBjServices web server does not answer on port <port>. Use the HTTP port of the BBjServices web server` | `--port` ou `--ssl-port` ne correspond pas à un port sur lequel le serveur Web BBjServices écoute. Le point de terminaison précédent reste actif. | Utilisez les ports configurés pour le serveur Web dans Enterprise Manager. |
+| `Application <name> is not deployed by BBjShip` | `apps undeploy` désigne une application que BBjShip n’a pas déployée. | Vérifiez le nom avec `bbjship apps list`. |
+| `Another deployment is in progress` | Un autre déploiement ou retrait du déploiement a verrouillé la machine pendant 30 secondes. | Attendez la fin de l’opération, puis relancez la commande. |
+| `The BBjShip context belongs to another application`, `The assets context belongs to another application` | Une autre application dans Enterprise Manager utilise le contexte Web `webforj-bbjship` ou `webforj-bbjship-assets`. | Renommez ou supprimez ce contexte dans Enterprise Manager. |
+| `The BBjShip command classpath belongs to another application`, `The BBjShip base classpath contains an unowned library` | Les classpaths `_webforj_bbjship_cli` ou `_webforj_bbjship` dans Enterprise Manager ont été modifiés. | Supprimez les deux classpaths dans Enterprise Manager, puis relancez la commande, qui les recréera. |
+| `The BBjShip servlet is missing. Check the plugin installation`, `The BBjShip library is missing. Check the plugin installation` | Le dossier BBjShip est incomplet. | Réinstallez BBjShip. |
+| `BBjServices does not manage web contexts. Update BBj` | La version de BBj est trop ancienne pour BBjShip. | Installez la version de BBj correspondant à webforJ. |
 
-`reset` se termine par le code de sortie `1` et `Réinitialisation annulée` lorsque la réponse à `继续? [y/N]` n'est pas `y` ou `Y`. Lorsqu'il a restauré les paramètres Java de BBjServices, il se termine par `Redémarrez BBjServices maintenant pour appliquer les paramètres Java restaurés`. Redémarrez BBjServices pour l'exécuter sans les paramètres de hotswap.
+`reset` se termine avec le code de sortie `1` et affiche `Reset cancelled` si la réponse à `Continue? [y/N]` n’est ni `y` ni `Y`. Si la commande a restauré les paramètres Java de BBjServices, elle se termine en affichant `Restart BBjServices now to apply the restored Java settings`. Redémarrez BBjServices pour l’exécuter sans les paramètres de hotswap.
 
 ## Windows {#windows}
 
-| Situation | Que faire |
+| Situation | Marche à suivre |
 |---|---|
-| Exécuter `bbj.exe` avec le programme BBjShip n'affiche rien. | Exécutez `bbjship.cmd` dans `<BBj home>\plugins\webforj-bbjship`, qui montre la sortie de la commande. |
-| `--password-stdin` se termine par le code de sortie `2` et `L'entrée standard n'est pas disponible sous Windows. Utilisez --password <value> ou WEBFORJ_BBJ_PASSWORD`. | Passez le mot de passe avec `--password`, ou définissez `WEBFORJ_BBJ_USERNAME` et `WEBFORJ_BBJ_PASSWORD`. |
-| `reset` se termine par le code de sortie `2` et `L'entrée standard n'est pas disponible sous Windows. Exécutez reset --yes pour confirmer`. | Exécutez `bbjship.cmd reset --yes`. |
-| `apps undeploy` ou `reset` imprime `Non retiré : <folder>. <reason>` et se termine par le code de sortie `0`. | BBjServices maintient toujours des fichiers de l'application ouverts. L'application a été retirée de Enterprise Manager. Redémarrez BBjServices. Le dossier sera supprimé lors du prochain déploiement de ce nom, ou supprimez-le après le redémarrage. |
-| L'installation de BBjShip sur une version installée échoue car ses fichiers sont en cours d'utilisation. | BBjServices maintient toujours les fichiers de la version installée de BBjShip ouverts. Redémarrez BBjServices, puis installez à nouveau. |
-| BBjServices ne s'exécute pas en tant que service Windows après qu'une exécution de développement l'ait redémarré. | L'exécution de développement l'a démarré avec `BBjServices.exe -noservice` car aucun service `BBjServices` n'est enregistré. Il fonctionne en dehors du gestionnaire de services Windows jusqu'à ce que la machine redémarre. |
-| Une commande `bbjship.cmd` ne peut pas démarrer. | Démarrez BBjServices. Chaque commande `bbjship` a besoin qu'il soit en cours d'exécution. |
+| L’exécution de `bbj.exe` avec le programme BBjShip n’affiche rien. | Exécutez `bbjship.cmd` dans `<BBj home>\plugins\webforj-bbjship` pour afficher la sortie de la commande. |
+| `--password-stdin` se termine avec le code de sortie `2` et affiche `Standard input is not available on Windows. Use --password <value> or WEBFORJ_BBJ_PASSWORD`. | Passez le mot de passe avec `--password`, ou définissez `WEBFORJ_BBJ_USERNAME` et `WEBFORJ_BBJ_PASSWORD`. |
+| `reset` se termine avec le code de sortie `2` et affiche `Standard input is not available on Windows. Run reset --yes to confirm`. | Exécutez `bbjship.cmd reset --yes`. |
+| `apps undeploy` ou `reset` affiche `Not removed: <folder>. <reason>` et se termine avec le code de sortie `0`. | BBjServices a encore des fichiers de l’application ouverts. L’application est supprimée d’Enterprise Manager. Redémarrez BBjServices. Le dossier sera supprimé lors du prochain déploiement sous ce nom, ou vous pourrez le supprimer après le redémarrage. |
+| L’installation de BBjShip par-dessus une version installée échoue, car des fichiers sont utilisés. | BBjServices a encore ouverts les fichiers de BBjShip installé. Redémarrez BBjServices, puis relancez l’installation. |
+| BBjServices ne s’exécute plus comme service Windows après son redémarrage par une exécution de développement. | L’exécution de développement l’a démarré avec `BBjServices.exe -noservice`, car aucun service `BBjServices` n’est enregistré. Il s’exécute en dehors du gestionnaire de services Windows jusqu’au redémarrage de la machine. |
+| Une commande `bbjship.cmd` ne démarre pas. | Démarrez BBjServices. Toutes les commandes `bbjship` nécessitent qu’il soit en cours d’exécution. |

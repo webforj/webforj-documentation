@@ -1,76 +1,76 @@
 ---
-title: Deployointi
+title: Käyttöönotto
 sidebar_position: 5
 description: >-
   Package, deploy and undeploy webforJ apps in BBjServices with the bbj-package,
   bbj-deploy and bbj-undeploy goals of the webforJ Maven plugin.
-_i18n_hash: 19fc6feafc7d9e17580d710ced7b962b
+_i18n_hash: 77099210b317740da114b7881490bd09
 ---
-# Sovellus <DocChip chip='since' label='26.03' /> {#deploying}
+# Käyttöönotto <DocChip chip='since' label='26.03' /> {#deploying}
 
-webforJ Maven -laajennus julkaisee sovelluksen [BBjShip](/docs/configuration/bbjship/overview) käyttäen kolmea tavoitetta:
+webforJ Maven -laajennus ottaa sovelluksen käyttöön [BBjShipissä](/docs/configuration/bbjship/overview) kolmella tavoitteella:
 
-| Tavoite | Suoritetaan | Mitä se tekee |
+| Tavoite | Suoritetaan | Toiminto |
 |---|---|---|
-| `bbj-package` | `package` -vaiheessa | Kirjoittaa julkaisuarkiston `target/bbj/<julkaisun nimi>.zip` |
-| `bbj-deploy` | `install` -vaiheessa | Kirjoittaa arkiston ja julkaisee sen BBjShipille |
-| `bbj-undeploy` | käsin | Poistaa sovelluksen BBjServicesista |
+| `bbj-package` | `package`-vaiheen yhteydessä | Kirjoittaa käyttöönottoarkiston `target/bbj/<publish name>.zip` |
+| `bbj-deploy` | `install`-vaiheen yhteydessä | Kirjoittaa arkiston ja ottaa sovelluksen käyttöön BBjShipissä |
+| `bbj-undeploy` | manuaalisesti | Poistaa sovelluksen BBjServicesistä |
 
-Vaiheet pätevät, kun liitännäinen on määritetty `<extensions>true</extensions>` ja `<bbj>` -lohkon kanssa, katso [Projektin määrittäminen](/docs/configuration/bbjship/existing-projects).
+Vaiheet ovat käytössä, kun laajennus on määritetty asetuksilla `<extensions>true</extensions>` ja `<bbj>`-lohkolla. Katso [Projektin määrittäminen](/docs/configuration/bbjship/existing-projects).
 
-## Julkaise {#deploy}
+## Ota käyttöön {#deploy}
 
 ```bash
 mvn install
 ```
 
-Ilman liitännäistä, suorita `mvn package webforj:bbj-deploy`. Tavoite tulostaa sovelluksen osoitteen, kun julkaisu valmistuu:
+Jos laajennus ei ole käytössä, suorita `mvn package webforj:bbj-deploy`. Tavoite tulostaa sovelluksen osoitteen, kun käyttöönotto on valmis:
 
 ```text
-[INFO] BBj julkaisu varastosta on valmis http://localhost:8888/webapp/inventory
+[INFO] BBj deployment of inventory completed at http://localhost:8888/webapp/inventory
 ```
 
-Kun julkaisu epäonnistuu, edellinen versio jatkaa toimintaa.
+Jos käyttöönotto epäonnistuu, edellinen versio jatkaa toimintaansa.
 
-:::warning Korvataan sovellus
-Julkaisu korvasi sovelluksen, jolle on jo annettu sama julkaisu nimi. Aiempi julkaisu kansio poistetaan ja kyseisen sovelluksen käynnissä olevat istunnot päättyvät. Säilytä edellisen version arkisto, jos saatat tarvita palata takaisin.
+:::warning Korvaa sovelluksen
+Käyttöönotto korvaa sovelluksen, jolla on sama julkaisu nimi. Edellinen käyttöönottokansio poistetaan, ja sovelluksen käynnissä olevat istunnot päättyvät. Säilytä edellisen version arkisto, jos saatat haluta palata siihen.
 :::
 
-[Troubleshooting](/docs/configuration/bbjship/troubleshooting#deploy-and-undeploy) luettelee epäonnistuneen julkaisun viestit ja mitä tehdä kunkin osalta.
+[Ongelmien vianmääritys](/docs/configuration/bbjship/troubleshooting#deploy-and-undeploy) sisältää epäonnistuneen käyttöönoton viestit ja ohjeet niiden käsittelyyn.
 
-## Paketti julkaisematta {#package-without-deploying}
+## Pakkaa ottamatta käyttöön {#package-without-deploying}
 
-`bbj-package` kirjoittaa saman arkiston ilman julkaisun URL-osoitetta tai käyttöoikeustietoja. CI-työ voi liittää `target/bbj/<julkaisun nimi>.zip` rakennukseen, ja BBj-järjestelmänvalvoja julkaisee sen BBj-koneella käyttäen [`bbjship apps deploy`](/docs/configuration/bbjship/command-line#apps).
+`bbj-package` kirjoittaa saman arkiston ilman käyttöönoton URL-osoitetta tai tunnistetietoja. CI-työ voi liittää tiedoston `target/bbj/<publish name>.zip` koontiversioon, minkä jälkeen BBj-järjestelmänvalvoja ottaa sen käyttöön BBj-koneella komennolla [`bbjship apps deploy`](/docs/configuration/bbjship/command-line#apps).
 
-## Poista julkaisu {#undeploy}
+## Poista käyttöönotosta {#undeploy}
 
 ```bash
 mvn webforj:bbj-undeploy
 ```
 
-Sovellus pysähtyy ja poistetaan Enterprise Managerista yhdessä sen tiedostojen kanssa.
+Sovellus pysäytetään ja poistetaan Enterprise Managerista tiedostoineen.
 
-:::warning Toimenpidettä ei voi peruuttaa
-`bbj-undeploy` lopettaa sovelluksen käynnissä olevat istunnot ja poistaa sen julkaisukansion. Tätä ei voi peruuttaa. Säilytä arkisto `target/bbj/<julkaisun nimi>.zip` -tiedostosta, jos saatat julkaista sovelluksen uudelleen.
+:::warning Toimintoa ei voi perua
+`bbj-undeploy` päättää sovelluksen käynnissä olevat istunnot ja poistaa sen käyttöönottokansion. Tätä ei voi perua. Säilytä arkisto `target/bbj/<publish name>.zip`, jos saatat ottaa sovelluksen uudelleen käyttöön.
 :::
 
-## Julkaisun nimet {#publish-names}
+## Julkaisunimet {#publish-names}
 
-Julkaisun nimi oletusarvoisesti on rakennuksen lopullinen nimi ja se näkyy sovelluksen osoitteessa. Sen on aloitettava kirjaimella tai numerolla, ja siinä on oltava vain kirjaimia, numeroita, `_`, `.` ja `-`, eikä sen saa päättyä pisteeseen. Varatut nimet, kuten BBjServices-reitit `webapp` ja `files` tai Windowsin laite nimi `con`, hylätään ennen arkiston kirjoittamista.
+Julkaisunimi on oletusarvoisesti koontiversion lopullinen nimi, ja se näkyy sovelluksen osoitteessa. Nimen on alettava kirjaimella tai numerolla, ja se voi sisältää vain kirjaimia, numeroita sekä merkit `_`, `.` ja `-`. Nimi ei saa päättyä pisteeseen. Varatut nimet, kuten BBjServicesin polut `webapp` ja `files` tai Windowsin laitteen nimi `con`, hylätään ennen arkiston kirjoittamista.
 
-Jokainen tietue luokka kuuluu yhteen julkaistuun sovellukseen. Julkaiseminen toisen nimen alle epäonnistuu:
+Jokainen aloitusluokka kuuluu yhteen käyttöönotettuun sovellukseen. Sen käyttöönotto toisella nimellä epäonnistuu seuraavasti:
 
 ```text
-BBj julkaisu epäonnistui HTTP 409:llä. Tietue luokka com.example.Application on jo julkaistu inventaarina. Poista inventaarin julkaisu ensin
+BBj deployment failed with HTTP 409. Entry class com.example.Application is already published as inventory. Undeploy inventory first
 ```
 
-## Julkaisu toiselta koneelta {#deploying-from-another-machine}
+## Käyttöönotto toiselta koneelta {#deploying-from-another-machine}
 
-Julkaisu toiselta koneelta, kuten CI-palvelimelta, käyttää valtuutustunnusta HTTPS:n kautta:
+Käyttöönotto toiselta koneelta, kuten CI-palvelimelta, käyttää valtuutustunnusta HTTPS-yhteyden kautta:
 
-1. BBj-koneella, [ota käyttöön päätepiste](/docs/configuration/bbjship/installing#enabling-the-deployment-endpoint) SSL-portilla.
-2. Enterprise Managerissä, luo tunnus Turvallisuus, Valtuutustunnukset -osiosta. Uudista ja peruuta se myös siellä.
-3. Siirrä tunnus rakennukseen:
+1. [Ota käyttöönottopäätepiste käyttöön](/docs/configuration/bbjship/installing#enabling-the-deployment-endpoint) BBj-koneella SSL-porttia käyttäen.
+2. Luo Enterprise Managerissa tunnus kohdassa Security, Authentication Tokens. Voit uusia ja mitätöidä tunnuksen samassa paikassa.
+3. Välitä tunnus koontiversiolle:
 
 ```bash
 mvn package webforj:bbj-deploy \
@@ -78,11 +78,23 @@ mvn package webforj:bbj-deploy \
   -Dwebforj.bbj.admin.token="$BBJ_ADMIN_TOKEN"
 ```
 
-BBjServicesin web-palvelimen sertifikaatin on vastattava URL-osoitteen isäntänimeä tai oltava rakennuksen Java-truststoressa. Java ei luota BBj:n oletussertifikaattiin, joka on itse allekirjoitettu. `http://` URL-osoite toiselle koneelle lähettää käyttöoikeustiedot, jotka ovat luettavissa verkossa, ja tavoitteet tulostavat varoituksen siitä.
+BBjServices-verkkopalvelimen varmenteen on vastattava URL-osoitteen isäntänimeä tai sen on oltava koontiversion Javan luottamusvarastossa. Java ei luota BBj:n oletusvarmenteeseen, koska se on itse allekirjoitettu.
 
-## Sovelluksen asetukset {#app-settings}
+Toiseen koneeseen osoittava `http://`-URL hylätään molemmissa päissä. Tavoite pysähtyy ennen kuin se lähettää mitään, ja BBjShip vastaa HTTP 403 -virheellä pyyntöön, joka saapuu HTTP:n kautta toiselta koneelta. BBj-koneeseen itseensä osoittava URL, kuten `localhost` tai jokin sen omista osoitteista, toimii HTTP:n kautta.
 
-BBjShip lukee sovelluksen `webforj.conf` jokaisessa julkaisussa ja soveltaa nämä ominaisuudet sovellukseen Enterprise Managerissa. Uudelleen julkaisu ottaa käyttöön muuttuneen arvon. Asetus, jota ei ole määritetty, säilyttää BBjServicesin oletusasetukset.
+Jos haluat silti ottaa sovelluksen käyttöön HTTP:n kautta toisella koneella, esimerkiksi omalla tietokoneellasi olevassa virtuaalikoneessa, salli se molemmissa päissä. Suorita BBj-koneella `bbjship remote enable --allow-unencrypted` käyttäen päätepisteen portteja. Aseta koontiversiossa `<deployment><allowUnencrypted>true</allowUnencrypted>` tai välitä seuraava ominaisuus:
+
+```bash
+mvn package webforj:bbj-deploy \
+  -Dwebforj.bbj.deployment.url=http://bbj.example.com:8888/webforj-bbjship \
+  -Dwebforj.bbj.deployment.allowUnencrypted=true
+```
+
+Tavoite tulostaa tällöin varoituksen ja ottaa sovelluksen käyttöön. Tunnistetiedot kulkevat kyseisen yhteyden kautta verkossa luettavassa muodossa.
+
+## Sovellusasetukset {#app-settings}
+
+BBjShip lukee sovelluksen `webforj.conf`-tiedoston jokaisen käyttöönoton yhteydessä ja määrittää sen ominaisuudet sovellukselle Enterprise Managerissa. Uudelleenkäyttöönotto ottaa muuttuneen arvon käyttöön. Jos ominaisuutta ei ole asetettu, käyttöön jää BBjServicesin oletusarvo.
 
 ```hocon title="webforj.conf"
 webforj.assetsSource = packaged
@@ -90,31 +102,32 @@ webforj.disallowConsole = true
 webforj.programArguments = ["mode=demo", "region eu"]
 ```
 
-| Ominaisuus | Oletus | Kuvaus |
+| Ominaisuus | Oletusarvo | Kuvaus |
 |---|---|---|
-| `webforj.assetsSource` | Ei asetettu | `packaged` palvelee `ws://` staattisia tiedostoja ja `icons://` kuvakkeita sovelluksesta, osoitteessa `/webforj/<julkaisun nimi>/`. Ilman sitä sovellus, joka käyttää `icons://`, ei käynnisty. |
+| `webforj.assetsSource` | Ei asetettu | `packaged` tarjoaa sovelluksesta `ws://`-staattiset tiedostot ja `icons://`-kuvakkeet polussa `/webforj/<publish name>/`. Ilman tätä asetusta `icons://`-osoitteita käyttävän sovelluksen käynnistys epäonnistuu. |
 | `webforj.showClientConfirmationDialog` | `false` | Kysyykö selain vahvistusta ennen sivun sulkemista. |
-| `webforj.disallowConsole` | `true` | Onko konsoli estetty sovelluksessa. |
-| `webforj.secure` | BBjServicesin oletus | Käykö sovellus suojatun yhteyden kautta. |
-| `webforj.configFile` | BBjServicesin oletus | BBj:n konfiguraatiotiedoston polku, jota sovellus käyttää BBj-koneella. Polku annetaan sellaisena kuin se on kirjoitettu, joten se voi nimetä vain palvelimella olevan tiedoston. |
-| `webforj.programArguments` | Ei mitään | Sovelluksen ohjelmaargumentit merkkijonoluettelona tai yhtenä merkkijonona. |
+| `webforj.disallowConsole` | `true` | Onko konsolin käyttö sovelluksessa estetty. |
+| `webforj.secure` | BBjServicesin oletusarvo | Suoritetaanko sovellus suojatun yhteyden kautta. |
+| `webforj.configFile` | BBjServicesin oletusarvo | Sen BBj-määritystiedoston polku, jonka kanssa sovellus suoritetaan. BBjServices lukee tiedoston BBj-koneella. Polku välitetään sellaisenaan, joten se voi osoittaa tiedostoon, joka on olemassa vain palvelimella. |
+| `webforj.programArguments` | Ei mitään | Sovelluksen ohjelma-argumentit merkkijonoluettelona tai yhtenä merkkijonona. |
 
-Virheellinen `webforj.conf` epäonnistuttaa julkaisun HTTP 400:lla ja syyn.
+Virheellinen `webforj.conf` aiheuttaa käyttöönoton epäonnistumisen HTTP 400 -virheellä ja syyn sisältävällä viestillä.
 
 ## Asetukset {#settings}
 
-Asetukset löytyvät `webforj-maven-plugin` -liitännän `<bbj>` -lohkon sisältä, kuten on esitetty [Rakenna liitännäinen](/docs/configuration/bbjship/existing-projects#the-build-plugin). Jokainen ominaisuus ohittaa sen elementin komentorivillä.
+Asetukset määritetään `webforj-maven-plugin`-laajennuksen `<bbj>`-lohkossa, kuten kohdassa [Koontilaajennus](/docs/configuration/bbjship/existing-projects#the-build-plugin) näytetään. Kukin ominaisuus ohittaa komentoriviltä annetun arvon.
 
-| Maven-elementti | Maven-ominaisuus | Oletus | Kuvaus |
+| Maven-elementti | Maven-ominaisuus | Oletusarvo | Kuvaus |
 |---|---|---|---|
-| `<home>` | `webforj.bbj.home` | Havaitut | BBj-asennushakemisto, jota käytetään `bbj-setup` ja `watch`. |
-| `<publishName>` | `webforj.bbj.publishName` | Rakennuksen lopullinen nimi | Nimi, jonka mukaan sovellus julkaistaan, katso [Julkaisun nimet](#publish-names). |
-| `<deployment><url>` | `webforj.bbj.deployment.url` | Ei mitään, vaaditaan | BBjShipin osoite, `http://<isäntä>:<HTTP port>/webforj-bbjship` tai `https://<isäntä>:<SSL port>/webforj-bbjship`. |
-| `<admin><username>` | `webforj.bbj.admin.username` | `admin`, kun käyttäjänimi ja salasana ovat molemmat puuttuvat | BBj-järjestelmänvalvojan käyttäjänimi. |
-| `<admin><password>` | `webforj.bbj.admin.password` | `admin123`, kun käyttäjänimi ja salasana ovat molemmat puuttuvat | BBj-järjestelmänvalvojan salasana. |
-| `<admin><token>` | `webforj.bbj.admin.token` | Tyhjät | Valtuutustunnus `bbj-deploy` ja `bbj-undeploy` varten. Ohittaa käyttäjänimen ja salasanan. |
-| `<properties>` | `webforj.bbj.properties` | `<home>/cfg/BBj.properties` | BBjServicesin ominaisuustiedostoon, jonne [kehitysjulkaisun](/docs/configuration/deploy-reload/bbjservices) vaihdot kirjoitetaan. |
-| `<development><classFolder>` | — | Rakennuksen tulostushakemisto | Kehitysjulkaisun luokka hakemisto, kuten BBjServices sen lukee. |
-| — | `webforj.bbj.force` | `false` | Antaa `bbj-setup`:n korvata toisen version asennetun BBjShipin. Vain ominaisuus. |
+| `<home>` | `webforj.bbj.home` | Tunnistetaan automaattisesti | BBj-asennuskansio, jota `bbj-setup` ja `watch` käyttävät. |
+| `<publishName>` | `webforj.bbj.publishName` | Koontiversion lopullinen nimi | Nimi, jolla sovellus julkaistaan. Katso [Julkaisunimet](#publish-names). |
+| `<deployment><url>` | `webforj.bbj.deployment.url` | Ei ole, pakollinen | BBjShipin osoite: `http://<host>:<HTTP port>/webforj-bbjship` tai `https://<host>:<SSL port>/webforj-bbjship`. |
+| `<deployment><allowUnencrypted>` | `webforj.bbj.deployment.allowUnencrypted` | `false` | Sallii komentojen `bbj-deploy` ja `bbj-undeploy` lähettää tunnistetiedot `http://`-URL-osoitteeseen toisella koneella. Katso [Käyttöönotto toiselta koneelta](#deploying-from-another-machine). |
+| `<admin><username>` | `webforj.bbj.admin.username` | `admin`, jos sekä käyttäjänimi että salasana puuttuvat | BBj-järjestelmänvalvojan käyttäjänimi. |
+| `<admin><password>` | `webforj.bbj.admin.password` | `admin123`, jos sekä käyttäjänimi että salasana puuttuvat | BBj-järjestelmänvalvojan salasana. |
+| `<admin><token>` | `webforj.bbj.admin.token` | Tyhjä | `bbj-deploy`- ja `bbj-undeploy`-komentojen valtuutustunnus. Ohittaa käyttäjänimen ja salasanan. |
+| `<properties>` | `webforj.bbj.properties` | `<home>/cfg/BBj.properties` | BBjServicesin ominaisuustiedosto, johon [kehitysajossa](/docs/configuration/deploy-reload/bbjservices) kirjoitetaan hot swap -asetukset. |
+| `<development><classFolder>` | — | Koontiversion tulostehakemisto | Kehitysajon luokkakansio sellaisena kuin BBjServices sen lukee. |
+| — | `webforj.bbj.force` | `false` | Sallii `bbj-setup`-komennon korvata asennetun, eri versiota olevan BBjShipin. Vain ominaisuus. |
 
-Käyttäjänimi ilman salasanaa tai salasana ilman käyttäjänimeä pysäyttää tavoitteen.
+Jos käyttäjänimi annetaan ilman salasanaa tai salasana ilman käyttäjänimeä, tavoite pysähtyy.

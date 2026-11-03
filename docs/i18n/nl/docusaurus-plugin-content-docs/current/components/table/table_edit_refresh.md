@@ -1,35 +1,37 @@
 ---
 sidebar_position: 30
-title: Bewerken en verversen
+title: Bewerken en vernieuwen
 slug: refreshing
 description: >-
   Edit Table rows by mutating the bound Repository and call commit to refresh
   the UI through RepositoryCommitEvent.
-_i18n_hash: 6ecf362668be7d0633c3c13e7da068ec
+_i18n_hash: 84dec48293e6fa794713881310b6f303
 ---
-Het bewerken van gegevens binnen de `Table` werkt via interactie met de `Repository` die de gegevens voor de `Table` bevat. De `Repository` fungeert als een brug tussen de `Table` en de onderliggende dataset, en biedt methoden voor gegevensophaling, -wijziging en -vernieuwing. Hieronder staat een voorbeeld dat gedrag implementeert om de "Titel" van een gewenste rij aan te passen.
+Het bewerken van gegevens in de `Table` gebeurt via interactie met de `Repository` die de gegevens voor de `Table` bevat. De `Repository` vormt een brug tussen de `Table` en de onderliggende dataset en biedt methoden voor het ophalen, wijzigen en vernieuwen van gegevens. Hieronder staat een voorbeeld dat gedrag implementeert voor het bewerken van de "Title" van een gewenste rij.
 
 <ComponentDemo
 path='/webforj/tableeditdata'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableEditDataView.java',
   'src/main/java/com/webforj/samples/views/table/TitleEditorComponent.java',
+  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
+  'src/main/java/com/webforj/samples/views/table/Service.java',
 ]}
 height='600px'
 />
 
-In het bovenstaande voorbeeld faciliteert de `TitleEditorComponent` klasse het bewerken van het "Titel" veld voor een geselecteerde `MusicRecord`. De component bevat een invoerveld voor de nieuwe titel, samen met "Opslaan" en "Annuleren" knoppen.
+In het bovenstaande voorbeeld maakt de klasse `TitleEditorComponent` het mogelijk om het veld "Title" van een geselecteerde `MusicRecord` te bewerken. De component bevat een invoerveld voor de nieuwe titel, samen met de knoppen "Opslaan" en "Annuleren".
 
-Om de bewerkingscomponent te verbinden met de `Table`, wordt er een "Bewerken" knop toegevoegd aan de `Table` via een `VoidElementRenderer`. Door op deze knop te klikken, wordt de `edit()` methode van de `TitleEditorComponent` geactiveerd, waardoor gebruikers de "Titel" waarde kunnen aanpassen.
+Om de bewerkingscomponent te verbinden met de `Table`, wordt via een `VoidElementRenderer` een knop "Bewerken" aan de `Table` toegevoegd. Als gebruikers op deze knop klikken, wordt de methode `edit()` van `TitleEditorComponent` aangeroepen, zodat ze de waarde van "Title" kunnen wijzigen.
 
-## Commit-methode {#commit-method}
+## Commitmethode {#commit-method}
 
-Zodra de gebruiker de titel aanpast en op de "Opslaan" knop klikt, activeert de `TitleEditorComponent` de `save()` methode. Deze methode werkt de titel van de corresponderende `MusicRecord` bij en dispatcht een aangepaste `SaveEvent`.
+Zodra de gebruiker de titel wijzigt en op de knop "Opslaan" klikt, roept `TitleEditorComponent` de methode `save()` aan. Deze methode werkt de titel van de bijbehorende `MusicRecord` bij en verstuurt een aangepaste `SaveEvent`.
 
-De realtime-update van gegevens in de repository wordt bereikt via de `commit()` methode. Deze methode wordt gebruikt binnen de `onSave` eventlistener, waarmee ervoor wordt gezorgd dat wijzigingen die via de bewerkingscomponent zijn aangebracht, worden weerspiegeld in de onderliggende dataset.
+De gegevens in de repository worden in realtime bijgewerkt via de methode `commit()`. Deze methode wordt gebruikt in de gebeurtenislistener `onSave`, zodat wijzigingen die via de bewerkingscomponent zijn aangebracht, worden doorgevoerd in de onderliggende dataset.
 
-De `commit()` methode wordt aangeroepen om alle geïnteresseerde componenten te informeren dat de gegevens zijn gewijzigd. De `Table` vangt de `RepositoryCommitEvent` en werkt bij op basis van de nieuwe gegevens.
+De methode `commit()` wordt aangeroepen om alle geïnteresseerde componenten te laten weten dat de gegevens zijn gewijzigd. De `Table` vangt de `RepositoryCommitEvent` op en werkt zichzelf bij op basis van de nieuwe gegevens.
 
-:::tip Het bijwerken en creëren van invoeringen
-Het aanroepen van de `commit()` methode werkt zowel bestaande invoeringen bij als **voegt eventuele nieuwe invoeringen toe die zijn aangemaakt**.
+:::tip Items bijwerken en maken
+De methode `commit()` bijwerken van bestaande items en **voegt ook nieuwe items in die zijn gemaakt**.
 :::

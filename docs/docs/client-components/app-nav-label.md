@@ -6,7 +6,7 @@ description: Style the dwc-app-nav-label client component with CSS variables, sh
 ---
 
 <DocChip chip='shadow' />
-    
+
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-app-nav-label>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::

@@ -6,7 +6,7 @@ description: >-
   validate webforJ components, logic, and full user journeys.
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
+_i18n_hash: 58ac266506a221d71e22c723189aa08f
 ---
 <Head>
   <style>{`
@@ -16,34 +16,36 @@ _i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
   `}</style>
 </Head>
 
-# webforJ Testen
+# Testen met webforJ
 
-Testen in webforJ-apps combineert unit-, frontend- en end-to-end (E2E) testen, waarbij elk een specifieke rol vervult in het behouden van de stabiliteit en betrouwbaarheid van de app.
+Testen in webforJ-apps combineert unit-, frontend- en end-to-endtests (E2E), die elk een eigen doel dienen om de app stabiel en betrouwbaar te houden.
 
-## Unit testing {#unit-testing}
+## Unittests {#unit-testing}
 
-Unit testing richt zich op het verifiëren van individuele componenten of backend-logica in isolatie. Door standaarden van Java-testpraktijken te volgen, zoals het gebruik van [JUnit](https://junit.org/junit5/), kunnen ontwikkelaars specifieke app-logica efficiënt valideren en ervoor zorgen dat elke "eenheid" functioneert zoals verwacht.
+Unittests zijn gericht op het afzonderlijk controleren van individuele componenten of backendlogica. Door standaard Java-testpraktijken te volgen, zoals het gebruik van [JUnit](https://junit.org/junit5/), kunnen ontwikkelaars specifieke applogica valideren en controleren of elke ‘unit’ naar verwachting werkt.
 
-## Frontend testing {#frontend-testing}
+Voor views en componenten maakt de [TestBed](./testbed/overview) browserloos testen mogelijk in gewone JUnit-tests, zonder browser of server. Een test voegt een view toe aan de pagina, voert er acties op uit zoals een gebruiker dat zou doen en controleert het resultaat vanuit Java.
 
-Frontend testing omvat de bronnen die een projectautheur gebruikt met de [frontend bundler](/docs/managing-resources/bundler/overview). De [Bun](https://bun.sh/) test runner voert deze uit als onderdeel van dezelfde build die de Java-tests uitvoert, zodat een TypeScript-component of een stuk clientlogica op dezelfde manier wordt geverifieerd als de backend. Zie [Frontend testing](./frontend-testing).
+## Frontendtests {#frontend-testing}
 
-## End-to-End (E2E) testing {#end-to-end-e2e-testing}
+Frontendtests omvatten de bronnen die een project zelf schrijft met de [frontendbundler](/docs/managing-resources/bundler/overview). De test-runner van [Bun](https://bun.sh/) voert deze uit als onderdeel van dezelfde build als de Java-tests, zodat een TypeScript-component of een stukje clientlogica op dezelfde manier wordt gecontroleerd als de backend. Zie [Frontendtests](./frontend-testing).
 
-End-to-end testing is belangrijk voor het valideren van de gebruikerservaring in webforJ-apps, die dynamische, single-page webinterfaces genereren. Deze tests simuleren gebruikersinteracties en verifiëren de functies van de hele app.
+## End-to-endtests (E2E) {#end-to-end-e2e-testing}
+
+End-to-endtests valideren wat gebruikers ervaren in webforJ-apps, die dynamische webinterfaces met één pagina genereren. Deze tests simuleren gebruikersinteracties en controleren de functies van de volledige app.
 
 Met tools zoals [**Selenium**](https://www.selenium.dev/) en [**Playwright**](https://playwright.dev/java/docs/intro) kun je:
 
-- Automatiseren van browserinteracties, zoals het klikken op knoppen en het indienen van formulieren.
-- Controleren op consistente weergave en interactiviteit van dynamische UI-componenten.
-- Zorgen voor gedragsconsistentie over verschillende browsers en apparaten.
+- Browserinteracties automatiseren door klikken op knoppen en het verzenden van formulieren te simuleren.
+- Controleren of dynamische UI-componenten consistent worden weergegeven en interactief zijn.
+- Bevestigen dat het gedrag consistent blijft in verschillende browsers en op verschillende apparaten.
 
-## Combineren van teststrategieën {#combining-testing-strategies}
+## Teststrategieën combineren {#combining-testing-strategies}
 
-Door unit- en E2E-testing te combineren:
+Door unit- en E2E-tests te combineren:
 
-1. **Isoleren van Problemen**: Detecteer en los bugs op componentniveau vroegtijdig op met unit testing.
-2. **Zorg voor Betrouwbaarheid**: Valideer volledige gebruikersreizen en systeemintegraties met E2E testing.
+1. **Problemen isoleren**: detecteer en verhelp bugs op componentniveau vroegtijdig met unittests.
+2. **Betrouwbaarheid bevestigen**: valideer volledige gebruikersroutes en systeemintegraties met E2E-tests.
 
 ## Onderwerpen {#topics}
 

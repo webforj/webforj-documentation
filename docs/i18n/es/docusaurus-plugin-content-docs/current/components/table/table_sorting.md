@@ -1,16 +1,16 @@
 ---
 sidebar_position: 15
-title: Sorting
+title: Ordenación
 slug: sorting
 description: >-
   Enable per-column sorting on the Table, configure multi-column sorting, and
   set sort priority programmatically.
-_i18n_hash: 94345d1313939015f02cf46ecaa5af99
+_i18n_hash: 7a910f5bdcaa8a9e053bcda6706808c2
 ---
-Ordenar permite a los usuarios organizar datos en columnas por orden, haciendo que la información sea más fácil de leer y analizar. Esto es útil cuando los usuarios necesitan encontrar rápidamente los valores más altos o más bajos en una columna en particular.
+La ordenación permite que los usuarios organicen los datos por columnas, lo que facilita su lectura y análisis. Esto resulta útil cuando necesitan encontrar rápidamente los valores más altos o más bajos de una columna determinada.
 
 :::tip Gestión y consulta de datos
-Para obtener información sobre cómo utilizar el patrón `Repository` para gestionar y consultar colecciones, consulte los [artículos del Repositorio](/docs/advanced/repository/overview).
+Para obtener información sobre cómo usar el patrón `Repository` para gestionar y consultar colecciones, consulta los [artículos sobre Repository](/docs/advanced/repository/overview).
 :::
 
 <ComponentDemo
@@ -23,25 +23,25 @@ files={[
 height='600px'
 />
 
-Por defecto, una columna no es ordenable a menos que se active explícitamente. Para permitir el ordenamiento en una columna específica, use el método `setSortable(true)`:
+De forma predeterminada, las columnas no se pueden ordenar, a menos que se habilite explícitamente esta opción. Para permitir la ordenación de una columna específica, usa el método `setSortable(true)`:
 
 ```java
 table.getColumn("Age").setSortable(true);
 ```
 
-## Ordenamiento múltiple {#multi-sorting}
+## Ordenación múltiple {#multi-sorting}
 
-:::warning Ordenamiento de múltiples columnas desactivado por defecto en webforJ `25.00`
-Antes de webforj `25.00`, las tablas soportaban el ordenamiento de múltiples columnas por defecto. A partir de la versión `25.00`, este comportamiento cambió: los desarrolladores ahora deben habilitar explícitamente el ordenamiento de múltiples columnas.
+:::warning La ordenación por varias columnas está deshabilitada de forma predeterminada en webforJ `25.00`
+Antes de webforj `25.00`, las tablas admitían la ordenación por varias columnas de forma predeterminada. A partir de la versión `25.00`, este comportamiento cambió: ahora los desarrolladores deben habilitar explícitamente la ordenación por varias columnas.
 :::
 
-Si se necesita el ordenamiento múltiple, se debe aplicar `setMultiSorting(true)` a la tabla. Esto permite a los usuarios ordenar múltiples columnas en secuencia:
+Si se necesita ordenar varias columnas, se debe aplicar `setMultiSorting(true)` a la tabla. Esto permite a los usuarios ordenar varias columnas en secuencia:
 
 ```java
 table.setMultiSorting(true);
 ```
 
-Con el ordenamiento múltiple habilitado, hacer clic en múltiples encabezados de columnas los ordenará secuencialmente. La prioridad de ordenamiento se indica visualmente en la interfaz de usuario de la tabla.
+Con la ordenación múltiple habilitada, al hacer clic en varios encabezados de columna, estas se ordenarán secuencialmente. La prioridad de ordenación se indica visualmente en la interfaz de la tabla.
 
 <ComponentDemo
 path='/webforj/tablemultisorting'
@@ -53,50 +53,50 @@ files={[
 height='600px'
 />
 
-También puede definir la prioridad de ordenamiento programáticamente para el ordenamiento del lado del servidor. Use `setSortIndex()` en las columnas que desea ordenar, en orden de prioridad:
+También puedes definir la prioridad de ordenación mediante programación para la ordenación en el servidor. Usa `setSortIndex()` en las columnas que quieras ordenar, según su prioridad:
 
 ```java
-// Orden de clasificación del lado del servidor
+// Server-side sort order
 nameColumn.setSortIndex(1);
 ageColumn.setSortIndex(2);
 ```
 
-:::info El orden de las columnas es importante
-A menos que se use `setSortIndex()`, la tabla por defecto se ordena según el orden en el que se declaran las columnas.
+:::info El orden de las columnas importa
+A menos que se use `setSortIndex()`, la tabla ordena de forma predeterminada según el orden en que se declaran las columnas.
 :::
 
 <ComponentDemo
 path='/webforj/tablesortorder'
 files={[
-  'src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java',
+  'src/main/java/com/webforj/samples/views/table/TableSortOrderView.java',
   'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
   'src/main/java/com/webforj/samples/views/table/Service.java',
 ]}
 height='600px'
 />
 
-## Dirección de ordenamiento {#sort-direction}
+## Dirección de ordenación {#sort-direction}
 
-Hay tres configuraciones disponibles para la dirección en la que se puede ordenar una columna:
+Hay tres opciones disponibles para la dirección en que se puede ordenar una columna:
 
-- `SortDirection.ASC`: Ordena la columna en orden ascendente.
-- `SortDirection.DESC`: Ordena la columna en orden descendente.
-- `SortDirection.NONE`: No se aplica ningún ordenamiento a la columna.
+- `SortDirection.ASC`: Ordena la columna de forma ascendente.
+- `SortDirection.DESC`: Ordena la columna de forma descendente.
+- `SortDirection.NONE`: No aplica ninguna ordenación a la columna.
 
-Cuando una columna tiene el ordenamiento habilitado, verá un conjunto de indicadores de flecha vertical aparecer en la parte superior de la columna establecida. Estas flechas permiten al usuario alternar entre las diferentes direcciones de ordenamiento.
+Cuando la ordenación está habilitada para una columna, verás un conjunto de indicadores de flecha vertical en la parte superior de esa columna. Estas flechas permiten al usuario alternar entre las distintas direcciones de ordenación.
 
-Cuando se selecciona el orden ascendente, se mostrará un `^`, mientras que el orden descendente mostrará un `v`.
+Cuando se selecciona el orden ascendente, se muestra `^`; para el orden descendente, se muestra `v`.
 
 
-## Ordenamiento del cliente vs. ordenamiento del lado del servidor {#client-vs-server-side-sorting}
+## Ordenación en el cliente y en el servidor {#client-vs-server-side-sorting}
 
-El ordenamiento de datos se puede clasificar en dos enfoques principales: **Ordenamiento del Cliente** y **Ordenamiento del Servidor**.
+La ordenación de datos se puede clasificar, en términos generales, en dos enfoques principales: **ordenación en el cliente** y **ordenación en el servidor**.
 
-### Ordenamiento del cliente {#client-sorting}
+### Ordenación en el cliente {#client-sorting}
 
-El ordenamiento del cliente implica organizar y presentar datos directamente dentro de la interfaz de usuario de la aplicación cliente. Es el ordenamiento con el que interactúan los usuarios cuando hacen clic en los encabezados de las columnas, influyendo en la representación visual de los datos en la pantalla.
+La ordenación en el cliente consiste en organizar y mostrar los datos directamente en la interfaz de usuario de la aplicación cliente. Es el tipo de ordenación con el que interactúan los usuarios al hacer clic en los encabezados de las columnas, lo que influye en la representación visual de los datos en pantalla.
 
-El desarrollador no tiene control directo sobre el ordenamiento del lado del cliente, sino que se determina por el tipo de columna proporcionada en Java. Los siguientes tipos son los que se soportan actualmente:
+El desarrollador no tiene control directo sobre la ordenación en el cliente; esta depende del tipo de columna definido en Java. Actualmente se admiten los siguientes tipos:
 
 - TEXT
 - NUMBER
@@ -106,38 +106,38 @@ El desarrollador no tiene control directo sobre el ordenamiento del lado del cli
 - TIME
 
 :::info
-El ordenamiento del cliente no funciona cuando solo una parte de los datos está disponible en el cliente.
+La ordenación en el cliente no funciona cuando solo una parte de los datos está disponible en el cliente.
 :::
 
-### Ordenamiento del servidor {#server-sorting}
+### Ordenación en el servidor {#server-sorting}
 
-En contraste con el ordenamiento del lado del cliente, el ordenamiento del servidor implica organizar y preparar los datos en el servidor antes de enviarlos al cliente. Este enfoque es especialmente beneficioso cuando se manejan grandes conjuntos de datos que podrían ser poco prácticos de transferir completamente al cliente.
+A diferencia de la ordenación en el cliente, la ordenación en el servidor consiste en organizar los datos en el servidor antes de transmitirlos al cliente. Este enfoque resulta especialmente beneficioso cuando se trabaja con grandes conjuntos de datos que sería poco práctico transferir por completo al cliente.
 
-Los desarrolladores tienen más control sobre la lógica de ordenamiento del servidor. Esto permite implementar algoritmos de ordenamiento complejos y optimizaciones, haciéndolo adecuado para escenarios con datos extensos. Esto asegura que el cliente reciba datos ordenados previamente, minimizando la necesidad de un procesamiento extenso del lado del cliente.
+Los desarrolladores tienen más control sobre la lógica de ordenación en el servidor. Esto permite implementar algoritmos de ordenación complejos y optimizaciones, por lo que resulta adecuado para situaciones con grandes volúmenes de datos. Así, el cliente recibe los datos ya ordenados, lo que minimiza la necesidad de procesarlos extensamente en el cliente.
 
 
 :::info
-El ordenamiento del servidor es una estrategia orientada al rendimiento para manejar conjuntos de datos que superan las capacidades del procesamiento eficiente del cliente y es el método por defecto utilizado por la `Table`.
+La ordenación en el servidor es una estrategia orientada al rendimiento para trabajar con conjuntos de datos que superan las capacidades del procesamiento eficiente en el cliente, y es el método predeterminado que usa `Table`.
 :::
 
 ### Nombre de la propiedad de la columna {#column-property-name}
 
-Por defecto, la `Table` utiliza el ID de una columna como el nombre de la propiedad al construir criterios de ordenamiento para un repositorio backend. Cuando el ID de visualización de una columna no coincide con la propiedad de datos subyacente, o cuando la columna muestra un valor calculado, use `setPropertyName()` para indicar explícitamente a la `Table` qué propiedad ordenar.
+De forma predeterminada, `Table` usa el ID de una columna como nombre de propiedad al crear los criterios de ordenación para un repositorio de backend. Si el ID visible de una columna no coincide con la propiedad de los datos subyacentes, o si la columna muestra un valor calculado, usa `setPropertyName()` para indicar explícitamente a `Table` por qué propiedad debe ordenar.
 
 ```java
-// El ID de la columna es "Full Name", pero la propiedad del backend es "fullName"
+// Column ID is "Full Name", but the backend property is "fullName"
 table.addColumn("Full Name", Person::getFullName)
      .setSortable(true)
      .setPropertyName("fullName");
 ```
 
-El nombre de la propiedad se reenvía a los `OrderCriteria` cuando se activa un evento de ordenamiento, permitiendo que repositorios backend como Spring Data JPA o adaptadores REST construyan la cláusula `ORDER BY` correcta.
+El nombre de la propiedad se transfiere a `OrderCriteria` cuando se genera un evento de ordenación, lo que permite que los repositorios de backend, como Spring Data JPA, o los adaptadores REST creen la cláusula `ORDER BY` correcta.
 
 :::warning
-Sin `setPropertyName()`, la `Table` recurre al ID de columna. Si esto no coincide con una propiedad backend válida, el ordenamiento fallará silenciosamente o devolverá datos ordenados incorrectamente.
+Sin `setPropertyName()`, `Table` usa el ID de la columna como alternativa. Si este no coincide con una propiedad válida del backend, la ordenación fallará silenciosamente o devolverá datos en un orden incorrecto.
 :::
 
-Las rutas de propiedades anidadas también son compatibles utilizando la notación de punto:
+También se admiten rutas a propiedades anidadas mediante la notación con puntos:
 
 ```java
 table.addColumn("City", Person::getCity)
@@ -147,9 +147,9 @@ table.addColumn("City", Person::getCity)
 
 #### Comparadores {#comparators}
 
-El componente `Column` permite a los desarrolladores utilizar `Comparators` de Java para ordenamientos dinámicos y personalizados. Un `Comparator` es un mecanismo utilizado para ordenar dos objetos de la misma clase, incluso si esa clase es definida por el usuario. Esta funcionalidad proporciona a los desarrolladores la flexibilidad para personalizar cómo se ordenan los datos, brindando un mayor control sobre el comportamiento de ordenamiento predeterminado basado en el orden natural.
+El componente `Column` permite a los desarrolladores usar `Comparators` de Java para la ordenación dinámica y personalizada. Un `Comparator` es un mecanismo que se usa para ordenar dos objetos de la misma clase, incluso si esa clase está definida por el usuario. Esta funcionalidad ofrece a los desarrolladores la flexibilidad de personalizar cómo se ordenan los datos y un mayor control sobre el comportamiento de ordenación predeterminado basado en el orden natural.
 
-Para aprovechar el ordenamiento con `Comparator` en una `Column`, puede usar el método `setComparator()`. Este método permite definir una función `Comparator` personalizada que dicta la lógica de ordenamiento.
+Para usar la ordenación con `Comparator` en un `Column`, puedes usar el método `setComparator()`. Este método permite definir una función `Comparator` personalizada que determina la lógica de ordenación.
 
 <ComponentDemo
 path='/webforj/tablecolumncomparator'
@@ -161,10 +161,10 @@ files={[
 height='600px'
 />
 
-En el ejemplo anterior, se especifica una función de comparador personalizada que toma dos elementos (a y b), y define el orden de ordenamiento basado en los valores enteros analizados del atributo `Number`.
+En el ejemplo anterior, se especifica una función de comparación personalizada que toma dos elementos (`a` y `b`) y define el orden de clasificación según los valores enteros analizados del atributo `Number`.
 
-Usar Comparators para el ordenamiento de columnas es particularmente útil al manejar valores no numéricos. También son útiles para implementar algoritmos de ordenamiento complejos.
+El uso de comparadores para ordenar columnas resulta especialmente útil al trabajar con valores no numéricos. También es útil para implementar algoritmos de ordenación complejos.
 
 :::info
-Por defecto, la `Table` utiliza el ordenamiento del lado del servidor y ordena los valores no primitivos usando el método `toString()` de Object, convirtiéndolos en sus valores de cadena y luego ordenándolos.
+De forma predeterminada, `Table` usa la ordenación en el servidor y ordena los valores no primitivos mediante el método `toString()` de `Object`, convirtiéndolos en cadenas y ordenándolos después.
 :::

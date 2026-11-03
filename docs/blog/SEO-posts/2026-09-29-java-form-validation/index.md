@@ -214,18 +214,18 @@ Edit mode uses the same call. Load an existing record from your service, pass it
 
 ## Frequently asked questions {#faq}
 
-### Does webforJ work with Jakarta validation?
+### Does webforJ work with Jakarta validation? {#does-webforj-work-with-jakarta-validation}
 
 Yes. Create the context with `new BindingContext<>(Signup.class, true)` or `BindingContext.of(this, Signup.class, true)` and the `JakartaValidator` applies constraints from the bean's properties. You need Hibernate Validator or another implementation on the classpath.
 
-### How do I write a custom validator in webforJ?
+### How do I write a custom validator in webforJ? {#how-do-i-write-a-custom-validator-in-webforj}
 
 Implement `Validator<T>` and return `ValidationResult.valid()` or `ValidationResult.invalid(message)`. Attach it with `@UseValidator` on a field or `useValidator` on a manual binding. For simple rules, pass a predicate and a message directly to `useValidator`.
 
-### How do I bind a form to a Java bean?
+### How do I bind a form to a Java bean? {#how-do-i-bind-a-form-to-a-java-bean}
 
 Create a `BindingContext` for the bean class, then bind each field with `bind(field, "property").add()` or let `BindingContext.of` match fields to properties by name. Use `read(bean)` to fill the form and `write(bean)` to validate and save it.
 
-### How do I validate a field only when the user leaves it?
+### How do I validate a field only when the user leaves it? {#how-do-i-validate-a-field-only-when-the-user-leaves-it}
 
 Call `setValueChangeMode(ValueChangeMode.ON_BLUR)` on the field. Validation then runs once on blur instead of on every keystroke. You can also turn off automatic validation for a binding with `autoValidate(false)` and trigger it yourself.

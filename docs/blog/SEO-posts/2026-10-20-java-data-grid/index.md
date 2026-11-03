@@ -198,18 +198,18 @@ Start with `CollectionRepository` while the dataset is small. Moving to a delega
 
 ## Frequently asked questions {#faq}
 
-### What is the best Java data grid for web apps?
+### What is the best Java data grid for web apps? {#what-is-the-best-java-data-grid-for-web-apps}
 
 The best choice is the one that fits your stack. The webforJ `Table` suits teams that want to build the whole UI in Java, because columns, renderers, sorting, and data loading are all configured with Java classes and lambdas.
 
-### How does the webforJ Table handle large data sets?
+### How does the webforJ Table handle large data sets? {#how-does-the-webforj-table-handle-large-data-sets}
 
 It combines virtual scrolling in the browser with repository-based loading on the server. Only visible rows render, and a `DelegatingRepository` or `SpringDataRepository` fetches data by offset and limit instead of loading everything.
 
-### Can users edit data directly in a Java data grid?
+### Can users edit data directly in a Java data grid? {#can-users-edit-data-directly-in-a-java-data-grid}
 
 The `Table` edits through its repository. You open an editor, such as a dialog or a form, from a renderer button or a selection event, update the entity, and call `commit(entity)` to refresh that row.
 
-### How do I sort a webforJ Table by a field that differs from the column id?
+### How do I sort a webforJ Table by a field that differs from the column id? {#how-do-i-sort-a-webforj-table-by-a-field-that-differs-from-the-column-id}
 
 Call `setPropertyName` on the column with the backend property name. The name is passed in the `OrderCriteria` to your repository, which builds the correct sort. Nested paths such as `address.city` also work.

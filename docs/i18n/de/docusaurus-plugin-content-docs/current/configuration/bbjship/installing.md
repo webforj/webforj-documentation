@@ -1,27 +1,27 @@
 ---
-title: Installation von BBjShip
+title: BBjShip installieren
 sidebar_position: 4
 description: >-
   Install BBjShip on your own machine with the webforJ Maven plugin, or on a
   shared BBj server with the BBj Plugin Manager.
-_i18n_hash: 1f408734cddab0f6acd5a9446a2d51e9
+_i18n_hash: b5b4d6d8d79017066eecfcda86557633
 ---
-# Installation von BBjShip <DocChip chip='since' label='26.03' />
+# BBjShip installieren <DocChip chip='since' label='26.03' />
 
-BBjShip läuft innerhalb von BBjServices, daher wird es immer auf dem Rechner installiert, der BBjServices ausführt. Sobald es installiert ist und der Bereitstellungspunkt aktiviert ist, werden Ihre Builds über die Adresse `/webforj-bbjship` auf dem BBjServices-Webserver bereitgestellt, entweder von demselben Rechner oder von einem anderen.
+BBjShip läuft innerhalb von BBjServices und ist deshalb immer auf dem Rechner installiert, auf dem BBjServices ausgeführt wird. Sobald BBjShip installiert und sein Deployment-Endpunkt aktiviert ist, werden Ihre Builds über die Adresse `/webforj-bbjship` auf dem BBjServices-Webserver dorthin deployed – entweder von diesem Rechner oder von einem anderen.
 
 Wie Sie BBjShip installieren, hängt davon ab, wo BBjServices ausgeführt wird:
 
-| Wo BBjServices ausgeführt wird | Wer installiert BBjShip | Wie |
+| Wo BBjServices ausgeführt wird | Wer BBjShip installiert | Wie |
 |---|---|---|
-| Ihr eigener Rechner | Das webforJ-Build-Plugin | Automatisch mit `mvn` oder einmal mit `mvn webforj:bbj-setup` |
-| Ein freigegebener oder Produktionsserver | Ein Administrator dieses Servers | Der BBj Plugin Manager, dann `bbjship remote enable` |
+| Auf Ihrem eigenen Rechner | Das webforJ-Build-Plugin | Automatisch mit `mvn` oder einmalig mit `mvn webforj:bbj-setup` |
+| Auf einem gemeinsam genutzten oder Produktionsserver | Ein Administrator dieses Servers | Mit dem BBj Plugin Manager, danach `bbjship remote enable` |
 
-In beiden Fällen installieren Sie die BBjShip-Version, die mit der webforJ-Version Ihrer Anwendungen übereinstimmt. Bereitstellungen schlagen fehl, wenn die beiden unterschiedlich sind.
+Installieren Sie in beiden Fällen die BBjShip-Version, die zur webforJ-Version Ihrer Apps passt. Bei abweichenden Versionen schlagen Deployments fehl.
 
 ## Auf Ihrem eigenen Rechner {#on-your-own-machine}
 
-Wenn BBj auf demselben Rechner wie Ihr Build läuft, installieren Sie BBjShip nicht selbst. Der erste [Entwicklungsdurchlauf](/docs/configuration/deploy-reload/bbjservices) eines für BBjShip konfigurierten Projekts installiert es und aktiviert seinen Bereitstellungspunkt:
+Wenn BBj auf demselben Rechner wie Ihr Build ausgeführt wird, müssen Sie BBjShip nicht selbst installieren. Beim ersten [Entwicklungslauf](/docs/configuration/deploy-reload/bbjservices) eines für BBjShip konfigurierten Projekts wird BBjShip installiert und sein Deployment-Endpunkt aktiviert:
 
 ```bash
 mvn
@@ -29,63 +29,63 @@ mvn
 
 ### Über das Maven-Plugin {#through-the-maven-plugin}
 
-Um mit `mvn install` zu deployen, bevor Sie mit einem Entwicklungsdurchlauf beginnen, installieren Sie BBjShip einmal aus dem Ordner Ihres Projekts:
+Wenn Sie mit `mvn install` deployen möchten, bevor Sie einen Entwicklungslauf starten, installieren Sie BBjShip einmalig aus dem Ordner Ihres Projekts:
 
 ```bash
 mvn webforj:bbj-setup
 ```
 
-Das Ziel installiert die BBjShip-Version, die mit dem `webforj-maven-plugin` übereinstimmt, und aktiviert den Bereitstellungspunkt an dem Port Ihrer Bereitstellungs-URL. Es benötigt:
+Das Ziel installiert die BBjShip-Version, die zum `webforj-maven-plugin` passt, und aktiviert den Deployment-Endpunkt auf dem Port Ihrer Deployment-URL. Dafür ist Folgendes erforderlich:
 
-- BBjServices, das läuft und auf dem Port der Bereitstellungs-URL antwortet
-- Eine Bereitstellungs-URL, die Ihren Rechner benennt, z. B. `http://localhost:8888/webforj-bbjship`
-- Den Benutzernamen und das Passwort des BBj-Administrators, von `<admin>` oder den `webforj.bbj.admin.*` Eigenschaften. Ohne sie verwendet das Ziel das Standardkonto `admin` mit `admin123` und gibt eine Warnung aus.
-- Den Installationsordner von BBj, von `<home>`, `webforj.bbj.home` oder `BBJ_HOME`. Ohne sie erkennt das Ziel diesen.
+- BBjServices muss laufen und auf dem Port der Deployment-URL Anfragen entgegennehmen.
+- Eine Deployment-URL, die auf Ihren Rechner verweist, zum Beispiel `http://localhost:8888/webforj-bbjship`
+- Benutzername und Passwort des BBj-Administrators aus `<admin>` oder den Eigenschaften `webforj.bbj.admin.*`. Fehlen diese Angaben, verwendet das Ziel das Standardkonto `admin` mit dem Passwort `admin123` und gibt eine Warnung aus.
+- Der Installationsordner von BBj aus `<home>`, `webforj.bbj.home` oder `BBJ_HOME`. Fehlen diese Angaben, wird der Ordner automatisch ermittelt.
 
-Nach einem Upgrade von webforJ ersetzen Sie das installierte BBjShip durch die neue Version:
+Ersetzen Sie nach einem webforJ-Upgrade das installierte BBjShip durch die neue Version:
 
 ```bash
 mvn webforj:bbj-setup -Dwebforj.bbj.force=true
 ```
 
-Ihre bereitgestellten Apps bleiben bereitgestellt, wenn Sie das Ziel erneut ausführen.
+Ihre deployten Apps bleiben erhalten, wenn Sie das Ziel erneut ausführen.
 
-:::tip Dateien, die unter Windows verwendet werden
-Unter Windows kann ein Ersatz fehlschlagen, während BBjServices die Dateien des installierten BBjShip geöffnet hält. Starten Sie BBjServices neu und führen Sie das Ziel erneut aus, siehe [Fehlerbehebung](/docs/configuration/bbjship/troubleshooting#windows).
+:::tip Unter Windows verwendete Dateien
+Unter Windows kann das Ersetzen fehlschlagen, während BBjServices die Dateien des installierten BBjShip geöffnet hält. Starten Sie BBjServices neu und führen Sie das Ziel erneut aus. Siehe [Fehlerbehebung](/docs/configuration/bbjship/troubleshooting#windows).
 :::
 
 ## Auf einem Server {#on-a-server}
 
-Auf einem gemeinsamen oder Produktions-BBj-Server installiert ein Administrator BBjShip einmal auf diesem Server. Entwickler und CI-Pipelines stellen dann von ihren eigenen Maschinen über HTTPS bereit.
+Auf einem gemeinsam genutzten oder Produktionsserver mit BBj installiert ein Administrator BBjShip einmalig auf diesem Server. Entwickler und CI-Pipelines deployen anschließend über HTTPS von ihren eigenen Rechnern aus dorthin.
 
 1. Installieren Sie BBjShip mit dem [BBj Plugin Manager](#through-the-bbj-plugin-manager).
-2. [Aktivieren Sie den Bereitstellungspunkt](#enabling-the-deployment-endpoint) mit dem HTTPS-Port des BBjServices-Webservers.
-3. Erstellen Sie ein Authentifizierungstoken im Enterprise Manager für die Builds, die bereitgestellt werden, siehe [Bereitstellung von einem anderen Rechner](/docs/configuration/bbjship/deploying#deploying-from-another-machine).
+2. [Aktivieren Sie den Deployment-Endpunkt](#enabling-the-deployment-endpoint) mit dem HTTPS-Port des BBjServices-Webservers.
+3. Erstellen Sie im Enterprise Manager ein Autorisierungstoken für die Builds, die deployen. Siehe [Von einem anderen Rechner deployen](/docs/configuration/bbjship/deploying#deploying-from-another-machine).
 
 ### Über den BBj Plugin Manager {#through-the-bbj-plugin-manager}
 
-Im [BBj Plugin Manager](https://documentation.basis.cloud/BASISHelp/WebHelp/bbutil/BBj_Plugin_Manager.htm) installieren Sie BBjShip aus dem `webforj-bbjship`-Repository der Organisation `BBj-Plugins`. Ein Tag installiert eine webforJ-Version, und `master` installiert den Entwicklungssnapshot. Aktualisieren Sie es später auf der Registerkarte Installierte.
+Installieren Sie BBjShip im [BBj Plugin Manager](https://documentation.basis.cloud/BASISHelp/WebHelp/bbutil/BBj_Plugin_Manager.htm) aus dem Repository `webforj-bbjship` der Organisation `BBj-Plugins`. Ein Tag installiert ein webforJ-Release, `master` installiert den Entwicklungs-Snapshot. Aktualisieren Sie BBjShip später auf der Registerkarte „Installed“.
 
-### Aktivierung des Bereitstellungspunkts {#enabling-the-deployment-endpoint}
+### Deployment-Endpunkt aktivieren {#enabling-the-deployment-endpoint}
 
-Der Bereitstellungspunkt ist die Adresse, an die Builds bereitgestellt werden. Aktivieren Sie ihn auf dem Server mit Ihrem BBj-Administrator-Konto und den Ports, auf denen der BBjServices-Webserver lauscht. `--password` nimmt das Passwort als Wert, das andere Benutzer des Rechners während der Ausführung des Befehls in der Prozessliste sehen können. Unter macOS und Linux liest `--password-stdin` es von der Standardeingabe und `WEBFORJ_BBJ_PASSWORD` hält es auf jedem System aus der Befehlszeile heraus:
+Der Deployment-Endpunkt ist die Adresse, an die Builds deployen. Aktivieren Sie ihn auf dem Server mit Ihrem BBj-Administratorkonto und den Ports, auf denen der BBjServices-Webserver Anfragen entgegennimmt. `--password` erwartet das Passwort als Wert. Während der Befehl ausgeführt wird, können andere Benutzer des Rechners das Passwort in der Prozessliste sehen. Unter macOS und Linux liest `--password-stdin` das Passwort aus der Standardeingabe. Mit `WEBFORJ_BBJ_PASSWORD` bleibt es auf allen Systemen außerhalb der Befehlszeile:
 
 ```text
 $ <BBj home>/plugins/webforj-bbjship/bbjship remote enable --username admin --password <value> --port 8888 --ssl-port 8443
-Aktiviert http://localhost:8888/webforj-bbjship
-Aktiviert https://localhost:8443/webforj-bbjship
+Enabled http://localhost:8888/webforj-bbjship
+Enabled https://localhost:8443/webforj-bbjship
 ```
 
-Ohne `--port` verwendet der Endpunkt Port 8888. Ohne `--ssl-port` hat er keine HTTPS-Adresse. BBjServices muss laufen. Siehe [Befehlszeile](/docs/configuration/bbjship/command-line) für jeden Befehl.
+Ohne `--port` verwendet der Endpunkt Port 8888. Ohne `--ssl-port` hat er keine HTTPS-Adresse. Builds auf anderen Rechnern deployen an die HTTPS-Adresse. Der Endpunkt antwortet auf ihre Anfragen über HTTP mit dem Status HTTP 403, es sei denn, `--allow-unencrypted` wird angegeben. BBjServices muss laufen. Alle Befehle finden Sie unter [Befehlszeile](/docs/configuration/bbjship/command-line).
 
 :::tip Passwort unter Windows
-Unter Windows führen Sie `bbjship.cmd` aus und übergeben das Passwort mit `--password` oder `WEBFORJ_BBJ_PASSWORD`. `--password-stdin` ist dort nicht verfügbar und endet mit dem Exit-Code `2`.
+Führen Sie unter Windows `bbjship.cmd` aus und übergeben Sie das Passwort mit `--password` oder `WEBFORJ_BBJ_PASSWORD`. `--password-stdin` ist dort nicht verfügbar und beendet den Befehl mit dem Exitcode `2`.
 :::
 
-## Deinstallation {#uninstalling}
+## Deinstallieren {#uninstalling}
 
-Führen Sie zuerst `bbjship reset` aus. Es stellt jede App wieder her und entfernt alles, was BBjShip im Enterprise Manager eingerichtet hat. Deinstallieren Sie dann BBjShip im BBj Plugin Manager.
+Führen Sie zuerst `bbjship reset` aus. Dadurch werden alle Apps undeployt und alle von BBjShip im Enterprise Manager vorgenommenen Einrichtungsschritte entfernt. Deinstallieren Sie BBjShip anschließend im BBj Plugin Manager.
 
-:::warning Zuerst sichern
-`bbjship reset` kann nicht rückgängig gemacht werden. Sichern Sie `<BBj home>/cfg/BBj.properties` und bewahren Sie das Bereitstellungsarchiv jeder App zuerst auf, siehe [Zurücksetzen](/docs/configuration/bbjship/command-line#reset).
+:::warning Erstellen Sie zuerst eine Sicherung
+`bbjship reset` kann nicht rückgängig gemacht werden. Sichern Sie zuerst `<BBj home>/cfg/BBj.properties` und bewahren Sie das Deployment-Archiv jeder App auf. Siehe [Zurücksetzen](/docs/configuration/bbjship/command-line#reset).
 :::

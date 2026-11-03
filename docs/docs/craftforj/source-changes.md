@@ -54,7 +54,7 @@ Pressing undo several times takes your changes back one at a time, newest first,
 
 ### When an undo is blocked {#when-an-undo-is-blocked}
 
-If you edit and save a file in your own editor after craftforJ wrote to it, undoing or redoing that step would overwrite your edit. craftforJ refuses instead, leaves the file as it is, and names it: 
+If you edit and save a file in your own editor after craftforJ wrote to it, undoing or redoing that step would overwrite your edit. craftforJ refuses instead, leaves the file as it is, and names it:
 
 ```
 Changed outside craftforJ: ContactFormView.java. Undo that edit in your editor, or skip this step.

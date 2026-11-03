@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Element Composite
+title: Elemento compuesto
 description: >-
   Wrap a custom HTML element or third-party web component in Java with
   ElementComposite, exposing its properties, attributes, and events through the
