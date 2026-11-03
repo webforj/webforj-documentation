@@ -140,6 +140,20 @@ module.exports = async function createConfig() {
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
         },
+        sitemap: {
+          lastmod: 'date',
+          // tag, author and pagination listings duplicate post content
+          ignorePatterns: [
+            '/blog/tags/**',
+            '/blog/authors/**',
+            '/blog/page/**',
+            '/cookbook/tags/**',
+            '/*/blog/tags/**',
+            '/*/blog/authors/**',
+            '/*/blog/page/**',
+            '/*/cookbook/tags/**',
+          ],
+        },
         gtag: {
           trackingID: 'G-47SBJTFG20',
           anonymizeIP: true
