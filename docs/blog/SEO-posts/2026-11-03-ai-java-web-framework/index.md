@@ -2,7 +2,7 @@
 title: "AI Java web framework: how webforJ is built for AI work"
 description: "webforJ is the AI Java web framework: assistants that know its API, an agent in your running app, MCP Apps, agents that use your UI, and browserless tests."
 slug: ai-java-web-framework
-date: 2026-11-03
+date: 2026-11-03T10:00:00Z
 authors: Hyyan Abo Fakher
 tags: [community, ai, mcp, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-ai-java-web-framework/cover.jpg
