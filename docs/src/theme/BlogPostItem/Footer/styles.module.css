@@ -98,6 +98,7 @@
 
 .window:hover,
 .window:focus {
+  border: 1px solid var(--dwc-border-color);
   color: var(--ifm-font-color-base);
   text-decoration: none;
 }
