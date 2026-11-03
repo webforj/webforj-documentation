@@ -14,6 +14,14 @@
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
   <filter>
+    <filter-name>contentNotFoundFilter</filter-name>
+    <filter-class>com.webforj.samples.ContentNotFoundFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>contentNotFoundFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
     <filter-name>rewriteFilter</filter-name>
     <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
   </filter>
