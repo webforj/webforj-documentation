@@ -2,7 +2,7 @@
 title: "Spring AI RAG web UI: chat with your documents in Java"
 description: "Build a Spring AI RAG web UI in pure Java with webforJ: upload documents, index them in a vector store, and stream answers with their sources into the page."
 slug: spring-ai-rag
-date: 2026-11-03T11:30:00Z
+date: 2026-11-04T08:00:00Z
 authors: Hyyan Abo Fakher
 tags: [ai, spring, chat]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-26-spring-ai-rag/cover.jpg

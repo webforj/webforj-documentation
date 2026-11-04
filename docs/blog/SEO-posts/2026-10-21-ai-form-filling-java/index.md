@@ -2,7 +2,7 @@
 title: "AI form filling in Java: Spring AI structured output"
 description: "Build an AI form filler in Java with Spring AI and webforJ. Turn pasted text or an uploaded file into a typed bean, load it with BindingContext, and validate before saving."
 slug: ai-form-filling-java
-date: 2026-11-03T11:15:00Z
+date: 2026-11-04T09:00:00Z
 authors: Hyyan Abo Fakher
 tags: [ai, spring-ai, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-ai-form-filling-java/cover.jpg
