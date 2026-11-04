@@ -2,7 +2,7 @@
 title: "Spring AI RAG web UI: chat with your documents in Java"
 description: "Build a Spring AI RAG web UI in pure Java with webforJ: upload documents, index them in a vector store, and stream answers with their sources into the page."
 slug: spring-ai-rag
-date: 2026-11-02
+date: 2026-11-03T11:30:00Z
 authors: Hyyan Abo Fakher
 tags: [ai, spring, chat]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-26-spring-ai-rag/cover.jpg
@@ -13,9 +13,11 @@ hide_table_of_contents: false
 
 The fastest way to build a Spring AI RAG web UI is to write the whole thing in Java with webforJ. The `Upload` component takes the files, Spring AI reads, splits and embeds them into a `VectorStore`, a `RetrievalAugmentationAdvisor` on a `ChatClient` grounds every answer in the retrieved chunks, and a `MarkdownViewer` renders the streamed answer. There is no REST layer, no JavaScript and no separate frontend project.
 
-This guide builds a chat-with-your-documents app that way. It is two classes: a Spring service that owns the knowledge base and a webforJ view that talks to it.
+This guide builds a chat-with-your-documents app that way. It is two classes: a Spring service that owns the knowledge base and a webforJ view that talks to it. The complete app, [AskDocs](https://github.com/webforj/built-with-webforj/tree/main/webforj-askdocs), is on GitHub and runs with your own Gemini API key.
 
 <!-- truncate -->
+
+![AskDocs answering a question from an uploaded travel handbook, with the source file listed under the answer](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-26-spring-ai-rag/askdocs.png)
 
 ## Spring AI RAG web UI architecture {#architecture}
 
@@ -259,7 +261,7 @@ If you want the broader pattern around Spring AI and a chat surface, the earlier
 
 ## Next step {#next-step}
 
-Generate a project with [startforJ](https://docs.webforj.com/startforj), add the Spring AI starter for your model provider, and add the service and the view from this guide. Then read the [`Upload`](/docs/components/upload) docs to shape the picker for your users.
+Clone [AskDocs](https://github.com/webforj/built-with-webforj/tree/main/webforj-askdocs) to run the finished app, or generate a project with [startforJ](https://docs.webforj.com/startforj), add the Spring AI starter for your model provider, and add the service and the view from this guide. Then read the [`Upload`](/docs/components/upload) docs to shape the picker for your users.
 
 ## Frequently asked questions {#faq}
 
