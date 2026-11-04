@@ -1,0 +1,10 @@
+# webforJ testbed snapshot v1
+- AccordionBasicView [route=accordionbasic] [composite=FlexLayout] [node=div]:
+  - H3 "Standalone Panels" [composite=Element] [node=h3]
+  - Paragraph "Each panel works independently without a group wrapper." [composite=Element] [node=p]
+  - AccordionPanel "Section One" [composite=Element] [node=dwc-accordion-panel] [expanded]:
+    - Paragraph "This panel starts opened. Each panel operates independently." [composite=Element] [node=p]
+  - AccordionPanel "Section Two" [composite=Element] [node=dwc-accordion-panel]:
+    - Paragraph "Content for section two. Click the header to expand." [composite=Element] [node=p]
+  - AccordionPanel "Section Three" [composite=Element] [node=dwc-accordion-panel]:
+    - Paragraph "Content for section three." [composite=Element] [node=p]

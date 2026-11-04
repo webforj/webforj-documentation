@@ -1,11 +1,13 @@
 webforJ:
   name: webforJ Team
   image_url: /img/webforj_icon.svg
-  title: webforJ Development Team
-  page: true
+  title: Do it all in Java! Build in Java, deploy to the Web.
+  page:
+    permalink: /webforj
   socials:
     github: webforj
     linkedin: https://www.linkedin.com/company/webforj/
+    youtube: https://www.youtube.com/@webforJ
 Matthew Hawkins:
   name: Matthew Hawkins
   image_url: /img/authors/mhawkins.jpg
@@ -43,3 +45,10 @@ Lauren Alamo:
   page: true
   socials:
     github: laurenic0l
+Hyyan Abo Fakher:
+  name: Hyyan Abo Fakher
+  image_url: /img/authors/habofakher.jpg
+  page: true
+  socials:
+    github: hyyan
+    linkedin: hyyan

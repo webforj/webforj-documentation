@@ -1,0 +1,7 @@
+# webforJ testbed snapshot v1
+- IconVariationsView [route=iconvariations] [composite=FlexLayout] [node=div]:
+  - Icon [name=envelope] [composite=Element] [node=dwc-icon]
+  - Icon [name=fas-envelope] [composite=Element] [node=dwc-icon]
+  - Icon [name=fab-instagram] [composite=Element] [node=dwc-icon]
+  - Icon [name=calendar] [composite=Element] [node=dwc-icon]
+  - Icon [name=filled-calendar] [composite=Element] [node=dwc-icon]

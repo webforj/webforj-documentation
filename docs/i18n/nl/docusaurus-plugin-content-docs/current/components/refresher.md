@@ -1,5 +1,5 @@
 ---
-title: Refresher
+title: Opfrisser
 sidebar_position: 101
 description: >-
   Enable pull-to-refresh on scrollable areas with the Refresher component, with

@@ -1,28 +1,28 @@
 ---
-title: Ominaisuuksien määritys
+title: Ominaisuuksien määrittäminen
 sidebar_position: 1
 description: >-
   Set webforJ entry points, debug mode, locales, file upload limits, and servlet
   mappings through webforj.conf and web.xml.
 sidebar_class_name: updated-content
-_i18n_hash: 0f672146394b053aaa5d59a7e59841b2
+_i18n_hash: fd84f72aa62a993485d33fe9a94ab0d1
 ---
-# WebforJ-ominaisuuksien määrittäminen
+# webforJ:n asetusten määrittäminen
 
-Jotta webforJ-sovellus voidaan onnistuneesti ottaa käyttöön ja käyttää, tarvitaan muutama keskeinen konfiguraatiotiedosto: `webforj.conf` ja `web.xml`. Kukin näistä tiedostoista hallitsee sovelluksen käytöksen eri näkökohtia, sisäänkäynneistä ja virheenkäsittelyasetuksista servlet-kartoituksiin.
+Jotta webforJ-sovellus voidaan onnistuneesti ottaa käyttöön ja suorittaa, tarvitaan useita keskeisiä konfigurointitiedostoja: `webforj.conf` ja `web.xml`. Kukin näistä tiedostoista ohjaa erilaisia sovelluksen toimintoja, kuten sisäänkäyntipisteitä ja virheenkorjausasetuksia sekä servlet-kartoituksia.
 
-## `webforj.conf` määrittäminen {#configuring-webforjconf}
+## `webforj.conf`:n määrittäminen {#configuring-webforjconf}
 
-`webforj.conf`-tiedosto on keskeinen konfiguraatiotiedosto webforJ:ssä, joka määrittää sovelluksen asetuksia, kuten sisäänkäynnit, virheenkäsittelytila ja asiakas-palvelin-vuorovaikutus. Tiedosto on [HOCON-muodossa](https://github.com/lightbend/config/blob/master/HOCON.md) ja sen tulisi sijaita `resources`-hakemistossa.
+`webforj.conf` -tiedosto on keskeinen konfigurointitiedosto webforJ:ssä, ja se määrittää sovelluksen asetukset, kuten sisäänkäyntipisteet, virheenkorjaustilan ja asiakas-palvelin -vuorovaikutuksen. Tiedosto on [HOCON-formaatissa](https://github.com/lightbend/config/blob/master/HOCON.md), ja sen tulisi sijaita `resources`-hakemistossa.
 
 :::tip
-Jos integroit [Springin](../integrations/spring/overview.md) kanssa, voit määrittää nämä `webforj.conf`-ominaisuudet `application.properties`-tiedostossa.
+Jos integroitat [Springin](../integrations/spring/overview.md) kanssa, voit määrittää nämä `webforj.conf` -asetukset `application.properties` -tiedostossa.
 :::
 
-### Esimerkki `webforj.conf`-tiedostosta {#example-webforjconf-file}
+### Esimerkkitiedosto `webforj.conf` {#example-webforjconf-file}
 
 ```Ini
-# Tämä konfiguraatiotiedosto on HOCON-muodossa:
+# Tämä konfigurointitiedosto on HOCON-muodossa:
 # https://github.com/lightbend/config/blob/master/HOCON.md
 
 webforj.entry = com.webforj.samples.Application
@@ -31,51 +31,51 @@ webforj.reloadOnServerError = on
 webforj.clientHeartbeatRate = 1s
 ```
 
-### Määrittelyvaihtoehdot {#configuration-options}
+### Konfigurointivaihtoehdot {#configuration-options}
 
-| Ominaisuus                             | Tyyppi    | Selitys                                                       | Oletus                |
+| Ominaisuus                           | Tyyppi    | Selitys                                                       | Oletusarvo                |
 |--------------------------------------|---------|-------------------------------------------------------------------|------------------------|
-| **`webforj.assetsCacheControl`**     | String  | Cache-Control-otsake staattisille resursseille.                        | `null` |
-| **`webforj.assetsDir`**              | String  | Reittinimi, jota käytetään staattisten tiedostojen tarjoamiseen, samalla kun todellinen kansion nimi pysyy `static`:na. Tämä konfiguraatio on hyödyllinen, jos oletus `static`-reitti on ristiriidassa sovelluksessa määritetyn reitin kanssa, jolloin voit muuttaa reittinimeä ilman, että kansiota tarvitsee nimetä uudelleen.       | `null`               |
-| **`webforj.assetsExt`**              | String  | Oletustiedostopääte staattisille tiedostoille. | `null` |
-| **`webforj.assetsIndex`**            | String  | Oletustiedosto, joka palvellaan hakupyyntöjen yhteydessä (esim., index.html). | `null` |
-| **`webforj.clientHeartbeatRate`**    | String  | Aikaväli, jolla asiakas pyytää palvelimelta, onko se vielä toiminnassa. Kehityksessä tämän tulisi olla lyhyempi aikaväli, esimerkiksi `8s`, jotta palvelimen saatavuus voidaan nopeasti havaita. Tuotannossa on suositeltavaa asettaa vähintään 50 sekuntia, jotta vältetään liialliset pyynnöt. | `50s`           |
-| **`webforj.components`**             | String  | Kun määritetään, peruspolku määrittää, mistä DWC-komponentit ladataan. Oletusarvoisesti komponentit ladataan sovellusta isännöivältä palvelimelta. Kuitenkin, mukautetun peruspolun määrittäminen mahdollistaa komponenttien lataamisen vaihtoehtoiselta palvelimelta tai CDN:ltä. Esimerkiksi, ladataksesi komponentteja jsdelivr.comista, aseta peruspolku seuraavaksi: https://cdn.jsdelivr.net/gh/webforj/dwc-dist@1.0.0-${webforj.version}. On tärkeää, että ladattavat komponentit ovat yhteensopivia käytössä olevan webforJ-kehyksen version kanssa; muuten sovellus ei välttämättä toimi odotetusti. Tätä asetusta ei oteta huomioon, kun käytetään standardia BBj-asennusta ilman moottoria. Standardia BBj-asennusta varten asetus voidaan hallita `!COMPONENTS` STBL:llä. | `null`          |
-| **`webforj.debug`**                  | Boolean | Ota debug-tila käyttöön. Debug-tilassa webforJ tulostaa lisätietoja konsoliin ja näyttää kaikki poikkeukset selainikkunassa. Debug-tila on oletusarvoisesti pois käytöstä. | `null`          |
-| **`webforj.devtools.craftforj.enabled`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | **Vain kehitysympäristöt.** Käynnistää [craftforJ](../craftforj/overview.md), kehitysympäristön, joka tarkkailee käynnissä olevaa sovellusta, muokkaa komponenttien ominaisuuksia ja kirjoittaa muutokset takaisin Java-lähdekoodiin. Vaatii myös `webforj.debug`-asetuksen olevan päällä. Kumpikaan asetus ei ole riittävä yksinään. | `false` |
-| **`webforj.devtools.craftforj.hosts-allowed`**&nbsp;<DocChip chip='since' label='26.02' /> | Lista | Asiakasosoitteet, jotka saavat käyttää craftforJ:ta koneelta, jonka sovellus toimii. Oletusarvoisesti vain sen koneen selain voi käyttää sitä. Merkkijono, joka päättyy `*`: een, vastaa etuliitettä, ja yksittäinen `*` poistaa rajoituksen. Katso [craftforJ:n turvallisuus](../craftforj/security.md). | vain loopback |
-| **`webforj.devtools.craftforj.project-root`**&nbsp;<DocChip chip='since' label='26.02' /> | String | Hakemisto, jota craftforJ katsoo lähteiden etsimiseksi tilanteissa, joissa se ei pysty tunnistamaan sitä siitä, miten sovellus käynnistettiin. | havaittu |
-| **`webforj.devtools.craftforj.source-changes`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | Saako craftforJ kirjoittaa ominaisuusmuutoksia ja reittipääsääntöjä Java-lähteeseesi. | `true` |
-| **`webforj.devtools.craftforj.stylesheet-changes`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | Saako craftforJ tallentaa teemoja ja tyylejä sovelluksesi tyylitiedostoon. | `true` |
-| **`webforj.devtools.craftforj.ai.enabled`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | Onko [craftforJ AI -avustaja](../craftforj/ai.md) käytettävissä. | `true` |
-| **`webforj.devtools.craftforj.ai.freeform-changes`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | Saako avustaja kirjoittaa omaa Javaansa sen sijaan, että vain muuttaisi ominaisuuksia. Jokaisen muokkauksen on silti oltava käännettävä ja se tarvitsee silti hyväksynnän. | `true` |
-| **`webforj.entry`**                  | String  | Määrittää sovelluksen sisäänkäynnin määrittelemällä luokan, joka laajentaa `webforj.App`, täysin määritellyn nimen. Jos sisäänkäyntiä ei ole määritetty, webforJ skannaa automaattisesti luokkareittitietojärjestelmän luokkia, jotka laajentavat `webforj.App`: ta. Jos useita luokkia löytyy, virhe tapahtuu. Kun paketti sisältää useita mahdollisia sisäänkäyntejä, tämän eksplisiittinen asettaminen on tarpeen epäselvyyksien estämiseksi, tai vaihtoehtoisesti `AppEntry`-annotaatiota voidaan käyttää sisäänkäynnin määrittämiseksi ajon aikana. | `null`          |
-| **`webforj.i18n.supported-locales`**&nbsp;<DocChip chip='since' label='25.12' /> | Lista | Luettelo tuetuista alueista BCP 47 -kielietiketteinä (esim. `"en"`, `"en-US"`, `"fr"`, `"de-DE"`). Kun automaattinen tunnistus on käytössä, selaimen suosituimmat alueet verrataan tähän luetteloon. Luettelon ensimmäistä aluetta käytetään oletusvarana. Katso [Käännös](../advanced/i18n-localization.md). | `[]` |
-| **`webforj.i18n.auto-detect`**&nbsp;<DocChip chip='since' label='25.12' /> | Boolean | Kun `true`, sovelluksen alue asetetaan automaattisesti selaimen suosituista kielistä käynnistyksessä. Alue ratkaistaan vertaamalla selaimen suosituimpia alueita `supported-locales`-luetteloon. Kun `false` tai kun `supported-locales` on tyhjää, sovellus käyttää `webforj.locale`:a. Katso [Käännös](../advanced/i18n-localization.md). | `false` |
-| **`webforj.fileUpload.accept`**      | Lista    | Sallitut tiedostotyypit tiedostojen lataamiseen. Oletusarvoisesti kaikki tiedostotyypit ovat sallittuja. Tuetut muodot sisältävät MIME-tyypit, kuten `image/*`, `application/pdf`, `text/plain`, tai tiedostopäätteet, kuten `*.txt`. Kun käytetään standardia BBj-asennusta, tätä asetusta ei oteta huomioon ja se hallitaan `fileupload-accept.txt`:n kautta. | `[]`            |
-| **`webforj.fileUpload.maxSize`**     | Long    | Suurin tiedostokoko, joka sallitaan tiedostojen lataamisessa, tavuina. Oletusarvoisesti ei ole rajaa. Kun käytetään standardia BBj-asennusta, tätä asetusta ei oteta huomioon ja se hallitaan `fileupload-accept.txt`:n kautta. | `null`          |
-| **`webforj.iconsDir`**               | String  | URL-päätepiste ikonikansioon (oletusarvoisesti tarjoa `resources/icons/`-hakemistosta). | `icons/` |
-| **`webforj.legacyHtmlInText`**&nbsp;<DocChip chip='since' label='26.01' /> | Boolean | Kun `true`, `<html>`-elementtiin kääritty arvo renderöi sen sisällön HTML:na. Kun `false`, sama arvo näytetään kirjaimellisesti. | `true` |
-| **`webforj.license.cfg`**            | String  | Lisenssikonfiguraation hakemisto. Oletusarvoisesti se on sama kuin webforJ-konfiguraatiohakemisto, mutta tätä voidaan mukauttaa, jos tarpeen. | `"."`  |
-| **`webforj.license.startupTimeout`** | Integer | Lisenssin käynnistysaika sekunneissa. | `null` |
-| **`webforj.locale`**                 | String  | Sovelluksen alue, joka määrittää kielen, alueasetukset ja päivämäärien, aikojen ja lukujen muodot. | `null` |
-| **`webforj.quiet`**                  | Boolean | Poistaa latauskuvion käytöstä sovelluksen käynnistämisen aikana. | `false` |
-| **`webforj.reloadOnServerError`**    | Boolean | **Vain kehitysympäristöt.** Kehitysympäristössä automaattisesti lataa sivu virheiden sattuessa, jotka liittyvät kuumaan uudelleenasennukseen, mutta eivät muihin virhetyyppeihin. Kun käytetään kuumaa uudelleenasennusta, jos asiakas lähettää pyynnön palvelimelle sen ollessa käynnistymässä, virhe voi tapahtua WAR-tiedoston vaihtaessa. Koska palvelin todennäköisesti tulee takaisin verkkoon pian, tämä asetus antaa asiakkaan yrittää ladata sivun automaattisesti.  | `false` |
-| **`webforj.security.maxContentLength`**&nbsp;<DocChip chip='since' label='25.10' /> | Integer | Suurin pyyntö, jonka sovellus hyväksyy, tavuina, suojana liian suuria pyyntöjä vastaan, jotka on tarkoitettu palvelimen muistin tyhjentämiseen. Aseta arvoksi `0`, jotta rajoitus poistuu. | `0` |
-| **`webforj.security.maxInitPerMinute`**&nbsp;<DocChip chip='since' label='25.10' /> | Integer | Kuinka monta uutta sovellussessiota sovellus aloittaa minuutissa, suojana nopeille sessioiden luomisille, jotka on tarkoitettu palvelinresurssien tyhjentämiseen. Aseta arvoksi `0`, jotta nopeusrajoitus poistuu. | `0` |
-| **`webforj.servlets[n].name`**       | String  | Servletin nimi (käyttää luokan nimeä, jos ei määritetty). | `null` |
-| **`webforj.servlets[n].className`**  | String | Servletin täysin määritelty luokan nimi. | `null` |
-| **`webforj.servlets[n].config.<key>`** | `Map<String,String>` | Servletin alustamisparametrit. | `null` |
-| **`webforj.sessionTimeout`**         | Integer | Istunnon aikakatkaisuaika sekunneissa. | `60` |
-| **`webforj.stringTable`**            | `Map<String,String>` | Avain-arvo-pareista koostuva kartta, jota käytetään merkkijonojen tallentamiseen sovelluksessa. Hyödyllinen sovelluksen viestien tai etikettien tallentamisessa. Lisätietoja `StringTable`:sta löytyy [täältä](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/StringTable.html). | `{}`            |
-| **`webforj.mime.extensions`**            | `Map<String,String>` | Mukautetut MIME-tyypin kartoitukset tiedostopäätteille staattisten tiedostojen tarjoamisen aikana. Mahdollistaa oletus MIME-tyyppien ylittämisen tai mukautettujen päätteiden MIME-tyyppien määrittämisen. Kartan avain on tiedostopäätte (ilman pistettä), ja arvo on MIME-tyyppi. | `{}`            |
+| **`webforj.assetsCacheControl`**     | Merkkijono  | Cache-Control-header staattisia resursseja varten.                        | `null` |
+| **`webforj.assetsDir`**              | Merkkijono  | Reitin nimi, jota käytetään staattisten tiedostojen tarjoamiseen, kun taas varsinainen kansion nimi pysyy `static`. Tämä konfigurointi on hyödyllinen, jos oletusreitti `static` on ristiriidassa sovelluksessa määritellyn reitin kanssa, jolloin voit muuttaa reitin nimeä nimeämättä kansiota uudelleen.       | `null`               |
+| **`webforj.assetsExt`**              | Merkkijono  | Oletustiedostopääte staattisille tiedostoille. | `null` |
+| **`webforj.assetsIndex`**            | Merkkijono  | Oletustiedosto, joka tarjoillaan hakemustilanteissa (esim. index.html). | `null` |
+| **`webforj.clientHeartbeatRate`**    | Merkkijono  | Aika, jolloin asiakas lähetää pingin palvelimelle tarkistaakseen, että se on yhä toiminnassa. Kehitysvaiheessa tämä on syytä asettaa lyhyemmäksi ajaksi, esimerkiksi `8s`, jotta palvelimen saatavuus voitaisiin nopeasti havaita. Tuotannossa asetetaan 50 sekuntia tai enemmän liiallisten pyyntöjen välttämiseksi. | `50s`           |
+| **`webforj.components`**             | Merkkijono  | Kun määritetään, pohjareitti ohjaa DWC-komponenttien latausta. Oletuksena komponentit ladataan palvelimelta, joka isännöi sovellusta. Kustomoidun pohjareitin asettaminen mahdollistaa komponenttien lataamisen vaihtoehtoiselta palvelimelta tai CDN:ltä. Esimerkiksi, ladataksesi komponentteja jsdelivr.com-sivustolta, aseta pohjareitti seuraavasti: https://cdn.jsdelivr.net/gh/webforj/dwc-dist@1.0.0-${webforj.version}. On tärkeää, että ladatut komponentit ovat yhteensopivia käytössä olevan webforJ-kehyksen version kanssa; muuten sovellus ei toimi odotetulla tavalla. Tällöin tätä asetusta ei oteta huomioon käytettäessä standardia BBj-asennusta ilman moottoria. Standardissa BBj-asennuksessa asetus voidaan hallita `!COMPONENTS` STBL:llä. | `null`          |
+| **`webforj.debug`**                  | Boolean | Käynnistää virheenkorjaustilan. Virheenkorjaustilassa webforJ tulostaa lisätietoja konsoliin ja näyttää kaikki poikkeukset selaimessa. Virheenkorjaustila on oletusarvoisesti pois päältä. | `null`          |
+| **`webforj.devtools.craftforj.enabled`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | **Vain kehitysympäristöille.** Käynnistää [craftforJ](../craftforj/overview.md), kehitysympäristön, joka tarkistaa toimivaa sovellusta, muokkaa komponenttiparametreja ja kirjoittaa muutokset takaisin Java-lähdekoodiin. Vaatii myös `webforj.debug`-asetuksen olevan päällä. Mikään ominaisuus ei riitä itsessään. | `false` |
+| **`webforj.devtools.craftforj.hosts-allowed`**&nbsp;<DocChip chip='since' label='26.02' /> | Lista | Asiakasosoitteet, joilla on lupa päästä craftforJ:hin sen koneen ulkopuolelta, jolla sovellus toimii. Oletusarvoisesti vain tuon koneen selain voi päästä siihen. Tähdellä päättyvä merkintä vastaa etuliitettä, ja yksinkertainen `*` poistaa rajoituksen. Katso [craftforJ:n turvallisuus](../craftforj/security.md). | vain loopback |
+| **`webforj.devtools.craftforj.source-changes`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | Voiko craftforJ kirjoittaa omaan lähdekoodiisi osiot ja reittipääsy-säännöt. | `true` |
+| **`webforj.devtools.craftforj.stylesheet-changes`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | Voiko craftforJ tallentaa teemoja ja tyylejä sovelluksesi tyylitiedostoon. | `true` |
+| **`webforj.devtools.craftforj.ai.enabled`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | Onko [craftforJ:n AI-avustaja](../craftforj/ai.md) käytettävissä. | `true` |
+| **`webforj.devtools.craftforj.ai.freeform-changes`**&nbsp;<DocChip chip='since' label='26.02' /> | Boolean | Voiko avustaja kirjoittaa omaa Java-koodia sen sijaan, että vain muuttaa ominaisuuksia. Jokaisen muutoksen on silti oltava käännettävä ja se tarvitsee hyväksyntäsi. | `true` |
+| **`webforj.devtools.project-root`**&nbsp;<DocChip chip='since' label='26.03' /> | Merkkijono | Hakemisto, jota [craftforJ](../craftforj/configuration.md#project-root) tarkastaa lähteidesi löytämiseksi, tilanteissa joissa se ei voi määrittää sitä sovelluksen käynnistämistavasta. Korvataan `webforj.devtools.craftforj.project-root`, joka on vanhentunut mutta luetaan edelleen kun avain ei ole asetettu. | havaittu |
+| **`webforj.entry`**                  | Merkkijono  | Määrittää sovelluksen sisäänkäyntipisteen määrittämällä täydellinen luokan nimi, joka laajentaa `webforj.App`:ia. Jos sisäänkäyntipistettä ei ole määritelty, webforJ skannaa automaattisesti luokkareitin luokkia, jotka laajentavat `webforj.App`:ia. Jos useita luokkia löytyy, virhe tapahtuu. Kun paketissa on enemmän kuin yksi mahdollinen sisäänkäyntipiste, tämän asettaminen nimenomaisesti on tarpeen epäselvyyksien välttämiseksi, tai vaihtoehtoisesti `AppEntry`-annotaatiota voidaan käyttää sisäänkäyntipisteen määrittämiseksi ajoajossa. | `null`          |
+| **`webforj.i18n.supported-locales`**&nbsp;<DocChip chip='since' label='25.12' /> | Lista | Lista tuetuista kielistä BCP 47 -kielitunnuksina (esim. `"en"`, `"en-US"`, `"fr"`, `"de-DE"`). Kun automaattinen tunnistus on käytössä, selaimen suosituimmat kielet verrataan tähän lista. Ensimmäistä kieltä listassa käytetään oletustakaisuasetuksena. Katso [Käännös](../advanced/i18n-localization.md). | `[]` |
+| **`webforj.i18n.auto-detect`**&nbsp;<DocChip chip='since' label='25.12' /> | Boolean | Kun `true`, sovellus asetetaan automaattisesti selaimen suosituimmasta kielestä käynnistyksessä. Kieli ratkotaan vertaamalla selaimen suosikkeja `supported-locales` -listaan. Kun `false` tai kun `supported-locales` on tyhjennetty, sovellus käyttää `webforj.locale`:a. Katso [Käännös](../advanced/i18n-localization.md). | `false` |
+| **`webforj.fileUpload.accept`**      | Lista    | Sallittu tiedostotyyppien luettelo tiedostojen lataamista varten. Oletusarvoisesti kaikki tiedostotyypit ovat sallittuja. Tuetut muodot sisältävät MIME-tyypit kuten `image/*`, `application/pdf`, `text/plain`, tai tiedostopäätteet kuten `*.txt`. Kun käytetään standardia BBj-asennusta, tätä asetusta ei oteta huomioon ja sen hallinta tapahtuu `fileupload-accept.txt`:ssä. | `[]`            |
+| **`webforj.fileUpload.maxSize`**     | Pitkä    | Suurin sallittu tiedostokoko latausta varten, tavuina. Oletusarvoisesti rajoitusta ei ole. Kun käytetään standardia BBj-asennusta, tätä asetusta ei oteta huomioon ja sen hallinta tapahtuu `fileupload-accept.txt`:ssä. | `null`          |
+| **`webforj.iconsDir`**               | Merkkijono  | URL-päätepiste ikonihakemistoon (oletusarvoisesti tarjoaa `resources/icons/`). | `icons/` |
+| **`webforj.legacyHtmlInText`**&nbsp;<DocChip chip='since' label='26.01' /> | Boolean | Kun `true`, `<html>`-elementissä oleva arvo renderöi sen sisällön HTML-muodossa. Kun `false`, sama arvo näytetään kirjaimellisesti. | `true` |
+| **`webforj.license.cfg`**            | Merkkijono  | Lisenssikonfiguraation hakemisto. Oletusarvoisesti se on sama kuin webforJ-konfiguraatiohakemisto, mutta tämän voi mukauttaa tarvittaessa. | `"."`  |
+| **`webforj.license.startupTimeout`** | Kokonaisluku | Lisenssin käynnistysajan aikaraja sekunteina. | `null` |
+| **`webforj.locale`**                 | Merkkijono  | Sovelluksen kieli, joka määrittelee kielen, alueasetukset sekä päivämäärien, aikojen ja numeroiden muodot. | `null` |
+| **`webforj.quiet`**                  | Boolean | Poistaa latauskuvan käytöstä sovelluksen käynnistyksen aikana. | `false` |
+| **`webforj.reloadOnServerError`**    | Boolean | **Vain kehitysympäristöille.** Kehitysympäristössä latauksen automaattinen uusiminen virhetilanteissa, jotka liittyvät kuuman uudelleentoimittamiseen, mutta ei muissa virhetuissa. Kuuman uudelleentoimittamisen käytössä, jos asiakas lähettää pyynnön palvelimelle samalla kun se käynnistää, virhe voi ilmetä kun WAR-tiedosto vaihtuu. Koska palvelin todennäköisesti palaa pian takaisin verkkoon, tämä asetus mahdollistaa asiakkaan yrittää sivun lataamista automaattisesti.  | `false` |
+| **`webforj.security.maxContentLength`**&nbsp;<DocChip chip='since' label='25.10' /> | Kokonaisluku | Suurin pyyntö, jonka sovellus hyväksyy, tavuina, suojana ylisuureilta pyynnöiltä, jotka on tarkoitettu palvelimen muistin kuluttamiseen. Aseta `0` rajoituksen poistamiseksi. | `0` |
+| **`webforj.security.maxInitPerMinute`**&nbsp;<DocChip chip='since' label='25.10' /> | Kokonaisluku | Kuinka monta uutta sovellusistuntoa sovellus aloittaa minuutissa, suojana nopeita istuntojen luontia vastaan, jotka on tarkoitettu palvelinresurssien kuluttamiseen. Aseta `0` rajoituksen poistamiseksi. | `0` |
+| **`webforj.servlets[n].name`**       | Merkkijono  | Servlet-nimi (käyttää luokan nimeä, jos ei ole määritetty). | `null` |
+| **`webforj.servlets[n].className`**  | Merkkijono | Servletin täysin määritetty luokan nimi. | `null` |
+| **`webforj.servlets[n].config.<key>`** | `Map<String,String>` | Servletin alustamisasetukset. | `null` |
+| **`webforj.sessionTimeout`**         | Kokonaisluku | Istunnon aikaraja sekunteina. | `60` |
+| **`webforj.stringTable`**            | `Map<String,String>` | Avain-arvo-pareja, jota käytetään merkkijonojen tallentamiseen sovelluksessa. Hyödyllinen sovellusviestien tai etikettien tallentamiseen. Lisätietoja `StringTable`:sta löytyy [täältä](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/StringTable.html). | `{}`            |
+| **`webforj.mime.extensions`**            | `Map<String,String>` | Mukautetut MIME-tyyppikartoitukset tiedostopäätteille staattisten tiedostojen tarjoamiseksi. Mahdollistaa oletus MIME-tyyppien korvaamisen tai määrittämään MIME-tyyppejä mukautetuille päätteille. Kartan avain on tiedostopäätteesi (ilman pistettä), ja arvo on MIME-tyyppi. | `{}`            |
 
-## `web.xml` määrittäminen {#configuring-webxml}
+## `web.xml`:n määrittäminen {#configuring-webxml}
 
-`web.xml`-tiedosto on olennainen konfiguraatiotiedosto Java-verkkosovelluksille, ja webforJ:ssä se määrittää tärkeitä asetuksia, kuten servlet-konfiguraation, URL-mallit ja tervetuloissivut. Tämän tiedoston tulisi sijaita projektisi käyttöönottohierarkian `WEB-INF`-hakemistossa.
+`web.xml` -tiedosto on olennainen konfigurointitiedosto Java-verkkosovelluksille, ja webforJ:ssä se määrittää tärkeitä asetuksia, kuten servlet-konfiguraation, URL-mallit ja tervetulosivut. Tämä tiedosto tulisi sijaita projektin `WEB-INF` -hakemistossa.
 
 | Asetus                                 | Selitys                                                                                                                                                                                   | Oletusarvo               |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| **`<display-name>`**                    | Asettaa verkkosovelluksen näyttönimen, joka tyypillisesti johdetaan projektin nimestä. Tämä nimi näkyy sovelluspalvelimien hallintakonsolissa.                                                        | `${project.name}`           |
-| **`<servlet>` ja `<servlet-mapping>`** | Määrittää `WebforjServlet`:in, webforJ: n ydinsalviran, joka käsittelee webforJ-pyyntöjä. Tämä servlet on kartoitettu kaikkiin URL-osoitteisiin (`/*`), mikä tekee siitä verkkopyyntöjen pääsisäänkäynnin.                     | `WebforjServlet`            |
-| **`<load-on-startup>`**                 | Määrittää, että `WebforjServlet` -servletin tulisi ladata, kun sovellus käynnistyy. Asettaminen arvoon `1` saa servlettia lataamaan heti, mikä parantaa aloituspyyntöjen käsittelyä.                | `1`                         |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| **`<display-name>`**                    | Määrittää verkkosovelluksen näyttönimen, joka yleensä johdetaan projektin nimestä. Tämä nimi näkyy sovelluspalvelimien hallintakonsolissa.                                                        | `${project.name}`         |
+| **`<servlet>` ja `<servlet-mapping>`** | Määrittää `WebforjServlet`:in, ydinselvyn webforJ-pyyntöjen käsittelemiseksi. Tämä servlet kartoitetaan kaikkiin URL-osoitteisiin (`/*`), jolloin se toimii pääsisäänkäyntinä verkkopyynnöille.                     | `WebforjServlet`          |
+| **`<load-on-startup>`**                 | Määrittää, että `WebforjServlet` -tiedosto tulisi ladata, kun sovellus käynnistetään. Asettamalla tämän arvoon `1` servlet ladataan heti, mikä parantaa alkuperäisen pyynnön käsittelyä.                | `1`                       |

@@ -1,7 +1,6 @@
 ---
 sidebar_position: 11
 title: Execute JavaScript
-sidebar_class_name: new-content
 description: Run client-side JavaScript from Java with executeJs, executeJsAsync, and executeJsVoidAsync at the app or element level.
 slug: execute-javascript
 ---

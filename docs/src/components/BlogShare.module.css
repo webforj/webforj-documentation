@@ -1,0 +1,64 @@
+.share {
+  display: flex;
+  align-items: center;
+  gap: var(--dwc-space-s);
+}
+
+.label {
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--dwc-font-family-mono);
+  font-size: var(--dwc-font-size-xs);
+  font-weight: var(--dwc-font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.share button {
+  display: inline-flex;
+  border-radius: 50%;
+}
+
+.share button:focus-visible {
+  outline: 2px solid var(--dwc-color-primary-text);
+  outline-offset: 2px;
+}
+
+/* the end of a post: a row under a hairline */
+.row {
+  flex-wrap: wrap;
+  margin-top: var(--dwc-space-xl);
+  padding-top: var(--dwc-space-l);
+  border-top: 1px solid var(--dwc-border-color);
+}
+
+.row .label {
+  margin-right: var(--dwc-space-xs);
+}
+
+/* the left margin of a post on wide screens: a track the height of the post,
+   centered in the margin beside the blog column, with the buttons sticking
+   at the height of the table of contents */
+.railTrack {
+  display: none;
+}
+
+@media (min-width: 1360px) {
+  .railTrack {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc((100vw - 1200px) / -4 - var(--dwc-space-xl));
+    transform: translateX(-50%);
+  }
+
+  .rail {
+    flex-direction: column;
+    position: sticky;
+    top: calc(var(--ifm-navbar-height) + var(--dwc-space-3xl));
+  }
+
+  .rail .label {
+    margin-bottom: var(--dwc-space-xs);
+  }
+}

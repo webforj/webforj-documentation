@@ -1,5 +1,5 @@
 ---
-title: webforJ AI Plugin
+title: webforJ-KI-Plugin
 sidebar_position: 1
 slug: /ai-tooling
 description: >-

@@ -1,0 +1,9 @@
+# webforJ testbed snapshot v1
+- SpinnerDemoView [route=spinnerdemo] [composite=ColumnsLayout] [node=dwc-columns-layout]:
+  - H3 "Complete your job application:" [composite=Element] [node=h3]
+  - Icon [name=checks] [composite=Element] [node=dwc-icon] [theme=success]
+  - Paragraph "Select the position you wish to apply for" [composite=Element] [node=p]
+  - Icon [name=checks] [composite=Element] [node=dwc-icon] [theme=success]
+  - Paragraph "Provide your current location details" [composite=Element] [node=p]
+  - Spinner [composite=Element] [node=dwc-spinner] [theme=primary] [expanse=xxxsmall]
+  - Paragraph "Uploading your resume" [composite=Element] [node=p]

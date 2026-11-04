@@ -1,0 +1,20 @@
+# webforJ testbed snapshot v1
+- CardRegionsView [route=cardregions] [composite=FlexLayout] [node=div]:
+  - Card [composite=Element] [node=dwc-card]:
+    - FlexLayout [composite=Element] [node=div]:
+      - FlexLayout [composite=Element] [node=div]:
+        - Span "$412,800" [composite=Element] [node=span]
+        - Span "Up 12% over June" [composite=Element] [node=span]
+      - Paragraph "Sales climbed across every region, with the strongest growth in the Northeast." [composite=Element] [node=p]
+    - GoogleChart [slot=figure] [composite=Element] [node=google-chart] [type=column]:
+      - Row [Month=Feb] [Sales=268000]
+      - Row [Month=Mar] [Sales=291000]
+      - Row [Month=Apr] [Sales=334000]
+      - Row [Month=May] [Sales=356000]
+      - Row [Month=Jun] [Sales=368000]
+      - Row [Month=Jul] [Sales=412800]
+    - Icon [slot=icon] [name=chart-bar] [composite=Element] [node=dwc-icon]
+    - H3 "Monthly Report" [slot=title] [composite=Element] [node=h3]
+    - Paragraph "July 2026" [slot=caption] [composite=Element] [node=p]
+    - Button "Share" [slot=header-actions] [theme=outlined-primary]
+    - Button "Read More" [slot=footer]

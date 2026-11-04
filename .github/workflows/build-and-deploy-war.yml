@@ -14,12 +14,16 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          # full history so the sitemap lastmod dates come from each file's last commit
+          fetch-depth: 0
 
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21'
+          cache: 'maven'
 
       - name: Set up Maven
         uses: stCarolas/setup-maven@v5

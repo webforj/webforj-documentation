@@ -27,6 +27,7 @@ For more on how shadow parts work and how to define and target them, see the [St
 path='/webforj/tablerowstyling'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableRowStylingView.java',
+  'src/main/java/com/webforj/samples/views/table/Person.java',
   'src/main/frontend/css/table/table-row-styling-view.css',
 ]}
 height='300px'
@@ -41,7 +42,8 @@ Like row parts, cell parts are defined by a name and targeted using the `::part(
 <ComponentDemo
 path='/webforj/tablecellstyling'
 files={[
-  'src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java',
+  'src/main/java/com/webforj/samples/views/table/TableCellStylingView.java',
+  'src/main/java/com/webforj/samples/views/table/Person.java',
   'src/main/frontend/css/table/table-cell-styling-view.css',
 ]}
 height='300px'
@@ -57,6 +59,7 @@ In this demo, cells in the Age column are styled based on a threshold: ages over
 path='/webforj/tabledynamicstyling'
 files={[
   'src/main/java/com/webforj/samples/views/table/TableDynamicStylingView.java',
+  'src/main/java/com/webforj/samples/views/table/Person.java',
   'src/main/frontend/css/table/table-dynamic-styling-view.css',
 ]}
 height='475px'
@@ -87,7 +90,10 @@ The demo below showcases a simple way to align your `Table's` visual appearance 
 
 <ComponentDemo
 path='/webforj/tablelayoutstyling'
-files={['src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java',
+  'src/main/java/com/webforj/samples/views/table/Person.java',
+]}
 height='300px'
 />
 

@@ -1,7 +1,6 @@
 ---
 title: craftforJ Assistant
 sidebar_position: 2
-sidebar_class_name: new-content
 description: A coding agent inside your running webforJ app that writes Java freely, compiles it, and applies it with your approval.
 ---
 

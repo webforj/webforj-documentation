@@ -4,16 +4,16 @@ sidebar_position: 55
 description: >-
   Render scalable SVG icons with the Icon component from Tabler, Feather, Font
   Awesome, or custom pools loaded on demand from a CDN.
-_i18n_hash: c526ee2878756d5dd13fa2972dfef56e
+_i18n_hash: f1572fcb6d1396a20fac32bfa282c091
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-icon" />
 <DocChip chip='since' label='24.11' />
 <JavadocLink type="icons" location="com/webforj/component/icons/Icon" top='true'/>
 
-Die `Icon`-Komponente zeigt Symbole an, die auf jede Größe skaliert werden können, ohne an Qualität zu verlieren. Sie können aus drei integrierten Symbolpools wählen oder eigene erstellen. Symbole dienen als visuelle Hinweise für die Navigation und Aktionen und reduzieren die Notwendigkeit von Textbeschriftungen in Ihrer Benutzeroberfläche.
+Die `Icon`-Komponente zeigt Icons an, die auf jede Größe skaliert werden können, ohne dass die Qualität verloren geht. Sie können aus drei integrierten Icon-Pools wählen oder eigene erstellen. Icons dienen als visuelle Hinweise für Navigation und Aktionen und verringern die Notwendigkeit von Textbeschriftungen in Ihrer Benutzeroberfläche.
 
-Jedes `Icon` wird als skalierbares Vektorgrafik (SVG)-Bild gerendert, das bei Bedarf von einem Content Delivery Network (CDN) geladen wird, um die Latenz niedrig zu halten. Um eines zu erstellen, wählen Sie einen Symbolpool und den Namen eines Symbols. Einige Symbole bieten auch die Wahl zwischen einer umrissenen oder einer ausgefüllten Version über [Variationen](#variations).
+Jedes `Icon` wird als skalierbares Vektorgrafikbild (SVG) gerendert, das bei Bedarf von einem Content Delivery Network (CDN) geladen wird, um die Latenz niedrig zu halten. Um ein Icon zu erstellen, wählen Sie einen Icon-Pool und den Namen des Icons. Einige Icons bieten auch die Wahl zwischen einer Umriss- oder einer ausgefüllten Version über [Variationen](#variations).
 
 <!-- INTRO_END -->
 
@@ -24,59 +24,59 @@ height='100px'
 />
 
 :::tip Wussten Sie schon?
-Einige Komponenten, wie `PasswordField` und `TimeField`, haben eingebaute Symbole, um den Endbenutzern die Bedeutung zu vermitteln.
+Einige Komponenten, wie `PasswordField` und `TimeField`, haben integrierte Icons, um den Endbenutzern Bedeutung zu vermitteln.
 :::
 
 ## Pools {#pools}
 
-Ein Symbolpool ist eine Sammlung von häufig verwendeten Symbolen, die einen einfachen Zugriff und eine Wiederverwendung ermöglichen. Durch die Verwendung von Symbolen aus einem Symbolpool können Sie sicherstellen, dass die Symbole in Ihrer App wiedererkennbar sind und einen konsistenten Stil aufweisen. Die Verwendung von webforJ ermöglicht es Ihnen, aus drei Pools zu wählen oder einen benutzerdefinierten Pool zu implementieren. Jeder Pool hat eine umfangreiche Sammlung von Open-Source-Symbolen, die kostenlos verwendet werden können. Die Verwendung von webforJ gibt Ihnen die Flexibilität, aus drei Pools zu wählen und diese als einzigartige Klassen zu verwenden, ohne den Aufwand, eines der Symbole direkt herunterzuladen.
+Ein Icon-Pool ist eine Sammlung von häufig verwendeten Icons, die einfachen Zugriff und Wiederverwendung ermöglicht. Durch die Verwendung von Icons aus einem Icon-Pool können Sie sicherstellen, dass die Icons in Ihrer App erkennbar sind und einen konsistenten Stil aufweisen. Mit webforJ können Sie aus drei Pools wählen oder einen benutzerdefinierten Pool implementieren. Jeder Pool hat eine umfangreiche Sammlung von Open-Source-Icons, die kostenlos verwendet werden können. Die Verwendung von webforJ bietet Ihnen die Flexibilität, aus drei Pools zu wählen und diese als einzigartige Klassen zu verwenden, ohne sich um das direkte Herunterladen von Icons kümmern zu müssen.
 
-| Symbolpool                                         | webforJ-Klasse |
+| Icon-Pool                                         | webforJ-Klasse |
 | --------                                          | ------- |
-| [Tabler](https://tabler-icons.io/)                | `TablerIcon` und `DwcIcon`.<br/>`DwcIcon` ist eine Teilmenge der Tabler-Symbole.|
+| [Tabler](https://tabler-icons.io/)                | `TablerIcon` und `DwcIcon`. <br/> `DwcIcon` ist eine Teilmenge der Tabler-Icons. |
 | [Feather](https://feathericons.com/)              | `FeatherIcon`    |
 | [Font Awesome](https://fontawesome.com/search)    | `FontAwesomeIcon`   |
 
 :::tip
 
-Wenn Sie daran interessiert sind, Ihren eigenen Symbolpool zu erstellen, sehen Sie sich [Creating custom pools](#creating-custom-pools) an.
+Wenn Sie an der Erstellung Ihres eigenen Icon-Pools interessiert sind, sehen Sie sich [Erstellen benutzerdefinierter Pools](#creating-custom-pools) an.
 
 :::
 
-Sobald Sie den Pool oder die Pools ausgewählt haben, die Sie in Ihrer App verwenden möchten, besteht der nächste Schritt darin, den Namen des Symbols anzugeben, das Sie verwenden möchten.
+Sobald Sie den Pool oder die Pools ausgewählt haben, die Sie in Ihrer App einfügen möchten, besteht der nächste Schritt darin, den Namen des Icons anzugeben, das Sie verwenden möchten.
 
 ## Namen {#names}
 
-Um ein Symbol in Ihrer App einzufügen, benötigen Sie nur den Symbolpool und den Symbolnamen. Durchsuchen Sie die Website des Symbolpools nach dem Symbol, das Sie verwenden möchten, und verwenden Sie den Symbolnamen als Parameter der Methode `create()`. Darüber hinaus können Sie die Symbole auch durch Enums für die Klassen `FeatherIcon` und `DwcIcon` erstellen, wodurch sie in der Codevervollständigung erscheinen.
+Um ein Icon in Ihre App einzufügen, benötigen Sie nur den Icon-Pool und den Icon-Namen. Durchsuchen Sie die Website des Icon-Pools nach dem Icon, das Sie verwenden möchten, und verwenden Sie den Icon-Namen als Parameter der `create()`-Methode. Zusätzlich können Sie die Icons durch Enums für die Klassen `FeatherIcon` und `DwcIcon` erstellen, sodass sie in der Code-Vervollständigung erscheinen.
 
 ```java
-// Erstellen eines Symbols aus einem String-Namen
+// Erstellen eines Icons aus einem String-Namen
 Icon image = TablerIcon.create("image");
-// Erstellen eines Symbols aus einem Enum
+// Erstellen eines Icons aus einem Enum
 Icon image = FeatherIcon.IMAGE.create();
 ```
 
 ## Variationen {#variations}
 
-Sie können Symbole noch weiter personalisieren, indem Sie Variationen nutzen. Bestimmte Symbole ermöglichen es Ihnen, zwischen einer umrissenen oder einer ausgefüllten Version zu wählen, sodass Sie ein bestimmtes Symbol basierend auf Ihrer Präferenz hervorheben können. `FontAwesomeIcon` und `Tabler`-Symbole bieten Variationen.
+Sie können Icons noch weiter personalisieren, indem Sie Variationen nutzen. Bestimmte Icons erlauben die Wahl zwischen einer Umriss- oder einer ausgefüllten Version, sodass Sie ein bestimmtes Icon basierend auf Ihrer Präferenz betonen können. `FontAwesomeIcon` und `Tabler`-Icons bieten Variationen.
 
-### `FontAwesomeIcon`-Variationen {#fontawesomeicon-variations}
+### Variationen von `FontAwesomeIcon` {#fontawesomeicon-variations}
 
-1. `REGULAR`: Die umrissene Variation der Symbole. Dies ist die Standardversion.
-2. `SOLID`: Die ausgefüllte Variation der Symbole.
-3. `BRAND`: Die Variation für die Verwendung von Brandsymbolen.
+1. `REGULAR`: Die Umriss-Variation von Icons. Dies ist die Standardvariante.
+2. `SOLID`: Die ausgefüllte Variation von Icons.
+3. `BRAND`: Die Variation, wenn Sie die Icons von Marken verwenden.
 
-### `TablerIcon`-Variationen {#tablericon-variations}
+### Variationen von `TablerIcon` {#tablericon-variations}
 
-1. `OUTLINE`: Die umrissene Variation der Symbole. Dies ist die Standardversion.
-2. `FILLED`: Die ausgefüllte Variation der Symbole.
+1. `OUTLINE`: Die Umriss-Variation von Icons. Dies ist die Standardvariante.
+2. `FILLED`: Die ausgefüllte Variation von Icons.
 
 ```java
-// Eine ausgefüllte Variation eines Symbols aus Font Awesome
+// Eine ausgefüllte Variation eines Icons von Font Awesome
 Icon music = FontAwesomeIcon.create("user", FontAwesomeIcon.Variate.SOLID);
 ```
 
-Die folgende Demo zeigt, wie man Symbole aus verschiedenen Pools verwendet, Variationen anwendet und nahtlos in Komponenten integriert.
+Die folgende Demo zeigt, wie man Icons aus verschiedenen Pools verwendet, Variationen anwendet und sie nahtlos in Komponenten integriert.
 
 <ComponentDemo
 path='/webforj/iconvariations'
@@ -84,51 +84,51 @@ files={['src/main/java/com/webforj/samples/views/icon/IconVariationsView.java']}
 height='100px'
 />
 
-## Symbole zu Komponenten hinzufügen {#adding-icons-to-components}
+## Hinzufügen von Icons zu Komponenten {#adding-icons-to-components}
 
-Integrieren Sie Symbole in Ihre Komponenten mithilfe von Slots. Slots bieten flexible Optionen, um Komponenten nützlicher zu machen. Es ist vorteilhaft, ein `Icon` zu einer Komponente hinzuzufügen, um die beabsichtigte Bedeutung für die Benutzer weiter zu verdeutlichen. Komponenten, die das Interface `HasPrefixAndSuffix` implementieren, können ein `Icon` oder andere gültige Komponenten enthalten. Die hinzugefügten Komponenten können in den `prefix`- und `suffix`-Slots platziert werden und sowohl das Gesamtdesign als auch die Benutzererfahrung verbessern.
+Integrieren Sie Icons in Ihre Komponenten mithilfe von Slots. Slots bieten flexible Optionen, um Komponenten nützlicher zu gestalten. Es ist vorteilhaft, einem Bestandteil ein `Icon` hinzuzufügen, um den beabsichtigten Sinn für Benutzer weiter zu verdeutlichen. Komponenten, die das `HasPrefixAndSuffix`-Interface implementieren, können ein `Icon` oder andere gültige Komponenten enthalten. Die hinzugefügten Komponenten können in den `prefix`- und `suffix`-Slots platziert werden und sowohl das Gesamtdesign als auch die Benutzererfahrung verbessern.
 
-Mit den `prefix`- und `suffix`-Slots können Sie bestimmen, ob Sie das Symbol vor oder nach dem Text mit den Methoden `setPrefixComponent()` und `setSuffixComponent()` haben möchten.
+Durch die Verwendung von `prefix`- und `suffix`-Slots können Sie entscheiden, ob das Icon vor oder nach dem Text erscheinen soll, indem Sie die Methoden `setPrefixComponent()` und `setSuffixComponent()` verwenden.
 
-Die Entscheidung, ob ein Symbol vor oder nach dem Text einer Komponente platziert werden soll, hängt weitgehend vom Zweck und dem Designkontext ab.
+Ob ein Icon vor oder nach dem Text einer Komponente platziert wird, hängt stark vom Zweck und Kontext des Designs ab.
 
-### Symbolanordnung: vor VS nach {#icon-placement-before-vs-after}
+### Platzierung des Icons: vor VS nach {#icon-placement-before-vs-after}
 
-Symbole, die vor dem Komponententext positioniert sind, helfen den Benutzern, schnell die Hauptaktion oder den Zweck der Komponente zu verstehen, insbesondere bei allgemein anerkannten Symbolen wie dem Speichersymbol. Symbole vor dem Text einer Komponente bieten eine logische Verarbeitungsreihenfolge und führen die Benutzer auf natürliche Weise durch die beabsichtigte Aktion, was vorteilhaft für Schaltflächen ist, deren Hauptfunktion eine sofortige Aktion ist.
+Icons, die vor dem Text der Komponente positioniert sind, helfen den Benutzern, schnell die primäre Aktion oder den Zweck der Komponente zu verstehen, insbesondere bei universell erkannten Icons wie dem Speichern-Icon. Icons vor dem Text einer Komponente bieten eine logische Verarbeitungsreihenfolge, die die Benutzer natürlich durch die beabsichtigte Aktion leitet, was für Schaltflächen, deren Hauptfunktion eine unmittelbare Aktion ist, von Vorteil ist.
 
-Andererseits ist die Platzierung von Symbolen nach dem Komponententext effektiv für Aktionen, die zusätzlichen Kontext oder Optionen bieten, was die Klarheit und Hinweise zur Navigation verbessert. Symbole nach dem Text einer Komponente eignen sich ideal für Komponenten, die entweder ergänzende Informationen bieten oder die Benutzer in einem Richtungsfluss führen.
+Andererseits ist die Platzierung von Icons nach dem Text der Komponente bei Aktionen effektiv, die zusätzlichen Kontext oder Optionen bieten und die Klarheit sowie Hinweise zur Navigation verbessern. Icons nach dem Text einer Komponente sind ideal für Komponenten, die entweder ergänzende Informationen bereitstellen oder die Benutzer in einem Richtungsfluss leiten.
 
-Letztendlich ist Konsistenz der Schlüssel. Sobald Sie einen Stil gewählt haben, halten Sie ihn über Ihre gesamte Website hinweg für ein kohärentes und benutzerfreundliches Design aufrecht.
+Letztendlich ist Konsistenz der Schlüssel. Sobald Sie einen Stil gewählt haben, halten Sie ihn auf Ihrer gesamten Seite ein, um ein kohärentes und benutzerfreundliches Design zu erzielen.
 
 <ComponentDemo
 path='/webforj/iconprefixsuffix'
 files={['src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java']}
 height='100px'
-/>
+/>️
 
 ## Erstellen benutzerdefinierter Pools {#creating-custom-pools}
 
-Über die Nutzung bestehender Symbolkollektionen hinaus haben Sie die Möglichkeit, einen benutzerdefinierten Pool zu erstellen, der für benutzerdefinierte Logos oder Avatare verwendet werden kann. Ein benutzerdefinierter Pool von Symbolen kann in einem zentralen Verzeichnis oder im Ressourcenordner (Kontext) gespeichert werden, um den Prozess der Symbolverwaltung zu vereinfachen. Ein benutzerdefinierter Pool sorgt dafür, dass die App-Erstellung konsistenter wird und die Wartung über verschiedene Komponenten und Module hinweg reduziert wird.
+Über die Nutzung vorhandener Icon-Kollektionen hinaus haben Sie die Möglichkeit, einen benutzerdefinierten Pool zu erstellen, der für benutzerdefinierte Logos oder Avatare verwendet werden kann. Ein benutzerdefinierter Pool von Icons kann in einem zentralen Verzeichnis oder im Ressourcenordner (Kontext) gespeichert werden, wodurch der Icon-Management-Prozess vereinfacht wird. Ein benutzerdefinierter Pool macht die App-Erstellung konsistenter und reduziert die Wartung über verschiedene Komponenten und Module.
 
-Benutzerdefinierte Pools können aus einem Ordner mit SVG-Bildern erstellt werden, und durch die Verwendung der `IconPoolBuilder`-Klasse. Von dort aus können Sie den Namen Ihres benutzerdefinierten Pools wählen und diesen mit den SVG-Dateinamen verwenden, um benutzerdefinierte Symbolkomponenten zu erstellen.
+Benutzerdefinierte Pools können aus einem Ordner erstellt werden, der SVG-Bilder enthält, und durch die Verwendung der Klasse `IconPoolBuilder`. Von dort aus können Sie den Namen Ihres benutzerdefinierten Pools wählen und diesen zusammen mit den SVG-Dateinamen verwenden, um benutzerdefinierte Icon-Komponenten zu erstellen.
 
 ```java
-// Erstellen eines benutzerdefinierten Pools mit dem Namen "app-pool", der Bilder für ein Logo und einen Avatar enthält.
+// Erstellen eines benutzerdefinierten Pools namens "app-pool", der Bilder für ein Logo und einen Avatar hat.
 IconPoolBuilder.fromDirectory("app-pool", "context://icons");
 Icon customLogo = new Icon("logo", "app-pool");
 Icon customAvatar = new Icon("avatar-default", "app-pool");
 ```
 
 :::tip
-Stellen Sie sicher, dass Sie Symbole mit gleicher Breite und Höhe entwerfen, da `Icon`-Komponenten dazu bestimmt sind, einen quadratischen Raum einzunehmen.
+Stellen Sie sicher, dass die Icons mit gleicher Breite und Höhe entworfen werden, da `Icon`-Komponenten darauf ausgelegt sind, einen quadratischen Raum einzunehmen.
 :::
 
-### Benutzerdefinierte Poolfabrik {#custom-pool-factory}
+### Fabrik für benutzerdefinierte Pools {#custom-pool-factory}
 
-Sie können auch eine Fabrikklasse für einen benutzerdefinierten Pool in webforJ erstellen, ähnlich wie `FeatherIcon`. Dies ermöglicht es Ihnen, Symbolressourcen innerhalb eines bestimmten Pools zu erstellen und zu verwalten und die Codevervollständigung zuzulassen. Jedes Symbol kann über die Methode `create()` instanziiert werden, die ein `Icon` zurückgibt. Die Fabrikklasse sollte pool-spezifische Metadaten bereitstellen, wie den Poolnamen und die Kennung des Symbols, die im Format des Bilddateinamens vorliegen. Dieses Design ermöglicht einen einfachen, standardisierten Zugriff auf Symbolressourcen aus dem benutzerdefinierten Pool mithilfe von Enum-Konstanten, die Skalierbarkeit und Wartbarkeit in der Symbolverwaltung unterstützen.
+Sie können auch eine Fabrikklasse für einen benutzerdefinierten Pool in webforJ erstellen, ähnlich wie `FeatherIcon`. Dies ermöglicht es Ihnen, Icon-Ressourcen innerhalb eines bestimmten Pools zu erstellen und zu verwalten und die Code-Vervollständigung zu unterstützen. Jedes Icon kann über die `create()`-Methode instanziiert werden, die ein `Icon` zurückgibt. Die Fabrikklasse sollte pool-spezifische Metadaten bereitstellen, wie den Poolnamen und die Identifikatoren des Icons, die dem Dateiformat des Bildes entsprechen. Dieses Design ermöglicht einen einfachen, standardisierten Zugriff auf Icon-Ressourcen aus dem benutzerdefinierten Pool unter Verwendung von Enum-Konstanten und unterstützt Skalierbarkeit und Wartungsfreundlichkeit im Icon-Management.
 
 ```java
-/// Erstellung einer benutzerdefinierten Poolfabrik für app-pool
+/// Erstellen einer Fabrik für einen benutzerdefinierten Pool für "app-pool"
 public enum AppPoolIcon implements IconFactory {
   LOGO, AVATAR_DEFAULT;
 
@@ -137,7 +137,7 @@ public enum AppPoolIcon implements IconFactory {
   }
 
   /**
-   * @return den Poolnamen für die Symbole
+   * @return den Poolnamen für die Icons
    */
   @Override
   public String getPool() {
@@ -145,7 +145,7 @@ public enum AppPoolIcon implements IconFactory {
   }
 
   /**
-   * @return den Symbolnamen
+   * @return den Icon-Namen
    */
   @Override
   public String toString() {
@@ -154,48 +154,48 @@ public enum AppPoolIcon implements IconFactory {
 }
 ```
 
-Im Folgenden zeigt der Codeausschnitt die beiden verschiedenen Möglichkeiten zur Verwendung eines benutzerdefinierten Pools.
+Der folgende Code zeigt die zwei verschiedenen Möglichkeiten zur Verwendung eines benutzerdefinierten Pools.
 
 ```java
 IconPoolBuilder.fromDirectory("app-pool", "context://icons");
 
-// Erstellen eines Symbols mit den Namen des benutzerdefinierten Pools und der Bilddatei
+// Erstellen eines Icons mit den Namen des benutzerdefinierten Pools und der Bilddatei
 Icon customLogo = new Icon("logo", "app-pool");
 
-// Erstellen eines Symbols mit der benutzerdefinierten Poolfabrik aus dem vorherigen Snippet
+// Erstellen eines Icons mit der benutzerdefinierten Pool-Fabrik aus dem vorherigen Snippet
 Icon customLogo = AppPoolIcon.LOGO.create();
 ```
 
-## Symbols-Schaltflächen {#icon-buttons}
-Eine `Icon`-Komponente ist nicht auswählbar, aber für Aktionen, die am besten mit nur einem Symbol dargestellt werden, wie Benachrichtigungen oder Warnungen, können Sie die `IconButton` verwenden.
+## Icon-Schaltflächen <DocChip chip="name" label="dwc-icon-button" /> {#icon-buttons}
+Eine `Icon`-Komponente ist nicht auswählbar, aber für Aktionen, die am besten nur mit einem Icon dargestellt werden, wie Benachrichtigungen oder Warnungen, können Sie die `IconButton`-Komponente verwenden.
 
- ```java
+```java
 IconButton bell = new IconButton(FeatherIcon.BELL.create());
 bell.onClick(e -> {
   showMessageDialog("Sie haben eine neue Nachricht!", "Ding Dong!")
-  });
+});
 ```
 
-## Best Practices
+## Beste Praktiken
 
-- **Zugänglichkeit:** Verwenden Sie einen Tooltip oder ein Label für Symbole, um Ihre App für sehbehinderte Benutzer, die auf Screenreader angewiesen sind, zugänglich zu machen.
-- **Vermeiden Sie Mehrdeutigkeit:** Vermeiden Sie die Verwendung von Symbolen, wenn die Bedeutung nicht klar oder weit verbreitet ist. Wenn Benutzer raten müssen, was das Symbol darstellt, hat es keinen Sinn.
-- **Verwenden Sie Symbole sparsam:** Zu viele Symbole können die Benutzer überwältigen, verwenden Sie Symbole nur, wenn sie Klarheit hinzufügen oder die Komplexität verringern.
+- **Barrierefreiheit:** Verwenden Sie ein Tooltip oder ein Label für Icons, um Ihre App für sehbehinderte Benutzer, die auf Screenreader angewiesen sind, zugänglich zu machen.
+- **Vermeiden Sie Mehrdeutigkeit:** Vermeiden Sie die Verwendung von Icons, wenn die Bedeutung nicht klar oder allgemein anerkannt ist. Wenn Benutzer raten müssen, was das Icon darstellt, wird der Zweck untergraben.
+- **Verwenden Sie Icons sparsam:** Zu viele Icons können die Benutzer überfordern, verwenden Sie Icons nur, wenn sie Klarheit schaffen oder die Komplexität reduzieren.
 
-## Styling
-Ein Icon erbt das Thema seiner direkt übergeordneten Komponente, aber Sie können dies überschreiben, indem Sie ein Thema direkt auf ein `Icon` anwenden.
+## Stil
+Ein Icon erbt das Design seines direkten Elternteils, aber Sie können dies überschreiben, indem Sie ein Design direkt auf ein `Icon` anwenden.
 
-### Themen
-Symbolkomponenten verfügen über sieben separate integrierte Themen für ein schnelles Styling ohne CSS. Diese Themen sind vordefinierte Stile, die auf Symbole angewendet werden können, um ihr Aussehen und ihre visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Aussehen von Symbolen in einer App anzupassen.
+### Designs
+Icon-Komponenten verfügen über sieben verschiedene Designs, die für eine schnelle Gestaltung ohne CSS integriert sind. Diese Designs sind vordefinierte Stile, die auf Icons angewendet werden können, um ihr Aussehen und ihre visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Erscheinungsbild von Icons in einer App anzupassen.
 
-Obwohl es viele Anwendungsfälle für jedes der verschiedenen Themen gibt, sind einige Beispiele:
+Während es viele Anwendungen für jedes der verschiedenen Designs gibt, sind hier einige Beispiele:
 
-- `DANGER`: Am besten geeignet für Handlungen mit schwerwiegenden Folgen, wie das Löschen von ausgefüllten Informationen oder das dauerhafte Löschen eines Kontos/Daten.
-- `DEFAULT`: Geeignet für Handlungen in einer App, die keine besondere Aufmerksamkeit erfordern und allgemein sind, wie das Umschalten einer Einstellung.
-- `PRIMARY`: Geeignet als Haupt-"Call-to-Action" auf einer Seite, wie Anmeldung, Änderungen speichern oder zu einer anderen Seite fortfahren.
-- `SUCCESS`: Hervorragend zur Visualisierung des erfolgreichen Abschlusses eines Elements in einer App, wie das Einreichen eines Formulars oder den Abschluss eines Anmeldevorgangs. Das Erfolgsthema kann programmgesteuert angewendet werden, sobald eine erfolgreiche Aktion abgeschlossen ist.
-- `WARNING`: Nützlich, um anzuzeigen, dass ein Benutzer dabei ist, eine potenziell riskante Aktion auszuführen, wie das Verlassen einer Seite mit nicht gespeicherten Änderungen. Diese Aktionen sind oft weniger nachteilig als die, die das Danger-Thema verwenden würden.
-- `GRAY`: Gut für subtile Aktionen, wie geringfügige Einstellungen oder Aktionen, die eher ergänzend zu einer Seite sind und nicht Teil der Hauptfunktionalität sind.
-- `INFO`: Gut, um zusätzliche klärende Informationen an einen Benutzer zu geben.
+- `DANGER`: Am besten geeignet für Aktionen mit schwerwiegenden Konsequenzen, wie das Löschen ausgefüllter Informationen oder das permanente Löschen eines Kontos/Daten.
+- `DEFAULT`: Geeignet für Aktionen in einer App, die keiner besonderen Aufmerksamkeit bedürfen und allgemein sind, wie das Umschalten einer Einstellung.
+- `PRIMARY`: Eignet sich als Haupt-"Call-to-Action" auf einer Seite, etwa zum Anmelden, Speichern von Änderungen oder Weiterschreiten zu einer anderen Seite.
+- `SUCCESS`: Hervorragend geeignet zur Darstellung des erfolgreichen Abschlusses eines Elements in einer App, wie etwa zur Einreichung eines Formulars oder zum Abschluss eines Anmeldevorgangs. Das Erfolg-Design kann programmatisch angewendet werden, sobald eine erfolgreiche Aktion abgeschlossen wurde.
+- `WARNING`: Nützlich, um darauf hinzuweisen, dass ein Benutzer dabei ist, eine potenziell riskante Aktion auszuführen, wie das Verlassen einer Seite mit nicht gespeicherten Änderungen. Diese Aktionen sind oft weniger bedeutsam als diejenigen, die das Gefahren-Design verwenden würden.
+- `GRAY`: Gut für subtile Aktionen, wie geringfügige Einstellungen oder Aktionen, die eher ergänzend zu einer Seite sind und nicht Teil der Hauptfunktionalität.
+- `INFO`: Gut, um Benutzern zusätzliche, erläuternde Informationen bereitzustellen.
 
 <TableBuilder name={['Icon', 'IconButton']} />

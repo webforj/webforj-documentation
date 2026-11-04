@@ -159,3 +159,63 @@ mvn -Dwebforj.hotswap=hotswapAgent
 Compile a change and it reaches the running app. Save in an IDE that compiles on save, or run a compile in a second terminal.
 
 When every changed class belongs to what the current page renders, the affected part rebuilds in place and the app state stays. Otherwise the page reloads in full: for an app without routing, for a class outside the rendered routes, or when the rebuild can't be carried out. One compiled change produces one update in the browser.
+
+## Speeding up reloads in IntelliJ IDEA {#speeding-up-reloads-in-intellij-idea}
+
+IntelliJ IDEA compiles on save only when automatic builds are on, and it waits before each step. Shorten the waits so a change reaches the running app sooner.
+
+### Enable automatic builds {#enable-automatic-builds}
+
+Open the settings and turn on these options:
+
+1. In **Build, Execution, Deployment** > **Compiler**, enable **Build project automatically**.
+<!-- vale off -->
+2. In **Advanced Settings** > **Compiler**, enable **Allow auto-make to start even if developed application is currently running**.
+<!-- vale on -->
+3. In **Appearance & Behavior** > **System Settings**, under **Autosave**, enable **Save files if the IDE is idle for** and set it to `1` second.
+
+<Tabs>
+<TabItem value="windows-linux" label="Windows and Linux">
+
+Press <kbd>Ctrl+ALt+S</kbd>, or choose **File** > **Settings**.
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+Press <kbd>Cmd+,</kbd>, or choose **IntelliJ IDEA** > **Settings**.
+
+</TabItem>
+</Tabs>
+
+### Shorten the build delays {#shorten-the-build-delays}
+
+Set these Registry keys to `0`:
+
+| Key | Description |
+|-----|-------------|
+| `compiler.automake.trigger.delay` | The delay between a file change and the start of a build. |
+| `compiler.automake.build.while.idle.timeout` | The idle time before a build starts. |
+| `compiler.automake.postpone.when.idle.less.than` | The idle time below which IntelliJ IDEA postpones a build. |
+
+<Tabs>
+<TabItem value="windows-linux" label="Windows and Linux">
+
+1. Press `Ctrl+Shift+A` to open **Find Action**.
+2. Type `Registry...` and select it.
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+1. Press `Cmd+Shift+A` to open **Find Action**.
+2. Type `Registry...` and select it.
+
+</TabItem>
+</Tabs>
+
+You can also press `Shift` twice to open **Search Everywhere**, switch to the **Actions** tab, and type `Registry`.
+
+In the **Registry** dialog, type a key name to filter the list, then set its value to `0`.
+
+:::warning
+Registry entries are advanced, unsupported IntelliJ IDEA settings. Select **Restore Defaults** in the **Registry** dialog to reset them.
+:::

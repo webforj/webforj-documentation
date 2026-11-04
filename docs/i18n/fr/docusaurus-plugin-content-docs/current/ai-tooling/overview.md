@@ -1,5 +1,5 @@
 ---
-title: webforJ AI Plugin
+title: Plugin d’IA webforJ
 sidebar_position: 1
 slug: /ai-tooling
 description: >-

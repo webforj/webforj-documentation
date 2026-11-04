@@ -1,0 +1,4 @@
+# webforJ testbed snapshot v1
+- MaskedTextFieldView [route=maskedtextfield] [composite=FlexLayout] [node=div]:
+  - "MaskedTextField \"SAVE2025\" [label=\"Coupon Code\"] [placeholder=ZZZZ-0000] [mask=ZZZZ-0000] [helperText=\"Mask: ZZZZ-0000 - for example: SAVE-2025\"]"
+  - "MaskedTextField \"NE240934\" [label=\"Record Code\"] [placeholder=NE-24-0934] [mask=AA-00-0000] [helperText=\"Mask: AA-00-0000 - for example: NE-24-0934\"]"

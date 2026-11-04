@@ -1,0 +1,37 @@
+# webforJ testbed snapshot v1
+- ToolbarThemeView [route=toolbartheme] [composite=FlexLayout] [node=div]:
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=danger]:
+    - H1 "DANGER" [slot=title] [composite=Element] [node=h1]
+    - IconButton [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=settings] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=user] [composite=Element] [node=dwc-icon-button]
+  - Toolbar [composite=Element] [node=dwc-toolbar]:
+    - H1 "DEFAULT" [slot=title] [composite=Element] [node=h1]
+    - IconButton [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=settings] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=user] [composite=Element] [node=dwc-icon-button]
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=gray]:
+    - H1 "GRAY" [slot=title] [composite=Element] [node=h1]
+    - IconButton [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=settings] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=user] [composite=Element] [node=dwc-icon-button]
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=info]:
+    - H1 "INFO" [slot=title] [composite=Element] [node=h1]
+    - IconButton [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=settings] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=user] [composite=Element] [node=dwc-icon-button]
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=primary]:
+    - H1 "PRIMARY" [slot=title] [composite=Element] [node=h1]
+    - IconButton [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=settings] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=user] [composite=Element] [node=dwc-icon-button]
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=success]:
+    - H1 "SUCCESS" [slot=title] [composite=Element] [node=h1]
+    - IconButton [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=settings] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=user] [composite=Element] [node=dwc-icon-button]
+  - Toolbar [composite=Element] [node=dwc-toolbar] [theme=warning]:
+    - H1 "WARNING" [slot=title] [composite=Element] [node=h1]
+    - IconButton [slot=start] [name=menu-2] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=settings] [composite=Element] [node=dwc-icon-button]
+    - IconButton [slot=end] [name=user] [composite=Element] [node=dwc-icon-button]

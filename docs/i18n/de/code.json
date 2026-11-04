@@ -1061,5 +1061,633 @@
   "componentDemo.iframeTitle": {
     "message": "Component demo",
     "description": "Accessible title for the demo iframe"
+  },
+  "component.blogFilterBar.all": {
+    "message": "Alle"
+  },
+  "component.blogFilterBar.release": {
+    "message": "Freigabe"
+  },
+  "component.blogFilterBar.ai": {
+    "message": "AI"
+  },
+  "component.blogFilterBar.tutorial": {
+    "message": "Tutorial"
+  },
+  "component.blogFilterBar.components": {
+    "message": "Komponenten"
+  },
+  "component.blogFilterBar.integrations": {
+    "message": "Integrationen"
+  },
+  "component.blogFilterBar.styling": {
+    "message": "Gestaltung"
+  },
+  "component.blogFilterBar.community": {
+    "message": "Community"
+  },
+  "component.blogFilterBar.tags.one": {
+    "message": "{count} Tag"
+  },
+  "component.blogFilterBar.tags.other": {
+    "message": "{count} Tags"
+  },
+  "component.blogFilterBar.posts.one": {
+    "message": "{count} Beiträge"
+  },
+  "component.blogFilterBar.posts.other": {
+    "message": "{count} Beiträge"
+  },
+  "component.blogFilterBar.rssTitle": {
+    "message": "Blog-Feed abonnieren"
+  },
+  "component.blogShare.label": {
+    "message": "Teilen",
+    "description": "Label before the share buttons"
+  },
+  "component.blogShare.linkedin": {
+    "message": "Auf LinkedIn teilen"
+  },
+  "component.blogShare.x": {
+    "message": "Auf X teilen"
+  },
+  "component.blogShare.reddit": {
+    "message": "Auf Reddit teilen"
+  },
+  "component.blogShare.bluesky": {
+    "message": "Auf Bluesky teilen"
+  },
+  "component.blogShare.email": {
+    "message": "Per E-Mail teilen"
+  },
+  "component.connectCard.teamName": {
+    "message": "webforJ-Team"
+  },
+  "component.connectCard.title.blog": {
+    "message": "Entwickeln mit webforJ?"
+  },
+  "component.connectCard.title.docs": {
+    "message": "Brauchst du Hilfe?"
+  },
+  "component.connectCard.text.blog": {
+    "message": "Sprechen Sie mit den Ingenieuren dahinter über Ihr Projekt."
+  },
+  "component.connectCard.text.docs": {
+    "message": "Sprechen Sie mit den Entwicklern von webforJ über Ihr Projekt."
+  },
+  "component.connectCard.contact": {
+    "message": "Kontaktieren Sie uns"
+  },
+  "component.connectLauncher.topics.evaluating": {
+    "message": "webforJ für ein Projekt evaluieren"
+  },
+  "component.connectLauncher.topics.evaluating.subject": {
+    "message": "webforJ für ein Projekt evaluieren"
+  },
+  "component.connectLauncher.topics.modernizing": {
+    "message": "Eine bestehende App modernisieren"
+  },
+  "component.connectLauncher.topics.modernizing.subject": {
+    "message": "Eine bestehende App mit webforJ modernisieren"
+  },
+  "component.connectLauncher.topics.stuck": {
+    "message": "Kommst du in der Doku nicht weiter?"
+  },
+  "component.connectLauncher.topics.stuck.subject": {
+    "message": "Frage zur webforJ-Dokumentation"
+  },
+  "component.connectLauncher.mailBody": {
+    "message": "Hallo webforJ-Team,\n\n(Ich habe gelesen: {title} – {url})"
+  },
+  "component.connectLauncher.copy.docs.text": {
+    "message": "Du entwickelst etwas mit webforJ oder kommst auf einer Seite in der Doku nicht weiter? Sag uns Bescheid – ein Entwickler hilft dir weiter."
+  },
+  "component.connectLauncher.copy.docs.greetingTitled": {
+    "message": "Fragen zu {title}? Fragen Sie das Team."
+  },
+  "component.connectLauncher.copy.greeting": {
+    "message": "Fragen zu webforJ? Frag das Team."
+  },
+  "component.connectLauncher.copy.blog.text": {
+    "message": "Sie entwickeln etwas Ähnliches oder ziehen webforJ für ein Projekt in Betracht? Erzählen Sie uns davon – wir helfen Ihnen, den besten Weg zur Umsetzung zu finden."
+  },
+  "component.connectLauncher.copy.blog.greeting": {
+    "message": "Entwickelst du etwas Ähnliches? Sprich mit dem Team."
+  },
+  "component.connectLauncher.copy.default.text": {
+    "message": "Erzählen Sie uns, was Sie entwickeln, und wir helfen Ihnen, den besten Weg zu finden, es mit webforJ umzusetzen."
+  },
+  "component.connectLauncher.panelLabel": {
+    "message": "Sprich mit dem webforJ-Team"
+  },
+  "component.connectLauncher.close": {
+    "message": "Schließen"
+  },
+  "component.connectLauncher.hello": {
+    "message": "Hi, wir sind das webforJ-Team 👋\n"
+  },
+  "component.connectLauncher.topicsLabel": {
+    "message": "Wobei können wir helfen?"
+  },
+  "component.connectLauncher.primary": {
+    "message": "Kennenlerngespräch buchen"
+  },
+  "component.connectLauncher.callNote.strong": {
+    "message": "Kostenlos und unverbindlich."
+  },
+  "component.connectLauncher.callNote.text": {
+    "message": "Für Teams, die ein Projekt mit webforJ evaluieren oder entwickeln. Bei kurzen Fragen wählen Sie oben ein Thema aus."
+  },
+  "component.connectLauncher.follow": {
+    "message": "webforJ folgen"
+  },
+  "component.connectLauncher.dismiss": {
+    "message": "Schließen"
+  },
+  "component.connectLauncher.teamName": {
+    "message": "webforJ-Team"
+  },
+  "component.connectLauncher.replyYes": {
+    "message": "Ja, lass uns sprechen."
+  },
+  "component.connectLauncher.replyNo": {
+    "message": "Nicht jetzt"
+  },
+  "component.connectLauncher.button": {
+    "message": "Fragen? Fragen Sie uns."
+  },
+  "component.connectLauncher.newMessage": {
+    "message": "1 neue Nachricht"
+  },
+  "component.connectLinks.followLinkedIn": {
+    "message": "Auf LinkedIn folgen"
+  },
+  "component.connectLinks.subscribeYouTube": {
+    "message": "Auf YouTube abonnieren"
+  },
+  "component.connectLinks.starGitHub": {
+    "message": "Auf GitHub mit einem Stern markieren"
+  },
+  "component.connectLinks.subscribeRss": {
+    "message": "Blog-Feed abonnieren"
+  },
+  "component.exploreCard.short": {
+    "message": "Kurz · YouTube"
+  },
+  "component.exploreCard.video": {
+    "message": "Video · YouTube"
+  },
+  "component.exploreCard.post": {
+    "message": "Blog · {date}"
+  },
+  "component.exploreCard.label": {
+    "message": "Entdecken"
+  },
+  "component.exploreCard.previous": {
+    "message": "Vorheriger Vorschlag"
+  },
+  "component.exploreCard.next": {
+    "message": "Nächster Vorschlag"
+  },
+  "component.megaMenu.playFullScreen": {
+    "message": "Im Vollbildmodus abspielen"
+  },
+  "component.megaMenu.learnMore": {
+    "message": "Mehr erfahren"
+  },
+  "component.megaMenu.products.webforJ.label": {
+    "message": "webforJ"
+  },
+  "component.megaMenu.products.webforJ.tagline": {
+    "message": "100 % Java, durch und durch"
+  },
+  "component.megaMenu.products.webforJ.description": {
+    "message": "Erstellen Sie die gesamte Web-App in Java, einschließlich UI. Kein JavaScript erforderlich und keine REST-Schicht zwischen UI und Backend."
+  },
+  "component.megaMenu.products.webforJ.cta": {
+    "message": "Jetzt starten"
+  },
+  "component.megaMenu.products.kotlinDSL.label": {
+    "message": "Kotlin-DSL"
+  },
+  "component.megaMenu.products.kotlinDSL.tagline": {
+    "message": "Dieselben UIs in Kotlin"
+  },
+  "component.megaMenu.products.kotlinDSL.description": {
+    "message": "Erstellen Sie webforJ-UIs deklarativ in Kotlin mit typsicheren Buildern und verschachtelten Blöcken – neben Ihrem Java-Code. Experimentell."
+  },
+  "component.megaMenu.products.kotlinDSL.cta": {
+    "message": "Kotlin-DSL erkunden"
+  },
+  "component.megaMenu.products.uIComponents.label": {
+    "message": "UI-Komponenten"
+  },
+  "component.megaMenu.products.uIComponents.tagline": {
+    "message": "Vorgefertigt und zum Kombinieren gemacht"
+  },
+  "component.megaMenu.products.uIComponents.description": {
+    "message": "Layouts, Dateneingabe, Navigation, Feedback und Visualisierung – alles in Java. Kombinieren Sie sie mit Composite zu Ihren eigenen wiederverwendbaren Komponenten und geben Sie nur die API frei, die Sie auswählen."
+  },
+  "component.megaMenu.products.uIComponents.cta": {
+    "message": "Komponenten entdecken"
+  },
+  "component.megaMenu.products.swingModernization.label": {
+    "message": "Swing-Modernisierung"
+  },
+  "component.megaMenu.products.swingModernization.tagline": {
+    "message": "Swing-Apps ins Web bringen"
+  },
+  "component.megaMenu.products.swingModernization.description": {
+    "message": "Führen Sie bestehende Swing-, JavaFX- oder SWT-Anwendungen über Webswing im Browser aus und migrieren Sie sie anschließend Bildschirm für Bildschirm zu webforJ."
+  },
+  "component.megaMenu.products.swingModernization.cta": {
+    "message": "Modernisierung starten"
+  },
+  "component.megaMenu.products.craftforJ.label": {
+    "message": "craftforJ"
+  },
+  "component.megaMenu.products.craftforJ.tagline": {
+    "message": "Bearbeiten Sie Ihre laufende App visuell\n"
+  },
+  "component.megaMenu.products.craftforJ.description": {
+    "message": "Untersuchen Sie den Komponentenbaum einer laufenden App, ändern Sie Komponenten live und übernehmen Sie Ihre Änderungen in den Java-Quellcode."
+  },
+  "component.megaMenu.products.craftforJ.cta": {
+    "message": "craftforJ entdecken"
+  },
+  "component.megaMenu.products.aITooling.label": {
+    "message": "KI-Tools"
+  },
+  "component.megaMenu.products.aITooling.tagline": {
+    "message": "Bring deinem KI-Assistenten webforJ bei"
+  },
+  "component.megaMenu.products.aITooling.description": {
+    "message": "Ein Plugin stellt Claude Code, Copilot, Cursor, Gemini und Codex aktuelle webforJ-Dokumentation, Projektgerüste, Theme-Generierung und Workflows nach webforJ-Konventionen bereit."
+  },
+  "component.megaMenu.products.aITooling.cta": {
+    "message": "KI-Plugin installieren"
+  },
+  "component.megaMenu.products.mCPApps.label": {
+    "message": "MCP-Apps"
+  },
+  "component.megaMenu.products.mCPApps.tagline": {
+    "message": "Ihre webforJ-Ansichten in KI-Apps"
+  },
+  "component.megaMenu.products.mCPApps.description": {
+    "message": "Ermöglichen Sie einer MCP-fähigen KI-App, eine geroutete webforJ-Ansicht in ihrer Unterhaltung zu öffnen, in der Nutzer und KI mit derselben Live-Oberfläche arbeiten. Experimentell."
+  },
+  "component.megaMenu.products.mCPApps.cta": {
+    "message": "MCP-Apps entdecken"
+  },
+  "component.megaMenu.products.figmaDesignKit.label": {
+    "message": "Figma-Design-Kit"
+  },
+  "component.megaMenu.products.figmaDesignKit.tagline": {
+    "message": "Mit echten Komponenten gestalten"
+  },
+  "component.megaMenu.products.figmaDesignKit.description": {
+    "message": "Das DWC Design Kit bringt die webforJ-Komponenten in Figma, damit dein Design dem entspricht, was du umsetzt."
+  },
+  "component.megaMenu.products.figmaDesignKit.cta": {
+    "message": "Design-Kit öffnen"
+  },
+  "component.megaMenu.developers.learn.title": {
+    "message": "Lernen"
+  },
+  "component.megaMenu.developers.learn.gettingStarted.label": {
+    "message": "Erste Schritte"
+  },
+  "component.megaMenu.developers.learn.gettingStarted.description": {
+    "message": "Erstelle und starte deine erste App\n"
+  },
+  "component.megaMenu.developers.learn.tutorial.label": {
+    "message": "Tutorial"
+  },
+  "component.megaMenu.developers.learn.tutorial.description": {
+    "message": "Erstellen Sie eine vollständige App – Schritt für Schritt\n"
+  },
+  "component.megaMenu.developers.learn.appBasics.label": {
+    "message": "App-Grundlagen"
+  },
+  "component.megaMenu.developers.learn.appBasics.description": {
+    "message": "Wie eine webforJ-App aufgebaut ist"
+  },
+  "component.megaMenu.developers.learn.components.label": {
+    "message": "Komponenten"
+  },
+  "component.megaMenu.developers.learn.components.description": {
+    "message": "Jede Komponente mit Live-Demos"
+  },
+  "component.megaMenu.developers.learn.cookbook.label": {
+    "message": "Kochbuch"
+  },
+  "component.megaMenu.developers.learn.cookbook.description": {
+    "message": "Kurzanleitungen für alltägliche Aufgaben\n"
+  },
+  "component.megaMenu.developers.learn.javaDocs.label": {
+    "message": "JavaDocs"
+  },
+  "component.megaMenu.developers.learn.javaDocs.description": {
+    "message": "Die vollständige Java-API"
+  },
+  "component.megaMenu.developers.learn.clientComponents.label": {
+    "message": "Client-Komponenten"
+  },
+  "component.megaMenu.developers.learn.clientComponents.description": {
+    "message": "Teile und Eigenschaften zur Gestaltung"
+  },
+  "component.megaMenu.developers.buildAndShip.title": {
+    "message": "Erstellen und ausliefern"
+  },
+  "component.megaMenu.developers.buildAndShip.startforJ.label": {
+    "message": "startforJ"
+  },
+  "component.megaMenu.developers.buildAndShip.startforJ.description": {
+    "message": "Neues Projekt im Browser erstellen\n"
+  },
+  "component.megaMenu.developers.buildAndShip.springBoot.label": {
+    "message": "Spring Boot"
+  },
+  "component.megaMenu.developers.buildAndShip.springBoot.description": {
+    "message": "Dependency Injection, Spring Data und mehr"
+  },
+  "component.megaMenu.developers.buildAndShip.jBang.label": {
+    "message": "JBang"
+  },
+  "component.megaMenu.developers.buildAndShip.jBang.description": {
+    "message": "webforJ-App aus einer einzelnen Datei starten"
+  },
+  "component.megaMenu.developers.buildAndShip.hotswap.label": {
+    "message": "Hotswap"
+  },
+  "component.megaMenu.developers.buildAndShip.hotswap.description": {
+    "message": "Codeänderungen ohne Neustart anwenden"
+  },
+  "component.megaMenu.developers.buildAndShip.browserlessTesting.label": {
+    "message": "Browserloses Testen"
+  },
+  "component.megaMenu.developers.buildAndShip.browserlessTesting.description": {
+    "message": "Ansichten in JUnit testen, kein Browser erforderlich"
+  },
+  "component.megaMenu.developers.buildAndShip.bBjShip.label": {
+    "message": "BBjShip"
+  },
+  "component.megaMenu.developers.buildAndShip.bBjShip.description": {
+    "message": "Apps in BBjServices bereitstellen"
+  },
+  "component.megaMenu.developers.buildAndShip.automatedUpgrades.label": {
+    "message": "Automatische Upgrades"
+  },
+  "component.megaMenu.developers.buildAndShip.automatedUpgrades.description": {
+    "message": "Mit OpenRewrite auf ein neues Release umsteigen"
+  },
+  "component.megaMenu.resources.readAndWatch.title": {
+    "message": "Lesen und ansehen"
+  },
+  "component.megaMenu.resources.readAndWatch.blog.label": {
+    "message": "Blog"
+  },
+  "component.megaMenu.resources.readAndWatch.blog.description": {
+    "message": "Releases, Tutorials und vertiefende Einblicke"
+  },
+  "component.megaMenu.resources.readAndWatch.successStories.label": {
+    "message": "Erfolgsgeschichten"
+  },
+  "component.megaMenu.resources.readAndWatch.successStories.description": {
+    "message": "Teams, die mit webforJ entwickeln"
+  },
+  "component.megaMenu.resources.readAndWatch.whitepapers.label": {
+    "message": "Whitepaper"
+  },
+  "component.megaMenu.resources.readAndWatch.whitepapers.description": {
+    "message": "Vertiefende Beiträge zu webforJ"
+  },
+  "component.megaMenu.resources.readAndWatch.webinars.label": {
+    "message": "Webinare"
+  },
+  "component.megaMenu.resources.readAndWatch.webinars.description": {
+    "message": "Live-Sitzungen und Aufzeichnungen"
+  },
+  "component.megaMenu.resources.connect.title": {
+    "message": "Verbinden"
+  },
+  "component.megaMenu.resources.connect.events.label": {
+    "message": "Ereignisse"
+  },
+  "component.megaMenu.resources.connect.events.description": {
+    "message": "Vorträge, Konferenzen und Meetups"
+  },
+  "component.megaMenu.resources.connect.youTube.label": {
+    "message": "YouTube"
+  },
+  "component.megaMenu.resources.connect.youTube.description": {
+    "message": "Videos und Anleitungen"
+  },
+  "component.megaMenu.resources.connect.linkedIn.label": {
+    "message": "LinkedIn"
+  },
+  "component.megaMenu.resources.connect.linkedIn.description": {
+    "message": "Neuigkeiten vom Team"
+  },
+  "component.megaMenu.resources.connect.gitHub.label": {
+    "message": "GitHub"
+  },
+  "component.megaMenu.resources.connect.gitHub.description": {
+    "message": "Quellcode und Releases"
+  },
+  "component.megaMenu.support.getHelp.title": {
+    "message": "Hilfe erhalten"
+  },
+  "component.megaMenu.support.getHelp.reportAnIssue.label": {
+    "message": "Problem melden"
+  },
+  "component.megaMenu.support.getHelp.reportAnIssue.description": {
+    "message": "Fehler und Funktionswünsche"
+  },
+  "component.megaMenu.support.getHelp.emailSupport.label": {
+    "message": "E-Mail-Support"
+  },
+  "component.megaMenu.support.getHelp.emailSupport.description": {
+    "message": "support@basis.cloud"
+  },
+  "component.megaMenu.support.getHelp.contactUs.label": {
+    "message": "Kontaktieren Sie uns"
+  },
+  "component.megaMenu.support.getHelp.contactUs.description": {
+    "message": "Gespräch mit dem webforJ-Team buchen"
+  },
+  "component.megaMenu.support.workWithUs.title": {
+    "message": "Arbeiten Sie mit uns"
+  },
+  "component.megaMenu.support.workWithUs.lTSPlusSupportPlans.label": {
+    "message": "LTS+-Supportpläne"
+  },
+  "component.megaMenu.support.workWithUs.lTSPlusSupportPlans.description": {
+    "message": "Langzeitunterstützung für den Produktiveinsatz"
+  },
+  "component.megaMenu.support.workWithUs.partners.label": {
+    "message": "Partner"
+  },
+  "component.megaMenu.support.workWithUs.partners.description": {
+    "message": "webforJ-Partner finden"
+  },
+  "component.megaMenu.support.workWithUs.company.label": {
+    "message": "Unternehmen"
+  },
+  "component.megaMenu.support.workWithUs.company.description": {
+    "message": "BASIS, das Team hinter webforJ"
+  },
+  "component.blogTagsListPage.subtitle.one": {
+    "message": "Alle {count} Themen im webforJ-Blog durchstöbern."
+  },
+  "component.blogTagsListPage.subtitle.other": {
+    "message": "Alle {count} Themen im webforJ-Blog ansehen."
+  },
+  "component.footer.pitch": {
+    "message": "Mach alles in Java! Entwickle in Java, stelle es im Web bereit."
+  },
+  "component.footer.action.startYourApp": {
+    "message": "App starten"
+  },
+  "component.footer.action.contactUs": {
+    "message": "Kontaktieren Sie uns"
+  },
+  "component.footer.products.title": {
+    "message": "Produkte"
+  },
+  "component.footer.products.webforJ": {
+    "message": "webforJ"
+  },
+  "component.footer.products.kotlinDSL": {
+    "message": "Kotlin DSL"
+  },
+  "component.footer.products.uIComponents": {
+    "message": "UI-Komponenten"
+  },
+  "component.footer.products.swingModernization": {
+    "message": "Swing-Modernisierung"
+  },
+  "component.footer.products.craftforJ": {
+    "message": "craftforJ"
+  },
+  "component.footer.products.aITooling": {
+    "message": "KI-Tools"
+  },
+  "component.footer.products.mCPApps": {
+    "message": "MCP-Apps"
+  },
+  "component.footer.products.figmaDesignKit": {
+    "message": "Figma-Designkit"
+  },
+  "component.footer.developers.title": {
+    "message": "Entwickler"
+  },
+  "component.footer.developers.gettingStarted": {
+    "message": "Erste Schritte"
+  },
+  "component.footer.developers.tutorial": {
+    "message": "Tutorial"
+  },
+  "component.footer.developers.cookbook": {
+    "message": "Rezeptbuch"
+  },
+  "component.footer.developers.javaDocs": {
+    "message": "JavaDocs"
+  },
+  "component.footer.developers.startforJ": {
+    "message": "startforJ"
+  },
+  "component.footer.developers.springBoot": {
+    "message": "Spring Boot"
+  },
+  "component.footer.developers.hotswap": {
+    "message": "Hotswap"
+  },
+  "component.footer.developers.browserlessTesting": {
+    "message": "Browserloses Testen"
+  },
+  "component.footer.resources.title": {
+    "message": "Ressourcen"
+  },
+  "component.footer.resources.blog": {
+    "message": "Blog"
+  },
+  "component.footer.resources.successStories": {
+    "message": "Erfolgsgeschichten"
+  },
+  "component.footer.resources.whitepapers": {
+    "message": "Whitepapers"
+  },
+  "component.footer.resources.webinars": {
+    "message": "Webinare"
+  },
+  "component.footer.resources.events": {
+    "message": "Veranstaltungen"
+  },
+  "component.footer.support.title": {
+    "message": "Support"
+  },
+  "component.footer.support.reportAnIssue": {
+    "message": "Problem melden"
+  },
+  "component.footer.support.emailSupport": {
+    "message": "E-Mail-Support"
+  },
+  "component.footer.support.contactUs": {
+    "message": "Kontaktieren Sie uns"
+  },
+  "component.footer.support.lTSPlusSupportPlans": {
+    "message": "LTS+-Supportpläne"
+  },
+  "component.footer.support.partners": {
+    "message": "Partner"
+  },
+  "component.footer.company.title": {
+    "message": "Unternehmen"
+  },
+  "component.footer.company.aboutBASIS": {
+    "message": "Über BASIS"
+  },
+  "component.footer.company.pricing": {
+    "message": "Preise"
+  },
+  "component.footer.company.webforjCom": {
+    "message": "webforj.com"
+  },
+  "component.footer.company.legal": {
+    "message": "Rechtliches"
+  },
+  "component.footer.homeLabel": {
+    "message": "Startseite der webforJ-Dokumentation"
+  },
+  "component.footer.navLabel": {
+    "message": "Fußzeile"
+  },
+  "component.footer.copyright": {
+    "message": "Copyright © {year} {company} Alle Rechte vorbehalten."
+  },
+  "component.blogPostFooter.keepReading": {
+    "message": "Weiterlesen",
+    "description": "Heading of the related posts section"
+  },
+  "component.blogPostFooter.follow": {
+    "message": "Folgen",
+    "description": "Label before the follow icons"
+  },
+  "component.blogPostFooter.talkTitle": {
+    "message": "Entwickelst du etwas mit webforJ?",
+    "description": "Heading of the contact invitation"
+  },
+  "component.blogPostFooter.talkText": {
+    "message": "Sprechen Sie mit dem Team über Ihr Projekt, eine Migration oder ob webforJ das Richtige für Sie ist.",
+    "description": "Text of the contact invitation"
+  },
+  "component.blogPostFooter.contactUs": {
+    "message": "Kontaktieren Sie uns",
+    "description": "Contact button label"
+  },
+  "component.blogPostHeader.back": {
+    "message": "← Blog",
+    "description": "Link back to the blog list above a post title"
   }
 }

@@ -5,16 +5,18 @@ slug: rendering
 description: >-
   Transform Table cells into text, badges, icons, links, or custom HTML with
   built-in renderers and the setRenderer method.
-_i18n_hash: 314a210c06d9b920038308ed7c357f97
+_i18n_hash: 7d9beff25d6b372fb4309fe491ecad08
 ---
+<!-- vale Google.Headings = NO -->
+<!-- vale Google.Colons = NO -->
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/renderer/Renderer" top='true'/>
 
-Renderointi valvoo, kuinka jokainen sarakkeen solu näytetään. Sen sijaan, että näyttäisit raakatiedon, renderointi muuttaa kunkin solun tiedot tyylitetyksi tekstiksi, kuvakkeiksi, merkinnöiksi, linkeiksi, toimintopainikkeiksi tai muuksi visuaaliksi, joka tekee tiedon lukemisesta nopeampaa ja toimimisen helpompaa.
+Renderöijä määrittää, miten sarakkeen jokainen solu näytetään. Raaka-arvon näyttämisen sijaan renderöijä muuntaa kunkin solun tiedot tyylitellyksi tekstiksi, kuvakkeiksi, tunnisteiksi, linkeiksi, toimintopainikkeiksi tai muuksi visuaaliseksi esitystavaksi, joka auttaa lukemaan tietoja nopeammin ja käyttämään niitä helpommin.
 
-Renderointi tapahtuu kokonaan selaimessa. Palvelin lähettää raakatiedot ja asiakas käsittelee esityksen, jolloin 'Taulukko' on nopea riippumatta rivimäärästä.
+Renderöinti tapahtuu kokonaan selaimessa. Palvelin lähettää raakadataa, ja asiakaspuoli huolehtii esitystavasta, joten `Table` on nopea rivien määrästä riippumatta.
 
-Määritä renderointi sarakkeelle käyttämällä `setRenderer()`. Renderointi soveltuu kaikille kyseisen sarakkeen soluille:
+Määritä renderöijä sarakkeelle käyttämällä `setRenderer()`-metodia. Renderöijää käytetään samalla tavalla sarakkeen kaikissa soluissa:
 
 ```java
 TextRenderer<MusicRecord> renderer = new TextRenderer<>();
@@ -23,19 +25,19 @@ renderer.setTheme(Theme.PRIMARY);
 table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 ```
 
-:::tip Renderointifunktiot vs. arvon tarjoajat
-Jos tarvitset vain muuttaa tai muotoilla soluarvon ilman DOM-rakenteen tuottamista, käytä [arvon tarjoajaa](/docs/components/table/columns#value-providers) sen sijaan. Renderoijat luovat ylimääräisiä DOM-elementtejä jokaiselle renderöidylle riville, mikä aiheuttaa kustannuksia renderöintihetkellä. Varaa renderointi visuaaliselle ulostulolle, kuten kuvakkeille, merkinnöille, painikkeille tai muille HTML-pohjaisille esityksille.
+:::tip Renderöijät ja arvontarjoajat
+Jos sinun tarvitsee vain muuntaa tai muotoilla solun arvo luomatta DOM-rakennetta, käytä sen sijaan [arvontarjoajaa](/docs/components/table/columns#value-providers). Renderöijät luovat ylimääräisiä DOM-elementtejä jokaiselle renderöitävälle riville, mikä lisää renderöinnin kustannuksia. Käytä renderöijiä visuaalisiin esityksiin, kuten kuvakkeisiin, tunnisteisiin, painikkeisiin tai muuhun HTML-pohjaiseen esitystapaan.
 :::
 
-webforJ sisältää valmiita renderoijia yleisimmille käyttötapauksille. Jos jokin on erityistä sovelluksellesi, laajenna `Renderer` ja käytä `build()` palauttaaksesi lodash-mallin merkkijonon, joka toimii selaimessa jokaiselle solulle.
+webforJ sisältää valmiita renderöijiä yleisimpiin käyttötarkoituksiin. Jos sovelluksesi tarvitsee jotain erityistä, laajenna `Renderer`-luokkaa ja toteuta `build()`-metodi, joka palauttaa lodash-mallimerkkijonon. Se suoritetaan selaimessa jokaiselle solulle.
 
-## Yleisimmät renderoijat {#common-renderers}
+## Yleiset renderöijät {#common-renderers}
 
-Seuraavat esimerkit käyvät läpi neljä usein käytettyä renderoijaa ja näyttävät `setRenderer()`-mallin käytännössä.
+Seuraavissa esimerkeissä käydään läpi neljä usein käytettyä renderöijää ja näytetään `setRenderer()`-käyttötapa käytännössä.
 
 ### TextRenderer {#text-renderer}
 
-Näyttää solun sisällön yksinkertaisena tai tyyliteltynä tekstinä. Voit soveltaa teeman väriä tai tekstin muotoilua sarakkeeseen ilman sen rakenteen muuttamista, esimerkiksi korostamalla prioriteettikenttää punaiseksi tai tekemällä avaintunnisteen lihavoiduksi.
+Näyttää solun sisällön tavallisena tai tyyliteltynä tekstinä. Käytä sarakkeessa teemaväriä tai tekstikorostusta muuttamatta sen rakennetta. Voit esimerkiksi korostaa prioriteettikentän punaisella tai lihavoida tärkeän tunnisteen.
 
 ```java
 TextRenderer<MusicRecord> renderer = new TextRenderer<>();
@@ -47,7 +49,7 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 ### BadgeRenderer {#badge-renderer}
 
-Suojaa solun arvon merkintäelementtiin. Tukee teemoja, laajuuksia, väri-istutusta (automaattiset erilaiset värit jokaiselle ainutlaatuiselle arvolla) ja valinnaista etukuvaketta. Käytä sitä kategorisille arvoille, kuten tageille, tyypeille tai tunnisteille, joissa erityiset visuaaliset komponentit auttavat käyttäjiä skannaamaan ja vertaamaan rivejä nopeasti.
+Näyttää solun arvon tunniste-elementin sisällä. Tukee teemoja, laajuuksia, värien automaattista määritystä (eri väri kullekin yksilölliselle arvolle) ja valinnaista edellä näytettävää kuvaketta. Käytä sitä luokitteleville arvoille, kuten tunnisteille, tyypeille tai nimikkeille, joiden visuaalisesti erottuvat tunnisteet helpottavat rivien nopeaa silmäilyä ja vertailua.
 
 ```java
 BadgeRenderer<MusicRecord> renderer = new BadgeRenderer<>();
@@ -58,14 +60,14 @@ table.addColumn("musicType", MusicRecord::getMusicType).setRenderer(renderer);
 
 ### BooleanRenderer {#boolean-renderer}
 
-Korvataan `true`, `false` ja `null` kuvakkeilla. Käytä sitä kaikille tosi/epätosi -sarakkeille, joissa kuvake välittää arvon nopeammin kuin teksti, kuten ominaisuuksien lipuissa, aktiivisessa/epäkiitollisessa tilassa tai opt-in-kentissä.
+Korvaa arvot `true`, `false` ja `null` kuvakkeilla. Käytä sitä true/false-sarakkeissa, joissa kuvake ilmaisee arvon tekstiä nopeammin, kuten ominaisuuslipuissa, aktiivisuus- ja passiivisuustiloissa tai suostumuskentissä.
 
 ```java
-// Oletuskirjaimet
+// Default icons
 BooleanRenderer<Task> renderer = new BooleanRenderer<>();
 table.addColumn("completed", Task::isCompleted).setRenderer(renderer);
 
-// Mukautetut kuvakkeet
+// Custom icons
 BooleanRenderer<Task> custom = new BooleanRenderer<>(
   TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
   TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
@@ -75,23 +77,25 @@ table.addColumn("completed", Task::isCompleted).setRenderer(custom);
 
 ### CurrencyRenderer {#currency-renderer}
 
-Muotoilee numeerisen arvon valuuttamääräksi käyttäen annettua `Locale`-sääntöä. Käytä sitä kaikille rahasarakkeille, joissa paikannettavalla muotoilulla (symboli, erottimet, desimaalipaikat) on merkitystä.
+Muotoilee numeerisen arvon valuuttasummaksi annetun `Locale`-olion sääntöjen mukaan. Käytä sitä rahasarakkeissa, joissa tarvitaan alueasetusten mukaista muotoilua (valuuttasymboli, erottimet ja desimaalit).
 
 ```java
-// Yhdysvaltain dollarit
+// US dollars
 table.addColumn("cost", MusicRecord::getCost)
      .setRenderer(new CurrencyRenderer<>(Locale.US));
 
-// Eurot saksalaisella paikalla
+// Euros with German locale
 table.addColumn("retail", MusicRecord::getRetail)
      .setRenderer(new CurrencyRenderer<>(Locale.GERMANY));
 ```
 
-## Ehdollinen renderointi {#conditional-rendering}
+## Ehdollinen renderöinti {#conditional-rendering}
 
-`ConditionalRenderer` valitsee eri renderoijan per solun sen arvon perusteella. Ehtoja arvioidaan järjestyksessä; ensimmäinen osuma voittaa. Yleinen varmuus voidaan asettaa `otherwise()`-menetelmällä.
+`ConditionalRenderer` valitsee solulle renderöijän solun arvon perusteella. Ehdot tarkistetaan järjestyksessä, ja ensimmäinen täsmäävä ehto valitaan. `otherwise()`-metodilla voi määrittää oletusvaihtoehdon.
 
-Seuraava esimerkki näyttää ehdollisen renderoinnin sovellettuna laskun tila-sarakkeeseen, vaihtaen `BadgeRenderer`-variantteihin sen arvon perusteella: 
+
+Seuraavassa esimerkissä ehdollista renderöintiä käytetään laskun tilan sarakkeessa, jossa `BadgeRenderer`-versio valitaan arvon perusteella:
+
 
 <!-- vale off -->
 <ComponentDemo
@@ -105,7 +109,7 @@ height='600px'
 />
 <!-- vale on -->
 
-Se toimii myös hyvin numeeristen kynnysten kanssa. Tämä palvelin kojelauta käyttää `ConditionalRenderer`-menetelmää vaihtaakseen `ProgressBarRenderer`-teemoja CPU- ja muistin käyttöasteiden mukaan: 
+Ehdollinen renderöinti sopii myös numeerisiin raja-arvoihin. Tämä palvelimen hallintapaneeli käyttää `ConditionalRenderer`-renderöijää vaihtaakseen `ProgressBarRenderer`-renderöijän teemaa suorittimen ja muistin käytön mukaan:
 
 <!-- vale off -->
 <ComponentDemo
@@ -119,69 +123,73 @@ height='600px'
 />
 <!-- vale on -->
 
-### Ehto API {#condition-api}
+### Ehtojen API {#condition-api}
 
-Ehdot rakennetaan staattisilla tehdasmenetelmillä ja niitä voidaan yhdistää `and()`, `or()` ja `negate()`.
+Ehdot luodaan staattisilla tehdasmetodeilla, ja niitä voidaan yhdistellä metodeilla `and()`, `or()` ja `negate()`.
 
 ```java
-// Arvon yhtä suuri
+// Value equality
 Condition.equalTo("active")
 Condition.equalToIgnoreCase("active")
 Condition.in("active", "pending", "new")
 
-// Numeeriset vertailut
+// Numeric comparisons
 Condition.greaterThan(100)
 Condition.lessThanOrEqual(0)
 Condition.between(10, 50)
 
-// Boolean / tyhjyyttä
+// Boolean / emptiness
 Condition.isTrue()
 Condition.isFalse()
 Condition.isEmpty()
 
-// Merkkijonojen vastaavuus
+// String matching
 Condition.contains("error")
 Condition.containsIgnoreCase("warn")
 
-// Koosteen yhdistelmä
+// Composition
 Condition.greaterThan(0).and(Condition.lessThan(100))
 Condition.isEmpty().or(Condition.equalTo("N/A"))
 Condition.isTrue().negate()
 
-// Ristilokero tarkistus
+// Cross-column check
 Condition.column("status").equalTo("active")
 
-// Raaka JavaScript-ilmaisu
+// Raw JavaScript expression
 Condition.expression("cell.value % 2 === 0")
 ```
 
-## Koostava renderointi {#composite-rendering}
+## Yhdistelmärenderöinti {#composite-rendering}
 
-`CompositeRenderer` yhdistää useita renderoijia vierekkäin yhdessä solussa joustavan asettelun avulla. Käytä sitä ikonin parittamiseen tekstin kanssa, näyttääksesi avatarin nimen vieressä tai pinotaksesi merkinnän tilan indikaattorin viereen.
+`CompositeRenderer` yhdistää useita renderöijiä vierekkäin samaan soluun flex-asettelun avulla. Käytä sitä esimerkiksi kuvakkeen ja tekstin yhdistämiseen, avatarin näyttämiseen nimen vieressä tai tunnisteen sijoittamiseen tilailmaisimen viereen.
 
-Alempana oleva työntekijäluettelo käyttää `CompositeRenderer`-toimintoa *Työntekijä* -sarakkeessa näyttääkseen automaattisesti luodun avatarin kunkin työntekijän nimen vieressä:
+Alla oleva työntekijähakemisto käyttää *Employee*-sarakkeessa `CompositeRenderer`-renderöijää, joka näyttää automaattisesti luodun avatarin työntekijän nimen vieressä:
 
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/employeedirectory'
-files={['src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/EmployeeDirectoryView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Employee.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/EmployeeService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
 
-## Mukautetut renderoijat {#custom-renderers}
+## Mukautetut renderöijät {#custom-renderers}
 
-Kun mikään valmiista renderoijista ei sovi tarpeeseesi, laajenna `Renderer` ja toteuta `build()`. Tämä menetelmä palauttaa lodash-mallin merkkijonon, joka toimii selaimessa jokaiselle sarakkeelle, ilmaistuna HTML:n ja JavaScriptin seoksena.
+Jos mikään valmis renderöijä ei sovi käyttötarkoitukseesi, laajenna `Renderer`-luokkaa ja toteuta `build()`-metodi. Metodi palauttaa lodash-mallimerkkijonon, joka suoritetaan selaimessa sarakkeen jokaiselle solulle. Merkkijono sisältää HTML:ää ja JavaScriptiä.
 
-### Mukautetun renderoijan luominen {#creating-a-custom-renderer}
+### Mukautetun renderöijän luominen {#creating-a-custom-renderer}
 
-**Vaihe 1:** Laajenna `Renderer` oman rivitietotyyppisi kanssa.
+**Vaihe 1:** Laajenna `Renderer`-luokkaa ja määritä rivin tietotyyppi.
 
 ```java
 public class RatingRenderer extends Renderer<MusicRecord> {
 ```
 
-**Vaihe 2:** Ylikirjoita `build()` ja palauta lodash-mallin merkkijono.
+**Vaihe 2:** Korvaa `build()`-metodi ja palauta lodash-mallimerkkijono.
 
 ```java
   @Override
@@ -200,7 +208,7 @@ public class RatingRenderer extends Renderer<MusicRecord> {
 }
 ```
 
-**Vaihe 3:** Määritä renderoija sarakkeelle.
+**Vaihe 3:** Määritä renderöijä sarakkeelle.
 
 ```java
 table.addColumn("rating", MusicRecord::getRating)
@@ -208,12 +216,12 @@ table.addColumn("rating", MusicRecord::getRating)
 ```
 
 :::tip
-Lisätietoja Lodash-syntaksista, jota käytetään solutietojen hakemiseen ja informatiivisten renderöijien luomiseen, katso [tämä viittausosio](#template-reference).
+Lisätietoja Lodash-syntaksin käytöstä solun tietojen lukemiseen ja havainnollisten renderöijien luomiseen on [tässä viiteosiossa](#template-reference).
 :::
 
-### Useiden sarakkeiden pääsy {#accessing-multiple-columns}
+### Useiden sarakkeiden tietojen käyttö {#accessing-multiple-columns}
 
-Käytä `cell.row.getValue("columnId")` lukeaksesi sisarsarakkeita mallissa. Tämä on hyödyllistä yhdistämiseen, deltajen laskemiseen tai liittyvien tietojen ristiinviittaamiseen.
+Lue mallissa vierekkäisten sarakkeiden arvoja käyttämällä `cell.row.getValue("columnId")`-metodia. Tämä on hyödyllistä kenttien yhdistämisessä, erotusten laskemisessa tai toisiinsa liittyvien tietojen vertailussa.
 
 ```java
 public class ArtistAvatarRenderer extends Renderer<MusicRecord> {
@@ -240,9 +248,9 @@ public class ArtistAvatarRenderer extends Renderer<MusicRecord> {
 }
 ```
 
-### Klikkaustapahtumat {#click-events}
+### Napsautustapahtumat {#click-events}
 
-`IconButtonRenderer` ja `ButtonRenderer` tarjoavat `addClickListener()` automaattisesti. Klikkaustapahtuma antaa pääsyn rivin tietoesineeseen `e.getItem()`-menetelmällä.
+`IconButtonRenderer` ja `ButtonRenderer` tarjoavat valmiina `addClickListener()`-metodin. Napsautustapahtumasta pääsee rivin tieto-olioon `e.getItem()`-metodilla.
 
 ```java
 IconButtonRenderer<MusicRecord> deleteBtn = new IconButtonRenderer<>(
@@ -257,9 +265,9 @@ deleteBtn.addClickListener(e -> {
 table.addColumn("delete", r -> "").setRenderer(deleteBtn);
 ```
 
-## Suorituskyky: laiska renderointi <DocChip chip='since' label='25.12' /> {#lazy-rendering}
+## Suorituskyky: laiska renderöinti <DocChip chip='since' label='25.12' /> {#lazy-rendering}
 
-Sarakkeille, jotka käyttävät visuaalisesti kalliita renderoijia, kuten merkintöjä, edistymispalkkeja, avatareita tai verkkokomponentteja, ota käyttöön laiska renderointi parantaaksesi vierityksen suorituskykyä.
+Jos sarakkeissa käytetään raskaita renderöijiä, kuten tunnisteita, edistymispalkkeja, avatareja tai verkkokomponentteja, laiskan renderöinnin käyttöönotto parantaa vierityksen suorituskykyä.
 
 ```java
 table.addColumn("status", Order::getStatus)
@@ -267,25 +275,29 @@ table.addColumn("status", Order::getStatus)
      .setLazyRender(true);
 ```
 
-Kun `setLazyRender(true)` on asetettu sarakkeelle, solut näyttävät kevyen animaation paikan pitävän elementin, kun käyttäjä vierittää. Varsinaiset solun sisällöt renderoidaan, kun vieritys pysähtyy. Tämä on sarakekohtainen asetus, joten voit ottaa sen käyttöön vain niille sarakkeille, jotka hyötyvät siitä.
+Kun sarakkeelle asetetaan `setLazyRender(true)`, solussa näkyy kevyt animoitu paikkamerkki käyttäjän vierittäessä. Solun varsinainen sisältö renderöidään, kun vieritys pysähtyy. Asetus koskee yksittäistä saraketta, joten voit ottaa sen käyttöön vain niissä sarakkeissa, jotka siitä hyötyvät.
 
 <!-- vale off -->
 <ComponentDemo
 path='/webforj/lazyrender'
-files={['src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java']}
+files={[
+  'src/main/java/com/webforj/samples/views/table/renderers/LazyRenderView.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/Server.java',
+  'src/main/java/com/webforj/samples/views/table/renderers/ServerService.java',
+]}
 height='600px'
 />
 <!-- vale on -->
 
-:::tip Milloin ottaa käyttöön laiska renderointi
-Solun renderoijat luovat enemmän entiteettejä DOM:ssa, mikä tarkoittaa enemmän CPU-työtä renderöinnin aikana, riippumatta siitä, mikä renderoija sen luo.
+:::tip Milloin laiska renderöinti kannattaa ottaa käyttöön
+Solujen renderöijät luovat DOM:iin lisää elementtejä, mikä lisää suorittimen kuormitusta renderöinnin aikana renderöijän tyypistä riippumatta.
 
-Laiska renderointi voi auttaa vähentämään suorituskykyvaikutuksia, jos renderointi on todella tarpeen. Jos sinun tarvitsee vain muuttaa tai muotoilla arvoa, etkä luo monimutkaista DOM:ia, käytä sen sijaan arvon tarjoajaa arvon muuttamiseksi.
+Laiska renderöinti voi vähentää suorituskykyhaittoja, kun renderöijää todella tarvitaan. Jos sinun tarvitsee vain muuttaa tai muotoilla arvoa etkä luo monimutkaista DOM-rakennetta, muunna arvo sen sijaan arvontarjoajalla.
 :::
 
-## Valmiiden renderoijien viite {#built-in-renderers}
+## Valmiiden renderöijien viite {#built-in-renderers}
 
-webforJ tuottaa kattavan joukon renderoijia yleisimmille käyttötapauksille. Määritä mikä tahansa niistä sarakkeeseen käyttämällä `column.setRenderer(renderer)`.
+webforJ sisältää kattavan valikoiman renderöijiä yleisimpiin käyttötarkoituksiin. Määritä mikä tahansa niistä sarakkeelle käyttämällä `column.setRenderer(renderer)`-metodia.
 
 <!-- vale off -->
 <ComponentDemo
@@ -299,19 +311,19 @@ height='600px'
 />
 <!-- vale on -->
 
-### Tekstit ja etiketti {#text-and-labels}
+### Teksti ja tunnisteet {#text-and-labels}
 
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>TextRenderer</strong>  -  tyylitelty teksti, jossa valinnainen teema ja koristeet
+<strong>TextRenderer</strong>  -  tyylitelty teksti, valinnainen teema ja tekstikorostukset
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Näyttää solun sisällön yksinkertaisena tai tyyliteltynä tekstinä. Tukee teeman värejä ja tekstimuotoiluja, kuten lihavointi, kursivointi ja alleviivaus.
+Näyttää solun sisällön tavallisena tai tyyliteltynä tekstinä. Tukee teemavärejä ja tekstikorostuksia, kuten lihavointia, kursivointia ja alleviivausta.
 
 ```java
 TextRenderer renderer = new TextRenderer<>();
@@ -327,14 +339,14 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>BadgeRenderer</strong>  -  arvo, joka näytetään merkintäelementissä
+<strong>BadgeRenderer</strong>  -  arvo tunnistesirun sisällä
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Suojaa solun arvon merkintäelementtiin. Tukee teemoja, laajuuksia, väri-istutusta (automaattiset erilaiset värit jokaiselle ainutlaatuiselle arvolla) ja valinnaista etukuvaketta.
+Näyttää solun arvon tunniste-elementin sisällä. Tukee teemoja, laajuuksia, värien automaattista määritystä (eri väri kullekin yksilölliselle arvolle) ja valinnaista edellä näytettävää kuvaketta.
 
 ```java
 BadgeRenderer renderer = new BadgeRenderer<>();
@@ -356,7 +368,7 @@ table.addColumn("musicType", MusicRecord::getMusicType).setRenderer(renderer);
 
 <DocChip chip='since' label='25.12' />
 
-Renderoi konfiguroitavan palautusmerkkijonon, kun solun arvo on `null` tai tyhjää; muuten renderoi arvon sellaisenaan.
+Renderöi määritettävän oletustekstin, kun solun arvo on `null` tai tyhjä. Muussa tapauksessa arvo renderöidään sellaisenaan.
 
 ```java
 table.addColumn("notes", MusicRecord::getNotes)
@@ -368,26 +380,27 @@ table.addColumn("notes", MusicRecord::getNotes)
 </Accordion>
 </AccordionGroup>
 
-### Tila ja indikaattorit {#status-and-indicators}
+### Tila ja ilmaisimet {#status-and-indicators}
 
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>BooleanRenderer</strong>  -  true/false/null esitetään kuvakkeina
+<strong>BooleanRenderer</strong>  -  true-, false- ja null-arvot kuvakkeina
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Korvataan `true`, `false` ja `null` arvot kuvakkeilla. Oletuksena shakki, risti ja viiva.
+Korvaa arvot `true`, `false` ja `null` kuvakkeilla. Oletuskuvakkeet ovat valintamerkki, risti ja viiva.
+
 
 ```java
-// Oletuskirjaimet
+// Default icons
 BooleanRenderer renderer = new BooleanRenderer<>();
 table.addColumn("completed", Task::isCompleted).setRenderer(renderer);
 
-// Mukautetut kuvakkeet
+// Custom icons
 BooleanRenderer custom = new BooleanRenderer<>(
   TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
   TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
@@ -400,14 +413,14 @@ BooleanRenderer custom = new BooleanRenderer<>(
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>StatusDotRenderer</strong>  -  värillinen indikaattori piste solutekstin vieressä
+<strong>StatusDotRenderer</strong>  -  värillinen ilmaisinpiste solun tekstin vieressä
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renderoi pieni värillinen piste solun arvon vasemmalle puolelle. Karttaa yksittäisiä arvoja teemoihin, CSS-värijonoksi tai `java.awt.Color`-instansseihin.
+Renderöi pienen värillisen pisteen solun arvon vasemmalle puolelle. Yhdistä yksittäiset arvot teemoihin, CSS-värimerkkijonoihin tai `java.awt.Color`-olioihin.
 
 ```java
 StatusDotRenderer renderer = new StatusDotRenderer<>();
@@ -423,26 +436,26 @@ table.addColumn("status", Order::getStatus).setRenderer(renderer);
 </Accordion>
 </AccordionGroup>
 
-### Numerot, valuutta ja päivämäärät {#numbers-currency-and-dates}
+### Luvut, valuutat ja päivämäärät {#numbers-currency-and-dates}
 
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>CurrencyRenderer</strong>  -  sijaintitietoista valuutan muotoilua
+<strong>CurrencyRenderer</strong>  -  alueasetukset huomioiva valuuttamuotoilu
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Muotoilee numeerisen arvon valuuttamääräksi käyttäen annettua `Locale`-sääntöä.
+Muotoilee numeerisen arvon valuuttasummaksi annetun `Locale`-olion sääntöjen mukaan.
 
 ```java
-// Yhdysvaltain dollarit
+// US dollars
 table.addColumn("cost", MusicRecord::getCost)
      .setRenderer(new CurrencyRenderer<>(Locale.US));
 
-// Eurot saksalaisella paikalla
+// Euros with German locale
 table.addColumn("retail", MusicRecord::getRetail)
      .setRenderer(new CurrencyRenderer<>(Locale.GERMANY));
 ```
@@ -453,14 +466,14 @@ table.addColumn("retail", MusicRecord::getRetail)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>PercentageRenderer</strong>  -  prosentti, jossa valinnainen mini edistymispalkki
+<strong>PercentageRenderer</strong>  -  prosenttiosuus ja valinnainen pieni edistymispalkki
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Näyttää numeerisen arvon prosenttina. Aseta toinen konstruktorin argumentti `false`:ksi estääksesi ohuen edistymispalkin renderoinnin tekstin alle.
+Näyttää numeerisen arvon prosenttiosuutena. Aseta konstruktorin toiseksi argumentiksi `false`, jos et halua ohutta edistymispalkkia tekstin alle.
 
 ```java
 PercentageRenderer renderer = new PercentageRenderer<>(Theme.PRIMARY, true);
@@ -473,14 +486,14 @@ table.addColumn("completion", Task::getCompletion).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ProgressBarRenderer</strong>  -  täysi edistymispalkki numeerisille arvoille
+<strong>ProgressBarRenderer</strong>  -  täysikokoinen edistymispalkki numeerisille arvoille
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renderoi koko leveydeltä edistymispalkki, jossa on konfiguroitavat minimiset ja maksimaaliset rajat, määrittämättömässä tilassa, ja juovikkaassa tai animoidussa näyttötilassa. Käytä `setText()`-menetelmää yhdessä lodash-ilmaisun kanssa peittääksesi mukautetun tekstin palkin päälle.
+Renderöi koko levyisen edistymispalkin, jonka pienimmät ja suurimmat raja-arvot voi määrittää. Tukee määrittämätöntä tilaa sekä raidallista tai animoitua esitystapaa. Voit sijoittaa palkin päälle mukautettua tekstiä käyttämällä `setText()`-metodia ja lodash-lauseketta.
 
 ```java
 ProgressBarRenderer renderer = new ProgressBarRenderer<>();
@@ -498,14 +511,14 @@ table.addColumn("progress", Task::getProgress).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>MaskedTextRenderer</strong>  -  merkkijonon muotoilu tekstimaskilla
+<strong>MaskedTextRenderer</strong>  -  merkkijono tekstimaskilla muotoiltuna
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Soveltuu merkintämaskia merkkijonon arvoon. `#` vastaa mitä tahansa numeroa; kirjaimelliset merkit säilytetään. Katso [tekstimaskin säännöt](/docs/components/fields/masked/textfield#mask-rules) kaikista tuetuista maskimerkeistä.
+Käyttää merkkijonoarvoon merkkimaskia. `#` vastaa mitä tahansa numeroa; kirjaimelliset merkit säilytetään. Katso kaikki tuetut maskimerkit kohdasta [tekstimaskin säännöt](/docs/components/fields/masked/textfield#mask-rules).
 
 ```java
 table.addColumn("ssn", Employee::getSsn)
@@ -518,14 +531,14 @@ table.addColumn("ssn", Employee::getSsn)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>MaskedNumberRenderer</strong>  -  numeerinen arvo, joka on muotoiltu numeromaskilla
+<strong>MaskedNumberRenderer</strong>  -  numeerinen arvo lukumaskilla muotoiltuna
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Muotoilee numeerisen arvon mallimerkkijonolla, jossa on sijainnista riippuvaisia erottimia. `0` pakottaa numeron; `#` on valinnainen. Katso [numeromaskin säännöt](/docs/components/fields/masked/numberfield#mask-rules) kaikista tuetuista maskimerkeistä.
+Muotoilee numeerisen arvon mallimerkkijonon avulla ja huomioi alueasetusten mukaiset erottimet. `0` pakottaa numeron näkymään; `#` on valinnainen. Katso kaikki tuetut maskimerkit kohdasta [lukumaskin säännöt](/docs/components/fields/masked/numberfield#mask-rules).
 
 ```java
 table.addColumn("price", Product::getPrice)
@@ -538,14 +551,14 @@ table.addColumn("price", Product::getPrice)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>MaskedDateTimeRenderer</strong>  -  päivämäärä/aika-arvo päivämäärämaskilla
+<strong>MaskedDateTimeRenderer</strong>  -  päivämäärä- tai aika-arvo päivämäärämaskilla
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Muotoilee päivämäärä- tai aikarvoa käyttäen mallimerkkejä: `%Mz` (kuukausi), `%Dz` (päivä), `%Yz` (vuosi) ja muut. Katso [päivämäärämaskin säännöt](/docs/components/fields/masked/datefield#mask-rules) kaikista saatavilla olevista tokeneista.
+Muotoilee päivämäärä- tai aika-arvon mallimerkintöjen avulla: `%Mz` (kuukausi), `%Dz` (päivä), `%Yz` (vuosi) ja muita. Katso kaikki käytettävissä olevat merkinnät kohdasta [päivämäärämaskin säännöt](/docs/components/fields/masked/datefield#mask-rules).
 
 ```java
 table.addColumn("released", MusicRecord::getReleaseDate)
@@ -562,21 +575,21 @@ table.addColumn("released", MusicRecord::getReleaseDate)
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>EmailRenderer</strong>  -  sähköpostiosoite klikkautuvana mailto-linkkinä
+<strong>EmailRenderer</strong>  -  sähköpostiosoite napsautettavana mailto-linkkinä
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Suojaa solun arvon `mailto:`-linkkiä. Oletuksena on ensisijaisesti teemoitettu sähköposti-ikoni visuaalisena vihjeenä.
+Lisää solun arvon ympärille `mailto:`-ankkurin. Oletuksena visuaalisena vihjeenä on pääteeman mukainen sähköpostikuvake.
 
 ```java
-// Oletussähköposti-ikoni
+// Default mail icon
 table.addColumn("email", Contact::getEmail)
      .setRenderer(new EmailRenderer<>());
 
-// Mukautettu ikoni
+// Custom icon
 table.addColumn("email", Contact::getEmail)
      .setRenderer(new EmailRenderer<>(TablerIcon.create("at")));
 ```
@@ -587,21 +600,21 @@ table.addColumn("email", Contact::getEmail)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>PhoneRenderer</strong>  -  puhelinnumero klikkautuvana tel-linkkinä
+<strong>PhoneRenderer</strong>  -  puhelinnumero napsautettavana tel-linkkinä
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Suojaa solun arvon `tel:`-linkkiä. Mobiililaitteissa napautus avaa valintaikkunan. Oletuksena on ensisijaisesti teemoitu puhelin-ikoni.
+Lisää solun arvon ympärille `tel:`-ankkurin. Mobiililaitteessa napautus avaa numerovalitsimen. Oletuksena näytetään pääteeman mukainen puhelinkuvake.
 
 ```java
-// Oletuspuhelin-ikoni
+// Default phone icon
 table.addColumn("phone", Contact::getPhone)
      .setRenderer(new PhoneRenderer<>());
 
-// Mukautettu ikoni
+// Custom icon
 table.addColumn("phone", Contact::getPhone)
      .setRenderer(new PhoneRenderer<>(TablerIcon.create("device-mobile")));
 ```
@@ -612,14 +625,14 @@ table.addColumn("phone", Contact::getPhone)
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>AnchorRenderer</strong>  -  solun arvo konfiguroitavana hyperlinkkinä
+<strong>AnchorRenderer</strong>  -  solun arvo mukautettavana hyperlinkkinä
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renderoi klikkautuva ankkurielementti. `href` tukee lodash-mallin lausekkeita, joten voit luoda URL-osoitteita dynaamisesti solun arvosta.
+Renderöi napsautettavan ankkurielementin. `href` tukee lodash-mallilausekkeita, joten voit muodostaa URL-osoitteita dynaamisesti solun arvosta.
 
 ```java
 AnchorRenderer renderer = new AnchorRenderer<>();
@@ -635,14 +648,14 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ImageRenderer</strong>  -  sisäinen kuva solussa
+<strong>ImageRenderer</strong>  -  solun sisäinen kuva
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Näyttää kuvan. `src`-attribuutti tukee lodash-mallilausekkeita, joten jokainen rivi voi näyttää erilaisen kuvan.
+Näyttää kuvan. `src`-attribuutti tukee lodash-mallilausekkeita, joten kullekin riville voidaan näyttää eri kuva.
 
 ```java
 ImageRenderer renderer = new ImageRenderer<>();
@@ -657,19 +670,19 @@ table.addColumn("cover", MusicRecord::getArtist).setRenderer(renderer);
 </Accordion>
 </AccordionGroup>
 
-### Ihmiset ja avatarit {#people-and-avatars}
+### Henkilöt ja avatarit {#people-and-avatars}
 
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>AvatarRenderer</strong>  -  avatar automaattisesti luoduilla alkuperäiskirjaimilla
+<strong>AvatarRenderer</strong>  -  avatar, jonka nimikirjaimet luodaan automaattisesti
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renderoi avatar-komponentti. Alkuperäiskirjaimet johdetaan automaattisesti solun arvosta. Tukee teemoja ja varakohtaa.
+Renderöi avatar-komponentin. Nimikirjaimet johdetaan automaattisesti solun arvosta. Tukee teemoja ja varakuvaketta.
 
 ```java
 AvatarRenderer renderer = new AvatarRenderer<>();
@@ -689,14 +702,14 @@ table.addColumn("artist", MusicRecord::getArtist).setRenderer(renderer);
 <AccordionGroup>
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>IconRenderer</strong>  -  itsenäinen kuvake, valinnaisesti klikattavissa
+<strong>IconRenderer</strong>  -  yksittäinen kuvake, joka voi olla napsautettava
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Renderoi yksittäinen kuvake. Liitä klikkakuuntelija vuorovaikutteiseen käyttäytymiseen.
+Renderöi yksittäisen kuvakkeen. Lisää napsautuskuuntelija vuorovaikutteista toimintaa varten.
 
 ```java
 IconRenderer renderer = new IconRenderer<>(TablerIcon.create("music"));
@@ -709,14 +722,14 @@ table.addColumn("type", MusicRecord::getMusicType).setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>IconButtonRenderer</strong>  -  toiminnallinen kuvakepainike rivitietoilla
+<strong>IconButtonRenderer</strong>  -  toimintokuvakepainike, joka voi käyttää rivin tietoja
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='25.12' />
 
-Renderoi klikattava kuvakepainike. Klikkaustapahtuma paljastaa rivin objektin `e.getItem()`, mikä tekee siitä ihanteellisen rivikohtaisille toimille.
+Renderöi napsautettavan kuvakepainikkeen. Napsautustapahtumasta pääsee rivin alkioon `e.getItem()`-metodilla, joten se sopii erinomaisesti rivikohtaisiin toimintoihin.
 
 ```java
 IconButtonRenderer renderer = new IconButtonRenderer<>(TablerIcon.create("edit"));
@@ -731,14 +744,14 @@ table.addColumn("actions", r -> "").setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ButtonRenderer</strong>  -  teemoitettu painike solussa
+<strong>ButtonRenderer</strong>  -  teeman mukainen painike solussa
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Renderoi täysi `Button`-komponentti solun sisällä.
+Renderöi solun sisälle täysikokoisen `Button`-komponentin.
 
 ```java
 ButtonRenderer renderer = new ButtonRenderer<>("Edit");
@@ -754,14 +767,14 @@ table.addColumn("edit", r -> "Edit").setRenderer(renderer);
 
 <Accordion disableGutters>
 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>ElementRenderer</strong>  -  raaka HTML-elementti lodash-sisällöllä
+<strong>ElementRenderer</strong>  -  raaka HTML-elementti, jonka sisältö muodostetaan Lodashilla
 </AccordionSummary>
 <AccordionDetails>
 <div>
 
 <DocChip chip='since' label='24.00' />
 
-Renderoi mikä tahansa HTML-elementti lodash-mallin sisältömerkkijonolla. Tämä on vaihtoehto tilanteissa, joissa mikään valmiista renderoijista ei sovi.
+Renderöi minkä tahansa HTML-elementin, jonka sisältö annetaan lodash-mallimerkkijonona. Tätä voi käyttää tilanteissa, joihin mikään valmis renderöijä ei sovi.
 
 ```java
 ElementRenderer renderer = new ElementRenderer<>("span", "<%= cell.value %>");
@@ -773,74 +786,74 @@ table.addColumn("custom", MusicRecord::getTitle).setRenderer(renderer);
 </Accordion>
 </AccordionGroup>
 
-## Malliviite {#template-reference}
+## Mallien viite {#template-reference}
 
-Renderoijat tarjoavat tehokkaan mekanismin räätälöidä dataa, joka esitetään `Taulukossa`. Pääluokka `Renderer` on suunniteltu laajennettavaksi, jotta voidaan luoda mukautettu renderoija perustuen lodash-malleihin, mahdollistamalla dynaamisen ja vuorovaikutteisen sisällön renderoinnin.
+Renderöijät tarjoavat tehokkaan tavan mukauttaa tietojen näyttämistä `Table`-komponentissa. Keskeinen `Renderer`-luokka on tarkoitettu laajennettavaksi, jotta voit luoda lodash-malleihin perustuvia mukautettuja renderöijiä. Näin sisältöä voidaan renderöidä dynaamisesti ja vuorovaikutteisesti.
 
-Lodash-mallit mahdollistavat HTML:n suoran lisäämisen taulukon soluihin, mikä tekee niistä erittäin tehokkaita monimutkaisten solutietojen renderoimiseen `Taulukossa`. Tämä lähestymistapa sallii HTML:n dynaamisen luomisen solutietojen perusteella, helpottaen rikkaita ja vuorovaikutteisia taulukon solunsisältöjä.
+Lodash-mallien avulla HTML:ää voidaan lisätä suoraan taulukon soluihin, joten ne sopivat hyvin monimutkaisten solutietojen esittämiseen `Table`-komponentissa. Tällä menetelmällä HTML voidaan luoda dynaamisesti solun tietojen perusteella, mikä mahdollistaa monipuolisen ja vuorovaikutteisen solusisällön.
 
 ### Lodash-syntaksi {#lodash-syntax}
 
-Seuraavassa osassa hahmotellaan Lodash-syntaksin perusteita. Vaikka tämä ei ole kattava tai yksityiskohtainen yleiskatsaus, sitä voidaan käyttää auttamaan Lodashin käytössä `Taulukko`-komponentissa.
+Seuraavassa osiossa esitellään Lodash-syntaksin perusteet. Tämä ei ole kattava yleiskatsaus, mutta sen avulla pääset alkuun Lodashin käytössä `Table`-komponentissa.
 
-#### Syntaksin yleiskatsaus lodash-malleille: {#syntax-overview-for-lodash-templates}
+#### Lodash-mallien syntaksin yleiskatsaus: {#syntax-overview-for-lodash-templates}
 
-- `<%= ... %>` - Interpoloi arvot, lisäten JavaScript-koodin tuloksen malliin.
-- `<% ... %>` - Suorittaa JavaScript-koodin, salliaksesi silmukoita, ehtoja jne.
-- `<%- ... %>` - Pakenee HTML-sisältöä, varmistaen, että interpoloidut tiedot ovat turvallisia HTML-injektiohyökkäyksiltä.
+- `<%= ... %>` - Interpoloi arvot lisäämällä malliin JavaScript-koodin tuloksen.
+- `<% ... %>` - Suorittaa JavaScript-koodia, mikä mahdollistaa silmukat, ehdot ja muuta.
+- `<%- ... %>` - Escapettaa HTML-sisällön ja suojaa näin interpoloidut tiedot HTML-injektiolta.
 
-#### Esimerkit solutiedon käytöstä: {#examples-using-cell-data}
+#### Solutietojen käyttöesimerkkejä: {#examples-using-cell-data}
 
-**1. Yksinkertainen arvon interpolointi**: näytä suoraan solun arvo.
+**1. Yksinkertainen arvon interpolointi**: näytä solun arvo suoraan.
 
 `<%= cell.value %>`
 
-**2. Ehdollinen renderointi**: käytä JavaScript-logiikkaa ehdolliseen sisällön renderointeeseen.
+**2. Ehdollinen renderöinti**: käytä JavaScript-logiikkaa sisällön ehdolliseen renderöintiin.
 
 `<% if (cell.value > 100) { %> 'High' <% } else { %> 'Normal' <% } %>`
 
-**3. Tietokenttien yhdistäminen**: renderoi sisältöä käyttämällä useita tietokenttiä solusta.
+**3. Tietokenttien yhdistäminen**: renderöi sisältöä käyttämällä solun useita tietokenttiä.
 
 `<%= cell.row.getValue('firstName') + ' ' + cell.row.getValue('lastName') %>`
 
-**4. HTML-sisällön pakottaminen**: renderoi turvallisesti käyttäjän luomaa sisältöä.
+**4. HTML-sisällön escapettaminen**: renderöi käyttäjän luoma sisältö turvallisesti.
 
-Renderoijalla on pääsy yksityiskohtaisiin soluihin, riveihin ja sarakeominaisuuksiin asiakaspinnan puolella:
+Renderöijällä on asiakaspuolella käytettävissään solun, rivin ja sarakkeen yksityiskohtaiset ominaisuudet:
 
-**TableCell Ominaisuudet:**
+**TableCell-ominaisuudet:**
 
 |Ominaisuus	|Tyyppi	|Kuvaus|
 |-|-|-|
-|column|`TableColumn`|Liittyvä sarakeobjekti.|
-|first|`boolean`|Ilmaisee, onko solu ensimmäinen rivissä.|
-|id|`String`|Solu ID.|
-|index|`int`|Solun indeksi sen rivissä.|
-|last|`boolean`|Ilmaisee, onko solu viimeinen rivissä.|
-|row|`TableRow`|Liittyvä riviobjekti solulle.|
-|value|`Object`|Solun raaka arvo, suoraan tietolähteestä. |
+|column|`TableColumn`|Soluun liittyvä sarakeolio.|
+|first|`boolean`|Ilmaisee, onko solu rivin ensimmäinen.|
+|id|`String`|Solun tunniste.|
+|index|`int`|Solun indeksi rivillään.|
+|last|`boolean`|Ilmaisee, onko solu rivin viimeinen.|
+|row|`TableRow`|Soluun liittyvä riviolio.|
+|value|`Object`|Solun raaka-arvo suoraan tietolähteestä.|
 
-**TableRow Ominaisuudet:**
+**TableRow-ominaisuudet:**
 
 |Ominaisuus|Tyyppi|Kuvaus|
 |-|-|-|
-|cells|`TableCell[]`|Rivissä olevat solut.|
-|data|`Object`|Sovelluksen tarjoama data riville.|
-|even|`boolean`|Ilmaisee, onko rivi parillinen (tyylitarkoituksiin).|
-|first|`boolean`|Ilmaisee, onko rivi ensimmäinen taulukossa.|
-|id|`String`|Rivin uniikki ID.|
+|cells|`TableCell[]`|Rivin solut.|
+|data|`Object`|Sovelluksen riville antamat tiedot.|
+|even|`boolean`|Ilmaisee, onko rivi parillinen (tyylittelyä varten).|
+|first|`boolean`|Ilmaisee, onko rivi taulukon ensimmäinen.|
+|id|`String`|Rivin yksilöllinen tunniste.|
 |index|`int`|Rivin indeksi.|
-|last|`boolean`|Ilmaisee, onko rivi viimeinen taulukossa.|
-|odd|`boolean`|Ilmaisee, onko rivi pariton (tyylitarkoituksiin).|
+|last|`boolean`|Ilmaisee, onko rivi taulukon viimeinen.|
+|odd|`boolean`|Ilmaisee, onko rivi pariton (tyylittelyä varten).|
 
-**TableColumn Ominaisuudet:**
+**TableColumn-ominaisuudet:**
 
 |Ominaisuus	|Tyyppi	|Kuvaus|
 |-|-|-|
-|align|ColumnAlignment|Sarakkeen tasapaino (vasen, keski, oikea).|
-|id|String|Rivin objektista saatavan solun datan kenttä.|
-|label|String|Nimi, joka renderoidaan sarakkeen otsikossa.|
+|align|ColumnAlignment|Sarakkeen tasaus (vasen, keskitetty, oikea).|
+|id|String|Riviolion kenttä, josta solun tiedot haetaan.|
+|label|String|Sarakkeen otsikossa näytettävä nimi.|
 |pinned|ColumnPinDirection|Sarakkeen kiinnityssuunta (vasen, oikea, automaattinen).|
-|sortable|boolean|Jos true, sarake voidaan lajitella.|
-|sort|SortDirection|Sarakkeen lajittelujärjestys.|
-|type|ColumnType|Sarakkeen tyyppi (teksti, numero, boolean jne.).|
-|minWidth|number|Sarakkeen vähimmäisleveys pikseleinä.
+|sortable|boolean|Jos arvo on true, sarake voidaan lajitella.|
+|sort|SortDirection|Lajittelujärjestys.|
+|type|ColumnType|Sarakkeen tyyppi (teksti, numero, totuusarvo jne.).|
+|minWidth|number|Sarakkeen vähimmäisleveys pikseleinä.|

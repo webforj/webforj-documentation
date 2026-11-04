@@ -6,7 +6,6 @@ description: Group collapsible panels with the Accordion and AccordionPanel comp
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-accordion" />
-<DocChip chip='name' label="dwc-accordion-panel" />
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="accordion" location="com/webforj/component/accordion/Accordion" top='true'/>
 
@@ -18,7 +17,7 @@ The `Accordion` component provides a vertically stacked set of collapsible panel
 Accordions work well for FAQs, settings pages, and step-by-step flows where revealing all content at once would create an overwhelming layout. If sections are equally important and users benefit from seeing them simultaneously, consider [tabs](/docs/components/tabbedpane) instead.
 :::
 
-## `AccordionPanel` {#accordion-panel}
+## `AccordionPanel` <DocChip chip='name' label="dwc-accordion-panel" /> {#accordion-panel}
 
 `AccordionPanel` is the core building block of the accordion system. Pass a label string to the constructor to set the header text, then add child components to populate the body. A panel works on its own without any surrounding `Accordion` group, making it a useful lightweight disclosure widget when you just need a single collapsible section. The no-argument constructor is also available when you prefer to configure the panel entirely after construction.
 

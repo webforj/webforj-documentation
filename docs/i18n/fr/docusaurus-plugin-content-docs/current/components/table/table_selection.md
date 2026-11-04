@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Selection
+title: Sélection
 slug: selection
 description: >-
   Configure single, multi, or no-selection modes on the Table and respond to row

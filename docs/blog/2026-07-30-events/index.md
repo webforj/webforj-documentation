@@ -6,7 +6,7 @@ date: 2026-07-28
 authors: Lauren Alamo
 tags: [events, components, front end]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-events/event-blog-cover.png"
-hide_table_of_contents: true
+hide_table_of_contents: false
 ---
 
 <!-- vale Google.FirstPerson = NO -->

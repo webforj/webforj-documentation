@@ -18,7 +18,7 @@ program
   .option(
     '--model [model]',
     'OpenAI Model which use for translation',
-    'gpt-4o-mini'
+    'gpt-6-luna'
   )
   .option(
     '--project [path]',
@@ -47,8 +47,8 @@ import path from 'path';
 // Function to load Vale accept.txt file dynamically
 function loadValeWhitelist(): string[] {
   try {
-    // Go up from docs/tools/i18n-translator to find .github
-    const valeAcceptPath = path.resolve(__dirname, '../../../../.github/.styles/config/vocabularies/webforj/accept.txt');
+    // Go up from docs/tools/i18n-translator to the repo root to find .github
+    const valeAcceptPath = path.resolve(__dirname, '../../../.github/.styles/config/vocabularies/webforj/accept.txt');
     
     if (fs.existsSync(valeAcceptPath)) {
       const content = fs.readFileSync(valeAcceptPath, 'utf-8');

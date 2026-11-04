@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Shadow Parts
+title: Shadow-Bereiche
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **Shadow Parts** bieten Entwicklern eine Möglichkeit, Elemente innerhalb des Shadow DOM eines Komponents von außen zu stylen, während die Kapselung erhalten bleibt.

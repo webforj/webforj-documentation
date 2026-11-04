@@ -1,165 +1,166 @@
 ---
-title: Probleemoplossing
+title: Problemen oplossen
 sidebar_position: 8
 description: >-
   What the messages of the BBjShip goals and the bbjship command line mean, and
   what to do about each, for setup, deploys, development runs, the command line
   and Windows.
-_i18n_hash: d9235c64dc2d56c5acc41e60b2a2f7df
+_i18n_hash: c517c84b00b3b7eb6bb9d485c528c4f7
 ---
-# Probleemoplossing <DocChip chip='since' label='26.03' /> {#troubleshooting}
+# Problemen oplossen <DocChip chip='since' label='26.03' /> {#troubleshooting}
 
-Deze pagina somt de berichten op die je kunt tegenkomen wanneer je BBjShip instelt, een app implementeert, een ontwikkelrun start of het `bbjship`-opdrachtregelprogramma gebruikt. Voor elk bericht geeft het de oorzaak en wat te doen.
+Op deze pagina staan de berichten die je kunt tegenkomen bij het instellen van BBjShip, het implementeren van een app, het starten van een ontwikkelrun of het gebruiken van de opdrachtregel `bbjship`. Bij elk bericht staat de oorzaak en wat je eraan kunt doen.
 
-Een mislukte Maven-doelstelling beëindigt de build met een kort bericht van de doelstelling, gevolgd door de reden. De reden is het deel dat deze pagina opsomt:
+Als een Maven-doel mislukt, wordt de build beëindigd met een kort bericht over het doel, gevolgd door de reden. Op deze pagina worden de redenen vermeld:
 
 ```text
-BBj implementatie mislukt. Controleer het applicatiepakket, afhankelijkheden en implementatie-instellingen: BBj-implementatie mislukt met HTTP 409. De invoerklasse com.example.Application is al gepubliceerd als inventaris. Ontdek de inventaris eerst
+BBj deployment failed. Check the application package, dependencies and deployment settings: BBj deployment failed with HTTP 409. Entry class com.example.Application is already published as inventory. Undeploy inventory first
 ```
 
 ## Referenties en verbinding {#credentials-and-connection}
 
-Deze berichten komen van elke doelstelling die met BBjShip communiceert: `bbj-setup`, `bbj-deploy`, `bbj-undeploy` en `watch`.
+Deze berichten komen voor bij elk doel dat verbinding maakt met BBjShip: `bbj-setup`, `bbj-deploy`, `bbj-undeploy` en `watch`.
 
 | Bericht | Oorzaak | Wat te doen |
 |---|---|---|
-| `Waarschuwing: het BBj-fabrieksbeheerderaccount admin wordt gebruikt met het bijbehorende fabriekswachtwoord...` | Noch een gebruikersnaam, noch een wachtwoord is geconfigureerd, waardoor de doelstelling inlogt als `admin` met `admin123`. | Wijzig het wachtwoord in de Enterprise Manager en configureer de nieuwe referenties, zie [Instellingen](/docs/configuration/bbjship/deploying#settings). |
-| `De BBj-beheerder gebruikersnaam ontbreekt`, `Het BBj-beheerder wachtwoord ontbreekt` | Slechts een van de gebruikersnaam of het wachtwoord is geconfigureerd. | Configureer beide, of gebruik geen van beiden om het fabrieksaccount te gebruiken. `bbj-deploy` en `bbj-undeploy` accepteren ook een token. |
-| `BBj-implementatie vereist bbj.deployment.url...` | Er is geen implementatie-URL geconfigureerd. | Stel `<bbj><deployment><url>` in of geef `-Dwebforj.bbj.deployment.url=<URL>` door. |
-| `BBj-implementatie-URL moet een HTTP- of HTTPS-URL zijn zonder referenties, query of fragment` | De URL heeft een andere indeling, of bevat een gebruikersnaam, een query of een fragment. | Gebruik `http://<host>:<port>/webforj-bbjship` of `https://<host>:<port>/webforj-bbjship`, en zet de referenties in `<admin>`. |
-| `Verbinding met ... mislukt: Verbinding geweigerd` | Er reageert niets op de host en poort van de implementatie-URL. | Start BBjServices, en controleer de host en poort van de URL met de webserver van BBjServices. |
-| `kon de BBjShip-versie op <URL> niet lezen, HTTP 404...` | De URL leidt niet naar BBjShip, of BBjShip is niet geïnstalleerd of de eindpunt is op die poort niet ingeschakeld. | Controleer het pad `/webforj-bbjship` en de poort. Voer op de BBj-machine `mvn webforj:bbj-setup` uit, of `bbjship remote enable` op een server. |
-| `mislukt met HTTP 401. Controleer de BBj-beheerdersreferenties of token` | BBjServices heeft de gebruikersnaam en het wachtwoord of de token geweigerd. | Controleer de referenties. Vernieuw een token dat verlopen is of ingetrokken in de Enterprise Manager. |
-| `BBjShip <versie> op <URL> komt niet overeen met webforJ <versie>...` | De geïnstalleerde BBjShip en de `webforj-maven-plugin` hebben verschillende versies. | Voer op je eigen machine `mvn webforj:bbj-setup -Dwebforj.bbj.force=true` uit. Op een server, installeer de overeenkomende BBjShip met de BBj Plugin Manager. |
-| `kon geen vertrouwde HTTPS-verbinding tot stand brengen met <URL>...` | Java vertrouwt het certificaat van de webserver van BBjServices niet. | Installeer een certificaat voor de hostnaam van de URL op de BBj-machine, of voeg het certificaat toe aan de Java truststore van de build. |
-| `BBj-implementatie-URL <URL> verzendt de beheerdersreferenties leesbaar over het netwerk...` | Een waarschuwing voor een `http://`-URL naar een andere machine. | Gebruik een `https://`-URL met de SSL-poort, zie [Implementeren vanaf een andere machine](/docs/configuration/bbjship/deploying#deploying-from-another-machine). |
+| `Warning: the BBj factory administrator account admin is in use with its factory password...` | Er is geen gebruikersnaam of wachtwoord ingesteld, dus het doel meldt zich aan als `admin` met `admin123`. | Wijzig het wachtwoord in Enterprise Manager en stel de nieuwe referenties in. Zie [Instellingen](/docs/configuration/bbjship/deploying#settings). |
+| `The BBj administration user name is missing`, `The BBj administration password is missing` | Alleen de gebruikersnaam of het wachtwoord is ingesteld. | Stel beide in, of geen van beide om het fabrieksaccount te gebruiken. `bbj-deploy` en `bbj-undeploy` accepteren ook een token. |
+| `BBj deployment requires bbj.deployment.url...` | Er is geen implementatie-URL ingesteld. | Stel `<bbj><deployment><url>` in of geef `-Dwebforj.bbj.deployment.url=<URL>` mee. |
+| `BBj deployment URL must be an HTTP or HTTPS URL without credentials, query or fragment` | De URL gebruikt een ander schema of bevat een gebruikersnaam, query of fragment. | Gebruik `http://<host>:<port>/webforj-bbjship` of `https://<host>:<port>/webforj-bbjship` en plaats de referenties in `<admin>`. |
+| `Connect to ... failed: Connection refused` | Er luistert niets op de host en poort van de implementatie-URL. | Start BBjServices en controleer of de host en poort van de URL overeenkomen met de webserver van BBjServices. |
+| `could not read the BBjShip version at <URL>, HTTP 404...` | De URL verwijst niet naar BBjShip, of BBjShip is niet geïnstalleerd of het eindpunt is op die poort niet ingeschakeld. | Controleer het pad `/webforj-bbjship` en de poort. Voer op de BBj-machine `mvn webforj:bbj-setup` uit, of voer op een server `bbjship remote enable` uit. |
+| `failed with HTTP 401. Check the BBj administration credentials or token` | BBjServices heeft de gebruikersnaam en het wachtwoord, of het token, geweigerd. | Controleer de referenties. Vernieuw een token dat in Enterprise Manager is verlopen of ingetrokken. |
+| `BBjShip <version> at <URL> does not match webforJ <version>...` | De geïnstalleerde BBjShip en de `webforj-maven-plugin` hebben verschillende versies. | Voer op je eigen machine `mvn webforj:bbj-setup -Dwebforj.bbj.force=true` uit. Installeer op een server de overeenkomende BBjShip-versie met BBj Plugin Manager. |
+| `could not establish a trusted HTTPS connection to <URL>...` | Java vertrouwt het certificaat van de BBjServices-webserver niet. | Installeer op de BBj-machine een certificaat voor de hostnaam van de URL, of voeg het certificaat toe aan de Java-truststore van de build. |
+| `BBj deployment URL <URL> sends the administration credentials over an unencrypted connection to another machine...` | De implementatie-URL is een `http://`-URL naar een andere machine. Het doel stopt voordat er iets wordt verzonden. Met `allowUnencrypted` wordt dezelfde tekst een waarschuwing en gaat het doel verder. | Gebruik een `https://`-URL met de SSL-poort, of sta HTTP aan beide kanten toe. Zie [Implementeren vanaf een andere machine](/docs/configuration/bbjship/deploying#deploying-from-another-machine). |
 
-## Configuratie {#setup}
+## Instellen {#setup}
 
-Deze berichten komen van `mvn webforj:bbj-setup` en van de eerste [ontwikkelrun](/docs/configuration/deploy-reload/bbjservices) van een project, dat BBjShip op dezelfde manier instelt.
+Deze berichten komen voor bij `mvn webforj:bbj-setup` en bij de eerste [ontwikkelrun](/docs/configuration/deploy-reload/bbjservices) van een project, die BBjShip op dezelfde manier instelt.
 
 | Bericht | Oorzaak | Wat te doen |
 |---|---|---|
-| `BBj-configuratie mislukt. Controleer het BBj-pluginartifact en de configuratie-instellingen` | De doelstelling is mislukt. De reden volgt daarop. Een reden over artifactresolutie betekent dat Maven `webforj-bbjship-plugin` niet kon downloaden in de versie van de `webforj-maven-plugin`. | Lees de reden. Voor artifactresolutie, controleer de repositories en de netwerktoegang van de build. |
-| `BBj-configuratie is alleen lokaal. Voer configuratie uit op de BBj-host` | De implementatie-URL wijst naar een andere machine. | Voer de configuratie uit op de BBj-machine, of installeer BBjShip daar met de [BBj Plugin Manager](/docs/configuration/bbjship/installing#through-the-bbj-plugin-manager). |
-| `BBj-configuratie kan de host van de implementatie-URL <host> niet resolven...` | De hostnaam van de implementatie-URL is onbekend. | Gebruik `localhost` of een naam van deze machine. |
-| `BBj-configuratie vereist het beheerderswachtwoord. Configureer in plaats daarvan bbj.admin.password` | Een ontwikkelrun heeft een token geconfigureerd. Ontwikkelruns loggen in met alleen een gebruikersnaam en wachtwoord. | Configureer `<admin><username>` en `<admin><password>`. |
-| `Kan een BBj-installatie niet detecteren. Configureer bbj.home of BBJ_HOME` | De doelstelling vond geen BBj-installatie op deze machine. | Stel `<bbj><home>`, `-Dwebforj.bbj.home` of de `BBJ_HOME`-variabele in op de map van de BBj-installatie. |
-| `Ongeldige BBj-home. Configureer een lokale BBj-installatie`, `BBj-uitvoerbare bestanden ontbreken of zijn niet uitvoerbaar. Controleer bbj.home` | De geconfigureerde map is geen volledige BBj-installatie. | Wijs de instelling naar de map die `bin` en `cfg` van BBj bevat. |
-| `Geadviseerde BBjShip-versie <versie> komt niet overeen met <versie>...` | Een andere versie BBjShip is geïnstalleerd, bijvoorbeeld na een upgrade van webforJ. | Voer `mvn webforj:bbj-setup -Dwebforj.bbj.force=true` uit. Geïmplementeerde apps blijven geïmplementeerd. |
-| `Geadviseerde BBjShip-versie ontbreekt...` | De geïnstalleerde BBjShip-map is onvolledig. | Voer `mvn webforj:bbj-setup -Dwebforj.bbj.force=true` uit. |
-| `De pluginmap is een symbolische link...`, `BBj-pluginbestemming mag geen symbolische links bevatten` | De `plugins`-map van BBj, of de BBjShip-map daarin, is een symbolische link of bevat er één. | Installeer in een reguliere map. |
-| `BBj-configuratieopdracht is mislukt. Controleer referenties en lokale BBjServices.` gevolgd door de uitvoer van de opdracht | De opdracht die het implementatie-eindpunt inschakelt is mislukt. De uitvoer noemt de reden, bijvoorbeeld een geweigerde login of een poort waarop de webserver niet luistert. | Controleer de referenties, dat BBjServices draait, en dat de poort van de implementatie-URL een poort van de BBjServices-webserver is. |
-| `BBj-configuratieopdracht liep vast. Controleer lokale BBjServices` | De opdracht voltooide niet binnen 120 seconden. | Controleer of BBjServices draait en reageert, voer dan de doelstelling opnieuw uit. |
-| `Vorige BBjShip-bestanden zijn bewaard in <map>` | Een vervangende poging is mislukt, en de bestanden van de vorige versie zijn in die map bewaard. | Los de reden van de mislukking op en voer de doelstelling opnieuw uit. |
+| `BBj setup failed. Check the BBj plugin artifact and setup settings` | Het doel is mislukt. De reden volgt op het bericht. Een reden over het oplossen van een artifact betekent dat Maven `webforj-bbjship-plugin` niet kon downloaden in de versie van de `webforj-maven-plugin`. | Lees de reden. Controleer bij problemen met het oplossen van artifacts de repositories en de netwerktoegang van de build. |
+| `BBj setup is local only. Run setup on the BBj host` | De implementatie-URL verwijst naar een andere machine. | Voer de setup uit op de BBj-machine, of installeer BBjShip daar met de [BBj Plugin Manager](/docs/configuration/bbjship/installing#through-the-bbj-plugin-manager). |
+| `BBj setup cannot resolve the deployment URL host <host>...` | De hostnaam van de implementatie-URL is onbekend. | Gebruik `localhost` of de naam van deze machine. |
+| `BBj setup requires the administration password. Configure bbj.admin.password instead of a token` | Er is een token ingesteld voor een ontwikkelrun. Ontwikkelruns melden zich alleen aan met een gebruikersnaam en wachtwoord. | Stel `<admin><username>` en `<admin><password>` in. |
+| `Cannot detect a BBj installation. Configure bbj.home or BBJ_HOME` | Het doel heeft geen BBj-installatie op deze machine gevonden. | Stel `<bbj><home>`, `-Dwebforj.bbj.home` of de variabele `BBJ_HOME` in op de map met de BBj-installatie. |
+| `Invalid BBj home. Configure a local BBj installation`, `BBj executable is missing or not executable. Check bbj.home` | De ingestelde map bevat geen volledige BBj-installatie. | Verwijs met de instelling naar de map met de mappen `bin` en `cfg` van BBj. |
+| `Installed BBjShip version <version> does not match <version>...` | Er is een andere BBjShip-versie geïnstalleerd, bijvoorbeeld na een upgrade van webforJ. | Voer `mvn webforj:bbj-setup -Dwebforj.bbj.force=true` uit. Geïmplementeerde apps blijven geïmplementeerd. |
+| `Installed BBjShip version is missing...` | De map van de geïnstalleerde BBjShip is onvolledig. | Voer `mvn webforj:bbj-setup -Dwebforj.bbj.force=true` uit. |
+| `The plugin directory is a symbolic link...`, `BBj plugin destination must not contain symbolic links` | De map `plugins` van BBj, of de BBjShip-map daarin, is een symbolische koppeling of bevat er een. | Installeer in een gewone map. |
+| `BBj setup command failed. Check credentials and local BBjServices.` gevolgd door de uitvoer van de opdracht | De opdracht om het implementatie-eindpunt in te schakelen is mislukt. De uitvoer vermeldt de oorzaak, bijvoorbeeld een geweigerde aanmelding of een poort waar de webserver niet op luistert. | Controleer de referenties, of BBjServices actief is en of de poort van de implementatie-URL een poort van de BBjServices-webserver is. |
+| `BBj setup command timed out. Check local BBjServices` | De opdracht is niet binnen 120 seconden voltooid. | Controleer of BBjServices actief is en reageert, en voer het doel daarna opnieuw uit. |
+| `Previous BBjShip files are preserved at <folder>` | Een vervanging is mislukt en de bestanden van de vorige versie zijn in die map bewaard. | Verhelp de oorzaak van de fout en voer het doel opnieuw uit. |
 
 ## Implementeren en verwijderen {#deploy-and-undeploy}
 
-### Voor de upload {#before-the-upload}
+### Vóór het uploaden {#before-the-upload}
 
-Deze berichten komen van `bbj-package`, `bbj-deploy` en `bbj-undeploy` voordat er iets naar BBjShip gaat.
+Deze berichten komen voor bij `bbj-package`, `bbj-deploy` en `bbj-undeploy`, voordat er iets bij BBjShip aankomt.
 
 | Bericht | Oorzaak | Wat te doen |
 |---|---|---|
-| `BBj-implementatie vereist jar-pakket, dit project is verpakt als <packaging>` | Het project is niet verpakt als een jar. | Stel `<packaging>jar</packaging>` in. |
-| `BBj-implementatie vereist het verpakte applicatiejar...` | De doelstelling is uitgevoerd zonder de `package`-fase in dezelfde build. | Voer `mvn install`, of `mvn package webforj:bbj-deploy` uit. |
-| `BBj-implementatie mag geen webforj-engine dragen, BBj is de engine...` | `webforj-engine` staat op de runtime classpath van de app. | Sluit het uit van de `webforj`-afhankelijkheid, zie [Zonder de install-plugin](/docs/configuration/bbjship/existing-projects#without-the-install-plugin). |
-| `BBj-implementatie vereist webforj-foundation op de runtime classpath` | De app heeft geen webforJ-afhankelijkheid tijdens runtime. | Voeg de `webforj`-afhankelijkheid toe in `compile`-scope. |
-| `BBj-implementatieafhankelijkheid is onopgelost...` | Een afhankelijkheid van de app heeft geen bestand. | Controleer of Maven elke afhankelijkheid van het project oplost. |
-| `Publicatienaam <naam> is ongeldig...` | De publicatienaam breekt de regels in [Publicatienamen](/docs/configuration/bbjship/deploying#publish-names). | Kies een andere `<publishName>`. |
-| `De publicatienaam <naam> is gereserveerd door BBjServices voor zijn eigen webpaden...` | BBjServices gebruikt die naam voor zijn eigen adressen. | Kies een andere `<publishName>`. |
-| `BBj-implementatie-archief kon niet worden geschreven...` | `bbj-package` kon `target/bbj/<publikatie naam>.zip` niet schrijven. De reden volgt. | Lees de reden. |
+| `BBj deployment requires jar packaging, this project is packaged as <packaging>` | Het project is niet verpakt als jar. | Stel `<packaging>jar</packaging>` in. |
+| `BBj deployment requires the packaged application jar...` | Het doel is uitgevoerd zonder de fase `package` in dezelfde build. | Voer `mvn install` of `mvn package webforj:bbj-deploy` uit. |
+| `BBj deployment must not carry webforj-engine, BBj is the engine...` | `webforj-engine` staat op het runtime-classpath van de app. | Sluit het uit van de `webforj`-dependency. Zie [Zonder de install-plugin](/docs/configuration/bbjship/existing-projects#without-the-install-plugin). |
+| `BBj deployment requires webforj-foundation on the runtime classpath` | De app heeft tijdens runtime geen webforJ-dependency. | Voeg de `webforj`-dependency toe met de scope `compile`. |
+| `BBj deployment dependency is unresolved...` | Een dependency van de app heeft geen bestand. | Controleer of Maven alle dependencies van het project kan oplossen. |
+| `Publish name <name> is invalid...` | De publicatienaam voldoet niet aan de regels in [Publicatienamen](/docs/configuration/bbjship/deploying#publish-names). | Kies een andere `<publishName>`. |
+| `The publish name <name> is reserved by BBjServices for its own web paths...` | BBjServices gebruikt die naam voor eigen adressen. | Kies een andere `<publishName>`. |
+| `BBj deployment archive could not be written...` | `bbj-package` kon `target/bbj/<publish name>.zip` niet schrijven. De reden volgt op het bericht. | Lees de reden. |
 
-### Reacties van BBjShip {#answers-of-bbjship}
+### Antwoorden van BBjShip {#answers-of-bbjship}
 
-Wanneer BBjShip een implementatie of een verwijdering weigert, begint het bericht met `BBj-implementatie mislukt met HTTP <status>` of `BBj-verwijdering mislukt met HTTP <status>`, gevolgd door de reden.
+Wanneer BBjShip een implementatie of verwijdering weigert, begint het bericht met `BBj deployment failed with HTTP <status>` of `BBj undeployment failed with HTTP <status>`, gevolgd door de reden.
 
 | Status | Reden | Oorzaak | Wat te doen |
 |---|---|---|---|
-| 400 | `Publicatienaam <naam> is ongeldig...` of `...is gereserveerd door BBjServices...` | De publicatienaam is geweigerd. | Kies een andere publicatienaam. |
-| 400 | `BBj-implementatie webforj.conf is ongeldig. <detail>` | De `webforj.conf` van de app kan niet worden gelezen, of een [app-instelling](/docs/configuration/bbjship/deploying#app-settings) heeft het verkeerde type. | Los het bestand op zoals het detail zegt. |
-| 400 | `De geüploade body is geen BBj-implementatie-archief...`, `Ongeldig BBj-implementatie-archiefitem: <item>` of een andere reden over het archief | Het archief is niet geschreven door de build-plugin, of is daarna gewijzigd. | Implementeer het archief dat de build schrijft, met dezelfde webforJ-versie als BBjShip. |
-| 401 | `Controleer de BBj-beheerderreferenties of token` | De login werd geweigerd. | Controleer de referenties of vernieuw de token. |
-| 403 | `Ontwikkelruns zijn niet ingeschakeld op deze BBj-machine. Voer bbjship development enable uit` | Een ontwikkelrun bereikte een machine waarontwikkelruns zijn uitgeschakeld. | Voer `bbjship development enable` uit op de BBj-machine. |
-| 404 | `Geen BBj-applicatie genaamd <naam> is geïmplementeerd door BBjShip. Controleer de publicatienaam` | Een verwijdering noemde een app die BBjShip niet heeft geïmplementeerd. | Controleer de publicatienaam met `bbjship apps list`. |
-| 409 | `Invoertype <klasse> is al gepubliceerd als <naam>. Verwijder <naam> eerst` | De invoerklasse van de app draait al onder een andere publicatienaam. | Verwijder de andere app, of implementeer onder zijn naam. |
-| 409 | `Gepubliceerde BBj-applicatie <naam> wordt niet beheerd door BBjShip...` | Een app die is geregistreerd in de Enterprise Manager gebruikt al die naam. | Kies een andere publicatienaam, of verwijder die app in de Enterprise Manager. |
-| 409 | `Gepubliceerde BBj-applicatie <ander> verschilt van <naam> alleen door lettergrootte...` | Een andere app gebruikt dezelfde naam met een andere lettergrootte. | Kies een andere publicatienaam. |
-| 409 | `<naam> is een ontwikkelrun. Stop eerst de watch` | Een ontwikkelrun van de app is actief. | Stop de watch met `Ctrl+C`, voer dan de implementatie uit. |
-| 409 | `<naam> is geïmplementeerd vanaf een archief. Verwijder het eerst` | Een ontwikkelrun gebruikt de naam van een geïmplementeerde app. | Verwijder de app, of stel een andere `<publishName>` in voor de ontwikkelrun. |
-| 413 | `BBj-implementatie-archief overschrijdt de toegestane grootte van 1 GiB` | Het archief is groter dan BBjShip accepteert. | Verwijder afhankelijkheden die de app niet nodig heeft tijdens runtime. |
-| 500 | `BBj-implementatie mislukt. Controleer de BBjServices-log` | BBjServices is mislukt bij het installeren of verwijderen van de app. | Lees de BBjServices-logs. |
+| 400 | `Publish name <name> is invalid...` of `...is reserved by BBjServices...` | De publicatienaam wordt geweigerd. | Kies een andere publicatienaam. |
+| 400 | `BBj deployment webforj.conf is invalid. <detail>` | `webforj.conf` van de app kan niet worden gelezen, of een [app-instelling](/docs/configuration/bbjship/deploying#app-settings) heeft het verkeerde type. | Herstel het bestand volgens de aanwijzingen in de details. |
+| 400 | `The uploaded body is not a BBj deployment archive...`, `Invalid BBj deployment archive entry: <entry>` of een andere reden over het archief | Het archief is niet gemaakt door de build-plugin, of is daarna gewijzigd. | Implementeer het archief dat de build maakt, met dezelfde webforJ-versie als BBjShip. |
+| 401 | `Check the BBj administration credentials or token` | De aanmelding is geweigerd. | Controleer de referenties of vernieuw het token. |
+| 403 | `BBjShip refuses the administration credentials over an unencrypted connection from another machine. Use the SSL port of the BBjServices web server` | Het verzoek kwam via HTTP van een andere machine. | Gebruik het HTTPS-adres van het eindpunt, of voer `bbjship remote enable --allow-unencrypted` uit op de BBj-machine. |
+| 403 | `Development runs are not enabled on this BBj machine. Run bbjship development enable` | Een ontwikkelrun heeft een machine bereikt waarop ontwikkelruns zijn uitgeschakeld. | Voer `bbjship development enable` uit op de BBj-machine. |
+| 404 | `No BBj application named <name> was deployed by BBjShip. Check the publish name` | Bij het verwijderen is een app opgegeven die niet door BBjShip is geïmplementeerd. | Controleer de publicatienaam met `bbjship apps list`. |
+| 409 | `Entry class <class> is already published as <name>. Undeploy <name> first` | De entry class van de app wordt al uitgevoerd onder een andere publicatienaam. | Verwijder de andere app, of implementeer met de naam ervan. |
+| 409 | `Published BBj application <name> is not owned by BBjShip...` | Een app die in Enterprise Manager is geregistreerd, gebruikt die naam al. | Kies een andere publicatienaam, of verwijder die app in Enterprise Manager. |
+| 409 | `Published BBj application <other> differs from <name> only by letter case...` | Een andere app gebruikt dezelfde naam, maar met andere hoofdletters en kleine letters. | Kies een andere publicatienaam. |
+| 409 | `<name> is a development run. Stop the watch first` | Er is een actieve ontwikkelrun van de app. | Stop de watch met `Ctrl+C` en implementeer daarna. |
+| 409 | `<name> is deployed from an archive. Undeploy it first` | Een ontwikkelrun gebruikt de naam van een geïmplementeerde app. | Verwijder de app, of stel voor de ontwikkelrun een andere `<publishName>` in. |
+| 413 | `BBj deployment archive exceeds the allowed size of 1 GiB` | Het archief is groter dan BBjShip accepteert. | Verwijder dependencies die de app tijdens runtime niet nodig heeft. |
+| 500 | `BBj deployment failed. Check the BBjServices log` | BBjServices is mislukt tijdens het installeren of verwijderen van de app. | Lees de BBjServices-logboeken. |
 
-Een implementatie die eindigt met `heeft de gevraagde applicatie niet bevestigd. Controleer de BBjShip-versie en de BBjServices-log` bereikte BBjShip maar kreeg geen bevestiging voor de app. Controleer of BBjShip en de `webforj-maven-plugin` dezelfde versie hebben, lees dan de BBjServices-log.
+Een implementatie die eindigt met `did not confirm the requested application. Check the BBjShip version and BBjServices log` heeft BBjShip bereikt, maar kreeg geen bevestiging voor de app. Controleer of BBjShip en de `webforj-maven-plugin` dezelfde versie hebben en lees daarna het BBjServices-logboek.
 
-### De draaiende app {#the-running-app}
+### De actieve app {#the-running-app}
 
 | Bericht | Oorzaak | Wat te doen |
 |---|---|---|
-| `Het protocol voor pictogrammen vereist webforj.assetsSource = verpakt wanneer het draait met BBj Services` | De app gebruikt `icons://` zonder verpakte middelen. | Voeg `webforj.assetsSource = verpakt` toe aan `webforj.conf` en implementeer opnieuw. |
+| `Icons protocol requires webforj.assetsSource = packaged when running with BBj Services` | De app gebruikt `icons://` zonder gepackagede assets. | Voeg `webforj.assetsSource = packaged` toe aan `webforj.conf` en implementeer opnieuw. |
 
 ## Ontwikkelruns {#development-runs}
 
-Deze berichten komen van `mvn` of `mvn compile webforj:watch` in een project dat is geconfigureerd voor BBjShip. Een mislukte ontwikkelrun begint met `BBj ontwikkelrun mislukt. Controleer de implementatie-instellingen en dat ontwikkelruns zijn ingeschakeld op de BBj-machine`, gevolgd door de reden uit [Configuratie](#setup), [Referenties en verbinding](#credentials-and-connection), of [Reacties van BBjShip](#answers-of-bbjship).
+Deze berichten komen voor bij `mvn` of `mvn compile webforj:watch` in een project dat is ingesteld voor BBjShip. Een mislukte ontwikkelrun begint met `BBj development run failed. Check the deployment settings and that development runs are enabled on the BBj machine`, gevolgd door de reden uit [Instellen](#setup), [Referenties en verbinding](#credentials-and-connection) of [Antwoorden van BBjShip](#answers-of-bbjship).
 
 | Bericht | Oorzaak | Wat te doen |
 |---|---|---|
-| `De klassenmap <map> bestaat niet. Voer compile uit voordat webforj:watch` | De watch is gestart voordat het project was gecompileerd. | Voer `mvn compile webforj:watch`, of `mvn` in een archetype-project uit. |
-| `BBj ontwikkelklassenmap moet een absolute map zijn op de BBj-machine` | `<development><classFolder>` verwijst naar een map die BBjServices niet kan vinden. | Stel het absolute pad van de klassenmap in op de BBj-machine. |
-| `BBjServices-eigenschappenbestand niet gevonden op <bestand>. Configureer bbj.properties` | Het BBjServices-eigenschappenbestand bevindt zich niet waar de run ernaar zoekt. | Stel `<bbj><properties>` of `-Dwebforj.bbj.properties` in op het bestand. |
-| `BBjServices stopte niet binnen 180 seconden` | De run vroeg BBjServices om te stoppen om de hotswap-instellingen toe te passen, en het bleef draaien. | Stop BBjServices zelf, start het opnieuw op, en voer de watch opnieuw uit. |
-| `BBjServices startprogramma ontbreekt: <programma>` | De BBj-installatie heeft geen programma om BBjServices te starten. | Start BBjServices zelf en voer de watch opnieuw uit. |
-| `BBjServices startte niet. Het programma eindigde met exitcode <code>`, `BBjServices startte niet binnen 120 seconden` | BBjServices is niet teruggekomen na de herstart. | Start BBjServices zelf, en voer de watch opnieuw uit. |
-| `BBjShip reageerde niet binnen 120 seconden` | BBjServices is gestart, maar het implementatie-eindpunt reageerde niet. | Controleer de BBjServices-log, en voer de watch opnieuw uit. |
-| `BBjServices herstartte zonder de hotswap-instellingen. Controleer <bestand>` | BBjServices startte met Java-argumenten anders dan die zijn geschreven in het eigenschappenbestand. | Controleer de Java-instellingen van BBjServices in de Enterprise Manager en in dat bestand. |
-| `webforJ watch: ontwikkelrun van <naam> is niet gestopt. <reden>` | De app kon niet worden verwijderd toen de build stopte. | Verwijder het met `bbjship apps undeploy <naam>`, of start de watch opnieuw, wat het vervangt. |
+| `The class folder <folder> does not exist. Run compile before webforj:watch` | De watch is gestart voordat het project was gecompileerd. | Voer `mvn compile webforj:watch` uit, of voer `mvn` uit in een archetypeproject. |
+| `BBj development class folder must be an absolute directory on the BBj machine` | `<development><classFolder>` verwijst naar een map die BBjServices niet kan vinden. | Stel het absolute pad in van de class-map op de BBj-machine. |
+| `BBjServices properties file not found at <file>. Configure bbj.properties` | Het BBjServices-propertiesbestand staat niet op de locatie waar de run het zoekt. | Stel `<bbj><properties>` of `-Dwebforj.bbj.properties` in op het bestand. |
+| `BBjServices did not stop within 180 seconds` | De run heeft BBjServices gevraagd te stoppen om de hotswap-instellingen toe te passen, maar BBjServices bleef actief. | Stop BBjServices zelf, start het opnieuw en voer de watch opnieuw uit. |
+| `BBjServices start program is missing: <program>` | De BBj-installatie heeft geen programma om BBjServices te starten. | Start BBjServices zelf en voer de watch opnieuw uit. |
+| `BBjServices did not start. The program ended with exit code <code>`, `BBjServices did not start within 120 seconds` | BBjServices is na het opnieuw starten niet teruggekomen. | Start BBjServices zelf en voer de watch opnieuw uit. |
+| `BBjShip did not answer within 120 seconds` | BBjServices is gestart, maar het implementatie-eindpunt reageerde niet. | Controleer het BBjServices-logboek en voer daarna de watch opnieuw uit. |
+| `BBjServices restarted without the hotswap settings. Check <file>` | BBjServices is gestart met andere Java-argumenten dan de argumenten die naar het propertiesbestand zijn geschreven. | Controleer de Java-instellingen van BBjServices in Enterprise Manager en in dat bestand. |
+| `webforJ watch: development run of <name> was not stopped. <reason>` | De app kon niet worden verwijderd toen de build stopte. | Verwijder de app met `bbjship apps undeploy <name>`, of start de watch opnieuw; die vervangt de app. |
 
-De eerste ontwikkelrun die de hotswap-instellingen toevoegt herstart BBjServices. Het start BBjServices met `bin/bbjservices` op macOS en Linux. Op Windows start het de `BBjServices` Windows-service wanneer deze is geregistreerd, en draait `bin\BBjServices.exe -noservice` anders. Een BBjServices gestart door `bin/bbjservices` of `-noservice` draait buiten de servicebeheerder van het besturingssysteem totdat de machine opnieuw opstart.
+De eerste ontwikkelrun die de hotswap-instellingen toevoegt, start BBjServices opnieuw. Op macOS en Linux start de run BBjServices met `bin/bbjservices`. Op Windows start de run de Windows-service `BBjServices` als die is geregistreerd; anders wordt `bin\BBjServices.exe -noservice` uitgevoerd. BBjServices die is gestart met `bin/bbjservices` of `-noservice` draait buiten de servicemanager van het besturingssysteem totdat de machine opnieuw wordt opgestart.
 
 ## Opdrachtregel {#command-line}
 
-Elke `bbjship` opdracht draait binnen BBjServices, dus BBjServices moet draaien. Zonder dat kan de opdracht niet starten.
+Elke opdracht `bbjship` wordt uitgevoerd in BBjServices, dus BBjServices moet actief zijn. Zonder BBjServices kan de opdracht niet starten.
 
-Ongeldige argumenten eindigen met exitcode `2` en een bericht dat vermeldt wat je moet specificeren:
+Ongeldige argumenten leiden tot afsluitcode `2` en een bericht waarin staat wat je moet opgeven:
 
 | Bericht | Wat te doen |
 |---|---|
-| `Specificeer een opdracht. Gebruik --help voor beschikbare opdrachten`, `Onbekende opdracht <opdracht>...` | Geef een opdracht op, zie [Opdrachtregel](/docs/configuration/bbjship/command-line). |
-| `Onbekende optie <optie>...`, `Optie <optie> is niet beschikbaar voor <opdracht>...` | Gebruik een optie van die opdracht, zoals `--help` ze opsomt. |
-| `Specificeer een gebruikersnaam na --username`, `Specificeer een wachtwoord na --password`, `Specificeer een poort na --port` | Geef de optie een waarde. |
-| `Specificeer --port van 1 tot 65535`, `Specificeer --ssl-port van 1 tot 65535` | Geef een poortnummer op. |
-| `Specificeer <optie> maar één keer` | Verwijder de herhaalde optie. |
-| `Specificeer slechts één van --password en --password-stdin` | Houd een van de twee. |
-| `Het BBj-beheerderwachtwoord ontbreekt. Specificeer --username en --password <waarde> of --password-stdin, of stel WEBFORJ_BBJ_USERNAME en WEBFORJ_BBJ_PASSWORD in` | Geef de gebruikersnaam en het wachtwoord samen op. Het bericht vermeldt degene die ontbreekt. |
-| `Specificeer een applicatienaam of --all`, `Specificeer één applicatienaam` | Geef `apps undeploy` één publicatienaam, of `--all`. |
-| `Specificeer het pad van een implementatie-archief dat eindigt op .zip`, `Specificeer één implementatie-archief` | Geef `apps deploy` één `.zip` bestand op. |
-| `Implementatie-archief <pad> bestaat niet`, `Implementatie-archief <pad> kan niet worden gelezen` | Controleer het pad. BBjServices leest het bestand, dus de besturingssysteemgebruiker van BBjServices heeft leesrechten ervoor nodig. |
-| `Ontwikkelarchieven worden geïmplementeerd door de watch, niet door apps deploy` | Implementeer het archief van `bbj-package`, niet dat van een ontwikkelrun. |
-| `Publicatienaam <naam> is ongeldig...`, `De publicatienaam <naam> is gereserveerd...` | Hernoem het archief. De bestandsnaam zonder `.zip` is de publicatienaam. |
+| `Specify a command. Use --help for available commands`, `Unknown command <command>...` | Geef een opdracht op. Zie [Opdrachtregel](/docs/configuration/bbjship/command-line). |
+| `Unknown option <option>...`, `Option <option> is not available for <command>...` | Gebruik een optie voor die opdracht, zoals vermeld bij `--help`. |
+| `Specify a user name after --username`, `Specify a password after --password`, `Specify a port after --port` | Geef een waarde op voor de optie. |
+| `Specify --port from 1 to 65535`, `Specify --ssl-port from 1 to 65535` | Geef een poortnummer op. |
+| `Specify <option> only once` | Verwijder de herhaalde optie. |
+| `Specify only one of --password and --password-stdin` | Gebruik één van de twee opties. |
+| `The BBj administration password is missing. Specify --username and --password <value> or --password-stdin, or set WEBFORJ_BBJ_USERNAME and WEBFORJ_BBJ_PASSWORD` | Geef zowel de gebruikersnaam als het wachtwoord op. Het bericht vermeldt welke ontbreekt. |
+| `Specify an application name or --all`, `Specify one application name` | Geef bij `apps undeploy` één publicatienaam of `--all` op. |
+| `Specify the path of a deployment archive ending in .zip`, `Specify one deployment archive` | Geef bij `apps deploy` één `.zip`-bestand op. |
+| `Deployment archive <path> does not exist`, `Deployment archive <path> cannot be read` | Controleer het pad. BBjServices leest het bestand, dus de besturingssysteemgebruiker van BBjServices moet er leestoegang toe hebben. |
+| `Development archives are deployed by the watch, not by apps deploy` | Implementeer het archief van `bbj-package`, niet het archief van een ontwikkelrun. |
+| `Publish name <name> is invalid...`, `The publish name <name> is reserved...` | Geef het archief een andere naam. De bestandsnaam zonder `.zip` is de publicatienaam. |
 
-Een opdracht die mislukt eindigt met exitcode `1` en `Opdracht mislukt.` gevolgd door de reden:
+Een mislukte opdracht eindigt met afsluitcode `1` en `Command failed.`, gevolgd door de reden:
 
 | Reden | Oorzaak | Wat te doen |
 |---|---|---|
-| Een inlogfout van BBjServices | De gebruikersnaam of het wachtwoord is onjuist. | Controleer de referenties. |
-| `De BBjServices-webserver beantwoordt niet op poort <poort>. Gebruik de HTTP-poort van de BBjServices-webserver` | `--port` of `--ssl-port` is geen poort waarop de BBjServices-webserver luistert. De vorige eindpunt blijft. | Gebruik de poorten die zijn geconfigureerd voor de webserver in de Enterprise Manager. |
-| `Applicatie <naam> is niet geïmplementeerd door BBjShip` | `apps undeploy` noemde een app die BBjShip niet heeft geïmplementeerd. | Controleer de naam met `bbjship apps list`. |
-| `Een andere implementatie is in uitvoering` | Een andere implementatie of verwijdering heeft de machine 30 seconden in beslag genomen. | Wacht tot deze is voltooid, voer vervolgens de opdracht opnieuw uit. |
-| `De BBjShip-context behoort tot een andere applicatie`, `De middelencontext behoort tot een andere applicatie` | Een andere app in de Enterprise Manager gebruikt de webcontext `webforj-bbjship` of `webforj-bbjship-assets`. | Hernoem of verwijder die context in de Enterprise Manager. |
-| `Het BBjShip-opdrachtclasspad behoort tot een andere applicatie`, `Het basisclasspad van BBjShip bevat een niet-beheerde bibliotheek` | De classpaths `_webforj_bbjship_cli` of `_webforj_bbjship` in de Enterprise Manager zijn gewijzigd. | Verwijder beide classpaths in de Enterprise Manager en voer de opdracht opnieuw uit, wat ze opnieuw aanmaakt. |
-| `De BBjShip-servlet ontbreekt. Controleer de plugininstallatie`, `De BBjShip-bibliotheek ontbreekt. Controleer de plugininstallatie` | De BBjShip-map is onvolledig. | Installeer BBjShip opnieuw. |
-| `BBjServices beheert geen webcontexts. Update BBj` | De BBj-versie is te oud voor BBjShip. | Installeer de BBj-versie die overeenkomt met webforJ. |
+| Een mislukte aanmelding bij BBjServices | De gebruikersnaam of het wachtwoord is onjuist. | Controleer de referenties. |
+| `The BBjServices web server does not answer on port <port>. Use the HTTP port of the BBjServices web server` | `--port` of `--ssl-port` is geen poort waarop de BBjServices-webserver luistert. Het vorige eindpunt blijft actief. | Gebruik de poorten die voor de webserver zijn ingesteld in Enterprise Manager. |
+| `Application <name> is not deployed by BBjShip` | Bij `apps undeploy` is een app opgegeven die niet door BBjShip is geïmplementeerd. | Controleer de naam met `bbjship apps list`. |
+| `Another deployment is in progress` | Een andere implementatie of verwijdering hield de machine 30 seconden bezet. | Wacht tot die is voltooid en voer de opdracht daarna opnieuw uit. |
+| `The BBjShip context belongs to another application`, `The assets context belongs to another application` | Een andere app in Enterprise Manager gebruikt de webcontext `webforj-bbjship` of `webforj-bbjship-assets`. | Geef die context in Enterprise Manager een andere naam of verwijder hem. |
+| `The BBjShip command classpath belongs to another application`, `The BBjShip base classpath contains an unowned library` | De classpaths `_webforj_bbjship_cli` of `_webforj_bbjship` in Enterprise Manager zijn gewijzigd. | Verwijder beide classpaths in Enterprise Manager en voer de opdracht opnieuw uit; de classpaths worden dan opnieuw aangemaakt. |
+| `The BBjShip servlet is missing. Check the plugin installation`, `The BBjShip library is missing. Check the plugin installation` | De BBjShip-map is onvolledig. | Installeer BBjShip opnieuw. |
+| `BBjServices does not manage web contexts. Update BBj` | De BBj-versie is te oud voor BBjShip. | Installeer de BBj-versie die overeenkomt met webforJ. |
 
-`reset` eindigt met exitcode `1` en `Reset geannuleerd` wanneer het antwoord op `Doorgaan? [y/N]` niet `y` of `Y` is. Wanneer het de Java-instellingen van BBjServices heeft hersteld, eindigt het met `Herstart BBjServices nu om de herstelde Java-instellingen toe te passen`. Herstart BBjServices om het zonder de hotswap-instellingen uit te voeren.
+`reset` eindigt met afsluitcode `1` en `Reset cancelled` wanneer het antwoord op `Continue? [y/N]` niet `y` of `Y` is. Als de Java-instellingen van BBjServices zijn hersteld, eindigt de opdracht met `Restart BBjServices now to apply the restored Java settings`. Start BBjServices opnieuw om het zonder de hotswap-instellingen uit te voeren.
 
 ## Windows {#windows}
 
 | Situatie | Wat te doen |
 |---|---|
-| Het uitvoeren van `bbj.exe` met het BBjShip-programma geeft niets weer. | Voer `bbjship.cmd` uit in `<BBj home>\plugins\webforj-bbjship`, dat toont de uitvoer van de opdracht. |
-| `--password-stdin` eindigt met exitcode `2` en `Standaardinvoer is niet beschikbaar op Windows. Gebruik --password <waarde> of WEBFORJ_BBJ_PASSWORD`. | Geef het wachtwoord door met `--password`, of stel `WEBFORJ_BBJ_USERNAME` en `WEBFORJ_BBJ_PASSWORD` in. |
-| `reset` eindigt met exitcode `2` en `Standaardinvoer is niet beschikbaar op Windows. Voer reset --yes uit om te bevestigen`. | Voer `bbjship.cmd reset --yes` uit. |
-| `apps undeploy` of `reset` geeft `Niet verwijderd: <map>. <reden>` weer en eindigt met exitcode `0`. | BBjServices houdt nog steeds bestanden van de app open. De app is verwijderd uit Enterprise Manager. Herstart BBjServices. De map verdwijnt met de volgende implementatie van die naam, of verwijder deze na de herstart. |
-| Het installeren van BBjShip bovenop een geïnstalleerde versie mislukt omdat de bestanden in gebruik zijn. | BBjServices houdt nog steeds de bestanden van de geïnstalleerde BBjShip open. Herstart BBjServices, installeer dan opnieuw. |
-| BBjServices draait niet als een Windows-service nadat een ontwikkelrun het opnieuw heeft gestart. | De ontwikkelrun startte het met `BBjServices.exe -noservice` omdat er geen `BBjServices`-service is geregistreerd. Het draait buiten de Windows-servicebeheerder totdat de machine opnieuw opstart. |
-| Een `bbjship.cmd`-opdracht kan niet starten. | Start BBjServices. Elke `bbjship`-opdracht heeft deze nodig om te draaien. |
+| Als je `bbj.exe` uitvoert met het BBjShip-programma, wordt er niets weergegeven. | Voer `bbjship.cmd` uit in `<BBj home>\plugins\webforj-bbjship`. Daarmee wordt de uitvoer van de opdracht weergegeven. |
+| `--password-stdin` eindigt met afsluitcode `2` en `Standard input is not available on Windows. Use --password <value> or WEBFORJ_BBJ_PASSWORD`. | Geef het wachtwoord op met `--password`, of stel `WEBFORJ_BBJ_USERNAME` en `WEBFORJ_BBJ_PASSWORD` in. |
+| `reset` eindigt met afsluitcode `2` en `Standard input is not available on Windows. Run reset --yes to confirm`. | Voer `bbjship.cmd reset --yes` uit. |
+| `apps undeploy` of `reset` geeft `Not removed: <folder>. <reason>` weer en eindigt met afsluitcode `0`. | BBjServices heeft de bestanden van de app nog in gebruik. De app is verwijderd uit Enterprise Manager. Start BBjServices opnieuw. De map wordt verwijderd bij de volgende implementatie met die naam, of je kunt de map na het opnieuw starten verwijderen. |
+| De installatie van BBjShip over een bestaande versie mislukt omdat de bestanden in gebruik zijn. | BBjServices heeft de bestanden van de geïnstalleerde BBjShip nog in gebruik. Start BBjServices opnieuw en installeer daarna opnieuw. |
+| BBjServices draait niet als Windows-service nadat een ontwikkelrun het opnieuw heeft gestart. | De ontwikkelrun heeft BBjServices gestart met `BBjServices.exe -noservice`, omdat er geen `BBjServices`-service is geregistreerd. BBjServices draait buiten de Windows-servicemanager totdat de machine opnieuw wordt opgestart. |
+| Een opdracht `bbjship.cmd` kan niet starten. | Start BBjServices. Elke opdracht `bbjship` vereist dat BBjServices actief is. |

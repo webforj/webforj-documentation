@@ -18,7 +18,7 @@ This component can be instantiated with or without parameters. You can define an
 ```java
 MaskedTextField field = new MaskedTextField("Account ID");
 field.setMask("ZZZZ-0000")
-  .setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025")
+  .setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025");
 ```
 
 ## Mask rules {#mask-rules}
@@ -51,7 +51,7 @@ For example, a mask like `XX@XX` requires the user to enter an `@` in the middle
 
 ```java
 field.setMask("(000) 000-0000");     // Example: (123) 456-7890
-field.setMask("A00 000");            // Example: A1B 2C3 (Canadian postal code)
+field.setMask("A0A 0A0");            // Example: A1B 2C3 (Canadian postal code)
 field.setMask("ZZZZ-0000");          // Example: ABCD-1234
 field.setMask("0000-0000-0000-0000");// Example: 1234-5678-9012-3456
 ```
@@ -103,7 +103,7 @@ field.restoreValue();
 - **Programmatically**, by calling `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
 
-You can set the value to restore with `setRestoreValue()`. If no restore value is set, the field will revert to the initial value at the time it was rendered.
+You can set the value to restore with `setRestoreValue()`. If no restore value is set, both `restoreValue()` and <kbd>ESC</kbd> set the field value to `null`.
 
 <ComponentDemo
 path='/webforj/maskedtextfieldrestore'

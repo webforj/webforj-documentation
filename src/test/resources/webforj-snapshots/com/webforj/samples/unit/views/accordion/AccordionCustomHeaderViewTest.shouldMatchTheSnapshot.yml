@@ -1,0 +1,12 @@
+# webforJ testbed snapshot v1
+- AccordionCustomHeaderView [route=accordioncustomheader] [composite=FlexLayout] [node=div]:
+  - AccordionPanel [composite=Element] [node=dwc-accordion-panel]:
+    - FlexLayout [slot=header] [composite=Element] [node=div]:
+      - Icon [name=settings] [composite=Element] [node=dwc-icon]
+      - Span "Custom Header with Icon" [composite=Element] [node=span]
+    - Paragraph "The header slot lets you fully customize the header content." [composite=Element] [node=p]
+  - AccordionPanel [composite=Element] [node=dwc-accordion-panel]:
+    - FlexLayout [slot=header] [composite=Element] [node=div]:
+      - Icon [name=user] [composite=Element] [node=dwc-icon]
+      - Span "User Settings" [composite=Element] [node=span]
+    - Paragraph "Another panel with a custom header using the user icon." [composite=Element] [node=p]

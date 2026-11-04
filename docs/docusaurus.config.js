@@ -1,5 +1,7 @@
 // @ts-check
 const codeTheme = require('./src/theme/prism-dwc-theme');
+const { addRelatedPosts } = require('./config/blog-related-posts');
+const megaMenus = require('./config/navbar-menus');
 
 /** Resolves the webforJ version, fetching from GitHub if the build version is a SNAPSHOT. */
 async function resolveWebforjVersion() {
@@ -131,10 +133,26 @@ module.exports = async function createConfig() {
             'https://github.com/webforj/webforj-documentation/tree/main/docs/',
         },
         blog: {
-          postsPerPage: 12
+          postsPerPage: 12,
+          // each post carries up to three related posts (config/blog-related-posts.js)
+          processBlogPosts: addRelatedPosts,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
+        },
+        sitemap: {
+          lastmod: 'date',
+          // tag, author and pagination listings duplicate post content
+          ignorePatterns: [
+            '/blog/tags/**',
+            '/blog/authors/**',
+            '/blog/page/**',
+            '/cookbook/tags/**',
+            '/*/blog/tags/**',
+            '/*/blog/authors/**',
+            '/*/blog/page/**',
+            '/*/cookbook/tags/**',
+          ],
         },
         gtag: {
           trackingID: 'G-47SBJTFG20',
@@ -148,6 +166,8 @@ module.exports = async function createConfig() {
   ],
   plugins: [
     'docusaurus-plugin-sass',
+    // videos and latest posts for the "Explore" card in the docs sidebar
+    require.resolve('./plugins/explore'),
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -178,6 +198,10 @@ module.exports = async function createConfig() {
       {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
+          {
+            from: '/blog/authors/webfor-j',
+            to: '/blog/authors/webforj',
+          },
           {
             from: '/docs/integrations/ai-tooling',
             to: '/docs/ai-tooling',
@@ -272,8 +296,8 @@ module.exports = async function createConfig() {
       logo: {
         alt: 'webforJ Logo',
         src: 'img/webforj.svg',
-        href: 'https://webforj.com/',
-        target: '_self'
+        // the docs home page
+        href: '/',
       },
       items: [
         {
@@ -284,90 +308,18 @@ module.exports = async function createConfig() {
           id: 'webforj-version-badge',
           title: 'Latest webforJ release'
         },
-        {
-          position: 'left',
-          label: 'Getting Started',
-          to: '/docs/introduction/getting-started',
-          activeBasePath: '/docs/introduction/getting-started'
-        },
-        {
-          position: 'left',
-          label: 'Components',
-          to: '/docs/components/overview',
-          activeBasePath: '/docs/components'
-        },
-        {
-          position: 'left',
-          label: 'craftforJ',
-          to: '/docs/craftforj',
-          activeBasePath: '/docs/craftforj',
-        },
+        // the mega menus, defined in config/navbar-menus.js
+        ...megaMenus,
         {
           type: 'search',
           position: 'right',
         },
         {
-          label: 'Community',
+          // always visible, so readers can reach the team from any page
+          label: 'Contact us',
+          href: 'https://webforj.com/schedule-discovery/',
           position: 'right',
-          items: [
-            {
-              label: "Events",
-              href: 'https://webforj.com/events/',
-              target: '_blank',
-              rel: null,
-            },
-            {
-              to: 'blog',
-              label: 'Blog'
-            },
-            {
-              label: "Report Issue",
-              href: 'https://github.com/webforj/webforj/issues/new/choose',
-              target: '_blank',
-              rel: null,
-            },
-            {
-              label: "Contact us",
-              href: 'https://webforj.com/schedule-discovery/',
-              target: '_blank',
-              rel: null,
-            }
-          ]
-        },
-        {
-          label: 'Developers',
-          position: 'right',
-          items: [
-            {
-              label: 'Cookbook',
-              to: '/cookbook',
-              activeBasePath: '/cookbook',
-            },
-            {
-              label: "JavaDocs",
-              href: 'https://javadoc.io/doc/com.webforj',
-              rel: null,
-            },
-            {
-              label: "Client Components",
-              to: '/docs/client-components/overview',
-              activeBasePath: 'docs/client-components/overview'
-            },
-            {
-              label: "DWC Design Kit",
-              href: 'https://www.figma.com/community/file/1682060886525639971/dwc-design-kit',
-              rel: null,
-            },
-            {
-              label: "Contribution Guide",
-              href: 'https://github.com/webforj/webforj/blob/main/CONTRIBUTING.md',
-              rel: null,
-            },
-            {
-              label: "Built with webforJ",
-              href: 'https://github.com/webforj/built-with-webforj',
-            },
-          ]
+          className: 'navbar-plain-link',
         },
         {
           position: 'right',
@@ -386,32 +338,18 @@ module.exports = async function createConfig() {
           position: 'right',
           className: 'localeDropdown',
         },
-        {
-          href: 'https://github.com/webforj',
-          position: 'right',
-          className: "header-github-link"
-        },
       ],
     },
     docs: {
       sidebar: {
-        hideable: false,
+        hideable: true,
         autoCollapseCategories: false
       }
-    },
-    footer: {
-      links: [
-        {
-          html: `
-                <p>Copyright © <script>document.write(/\d{4}/.exec(Date())[0])</script> <a href='https://basis.cloud/contact/'> BASIS International Ltd.</a> All rights reserved.</p>
-                `
-        }
-      ],
     },
     prism: {
       theme: codeTheme,
       darkTheme: codeTheme,
-      additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy', 'scss', 'javascript', 'ruby']
+      additionalLanguages: ['java', 'Ini', 'bash', 'powershell', 'groovy', 'scss', 'javascript', 'ruby', 'diff']
     },
   }
 };

@@ -5,7 +5,7 @@ hide_giscus_comments: true
 description: >-
   Style webforJ apps with the DWC design system using CSS custom properties,
   palettes, shadow parts, and the Figma kit.
-_i18n_hash: bacf450dadef59e4496e78d465a1e44d
+_i18n_hash: 18caef78e838347a9b6376fb635573d9
 ---
 <Head>
   <style>{`
@@ -20,27 +20,28 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ se envía con un sistema de diseño integral llamado **DWC**. Es más que solo un tema, es un sistema estructurado y extensible que gobierna el lenguaje visual de tu aplicación. DWC está construido para ayudar a desarrolladores y diseñadores a crear interfaces consistentes y alineadas con la marca de manera rápida y confiada.
+webforJ incluye un completo sistema de diseño llamado **DWC**. Es mucho más que un tema: es un sistema estructurado y extensible que define el lenguaje visual de tu aplicación. DWC está diseñado para ayudar a desarrolladores y diseñadores a crear interfaces coherentes y alineadas con la marca de forma rápida y segura.
 
-En su núcleo, DWC proporciona un conjunto de variables CSS cuidadosamente diseñadas (tokens de diseño) que cubren elementos visuales clave como colores, tipografía, bordes y espaciado. Estos tokens sirven como los bloques de construcción fundamentales para todos los estilos de componentes y permiten una personalización global con un esfuerzo mínimo.
+En esencia, DWC proporciona un conjunto de variables CSS (tokens de diseño) cuidadosamente diseñadas que abarcan elementos visuales clave, como colores, tipografía, bordes y espaciado. Estos tokens son los componentes básicos de todos los estilos de los componentes y permiten personalizar el conjunto con un mínimo esfuerzo.
 
-Para soportar un estilo más avanzado, webforJ utiliza CSS Shadow Parts, permitiendo que los internals de los componentes sean estilizados selectivamente sin romper la encapsulación. Esto proporciona a los equipos un control detallado sobre cómo aparecen los componentes, incluso en aplicaciones más grandes.
+Para facilitar estilos más avanzados, webforJ usa CSS Shadow Parts, que permiten aplicar estilos selectivamente a los elementos internos de los componentes sin romper el encapsulamiento. Así, los equipos pueden controlar con precisión la apariencia de los componentes, incluso en aplicaciones de gran tamaño.
 
-DWC también incluye una paleta de colores personalizable y por defecto tiene un tema visual limpio y claro, pero cada aspecto puede ser adaptado al estilo de tu marca o producto.
+DWC también incluye una paleta de colores personalizable y, de forma predeterminada, un tema visual claro y sencillo, pero todos sus aspectos se pueden adaptar a la marca o al estilo de tu producto.
 
 <AISkillTip skill="webforj-styling-apps" />
 
 ## Kit de diseño de Figma {#figma-design-kit}
 
-El [Kit de Diseño DWC](https://www.figma.com/community/file/1682060886525639971/dwc-design-kit) es el recurso oficial de Figma para diseñar aplicaciones webforJ. Cubre cada componente de DWC con sus temas, expansiones y estados, junto con las paletas de colores, tipografía, espaciado y tokens de sombra del sistema de diseño como variables y estilos de Figma en modo claro y oscuro. Los diseñadores y desarrolladores pueden usar el kit para construir interfaces visualmente consistentes, amigables para el usuario, con un comportamiento de componente predecible, espaciado preciso y contraste de color accesible.
+El [DWC Design Kit](https://www.figma.com/community/file/1682060886525639971/dwc-design-kit) es el recurso oficial de Figma para diseñar aplicaciones webforJ. Incluye todos los componentes de DWC, con sus temas, variantes y estados, además de las paletas de colores, la tipografía, el espaciado y los tokens de sombra del sistema de diseño, disponibles como variables y estilos de Figma para los modos claro y oscuro. Los diseñadores y desarrolladores pueden usar el kit para crear interfaces coherentes desde el punto de vista visual y fáciles de usar, con un comportamiento predecible de los componentes, un espaciado preciso y un contraste de color accesible.
 
-<iframe
-  title="Kit de Diseño DWC"
-  src="https://embed.figma.com/design/xZVIDRnF7FJ3Dibb5At2lU/DWC-Design-Kit?node-id=6707-254&embed-host=webforj-docs"
-  style={{width: '100%', aspectRatio: '16 / 10', borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}}
-  loading="lazy"
-  allowFullScreen
-/>
+<a href="https://www.figma.com/community/file/1682060886525639971/dwc-design-kit" target="_blank" rel="noopener noreferrer">
+  <img
+    src="https://cdn.webforj.com/webforj-documentation/figma/dwc-design-kit-cover.jpg"
+    alt="DWC Design Kit en Figma Community"
+    style={{width: '100%', borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}}
+    loading="lazy"
+  />
+</a>
 
 ## Temas {#topics}
 

@@ -2,40 +2,39 @@
 sidebar_position: 25
 title: 大型数据集
 slug: data
-_i18n_hash: 9431d33c6fea2dd9d4ff4b165877e7d5
+description: >-
+  Handle large Table datasets efficiently with virtual scrolling, dynamic row
+  loading, DOM recycling, and overscan tuning.
+_i18n_hash: 63e45952d3d3f88d3aa435435c0905e6
 ---
 ## 虚拟滚动 {#virtual-scrolling}
 
-`Table` 组件旨在通过利用虚拟滚动来有效处理大型数据集，虚拟滚动是一种用于网页应用程序的技术，通过仅渲染屏幕上可见的项来优化大型列表或表格的渲染和性能。
+`Table` 组件通过使用虚拟滚动，高效处理大型数据集。虚拟滚动是一种用于 Web 应用的技术，它通过仅渲染屏幕上可见的列表项或表格行，优化大型列表或表格的渲染效率和性能。
 
 ### 初始渲染 {#initial-render}
 
-虚拟滚动是一种设计模式，其中最初仅渲染适合可滚动容器可见区域的小部分项。这最小化了创建的 DOM 元素数量，并加快了初始渲染过程。
+虚拟滚动是一种设计模式：初始时，只渲染适合滚动容器可视区域的一小部分内容。这样可以最大限度地减少创建的 DOM 元素数量，并加快初始渲染速度。
 
 ### 动态加载 {#dynamic-loading}
-当用户向下或向上滚动时，新的项目会动态加载到视图中。这些项目通常基于当前滚动位置从数据源获取。
+用户向下或向上滚动时，新内容会动态加载到视图中。通常，系统会根据当前滚动位置从数据源获取这些内容。
 
 ### 项目回收 {#item-recycling}
-虚拟滚动通常不会为每个项目创建新的 DOM 元素，而是重用现有的 DOM 元素。当一个项目移出可见区域时，它的 DOM 元素被回收并被重新用于一个进入可见区域的新项目。这个回收过程有助于减少内存使用并提高性能。
+虚拟滚动通常会重复使用现有 DOM 元素，而不是为每个项目都创建新的 DOM 元素。当某个项目移出可视区域时，其 DOM 元素会被回收，并重新用于进入可视区域的新项目。此回收过程有助于减少内存使用并提升性能。
 
-### 性能优势: {#performance-benefits}
+### 性能优势： {#performance-benefits}
 
-虚拟滚动的主要优势是性能提升，尤其是在处理大量项时。它减少了 DOM 操作的数量，增强了用户界面的整体响应性。
+虚拟滚动的主要优势是提升性能，尤其是在处理大量项目时。它减少了 DOM 操作，并增强了用户界面的整体响应速度。
 
-下面的 `Table` 显示了所有奥运赢家 - 一个可以从表的虚拟滚动功能中获益匪浅的大型数据集：
+下面的 `Table` 展示了所有奥运会获胜者——这是一个能充分受益于表格虚拟滚动功能的大型数据集：
 
 <ComponentDemo
 path='/webforj/tableolympicwinners'
-files={[
-  'src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java',
-  'src/main/java/com/webforj/samples/views/table/MusicRecord.java',
-  'src/main/java/com/webforj/samples/views/table/Service.java',
-]}
+files={['src/main/java/com/webforj/samples/views/table/TableOlympicWinnersView.java']}
 height='600px'
 />
 
-## 超扫描 {#overscan}
+## Overscan {#overscan}
 
-设置表的 `Overscan` 属性决定了在可见区域之外渲染多少行。该设置可以使用 `setOverscan(double value)` 方法进行配置。
+设置表格的 `Overscan` 属性可决定在可视区域之外渲染多少行。可以使用 `setOverscan(double value)` 方法配置此设置。
 
-较高的超扫描值可以减少滚动时的渲染频率，但代价是渲染的行数超过任何时刻可见的行数。这可能是在渲染性能和滚动流畅性之间的权衡。
+较高的 overscan 值可以减少滚动时的渲染频率，但代价是渲染超出当前可视范围的行数。这需要在渲染性能和滚动流畅度之间进行权衡。

@@ -1,0 +1,75 @@
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dwc-space-s);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* round icon buttons in the brand color of each network; the fill deepens
+   on hover, nothing moves (no border, so link hover rules can't resize them) */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0 !important;
+  border-radius: 50%;
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-800);
+  font-size: 1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.icon:hover,
+.icon:focus {
+  text-decoration: none;
+}
+
+.icon:focus-visible {
+  outline: 2px solid var(--dwc-color-primary-text);
+  outline-offset: 2px;
+}
+
+.linkedin:hover,
+.linkedin:focus {
+  background-color: #0a66c2;
+  color: #fff;
+}
+
+.youtube:hover,
+.youtube:focus {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.github:hover,
+.github:focus {
+  background-color: #24292f;
+  color: #fff;
+}
+
+.rss:hover,
+.rss:focus {
+  background-color: #f26522;
+  color: #fff;
+}
+
+/* on the dark theme the lightest gray is darker than the page, so the
+   circles take the next step up */
+[data-theme="dark"] .icon {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+/* a little smaller, for the narrow side column */
+.compact {
+  gap: 0.375rem;
+}
+
+.compact .icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 0.875rem;
+}

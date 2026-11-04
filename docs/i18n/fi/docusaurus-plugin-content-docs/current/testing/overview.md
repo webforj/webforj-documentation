@@ -6,7 +6,7 @@ description: >-
   validate webforJ components, logic, and full user journeys.
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
+_i18n_hash: 58ac266506a221d71e22c723189aa08f
 ---
 <Head>
   <style>{`
@@ -16,34 +16,36 @@ _i18n_hash: 3c566f2e9edf3bf00e984a01e0b2f049
   `}</style>
 </Head>
 
-# webforJ Testaus
+# webforJ:n testaus
 
-Testaus webforJ-sovelluksissa yhdistää yksikkö-, frontend- ja päättäväinen (E2E) testaus, joista jokainen palvelee erityistä tarkoitusta sovelluksen vakauden ja luotettavuuden ylläpitämisessä.
+webforJ-sovellusten testaus yhdistää yksikkö-, frontend- ja päästä päähän (E2E) -testauksen. Kukin niistä palvelee omaa tarkoitustaan sovelluksen vakauden ja luotettavuuden varmistamisessa.
 
 ## Yksikkötestaus {#unit-testing}
 
-Yksikkötestaus keskittyy yksittäisten komponenttien tai taustalogiikan tarkistamiseen eristyksissä. Noudata standardeja Java-testauksen käytäntöjä, kuten [JUnit](https://junit.org/junit5/), jotta kehittäjät voivat tehokkaasti validoida sovelluksen logiikkaa ja varmistaa, että jokainen "yksikkö" toimii odotetusti.
+Yksikkötestauksessa yksittäisiä komponentteja tai taustalogiikkaa testataan erillään muusta sovelluksesta. Noudattamalla Java-testauksen vakiintuneita käytäntöjä, kuten käyttämällä [JUnit](https://junit.org/junit5/)-kehystä, kehittäjät voivat validoida sovelluksen tietyn logiikan ja varmistaa, että kukin ”yksikkö” toimii odotetusti.
+
+Näkymien ja komponenttien testaamiseen [TestBed](./testbed/overview) mahdollistaa testauksen ilman selainta tavallisissa JUnit-testeissä, ilman selainta tai palvelinta. Testissä lisätään näkymä sivulle, käytetään sitä käyttäjän tavoin ja tarkistetaan tulos Javasta käsin.
 
 ## Frontend-testaus {#frontend-testing}
 
-Frontend-testaus kattaa projektin kirjalliset lähteet [frontend-bundlerin](/docs/managing-resources/bundler/overview) avulla. [Bun](https://bun.sh/) -testisuorittaja ajaa ne osana samaa rakennetta, joka suorittaa Java-testit, joten TypeScript-komponentti tai osa asiakaslogiikkaa vahvistetaan samalla tavalla kuin backend. Katso [Frontend-testaus](./frontend-testing).
+Frontend-testauksessa testataan projektin [frontend-paketointityökalulla](/docs/managing-resources/bundler/overview) luomia lähteitä. [Bun](https://bun.sh/)-testiajo suorittaa ne samassa koontiprosessissa kuin Java-testit, joten TypeScript-komponentti tai pala asiakaspuolen logiikkaa testataan samalla tavalla kuin taustajärjestelmä. Katso [Frontend-testaus](./frontend-testing).
 
-## Päättäväinen (E2E) testaus {#end-to-end-e2e-testing}
+## Päästä päähän -testaus (E2E) {#end-to-end-e2e-testing}
 
-Päättäväinen testaus on tärkeää käyttäjäkokemuksen validoimiseksi webforJ-sovelluksissa, jotka luovat dynaamisia, yksisivuisia verkkoliittymiä. Nämä testit simuloivat käyttäjävuorovaikutuksia ja vahvistavat koko sovelluksen ominaisuuksia.
+Päästä päähän -testauksella validoidaan käyttäjien kokemus webforJ-sovelluksissa, jotka luovat dynaamisia, yksisivuisia verkkokäyttöliittymiä. Näissä testeissä simuloidaan käyttäjien toimia ja tarkistetaan koko sovelluksen ominaisuudet.
 
-Käytä työkaluja kuten [**Selenium**](https://www.selenium.dev/) ja [**Playwright**](https://playwright.dev/java/docs/intro), jotta voit:
+Työkaluilla, kuten [**Selenium**](https://www.selenium.dev/) ja [**Playwright**](https://playwright.dev/java/docs/intro), voit:
 
-- Automatisoida selaimen vuorovaikutuksia, kuten painikkeen napsautuksia ja lomakkeiden lähetyksiä.
-- Vahvistaa dynaamisten käyttöliittymäkomponenttien johdonmukaisen renderöinnin ja vuorovaikutteisuuden.
-- Varmistaa käyttäytymisen johdonmukaisuuden eri selaimissa ja laitteissa.
+- Automatisoida selaimen käyttöä simuloimalla painikkeiden napsautuksia ja lomakkeiden lähettämistä.
+- Varmistaa dynaamisten käyttöliittymäkomponenttien yhdenmukaisen hahmonnuksen ja vuorovaikutteisuuden.
+- Varmistaa, että toiminta pysyy yhdenmukaisena eri selaimissa ja laitteissa.
 
 ## Testausstrategioiden yhdistäminen {#combining-testing-strategies}
 
-Yhdistämällä yksikkö- ja E2E-testauksen:
+Yhdistämällä yksikkö- ja E2E-testauksen voit:
 
-1. **Eristä ongelmat**: Tunnista ja ratkaise komponenttitason virheitä varhaisessa vaiheessa yksikkötestauksen avulla.
-2. **Varmista luotettavuus**: Validoi täydelliset käyttäjäpolut ja järjestelmäintegraatiot E2E-testauksen avulla.
+1. **Eristää ongelmat**: havaita ja ratkaista komponenttitason virheet varhaisessa vaiheessa yksikkötestauksen avulla.
+2. **Varmistaa luotettavuuden**: validoida käyttäjän koko käyttökokemus ja järjestelmäintegraatiot E2E-testauksella.
 
 ## Aiheet {#topics}
 

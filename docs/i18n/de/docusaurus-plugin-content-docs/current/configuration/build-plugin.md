@@ -1,5 +1,5 @@
 ---
-title: webforJ Build Plugin
+title: Build-Plugin für webforJ
 sidebar_position: 5
 sidebar_class_name: updated-content
 description: >-

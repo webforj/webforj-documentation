@@ -16,9 +16,9 @@ bbjship <group> <command> [options]
 
 | Command | Description |
 |---|---|
-| [`remote enable [--port PORT] [--ssl-port PORT]`](#remote-enable) | Enables or updates the deployment endpoint and prints its addresses. |
+| [`remote enable [--port PORT] [--ssl-port PORT] [--allow-unencrypted]`](#remote-enable) | Enables or updates the deployment endpoint and prints its addresses. |
 | [`remote disable`](#remote-disable) | Removes the deployment endpoint. Deployed apps keep running. |
-| [`remote status`](#remote-status) | Prints the endpoint addresses and whether development runs are enabled. |
+| [`remote status`](#remote-status) | Prints the endpoint addresses, whether development runs are enabled and whether unencrypted requests from another machine are allowed. |
 | [`apps deploy ARCHIVE`](#apps-deploy) | Deploys a deployment archive. |
 | [`apps list [--long]`](#apps-list) | Lists the apps BBjShip deployed. |
 | [`apps undeploy NAME`, `apps undeploy --all`](#apps-undeploy) | Removes one or every app BBjShip deployed. |
@@ -72,7 +72,7 @@ The `remote` commands manage the deployment endpoint.
 ### `remote enable` {#remote-enable}
 
 ```text
-bbjship remote enable [--port PORT] [--ssl-port PORT]
+bbjship remote enable [--port PORT] [--ssl-port PORT] [--allow-unencrypted]
 ```
 
 Enables or updates the deployment endpoint and prints its addresses.
@@ -81,8 +81,11 @@ Enables or updates the deployment endpoint and prints its addresses.
 |---|---|---|
 | `--port PORT` | `8888` | HTTP port of the BBjServices web server for the endpoint. |
 | `--ssl-port PORT` | None | SSL port of the BBjServices web server for the endpoint. Without it, the endpoint has no HTTPS address. |
+| `--allow-unencrypted` | Off | Accepts the administration credentials over HTTP from another machine. Without it, a request from another machine must use the SSL port, and the endpoint answers HTTP 403 to it. Requests from the BBj machine itself use HTTP either way. |
 
 The ports must be ports the BBjServices web server already listens on. Otherwise `remote enable` ends with exit code `1`, names the port that doesn't answer, and keeps the previous endpoint.
+
+Every `remote enable` records the ports and the `--allow-unencrypted` setting anew. A run without the option turns the setting off and prints `Refused unencrypted requests from another machine`. A run with it prints `Allowed unencrypted requests from another machine`. The build that deploys over HTTP from another machine sets [`allowUnencrypted`](/docs/configuration/bbjship/deploying#deploying-from-another-machine) as well.
 
 ### `remote disable` {#remote-disable}
 
@@ -104,13 +107,14 @@ Removes the deployment endpoint. Deployed apps keep running.
 bbjship remote status
 ```
 
-Prints the endpoint addresses and whether development runs are enabled.
+Prints the endpoint addresses, whether development runs are enabled and whether unencrypted requests from another machine are allowed.
 
 ```text
 $ bbjship remote status
 Enabled http://localhost:8888/webforj-bbjship
 Enabled https://localhost:8443/webforj-bbjship
 Development runs  disabled
+Unencrypted requests  refused
 ```
 
 ## Apps {#apps}
@@ -195,7 +199,7 @@ Turns off [development runs](/docs/configuration/deploy-reload/bbjservices) on t
 bbjship reset [--yes] [--properties FILE]
 ```
 
-`reset` undeploys every app BBjShip deployed, removes the deployment endpoint and the development switch, restores the BBjServices properties file a development run changed, and deletes the files BBjShip wrote. The command never stops BBjServices. When it restored the properties file, restart BBjServices to apply it. The plugin folder stays.
+`reset` undeploys every app BBjShip deployed, removes the deployment endpoint, the development switch and the `--allow-unencrypted` setting, restores the BBjServices properties file a development run changed, and deletes the files BBjShip wrote. The command never stops BBjServices. When it restored the properties file, restart BBjServices to apply it. The plugin folder stays.
 
 | Setting | Default | Description |
 |---|---|---|

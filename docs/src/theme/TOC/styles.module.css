@@ -1,0 +1,23 @@
+.stack {
+  /* the cards below the contents adapt to this column's width */
+  container-type: inline-size;
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+  display: flex;
+  flex-direction: column;
+  /* ends above the floating "Questions?" launcher, so it never covers the
+     cards at the bottom, even while the announcement bar still pushes the
+     column down at the top of the page */
+  max-height: calc(
+    100vh - (var(--ifm-navbar-height) + 2rem) - 4.5rem - var(--announcement-bar-height, 0px)
+  );
+}
+
+/* the column is sticky now, so the contents flow inside it and scroll when
+   they are long */
+.toc {
+  position: static !important;
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: none !important;
+}

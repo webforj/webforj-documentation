@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://docs.webforj.com/sitemap.xml
+Sitemap: https://docs.webforj.com/es/sitemap.xml
+Sitemap: https://docs.webforj.com/de/sitemap.xml
+Sitemap: https://docs.webforj.com/fr/sitemap.xml
+Sitemap: https://docs.webforj.com/nl/sitemap.xml
+Sitemap: https://docs.webforj.com/fi/sitemap.xml
+Sitemap: https://docs.webforj.com/zh/sitemap.xml

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Shadow Parts
+title: Schaduwonderdelen
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **Schaduw Onderdelen** geven ontwikkelaars een manier om elementen binnen de schaduw DOM van een component van buitenaf te stylen, terwijl de encapsulatie behouden blijft.

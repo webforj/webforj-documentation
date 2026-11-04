@@ -24,7 +24,9 @@ public class FileSaveDialogFiltersView extends Composite<Div> {
             new FileChooserFilter("CSV Files", "*.csv"),
             new FileChooserFilter("Excel Files", "*.xls;*.xlsx"));
 
-    dialog = new FileSaveDialog("Save As", "/usr2/bbx/demos", "export.txt", filters);
+    dialog =
+        new FileSaveDialog(
+            "Save As", System.getProperty("filechooser-files.path"), "export.txt", filters);
     dialog.setRestricted(true);
 
     show();
@@ -40,5 +42,7 @@ public class FileSaveDialogFiltersView extends Composite<Div> {
       OptionDialog.showMessageDialog(
           "No path is selected", "Path Selected", MessageDialog.MessageType.ERROR);
     }
+
+    show();
   }
 }

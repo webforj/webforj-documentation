@@ -4,61 +4,61 @@ sidebar_position: 15
 description: >-
   Enforce formatted text entry with the MaskedTextField, supporting mask
   characters for digits, letters, and literals for IDs and codes.
-_i18n_hash: 5f6c175ffd4b8d75f3b65c7b77bb13fe
+_i18n_hash: 9ee372191dc17b2510f020bc908f0060
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-textfield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTextField" top='true'/>
 
-El componente `MaskedTextField` proporciona una entrada de texto configurable que impone reglas de formato y validación. Es muy adecuado para aplicaciones que requieren entradas estructuradas, como sistemas financieros, de comercio electrónico y de salud.
+El componente `MaskedTextField` proporciona una entrada de texto configurable que impone reglas de formato y validación. Es ideal para aplicaciones que requieren entrada estructurada, como sistemas financieros, de comercio electrónico y de salud.
 
-Este componente se puede instanciar con o sin parámetros. Puedes definir un valor inicial, una etiqueta, un texto de marcador de posición y un listener en caso de que el valor cambie.
+Este componente se puede instanciar con o sin parámetros. Puedes definir un valor inicial, una etiqueta, un texto de marcador de posición y un oyente en caso de que el valor cambie.
 
 <!-- INTRO_END -->
 
 ```java
 MaskedTextField field = new MaskedTextField("ID de Cuenta");
 field.setMask("ZZZZ-0000")
-  .setHelperText("Máscara: ZZZZ-0000 - por ejemplo: SAVE-2025")
+  .setHelperText("Máscara: ZZZZ-0000 - por ejemplo: SAVE-2025");
 ```
 
 ## Reglas de máscara {#mask-rules}
 
-El `MaskedTextField` formatea la entrada de texto utilizando una máscara: una cadena que define qué caracteres se permiten en cada posición. Esto asegura una entrada consistente y estructurada para cosas como números de teléfono, códigos postales y formatos de identificación.
+El `MaskedTextField` formatea la entrada de texto utilizando una máscara, que es una cadena que define qué caracteres son permitidos en cada posición. Esto garantiza una entrada consistente y estructurada para cosas como números de teléfono, códigos postales y formatos de identificación.
 
 :::tip Aplicando máscaras programáticamente
-Para formatear cadenas con la misma sintaxis de máscara fuera de un campo, por ejemplo al renderizar datos en una [`Table`](/docs/components/table/overview), utiliza la clase utilitaria [`MaskDecorator`](/docs/advanced/mask-decorator).
+Para formatear cadenas con la misma sintaxis de máscara fuera de un campo, por ejemplo, al renderizar datos en una [`Table`](/docs/components/table/overview), utiliza la clase de utilidad [`MaskDecorator`](/docs/advanced/mask-decorator).
 :::
 
 ### Caracteres de máscara soportados {#supported-mask-characters}
 
-| Caracter  | Descripción                                                                                |
-|-----------|--------------------------------------------------------------------------------------------|
-| `X`       | Cualquier carácter imprimible                                                              |
-| `a`       | Cualquier carácter alfabético (mayúsculas o minúsculas)                                    |
-| `A`       | Cualquier carácter alfabético; las letras minúsculas se convierten en mayúsculas          |
-| `0`       | Cualquier dígito (0–9)                                                                      |
-| `z`       | Cualquier dígito o letra (mayúsculas o minúsculas)                                       |
-| `Z`       | Cualquier dígito o letra; las letras minúsculas se convierten en mayúsculas               |
+| Carácter | Descripción                                                                                 |
+|----------|---------------------------------------------------------------------------------------------|
+| `X`      | Cualquier carácter imprimible                                                                |
+| `a`      | Cualquier carácter alfabético (mayúsculas o minúsculas)                                     |
+| `A`      | Cualquier carácter alfabético; las letras minúsculas se convierten a mayúsculas            |
+| `0`      | Cualquier dígito (0–9)                                                                       |
+| `z`      | Cualquier dígito o letra (mayúsculas o minúsculas)                                         |
+| `Z`      | Cualquier dígito o letra; las letras minúsculas se convierten a mayúsculas                |
 
-Todos los demás caracteres en la máscara se tratan como literales y deben ser escritos exactamente. Por ejemplo, una máscara como `XX@XX` requiere que el usuario ingrese un `@` en el medio.
+Todos los demás caracteres en la máscara se tratan como literales y deben escribirse exactamente. Por ejemplo, una máscara como `XX@XX` requiere que el usuario ingrese un `@` en el medio.
 
-- **Los caracteres no válidos** se ignoran silenciosamente.
+- **Los caracteres inválidos** se ignoran silenciosamente.
 - **La entrada corta** se rellena con espacios.
-- **La entrada larga** se truncará para ajustarse a la máscara.
+- **La entrada larga** se trunca para ajustarse a la máscara.
 
 ### Ejemplos {#examples}
 
 ```java
 field.setMask("(000) 000-0000");     // Ejemplo: (123) 456-7890
-field.setMask("A00 000");            // Ejemplo: A1B 2C3 (código postal canadiense)
+field.setMask("A0A 0A0");            // Ejemplo: A1B 2C3 (código postal canadiense)
 field.setMask("ZZZZ-0000");          // Ejemplo: ABCD-1234
 field.setMask("0000-0000-0000-0000");// Ejemplo: 1234-5678-9012-3456
 ```
 
 :::tip Entrada completa permitida
-Si la máscara solo contiene `X`, el campo se comporta como un [`TextField`](../textfield) estándar, permitiendo cualquier entrada imprimible. Esto es útil cuando deseas reservar la posibilidad de formatear sin aplicar reglas estrictas de caracteres.
+Si la máscara solo contiene `X`, el campo se comporta como un [`TextField`](../textfield) estándar, permitiendo cualquier entrada imprimible. Esto es útil cuando deseas reservar la capacidad de formatear sin aplicar reglas estrictas de caracteres.
 :::
 
 <ComponentDemo
@@ -85,12 +85,12 @@ Esto es especialmente útil cuando:
 - Quieres imponer una longitud exacta o un formato específico (por ejemplo, hex, Base64, UUID)
 
 :::tip Formato de expresión regular
-El patrón debe ser una expresión regular válida de [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), como la que utiliza el tipo `RegExp`. Puedes encontrar más detalles en la [documentación del atributo de patrón HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
+El patrón debe ser una expresión regular válida de [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), como se utiliza en el tipo `RegExp`. Puedes encontrar más detalles en la [documentación del atributo de patrón de HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
 :::
 
 ## Restaurando el valor {#restoring-the-value}
 
-El `MaskedTextField` incluye una función de restauración que resetea el valor del campo a un estado predefinido u original. Esto puede ser útil para deshacer cambios del usuario o revertir a una entrada predeterminada.
+El `MaskedTextField` incluye una función de restauración que restablece el valor del campo a un estado predefinido u original. Esto puede ser útil para deshacer cambios realizados por el usuario o volver a una entrada predeterminada.
 
 ```java
 field.setRestoreValue("ABC123");
@@ -100,9 +100,9 @@ field.restoreValue();
 ### Maneras de restaurar el valor {#ways-to-restore-the-value}
 
 - **Programáticamente**, llamando a `restoreValue()`
-- **A través del teclado**, presionando <kbd>ESC</kbd> (esta es la tecla de restauración predeterminada a menos que se sobrescriba mediante un listener de eventos)
+- **Vía teclado**, presionando <kbd>ESC</kbd> (esta es la tecla de restauración predeterminada a menos que se sobreescriba mediante un oyente de eventos)
 
-Puedes establecer el valor a restaurar con `setRestoreValue()`. Si no se establece ningún valor de restauración, el campo volverá al valor inicial en el momento en que se renderizó.
+Puedes establecer el valor a restaurar con `setRestoreValue()`. Si no se establece un valor de restauración, tanto `restoreValue()` como <kbd>ESC</kbd> establecen el valor del campo en `null`.
 
 <ComponentDemo
 path='/webforj/maskedtextfieldrestore'
@@ -112,7 +112,7 @@ height='200px'
 
 ## `MaskedTextFieldSpinner` {#maskedtextfieldspinner}
 
-El `MaskedTextFieldSpinner` extiende el `MaskedTextField` añadiendo controles de spinner que permiten a los usuarios alternar entre una lista de valores predefinidos. Esto mejora la experiencia del usuario en situaciones donde la entrada debe estar restringida a un conjunto fijo de opciones válidas.
+El `MaskedTextFieldSpinner` extiende el `MaskedTextField` añadiendo controles de spinner que permiten a los usuarios ciclar a través de una lista de valores predefinidos. Esto mejora la experiencia del usuario en situaciones donde la entrada debe estar restringida a un conjunto fijo de opciones válidas.
 
 <ComponentDemo
 path='/webforj/maskedtextfieldspinner'
@@ -122,14 +122,14 @@ height='120px'
 
 ### Características clave {#key-features}
 
-- **Soporte de lista de opciones**
-  Rellena el spinner con una lista de valores de cadena válidos utilizando `setOptions()`:
+- **Soporte para lista de opciones**
+  Completa el spinner con una lista de valores de cadena válidos utilizando `setOptions()`:
 
   ```java
   spinner.setOptions(List.of("Opción A", "Opción B", "Opción C"));
   ```
 
-- **Rotación programática**
+- **Ciclado programático**
   Utiliza `spinUp()` y `spinDown()` para moverte a través de las opciones:
 
   ```java
@@ -138,16 +138,16 @@ height='120px'
   ```
 
 - **Control de índice**
-  Establece o recupera el índice de selección actual con:
+  Establece o recupera el índice de la selección actual con:
 
   ```java
   spinner.setOptionIndex(1);
   int current = spinner.getOptionIndex();
   ```
 
-- **Compatibilidad con máscaras**
-  Hereda completamente todas las reglas de formato, reglas de máscara y validación de patrones del `MaskedTextField`.
+- **Compatibilidad con la máscara**
+  Hereda completamente todas las reglas de formato, máscara y validación de patrones del `MaskedTextField`.
 
-## Estilización {#styling}
+## Estilo {#styling}
 
 <TableBuilder name="MaskedTextField" />
