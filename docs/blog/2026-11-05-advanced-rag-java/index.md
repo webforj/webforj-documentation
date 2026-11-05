@@ -1,5 +1,5 @@
 ---
-title: "Advanced RAG with Spring AI: why your chatbot finds the wrong answer"
+title: "Advanced RAG with Spring AI: test each step before you add it"
 description: "Advanced RAG in Java with Spring AI and webforJ: measure retrieval first, then add query rewriting, hybrid search and reranking only where they move the numbers."
 slug: advanced-rag-java
 date: 2026-11-05T13:00:00Z
