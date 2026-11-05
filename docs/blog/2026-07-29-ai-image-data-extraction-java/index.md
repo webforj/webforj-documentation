@@ -19,6 +19,12 @@ To extract data from an image in Java, upload the file with the webforJ `Upload`
 The complete project, [Invoice Reader](https://github.com/webforj/built-with-webforj/tree/main/webforj-invoicereader), is published on GitHub, so you can view the code and run it with your own Gemini API key. The project is kept up to date with the latest webforJ release, so its framework version can be newer than the one this post was written for.
 :::
 
+<div style={{textAlign: 'center'}}>
+
+![Invoice Reader showing the vendor, invoice number, date and total read from an uploaded invoice](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-29-ai-image-data-extraction-java/invoicereader.png)
+
+</div>
+
 ## Upload images in a Java web app {#upload-images-in-a-java-web-app}
 
 Start with the file picker. The `Upload` component is an inline file picker that ships with webforJ 26.01. It handles picking, dropping, and sending the file to the server. You do not need a modal dialog for this.
