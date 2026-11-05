@@ -6,7 +6,7 @@ components: [Button]
 difficulty: beginner
 ---
 
-Disable the button before submitting the save to a worker thread. Use `Environment.runLater()` for the final UI update because webforJ components can only be changed from the environment thread.
+Disable the button before submitting the save to a worker thread. Read the `Environment` on the environment thread and use `Environment.runLater()` with it for the final UI update, because webforJ components can only be changed from the environment thread.
 
 ```java
 import com.webforj.Environment;
@@ -45,11 +45,12 @@ public class OrderSaveView extends Composite<Div> {
     save.setEnabled(false);
     save.setText("Saving...");
 
+    Environment env = Environment.getCurrent();
     currentSave = CompletableFuture.runAsync(
         () -> orderService.persist(currentOrder),
         executor);
 
-    currentSave.whenComplete((result, error) -> Environment.runLater(() -> {
+    currentSave.whenComplete((result, error) -> Environment.runLater(env, () -> {
       if (!save.isDestroyed()) {
         save.setEnabled(true);
         save.setText(error == null ? "Saved" : "Try again");

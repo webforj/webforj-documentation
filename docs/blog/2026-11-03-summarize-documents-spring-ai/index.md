@@ -29,7 +29,7 @@ The finished page has one `Upload` component and one `MarkdownViewer`. The user 
 - A Spring service extracts the text and calls the model.
 - The view moves the file out of the upload cache and writes the result to the page when the service finishes.
 
-The model call takes seconds. If a click handler waited for it, the UI thread would stall and the page would freeze. The service returns a `CompletableFuture` instead, and the view uses `Environment.runLater()` to update components when the result arrives. The [background jobs guide](/docs/integrations/spring/background-jobs) covers this pattern in more detail.
+The model call takes seconds. If a click handler waited for it, the UI thread would stall and the page would freeze. The service returns a `CompletableFuture` instead, and the view uses `Environment.runLater()` with the `Environment` it read on the UI thread to update components when the result arrives. The [background jobs guide](/docs/integrations/spring/background-jobs) covers this pattern in more detail.
 
 ## Add the dependencies {#add-the-dependencies}
 
@@ -118,8 +118,9 @@ public class SummarizeView extends Composite<FlexLayout> {
     try {
       File saved = uploaded.move(target.toString());
       result.setText("Summarizing " + uploaded.getClientName() + "...");
+      Environment env = Environment.getCurrent();
       summaries.summarize(saved.toPath()).whenComplete((summary, error) ->
-          Environment.runLater(() -> showResult(summary, error)));
+          Environment.runLater(env, () -> showResult(summary, error)));
     } catch (IOException ex) {
       Toast.show("Could not read " + uploaded.getClientName(), Theme.DANGER);
     }
@@ -156,7 +157,7 @@ The upload settings do most of the work:
 
 The `onUpload` listener fires when the file has reached the server. At that point, `move()` moves the file from the upload cache to a path you choose. The target name combines a random UUID with the sanitized client name, so two uploads with the same name do not overwrite each other.
 
-The callback passed to `whenComplete` runs on the background thread that finished the summary. Components must change on the UI thread, so the result update is wrapped in `Environment.runLater()`. `setText` on a `MarkdownViewer` replaces its content, so the summary or the failure message takes the place of the "Summarizing" text. The `Toast` messages report a failed upload or a failed summary. A failure can arrive wrapped in a `CompletionException`, so `showResult` reports the cause's message instead of the wrapper's.
+The callback passed to `whenComplete` runs on the background thread that finished the summary. Components must change on the UI thread, so the result update is wrapped in `Environment.runLater()` with the `Environment` that `summarize` read while it was still on that thread. `setText` on a `MarkdownViewer` replaces its content, so the summary or the failure message takes the place of the "Summarizing" text. The `Toast` messages report a failed upload or a failed summary. A failure can arrive wrapped in a `CompletionException`, so `showResult` reports the cause's message instead of the wrapper's.
 
 ## Enable async and run the app {#enable-async-and-run-the-app}
 
@@ -201,7 +202,7 @@ Split the extracted text into chunks that fit the model's input, summarize each 
 
 ### Why does the summary run on a background thread? {#why-background-thread}
 
-A model call can take several seconds, and running it on the UI thread would freeze the page until the answer arrives. The `@Async` annotation moves the call to a background thread. `Environment.runLater()` then returns the result to the UI thread.
+A model call can take several seconds, and running it on the UI thread would freeze the page until the answer arrives. The `@Async` annotation moves the call to a background thread. `Environment.runLater()`, given the `Environment` read before the call, then returns the result to the UI thread.
 
 ### Does the Upload component check file types on the server? {#upload-file-type-check}
 

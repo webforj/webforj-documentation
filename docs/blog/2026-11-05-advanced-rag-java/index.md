@@ -259,7 +259,7 @@ In webforJ the record goes straight into the page next to the answer. Each step 
 
 ## Keep the slow pipeline off the UI thread {#background-pipeline}
 
-Four model calls and eight searches per question take seconds. If a click handler in a webforJ view does that work directly, the view is blocked until it finishes. The fix is the pattern from the [background jobs guide](/docs/integrations/spring/background-jobs): annotate the service method with `@Async`, return a `CompletableFuture`, and hand the result back to the UI thread with `Environment.runLater()`.
+Four model calls and eight searches per question take seconds. If a click handler in a webforJ view does that work directly, the view is blocked until it finishes. The fix is the pattern from the [background jobs guide](/docs/integrations/spring/background-jobs): annotate the service method with `@Async`, return a `CompletableFuture`, read the `Environment` before the call and hand the result back to the UI thread with `Environment.runLater()`.
 
 ```java
 @Service
@@ -299,8 +299,9 @@ public class AskView extends Composite<FlexLayout> {
   private void run() {
     ask.setEnabled(false);
     answer.setContent("Searching the documentation...");
+    Environment env = Environment.getCurrent();
     current = assistant.ask(question.getValue());
-    current.whenComplete((text, error) -> Environment.runLater(() -> {
+    current.whenComplete((text, error) -> Environment.runLater(env, () -> {
       if (destroyed) {
         return;
       }
@@ -320,7 +321,7 @@ public class AskView extends Composite<FlexLayout> {
 }
 ```
 
-The `whenComplete` callback runs on a background thread, so every component call inside it is wrapped in `Environment.runLater()`. That rule is explained in [Asynchronous Updates](/docs/advanced/asynchronous-updates). The `onDestroy()` override cancels the future when the user leaves the view. Cancelling a `CompletableFuture` doesn't interrupt the thread behind it, so the model calls already in flight still finish. What the cancel does is stop the view from waiting. It also runs the `whenComplete` callback at once, which is why the `destroyed` flag is set first, so the callback never touches components that are going away.
+The `whenComplete` callback runs on Spring's thread pool, which serves every user, so every component call inside it is wrapped in `Environment.runLater()` with the `Environment` that `run()` read on the UI thread. That rule is explained in [Asynchronous Updates](/docs/advanced/asynchronous-updates). The `onDestroy()` override cancels the future when the user leaves the view. Cancelling a `CompletableFuture` doesn't interrupt the thread behind it, so the model calls already in flight still finish. What the cancel does is stop the view from waiting. It also runs the `whenComplete` callback at once, which is why the `destroyed` flag is set first, so the callback never touches components that are going away.
 
 The [`MarkdownViewer`](/docs/components/markdownviewer) renders the model's markdown answer, including lists and code blocks, with one `setContent()` call. If you'd rather stream the final generation token by token, the same component has `append()`, auto-scroll and progressive rendering. The retrieval stages still finish before the first token arrives, which is why the placeholder text in the previous snippet matters. A user who sees a progress message waits more patiently than one staring at a frozen page.
 

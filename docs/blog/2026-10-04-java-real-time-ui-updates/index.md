@@ -31,7 +31,7 @@ Event handlers already run there, so a click listener can update components dire
 
 ## How do you update the UI from a background job? {#background-jobs}
 
-`Environment.runLater()` schedules a task on the UI thread. It comes in two forms, one taking a `Runnable` and one taking a `Supplier`, and both return a `PendingResult` that tracks completion and lets you cancel the task. The [asynchronous updates guide](/docs/advanced/asynchronous-updates) covers both forms.
+`Environment.runLater()` schedules a task on the UI thread of one user. Its first argument is that user's `Environment`, which you read with `Environment.getCurrent()` while you are still on the UI thread. It comes in two forms, one taking a `Runnable` and one taking a `Supplier`, and both return a `PendingResult` that tracks completion and lets you cancel the task. The [asynchronous updates guide](/docs/advanced/asynchronous-updates) covers both forms.
 
 Here is a panel that runs a long import on an executor and reports progress as it goes:
 
@@ -47,21 +47,22 @@ public class JobPanel extends Composite<Div> {
   public JobPanel() {
     start.onClick(e -> {
       start.setEnabled(false);
-      executor.submit(this::runImport);
+      Environment env = Environment.getCurrent();
+      executor.submit(() -> runImport(env));
     });
     getBoundComponent().add(start, progress, status);
   }
 
-  private void runImport() {
+  private void runImport(Environment env) {
     for (int i = 1; i <= 100; i++) {
       int percent = i;
       importRecord(percent);
-      updates.add(Environment.runLater(() -> {
+      updates.add(Environment.runLater(env, () -> {
         progress.setValue(percent);
         status.setText("Imported " + percent + " of 100 records");
       }));
     }
-    Environment.runLater(() -> {
+    Environment.runLater(env, () -> {
       status.setText("Import finished");
       start.setEnabled(true);
     });
@@ -69,11 +70,11 @@ public class JobPanel extends Composite<Div> {
 }
 ```
 
-The executor thread is created from within the session's thread, so it inherits the `Environment` context and may call `runLater()`. Tasks submitted from a background thread are queued and run in strict first-in, first-out order, so the user never sees progress jump backwards.
+The click handler runs on the user's UI thread, so that is where `Environment.getCurrent()` returns the right `Environment`. The handler passes it to the import, and the import passes it to every `runLater()` call. Tasks submitted from a background thread are queued and run in strict first-in, first-out order, so the user never sees progress jump backwards.
 
-### What happens on threads without context? {#threads-without-context}
+### Which thread may call runLater? {#threads-without-context}
 
-A thread that isn't created from inside an `Environment` has no context. Calling `runLater()` from it throws an `IllegalStateException`. Three common sources are static initializers, `java.util.Timer` threads, and callbacks from external libraries such as an HTTP client's async methods. If you need results from one of those, hand them to a thread you started from the session instead.
+Any thread, as long as it has the target `Environment` in hand. A static initializer, a `java.util.Timer` thread or a callback from an HTTP client's async methods all work the same way as the executor in the panel. What none of them can do is read `Environment.getCurrent()`, because that returns `null` off the UI thread. Read it in the handler or the constructor, store it in a local or a field, and pass it along.
 
 ### Cleaning up when the user leaves {#cleanup}
 
@@ -150,7 +151,7 @@ public class ReportService {
 }
 ```
 
-Add `@EnableAsync` to your app class, because without it `@Async` methods run synchronously. Inject the service into the view's constructor, then wrap the callback body in `Environment.runLater()` before it updates a component. The same applies to `whenComplete` on the returned future. The [Spring background jobs page](/docs/integrations/spring/background-jobs) walks through the full flow, including cancelling the future in `onDestroy()`.
+Add `@EnableAsync` to your app class, because without it `@Async` methods run synchronously. Inject the service into the view's constructor, read the `Environment` in the click handler, then wrap the callback body in `Environment.runLater()` with it before it updates a component. The same applies to `whenComplete` on the returned future. The [Spring background jobs page](/docs/integrations/spring/background-jobs) walks through the full flow, including cancelling the future in `onDestroy()`.
 
 ## Which tool fits which job? {#choosing}
 
@@ -171,9 +172,9 @@ To try the patterns, generate a project with [startforJ](https://docs.webforj.co
 
 No. You change components in Java and the framework delivers the change to the browser. The work you do is choosing the right thread, which `Environment.runLater()` handles.
 
-### Why does Environment.runLater throw an IllegalStateException? {#faq-illegalstate}
+### Why does Environment.runLater take an `Environment`? {#faq-illegalstate}
 
-The calling thread has no `Environment` context. That happens in static initializers, `java.util.Timer` threads and external library callbacks. Threads started from inside the session inherit the context and work.
+A background thread belongs to no user, so it can't tell which session's UI to update. The argument names that session. Read it with `Environment.getCurrent()` on the UI thread, in a handler or a constructor, and pass it to the work. On a background thread `getCurrent()` returns `null`.
 
 ### Does Environment.runLater keep updates in order? {#faq-order}
 

@@ -6,7 +6,7 @@ description: Run Spring @Async services from webforJ views and marshal progress 
 
 When users click a button to generate a report or process data, they expect the interface to remain responsive. Progress bars should animate, buttons should react to hover, and the app shouldn't freeze. Spring's `@Async` annotation makes this possible by moving long-running operations to background threads.
 
-webforJ enforces thread safety for UI components - all updates must happen on the UI thread. This creates a challenge: how do background tasks update progress bars or display results? The answer is `Environment.runLater()`, which safely transfers UI updates from Spring's background threads to webforJ's UI thread.
+webforJ enforces thread safety for UI components - all updates must happen on the UI thread. This creates a challenge: how do background tasks update progress bars or display results? The answer is `Environment.runLater()`, which safely transfers UI updates from Spring's background threads to the UI thread of the user who started the task.
 
 ## Enabling asynchronous execution {#enabling-asynchronous-execution}
 
@@ -82,8 +82,11 @@ public class HelloWorldView extends Composite<FlexLayout> {
   public HelloWorldView(BackgroundService backgroundService) {
     // Service is injected by Spring
     asyncBtn.addClickListener(e -> {
+      // The click handler runs on this user's UI thread
+      Environment env = Environment.getCurrent();
+
       currentTask = backgroundService.performLongRunningTask(progress -> {
-        Environment.runLater(() -> {
+        Environment.runLater(env, () -> {
           progressBar.setValue(progress);
         });
       });
@@ -92,13 +95,13 @@ public class HelloWorldView extends Composite<FlexLayout> {
 }
 ```
 
-Spring injects the `BackgroundService` into the view's constructor, just like any other Spring bean. The view then uses this service to start background tasks. The key concept: callbacks from the service execute on background threads, so any UI updates inside those callbacks must use `Environment.runLater()` to transfer execution to the UI thread.
+Spring injects the `BackgroundService` into the view's constructor, just like any other Spring bean. The view then uses this service to start background tasks. The key concept: callbacks from the service execute on Spring's thread pool, which is shared by every user of the app, so a pool thread can't know which user's UI to update. The click handler reads the user's `Environment` with `Environment.getCurrent()` while it's still on the UI thread, and every UI update inside the callbacks passes it to `Environment.runLater()`.
 
 Completion handling requires the same careful thread management:
 
 ```java
 currentTask.whenComplete((result, error) -> {
-  Environment.runLater(() -> {
+  Environment.runLater(env, () -> {
     asyncBtn.setEnabled(true);
     progressBar.setVisible(false);
     if (error != null) {
@@ -110,10 +113,10 @@ currentTask.whenComplete((result, error) -> {
 });
 ```
 
-The `whenComplete` callback also executes on a background thread. Every UI operation - enabling the button, hiding the progress bar, showing toasts - must be wrapped in `Environment.runLater()`. Without this wrapping, webforJ throws exceptions because background threads can't access UI components.
+The `whenComplete` callback also executes on a background thread. Every UI operation - enabling the button, hiding the progress bar, showing toasts - must be wrapped in `Environment.runLater()` with the same `env`. Without this wrapping, webforJ throws exceptions because background threads can't access UI components.
 
 :::warning[Thread safety]
-Every UI update from a background thread must be wrapped in `Environment.runLater()`. This rule has no exceptions. Direct component access from `@Async` methods always fails.
+Every UI update from a background thread must be wrapped in `Environment.runLater()`, with the `Environment` read on the UI thread before the task started. This rule has no exceptions. Direct component access from `@Async` methods always fails, and `Environment.getCurrent()` returns `null` on a pool thread.
 :::
 
 :::tip[Learn more about thread safety]

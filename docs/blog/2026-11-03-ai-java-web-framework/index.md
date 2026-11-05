@@ -134,13 +134,14 @@ public class AskView extends Composite<Div> {
   public AskView(AnswerService service) {
     answer.setAutoScroll(true).setProgressiveRender(true);
     getBoundComponent().add(answer);
+    Environment env = Environment.getCurrent();
     service.stream("Summarize my open orders",
-        chunk -> Environment.runLater(() -> answer.append(chunk)));
+        chunk -> Environment.runLater(env, () -> answer.append(chunk)));
   }
 }
 ```
 
-The model's callbacks arrive on other threads, and `Environment.runLater()` hands each chunk back to the UI thread, as the [asynchronous updates guide](/docs/advanced/asynchronous-updates) describes. For a complete streaming chat with cancel and MCP-backed answers, read [Adding an AI chat feature to a Java app](/blog/add-ai-to-java-app).
+The model's callbacks arrive on other threads, and `Environment.runLater()` hands each chunk back to the UI thread of the user whose `Environment` the constructor read, as the [asynchronous updates guide](/docs/advanced/asynchronous-updates) describes. For a complete streaming chat with cancel and MCP-backed answers, read [Adding an AI chat feature to a Java app](/blog/add-ai-to-java-app).
 
 ## Why the architecture suits AI {#why-the-architecture-suits-ai}
 

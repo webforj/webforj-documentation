@@ -174,7 +174,7 @@ The file's text goes into the paste box instead of straight to the model. The us
 
 ## How do you keep the UI responsive? {#off-the-ui-thread}
 
-webforJ components can only be changed on the UI thread. The model call returns on a different thread, so hand the result back with `Environment.runLater`.
+webforJ components can only be changed on the UI thread. The model call returns on a different thread, so read the `Environment` before the call and hand the result back with `Environment.runLater`.
 
 ```java
 private void fillFromText() {
@@ -187,8 +187,9 @@ private void fillFromText() {
   pasted.setInvalid(false);
   fill.setEnabled(false);
   thinking.setVisible(true);
+  Environment env = Environment.getCurrent();
   extractor.extract(text)
-      .whenComplete((ticket, error) -> Environment.runLater(() -> {
+      .whenComplete((ticket, error) -> Environment.runLater(env, () -> {
         fill.setEnabled(true);
         thinking.setVisible(false);
         if (error != null || ticket == null) {
@@ -206,7 +207,7 @@ private void showProblem(String message) {
 }
 ```
 
-`Environment.runLater` returns a `PendingResult`. Called from a background thread it queues the task for the UI thread, and called from the UI thread it runs immediately. The [asynchronous updates guide](/docs/advanced/asynchronous-updates) explains the thread model, ordering, and cancellation. Disabling the button while the call runs prevents a second request on the same text, and the spinner shows the user that the model is working.
+`Environment.runLater` takes the `Environment` of the user who clicked, read with `Environment.getCurrent()` on the UI thread, and returns a `PendingResult`. Called from a background thread it queues the task for that user's UI thread, and called from the UI thread it runs immediately. The [asynchronous updates guide](/docs/advanced/asynchronous-updates) explains the thread model, ordering, and cancellation. Disabling the button while the call runs prevents a second request on the same text, and the spinner shows the user that the model is working.
 
 ## How do you handle bad output? {#error-handling}
 

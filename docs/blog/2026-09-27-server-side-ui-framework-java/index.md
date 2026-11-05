@@ -56,19 +56,20 @@ Calling `field.getText()` inside the same handler would send a request to the br
 
 All UI operations in webforJ happen on the `Environment` thread. Events are processed sequentially on it, so two handlers never run against the same components at the same moment.
 
-Long work does not belong on that thread. Run it on another thread and hand the result back with `Environment.runLater()`:
+Long work does not belong on that thread. Read the `Environment` in the handler, run the work on another thread and hand the result back with `Environment.runLater()`:
 
 ```java
 report.onClick(e -> {
   status.setText("Working...");
+  Environment env = Environment.getCurrent();
   new Thread(() -> {
     String result = slowReport();
-    Environment.runLater(() -> status.setText(result));
+    Environment.runLater(env, () -> status.setText(result));
   }).start();
 });
 ```
 
-A thread created from inside the `Environment` thread inherits access to it, as the [asynchronous updates guide](/docs/advanced/asynchronous-updates) explains. Threads created elsewhere, such as a static initializer or a library's own thread pool, do not, and `runLater()` throws an `IllegalStateException` there.
+The `Environment` is read in the handler, where it belongs to the user who clicked, and passed to the thread. With the target in hand `runLater()` works from any thread, including a library's own thread pool, as the [asynchronous updates guide](/docs/advanced/asynchronous-updates) explains. Reading `Environment.getCurrent()` on the background thread returns `null`, because that thread belongs to no user.
 
 ## Where state lives {#where-state-lives}
 
@@ -147,7 +148,7 @@ The browser runs a small bootstrap script and the web components that render you
 
 ### What happens to long-running tasks? {#faq-long-tasks}
 
-Run them on a background thread and use `Environment.runLater()` to update components when they finish. That keeps the UI thread free to handle other events from the same user.
+Run them on a background thread and use `Environment.runLater()` with the `Environment` read in the handler to update components when they finish. That keeps the UI thread free to handle other events from the same user.
 
 ### Can a server-side UI work offline? {#faq-offline}
 

@@ -7,7 +7,7 @@ description: Run background work off the UI thread and push updates back to webf
 
 <DocChip chip='since' label='25.02' />
 <DocChip chip='experimental' />
-<JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(java.lang.Runnable)" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(com.webforj.Environment,java.lang.Runnable)" top='true'/>
 
 The `Environment.runLater()` API provides a mechanism for safely updating the UI from background threads in webforJ applications. This experimental feature enables asynchronous operations while maintaining thread safety for UI modifications.
 
@@ -25,27 +25,31 @@ webforJ enforces a strict threading model where all UI operations must occur on 
 
 This single-threaded model prevents race conditions and maintains a consistent state for all UI components, but creates challenges when integrating with asynchronous, long-running computation tasks.
 
+Each user session has its own `Environment` and its own `Environment` thread. A background thread belongs to no session, so it must be told which `Environment` to update.
+
 ## `RunLater` API {#runlater-api}
 
-The `Environment.runLater()` API provides two methods for scheduling UI updates:
+The `Environment.runLater()` API provides two methods for scheduling UI updates. Both take the target `Environment` as their first argument:
 
 ```java title="Environment.java"
 // Schedule a task with no return value
-public static PendingResult<Void> runLater(Runnable task)
+public static PendingResult<Void> runLater(Environment target, Runnable task)
 
 // Schedule a task that returns a value
-public static <T> PendingResult<T> runLater(Supplier<T> supplier)
+public static <T> PendingResult<T> runLater(Environment target, Supplier<T> supplier)
 ```
 
 Both methods return a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> that tracks task completion and provides access to the result or any exceptions that occurred.
 
-## Thread context inheritance {#thread-context-inheritance}
+:::warning[Overloads without a target]
+The overloads `runLater(Runnable)` and `runLater(Supplier)` guess the target from the thread that created the calling thread. On a thread pool shared by several users, every task runs in the `Environment` of the user whose call created that pool thread. These overloads are deprecated since 26.10 and scheduled for removal in the next major release. Always pass the target.
+:::
 
-Automatic context inheritance is a critical feature of `Environment.runLater()`. When a thread running in an `Environment` creates child threads, those children automatically inherit the ability to use `runLater()`.
+## Passing the target {#passing-the-target}
 
-### How inheritance works {#how-inheritance-works}
+`Environment.getCurrent()` returns the `Environment` of the current thread. On the `Environment` thread, which is where constructors, event handlers and lifecycle methods run, it returns the session's `Environment`. On a background thread it returns `null`.
 
-Any thread created from within an `Environment` thread automatically has access to that `Environment`. This inheritance happens automatically, so you don't need to pass any context or configure anything.
+Read the target where it's available, before the background work starts, and pass it to the work:
 
 ```java
 @Route
@@ -53,14 +57,13 @@ public class DataView extends Composite<Div> {
   private final ExecutorService executor = Executors.newCachedThreadPool();
 
   public DataView() {
-    // This thread has Environment context
+    // The constructor runs on the Environment thread
+    Environment env = Environment.getCurrent();
 
-    // Child threads inherit the context automatically
     executor.submit(() -> {
       String data = fetchRemoteData();
 
-      // Can use runLater because context was inherited
-      Environment.runLater(() -> {
+      Environment.runLater(env, () -> {
         dataLabel.setText(data);
         loadingSpinner.setVisible(false);
       });
@@ -69,32 +72,22 @@ public class DataView extends Composite<Div> {
 }
 ```
 
-### Threads without context {#threads-without-context}
+Because the target is passed as an argument, the call works from any thread: a thread the view created, a Spring `@Async` thread, the common `ForkJoinPool`, a timer thread or a callback thread of an HTTP client.
 
-Threads created outside the `Environment` context can't use `runLater()` and will throw an `IllegalStateException`:
+### Reading the target on the wrong thread {#reading-the-target-on-the-wrong-thread}
+
+The one mistake to avoid is reading `Environment.getCurrent()` inside the background work. There it returns `null`, and `runLater()` throws a `NullPointerException`:
 
 ```java
-// Static initializer - no Environment context
-static {
-  new Thread(() -> {
-    Environment.runLater(() -> {});  // Throws IllegalStateException
-  }).start();
-}
+executor.submit(() -> {
+  String data = fetchRemoteData();
 
-// System timer threads - no Environment context
-Timer timer = new Timer();
-timer.schedule(new TimerTask() {
-  public void run() {
-    Environment.runLater(() -> {});  // Throws IllegalStateException
-  }
-}, 1000);
-
-// External library threads - no Environment context
-httpClient.sendAsync(request, responseHandler)
-  .thenAccept(response -> {
-    Environment.runLater(() -> {});  // Throws IllegalStateException
-  });
+  // Wrong: getCurrent() returns null on a background thread
+  Environment.runLater(Environment.getCurrent(), () -> dataLabel.setText(data));
+});
 ```
+
+The same applies to static initializers, `java.util.Timer` threads and external library callbacks. None of them has an `Environment`, so the target must come from a field, a parameter or a captured local that was filled on the `Environment` thread.
 
 ## Execution behavior {#execution-behavior}
 
@@ -102,13 +95,14 @@ The execution behavior of `runLater()` depends on which thread calls it:
 
 ### From the UI thread {#from-the-ui-thread}
 
-When called from the `Environment` thread itself, tasks execute **synchronously and immediately**:
+When called from the target's own `Environment` thread, tasks execute **synchronously and immediately**:
 
 ```java
 button.onClick(e -> {
+  Environment env = Environment.getCurrent();
   System.out.println("Before: " + Thread.currentThread().getName());
 
-  PendingResult<String> result = Environment.runLater(() -> {
+  PendingResult<String> result = Environment.runLater(env, () -> {
     System.out.println("Inside: " + Thread.currentThread().getName());
     return "completed";
   });
@@ -121,17 +115,19 @@ With this synchronous behavior, UI updates from event handlers are applied immed
 
 ### From background threads {#from-background-threads}
 
-When called from a background thread, tasks are **queued for asynchronous execution**:
+When called from any other thread, tasks are **queued for asynchronous execution**:
 
 ```java
 @Override
 public void onDidCreate() {
+  Environment env = Environment.getCurrent();
+
   CompletableFuture.runAsync(() -> {
-    // This runs on ForkJoinPool thread
+    // This runs on a ForkJoinPool thread
     System.out.println("Background: " + Thread.currentThread().getName());
 
-    PendingResult<Void> result = Environment.runLater(() -> {
-      // This runs on Environment thread
+    PendingResult<Void> result = Environment.runLater(env, () -> {
+      // This runs on the Environment thread
       System.out.println("UI Update: " + Thread.currentThread().getName());
       statusLabel.setText("Processing complete");
     });
@@ -151,7 +147,7 @@ The <JavadocLink type="foundation" location="com/webforj/PendingResult" code='tr
 ### Basic cancellation {#basic-cancellation}
 
 ```java
-PendingResult<Void> result = Environment.runLater(() -> {
+PendingResult<Void> result = Environment.runLater(env, () -> {
   updateUI();
 });
 
@@ -171,12 +167,14 @@ public class LongRunningTask {
   private volatile boolean isCancelled = false;
 
   public void startTask() {
+    Environment env = Environment.getCurrent();
+
     CompletableFuture.runAsync(() -> {
       for (int i = 0; i <= 100; i++) {
         if (isCancelled) return;
 
         final int progress = i;
-        PendingResult<Void> update = Environment.runLater(() -> {
+        PendingResult<Void> update = Environment.runLater(env, () -> {
           progressBar.setValue(progress);
         });
 
@@ -228,7 +226,7 @@ public class CleanupView extends Composite<Div> {
 
 ## Design considerations {#design-considerations}
 
-1. **Context requirement**: Threads must have inherited an `Environment` context. External library threads, system timers, and static initializers can't use this API.
+1. **Target requirement**: The target `Environment` is read with `Environment.getCurrent()` on the `Environment` thread and passed to the background work. Reading it on a background thread returns `null`.
 
 2. **Memory leak prevention**: Always track and cancel `PendingResult` objects in component lifecycle methods. Queued lambdas capture references to UI components, preventing garbage collection if not cancelled.
 
@@ -242,7 +240,7 @@ The following is a complete, production-ready implementation demonstrating all b
 
 <!-- vale off -->
 
-<ExpandableCode title="LongTaskView.java" language="java" startLine={91} endLine={159}>
+<ExpandableCode title="LongTaskView.java" language="java" startLine={91} endLine={161}>
 
 ```java
 @Route("/")
@@ -345,6 +343,9 @@ public class LongTaskView extends Composite<FlexLayout> {
     isCancelled = false;
     pendingUIUpdates.clear();
 
+    // Read the target Environment on the UI thread, before the background task starts
+    Environment env = Environment.getCurrent();
+
     // Start background task with explicit executor
     // Note: cancel(true) will interrupt the thread, causing Thread.sleep() to throw
     // InterruptedException
@@ -355,7 +356,7 @@ public class LongTaskView extends Composite<FlexLayout> {
       for (int i = 0; i <= 100; i++) {
         // Check if cancelled
         if (isCancelled) {
-          PendingResult<Void> cancelUpdate = Environment.runLater(() -> {
+          PendingResult<Void> cancelUpdate = Environment.runLater(env, () -> {
             statusField.setValue("Task cancelled!");
             progressBar.setValue(0);
             resultField.setValue("");
@@ -381,7 +382,7 @@ public class LongTaskView extends Composite<FlexLayout> {
 
         // Update progress from background thread
         final int progress = i;
-        PendingResult<Void> updateResult = Environment.runLater(() -> {
+        PendingResult<Void> updateResult = Environment.runLater(env, () -> {
           progressBar.setValue(progress);
           statusField.setValue("Processing... " + progress + "%");
         });
@@ -392,7 +393,7 @@ public class LongTaskView extends Composite<FlexLayout> {
       // cancellation)
       if (!isCancelled) {
         final double finalResult = result;
-        PendingResult<Void> finalUpdate = Environment.runLater(() -> {
+        PendingResult<Void> finalUpdate = Environment.runLater(env, () -> {
           statusField.setValue("Task completed!");
           resultField.setValue("Result: " + String.format("%.2f", finalResult));
           startButton.setEnabled(true);
@@ -463,7 +464,13 @@ private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> 
 - Uses a **single thread executor** to prevent resource exhaustion
 - Creates **daemon threads** that won't prevent JVM shutdown
 
-#### 2. Tracking pending updates {#2-tracking-pending-updates}
+#### 2. Naming the target {#2-naming-the-target}
+```java
+Environment env = Environment.getCurrent();
+```
+`startLongTask()` runs on the `Environment` thread, so it reads the target there and the background task passes it to every `Environment.runLater()` call. The same code works unchanged on a shared app-wide thread pool.
+
+#### 3. Tracking pending updates {#3-tracking-pending-updates}
 ```java
 private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
 ```
@@ -472,7 +479,7 @@ Every `Environment.runLater()` call is tracked to enable:
 - Memory leak prevention in `onDestroy()`
 - Proper cleanup during component lifecycle
 
-#### 3. Cooperative cancellation {#3-cooperative-cancellation}
+#### 4. Cooperative cancellation {#4-cooperative-cancellation}
 ```java
 private volatile boolean isCancelled = false;
 ```
@@ -481,7 +488,7 @@ The background thread checks this flag at each iteration, enabling:
 - Clean exit from the loop
 - Prevention of further UI updates
 
-#### 4. Lifecycle management {#4-lifecycle-management}
+#### 5. Lifecycle management {#5-lifecycle-management}
 ```java
 @Override
 protected void onDestroy() {
@@ -496,7 +503,7 @@ Critical for preventing memory leaks by:
 - Interrupting running threads
 - Shutting down the executor
 
-#### 5. UI responsiveness testing {#5-ui-responsiveness-testing}
+#### 6. UI responsiveness testing {#6-ui-responsiveness-testing}
 ```java
 testButton.onClick(e -> {
   int count = clickCount.incrementAndGet();

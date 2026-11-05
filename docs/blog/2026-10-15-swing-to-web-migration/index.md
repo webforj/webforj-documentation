@@ -196,9 +196,10 @@ public class ReportView extends Composite<FlexLayout> {
     run.onClick(e -> {
       run.setEnabled(false);
       progress.setVisible(true);
+      Environment env = Environment.getCurrent();
 
       CompletableFuture.supplyAsync(service::exportReport).thenAccept(path ->
-          Environment.runLater(() -> {
+          Environment.runLater(env, () -> {
             progress.setVisible(false);
             run.setEnabled(true);
             OptionDialog.showMessageDialog("Saved to " + path, "Export finished");
