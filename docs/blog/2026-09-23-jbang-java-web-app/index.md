@@ -104,6 +104,14 @@ jbang HelloWorld.java
 
 On the first run, JBang downloads the dependencies, compiles the file, starts the embedded server on a random available port, and opens your default browser to the app. The download happens only on that first run.
 
+The video below shows two single-file apps started this way: a counter, and a process manager that lists and stops processes on the machine.
+
+<div class="videos-container">
+  <video controls muted preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-jbang-java-web-app/jbang-muted.mp4#t=0.5" type="video/mp4" />
+  </video>
+</div>
+
 On macOS and Linux you can also make the file executable with `chmod +x HelloWorld.java`, then start it with `./HelloWorld.java`. The shebang line is what makes that work.
 
 ## How do you add a dependency? {#add-a-dependency}
