@@ -18,7 +18,7 @@ If you want to build internal tools in Java, pick a framework that lets the back
 <!-- truncate -->
 
 :::tip See it in real apps
-Want to see what an internal tool looks like in webforJ before you build one? Three apps in [built-with-webforJ](https://github.com/webforj/built-with-webforj) have that shape: [CRUD](https://github.com/webforj/built-with-webforj/tree/main/webforj-crud) manages records in a searchable table with an edit dialog, [Bookstore](https://github.com/webforj/built-with-webforj/tree/main/webforj-bookstore) adds login, a drawer editor and an admin-only page, and [Dashboard](https://github.com/webforj/built-with-webforj/tree/main/webforj-dashboard) shows tables and charts behind a navigation drawer. Clone one, run `mvn`, and take it apart.
+Want to see what an internal tool looks like in webforJ before you build one? Two apps in [built-with-webforJ](https://github.com/webforj/built-with-webforj) have that shape: [CRUD](https://github.com/webforj/built-with-webforj/tree/main/webforj-crud) manages records in a searchable table with an edit dialog, and [Bookstore](https://github.com/webforj/built-with-webforj/tree/main/webforj-bookstore) adds login, a drawer editor and an admin-only page. Clone one, run `mvn`, and take it apart.
 :::
 
 ## What internal tools actually need {#what-internal-tools-need}
@@ -81,7 +81,7 @@ Authentication plugs into Spring Security. The bookstore registers its login vie
 
 ## Give every tool the same shell {#shell-and-navigation}
 
-Internal tools multiply. Today it is a user lookup, next quarter it is a refund screen and a report. A shared shell keeps them feeling like one product. [`AppLayout`](/docs/components/app-layout) provides the header and a drawer for navigation, and each page is a route that names the layout as its outlet. The `webforj-dashboard` app uses it for a navigation drawer with a toggle, and ships a light and dark theme toggle on top.
+Internal tools multiply. Today it is a user lookup, next quarter it is a refund screen and a report. A shared shell keeps them feeling like one product. [`AppLayout`](/docs/components/app-layout) provides the header and a drawer for navigation, and each page is a route that names the layout as its outlet.
 
 When a new tool arrives, it is one more class with a route. It inherits the header, the menu and the access rules without copying them.
 

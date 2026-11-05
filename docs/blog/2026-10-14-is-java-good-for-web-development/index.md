@@ -16,7 +16,7 @@ You are about to start a web app, your team knows Java, and every search you mak
 <!-- truncate -->
 
 :::tip See for yourself
-Not sure a Java web app can look current? Open the [Dashboard app](https://github.com/webforj/built-with-webforj/tree/main/webforj-dashboard) in built-with-webforJ, a market dashboard with live-updating tables, charts and themes, written in Java. Clone it, run `mvn`, and judge the result in your own browser.
+Not sure a Java web app can look current? Open the [Bookstore app](https://github.com/webforj/built-with-webforj/tree/main/webforj-bookstore) in built-with-webforJ, a book inventory with a sortable table, drawers, validated forms and role-based pages, written in Java. Clone it, run `mvn`, and judge the result in your own browser.
 :::
 
 The belief that Java is a poor fit for the web comes from a few specific habits. Each one is worth checking on its own, so this post takes them as myths and answers each with facts. It ends with the cases where JavaScript really is the better pick.
