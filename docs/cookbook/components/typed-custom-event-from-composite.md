@@ -82,7 +82,7 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("rating-demo")
 public class RatingView extends Composite<Div> {
   private final Div self = getBoundComponent();
   private final RatingPicker ratingPicker = new RatingPicker();

@@ -14,7 +14,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("inline-css-demo")
 @InlineStyleSheet(
   value = ".highlight {"
       + " background-color: var(--dwc-color-warning-alt);"
