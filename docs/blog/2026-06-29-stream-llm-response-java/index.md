@@ -134,4 +134,4 @@ Answers often include code. The viewer renders fenced code blocks, but it highli
 
 ## Where to go next {#where-to-go-next}
 
-Start a project with [startforJ](https://docs.webforj.com/startforj), or add the Spring Boot integration to an existing app. The [MarkdownViewer reference](/docs/components/markdownviewer) lists every method used here. The [Button](/docs/components/button) and [TextField](/docs/components/fields/text-field) pages cover the input controls in the view.
+Start a project with [startforJ](https://docs.webforj.com/startforj), or add the Spring Boot integration to an existing app. The [MarkdownViewer reference](/docs/components/markdownviewer) lists every method used here. The [Button](/docs/components/button) and [TextField](/docs/components/fields/textfield) pages cover the input controls in the view.
