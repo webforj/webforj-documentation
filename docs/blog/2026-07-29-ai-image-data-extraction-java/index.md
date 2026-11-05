@@ -37,8 +37,9 @@ Start with the file picker. The `Upload` component is an inline file picker that
 ```java
 private final Upload upload = new Upload();
 
-public InvoiceUploadView(ChatClient chat) {
+public InvoiceUploadView(ChatClient chat, TaskExecutor executor) {
   this.chat = chat;
+  this.executor = executor;
 
   upload.setSelectionMode(Upload.SelectionMode.SINGLE);
   upload.addFilter("Invoice images", "*.png;*.jpg;*.jpeg");
@@ -59,7 +60,7 @@ The size cap runs in the browser. A file over the limit fires `UploadRejectEvent
 
 Spring AI's `ChatClient` accepts media inside a user message. You pass the MIME type and a resource for the image. You then call `entity` with a class, and the client asks the model for output that matches that class and converts the answer. Spring AI auto-configures a `ChatClient.Builder`, so declare a `ChatClient` bean that returns `builder.build()`, and Spring injects it into the view.
 
-The uploaded file sits in webforJ's upload cache. Call `move()` to take it out of the cache before you use it. `move()` needs the session's environment, so call it in the upload listener, before the worker thread starts. The model call takes time, so run it on a separate thread. When the answer arrives, hand the UI update back with `Environment.runLater`.
+The uploaded file sits in webforJ's upload cache. Call `move()` to take it out of the cache before you use it. `move()` needs the session's environment, so call it in the upload listener, on the UI thread. The model call takes seconds, so hand it to Spring's shared `TaskExecutor`, which the view receives through its constructor like the `ChatClient`. A pool thread serves every user of the app, so the listener reads the session's `Environment` with `Environment.getCurrent()` and passes it to `Environment.runLater` when the answer arrives.
 
 ```java
 private void extract(UploadedFile uploaded) {
@@ -76,7 +77,8 @@ private void extract(UploadedFile uploaded) {
       ? MimeTypeUtils.IMAGE_PNG
       : MimeTypeUtils.IMAGE_JPEG;
 
-  new Thread(() -> {
+  Environment env = Environment.getCurrent();
+  executor.execute(() -> {
     try {
       InvoiceData data = chat.prompt()
           .user(u -> u.text(PROMPT).media(type, new FileSystemResource(file)))
@@ -86,19 +88,19 @@ private void extract(UploadedFile uploaded) {
         throw new IllegalStateException("the model returned no fields");
       }
 
-      Environment.runLater(() -> show(data));
+      Environment.runLater(env, () -> show(data));
     } catch (Exception ex) {
-      Environment.runLater(() -> {
+      Environment.runLater(env, () -> {
         status.setText("Extraction failed: " + ex.getMessage());
       });
     } finally {
       file.delete();
     }
-  }).start();
+  });
 }
 ```
 
-The `status` label changes and the file leaves the cache before the thread starts, so the user sees feedback at once. `move()` without an argument places the file in the app's working directory, so the `finally` block deletes it once the model has read it. `entity` can return `null`, for example when the model sends back no content, so the method turns that case into a failure. The catch block reports a failure through the same `runLater` path, which keeps every component update on the UI thread.
+The `status` label changes and the file leaves the cache before the task starts, so the user sees feedback at once. `move()` without an argument places the file in the app's working directory, so the `finally` block deletes it once the model has read it. `entity` can return `null`, for example when the model sends back no content, so the method turns that case into a failure. The catch block reports a failure through the same `runLater` path, which keeps every component update on the UI thread.
 
 The prompt is the contract with the model. It names the fields you want and says what to do with values the model cannot read. In this sketch it is:
 
@@ -133,7 +135,7 @@ Treat every field as optional. The prompt asks for `null` when a value is unread
 
 ## Keep the UI thread free {#keep-the-ui-thread-free}
 
-A model call takes far longer than a button click. If you make the call inside the `onUpload` listener, the session waits until the answer returns. The worker thread in `extract` avoids that wait. Every change to a component goes through `Environment.runLater`, so the page updates on the thread that owns it.
+A model call takes far longer than a button click. If you make the call inside the `onUpload` listener, the session waits until the answer returns. The task executor in `extract` avoids that wait. The executor is one pool for the whole app, so a pool thread cannot know which session it works for. That is why `extract` reads `Environment.getCurrent()` on the UI thread and passes it to every `Environment.runLater` call, and the page of the user who uploaded is the one that updates.
 
 The code in the earlier sections attaches no chat memory. Each call sends one image and one prompt, so no conversation builds up between uploads.
 
@@ -142,10 +144,10 @@ The code in the earlier sections attaches no chat memory. Each call sends one im
 - [ ] Filter the picker to image types.
 - [ ] Cap the file size with `setMaxFileSize`.
 - [ ] Check the extension on the server with `getClientExtension()`.
-- [ ] Move the upload out of the cache in the upload listener, before the worker thread starts.
+- [ ] Move the upload out of the cache in the upload listener, before the task starts.
 - [ ] Delete the file once the model has read it.
-- [ ] Run the model call on a separate thread.
-- [ ] Update components only inside `Environment.runLater`.
+- [ ] Run the model call on Spring's shared `TaskExecutor`.
+- [ ] Update components only inside `Environment.runLater`, with the `Environment` read on the UI thread.
 - [ ] Treat every extracted field as optional.
 - [ ] Compare the extracted total with the invoice before you save it.
 

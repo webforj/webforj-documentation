@@ -124,9 +124,9 @@ Notice that the class has no Ollama-specific code. The starter and the propertie
 
 A model reply takes seconds. If the click handler calls `reply()` directly, the page freezes until the answer comes back. The fix is to run the call on a background thread and send the result back to the UI when it is ready.
 
-webforJ requires UI work to happen on the Environment thread. A background thread that was started from inside an Environment thread inherits that context, and it can post updates with `Environment.runLater`. A thread created outside the Environment, such as a plain `Timer` task or a static initializer thread, throws `IllegalStateException` when it calls `runLater`. The [asynchronous updates](/docs/advanced/asynchronous-updates) page covers the thread model in detail.
+webforJ requires UI work to happen on the Environment thread of the session that owns the components. A background thread belongs to no session, so it has to be told which one to update. The click handler reads `Environment.getCurrent()`, which returns this user's Environment there, and passes it to `Environment.runLater`. The [asynchronous updates](/docs/advanced/asynchronous-updates) page covers the thread model in detail.
 
-The view below creates its executor in the constructor. The click handler runs on the Environment thread, so each task it submits inherits the context:
+The view below takes Spring's shared `TaskExecutor` through its constructor, next to the chat service, so every user's model calls run on one bounded pool:
 
 ```java
 @Route("/")
@@ -136,9 +136,10 @@ public class ChatView extends Composite<FlexLayout> {
   private final Paragraph transcript = new Paragraph();
   private final TextArea input = new TextArea();
   private final Button send = new Button("Send");
-  private final ExecutorService worker = Executors.newCachedThreadPool();
+  private final TaskExecutor worker;
 
-  public ChatView(LocalChatService chat) {
+  public ChatView(LocalChatService chat, TaskExecutor worker) {
+    this.worker = worker;
     self.setDirection(FlexDirection.COLUMN);
     self.setMaxWidth(720);
     self.setStyle("margin", "1em auto");
@@ -147,8 +148,9 @@ public class ChatView extends Composite<FlexLayout> {
       String prompt = input.getValue();
       input.setValue("");
       send.setEnabled(false);
+      Environment env = Environment.getCurrent();
 
-      worker.submit(() -> {
+      worker.execute(() -> {
         String text;
         try {
           text = chat.reply(prompt);
@@ -156,7 +158,7 @@ public class ChatView extends Composite<FlexLayout> {
           text = "The local model did not answer: " + ex.getMessage();
         }
         String answer = text;
-        Environment.runLater(() -> {
+        Environment.runLater(env, () -> {
           transcript.setText(answer);
           send.setEnabled(true);
         });
