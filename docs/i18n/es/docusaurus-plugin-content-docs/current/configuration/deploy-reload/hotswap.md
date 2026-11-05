@@ -1,5 +1,5 @@
 ---
-title: Hotswap
+title: Intercambio en caliente
 sidebar_position: 10
 sidebar_class_name: new-content
 description: >-
