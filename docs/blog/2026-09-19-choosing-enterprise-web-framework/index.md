@@ -1,6 +1,6 @@
 ---
 title: "Choosing a web framework for enterprise applications"
-description: "A CTO checklist for choosing a web framework for enterprise applications: eight weighted criteria, red flags, a copyable scoring table, and the webforJ answers."
+description: "A checklist for choosing a web framework for enterprise applications: eight weighted criteria, red flags, a copyable scoring table, and the webforJ answers."
 slug: choosing-enterprise-web-framework
 date: 2026-09-19
 authors: webforJ
@@ -48,7 +48,7 @@ For each criterion, ask for evidence you can read, such as documentation, a samp
 
 **Red flags.** A second language and toolchain for the front end. A separate team that owns the screens. A pool of specialists you cannot hire in your region.
 
-**How webforJ answers.** You build the whole app, screens included, in Java. The Dutch ERP provider Prodin Business Solutions, with over 45 years of experience, assembled a six-member Java development team, reused Java-compatible business logic of which some was written over two decades ago, and delivered its first web-based modules to customers within four months ([success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf)). For the wider case, read the [full-stack Java framework overview](/blog/java-full-stack-framework).
+**How webforJ answers.** You build the whole app, screens included, in Java. [Prodin](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf) assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers. For the wider case, read the [full-stack Java framework overview](/blog/java-full-stack-framework).
 
 ## Security model {#security-model}
 
@@ -68,7 +68,7 @@ For each criterion, ask for evidence you can read, such as documentation, a samp
 
 **Red flags.** A young company with no track record. A project that depends on a few volunteers. Support only in one time zone.
 
-**How webforJ answers.** webforJ comes from BASIS International, a company that has built software and tools for business solutions for almost 40 years and has delivered technology built on Java for more than 20. It is privately owned and operated, with offices in Albuquerque in the US and Saarbrücken in Germany, support contacts in both regions, and partners in more than 30 countries ([company page](https://webforj.com/company)).
+**How webforJ answers.** webforJ comes from BASIS International. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 
 ## Upgrade path {#upgrade-path}
 
@@ -119,7 +119,7 @@ For each criterion, ask for evidence you can read, such as documentation, a samp
 
 **Red flags.** Separate front-end and back-end teams for a single form. Duplicated validation rules in two languages. A long list of third-party packages to track for vulnerabilities.
 
-**How webforJ answers.** A feature is one Java change by one developer, using components, routing, data binding with Jakarta validation, tables, and security from one framework. The Prodin result, four months to the first customer-facing web modules with a six-member Java team, is the kind of delivery data to ask every vendor for.
+**How webforJ answers.** A feature is one Java change by one developer, using components, routing, data binding with Jakarta validation, tables, and security from one framework. Within four months, Prodin delivered their first web-based modules to customers. That is the kind of delivery data to ask every vendor for.
 
 ## A scoring table you can copy {#scoring-table}
 
@@ -153,9 +153,9 @@ Weight the criteria that carry your risk, score each candidate against evidence 
 
 Team skills and hiring, the security model, longevity and vendor backing, the upgrade path, integration with your existing systems, AI readiness, accessibility, and the effort to deliver and maintain. webforJ documents each of these, including route security, Spring Boot integration and OpenRewrite upgrade recipes.
 
-### Is webforJ backed by an established vendor? {#faq-vendor}
+### Who is the vendor behind webforJ? {#faq-vendor}
 
-webforJ comes from BASIS International, which has built business software and tools for almost 40 years, has delivered technology built on Java for more than 20, and is privately owned and operated. It has offices in Albuquerque and Saarbrücken, support staff in both regions and partners in more than 30 countries.
+webforJ comes from BASIS International. BASIS software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 
 ### Does a webforJ app work with our existing Spring Boot services? {#faq-spring}
 
