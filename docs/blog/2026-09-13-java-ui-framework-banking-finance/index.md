@@ -21,7 +21,7 @@ If you are choosing a Java UI framework for banking and financial services, webf
 
 Most banks and financial firms do not struggle with customer-facing marketing sites. The hard part is the long tail of internal apps: operations consoles, case management, reporting, onboarding, and review queues. They are form-heavy, table-heavy, permission-heavy and expected to run for years.
 
-For a head of engineering, that turns the framework question into a risk question. Where does the logic live? Who can open which screen? Can your existing reviewers read the code? Can the people you already employ build it? Will it still be maintainable after the next three reorganizations?
+For a review board, that turns the framework question into a risk question. Where does the logic live? Who can open which screen? Can your existing reviewers read the code? Can the people you already employ build it? Will it still be maintainable after the next three reorganizations?
 
 The sections below take those questions in order. If you want the general checklist for any enterprise Java web framework first, we cover it in [Java framework for enterprise web applications: a checklist](/blog/java-enterprise-web-framework). This post is the version for regulated, risk-aware teams.
 
@@ -29,9 +29,9 @@ The sections below take those questions in order. If you want the general checkl
 
 In a webforJ app, you write the whole app in Java and it runs on the server. UI state lives on the server and the browser renders standard web components. Events travel from the browser to your Java code, and your Java code decides what happens next. The [client and server docs](/docs/architecture/client-server) describe the three kinds of traffic between the two sides.
 
-For a bank this matters for a plain reason: there is no second copy of your rules in browser code that someone has to keep in sync, and nothing in the browser that has to be trusted. The production hardening guide says it directly: a manipulated client can send anything, so every value your code receives is re-validated on the server. Because [data binding and validation](/docs/data-binding/validation/jakarta-validation) run in Java, constraints such as Jakarta validation are enforced server-side and not only in the browser.
+For a bank this matters for a plain reason: there is no second copy of your rules in browser code that someone has to keep in sync, and nothing in the browser that has to be trusted. A manipulated client can send anything, so every value your code receives is re-validated on the server. Because [data binding and validation](/docs/data-binding/validation/jakarta-validation) run in Java, constraints such as Jakarta validation are enforced server-side and not only in the browser.
 
-The same guide adds a caution that we think belongs in every architecture review. Hiding or disabling a control is an interface cue, not access control. The rule goes in the server-side handler.
+One caution belongs in every architecture review. Hiding or disabling a control is an interface cue, not access control. The rule goes in the server-side handler.
 
 ## Route security with Spring {#route-level-security}
 
@@ -55,13 +55,13 @@ The cheapest staffing plan is the team you already have. A webforJ app does not 
 
 On the backend side, [Spring integration](/docs/integrations/spring/overview) lets components use your Spring beans, and Spring Data repositories connect to tables. Services you already run stay in place, and the app can also run standalone when there is no Spring backend. Our [full-stack Java framework post](/blog/java-full-stack-framework) shows what is in the framework from database to button.
 
-One documented example of the staffing effect is Prodin Business Solutions, a Dutch ERP software provider with over 45 years of experience. According to its [success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf), Prodin assembled a six-member Java development team, reused Java-compatible business logic of which some was written more than two decades ago, and delivered its first web-based modules to customers within four months.
+One documented example of the staffing effect is [Prodin Business Solutions](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf). Prodin assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers.
 
 ## Built for apps that live for years {#long-lived-apps}
 
 Long-lived apps are where framework risk shows up. Your business logic is plain Java, so it sits in the same language and build tools as the rest of your estate and does not depend on a separate front-end stack. If you have Swing desktop apps in the estate, the [Webswing integration](/docs/integrations/webswing/overview) runs them in the browser while you move screens to webforJ one at a time. The Java business code and the team stay the same during that move.
 
-A common worry from architecture boards is vendor stability. BASIS International, the company behind webforJ, has built software and tools for business solutions for almost 40 years, with more than 20 years of delivering technology built on Java. It is privately owned and operated, with offices in Albuquerque in the United States and Saarbrücken in Germany. Support contacts are listed for both regions and partners work in more than 30 countries. The details are on the [company page](https://webforj.com/company).
+A common worry from architecture boards is vendor stability. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 
 ## Decision table {#decision-table}
 
@@ -76,7 +76,7 @@ Use this table in your evaluation. The middle column is the question to ask of a
 | Staffing | Do we need a separate front-end team? | Java developers build the whole app |
 | Existing services | Can it use our Spring beans and repositories? | Spring Boot integration, Spring Data repositories for tables |
 | Legacy desktop | Can we move screen by screen? | Webswing integration for Swing apps in the browser |
-| Vendor continuity | Who stands behind it and where is support? | BASIS International, offices in the US and Germany, support in both regions |
+| Vendor continuity | Who stands behind it and where is support? | BASIS International, operating its own sites in North America and Europe |
 
 Our recommendation: shortlist webforJ for any internal or back-office app where server-side control, route security and Java reuse are requirements, and run a pilot to confirm it against your own standards.
 
@@ -102,4 +102,4 @@ Yes. Components can use your Spring beans and Spring Data repositories connect t
 
 ### Who stands behind webforJ and where is support? {#faq-vendor}
 
-webforJ is built by BASIS International, a privately owned company with almost 40 years in business software and more than 20 years of Java technology. It has offices in Albuquerque and Saarbrücken, with support contacts in both regions.
+webforJ is built by BASIS International. BASIS software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java.
