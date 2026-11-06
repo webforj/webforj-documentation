@@ -19,21 +19,21 @@ This post takes the doubts one at a time, myth by myth.
 
 ## Myth: webforJ is brand new {#myth-new}
 
-**Fact:** the name is recent, the technology is not. webforJ is a Java API around the DWC, the browser client that BBj has shipped to developers. BBj is the foundation: as the [architecture documentation](/docs/architecture/controls-components) explains, every webforJ component shipped with the product maps one to one to an underlying BBj control. You build on that proven foundation entirely in Java.
+**Fact:** the name is recent, the technology is not. webforJ is a Java API around the DWC, the browser client that BBj has shipped to developers. BBj is the foundation: every webforJ component we ship maps one to one to an underlying BBj control, as our [architecture documentation](/docs/architecture/controls-components) shows. You build on that proven foundation entirely in Java.
 
 That mapping is the point. When you place a `Button` or a `Table` on a page, you are not trusting a UI toolkit that was written last year. You are driving components that sit on a client and a server runtime that BASIS has been building and supporting for years. The webforJ layer is the part that is new, and it is the part you can read, test and upgrade like any other Java library.
 
 ## Who is behind webforJ {#who-is-behind}
 
-webforJ is built by BASIS International. The company page says BASIS has "almost 40 years" of experience helping organizations modernize mission-critical systems, and "20+ years of delivering technology built on Java." The BASIS site says its mission "since 1985" is to blaze a trail, and that in 1985 it released the first generation of Business BASIC.
+webforJ is built by BASIS International. For almost 40 years we have helped organizations modernize mission-critical systems, and for more than 20 years we have delivered technology built on Java. Our mission since 1985 has been to blaze a trail, starting with the first generation of Business BASIC that year.
 
-BASIS is privately owned and operated. It runs its own sites in North America and Europe, with the US base in Albuquerque, New Mexico, and the European base in Saarbrucken, Germany. Support is staffed in both regions, with separate email addresses and phone numbers published on the [company page](https://webforj.com/company/). It also works with partners in more than 30 countries.
+BASIS is privately owned and operated. We run our own sites in North America and Europe, with the US base in Albuquerque, New Mexico, and the European base in Saarbrücken, Germany, each with its own support contacts on our [company page](https://webforj.com/company/). We also work with partners in more than 30 countries.
 
-For a procurement conversation, this is the answer to "is there a company behind it." There is a named, privately owned company with offices on two continents, and its mission page dates back to 1985.
+For a procurement conversation, this is the answer to "is there a company behind it." There is a named, privately owned company with offices on two continents and a mission that dates back to 1985.
 
 ## Myth: a new framework has no lineage {#myth-lineage}
 
-**Fact:** the lineage runs in a straight line. BBx was the first generation of Business BASIC in 1985. BBj is described by BASIS as the Java-based sixth generation, "Business BASIC on Java". The DWC arrived on top of BBj as a browser client, announced in May 2021 with BBx and Barista 21.0. webforJ is the Java API around that client.
+**Fact:** the lineage runs in a straight line. BBx was the first generation of Business BASIC in 1985. BBj is the Java-based sixth generation, Business BASIC on Java. The DWC arrived on top of BBj as a browser client, announced in May 2021 with BBx and Barista 21.0. webforJ is the Java API around that client.
 
 BASIS also publishes how its Java baseline moves forward. BBj 20.10 ended support for Java 8. BBj 20.30 was the first release built entirely with Java 11. BBj 24.00 is built with Java 17 and runs with either Java 17 or Java 21. webforJ 26.00 requires Java 21 or later, and Java 25 is also supported. The stack has moved to newer Java versions over time, which is not what a prototype does.
 
@@ -55,7 +55,7 @@ Distribution is ordinary Java distribution. The artifacts are on Maven Central, 
 
 ## Myth: nobody runs it in production {#myth-nobody}
 
-**Fact:** there are named customers. The [success stories](https://webforj.com/success-stories/) include Prodin and b+p Personal. The company page lists myneva, Midata, Prodin and Bisco Industries as businesses running on BASIS.
+**Fact:** there are named customers. The [success stories](https://webforj.com/success-stories/) include Prodin and b+p Personal. myneva, Midata, Prodin and Bisco Industries are among the businesses running on BASIS technology.
 
 Prodin is a good one to read. It is described as a Dutch ERP software provider with over 45 years of experience. Within four months it delivered its first web-based modules to customers, with a six-member Java development team, and it reused Java-compatible business logic that had been written over two decades earlier. That is the pattern webforJ is designed for: a team that already has valuable code and needs a web front end, not a rewrite.
 
@@ -96,7 +96,7 @@ Yes. webforJ has been released on a regular schedule since 24.00 in April 2024, 
 
 ### Who is behind webforJ? {#faq-who-behind}
 
-BASIS International, a privately owned company with sites in North America and Europe and partners in more than 30 countries. Its company page describes almost 40 years of helping organizations modernize mission-critical systems and 20+ years of delivering technology built on Java.
+BASIS International, a privately owned company with sites in North America and Europe and partners in more than 30 countries. We have spent almost 40 years helping organizations modernize mission-critical systems and more than 20 years delivering technology built on Java.
 
 ### Does webforJ keep up with new Java versions? {#faq-long-term}
 

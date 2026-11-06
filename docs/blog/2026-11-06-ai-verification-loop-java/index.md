@@ -42,7 +42,7 @@ What it catches: convention drift. The agent reaches for webforJ's own approach 
 
 Skills say when to look something up. The [MCP server](/docs/ai-tooling/mcp) is what answers. It plugs the assistant into the webforJ documentation, APIs and design tokens, so it asks the server instead of guessing at method names.
 
-According to the docs, the assistant can target the webforJ version you use, search the knowledge base, scaffold a project from the official Maven archetypes, generate an accessible DWC theme from a brand color, read the styling surface of a component and validate any `--dwc-*` token before it lands in your CSS.
+With our MCP server, the assistant can target the webforJ version you use, search the knowledge base, scaffold a project from the official Maven archetypes, generate an accessible DWC theme from a brand color, read the styling surface of a component and validate any `--dwc-*` token before it lands in your CSS.
 
 That last one is a real example of the pattern. A token the agent invented fails validation against the catalog, so it never reaches your stylesheet.
 
