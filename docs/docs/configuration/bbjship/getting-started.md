@@ -62,10 +62,10 @@ The first run prepares your local BBj. It installs BBjShip and adds HotswapAgent
 
 ```text
 [INFO] webforJ watch: my-app is running at http://localhost:8888/webapp/my-app
-[INFO] webforJ watch: press Ctrl+C to stop the app and the watch
+[INFO] webforJ watch: press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the app and the watch
 ```
 
-Classes you compile reach the running app without a restart. Stop the build with `Ctrl+C` to stop the app.
+Classes you compile reach the running app without a restart. Stop the build with <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the app.
 
 ## Deploy the app {#deploy-the-app}
 

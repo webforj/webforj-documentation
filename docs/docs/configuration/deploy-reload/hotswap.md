@@ -177,12 +177,12 @@ Open the settings and turn on these options:
 <Tabs>
 <TabItem value="windows-linux" label="Windows and Linux">
 
-Press <kbd>Ctrl+ALt+S</kbd>, or choose **File** > **Settings**.
+Press <kbd>Ctrl</kbd>+<kbd>ALt</kbd>+<kbd>S</kbd>, or choose **File** > **Settings**.
 
 </TabItem>
 <TabItem value="macos" label="macOS">
 
-Press <kbd>Cmd+,</kbd>, or choose **IntelliJ IDEA** > **Settings**.
+Press <kbd>Cmd</kbd>+<kbd>+</kbd>, or choose **IntelliJ IDEA** > **Settings**.
 
 </TabItem>
 </Tabs>
@@ -200,19 +200,19 @@ Set these Registry keys to `0`:
 <Tabs>
 <TabItem value="windows-linux" label="Windows and Linux">
 
-1. Press `Ctrl+Shift+A` to open **Find Action**.
+1. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> to open **Find Action**.
 2. Type `Registry...` and select it.
 
 </TabItem>
 <TabItem value="macos" label="macOS">
 
-1. Press `Cmd+Shift+A` to open **Find Action**.
+1. Press <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> to open **Find Action**.
 2. Type `Registry...` and select it.
 
 </TabItem>
 </Tabs>
 
-You can also press `Shift` twice to open **Search Everywhere**, switch to the **Actions** tab, and type `Registry`.
+You can also press <kbd>Shift</kbd> twice to open **Search Everywhere**, switch to the **Actions** tab, and type `Registry`.
 
 In the **Registry** dialog, type a key name to filter the list, then set its value to `0`.
 

@@ -83,7 +83,7 @@ When BBjShip refuses a deploy or an undeploy, the message starts with `BBj deplo
 | 409 | `Entry class <class> is already published as <name>. Undeploy <name> first` | The entry class of the app already runs under another publish name. | Undeploy the other app, or deploy under its name. |
 | 409 | `Published BBj application <name> is not owned by BBjShip...` | An app registered in Enterprise Manager already uses the name. | Choose another publish name, or remove that app in Enterprise Manager. |
 | 409 | `Published BBj application <other> differs from <name> only by letter case...` | Another app uses the same name in another letter case. | Choose another publish name. |
-| 409 | `<name> is a development run. Stop the watch first` | A development run of the app is active. | Stop the watch with `Ctrl+C`, then deploy. |
+| 409 | `<name> is a development run. Stop the watch first` | A development run of the app is active. | Stop the watch with <kbd>Ctrl</kbd>+<kbd>C</kbd>, then deploy. |
 | 409 | `<name> is deployed from an archive. Undeploy it first` | A development run uses the name of a deployed app. | Undeploy the app, or set another `<publishName>` for the development run. |
 | 413 | `BBj deployment archive exceeds the allowed size of 1 GiB` | The archive is larger than BBjShip accepts. | Remove dependencies the app doesn't need at runtime. |
 | 500 | `BBj deployment failed. Check the BBjServices log` | BBjServices failed while it installed or removed the app. | Read the BBjServices logs. |

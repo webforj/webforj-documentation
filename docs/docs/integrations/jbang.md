@@ -226,7 +226,7 @@ The JBang starter configures the following defaults:
 
 JBang scripts don't support live reload. To see changes:
 
-1. Stop the running script (close the browser tab or press `Ctrl+C`)
+1. Stop the running script (close the browser tab or press <kbd>Ctrl</kbd>+<kbd>C</kbd>)
 2. Edit your code
 3. Run `jbang HelloWorld.java` again
 

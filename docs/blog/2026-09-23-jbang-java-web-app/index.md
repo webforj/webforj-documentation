@@ -131,7 +131,7 @@ jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
 jbang -Dwebforj.jbang.auto-shutdown=false HelloWorld.java
 ```
 
-The first line waits 30 seconds after the last tab closes. The second turns auto-shutdown off, so the server keeps running until you stop it with `Ctrl+C`.
+The first line waits 30 seconds after the last tab closes. The second turns auto-shutdown off, so the server keeps running until you stop it with <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
 ## What are the limits of one file? {#limits}
 
