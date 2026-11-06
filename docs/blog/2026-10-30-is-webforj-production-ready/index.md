@@ -19,7 +19,7 @@ This post takes the doubts one at a time, myth by myth.
 
 ## Myth: webforJ is brand new {#myth-new}
 
-**Fact:** the name is recent, the technology is not. webforJ is a Java API around the DWC, the browser client that BBj has shipped to developers. The [architecture documentation](/docs/architecture/controls-components) states that every webforJ component shipped with the product has a one-to-one mapping with an underlying BBj control. You write Java and do not write any BBj code.
+**Fact:** the name is recent, the technology is not. webforJ is a Java API around the DWC, the browser client that BBj has shipped to developers. BBj is the foundation: as the [architecture documentation](/docs/architecture/controls-components) explains, every webforJ component shipped with the product maps one to one to an underlying BBj control. You build on that proven foundation entirely in Java.
 
 That mapping is the point. When you place a `Button` or a `Table` on a page, you are not trusting a UI toolkit that was written last year. You are driving components that sit on a client and a server runtime that BASIS has been building and supporting for years. The webforJ layer is the part that is new, and it is the part you can read, test and upgrade like any other Java library.
 
