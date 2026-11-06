@@ -11,7 +11,7 @@ hide_table_of_contents: false
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webswing/blog_webswing_cover.png)
 
 If you're lucky enough to be writing a new web app from scratch, it's easy to see how webforJ could benefit you.
-webforJ simplifies your deployment and provides a [UI framework of components](/docs/components/overview) that conforms to web standards and user expectations, all while you enjoy the familiar experience of coding in Java and integrating with the Java ecosystem.
+webforJ, a full-stack Java framework, simplifies your deployment and provides a [set of components](/docs/components/overview) that conforms to web standards and user expectations, all while you enjoy the familiar experience of coding in Java and integrating with the Java ecosystem.
 But what if you already have a Java desktop app, and you need to deploy it to the web?
 Do you have to rewrite the whole thing, or can you **modernize your legacy Java code into a fully functional web app**?
 Look no further, because webforJ has the answer: deploy your existing Java app to the web quickly with Webswing, and gradually modernize it into a true web app with webforJ.

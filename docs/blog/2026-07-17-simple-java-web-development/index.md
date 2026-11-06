@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Your team knows Java, the services are done, and now the app needs screens. Before anyone writes a button, the plan already includes a JavaScript framework, a package manager, a bundler, and a REST layer whose only job is to feed your own UI. It feels like a lot of machinery for a form and a table.
 
-Simple Java web development skips that machinery. With webforJ you write the UI, the events and the business logic in Java, in one project, so you can build a web app in pure Java without a second codebase or a JavaScript build pipeline.
+Simple Java web development skips that machinery. With webforJ, a full-stack Java framework, you write the UI, the events and the business logic in Java, in one project, so you can build a web app in pure Java without a second codebase or a JavaScript build pipeline.
 
 <!-- truncate -->
 

@@ -56,7 +56,7 @@ The better plan keeps the old app alive while the new one grows around it. You d
 
 ## Java Swing to the web, step by step {#java-swing-to-the-web}
 
-webforJ is a Java framework where you build the UI in Java and run it on the server, so your team keeps its language, its build tools, and its domain code. The path looks like this:
+webforJ is the full-stack Java framework where you build the whole app, screens included, in Java and run it on the server, so your team keeps its language, its build tools, and its domain code. The path looks like this:
 
 1. **Host the Swing app on a Webswing server.** [Webswing](https://www.webswing.org) runs your Swing, JavaFX or SWT app unchanged on the server and streams its interface to the browser. It is a separate server from your webforJ app, so the two need different ports and a CORS setting. The [setup guide](/docs/integrations/webswing/setup) covers both.
 2. **Add the integration module.** The `webforj-webswing` artifact provides `WebswingConnector` and is available since webforJ 25.10.

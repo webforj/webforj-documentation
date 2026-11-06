@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Suggest building the whole app in Java and someone on the team will push back. It adds latency, it shuts you out of the JavaScript ecosystem, it won't feel like a real app.
 
-Those are fair questions about full stack Java, where one Java codebase covers the UI, the routing, and the data. With webforJ each one has a concrete answer, and a few turn out to be habits you can avoid rather than limits of the model.
+Those are fair questions about full stack Java, where one Java codebase covers the UI, the routing, and the data. With webforJ, the full-stack Java framework, each one has a concrete answer, and a few turn out to be habits you can avoid rather than limits of the model.
 
 <!-- truncate -->
 

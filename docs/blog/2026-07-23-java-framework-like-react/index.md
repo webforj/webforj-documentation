@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-23-java-framework-like-react/cover.jpg)
 
-You know React's ideas well: build small components, compose them into screens, keep state next to the UI that uses it, and move between views without the page reloading. Now your team works in Java and you want those same ideas without writing a second app in JavaScript. A Java framework like React exists, and it is webforJ. You write components as Java classes, handle events with listeners, route URLs to components, and get a single page app in the browser, all from one Java codebase.
+You know React's ideas well: build small components, compose them into screens, keep state next to the UI that uses it, and move between views without the page reloading. Now your team works in Java and you want those same ideas without writing a second app in JavaScript. A Java framework like React exists, and it is webforJ, the full-stack Java framework. You write components as Java classes, handle events with listeners, route URLs to components, and get a single page app in the browser, all from one Java codebase.
 
 The one real difference is where the code runs. In webforJ the UI lives on the server in Java and the browser renders it. The rest of this post maps what you know from React onto webforJ.
 

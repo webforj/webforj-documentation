@@ -1,6 +1,6 @@
 ---
 title: "Server-side UI framework for Java: how webforJ works"
-description: "webforJ is a server-side UI framework for Java. Components live on the server, the browser renders them, and events return to Java handlers. See how it works."
+description: "webforJ is a full-stack Java framework with a server-side UI model. Components live on the server, the browser renders them, and events return to Java handlers. See how it works."
 slug: server-side-ui-framework-java
 date: 2026-09-27
 authors: Matthew Hawkins
@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-27-server-side-ui-framework-java/cover.jpg)
 
-webforJ is a server-side UI framework for Java. Your components are Java objects that run on the server, the browser renders them as web components, and user actions come back to your Java event handlers. There is no JavaScript app to write, no REST layer between the screen and your services, and your UI code never leaves the server.
+webforJ is a full-stack Java framework, and its UI model is a server-side UI framework for Java. Your components are Java objects that run on the server, the browser renders them as web components, and user actions come back to your Java event handlers. There is no JavaScript app to write, no REST layer between the screen and your services, and your UI code never leaves the server.
 
 This post explains the runtime model step by step: where components live, how events travel, which thread runs your code, and where state is kept. It also covers the trade-offs of a server-driven UI and how webforJ handles each one.
 

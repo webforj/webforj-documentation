@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Earlier this year, Azul, a Java-focused company, released its [2026 State of Java Survey & Report](https://www.azul.com/state-of-java-2026/). Based on responses from over 2,000 Java professionals worldwide, Azul revealed that developers are focused on managing cloud computing, securing apps, and controlling AI output.
 
-Java remains a dominant force in development, with 64% of respondents reporting that more than half of their apps or workloads are built with Java or run on a Java Virtual Machine (JVM). For developers who wish to bring their apps to the browser with minimal changes to their architecture, webforJ offers a strategic approach to modernizing apps quickly and efficiently.
+Java remains a dominant force in development, with 64% of respondents reporting that more than half of their apps or workloads are built with Java or run on a Java Virtual Machine (JVM). For developers who wish to bring their apps to the browser with minimal changes to their architecture, webforJ, a full-stack Java framework, offers a strategic approach to modernizing apps quickly and efficiently.
 
 <!-- truncate -->
 

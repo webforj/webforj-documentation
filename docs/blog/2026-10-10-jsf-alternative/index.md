@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-10-jsf-alternative/cover.jpg)
 
-If you maintain JSF or PrimeFaces screens and want a JSF alternative that stays in Java, webforJ is a direct fit. It is a server-side UI framework for Java: you build each screen as a Java component tree, route to it with an annotation, bind it to a bean, and validate with the same Jakarta constraints you already put on your model.
+If you maintain JSF or PrimeFaces screens and want a JSF alternative that stays in Java, webforJ is a direct fit. It is a full-stack Java framework: you build each screen as a Java component tree, route to it with an annotation, bind it to a bean, and validate with the same Jakarta constraints you already put on your model.
 
 A migration is mostly a translation exercise. Most JSF concepts have a direct counterpart, and most of them get smaller. This post maps the concepts one by one and then converts a real form, so you can judge the effort on your own views before committing to anything.
 

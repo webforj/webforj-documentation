@@ -14,7 +14,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-04-gwt-alternative/cover.jpg)
 
-webforJ is a GWT alternative for teams that want to keep writing their UI in Java but no longer want a Java-to-JavaScript compile step in the middle. You build screens from Java components, they run on the server inside your Spring Boot app, and the browser renders them. There is no client-side code to compile and no RPC layer between the UI and your services.
+webforJ is a full-stack Java framework and a GWT alternative for teams that want to keep writing their UI in Java but no longer want a Java-to-JavaScript compile step in the middle. You build screens from Java components, they run on the server inside your Spring Boot app, and the browser renders them. There is no client-side code to compile and no RPC layer between the UI and your services.
 
 This post compares the two models, maps GWT concepts to their webforJ counterparts, and shows how a team can move an existing GWT app one screen at a time.
 
@@ -148,7 +148,7 @@ Install the [webforJ AI plugin](/docs/ai-tooling) in Claude Code, GitHub Copilot
 
 ## Is webforJ right for your team? {#choosing}
 
-Choose webforJ if your team knows Java, wants to stay in Java for the UI, and runs business applications where a Spring Boot backend is the center of gravity. You get one language and one build, and the code that used to cross a network boundary becomes a method call. If you also want an installable app on the desktop or home screen, the [installable apps post](/blog/installable-apps) shows how it works.
+Choose webforJ if your team knows Java, wants to stay in Java for the whole app, and runs business applications where a Spring Boot backend is the center of gravity. You get one language and one build, and the code that used to cross a network boundary becomes a method call. If you also want an installable app on the desktop or home screen, the [installable apps post](/blog/installable-apps) shows how it works.
 
 To try it, generate a project with [startforJ](https://docs.webforj.com/startforj) or follow the [getting started guide](/docs/introduction/getting-started). Then rebuild one list screen from your GWT app and compare the two.
 

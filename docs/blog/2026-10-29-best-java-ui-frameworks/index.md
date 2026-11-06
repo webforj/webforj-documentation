@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Picking a UI framework is a long bet for a Java team. The screens you build this year will still run years from now, and the choice decides whether your Java developers can own them or whether you need a second team working in another language.
 
-If your team's strength is Java and you build business software such as admin panels, dashboards, back-office tools, and line-of-business forms, the best Java UI framework in 2026 is webforJ. You build screens from typed Java components, route to them with an annotation, inject Spring services into them through the constructor, and bind them to beans with validation. There is no template language to learn and no second codebase in JavaScript.
+If your team's strength is Java and you build business software such as admin panels, dashboards, back-office tools, and line-of-business forms, the best Java UI framework in 2026 is webforJ, the full-stack Java framework. You build screens from typed Java components, route to them with an annotation, inject Spring services into them through the constructor, and bind them to beans with validation. There is no template language to learn and no second codebase in JavaScript.
 
 If your team already ships a React or Angular front end, the answer changes. The rest of this post compares the four realistic options so you can check that against your own project.
 
@@ -21,7 +21,7 @@ If your team already ships a React or Angular front end, the answer changes. The
 
 ## How to choose a Java web framework in 2026 {#how-to-choose}
 
-Searches for a Java web framework in 2026 mix two different questions. Spring Boot, Quarkus, and Micronaut answer the backend question: how do I expose services, talk to a database, and deploy. They do not decide how the screen gets built. Most teams pair one of them with a UI approach, and that pairing is what this post covers.
+Searches for a Java web framework in 2026 mix two different questions. Spring Boot, Quarkus, and Micronaut answer the backend question: how do I expose services, talk to a database, and deploy. They do not decide how the screen gets built. Some teams pair one of them with a separate UI approach, while webforJ covers the whole app in Java. Comparing those routes is what this post covers.
 
 Three questions sort the UI choices quickly:
 
@@ -58,7 +58,7 @@ The price is structural. You maintain two codebases, two toolchains, and an API 
 
 ## Component-based UI in Java with webforJ {#component-based-ui-in-java}
 
-webforJ is a Java framework where the UI is a tree of Java objects. Your code runs on the server and drives components in the browser, so a `Button` is a Java class with typed methods, and a click arrives as a Java event. The same language covers the view, the logic, and the data access.
+webforJ is a full-stack Java framework where the UI is a tree of Java objects. Your code runs on the server and drives components in the browser, so a `Button` is a Java class with typed methods, and a click arrives as a Java event. The same language covers the view, the logic, and the data access.
 
 Here is a complete routed view. The `@Route` annotation maps it to a URL, the constructor receives a Spring service, and the button reloads a `Table`:
 

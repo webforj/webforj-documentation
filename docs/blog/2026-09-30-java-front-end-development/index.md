@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-30-java-front-end-development/cover.jpg)
 
-Java for front end development works today, and webforJ is the framework that makes it practical. You write views, layouts, forms, and event handlers in Java, the browser renders them, and you do not write a line of JavaScript or maintain a separate front end project. The same developers who own the back end own the screens.
+Java for front end development works today, and webforJ makes it practical because it covers the whole app, screens included, in Java. You write views, layouts, forms, and event handlers in Java, the browser renders them, and you do not write a line of JavaScript or maintain a separate front end project. The same developers who own the back end own the screens.
 
 <!-- truncate -->
 
@@ -112,7 +112,7 @@ Yes. With webforJ you write the user interface in Java: components, layouts, for
 
 ### What are the Java frontend frameworks to consider in 2026? {#faq-java-frontend-frameworks-2026}
 
-The main approaches are a Java back end with a JavaScript front end, server-rendered templates, desktop toolkits such as Swing and JavaFX, and a Java-only web UI framework like webforJ. For business web apps built by Java teams, webforJ gives you one language and one codebase.
+The main approaches are a Java back end with a JavaScript front end, server-rendered templates, desktop toolkits such as Swing and JavaFX, and a full-stack Java framework like webforJ. For business web apps built by Java teams, webforJ gives you one language and one codebase.
 
 ### Can I build a Java UI without JavaScript? {#faq-java-ui-without-javascript}
 

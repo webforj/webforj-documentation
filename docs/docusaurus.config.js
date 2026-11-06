@@ -32,7 +32,7 @@ module.exports = async function createConfig() {
 
   return {
   title: 'webforJ Documentation',
-  tagline: 'webforJ is a robust and flexible web framework that allows you to easily create a modern and engaging user interface using Java.',
+  tagline: 'webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java.',
   url: 'https://docs.webforj.com/',
   baseUrl: '/',
   onBrokenAnchors: 'throw',
@@ -188,9 +188,9 @@ module.exports = async function createConfig() {
         docsDir: 'docs',
         excludeImports: true,
         removeDuplicateHeadings: true,
-        includeBlog: false,
+        includeBlog: true,
         title: 'webforJ Documentation',
-        description: 'Java framework for building modern web UIs imperatively.',
+        description: 'webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java.',
       },
     ],
     [

@@ -188,5 +188,5 @@ Your AI will have clear, explicit instructions and resources to help them do com
 Additionally, components like the `MarkdownViewer` make it easier to integrate AI output into your own app, by displaying a stream of text as it's generated.
 
 Using AI is no longer a cutting-edge trend; it's become the norm.
-As AI tools evolve and gain traction, webforJ is developing alongside them as an AI-friendly toolkit, making sure that you can integrate AI into your workflow and get the best results possible.
+As AI tools evolve and gain traction, webforJ is developing alongside them as an AI-friendly Java framework, making sure that you can integrate AI into your workflow and get the best results possible.
 However you're using AI in your own workflow, you can do it all in Java with webforJ!

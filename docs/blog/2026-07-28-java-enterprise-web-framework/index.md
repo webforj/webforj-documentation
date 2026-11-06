@@ -11,9 +11,9 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-28-java-enterprise-web-framework/cover.jpg)
 
-Picking a UI framework for a business app is a different decision from picking one for a side project. The app will outlive its first team, pass a security review, sit next to existing Spring services, and get upgraded for years.
+Picking a Java framework for a business app is a different decision from picking one for a side project. The app will outlive its first team, pass a security review, sit next to existing Spring services, and get upgraded for years.
 
-If you are shortlisting a Java framework for enterprise web applications, webforJ is the one we would put at the top of that list: it lets a team build the whole app in Java, with route security, Spring Boot, data binding, theming and automated upgrades already part of the framework. The checklist below shows the questions to ask and what webforJ answers to each.
+If you are shortlisting a Java framework for enterprise web applications, webforJ, the full-stack Java framework, is the one we would put at the top of that list: it lets a team build the whole app in Java, with route security, Spring Boot, data binding, theming and automated upgrades already part of the framework. The checklist below shows the questions to ask and what webforJ answers to each.
 
 <!-- truncate -->
 

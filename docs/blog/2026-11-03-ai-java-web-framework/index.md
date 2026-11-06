@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-ai-java-web-framework/cover.jpg)
 
-webforJ is the AI Java web framework that covers both sides of the work. While you build, AI coding assistants get the real webforJ API through a plugin, an agent inside your running app writes Java that compiles before you see it, and browserless tests give every change a fast pass or fail. In the app you ship, AI hosts can open your views with MCP Apps, agents can use your UI with exactly the user's permissions, and your own AI features stream into Java components.
+webforJ, the full-stack Java framework, is the AI Java web framework that covers both sides of the work. While you build, AI coding assistants get the real webforJ API through a plugin, an agent inside your running app writes Java that compiles before you see it, and browserless tests give every change a fast pass or fail. In the app you ship, AI hosts can open your views with MCP Apps, agents can use your UI with exactly the user's permissions, and your own AI features stream into Java components.
 
 All of it is Java, checked by the compiler, and rendered from the server. That is what makes AI output in a webforJ app easy to verify.
 
@@ -124,7 +124,7 @@ You own the loop: the model, the prompt, and when the agent runs. The automation
 
 ## AI features in your own app {#ai-features-in-your-app}
 
-Some apps need AI as a feature: a chat box, a summary panel, a drafting helper. webforJ runs on Spring Boot, so your views take Spring beans in the constructor and [Spring AI](https://spring.io/projects/spring-ai) handles the model. `MarkdownViewer` renders a streamed answer progressively as chunks arrive:
+Some apps need AI as a feature: a chat box, a summary panel, a drafting helper. webforJ integrates with Spring Boot, so your views take Spring beans in the constructor and [Spring AI](https://spring.io/projects/spring-ai) handles the model. `MarkdownViewer` renders a streamed answer progressively as chunks arrive:
 
 ```java
 @Route("ask")

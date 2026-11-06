@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Someone on the team needs a screen where support can look up an account, fix a record, and see an audit trail. The data is already in your Java services, and the request is small. It still turns into a project once you add a second language, a build pipeline and an API layer just to draw a table.
 
-If you want to build internal tools in Java, pick a framework that lets the backend team write the UI in the same language, in the same project, against the same services. That's what webforJ does. A view is a Java class, a table reads from your repository, a form binds to your bean, and route annotations decide who gets in.
+If you want to build internal tools in Java, pick a framework that lets the backend team write the UI in the same language, in the same project, against the same services. That's what webforJ does, as a full-stack Java framework. A view is a Java class, a table reads from your repository, a form binds to your bean, and route annotations decide who gets in.
 
 <!-- truncate -->
 

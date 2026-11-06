@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-21-how-to-build-web-app-java/cover.jpg)
 
-You know Java well, you can write a service in your sleep, and then someone asks for a screen in the browser. Suddenly the advice is to learn a JavaScript framework, a bundler, a templating language and a REST layer between them. You don't need any of that. To build a web app in Java, generate a webforJ project with Maven, write each screen as a Java class, and run it with one command. The whole app, UI included, stays in Java.
+You know Java well, you can write a service in your sleep, and then someone asks for a screen in the browser. Suddenly the advice is to learn a JavaScript framework, a bundler, a templating language and a REST layer between them. You don't need any of that. To build a web app in Java with webforJ, a full-stack Java framework, generate a project with Maven, write each screen as a Java class, and run it with one command. The whole app, UI included, stays in Java.
 
 <!-- truncate -->
 

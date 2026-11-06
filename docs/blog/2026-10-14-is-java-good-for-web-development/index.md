@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-14-is-java-good-for-web-development/cover.jpg)
 
-You are about to start a web app, your team knows Java, and every search you make tells you the browser belongs to JavaScript. So is Java good for web development, or are you about to fight your tools? It is good for it, and the old arguments against it are mostly out of date. With webforJ you write the whole app, screens included, in Java and the browser renders it with modern web components.
+You are about to start a web app, your team knows Java, and every search you make tells you the browser belongs to JavaScript. So is Java good for web development, or are you about to fight your tools? It is good for it, and the old arguments against it are mostly out of date. With webforJ, the full-stack Java framework, you write the whole app, screens included, in Java and the browser renders it with modern web components.
 
 <!-- truncate -->
 
@@ -107,13 +107,13 @@ Generate a project with [startforJ](https://docs.webforj.com/startforj), run it,
 ## Frequently asked questions {#faq}
 
 ### Is Java good for web development in 2026? {#faq-java-2026}
-Yes. Java web development in 2026 benefits from virtual threads in JDK 21 and later, a mature ecosystem, and frameworks such as webforJ that build the UI in Java. The weak spots are offline-first and heavily client-side apps, where JavaScript fits better.
+Yes. Java web development in 2026 benefits from virtual threads in JDK 21 and later, a mature ecosystem, and full-stack Java frameworks such as webforJ that build the whole app, screens included, in Java. The weak spots are offline-first and heavily client-side apps, where JavaScript fits better.
 
 ### Is Java or JavaScript better for web apps? {#faq-java-vs-javascript}
 It depends on the app and the team. For business apps with forms, tables, roles and a database, a team that knows Java ships faster in one language. For offline-first apps, rich in-browser tools and content sites, JavaScript is the better pick.
 
 ### What is modern Java web development? {#faq-modern-java}
-It means building the UI in Java with components, routes and a design system, on top of Spring Boot or a plain servlet container, with no template files and no hand-written API for the screens. webforJ follows that model and renders standard web components in the browser.
+It means building the UI in Java with components, routes and a design system, with no template files and no hand-written API for the screens. webforJ follows that model. It runs standalone or integrates with Spring Boot, and it renders standard web components in the browser.
 
 ### Can a Java developer build a web UI without learning JavaScript? {#faq-no-javascript}
 Yes. In webforJ you write views, forms, tables and layouts in Java, and the framework handles the browser side. When you need a browser feature directly, `executeJs` and its async variants let you call it from Java.

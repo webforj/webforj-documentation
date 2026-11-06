@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-06-spring-boot-frontend/cover.jpg)
 
-For most Java teams the best Spring Boot frontend is webforJ. The UI is written in Java, runs inside the same Spring Boot app as your services, and gets its beans through constructor injection. There is no second language, no second build, and no HTTP contract between your screens and your data.
+For most Java teams the best Spring Boot frontend is webforJ, the full-stack Java framework. You write the whole app, screens included, in Java, and it runs inside the same Spring Boot app as your services and gets its beans through constructor injection. There is no second language, no second build, and no HTTP contract between your screens and your data.
 
 The alternatives are real and each fits some teams. Thymeleaf suits server-rendered pages with little interactivity, and a React or Angular single-page app suits teams that already have frontend specialists. This post compares them on build, skills, security, data access, and the cost of one feature, so you can choose a frontend framework for Spring Boot on evidence.
 
@@ -25,7 +25,7 @@ Every Spring Boot UI falls into one of three shapes.
 
 **A JavaScript SPA plus REST.** You build the UI with [React](https://react.dev/learn/build-a-react-app-from-scratch) or [Angular](https://angular.dev/overview) as a separate project. Spring Boot exposes JSON endpoints and the SPA calls them. React's own guidance for building from scratch is to start with a build tool such as Vite, then add routing and data fetching yourself or adopt a framework that provides them.
 
-**A Java UI framework.** With webforJ the screens are Java classes. A route class builds components and calls your services directly. The browser receives the rendered interface and sends events back, so the UI logic stays on the server in the same JVM as the rest of your app.
+**A full-stack Java framework.** With webforJ the screens are Java classes. A route class builds components and calls your services directly. The browser receives the rendered interface and sends events back, so the UI logic stays on the server in the same JVM as the rest of your app.
 
 ## How the options compare {#comparison}
 

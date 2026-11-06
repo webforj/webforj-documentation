@@ -29,7 +29,7 @@ A typical Java shop running React or Angular maintains two applications. One is 
 
 With webforJ the UI is Java. A view can take a Spring service through its constructor and call it. There is no serialization contract to keep in sync because there is no second codebase to sync with.
 
-We built webforJ for exactly this team: Java developers who want a modern browser UI without becoming a second, parallel front end team.
+We built webforJ, the full-stack Java framework, for exactly this team: Java developers who want a modern browser UI without becoming a second, parallel front end team.
 
 ## What does a React screen become? {#what-does-a-react-screen-become}
 

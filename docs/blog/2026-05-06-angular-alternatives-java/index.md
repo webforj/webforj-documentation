@@ -1,6 +1,6 @@
 ---
 title: "Angular alternatives for Java teams: webforJ myths and facts"
-description: "Looking for Angular alternatives in Java? webforJ builds the whole UI in Java on Spring Boot, with no REST layer and no second language. See the myths and facts."
+description: "Looking for Angular alternatives in Java? webforJ, the full-stack Java framework, builds the whole app in Java and plugs into Spring Boot, with no REST layer and no second language. See the myths and facts."
 slug: angular-alternatives-java
 date: 2026-05-06
 authors: webforJ
@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 If your team writes Java all day, an Angular front end can feel like a second job: another language, another build, and a REST layer that exists only to feed your own screens.
 
-That is why many teams look for Angular alternatives that stay in Java. With webforJ you write the UI in Java, run it on Spring Boot, and the browser renders it, with no TypeScript project to maintain.
+That is why many teams look for Angular alternatives that stay in Java. With webforJ you write the whole app in Java, plug it into your Spring Boot services, and the browser renders it, with no TypeScript project to maintain.
 
 <!-- truncate -->
 
