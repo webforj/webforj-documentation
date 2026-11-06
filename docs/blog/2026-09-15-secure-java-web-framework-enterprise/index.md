@@ -45,7 +45,7 @@ This is secure by design Java web UI in a literal sense: the safe path is the de
 
 Authorization in webforJ is declared on the route and checked before the view is created. Four annotations cover the cases: `@AnonymousAccess` for public pages, `@PermitAll` for any signed-in user, `@RolesAllowed` for specific roles, and `@DenyAll` to close a route completely. The [security annotations](/docs/security/annotations) page lists them with examples.
 
-The important setting for an enterprise rollout is secure-by-default. With `webforj.security.secure-by-default=true`, a route that carries no annotation requires authentication, and only routes you explicitly mark as anonymous are public. A developer who forgets an annotation gets a locked door instead of an open one. For a chief information security officer, that turns a review question ("did anyone forget to protect a page?") into a configuration fact.
+The important setting for an enterprise rollout is secure-by-default. With `webforj.security.secure-by-default=true`, a route that carries no annotation requires authentication, and only routes you explicitly mark as anonymous are public. A developer who forgets an annotation gets a locked door instead of an open one. For a security review, that turns a review question ("did anyone forget to protect a page?") into a configuration fact.
 
 When Spring Boot is on the classpath, the [Spring Security integration](/docs/security/getting-started) plugs in through `WebforjSecurityConfigurer`. Users, password encoding, sessions and login come from Spring Security, which your security team likely knows already. If you run without Spring, the [security architecture](/docs/security/architecture/overview) guide covers a custom implementation. The [security overview](/docs/security/overview) is the right starting page for both.
 
@@ -79,11 +79,11 @@ No framework makes an app secure by itself, and we do not claim that webforJ doe
 - **Treat disabled and hidden as cues, not controls.** A disabled button is a hint to honest users. The rule belongs in the server-side handler.
 - **Sanitize markup you opt into.** If a fragment of HTML comes from a person or a stored record, clean it with a maintained sanitizer before it reaches a component.
 
-The docs spell each of these out in [app security](/docs/security/application-security/overview), including [common threats](/docs/security/application-security/common-threats), and [production hardening](/docs/security/application-security/production-hardening). Read them next to your own standards. They are written to show where the framework helps and where it stops.
+Each of these is covered in our [app security](/docs/security/application-security/overview), including [common threats](/docs/security/application-security/common-threats), and [production hardening](/docs/security/application-security/production-hardening). Read them next to your own standards. They are written to show where the framework helps and where it stops.
 
 ## Why this is a low-risk choice {#low-risk}
 
-Security reviews also ask who stands behind the software. webforJ comes from BASIS International, which has built software and tools for business solutions for almost 40 years and has delivered technology built on Java for more than 20. The company is privately owned and operated, with offices in Albuquerque in the US and Saarbrücken in Germany, support contacts in both regions, and partners in more than 30 countries. Details are on the [company page](https://webforj.com/company).
+Security reviews also ask who stands behind the software. webforJ comes from BASIS International. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 
 For the wider evaluation, our posts on the [Java full-stack framework](/blog/java-full-stack-framework) and on [enterprise web frameworks in Java](/blog/java-enterprise-web-framework) cover the full stack and the enterprise checklist.
 
