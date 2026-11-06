@@ -1,5 +1,5 @@
 ---
-title: "Swing modernization for enterprises: a CTO decision guide"
+title: "Swing modernization for enterprises: a decision guide"
 description: "Swing modernization for enterprises, explained for decision makers: three options, a phased roadmap, AI-assisted migration and a risk table for Java teams."
 slug: swing-modernization-enterprise
 date: 2026-09-01
@@ -44,7 +44,7 @@ Rebuilding in Java keeps the language, the team, and the logic. The cost is that
 
 ## A phased roadmap {#phased-roadmap}
 
-A Swing modernization roadmap for CTOs works when each phase delivers something users and auditors can see.
+A Swing modernization roadmap for enterprises works when each phase delivers something users and auditors can see.
 
 ### Phase 1: run in the browser now {#phase-1}
 
@@ -66,7 +66,7 @@ The screen-by-screen move is the expensive part, and it is also the part AI codi
 
 The risk with a general-purpose assistant is plausible code that calls methods that do not exist. The [webforJ AI plugin](/docs/ai-tooling) addresses that. It installs the [MCP server](/docs/ai-tooling/mcp), which lets the assistant look up real webforJ documentation and API information instead of guessing, together with [Agent Skills](/docs/ai-tooling/agent-skills), which are structured workflows for building components and styling apps correctly. It works with Claude Code, Copilot, Cursor, Gemini, and Codex.
 
-What this changes for a budget owner: the engineers spend their time reviewing screens and deciding priorities, not typing boilerplate. As with any AI output, review and test everything before it ships. The docs say plainly that assistants can still make mistakes in complex scenarios, so treat the agent as a fast junior contributor and keep your normal code review.
+What this changes for a budget owner: the engineers spend their time reviewing screens and deciding priorities, not typing boilerplate. As with any AI output, review and test everything before it ships. Assistants can still make mistakes in complex scenarios, so treat the agent as a fast junior contributor and keep your normal code review.
 
 ## Team and staffing impact {#team-impact}
 
@@ -76,13 +76,9 @@ This is where the Java route differs most from the alternatives.
 - **Business logic is reused.** Existing Java classes keep serving the new screens, so the domain knowledge in your team stays valuable.
 - **Familiar ecosystem.** webforJ integrates with Spring Boot, so existing services and security conventions carry over. Route access is controlled with annotations and Spring Security integration. See the [security docs](/docs/security/overview).
 
-## Proof point: the Prodin story {#prodin}
-
-Prodin Business Solutions, a Dutch ERP software provider with over 45 years of experience, assembled a six-member Java development team and reused Java-compatible business logic, some of it written more than two decades ago. They delivered their first web-based modules to customers within four months. The full account is in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf).
-
 ## Vendor stability {#vendor-stability}
 
-A modernization program lasts years, so the supplier matters. webforJ comes from [BASIS International](https://webforj.com/company), which has built software and tools for business solutions for almost 40 years and has delivered technology built on Java for more than 20. The company is privately owned and operated, with offices in Albuquerque in the US and Saarbrücken in Germany, support contacts in both regions, and partners in more than 30 countries.
+A modernization program lasts years, so the supplier matters. webforJ comes from [BASIS International](https://webforj.com/company). BASIS software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 
 ## Risk table {#risk-table}
 
@@ -93,7 +89,7 @@ A modernization program lasts years, so the supplier matters. webforJ comes from
 | Two codebases to staff | Hybrid Java and JavaScript | One language, one team |
 | Users see two different apps | Mixed estate | Embedded Swing and web screens exchange events |
 | AI output is wrong | Automated porting | MCP lookups, Agent Skills, human review |
-| Supplier risk | Any long program | Long-standing, privately owned vendor with support in two regions |
+| Supplier risk | Any long program | Vendor facts are on the company page |
 
 ## Next step: pilot one screen {#next-step}
 
@@ -111,7 +107,7 @@ We treat it as the bridge. It gives browser access immediately, and the webforJ 
 
 ### What happens to our existing Java business logic? {#faq-business-logic}
 
-It stays. New webforJ screens are written in Java, so they call the same classes your Swing screens call today. Prodin followed this pattern and reused business logic that was written more than two decades ago.
+It stays. New webforJ screens are written in Java, so they call the same classes your Swing screens call today.
 
 ### Can AI agents do the whole migration? {#faq-ai-agents}
 
