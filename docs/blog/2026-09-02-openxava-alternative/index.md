@@ -102,7 +102,7 @@ They also win on ownership. A view you wrote is the only description of that scr
 
 ## Who stands behind webforJ {#who-stands-behind-webforj}
 
-webforJ comes from BASIS International. BASIS software and tools have been used to develop business solutions for almost 40 years, with 20+ years of delivering technology built on Java. For a business app that has to run for a decade, the people behind the framework matter as much as the feature list.
+webforJ comes from BASIS International. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. For a business app that has to run for a decade, the people behind the framework matter as much as the feature list.
 
 ## A first step {#a-first-step}
 

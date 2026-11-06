@@ -142,7 +142,7 @@ textField("Search") {
 }
 ```
 
-Because the listener runs on the server, the lambda can access other components, call your services, and update the view directly. There is no request to define and no client-side state to sync. The [event handling section](/docs/integrations/kotlin-dsl/using-the-dsl#event-handling) of the docs lists the pattern.
+Because the listener runs on the server, the lambda can access other components, call your services, and update the view directly. There is no request to define and no client-side state to sync. See [event handling](/docs/integrations/kotlin-dsl/using-the-dsl#event-handling) for the pattern.
 
 ## Can you mix Kotlin and Java in one webforJ app? {#kotlin-and-java}
 

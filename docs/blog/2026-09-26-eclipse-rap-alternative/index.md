@@ -53,7 +53,7 @@ None of these says RAP is broken. They say the app needs a different base for th
 
 ## Why webforJ fits a Java team {#webforj}
 
-webforJ is built for the same kind of team RAP serves: Java developers building business apps. You write the screens in Java, the code runs on the server, and the browser renders it with modern web components. BASIS International has almost 40 years in business software and more than 20 years of Java technology, and webforJ is where that experience goes into a framework for the whole app.
+webforJ is built for the same kind of team RAP serves: Java developers building business apps. You write the screens in Java, the code runs on the server, and the browser renders it with modern web components. webforJ comes from BASIS International and covers the whole app.
 
 Three properties matter for a RAP team:
 
@@ -76,7 +76,7 @@ The names change and the shape stays recognizable. This table is a starting poin
 | A modal dialog | [`Dialog`](/docs/components/dialog) and the [option dialogs](/docs/components/option-dialogs/overview) |
 | CSS theming | [webforJ styling](/docs/styling/overview) with CSS variables |
 
-One difference deserves attention. The RAP guide notes that in JEE compatibility mode dialogs do not block execution, and you read the result through the RWT-only `open(DialogCallback)` method. In webforJ, the option dialogs are modal and, as the [option dialogs docs](/docs/components/option-dialogs/overview) put it, the server stops processing further requests until the dialog is dismissed or returns a value. If your code was reshaped around callbacks, that code can often become straight-line Java again.
+One difference deserves attention. The RAP guide notes that in JEE compatibility mode dialogs do not block execution, and you read the result through the RWT-only `open(DialogCallback)` method. In webforJ, the [option dialogs](/docs/components/option-dialogs/overview) are modal and the server stops processing further requests until the dialog is dismissed or returns a value. If your code was reshaped around callbacks, that code can often become straight-line Java again.
 
 ## What a screen looks like {#screen}
 

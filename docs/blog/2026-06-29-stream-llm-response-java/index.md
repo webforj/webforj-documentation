@@ -106,7 +106,7 @@ A few details in this code matter:
 - `append()` adds to the text already shown. `setContent()` replaces the whole answer, so calling it for each chunk throws away the previous text on every update.
 - The error callback writes the message into the answer, so the user sees what went wrong instead of a stalled reply.
 - The input is re-enabled in `whenRenderComplete()`, not when the stream completes, because the viewer may still be showing buffered text.
-- At the default render speed of 4, the docs list about 240 characters per second, based on 60 frames per second. If the model sends faster than the viewer renders, the buffer grows and the text lags behind. Call `setRenderSpeed(6)` for about 360 characters per second. Set it too high and the typewriter effect disappears.
+- At the default render speed of 4, the viewer renders about 240 characters per second, based on 60 frames per second. If the model sends faster than the viewer renders, the buffer grows and the text lags behind. Call `setRenderSpeed(6)` for about 360 characters per second. Set it too high and the typewriter effect disappears.
 
 ## Stop, flush and finish {#stop-flush-finish}
 

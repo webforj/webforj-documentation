@@ -122,7 +122,7 @@ The bean is a plain Java class with getters and setters. When names differ, the 
 
 Many teams now write part of their code with an AI assistant, and an assistant that guesses at an API costs you time in review. The [webforJ AI plugin](/docs/ai-tooling) installs the [MCP server](/docs/ai-tooling/mcp) and the [Agent Skills](/docs/ai-tooling/agent-skills) in Claude Code, Copilot, Cursor, Gemini, and Codex with one step.
 
-The MCP server lets the assistant look up the real documentation, scaffold projects and validate design tokens instead of inventing names. The skills tell it which workflow to follow, for example, when building forms or styling an app. The docs state the goal plainly: code that compiles and follows best practices on the first attempt. They also warn that assistants can still make mistakes in complex cases, so you review and test the result.
+The MCP server lets the assistant look up the real documentation, scaffold projects and validate design tokens instead of inventing names. The skills tell it which workflow to follow, for example, when building forms or styling an app. The goal is code that compiles and follows best practices on the first attempt. Assistants can still make mistakes in complex cases, so you review and test the result.
 
 ## What is not easy {#not-easy}
 

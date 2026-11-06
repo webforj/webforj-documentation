@@ -34,7 +34,7 @@ Reviewing all four by hand is the cost people complain about when they say AI co
 
 The first check happens before any code exists. [Agent Skills](/docs/ai-tooling/agent-skills) are structured webforJ workflows that the assistant loads when your prompt matches a task. They tell it how to classify the work, which patterns fit, which tools to consult and how to validate the result, so the code compiles and follows best practices on the first attempt.
 
-The docs list skills for adding servlets, building forms, creating components, handling timers and async work, localizing apps, securing apps, styling apps, and upgrading versions. This is the difference between code that is technically valid and code that looks like it belongs in your project.
+The skills cover adding servlets, building forms, creating components, handling timers and async work, localizing apps, securing apps, styling apps, and upgrading versions. This is the difference between code that is technically valid and code that looks like it belongs in your project.
 
 What it catches: convention drift. The agent reaches for webforJ's own approach instead of a generic one.
 

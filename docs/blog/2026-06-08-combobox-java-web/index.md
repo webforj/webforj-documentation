@@ -43,7 +43,7 @@ public class CountryPicker extends Composite<FlexLayout> {
 
 At this point the user can open the list and pick a country, or type one in. The next step shapes how the field looks and behaves.
 
-When your items come from a collection, pass the whole list to `insert` in one call instead of calling `add` once per entry. The [lists overview](/docs/components/lists/overview) recommends the bulk form because each single `add` sends its own message to the browser. The varargs form in the snippet is fine for a short, fixed set of values.
+When your items come from a collection, pass the whole list to `insert` in one call instead of calling `add` once per entry. The bulk form is the better choice for [lists](/docs/components/lists/overview) because each single `add` sends its own message to the browser. The varargs form in the snippet is fine for a short, fixed set of values.
 
 ## Placeholder and row limit {#placeholder-and-row-limit}
 

@@ -112,7 +112,7 @@ On Spring specifically, [`@RouteAccess`](/docs/security/spel-expressions) takes 
 
 There's also a nice touch in the denial path. Before redirecting, webforJ stores the location the user originally requested, and on Spring the `WebforjAuthenticationSuccessHandler` picks it back up after login, so someone who followed a deep link into a protected page finishes on that page rather than a generic dashboard.
 
-One caveat on all of it: route security is still marked public preview. The documentation describes it as ready for production and notes the API may be refined during the preview, with release notes and migration guidance for any changes.
+One caveat on all of it: route security is still marked public preview. It is ready for production. The API may be refined during the preview, and release notes and migration guidance cover any changes.
 
 ## Wrapping up {#wrapping-up}
 

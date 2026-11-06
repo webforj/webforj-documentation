@@ -45,7 +45,7 @@ Each call to `run()` replaces the pending action and restarts the timer, so typi
 
 ## Cancel pending work on destroy {#cancel-pending-work-on-destroy}
 
-If the user leaves the view within 300 milliseconds of typing, the pending search would still fire against a view that no longer exists. Cancel it when the component is destroyed, as the docs show:
+If the user leaves the view within 300 milliseconds of typing, the pending search would still fire against a view that no longer exists. Cancel it when the component is destroyed:
 
 ```java
 public class SearchPanel extends Composite<Div> {

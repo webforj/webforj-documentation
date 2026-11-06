@@ -43,7 +43,7 @@ Component visibility is a presentation-layer decision. It controls what the inte
 
 ## What route-level enforcement does instead {#what-route-level-enforcement-does-instead}
 
-Route-level security shifts the enforcement point. When `@RolesAllowed` appears on a Java view class, the security system evaluates it before instantiating the view. The webforJ [Security Annotations](/docs/security/annotations) documentation describes this directly: "the security system automatically enforces these rules before any component is rendered."
+Route-level security shifts the enforcement point. When `@RolesAllowed` appears on a Java view class, the security system evaluates it before instantiating the view. The webforJ [Security Annotations](/docs/security/annotations) are enforced automatically: the security system applies these rules before any component is rendered.
 
 ```java title="TeamsView.java"
 @Route(value = "/teams", outlet = MainLayout.class)

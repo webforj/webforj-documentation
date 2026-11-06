@@ -195,7 +195,7 @@ TestBed tests run in the same JVM as the code, finish each interaction before th
 
 ## Where TestBed fits next to browser tests {#testbed-and-browser-tests}
 
-Use the TestBed for form logic, validation, navigation, security rules, dialogs, and what a view shows after each action. Keep Selenium or Playwright for what only a browser can show: styling, layout, and client behavior. The [testing overview](/docs/testing/overview) describes both layers. Running most of your UI tests in the TestBed leaves a small set of browser tests for the checks that need one.
+Use the TestBed for form logic, validation, navigation, security rules, dialogs, and what a view shows after each action. Keep Selenium or Playwright for what only a browser can show: styling, layout, and client behavior. Both layers are covered in the [testing overview](/docs/testing/overview). Running most of your UI tests in the TestBed leaves a small set of browser tests for the checks that need one.
 
 ## Next step {#next-step}
 

@@ -39,7 +39,7 @@ The embed path is a real release strategy. It is how you ship the first web rele
 
 ## Embed first: ship the old screen {#embed-first}
 
-Webswing runs a Swing, JavaFX, or SWT app on the server and streams its interface to the browser, with no change to the original source. webforJ wraps that in the `WebswingConnector` component, available since 25.10. The [Webswing integration docs](/docs/integrations/webswing/overview) describe the setup: a Webswing server hosts the app, and your webforJ view points at its URL.
+Webswing runs a Swing, JavaFX, or SWT app on the server and streams its interface to the browser, with no change to the original source. webforJ wraps that in the `WebswingConnector` component, available since 25.10. With the [Webswing integration](/docs/integrations/webswing/overview), a Webswing server hosts the app and your webforJ view points at its URL.
 
 ```java
 @Route("orders")

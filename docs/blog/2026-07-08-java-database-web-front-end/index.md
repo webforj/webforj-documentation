@@ -133,7 +133,7 @@ Then wire the save button:
 1. Read the selected row from the table and call `context.read(entity)`.
 2. On save, call `context.write(entity)`.
 3. If the result is valid, call `personRepository.save(entity)`. This is the normal Spring Data call.
-4. Call `commit()` on the repository you gave the table. The repository docs describe `commit()` as the call that notifies connected components, and the `Table` updates when it receives the commit event. The [editing and refreshing page](/docs/components/table/refreshing) shows the pattern.
+4. Call `commit()` on the repository you gave the table. `commit()` is the call that notifies connected components, and the `Table` updates when it receives the commit event. The [editing and refreshing page](/docs/components/table/refreshing) shows the pattern.
 
 Existing databases often carry rules the entity cannot see, such as a unique key, a foreign key, or a check constraint. Let the database enforce them, catch the exception from `save`, and show a message in the form. Annotations cover shape and range. The database covers integrity.
 

@@ -188,7 +188,7 @@ parser.parse(text)
     }));
 ```
 
-The reply arrives on the worker thread that ran `parse`. webforJ requires all UI operations to run on the `Environment` thread, so the result comes back through `Environment.runLater`, as the [asynchronous updates](/docs/advanced/asynchronous-updates) page describes.
+The reply arrives on the worker thread that ran `parse`. webforJ requires all UI operations to run on the `Environment` thread, so the result comes back through `Environment.runLater` (see [asynchronous updates](/docs/advanced/asynchronous-updates)).
 
 The view reads `Environment.getCurrent()` while it is still on the UI thread and passes it to `runLater`. That way the update always reaches the session that started the search, whichever worker thread finishes the call.
 

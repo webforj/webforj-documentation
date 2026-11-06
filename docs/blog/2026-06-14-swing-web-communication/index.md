@@ -25,7 +25,7 @@ Once a Swing app is streamed into a page, it is a black box. The browser sees a 
 
 You can try to fix this from outside with screen scraping or shared databases, but both options couple you to implementation details. A message channel is cleaner. The Swing side announces that something happened, the web side decides what to do, and it replies with another message.
 
-That is what the connector gives you. The [overview](/docs/integrations/webswing/overview) describes three layers: the Webswing server running your desktop app, the `WebswingConnector` component in webforJ, and a bidirectional message protocol between them. This post is about the third layer.
+That is what the connector gives you. The [integration](/docs/integrations/webswing/overview) has three layers: the Webswing server running your desktop app, the `WebswingConnector` component in webforJ, and a bidirectional message protocol between them. This post is about the third layer.
 
 ## How the message channel works {#how-it-works}
 
