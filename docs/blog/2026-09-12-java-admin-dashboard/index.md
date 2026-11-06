@@ -129,7 +129,7 @@ Three details are worth knowing.
 
 - The chart lives in a separate module, `webforj-googlecharts`, so add that dependency to your POM first. The [Google Charts page](/docs/components/google-charts) lists the chart types and the options map.
 - The chart redraws itself when its data or options change and when the browser window resizes. A collapsing drawer changes the container size without a window resize, so call `chart.redraw()` from the drawer open and close listeners.
-- For real data, swap `setItems` for `setRepository` with a `Repository` backed by your service. The table then asks for rows as the user scrolls and sorts, so a large orders table doesn't load all at once. See the [Table guide](/docs/components/table/overview) for sorting, filtering, and selection.
+- For real data, swap `setItems` for `setRepository` with a `Repository` backed by your service. With a Spring Data repository behind it, sorting and filtering run as repository queries instead of on an in-memory list. See the [Table guide](/docs/components/table/overview) for sorting, filtering, and selection.
 
 ## Protect the admin panel with route security {#protect-the-admin-panel}
 

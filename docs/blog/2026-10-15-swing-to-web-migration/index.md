@@ -65,7 +65,7 @@ Layout managers collapse into one tool for most screens. `FlexLayout` arranges c
 
 ## Tables and data: `JTable` to `Table` {#jtable-to-table}
 
-A `JTable` reads from a `TableModel` that you subclass. A webforJ `Table` reads from a `Repository`, and the framework asks it for rows as the user scrolls, sorts, or filters. For an in-memory list, `setItems` creates the repository for you. For a database, you pass a repository that queries lazily. The [Repository overview](/docs/advanced/repository/overview) explains how filtering and paging are delegated.
+A `JTable` reads from a `TableModel` that you subclass. A webforJ `Table` reads from a `Repository`. For an in-memory list, `setItems` creates the repository for you. For a database, you pass a repository backed by your data layer, such as the Spring Data adapter. The [Repository overview](/docs/advanced/repository/overview) explains the pattern.
 
 Here is a typical Swing customer screen. It builds a table model, a delete button, and a confirmation dialog.
 
