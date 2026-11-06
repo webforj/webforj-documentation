@@ -40,6 +40,8 @@ webforj.security.bbj {
   token.minutes = 30
   token.check-seconds = 30
   token.renew-before-minutes = 5
+  two-factor.pending-seconds = 300
+  two-factor.code-path = "/sign-in/code"
   default-success-path = "/"
   return-after-login = true
   logout-success-path = "/login"
@@ -54,6 +56,8 @@ webforj.security.bbj {
 | `webforj.security.bbj.token.minutes` | `30` | Lifetime in minutes of the login token that the administration API of BBjServices issues. The value is from 1 to 2147483647. BBjServices replaces a requested lifetime that's higher than its own default token time with that default, so a larger value has no effect. |
 | `webforj.security.bbj.token.check-seconds` | `30` | Seconds between two checks of the sign in against the administration API of BBjServices. The value is from 0 to 3600. With `0`, every navigation checks the sign in. See [Check and renew the sign in](/docs/configuration/bbj-security/sessions#check-and-renew-the-sign-in). |
 | `webforj.security.bbj.token.renew-before-minutes` | `5` | Minutes before the end of the login token in which a check renews the token. The value is from 0 to `token.minutes`. With `0`, the token is never renewed and the sign in ends `token.minutes` after the sign in. A value of `token.minutes` or more renews the token at every navigation. |
+| `webforj.security.bbj.two-factor.pending-seconds` | `300` | Seconds that the app keeps the user name and password of a sign in that waits for its two factor code. The value is from 1 to 2147483647. After that time `submitCode` returns `CODE_EXPIRED`. See [Sign in in two steps](/docs/configuration/bbj-security/sign-in#sign-in-in-two-steps). |
+| `webforj.security.bbj.two-factor.code-path` | None | Route that opens when a sign in with `login(userName, password)` or `login(event)` waits for its two factor code. Without this setting the app opens no route and the view navigates itself. See [Sign in in two steps](/docs/configuration/bbj-security/sign-in#sign-in-in-two-steps). |
 | `webforj.security.bbj.default-success-path` | `/` | Route that opens after a successful sign in when no requested page is used. |
 | `webforj.security.bbj.return-after-login` | `true` | Opens the page that the visitor requested before the sign in. When `false`, or when no page was requested, the default success path opens. |
 | `webforj.security.bbj.logout-success-path` | None | Route that opens after a sign out. Without this setting the authentication path applies, and without that `/login`. |
@@ -61,4 +65,4 @@ webforj.security.bbj {
 | `webforj.security.bbj.admin.truststore` | None | Path of the truststore file that checks the certificate of the administration API. Used only when `admin.ssl` is `true`, otherwise the app logs a warning and ignores it. A host other than `localhost` or a loopback address needs it. See [Remote setup](/docs/configuration/bbj-security/remote-setup). |
 | `webforj.security.bbj.admin.truststore-password` | None | Password of the truststore file. The app never logs it. The library resolves a `${?VAR}` substitution against the environment of BBjServices. See [Where the password comes from](/docs/configuration/bbj-security/remote-setup#where-the-password-comes-from). |
 
-A value that is out of range or of the wrong type uses its default value, boolean values default to `true`.
+A value that's out of range or of the wrong type uses its default value, boolean values default to `true`.

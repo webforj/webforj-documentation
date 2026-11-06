@@ -11,6 +11,8 @@ The `webforj-bbj-security` library adds [route security](/docs/security/overview
 
 Users sign in with their BBj user name and password, which the administration API of BBjServices checks. The roles of a user are the BBj security groups of the user, and the permissions are the BBj user permissions.
 
+The sign in survives a reload and is shared by the tabs of a browser when BBjServices provides the HTTP session accessor and `com.basis.jetty.enableSessionAccessor=true` is set. Without it, the sign in and the requested location are kept for the page only, and a reload or a new tab signs the user out. See [Sessions and Lifetime](/docs/configuration/bbj-security/sessions#keep-users-signed-in-after-a-reload).
+
 :::info Spring apps
 If the app uses Spring Boot, use the [Spring Security integration](/docs/security/getting-started) instead.
 :::
@@ -21,8 +23,7 @@ If the app uses Spring Boot, use the [Spring Security integration](/docs/securit
 - [Configuration](/docs/configuration/bbj-security/configuration): route security and sign in settings in `webforj.conf`.
 - [Sign In and Sign Out](/docs/configuration/bbj-security/sign-in): the `BBjSecurity` methods, the login status, and the current user.
 - [Roles and Permissions](/docs/configuration/bbj-security/roles-and-permissions): `@RolesAllowed` with BBj security groups and `@BBjPermission` with BBj user permissions.
-- [Two Factor Authentication](/docs/configuration/bbj-security/two-factor-authentication): sign in users who need a code.
+- [Two Factor Authentication](/docs/configuration/bbj-security/two-factor-authentication): sign in users who need a code, with a pop up, or with a second route.
 - [Custom Evaluators](/docs/configuration/bbj-security/custom-evaluators): own rules, combined rules, and the evaluator order.
-- [Sessions and Lifetime](/docs/configuration/bbj-security/sessions): reloads, tabs, token checks and renewal, and the end of a sign in.
+- [Sessions and Lifetime](/docs/configuration/bbj-security/sessions): reloads, tabs, the HTTP session accessor, token checks and renewal, and the end of a sign in.
 - [Remote Setup](/docs/configuration/bbj-security/remote-setup): connect to a remote administration API over SSL with a truststore.
-- [Security Notes](/docs/configuration/bbj-security/security-notes): limits of the library and a reverse proxy setup.

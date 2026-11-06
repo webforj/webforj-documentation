@@ -10,7 +10,7 @@ A sign in lives in the HTTP session and lasts as long as its login token. This p
 
 A reload of a signed in tab keeps the user signed in. The user opens the same page again and needs no new sign in. All tabs that belong to one HTTP session share the sign in. A new tab of the same HTTP session starts signed in, and a sign in or a sign out in one tab reaches the other tabs at their next navigation. See [Check and renew the sign in](#check-and-renew-the-sign-in).
 
-The sign in is kept in the HTTP session of the browser. This needs a BBjServices build that provides the HTTP session accessor, and the accessor must be switched on. It was tried on the BBj 26.10 development build. BBj 26.03 doesn't provide it.
+The sign in is kept in the HTTP session of the browser. This needs a BBjServices build that provides the HTTP session accessor, and the accessor must be switched on. It was tried on the BBj 26.10 development build. BBj 26.03 doesn't provide it. Without the accessor the sign in is kept for the page only, see [Without the session accessor](#without-the-session-accessor).
 
 Switch the accessor on with the property `com.basis.jetty.enableSessionAccessor=true`. Add it as the line `com.basis.jetty.enableSessionAccessor=true` to `BBj.properties` in the configuration folder of BBjServices, then restart BBjServices.
 
@@ -20,7 +20,9 @@ The sign in is kept as follows:
 - The sign in expires with the login token. After `webforj.security.bbj.token.minutes` without a renewal, a reload no longer restores the user.
 - A sign out removes the sign in from the HTTP session.
 
-Without the session accessor, for example on a BBjServices release without it or with the property not set, the app can't keep a sign in. A sign in logs the warning `The sign in could not be written to the HTTP session`, ends the new BBj token and answers `UNAVAILABLE` with the toast `Cannot sign in right now.`. After a reload nobody is signed in. A requested location isn't kept either, so a sign in lands on the default success path. There is no fallback.
+### Without the session accessor {#without-the-session-accessor}
+
+Without the session accessor, for example on a BBjServices release without it or with the property not set, the app keeps the sign in and the requested location for the page only. A sign in works and route checks, renewal, and sign out behave as before. A reload or a new tab starts without a sign in, so the user signs in again. Each tab holds its own login token, and a sign out in one tab ends only the token of that tab. Each page that starts without the accessor logs `No HTTP session accessor, the sign in is kept for this page only` at the info level.
 
 The settings need no change for this behavior, and no setting turns it off apart from the property of the accessor.
 

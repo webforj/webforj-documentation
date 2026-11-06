@@ -41,6 +41,10 @@ The library registers itself when the app starts. The app needs no activation co
 
 Route security is on by default, and a route without a security annotation requires a signed-in user. The authentication path is `/login`. See [Configuration](/docs/configuration/bbj-security/configuration) to change these defaults and the sign in settings.
 
+## Keep the sign in after a reload {#keep-the-sign-in-after-a-reload}
+
+A reload keeps the user signed in only when BBjServices provides the HTTP session accessor and the property `com.basis.jetty.enableSessionAccessor=true` is set in `BBj.properties`. Without it, the app keeps the sign in and the requested location for the page only, so a reload or a new tab signs the user out. See [Sessions and Lifetime](/docs/configuration/bbj-security/sessions#keep-users-signed-in-after-a-reload).
+
 ## Provide the login and deny views {#provide-the-login-and-deny-views}
 
 The library ships no views. The app provides a view for the authentication path and a view for the deny path. Both carry `@AnonymousAccess` so that a visitor who isn't allowed in can still reach them.
@@ -59,7 +63,7 @@ public class LoginView extends Composite<Div> {
 }
 ```
 
-The view hands the submitted user name and password to `BBjSecurity`. See [Sign in users](/docs/configuration/bbj-security/sign-in#sign-in-users).
+The view hands the submitted user name and password to `BBjSecurity`. See [Sign in users](/docs/configuration/bbj-security/sign-in#sign-in-users). Accounts with two factor authentication need a code as well. See [Two factor authentication](/docs/configuration/bbj-security/two-factor-authentication).
 
 ```java title="DenyView.java"
 @Route("/denied")

@@ -26,18 +26,18 @@ webforj.security.bbj.admin {
 
 The app checks the settings at the start. See [Invalid connection values](#invalid-connection-values).
 
-## Enable SSL on the Admin Server {#enable-ssl-on-the-admin-server}
+## Enable SSL on the administration server {#enable-ssl-on-the-admin-server}
 
-The administration API is the Admin Server of BBjServices. It has one port and no separate SSL port. Enable SSL in the Enterprise Manager under BBj Services, Servers, Admin Server:
+The administration API is the administration server of BBjServices. It has one port and no separate SSL port. Enable SSL in the Enterprise Manager under BBj Services, Servers, `Admin Server`:
 
-- Select Use SSL. BBjServices then requires SSL for every connection to the Admin Server.
+- Select Use SSL. BBjServices then requires SSL for every connection to the administration server.
 - Set Keystore to the keystore with the certificate of that server, and set Keystore Password.
 
-See the [Servers page of the Enterprise Manager help](https://documentation.basis.cloud/BASISHelp/WebHelp/em/bbjservices/EM_BS_Servers.htm). Use a certificate of that server and not the default certificate that BBjServices ships. See [Security notes](/docs/configuration/bbj-security/security-notes).
+See the [Servers page of the Enterprise Manager help](https://documentation.basis.cloud/BASISHelp/WebHelp/em/bbjservices/EM_BS_Servers.htm). Use a certificate of that server and not the default certificate that BBjServices ships.
 
 ## Create the truststore {#create-the-truststore}
 
-The truststore holds the certificate of the Admin Server. Export the certificate from the keystore of the Admin Server and import it into a new truststore with `keytool`.
+The truststore holds the certificate of the administration server. Export the certificate from the keystore of the administration server and import it into a new truststore with `keytool`.
 
 ```bash
 keytool -exportcert -alias bbj-admin -keystore admin.p12 -file bbj-admin.crt
@@ -47,7 +47,7 @@ keytool -importcert -alias bbj-admin -file bbj-admin.crt \
 
 Copy `truststore.p12` to the machine of the app and set `admin.truststore` to its path.
 
-BBjServices doesn't check the host name of the certificate. A connection succeeds when the server presents any certificate of the truststore, whatever its name. The truststore must therefore hold only the certificate of the Admin Server that the app uses, and no other certificate. A server with an unrelated certificate is refused with `No trusted certificate found`.
+BBjServices doesn't check the host name of the certificate. A connection succeeds when the server presents any certificate of the truststore, whatever its name. The truststore must therefore hold only the certificate of the administration server that the app uses, and no other certificate. A server with an unrelated certificate is refused with `No trusted certificate found`.
 
 With `ssl` set to `true` and no truststore, BBjServices accepts only its shipped default certificate and refuses an own certificate. The default certificate is the same on every installation and authenticates no server, so a remote host never runs without a truststore.
 
