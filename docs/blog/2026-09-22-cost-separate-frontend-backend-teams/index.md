@@ -1,6 +1,6 @@
 ---
 title: "The cost of separate frontend and backend teams"
-description: "What a frontend and backend split costs a business app, how one Java team with webforJ removes each cost driver, and a worksheet to fill in with your own figures."
+description: "What a frontend and backend split costs a business app, how one Java team with webforJ reduces or removes each cost driver, and a worksheet to fill in with your own figures."
 slug: cost-separate-frontend-backend-teams
 date: 2026-09-22
 authors: webforJ
@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Your budget review lists a Java backend team and a JavaScript frontend team, and the line items keep growing even when the product stays the same size. Part of that is the work. Part of it is the split itself.
 
-The cost of separate frontend and backend teams is not one number. It is five recurring cost drivers that exist because the screen and the server are written in two languages by two groups. webforJ, the full-stack Java framework, removes each of them for business web apps by letting one Java team build the whole app, screens included. This post names the drivers, shows what changes, and gives you a worksheet to fill in with your own figures.
+The cost of separate frontend and backend teams is not one number. It is five recurring cost drivers that exist because the screen and the server are written in two languages by two groups. webforJ, the full-stack Java framework, reduces or removes each of them for business web apps by letting one Java team build the whole app, screens included. This post names the drivers, shows what changes, and gives you a worksheet to fill in with your own figures.
 
 <!-- truncate -->
 
@@ -35,7 +35,7 @@ A single Java team means one hiring profile, one onboarding path and one pool of
 
 With webforJ, a view is a Java class, a button is a Java object and a click handler is a lambda. The engineer who knows your domain model also builds the screen that edits it. Your existing Java developers do not need a frontend toolchain to ship UI.
 
-There is public evidence of how this plays out. Prodin Business Solutions, a Dutch enterprise resource planning (ERP) software provider with over 45 years of experience, assembled a six-member Java development team, reused Java-compatible business logic some of which was written over two decades ago, and delivered its first web-based modules to customers within four months. The details are in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf).
+There is public evidence of how this plays out. BASIS published a success story about Prodin Business Solutions. Prodin assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers. The details are in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf).
 
 ## Driver 2: no API contract {#api-contract}
 
@@ -43,7 +43,7 @@ When the only client of your backend is your own web app, the REST layer exists 
 
 In webforJ the UI runs on the server in the same Java process as your services. A screen calls a Spring service directly. The framework handles the browser traffic, and its [client/server interaction model](/docs/architecture/client-server) batches calls so the screen does not need a hand-built API to stay responsive. If you use Spring Boot, webforJ [integrates with it](/docs/integrations/spring/overview), so your beans and repositories are available to your views as they are anywhere else in the app.
 
-That removes the contract for internal screens. If another consumer needs an API later, such as a partner integration, you can still publish one from the same codebase.
+That reduces the contract for internal screens. If another consumer needs an API later, such as a partner integration, you can still publish one from the same codebase.
 
 ## Driver 3: one model, one set of rules {#one-model}
 
@@ -59,9 +59,9 @@ Access control follows the same pattern. [Route security](/docs/security/overvie
 
 ## Driver 5: one patch stream {#patch-stream}
 
-A Java app with a JavaScript frontend has two dependency trees to scan, patch and upgrade, usually on different cadences. With a full-stack Java app there is one build, one dependency tree, and one deployable.
+A Java app with a JavaScript frontend has two dependency trees to scan, patch and upgrade, usually on different cadences. With a full-stack Java app the screens you write in Java share one build and one deployable with the backend.
 
-This does not remove the work of keeping dependencies current. It removes half of the surface and the coordination between two release trains. The webforJ docs also cover [app security](/docs/security/application-security/overview) topics such as secrets handling and production hardening, so the Java team has one place to look.
+This does not remove the work of keeping dependencies current. It reduces the surface and the coordination between two release trains. See [app security](/docs/security/application-security/overview) for topics such as secrets handling and production hardening, so the Java team has one place to look.
 
 ## The worksheet: fill in your own figures {#worksheet}
 
@@ -88,9 +88,9 @@ A split is justified in several cases, and we would not push you away from it.
 
 The pattern is that the split pays off when the contract has several consumers or the frontend is the product. For internal tools, admin applications, back-office systems and line-of-business apps, the contract usually has one consumer, and that is where one Java team has the most to offer. Our [objections post](/blog/full-stack-java-objections) covers the technical worries that tend to come up in this discussion.
 
-## Why this is a low-risk decision {#low-risk}
+## Who stands behind it {#low-risk}
 
-Hiring and continuity matter as much as the technology. webforJ is developed by BASIS International, a privately owned company that has built software and tools for business solutions for almost 40 years and has delivered technology built on Java for more than 20 of them. It has offices in Albuquerque and Saarbrücken, support contacts in both regions and partners in more than 30 countries. The [company page](https://webforj.com/company) has the details.
+Hiring and continuity matter as much as the technology. webforJ is developed by BASIS International. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 
 You also do not have to commit the whole portfolio. Start with one screen or one internal tool, measure the worksheet against it, and decide from there. AI coding assistants speed up that first screen. The [webforJ AI plugin](/docs/ai-tooling) gives an assistant real API lookups and structured workflows, so your engineers review its code instead of rewriting it.
 

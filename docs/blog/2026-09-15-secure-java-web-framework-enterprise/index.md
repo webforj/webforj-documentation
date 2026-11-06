@@ -36,7 +36,7 @@ For a risk owner, this has four practical effects:
 
 1. **No UI-only endpoints to write.** Your views call your Java services directly, so you don't need REST controllers whose only job is to feed a screen.
 2. **Rules are enforced on the server.** A manipulated client can send anything, so the server is the only place a rule can hold. In webforJ the server is also where the rule is written.
-3. **Text is shown as text.** When you set a component's text, the value is displayed literally. Markup is rendered only when you opt in on purpose, which closes off a whole class of cross-site scripting by default.
+3. **Text is shown as text.** When you set a component's text, the value is displayed literally. Markup is rendered only when you opt in on purpose, which helps prevent a common class of cross-site scripting by default.
 4. **One codebase to review.** The UI is Java, so it goes through the same pull requests, static analysis and dependency scanning your backend already does. There is no parallel front-end toolchain to bring under policy.
 
 This is secure by design Java web UI in a literal sense: the safe path is the default path, and the dangerous paths are explicit calls a reviewer can search for.
@@ -51,7 +51,7 @@ When Spring Boot is on the classpath, the [Spring Security integration](/docs/se
 
 ## What your tools already cover {#existing-tools}
 
-Because the app is Java, the controls you already pay for apply directly. Code review, static analysis, dependency scanning and your build pipeline all apply to a Maven project the way they do to any Java service. Your security team doesn't need a new skill set to review a webforJ screen. They read Java.
+Because the app is Java, the controls you already pay for apply directly. Code review, static analysis, dependency scanning and your build pipeline all apply to a Maven project the way they do to any Java service. Your security team can review a webforJ screen with the Java skills it already has.
 
 This matters for staffing as well. The people who maintain the service layer can maintain the screens, and the review checklist is the one you already have.
 
@@ -81,7 +81,7 @@ No framework makes an app secure by itself, and we do not claim that webforJ doe
 
 Each of these is covered in our [app security](/docs/security/application-security/overview), including [common threats](/docs/security/application-security/common-threats), and [production hardening](/docs/security/application-security/production-hardening). Read them next to your own standards. They are written to show where the framework helps and where it stops.
 
-## Why this is a low-risk choice {#low-risk}
+## Who stands behind it {#low-risk}
 
 Security reviews also ask who stands behind the software. webforJ comes from BASIS International. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 

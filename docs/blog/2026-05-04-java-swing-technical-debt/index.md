@@ -42,15 +42,15 @@ None of these needs a rewrite on its own. Together they explain why teams start 
 | Option | What changes | Main cost | Main risk |
 |---|---|---|---|
 | Stay on desktop | Nothing | Debt keeps growing | Every new web request is refused |
-| Remote desktop wrapper | Users reach the same UI remotely | Still a desktop UI, rendered remotely | No path to a native web UI |
+| Remote desktop wrapper | Users reach the same UI remotely | Still a desktop UI, rendered remotely | Users reach the same desktop UI remotely |
 | Full rewrite | Everything | Months of parallel work | Business logic recreated and re-broken |
 | Embed, then replace with webforJ | One screen at a time | Planned, incremental work | Two UIs coexist for a while |
 
-The last row is the one we recommend, and it is the only one that reduces the debt while the app stays in production.
+The last row is the one we recommend, and it reduces the debt gradually while the app stays in production.
 
 ## Why not a full rewrite {#why-not-a-full-rewrite}
 
-Years of Swing code hold rules nobody wrote down anywhere else: validation quirks, rounding rules, special cases for one customer. A rewrite has to rediscover all of them. The [Webswing documentation in webforJ](/docs/integrations/webswing/overview) lists the usual blockers: complex domain logic that is risky to recreate, desktop-specific libraries or hardware, the time and cost of a full rewrite, and the need to keep feature parity.
+Years of Swing code hold rules nobody wrote down anywhere else: validation quirks, rounding rules, special cases for one customer. A rewrite has to rediscover all of them. The usual blockers are complex domain logic that is risky to recreate, desktop-specific libraries or hardware, the time and cost of a full rewrite, and the need to keep feature parity. [Webswing](/docs/integrations/webswing/overview) lets those apps keep running in the browser.
 
 The better plan keeps the old app alive while the new one grows around it. You do not choose between the old UI and the new one on day one. You move users across screen by screen.
 
@@ -105,7 +105,7 @@ The action names, `refresh` and `orderSaved` here, are defined by your Swing app
 
 Once a screen is rebuilt in webforJ, it is a server-side Java UI. State and business logic stay on the server, and the browser receives a thin client. The framework batches server-to-client calls, and the browser loads a small JavaScript bootstrap and fetches further chunks on demand (see [client and server](/docs/architecture/client-server)). You write Java with components, events and data binding, not HTML templates or a separate JavaScript front end.
 
-That removes the debts listed earlier. Users open a URL, deployment happens once on the server, and the UI matches what people expect from the web. The team that maintained Swing can maintain this, because it is Java.
+That addresses the debts listed earlier. Users open a URL, deployment happens once on the server, and the UI matches what people expect from the web. The team that maintained Swing can maintain this, because it is Java.
 
 ## A decision guide {#a-decision-guide}
 
@@ -113,8 +113,8 @@ Use these questions to pick your starting point.
 
 - **Does anyone outside the office need this app?** Then the browser is already a requirement, and embedding through Webswing is your first step.
 - **Is the code mostly forms, tables and reports?** Rebuild those screens first in webforJ. They map directly to webforJ components and give the quick visible win.
-- **Is there a specialized editor or canvas that nobody wants to change?** Keep it embedded. A hybrid app is a valid end state, and the docs describe it as combining webforJ dashboards and reports with Swing for specialized visualizations.
-- **Is the team about to lose the one person who knows the Swing code?** Start now. Embedding costs little and buys time.
+- **Is there a specialized editor or canvas that nobody wants to change?** Keep it embedded. A hybrid app is a valid end state, and it combines webforJ dashboards and reports with Swing for specialized visualizations.
+- **Is the team about to lose the one person who knows the Swing code?** Start now. Embedding is a small first step that buys time.
 - **Is the app being retired within a year?** Stay put. Modernizing something with an end date is not a good use of effort.
 
 ## Start with one screen {#start-with-one-screen}

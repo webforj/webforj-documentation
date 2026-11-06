@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-is-webforj-production-ready/cover.jpg)
 
-You are about to pick a UI framework for an app that has to run for ten years, and the name webforJ is one you only heard recently. Asking "is webforJ production ready" is the right question. The short answer is yes, and the reason is that webforJ, the full-stack Java framework, is a newer name on top of BBj and the Dynamic Web Client. It is a Java API built by BASIS International, on top of BBj and the Dynamic Web Client (DWC), shipped through Maven Central with regular numbered releases and Spring Boot integration.
+You are about to pick a UI framework for an app that has to run for ten years, and the name webforJ is one you only heard recently. Asking "is webforJ production ready" is the right question. Here are the published facts. webforJ, the full-stack Java framework, is a Java API built by BASIS International, on top of BBj and the Dynamic Web Client (DWC), shipped through Maven Central with regular numbered releases and Spring Boot integration.
 
 <!-- truncate -->
 
@@ -33,9 +33,9 @@ For a procurement conversation, these sentences answer "is there a company behin
 
 ## Myth: a new framework has no lineage {#myth-lineage}
 
-**Fact:** the lineage runs in a straight line. [BASIS](https://basis.cloud) created the newest version of BBx®, the sixth generation, using Java technology. The DWC is a browser client on top of BBj. webforJ is the Java API around that client.
+**Fact:** the lineage runs in a straight line. [BASIS](https://basis.cloud) created the newest version of BBx®, the sixth generation, using Java technology. webforJ is a Java API around the BBj language's DWC.
 
-BASIS also publishes how its Java baseline moves forward. BBj 20.10 ended support for Java 8. BBj 20.30 was the first release built entirely with Java 11. BBj 24.00 is built with Java 17 and runs with either Java 17 or Java 21. webforJ 26.00 requires Java 21 or later, and Java 25 is also supported. The stack has moved to newer Java versions over time, which is not what a prototype does.
+webforJ 26.00 requires Java 21 or later, and Java 25 is also supported.
 
 ## Is webforJ production ready? {#production-ready}
 
@@ -47,9 +47,9 @@ Production readiness is about what happens after the first release, so look at t
 | 2025 | 24.21, 24.22, 25.00, 25.01, 25.02, 25.03, 25.10 |
 | 2026 | 25.11, 25.12, 26.00, 26.01, 26.02 |
 
-Version 24.00 went live on April 8, 2024, and 26.02 followed on August 31, 2026. The major number moves about once a year, with feature releases in between. The version numbers are shared with BBj, which keeps the whole stack on one release train.
+Version 24.00 went live on April 8, 2024, and 26.02 followed on August 31, 2026. The major number moves about once a year, with feature releases in between. Each webforJ version has a BBj version with the same number.
 
-The upgrade path is also tooling, not a rewrite. Version 26.00 introduced `webforj-rewrite`, a set of OpenRewrite recipes that move a project to the new major. Spring Boot support moved with it, to 4.0.4 from 3.5.7. You can read the details in the [Spring Boot integration guide](/docs/integrations/spring/spring-boot).
+The upgrade path is also tooling, not a rewrite. Version 26.00 introduced `webforj-rewrite`, a set of OpenRewrite recipes that move a project to the new major. Spring Boot support moved with it, to Spring Boot 4.x. You can read the details in the [Spring Boot integration guide](/docs/integrations/spring/spring-boot).
 
 Distribution is ordinary Java distribution. The artifacts are on Maven Central, so the dependency lands in your build the same way every other library does.
 
@@ -72,7 +72,7 @@ Teams looking for a Java web framework for enterprise use usually check the same
 | Question | Answer |
 |---|---|
 | Who builds it | BASIS International |
-| Where are they | Offices in Albuquerque (US) and Saarbrücken (Germany) |
+| Where are they | Operating its own sites in North America and Europe |
 | Java experience | "20+ years of delivering technology built on Java" |
 | How is it released | Numbered releases shared with BBj, from 24.00 in April 2024 to 26.02 in August 2026 |
 | How is it distributed | Maven Central |
@@ -88,7 +88,7 @@ The quickest way to settle the question is to generate a project and judge it. [
 
 ### Is webforJ production ready? {#faq-production-ready}
 
-Yes. webforJ has been released on a regular schedule since 24.00 in April 2024, and 26.02 shipped in August 2026. It sits on BBj and the DWC from BASIS International, and our success stories page lists Prodin, Audev's CarIT and more.
+webforJ has been released on a regular schedule since 24.00 in April 2024, and 26.02 shipped in August 2026. It sits on BBj and the DWC from BASIS International, and our success stories page lists Prodin, Audev's CarIT and more.
 
 ### Who is behind webforJ? {#faq-who-behind}
 
@@ -96,7 +96,7 @@ BASIS International. BASIS software and software tools have been used to develop
 
 ### Does webforJ keep up with new Java versions? {#faq-long-term}
 
-webforJ belongs to a product line with a long history and a visible release record. Version 26.00 requires Java 21 or later and also supports Java 25. Upgrades between majors come with OpenRewrite recipes.
+webforJ is built on BBj and the DWC from BASIS International, with a visible release record. Version 26.00 requires Java 21 or later and also supports Java 25. Upgrades between majors come with OpenRewrite recipes.
 
 ### Does webforJ work with Spring Boot? {#faq-spring}
 

@@ -11,13 +11,13 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-10-modernize-erp-ui-java/cover.jpg)
 
-Your ERP works. The accounting rules, the pricing logic and the warehouse flows took years to get right, and the Swing screens in front of them are what everyone wants to replace. To modernize an enterprise resource planning (ERP) UI in Java, keep the domain code, and move the screens in steps. webforJ, the full-stack Java framework, embeds the running desktop app in a web page through Webswing, so users get a browser UI on day one, and your team then replaces each screen with a Java view.
+Your ERP works. The accounting rules, the pricing logic and the warehouse flows took years to get right, and the Swing screens in front of them are what everyone wants to replace. To modernize an enterprise resource planning (ERP) UI in Java, keep the domain code, and move the screens in steps. webforJ, the full-stack Java framework, embeds the running desktop app in a web page through Webswing, so users can reach the app in a browser early, and your team then replaces each screen with a Java view.
 
 <!-- truncate -->
 
-If you are looking for a Java framework for ERP software, the question is rarely which framework looks best in a demo. It is which one lets a Java team keep the working system, ship new screens every sprint, and never stop the business. That is the job webforJ was built for, and it comes from a company that has spent almost 40 years in business software and 20+ years delivering technology built on Java. [BASIS International](https://webforj.com/company) has been building tools for business app developers since 1985.
+If you are looking for a Java framework for ERP software, the question is rarely which framework looks best in a demo. It is which one lets a Java team keep the working system, keep shipping new screens without stopping the business. That is the job webforJ is meant to help with. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java.
 
-This post goes through the myths that keep legacy business app web UI projects stuck, and what the webforJ docs say about each one.
+This post goes through the myths that keep legacy business app web UI projects stuck, and how webforJ answers each one.
 
 ## Myth: you must rewrite everything {#myth-rewrite}
 
@@ -25,19 +25,19 @@ This post goes through the myths that keep legacy business app web UI projects s
 
 webforJ adds the `WebswingConnector` component, available since 25.10. It embeds a Webswing-hosted app inside a webforJ page. The ERP screens your accountants and warehouse staff use today stay exactly as they are, and they now live inside a web app you control.
 
-The reasons teams give for not rewriting are the ones the [Webswing integration docs](/docs/integrations/webswing/overview) list: complex domain logic that is risky to recreate, integration with desktop-specific libraries or hardware, time and cost, and the need to keep feature parity. Embedding addresses all four, because nothing in the old app changes.
+The reasons teams give for not rewriting are complex domain logic that is risky to recreate, integration with desktop-specific libraries or hardware, time and cost, and the need to keep feature parity. [Embedding](/docs/integrations/webswing/overview) addresses all four, because the old app's source does not change.
 
 ## Java framework for ERP software {#java-framework-erp}
 
 An ERP front end is forms, dense tables, role-based access and long-lived sessions. webforJ covers all of it in Java, from the route to the button, with views, event handlers and data access in the same language, the same IDE and the same build as the rest of your system. Your Java developers keep working in Java, and nobody has to design an API between the screens and the server.
 
-How the browser and the server talk is handled for you. Calls from the server to the client, such as `setText()`, are sent without waiting for a response, and webforJ batches them automatically. Client events, such as `Button.onClick()`, flow back to your Java code. The [client and server interaction](/docs/architecture/client-server) page describes the three kinds of traffic.
+How the browser and the server talk is handled for you. Calls from the server to the client, such as `setText()`, are sent without waiting for a response, and webforJ batches them automatically. Client events, such as `Button.onClick()`, flow back to your Java code. Traffic between the two sides falls into three kinds. See [client and server interaction](/docs/architecture/client-server).
 
 If you already run Spring Boot services, webforJ integrates with them. Your views can `@Autowired` any Spring bean, and Spring Data repositories connect directly to the webforJ `Table` through `SpringDataRepository`. See the [Spring integration](/docs/integrations/spring/overview) docs. Without Spring, webforJ runs standalone.
 
 ## Myth: embedding means a bolted-on UI {#myth-bolted-on}
 
-**Fact:** the embedded app is a component like any other. This is the view from the docs that places a Webswing-hosted app in a route:
+**Fact:** the embedded app is a component like any other. This view places a Webswing-hosted app in a route:
 
 ```java title="SwingAppView.java"
 @Route
@@ -64,7 +64,7 @@ That is the seam that makes a gradual migration possible. A web toolbar, a new s
 
 ## Myth: it's all or nothing {#myth-all-or-nothing}
 
-**Fact:** the docs describe the path as four steps:
+**Fact:** the path has four steps:
 
 1. Start by embedding your existing Swing app via `WebswingConnector`.
 2. Build new features in webforJ around the embedded app.
@@ -77,7 +77,7 @@ A practical order for an internal tool:
 
 - Start with read-heavy screens such as reports and lists. They carry the least risk and the most visible improvement. The [Table](/docs/components/table/overview) component is designed to present large data sets.
 - Move simple data-entry forms next.
-- Leave the specialized editors and visualizations in Swing the longest. The docs call out this hybrid case: use webforJ for user-facing interfaces, dashboards and reports, and keep Swing for complex visualizations or specialized editors.
+- Leave the specialized editors and visualizations in Swing the longest. In this hybrid case, use webforJ for user-facing interfaces, dashboards and reports, and keep Swing for complex visualizations or specialized editors.
 
 The [earlier roadmap post on Webswing and webforJ](/blog/webswing-and-webforj) goes further into planning that sequence.
 
@@ -88,13 +88,13 @@ Screen-by-screen work is repetitive, which makes it a good fit for an AI coding 
 The [webforJ AI plugin](/docs/ai-tooling) is what keeps that port correct. One install adds two pieces to Claude Code, Copilot, Cursor, Gemini and Codex:
 
 - The [MCP server](/docs/ai-tooling/mcp) lets the agent look things up in the real webforJ docs and APIs instead of guessing method names.
-- The [Agent Skills](/docs/ai-tooling/agent-skills) give it structured workflows for building forms and components, so the code compiles and follows best practices on the first attempt.
+- The [Agent Skills](/docs/ai-tooling/agent-skills) give it structured workflows for building forms and components, so the agent builds against the real APIs.
 
 Review and test what the agent writes, as you would for any teammate. Your Java developers stay in charge of the decisions, and the agent does the typing.
 
 ## Myth: no shared login {#myth-login}
 
-**Fact:** you decide where authentication lives. The Webswing options cover connection management, authentication, debugging and monitoring, so the web app can own the session while the embedded app runs behind it. On the webforJ side, the [route security](/docs/security/overview) framework (since 25.10) protects views with annotations before they render, so new screens get role-based access from the start.
+**Fact:** you decide where authentication lives. The Webswing options cover connection management, authentication, debugging and monitoring, so the web app can own the session while the embedded app runs behind it. On the webforJ side, the [route security](/docs/security/overview) framework (since 25.10) protects views with annotations before they render, so new screens can be protected with role-based access from the start.
 
 One setup detail to plan for: Webswing and webforJ must run on different ports, and when they run on different origins you must configure CORS in Webswing. The [setup guide](/docs/integrations/webswing/setup) walks through the server install, the `webforj-webswing` dependency and the app registration.
 
@@ -122,7 +122,7 @@ Embed the existing desktop app in a webforJ page with `WebswingConnector`, then 
 
 ### What is the best Java framework for ERP software? {#faq-best-framework}
 
-webforJ is the full-stack Java framework for business web apps, built by BASIS International, a company with almost 40 years in business software. It gives you routing, forms, tables, route security and Spring Boot integration in one language, plus a Webswing path for the desktop screens you already have.
+webforJ is the full-stack Java framework for business web apps, built by BASIS International. It gives you routing, forms, tables, route security and Spring Boot integration in one language, plus a Webswing path for the desktop screens you already have.
 
 ### Can a legacy business app get a web UI without source changes? {#faq-no-source-change}
 

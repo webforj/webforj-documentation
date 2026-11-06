@@ -48,7 +48,7 @@ A Swing modernization roadmap for enterprises works when each phase delivers som
 
 ### Phase 1: run in the browser now {#phase-1}
 
-Host the existing app with Webswing and embed it in a webforJ app through the `WebswingConnector` component. Users get browser access to the app they already know. Your security team gets one server-side deployment instead of many installed clients. Nothing about the business logic changes, so the risk of this phase is low. Setup is covered in the [Webswing setup guide](/docs/integrations/webswing/setup).
+Host the existing app with Webswing and embed it in a webforJ app through the `WebswingConnector` component. Users get browser access to the app they already know. Your security team gets one server-side deployment instead of many installed clients. Nothing about the business logic changes, so this phase changes the least. Setup is covered in the [Webswing setup guide](/docs/integrations/webswing/setup).
 
 ### Phase 2: move screens by priority {#phase-2}
 
@@ -58,7 +58,7 @@ Pick screens by business value: the ones customers use, the ones with the most s
 
 When the last screen is rebuilt, the Webswing layer and the desktop client go away. The end state is one Java app that runs in the browser, with no streaming layer to maintain.
 
-The point of the phasing is that you can stop after any phase and still have gained something. Phase 1 alone solves access. Phase 2 can run for as long as the budget allows.
+The point of the phasing is that you can stop after any phase and still have gained something. Phase 1 gives browser access. Phase 2 can run for as long as the budget allows.
 
 ## Where AI agents cut the cost {#ai-agents}
 
@@ -76,7 +76,7 @@ This is where the Java route differs most from the alternatives.
 - **Business logic is reused.** Existing Java classes keep serving the new screens, so the domain knowledge in your team stays valuable.
 - **Familiar ecosystem.** webforJ integrates with Spring Boot, so existing services and security conventions carry over. Route access is controlled with annotations and Spring Security integration. See the [security docs](/docs/security/overview).
 
-## Vendor stability {#vendor-stability}
+## Who builds webforJ {#vendor-stability}
 
 A modernization program lasts years, so the supplier matters. webforJ comes from [BASIS International](https://webforj.com/company). BASIS software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 
@@ -89,7 +89,7 @@ A modernization program lasts years, so the supplier matters. webforJ comes from
 | Two codebases to staff | Hybrid Java and JavaScript | One language, one team |
 | Users see two different apps | Mixed estate | Embedded Swing and web screens exchange events |
 | AI output is wrong | Automated porting | MCP lookups, Agent Skills, human review |
-| Supplier risk | Any long program | Vendor facts are on the company page |
+| Supplier risk | Any long program | See who builds webforJ |
 
 ## Next step: pilot one screen {#next-step}
 

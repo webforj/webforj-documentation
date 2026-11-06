@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Your Swing app still works. Users depend on it, the business rules inside it took years to get right, and now someone wants it in the browser. The question is how, and the answers you find online mostly start with a new JavaScript front end.
 
-To migrate a Java Swing app to web, you have three real paths and one combination: rewrite the UI in JavaScript against a new REST API, run the existing app in the browser with Webswing, or rebuild the UI screen by screen in Java with webforJ, the full-stack Java framework. For most teams the best long-term target is webforJ, because your developers stay in Java and your business logic carries over. The fastest route to a first browser release is often both together, Webswing first and webforJ second.
+To migrate a Java Swing app to web, you have three real paths and one combination: rewrite the UI in JavaScript against a new REST API, run the existing app in the browser with Webswing, or rebuild the UI screen by screen in Java with webforJ, the full-stack Java framework. For many Java teams the best long-term target is webforJ, because your developers stay in Java and your business logic carries over. The fastest route to a first browser release is often both together, Webswing first and webforJ second.
 
 <!-- truncate -->
 
@@ -36,13 +36,13 @@ The rest of this guide compares them on the things that decide a project: how mu
 
 This is the path most search results describe. You put an API in front of your services, then build every screen again in a different language, with a different component model, a different build tool and a different way of handling state.
 
-It can work when you already have a front-end team and a clean service layer. For a Java team it means two stacks, two sets of skills and a long stretch where nothing reaches users. The Swing screens carry hidden behavior in listeners, validation and enabled-state logic. A rewrite has to rediscover all of it, and a JSON API turns every one of those small interactions into a contract you must design and keep stable.
+It can work when you already have a front-end team and a clean service layer. For a Java team it means two stacks, two sets of skills and often a long stretch where nothing reaches users. The Swing screens carry hidden behavior in listeners, validation and enabled-state logic. A rewrite has to rediscover all of it, and a JSON API turns every one of those small interactions into a contract you must design and keep stable.
 
 Choose it only if your organization has already decided on a JavaScript front end for other reasons.
 
 ## Path 2: run the Swing app in the browser {#run-swing-in-browser}
 
-If you need to **run a Swing app in the browser** this quarter, Webswing is the direct answer. The [Webswing integration](/docs/integrations/webswing/overview) describes it as a web server technology that runs Java desktop apps (Swing, JavaFX, SWT) in a browser without changes to the original source code. The desktop app renders on the server and the interface streams to the browser using HTML5 canvas, with user input handled transparently.
+If you need to **run a Swing app in the browser** this quarter, Webswing is the direct answer. [Webswing](/docs/integrations/webswing/overview) is a web server technology that runs Java desktop apps (Swing, JavaFX, SWT) in a browser without changes to the original source code. The desktop app renders on the server and the interface streams to the browser using HTML5 canvas, with user input handled transparently.
 
 Because the source stays untouched, it is the lowest-change first step. It also has a limit worth being honest about: you still have a Swing UI, rendered on the server and streamed to the browser as canvas output. Webswing gets you onto the web. It does not get you off Swing.
 
@@ -64,7 +64,7 @@ For how the two sides exchange data and events during a migration, see [Swing an
 
 ## Path 4: Webswing first, webforJ second {#combined-path}
 
-The strongest plan for many teams is not a choice between 2 and 3. The webforJ Webswing integration provides the `WebswingConnector` component, which embeds a Webswing-hosted app directly inside a webforJ app. The docs lay out the sequence:
+The strongest plan for many teams is not a choice between 2 and 3. The webforJ Webswing integration provides the `WebswingConnector` component, which embeds a Webswing-hosted app directly inside a webforJ app. The sequence is:
 
 1. Embed your existing Swing app with `WebswingConnector`.
 2. Build new features in webforJ around the embedded app.
@@ -97,11 +97,11 @@ If two rows describe you, take the combined path. It is the only one where a del
 
 ## Why webforJ is the long-term target {#why-webforj}
 
-Webswing and a JavaScript rewrite each solve one problem. Webswing solves access. A rewrite solves the UI technology, at the price of your team's language. webforJ solves both for a Java team: the result is a browser-native UI written in the language your people already know.
+Webswing and a JavaScript rewrite each solve one problem. Webswing solves access. A rewrite solves the UI technology, at the price of your team's language. webforJ addresses both for a Java team: the result is a browser-native UI written in the language your people already know.
 
 A few practical consequences follow from that.
 
-- **Hiring and onboarding.** Anyone who can read Java can read the codebase. You do not need to split the team into front-end and back-end specialists to maintain it.
+- **Hiring and onboarding.** Java developers can read the codebase. You do not need to split the team into front-end and back-end specialists to maintain it.
 - **No translation layer.** Business rules are called as Java methods, not exposed as an API and called again from a second language.
 - **Exit from the desktop.** After the last screen moves, the Webswing server is no longer needed. The destination is a webforJ app, not a permanent wrapper.
 - **One toolchain.** Maven, your IDE, your debugger and your existing tests continue to apply.

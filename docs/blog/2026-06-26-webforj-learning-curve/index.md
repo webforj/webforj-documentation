@@ -75,19 +75,19 @@ There is nothing in it that a Java developer has to look up in a different langu
 
 Not to build the app itself. The UI is composed in Java, so the developers who write your services can write the screens. Components ship with their styling, and the [styling system](/docs/styling/overview) exposes tokens for the cases where you want to match a brand.
 
-That does not mean a designer or a front-end specialist has no value. Teams with strong visual requirements can still involve one for themes and custom components. The point is that shipping a working business app does not depend on hiring one first, which removes the biggest hiring constraint from the plan.
+That does not mean a designer or a front-end specialist has no value. Teams with strong visual requirements can still involve one for themes and custom components. The point is that shipping a working business app does not depend on hiring one first, which removes a hiring constraint from the plan.
 
 ## How does hiring work? {#hiring}
 
 Hire for Java, then onboard to webforJ. Candidates do not need webforJ on their CV, because the skills you screen for are the ones the framework uses: object-oriented design, event handling, Maven, Spring and testing. The smaller community worry works the same way. A framework used by a Java team is supported by the team's own Java knowledge and the official [documentation](/docs/introduction/overview), not by how many tutorials strangers have posted.
 
-A practical way to make the hire safe is to treat the framework as a short onboarding task, not a job requirement:
+A practical way to keep the hire low-risk is to treat the framework as a short onboarding task, not a job requirement:
 
 1. Give the new developer a generated project to run on the first day.
 2. Have them read the getting-started tutorial and the component docs.
 3. Pair them on a first real view, then review it in a normal code review.
 
-Because everything is Java, your existing review habits, static analysis, and CI pipeline apply unchanged.
+Because everything is Java, your existing review habits, static analysis, and CI pipeline apply.
 
 ## How does onboarding work in practice? {#onboarding}
 

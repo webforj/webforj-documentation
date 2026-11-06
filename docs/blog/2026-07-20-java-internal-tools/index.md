@@ -40,7 +40,7 @@ The rest of this guide takes these in turn, and says what to check before you co
 
 The usual cost of an internal tool is not the first version. It's the tenth change request. Add a column, rename a status, show a warning when the balance is negative. In a split stack each of those is a backend change, an API change and a frontend change, often by different people.
 
-In webforJ the whole screen is Java. The person who owns the service also owns the view. There is no separate client to keep in step, no JSON contract to version and no second dependency tree to patch. For a team of backend developers that is the difference between a request that takes an afternoon and one that waits for a sprint.
+In webforJ the whole screen is Java. The person who owns the service also owns the view. There is no separate client to keep in step, no JSON contract to version and no second dependency tree to patch. For a team of backend developers that can be quicker than waiting for a sprint.
 
 ## Show real data in a table {#tables-over-real-data}
 
@@ -102,7 +102,7 @@ Ask these before you pick anything for an admin panel in Java:
 5. Does it work with your existing Spring services and security configuration?
 6. Is there a layout that every new tool can reuse?
 
-webforJ answers yes to each, and the three sample apps show the answers in code you can read and run.
+webforJ covers each of these, and the two sample apps show the answers in code you can read and run.
 
 ## Try it on one screen {#next-step}
 
@@ -112,7 +112,7 @@ Pick the one internal screen your team keeps postponing. Generate a project with
 
 ### Can I build an internal admin panel in Java without JavaScript? {#faq-no-javascript}
 
-Yes. In webforJ you compose tables, forms, dialogs and layouts as Java objects, and the framework renders them in the browser. The built-with-webforJ apps for CRUD, inventory and dashboards are written in Java.
+Yes. In webforJ you compose tables, forms, dialogs and layouts as Java objects, and the framework renders them in the browser. The built-with-webforJ apps, such as the CRUD app, are written in Java.
 
 ### Does webforJ work with Spring Boot and Spring Security? {#faq-spring}
 

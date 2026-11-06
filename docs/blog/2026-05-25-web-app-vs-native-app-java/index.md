@@ -18,14 +18,14 @@ For a business app, you can have both. Build a web app in Java with webforJ, dep
 <!-- truncate -->
 
 :::tip Install a real app
-Every app in [built with webforJ](https://github.com/webforj/built-with-webforj) is installable. The [Bookstore](https://github.com/webforj/built-with-webforj/tree/main/webforj-bookstore) app is a good one to try: run it with Java and Maven, open it in Chrome or Edge, and install it to get its book inventory, search and edit forms in their own window.
+The [Bookstore](https://github.com/webforj/built-with-webforj/tree/main/webforj-bookstore) app is a good one to try: run it with Java and Maven, open it in Chrome or Edge, and install it to get its book inventory, search and edit forms in their own window.
 :::
 
 ## Web app vs native app: which wins? {#web-app-vs-native-app}
 
 The real cost of a native app isn't the first build. It's everything after it. Each operating system needs its own packaging, each release needs to reach each machine, and each fix waits for users to update.
 
-A web app flips that. The code runs on your server, users open a URL, and a fix reaches everyone on the next page load. For internal tools, customer portals, back-office screens and admin dashboards, that matters more than anything a native shell adds.
+A web app flips that. The code runs on your server, users open a URL, and a fix is deployed once on the server. For internal tools, customer portals, back-office screens and admin dashboards, that matters more than anything a native shell adds.
 
 Here is how the two compare for a typical business app.
 
@@ -109,7 +109,7 @@ A fair comparison names the cases where native wins:
 - Products that talk directly to local hardware.
 - Apps that depend on a platform store for distribution and billing.
 
-If none of these describe your product, the native route adds cost without a matching gain. For most Java teams shipping business software, the web app is the faster build, the cheaper release and the easier thing to keep current.
+If none of these describe your product, the native route can add cost without a matching gain. For most Java teams shipping business software, the web app is the faster build, the simpler release and the easier thing to keep current.
 
 ## Start with a web app today {#next-step}
 

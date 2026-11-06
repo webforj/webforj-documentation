@@ -121,7 +121,7 @@ Generate a project with [startforJ](https://docs.webforj.com/startforj) and open
 
 ## Frequently asked questions {#faq}
 
-### Does webforJ cover only the screens? {#faq-ui-layer}
+### Does webforJ cover only the screens? {#faq-only-screens}
 
 No. It builds the screens, and it also ships routing, security, data binding, translation and testing, and it integrates with Spring Boot for your services. A new project can run as one Maven build with one codebase from the database to the screen.
 

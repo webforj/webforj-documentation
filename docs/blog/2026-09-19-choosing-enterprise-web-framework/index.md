@@ -58,7 +58,7 @@ For each criterion, ask for evidence you can read, such as documentation, a samp
 
 **Red flags.** Permission checks scattered through view code. Access rules that live only in the browser. No documented answer for common threats or secrets handling.
 
-**How webforJ answers.** [Route security](/docs/security/overview) checks access at the route level, before any component is rendered. You declare rules with annotations such as `@AnonymousAccess`, `@PermitAll`, `@RolesAllowed`, and `@DenyAll`, and one place defines the behavior. It integrates with Spring Security, or you can implement the core interfaces yourself. The docs also cover [common threats, secrets management, and production hardening](/docs/security/application-security/overview). Compliance with any law or standard still depends on your own controls and audits, so plan your own review.
+**How webforJ answers.** [Route security](/docs/security/overview) checks access at the route level, before any component is rendered. You declare rules with annotations such as `@AnonymousAccess`, `@PermitAll`, `@RolesAllowed`, and `@DenyAll`, and one place defines the behavior. It integrates with Spring Security, or you can implement the core interfaces yourself. See [common threats, secrets management, and production hardening](/docs/security/application-security/overview) in the app security section. Compliance with any law or standard still depends on your own controls and audits, so plan your own review.
 
 ## Longevity and vendor backing {#longevity-and-vendor}
 
@@ -98,7 +98,7 @@ For each criterion, ask for evidence you can read, such as documentation, a samp
 
 **Red flags.** Assistants that invent method names for your framework. No official guidance. Tooling that needs a separate paid service just to start.
 
-**How webforJ answers.** The [webforJ AI plugin](/docs/ai-tooling) installs the MCP server and Agent Skills into Claude Code, Copilot, Cursor, Gemini, and Codex in one step. The [MCP server](/docs/ai-tooling/mcp) lets the assistant look up the real docs and APIs and validate design tokens, instead of guessing. The [Agent Skills](/docs/ai-tooling/agent-skills) are structured workflows aimed at code that compiles and follows best practices on the first attempt. Your reviewers still read every change, but they review code written against the real APIs.
+**How webforJ answers.** The [webforJ AI plugin](/docs/ai-tooling) installs the MCP server and Agent Skills into Claude Code, Copilot, Cursor, Gemini, and Codex in one step. The [MCP server](/docs/ai-tooling/mcp) lets the assistant look up the real docs and APIs and validate design tokens, instead of guessing. The [Agent Skills](/docs/ai-tooling/agent-skills) are structured workflows aimed at code that matches the real APIs. Your reviewers still read every change, but they review code written against the real APIs.
 
 
 ## Accessibility {#accessibility}
@@ -119,7 +119,7 @@ For each criterion, ask for evidence you can read, such as documentation, a samp
 
 **Red flags.** Separate front-end and back-end teams for a single form. Duplicated validation rules in two languages. A long list of third-party packages to track for vulnerabilities.
 
-**How webforJ answers.** A feature is one Java change by one developer, using components, routing, data binding with Jakarta validation, tables, and security from one framework. Within four months, Prodin delivered their first web-based modules to customers. That is the kind of delivery data to ask every vendor for.
+**How webforJ answers.** A feature can be one Java change by one developer, using components, routing, data binding with Jakarta validation, tables, and security from one framework. Within four months, Prodin delivered their first web-based modules to customers. That is the kind of delivery data to ask every vendor for.
 
 ## A scoring table you can copy {#scoring-table}
 

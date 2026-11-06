@@ -1,5 +1,5 @@
 ---
-title: "Avoid UI framework lock-in in Java: keep the UI layer thin"
+title: "Avoid UI framework lock-in in Java: keep the views thin"
 description: "Every UI framework shapes your code. Here is how to avoid UI framework lock-in in Java by keeping business logic, beans and data access outside the views."
 slug: avoid-ui-framework-lock-in
 date: 2026-09-09
@@ -38,7 +38,7 @@ Each of those is a decision you control. The framework matters only in how hard 
 
 ## Business logic stays in plain Java {#business-logic-in-plain-java}
 
-A webforJ view is a Java class. When the app runs on Spring Boot, the view receives your services through constructor injection, the same way any Spring component does. The [Spring routing guide](/docs/integrations/spring/routing) shows the pattern, and the route class needs no Spring annotation of its own:
+A webforJ view is a Java class. When the app runs on Spring Boot, the view receives your services through constructor injection, the same way any Spring component does. See [Spring routing](/docs/integrations/spring/routing) for the pattern. The route class needs no Spring annotation of its own:
 
 ```java
 @Route("/dashboard")
@@ -64,11 +64,11 @@ Look at what the view owns here. It owns `Div`, `Composite` and `@Route`. It doe
 
 My rule of thumb: if a method in a view needs a framework type to do its job, it belongs in the view. If it only needs your own types, it moves to a service. Hold that line and the view classes stay short.
 
-For apps that already run on Spring Boot, nothing about the backend changes. Adding webforJ to an existing Spring app leaves your services, repositories, and configuration working as before. If you are weighing how far that goes toward a single deployable, the post on a [Java full stack framework](/blog/java-full-stack-framework) walks through a slice from entity to screen.
+For apps that already run on Spring Boot, nothing about the backend changes. Adding webforJ to an existing Spring app is designed to leave your services, repositories, and configuration as they are. If you are weighing how far that goes toward a single deployable, the post on a [Java full stack framework](/blog/java-full-stack-framework) walks through a slice from entity to screen.
 
 ## Forms bind to plain beans {#forms-bind-to-plain-beans}
 
-Forms are where logic leaks into the UI most often. In webforJ, [data binding](/docs/data-binding/overview) connects components to the properties of a Java bean through a `BindingContext`. The bean is yours. It does not extend a webforJ class, and its constraints are standard annotations from [Jakarta Bean Validation](https://beanvalidation.org/):
+Forms are where logic leaks into the UI most often. In webforJ, [data binding](/docs/data-binding/overview) connects components to the properties of a Java bean through a `BindingContext`. The bean is yours. It does not extend a webforJ class, and its constraints are standard validation annotations:
 
 ```java
 public class Hero {
@@ -84,19 +84,19 @@ public class Hero {
 }
 ```
 
-The rules sit on the bean, not in a click handler. The [Jakarta Validation page](/docs/data-binding/validation/jakarta-validation) explains that the `JakartaValidator` adapter bridges the binding context with the standard, and that the constraints give the same outcome as rules set programmatically. A REST endpoint, a batch import or a different UI can validate the same bean with the same annotations, because the annotations belong to Jakarta and not to webforJ.
+The rules sit on the bean, not in a click handler. The `JakartaValidator` adapter bridges the binding context with the standard, and the constraints give the same outcome as rules set programmatically (see [Jakarta Validation](/docs/data-binding/validation/jakarta-validation)). A REST endpoint, a batch import or a different UI can validate the same bean with the same annotations, because the annotations belong to Jakarta and not to webforJ.
 
-One caveat from the docs: the adapter recognizes constraints placed directly on properties. Class-level constraints that are not tied to a property are ignored by the binding. Put the rule on a property, or write a validator for it.
+One caveat: the adapter recognizes constraints placed directly on properties. Class-level constraints that are not tied to a property are ignored by the binding. Put the rule on a property, or write a validator for it.
 
 ## Data access goes through repositories {#data-access-through-repositories}
 
-The second leak is the table that knows how to query. webforJ separates the two with the [Repository pattern](/docs/advanced/repository/overview), which the docs describe as an abstraction layer between your UI components and your data. A `Table` gets its rows from a repository and does not care where they come from.
+The second leak is the table that knows how to query. webforJ separates the two with the [Repository pattern](/docs/advanced/repository/overview), which is an abstraction layer between your UI components and your data. A `Table` gets its rows from a repository and does not care where they come from.
 
-On Spring Boot, that repository can be a Spring Data `JpaRepository` interface you wrote with no webforJ types in it. The [Spring Data JPA guide](/docs/integrations/spring/spring-data-jpa) shows the `SpringDataRepository` adapter wrapping it so the table can sort and filter through it. The interface and the entity are standard Spring. If the UI changed, they would carry over untouched, and the only webforJ-specific part is the thin adapter at the edge. That is the shape you want.
+On Spring Boot, that repository can be a Spring Data `JpaRepository` interface you wrote with no webforJ types in it. See [Spring Data JPA](/docs/integrations/spring/spring-data-jpa) for the `SpringDataRepository` adapter that wraps it so the table can sort and filter through it. The interface and the entity are standard Spring. If the UI changed, they would carry over untouched, and the only webforJ-specific part is the thin adapter at the edge. That is the shape you want.
 
 ## Wrap web components, don't rewrite {#wrap-web-components}
 
-Lock-in also shows up as a fear of being cut off from the wider ecosystem of UI parts. The [Element Composite guide](/docs/building-ui/element-composite) shows how `ElementComposite` binds a Java class to a custom HTML element, so you can wrap a component you already use. That component stays a standard custom element and is not tied to webforJ, which is why only the Java wrapper appears in the table below.
+Lock-in also shows up as a fear of being cut off from the wider ecosystem of UI parts. With `ElementComposite` you can bind a Java class to a custom HTML element and wrap a component you already use (see [Element Composite](/docs/building-ui/element-composite)). That component stays a standard custom element and is not tied to webforJ, which is why only the Java wrapper appears in the table below.
 
 ## How much depends on the framework {#how-much-depends-on-the-framework}
 
@@ -122,7 +122,7 @@ The second is treating the choice as reversible because the code is Java. Java i
 
 ## Try it {#try-it}
 
-Start a project with [startforJ](https://docs.webforj.com/startforj) and pick the Spring Boot setup,. Build one real screen the way this post describes: a bean with Jakarta constraints, a service, a repository, and a view that only wires them together. Then count how many files import `com.webforj`. That count is your lock-in, and you will be able to see it.
+Start a project with [startforJ](https://docs.webforj.com/startforj) and pick the Spring Boot setup. Build one real screen the way this post describes: a bean with Jakarta constraints, a service, a repository, and a view that only wires them together. Then count how many files import `com.webforj`. That count is your lock-in, and you will be able to see it.
 
 ## Frequently asked questions {#faq}
 

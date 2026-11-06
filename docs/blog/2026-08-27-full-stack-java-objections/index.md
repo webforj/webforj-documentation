@@ -46,7 +46,7 @@ private void comboBoxSelect(ListSelectEvent ev){
 }
 ```
 
-Calling `getSelectedIndex()` on the `ComboBox` itself instead would stop the app until the browser answered. That difference is the whole story behind most "server-side UIs are slow" experiences, and it's a habit you can learn in an afternoon.
+Calling `getSelectedIndex()` on the `ComboBox` itself instead would stop the app until the browser answered. That difference is the whole story behind most "server-side UIs are slow" experiences, and it's a habit that is easy to learn.
 
 For typing, you don't want a request per keystroke. The [`Debouncer`](/docs/advanced/debouncing) waits until the user pauses:
 
@@ -88,19 +88,19 @@ Animated route changes need no JavaScript either, as the [view transitions post]
 
 ## Is server-side logic harder to secure? {#objection-security}
 
-For most teams the opposite holds. Because rendering happens on the server, access rules can run before a view exists. [Route security](/docs/security/overview) lets you mark a view with `@AnonymousAccess` or a role requirement and have the framework enforce it before any component renders. It works with Spring Security or with plain Java implementations of the core interfaces.
+Because rendering happens on the server, access rules can run before a view exists. [Route security](/docs/security/overview) lets you mark a view with `@AnonymousAccess` or a role requirement and have the framework enforce it before any component renders. It works with Spring Security or with plain Java implementations of the core interfaces.
 
 ## Which objections are real {#which-objections-are-real}
 
 | Worry | Verdict | What decides it |
 |-------|---------|-----------------|
 | Latency on every click | Mostly a habit problem | Read values from events, debounce typing |
-| No JavaScript ecosystem | Not a limit | `Element`, `@JavaScript`, the bundler |
+| No JavaScript ecosystem | Reachable from Java | `Element`, `@JavaScript`, the bundler |
 | Doesn't feel like an app | Depends on the product | `@AppProfile`, web storage |
 | Server holds state | Real, plan for it | Test your own screens under load |
-| Two teams, two stacks | Gone | One Java codebase with Spring |
+| Two teams, two stacks | One codebase | One Java codebase with Spring |
 
-If your product is a consumer site with heavy offline needs or a game, pick another tool. If it's a business app your Java team will maintain for years, webforJ is the strongest fit we know how to build.
+If your product is a consumer site with heavy offline needs or a game, pick another tool. If it's a business app your Java team will maintain for years, webforJ is built for exactly that case.
 
 ## Try it on a real screen {#try-it}
 

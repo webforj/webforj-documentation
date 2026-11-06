@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Your operations console, case management tool or onboarding screen will run for ten years or more, handle sensitive records every day, and be maintained by people who have not been hired yet. The framework you pick today has to survive that, and so does the review it will go through.
 
-If you are choosing a Java UI framework for banking and financial services, webforJ, the full-stack Java framework, is the one we would put first for internal and back-office apps. The business logic and the UI state stay on the server, the browser only renders components, routes are protected with Spring Security before a view exists, and your existing Java team and services carry straight over.
+If you are choosing a Java UI framework for banking and financial services, webforJ, the full-stack Java framework, is a strong candidate for internal and back-office apps. The business logic and the UI state stay on the server, the browser only renders components, routes are protected with Spring Security before a view exists, and your existing Java team and services carry straight over.
 
 <!-- truncate -->
 
@@ -27,9 +27,9 @@ The sections below take those questions in order. If you want the general checkl
 
 ## Logic and data stay on the server {#logic-stays-on-the-server}
 
-In a webforJ app, you write the whole app in Java and it runs on the server. UI state lives on the server and the browser renders standard web components. Events travel from the browser to your Java code, and your Java code decides what happens next. The [client and server docs](/docs/architecture/client-server) describe the three kinds of traffic between the two sides.
+In a webforJ app, you write the whole app in Java and it runs on the server. UI state lives on the server and the browser renders standard web components. Events travel from the browser to your Java code, and your Java code decides what happens next. Traffic between the two sides falls into three kinds. See [client and server interaction](/docs/architecture/client-server).
 
-For a bank this matters for a plain reason: there is no second copy of your rules in browser code that someone has to keep in sync, and nothing in the browser that has to be trusted. A manipulated client can send anything, so every value your code receives is re-validated on the server. Because [data binding and validation](/docs/data-binding/validation/jakarta-validation) run in Java, constraints such as Jakarta validation are enforced server-side and not only in the browser.
+For a bank this matters for a plain reason: there is no second copy of your rules in browser code that someone has to keep in sync. A manipulated client can send anything, so re-validate every value your code receives on the server. Because [data binding and validation](/docs/data-binding/validation/jakarta-validation) run in Java, constraints such as Jakarta validation are enforced server-side and not only in the browser.
 
 One caution belongs in every architecture review. Hiding or disabling a control is an interface cue, not access control. The rule goes in the server-side handler.
 
@@ -37,9 +37,9 @@ One caution belongs in every architecture review. Hiding or disabling a control 
 
 An internal app is only as safe as its answer to "who can open this screen?" webforJ [route security](/docs/security/overview) answers that at the route. You annotate a route with `@AnonymousAccess`, `@PermitAll`, `@RolesAllowed` or `@DenyAll`, and the security system checks access before any component is rendered. Rules that depend on context, such as whether a user owns a record, go into custom evaluators.
 
-You can also run it in a secure-by-default posture, where a route without an annotation still requires sign-in. A new screen that someone forgot to mark is then closed, not open.
+You can also run it in a secure-by-default posture, where a route without an annotation still requires sign-in. A new screen that someone forgot to mark then requires sign-in.
 
-Teams that already use Spring Security connect it through the [Spring Security integration](/docs/security/getting-started), so users, roles and sessions come from the identity setup you already operate. The docs also cover [production hardening](/docs/security/application-security/production-hardening), including encrypted connections, narrow access, external secrets, and dependency upkeep.
+Teams that already use Spring Security connect it through the [Spring Security integration](/docs/security/getting-started), so users, roles and sessions come from the identity setup you already operate. For production hardening, see [production hardening](/docs/security/application-security/production-hardening): encrypted connections, locked-down views, external secrets, and dependency upkeep.
 
 To be clear about scope: these are framework capabilities. They help you build a secure app, and they are not a certification or a compliance statement. Your own controls, testing, and audits decide that.
 
