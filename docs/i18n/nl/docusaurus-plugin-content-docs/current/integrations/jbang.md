@@ -1,34 +1,36 @@
 ---
 title: JBang
 sidebar_position: 15
-sidebar_class_name: new-content
-_i18n_hash: 3e783061967931c25ff55499a3139122
+description: >-
+  Run webforJ apps as single-file JBang scripts with no Maven, Gradle, or
+  project structure for rapid prototyping and demos.
+_i18n_hash: a7af803fa3e58cb86e0c18289f8fbb40
 ---
 # JBang <DocChip chip='since' label='25.11' />
 
-[JBang](https://www.jbang.dev/) is een tool waarmee je Java-code kunt uitvoeren als scripts, zonder buildbestanden, projectinstellingen of handmatige compilatie. De integratie van webforJ JBang stelt je in staat om snel webforJ-apps te creëren, het meest geschikt voor snelle prototyping, leren en snelle demo's, zonder de traditionele afhankelijkheden en infrastructuur van een volledig Java-programma.
+[JBang](https://www.jbang.dev/) is een tool waarmee je Java-code als scripts kunt uitvoeren, zonder buildbestanden, projectconfiguratie of handmatige compilatie. Met de webforJ JBang-integratie kun je snel webforJ-apps maken. De integratie is vooral geschikt voor rapid prototyping, leren en snelle demo's, zonder de traditionele afhankelijkheden en infrastructuur van een volledig Java-programma.
 
 ## Waarom JBang gebruiken met webforJ {#why-use-jbang}
 
-Traditionele webforJ-projecten gebruiken Maven of Gradle met meerdere configuratiebestanden en een standaard projectstructuur. Deze opzet is standaard voor productie-apps, maar kan zwaar aanvoelen voor eenvoudige experimenten of demo's.
+Traditionele webforJ-projecten gebruiken Maven of Gradle, met meerdere configuratiebestanden en een standaardprojectstructuur. Deze opzet is gebruikelijk voor productie-apps, maar kan omslachtig aanvoelen voor eenvoudige experimenten of demo's.
 
 Met JBang kun je:
 
-- **Direct starten**: Schrijf een enkel `.java`-bestand en voer het onmiddellijk uit
-- **Projectinstellingen overslaan**: Geen `pom.xml`, geen `build.gradle`, geen mapstructuur
-- **Gemakkelijk delen**: Stuur iemand een enkel bestand dat ze met één commando kunnen uitvoeren
-- **Sneller leren**: Focus op webforJ-concepten zonder de complexiteit van buildtools
+- **Direct aan de slag**: schrijf één `.java`-bestand en voer het meteen uit
+- **Projectconfiguratie overslaan**: geen `pom.xml`, geen `build.gradle`, geen mappenstructuur
+- **Eenvoudig delen**: stuur iemand één bestand dat diegene met één opdracht kan uitvoeren
+- **Sneller leren**: focus op webforJ-concepten zonder de complexiteit van buildtools
 
-De integratie omvat automatische serverafsluiting wanneer je het browsertabblad sluit, zodat je ontwikkelingsworkflow schoon blijft.
+De integratie sluit de server automatisch af wanneer je het browsertabblad sluit, zodat je ontwikkelworkflow overzichtelijk blijft.
 
 ## Vereisten {#prerequisites}
 
 ### JBang installeren {#install-jbang}
 
-Kies je favoriete installatie methode:
+Kies de gewenste installatiemethode:
 
 ```bash
-# Universeel (Linux/macOS/Windows met bash)
+# Universal (Linux/macOS/Windows with bash)
 curl -Ls https://sh.jbang.dev | bash -s - app setup
 
 # SDKMan
@@ -51,7 +53,7 @@ jbang --version
 ```
 
 :::info[Standaard Java-versie]
-Wanneer je JBang voor de eerste keer uitvoert zonder een JDK geïnstalleerd, downloadt JBang automatisch een. Je kunt de JDK-versie en leverancier instellen voordat je JBang uitvoert:
+Wanneer je JBang voor het eerst uitvoert zonder dat er een JDK is geïnstalleerd, downloadt JBang er automatisch een. Je kunt de JDK-versie en -leverancier instellen voordat je JBang uitvoert:
 
 ```bash
 export JBANG_DEFAULT_JAVA_VERSION=21
@@ -59,16 +61,16 @@ export JBANG_JDK_VENDOR=temurin
 ```
 :::
 
-:::tip[Meer leren over JBang]
-Voor uitgebreide JBang-documentatie, zie:
-- [JBang Beginnen](https://www.jbang.dev/documentation/jbang/latest/index.html) - Installatie en basisprincipes
-- [Script Directives Referentie](https://www.jbang.dev/documentation/jbang/latest/script-directives.html) - Alle beschikbare richtlijnen
-- [Afhankelijkheden](https://www.jbang.dev/documentation/jbang/latest/dependencies.html) - Geavanceerd afhankelijke beheer
+:::tip[Meer informatie over JBang]
+Raadpleeg de volgende bronnen voor uitgebreide documentatie over JBang:
+- [Aan de slag met JBang](https://www.jbang.dev/documentation/jbang/latest/index.html) - installatie en basisprincipes
+- [Naslag voor scriptdirectives](https://www.jbang.dev/documentation/jbang/latest/script-directives.html) - alle beschikbare directives
+- [Afhankelijkheden](https://www.jbang.dev/documentation/jbang/latest/dependencies.html) - geavanceerd afhankelijkhedenbeheer
 :::
 
 ## Een webforJ-script maken {#creating-a-script}
 
-Maak een bestand genaamd `HelloWorld.java` met de volgende inhoud:
+Maak een bestand met de naam `HelloWorld.java` en de volgende inhoud:
 
 ```java title="HelloWorld.java"
 ///usr/bin/env jbang "$0" "$@" ; exit $?
@@ -105,8 +107,8 @@ public class HelloWorld extends App {
 class MainView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
-  private TextField hello = new TextField("Wat is je naam?");
-  private Button btn = new Button("Zeg Hallo");
+  private TextField hello = new TextField("What is your name?");
+  private Button btn = new Button("Say Hello");
 
   public MainView() {
     self.setDirection(FlexDirection.COLUMN);
@@ -115,7 +117,7 @@ class MainView extends Composite<FlexLayout> {
 
     btn.setPrefixComponent(FeatherIcon.BELL.create())
         .setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> Toast.show("Welkom bij webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
+        .addClickListener(e -> Toast.show("Welcome to webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
 
     self.add(hello, btn);
   }
@@ -127,20 +129,20 @@ class MainView extends Composite<FlexLayout> {
 
 | Regel | Doel |
 |------|---------|
-| `///usr/bin/env jbang "$0" "$@" ; exit $?` | Shebang-regel die de uitvoering van het script direct op Unix-systemen mogelijk maakt |
-| `//JAVA 21` | Specificeert de minimale vereiste Java-versie; JBang downloadt deze automatisch indien nodig |
-| `//DEPS com.webforj:webforj-jbang-starter:25.11` | Verklaart de webforJ JBang-starter als afhankelijkheid met behulp van Maven-coördinaten |
+| `///usr/bin/env jbang "$0" "$@" ; exit $?` | Shebang-regel waarmee het script rechtstreeks op Unix-systemen kan worden uitgevoerd |
+| `//JAVA 21` | Geeft de minimaal vereiste Java-versie aan; JBang downloadt deze automatisch indien nodig |
+| `//DEPS com.webforj:webforj-jbang-starter:25.11` | Declareert de webforJ JBang-starter als afhankelijkheid met Maven-coördinaten |
 | `@SpringBootApplication` | Schakelt de automatische configuratie van Spring Boot in |
-| `extends App` | Maakt deze klasse een webforJ-app |
+| `extends App` | Maakt van deze klasse een webforJ-app |
 
-De afhankelijkheid `webforj-jbang-starter` bevat alles wat nodig is om een webforJ-app uit te voeren: de Spring Boot-starter, ontwikkeltools en automatische browseropening.
+De afhankelijkheid `webforj-jbang-starter` bevat alles wat nodig is om een webforJ-app uit te voeren: de Spring Boot-starter, ontwikkeltools en het automatisch openen van de browser.
 
 :::note[Versie]
-Vervang `25.11` door de nieuwste webforJ-versie. Controleer [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter) voor de meest recente release.
+Vervang `25.11` door de nieuwste webforJ-versie. Kijk op [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter) voor de meest recente release.
 :::
 ### Afhankelijkheden toevoegen {#adding-dependencies}
 
-Je kunt aanvullende Maven-afhankelijkheden toevoegen met meerdere `//DEPS`-regels:
+Je kunt extra Maven-afhankelijkheden toevoegen met meerdere `//DEPS`-regels:
 
 ```java
 ///usr/bin/env jbang "$0" "$@" ; exit $?
@@ -150,7 +152,7 @@ Je kunt aanvullende Maven-afhankelijkheden toevoegen met meerdere `//DEPS`-regel
 //DEPS org.apache.commons:commons-lang3:3.14.0
 ```
 
-Afhankelijkheden gebruiken standaard Maven-coördinaten (`groupId:artifactId:version`). JBang haalt ze automatisch op van Maven Central bij de eerste uitvoering.
+Afhankelijkheden gebruiken de standaard Maven-coördinaten (`groupId:artifactId:version`). JBang haalt ze bij de eerste uitvoering automatisch op van Maven Central.
 
 ## Je script uitvoeren {#running-your-script}
 
@@ -162,48 +164,48 @@ jbang HelloWorld.java
 
 JBang zal:
 
-1. Afhankelijkheden downloaden (alleen bij de eerste uitvoering)
+1. Afhankelijkheden downloaden (alleen de eerste keer)
 2. Het script compileren
-3. De ingebouwde server starten op een willekeurige beschikbare poort
-4. Je standaardbrowser openen naar de app
+3. De ingesloten server starten op een willekeurige beschikbare poort
+4. Je standaardbrowser openen met de app
 
 ### Het script uitvoerbaar maken {#executable-script}
 
-Op Unix-systemen kun je het script direct uitvoerbaar maken:
+Op Unix-systemen kun je het script rechtstreeks uitvoerbaar maken:
 
 ```bash
 chmod +x HelloWorld.java
 ./HelloWorld.java
 ```
 
-Dit werkt vanwege de shebang-regel aan de bovenkant van het bestand.
+Dit werkt dankzij de shebang-regel bovenaan het bestand.
 
 ## IDE-ondersteuning {#ide-support}
 
-JBang integreert met populaire Java IDE's waaronder VS Code, IntelliJ IDEA, Eclipse en anderen. Deze integraties bieden functies zoals richtlijn-autocompletion, automatische afhankelijkheidsresolutie en de mogelijkheid om scripts direct vanuit de IDE uit te voeren en te debuggen.
+JBang kan worden geïntegreerd met populaire Java-IDE's, waaronder VS Code, IntelliJ IDEA, Eclipse en andere. Deze integraties bieden functies zoals automatisch aanvullen van directives, automatische afhankelijkhedenresolutie en de mogelijkheid om scripts rechtstreeks vanuit de IDE uit te voeren en te debuggen.
 
-Zie de [JBang IDE-integratiedocumentatie](https://www.jbang.dev/documentation/jbang/latest/editing.html) voor installatie-instructies en ondersteunde editors.
+Raadpleeg de [documentatie over IDE-integratie van JBang](https://www.jbang.dev/documentation/jbang/latest/editing.html) voor installatie-instructies en ondersteunde editors.
 
 ## Configuratie {#configuration}
 
-De webforJ JBang-starter bevat redelijke standaardinstellingen die zijn geoptimaliseerd voor scripting. Je kunt het gedrag aanpassen met systeemproperties.
+De webforJ JBang-starter bevat passende standaardinstellingen die zijn geoptimaliseerd voor scripting. Je kunt het gedrag aanpassen met behulp van systeemeigenschappen.
 
-### Automatische afsluiting {#auto-shutdown}
+### Automatisch afsluiten {#auto-shutdown}
 
-Standaard sluit de server automatisch af wanneer alle browsertabs die verbonden zijn met de app zijn gesloten. Dit houdt je ontwikkelingsworkflow schoon door geen weesservers achter te laten die draaien.
+Standaard wordt de server automatisch afgesloten wanneer alle browsertabbladen die met de app zijn verbonden, worden gesloten. Zo blijft je ontwikkelworkflow overzichtelijk en blijven er geen verweesde servers actief.
 
-| Property | Standaard | Beschrijving |
+| Eigenschap | Standaard | Beschrijving |
 |----------|---------|-------------|
-| `webforj.jbang.auto-shutdown` | `true` | Zet automatische afsluiting aan of uit |
-| `webforj.jbang.idle-timeout` | `5` | Seconden wachten na de laatste browserontkoppeling voordat de server afsluit |
+| `webforj.jbang.auto-shutdown` | `true` | Automatisch afsluiten in- of uitschakelen |
+| `webforj.jbang.idle-timeout` | `5` | Het aantal seconden dat na de verbinding van de laatste browser wordt gewacht voordat de server wordt afgesloten |
 
-Om automatische afsluiting uit te schakelen:
+Schakel automatisch afsluiten uit:
 
 ```bash
 jbang -Dwebforj.jbang.auto-shutdown=false HelloWorld.java
 ```
 
-Om de idle time-out te wijzigen:
+Wijzig de time-out voor inactiviteit:
 
 ```bash
 jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
@@ -215,23 +217,23 @@ De JBang-starter configureert de volgende standaardinstellingen:
 
 | Instelling | Waarde | Beschrijving |
 |---------|-------|-------------|
-| `server.port` | `0` | Willekeurige poortaansluiting om conflicten te voorkomen bij het uitvoeren van meerdere scripts |
-| `server.shutdown` | `immediate` | Snelle afsluiting voor een snelle beëindiging van het script |
-| `spring.main.banner-mode` | `off` | Verbergt de Spring Boot-banner voor schonere uitvoer |
-| `logging.level.root` | `ERROR` | Minimale logging om de console-uitvoer schoon te houden |
+| `server.port` | `0` | Willekeurige poorttoewijzing om conflicten te voorkomen wanneer meerdere scripts worden uitgevoerd |
+| `server.shutdown` | `immediate` | Snel afsluiten zodat scripts vlot kunnen worden beëindigd |
+| `spring.main.banner-mode` | `off` | Verbergt de Spring Boot-banner voor een overzichtelijkere uitvoer |
+| `logging.level.root` | `ERROR` | Minimale logging om de console-uitvoer overzichtelijk te houden |
 | `logging.level.com.webforj` | `WARN` | Toont alleen waarschuwingen en fouten van webforJ |
-| `webforj.devtools.browser.open` | `true` | Opent automatisch de browser wanneer de app start |
+| `webforj.devtools.browser.open` | `true` | Opent de browser automatisch wanneer de app start |
 
-### Heruitrol en live herladen {#development-workflow}
+### Opnieuw implementeren en live herladen {#development-workflow}
 
-JBang-scripts ondersteunen geen live herladen. Om wijzigingen te zien:
+JBang-scripts ondersteunen geen live herladen. Zo bekijk je wijzigingen:
 
-1. Stop het draaiende script (sluit het browsertabblad of druk op `Ctrl+C`)
+1. Stop het actieve script (sluit het browsertabblad of druk op <kbd>Ctrl</kbd>+<kbd>C</kbd>)
 2. Bewerk je code
 3. Voer `jbang HelloWorld.java` opnieuw uit
 
-Voor automatische heruitrol tijdens de ontwikkeling, overweeg het gebruik van een [volledig Maven-project met Spring DevTools](/docs/integrations/spring/spring-boot). Zie de [live herlaad documentatie](/docs/configuration/deploy-reload/overview) voor meer details.
+Overweeg voor automatische herimplementatie tijdens de ontwikkeling een [volledig Maven-project met Spring DevTools](/docs/integrations/spring/spring-boot). Raadpleeg de [documentatie over live herladen](/docs/configuration/deploy-reload/overview) voor meer informatie.
 
-## Overgang naar een volledig project {#transitioning}
+## Overstappen naar een volledig project {#transitioning}
 
-Wanneer je prototype groter wordt dan een enkel bestand, maak dan een goed project met behulp van [startforJ](https://docs.webforj.com/startforj) of de [Maven-archetype](./spring/spring-boot#option-2-using-the-command-line). Je kunt je scriptlogica direct kopiëren naar de gegenereerde projectstructuur.
+Wanneer je prototype uitgroeit tot meer dan één bestand, maak je een project aan met [startforJ](https://docs.webforj.com/startforj) of de [Maven-archetype](./spring/spring-boot#option-2-using-the-command-line). Je kunt de logica uit je script rechtstreeks kopiëren naar de gegenereerde projectstructuur.

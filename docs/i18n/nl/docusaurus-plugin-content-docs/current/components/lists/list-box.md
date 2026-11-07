@@ -5,45 +5,45 @@ slug: listbox
 description: >-
   Show a scrollable, always-visible list with the ListBox component, supporting
   single or multiple selection and keyboard navigation.
-_i18n_hash: ea83ed0b82b2f6f91d7fbe9dedebeef2
+_i18n_hash: 0a9d307607ef33fdebb557f190abd7cf
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-listbox" />
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" top='true'/>
 
-De `ListBox` component toont een scrollbare lijst van items die zichtbaar blijft zonder dat een dropdown geopend hoeft te worden. Het ondersteunt zowel enkele als meerdere selecties en is ideaal wanneer gebruikers alle beschikbare opties tegelijk moeten zien.
+De component `ListBox` toont een scrollbare lijst met items die zichtbaar blijft zonder dat er een dropdown hoeft te worden geopend. De component ondersteunt zowel enkelvoudige als meervoudige selectie en is handig wanneer gebruikers alle beschikbare opties tegelijk moeten kunnen zien.
 
 <!-- INTRO_END -->
 
-## Usages {#usages}
+## Toepassingen {#usages}
 
 <ParentLink parent="List" />
 
-1. **Toewijzing van Gebruikersrollen**: In applicaties met gebruikers toegangscontrole kunnen beheerders een `ListBox` gebruiken om rollen en machtigingen aan gebruikers toe te wijzen. Gebruikers worden geselecteerd uit een lijst en de rollen of machtigingen worden toegewezen op basis van hun selectie. Dit zorgt voor een nauwkeurige en gecontroleerde toegang tot verschillende functies en gegevens binnen de applicatie.
+1. **Gebruikersrollen toewijzen**: In applicaties met toegangsbeheer kunnen beheerders een `ListBox` gebruiken om rollen en machtigingen aan gebruikers toe te wijzen. Gebruikers worden geselecteerd uit een lijst en op basis van hun selectie worden rollen of machtigingen toegewezen. Zo wordt nauwkeurige en gecontroleerde toegang tot verschillende functies en gegevens binnen de applicatie gewaarborgd.
 
-2. **Toewijzing van Projecttaken**: In projectmanagementsoftware zijn `ListBox`-componenten nuttig voor het toewijzen van taken aan teamleden. Gebruikers kunnen taken uit een lijst selecteren en deze aan verschillende teamleden toewijzen. Dit vereenvoudigt de taakdelegatie en zorgt ervoor dat verantwoordelijkheden klarend zijn binnen het team.
+2. **Projecttaken toewijzen**: In projectbeheersoftware zijn `ListBox`-componenten handig om taken aan teamleden toe te wijzen. Gebruikers kunnen taken uit een lijst selecteren en aan verschillende teamleden toewijzen. Dit vereenvoudigt de taakverdeling en zorgt ervoor dat verantwoordelijkheden binnen het team duidelijk zijn vastgelegd.
 
-3. **Multi-Categorie Filtering**: In een zoekapplicatie moeten gebruikers vaak zoekresultaten filteren op basis van meerdere criteria. Een `ListBox` kan verschillende filteropties tonen, zoals
+3. **Filteren op meerdere categorieën**: In een zoekapplicatie moeten gebruikers zoekresultaten vaak op basis van meerdere criteria filteren. Een `ListBox` kan verschillende filteropties weergeven, zoals
 >- Productkenmerken
 >- Prijsklassen
 >- Merken.
 
-  Gebruikers kunnen items uit elke filtercategorie selecteren, waardoor ze de zoekresultaten kunnen verfijnen en precies kunnen vinden wat ze zoeken.
+  Gebruikers kunnen items uit elke filtercategorie selecteren om de zoekresultaten te verfijnen en precies te vinden wat ze zoeken.
 
-4. **Inhoudscategorisatie**: In contentmanagementsystemen helpen `ListBox`-componenten bij het categoriseren van artikelen, afbeeldingen of bestanden. Gebruikers kunnen een of meer categorieën selecteren om aan hun inhoud te koppelen, waardoor het gemakkelijker wordt om inhoudsitems in het systeem te organiseren en te doorzoeken.
+4. **Inhoud categoriseren**: In contentmanagementsystemen helpen `ListBox`-componenten bij het categoriseren van artikelen, afbeeldingen of bestanden. Gebruikers kunnen een of meer categorieën selecteren om aan hun inhoud te koppelen. Zo kunnen inhoudsitems in het systeem eenvoudiger worden geordend en doorzocht.
 
-## Selection Options {#selection-options}
+## Selectieopties {#selection-options}
 
-Standaard is de lijstbox ingesteld om de selectie van één item tegelijk toe te staan. De `ListBox` implementeert echter de <JavadocLink type="foundation" location="com/webforj/component/list/MultipleSelectableList" code='true'>MultipleSelectableList</JavadocLink> interface, die kan worden geconfigureerd met een ingebouwde methode waarmee gebruikers meerdere items kunnen selecteren ***met de `Shift` toets*** voor aaneengeschakelde selectie en ***de `Control` (Windows) of `Command` (Mac) toets*** voor afzonderlijke, meerdere itemselectie.
+Standaard is de keuzelijst ingesteld op selectie van één item tegelijk. De `ListBox` implementeert echter de interface <JavadocLink type="foundation" location="com/webforj/component/list/MultipleSelectableList" code='true'>MultipleSelectableList</JavadocLink>, die kan worden geconfigureerd met een ingebouwde methode waarmee gebruikers meerdere items kunnen selecteren: ***met de toets <kbd>Shift</kbd>*** voor aaneengesloten selecties en ***met de toets <kbd>Ctrl</kbd> (Windows) of <kbd>Cmd</kbd> (Mac)*** voor afzonderlijke, meervoudige selecties.
 
-Gebruik de <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> functie om deze eigenschap te wijzigen. Deze methode accepteert ofwel `SelectionMode.SINGLE` of `SelectionMode.MULTIPLE`.
+Gebruik de functie <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> om deze eigenschap te wijzigen. Deze methode accepteert `SelectionMode.SINGLE` of `SelectionMode.MULTIPLE`.
 
-:::info Gedrag op aanraakapparaten
-Bij aanraakapparaten kunnen gebruikers, wanneer meerdere selecties zijn ingeschakeld, meerdere items selecteren zonder de shift-toets ingedrukt te houden.
+:::info Gedrag op apparaten met aanraakscherm
+Op apparaten met een aanraakscherm kunnen gebruikers, wanneer meervoudige selectie is ingeschakeld, meerdere items selecteren zonder de Shift-toets ingedrukt te houden.
 :::
 
-Daarnaast kunnen de pijltoetsen worden gebruikt om door de `ListBox` te navigeren, en het typen van een lettertoets terwijl de `ListBox` focus heeft, zal de optie selecteren die met die letter begint, of door de opties cyclusen die met die letter beginnen als er meerdere opties beschikbaar zijn.
+Daarnaast kunnen de pijltoetsen worden gebruikt om door de `ListBox` te navigeren. Als de `ListBox` focus heeft, selecteert het typen van een lettertoets de optie die met die letter begint. Als er meerdere opties met die letter beginnen, kunt u ermee door de opties bladeren.
 
 <ComponentDemo
 path='/webforj/listboxmultipleselection'
@@ -55,16 +55,16 @@ height='250px'
 
 <TableBuilder name="ListBox" />
 
-## Best Practices {#best-practices}
+## Aanbevolen werkwijzen {#best-practices}
 
-Om een optimale gebruikerservaring te waarborgen bij het gebruik van de `ChoiceBox` component, overweeg de volgende best practices:
+Houd rekening met de volgende aanbevolen werkwijzen voor een optimale gebruikerservaring met de component `ChoiceBox`:
 
-1. **Prioriteer Informatiehiërarchie**: Zorg ervoor dat de items in een `ListBox` georganiseerd zijn in een logische en hiërarchische volgorde. Plaats de belangrijkste en het meest gebruikte opties bovenaan de lijst. Dit maakt het gemakkelijker voor gebruikers om te vinden wat ze nodig hebben zonder overmatig te scrollen.
+1. **Geef prioriteit aan de informatiehiërarchie**: Zorg er bij het gebruik van een `ListBox` voor dat de items in een logische, hiërarchische volgorde staan. Plaats de belangrijkste en meest gebruikte opties bovenaan de lijst. Zo kunnen gebruikers gemakkelijker vinden wat ze nodig hebben, zonder overmatig te scrollen.
 
-2. **Beperk Lijstlengte**: Vermijd het overweldigen van gebruikers met een onterecht lange `ListBox`. Als er veel items te tonen zijn, overweeg dan paginering, zoek- of filteropties te implementeren om gebruikers te helpen items snel te vinden. Als alternatief kunt u items in categorieën groeperen om de lijstlengte te verminderen.
+2. **Beperk de lengte van de lijst**: Voorkom dat gebruikers worden overweldigd door een `ListBox` met te veel items. Als er veel items moeten worden weergegeven, kunt u paginering, zoeken of filteropties implementeren zodat gebruikers items snel kunnen vinden. U kunt items ook groeperen in categorieën om de lijst korter te maken.
 
-3. **Duidelijke en Beschrijvende Labels**: Geef duidelijke en beschrijvende labels voor elk item in de `ListBox`. Gebruikers moeten in staat zijn om het doel van elke optie zonder ambiguïteit te begrijpen. Gebruik beknopte en betekenisvolle itemlabels.
+3. **Duidelijke en beschrijvende labels**: Geef elk item in de `ListBox` een duidelijk en beschrijvend label. Gebruikers moeten zonder onduidelijkheid begrijpen waarvoor elke optie dient. Gebruik beknopte en betekenisvolle itemlabels.
 
-4. **Multi-Selectie Feedback**: Als uw `ListBox` meerdere selecties toelaat, geef dan visuele of tekstuele feedback die aangeeft dat meerdere items uit de lijst kunnen worden geselecteerd.
+4. **Feedback bij meervoudige selectie**: Als gebruikers in uw `ListBox` meerdere items kunnen selecteren, geef dan visuele of tekstuele feedback die aangeeft dat meerdere items uit de lijst kunnen worden geselecteerd.
 
-5. **Standaardselectie**: Overweeg een standaardselectie voor de `ListBox` in te stellen, vooral als één optie gebruikelijker is dan andere. Dit kan de gebruikerservaring stroomlijnen door de meest waarschijnlijke keuze vooraf te selecteren.
+5. **Standaardselectie**: Overweeg een standaardselectie in te stellen voor de `ListBox`, vooral als een optie vaker wordt gebruikt dan andere. Door de meest waarschijnlijke keuze vooraf te selecteren, verloopt de gebruikerservaring soepeler.

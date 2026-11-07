@@ -1,5 +1,5 @@
 ---
-title: Upload
+title: Hochladen
 sidebar_position: 160
 description: >-
   Select and upload one or more files from the local machine with the Upload

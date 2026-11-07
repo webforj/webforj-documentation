@@ -1,5 +1,5 @@
 ---
-title: Kotlin DSL
+title: DSL de Kotlin
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true

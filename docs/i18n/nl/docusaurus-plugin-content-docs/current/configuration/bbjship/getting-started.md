@@ -4,33 +4,33 @@ sidebar_position: 2
 description: >-
   Create a webforJ app that runs with BBjServices from startforJ or the Maven
   archetypes, run it on your local BBj and deploy it with BBjShip.
-_i18n_hash: 06ef0b29df76b835ecd12d7268e4eca6
+_i18n_hash: 84b3ad107540f450350f754730522e0e
 ---
-Deze gids maakt een webforJ-app die draait met BBjServices, draait op jouw lokale BBj terwijl je ontwikkelt, en implementeert deze met BBjShip.
+Deze handleiding maakt een webforJ-app die met BBjServices wordt uitgevoerd, laat de app tijdens de ontwikkeling op je lokale BBj draaien en implementeert de app met BBjShip.
 
 :::tip Vereisten
-Je hebt een Maven-project en een BBj-installatie van dezelfde versie als webforJ nodig, bijvoorbeeld BBj 26.03 voor webforJ 26.03, met BBjServices draaiende. BBjShip ondersteunt geen Gradle. Bekijk de [vereisten](/docs/introduction/prerequisites) voor de rest van de tools.
+Je hebt een Maven-project nodig en een BBj-installatie met dezelfde versie als webforJ, bijvoorbeeld BBj 26.03 voor webforJ 26.03, met BBjServices actief. BBjShip ondersteunt Gradle niet. Bekijk de [vereisten](/docs/introduction/prerequisites) voor de overige tools.
 :::
 
-## Maak een BBj-app {#create-a-bbj-app}
+## Een BBj-app maken {#create-a-bbj-app}
 
-Je hebt twee opties om een nieuwe webforJ-app te maken die draait met BBjServices: met de grafische tool startforJ of de Maven-opdrachtregel.
+Je kunt op twee manieren een nieuwe webforJ-app maken die met BBjServices wordt uitgevoerd: met de grafische tool startforJ of via de Maven-opdrachtregel.
 
 <!-- vale off -->
-### Optie 1: met startforJ {#option-1-using-startforj}
+### Optie 1: startforJ gebruiken {#option-1-using-startforj}
 <!-- vale on -->
 
-Wanneer je een app maakt met [startforJ](https://docs.webforj.com/startforj), kun je deze aanpassen door de volgende informatie te verstrekken:
+Wanneer je een app maakt met [startforJ](https://docs.webforj.com/startforj), kun je deze aanpassen door de volgende gegevens op te geven:
 
-- Basisprojectmetadata (App Naam, Groep ID, Artifact ID)
-- webforJ versie en Java versie
-- Themakleur en pictogram
+- Basisgegevens van het project (appnaam, groeps-ID, artefact-ID)
+- webforJ-versie en Java-versie
+- themakleur en pictogram
 - Archetype
-- **Draait op** - Selecteer **BBjServices** om een project te creëren dat draait met BBjServices
+- **Wordt uitgevoerd op** - Selecteer **BBjServices** om een project te maken dat met BBjServices wordt uitgevoerd
 
-### Optie 2: met de opdrachtregel {#option-2-using-the-command-line}
+### Optie 2: de opdrachtregel gebruiken {#option-2-using-the-command-line}
 
-Als je de voorkeur geeft aan de opdrachtregel, genereer dan het project met de officiële webforJ-archetypes:
+Als je liever de opdrachtregel gebruikt, genereer je het project met de officiële webforJ-archetypen:
 
 ```bash {8}
 mvn -B archetype:generate \
@@ -43,38 +43,38 @@ mvn -B archetype:generate \
   -Dflavor=webforj-bbj
 ```
 
-Met de parameter `flavor` genereert het archetype een project dat draait met BBjServices.
+Met de parameter `flavor` genereert het archetype een project dat met BBjServices wordt uitgevoerd.
 
-Dit creëert een project met:
-- De `webforj` afhankelijkheid zonder de webforJ-engine, die door BBjServices wordt geleverd
-- De webforJ Maven-plugin, ingesteld om te implementeren naar BBjShip op jouw lokale BBj onder de artifact ID als de app naam
-- HotswapAgent voor ontwikkelingsruns
+Dit maakt een project met:
+- De `webforj`-afhankelijkheid zonder de webforJ-engine, die door BBjServices wordt geleverd
+- De webforJ Maven-plug-in, ingesteld om te implementeren naar BBjShip op je lokale BBj, met de artefact-ID als appnaam
+- HotswapAgent voor ontwikkelruns
 - Voorbeeldweergaven
 - webforJ-configuratiebestanden voor ontwikkeling en productie
 
-## Voer de app uit {#run-the-app}
+## De app uitvoeren {#run-the-app}
 
-Een archetype-project stelt zijn standaard Maven-doel in, dus `mvn` zonder argumenten compileert de app en start een [ontwikkelingsrun](/docs/configuration/deploy-reload/bbjservices) in jouw lokale BBjServices:
+Een archetypeproject stelt het standaard Maven-doel in. Voer daarom `mvn` zonder argumenten uit om de app te compileren en een [ontwikkelrun](/docs/configuration/deploy-reload/bbjservices) te starten in je lokale BBjServices:
 
 ```bash
 mvn
 ```
 
-De eerste run bereidt jouw lokale BBj voor. Het installeert BBjShip en voegt HotswapAgent toe aan BBjServices, die BBjServices eenmaal herstart. De build drukt vervolgens het adres van jouw app af:
+De eerste run maakt je lokale BBj klaar. BBjShip wordt geïnstalleerd en HotswapAgent wordt aan BBjServices toegevoegd, waarna BBjServices één keer opnieuw wordt gestart. De build toont vervolgens het adres van je app:
 
 ```text
 [INFO] webforJ watch: my-app is running at http://localhost:8888/webapp/my-app
-[INFO] webforJ watch: press Ctrl+C to stop the app and the watch
+[INFO] webforJ watch: press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the app and the watch
 ```
 
-Klassen die je compileert bereiken de draaiende app zonder een herstart. Stop de build met `Ctrl+C` om de app te stoppen.
+Klassen die je compileert, zijn beschikbaar in de draaiende app zonder dat deze opnieuw hoeft te worden gestart. Stop de build met <kbd>Ctrl</kbd>+<kbd>C</kbd> om de app te stoppen.
 
-## Implementeer de app {#deploy-the-app}
+## De app implementeren {#deploy-the-app}
 
-Om de verpakte app te implementeren, voer je uit:
+Voer het volgende uit om de verpakte app te implementeren:
 
 ```bash
 mvn install
 ```
 
-De app wordt vervolgens gepubliceerd op `http://localhost:8888/webapp/my-app` totdat je deze opnieuw implementeert of verwijdert. Zie [Implementeren](/docs/configuration/bbjship/deploying) om naar een andere BBj-server te implementeren, bijvoorbeeld vanuit een CI-pipeline.
+De app wordt vervolgens gepubliceerd op `http://localhost:8888/webapp/my-app` totdat je deze opnieuw implementeert of verwijdert. Zie [Implementeren](/docs/configuration/bbjship/deploying) voor het implementeren naar een andere BBj-server, bijvoorbeeld vanuit een CI-pipeline.

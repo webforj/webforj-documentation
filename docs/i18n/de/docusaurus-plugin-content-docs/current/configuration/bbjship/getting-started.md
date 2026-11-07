@@ -1,34 +1,36 @@
 ---
-title: Einstieg
+title: Erste Schritte
 sidebar_position: 2
 description: >-
   Create a webforJ app that runs with BBjServices from startforJ or the Maven
   archetypes, run it on your local BBj and deploy it with BBjShip.
-_i18n_hash: 06ef0b29df76b835ecd12d7268e4eca6
+_i18n_hash: 84b3ad107540f450350f754730522e0e
 ---
-Dieser Leitfaden erstellt eine webforJ-App, die mit BBjServices läuft, sie auf Ihrem lokalen BBj während der Entwicklung ausführt und sie mit BBjShip bereitstellt.
+Dieser Leitfaden erstellt eine webforJ-Anwendung, die mit BBjServices ausgeführt wird, führt sie während der Entwicklung auf Ihrem lokalen BBj aus und stellt sie mit BBjShip bereit.
 
 :::tip Voraussetzungen
-Sie benötigen ein Maven-Projekt und eine BBj-Installation in der gleichen Version wie webforJ, zum Beispiel BBj 26.03 für webforJ 26.03, mit laufenden BBjServices. BBjShip unterstützt kein Gradle. Überprüfen Sie die [Voraussetzungen](/docs/introduction/prerequisites) für den Rest der Tools.
+Sie benötigen ein Maven-Projekt und eine BBj-Installation derselben Version wie webforJ, zum Beispiel BBj 26.03 für webforJ 26.03, mit laufendem BBjServices. BBjShip unterstützt Gradle nicht. Die übrigen benötigten Tools finden Sie unter [Voraussetzungen](/docs/introduction/prerequisites).
 :::
 
-## Erstellen einer BBj-App {#create-a-bbj-app}
+## BBj-Anwendung erstellen {#create-a-bbj-app}
 
-Sie haben zwei Optionen zum Erstellen einer neuen webforJ-App, die mit BBjServices läuft: die grafische StartforJ-Anwendung oder die Maven-Befehlszeile zu verwenden.
+Sie haben zwei Möglichkeiten, eine neue webforJ-Anwendung zu erstellen, die mit BBjServices ausgeführt wird: mit dem grafischen Tool startforJ oder über die Maven-Befehlszeile.
 
-### Option 1: Verwendung von StartforJ {#option-1-using-startforj}
+<!-- vale off -->
+### Option 1: mit startforJ {#option-1-using-startforj}
+<!-- vale on -->
 
-Wenn Sie eine App mit [StartforJ](https://docs.webforj.com/startforj) erstellen, können Sie sie anpassen, indem Sie die folgenden Informationen bereitstellen:
+Wenn Sie eine Anwendung mit [startforJ](https://docs.webforj.com/startforj) erstellen, können Sie sie mit den folgenden Angaben anpassen:
 
-- Grundlegende Projektdaten (App-Name, Gruppen-ID, Artefakt-ID)
+- Grundlegende Projektmetadaten (App Name, Group ID, Artifact ID)
 - webforJ-Version und Java-Version
-- Farbthema und Symbol
+- Theme Color und Icon
 - Archetyp
-- **Läuft auf** - Wählen Sie **BBjServices**, um ein Projekt zu erstellen, das mit BBjServices läuft
+- **Runs on** – Wählen Sie **BBjServices** aus, um ein Projekt zu erstellen, das mit BBjServices ausgeführt wird
 
-### Option 2: Verwendung der Befehlszeile {#option-2-using-the-command-line}
+### Option 2: über die Befehlszeile {#option-2-using-the-command-line}
 
-Wenn Sie die Befehlszeile bevorzugen, generieren Sie das Projekt mit den offiziellen webforJ-Archetypen:
+Wenn Sie lieber die Befehlszeile verwenden, generieren Sie das Projekt mit den offiziellen webforJ-Archetypen:
 
 ```bash {8}
 mvn -B archetype:generate \
@@ -41,38 +43,38 @@ mvn -B archetype:generate \
   -Dflavor=webforj-bbj
 ```
 
-Mit dem Parameter `flavor` generiert der Archetyp ein Projekt, das mit BBjServices läuft.
+Mit dem Parameter `flavor` generiert der Archetyp ein Projekt, das mit BBjServices ausgeführt wird.
 
-Dies erstellt ein Projekt mit:
-- Der `webforj`-Abhängigkeit ohne die webforJ-Engine, die von BBjServices bereitgestellt wird
-- Dem webforJ-Maven-Plugin, das eingerichtet ist, um zu BBjShip auf Ihrem lokalen BBj unter der Artefakt-ID als App-Name zu deployen
-- HotswapAgent für Entwicklungsdurchläufe
+Dabei wird ein Projekt mit folgenden Bestandteilen erstellt:
+- Der Abhängigkeit `webforj` ohne die webforJ-Engine, die von BBjServices bereitgestellt wird
+- Dem webforJ-Maven-Plugin, das für die Bereitstellung auf BBjShip in Ihrem lokalen BBj konfiguriert ist; der Artifact-ID wird dabei als App-Name verwendet
+- HotswapAgent für Entwicklungsläufe
 - Beispielansichten
 - webforJ-Konfigurationsdateien für Entwicklung und Produktion
 
-## Die App ausführen {#run-the-app}
+## Anwendung ausführen {#run-the-app}
 
-Ein Archetyp-Projekt legt sein standardmäßiges Maven-Ziel fest, sodass `mvn` ohne Argumente die App kompiliert und einen [Entwicklungsdurchlauf](/docs/configuration/deploy-reload/bbjservices) in Ihren lokalen BBjServices startet:
+Ein Archetyp-Projekt legt das Standard-Maven-Ziel fest. Daher kompiliert `mvn` ohne Argumente die Anwendung und startet einen [Entwicklungslauf](/docs/configuration/deploy-reload/bbjservices) in Ihrem lokalen BBjServices:
 
 ```bash
 mvn
 ```
 
-Der erste Durchlauf bereitet Ihren lokalen BBj vor. Es installiert BBjShip und fügt HotswapAgent zu BBjServices hinzu, was BBjServices einmal neu startet. Der Build gibt dann die Adresse Ihrer App aus:
+Beim ersten Lauf wird Ihr lokales BBj vorbereitet. Dabei wird BBjShip installiert und HotswapAgent zu BBjServices hinzugefügt. Anschließend wird BBjServices einmal neu gestartet. Der Build gibt dann die Adresse Ihrer Anwendung aus:
 
 ```text
-[INFO] webforJ watch: my-app läuft unter http://localhost:8888/webapp/my-app
-[INFO] webforJ watch: drücken Sie Strg+C, um die App und die Überwachung zu stoppen
+[INFO] webforJ watch: my-app is running at http://localhost:8888/webapp/my-app
+[INFO] webforJ watch: press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the app and the watch
 ```
 
-Klassen, die Sie kompilieren, erreichen die laufende App ohne einen Neustart. Beenden Sie den Build mit `Strg+C`, um die App zu stoppen.
+Kompilierte Klassen werden ohne Neustart in der laufenden Anwendung übernommen. Beenden Sie den Build mit <kbd>Ctrl</kbd>+<kbd>C</kbd>, um die Anwendung zu stoppen.
 
-## Die App bereitstellen {#deploy-the-app}
+## Anwendung bereitstellen {#deploy-the-app}
 
-Um die verpackte App bereitzustellen, führen Sie aus:
+Um die gepackte Anwendung bereitzustellen, führen Sie folgenden Befehl aus:
 
 ```bash
 mvn install
 ```
 
-Die App wird dann unter `http://localhost:8888/webapp/my-app` veröffentlicht, bis Sie sie erneut bereitstellen oder entfernen. Siehe [Bereitstellung](/docs/configuration/bbjship/deploying), um auf einen anderen BBj-Server bereitzustellen, zum Beispiel von einer CI-Pipeline.
+Die Anwendung wird unter `http://localhost:8888/webapp/my-app` veröffentlicht, bis Sie sie erneut bereitstellen oder entfernen. Unter [Bereitstellung](/docs/configuration/bbjship/deploying) erfahren Sie, wie Sie die Anwendung auf einem anderen BBj-Server bereitstellen, zum Beispiel über eine CI-Pipeline.

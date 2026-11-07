@@ -1,34 +1,36 @@
 ---
 title: JBang
 sidebar_position: 15
-sidebar_class_name: new-content
-_i18n_hash: 3e783061967931c25ff55499a3139122
+description: >-
+  Run webforJ apps as single-file JBang scripts with no Maven, Gradle, or
+  project structure for rapid prototyping and demos.
+_i18n_hash: a7af803fa3e58cb86e0c18289f8fbb40
 ---
 # JBang <DocChip chip='since' label='25.11' />
 
-[JBang](https://www.jbang.dev/) on työkalu, joka mahdollistaa Java-koodin suorittamisen skripteinä ilman build-tiedostoja, projektin asetuksia tai manuaalista käännöstä. webforJ JBang -integraatio mahdollistaa webforJ-sovellusten nopean luomisen, mikä sopii parhaiten nopeaan prototyyppaukseen, oppimiseen ja nopeisiin demonstrointeihin ilman tarvetta perinteisille riippuvuuksille ja infrastruktuurille täysimittaisessa Java-ohjelmassa.
+[JBang](https://www.jbang.dev/) on työkalu, jolla voit suorittaa Java-koodia skripteinä ilman koontitiedostoja, projektin alustamista tai manuaalista kääntämistä. webforJ:n JBang-integraation avulla voit luoda webforJ-sovelluksia nopeasti. Se sopii erityisesti nopeaan prototypointiin, oppimiseen ja pikademoihin ilman täysimittaisen Java-ohjelman perinteisiä riippuvuuksia ja infrastruktuuria.
 
 ## Miksi käyttää JBangia webforJ:n kanssa {#why-use-jbang}
 
-Perinteiset webforJ-projektit käyttävät Mavenia tai Gradlea useilla konfiguraatiotiedostoilla ja standardilla projektirakenteella. Tämä asettelu on tavanomainen tuotantosovelluksille, mutta voi tuntua raskaalta yksinkertaisille kokeiluille tai demonstroinneille.
+Perinteisissä webforJ-projekteissa käytetään Mavenia tai Gradlea, joihin liittyy useita määritystiedostoja ja vakiomuotoinen projektirakenne. Tämä on tuotantosovelluksissa tavallista, mutta voi tuntua raskaalta yksinkertaisissa kokeiluissa tai demoissa.
 
 JBangin avulla voit:
 
-- **Aloittaa heti**: Kirjoita yksi `.java`-tiedosto ja suorita se heti
-- **Ohittaa projektin asetuksen**: Ei `pom.xml`, ei `build.gradle`, ei hakemistorakennetta
-- **Jakaa helposti**: Lähetä jollekin yksi tiedosto, jonka hän voi suorittaa yhdellä komennolla
-- **Oppia nopeammin**: Keskity webforJ-konsepteihin ilman build-työkalujen monimutkaisuutta
+- **Aloittaa heti**: Kirjoita yksi `.java`-tiedosto ja suorita se saman tien
+- **Ohittaa projektin alustamisen**: Ei `pom.xml`- tai `build.gradle`-tiedostoa eikä hakemistorakennetta
+- **Jakaa helposti**: Lähetä jollekulle yksi tiedosto, jonka hän voi suorittaa yhdellä komennolla
+- **Oppia nopeammin**: Keskity webforJ-konsepteihin ilman koontityökalujen monimutkaisuutta
 
-Integraatio sisältää automaattisen palvelimen sammutuksen, kun suljet selainvälilehden, pitäen kehitystyösi siistinä.
+Integraatio sammuttaa palvelimen automaattisesti, kun suljet selaimen välilehden, mikä pitää kehitystyönkulun siistinä.
 
-## Ennakkoedellytykset {#prerequisites}
+## Edellytykset {#prerequisites}
 
-### Asenna JBang {#install-jbang}
+### JBangin asentaminen {#install-jbang}
 
 Valitse haluamasi asennustapa:
 
 ```bash
-# Yleinen (Linux/macOS/Windows bashilla)
+# Universal (Linux/macOS/Windows with bash)
 curl -Ls https://sh.jbang.dev | bash -s - app setup
 
 # SDKMan
@@ -50,8 +52,8 @@ Varmista asennus:
 jbang --version
 ```
 
-:::info[Oletus Java-versio]
-Kun suoritat JBangin ensimmäistä kertaa ilman asennettua JDK:ta, JBang lataa sen automaattisesti. Voit määrittää JDK-version ja toimittajan ennen JBangin suorittamista:
+:::info[Java-oletusversio]
+Kun suoritat JBangin ensimmäisen kerran ilman asennettua JDK:ta, JBang lataa sellaisen automaattisesti. Voit määrittää JDK-version ja toimittajan ennen JBangin suorittamista:
 
 ```bash
 export JBANG_DEFAULT_JAVA_VERSION=21
@@ -59,16 +61,16 @@ export JBANG_JDK_VENDOR=temurin
 ```
 :::
 
-:::tip[Opi lisää JBangista]
-Katso kattava JBang-dokumentaatio:
-- [JBang Aloitusopas](https://www.jbang.dev/documentation/jbang/latest/index.html) - Asennus ja perusteet
-- [Skripti-direktiivien viite](https://www.jbang.dev/documentation/jbang/latest/script-directives.html) - Kaikki käytettävissä olevat direktiivit
-- [Riippuvuudet](https://www.jbang.dev/documentation/jbang/latest/dependencies.html) - Edistyksellinen riippuvuuden hallinta
+:::tip[Lisätietoja JBangista]
+Kattavat JBang-dokumentit ovat saatavilla seuraavissa lähteissä:
+- [JBangin käytön aloittaminen](https://www.jbang.dev/documentation/jbang/latest/index.html) – asennus ja perusteet
+- [Skriptidirektiivien viite](https://www.jbang.dev/documentation/jbang/latest/script-directives.html) – kaikki käytettävissä olevat direktiivit
+- [Riippuvuudet](https://www.jbang.dev/documentation/jbang/latest/dependencies.html) – riippuvuuksien hallinnan lisäominaisuudet
 :::
 
-## WebforJ-skripti luominen {#creating-a-script}
+## webforJ-skriptin luominen {#creating-a-script}
 
-Luo tiedosto nimeltä `HelloWorld.java`, jossa on seuraava sisältö:
+Luo tiedosto nimeltä `HelloWorld.java` ja lisää siihen seuraava sisältö:
 
 ```java title="HelloWorld.java"
 ///usr/bin/env jbang "$0" "$@" ; exit $?
@@ -105,8 +107,8 @@ public class HelloWorld extends App {
 class MainView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
-  private TextField hello = new TextField("Mikä on nimesi?");
-  private Button btn = new Button("Sano Hei");
+  private TextField hello = new TextField("What is your name?");
+  private Button btn = new Button("Say Hello");
 
   public MainView() {
     self.setDirection(FlexDirection.COLUMN);
@@ -115,7 +117,7 @@ class MainView extends Composite<FlexLayout> {
 
     btn.setPrefixComponent(FeatherIcon.BELL.create())
         .setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> Toast.show("Tervetuloa webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
+        .addClickListener(e -> Toast.show("Welcome to webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
 
     self.add(hello, btn);
   }
@@ -125,22 +127,22 @@ class MainView extends Composite<FlexLayout> {
 
 ### Skriptin rakenteen ymmärtäminen {#script-structure}
 
-| Rivi | Tavoite |
+| Rivi | Tarkoitus |
 |------|---------|
-| `///usr/bin/env jbang "$0" "$@" ; exit $?` | Shebang-rivi, joka mahdollistaa skriptin suorittamisen suoraan Unix-järjestelmissä |
-| `//JAVA 21` | Määrittää vähimmäis Java-version, joka vaaditaan; JBang lataa sen automaattisesti tarvittaessa |
-| `//DEPS com.webforj:webforj-jbang-starter:25.11` | Julistaa webforJ JBang -starterin riippuvuudeksi Maven-koodistolla |
-| `@SpringBootApplication` | Mahdollistaa Spring Bootin automaattisen konfiguroinnin |
-| `extends App` | Tekee tästä luokasta webforJ-sovelluksen |
+| `///usr/bin/env jbang "$0" "$@" ; exit $?` | Shebang-rivi, jonka ansiosta skriptin voi suorittaa suoraan Unix-järjestelmissä |
+| `//JAVA 21` | Määrittää vaaditun Java-version vähimmäistason; JBang lataa sen tarvittaessa automaattisesti |
+| `//DEPS com.webforj:webforj-jbang-starter:25.11` | Määrittää webforJ JBang -aloituspaketin riippuvuudeksi Maven-koordinaateilla |
+| `@SpringBootApplication` | Ottaa Spring Bootin automaattisen määrityksen käyttöön |
+| `extends App` | Määrittää tämän luokan webforJ-sovellukseksi |
 
-`webforj-jbang-starter`-riippuvuus sisältää kaiken, mitä tarvitset webforJ-sovelluksen suorittamiseen: Spring Boot -starterin, kehitystyökalut ja automaattisen selaimen avaamisen.
+`webforj-jbang-starter`-riippuvuus sisältää kaiken webforJ-sovelluksen suorittamiseen tarvittavan: Spring Boot -aloituspaketin, kehitystyökalut ja selaimen automaattisen avaamisen.
 
 :::note[Versio]
-Korvaa `25.11` uusimmalla webforJ-versiolla. Tarkista [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter) viimeisimmän julkaisun vuoksi.
+Korvaa `25.11` webforJ:n uusimmalla versiolla. Tarkista [Maven Centralista](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter) uusin julkaisu.
 :::
 ### Riippuvuuksien lisääminen {#adding-dependencies}
 
-Voit lisätä lisä Maven-riippuvuuksia useilla `//DEPS`-riveillä:
+Voit lisätä muita Maven-riippuvuuksia useilla `//DEPS`-riveillä:
 
 ```java
 ///usr/bin/env jbang "$0" "$@" ; exit $?
@@ -150,9 +152,9 @@ Voit lisätä lisä Maven-riippuvuuksia useilla `//DEPS`-riveillä:
 //DEPS org.apache.commons:commons-lang3:3.14.0
 ```
 
-Riippuvuudet käyttävät standardeja Maven-koordinaatteja (`groupId:artifactId:version`). JBang noutaa ne automaattisesti Maven Centralista ensikäynnillä.
+Riippuvuuksissa käytetään Mavenin vakiomuotoisia koordinaatteja (`groupId:artifactId:version`). JBang noutaa ne automaattisesti Maven Centralista ensimmäisellä suorituskerralla.
 
-## Skriptisi suorittaminen {#running-your-script}
+## Skriptin suorittaminen {#running-your-script}
 
 Suorita skripti JBangilla:
 
@@ -160,50 +162,50 @@ Suorita skripti JBangilla:
 jbang HelloWorld.java
 ```
 
-JBang tekee seuraavaa:
+JBang:
 
-1. Lataa riippuvuudet (ensimmäisellä käynnillä)
+1. Lataa riippuvuudet (vain ensimmäisellä suorituskerralla)
 2. Kääntää skriptin
-3. Käynnistää upotetun palvelimen satunnaisella käytettävissä olevalla portilla
-4. Avaa oletusselaimesi sovelluksessa
+3. Käynnistää upotetun palvelimen satunnaisessa käytettävissä olevassa portissa
+4. Avaa sovelluksen oletusselaimessasi
 
-### Skriptin tekeminen suoritettavaksi {#executable-script}
+### Skriptin määrittäminen suoritettavaksi {#executable-script}
 
-Unix-järjestelmissä voit tehdä skriptistä suoraan suoritettavan:
+Unix-järjestelmissä voit määrittää skriptin suoraan suoritettavaksi:
 
 ```bash
 chmod +x HelloWorld.java
 ./HelloWorld.java
 ```
 
-Tämä toimii sen vuoksi, että tiedoston yläreunassa on shebang-rivi.
+Tämä toimii tiedoston alussa olevan shebang-rivin ansiosta.
 
 ## IDE-tuki {#ide-support}
 
-JBang integroituu suosittuihin Java-IDE:ihin, mukaan lukien VS Code, IntelliJ IDEA, Eclipse ja muihin. Nämä integraatiot tarjoavat ominaisuuksia, kuten direktiivien automaattisen täydentämisen, automaattisen riippuvuuksien ratkaisun ja kyvyn suorittaa ja virheenkorjata skriptejä suoraan IDE:stä.
+JBang integroituu suosittuihin Java-IDE-ympäristöihin, kuten VS Codeen, IntelliJ IDEAan, Eclipseen ja muihin. Integraatiot tarjoavat muun muassa direktiivien automaattisen täydennyksen, riippuvuuksien automaattisen ratkaisemisen sekä mahdollisuuden suorittaa ja virheenkorjata skriptejä suoraan IDE-ympäristössä.
 
-Katso [JBang IDE -integraatiodokumentaatio](https://www.jbang.dev/documentation/jbang/latest/editing.html) asennusohjeita ja tuettuja muokkaimia varten.
+Katso asennusohjeet ja tuetut editorit [JBangin IDE-integraation dokumentaatiosta](https://www.jbang.dev/documentation/jbang/latest/editing.html).
 
-## Konfigurointi {#configuration}
+## Määritys {#configuration}
 
-webforJ JBang -starter sisältää järkevät oletukset, jotka on optimoitu skriptausta varten. Voit mukauttaa käyttäytymistä käyttämällä järjestelmäominaisuuksia.
+webforJ JBang -aloituspaketti sisältää skriptikäyttöön optimoidut järkevät oletusarvot. Voit mukauttaa toimintaa järjestelmäominaisuuksien avulla.
 
-### Automaattinen sammuttaminen {#auto-shutdown}
+### Automaattinen sammutus {#auto-shutdown}
 
-Oletuksena palvelin sammuu automaattisesti, kun kaikki selainvälilehdet, joihin sovellus on yhteydessä, on suljettu. Tämä pitää kehitystyösi siistinä ilman, että orvot palvelimet jäävät päälle.
+Oletusarvoisesti palvelin sammuu automaattisesti, kun kaikki sovellukseen yhdistetyt selaimen välilehdet suljetaan. Näin kehitystyönkulku pysyy siistinä, eikä käynnissä ole irrallisia palvelimia.
 
-| Ominaisuus | Oletus | Kuvaus |
-|------------|--------|--------|
-| `webforj.jbang.auto-shutdown` | `true` | Kytke automaattinen sammutus päälle tai pois |
-| `webforj.jbang.idle-timeout` | `5` | Sekuntia odottaa viimeisen selainyhteyden katkaisemisen jälkeen ennen sammuttamista |
+| Ominaisuus | Oletusarvo | Kuvaus |
+|----------|---------|-------------|
+| `webforj.jbang.auto-shutdown` | `true` | Ottaa automaattisen sammutuksen käyttöön tai poistaa sen käytöstä |
+| `webforj.jbang.idle-timeout` | `5` | Odotusaika sekunteina viimeisen selainyhteyden katkeamisen jälkeen ennen sammutusta |
 
-Kytkeäksesi automaattisen sammutuksen pois päältä:
+Voit poistaa automaattisen sammutuksen käytöstä:
 
 ```bash
 jbang -Dwebforj.jbang.auto-shutdown=false HelloWorld.java
 ```
 
-Vaihtaaksesi tyhjien aikarajojen:
+Voit muuttaa joutokäynnin aikakatkaisua:
 
 ```bash
 jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
@@ -211,27 +213,27 @@ jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
 
 ### Oletusasetukset {#default-settings}
 
-JBang-starter määrittää seuraavat oletukset:
+JBang-aloituspaketti määrittää seuraavat oletusarvot:
 
 | Asetus | Arvo | Kuvaus |
-|--------|-------|--------|
-| `server.port` | `0` | Satunnainen porttijako välttääkseen konflikteja useita skriptejä suoritettaessa |
-| `server.shutdown` | `immediate` | Nopeaa sammutusta, jotta skripti voidaan lopettaa nopeasti |
-| `spring.main.banner-mode` | `off` | Piilottaa Spring Boot -bannerin siistimmän tulostuksen vuoksi |
-| `logging.level.root` | `ERROR` | Vähäinen lokitus pitää konsolitulostuksen siistinä |
-| `logging.level.com.webforj` | `WARN` | Näyttää vain varoitukset ja virheet webforJ:stä |
-| `webforj.devtools.browser.open` | `true` | Avaa selaimen automaattisesti, kun sovellus käynnistyy |
+|---------|-------|-------------|
+| `server.port` | `0` | Määrittää satunnaisen portin, jotta useiden skriptien suorittaminen ei aiheuta ristiriitoja |
+| `server.shutdown` | `immediate` | Nopea sammutus skriptin pikaista päättämistä varten |
+| `spring.main.banner-mode` | `off` | Piilottaa Spring Boot -bannerin tulosteen selkeyttämiseksi |
+| `logging.level.root` | `ERROR` | Pitää konsolitulosteen siistinä vähentämällä lokitiedot minimiin |
+| `logging.level.com.webforj` | `WARN` | Näyttää vain webforJ:n varoitukset ja virheet |
+| `webforj.devtools.browser.open` | `true` | Avaa selaimen automaattisesti sovelluksen käynnistyessä |
 
-### Käyttöönotto ja live-päivitys {#development-workflow}
+### Uudelleenkäyttöönotto ja live reload {#development-workflow}
 
-JBang-skriptit eivät tue live-päivityksiä. Jotta näet muutokset:
+JBang-skriptit eivät tue live reloadia. Näet muutokset seuraavasti:
 
-1. Lopeta käynnissä oleva skripti (sulje selainvälilehti tai paina `Ctrl+C`)
-2. Muokkaa koodiasi
+1. Pysäytä käynnissä oleva skripti (sulje selaimen välilehti tai paina <kbd>Ctrl</kbd>+<kbd>C</kbd>)
+2. Muokkaa koodia
 3. Suorita `jbang HelloWorld.java` uudelleen
 
-Automaattista käyttöönottoa kehityksen aikana varten harkitse [täydellistä Maven-projektia Spring DevToolsin kanssa](/docs/integrations/spring/spring-boot). Katso [live-päivitysdokumentaatio](/docs/configuration/deploy-reload/overview) lisätietoja varten.
+Jos haluat automaattisen uudelleenkäyttöönoton kehityksen aikana, harkitse [täysimittaista Maven-projektia, jossa käytetään Spring DevToolsia](/docs/integrations/spring/spring-boot). Lisätietoja on [live reload -dokumentaatiossa](/docs/configuration/deploy-reload/overview).
 
-## Siirtyminen täysimittaiseen projektiin {#transitioning}
+## Täysimittaiseen projektiin siirtyminen {#transitioning}
 
-Kun prototyyppisi kasvaa yhden tiedoston yli, luo oikea projekti käyttäen [startforJ](https://docs.webforj.com/startforj) tai [Maven arkkityyppi](./spring/spring-boot#option-2-using-the-command-line). Voit kopioida skriptisi logiikan suoraan luotuun projektirakenteeseen.
+Kun prototyyppisi kasvaa yhtä tiedostoa suuremmaksi, luo varsinainen projekti käyttämällä [startforJ:tä](https://docs.webforj.com/startforj) tai [Maven-arkkityyppiä](./spring/spring-boot#option-2-using-the-command-line). Voit kopioida skriptin logiikan suoraan luodun projektin rakenteeseen.

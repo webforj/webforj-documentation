@@ -1,25 +1,27 @@
 ---
 title: JBang
 sidebar_position: 15
-sidebar_class_name: new-content
-_i18n_hash: 3e783061967931c25ff55499a3139122
+description: >-
+  Run webforJ apps as single-file JBang scripts with no Maven, Gradle, or
+  project structure for rapid prototyping and demos.
+_i18n_hash: a7af803fa3e58cb86e0c18289f8fbb40
 ---
 # JBang <DocChip chip='since' label='25.11' />
 
-[JBang](https://www.jbang.dev/) ist ein Werkzeug, das es Ihnen ermöglicht, Java-Code als Skripte auszuführen, ohne Build-Dateien, Projektkonfiguration oder manuelle Kompilierung. Die Integration von webforJ JBang ermöglicht es Ihnen, webforJ-Apps schnell zu erstellen, die am besten für schnelles Prototyping, Lernen und schnelle Demos geeignet sind, ohne die traditionellen Abhängigkeiten und die Infrastruktur eines vollwertigen Java-Programms zu benötigen.
+[JBang](https://www.jbang.dev/) ist ein Tool, mit dem Sie Java-Code als Skripte ausführen können – ohne Build-Dateien, Projekteinrichtung oder manuelle Kompilierung. Die JBang-Integration von webforJ ermöglicht es Ihnen, webforJ-Apps schnell zu erstellen. Sie eignet sich besonders für schnelles Prototyping, zum Lernen und für kurze Demos, ohne dass die herkömmlichen Abhängigkeiten und die Infrastruktur eines vollwertigen Java-Programms erforderlich sind.
 
-## Warum JBang mit webforJ verwenden {#why-use-jbang}
+## Warum JBang mit webforJ verwenden? {#why-use-jbang}
 
-Traditionelle webforJ-Projekte verwenden Maven oder Gradle mit mehreren Konfigurationsdateien und einer standardmäßigen Projektstruktur. Diese Einrichtung ist für Produktions-Apps standardmäßig, kann sich jedoch schwer anfühlen für einfache Experimente oder Demos.
+Herkömmliche webforJ-Projekte verwenden Maven oder Gradle mit mehreren Konfigurationsdateien und einer standardisierten Projektstruktur. Diese Einrichtung ist für Produktions-Apps üblich, kann sich für einfache Experimente oder Demos jedoch als aufwendig erweisen.
 
 Mit JBang können Sie:
 
-- **Sofort starten**: Schreiben Sie eine einzelne `.java`-Datei und führen Sie sie sofort aus
-- **Projektkonfiguration überspringen**: Keine `pom.xml`, kein `build.gradle`, keine Verzeichnisstruktur
-- **Einfach teilen**: Senden Sie jemandem eine einzelne Datei, die er mit einem Befehl ausführen kann
-- **Schneller lernen**: Konzentrieren Sie sich auf webforJ-Konzepte ohne die Komplexität von Build-Tools
+- **Sofort loslegen**: Eine einzelne `.java`-Datei schreiben und direkt ausführen
+- **Die Projekteinrichtung überspringen**: Kein `pom.xml`, kein `build.gradle`, keine Verzeichnisstruktur
+- **Einfach teilen**: Jemandem eine einzelne Datei schicken, die mit einem Befehl ausgeführt werden kann
+- **Schneller lernen**: Sich ohne die Komplexität von Build-Tools auf webforJ-Konzepte konzentrieren
 
-Die Integration umfasst das automatische Herunterfahren des Servers, wenn Sie den Browser-Tab schließen, und hält so Ihren Entwicklungsworkflow sauber.
+Die Integration beendet den Server automatisch, wenn Sie den Browser-Tab schließen, und sorgt so für einen aufgeräumten Entwicklungsworkflow.
 
 ## Voraussetzungen {#prerequisites}
 
@@ -28,7 +30,7 @@ Die Integration umfasst das automatische Herunterfahren des Servers, wenn Sie de
 Wählen Sie Ihre bevorzugte Installationsmethode:
 
 ```bash
-# Universell (Linux/macOS/Windows mit bash)
+# Universal (Linux/macOS/Windows with bash)
 curl -Ls https://sh.jbang.dev | bash -s - app setup
 
 # SDKMan
@@ -51,7 +53,7 @@ jbang --version
 ```
 
 :::info[Standard-Java-Version]
-Wenn Sie JBang zum ersten Mal ohne installiertes JDK ausführen, lädt JBang automatisch eines herunter. Sie können die JDK-Version und den Anbieter festlegen, bevor Sie JBang ausführen:
+Wenn Sie JBang zum ersten Mal ausführen und kein JDK installiert ist, lädt JBang automatisch eines herunter. Sie können die JDK-Version und den Anbieter festlegen, bevor Sie JBang ausführen:
 
 ```bash
 export JBANG_DEFAULT_JAVA_VERSION=21
@@ -59,16 +61,16 @@ export JBANG_JDK_VENDOR=temurin
 ```
 :::
 
-:::tip[Erfahren Sie mehr über JBang]
-Für umfassende JBang-Dokumentation, siehe:
-- [JBang Erste Schritte](https://www.jbang.dev/documentation/jbang/latest/index.html) - Installation und Grundlagen
-- [Script-Direktiven-Referenz](https://www.jbang.dev/documentation/jbang/latest/script-directives.html) - Alle verfügbaren Direktiven
-- [Abhängigkeiten](https://www.jbang.dev/documentation/jbang/latest/dependencies.html) - Erweiterte Abhängigkeitsverwaltung
+:::tip[Mehr über JBang erfahren]
+Eine umfassende Dokumentation zu JBang finden Sie hier:
+- [Erste Schritte mit JBang](https://www.jbang.dev/documentation/jbang/latest/index.html) – Installation und Grundlagen
+- [Referenz zu Skript-Direktiven](https://www.jbang.dev/documentation/jbang/latest/script-directives.html) – Alle verfügbaren Direktiven
+- [Abhängigkeiten](https://www.jbang.dev/documentation/jbang/latest/dependencies.html) – Erweiterte Verwaltung von Abhängigkeiten
 :::
 
-## Erstellen eines webforJ-Skripts {#creating-a-script}
+## Ein webforJ-Skript erstellen {#creating-a-script}
 
-Erstellen Sie eine Datei mit dem Namen `HelloWorld.java` mit folgendem Inhalt:
+Erstellen Sie eine Datei namens `HelloWorld.java` mit folgendem Inhalt:
 
 ```java title="HelloWorld.java"
 ///usr/bin/env jbang "$0" "$@" ; exit $?
@@ -105,8 +107,8 @@ public class HelloWorld extends App {
 class MainView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
-  private TextField hello = new TextField("Wie heißen Sie?");
-  private Button btn = new Button("Hallo sagen");
+  private TextField hello = new TextField("What is your name?");
+  private Button btn = new Button("Say Hello");
 
   public MainView() {
     self.setDirection(FlexDirection.COLUMN);
@@ -115,7 +117,7 @@ class MainView extends Composite<FlexLayout> {
 
     btn.setPrefixComponent(FeatherIcon.BELL.create())
         .setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> Toast.show("Willkommen beim webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
+        .addClickListener(e -> Toast.show("Welcome to webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
 
     self.add(hello, btn);
   }
@@ -123,24 +125,24 @@ class MainView extends Composite<FlexLayout> {
 
 ```
 
-### Die Skriptstruktur verstehen {#script-structure}
+### Aufbau des Skripts verstehen {#script-structure}
 
 | Zeile | Zweck |
 |------|---------|
-| `///usr/bin/env jbang "$0" "$@" ; exit $?` | Shebang-Zeile, die es ermöglicht, das Skript direkt auf Unix-Systemen auszuführen |
-| `//JAVA 21` | Gibt die erforderliche Mindest-Java-Version an; JBang lädt sie automatisch herunter, falls erforderlich |
-| `//DEPS com.webforj:webforj-jbang-starter:25.11` | Deklariert den webforJ JBang Starter als Abhängigkeit unter Verwendung von Maven-Koordinaten |
-| `@SpringBootApplication` | Aktiviert die Auto-Konfiguration von Spring Boot |
+| `///usr/bin/env jbang "$0" "$@" ; exit $?` | Shebang-Zeile, mit der das Skript direkt auf Unix-Systemen ausgeführt werden kann |
+| `//JAVA 21` | Gibt die erforderliche Mindestversion von Java an; JBang lädt sie bei Bedarf automatisch herunter |
+| `//DEPS com.webforj:webforj-jbang-starter:25.11` | Deklariert den JBang-Starter von webforJ mithilfe von Maven-Koordinaten als Abhängigkeit |
+| `@SpringBootApplication` | Aktiviert die Spring-Boot-Autokonfiguration |
 | `extends App` | Macht diese Klasse zu einer webforJ-App |
 
-Die Abhängigkeit `webforj-jbang-starter` enthält alles, was benötigt wird, um eine webforJ-App auszuführen: den Spring Boot Starter, Entwicklungstools und das automatische Öffnen des Browsers.
+Die Abhängigkeit `webforj-jbang-starter` enthält alles, was zum Ausführen einer webforJ-App benötigt wird: den Spring-Boot-Starter, Entwicklungstools und das automatische Öffnen des Browsers.
 
 :::note[Version]
-Ersetzen Sie `25.11` durch die neueste webforJ-Version. Überprüfen Sie [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter) auf die aktuellste Veröffentlichung.
+Ersetzen Sie `25.11` durch die neueste webforJ-Version. Die aktuellste Version finden Sie auf [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter).
 :::
 ### Abhängigkeiten hinzufügen {#adding-dependencies}
 
-Sie können zusätzliche Maven-Abhängigkeiten mithilfe mehrerer `//DEPS`-Zeilen hinzufügen:
+Sie können zusätzliche Maven-Abhängigkeiten mit mehreren `//DEPS`-Zeilen hinzufügen:
 
 ```java
 ///usr/bin/env jbang "$0" "$@" ; exit $?
@@ -150,9 +152,9 @@ Sie können zusätzliche Maven-Abhängigkeiten mithilfe mehrerer `//DEPS`-Zeilen
 //DEPS org.apache.commons:commons-lang3:3.14.0
 ```
 
-Abhängigkeiten verwenden die Standard-Maven-Koordinaten (`groupId:artifactId:version`). JBang lädt sie automatisch beim ersten Ausführen von Maven Central herunter.
+Abhängigkeiten verwenden standardmäßige Maven-Koordinaten (`groupId:artifactId:version`). JBang lädt sie beim ersten Ausführen automatisch von Maven Central herunter.
 
-## Ausführen Ihres Skripts {#running-your-script}
+## Skript ausführen {#running-your-script}
 
 Führen Sie das Skript mit JBang aus:
 
@@ -164,10 +166,10 @@ JBang wird:
 
 1. Abhängigkeiten herunterladen (nur beim ersten Ausführen)
 2. Das Skript kompilieren
-3. Den eingebetteten Server auf einem zufällig verfügbaren Port starten
-4. Ihren Standardbrowser zur App öffnen
+3. Den eingebetteten Server auf einem zufällig ausgewählten verfügbaren Port starten
+4. Ihren Standardbrowser mit der App öffnen
 
-### Das Skript ausführbar machen {#executable-script}
+### Skript ausführbar machen {#executable-script}
 
 Auf Unix-Systemen können Sie das Skript direkt ausführbar machen:
 
@@ -176,34 +178,34 @@ chmod +x HelloWorld.java
 ./HelloWorld.java
 ```
 
-Dies funktioniert aufgrund der Shebang-Zeile ganz oben in der Datei.
+Dies funktioniert aufgrund der Shebang-Zeile am Anfang der Datei.
 
 ## IDE-Unterstützung {#ide-support}
 
-JBang integriert sich mit beliebten Java-IDEs wie VS Code, IntelliJ IDEA, Eclipse und anderen. Diese Integrationen bieten Funktionen wie Direktiven-Autovervollständigung, automatische Auflösung von Abhängigkeiten und die Möglichkeit, Skripte direkt aus der IDE auszuführen und zu debuggen.
+JBang lässt sich in beliebte Java-IDEs integrieren, darunter VS Code, IntelliJ IDEA, Eclipse und weitere. Diese Integrationen bieten Funktionen wie die automatische Vervollständigung von Direktiven, die automatische Auflösung von Abhängigkeiten sowie die Möglichkeit, Skripte direkt in der IDE auszuführen und zu debuggen.
 
-Siehe die [JBang IDE-Integrationsdokumentation](https://www.jbang.dev/documentation/jbang/latest/editing.html) für Anweisungen zur Einrichtung und unterstützten Editoren.
+Anweisungen zur Einrichtung und eine Liste der unterstützten Editoren finden Sie in der [Dokumentation zur JBang-IDE-Integration](https://www.jbang.dev/documentation/jbang/latest/editing.html).
 
 ## Konfiguration {#configuration}
 
-Der webforJ JBang Starter enthält sinnvolle Voreinstellungen, die für das Skripting optimiert sind. Sie können das Verhalten mit Systemeigenschaften anpassen.
+Der JBang-Starter von webforJ enthält sinnvolle, für Skripte optimierte Standardeinstellungen. Sie können das Verhalten mithilfe von Systemeigenschaften anpassen.
 
-### Automatisches Herunterfahren {#auto-shutdown}
+### Automatisches Beenden {#auto-shutdown}
 
-Standardmäßig fährt der Server automatisch herunter, wenn alle Browser-Tabs, die mit der App verbunden sind, geschlossen werden. Dies hält Ihren Entwicklungsworkflow sauber, indem keine verwaisten Server laufen bleiben.
+Standardmäßig wird der Server automatisch beendet, wenn alle mit der App verbundenen Browser-Tabs geschlossen werden. So bleibt Ihr Entwicklungsworkflow aufgeräumt und es laufen keine verwaisten Server weiter.
 
-| Eigenschaft | Standard | Beschreibung |
+| Eigenschaft | Standardwert | Beschreibung |
 |----------|---------|-------------|
-| `webforj.jbang.auto-shutdown` | `true` | Aktivieren oder deaktivieren Sie das automatische Herunterfahren |
-| `webforj.jbang.idle-timeout` | `5` | Sekunden, die nach der letzten Browser-Trennung gewartet werden sollen, bevor das Herunterfahren erfolgt |
+| `webforj.jbang.auto-shutdown` | `true` | Aktiviert oder deaktiviert das automatische Beenden |
+| `webforj.jbang.idle-timeout` | `5` | Sekunden, die nach dem Trennen des letzten Browsers bis zum Beenden gewartet wird |
 
-Um das automatische Herunterfahren auszuschalten:
+So deaktivieren Sie das automatische Beenden:
 
 ```bash
 jbang -Dwebforj.jbang.auto-shutdown=false HelloWorld.java
 ```
 
-Um das Leerlauf-Timeout zu ändern:
+So ändern Sie die Leerlaufzeitüberschreitung:
 
 ```bash
 jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
@@ -211,27 +213,27 @@ jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
 
 ### Standardeinstellungen {#default-settings}
 
-Der JBang Starter konfiguriert die folgenden Voreinstellungen:
+Der JBang-Starter konfiguriert die folgenden Standardeinstellungen:
 
 | Einstellung | Wert | Beschreibung |
 |---------|-------|-------------|
 | `server.port` | `0` | Zufällige Portzuweisung, um Konflikte beim Ausführen mehrerer Skripte zu vermeiden |
-| `server.shutdown` | `immediate` | Schnelles Herunterfahren für eine schnelle Beendigung des Skripts |
-| `spring.main.banner-mode` | `off` | Versteckt das Spring Boot-Banner für eine sauberere Ausgabe |
-| `logging.level.root` | `ERROR` | Minimale Protokollierung, um die Konsolenausgabe sauber zu halten |
+| `server.shutdown` | `immediate` | Schnelles Beenden, damit Skripte zügig beendet werden |
+| `spring.main.banner-mode` | `off` | Blendet das Spring-Boot-Banner aus, um die Ausgabe übersichtlicher zu halten |
+| `logging.level.root` | `ERROR` | Minimale Protokollierung, damit die Konsolenausgabe übersichtlich bleibt |
 | `logging.level.com.webforj` | `WARN` | Zeigt nur Warnungen und Fehler von webforJ an |
-| `webforj.devtools.browser.open` | `true` | Öffnet den Browser automatisch, wenn die App gestartet wird |
+| `webforj.devtools.browser.open` | `true` | Öffnet beim Start der App automatisch den Browser |
 
-### Neuerstellung und Live-Reload {#development-workflow}
+### Neubereitstellung und Live-Reload {#development-workflow}
 
-JBang-Skripte unterstützen kein Live-Reload. Um Änderungen zu sehen:
+JBang-Skripte unterstützen kein Live-Reload. So übernehmen Sie Änderungen:
 
-1. Stoppen Sie das laufende Skript (schließen Sie den Browser-Tab oder drücken Sie `Ctrl+C`)
+1. Beenden Sie das laufende Skript (schließen Sie den Browser-Tab oder drücken Sie <kbd>Ctrl</kbd>+<kbd>C</kbd>)
 2. Bearbeiten Sie Ihren Code
 3. Führen Sie `jbang HelloWorld.java` erneut aus
 
-Für automatische Neuerstellungen während der Entwicklung sollten Sie ein [vollständiges Maven-Projekt mit Spring DevTools](/docs/integrations/spring/spring-boot) in Betracht ziehen. Weitere Einzelheiten finden Sie in der [Live-Reload-Dokumentation](/docs/configuration/deploy-reload/overview).
+Für eine automatische Neubereitstellung während der Entwicklung können Sie ein [vollständiges Maven-Projekt mit Spring DevTools](/docs/integrations/spring/spring-boot) verwenden. Weitere Informationen finden Sie in der [Dokumentation zu Live-Reload](/docs/configuration/deploy-reload/overview).
 
-## Übergang zu einem vollständigen Projekt {#transitioning}
+## Zu einem vollständigen Projekt wechseln {#transitioning}
 
-Wenn Ihr Prototyp über eine einzelne Datei hinauswächst, erstellen Sie ein richtiges Projekt mit [startforJ](https://docs.webforj.com/startforj) oder dem [Maven-Archetyp](./spring/spring-boot#option-2-using-the-command-line). Sie können Ihre Skriptlogik direkt in die generierte Projektstruktur kopieren.
+Wenn Ihr Prototyp über eine einzelne Datei hinauswächst, erstellen Sie ein richtiges Projekt mit [startforJ](https://docs.webforj.com/startforj) oder dem [Maven-Archetyp](./spring/spring-boot#option-2-using-the-command-line). Sie können die Logik Ihres Skripts direkt in die generierte Projektstruktur übernehmen.

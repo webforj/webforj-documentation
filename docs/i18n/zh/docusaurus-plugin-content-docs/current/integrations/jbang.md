@@ -1,34 +1,36 @@
 ---
 title: JBang
 sidebar_position: 15
-sidebar_class_name: new-content
-_i18n_hash: 3e783061967931c25ff55499a3139122
+description: >-
+  Run webforJ apps as single-file JBang scripts with no Maven, Gradle, or
+  project structure for rapid prototyping and demos.
+_i18n_hash: a7af803fa3e58cb86e0c18289f8fbb40
 ---
 # JBang <DocChip chip='since' label='25.11' />
 
-[JBang](https://www.jbang.dev/) 是一个工具，允许您将 Java 代码作为脚本运行，而无需构建文件、项目设置或手动编译。webforJ JBang 集成使您能够快速创建 webforJ 应用程序，最适合用于快速原型制作、学习和快速演示，而无需全面 Java 程序的传统依赖和基础设施。
+[JBang](https://www.jbang.dev/) 是一款可将 Java 代码作为脚本运行的工具，无需构建文件、项目设置或手动编译。webforJ 的 JBang 集成让你能够快速创建 webforJ 应用，非常适合快速原型开发、学习和快速演示，无需完整 Java 程序所需的传统依赖项和基础设施。
 
-## 为什么将 JBang 与 webforJ 一起使用 {#why-use-jbang}
+## 为什么将 JBang 与 webforJ 搭配使用 {#why-use-jbang}
 
-传统的 webforJ 项目使用 Maven 或 Gradle，配有多个配置文件和标准项目结构。这种设置对于生产应用是标准的，但对于简单的实验或演示来说可能显得繁重。
+传统的 webforJ 项目使用 Maven 或 Gradle，包含多个配置文件和标准项目结构。这种设置适用于生产应用，但对于简单的实验或演示来说可能显得过于繁重。
 
-使用 JBang，您可以：
+使用 JBang，你可以：
 
-- **立即启动**：编写一个 `.java` 文件并立即运行
-- **跳过项目设置**：无需 `pom.xml`，无需 `build.gradle`，也无需目录结构
-- **轻松分享**：发送一个文件，收件人只需通过一个命令即可运行
-- **更快学习**：关注 webforJ 概念，而无需处理构建工具的复杂性
+- **立即开始**：编写单个 `.java` 文件并立即运行
+- **跳过项目设置**：无需 `pom.xml`、`build.gradle` 或目录结构
+- **轻松分享**：发送单个文件，对方只需一条命令即可运行
+- **更快学习**：专注于 webforJ 概念，无需处理构建工具的复杂性
 
-该集成在您关闭浏览器标签时会自动关闭服务器，保持您的开发工作流程干净整洁。
+此集成还包含在关闭浏览器标签页时自动关闭服务器的功能，让开发工作流程保持简洁。
 
 ## 前提条件 {#prerequisites}
 
 ### 安装 JBang {#install-jbang}
 
-选择您偏好的安装方法：
+选择你偏好的安装方式：
 
 ```bash
-# 通用 (Linux/macOS/Windows 使用 bash)
+# 通用方式（Linux/macOS/Windows with bash）
 curl -Ls https://sh.jbang.dev | bash -s - app setup
 
 # SDKMan
@@ -51,7 +53,7 @@ jbang --version
 ```
 
 :::info[默认 Java 版本]
-当您第一次运行 JBang 而没有安装 JDK 时，JBang 会自动下载一个。您可以在运行 JBang 之前设置 JDK 版本和供应商：
+如果首次运行 JBang 时未安装 JDK，JBang 会自动下载一个。你可以在运行 JBang 之前设置 JDK 版本和供应商：
 
 ```bash
 export JBANG_DEFAULT_JAVA_VERSION=21
@@ -59,16 +61,16 @@ export JBANG_JDK_VENDOR=temurin
 ```
 :::
 
-:::tip[了解更多 JBang]
-有关全面的 JBang 文档，请参见：
-- [JBang 快速入门](https://www.jbang.dev/documentation/jbang/latest/index.html) - 安装和基础知识
+:::tip[了解有关 JBang 的更多信息]
+如需完整的 JBang 文档，请参阅：
+- [JBang 入门](https://www.jbang.dev/documentation/jbang/latest/index.html) - 安装和基础知识
 - [脚本指令参考](https://www.jbang.dev/documentation/jbang/latest/script-directives.html) - 所有可用指令
-- [依赖关系](https://www.jbang.dev/documentation/jbang/latest/dependencies.html) - 高级依赖管理
+- [依赖项](https://www.jbang.dev/documentation/jbang/latest/dependencies.html) - 高级依赖项管理
 :::
 
 ## 创建 webforJ 脚本 {#creating-a-script}
 
-创建一个名为 `HelloWorld.java` 的文件，内容如下：
+创建名为 `HelloWorld.java` 的文件，并填入以下内容：
 
 ```java title="HelloWorld.java"
 ///usr/bin/env jbang "$0" "$@" ; exit $?
@@ -115,7 +117,7 @@ class MainView extends Composite<FlexLayout> {
 
     btn.setPrefixComponent(FeatherIcon.BELL.create())
         .setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> Toast.show("欢迎使用 webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
+        .addClickListener(e -> Toast.show("Welcome to webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
 
     self.add(hello, btn);
   }
@@ -123,25 +125,24 @@ class MainView extends Composite<FlexLayout> {
 
 ```
 
-### 理解脚本结构 {#script-structure}
+### 了解脚本结构 {#script-structure}
 
-| 行   | 目的         |
-|------|--------------|
-| `///usr/bin/env jbang "$0" "$@" ; exit $?` | Shebang 行，允许脚本在 Unix 系统上直接执行 |
-| `//JAVA 21` | 指定所需的最低 Java 版本；如果需要，JBang 自动下载它 |
-| `//DEPS com.webforj:webforj-jbang-starter:25.11` | 使用 Maven 坐标声明 webforJ JBang 启动程序为依赖 |
+| 行 | 用途 |
+|------|---------|
+| `///usr/bin/env jbang "$0" "$@" ; exit $?` | Shebang 行，可在 Unix 系统上直接执行脚本 |
+| `//JAVA 21` | 指定所需的最低 Java 版本；如果需要，JBang 会自动下载 |
+| `//DEPS com.webforj:webforj-jbang-starter:25.11` | 使用 Maven 坐标声明 webforJ JBang starter 依赖项 |
 | `@SpringBootApplication` | 启用 Spring Boot 自动配置 |
-| `extends App` | 使此类成为 webforJ 应用 |
+| `extends App` | 将此类定义为 webforJ 应用 |
 
-`webforj-jbang-starter` 依赖项包含运行 webforJ 应用所需的所有内容：Spring Boot 启动器、开发工具和自动打开浏览器。
+`webforj-jbang-starter` 依赖项包含运行 webforJ 应用所需的一切：Spring Boot starter、开发工具以及自动打开浏览器的功能。
 
 :::note[版本]
-将 `25.11` 替换为最新的 webforJ 版本。请查看 [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter) 以获取最新版本。
+将 `25.11` 替换为最新的 webforJ 版本。请查看 [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter) 获取最新发布版本。
 :::
-
 ### 添加依赖项 {#adding-dependencies}
 
-您可以使用多个 `//DEPS` 行添加更多 Maven 依赖项：
+你可以使用多条 `//DEPS` 行添加其他 Maven 依赖项：
 
 ```java
 ///usr/bin/env jbang "$0" "$@" ; exit $?
@@ -151,9 +152,9 @@ class MainView extends Composite<FlexLayout> {
 //DEPS org.apache.commons:commons-lang3:3.14.0
 ```
 
-依赖项使用标准的 Maven 坐标 (`groupId:artifactId:version`)。JBang 在首次运行时会自动从 Maven Central 获取它们。
+依赖项使用标准 Maven 坐标（`groupId:artifactId:version`）。首次运行时，JBang 会自动从 Maven Central 获取这些依赖项。
 
-## 运行您的脚本 {#running-your-script}
+## 运行脚本 {#running-your-script}
 
 使用 JBang 运行脚本：
 
@@ -161,50 +162,50 @@ class MainView extends Composite<FlexLayout> {
 jbang HelloWorld.java
 ```
 
-JBang 将：
+JBang 将会：
 
-1. 下载依赖项（仅首次运行）
+1. 下载依赖项（仅首次运行时）
 2. 编译脚本
 3. 在随机可用端口上启动嵌入式服务器
-4. 打开默认浏览器以访问应用程序
+4. 在默认浏览器中打开应用
 
 ### 使脚本可执行 {#executable-script}
 
-在 Unix 系统上，您可以使脚本直接可执行：
+在 Unix 系统上，你可以将脚本设为可直接执行：
 
 ```bash
 chmod +x HelloWorld.java
 ./HelloWorld.java
 ```
 
-这是可行的，因为文件顶部有 shebang 行。
+这是因为文件顶部有 Shebang 行。
 
 ## IDE 支持 {#ide-support}
 
-JBang 与流行的 Java IDE（包括 VS Code、IntelliJ IDEA、Eclipse 等）集成。这些集成提供了如指令自动补全、自动依赖解析以及从 IDE 直接运行和调试脚本的功能。
+JBang 可与常见的 Java IDE 集成，包括 VS Code、IntelliJ IDEA、Eclipse 等。这些集成提供指令自动补全、自动解析依赖项，以及直接从 IDE 运行和调试脚本等功能。
 
-有关设置说明和支持的编辑器，请参见 [JBang IDE 集成文档](https://www.jbang.dev/documentation/jbang/latest/editing.html)。
+请参阅 [JBang IDE 集成文档](https://www.jbang.dev/documentation/jbang/latest/editing.html)，了解设置说明和受支持的编辑器。
 
 ## 配置 {#configuration}
 
-webforJ JBang 启动器包括优化针对脚本的合理默认设置。您可以使用系统属性自定义行为。
+webforJ JBang starter 包含适合脚本运行的默认设置。你可以使用系统属性自定义其行为。
 
-### 自动关机 {#auto-shutdown}
+### 自动关闭 {#auto-shutdown}
 
-默认情况下，当所有连接到应用的浏览器标签关闭时，服务器会自动关闭。这通过不留下孤立的服务器运行来保持您的开发工作流程干净。
+默认情况下，当所有已连接应用的浏览器标签页都关闭时，服务器会自动关闭。这样可以避免服务器在后台持续运行，让开发工作流程保持简洁。
 
-| 属性                        | 默认值        | 描述                                 |
-|---------------------------|-------------|------------------------------------|
-| `webforj.jbang.auto-shutdown` | `true`      | 开启或关闭自动关机                       |
-| `webforj.jbang.idle-timeout`  | `5`         | 最后一个浏览器断开后等待的秒数，之后将关闭 |
+| 属性 | 默认值 | 描述 |
+|----------|---------|-------------|
+| `webforj.jbang.auto-shutdown` | `true` | 开启或关闭自动关闭功能 |
+| `webforj.jbang.idle-timeout` | `5` | 最后一个浏览器断开连接后，等待多少秒再关闭服务器 |
 
-要关闭自动关机：
+关闭自动关闭功能：
 
 ```bash
 jbang -Dwebforj.jbang.auto-shutdown=false HelloWorld.java
 ```
 
-要更改空闲超时时间：
+更改空闲超时时间：
 
 ```bash
 jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
@@ -212,27 +213,27 @@ jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
 
 ### 默认设置 {#default-settings}
 
-JBang 启动器配置以下默认设置：
+JBang starter 配置了以下默认值：
 
-| 设置                       | 值       | 描述                                     |
-|--------------------------|---------|----------------------------------------|
-| `server.port`            | `0`     | 随机端口分配，以避免运行多个脚本时的冲突          |
-| `server.shutdown`        | `immediate` | 快速关闭以快速终止脚本                       |
-| `spring.main.banner-mode`| `off`   | 隐藏 Spring Boot 横幅，以获得更清晰的输出           |
-| `logging.level.root`     | `ERROR` | 最小日志以保持控制台输出整洁                  |
-| `logging.level.com.webforj` | `WARN`  | 仅显示来自 webforJ 的警告和错误               |
-| `webforj.devtools.browser.open` | `true`  | 应用启动时自动打开浏览器                     |
+| 设置 | 值 | 描述 |
+|---------|-------|-------------|
+| `server.port` | `0` | 随机分配端口，避免同时运行多个脚本时发生冲突 |
+| `server.shutdown` | `immediate` | 快速关闭，以便迅速终止脚本 |
+| `spring.main.banner-mode` | `off` | 隐藏 Spring Boot banner，让输出更简洁 |
+| `logging.level.root` | `ERROR` | 尽量减少日志，让控制台输出保持简洁 |
+| `logging.level.com.webforj` | `WARN` | 仅显示 webforJ 的警告和错误 |
+| `webforj.devtools.browser.open` | `true` | 应用启动时自动打开浏览器 |
 
-### 重新部署和实时重载 {#development-workflow}
+### 重新部署和实时重新加载 {#development-workflow}
 
-JBang 脚本不支持实时重载。要查看更改：
+JBang 脚本不支持实时重新加载。如需查看更改：
 
-1. 停止正在运行的脚本（关闭浏览器标签或按 `Ctrl+C`）
-2. 编辑您的代码
+1. 停止正在运行的脚本（关闭浏览器标签页或按 <kbd>Ctrl</kbd>+<kbd>C</kbd>）
+2. 编辑代码
 3. 再次运行 `jbang HelloWorld.java`
 
-要在开发期间实现自动重新部署，请考虑使用 [全 Maven 项目与 Spring DevTools](/docs/integrations/spring/spring-boot)。有关更多详细信息，请参见 [实时重载文档](/docs/configuration/deploy-reload/overview)。
+如需在开发期间自动重新部署，请考虑使用[完整的 Maven 项目和 Spring DevTools](/docs/integrations/spring/spring-boot)。更多详情请参阅[实时重新加载文档](/docs/configuration/deploy-reload/overview)。
 
-## 过渡到完整项目 {#transitioning}
+## 迁移到完整项目 {#transitioning}
 
-当您的原型超出单个文件时，请使用 [startforJ](https://docs.webforj.com/startforj) 或 [Maven 原型](./spring/spring-boot#option-2-using-the-command-line) 创建一个适当的项目。您可以将脚本逻辑直接复制到生成的项目结构中。
+当原型不再适合单个文件时，请使用 [startforJ](https://docs.webforj.com/startforj) 或 [Maven 原型](./spring/spring-boot#option-2-using-the-command-line)创建正式项目。你可以将脚本逻辑直接复制到生成的项目结构中。
