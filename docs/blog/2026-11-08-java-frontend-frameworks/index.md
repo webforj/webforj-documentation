@@ -25,7 +25,7 @@ Every Java frontend choice falls into one of these shapes.
 
 **Component frameworks from the Java EE line.** [Jakarta Faces](https://jakarta.ee/specifications/faces/), formerly JSF, is the Jakarta EE specification for server-side component UIs, with XHTML views bound to managed beans.
 
-**A JavaScript SPA on a Java backend.** You build the UI with [React](https://react.dev/), [Angular](https://angular.dev/) or [Vue](https://vuejs.org/) as its own project and the Java side serves REST or GraphQL endpoints. It is powerful and popular, and it is a second discipline.
+**A JavaScript SPA on a Java backend.** You build the UI with React, Angular or Vue as its own project and the Java side serves REST or GraphQL endpoints. It is powerful and popular, and it is a second discipline.
 
 **Java compiled to JavaScript.** [GWT](https://www.gwtproject.org/) compiles Java source to JavaScript, and tools such as J2CL and [TeaVM](https://teavm.org/) take the same idea further for Java code or bytecode. Your UI code is Java in the editor and JavaScript in the browser.
 
@@ -89,7 +89,7 @@ webforJ gives the assistant its own tooling. The [AI plugin](/docs/ai-tooling) b
 We want webforJ to win on merit, so here is where it does not.
 
 - **Public, content-heavy sites with strict SEO needs.** Server-rendered templates produce plain HTML pages, which suits marketing sites and documentation. webforJ targets business apps where the user logs in.
-- **A team that already runs React or Angular well.** If frontend specialists are on staff and the product lives or dies by a bespoke browser experience, a SPA is a fair choice. You can still keep the Java services, and webforJ can host the pieces you want in Java.
+- **A team that already runs React or Angular well.** If frontend specialists are on staff and the product lives or dies by a bespoke browser experience, a SPA is a fair choice. You can still keep the Java services. And it is not all or nothing: the webforJ [frontend bundler](/docs/managing-resources/bundler/overview) lets you write components in React and use them from Java views, and pull UI libraries from npm, with no Node toolchain to install.
 - **An existing Faces app that works.** Rewriting a stable app for its own sake rarely pays. Move new screens when the business asks for them.
 - **Offline-first or heavily client-side apps.** When most logic must run in the browser without a server connection, a JavaScript framework or a compiler approach is the natural tool.
 
