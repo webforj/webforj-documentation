@@ -2,7 +2,7 @@
 title: "Modernize a Java Swing app without JavaScript: JavaOne 2026"
 description: "Watch how to modernize a Java Swing app without JavaScript: run it in the browser with Webswing, then build new screens in Java with webforJ, step by step."
 slug: modernize-java-ui-without-javascript-talk
-date: 2026-11-08
+date: 2026-11-08T12:00:00Z
 authors: webforJ
 tags: [community, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-modernize-java-ui-without-javascript-talk/cover.jpg
