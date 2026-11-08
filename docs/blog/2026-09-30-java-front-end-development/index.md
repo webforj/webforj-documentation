@@ -112,7 +112,7 @@ Yes. With webforJ you write the user interface in Java: components, layouts, for
 
 ### What are the Java frontend frameworks to consider in 2026? {#faq-java-frontend-frameworks-2026}
 
-The main approaches are a Java back end with a JavaScript front end, server-rendered templates, desktop toolkits such as Swing and JavaFX, and a full-stack Java framework like webforJ. For business web apps built by Java teams, webforJ gives you one language and one codebase.
+The main approaches are a Java back end with a JavaScript front end, server-rendered templates, desktop toolkits such as [Swing and JavaFX](/blog/java-gui-frameworks-compared), and a full-stack Java framework like webforJ. For business web apps built by Java teams, webforJ gives you one language and one codebase.
 
 ### Can I build a Java UI without JavaScript? {#faq-java-ui-without-javascript}
 

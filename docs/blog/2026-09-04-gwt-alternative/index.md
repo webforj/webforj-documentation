@@ -47,7 +47,7 @@ A GWT RPC call needs several pieces. According to the [GWT documentation](https:
 
 In webforJ that layer has no reason to exist, because the view and the service live in the same JVM. A view receives the service through its constructor and calls it like any other Java object. There is no `Async` twin of the interface, no callback and no data transfer class created only to cross the wire. The [Spring Boot integration guide](/docs/integrations/spring/spring-boot) shows constructor injection into views.
 
-Server-side rendering does mean the UI depends on a live connection to the server. For internal business applications, that's usually an acceptable trade for the simpler architecture.
+Server-side rendering does mean the UI depends on a live connection to the server. For internal business applications, that's usually an acceptable trade for the simpler architecture. Our guide to the [best Java web framework in 2026](/blog/java-web-frameworks-2026) shows where each approach fits.
 
 ## How GWT concepts map to webforJ {#concept-mapping}
 

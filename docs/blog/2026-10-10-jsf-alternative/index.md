@@ -23,7 +23,7 @@ A migration is mostly a translation exercise. Most JSF concepts have a direct co
 
 The reasons teams still move are practical. The view is XHTML while the logic is Java, so every screen spans two files and a string-based bridge between them. Expressions such as `#{customerBean.customer.name}` are resolved at runtime, so a rename in Java is not caught by the compiler in the page. And the component set you get depends on which add-on library you chose.
 
-webforJ keeps the server-side model and removes that split. The screen is a Java class, the compiler checks every reference, and the components ship with the framework.
+webforJ keeps the server-side model and removes that split. The screen is a Java class, the compiler checks every reference, and the components ship with the framework. If you are weighing other options, the [best Java web framework in 2026](/blog/java-web-frameworks-2026) depends on the job.
 
 ## How each concept maps to webforJ {#concept-mapping}
 

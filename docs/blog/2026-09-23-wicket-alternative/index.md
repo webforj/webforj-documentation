@@ -25,7 +25,7 @@ The [webforj-databinding](https://github.com/webforj/built-with-webforj/tree/mai
 
 The Apache Wicket project describes itself as [a component-oriented Java web framework](https://wicket.apache.org/). A page is a tree of components, state lives on the server, and each component keeps its markup in an HTML file that mirrors the tree. That model has real strengths: reusable pieces, server side state, and a clear place for behavior.
 
-The trade-off is the pairing. Each component has a Java class and a markup file, and the two have to agree on nesting and ids. If that pairing is the part that slows reviews and refactors, a component based Java web framework without templates is the natural next step.
+The trade-off is the pairing. Each component has a Java class and a markup file, and the two have to agree on nesting and ids. If that pairing is the part that slows reviews and refactors, a component based Java web framework without templates is the natural next step. The [best Java web framework in 2026](/blog/java-web-frameworks-2026) depends on the job, and our guide goes through them.
 
 ## What stays the same {#what-stays-the-same}
 

@@ -19,7 +19,7 @@ The legacy Java app modernization strategy that holds up is simpler. Triage ever
 
 ## Why one portfolio needs one target {#one-target}
 
-Every extra framework in a modernization program adds a second team, a second upgrade cycle and a second set of security reviews. A plan that picks a new technology per legacy app replaces old fragmentation with new fragmentation.
+Every extra framework in a modernization program adds a second team, a second upgrade cycle and a second set of security reviews. A plan that picks a new technology per legacy app replaces old fragmentation with new fragmentation. If you are still choosing that target, see the [best Java web framework in 2026](/blog/java-web-frameworks-2026).
 
 webforJ lets you build the whole app, screens included, in Java. Your team already writes Java, so the people who know the domain are the people who write the new screens. The same framework also runs standalone or integrates with a Spring Boot backend through its [Spring integration](/docs/integrations/spring/overview), so services you already run stay where they are.
 

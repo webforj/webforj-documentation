@@ -23,7 +23,7 @@ Most banks and financial firms do not struggle with customer-facing marketing si
 
 For a review board, that turns the framework question into a risk question. Where does the logic live? Who can open which screen? Can your existing reviewers read the code? Can the people you already employ build it? Will it still be maintainable after the next three reorganizations?
 
-The sections below take those questions in order. If you want the general checklist for any enterprise Java web framework first, we cover it in [Java framework for enterprise web applications: a checklist](/blog/java-enterprise-web-framework). This post is the version for regulated, risk-aware teams.
+The sections below take those questions in order. If you want the general checklist for any enterprise Java web framework first, we cover it in [Java framework for enterprise web applications: a checklist](/blog/java-enterprise-web-framework). This post is the version for regulated, risk-aware teams. For a pick by job, see the [best Java web framework in 2026](/blog/java-web-frameworks-2026).
 
 ## Logic and data stay on the server {#logic-stays-on-the-server}
 

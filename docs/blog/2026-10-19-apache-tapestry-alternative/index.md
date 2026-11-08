@@ -49,7 +49,7 @@ Your business logic, data access and domain classes are plain Java and stay as t
 
 ## What changes: no templates {#what-changes}
 
-In webforJ, the layout, the fields and the buttons are Java objects. There is no template file and no matching filename to maintain. Renaming a component is a refactor your IDE understands, and a missing component is a compile error. This is a component based Java web framework without templates.
+In webforJ, the layout, the fields and the buttons are Java objects. There is no template file and no matching filename to maintain. Renaming a component is a refactor your IDE understands, and a missing component is a compile error. This is a component based Java web framework without templates. Our guide to the [best Java web framework in 2026](/blog/java-web-frameworks-2026) covers the other choices by job.
 
 Routing is an annotation on the view instead of a package convention. This snippet comes from the [defining routes](/docs/routing/defining-routes) page:
 

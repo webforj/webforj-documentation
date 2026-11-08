@@ -17,7 +17,7 @@ There is a better way to migrate a Java desktop app to the web with AI: move it 
 
 <!-- truncate -->
 
-The hard part is deciding which screen goes which way. This guide gives you a simple test for each screen, the brief to hand the assistant, and the limits to plan around.
+The hard part is deciding which screen goes which way. This guide gives you a simple test for each screen, the brief to hand the assistant, and the limits to plan around. If you are still comparing targets, see [Swing vs JavaFX vs web](/blog/java-gui-frameworks-compared).
 
 ## Why not let AI convert the whole app? {#why-not-convert-everything}
 

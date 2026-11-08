@@ -19,7 +19,7 @@ The AI coding agent verification loop is the set of checks that turns a guess in
 
 ## The problem with unverified agents {#the-problem}
 
-An agent that writes code without checking it is doing autocomplete with extra steps. It recalls what a class probably looks like from training data, and for a framework that changes between versions that memory is often stale.
+An agent that writes code without checking it is doing autocomplete with extra steps. It recalls what a class probably looks like from training data, and for a framework that changes between versions that memory is often stale. Which framework you pair with an agent matters too, and the [best Java UI framework for business apps](/blog/best-java-ui-frameworks) is a place to start.
 
 The failures fall into four groups, and each one needs a different check:
 

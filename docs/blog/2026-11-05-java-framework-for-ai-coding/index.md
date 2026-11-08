@@ -23,7 +23,7 @@ Ask an assistant for a web screen and the answer usually spans several languages
 
 That is where generated code goes wrong. A model can produce a template that looks right and binds to a field that no longer exists. It can call an endpoint with a slightly wrong shape. None of this fails until someone runs the page, and the failure often shows up as a blank area instead of an error.
 
-The more the framework relies on strings, conventions and runtime wiring, the more an assistant has to guess. Guessing is what language models do worst when the guess has to be exact.
+The more the framework relies on strings, conventions and runtime wiring, the more an assistant has to guess. Guessing is what language models do worst when the guess has to be exact. If you are still comparing options, see the [best Java UI framework for business apps](/blog/best-java-ui-frameworks).
 
 ## What an AI-friendly framework needs {#ai-friendly-java-framework}
 

@@ -130,7 +130,7 @@ A server-side UI is a strong fit when:
 - The data and rules behind the screen are sensitive and you want them to stay on the server.
 - You want one codebase, one deployment, and one place to apply security rules.
 
-Choose something else when the app must work without a network, drive local hardware, or respond at a pace that cannot afford a trip to the server. A desktop toolkit or a client-side app is the right tool for those jobs.
+Choose something else when the app must work without a network, drive local hardware, or respond at a pace that cannot afford a trip to the server. A desktop toolkit or a client-side app is the right tool for those jobs. Our post on [Java GUI frameworks compared](/blog/java-gui-frameworks-compared) covers the desktop side.
 
 ## Try it {#try-it}
 

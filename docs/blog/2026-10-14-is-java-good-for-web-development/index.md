@@ -37,7 +37,7 @@ When you do need to reach the browser, the door is open. The [Execute JavaScript
 
 ## Myth: Java web apps feel old {#myth-feel-old}
 
-**Fact:** the feel of an app comes from its components, its styling and its responsiveness, and none of those are tied to the language of the server. Java web apps feel old when they are built from server-rendered page templates or from desktop toolkits pushed into a browser. A webforJ app is neither.
+**Fact:** the feel of an app comes from its components, its styling and its responsiveness, and none of those are tied to the language of the server. Java web apps feel old when they are built from server-rendered page templates or from desktop toolkits such as [Swing and JavaFX](/blog/java-gui-frameworks-compared) pushed into a browser. A webforJ app is neither.
 
 The built-in design system, DWC, covers the visual layer. The [styling overview](/docs/styling/overview) lists colors, typography, surfaces, shadows and spacing as design tokens, and webforJ ships three themes, `light`, `dark` and `dark-pure`, as the [themes page](/docs/styling/themes) shows. Switching is one annotation:
 

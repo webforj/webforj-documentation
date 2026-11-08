@@ -141,3 +141,7 @@ Jakarta EE is a set of specifications for enterprise Java, and its [Servlet and 
 ### Which Java web app framework should a new team learn first? {#faq-learn-first}
 
 Learn Spring Boot for the backend, since webforJ integrates with it directly. Then add webforJ so the team writes the whole app, screens included, in the language it already knows.
+
+### What frameworks do modern Java backend developers use in 2026? {#faq-backend-frameworks}
+
+Most teams choose from Spring Boot, Quarkus, Micronaut, Jakarta EE and Javalin for the backend, based on their deployment model. Those frameworks serve data and do not provide the screens. webforJ, the full-stack Java framework, adds the user interface in Java and plugs into a backend such as Spring Boot.

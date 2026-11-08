@@ -34,7 +34,7 @@ The sections below take them in order.
 
 ## Assistants in your editor {#assistants-in-your-editor}
 
-A general assistant knows Java well and any single UI framework only as far as its training data goes. It guesses method names, describes old versions, and invents CSS variables the browser silently ignores.
+A general assistant knows Java well and any single UI framework only as far as its training data goes. For how the frameworks themselves compare, see the [best Java UI framework for business apps](/blog/best-java-ui-frameworks). It guesses method names, describes old versions, and invents CSS variables the browser silently ignores.
 
 The [webforJ AI plugin](/docs/ai-tooling) closes that gap with two pieces in one install. The [MCP server](/docs/ai-tooling/mcp) gives the assistant tools: knowledge search scoped to your webforJ version, project scaffolding, theme generation, the styling surface of every component, and validation of `--dwc-*` tokens. [Agent Skills](/docs/ai-tooling/agent-skills) give it the playbook for when to call those tools and how to check the result, covering forms, security, styling, async work, localization, components, and upgrades.
 
@@ -176,3 +176,7 @@ MCP Apps let an MCP-capable AI app open one of your routed views inside its conv
 ### Can I test webforJ views without a browser? {#faq-testbed}
 
 Yes. TestBed runs views in plain JUnit tests with no browser or server. It uses the same locators and interactions as the automation layer. Snapshots store what a view shows as text an AI model can read.
+
+### Which AI frameworks work best with a Java backend? {#faq-ai-java-backend}
+
+It depends on where the AI sits. For AI features in the app, Spring AI handles the model on a Spring Boot backend, and webforJ views receive it as a Spring bean. For AI that writes the code, webforJ, the full-stack Java framework, adds the AI plugin and TestBed so you can check the output.

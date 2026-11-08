@@ -27,7 +27,7 @@ The Eclipse RAP site describes RAP as enabling modular business apps for desktop
 
 The part of RAP that does the browser work is RWT. RWT largely implements the same API as the Standard Widget Toolkit (SWT), so code that compiles against it generally works, and it ships more than 40 widgets with their events and layout managers. Appearance is controlled with CSS theming. RAP runs on any JEE servlet container, integrates with OSGi and can also be used stand-alone.
 
-This is the reason RAP appeals to desktop Java teams. The same SWT knowledge that built the Eclipse-based client now builds the web version, and code written for Eclipse RCP can run in a browser.
+This is the reason RAP appeals to desktop Java teams. The same SWT knowledge that built the Eclipse-based client now builds the web version, and code written for Eclipse RCP can run in a browser. For the desktop toolkits side, see [Java GUI frameworks compared](/blog/java-gui-frameworks-compared).
 
 ## When staying on RAP makes sense {#stay}
 

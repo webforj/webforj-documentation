@@ -43,7 +43,7 @@ claude mcp add webforj-mcp https://mcp.webforj.com/mcp -t http -s user
 
 Cursor, Gemini CLI, Codex and other MCP clients connect to the same endpoint, `https://mcp.webforj.com/mcp`. Most teams should skip the manual setup and install the [webforJ AI plugin](/docs/ai-tooling), which registers the server and the skills together. The [AI coding assistant post](/blog/ai-coding-assistant-java) walks through that install.
 
-A habit helps: name the framework in the prompt. "Add a filter to this webforJ table" sends the assistant to the server. "Add a filter to this table" sends it to its general memory of Java.
+A habit helps: name the framework in the prompt. "Add a filter to this webforJ table" sends the assistant to the server. "Add a filter to this table" sends it to its general memory of Java. Which framework to name is a separate choice, and our guide to the [best Java UI framework for business apps](/blog/best-java-ui-frameworks) can help.
 
 ## Can skills keep AI on your conventions? {#skills}
 

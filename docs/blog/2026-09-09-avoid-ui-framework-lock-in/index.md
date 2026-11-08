@@ -21,7 +21,7 @@ To avoid UI framework lock-in in Java, decide how much of the app is allowed to 
 
 I'll say the uncomfortable part first. No UI framework is free of lock-in. Whatever you choose, the screens are written against its component classes, its layout API, its event model, and its routing. If you move to another framework later, the screens get rewritten.
 
-So "Java web framework vendor lock-in" is the wrong thing to measure as a yes or no. The useful number is the fraction of your codebase that imports the framework. An app where that fraction is small has a bounded migration. An app where most files import the framework has a rewrite waiting for it.
+So "Java web framework vendor lock-in" is the wrong thing to measure as a yes or no. The useful number is the fraction of your codebase that imports the framework. An app where that fraction is small has a bounded migration. An app where most files import the framework has a rewrite waiting for it. For a pick by job, see the [best Java web framework in 2026](/blog/java-web-frameworks-2026).
 
 That makes the practical question one of architecture, and the framework only helps or hurts it. A framework can pull logic into the UI classes because it is convenient, or it can make the clean split the path of least resistance.
 

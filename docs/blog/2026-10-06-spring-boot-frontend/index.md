@@ -163,3 +163,7 @@ Yes. The webforJ Spring Boot starter integrates with Spring Security through rou
 ### Is Thymeleaf enough for a Spring Boot web UI? {#faq-thymeleaf}
 
 For content pages and simple forms, yes. Once users expect live tables, dialogs, and updates without a reload, you start writing JavaScript on top, and at that point a component framework is less work.
+
+### Which frontend framework should I use with Spring Boot? {#faq-which-frontend}
+
+It depends on who builds the screens. A Java team building a business app can use webforJ, the full-stack Java framework, to write the UI in Java inside the same Spring Boot project. A team with dedicated frontend developers, or one API for several clients, can pair Spring Boot with React or Angular over REST.

@@ -67,7 +67,7 @@ The browser side is covered by the DWC, so for standard components there is no s
 
 ## The enterprise checklist {#enterprise-choice}
 
-Teams looking for a Java web framework for enterprise use usually check the same things. This is how webforJ answers them with published facts.
+Teams looking for a Java web framework for enterprise use usually check the same things. This is how webforJ answers them with published facts. For the wider field, see the [best Java UI framework for business apps](/blog/best-java-ui-frameworks).
 
 | Question | Answer |
 |---|---|

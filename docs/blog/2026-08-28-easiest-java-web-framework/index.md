@@ -30,7 +30,7 @@ Easy is not a feeling. For a Java developer, a framework is easy when each of th
 - How many files change when a field changes.
 - How much of the API you must guess.
 
-Each of these can be checked in an afternoon. Marketing pages rarely do it for you, so the sections below turn them into yes or no tests.
+Each of these can be checked in an afternoon. Marketing pages rarely do it for you, so the sections below turn them into yes or no tests. For a wider comparison by job, see the [best Java web framework in 2026](/blog/java-web-frameworks-2026).
 
 ## The checklist at a glance {#checklist}
 

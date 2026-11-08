@@ -35,7 +35,7 @@ A common next step is adding htmx, a small library that lets HTML attributes iss
 
 That reduces the script you write. It does not remove the model. You still design fragments, name endpoints and decide which part of the page each response replaces. A screen with a table, a filter bar and an edit dialog turns into a set of small endpoints that must agree with each other on markup and ids.
 
-If you searched for htmx with Java and Spring Boot because you want interactivity without a front end build, you can reach the same goal another way. Interactive UI in Spring Boot without JavaScript means the components and their state live in Java, and the framework handles the browser side for you.
+If you searched for htmx with Java and Spring Boot because you want interactivity without a front end build, you can reach the same goal another way. Interactive UI in Spring Boot without JavaScript means the components and their state live in Java, and the framework handles the browser side for you. To compare more options, see the [best Java web framework in 2026](/blog/java-web-frameworks-2026) by job.
 
 ## What changes with webforJ? {#what-changes}
 
