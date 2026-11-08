@@ -5,11 +5,11 @@ slug: ai-tools-java-migration
 date: 2026-11-05
 authors: webforJ
 tags: [ai, modernization, mcp]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-ai-tools-java-migration/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-ai-tools-java-migration/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-ai-tools-java-migration/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-ai-tools-java-migration/cover-v2.jpg)
 
 You have a Java app that has been in production for years, a deadline that keeps moving, and a long list of AI tools that all claim they can help. Comparing them by brand does not get you far, because a migration is not one task. It is five or six different jobs, and each one needs a different kind of help.
 

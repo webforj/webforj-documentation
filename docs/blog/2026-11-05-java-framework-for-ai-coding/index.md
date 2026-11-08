@@ -5,11 +5,11 @@ slug: java-framework-for-ai-coding
 date: 2026-11-05T15:00:00Z
 authors: webforJ
 tags: [ai, mcp, integrations]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-java-framework-for-ai-coding/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-java-framework-for-ai-coding/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-java-framework-for-ai-coding/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-java-framework-for-ai-coding/cover-v2.jpg)
 
 Hand an AI assistant a Java web project and ask for a new screen. Whether you get working code or an afternoon of fixes depends less on the model than on the framework: how many languages the screen spans, how many ways there are to do the same thing, and whether the assistant can check the real APIs or has to remember them.
 

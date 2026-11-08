@@ -5,11 +5,11 @@ slug: java-web-app-testing-strategy
 date: 2026-11-06
 authors: Eric Handtke
 tags: [tutorial, integrations]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-java-web-app-testing-strategy/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-java-web-app-testing-strategy/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-java-web-app-testing-strategy/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-java-web-app-testing-strategy/cover-v2.jpg)
 
 Your app works on your machine. Then a refactor lands, a button stops doing its job, and nobody notices until a user does. Most teams know they need tests. The hard part is deciding which kind goes where, so the suite stays fast and people still trust a red build.
 

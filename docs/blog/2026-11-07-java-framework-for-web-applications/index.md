@@ -5,11 +5,11 @@ slug: java-framework-for-web-applications
 date: 2026-11-07
 authors: webforJ
 tags: [community, full-stack, spring, ai]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-java-framework-for-web-applications/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-java-framework-for-web-applications/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-java-framework-for-web-applications/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-java-framework-for-web-applications/cover-v2.jpg)
 
 Most lists of Java web frameworks compare names. The question that decides the project is different: what does the app need on the day it goes to production, and how many separate tools will you stitch together to get it? A Java framework for web applications has to answer that question, and the answer starts with a choice between two architectures.
 

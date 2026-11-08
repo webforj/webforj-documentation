@@ -5,11 +5,11 @@ slug: advanced-rag-java
 date: 2026-11-05T13:00:00Z
 authors: Hyyan Abo Fakher
 tags: [integrations, ai, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-advanced-rag-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-advanced-rag-java/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-advanced-rag-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-advanced-rag-java/cover-v2.jpg)
 
 Advanced RAG in Java means fixing retrieval before touching the prompt. Spring AI gives you every stage you need: query rewriting, multi-query expansion, a custom retriever for hybrid search, and a post-processor for reranking, all inside one `RetrievalAugmentationAdvisor`. Each stage also costs model calls and seconds of waiting, so the real skill is knowing which ones your data needs. This post builds the full pipeline, measures it, and puts it behind a webforJ view that shows what every stage did.
 

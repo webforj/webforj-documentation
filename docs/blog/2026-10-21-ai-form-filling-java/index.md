@@ -5,11 +5,11 @@ slug: ai-form-filling-java
 date: 2026-11-04T09:00:00Z
 authors: Hyyan Abo Fakher
 tags: [ai, spring-ai, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-ai-form-filling-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-ai-form-filling-java/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-ai-form-filling-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-ai-form-filling-java/cover-v2.jpg)
 
 To fill a form with AI in Java, let the user paste free text or upload a file, ask Spring AI for a typed bean with `ChatClient` and `.entity(...)`, and load that bean into a webforJ form with `BindingContext.read`. The same Jakarta validation rules that guard manual entry then run on what the model produced, and the user reviews and edits the fields before anything is saved.
 

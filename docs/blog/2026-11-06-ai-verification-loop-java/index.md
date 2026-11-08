@@ -5,11 +5,11 @@ slug: ai-verification-loop-java
 date: 2026-11-06
 authors: webforJ
 tags: [ai, mcp, integrations]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-ai-verification-loop-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-ai-verification-loop-java/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-ai-verification-loop-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-ai-verification-loop-java/cover-v2.jpg)
 
 You ask a coding agent for a new screen and it comes back fast, confident, and half wrong. A method that does not exist, a CSS token it made up, a build that fails on the second line, and a button that nobody ever clicked. The model is rarely the problem. The missing piece is verification.
 

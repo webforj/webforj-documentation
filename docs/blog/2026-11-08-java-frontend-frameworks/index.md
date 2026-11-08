@@ -5,11 +5,11 @@ slug: java-frontend-frameworks
 date: 2026-11-08
 authors: webforJ
 tags: [community, ai, full-stack, front end]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-java-frontend-frameworks/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-java-frontend-frameworks/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-java-frontend-frameworks/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-java-frontend-frameworks/cover-v2.jpg)
 
 You have a Java backend, a business app to ship, and a browser to put it in. Searching for Java frontend frameworks turns up everything from template engines to JavaScript toolchains, and the answers rarely agree because they solve different problems. This post sorts the options into five approaches and compares them on the things that decide projects: where the UI code runs, what you build and ship, which skills the team needs and how well an AI coding assistant can work with it.
 

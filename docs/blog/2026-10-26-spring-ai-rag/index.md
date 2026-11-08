@@ -5,11 +5,11 @@ slug: spring-ai-rag
 date: 2026-11-04T08:00:00Z
 authors: Hyyan Abo Fakher
 tags: [ai, spring, chat]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-26-spring-ai-rag/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-26-spring-ai-rag/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-26-spring-ai-rag/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-26-spring-ai-rag/cover-v2.jpg)
 
 The fastest way to build a Spring AI RAG web UI is to write the whole thing in Java with webforJ. The `Upload` component takes the files, Spring AI reads, splits and embeds them into a `VectorStore`, a `RetrievalAugmentationAdvisor` on a `ChatClient` grounds every answer in the retrieved chunks, and a `MarkdownViewer` renders the streamed answer. There is no REST layer, no JavaScript and no separate frontend project.
 
