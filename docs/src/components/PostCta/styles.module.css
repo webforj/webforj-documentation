@@ -1,0 +1,80 @@
+/* In-post invitation after the intro: same quiet panel as the end-of-post
+   "Talk to us" block, with a primary accent edge so it reads as an offer,
+   not as article text. */
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dwc-space-m) var(--dwc-space-l);
+  margin: var(--dwc-space-l) 0 var(--dwc-space-xl);
+  padding: var(--dwc-space-m) var(--dwc-space-l);
+  border: 1px solid var(--dwc-border-color);
+  border-left: 4px solid var(--dwc-color-primary);
+  border-radius: var(--dwc-border-radius-l);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.copy {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 var(--dwc-space-2xs, 2px);
+  font-size: var(--dwc-font-size-m);
+  font-weight: 700;
+}
+
+.text {
+  margin: 0;
+  color: var(--ifm-color-emphasis-800);
+  font-size: var(--dwc-font-size-s);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dwc-space-s);
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dwc-space-xs);
+  padding: 0.5rem 1rem;
+  border-radius: var(--dwc-border-radius);
+  font-size: var(--dwc-font-size-s);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.primary {
+  border: 0 !important;
+  background-color: var(--dwc-color-primary);
+  color: #fff;
+}
+
+.primary:hover,
+.primary:focus {
+  border: 0 !important;
+  background-color: color-mix(in srgb, var(--dwc-color-primary) 85%, #000) !important;
+  color: #fff;
+  text-decoration: none;
+}
+
+.secondary {
+  border: 1px solid var(--dwc-border-color) !important;
+  background-color: transparent;
+  color: var(--ifm-font-color-base);
+}
+
+.secondary:hover,
+.secondary:focus {
+  border: 1px solid var(--dwc-border-color) !important;
+  background-color: var(--ifm-color-emphasis-200) !important;
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}

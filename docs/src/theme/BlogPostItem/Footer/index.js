@@ -5,7 +5,8 @@ import Translate, { translate } from '@docusaurus/Translate';
 import BlogShare from '@site/src/components/BlogShare';
 import ConnectIcons from '@site/src/components/connect/ConnectIcons';
 import { CONTACT_URL, FOLLOW, RSS } from '@site/src/components/connect/links';
-import { FaArrowRight } from 'react-icons/fa6';
+import { contactMailto } from '@site/src/components/PostCta';
+import { FaArrowRight, FaEnvelope } from 'react-icons/fa6';
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
 import { useCoverSrc } from '@site/src/components/blogCover';
 import styles from './styles.module.css';
@@ -80,12 +81,20 @@ function TalkToUs() {
           </Translate>
         </p>
       </div>
-      <a className={styles.talkButton} href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
-        <Translate id="component.blogPostFooter.contactUs" description="Contact button label">
-          Contact us
-        </Translate>{' '}
-        <FaArrowRight aria-hidden="true" />
-      </a>
+      <div className={styles.talkActions}>
+        <a className={styles.talkButton} href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
+          <Translate id="component.blogPostFooter.contactUs" description="Contact button label">
+            Contact us
+          </Translate>{' '}
+          <FaArrowRight aria-hidden="true" />
+        </a>
+        <a className={styles.talkEmail} href={contactMailto('Question about webforJ')}>
+          <FaEnvelope aria-hidden="true" />{' '}
+          <Translate id="component.blogPostFooter.askByEmail" description="Email contact link label">
+            Ask by email
+          </Translate>
+        </a>
+      </div>
     </section>
   );
 }

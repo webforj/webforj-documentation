@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PostCta, { useShowPostCta } from '@site/src/components/PostCta';
 import Heading from '@theme-original/Heading';
 import AskMenu from '@site/src/components/DocsTools/AskMenu';
 import { useLocation } from '@docusaurus/router';
@@ -59,6 +60,7 @@ export default function HeadingWrapper(props) {
   );
 
   const showAskMenu = location.pathname.includes('/docs/');
+  const postCta = useShowPostCta(props.as, props.id);
 
   return (
     <>
@@ -69,6 +71,11 @@ export default function HeadingWrapper(props) {
             {showAskMenu && <AskMenu />}
           </div>
           {translationNotice}
+        </>
+      ) : postCta ? (
+        <>
+          <PostCta {...postCta} />
+          <Heading {...props} />
         </>
       ) : (
         <Heading {...props} />

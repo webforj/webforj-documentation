@@ -68,6 +68,36 @@
   text-decoration: none;
 }
 
+.talkActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--dwc-space-m);
+}
+
+/* same outline button as the in-post box. The border is always there and its
+   hover state is fixed here, so the blog's link hover border can't resize it */
+.talkEmail {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dwc-space-xs);
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--dwc-border-color) !important;
+  border-radius: var(--dwc-border-radius);
+  background-color: transparent;
+  color: var(--ifm-font-color-base);
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.talkEmail:hover,
+.talkEmail:focus {
+  border: 1px solid var(--dwc-border-color) !important;
+  background-color: var(--ifm-color-emphasis-200) !important;
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}
+
 /* related posts as small editor windows, like the blog cards */
 .related {
   margin-top: calc(var(--dwc-space-xl) * 2);
