@@ -8,6 +8,12 @@ on:
     types: [completed]
   workflow_dispatch:
 
+# Only the newest run matters: each run sends every page changed in the last
+# 2 days, so a new deploy cancels the run still waiting from the previous one.
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
 jobs:
   notify:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
