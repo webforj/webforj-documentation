@@ -23,3 +23,13 @@
     border-radius: var(--dwc-border-radius-l);
   }
 }
+
+// Docs pages: a tighter, smaller contents list. Only Infima's own spacing
+// variable changes, so the indentation and look stay native.
+.docs-wrapper [class^="tableOfContents"] {
+  --ifm-toc-padding-vertical: 0.2rem;
+
+  .table-of-contents {
+    font-size: 0.78rem;
+  }
+}

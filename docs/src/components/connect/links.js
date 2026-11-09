@@ -4,6 +4,17 @@ import { translate } from '@docusaurus/Translate';
 // launcher, the side card, the end of posts and the footer.
 export const CONTACT_URL = 'https://webforj.com/schedule-discovery/';
 export const CONTACT_EMAIL = 'sales@basis.cloud';
+// bugs and feature requests: the template chooser of the framework repo
+export const ISSUES_URL = 'https://github.com/webforj/webforj/issues/new/choose';
+
+// The languages the team answers in: a short code for tight spots, and the
+// name written in its own language
+export const TEAM_LANGUAGES = [
+  { code: 'EN', name: 'English' },
+  { code: 'DE', name: 'Deutsch' },
+  { code: 'FR', name: 'Français' },
+  { code: 'ES', name: 'Español' },
+];
 
 // "action" is a getter so the text is translated when read during render,
 // not when the module loads

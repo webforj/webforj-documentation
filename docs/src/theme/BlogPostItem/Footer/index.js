@@ -83,8 +83,8 @@ function TalkToUs() {
       </div>
       <div className={styles.talkActions}>
         <a className={styles.talkButton} href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
-          <Translate id="component.blogPostFooter.contactUs" description="Contact button label">
-            Contact us
+          <Translate id="component.blogPostFooter.bookCall" description="Button label: book a discovery call">
+            Book a call
           </Translate>{' '}
           <FaArrowRight aria-hidden="true" />
         </a>

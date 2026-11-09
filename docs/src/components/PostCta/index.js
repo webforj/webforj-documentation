@@ -17,7 +17,7 @@ const SCREENSHOT_NOTE = 'Attached is a screenshot of one screen from our app. It
 // The blog post context exists only on blog pages. Outside them useBlogPost
 // throws, so this returns null there. The hook is always called once per
 // render, so the call order stays stable.
-function useBlogPostSafe() {
+export function useBlogPostSafe() {
   try {
     return useBlogPost();
   } catch (e) {

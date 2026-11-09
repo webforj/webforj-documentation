@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import { useLocation } from '@docusaurus/router';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Translate, { translate } from '@docusaurus/Translate';
-import { FaArrowRight, FaEnvelope, FaXmark } from 'react-icons/fa6';
+import { FaArrowRight, FaEnvelope, FaGithub, FaWandMagicSparkles, FaXmark } from 'react-icons/fa6';
 import ConnectIcons from './ConnectIcons';
-import { CONTACT_EMAIL, CONTACT_URL, followLinksFor } from './links';
+import { CONTACT_EMAIL, CONTACT_URL, ISSUES_URL, TEAM_LANGUAGES, followLinksFor } from './links';
 import styles from './ConnectLauncher.module.css';
 
 // The greeting arrives like a chat message once the reader has read a while.
@@ -54,12 +54,14 @@ function recordGreeting(outcome) {
   writeStorage(GREETING_KEY, JSON.stringify({ at: Date.now(), outcome }));
 }
 
-// One-click reasons to write: each opens an email with the subject filled in
-// and the page the reader was on, so reaching out takes seconds
+// One path for every reason to reach out. Project talks go to the team by
+// email with the subject and page filled in. A docs question opens the docs
+// search with Ask AI, which answers on the spot. A bug goes to GitHub.
 function getTopics() {
   return [
     {
       key: 'evaluating',
+      kind: 'email',
       label: translate({
         id: 'component.connectLauncher.topics.evaluating',
         message: 'Evaluating webforJ for a project',
@@ -71,6 +73,7 @@ function getTopics() {
     },
     {
       key: 'modernizing',
+      kind: 'email',
       label: translate({
         id: 'component.connectLauncher.topics.modernizing',
         message: 'Modernizing an existing app',
@@ -81,17 +84,29 @@ function getTopics() {
       }),
     },
     {
-      key: 'stuck',
+      key: 'askAi',
+      kind: 'search',
       label: translate({
-        id: 'component.connectLauncher.topics.stuck',
-        message: 'Stuck on something in the docs',
+        id: 'component.connectLauncher.topics.askAi',
+        message: 'A question about the docs: ask AI',
       }),
-      subject: translate({
-        id: 'component.connectLauncher.topics.stuck.subject',
-        message: 'Question about the webforJ docs',
+    },
+    {
+      key: 'bug',
+      kind: 'issue',
+      label: translate({
+        id: 'component.connectLauncher.topics.bug',
+        message: 'Found a bug: report it on GitHub',
       }),
     },
   ];
+}
+
+const TOPIC_ICONS = { email: FaEnvelope, search: FaWandMagicSparkles, issue: FaGithub };
+
+// Opens the docs search, where Ask AI answers questions from the docs
+function openDocsSearch() {
+  document.querySelector('.DocSearch-Button')?.click();
 }
 
 // A soft two-note chime when the greeting appears, made in the browser (no
@@ -336,24 +351,61 @@ export default function ConnectLauncher() {
             </p>
           </div>
           <p className={styles.text}>{copy.text}</p>
+          <p className={styles.languages}>
+            <Translate id="component.connectLauncher.languages" values={{ languages: TEAM_LANGUAGES.map((l) => l.name).join(' · ') }}>
+              {'We speak {languages}'}
+            </Translate>
+          </p>
 
           <p className={styles.label}>
             <Translate id="component.connectLauncher.topicsLabel">What can we help with?</Translate>
           </p>
           <ul className={styles.topics}>
-            {getTopics().map(({ key, label, subject }) => (
-              <li key={key}>
-                <a
-                  className={styles.topic}
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  onClick={(event) => {
-                    event.currentTarget.href = mailto(subject);
-                  }}>
-                  <FaEnvelope aria-hidden="true" />
+            {getTopics().map(({ key, kind, label, subject }) => {
+              const Icon = TOPIC_ICONS[kind];
+              const content = (
+                <>
+                  <Icon aria-hidden="true" />
                   <span>{label}</span>
-                </a>
-              </li>
-            ))}
+                </>
+              );
+              if (kind === 'search') {
+                return (
+                  <li key={key}>
+                    <button
+                      type="button"
+                      className={styles.topic}
+                      onClick={() => {
+                        close();
+                        openDocsSearch();
+                      }}>
+                      {content}
+                    </button>
+                  </li>
+                );
+              }
+              if (kind === 'issue') {
+                return (
+                  <li key={key}>
+                    <a className={styles.topic} href={ISSUES_URL} target="_blank" rel="noopener noreferrer">
+                      {content}
+                    </a>
+                  </li>
+                );
+              }
+              return (
+                <li key={key}>
+                  <a
+                    className={styles.topic}
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    onClick={(event) => {
+                      event.currentTarget.href = mailto(subject);
+                    }}>
+                    {content}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <a className={styles.primary} href={CONTACT_URL} target="_blank" rel="noopener noreferrer">

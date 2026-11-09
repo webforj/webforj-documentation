@@ -1,30 +1,33 @@
-/* a quiet card in the side column: a light brand tint and a soft blue edge,
-   with the Contact us button as its one strong element */
+/* a compact card at the top of the side column. It wears the site's own
+   card surface and border, so it belongs to the page; what draws the eye is
+   the team mark with its live dot, which pulses twice on load and then
+   rests, and the Contact us button */
 .card {
   flex: none;
-  margin-top: var(--dwc-space-xl);
-  padding: var(--dwc-space-l);
-  border: 1px solid color-mix(in srgb, var(--dwc-color-primary) 20%, transparent);
+  margin-bottom: var(--dwc-space-s);
+  padding: 0.875rem 1rem 1rem;
+  border: 1px solid var(--dwc-border-color);
   border-radius: var(--dwc-border-radius-l);
-  background-color: color-mix(in srgb, var(--dwc-color-primary) 5%, var(--dwc-surface-3));
+  background-color: var(--dwc-surface-3);
 }
 
-[data-theme="dark"] .card {
-  border-color: color-mix(in srgb, var(--dwc-color-primary-text) 30%, transparent);
-  background-color: color-mix(in srgb, var(--dwc-color-primary) 12%, var(--dwc-surface-3));
-}
-
+/* header line: team mark and name on the left, follow links on the right,
+   with a hairline under it */
 .team {
   display: flex;
   align-items: center;
-  gap: var(--dwc-space-s);
-  margin-bottom: var(--dwc-space-m);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid var(--dwc-border-color);
 }
 
 .avatar {
   position: relative;
   display: inline-flex;
-  padding: 2px;
+  flex: none;
+  padding: 3px;
+  border: 1px solid var(--dwc-border-color);
   border-radius: 50%;
   background-color: #fff;
 }
@@ -34,39 +37,77 @@
   border-radius: 50%;
 }
 
-/* the team is there: a small green dot on the mark */
+/* the team is there: a small green dot on the mark, with a soft ring that
+   pulses twice when the page opens */
 .online {
   position: absolute;
-  right: -1px;
-  bottom: -1px;
-  width: 0.6rem;
-  height: 0.6rem;
+  right: -2px;
+  bottom: -2px;
+  width: 0.55rem;
+  height: 0.55rem;
   border: 2px solid var(--dwc-surface-3);
   border-radius: 50%;
   background-color: #22c55e;
 }
 
+.online::after {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgb(34 197 94 / 60%);
+  content: '';
+  animation: online-pulse 1.6s ease-out 0.6s 2;
+}
+
+@keyframes online-pulse {
+  to {
+    box-shadow: 0 0 0 7px rgb(34 197 94 / 0%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .online::after {
+    animation: none;
+  }
+}
+
 .teamName {
+  flex: 1;
+  min-width: 0;
   color: var(--ifm-color-emphasis-700);
   font-family: var(--dwc-font-family-mono);
-  font-size: var(--dwc-font-size-xs);
+  font-size: 0.68rem;
   font-weight: var(--dwc-font-weight-semibold);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* small round follow links in the header line */
+.icons {
+  flex: none;
+  flex-wrap: nowrap !important;
+  gap: 0.25rem !important;
+}
+
+.icons a {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.75rem !important;
 }
 
 .title {
-  margin: 0 0 var(--dwc-space-xs);
-  font-size: var(--dwc-font-size-m);
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .text {
-  margin: 0 0 var(--dwc-space-l);
+  margin: 0 0 0.875rem;
   color: var(--ifm-color-emphasis-800);
-  font-size: var(--dwc-font-size-s);
-  line-height: 1.55;
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 .contact {
@@ -74,7 +115,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--dwc-space-s);
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 1rem;
   border: 0 !important;
   border-radius: var(--dwc-border-radius);
   background-color: var(--dwc-color-primary);
@@ -91,31 +132,55 @@
   text-decoration: none;
 }
 
+.languages {
+  margin: 0.5rem 0 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
 .contact:focus-visible {
   outline: 2px solid var(--dwc-color-primary-text);
   outline-offset: 2px;
 }
 
-.icons {
-  justify-content: center;
-  margin-top: var(--dwc-space-l);
-}
-
-/* a narrow sidebar (smaller desktops): the card keeps its title, button and
-   icons, and drops the team line and the sentence, so the table of contents
-   above keeps its room */
-@container (max-width: 240px) {
+/* short screens (laptops): the same card, tighter, so the contents below
+   keep their room */
+@media (max-height: 820px) {
   .card {
-    padding: var(--dwc-space-m);
+    padding: 0.625rem 0.875rem 0.75rem;
   }
 
-  .team,
-  .text {
-    display: none;
+  .team {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .title {
-    margin-bottom: var(--dwc-space-s);
+    margin-bottom: 0.125rem;
+    font-size: var(--dwc-font-size-s);
+  }
+
+  .text {
+    margin-bottom: 0.625rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .contact {
+    padding: 0.35rem 1rem;
+  }
+
+  .languages {
+    margin-top: 0.375rem;
+  }
+}
+
+/* a narrow sidebar (smaller desktops): the follow links step aside so the
+   team name keeps its line */
+@container (max-width: 240px) {
+  .icons {
+    display: none !important;
   }
 }
 

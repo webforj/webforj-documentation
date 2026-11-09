@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Translate, { translate } from '@docusaurus/Translate';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useLocation } from '@docusaurus/router';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { FaChevronLeft, FaChevronRight, FaPlay } from 'react-icons/fa6';
 import { useCoverSrc } from '@site/src/components/blogCover';
 import styles from './ExploreCard.module.css';
 
-const VIDEOS = 3;
-const POSTS = 3;
-
-// Words of a page address that say what the page is about, singular and
-// lowercase: /docs/components/button becomes ['component', 'button']
-const IGNORED = new Set(['doc', 'docs', 'overview', 'introduction', 'the', 'and', 'with', 'for']);
+// Words of a text that say what it is about, singular and lowercase:
+// "/docs/components/buttons" becomes ['component', 'button']
+const IGNORED = new Set(['doc', 'docs', 'overview', 'introduction', 'the', 'and', 'with', 'for', 'webforj', 'java']);
 
 function words(text) {
   return text
@@ -24,168 +20,184 @@ function words(text) {
     .filter((word) => word.length > 2 && !IGNORED.has(word));
 }
 
-// how many of the page's words a text mentions
-function score(pageWords, text) {
-  const own = new Set(words(text));
-  return pageWords.filter((word) => own.has(word)).length;
+// "/de/docs/security/overview/" -> "/docs/security/overview"
+function docsPath(pathname) {
+  const at = pathname.indexOf('/docs/');
+  return at < 0 ? null : pathname.slice(at).replace(/\/$/, '');
 }
 
-// a shuffled copy (Fisher-Yates)
-function shuffle(items) {
-  const copy = [...items];
-  for (let i = copy.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
+// What to show on a docs page: the video whose title best matches the page
+// (else the newest regular video) and up to three related posts, chosen when
+// the site builds (plugins/explore.js) from the docs links inside the posts.
+// Nothing random, so it is the same for everyone.
+function useExplore() {
+  const { pathname } = useLocation();
+  const { videos = [], posts = [], related = {} } = usePluginData('webforj-explore') ?? {};
+  const page = docsPath(pathname);
+  if (!page) {
+    return { video: null, articles: [] };
   }
-  return copy;
-}
+  const indexes = related[page] ?? [];
+  const articles = indexes.map((index) => posts[index]).filter(Boolean);
 
-// Up to `count` items: the ones that match the page first (best first), then
-// the rest in the given order of preference
-function pick(pageWords, items, textOf, count, rest) {
-  const chosen = items
-    .map((item) => ({ item, value: score(pageWords, textOf(item)) }))
+  const pageWords = words(page);
+  const scored = videos
+    .map((video) => ({ video, value: words(video.title).filter((word) => pageWords.includes(word)).length }))
     .filter(({ value }) => value > 0)
-    .sort((a, b) => b.value - a.value)
-    .map(({ item }) => item);
-  for (const item of rest) {
-    if (chosen.length >= count) break;
-    if (!chosen.includes(item)) chosen.push(item);
-  }
-  return chosen.slice(0, count);
+    .sort((a, b) => b.value - a.value);
+  const video = scored[0]?.video ?? videos.find((v) => v.kind === 'video') ?? videos[0] ?? null;
+  return { video, articles };
 }
 
-// The suggestions for a page, drawn fresh on every page load: videos and
-// posts taking turns, each list with its matches for the page first and a
-// random draw from the rest
-function drawSuggestions(videos, posts, pathname) {
-  const pageWords = words(pathname);
-  const chosenVideos = pick(pageWords, videos, (video) => video.title, VIDEOS, shuffle(videos));
-
-  const others = posts.filter((post) => post.permalink !== pathname.replace(/\/$/, ''));
-  const chosenPosts = pick(
-    pageWords,
-    others,
-    (post) => `${post.title} ${post.tags.join(' ')}`,
-    POSTS,
-    shuffle(others),
-  );
-
-  const items = [];
-  for (let i = 0; i < Math.max(chosenVideos.length, chosenPosts.length); i += 1) {
-    if (chosenVideos[i]) items.push({ type: 'video', ...chosenVideos[i] });
-    if (chosenPosts[i]) items.push({ type: 'post', ...chosenPosts[i] });
-  }
-  return items;
-}
-
-function VideoItem({ video }) {
+// One frame for both kinds: a regular video fills it, a Short sits in the
+// middle at its upright shape with the same frame, zoomed and darkened, on
+// both sides, so it reads as one picture
+function VideoThumb({ video }) {
   const short = video.kind === 'short';
+  const fallback = (event) => {
+    if (video.fallback && event.currentTarget.src !== video.fallback) {
+      event.currentTarget.src = video.fallback;
+    }
+  };
   return (
-    <a className={styles.item} href={video.url} target="_blank" rel="noopener noreferrer">
-      <span className={clsx(styles.thumb, short ? styles.tall : styles.wide)}>
-        <img
-          src={video.thumbnail}
-          alt=""
-          loading="lazy"
-          onError={(event) => {
-            if (video.fallback && event.currentTarget.src !== video.fallback) {
-              event.currentTarget.src = video.fallback;
-            }
-          }}
-        />
-        <span className={styles.play} aria-hidden="true">
-          <FaPlay />
-        </span>
+    <span className={styles.frame}>
+      {short && <img className={styles.backdrop} src={video.thumbnail} alt="" loading="lazy" onError={fallback} />}
+      <img className={short ? styles.upright : styles.wide} src={video.thumbnail} alt="" loading="lazy" onError={fallback} />
+      <span className={styles.play} aria-hidden="true">
+        <FaPlay />
       </span>
-      <span className={styles.text}>
-        <span className={styles.kind}>
-          {short
-            ? translate({ id: 'component.exploreCard.short', message: 'Short · YouTube' })
-            : translate({ id: 'component.exploreCard.video', message: 'Video · YouTube' })}
+      {short && (
+        <span className={styles.badge}>
+          <Translate id="component.exploreCard.shortBadge">Short</Translate>
         </span>
-        <span className={styles.title}>{video.title}</span>
-      </span>
-    </a>
+      )}
+    </span>
   );
 }
 
-function PostItem({ post }) {
-  const cover = useCoverSrc(post.cover);
-  const { i18n } = useDocusaurusContext();
-  const date = new Date(post.date).toLocaleDateString(i18n.currentLocale, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
-  return (
-    <Link className={styles.item} to={post.permalink}>
-      <span className={clsx(styles.thumb, styles.wide)}>{cover && <img src={cover} alt="" loading="lazy" />}</span>
-      <span className={styles.text}>
-        <span className={styles.kind}>
-          {translate({ id: 'component.exploreCard.post', message: 'Blog · {date}' }, { date })}
-        </span>
-        <span className={styles.title}>{post.title}</span>
+// YouTube titles carry a channel suffix ("... | Tutorial"); the tile shows
+// the title alone
+function cleanTitle(title) {
+  return title.replace(/\s*\|.*$/, '').trim();
+}
+
+// one tile of the row: a card with the picture on top, then a quiet label
+// (what it is) and the title
+function Tile({ href, external, picture, label, title }) {
+  const content = (
+    <>
+      {picture}
+      <span className={styles.tileBody}>
+        <span className={styles.tileLabel}>{label}</span>
+        <span className={styles.tileTitle}>{title}</span>
       </span>
+    </>
+  );
+  return external ? (
+    <a className={styles.tile} href={href} target="_blank" rel="noopener noreferrer">
+      {content}
+    </a>
+  ) : (
+    <Link className={styles.tile} to={href}>
+      {content}
     </Link>
   );
 }
 
-// "Explore" under the team card in the docs sidebar: one suggestion at a
-// time (a video from the webforJ channel or a recent blog post), drawn at
-// random on every page load, with arrows to step through them. Items that
-// match the page come first. It keeps one height whatever it shows, and
-// stays out of the way on short screens.
-export default function ExploreCard() {
-  const { pathname } = useLocation();
-  const { videos = [], posts = [] } = usePluginData('webforj-explore') ?? {};
-  // drawn in the browser, after the page renders: the built page holds the
-  // card's place empty, so nothing swaps in front of the reader
-  const [items, setItems] = useState(null);
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    setItems(drawSuggestions(videos, posts, pathname));
-    setIndex(0);
-  }, [pathname, videos, posts]);
-
-  if (!videos.length && !posts.length) {
-    return null;
-  }
-  if (!items) {
-    return <aside className={clsx(styles.card, styles.pending)} aria-hidden="true" />;
-  }
-  if (!items.length) {
-    return null;
-  }
-  const current = items[index % items.length];
-  const step = (delta) => setIndex((index + delta + items.length) % items.length);
-
+function ArticleCard({ post }) {
+  const cover = useCoverSrc(post.cover);
   return (
-    <aside
-      className={styles.card}
-      aria-label={translate({ id: 'component.exploreCard.label', message: 'Explore' })}>
-      <div className={styles.head}>
-        <p className={styles.heading}>
-          <Translate id="component.exploreCard.label">Explore</Translate>
-        </p>
-        {items.length > 1 && (
-          <div className={styles.controls}>
-            <button type="button" className={styles.arrow} onClick={() => step(-1)}
-              aria-label={translate({ id: 'component.exploreCard.previous', message: 'Previous suggestion' })}>
-              <FaChevronLeft aria-hidden="true" />
+    <Tile
+      href={post.permalink}
+      picture={<span className={styles.frame}>{cover && <img className={styles.wide} src={cover} alt="" loading="lazy" />}</span>}
+      label={translate({ id: 'component.exploreCard.article', message: 'Article' })}
+      title={post.title}
+    />
+  );
+}
+
+// End of a docs page: the video and every related post in one row that
+// scrolls sideways. Each edge fades and gets an arrow button only while there
+// is more to scroll that way.
+export function ExploreBottom() {
+  const { video, articles } = useExplore();
+  const trackRef = useRef(null);
+  const [more, setMore] = useState({ start: false, end: false });
+  const update = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const max = track.scrollWidth - track.clientWidth;
+    setMore({ start: track.scrollLeft > 1, end: track.scrollLeft < max - 1 });
+  }, []);
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return undefined;
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, [update]);
+  // one step is most of the visible width, so a tile is never skipped
+  const step = (direction) => {
+    const track = trackRef.current;
+    track?.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: 'smooth' });
+  };
+
+  if (!video && !articles.length) {
+    return null;
+  }
+  return (
+    <section className={styles.bottom} aria-labelledby="keep-learning">
+      {/* heading row: the label on the left, the arrows on the right, so
+          they never sit on top of a picture */}
+      <div className={styles.bottomHead}>
+        <h2 id="keep-learning" className={styles.bottomHeading}>
+          <Translate id="component.exploreCard.keepLearning">Keep learning</Translate>
+        </h2>
+        {(more.start || more.end) && (
+          <div className={styles.arrows}>
+            <button
+              type="button"
+              className={styles.arrow}
+              disabled={!more.start}
+              onClick={() => step(-1)}
+              aria-label={translate({ id: 'component.exploreCard.previous', message: 'Previous' })}>
+              <FaChevronLeft />
             </button>
-            <span className={styles.count} aria-live="polite">
-              {(index % items.length) + 1}/{items.length}
-            </span>
-            <button type="button" className={styles.arrow} onClick={() => step(1)}
-              aria-label={translate({ id: 'component.exploreCard.next', message: 'Next suggestion' })}>
-              <FaChevronRight aria-hidden="true" />
+            <button
+              type="button"
+              className={styles.arrow}
+              disabled={!more.end}
+              onClick={() => step(1)}
+              aria-label={translate({ id: 'component.exploreCard.next', message: 'Next' })}>
+              <FaChevronRight />
             </button>
           </div>
         )}
       </div>
-      {current.type === 'video' ? <VideoItem video={current} /> : <PostItem post={current} />}
-    </aside>
+      <div className={styles.carousel}>
+        <div
+          ref={trackRef}
+          onScroll={update}
+          className={clsx(styles.tiles, more.start && styles.fadeStart, more.end && styles.fadeEnd)}>
+          {video && (
+            <Tile
+              href={video.url}
+              external
+              picture={<VideoThumb video={video} />}
+              label={
+                video.kind === 'short'
+                  ? translate({ id: 'component.exploreCard.short', message: 'Short · YouTube' })
+                  : translate({ id: 'component.exploreCard.video', message: 'Video · YouTube' })
+              }
+              title={cleanTitle(video.title)}
+            />
+          )}
+          {articles.map((post) => (
+            <ArticleCard key={post.permalink} post={post} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

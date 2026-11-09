@@ -100,6 +100,14 @@
   transition: background-color 0.2s ease;
 }
 
+/* the Ask AI topic is a button: same look as the links */
+button.topic {
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
 .topic svg {
   flex: none;
   color: var(--dwc-color-primary-text);
@@ -384,4 +392,11 @@
     opacity: 0;
     transform: translateY(8px) scale(0.96);
   }
+}
+
+/* the languages the team answers in, a quiet line under the intro */
+.languages {
+  margin: calc(var(--dwc-space-s) * -1) 0 var(--dwc-space-m);
+  color: var(--ifm-color-emphasis-700);
+  font-size: var(--dwc-font-size-xs);
 }
