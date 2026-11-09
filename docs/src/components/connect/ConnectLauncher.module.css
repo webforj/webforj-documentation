@@ -285,6 +285,8 @@ button.topic {
   color: var(--ifm-color-emphasis-800);
   font-size: var(--dwc-font-size-m);
   line-height: 1.5;
+  /* no single word left alone on the last line */
+  text-wrap: pretty;
 }
 
 .primary {
