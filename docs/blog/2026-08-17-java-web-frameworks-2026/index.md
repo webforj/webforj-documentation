@@ -1,6 +1,6 @@
 ---
-title: "The best Java web framework in 2026, by job"
-description: "Compare the best Java web framework for 2026 by job: Spring Boot, Quarkus, Micronaut, Jakarta EE and Javalin for the backend, webforJ for the whole app in Java."
+title: "The best web framework for Java in 2026, by job"
+description: "Choosing a web framework for Java in 2026? Compare Spring Boot, Quarkus, Micronaut, Jakarta EE and Javalin for the backend, and webforJ for the whole app in Java."
 slug: java-web-frameworks-2026
 date: 2026-08-17
 authors: webforJ

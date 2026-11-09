@@ -1,6 +1,6 @@
 ---
-title: "An htmx alternative for Spring Boot: Java components"
-description: "Looking for an htmx alternative for Spring Boot? See what htmx plus templates asks of you, how webforJ builds screens in Java, and when htmx is the better fit."
+title: "Alternatives to htmx: server-driven UI without templates"
+description: "Looking at alternatives to htmx? webforJ keeps the server-driven model but replaces templates and hx- attributes with Java components. See the trade-offs and when htmx is the better fit."
 slug: htmx-spring-boot-alternative
 date: 2026-07-31
 authors: webforJ
