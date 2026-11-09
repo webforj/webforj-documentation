@@ -682,8 +682,10 @@ html.plugin-blog:not(.blog-wrapper) {
   main {
     background-color: var(--dwc-surface-3) !important;
     box-shadow: 0 0 72px 40px var(--dwc-surface-3);
-    // the halo only spreads sideways, never over the navbar or the footer
-    clip-path: inset(0 -160px);
+    // the halo only spreads sideways, never over the navbar or the footer.
+    // Sideways nothing is clipped, so the share rail in the left margin stays
+    // visible on wide screens.
+    clip-path: inset(0 -100vw);
   }
 
   // posts keep their space below the navbar, and above the footer
