@@ -257,7 +257,15 @@ module.exports = async function createConfig() {
           {
             from: '/docs/configuration/bbj-installation/github-codespaces',
             to: '/docs/configuration/bbj-installation/overview',
-          }
+          },
+          {
+            from: '/docs/building-ui/basics',
+            to: '/docs/introduction/basics',
+          },
+          {
+            from: '/docs/introduction/mcp',
+            to: '/docs/ai-tooling/mcp',
+          },
         ],
       },
     ]
