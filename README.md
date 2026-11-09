@@ -1,6 +1,6 @@
 <div align="center">
 
-![webforJ documentation: guides, cookbook recipes and live Java demos for the full-stack Java framework](.github/assets/readme-cover.png)
+![webforJ documentation: guides, cookbook recipes and live Java demos for the full-stack Java framework](.github/assets/readme-cover-v2.png)
 
 **The source of [docs.webforj.com](https://docs.webforj.com).**
 
