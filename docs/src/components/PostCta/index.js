@@ -8,6 +8,12 @@ import TOPICS from './topics';
 import DOCS_CTA from './docsTopics';
 import styles from './styles.module.css';
 
+// startforJ, the project generator (same link as "Start your app" in the navbar)
+const START_URL = 'https://docs.webforj.com/startforj/';
+
+// Prefilled text for the "Send a screenshot" email
+const SCREENSHOT_NOTE = 'Attached is a screenshot of one screen from our app. It is built with: (Swing, JavaFX, other)';
+
 // The blog post context exists only on blog pages. Outside them useBlogPost
 // throws, so this returns null there. The hook is always called once per
 // render, so the call order stays stable.
@@ -63,9 +69,9 @@ function pickTopic(tags) {
 }
 
 // Email link with the subject filled in and the page the reader was on.
-export function contactMailto(subject) {
+export function contactMailto(subject, note = '') {
   const page = typeof window !== 'undefined' ? window.location.href : '';
-  const body = `Hi webforJ team,\n\n\n\n(I was reading: ${page})`;
+  const body = `Hi webforJ team,\n\n${note}\n\n(I was reading: ${page})`;
   return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
@@ -81,12 +87,35 @@ export default function PostCta({ tags, topicKey }) {
         <p className={styles.text}>{text}</p>
       </div>
       <div className={styles.actions}>
-        <a className={styles.primary} href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
-          {translate({ id: 'component.postCta.bookCall', message: 'Book a call' })} <FaArrowRight aria-hidden="true" />
-        </a>
-        <a className={styles.secondary} href={contactMailto(topic.subject)}>
-          <FaEnvelope aria-hidden="true" /> {translate({ id: 'component.postCta.email', message: 'Ask by email' })}
-        </a>
+        {(topic.buttons || ['call', 'email']).map((b, i) => {
+          const cls = i === 0 ? styles.primary : styles.secondary;
+          if (b === 'start') {
+            return (
+              <a key={b} className={cls} href={START_URL} target="_blank" rel="noopener noreferrer">
+                {translate({ id: 'component.postCta.startApp', message: 'Start your app' })} <FaArrowRight aria-hidden="true" />
+              </a>
+            );
+          }
+          if (b === 'screenshot') {
+            return (
+              <a key={b} className={cls} href={contactMailto(topic.subject, SCREENSHOT_NOTE)}>
+                <FaEnvelope aria-hidden="true" /> {translate({ id: 'component.postCta.screenshot', message: 'Send a screenshot' })}
+              </a>
+            );
+          }
+          if (b === 'email') {
+            return (
+              <a key={b} className={cls} href={contactMailto(topic.subject)}>
+                <FaEnvelope aria-hidden="true" /> {translate({ id: 'component.postCta.email', message: 'Ask by email' })}
+              </a>
+            );
+          }
+          return (
+            <a key={b} className={cls} href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
+              {translate({ id: 'component.postCta.bookCall', message: 'Book a call' })} <FaArrowRight aria-hidden="true" />
+            </a>
+          );
+        })}
       </div>
     </div>
   );

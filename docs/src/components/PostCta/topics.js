@@ -10,6 +10,10 @@
 //   title    the bold line
 //   text     the line under it
 //   subject  subject of the "Ask by email" message
+//   buttons  the two buttons, in order: 'call' (Book a call), 'start' (Start your
+//            app, opens startforJ), 'email' (Ask by email) or 'screenshot' (Send a
+//            screenshot: an email asking the reader to attach one screen). Ready-to-talk topics
+//            use ['call', 'email'], hands-on topics ['start', 'email'].
 //
 // Order: release first, then specific topics, then the blog categories
 // (components, integrations, tutorial, community). The last entry has no tags
@@ -26,9 +30,10 @@ const TOPICS = [
   {
     key: 'modernization',
     tags: ['modernization', 'swing', 'webswing'],
-    title: 'Moving an existing Java app to the web?',
-    text: 'Talk to the team about your app and the path that fits it.',
-    subject: 'Modernizing an existing app with webforJ',
+    title: 'Moving a desktop Java app to the web?',
+    text: "Send us a screenshot of one screen and we'll reply with how it moves to webforJ.",
+    subject: 'My app screen: how would it move to webforJ?',
+    buttons: ['screenshot', 'call'],
   },
   {
     key: 'ai',
@@ -50,6 +55,7 @@ const TOPICS = [
     title: 'Building data-heavy screens?',
     text: 'Show the team your tables, grids, and charts, and get a second opinion.',
     subject: 'Data-heavy screens with webforJ',
+    buttons: ['start', 'email'],
   },
   {
     key: 'styling',
@@ -57,6 +63,7 @@ const TOPICS = [
     title: 'Matching webforJ to your brand?',
     text: 'Ask the team about themes, tokens, and your design system.',
     subject: 'Styling and theming with webforJ',
+    buttons: ['start', 'email'],
   },
   {
     key: 'spring',
@@ -72,6 +79,7 @@ const TOPICS = [
     title: "Need a component that isn't covered here?",
     text: 'Ask the team what fits your screen.',
     subject: 'Components in webforJ',
+    buttons: ['start', 'email'],
   },
   {
     key: 'integrations',
@@ -79,6 +87,7 @@ const TOPICS = [
     title: 'Connecting webforJ to your stack?',
     text: 'Ask the team about your libraries, services, and build.',
     subject: 'Integrating webforJ',
+    buttons: ['start', 'email'],
   },
   {
     key: 'tutorial',
@@ -86,6 +95,7 @@ const TOPICS = [
     title: 'Trying this in your own app?',
     text: "Ask the engineers when something doesn't fit your case.",
     subject: 'Question about a webforJ tutorial',
+    buttons: ['start', 'email'],
   },
   {
     key: 'community',
