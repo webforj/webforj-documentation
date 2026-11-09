@@ -1,10 +1,10 @@
 <div align="center">
 
-![webforJ documentation: guides, cookbook recipes and live Java demos](.github/assets/readme-cover.png)
+![webforJ documentation: guides, cookbook recipes and live Java demos for the full-stack Java framework](.github/assets/readme-cover.png)
 
 **The source of [docs.webforj.com](https://docs.webforj.com).**
 
-Every guide, blog post and cookbook recipe for webforJ, plus the live Java demos embedded in the pages. Each demo is a real webforJ app, so what you read is code that runs.
+Every guide, blog post and cookbook recipe for webforJ, the full-stack Java framework, plus the live Java demos embedded in the pages. Each demo is a real webforJ app, so what you read is code that runs.
 
 [![Test WAR Build](https://github.com/webforj/webforj-documentation/actions/workflows/test-build.yml/badge.svg)](https://github.com/webforj/webforj-documentation/actions/workflows/test-build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-022495)](LICENSE)
