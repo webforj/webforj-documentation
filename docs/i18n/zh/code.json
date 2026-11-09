@@ -1689,5 +1689,15 @@
   "component.blogPostHeader.back": {
     "message": "← Blog",
     "description": "Link back to the blog list above a post title"
+  },
+  "component.postCta.bookCall": {
+    "message": "预约通话"
+  },
+  "component.postCta.email": {
+    "message": "邮件咨询"
+  },
+  "component.blogPostFooter.askByEmail": {
+    "message": "通过邮件咨询",
+    "description": "Email contact link label"
   }
 }

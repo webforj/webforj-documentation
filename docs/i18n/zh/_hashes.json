@@ -521,5 +521,8 @@
   "component.blogPostFooter.talkTitle": "ca51c6c8c701af4a5e264d1b85abffb9",
   "component.blogPostFooter.talkText": "3bbba8a9621f4958c1e205f056a31801",
   "component.blogPostFooter.contactUs": "02d4482d332e1aef3437cd61c9bcc624",
-  "component.blogPostHeader.back": "5e4c56cf5a4cd246bed1f852835676ce"
+  "component.blogPostHeader.back": "5e4c56cf5a4cd246bed1f852835676ce",
+  "component.postCta.bookCall": "078140dcab08c976b398d5a07c18238c",
+  "component.postCta.email": "bbfe6fc4296c40626e9b9bcbd6d38fb7",
+  "component.blogPostFooter.askByEmail": "bbfe6fc4296c40626e9b9bcbd6d38fb7"
 }

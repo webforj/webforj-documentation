@@ -1689,5 +1689,15 @@
   "component.blogPostHeader.back": {
     "message": "← Blog",
     "description": "Link back to the blog list above a post title"
+  },
+  "component.postCta.bookCall": {
+    "message": "Réserver un appel"
+  },
+  "component.postCta.email": {
+    "message": "Demander par e-mail"
+  },
+  "component.blogPostFooter.askByEmail": {
+    "message": "Demander par e-mail",
+    "description": "Email contact link label"
   }
 }
