@@ -1,7 +1,7 @@
 webforJ:
   name: webforJ
   image_url: /img/webforj_icon.svg
-  title: Do it all in Java! Build in Java, deploy to the Web.
+  title: Do it all in Java. The full-stack Java framework for business web apps.
   page:
     permalink: /webforj
   socials:

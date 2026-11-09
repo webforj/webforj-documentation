@@ -15,7 +15,7 @@ import { translate } from '@docusaurus/Translate';
 // Called while rendering, so translate() sees the page's language.
 export function getFooter() {
   return {
-    pitch: translate({ id: "component.footer.pitch", message: "Do it all in Java! Build in Java, deploy to the Web." }),
+    pitch: translate({ id: "component.footer.pitch", message: "Do it all in Java. The full-stack Java framework for business web apps." }),
     actions: [
       { label: translate({ id: "component.footer.action.startYourApp", message: "Start your app" }), href: "https://docs.webforj.com/startforj/", primary: true },
       { label: translate({ id: "component.footer.action.contactUs", message: "Contact us" }), href: "https://webforj.com/schedule-discovery/" },
