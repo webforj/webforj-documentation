@@ -122,6 +122,14 @@ module.exports = async function createConfig() {
         href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap',
       },
     },
+    // Bing Webmaster Tools site verification
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'msvalidate.01',
+        content: '92CEE5B0729A7EA469214EFDBE02BF09',
+      },
+    },
   ],
   presets: [
     [
