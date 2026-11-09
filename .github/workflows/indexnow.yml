@@ -1,0 +1,22 @@
+name: Notify IndexNow
+
+# Runs on its own after each successful deploy, so the deploy never waits for it.
+# Tells Bing and the other IndexNow engines which pages changed recently.
+on:
+  workflow_run:
+    workflows: ['Build and Deploy WAR']
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Notify IndexNow
+        working-directory: docs
+        run: node tools/indexnow.mjs --recent

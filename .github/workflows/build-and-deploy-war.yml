@@ -43,12 +43,3 @@ jobs:
       - name: Upload WAR to S3
         run: |
           aws s3 cp target/*.war s3://webforj-webapps/ROOT.war
-
-      # Tell Bing and the other IndexNow engines which pages changed in this
-      # deploy. Waits for the server to serve the new build first. Never fails
-      # the deploy.
-      - name: Notify IndexNow
-        working-directory: docs
-        continue-on-error: true
-        timeout-minutes: 35
-        run: node tools/indexnow.mjs --after-deploy

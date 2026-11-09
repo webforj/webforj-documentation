@@ -2,19 +2,18 @@
 // Yahoo, ChatGPT search) that pages changed, so they recrawl them within
 // hours instead of weeks. Free, no account needed. Google does not use it.
 //
-// Runs automatically at the end of every deploy (Build and Deploy WAR):
-//   node tools/indexnow.mjs --after-deploy
-//     Reads the freshly built sitemaps in build/, keeps the pages whose
-//     lastmod (last git commit of the file) is within the last 2 days, waits
-//     until the live site serves the new build, then submits them.
+// Runs automatically in its own workflow (.github/workflows/indexnow.yml)
+// after each successful deploy, so the deploy itself never waits for it:
+//   node tools/indexnow.mjs --recent
+//     Waits until the server serves the new build (the live sitemap changes,
+//     up to 20 minutes), then submits every page whose lastmod (last git
+//     commit of the file) is within the last 2 days, in all languages.
 //
 // Manual use:
 //   node tools/indexnow.mjs https://docs.webforj.com/blog/some-post [more...]
 //   node tools/indexnow.mjs --sitemap      (every URL in the live /sitemap.xml)
 //
 // The key must match static/<KEY>.txt, served at the site root. Keep that file.
-import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
 
 const KEY = '1eef28b35afc8d12e6d2acc2ed22e94e';
 const HOST = 'docs.webforj.com';
@@ -23,31 +22,18 @@ const RECENT_DAYS = 2;
 const locs = (xml) => [...xml.matchAll(/<url><loc>([^<]+)<\/loc>(?:<lastmod>([^<]+)<\/lastmod>)?/g)]
   .map((m) => ({ url: m[1], lastmod: m[2] }));
 
-function builtSitemaps(dir) {
-  const out = [];
-  for (const name of readdirSync(dir)) {
-    const p = join(dir, name);
-    if (name === 'sitemap.xml') out.push(p);
-    else if (statSync(p).isDirectory() && /^[a-z]{2}$/.test(name) && existsSync(join(p, 'sitemap.xml'))) {
-      out.push(join(p, 'sitemap.xml'));
-    }
-  }
-  return out;
-}
+const LOCALES = ['', 'de/', 'es/', 'fr/', 'nl/', 'fi/', 'zh/'];
+const fetchText = async (url) => (await fetch(url, { cache: 'no-store' })).text();
 
-async function waitForLiveBuild(localSitemap) {
-  // The WAR is picked up by the server some minutes after the upload. Wait
-  // until the live sitemap matches the one we just built (up to 30 minutes).
-  for (let i = 0; i < 60; i++) {
-    try {
-      const live = await (await fetch(`https://${HOST}/sitemap.xml`, { cache: 'no-store' })).text();
-      if (live.trim() === localSitemap.trim()) return true;
-    } catch (e) {
-      // network hiccup, try again
-    }
+async function waitForNewBuild() {
+  // The WAR is picked up by the server some minutes after the deploy job ends.
+  // Wait until the live sitemap changes, or 20 minutes, whichever comes first.
+  const before = await fetchText(`https://${HOST}/sitemap.xml`).catch(() => '');
+  for (let i = 0; i < 40; i++) {
     await new Promise((r) => setTimeout(r, 30000));
+    const now = await fetchText(`https://${HOST}/sitemap.xml`).catch(() => before);
+    if (now !== before) return;
   }
-  return false;
 }
 
 async function submit(urls) {
@@ -64,23 +50,21 @@ async function submit(urls) {
 
 const args = process.argv.slice(2);
 
-if (args.includes('--after-deploy')) {
-  const files = builtSitemaps('build');
+if (args.includes('--recent')) {
+  await waitForNewBuild();
   const cutoff = new Date(Date.now() - RECENT_DAYS * 86400000).toISOString().slice(0, 10);
-  const urls = [...new Set(files.flatMap((f) => locs(readFileSync(f, 'utf8'))
+  const lists = await Promise.all(LOCALES.map((l) => fetchText(`https://${HOST}/${l}sitemap.xml`).catch(() => '')));
+  const urls = [...new Set(lists.flatMap((xml) => locs(xml)
     .filter((e) => e.lastmod && e.lastmod >= cutoff)
     .map((e) => e.url)))];
   console.log(`IndexNow: ${urls.length} pages changed since ${cutoff}`);
-  if (!urls.length) process.exit(0);
-  const live = await waitForLiveBuild(readFileSync('build/sitemap.xml', 'utf8'));
-  if (!live) console.log('IndexNow: live site still on the old build after 30 minutes, submitting anyway');
-  await submit(urls);
+  if (urls.length) await submit(urls);
 } else {
   const urls = args.includes('--sitemap')
     ? locs(await (await fetch(`https://${HOST}/sitemap.xml`)).text()).map((e) => e.url)
     : args;
   if (!urls.length) {
-    console.error('Pass page URLs, --sitemap, or --after-deploy');
+    console.error('Pass page URLs, --sitemap, or --recent');
     process.exit(1);
   }
   await submit(urls);
