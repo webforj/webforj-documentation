@@ -16,7 +16,7 @@ hide_table_of_contents: false
     "name": "Learn how to Quickly, Simply and Efficiently move your Java App to the Web and Mobile",
     "description": "How to move a Java app to the web and mobile with webforJ, the full-stack Java framework: run a Swing app in the browser with Webswing, then modernize it screen by screen in Java.",
     "thumbnailUrl": "https://i.ytimg.com/vi/jRzv5NdRfIk/sddefault.jpg",
-    "uploadDate": "2025-10-23",
+    "uploadDate": "2025-10-23T00:00:00+00:00",
     "duration": "PT31M8S",
     "embedUrl": "https://www.youtube.com/embed/jRzv5NdRfIk",
     "contentUrl": "https://www.youtube.com/watch?v=jRzv5NdRfIk"

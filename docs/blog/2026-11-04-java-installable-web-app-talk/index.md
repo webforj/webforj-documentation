@@ -16,7 +16,7 @@ hide_table_of_contents: false
     "name": "From Java to Installable Web App in 15 Minutes by Stephan Wald",
     "description": "Stephan Wald builds a Java installable web app live in 15 minutes with webforJ, the full-stack Java framework: views, shared state across users, and live updates, all in Java.",
     "thumbnailUrl": "https://i.ytimg.com/vi/5MYgvCfbWRg/maxresdefault.jpg",
-    "uploadDate": "2025-05-14",
+    "uploadDate": "2025-05-14T00:00:00+00:00",
     "duration": "PT19M7S",
     "embedUrl": "https://www.youtube.com/embed/5MYgvCfbWRg",
     "contentUrl": "https://www.youtube.com/watch?v=5MYgvCfbWRg"
