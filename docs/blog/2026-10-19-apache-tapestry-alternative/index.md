@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-19-apache-tapestry-alternative/cover.jpg)
 
-If your team maintains an Apache Tapestry app, you probably like how little ceremony a page needs, and you may be wondering whether it is time to look at a newer Java web framework. This guide helps you decide. webforJ, the full-stack Java framework, is an Apache Tapestry alternative that keeps the component based model and removes the template files: every screen is Java objects, routes are annotations, and the app plugs into Spring Boot when you have it.
+If your team maintains an Apache Tapestry app, you probably like how little ceremony a page needs, and you may be wondering whether it is time to look at a newer Java web framework. This guide helps you decide. webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), is an Apache Tapestry alternative that keeps the component based model and removes the template files: every screen is Java objects, routes are annotations, and the app plugs into Spring Boot when you have it.
 
 Below you will find what your team already knows, what changes, when staying is the better call, and how to move one screen at a time.
 

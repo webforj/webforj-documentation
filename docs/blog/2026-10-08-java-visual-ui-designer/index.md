@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-08-java-visual-ui-designer/cover.jpg)
 
-craftforJ is the visual UI designer for Java that ships with webforJ, the full-stack Java framework. It opens on top of your running app, shows the component tree your Java code built, lets you change properties and see the result at once, and writes the changes you keep back into the Java file that created each component.
+craftforJ is the visual UI designer for Java that ships with webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). It opens on top of your running app, shows the component tree your Java code built, lets you change properties and see the result at once, and writes the changes you keep back into the Java file that created each component.
 
 Because the designer works on the real app, there is no export step and no generated code to reconcile with your own. The source stays the source. This post walks through how that works, from enabling it to writing a change into a view.
 

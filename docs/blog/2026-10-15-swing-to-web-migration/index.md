@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-15-swing-to-web-migration/cover.jpg)
 
-The safest Swing to web migration keeps your domain layer in place and replaces the UI one screen at a time. With webforJ, the full-stack Java framework, you write each new screen in Java, so services, entities, and validation rules carry over unchanged. Only the code that touches `JFrame`, `JTable` and `JOptionPane` gets rewritten. While that happens, Webswing can keep the old app running in the browser next to the new screens.
+The safest Swing to web migration keeps your domain layer in place and replaces the UI one screen at a time. With webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), you write each new screen in Java, so services, entities, and validation rules carry over unchanged. Only the code that touches `JFrame`, `JTable` and `JOptionPane` gets rewritten. While that happens, Webswing can keep the old app running in the browser next to the new screens.
 
 This guide shows how to plan that migration, how common Swing concepts map to webforJ, and what the before and after code looks like. If you want to migrate a Swing app to the web without a big-bang rewrite, this is the order of work that holds up.
 

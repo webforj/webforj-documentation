@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-05-zk-framework-alternative/cover.jpg)
 
-Your team has a ZK app that works. Screens are written in ZUL, the logic sits in composers or view models, and a change to one form means opening more than one file. If you are searching for a ZK framework alternative that keeps the server side model but drops the markup layer, webforJ, the full-stack Java framework, is built for that. Every screen is a Java class, with no ZUL and no XML, and you can move over one screen at a time.
+Your team has a ZK app that works. Screens are written in ZUL, the logic sits in composers or view models, and a change to one form means opening more than one file. If you are searching for a ZK framework alternative that keeps the server side model but drops the markup layer, webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), is built for that. Every screen is a Java class, with no ZUL and no XML, and you can move over one screen at a time.
 
 <!-- truncate -->
 

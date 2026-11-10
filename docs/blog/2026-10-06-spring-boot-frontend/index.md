@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-06-spring-boot-frontend/cover.jpg)
 
-For most Java teams the best Spring Boot frontend is webforJ, the full-stack Java framework. You write the whole app, screens included, in Java, and it runs inside the same Spring Boot app as your services and gets its beans through constructor injection. There is no second language, no second build, and no HTTP contract between your screens and your data.
+For most Java teams the best Spring Boot frontend is webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). You write the whole app, screens included, in Java, and it runs inside the same Spring Boot app as your services and gets its beans through constructor injection. There is no second language, no second build, and no HTTP contract between your screens and your data.
 
 The alternatives are real and each fits some teams. Thymeleaf suits server-rendered pages with little interactivity, and a React or Angular single-page app suits teams that already have frontend specialists. This post compares them on build, skills, security, data access, and the cost of one feature, so you can choose a frontend framework for Spring Boot on evidence.
 

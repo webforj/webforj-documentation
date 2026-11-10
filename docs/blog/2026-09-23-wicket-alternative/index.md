@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-wicket-alternative/cover.jpg)
 
-If your team has built with Apache Wicket, you already like the idea that a page is a tree of Java components and that the server owns the state. What you may want to change is keeping every Java class paired with an HTML file next to it. webforJ, the full-stack Java framework, is an Apache Wicket alternative that keeps the component tree and the server side Java, and removes the markup files: the whole screen is Java, with modern web components, annotation based routing, Spring Boot integration and data binding.
+If your team has built with Apache Wicket, you already like the idea that a page is a tree of Java components and that the server owns the state. What you may want to change is keeping every Java class paired with an HTML file next to it. webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), is an Apache Wicket alternative that keeps the component tree and the server side Java, and removes the markup files: the whole screen is Java, with modern web components, annotation based routing, Spring Boot integration and data binding.
 
 This post covers what carries over from Wicket, what disappears, and how to move one screen at a time.
 

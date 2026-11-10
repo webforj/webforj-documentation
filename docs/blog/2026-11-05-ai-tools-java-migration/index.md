@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 You have a Java app that has been in production for years, a deadline that keeps moving, and a long list of AI tools that all claim they can help. Comparing them by brand does not get you far, because a migration is not one task. It is five or six different jobs, and each one needs a different kind of help.
 
-The best AI tools for Java migration are coding assistants such as Claude Code, GitHub Copilot, Cursor, Gemini CLI and Codex, matched to the job at hand and grounded in the real documentation of the framework you are moving to. That last part decides most of the outcome. With webforJ, the full-stack Java framework, one AI plugin gives those assistants the real docs, project scaffolding and ready-made workflows, so the code they write for your new screens targets APIs that exist.
+The best AI tools for Java migration are coding assistants such as Claude Code, GitHub Copilot, Cursor, Gemini CLI and Codex, matched to the job at hand and grounded in the real documentation of the framework you are moving to. That last part decides most of the outcome. With webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), one AI plugin gives those assistants the real docs, project scaffolding and ready-made workflows, so the code they write for your new screens targets APIs that exist.
 
 <!-- truncate -->
 

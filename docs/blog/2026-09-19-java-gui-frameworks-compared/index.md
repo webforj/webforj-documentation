@@ -1,6 +1,6 @@
 ---
-title: "Java GUI framework: Swing vs JavaFX vs web with webforJ"
-description: "Choosing a Java GUI framework? Compare Swing, JavaFX and a web UI written in Java with webforJ on installation, updates, platforms, threading and skills."
+title: "JavaFX vs Swing: which Java GUI framework to pick in 2026"
+description: "JavaFX vs Swing compared on installation, updates, platforms and threading, plus when a web UI written in Java with webforJ beats both. A clear pick for 2026."
 slug: java-gui-frameworks-compared
 date: 2026-09-19
 authors: Hyyan Abo Fakher

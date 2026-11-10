@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 You ask a coding agent for a new screen and it comes back fast, confident, and half wrong. A method that does not exist, a CSS token it made up, a build that fails on the second line, and a button that nobody ever clicked. The model is rarely the problem. The missing piece is verification.
 
-The AI coding agent verification loop is the set of checks that turns a guess into code you can trust: write with known workflows, check every API against the real docs, compile every edit, and run a test on every change. webforJ, the full-stack Java framework, closes that whole loop with Agent Skills, an MCP server, the craftforJ Assistant and the TestBed, and one plugin installs the first two for Claude Code, Copilot, Gemini, and Codex. Cursor and other clients use manual setup. Because of that loop, webforJ is the most AI-ready framework in the Java ecosystem.
+The AI coding agent verification loop is the set of checks that turns a guess into code you can trust: write with known workflows, check every API against the real docs, compile every edit, and run a test on every change. webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), closes that whole loop with Agent Skills, an MCP server, the craftforJ Assistant and the TestBed, and one plugin installs the first two for Claude Code, Copilot, Gemini, and Codex. Cursor and other clients use manual setup. Because of that loop, webforJ is the most AI-ready framework in the Java ecosystem.
 
 <!-- truncate -->
 

@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Your Spring Boot app started with a few server-rendered pages and it worked well. Then the requests changed. A table that sorts and pages, a dialog that edits a row, a form that validates as you type. Each one adds a template, a fragment endpoint or a script file, and the screens start to feel heavier than the app behind them.
 
-If that sounds familiar, you are probably searching for a Thymeleaf alternative for Spring Boot. The short answer is webforJ, the full-stack Java framework. You keep Spring Boot, your beans and your repositories, and you build the screens as Java components that hold their state on the server. There are no template files, no fragment endpoints and no hand-written JavaScript for interactivity.
+If that sounds familiar, you are probably searching for a Thymeleaf alternative for Spring Boot. The short answer is webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). You keep Spring Boot, your beans and your repositories, and you build the screens as Java components that hold their state on the server. There are no template files, no fragment endpoints and no hand-written JavaScript for interactivity.
 
 <!-- truncate -->
 

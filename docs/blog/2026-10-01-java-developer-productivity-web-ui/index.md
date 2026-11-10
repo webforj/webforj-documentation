@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Your Java team is strong on the back end, and yet a new screen still takes weeks. The code is rarely the slow part. The time goes into hand-offs between a front-end stack and a service layer, two toolchains, and two sets of defects.
 
-Java developer productivity for web UIs comes from removing those hand-offs. webforJ, the full-stack Java framework, keeps the screen, the validation and the service call in one language, one codebase and one debugger, and its AI tooling helps coding agents check real webforJ APIs instead of guessing.
+Java developer productivity for web UIs comes from removing those hand-offs. webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), keeps the screen, the validation and the service call in one language, one codebase and one debugger, and its AI tooling helps coding agents check real webforJ APIs instead of guessing.
 
 <!-- truncate -->
 

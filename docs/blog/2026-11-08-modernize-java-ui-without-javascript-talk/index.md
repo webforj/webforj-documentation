@@ -14,7 +14,7 @@ hide_table_of_contents: false
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": "Modernizing Java UIs Without JavaScript: Escape the Multi-Stack Trap",
-    "description": "How to modernize a Java Swing app without JavaScript: run it in the browser with Webswing, then grow new screens in Java with webforJ, the full-stack Java framework.",
+    "description": "How to modernize a Java Swing app without JavaScript: run it in the browser with Webswing, then grow new screens in Java with webforJ, the [full-stack Java framework](/blog/java-full-stack-framework).",
     "thumbnailUrl": "https://i.ytimg.com/vi/P2W54sxjqgY/maxresdefault.jpg",
     "uploadDate": "2026-04-28T00:00:00+00:00",
     "duration": "PT39M30S",

@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Most large Java shops do not have one aging app. They have a portfolio: a Swing client in finance, JSP pages in operations, a JSF module nobody wants to change, and a Struts app that three people understand. Each one has its own budget fight, and the instinct is to give each its own plan.
 
-The legacy Java app modernization strategy that holds up is simpler. Triage every app by business value and technical risk, keep the services and data that already work, and move the screens to one target: webforJ, the full-stack Java framework. One framework for the whole portfolio can mean one skill set, one security model and one hiring profile, whether the starting point was Swing, JSP, JSF, or Struts.
+The legacy Java app modernization strategy that holds up is simpler. Triage every app by business value and technical risk, keep the services and data that already work, and move the screens to one target: webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). One framework for the whole portfolio can mean one skill set, one security model and one hiring profile, whether the starting point was Swing, JSP, JSF, or Struts.
 
 <!-- truncate -->
 
