@@ -8,44 +8,25 @@ import { FaChevronLeft, FaChevronRight, FaPlay } from 'react-icons/fa6';
 import { useCoverSrc } from '@site/src/components/blogCover';
 import styles from './ExploreCard.module.css';
 
-// Words of a text that say what it is about, singular and lowercase:
-// "/docs/components/buttons" becomes ['component', 'button']
-const IGNORED = new Set(['doc', 'docs', 'overview', 'introduction', 'the', 'and', 'with', 'for', 'webforj', 'java']);
-
-function words(text) {
-  return text
-    .toLowerCase()
-    .split(/[^a-z0-9]+/)
-    .map((word) => word.replace(/s$/, ''))
-    .filter((word) => word.length > 2 && !IGNORED.has(word));
-}
-
 // "/de/docs/security/overview/" -> "/docs/security/overview"
 function docsPath(pathname) {
   const at = pathname.indexOf('/docs/');
   return at < 0 ? null : pathname.slice(at).replace(/\/$/, '');
 }
 
-// What to show on a docs page: the video whose title best matches the page
-// (else the newest regular video) and up to three related posts, chosen when
-// the site builds (plugins/explore.js) from the docs links inside the posts.
-// Nothing random, so it is the same for everyone.
+// What to show on a docs page: the video and the posts about the same topic
+// as the page, chosen when the site builds (plugins/explore.js). A page with
+// no matching video or post shows none. Nothing random, so it is the same for
+// everyone.
 function useExplore() {
   const { pathname } = useLocation();
-  const { videos = [], posts = [], related = {} } = usePluginData('webforj-explore') ?? {};
+  const { videos = [], relatedVideo = {}, posts = [], related = {} } = usePluginData('webforj-explore') ?? {};
   const page = docsPath(pathname);
   if (!page) {
     return { video: null, articles: [] };
   }
-  const indexes = related[page] ?? [];
-  const articles = indexes.map((index) => posts[index]).filter(Boolean);
-
-  const pageWords = words(page);
-  const scored = videos
-    .map((video) => ({ video, value: words(video.title).filter((word) => pageWords.includes(word)).length }))
-    .filter(({ value }) => value > 0)
-    .sort((a, b) => b.value - a.value);
-  const video = scored[0]?.video ?? videos.find((v) => v.kind === 'video') ?? videos[0] ?? null;
+  const articles = (related[page] ?? []).map((index) => posts[index]).filter(Boolean);
+  const video = videos[relatedVideo[page]] ?? null;
   return { video, articles };
 }
 

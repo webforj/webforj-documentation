@@ -7,12 +7,13 @@
 // regular videos (UULF...). The feeds carry the latest 15 of each. When
 // YouTube can't be reached the build carries on without videos.
 
+const fs = require('fs');
+const path = require('path');
+const matter = require('gray-matter');
 const { relatedCover } = require('../config/blog-related-posts');
+const { rankRelatedPosts, rankRelatedVideos } = require('../config/docs-related-posts');
 
 const CHANNEL_ID = 'UCiDL28nsXEodC2WJ9IYRTmQ'; // youtube.com/@webforJ
-// related posts kept per docs page, shown in the "Keep learning" carousel at
-// the end of the page
-const MAX_RELATED = 8;
 const FEED_TIMEOUT_MS = 8000;
 
 const FEEDS = [
@@ -35,6 +36,7 @@ function parseFeed(xml, kind) {
       const id = entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1];
       const title = entry.match(/<title>([^<]*)<\/title>/)?.[1];
       const published = entry.match(/<published>([^<]+)<\/published>/)?.[1];
+      const description = entry.match(/<media:description>([\s\S]*?)<\/media:description>/)?.[1] ?? '';
       if (!id || !title) {
         return null;
       }
@@ -42,6 +44,8 @@ function parseFeed(xml, kind) {
         kind,
         id,
         title: decode(title),
+        // only used to match the video to docs pages, not sent to the browser
+        description: decode(description),
         published,
         url: kind === 'short' ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}`,
         // shorts have a portrait thumbnail (4:5); the standard one is 4:3,
@@ -72,7 +76,24 @@ async function fetchFeed({ kind, playlist }) {
   }
 }
 
-module.exports = function explorePlugin() {
+// The English text of a docs page or post, whatever language is being built:
+// '@site/i18n/de/docusaurus-plugin-content-docs/current/x.md' -> docs/x.md.
+// Falls back to the file of the language being built, then to `fallback`.
+function englishText(siteDir, source, folder, fallback = '') {
+  const file = source.replace(/^@site\//, '');
+  const translated = file.match(/^i18n\/[^/]+\/docusaurus-plugin-content-(?:docs\/current|blog)\/(.+)$/);
+  for (const candidate of [translated && path.join(folder, translated[1]), file]) {
+    if (!candidate) continue;
+    try {
+      return matter(fs.readFileSync(path.join(siteDir, candidate), 'utf8'));
+    } catch {
+      // try the next one
+    }
+  }
+  return { data: {}, content: fallback };
+}
+
+module.exports = function explorePlugin({ siteDir }) {
   return {
     name: 'webforj-explore',
 
@@ -95,78 +116,46 @@ module.exports = function explorePlugin() {
         .filter((post) => !post.metadata.unlisted && !post.metadata.frontMatter?.draft)
         .sort((a, b) => b.metadata.date.getTime() - a.metadata.date.getTime());
 
-      // Which posts to suggest on which docs page. Nearly every post links the
-      // docs pages it is about, so a post that links a page is related to it
-      // by construction. For each docs page a post scores:
-      //   links to this page        focus x early
-      //   links to its section      half of that (sibling pages count)
-      // where focus = 1 / docs pages the post links (a focused post wins) and
-      // early = 1.5 when the first link sits in the first 30% of the post.
-      // The total is multiplied by 1 + 3 x the page's topic words found in the
-      // post's title and tags. Best three per page, ties to the newer post.
-      // A page that no post links only gets section posts about its topic,
-      // and nothing at all when there are none: never an off-topic post.
-      const IGNORED = new Set(['doc', 'docs', 'overview', 'introduction', 'the', 'and', 'with', 'for',
-        'webforj', 'java', 'component', 'getting', 'started']);
-      const words = (text) => new Set(text.toLowerCase().split(/[^a-z0-9]+/)
-        .map((w) => w.replace(/s$/, '')).filter((w) => w.length > 2 && !IGNORED.has(w)));
-      const sectionOf = (page) => page.split('/').slice(0, -1).join('/');
-      const bump = (map, key, index, value) => {
-        if (!map.has(key)) map.set(key, new Map());
-        map.get(key).set(index, (map.get(key).get(index) ?? 0) + value);
-      };
-      const direct = new Map();
-      const section = new Map();
-      const topicWords = listed.map((post) =>
-        words(`${post.metadata.title} ${post.metadata.tags.map((tag) => tag.label).join(' ')}`));
-      listed.forEach((post, index) => {
-        const content = post.content ?? '';
-        const firstAt = new Map();
-        for (const match of content.matchAll(/\]\((\/docs\/[^)\s#?]+)/g)) {
-          const page = match[1].replace(/\/$/, '');
-          if (!firstAt.has(page)) firstAt.set(page, match.index / Math.max(content.length, 1));
-        }
-        const focus = 1 / Math.max(firstAt.size, 1);
-        for (const [page, at] of firstAt) {
-          const value = focus * (at < 0.3 ? 1.5 : 1);
-          bump(direct, page, index, value);
-          bump(section, sectionOf(page), index, value);
-        }
-      });
-      // every docs page of the site, as /docs/... whatever the language
+      // Which posts to suggest on which docs page: the posts about the same
+      // topic as the page, compared by their text (see
+      // config/docs-related-posts.js). Both sides are read in English, so every
+      // language of the site suggests the same posts.
       const docsVersions = allContent['docusaurus-plugin-content-docs']?.default?.loadedVersions ?? [];
-      const pages = new Set(direct.keys());
+      const docs = [];
+      const seen = new Set();
       for (const version of docsVersions) {
         for (const doc of version.docs ?? []) {
           const at = doc.permalink.indexOf('/docs/');
-          if (at >= 0) pages.add(doc.permalink.slice(at).replace(/\/$/, ''));
+          const page = at < 0 ? null : doc.permalink.slice(at).replace(/\/$/, '');
+          if (!page || seen.has(page) || doc.unlisted || doc.draft) continue;
+          seen.add(page);
+          const text = englishText(siteDir, doc.source, 'docs');
+          docs.push({
+            page,
+            title: text.data.title ?? doc.title,
+            description: text.data.description ?? doc.description,
+            markdown: text.content,
+          });
         }
       }
-      const ranked = {};
-      for (const page of pages) {
-        const total = new Map();
-        for (const [index, value] of direct.get(page) ?? []) total.set(index, (total.get(index) ?? 0) + value);
-        for (const [index, value] of section.get(sectionOf(page)) ?? []) {
-          total.set(index, (total.get(index) ?? 0) + value / 2);
-        }
-        if (!total.size) continue;
-        const pageWords = words(page);
-        const linked = direct.has(page);
-        const list = [...total]
-          .map(([index, value]) => {
-            const topic = [...pageWords].filter((w) => topicWords[index].has(w)).length;
-            return [index, value * (1 + 3 * topic), topic];
-          })
-          // a page no post links yet only borrows section posts about its topic
-          .filter(([, , topic]) => linked || topic > 0)
-          .sort((a, b) => b[1] - a[1] || a[0] - b[0])
-          .slice(0, MAX_RELATED)
-          .map(([index]) => index);
-        if (list.length) ranked[page] = list;
-      }
+      const posts = listed.map((post) => {
+        const text = englishText(siteDir, post.metadata.source, 'blog', post.content);
+        const tags = [].concat(text.data.tags ?? post.metadata.tags.map((tag) => tag.label));
+        return {
+          title: text.data.title ?? post.metadata.title,
+          description: text.data.description ?? post.metadata.description,
+          tags,
+          markdown: text.content,
+          date: post.metadata.date,
+          release: tags.includes('release'),
+        };
+      });
+      const ranked = Object.fromEntries(
+        Object.entries(rankRelatedPosts(docs, posts)).map(([page, list]) => [page, list.map((entry) => entry.index)]),
+      );
       const used = [...new Set(Object.values(ranked).flat())].sort((a, b) => a - b);
       const position = new Map(used.map((index, i) => [index, i]));
-      const posts = used.map((index) => {
+      const cards = used.map((index) => {
         const post = listed[index];
         return {
           title: post.metadata.title,
@@ -179,7 +168,17 @@ module.exports = function explorePlugin() {
       const related = Object.fromEntries(
         Object.entries(ranked).map(([key, list]) => [key, list.map((index) => position.get(index))]),
       );
-      actions.setGlobalData({ videos: own.videos, posts, related });
+      // the one video of each docs page, as an index into the videos shown
+      const matched = rankRelatedVideos(docs, posts, own.videos);
+      const shown = [...new Set(Object.values(matched))].sort((a, b) => a - b);
+      const videos = shown.map((index) => {
+        const { description, ...video } = own.videos[index];
+        return video;
+      });
+      const relatedVideo = Object.fromEntries(
+        Object.entries(matched).map(([page, index]) => [page, shown.indexOf(index)]),
+      );
+      actions.setGlobalData({ videos, relatedVideo, posts: cards, related });
     },
   };
 };
