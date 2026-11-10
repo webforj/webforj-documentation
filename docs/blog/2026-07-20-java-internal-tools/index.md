@@ -4,7 +4,7 @@ description: "Choosing a Java internal tools framework? See what admin panels an
 slug: java-internal-tools
 date: 2026-07-20
 authors: webforJ
-tags: [community, table, spring]
+tags: [insights, table, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-20-java-internal-tools/cover.jpg
 hide_table_of_contents: false
 ---

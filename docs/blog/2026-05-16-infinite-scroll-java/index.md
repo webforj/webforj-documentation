@@ -4,7 +4,7 @@ description: "Build infinite scroll in Java with webforJ. Load the next batch on
 slug: infinite-scroll-java
 date: 2026-05-16
 authors: Eric Handtke
-tags: [tutorial, components, performance]
+tags: [tutorial, performance]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-16-infinite-scroll-java/cover.jpg
 hide_table_of_contents: false
 ---

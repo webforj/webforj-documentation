@@ -4,7 +4,7 @@ description: "How to choose a Java UI framework for banking and financial servic
 slug: java-ui-framework-banking-finance
 date: 2026-09-13
 authors: webforJ
-tags: [community, security, spring]
+tags: [insights, security, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-13-java-ui-framework-banking-finance/cover.jpg
 hide_table_of_contents: false
 ---

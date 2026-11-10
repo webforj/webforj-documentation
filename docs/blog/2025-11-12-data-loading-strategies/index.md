@@ -4,7 +4,7 @@ description: Learn when to use different webforJ Repository types for optimally 
 slug: data-loading-strategies-rest-apis
 date: 2025-11-12
 authors: Matthew Hawkins
-tags: [spring, web development, back end, performance, tutorial, integrations]
+tags: [tutorial, spring, web development, back end, performance]
 hide_table_of_contents: false
 ---
 

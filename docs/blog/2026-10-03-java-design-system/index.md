@@ -4,7 +4,7 @@ description: "A Java design system ships with webforJ: DWC gives you CSS tokens,
 slug: java-design-system
 date: 2026-10-03
 authors: Lauren Alamo
-tags: [styling, themes, components]
+tags: [styling, themes]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-03-java-design-system/cover.jpg
 hide_table_of_contents: false
 ---

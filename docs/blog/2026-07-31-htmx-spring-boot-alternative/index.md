@@ -4,7 +4,7 @@ description: "Looking at alternatives to htmx? webforJ keeps the server-driven m
 slug: htmx-spring-boot-alternative
 date: 2026-07-31
 authors: webforJ
-tags: [community, ai, spring, web development, full-stack]
+tags: [insights, spring, web development, full-stack]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-htmx-spring-boot-alternative/cover.jpg
 hide_table_of_contents: false
 ---

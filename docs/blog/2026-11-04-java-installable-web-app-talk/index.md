@@ -4,7 +4,7 @@ description: "Watch a Java installable web app built live in 15 minutes with web
 slug: java-installable-web-app-talk
 date: 2026-11-04T12:00:00Z
 authors: webforJ
-tags: [community, components, events]
+tags: [community, events]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-04-java-installable-web-app-talk/cover.jpg
 hide_table_of_contents: false
 ---

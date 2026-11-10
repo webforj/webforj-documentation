@@ -4,7 +4,7 @@ description: How webforJ's Transitions API brings the browser's View Transition 
 slug: view-transitions
 date: 2026-04-13
 authors: Lauren Alamo
-tags: [front end, integrations, layout, styling, routing]
+tags: [styling, front end, layout, routing]
 hide_table_of_contents: false
 ---
 

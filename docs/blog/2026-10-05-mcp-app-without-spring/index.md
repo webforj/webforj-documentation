@@ -4,7 +4,7 @@ description: "Build an MCP app in plain Java without Spring: one servlet initial
 slug: mcp-app-without-spring
 date: 2026-10-05
 authors: Hyyan Abo Fakher
-tags: [ai, mcp, integrations, spring]
+tags: [ai, mcp, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-05-mcp-app-without-spring/cover.jpg
 hide_table_of_contents: false
 ---

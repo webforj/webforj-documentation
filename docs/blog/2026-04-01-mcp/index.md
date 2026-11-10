@@ -4,7 +4,7 @@ description: Setting up the webforJ MCP server in Claude Code
 slug: mcp
 date: 2026-04-01
 authors: Garrison Osteen
-tags: [ai, community]
+tags: [ai]
 hide_table_of_contents: false
 ---
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/blog-mcp-cover.png)

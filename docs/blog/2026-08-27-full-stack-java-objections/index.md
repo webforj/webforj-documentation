@@ -4,7 +4,7 @@ description: "Is full stack Java a good idea? The usual objections are latency, 
 slug: full-stack-java-objections
 date: 2026-08-27
 authors: webforJ
-tags: [community, performance, spring]
+tags: [insights, performance, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-27-full-stack-java-objections/cover.jpg
 hide_table_of_contents: false
 ---

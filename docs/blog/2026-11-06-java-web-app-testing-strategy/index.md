@@ -4,7 +4,7 @@ description: "A Java web app testing strategy for webforJ: JUnit for logic, Test
 slug: java-web-app-testing-strategy
 date: 2026-11-06
 authors: Eric Handtke
-tags: [tutorial, integrations]
+tags: [tutorial]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-java-web-app-testing-strategy/cover-v2.jpg
 hide_table_of_contents: false
 ---

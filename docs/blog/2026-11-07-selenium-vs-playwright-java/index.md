@@ -4,7 +4,7 @@ description: "Selenium vs Playwright for Java UIs: both drive a webforJ app from
 slug: selenium-vs-playwright-java
 date: 2026-11-07
 authors: Matthew Hawkins
-tags: [tutorial, integrations, performance]
+tags: [tutorial, performance]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-selenium-vs-playwright-java/cover.jpg
 hide_table_of_contents: false
 ---

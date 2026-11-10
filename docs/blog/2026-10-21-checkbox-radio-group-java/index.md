@@ -4,7 +4,7 @@ description: "Build a checkbox group, a radio button group and a toggle switch i
 slug: checkbox-radio-group-java
 date: 2026-10-21
 authors: Eric Handtke
-tags: [tutorial, components, front end]
+tags: [tutorial, front end]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-checkbox-radio-group-java/cover.jpg
 hide_table_of_contents: false
 ---

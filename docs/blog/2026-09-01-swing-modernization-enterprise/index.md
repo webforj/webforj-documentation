@@ -4,7 +4,7 @@ description: "Swing modernization for enterprises, explained for decision makers
 slug: swing-modernization-enterprise
 date: 2026-09-01
 authors: webforJ
-tags: [community, ai, modernization, webswing]
+tags: [insights, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-01-swing-modernization-enterprise/cover.jpg
 hide_table_of_contents: false
 ---

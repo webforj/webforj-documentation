@@ -4,7 +4,7 @@ description: "Lazy load a tree in Java with webforJ. Give each folder a placehol
 slug: lazy-load-tree-java
 date: 2026-10-14
 authors: Matthew Hawkins
-tags: [tutorial, components, performance]
+tags: [tutorial, performance]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-14-lazy-load-tree-java/cover.jpg
 hide_table_of_contents: false
 ---

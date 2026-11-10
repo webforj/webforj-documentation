@@ -4,7 +4,7 @@ description: "JavaFX vs Swing compared on installation, updates, platforms and t
 slug: java-gui-frameworks-compared
 date: 2026-09-19
 authors: Hyyan Abo Fakher
-tags: [community, web development, modernization, webswing]
+tags: [insights, web development, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-java-gui-frameworks-compared/cover.jpg
 hide_table_of_contents: false
 ---

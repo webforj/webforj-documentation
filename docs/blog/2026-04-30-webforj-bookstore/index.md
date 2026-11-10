@@ -4,7 +4,7 @@ description: A walkthrough of the webforJ Bookstore app, a full-stack inventory 
 slug: webforj-bookstore
 date: 2026-04-30
 authors: Eric Handtke
-tags: [spring, security, web development, tutorial, full-stack, showcase]
+tags: [tutorial, spring, security, web development, full-stack, showcase]
 hide_table_of_contents: false
 ---
 

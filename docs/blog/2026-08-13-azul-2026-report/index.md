@@ -4,7 +4,7 @@ description: "Using the results from the Azul 2026 Survey, discover how webforJ 
 slug: azul-2026-state-of-java-report
 date: 2026-08-13
 authors: Ben Brennan
-tags: [ai, community, modernization, performance]
+tags: [ai, modernization, performance]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/2026-08-13-azul-2026-report/blog-cover.png"
 hide_table_of_contents: false
 ---

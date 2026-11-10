@@ -4,7 +4,7 @@ description: "Advanced RAG in Java with Spring AI and webforJ: measure retrieval
 slug: advanced-rag-java
 date: 2026-11-05T13:00:00Z
 authors: Hyyan Abo Fakher
-tags: [integrations, ai, spring]
+tags: [integrations, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-advanced-rag-java/cover-v2.jpg
 hide_table_of_contents: false
 ---

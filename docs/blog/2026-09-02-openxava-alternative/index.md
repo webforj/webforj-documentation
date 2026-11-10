@@ -4,7 +4,7 @@ description: "Looking for an OpenXava alternative? Compare generated screens wit
 slug: openxava-alternative
 date: 2026-09-02
 authors: webforJ
-tags: [community, ai, spring, layout]
+tags: [insights, spring, layout]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-openxava-alternative/cover.jpg
 hide_table_of_contents: false
 ---

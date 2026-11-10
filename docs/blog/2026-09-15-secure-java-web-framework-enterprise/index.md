@@ -4,7 +4,7 @@ description: "A secure Java web framework for enterprise keeps rules on the serv
 slug: secure-java-web-framework-enterprise
 date: 2026-09-15
 authors: webforJ
-tags: [community, security, spring]
+tags: [insights, security, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-secure-java-web-framework-enterprise/cover.jpg
 hide_table_of_contents: false
 ---

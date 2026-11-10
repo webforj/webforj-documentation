@@ -4,7 +4,7 @@ description: "How big is the webforJ ecosystem? Built-in components from one tea
 slug: webforj-ecosystem
 date: 2026-11-09
 authors: webforJ
-tags: [community, ai, spring, javascript]
+tags: [insights, spring, javascript]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-webforj-ecosystem/cover-v2.jpg
 hide_table_of_contents: false
 ---

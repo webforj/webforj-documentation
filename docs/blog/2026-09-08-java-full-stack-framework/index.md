@@ -4,7 +4,7 @@ description: "webforJ is a Java full stack framework: UI, routing, forms, securi
 slug: java-full-stack-framework
 date: 2026-09-08
 authors: Eric Handtke
-tags: [community, full-stack, spring, back end]
+tags: [insights, full-stack, spring, back end]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-08-java-full-stack-framework/cover.jpg
 hide_table_of_contents: false
 ---

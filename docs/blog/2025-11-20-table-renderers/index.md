@@ -4,7 +4,7 @@ description: Learn how to use custom renderers to display rich, formatted conten
 slug: table-renderers-custom-cells
 date: 2025-11-25
 authors: Matthew Hawkins
-tags: [table, renderers, ui customization, data visualization, components]
+tags: [components, table, renderers, ui customization, data visualization]
 hide_table_of_contents: false
 ---
 

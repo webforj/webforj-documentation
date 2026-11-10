@@ -4,7 +4,7 @@ description: "Compare Java frontend frameworks: Thymeleaf, Jakarta Faces, React 
 slug: java-frontend-frameworks
 date: 2026-11-08
 authors: webforJ
-tags: [community, ai, full-stack, front end]
+tags: [insights, full-stack, front end]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-java-frontend-frameworks/cover-v2.jpg
 hide_table_of_contents: false
 ---

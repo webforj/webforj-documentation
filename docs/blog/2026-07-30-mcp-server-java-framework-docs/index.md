@@ -4,7 +4,7 @@ description: "Connect Claude Code or VS Code to the webforJ MCP server so the as
 slug: mcp-server-java-framework-docs
 date: 2026-07-30
 authors: Matthew Hawkins
-tags: [ai, mcp, tutorial]
+tags: [ai, mcp]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-mcp-server-java-framework-docs/cover.jpg
 hide_table_of_contents: false
 ---

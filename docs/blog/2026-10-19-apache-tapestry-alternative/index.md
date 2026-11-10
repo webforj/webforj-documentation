@@ -4,7 +4,7 @@ description: "Looking for an Apache Tapestry alternative? See what carries over,
 slug: apache-tapestry-alternative
 date: 2026-10-19
 authors: webforJ
-tags: [community, ai, modernization, spring]
+tags: [insights, modernization, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-19-apache-tapestry-alternative/cover.jpg
 hide_table_of_contents: false
 ---

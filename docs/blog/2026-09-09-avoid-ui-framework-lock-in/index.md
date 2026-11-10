@@ -4,7 +4,7 @@ description: "Every UI framework shapes your code. Here is how to avoid UI frame
 slug: avoid-ui-framework-lock-in
 date: 2026-09-09
 authors: Hyyan Abo Fakher
-tags: [community, spring, integrations]
+tags: [insights, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-09-avoid-ui-framework-lock-in/cover.jpg
 hide_table_of_contents: false
 ---

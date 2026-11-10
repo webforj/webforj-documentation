@@ -4,7 +4,7 @@ description: "setVisible(false) decides what the interface shows: route-level an
 slug: spring-security-route-access-control
 date: 2026-10-02
 authors: webforJ
-tags: [spring, security, web development]
+tags: [integrations, spring, security, web development]
 image: ./cover.jpg
 hide_table_of_contents: false
 

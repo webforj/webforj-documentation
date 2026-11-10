@@ -4,7 +4,7 @@ description: "How to migrate a Java Swing app to web: compare a JavaScript rewri
 slug: migrate-swing-app-to-web
 date: 2026-08-19
 authors: webforJ
-tags: [community, ai, modernization, webswing]
+tags: [insights, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-migrate-swing-app-to-web/cover.jpg
 hide_table_of_contents: false
 ---

@@ -4,7 +4,7 @@ description: "What is the webforJ learning curve for a team? A webforJ developer
 slug: webforj-learning-curve
 date: 2026-06-26
 authors: webforJ
-tags: [community, ai, components, routing]
+tags: [insights, routing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-26-webforj-learning-curve/cover.jpg
 hide_table_of_contents: false
 ---

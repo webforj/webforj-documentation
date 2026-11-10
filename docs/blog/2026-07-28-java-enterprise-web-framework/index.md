@@ -4,7 +4,7 @@ description: "Checklist for choosing a Java framework for enterprise web applica
 slug: java-enterprise-web-framework
 date: 2026-07-28
 authors: webforJ
-tags: [community, ai, security, spring]
+tags: [insights, security, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-28-java-enterprise-web-framework/cover.jpg
 hide_table_of_contents: false
 ---

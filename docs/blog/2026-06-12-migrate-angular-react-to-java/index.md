@@ -4,7 +4,7 @@ description: "Replace React with Java without rewriting your backend. See how a 
 slug: migrate-angular-react-to-java
 date: 2026-06-12
 authors: webforJ
-tags: [community, ai, spring, routing, modernization]
+tags: [insights, spring, routing, modernization]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-12-migrate-angular-react-to-java/cover.jpg
 hide_table_of_contents: false
 ---

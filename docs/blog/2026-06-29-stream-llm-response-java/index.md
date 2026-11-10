@@ -4,7 +4,7 @@ description: "Stream ChatGPT responses in a Java web app. Append chunks to webfo
 slug: stream-llm-response-java
 date: 2026-06-29
 authors: Eric Handtke
-tags: [ai, spring-ai, chat, components]
+tags: [ai, spring-ai, chat]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-29-stream-llm-response-java/cover.jpg
 hide_table_of_contents: false
 ---

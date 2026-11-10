@@ -4,7 +4,7 @@ description: "Build a multi-select Java UI with webforJ's ListBox, read the sele
 slug: multi-select-java-ui
 date: 2026-09-17
 authors: Matthew Hawkins
-tags: [tutorial, components, web development]
+tags: [tutorial, web development]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-multi-select-java-ui/cover.jpg
 hide_table_of_contents: false
 ---

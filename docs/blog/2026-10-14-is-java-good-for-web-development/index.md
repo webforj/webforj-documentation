@@ -4,7 +4,7 @@ description: "Is Java good for web development? Four common beliefs about Java o
 slug: is-java-good-for-web-development
 date: 2026-10-14
 authors: webforJ
-tags: [community, spring, modernization]
+tags: [insights, spring, modernization]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-14-is-java-good-for-web-development/cover.jpg
 hide_table_of_contents: false
 ---

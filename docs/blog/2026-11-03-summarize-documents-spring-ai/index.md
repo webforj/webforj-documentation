@@ -4,7 +4,7 @@ description: "Upload a PDF in a webforJ view, extract its text with Spring AI an
 slug: summarize-documents-spring-ai
 date: 2026-11-03T13:00:00Z
 authors: Matthew Hawkins
-tags: [ai, components, spring, tutorial]
+tags: [ai, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-summarize-documents-spring-ai/cover.jpg
 hide_table_of_contents: false
 ---

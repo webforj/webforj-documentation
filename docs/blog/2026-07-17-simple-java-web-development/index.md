@@ -4,7 +4,7 @@ description: "Simple Java web development means building the UI in the language 
 slug: simple-java-web-development
 date: 2026-07-17
 authors: webforJ
-tags: [community, components, events]
+tags: [insights, events]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-17-simple-java-web-development/cover.jpg
 hide_table_of_contents: false
 ---

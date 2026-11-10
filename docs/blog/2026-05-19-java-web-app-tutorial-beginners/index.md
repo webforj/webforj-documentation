@@ -4,7 +4,7 @@ description: "A Java web app tutorial for beginners. Generate a project, run it,
 slug: java-web-app-tutorial-beginners
 date: 2026-05-19
 authors: Eric Handtke
-tags: [tutorial, routing, components]
+tags: [tutorial, routing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-19-java-web-app-tutorial-beginners/cover.jpg
 hide_table_of_contents: false
 ---

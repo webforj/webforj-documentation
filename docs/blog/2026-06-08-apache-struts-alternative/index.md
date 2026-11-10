@@ -4,7 +4,7 @@ description: "Looking for an Apache Struts alternative? Replace action and JSP p
 slug: apache-struts-alternative
 date: 2026-06-08
 authors: webforJ
-tags: [community, ai, modernization, spring]
+tags: [insights, modernization, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-08-apache-struts-alternative/cover.jpg
 hide_table_of_contents: false
 ---

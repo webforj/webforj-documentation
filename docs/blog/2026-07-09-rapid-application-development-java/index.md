@@ -4,7 +4,7 @@ description: "Rapid application development java web teams can trust: generate a
 slug: rapid-application-development-java
 date: 2026-07-09
 authors: webforJ
-tags: [community, ai, spring, full-stack]
+tags: [insights, spring, full-stack]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-09-rapid-application-development-java/cover.jpg
 hide_table_of_contents: false
 ---

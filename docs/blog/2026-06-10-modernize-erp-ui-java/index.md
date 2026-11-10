@@ -4,7 +4,7 @@ description: "Modernize your ERP UI in Java one screen at a time. Embed the lega
 slug: modernize-erp-ui-java
 date: 2026-06-10
 authors: webforJ
-tags: [community, ai, modernization, webswing, integrations]
+tags: [insights, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-10-modernize-erp-ui-java/cover.jpg
 hide_table_of_contents: false
 ---

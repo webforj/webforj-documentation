@@ -4,7 +4,7 @@ description: "Render markdown in a Java web app with webforJ's MarkdownViewer. S
 slug: render-markdown-java
 date: 2026-08-20
 authors: Matthew Hawkins
-tags: [components, tutorial, front end]
+tags: [components, front end]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-20-render-markdown-java/cover.jpg
 hide_table_of_contents: false
 ---

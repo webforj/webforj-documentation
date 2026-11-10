@@ -4,7 +4,7 @@ description: A short walkthrough of the biggest features from the 25.x cycle and
 slug: webforj-2025-highlights
 date: 2026-05-07
 authors: Matthew Hawkins
-tags: [community, release]
+tags: [community]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/webforj-v26.00/video-cover.jpg"
 hide_table_of_contents: false
 ---

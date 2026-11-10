@@ -4,7 +4,7 @@ description: "Add input masks in Java for phone, currency, and date fields with 
 slug: input-mask-java
 date: 2026-05-20
 authors: Eric Handtke
-tags: [tutorial, components]
+tags: [tutorial]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-input-mask-java/cover.jpg
 hide_table_of_contents: false
 ---

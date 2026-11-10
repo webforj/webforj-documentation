@@ -4,7 +4,7 @@ description: "Is Swing dead? No, but a Swing app carries Java Swing technical de
 slug: java-swing-technical-debt
 date: 2026-05-04
 authors: webforJ
-tags: [community, modernization, webswing]
+tags: [insights, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-04-java-swing-technical-debt/cover.jpg
 hide_table_of_contents: false
 ---

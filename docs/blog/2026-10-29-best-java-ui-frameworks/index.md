@@ -4,7 +4,7 @@ description: "How to pick the best Java UI framework for enterprise and internal
 slug: best-java-ui-frameworks
 date: 2026-10-29
 authors: webforJ
-tags: [community, web development, full-stack, spring, front end]
+tags: [insights, web development, full-stack, spring, front end]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-best-java-ui-frameworks/cover.jpg
 hide_table_of_contents: false
 ---

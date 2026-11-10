@@ -4,7 +4,7 @@ description: "A checklist for choosing a web framework for enterprise applicatio
 slug: choosing-enterprise-web-framework
 date: 2026-09-19
 authors: webforJ
-tags: [community, ai, full-stack]
+tags: [insights, full-stack]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-choosing-enterprise-web-framework/cover.jpg
 hide_table_of_contents: false
 ---

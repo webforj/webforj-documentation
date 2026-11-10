@@ -4,7 +4,7 @@ description: "Is webforJ production ready? The name is newer than the foundation
 slug: is-webforj-production-ready
 date: 2026-10-30
 authors: webforJ
-tags: [community, web development, spring]
+tags: [insights, web development, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-is-webforj-production-ready/cover.jpg
 hide_table_of_contents: false
 ---

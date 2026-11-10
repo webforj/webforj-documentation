@@ -4,7 +4,7 @@ description: "webforJ is the best Java framework for AI coding. One language, ty
 slug: java-framework-for-ai-coding
 date: 2026-11-05T15:00:00Z
 authors: webforJ
-tags: [ai, mcp, integrations]
+tags: [ai, mcp]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-05-java-framework-for-ai-coding/cover-v2.jpg
 hide_table_of_contents: false
 ---

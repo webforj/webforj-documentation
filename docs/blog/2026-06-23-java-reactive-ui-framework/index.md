@@ -4,7 +4,7 @@ description: "Looking for a Java reactive UI framework? webforJ reacts to data c
 slug: java-reactive-ui-framework
 date: 2026-06-23
 authors: Matthew Hawkins
-tags: [community, events, mvc]
+tags: [insights, events, mvc]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-23-java-reactive-ui-framework/cover.jpg
 hide_table_of_contents: false
 ---

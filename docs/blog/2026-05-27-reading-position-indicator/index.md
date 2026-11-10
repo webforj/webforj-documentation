@@ -4,7 +4,7 @@ description: A short walkthrough of creating a reading position indicator using 
 slug: reading-position-indicator
 date: 2026-05-27
 authors: Ben Brennan
-tags: [components, showcase, tutorial, javascript]
+tags: [components, showcase, javascript]
 hide_table_of_contents: false
 ---
 

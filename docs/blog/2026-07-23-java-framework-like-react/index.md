@@ -4,7 +4,7 @@ description: "Looking for a Java framework like React? webforJ gives you compone
 slug: java-framework-like-react
 date: 2026-07-23
 authors: webforJ
-tags: [community, components]
+tags: [insights]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-23-java-framework-like-react/cover.jpg
 hide_table_of_contents: false
 ---

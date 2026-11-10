@@ -4,7 +4,7 @@ description: "The SERP routes JSP to Thymeleaf or React. There is a third path, 
 slug: jsp-modernization
 date: 2026-08-24
 authors: webforJ
-tags: [modernization, web development, front end, mvc]
+tags: [insights, modernization, web development, front end, mvc]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-24-jsp-modernization/cover.jpg
 hide_table_of_contents: false
 

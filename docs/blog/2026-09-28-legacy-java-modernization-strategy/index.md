@@ -4,7 +4,7 @@ description: "A legacy Java application modernization strategy for portfolios of
 slug: legacy-java-modernization-strategy
 date: 2026-09-28
 authors: webforJ
-tags: [community, ai, modernization]
+tags: [insights, modernization]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-28-legacy-java-modernization-strategy/cover.jpg
 hide_table_of_contents: false
 ---

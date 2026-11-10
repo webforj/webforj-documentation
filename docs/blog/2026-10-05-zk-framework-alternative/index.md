@@ -4,7 +4,7 @@ description: "Looking for a ZK framework alternative? Move ZUL screens and view 
 slug: zk-framework-alternative
 date: 2026-10-05
 authors: Matthew Hawkins
-tags: [community, ai, modernization, spring]
+tags: [insights, modernization, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-05-zk-framework-alternative/cover.jpg
 hide_table_of_contents: false
 ---

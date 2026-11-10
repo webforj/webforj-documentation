@@ -4,7 +4,7 @@ title: Building an Interactive SVG Viewer with webforJ
 description: Build a reusable webforJ SVG viewer with typed selection events, bounded zoom controls, and instance-safe pointer panning.
 date: 2026-08-11
 authors: Eric Handtke
-tags: [components, tutorial, javascript, integrations, showcase]
+tags: [components, javascript, showcase]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-11-interactive-svg-viewer/svg-viewer-cover.png.png
 hide_table_of_contents: false
 ---

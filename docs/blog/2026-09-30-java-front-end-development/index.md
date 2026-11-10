@@ -4,7 +4,7 @@ description: "Can Java do front end? Yes. A decision guide to Java for front end
 slug: java-front-end-development
 date: 2026-09-30
 authors: webforJ
-tags: [community, spring, layout, events]
+tags: [insights, spring, layout, events]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-30-java-front-end-development/cover.jpg
 hide_table_of_contents: false
 ---

@@ -4,7 +4,7 @@ description: "Looking for a Thymeleaf alternative in Spring Boot? Build tables, 
 slug: thymeleaf-alternative-spring-boot
 date: 2026-09-17
 authors: Eric Handtke
-tags: [community, ai, spring, web development]
+tags: [insights, spring, web development]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-thymeleaf-alternative-spring-boot/cover.jpg
 hide_table_of_contents: false
 ---

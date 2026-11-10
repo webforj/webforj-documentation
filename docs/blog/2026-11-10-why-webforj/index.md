@@ -4,7 +4,7 @@ description: "Why webforJ for your next business web app? What sets it apart, wh
 slug: why-webforj
 date: 2026-11-10
 authors: webforJ
-tags: [community, ai, web development, spring]
+tags: [insights, web development, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-why-webforj/cover-v2.jpg
 hide_table_of_contents: false
 ---

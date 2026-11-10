@@ -4,7 +4,7 @@ description: "webforJ is a full-stack Java framework with a server-side UI model
 slug: server-side-ui-framework-java
 date: 2026-09-27
 authors: Matthew Hawkins
-tags: [community, web development, performance]
+tags: [insights, web development, performance]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-27-server-side-ui-framework-java/cover.jpg
 hide_table_of_contents: false
 ---

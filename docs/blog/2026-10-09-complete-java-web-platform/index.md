@@ -4,7 +4,7 @@ description: "A complete Java web application platform covers setup, routing, fo
 slug: complete-java-web-platform
 date: 2026-10-09
 authors: webforJ
-tags: [community, spring, security, components]
+tags: [insights, spring, security]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-09-complete-java-web-platform/cover.jpg
 hide_table_of_contents: false
 ---

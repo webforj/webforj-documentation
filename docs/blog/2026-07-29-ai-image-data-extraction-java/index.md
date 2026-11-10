@@ -4,7 +4,7 @@ description: "Extract data from an image in Java with a vision-capable AI model.
 slug: ai-image-data-extraction-java
 date: 2026-07-29
 authors: Eric Handtke
-tags: [ai, spring-ai, components, spring]
+tags: [ai, spring-ai, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-29-ai-image-data-extraction-java/cover.jpg
 hide_table_of_contents: false
 ---

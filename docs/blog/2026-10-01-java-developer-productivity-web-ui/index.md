@@ -4,7 +4,7 @@ description: "Java developer productivity for web UIs comes from removing hand-o
 slug: java-developer-productivity-web-ui
 date: 2026-10-01
 authors: webforJ
-tags: [community, ai, full-stack]
+tags: [insights, full-stack]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-01-java-developer-productivity-web-ui/cover.jpg
 hide_table_of_contents: false
 ---

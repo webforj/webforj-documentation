@@ -4,7 +4,7 @@ description: "Use the craftforJ AI assistant to edit a running Java app from a p
 slug: ai-visual-editor-java
 date: 2026-10-22
 authors: Matthew Hawkins
-tags: [ai, tutorial, components]
+tags: [ai]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-ai-visual-editor-java/cover.jpg
 hide_table_of_contents: false
 ---

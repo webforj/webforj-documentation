@@ -4,7 +4,7 @@ description: "Plan a JavaFX to web move that keeps Java. See how stages, scenes,
 slug: javafx-to-web
 date: 2026-08-13
 authors: Hyyan Abo Fakher
-tags: [community, ai, modernization, mcp]
+tags: [insights, modernization, mcp]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-13-javafx-to-web/cover.jpg
 hide_table_of_contents: false
 ---

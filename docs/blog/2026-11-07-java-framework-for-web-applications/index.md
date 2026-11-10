@@ -4,7 +4,7 @@ description: "A Java framework for web applications needs routing, forms, securi
 slug: java-framework-for-web-applications
 date: 2026-11-07
 authors: webforJ
-tags: [community, full-stack, spring, ai]
+tags: [insights, full-stack, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-java-framework-for-web-applications/cover-v2.jpg
 hide_table_of_contents: false
 ---

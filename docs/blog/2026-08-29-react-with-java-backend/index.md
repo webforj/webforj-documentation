@@ -4,7 +4,7 @@ description: "React with a Java backend means two apps, an API and two builds. S
 slug: react-with-java-backend
 date: 2026-08-29
 authors: webforJ
-tags: [community, spring, full-stack, web development]
+tags: [insights, spring, full-stack, web development]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-29-react-with-java-backend/cover.jpg
 hide_table_of_contents: false
 ---

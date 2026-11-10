@@ -4,7 +4,7 @@ description: "Install webforJ agent skills so Claude Code writes Java web UIs wi
 slug: ai-agent-skills-java
 date: 2026-08-04
 authors: webforJ
-tags: [ai, tutorial, 'web development']
+tags: [ai, 'web development']
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-04-ai-agent-skills-java/cover.jpg
 hide_table_of_contents: false
 ---

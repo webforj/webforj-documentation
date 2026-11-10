@@ -37,6 +37,10 @@ function getCategories() {
       path: '/blog/tags/styling',
     },
     {
+      label: translate({ id: 'component.blogFilterBar.insights', message: 'Insights' }),
+      path: '/blog/tags/insights',
+    },
+    {
       label: translate({ id: 'component.blogFilterBar.community', message: 'Community' }),
       path: '/blog/tags/community',
     },

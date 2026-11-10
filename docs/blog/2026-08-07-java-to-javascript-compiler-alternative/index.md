@@ -4,7 +4,7 @@ description: "A Java to JavaScript compiler alternative: webforJ runs your Java 
 slug: java-to-javascript-compiler-alternative
 date: 2026-08-07
 authors: webforJ
-tags: [community, javascript]
+tags: [insights, javascript]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-07-java-to-javascript-compiler-alternative/cover.jpg
 hide_table_of_contents: false
 ---

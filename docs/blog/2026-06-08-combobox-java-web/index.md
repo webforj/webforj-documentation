@@ -4,7 +4,7 @@ description: "Build a Java combo box with preset items, typed custom values, a p
 slug: combobox-java-web
 date: 2026-06-08
 authors: Matthew Hawkins
-tags: [tutorial, components, web development]
+tags: [tutorial, web development]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-08-combobox-java-web/cover.jpg
 hide_table_of_contents: false
 ---

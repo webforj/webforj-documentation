@@ -4,7 +4,7 @@ description: "Run Java UI testing without a browser in webforJ. The TestBed runs
 slug: java-ui-testing-without-browser
 date: 2026-11-03T09:00:00Z
 authors: Hyyan Abo Fakher
-tags: [tutorial, ai, spring, annotations]
+tags: [tutorial, spring, annotations]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ui-testing-without-browser/cover.jpg
 hide_table_of_contents: false
 ---

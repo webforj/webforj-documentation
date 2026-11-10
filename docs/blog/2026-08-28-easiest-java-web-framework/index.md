@@ -4,7 +4,7 @@ description: "The easiest Java web framework is the one with the fewest things t
 slug: easiest-java-web-framework
 date: 2026-08-28
 authors: webforJ
-tags: [community, ai, full-stack, tutorial]
+tags: [insights, full-stack]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-28-easiest-java-web-framework/cover.jpg
 hide_table_of_contents: false
 ---

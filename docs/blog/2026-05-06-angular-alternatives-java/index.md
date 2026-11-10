@@ -4,7 +4,7 @@ description: "Comparing alternatives to Angular? If your backend is Java, webfor
 slug: angular-alternatives-java
 date: 2026-05-06
 authors: webforJ
-tags: [community, ai, spring, routing]
+tags: [insights, spring, routing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-06-angular-alternatives-java/cover.jpg
 hide_table_of_contents: false
 ---

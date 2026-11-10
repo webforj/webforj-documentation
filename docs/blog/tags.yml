@@ -18,9 +18,13 @@ styling:
   label: Styling
   description: CSS, theming, and design guides for webforJ apps.
 
+insights:
+  label: Insights
+  description: Comparisons, migration paths, and framework decisions for Java teams.
+
 community:
   label: Community
-  description: Community stories, opinions, and announcements from the webforJ team.
+  description: Talks, webinars, and community news from the webforJ team.
 
 ai:
   label: AI

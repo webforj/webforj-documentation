@@ -4,7 +4,7 @@ description: "Looking for an Eclipse RAP alternative? A decision guide for teams
 slug: eclipse-rap-alternative
 date: 2026-09-26
 authors: webforJ
-tags: [community, ai, modernization, spring]
+tags: [insights, modernization, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-eclipse-rap-alternative/cover.jpg
 hide_table_of_contents: false
 ---

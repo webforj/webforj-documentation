@@ -4,7 +4,7 @@ description: "Web app vs native app for a Java business team: web wins on reach 
 slug: web-app-vs-native-app-java
 date: 2026-05-25
 authors: webforJ
-tags: [community, modernization]
+tags: [insights, modernization]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-25-web-app-vs-native-app-java/cover.jpg
 hide_table_of_contents: false
 ---

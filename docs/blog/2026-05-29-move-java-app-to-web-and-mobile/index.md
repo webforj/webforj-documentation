@@ -4,7 +4,7 @@ description: "Watch how to move a Java app to the web and mobile without a JavaS
 slug: move-java-app-to-web-and-mobile
 date: 2026-05-29
 authors: Matthew Hawkins
-tags: [community, ai, modernization, webswing]
+tags: [community, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-29-move-java-app-to-web-and-mobile/cover.jpg
 hide_table_of_contents: false
 ---

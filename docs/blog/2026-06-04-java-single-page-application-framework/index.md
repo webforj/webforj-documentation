@@ -4,7 +4,7 @@ description: "Looking for a Java single page application framework? webforJ give
 slug: java-single-page-application-framework
 date: 2026-06-04
 authors: webforJ
-tags: [community, routing, performance]
+tags: [insights, routing, performance]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-04-java-single-page-application-framework/cover.jpg
 hide_table_of_contents: false
 ---

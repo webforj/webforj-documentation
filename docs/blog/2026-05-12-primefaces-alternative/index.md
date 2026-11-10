@@ -4,7 +4,7 @@ description: "Looking for a PrimeFaces alternative in Java? Move your JSF screen
 slug: primefaces-alternative
 date: 2026-05-12
 authors: webforJ
-tags: [community, ai, modernization, spring]
+tags: [insights, modernization, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-12-primefaces-alternative/cover.jpg
 hide_table_of_contents: false
 ---

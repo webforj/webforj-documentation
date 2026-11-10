@@ -4,7 +4,7 @@ description: "Swing to JavaScript communication without glue code: the webforJ W
 slug: swing-web-communication
 date: 2026-06-14
 authors: Eric Handtke
-tags: [community, webswing, modernization, events]
+tags: [insights, webswing, modernization, events]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-14-swing-web-communication/cover.jpg
 hide_table_of_contents: false
 ---

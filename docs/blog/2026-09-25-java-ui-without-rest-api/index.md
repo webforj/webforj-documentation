@@ -4,7 +4,7 @@ description: "When the frontend and backend are both Java, the REST layer betwee
 slug: java-ui-without-rest-api
 date: 2026-09-25
 authors: webforJ
-tags: [spring, web development, full-stack]
+tags: [insights, spring, web development, full-stack]
 image: ./cover_new.jpg
 hide_table_of_contents: false
 

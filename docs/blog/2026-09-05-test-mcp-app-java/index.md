@@ -4,7 +4,7 @@ description: "Test a webforJ MCP App without an AI host. Run it locally, call it
 slug: test-mcp-app-java
 date: 2026-09-05
 authors: Eric Handtke
-tags: [ai, mcp, spring, tutorial]
+tags: [ai, mcp, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-05-test-mcp-app-java/cover.jpg
 hide_table_of_contents: false
 ---

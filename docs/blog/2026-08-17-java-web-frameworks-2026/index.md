@@ -4,7 +4,7 @@ description: "Choosing a web framework for Java in 2026? Compare Spring Boot, Qu
 slug: java-web-frameworks-2026
 date: 2026-08-17
 authors: webforJ
-tags: [community, spring, web development, front end]
+tags: [insights, spring, web development, front end]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-17-java-web-frameworks-2026/cover.jpg
 hide_table_of_contents: false
 ---

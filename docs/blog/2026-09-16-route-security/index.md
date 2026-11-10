@@ -4,7 +4,7 @@ description: "Route annotations stop people reaching a view. What they don't do 
 slug: route-security
 date: 2026-09-23
 authors: Lauren Alamo
-tags: [security, routing, web development, tutorial]
+tags: [tutorial, security, routing, web development]
 hide_table_of_contents: false
 ---
 

@@ -4,7 +4,7 @@ description: "Looking for a Jmix alternative or a CUBA platform alternative? See
 slug: jmix-alternative
 date: 2026-07-15
 authors: webforJ
-tags: [community, ai, spring, security]
+tags: [insights, spring, security]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-15-jmix-alternative/cover.jpg
 hide_table_of_contents: false
 ---

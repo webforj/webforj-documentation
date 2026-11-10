@@ -4,7 +4,7 @@ description: "Looking for an Apache Wicket alternative? webforJ keeps the compon
 slug: wicket-alternative
 date: 2026-09-23
 authors: webforJ
-tags: [community, ai, modernization, spring]
+tags: [insights, modernization, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-wicket-alternative/cover.jpg
 hide_table_of_contents: false
 ---

@@ -4,7 +4,7 @@ description: "What a frontend and backend split costs a business app, how one Ja
 slug: cost-separate-frontend-backend-teams
 date: 2026-09-22
 authors: webforJ
-tags: [community, full-stack]
+tags: [insights, full-stack]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-cost-separate-frontend-backend-teams/cover.jpg
 hide_table_of_contents: false
 ---

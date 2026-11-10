@@ -4,7 +4,7 @@ description: "Go from low code to pro code in Java. craftforJ edits your running
 slug: low-code-to-pro-code-java
 date: 2026-09-03
 authors: webforJ
-tags: [community, components]
+tags: [insights]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-03-low-code-to-pro-code-java/cover.jpg
 hide_table_of_contents: false
 ---

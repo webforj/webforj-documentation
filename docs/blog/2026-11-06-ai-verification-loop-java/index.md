@@ -4,7 +4,7 @@ description: "How webforJ closes the AI coding agent verification loop in Java: 
 slug: ai-verification-loop-java
 date: 2026-11-06
 authors: webforJ
-tags: [ai, mcp, integrations]
+tags: [ai, mcp]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-06-ai-verification-loop-java/cover-v2.jpg
 hide_table_of_contents: false
 ---

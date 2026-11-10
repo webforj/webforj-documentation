@@ -4,7 +4,7 @@ description: "Build a JBang Java web app in one file with webforJ. Write the UI 
 slug: jbang-java-web-app
 date: 2026-09-23
 authors: Matthew Hawkins
-tags: [integrations, tutorial, spring]
+tags: [integrations, spring]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-jbang-java-web-app/cover.jpg
 hide_table_of_contents: false
 ---
