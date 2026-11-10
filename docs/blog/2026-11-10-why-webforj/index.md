@@ -5,11 +5,11 @@ slug: why-webforj
 date: 2026-11-10
 authors: webforJ
 tags: [community, ai, web development, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-why-webforj/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-why-webforj/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-why-webforj/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-why-webforj/cover-v2.jpg)
 
 Your Java team has a new business web app to build, and the shortlist of frameworks keeps growing. Every option promises productivity, so the useful question is the one developers keep asking in public: why webforJ, and what do you get that you would not get elsewhere?
 
