@@ -93,7 +93,7 @@ const TOPICS = [
     key: 'tutorial',
     tags: ['tutorial'],
     title: 'Trying this in your own app?',
-    text: "Ask the engineers when something doesn't fit your case.",
+    text: "Ask the webforJ team when something doesn't fit your case.",
     subject: 'Question about a webforJ tutorial',
     buttons: ['start', 'email'],
   },
@@ -116,7 +116,7 @@ const TOPICS = [
     key: 'build',
     tags: [],
     title: 'Working on something similar?',
-    text: 'Ask the engineers behind webforJ. Questions are welcome, big or small.',
+    text: 'Ask the webforJ team. Questions are welcome, big or small.',
     subject: 'Question about webforJ',
   },
 ];

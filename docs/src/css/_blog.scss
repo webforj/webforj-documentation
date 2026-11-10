@@ -138,9 +138,19 @@
   }
 
   [class*="authorTitle"] {
+    // the theme clamps the title to one line, so a longer title ran over
+    // the social icons; here it wraps in full
+    display: block;
+    -webkit-line-clamp: none;
+    line-clamp: none;
     overflow: visible;
     white-space: normal;
     color: var(--ifm-color-emphasis-800);
+  }
+
+  // keep the icons clear of the title above them
+  [class*="authorSocials"] {
+    margin-top: var(--dwc-space-s);
   }
 }
 

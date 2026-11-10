@@ -182,7 +182,7 @@ function useContextCopy(pathname) {
       text: translate({
         id: 'component.connectLauncher.copy.docs.text',
         message:
-          'Building something with webforJ, or stuck on a page in the docs? Tell us, and an engineer will help you find the way.',
+          'Building something with webforJ, or stuck on a page in the docs? Tell us, and the webforJ team will help you find the way.',
       }),
       greeting: title
         ? translate(

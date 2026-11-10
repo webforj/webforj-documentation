@@ -31,7 +31,7 @@ export default function ConnectCard() {
       <p className={styles.text}>
         {translate({
           id: 'component.connectCard.text.docs',
-          message: 'Talk to the engineers behind webforJ about your project.',
+          message: 'Talk to the webforJ team about your project.',
         })}
       </p>
       <a className={styles.contact} href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
