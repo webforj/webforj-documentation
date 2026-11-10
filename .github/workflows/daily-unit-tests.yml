@@ -1,0 +1,71 @@
+name: Daily Unit Tests
+
+on:
+  schedule:
+    # GitHub cron runs in UTC, so each 08:00 local run is scheduled for both
+    # its standard and daylight saving time, and the first step skips the one
+    # that does not match the current UTC offset
+    # Berlin 08:00: 06:00 UTC in summer (CEST), 07:00 UTC in winter (CET)
+    - cron: '0 6 * * *'
+    - cron: '0 7 * * *'
+    # Albuquerque 08:00: 14:00 UTC in summer (MDT), 15:00 UTC in winter (MST)
+    - cron: '0 14 * * *'
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-slim
+    permissions:
+      contents: read
+    steps:
+      - name: Check local time
+        id: local
+        run: |
+          berlin=$(TZ=Europe/Berlin date +%z)
+          albuquerque=$(TZ=America/Denver date +%z)
+          case "${{ github.event.schedule }}" in
+            '0 6 * * *')  [ "$berlin" = "+0200" ] && run=true ;;
+            '0 7 * * *')  [ "$berlin" = "+0100" ] && run=true ;;
+            '0 14 * * *') [ "$albuquerque" = "-0600" ] && run=true ;;
+            '0 15 * * *') [ "$albuquerque" = "-0700" ] && run=true ;;
+            *) run=true ;;
+          esac
+          echo "run=${run:-false}" >> "$GITHUB_OUTPUT"
+          echo "Berlin $(TZ=Europe/Berlin date), Albuquerque $(TZ=America/Denver date), run=${run:-false}"
+
+      - name: Checkout Repository
+        if: steps.local.outputs.run == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        if: steps.local.outputs.run == 'true'
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+
+      - name: Set up Maven
+        if: steps.local.outputs.run == 'true'
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.9
+
+      - name: Run unit tests
+        if: steps.local.outputs.run == 'true'
+        run: mvn -B test
+
+      - name: Upload unit test results
+        if: failure() && steps.local.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-unit-test-results
+          path: target/surefire-reports/
+          if-no-files-found: ignore
+          retention-days: 7
