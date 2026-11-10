@@ -137,7 +137,7 @@ This method sets the **maximum number of UTF-16 code units** allowed in the text
 textField.setMaxLength(20); // User cannot enter more than 20 characters
 ```
 
-The field fails constraint validation if the input length exceeds the minimum length. Like with `setMinLength()`, this validation is only triggered when the value is changed by the user.
+The field fails constraint validation if the input length exceeds the maximum length. Like with `setMinLength()`, this validation is only triggered when the value is changed by the user.
 
 ## Best practices {#best-practices}
 
