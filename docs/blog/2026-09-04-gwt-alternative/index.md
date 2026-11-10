@@ -1,6 +1,6 @@
 ---
-title: "GWT alternative: keep your UI in Java with webforJ"
-description: "Looking for a GWT alternative? webforJ keeps the whole UI in Java without compiling it to JavaScript, and replaces RPC with direct service calls."
+title: "GWT to Spring Boot migration: move your UI to webforJ"
+description: "A GWT to Spring Boot migration with webforJ, a GWT alternative: keep your UI in Java, skip the JavaScript compile step and replace RPC with service calls."
 slug: gwt-alternative
 date: 2026-09-04
 authors: webforJ
@@ -14,7 +14,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-04-gwt-alternative/cover.jpg)
 
-webforJ is a full-stack Java framework and a GWT alternative for teams that want to keep writing their UI in Java but no longer want a Java-to-JavaScript compile step in the middle. You build screens from Java components, they run on the server inside your Spring Boot app, and the browser renders them. There is no client-side code to compile and no RPC layer between the UI and your services.
+Many GWT teams want to keep writing their UI in Java but no longer want a Java-to-JavaScript compile step in the middle. For a GWT to Spring Boot migration, webforJ is a full-stack Java framework and a GWT alternative built for that. You build screens from Java components, they run on the server next to your Spring Boot services, and the browser renders them. There is no client-side code to compile and no RPC layer between the UI and your services.
 
 This post compares the two models, maps GWT concepts to their webforJ counterparts, and shows how a team can move an existing GWT app one screen at a time.
 
@@ -130,7 +130,7 @@ public class Shell extends Composite<AppLayout> {
 }
 ```
 
-## How do you migrate from GWT to webforJ? {#migration}
+## How do you migrate from GWT to Spring Boot? {#migration}
 
 Treat the move as a screen-by-screen rewrite of the UI layer, while the service layer stays as it is.
 

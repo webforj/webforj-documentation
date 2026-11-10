@@ -1,6 +1,6 @@
 ---
-title: "Claude Code skills for Java: teach your agent webforJ"
-description: "Install webforJ agent skills so Claude Code writes Java web UIs with the right forms, timers, route security, and styling on the first try, without guessing."
+title: "Agent skills for Java: teach Claude Code webforJ"
+description: "Agent skills for Java: install webforJ skills so Claude Code writes forms, timers, route security and styling the webforJ way on the first try."
 slug: ai-agent-skills-java
 date: 2026-08-04
 authors: webforJ
@@ -13,11 +13,11 @@ hide_table_of_contents: false
 
 Ask a general AI assistant for a search field that waits until the user stops typing, and you'll often get a raw thread and a sleep call. It compiles, but it isn't how a webforJ app should do it, and you end up rewriting it by hand.
 
-Claude Code skills for Java fix that by teaching the assistant how the framework expects things to be done. webforJ ships eight skills in its AI plugin, and Claude Code loads the right one when your prompt matches the task, so the same request comes back with a `Debouncer` instead.
+Agent skills for Java fix that. Also called Claude Code skills for Java, they teach the assistant how the framework expects things to be done. webforJ ships eight skills in its AI plugin, and Claude Code loads the right one when your prompt matches the task, so the same request comes back with a `Debouncer` instead.
 
 <!-- truncate -->
 
-## What a skill changes {#what-a-skill-changes}
+## What an agent skill changes {#what-a-skill-changes}
 
 Without a skill, an assistant guesses at framework conventions. It might create a `java.util.Timer` and update a UI component from it, which throws `IllegalStateException` at runtime.
 
@@ -30,7 +30,7 @@ With a skill, the assistant follows a fixed workflow:
 
 The skills follow the open Agent Skills standard. They work with Claude Code, GitHub Copilot, Cursor, Gemini CLI, and OpenAI Codex.
 
-## The eight skills {#the-eight-skills}
+## The eight Java agent skills {#the-eight-skills}
 
 - `webforj-adding-servlets`: REST endpoints, webhooks, and custom servlets.
 - `webforj-building-forms`: data binding, Jakarta validation, and masked inputs.

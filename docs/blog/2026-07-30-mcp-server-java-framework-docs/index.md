@@ -1,6 +1,6 @@
 ---
-title: "MCP server for Java framework docs: webforJ setup guide"
-description: "Connect Claude Code or VS Code to the webforJ MCP server so the assistant checks APIs against live webforJ docs, then build a Java view with them."
+title: "MCP server for Java developers: webforJ setup guide"
+description: "An MCP server for Java developers: connect Claude Code or VS Code to the webforJ MCP server so your assistant checks APIs against live webforJ docs."
 slug: mcp-server-java-framework-docs
 date: 2026-07-30
 authors: Matthew Hawkins
@@ -11,17 +11,17 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-mcp-server-java-framework-docs/cover.jpg)
 
-The webforJ MCP server is an MCP server for a Java framework. It lets AI coding assistants look up webforJ documentation, APIs and design tokens while they write code, so the assistant asks the server instead of guessing a method name. You connect it once, and it works with Claude Code, VS Code, Gemini CLI and OpenAI Codex CLI. In this guide you connect Claude Code, check an API answer against the server, and see a prompt for each job the server does.
+Ask an AI assistant for a Java method and it will often hand you one that sounds right and does not exist. An MCP server for Java developers fixes that. The webforJ MCP server lets AI coding assistants look up webforJ documentation, APIs and design tokens while they write code, so the assistant asks the server instead of guessing a method name. You connect it once, and it works with Claude Code, VS Code, Gemini CLI and OpenAI Codex CLI. In this guide you connect Claude Code, check an API answer against the server, and see a prompt for each job the server does.
 
 <!-- truncate -->
 
-## What the server does {#what-the-server-does}
+## What the MCP server does {#what-the-server-does}
 
 The Model Context Protocol is an open standard that lets AI assistants call external tools on demand. The webforJ server uses that standard for four jobs. It searches the webforJ docs and API, scaffolds new projects from the official Maven archetypes, generates DWC themes from one brand color, and validates `--dwc-*` design tokens before they reach your CSS.
 
 This guide uses the first job most. When your assistant needs to know whether a class, method or annotation exists, it gets the answer from the same documentation you read. That matters most when an API changes between major versions, because the assistant can check the version before it writes code.
 
-## Add the server to your assistant {#connect-claude-code}
+## Add the MCP server to your assistant {#connect-claude-code}
 
 Run this command once. The `-s user` flag registers the server for every project on your machine.
 

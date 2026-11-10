@@ -1,6 +1,6 @@
 ---
-title: "A JSF alternative: moving a Jakarta Faces view to webforJ"
-description: "Looking for a JSF alternative? See how Facelets, backing beans, EL, navigation rules, and validators map to webforJ, with a full before and after view."
+title: "JSF to Spring Boot migration: Faces views in webforJ"
+description: "A JSF to Spring Boot migration with webforJ, a JSF alternative: see how Facelets, backing beans, EL and validators map over, with a before and after view."
 slug: jsf-alternative
 date: 2026-10-10
 authors: Hyyan Abo Fakher
@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-10-jsf-alternative/cover.jpg)
 
-If you maintain JSF or PrimeFaces screens and want a JSF alternative that stays in Java, webforJ is a direct fit. It is a [full-stack Java framework](/blog/java-full-stack-framework): you build each screen as a Java component tree, route to it with an annotation, bind it to a bean, and validate with the same Jakarta constraints you already put on your model.
+If you maintain JSF or PrimeFaces screens and are planning a JSF to Spring Boot migration, webforJ is a direct fit, and a JSF alternative that stays in Java. It is a [full-stack Java framework](/blog/java-full-stack-framework): you build each screen as a Java component tree, route to it with an annotation, bind it to a bean, and validate with the same Jakarta constraints you already put on your model.
 
 A migration is mostly a translation exercise. Most JSF concepts have a direct counterpart, and most of them get smaller. This post maps the concepts one by one and then converts a real form, so you can judge the effort on your own views before committing to anything.
 
@@ -199,7 +199,7 @@ The `<[0-9]+>` constraint in the pattern means non-numeric ids never reach the v
 
 Component libraries for JSF exist because the base tag set is small. webforJ ships a larger built-in set, including `Table` for data grids, dialogs, drawers, tabbed panes, and an app layout. The [Table docs](/docs/components/table/overview) show columns, sorting, filtering, and renderers. For a widget the set lacks, `ElementComposite` wraps any web component in a typed Java class.
 
-## A migration order that works {#migration-order}
+## Migration order from JSF to Spring Boot {#migration-order}
 
 Start with leaf screens, such as a single form or report, and leave the screens with the heaviest Facelets templating for last. Port the model constraints and services unchanged, since they have no UI dependency. Build the layout route once, then move views behind it one at a time.
 
