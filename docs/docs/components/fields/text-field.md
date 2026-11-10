@@ -145,6 +145,6 @@ The following section outlines some suggested best practices for utilization of 
 
 - **Provide Clear Labels and Instructions**: Label the `TextField` clearly to indicate the type of information users should enter. Provide additional instructional text or placeholder values to guide users and set expectations for the required input.
 
-- **Spell Checking and Auto-Complete**: When applicable, consider utilizing spellchecking with `setSpellCheck()` and/or using autocomplete in a `TextField`. These features can help users input information faster and reduce errors by providing suggested values based on previous inputs or predefined options.
+- **Spell Checking and Auto-Complete**: When applicable, consider using spellchecking with `setSpellCheck()` and/or using autocomplete in a `TextField`. These features can help users input information faster and reduce errors by providing suggested values based on previous inputs or predefined options.
 
 - **Accessibility**: provide clear labels, keyboard navigation, and support for assistive technologies so users with disabilities can use the field.
