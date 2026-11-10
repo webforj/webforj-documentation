@@ -5,11 +5,11 @@ slug: webforj-ecosystem
 date: 2026-11-09
 authors: webforJ
 tags: [community, ai, spring, javascript]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-webforj-ecosystem/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-webforj-ecosystem/cover-v2.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-webforj-ecosystem/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-webforj-ecosystem/cover-v2.jpg)
 
 When a Java team compares frameworks, one question comes up early: how big is the ecosystem? It used to be a fair proxy for safety. More add-ons, more examples and more forum answers meant less code to write yourself and fewer dead ends.
 
