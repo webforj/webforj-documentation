@@ -92,7 +92,7 @@ A framework should make the team faster on day one and keep it fast. That's why 
 
 - **One language, one team.** The same Java developers who write the services write the screens.
 - **A project generator.** [startforJ](/docs/introduction/getting-started) creates a Maven project from an archetype with the dependencies and a pre-made layout.
-- **Live editing.** [craftforJ](/docs/craftforj/overview) shows the component tree of your running app, lets you change properties live, and writes the changes you keep back into your Java source.
+- **Live editing.** [craftforJ](/docs/craftforj) shows the component tree of your running app, lets you change properties live, and writes the changes you keep back into your Java source.
 - **One design system.** The DWC [design system](/docs/styling/overview) ships built-in [themes](/docs/styling/themes) and an official Figma kit, so designers and developers work from the same tokens and components.
 
 ## From Swing to the web {#swing-to-web}
