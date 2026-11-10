@@ -1,9 +1,12 @@
 ---
 title: Integrationen
 hide_table_of_contents: true
-sidebar_class_name: new-content
 hide_giscus_comments: true
-_i18n_hash: 987f1fb9ef8aa9e50ff4ec00320d2dd7
+sidebar_class_name: has-new-content
+description: >-
+  Combine webforJ with Spring Boot, Spring Data, Kotlin DSL, Webswing, JBang,
+  and AI tooling while keeping your backend stack independent.
+_i18n_hash: 2272fe4265260266e667c1b22703a3b6
 ---
 <Head>
   <style>{`
@@ -13,21 +16,21 @@ _i18n_hash: 987f1fb9ef8aa9e50ff4ec00320d2dd7
   `}</style>
 </Head>
 
-webforJ ist als framework-agnostische UI-Schicht für Java-Anwendungen konzipiert. Es konzentriert sich ausschließlich auf den Aufbau reichhaltiger, komponentenbasierter Benutzeroberflächen und überlässt die Entscheidungen zur Backend-Architektur ganz Ihnen. Diese klare Trennung der Anliegen ermöglicht es webforJ, mit jedem Java-Technologie-Stack zu arbeiten, von traditionellen Servlets bis hin zu modernen Microservices.
+webforJ ist das Full-Stack-Java-Framework für geschäftliche Web-Apps und unabhängig vom Backend. Sie entwickeln die gesamte App in Java – von Bildschirmen und Routing bis hin zu Formularen, Datenbindung und Routensicherheit. Persistenzschicht, Dependency Injection, Services und Backend-Architektur bleiben dabei Ihnen überlassen. Deshalb funktioniert webforJ mit jedem Java-Technologie-Stack, von traditionellen Servlets bis hin zu Spring Boot und Microservices.
 
 ## Architekturphilosophie {#architecture-philosophy}
 
-webforJ trennt bewusst UI- und Backend-Anliegen. Im Gegensatz zu Full-Stack-Frameworks, die die gesamte Struktur Ihrer App vorgeben, bietet webforJ nur das, was Sie zum Erstellen anspruchsvoller Benutzeroberflächen benötigen. Ihre Wahl der Persistenzschicht, des Frameworks für Dependency Injection, der Sicherheitsimplementierung und der Servicearchitektur bleibt vollständig unabhängig von Ihrer UI-Technologie.
+webforJ deckt alles ab, was Ihre App benötigt, um Daten für Benutzer bereitzustellen und darauf zu reagieren: Komponenten, Layouts, Routing, Formulare mit Bindung und Validierung, durch Repositories gestützte Tabellen, Routensicherheit und Übersetzungen. Wie der Rest Ihres Systems funktioniert, gibt webforJ nicht vor. Die Wahl Ihrer Persistenzschicht, Ihres Dependency-Injection-Frameworks, Ihres Identitätsanbieters und Ihrer Service-Architektur bleibt unabhängig von webforJ.
 
-Dieser Ansatz erkennt an, dass die meisten Organisationen etablierte Backend-Muster, vorhandene Service-Schichten und bevorzugte Technologie-Stacks haben. webforJ verbessert diese Anwendungen mit einem modernen UI-Framework, ohne dass architektonische Änderungen oder Technologie-Migrationen erforderlich sind. Ihre Domänenlogik, Datenzugriffsmuster und Sicherheitsimplementierungen funktionieren weiterhin genau wie zuvor.
+Dieser Ansatz berücksichtigt, dass die meisten Unternehmen etablierte Backend-Muster, vorhandene Service-Schichten und bevorzugte Technologie-Stacks haben. webforJ bringt diese Apps ins Web, ohne Architekturänderungen oder Technologiemigrationen zu erfordern. Ihre Domänenlogik, Datenzugriffsmuster und Sicherheitsimplementierungen funktionieren weiterhin genau wie bisher.
 
 ## Kompatibilität mit Backend-Frameworks {#backend-framework-compatibility}
 
-webforJ funktioniert mit jedem Java-Backend-Framework oder Architektur-Muster, das Sie bereits verwenden. Egal, ob Sie auf Jakarta EE aufbauen, eine Microservices-Architektur verwenden oder mit einem benutzerdefinierten Framework arbeiten, webforJ bietet die UI-Schicht, ohne Ihr Backend-Design zu stören.
+webforJ funktioniert mit jedem Java-Backend-Framework und jedem Architekturansatz, den Sie bereits verwenden. Ob Sie mit Jakarta EE entwickeln, eine Microservices-Architektur nutzen oder mit einem benutzerdefinierten Framework arbeiten – webforJ lässt sich integrieren, ohne Ihr Backend-Design zu beeinträchtigen.
 
-Für bestimmte beliebte Frameworks bietet webforJ spezifische Integrationen, die Boilerplate-Code reduzieren und die Entwicklung vereinfachen. Diese Integrationen bieten Annehmlichkeiten wie automatische Dependency Injection in UI-Komponenten, vereinfachte Konfiguration und framework-spezifische Tool-Unterstützung. Wenn Ihr Framework nicht in der Liste unten aufgeführt ist, bedeutet das nicht, dass webforJ nicht damit funktioniert – es bedeutet lediglich, dass Sie die Verbindung mithilfe der Standardmuster Ihres Frameworks konfigurieren, anstatt eine vorgefertigte Integration zu verwenden.
+Für einige beliebte Frameworks bietet webforJ spezielle Integrationen, die Boilerplate-Code reduzieren und die Entwicklung vereinfachen. Diese Integrationen bieten praktische Funktionen wie die automatische Dependency Injection in UI-Komponenten, eine vereinfachte Konfiguration und Unterstützung für Framework-spezifische Tools. Wenn Ihr Framework unten nicht aufgeführt ist, bedeutet das nicht, dass webforJ damit nicht funktioniert. Die Verbindung wird dann nach den Standardmustern Ihres Frameworks konfiguriert, statt eine vorgefertigte Integration zu verwenden.
 
-Die untenstehenden Integrationen sind völlig optional. Sie existieren, um das Entwicklererlebnis beim Einsatz bestimmter Frameworks zu verbessern, aber die Kernfunktionen von webforJ funktionieren identisch, ob Sie eine Integration verwenden oder nicht. Ihr Backend-Framework verwaltet weiterhin Dienste, Datenzugriff und Geschäftslogik, während webforJ die Präsentationsschicht übernimmt.
+Die folgenden Integrationen sind vollständig optional. Sie verbessern die Entwicklererfahrung bei der Verwendung bestimmter Frameworks, aber die Kernfunktionen von webforJ funktionieren unabhängig davon, ob Sie eine Integration verwenden. Ihr Backend-Framework verwaltet weiterhin Services, Datenzugriff und Geschäftslogik, während webforJ Bildschirme, Navigation und Benutzerinteraktionen übernimmt.
 
 ## Themen {#topics}
 

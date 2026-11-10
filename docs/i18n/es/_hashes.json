@@ -524,5 +524,16 @@
   "component.blogPostHeader.back": "5e4c56cf5a4cd246bed1f852835676ce",
   "component.postCta.bookCall": "078140dcab08c976b398d5a07c18238c",
   "component.postCta.email": "bbfe6fc4296c40626e9b9bcbd6d38fb7",
-  "component.blogPostFooter.askByEmail": "bbfe6fc4296c40626e9b9bcbd6d38fb7"
+  "component.blogPostFooter.askByEmail": "bbfe6fc4296c40626e9b9bcbd6d38fb7",
+  "component.postCta.startApp": "20d0e04712db73d62c936361a1973e1e",
+  "component.postCta.screenshot": "2b4779a3d4c7153e86d0f70eccae72df",
+  "component.connectCard.bookCall": "078140dcab08c976b398d5a07c18238c",
+  "component.connectCard.languages": "a33956c138d8d49d1deee80d07f477ca",
+  "component.connectLauncher.topics.askAi": "8a34fd91c669f5d1e8f5c4b9ead02d0b",
+  "component.connectLauncher.topics.bug": "7c0f095689d7929e8bdf33c0e17e03c0",
+  "component.connectLauncher.languages": "a33956c138d8d49d1deee80d07f477ca",
+  "component.exploreCard.shortBadge": "30bb747c98bccdd11b3f89e644c4d0ad",
+  "component.exploreCard.article": "5e2f8ee473fdebc99fef4dc9e7ee3146",
+  "component.exploreCard.keepLearning": "65f01bae5473c92f2783ab4fe421a7df",
+  "component.blogPostFooter.bookCall": "078140dcab08c976b398d5a07c18238c"
 }

@@ -1,9 +1,12 @@
 ---
 title: Integraatiot
 hide_table_of_contents: true
-sidebar_class_name: new-content
 hide_giscus_comments: true
-_i18n_hash: 987f1fb9ef8aa9e50ff4ec00320d2dd7
+sidebar_class_name: has-new-content
+description: >-
+  Combine webforJ with Spring Boot, Spring Data, Kotlin DSL, Webswing, JBang,
+  and AI tooling while keeping your backend stack independent.
+_i18n_hash: 2272fe4265260266e667c1b22703a3b6
 ---
 <Head>
   <style>{`
@@ -13,21 +16,21 @@ _i18n_hash: 987f1fb9ef8aa9e50ff4ec00320d2dd7
   `}</style>
 </Head>
 
-webforJ on suunniteltu kehyksistä riippumattomaksi UI-kerrokseksi Java-sovelluksille. Se keskittyy yksinomaan rikkaiden, komponenttipohjaisten käyttäjäliittymien rakentamiseen, jättäen taustarakenteen päätökset täysin sinun päätettäväksesi. Tämä selkeä huolenaiheiden erottelu mahdollistaa webforJ:n toimimisen minkä tahansa Java-tekniikkapinnan kanssa, perinteisistä servlet-pohjaisista ratkaisusta moderneihin mikropalveluihin.
+webforJ on liiketoiminnan verkkosovelluksiin tarkoitettu täyden pinon Java-kehys, joka ei ole sidottu tiettyyn taustateknologiaan. Rakennat koko sovelluksen Javalla näytöistä ja reitityksestä lomakkeisiin, tietojen sidontaan ja reittien suojaukseen, kun taas pysyväistallennuskerros, riippuvuuksien injektointi, palvelut ja tausta-arkkitehtuuri ovat omassa päätäntävallassasi. Siksi webforJ toimii minkä tahansa Java-teknologiapinon kanssa perinteisistä servleteistä Spring Bootiin ja mikropalveluihin.
 
 ## Arkkitehtuurifilosofia {#architecture-philosophy}
 
-webforJ erottelee tarkoituksellisesti UI- ja taustahuolenaiheet. Verran kunnianhimoisiin koko-pinnoituksiin, jotka säätelevät koko sovellustasi, webforJ tarjoaa vain sen, mitä tarvitset kehittyneiden käyttäjäliittymien rakentamiseen. Valintasi kestävyyskerroksesta, riippuvuuden injektointikehyksestä, turvallisuusratkaisusta ja palveluarkkitehtuurista pysyy täysin itsenäisenä UI-teknologiastasi.
+webforJ tarjoaa kaiken, mitä sovelluksesi tarvitsee tietojen esittämiseen käyttäjille ja niiden käsittelyyn: komponentit, asettelut, reitityksen, sidontaa ja validointia sisältävät lomakkeet, tietovarastojen taustalla toimivat taulukot, reittien suojauksen ja käännökset. Se ei määrää, miten järjestelmäsi muu osa toimii. Pysyvän tallennuskerroksen, riippuvuuksien injektointikehyksen, identiteetintarjoajan ja palveluarkkitehtuurin valinta on webforJ:stä riippumaton.
 
-Tämä lähestymistapa tunnustaa, että suurimmalla osalla organisaatioista on vakiintuneet taustamallit, olemassa olevat palvelukerrokset ja mieluisat teknologiapinot. webforJ parantaa näitä sovelluksia modernilla UI-kehyksellä ilman arkkitehtonisia muutoksia tai teknologiamigraatioita. Domain-logiikkasi, tietojen käyttömallit ja turvallisuusratkaisut toimivat yhä aivan kuten ennenkin.
+Tässä lähestymistavassa tunnistetaan, että useimmilla organisaatioilla on vakiintuneet taustajärjestelmien toimintamallit, olemassa olevat palvelukerrokset ja suosimansa teknologiapinot. webforJ tuo nämä sovellukset verkkoon edellyttämättä arkkitehtuurimuutoksia tai teknologiasiirtymiä. Toimialueen logiikka, tietojen käyttömallit ja tietoturvatoteutukset toimivat edelleen täsmälleen kuten ennenkin.
 
-## Taustakehysyhteensopivuus {#backend-framework-compatibility}
+## Taustajärjestelmäkehysten yhteensopivuus {#backend-framework-compatibility}
 
-webforJ toimii minkä tahansa Java-taustakehyksen tai arkkitehtuurimallin kanssa, jota jo käytät. Olitpa rakentamassa Jakarta EE:lle, käyttämässä mikropalveluarkkitehtuuria tai työskentelemässä mukautetun kehyksen kanssa, webforJ tarjoaa UI-kerroksen häiritsemättä taustasuunnitelmaasi.
+webforJ toimii minkä tahansa jo käyttämäsi Java-taustajärjestelmäkehyksen tai arkkitehtuurimallin kanssa. Rakennatpa sovellusta Jakarta EE:n päälle, käytät mikropalveluarkkitehtuuria tai työskentelet mukautetun kehyksen kanssa, webforJ kytkeytyy siihen vaikuttamatta taustajärjestelmäsi suunnitteluun.
 
-Tiettyjen suosittujen kehysten osalta webforJ tarjoaa erityisiä integraatioita, jotka vähentävät boilerplate-koodia ja tehostavat kehitystä. Nämä integraatiot tarjoavat mukavuuksia, kuten automaattisen riippuvuuden injektoinnin UI-komponentteihin, yksinkertaistetun konfiguroinnin ja kehyskohtaisen työkalutuen. Jos et näe kehystäsi mainittuna alla, se ei tarkoita, että webforJ ei toimisi sen kanssa - se yksinkertaisesti tarkoittaa, että sinun on konfiguroitava yhteys kehysmallisi vakiintuneiden perusperiaatteiden mukaan sen sijaan, että käyttäisit esivalmistettua integraatiota.
+Joillekin suosituille kehyksille webforJ tarjoaa erityisiä integraatioita, jotka vähentävät toistuvan koodin määrää ja sujuvoittavat kehitystä. Nämä integraatiot tarjoavat hyödyllisiä ominaisuuksia, kuten riippuvuuksien automaattisen injektoinnin käyttöliittymäkomponentteihin, yksinkertaistetun konfiguroinnin ja kehyskohtaisen työkalutuen. Jos et näe käyttämääsi kehystä alla olevassa luettelossa, se ei tarkoita, ettei webforJ toimisi sen kanssa. Se tarkoittaa, että määrität yhteyden käyttämällä kehyksesi vakiintuneita toimintamalleja valmiin integraation sijaan.
 
-Alla olevat integraatiot ovat täysin valinnaisia. Ne on suunniteltu parantamaan kehittäjäkokemusta, kun käytetään tiettyjä kehyksiä, mutta webforJ:n ydintoiminnot toimivat identtisesti olitpa sitten käyttänyt integraatiota tai et. Taustakehyksesi jatkaa palvelujen, tietojen käyttämisen ja liiketoimintalogiikan hallintaa, kun taas webforJ käsittelee esityskerrosta.
+Alla kuvatut integraatiot ovat täysin valinnaisia. Ne parantavat kehittäjäkokemusta tiettyjen kehysten kanssa, mutta webforJ:n ydintoiminnot toimivat samalla tavalla riippumatta siitä, käytätkö integraatiota. Taustajärjestelmäkehyksesi hallitsee edelleen palveluita, tietojen käyttöä ja liiketoimintalogiikkaa, kun taas webforJ vastaa näytöistä, navigoinnista ja käyttäjän toiminnasta.
 
 ## Aiheet {#topics}
 

@@ -1699,5 +1699,39 @@
   "component.blogPostFooter.askByEmail": {
     "message": "Vraag per e-mail",
     "description": "Email contact link label"
+  },
+  "component.postCta.startApp": {
+    "message": "Start je app"
+  },
+  "component.postCta.screenshot": {
+    "message": "Stuur een screenshot"
+  },
+  "component.connectCard.bookCall": {
+    "message": "Plan een gesprek"
+  },
+  "component.connectCard.languages": {
+    "message": "We spreken {languages}"
+  },
+  "component.connectLauncher.topics.askAi": {
+    "message": "Een vraag over de documentatie: vraag het aan AI"
+  },
+  "component.connectLauncher.topics.bug": {
+    "message": "Bug gevonden? Meld het op GitHub."
+  },
+  "component.connectLauncher.languages": {
+    "message": "We spreken {languages}"
+  },
+  "component.exploreCard.shortBadge": {
+    "message": "Kort"
+  },
+  "component.exploreCard.article": {
+    "message": "Artikel"
+  },
+  "component.exploreCard.keepLearning": {
+    "message": "Blijf leren"
+  },
+  "component.blogPostFooter.bookCall": {
+    "message": "Plan een gesprek",
+    "description": "Button label: book a discovery call"
   }
 }

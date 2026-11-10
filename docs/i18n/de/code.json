@@ -1699,5 +1699,39 @@
   "component.blogPostFooter.askByEmail": {
     "message": "Per E-Mail anfragen",
     "description": "Email contact link label"
+  },
+  "component.postCta.startApp": {
+    "message": "App starten"
+  },
+  "component.postCta.screenshot": {
+    "message": "Screenshot senden"
+  },
+  "component.connectCard.bookCall": {
+    "message": "Gespräch vereinbaren"
+  },
+  "component.connectCard.languages": {
+    "message": "Wir sprechen {languages}"
+  },
+  "component.connectLauncher.topics.askAi": {
+    "message": "Frage zur Doku: KI fragen"
+  },
+  "component.connectLauncher.topics.bug": {
+    "message": "Fehler gefunden: Auf GitHub melden\n"
+  },
+  "component.connectLauncher.languages": {
+    "message": "Wir sprechen {languages}"
+  },
+  "component.exploreCard.shortBadge": {
+    "message": "Kurz"
+  },
+  "component.exploreCard.article": {
+    "message": "Artikel"
+  },
+  "component.exploreCard.keepLearning": {
+    "message": "Weiterlernen"
+  },
+  "component.blogPostFooter.bookCall": {
+    "message": "Gespräch vereinbaren",
+    "description": "Button label: book a discovery call"
   }
 }

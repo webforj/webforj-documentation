@@ -1,9 +1,12 @@
 ---
 title: 集成
 hide_table_of_contents: true
-sidebar_class_name: new-content
 hide_giscus_comments: true
-_i18n_hash: 987f1fb9ef8aa9e50ff4ec00320d2dd7
+sidebar_class_name: has-new-content
+description: >-
+  Combine webforJ with Spring Boot, Spring Data, Kotlin DSL, Webswing, JBang,
+  and AI tooling while keeping your backend stack independent.
+_i18n_hash: 2272fe4265260266e667c1b22703a3b6
 ---
 <Head>
   <style>{`
@@ -13,21 +16,21 @@ _i18n_hash: 987f1fb9ef8aa9e50ff4ec00320d2dd7
   `}</style>
 </Head>
 
-webforJ 被设计为一个与框架无关的 Java 应用程序的 UI 层。它专注于构建丰富的基于组件的用户界面，同时将后端架构决策完全交给您。这种明确的关注点分离使得 webforJ 能够与任何 Java 技术栈兼容，从传统的 servlet 到现代的微服务。
+webforJ 是一个面向业务 Web 应用的全栈 Java 框架，不依赖特定后端。你可以使用 Java 构建整个应用，从界面和路由到表单、数据绑定和路由安全；而持久化层、依赖注入、服务和后端架构则由你自行选择。因此，webforJ 可以与任何 Java 技术栈配合使用，从传统 Servlet 到 Spring Boot 和微服务架构均可。
 
-## 架构哲学 {#architecture-philosophy}
+## 架构理念 {#architecture-philosophy}
 
-webforJ 故意将 UI 和后端关注点分开。与全面堆栈框架不同，全面堆栈框架会决定您整个应用程序的结构，webforJ 仅提供构建复杂用户界面所需的内容。持久层的选择、依赖注入框架、安全实现和服务架构完全独立于您的 UI 技术。
+webforJ 涵盖了应用向用户展示数据并处理数据所需的一切：组件、布局、路由、带绑定和验证功能的表单、由存储库提供支持的表格、路由安全以及翻译。它不会规定系统其余部分的工作方式。你可以独立于 webforJ 选择持久化层、依赖注入框架、身份提供方和服务架构。
 
-这种方法认识到大多数组织已经建立了后端模式、现有服务层和首选技术栈。webforJ 通过现代 UI 框架提升这些应用程序，而无需进行架构更改或技术迁移。您的领域逻辑、数据访问模式和安全实现继续以原来的方式工作。
+这种方式考虑到了大多数组织已经确立的后端模式、现有服务层和偏好的技术栈。webforJ 能让这些应用接入 Web，而无需更改架构或迁移技术。你的领域逻辑、数据访问模式和安全实现都可以照常运行。
 
 ## 后端框架兼容性 {#backend-framework-compatibility}
 
-webforJ 可以与您已经使用的任何 Java 后端框架或架构模式配合使用。无论您是在 Jakarta EE 上构建，使用微服务架构，还是使用自定义框架，webforJ 都提供 UI 层，而不干扰您的后端设计。
+webforJ 可与任何你已在使用的 Java 后端框架或架构模式配合使用。无论你基于 Jakarta EE 构建应用、采用微服务架构，还是使用自定义框架，webforJ 都能与之连接，而不会干扰你的后端设计。
 
-对于某些流行框架，webforJ 提供特定集成，减少样板代码并简化开发。这些集成提供诸如自动将依赖注入到 UI 组件、简化配置和框架特定工具支持等便捷功能。如果您在下方未看到您的框架，这并不意味着 webforJ 不适用于它——这只是意味着您将使用框架的标准模式来配置连接，而不是使用预构建的集成。
+对于一些常用框架，webforJ 提供了专门的集成，以减少样板代码并简化开发。这些集成提供了诸如自动向 UI 组件注入依赖、简化配置以及支持框架专用工具等便利功能。如果你没有在下方看到所用的框架，并不意味着 webforJ 无法与之配合使用。这意味着你将使用该框架的标准模式配置连接，而不是使用预构建的集成。
 
-以下集成是完全可选的。它们存在是为了改善使用特定框架的开发者体验，但无论您是否使用集成，webforJ 的核心功能都以相同的方式工作。您的后端框架继续管理服务、数据访问和业务逻辑，而 webforJ 处理展示层。
+下方的集成都完全可选。它们旨在提升使用特定框架时的开发体验；无论是否使用集成，webforJ 的核心功能都完全相同。你的后端框架继续负责管理服务、数据访问和业务逻辑，而 webforJ 负责界面、导航和用户交互。
 
 ## 主题 {#topics}
 

@@ -1699,5 +1699,39 @@
   "component.blogPostFooter.askByEmail": {
     "message": "Ask by email",
     "description": "Email contact link label"
+  },
+  "component.postCta.startApp": {
+    "message": "Start your app"
+  },
+  "component.postCta.screenshot": {
+    "message": "Send a screenshot"
+  },
+  "component.connectCard.bookCall": {
+    "message": "Book a call"
+  },
+  "component.connectCard.languages": {
+    "message": "We speak {languages}"
+  },
+  "component.connectLauncher.topics.askAi": {
+    "message": "A question about the docs: ask AI"
+  },
+  "component.connectLauncher.topics.bug": {
+    "message": "Found a bug: report it on GitHub"
+  },
+  "component.connectLauncher.languages": {
+    "message": "We speak {languages}"
+  },
+  "component.exploreCard.shortBadge": {
+    "message": "Short"
+  },
+  "component.exploreCard.article": {
+    "message": "Article"
+  },
+  "component.exploreCard.keepLearning": {
+    "message": "Keep learning"
+  },
+  "component.blogPostFooter.bookCall": {
+    "message": "Book a call",
+    "description": "Button label: book a discovery call"
   }
 }

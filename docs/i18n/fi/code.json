@@ -1699,5 +1699,39 @@
   "component.blogPostFooter.askByEmail": {
     "message": "Kysy sähköpostitse",
     "description": "Email contact link label"
+  },
+  "component.postCta.startApp": {
+    "message": "Käynnistä sovellus\n"
+  },
+  "component.postCta.screenshot": {
+    "message": "Lähetä kuvakaappaus"
+  },
+  "component.connectCard.bookCall": {
+    "message": "Varaa puhelu"
+  },
+  "component.connectCard.languages": {
+    "message": "Puhumme {languages}"
+  },
+  "component.connectLauncher.topics.askAi": {
+    "message": "Kysymys dokumentaatiosta: kysy tekoälyltä"
+  },
+  "component.connectLauncher.topics.bug": {
+    "message": "Löysitkö virheen? Ilmoita siitä GitHubissa."
+  },
+  "component.connectLauncher.languages": {
+    "message": "Puhumme {languages}"
+  },
+  "component.exploreCard.shortBadge": {
+    "message": "Lyhyt"
+  },
+  "component.exploreCard.article": {
+    "message": "Artikkeli"
+  },
+  "component.exploreCard.keepLearning": {
+    "message": "Jatka oppimista"
+  },
+  "component.blogPostFooter.bookCall": {
+    "message": "Varaa puhelu",
+    "description": "Button label: book a discovery call"
   }
 }

@@ -1699,5 +1699,39 @@
   "component.blogPostFooter.askByEmail": {
     "message": "Preguntar por correo electrónico",
     "description": "Email contact link label"
+  },
+  "component.postCta.startApp": {
+    "message": "Inicia tu aplicación"
+  },
+  "component.postCta.screenshot": {
+    "message": "Enviar una captura de pantalla"
+  },
+  "component.connectCard.bookCall": {
+    "message": "Agendar una llamada"
+  },
+  "component.connectCard.languages": {
+    "message": "Hablamos {languages}"
+  },
+  "component.connectLauncher.topics.askAi": {
+    "message": "¿Una pregunta sobre la documentación? Pregunta a la IA."
+  },
+  "component.connectLauncher.topics.bug": {
+    "message": "¿Encontraste un error? Repórtalo en GitHub."
+  },
+  "component.connectLauncher.languages": {
+    "message": "Hablamos {languages}"
+  },
+  "component.exploreCard.shortBadge": {
+    "message": "Corto"
+  },
+  "component.exploreCard.article": {
+    "message": "Artículo"
+  },
+  "component.exploreCard.keepLearning": {
+    "message": "Sigue aprendiendo"
+  },
+  "component.blogPostFooter.bookCall": {
+    "message": "Reservar una llamada",
+    "description": "Button label: book a discovery call"
   }
 }

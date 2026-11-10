@@ -1699,5 +1699,39 @@
   "component.blogPostFooter.askByEmail": {
     "message": "通过邮件咨询",
     "description": "Email contact link label"
+  },
+  "component.postCta.startApp": {
+    "message": "启动应用"
+  },
+  "component.postCta.screenshot": {
+    "message": "发送截图"
+  },
+  "component.connectCard.bookCall": {
+    "message": "预约通话"
+  },
+  "component.connectCard.languages": {
+    "message": "我们支持{languages}"
+  },
+  "component.connectLauncher.topics.askAi": {
+    "message": "文档问题：询问 AI"
+  },
+  "component.connectLauncher.topics.bug": {
+    "message": "发现错误？请在 GitHub 上报告。\n"
+  },
+  "component.connectLauncher.languages": {
+    "message": "我们会说 {languages}"
+  },
+  "component.exploreCard.shortBadge": {
+    "message": "短"
+  },
+  "component.exploreCard.article": {
+    "message": "文章"
+  },
+  "component.exploreCard.keepLearning": {
+    "message": "继续学习"
+  },
+  "component.blogPostFooter.bookCall": {
+    "message": "预约通话",
+    "description": "Button label: book a discovery call"
   }
 }
