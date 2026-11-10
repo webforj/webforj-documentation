@@ -62,6 +62,16 @@
         <to>/$1/blog/authors.html</to>
     </rule>
     <rule>
+        <name>Blog Author Page</name>
+        <from>^/blog/authors/([^/]+)$</from>
+        <to>/blog/authors/$1.html</to>
+    </rule>
+    <rule>
+        <name>Blog Author Page Localized</name>
+        <from>^/([^/]+)/blog/authors/([^/]+)$</from>
+        <to>/$1/blog/authors/$2.html</to>
+    </rule>
+    <rule>
         <name>Blog Tags List</name>
         <from>^/blog/tags$</from>
         <to>/blog/tags.html</to>
