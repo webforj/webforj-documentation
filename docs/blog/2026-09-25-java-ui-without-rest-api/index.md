@@ -5,13 +5,13 @@ slug: java-ui-without-rest-api
 date: 2026-09-25
 authors: webforJ
 tags: [insights, spring, web development, full-stack]
-image: ./cover_new.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-25-java-ui-without-rest-api/cover-v2.jpg
 hide_table_of_contents: false
 
 # --- Internal tracking (stripped at publish) ---
 ---
 
-![cover_new](./cover_new.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-25-java-ui-without-rest-api/cover-v2.jpg)
 
 A product owner requests a feature: search-as-you-type across the customer list. The backend is an afternoon. Add a Spring service, write the query, wire up the result. Done. Then the wiring to the frontend starts: add a REST endpoint, configure CORS, set up Axios in the React component, handle the loading state, handle error responses, connect the frontend build pipeline to the backend. The feature took an afternoon. The protocol between the feature and the user took another two days.
 
