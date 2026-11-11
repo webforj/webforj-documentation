@@ -118,6 +118,8 @@ This moves `WebforjServlet` from `/*` to `/ui/*` and frees the rest of the names
 
 Moving a template screen to a component is mostly mechanical, which suits an AI coding agent. The webforJ AI plugin keeps the result correct. It bundles the [MCP server](/docs/ai-tooling/mcp), so the assistant checks real webforJ APIs instead of guessing, with [Agent Skills](/docs/ai-tooling/agent-skills) that hold the framework's patterns. See the [AI tooling overview](/docs/ai-tooling) to install it.
 
+The agent can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Next step {#next-step}
 
 Generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj), pick Spring Boot under Runs on, and rebuild your most interactive screen as a view. Compare it with the template and fragment version. The [getting started guide](/docs/introduction/getting-started) covers the first run.

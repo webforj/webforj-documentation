@@ -98,6 +98,8 @@ This migration suits an AI coding assistant. The input is a ZUL file plus its co
 
 The [webforJ AI plugin](/docs/ai-tooling) reduces guessing. It installs the [MCP server](/docs/ai-tooling/mcp) so the assistant can look up real classes and methods, plus the [Agent Skills](/docs/ai-tooling/agent-skills) with workflows for forms and components. A good prompt names one ZUL file, its view model, the target package, and the route. Do one screen per session and run the app after each.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Is webforJ the right fit? {#choosing}
 
 Choose webforJ when you want to stay on the server and in Java, remove the markup layer, and move to Spring Boot conventions. If your team is comfortable with MVVM binding, the move is closer to a translation than a redesign.

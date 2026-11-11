@@ -83,6 +83,8 @@ Mechanical translation suits an AI coding assistant. Give it one action, its map
 
 Review and test every generated screen like any other change.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Your next step {#next-step}
 
 Generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj), move one service into it, and port the simplest screen you have. The [getting started guide](/docs/introduction/getting-started) walks through the first run.

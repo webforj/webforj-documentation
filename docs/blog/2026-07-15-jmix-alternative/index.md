@@ -127,6 +127,8 @@ The [Table component](/docs/components/table/overview) covers sorting, selection
 
 Moving one view at a time is repetitive work, which suits an AI coding assistant. Give it a single screen and the entity or service behind it, and ask for the matching webforJ view. The webforJ AI plugin keeps the result grounded: its [MCP server](/docs/ai-tooling/mcp) lets the assistant look up real class and method names, and its [Agent Skills](/docs/ai-tooling/agent-skills) guide forms and secured routes. Setup is on the [AI plugin page](/docs/ai-tooling). Review each screen as you would any other change.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## A first step {#a-first-step}
 
 Generate a Spring Boot project on [startforJ](https://docs.webforj.com/startforj), add one of your existing repositories, and build a single list view with `SpringDataRepository` and `Table`. That one view tells you more about fit than any feature checklist. The [getting started guide](/docs/introduction/getting-started) walks through the first run.

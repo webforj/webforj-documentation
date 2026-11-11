@@ -41,6 +41,8 @@ Follow this order and each step ships something usable.
 
 Each replaced screen gets its own route, so users move between old and new screens inside one web app.
 
+A coding assistant can do much of that screen-by-screen work, and it can check its own work too. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java).
+
 ## How Swing concepts map to webforJ {#swing-to-webforj-mapping}
 
 Most Swing concepts have a direct counterpart. The table lists the ones you meet first.

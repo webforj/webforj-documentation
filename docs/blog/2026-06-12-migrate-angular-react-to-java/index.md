@@ -105,6 +105,8 @@ The [webforJ AI plugin](/docs/ai-tooling) makes that output trustworthy. It conn
 
 You still review each screen before the old one is retired, but the repetitive part of the port, rewriting markup and state as Java components, goes much faster.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## What happens to my React logic? {#what-happens-to-my-react-logic}
 
 Business rules that lived in the browser move to Java. This is usually a simplification: validation you duplicated on the client and the server becomes one set of rules. State you kept in a store becomes fields on a view or a Spring bean.

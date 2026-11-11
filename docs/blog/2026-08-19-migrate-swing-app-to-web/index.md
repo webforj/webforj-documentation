@@ -112,6 +112,8 @@ Moving screen by screen is repetitive work, which suits an AI coding assistant. 
 
 The assistant needs to know the real webforJ API instead of guessing at it. The [webforJ AI plugin](/docs/ai-tooling) connects your assistant to the [MCP server](/docs/ai-tooling/mcp), which looks up webforJ documentation and API details on demand, and to [Agent Skills](/docs/ai-tooling/agent-skills) that tell it how to use them in the right order. It works with Claude Code, Copilot, Cursor, Gemini, and Codex. AI can still produce incorrect code in complex scenarios, so review and test every screen before it ships. The usual review for a ported screen is the one you already do: compare behavior against the Swing original.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Next step {#next-step}
 
 Pick one screen, ideally a simple list and edit form, and build it in webforJ. Generate a project with [startforJ](https://docs.webforj.com/startforj) or follow [getting started](/docs/introduction/getting-started). If the app is large, put Webswing in front of it first and follow the [Webswing docs](/docs/integrations/webswing/overview).

@@ -111,6 +111,8 @@ A page is a Java class plus a template, which is a tidy unit for an AI coding as
 
 The webforJ AI plugin keeps the result honest. It connects your assistant to the [MCP server](/docs/ai-tooling/mcp) for real class and method signatures, and to the [Agent Skills](/docs/ai-tooling/agent-skills) that guide forms, components, and styling. The [AI plugin overview](/docs/ai-tooling) covers installation. You still review the output, but the draft is far more likely to compile.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Where webforJ fits best {#choosing}
 
 webforJ fits when you want Java as the only language for the screens, when the class and template pairing costs you time, and when you run or plan to run Spring Boot. It is the full-stack Java framework for business web apps, with routing, layouts, forms with data binding, tables, route security, and translation in one place. Test the fit with a single screen before committing to more.
