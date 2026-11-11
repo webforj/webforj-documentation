@@ -42,8 +42,8 @@ function VideoThumb({ video }) {
   };
   return (
     <span className={styles.frame}>
-      {short && <img className={styles.backdrop} src={video.thumbnail} alt="" loading="lazy" onError={fallback} />}
-      <img className={short ? styles.upright : styles.wide} src={video.thumbnail} alt="" loading="lazy" onError={fallback} />
+      {short && <img className={styles.backdrop} src={video.thumbnail} alt="" aria-hidden="true" loading="lazy" onError={fallback} />}
+      <img className={short ? styles.upright : styles.wide} src={video.thumbnail} alt={cleanTitle(video.title || '')} loading="lazy" onError={fallback} />
       <span className={styles.play} aria-hidden="true">
         <FaPlay />
       </span>
@@ -90,7 +90,7 @@ function ArticleCard({ post }) {
   return (
     <Tile
       href={post.permalink}
-      picture={<span className={styles.frame}>{cover && <img className={styles.wide} src={cover} alt="" loading="lazy" />}</span>}
+      picture={<span className={styles.frame}>{cover && <img className={styles.wide} src={cover} alt={post.title} loading="lazy" />}</span>}
       label={translate({ id: 'component.exploreCard.article', message: 'Article' })}
       title={post.title}
     />

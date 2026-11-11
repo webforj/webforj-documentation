@@ -19,7 +19,7 @@ function RelatedCard({ post }) {
         <span className={styles.dots} aria-hidden="true" />
         <span className={styles.file}>~{post.permalink}.md</span>
       </span>
-      {src && <img className={styles.cover} src={src} alt="" loading="lazy" />}
+      {src && <img className={styles.cover} src={src} alt={post.title} loading="lazy" />}
       <span className={styles.body}>
         <span className={styles.title}>{post.title}</span>
         {post.description && <span className={styles.excerpt}>{post.description}</span>}

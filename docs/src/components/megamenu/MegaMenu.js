@@ -69,9 +69,9 @@ function CodePreview({ lines }) {
   );
 }
 
-function ImagePreview({ src }) {
+function ImagePreview({ src, alt }) {
   const url = useBaseUrl(src);
-  return <img className={styles.shot} src={url} alt="" loading="lazy" />;
+  return <img className={styles.shot} src={url} alt={alt || ''} loading="lazy" />;
 }
 
 // a short muted clip, playing on loop while its product is shown, with a
@@ -131,12 +131,12 @@ function VideoPreview({ src }) {
   );
 }
 
-function Preview({ preview }) {
+function Preview({ preview, alt }) {
   switch (preview?.type) {
     case 'code':
       return <CodePreview lines={preview.lines} />;
     case 'image':
-      return <ImagePreview src={preview.src} />;
+      return <ImagePreview src={preview.src} alt={alt} />;
     case 'video':
       return <VideoPreview src={preview.src} />;
     default:
@@ -198,7 +198,7 @@ function ProductsLayout({ products }) {
         </div>
         <div className={styles.windowBody}>
           <div className={styles.previewArea}>
-            <Preview preview={product.preview} />
+            <Preview preview={product.preview} alt={product.label} />
           </div>
           <p className={styles.previewTitle}>{product.label}</p>
           <p className={styles.previewText}>{product.description}</p>
