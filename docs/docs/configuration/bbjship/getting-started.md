@@ -28,18 +28,48 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 
 ### Option 2: using the command line {#option-2-using-the-command-line}
 
-If you prefer to use the command line, generate the project with the official webforJ archetypes:
+If you prefer to use the command line, generate the project with the official [webforJ archetypes](/docs/building-ui/archetypes/overview):
 
-```bash {8}
-mvn -B archetype:generate \
-  -DarchetypeGroupId=com.webforj \
-  -DarchetypeArtifactId=webforj-archetype-hello-world \
-  -DarchetypeVersion=LATEST \
-  -DgroupId=org.example \
-  -DartifactId=my-app \
-  -Dversion=1.0-SNAPSHOT \
-  -Dflavor=webforj-bbj
-```
+<!-- vale off -->
+<Tabs>
+  <TabItem value="bash" label="Bash/Zsh" default>
+    ```bash {8}
+    mvn -B archetype:generate \
+    -DarchetypeGroupId=com.webforj \
+    -DarchetypeArtifactId=webforj-archetype-hello-world \
+    -DarchetypeVersion=LATEST \
+    -DgroupId=org.example \
+    -DartifactId=my-app \
+    -Dversion=1.0-SNAPSHOT \
+    -Dflavor=webforj-bbj
+    ```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+    ```powershell {8}
+    mvn -B archetype:generate `
+    -DarchetypeGroupId="com.webforj" `
+    -DarchetypeArtifactId="webforj-archetype-blank" `
+    -DarchetypeVersion="LATEST" `
+    -DgroupId="org.example" `
+    -DartifactId="my-app" `
+    -Dversion="1.0-SNAPSHOT" `
+    -Dflavor="webforj-bbj"
+    ```
+  </TabItem>
+  <TabItem value="cmd" label="Command Prompt">
+    ```console {8}
+    mvn -B archetype:generate ^
+    -DarchetypeGroupId="com.webforj" ^
+    -DarchetypeArtifactId="webforj-archetype-blank" ^
+    -DarchetypeVersion="LATEST" ^
+    -DgroupId="org.example" ^
+    -DartifactId="my-app" ^
+    -Dversion="1.0-SNAPSHOT" ^
+    -Dflavor="webforj-bbj"
+    ```
+  </TabItem>
+</Tabs>
+<!-- vale on -->
 
 With the `flavor` parameter, the archetype generates a project that runs with BBjServices.
 
