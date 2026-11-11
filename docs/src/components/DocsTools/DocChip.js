@@ -102,10 +102,10 @@ export default function DocChip({ chip, label, href, exclude, tooltipText, color
     case 'scoped':
       tooltipText = translate({
         id: 'chip.tooltipText.scoped',
-        message: 'This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.',
+        message: 'This component uses scoped components to avoid leaks and conflicts, rather than relying on the native shadow DOM.',
         description: 'Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model).'
       });
-      exclude = 'true';
+      href = "/docs/glossary#scoped-components";
       label = translate({
         id: 'chip.label.scoped',
         message: 'Scoped',
