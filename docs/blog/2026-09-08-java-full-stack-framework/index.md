@@ -11,9 +11,11 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-08-java-full-stack-framework/cover.jpg)
 
-webforJ is a Java full stack framework. You write the UI, routing, forms, validation, security and data access in Java, inside one project, with one build. On Spring Boot it ships as a single executable JAR, and your views receive services and repositories through constructor injection like any other Spring bean.
+Most Java teams know the split: the backend is Java, and the screens live in a second project with another language, another build, and an API between the two. A Java full stack framework removes that split. It's a framework where you build every layer of a web app in Java: the screens, the routing between them, the forms and their validation, the security rules and the data access, all in one project with one build.
 
-That removes the second half of the usual "Java backend plus JavaScript frontend" setup: the separate frontend project, the API contract between the two, and the validation you write twice. This post lists what a full stack Java app contains in webforJ, then walks through a small slice from entity to table to form.
+webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java. On Spring Boot it ships as a single executable JAR, and your views receive services and repositories through constructor injection like any other Spring bean. The separate frontend project, the API contract and the validation you write twice all go away.
+
+This post lists what a full stack Java app contains in webforJ, then walks through a small slice from entity to table to form.
 
 <!-- truncate -->
 
@@ -32,6 +34,21 @@ A full stack framework should let one team own every layer of a feature without 
 | Delivery | One Spring Boot JAR, or a WAR for a servlet container |
 
 Everything in that table is Java, compiled by one toolchain, and tested with the tools you already use for the rest of your backend.
+
+## The full stack checklist {#full-stack-checklist}
+
+Use this list to judge any Java full stack framework. Each row is a capability a business app needs, what webforJ gives you for it, and where to read more.
+
+| Capability | What you get | Docs |
+| --- | --- | --- |
+| Routing | `@Route` maps a view class to a URL, with deep links and browser history | [Routing](/docs/routing/overview) |
+| Layouts and components | Buttons, fields, dialogs and tables as Java classes, arranged with `AppLayout` and `FlexLayout` | AppLayout, FlexLayout |
+| Forms with binding and validation | `BindingContext` keeps fields and a bean in sync and checks Jakarta Bean Validation rules | Data Binding |
+| Tables backed by repositories | `Table` reads from a `Repository`, and `SpringDataRepository` brings paging, sorting and filtering from Spring Data | Repository, Spring Data JPA |
+| Route security | `@AnonymousAccess`, `@PermitAll`, `@RolesAllowed` and `@DenyAll`, checked before a view renders | Security |
+| Translation | Text from resource bundles through `t()`, with placeholders and browser locale detection | [Translation](/docs/advanced/i18n-localization) |
+| Installable apps | `@AppProfile` generates a web app manifest so users can install the app on their device | [Installable Apps](/docs/configuration/installable-apps) |
+| Testing | JUnit tests for app logic, and Selenium or Playwright end-to-end tests for full user journeys | [Testing](/docs/testing/overview) |
 
 ## What a Java backend plus JavaScript frontend costs {#cost-of-the-split}
 
@@ -176,6 +193,14 @@ To check any framework against the same requirements, use the list in [Java fram
 ### What is a Java full stack framework? {#faq-what-is-it}
 
 It's a framework that covers the UI, the business logic and the data layer in Java. In webforJ that means components, routing, form binding, route security and Spring Data access in one project that you build and deploy as one artifact.
+
+### Can Java do frontend and backend? {#faq-frontend-and-backend}
+
+Yes. With a full-stack Java framework the screens are Java classes too. In webforJ a view is a Java class built from components and event listeners, it calls your services in the same JVM, and the browser shows the result as a web page. There is no separate JavaScript project for the frontend.
+
+### Is a full stack Java framework a good fit for business apps? {#faq-business-apps}
+
+Yes, when the app is mostly forms, tables, dashboards, and workflows. Those screens need binding, validation, data grids and access rules, and a full stack Java framework gives you all of them in the language your backend already uses. If several independent clients need one public API from the start, a split architecture can still make sense.
 
 ### Do I need to know JavaScript to use webforJ? {#faq-javascript}
 
