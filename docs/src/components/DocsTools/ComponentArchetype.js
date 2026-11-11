@@ -4,8 +4,10 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 import Admonition from '@theme/Admonition';
-import { translate } from '@docusaurus/Translate';
+import Translate, {translate} from '@docusaurus/Translate';
+import Link from '@docusaurus/Link';
 import TableWrapper from './TableWrapper';
+import DocChip from './DocChip';
 
 export default function ComponentArchetype({ project, flavor = "webforj" }) {
   return (<>
@@ -162,11 +164,26 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
                   message: 'Standard webforJ app.',
                   description: 'webforj flavor description'
                 })}</li>
-                <li><code>webforj-spring</code> - {translate({
+                <li><code>webforj-spring</code> <DocChip chip='since' label='25.02' />-{' '}{translate({
                   id: 'component.archetype.table.flavor.spring',
-                  message: 'webforJ app with Spring Boot support (requires webforJ 25.02 or higher).',
+                  message: 'webforJ app with Spring Boot support.',
                   description: 'webforj-spring flavor description'
                 })}</li>
+                <li><code>webforj-bbj</code> <DocChip chip='since' label='26.03' />-{' '}
+                  <Translate
+                    id='component.archetype.table.flavor.bbj'
+                    description='webforj-bbj flavor description'
+                    values={{
+                      BBjServices: 'BBjServices',
+                      BBjShipLink: (
+                        <Link to='/docs/configuration/bbjship/overview'>
+                          BBjShip
+                        </Link>
+                      ),
+                    }}>
+                    {'webforJ app that runs in {BBjServices} through {BBjShipLink}.'}
+                  </Translate>
+                </li>
               </ul>
             </td>
           </tr>
