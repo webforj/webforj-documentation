@@ -14,9 +14,7 @@ The [frontend bundler](/docs/managing-resources/bundler/overview) minifies CSS a
 
 ## Setup {#setup}
 
-If you created your project using [startforJ](https://docs.webforj.com/startforj) or a webforJ [archetype](/docs/building-ui/archetypes/overview), the minifier plugin is already configured and runs automatically when you build with the `prod` profile using `mvn package -Pprod`.
-
-For manual setup, the minifier requires two configurations: an annotation processor to discover assets during compilation, and a plugin to perform the minification.
+For setup, the minifier requires two configurations: an annotation processor to discover assets during compilation, and a plugin to perform the minification.
 
 <Tabs>
 <TabItem value="maven" label="Maven">
