@@ -2,13 +2,19 @@
    page is framed top and bottom. Links change color on hover, nothing moves. */
 
 .footer {
-  --ft-bg: #242526; /* the dark navbar */
-  --ft-line: rgb(255 255 255 / 0.1);
+  --ft-bg: #19191c; /* the flat near-black of the navbar and the home page */
+  --ft-line: rgb(255 255 255 / 0.12);
   --ft-text: #f2f3f5;
-  --ft-muted: rgb(255 255 255 / 0.62);
+  --ft-muted: rgb(255 255 255 / 0.66);
 
-  background-color: var(--ft-bg);
+  position: relative;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  background: var(--ft-bg);
   color: var(--ft-text);
+}
+
+.footer > * {
+  position: relative;
 }
 
 .inner {

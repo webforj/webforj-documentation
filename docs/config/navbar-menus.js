@@ -8,10 +8,17 @@
 // `npm run write-translations` and the translation workflow.
 
 module.exports = [
-  { type: 'custom-megaMenu', position: 'left', label: 'Products', menu: 'products' },
+  { type: 'custom-megaMenu', position: 'left', label: 'Platform', menu: 'products' },
   { type: 'custom-megaMenu', position: 'left', label: 'Developers', menu: 'developers' },
   { type: 'custom-megaMenu', position: 'left', label: 'Resources', menu: 'resources' },
   { type: 'custom-megaMenu', position: 'left', label: 'Support', menu: 'support' },
+  {
+    // a plain link to the showcase page on this site
+    label: 'Showcase',
+    to: '/showcase',
+    position: 'left',
+    className: 'navbar-plain-link navbar-showcase-link',
+  },
   {
     // a plain link to the pricing page on webforj.com
     label: 'Pricing',

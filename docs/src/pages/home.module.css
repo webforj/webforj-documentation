@@ -1,0 +1,2042 @@
+/* Home page of the webforJ docs. A flat canvas with thin dashed guide
+   lines and very large type. The text uses one accent, the webforJ blue.
+   Colour lives in the drawing of the stack, where each layer has its own,
+   and in the places, where each product has its own. */
+
+.page {
+  --h-text: #fff;
+  --h-muted: rgb(255 255 255 / 0.74);
+  --h-lead: rgb(255 255 255 / 0.88);
+  --h-line: rgb(255 255 255 / 0.12);
+  --h-rule: rgb(255 255 255 / 0.22);
+  --h-quiet: rgb(255 255 255 / 0.42);
+  --h-accent: #4d8bff;
+  --h-panel: #212126;
+  --h-brand: #2f6bff;
+  --h-ink: #101014;
+  --h-on-white: #0b1a66;
+  --h-mint: #7ee2d0;
+  --h-terminal: #0b0d16;
+  --h-radius: 14px;
+  --h-radius-card: 24px;
+  --h-fast: 150ms;
+  --h-ease: ease-out;
+  --h-gutter: 16px;
+  --h-section-space: 80px;
+  --h-title-gap: 40px;
+  position: relative;
+  color: var(--h-text);
+  overflow-x: clip;
+  background: #19191c;
+}
+
+@media (min-width: 768px) {
+  .page {
+    --h-gutter: 32px;
+  }
+}
+
+@media (min-width: 997px) {
+  .page {
+    --h-section-space: 104px;
+  }
+}
+
+/* A fine film grain over the whole canvas. It breaks up the smooth colour
+   fields the way print does, and sits under all content. */
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.page p {
+  text-wrap: pretty;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--h-gutter);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+}
+
+/* Buttons. The DWC theme removes link borders on hover, so each link keeps
+   its own border and hover changes colour only. */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 26px;
+  border: 1px solid transparent;
+  border-radius: var(--h-radius);
+  font-size: 1.0625rem;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--h-fast) var(--h-ease),
+    border-color var(--h-fast) var(--h-ease),
+    color var(--h-fast) var(--h-ease);
+}
+
+.buttonPrimary {
+  border-color: #fff;
+  background: #fff;
+  color: var(--h-on-white);
+}
+
+.page a.buttonPrimary:is(:hover, :focus) {
+  border: 1px solid #fff;
+  background: rgb(255 255 255 / 0.86);
+  color: var(--h-on-white);
+  text-decoration: none;
+}
+
+.button:focus-visible,
+.search:focus-visible,
+.layerLinks a:focus-visible,
+.stop:focus-visible,
+.place:focus-visible,
+.helpLink:focus-visible,
+.talkButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Titles: two lines, the second in the accent colour of the page */
+
+.heroTitle,
+.bigTitle {
+  text-wrap: balance;
+  margin: 0;
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+  color: var(--h-text);
+}
+
+.heroTitle span,
+.bigTitle span {
+  display: block;
+  padding-bottom: 0.08em;
+  color: var(--h-accent);
+}
+
+.heroTitle {
+  font-size: clamp(3.25rem, 1rem + 7.2vw, 7.25rem);
+}
+
+.bigTitle {
+  font-size: clamp(2.75rem, 1.4rem + 5.6vw, 6rem);
+}
+
+/* Hero: the headline on the left, the drawing of the stack on the right */
+
+.hero {
+  padding: 56px 0 0;
+}
+
+.heroGrid {
+  display: grid;
+  gap: 8px;
+}
+
+@media (min-width: 997px) {
+  .hero {
+    padding-top: 72px;
+  }
+
+  .heroGrid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 24px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--h-muted);
+}
+
+.heroLead {
+  margin: 32px 0 0;
+  max-width: 34rem;
+  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.3125rem);
+  line-height: 1.55;
+  color: var(--h-lead);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 17rem;
+  min-height: 56px;
+  padding: 0 16px;
+  border: 1px solid rgb(255 255 255 / 0.4);
+  border-radius: var(--h-radius);
+  background: rgb(255 255 255 / 0.06);
+  color: rgb(255 255 255 / 0.86);
+  font: inherit;
+  font-size: 1.0625rem;
+  text-align: left;
+  cursor: text;
+  transition: border-color var(--h-fast) var(--h-ease);
+}
+
+.search:hover {
+  border-color: #fff;
+}
+
+.search span {
+  flex: 1;
+}
+
+.search kbd {
+  padding: 4px 8px;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 6px;
+  background: none;
+  box-shadow: none;
+  color: rgb(255 255 255 / 0.8);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* The stack: four planes in 3D with no perspective, so edges stay
+   parallel. They drift up and down and lean toward the pointer, and a
+   click pulls them apart. */
+
+/* each layer keeps its own colour, in the drawing and in the docs map */
+.screens {
+  --layer-color: var(--h-brand);
+  --layer-color-end: #5a3fe8;
+}
+
+.logic {
+  --layer-color: #7c4dff;
+  --layer-color-end: #b23cc4;
+}
+
+.data {
+  --layer-color: #0ea5a0;
+  --layer-color-end: #0b7fb0;
+}
+
+.backend {
+  --layer-color: #f0803c;
+  --layer-color-end: #d8437a;
+}
+
+.stack {
+  --pointer-x: 0;
+  --pointer-y: 0;
+  position: relative;
+  height: 430px;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .stack {
+    height: 680px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .stack {
+    height: 660px;
+  }
+}
+
+/* The floor the stack stands over: a faint grid that fades at its edges.
+   It reaches under the hero text, so it never takes a click meant for the
+   buttons there. */
+.floor {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1100px;
+  height: 1100px;
+  margin: -550px 0 0 -550px;
+  transform: translateZ(-150px);
+  background:
+    linear-gradient(rgb(255 255 255 / 0.16) 1px, transparent 1px) 0 0 / 55px 55px,
+    linear-gradient(90deg, rgb(255 255 255 / 0.16) 1px, transparent 1px) 0 0 / 55px 55px;
+  -webkit-mask-image: radial-gradient(closest-side, #000 20%, transparent 78%);
+  mask-image: radial-gradient(closest-side, #000 20%, transparent 78%);
+  pointer-events: none;
+}
+
+/* A note on each plane with real names from that layer. It hangs off the
+   right corner of its own plane on a short line, turned back to face the
+   reader, so it is always clear which layer it belongs to and it moves
+   with that layer. */
+.note {
+  position: absolute;
+  left: 100%;
+  top: 100%;
+  display: none;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 999px;
+  background: var(--h-ink);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #fff;
+  transform-origin: 0 50%;
+  transform: translate(-10px, calc(-50% - 10px)) rotateZ(42deg) rotateX(-57deg) translateX(34px);
+}
+
+/* the line from the corner of the plane to the note, in the layer colour */
+.note::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: 34px;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--layer-color);
+}
+
+.note::after {
+  content: '';
+  position: absolute;
+  right: calc(100% + 30px);
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--layer-color);
+}
+
+@media (min-width: 1280px) {
+  .note {
+    display: inline-flex;
+  }
+}
+
+.scene {
+  position: absolute;
+  left: 50%;
+  top: 66%;
+  width: 400px;
+  height: 270px;
+  transform: translate(-50%, -50%) scale(var(--scene-scale, 0.62))
+    rotateX(calc(57deg + var(--pointer-y) * -5deg)) rotateZ(calc(-42deg + var(--pointer-x) * 7deg));
+  transform-style: preserve-3d;
+  transition: transform 500ms ease-out;
+}
+
+@media (min-width: 640px) {
+  .scene {
+    --scene-scale: 1;
+  }
+}
+
+/* room on the right for the notes */
+@media (min-width: 1280px) {
+  .scene {
+    --scene-scale: 0.98;
+    left: 36%;
+    top: 62%;
+  }
+}
+
+/* pulled apart, the whole drawing shrinks a little so the top layer stays
+   clear of the navbar */
+.stackApart .scene {
+  --scene-scale: 0.52;
+}
+
+@media (min-width: 640px) {
+  .stackApart .scene {
+    --scene-scale: 0.84;
+  }
+}
+
+.plane {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 14px;
+  padding: 44px 20px 20px;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--layer-color) 0%, var(--layer-color-end) 100%);
+  /* the layers spread from the middle of the stack, so pulling them apart
+     moves the top one up and the bottom one down by the same amount */
+  transform: translateZ(
+    calc(var(--level) * var(--layer-gap, 104px) - (var(--layer-gap, 104px) - 104px) * 1.5)
+  );
+  transform-style: preserve-3d;
+  transition: transform 700ms ease-out;
+  animation: drift 5.5s ease-in-out infinite alternate;
+  animation-delay: calc(var(--index) * -1.3s);
+}
+
+.stackApart .plane {
+  --layer-gap: 150px;
+}
+
+@keyframes drift {
+  from {
+    translate: 0 0 -12px;
+  }
+
+  to {
+    translate: 0 0 16px;
+  }
+}
+
+/* The round trip of one click, on a six second loop. A point of light
+   drops from the button on the top layer down to the bottom one and comes
+   back. Each layer answers with a ring as the light passes, and when it
+   is back on top the rows of the screen fill in, one after the other. */
+.signal {
+  position: absolute;
+  left: 56%;
+  top: 58%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: 50%;
+  border: 4px solid var(--h-brand);
+  background: #fff;
+  animation: trip 6s ease-in-out infinite;
+}
+
+@keyframes trip {
+  0%,
+  6% {
+    translate: 0 0 340px;
+    opacity: 0;
+  }
+
+  10% {
+    translate: 0 0 340px;
+    opacity: 1;
+  }
+
+  36%,
+  44% {
+    translate: 0 0 8px;
+    opacity: 1;
+  }
+
+  70% {
+    translate: 0 0 340px;
+    opacity: 1;
+  }
+
+  76%,
+  100% {
+    translate: 0 0 340px;
+    opacity: 0;
+  }
+}
+
+.plane::before,
+.plane::after {
+  content: '';
+  position: absolute;
+  left: 56%;
+  top: 58%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: ring 6s ease-out infinite;
+}
+
+/* on the way down, top layer first */
+.plane::before {
+  animation-delay: calc(0.55s + var(--index) * 0.5s);
+}
+
+/* on the way back up, bottom layer first */
+.plane::after {
+  animation-delay: calc(2.65s + (3 - var(--index)) * 0.5s);
+}
+
+@keyframes ring {
+  0% {
+    scale: 0.15;
+    opacity: 0;
+  }
+
+  3% {
+    opacity: 0.9;
+  }
+
+  14%,
+  100% {
+    scale: 1.5;
+    opacity: 0;
+  }
+}
+
+/* the answer arrives: the rows on the screen fill in */
+.screens .uiRows i {
+  animation: arrive 6s ease-out infinite;
+}
+
+.screens .uiRows i:nth-child(1) {
+  animation-delay: 4.25s;
+}
+
+.screens .uiRows i:nth-child(2) {
+  animation-delay: 4.4s;
+}
+
+.screens .uiRows i:nth-child(3) {
+  animation-delay: 4.55s;
+}
+
+@keyframes arrive {
+  0% {
+    background: rgb(255 255 255 / 0.3);
+  }
+
+  3%,
+  14% {
+    background: #fff;
+  }
+
+  30%,
+  100% {
+    background: rgb(255 255 255 / 0.3);
+  }
+}
+
+.stackCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8125rem;
+  text-align: center;
+  color: var(--h-muted);
+}
+
+@media (min-width: 1280px) {
+  .stackCaption {
+    right: 24%;
+  }
+}
+
+.planeTag {
+  position: absolute;
+  left: 20px;
+  top: 14px;
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.plane i,
+.plane b {
+  display: block;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 0.3);
+}
+
+.uiSide {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  width: 22%;
+  padding-right: 14px;
+  border-right: 1px solid rgb(255 255 255 / 0.35);
+}
+
+.uiSide i {
+  height: 12px;
+}
+
+.uiMain {
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 12px;
+}
+
+.uiBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.uiBar i {
+  width: 46%;
+  height: 16px;
+}
+
+.plane .uiBar b {
+  width: 22%;
+  height: 16px;
+  background: #fff;
+}
+
+.uiCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.uiCards i {
+  height: 46px;
+}
+
+.plane .uiCards i:first-child {
+  background: #fff;
+}
+
+.uiRows {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.uiRows i {
+  height: 12px;
+}
+
+.codeLines {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+}
+
+.codeLines i {
+  width: var(--line-width);
+  height: 14px;
+  margin-left: calc(var(--indent, 0) * 28px);
+}
+
+.plane .codeLines i:nth-child(2) {
+  background: #fff;
+}
+
+.cells {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 8px;
+}
+
+.plane .cells i:nth-child(-n + 4) {
+  background: #fff;
+}
+
+.blocks {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+.blocks i {
+  height: 64%;
+  border-radius: 12px;
+}
+
+.plane .blocks i:nth-child(2) {
+  height: 86%;
+  background: #fff;
+}
+
+/* Sections, with thin dashed guides between them */
+
+.codeScreenSection,
+.aiSection,
+.layersSection,
+.pathSection,
+.placesSection,
+.helpSection {
+  margin-top: var(--h-section-space);
+  padding-top: var(--h-section-space);
+  border-top: 1px dashed var(--h-rule);
+}
+
+.helpSection {
+  padding-bottom: 88px;
+}
+
+@media (min-width: 997px) {
+  .helpSection {
+    padding-bottom: 128px;
+  }
+}
+
+/* Code and the screen it becomes. One frame, two halves: the Java class
+   on the left, always dark, and a drawing of the running screen on the
+   right. Three numbers tie a line of code to the part of the screen it
+   creates. */
+
+.codeScreenHead {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 997px) {
+  .codeScreenHead {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+    align-items: end;
+    gap: 64px;
+  }
+}
+
+.codeScreenNote {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--h-muted);
+}
+
+.codeScreen {
+  display: grid;
+  margin-top: var(--h-title-gap);
+  border: 1px solid var(--h-rule);
+  border-radius: var(--h-radius-card);
+  overflow: hidden;
+}
+
+@media (min-width: 997px) {
+  .codeScreen {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+}
+
+.codeWindow,
+.screenWindow {
+  margin: 0;
+  min-width: 0;
+}
+
+.codeWindow {
+  --h-muted: rgb(255 255 255 / 0.7);
+  --h-line: rgb(255 255 255 / 0.12);
+  background: var(--h-ink);
+  color: #e7eaf6;
+}
+
+/* the title bar of a drawn window: three dots and a name */
+.windowBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  margin: 0;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--h-line);
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: var(--h-muted);
+}
+
+.windowDots {
+  display: flex;
+  gap: 6px;
+}
+
+.windowDots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.26);
+}
+
+.codeText {
+  margin: 0;
+  padding: 24px 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.875rem;
+  line-height: 1.8;
+  overflow-x: auto;
+}
+
+.codeText code {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+
+.codeLine {
+  display: flex;
+  align-items: center;
+  min-height: 1.8em;
+  padding: 0 20px 0 0;
+  white-space: pre;
+}
+
+.lineNo {
+  flex: none;
+  width: 3.25rem;
+  padding-right: 1rem;
+  text-align: right;
+  color: rgb(255 255 255 / 0.32);
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.lineText {
+  flex: 1;
+}
+
+.tokenKeyword {
+  color: #8fb4ff;
+}
+
+.tokenClass {
+  color: #c4a8ff;
+}
+
+.tokenString {
+  color: var(--h-mint);
+}
+
+.tokenMethod {
+  color: #ffb38a;
+}
+
+.tokenAnnotation {
+  color: rgb(255 255 255 / 0.62);
+}
+
+/* the numbers that tie code to screen */
+.mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: #fff;
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.8125rem;
+  font-weight: 750;
+  line-height: 1;
+}
+
+.mark1 {
+  background: var(--h-brand);
+}
+
+.mark2 {
+  background: #7c4dff;
+}
+
+.mark3 {
+  background: #0ea5a0;
+}
+
+.codeLine .mark {
+  margin-left: 16px;
+}
+
+/* Small phones. Nothing is cut: the code wraps inside its window with the
+   numbered marks kept in view. */
+@media (max-width: 639px) {
+  .codeText {
+    font-size: 0.75rem;
+    overflow-x: visible;
+  }
+
+  .codeLine {
+    align-items: flex-start;
+    padding-right: 12px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .lineNo {
+    width: 2.25rem;
+    padding-right: 0.6rem;
+  }
+
+  .lineText {
+    min-width: 0;
+    padding-left: 4ch;
+    text-indent: -4ch;
+  }
+
+  .codeLine .mark {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    font-size: 0.6875rem;
+  }
+}
+
+/* The drawn screen: a browser window with the three parts of the view.
+   The field, the button and the focus ring follow the design tokens of
+   the webforJ components (size, radius, and the focus ring with its gap),
+   so they look like the components do in an app. The state shown is the
+   one after the click: the name is typed and the Greet button has the
+   focus. The colours are the cool grays of the webforJ design kit, written
+   out, because the computed token colours render with a warm cast. */
+.screenWindow {
+  --d-surface: #1c1d21;
+  --d-bar: #26272c;
+  --d-field: #2b2d33;
+  --d-line: #3b3d44;
+  --d-text: #f2f4f8;
+  --d-primary: #2f6bff;
+  --d-on-primary: #fff;
+  --h-muted: #a9adb8;
+  --h-line: var(--d-line);
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--h-rule);
+  background: var(--d-surface);
+  color: var(--d-text);
+}
+
+[data-theme='light'] .screenWindow {
+  --d-surface: #fafcff;
+  --d-bar: #f0f2f5;
+  --d-field: #e9ebf1;
+  --d-line: #dddedf;
+  --d-text: #04060a;
+  --d-primary: #0b4df4;
+  --d-on-primary: #f8fcff;
+  --h-muted: #4b4d52;
+}
+
+@media (min-width: 997px) {
+  .screenWindow {
+    border-top: 0;
+    border-left: 1px solid var(--h-rule);
+  }
+}
+
+.screenWindow .windowDots i {
+  background: var(--d-line);
+}
+
+.address {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--d-bar);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+/* Drawn larger than the real size, so it reads at a glance. On wide
+   screens a transform enlarges it by one and a half; below that it is
+   enlarged by layout, so its box grows with it. */
+.drawn {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  gap: var(--dwc-space-m);
+  padding: 28px 24px;
+  transform-origin: 0 50%;
+  zoom: 1.3;
+}
+
+@media (min-width: 997px) {
+  .drawn {
+    width: calc(100% / 1.5);
+    transform: scale(1.5);
+    zoom: 1;
+  }
+}
+
+.drawnRow {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: end;
+  gap: 12px;
+}
+
+.drawnRow .mark {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 8px;
+  font-size: 0.6875rem;
+}
+
+.drawnRow:last-child {
+  align-items: center;
+}
+
+.drawnRow:last-child .mark {
+  margin-bottom: 0;
+}
+
+.drawnField {
+  display: grid;
+  gap: var(--dwc-space-xs);
+}
+
+.drawnLabel {
+  padding-left: var(--dwc-space-xs);
+  font-size: var(--dwc-font-size-s);
+  font-weight: var(--dwc-font-weight-semibold);
+  color: var(--d-text);
+}
+
+.drawnInput {
+  display: flex;
+  align-items: center;
+  height: var(--dwc-size-m);
+  padding: 0 var(--dwc-space-s);
+  border: var(--dwc-border-width) solid var(--d-line);
+  border-radius: var(--dwc-border-radius);
+  background: var(--d-field);
+  font-size: var(--dwc-font-size-m);
+  color: var(--d-text);
+}
+
+.drawnButton {
+  display: grid;
+  place-items: center;
+  height: var(--dwc-size-m);
+  border-radius: var(--dwc-border-radius);
+  background: var(--d-primary);
+  color: var(--d-on-primary);
+  font-size: var(--dwc-font-size-m);
+  font-weight: var(--dwc-font-weight-semibold);
+  /* the focus ring of the components: a 2px gap in the surface colour,
+     then a 2px ring in the primary colour at three quarters strength */
+  box-shadow:
+    0 0 0 2px var(--d-surface),
+    0 0 0 4px color-mix(in srgb, var(--d-primary) 75%, transparent);
+}
+
+.drawnMessage {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--d-text);
+}
+
+/* AI ready: the three steps of the loop, with the real install commands
+   in a drawn terminal */
+
+.aiGrid {
+  display: grid;
+  gap: 16px;
+  margin-top: var(--h-title-gap);
+}
+
+@media (min-width: 997px) {
+  .aiGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.aiPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aiPanel .button {
+  align-self: flex-start;
+}
+
+.aiLead {
+  margin: 0 0 32px;
+  font-size: clamp(1.5rem, 2.4vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: var(--h-text);
+}
+
+/* the three steps of the loop: one ruled row, no boxes */
+.loop {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--h-rule);
+}
+
+.loop > li {
+  margin: 0;
+  padding: 28px 0;
+  border-top: 1px solid var(--h-line);
+}
+
+.loop > li:first-child {
+  border-top: 0;
+}
+
+@media (min-width: 900px) {
+  .loop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .loop > li {
+    padding: 28px 32px 0;
+    border-top: 0;
+    border-left: 1px solid var(--h-line);
+  }
+
+  .loop > li:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+.loopMark {
+  display: block;
+  margin-bottom: 20px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--h-quiet);
+}
+
+.loopTitle {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--h-text);
+}
+
+.loopText {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--h-muted);
+}
+
+.terminal {
+  --h-muted: rgb(255 255 255 / 0.74);
+  --h-line: rgb(255 255 255 / 0.14);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--h-line);
+  border-radius: var(--h-radius-card);
+  background: var(--h-terminal);
+  color: #fff;
+  overflow: hidden;
+}
+
+.terminalBody {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 32px 28px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.terminalBody > span {
+  display: block;
+}
+
+.terminalBody b {
+  font-weight: 400;
+  color: var(--h-mint);
+}
+
+.terminalBody i {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 1px 8px;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--h-ink);
+}
+
+.terminalBody .ok {
+  color: var(--h-mint);
+}
+
+.terminalBody .ok i {
+  background: var(--h-mint);
+}
+
+.terminalBody .fail {
+  color: #ff9a9a;
+}
+
+.terminalBody .fail i {
+  background: #ff7b7b;
+}
+
+.terminalBody .dim {
+  color: rgb(255 255 255 / 0.55);
+}
+
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 6px;
+  vertical-align: text-bottom;
+  background: var(--h-mint);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* The terminal plays the loop on a sixteen second cycle: install the
+   plugin, run the tests, read the failure, fix, run again, pass. Each
+   command is uncovered one character at a time by a cover that slides off
+   it, and each prompt and result appears when the terminal reaches its
+   line, so only transform and opacity are animated. Every line keeps its
+   place the whole time, so the terminal never changes height. On small
+   screens the lines are shown as they are, so a long command wraps and
+   stays on the line of its prompt. */
+.type {
+  display: inline;
+  vertical-align: bottom;
+}
+
+@media (min-width: 640px) {
+  .type {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .type::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--h-terminal);
+    transform: translateX(100%);
+    animation: 16s steps(var(--chars)) infinite;
+  }
+
+  .type1::after {
+    animation-name: type1;
+  }
+
+  .type2::after {
+    animation-name: type2;
+  }
+
+  .type3::after {
+    animation-name: type3;
+  }
+
+  .type4::after {
+    animation-name: type4;
+  }
+
+  .show {
+    animation: 16s linear infinite;
+  }
+
+  .at2 {
+    animation-name: at2;
+  }
+
+  .at3 {
+    animation-name: at3;
+  }
+
+  .at4 {
+    animation-name: at4;
+  }
+
+  .at5 {
+    animation-name: at5;
+  }
+
+  .at6 {
+    animation-name: at6;
+  }
+
+  .at7 {
+    animation-name: at7;
+  }
+}
+
+@keyframes type1 {
+  0%,
+  2% {
+    transform: translateX(0);
+  }
+
+  14%,
+  96% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes type2 {
+  0%,
+  17% {
+    transform: translateX(0);
+  }
+
+  27%,
+  96% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes type3 {
+  0%,
+  32% {
+    transform: translateX(0);
+  }
+
+  36%,
+  96% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes type4 {
+  0%,
+  61% {
+    transform: translateX(0);
+  }
+
+  65%,
+  96% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes at2 {
+  0%,
+  15% {
+    opacity: 0;
+  }
+
+  16%,
+  96% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes at3 {
+  0%,
+  30% {
+    opacity: 0;
+  }
+
+  31%,
+  96% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes at4 {
+  0%,
+  41% {
+    opacity: 0;
+  }
+
+  42%,
+  96% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes at5 {
+  0%,
+  50% {
+    opacity: 0;
+  }
+
+  51%,
+  96% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes at6 {
+  0%,
+  59% {
+    opacity: 0;
+  }
+
+  60%,
+  96% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes at7 {
+  0%,
+  71% {
+    opacity: 0;
+  }
+
+  72%,
+  96% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* looping drawings stop while they are off screen */
+.paused,
+.paused *,
+.paused *::before,
+.paused *::after {
+  animation-play-state: paused !important;
+}
+
+/* The layers as the map of the docs: two roomy cards per row, each with
+   its description on the left and its docs pages on the right */
+
+.layers {
+  list-style: none;
+  margin: var(--h-title-gap) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 997px) {
+  .layers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.layer {
+  display: grid;
+  gap: 28px;
+  margin: 0;
+  padding: 32px 28px;
+  border: 1px solid var(--h-line);
+  border-radius: var(--h-radius-card);
+  background: var(--h-panel);
+}
+
+@media (min-width: 640px) {
+  .layer {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px;
+    padding: 44px;
+  }
+
+  .layer > .layerIndex {
+    grid-column: 1 / -1;
+  }
+}
+
+.layerIndex {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--h-radius);
+  background: var(--layer-color);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.layerBody {
+  min-width: 0;
+}
+
+.layerName {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 750;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: var(--h-text);
+}
+
+.layerText {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--h-muted);
+}
+
+.layerLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--h-line);
+}
+
+.layerLinks li {
+  margin: 0;
+  border-top: 1px solid var(--h-line);
+}
+
+.layerLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 52px;
+  color: var(--h-text);
+  font-size: 1.0625rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color var(--h-fast) var(--h-ease);
+}
+
+.page .layerLinks a:is(:hover, :focus) {
+  color: var(--h-accent);
+  text-decoration: none;
+}
+
+/* The path: four ruled columns with very large numerals */
+
+.path {
+  list-style: none;
+  margin: var(--h-title-gap) 0 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--h-rule);
+  border-bottom: 1px solid var(--h-rule);
+}
+
+@media (min-width: 640px) {
+  .path {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.path > li {
+  margin: 0;
+  display: flex;
+  border-top: 1px solid var(--h-line);
+}
+
+@media (min-width: 1100px) {
+  .path {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .path > li {
+    border-top: 0;
+    border-left: 1px solid var(--h-line);
+  }
+
+  .path > li:first-child {
+    border-left: 0;
+  }
+
+  .path > li:not(:first-child) .stop {
+    padding-left: 28px;
+  }
+}
+
+.stop {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px 28px 32px 0;
+  color: var(--h-text);
+  text-decoration: none;
+}
+
+.page a.stop:is(:hover, :focus) {
+  color: var(--h-text);
+  text-decoration: none;
+}
+
+.stopNumber {
+  margin-bottom: 44px;
+  font-size: clamp(5rem, 9vw, 8rem);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: var(--h-accent);
+}
+
+.stopStep {
+  margin-bottom: 8px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--h-muted);
+}
+
+.stopTitle {
+  margin-bottom: 8px;
+  font-size: 1.625rem;
+  font-weight: 750;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.stopText {
+  margin-bottom: 28px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--h-muted);
+}
+
+/* the round arrow at the foot of a path stop and of a place */
+.stopGo,
+.placeGo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--h-rule);
+  border-radius: 50%;
+  transition:
+    background-color var(--h-fast) var(--h-ease),
+    color var(--h-fast) var(--h-ease);
+}
+
+.stopGo {
+  margin-top: auto;
+}
+
+.stop:hover .stopGo,
+.stop:focus-visible .stopGo {
+  border-color: #fff;
+  background: #fff;
+  color: var(--h-on-white);
+}
+
+/* Places: six equal flat cards, each with a line drawing in its colour */
+
+.places {
+  list-style: none;
+  margin: var(--h-title-gap) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .places {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .places {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.places > li {
+  margin: 0;
+  display: flex;
+}
+
+/* each place keeps its colour across the site */
+.components {
+  --place-color: #4d8bff;
+}
+
+.craft {
+  --place-color: #a07bff;
+}
+
+.swing {
+  --place-color: #2cc3b6;
+}
+
+.ai {
+  --place-color: #3fb4f0;
+}
+
+.kit {
+  --place-color: #e06ad0;
+}
+
+.showcase {
+  --place-color: #f0903c;
+}
+
+.place {
+  --place-surface: var(--h-panel);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 340px;
+  padding: 36px;
+  border: 1px solid var(--h-line);
+  border-radius: var(--h-radius-card);
+  background: var(--place-surface);
+  color: var(--h-text);
+  text-decoration: none;
+  transition: border-color var(--h-fast) var(--h-ease);
+}
+
+.page a.place:is(:hover, :focus) {
+  border: 1px solid var(--place-color);
+  color: var(--h-text);
+  text-decoration: none;
+}
+
+.glyph {
+  width: 132px;
+  height: 88px;
+  margin-bottom: auto;
+  color: var(--place-color);
+}
+
+.placeTitle {
+  margin: 40px 0 10px;
+  font-size: 1.875rem;
+  font-weight: 750;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.placeText {
+  margin-bottom: 28px;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--h-muted);
+}
+
+.place:hover .placeGo,
+.place:focus-visible .placeGo {
+  border-color: var(--place-color);
+  background: var(--place-color);
+  color: var(--h-ink);
+}
+
+/* Help: a ruled row of last resorts */
+
+.help {
+  list-style: none;
+  margin: var(--h-title-gap) 0 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--h-rule);
+  border-bottom: 1px solid var(--h-rule);
+}
+
+@media (min-width: 640px) {
+  .help {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .help {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.help > li {
+  margin: 0;
+}
+
+.helpLink {
+  display: block;
+  padding: 24px 0;
+  color: var(--h-text);
+  text-decoration: none;
+}
+
+.page a.helpLink:is(:hover, :focus) {
+  color: var(--h-text);
+  text-decoration: none;
+}
+
+.helpTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 1.25rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  transition: color var(--h-fast) var(--h-ease);
+}
+
+.helpLink:hover .helpTitle {
+  color: var(--h-accent);
+}
+
+.helpText {
+  display: block;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--h-muted);
+}
+
+.builtBy {
+  max-width: 46rem;
+  margin: var(--h-title-gap) 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--h-muted);
+}
+
+/* The closing banner: one flat block in the brand blue with a call to the
+   team. White type, a white button and an outlined one. Hover changes
+   colour only, and each link restates its border. */
+
+.talkSection {
+  padding: 0 0 96px;
+}
+
+.talk {
+  display: grid;
+  gap: 32px;
+  padding: 40px 28px;
+  border-radius: 28px;
+  background: #0b4df4;
+  color: #fff;
+}
+
+@media (min-width: 997px) {
+  .talk {
+    grid-template-columns: minmax(0, 1.35fr) auto;
+    align-items: center;
+    gap: 56px;
+    padding: 64px;
+  }
+}
+
+.talkTitle {
+  margin: 0;
+  max-width: 16ch;
+  font-size: clamp(2rem, 1.2rem + 3vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+  color: #fff;
+}
+
+.talkText {
+  margin: 20px 0 0;
+  max-width: 34rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.86);
+}
+
+.talkActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.page a.talkButton,
+.page a.talkButton:is(:hover, :focus) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 26px;
+  border: 1px solid #fff;
+  border-radius: var(--h-radius);
+  font-size: 1.0625rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    background-color var(--h-fast) var(--h-ease),
+    color var(--h-fast) var(--h-ease);
+}
+
+.page a.talkPrimary {
+  background: #fff;
+  color: #0d1020;
+}
+
+.page a.talkPrimary:is(:hover, :focus) {
+  background: #e6ecff;
+}
+
+.page a.talkGhost {
+  border-color: rgb(255 255 255 / 0.55);
+  background: transparent;
+  color: #fff;
+}
+
+.page a.talkGhost:is(:hover, :focus) {
+  border-color: #fff;
+  background: rgb(255 255 255 / 0.12);
+}
+
+.talkLanguages {
+  margin: 16px 0 0;
+  font-size: 0.9375rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+/* Light theme. The same page on a light canvas: dark type and the
+   drawings unchanged. */
+
+[data-theme='light'] .page {
+  --h-text: #0d1020;
+  --h-muted: rgb(13 16 32 / 0.68);
+  --h-lead: rgb(13 16 32 / 0.84);
+  --h-line: rgb(13 16 32 / 0.1);
+  --h-rule: rgb(13 16 32 / 0.2);
+  --h-quiet: rgb(13 16 32 / 0.4);
+  --h-panel: #fff;
+  --h-accent: #1247e6;
+  background: #f7f7f8;
+}
+
+[data-theme='light'] .page::before {
+  opacity: 0.1;
+  mix-blend-mode: multiply;
+  filter: invert(1);
+}
+
+[data-theme='light'] .buttonPrimary {
+  border-color: var(--h-text);
+  background: var(--h-text);
+  color: #fff;
+}
+
+[data-theme='light'] .page a.buttonPrimary:is(:hover, :focus) {
+  border-color: var(--h-text);
+  background: #262b45;
+  color: #fff;
+}
+
+[data-theme='light'] .search {
+  border-color: rgb(13 16 32 / 0.28);
+  background: rgb(255 255 255 / 0.7);
+  color: rgb(13 16 32 / 0.74);
+}
+
+[data-theme='light'] .search:hover {
+  border-color: var(--h-text);
+}
+
+[data-theme='light'] .search kbd {
+  border-color: rgb(13 16 32 / 0.22);
+  color: rgb(13 16 32 / 0.7);
+}
+
+[data-theme='light'] .floor {
+  background:
+    linear-gradient(rgb(13 16 32 / 0.14) 1px, transparent 1px) 0 0 / 55px 55px,
+    linear-gradient(90deg, rgb(13 16 32 / 0.14) 1px, transparent 1px) 0 0 / 55px 55px;
+}
+
+[data-theme='light'] .stop:hover .stopGo,
+[data-theme='light'] .stop:focus-visible .stopGo {
+  border-color: var(--h-text);
+  background: var(--h-text);
+  color: #fff;
+}
+
+[data-theme='light'] :is(.button, .search, .layerLinks a, .stop, .helpLink):focus-visible {
+  outline-color: #1247e6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

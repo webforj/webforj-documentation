@@ -3,14 +3,7 @@
     border: none;
 
     .table-of-contents {
-      border-left: 1px solid;
-      border-image: linear-gradient(
-        to bottom,
-        transparent,
-        var(--dwc-border-color) 15%,
-        var(--dwc-border-color) 85%,
-        transparent
-      ) 1;
+      border-left: 1px solid var(--dwc-border-color);
     }
 
     .table-of-contents__link {

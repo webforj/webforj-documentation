@@ -1,0 +1,1369 @@
+/* webforJ showcase page. The light parts take their colours from the theme
+   tokens of the site, so they follow the theme switch. Every app has its
+   own colour section, and the last two sections are colour sections too. */
+
+.page {
+  --sc-text: var(--ifm-font-color-base);
+  --sc-muted: var(--ifm-color-emphasis-700);
+  --sc-faint: var(--ifm-color-emphasis-600);
+  --sc-line: var(--dwc-border-color);
+  --sc-surface: var(--dwc-surface-3);
+  --sc-panel: var(--dwc-surface-3);
+  --sc-brand: var(--dwc-color-primary);
+  --sc-brand-text: var(--ifm-color-primary);
+  --sc-on-brand: var(--dwc-color-on-primary-text);
+  --sc-screen: rgb(250 252 255);
+  --sc-window-text: #1c2330;
+  --sc-radius: 14px;
+  --sc-radius-m: 10px;
+  --sc-radius-s: 8px;
+  --sc-gutter: 16px;
+  --sc-fast: 150ms;
+  --sc-ease: cubic-bezier(0.2, 0, 0, 1);
+  background-color: var(--sc-surface);
+  color: var(--sc-text);
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .page {
+    --sc-gutter: 32px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--sc-gutter);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+}
+
+/* Hover never moves anything: colour and border colour only. */
+.page :is(a, button):hover,
+.page :is(a, button):hover * {
+  transform: none !important;
+  translate: none !important;
+  scale: none !important;
+}
+
+/* Buttons */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+@media (max-width: 479px) {
+  .actions > * {
+    flex: 1 1 100%;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: var(--sc-radius-m);
+  border: 1px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color var(--sc-fast) var(--sc-ease),
+    border-color var(--sc-fast) var(--sc-ease),
+    color var(--sc-fast) var(--sc-ease);
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+/* The DWC theme sets `a:hover, a:focus { border: 0 }`. On these bordered
+   links that removes the border on hover and everything inside jumps.
+   Restore each link's own border width and style, so hover only changes
+   the border colour. */
+.page a.button:is(:hover, :focus) {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.buttonPrimary {
+  background: var(--sc-brand);
+  color: var(--sc-on-brand);
+}
+
+.buttonPrimary:hover {
+  background: var(--dwc-color-primary-dark, var(--sc-brand));
+  color: var(--sc-on-brand);
+}
+
+.buttonSecondary {
+  border-color: var(--sc-line);
+  color: var(--sc-text);
+  background: var(--sc-panel);
+}
+
+.buttonSecondary:hover {
+  border-color: var(--sc-brand-text);
+  color: var(--sc-brand-text);
+}
+
+/* on a colour section: a light button and an outlined one */
+.buttonOnBrand {
+  background: var(--sc-on-brand);
+  color: var(--sc-brand);
+}
+
+.buttonOnBrand:hover {
+  background: color-mix(in srgb, var(--sc-on-brand) 90%, var(--sc-brand));
+  color: var(--sc-brand);
+}
+
+.buttonOnBrandGhost {
+  border-color: color-mix(in srgb, var(--sc-on-brand) 55%, transparent);
+  color: var(--sc-on-brand);
+  background: transparent;
+}
+
+.buttonOnBrandGhost:hover {
+  border-color: var(--sc-on-brand);
+  color: var(--sc-on-brand);
+}
+
+.button:focus-visible,
+.iconButton:focus-visible {
+  outline: 3px solid var(--sc-brand-text);
+  outline-offset: 3px;
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--sc-line);
+  border-radius: var(--sc-radius-m);
+  background: var(--sc-panel);
+  color: var(--sc-text);
+  cursor: pointer;
+  transition:
+    border-color var(--sc-fast) var(--sc-ease),
+    color var(--sc-fast) var(--sc-ease);
+}
+
+.iconButton:hover {
+  border-color: var(--sc-brand-text);
+  color: var(--sc-brand-text);
+}
+
+/* The hero and the apps gallery are one light block with one gradient
+   and one grain. It is white under the navbar, so the navbar shadow
+   stays clean, and slides without a seam into a light tint of the app
+   colours at the bottom of the gallery, right before the first chapter. */
+
+.hero,
+.gallery {
+  --sc-wash: color-mix(in srgb, var(--dwc-color-primary-alt) 45%, var(--sc-surface));
+  position: relative;
+}
+
+/* the grain: fine film noise, drawn once as an SVG and tiled */
+.hero::before,
+.gallery::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero > .container,
+.gallery > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero */
+
+.hero {
+  padding: 24px 0 72px;
+  background: linear-gradient(
+    180deg,
+    var(--sc-surface) 0%,
+    var(--sc-surface) 20%,
+    var(--sc-wash) 100%
+  );
+}
+
+@media (min-width: 997px) {
+  .hero {
+    padding: 44px 0 96px;
+  }
+}
+
+.heroTop {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 997px) {
+  .heroTop {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 64px;
+    align-items: end;
+  }
+}
+
+.heroText {
+  max-width: 780px;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sc-brand-text);
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.5rem);
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.heroLead {
+  margin: 24px 0 0;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--sc-muted);
+  max-width: 640px;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--sc-line);
+}
+
+.facts > div {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px 0 0;
+}
+
+.facts > div + div {
+  padding-left: 12px;
+  border-left: 1px solid var(--sc-line);
+}
+
+.facts dt {
+  order: 2;
+  margin-top: 4px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--sc-muted);
+}
+
+.facts dd {
+  order: 1;
+  margin: 0;
+  font-size: clamp(2rem, 1.6rem + 1.4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 997px) {
+  .facts {
+    grid-template-columns: 1fr;
+    border-top: 0;
+  }
+
+  .facts > div,
+  .facts > div + div {
+    padding: 20px 0;
+    border-left: 0;
+    border-top: 1px solid var(--sc-line);
+  }
+}
+
+.heroVisual {
+  position: relative;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .heroVisual {
+    margin-top: 48px;
+  }
+}
+
+/* The app's top bar runs to the very top of the export, so the Alerts
+   count would touch the frame. A strip in the top bar's own colour gives it
+   room. */
+.heroDesktop {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding-top: 12px;
+  border: 1px solid var(--sc-line);
+  border-radius: var(--sc-radius);
+  background: var(--sc-screen);
+  box-shadow: 0 32px 64px -40px rgb(20 30 70 / 0.45);
+}
+
+.heroPhone {
+  display: none;
+}
+
+/* From 997px the phone stands in the right column of the hero, next to
+   the text, and its lower part rests over the bottom of the desktop screen,
+   so the two read as one group. It hangs only 64px below the screen, so
+   the space under the screenshot stays small. */
+@media (min-width: 997px) {
+  .heroVisual {
+    margin-bottom: 64px;
+  }
+
+  /* The frame comes from the devices.css library, drawn at 404 x 862. A
+     wrapper of the scaled size and a transform keep it at real proportions
+     without touching layout measurements. */
+  .heroPhone {
+    --phone-scale: 0.58;
+    display: block;
+    position: absolute;
+    bottom: -64px;
+    right: -4%;
+    width: calc(404px * var(--phone-scale));
+    height: calc(862px * var(--phone-scale));
+  }
+
+  .heroPhone :global(.device) {
+    transform: scale(var(--phone-scale));
+    transform-origin: top left;
+    filter: drop-shadow(0 30px 40px rgb(15 23 42 / 0.3));
+  }
+
+  /* outranks the frame's own screen styles */
+  .page .heroPhone img {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border-radius: inherit;
+    background: #fff;
+  }
+
+  /* The status row a phone shows above every app: time on the left,
+     signal, wifi and battery on the right, over the screen's status area
+     inside the frame. */
+  .statusBar {
+    position: absolute;
+    top: 20px;
+    left: 14px;
+    right: 14px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 46px;
+    padding: 4px 30px 0 34px;
+    color: #111318;
+    font-size: 17px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .statusIcons {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .statusIcons svg {
+    display: block;
+    width: auto;
+    height: 14px;
+    fill: currentColor;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heroPhone {
+    --phone-scale: 0.68;
+  }
+}
+
+/* The apps gallery: one colour tile per app, in the colour of its chapter
+   further down. No screenshots here, the chapters show those large. */
+
+.gallery {
+  padding: 72px 0 88px;
+  background: radial-gradient(55% 70% at 100% 100%, rgb(91 52 194 / 0.14) 0%, transparent 65%),
+    radial-gradient(55% 70% at 0% 100%, rgb(18 71 230 / 0.14) 0%, transparent 65%),
+    radial-gradient(45% 50% at 50% 100%, rgb(11 107 116 / 0.1) 0%, transparent 70%), var(--sc-wash);
+}
+
+@media (min-width: 997px) {
+  .gallery {
+    padding: 104px 0 120px;
+  }
+}
+
+.galleryHead {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 997px) {
+  .galleryHead {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+    align-items: end;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+}
+
+.galleryTitle {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--sc-text);
+}
+
+.galleryLead {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--sc-muted);
+}
+
+.tiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tiles > li {
+  margin: 0;
+  display: flex;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 340px;
+  padding: 28px;
+  border-radius: var(--sc-radius);
+  background: radial-gradient(130% 80% at 0% 0%, var(--app-light) 0%, transparent 60%),
+    radial-gradient(110% 70% at 100% 100%, var(--app-neighbour) 0%, transparent 65%),
+    linear-gradient(160deg, var(--app-color) 0%, var(--app-deep) 100%);
+  color: #fff;
+}
+
+.tileMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 auto;
+  padding-bottom: 48px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgb(255 255 255 / 0.9);
+  font-variant-numeric: tabular-nums;
+}
+
+.tileTitle {
+  margin: 0 0 12px;
+  font-size: 1.75rem;
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.tileText {
+  margin: 0 0 28px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.tileAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid #fff;
+  border-radius: var(--sc-radius-m);
+  background: #fff;
+  color: var(--app-color);
+  font-size: 1rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background-color var(--sc-fast) var(--sc-ease);
+}
+
+.page a.tileAction:is(:hover, :focus) {
+  border: 1px solid #fff;
+  background: rgb(255 255 255 / 0.86);
+  color: var(--app-color);
+  text-decoration: none;
+}
+
+/* Colour sections: an app chapter, the call with the team and the start
+   of a project. Each is a gradient built from three layers: a lighter
+   corner top left, a neighbouring hue bottom right, and a slow slide from
+   the section colour into its deep shade underneath. */
+
+.chapter,
+.business,
+.closing {
+  background: radial-gradient(110% 85% at 0% 0%, var(--app-light) 0%, transparent 58%),
+    radial-gradient(95% 90% at 100% 100%, var(--app-neighbour) 0%, transparent 62%),
+    linear-gradient(140deg, var(--app-color) 0%, var(--app-deep) 100%);
+}
+
+/* the neighbouring hue sits top right on every second chapter, so two
+   chapters in a row never look like one long fade */
+.step:nth-child(even) > .chapter {
+  background: radial-gradient(110% 85% at 100% 0%, var(--app-neighbour) 0%, transparent 60%),
+    radial-gradient(95% 90% at 0% 100%, var(--app-light) 0%, transparent 58%),
+    linear-gradient(200deg, var(--app-color) 0%, var(--app-deep) 100%);
+}
+
+/* the large title of a colour section */
+.sectionTitle {
+  font-size: clamp(2.25rem, 4.2vw, 3.25rem);
+  font-weight: 750;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+/* App chapters: every app is one colour section about a screen tall. The
+   screen list on the left drives the one large view on the right. */
+
+.chapter {
+  --chapter-text: #fff;
+  --chapter-text-soft: rgb(255 255 255 / 0.9);
+  --chapter-line: rgb(255 255 255 / 0.26);
+  padding: 64px 0;
+  color: var(--chapter-text);
+  scroll-margin-top: var(--ifm-navbar-height);
+}
+
+@media (min-width: 997px) {
+  .chapter {
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - var(--ifm-navbar-height));
+    padding: 72px 0;
+  }
+
+  .chapter > .container {
+    width: 100%;
+  }
+}
+
+.chapterGrid {
+  display: grid;
+}
+
+.rail {
+  min-width: 0;
+}
+
+.viewer {
+  min-width: 0;
+}
+
+@media (min-width: 997px) {
+  .chapterGrid {
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr);
+    align-items: center;
+    gap: 48px;
+  }
+}
+
+/* On small screens the view sits right under the intro, with the screen
+   list below it, so a tap on a screen name changes what is in sight. */
+@media (max-width: 996px) {
+  .chapterGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .rail {
+    display: contents;
+  }
+
+  .viewer {
+    order: 1;
+    margin-bottom: 28px;
+  }
+
+  .screens {
+    order: 2;
+  }
+}
+
+.chapterKicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--chapter-text-soft);
+}
+
+.chapterKicker span {
+  padding: 3px 9px;
+  border: 1px solid var(--chapter-line);
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+  color: var(--chapter-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.chapterTitle {
+  margin: 0 0 16px;
+  color: var(--chapter-text);
+}
+
+.chapterText {
+  margin: 0 0 28px;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--chapter-text-soft);
+}
+
+.screens {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--chapter-line);
+}
+
+.screens > li {
+  margin: 0;
+  border-top: 1px solid var(--chapter-line);
+}
+
+.screenTab {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  align-items: baseline;
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  background: none;
+  color: rgb(255 255 255 / 0.82);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--sc-fast) var(--sc-ease);
+}
+
+.screenTab:hover {
+  color: #fff;
+}
+
+.screenTab[aria-current='true'] {
+  padding-bottom: 6px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.screenNumber {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* room for three lines, so stepping through never changes the height */
+.screenCaption {
+  margin: 0;
+  min-height: calc(4.5em + 14px);
+  padding: 0 0 14px 1.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--chapter-text-soft);
+}
+
+.screenTab:focus-visible,
+.stepButton:focus-visible,
+.windowShot:focus-visible,
+.phoneShot:focus-visible,
+.tileAction:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* The app window: a plain title bar that carries the real controls, and
+   the whole screen under it, never cropped. */
+
+.window {
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 28px 56px -28px rgb(0 0 0 / 0.55);
+  overflow: hidden;
+}
+
+.windowBar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 8px 0 14px;
+  border-bottom: 1px solid #dfe3ea;
+  background: #f3f5f8;
+  color: var(--sc-window-text);
+}
+
+.windowDots {
+  display: flex;
+  gap: 6px;
+}
+
+.windowDots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cdd3dc;
+}
+
+.windowTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  white-space: nowrap;
+  color: var(--sc-window-text);
+}
+
+.windowTitle span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  color: #5a6475;
+}
+
+.windowControls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.stepButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--sc-radius-s);
+  background: none;
+  color: var(--sc-window-text);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--sc-fast) var(--sc-ease),
+    border-color var(--sc-fast) var(--sc-ease);
+}
+
+.stepButton:hover {
+  background: #e3e7ee;
+}
+
+.stepButtonWide {
+  width: auto;
+  padding: 0 10px;
+}
+
+.windowControls .stepButton:focus-visible {
+  outline-color: var(--app-color);
+  outline-offset: 1px;
+}
+
+@media (max-width: 599px) {
+  .windowDots,
+  .stepButtonWide span {
+    display: none;
+  }
+
+  .windowBar {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .windowTitle > span {
+    display: none;
+  }
+}
+
+.windowShot {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.windowShot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Phone screens: the current one large in the middle, its neighbours
+   smaller on each side. The top bar button of a phone screen sits close to
+   the left edge, where a wide corner would cut into it, so the corners are
+   tight and a thin strip in the screen's own colour keeps the button
+   clear. */
+
+.phones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.phoneShot {
+  flex: none;
+  padding: 8px 0 5px;
+  border: 0;
+  border-radius: 20px;
+  background: var(--sc-screen);
+  line-height: 0;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 24px 48px -24px rgb(0 0 0 / 0.55);
+}
+
+.phoneShot img {
+  display: block;
+  width: auto;
+  height: min(430px, 48vh);
+}
+
+.phoneShotActive {
+  padding: 10px 0 6px;
+  border-radius: 24px;
+  cursor: zoom-in;
+}
+
+.phoneShotActive img {
+  height: min(560px, 62vh);
+}
+
+@media (max-width: 767px) {
+  .phoneShot:not(.phoneShotActive) {
+    display: none;
+  }
+}
+
+.phoneControls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.phoneControls .stepButton {
+  width: 44px;
+  height: 44px;
+  border-color: var(--chapter-line);
+  border-radius: var(--sc-radius-m);
+  color: #fff;
+}
+
+.phoneControls .stepButtonWide {
+  width: auto;
+  padding: 0 16px;
+  font-size: 0.9375rem;
+}
+
+.phoneControls .stepButton:hover {
+  border-color: #fff;
+  background: none;
+}
+
+/* Changing screens: the new screen glides in from the side it comes from
+   while the old one drifts out underneath. No blur: it stutters on large
+   images. */
+
+.shotIn {
+  position: relative;
+  animation: shotIn 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.shotOut {
+  position: absolute;
+  inset: 0;
+  animation: shotOut 420ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes shotIn {
+  from {
+    opacity: 0;
+    transform: translate3d(calc(var(--direction, 1) * 36px), 0, 0) scale(1.012);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes shotOut {
+  to {
+    opacity: 0;
+    transform: translate3d(calc(var(--direction, 1) * -24px), 0, 0) scale(0.99);
+  }
+}
+
+/* What it shows in webforJ: the features, each with a line on the left */
+
+.features {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--chapter-line);
+}
+
+@media (min-width: 997px) {
+  .features {
+    display: grid;
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+
+.featuresTitle {
+  margin: 0 0 20px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--chapter-text);
+}
+
+.featureList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px 24px;
+}
+
+@media (min-width: 640px) {
+  .featureList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .featureList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.featureList > li {
+  margin: 0;
+  display: flex;
+}
+
+.feature {
+  display: block;
+  width: 100%;
+  padding: 2px 0 2px 14px;
+  border-left: 2px solid var(--chapter-line);
+  color: var(--chapter-text);
+}
+
+.featureName {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 4px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.featureText {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--chapter-text-soft);
+}
+
+/* Full size viewer */
+
+.lightbox {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--sc-surface);
+  color: var(--sc-text);
+}
+
+.lightbox[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox::backdrop {
+  background: rgb(0 0 0 / 0.6);
+}
+
+.lightboxBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px var(--sc-gutter);
+  border-bottom: 1px solid var(--sc-line);
+}
+
+.lightboxTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0;
+  min-width: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lightboxTitle span {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sc-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.lightboxControls {
+  display: flex;
+  gap: 8px;
+  flex: none;
+}
+
+.lightboxStage {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--sc-gutter);
+}
+
+.lightboxStage img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 1100px;
+  max-width: 2880px;
+  height: auto;
+  border: 1px solid var(--sc-line);
+  border-radius: var(--sc-radius-s);
+  background: #fff;
+}
+
+.lightboxMobile .lightboxStage {
+  display: flex;
+  justify-content: center;
+}
+
+.lightboxMobile .lightboxStage img {
+  min-width: 0;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+/* Business call: the call with the team on an ink colour section */
+
+.business {
+  --sc-brand: #15171c;
+  --sc-on-brand: #fff;
+  --app-color: #15171c;
+  --app-light: #232a3d;
+  --app-neighbour: #1c2f6b;
+  --app-deep: #0c0d11;
+  padding: 88px 0;
+  color: #fff;
+}
+
+.businessPanel {
+  display: grid;
+  gap: 28px;
+  color: #fff;
+}
+
+@media (min-width: 997px) {
+  .business {
+    padding: 128px 0;
+  }
+
+  .businessPanel {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.businessTitle {
+  margin: 0;
+  color: inherit;
+  text-wrap: balance;
+}
+
+.businessText {
+  margin: 14px 0 0;
+  max-width: 620px;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--sc-on-brand) 86%, transparent);
+}
+
+.businessSide .actions {
+  margin-top: 0;
+}
+
+.businessLanguages {
+  margin: 14px 0 0;
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--sc-on-brand) 78%, transparent);
+}
+
+/* Closing: the start of a project on a brand blue colour section */
+
+.closing {
+  --sc-brand: #1247e6;
+  --sc-on-brand: #fff;
+  --app-color: #1247e6;
+  --app-light: #2e62f5;
+  --app-neighbour: #4b2bd6;
+  --app-deep: #0a2796;
+  padding: 88px 0 56px;
+  color: #fff;
+}
+
+.closingInner {
+  display: grid;
+  gap: 8px;
+}
+
+@media (min-width: 997px) {
+  .closing {
+    padding: 128px 0 64px;
+  }
+
+  .closingInner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 64px;
+  }
+
+  .closingInner .actions {
+    margin-top: 0;
+  }
+}
+
+.closingTitle {
+  margin: 0;
+  max-width: 720px;
+  text-wrap: balance;
+  color: #fff;
+}
+
+.closingText {
+  margin: 16px 0 0;
+  max-width: 600px;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.footnote {
+  margin: 88px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid rgb(255 255 255 / 0.26);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.business .button:focus-visible,
+.closing .button:focus-visible {
+  outline-color: #fff;
+}
+
+/* Section indicator: dots fixed on the left that follow the scroll, like
+   the dots of a carousel. They show from 1280px, where the margin has
+   room for them, and the dots turn white while a colour section is behind
+   them. */
+
+.step {
+  scroll-margin-top: var(--ifm-navbar-height);
+}
+
+.indicator {
+  display: none;
+}
+
+.indicatorHidden {
+  visibility: hidden;
+}
+
+.indicatorLabel {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .indicator {
+    display: block;
+    position: fixed;
+    left: 16px;
+    top: 50%;
+    z-index: 5;
+    transform: translateY(-50%);
+  }
+
+  .indicator ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 4px;
+  }
+
+  .indicator li {
+    margin: 0;
+  }
+
+  .indicator a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    color: var(--sc-faint);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+
+  .page .indicator a:is(:hover, :focus) {
+    color: var(--sc-faint);
+    text-decoration: none;
+  }
+
+  .page .indicator a.indicatorActive,
+  .page .indicator a.indicatorActive:is(:hover, :focus) {
+    color: var(--sc-brand-text);
+  }
+
+  .indicatorDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sc-line);
+    flex: none;
+  }
+
+  .indicatorActive .indicatorDot {
+    background: var(--sc-brand-text);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--sc-brand-text) 25%, transparent);
+  }
+
+  .indicatorOverColourSection .indicatorDot {
+    background: rgb(255 255 255 / 0.45);
+  }
+
+  .indicatorOverColourSection .indicatorActive .indicatorDot {
+    background: #fff;
+    box-shadow: 0 0 0 3px rgb(255 255 255 / 0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .lightbox * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
