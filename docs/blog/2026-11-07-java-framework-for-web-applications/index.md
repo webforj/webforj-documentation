@@ -113,6 +113,8 @@ With webforJ, the full-stack Java framework, validation lives on the model, secu
 
 Generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj), add one route and one form bound to a model, and run it. The [getting started guide](/docs/introduction/getting-started) covers prerequisites and the first run.
 
+For the approaches themselves, see the comparison of [Java frontend frameworks](/blog/java-frontend-frameworks).
+
 ## Frequently asked questions {#faq}
 
 ### What is the best Java framework for web applications? {#faq-best}

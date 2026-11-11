@@ -104,6 +104,8 @@ When the UI is Java, a rename is a refactor your IDE completes. Your compiler ch
 
 Generate a project with [startforJ](https://docs.webforj.com/startforj), run it, and paste in the preceding view. If you prefer the command line, the [getting started guide](/docs/introduction/getting-started) walks through the Maven archetypes.
 
+To see how this approach compares with the others, read the overview of [Java frontend frameworks](/blog/java-frontend-frameworks).
+
 ## Frequently asked questions {#faq}
 
 ### Can Java do front end development? {#faq-can-java-do-front-end}

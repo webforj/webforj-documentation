@@ -102,3 +102,5 @@ No. Server-to-client calls are batched, client events carry their data, and roun
 ## Build one real screen {#build-one-screen}
 
 Pick the screen your users open most, a table of records with an edit form, and build it. The [getting started guide](/docs/introduction/getting-started) takes you from an empty project to a running app, and one screen shows you more about fit than any list can.
+
+To compare any candidate on equal terms, start from [what to require from a Java framework for web applications](/blog/java-framework-for-web-applications).

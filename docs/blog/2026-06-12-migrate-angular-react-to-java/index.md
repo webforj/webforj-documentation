@@ -131,6 +131,8 @@ For a worked example of a full app on this stack, see the [webforJ bookstore dem
 
 Generate a Spring Boot project in [startforJ](https://docs.webforj.com/startforj) or follow [getting started](/docs/introduction/getting-started), then rebuild your smallest list screen as a view. If the repository-to-table result looks like the preceding class, you have your migration pattern.
 
+Before you commit to a direction, the comparison of [Java frontend frameworks](/blog/java-frontend-frameworks) shows where each approach fits.
+
 ## Frequently asked questions {#faq}
 
 ### How do I replace React with Java? {#how-do-i-replace-react-with-java}

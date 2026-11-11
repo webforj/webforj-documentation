@@ -115,6 +115,8 @@ The assistant can also check its own work. Ask it for a test with every screen i
 
 Generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj) and pick **Spring Boot** under **Runs on**. Then rebuild your most interactive screen as a view and compare it with the template version. The [getting started guide](/docs/introduction/getting-started) walks through the first run.
 
+Templates are one of five ways to build the UI. The others are in the comparison of [Java frontend frameworks](/blog/java-frontend-frameworks).
+
 ## Frequently asked questions {#faq}
 
 ### What is a good Thymeleaf alternative for Spring Boot? {#faq-alternative}

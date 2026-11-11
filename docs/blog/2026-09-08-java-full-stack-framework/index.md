@@ -169,6 +169,8 @@ Keep a separate frontend if several independent clients need the same API from d
 
 Generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj), then add the entity, repository, and view from this post. The [getting started guide](/docs/introduction/getting-started) covers prerequisites and the first run.
 
+To check any framework against the same requirements, use the list in [Java framework for web applications](/blog/java-framework-for-web-applications).
+
 ## Frequently asked questions {#faq}
 
 ### What is a Java full stack framework? {#faq-what-is-it}

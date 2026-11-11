@@ -143,6 +143,8 @@ Two rules keep the score honest. Any score of 4 or 5 needs an evidence link a co
 
 Choose one real screen from your backlog, one that touches a Spring service and needs a role check. Generate a starter with [startforJ](https://docs.webforj.com/startforj/), install the [AI plugin](/docs/ai-tooling), and build the screen. Then read the [security overview](/docs/security/overview) with your security lead. Score the result in the table.
 
+The requirements worth scoring are listed in [Java framework for web applications](/blog/java-framework-for-web-applications).
+
 ## Frequently asked questions {#faq}
 
 ### How do I choose a web framework for enterprise applications? {#faq-how-to-choose}

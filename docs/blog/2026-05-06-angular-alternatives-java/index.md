@@ -109,6 +109,8 @@ If you have a dedicated front-end team that owns TypeScript, and your back end i
 
 Generate a project with [startforJ](https://docs.webforj.com/startforj), or follow [getting started](/docs/introduction/getting-started). Build one real screen, such as a search form over an existing Spring service, and compare how many files it took.
 
+Still weighing the field? The guide to [Java frontend frameworks](/blog/java-frontend-frameworks) lines up the five ways to build the UI.
+
 ## Frequently asked questions {#faq}
 
 ### Is there an Angular alternative that works with Spring Boot? {#faq-spring-boot}

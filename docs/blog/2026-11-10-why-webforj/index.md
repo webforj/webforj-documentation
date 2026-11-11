@@ -128,3 +128,5 @@ Yes. The webforJ AI plugin gives assistants the MCP server and Agent Skills, and
 ## Start a project with startforJ {#start}
 
 The quickest way to judge these answers is to build something. Generate a project with [startforJ](https://docs.webforj.com/startforj), follow the [getting started guide](/docs/introduction/getting-started), and build one real screen of your own app in Java.
+
+If you are still comparing options, [Java framework for web applications](/blog/java-framework-for-web-applications) lists what to require from any of them.
