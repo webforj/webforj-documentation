@@ -337,9 +337,9 @@ function Hero({ groups, byName }) {
                 </Translate>
                 <ArrowIcon className={styles.icon} />
               </Link>
-              <Link className={clsx(styles.button, styles.buttonSecondary)} to="#groups">
+              <a className={clsx(styles.button, styles.buttonSecondary)} href="#groups">
                 <Translate id="page.uiComponents.hero.browse">Browse by purpose</Translate>
-              </Link>
+              </a>
             </div>
           </div>
           <dl className={styles.stats}>
