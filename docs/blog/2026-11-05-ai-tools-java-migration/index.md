@@ -109,6 +109,8 @@ Then there is the compiler. A webforJ view is Java, so a wrong method name fails
 
 We are careful about what that loop promises. It raises the odds that the code you review is correct. It does not replace the review, and even with the plugin installed an assistant can still produce wrong code in complex cases. Read the diff, run the tests and keep the change small enough to understand.
 
+Lookup, compile, and test together make up [the AI verification loop for Java](/blog/ai-verification-loop-java).
+
 ## Run the upgrade recipe on a branch {#next-step}
 
 If you are not sure where to begin, begin with Job 1 and Job 2, because they are contained and teach your team how the assistant behaves on your code. Ask it for a screen inventory of your app. Then, once you are on webforJ, pick one project, add the OpenRewrite plugin on a branch, run `mvn rewrite:dryRun` and read the patch. When you are ready to port a screen, generate a project with [startforJ](https://docs.webforj.com/startforj), install the plugin and follow the [getting started guide](/docs/introduction/getting-started) for the first view.

@@ -92,6 +92,8 @@ The [webforJ AI plugin](/docs/ai-tooling) is what keeps that port correct. One i
 
 Review and test what the agent writes, as you would for any teammate. Your Java developers stay in charge of the decisions, and the agent does the typing.
 
+The agent can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Myth: no shared login {#myth-login}
 
 **Fact:** you decide where authentication lives. The Webswing options cover connection management, authentication, debugging and monitoring, so the web app can own the session while the embedded app runs behind it. On the webforJ side, the [route security](/docs/security/overview) framework (since 25.10) protects views with annotations before they render, so new screens can be protected with role-based access from the start.

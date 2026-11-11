@@ -1,6 +1,6 @@
 ---
-title: "Java progressive web app: make a webforJ app installable"
-description: "Build a Java progressive web app with webforJ. One @AppProfile annotation adds the manifest, icons, and install prompt. Covers testing and offline limits."
+title: "Spring Boot progressive web app: make webforJ installable"
+description: "Build a Spring Boot progressive web app with webforJ. One @AppProfile annotation adds the manifest, icons and install prompt. Covers testing and offline limits."
 slug: java-progressive-web-app
 date: 2026-10-24
 authors: Eric Handtke
@@ -11,13 +11,13 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-24-java-progressive-web-app/cover.jpg)
 
-To turn a webforJ app into a Java progressive web app, add the `@AppProfile` annotation to your `App` class. webforJ generates the Web App Manifest, the meta tags, and the icon links, and browsers then offer to install the app on the desktop or the home screen. You write no JSON and no JavaScript.
+Users ask for your Spring Boot web app on their desktop or home screen, with its own icon, and no browser bar. A Spring Boot progressive web app needs a manifest, icons and HTTPS, and webforJ covers the first two for you. To turn a webforJ app into a Java progressive web app, add the `@AppProfile` annotation to your `App` class. webforJ generates the Web App Manifest, the meta tags, and the icon links, and browsers then offer to install the app on the desktop or the home screen. You write no JSON and no JavaScript.
 
 Installable is the part of a PWA that webforJ covers directly. Offline use is different, because a webforJ UI is rendered by Java on the server and needs a live connection. This guide shows what to configure, how to test it, and where the limits are.
 
 <!-- truncate -->
 
-## What makes a web app installable {#what-makes-a-web-app-installable}
+## What makes a Spring Boot app installable {#what-makes-a-web-app-installable}
 
 An installable web app is a normal site plus metadata that tells the operating system how to present it. Chromium browsers need a manifest with a name, a start URL, a display mode, and icons of 192 and 512 pixels, and the page must be served over HTTPS. [MDN lists the full criteria](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable). A service worker is not on that list, so a manifest alone makes an app installable.
 

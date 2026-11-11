@@ -1,0 +1,1055 @@
+/* craftforJ product page. A flat canvas that follows the site theme, thin
+   lines between sections and very large type. One accent colour marks the
+   second line of each title, the active states and the small markers. The
+   videos, screenshots and code always sit in dark frames, in both themes. */
+
+.page {
+  --cj-text: #fff;
+  --cj-muted: rgb(255 255 255 / 0.74);
+  --cj-lead: rgb(255 255 255 / 0.88);
+  --cj-line: rgb(255 255 255 / 0.12);
+  --cj-rule: rgb(255 255 255 / 0.22);
+  --cj-quiet: rgb(255 255 255 / 0.42);
+  --cj-panel: #212126;
+  --cj-accent: #a07bff;
+  --cj-on-accent: #121214;
+  --cj-primary-bg: #fff;
+  --cj-primary-hover: rgb(255 255 255 / 0.86);
+  --cj-primary-text: #19191c;
+  --cj-frame-line: rgb(255 255 255 / 0.16);
+  --cj-frame-bg: #0c0c10;
+  --cj-frame-divider: rgb(255 255 255 / 0.1);
+  --cj-code-bg: #101014;
+  --cj-code-text: #e6e3f0;
+  --cj-radius-control: 10px;
+  --cj-radius-box: 12px;
+  --cj-radius-frame: 18px;
+  --cj-radius-media: 8px;
+  --cj-ease: cubic-bezier(0.2, 0, 0, 1);
+  --cj-fast: 150ms;
+  --cj-gutter: 16px;
+  background: #19191c;
+  color: var(--cj-text);
+  overflow-x: clip;
+}
+
+/* Light theme: the same page on a light canvas with dark type. */
+[data-theme='light'] .page {
+  --cj-text: #0d1020;
+  --cj-muted: rgb(13 16 32 / 0.68);
+  --cj-lead: rgb(13 16 32 / 0.84);
+  --cj-line: rgb(13 16 32 / 0.1);
+  --cj-rule: rgb(13 16 32 / 0.2);
+  --cj-quiet: rgb(13 16 32 / 0.4);
+  --cj-panel: #fff;
+  --cj-accent: #5b34c2;
+  --cj-on-accent: #fff;
+  --cj-primary-bg: #0d1020;
+  --cj-primary-hover: #262b45;
+  --cj-primary-text: #fff;
+  --cj-frame-line: rgb(13 16 32 / 0.18);
+  background: #f7f7f8;
+}
+
+@media (min-width: 768px) {
+  .page {
+    --cj-gutter: 32px;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--cj-gutter);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+}
+
+/* Sections sit on the one canvas, split by a thin dashed rule. */
+
+.loop,
+.tour,
+.source,
+.start,
+.next {
+  position: relative;
+  border-top: 1px dashed var(--cj-rule);
+}
+
+/* Type */
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cj-accent);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.2rem + 3vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  color: var(--cj-text);
+  text-wrap: balance;
+}
+
+/* the second line of every title is in the one accent colour of the page */
+.heroTitle span,
+.sectionTitle span {
+  display: block;
+  padding-bottom: 0.06em;
+  color: var(--cj-accent);
+}
+
+.sectionLead {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--cj-muted);
+}
+
+/* Buttons */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+@media (max-width: 479px) {
+  .actions > * {
+    flex: 1 1 100%;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: var(--cj-radius-control);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color var(--cj-fast) var(--cj-ease),
+    border-color var(--cj-fast) var(--cj-ease),
+    color var(--cj-fast) var(--cj-ease);
+}
+
+/* The DWC theme removes link borders on hover. Restore them so hover
+   changes colour only and nothing moves. */
+.page a.button:is(:hover, :focus) {
+  border-style: solid;
+  border-width: 1px;
+  text-decoration: none;
+}
+
+.buttonPrimary {
+  border-color: var(--cj-primary-bg);
+  background: var(--cj-primary-bg);
+  color: var(--cj-primary-text);
+}
+
+.page a.buttonPrimary:is(:hover, :focus) {
+  border-color: var(--cj-primary-hover);
+  background: var(--cj-primary-hover);
+  color: var(--cj-primary-text);
+}
+
+.buttonGhost {
+  border-color: var(--cj-quiet);
+  background: transparent;
+  color: var(--cj-text);
+}
+
+.page a.buttonGhost:is(:hover, :focus) {
+  border-color: var(--cj-text);
+  background: transparent;
+  color: var(--cj-text);
+}
+
+.page :is(a, button):focus-visible {
+  outline: 3px solid var(--cj-accent);
+  outline-offset: 3px;
+}
+
+/* Keys */
+
+.keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.page kbd.kbd {
+  display: inline-block;
+  min-width: 1.75em;
+  padding: 3px 7px;
+  border: 1px solid color-mix(in srgb, currentColor 32%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  box-shadow: none;
+  color: inherit;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.plus {
+  font-size: 0.8125rem;
+  opacity: 0.7;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  padding: 48px 0 64px;
+}
+
+.heroGrid {
+  display: grid;
+  gap: 36px;
+}
+
+@media (min-width: 997px) {
+  .hero {
+    padding: 88px 0 96px;
+  }
+
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+    align-items: end;
+    gap: 72px;
+  }
+}
+
+.heroTitle {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(2.75rem, 1.2rem + 4.6vw, 5.25rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+  color: var(--cj-text);
+  text-wrap: balance;
+}
+
+.heroLead {
+  margin: 24px 0 0;
+  max-width: 620px;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--cj-lead);
+}
+
+.shortcuts {
+  padding: 22px 24px 10px;
+  border: 1px solid var(--cj-line);
+  border-radius: 14px;
+  background: var(--cj-panel);
+}
+
+.shortcutsTitle {
+  composes: eyebrow;
+  margin: 0 0 6px;
+}
+
+.shortcuts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.shortcuts li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--cj-line);
+  font-size: 0.9375rem;
+  color: var(--cj-text);
+}
+
+.shortcuts li:first-child {
+  border-top: 0;
+}
+
+.heroShot {
+  position: relative;
+  z-index: 2;
+  margin: 48px auto 0;
+  max-width: 1011px;
+  padding: 12px;
+  border: 1px solid var(--cj-frame-line);
+  border-radius: var(--cj-radius-frame);
+  background: var(--cj-frame-bg);
+}
+
+.heroShot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--cj-radius-media);
+}
+
+@media (min-width: 997px) {
+  .heroShot {
+    margin-top: 64px;
+  }
+}
+
+/* A section title with its lead beside it on wide screens */
+
+.sectionHead {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 997px) {
+  .sectionHead {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 72px;
+  }
+}
+
+/* How it works */
+
+.loop {
+  padding: 72px 0 80px;
+}
+
+@media (min-width: 997px) {
+  .loop {
+    padding: 112px 0;
+  }
+}
+
+.loopSteps {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 640px) {
+  .loopSteps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .loopSteps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 64px;
+  }
+}
+
+.loopSteps > li {
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--cj-accent);
+}
+
+.loopNumber {
+  display: block;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cj-accent);
+}
+
+.loopTitle {
+  margin: 10px 0 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.loopText {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--cj-muted);
+}
+
+/* Tour */
+
+.tour {
+  padding: 72px 0 80px;
+}
+
+@media (min-width: 997px) {
+  .tour {
+    padding: 112px 0;
+  }
+}
+
+.tourHead {
+  max-width: 760px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  margin: 40px 0 0;
+  border-bottom: 1px solid var(--cj-rule);
+}
+
+.tab {
+  margin: 0 0 -1px;
+  padding: 14px 18px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--cj-muted);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    color var(--cj-fast) var(--cj-ease),
+    border-color var(--cj-fast) var(--cj-ease);
+}
+
+.tab:hover {
+  color: var(--cj-text);
+  border-bottom-color: var(--cj-quiet);
+}
+
+.tabActive,
+.tabActive:hover {
+  color: var(--cj-text);
+  border-bottom-color: var(--cj-accent);
+}
+
+@media (max-width: 599px) {
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tab {
+    padding: 12px 10px;
+    text-align: left;
+  }
+}
+
+/* All panels share one grid cell, so the deck is always as tall as its
+   tallest panel and switching never changes the section height. */
+.deck {
+  display: grid;
+  margin-top: 28px;
+}
+
+.panel {
+  grid-area: 1 / 1;
+  min-width: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 260ms var(--cj-ease),
+    visibility 0s linear 260ms;
+}
+
+.panelActive {
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 260ms var(--cj-ease),
+    visibility 0s;
+}
+
+/* One dark box holds the media and, along its top, the bar that names it
+   and switches it. The box is dark in both themes, so the bar carries its
+   own light-on-dark colours. */
+.stageFrame {
+  --cj-text: #fff;
+  --cj-muted: rgb(255 255 255 / 0.66);
+  --cj-quiet: rgb(255 255 255 / 0.22);
+  --cj-accent: #a07bff;
+  --cj-on-accent: #14101f;
+  border: 1px solid var(--cj-frame-line);
+  border-radius: var(--cj-radius-frame);
+  background: var(--cj-frame-bg);
+  overflow: hidden;
+}
+
+/* The stage has a fixed height at every width, so switching panels or
+   views never changes the section height. All views share one grid cell
+   and each shows its media whole inside it. */
+.stage {
+  --stage-pad: 16px;
+  --stage-h: calc(clamp(220px, 58vw, 640px) - var(--stage-pad) * 2);
+  display: grid;
+  height: calc(var(--stage-h) + var(--stage-pad) * 2);
+  padding: var(--stage-pad);
+}
+
+@media (min-width: 768px) {
+  .stage {
+    --stage-pad: 28px;
+  }
+}
+
+.view {
+  grid-area: 1 / 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 220ms var(--cj-ease),
+    visibility 0s linear 220ms;
+}
+
+.viewActive {
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 220ms var(--cj-ease),
+    visibility 0s;
+}
+
+/* Each video or screenshot knows its pixel size (--w, --h), so it holds
+   its box before it loads. It never grows past its own size or past the
+   stage height. */
+.media {
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  flex: 0 1 calc(var(--w) * 1px);
+}
+
+.media img,
+.media video {
+  display: block;
+  width: min(100%, calc(var(--w) * 1px), calc(var(--stage-h) * var(--w) / var(--h)));
+  height: auto;
+  border: 1px solid var(--cj-frame-divider);
+  border-radius: var(--cj-radius-media);
+}
+
+.panelBody {
+  display: grid;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+@media (min-width: 997px) {
+  .panelBody {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 72px;
+  }
+}
+
+.panelTitle {
+  margin: 0;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--cj-text);
+}
+
+.panelText {
+  margin: 14px 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--cj-muted);
+}
+
+.panelFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 24px;
+}
+
+/* The view switch, a bar on top of the stage. The track holds the
+   choices, the shown one is filled, and the one that is already shown does
+   not invite a click. */
+.viewBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  min-height: 56px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--cj-frame-divider);
+}
+
+.viewBarLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cj-muted);
+}
+
+.views {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--cj-quiet);
+  border-radius: var(--cj-radius-control);
+}
+
+.viewButton {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--cj-muted);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background-color var(--cj-fast) var(--cj-ease),
+    color var(--cj-fast) var(--cj-ease);
+}
+
+.viewButton:hover {
+  color: var(--cj-text);
+}
+
+.viewButton:focus-visible {
+  outline: 2px solid var(--cj-accent);
+  outline-offset: 2px;
+}
+
+.viewButtonActive,
+.viewButtonActive:hover {
+  background: var(--cj-accent);
+  color: var(--cj-on-accent);
+  cursor: default;
+}
+
+.viewCount {
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--cj-muted);
+}
+
+.viewOnly {
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: var(--cj-text);
+}
+
+.panelLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--cj-text);
+  text-decoration: underline;
+  text-decoration-color: var(--cj-accent);
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--cj-fast) var(--cj-ease);
+}
+
+.page a.panelLink:is(:hover, :focus) {
+  color: var(--cj-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--cj-accent);
+}
+
+.points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--cj-rule);
+}
+
+.points li {
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--cj-line);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--cj-lead);
+}
+
+/* Back to source */
+
+.source {
+  padding: 80px 0;
+}
+
+@media (min-width: 997px) {
+  .source {
+    padding: 112px 0 72px;
+  }
+}
+
+.diff {
+  display: grid;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+@media (min-width: 997px) {
+  .diff {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 32px;
+  }
+}
+
+.diffSide {
+  min-width: 0;
+}
+
+.diffSide :global(.theme-code-block) {
+  margin-bottom: 0;
+}
+
+/* The two versions of the class sit side by side, so their code runs a
+   size smaller and the longest import line fits without scrolling. */
+@media (min-width: 997px) {
+  .diffSide :global(pre),
+  .diffSide :global(code) {
+    font-size: 0.8125rem;
+  }
+}
+
+.diffLabel {
+  composes: eyebrow;
+  margin: 0 0 10px;
+}
+
+.guards {
+  list-style: none;
+  margin: 64px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0 32px;
+  border-top: 1px solid var(--cj-rule);
+}
+
+@media (min-width: 640px) {
+  .guards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .guards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.guards > li {
+  margin: 0;
+  padding: 22px 0;
+}
+
+.guardTitle {
+  margin: 0 0 6px;
+  font-size: 1.125rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+}
+
+.guardText {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--cj-muted);
+}
+
+/* Getting started */
+
+.start {
+  padding: 80px 0 96px;
+}
+
+@media (min-width: 997px) {
+  .start {
+    padding: 88px 0 72px;
+  }
+}
+
+.steps {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: grid;
+}
+
+.stepItem {
+  margin: 0;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 32px 0;
+  border-top: 1px solid var(--cj-rule);
+}
+
+.stepNumber {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--cj-radius-control);
+  background: var(--cj-accent);
+  color: var(--cj-on-accent);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.stepBody {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+@media (min-width: 997px) {
+  .steps {
+    margin-top: 64px;
+  }
+
+  .stepItem {
+    gap: 32px;
+  }
+
+  .stepBody {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: 48px;
+    align-items: start;
+  }
+}
+
+.stepTitle {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.stepText {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cj-muted);
+}
+
+.stepBody :global(.theme-code-block) {
+  margin-bottom: 0;
+}
+
+.dockShot {
+  margin: 0;
+}
+
+.dockShot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 14px;
+  padding: 8px;
+  border: 1px solid var(--cj-frame-line);
+  border-radius: var(--cj-radius-box);
+  background: var(--cj-frame-bg);
+}
+
+/* Where next */
+
+.next {
+  padding: 80px 0 96px;
+}
+
+@media (min-width: 997px) {
+  .next {
+    padding: 112px 0 128px;
+  }
+}
+
+.docList {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: grid;
+  column-gap: 40px;
+}
+
+@media (min-width: 640px) {
+  .docList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.docList > li {
+  margin: 0;
+  display: flex;
+}
+
+.docLink {
+  display: block;
+  width: 100%;
+  padding: 18px 0 20px;
+  border: 0;
+  border-top: 1px solid var(--cj-rule);
+  color: var(--cj-text);
+  text-decoration: none;
+  transition: border-color var(--cj-fast) var(--cj-ease);
+}
+
+.page a.docLink:is(:hover, :focus) {
+  border-width: 1px 0 0;
+  border-style: solid;
+  border-color: var(--cj-accent);
+  color: var(--cj-text);
+  text-decoration: none;
+}
+
+.docLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1875rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+}
+
+.docText {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--cj-muted);
+}
+
+.next .actions {
+  margin-top: 48px;
+}
+
+/* Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .page * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Hover never moves anything: colour and border colour only. */
+.page :is(a, button):hover,
+.page :is(a, button):hover * {
+  transform: none !important;
+  translate: none !important;
+  scale: none !important;
+}
+
+/* Code is always dark, in both themes, in the page's own colours. The site
+   highlighter sets each token colour inline, so every token type is set
+   here with !important. */
+
+.page :global(.theme-code-block) {
+  --prism-color: var(--cj-code-text);
+  --prism-background-color: var(--cj-code-bg);
+  border: 1px solid var(--cj-frame-line);
+  border-radius: var(--cj-radius-box);
+  background: var(--cj-code-bg);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.page :global(.theme-code-block) :global(pre) {
+  background: var(--cj-code-bg) !important;
+  color: var(--cj-code-text) !important;
+}
+
+.page :global(.theme-code-block) [class*='codeBlockTitle'] {
+  border-bottom: 1px solid var(--cj-frame-divider) !important;
+  background: #16161c !important;
+  color: rgb(255 255 255 / 0.72) !important;
+}
+
+.page :global(.theme-code-block) :global(.token-line),
+.page :global(.theme-code-block) :global(.token.plain) {
+  color: var(--cj-code-text) !important;
+}
+
+.page :global(.theme-code-block) :global(.token.keyword),
+.page :global(.theme-code-block) :global(.token.tag) {
+  color: #b99aff !important;
+}
+
+.page :global(.theme-code-block) :global(.token.class-name),
+.page :global(.theme-code-block) :global(.token.attr-name),
+.page :global(.theme-code-block) :global(.token.constant) {
+  color: #7fd6c8 !important;
+}
+
+.page :global(.theme-code-block) :global(.token.string),
+.page :global(.theme-code-block) :global(.token.attr-value),
+.page :global(.theme-code-block) :global(.token.boolean),
+.page :global(.theme-code-block) :global(.token.number) {
+  color: #f4b98f !important;
+}
+
+.page :global(.theme-code-block) :global(.token.function) {
+  color: #93bbff !important;
+}
+
+.page :global(.theme-code-block) :global(.token.punctuation),
+.page :global(.theme-code-block) :global(.token.operator) {
+  color: rgb(255 255 255 / 0.6) !important;
+}
+
+.page :global(.theme-code-block) :global(.token.comment) {
+  color: rgb(255 255 255 / 0.45) !important;
+  font-style: italic;
+}
+
+.page :global(.theme-code-block) :global(.token.namespace) {
+  color: rgb(255 255 255 / 0.62) !important;
+  opacity: 1 !important;
+}
+
+.page :global(.theme-code-block) :global(.token.tag) :global(.token.punctuation),
+.page :global(.theme-code-block) :global(.token.tag.punctuation) {
+  color: rgb(255 255 255 / 0.55) !important;
+}
+
+.page :global(.theme-code-block) :global(button) {
+  border-color: rgb(255 255 255 / 0.18);
+  background: #1c1c22;
+  color: rgb(255 255 255 / 0.8);
+}

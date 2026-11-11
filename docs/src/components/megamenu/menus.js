@@ -8,12 +8,11 @@ import { translate } from '@docusaurus/Translate';
 //
 // A menu is either
 //   { layout: 'products', products: [...] }: the main list; hovering one
-//     shows its preview in an editor window. Each product has label, slug (the
-//     window's file path), tagline, description, cta (link text), to or href,
-//     icon, and preview:
-//       { type: 'image', src }          a picture (static/img/megamenu holds
-//                                       the drawn ones, as SVG files)
-//       { type: 'video', src }          a short clip, muted and looping
+//     shows its preview beside the list. Each product has label, slug (shown
+//     as a path above the preview), tone (its colour), tagline, description,
+//     cta (link text), to or href, icon, and preview:
+//       { type: 'drawing', name }       a flat animated drawing from
+//                                       MenuArt.js, in the product's colour
 //       { type: 'code', lines: [...] }  code (Java, Kotlin or shell); code is
 //                                       never translated
 //   { columns: [...] }: titled groups (title, items of label, description,
@@ -32,10 +31,11 @@ export function getMenu(name) {
           {
             label: translate({ id: "component.megaMenu.products.webforJ.label", message: "webforJ" }),
             slug: "webforj",
+            tone: "#4d8bff",
             tagline: translate({ id: "component.megaMenu.products.webforJ.tagline", message: "100% Java, all the way" }),
             description: translate({ id: "component.megaMenu.products.webforJ.description", message: "Build the whole web app in Java, UI included. No JavaScript to write and no REST layer between the UI and your backend." }),
             cta: translate({ id: "component.megaMenu.products.webforJ.cta", message: "Get started" }),
-            to: "/docs/introduction/getting-started",
+            to: "/intro",
             icon: "webforj",
             preview: {
               type: 'code',
@@ -58,10 +58,11 @@ export function getMenu(name) {
           {
             label: translate({ id: "component.megaMenu.products.kotlinDSL.label", message: "Kotlin DSL" }),
             slug: "kotlin-dsl",
+            tone: "#ff8a3d",
             tagline: translate({ id: "component.megaMenu.products.kotlinDSL.tagline", message: "The same UIs, in Kotlin" }),
             description: translate({ id: "component.megaMenu.products.kotlinDSL.description", message: "Build webforJ UIs declaratively in Kotlin with type-safe builders and nested blocks, alongside your Java code. Experimental." }),
             cta: translate({ id: "component.megaMenu.products.kotlinDSL.cta", message: "Explore the Kotlin DSL" }),
-            to: "/docs/integrations/kotlin-dsl/overview",
+            to: "/kotlin-dsl",
             icon: "kotlin",
             preview: {
               type: 'code',
@@ -85,40 +86,44 @@ export function getMenu(name) {
           {
             label: translate({ id: "component.megaMenu.products.uIComponents.label", message: "UI Components" }),
             slug: "ui-components",
+            tone: "#7c9cff",
             tagline: translate({ id: "component.megaMenu.products.uIComponents.tagline", message: "Ready-made, and built to compose" }),
             description: translate({ id: "component.megaMenu.products.uIComponents.description", message: "Layouts, data entry, navigation, feedback, and visualization, all in Java. Combine them with Composite into your own reusable components, exposing only the API you choose." }),
             cta: translate({ id: "component.megaMenu.products.uIComponents.cta", message: "Explore components" }),
-            to: "/docs/components/overview",
+            to: "/ui-components",
             icon: "components",
-            preview: { type: "image", src: "/img/megamenu/ui-components.svg" },
+            preview: { type: "drawing", name: "ui-components" },
           },
           {
             label: translate({ id: "component.megaMenu.products.swingModernization.label", message: "Swing modernization" }),
             slug: "swing-modernization",
+            tone: "#2cc3b6",
             tagline: translate({ id: "component.megaMenu.products.swingModernization.tagline", message: "Bring Swing apps to the web" }),
             description: translate({ id: "component.megaMenu.products.swingModernization.description", message: "Run existing Swing, JavaFX, or SWT apps in the browser through Webswing, then move them to webforJ one screen at a time." }),
             cta: translate({ id: "component.megaMenu.products.swingModernization.cta", message: "Start modernizing" }),
-            to: "/docs/integrations/webswing/overview",
+            to: "/modernization",
             icon: "webswing",
-            preview: { type: "image", src: "/img/megamenu/swing-modernization.webp" },
+            preview: { type: "drawing", name: "swing-modernization" },
           },
           {
             label: translate({ id: "component.megaMenu.products.craftforJ.label", message: "craftforJ" }),
             slug: "craftforj",
+            tone: "#a07bff",
             tagline: translate({ id: "component.megaMenu.products.craftforJ.tagline", message: "Edit your running app, visually" }),
             description: translate({ id: "component.megaMenu.products.craftforJ.description", message: "Inspect the component tree of a running app, change components live, and write the changes you keep back into your Java source." }),
             cta: translate({ id: "component.megaMenu.products.craftforJ.cta", message: "Discover craftforJ" }),
-            to: "/docs/craftforj",
+            to: "/craftforj-tool",
             icon: "craftforj",
-            preview: { type: "video", src: "https://cdn.webforj.com/webforj-documentation/video/craftforJ/intro.mp4" },
+            preview: { type: "drawing", name: "craftforj" },
           },
           {
             label: translate({ id: "component.megaMenu.products.aITooling.label", message: "AI tooling" }),
             slug: "ai-tooling",
+            tone: "#3fb4f0",
             tagline: translate({ id: "component.megaMenu.products.aITooling.tagline", message: "Teach your AI assistant webforJ" }),
             description: translate({ id: "component.megaMenu.products.aITooling.description", message: "One plugin gives Claude Code, Copilot, Cursor, Gemini, and Codex live webforJ docs, project scaffolding, theme generation, and workflows that follow webforJ conventions." }),
             cta: translate({ id: "component.megaMenu.products.aITooling.cta", message: "Install the AI plugin" }),
-            to: "/docs/ai-tooling",
+            to: "/ai",
             icon: "ai",
             preview: {
               type: 'code',
@@ -136,22 +141,24 @@ export function getMenu(name) {
           {
             label: translate({ id: "component.megaMenu.products.mCPApps.label", message: "MCP Apps" }),
             slug: "mcp-apps",
+            tone: "#3ecf8e",
             tagline: translate({ id: "component.megaMenu.products.mCPApps.tagline", message: "Your webforJ views, inside AI apps" }),
             description: translate({ id: "component.megaMenu.products.mCPApps.description", message: "Let an MCP-capable AI app open a routed webforJ view in its conversation, where the person and the AI work with the same live UI. Experimental." }),
             cta: translate({ id: "component.megaMenu.products.mCPApps.cta", message: "Explore MCP Apps" }),
-            to: "/docs/integrations/mcp-apps/overview",
+            to: "/mcp-apps",
             icon: "mcpApps",
-            preview: { type: "video", src: "https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4" },
+            preview: { type: "drawing", name: "mcp-apps" },
           },
           {
             label: translate({ id: "component.megaMenu.products.figmaDesignKit.label", message: "Figma design kit" }),
             slug: "design-kit",
+            tone: "#e06ad0",
             tagline: translate({ id: "component.megaMenu.products.figmaDesignKit.tagline", message: "Design with the real components" }),
             description: translate({ id: "component.megaMenu.products.figmaDesignKit.description", message: "The DWC Design Kit brings the webforJ components to Figma, so what you design matches what you build." }),
             cta: translate({ id: "component.megaMenu.products.figmaDesignKit.cta", message: "Open the design kit" }),
-            href: "https://www.figma.com/community/file/1682060886525639971/dwc-design-kit",
+            to: "/design-kit",
             icon: "design",
-            preview: { type: "image", src: "/img/megamenu/design-kit.svg" },
+            preview: { type: "drawing", name: "design-kit" },
           },
         ],
       };
@@ -265,6 +272,12 @@ export function getMenu(name) {
                 description: translate({ id: "component.megaMenu.resources.readAndWatch.blog.description", message: "Releases, tutorials and deep dives" }),
                 to: "/blog",
                 icon: "blog",
+              },
+              {
+                label: translate({ id: "component.megaMenu.resources.readAndWatch.showcase.label", message: "Showcase" }),
+                description: translate({ id: "component.megaMenu.resources.readAndWatch.showcase.description", message: "What you can build with webforJ" }),
+                to: "/showcase",
+                icon: "components",
               },
               {
                 label: translate({ id: "component.megaMenu.resources.readAndWatch.successStories.label", message: "Success stories" }),

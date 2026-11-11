@@ -1,13 +1,13 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import { Collapsible, useCollapsible } from '@docusaurus/theme-common';
-import { FaArrowRight, FaChevronDown, FaExpand } from 'react-icons/fa6';
+import { FaArrowRight, FaChevronDown } from 'react-icons/fa6';
 import { ICONS } from './icons';
 import { getMenu } from './menus';
 import { translate } from '@docusaurus/Translate';
+import MenuArt from './MenuArt';
 import styles from './MegaMenu.module.css';
 
 // A link inside a menu: site pages through the router, other sites in a new
@@ -32,7 +32,7 @@ function Icon({ name, className }) {
   return Component ? <Component className={className} aria-hidden="true" /> : null;
 }
 
-// --- previews: what a product looks like, shown in the editor window --------
+// --- previews: what a product looks like, shown beside the list -------------
 
 // Java and Kotlin keywords and types in a code preview
 function highlight(line) {
@@ -60,7 +60,7 @@ function CodePreview({ lines }) {
   return (
     <pre className={styles.code}>
       {lines.map((line, index) => (
-        <span key={index} className={styles.codeLine}>
+        <span key={index} className={styles.codeLine} style={{ '--i': index }}>
           <span className={styles.lineNumber}>{index + 1}</span>
           <span>{highlight(line)}</span>
         </span>
@@ -69,76 +69,13 @@ function CodePreview({ lines }) {
   );
 }
 
-function ImagePreview({ src }) {
-  const url = useBaseUrl(src);
-  return <img className={styles.shot} src={url} alt="" loading="lazy" />;
-}
-
-// a short muted clip, playing on loop while its product is shown, with a
-// button (on hover or focus) that opens it full screen with its controls
-function VideoPreview({ src }) {
-  const url = useBaseUrl(src);
-  const videoRef = useRef(null);
-
-  // controls only while full screen; the preview itself stays clean
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return undefined;
-    const sync = () => {
-      video.controls = document.fullscreenElement === video;
-    };
-    const exitIos = () => {
-      video.controls = false;
-    };
-    video.addEventListener('fullscreenchange', sync);
-    video.addEventListener('webkitendfullscreen', exitIos);
-    return () => {
-      video.removeEventListener('fullscreenchange', sync);
-      video.removeEventListener('webkitendfullscreen', exitIos);
-    };
-  }, []);
-
-  const expand = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.controls = true;
-    if (video.requestFullscreen) {
-      video.requestFullscreen().catch(() => {
-        video.controls = false;
-      });
-    }
-    // iPhone Safari only lets the video element itself go full screen
-    else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
-  };
-
-  return (
-    <div className={styles.videoStage}>
-      <video
-        ref={videoRef}
-        className={styles.shot}
-        src={url}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      />
-      <button type="button" className={styles.expand} onClick={expand}
-        aria-label={translate({ id: 'component.megaMenu.playFullScreen', message: 'Play full screen' })}>
-        <FaExpand aria-hidden="true" />
-      </button>
-    </div>
-  );
-}
-
+// What a product shows in the preview: a few lines of code, or a drawing
 function Preview({ preview }) {
   switch (preview?.type) {
     case 'code':
       return <CodePreview lines={preview.lines} />;
-    case 'image':
-      return <ImagePreview src={preview.src} />;
-    case 'video':
-      return <VideoPreview src={preview.src} />;
+    case 'drawing':
+      return <MenuArt name={preview.name} />;
     default:
       return null;
   }
@@ -146,8 +83,7 @@ function Preview({ preview }) {
 
 // --- layouts ----------------------------------------------------------------
 
-// Products: the list on the left, the hovered product previewed in an editor
-// window on the right
+// Products: the list on the left, the hovered product previewed on the right
 function ProductsLayout({ products }) {
   const [active, setActive] = useState(0);
   const product = products[active];
@@ -158,7 +94,7 @@ function ProductsLayout({ products }) {
           {products.map((item, index) => (
             // hovering a product shows it, so a click opens it. Without hover
             // (touch), the first tap shows the product and the second opens it.
-            <li key={item.label} onMouseEnter={() => setActive(index)}>
+            <li key={item.label} style={{ '--mm-tone': item.tone }} onMouseEnter={() => setActive(index)}>
               {/* in Radix's focus group, so arrow keys move through products;
                   selecting one that is not shown yet keeps the menu open */}
               <NavigationMenu.Link
@@ -184,6 +120,7 @@ function ProductsLayout({ products }) {
                     <span className={styles.label}>{item.label}</span>
                     <span className={styles.tagline}>{item.tagline}</span>
                   </span>
+                  <FaArrowRight className={styles.go} aria-hidden="true" />
                 </MenuLink>
               </NavigationMenu.Link>
             </li>
@@ -191,14 +128,16 @@ function ProductsLayout({ products }) {
         </ul>
       </div>
 
-      <div className={styles.window} aria-live="polite">
-        <div className={styles.windowBar}>
-          <span className={styles.dots} aria-hidden="true" />
-          <span className={styles.windowPath}>~/products/{product.slug}</span>
+      <div className={styles.preview} style={{ '--mm-tone': product.tone }} aria-live="polite">
+        <div className={styles.previewHead}>
+          <span className={styles.previewCount}>
+            {String(active + 1).padStart(2, '0')} / {String(products.length).padStart(2, '0')}
+          </span>
+          <span className={styles.previewPath}>~/platform/{product.slug}</span>
         </div>
-        <div className={styles.windowBody}>
+        <div className={styles.previewBody}>
           <div className={styles.previewArea}>
-            <Preview preview={product.preview} />
+            <Preview key={product.slug} preview={product.preview} />
           </div>
           <p className={styles.previewTitle}>{product.label}</p>
           <p className={styles.previewText}>{product.description}</p>

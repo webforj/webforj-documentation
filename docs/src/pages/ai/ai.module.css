@@ -1,0 +1,1769 @@
+/* AI tooling page: an install terminal in the hero, the loop as a stepper
+   with real code, then one chapter per piece. Every section sits on one
+   flat canvas, separated by a dashed rule, with flat 1px panels and one
+   accent colour. The variables hold the dark theme values and the light
+   theme block below overrides them. Terminals and code stay dark in both
+   themes. */
+
+.page {
+  --ai-text: #fff;
+  --ai-muted: rgb(255 255 255 / 0.74);
+  --ai-line: rgb(255 255 255 / 0.12);
+  --ai-rule: rgb(255 255 255 / 0.22);
+  --ai-panel: #212126;
+  --ai-canvas: #19191c;
+  --ai-accent: #3fb4f0;
+  --ai-on-accent: #08121a;
+  --ai-tint: color-mix(in srgb, var(--ai-accent) 9%, var(--ai-panel));
+  --ai-primary-hover: rgb(255 255 255 / 0.86);
+  --ai-ok: #5fd08a;
+
+  --ai-term: #101014;
+  --ai-term-line: #2a2a31;
+  --ai-term-text: #e6e8ee;
+  --ai-term-muted: #9a9ead;
+  --ai-term-accent: #5ec4ff;
+  --ai-term-ok: #7ddc9a;
+
+  --ai-radius: 14px;
+  --ai-radius-small: 10px;
+  --ai-duration: 150ms;
+  --ai-ease: cubic-bezier(0.2, 0, 0, 1);
+  --ai-gutter: 16px;
+  --ai-mono: var(--ifm-font-family-monospace);
+
+  background: var(--ai-canvas);
+  color: var(--ai-text);
+  overflow-x: clip;
+}
+
+[data-theme='light'] .page {
+  --ai-text: #0d1020;
+  --ai-muted: rgb(13 16 32 / 0.68);
+  --ai-line: rgb(13 16 32 / 0.1);
+  --ai-rule: rgb(13 16 32 / 0.2);
+  --ai-panel: #fff;
+  --ai-canvas: #f7f7f8;
+  --ai-accent: #0a6a9c;
+  --ai-on-accent: #fff;
+  --ai-tint: color-mix(in srgb, var(--ai-accent) 6%, var(--ai-panel));
+  --ai-primary-hover: #262b45;
+  --ai-ok: #17773f;
+}
+
+@media (min-width: 768px) {
+  .page {
+    --ai-gutter: 32px;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ai-gutter);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+}
+
+.page code {
+  overflow-wrap: anywhere;
+}
+
+/* ------------------------------------------------------------------
+   Sections and type
+   ------------------------------------------------------------------ */
+
+.section,
+.piece,
+.piecesHead {
+  border-top: 1px dashed var(--ai-rule);
+}
+
+.section {
+  padding: 72px 0;
+}
+
+@media (min-width: 997px) {
+  .section {
+    padding: 112px 0;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ai-accent);
+}
+
+/* A small uppercase label above a value or a block of text */
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sectionHead {
+  max-width: 760px;
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(2.125rem, 1.3rem + 3vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.sectionLead {
+  margin: 20px 0 0;
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.6;
+  color: var(--ai-muted);
+}
+
+.pieceLead code,
+.testPart code,
+.stepBody h3 code {
+  border: 1px solid var(--ai-line);
+  background: var(--ai-panel);
+  color: var(--ai-text);
+}
+
+/* ------------------------------------------------------------------
+   Buttons and links. The site theme removes link borders on hover, so
+   every bordered link restores its own border and nothing moves.
+   ------------------------------------------------------------------ */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+@media (max-width: 479px) {
+  .actions > * {
+    flex: 1 1 100%;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: var(--ai-radius-small);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color var(--ai-duration) var(--ai-ease),
+    border-color var(--ai-duration) var(--ai-ease),
+    color var(--ai-duration) var(--ai-ease);
+}
+
+.page a.button:is(:hover, :focus) {
+  border-style: solid;
+  border-width: 1px;
+  text-decoration: none;
+}
+
+/* Primary is solid in the text colour: light on the dark canvas and dark
+   on the light one. Ghost and secondary are outlined. */
+.buttonPrimary {
+  border-color: var(--ai-text);
+  background: var(--ai-text);
+  color: var(--ai-canvas);
+}
+
+.page a.buttonPrimary:is(:hover, :focus) {
+  border-color: var(--ai-primary-hover);
+  background: var(--ai-primary-hover);
+  color: var(--ai-canvas);
+}
+
+.buttonGhost,
+.buttonSecondary {
+  border-color: var(--ai-rule);
+  background: transparent;
+  color: var(--ai-text);
+}
+
+.page a.buttonGhost:is(:hover, :focus) {
+  border-color: var(--ai-text);
+  background: transparent;
+  color: var(--ai-text);
+}
+
+.page a.buttonSecondary:is(:hover, :focus) {
+  border-color: var(--ai-accent);
+  background: transparent;
+  color: var(--ai-accent);
+}
+
+.buttonSecondary:focus-visible,
+.textLink:focus-visible,
+.pieceIndex a:focus-visible,
+.navButton:focus-visible {
+  outline: 3px solid var(--ai-accent);
+  outline-offset: 3px;
+}
+
+.buttonPrimary:focus-visible,
+.buttonGhost:focus-visible,
+.docLink:focus-visible,
+.homeLink:focus-visible,
+.railStep:focus-visible,
+.terminalTab:focus-visible {
+  outline: 3px solid var(--ai-text);
+  outline-offset: 3px;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-weight: 650;
+  color: var(--ai-accent);
+  text-decoration: none;
+}
+
+.page a.textLink:is(:hover, :focus) {
+  color: var(--ai-text);
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------------------
+   Hero: the text and a terminal with the install commands
+   ------------------------------------------------------------------ */
+
+.hero {
+  padding: 48px 0 64px;
+}
+
+@media (min-width: 997px) {
+  .hero {
+    padding: 88px 0 104px;
+  }
+}
+
+.heroGrid {
+  display: grid;
+  gap: 48px;
+}
+
+@media (min-width: 997px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+  }
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: clamp(2.5rem, 1.2rem + 3.2vw, 4.125rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+  color: var(--ai-text);
+}
+
+/* The second line of the title is in the accent colour */
+.heroTitle span {
+  display: block;
+  padding-bottom: 0.06em;
+  color: var(--ai-accent);
+}
+
+.heroLead {
+  margin: 24px 0 0;
+  max-width: 36rem;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--ai-muted);
+}
+
+.heroClients {
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px dashed var(--ai-rule);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ai-muted);
+}
+
+/* Dark frames: the terminal, the code windows and the screenshot */
+.terminal,
+.codeWindow,
+.screenshot {
+  margin: 0;
+  border: 1px solid var(--ai-term-line);
+  border-radius: var(--ai-radius);
+  background: var(--ai-term);
+}
+
+.terminal,
+.codeWindow {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.terminalTop {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  padding: 0 0 0 16px;
+  border-bottom: 1px solid var(--ai-term-line);
+}
+
+.terminalTop .dots {
+  align-self: center;
+}
+
+.terminalTabs {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.terminalTab {
+  flex: none;
+  min-height: 46px;
+  padding: 0 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--ai-term-muted);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    color var(--ai-duration) var(--ai-ease),
+    border-color var(--ai-duration) var(--ai-ease);
+}
+
+.terminalTab:hover {
+  color: var(--ai-term-text);
+}
+
+.terminalTabActive,
+.terminalTabActive:hover {
+  border-bottom-color: var(--ai-term-accent);
+  color: var(--ai-term-text);
+}
+
+@media (max-width: 479px) {
+  .terminalTop {
+    padding-left: 6px;
+  }
+
+  .terminalTop .dots {
+    display: none;
+  }
+}
+
+.terminalBody {
+  padding: 22px 20px 26px;
+  font-family: var(--ai-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--ai-term-text);
+}
+
+@media (min-width: 768px) {
+  .terminalBody {
+    padding: 26px 24px 30px;
+    font-size: 0.875rem;
+  }
+}
+
+.line {
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+.line + .line {
+  margin-top: 4px;
+}
+
+.line + .lineNote {
+  margin-top: 16px;
+}
+
+.prompt {
+  flex: none;
+  width: 1ch;
+  color: var(--ai-term-accent);
+  user-select: none;
+}
+
+.lineText {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.lineNote,
+.lineNote .prompt {
+  color: var(--ai-term-muted);
+}
+
+.lineOk {
+  color: var(--ai-term-ok);
+}
+
+.lineCheck {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.35em;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  margin-top: 10px;
+  background: var(--ai-term-accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+/* Set while the terminal is off screen */
+.paused .cursor {
+  animation-play-state: paused;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminalCaption {
+  padding: 14px 20px;
+  border-top: 1px solid var(--ai-term-line);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ai-term-muted);
+}
+
+/* Stacked panels: every panel sits in the same grid cell and only the
+   active one is visible, so switching never changes the height. */
+
+.stack {
+  display: grid;
+}
+
+.stackItem {
+  grid-area: 1 / 1;
+  min-width: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 220ms var(--ai-ease),
+    visibility 0s linear 220ms;
+}
+
+.stackActive {
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 260ms var(--ai-ease),
+    visibility 0s;
+}
+
+/* Window chrome */
+
+.dots {
+  display: flex;
+  gap: 6px;
+  flex: none;
+}
+
+.dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3a3a43;
+}
+
+.windowBar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--ai-term-line);
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--ai-term-muted);
+}
+
+.windowTitle {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.codeWindow {
+  color: var(--ai-term-text);
+}
+
+.codeWindow .code {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.codeWindow .code pre,
+.codeWindow .code code {
+  border-radius: 0;
+  font-size: 0.78rem;
+}
+
+.codeCaption {
+  margin: 0;
+  padding: 14px 16px;
+  border-top: 1px solid var(--ai-term-line);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ai-term-muted);
+}
+
+.codeCaption kbd {
+  font-size: 0.75rem;
+}
+
+/* Code blocks: one dark theme in the page colours, in both site themes.
+   The highlighter writes its colours inline on every token, so each token
+   type is restated here. */
+.code {
+  --prism-background-color: var(--ai-term) !important;
+  --prism-color: var(--ai-term-text) !important;
+}
+
+.code pre {
+  background: var(--ai-term) !important;
+  color: var(--ai-term-text) !important;
+}
+
+.code :global(.token.plain) {
+  color: var(--ai-term-text) !important;
+}
+
+.code :global(.token.keyword) {
+  color: var(--ai-term-accent) !important;
+  font-style: normal !important;
+}
+
+.code :global(.token.tag) {
+  color: var(--ai-term-accent) !important;
+}
+
+.code :global(.token.class-name),
+.code :global(.token.annotation),
+.code :global(.token.attr-name) {
+  color: #7fdcd0 !important;
+}
+
+.code :global(.token.string),
+.code :global(.token.attr-value) {
+  color: #b5e08f !important;
+}
+
+.code :global(.token.function) {
+  color: #ffd27a !important;
+}
+
+.code :global(.token.number),
+.code :global(.token.boolean) {
+  color: #f6ad86 !important;
+}
+
+.code :global(.token.punctuation),
+.code :global(.token.operator) {
+  color: #8f96a6 !important;
+}
+
+.code :global(.token.comment) {
+  color: #737a8a !important;
+  font-style: italic !important;
+}
+
+/* ------------------------------------------------------------------
+   Why a loop: the failure on the left, the check on the right
+   ------------------------------------------------------------------ */
+
+.breaks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--ai-text);
+}
+
+.breakRow {
+  display: grid;
+  gap: 12px 32px;
+  margin: 0;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ai-line);
+}
+
+@media (min-width: 840px) {
+  .breakRow {
+    grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1.15fr);
+    padding: 36px 0;
+  }
+}
+
+.breakNumber {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ai-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.breakLabel {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ai-muted);
+}
+
+.breakFix .breakLabel {
+  color: var(--ai-accent);
+}
+
+.breakFailure p {
+  margin: 0;
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.breakFix p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ai-muted);
+}
+
+@media (min-width: 840px) {
+  .breakFix {
+    padding-left: 32px;
+    border-left: 1px solid var(--ai-line);
+  }
+}
+
+/* ------------------------------------------------------------------
+   The loop: a rail of three stages and one panel that switches
+   ------------------------------------------------------------------ */
+
+.rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 840px) {
+  .rail {
+    gap: 16px;
+    margin-bottom: 0;
+  }
+}
+
+.railStep {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'num label'
+    'num short';
+  column-gap: 16px;
+  align-items: center;
+  width: 100%;
+  min-height: 84px;
+  padding: 16px 20px;
+  border: 1px solid var(--ai-line);
+  border-radius: var(--ai-radius);
+  background: var(--ai-panel);
+  color: var(--ai-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--ai-duration) var(--ai-ease),
+    border-color var(--ai-duration) var(--ai-ease),
+    color var(--ai-duration) var(--ai-ease);
+}
+
+.railStep:hover {
+  border-color: var(--ai-rule);
+}
+
+.railStepActive,
+.railStepActive:hover {
+  border-color: var(--ai-accent);
+}
+
+.railNumber {
+  grid-area: num;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.railStepActive .railNumber {
+  border-color: var(--ai-accent);
+  background: var(--ai-accent);
+  color: var(--ai-on-accent);
+}
+
+.railStepDone .railNumber {
+  border-color: var(--ai-accent);
+  color: var(--ai-accent);
+}
+
+.railLabel {
+  grid-area: label;
+  font-size: 1.375rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.railShort {
+  grid-area: short;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--ai-muted);
+}
+
+/* The way back: a bracket under the first two stages that says a failing
+   test sends the agent back to write. */
+.railReturn {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--ai-muted);
+}
+
+.railReturn span::before {
+  content: '\21BA';
+  margin-right: 8px;
+}
+
+@media (min-width: 840px) {
+  .railReturn {
+    grid-column: 1 / span 2;
+    position: relative;
+    height: 56px;
+    text-align: center;
+  }
+
+  .railReturn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 25%;
+    right: 25%;
+    height: 22px;
+    border: 1.5px solid var(--ai-rule);
+    border-top: 0;
+    border-radius: 0 0 var(--ai-radius) var(--ai-radius);
+  }
+
+  .railReturn::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: calc(25% - 5px);
+    border: 5.5px solid transparent;
+    border-top: 0;
+    border-bottom: 8px solid var(--ai-muted);
+  }
+
+  .railReturn span {
+    position: relative;
+    top: 32px;
+  }
+
+  .railReturn span::before {
+    content: none;
+  }
+}
+
+/* On narrow screens the three stages sit side by side as compact tabs */
+@media (max-width: 839px) {
+  .railStep {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'num'
+      'label';
+    justify-items: center;
+    row-gap: 8px;
+    min-height: 0;
+    padding: 14px 6px;
+    text-align: center;
+  }
+
+  .railNumber {
+    width: 34px;
+    height: 34px;
+    font-size: 0.8125rem;
+  }
+
+  .railLabel {
+    font-size: 1.0625rem;
+  }
+
+  .railShort {
+    display: none;
+  }
+
+  .railReturn {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+  }
+}
+
+.stagePanel {
+  border: 1px solid var(--ai-line);
+  border-radius: 18px;
+  background: var(--ai-panel);
+  color: var(--ai-text);
+}
+
+.stagePanel .stackItem {
+  padding: 24px 20px;
+}
+
+@media (min-width: 768px) {
+  .stagePanel .stackItem {
+    padding: 36px;
+  }
+}
+
+.stageGrid {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (min-width: 997px) {
+  .stageGrid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 40px;
+  }
+}
+
+.stageText p,
+.stageList li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ai-muted);
+}
+
+.stageText p {
+  margin: 0 0 14px;
+}
+
+.stageTitle {
+  margin: 0 0 14px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--ai-text);
+}
+
+.stageList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stageList li {
+  padding: 12px 0;
+  border-top: 1px solid var(--ai-line);
+}
+
+.stageList li:last-child {
+  border-bottom: 1px solid var(--ai-line);
+}
+
+.stageText .stageStrong {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 2px solid var(--ai-text);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ai-text);
+}
+
+.promptCard {
+  margin-bottom: 28px;
+  padding: 18px 20px;
+  border: 1px solid var(--ai-line);
+  border-left: 3px solid var(--ai-accent);
+  border-radius: var(--ai-radius-small);
+  background: var(--ai-tint);
+}
+
+.promptLabel {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ai-accent);
+}
+
+.stageText .promptText {
+  margin: 0;
+  font-family: var(--ai-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ai-text);
+}
+
+.result {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.resultTerminal {
+  border-radius: var(--ai-radius);
+  background: var(--ai-term);
+  overflow: hidden;
+}
+
+.resultBody {
+  padding: 18px 20px;
+  font-family: var(--ai-mono);
+  font-size: 0.875rem;
+  color: var(--ai-term-text);
+}
+
+.resultPass {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 24px;
+  border: 1px solid color-mix(in srgb, var(--ai-ok) 45%, var(--ai-line));
+  border-radius: var(--ai-radius);
+  background: color-mix(in srgb, var(--ai-ok) 8%, var(--ai-panel));
+}
+
+.passIcon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 50%;
+  background: var(--ai-ok);
+  color: var(--ai-panel);
+}
+
+.resultPass > div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.resultLabel {
+  color: var(--ai-muted);
+}
+
+/* In the passed result the label is the name of the test class */
+.resultPass .resultLabel {
+  font-family: var(--ai-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.resultName {
+  font-family: var(--ai-mono);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.resultState {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ai-ok);
+}
+
+.resultFail {
+  display: grid;
+  gap: 10px;
+  padding: 20px 24px;
+  border: 1px solid var(--ai-line);
+  border-radius: var(--ai-radius);
+}
+
+.failMessage {
+  display: block;
+  padding: 12px 14px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.resultNote {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ai-muted);
+}
+
+.stageNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--ai-line);
+}
+
+@media (min-width: 768px) {
+  .stageNav {
+    padding: 18px 36px;
+  }
+}
+
+.stageCount {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ai-muted);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.navButton {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--ai-rule);
+  border-radius: var(--ai-radius-small);
+  background: transparent;
+  color: var(--ai-text);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background-color var(--ai-duration) var(--ai-ease),
+    border-color var(--ai-duration) var(--ai-ease),
+    color var(--ai-duration) var(--ai-ease);
+}
+
+.navButton:hover:not(:disabled) {
+  border-color: var(--ai-accent);
+  color: var(--ai-accent);
+}
+
+.navButtonPrimary {
+  border-color: var(--ai-text);
+  background: var(--ai-text);
+  color: var(--ai-canvas);
+}
+
+.navButtonPrimary:hover:not(:disabled) {
+  border-color: var(--ai-primary-hover);
+  background: var(--ai-primary-hover);
+  color: var(--ai-canvas);
+}
+
+.navButton:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+/* ------------------------------------------------------------------
+   The pieces: one chapter each, the intro on the left and the real
+   thing on the right
+   ------------------------------------------------------------------ */
+
+.piecesHead {
+  padding: 88px 0 56px;
+}
+
+@media (min-width: 997px) {
+  .piecesHead {
+    padding-top: 112px;
+  }
+}
+
+.pieceIndex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pieceIndex li {
+  margin: 0;
+}
+
+/* The plugin and the two parts it bundles sit in one outlined group, so
+   they read as one piece with two parts and not as three pieces. */
+.pieceGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  border: 1px dashed var(--ai-rule);
+  border-radius: var(--ai-radius);
+}
+
+.pieceGroup > a:first-child {
+  border-color: transparent;
+}
+
+.pieceBundles {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ai-muted);
+}
+
+.pieceIndex > li:not(.pieceGroup) {
+  display: flex;
+  align-items: center;
+}
+
+.pieceIndex a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--ai-rule);
+  border-radius: var(--ai-radius-small);
+  background: transparent;
+  color: var(--ai-text);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    border-color var(--ai-duration) var(--ai-ease),
+    color var(--ai-duration) var(--ai-ease);
+}
+
+.pieceIndex a::before {
+  content: attr(data-number);
+  font-size: 0.75rem;
+  font-weight: 750;
+  color: var(--ai-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.page .pieceIndex a:is(:hover, :focus) {
+  border: 1px solid var(--ai-accent);
+  color: var(--ai-accent);
+  text-decoration: none;
+}
+
+.piece {
+  padding: 72px 0;
+  scroll-margin-top: var(--ifm-navbar-height);
+}
+
+@media (min-width: 997px) {
+  .piece {
+    padding: 104px 0;
+  }
+}
+
+.pieceGrid {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 997px) {
+  .pieceGrid {
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: 64px;
+    align-items: start;
+  }
+
+  .pieceIntro {
+    position: sticky;
+    top: calc(var(--ifm-navbar-height) + 40px);
+  }
+}
+
+.pieceNumber {
+  margin-right: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pieceTitle {
+  margin: 0;
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.pieceLead {
+  margin: 20px 0 28px;
+  color: var(--ai-muted);
+}
+
+.pieceLead p {
+  margin: 0 0 14px;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.pieceLead p:last-child {
+  margin-bottom: 0;
+}
+
+.pieceBody {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* AI plugin: where it installs and what a prompt reaches for */
+
+.panel {
+  padding: 24px;
+  border: 1px solid var(--ai-line);
+  border-radius: var(--ai-radius);
+  background: var(--ai-panel);
+}
+
+@media (min-width: 768px) {
+  .panel {
+    padding: 28px 32px;
+  }
+}
+
+.panelTitle {
+  margin: 0 0 16px;
+  color: var(--ai-accent);
+}
+
+.clientList,
+.routeList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clientList li,
+.routeList li {
+  display: grid;
+  gap: 4px 24px;
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--ai-line);
+}
+
+@media (min-width: 640px) {
+  .clientList li {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+  }
+
+  .routeList li {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+
+.clientName {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.clientHow {
+  font-size: 0.875rem;
+  color: var(--ai-muted);
+}
+
+.routePrompt {
+  font-family: var(--ai-mono);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.routeTarget {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: var(--ai-accent);
+}
+
+/* MCP server: the capabilities */
+
+.capabilities {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--ai-line);
+  border-radius: var(--ai-radius);
+  background: var(--ai-line);
+  overflow: hidden;
+}
+
+@media (min-width: 700px) {
+  .capabilities {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.capability {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 24px;
+  background: var(--ai-panel);
+}
+
+.capabilityTitle {
+  margin: 0 0 8px;
+  font-size: 1.0625rem;
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.capabilityText {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ai-muted);
+}
+
+.capabilityPrompt {
+  display: block;
+  margin-top: 16px;
+  padding: 10px 12px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* Agent Skills */
+
+.skills {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--ai-text);
+}
+
+@media (min-width: 700px) {
+  .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+  }
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 20px 0 22px;
+  border-bottom: 1px solid var(--ai-line);
+}
+
+.skillName {
+  align-self: flex-start;
+  max-width: 100%;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--ai-accent);
+}
+
+.skillText {
+  margin: 10px 0 8px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.skillPrompt {
+  margin-top: auto;
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ai-muted);
+}
+
+.skillPrompt::before {
+  content: '\201C';
+}
+
+.skillPrompt::after {
+  content: '\201D';
+}
+
+/* TestBed: find, act, check */
+
+.testParts {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 700px) {
+  .testParts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.testPart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 22px;
+  border: 1px solid var(--ai-line);
+  border-radius: var(--ai-radius);
+  background: var(--ai-panel);
+}
+
+.testVerb {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.testPart code {
+  align-self: flex-start;
+  max-width: 100%;
+  font-size: 0.8125rem;
+}
+
+.testPart p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ai-muted);
+}
+
+/* craftforJ Assistant: the comparison, the screenshot and the config */
+
+.compare {
+  border: 1px solid var(--ai-line);
+  border-radius: var(--ai-radius);
+  background: var(--ai-panel);
+  overflow: hidden;
+}
+
+.compareHead {
+  display: none;
+}
+
+.compareRows {
+  margin: 0;
+}
+
+.compareRow {
+  display: grid;
+  gap: 6px;
+  padding: 18px 20px;
+  border-top: 1px solid var(--ai-line);
+}
+
+.compareRow:first-child {
+  border-top: 0;
+}
+
+.compareRow dt {
+  color: var(--ai-muted);
+}
+
+.compareRow dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.compareMobile {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 650;
+  color: var(--ai-muted);
+}
+
+.compareStrong {
+  font-weight: 650;
+}
+
+@media (min-width: 700px) {
+  .compareHead,
+  .compareRow {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 24px;
+    align-items: baseline;
+  }
+
+  .compareHead {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--ai-line);
+    font-size: 0.875rem;
+    font-weight: 750;
+  }
+
+  .compareHead span:last-child {
+    color: var(--ai-accent);
+  }
+
+  .compareRow {
+    padding: 16px 24px;
+  }
+
+  .compareMobile {
+    display: none;
+  }
+}
+
+.craftRow {
+  display: grid;
+  gap: 20px;
+}
+
+.screenshot {
+  padding: 16px;
+}
+
+.screenshot img {
+  display: block;
+  width: 100%;
+  max-width: 638px;
+  margin: 0 auto;
+  height: auto;
+  border-radius: 6px;
+}
+
+.screenshot figcaption {
+  margin-top: 14px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #c6ccd2;
+}
+
+/* ------------------------------------------------------------------
+   How to start and where next
+   ------------------------------------------------------------------ */
+
+.startGrid {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 997px) {
+  .startGrid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 64px;
+    align-items: start;
+  }
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ai-line);
+}
+
+.stepItem {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--ai-line);
+}
+
+.stepNumber {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ai-accent);
+  color: var(--ai-on-accent);
+  font-size: 0.9375rem;
+  font-weight: 800;
+}
+
+.stepBody {
+  min-width: 0;
+  align-self: center;
+}
+
+.stepBody h3 {
+  margin: 0;
+  font-size: 1.1875rem;
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--ai-text);
+}
+
+.stepBody p {
+  margin: 6px 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ai-muted);
+}
+
+.stepCode {
+  margin: 14px 0 0;
+  border: 0;
+  border-radius: var(--ai-radius-small);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.stepCode pre {
+  font-size: 0.8125rem;
+}
+
+.docs {
+  margin-top: 72px;
+  padding-top: 32px;
+  border-top: 1px dashed var(--ai-rule);
+}
+
+.docsList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .docsList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 997px) {
+  .docsList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.docsList li {
+  display: flex;
+  margin: 0;
+}
+
+.docLink {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--ai-line);
+  border-radius: 12px;
+  background: var(--ai-panel);
+  color: var(--ai-text);
+  text-decoration: none;
+  transition:
+    background-color var(--ai-duration) var(--ai-ease),
+    border-color var(--ai-duration) var(--ai-ease);
+}
+
+.page a.docLink:is(:hover, :focus) {
+  border: 1px solid var(--ai-accent);
+  color: var(--ai-text);
+  text-decoration: none;
+}
+
+.docTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 1.0625rem;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.docText {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--ai-muted);
+}
+
+.homeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  font-weight: 700;
+  color: var(--ai-text);
+  text-decoration: underline;
+  text-decoration-color: var(--ai-rule);
+  text-underline-offset: 4px;
+}
+
+.page a.homeLink:is(:hover, :focus) {
+  color: var(--ai-text);
+  text-decoration: underline;
+  text-decoration-color: var(--ai-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

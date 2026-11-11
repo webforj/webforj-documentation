@@ -120,6 +120,8 @@ Not for the app code. Components, routing, events, and data binding are all Java
 
 Generate a project in [startforJ](https://docs.webforj.com/startforj) and select Spring Boot under **Runs on**. You get a working app with the Spring Boot parent POM, the webforJ starter, and example views, and `mvn` starts it. The [getting started guide](/docs/introduction/getting-started) walks through the first screen.
 
+Before you choose, check each candidate against a fixed list, such as the one in [Java framework for web applications: what to require](/blog/java-framework-for-web-applications).
+
 ## Frequently asked questions {#faq}
 
 ### What is the best Java web framework in 2026? {#faq-best}

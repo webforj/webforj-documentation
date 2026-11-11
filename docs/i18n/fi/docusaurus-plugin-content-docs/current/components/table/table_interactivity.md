@@ -2,20 +2,24 @@
 sidebar_position: 40
 title: Vuorovaikutteisuus
 slug: Interactivity
-_i18n_hash: 8ec1ec3ef58f8bfcde31ee8dc9891579
+description: >-
+  Reference the keyboard shortcuts that move focus, select rows, and navigate
+  cells in the Table component.
+_i18n_hash: 49377400524e9e1c3a25dd35cfb7750c
 ---
-`Table`-komponentti reagoi käyttäjien erilaisiin näppäinputteihin mahdollistaakseen tarkemman vuorovaikutuksen. Seuraava lista hahmottaa erilaisia käyttäytymisiä, kun määritelty näppäin painetaan:
+`Table`-komponentti reagoi käyttäjien erilaisiin näppäimistösyötteisiin ja mahdollistaa näin tarkemman vuorovaikutuksen. Seuraavassa luettelossa kuvataan eri näppäinten painamisen vaikutukset:
 
-## Näppäimistöinteraktiot {#keyboard-interations}
 
-|Näppäin|Käyttäytyminen|
+## Näppäimistökäyttö {#keyboard-interactions}
+
+|Näppäin|Toiminta|
 |:-:|-|
 |<kbd>Space</kbd>|Valitsee nykyisen rivin.|
-|<kbd>Enter</kbd>|Fokussi siirtyy soluun tai fokusoitavaan elementtiin, jos solulla on renderöijä.|
-|<kbd>Home</kbd>|Fokussi siirtyy ensimmäiseen soluun ensimmäisessä sarakkeessa ja rivissä.|
-|<kbd>End</kbd>|Fokussi siirtyy viimeiseen soluun viimeisessä sarakkeessa ja rivissä.|
-|<kbd>Shift</kbd> + <kbd>Tab</kbd>|Jos solu on taulukon rungossa ja Shift + Tab-painiketta painetaan, se fokusoi ensimmäisen fokusoitavan solun otsikossa.|
-|<kbd>&#8594;</kbd>|Jos Ctrl-näppäintä painetaan, se fokusoi viimeisen solun nykyisessä rivissä. Muussa tapauksessa se fokusoi seuraavan solun vaakasuunnassa.|
-|<kbd>&#8592;</kbd>|Jos Ctrl-näppäintä painetaan, se fokusoi ensimmäisen solun nykyisessä rivissä. Muussa tapauksessa se fokusoi edellisen solun vaakasuunnassa.|
-|<kbd>&#8593;</kbd>|Jos Ctrl-näppäintä painetaan, se fokusoi ensimmäisen solun nykyisessä sarakkeessa. Muussa tapauksessa se fokusoi edellisen solun pystysuunnassa.|
-|<kbd>&#8595;</kbd>|Jos Ctrl-näppäintä painetaan, se fokusoi viimeisen solun nykyisessä sarakkeessa. Muussa tapauksessa se fokusoi seuraavan solun pystysuunnassa.|
+|<kbd>Enter</kbd>|Siirtää kohdistuksen soluun tai kohdistettavaan elementtiin, jos solussa on renderöijä.|
+|<kbd>Home</kbd>|Siirtää kohdistuksen ensimmäisen rivin ensimmäiseen soluun.|
+|<kbd>End</kbd>|Siirtää kohdistuksen viimeisen rivin viimeiseen soluun.|
+|<kbd>Shift</kbd> + <kbd>Tab</kbd>|Jos solu on taulukon rungossa ja painetaan näppäinyhdistelmää Shift + Tab, kohdistus siirtyy otsakkeen ensimmäiseen kohdistettavaan soluun.|
+|<kbd>&#8594;</kbd>|Jos Ctrl-näppäintä painetaan, kohdistus siirtyy nykyisen rivin viimeiseen soluun. Muussa tapauksessa kohdistus siirtyy seuraavaan soluun vaakasuunnassa.|
+|<kbd>&#8592;</kbd>|Jos Ctrl-näppäintä painetaan, kohdistus siirtyy nykyisen rivin ensimmäiseen soluun. Muussa tapauksessa kohdistus siirtyy edelliseen soluun vaakasuunnassa.|
+|<kbd>&#8593;</kbd>|Jos Ctrl-näppäintä painetaan, kohdistus siirtyy nykyisen sarakkeen ensimmäiseen soluun. Muussa tapauksessa kohdistus siirtyy edelliseen soluun pystysuunnassa.|
+|<kbd>&#8595;</kbd>|Jos Ctrl-näppäintä painetaan, kohdistus siirtyy nykyisen sarakkeen viimeiseen soluun. Muussa tapauksessa kohdistus siirtyy seuraavaan soluun pystysuunnassa.|

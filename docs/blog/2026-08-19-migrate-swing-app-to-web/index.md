@@ -1,6 +1,6 @@
 ---
-title: "Migrate a Java Swing app to web: which path to pick"
-description: "How to migrate a Java Swing app to web: compare a JavaScript rewrite, Webswing and a screen-by-screen rebuild in Java with webforJ, with a table to pick one."
+title: "Java Swing to web migration: pick the right path"
+description: "Java Swing to web migration compared: a JavaScript rewrite, Webswing, or a screen-by-screen rebuild in Java with webforJ, with a table to pick your path."
 slug: migrate-swing-app-to-web
 date: 2026-08-19
 authors: webforJ
@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-migrate-swing-app-to-web/cover.jpg)
 
-Your Swing app still works. Users depend on it, the business rules inside it took years to get right, and now someone wants it in the browser. The question is how, and the answers you find online mostly start with a new JavaScript front end.
+Your Swing app still works. Users depend on it, the business rules inside it took years to get right, and now someone wants it in the browser. That is where a Java Swing to web migration starts, and most answers you find online begin with a new JavaScript front end.
 
 To migrate a Java Swing app to web, you have three real paths and one combination: rewrite the UI in JavaScript against a new REST API, run the existing app in the browser with Webswing, or rebuild the UI screen by screen in Java with webforJ, the full-stack Java framework. For many Java teams the best long-term target is webforJ, because your developers stay in Java and your business logic carries over. The fastest route to a first browser release is often both together, Webswing first and webforJ second.
 
@@ -60,7 +60,7 @@ Three things make it the natural target for a Swing team.
 
 **You migrate in slices.** A screen is the unit of work. You can ship one, watch it run, and move to the next.
 
-For how the two sides exchange data and events during a migration, see [Swing and web communication](/blog/swing-web-communication). This post stays on the decision.
+For how the two sides exchange data and events during a migration, see [Swing and web communication](/blog/swing-web-communication). For the hands-on mapping of `JFrame`, layout managers, `JTable`, `JOptionPane` and `SwingWorker`, follow the [Swing to webforJ mapping guide](/blog/swing-to-web-migration). This post stays on the decision.
 
 ## Path 4: Webswing first, webforJ second {#combined-path}
 
@@ -112,7 +112,9 @@ Moving screen by screen is repetitive work, which suits an AI coding assistant. 
 
 The assistant needs to know the real webforJ API instead of guessing at it. The [webforJ AI plugin](/docs/ai-tooling) connects your assistant to the [MCP server](/docs/ai-tooling/mcp), which looks up webforJ documentation and API details on demand, and to [Agent Skills](/docs/ai-tooling/agent-skills) that tell it how to use them in the right order. It works with Claude Code, Copilot, Cursor, Gemini, and Codex. AI can still produce incorrect code in complex scenarios, so review and test every screen before it ships. The usual review for a ported screen is the one you already do: compare behavior against the Swing original.
 
-## Next step {#next-step}
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
+## Pick your first screen {#next-step}
 
 Pick one screen, ideally a simple list and edit form, and build it in webforJ. Generate a project with [startforJ](https://docs.webforj.com/startforj) or follow [getting started](/docs/introduction/getting-started). If the app is large, put Webswing in front of it first and follow the [Webswing docs](/docs/integrations/webswing/overview).
 

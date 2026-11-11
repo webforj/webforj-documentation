@@ -1,0 +1,689 @@
+/* Kotlin DSL page. Java and Kotlin side by side at the centre, then the
+   DSL ideas as a ruled grid, extending in short, and the setup in words.
+   A flat canvas with 1px dashed rules between sections and one accent,
+   orange. The variables hold the dark values and the light theme block
+   at the end of the file overrides them. Code stays dark in both themes. */
+
+.page {
+  --kt-text: #fff;
+  --kt-muted: rgb(255 255 255 / 0.72);
+  --kt-line: rgb(255 255 255 / 0.12);
+  --kt-rule: rgb(255 255 255 / 0.22);
+  --kt-panel: #212126;
+  --kt-canvas: #19191c;
+  --kt-accent: #ff8a3d;
+  --kt-primary-hover: rgb(255 255 255 / 0.86);
+  --kt-fade: 150ms cubic-bezier(0.2, 0, 0, 1);
+  --kt-gutter: 16px;
+  --kt-mono: var(--ifm-font-family-monospace);
+
+  /* Always dark: code and the boxes that hold it. */
+  --kt-code: #101014;
+  --kt-code-bar: #16161b;
+  --kt-code-line: #2a2a31;
+  --kt-code-text: #e8e6e3;
+  --kt-code-muted: rgb(255 255 255 / 0.62);
+  --kt-code-accent: #ff8a3d;
+  --kt-code-java: #8fc8ff;
+
+  background: var(--kt-canvas);
+  color: var(--kt-text);
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  .page {
+    --kt-gutter: 32px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--kt-gutter);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.page code {
+  overflow-wrap: anywhere;
+}
+
+/* ------------------------------------------------------------------
+   Type and sections
+   ------------------------------------------------------------------ */
+
+.section {
+  padding: 72px 0;
+  border-top: 1px dashed var(--kt-rule);
+}
+
+@media (min-width: 997px) {
+  .section {
+    padding: 104px 0;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kt-accent);
+}
+
+.eyebrowRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin: 0 0 16px;
+}
+
+.eyebrowRow .eyebrow {
+  margin: 0;
+}
+
+/* the shared preview pill, in the accent and as tight as the eyebrow */
+.eyebrowRow .previewBadge {
+  line-height: 1;
+  color: var(--kt-accent);
+  cursor: help;
+}
+
+.heroTitle,
+.sectionTitle {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.04;
+  color: var(--kt-text);
+  text-wrap: balance;
+}
+
+.heroTitle {
+  font-size: clamp(2.75rem, 1.2rem + 4.4vw, 4.75rem);
+  letter-spacing: -0.05em;
+}
+
+.sectionTitle {
+  font-size: clamp(2.125rem, 1.3rem + 3vw, 3.75rem);
+  letter-spacing: -0.045em;
+}
+
+.heroTitle span,
+.sectionTitle span {
+  display: block;
+  color: var(--kt-accent);
+}
+
+.sectionLead,
+.heroLead {
+  margin: 0;
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.6;
+  color: var(--kt-muted);
+}
+
+.heroLead {
+  margin-top: 24px;
+  max-width: 620px;
+}
+
+.head {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+@media (min-width: 997px) {
+  .head {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 64px;
+    margin-bottom: 56px;
+  }
+}
+
+.page p > code,
+.page li > code {
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--kt-line);
+  border-radius: 6px;
+  background: var(--kt-panel);
+  color: var(--kt-text);
+  font-size: 0.875em;
+}
+
+/* ------------------------------------------------------------------
+   Buttons and links. The site theme removes link borders on hover, so
+   every bordered link restates its border and nothing moves.
+   ------------------------------------------------------------------ */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+@media (max-width: 479px) {
+  .actions > * {
+    flex: 1 1 100%;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color var(--kt-fade),
+    border-color var(--kt-fade),
+    color var(--kt-fade);
+}
+
+.buttonPrimary,
+.page a.buttonPrimary:is(:hover, :focus) {
+  border: 1px solid var(--kt-text);
+  background: var(--kt-text);
+  color: var(--kt-canvas);
+  text-decoration: none;
+}
+
+.page a.buttonPrimary:is(:hover, :focus) {
+  border-color: var(--kt-primary-hover);
+  background: var(--kt-primary-hover);
+}
+
+.buttonGhost,
+.page a.buttonGhost:is(:hover, :focus) {
+  border: 1px solid var(--kt-rule);
+  background: transparent;
+  color: var(--kt-text);
+  text-decoration: none;
+}
+
+.page a.buttonGhost:is(:hover, :focus) {
+  border-color: var(--kt-accent);
+  color: var(--kt-accent);
+}
+
+.button:focus-visible,
+.textLink:focus-visible {
+  outline: 3px solid var(--kt-accent);
+  outline-offset: 3px;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-weight: 700;
+  color: var(--kt-text);
+  text-decoration: underline;
+  text-decoration-color: var(--kt-accent);
+  text-underline-offset: 4px;
+  transition: color var(--kt-fade);
+}
+
+.page a.textLink:is(:hover, :focus) {
+  color: var(--kt-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--kt-accent);
+}
+
+/* ------------------------------------------------------------------
+   Hero: the title on the left, the class to builder names on the right.
+   ------------------------------------------------------------------ */
+
+.hero {
+  padding: 72px 0 80px;
+}
+
+@media (min-width: 997px) {
+  .hero {
+    padding: 120px 0 112px;
+  }
+}
+
+.heroGrid {
+  display: grid;
+  gap: 48px;
+}
+
+@media (min-width: 997px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.names {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--kt-line);
+  border-radius: 16px;
+  background: var(--kt-panel);
+}
+
+.namesTitle {
+  composes: eyebrow;
+  color: var(--kt-muted);
+}
+
+.namesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.namesList li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--kt-line);
+}
+
+.page .namesList code {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--kt-mono);
+  font-size: clamp(0.9375rem, 0.85rem + 0.4vw, 1.0625rem);
+  font-weight: 600;
+}
+
+.page .nameJava {
+  color: var(--kt-text);
+}
+
+.page .nameKotlin {
+  color: var(--kt-accent);
+  text-align: right;
+}
+
+.nameArrow {
+  display: inline-flex;
+  color: var(--kt-muted);
+}
+
+.namesNote {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--kt-line);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--kt-muted);
+}
+
+/* ------------------------------------------------------------------
+   Java and Kotlin side by side in one always-dark box.
+   ------------------------------------------------------------------ */
+
+.compareBox {
+  min-width: 0;
+  border: 1px solid var(--kt-code-line);
+  border-radius: 18px;
+  background: var(--kt-code);
+  color: var(--kt-code-text);
+  overflow: hidden;
+}
+
+.pair {
+  display: grid;
+}
+
+@media (min-width: 997px) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .paneKotlin {
+    border-left: 1px solid var(--kt-code-line);
+  }
+}
+
+@media (max-width: 996px) {
+  .paneKotlin {
+    border-top: 1px solid var(--kt-code-line);
+  }
+}
+
+.pane {
+  min-width: 0;
+  padding: 18px 0 4px;
+}
+
+.paneHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 0;
+  padding: 0 20px 6px;
+}
+
+.langJava,
+.langKotlin {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.langJava {
+  color: var(--kt-code-java);
+}
+
+.langKotlin {
+  color: var(--kt-code-accent);
+}
+
+.paneFile {
+  font-family: var(--kt-mono);
+  font-size: 0.8125rem;
+  color: var(--kt-code-muted);
+}
+
+.page .pane :global(.theme-code-block) {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+/* ------------------------------------------------------------------
+   What the DSL gives you: one row with a small snippet, then a ruled
+   grid of short explanations.
+   ------------------------------------------------------------------ */
+
+.blockRow {
+  display: grid;
+  gap: 20px 40px;
+  padding: 28px 0;
+  border-top: 2px solid var(--kt-text);
+  border-bottom: 1px solid var(--kt-line);
+}
+
+@media (min-width: 997px) {
+  .blockRow {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    align-items: center;
+  }
+}
+
+.blockText,
+.blockCode,
+.extendBody {
+  min-width: 0;
+}
+
+.blockCode :global(.theme-code-block) {
+  margin: 0;
+}
+
+.concepts {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 700px) {
+  .concepts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+  }
+}
+
+@media (min-width: 997px) {
+  .concepts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.concepts li {
+  margin: 0;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--kt-line);
+}
+
+.conceptTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--kt-text);
+}
+
+.conceptText {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--kt-muted);
+}
+
+/* ------------------------------------------------------------------
+   Extending: the idea on the left, the extension function on the right.
+   ------------------------------------------------------------------ */
+
+.extendGrid {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 997px) {
+  .extendGrid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.extendBody :global(.theme-code-block) {
+  margin: 24px 0 0;
+}
+
+/* ------------------------------------------------------------------
+   How to start: numbered steps in plain words, no code.
+   ------------------------------------------------------------------ */
+
+.steps {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--kt-text);
+}
+
+@media (min-width: 700px) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+  }
+}
+
+@media (min-width: 997px) {
+  .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 32px;
+  }
+}
+
+.steps li {
+  margin: 0;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--kt-line);
+}
+
+.stepNumber {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: var(--kt-accent);
+  color: var(--kt-canvas);
+  font-size: 0.9375rem;
+  font-weight: 800;
+}
+
+/* ------------------------------------------------------------------
+   Code: dark in both themes, in the page's own colours. The highlighter
+   writes each token colour inline, so each token type is restated.
+   ------------------------------------------------------------------ */
+
+.page :global(.theme-code-block) {
+  --prism-color: var(--kt-code-text);
+  --prism-background-color: var(--kt-code);
+  border: 1px solid var(--kt-code-line);
+  border-radius: 12px;
+  background: var(--kt-code);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.page :global(.theme-code-block) :global(pre) {
+  background: var(--kt-code) !important;
+  color: var(--kt-code-text) !important;
+}
+
+.page :global(.theme-code-block) :global(pre code) {
+  display: block;
+  float: none;
+  min-width: 0;
+  font-size: 0.8125rem;
+}
+
+/* A too-long line wraps instead of scrolling sideways. */
+.page :global(.theme-code-block) :global(pre),
+.page :global(.theme-code-block) :global(pre code) {
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere;
+}
+
+.page :global(.theme-code-block) [class*='codeBlockTitle'] {
+  border-bottom: 1px solid var(--kt-code-line) !important;
+  background: var(--kt-code-bar) !important;
+  color: rgb(255 255 255 / 0.7) !important;
+  font-size: 0.8125rem;
+}
+
+.page :global(.theme-code-block) :global(.token-line),
+.page :global(.theme-code-block) :global(.token.plain) {
+  color: var(--kt-code-text) !important;
+}
+
+.page :global(.theme-code-block) :global(.token.keyword) {
+  color: #ff9d5c !important;
+  font-style: normal !important;
+}
+
+.page :global(.theme-code-block) :global(.token.tag) {
+  color: #ff9d5c !important;
+}
+
+.page :global(.theme-code-block) :global(.token.class-name),
+.page :global(.theme-code-block) :global(.token.annotation),
+.page :global(.theme-code-block) :global(.token.attr-name),
+.page :global(.theme-code-block) :global(.token.constant) {
+  color: var(--kt-code-java) !important;
+}
+
+.page :global(.theme-code-block) :global(.token.string),
+.page :global(.theme-code-block) :global(.token.attr-value),
+.page :global(.theme-code-block) :global(.token.string-literal) {
+  color: #b9df8f !important;
+}
+
+.page :global(.theme-code-block) :global(.token.interpolation),
+.page :global(.theme-code-block) :global(.token.interpolation-punctuation) {
+  color: #ffd27a !important;
+}
+
+.page :global(.theme-code-block) :global(.token.function) {
+  color: #ffd27a !important;
+}
+
+.page :global(.theme-code-block) :global(.token.number),
+.page :global(.theme-code-block) :global(.token.boolean) {
+  color: #f2a7c8 !important;
+}
+
+.page :global(.theme-code-block) :global(.token.punctuation),
+.page :global(.theme-code-block) :global(.token.operator) {
+  color: rgb(255 255 255 / 0.58) !important;
+}
+
+.page :global(.theme-code-block) :global(.token.comment) {
+  color: rgb(255 255 255 / 0.46) !important;
+  font-style: italic !important;
+}
+
+.page :global(.theme-code-block) :global(.token.namespace) {
+  color: var(--kt-code-muted) !important;
+  opacity: 1 !important;
+}
+
+.page :global(.theme-code-block) :global(.token.tag) :global(.token.punctuation),
+.page :global(.theme-code-block) :global(.token.tag.punctuation) {
+  color: rgb(255 255 255 / 0.55) !important;
+}
+
+.page :global(.theme-code-block) :global(button) {
+  border-color: rgb(255 255 255 / 0.18);
+  background: #1c1c22;
+  color: rgb(255 255 255 / 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Light theme: the same layout on a light canvas with dark text. Code
+   and the Java and Kotlin box keep their dark values.
+   ------------------------------------------------------------------ */
+
+[data-theme='light'] .page {
+  --kt-text: #0d1020;
+  --kt-muted: rgb(13 16 32 / 0.7);
+  --kt-line: rgb(13 16 32 / 0.1);
+  --kt-rule: rgb(13 16 32 / 0.22);
+  --kt-panel: #fff;
+  --kt-canvas: #f7f7f8;
+  --kt-accent: #b4470a;
+  --kt-primary-hover: #262b45;
+}

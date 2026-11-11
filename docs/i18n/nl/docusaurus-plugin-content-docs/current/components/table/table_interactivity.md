@@ -2,20 +2,24 @@
 sidebar_position: 40
 title: Interactiviteit
 slug: Interactivity
-_i18n_hash: 8ec1ec3ef58f8bfcde31ee8dc9891579
+description: >-
+  Reference the keyboard shortcuts that move focus, select rows, and navigate
+  cells in the Table component.
+_i18n_hash: 49377400524e9e1c3a25dd35cfb7750c
 ---
-De `Table` component reageert op verschillende toetsenbordinvoer van gebruikers om meer gedetailleerde interactie mogelijk te maken. De volgende lijst beschrijft de verschillende gedragingen wanneer de aangegeven toets wordt ingedrukt:
+Het `Table`-component reageert op verschillende toetsenbordinvoer van gebruikers, zodat ze er nauwkeuriger mee kunnen werken. In de volgende lijst staan de verschillende gedragingen wanneer de aangegeven toets wordt ingedrukt:
 
-## Toetsenbordinteracties {#keyboard-interations}
+
+## Toetsenbordinteracties {#keyboard-interactions}
 
 |Toets|Gedrag|
 |:-:|-|
-|<kbd>Spatie</kbd>|Selecteert de huidige rij.|
-|<kbd>Enter</kbd>|Focust de cel, of het focusbare element als de cel een renderer heeft.|
-|<kbd>Home</kbd>|Focust de eerste cel van de eerste kolom en rij.|
-|<kbd>Einde</kbd>|Focust de laatste cel van de laatste kolom en rij.|
-|<kbd>Shift</kbd> + <kbd>Tab</kbd>|Als de cel in het lichaam van de tabel staat en Shift + Tab wordt ingedrukt, focust het de eerste focusbare cel in de kop.|
-|<kbd>&#8594;</kbd>|Als de Ctrl-toets is ingedrukt, focust het de laatste cel van de huidige rij. Anders focust het de volgende cel horizontaal.|
-|<kbd>&#8592;</kbd>|Als de Ctrl-toets is ingedrukt, focust het de eerste cel van de huidige rij. Anders focust het de vorige cel horizontaal.|
-|<kbd>&#8593;</kbd>|Als de Ctrl-toets is ingedrukt, focust het de eerste cel van de huidige kolom. Anders focust het de vorige cel verticaal.|
-|<kbd>&#8595;</kbd>|Als de Ctrl-toets is ingedrukt, focust het de laatste cel van de huidige kolom. Anders focust het de volgende cel verticaal.|
+|<kbd>Space</kbd>|Selecteert de huidige rij.|
+|<kbd>Enter</kbd>|Stelt de cel scherp, of het focusbare element als de cel een renderer heeft.|
+|<kbd>Home</kbd>|Stelt de eerste cel van de eerste kolom en rij scherp.|
+|<kbd>End</kbd>|Stelt de laatste cel van de laatste kolom en rij scherp.|
+|<kbd>Shift</kbd> + <kbd>Tab</kbd>|Als de cel zich in de hoofdtekst van de tabel bevindt en Shift + Tab wordt ingedrukt, wordt de eerste focusbare cel in de koptekst scherpgesteld.|
+|<kbd>&#8594;</kbd>|Als de Ctrl-toets is ingedrukt, wordt de laatste cel van de huidige rij scherpgesteld. Anders wordt de volgende cel horizontaal scherpgesteld.|
+|<kbd>&#8592;</kbd>|Als de Ctrl-toets is ingedrukt, wordt de eerste cel van de huidige rij scherpgesteld. Anders wordt de vorige cel horizontaal scherpgesteld.|
+|<kbd>&#8593;</kbd>|Als de Ctrl-toets is ingedrukt, wordt de eerste cel van de huidige kolom scherpgesteld. Anders wordt de vorige cel verticaal scherpgesteld.|
+|<kbd>&#8595;</kbd>|Als de Ctrl-toets is ingedrukt, wordt de laatste cel van de huidige kolom scherpgesteld. Anders wordt de volgende cel verticaal scherpgesteld.|

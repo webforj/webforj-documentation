@@ -109,6 +109,8 @@ An AI coding assistant is a fast way to port screens, because an SWT screen has 
 
 Hand the assistant one RAP screen and the service it calls, ask for the webforJ version, and review the result before you merge it.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Which path fits your team {#choosing}
 
 Stay on RAP if you still ship the same code to an RCP desktop client, or if the app is stable and the team has no pressure to change it. Move to webforJ if you want one Java language and one Maven build from the database to the browser, a UI that calls Spring services directly, and a migration you can do a screen at a time. If your team has already looked at moving Java desktop UIs to the browser, the [GWT alternative post](/blog/gwt-alternative) walks through the same decision for another Java UI toolkit.

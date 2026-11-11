@@ -192,6 +192,8 @@ Choose Thymeleaf when the app is mostly content and you want the smallest possib
 
 Choose webforJ when the people building the app are Java developers, the screens are forms, grids, dashboards, and workflows, and you want one language, one build, and one deployment.
 
+Whichever you choose, test it against the same requirements. They are listed in [Java framework for web applications](/blog/java-framework-for-web-applications).
+
 ## Frequently asked questions {#faq}
 
 ### What is the best Java UI framework for enterprise apps? {#faq-best}

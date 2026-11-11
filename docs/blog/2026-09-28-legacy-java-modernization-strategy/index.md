@@ -78,6 +78,8 @@ The risk with an agent is code that looks right and does not compile against the
 
 A reviewer still reads every change, and we recommend exactly that. What changes is that the reviewer spends time on business behavior instead of on invented method names.
 
+The agent can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Keeping the upgrade path cheap {#upgrade-path}
 
 Modernizing onto a framework you cannot upgrade just creates the next legacy app. webforJ ships OpenRewrite recipes that update dependencies, rename APIs and add `TODO` comments where a manual decision is needed. The [automated upgrades docs](/docs/upgrading/automated-upgrades) list the recipe for each version, and you can preview the change as a patch before anything is modified. Ask any vendor you evaluate for the same thing: how does the next major version reach my code?

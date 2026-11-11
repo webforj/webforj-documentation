@@ -101,6 +101,8 @@ Our neighboring comparisons cover these angles in more depth. The [best Java UI 
 
 The fastest way to compare is to build one real screen. Generate a project with [startforJ](https://docs.webforj.com/startforj), follow the [getting started guide](/docs/introduction/getting-started), and rebuild the form or table that is hardest to maintain today. If it feels natural to your team, the next screen will too.
 
+Once you have picked an approach, [Java framework for web applications](/blog/java-framework-for-web-applications) lists what to require from it.
+
 ## Frequently asked questions {#faq}
 
 ### What is the best frontend framework for a Java backend? {#faq-best}

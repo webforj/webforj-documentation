@@ -1,0 +1,1456 @@
+/* webforJ UI components page. The components are the visual: a wall of
+   real previews in the hero, then every component sorted by the job it
+   does. A flat canvas with thin lines and very large type. The dark values
+   sit on .page and the light theme overrides them right below. One
+   accent: blue. */
+
+.page {
+  --uc-text: #fff;
+  --uc-muted: rgb(255 255 255 / 0.72);
+  --uc-line: rgb(255 255 255 / 0.12);
+  --uc-rule: rgb(255 255 255 / 0.22);
+  --uc-strong: rgb(255 255 255 / 0.5);
+  --uc-panel: #212126;
+  --uc-accent: #4d8bff;
+  --uc-primary-bg: #fff;
+  --uc-primary-hover: rgb(255 255 255 / 0.86);
+  --uc-primary-text: #0d1020;
+  /* the background the preview images are drawn on */
+  --uc-shot-bg: rgb(19 21 23);
+  /* code is dark in both themes */
+  --uc-code-bg: #101014;
+  --uc-code-text: #e7eaf6;
+  --uc-radius: 14px;
+  --uc-radius-s: 10px;
+  --uc-radius-pill: 999px;
+  --uc-gutter: 16px;
+  --uc-duration: 150ms;
+  --uc-ease: ease-out;
+
+  background: #19191c;
+  color: var(--uc-text);
+  overflow-x: clip;
+}
+
+:global(html[data-theme='light']) .page {
+  --uc-text: #0d1020;
+  --uc-muted: rgb(13 16 32 / 0.7);
+  --uc-line: rgb(13 16 32 / 0.1);
+  --uc-rule: rgb(13 16 32 / 0.2);
+  --uc-strong: rgb(13 16 32 / 0.4);
+  --uc-panel: #fff;
+  --uc-accent: #1247e6;
+  --uc-primary-bg: #0d1020;
+  --uc-primary-hover: #262b45;
+  --uc-primary-text: #fff;
+  --uc-shot-bg: rgb(245 247 251);
+  background: #f7f7f8;
+}
+
+@media (min-width: 768px) {
+  .page {
+    --uc-gutter: 32px;
+  }
+}
+
+.page p {
+  text-wrap: pretty;
+}
+
+.page code {
+  font-size: 0.9em;
+}
+
+.container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--uc-gutter);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Preview images: both theme sets are in the page, CSS shows one. */
+
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.onDark {
+  display: none;
+}
+
+:global(html[data-theme='dark']) .onLight {
+  display: none;
+}
+
+:global(html[data-theme='dark']) .onDark {
+  display: block;
+}
+
+.shotFrame {
+  display: block;
+  background: var(--uc-shot-bg);
+  border-bottom: 1px solid var(--uc-line);
+}
+
+/* Buttons and links. Links set their colours on `.page a.…` so they win
+   over the site's link hover colour; hover changes colour only. */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+@media (max-width: 479px) {
+  .actions > * {
+    flex: 1 1 100%;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color var(--uc-duration) var(--uc-ease),
+    border-color var(--uc-duration) var(--uc-ease),
+    color var(--uc-duration) var(--uc-ease);
+}
+
+.buttonLarge {
+  min-height: 56px;
+  padding: 0 28px;
+  font-size: 1.0625rem;
+}
+
+.page a.buttonPrimary {
+  border: 1px solid var(--uc-primary-bg);
+  background: var(--uc-primary-bg);
+  color: var(--uc-primary-text);
+  text-decoration: none;
+}
+
+.page a.buttonPrimary:is(:hover, :focus) {
+  border-color: var(--uc-primary-hover);
+  background: var(--uc-primary-hover);
+}
+
+.page a.buttonSecondary {
+  border: 1px solid var(--uc-strong);
+  background: transparent;
+  color: var(--uc-text);
+}
+
+.page a.buttonSecondary:is(:hover, :focus) {
+  border-color: var(--uc-text);
+  text-decoration: none;
+}
+
+.page a:focus-visible {
+  outline: 3px solid var(--uc-accent);
+  outline-offset: 3px;
+}
+
+.linkRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+
+.inlineLinks {
+  margin-top: 32px;
+}
+
+.page a.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--uc-accent);
+  font-weight: 650;
+  text-decoration: none;
+  transition: color var(--uc-duration) var(--uc-ease);
+}
+
+.page a.textLink:is(:hover, :focus) {
+  color: var(--uc-text);
+}
+
+/* Section frame: flat canvas, a thin dashed rule between sections */
+
+.groups,
+.beyond,
+.compose,
+.own,
+.java,
+.theme,
+.entrance {
+  position: relative;
+  padding: 72px 0;
+  border-top: 1px dashed var(--uc-rule);
+}
+
+@media (min-width: 997px) {
+  .groups,
+  .beyond,
+  .compose,
+  .own,
+  .java,
+  .theme,
+  .entrance {
+    padding: 112px 0;
+  }
+}
+
+/* Labels and titles. The second line of every title is the accent. */
+
+.eyebrow,
+.label,
+.beyondLabel {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--uc-accent);
+}
+
+.eyebrow,
+.label {
+  margin: 0 0 18px;
+}
+
+.sectionHead {
+  max-width: 860px;
+}
+
+.heroTitle,
+.sectionTitle,
+.entranceTitle {
+  margin: 0;
+  color: var(--uc-text);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.heroTitle span,
+.sectionTitle span,
+.entranceTitle span {
+  display: block;
+  padding-bottom: 0.06em;
+  color: var(--uc-accent);
+}
+
+.heroTitle {
+  font-size: clamp(2.75rem, 1.1rem + 4.6vw, 5.25rem);
+  line-height: 1.04;
+}
+
+.sectionTitle {
+  font-size: clamp(2.25rem, 1.1rem + 3.4vw, 4rem);
+  line-height: 1;
+}
+
+.entranceTitle {
+  font-size: clamp(2.25rem, 1.1rem + 3.4vw, 4.25rem);
+  line-height: 1;
+}
+
+/* the Java title sits in the narrow text column next to the code */
+.javaText .sectionTitle {
+  font-size: clamp(2.25rem, 1.4rem + 2.2vw, 3.25rem);
+}
+
+.sectionTitle code {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 0.9em;
+}
+
+.heroLead,
+.sectionLead {
+  margin: 24px 0 0;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.6;
+  color: var(--uc-muted);
+  max-width: 660px;
+}
+
+.sectionLead code {
+  border: 1px solid var(--uc-line);
+  background: var(--uc-panel);
+  color: var(--uc-text);
+}
+
+/* Ruled lists: items between thin rules, three columns on wide screens
+   (composition points, beyond the set, design system steps). */
+
+.ruledList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ruledList > li {
+  margin: 0;
+}
+
+.ruledTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--uc-text);
+}
+
+.ruledText {
+  margin: 10px 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--uc-muted);
+}
+
+/* Code windows. Code is dark in both themes, with this page's token
+   colours. */
+
+.codeWindow {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--uc-rule);
+  border-radius: var(--uc-radius);
+  background: var(--uc-code-bg);
+}
+
+.codeTitle {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.code {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--uc-code-bg) !important;
+}
+
+.code pre {
+  background: var(--uc-code-bg) !important;
+  color: var(--uc-code-text) !important;
+}
+
+.code pre,
+.code code {
+  border-radius: 0;
+  font-size: 0.75rem;
+}
+
+/* Long lines wrap instead of hiding behind a scrollbar, so every line
+   of the copied code stays in view at any width. */
+.code code {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  display: block;
+  float: none;
+  min-width: 0;
+  padding: 16px 18px;
+  box-sizing: border-box;
+}
+
+.code :global(.token-line),
+.code :global(.token.plain) {
+  color: var(--uc-code-text) !important;
+}
+
+.code :global(.token.keyword) {
+  color: #7fa9ff !important;
+}
+
+.code :global(.token.class-name),
+.code :global(.token.annotation),
+.code :global(.token.selector) {
+  color: #b9cdff !important;
+}
+
+.code :global(.token.string),
+.code :global(.token.number),
+.code :global(.token.boolean),
+.code :global(.token.constant),
+.code :global(.token.unit) {
+  color: #8fd3c1 !important;
+}
+
+.code :global(.token.function),
+.code :global(.token.property),
+.code :global(.token.variable) {
+  color: #e5c07b !important;
+}
+
+.code :global(.token.punctuation),
+.code :global(.token.operator) {
+  color: rgb(231 234 246 / 0.6) !important;
+}
+
+.code :global(.token.comment) {
+  color: rgb(231 234 246 / 0.48) !important;
+  font-style: italic;
+}
+
+/* the copy button sits on the dark code in both themes */
+.code :global(button) {
+  border-color: rgb(255 255 255 / 0.16);
+  background: #1c1c22;
+  color: rgb(255 255 255 / 0.8);
+}
+
+/* Drawn components: the theme panels keep the colours of their own
+   theme, the drawn SearchBar follows the site theme. */
+
+.mockDark,
+.composeDemo {
+  --mock-surface: #1c1d21;
+  --mock-field: #2b2d33;
+  --mock-line: #3b3d44;
+  --mock-text: #f2f4f8;
+  --mock-primary: #2f6bff;
+  --mock-on-primary: #ffffff;
+}
+
+.mockLight,
+:global(html[data-theme='light']) .composeDemo {
+  --mock-surface: #fafcff;
+  --mock-field: #e9ebf1;
+  --mock-line: #dddedf;
+  --mock-text: #04060a;
+  --mock-primary: #0b4df4;
+  --mock-on-primary: #f8fcff;
+}
+
+.mockPanel {
+  border: 1px solid var(--uc-line);
+  border-radius: 16px;
+  background: var(--mock-surface);
+  color: var(--mock-text);
+}
+
+.mockField {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--mock-line);
+  border-radius: 8px;
+  background: var(--mock-field);
+  font-size: 14px;
+}
+
+.mockButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* the primary button is drawn with its focus ring */
+.mockButtonPrimary {
+  background: var(--mock-primary);
+  color: var(--mock-on-primary);
+  box-shadow:
+    0 0 0 2px var(--mock-surface),
+    0 0 0 4px color-mix(in srgb, var(--mock-primary) 75%, transparent);
+}
+
+.mockButtonDefault {
+  border: 1px solid var(--mock-line);
+  background: var(--mock-field);
+}
+
+.mockSwitch {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  border-radius: var(--uc-radius-pill);
+  background: var(--mock-primary);
+}
+
+.mockSwitch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.mockBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--uc-radius-pill);
+  background: color-mix(in srgb, var(--mock-primary) 14%, transparent);
+  color: var(--mock-primary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mockProgress {
+  height: 8px;
+  border-radius: var(--uc-radius-pill);
+  background: var(--mock-field);
+  overflow: hidden;
+}
+
+.mockProgress span {
+  display: block;
+  width: 62%;
+  height: 100%;
+  border-radius: var(--uc-radius-pill);
+  background: var(--mock-primary);
+}
+
+/* ------------------------------------------------------------------
+   Hero: the title, then a dense wall of real component previews
+   ------------------------------------------------------------------ */
+
+.hero {
+  padding: 56px 0 72px;
+}
+
+@media (min-width: 997px) {
+  .hero {
+    padding: 80px 0 112px;
+  }
+}
+
+.heroTop {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 997px) {
+  .heroTop {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 64px;
+  }
+}
+
+.heroText {
+  max-width: 860px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--uc-rule);
+}
+
+@media (min-width: 560px) and (max-width: 996px) {
+  .stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.stats > div {
+  padding: 16px 16px 0 0;
+}
+
+@media (min-width: 997px) {
+  .stats {
+    grid-template-columns: 1fr;
+    min-width: 220px;
+    border-top: 0;
+  }
+
+  .stats > div {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 14px 0;
+    border-top: 1px solid var(--uc-rule);
+  }
+}
+
+.stats dt {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--uc-muted);
+}
+
+.stats dd {
+  margin: 0;
+  font-size: clamp(2rem, 1.6rem + 1.2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--uc-text);
+}
+
+/* The wall. Every preview is 4:3 or close to it, so tiles show each
+   image whole at its own ratio. Large tiles span two columns and two
+   rows. */
+.wall {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 8px;
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wallItem {
+  margin: 0;
+  min-width: 0;
+}
+
+.wallBig {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* 4 columns: 4 large tiles and 8 small fill six rows */
+.wallItem:not(.wallBig):nth-child(n + 11) {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .wall {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 64px;
+  }
+
+  /* 6 columns: 4 large tiles and 14 small fill five rows */
+  .wallItem:not(.wallBig):nth-child(n + 11) {
+    display: block;
+  }
+
+  .wallItem:not(.wallBig):nth-child(n + 19) {
+    display: none;
+  }
+
+  /* fixed spots for the large tiles, so five rows fill with no gaps */
+  .wallAppLayout {
+    grid-area: 1 / 1 / 3 / 3;
+  }
+
+  .wallLogin {
+    grid-area: 1 / 5 / 3 / 7;
+  }
+
+  .wallGoogleCharts {
+    grid-area: 3 / 3 / 5 / 5;
+  }
+
+  .wallUpload {
+    grid-area: 4 / 1 / 6 / 3;
+  }
+}
+
+@media (min-width: 997px) {
+  .wall {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  /* 8 columns: all 20 tiles fill four rows */
+  .wallItem:not(.wallBig):nth-child(n + 19) {
+    display: block;
+  }
+
+  .wallAppLayout,
+  .wallLogin,
+  .wallGoogleCharts,
+  .wallUpload {
+    grid-area: auto / auto / span 2 / span 2;
+  }
+}
+
+.page a.wallLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--uc-line);
+  border-radius: var(--uc-radius-s);
+  background: var(--uc-shot-bg);
+  transition: border-color var(--uc-duration) var(--uc-ease);
+}
+
+.page a.wallLink:is(:hover, :focus) {
+  border-color: var(--uc-accent);
+}
+
+.wallBig .wallLink {
+  border-radius: var(--uc-radius);
+}
+
+/* ------------------------------------------------------------------
+   By purpose: the count heading, a group index, then one block per
+   group
+   ------------------------------------------------------------------ */
+
+/* The count heading: the sum as three large figures in a row, each over a
+   small label, with a quiet plus between them. The figures use tabular
+   digits at a fixed width, so the count-up never shifts the row. */
+.countTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px clamp(16px, 2.4vw, 36px);
+  margin: 0;
+}
+
+.count {
+  display: flex;
+  flex-direction: column;
+  /* room for the tail of the y in "any" above the label */
+  gap: 22px;
+}
+
+.countNumber {
+  display: block;
+  min-width: calc(var(--digits, 2) * 0.62em);
+  font-size: clamp(3.5rem, 1.6rem + 6.4vw, 7rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  color: var(--uc-text);
+}
+
+.countAny .countNumber {
+  min-width: 0;
+  color: var(--uc-accent);
+}
+
+.countLabel {
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.3;
+  color: var(--uc-muted);
+}
+
+.countPlus {
+  font-size: clamp(2rem, 1rem + 3.4vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--uc-rule);
+}
+
+.groupNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 40px 0 0;
+}
+
+.page a.groupNavLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 8px 0 16px;
+  border: 1px solid var(--uc-line);
+  border-radius: var(--uc-radius-s);
+  background: var(--uc-panel);
+  color: var(--uc-text);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color var(--uc-duration) var(--uc-ease),
+    color var(--uc-duration) var(--uc-ease);
+}
+
+.page a.groupNavLink:is(:hover, :focus) {
+  border-color: var(--uc-accent);
+  color: var(--uc-accent);
+}
+
+.groupNavCount {
+  min-width: 30px;
+  padding: 4px 8px;
+  border: 1px solid var(--uc-line);
+  border-radius: 6px;
+  color: var(--uc-accent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* One group: a sticky heading column and a grid of real previews */
+
+.group {
+  display: grid;
+  gap: 24px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--uc-line);
+  scroll-margin-top: calc(var(--ifm-navbar-height, 60px) + 16px);
+}
+
+@media (min-width: 997px) {
+  .group {
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .groupHead {
+    position: sticky;
+    top: calc(var(--ifm-navbar-height, 60px) + 32px);
+    align-self: start;
+  }
+}
+
+.groupIndex {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--uc-accent);
+}
+
+.groupTitle {
+  margin: 8px 0 0;
+  color: var(--uc-text);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.groupLead {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--uc-muted);
+}
+
+.groupCount {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--uc-muted);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tiles > li {
+  margin: 0;
+  min-width: 0;
+}
+
+.page a.tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--uc-line);
+  border-radius: var(--uc-radius);
+  background: var(--uc-panel);
+  color: var(--uc-text);
+  text-decoration: none;
+  transition: border-color var(--uc-duration) var(--uc-ease);
+}
+
+.page a.tile:is(:hover, :focus) {
+  border-color: var(--uc-accent);
+}
+
+.tileBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px 16px;
+}
+
+.tileName {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  transition: color var(--uc-duration) var(--uc-ease);
+}
+
+.page a.tile:is(:hover, :focus) .tileName {
+  color: var(--uc-accent);
+}
+
+.tileText {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--uc-muted);
+}
+
+@media (max-width: 479px) {
+  .tileBody {
+    padding: 12px;
+  }
+
+  .tileName {
+    font-size: 0.9375rem;
+  }
+
+  .tileText {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (min-width: 997px) {
+  .tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .tileBody {
+    padding: 12px 14px 14px;
+  }
+
+  .tileName {
+    font-size: 0.9375rem;
+  }
+
+  .tileText {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Composition: the SearchBar code, its drawing and three points
+   ------------------------------------------------------------------ */
+
+.composeRow {
+  display: grid;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+@media (min-width: 997px) {
+  .composeRow {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: stretch;
+  }
+}
+
+.composeLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* A drawn SearchBar: two components inside one */
+.composeDemo {
+  padding: 24px;
+}
+
+.composeBox {
+  position: relative;
+  padding: 28px 16px 16px;
+  border: 1px dashed var(--mock-line);
+  border-radius: 12px;
+}
+
+.composeBoxName {
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mock-text);
+  opacity: 0.7;
+}
+
+.composeInner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.composeInner > .mockField {
+  flex: 1;
+  min-width: 0;
+}
+
+.composeInner > .mockButton {
+  margin: 0 4px;
+}
+
+.composePoints {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--uc-rule);
+}
+
+.composePoints > li {
+  flex: 1;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--uc-line);
+}
+
+.composePoints .ruledTitle {
+  font-size: 1.25rem;
+}
+
+.composePoints .ruledText {
+  margin-top: 8px;
+}
+
+/* ------------------------------------------------------------------
+   Beyond the set: what is outside the count
+   ------------------------------------------------------------------ */
+
+.beyondList {
+  display: grid;
+  margin-top: 48px;
+  border-top: 1px solid var(--uc-rule);
+}
+
+.beyondList > li {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--uc-line);
+}
+
+@media (min-width: 900px) {
+  .beyondList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-bottom: 1px solid var(--uc-line);
+  }
+
+  .beyondList > li {
+    padding: 32px 32px 32px 0;
+    border-bottom: 0;
+  }
+
+  .beyondList > li + li {
+    padding-left: 32px;
+    border-left: 1px solid var(--uc-line);
+  }
+}
+
+.beyondList .ruledTitle {
+  margin-top: 16px;
+}
+
+.beyondList .ruledText {
+  flex: 1;
+}
+
+.page a.beyondLink {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-weight: 650;
+  color: var(--uc-text);
+  text-decoration: underline;
+  text-decoration-color: var(--uc-accent);
+  text-underline-offset: 4px;
+}
+
+.page a.beyondLink:is(:hover, :focus) {
+  color: var(--uc-accent);
+}
+
+/* ------------------------------------------------------------------
+   Your design system: three steps and a closing panel
+   ------------------------------------------------------------------ */
+
+.ownSteps {
+  display: grid;
+  margin-top: 48px;
+}
+
+.ownSteps > li {
+  padding: 28px 0;
+  border-top: 1px solid var(--uc-rule);
+}
+
+@media (min-width: 900px) {
+  .ownSteps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 40px;
+  }
+}
+
+.ownSteps .ruledTitle {
+  margin-top: 20px;
+}
+
+.ownNumber {
+  display: block;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: clamp(2.75rem, 2.2rem + 2vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--uc-accent);
+}
+
+.ownPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+  padding: 28px 24px;
+  border: 1px solid var(--uc-line);
+  border-radius: var(--uc-radius);
+  background: var(--uc-panel);
+}
+
+@media (min-width: 768px) {
+  .ownPanel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 32px 40px;
+  }
+}
+
+.ownPanelText {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--uc-text);
+}
+
+/* ------------------------------------------------------------------
+   Used from Java: the text and the components the code uses on the
+   left, the code copied from the docs on the right
+   ------------------------------------------------------------------ */
+
+.javaGrid {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 997px) {
+  .javaGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+    gap: 48px;
+    align-items: start;
+  }
+}
+
+.usedList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 480px) {
+  .usedList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.usedList > li {
+  margin: 0;
+  min-width: 0;
+}
+
+.page a.usedLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--uc-line);
+  border-radius: var(--uc-radius-s);
+  background: var(--uc-panel);
+  color: var(--uc-text);
+  text-decoration: none;
+  transition:
+    border-color var(--uc-duration) var(--uc-ease),
+    color var(--uc-duration) var(--uc-ease);
+}
+
+.page a.usedLink:is(:hover, :focus) {
+  border-color: var(--uc-accent);
+  color: var(--uc-accent);
+}
+
+.usedName {
+  padding: 8px 10px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.codeStack {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* ------------------------------------------------------------------
+   Theming: the drawn theme panels and three facts
+   ------------------------------------------------------------------ */
+
+.themePair {
+  display: grid;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+@media (min-width: 768px) {
+  .themePair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+.themeShot {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.themeMock {
+  flex: 1;
+  padding: 28px;
+}
+
+.mock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.mockFieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mockLabel {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.mockRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.themeShot figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 14px 4px 0;
+  font-size: 0.9375rem;
+  color: var(--uc-muted);
+}
+
+.themeShot figcaption code {
+  font-weight: 700;
+  color: var(--uc-text);
+}
+
+.themeFacts {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+@media (min-width: 997px) {
+  .themeFacts {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--uc-line);
+  border-radius: var(--uc-radius);
+  background: var(--uc-panel);
+}
+
+.factTitle {
+  margin: 0;
+  color: var(--uc-text);
+  font-size: 1.1875rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.factText {
+  margin: 10px 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--uc-muted);
+}
+
+.factText code {
+  color: var(--uc-text);
+}
+
+/* a code block inside a fact card, below its text */
+.factCode {
+  margin-top: auto;
+  padding-top: 18px;
+  background: transparent !important;
+}
+
+.factCode pre {
+  border: 1px solid var(--uc-line);
+  border-radius: var(--uc-radius-s);
+}
+
+.theme .inlineLinks {
+  margin-top: 40px;
+}
+
+/* ------------------------------------------------------------------
+   The entrance to the full gallery: one flat panel
+   ------------------------------------------------------------------ */
+
+.entranceBox {
+  display: grid;
+  gap: 40px;
+  padding: 40px 24px;
+  border: 1px solid var(--uc-line);
+  border-radius: 20px;
+  background: var(--uc-panel);
+}
+
+@media (min-width: 768px) {
+  .entranceBox {
+    padding: 56px 48px;
+  }
+}
+
+@media (min-width: 997px) {
+  .entranceBox {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+    gap: 48px;
+    align-items: center;
+    padding: 80px 64px;
+  }
+}
+
+.sectionList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--uc-rule);
+}
+
+.sectionList > li {
+  margin: 0;
+}
+
+.page a.sectionLink {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--uc-rule);
+  color: var(--uc-text);
+  text-decoration: none;
+  transition: color var(--uc-duration) var(--uc-ease);
+}
+
+.page a.sectionLink:is(:hover, :focus) {
+  color: var(--uc-accent);
+}
+
+.sectionCount {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.sectionName {
+  font-size: 1.0625rem;
+  font-weight: 650;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

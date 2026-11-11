@@ -146,6 +146,8 @@ Pick Thymeleaf when the app is mostly content pages and forms and you have no ne
 
 For an internal tool, an admin console, a dashboard, or any business app built by Java developers, webforJ removes the most work. Start from the [Spring Boot guide](/docs/integrations/spring/spring-boot).
 
+For the options laid out side by side, see the comparison of five [Java frontend frameworks](/blog/java-frontend-frameworks).
+
 ## Frequently asked questions {#faq}
 
 ### What is the best frontend framework for Spring Boot? {#faq-best}

@@ -119,6 +119,8 @@ Choose Swing or JavaFX when the program must run offline or drive local hardware
 
 To try it, generate a project with [startforJ](https://docs.webforj.com/startforj) or follow the [getting started guide](/docs/introduction/getting-started).
 
+If the web is where you are heading, the next read is the comparison of [Java frontend frameworks](/blog/java-frontend-frameworks).
+
 ## Frequently asked questions {#faq}
 
 ### Is Swing still used? {#faq-swing-still-used}

@@ -98,6 +98,8 @@ A Wicket page is a Java class plus an HTML file, which is a tidy unit for an AI 
 
 The webforJ AI plugin keeps the result honest. It connects your assistant to the [MCP server](/docs/ai-tooling/mcp) for real class and method signatures, and to the [Agent Skills](/docs/ai-tooling/agent-skills) that guide forms, components, and styling. The [AI plugin overview](/docs/ai-tooling) covers installation. You still review the output, but the draft is far more likely to compile.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Is webforJ right for your team? {#choosing}
 
 webforJ fits when:

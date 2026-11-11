@@ -1,6 +1,10 @@
 #__docusaurus {
   .navbar {
-    border-bottom: 1px solid var(--dwc-border-color);
+    // The bar is solid near-black in both themes, the same tone as the
+    // footer, so page text never shows through it while scrolling.
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+    background: #19191c;
+    box-shadow: 0 16px 32px -20px rgb(0 0 0 / 0.55);
     font-size: .925rem;
   }
 
@@ -155,29 +159,36 @@
   // margin. Add a navbar item, and these need measuring again. First the version
   // badge, then the search label (search still opens with a click or
   // Cmd/Ctrl+K), then "Start your app" (startforJ is also in the Developers
-  // menu), then the divider before the language menu. "Contact us" always stays
-  @media (min-width: 997px) and (max-width: 1380px) {
+  // menu), then the divider before the language menu, then the "Showcase" link
+  // (the showcase is also in the Resources menu). "Contact us" always stays
+  @media (min-width: 997px) and (max-width: 1465px) {
     .navbar__items:not(.navbar__items--right) > #webforj-version-badge,
     .navbar__items:not(.navbar__items--right) > .navbar__item:has(#webforj-version-badge) {
       display: none;
     }
   }
 
-  @media (min-width: 997px) and (max-width: 1299px) {
+  @media (min-width: 997px) and (max-width: 1384px) {
     .DocSearch-Button-Placeholder,
     .DocSearch-Button-Keys {
       display: none;
     }
   }
 
-  @media (min-width: 997px) and (max-width: 1172px) {
+  @media (min-width: 997px) and (max-width: 1257px) {
     .navbar__items--right > .navbar__item:has(#startforj-link) {
       display: none;
     }
   }
 
-  @media (min-width: 997px) and (max-width: 1016px) {
+  @media (min-width: 997px) and (max-width: 1101px) {
     .navbar__items--right > .navbar__item:has(> .separator) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 997px) and (max-width: 1076px) {
+    .navbar__items:not(.navbar__items--right) > .navbar-showcase-link {
       display: none;
     }
   }

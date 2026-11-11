@@ -16,21 +16,35 @@
   align-items: center;
   gap: var(--dwc-space-s);
   padding: 0.35rem 1.1rem 0.35rem 0.35rem;
-  border: 0;
+  /* The launcher follows the theme: a flat near-black pill on light pages
+     and a flat near-white pill on dark ones, with a thin line and a small
+     shadow. It has no brand fill, so it sits quietly beside the page. */
+  --cl-bg: #19191c;
+  --cl-text: #fff;
+  --cl-line: rgb(255 255 255 / 0.16);
+  --cl-hover: #2b2b31;
+  border: 1px solid var(--cl-line);
   border-radius: 2rem;
-  background-color: var(--dwc-color-primary);
-  color: var(--dwc-color-on-primary-text);
+  background-color: var(--cl-bg);
+  color: var(--cl-text);
   font-family: inherit;
   font-size: var(--dwc-font-size-m);
   font-weight: 600;
-  box-shadow: 0 6px 20px rgb(0 0 0 / 0.18);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.16);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
+[data-theme='dark'] .launcher {
+  --cl-bg: #f4f4f6;
+  --cl-text: #19191c;
+  --cl-line: rgb(0 0 0 / 0.12);
+  --cl-hover: #e2e2e7;
+}
+
 .launcher:hover {
-  background-color: var(--dwc-color-primary-light);
-  color: var(--dwc-color-on-primary-text-light);
+  background-color: var(--cl-hover);
+  color: var(--cl-text);
 }
 
 .launcher:focus-visible {
@@ -59,7 +73,7 @@
   bottom: -1px;
   width: 0.6rem;
   height: 0.6rem;
-  border: 2px solid var(--dwc-color-primary);
+  border: 2px solid var(--cl-bg, var(--dwc-surface-3));
   border-radius: 50%;
   background-color: #22c55e;
 }

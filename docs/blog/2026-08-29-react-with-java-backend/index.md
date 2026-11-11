@@ -133,6 +133,8 @@ If you already have a React front end for an internal tool, move one screen at a
 
 The cheapest way to decide is to build a single screen both ways and count the files. Pick one table or form from your current backlog, generate a project with [startforJ](https://docs.webforj.com/startforj) with Spring Boot selected, and inject the service you would have wrapped in a controller. The [getting started guide](/docs/introduction/getting-started) takes you from an empty folder to a running view.
 
+For the full set of choices next to React, see the comparison of [Java frontend frameworks](/blog/java-frontend-frameworks).
+
 ## Frequently asked questions {#faq}
 
 ### Can you use React with a Java backend? {#faq-can-you-use-react-with-java}

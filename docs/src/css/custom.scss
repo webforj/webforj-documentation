@@ -59,10 +59,33 @@
   --menu-level-indicator-color: var(--dwc-color-default);
 
   /* Navbar Dark - permanent dark island, all values fixed palette steps */
-  --navbar-dark-background-color: oklch(from var(--dwc-color-default-seed) 24% clamp(0, calc(c * 3), 0.004) h);
+  --navbar-dark-background-color: #19191c;
   --navbar-dark-link-hover-color: var(--dwc-color-primary-75);
   --navbar-dark-background-active: var(--dwc-color-primary-alt);
   --navbar-dark-sidebar-level-indicator-color: var(--dwc-color-default-50);
+}
+
+/* The site canvas. The three surfaces are written out as fixed neutral grays
+   so the docs, the blog and the standalone pages share one canvas with the
+   navbar and the footer: #f7f7f8 in light, #19191c in dark. The computed
+   surfaces of the DWC theme lose their hue at this low a chroma, and Chrome
+   then draws them with a red cast. The order is kept: surface 3 is the page,
+   surface 2 sits one step under it (sidebar, code), surface 1 two steps. */
+html:root {
+  /* The same gray seed as the DWC theme, hsl(223, 3%, 50%), written in
+     oklch. Chrome drops the hue of a colour this close to gray when the
+     palette is derived from the hsl form, and every default gray (fields,
+     default buttons, borders) then leans red. In oklch the hue is kept. */
+  --dwc-color-default-seed: oklch(0.5925 0.0087 264);
+  --dwc-surface-1: #ededf0;
+  --dwc-surface-2: #f2f2f4;
+  --dwc-surface-3: #f7f7f8;
+}
+
+html:root[data-theme="dark"] {
+  --dwc-surface-1: #0f0f12;
+  --dwc-surface-2: #141417;
+  --dwc-surface-3: #19191c;
 }
 
 [data-theme="dark"] {
@@ -144,12 +167,7 @@ blockquote {
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      var(--ifm-color-primary-lightest),
-      rgba(0, 0, 0, 0)
-    );
+    background: var(--ifm-color-primary-lightest);
   }
 }
 

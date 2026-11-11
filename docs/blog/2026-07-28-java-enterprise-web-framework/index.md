@@ -155,6 +155,8 @@ If your developers use an AI assistant, the framework should make it accurate ra
 
 The fastest way to test these answers is to generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj), add a protected route and bind a form to a validated bean. Read the [route security docs](/docs/security/overview) first if your review starts with access control.
 
+For the general requirements behind this checklist, read [what to require from a Java framework for web applications](/blog/java-framework-for-web-applications).
+
 ## Frequently asked questions {#faq}
 
 ### What is the best Java framework for enterprise web applications? {#faq-best-java-framework}

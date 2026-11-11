@@ -113,6 +113,8 @@ Porting screens is repetitive work that an AI coding assistant handles screen by
 
 The [AI plugin](/docs/ai-tooling) connects the assistant to the current webforJ documentation, API signatures and code samples through an [MCP server](/docs/ai-tooling/mcp), and ships [Agent Skills](/docs/ai-tooling/agent-skills) for tasks such as building forms with data binding. With those in place the assistant looks up real class names and method signatures instead of guessing them. You still review each ported screen.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Decision guide {#decision-guide}
 
 | If your situation is | Then |

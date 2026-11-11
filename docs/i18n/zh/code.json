@@ -1733,5 +1733,8 @@
   "component.blogPostFooter.bookCall": {
     "message": "预约通话",
     "description": "Button label: book a discovery call"
+  },
+  "component.blogFilterBar.insights": {
+    "message": "洞察"
   }
 }

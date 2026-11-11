@@ -1,0 +1,19 @@
+/* The colour preview in front of a hex colour in code, as in an editor: a
+   small square in that colour with a thin line around it. It is filled
+   only once the colour is known, and it is always there, so nothing shifts
+   when the colour arrives. */
+.scope {
+  display: contents;
+}
+
+.scope :global(.token.hexcode)::before {
+  content: '';
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 0.45em;
+  border: 1px solid rgb(255 255 255 / 0.55);
+  border-radius: 2px;
+  background: var(--swatch, transparent);
+  vertical-align: -0.06em;
+}

@@ -1,6 +1,6 @@
 ---
-title: "Login form in Java: a ready-made component for webforJ"
-description: "Build a login form in Java with webforJ's Login component. Handle the submit event, add custom fields, wire up a cancel button, and post to an action URL."
+title: "Spring Boot login page: a Java UI with webforJ Login"
+description: "Build a Spring Boot login page as a Java UI with webforJ's Login component. Handle submit, add custom fields, wire a cancel button, post to an action URL."
 slug: login-form-java-web
 date: 2026-06-11
 authors: Eric Handtke
@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Almost every business app starts with the same screen: a username, a password, and a Sign in button. Building it by hand means a dialog, two required fields, an error message and a button that shouldn't be clicked twice, before you've checked a single credential.
 
-A login form in Java takes one component in webforJ. `Login` brings the dialog, the fields, the checks and the error message, so your code only has to decide whether the credentials are right.
+A Spring Boot login page with a Java UI takes one component in webforJ. `Login` brings the dialog, the fields, the checks and the error message, so your code only has to decide whether the credentials are right.
 
 <!-- truncate -->
 
@@ -159,9 +159,9 @@ Start with [startforJ](https://docs.webforj.com/startforj) or follow the [gettin
 
 ## Frequently asked questions {#faq}
 
-### Can I use the Login component with Spring Boot? {#spring-boot}
+### How do I build a Spring Boot login page with a Java UI? {#spring-boot}
 
-Yes. webforJ views can autowire Spring beans, so the submit listener can call a Spring service that checks the credentials. The [Spring overview](/docs/integrations/spring/overview) explains the setup.
+Call a Spring service from the submit listener. webforJ views can autowire Spring beans, so the listener can hand the credentials to a service that checks them. The [Spring overview](/docs/integrations/spring/overview) explains the setup.
 
 ### Does the Login component authenticate users? {#does-login-authenticate}
 

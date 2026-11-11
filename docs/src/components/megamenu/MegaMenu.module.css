@@ -1,33 +1,21 @@
-/* The navbar's mega menus. Panels follow the site theme, with webforJ's own
-   details: an editor-window preview like the blog cards, mono labels, and
-   the brand blue accent. The preview stage stays dark in both themes, as
-   the screen it shows. */
+/* The navbar's mega menus. The navbar is near-black in both themes, so the
+   panels are too: they hang from it as one piece. Flat, thin lines, large
+   type in the preview, and each product in its own colour (--mm-tone, set
+   per product in menus.js). Hover changes colour only, nothing moves. */
 
 .root {
-  --mm-bg: var(--dwc-surface-3);
-  --mm-raised: var(--ifm-color-emphasis-100);
-  --mm-line: var(--dwc-border-color);
-  --mm-text: #1c1e21;
-  --mm-muted: #525860;
-  /* the site's own menu hover, as in the docs sidebar and dropdowns */
-  --mm-hover: var(--dwc-color-primary-alt);
-  --mm-accent: var(--dwc-color-primary-text);
-  --mm-dot: var(--ifm-color-emphasis-400);
-  --mm-shadow: 0 18px 44px rgb(15 23 42 / 0.14);
+  --mm-bg: #19191c;
+  --mm-raised: #212126;
+  --mm-line: rgb(255 255 255 / 0.1);
+  --mm-text: #fff;
+  --mm-muted: rgb(255 255 255 / 0.64);
+  --mm-hover: rgb(255 255 255 / 0.06);
+  --mm-accent: #4d8bff;
+  --mm-tone: var(--mm-accent);
+  --mm-shadow: 0 28px 56px -28px rgb(0 0 0 / 0.7);
 
   position: static;
   padding: 0;
-}
-
-[data-theme='dark'] .root {
-  --mm-bg: #1b1c1f;
-  --mm-raised: #232428;
-  --mm-line: rgb(255 255 255 / 0.09);
-  --mm-text: #f2f3f5;
-  --mm-muted: rgb(255 255 255 / 0.6);
-  --mm-accent: #47a8ff;
-  --mm-dot: rgb(255 255 255 / 0.22);
-  --mm-shadow: 0 18px 44px rgb(0 0 0 / 0.35);
 }
 
 /* Radix wraps the list in a positioned div; release it so the panel
@@ -76,9 +64,9 @@
   z-index: calc(var(--ifm-z-index-fixed) + 5);
   width: max-content;
   max-width: calc(100vw - 2rem);
-  padding: var(--dwc-space-l);
+  padding: 12px;
   border: 1px solid var(--mm-line);
-  border-radius: var(--dwc-border-radius-l);
+  border-radius: 20px;
   background-color: var(--mm-bg);
   color: var(--mm-text);
   box-shadow: var(--mm-shadow);
@@ -110,7 +98,7 @@
   display: flex;
   align-items: center;
   gap: var(--dwc-space-s);
-  margin: 0 0 var(--dwc-space-s) var(--dwc-space-s);
+  margin: 4px 0 10px 12px;
   color: var(--mm-muted);
   font-family: var(--dwc-font-family-mono);
   font-size: var(--dwc-font-size-xs);
@@ -121,9 +109,10 @@
 
 .label {
   color: var(--mm-text);
-  font-size: var(--dwc-font-size-m);
-  font-weight: 600;
+  font-size: 0.9375rem;
+  font-weight: 650;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 .tagline {
@@ -144,21 +133,22 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: var(--dwc-border-radius);
-  background-color: rgb(71 168 255 / 0.12);
-  color: var(--mm-accent);
-  font-size: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid color-mix(in srgb, var(--mm-tone) 34%, transparent);
+  border-radius: 12px;
+  background-color: color-mix(in srgb, var(--mm-tone) 14%, transparent);
+  color: var(--mm-tone);
+  font-size: 1.0625rem;
 }
 
 /* the webforJ logo sits on white, as the brand mark is drawn for */
 .tile:has(> img) {
+  border-color: transparent;
   background-color: #fff;
-  box-shadow: inset 0 0 0 1px var(--mm-line);
 }
 
-/* entries: the fill changes on hover and focus, nothing moves */
+/* entries: the fill and the arrow change on hover and focus, nothing moves */
 .product {
   width: 100%;
 }
@@ -167,10 +157,10 @@
 .compact {
   display: flex;
   align-items: center;
-  gap: var(--dwc-space-m);
-  padding: var(--dwc-space-s);
+  gap: 14px;
+  padding: 10px 14px 10px 10px;
   border: 0 !important;
-  border-radius: var(--dwc-border-radius);
+  border-radius: 14px;
   color: var(--mm-text);
   transition: background-color 0.15s ease;
 }
@@ -184,6 +174,20 @@
   text-decoration: none;
 }
 
+/* the arrow of the product being previewed, in that product's colour */
+.go {
+  flex: none;
+  margin-left: auto;
+  font-size: 0.8125rem;
+  color: var(--mm-tone);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.productActive .go {
+  opacity: 1;
+}
+
 /* the product being previewed keeps the hover fill */
 .productActive {
   background-color: var(--mm-hover);
@@ -191,157 +195,112 @@
 
 .product:focus-visible,
 .compact:focus-visible {
-  outline: 2px solid var(--mm-accent);
+  outline: 2px solid var(--mm-tone);
   outline-offset: -2px;
 }
 
-/* --- products layout: list and editor-window preview --------------------- */
+/* --- products layout: the list and the preview beside it ----------------- */
 
 .products {
   display: grid;
-  grid-template-columns: minmax(17rem, 20rem) 21rem;
-  gap: var(--dwc-space-l);
+  grid-template-columns: minmax(18rem, 21rem) 27rem;
+  gap: 12px;
 }
 
-.window {
+.preview {
   display: flex;
   flex-direction: column;
   /* its own height, never stretched to the list beside it */
   align-self: start;
   overflow: hidden;
-  border: 1px solid var(--mm-line);
-  border-radius: var(--dwc-border-radius-l);
+  border-radius: 14px;
   background-color: var(--mm-raised);
 }
 
-.windowBar {
+.previewHead {
   display: flex;
   align-items: center;
-  gap: var(--dwc-space-m);
-  height: 2rem;
-  padding: 0 var(--dwc-space-m);
-  border-bottom: 1px solid var(--mm-line);
+  gap: 12px;
+  padding: 18px 20px 0;
+  font-family: var(--dwc-font-family-mono);
+  font-size: 0.75rem;
 }
 
-.dots {
-  flex: none;
-  width: 2.25rem;
-  height: 8px;
-  background:
-    radial-gradient(circle, var(--mm-dot) 0 3px, transparent 3.5px) 0 50% / 8px 8px no-repeat,
-    radial-gradient(circle, var(--mm-dot) 0 3px, transparent 3.5px) 14px 50% / 8px 8px no-repeat,
-    radial-gradient(circle, var(--mm-dot) 0 3px, transparent 3.5px) 28px 50% / 8px 8px no-repeat;
+.previewCount {
+  color: var(--mm-tone);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
-.windowPath {
+.previewPath {
   overflow: hidden;
   color: var(--mm-muted);
-  font-family: var(--dwc-font-family-mono);
-  font-size: var(--dwc-font-size-xs);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.windowBody {
+.previewBody {
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: var(--dwc-space-m);
+  padding: 14px 20px 20px;
 }
 
 /* a fixed stage, so switching products never resizes the panel */
 .previewArea {
-  height: 10.5rem;
-  margin-bottom: var(--dwc-space-m);
+  height: 13.5rem;
+  margin-bottom: 20px;
   overflow: hidden;
-  border-radius: var(--dwc-border-radius);
-  background-color: #0f1012;
+  border: 1px solid var(--mm-line);
+  border-radius: 12px;
+  background-color: #101014;
 }
 
 .previewTitle {
-  margin: 0 0 var(--dwc-space-xs);
-  font-size: var(--dwc-font-size-l);
-  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--mm-text);
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 
 .previewText {
-  min-height: 3.6em;
-  margin: 0 0 var(--dwc-space-m);
+  /* room for the longest description, so the panel is the same height
+     whichever product is shown */
+  min-height: 6em;
+  margin: 0 0 18px;
   color: var(--mm-muted);
-  font-size: var(--dwc-font-size-s);
+  font-size: 0.9375rem;
   line-height: 1.5;
 }
 
-.previewLink {
+/* the site removes link borders on hover, so the border is restated */
+.previewLink,
+.previewLink:hover,
+.previewLink:focus {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
-  gap: var(--dwc-space-s);
-  color: var(--mm-accent);
-  font-size: var(--dwc-font-size-s);
-  font-weight: 600;
+  gap: 10px;
+  min-height: 2.75rem;
+  padding: 0 18px;
+  border: 1px solid rgb(255 255 255 / 0.24) !important;
+  border-radius: 12px;
+  color: var(--mm-text);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
 
 .previewLink:hover,
 .previewLink:focus {
-  color: var(--mm-accent);
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
+  border-color: var(--mm-tone) !important;
+  color: var(--mm-tone);
 }
 
 /* previews */
-.shot {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: calc(var(--dwc-border-radius) - 2px);
-  object-fit: cover;
-}
-
-.shot {
-  object-position: 50% 30%;
-}
-
-.videoStage {
-  position: relative;
-  height: 100%;
-}
-
-/* full screen button over a video, shown on hover or keyboard focus */
-.expand {
-  position: absolute;
-  top: var(--dwc-space-s);
-  right: var(--dwc-space-s);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.9rem;
-  height: 1.9rem;
-  padding: 0;
-  border: 0;
-  border-radius: var(--dwc-border-radius);
-  background-color: rgb(0 0 0 / 0.65);
-  color: #fff;
-  font-size: 0.8rem;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.15s ease, background-color 0.15s ease;
-}
-
-.videoStage:hover .expand,
-.expand:focus-visible {
-  opacity: 1;
-}
-
-.expand:hover {
-  background-color: rgb(0 0 0 / 0.85);
-}
-
-@media (hover: none) {
-  .expand {
-    opacity: 1;
-  }
-}
-
 .code {
   height: 100%;
   margin: 0;
@@ -392,9 +351,16 @@
 
 .columns {
   display: grid;
-  grid-auto-columns: minmax(16rem, 1fr);
+  grid-auto-columns: minmax(17rem, 1fr);
   grid-auto-flow: column;
-  gap: var(--dwc-space-xl);
+  gap: 12px;
+  padding: 8px 0 0;
+}
+
+/* a thin rule between the columns, as on the pages */
+.columns > div + div {
+  padding-left: 12px;
+  border-left: 1px dashed var(--mm-line);
 }
 
 /* the same roomy rows as the product list: an icon tile, title and line */
@@ -406,11 +372,723 @@
 
 @media (max-width: 1180px) {
   .products {
-    grid-template-columns: minmax(16rem, 18rem) 18rem;
+    grid-template-columns: minmax(16rem, 18rem) 20rem;
   }
 
   .previewArea {
-    height: 8.5rem;
+    height: 10rem;
   }
 
+  .previewTitle {
+    font-size: 1.375rem;
+  }
+
+}
+
+/* a drawn preview: fills the stage, in the product's colour */
+.art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--mm-tone);
+}
+
+/* The drawings each play a short scene on an eight second loop. Only
+   transform and opacity are animated. A drawing is on the page only while
+   its product is shown, so its scene starts from the top each time and
+   nothing runs unseen. With reduced motion the drawings stand still and
+   the parts that exist only to move (the pointer, the rings) are hidden. */
+.art [class*='k_'] {
+  transform-box: fill-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .k_cur_ui {
+    animation: cur_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_knob_ui {
+    animation: knob_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_fill_ui {
+    animation: fill_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_press_ui {
+    transform-origin: center;
+    animation: press_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_ring_ui {
+    transform-origin: center;
+    animation: ring_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_thumb_ui {
+    animation: thumb_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_track_ui {
+    transform-origin: 0 50%;
+    animation: track_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_tick_ui {
+    animation: tick_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_tab_ui {
+    animation: tab_ui 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_row_sw {
+    animation: row_sw 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_packet_sw {
+    animation: packet_sw 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_pop {
+    transform-origin: center;
+    animation: pop 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_sel_cj {
+    animation: sel_cj 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_tree_cj {
+    animation: tree_cj 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_cur_cj {
+    animation: cur_cj 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_knob_cj {
+    animation: knob_cj 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_fill_cj {
+    animation: fill_cj 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_bubble_mcp {
+    animation: bubble_mcp 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_dots_mcp {
+    animation: dots_mcp 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_dot {
+    animation: dot 0.8s ease-in-out infinite both;
+  }
+
+  .k_card_mcp {
+    animation: card_mcp 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_line_mcp {
+    transform-origin: 0 50%;
+    animation: line_mcp 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_pill_mcp {
+    animation: pill_mcp 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_press_mcp {
+    transform-origin: center;
+    animation: press_mcp 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_ring_mcp {
+    transform-origin: center;
+    animation: ring_mcp 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_swatch {
+    transform-origin: center;
+    animation: swatch 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_frame_dk {
+    transform-origin: 0 50%;
+    animation: frame_dk 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_handles_dk {
+    animation: handles_dk 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_inner_dk {
+    animation: inner_dk 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_fill_dk {
+    animation: fill_dk 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_chip_dk {
+    animation: chip_dk 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_ruler_dk {
+    transform-origin: 0 50%;
+    animation: ruler_dk 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  .k_grow {
+    transform-origin: 0 50%;
+    animation: grow 8s cubic-bezier(0.6, 0, 0.3, 1) infinite both;
+  }
+
+  /* a code preview writes itself line by line, once, when it is shown */
+  .codeLine {
+    animation: line-in 320ms ease-out both;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+}
+
+@keyframes cur_ui {
+  0% {
+    transform: translate(310px, 186px);
+  }
+
+  10%, 18% {
+    transform: translate(58px, 120px);
+  }
+
+  30%, 40% {
+    transform: translate(300px, 66px);
+  }
+
+  52% {
+    transform: translate(140px, 166px);
+  }
+
+  74%, 90% {
+    transform: translate(234px, 166px);
+  }
+
+  100% {
+    transform: translate(310px, 186px);
+  }
+}
+
+@keyframes knob_ui {
+  0%, 14% {
+    transform: translate(-28px, 0px);
+  }
+
+  19%, 94% {
+    transform: translate(0px, 0px);
+  }
+
+  100% {
+    transform: translate(-28px, 0px);
+  }
+}
+
+@keyframes fill_ui {
+  0%, 14% {
+    opacity: 0;
+  }
+
+  19%, 94% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes press_ui {
+  0%, 33% {
+    transform: scale(1);
+  }
+
+  36% {
+    transform: scale(0.94);
+  }
+
+  40%, 100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ring_ui {
+  0%, 34% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  36% {
+    opacity: 0.6;
+  }
+
+  47%, 100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+@keyframes thumb_ui {
+  0%, 52% {
+    transform: translate(-94px, 0px);
+  }
+
+  74%, 94% {
+    transform: translate(0px, 0px);
+  }
+
+  100% {
+    transform: translate(-94px, 0px);
+  }
+}
+
+@keyframes track_ui {
+  0%, 52% {
+    transform: scaleX(0.544);
+  }
+
+  74%, 94% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(0.544);
+  }
+}
+
+@keyframes tick_ui {
+  0%, 44% {
+    opacity: 0;
+  }
+
+  48%, 94% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes tab_ui {
+  0%, 80% {
+    transform: translate(0px, 0px);
+  }
+
+  86%, 96% {
+    transform: translate(84px, 0px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes row_sw {
+  0%, 5% {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+
+  8%, 13% {
+    opacity: 0.3;
+    transform: translate(0px, 0px);
+  }
+
+  17%, 23% {
+    opacity: 0.3;
+    transform: translate(0px, 18px);
+  }
+
+  27%, 33% {
+    opacity: 0.3;
+    transform: translate(0px, 36px);
+  }
+
+  37%, 41% {
+    opacity: 0.3;
+    transform: translate(0px, 54px);
+  }
+
+  45%, 100% {
+    opacity: 0;
+    transform: translate(0px, 54px);
+  }
+}
+
+@keyframes packet_sw {
+  0%, 40% {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+
+  42% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+
+  52% {
+    opacity: 1;
+    transform: translate(30px, 0px);
+  }
+
+  54%, 100% {
+    opacity: 0;
+    transform: translate(30px, 0px);
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.94);
+  }
+
+  6%, 52% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  58%, 100% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.94);
+  }
+}
+
+@keyframes sel_cj {
+  0%, 22% {
+    transform: translate(0px, 0px);
+  }
+
+  28%, 52% {
+    transform: translate(0px, -43px);
+  }
+
+  58%, 86% {
+    transform: translate(0px, 43px);
+  }
+
+  94%, 100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes tree_cj {
+  0%, 22% {
+    transform: translate(0px, 0px);
+  }
+
+  28%, 52% {
+    transform: translate(0px, -16px);
+  }
+
+  58%, 86% {
+    transform: translate(0px, 16px);
+  }
+
+  94%, 100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes cur_cj {
+  0%, 12% {
+    transform: translate(152px, 124px);
+  }
+
+  22%, 46% {
+    transform: translate(152px, 80px);
+  }
+
+  54%, 82% {
+    transform: translate(152px, 166px);
+  }
+
+  92%, 100% {
+    transform: translate(152px, 124px);
+  }
+}
+
+@keyframes knob_cj {
+  0%, 28% {
+    transform: translate(0px, 0px);
+  }
+
+  33%, 58% {
+    transform: translate(-14px, 0px);
+  }
+
+  63%, 100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes fill_cj {
+  0%, 28% {
+    opacity: 1;
+  }
+
+  33%, 58% {
+    opacity: 0;
+  }
+
+  63%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bubble_mcp {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 6px);
+  }
+
+  5%, 92% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+
+  98%, 100% {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes dots_mcp {
+  0%, 7% {
+    opacity: 0;
+  }
+
+  9%, 22% {
+    opacity: 1;
+  }
+
+  25%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dot {
+  0%, 100% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(0px, -5px);
+  }
+}
+
+@keyframes card_mcp {
+  0%, 24% {
+    opacity: 0;
+    transform: translate(0px, 16px);
+  }
+
+  32%, 92% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+
+  98%, 100% {
+    opacity: 0;
+    transform: translate(0px, 16px);
+  }
+}
+
+@keyframes line_mcp {
+  0%, 34% {
+    transform: scaleX(0);
+  }
+
+  44%, 100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pill_mcp {
+  0%, 50% {
+    transform: translate(0px, -40px);
+  }
+
+  58%, 100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes press_mcp {
+  0%, 68% {
+    transform: scale(1);
+  }
+
+  71% {
+    transform: scale(0.93);
+  }
+
+  75%, 100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ring_mcp {
+  0%, 69% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  71% {
+    opacity: 0.6;
+  }
+
+  82%, 100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+@keyframes swatch {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  5%, 90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  96%, 100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes frame_dk {
+  0%, 20% {
+    transform: scaleX(0);
+  }
+
+  30%, 90% {
+    transform: scaleX(1);
+  }
+
+  96%, 100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes handles_dk {
+  0%, 30% {
+    opacity: 0;
+  }
+
+  34%, 90% {
+    opacity: 1;
+  }
+
+  95%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes inner_dk {
+  0%, 36% {
+    opacity: 0;
+    transform: translate(0px, 6px);
+  }
+
+  42%, 90% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+
+  95%, 100% {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes fill_dk {
+  0%, 63% {
+    opacity: 0;
+  }
+
+  67%, 90% {
+    opacity: 1;
+  }
+
+  95%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes chip_dk {
+  0%, 52% {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+
+  54% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+
+  64% {
+    opacity: 1;
+    transform: translate(38px, 104px);
+  }
+
+  66%, 100% {
+    opacity: 0;
+    transform: translate(38px, 104px);
+  }
+}
+
+@keyframes ruler_dk {
+  0%, 68% {
+    transform: scaleX(0);
+  }
+
+  76%, 90% {
+    transform: scaleX(1);
+  }
+
+  96%, 100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+
+  8%, 86% {
+    transform: scaleX(1);
+  }
+
+  94%, 100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
 }

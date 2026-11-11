@@ -109,9 +109,13 @@ Start with one new screen in webforJ, leave everything else alone, and move more
 
 Porting a template screen is mostly mechanical, which suits an AI coding assistant. The webforJ AI plugin keeps the output reliable. It bundles the [MCP server](/docs/ai-tooling/mcp), so the assistant can look up real webforJ APIs, with [Agent Skills](/docs/ai-tooling/agent-skills) that guide the workflow. See the [AI plugin overview](/docs/ai-tooling) for installation, and review the generated view before you ship it.
 
+The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+
 ## Next step {#next-step}
 
 Generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj) and pick **Spring Boot** under **Runs on**. Then rebuild your most interactive screen as a view and compare it with the template version. The [getting started guide](/docs/introduction/getting-started) walks through the first run.
+
+Templates are one of five ways to build the UI. The others are in the comparison of [Java frontend frameworks](/blog/java-frontend-frameworks).
 
 ## Frequently asked questions {#faq}
 
