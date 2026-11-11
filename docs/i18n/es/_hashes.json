@@ -535,5 +535,6 @@
   "component.exploreCard.shortBadge": "30bb747c98bccdd11b3f89e644c4d0ad",
   "component.exploreCard.article": "5e2f8ee473fdebc99fef4dc9e7ee3146",
   "component.exploreCard.keepLearning": "65f01bae5473c92f2783ab4fe421a7df",
-  "component.blogPostFooter.bookCall": "078140dcab08c976b398d5a07c18238c"
+  "component.blogPostFooter.bookCall": "078140dcab08c976b398d5a07c18238c",
+  "component.blogFilterBar.insights": "f1c9e9af80bb533618f5bdefe333747d"
 }

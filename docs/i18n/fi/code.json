@@ -1733,5 +1733,8 @@
   "component.blogPostFooter.bookCall": {
     "message": "Varaa puhelu",
     "description": "Button label: book a discovery call"
+  },
+  "component.blogFilterBar.insights": {
+    "message": "Oivallukset"
   }
 }
