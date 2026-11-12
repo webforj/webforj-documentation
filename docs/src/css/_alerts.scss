@@ -1,41 +1,54 @@
-.alert--primary {
-  --ifm-alert-background-color: var(--dwc-color-primary-alt);
-  --ifm-alert-background-color-highlight: var(--dwc-color-primary-alt);
-  --ifm-alert-foreground-color: var(--dwc-color-primary-text);
-  --ifm-alert-border-color: var(--dwc-color-primary);
+// Notes, tips, warnings and the other callouts in docs and blog posts. Each
+// takes its colour from the DWC theme (primary, default, success, info,
+// warning, danger), so a themed site recolours them with everything else.
+// The box is flat: the page surface, a thin line in the callout's colour and
+// a stronger edge on the left. Only the title carries the colour; the text
+// reads like the rest of the page.
+@mixin callout($name, $color, $text) {
+  .alert--#{$name} {
+    --callout-color: var(#{$color});
+    --callout-text: var(#{$text});
+  }
 }
 
-.alert--secondary {
-  --ifm-alert-background-color: var(--dwc-color-default-light);
-  --ifm-alert-background-color-highlight: var(--dwc-color-default);
-  --ifm-alert-foreground-color: var(--dwc-color-on-default-text);
-  --ifm-alert-border-color: var(--dwc-color-default-dark);
+@include callout(primary, --dwc-color-primary, --dwc-color-primary-text);
+@include callout(secondary, --dwc-color-default-dark, --dwc-color-default-text);
+@include callout(success, --dwc-color-success, --dwc-color-success-text);
+@include callout(info, --dwc-color-info, --dwc-color-info-text);
+@include callout(warning, --dwc-color-warning, --dwc-color-warning-text);
+@include callout(danger, --dwc-color-danger, --dwc-color-danger-text);
+
+.alert {
+  --ifm-alert-background-color: var(--dwc-surface-3);
+  --ifm-alert-background-color-highlight: var(--dwc-surface-2);
+  --ifm-alert-foreground-color: var(--ifm-font-color-base);
+  --ifm-alert-border-color: var(--callout-color);
+  --ifm-alert-border-left-width: 3px;
+  --ifm-alert-border-radius: 12px;
+  --ifm-alert-padding-vertical: 0.875rem;
+  --ifm-alert-padding-horizontal: 1.125rem;
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-decoration: underline;
+
+  border-top: 1px solid color-mix(in srgb, var(--callout-color) 35%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--callout-color) 35%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--callout-color) 35%, transparent);
+  box-shadow: none;
 }
 
-.alert--success {
-  --ifm-alert-background-color: var(--dwc-color-success-alt);
-  --ifm-alert-background-color-highlight: var(--dwc-color-success-alt);
-  --ifm-alert-foreground-color: var(--dwc-color-success-text);
-  --ifm-alert-border-color: var(--dwc-color-success);
+// the title line: icon and label in the callout's colour
+.theme-admonition [class*="admonitionHeading"] {
+  margin-bottom: 0.375rem;
+  color: var(--callout-text);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
-.alert--info {
-  --ifm-alert-background-color: var(--dwc-color-info-alt);
-  --ifm-alert-background-color-highlight: var(--dwc-color-info-alt);
-  --ifm-alert-foreground-color: var(--dwc-color-info-text);
-  --ifm-alert-border-color: var(--dwc-color-info);
+#__docusaurus .theme-admonition [class*="admonitionContent"] > :last-child {
+  margin-bottom: 0;
 }
 
-.alert--warning {
-  --ifm-alert-background-color: var(--dwc-color-warning-alt);
-  --ifm-alert-background-color-highlight: var(--dwc-color-warning-alt);
-  --ifm-alert-foreground-color: var(--dwc-color-warning-text);
-  --ifm-alert-border-color: var(--dwc-color-warning);
-}
-
-.alert--danger {
-  --ifm-alert-background-color: var(--dwc-color-danger-alt);
-  --ifm-alert-background-color-highlight: var(--dwc-color-danger-alt);
-  --ifm-alert-foreground-color: var(--dwc-color-danger-text);
-  --ifm-alert-border-color: var(--dwc-color-danger);
+.theme-admonition [class*="admonitionIcon"] svg {
+  fill: var(--callout-text);
 }

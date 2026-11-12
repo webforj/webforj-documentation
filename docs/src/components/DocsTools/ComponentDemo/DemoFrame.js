@@ -5,10 +5,11 @@ import { css } from "@emotion/react";
 import { translate } from '@docusaurus/Translate';
 import { useColorMode } from "@docusaurus/theme-common";
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import 'devices.css/dist/devices.min.css';
 
-import openInNewIcon from "../../../../static/img/window-maximize.png";
+// The phone frame from the devices.css library, by its own class names
+const PHONE_CLASS = 'device device-google-pixel-6-pro device-black';
 
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
 // True when the docs site is being served by `docusaurus start` on the local
 // machine. Drives which iframe base URL we point at (Maven/Jetty in dev,
@@ -76,7 +77,7 @@ function applyScrollPatches(iframe) {
 // uses `iframeSrcDev` from customFields (which honors the WEBFORJ_PORT env
 // var, default 8080). In production, uses `iframeSrcLive` (empty string, so
 // the iframe src becomes a relative path on the docs domain).
-function useIframeSrc(path) {
+export function useIframeSrc(path) {
   const { siteConfig } = useDocusaurusContext();
   const { iframeSrcDev, iframeSrcLive } = siteConfig.customFields;
   return (isLocalhost ? iframeSrcDev : iframeSrcLive) + path;
@@ -185,130 +186,103 @@ function useResizable({ minWidth = MIN_FRAME_WIDTH, minRight = 25 } = {}) {
   return { containerRef, elementRef, isResizing, startResizing };
 }
 
-// Small button that opens the demo URL in a new browser tab. Decorative icon
-// (alt=""); the button itself carries the accessible label.
-function OpenNewWindowButton({ url }) {
-  const { colorMode } = useColorMode();
-
-  const buttonStyles = css`
-    cursor: pointer;
-    z-index: 10;
-    height: 35px;
-    width: 35px;
-    border: none;
-    background-color: transparent;
-  `;
-
-  const iconStyles = css`
-    filter: ${colorMode === "dark" ? "invert(1)" : "none"};
-    background-color: #ffffff80;
-    border-radius: var(--dwc-border-radius-s);
-  `;
-
-  const openNewWindow = () => {
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
-
-  const openInNewWindowLabel = translate({
-    id: 'componentDemo.openInNewWindow',
-    message: 'Open demo in new window',
-    description: 'Accessible label for the button that opens the demo iframe URL in a new browser tab',
-  });
-
-  return (
-    <button css={buttonStyles} onClick={openNewWindow} aria-label={openInNewWindowLabel}>
-      <img css={iconStyles} src={openInNewIcon} alt="" />
-    </button>
-  );
-}
-
 // ============================================================
 // Styles
 // ============================================================
 
-const resizableFrameStyles = css`
+const resizableStageStyles = css`
+  display: flex;
   width: 100%;
-  border: 1px solid var(--ifm-toc-border-color);
-  border-right: none;
-  background-color: transparent;
-  display: flex;
-  position: relative;
-
-  &:hover .open-window-button-wrapper {
-    opacity: 1;
-  }
 `;
 
-const fadeInButton = css`
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  position: absolute;
-  position-anchor: --fade-in-anchor;
-  position-area: top right;
-  transform: translate(-40px, 10px);
-`;
-
-const resizeBarStyles = css`
+// A slim handle along the right edge of the preview. Dragging it narrows
+// the demo to show how it behaves at smaller widths.
+const resizeHandleStyles = css`
   display: flex;
+  flex: none;
   align-items: center;
-  cursor: ew-resize;
-  border-left: 1px solid var(--ifm-toc-border-color);
-  border-right: 1px solid var(--ifm-toc-border-color);
+  justify-content: center;
+  width: 14px;
+  border-left: 1px solid var(--demo-line);
   background-color: var(--dwc-surface-3);
+  cursor: ew-resize;
+
+  &::before {
+    content: "";
+    width: 4px;
+    height: 28px;
+    border-radius: 999px;
+    background-color: var(--ifm-color-emphasis-400);
+    transition: background-color 150ms ease-out;
+  }
+
+  &:hover::before {
+    background-color: var(--ifm-color-primary);
+  }
 
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
-const phoneOuterStyles = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Top spacing only — the gap below the phone preview is owned by CodePanel's
-     detached top margin so the phone + code panel act as one visual unit. */
-  margin-top: 4rem;
-`;
+// The device variants show the demo inside a real-looking device, drawn by
+// the devices.css library (the same frames the showcase page uses). The
+// stage has little padding so the device takes the room there is.
+const deviceStageStyles = css`
+  display: grid;
+  place-items: center;
+  padding: 24px 20px;
+  background-color: var(--dwc-surface-2);
 
-const phoneInnerStyles = css`
-  position: relative;
-  width: 100%;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 0 0 10px black, 0 3px 22px black;
-  outline: thin solid black;
+  .device-screen {
+    border: 0;
+    background: var(--dwc-surface-3);
+  }
 
-  &:hover .open-window-button-wrapper {
-    opacity: 1;
+  /* On a phone-sized viewport the frame is dropped and the demo itself
+     takes the full width. */
+  @media screen and (max-width: 480px) {
+    padding: 0;
+
+    .device,
+    .device .device-frame,
+    .device .device-screen {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .device > :not(.device-frame) {
+      display: none;
+    }
   }
 `;
 
-const phoneMobileSize = css`
-  max-width: 375px;
-  height: 700px;
+// The phone keeps the library's own size: a 376 x 816 screen.
+const phoneStageStyles = css`
+  @media screen and (max-width: 480px) {
+    .device,
+    .device .device-frame {
+      height: 700px;
+    }
+
+    .device .device-screen {
+      height: 100%;
+    }
+  }
 `;
 
-const phoneDesktopSize = css`
-  max-width: 100%;
-  height: 600px;
-`;
-
-const phoneIframeStyles = css`
-  width: 100%;
-  height: 100%;
-  background: var(--dwc-surface-3);
-  anchor-name: --fade-in-anchor;
-`;
-
-const phoneFadeInButton = css`
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  z-index: 10;
+// The desktop variant has no frame: the demo fills the window, 600px tall.
+const desktopStageStyles = css`
+  iframe {
+    display: block;
+    width: 100%;
+    height: 600px;
+    border: 0;
+    background: var(--dwc-surface-3);
+  }
 `;
 
 const iframeTitle = () => translate({
@@ -333,15 +307,16 @@ function ResizableFrame({ path, height }) {
   const iframeSrc = useIframeSrc(path);
 
   const iframeStyles = css`
+    display: block;
     min-height: 100px;
     width: 100%;
     height: ${height || "100%"};
+    border: 0;
     pointer-events: ${isResizing ? "none" : "auto"};
-    anchor-name: --fade-in-anchor;
   `;
 
   return (
-    <div ref={containerRef} css={resizableFrameStyles}>
+    <div ref={containerRef} css={resizableStageStyles}>
       <iframe
         title={iframeTitle()}
         onLoad={handleIframeLoad}
@@ -350,52 +325,57 @@ function ResizableFrame({ path, height }) {
         css={iframeStyles}
         ref={iframeRef}
       ></iframe>
-      <div className="open-window-button-wrapper" css={fadeInButton}>
-        <OpenNewWindowButton url={iframeSrc} />
-      </div>
-      <div css={resizeBarStyles} onMouseDown={startResizing}>
-        <DragIndicatorIcon />
-      </div>
+      <div css={resizeHandleStyles} onMouseDown={startResizing} aria-hidden="true" />
     </div>
   );
 }
 
-function PhoneFrame({ path, variant }) {
+function DeviceFrame({ path, variant }) {
   const iframeRef = useRef(null);
   const handleIframeLoad = useIframeBehavior(iframeRef);
 
   const iframeSrc = useIframeSrc(path);
-  const sizeStyles = variant === 'mobile' ? phoneMobileSize : phoneDesktopSize;
+  const isPhone = variant === 'mobile';
+
+  const screen = (
+    <iframe
+      className={isPhone ? 'device-screen' : undefined}
+      title={iframeTitle()}
+      onLoad={handleIframeLoad}
+      loading="lazy"
+      src={iframeSrc}
+      ref={iframeRef}
+    ></iframe>
+  );
+
+  if (!isPhone) {
+    return <div css={desktopStageStyles}>{screen}</div>;
+  }
 
   return (
-    <div css={phoneOuterStyles}>
-      <div css={[phoneInnerStyles, sizeStyles]}>
-        <div className="open-window-button-wrapper" css={phoneFadeInButton}>
-          <OpenNewWindowButton url={iframeSrc} />
-        </div>
-        <iframe
-          title={iframeTitle()}
-          onLoad={handleIframeLoad}
-          loading="lazy"
-          src={iframeSrc}
-          css={phoneIframeStyles}
-          ref={iframeRef}
-        ></iframe>
+    <div css={[deviceStageStyles, phoneStageStyles]}>
+      <div className={PHONE_CLASS}>
+        <div className="device-frame">{screen}</div>
+        <div className="device-stripe" />
+        <div className="device-header" />
+        <div className="device-sensors" />
+        <div className="device-btns" />
+        <div className="device-power" />
       </div>
     </div>
   );
 }
 
 /**
- * Renders the iframe pane for a webforJ demo. Three variants:
+ * Renders the preview of a webforJ demo. Three variants:
  *
- * - `'resizable'` (default): standard rectangle with a drag handle on the right.
- *   Honors the `height` prop.
- * - `'mobile'`: phone-shaped 375x700 preview, centered with a margin.
- * - `'desktop'`: phone-shaped 100%x600 preview, centered with a margin.
+ * - `'resizable'` (default): the demo at full width with a drag handle on the
+ *   right. Honors the `height` prop.
+ * - `'mobile'`: a 376x816 preview in a phone frame.
+ * - `'desktop'`: a full-width, 600px tall preview with no frame.
  *
- * Phone variants ignore `height` (their dimensions are fixed) and have no
- * drag-resize.
+ * The device variants ignore `height` (their dimensions are fixed) and have
+ * no drag-resize.
  *
  * @param {object} props
  * @param {string} props.path             Path appended to the iframe base URL.
@@ -404,7 +384,7 @@ function PhoneFrame({ path, variant }) {
  */
 export default function DemoFrame({ path, height, variant = 'resizable' }) {
   if (variant === 'mobile' || variant === 'desktop') {
-    return <PhoneFrame path={path} variant={variant} />;
+    return <DeviceFrame path={path} variant={variant} />;
   }
   return <ResizableFrame path={path} height={height} />;
 }

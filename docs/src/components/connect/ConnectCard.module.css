@@ -1,14 +1,19 @@
-/* a compact card at the top of the side column. It wears the site's own
-   card surface and border, so it belongs to the page; what draws the eye is
-   the team mark with its live dot, which pulses twice on load and then
-   rests, and the Contact us button */
+/* a compact card at the top of the side column: one flat box with a thin
+   line, like the tables and demos on the page. What draws the eye is the
+   team mark with its live dot and the Book a call button */
 .card {
+  --card-line: rgb(0 0 0 / 0.14);
+
   flex: none;
   margin-bottom: var(--dwc-space-s);
   padding: 0.875rem 1rem 1rem;
-  border: 1px solid var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius-l);
+  border: 1px solid var(--card-line);
+  border-radius: 14px;
   background-color: var(--dwc-surface-3);
+}
+
+[data-theme='dark'] .card {
+  --card-line: rgb(255 255 255 / 0.1);
 }
 
 /* header line: team mark and name on the left, follow links on the right,
@@ -19,7 +24,7 @@
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   padding-bottom: 0.625rem;
-  border-bottom: 1px solid var(--dwc-border-color);
+  border-bottom: 1px solid var(--card-line);
 }
 
 .avatar {
@@ -27,7 +32,7 @@
   display: inline-flex;
   flex: none;
   padding: 3px;
-  border: 1px solid var(--dwc-border-color);
+  border: 1px solid var(--card-line);
   border-radius: 50%;
   background-color: #fff;
 }
@@ -37,8 +42,7 @@
   border-radius: 50%;
 }
 
-/* the team is there: a small green dot on the mark, with a soft ring that
-   pulses twice when the page opens */
+/* the team is there: a small green dot on the mark */
 .online {
   position: absolute;
   right: -2px;
@@ -48,27 +52,6 @@
   border: 2px solid var(--dwc-surface-3);
   border-radius: 50%;
   background-color: #22c55e;
-}
-
-.online::after {
-  position: absolute;
-  inset: -2px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0 rgb(34 197 94 / 60%);
-  content: '';
-  animation: online-pulse 1.6s ease-out 0.6s 2;
-}
-
-@keyframes online-pulse {
-  to {
-    box-shadow: 0 0 0 7px rgb(34 197 94 / 0%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .online::after {
-    animation: none;
-  }
 }
 
 .teamName {
@@ -83,17 +66,26 @@
   white-space: nowrap;
 }
 
-/* small round follow links in the header line */
+/* small follow links in the header line: plain icons, no fill; hover
+   changes their colour only */
 .icons {
   flex: none;
   flex-wrap: nowrap !important;
-  gap: 0.25rem !important;
+  gap: 0.125rem !important;
 }
 
-.icons a {
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  font-size: 0.75rem !important;
+.card .icons a {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: transparent;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8125rem;
+}
+
+.card .icons a:hover,
+.card .icons a:focus {
+  background-color: transparent;
+  color: var(--ifm-color-primary);
 }
 
 .title {
@@ -115,9 +107,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--dwc-space-s);
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1rem;
   border: 0 !important;
-  border-radius: var(--dwc-border-radius);
+  border-radius: 10px;
   background-color: var(--dwc-color-primary);
   color: var(--dwc-color-on-primary-text);
   font-size: var(--dwc-font-size-s);

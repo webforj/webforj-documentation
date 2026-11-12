@@ -1,37 +1,56 @@
+// Accordions in the docs: a run of them reads as one flat list in a single
+// rounded box, with a thin line between items. An open item is marked by
+// the colour of its title, not by a fill. Hover changes colour only.
 .MuiAccordion-root {
-  background-color: transparent !important;
+  margin: 0 !important;
   border: 1px solid var(--dwc-border-color) !important;
+  border-radius: 0 !important;
+  background-color: var(--dwc-surface-3) !important;
   box-shadow: none !important;
-  margin-bottom: .2em !important;
-  color: var(--dwc-color-black) !important;
+  color: var(--ifm-font-color-base) !important;
 
-  // Remove the default separator line
-  &:before {
+  // no separator line of its own: the borders do that
+  &::before {
     display: none;
   }
 
-  // Remove margin when expanded
-  &.Mui-expanded {
-    margin: 0 0 1px 0 !important;
+  // items after the first share the line above them
+  & + & {
+    border-top-width: 0 !important;
+  }
+
+  // the first and the last of a run carry the rounded corners
+  &:not(.MuiAccordion-root + .MuiAccordion-root) {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+  }
+
+  &:not(:has(+ .MuiAccordion-root)) {
+    margin-bottom: var(--ifm-leading) !important;
+    border-bottom-right-radius: 12px !important;
+    border-bottom-left-radius: 12px !important;
   }
 }
 
 .MuiAccordionSummary-root {
-  padding: 0.75rem 1rem !important;
-  min-height: 48px;
-  transition: all 0.2s ease;
+  min-height: 44px !important;
+  padding: 0.625rem 0.875rem !important;
+  font-size: 0.9375rem;
+  transition: color 150ms ease-out !important;
 
+  &:hover,
   &.Mui-expanded {
-    background-color: var(--dwc-color-primary-alt) !important;
-    min-height: 48px;
+    color: var(--ifm-color-primary);
+  }
+
+  &.Mui-focusVisible {
+    outline: 2px solid var(--ifm-color-primary);
+    outline-offset: -2px;
+    background-color: transparent !important;
   }
 
   .MuiAccordionSummary-content {
-    margin: 0;
-
-    &.Mui-expanded {
-      margin: 0;
-    }
+    margin: 0 !important;
 
     p {
       margin: 0;
@@ -39,11 +58,21 @@
   }
 
   .MuiAccordionSummary-expandIconWrapper {
-    color: var(--dwc-color-primary) !important;
+    color: var(--ifm-color-emphasis-600) !important;
+  }
+
+  &.Mui-expanded .MuiAccordionSummary-expandIconWrapper {
+    color: var(--ifm-color-primary) !important;
   }
 }
 
 .MuiAccordionDetails-root {
-  padding: 1rem;
+  padding: 0.875rem !important;
   border-top: 1px solid var(--dwc-border-color);
+  font-size: 0.9375rem;
+
+  > :last-child,
+  > div > :last-child {
+    margin-bottom: 0;
+  }
 }

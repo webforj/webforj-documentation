@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Translate, { translate } from '@docusaurus/Translate';
 import { useLocation } from '@docusaurus/router';
@@ -98,8 +97,8 @@ function ArticleCard({ post }) {
 }
 
 // End of a docs page: the video and every related post in one row that
-// scrolls sideways. Each edge fades and gets an arrow button only while there
-// is more to scroll that way.
+// scrolls sideways. An arrow button is active only while there is more to
+// scroll that way.
 export function ExploreBottom() {
   const { video, articles } = useExplore();
   const trackRef = useRef(null);
@@ -160,7 +159,7 @@ export function ExploreBottom() {
         <div
           ref={trackRef}
           onScroll={update}
-          className={clsx(styles.tiles, more.start && styles.fadeStart, more.end && styles.fadeEnd)}>
+          className={styles.tiles}>
           {video && (
             <Tile
               href={video.url}

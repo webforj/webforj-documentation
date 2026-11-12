@@ -1,16 +1,17 @@
 // Code background - surface-3 both modes (flat design)
 :root { --dwc-code-bg: var(--dwc-surface-3); }
 
-// Token colors - light mode (steps 50-60 for vivid colors)
+// Token colors - light mode. Every token keeps at least 4.5:1 against the
+// code background, comments included.
 :root {
   --dwc-code-text:        var(--dwc-color-default-text);
-  --dwc-code-comment:     var(--dwc-color-gray-60);
+  --dwc-code-comment:     var(--dwc-color-gray-45);
   --dwc-code-keyword:     var(--dwc-color-primary-50);
   --dwc-code-string:      var(--dwc-color-success-50);
   --dwc-code-number:      var(--dwc-color-warning-50);
   --dwc-code-function:    var(--dwc-color-info-50);
   --dwc-code-class:       var(--dwc-color-warning-55);
-  --dwc-code-variable:    var(--dwc-color-primary-60);
+  --dwc-code-variable:    var(--dwc-color-primary-50);
   --dwc-code-punctuation: var(--dwc-color-gray-55);
   --dwc-code-operator:    var(--dwc-color-gray-55);
   --dwc-code-control:     var(--dwc-color-danger-50);
@@ -19,23 +20,25 @@
 
 // Token colors - dark mode
 :root[data-theme='dark'] {
-  --dwc-code-comment:     var(--dwc-color-gray-60);
+  --dwc-code-comment:     var(--dwc-color-gray-70);
   --dwc-code-keyword:     var(--dwc-color-primary-75);
   --dwc-code-string:      var(--dwc-color-success-70);
   --dwc-code-number:      var(--dwc-color-warning-70);
   --dwc-code-function:    var(--dwc-color-info-75);
   --dwc-code-class:       var(--dwc-color-warning-75);
   --dwc-code-variable:    var(--dwc-color-primary-80);
-  --dwc-code-punctuation: var(--dwc-color-gray-55);
-  --dwc-code-operator:    var(--dwc-color-gray-55);
+  --dwc-code-punctuation: var(--dwc-color-gray-70);
+  --dwc-code-operator:    var(--dwc-color-gray-70);
   --dwc-code-control:     var(--dwc-color-danger-70);
   --dwc-code-regex:       var(--dwc-color-danger-70);
 }
 
-// Code block container - flat, no shadow
+// Code blocks follow the reader's theme: a light panel on the light theme
+// and a dark one on the dark theme, flat, with a thin line. Long pages of
+// code stay comfortable to read in either.
 .theme-code-block {
   border: 1px solid var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius-xl);
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: none !important;
 }
@@ -44,7 +47,7 @@
 [class*='codeBlockTitle'] {
   background-color: var(--dwc-surface-3) !important;
   border-bottom: 1px solid var(--dwc-border-color) !important;
-  color: var(--dwc-color-gray-55) !important;
+  color: var(--ifm-color-emphasis-800) !important;
   font-size: var(--dwc-font-size-s) !important;
   padding: var(--dwc-space-s) var(--dwc-space-m) !important;
 }
@@ -56,6 +59,7 @@ pre.prism-code {
   box-shadow: none !important;
   font-family: 'JetBrains Mono', var(--ifm-font-family-monospace);
   font-size: 15px;
+  line-height: 1.65;
 }
 
 // Inline code

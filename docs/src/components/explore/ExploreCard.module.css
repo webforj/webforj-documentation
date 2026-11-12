@@ -66,44 +66,32 @@
   font-weight: 600;
 }
 
-/* one row that scrolls sideways, no visible scrollbar; an edge fades only
-   while there is more to scroll towards it */
+/* one row that scrolls sideways, no visible scrollbar; the arrows in the
+   heading row show when there is more to see */
 .carousel {
   position: relative;
 }
 
 .tiles {
-  --fade-start: 0px;
-  --fade-end: 0px;
   display: flex;
   gap: var(--dwc-space-m);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  -webkit-mask-image: linear-gradient(to right, rgb(0 0 0 / 45%), #000 var(--fade-start),
-    #000 calc(100% - var(--fade-end)), rgb(0 0 0 / 45%));
-  mask-image: linear-gradient(to right, rgb(0 0 0 / 45%), #000 var(--fade-start),
-    #000 calc(100% - var(--fade-end)), rgb(0 0 0 / 45%));
 }
 
 .tiles::-webkit-scrollbar {
   display: none;
 }
 
-.fadeStart {
-  --fade-start: 1.5rem;
-}
-
-.fadeEnd {
-  --fade-end: 1.5rem;
-}
-
 /* the end of a docs page: set apart from the article by a hairline, with a
    small uppercase label like the site's other section labels */
 .bottom {
-  margin-top: calc(var(--dwc-space-xl) * 1.5);
-  padding-top: var(--dwc-space-l);
-  border-top: 1px solid var(--dwc-border-color);
+  --explore-line: rgb(0 0 0 / 0.14);
+
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--explore-line);
 }
 
 .bottomHead {
@@ -132,8 +120,8 @@
   flex-direction: column;
   min-width: 200px;
   overflow: hidden;
-  border: 1px solid var(--dwc-border-color) !important;
-  border-radius: var(--dwc-border-radius-l);
+  border: 1px solid var(--explore-line, var(--dwc-border-color)) !important;
+  border-radius: 12px;
   background-color: var(--dwc-surface-3);
   color: inherit;
   scroll-snap-align: start;
@@ -216,4 +204,8 @@
 .arrow:focus-visible {
   outline: 2px solid var(--dwc-color-primary-text);
   outline-offset: 2px;
+}
+
+[data-theme='dark'] .bottom {
+  --explore-line: rgb(255 255 255 / 0.14);
 }

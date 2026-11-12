@@ -158,15 +158,22 @@
   color: var(--ft-text);
 }
 
-/* the shared icon row, in the footer's colors in both themes; each icon
-   still takes its network's color on hover */
+/* the shared icon row as plain icons in the footer's colours, no filled
+   circles; hover brightens the icon and nothing else */
 .socials {
   margin-top: var(--dwc-space-xs);
 }
 
-.footer .socials a:not(:hover, :focus) {
-  background-color: rgb(255 255 255 / 0.08);
-  color: var(--ft-text);
+.footer .socials a {
+  background-color: transparent;
+  color: rgb(255 255 255 / 0.72);
+  transition: color 0.15s ease;
+}
+
+.footer .socials a:hover,
+.footer .socials a:focus {
+  background-color: transparent;
+  color: #fff;
 }
 
 /* the phone toggle stays hidden until the phone layout */

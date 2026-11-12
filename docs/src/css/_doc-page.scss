@@ -1,0 +1,173 @@
+// The reading page of the docs, in the same flat language as the product
+// pages: thin lines for structure, no fills or shadows, colour for emphasis.
+#__docusaurus .theme-doc-markdown {
+  --doc-line: rgb(0 0 0 / 0.14);
+
+  // Reading text: roomy lines, so long explanations stay easy to follow.
+  line-height: 1.7;
+
+  p,
+  ul,
+  ol {
+    margin-bottom: 1.15rem;
+  }
+
+  li + li {
+    margin-top: 0.3rem;
+  }
+
+  // Inline code sits a step under the text around it.
+  :not(pre) > code {
+    font-size: 0.875em;
+  }
+
+  // Four clear steps: the page title, a section, a topic inside it and a
+  // detail. Each is plainly smaller than the one above, so the outline of
+  // the page can be read from the headings alone.
+  header h1 {
+    font-size: 2.75rem;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  // The first paragraph under the title reads as the lead.
+  > p:first-of-type {
+    color: var(--ifm-color-emphasis-800);
+    font-size: 1.1875rem;
+    line-height: 1.6;
+  }
+
+  // A section of the page itself starts on a dashed rule, so a long page
+  // reads as a run of clear parts. Headings inside cards and other boxes
+  // on the page keep their own look.
+  > h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 2.25rem;
+    border-top: 1px dashed var(--doc-line);
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  > h3 {
+    margin-top: 2.25rem;
+    margin-bottom: 0.625rem;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  > h4 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  // A heading that names a method or tag is set in the code font without
+  // the box inline code has, so it still reads as a heading.
+  > h2 code,
+  > h3 code,
+  > h4 code {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 0.94em;
+  }
+
+  // The chips under the title sit on one line with room before the lead.
+  > .MuiChip-root {
+    top: 0;
+    margin-bottom: 1.25rem;
+  }
+}
+
+[data-theme="dark"] #__docusaurus .theme-doc-markdown {
+  --doc-line: rgb(255 255 255 / 0.14);
+}
+
+// The current page in the breadcrumb is marked by colour, not a filled pill.
+#__docusaurus .theme-doc-breadcrumbs .breadcrumbs__item--active .breadcrumbs__link {
+  background-color: transparent;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+// These rules follow the docs menu itself, so they hold in the side column
+// on wide screens and in the slide-out menu on phones.
+// The sidebar is the quiet column: sections in full ink, the pages under
+// them a step lighter, and the current page on a filled row. The page
+// itself stays the loudest thing.
+#__docusaurus .theme-doc-sidebar-menu {
+  // pages under a section: a step lighter than the sections, and still
+  // above 7:1 against the sidebar in both themes
+  .menu__link {
+    color: var(--ifm-color-emphasis-800);
+    font-weight: 400;
+  }
+
+  .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
+  .theme-doc-sidebar-item-link-level-1 > .menu__link {
+    color: var(--ifm-font-color-base);
+    font-weight: 600;
+  }
+
+  // The current page keeps a filled row as well as colour and weight, so
+  // it can be found at a glance and does not depend on colour alone.
+  .menu__link--active:not(.menu__link--sublist) {
+    background-color: var(--dwc-color-primary-alt);
+    color: var(--dwc-color-primary-text);
+    font-weight: 600;
+  }
+
+  .menu__link--sublist.menu__link--active {
+    color: var(--ifm-color-primary);
+  }
+}
+
+// The arrows that open a sidebar section: a slim 16px chevron in a quiet
+// grey, drawn from the text colour so it follows the theme. It points right
+// when the section is closed and down when it is open.
+#__docusaurus .theme-doc-sidebar-menu,
+#__docusaurus .navbar-sidebar__item > .menu__list {
+  .menu__caret,
+  .menu__link--sublist-caret {
+    color: var(--ifm-color-emphasis-700);
+  }
+
+  .menu__caret::before,
+  .menu__link--sublist-caret::after {
+    width: 1rem;
+    min-width: 1rem;
+    height: 1rem;
+    background: currentColor;
+    filter: none;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 12.5 10 7.5l5 5' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 12.5 10 7.5l5 5' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+}
+
+// The site menu in the phone drawer (Platform, Developers, Resources and
+// the rest): full-width rows in the same weight as the docs sections, with
+// the chevron at the right edge and no rule down the left side.
+#__docusaurus .navbar-sidebar__item > .menu__list:not(.theme-doc-sidebar-menu) {
+  margin-left: 0;
+  border-left: 0;
+
+  > .menu__list-item > .menu__link,
+  > .menu__list-item > .menu__list-item-collapsible > .menu__link {
+    color: var(--ifm-font-color-base);
+    font-weight: 600;
+  }
+
+  .menu__link--sublist-caret::after {
+    margin-left: auto;
+  }
+
+  // the pages inside a group: a step lighter, like pages in the docs menu
+  .menu__list .menu__link {
+    color: var(--ifm-color-emphasis-800);
+    font-weight: 400;
+  }
+}

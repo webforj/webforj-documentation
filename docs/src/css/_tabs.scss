@@ -1,0 +1,54 @@
+// Tabs in docs, blog posts and the cookbook: a compact row on a thin line,
+// the selected tab marked by its colour and a 2px underline. Hover changes
+// colour only.
+#__docusaurus {
+  .tabs-container {
+    margin-bottom: var(--ifm-leading);
+  }
+
+  .tabs {
+    --ifm-tabs-padding-vertical: 0.5rem;
+    --ifm-tabs-padding-horizontal: 0.875rem;
+    gap: 2px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--dwc-border-color);
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tabs__item {
+    margin-bottom: -1px;
+    border-bottom-width: 2px;
+    border-radius: 0;
+    color: var(--ifm-color-emphasis-700);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+    transition: color 150ms ease-out, border-color 150ms ease-out;
+  }
+
+  .tabs__item:hover {
+    background-color: transparent;
+    color: var(--ifm-font-color-base);
+  }
+
+  .tabs__item--active,
+  .tabs__item--active:hover {
+    border-bottom-color: var(--ifm-color-primary);
+    color: var(--ifm-color-primary);
+  }
+
+  .tabs__item:focus-visible {
+    outline: 2px solid var(--ifm-color-primary);
+    outline-offset: -2px;
+  }
+
+  // the panel sits close under its tabs
+  .tabs-container > .margin-top--md {
+    margin-top: 0.75rem !important;
+  }
+}

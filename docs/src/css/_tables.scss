@@ -1,40 +1,72 @@
-.table-container {
-  border: 1px solid var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius-xl);
-  overflow: hidden;
+// Tables in docs, blog posts and the cookbook: one flat box with a thin line,
+// a quiet header and horizontal rules only. Row hover changes the fill only.
+// The wrapper keeps a table no wider than its content, and holds the small
+// "Expand" button shown above a table that has to scroll sideways.
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
   margin: var(--ifm-spacing-vertical) 0;
 }
 
+.table-expand {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-end;
+  gap: 6px;
+  margin-bottom: 6px;
+  padding: 4px 8px;
+  border: 1px solid var(--dwc-border-color);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--ifm-color-emphasis-800);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.table-expand:hover,
+.table-expand:focus-visible {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.table-container {
+  overflow: hidden;
+  border: 1px solid var(--dwc-border-color);
+  border-radius: 12px;
+}
+
 .table-container table {
-  margin: 0 !important;
-  width: 100%;
-  border-collapse: collapse;
   display: table;
+  width: 100%;
+  margin: 0 !important;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
 }
 
 .table-container thead tr {
-  background-color: var(--dwc-surface-3);
-  border-bottom: 2px solid var(--dwc-border-color);
+  border-bottom: 1px solid var(--dwc-border-color);
+  background-color: var(--dwc-surface-2);
 }
 
 .table-container thead th {
-  color: var(--dwc-color-gray-55) !important;
-  font-weight: 600;
-  font-size: var(--dwc-font-size-s);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: var(--dwc-space-s) var(--dwc-space-m);
+  padding: 0.625rem 0.875rem;
   border: none !important;
-  border-right: 1px solid var(--dwc-border-color) !important;
-}
-
-.table-container thead th:last-child {
-  border-right: none !important;
+  color: var(--ifm-color-emphasis-800) !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 .table-container tbody tr {
-  background-color: var(--dwc-surface-3);
   border-bottom: 1px solid var(--dwc-border-color);
+  background-color: var(--dwc-surface-3);
   transition: background-color 80ms ease;
 }
 
@@ -42,21 +74,12 @@
   border-bottom: none;
 }
 
-.table-container tbody tr:nth-child(even) {
-  background-color: var(--dwc-surface-3);
-}
-
 .table-container tbody tr:hover {
-  background-color: var(--dwc-color-primary-alt);
+  background-color: var(--dwc-surface-2);
 }
 
 .table-container td {
-  padding: var(--dwc-space-s) var(--dwc-space-m) !important;
+  padding: 0.625rem 0.875rem !important;
   border: none !important;
-  border-right: 1px solid var(--dwc-border-color) !important;
   vertical-align: top;
-}
-
-.table-container td:last-child {
-  border-right: none !important;
 }

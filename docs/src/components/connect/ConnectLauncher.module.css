@@ -1,4 +1,7 @@
 .root {
+  /* the floating boxes are flat: a clear line stands in for a shadow */
+  --cl-box-line: rgb(0 0 0 / 0.2);
+
   position: fixed;
   right: 1.3rem;
   bottom: 1.3rem;
@@ -9,28 +12,31 @@
   gap: var(--dwc-space-s);
 }
 
-/* the launcher: a dark pill like the navbar, with a small live dot */
+[data-theme='dark'] .root {
+  --cl-box-line: rgb(255 255 255 / 0.2);
+}
+
+/* the launcher: a flat rounded button with the team mark and a live dot */
 .launcher {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: var(--dwc-space-s);
   padding: 0.35rem 1.1rem 0.35rem 0.35rem;
-  /* The launcher follows the theme: a flat near-black pill on light pages
-     and a flat near-white pill on dark ones, with a thin line and a small
-     shadow. It has no brand fill, so it sits quietly beside the page. */
+  /* The launcher follows the theme: flat near-black on light pages and
+     flat near-white on dark ones, with a thin line and no shadow. It has no
+     brand fill, so it sits quietly beside the page. */
   --cl-bg: #19191c;
   --cl-text: #fff;
   --cl-line: rgb(255 255 255 / 0.16);
   --cl-hover: #2b2b31;
   border: 1px solid var(--cl-line);
-  border-radius: 2rem;
+  border-radius: 14px;
   background-color: var(--cl-bg);
   color: var(--cl-text);
   font-family: inherit;
   font-size: var(--dwc-font-size-m);
   font-weight: 600;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.16);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -105,13 +111,13 @@
   align-items: center;
   gap: var(--dwc-space-s);
   padding: 0.5rem 0.75rem;
-  border: 0 !important;
-  border-radius: var(--dwc-border-radius);
-  background-color: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--dwc-border-color) !important;
+  border-radius: 10px;
+  background-color: transparent;
   color: var(--ifm-font-color-base);
   font-size: var(--dwc-font-size-s);
   font-weight: 500;
-  transition: background-color 0.2s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 /* the Ask AI topic is a button: same look as the links */
@@ -129,29 +135,19 @@ button.topic {
 
 .topic:hover,
 .topic:focus {
-  background-color: var(--ifm-color-emphasis-200);
-  color: var(--ifm-font-color-base);
+  border-color: var(--ifm-color-primary) !important;
+  color: var(--ifm-color-primary);
   text-decoration: none;
 }
 
-[data-theme="dark"] .topic {
-  background-color: var(--ifm-color-emphasis-200);
-}
-
-[data-theme="dark"] .topic:hover,
-[data-theme="dark"] .topic:focus {
-  background-color: var(--ifm-color-emphasis-300);
-}
-
-/* the greeting, arriving like a chat message from the team */
+/* the greeting from the team, shown above the launcher */
 .greeting {
   position: relative;
   width: min(18rem, calc(100vw - 2.6rem));
   padding: var(--dwc-space-m);
-  border: 1px solid var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius-l) var(--dwc-border-radius-l) var(--dwc-border-radius-s) var(--dwc-border-radius-l);
+  border: 1px solid var(--cl-box-line);
+  border-radius: 14px;
   background-color: var(--dwc-surface-3);
-  box-shadow: 0 10px 28px rgb(0 0 0 / 0.16);
 }
 
 .greetingFrom {
@@ -191,7 +187,7 @@ button.topic {
 .replyNo {
   padding: 0.4rem 0.85rem;
   border: 0;
-  border-radius: 2rem;
+  border-radius: 8px;
   font-family: inherit;
   font-size: var(--dwc-font-size-s);
   font-weight: 600;
@@ -260,10 +256,9 @@ button.topic {
   position: relative;
   width: min(20rem, calc(100vw - 2.6rem));
   padding: var(--dwc-space-l);
-  border: 1px solid var(--dwc-border-color);
-  border-radius: var(--dwc-border-radius-l);
+  border: 1px solid var(--cl-box-line);
+  border-radius: 14px;
   background-color: var(--dwc-surface-3);
-  box-shadow: 0 12px 32px rgb(0 0 0 / 0.16);
 }
 
 .close {
@@ -310,7 +305,7 @@ button.topic {
   gap: var(--dwc-space-s);
   padding: 0.6rem 1rem;
   border: 0 !important;
-  border-radius: var(--dwc-border-radius);
+  border-radius: 10px;
   background-color: var(--dwc-color-primary);
   color: var(--dwc-color-on-primary-text);
   font-weight: 600;

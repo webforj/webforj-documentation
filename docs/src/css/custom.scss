@@ -1,5 +1,6 @@
 @use "./alerts";
 @use "./tables";
+@use "./tabs";
 @use "./announcement";
 @use "./prism";
 @use "./navbar";
@@ -12,6 +13,7 @@
 @use "./utils";
 @use "./reset";
 @use "./accordion";
+@use "./doc-page";
 @use "./blog";
 @use "components/dwc-doc-components";
 
@@ -101,31 +103,51 @@ html:root[data-theme="dark"] {
   --docusaurus-highlighted-code-line-bg: var(--dwc-color-default);
 }
 
+// Badges across the docs (component chips, version tags, links to the Java
+// API): flat tags with a thin line and small mono text. Hover changes the
+// colour and the line only.
 .MuiChip-root {
-  background: var(--dwc-color-primary-alt) !important;
-  border: var(--dwc-border-width) solid var(--dwc-border-color-primary) !important;
-  border-radius: var(--dwc-border-radius-pill) !important;
-  color: var(--dwc-color-primary-text) !important;
-  font-weight: var(--dwc-font-weight-semibold) !important;
-  font-size: var(--dwc-font-size-s) !important;
-  height: auto !important;
-  min-height: 1.75em;
-  transition: background var(--dwc-transition-fast) var(--dwc-ease),
-              box-shadow var(--dwc-transition-fast) var(--dwc-ease-out) !important;
+  --chip-line: rgb(0 0 0 / 0.16);
+
+  height: 26px !important;
+  border: 1px solid var(--chip-line) !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  color: var(--ifm-color-emphasis-800) !important;
+  font-family: var(--ifm-font-family-monospace) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0;
+  transition: color 150ms ease-out, border-color 150ms ease-out !important;
 }
 
-.MuiChip-root:hover {
-  background: color-mix(in srgb, var(--dwc-color-primary) 20%, var(--dwc-surface-1)) !important;
+[data-theme="dark"] .MuiChip-root {
+  --chip-line: rgb(255 255 255 / 0.18);
+}
+
+.MuiChip-root:hover,
+.MuiChip-root:focus-visible {
+  border-color: var(--ifm-color-primary) !important;
+  background: transparent !important;
+  color: var(--ifm-color-primary) !important;
 }
 
 .MuiChip-root:focus-visible {
-  box-shadow: 0 0 0 var(--dwc-focus-ring-width) var(--dwc-color-primary-50) !important;
-  outline: none !important;
+  outline: 2px solid var(--ifm-color-primary) !important;
+  outline-offset: 2px;
+  box-shadow: none !important;
+}
+
+.MuiChip-root .MuiChip-label {
+  padding: 0 8px;
 }
 
 .MuiChip-root .MuiChip-icon,
 .MuiChip-root .MuiChip-avatar {
-  color: var(--dwc-color-primary-text) !important;
+  margin-left: 8px;
+  margin-right: 0;
+  color: var(--ifm-color-primary) !important;
+  font-size: 0.95rem;
 }
 
 html {

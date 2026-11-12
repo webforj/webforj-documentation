@@ -6,7 +6,6 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import Tooltip from '@mui/material/Tooltip';
-import Box from '@mui/material/Box';
 
 
 export default function TableWrapper({ children, title, ...props }) {
@@ -14,6 +13,20 @@ export default function TableWrapper({ children, title, ...props }) {
     const [resolvedTitle, setResolvedTitle] = useState(title);
 
     const tableRef = useRef(null);
+    const scrollRef = useRef(null);
+    // The expand button is only offered when the table is wider than the
+    // column and has to scroll sideways.
+    const [overflows, setOverflows] = useState(false);
+
+    useEffect(() => {
+        const box = scrollRef.current;
+        if (!box) return undefined;
+        const update = () => setOverflows(box.scrollWidth > box.clientWidth + 1);
+        update();
+        const observer = new ResizeObserver(update);
+        observer.observe(box);
+        return () => observer.disconnect();
+    }, []);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -51,30 +64,15 @@ export default function TableWrapper({ children, title, ...props }) {
     }, [title]);
 
     return (
-        <div className="table-wrapper" ref={tableRef} style={{ position: 'relative', marginBottom: '2rem', maxWidth: 'fit-content' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
-                <IconButton
-                    onClick={handleClickOpen}
-                    size="small"
-                    aria-label="Expand table"
-                    sx={{
-                        ...iconButtonSx,
-                        disableRipple: true,
-                        gap: '4px',
-                        paddingLeft: '8px',
-                        paddingRight: '8px',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        letterSpacing: '0.05em',
-                        textTransform: 'uppercase',
-                    }}
-                >
-                    <OpenInFullIcon fontSize="small" />
+        <div className="table-wrapper" ref={tableRef}>
+            {overflows && (
+                <button type="button" className="table-expand" onClick={handleClickOpen}>
+                    <OpenInFullIcon sx={{ fontSize: 14 }} />
                     Expand
-                </IconButton>
-            </Box>
+                </button>
+            )}
 
-            <div className="table-container" style={{ overflowX: 'auto' }}>
+            <div className="table-container" ref={scrollRef} style={{ overflowX: 'auto' }}>
                 <table {...props}>
                     {children}
                 </table>
