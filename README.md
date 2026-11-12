@@ -6,7 +6,7 @@
 
 Every guide, blog post and cookbook recipe for webforJ, the full-stack Java framework, plus the live Java demos embedded in the pages. Each demo is a real webforJ app, so what you read is code that runs.
 
-[![Test WAR Build](https://github.com/webforj/webforj-documentation/actions/workflows/test-build.yml/badge.svg)](https://github.com/webforj/webforj-documentation/actions/workflows/test-build.yml)
+[![Build and Deploy WAR](https://github.com/webforj/webforj-documentation/actions/workflows/build-and-deploy-war.yml/badge.svg?branch=main)](https://github.com/webforj/webforj-documentation/actions/workflows/build-and-deploy-war.yml?query=branch%3Amain)
 [![License: MIT](https://img.shields.io/badge/License-MIT-022495)](LICENSE)
 
 **[Read the docs](https://docs.webforj.com)** · [Framework](https://github.com/webforj/webforj) · [Cookbook](https://docs.webforj.com/cookbook) · [Blog](https://docs.webforj.com/blog)
