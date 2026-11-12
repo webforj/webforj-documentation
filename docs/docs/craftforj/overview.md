@@ -16,7 +16,9 @@ sidebar_class_name: new-content
   `}</style>
 </Head>
 
-<DocChip chip='since' label='26.02' />
+<!-- vale off -->
+# craftforJ <DocChip chip='since' label='26.02' />
+<!-- vale on -->
 
 **craftforJ** is the visual development environment that ships with webforJ. It runs inside your app in development mode and gives you a live view of the components your Java code created. You can select a component, change its properties, see the running app update immediately, and write the changes you want to keep back into the Java file that created them.
 

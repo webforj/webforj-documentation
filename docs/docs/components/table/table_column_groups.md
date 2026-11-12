@@ -3,7 +3,9 @@ title: Column Groups
 sidebar_position: 7
 description: Group Table columns under shared, nestable multi-row headers using ColumnGroup.of and setColumnGroups for complex layouts.
 ---
-<DocChip chip='since' label='25.12' />
+<!-- vale off -->
+# Column Groups <DocChip chip='since' label='25.12' />
+<!-- vale on -->
 
 Column groups let you organize related columns under shared, multi-row headers. A group label spans across its child columns, making it easier for users to scan and understand the structure of complex tables. Groups can be nested to any depth, and the `Table` automatically renders the correct number of header rows.
 

@@ -14,8 +14,9 @@ description: Build webforJ UIs declaratively with the Kotlin DSL, a preview feat
   `}</style>
 </Head>
 
-<DocChip chip='since' label='25.12' />
-<DocChip chip='experimental' />
+<!-- vale off -->
+# Kotlin DSL <DocChip chip='since' label='25.12' /> <DocChip chip='experimental' />
+<!-- vale on -->
 
 webforJ provides a [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, or DSL, that lets you build UIs with concise, type-safe syntax. Instead of imperative Java code, you write declarative code that reads like a description of your UI structure.
 

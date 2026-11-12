@@ -4,7 +4,9 @@ sidebar_position: 2
 description: Add the devtools dependency, enable craftforJ in your configuration, and open craftforJ over a running webforJ app.
 ---
 
-<DocChip chip='since' label='26.02' />
+<!-- vale off -->
+# Getting Started <DocChip chip='since' label='26.02' />
+<!-- vale on -->
 
 craftforJ ships with webforJ, so there's nothing to download separately. This page covers what your app needs before craftforJ appears, and how to open it.
 
