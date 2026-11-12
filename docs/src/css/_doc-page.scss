@@ -6,9 +6,12 @@
   // Reading text: roomy lines, so long explanations stay easy to follow.
   line-height: 1.7;
 
-  p,
-  ul,
-  ol {
+  // Only the page's own paragraphs and lists get this spacing; text inside
+  // boxes on the page (callouts, cards, the contact invitation) keeps the
+  // spacing its own component sets.
+  > p,
+  > ul,
+  > ol {
     margin-bottom: 1.15rem;
   }
 

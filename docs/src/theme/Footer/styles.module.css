@@ -161,7 +161,10 @@
 /* the shared icon row as plain icons in the footer's colours, no filled
    circles; hover brightens the icon and nothing else */
 .socials {
+  /* the icons have no circle now, so the row shifts left by the empty half
+     of the first icon's box and lines up with the text above it */
   margin-top: var(--dwc-space-xs);
+  margin-left: -0.5rem;
 }
 
 .footer .socials a {

@@ -1,18 +1,19 @@
-/* In-post invitation after the intro: same quiet panel as the end-of-post
-   "Talk to us" block, with a primary accent edge so it reads as an offer,
-   not as article text. */
+/* In-page invitation to talk to the team: a flat box like the callouts,
+   with a primary edge so it reads as an offer, not as article text. The
+   text and the buttons are centred on one line. */
 .cta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--dwc-space-m) var(--dwc-space-l);
-  margin: var(--dwc-space-l) 0 var(--dwc-space-xl);
-  padding: var(--dwc-space-m) var(--dwc-space-l);
-  border: 1px solid var(--dwc-border-color);
-  border-left: 4px solid var(--dwc-color-primary);
-  border-radius: var(--dwc-border-radius-l);
-  background-color: var(--ifm-color-emphasis-100);
+  margin: var(--dwc-space-xl) 0;
+  padding: var(--dwc-space-l);
+  border: 1px solid color-mix(in srgb, var(--dwc-color-primary) 35%, transparent);
+  border-left: 3px solid var(--dwc-color-primary);
+  border-radius: 12px;
+  /* a light tint of the primary colour sets it apart from the callouts */
+  background-color: color-mix(in srgb, var(--dwc-color-primary) 7%, var(--dwc-surface-3));
 }
 
 .copy {
@@ -22,14 +23,15 @@
 
 .title {
   margin: 0 0 var(--dwc-space-2xs, 2px);
-  font-size: var(--dwc-font-size-m);
+  font-size: 1.125rem;
   font-weight: 700;
+  line-height: 1.3;
 }
 
 .text {
   margin: 0;
   color: var(--ifm-color-emphasis-800);
-  font-size: var(--dwc-font-size-s);
+  font-size: 0.9375rem;
 }
 
 .actions {
@@ -44,7 +46,7 @@
   align-items: center;
   gap: var(--dwc-space-xs);
   padding: 0.5rem 1rem;
-  border-radius: var(--dwc-border-radius);
+  border-radius: 10px;
   font-size: var(--dwc-font-size-s);
   font-weight: 600;
   white-space: nowrap;
