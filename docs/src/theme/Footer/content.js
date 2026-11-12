@@ -22,7 +22,7 @@ export function getFooter() {
     ],
     columns: [
       {
-        title: translate({ id: "component.footer.platform.title", message: "Platform" }),
+        title: translate({ id: "component.footer.framework.title", message: "Framework" }),
         items: [
           { label: translate({ id: "component.footer.products.webforJ", message: "webforJ" }), to: "/docs/introduction/getting-started" },
           { label: translate({ id: "component.footer.products.kotlinDSL", message: "Kotlin DSL" }), to: "/docs/integrations/kotlin-dsl/overview" },
