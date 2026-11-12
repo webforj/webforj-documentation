@@ -1,5 +1,5 @@
 ---
-title: "Alternatives to htmx: server-driven UI without templates"
+title: "Alternatives to htmx for Spring Boot apps"
 description: "Looking at alternatives to htmx? webforJ keeps the server-driven model but replaces templates and hx- attributes with Java components. See the trade-offs and when htmx is the better fit."
 slug: htmx-spring-boot-alternative
 date: 2026-07-31

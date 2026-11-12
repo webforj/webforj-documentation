@@ -1,5 +1,5 @@
 ---
-title: "Alternatives to Angular in 2026: when your team can skip the SPA"
+title: "Alternatives to Angular for Java teams"
 description: "Comparing alternatives to Angular? If your backend is Java, webforJ builds the whole UI in Java, with no SPA, REST layer or TypeScript. See when it fits and when Angular still wins."
 slug: angular-alternatives-java
 date: 2026-05-06
