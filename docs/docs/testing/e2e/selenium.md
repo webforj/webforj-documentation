@@ -124,7 +124,7 @@ class HelloWorldViewTest {
 
 1. Start the webforJ server:
    ```bash
-   mvn jetty:run
+   mvn
    ```
 
 2. Execute the test cases:

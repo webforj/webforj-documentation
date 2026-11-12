@@ -83,7 +83,11 @@ When you switch to Spring Boot, several configuration aspects change:
 |--------|-----------------|-------------------|
 | **Packaging** | WAR file | Executable JAR |
 | **Server** | External (Jetty, Tomcat) | Embedded Tomcat |
-| **Run command** | `mvn jetty:run` | `mvn spring-boot:run` |
+| **Run command** | `mvn` | `mvn` |
 | **Main config** | `webforj.conf` only | `application.properties` + `webforj.conf`  |
 | **Profiles** | `webforj-dev.conf`, `webforj-prod.conf` | Spring profiles with `application-{profile}.properties` |
 | **Port config** | In plugin configuration | `server.port` in properties |
+
+:::info Run with `mvn`, not `mvn spring-boot:run`
+`mvn spring-boot:run` starts the app only. It doesn't start the [frontend watch](/docs/configuration/deploy-reload/frontend-watch), so sources under `src/main/frontend`, if your project has any, aren't compiled or rebuilt while the app runs. Plain `mvn` runs the project's default goal, which starts the watch and then the app.
+:::
