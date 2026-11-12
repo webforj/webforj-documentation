@@ -1,6 +1,6 @@
 ---
 title: OAuth2 Login
-sidebar_position: 2.5
+sidebar_position: 7
 sidebar_class_name: new-content
 description: Sign users in through an external OAuth2 or OpenID Connect provider with Spring Security and return them to the route they requested.
 ---
@@ -10,6 +10,14 @@ description: Sign users in through an external OAuth2 or OpenID Connect provider
 OAuth2 login lets users sign in with an account they already have at an external provider, such as a company identity server or a social login service. The provider checks the credentials, and Spring Security creates the session in your app. webforJ routes stay protected by the same [security annotations](/docs/security/annotations), and after signing in, the user returns to the route they asked for.
 
 This guide covers the dependency, the provider registration, the security configuration, the login view, and logout. It builds on [Getting Started](/docs/security/getting-started), which sets up Spring Security for form login.
+
+:::info Spring Security only
+OAuth2 login is available only when using the Spring integration.
+:::
+
+:::info Example provider
+This guide shows how to configure OAuth2 login with [Keycloak](https://www.keycloak.org/) running locally, but it works with any OAuth2 or OpenID Connect provider. Other providers use their own registration ID, client ID, client secret, and issuer URI.
+:::
 
 :::tip[Learn more about Spring Security]
 For provider specific options, see the [Spring Security documentation](https://docs.spring.io/spring-security/reference/).
@@ -31,20 +39,20 @@ Add the Spring Security starter and the OAuth2 client starter to your `pom.xml`:
 </dependency>
 ```
 
-The versions are managed by your Spring Boot parent POM. The older `spring-boot-starter-oauth2-client` starter is deprecated in Spring Boot 4.1 in favor of `spring-boot-starter-security-oauth2-client`.
+The versions are managed by your Spring Boot parent POM.
 
 ## Register the provider {#register-the-provider}
 
 Each provider is a client registration with an ID of your choice. Add the registration to `application.properties` with the client ID and secret the provider issued for your app. For an OpenID Connect provider, the issuer URI is enough for Spring to discover the remaining provider endpoints:
 
 ```properties title="application.properties"
-spring.security.oauth2.client.registration.acme.client-id=your-client-id
-spring.security.oauth2.client.registration.acme.client-secret=your-client-secret
-spring.security.oauth2.client.registration.acme.scope=openid,profile,email
-spring.security.oauth2.client.provider.acme.issuer-uri=https://id.example.com/realms/demo
+spring.security.oauth2.client.registration.keycloak.client-id=your-client-id
+spring.security.oauth2.client.registration.keycloak.client-secret=your-client-secret
+spring.security.oauth2.client.registration.keycloak.scope=openid,profile,email
+spring.security.oauth2.client.provider.keycloak.issuer-uri=http://localhost:8180/realms/webforj
 ```
 
-In this example the registration ID is `acme`. At the provider, register the redirect URI `http://localhost:8080/login/oauth2/code/acme`, with your app's address and the registration ID in place of the example values. The provider sends the user back to this address after signing in.
+In this example the registration ID is `keycloak`. At the provider, register the redirect URI `http://localhost:8080/login/oauth2/code/keycloak`, with your app's address and the registration ID in place of the example values. The provider sends the user back to this address after signing in.
 
 :::warning Keep secrets out of source control
 The client secret grants access to the provider on behalf of your app. Supply it through an environment variable or a secret store instead of a committed file. See [Managing Secrets](/docs/security/application-security/managing-secrets).
@@ -86,10 +94,10 @@ public class LoginView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public LoginView() {
-    Button acme = new Button("Sign in with Acme", ButtonTheme.PRIMARY);
-    acme.onClick(e -> Page.getCurrent().open("/oauth2/authorization/acme", "_self"));
+    Button keycloak = new Button("Sign in with Keycloak", ButtonTheme.PRIMARY);
+    keycloak.onClick(e -> Page.getCurrent().open("/oauth2/authorization/keycloak", "_self"));
 
-    self.add(new H2("Sign in"), acme);
+    self.add(new H2("Sign in"), keycloak);
   }
 }
 ```
@@ -144,10 +152,6 @@ With `oauth2Logout()`, the logout success URL defaults to the login page without
 
 :::warning Register the post logout redirect URI
 For OpenID Connect sessions, the logout success URL is sent to the provider as the post logout redirect URI. Register the full address, for example `http://localhost:8080/signin`, as an allowed post logout redirect URI at the provider. The provider compares the address exactly, including any query parameters.
-:::
-
-:::info Signing out of the provider
-Ending the provider session signs the user out of every app that uses the same provider account.
 :::
 
 ## Authentication path property {#authentication-path-property}
