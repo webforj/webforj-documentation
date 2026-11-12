@@ -33,33 +33,49 @@
   --dwc-code-regex:       var(--dwc-color-danger-70);
 }
 
-// Code blocks follow the reader's theme: a light panel on the light theme
-// and a dark one on the dark theme, flat, with a thin line. Long pages of
-// code stay comfortable to read in either.
-.theme-code-block {
-  border: 1px solid var(--dwc-border-color);
+// Code blocks sit on the page's own surface. Their edge comes from a clear
+// line and 12px corners, not from a fill. The block inside a component demo
+// keeps the demo's own edge.
+#__docusaurus .theme-code-block:not(.codeDemoBlock) {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--dwc-color-default-dark);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: none !important;
+  box-shadow: none;
 }
 
-// Filename title bar
-[class*='codeBlockTitle'] {
-  background-color: var(--dwc-surface-3) !important;
-  border-bottom: 1px solid var(--dwc-border-color) !important;
-  color: var(--ifm-color-emphasis-800) !important;
-  font-size: var(--dwc-font-size-s) !important;
-  padding: var(--dwc-space-s) var(--dwc-space-m) !important;
+// Filename bar: a small bold label in the code font, on the same surface
+// as the code, with a line under it
+#__docusaurus [class*='codeBlockTitle'] {
+  padding: 0.5rem 1.125rem;
+  border-bottom: 1px solid var(--dwc-color-default-dark);
+  background-color: var(--dwc-code-bg);
+  color: var(--dwc-color-body-text);
+  font-family: 'JetBrains Mono', var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-// Code body
+// Code body: compact lines, so code reads as one block
 pre.prism-code {
   background-color: var(--dwc-code-bg) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   font-family: 'JetBrains Mono', var(--ifm-font-family-monospace);
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+#__docusaurus pre.prism-code code {
+  padding: 1rem 1.125rem;
+}
+
+// Annotations such as @Route and @Bean are tagged as punctuation by the
+// highlighter, which greys them out like comments. They take the code's
+// own text colour instead, a touch heavier, so they read as code.
+pre.prism-code .token.annotation {
+  color: var(--dwc-code-text) !important;
+  font-weight: 500;
 }
 
 // Inline code
