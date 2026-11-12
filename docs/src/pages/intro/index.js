@@ -166,6 +166,44 @@ function prefersReducedMotion() {
 
 // One screen of the walk: the numbered kicker and the two-line title above
 // the copy, with the visual beside it. Even screens put the visual first.
+// The opening of the page: what webforJ is, what this page is and how long
+// it takes, with the six screens listed as links.
+function Opening() {
+  const screens = getScreens();
+  return (
+    <header className={styles.opening} aria-labelledby="intro-title">
+      <div className={styles.container}>
+        <p className={styles.openingEyebrow}>
+          <Translate id="page.intro.opening.eyebrow">Introduction</Translate>
+        </p>
+        <h1 id="intro-title" className={styles.openingTitle}>
+          <Translate id="page.intro.opening.title1">webforJ in six screens.</Translate>{' '}
+          <span>
+            <Translate id="page.intro.opening.title2">The whole framework, start to finish.</Translate>
+          </span>
+        </h1>
+        <p className={styles.openingLead}>
+          <Translate id="page.intro.opening.lead">
+            webforJ is the full-stack Java framework for business web apps: you build the whole
+            app, screens included, in Java. This tour walks through it in six short screens, from
+            your first Java class to the AI tooling. It takes about five minutes.
+          </Translate>
+        </p>
+        <ol className={styles.openingStops}>
+          {screens.map((screen, i) => (
+            <li key={screen.id}>
+              <a href={`#${screen.id}`}>
+                <span>{String(i + 1).padStart(2, '0')}</span>
+                {screen.name}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </header>
+  );
+}
+
 function Screen({
   index,
   headingLevel: Heading = 'h2',
@@ -328,7 +366,6 @@ function BasicsScreen() {
   return (
     <Screen
       index={1}
-      headingLevel="h1"
       kicker={<Translate id="page.intro.one.kicker">What webforJ is</Translate>}
       title={<Translate id="page.intro.one.title1">A screen is</Translate>}
       accent={<Translate id="page.intro.one.title2">a Java class.</Translate>}
@@ -934,6 +971,7 @@ export default function Intro() {
           'A six screen walk through webforJ, the full-stack Java framework for business web apps: screens as Java classes, components and theming, the craftforJ visual editor, forms and security, Swing and web components, and AI tooling.',
       })}>
       <main className={styles.page}>
+        <Opening />
         <div className={styles.walk}>
           <BasicsScreen />
           <ComponentsScreen />

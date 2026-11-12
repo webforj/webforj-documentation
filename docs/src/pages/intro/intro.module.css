@@ -95,6 +95,86 @@
    The walk and its screens
    ------------------------------------------------------------------ */
 
+/* The opening: a label, the page title with its accent second line, a short
+   lead that says what the page is, and the six screens as a row of links */
+.opening {
+  padding: 72px 0 56px;
+  border-bottom: 1px dashed var(--in-rule);
+  color: var(--in-text);
+}
+
+@media (min-width: 997px) {
+  .opening {
+    padding: 112px 0 72px;
+  }
+}
+
+.openingEyebrow {
+  margin: 0 0 20px;
+  color: var(--in-accent);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.openingTitle {
+  margin: 0;
+  font-size: clamp(2.75rem, 1.2rem + 4.4vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+/* the accent half of the title always starts its own line */
+.openingTitle span {
+  display: block;
+  color: var(--in-accent);
+}
+
+.openingLead {
+  max-width: 62ch;
+  margin: 28px 0 0;
+  color: var(--in-muted);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+
+.openingStops {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page .openingStops a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--in-line);
+  border-radius: var(--in-radius-small);
+  color: var(--in-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color var(--in-fade), color var(--in-fade);
+}
+
+.openingStops a span {
+  color: var(--in-quiet);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+}
+
+.page .openingStops a:is(:hover, :focus-visible) {
+  border: 1px solid var(--in-accent);
+  color: var(--in-accent);
+}
+
 .walk {
   position: relative;
 }
@@ -824,8 +904,10 @@
     color var(--in-fade);
 }
 
+/* the full border is restated: the site's base link style drops a link's
+   border on hover, which would shrink the card by a pixel on each side */
 .page a.stop:is(:hover, :focus) {
-  border-color: var(--in-accent);
+  border: 1px solid var(--in-accent);
   color: var(--in-text);
   text-decoration: none;
 }
