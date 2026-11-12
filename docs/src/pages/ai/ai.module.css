@@ -367,6 +367,13 @@
   color: var(--ai-term-text);
 }
 
+/* the terminal stays dark in both themes and clips its bar, so the ring
+   takes the terminal accent and sits inside the tab */
+.terminalTab:focus-visible {
+  outline-color: var(--ai-term-accent);
+  outline-offset: -3px;
+}
+
 .terminalTabActive,
 .terminalTabActive:hover {
   border-bottom-color: var(--ai-term-accent);

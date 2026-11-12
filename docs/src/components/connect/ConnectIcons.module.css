@@ -29,7 +29,7 @@
 }
 
 .icon:focus-visible {
-  outline: 2px solid var(--dwc-color-primary-text);
+  outline: 2px solid var(--site-focus-ring-color, var(--dwc-color-primary-text));
   outline-offset: 2px;
 }
 

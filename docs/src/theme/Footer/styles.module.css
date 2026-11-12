@@ -6,6 +6,8 @@
   --ft-line: rgb(255 255 255 / 0.12);
   --ft-text: #f2f3f5;
   --ft-muted: rgb(255 255 255 / 0.66);
+  /* every focus ring in the footer is white, as on its buttons */
+  --site-focus-ring-color: #fff;
 
   position: relative;
   border-top: 1px solid rgb(255 255 255 / 0.1);

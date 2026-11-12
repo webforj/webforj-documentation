@@ -442,7 +442,18 @@ html.plugin-blog:not(.blog-wrapper) {
           inset: 0;
           z-index: 0;
         }
+
+        // the title is clipped to two lines, which would cut its ring, and
+        // the link opens the whole card, so the card carries the ring
+        &:focus-visible {
+          outline: none;
+        }
       }
+    }
+
+    article:has(h2 a:focus-visible) {
+      outline: var(--site-focus-ring-width) solid var(--site-focus-ring-color);
+      outline-offset: var(--site-focus-ring-offset);
     }
 
     // byline: the avatar spans two lines, the author's name on the first and

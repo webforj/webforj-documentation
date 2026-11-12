@@ -92,7 +92,8 @@
 /* The DWC theme sets `a:hover, a:focus { border: 0 }`. On these bordered
    links that removes the border on hover and everything inside jumps.
    Restore each link's own border width and style, so hover only changes
-   the border colour. */
+   the border colour. Focus looks like hover: each variant below restates
+   its colours for both, or the DWC rule turns the text and border blue. */
 .page a.button:is(:hover, :focus) {
   border-style: solid;
   border-width: 1px;
@@ -103,7 +104,8 @@
   color: var(--sc-on-brand);
 }
 
-.buttonPrimary:hover {
+.page a.buttonPrimary:is(:hover, :focus) {
+  border-color: transparent;
   background: var(--dwc-color-primary-dark, var(--sc-brand));
   color: var(--sc-on-brand);
 }
@@ -114,7 +116,7 @@
   background: var(--sc-panel);
 }
 
-.buttonSecondary:hover {
+.page a.buttonSecondary:is(:hover, :focus) {
   border-color: var(--sc-brand-text);
   color: var(--sc-brand-text);
 }
@@ -125,7 +127,8 @@
   color: var(--sc-brand);
 }
 
-.buttonOnBrand:hover {
+.page a.buttonOnBrand:is(:hover, :focus) {
+  border-color: transparent;
   background: color-mix(in srgb, var(--sc-on-brand) 90%, var(--sc-brand));
   color: var(--sc-brand);
 }
@@ -136,7 +139,7 @@
   background: transparent;
 }
 
-.buttonOnBrandGhost:hover {
+.page a.buttonOnBrandGhost:is(:hover, :focus) {
   border-color: var(--sc-on-brand);
   color: var(--sc-on-brand);
 }
@@ -845,6 +848,12 @@
 .windowControls .stepButton:focus-visible {
   outline-color: var(--app-color);
   outline-offset: 1px;
+}
+
+/* the window clips, so the ring of its screen sits inside the edge */
+.windowShot:focus-visible {
+  outline-color: var(--app-color);
+  outline-offset: -2px;
 }
 
 @media (max-width: 599px) {

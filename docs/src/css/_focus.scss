@@ -1,0 +1,41 @@
+// Keyboard focus. The DWC stylesheet sets `a:hover, a:focus { border: 0;
+// color: var(--dwc-color-primary-text-light); outline: none }`, so a focused
+// link loses its ring and turns deep blue. Every focusable element gets one
+// ring here on :focus-visible: an outline, so nothing moves and a mouse click
+// leaves no ring. The ring takes the primary text colour of the theme, which
+// reads on the page surfaces in light and dark. The dark strips (announcement
+// bar, navbar and its mega menus, footer) set their own ring colour.
+:root {
+  --site-focus-ring-color: var(--dwc-color-primary-text);
+  --site-focus-ring-width: var(--dwc-focus-ring-width, 2px);
+  --site-focus-ring-offset: var(--dwc-focus-ring-gap, 2px);
+}
+
+// `a:focus-visible` has the specificity of the DWC rule and comes after it.
+// The rest stay at the lowest specificity, so the focus rules of each
+// component still win.
+a:focus-visible,
+:where(button, summary, select, textarea, input, [tabindex], [role='button']):focus-visible {
+  outline: var(--site-focus-ring-width) solid var(--site-focus-ring-color);
+  outline-offset: var(--site-focus-ring-offset);
+}
+
+// a code block scrolls inside a clipped frame, so its ring sits inside its
+// edge
+pre[tabindex]:focus-visible {
+  outline-offset: calc(var(--site-focus-ring-width) * -1);
+}
+
+// the dark strips: the light step of the primary colour, as the navbar
+// search field already draws its ring
+#__docusaurus .navbar,
+#__docusaurus div[class*="announcementBar_"] {
+  --site-focus-ring-color: var(--navbar-dark-link-hover-color);
+}
+
+// the menus that open on the page surface keep the page ring: the language
+// menu, and the phone menu under its dark header
+#__docusaurus .navbar .dropdown__menu,
+#__docusaurus .navbar-sidebar__items {
+  --site-focus-ring-color: var(--dwc-color-primary-text);
+}

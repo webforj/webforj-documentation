@@ -137,6 +137,12 @@
   outline: none;
 }
 
+/* the site focus ring, the border stays as it is */
+.card:focus-visible {
+  outline: var(--site-focus-ring-width) solid var(--site-focus-ring-color);
+  outline-offset: var(--site-focus-ring-offset);
+}
+
 .cardBody {
   flex: 1;
   padding: 1rem;

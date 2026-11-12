@@ -16,10 +16,16 @@
     --ifm-navbar-search-input-color: var(--ifm-color-white);
     --menu-level-indicator-color: var(--navbar-dark-sidebar-level-indicator-color);
 
+    // focus as hover: the DWC link rule would turn a focused link deep blue
     .navbar__link--active,
     .navbar__link:hover,
+    .navbar__link:focus,
     .dropdown--show > .navbar__link {
       color: var(--navbar-dark-link-hover-color) !important;
+    }
+
+    .navbar__brand:focus {
+      color: var(--ifm-navbar-link-color);
     }
   }
 
@@ -61,6 +67,8 @@
     &:focus-visible {
       background: rgba(0, 0, 0, 0.4) !important;
       border-color: var(--dwc-color-primary-65) !important;
+      // the ring is the shadow below, not the site outline
+      outline: none;
       box-shadow:
         0 0 0 var(--dwc-focus-ring-gap) var(--navbar-dark-background-color),
         0 0 0 calc(var(--dwc-focus-ring-gap) + var(--dwc-focus-ring-width)) oklch(from var(--dwc-color-primary-seed) 80% c h / var(--dwc-focus-ring-a)) !important;

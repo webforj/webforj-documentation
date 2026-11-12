@@ -483,9 +483,10 @@
   color: var(--win-accent);
 }
 
+/* the tab row scrolls and clips, so the ring sits inside the tab */
 .tab:focus-visible {
   outline: 2px solid var(--win-accent);
-  outline-offset: 1px;
+  outline-offset: -2px;
 }
 
 /* every panel sits in the same cell: the window takes the height of its

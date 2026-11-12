@@ -135,6 +135,11 @@
   text-decoration: none;
 }
 
+/* the row scrolls and clips, so the ring sits inside the tile's edge */
+.tile:focus-visible {
+  outline-offset: calc(var(--site-focus-ring-width, 2px) * -1);
+}
+
 .tile .frame {
   border-radius: 0;
 }
