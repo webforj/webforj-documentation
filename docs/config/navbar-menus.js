@@ -8,7 +8,7 @@
 // `npm run write-translations` and the translation workflow.
 
 module.exports = [
-  { type: 'custom-megaMenu', position: 'left', label: 'Platform', menu: 'products' },
+  { type: 'custom-megaMenu', position: 'left', label: 'Framework', menu: 'products' },
   { type: 'custom-megaMenu', position: 'left', label: 'Developers', menu: 'developers' },
   { type: 'custom-megaMenu', position: 'left', label: 'Resources', menu: 'resources' },
   { type: 'custom-megaMenu', position: 'left', label: 'Support', menu: 'support' },

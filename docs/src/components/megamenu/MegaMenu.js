@@ -133,7 +133,7 @@ function ProductsLayout({ products }) {
           <span className={styles.previewCount}>
             {String(active + 1).padStart(2, '0')} / {String(products.length).padStart(2, '0')}
           </span>
-          <span className={styles.previewPath}>~/platform/{product.slug}</span>
+          <span className={styles.previewPath}>~/framework/{product.slug}</span>
         </div>
         <div className={styles.previewBody}>
           <div className={styles.previewArea}>
