@@ -90,5 +90,13 @@
   "item.label.Pricing": {
     "message": "Preise",
     "description": "Navbar item with label Pricing"
+  },
+  "item.label.Platform": {
+    "message": "Plattform",
+    "description": "Navbar item with label Platform"
+  },
+  "item.label.Showcase": {
+    "message": "Beispiele",
+    "description": "Navbar item with label Showcase"
   }
 }

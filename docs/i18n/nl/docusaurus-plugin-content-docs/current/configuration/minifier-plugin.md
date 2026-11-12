@@ -1,34 +1,32 @@
 ---
 sidebar_position: 40
-title: Minifier-plugin
+title: Minifier-plug-in
 description: >-
   Discover and minify CSS and JavaScript assets referenced by webforJ
   annotations during the Maven or Gradle production build.
-_i18n_hash: a570df6cd0876073e88e7b38b6357b10
+_i18n_hash: fc6e1dd15c6b453f014feb4cdf449953
 ---
-# Minifier-plugin <DocChip chip='since' label='25.11' />
+# Minifierplug-in <DocChip chip='since' label='25.11' />
 
-De webforJ Minifier Plugin minimaliseert automatisch [minifies](https://en.wikipedia.org/wiki/Minification_(programming)) en optimaliseert CSS- en JavaScript-assets tijdens het bouwproces. De plugin ontdekt assets die worden verwezen via webforJ [asset-annotaties](/docs/managing-resources/importing-assets) en minimaliseert ze in de bouwuitvoer, waardoor bestandsformaten worden verkleind en laadtijden worden verbeterd zonder uw oorspronkelijke bronbestanden te wijzigen.
+De webforJ Minifierplug-in [verkleint](https://en.wikipedia.org/wiki/Minification_(programming)) en optimaliseert CSS- en JavaScript-assets automatisch tijdens het buildproces. De plug-in ontdekt assets die worden vermeld via webforJ-[assetannotaties](/docs/managing-resources/importing-assets) en verkleint ze in de buildoutput. Zo worden bestanden kleiner en laden ze sneller, zonder dat de oorspronkelijke bronbestanden worden gewijzigd.
 
-:::info Minificatie is ingebouwd in de bundler
-De [frontend-bundler](/docs/managing-resources/bundler/overview) minimaliseert CSS en JavaScript als onderdeel van de productie-build, zodat een project dat de bundler gebruikt deze plugin niet nodig heeft. De plugin blijft beschikbaar en ondersteund voor projecten die assets laden via de asset-annotaties zonder de bundler. Bestaande setups blijven werken zoals voorheen, zonder dat er wijzigingen nodig zijn.
+:::info Verkleinen is ingebouwd in de bundler
+De [frontend-bundler](/docs/managing-resources/bundler/overview) verkleint CSS en JavaScript tijdens de productiebuild. Een project dat de bundler gebruikt, heeft deze plug-in dus niet nodig. De plug-in blijft beschikbaar en wordt ondersteund voor projecten die assets via assetannotaties laden zonder de bundler. Bestaande configuraties blijven werken zoals voorheen; er is geen wijziging nodig.
 :::
 
-## Configuratie {#setup}
+## Instellen {#setup}
 
-Als u uw project hebt gemaakt met [startforJ](https://docs.webforj.com/startforj) of een webforJ [archetype](/docs/building-ui/archetypes/overview), is de minifier-plugin al geconfigureerd en draait deze automatisch wanneer u bouwt met het `prod` profiel met `mvn package -Pprod`.
-
-Voor handmatige configuratie vereist de minifier twee configuraties: een annotatieprocessor om assets tijdens de compilatie te ontdekken, en een plugin om de minificatie uit te voeren.
+Voor de configuratie zijn twee onderdelen nodig: een annotatieprocessor om assets tijdens het compileren te ontdekken en een plug-in om ze te verkleinen.
 
 <Tabs>
 <TabItem value="maven" label="Maven">
 
-Voeg het volgende toe aan uw `pom.xml`:
+Voeg het volgende toe aan je `pom.xml`:
 
 ```xml
 <build>
   <plugins>
-    <!-- Configuratie van de annotatieprocessor -->
+    <!-- Annotation Processor Configuration -->
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-compiler-plugin</artifactId>
@@ -43,7 +41,7 @@ Voeg het volgende toe aan uw `pom.xml`:
       </configuration>
     </plugin>
 
-    <!-- Configuratie van de minifier-plugin -->
+    <!-- Minifier Plugin Configuration -->
     <plugin>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-minify-maven-plugin</artifactId>
@@ -56,13 +54,13 @@ Voeg het volgende toe aan uw `pom.xml`:
         </execution>
       </executions>
       <dependencies>
-        <!-- CSS-minificatie -->
+        <!-- CSS minification -->
         <dependency>
           <groupId>com.webforj</groupId>
           <artifactId>webforj-minify-phcss-css</artifactId>
           <version>${webforj.version}</version>
         </dependency>
-        <!-- JavaScript-minificatie -->
+        <!-- JavaScript minification -->
         <dependency>
           <groupId>com.webforj</groupId>
           <artifactId>webforj-minify-closure-js</artifactId>
@@ -77,7 +75,7 @@ Voeg het volgende toe aan uw `pom.xml`:
 </TabItem>
 <TabItem value="gradle" label="Gradle">
 
-Voeg het volgende toe aan uw `build.gradle`:
+Voeg het volgende toe aan je `build.gradle`:
 
 ```groovy
 buildscript {
@@ -96,23 +94,23 @@ plugins {
 apply plugin: 'com.webforj.minify'
 
 dependencies {
-  // Annotatieprocessor voor het ontdekken van assets tijdens de compilatie
+  // Annotation processor for discovering assets during compilation
   annotationProcessor "com.webforj:webforj-minify-foundation:${webforjVersion}"
 
-  // Implementaties van de minifier
+  // Minifier implementations
   add "webforjMinifier", "com.webforj:webforj-minify-phcss-css:${webforjVersion}"
   add "webforjMinifier", "com.webforj:webforj-minify-closure-js:${webforjVersion}"
 }
 ```
 
-De `minify` taak draait automatisch vóór de `jar` of `war` taken. U kunt deze ook handmatig uitvoeren met `./gradlew minify`.
+De taak `minify` wordt automatisch uitgevoerd vóór de taken `jar` of `war`. Je kunt de taak ook handmatig uitvoeren met `./gradlew minify`.
 
 </TabItem>
 </Tabs>
 
-## De plugin gebruiken {#using-the-plugin}
+## De plug-in gebruiken {#using-the-plugin}
 
-Zodra geconfigureerd, werkt de plugin automatisch. Gebruik eenvoudig webforJ-assetannotaties in uw code:
+Na de configuratie werkt de plug-in automatisch. Gebruik webforJ-assetannotaties in je code:
 
 ```java
 package com.example;
@@ -123,43 +121,43 @@ import com.webforj.annotation.JavaScript;
 @StyleSheet("ws://css/app.css")
 @JavaScript("ws://js/app.js")
 public class MyApp extends App {
-  // Uw applicatiecode
+  // Your application code
 }
 ```
 
-Wanneer u uw project bouwt, minimaliseert de plugin automatisch:
+Wanneer je je project bouwt, voert de plug-in automatisch de volgende stappen uit:
 
-1. Ontdekt assets die in annotaties tijdens de compilatie zijn verwezen
-2. Minimaliseert de ontdekte CSS- en JavaScript-bestanden
-3. Rapporteert de grootte-reductie en verwerkingstijd
+1. Assets ontdekken die tijdens het compileren in annotaties worden vermeld
+2. De ontdekte CSS- en JavaScript-bestanden verkleinen
+3. De bestandsverkleining en verwerkingstijd rapporteren
 
-### URL-protocolresolutie {#url-protocol-resolution}
+### URL-protocol oplossen {#url-protocol-resolution}
 
-De plugin begrijpt webforJ [URL-protocollen](/docs/managing-resources/assets-protocols) en lost ze op naar bestandspaden:
+De plug-in herkent webforJ-[URL-protocollen](/docs/managing-resources/assets-protocols) en vertaalt deze naar bestandssysteempaden:
 
-| Protocol | Lost op | Voorbeeld |
+| Protocol | Wordt vertaald naar | Voorbeeld |
 |----------|-------------|---------|
 | `ws://` | `src/main/resources/static/` | `ws://css/app.css` → `static/css/app.css` |
 | `context://` | `src/main/resources/` | `context://styles/app.css` → `styles/app.css` |
 
-URLs zonder een protocol worden niet ondersteund door de minifier en worden overgeslagen.
+URL's zonder protocol worden niet ondersteund door de minifier en worden overgeslagen.
 
 ## Ingebouwde minifiers {#built-in-minifiers}
 
-webforJ bevat twee productieklaar minifiers voor CSS en JavaScript.
+webforJ bevat twee productierijpe minifiers voor CSS en JavaScript.
 
-| Minifier | Kenmerken | Overgeslagen |
+| Minifier | Functies | Wordt overgeslagen |
 |----------|----------|-------|
-| CSS | Verwijdert witruimtes, opmerkingen en optimaliseert eigenschapswaarden | `.min.css` |
-| JavaScript | Hernoemen van variabelen, eliminatie van dode code, syntaxisoptimalisatie | `.min.js`, `.min.mjs` |
+| CSS | Verwijdert witruimte en opmerkingen en optimaliseert eigenschapswaarden | `.min.css` |
+| JavaScript | Variabelen hernoemen, dode code verwijderen en syntaxis optimaliseren | `.min.js`, `.min.mjs` |
 
-## Configuratie-opties {#configuration-options}
+## Configuratieopties {#configuration-options}
 
-De plugin biedt opties om minificatie uit te schakelen, JavaScript-optimalisatie aan te passen en aanvullende bestanden te verwerken.
+De plug-in biedt opties om verkleinen uit te schakelen, JavaScript-optimalisatie aan te passen en extra bestanden te verwerken.
 
-### Minificatie uitschakelen {#disabling-minification}
+### Verkleinen uitschakelen {#disabling-minification}
 
-U wilt mogelijk de minificatie uitschakelen tijdens ontwikkeling of voor debugdoeleinden.
+Je kunt verkleinen uitschakelen tijdens de ontwikkeling of voor foutopsporing.
 
 <Tabs>
 <TabItem value="maven" label="Maven">
@@ -169,7 +167,7 @@ U wilt mogelijk de minificatie uitschakelen tijdens ontwikkeling of voor debugdo
 mvn package -Dwebforj.minify.skip=true
 ```
 
-**Via pluginconfiguratie:**
+**Via de plug-inconfiguratie:**
 ```xml
 <plugin>
   <groupId>com.webforj</groupId>
@@ -183,7 +181,7 @@ mvn package -Dwebforj.minify.skip=true
 </TabItem>
 <TabItem value="gradle" label="Gradle">
 
-**Via bouwconfiguratie:**
+**Via de buildconfiguratie:**
 ```groovy
 webforjMinify {
   skip = true
@@ -193,20 +191,20 @@ webforjMinify {
 </TabItem>
 </Tabs>
 
-### Opties voor JavaScript-minifier {#javascript-minifier-options}
+### Opties voor de JavaScript-minifier {#javascript-minifier-options}
 
-De JavaScript-minifier biedt verschillende configuratieopties om het optimalisatiegedrag te regelen.
+De JavaScript-minifier biedt verschillende configuratieopties om het optimalisatiegedrag te bepalen.
 
-:::note Gradle-ondersteuning
-Vanaf v25.12 ondersteunt de Gradle-plugin het doorgeven van opties voor de JavaScript-minifier.
+:::note Ondersteuning voor Gradle
+Vanaf v25.12 ondersteunt de Gradle-plug-in het doorgeven van opties aan de JavaScript-minifier.
 :::
 
 | Optie | Standaard | Beschrijving |
 |--------|---------|-------------|
-| `compilationLevel` | `SIMPLE_OPTIMIZATIONS` | <ul><li>`WHITESPACE_ONLY` - verwijdert alleen witruimtes en opmerkingen</li><li>`SIMPLE_OPTIMIZATIONS` - hernoemen van variabelen en eliminatie van dode code</li><li>`ADVANCED_OPTIMIZATIONS` - agressieve optimalisatie met hernoeming van functies/eigenschappen</li></ul> |
-| `languageIn` | `ECMASCRIPT_NEXT` | Ingang JavaScript-versie: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015` tot `ECMASCRIPT_2021`, `ECMASCRIPT_NEXT` |
-| `languageOut` | `ECMASCRIPT5` | Uitvoer JavaScript-versie: hetzelfde als `languageIn`, plus `NO_TRANSPILE` |
-| `prettyPrint` | `false` | Stel in op `true` om de opmaak voor debuggen te behouden |
+| `compilationLevel` | `SIMPLE_OPTIMIZATIONS` | <ul><li>`WHITESPACE_ONLY` - verwijdert alleen witruimte en opmerkingen</li><li>`SIMPLE_OPTIMIZATIONS` - hernoemt variabelen en verwijdert dode code</li><li>`ADVANCED_OPTIMIZATIONS` - agressieve optimalisatie met het hernoemen van functies en eigenschappen</li></ul> |
+| `languageIn` | `ECMASCRIPT_NEXT` | Invoer-JavaScript-versie: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015` tot en met `ECMASCRIPT_2021`, `ECMASCRIPT_NEXT` |
+| `languageOut` | `ECMASCRIPT5` | Uitvoer-JavaScript-versie: hetzelfde als `languageIn`, plus `NO_TRANSPILE` |
+| `prettyPrint` | `false` | Stel in op `true` om de opmaak te behouden voor foutopsporing |
 
 Configureer deze opties in het configuratiegedeelte:
 
@@ -250,7 +248,7 @@ Configureer deze opties in het configuratiegedeelte:
 
 ```groovy
 webforjMinify {
-    skip = false  // Stel in op true om minificatie over te slaan
+    skip = false  // Set to true to skip minification
     minifierConfigurations.put("closureJs", [
       compilationLevel: "SIMPLE_OPTIMIZATIONS",
       languageIn: "ECMASCRIPT_NEXT",
@@ -262,27 +260,27 @@ webforjMinify {
 </TabItem>
 </Tabs>
 
-### Aanvullende bestanden minificeren {#minifying-additional-files}
+### Extra bestanden verkleinen {#minifying-additional-files}
 
-Om bestanden te minimaliseren die niet ontdekt zijn via annotaties, maakt u een configuratiebestand aan dat glob-patronen specificeert:
+Als je bestanden wilt verkleinen die niet via annotaties zijn ontdekt, maak je een configuratiebestand met globpatronen:
 
 ```hocon title="src/main/resources/META-INF/webforj-minify.txt"
-# Inclusiepuntpatronen
+# Include patterns
 **/*.css
 **/*.js
 
-# Uitsluitingspatronen (prefix met !)
+# Exclusion patterns (prefix with !)
 !**/*.min.css
 !**/*.min.js
 ```
 
 ## Aangepaste minifiers {#custom-minifiers}
 
-De plugin ondersteunt aangepaste minifiers via de Java's Service Provider Interface (SPI), waarmee u ondersteuning kunt toevoegen voor aanvullende bestandstypen of alternatieve minificatiebibliotheken.
+De plug-in ondersteunt aangepaste minifiers via Java's Service Provider Interface (SPI), zodat je ondersteuning kunt toevoegen voor extra bestandstypen of alternatieve minificatiebibliotheken.
 
 ### Een aangepaste minifier maken {#creating-a-custom-minifier}
 
-Implementeer de `AssetMinifier` interface om uw eigen minifier te maken. Het volgende voorbeeld toont een JSON-minifier die Gson gebruikt om witruimtes te verwijderen:
+Implementeer de interface `AssetMinifier` om je eigen minifier te maken. Het volgende voorbeeld toont een JSON-minifier die Gson gebruikt om witruimte te verwijderen:
 
 ```java title="src/main/java/com/example/minifier/JsonMinifier.java"
 package com.example.minifier;
@@ -309,7 +307,7 @@ public class JsonMinifier implements AssetMinifier {
       JsonElement element = gson.fromJson(content, JsonElement.class);
       return gson.toJson(element);
     } catch (JsonSyntaxException e) {
-      logger.warning("Ongeldige JSON in " + sourceFile + ", overgeslagen: " + e.getMessage());
+      logger.warning("Malformed JSON in " + sourceFile + ", skipping: " + e.getMessage());
       return content;
     } catch (Exception e) {
       throw new MinificationException("Failed to minify JSON file: " + sourceFile, e);
@@ -324,7 +322,7 @@ public class JsonMinifier implements AssetMinifier {
   @Override
   public boolean shouldMinify(Path filePath) {
     String filename = filePath.getFileName().toString();
-    // Sla configuratiebestanden en al geminimaliseerde bestanden over
+    // Skip config files and already minified files
     if (filename.equals("package.json") || filename.equals("tsconfig.json")) {
       return false;
     }
@@ -336,22 +334,22 @@ public class JsonMinifier implements AssetMinifier {
 
   @Override
   public void configure(Map<String, Object> options) {
-    // Configuratieopties indien nodig
+    // Configuration options if needed
   }
 }
 ```
 
-### Uw minifier registreren {#registering-your-minifier}
+### Je minifier registreren {#registering-your-minifier}
 
-Maak een configuratiebestand voor de serviceprovider aan:
+Maak een configuratiebestand voor de serviceprovider:
 
 ```txt title="src/main/resources/META-INF/services/com.webforj.minify.common.AssetMinifier"
 com.example.minifier.JsonMinifier
 ```
 
-### Gebruik uw aangepaste minifier {#using-your-custom-minifier}
+### Je aangepaste minifier gebruiken {#using-your-custom-minifier}
 
-Verpak uw minifier als een aparte JAR en voeg deze toe als een plugin-afhankelijkheid:
+Verpak je minifier als een aparte JAR en voeg deze toe als pluginafhankelijkheid:
 
 ```xml {5-9}
 <plugin>
@@ -363,7 +361,7 @@ Verpak uw minifier als een aparte JAR en voeg deze toe als een plugin-afhankelij
       <artifactId>json-minifier</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <!-- Standaard minifiers (optioneel) -->
+    <!-- Standard minifiers (optional) -->
     <dependency>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-minify-phcss-css</artifactId>
@@ -382,11 +380,11 @@ Verpak uw minifier als een aparte JAR en voeg deze toe als een plugin-afhankelij
   <AccordionDetails>
     <div>
       ```
-      [WARN] Geen minifiers geregistreerd via SPI. Minificatie wordt overgeslagen.
-      [WARN] Zorg ervoor dat ph-css en/of closure-compiler op het classpath staan.
+      [WARN] No minifiers registered via SPI. Skipping minification.
+      [WARN] Ensure ph-css and/or closure-compiler are on the classpath.
       ```
 
-      Voeg minifier-moduulafhankelijkheden toe aan de pluginconfiguratie. Voor CSS, voeg `webforj-minify-phcss-css` toe. Voor JavaScript, voeg `webforj-minify-closure-js` toe.
+      Voeg afhankelijkheden van minifier-modules toe aan de plug-inconfiguratie. Voeg voor CSS `webforj-minify-phcss-css` toe. Voeg voor JavaScript `webforj-minify-closure-js` toe.
     </div>
   </AccordionDetails>
 </Accordion>
@@ -397,11 +395,11 @@ Verpak uw minifier als een aparte JAR en voeg deze toe als een plugin-afhankelij
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Als de plugin rapporteert `0 bestanden verwerkt`, controleer dan of:
+      Als de plug-in `Processed 0 files` meldt, controleer dan of:
 
-      1. De annotatieprocessor is geconfigureerd in `maven-compiler-plugin` met `webforj-minify-foundation` in `annotationProcessorPaths`
-      2. webforJ-assetannotaties bestaan in uw broncode
-      3. `target/classes/META-INF/webforj-resources.json` bestaat na compilatie
+      1. De annotatieprocessor is geconfigureerd in `maven-compiler-plugin`, met `webforj-minify-foundation` in `annotationProcessorPaths`
+      2. Er webforJ-assetannotaties in je broncode staan
+      3. `target/classes/META-INF/webforj-resources.json` na het compileren bestaat
     </div>
   </AccordionDetails>
 </Accordion>
@@ -413,25 +411,25 @@ Verpak uw minifier als een aparte JAR en voeg deze toe als een plugin-afhankelij
   <AccordionDetails>
     <div>
       ```
-      [WARN] Bestand niet gevonden: /path/to/static/css/app.css (verwezen als 'ws://css/app.css')
+      [WARN] File not found: /path/to/static/css/app.css (referenced as 'ws://css/app.css')
       ```
 
-      Controleer of het bestand zich op het juiste pad bevindt onder `src/main/resources/static` en of het URL-protocol overeenkomt met de directorystructuur.
+      Controleer of het bestand zich op het juiste pad onder `src/main/resources/static` bevindt en of het URL-protocol overeenkomt met de mapstructuur.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Minificatiefouten</p>
+    <p>Fouten bij het verkleinen</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       ```
-      [WARN] Fout bij minificatie van bestand /path/to/app.css: parse-fout op regel 42
+      [WARN] Error minifying file /path/to/app.css: parse error at line 42
       ```
 
-      De plugin waarschuwt maar gaat door zonder de build te laten falen. De oorspronkelijke inhoud blijft behouden wanneer minificatie faalt. Om syntaxisfouten te verhelpen, valideert u CSS of JavaScript met een linter.
+      De plug-in geeft een waarschuwing, maar gaat verder zonder de build te laten mislukken. Als het verkleinen mislukt, blijft de oorspronkelijke inhoud behouden. Controleer CSS of JavaScript met een linter om syntaxisfouten op te lossen.
     </div>
   </AccordionDetails>
 </Accordion>

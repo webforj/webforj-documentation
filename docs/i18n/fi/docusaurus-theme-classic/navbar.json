@@ -90,5 +90,13 @@
   "item.label.Pricing": {
     "message": "Hinnoittelu",
     "description": "Navbar item with label Pricing"
+  },
+  "item.label.Platform": {
+    "message": "Alusta",
+    "description": "Navbar item with label Platform"
+  },
+  "item.label.Showcase": {
+    "message": "Esittely",
+    "description": "Navbar item with label Showcase"
   }
 }

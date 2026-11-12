@@ -1,34 +1,32 @@
 ---
 sidebar_position: 40
-title: Plugin minificador
+title: Complemento de minificación
 description: >-
   Discover and minify CSS and JavaScript assets referenced by webforJ
   annotations during the Maven or Gradle production build.
-_i18n_hash: a570df6cd0876073e88e7b38b6357b10
+_i18n_hash: fc6e1dd15c6b453f014feb4cdf449953
 ---
-# Plugin Minificador <DocChip chip='since' label='25.11' />
+# Complemento Minifier <DocChip chip='since' label='25.11' />
 
-El Plugin Minificador de webforJ minifica automáticamente [minifica](https://en.wikipedia.org/wiki/Minification_(programming)) y optimiza los activos CSS y JavaScript durante el proceso de construcción. El plugin descubre los activos referenciados a través de las [anotaciones de activos](/docs/managing-resources/importing-assets) de webforJ y los minifica en la salida de construcción, reduciendo el tamaño de los archivos y mejorando los tiempos de carga sin modificar tus archivos fuente originales.
+El complemento Minifier de webforJ [minifica](https://en.wikipedia.org/wiki/Minification_(programming)) y optimiza automáticamente los recursos CSS y JavaScript durante el proceso de compilación. El complemento detecta los recursos a los que se hace referencia mediante las [anotaciones de recursos](/docs/managing-resources/importing-assets) de webforJ y los minifica en el resultado de la compilación, lo que reduce el tamaño de los archivos y mejora los tiempos de carga sin modificar los archivos de origen.
 
-:::info La minificación está integrada en el agrupador
-El [agrupador frontend](/docs/managing-resources/bundler/overview) minifica CSS y JavaScript como parte de su construcción de producción, por lo que un proyecto que utiliza el agrupador no necesita este plugin. El plugin sigue disponible y soportado para proyectos que cargan activos a través de las anotaciones de activos sin el agrupador. Las configuraciones existentes seguirán funcionando como antes, sin cambios requeridos.
+:::info La minificación está integrada en el empaquetador
+El [empaquetador de frontend](/docs/managing-resources/bundler/overview) minifica CSS y JavaScript como parte de su compilación de producción, por lo que los proyectos que utilizan el empaquetador no necesitan este complemento. El complemento sigue disponible y cuenta con soporte para los proyectos que cargan recursos mediante las anotaciones de recursos sin usar el empaquetador. Las configuraciones existentes siguen funcionando como antes, sin necesidad de hacer cambios.
 :::
 
 ## Configuración {#setup}
 
-Si creaste tu proyecto usando [startforJ](https://docs.webforj.com/startforj) o un [arquetipo](/docs/building-ui/archetypes/overview) de webforJ, el plugin minificador ya está configurado y se ejecuta automáticamente cuando construyes con el perfil `prod` utilizando `mvn package -Pprod`.
-
-Para la configuración manual, el minificador requiere dos configuraciones: un procesador de anotaciones para descubrir activos durante la compilación, y un plugin para realizar la minificación.
+Para configurarlo, el minificador requiere dos elementos: un procesador de anotaciones para detectar recursos durante la compilación y un complemento que realice la minificación.
 
 <Tabs>
 <TabItem value="maven" label="Maven">
 
-Agrega lo siguiente a tu `pom.xml`:
+Añade lo siguiente a tu `pom.xml`:
 
 ```xml
 <build>
   <plugins>
-    <!-- Configuración del Procesador de Anotaciones -->
+    <!-- Annotation Processor Configuration -->
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-compiler-plugin</artifactId>
@@ -43,7 +41,7 @@ Agrega lo siguiente a tu `pom.xml`:
       </configuration>
     </plugin>
 
-    <!-- Configuración del Plugin Minificador -->
+    <!-- Minifier Plugin Configuration -->
     <plugin>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-minify-maven-plugin</artifactId>
@@ -56,13 +54,13 @@ Agrega lo siguiente a tu `pom.xml`:
         </execution>
       </executions>
       <dependencies>
-        <!-- Minificación de CSS -->
+        <!-- CSS minification -->
         <dependency>
           <groupId>com.webforj</groupId>
           <artifactId>webforj-minify-phcss-css</artifactId>
           <version>${webforj.version}</version>
         </dependency>
-        <!-- Minificación de JavaScript -->
+        <!-- JavaScript minification -->
         <dependency>
           <groupId>com.webforj</groupId>
           <artifactId>webforj-minify-closure-js</artifactId>
@@ -77,7 +75,7 @@ Agrega lo siguiente a tu `pom.xml`:
 </TabItem>
 <TabItem value="gradle" label="Gradle">
 
-Agrega lo siguiente a tu `build.gradle`:
+Añade lo siguiente a tu `build.gradle`:
 
 ```groovy
 buildscript {
@@ -96,10 +94,10 @@ plugins {
 apply plugin: 'com.webforj.minify'
 
 dependencies {
-  // Procesador de anotaciones para descubrir activos durante la compilación
+  // Annotation processor for discovering assets during compilation
   annotationProcessor "com.webforj:webforj-minify-foundation:${webforjVersion}"
 
-  // Implementaciones de minificador
+  // Minifier implementations
   add "webforjMinifier", "com.webforj:webforj-minify-phcss-css:${webforjVersion}"
   add "webforjMinifier", "com.webforj:webforj-minify-closure-js:${webforjVersion}"
 }
@@ -110,9 +108,9 @@ La tarea `minify` se ejecuta automáticamente antes de las tareas `jar` o `war`.
 </TabItem>
 </Tabs>
 
-## Uso del plugin {#using-the-plugin}
+## Uso del complemento {#using-the-plugin}
 
-Una vez configurado, el plugin funciona automáticamente. Simplemente usa las anotaciones de activos de webforJ en tu código:
+Una vez configurado, el complemento funciona automáticamente. Solo tienes que usar las anotaciones de recursos de webforJ en tu código:
 
 ```java
 package com.example;
@@ -123,53 +121,53 @@ import com.webforj.annotation.JavaScript;
 @StyleSheet("ws://css/app.css")
 @JavaScript("ws://js/app.js")
 public class MyApp extends App {
-  // Tu código de aplicación
+  // Your application code
 }
 ```
 
-Cuando construyes tu proyecto, el plugin automáticamente:
+Al compilar el proyecto, el complemento automáticamente:
 
-1. Descubre los activos referenciados en anotaciones durante la compilación
-2. Minifica los archivos CSS y JavaScript descubiertos
-3. Informa sobre la reducción de tamaño y el tiempo de procesamiento
+1. Detecta los recursos a los que se hace referencia en las anotaciones durante la compilación
+2. Minifica los archivos CSS y JavaScript detectados
+3. Informa de la reducción de tamaño y del tiempo de procesamiento
 
-### Resolución del protocolo de URL {#url-protocol-resolution}
+### Resolución de protocolos de URL {#url-protocol-resolution}
 
-El plugin entiende los [protocolos de URL](/docs/managing-resources/assets-protocols) de webforJ y los resuelve en rutas del sistema de archivos:
+El complemento reconoce los [protocolos de URL](/docs/managing-resources/assets-protocols) de webforJ y los resuelve a rutas del sistema de archivos:
 
-| Protocolo | Resuelve a | Ejemplo |
-|-----------|------------|---------|
+| Protocolo | Se resuelve en | Ejemplo |
+|----------|-------------|---------|
 | `ws://` | `src/main/resources/static/` | `ws://css/app.css` → `static/css/app.css` |
 | `context://` | `src/main/resources/` | `context://styles/app.css` → `styles/app.css` |
 
-Las URL sin protocolo no son soportadas por el minificador y serán omitidas.
+El minificador no admite las URL sin protocolo y las omitirá.
 
-## Minificadores incorporados {#built-in-minifiers}
+## Minificadores integrados {#built-in-minifiers}
 
-webforJ incluye dos minificadores listos para producción para CSS y JavaScript.
+webforJ incluye dos minificadores listos para producción: uno para CSS y otro para JavaScript.
 
-| Minificador | Características | Omitidos |
-|-------------|----------------|----------|
-| CSS | Elimina espacios en blanco, comentarios y optimiza valores de propiedades | `.min.css` |
-| JavaScript | Renombramiento de variables, eliminación de código muerto, optimización de sintaxis | `.min.js`, `.min.mjs` |
+| Minificador | Características | Omite |
+|----------|----------|-------|
+| CSS | Elimina espacios en blanco y comentarios, y optimiza los valores de las propiedades | `.min.css` |
+| JavaScript | Renombra variables, elimina código muerto y optimiza la sintaxis | `.min.js`, `.min.mjs` |
 
 ## Opciones de configuración {#configuration-options}
 
-El plugin proporciona opciones para deshabilitar la minificación, personalizar la optimización de JavaScript y procesar archivos adicionales.
+El complemento ofrece opciones para desactivar la minificación, personalizar la optimización de JavaScript y procesar archivos adicionales.
 
-### Deshabilitando la minificación {#disabling-minification}
+### Desactivar la minificación {#disabling-minification}
 
-Puede que desees desactivar la minificación durante el desarrollo o por propósitos de depuración.
+Quizá quieras desactivar la minificación durante el desarrollo o para depurar.
 
 <Tabs>
 <TabItem value="maven" label="Maven">
 
-**A través de la línea de comandos:**
+**Mediante la línea de comandos:**
 ```bash
 mvn package -Dwebforj.minify.skip=true
 ```
 
-**A través de la configuración del plugin:**
+**Mediante la configuración del complemento:**
 ```xml
 <plugin>
   <groupId>com.webforj</groupId>
@@ -183,7 +181,7 @@ mvn package -Dwebforj.minify.skip=true
 </TabItem>
 <TabItem value="gradle" label="Gradle">
 
-**A través de la configuración de construcción:**
+**Mediante la configuración de compilación:**
 ```groovy
 webforjMinify {
   skip = true
@@ -197,16 +195,16 @@ webforjMinify {
 
 El minificador de JavaScript ofrece varias opciones de configuración para controlar el comportamiento de optimización.
 
-:::note Soporte para Gradle
-A partir de la v25.12, el plugin de Gradle admite el paso de opciones del minificador de JavaScript.
+:::note Compatibilidad con Gradle
+A partir de v25.12, el complemento de Gradle permite pasar opciones al minificador de JavaScript.
 :::
 
-| Opción | Predeterminado | Descripción |
-|--------|----------------|-------------|
-| `compilationLevel` | `SIMPLE_OPTIMIZATIONS` | <ul><li>`WHITESPACE_ONLY` - elimina solo espacios en blanco y comentarios</li><li>`SIMPLE_OPTIMIZATIONS` - renombramiento de variables y eliminación de código muerto</li><li>`ADVANCED_OPTIMIZATIONS` - optimización agresiva con renombramiento de funciones/propiedades</li></ul> |
-| `languageIn` | `ECMASCRIPT_NEXT` | Versión de JavaScript de entrada: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015` a `ECMASCRIPT_2021`, `ECMASCRIPT_NEXT` |
-| `languageOut` | `ECMASCRIPT5` | Versión de JavaScript de salida: la misma que `languageIn`, más `NO_TRANSPILE` |
-| `prettyPrint` | `false` | Establecer en `true` para preservar el formato para depuración |
+| Opción | Valor predeterminado | Descripción |
+|--------|---------|-------------|
+| `compilationLevel` | `SIMPLE_OPTIMIZATIONS` | <ul><li>`WHITESPACE_ONLY` - elimina solo los espacios en blanco y los comentarios</li><li>`SIMPLE_OPTIMIZATIONS` - renombra variables y elimina código muerto</li><li>`ADVANCED_OPTIMIZATIONS` - optimización intensiva con renombrado de funciones y propiedades</li></ul> |
+| `languageIn` | `ECMASCRIPT_NEXT` | Versión de JavaScript de entrada: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015` hasta `ECMASCRIPT_2021`, `ECMASCRIPT_NEXT` |
+| `languageOut` | `ECMASCRIPT5` | Versión de JavaScript de salida: las mismas que `languageIn`, más `NO_TRANSPILE` |
+| `prettyPrint` | `false` | Establécelo en `true` para conservar el formato y facilitar la depuración |
 
 Configura estas opciones en la sección de configuración:
 
@@ -250,7 +248,7 @@ Configura estas opciones en la sección de configuración:
 
 ```groovy
 webforjMinify {
-    skip = false  // Establecer en true para omitir la minificación
+    skip = false  // Set to true to skip minification
     minifierConfigurations.put("closureJs", [
       compilationLevel: "SIMPLE_OPTIMIZATIONS",
       languageIn: "ECMASCRIPT_NEXT",
@@ -262,27 +260,27 @@ webforjMinify {
 </TabItem>
 </Tabs>
 
-### Minificando archivos adicionales {#minifying-additional-files}
+### Minificar archivos adicionales {#minifying-additional-files}
 
-Para minificar archivos no descubiertos a través de anotaciones, crea un archivo de configuración que especifique patrones glob:
+Para minificar archivos que no se detecten mediante anotaciones, crea un archivo de configuración con patrones glob:
 
 ```hocon title="src/main/resources/META-INF/webforj-minify.txt"
-# Patrones de inclusión
+# Include patterns
 **/*.css
 **/*.js
 
-# Patrones de exclusión (prefijo con !)
+# Exclusion patterns (prefix with !)
 !**/*.min.css
 !**/*.min.js
 ```
 
 ## Minificadores personalizados {#custom-minifiers}
 
-El plugin soporta minificadores personalizados a través de la Interfaz de Proveedor de Servicios (SPI) de Java, lo que te permite agregar soporte para tipos de archivos adicionales o bibliotecas de minificación alternativas.
+El complemento admite minificadores personalizados mediante la interfaz SPI (Service Provider Interface) de Java, lo que te permite añadir compatibilidad con otros tipos de archivo o bibliotecas de minificación alternativas.
 
-### Creando un minificador personalizado {#creating-a-custom-minifier}
+### Crear un minificador personalizado {#creating-a-custom-minifier}
 
-Implementa la interfaz `AssetMinifier` para crear tu propio minificador. El siguiente ejemplo muestra un minificador de JSON que usa Gson para eliminar espacios en blanco:
+Implementa la interfaz `AssetMinifier` para crear tu propio minificador. El siguiente ejemplo muestra un minificador de JSON que usa Gson para eliminar los espacios en blanco:
 
 ```java title="src/main/java/com/example/minifier/JsonMinifier.java"
 package com.example.minifier;
@@ -309,10 +307,10 @@ public class JsonMinifier implements AssetMinifier {
       JsonElement element = gson.fromJson(content, JsonElement.class);
       return gson.toJson(element);
     } catch (JsonSyntaxException e) {
-      logger.warning("JSON mal formado en " + sourceFile + ", omitiendo: " + e.getMessage());
+      logger.warning("Malformed JSON in " + sourceFile + ", skipping: " + e.getMessage());
       return content;
     } catch (Exception e) {
-      throw new MinificationException("Error al minificar el archivo JSON: " + sourceFile, e);
+      throw new MinificationException("Failed to minify JSON file: " + sourceFile, e);
     }
   }
 
@@ -324,7 +322,7 @@ public class JsonMinifier implements AssetMinifier {
   @Override
   public boolean shouldMinify(Path filePath) {
     String filename = filePath.getFileName().toString();
-    // Omitir archivos de configuración y archivos ya minificados
+    // Skip config files and already minified files
     if (filename.equals("package.json") || filename.equals("tsconfig.json")) {
       return false;
     }
@@ -336,12 +334,12 @@ public class JsonMinifier implements AssetMinifier {
 
   @Override
   public void configure(Map<String, Object> options) {
-    // Opciones de configuración si es necesario
+    // Configuration options if needed
   }
 }
 ```
 
-### Registrando tu minificador {#registering-your-minifier}
+### Registrar el minificador {#registering-your-minifier}
 
 Crea un archivo de configuración del proveedor de servicios:
 
@@ -349,9 +347,9 @@ Crea un archivo de configuración del proveedor de servicios:
 com.example.minifier.JsonMinifier
 ```
 
-### Usando tu minificador personalizado {#using-your-custom-minifier}
+### Usar tu minificador personalizado {#using-your-custom-minifier}
 
-Empaqueta tu minificador como un JAR separado y agrégalo como una dependencia del plugin:
+Empaqueta el minificador en un JAR independiente y añádelo como dependencia del complemento:
 
 ```xml {5-9}
 <plugin>
@@ -363,7 +361,7 @@ Empaqueta tu minificador como un JAR separado y agrégalo como una dependencia d
       <artifactId>json-minifier</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <!-- Minificadores estándar (opcional) -->
+    <!-- Standard minifiers (optional) -->
     <dependency>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-minify-phcss-css</artifactId>
@@ -382,11 +380,11 @@ Empaqueta tu minificador como un JAR separado y agrégalo como una dependencia d
   <AccordionDetails>
     <div>
       ```
-      [WARN] No hay minificadores registrados a través de SPI. Omitiendo la minificación.
-      [WARN] Asegúrate de que ph-css y/o closure-compiler estén en el classpath.
+      [WARN] No minifiers registered via SPI. Skipping minification.
+      [WARN] Ensure ph-css and/or closure-compiler are on the classpath.
       ```
 
-      Agrega dependencias de módulos de minificadores a la configuración del plugin. Para CSS, agrega `webforj-minify-phcss-css`. Para JavaScript, agrega `webforj-minify-closure-js`.
+      Añade dependencias de los módulos de minificación a la configuración del complemento. Para CSS, añade `webforj-minify-phcss-css`. Para JavaScript, añade `webforj-minify-closure-js`.
     </div>
   </AccordionDetails>
 </Accordion>
@@ -397,26 +395,26 @@ Empaqueta tu minificador como un JAR separado y agrégalo como una dependencia d
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Si el plugin informa `Processed 0 files`, verifica que:
+      Si el complemento informa `Processed 0 files`, verifica que:
 
       1. El procesador de anotaciones esté configurado en `maven-compiler-plugin` con `webforj-minify-foundation` en `annotationProcessorPaths`
-      2. Existan anotaciones de activos de webforJ en tu código fuente
-      3. El archivo `target/classes/META-INF/webforj-resources.json` exista después de la compilación
+      2. Haya anotaciones de recursos de webforJ en el código fuente
+      3. Exista `target/classes/META-INF/webforj-resources.json` después de la compilación
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Archivo no encontrado</p>
+    <p>No se encontró el archivo</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       ```
-      [WARN] Archivo no encontrado: /path/to/static/css/app.css (referenciado como 'ws://css/app.css')
+      [WARN] File not found: /path/to/static/css/app.css (referenced as 'ws://css/app.css')
       ```
 
-      Verifica que el archivo exista en la ruta correcta bajo `src/main/resources/static` y que el protocolo de URL coincida con la estructura del directorio.
+      Verifica que el archivo exista en la ruta correcta dentro de `src/main/resources/static` y que el protocolo de URL coincida con la estructura de directorios.
     </div>
   </AccordionDetails>
 </Accordion>
@@ -428,10 +426,10 @@ Empaqueta tu minificador como un JAR separado y agrégalo como una dependencia d
   <AccordionDetails>
     <div>
       ```
-      [WARN] Error al minificar el archivo /path/to/app.css: error de análisis en la línea 42
+      [WARN] Error minifying file /path/to/app.css: parse error at line 42
       ```
 
-      El plugin advierte pero continúa sin fallar la construcción. El contenido original se conserva cuando falla la minificación. Para corregir errores de sintaxis, valida CSS o JavaScript con un linter.
+      El complemento muestra una advertencia, pero continúa sin interrumpir la compilación. Si la minificación falla, se conserva el contenido original. Para corregir errores de sintaxis, valida el CSS o JavaScript con un linter.
     </div>
   </AccordionDetails>
 </Accordion>

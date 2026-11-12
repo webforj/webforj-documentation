@@ -1,33 +1,40 @@
 ---
 sidebar_position: 10
-title: Controles BBj y componentes webforJ
+title: Arquitectura de componentes
 description: >-
-  See how webforJ components map one-to-one to BBj controls through the
-  DwcComponent base class and why composition replaces inheritance.
-_i18n_hash: 83f48323774737067ddd9a6bebb0373d
+  See how webforJ components are built on the DwcComponent base class, why
+  component classes are final, and why composition replaces inheritance.
+_i18n_hash: 13c29b780cb00a918fe6e0a98c5e783a
 ---
-El framework webforJ está diseñado para proporcionar una API de Java en torno al DWC del lenguaje BBj, ofreciendo una arquitectura robusta para construir y gestionar componentes.
+webforJ te ofrece una API de Java para una biblioteca de componentes web y administra cada uno desde el servidor. Esta página explica cómo se estructuran los componentes y cómo ampliarlos.
 
-## Mapeo de controles BBj a componentes webforJ {#mapping-bbj-controls-to-webforj-components}
-Uno de los principios fundamentales de webforJ es la vinculación de los controles BBj con los componentes webforJ. En esta arquitectura, cada componente webforJ que se envía con el producto tiene un mapeo uno a uno con un control BBj subyacente. Este mapeo asegura que los componentes de Java reflejen el comportamiento y las propiedades de sus contrapartes BBj de manera fluida.
+## Cómo se estructuran los componentes {#how-components-are-structured}
+Cada componente de webforJ incluido en el producto es una clase de Java emparejada uno a uno con un componente web del lado del cliente de la biblioteca de componentes DWC. La clase de Java contiene el estado y la API del componente en el servidor, y el framework mantiene sincronizado con ella el componente web del navegador.
 
-Esta estrecha correspondencia entre los componentes webforJ y los controles BBj simplifica el desarrollo y permite a los desarrolladores de Java trabajar con conceptos familiares al construir aplicaciones basadas en la web sin necesidad de escribir ningún código BBj.
+Solo trabajas con la clase de Java. El framework se encarga de las propiedades, los eventos y la representación en el navegador, así que puedes crear aplicaciones web usando únicamente Java.
 
 ## La clase base `DwcComponent` {#the-dwccomponent-base-class}
-En el corazón de la arquitectura de componentes de webforJ se encuentra la clase base DWCComponent. Todos los componentes webforJ heredan de esta clase. Esta herencia otorga a cada componente webforJ acceso a su control BBj subyacente, proporcionando un enlace directo entre el componente de Java y el control BBj que representa.
+En el núcleo de la arquitectura de componentes de webforJ se encuentra la clase base DWCComponent. Todos los componentes de webforJ heredan de esta clase. Esta administra el vínculo entre el componente de Java y su contraparte del lado del cliente, incluidos la creación, las actualizaciones de propiedades y los eventos.
 
-Sin embargo, es importante señalar que se restringe a los desarrolladores la posibilidad de extender la clase DWCComponent. Intentar hacerlo resultará en una excepción en tiempo de ejecución que desautoriza tales extensiones. Esta restricción está en su lugar para mantener la integridad del control BBj subyacente y asegurar que los desarrolladores no lo manipulen accidentalmente de maneras que puedan llevar a consecuencias no deseadas.
+Sin embargo, es importante tener en cuenta que los desarrolladores no pueden seguir extendiendo la clase DWCComponent. Si se intenta hacerlo, se producirá una excepción en tiempo de ejecución que impedirá dicha extensión. Esta restricción permite mantener la integridad del vínculo y garantizar que los desarrolladores no lo manipulen inadvertidamente de formas que puedan provocar consecuencias imprevistas.
 
 ### Clases finales y restricciones de extensión {#final-classes-and-extension-restrictions}
-En webforJ, la mayoría de las clases de componentes, con la excepción de los elementos HTML integrados y cualquier clase que extienda estos, se declaran como `final`. Esto significa que no están disponibles para extensión o subclonación. Esta elección de diseño es deliberada y cumple múltiples propósitos:
+En webforJ, la mayoría de las clases de componentes, con excepción de los elementos HTML integrados y las clases que los extienden, se declaran como `final`. Esto significa que no se pueden extender ni usar como superclases. Esta decisión de diseño es deliberada y tiene varios propósitos:
 
-1. **Control sobre el control BBj subyacente**: Como se mencionó anteriormente, extender las clases de componentes webforJ otorgaría a los desarrolladores control sobre el control BBj subyacente. Para mantener la consistencia y previsibilidad del comportamiento de los componentes, este nivel de control se restringe.
+1. **Control del vínculo con el lado del cliente**: Como se mencionó anteriormente, extender las clases de componentes de webforJ expondría el vínculo interno entre el componente de Java y su contraparte del lado del cliente. Para mantener la coherencia y la previsibilidad del comportamiento de los componentes, se restringe este nivel de control.
 
-2. **Prevención de modificaciones no intencionadas**: Hacer que las clases de componentes sean `final` previene modificaciones no intencionadas a componentes centrales, reduciendo el riesgo de introducir comportamientos inesperados o vulnerabilidades.
+2. **Prevención de modificaciones imprevistas**: Declarar las clases de componentes como `final` evita modificaciones involuntarias en los componentes principales y reduce el riesgo de introducir comportamientos inesperados o vulnerabilidades.
 
-3. **Promoción del uso de compuestos**: Para extender la funcionalidad de los componentes, el framework webforJ anima a los desarrolladores a usar un enfoque compuesto. Los componentes compuestos son clases de Java que contienen otros componentes webforJ o elementos HTML estándar. Si bien se desaconseja la herencia tradicional, los componentes compuestos ofrecen una manera de crear nuevos componentes personalizados que encapsulan los existentes.
+3. **Fomento del uso de componentes compuestos**: Para ampliar la funcionalidad de los componentes, el framework webforJ recomienda usar un enfoque basado en la composición. Los componentes compuestos son clases de Java que contienen otros componentes de webforJ o elementos HTML estándar. Aunque no se recomienda la herencia tradicional, los componentes compuestos permiten crear componentes nuevos y personalizados que encapsulan los existentes.
 
-## Componentes compuestos: extendiendo a través de la composición {#composite-components-extending-through-composition}
-En el framework webforJ, el concepto de componentes compuestos juega un papel fundamental en la extensión de la funcionalidad de los componentes. Los componentes compuestos son clases de Java que no están restringidas por la palabra clave final, lo que permite a los desarrolladores crear nuevos componentes que extienden el comportamiento de un solo componente, o combinan múltiples componentes en uno, mediante la composición de componentes existentes. Se han creado clases que facilitan este comportamiento para el uso de los desarrolladores. Consulte las secciones `Composite` y `ElementComposite` para ver cómo crear correctamente componentes compuestos.
+<!-- ## Añadir componentes al DOM
+TODO: Explicar cómo webforJ resuelve la contraparte del lado del cliente de un componente -->
 
-Este enfoque fomenta un estilo de desarrollo más modular y flexible, permitiendo a los desarrolladores construir componentes personalizados que satisfacen requisitos específicos.
+## Componentes compuestos: ampliar mediante composición {#composite-components-extending-through-composition}
+En el framework webforJ, el concepto de componentes compuestos cumple un papel fundamental en la ampliación de la funcionalidad de los componentes. Los componentes compuestos son clases de Java que no están sujetas a la palabra clave final, lo que permite a los desarrolladores crear componentes nuevos que amplían el comportamiento de un solo componente o combinan varios en uno mediante la composición de componentes existentes. Se han creado clases que facilitan este comportamiento para que las usen los desarrolladores. Consulta las secciones `Composite` y `ElementComposite` para aprender a crear correctamente componentes compuestos.
+
+Este enfoque fomenta un estilo de desarrollo más modular y flexible, que permite a los desarrolladores crear componentes a medida para satisfacer requisitos específicos.
+
+<!--
+## Jerarquía de componentes {#component-hierarchy}
+TODO: Crear y mostrar un gráfico -->

@@ -88,7 +88,7 @@
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "Aplicación webforJ con soporte para Spring Boot (requiere webforJ 25.02 o superior).",
+    "message": "Aplicación webforJ con compatibilidad con Spring Boot.",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
@@ -1736,5 +1736,3816 @@
   },
   "component.blogFilterBar.insights": {
     "message": "Análisis"
+  },
+  "page.home.meta.title": {
+    "message": "webforJ: el framework Java full-stack para aplicaciones web empresariales"
+  },
+  "page.home.meta.description": {
+    "message": "Crea toda la aplicación web en Java, desde la interfaz hasta los datos, con cualquier backend. Preparada para IA, con una ruta pantalla por pantalla de Swing a la web. Documentación, guías y demos en vivo."
+  },
+  "page.home.layers.screens.name": {
+    "message": "Pantallas"
+  },
+  "page.home.layers.screens.text": {
+    "message": "Crea la interfaz con componentes, organízala y navega entre páginas."
+  },
+  "page.home.layers.screens.link.components": {
+    "message": "Componentes"
+  },
+  "page.home.layers.screens.link.buildingUi": {
+    "message": "Creación de la interfaz de usuario"
+  },
+  "page.home.layers.screens.link.routing": {
+    "message": "Enrutamiento"
+  },
+  "page.home.layers.screens.link.styling": {
+    "message": "Estilos"
+  },
+  "page.home.layers.logic.name": {
+    "message": "Lógica"
+  },
+  "page.home.layers.logic.text": {
+    "message": "Vincula formularios a tus modelos, protege rutas, traduce y prueba."
+  },
+  "page.home.layers.logic.link.dataBinding": {
+    "message": "Vinculación de datos"
+  },
+  "page.home.layers.logic.link.security": {
+    "message": "Seguridad"
+  },
+  "page.home.layers.logic.link.translation": {
+    "message": "Traducción"
+  },
+  "page.home.layers.logic.link.testing": {
+    "message": "Pruebas"
+  },
+  "page.home.layers.data.name": {
+    "message": "Datos"
+  },
+  "page.home.layers.data.text": {
+    "message": "Completa las tablas con datos de los repositorios y muestra las cifras en gráficos."
+  },
+  "page.home.layers.data.link.repository": {
+    "message": "Repositorio"
+  },
+  "page.home.layers.data.link.table": {
+    "message": "Tabla"
+  },
+  "page.home.layers.data.link.charts": {
+    "message": "Gráficos"
+  },
+  "page.home.layers.data.link.managingResources": {
+    "message": "Administrar recursos"
+  },
+  "page.home.layers.backend.name": {
+    "message": "Tu backend"
+  },
+  "page.home.layers.backend.text": {
+    "message": "Ejecútalo de forma independiente o con Spring Boot, en Java o Kotlin, y ponlo en producción."
+  },
+  "page.home.layers.backend.link.configuration": {
+    "message": "Configuración"
+  },
+  "page.home.layers.backend.link.upgrading": {
+    "message": "Actualizando"
+  },
+  "page.home.path.understand.step": {
+    "message": "Entendido"
+  },
+  "page.home.path.understand.title": {
+    "message": "webforJ en 6 pantallas"
+  },
+  "page.home.path.understand.text": {
+    "message": "Un breve recorrido guiado por webforJ."
+  },
+  "page.home.path.create.step": {
+    "message": "Crear"
+  },
+  "page.home.path.create.title": {
+    "message": "Iniciar un proyecto"
+  },
+  "page.home.path.create.text": {
+    "message": "Comprueba los requisitos previos, genera un proyecto y ejecútalo."
+  },
+  "page.home.path.learn.step": {
+    "message": "Aprender"
+  },
+  "page.home.path.learn.title": {
+    "message": "Sigue el tutorial."
+  },
+  "page.home.path.learn.text": {
+    "message": "Crea una aplicación funcional paso a paso."
+  },
+  "page.home.path.build.step": {
+    "message": "Compilar"
+  },
+  "page.home.path.build.title": {
+    "message": "Usa los componentes\n"
+  },
+  "page.home.path.build.text": {
+    "message": "Cada componente con su API y ejemplos en vivo."
+  },
+  "page.home.ai.loop.write.title": {
+    "message": "Escribir"
+  },
+  "page.home.ai.loop.write.text": {
+    "message": "Tu asistente consulta la API real de webforJ a través del servidor MCP y sigue las Agent Skills para formularios, seguridad y estilos."
+  },
+  "page.home.ai.loop.check.title": {
+    "message": "Verificar"
+  },
+  "page.home.ai.loop.check.text": {
+    "message": "Ejecuta la vista en una prueba JUnit básica con TestBed, sin navegador ni servidor, y determina claramente si pasa o falla."
+  },
+  "page.home.ai.loop.review.title": {
+    "message": "Revisar"
+  },
+  "page.home.ai.loop.review.text": {
+    "message": "Revisas un resultado que ya pasó, en lugar de leer cada línea de una conjetura."
+  },
+  "page.home.places.components.title": {
+    "message": "Componentes de interfaz de usuario"
+  },
+  "page.home.places.components.text": {
+    "message": "Tablas, formularios, diálogos, diseños y mucho más, cada uno con ejemplos en vivo."
+  },
+  "page.home.places.craft.text": {
+    "message": "Editor visual: consulta el árbol de componentes de tu aplicación en ejecución y modifícala en vivo."
+  },
+  "page.home.places.swing.title": {
+    "message": "Modernización de Swing"
+  },
+  "page.home.places.swing.text": {
+    "message": "Ejecuta una aplicación de escritorio en el navegador y navega por ella pantalla a pantalla."
+  },
+  "page.home.places.ai.title": {
+    "message": "Herramientas de IA"
+  },
+  "page.home.places.ai.text": {
+    "message": "El complemento de IA: el servidor MCP y Agent Skills para tu asistente, en una sola instalación."
+  },
+  "page.home.places.kit.title": {
+    "message": "Kit de diseño de Figma"
+  },
+  "page.home.places.kit.text": {
+    "message": "Diseñadores y desarrolladores trabajan con los mismos tokens y componentes."
+  },
+  "page.home.places.showcase.title": {
+    "message": "Galería"
+  },
+  "page.home.places.showcase.text": {
+    "message": "Cuatro aplicaciones empresariales de ejemplo para explorar, pantalla por pantalla."
+  },
+  "page.home.help.cookbook.title": {
+    "message": "Recetario"
+  },
+  "page.home.help.cookbook.text": {
+    "message": "Recetas breves para tareas comunes."
+  },
+  "page.home.help.blog.title": {
+    "message": "Blog"
+  },
+  "page.home.help.blog.text": {
+    "message": "Guías, novedades y tutoriales."
+  },
+  "page.home.help.javadocs.text": {
+    "message": "Referencia completa de la API."
+  },
+  "page.home.help.issue.title": {
+    "message": "Informar de un problema"
+  },
+  "page.home.help.issue.text": {
+    "message": "Errores y solicitudes de funciones."
+  },
+  "page.home.help.team.title": {
+    "message": "Habla con el equipo"
+  },
+  "page.home.help.team.text": {
+    "message": "Reserva una llamada sobre tu app."
+  },
+  "page.home.stack.caption": {
+    "message": "Un clic en la pantalla ejecuta tu código Java y devuelve una actualización."
+  },
+  "page.home.hero.eyebrow": {
+    "message": "Documentación de webforJ"
+  },
+  "page.home.hero.title1": {
+    "message": "Toda la aplicación."
+  },
+  "page.home.hero.title2": {
+    "message": "En Java."
+  },
+  "page.home.hero.lead": {
+    "message": "webforJ es el framework Java full-stack para aplicaciones web empresariales: creas toda la aplicación, incluidas las pantallas, en Java. Esta documentación te guía desde tu primer proyecto hasta producción."
+  },
+  "page.home.hero.tour": {
+    "message": "Haz el recorrido de 5 minutos"
+  },
+  "page.home.hero.search": {
+    "message": "Buscar o preguntar a la IA"
+  },
+  "page.home.live.title1": {
+    "message": "Escribe en Java."
+  },
+  "page.home.live.title2": {
+    "message": "Obtener una pantalla."
+  },
+  "page.home.live.note": {
+    "message": "Una pantalla completa es una clase Java con una ruta. Sin plantillas, JavaScript ni capa REST entre la pantalla y tu código."
+  },
+  "page.home.path.title1": {
+    "message": "¿Nuevo por aquí?"
+  },
+  "page.home.path.title2": {
+    "message": "Sigue el camino."
+  },
+  "page.home.layers.title1": {
+    "message": "Una pila."
+  },
+  "page.home.layers.title2": {
+    "message": "Un idioma."
+  },
+  "page.home.ai.title1": {
+    "message": "IA lista."
+  },
+  "page.home.ai.title2": {
+    "message": "Desde el primer día."
+  },
+  "page.home.ai.lead": {
+    "message": "Una sola instalación proporciona a Claude Code, Copilot, Cursor, Gemini y Codex el servidor MCP de webforJ y las Agent Skills."
+  },
+  "page.home.ai.cta": {
+    "message": "Ver las herramientas de IA"
+  },
+  "page.home.ai.terminal": {
+    "message": "Terminal"
+  },
+  "page.home.ai.terminalComment": {
+    "message": "El asistente lee el mensaje y corrige la vista."
+  },
+  "page.home.places.title1": {
+    "message": "Lugares"
+  },
+  "page.home.places.title2": {
+    "message": "Vale la pena visitarlo."
+  },
+  "page.home.help.title": {
+    "message": "¿Sigues buscando?"
+  },
+  "page.home.help.behind": {
+    "message": "webforJ es desarrollado por BASIS International. Durante casi 40 años, el software y las herramientas de BASIS se han utilizado para crear soluciones empresariales para grandes corporaciones internacionales y pymes, con más de 20 años de experiencia ofreciendo tecnología basada en Java."
+  },
+  "page.home.talk.title": {
+    "message": "¿Estás planeando una aplicación empresarial con webforJ?"
+  },
+  "page.home.talk.text": {
+    "message": "Agenda una llamada con el equipo que desarrolla webforJ. Trae tu app, tu backend y tus plazos, y te mostraremos cómo encaja webforJ, desde la primera pantalla hasta el soporte LTS+."
+  },
+  "page.home.talk.book": {
+    "message": "Reservar una llamada"
+  },
+  "page.home.talk.pricing": {
+    "message": "Ver precios"
+  },
+  "page.home.talk.languages": {
+    "message": "Hablamos {languages}"
+  },
+  "component.archetype.table.flavor.bbj": {
+    "message": "Aplicación webforJ que se ejecuta en {BBjServices} a través de {BBjShipLink}.",
+    "description": "webforj-bbj flavor description"
+  },
+  "component.megaMenu.resources.readAndWatch.showcase.label": {
+    "message": "Galería"
+  },
+  "component.megaMenu.resources.readAndWatch.showcase.description": {
+    "message": "Qué puedes crear con webforJ\n"
+  },
+  "component.previewBadge.hint": {
+    "message": "Esta función puede cambiar en futuras versiones."
+  },
+  "component.previewBadge.label": {
+    "message": "Vista previa"
+  },
+  "page.ai.terminal.verifyClaude": {
+    "message": "Verificar en Claude Code"
+  },
+  "page.ai.terminal.okInstalled": {
+    "message": "webforJ aparece en Instalado"
+  },
+  "page.ai.terminal.okServers": {
+    "message": "plugin:webforj:webforj-mcp aparece en servidores conectados"
+  },
+  "page.ai.terminal.copilotVerify": {
+    "message": "Verificar"
+  },
+  "page.ai.terminal.geminiVerify": {
+    "message": "Verificar"
+  },
+  "page.ai.terminal.codexRun": {
+    "message": "Luego ejecuta /plugins en una sesión de Codex, selecciona webforj y pulsa la barra espaciadora."
+  },
+  "page.ai.terminal.codexSkills": {
+    "message": "Las habilidades de Codex se invocan explícitamente."
+  },
+  "page.ai.breaks.api.failure": {
+    "message": "Llama a una API que no existe o que existía antes."
+  },
+  "page.ai.breaks.api.piece": {
+    "message": "La API real"
+  },
+  "page.ai.breaks.api.fix": {
+    "message": "El servidor MCP busca en la base de conocimientos de webforJ para que el agente lea las firmas en lugar de recordarlas."
+  },
+  "page.ai.breaks.workflow.failure": {
+    "message": "Sigue prácticas genéricas de Java en lugar de las convenciones del framework."
+  },
+  "page.ai.breaks.workflow.piece": {
+    "message": "El flujo de trabajo adecuado"
+  },
+  "page.ai.breaks.workflow.fix": {
+    "message": "Las habilidades del agente le indican cómo abordar formularios, seguridad, estilos, temporizadores y más."
+  },
+  "page.ai.breaks.check.failure": {
+    "message": "Genera código que compila, pero no hace nada útil cuando el usuario hace clic."
+  },
+  "page.ai.breaks.check.piece": {
+    "message": "Aprobado o reprobado"
+  },
+  "page.ai.breaks.check.fix": {
+    "message": "TestBed ejecuta una vista en una prueba JUnit básica para que el agente pueda demostrar su propio trabajo."
+  },
+  "page.ai.stages.write.label": {
+    "message": "Escribir"
+  },
+  "page.ai.stages.write.short": {
+    "message": "El agente escribe la vista"
+  },
+  "page.ai.stages.check.label": {
+    "message": "Comprobar"
+  },
+  "page.ai.stages.check.short": {
+    "message": "Escribe y ejecuta la prueba."
+  },
+  "page.ai.stages.review.label": {
+    "message": "Revisar"
+  },
+  "page.ai.stages.review.short": {
+    "message": "Revisas un resultado aprobado."
+  },
+  "page.ai.plugin.clients.claude": {
+    "message": "Comando de Marketplace"
+  },
+  "page.ai.plugin.clients.copilot": {
+    "message": "Comando de Marketplace"
+  },
+  "page.ai.plugin.clients.vscode": {
+    "message": "Chat: Instalar complemento desde el código fuente"
+  },
+  "page.ai.plugin.clients.gemini": {
+    "message": "Instalación de extensión"
+  },
+  "page.ai.plugin.clients.codex": {
+    "message": "Comando de Marketplace y luego /plugins"
+  },
+  "page.ai.plugin.clients.others": {
+    "message": "Configuración manual"
+  },
+  "page.ai.plugin.prompts.wrap.prompt": {
+    "message": "Envuelve esta biblioteca de elementos personalizados en un componente webforJ."
+  },
+  "page.ai.plugin.prompts.wrap.target": {
+    "message": "habilidad para crear componentes"
+  },
+  "page.ai.plugin.prompts.style.prompt": {
+    "message": "Aplica los tokens de diseño de DWC a esta vista."
+  },
+  "page.ai.plugin.prompts.style.target": {
+    "message": "Habilidad para aplicar estilos a aplicaciones"
+  },
+  "page.ai.plugin.prompts.scaffold.prompt": {
+    "message": "Generar la estructura de un nuevo proyecto de menú lateral de webforJ llamado CustomerPortal."
+  },
+  "page.ai.plugin.prompts.scaffold.target": {
+    "message": "Generador de proyectos MCP"
+  },
+  "page.ai.plugin.prompts.theme.prompt": {
+    "message": "Generar un tema con el color de marca #6366f1."
+  },
+  "page.ai.plugin.prompts.theme.target": {
+    "message": "Generador de temas MCP"
+  },
+  "page.ai.plugin.prompts.find.prompt": {
+    "message": "Busca la documentación de webforJ sobre @Route y enrutamiento."
+  },
+  "page.ai.plugin.prompts.find.target": {
+    "message": "Búsqueda de conocimiento de MCP"
+  },
+  "page.ai.mcp.version.title": {
+    "message": "Selecciona la versión correcta de webforJ"
+  },
+  "page.ai.mcp.version.text": {
+    "message": "Lee pom.xml si está disponible; de lo contrario, te lo preguntará. A partir de entonces, todas las respuestas se adaptarán a tu versión."
+  },
+  "page.ai.mcp.lookup.title": {
+    "message": "Busca información en la base de conocimientos"
+  },
+  "page.ai.mcp.lookup.text": {
+    "message": "Una pregunta sobre la API, una guía, un ejemplo de código o el DSL de Kotlin, con respuestas basadas en el framework real."
+  },
+  "page.ai.mcp.lookup.prompt": {
+    "message": "¿Cómo configuro el enrutamiento con @Route en webforJ?"
+  },
+  "page.ai.mcp.scaffold.title": {
+    "message": "Crear estructura de un nuevo proyecto"
+  },
+  "page.ai.mcp.scaffold.text": {
+    "message": "El comando correcto de Maven archetype para hello-world, blank, tabs o sidemenu, en la variante webforj o webforj-spring."
+  },
+  "page.ai.mcp.scaffold.prompt": {
+    "message": "Crea un proyecto de webforJ llamado CustomerPortal con el arquetipo sidemenu."
+  },
+  "page.ai.mcp.theme.title": {
+    "message": "Generar un tema de DWC"
+  },
+  "page.ai.mcp.theme.text": {
+    "message": "Paletas principal, de éxito, de advertencia, de peligro, informativa, predeterminada y gris a partir de un solo color de marca, con contraste de texto automático."
+  },
+  "page.ai.mcp.theme.prompt": {
+    "message": "Generar un tema de webforJ a partir del color de marca #6366f1\n"
+  },
+  "page.ai.mcp.style.title": {
+    "message": "Aplica el estilo correcto a los componentes DWC."
+  },
+  "page.ai.mcp.style.text": {
+    "message": "Lee sobre CSS custom properties, shadow parts, reflected attributes y slots antes de escribir CSS."
+  },
+  "page.ai.mcp.style.prompt": {
+    "message": "¿Qué variables CSS y partes expone dwc-button?"
+  },
+  "page.ai.mcp.tokens.title": {
+    "message": "Validar tokens de diseño"
+  },
+  "page.ai.mcp.tokens.text": {
+    "message": "Verifica CSS, Java o Markdown frente al catálogo real --dwc-* y señala los nombres desconocidos con sugerencias de corrección."
+  },
+  "page.ai.mcp.tokens.prompt": {
+    "message": "Validar app.css en busca de tokens --dwc-* desconocidos"
+  },
+  "page.ai.skills.servlets.text": {
+    "message": "Endpoints REST, webhooks y servlets personalizados junto a la interfaz de usuario de webforJ."
+  },
+  "page.ai.skills.servlets.prompt": {
+    "message": "Añadir un endpoint REST en /api/orders."
+  },
+  "page.ai.skills.forms.text": {
+    "message": "Binding, validación de Jakarta, entradas enmascaradas y diseños de formularios adaptables."
+  },
+  "page.ai.skills.forms.prompt": {
+    "message": "Crea un formulario de registro vinculado a mi bean User."
+  },
+  "page.ai.skills.components.text": {
+    "message": "Componentes Java reutilizables de Custom Elements, bibliotecas de JavaScript o composiciones."
+  },
+  "page.ai.skills.components.prompt": {
+    "message": "Combina estos componentes de webforJ en una tarjeta reutilizable."
+  },
+  "page.ai.skills.timers.text": {
+    "message": "Interval, Debouncer, Environment.runLater y PendingResult en lugar de usar temporizadores e hilos directamente."
+  },
+  "page.ai.skills.timers.prompt": {
+    "message": "Actualiza este panel cada 30 segundos."
+  },
+  "page.ai.skills.localizing.text": {
+    "message": "Paquetes de mensajes, cambio de idioma en tiempo de ejecución y detección de la configuración regional del navegador."
+  },
+  "page.ai.skills.localizing.prompt": {
+    "message": "Añade compatibilidad con varios idiomas: inglés y español."
+  },
+  "page.ai.skills.securing.text": {
+    "message": "Inicio de sesión, cierre de sesión, acceso basado en roles y rutas seguras por defecto."
+  },
+  "page.ai.skills.securing.prompt": {
+    "message": "Protege /admin para que solo los usuarios con el rol ADMIN puedan verlo."
+  },
+  "page.ai.skills.styling.text": {
+    "message": "Temas, paletas y estilos de componentes con cada token --dwc-* validado."
+  },
+  "page.ai.skills.styling.prompt": {
+    "message": "Aplica una paleta azul a esta aplicación."
+  },
+  "page.ai.skills.upgrading.text": {
+    "message": "Actualizaciones de versiones principales con la receta oficial webforj-rewrite de OpenRewrite."
+  },
+  "page.ai.skills.upgrading.prompt": {
+    "message": "Actualiza esta aplicación de webforJ 25 a 26."
+  },
+  "page.ai.compare.livesIn.label": {
+    "message": "Vive en"
+  },
+  "page.ai.compare.livesIn.plugin": {
+    "message": "Tu editor"
+  },
+  "page.ai.compare.livesIn.assistant": {
+    "message": "La aplicación en ejecución"
+  },
+  "page.ai.compare.reads.label": {
+    "message": "Lecturas"
+  },
+  "page.ai.compare.reads.plugin": {
+    "message": "Tus archivos fuente"
+  },
+  "page.ai.compare.reads.assistant": {
+    "message": "Tu app en vivo, con sus valores reales."
+  },
+  "page.ai.compare.verifies.label": {
+    "message": "Verificado por"
+  },
+  "page.ai.compare.verifies.plugin": {
+    "message": "Tu próxima compilación"
+  },
+  "page.ai.compare.verifies.assistant": {
+    "message": "Compilando cada cambio antes de que lo veas"
+  },
+  "page.ai.compare.suited.label": {
+    "message": "Adecuado para"
+  },
+  "page.ai.compare.suited.plugin": {
+    "message": "Creando algo nuevo desde cero"
+  },
+  "page.ai.compare.suited.assistant": {
+    "message": "Comprender, corregir y crear prototipos con la app que tienes delante"
+  },
+  "page.ai.docs.plugin.title": {
+    "message": "Plugin de IA de webforJ"
+  },
+  "page.ai.docs.plugin.text": {
+    "message": "Instalar para cada cliente"
+  },
+  "page.ai.docs.mcp.title": {
+    "message": "Servidor MCP"
+  },
+  "page.ai.docs.mcp.text": {
+    "message": "Capacidades e instrucciones"
+  },
+  "page.ai.docs.skills.title": {
+    "message": "Habilidades del agente"
+  },
+  "page.ai.docs.skills.text": {
+    "message": "Cada habilidad y cuándo se carga"
+  },
+  "page.ai.docs.testbed.title": {
+    "message": "Entorno de pruebas"
+  },
+  "page.ai.docs.testbed.text": {
+    "message": "Pruebas sin navegador con JUnit puro"
+  },
+  "page.ai.docs.craftforj.title": {
+    "message": "Asistente de craftforJ"
+  },
+  "page.ai.docs.craftforj.text": {
+    "message": "Un agente de programación en la aplicación en ejecución"
+  },
+  "page.ai.terminal.tablistLabel": {
+    "message": "Instalar el complemento de IA de webforJ"
+  },
+  "page.ai.terminal.caption": {
+    "message": "Los comandos de instalación de la documentación. Una instalación incluye el servidor MCP y las habilidades del agente."
+  },
+  "page.ai.hero.eyebrow": {
+    "message": "Herramientas de IA para webforJ"
+  },
+  "page.ai.hero.title1": {
+    "message": "Tu asistente de IA escribe el código Java."
+  },
+  "page.ai.hero.title2": {
+    "message": "Ahora puede comprobarlo."
+  },
+  "page.ai.hero.lead": {
+    "message": "Las herramientas de programación con IA son rápidas, pero su resultado aún debe revisarse. webforJ les ofrece un ciclo de escribir, comprobar y revisar: la API real que deben consultar, el flujo de trabajo adecuado y una prueba que indica si se aprueba o falla, sin necesidad de un navegador."
+  },
+  "page.ai.hero.install": {
+    "message": "Instalar el complemento"
+  },
+  "page.ai.hero.step": {
+    "message": "Recorre el bucle"
+  },
+  "page.ai.hero.clients": {
+    "message": "Para Claude Code, GitHub Copilot, Cursor, Gemini y Codex."
+  },
+  "page.ai.breaks.eyebrow": {
+    "message": "¿Por qué un bucle?"
+  },
+  "page.ai.breaks.title": {
+    "message": "Tres formas en que falla el Java creado por agentes y cómo comprobar cada una"
+  },
+  "page.ai.breaks.lead": {
+    "message": "Cuando un agente de programación no tiene nada que consultar, escribe de memoria. Decirle que tenga cuidado no soluciona nada. Cada fallo necesita su propia verificación, y webforJ cierra cada brecha con una herramienta."
+  },
+  "page.ai.breaks.without": {
+    "message": "Sin marca de verificación"
+  },
+  "page.ai.breaks.read": {
+    "message": "Lee la documentación"
+  },
+  "page.ai.stages.promptLabel": {
+    "message": "Tu prompt"
+  },
+  "page.ai.stages.write.prompt": {
+    "message": "Añade una vista de saludo de webforJ en /greeting. Un campo para el nombre, un botón «Saludar» y un párrafo que diga «Hola» seguido del nombre."
+  },
+  "page.ai.stages.write.title": {
+    "message": "Una vista es una clase Java con una ruta\n"
+  },
+  "page.ai.stages.write.text1": {
+    "message": "No se necesita nada más: ni plantilla, ni JavaScript, ni una capa REST entre la pantalla y tu código."
+  },
+  "page.ai.stages.write.text2": {
+    "message": "Con el servidor MCP conectado, el agente ha consultado {composite}, {button} y {route} antes de escribirlos."
+  },
+  "page.ai.stages.check.prompt": {
+    "message": "Escribe una prueba de TestBed para GreetingView que introduzca un nombre, haga clic en Greet y compruebe el párrafo."
+  },
+  "page.ai.stages.check.title": {
+    "message": "La prueba sigue los pasos de un usuario\n"
+  },
+  "page.ai.stages.check.locator": {
+    "message": "{code} encuentra el campo por su etiqueta y el botón por su texto."
+  },
+  "page.ai.stages.check.interaction": {
+    "message": "{code} escribe y hace clic, así que el listener del botón sí se ejecuta."
+  },
+  "page.ai.stages.check.verify": {
+    "message": "{code} comprueba el texto que leería el usuario."
+  },
+  "page.ai.stages.review.title": {
+    "message": "El agente lee si se aprobó o se reprobó."
+  },
+  "page.ai.stages.review.text1": {
+    "message": "El agente ejecuta {code} y lee el resultado. No se abre ningún navegador ni se inicia ningún servidor."
+  },
+  "page.ai.stages.review.text2": {
+    "message": "Si falla, el mensaje indica qué salió distinto y el agente lo edita y vuelve a ejecutarlo. Un fallo que puede leer es un fallo que puede corregir."
+  },
+  "page.ai.stages.review.strong": {
+    "message": "Revisas un resultado ya aprobado en lugar de una conjetura."
+  },
+  "page.ai.stages.review.terminal": {
+    "message": "Terminal"
+  },
+  "page.ai.stages.review.passed": {
+    "message": "Aprobado"
+  },
+  "page.ai.stages.review.failLabel": {
+    "message": "Cuando falla una comprobación, el mensaje aparece así."
+  },
+  "page.ai.stages.review.failNote": {
+    "message": "Indica el tipo de componente, el valor esperado y el real."
+  },
+  "page.ai.loop.eyebrow": {
+    "message": "El bucle"
+  },
+  "page.ai.loop.title": {
+    "message": "Escribir, comprobar, revisar"
+  },
+  "page.ai.loop.lead": {
+    "message": "El agente crea la vista, escribe la prueba, la ejecuta y comprueba si pasa o falla. Recorre una pantalla real, desde la instrucción hasta que la prueba pasa."
+  },
+  "page.ai.loop.railLabel": {
+    "message": "Etapas del bucle"
+  },
+  "page.ai.loop.return": {
+    "message": "Si falla la prueba, vuelve a escribir."
+  },
+  "page.ai.loop.previous": {
+    "message": "Etapa anterior"
+  },
+  "page.ai.loop.count": {
+    "message": "Etapa {current} de {total}"
+  },
+  "page.ai.loop.next": {
+    "message": "Siguiente etapa"
+  },
+  "page.ai.pieces.eyebrow": {
+    "message": "Las piezas"
+  },
+  "page.ai.pieces.title": {
+    "message": "Tres piezas detrás del bucle"
+  },
+  "page.ai.pieces.plugin": {
+    "message": "Complemento de IA"
+  },
+  "page.ai.pieces.bundles": {
+    "message": "Paquetes"
+  },
+  "page.ai.pieces.mcp": {
+    "message": "Servidor MCP"
+  },
+  "page.ai.pieces.skills": {
+    "message": "Habilidades del agente"
+  },
+  "page.ai.plugin.name": {
+    "message": "Plugin de IA de webforJ"
+  },
+  "page.ai.plugin.title": {
+    "message": "Una instalación incluye ambas partes."
+  },
+  "page.ai.plugin.lead1": {
+    "message": "El complemento incluye el servidor MCP y las habilidades del agente. Juntos convierten un asistente que adivina las convenciones de webforJ en uno que las sigue."
+  },
+  "page.ai.plugin.lead2": {
+    "message": "Menciona {name} en tus prompts. Esa es la señal que dirige al asistente al complemento en lugar de a conocimientos generales de Java."
+  },
+  "page.ai.plugin.link": {
+    "message": "Instalar el plugin"
+  },
+  "page.ai.plugin.where": {
+    "message": "Dónde se instala"
+  },
+  "page.ai.plugin.reaches": {
+    "message": "Lo que busca un prompt"
+  },
+  "page.ai.mcp.name": {
+    "message": "Servidor MCP, parte del complemento de IA"
+  },
+  "page.ai.mcp.title": {
+    "message": "El asistente lee la API real en lugar de recordarla."
+  },
+  "page.ai.mcp.lead1": {
+    "message": "Model Context Protocol es un estándar abierto que permite a los asistentes de IA llamar a herramientas externas cuando las necesitan. El servidor MCP de webforJ responde con información del framework real: documentación, tokens de diseño, estilos de componentes y estructura inicial de proyectos."
+  },
+  "page.ai.mcp.lead2": {
+    "message": "La validación detecta errores tipográficos y tokens inventados antes de que se publiquen como CSS con fallos silenciosos."
+  },
+  "page.ai.mcp.link": {
+    "message": "Descubre lo que puede hacer el servidor."
+  },
+  "page.ai.mcp.onlyTitle": {
+    "message": "Solo el servidor MCP, en Claude Code\n"
+  },
+  "page.ai.mcp.onlyCaption": {
+    "message": "El complemento es la instalación recomendada. Este comando conecta solo el servidor en https://mcp.webforj.com/mcp."
+  },
+  "page.ai.skills.name": {
+    "message": "Habilidades del agente, parte del complemento de IA"
+  },
+  "page.ai.skills.title": {
+    "message": "El flujo de trabajo adecuado para la tarea que tienes por delante."
+  },
+  "page.ai.skills.lead1": {
+    "message": "El servidor MCP pone a disposición información precisa. Una habilidad indica al asistente cuándo consultar información, qué enfoque conviene y en qué orden hacerlo."
+  },
+  "page.ai.skills.lead2": {
+    "message": "Las habilidades siguen el estándar abierto Agent Skills. El asistente carga una automáticamente cuando tu solicitud coincide con ella."
+  },
+  "page.ai.skills.link": {
+    "message": "Explorar habilidades"
+  },
+  "page.ai.testbed.title": {
+    "message": "Un resultado claro: aprobado o reprobado, sin navegador ni servidor."
+  },
+  "page.ai.testbed.lead1": {
+    "message": "Una vista se ejecuta dentro de una prueba JUnit sencilla. Los componentes se montan, emiten sus eventos y navegan exactamente igual que en una aplicación en ejecución."
+  },
+  "page.ai.testbed.lead2": {
+    "message": "Cada interacción termina antes de que se ejecute la siguiente línea de la prueba, así que nada queda esperando ni falla de forma intermitente. Las aplicaciones Spring Boot usan el módulo {module}."
+  },
+  "page.ai.testbed.link": {
+    "message": "Lee la guía de TestBed"
+  },
+  "page.ai.testbed.find.verb": {
+    "message": "Buscar"
+  },
+  "page.ai.testbed.find.text": {
+    "message": "Describe un componente según cómo lo identifica el usuario: por su tipo y lo que muestra."
+  },
+  "page.ai.testbed.act.verb": {
+    "message": "Actuar"
+  },
+  "page.ai.testbed.act.text": {
+    "message": "Realiza únicamente los gestos que podría hacer un usuario. Hacer clic en un botón deshabilitado hace que la prueba falle."
+  },
+  "page.ai.testbed.check.verb": {
+    "message": "Comprobar"
+  },
+  "page.ai.testbed.check.text": {
+    "message": "Comprueba lo que vería el usuario; si falla, indica el componente y ambos valores."
+  },
+  "page.ai.testbed.caption": {
+    "message": "La versión proviene del BOM de webforJ. Un proyecto creado a partir de un arquetipo ya lo importa."
+  },
+  "page.ai.craftforj.title": {
+    "message": "Un agente de programación dentro de la aplicación en ejecución"
+  },
+  "page.ai.craftforj.lead1": {
+    "message": "Escribe Java con libertad, compila cada cambio antes de que lo veas y lo aplica a la aplicación en ejecución. Al aplicar un cambio, la aplicación se reinicia y el agente retoma su plan cuando vuelve a estar disponible."
+  },
+  "page.ai.craftforj.lead2": {
+    "message": "Viene incluido con webforJ, así que no hay nada que instalar. craftforJ no incluye ningún modelo propio: añade una clave de API de un proveedor compatible o conéctalo a un modelo que se ejecute localmente con Ollama."
+  },
+  "page.ai.craftforj.link": {
+    "message": "Conoce al asistente"
+  },
+  "page.ai.craftforj.colPlugin": {
+    "message": "Complemento de IA"
+  },
+  "page.ai.craftforj.mobilePlugin": {
+    "message": "Complemento de IA"
+  },
+  "page.ai.craftforj.shotAlt": {
+    "message": "El asistente de craftforJ pregunta antes de actuar, integrado en la transcripción, con Aplicar, Permitir en el chat y Descartar."
+  },
+  "page.ai.craftforj.shotCaption": {
+    "message": "El asistente pregunta antes de actuar, directamente en la transcripción."
+  },
+  "page.ai.craftforj.confCaption": {
+    "message": "craftforJ solo se ejecuta en modo de desarrollo. Ábrelo con {alt} + {shift} + {d} y cambia a la pestaña Asistente de IA."
+  },
+  "page.ai.start.eyebrow": {
+    "message": "Cómo empezar"
+  },
+  "page.ai.start.title": {
+    "message": "Solicita una pantalla con una prueba\n"
+  },
+  "page.ai.start.lead": {
+    "message": "Elige una pantalla que, de otro modo, tendrías que crear a mano esta semana. webforJ es el framework Java full-stack para aplicaciones web empresariales: construyes toda la aplicación, incluidas las pantallas, en Java."
+  },
+  "page.ai.start.step1": {
+    "message": "Instalar el complemento"
+  },
+  "page.ai.start.step2.title": {
+    "message": "Generar o abrir un proyecto de webforJ\n"
+  },
+  "page.ai.start.step2.text": {
+    "message": "Pide un proyecto al servidor MCP o abre uno que ya tengas."
+  },
+  "page.ai.start.step3.title": {
+    "message": "Pide la vista y su prueba de TestBed en un solo prompt."
+  },
+  "page.ai.start.step3.text": {
+    "message": "Describe el comportamiento que te interesa para que la prueba lo valide."
+  },
+  "page.ai.start.step4": {
+    "message": "Ejecuta {code} y lee el resultado."
+  },
+  "page.ai.start.docsLabel": {
+    "message": "Documentación de herramientas de IA"
+  },
+  "page.ai.start.home": {
+    "message": "Volver al inicio de la documentación"
+  },
+  "page.ai.meta.title": {
+    "message": "Herramientas de IA para webforJ: un ciclo de programación con IA para aplicaciones web Java"
+  },
+  "page.ai.meta.description": {
+    "message": "El complemento de IA de webforJ, con su servidor MCP y Agent Skills, TestBed y el asistente craftforJ, ofrece a las herramientas de programación con IA un ciclo de escritura, comprobación y revisión para aplicaciones web Java."
+  },
+  "page.craftforj.panels.inspector.tab": {
+    "message": "Inspector"
+  },
+  "page.craftforj.panels.inspector.title": {
+    "message": "El árbol de componentes que creó tu Java\n"
+  },
+  "page.craftforj.panels.inspector.text": {
+    "message": "El Inspector muestra tus componentes, no el marcado renderizado por el navegador. Un Composite aparece como la clase que escribiste, con sus elementos secundarios en el orden en que webforJ los contiene."
+  },
+  "page.craftforj.panels.inspector.point1": {
+    "message": "Pulsa Alt+Mayús+C y haz clic en cualquier elemento de la página para seleccionarlo en el árbol."
+  },
+  "page.craftforj.panels.inspector.point2": {
+    "message": "Cambia una propiedad en la barra lateral y la aplicación en ejecución se actualiza al instante."
+  },
+  "page.craftforj.panels.inspector.point3": {
+    "message": "Rastrea un componente hasta la línea de Java que lo creó."
+  },
+  "page.craftforj.panels.inspector.docLabel": {
+    "message": "Inspeccionando componentes"
+  },
+  "page.craftforj.panels.inspector.view1": {
+    "message": "Selecciona un componente"
+  },
+  "page.craftforj.panels.inspector.alt1": {
+    "message": "Vídeo: al seleccionar un componente en la aplicación en ejecución, se selecciona en el árbol de componentes de craftforJ"
+  },
+  "page.craftforj.panels.inspector.view2": {
+    "message": "Editar una propiedad"
+  },
+  "page.craftforj.panels.inspector.alt2": {
+    "message": "Vídeo: cambiar una propiedad en la barra lateral de craftforJ actualiza la aplicación en ejecución\n"
+  },
+  "page.craftforj.panels.sourceChanges.tab": {
+    "message": "Aplicando cambios"
+  },
+  "page.craftforj.panels.sourceChanges.title": {
+    "message": "Revisa el diff y luego escríbelo en Java."
+  },
+  "page.craftforj.panels.sourceChanges.text": {
+    "message": "Cada propiedad que cambies se registra como un cambio pendiente. Pulsa Cmd/Ctrl+S para revisarlos agrupados por el archivo en el que se aplicarán, con sus valores anterior y nuevo y las diferencias del archivo. No se guardará nada hasta que los apliques."
+  },
+  "page.craftforj.panels.sourceChanges.point1": {
+    "message": "Los cambios pendientes se conservan al recargar la página y cambiar de ruta."
+  },
+  "page.craftforj.panels.sourceChanges.point2": {
+    "message": "Realiza el cambio en el uso para una sola pantalla o en la definición para todas las pantallas que la usan."
+  },
+  "page.craftforj.panels.sourceChanges.point3": {
+    "message": "Cmd/Ctrl+Z deshace un cambio, incluso si ya se guardó en tus archivos."
+  },
+  "page.craftforj.panels.sourceChanges.docLabel": {
+    "message": "Aplicando cambios"
+  },
+  "page.craftforj.panels.sourceChanges.view1": {
+    "message": "Guardar en el origen"
+  },
+  "page.craftforj.panels.sourceChanges.alt1": {
+    "message": "Vídeo: revisión de los cambios realizados en craftforJ y guardado en el código fuente Java"
+  },
+  "page.craftforj.panels.routes.tab": {
+    "message": "Rutas"
+  },
+  "page.craftforj.panels.routes.title": {
+    "message": "La tabla de enrutamiento en vivo"
+  },
+  "page.craftforj.panels.routes.text": {
+    "message": "La pestaña Rutas muestra la tabla de enrutamiento en la jerarquía en que la mantiene el enrutador, con la ruta activa marcada. Las rutas registradas dinámicamente aparecen junto a las anotadas."
+  },
+  "page.craftforj.panels.routes.point1": {
+    "message": "Navega a cualquier ruta de craftforJ. Tus observadores del ciclo de vida se ejecutan como lo harían para un usuario."
+  },
+  "page.craftforj.panels.routes.point2": {
+    "message": "Cada ruta muestra una insignia de la anotación de seguridad declarada en ella."
+  },
+  "page.craftforj.panels.routes.point3": {
+    "message": "Modifica una regla de acceso y craftforJ escribe la anotación en la clase de ruta."
+  },
+  "page.craftforj.panels.routes.docLabel": {
+    "message": "Rutas"
+  },
+  "page.craftforj.panels.routes.view1": {
+    "message": "Ir a una ruta"
+  },
+  "page.craftforj.panels.routes.alt1": {
+    "message": "Video: navegar a una ruta desde la pestaña Rutas de craftforJ"
+  },
+  "page.craftforj.panels.routes.view2": {
+    "message": "Establecer una regla de acceso"
+  },
+  "page.craftforj.panels.routes.alt2": {
+    "message": "Vídeo: cómo elegir una anotación de seguridad para una ruta en la pestaña Routes de craftforJ\n"
+  },
+  "page.craftforj.panels.theme.tab": {
+    "message": "Tema"
+  },
+  "page.craftforj.panels.theme.title": {
+    "message": "Cambia el tema de la app mientras se ejecuta."
+  },
+  "page.craftforj.panels.theme.text": {
+    "message": "La pestaña Tema funciona con los tokens de diseño DWC que ya usa tu aplicación, así que un solo cambio afecta a todos los componentes que usan ese token. Los controles abarcan la paleta, las superficies, los bordes y las esquinas, la tipografía y el espaciado."
+  },
+  "page.craftforj.panels.theme.point1": {
+    "message": "Edita el modo claro, el modo oscuro o ambos, y alterna la aplicación entre ellos."
+  },
+  "page.craftforj.panels.theme.point2": {
+    "message": "Comienza con un preajuste como App Default o Portico."
+  },
+  "page.craftforj.panels.theme.point3": {
+    "message": "Al guardar, el tema se escribe en tu hoja de estilos y se incluye en tu aplicación."
+  },
+  "page.craftforj.panels.theme.docLabel": {
+    "message": "Tema"
+  },
+  "page.craftforj.panels.theme.view1": {
+    "message": "Controles del tema"
+  },
+  "page.craftforj.panels.theme.alt1": {
+    "message": "Vídeo: cambiar el tema de la aplicación en ejecución con los controles de tema de craftforJ"
+  },
+  "page.craftforj.panels.ai.tab": {
+    "message": "Asistente de IA"
+  },
+  "page.craftforj.panels.ai.title": {
+    "message": "Un agente que compila antes de que lo veas."
+  },
+  "page.craftforj.panels.ai.text": {
+    "message": "El asistente es un agente de programación integrado en tu app. Escribe Java, envía cada cambio preparado a un compilador Java real y corrige sus propios errores a partir de los diagnósticos, para que lo que llegue a tu revisión ya compile."
+  },
+  "page.craftforj.panels.ai.point1": {
+    "message": "Elige su nivel de autonomía: preguntar antes de actuar, aplicar cambios automáticamente o funcionar de forma autónoma."
+  },
+  "page.craftforj.panels.ai.point2": {
+    "message": "Usa una clave de API de un proveedor compatible o un modelo que se ejecute localmente."
+  },
+  "page.craftforj.panels.ai.point3": {
+    "message": "Se conecta directamente con tu proveedor desde el navegador, sin relés ni proxy."
+  },
+  "page.craftforj.panels.ai.docLabel": {
+    "message": "Asistente de IA"
+  },
+  "page.craftforj.panels.ai.view1": {
+    "message": "Una conversación"
+  },
+  "page.craftforj.panels.ai.alt1": {
+    "message": "Video: una conversación con el asistente de IA craftforJ que modifica la aplicación en ejecución"
+  },
+  "page.craftforj.panels.appInfo.tab": {
+    "message": "Información de la app"
+  },
+  "page.craftforj.panels.appInfo.title": {
+    "message": "Con qué se ejecuta realmente tu app"
+  },
+  "page.craftforj.panels.appInfo.text": {
+    "message": "La información de la aplicación muestra las versiones con las que se ejecuta, que no siempre coinciden con las indicadas en pom.xml. Incluye webforJ y BBj Services, el entorno de ejecución de Java, el sistema operativo y la raíz del proyecto."
+  },
+  "page.craftforj.panels.appInfo.point1": {
+    "message": "La raíz del proyecto es donde craftforJ busca tus archivos fuente."
+  },
+  "page.craftforj.panels.appInfo.point2": {
+    "message": "El entorno de ejecución de Java determina el nivel de validación de las ediciones del asistente. La validación completa requiere un JDK."
+  },
+  "page.craftforj.panels.appInfo.docLabel": {
+    "message": "Información de la aplicación"
+  },
+  "page.craftforj.panels.appInfo.view1": {
+    "message": "Información de la app"
+  },
+  "page.craftforj.panels.appInfo.alt1": {
+    "message": "Panel de información de la aplicación que muestra la versión de webforJ, la raíz del proyecto, el entorno de ejecución de Java y el sistema operativo."
+  },
+  "page.craftforj.shortcuts.open": {
+    "message": "Abrir o cerrar"
+  },
+  "page.craftforj.shortcuts.pick": {
+    "message": "Selecciona un componente"
+  },
+  "page.craftforj.shortcuts.review": {
+    "message": "Revisar cambios"
+  },
+  "page.craftforj.shortcuts.undo": {
+    "message": "Deshacer un cambio"
+  },
+  "page.craftforj.loop.open.title": {
+    "message": "Abrir"
+  },
+  "page.craftforj.loop.open.text": {
+    "message": "Haz clic en el botón de activación superpuesto en tu aplicación o pulsa Alt+Mayús+D desde cualquier lugar de ella."
+  },
+  "page.craftforj.loop.pick.title": {
+    "message": "Seleccionar"
+  },
+  "page.craftforj.loop.pick.text": {
+    "message": "Pulsa Alt+Mayús+C, pasa el cursor sobre un componente y haz clic en él. El árbol lo selecciona y la barra lateral muestra sus propiedades."
+  },
+  "page.craftforj.loop.change.title": {
+    "message": "Cambiar"
+  },
+  "page.craftforj.loop.change.text": {
+    "message": "Edita una propiedad. La aplicación en ejecución se actualiza al instante y tus archivos no se modifican."
+  },
+  "page.craftforj.loop.keep.title": {
+    "message": "Mantener"
+  },
+  "page.craftforj.loop.keep.text": {
+    "message": "Revisa el cambio como diff y aplícalo al archivo Java que lo generó."
+  },
+  "page.craftforj.guards.settings.title": {
+    "message": "Dos ajustes, ambos obligatorios"
+  },
+  "page.craftforj.guards.settings.text": {
+    "message": "craftforJ necesita webforj.debug y webforj.devtools.craftforj.enabled. Ninguno de los dos hace nada por sí solo."
+  },
+  "page.craftforj.guards.local.title": {
+    "message": "Acceso local predeterminado"
+  },
+  "page.craftforj.guards.local.text": {
+    "message": "Solo un navegador del equipo donde se ejecuta la aplicación puede acceder a ella, hasta que indiques otro equipo en hosts-allowed."
+  },
+  "page.craftforj.guards.http.title": {
+    "message": "Sin superficie HTTP adicional"
+  },
+  "page.craftforj.guards.http.text": {
+    "message": "No añade ningún endpoint, servlet ni filtro. Funciona sobre la conexión que ya tiene tu aplicación."
+  },
+  "page.craftforj.guards.compiles.title": {
+    "message": "Escribe solo código que compile."
+  },
+  "page.craftforj.guards.compiles.text": {
+    "message": "La eliminación del código fuente solo se registra si el resultado sigue compilando; los archivos nunca se eliminan."
+  },
+  "page.craftforj.docs.overview.label": {
+    "message": "Resumen"
+  },
+  "page.craftforj.docs.overview.text": {
+    "message": "Qué es craftforJ y qué te ofrece"
+  },
+  "page.craftforj.docs.gettingStarted.label": {
+    "message": "Primeros pasos"
+  },
+  "page.craftforj.docs.gettingStarted.text": {
+    "message": "La dependencia, la configuración y abrirla"
+  },
+  "page.craftforj.docs.inspector.label": {
+    "message": "Inspeccionando componentes"
+  },
+  "page.craftforj.docs.inspector.text": {
+    "message": "El árbol, la selección, las propiedades y el visor de código fuente"
+  },
+  "page.craftforj.docs.changes.label": {
+    "message": "Aplicando cambios"
+  },
+  "page.craftforj.docs.changes.text": {
+    "message": "Cambios pendientes, revisión, deshacer y rehacer"
+  },
+  "page.craftforj.docs.routes.label": {
+    "message": "Rutas"
+  },
+  "page.craftforj.docs.routes.text": {
+    "message": "La tabla de rutas, la navegación y las reglas de acceso"
+  },
+  "page.craftforj.docs.theme.label": {
+    "message": "Tema"
+  },
+  "page.craftforj.docs.theme.text": {
+    "message": "Tokens de diseño, preajustes y guardado en tu hoja de estilos"
+  },
+  "page.craftforj.docs.ai.label": {
+    "message": "Asistente de IA"
+  },
+  "page.craftforj.docs.ai.text": {
+    "message": "El agente, sus aprobaciones y la selección de un modelo"
+  },
+  "page.craftforj.docs.appInfo.label": {
+    "message": "Información de la aplicación"
+  },
+  "page.craftforj.docs.appInfo.text": {
+    "message": "Versiones, el entorno de ejecución de Java y la raíz del proyecto"
+  },
+  "page.craftforj.docs.configuration.label": {
+    "message": "Configuración"
+  },
+  "page.craftforj.docs.configuration.text": {
+    "message": "Cada propiedad, su valor predeterminado y los indicadores de funcionalidad"
+  },
+  "page.craftforj.docs.security.label": {
+    "message": "Seguridad"
+  },
+  "page.craftforj.docs.security.text": {
+    "message": "A qué puede acceder y cómo confirmar que está desactivado\n"
+  },
+  "page.craftforj.hero.eyebrow": {
+    "message": "El editor visual de webforJ"
+  },
+  "page.craftforj.hero.title1": {
+    "message": "Mira la app que creó tu código Java."
+  },
+  "page.craftforj.hero.title2": {
+    "message": "Cámbialo mientras se ejecuta."
+  },
+  "page.craftforj.hero.lead": {
+    "message": "craftforJ se ejecuta dentro de tu aplicación en modo de desarrollo. Muestra el árbol de componentes creado por tu código, te permite cambiar sus propiedades en tiempo real y guarda los cambios que conserves en el archivo Java donde se crearon."
+  },
+  "page.craftforj.hero.cta": {
+    "message": "Comenzar"
+  },
+  "page.craftforj.hero.docs": {
+    "message": "Lee la documentación"
+  },
+  "page.craftforj.hero.shortcutsTitle": {
+    "message": "Cuatro atajos cubren el bucle\n"
+  },
+  "page.craftforj.hero.shotAlt": {
+    "message": "craftforJ abierto sobre una aplicación en ejecución, con AppNav seleccionado en el árbol de componentes y sus propiedades en la barra lateral\n"
+  },
+  "page.craftforj.loop.eyebrow": {
+    "message": "Cómo funciona"
+  },
+  "page.craftforj.loop.title1": {
+    "message": "Lee tu app\n"
+  },
+  "page.craftforj.loop.title2": {
+    "message": "a través del propio webforJ"
+  },
+  "page.craftforj.loop.lead": {
+    "message": "Por eso describe la aplicación en los términos en que la escribiste. El árbol enumera tus componentes, las propiedades son las que declaran tus componentes y las rutas son las que registró tu router, con las reglas de acceso que les anotaste."
+  },
+  "page.craftforj.tour.video": {
+    "message": "Vídeo"
+  },
+  "page.craftforj.tour.screenshot": {
+    "message": "Captura de pantalla"
+  },
+  "page.craftforj.tour.viewsLabel": {
+    "message": "{tab} vistas"
+  },
+  "page.craftforj.tour.count": {
+    "message": "{count} de {total}"
+  },
+  "page.craftforj.tour.docLink": {
+    "message": "{label} documentación"
+  },
+  "page.craftforj.tour.eyebrow": {
+    "message": "Recorrido por los paneles"
+  },
+  "page.craftforj.tour.title1": {
+    "message": "Los paneles,"
+  },
+  "page.craftforj.tour.title2": {
+    "message": "sobre una app real"
+  },
+  "page.craftforj.tour.tabsLabel": {
+    "message": "Paneles de craftforJ"
+  },
+  "page.craftforj.source.eyebrow": {
+    "message": "Volver al origen"
+  },
+  "page.craftforj.source.title1": {
+    "message": "Edita Java,"
+  },
+  "page.craftforj.source.title2": {
+    "message": "no es una copia de eso"
+  },
+  "page.craftforj.source.lead": {
+    "message": "Toma un formulario con botones Guardar y Cancelar. Selecciona Guardar, haz clic derecho sobre él en el árbol y elige Eliminar del código fuente. Se eliminan la declaración, el tema, el listener, su lugar en la llamada add() y la importación de ButtonTheme que ya no se usa. Cancelar permanece."
+  },
+  "page.craftforj.source.before": {
+    "message": "Antes"
+  },
+  "page.craftforj.source.after": {
+    "message": "Después de quitar del origen"
+  },
+  "page.craftforj.start.eyebrow": {
+    "message": "Primeros pasos"
+  },
+  "page.craftforj.start.title1": {
+    "message": "Activar"
+  },
+  "page.craftforj.start.title2": {
+    "message": "en tres pasos"
+  },
+  "page.craftforj.start.lead": {
+    "message": "craftforJ viene incluido con webforJ, así que no tienes que descargar nada por separado. Los proyectos creados con startforJ o a partir de un arquetipo de webforJ ya lo tienen habilitado. Ejecuta la aplicación y ve directamente al paso tres."
+  },
+  "page.craftforj.start.step1.title": {
+    "message": "Añadir la dependencia"
+  },
+  "page.craftforj.start.step1.text": {
+    "message": "Añade webforj-devtools a tu proyecto si aún no está."
+  },
+  "page.craftforj.start.step2.title": {
+    "message": "Activar el modo de depuración y craftforJ"
+  },
+  "page.craftforj.start.step2.text": {
+    "message": "Establece ambas propiedades en webforj.conf o en application.properties para un proyecto Spring. craftforJ solo funciona cuando ambas están habilitadas."
+  },
+  "page.craftforj.start.step3.title": {
+    "message": "Reiniciar, recargar y abrirlo."
+  },
+  "page.craftforj.start.step3.text": {
+    "message": "Abre la aplicación desde el equipo donde se ejecuta. Aparecerá un botón de activación sobre tu aplicación. Haz clic en él o pulsa {keys} desde cualquier lugar de la aplicación. El mismo atajo también cierra craftforJ."
+  },
+  "page.craftforj.start.dockAlt": {
+    "message": "craftforJ acoplado al borde derecho de la página de la aplicación"
+  },
+  "page.craftforj.start.dockCaption": {
+    "message": "craftforJ flota sobre tu aplicación de forma predeterminada. Arrástralo hasta un borde para acoplarlo allí, o muévelo a una ventana o pestaña del navegador independiente para usarlo en un segundo monitor."
+  },
+  "page.craftforj.next.eyebrow": {
+    "message": "¿Adónde ahora?"
+  },
+  "page.craftforj.next.title1": {
+    "message": "Cada panel tiene su propia página\n"
+  },
+  "page.craftforj.next.title2": {
+    "message": "en la documentación"
+  },
+  "page.craftforj.next.lead": {
+    "message": "webforJ es el framework Java full-stack para aplicaciones web empresariales: crea toda la aplicación, incluidas las pantallas, en Java. craftforJ viene incluido y funciona en la aplicación que estás ejecutando."
+  },
+  "page.craftforj.next.assistant": {
+    "message": "El asistente de craftforJ"
+  },
+  "page.craftforj.next.home": {
+    "message": "Volver al inicio de la documentación"
+  },
+  "page.craftforj.meta.title": {
+    "message": "craftforJ: el editor visual de tu aplicación webforJ en ejecución"
+  },
+  "page.craftforj.meta.description": {
+    "message": "craftforJ es el editor visual de webforJ. Muestra el árbol de componentes de tu aplicación webforJ en ejecución, te permite cambiar propiedades en tiempo real y guarda los cambios que conserves en el código fuente Java."
+  },
+  "page.designKit.palette.primary": {
+    "message": "Color de tu marca"
+  },
+  "page.designKit.palette.default": {
+    "message": "Neutro, matizado con el tono principal"
+  },
+  "page.designKit.palette.success": {
+    "message": "Estado"
+  },
+  "page.designKit.palette.warning": {
+    "message": "Estado"
+  },
+  "page.designKit.palette.danger": {
+    "message": "Estado"
+  },
+  "page.designKit.palette.info": {
+    "message": "Énfasis secundario"
+  },
+  "page.designKit.palette.gray": {
+    "message": "Gris puro, sin matiz"
+  },
+  "page.designKit.surface.level1": {
+    "message": "Fondo de la página y del cuerpo"
+  },
+  "page.designKit.surface.level2": {
+    "message": "Barras de herramientas, barras de menú, tarjetas"
+  },
+  "page.designKit.surface.level3": {
+    "message": "Ventanas, menús, ventanas emergentes, cuadros de diálogo"
+  },
+  "page.designKit.collections.color": {
+    "message": "Color"
+  },
+  "page.designKit.collections.type": {
+    "message": "Tipografía"
+  },
+  "page.designKit.collections.space": {
+    "message": "Espaciado y tamaño"
+  },
+  "page.designKit.collections.radius": {
+    "message": "Radio"
+  },
+  "page.designKit.collections.depth": {
+    "message": "Sombras y superficies"
+  },
+  "page.designKit.handoff.color.design": {
+    "message": "Un color de marca"
+  },
+  "page.designKit.handoff.color.note": {
+    "message": "Los 19 pasos de la paleta se generan a partir de ella."
+  },
+  "page.designKit.handoff.type.design": {
+    "message": "Una escala tipográfica"
+  },
+  "page.designKit.handoff.type.note": {
+    "message": "Tamaños en rem; m es el estándar."
+  },
+  "page.designKit.handoff.space.design": {
+    "message": "Un ritmo de espaciado"
+  },
+  "page.designKit.handoff.space.note": {
+    "message": "Espacio entre componentes, en rem."
+  },
+  "page.designKit.handoff.theme.design": {
+    "message": "Claro y oscuro"
+  },
+  "page.designKit.handoff.theme.note": {
+    "message": "Sigue la preferencia del sistema."
+  },
+  "page.designKit.ai.step1.title": {
+    "message": "Lee el diseño"
+  },
+  "page.designKit.ai.step1.text": {
+    "message": "Le proporciona a tu asistente el marco que selecciones: su diseño, componentes y variables. Las variables del kit incluyen los nombres de los tokens DWC, así que el diseño ya habla el mismo lenguaje que el código."
+  },
+  "page.designKit.ai.step2.title": {
+    "message": "Lo verifica con webforJ\n"
+  },
+  "page.designKit.ai.step2.text": {
+    "message": "Responde basándose en el framework real: qué componente usar, qué opciones de estilo ofrece y si existen todos los tokens del CSS."
+  },
+  "page.designKit.ai.step3.who": {
+    "message": "Tu asistente"
+  },
+  "page.designKit.ai.step3.title": {
+    "message": "Escribe la pantalla en Java\n"
+  },
+  "page.designKit.ai.step3.text": {
+    "message": "Con ambos conectados, se crea la vista con componentes de webforJ y los mismos tokens que usó el diseñador, y puedes comparar el resultado con el diseño."
+  },
+  "page.designKit.next.overview.title": {
+    "message": "Resumen de estilos"
+  },
+  "page.designKit.next.overview.text": {
+    "message": "El sistema de diseño DWC y el kit."
+  },
+  "page.designKit.next.themes.title": {
+    "message": "Temas"
+  },
+  "page.designKit.next.themes.text": {
+    "message": "Los temas claro, oscuro y oscuro puro, y cómo sobrescribirlos."
+  },
+  "page.designKit.next.colors.title": {
+    "message": "Colores"
+  },
+  "page.designKit.next.colors.text": {
+    "message": "Siete paletas, 19 pasos cada una, a partir de una semilla."
+  },
+  "page.designKit.next.typography.title": {
+    "message": "Tipografía"
+  },
+  "page.designKit.next.typography.text": {
+    "message": "Familia tipográfica, tamaños, grosores y alturas de línea."
+  },
+  "page.designKit.next.sizingAndSpacing.title": {
+    "message": "Tamaño y espaciado"
+  },
+  "page.designKit.next.sizingAndSpacing.text": {
+    "message": "rem se escala para tamaños y espaciado."
+  },
+  "page.designKit.next.borders.title": {
+    "message": "Bordes"
+  },
+  "page.designKit.next.borders.text": {
+    "message": "Anchos, colores y una escala de radios a partir de una semilla."
+  },
+  "page.designKit.next.shadows.title": {
+    "message": "Sombras"
+  },
+  "page.designKit.next.shadows.text": {
+    "message": "Seis pasos que se adaptan a los modos claro y oscuro."
+  },
+  "page.designKit.next.surfaces.title": {
+    "message": "Superficies"
+  },
+  "page.designKit.next.surfaces.text": {
+    "message": "Tres niveles para la jerarquía de la interfaz de usuario."
+  },
+  "page.designKit.next.cssVariables.title": {
+    "message": "Variables CSS"
+  },
+  "page.designKit.next.cssVariables.text": {
+    "message": "Cómo se configuran y sobrescriben los tokens."
+  },
+  "page.designKit.carousel.slideAlt": {
+    "message": "Pantalla {name} de la aplicación {app}. {caption}"
+  },
+  "page.designKit.carousel.label": {
+    "message": "Pantallas de la aplicación diseñadas con el kit"
+  },
+  "page.designKit.carousel.position": {
+    "message": "{n} de {total}"
+  },
+  "page.designKit.carousel.previous": {
+    "message": "Pantalla anterior"
+  },
+  "page.designKit.carousel.count": {
+    "message": "{n} de {total}"
+  },
+  "page.designKit.carousel.next": {
+    "message": "Pantalla siguiente"
+  },
+  "page.designKit.readout.token": {
+    "message": "Token"
+  },
+  "page.designKit.readout.value": {
+    "message": "Valor resuelto"
+  },
+  "page.designKit.readout.text": {
+    "message": "Texto en él"
+  },
+  "page.designKit.color.title": {
+    "message": "Color"
+  },
+  "page.designKit.color.text": {
+    "message": "Siete paletas de 19 pasos, cada una generada a partir de una semilla. El paso 5 siempre es el más oscuro y el 95, el más claro. Selecciona una muestra de color para inspeccionarla."
+  },
+  "page.designKit.type.sample": {
+    "message": "Asignar conductor"
+  },
+  "page.designKit.type.title": {
+    "message": "Tipografía"
+  },
+  "page.designKit.type.text": {
+    "message": "Una escala de tamaños en rem, donde m es el tamaño estándar que usan la mayoría de los componentes, y una escala de grosores de fino a negro."
+  },
+  "page.designKit.space.title": {
+    "message": "Espaciado y tamaño"
+  },
+  "page.designKit.space.text": {
+    "message": "Espacio define la separación entre componentes. Tamaño define el ancho y alto de los componentes; m es el estándar para casi todos. Las barras de espacio se muestran con un tamaño cuatro veces mayor."
+  },
+  "page.designKit.radius.title": {
+    "message": "Radio"
+  },
+  "page.designKit.radius.text": {
+    "message": "Cada paso se escala a partir de una única semilla, --dwc-border-radius-seed. Cambia la semilla y todo el sistema de radios la sigue."
+  },
+  "page.designKit.shadow.layer": {
+    "message": "{count} capa"
+  },
+  "page.designKit.shadow.layers": {
+    "message": "{count} capas"
+  },
+  "page.designKit.depth.title": {
+    "message": "Sombras y superficies"
+  },
+  "page.designKit.depth.text": {
+    "message": "Las sombras muestran qué elementos están encima. Tres superficies organizan la jerarquía, desde la página hasta el diálogo. Ambas se adaptan al modo claro y oscuro."
+  },
+  "page.designKit.hero.eyebrow": {
+    "message": "Kit de diseño de Figma"
+  },
+  "page.designKit.hero.title1": {
+    "message": "Diseña con los mismos tokens"
+  },
+  "page.designKit.hero.title2": {
+    "message": "Tu aplicación se ejecuta en\n"
+  },
+  "page.designKit.hero.lead": {
+    "message": "El kit de diseño DWC es el recurso oficial de Figma para diseñar aplicaciones webforJ, de modo que diseñadores y desarrolladores trabajen con los mismos tokens y componentes."
+  },
+  "page.designKit.hero.openKit": {
+    "message": "Abre el kit en Figma\n"
+  },
+  "page.designKit.hero.styling": {
+    "message": "Lee la guía de estilos"
+  },
+  "page.designKit.facts.components.term": {
+    "message": "Componentes"
+  },
+  "page.designKit.facts.components.text": {
+    "message": "Cada componente DWC, con sus temas, dimensiones y estados"
+  },
+  "page.designKit.facts.tokens.term": {
+    "message": "Tokens"
+  },
+  "page.designKit.facts.tokens.text": {
+    "message": "Paletas, tipografía, espaciado y sombras como variables y estilos de Figma\n"
+  },
+  "page.designKit.facts.modes.term": {
+    "message": "Modos"
+  },
+  "page.designKit.facts.modes.text": {
+    "message": "Claro y oscuro, tal como los muestra la aplicación en webforJ 26 y versiones posteriores."
+  },
+  "page.designKit.tokens.kicker": {
+    "message": "Variables"
+  },
+  "page.designKit.tokens.title1": {
+    "message": "Los valores del kit"
+  },
+  "page.designKit.tokens.title2": {
+    "message": "¿Están los valores en el código?"
+  },
+  "page.designKit.tokens.lead": {
+    "message": "El kit contiene los tokens de DWC como variables de Figma. En la aplicación son propiedades personalizadas de CSS. Todo lo que aparece a continuación se obtiene de las variables {code} en las que se basa esta página, con el valor que el navegador resuelve para cada una. Cambia el sitio al modo oscuro y se actualizarán, igual que en el modo oscuro del kit."
+  },
+  "page.designKit.tokens.collectionsLabel": {
+    "message": "Colecciones de tokens"
+  },
+  "page.designKit.tokens.collections": {
+    "message": "Colecciones"
+  },
+  "page.designKit.kitToApp.kicker": {
+    "message": "Del kit a la app"
+  },
+  "page.designKit.kitToApp.title1": {
+    "message": "Diseñado con el kit,"
+  },
+  "page.designKit.kitToApp.title2": {
+    "message": "Creado con componentes de webforJ"
+  },
+  "page.designKit.kitToApp.lead": {
+    "message": "Las pantallas de la parte superior de esta página se diseñaron con el kit. Una pantalla diseñada con el kit utiliza los componentes y tokens que renderiza la aplicación, por lo que pasar de la maqueta al código Java no implica traducir de un lenguaje visual a otro."
+  },
+  "page.designKit.kitToApp.showcase": {
+    "message": "Explora la galería"
+  },
+  "page.designKit.together.kicker": {
+    "message": "Diseñador y desarrollador"
+  },
+  "page.designKit.together.title1": {
+    "message": "Una transferencia,"
+  },
+  "page.designKit.together.title2": {
+    "message": "Mapeado una vez"
+  },
+  "page.designKit.together.lead": {
+    "message": "Los tokens son el contrato entre diseño y código. El diseñador entrega un color de marca y una escala tipográfica del kit. El desarrollador los asigna una sola vez a un seed y a un token de tamaño de fuente, y todas las pantallas los heredan."
+  },
+  "page.designKit.handoff.inFigma": {
+    "message": "En Figma"
+  },
+  "page.designKit.handoff.inCode": {
+    "message": "En código"
+  },
+  "page.designKit.sides.kit.title": {
+    "message": "En el kit"
+  },
+  "page.designKit.sides.kit.item1": {
+    "message": "Cada componente DWC tal como se muestra en webforJ 26 y versiones posteriores, con sus temas, dimensiones y estados."
+  },
+  "page.designKit.sides.kit.item2": {
+    "message": "Paletas de colores, tipografía, espaciado y tokens de sombra como variables y estilos de Figma."
+  },
+  "page.designKit.sides.kit.item3": {
+    "message": "Modo claro y oscuro para los componentes y los tokens."
+  },
+  "page.designKit.sides.kit.item4": {
+    "message": "Espaciado preciso y contraste de color accesible para interfaces con un comportamiento predecible de los componentes."
+  },
+  "page.designKit.sides.app.title": {
+    "message": "En la app"
+  },
+  "page.designKit.sides.app.seed": {
+    "message": "Define la marca una sola vez como base. Los botones, enlaces y contornos de enfoque la heredan porque usan la paleta principal."
+  },
+  "page.designKit.sides.app.theme": {
+    "message": "Registra un tema claro y otro oscuro y haz que webforJ siga el sistema operativo del usuario."
+  },
+  "page.designKit.ai.kicker": {
+    "message": "Crear con IA"
+  },
+  "page.designKit.ai.title1": {
+    "message": "Desde el marco de Figma"
+  },
+  "page.designKit.ai.title2": {
+    "message": "a la pantalla de Java"
+  },
+  "page.designKit.ai.lead": {
+    "message": "Conecta dos servidores MCP a tu asistente de programación: uno de Figma y otro de webforJ. Uno interpreta el diseño, el otro conoce el framework y el asistente conecta ambos."
+  },
+  "page.designKit.ai.promptLabel": {
+    "message": "Un prompt para empezar"
+  },
+  "page.designKit.ai.prompt": {
+    "message": "Crea este frame de Figma como una vista de webforJ. Lee el frame con el servidor MCP de Figma, elige los componentes con el servidor MCP de webforJ y valida cada token --dwc-* antes de terminar."
+  },
+  "page.designKit.ai.install": {
+    "message": "Instalar el complemento de IA"
+  },
+  "page.designKit.ai.tooling": {
+    "message": "Ver las herramientas de IA"
+  },
+  "page.designKit.getIt.kicker": {
+    "message": "Obtener el kit"
+  },
+  "page.designKit.getIt.title1": {
+    "message": "Inicia tu siguiente pantalla\n"
+  },
+  "page.designKit.getIt.title2": {
+    "message": "en Figma"
+  },
+  "page.designKit.getIt.lead": {
+    "message": "El DWC Design Kit está en Figma Community. webforJ es el framework Java full-stack para aplicaciones web empresariales: creas toda la aplicación, incluidas las pantallas, en Java."
+  },
+  "page.designKit.getIt.openKit": {
+    "message": "Abre el kit en Figma."
+  },
+  "page.designKit.getIt.started": {
+    "message": "Lee la guía de inicio"
+  },
+  "page.designKit.getIt.step1.title": {
+    "message": "Abrir el kit"
+  },
+  "page.designKit.getIt.step1.text": {
+    "message": "Encuentra el kit de diseño de DWC en Figma Community."
+  },
+  "page.designKit.getIt.step2.title": {
+    "message": "Diseña las pantallas\n"
+  },
+  "page.designKit.getIt.step2.text": {
+    "message": "Usa sus componentes y variables, y revisa cada pantalla en modo claro y oscuro."
+  },
+  "page.designKit.getIt.step3.title": {
+    "message": "Constrúyelos en Java."
+  },
+  "page.designKit.getIt.step3.text": {
+    "message": "Usa los mismos componentes en webforJ y define tu marca con una sola semilla."
+  },
+  "page.designKit.next.title": {
+    "message": "Lee el sistema de diseño"
+  },
+  "page.designKit.next.home": {
+    "message": "Volver al inicio de la documentación"
+  },
+  "page.designKit.meta.title": {
+    "message": "Kit de diseño DWC para Figma: diseña aplicaciones webforJ"
+  },
+  "page.designKit.meta.description": {
+    "message": "El kit oficial de Figma para webforJ. Todos los componentes DWC con sus temas, expansiones y estados, además de los tokens de color, tipografía, espaciado y sombras como variables de Figma en modo claro y oscuro."
+  },
+  "page.intro.screens.one": {
+    "message": "Qué es webforJ"
+  },
+  "page.intro.screens.two": {
+    "message": "Componentes y tematización"
+  },
+  "page.intro.screens.craft": {
+    "message": "craftforJ"
+  },
+  "page.intro.screens.three": {
+    "message": "Datos, formularios y seguridad"
+  },
+  "page.intro.screens.four": {
+    "message": "Tu código existente"
+  },
+  "page.intro.screens.five": {
+    "message": "Herramientas de IA y próximos pasos"
+  },
+  "page.intro.four.roadmap.today.phase": {
+    "message": "Hoy"
+  },
+  "page.intro.four.roadmap.today.title": {
+    "message": "Swing en el escritorio"
+  },
+  "page.intro.four.roadmap.today.text": {
+    "message": "Años de lógica de negocio, en funcionamiento día tras día."
+  },
+  "page.intro.four.roadmap.one.phase": {
+    "message": "Paso uno"
+  },
+  "page.intro.four.roadmap.one.title": {
+    "message": "La misma app, en el navegador\n"
+  },
+  "page.intro.four.roadmap.one.text": {
+    "message": "Webswing lo transmite al navegador sin modificar el código fuente."
+  },
+  "page.intro.four.roadmap.from.phase": {
+    "message": "Desde allí"
+  },
+  "page.intro.four.roadmap.from.title": {
+    "message": "webforJ, pantalla por pantalla"
+  },
+  "page.intro.four.roadmap.from.text": {
+    "message": "Sustituye las pantallas de Swing por webforJ, una a una."
+  },
+  "page.intro.five.mcp.version": {
+    "message": "Selecciona la versión correcta de webforJ\n"
+  },
+  "page.intro.five.mcp.knowledge": {
+    "message": "Busca información en la base de conocimientos"
+  },
+  "page.intro.five.mcp.scaffold": {
+    "message": "Crear la estructura de un nuevo proyecto webforJ"
+  },
+  "page.intro.five.mcp.theme": {
+    "message": "Generar un tema de DWC"
+  },
+  "page.intro.five.mcp.style": {
+    "message": "Estiliza correctamente los componentes DWC."
+  },
+  "page.intro.five.mcp.tokens": {
+    "message": "Trabajar con los tokens de diseño de DWC"
+  },
+  "page.intro.next.create.step": {
+    "message": "Crear"
+  },
+  "page.intro.next.create.title": {
+    "message": "Iniciar un proyecto"
+  },
+  "page.intro.next.create.text": {
+    "message": "Genera un proyecto con startforJ o el arquetipo de Maven y ejecútalo."
+  },
+  "page.intro.next.learn.step": {
+    "message": "Aprender"
+  },
+  "page.intro.next.learn.title": {
+    "message": "Sigue el tutorial."
+  },
+  "page.intro.next.learn.text": {
+    "message": "Crea una app funcional paso a paso, desde la primera pantalla hasta la validación."
+  },
+  "page.intro.next.build.step": {
+    "message": "Compilar"
+  },
+  "page.intro.next.build.title": {
+    "message": "Componentes"
+  },
+  "page.intro.next.build.text": {
+    "message": "Cada componente con su API y ejemplos en vivo en la página."
+  },
+  "page.intro.next.explore.step": {
+    "message": "Explorar"
+  },
+  "page.intro.next.explore.title": {
+    "message": "Inicio de la documentación"
+  },
+  "page.intro.next.explore.text": {
+    "message": "El mapa completo de la documentación, organizado según lo que quieras hacer."
+  },
+  "page.intro.readMore": {
+    "message": "Leer más: {topic}"
+  },
+  "page.intro.hello.afterClick": {
+    "message": "Después de hacer clic"
+  },
+  "page.intro.hello.description": {
+    "message": "La vista en ejecución muestra un campo de texto con la etiqueta «¿Cómo te llamas?», un botón «Di hola» y, después de hacer clic, una notificación de éxito que dice «¡Te damos la bienvenida, Lauren!»."
+  },
+  "page.intro.one.kicker": {
+    "message": "Qué es webforJ"
+  },
+  "page.intro.one.title1": {
+    "message": "Una pantalla es"
+  },
+  "page.intro.one.title2": {
+    "message": "una clase de Java"
+  },
+  "page.intro.one.codeLabel": {
+    "message": "HelloView en Java o Kotlin"
+  },
+  "page.intro.one.lede": {
+    "message": "webforJ es el framework Java full-stack para aplicaciones web empresariales: creas toda la aplicación, incluidas las pantallas, en Java."
+  },
+  "page.intro.one.route.title": {
+    "message": "Una ruta lo convierte en una página."
+  },
+  "page.intro.one.route.text": {
+    "message": "Añade {code} a una clase y responderá en esa dirección en el navegador."
+  },
+  "page.intro.one.fields.title": {
+    "message": "Los componentes son campos."
+  },
+  "page.intro.one.fields.text": {
+    "message": "Créelos con {code} y reacciona a los clics con una lambda."
+  },
+  "page.intro.one.kotlin.title": {
+    "message": "Java o Kotlin."
+  },
+  "page.intro.one.kotlin.text": {
+    "message": "El DSL de Kotlin crea la misma pantalla con los mismos componentes."
+  },
+  "page.intro.one.readMore": {
+    "message": "Kotlin DSL"
+  },
+  "page.intro.tile.alt": {
+    "message": "El componente {name} de webforJ"
+  },
+  "page.intro.two.kicker": {
+    "message": "Componentes y temas"
+  },
+  "page.intro.two.title1": {
+    "message": "Componentes compilados"
+  },
+  "page.intro.two.title2": {
+    "message": "para aplicaciones empresariales."
+  },
+  "page.intro.two.lede": {
+    "message": "Los campos, las listas, los diálogos, las cargas de archivos, los gráficos, los árboles y los diseños vienen incluidos con webforJ. Cada uno es una clase Java que creas en tu pantalla."
+  },
+  "page.intro.two.body": {
+    "message": "La creación del tema parte de una semilla. Define la semilla principal y los 19 tonos de la paleta se ajustarán en todos los componentes."
+  },
+  "page.intro.two.codeLabel": {
+    "message": "Semilla del tema"
+  },
+  "page.intro.two.readMore": {
+    "message": "Componentes"
+  },
+  "page.intro.craft.kicker": {
+    "message": "craftforJ"
+  },
+  "page.intro.craft.title1": {
+    "message": "Mira la app que creó tu Java."
+  },
+  "page.intro.craft.title2": {
+    "message": "Cámbialo mientras se ejecuta."
+  },
+  "page.intro.craft.videoLabel": {
+    "message": "craftforJ abierto sobre una aplicación webforJ en ejecución: seleccionar un componente, cambiar sus propiedades y aplicar los cambios al código fuente Java\n"
+  },
+  "page.intro.craft.lede": {
+    "message": "craftforJ es el editor visual que se ejecuta dentro de tu aplicación en modo de desarrollo. Muestra el árbol de componentes creado por tu código Java, te permite cambiar propiedades en tiempo real y guarda los cambios que conserves en el código fuente Java."
+  },
+  "page.intro.craft.inspect.title": {
+    "message": "Inspeccionar componentes."
+  },
+  "page.intro.craft.inspect.text": {
+    "message": "Explora el árbol de componentes, selecciona uno haciendo clic en la página y cambia sus propiedades mientras la aplicación está en ejecución."
+  },
+  "page.intro.craft.source.title": {
+    "message": "Escribir cambios en el código fuente."
+  },
+  "page.intro.craft.source.text": {
+    "message": "Revisa tus cambios en vivo en formato diff y aplícalos al archivo Java original."
+  },
+  "page.intro.craft.ai.title": {
+    "message": "El asistente de IA."
+  },
+  "page.intro.craft.ai.text": {
+    "message": "Un agente de programación integrado en la aplicación en ejecución escribe Java, compila su código y lo aplica con tu aprobación."
+  },
+  "page.intro.three.kicker": {
+    "message": "Datos, formularios y seguridad"
+  },
+  "page.intro.three.title1": {
+    "message": "Formularios, reglas y acceso,"
+  },
+  "page.intro.three.title2": {
+    "message": "junto a tu backend."
+  },
+  "page.intro.three.codeLabel": {
+    "message": "Formulario, bean, vista de Spring y ruta protegida"
+  },
+  "page.intro.three.tabForm": {
+    "message": "Formulario"
+  },
+  "page.intro.three.tabBean": {
+    "message": "Bean"
+  },
+  "page.intro.three.tabSecurity": {
+    "message": "Seguridad"
+  },
+  "page.intro.three.binding.title": {
+    "message": "Vinculación"
+  },
+  "page.intro.three.binding.text": {
+    "message": "{code} vincula los campos del formulario con un bean y comprueba sus reglas de validación de Jakarta al guardar el formulario."
+  },
+  "page.intro.three.spring.text": {
+    "message": "Las vistas reciben tus servicios, repositorios y otros beans de Spring mediante inyección por constructor."
+  },
+  "page.intro.three.security.title": {
+    "message": "Seguridad."
+  },
+  "page.intro.three.security.text": {
+    "message": "Las anotaciones como {code} protegen una ruta y las reglas se aplican antes de renderizar cualquier componente."
+  },
+  "page.intro.three.readMore": {
+    "message": "Galería"
+  },
+  "page.intro.four.kicker": {
+    "message": "Tu código existente viene contigo."
+  },
+  "page.intro.four.title1": {
+    "message": "Traer el código"
+  },
+  "page.intro.four.title2": {
+    "message": "Ya tienes."
+  },
+  "page.intro.four.roadmapLabel": {
+    "message": "De Swing a webforJ"
+  },
+  "page.intro.four.codeLabel": {
+    "message": "Vista Swing y componente web"
+  },
+  "page.intro.four.tabSwing": {
+    "message": "Aplicación Swing"
+  },
+  "page.intro.four.tabComponent": {
+    "message": "Componente web"
+  },
+  "page.intro.four.lede": {
+    "message": "{code} incrusta una aplicación Swing, JavaFX o SWT en ejecución en una vista de webforJ, así que la reescritura no tiene que hacerse de una sola vez."
+  },
+  "page.intro.four.body": {
+    "message": "{code} envuelve un elemento HTML personalizado o componente web en una clase Java, con sus propiedades, atributos y eventos en Java."
+  },
+  "page.intro.five.skillsTitle": {
+    "message": "Habilidades del agente"
+  },
+  "page.intro.done.stamp": {
+    "message": "Recorrido completado"
+  },
+  "page.intro.done.title1": {
+    "message": "Esa era toda la pila."
+  },
+  "page.intro.done.title2": {
+    "message": "Ya estás listo para compilar."
+  },
+  "page.intro.done.text": {
+    "message": "Considérate certificado extraoficialmente: has visto cómo se construye una app de webforJ, desde la primera pantalla hasta las herramientas de IA que te ayudan a crear la siguiente."
+  },
+  "page.intro.next.title": {
+    "message": "Tu próxima parada"
+  },
+  "page.intro.five.kicker": {
+    "message": "Herramientas de IA y próximos pasos"
+  },
+  "page.intro.five.title1": {
+    "message": "Tu asistente de IA sigue"
+  },
+  "page.intro.five.title2": {
+    "message": "Convenciones de webforJ."
+  },
+  "page.intro.five.codeLabel": {
+    "message": "Instalar el plugin de IA"
+  },
+  "page.intro.five.tabTerminal": {
+    "message": "Terminal"
+  },
+  "page.intro.five.nameTerminal": {
+    "message": "Terminal"
+  },
+  "page.intro.five.lede": {
+    "message": "Una sola instalación del complemento de IA de webforJ proporciona a tu asistente de programación el servidor MCP de webforJ y Agent Skills."
+  },
+  "page.intro.five.body": {
+    "message": "El servidor le proporciona herramientas en tiempo real. Las habilidades indican cuándo usarlas, en qué orden y cómo verificar el resultado."
+  },
+  "page.intro.five.readMore": {
+    "message": "Herramientas de IA"
+  },
+  "page.intro.dock.label": {
+    "message": "Pantallas de introducción"
+  },
+  "page.intro.dock.previous": {
+    "message": "Pantalla anterior"
+  },
+  "page.intro.dock.count": {
+    "message": "{current} de {total}"
+  },
+  "page.intro.dock.screen": {
+    "message": "Pantalla {number}: {name}"
+  },
+  "page.intro.dock.next": {
+    "message": "Siguiente pantalla"
+  },
+  "page.intro.meta.title": {
+    "message": "webforJ en 6 pantallas: una breve introducción"
+  },
+  "page.intro.meta.description": {
+    "message": "Recorrido guiado de seis pantallas por webforJ, el framework Java full-stack para aplicaciones web empresariales: pantallas como clases Java, componentes y temas, el editor visual craftforJ, formularios y seguridad, componentes Swing y web, y herramientas de IA."
+  },
+  "page.kotlinDsl.concepts.naming.title": {
+    "message": "Constructores con nombres de componentes"
+  },
+  "page.kotlinDsl.concepts.naming.text": {
+    "message": "Cada componente tiene una función con el nombre de su clase en camelCase. La mayoría recibe, antes del bloque, las opciones que se configuran con más frecuencia, como una etiqueta o un texto de marcador de posición."
+  },
+  "page.kotlinDsl.concepts.nesting.title": {
+    "message": "Bloques anidados"
+  },
+  "page.kotlinDsl.concepts.nesting.text": {
+    "message": "Los componentes que contienen elementos secundarios aceptan llamadas DSL anidadas en su bloque, por lo que el código refleja la estructura de la pantalla."
+  },
+  "page.kotlinDsl.concepts.events.title": {
+    "message": "Eventos como lambdas"
+  },
+  "page.kotlinDsl.concepts.events.text": {
+    "message": "Los listeners usan métodos con el prefijo on que reciben una lambda, como onClick y onModify."
+  },
+  "page.kotlinDsl.concepts.scope.title": {
+    "message": "Seguridad del ámbito"
+  },
+  "page.kotlinDsl.concepts.scope.text": {
+    "message": "Los elementos secundarios solo se agregan a componentes que los admiten. Agregarlos por error a un ámbito externo no compila."
+  },
+  "page.kotlinDsl.concepts.styles.title": {
+    "message": "Estilos y nombres de clases"
+  },
+  "page.kotlinDsl.concepts.styles.text": {
+    "message": "La propiedad styles permite acceder a las propiedades CSS mediante corchetes, igual que setStyle() en Java. Los nombres de clase se añaden con +=."
+  },
+  "page.kotlinDsl.concepts.java.title": {
+    "message": "Junto a tu código Java"
+  },
+  "page.kotlinDsl.concepts.java.text": {
+    "message": "Kotlin se compila en bytecode de la JVM. Usa componentes compuestos de Kotlin desde clases Java y anida componentes Java en bloques DSL con add()."
+  },
+  "page.kotlinDsl.start.steps.dependency.title": {
+    "message": "Añadir las dependencias"
+  },
+  "page.kotlinDsl.start.steps.dependency.text": {
+    "message": "Añade el módulo DSL de Kotlin de webforJ y la biblioteca estándar de Kotlin a tu pom.xml."
+  },
+  "page.kotlinDsl.start.steps.plugin.title": {
+    "message": "Añadir el complemento de Maven para Kotlin"
+  },
+  "page.kotlinDsl.start.steps.plugin.text": {
+    "message": "Compila tus fuentes de Kotlin y Java en una sola compilación. No necesitas instalar Kotlin por separado."
+  },
+  "page.kotlinDsl.start.steps.files.title": {
+    "message": "Añade Kotlin junto a Java"
+  },
+  "page.kotlinDsl.start.steps.files.text": {
+    "message": "Los archivos Kotlin pueden ir en su propia carpeta de código fuente o en la misma carpeta que los archivos Java."
+  },
+  "page.kotlinDsl.start.steps.view.title": {
+    "message": "Escribe una vista y compila."
+  },
+  "page.kotlinDsl.start.steps.view.text": {
+    "message": "Escribe una vista con los builders. Luego, Maven compila tu código Kotlin junto con Java."
+  },
+  "page.kotlinDsl.hero.eyebrow": {
+    "message": "DSL de Kotlin para webforJ"
+  },
+  "page.kotlinDsl.hero.title1": {
+    "message": "Escríbelo en Kotlin."
+  },
+  "page.kotlinDsl.hero.title2": {
+    "message": "Conserva tu Java."
+  },
+  "page.kotlinDsl.hero.lead": {
+    "message": "El DSL de Kotlin permite crear interfaces de usuario con webforJ mediante una sintaxis concisa y con seguridad de tipos. En lugar de hacer llamadas imperativas, escribes código declarativo que se lee como una descripción de la pantalla y se compila en el mismo proyecto que tu código Java."
+  },
+  "page.kotlinDsl.hero.add": {
+    "message": "Añadirlo a un proyecto"
+  },
+  "page.kotlinDsl.hero.using": {
+    "message": "Usando el DSL"
+  },
+  "page.kotlinDsl.names.title": {
+    "message": "La clase que conoces, como constructor\n"
+  },
+  "page.kotlinDsl.names.becomes": {
+    "message": "se convierte en"
+  },
+  "page.kotlinDsl.names.note": {
+    "message": "Los botones, campos, diseños, diálogos, paneles laterales, listas y elementos HTML tienen uno cada uno, con el nombre de la clase en camelCase."
+  },
+  "page.kotlinDsl.compare.eyebrow": {
+    "message": "Una misma pantalla, dos idiomas"
+  },
+  "page.kotlinDsl.compare.title1": {
+    "message": "Lee Java."
+  },
+  "page.kotlinDsl.compare.title2": {
+    "message": "Luego, lee Kotlin."
+  },
+  "page.kotlinDsl.compare.lead": {
+    "message": "Ambos lados construyen los mismos componentes con las mismas clases de webforJ. La versión de Kotlin omite los setters y las llamadas a add(): los componentes se anidan y la configuración se realiza en bloques."
+  },
+  "page.kotlinDsl.features.eyebrow": {
+    "message": "Lo que te ofrece el DSL"
+  },
+  "page.kotlinDsl.features.title1": {
+    "message": "Constructores, bloques"
+  },
+  "page.kotlinDsl.features.title2": {
+    "message": "y lambdas"
+  },
+  "page.kotlinDsl.concepts.lead": {
+    "message": "Cada función constructora crea un componente, lo agrega a su contenedor principal y ejecuta un bloque de configuración. El resto del DSL se basa en eso."
+  },
+  "page.kotlinDsl.concepts.blocks.title": {
+    "message": "Bloques de configuración"
+  },
+  "page.kotlinDsl.concepts.blocks.text": {
+    "message": "El bloque recibe el componente como {code}, así que puedes establecer sus propiedades y llamar a sus métodos directamente."
+  },
+  "page.kotlinDsl.extend.eyebrow": {
+    "message": "Ampliación del DSL"
+  },
+  "page.kotlinDsl.extend.title1": {
+    "message": "Tus propios componentes,"
+  },
+  "page.kotlinDsl.extend.title2": {
+    "message": "también como constructores"
+  },
+  "page.kotlinDsl.extend.short": {
+    "message": "Los componentes personalizados y las bibliotecas de terceros se incorporan al DSL mediante una función de extensión en {hasComponents}. El helper {init} añade el componente a su elemento padre, ejecuta el bloque y lo devuelve. Los componentes compuestos que crees con el DSL obtienen una función del mismo modo."
+  },
+  "page.kotlinDsl.extend.link": {
+    "message": "Ampliación del DSL en la documentación"
+  },
+  "page.kotlinDsl.start.eyebrow": {
+    "message": "Cómo empezar"
+  },
+  "page.kotlinDsl.start.title1": {
+    "message": "Añadir Kotlin"
+  },
+  "page.kotlinDsl.start.title2": {
+    "message": "a un proyecto Maven"
+  },
+  "page.kotlinDsl.start.shortLead": {
+    "message": "El DSL de Kotlin está disponible a partir de webforJ 25.12. Un proyecto que ya se compila con Maven necesita una dependencia y un plugin."
+  },
+  "page.kotlinDsl.start.setup": {
+    "message": "Configurar Kotlin DSL"
+  },
+  "page.kotlinDsl.start.using": {
+    "message": "Uso del DSL"
+  },
+  "page.kotlinDsl.meta.title": {
+    "message": "Kotlin DSL para webforJ: escribe tus pantallas de webforJ en Kotlin\n"
+  },
+  "page.kotlinDsl.meta.description": {
+    "message": "El DSL de Kotlin de webforJ crea las mismas pantallas de webforJ con constructores de Kotlin con seguridad de tipos, bloques anidados y lambdas, en el mismo proyecto Maven que tu código Java."
+  },
+  "page.mcpApps.hero.videoLabel": {
+    "message": "Una vista de webforJ con enrutamiento abierta dentro de una conversación de IA, donde la persona y la IA interactúan con la misma interfaz en tiempo real."
+  },
+  "page.mcpApps.flow.step1Who": {
+    "message": "La IA"
+  },
+  "page.mcpApps.flow.step1Text": {
+    "message": "El host invoca la herramienta {tool} con una entrada como un código de almacén."
+  },
+  "page.mcpApps.flow.step2Text": {
+    "message": "webforJ muestra la vista enrutada {route}, y esta se abre en la conversación."
+  },
+  "page.mcpApps.flow.step3Who": {
+    "message": "La IA"
+  },
+  "page.mcpApps.flow.step3Text": {
+    "message": "La IA ejecuta acciones como {tool} en la vista abierta."
+  },
+  "page.mcpApps.flow.step4Who": {
+    "message": "La vista"
+  },
+  "page.mcpApps.flow.step4Text": {
+    "message": "La vista envía mensajes y el contexto del modelo a la conversación."
+  },
+  "page.mcpApps.host.contextTitle": {
+    "message": "Mantén informado al modelo."
+  },
+  "page.mcpApps.host.contextText": {
+    "message": "{call} reemplaza el contexto que la vista aporta al modelo. Las respuestas posteriores pueden usarlo y no se añade ningún mensaje visible."
+  },
+  "page.mcpApps.host.eventsTitle": {
+    "message": "Sigue la conversación"
+  },
+  "page.mcpApps.host.eventsText": {
+    "message": "Los listeners como {cancelled} y {changed} permiten que la vista reaccione cuando se cancela una llamada a una herramienta o cambia el contexto de la conversación."
+  },
+  "page.mcpApps.host.leaveTitle": {
+    "message": "Salir del marco"
+  },
+  "page.mcpApps.host.leaveText": {
+    "message": "{link} continúa en una página externa, y {mode} solicita una presentación diferente. El host decide si puede atender alguna de las solicitudes."
+  },
+  "page.mcpApps.run.springTitle": {
+    "message": "Spring Boot con Spring AI"
+  },
+  "page.mcpApps.run.springText": {
+    "message": "La forma principal de publicar una aplicación MCP. La integración detecta las rutas marcadas y las añade al servidor Spring AI MCP, que ofrece Streamable HTTP en {path} de forma predeterminada. Publica la herramienta y un recurso de interfaz que abre la ruta, e instala los filtros de servlet y la configuración de sesión necesarios para integrar webforJ."
+  },
+  "page.mcpApps.run.springLink": {
+    "message": "Configuración de Spring Boot"
+  },
+  "page.mcpApps.run.standardTag": {
+    "message": "Servlet estándar"
+  },
+  "page.mcpApps.run.standardTitle": {
+    "message": "Una aplicación de servlets sin Spring"
+  },
+  "page.mcpApps.run.standardText": {
+    "message": "Un inicializador analiza el paquete de las vistas enrutadas, agrega sus herramientas y recursos de interfaz a un servidor MCP y monta Streamable HTTP en {path}. Una llamada a {install} añade la compatibilidad con incrustaciones que necesita el host."
+  },
+  "page.mcpApps.run.standardLink": {
+    "message": "Configuración estándar"
+  },
+  "page.mcpApps.test.baseline1": {
+    "message": "El cliente se conecta al endpoint de MCP."
+  },
+  "page.mcpApps.test.baseline2": {
+    "message": "La herramienta {tool} está visible."
+  },
+  "page.mcpApps.test.baseline3": {
+    "message": "Invocar {tool} muestra el encabezado {heading}."
+  },
+  "page.mcpApps.test.baseline4": {
+    "message": "La interfaz renderizada es interactiva."
+  },
+  "page.mcpApps.start.step1Title": {
+    "message": "Añadir el módulo MCP Apps"
+  },
+  "page.mcpApps.start.step1Text": {
+    "message": "Añade el módulo {module} a una aplicación webforJ. Una aplicación Spring Boot también añade Spring AI MCP server starter."
+  },
+  "page.mcpApps.start.step2Title": {
+    "message": "Marcar una vista enrutada"
+  },
+  "page.mcpApps.start.step2Text": {
+    "message": "Añade {annotation} con una descripción que indique a la IA cuándo es útil la herramienta."
+  },
+  "page.mcpApps.start.step3Title": {
+    "message": "Inicia la aplicación y conéctate a un host."
+  },
+  "page.mcpApps.start.step3Text": {
+    "message": "Inicia el servidor y añade el endpoint {path} a un host compatible con MCP Apps."
+  },
+  "page.mcpApps.start.step4Title": {
+    "message": "Pide al anfitrión que lo abra."
+  },
+  "page.mcpApps.start.step4Text": {
+    "message": "Dile al anfitrión «Abre la aplicación de inventario» y aparecerá la vista."
+  },
+  "page.mcpApps.docs.overviewLabel": {
+    "message": "Resumen"
+  },
+  "page.mcpApps.docs.overviewText": {
+    "message": "Qué son las aplicaciones MCP y por dónde empezar"
+  },
+  "page.mcpApps.docs.springLabel": {
+    "message": "Configuración de Spring Boot"
+  },
+  "page.mcpApps.docs.springText": {
+    "message": "Dependencias, el endpoint y una aplicación enrutada"
+  },
+  "page.mcpApps.docs.testingLabel": {
+    "message": "Pruebas"
+  },
+  "page.mcpApps.docs.testingText": {
+    "message": "Clientes remotos, un inspector local y la línea base\n"
+  },
+  "page.mcpApps.docs.openingLabel": {
+    "message": "Entrada de apertura"
+  },
+  "page.mcpApps.docs.openingText": {
+    "message": "Esquemas de entrada, nombres de herramientas y modos de visualización\n"
+  },
+  "page.mcpApps.docs.actionsLabel": {
+    "message": "Acciones y actualizaciones"
+  },
+  "page.mcpApps.docs.actionsText": {
+    "message": "Herramientas compatibles con la vista abierta"
+  },
+  "page.mcpApps.docs.hostLabel": {
+    "message": "Interacción con el host"
+  },
+  "page.mcpApps.docs.hostText": {
+    "message": "Mensajes, contexto del modelo y eventos del host"
+  },
+  "page.mcpApps.docs.configLabel": {
+    "message": "Configuración"
+  },
+  "page.mcpApps.docs.configText": {
+    "message": "El origen de la aplicación, los orígenes de los clientes y los dominios del navegador"
+  },
+  "page.mcpApps.docs.standardLabel": {
+    "message": "Configuración estándar"
+  },
+  "page.mcpApps.docs.standardText": {
+    "message": "Un servidor MCP en una aplicación de servlets sin Spring"
+  },
+  "page.mcpApps.hero.title1": {
+    "message": "Tus vistas de Java,"
+  },
+  "page.mcpApps.hero.title2": {
+    "message": "dentro de la conversación de IA"
+  },
+  "page.mcpApps.hero.lead": {
+    "message": "Una aplicación de IA compatible con MCP, también llamada host, abre una vista de webforJ con una ruta dentro de su conversación. La persona y la IA trabajan con la misma interfaz en tiempo real."
+  },
+  "page.mcpApps.hero.primary": {
+    "message": "Configurar con Spring Boot"
+  },
+  "page.mcpApps.hero.secondary": {
+    "message": "Descubre cómo funciona"
+  },
+  "page.mcpApps.hero.videoBar": {
+    "message": "Una vista de inventario abierta en la conversación"
+  },
+  "page.mcpApps.flow.hostLane": {
+    "message": "Host de MCP"
+  },
+  "page.mcpApps.flow.hostLaneHint": {
+    "message": "la conversación con la IA"
+  },
+  "page.mcpApps.flow.appLane": {
+    "message": "app de webforJ"
+  },
+  "page.mcpApps.flow.appLaneHint": {
+    "message": "tus vistas enrutadas"
+  },
+  "page.mcpApps.shared.eyebrow": {
+    "message": "Una interfaz en vivo"
+  },
+  "page.mcpApps.shared.title1": {
+    "message": "La vista permanece en tu app."
+  },
+  "page.mcpApps.shared.title2": {
+    "message": "Ambos lo usan."
+  },
+  "page.mcpApps.shared.lead": {
+    "message": "La vista que muestra el host es la misma vista enrutada que muestra el navegador, con los mismos componentes, servicios, enrutamiento y estado. La IA interactúa con ella mediante herramientas, mientras la persona sigue usando directamente los componentes renderizados."
+  },
+  "page.mcpApps.open.eyebrow": {
+    "message": "Abrir una vista con un campo de entrada"
+  },
+  "page.mcpApps.open.title1": {
+    "message": "Una ruta se convierte en una herramienta."
+  },
+  "page.mcpApps.open.title2": {
+    "message": "Su entrada establece el inicio."
+  },
+  "page.mcpApps.open.lead": {
+    "message": "Añade {app} a una vista enrutada y se publica como herramienta. La descripción indica a la IA cuándo resulta útil. Un tipo de objeto, como un registro {record}, describe los argumentos, y un método {input} los aplica después de que se renderice la ruta."
+  },
+  "page.mcpApps.open.link": {
+    "message": "Más información sobre la apertura de entradas"
+  },
+  "page.mcpApps.open.namesTitle": {
+    "message": "Nombres de herramientas de las rutas"
+  },
+  "page.mcpApps.open.namesText": {
+    "message": "Sin {name}, webforJ obtiene el nombre de la herramienta de la ruta: {route} se convierte en {tool}, {nestedRoute} en {nestedTool} y la ruta raíz en {rootTool}."
+  },
+  "page.mcpApps.open.modeTitle": {
+    "message": "Un modo de visualización solicitado"
+  },
+  "page.mcpApps.open.modeText": {
+    "message": "{mode} le pregunta al host cómo mostrar la vista. El host puede elegir otro modo."
+  },
+  "page.mcpApps.change.eyebrow": {
+    "message": "Acciones y actualizaciones"
+  },
+  "page.mcpApps.change.title1": {
+    "message": "Más herramientas,"
+  },
+  "page.mcpApps.change.title2": {
+    "message": "para la vista ya abierta"
+  },
+  "page.mcpApps.change.lead": {
+    "message": "Estas herramientas no abren la aplicación. La llamada se dirige a la vista {tool} renderizada en la misma sesión de MCP. Si esa vista no está abierta, la llamada devuelve un error que indica al host que primero debe llamar a {tool}."
+  },
+  "page.mcpApps.change.link": {
+    "message": "Más información sobre acciones y actualizaciones"
+  },
+  "page.mcpApps.change.actionTitle": {
+    "message": "Una acción es un método de vista\n"
+  },
+  "page.mcpApps.change.actionText": {
+    "message": "Añade {annotation} a un método y se convierte en una herramienta con su propia entrada. El nombre del método {method} genera {tool}."
+  },
+  "page.mcpApps.change.updateTitle": {
+    "message": "Una herramienta de actualización con la entrada inicial"
+  },
+  "page.mcpApps.change.updateText": {
+    "message": "Una vista que implementa {observer} recibe una herramienta de actualización con el mismo esquema de entrada que {tool}. La función de retorno decide cómo usar los argumentos y devuelve el resultado de la herramienta."
+  },
+  "page.mcpApps.change.updatePoint1": {
+    "message": "webforJ no aplica automáticamente los valores a los componentes."
+  },
+  "page.mcpApps.change.updatePoint2": {
+    "message": "Al llamarlo, no se abre la ruta ni se muestra otra vista."
+  },
+  "page.mcpApps.change.updatePoint3": {
+    "message": "La herramienta de actualización no tiene metadatos de recursos de IU."
+  },
+  "page.mcpApps.change.updatePoint4": {
+    "message": "Una vista puede usar tanto una acción como la herramienta de actualización."
+  },
+  "page.mcpApps.host.eyebrow": {
+    "message": "Interacción con el host"
+  },
+  "page.mcpApps.host.title1": {
+    "message": "La vista responde"
+  },
+  "page.mcpApps.host.title2": {
+    "message": "a la conversación"
+  },
+  "page.mcpApps.host.lead": {
+    "message": "La misma ruta también se abre en un navegador normal, por lo que cada interacción con el host comienza comprobando que haya un host presente. Las llamadas al host son asíncronas y devuelven un {result}."
+  },
+  "page.mcpApps.host.link": {
+    "message": "Leer sobre la interacción con el host"
+  },
+  "page.mcpApps.host.messageTitle": {
+    "message": "Continúa la conversación desde la vista\n"
+  },
+  "page.mcpApps.host.messageText": {
+    "message": "La persona selecciona un almacén y pide a la IA que revise sus existencias. El botón envía esa solicitud como el siguiente mensaje del usuario. {call} se ejecuta solo cuando la vista está conectada a un host."
+  },
+  "page.mcpApps.run.eyebrow": {
+    "message": "Spring Boot o una aplicación servlet estándar"
+  },
+  "page.mcpApps.run.title1": {
+    "message": "Publicar con Spring AI,"
+  },
+  "page.mcpApps.run.title2": {
+    "message": "o ensambla el servidor tú mismo\n"
+  },
+  "page.mcpApps.run.lead": {
+    "message": "La vista sigue funcionando en {route} en un navegador. La publicación añade la herramienta MCP, el recurso de interfaz que abre la ruta y la configuración del servlet que el host necesita para incrustar webforJ."
+  },
+  "page.mcpApps.test.eyebrow": {
+    "message": "Pruebas"
+  },
+  "page.mcpApps.test.title1": {
+    "message": "Conectar un host."
+  },
+  "page.mcpApps.test.title2": {
+    "message": "Comprueba la línea base."
+  },
+  "page.mcpApps.test.lead": {
+    "message": "Las aplicaciones MCP de webforJ se ejecutan en cualquier host compatible con MCP Apps. La herramienta {tool} mínima, sin parámetros, basta para confirmar que un host puede descubrirla y mostrar la vista."
+  },
+  "page.mcpApps.test.link": {
+    "message": "Lee la guía de pruebas"
+  },
+  "page.mcpApps.test.remoteTag": {
+    "message": "Hosts remotos"
+  },
+  "page.mcpApps.test.remoteText": {
+    "message": "Un host que se conecta desde fuera de la máquina de desarrollo no puede acceder a {local}. Expón la app mediante un túnel, configura {origin} como origen público y proporciona al host ese origen seguido de {path}."
+  },
+  "page.mcpApps.test.localTag": {
+    "message": "Inspector local"
+  },
+  "page.mcpApps.test.localText": {
+    "message": "Un inspector en la misma máquina se conecta al endpoint local. Configura el {origin} local y añade el origen del navegador del inspector a {allowed}."
+  },
+  "page.mcpApps.test.baselineTag": {
+    "message": "La línea base para cada host"
+  },
+  "page.mcpApps.start.eyebrow": {
+    "message": "Cómo empezar"
+  },
+  "page.mcpApps.start.title1": {
+    "message": "Una vista,"
+  },
+  "page.mcpApps.start.title2": {
+    "message": "Abrir en un host"
+  },
+  "page.mcpApps.start.lead": {
+    "message": "webforJ es el framework full-stack de Java para aplicaciones web empresariales: puedes crear toda la aplicación, incluidas las pantallas, en Java. MCP Apps forma parte de webforJ desde la versión 26.02, y Spring Boot con Spring AI es la forma principal de publicar una."
+  },
+  "page.mcpApps.start.primary": {
+    "message": "Configurar con Spring Boot"
+  },
+  "page.mcpApps.start.secondary": {
+    "message": "Configurar sin Spring"
+  },
+  "page.mcpApps.docs.navLabel": {
+    "message": "Documentación de MCP Apps"
+  },
+  "page.mcpApps.meta.title": {
+    "message": "MCP Apps: abre vistas de webforJ dentro de una conversación con IA"
+  },
+  "page.mcpApps.meta.description": {
+    "message": "Con las aplicaciones MCP de webforJ, una aplicación de IA compatible con MCP abre una vista de webforJ con enrutamiento dentro de la conversación, y la persona y la IA trabajan con la misma interfaz en tiempo real."
+  },
+  "page.modernization.mock.teamSales": {
+    "message": "Ventas"
+  },
+  "page.modernization.mock.teamSupport": {
+    "message": "Soporte"
+  },
+  "page.modernization.mock.teamFinance": {
+    "message": "Finanzas"
+  },
+  "page.modernization.mock.customerTable": {
+    "message": "Tabla de clientes"
+  },
+  "page.modernization.mock.file": {
+    "message": "Archivo"
+  },
+  "page.modernization.mock.edit": {
+    "message": "Editar"
+  },
+  "page.modernization.mock.view": {
+    "message": "Ver"
+  },
+  "page.modernization.mock.name": {
+    "message": "Nombre"
+  },
+  "page.modernization.mock.team": {
+    "message": "Equipo"
+  },
+  "page.modernization.mock.city": {
+    "message": "Ciudad"
+  },
+  "page.modernization.mock.customers": {
+    "message": "Clientes"
+  },
+  "page.modernization.mock.orders": {
+    "message": "Pedidos"
+  },
+  "page.modernization.mock.reports": {
+    "message": "Informes"
+  },
+  "page.modernization.mock.editCustomer": {
+    "message": "Editar cliente"
+  },
+  "page.modernization.mock.cancel": {
+    "message": "Cancelar"
+  },
+  "page.modernization.mock.save": {
+    "message": "Guardar"
+  },
+  "page.modernization.mock.appTab": {
+    "message": "Aplicación webforJ"
+  },
+  "page.modernization.mock.swingStreamed": {
+    "message": "Aplicación Swing en streaming\n"
+  },
+  "page.modernization.mock.webDialog": {
+    "message": "Diálogo de webforJ"
+  },
+  "page.modernization.mock.laneSwing": {
+    "message": "Aplicación Swing"
+  },
+  "page.modernization.mock.laneWeb": {
+    "message": "App de webforJ"
+  },
+  "page.modernization.phases.p1.label": {
+    "message": "Tu aplicación en la web"
+  },
+  "page.modernization.phases.p1.title": {
+    "message": "Ejecutar la aplicación de escritorio en el navegador\n"
+  },
+  "page.modernization.phases.p1.text": {
+    "message": "Webswing ejecuta tu aplicación Swing, JavaFX o SWT en el servidor y transmite su interfaz al navegador como un lienzo HTML5. Las entradas del ratón y el teclado llegan a la aplicación real. El código fuente no cambia."
+  },
+  "page.modernization.phases.p1.note": {
+    "message": "Incrústelo en una vista de webforJ con WebswingConnector. El conector se conecta al servidor de Webswing cuando se añade a la página."
+  },
+  "page.modernization.phases.p2.label": {
+    "message": "Nuevas pantallas en webforJ"
+  },
+  "page.modernization.phases.p2.title": {
+    "message": "Crea nuevas pantallas a su alrededor"
+  },
+  "page.modernization.phases.p2.text": {
+    "message": "Las nuevas pantallas están escritas en webforJ y conviven con la aplicación integrada. Ambos lados se envían acciones: un clic en Swing puede abrir un formulario web y, al guardar en la web, se actualiza la tabla de Swing. Los usuarios trabajan con pantallas antiguas y nuevas en la misma pestaña del navegador."
+  },
+  "page.modernization.phases.p2.note": {
+    "message": "Swing emite un doble clic como select-customer. webforJ abre su propio formulario y envía update-customer al guardar."
+  },
+  "page.modernization.phases.p3.label": {
+    "message": "Cambiar por completo"
+  },
+  "page.modernization.phases.p3.title": {
+    "message": "Retirar el cliente de escritorio"
+  },
+  "page.modernization.phases.p3.text": {
+    "message": "Reemplaza las pantallas de Swing una a una, en el orden que más le importe a tu negocio. Cuando una pantalla tenga un equivalente en webforJ, elimina sus acciones. Después de la última, desaparecerán la capa de Webswing y el cliente de escritorio."
+  },
+  "page.modernization.phases.p3.runs.term": {
+    "message": "Qué se ejecuta"
+  },
+  "page.modernization.phases.p3.runs.desc": {
+    "message": "Una aplicación Java en el navegador, con cada pantalla escrita en webforJ."
+  },
+  "page.modernization.phases.p3.goes.term": {
+    "message": "Qué va"
+  },
+  "page.modernization.phases.p3.goes.desc": {
+    "message": "El servidor de Webswing, la interfaz de escritorio en streaming y el cliente instalado."
+  },
+  "page.modernization.phases.p3.stays.term": {
+    "message": "Qué permanece"
+  },
+  "page.modernization.phases.p3.stays.desc": {
+    "message": "Tus clases de dominio, servicios y reglas de validación, que se invocan desde las nuevas pantallas como métodos Java."
+  },
+  "page.modernization.phases.p3.note": {
+    "message": "Puedes detenerte después de cualquier fase y aun así habrás conseguido algo. La fase 2 puede ejecutarse mientras el presupuesto lo permita."
+  },
+  "page.modernization.stays.team.title": {
+    "message": "El equipo"
+  },
+  "page.modernization.stays.team.text": {
+    "message": "Quienes mantienen hoy la aplicación Swing crean las pantallas web en Java. No hay un segundo equipo ni herramientas de frontend que aprender."
+  },
+  "page.modernization.stays.code.title": {
+    "message": "El código"
+  },
+  "page.modernization.stays.code.text": {
+    "message": "Webswing ejecuta la aplicación tal cual. La misma base de código funciona tanto como aplicación de escritorio como en el navegador, así que mantienes una sola aplicación, no dos."
+  },
+  "page.modernization.stays.logic.title": {
+    "message": "La lógica"
+  },
+  "page.modernization.stays.logic.text": {
+    "message": "Las clases de dominio, los servicios y las reglas de validación que no tienen nada que ver con {code} se llaman directamente desde las nuevas pantallas. No se convierten primero en endpoints."
+  },
+  "page.modernization.stays.toolchain.title": {
+    "message": "La cadena de herramientas"
+  },
+  "page.modernization.stays.toolchain.text": {
+    "message": "Maven, tu IDE, tu depurador y tus pruebas existentes siguen siendo aplicables."
+  },
+  "page.modernization.ai.loop.one.title": {
+    "message": "Dale una pantalla Swing."
+  },
+  "page.modernization.ai.loop.one.text": {
+    "message": "Solicita el equivalente de webforJ que invoque tus servicios existentes."
+  },
+  "page.modernization.ai.loop.two.title": {
+    "message": "Comprueba la API real\n"
+  },
+  "page.modernization.ai.loop.two.text": {
+    "message": "El servidor MCP consulta la documentación y los detalles de la API de webforJ bajo demanda, en lugar de hacer suposiciones."
+  },
+  "page.modernization.ai.loop.three.title": {
+    "message": "Revisas y pruebas"
+  },
+  "page.modernization.ai.loop.three.text": {
+    "message": "Compara el comportamiento con el original de Swing y luego pasa a la siguiente pantalla."
+  },
+  "page.modernization.next.overview.title": {
+    "message": "Descripción general de Webswing"
+  },
+  "page.modernization.next.overview.text": {
+    "message": "Qué resuelve Webswing y cómo funcionan juntas las tres capas."
+  },
+  "page.modernization.next.setup.title": {
+    "message": "Instalación y configuración"
+  },
+  "page.modernization.next.setup.text": {
+    "message": "Instalación del servidor, consola de administración, CORS y opciones del conector."
+  },
+  "page.modernization.next.communication.title": {
+    "message": "Comunicación"
+  },
+  "page.modernization.next.communication.text": {
+    "message": "Cada acción y evento entre webforJ y la aplicación Swing."
+  },
+  "page.modernization.next.tutorial.title": {
+    "message": "Tutorial de modernización"
+  },
+  "page.modernization.next.tutorial.text": {
+    "message": "Una tabla de clientes de Swing integrada con un cuadro de diálogo de edición de webforJ."
+  },
+  "page.modernization.next.plugin.title": {
+    "message": "Plugin de IA de webforJ"
+  },
+  "page.modernization.next.plugin.text": {
+    "message": "El servidor MCP y las Agent Skills para tu asistente de programación."
+  },
+  "page.modernization.next.home.title": {
+    "message": "Inicio de la documentación"
+  },
+  "page.modernization.next.home.text": {
+    "message": "Todo lo demás en webforJ, desde el primer proyecto hasta los componentes."
+  },
+  "page.modernization.hero.caption": {
+    "message": "Al hacer doble clic en la tabla Swing, se abre un diálogo de webforJ en lugar del antiguo diálogo de Swing. Ambos se ejecutan en la misma pestaña del navegador."
+  },
+  "page.modernization.hero.eyebrow": {
+    "message": "Modernización de Swing"
+  },
+  "page.modernization.hero.title1": {
+    "message": "De Swing a la web,"
+  },
+  "page.modernization.hero.title2": {
+    "message": "Una pantalla a la vez"
+  },
+  "page.modernization.hero.lead": {
+    "message": "Tu aplicación Swing, JavaFX o SWT se ejecuta en un navegador web sin modificar el código fuente. Después, creas nuevas pantallas con webforJ y sustituyes las antiguas a tu propio ritmo. El equipo de Java y el código permanecen."
+  },
+  "page.modernization.hero.cta": {
+    "message": "Sigue el tutorial."
+  },
+  "page.modernization.hero.setup": {
+    "message": "Configurar Webswing"
+  },
+  "page.modernization.hero.fact1": {
+    "message": "Bibliotecas de escritorio: Swing, JavaFX y SWT"
+  },
+  "page.modernization.hero.fact2": {
+    "message": "Cambios en el código fuente para ejecutarse en un navegador"
+  },
+  "page.modernization.stays.eyebrow": {
+    "message": "Qué se mantiene igual"
+  },
+  "page.modernization.stays.title1": {
+    "message": "Solo las pantallas"
+  },
+  "page.modernization.stays.title2": {
+    "message": "Cambiar"
+  },
+  "page.modernization.stays.lead": {
+    "message": "webforJ es el framework Java full-stack para aplicaciones web empresariales: creas toda la aplicación, incluidas las pantallas, en Java. Así que migrar una aplicación Swing implica migrar sus pantallas, y todo lo que hay detrás se conserva."
+  },
+  "page.modernization.stays.changesLabel": {
+    "message": "Qué cambia"
+  },
+  "page.modernization.stays.changesText": {
+    "message": "Las pantallas. Las mueves de una en una, en el orden que más le importa a tu negocio, mientras el resto de la aplicación Swing sigue ejecutándose en la misma pestaña del navegador."
+  },
+  "page.modernization.journey.eyebrow": {
+    "message": "El traslado, en tres fases"
+  },
+  "page.modernization.journey.title1": {
+    "message": "Recorrer el movimiento paso a paso"
+  },
+  "page.modernization.journey.title2": {
+    "message": "Del escritorio a la web"
+  },
+  "page.modernization.journey.lead": {
+    "message": "Cada fase ofrece algo que los usuarios pueden ver. Elige una fase para ver la pantalla en ese momento y el código que la hace funcionar."
+  },
+  "page.modernization.journey.tabsLabel": {
+    "message": "Fases de modernización"
+  },
+  "page.modernization.journey.phase": {
+    "message": "Fase {number}"
+  },
+  "page.modernization.journey.count": {
+    "message": "Fase {number} de {total}"
+  },
+  "page.modernization.journey.prev": {
+    "message": "Fase anterior"
+  },
+  "page.modernization.journey.next": {
+    "message": "Siguiente fase"
+  },
+  "page.modernization.talk.eyebrow": {
+    "message": "Comunicación bidireccional"
+  },
+  "page.modernization.talk.title1": {
+    "message": "Pantallas antiguas y nuevas"
+  },
+  "page.modernization.talk.title2": {
+    "message": "Hablar entre sí"
+  },
+  "page.modernization.talk.lead": {
+    "message": "Un mensaje es una acción: un nombre, una carga útil de texto opcional y una carga útil binaria opcional. Tú eliges el nombre. Ambos extremos usan Java puro, así que nadie escribe código de navegador para el intercambio."
+  },
+  "page.modernization.talk.announce.title": {
+    "message": "Swing anuncia"
+  },
+  "page.modernization.talk.announce.text": {
+    "message": "Un doble clic envía {action} con la fila en formato JSON. En escritorio, el mismo clic sigue abriendo el diálogo de Swing."
+  },
+  "page.modernization.talk.reply.title": {
+    "message": "Respuestas de webforJ"
+  },
+  "page.modernization.talk.reply.text": {
+    "message": "Al guardar, el formulario web envía {action} de vuelta y la aplicación Swing actualiza su tabla. Ninguna de las partes accede a los detalles internos de la otra."
+  },
+  "page.modernization.talk.send.title": {
+    "message": "Enviar comandos a Swing"
+  },
+  "page.modernization.talk.send.text": {
+    "message": "performAction() envía un nombre solo o un nombre con datos. La aplicación Swing decide qué significa cada nombre."
+  },
+  "page.modernization.talk.send.file": {
+    "message": "Enviando acciones"
+  },
+  "page.modernization.talk.ready.title": {
+    "message": "Saber cuándo Swing está listo"
+  },
+  "page.modernization.talk.ready.text": {
+    "message": "onInitialize se ejecuta cuando la conexión está lista. onStart se ejecuta cuando la aplicación Swing se ha cargado por completo. Envía tu primera acción desde onStart."
+  },
+  "page.modernization.talk.ready.file": {
+    "message": "Eventos del ciclo de vida"
+  },
+  "page.modernization.ai.eyebrow": {
+    "message": "Portar con un asistente de IA"
+  },
+  "page.modernization.ai.title1": {
+    "message": "Deja que un asistente lo porte,"
+  },
+  "page.modernization.ai.title2": {
+    "message": "pantalla por pantalla"
+  },
+  "page.modernization.ai.lead": {
+    "message": "Avanzar pantalla por pantalla es un trabajo repetitivo, ideal para un asistente de programación con IA. El complemento de IA de webforJ lo conecta con el servidor MCP de webforJ y con Agent Skills, flujos de trabajo estructurados que le indican cuándo usar esas herramientas, en qué orden y cómo validar el resultado."
+  },
+  "page.modernization.ai.install": {
+    "message": "Instalar el plugin de IA"
+  },
+  "page.modernization.ai.skills": {
+    "message": "Más información sobre Agent Skills"
+  },
+  "page.modernization.start.eyebrow": {
+    "message": "Cómo empezar"
+  },
+  "page.modernization.start.title1": {
+    "message": "Desde un archivo JAR"
+  },
+  "page.modernization.start.title2": {
+    "message": "a una página en el navegador"
+  },
+  "page.modernization.start.lead": {
+    "message": "Necesitas una aplicación Swing, JavaFX o SWT empaquetada en un archivo JAR, el servidor Webswing y webforJ 25.10 o posterior."
+  },
+  "page.modernization.start.step1.title": {
+    "message": "Descargar e iniciar Webswing"
+  },
+  "page.modernization.start.step1.text": {
+    "message": "Descarga Webswing, extrae el archivo y luego inicia el servidor con el script de tu plataforma. Responde en {url}."
+  },
+  "page.modernization.start.platform": {
+    "message": "Plataforma"
+  },
+  "page.modernization.start.step2.title": {
+    "message": "Registra tu app"
+  },
+  "page.modernization.start.step2.text": {
+    "message": "En la consola de administración en {admin}, configura el nombre de la aplicación, la clase principal, la ruta de clases, los argumentos de la JVM y el directorio de inicio. La aplicación estará disponible en {url}."
+  },
+  "page.modernization.start.step2.cors": {
+    "message": "Añade el origen de tu aplicación webforJ a Orígenes permitidos, por ejemplo {url}."
+  },
+  "page.modernization.start.step2.portsTerm": {
+    "message": "Puertos"
+  },
+  "page.modernization.start.step2.ports": {
+    "message": "Ambos suelen usar el puerto 8080. Cambia uno para evitar conflictos."
+  },
+  "page.modernization.start.step3.title": {
+    "message": "Añadir dependencia"
+  },
+  "page.modernization.start.step3.text": {
+    "message": "El módulo webforj-webswing proporciona WebswingConnector y las clases relacionadas."
+  },
+  "page.modernization.start.step4.title": {
+    "message": "Incrustar y configurar"
+  },
+  "page.modernization.start.step4.text": {
+    "message": "Añade un WebswingConnector a una vista, como en la fase 1. WebswingOptions cambia su comportamiento; por ejemplo, oculta el botón de cierre de sesión cuando tu aplicación webforJ gestiona el inicio de sesión."
+  },
+  "page.modernization.next.title1": {
+    "message": "Elige tu"
+  },
+  "page.modernization.next.title2": {
+    "message": "primera pantalla"
+  },
+  "page.modernization.next.lead": {
+    "message": "Empieza con una lista sencilla y un formulario de edición. Incrusta la aplicación, migra esa pantalla a webforJ y comprueba cómo funciona junto con el resto."
+  },
+  "page.modernization.meta.title": {
+    "message": "Modernización de Swing: lleva tu aplicación Java de escritorio a la web\n"
+  },
+  "page.modernization.meta.description": {
+    "message": "Ejecuta tu aplicación Swing, JavaFX o SWT en el navegador sin cambiar su código fuente y luego reemplaza sus pantallas con webforJ, una por una. El mismo equipo de Java, el mismo código."
+  },
+  "page.showcase.freightDispatch.platform": {
+    "message": "Escritorio"
+  },
+  "page.showcase.freightDispatch.useCase": {
+    "message": "Los despachadores asignan envíos a los conductores y siguen cada camión en carretera."
+  },
+  "page.showcase.freightDispatch.description": {
+    "message": "Software de operaciones para una empresa regional de transporte de carga. Los despachadores asignan cargas a conductores y camiones, siguen cada envío en ruta y gestionan retrasos durante todo el día en pantallas grandes."
+  },
+  "page.showcase.freightDispatch.features.appLayout.text": {
+    "message": "Un menú lateral y un encabezado que permanecen fijos mientras cambia el área de trabajo."
+  },
+  "page.showcase.freightDispatch.features.drawer.text": {
+    "message": "Los detalles del envío se deslizan desde un lateral para que el tablero permanezca visible."
+  },
+  "page.showcase.freightDispatch.features.dialogAndTable.title": {
+    "message": "Diálogo y tabla"
+  },
+  "page.showcase.freightDispatch.features.dialogAndTable.text": {
+    "message": "Selecciona un conductor en una tabla ordenable sin salir del tablero."
+  },
+  "page.showcase.freightDispatch.features.serverPushedUpdates.title": {
+    "message": "Actualizaciones enviadas por el servidor"
+  },
+  "page.showcase.freightDispatch.features.serverPushedUpdates.text": {
+    "message": "Los retrasos y las nuevas horas de llegada llegan desde el servidor a todas las pantallas abiertas."
+  },
+  "page.showcase.freightDispatch.screens.dispatchBoard.name": {
+    "message": "Panel de despacho"
+  },
+  "page.showcase.freightDispatch.screens.dispatchBoard.caption": {
+    "message": "Todos los envíos por estado, desde en espera de conductor hasta entregados, con las cifras de hoy arriba."
+  },
+  "page.showcase.freightDispatch.screens.liveMap.name": {
+    "message": "Mapa en vivo"
+  },
+  "page.showcase.freightDispatch.screens.liveMap.caption": {
+    "message": "Sigue cada camión en carretera y detecta de un vistazo los envíos retrasados."
+  },
+  "page.showcase.freightDispatch.screens.loadDetail.name": {
+    "message": "Cargar detalles"
+  },
+  "page.showcase.freightDispatch.screens.loadDetail.caption": {
+    "message": "Abre un envío en un panel lateral para ver el cliente, las paradas y los documentos."
+  },
+  "page.showcase.freightDispatch.screens.assignDriver.name": {
+    "message": "Asignar conductor"
+  },
+  "page.showcase.freightDispatch.screens.assignDriver.caption": {
+    "message": "Selecciona un conductor según las horas restantes, la ubicación y el remolque. La app explica quién cumple los requisitos y quién no."
+  },
+  "page.showcase.freightDispatch.screens.delayHandling.name": {
+    "message": "Gestión de retrasos"
+  },
+  "page.showcase.freightDispatch.screens.delayHandling.caption": {
+    "message": "Indica una nueva hora de llegada, escribe al cliente y deja que la app se lo comunique."
+  },
+  "page.showcase.siteInspection.platform": {
+    "message": "Móvil"
+  },
+  "page.showcase.siteInspection.useCase": {
+    "message": "Los inspectores de edificios completan una lista de verificación y obtienen el visto bueno, todo desde el móvil."
+  },
+  "page.showcase.siteInspection.description": {
+    "message": "Los inspectores de seguridad de edificios siguen la ruta del día, recorren una lista de verificación habitación por habitación, fotografían los problemas y obtienen la aprobación del administrador del sitio. El inspector instala la aplicación en la pantalla de inicio del teléfono."
+  },
+  "page.showcase.siteInspection.features.installableApp.title": {
+    "message": "Aplicación instalable"
+  },
+  "page.showcase.siteInspection.features.installableApp.text": {
+    "message": "Una anotación, @AppProfile, coloca la aplicación en la pantalla de inicio como si fuera nativa."
+  },
+  "page.showcase.siteInspection.features.upload.text": {
+    "message": "Las fotos de cada problema se añaden directamente al registro de inspección."
+  },
+  "page.showcase.siteInspection.features.serverPushedUpdates.title": {
+    "message": "Actualizaciones enviadas por el servidor"
+  },
+  "page.showcase.siteInspection.features.serverPushedUpdates.text": {
+    "message": "Cuando la oficina reprograma una inspección, el teléfono la muestra sin necesidad de actualizar."
+  },
+  "page.showcase.siteInspection.features.routing.title": {
+    "message": "Enrutamiento"
+  },
+  "page.showcase.siteInspection.features.routing.text": {
+    "message": "Cada paso, desde la lista de verificación hasta la aprobación, tiene su propia ruta y un botón Atrás funcional."
+  },
+  "page.showcase.siteInspection.screens.todaysInspections.name": {
+    "message": "Inspecciones de hoy"
+  },
+  "page.showcase.siteInspection.screens.todaysInspections.caption": {
+    "message": "Consulta la ruta del día, lo que ya está hecho y lo que sigue. Los cambios desde la oficina aparecen en tiempo real."
+  },
+  "page.showcase.siteInspection.screens.checklistForThisBuilding.name": {
+    "message": "Lista de verificación de este edificio"
+  },
+  "page.showcase.siteInspection.screens.checklistForThisBuilding.caption": {
+    "message": "Recorre el edificio y marca cada elemento como aprobado, no aprobado o no aplicable."
+  },
+  "page.showcase.siteInspection.screens.recordAProblem.name": {
+    "message": "Reportar un problema"
+  },
+  "page.showcase.siteInspection.screens.recordAProblem.caption": {
+    "message": "Indica qué tan grave es, añade fotos y márcalas, y luego fija una fecha límite para repararlo."
+  },
+  "page.showcase.siteInspection.screens.inspectionReport.name": {
+    "message": "Informe de inspección"
+  },
+  "page.showcase.siteInspection.screens.inspectionReport.caption": {
+    "message": "Revisa la puntuación, los problemas detectados y las notas antes de aprobar."
+  },
+  "page.showcase.siteInspection.screens.signOff.name": {
+    "message": "Aprobación"
+  },
+  "page.showcase.siteInspection.screens.signOff.caption": {
+    "message": "El administrador del sitio firma en el teléfono y el informe se envía por correo electrónico."
+  },
+  "page.showcase.clinicFrontDesk.platform": {
+    "message": "Escritorio"
+  },
+  "page.showcase.clinicFrontDesk.useCase": {
+    "message": "El personal de recepción registra a los pacientes, agenda citas y cierra el día."
+  },
+  "page.showcase.clinicFrontDesk.description": {
+    "message": "Recepción de una clínica ambulatoria con varios médicos. El personal puede ver la agenda del día por médico, registrar la llegada de pacientes, reservar citas, abrir expedientes y cerrar los pagos del día."
+  },
+  "page.showcase.clinicFrontDesk.features.dataBindingWithValidation.title": {
+    "message": "Vinculación de datos con validación"
+  },
+  "page.showcase.clinicFrontDesk.features.dataBindingWithValidation.text": {
+    "message": "Los campos de registro están vinculados al expediente del paciente y detectan números de miembro incorrectos mientras escribes."
+  },
+  "page.showcase.clinicFrontDesk.features.serverPushedUpdates.title": {
+    "message": "Actualizaciones enviadas por el servidor"
+  },
+  "page.showcase.clinicFrontDesk.features.serverPushedUpdates.text": {
+    "message": "La sala de espera se actualiza en cada puesto en cuanto se registra un paciente."
+  },
+  "page.showcase.clinicFrontDesk.features.upload.text": {
+    "message": "Las cartas de derivación y los informes se adjuntan al expediente del paciente."
+  },
+  "page.showcase.clinicFrontDesk.features.dialog.text": {
+    "message": "Al cerrar el escritorio, se solicita una confirmación clara antes de realizar cualquier cambio."
+  },
+  "page.showcase.clinicFrontDesk.screens.today.name": {
+    "message": "Hoy"
+  },
+  "page.showcase.clinicFrontDesk.screens.today.caption": {
+    "message": "La agenda diaria por profesional clínico, junto a una sala de espera que se actualiza a medida que llegan los pacientes."
+  },
+  "page.showcase.clinicFrontDesk.screens.checkInAPatient.name": {
+    "message": "Registrar a un paciente"
+  },
+  "page.showcase.clinicFrontDesk.screens.checkInAPatient.caption": {
+    "message": "Busca al paciente, confirma sus datos y corrige cualquier problema detectado."
+  },
+  "page.showcase.clinicFrontDesk.screens.bookAnAppointment.name": {
+    "message": "Reservar una cita"
+  },
+  "page.showcase.clinicFrontDesk.screens.bookAnAppointment.caption": {
+    "message": "Elige un horario disponible con el profesional de salud adecuado. La app te avisa si coincide con otras citas."
+  },
+  "page.showcase.clinicFrontDesk.screens.patientRecord.name": {
+    "message": "Registro del paciente"
+  },
+  "page.showcase.clinicFrontDesk.screens.patientRecord.caption": {
+    "message": "Visitas, documentos y facturación en un solo lugar, con opción para subir cartas de derivación."
+  },
+  "page.showcase.clinicFrontDesk.screens.endOfDay.name": {
+    "message": "Fin del día"
+  },
+  "page.showcase.clinicFrontDesk.screens.endOfDay.caption": {
+    "message": "Revisa cada pago y consulta cuánta actividad hubo durante el día antes de cerrar la caja."
+  },
+  "page.showcase.clinicFrontDesk.screens.closeTheDay.name": {
+    "message": "Cerrar el día"
+  },
+  "page.showcase.clinicFrontDesk.screens.closeTheDay.caption": {
+    "message": "Confirma qué ocurre con los pagos y las reservas pendientes al cerrar el mostrador."
+  },
+  "page.showcase.invoiceApproval.platform": {
+    "message": "Escritorio"
+  },
+  "page.showcase.invoiceApproval.useCase": {
+    "message": "El equipo de finanzas coteja las facturas con los pedidos de compra y las paga."
+  },
+  "page.showcase.invoiceApproval.description": {
+    "message": "Las facturas de proveedores se reciben, se cotejan con la orden de compra y el equipo de finanzas las aprueba y paga."
+  },
+  "page.showcase.invoiceApproval.features.tableWithSelection.title": {
+    "message": "Tabla con selección"
+  },
+  "page.showcase.invoiceApproval.features.tableWithSelection.text": {
+    "message": "Filtra las facturas abiertas, selecciona varias filas y apruébalas en un solo paso."
+  },
+  "page.showcase.invoiceApproval.features.dataBindingWithValidation.title": {
+    "message": "Vinculación de datos con validación"
+  },
+  "page.showcase.invoiceApproval.features.dataBindingWithValidation.text": {
+    "message": "Los campos extraídos de la factura están vinculados a un formulario que señala los totales que superan el importe del pedido."
+  },
+  "page.showcase.invoiceApproval.features.dialog.text": {
+    "message": "Al rechazar, se solicita un motivo y un mensaje para el proveedor antes de enviarlo."
+  },
+  "page.showcase.invoiceApproval.features.upload.text": {
+    "message": "Los contratos firmados se suben a la página del proveedor."
+  },
+  "page.showcase.invoiceApproval.screens.inbox.name": {
+    "message": "Bandeja de entrada"
+  },
+  "page.showcase.invoiceApproval.screens.inbox.caption": {
+    "message": "Filtra las facturas abiertas, selecciona las que coincidan con su pedido y apruébalas en bloque."
+  },
+  "page.showcase.invoiceApproval.screens.reviewAnInvoice.name": {
+    "message": "Revisar una factura"
+  },
+  "page.showcase.invoiceApproval.screens.reviewAnInvoice.caption": {
+    "message": "Compara la factura con la orden de compra, línea por línea, antes de decidir."
+  },
+  "page.showcase.invoiceApproval.screens.approveOrReject.name": {
+    "message": "Aprobar o rechazar"
+  },
+  "page.showcase.invoiceApproval.screens.approveOrReject.caption": {
+    "message": "Rechazar con un motivo y una nota para el proveedor. La cadena de aprobación muestra a quién se notifica."
+  },
+  "page.showcase.invoiceApproval.screens.paymentRun.name": {
+    "message": "Ejecución de pagos"
+  },
+  "page.showcase.invoiceApproval.screens.paymentRun.caption": {
+    "message": "Selecciona las facturas aprobadas para el pago del viernes y consulta los totales por moneda."
+  },
+  "page.showcase.invoiceApproval.screens.supplierDetail.name": {
+    "message": "Detalle del proveedor"
+  },
+  "page.showcase.invoiceApproval.screens.supplierDetail.caption": {
+    "message": "Facturas, gasto mensual y contrato de un proveedor, con la opción de subir la renovación firmada."
+  },
+  "page.showcase.sections.overview": {
+    "message": "Resumen"
+  },
+  "page.showcase.sections.apps": {
+    "message": "Las aplicaciones"
+  },
+  "page.showcase.sections.talk": {
+    "message": "Contáctanos"
+  },
+  "page.showcase.sections.start": {
+    "message": "Comenzar"
+  },
+  "page.showcase.screenAlt": {
+    "message": "Pantalla {screen} de la aplicación {app}. {caption}"
+  },
+  "page.showcase.sections.label": {
+    "message": "Secciones de esta página"
+  },
+  "page.showcase.hero.eyebrow": {
+    "message": "Demostración de webforJ"
+  },
+  "page.showcase.hero.title": {
+    "message": "Qué puedes crear con webforJ"
+  },
+  "page.showcase.hero.lead": {
+    "message": "Paneles de despacho, inspecciones de campo, mostradores de recepción y aprobaciones financieras. Aplicaciones empresariales como estas se crean en Java con componentes de webforJ: tablas, formularios, diálogos y actualizaciones en tiempo real."
+  },
+  "page.showcase.hero.start": {
+    "message": "Iniciar un proyecto"
+  },
+  "page.showcase.hero.components": {
+    "message": "Explora los componentes"
+  },
+  "page.showcase.hero.factApps": {
+    "message": "Aplicaciones"
+  },
+  "page.showcase.hero.factScreens": {
+    "message": "Pantallas que recorrer\n"
+  },
+  "page.showcase.hero.factPlatforms": {
+    "message": "Plataformas, escritorio y móvil"
+  },
+  "page.showcase.hero.desktopAlt": {
+    "message": "Pantalla de mapa en tiempo real de la app de despacho de carga, con todos los camiones en un mapa de carreteras y una lista de envíos ordenados por hora de llegada."
+  },
+  "page.showcase.hero.phoneAlt": {
+    "message": "Pantalla de lista de verificación de la aplicación Inspección del sitio en un teléfono, con botones de aprobado, reprobado y no aplicable para cada elemento."
+  },
+  "page.showcase.gallery.title": {
+    "message": "Las aplicaciones"
+  },
+  "page.showcase.gallery.lead": {
+    "message": "Cuatro aplicaciones empresariales, cada una con todas sus pantallas. Elige una y explórala."
+  },
+  "page.showcase.gallery.meta": {
+    "message": "{platform} · {count} pantallas"
+  },
+  "page.showcase.gallery.see": {
+    "message": "Ver las pantallas"
+  },
+  "page.showcase.lightbox.label": {
+    "message": "Pantallas de {name}, tamaño completo"
+  },
+  "page.showcase.lightbox.previous": {
+    "message": "Pantalla anterior"
+  },
+  "page.showcase.lightbox.next": {
+    "message": "Pantalla siguiente"
+  },
+  "page.showcase.lightbox.close": {
+    "message": "Cerrar vista a tamaño completo"
+  },
+  "page.showcase.step.previous": {
+    "message": "Pantalla anterior"
+  },
+  "page.showcase.step.next": {
+    "message": "Siguiente pantalla"
+  },
+  "page.showcase.step.openFull": {
+    "message": "Abrir {name} a tamaño completo"
+  },
+  "page.showcase.step.fullSize": {
+    "message": "Tamaño completo"
+  },
+  "page.showcase.chapter.kicker": {
+    "message": "App de {platform} · {count} pantallas"
+  },
+  "page.showcase.chapter.screensLabel": {
+    "message": "Pantallas de {name}"
+  },
+  "page.showcase.chapter.carouselLabel": {
+    "message": "Pantallas de {name}"
+  },
+  "page.showcase.chapter.phoneOpen": {
+    "message": "Abrir {name} a tamaño completo"
+  },
+  "page.showcase.chapter.phoneShow": {
+    "message": "Mostrar {name}"
+  },
+  "page.showcase.chapter.windowOpen": {
+    "message": "Abrir {name} a tamaño completo"
+  },
+  "page.showcase.chapter.shows": {
+    "message": "Lo que muestra en webforJ"
+  },
+  "page.showcase.business.title": {
+    "message": "¿Planeas crear una app empresarial con webforJ?"
+  },
+  "page.showcase.business.text": {
+    "message": "Agenda una llamada con el equipo que desarrolla webforJ. Trae tu app, tu backend y tus plazos, y te mostraremos cómo encaja webforJ, desde la primera pantalla hasta el soporte LTS+."
+  },
+  "page.showcase.business.book": {
+    "message": "Agendar una llamada"
+  },
+  "page.showcase.business.pricing": {
+    "message": "Ver precios"
+  },
+  "page.showcase.business.languages": {
+    "message": "Hablamos {languages}"
+  },
+  "page.showcase.closing.title": {
+    "message": "Crea tu primera pantalla con startforJ"
+  },
+  "page.showcase.closing.text": {
+    "message": "Asigna un nombre a tu aplicación, elige un color para el tema y un arquetipo. Luego descarga un proyecto con el diseño y las dependencias ya configurados. La Table, el Dialog, el Drawer y el Upload de estas pantallas están listos para usar."
+  },
+  "page.showcase.closing.open": {
+    "message": "Abrir startforJ"
+  },
+  "page.showcase.closing.read": {
+    "message": "Leer la guía de inicio"
+  },
+  "page.showcase.closing.footnote": {
+    "message": "Las aplicaciones de esta página son ejemplos de lo que puedes crear con componentes de webforJ."
+  },
+  "page.showcase.meta.title": {
+    "message": "Qué puedes crear con webforJ: ejemplos de aplicaciones empresariales en Java"
+  },
+  "page.showcase.meta.description": {
+    "message": "Ejemplos de aplicaciones empresariales para gestionar despachos, inspecciones de campo, recepciones en clínicas y aprobaciones de facturas, creadas con componentes de webforJ. Recorre cada pantalla y descubre las funciones de webforJ que la hacen posible."
+  },
+  "page.uiComponents.group.layout.title": {
+    "message": "Diseño"
+  },
+  "page.uiComponents.group.layout.lead": {
+    "message": "La estructura de una pantalla: estructuras de aplicaciones, barras de herramientas, diseños flexibles y en columnas, paneles divididos y superficies."
+  },
+  "page.uiComponents.item.appLayout": {
+    "message": "Diseño estructurado para la navegación principal y el contenido de la aplicación."
+  },
+  "page.uiComponents.item.flexLayout": {
+    "message": "Organiza sus elementos secundarios con reglas de flexbox para una alineación adaptable."
+  },
+  "page.uiComponents.item.columnsLayout": {
+    "message": "Organiza los elementos secundarios en columnas, útil para formularios y estructuras tipo cuadrícula."
+  },
+  "page.uiComponents.item.toolbar": {
+    "message": "Un contenedor horizontal para botones de acción, iconos y otros controles."
+  },
+  "page.uiComponents.item.splitter": {
+    "message": "Divide el espacio entre dos componentes que se pueden redimensionar arrastrando."
+  },
+  "page.uiComponents.item.accordion": {
+    "message": "Conjunto de paneles apilados y plegables con encabezados interactivos."
+  },
+  "page.uiComponents.item.card": {
+    "message": "Una superficie con áreas para medios, encabezados, contenido y pies de página."
+  },
+  "page.uiComponents.item.dialog": {
+    "message": "Una ventana modal que se superpone al contenido y solicita una acción al usuario."
+  },
+  "page.uiComponents.group.forms.title": {
+    "message": "Formularios y campos"
+  },
+  "page.uiComponents.group.forms.lead": {
+    "message": "Todo lo que un usuario escribe, selecciona o carga, desde texto y números hasta fechas, máscaras, listas y archivos."
+  },
+  "page.uiComponents.item.textField": {
+    "message": "Un campo de una sola línea para escribir y editar texto."
+  },
+  "page.uiComponents.item.maskedTextField": {
+    "message": "Restringe el texto a un patrón, como un número de teléfono."
+  },
+  "page.uiComponents.item.numberField": {
+    "message": "Un campo numérico con controles para aumentar o disminuir el valor."
+  },
+  "page.uiComponents.item.maskedNumberField": {
+    "message": "Aplica un formato numérico, como moneda o porcentaje."
+  },
+  "page.uiComponents.item.passwordField": {
+    "message": "Campo de una sola línea que oculta la contraseña."
+  },
+  "page.uiComponents.item.dateField": {
+    "message": "Selector de fecha basado en navegador en un campo de entrada."
+  },
+  "page.uiComponents.item.maskedDateField": {
+    "message": "Campo de fecha que aplica un formato definido."
+  },
+  "page.uiComponents.item.timeField": {
+    "message": "Un selector de hora basado en el navegador en un campo de entrada."
+  },
+  "page.uiComponents.item.maskedTimeField": {
+    "message": "Campo de hora con un formato definido."
+  },
+  "page.uiComponents.item.dateTimeField": {
+    "message": "Selecciona una fecha y hora en un solo campo de entrada."
+  },
+  "page.uiComponents.item.colorField": {
+    "message": "Selector de color basado en navegador en un campo de entrada."
+  },
+  "page.uiComponents.item.textArea": {
+    "message": "Un campo de texto multilínea para bloques de texto más largos."
+  },
+  "page.uiComponents.item.checkBox": {
+    "message": "Una opción binaria que alterna entre marcada y desmarcada."
+  },
+  "page.uiComponents.item.radioButton": {
+    "message": "Selecciona una opción de un grupo de opciones excluyentes."
+  },
+  "page.uiComponents.item.switch": {
+    "message": "Alterna entre dos estados, como activado y desactivado, deslizando."
+  },
+  "page.uiComponents.item.choiceBox": {
+    "message": "Una lista desplegable de opciones predefinidas."
+  },
+  "page.uiComponents.item.comboBox": {
+    "message": "Una lista desplegable combinada con un campo de texto editable."
+  },
+  "page.uiComponents.item.listBox": {
+    "message": "Una lista desplazable para seleccionar uno o varios elementos."
+  },
+  "page.uiComponents.item.slider": {
+    "message": "Selecciona un valor de un rango arrastrando un control por una pista."
+  },
+  "page.uiComponents.item.upload": {
+    "message": "Selector de archivos en línea con arrastrar y soltar, filtros y eventos por archivo."
+  },
+  "page.uiComponents.group.data.title": {
+    "message": "Datos y contenido"
+  },
+  "page.uiComponents.group.data.lead": {
+    "message": "Muestra registros, jerarquías, gráficos y texto en streaming, y carga más contenido a medida que el usuario se desplaza."
+  },
+  "page.uiComponents.item.googleCharts": {
+    "message": "Gráficos y representaciones visuales de datos con Google Charts."
+  },
+  "page.uiComponents.item.tree": {
+    "message": "Datos jerárquicos interactivos que los usuarios pueden expandir y contraer."
+  },
+  "page.uiComponents.item.infiniteScroll": {
+    "message": "Carga más elementos al desplazarse y detecta cuándo se ha cargado todo el contenido."
+  },
+  "page.uiComponents.item.refresher": {
+    "message": "Una interacción de deslizar para actualizar dentro de contenedores desplazables."
+  },
+  "page.uiComponents.item.markdownViewer": {
+    "message": "Renderiza Markdown progresivamente, ideal para chats con IA y texto en streaming."
+  },
+  "page.uiComponents.item.terminal": {
+    "message": "Interfaz de línea de comandos integrada en la aplicación para comandos de texto."
+  },
+  "page.uiComponents.item.avatar": {
+    "message": "Fotos de perfil o iniciales en distintos tamaños, formas y temas."
+  },
+  "page.uiComponents.item.badge": {
+    "message": "Una etiqueta pequeña para recuentos, estados o metadatos breves."
+  },
+  "page.uiComponents.group.navigation.title": {
+    "message": "Navegación y acciones"
+  },
+  "page.uiComponents.group.navigation.lead": {
+    "message": "Navega entre vistas y secciones, recorre los datos página a página y activa lo que sigue."
+  },
+  "page.uiComponents.item.appNav": {
+    "message": "Un menú de navegación para cambiar entre secciones y vistas."
+  },
+  "page.uiComponents.item.drawer": {
+    "message": "Un panel deslizante para la navegación lateral o el contenido adicional."
+  },
+  "page.uiComponents.item.tabbedPane": {
+    "message": "Organiza el contenido en pestañas que los usuarios pueden alternar."
+  },
+  "page.uiComponents.item.navigator": {
+    "message": "Paginación con botones de primera, última, siguiente y anterior, y salto rápido."
+  },
+  "page.uiComponents.item.button": {
+    "message": "Componente que ejecuta una acción al pulsarlo."
+  },
+  "page.uiComponents.item.icon": {
+    "message": "Un símbolo gráfico para una acción, estado o categoría."
+  },
+  "page.uiComponents.group.feedback.title": {
+    "message": "Comentarios y diálogos"
+  },
+  "page.uiComponents.group.feedback.lead": {
+    "message": "Informa a los usuarios de lo que está ocurriendo, pídeles que confirmen y recopila un valor, un archivo o sus datos de acceso."
+  },
+  "page.uiComponents.item.toast": {
+    "message": "Una notificación no bloqueante que desaparece por sí sola."
+  },
+  "page.uiComponents.item.alert": {
+    "message": "Mensajes o advertencias importantes en un formato destacado."
+  },
+  "page.uiComponents.item.desktopNotification": {
+    "message": "Notificaciones de escritorio personalizadas mediante la API de notificaciones del navegador."
+  },
+  "page.uiComponents.item.progressBar": {
+    "message": "Una barra que se llena a medida que avanza una tarea."
+  },
+  "page.uiComponents.item.busyIndicator": {
+    "message": "Indicador de que hay un proceso global en curso en toda la aplicación."
+  },
+  "page.uiComponents.item.loading": {
+    "message": "Un indicador de carga asociado a un único componente padre."
+  },
+  "page.uiComponents.item.spinner": {
+    "message": "Una animación giratoria que indica que una acción está en curso."
+  },
+  "page.uiComponents.item.messageDialog": {
+    "message": "Un mensaje informativo que el usuario confirma con Aceptar."
+  },
+  "page.uiComponents.item.confirmDialog": {
+    "message": "Pide al usuario que confirme o cancele una acción."
+  },
+  "page.uiComponents.item.inputDialog": {
+    "message": "Solicita al usuario un valor con los botones Aceptar y Cancelar."
+  },
+  "page.uiComponents.item.fileUploadDialog": {
+    "message": "Carga archivos del sistema de archivos local a la aplicación."
+  },
+  "page.uiComponents.item.login": {
+    "message": "Interfaz de inicio de sesión prediseñada con nombre de usuario, contraseña y botón de envío."
+  },
+  "page.uiComponents.gallery.layouts": {
+    "message": "Diseños"
+  },
+  "page.uiComponents.gallery.dataEntry": {
+    "message": "Entrada de datos"
+  },
+  "page.uiComponents.gallery.optionDialogs": {
+    "message": "Diálogos de opciones"
+  },
+  "page.uiComponents.gallery.interaction": {
+    "message": "Interacción y visualización"
+  },
+  "page.uiComponents.beyond.html.label": {
+    "message": "{count} elementos HTML"
+  },
+  "page.uiComponents.beyond.html.title": {
+    "message": "La página en sí, escrita"
+  },
+  "page.uiComponents.beyond.html.text": {
+    "message": "webforJ ofrece componentes que se corresponden directamente con elementos HTML estándar, como Div, Paragraph, los encabezados, las listas, Img y Anchor, con una API de Java tipada."
+  },
+  "page.uiComponents.beyond.html.link": {
+    "message": "Componentes HTML"
+  },
+  "page.uiComponents.beyond.web.label": {
+    "message": "Web components"
+  },
+  "page.uiComponents.beyond.web.title": {
+    "message": "Cualquier componente web, envuelto"
+  },
+  "page.uiComponents.beyond.web.text": {
+    "message": "ElementComposite encapsula un elemento HTML personalizado o un componente web de terceros y expone sus propiedades, atributos y eventos a través de la API de Java."
+  },
+  "page.uiComponents.beyond.web.link": {
+    "message": "Elemento compuesto"
+  },
+  "page.uiComponents.beyond.npm.label": {
+    "message": "paquetes de npm"
+  },
+  "page.uiComponents.beyond.npm.title": {
+    "message": "El registro de npm, desde Java"
+  },
+  "page.uiComponents.beyond.npm.text": {
+    "message": "El empaquetador del frontend convierte las anotaciones de una clase en recursos compilados del frontend, para que un componente pueda incluir el paquete npm del que depende."
+  },
+  "page.uiComponents.beyond.npm.link": {
+    "message": "Empaquetador de frontend"
+  },
+  "page.uiComponents.theme.darkSummary": {
+    "message": "El mismo campo, los botones, el interruptor, la insignia y la barra de progreso en el tema oscuro."
+  },
+  "page.uiComponents.theme.lightSummary": {
+    "message": "El mismo campo, los botones, el interruptor, la insignia y la barra de progreso en el tema claro."
+  },
+  "page.uiComponents.theme.mock.name": {
+    "message": "Nombre"
+  },
+  "page.uiComponents.theme.mock.save": {
+    "message": "Guardar"
+  },
+  "page.uiComponents.theme.mock.cancel": {
+    "message": "Cancelar"
+  },
+  "page.uiComponents.theme.mock.new": {
+    "message": "Nuevo"
+  },
+  "page.uiComponents.hero.eyebrow": {
+    "message": "Componentes de interfaz de usuario"
+  },
+  "page.uiComponents.hero.title1": {
+    "message": "Cada parte de una pantalla empresarial,"
+  },
+  "page.uiComponents.hero.title2": {
+    "message": "Listo en Java."
+  },
+  "page.uiComponents.hero.lead": {
+    "message": "webforJ es el framework Java full-stack para aplicaciones web empresariales: creas toda la aplicación, incluidas las pantallas, en Java. Sus componentes abarcan diseño, entrada de datos, diálogos, visualización de datos y notificaciones; cada uno es una clase Java que creas, configuras y añades a un diseño."
+  },
+  "page.uiComponents.hero.openGallery": {
+    "message": "Abrir la galería de componentes"
+  },
+  "page.uiComponents.hero.browse": {
+    "message": "Explorar por propósito"
+  },
+  "page.uiComponents.stats.gallery": {
+    "message": "Componentes de la galería"
+  },
+  "page.uiComponents.stats.html": {
+    "message": "Elementos HTML tipados"
+  },
+  "page.uiComponents.stats.themes": {
+    "message": "Temas integrados"
+  },
+  "page.uiComponents.stats.groups": {
+    "message": "Grupos por propósito"
+  },
+  "page.uiComponents.hero.wallLabel": {
+    "message": "Una selección de componentes de webforJ"
+  },
+  "page.uiComponents.hero.wallLink": {
+    "message": "Documentación de {name}"
+  },
+  "page.uiComponents.hero.wallAlt": {
+    "message": "componente {name}"
+  },
+  "page.uiComponents.groups.label": {
+    "message": "Por finalidad"
+  },
+  "page.uiComponents.groups.title": {
+    "message": "{total} componentes de negocio, más {html} elementos HTML y cualquier componente web."
+  },
+  "page.uiComponents.groups.count.business": {
+    "message": "componentes de negocio"
+  },
+  "page.uiComponents.groups.count.html": {
+    "message": "Elementos HTML"
+  },
+  "page.uiComponents.groups.count.any": {
+    "message": "Cualquiera"
+  },
+  "page.uiComponents.groups.count.web": {
+    "message": "componente web"
+  },
+  "page.uiComponents.groups.lead": {
+    "message": "Elige un grupo y luego un componente. Cada tarjeta abre su propia página en la documentación."
+  },
+  "page.uiComponents.groups.navLabel": {
+    "message": "Grupos de componentes"
+  },
+  "page.uiComponents.groups.count": {
+    "message": "{count} componentes"
+  },
+  "page.uiComponents.compose.label": {
+    "message": "Composición"
+  },
+  "page.uiComponents.compose.title1": {
+    "message": "Tus propios componentes,"
+  },
+  "page.uiComponents.compose.title2": {
+    "message": "Creado a partir del nuestro."
+  },
+  "page.uiComponents.compose.lead": {
+    "message": "webforJ usa composición en lugar de herencia. No extiendes un {button}. Escribes una clase que extiende {composite}, combinas componentes dentro de ella y decides qué métodos puede ver el resto de tu aplicación."
+  },
+  "page.uiComponents.compose.demo.search": {
+    "message": "Buscar"
+  },
+  "page.uiComponents.compose.demo.go": {
+    "message": "Ir"
+  },
+  "page.uiComponents.compose.point1.title": {
+    "message": "Una clase, una unidad."
+  },
+  "page.uiComponents.compose.point1.text": {
+    "message": "Un {composite} envuelve un único componente enlazado y contiene su estructura interna, de modo que una barra de búsqueda, un formulario de dirección o una tarjeta completa del panel se convierten en una sola clase reutilizable."
+  },
+  "page.uiComponents.compose.point2.title": {
+    "message": "Tú eliges la API."
+  },
+  "page.uiComponents.compose.point2.text": {
+    "message": "Quienes invocan solo ven los métodos que expones, a diferencia de la herencia, donde todo queda expuesto."
+  },
+  "page.uiComponents.compose.point3.title": {
+    "message": "Los componentes integrados permanecen intactos."
+  },
+  "page.uiComponents.compose.point3.text": {
+    "message": "Los componentes integrados son finales, lo que mantiene coherente y predecible el componente web subyacente. Tu lógica se construye alrededor de ellos, no dentro de ellos."
+  },
+  "page.uiComponents.compose.link.composing": {
+    "message": "Composición de componentes"
+  },
+  "page.uiComponents.compose.link.understanding": {
+    "message": "Comprender los componentes"
+  },
+  "page.uiComponents.beyond.label": {
+    "message": "Más allá del conjunto"
+  },
+  "page.uiComponents.beyond.title1": {
+    "message": "¿No está en el conjunto?"
+  },
+  "page.uiComponents.beyond.title2": {
+    "message": "Usa cualquier componente de la web."
+  },
+  "page.uiComponents.beyond.lead": {
+    "message": "Los componentes de negocio son el punto de partida, no el destino. Cada elemento HTML es una clase Java, y cualquier componente web puede convertirse en una."
+  },
+  "page.uiComponents.own.label": {
+    "message": "Tu sistema de diseño"
+  },
+  "page.uiComponents.own.title1": {
+    "message": "¿Tienes tu propio sistema de diseño?"
+  },
+  "page.uiComponents.own.title2": {
+    "message": "Llévalo contigo."
+  },
+  "page.uiComponents.own.lead": {
+    "message": "Los componentes de webforJ son una opción, no un requisito. Si tu sistema de diseño se distribuye como componentes web, lo encapsulas una sola vez y creas toda la aplicación con él, en Java."
+  },
+  "page.uiComponents.own.step1.title": {
+    "message": "Envolver los componentes"
+  },
+  "page.uiComponents.own.step1.text": {
+    "message": "{composite} convierte cada elemento personalizado en una clase Java y expone sus propiedades, atributos y eventos a través de la API de Java."
+  },
+  "page.uiComponents.own.step2.title": {
+    "message": "Distribúyelos como un solo módulo."
+  },
+  "page.uiComponents.own.step2.text": {
+    "message": "El empaquetador del frontend permite que una clase declare los paquetes npm que necesita, para que los wrappers incluyan su sistema de diseño. La aplicación solo tiene que añadir la dependencia."
+  },
+  "page.uiComponents.own.step3.title": {
+    "message": "Compila la aplicación como de costumbre."
+  },
+  "page.uiComponents.own.step3.text": {
+    "message": "El enrutamiento, la seguridad y el enlace de datos funcionan igual. Un componente envuelto que implementa {valueAware} se enlaza con tu modelo como cualquier campo integrado."
+  },
+  "page.uiComponents.own.panel": {
+    "message": "Tus pantallas mantienen el diseño que tu empresa ya creó. El framework subyacente sigue siendo webforJ."
+  },
+  "page.uiComponents.own.link.composite": {
+    "message": "Elemento compuesto"
+  },
+  "page.uiComponents.own.link.bundler": {
+    "message": "Empaquetador de frontend"
+  },
+  "page.uiComponents.java.label": {
+    "message": "Usado desde Java"
+  },
+  "page.uiComponents.java.title1": {
+    "message": "Un componente es un objeto"
+  },
+  "page.uiComponents.java.title2": {
+    "message": "creas con {code}."
+  },
+  "page.uiComponents.java.lead1": {
+    "message": "Configuras su estado mediante métodos tipados, escuchas sus eventos con lambdas y lo añades a un contenedor. La pantalla es código Java, sin ninguna plantilla que mantener sincronizada."
+  },
+  "page.uiComponents.java.usedLabel": {
+    "message": "Componentes en este código"
+  },
+  "page.uiComponents.java.usingLink": {
+    "message": "Uso de componentes"
+  },
+  "page.uiComponents.java.composingLink": {
+    "message": "Composición de componentes"
+  },
+  "page.uiComponents.java.codeAdd": {
+    "message": "Añadir componentes a un contenedor"
+  },
+  "page.uiComponents.java.codeState": {
+    "message": "Cambiar estado desde eventos"
+  },
+  "page.uiComponents.theme.label": {
+    "message": "Tematización"
+  },
+  "page.uiComponents.theme.title1": {
+    "message": "Un único sistema de diseño"
+  },
+  "page.uiComponents.theme.title2": {
+    "message": "detrás de cada componente."
+  },
+  "page.uiComponents.theme.lead": {
+    "message": "webforJ incluye un sistema de diseño llamado DWC. Sus variables CSS, los tokens de diseño, abarcan colores, tipografía, bordes y espaciado, y todos los componentes las utilizan. Cambia un token y todos los componentes que lo usan reflejan el cambio."
+  },
+  "page.uiComponents.theme.lightCaption": {
+    "message": "Predeterminado. Fondo claro con un sutil matiz del color primario."
+  },
+  "page.uiComponents.theme.darkCaption": {
+    "message": "Fondo oscuro con un sutil matiz del color primario."
+  },
+  "page.uiComponents.theme.fact1.title": {
+    "message": "Tres temas integrados"
+  },
+  "page.uiComponents.theme.fact1.text": {
+    "message": "{light}, {dark} y {darkPure}, que elimina el tinte principal para usar grises neutros puros. Cambia en tiempo de ejecución con {setTheme}, sin recompilar."
+  },
+  "page.uiComponents.theme.fact2.title": {
+    "message": "Según el sistema operativo"
+  },
+  "page.uiComponents.theme.fact2.text": {
+    "message": "Registra un tema claro y otro oscuro, y pasa {system}. webforJ seleccionará el que coincida con las preferencias del usuario y cambiará de nuevo cuando estas cambien."
+  },
+  "page.uiComponents.theme.fact3.title": {
+    "message": "Renueva tu marca con unos pocos tokens."
+  },
+  "page.uiComponents.theme.fact3.text": {
+    "message": "Sobrescribe los tokens semilla de los temas integrados y todos los componentes adoptan el nuevo aspecto. Las shadow parts permiten acceder al interior de un componente cuando un token no basta."
+  },
+  "page.uiComponents.theme.link.themes": {
+    "message": "Temas"
+  },
+  "page.uiComponents.theme.link.cssVariables": {
+    "message": "Variables CSS"
+  },
+  "page.uiComponents.theme.link.shadowParts": {
+    "message": "Partes de sombra"
+  },
+  "page.uiComponents.theme.link.overview": {
+    "message": "Descripción general de estilos"
+  },
+  "page.uiComponents.entrance.label": {
+    "message": "La galería"
+  },
+  "page.uiComponents.entrance.title1": {
+    "message": "Abrir la galería"
+  },
+  "page.uiComponents.entrance.title2": {
+    "message": "y ver los {total}"
+  },
+  "page.uiComponents.entrance.lead": {
+    "message": "La galería de la documentación enumera cada componente con su vista previa y una breve descripción, en las mismas cuatro secciones que utiliza la documentación."
+  },
+  "page.uiComponents.entrance.openGallery": {
+    "message": "Abrir la galería de componentes"
+  },
+  "page.uiComponents.entrance.home": {
+    "message": "Volver al inicio de la documentación"
+  },
+  "page.uiComponents.entrance.sectionsLabel": {
+    "message": "Secciones de la galería"
+  },
+  "page.uiComponents.meta.title": {
+    "message": "Componentes de interfaz de usuario de webforJ: el conjunto de componentes Java para aplicaciones empresariales\n"
+  },
+  "page.uiComponents.meta.description": {
+    "message": "Explora el catálogo de componentes de webforJ según su función: diseño, formularios y campos de entrada, datos, navegación y notificaciones. Cada componente es una clase Java con estilos del sistema de diseño DWC y sus temas claro, oscuro y oscuro puro."
+  },
+  "component.footer.platform.title": {
+    "message": "Plataforma"
   }
 }

@@ -1,34 +1,32 @@
 ---
 sidebar_position: 40
-title: Minifier-liitännäinen
+title: Minifiointilisäosa
 description: >-
   Discover and minify CSS and JavaScript assets referenced by webforJ
   annotations during the Maven or Gradle production build.
-_i18n_hash: a570df6cd0876073e88e7b38b6357b10
+_i18n_hash: fc6e1dd15c6b453f014feb4cdf449953
 ---
-# Minifier-plugin <DocChip chip='since' label='25.11' />
+# Minifiointilaajennus <DocChip chip='since' label='25.11' />
 
-webforJ Minifier Plugin automaattisesti [minifi.io](https://en.wikipedia.org/wiki/Minification_(programming)) ja optimoi CSS- ja JavaScript-resurssit rakennusprosessin aikana. Laajennus löytää varat, joita viitataan webforJ [varannotaatiot](/docs/managing-resources/importing-assets) kautta, ja minifioi ne rakennustulokseen, vähentäen tiedostokokoja ja parantaen latausaikoja ilman, että alkuperäisiä lähdetiedostoja muutetaan.
+webforJ-minifiointilaajennus [minifioi](https://en.wikipedia.org/wiki/Minification_(programming)) CSS- ja JavaScript-resurssit automaattisesti ja optimoi ne koontiprosessin aikana. Laajennus löytää webforJ-[resurssimerkintöjen](/docs/managing-resources/importing-assets) kautta viitatut resurssit ja minifioi ne koontitulosteessa. Näin tiedostokoot pienenevät ja latausajat lyhenevät, eikä alkuperäisiä lähdetiedostoja muuteta.
 
-:::info Minifiointi on integroitu pakkaajaan
-[frontend-pakkaaja](/docs/managing-resources/bundler/overview) minifioi CSS:ää ja JavaScript-tiedostoja osana tuotannon rakennusta, joten projekti, joka käyttää pakkaajaa, ei tarvitse tätä laajennusta. Laajennus on edelleen käytettävissä ja tuettu projekteille, jotka lataa varoja varannotaatioiden kautta ilman pakkaajaa. Olemassa olevat asetukset toimivat kuten ennenkin, eikä muutoksia tarvita.
+:::info Minifiointi sisältyy koontityökaluun
+[Frontend-koontityökalu](/docs/managing-resources/bundler/overview) minifioi CSS:n ja JavaScriptin osana tuotantokoontia, joten koontityökalua käyttävä projekti ei tarvitse tätä laajennusta. Laajennus on edelleen saatavilla ja tuettu projekteissa, jotka lataavat resursseja resurssimerkintöjen avulla ilman koontityökalua. Nykyiset määritykset toimivat kuten ennenkin, eikä muutoksia tarvita.
 :::
 
-## Asetus {#setup}
+## Käyttöönotto {#setup}
 
-Jos olet luonut projektisi käyttäen [startforJ](https://docs.webforj.com/startforj) tai webforJ [arkkitehtuuria](/docs/building-ui/archetypes/overview), minifier-laajennus on jo konfiguroitu ja se toimii automaattisesti, kun rakennat `prod`-profiililla käyttäen `mvn package -Pprod`.
-
-Manuaalista asetusta varten minifier vaatii kaksi konfiguraatiota: annotaatioprosessorin, joka löytää varat käännön aikana, ja laajennuksen, joka suorittaa minifioinnin.
+Minifiointilaajennuksen käyttöönotto edellyttää kahta määritystä: annotaatioprosessoria, joka löytää resurssit käännöksen aikana, ja laajennusta, joka suorittaa minifioinnin.
 
 <Tabs>
 <TabItem value="maven" label="Maven">
 
-Lisää seuraava `pom.xml`-tiedostoosi:
+Lisää seuraava `pom.xml`-tiedostoon:
 
 ```xml
 <build>
   <plugins>
-    <!-- Annotaatio Prosessori Konfiguraatio -->
+    <!-- Annotation Processor Configuration -->
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-compiler-plugin</artifactId>
@@ -43,7 +41,7 @@ Lisää seuraava `pom.xml`-tiedostoosi:
       </configuration>
     </plugin>
 
-    <!-- Minifier Laajennuksen Konfiguraatio -->
+    <!-- Minifier Plugin Configuration -->
     <plugin>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-minify-maven-plugin</artifactId>
@@ -56,13 +54,13 @@ Lisää seuraava `pom.xml`-tiedostoosi:
         </execution>
       </executions>
       <dependencies>
-        <!-- CSS-minifiointi -->
+        <!-- CSS minification -->
         <dependency>
           <groupId>com.webforj</groupId>
           <artifactId>webforj-minify-phcss-css</artifactId>
           <version>${webforj.version}</version>
         </dependency>
-        <!-- JavaScript-minifiointi -->
+        <!-- JavaScript minification -->
         <dependency>
           <groupId>com.webforj</groupId>
           <artifactId>webforj-minify-closure-js</artifactId>
@@ -77,7 +75,7 @@ Lisää seuraava `pom.xml`-tiedostoosi:
 </TabItem>
 <TabItem value="gradle" label="Gradle">
 
-Lisää seuraava `build.gradle`-tiedostoosi:
+Lisää seuraava `build.gradle`-tiedostoon:
 
 ```groovy
 buildscript {
@@ -96,23 +94,23 @@ plugins {
 apply plugin: 'com.webforj.minify'
 
 dependencies {
-  // Annotaatio prosessori varojen löytämiseen käännön aikana
+  // Annotation processor for discovering assets during compilation
   annotationProcessor "com.webforj:webforj-minify-foundation:${webforjVersion}"
 
-  // Minifier toteutukset
+  // Minifier implementations
   add "webforjMinifier", "com.webforj:webforj-minify-phcss-css:${webforjVersion}"
   add "webforjMinifier", "com.webforj:webforj-minify-closure-js:${webforjVersion}"
 }
 ```
 
-`minify`-tehtävä suoritetaan automaattisesti ennen `jar` tai `war` tehtäviä. Voit myös suorittaa sen manuaalisesti komennolla `./gradlew minify`.
+`minify`-tehtävä suoritetaan automaattisesti ennen `jar`- tai `war`-tehtävää. Voit suorittaa sen myös manuaalisesti komennolla `./gradlew minify`.
 
 </TabItem>
 </Tabs>
 
-## Laajennuksen käyttö {#using-the-plugin}
+## Laajennuksen käyttäminen {#using-the-plugin}
 
-Kun laajennus on konfiguroitu, se toimii automaattisesti. Käytä vain webforJ varannotaatioita koodissasi:
+Kun laajennus on määritetty, se toimii automaattisesti. Käytä vain webforJ-resurssimerkintöjä koodissasi:
 
 ```java
 package com.example;
@@ -123,53 +121,53 @@ import com.webforj.annotation.JavaScript;
 @StyleSheet("ws://css/app.css")
 @JavaScript("ws://js/app.js")
 public class MyApp extends App {
-  // Sovelluskoodisi
+  // Your application code
 }
 ```
 
-Kun rakennat projektisi, laajennus automaattisesti:
+Kun koostat projektisi, laajennus suorittaa automaattisesti seuraavat toiminnot:
 
-1. Löytää varat, joihin on viitattu annotaatioissa käännön aikana
+1. Löytää merkinnöissä viitatut resurssit käännöksen aikana
 2. Minifioi löydetyt CSS- ja JavaScript-tiedostot
-3. Raportoi koon vähenemisen ja käsittelyajan
+3. Raportoi tiedostokokojen pienenemisen ja käsittelyajan
 
-### URL-protokollan ratkaisu {#url-protocol-resolution}
+### URL-protokollien ratkaiseminen {#url-protocol-resolution}
 
-Laajennus ymmärtää webforJ [URL-protokollat](/docs/managing-resources/assets-protocols) ja ratkaisee ne tiedostojärjestelmäpolkuiksi:
+Laajennus ymmärtää webforJ-[URL-protokollat](/docs/managing-resources/assets-protocols) ja ratkaisee ne tiedostojärjestelmän poluiksi:
 
-| Protokolla | Ratkaisee | Esimerkki |
-|------------|-----------|-----------|
+| Protokolla | Ratkeaa poluksi | Esimerkki |
+|----------|-------------|---------|
 | `ws://` | `src/main/resources/static/` | `ws://css/app.css` → `static/css/app.css` |
 | `context://` | `src/main/resources/` | `context://styles/app.css` → `styles/app.css` |
 
-Protokollattomat URL-osoitteet eivät ole tuettuja minifierissä ja ne ohitetaan.
+Minifiointilaajennus ei tue URL-osoitteita, joissa ei ole protokollaa, ja ohittaa ne.
 
 ## Sisäänrakennetut minifioijat {#built-in-minifiers}
 
-webforJ sisältää kaksi tuotantovalmiita minifioijia CSS:lle ja JavaScriptille.
+webforJ sisältää kaksi tuotantokäyttöön valmista minifioijaa CSS:lle ja JavaScriptille.
 
 | Minifioija | Ominaisuudet | Ohittaa |
-|------------|--------------|---------|
-| CSS | Poistaa tyhjät välit, kommentit ja optimoi ominaisuusarvot | `.min.css` |
-| JavaScript | Muuttujien uudelleennimeäminen, kuollut koodi eliminointi, syntaksin optimointi | `.min.js`, `.min.mjs` |
+|----------|----------|-------|
+| CSS | Poistaa tyhjemerkit ja kommentit sekä optimoi ominaisuusarvoja | `.min.css` |
+| JavaScript | Muuttujien uudelleennimeäminen, käyttämättömän koodin poistaminen ja syntaksin optimointi | `.min.js`, `.min.mjs` |
 
-## Konfigurointivaihtoehdot {#configuration-options}
+## Määritysasetukset {#configuration-options}
 
-Laajennus tarjoaa vaihtoehtoja minifioinnin poistamiseen, JavaScriptin optimoinnin mukauttamiseen ja lisätiedostojen käsittelyyn.
+Laajennuksen asetuksilla voit poistaa minifioinnin käytöstä, mukauttaa JavaScriptin optimointia ja käsitellä lisätiedostoja.
 
-### Minifioinnin poistaminen {#disabling-minification}
+### Minifioinnin poistaminen käytöstä {#disabling-minification}
 
-Saatat haluta kytkeä pois minifioinnin kehityksen aikana tai virheiden etsintätarkoituksiin.
+Voit poistaa minifioinnin käytöstä kehityksen aikana tai virheenkorjausta varten.
 
 <Tabs>
 <TabItem value="maven" label="Maven">
 
-**Komennon kautta:**
+**Komentoriviltä:**
 ```bash
 mvn package -Dwebforj.minify.skip=true
 ```
 
-**Laajennuksen konfiguraation kautta:**
+**Laajennuksen määrityksessä:**
 ```xml
 <plugin>
   <groupId>com.webforj</groupId>
@@ -183,7 +181,7 @@ mvn package -Dwebforj.minify.skip=true
 </TabItem>
 <TabItem value="gradle" label="Gradle">
 
-**Rakennuskonfiguraation kautta:**
+**Koontimäärityksessä:**
 ```groovy
 webforjMinify {
   skip = true
@@ -193,22 +191,22 @@ webforjMinify {
 </TabItem>
 </Tabs>
 
-### JavaScript-minifioijan vaihtoehdot {#javascript-minifier-options}
+### JavaScript-minifioijan asetukset {#javascript-minifier-options}
 
-JavaScript-minifioijalla on useita konfigurointivaihtoehtoja optimoinnin käyttäytymisen hallitsemiseksi.
+JavaScript-minifioijassa on useita asetuksia, joilla voit hallita optimoinnin toimintaa.
 
 :::note Gradle-tuki
-Versiosta v25.12 alkaen Gradle-laajennus tukee JavaScript-minifioijan vaihtoehtojen siirtämistä.
+Versiosta v25.12 alkaen Gradle-laajennus tukee JavaScript-minifioijan asetusten välittämistä.
 :::
 
-| Vaihtoehto | Oletusarvo | Kuvaus |
-|------------|------------|--------|
-| `compilationLevel` | `SIMPLE_OPTIMIZATIONS` | <ul><li>`WHITESPACE_ONLY` - poistaa vain tyhjät välit ja kommentit</li><li>`SIMPLE_OPTIMIZATIONS` - muuttujien uudelleennimeäminen ja kuolleiden koodien poistaminen</li><li>`ADVANCED_OPTIMIZATIONS` - aggressiivinen optimointi funktio/ominaisuuden uudelleennimeämisellä</li></ul> |
-| `languageIn` | `ECMASCRIPT_NEXT` | Syötteen JavaScript-version: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015` - `ECMASCRIPT_2021`, `ECMASCRIPT_NEXT` |
-| `languageOut` | `ECMASCRIPT5` | Tulo JavaScript-version: sama kuin `languageIn`, plus `NO_TRANSPILE` |
-| `prettyPrint` | `false` | Aseta `true` säilyttääksesi muotoilun virheenkorjauksen vuoksi |
+| Asetus | Oletusarvo | Kuvaus |
+|--------|---------|-------------|
+| `compilationLevel` | `SIMPLE_OPTIMIZATIONS` | <ul><li>`WHITESPACE_ONLY` - poistaa vain tyhjemerkit ja kommentit</li><li>`SIMPLE_OPTIMIZATIONS` - nimeää muuttujat uudelleen ja poistaa käyttämätöntä koodia</li><li>`ADVANCED_OPTIMIZATIONS` - aggressiivinen optimointi, jossa funktioiden ja ominaisuuksien nimet muutetaan</li></ul> |
+| `languageIn` | `ECMASCRIPT_NEXT` | Syötteen JavaScript-versio: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015`–`ECMASCRIPT_2021`, `ECMASCRIPT_NEXT` |
+| `languageOut` | `ECMASCRIPT5` | Tulosteen JavaScript-versio: samat kuin `languageIn`-asetuksessa sekä `NO_TRANSPILE` |
+| `prettyPrint` | `false` | Aseta arvoksi `true`, jos haluat säilyttää muotoilun virheenkorjausta varten |
 
-Määritä nämä vaihtoehdot konfiguraatio-osiossa:
+Määritä nämä asetukset määritysosiossa:
 
 <Tabs>
 <TabItem value="maven" label="Maven">
@@ -250,7 +248,7 @@ Määritä nämä vaihtoehdot konfiguraatio-osiossa:
 
 ```groovy
 webforjMinify {
-    skip = false  // Aseta true ohittaaksesi minifioinnin
+    skip = false  // Set to true to skip minification
     minifierConfigurations.put("closureJs", [
       compilationLevel: "SIMPLE_OPTIMIZATIONS",
       languageIn: "ECMASCRIPT_NEXT",
@@ -264,25 +262,25 @@ webforjMinify {
 
 ### Lisätiedostojen minifiointi {#minifying-additional-files}
 
-Minifioidaksesi tiedostoja, joita ei löydy annotaatioiden kautta, luo konfigurointitiedosto, joka määrittää glob-pohjat:
+Jos haluat minifioida tiedostoja, joita ei löydy merkintöjen avulla, luo määritystiedosto, jossa määritetään glob-kuviot:
 
 ```hocon title="src/main/resources/META-INF/webforj-minify.txt"
-# Sisältökuviot
+# Include patterns
 **/*.css
 **/*.js
 
-# Poissulkemiskuvioita (alkaa !-merkillä)
+# Exclusion patterns (prefix with !)
 !**/*.min.css
 !**/*.min.js
 ```
 
 ## Mukautetut minifioijat {#custom-minifiers}
 
-Laajennus tukee mukautettuja minifioijia Java:n palveluntarjoajaliittymän (SPI) kautta, mikä mahdollistaa tukea lisätiedostotyypeiltä tai vaihtoehtoisilta minifiointikirjastoilta.
+Laajennus tukee mukautettuja minifioijia Java Service Provider Interface (SPI) -rajapinnan kautta. Näin voit lisätä tuen muille tiedostotyypeille tai vaihtoehtoisille minifiointikirjastoille.
 
 ### Mukautetun minifioijan luominen {#creating-a-custom-minifier}
 
-Toteuta `AssetMinifier` -rajapinta luodaksesi oman minifioijan. Seuraava esimerkki näyttää JSON-minifioijan, joka käyttää Gsonia tyhjien välisten poistamiseen:
+Toteuta `AssetMinifier`-rajapinta luodaksesi oman minifioijan. Seuraavassa esimerkissä luodaan Gsonia käyttävä JSON-minifioija, joka poistaa tyhjemerkit:
 
 ```java title="src/main/java/com/example/minifier/JsonMinifier.java"
 package com.example.minifier;
@@ -309,10 +307,10 @@ public class JsonMinifier implements AssetMinifier {
       JsonElement element = gson.fromJson(content, JsonElement.class);
       return gson.toJson(element);
     } catch (JsonSyntaxException e) {
-      logger.warning("Viallinen JSON tiedostossa " + sourceFile + ", ohitetaan: " + e.getMessage());
+      logger.warning("Malformed JSON in " + sourceFile + ", skipping: " + e.getMessage());
       return content;
     } catch (Exception e) {
-      throw new MinificationException("JSON-tiedoston minifiointi epäonnistui: " + sourceFile, e);
+      throw new MinificationException("Failed to minify JSON file: " + sourceFile, e);
     }
   }
 
@@ -324,7 +322,7 @@ public class JsonMinifier implements AssetMinifier {
   @Override
   public boolean shouldMinify(Path filePath) {
     String filename = filePath.getFileName().toString();
-    // Ohita konfiguraatiotiedostot ja jo minifioidut tiedostot
+    // Skip config files and already minified files
     if (filename.equals("package.json") || filename.equals("tsconfig.json")) {
       return false;
     }
@@ -336,14 +334,14 @@ public class JsonMinifier implements AssetMinifier {
 
   @Override
   public void configure(Map<String, Object> options) {
-    // Konfiguraatioasetukset, jos tarpeen
+    // Configuration options if needed
   }
 }
 ```
 
-### Minifioijasi rekisteröinti {#registering-your-minifier}
+### Minifioijan rekisteröinti {#registering-your-minifier}
 
-Luo palveluntarjoajan konfigurointitiedosto:
+Luo palveluntarjoajan määritystiedosto:
 
 ```txt title="src/main/resources/META-INF/services/com.webforj.minify.common.AssetMinifier"
 com.example.minifier.JsonMinifier
@@ -351,7 +349,7 @@ com.example.minifier.JsonMinifier
 
 ### Mukautetun minifioijan käyttäminen {#using-your-custom-minifier}
 
-Paketoit minifioijasi erillisenä JAR-tiedostona ja lisää se laajennuksen riippuvuudeksi:
+Paketoi minifioijasi erilliseksi JAR-tiedostoksi ja lisää se laajennuksen riippuvuudeksi:
 
 ```xml {5-9}
 <plugin>
@@ -363,7 +361,7 @@ Paketoit minifioijasi erillisenä JAR-tiedostona ja lisää se laajennuksen riip
       <artifactId>json-minifier</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <!-- Vakio minifioijat (valinnainen) -->
+    <!-- Standard minifiers (optional) -->
     <dependency>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-minify-phcss-css</artifactId>
@@ -373,35 +371,35 @@ Paketoit minifioijasi erillisenä JAR-tiedostona ja lisää se laajennuksen riip
 </plugin>
 ```
 
-## Yleiset ongelmat {#common-issues}
+## Yleisiä ongelmia {#common-issues}
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Ei minifioijia rekisteröity</p>
+    <p>Minifioijia ei ole rekisteröity</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       ```
-      [WARN] Ei minifioijia rekisteröity SPI:n kautta. Ohitetaan minifiointi.
-      [WARN] Varmista, että ph-css ja/tai closure-compiler ovat luokkareitissä.
+      [WARN] No minifiers registered via SPI. Skipping minification.
+      [WARN] Ensure ph-css and/or closure-compiler are on the classpath.
       ```
 
-      Lisää minifioijamoduuliriippuvuudet laajennuskonfiguraatioon. CSS:lle, lisää `webforj-minify-phcss-css`. JavaScriptille, lisää `webforj-minify-closure-js`.
+      Lisää minifioijamoduulien riippuvuudet laajennuksen määritykseen. Lisää CSS:ää varten `webforj-minify-phcss-css` ja JavaScriptiä varten `webforj-minify-closure-js`.
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>Ei tiedostoja käsitelty</p>
+    <p>Tiedostoja ei käsitelty</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      Jos laajennus ilmoittaa `Käsitelty 0 tiedostoa`, varmista, että:
+      Jos laajennus ilmoittaa `Processed 0 files`, tarkista seuraavat asiat:
 
-      1. Annotaatio prosessori on konfiguroitu `maven-compiler-plugin` -tiedostoon `webforj-minify-foundation` olevalle `annotationProcessorPaths`.
-      2. webforJ varannotaatiot ovat olemassa lähdekoodissasi.
-      3. `target/classes/META-INF/webforj-resources.json` on olemassa käännön jälkeen.
+      1. Annotaatioprosessori on määritetty `maven-compiler-plugin`-laajennuksessa siten, että `annotationProcessorPaths` sisältää `webforj-minify-foundation`-riippuvuuden
+      2. Lähdekoodissasi on webforJ-resurssimerkintöjä
+      3. `target/classes/META-INF/webforj-resources.json` on olemassa käännöksen jälkeen
     </div>
   </AccordionDetails>
 </Accordion>
@@ -413,10 +411,10 @@ Paketoit minifioijasi erillisenä JAR-tiedostona ja lisää se laajennuksen riip
   <AccordionDetails>
     <div>
       ```
-      [WARN] Tiedostoa ei löydy: /path/to/static/css/app.css (viitattu 'ws://css/app.css')
+      [WARN] File not found: /path/to/static/css/app.css (referenced as 'ws://css/app.css')
       ```
 
-      Varmista, että tiedosto on olemassa oikeassa polussa `src/main/resources/static` ja että URL-protokolla vastaa hakemistorakennetta.
+      Varmista, että tiedosto on oikeassa polussa hakemiston `src/main/resources/static` alla ja että URL-protokolla vastaa hakemistorakennetta.
     </div>
   </AccordionDetails>
 </Accordion>
@@ -428,10 +426,10 @@ Paketoit minifioijasi erillisenä JAR-tiedostona ja lisää se laajennuksen riip
   <AccordionDetails>
     <div>
       ```
-      [WARN] Virhe minifioitaessa tiedostoa /path/to/app.css: jäsentämisvirhe rivillä 42
+      [WARN] Error minifying file /path/to/app.css: parse error at line 42
       ```
 
-      Laajennus varoittaa, mutta jatkaa ilman, että rakennus epäonnistuu. Alkuperäinen sisältö säilyy, kun minifiointi epäonnistuu. Korjataksesi syntaksivirheitä, varmista CSS tai JavaScript lintterillä.
+      Laajennus antaa varoituksen, mutta jatkaa koontia keskeyttämättä sitä. Jos minifiointi epäonnistuu, alkuperäinen sisältö säilytetään. Korjaa syntaksivirheet tarkistamalla CSS tai JavaScript lintterillä.
     </div>
   </AccordionDetails>
 </Accordion>

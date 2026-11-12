@@ -4,31 +4,29 @@ title: 压缩插件
 description: >-
   Discover and minify CSS and JavaScript assets referenced by webforJ
   annotations during the Maven or Gradle production build.
-_i18n_hash: a570df6cd0876073e88e7b38b6357b10
+_i18n_hash: fc6e1dd15c6b453f014feb4cdf449953
 ---
 # Minifier 插件 <DocChip chip='since' label='25.11' />
 
-webforJ Minifier 插件自动 [压缩](https://en.wikipedia.org/wiki/Minification_(programming)) 和优化 CSS 和 JavaScript 资源，在构建过程中。该插件通过 webforJ [资源注解](/docs/managing-resources/importing-assets) 发现资产，并在构建输出中压缩它们，从而减少文件大小并提高加载速度，而不会修改原始源文件。
+webforJ Minifier 插件会在构建过程中自动[压缩](https://en.wikipedia.org/wiki/Minification_(programming))并优化 CSS 和 JavaScript 资源。该插件会查找通过 webforJ [资源注解](/docs/managing-resources/importing-assets)引用的资源，并在构建输出中对其进行压缩，从而减小文件大小、缩短加载时间，同时不修改原始源文件。
 
-:::info 压缩已内置于打包工具中
-[前端打包工具](/docs/managing-resources/bundler/overview) 在其生产构建中压缩 CSS 和 JavaScript，因此使用打包工具的项目不需要该插件。该插件仍然对通过资源注解加载资产而不使用打包工具的项目可用并得到支持。现有设置可按之前方式正常工作，无需更改。
+:::info 压缩功能已内置于打包器中
+[前端打包器](/docs/managing-resources/bundler/overview)会在生产构建过程中压缩 CSS 和 JavaScript，因此使用打包器的项目无需使用此插件。对于通过资源注解加载资源、但不使用打包器的项目，此插件仍然可用且受支持。现有配置会继续照常工作，无需更改。
 :::
 
 ## 设置 {#setup}
 
-如果您使用 [startforJ](https://docs.webforj.com/startforj) 或 webforJ [原型](/docs/building-ui/archetypes/overview) 创建了项目，minifier 插件已经配置好并在您使用 `mvn package -Pprod` 构建时自动运行。
-
-对于手动设置，minifier 需要两个配置：一个注解处理器用于在编译期间发现资源，以及一个插件用于执行压缩。
+设置 Minifier 时需要进行两项配置：一个用于在编译期间查找资源的注解处理器，以及一个用于执行压缩的插件。
 
 <Tabs>
 <TabItem value="maven" label="Maven">
 
-将以下内容添加到您的 `pom.xml`：
+将以下内容添加到 `pom.xml`：
 
 ```xml
 <build>
   <plugins>
-    <!-- 注解处理器配置 -->
+    <!-- Annotation Processor Configuration -->
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-compiler-plugin</artifactId>
@@ -43,7 +41,7 @@ webforJ Minifier 插件自动 [压缩](https://en.wikipedia.org/wiki/Minificatio
       </configuration>
     </plugin>
 
-    <!-- Minifier 插件配置 -->
+    <!-- Minifier Plugin Configuration -->
     <plugin>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-minify-maven-plugin</artifactId>
@@ -56,13 +54,13 @@ webforJ Minifier 插件自动 [压缩](https://en.wikipedia.org/wiki/Minificatio
         </execution>
       </executions>
       <dependencies>
-        <!-- CSS 压缩 -->
+        <!-- CSS minification -->
         <dependency>
           <groupId>com.webforj</groupId>
           <artifactId>webforj-minify-phcss-css</artifactId>
           <version>${webforj.version}</version>
         </dependency>
-        <!-- JavaScript 压缩 -->
+        <!-- JavaScript minification -->
         <dependency>
           <groupId>com.webforj</groupId>
           <artifactId>webforj-minify-closure-js</artifactId>
@@ -77,7 +75,7 @@ webforJ Minifier 插件自动 [压缩](https://en.wikipedia.org/wiki/Minificatio
 </TabItem>
 <TabItem value="gradle" label="Gradle">
 
-将以下内容添加到您的 `build.gradle`：
+将以下内容添加到 `build.gradle`：
 
 ```groovy
 buildscript {
@@ -96,23 +94,23 @@ plugins {
 apply plugin: 'com.webforj.minify'
 
 dependencies {
-  // 注解处理器，用于在编译期间发现资产
+  // Annotation processor for discovering assets during compilation
   annotationProcessor "com.webforj:webforj-minify-foundation:${webforjVersion}"
 
-  // Minifier 实现
+  // Minifier implementations
   add "webforjMinifier", "com.webforj:webforj-minify-phcss-css:${webforjVersion}"
   add "webforjMinifier", "com.webforj:webforj-minify-closure-js:${webforjVersion}"
 }
 ```
 
-`minify` 任务会在 `jar` 或 `war` 任务之前自动运行。您也可以通过 `./gradlew minify` 手动运行它。
+`minify` 任务会在 `jar` 或 `war` 任务之前自动运行。你也可以使用 `./gradlew minify` 手动运行。
 
 </TabItem>
 </Tabs>
 
 ## 使用插件 {#using-the-plugin}
 
-配置好后，插件会自动工作。只需在代码中使用 webforJ 资产注解：
+完成配置后，插件会自动运行。只需在代码中使用 webforJ 资源注解：
 
 ```java
 package com.example;
@@ -123,43 +121,43 @@ import com.webforj.annotation.JavaScript;
 @StyleSheet("ws://css/app.css")
 @JavaScript("ws://js/app.js")
 public class MyApp extends App {
-  // 你的应用程序代码
+  // Your application code
 }
 ```
 
-构建项目时，插件将自动：
+构建项目时，插件会自动执行以下操作：
 
-1. 在编译期间发现注解中引用的资产
-2. 压缩发现的 CSS 和 JavaScript 文件
-3. 报告大小减少和处理时间
+1. 在编译期间查找注解中引用的资源
+2. 压缩查找到的 CSS 和 JavaScript 文件
+3. 报告文件大小缩减情况和处理时间
 
 ### URL 协议解析 {#url-protocol-resolution}
 
-该插件理解 webforJ [URL 协议](/docs/managing-resources/assets-protocols) 并将其解析为文件系统路径：
+插件能够识别 webforJ [URL 协议](/docs/managing-resources/assets-protocols)，并将其解析为文件系统路径：
 
-| 协议 | 解析到 | 示例 |
+| 协议 | 解析为 | 示例 |
 |----------|-------------|---------|
 | `ws://` | `src/main/resources/static/` | `ws://css/app.css` → `static/css/app.css` |
 | `context://` | `src/main/resources/` | `context://styles/app.css` → `styles/app.css` |
 
-不支持没有协议的 URL，且将被跳过。
+Minifier 不支持没有协议的 URL，因此会跳过这些 URL。
 
 ## 内置压缩器 {#built-in-minifiers}
 
-webforJ 包含两个生产就绪的 CSS 和 JavaScript 压缩器。
+webforJ 内置了两个适用于生产环境的 CSS 和 JavaScript 压缩器。
 
-| 压缩器 | 特性 | 跳过 |
+| 压缩器 | 功能 | 跳过 |
 |----------|----------|-------|
-| CSS | 删除空白、注释，并优化属性值 | `.min.css` |
-| JavaScript | 变量重命名、死代码消除、语法优化 | `.min.js`, `.min.mjs` |
+| CSS | 删除空白字符和注释，并优化属性值 | `.min.css` |
+| JavaScript | 变量重命名、死代码消除、语法优化 | `.min.js`、`.min.mjs` |
 
 ## 配置选项 {#configuration-options}
 
-插件提供选项以禁用压缩、定制 JavaScript 优化和处理额外文件。
+插件提供了用于禁用压缩、定制 JavaScript 优化以及处理其他文件的选项。
 
 ### 禁用压缩 {#disabling-minification}
 
-您可能希望在开发期间或出于调试目的关闭压缩。
+在开发或调试时，你可能需要关闭压缩。
 
 <Tabs>
 <TabItem value="maven" label="Maven">
@@ -195,20 +193,20 @@ webforjMinify {
 
 ### JavaScript 压缩器选项 {#javascript-minifier-options}
 
-JavaScript 压缩器提供多个配置选项以控制优化行为。
+JavaScript 压缩器提供多个配置选项，用于控制优化行为。
 
 :::note Gradle 支持
 从 v25.12 开始，Gradle 插件支持传递 JavaScript 压缩器选项。
 :::
 
-| 选项 | 默认 | 描述 |
+| 选项 | 默认值 | 说明 |
 |--------|---------|-------------|
-| `compilationLevel` | `SIMPLE_OPTIMIZATIONS` | <ul><li>`WHITESPACE_ONLY` - 仅删除空白和注释</li><li>`SIMPLE_OPTIMIZATIONS` - 变量重命名和死代码移除</li><li>`ADVANCED_OPTIMIZATIONS` - 通过函数/属性重命名进行激进优化</li></ul> |
-| `languageIn` | `ECMASCRIPT_NEXT` | 输入 JavaScript 版本: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015` 到 `ECMASCRIPT_2021`, `ECMASCRIPT_NEXT` |
-| `languageOut` | `ECMASCRIPT5` | 输出 JavaScript 版本: 与 `languageIn` 相同，外加 `NO_TRANSPILE` |
-| `prettyPrint` | `false` | 设置为 `true` 以保留调试格式 |
+| `compilationLevel` | `SIMPLE_OPTIMIZATIONS` | <ul><li>`WHITESPACE_ONLY` - 仅删除空白字符和注释</li><li>`SIMPLE_OPTIMIZATIONS` - 重命名变量并删除死代码</li><li>`ADVANCED_OPTIMIZATIONS` - 进行激进优化，包括重命名函数和属性</li></ul> |
+| `languageIn` | `ECMASCRIPT_NEXT` | 输入 JavaScript 版本：`ECMASCRIPT3`、`ECMASCRIPT5`、`ECMASCRIPT_2015` 至 `ECMASCRIPT_2021`、`ECMASCRIPT_NEXT` |
+| `languageOut` | `ECMASCRIPT5` | 输出 JavaScript 版本：与 `languageIn` 相同，另加 `NO_TRANSPILE` |
+| `prettyPrint` | `false` | 设置为 `true` 可保留格式，以便调试 |
 
-在配置部分配置这些选项：
+在配置部分设置这些选项：
 
 <Tabs>
 <TabItem value="maven" label="Maven">
@@ -250,7 +248,7 @@ JavaScript 压缩器提供多个配置选项以控制优化行为。
 
 ```groovy
 webforjMinify {
-    skip = false  // 设置为 true 以跳过压缩
+    skip = false  // Set to true to skip minification
     minifierConfigurations.put("closureJs", [
       compilationLevel: "SIMPLE_OPTIMIZATIONS",
       languageIn: "ECMASCRIPT_NEXT",
@@ -262,27 +260,27 @@ webforjMinify {
 </TabItem>
 </Tabs>
 
-### 压缩额外文件 {#minifying-additional-files}
+### 压缩其他文件 {#minifying-additional-files}
 
-要压缩未通过注解发现的文件，创建一个配置文件，指定 glob 模式：
+若要压缩未通过注解查找到的文件，请创建一个指定 glob 模式的配置文件：
 
 ```hocon title="src/main/resources/META-INF/webforj-minify.txt"
-# 包含模式
+# Include patterns
 **/*.css
 **/*.js
 
-# 排除模式（前缀加 !）
+# Exclusion patterns (prefix with !)
 !**/*.min.css
 !**/*.min.js
 ```
 
 ## 自定义压缩器 {#custom-minifiers}
 
-该插件通过 Java 的服务提供者接口 (SPI) 支持自定义压缩器，允许您为额外的文件类型或替代压缩库添加支持。
+插件支持通过 Java 的 Service Provider Interface (SPI) 使用自定义压缩器，让你能够为其他文件类型或替代压缩库添加支持。
 
 ### 创建自定义压缩器 {#creating-a-custom-minifier}
 
-实现 `AssetMinifier` 接口以创建自己的压缩器。以下示例显示一个使用 Gson 删除空格的 JSON 压缩器：
+实现 `AssetMinifier` 接口即可创建自己的压缩器。以下示例展示了一个使用 Gson 删除空白字符的 JSON 压缩器：
 
 ```java title="src/main/java/com/example/minifier/JsonMinifier.java"
 package com.example.minifier;
@@ -324,7 +322,7 @@ public class JsonMinifier implements AssetMinifier {
   @Override
   public boolean shouldMinify(Path filePath) {
     String filename = filePath.getFileName().toString();
-    // 跳过配置文件和已压缩的文件
+    // Skip config files and already minified files
     if (filename.equals("package.json") || filename.equals("tsconfig.json")) {
       return false;
     }
@@ -336,12 +334,12 @@ public class JsonMinifier implements AssetMinifier {
 
   @Override
   public void configure(Map<String, Object> options) {
-    // 如果需要，配置选项
+    // Configuration options if needed
   }
 }
 ```
 
-### 注册您的压缩器 {#registering-your-minifier}
+### 注册压缩器 {#registering-your-minifier}
 
 创建服务提供者配置文件：
 
@@ -349,9 +347,9 @@ public class JsonMinifier implements AssetMinifier {
 com.example.minifier.JsonMinifier
 ```
 
-### 使用您的自定义压缩器 {#using-your-custom-minifier}
+### 使用自定义压缩器 {#using-your-custom-minifier}
 
-将您的压缩器打包为单独的 JAR 并将其添加为插件依赖：
+将压缩器打包为单独的 JAR，并将其添加为插件依赖项：
 
 ```xml {5-9}
 <plugin>
@@ -363,7 +361,7 @@ com.example.minifier.JsonMinifier
       <artifactId>json-minifier</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <!-- 标准压缩器（可选） -->
+    <!-- Standard minifiers (optional) -->
     <dependency>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-minify-phcss-css</artifactId>
@@ -377,7 +375,7 @@ com.example.minifier.JsonMinifier
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>未注册压缩器</p>
+    <p>未注册任何压缩器</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -386,29 +384,29 @@ com.example.minifier.JsonMinifier
       [WARN] Ensure ph-css and/or closure-compiler are on the classpath.
       ```
 
-      将压缩器模块依赖添加到插件配置。对于 CSS，添加 `webforj-minify-phcss-css`。对于 JavaScript，添加 `webforj-minify-closure-js`。
+      将压缩器模块依赖项添加到插件配置中。对于 CSS，请添加 `webforj-minify-phcss-css`。对于 JavaScript，请添加 `webforj-minify-closure-js`。
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>没有处理文件</p>
+    <p>未处理任何文件</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
       如果插件报告 `Processed 0 files`，请确认：
 
-      1. 注解处理器在 `maven-compiler-plugin` 中配置，`annotationProcessorPaths` 中包含 `webforj-minify-foundation`
-      2. 资源注解在您的源代码中存在
-      3. 编译后 `target/classes/META-INF/webforj-resources.json` 存在
+      1. 已在 `maven-compiler-plugin` 中配置注解处理器，并在 `annotationProcessorPaths` 中添加了 `webforj-minify-foundation`
+      2. 源代码中存在 webforJ 资源注解
+      3. 编译后存在 `target/classes/META-INF/webforj-resources.json`
     </div>
   </AccordionDetails>
 </Accordion>
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <p>未找到文件</p>
+    <p>找不到文件</p>
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -416,7 +414,7 @@ com.example.minifier.JsonMinifier
       [WARN] File not found: /path/to/static/css/app.css (referenced as 'ws://css/app.css')
       ```
 
-      验证文件是否存在于 `src/main/resources/static` 下的正确路径，并且 URL 协议与目录结构匹配。
+      请确认文件位于 `src/main/resources/static` 下的正确路径，并且 URL 协议与目录结构相匹配。
     </div>
   </AccordionDetails>
 </Accordion>
@@ -431,7 +429,7 @@ com.example.minifier.JsonMinifier
       [WARN] Error minifying file /path/to/app.css: parse error at line 42
       ```
 
-      插件会发出警告，但在失败构建的情况下继续。压缩失败时，原始内容被保留。要修复语法错误，请使用 linter 验证 CSS 或 JavaScript。
+      插件会发出警告，但会继续执行，不会导致构建失败。压缩失败时会保留原始内容。若要修复语法错误，请使用代码检查工具验证 CSS 或 JavaScript。
     </div>
   </AccordionDetails>
 </Accordion>

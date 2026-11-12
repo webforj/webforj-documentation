@@ -1,36 +1,40 @@
 ---
 sidebar_position: 10
-title: BBj-controls en webforJ-componenten
+title: Componentarchitectuur
 description: >-
-  See how webforJ components map one-to-one to BBj controls through the
-  DwcComponent base class and why composition replaces inheritance.
-_i18n_hash: 83f48323774737067ddd9a6bebb0373d
+  See how webforJ components are built on the DwcComponent base class, why
+  component classes are final, and why composition replaces inheritance.
+_i18n_hash: 13c29b780cb00a918fe6e0a98c5e783a
 ---
-Het webforJ-framework is ontworpen om een Java API te bieden rond de BBj-taal zijn DWC en biedt een robuuste architectuur voor het bouwen en beheren van componenten.
+webforJ biedt je een Java-API voor een bibliotheek met webcomponenten en beheert elke component vanaf de server. Op deze pagina wordt uitgelegd hoe componenten zijn opgebouwd en hoe je ze kunt uitbreiden.
 
-## Mapping BBj-controles naar webforJ-componenten {#mapping-bbj-controls-to-webforj-components}
-Een van de fundamentele principes van webforJ is de binding van BBj-controles met webforJ-componenten. In deze architectuur heeft elke webforJ-component die met het product wordt meegeleverd een één-op-één mapping met een onderliggende BBj-controle. Deze mapping zorgt ervoor dat Java-componenten het gedrag en de eigenschappen van hun BBj-tegenhangers naadloos weerspiegelen.
+## Opbouw van componenten {#how-components-are-structured}
+Elke webforJ-component die bij het product wordt geleverd, is een Java-klasse die één-op-één is gekoppeld aan een client-side webcomponent uit de DWC-componentenbibliotheek. De Java-klasse bevat de status en API van de component op de server, en het framework houdt de webcomponent in de browser hiermee gesynchroniseerd.
 
-Deze nauwe correspondentie tussen webforJ-componenten en BBj-controles vereenvoudigt de ontwikkeling en stelt Java-ontwikkelaars in staat om te werken met vertrouwde concepten bij het bouwen van webgebaseerde applicaties zonder de noodzaak om enige BBj-code te schrijven.
+Je werkt alleen met de Java-klasse. Het framework handelt eigenschappen, gebeurtenissen en weergave in de browser af, zodat je webapps uitsluitend in Java bouwt.
 
-## De `DwcComponent` basisklasse {#the-dwccomponent-base-class}
-In het hart van de componentarchitectuur van webforJ ligt de DWCComponent basisklasse. Alle webforJ-componenten erven van deze klasse. Deze erfenis geeft elke webforJ-component toegang tot zijn onderliggende BBj-controle, waardoor er een directe verbinding is tussen de Java-component en de BBj-controle die hij vertegenwoordigt.
+## De basisklasse `DwcComponent` {#the-dwccomponent-base-class}
+De DWCComponent-basisklasse vormt de kern van de componentarchitectuur van webforJ. Alle webforJ-componenten erven van deze klasse. De klasse beheert de koppeling tussen de Java-component en de client-side tegenhanger, waaronder de creatie, updates van eigenschappen en gebeurtenissen.
 
-Het is echter belangrijk op te merken dat ontwikkelaars beperkt zijn in het verder uitbreiden van de DWCComponent-klasse. Pogingen om dit te doen zullen resulteren in een runtime-exceptie die dergelijke uitbreidingen verbiedt. Deze beperking is in place om de integriteit van de onderliggende BBj-controle te behouden en ervoor te zorgen dat ontwikkelaars deze niet onopzettelijk manipuleren op manieren die tot onbedoelde gevolgen kunnen leiden.
+Het is echter belangrijk om te weten dat ontwikkelaars de DWCComponent-klasse niet verder mogen uitbreiden. Een poging om dit te doen leidt tot een runtime-uitzondering die dergelijke uitbreidingen verhindert. Deze beperking is ingesteld om de integriteit van de koppeling te behouden en ervoor te zorgen dat ontwikkelaars deze niet per ongeluk op manieren aanpassen die onbedoelde gevolgen kunnen hebben.
 
-### Definitieve klassen en uitbreidingsbeperkingen {#final-classes-and-extension-restrictions}
-In webforJ zijn de meeste componentklassen, met uitzondering van de ingebouwde HTML-elementen en eventuele klassen die hiervan erven, als `final` verklaard. Dit betekent dat ze niet beschikbaar zijn voor uitbreiding of subklassen. Deze ontwerpoverweging is opzettelijk en dient meerdere doelen:
+### Final-klassen en beperkingen op uitbreidingen {#final-classes-and-extension-restrictions}
+In webforJ zijn de meeste componentklassen als `final` gedeclareerd, met uitzondering van de ingebouwde HTML-elementen en alle klassen die daarvan erven. Dit betekent dat ze niet kunnen worden uitgebreid of als superklasse kunnen worden gebruikt. Deze ontwerpkeuze is bewust gemaakt en dient meerdere doelen:
 
-1. **Controle over onderliggende BBj-controle**: Zoals eerder vermeld, zou het uitbreiden van webforJ-componentklassen ontwikkelaars controle geven over de onderliggende BBj-controle. Om de consistentie en voorspelbaarheid van het gedrag van componenten te behouden, is dit niveau van controle beperkt.
+1. **Controle over de client-side koppeling**: Zoals eerder vermeld, zou het uitbreiden van webforJ-componentklassen de interne koppeling tussen de Java-component en de client-side tegenhanger blootleggen. Om de consistentie en voorspelbaarheid van het gedrag van componenten te behouden, is deze mate van controle beperkt.
 
-2. **Voorkomen van onbedoelde wijzigingen**: Het final maken van de componentklassen voorkomt onopzettelijke wijzigingen aan kerncomponenten, waardoor het risico op onverwachte gedragingen of kwetsbaarheden afneemt.
+2. **Onbedoelde wijzigingen voorkomen**: Door de componentklassen `final` te maken, worden onbedoelde wijzigingen aan kerncomponenten voorkomen en neemt het risico af op onverwacht gedrag of beveiligingsproblemen.
 
-3. **Bevordering van het gebruik van composieten**: Om de functionaliteit van componenten uit te breiden, moedigt het webforJ-framework ontwikkelaars aan om een composietbenadering te gebruiken. Composietcomponenten zijn Java-klassen die andere webforJ-componenten of standaard HTML-elementen bevatten. Terwijl traditionele erfenis wordt afgeraden, bieden composietcomponenten een manier om nieuwe, aangepaste componenten te creëren die bestaande encapsuleren.
+3. **Het gebruik van composieten bevorderen**: Om de functionaliteit van componenten uit te breiden, moedigt het webforJ-framework ontwikkelaars aan om compositie te gebruiken. Composietcomponenten zijn Java-klassen die andere webforJ-componenten of standaard HTML-elementen bevatten. Hoewel traditionele overerving wordt afgeraden, bieden composietcomponenten een manier om nieuwe, aangepaste componenten te maken die bestaande componenten omvatten.
 
 <!-- ## Componenten toevoegen aan de DOM
-TODO: Praten over hoe webforJ zal zoeken naar een BBj-controle - betekent dat je iets niet kunt toevoegen dat geen controle heeft -->
+TODO: Bespreken hoe webforJ de client-side tegenhanger van een component bepaalt -->
 
 ## Composietcomponenten: uitbreiden door compositie {#composite-components-extending-through-composition}
-In het webforJ-framework speelt het concept van composietcomponenten een cruciale rol in het uitbreiden van componentfunctionaliteit. Composietcomponenten zijn Java-klassen die niet beperkt zijn door het final-trefwoord, waardoor ontwikkelaars nieuwe componenten kunnen creëren die het gedrag van een enkele component uitbreiden of meerdere componenten combineren tot één, door bestaande componenten te combineren. Klassen die dit gedrag faciliteren zijn gecreëerd voor gebruik door ontwikkelaars. Zie de secties `Composite` en `ElementComposite` om te zien hoe je composietcomponenten correct kunt maken.
+In het webforJ-framework speelt het concept van composietcomponenten een belangrijke rol bij het uitbreiden van de functionaliteit van componenten. Composietcomponenten zijn Java-klassen die niet beperkt zijn door het sleutelwoord `final`. Daardoor kunnen ontwikkelaars nieuwe componenten maken die het gedrag van één component uitbreiden of meerdere componenten combineren door bestaande componenten samen te stellen. Er zijn klassen beschikbaar die dit gedrag mogelijk maken. Zie de onderdelen `Composite` en `ElementComposite` voor meer informatie over het correct maken van composietcomponenten.
 
-Deze benadering moedigt een meer modulaire en flexibele ontwikkelingsstijl aan, waardoor ontwikkelaars op maat gemaakte componenten kunnen bouwen die aan specifieke vereisten voldoen.
+Deze aanpak stimuleert een meer modulaire en flexibele ontwikkelstijl, zodat ontwikkelaars componenten op maat kunnen maken die aan specifieke vereisten voldoen.
+
+<!--
+## Componenthiërarchie {#component-hierarchy}
+TODO: Een afbeelding maken en tonen -->

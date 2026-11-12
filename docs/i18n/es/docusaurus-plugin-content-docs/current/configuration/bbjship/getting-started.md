@@ -4,7 +4,7 @@ sidebar_position: 2
 description: >-
   Create a webforJ app that runs with BBjServices from startforJ or the Maven
   archetypes, run it on your local BBj and deploy it with BBjShip.
-_i18n_hash: 84b3ad107540f450350f754730522e0e
+_i18n_hash: 913c105077586054f3af87216fe848e0
 ---
 Esta guía crea una aplicación webforJ que se ejecuta con BBjServices, la ejecuta en tu BBj local durante el desarrollo y la implementa con BBjShip.
 
@@ -14,7 +14,7 @@ Necesitas un proyecto Maven y una instalación de BBj de la misma versión que w
 
 ## Crear una aplicación BBj {#create-a-bbj-app}
 
-Tienes dos opciones para crear una nueva aplicación webforJ que se ejecute con BBjServices: usar la herramienta gráfica startforJ o la línea de comandos de Maven.
+Tienes dos opciones para crear una aplicación webforJ nueva que se ejecute con BBjServices: usar la herramienta gráfica startforJ o la línea de comandos de Maven.
 
 <!-- vale off -->
 ### Opción 1: usar startforJ {#option-1-using-startforj}
@@ -22,45 +22,75 @@ Tienes dos opciones para crear una nueva aplicación webforJ que se ejecute con 
 
 Al crear una aplicación con [startforJ](https://docs.webforj.com/startforj), puedes personalizarla proporcionando la siguiente información:
 
-- Metadatos básicos del proyecto (nombre de la aplicación, ID de grupo e ID de artefacto)
+- Metadatos básicos del proyecto (nombre de la aplicación, ID de grupo, ID de artefacto)
 - Versión de webforJ y versión de Java
 - Color del tema e icono
 - Arquetipo
-- **Se ejecuta en**: selecciona **BBjServices** para crear un proyecto que se ejecute con BBjServices
+- **Runs on**: selecciona **BBjServices** para crear un proyecto que se ejecute con BBjServices
 
 ### Opción 2: usar la línea de comandos {#option-2-using-the-command-line}
 
-Si prefieres usar la línea de comandos, genera el proyecto con los arquetipos oficiales de webforJ:
+Si prefieres usar la línea de comandos, genera el proyecto con los [arquetipos oficiales de webforJ](/docs/building-ui/archetypes/overview):
 
-```bash {8}
-mvn -B archetype:generate \
-  -DarchetypeGroupId=com.webforj \
-  -DarchetypeArtifactId=webforj-archetype-hello-world \
-  -DarchetypeVersion=LATEST \
-  -DgroupId=org.example \
-  -DartifactId=my-app \
-  -Dversion=1.0-SNAPSHOT \
-  -Dflavor=webforj-bbj
-```
+<!-- vale off -->
+<Tabs>
+  <TabItem value="bash" label="Bash/Zsh" default>
+    ```bash {8}
+    mvn -B archetype:generate \
+    -DarchetypeGroupId=com.webforj \
+    -DarchetypeArtifactId=webforj-archetype-hello-world \
+    -DarchetypeVersion=LATEST \
+    -DgroupId=org.example \
+    -DartifactId=my-app \
+    -Dversion=1.0-SNAPSHOT \
+    -Dflavor=webforj-bbj
+    ```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+    ```powershell {8}
+    mvn -B archetype:generate `
+    -DarchetypeGroupId="com.webforj" `
+    -DarchetypeArtifactId="webforj-archetype-blank" `
+    -DarchetypeVersion="LATEST" `
+    -DgroupId="org.example" `
+    -DartifactId="my-app" `
+    -Dversion="1.0-SNAPSHOT" `
+    -Dflavor="webforj-bbj"
+    ```
+  </TabItem>
+  <TabItem value="cmd" label="Command Prompt">
+    ```console {8}
+    mvn -B archetype:generate ^
+    -DarchetypeGroupId="com.webforj" ^
+    -DarchetypeArtifactId="webforj-archetype-blank" ^
+    -DarchetypeVersion="LATEST" ^
+    -DgroupId="org.example" ^
+    -DartifactId="my-app" ^
+    -Dversion="1.0-SNAPSHOT" ^
+    -Dflavor="webforj-bbj"
+    ```
+  </TabItem>
+</Tabs>
+<!-- vale on -->
 
 Con el parámetro `flavor`, el arquetipo genera un proyecto que se ejecuta con BBjServices.
 
 Esto crea un proyecto con:
-- La dependencia `webforj` sin el motor de webforJ, que proporciona BBjServices
-- El complemento Maven de webforJ, configurado para implementar en BBjShip en tu BBj local usando el ID del artefacto como nombre de la aplicación
+- La dependencia `webforj` sin el motor webforJ, que proporciona BBjServices
+- El complemento Maven de webforJ, configurado para implementar la aplicación en BBjShip en tu BBj local, usando el ID de artefacto como nombre de la aplicación
 - HotswapAgent para las ejecuciones de desarrollo
 - Vistas de ejemplo
 - Archivos de configuración de webforJ para desarrollo y producción
 
 ## Ejecutar la aplicación {#run-the-app}
 
-Un proyecto de arquetipo define su objetivo Maven predeterminado, así que `mvn` sin argumentos compila la aplicación e inicia una [ejecución de desarrollo](/docs/configuration/deploy-reload/bbjservices) en tu BBjServices local:
+Un proyecto de arquetipo establece su objetivo Maven predeterminado, por lo que `mvn` sin argumentos compila la aplicación e inicia una [ejecución de desarrollo](/docs/configuration/deploy-reload/bbjservices) en tu BBjServices local:
 
 ```bash
 mvn
 ```
 
-La primera ejecución prepara tu BBj local. Instala BBjShip y agrega HotswapAgent a BBjServices, que se reinicia una vez. A continuación, la compilación muestra la dirección de tu aplicación:
+La primera ejecución prepara tu BBj local. Instala BBjShip y agrega HotswapAgent a BBjServices, lo que provoca que BBjServices se reinicie una vez. Luego, la compilación muestra la dirección de la aplicación:
 
 ```text
 [INFO] webforJ watch: my-app is running at http://localhost:8888/webapp/my-app
@@ -77,4 +107,4 @@ Para implementar la aplicación empaquetada, ejecuta:
 mvn install
 ```
 
-La aplicación se publicará en `http://localhost:8888/webapp/my-app` hasta que vuelvas a implementarla o la elimines. Consulta [Implementación](/docs/configuration/bbjship/deploying) para implementarla en otro servidor BBj, por ejemplo, desde una canalización de CI.
+La aplicación se publica en `http://localhost:8888/webapp/my-app` hasta que vuelvas a implementarla o la elimines. Consulta [Implementación](/docs/configuration/bbjship/deploying) para implementarla en otro servidor BBj, por ejemplo, desde una canalización de CI.

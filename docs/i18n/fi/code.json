@@ -88,7 +88,7 @@
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "webforJ-sovellus Spring Boot -tuella (vaatii webforJ 25.02 tai uudemman).",
+    "message": "webforJ-sovellus Spring Boot -tuella.",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
@@ -1736,5 +1736,3816 @@
   },
   "component.blogFilterBar.insights": {
     "message": "Oivallukset"
+  },
+  "page.home.meta.title": {
+    "message": "webforJ: täyden pinon Java-kehys yritysten verkkosovelluksiin"
+  },
+  "page.home.meta.description": {
+    "message": "Rakenna koko verkkosovellus Javalla käyttöliittymästä dataan ja valitsemasi taustajärjestelmän kanssa. Tekoälyvalmis, vaiheittainen polku Swingistä verkkoon. Dokumentaatio, oppaat ja live-demot."
+  },
+  "page.home.layers.screens.name": {
+    "message": "Näytöt"
+  },
+  "page.home.layers.screens.text": {
+    "message": "Koosta käyttöliittymä komponenteista, asettele se ja siirry sivulta toiselle."
+  },
+  "page.home.layers.screens.link.components": {
+    "message": "Komponentit"
+  },
+  "page.home.layers.screens.link.buildingUi": {
+    "message": "Käyttöliittymän rakentaminen"
+  },
+  "page.home.layers.screens.link.routing": {
+    "message": "Reititys"
+  },
+  "page.home.layers.screens.link.styling": {
+    "message": "Tyylit"
+  },
+  "page.home.layers.logic.name": {
+    "message": "Logiikka"
+  },
+  "page.home.layers.logic.text": {
+    "message": "Sido lomakkeet malleihisi, suojaa reitit, käännä ja testaa."
+  },
+  "page.home.layers.logic.link.dataBinding": {
+    "message": "Tietojen sidonta"
+  },
+  "page.home.layers.logic.link.security": {
+    "message": "Tietoturva"
+  },
+  "page.home.layers.logic.link.translation": {
+    "message": "Käännös"
+  },
+  "page.home.layers.logic.link.testing": {
+    "message": "Testaus"
+  },
+  "page.home.layers.data.name": {
+    "message": "Tiedot"
+  },
+  "page.home.layers.data.text": {
+    "message": "Täytä taulukot repositorioista ja näytä luvut kaavioissa."
+  },
+  "page.home.layers.data.link.repository": {
+    "message": "Tietovarasto"
+  },
+  "page.home.layers.data.link.table": {
+    "message": "Taulukko"
+  },
+  "page.home.layers.data.link.charts": {
+    "message": "Kaaviot"
+  },
+  "page.home.layers.data.link.managingResources": {
+    "message": "Resurssien hallinta"
+  },
+  "page.home.layers.backend.name": {
+    "message": "Taustajärjestelmäsi"
+  },
+  "page.home.layers.backend.text": {
+    "message": "Suorita itsenäisesti tai Spring Bootin kanssa, Javalla tai Kotlinilla, ja julkaise se."
+  },
+  "page.home.layers.backend.link.configuration": {
+    "message": "Määritykset"
+  },
+  "page.home.layers.backend.link.upgrading": {
+    "message": "Päivitetään\n"
+  },
+  "page.home.path.understand.step": {
+    "message": "Ymmärrä"
+  },
+  "page.home.path.understand.title": {
+    "message": "webforJ 6 näytössä"
+  },
+  "page.home.path.understand.text": {
+    "message": "Lyhyt opastettu esittely webforJ:stä."
+  },
+  "page.home.path.create.step": {
+    "message": "Luo"
+  },
+  "page.home.path.create.title": {
+    "message": "Aloita projekti"
+  },
+  "page.home.path.create.text": {
+    "message": "Tarkista edellytykset, luo projekti ja suorita se."
+  },
+  "page.home.path.learn.step": {
+    "message": "Opi"
+  },
+  "page.home.path.learn.title": {
+    "message": "Seuraa opasta"
+  },
+  "page.home.path.learn.text": {
+    "message": "Rakenna toimiva sovellus vaihe vaiheelta."
+  },
+  "page.home.path.build.step": {
+    "message": "Rakenna"
+  },
+  "page.home.path.build.title": {
+    "message": "Käytä komponentteja"
+  },
+  "page.home.path.build.text": {
+    "message": "Kaikki komponentit API-tietoineen ja live-esimerkkeineen."
+  },
+  "page.home.ai.loop.write.title": {
+    "message": "Kirjoita"
+  },
+  "page.home.ai.loop.write.text": {
+    "message": "Avustajasi lukee todellista webforJ-rajapintaa MCP-palvelimen kautta ja noudattaa lomakkeita, tietoturvaa ja tyylittelyä koskevia Agent Skills -ohjeita."
+  },
+  "page.home.ai.loop.check.title": {
+    "message": "Tarkista"
+  },
+  "page.home.ai.loop.check.text": {
+    "message": "Se suorittaa näkymän tavallisessa JUnit-testissä TestBedillä ilman selainta tai palvelinta ja antaa selkeän hyväksytty/hylätty-tuloksen."
+  },
+  "page.home.ai.loop.review.title": {
+    "message": "Tarkista"
+  },
+  "page.home.ai.loop.review.text": {
+    "message": "Tarkastelet jo hyväksyttyä tulosta sen sijaan, että lukisit arvauksen jokaisen rivin."
+  },
+  "page.home.places.components.title": {
+    "message": "Käyttöliittymäkomponentit"
+  },
+  "page.home.places.components.text": {
+    "message": "Taulukot, lomakkeet, valintaikkunat, asettelut ja paljon muuta – jokaisesta interaktiivisia esimerkkejä."
+  },
+  "page.home.places.craft.text": {
+    "message": "Visuaalinen editori: näe käynnissä olevan sovelluksesi komponenttipuu ja muokkaa sitä reaaliajassa."
+  },
+  "page.home.places.swing.title": {
+    "message": "Swingin modernisointi"
+  },
+  "page.home.places.swing.text": {
+    "message": "Käytä työpöytäsovellusta selaimessa ja siirry näytöltä toiselle."
+  },
+  "page.home.places.ai.title": {
+    "message": "Tekoälytyökalut"
+  },
+  "page.home.places.ai.text": {
+    "message": "Tekoälylisäosa: MCP-palvelin ja Agent Skills avustajallesi yhdellä asennuksella."
+  },
+  "page.home.places.kit.title": {
+    "message": "Figma-suunnittelupaketti"
+  },
+  "page.home.places.kit.text": {
+    "message": "Suunnittelijat ja kehittäjät käyttävät samoja designtokeneita ja komponentteja."
+  },
+  "page.home.places.showcase.title": {
+    "message": "Esittely"
+  },
+  "page.home.places.showcase.text": {
+    "message": "Neljä esimerkkisovellusta yrityskäyttöön, joita voit käydä läpi näyttö kerrallaan."
+  },
+  "page.home.help.cookbook.title": {
+    "message": "Reseptikirja"
+  },
+  "page.home.help.cookbook.text": {
+    "message": "Lyhyet ohjeet yleisiin tehtäviin."
+  },
+  "page.home.help.blog.title": {
+    "message": "Blog"
+  },
+  "page.home.help.blog.text": {
+    "message": "Oppaat, julkaisut ja ohjeet."
+  },
+  "page.home.help.javadocs.text": {
+    "message": "Täydellinen API-viite."
+  },
+  "page.home.help.issue.title": {
+    "message": "Ilmoita ongelmasta"
+  },
+  "page.home.help.issue.text": {
+    "message": "Virheet ja ominaisuuspyynnöt."
+  },
+  "page.home.help.team.title": {
+    "message": "Keskustele tiimin kanssa"
+  },
+  "page.home.help.team.text": {
+    "message": "Varaa puhelu ja keskustellaan sovelluksestasi."
+  },
+  "page.home.stack.caption": {
+    "message": "Näytön napsautus suorittaa Java-koodisi ja palauttaa päivityksen."
+  },
+  "page.home.hero.eyebrow": {
+    "message": "webforJ-dokumentaatio"
+  },
+  "page.home.hero.title1": {
+    "message": "Koko sovellus."
+  },
+  "page.home.hero.title2": {
+    "message": "Javassa."
+  },
+  "page.home.hero.lead": {
+    "message": "webforJ on yritysten verkkosovelluksiin tarkoitettu full-stack Java -kehys: rakennat koko sovelluksen näkymineen Javalla. Nämä dokumentit opastavat sinut ensimmäisestä projektista tuotantoon."
+  },
+  "page.home.hero.tour": {
+    "message": "Tutustu 5 minuutissa"
+  },
+  "page.home.hero.search": {
+    "message": "Hae tai kysy tekoälyltä\n"
+  },
+  "page.home.live.title1": {
+    "message": "Kirjoita Javaa."
+  },
+  "page.home.live.title2": {
+    "message": "Hae näyttö\n"
+  },
+  "page.home.live.note": {
+    "message": "Kokonainen näkymä on Java-luokka, jolla on reitti. Näkymän ja koodisi välissä ei ole mallipohjaa, JavaScriptiä eikä REST-kerrosta."
+  },
+  "page.home.path.title1": {
+    "message": "Uusi täällä?"
+  },
+  "page.home.path.title2": {
+    "message": "Seuraa polkua."
+  },
+  "page.home.layers.title1": {
+    "message": "Yksi pino."
+  },
+  "page.home.layers.title2": {
+    "message": "Yksi kieli"
+  },
+  "page.home.ai.title1": {
+    "message": "Tekoäly valmiina."
+  },
+  "page.home.ai.title2": {
+    "message": "Ensimmäisestä päivästä lähtien."
+  },
+  "page.home.ai.lead": {
+    "message": "Yhdellä asennuksella saat webforJ MCP -palvelimen ja Agent Skillsin käyttöön Claude Codessa, Copilotissa, Cursorissa, Geminissä ja Codexissa."
+  },
+  "page.home.ai.cta": {
+    "message": "Tutustu tekoälytyökaluihin\n"
+  },
+  "page.home.ai.terminal": {
+    "message": "Pääte"
+  },
+  "page.home.ai.terminalComment": {
+    "message": "Avustaja lukee viestin ja korjaa näkymän\n"
+  },
+  "page.home.places.title1": {
+    "message": "Paikat"
+  },
+  "page.home.places.title2": {
+    "message": "Käymisen arvoinen."
+  },
+  "page.home.help.title": {
+    "message": "Etsitkö vielä?"
+  },
+  "page.home.help.behind": {
+    "message": "webforJ:n on kehittänyt BASIS International. BASIS-ohjelmistoja ja -työkaluja on käytetty liiketoimintaratkaisujen kehittämiseen suurille kansainvälisille yrityksille ja pk-yrityksille lähes 40 vuoden ajan, ja Javaan perustuvaa teknologiaa on toimitettu yli 20 vuoden ajan."
+  },
+  "page.home.talk.title": {
+    "message": "Suunnitteletko yrityssovellusta webforJ:llä?"
+  },
+  "page.home.talk.text": {
+    "message": "Varaa keskustelu webforJ:n kehitystiimin kanssa. Ota mukaan sovelluksesi, taustajärjestelmäsi ja aikataulusi, niin näytämme, miten webforJ sopii tarpeisiisi ensimmäisestä näkymästä LTS+-tukeen."
+  },
+  "page.home.talk.book": {
+    "message": "Varaa puhelu"
+  },
+  "page.home.talk.pricing": {
+    "message": "Katso hinnat"
+  },
+  "page.home.talk.languages": {
+    "message": "Puhumme {languages}"
+  },
+  "component.archetype.table.flavor.bbj": {
+    "message": "webforJ-sovellus, joka toimii {BBjServices}-palvelussa {BBjShipLink}-yhteyden kautta.",
+    "description": "webforj-bbj flavor description"
+  },
+  "component.megaMenu.resources.readAndWatch.showcase.label": {
+    "message": "Esittely"
+  },
+  "component.megaMenu.resources.readAndWatch.showcase.description": {
+    "message": "Mitä voit rakentaa webforJ:llä\n"
+  },
+  "component.previewBadge.hint": {
+    "message": "Tämä ominaisuus saattaa muuttua tulevissa julkaisuissa."
+  },
+  "component.previewBadge.label": {
+    "message": "Esikatselu"
+  },
+  "page.ai.terminal.verifyClaude": {
+    "message": "Vahvista Claude Codessa\n"
+  },
+  "page.ai.terminal.okInstalled": {
+    "message": "webforj näkyy kohdassa Asennetut"
+  },
+  "page.ai.terminal.okServers": {
+    "message": "plugin:webforj:webforj-mcp näkyy yhdistettyjen palvelinten alla\n"
+  },
+  "page.ai.terminal.copilotVerify": {
+    "message": "Vahvista"
+  },
+  "page.ai.terminal.geminiVerify": {
+    "message": "Vahvista"
+  },
+  "page.ai.terminal.codexRun": {
+    "message": "Suorita sitten /plugins Codex-istunnossa, valitse webforj ja paina välilyöntiä."
+  },
+  "page.ai.terminal.codexSkills": {
+    "message": "Codex-taidot käynnistetään erikseen."
+  },
+  "page.ai.breaks.api.failure": {
+    "message": "Se kutsuu API:a, jota ei ole olemassa tai joka oli aiemmin olemassa."
+  },
+  "page.ai.breaks.api.piece": {
+    "message": "Todellinen API"
+  },
+  "page.ai.breaks.api.fix": {
+    "message": "MCP-palvelin hakee tietoja webforJ-tietopankista, joten agentti lukee allekirjoitukset sen sijaan, että palauttaisi ne mieleensä."
+  },
+  "page.ai.breaks.workflow.failure": {
+    "message": "Se noudattaa yleisiä Java-käytäntöjä kehyksen omien käytäntöjen sijaan."
+  },
+  "page.ai.breaks.workflow.piece": {
+    "message": "Oikea työnkulku"
+  },
+  "page.ai.breaks.workflow.fix": {
+    "message": "Agentin taidot ohjaavat, miten agentti käsittelee lomakkeita, tietoturvaa, tyylitystä, ajastimia ja muuta."
+  },
+  "page.ai.breaks.check.failure": {
+    "message": "Se tuottaa koodia, joka kääntyy mutta ei tee mitään hyödyllistä, kun käyttäjä napsauttaa sitä."
+  },
+  "page.ai.breaks.check.piece": {
+    "message": "Hyväksytty tai hylätty"
+  },
+  "page.ai.breaks.check.fix": {
+    "message": "TestBed suorittaa näkymän tavallisessa JUnit-testissä, joten agentti voi todentaa työnsä."
+  },
+  "page.ai.stages.write.label": {
+    "message": "Kirjoita"
+  },
+  "page.ai.stages.write.short": {
+    "message": "Agentti kirjoittaa näkymän\n"
+  },
+  "page.ai.stages.check.label": {
+    "message": "Tarkista"
+  },
+  "page.ai.stages.check.short": {
+    "message": "Se kirjoittaa ja suorittaa testin"
+  },
+  "page.ai.stages.review.label": {
+    "message": "Arvostelu"
+  },
+  "page.ai.stages.review.short": {
+    "message": "Tarkastelet hyväksyttyä tulosta"
+  },
+  "page.ai.plugin.clients.claude": {
+    "message": "Markkinapaikkakomento"
+  },
+  "page.ai.plugin.clients.copilot": {
+    "message": "Markkinapaikan komento"
+  },
+  "page.ai.plugin.clients.vscode": {
+    "message": "Chat: Asenna laajennus lähdekoodista"
+  },
+  "page.ai.plugin.clients.gemini": {
+    "message": "Laajennuksen asennus"
+  },
+  "page.ai.plugin.clients.codex": {
+    "message": "Marketplace-komento, sitten /plugins"
+  },
+  "page.ai.plugin.clients.others": {
+    "message": "Manuaalinen määritys"
+  },
+  "page.ai.plugin.prompts.wrap.prompt": {
+    "message": "Kääri tämä Custom Element -kirjasto webforJ-komponentiksi."
+  },
+  "page.ai.plugin.prompts.wrap.target": {
+    "message": "Komponenttien luomisen taito"
+  },
+  "page.ai.plugin.prompts.style.prompt": {
+    "message": "Tyylittele tämä näkymä DWC:n design-tokeneilla."
+  },
+  "page.ai.plugin.prompts.style.target": {
+    "message": "Sovellusten tyylittelytaito"
+  },
+  "page.ai.plugin.prompts.scaffold.prompt": {
+    "message": "Luo runko uudelle webforJ-sivupalkkiprojektille nimeltä CustomerPortal."
+  },
+  "page.ai.plugin.prompts.scaffold.target": {
+    "message": "MCP-projektin luontityökalu"
+  },
+  "page.ai.plugin.prompts.theme.prompt": {
+    "message": "Luo teema brändiväristä #6366f1."
+  },
+  "page.ai.plugin.prompts.theme.target": {
+    "message": "MCP-teemageneraattori"
+  },
+  "page.ai.plugin.prompts.find.prompt": {
+    "message": "Etsi webforJ-dokumentaatiosta @Route ja reititys."
+  },
+  "page.ai.plugin.prompts.find.target": {
+    "message": "MCP-tietohaku"
+  },
+  "page.ai.mcp.version.title": {
+    "message": "Valitse oikea webforJ-versio\n"
+  },
+  "page.ai.mcp.version.text": {
+    "message": "Lukee pom.xml-tiedoston, jos se on saatavilla; muuten kysyy sinulta. Kaikki sen jälkeiset vastaukset koskevat versiotasi."
+  },
+  "page.ai.mcp.lookup.title": {
+    "message": "Hae tietoa tietämyskannasta"
+  },
+  "page.ai.mcp.lookup.text": {
+    "message": "API-kysymys, opas, koodiesimerkki tai Kotlin DSL – vastaukset suoraan oikeasta ohjelmistokehyksestä."
+  },
+  "page.ai.mcp.lookup.prompt": {
+    "message": "Miten määritän reitityksen @Route-annotaatiolla webforJ:ssä?"
+  },
+  "page.ai.mcp.scaffold.title": {
+    "message": "Luo uuden projektin runko"
+  },
+  "page.ai.mcp.scaffold.text": {
+    "message": "Oikea Maven-archetype-komento hello-world-, blank-, tabs- tai sidemenu-vaihtoehdolle webforj- tai webforj-spring-versiona."
+  },
+  "page.ai.mcp.scaffold.prompt": {
+    "message": "Luo webforJ-projekti nimeltä CustomerPortal sidemenu-arkkityyppiä käyttäen"
+  },
+  "page.ai.mcp.theme.title": {
+    "message": "Luo DWC-teema"
+  },
+  "page.ai.mcp.theme.text": {
+    "message": "Ensisijais-, onnistumis-, varoitus-, vaara-, tieto-, oletus- ja harmaapaletit yhdestä brändiväristä automaattisella tekstikontrastilla."
+  },
+  "page.ai.mcp.theme.prompt": {
+    "message": "Luo webforJ-teema brändiväristä #6366f1."
+  },
+  "page.ai.mcp.style.title": {
+    "message": "Tyylittele DWC-komponentit oikein."
+  },
+  "page.ai.mcp.style.text": {
+    "message": "Tutustu CSS-muuttujiin, shadow part -osiin, heijastettuihin attribuutteihin ja slotteihin ennen CSS:n kirjoittamista."
+  },
+  "page.ai.mcp.style.prompt": {
+    "message": "Mitä CSS-muuttujia ja osia dwc-button tarjoaa?"
+  },
+  "page.ai.mcp.tokens.title": {
+    "message": "Tarkista design-tokenit"
+  },
+  "page.ai.mcp.tokens.text": {
+    "message": "Vertaa CSS:ää, Java-koodia tai Markdownia todelliseen --dwc-*-luetteloon ja ehdottaa korjauksia tuntemattomille nimille."
+  },
+  "page.ai.mcp.tokens.prompt": {
+    "message": "Tarkista app.css tuntemattomien --dwc-* -tunnisteiden varalta\n"
+  },
+  "page.ai.skills.servlets.text": {
+    "message": "REST endpoints, webhooks ja custom servlets webforJ-käyttöliittymän rinnalla."
+  },
+  "page.ai.skills.servlets.prompt": {
+    "message": "Lisää REST-päätepiste /api/orders."
+  },
+  "page.ai.skills.forms.text": {
+    "message": "Tietojen sidonta, Jakarta-validointi, maskatut syötekentät ja responsiiviset lomakeasettelut."
+  },
+  "page.ai.skills.forms.prompt": {
+    "message": "Luo rekisteröitymislomake, joka on sidottu User-beaniini."
+  },
+  "page.ai.skills.components.text": {
+    "message": "Uudelleenkäytettäviä Java-komponentteja Custom Elements -elementeistä, JavaScript-kirjastoista tai yhdistelmistä."
+  },
+  "page.ai.skills.components.prompt": {
+    "message": "Kokoa näistä webforJ-komponenteista uudelleenkäytettävä kortti."
+  },
+  "page.ai.skills.timers.text": {
+    "message": "Interval, Debouncer, Environment.runLater ja PendingResult suoraan käytettyjen ajastimien ja säikeiden sijaan."
+  },
+  "page.ai.skills.timers.prompt": {
+    "message": "Päivitä tämä koontinäyttö 30 sekunnin välein."
+  },
+  "page.ai.skills.localizing.text": {
+    "message": "Viestipaketit, kielen vaihtaminen ajon aikana ja selaimen kieliasetuksen tunnistus."
+  },
+  "page.ai.skills.localizing.prompt": {
+    "message": "Lisää tuki englannin ja espanjan kielelle."
+  },
+  "page.ai.skills.securing.text": {
+    "message": "Kirjautuminen, uloskirjautuminen, roolipohjaiset käyttöoikeudet ja oletusarvoisesti suojatut reitit."
+  },
+  "page.ai.skills.securing.prompt": {
+    "message": "Suojaa /admin niin, että vain ADMIN-roolin käyttäjät voivat nähdä sen."
+  },
+  "page.ai.skills.styling.text": {
+    "message": "Teemat, paletit ja komponenttien tyylit – jokainen --dwc-*-tokeni validoitu."
+  },
+  "page.ai.skills.styling.prompt": {
+    "message": "Muuta sovelluksen teemaksi sininen väripaletti."
+  },
+  "page.ai.skills.upgrading.text": {
+    "message": "Pääversiopäivitykset virallisen webforj-rewrite OpenRewrite -reseptin avulla."
+  },
+  "page.ai.skills.upgrading.prompt": {
+    "message": "Päivitä tämä sovellus webforJ 25:stä webforJ 26:een."
+  },
+  "page.ai.compare.livesIn.label": {
+    "message": "Asuu kohteessa"
+  },
+  "page.ai.compare.livesIn.plugin": {
+    "message": "Editorisi"
+  },
+  "page.ai.compare.livesIn.assistant": {
+    "message": "Käynnissä oleva sovellus"
+  },
+  "page.ai.compare.reads.label": {
+    "message": "Lukee"
+  },
+  "page.ai.compare.reads.plugin": {
+    "message": "Lähdetiedostosi"
+  },
+  "page.ai.compare.reads.assistant": {
+    "message": "Sovelluksesi livenä oikeilla arvoilla\n"
+  },
+  "page.ai.compare.verifies.label": {
+    "message": "Vahvistaa käyttäen"
+  },
+  "page.ai.compare.verifies.plugin": {
+    "message": "Seuraava koontisi"
+  },
+  "page.ai.compare.verifies.assistant": {
+    "message": "Jokainen muutos käännetään ennen kuin näet sen."
+  },
+  "page.ai.compare.suited.label": {
+    "message": "Sopiiartunut"
+  },
+  "page.ai.compare.suited.plugin": {
+    "message": "Uuden rakentaminen alusta alkaen\n"
+  },
+  "page.ai.compare.suited.assistant": {
+    "message": "Edessäsi olevan sovelluksen ymmärtäminen, korjaaminen ja prototypointi\n"
+  },
+  "page.ai.docs.plugin.title": {
+    "message": "webforJ AI -lisäosa"
+  },
+  "page.ai.docs.plugin.text": {
+    "message": "Asenna jokaiselle asiakkaalle"
+  },
+  "page.ai.docs.mcp.title": {
+    "message": "MCP-palvelin"
+  },
+  "page.ai.docs.mcp.text": {
+    "message": "Ominaisuudet ja kehotteet"
+  },
+  "page.ai.docs.skills.title": {
+    "message": "Agentin taidot"
+  },
+  "page.ai.docs.skills.text": {
+    "message": "Jokainen taito ja sen latautumisajankohta"
+  },
+  "page.ai.docs.testbed.title": {
+    "message": "TestBed"
+  },
+  "page.ai.docs.testbed.text": {
+    "message": "Selaimettomat testit perus-JUnitilla"
+  },
+  "page.ai.docs.craftforj.title": {
+    "message": "craftforJ-avustaja"
+  },
+  "page.ai.docs.craftforj.text": {
+    "message": "Koodausagentti käynnissä olevassa sovelluksessa"
+  },
+  "page.ai.terminal.tablistLabel": {
+    "message": "Asenna webforJ AI -laajennus"
+  },
+  "page.ai.terminal.caption": {
+    "message": "Dokumentaation asennuskomennot. Yhdellä asennuksella saat MCP-palvelimen ja Agent Skills -taidot."
+  },
+  "page.ai.hero.eyebrow": {
+    "message": "Tekoälytyökalut webforJ:lle"
+  },
+  "page.ai.hero.title1": {
+    "message": "Tekoälyavustajasi kirjoittaa Java-koodin."
+  },
+  "page.ai.hero.title2": {
+    "message": "Nyt se voi tarkistaa sen."
+  },
+  "page.ai.hero.lead": {
+    "message": "Tekoälypohjaiset koodaustyökalut ovat nopeita, mutta niiden tuotos on silti tarkistettava. webforJ tarjoaa niille kirjoita–tarkista–arvioi-silmukan: oikean API:n luettavaksi, oikean työnkulun noudatettavaksi ja testin, joka antaa tulokseksi hyväksytty tai hylätty ilman selainta."
+  },
+  "page.ai.hero.install": {
+    "message": "Asenna lisäosa"
+  },
+  "page.ai.hero.step": {
+    "message": "Käy silmukka läpi vaihe vaiheelta\n"
+  },
+  "page.ai.hero.clients": {
+    "message": "Claude Coden, GitHub Copilotin, Cursorin, Geminin ja Codexin käyttöön."
+  },
+  "page.ai.breaks.eyebrow": {
+    "message": "Miksi silmukka?"
+  },
+  "page.ai.breaks.title": {
+    "message": "Kolme tapaa, joilla agenttien rakentama Java voi rikkoutua, ja tarkistus kuhunkin"
+  },
+  "page.ai.breaks.lead": {
+    "message": "Kun koodausagentilla ei ole mitään, mistä tarkistaa tietoja, se kirjoittaa muistinsa varassa. Kehotus olla huolellinen ei korjaa yhtäkään näistä ongelmista. Jokainen virhe vaatii oman tarkistuksensa, ja webforJ sulkee jokaisen aukon omalla työkalullaan."
+  },
+  "page.ai.breaks.without": {
+    "message": "Ilman tarkistusta"
+  },
+  "page.ai.breaks.read": {
+    "message": "Lue dokumentaatio"
+  },
+  "page.ai.stages.promptLabel": {
+    "message": "Kehotteesi"
+  },
+  "page.ai.stages.write.prompt": {
+    "message": "Lisää webforJ-tervehdysnäkymä polkuun /greeting. Nimelle tarkoitettu kenttä, Tervehdi-painike ja kappale, jossa lukee ”Hei” ja nimi."
+  },
+  "page.ai.stages.write.title": {
+    "message": "Näkymä on Java-luokka, jolla on reitti."
+  },
+  "page.ai.stages.write.text1": {
+    "message": "Mitään muuta ei tarvita: ei mallipohjaa, JavaScriptiä eikä REST-kerrosta näytön ja koodisi väliin."
+  },
+  "page.ai.stages.write.text2": {
+    "message": "Kun MCP-palvelin on yhdistetty, agentti on hakenut kohteet {composite}, {button} ja {route} ennen niiden kirjoittamista."
+  },
+  "page.ai.stages.check.prompt": {
+    "message": "Kirjoita GreetingView-komponentille TestBed-testi, joka syöttää nimen, napsauttaa Greet-painiketta ja tarkistaa kappaleen."
+  },
+  "page.ai.stages.check.title": {
+    "message": "Testi seuraa käyttäjän vaiheita."
+  },
+  "page.ai.stages.check.locator": {
+    "message": "{code} etsii kentän sen nimikkeen ja painikkeen tekstin perusteella."
+  },
+  "page.ai.stages.check.interaction": {
+    "message": "{code} kirjoittaa ja napsauttaa, joten painikkeen tapahtumankuuntelija todella suoritetaan."
+  },
+  "page.ai.stages.check.verify": {
+    "message": "{code} tarkistaa tekstin, jonka käyttäjä lukisi."
+  },
+  "page.ai.stages.review.title": {
+    "message": "Agentti lukee hyväksytyn tai hylätyn tuloksen."
+  },
+  "page.ai.stages.review.text1": {
+    "message": "Agentti suorittaa {code} ja lukee tuloksen. Selainta ei avata eikä palvelinta käynnistetä."
+  },
+  "page.ai.stages.review.text2": {
+    "message": "Jos se epäonnistuu, viesti kertoo, mikä poikkesi, ja agentti tekee muutokset ja suorittaa sen uudelleen. Luettavissa olevan virheen agentti pystyy myös korjaamaan."
+  },
+  "page.ai.stages.review.strong": {
+    "message": "Arvauksen sijaan tarkastelet jo hyväksyttyä tulosta."
+  },
+  "page.ai.stages.review.terminal": {
+    "message": "Pääte"
+  },
+  "page.ai.stages.review.passed": {
+    "message": "Hyväksytty"
+  },
+  "page.ai.stages.review.failLabel": {
+    "message": "Kun tarkistus epäonnistuu, viesti näyttää tältä."
+  },
+  "page.ai.stages.review.failNote": {
+    "message": "Se kertoo komponentin tyypin, odotetun arvon ja todellisen arvon."
+  },
+  "page.ai.loop.eyebrow": {
+    "message": "Silmukka"
+  },
+  "page.ai.loop.title": {
+    "message": "Kirjoita, tarkista, arvioi"
+  },
+  "page.ai.loop.lead": {
+    "message": "Agentti kirjoittaa näkymän ja testin, suorittaa testin ja lukee tuloksen: hyväksytty tai hylätty. Käy läpi yksi oikea näkymä kehotteesta testin läpäisyyn."
+  },
+  "page.ai.loop.railLabel": {
+    "message": "Silmukan vaiheet"
+  },
+  "page.ai.loop.return": {
+    "message": "Jos testi epäonnistuu, palaa kirjoittamaan."
+  },
+  "page.ai.loop.previous": {
+    "message": "Edellinen vaihe"
+  },
+  "page.ai.loop.count": {
+    "message": "Vaihe {current}/{total}"
+  },
+  "page.ai.loop.next": {
+    "message": "Seuraava vaihe"
+  },
+  "page.ai.pieces.eyebrow": {
+    "message": "Osat"
+  },
+  "page.ai.pieces.title": {
+    "message": "Kolme osaa silmukan takana"
+  },
+  "page.ai.pieces.plugin": {
+    "message": "AI-laajennus"
+  },
+  "page.ai.pieces.bundles": {
+    "message": "Paketit"
+  },
+  "page.ai.pieces.mcp": {
+    "message": "MCP-palvelin"
+  },
+  "page.ai.pieces.skills": {
+    "message": "Agentin taidot"
+  },
+  "page.ai.plugin.name": {
+    "message": "webforJ AI -lisäosa"
+  },
+  "page.ai.plugin.title": {
+    "message": "Yhdellä asennuksella saat molemmat osat."
+  },
+  "page.ai.plugin.lead1": {
+    "message": "Lisäosa sisältää MCP-palvelimen ja Agent Skills -taidot. Yhdessä ne tekevät webforJ-käytäntöjä arvailevasta avustajasta niitä noudattavan."
+  },
+  "page.ai.plugin.lead2": {
+    "message": "Mainitse {name} kehotteissasi. Se ohjaa avustajan lisäosaan yleisen Java-tietämyksen sijaan."
+  },
+  "page.ai.plugin.link": {
+    "message": "Asenna laajennus"
+  },
+  "page.ai.plugin.where": {
+    "message": "Mihin se asennetaan\n"
+  },
+  "page.ai.plugin.reaches": {
+    "message": "Mihin kehote pyrkii\n"
+  },
+  "page.ai.mcp.name": {
+    "message": "MCP-palvelin, osa tekoälylaajennusta"
+  },
+  "page.ai.mcp.title": {
+    "message": "Avustaja tarkistaa oikean API:n sen sijaan, että yrittäisi muistella sitä."
+  },
+  "page.ai.mcp.lead1": {
+    "message": "Model Context Protocol on avoin standardi, jonka avulla tekoälyavustajat voivat kutsua ulkoisia työkaluja tarpeen mukaan. webforJ MCP -palvelin hakee vastaukset suoraan itse kehyksestä: dokumentaatiosta, design tokeneista, komponenttien tyylittelystä ja projektin rungon luonnista."
+  },
+  "page.ai.mcp.lead2": {
+    "message": "Validointi havaitsee kirjoitusvirheet ja keksityt tokenit ennen julkaisua, jotta CSS ei rikkoudu huomaamatta."
+  },
+  "page.ai.mcp.link": {
+    "message": "Katso, mihin palvelin pystyy\n"
+  },
+  "page.ai.mcp.onlyTitle": {
+    "message": "Vain MCP-palvelin Claude Codessa\n"
+  },
+  "page.ai.mcp.onlyCaption": {
+    "message": "Laajennus on suositeltu asennustapa. Tämä komento yhdistää vain palvelimeen osoitteessa https://mcp.webforj.com/mcp."
+  },
+  "page.ai.skills.name": {
+    "message": "Agentin taidot, osa AI-laajennusta"
+  },
+  "page.ai.skills.title": {
+    "message": "Oikea työnkulku käsillä olevaan tehtävään"
+  },
+  "page.ai.skills.lead1": {
+    "message": "MCP-palvelin tarjoaa täsmällistä tietoa. Taito kertoo avustajalle, milloin tietoa kannattaa hakea, mikä toimintatapa sopii ja missä järjestyksessä asiat tehdään."
+  },
+  "page.ai.skills.lead2": {
+    "message": "Taidot noudattavat avointa Agent Skills -standardia. Avustaja lataa sopivan taidon automaattisesti, kun kehotteesi vastaa sitä."
+  },
+  "page.ai.skills.link": {
+    "message": "Selaa taitoja"
+  },
+  "page.ai.testbed.title": {
+    "message": "Selkeä hyväksytty/hylätty-tulos ilman selainta tai palvelinta"
+  },
+  "page.ai.testbed.lead1": {
+    "message": "Näkymä toimii tavallisessa JUnit-testissä. Komponentit liitetään, ne laukaisevat tapahtumansa ja navigoivat aivan kuten käynnissä olevassa sovelluksessa."
+  },
+  "page.ai.testbed.lead2": {
+    "message": "Jokainen vuorovaikutus päättyy ennen testin seuraavan rivin suorittamista, joten odottelua tai satunnaisia virheitä ei esiinny. Spring Boot -sovellukset käyttävät {module}-moduulia."
+  },
+  "page.ai.testbed.link": {
+    "message": "Lue TestBed-opas\n"
+  },
+  "page.ai.testbed.find.verb": {
+    "message": "Etsi"
+  },
+  "page.ai.testbed.find.text": {
+    "message": "Kuvaa komponentin tavalla, jolla käyttäjä tunnistaa sen: tyypin ja näytettävän sisällön perusteella."
+  },
+  "page.ai.testbed.act.verb": {
+    "message": "Toimi"
+  },
+  "page.ai.testbed.act.text": {
+    "message": "Suorittaa vain toimintoja, joita käyttäjä voi tehdä. Käytöstä poistetun painikkeen napsauttaminen aiheuttaa testin epäonnistumisen."
+  },
+  "page.ai.testbed.check.verb": {
+    "message": "Tarkista"
+  },
+  "page.ai.testbed.check.text": {
+    "message": "Tarkistaa, mitä käyttäjä näkee, ja virheessä ilmoitetaan komponentti sekä molemmat arvot."
+  },
+  "page.ai.testbed.caption": {
+    "message": "Versio tulee webforJ BOM:sta. Archetypestä luotu projekti tuo sen jo valmiiksi."
+  },
+  "page.ai.craftforj.title": {
+    "message": "Koodausagentti käynnissä olevassa sovelluksessa"
+  },
+  "page.ai.craftforj.lead1": {
+    "message": "Se kirjoittaa Javaa vapaasti, kääntää jokaisen muutoksen ennen kuin näet sen ja ottaa sen käyttöön käynnissä olevassa sovelluksessa. Muutoksen käyttöönotto käynnistää sovelluksen uudelleen, ja agentti jatkaa suunnitelmaansa, kun sovellus on taas käynnissä."
+  },
+  "page.ai.craftforj.lead2": {
+    "message": "Se toimitetaan webforJ:n mukana, joten mitään ei tarvitse asentaa. craftforJ ei sisällä omaa mallia: lisää tuetun palveluntarjoajan API-avain tai määritä paikallisesti Ollamalla ajettava malli."
+  },
+  "page.ai.craftforj.link": {
+    "message": "Tutustu avustajaan"
+  },
+  "page.ai.craftforj.colPlugin": {
+    "message": "Tekoälylaajennus"
+  },
+  "page.ai.craftforj.mobilePlugin": {
+    "message": "Tekoälylisäosa"
+  },
+  "page.ai.craftforj.shotAlt": {
+    "message": "craftforJ-avustaja kysyy ennen toimintaansa suoraan keskustelussa, jossa vaihtoehtoina ovat Käytä, Salli keskustelussa ja Hylkää."
+  },
+  "page.ai.craftforj.shotCaption": {
+    "message": "Avustaja kysyy ennen toimintaansa suoraan keskustelussa."
+  },
+  "page.ai.craftforj.confCaption": {
+    "message": "craftforJ toimii vain kehitystilassa. Avaa se painamalla {alt} + {shift} + {d} ja siirry AI Assistant -välilehdelle."
+  },
+  "page.ai.start.eyebrow": {
+    "message": "Näin pääset alkuun"
+  },
+  "page.ai.start.title": {
+    "message": "Pyydä yksi näyttö, jossa on testi\n"
+  },
+  "page.ai.start.lead": {
+    "message": "Valitse näyttö, jonka muuten rakentaisit käsin tällä viikolla. webforJ on täyden pinon Java-kehys yritysten verkkosovelluksiin: rakennat koko sovelluksen, myös näytöt, Javalla."
+  },
+  "page.ai.start.step1": {
+    "message": "Asenna laajennus"
+  },
+  "page.ai.start.step2.title": {
+    "message": "Luo projektirunko tai avaa webforJ-projekti\n"
+  },
+  "page.ai.start.step2.text": {
+    "message": "Pyydä projektia MCP-palvelimelta tai avaa jo olemassa oleva."
+  },
+  "page.ai.start.step3.title": {
+    "message": "Pyydä näkymä ja sen TestBed-testi yhdellä kehotteella\n"
+  },
+  "page.ai.start.step3.text": {
+    "message": "Kuvaile haluamaasi toimintaa, jotta testi voi varmistaa sen."
+  },
+  "page.ai.start.step4": {
+    "message": "Suorita {code} ja lue tulos"
+  },
+  "page.ai.start.docsLabel": {
+    "message": "Tekoälytyökalujen dokumentaatio"
+  },
+  "page.ai.start.home": {
+    "message": "Takaisin dokumentaation etusivulle"
+  },
+  "page.ai.meta.title": {
+    "message": "Tekoälytyökalut webforJ:lle: tekoälyavusteinen koodauskierto Java-verkkosovelluksille\n"
+  },
+  "page.ai.meta.description": {
+    "message": "webforJ AI -laajennus MCP-palvelimineen ja Agent Skills -toimintoineen, TestBed ja craftforJ Assistant tarjoavat tekoälyavusteisille koodaustyökaluille silmukan Java-verkkosovellusten kirjoittamiseen, tarkistamiseen ja katselmointiin."
+  },
+  "page.craftforj.panels.inspector.tab": {
+    "message": "Tarkastaja"
+  },
+  "page.craftforj.panels.inspector.title": {
+    "message": "Java-koodisi rakentama komponenttipuu"
+  },
+  "page.craftforj.panels.inspector.text": {
+    "message": "Inspector näyttää komponenttisi, ei selaimen renderöimää merkkausta. Composite näkyy kirjoittamanasi luokkana, jonka lapset ovat siinä järjestyksessä, jossa webforJ niitä ylläpitää."
+  },
+  "page.craftforj.panels.inspector.point1": {
+    "message": "Valitse mikä tahansa kohde puusta painamalla Alt+Shift+C ja napsauttamalla sitä sivulla."
+  },
+  "page.craftforj.panels.inspector.point2": {
+    "message": "Muuta ominaisuutta sivupalkissa, niin käynnissä oleva sovellus päivittyy heti."
+  },
+  "page.craftforj.panels.inspector.point3": {
+    "message": "Jäljitä komponentti Java-riville, jolla se luotiin."
+  },
+  "page.craftforj.panels.inspector.docLabel": {
+    "message": "Komponenttien tarkastelu"
+  },
+  "page.craftforj.panels.inspector.view1": {
+    "message": "Valitse komponentti"
+  },
+  "page.craftforj.panels.inspector.alt1": {
+    "message": "Video: Komponentin valitseminen käynnissä olevassa sovelluksessa valitsee sen craftforJ-komponenttipuussa"
+  },
+  "page.craftforj.panels.inspector.view2": {
+    "message": "Muokkaa ominaisuutta"
+  },
+  "page.craftforj.panels.inspector.alt2": {
+    "message": "Video: Ominaisuuden muuttaminen craftforJ-sivupalkissa päivittää käynnissä olevan sovelluksen"
+  },
+  "page.craftforj.panels.sourceChanges.tab": {
+    "message": "Muutoksia otetaan käyttöön"
+  },
+  "page.craftforj.panels.sourceChanges.title": {
+    "message": "Tarkista diff ja kirjoita se sitten Java-kielellä."
+  },
+  "page.craftforj.panels.sourceChanges.text": {
+    "message": "Jokainen muuttamasi ominaisuus kirjataan odottavaksi muutokseksi. Paina Cmd/Ctrl+S tarkastellaksesi muutoksia tiedostoittain ryhmiteltyinä sekä kunkin vanhaa ja uutta arvoa ja tiedoston muutoksia. Mitään ei kirjoiteta ennen kuin otat muutokset käyttöön."
+  },
+  "page.craftforj.panels.sourceChanges.point1": {
+    "message": "Odottavat muutokset säilyvät sivun uudelleenlatauksen ja reitin vaihdon jälkeen."
+  },
+  "page.craftforj.panels.sourceChanges.point2": {
+    "message": "Tee muutos käyttökohtaan, jos se koskee yhtä näyttöä, tai määritelmään, jos se koskee kaikkia sitä käyttäviä näyttöjä."
+  },
+  "page.craftforj.panels.sourceChanges.point3": {
+    "message": "Cmd/Ctrl+Z kumoaa muutoksen, vaikka se olisi jo tallennettu tiedostoihin."
+  },
+  "page.craftforj.panels.sourceChanges.docLabel": {
+    "message": "Otetaan muutoksia käyttöön\n"
+  },
+  "page.craftforj.panels.sourceChanges.view1": {
+    "message": "Tallenna lähteeseen"
+  },
+  "page.craftforj.panels.sourceChanges.alt1": {
+    "message": "Video: craftforJ:ssä tehtyjen muutosten tarkastelu ja tallentaminen Java-lähdekoodiin"
+  },
+  "page.craftforj.panels.routes.tab": {
+    "message": "Reitit"
+  },
+  "page.craftforj.panels.routes.title": {
+    "message": "Reititystaulukko reaaliajassa"
+  },
+  "page.craftforj.panels.routes.text": {
+    "message": "Reitit-välilehti näyttää reititystaulukon reitittimen käyttämässä hierarkiassa ja merkitsee aktiivisen reitin. Dynaamisesti rekisteröidyt reitit näkyvät annotaatioilla määriteltyjen rinnalla."
+  },
+  "page.craftforj.panels.routes.point1": {
+    "message": "Siirry mille tahansa craftforJ-reitille. Elinkaaren tarkkailijat toimivat samalla tavalla kuin käyttäjän navigoidessa."
+  },
+  "page.craftforj.panels.routes.point2": {
+    "message": "Jokaisella reitillä on merkki sille määritetystä tietoturva-annotaatiosta."
+  },
+  "page.craftforj.panels.routes.point3": {
+    "message": "Muuta käyttöoikeussääntöä, niin craftforJ kirjoittaa annotaation reittiluokkaan."
+  },
+  "page.craftforj.panels.routes.docLabel": {
+    "message": "Reitit"
+  },
+  "page.craftforj.panels.routes.view1": {
+    "message": "Siirry reitille"
+  },
+  "page.craftforj.panels.routes.alt1": {
+    "message": "Video: reitille siirtyminen craftforJ:n Reitit-välilehdeltä"
+  },
+  "page.craftforj.panels.routes.view2": {
+    "message": "Aseta käyttöoikeussääntö"
+  },
+  "page.craftforj.panels.routes.alt2": {
+    "message": "Video: tietoturva-annotaation valitseminen reitille craftforJ:n Routes-välilehdellä"
+  },
+  "page.craftforj.panels.theme.tab": {
+    "message": "Teema"
+  },
+  "page.craftforj.panels.theme.title": {
+    "message": "Vaihda sovelluksen teemaa sen ollessa käynnissä\n"
+  },
+  "page.craftforj.panels.theme.text": {
+    "message": "Teema-välilehti toimii DWC design tokenien kanssa, joita sovelluksesi jo käyttää, joten yksi muutos vaikuttaa kaikkiin komponentteihin, jotka käyttävät kyseistä tokenia. Säätimet kattavat väripaletin, pinnat, reunat ja kulmat, typografian sekä välit."
+  },
+  "page.craftforj.panels.theme.point1": {
+    "message": "Muokkaa vaaleaa tai tummaa teemaa tai molempia ja vaihda sovelluksen teemaa niiden välillä."
+  },
+  "page.craftforj.panels.theme.point2": {
+    "message": "Aloita esiasetuksella, kuten App Defaultilla tai Porticolla."
+  },
+  "page.craftforj.panels.theme.point3": {
+    "message": "Tallentaminen lisää teeman tyylitiedostoosi, joka tulee sovelluksesi mukana."
+  },
+  "page.craftforj.panels.theme.docLabel": {
+    "message": "Teema"
+  },
+  "page.craftforj.panels.theme.view1": {
+    "message": "Teeman asetukset"
+  },
+  "page.craftforj.panels.theme.alt1": {
+    "message": "Video: käynnissä olevan sovelluksen teeman vaihtaminen craftforJ Theme -ohjaimilla"
+  },
+  "page.craftforj.panels.ai.tab": {
+    "message": "Tekoälyavustaja"
+  },
+  "page.craftforj.panels.ai.title": {
+    "message": "Agentti, joka kääntää ennen kuin näet sen\n"
+  },
+  "page.craftforj.panels.ai.text": {
+    "message": "Avustaja on sovelluksessasi toimiva koodausagentti. Se kirjoittaa Javaa, lähettää jokaisen muutoksen oikealle Java-kääntäjälle ja korjaa virheensä kääntäjän ilmoitusten perusteella, joten tarkistettavaksesi päätyvä koodi kääntyy jo."
+  },
+  "page.craftforj.panels.ai.point1": {
+    "message": "Valitse, kuinka itsenäisesti se toimii: kysy ennen toimia, tee muutokset automaattisesti tai toimi itsenäisesti."
+  },
+  "page.craftforj.panels.ai.point2": {
+    "message": "Käytä tuetun palveluntarjoajan API-avainta tai paikallisesti toimivaa mallia."
+  },
+  "page.craftforj.panels.ai.point3": {
+    "message": "Se ottaa yhteyden palveluntarjoajaasi suoraan selaimesta ilman välitystä tai välityspalvelinta."
+  },
+  "page.craftforj.panels.ai.docLabel": {
+    "message": "Tekoälyavustaja"
+  },
+  "page.craftforj.panels.ai.view1": {
+    "message": "Keskustelu"
+  },
+  "page.craftforj.panels.ai.alt1": {
+    "message": "Video: keskustelu craftforJ-tekoälyavustajan kanssa, joka muokkaa käynnissä olevaa sovellusta"
+  },
+  "page.craftforj.panels.appInfo.tab": {
+    "message": "Sovelluksen tiedot"
+  },
+  "page.craftforj.panels.appInfo.title": {
+    "message": "Mitä sovelluksesi oikeasti käyttää\n"
+  },
+  "page.craftforj.panels.appInfo.text": {
+    "message": "Sovellustiedot näyttää sovelluksen käyttämät versiot, jotka eivät aina vastaa pom.xml-tiedoston tietoja. Tiedot kattavat webforJ:n ja BBj Servicesin, Java-ajoympäristön, käyttöjärjestelmän ja projektin juurihakemiston."
+  },
+  "page.craftforj.panels.appInfo.point1": {
+    "message": "Projektin juurihakemisto on sijainti, josta craftforJ etsii lähdetiedostosi."
+  },
+  "page.craftforj.panels.appInfo.point2": {
+    "message": "Java-ajoympäristö määrittää, kuinka perusteellisesti avustajan muokkaukset validoidaan. Täysi validointi edellyttää JDK:ta."
+  },
+  "page.craftforj.panels.appInfo.docLabel": {
+    "message": "Sovelluksen tiedot"
+  },
+  "page.craftforj.panels.appInfo.view1": {
+    "message": "Sovelluksen tiedot"
+  },
+  "page.craftforj.panels.appInfo.alt1": {
+    "message": "Sovelluksen tiedot -paneeli, jossa näytetään webforJ-versio, projektin juurihakemisto, Java-ajonaikainen ympäristö ja käyttöjärjestelmä"
+  },
+  "page.craftforj.shortcuts.open": {
+    "message": "Avaa tai sulje"
+  },
+  "page.craftforj.shortcuts.pick": {
+    "message": "Valitse komponentti"
+  },
+  "page.craftforj.shortcuts.review": {
+    "message": "Tarkista muutokset"
+  },
+  "page.craftforj.shortcuts.undo": {
+    "message": "Kumoa muutos"
+  },
+  "page.craftforj.loop.open.title": {
+    "message": "Avaa"
+  },
+  "page.craftforj.loop.open.text": {
+    "message": "Napsauta sovelluksesi päällä olevaa aktivointipainiketta tai paina Alt+Shift+D missä tahansa sovelluksessa."
+  },
+  "page.craftforj.loop.pick.title": {
+    "message": "Valitse"
+  },
+  "page.craftforj.loop.pick.text": {
+    "message": "Paina Alt+Shift+C, vie osoitin komponentin päälle ja napsauta sitä. Komponentti valitaan puusta, ja sen ominaisuudet näkyvät sivupalkissa."
+  },
+  "page.craftforj.loop.change.title": {
+    "message": "Muuta"
+  },
+  "page.craftforj.loop.change.text": {
+    "message": "Muokkaa ominaisuutta. Käynnissä oleva sovellus päivittyy heti, ja tiedostosi pysyvät ennallaan."
+  },
+  "page.craftforj.loop.keep.title": {
+    "message": "Säilytä"
+  },
+  "page.craftforj.loop.keep.text": {
+    "message": "Tarkista muutos diff-näkymässä ja tee se sen luoneeseen Java-tiedostoon."
+  },
+  "page.craftforj.guards.settings.title": {
+    "message": "Kaksi asetusta, molemmat pakollisia\n"
+  },
+  "page.craftforj.guards.settings.text": {
+    "message": "craftforJ edellyttää asetuksia webforj.debug ja webforj.devtools.craftforj.enabled. Kumpikaan ei tee mitään yksinään."
+  },
+  "page.craftforj.guards.local.title": {
+    "message": "Paikallinen pääsy oletuksena"
+  },
+  "page.craftforj.guards.local.text": {
+    "message": "Vain sovellusta suorittavan koneen selain voi käyttää sitä, kunnes määrität toisen koneen hosts-allowed-asetuksessa."
+  },
+  "page.craftforj.guards.http.title": {
+    "message": "Ei ylimääräistä HTTP-rajapintaa"
+  },
+  "page.craftforj.guards.http.text": {
+    "message": "Se ei lisää endpointia, servletiä tai filtteriä. Se toimii sovelluksesi jo olemassa olevan yhteyden kautta."
+  },
+  "page.craftforj.guards.compiles.title": {
+    "message": "Kirjoittaa vain sen, mikä kääntyy."
+  },
+  "page.craftforj.guards.compiles.text": {
+    "message": "Lähteestä tehtävä poisto tallennetaan vain, jos tulos kääntyy edelleen, eikä tiedostoja koskaan poisteta."
+  },
+  "page.craftforj.docs.overview.label": {
+    "message": "Yleiskatsaus"
+  },
+  "page.craftforj.docs.overview.text": {
+    "message": "Mikä craftforJ on ja mitä se tarjoaa sinulle\n"
+  },
+  "page.craftforj.docs.gettingStarted.label": {
+    "message": "Aloittaminen"
+  },
+  "page.craftforj.docs.gettingStarted.text": {
+    "message": "Riippuvuus, asetukset ja sen avaaminen"
+  },
+  "page.craftforj.docs.inspector.label": {
+    "message": "Komponenttien tarkastelu"
+  },
+  "page.craftforj.docs.inspector.text": {
+    "message": "Puu, valinta, ominaisuudet ja lähdekoodinäkymä"
+  },
+  "page.craftforj.docs.changes.label": {
+    "message": "Otetaan muutokset käyttöön"
+  },
+  "page.craftforj.docs.changes.text": {
+    "message": "Odottavat muutokset, tarkistus, kumoa ja tee uudelleen\n"
+  },
+  "page.craftforj.docs.routes.label": {
+    "message": "Reitit"
+  },
+  "page.craftforj.docs.routes.text": {
+    "message": "Reititystaulukko, navigointi ja käyttöoikeussäännöt"
+  },
+  "page.craftforj.docs.theme.label": {
+    "message": "Teema"
+  },
+  "page.craftforj.docs.theme.text": {
+    "message": "Suunnittelutokenit, esiasetukset ja tallennus tyylitiedostoosi"
+  },
+  "page.craftforj.docs.ai.label": {
+    "message": "Tekoälyavustaja"
+  },
+  "page.craftforj.docs.ai.text": {
+    "message": "Agentti, sen hyväksynnät ja mallin valinta"
+  },
+  "page.craftforj.docs.appInfo.label": {
+    "message": "Sovelluksen tiedot"
+  },
+  "page.craftforj.docs.appInfo.text": {
+    "message": "Versiot, Java-ajonaikainen ympäristö ja projektin juurihakemisto"
+  },
+  "page.craftforj.docs.configuration.label": {
+    "message": "Määritys"
+  },
+  "page.craftforj.docs.configuration.text": {
+    "message": "Jokainen ominaisuus, sen oletusarvo ja ominaisuusliput"
+  },
+  "page.craftforj.docs.security.label": {
+    "message": "Tietoturva"
+  },
+  "page.craftforj.docs.security.text": {
+    "message": "Mihin se yltää ja miten varmistaa, että se on pois päältä\n"
+  },
+  "page.craftforj.hero.eyebrow": {
+    "message": "webforJ:n visuaalinen editori"
+  },
+  "page.craftforj.hero.title1": {
+    "message": "Katso sovellus, jonka Java rakensi."
+  },
+  "page.craftforj.hero.title2": {
+    "message": "Muuta sitä ajon aikana."
+  },
+  "page.craftforj.hero.lead": {
+    "message": "craftforJ toimii sovelluksessasi kehitystilassa. Se näyttää koodisi luoman komponenttipuun, antaa muuttaa ominaisuuksia reaaliajassa ja kirjoittaa säilyttämäsi muutokset takaisin komponentit luoneeseen Java-tiedostoon."
+  },
+  "page.craftforj.hero.cta": {
+    "message": "Aloita"
+  },
+  "page.craftforj.hero.docs": {
+    "message": "Lue dokumentaatio"
+  },
+  "page.craftforj.hero.shortcutsTitle": {
+    "message": "Neljä pikanäppäintä kattavat silmukan."
+  },
+  "page.craftforj.hero.shotAlt": {
+    "message": "craftforJ auki käynnissä olevan sovelluksen päällä, AppNav valittuna komponenttipuussa ja sen ominaisuudet sivupalkissa"
+  },
+  "page.craftforj.loop.eyebrow": {
+    "message": "Näin se toimii"
+  },
+  "page.craftforj.loop.title1": {
+    "message": "Se lukee sovellustasi"
+  },
+  "page.craftforj.loop.title2": {
+    "message": "webforJ:n itsensä kautta"
+  },
+  "page.craftforj.loop.lead": {
+    "message": "Siksi se kuvaa sovellusta niillä käsitteillä, joilla kirjoitit sen. Puu luettelee komponenttisi, ominaisuudet ovat komponenttiesi määrittelemiä, ja reitit ovat reitittimesi rekisteröimiä, niihin merkitsemiesi käyttöoikeussääntöjen mukaisesti."
+  },
+  "page.craftforj.tour.video": {
+    "message": "Video"
+  },
+  "page.craftforj.tour.screenshot": {
+    "message": "Kuvakaappaus"
+  },
+  "page.craftforj.tour.viewsLabel": {
+    "message": "{tab} näkymää"
+  },
+  "page.craftforj.tour.count": {
+    "message": "{count} / {total}"
+  },
+  "page.craftforj.tour.docLink": {
+    "message": "{label}-dokumentaatio"
+  },
+  "page.craftforj.tour.eyebrow": {
+    "message": "Paneelien esittely"
+  },
+  "page.craftforj.tour.title1": {
+    "message": "Paneelit,"
+  },
+  "page.craftforj.tour.title2": {
+    "message": "oikean sovelluksen päälle"
+  },
+  "page.craftforj.tour.tabsLabel": {
+    "message": "craftforJ-paneelit"
+  },
+  "page.craftforj.source.eyebrow": {
+    "message": "Takaisin lähteeseen"
+  },
+  "page.craftforj.source.title1": {
+    "message": "Se muokkaa Javaa,"
+  },
+  "page.craftforj.source.title2": {
+    "message": "ei sen kopio"
+  },
+  "page.craftforj.source.lead": {
+    "message": "Ota lomake, jossa on Tallenna- ja Peruuta-painikkeet. Valitse Tallenna, napsauta sitä hiiren kakkospainikkeella puussa ja valitse Poista lähteestä. Määrittely, teema, tapahtumankäsittelijä, sen paikka add()-kutsussa ja ButtonTheme-tuonti, jota mikään muu ei käytä, poistuvat. Peruuta jää."
+  },
+  "page.craftforj.source.before": {
+    "message": "Ennen"
+  },
+  "page.craftforj.source.after": {
+    "message": "Lähteestä poistamisen jälkeen"
+  },
+  "page.craftforj.start.eyebrow": {
+    "message": "Aloittaminen"
+  },
+  "page.craftforj.start.title1": {
+    "message": "Ota käyttöön\n"
+  },
+  "page.craftforj.start.title2": {
+    "message": "kolmessa vaiheessa"
+  },
+  "page.craftforj.start.lead": {
+    "message": "craftforJ sisältyy webforJ:hin, joten sitä ei tarvitse ladata erikseen. startforJ:llä tai webforJ-arkkityypistä luoduissa projekteissa se on valmiiksi käytössä. Käynnistä sovellus ja siirry suoraan vaiheeseen kolme."
+  },
+  "page.craftforj.start.step1.title": {
+    "message": "Lisää riippuvuus"
+  },
+  "page.craftforj.start.step1.text": {
+    "message": "Lisää webforj-devtools projektiisi, jos sitä ei vielä ole."
+  },
+  "page.craftforj.start.step2.title": {
+    "message": "Ota virheenkorjaustila käyttöön ja craftforJ"
+  },
+  "page.craftforj.start.step2.text": {
+    "message": "Aseta molemmat ominaisuudet webforj.conf-tiedostossa tai Spring-projektin application.properties-tiedostossa. craftforJ toimii vain, kun molemmat ovat käytössä."
+  },
+  "page.craftforj.start.step3.title": {
+    "message": "Käynnistä uudelleen, lataa uudelleen ja avaa se."
+  },
+  "page.craftforj.start.step3.text": {
+    "message": "Avaa sovellus koneella, jolla se toimii. Sovelluksen päälle ilmestyy käynnistyspainike. Napsauta sitä tai paina {keys} missä tahansa sovelluksessa. Sama pikanäppäin sulkee craftforJ:n."
+  },
+  "page.craftforj.start.dockAlt": {
+    "message": "craftforJ telakoituna sovellussivun oikeaan reunaan"
+  },
+  "page.craftforj.start.dockCaption": {
+    "message": "craftforJ näkyy oletuksena sovelluksesi päällä. Telakoi se vetämällä reunaan tai siirrä se omaan selainikkunaan tai -välilehteen toiselle näytölle."
+  },
+  "page.craftforj.next.eyebrow": {
+    "message": "Minne seuraavaksi?"
+  },
+  "page.craftforj.next.title1": {
+    "message": "Jokaisella paneelilla on oma sivunsa\n"
+  },
+  "page.craftforj.next.title2": {
+    "message": "ohjeissa"
+  },
+  "page.craftforj.next.lead": {
+    "message": "webforJ on yritysten verkkosovelluksiin tarkoitettu full-stack Java-kehys: rakennat koko sovelluksen näkymineen Java-kielellä. craftforJ toimitetaan sen mukana, ja se toimii käynnissä olevassa sovelluksessasi."
+  },
+  "page.craftforj.next.assistant": {
+    "message": "craftforJ-avustaja"
+  },
+  "page.craftforj.next.home": {
+    "message": "Takaisin dokumentaation etusivulle"
+  },
+  "page.craftforj.meta.title": {
+    "message": "craftforJ: käynnissä olevan webforJ-sovelluksesi visuaalinen editori"
+  },
+  "page.craftforj.meta.description": {
+    "message": "craftforJ on webforJ:n visuaalinen editori. Se näyttää käynnissä olevan webforJ-sovelluksesi komponenttipuun, antaa muuttaa ominaisuuksia reaaliaikaisesti ja kirjoittaa säilyttämäsi muutokset takaisin Java-lähdekoodiisi."
+  },
+  "page.designKit.palette.primary": {
+    "message": "Brändivärisi"
+  },
+  "page.designKit.palette.default": {
+    "message": "Neutraali, päävärillä sävytetty"
+  },
+  "page.designKit.palette.success": {
+    "message": "Tila"
+  },
+  "page.designKit.palette.warning": {
+    "message": "Tila"
+  },
+  "page.designKit.palette.danger": {
+    "message": "Tila"
+  },
+  "page.designKit.palette.info": {
+    "message": "Toissijainen korostus"
+  },
+  "page.designKit.palette.gray": {
+    "message": "Puhdas harmaa, sävyttämätön"
+  },
+  "page.designKit.surface.level1": {
+    "message": "Sivun ja rungon tausta"
+  },
+  "page.designKit.surface.level2": {
+    "message": "Työkalupalkit, valikkopalkit, kortit"
+  },
+  "page.designKit.surface.level3": {
+    "message": "Ikkunat, valikot, ponnahdusikkunat, valintaikkunat"
+  },
+  "page.designKit.collections.color": {
+    "message": "Väri"
+  },
+  "page.designKit.collections.type": {
+    "message": "Typografia"
+  },
+  "page.designKit.collections.space": {
+    "message": "Välit ja koot"
+  },
+  "page.designKit.collections.radius": {
+    "message": "Säde"
+  },
+  "page.designKit.collections.depth": {
+    "message": "Varjot ja pinnat"
+  },
+  "page.designKit.handoff.color.design": {
+    "message": "Brändiväri"
+  },
+  "page.designKit.handoff.color.note": {
+    "message": "Paletin kaikki 19 sävyä muodostetaan sen pohjalta."
+  },
+  "page.designKit.handoff.type.design": {
+    "message": "Typografinen asteikko"
+  },
+  "page.designKit.handoff.type.note": {
+    "message": "Koot rem-yksikköinä, m on vakio."
+  },
+  "page.designKit.handoff.space.design": {
+    "message": "Välistysrytmi"
+  },
+  "page.designKit.handoff.space.note": {
+    "message": "Komponenttien välinen tila, rem-yksikköinä."
+  },
+  "page.designKit.handoff.theme.design": {
+    "message": "Vaalea ja tumma"
+  },
+  "page.designKit.handoff.theme.note": {
+    "message": "Noudattaa käyttöjärjestelmän asetusta."
+  },
+  "page.designKit.ai.step1.title": {
+    "message": "Lukee suunnitelman\n"
+  },
+  "page.designKit.ai.step1.text": {
+    "message": "Se välittää avustajallesi valitsemasi kehyksen asettelun, komponentit ja muuttujat. Kitin muuttujissa käytetään DWC-tokenien nimiä, joten suunnittelu puhuu jo koodin kieltä."
+  },
+  "page.designKit.ai.step2.title": {
+    "message": "Tarkistaa sen webforJ:tä vasten."
+  },
+  "page.designKit.ai.step2.text": {
+    "message": "Se vastaa todellisen viitekehyksen perusteella, mitä komponenttia kannattaa käyttää, millainen sen tyylittelyrajapinta on ja ovatko kaikki CSS-tokenit olemassa."
+  },
+  "page.designKit.ai.step3.who": {
+    "message": "Avustajasi"
+  },
+  "page.designKit.ai.step3.title": {
+    "message": "Kirjoittaa näytön Javalla\n"
+  },
+  "page.designKit.ai.step3.text": {
+    "message": "Kun molemmat ovat yhdistettyinä, näkymä muodostetaan webforJ-komponenteista ja samoista suunnittelijan käyttämistä tokeneista, ja voit arvioida tulosta kehystä vasten."
+  },
+  "page.designKit.next.overview.title": {
+    "message": "Tyylien yleiskatsaus"
+  },
+  "page.designKit.next.overview.text": {
+    "message": "DWC-suunnittelujärjestelmä ja paketti."
+  },
+  "page.designKit.next.themes.title": {
+    "message": "Teemat"
+  },
+  "page.designKit.next.themes.text": {
+    "message": "Vaaleat, tummat ja puhtaan tummat teemat sekä niiden ohittaminen."
+  },
+  "page.designKit.next.colors.title": {
+    "message": "Värit"
+  },
+  "page.designKit.next.colors.text": {
+    "message": "Seitsemän palettia, 19 sävyä kussakin, yhdestä siemenestä."
+  },
+  "page.designKit.next.typography.title": {
+    "message": "Typografia"
+  },
+  "page.designKit.next.typography.text": {
+    "message": "Fonttiperheet, koot, lihavuudet ja rivikorkeudet."
+  },
+  "page.designKit.next.sizingAndSpacing.title": {
+    "message": "Koko ja välit"
+  },
+  "page.designKit.next.sizingAndSpacing.text": {
+    "message": "rem skaalautuu koon ja tilan mukaan."
+  },
+  "page.designKit.next.borders.title": {
+    "message": "Reunat"
+  },
+  "page.designKit.next.borders.text": {
+    "message": "Leveydet, värit ja kulmasäteet yhdestä siemenestä."
+  },
+  "page.designKit.next.shadows.title": {
+    "message": "Varjot"
+  },
+  "page.designKit.next.shadows.text": {
+    "message": "Kuusi vaihetta, jotka mukautuvat vaaleaan ja tummaan teemaan."
+  },
+  "page.designKit.next.surfaces.title": {
+    "message": "Pinnat"
+  },
+  "page.designKit.next.surfaces.text": {
+    "message": "Kolme tasoa käyttöliittymän hierarkiassa."
+  },
+  "page.designKit.next.cssVariables.title": {
+    "message": "CSS-muuttujat"
+  },
+  "page.designKit.next.cssVariables.text": {
+    "message": "Tokenien määrittäminen ja ylikirjoittaminen\n"
+  },
+  "page.designKit.carousel.slideAlt": {
+    "message": "{app}-sovelluksen {name}-näyttö. {caption}"
+  },
+  "page.designKit.carousel.label": {
+    "message": "Suunnittelupaketilla suunnitellut sovellusnäkymät"
+  },
+  "page.designKit.carousel.position": {
+    "message": "{n} / {total}"
+  },
+  "page.designKit.carousel.previous": {
+    "message": "Edellinen näyttö"
+  },
+  "page.designKit.carousel.count": {
+    "message": "{n} / {total}"
+  },
+  "page.designKit.carousel.next": {
+    "message": "Seuraava näyttö"
+  },
+  "page.designKit.readout.token": {
+    "message": "Tunniste"
+  },
+  "page.designKit.readout.value": {
+    "message": "Ratkaistu arvo"
+  },
+  "page.designKit.readout.text": {
+    "message": "Teksti siinä"
+  },
+  "page.designKit.color.title": {
+    "message": "Väri"
+  },
+  "page.designKit.color.text": {
+    "message": "Seitsemän palettia, joissa kussakin on 19 sävyä ja jotka on luotu yhdestä pohjasävystä. Sävy 5 on aina tummin ja sävy 95 vaalein. Valitse värinäyte tarkastellaksesi sitä."
+  },
+  "page.designKit.type.sample": {
+    "message": "Määritä kuljettaja"
+  },
+  "page.designKit.type.title": {
+    "message": "Typografia"
+  },
+  "page.designKit.type.text": {
+    "message": "Kokoluokitus rem-yksiköissä, jossa m on useimpien komponenttien vakiokoko, sekä painoasteikko ohuesta mustaan."
+  },
+  "page.designKit.space.title": {
+    "message": "Välit ja koot"
+  },
+  "page.designKit.space.text": {
+    "message": "Väli määrittää komponenttien välisen tilan. Koko määrittää komponenttien leveyden ja korkeuden, ja m on lähes kaikkien vakiokoko. Välipalkit piirretään nelinkertaisina kokoonsa nähden."
+  },
+  "page.designKit.radius.title": {
+    "message": "Säde"
+  },
+  "page.designKit.radius.text": {
+    "message": "Jokainen vaihe skaalautuu yhdestä siemenestä: --dwc-border-radius-seed. Muuta siementä, niin koko pyöristyssädejärjestelmä mukautuu."
+  },
+  "page.designKit.shadow.layer": {
+    "message": "{count} kerrosta"
+  },
+  "page.designKit.shadow.layers": {
+    "message": "{count} tasoa"
+  },
+  "page.designKit.depth.title": {
+    "message": "Varjot ja pinnat"
+  },
+  "page.designKit.depth.text": {
+    "message": "Varjot näyttävät, mikä on päällimmäisenä. Kolme pintaa jäsentää hierarkian sivusta valintaikkunaan. Molemmat mukautuvat vaaleaan ja tummaan tilaan."
+  },
+  "page.designKit.hero.eyebrow": {
+    "message": "Figma-suunnittelupaketti"
+  },
+  "page.designKit.hero.title1": {
+    "message": "Suunnittele samoilla tokeneilla\n"
+  },
+  "page.designKit.hero.title2": {
+    "message": "Sovelluksesi toimii alustalla"
+  },
+  "page.designKit.hero.lead": {
+    "message": "DWC Design Kit on virallinen Figma-resurssi webforJ-sovellusten suunnitteluun, jotta suunnittelijat ja kehittäjät käyttävät samoja suunnittelutokeneita ja komponentteja."
+  },
+  "page.designKit.hero.openKit": {
+    "message": "Avaa paketti Figmassa\n"
+  },
+  "page.designKit.hero.styling": {
+    "message": "Lue tyyliohje"
+  },
+  "page.designKit.facts.components.term": {
+    "message": "Komponentit"
+  },
+  "page.designKit.facts.components.text": {
+    "message": "Jokainen DWC-komponentti teemoineen, kokoineen ja tiloineen"
+  },
+  "page.designKit.facts.tokens.term": {
+    "message": "Tokenit"
+  },
+  "page.designKit.facts.tokens.text": {
+    "message": "Paletit, typografia, välistykset ja varjot Figma-muuttujina ja -tyyleinä"
+  },
+  "page.designKit.facts.modes.term": {
+    "message": "Tilat"
+  },
+  "page.designKit.facts.modes.text": {
+    "message": "Vaalea ja tumma tila sovelluksen esittäminä webforJ 26:ssa ja uudemmissa versioissa"
+  },
+  "page.designKit.tokens.kicker": {
+    "message": "Muuttujat"
+  },
+  "page.designKit.tokens.title1": {
+    "message": "Paketin arvot"
+  },
+  "page.designKit.tokens.title2": {
+    "message": "ovatko arvot koodissa\n"
+  },
+  "page.designKit.tokens.lead": {
+    "message": "Kitissä DWC-tokenit ovat Figma-muuttujina. Sovelluksessa ne ovat CSS:n mukautettuja ominaisuuksia. Kaikki alla on peräisin {code}-muuttujista, joiden varassa tämä sivu toimii, ja mukana on kunkin selaimen ratkaisema arvo. Kun vaihdat sivuston tummaan tilaan, muuttujat seuraavat mukana kuten kitin tumma tila."
+  },
+  "page.designKit.tokens.collectionsLabel": {
+    "message": "Token-kokoelmat"
+  },
+  "page.designKit.tokens.collections": {
+    "message": "Kokoelmat"
+  },
+  "page.designKit.kitToApp.kicker": {
+    "message": "Paketista sovellukseksi"
+  },
+  "page.designKit.kitToApp.title1": {
+    "message": "Suunniteltu työkalupaketilla,"
+  },
+  "page.designKit.kitToApp.title2": {
+    "message": "rakennettu webforJ-komponenteista"
+  },
+  "page.designKit.kitToApp.lead": {
+    "message": "Tämän sivun yläosan näkymät on suunniteltu suunnittelupaketin avulla. Paketin avulla suunniteltu näkymä käyttää samoja komponentteja ja design-tokeneita kuin sovellus, joten mallista Java-koodiin siirtyminen ei tarkoita siirtymistä visuaalisesta kielestä toiseen."
+  },
+  "page.designKit.kitToApp.showcase": {
+    "message": "Käy esittely läpi vaiheittain"
+  },
+  "page.designKit.together.kicker": {
+    "message": "Suunnittelija ja kehittäjä"
+  },
+  "page.designKit.together.title1": {
+    "message": "Yksi siirto,"
+  },
+  "page.designKit.together.title2": {
+    "message": "Yhdistetty kerran"
+  },
+  "page.designKit.together.lead": {
+    "message": "Tokenit ovat suunnittelun ja koodin välinen sopimus. Suunnittelija antaa brändivärin ja typografisen asteikon kirjastosta. Kehittäjä yhdistää ne kerran siemenarvoon ja fonttikoon tokeniin, ja kaikki näkymät perivät ne."
+  },
+  "page.designKit.handoff.inFigma": {
+    "message": "Figmassa"
+  },
+  "page.designKit.handoff.inCode": {
+    "message": "Koodissa"
+  },
+  "page.designKit.sides.kit.title": {
+    "message": "Pakkauksessa"
+  },
+  "page.designKit.sides.kit.item1": {
+    "message": "Kaikki DWC-komponentit sellaisina kuin ne näkyvät webforJ 26:ssa ja uudemmissa versioissa, teemoineen, kokoineen ja tiloineen."
+  },
+  "page.designKit.sides.kit.item2": {
+    "message": "Väripaletit sekä typografia-, välistys- ja varjotokenit Figma-muuttujina ja -tyyleinä."
+  },
+  "page.designKit.sides.kit.item3": {
+    "message": "Komponenttien ja tokenien vaalea ja tumma tila."
+  },
+  "page.designKit.sides.kit.item4": {
+    "message": "Täsmälliset välistykset ja saavutettava värikontrasti käyttöliittymiin, joissa komponenttien toiminta on ennakoitavaa."
+  },
+  "page.designKit.sides.app.title": {
+    "message": "Sovelluksessa"
+  },
+  "page.designKit.sides.app.seed": {
+    "message": "Määritä brändi kerran siemenarvoksi. Painikkeet, linkit ja kohdistusrenkaat käyttävät sitä, koska ne perustuvat ensisijaiseen väripalettiin."
+  },
+  "page.designKit.sides.app.theme": {
+    "message": "Rekisteröi vaalea ja tumma teema ja anna webforJ:n seurata käyttäjän käyttöjärjestelmän asetuksia."
+  },
+  "page.designKit.ai.kicker": {
+    "message": "Luo tekoälyn avulla"
+  },
+  "page.designKit.ai.title1": {
+    "message": "Figma-kehyksestä"
+  },
+  "page.designKit.ai.title2": {
+    "message": "Java-näyttöön"
+  },
+  "page.designKit.ai.lead": {
+    "message": "Yhdistä koodausavustajaasi kaksi MCP-palvelinta: Figma ja webforJ. Toinen lukee suunnittelun, toinen tuntee sovelluskehyksen, ja avustaja toimii niiden välissä."
+  },
+  "page.designKit.ai.promptLabel": {
+    "message": "Aloituskehote"
+  },
+  "page.designKit.ai.prompt": {
+    "message": "Toteuta tämä Figma-kehys webforJ-näkymänä. Lue kehys Figma MCP -palvelimella, valitse komponentit webforJ MCP -palvelimella ja validoi kaikki --dwc-* -tunnisteet ennen kuin lopetat."
+  },
+  "page.designKit.ai.install": {
+    "message": "Asenna tekoälylisäosa"
+  },
+  "page.designKit.ai.tooling": {
+    "message": "Katso tekoälytyökalut"
+  },
+  "page.designKit.getIt.kicker": {
+    "message": "Hanki paketti"
+  },
+  "page.designKit.getIt.title1": {
+    "message": "Aloita seuraava näkymäsi\n"
+  },
+  "page.designKit.getIt.title2": {
+    "message": "Figmassa"
+  },
+  "page.designKit.getIt.lead": {
+    "message": "DWC Design Kit löytyy Figma Communitysta. webforJ on yritysten verkkosovelluksiin tarkoitettu full-stack-Java-kehys: rakennat koko sovelluksen, myös näkymät, Javalla."
+  },
+  "page.designKit.getIt.openKit": {
+    "message": "Avaa paketti Figmassa\n"
+  },
+  "page.designKit.getIt.started": {
+    "message": "Lue aloitusopas"
+  },
+  "page.designKit.getIt.step1.title": {
+    "message": "Avaa paketti\n"
+  },
+  "page.designKit.getIt.step1.text": {
+    "message": "Etsi DWC Design Kit Figma Communitystä."
+  },
+  "page.designKit.getIt.step2.title": {
+    "message": "Suunnittele näkymät"
+  },
+  "page.designKit.getIt.step2.text": {
+    "message": "Käytä sen komponentteja ja muuttujia ja tarkista jokainen näyttö vaaleassa ja tummassa tilassa."
+  },
+  "page.designKit.getIt.step3.title": {
+    "message": "Rakenna ne Javalla\n"
+  },
+  "page.designKit.getIt.step3.text": {
+    "message": "Käytä samoja komponentteja webforJ:ssä ja määritä brändisi yhdellä siemenarvolla."
+  },
+  "page.designKit.next.title": {
+    "message": "Tutustu suunnittelujärjestelmään"
+  },
+  "page.designKit.next.home": {
+    "message": "Takaisin dokumentaation etusivulle"
+  },
+  "page.designKit.meta.title": {
+    "message": "DWC:n suunnittelupaketti Figmalle: suunnittele webforJ-sovelluksia"
+  },
+  "page.designKit.meta.description": {
+    "message": "webforJ:n virallinen Figma-paketti. Kaikki DWC-komponentit teemoineen, kokoineen ja tiloineen sekä väri-, typografia-, välistys- ja varjotokenit Figma-muuttujina vaaleassa ja tummassa tilassa."
+  },
+  "page.intro.screens.one": {
+    "message": "Mitä webforJ on\n"
+  },
+  "page.intro.screens.two": {
+    "message": "Komponentit ja teemoitus"
+  },
+  "page.intro.screens.craft": {
+    "message": "craftforJ"
+  },
+  "page.intro.screens.three": {
+    "message": "Tiedot, lomakkeet ja tietoturva"
+  },
+  "page.intro.screens.four": {
+    "message": "Nykyinen koodisi"
+  },
+  "page.intro.screens.five": {
+    "message": "Tekoälytyökalut ja seuraavat pysähdykset"
+  },
+  "page.intro.four.roadmap.today.phase": {
+    "message": "Tänään"
+  },
+  "page.intro.four.roadmap.today.title": {
+    "message": "Swing työpöydällä"
+  },
+  "page.intro.four.roadmap.today.text": {
+    "message": "Vuosien liiketoimintalogiikkaa, joka toimii joka päivä."
+  },
+  "page.intro.four.roadmap.one.phase": {
+    "message": "Vaihe 1"
+  },
+  "page.intro.four.roadmap.one.title": {
+    "message": "Sama sovellus selaimessa\n"
+  },
+  "page.intro.four.roadmap.one.text": {
+    "message": "Webswing suoratoistaa sen selaimeen muuttamatta alkuperäistä."
+  },
+  "page.intro.four.roadmap.from.phase": {
+    "message": "Sieltä"
+  },
+  "page.intro.four.roadmap.from.title": {
+    "message": "webforJ, näkymä kerrallaan"
+  },
+  "page.intro.four.roadmap.from.text": {
+    "message": "Korvaa Swing-näytöt webforJ:llä yksi kerrallaan."
+  },
+  "page.intro.five.mcp.version": {
+    "message": "Valitse oikea webforJ-versio\n"
+  },
+  "page.intro.five.mcp.knowledge": {
+    "message": "Etsi tietämyskannasta"
+  },
+  "page.intro.five.mcp.scaffold": {
+    "message": "Luo uusi webforJ-projekti"
+  },
+  "page.intro.five.mcp.theme": {
+    "message": "Luo DWC-teema"
+  },
+  "page.intro.five.mcp.style": {
+    "message": "Tyylittele DWC-komponentit oikein."
+  },
+  "page.intro.five.mcp.tokens": {
+    "message": "Työskentele DWC:n suunnittelutokenien kanssa"
+  },
+  "page.intro.next.create.step": {
+    "message": "Luo"
+  },
+  "page.intro.next.create.title": {
+    "message": "Aloita projekti"
+  },
+  "page.intro.next.create.text": {
+    "message": "Luo projekti startforJ:llä tai Maven-arkkityypillä ja suorita se."
+  },
+  "page.intro.next.learn.step": {
+    "message": "Opi"
+  },
+  "page.intro.next.learn.title": {
+    "message": "Seuraa opetusohjelmaa"
+  },
+  "page.intro.next.learn.text": {
+    "message": "Rakenna toimiva sovellus vaihe vaiheelta ensimmäisestä näkymästä validointiin."
+  },
+  "page.intro.next.build.step": {
+    "message": "Rakenna"
+  },
+  "page.intro.next.build.title": {
+    "message": "Komponentit"
+  },
+  "page.intro.next.build.text": {
+    "message": "Jokainen komponentti API-tietoineen ja toimivine esimerkkeineen samalla sivulla."
+  },
+  "page.intro.next.explore.step": {
+    "message": "Tutustu"
+  },
+  "page.intro.next.explore.title": {
+    "message": "Dokumentaation etusivu"
+  },
+  "page.intro.next.explore.text": {
+    "message": "Dokumentaation kokonaiskartta, ryhmitelty sen mukaan, mitä haluat tehdä."
+  },
+  "page.intro.readMore": {
+    "message": "Lue lisää: {topic}"
+  },
+  "page.intro.hello.afterClick": {
+    "message": "Napsautuksen jälkeen"
+  },
+  "page.intro.hello.description": {
+    "message": "Suoritusnäkymässä näkyy tekstikenttä, jonka otsikko on ”Mikä nimesi on?”, ”Sano hei” -painike ja napsautuksen jälkeen onnistumisilmoitus, jossa lukee ”Tervetuloa, Lauren!”"
+  },
+  "page.intro.one.kicker": {
+    "message": "Mikä webforJ on\n"
+  },
+  "page.intro.one.title1": {
+    "message": "Näyttö on"
+  },
+  "page.intro.one.title2": {
+    "message": "Java-luokka."
+  },
+  "page.intro.one.codeLabel": {
+    "message": "HelloView Javalla tai Kotlinilla"
+  },
+  "page.intro.one.lede": {
+    "message": "webforJ on täyden pinon Java-kehys yritysten verkkosovelluksiin: rakennat koko sovelluksen, myös näkymät, Javalla."
+  },
+  "page.intro.one.route.title": {
+    "message": "Reitti tekee siitä sivun."
+  },
+  "page.intro.one.route.text": {
+    "message": "Lisää {code} luokkaan, niin se vastaa selaimessa kyseisessä osoitteessa."
+  },
+  "page.intro.one.fields.title": {
+    "message": "Komponentit ovat kenttiä."
+  },
+  "page.intro.one.fields.text": {
+    "message": "Luo ne komennolla {code} ja reagoi napsautuksiin lambda-funktiolla."
+  },
+  "page.intro.one.kotlin.title": {
+    "message": "Java tai Kotlin."
+  },
+  "page.intro.one.kotlin.text": {
+    "message": "Kotlin DSL rakentaa saman näkymän samoilla komponenteilla."
+  },
+  "page.intro.one.readMore": {
+    "message": "Kotlin DSL"
+  },
+  "page.intro.tile.alt": {
+    "message": "webforJ {name} -komponentti"
+  },
+  "page.intro.two.kicker": {
+    "message": "Komponentit ja teemoitus"
+  },
+  "page.intro.two.title1": {
+    "message": "Komponentit rakennettu"
+  },
+  "page.intro.two.title2": {
+    "message": "yrityssovelluksille."
+  },
+  "page.intro.two.lede": {
+    "message": "Kentät, luettelot, valintaikkunat, tiedostojen lähetykset, kaaviot, puunäkymät ja asettelut tulevat webforJ:n mukana. Jokainen niistä on Java-luokka, jonka luot näytöllesi."
+  },
+  "page.intro.two.body": {
+    "message": "Teeman luominen alkaa pohjaväristä. Aseta pääväri, niin paletin kaikki 19 sävyä mukautuvat siihen kaikissa komponenteissa."
+  },
+  "page.intro.two.codeLabel": {
+    "message": "Teeman lähtöarvo"
+  },
+  "page.intro.two.readMore": {
+    "message": "Komponentit"
+  },
+  "page.intro.craft.kicker": {
+    "message": "craftforJ"
+  },
+  "page.intro.craft.title1": {
+    "message": "Näe Java-koodillasi rakennettu sovellus."
+  },
+  "page.intro.craft.title2": {
+    "message": "Muuta sitä sen ollessa käynnissä."
+  },
+  "page.intro.craft.videoLabel": {
+    "message": "craftforJ käynnissä olevan webforJ-sovelluksen päällä: komponentin valinta, sen ominaisuuksien muuttaminen ja muutosten vieminen Java-lähdekoodiin"
+  },
+  "page.intro.craft.lede": {
+    "message": "craftforJ on visuaalinen editori, joka toimii sovelluksessasi kehitystilassa. Se näyttää Java-koodisi luoman komponenttipuun, antaa muuttaa ominaisuuksia reaaliaikaisesti ja kirjoittaa säilyttämäsi muutokset takaisin Java-lähdekoodiisi."
+  },
+  "page.intro.craft.inspect.title": {
+    "message": "Tarkastele komponentteja."
+  },
+  "page.intro.craft.inspect.text": {
+    "message": "Selaa komponenttipuuta, valitse komponentti napsauttamalla sitä sivulla ja muuta sen ominaisuuksia sovelluksen ollessa käynnissä."
+  },
+  "page.intro.craft.source.title": {
+    "message": "Kirjoita muutokset lähdekoodiin."
+  },
+  "page.intro.craft.source.text": {
+    "message": "Tarkista reaaliaikaiset muokkauksesi diff-näkymässä ja ota ne käyttöön alkuperäisessä Java-tiedostossa."
+  },
+  "page.intro.craft.ai.title": {
+    "message": "Tekoälyavustaja."
+  },
+  "page.intro.craft.ai.text": {
+    "message": "Käynnissä olevassa sovelluksessa toimiva koodausagentti kirjoittaa Java-koodia, kääntää sen ja ottaa sen käyttöön hyväksynnälläsi."
+  },
+  "page.intro.three.kicker": {
+    "message": "Tiedot, lomakkeet ja tietoturva"
+  },
+  "page.intro.three.title1": {
+    "message": "Lomakkeet, säännöt ja käyttöoikeudet"
+  },
+  "page.intro.three.title2": {
+    "message": "backendisi rinnalla"
+  },
+  "page.intro.three.codeLabel": {
+    "message": "Lomake, bean, Spring-näkymä ja suojattu reitti"
+  },
+  "page.intro.three.tabForm": {
+    "message": "Lomake"
+  },
+  "page.intro.three.tabBean": {
+    "message": "Papu"
+  },
+  "page.intro.three.tabSecurity": {
+    "message": "Tietoturva"
+  },
+  "page.intro.three.binding.title": {
+    "message": "Sidonta"
+  },
+  "page.intro.three.binding.text": {
+    "message": "{code} yhdistää lomakekentät bean-olioon ja tarkistaa sen Jakarta-validointisäännöt, kun lomake kirjoitetaan takaisin."
+  },
+  "page.intro.three.spring.text": {
+    "message": "Näkymät saavat palvelusi, repositoriosi ja muut Spring-pavut konstruktorin injektoinnilla."
+  },
+  "page.intro.three.security.title": {
+    "message": "Tietoturva"
+  },
+  "page.intro.three.security.text": {
+    "message": "Annotaatiot, kuten {code}, suojaavat reittiä, ja sääntöjä sovelletaan ennen kuin mitään komponenttia renderöidään."
+  },
+  "page.intro.three.readMore": {
+    "message": "Esittely"
+  },
+  "page.intro.four.kicker": {
+    "message": "Nykyinen koodisi tulee mukana\n"
+  },
+  "page.intro.four.title1": {
+    "message": "Tuo koodi"
+  },
+  "page.intro.four.title2": {
+    "message": "Sinulla on jo."
+  },
+  "page.intro.four.roadmapLabel": {
+    "message": "Swingistä webforJ:hin"
+  },
+  "page.intro.four.codeLabel": {
+    "message": "Swing-näkymä ja web-komponentti"
+  },
+  "page.intro.four.tabSwing": {
+    "message": "Swing-sovellus"
+  },
+  "page.intro.four.tabComponent": {
+    "message": "Verkkokomponentti"
+  },
+  "page.intro.four.lede": {
+    "message": "{code} upottaa käynnissä olevan Swing-, JavaFX- tai SWT-sovelluksen webforJ-näkymään, joten uudelleenkirjoitusta ei tarvitse tehdä kerralla."
+  },
+  "page.intro.four.body": {
+    "message": "{code} käärii mukautetun HTML-elementin tai web-komponentin Java-luokkaan, jossa sen ominaisuudet, attribuutit ja tapahtumat määritellään Javassa."
+  },
+  "page.intro.five.skillsTitle": {
+    "message": "Agentin taidot"
+  },
+  "page.intro.done.stamp": {
+    "message": "Opastus valmis"
+  },
+  "page.intro.done.title1": {
+    "message": "Siinä oli koko pino."
+  },
+  "page.intro.done.title2": {
+    "message": "Olet valmis rakentamaan."
+  },
+  "page.intro.done.text": {
+    "message": "Voit pitää itseäsi epävirallisesti sertifioituna: olet nähnyt, miten webforJ-sovellus rakentuu ensimmäisestä näkymästä seuraavan tekemistä auttaviin tekoälytyökaluihin."
+  },
+  "page.intro.next.title": {
+    "message": "Seuraava pysäkkisi"
+  },
+  "page.intro.five.kicker": {
+    "message": "Tekoälytyökalut ja mitä seuraavaksi"
+  },
+  "page.intro.five.title1": {
+    "message": "Tekoälyavustajasi seuraa\n"
+  },
+  "page.intro.five.title2": {
+    "message": "webforJ-käytännöt."
+  },
+  "page.intro.five.codeLabel": {
+    "message": "Asenna tekoälylaajennus"
+  },
+  "page.intro.five.tabTerminal": {
+    "message": "Pääte"
+  },
+  "page.intro.five.nameTerminal": {
+    "message": "Pääte"
+  },
+  "page.intro.five.lede": {
+    "message": "Asenna webforJ AI -lisäosa kerran, niin koodausavustajasi saa webforJ MCP -palvelimen ja Agent Skills -ominaisuudet."
+  },
+  "page.intro.five.body": {
+    "message": "Palvelin tarjoaa sille reaaliaikaiset työkalut. Taidot kertovat, milloin niitä käytetään, missä järjestyksessä ja miten tulos tarkistetaan."
+  },
+  "page.intro.five.readMore": {
+    "message": "Tekoälytyökalut"
+  },
+  "page.intro.dock.label": {
+    "message": "Johdantonäytöt"
+  },
+  "page.intro.dock.previous": {
+    "message": "Edellinen näyttö"
+  },
+  "page.intro.dock.count": {
+    "message": "{current} / {total}"
+  },
+  "page.intro.dock.screen": {
+    "message": "Näyttö {number}: {name}"
+  },
+  "page.intro.dock.next": {
+    "message": "Seuraava näyttö"
+  },
+  "page.intro.meta.title": {
+    "message": "webforJ kuudessa näytössä: lyhyt esittely"
+  },
+  "page.intro.meta.description": {
+    "message": "Kuuden näkymän tutustumiskierros webforJ:hin, yritysten verkkosovellusten full-stack Java -kehykseen: näkymät Java-luokkina, komponentit ja teemat, craftforJ-visuaalinen editori, lomakkeet ja tietoturva, Swing- ja verkkokomponentit sekä tekoälytyökalut."
+  },
+  "page.kotlinDsl.concepts.naming.title": {
+    "message": "Komponenttien mukaan nimetyt rakentajat"
+  },
+  "page.kotlinDsl.concepts.naming.text": {
+    "message": "Jokaisella komponentilla on luokan nimen mukaan camelCase-muotoon nimetty funktio. Useimmat funktiot ottavat ennen lohkoa yleisimmin määrittämäsi asetukset, kuten otsikon tai paikkamerkin."
+  },
+  "page.kotlinDsl.concepts.nesting.title": {
+    "message": "Sisäkkäiset lohkot"
+  },
+  "page.kotlinDsl.concepts.nesting.text": {
+    "message": "Lapsia sisältävät komponentit hyväksyvät lohkossaan sisäkkäiset DSL-kutsut, joten koodi vastaa näytön rakennetta."
+  },
+  "page.kotlinDsl.concepts.events.title": {
+    "message": "Tapahtumat lambdoina"
+  },
+  "page.kotlinDsl.concepts.events.text": {
+    "message": "Kuuntelijat käyttävät on-etuliitteisiä metodeja, jotka ottavat vastaan lambdan, kuten onClick ja onModify."
+  },
+  "page.kotlinDsl.concepts.scope.title": {
+    "message": "Näkyvyysalueen turvallisuus"
+  },
+  "page.kotlinDsl.concepts.scope.text": {
+    "message": "Lapset kuuluvat vain niitä tukeviin komponentteihin. Niiden lisääminen vahingossa ulompaan scopeen aiheuttaa käännösvirheen."
+  },
+  "page.kotlinDsl.concepts.styles.title": {
+    "message": "Tyylit ja luokkien nimet"
+  },
+  "page.kotlinDsl.concepts.styles.text": {
+    "message": "styles-ominaisuus mahdollistaa CSS-ominaisuuksien käytön hakasulkeilla samaan tapaan kuin setStyle() Javassa. Luokkanimet lisätään +=-operaattorilla."
+  },
+  "page.kotlinDsl.concepts.java.title": {
+    "message": "Java-koodisi vieressä"
+  },
+  "page.kotlinDsl.concepts.java.text": {
+    "message": "Kotlin käännetään JVM-tavukoodiksi. Käytä Java-luokista tehtyjä Kotlin-koosteita ja sijoita Java-komponentteja sisäkkäin DSL-lohkoihin add()-metodilla."
+  },
+  "page.kotlinDsl.start.steps.dependency.title": {
+    "message": "Lisää riippuvuudet"
+  },
+  "page.kotlinDsl.start.steps.dependency.text": {
+    "message": "Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto pom.xml-tiedostoosi."
+  },
+  "page.kotlinDsl.start.steps.plugin.title": {
+    "message": "Lisää Kotlin Maven -plugin-in lisäosa?"
+  },
+  "page.kotlinDsl.start.steps.plugin.text": {
+    "message": "Se kääntää Kotlin- ja Java-lähdekoodisi yhdellä koontikerralla. Kotlinia ei tarvitse asentaa erikseen."
+  },
+  "page.kotlinDsl.start.steps.files.title": {
+    "message": "Lisää Kotlin Java-koodisi rinnalle\n"
+  },
+  "page.kotlinDsl.start.steps.files.text": {
+    "message": "Kotlin-tiedostot voivat olla omassa lähdekansiossaan tai samassa kansiossa Java-tiedostojesi kanssa."
+  },
+  "page.kotlinDsl.start.steps.view.title": {
+    "message": "Kirjoita näkymä ja käännä\n"
+  },
+  "page.kotlinDsl.start.steps.view.text": {
+    "message": "Luo näkymä builderien avulla. Maven kääntää sitten Kotlin-koodisi Java-koodisi rinnalla."
+  },
+  "page.kotlinDsl.hero.eyebrow": {
+    "message": "Kotlin DSL webforJ:lle"
+  },
+  "page.kotlinDsl.hero.title1": {
+    "message": "Kirjoita se Kotlinilla."
+  },
+  "page.kotlinDsl.hero.title2": {
+    "message": "Säilytä Java."
+  },
+  "page.kotlinDsl.hero.lead": {
+    "message": "Kotlin DSL:llä rakennat webforJ-käyttöliittymiä tiiviillä ja tyyppiturvallisella syntaksilla. Imperatiivisten kutsujen sijaan kirjoitat deklaratiivista koodia, joka kuvaa näyttöä, ja koodi käännetään samassa projektissa Java-koodisi kanssa."
+  },
+  "page.kotlinDsl.hero.add": {
+    "message": "Lisää projektiin"
+  },
+  "page.kotlinDsl.hero.using": {
+    "message": "DSL:n käyttö"
+  },
+  "page.kotlinDsl.names.title": {
+    "message": "Tuntemasi luokka rakentajana"
+  },
+  "page.kotlinDsl.names.becomes": {
+    "message": "muuttuu"
+  },
+  "page.kotlinDsl.names.note": {
+    "message": "Painikkeilla, kentillä, asetteluilla, valintaikkunoilla, sivupaneeleilla, listoilla ja HTML-elementeillä on kullakin omansa, joka on nimetty luokan nimen mukaisesti camelCase-muodossa."
+  },
+  "page.kotlinDsl.compare.eyebrow": {
+    "message": "Sama näyttö, kaksi kieltä"
+  },
+  "page.kotlinDsl.compare.title1": {
+    "message": "Lue Java."
+  },
+  "page.kotlinDsl.compare.title2": {
+    "message": "Lue sitten Kotlin."
+  },
+  "page.kotlinDsl.compare.lead": {
+    "message": "Molemmat puolet rakentavat samat komponentit samoilla webforJ-luokilla. Kotlin-puolella ei tarvita settereitä eikä add()-kutsuja: komponentit sisäkkäistyvät toisiinsa, ja määritykset tehdään lohkoissa."
+  },
+  "page.kotlinDsl.features.eyebrow": {
+    "message": "Mitä DSL tarjoaa sinulle\n"
+  },
+  "page.kotlinDsl.features.title1": {
+    "message": "Rakentajat, lohkot"
+  },
+  "page.kotlinDsl.features.title2": {
+    "message": "ja lambdat"
+  },
+  "page.kotlinDsl.concepts.lead": {
+    "message": "Jokainen builder-funktio luo komponentin, lisää sen yläsäiliöön ja suorittaa määrityslohkon. Muu DSL perustuu tähän."
+  },
+  "page.kotlinDsl.concepts.blocks.title": {
+    "message": "Määrityslohkot"
+  },
+  "page.kotlinDsl.concepts.blocks.text": {
+    "message": "Lohko saa komponentin muodossa {code}, joten voit asettaa sen ominaisuudet ja kutsua sen metodeja suoraan."
+  },
+  "page.kotlinDsl.extend.eyebrow": {
+    "message": "DSL:n laajentaminen"
+  },
+  "page.kotlinDsl.extend.title1": {
+    "message": "Omat komponenttisi,"
+  },
+  "page.kotlinDsl.extend.title2": {
+    "message": "myös rakentajina"
+  },
+  "page.kotlinDsl.extend.short": {
+    "message": "Mukautetut komponentit ja kolmannen osapuolen kirjastot liitetään DSL:ään {hasComponents}-laajennusfunktion avulla. {init}-apufunktio lisää komponentin yläkomponenttiinsa, suorittaa lohkon ja palauttaa komponentin. DSL:llä rakentamasi yhdistelmäkomponentit saavat funktion samalla tavalla."
+  },
+  "page.kotlinDsl.extend.link": {
+    "message": "DSL:n laajentaminen dokumentaatiossa"
+  },
+  "page.kotlinDsl.start.eyebrow": {
+    "message": "Näin pääset alkuun"
+  },
+  "page.kotlinDsl.start.title1": {
+    "message": "Lisää Kotlin\n"
+  },
+  "page.kotlinDsl.start.title2": {
+    "message": "Maven-projektiin"
+  },
+  "page.kotlinDsl.start.shortLead": {
+    "message": "Kotlin DSL on käytettävissä webforJ 25.12:sta alkaen. Mavenilla jo rakentuvaan projektiin tarvitaan riippuvuus ja liitännäinen."
+  },
+  "page.kotlinDsl.start.setup": {
+    "message": "Ota Kotlin DSL käyttöön"
+  },
+  "page.kotlinDsl.start.using": {
+    "message": "DSL:n käyttö"
+  },
+  "page.kotlinDsl.meta.title": {
+    "message": "Kotlin-DSL webforJ:lle: kirjoita webforJ-näkymäsi Kotlinilla\n"
+  },
+  "page.kotlinDsl.meta.description": {
+    "message": "webforJ:n Kotlin DSL rakentaa samat webforJ-näkymät tyyppiturvallisilla Kotlin-rakentajilla, sisäkkäisillä lohkoilla ja lambdoilla samassa Maven-projektissa Java-koodisi kanssa."
+  },
+  "page.mcpApps.hero.videoLabel": {
+    "message": "Reititetty webforJ-näkymä avataan AI-keskustelussa, jossa käyttäjä ja tekoäly työskentelevät saman reaaliaikaisen käyttöliittymän parissa."
+  },
+  "page.mcpApps.flow.step1Who": {
+    "message": "Tekoäly"
+  },
+  "page.mcpApps.flow.step1Text": {
+    "message": "Isäntä kutsuu {tool}-työkalua ja antaa sille esimerkiksi varastokoodin."
+  },
+  "page.mcpApps.flow.step2Text": {
+    "message": "webforJ renderöi reititetyn näkymän {route}, ja näkymä avautuu keskustelussa."
+  },
+  "page.mcpApps.flow.step3Who": {
+    "message": "Tekoäly"
+  },
+  "page.mcpApps.flow.step3Text": {
+    "message": "Tekoäly suorittaa avoimessa näkymässä toimintoja, kuten {tool}."
+  },
+  "page.mcpApps.flow.step4Who": {
+    "message": "Näkymä"
+  },
+  "page.mcpApps.flow.step4Text": {
+    "message": "Näkymä lähettää viestit ja mallikontekstin takaisin keskusteluun."
+  },
+  "page.mcpApps.host.contextTitle": {
+    "message": "Pidä malli ajan tasalla."
+  },
+  "page.mcpApps.host.contextText": {
+    "message": "{call} korvaa näkymän mallille tarjoaman kontekstin. Myöhemmät vastaukset voivat hyödyntää sitä, eikä näkyvää viestiä lisätä."
+  },
+  "page.mcpApps.host.eventsTitle": {
+    "message": "Seuraa keskustelua"
+  },
+  "page.mcpApps.host.eventsText": {
+    "message": "Kuuntelijat, kuten {cancelled} ja {changed}, saavat näkymän reagoimaan, kun työkalukutsu peruutetaan tai keskustelun konteksti muuttuu."
+  },
+  "page.mcpApps.host.leaveTitle": {
+    "message": "Poistu kehyksestä"
+  },
+  "page.mcpApps.host.leaveText": {
+    "message": "{link} jatkuu ulkoisella sivulla, ja {mode} pyytää erilaista esitystapaa. Palvelin päättää, voiko se toteuttaa jommankumman pyynnön."
+  },
+  "page.mcpApps.run.springTitle": {
+    "message": "Spring Boot ja Spring AI"
+  },
+  "page.mcpApps.run.springText": {
+    "message": "Ensisijainen tapa julkaista MCP App. Integraatio etsii merkityt reitit ja lisää ne Spring AI MCP -palvelimeen, joka tarjoaa oletusarvoisesti Streamable HTTP -yhteyden osoitteessa {path}. Se julkaisee työkalun ja reitin avaavan käyttöliittymäresurssin sekä asentaa webforJ:n upottamiseen tarvittavat servlet-suodattimet ja istuntoasetukset."
+  },
+  "page.mcpApps.run.springLink": {
+    "message": "Spring Bootin käyttöönotto"
+  },
+  "page.mcpApps.run.standardTag": {
+    "message": "Vakioservletti"
+  },
+  "page.mcpApps.run.standardTitle": {
+    "message": "Servlet-sovellus ilman Springiä\n"
+  },
+  "page.mcpApps.run.standardText": {
+    "message": "Alustaja käy reititettyjen näkymien paketin läpi, lisää niiden työkalut ja käyttöliittymäresurssit MCP-palvelimeen ja ottaa Streamable HTTP:n käyttöön osoitteessa {path}. Yksi {install}-kutsu lisää isännän tarvitseman upotustuen."
+  },
+  "page.mcpApps.run.standardLink": {
+    "message": "Vakiokokoonpano"
+  },
+  "page.mcpApps.test.baseline1": {
+    "message": "Asiakas muodostaa yhteyden MCP-päätepisteeseen."
+  },
+  "page.mcpApps.test.baseline2": {
+    "message": "Työkalu {tool} on näkyvissä."
+  },
+  "page.mcpApps.test.baseline3": {
+    "message": "Kun {tool} kutsutaan, {heading}-otsikko näytetään."
+  },
+  "page.mcpApps.test.baseline4": {
+    "message": "Renderöity käyttöliittymä on interaktiivinen."
+  },
+  "page.mcpApps.start.step1Title": {
+    "message": "Lisää MCP Apps -moduuli\n"
+  },
+  "page.mcpApps.start.step1Text": {
+    "message": "Lisää {module}-moduuli webforJ-sovellukseen. Spring Boot -sovellus lisää myös Spring AI MCP server starter -riippuvuuden."
+  },
+  "page.mcpApps.start.step2Title": {
+    "message": "Merkitse reititetty näkymä"
+  },
+  "page.mcpApps.start.step2Text": {
+    "message": "Lisää {annotation} ja kuvaus, joka kertoo tekoälylle, milloin työkalusta on hyötyä."
+  },
+  "page.mcpApps.start.step3Title": {
+    "message": "Käynnistä sovellus ja yhdistä isäntään\n"
+  },
+  "page.mcpApps.start.step3Text": {
+    "message": "Käynnistä palvelin ja lisää sen {path}-päätepiste MCP Apps -yhteensopivaan isäntään."
+  },
+  "page.mcpApps.start.step4Title": {
+    "message": "Pyydä isäntää avaamaan se."
+  },
+  "page.mcpApps.start.step4Text": {
+    "message": "Pyydä isäntää sanomaan ”Avaa varastosovellus.”, niin näkymä tulee näkyviin."
+  },
+  "page.mcpApps.docs.overviewLabel": {
+    "message": "Yleiskatsaus"
+  },
+  "page.mcpApps.docs.overviewText": {
+    "message": "Mitä MCP Apps ovat ja miten pääset alkuun"
+  },
+  "page.mcpApps.docs.springLabel": {
+    "message": "Spring Boot -määritys"
+  },
+  "page.mcpApps.docs.springText": {
+    "message": "Riippuvuudet, endpoint ja reititetty sovellus"
+  },
+  "page.mcpApps.docs.testingLabel": {
+    "message": "Testaus"
+  },
+  "page.mcpApps.docs.testingText": {
+    "message": "Etäasiakkaat, paikallinen tarkastaja ja vertailutaso\n"
+  },
+  "page.mcpApps.docs.openingLabel": {
+    "message": "Avaussyöte"
+  },
+  "page.mcpApps.docs.openingText": {
+    "message": "Syöteskeemat, työkalujen nimet ja näyttötilat"
+  },
+  "page.mcpApps.docs.actionsLabel": {
+    "message": "Toiminnot ja päivitykset"
+  },
+  "page.mcpApps.docs.actionsText": {
+    "message": "Avoimen näkymän kanssa toimivat työkalut"
+  },
+  "page.mcpApps.docs.hostLabel": {
+    "message": "Vuorovaikutus palvelimen kanssa"
+  },
+  "page.mcpApps.docs.hostText": {
+    "message": "Viestit, mallikonteksti ja isäntätapahtumat"
+  },
+  "page.mcpApps.docs.configLabel": {
+    "message": "Asetukset"
+  },
+  "page.mcpApps.docs.configText": {
+    "message": "Sovelluksen alkuperä, asiakkaiden alkuperät ja selaimen verkkotunnukset"
+  },
+  "page.mcpApps.docs.standardLabel": {
+    "message": "Vakiokokoonpano"
+  },
+  "page.mcpApps.docs.standardText": {
+    "message": "MCP-palvelin servlet-sovelluksessa ilman Springiä\n"
+  },
+  "page.mcpApps.hero.title1": {
+    "message": "Java-näkymäsi,"
+  },
+  "page.mcpApps.hero.title2": {
+    "message": "AI-keskustelussa"
+  },
+  "page.mcpApps.hero.lead": {
+    "message": "MCP:tä tukeva tekoälysovellus, jota kutsutaan myös hostiksi, avaa reititetyn webforJ-näkymän keskustelussaan. Käyttäjä ja tekoäly työskentelevät saman reaaliaikaisen käyttöliittymän parissa."
+  },
+  "page.mcpApps.hero.primary": {
+    "message": "Määritä Spring Bootilla"
+  },
+  "page.mcpApps.hero.secondary": {
+    "message": "Katso, miten se toimii"
+  },
+  "page.mcpApps.hero.videoBar": {
+    "message": "Varastonäkymä avattuna keskustelussa"
+  },
+  "page.mcpApps.flow.hostLane": {
+    "message": "MCP-isäntä"
+  },
+  "page.mcpApps.flow.hostLaneHint": {
+    "message": "Tekoälykeskustelu"
+  },
+  "page.mcpApps.flow.appLane": {
+    "message": "webforJ-sovellus"
+  },
+  "page.mcpApps.flow.appLaneHint": {
+    "message": "reititetyt näkymäsi"
+  },
+  "page.mcpApps.shared.eyebrow": {
+    "message": "Yksi aktiivinen käyttöliittymä"
+  },
+  "page.mcpApps.shared.title1": {
+    "message": "Näkymä pysyy sovelluksessasi."
+  },
+  "page.mcpApps.shared.title2": {
+    "message": "Molemmat käyttävät sitä."
+  },
+  "page.mcpApps.shared.lead": {
+    "message": "Isännän näyttämä näkymä on sama reititetty näkymä kuin selaimessa, ja siinä ovat samat komponentit, palvelut, reititys ja tila. Tekoäly käsittelee näkymää työkalujen avulla, ja käyttäjä käyttää edelleen suoraan renderöityjä komponentteja."
+  },
+  "page.mcpApps.open.eyebrow": {
+    "message": "Avaa näkymä syötteellä\n"
+  },
+  "page.mcpApps.open.title1": {
+    "message": "Reitistä tulee työkalu."
+  },
+  "page.mcpApps.open.title2": {
+    "message": "Sen syöte määrittää alun."
+  },
+  "page.mcpApps.open.lead": {
+    "message": "Lisää {app} reititettyyn näkymään, niin se julkaistaan työkaluna. Kuvaus kertoo tekoälylle, milloin työkalusta on hyötyä. Yksi objektityyppi, kuten {record}-tietue, kuvaa argumentit, ja {input}-metodi ottaa ne käyttöön reitin renderöinnin jälkeen."
+  },
+  "page.mcpApps.open.link": {
+    "message": "Lue lisää syötteen avaamisesta"
+  },
+  "page.mcpApps.open.namesTitle": {
+    "message": "Työkalujen nimet reiteistä"
+  },
+  "page.mcpApps.open.namesText": {
+    "message": "Ilman {name}-arvoa webforJ muodostaa työkalun nimen reitin perusteella: {route} muuttuu nimeksi {tool}, {nestedRoute} nimeksi {nestedTool} ja juurireitti nimeksi {rootTool}."
+  },
+  "page.mcpApps.open.modeTitle": {
+    "message": "Pyydetty näyttötila"
+  },
+  "page.mcpApps.open.modeText": {
+    "message": "{mode} kysyy isäntäohjelmalta, miten näkymä esitetään. Isäntä voi valita toisen tilan."
+  },
+  "page.mcpApps.change.eyebrow": {
+    "message": "Toiminnot ja päivitykset"
+  },
+  "page.mcpApps.change.title1": {
+    "message": "Lisää työkaluja,"
+  },
+  "page.mcpApps.change.title2": {
+    "message": "jo avoinna olevalle näkymälle"
+  },
+  "page.mcpApps.change.lead": {
+    "message": "Nämä työkalut eivät avaa sovellusta. Kutsu ohjautuu renderöityyn {tool}-näkymään samassa MCP-istunnossa. Jos näkymä ei ole avoinna, kutsu palauttaa virheen, joka kehottaa isäntää kutsumaan ensin {tool}."
+  },
+  "page.mcpApps.change.link": {
+    "message": "Tietoa toiminnoista ja päivityksistä"
+  },
+  "page.mcpApps.change.actionTitle": {
+    "message": "Toiminto on näkymämetodi\n"
+  },
+  "page.mcpApps.change.actionText": {
+    "message": "Lisää {annotation} metodiin, niin siitä tulee työkalu, jolla on oma syöte. Metodin nimi {method} tuottaa {tool}."
+  },
+  "page.mcpApps.change.updateTitle": {
+    "message": "Yksi päivitystyökalu, jossa on avauskenttä\n"
+  },
+  "page.mcpApps.change.updateText": {
+    "message": "Näkymä, joka toteuttaa {observer}, saa yhden päivitystyökalun, jolla on sama syöteskeema kuin {tool}. Takaisinkutsu päättää, miten argumentteja käytetään, ja palauttaa työkalun tuloksen."
+  },
+  "page.mcpApps.change.updatePoint1": {
+    "message": "webforJ ei sovella arvoja komponentteihin automaattisesti."
+  },
+  "page.mcpApps.change.updatePoint2": {
+    "message": "Sen kutsuminen ei avaa reittiä eikä näytä toista näkymää."
+  },
+  "page.mcpApps.change.updatePoint3": {
+    "message": "Päivitystyökalulta puuttuvat käyttöliittymäresurssien metatiedot."
+  },
+  "page.mcpApps.change.updatePoint4": {
+    "message": "Näkymä voi käyttää sekä toimintoa että päivitystyökalua."
+  },
+  "page.mcpApps.host.eyebrow": {
+    "message": "Vuorovaikutus isäntäkoneen kanssa"
+  },
+  "page.mcpApps.host.title1": {
+    "message": "Näkymä puhuu takaisin\n"
+  },
+  "page.mcpApps.host.title2": {
+    "message": "keskusteluun"
+  },
+  "page.mcpApps.host.lead": {
+    "message": "Sama reitti avautuu myös tavallisessa selaimessa, joten jokainen vuorovaikutus isännän kanssa alkaa tarkistamalla, että isäntä on käytettävissä. Isäntäkutsut ovat asynkronisia ja palauttavat arvon {result}."
+  },
+  "page.mcpApps.host.link": {
+    "message": "Lue lisää host-vuorovaikutuksesta"
+  },
+  "page.mcpApps.host.messageTitle": {
+    "message": "Jatka keskustelua tästä näkymästä\n"
+  },
+  "page.mcpApps.host.messageText": {
+    "message": "Käyttäjä valitsee varaston ja pyytää tekoälyä tarkistamaan sen varastotilanteen. Painike lähettää pyynnön seuraavana käyttäjäviestinä. {call} suoritetaan vain, kun näkymä on yhdistetty isäntään."
+  },
+  "page.mcpApps.run.eyebrow": {
+    "message": "Spring Boot tai tavallinen servlet-sovellus"
+  },
+  "page.mcpApps.run.title1": {
+    "message": "Julkaise Spring AI:lla,"
+  },
+  "page.mcpApps.run.title2": {
+    "message": "tai kokoa palvelin itse"
+  },
+  "page.mcpApps.run.lead": {
+    "message": "Näkymä toimii edelleen selaimessa osoitteessa {route}. Julkaiseminen lisää MCP-työkalun, reitin avaavan käyttöliittymäresurssin ja servlet-asetukset, joita isäntä tarvitsee webforJ:n upottamiseen."
+  },
+  "page.mcpApps.test.eyebrow": {
+    "message": "Testaus"
+  },
+  "page.mcpApps.test.title1": {
+    "message": "Yhdistä isäntään."
+  },
+  "page.mcpApps.test.title2": {
+    "message": "Tarkista vertailutaso."
+  },
+  "page.mcpApps.test.lead": {
+    "message": "webforJ MCP Apps -sovellukset toimivat missä tahansa MCP Apps -yhteensopivassa isäntäympäristössä. Pelkkä minimaalinen {tool}-työkalu ilman syötettä riittää vahvistamaan, että isäntä voi löytää työkalun ja renderöidä näkymän."
+  },
+  "page.mcpApps.test.link": {
+    "message": "Lue testausopas"
+  },
+  "page.mcpApps.test.remoteTag": {
+    "message": "Etäkoneet"
+  },
+  "page.mcpApps.test.remoteText": {
+    "message": "Kehityskoneen ulkopuolelta yhdistävä isäntä ei pääse osoitteeseen {local}. Avaa sovellus tunnelin kautta, aseta {origin} julkiseksi alkuperäosoitteeksi ja anna isännälle tämä osoite lisättynä polulla {path}."
+  },
+  "page.mcpApps.test.localTag": {
+    "message": "Paikallinen tarkastin"
+  },
+  "page.mcpApps.test.localText": {
+    "message": "Samalla koneella toimiva tarkastaja muodostaa yhteyden paikalliseen päätepisteeseen. Aseta paikallinen {origin} ja lisää tarkastajan selaimen origin arvoon {allowed}."
+  },
+  "page.mcpApps.test.baselineTag": {
+    "message": "Lähtötaso kullekin isännälle\n"
+  },
+  "page.mcpApps.start.eyebrow": {
+    "message": "Näin aloitat"
+  },
+  "page.mcpApps.start.title1": {
+    "message": "Yksi näkymä,"
+  },
+  "page.mcpApps.start.title2": {
+    "message": "Avaa isäntäsovelluksessa"
+  },
+  "page.mcpApps.start.lead": {
+    "message": "webforJ on täyden pinon Java-kehys yritysten verkkosovelluksiin: rakennat koko sovelluksen näkymineen Javalla. MCP Apps on ollut osa sitä webforJ 26.02:sta lähtien, ja Spring Boot yhdessä Spring AI:n kanssa on ensisijainen tapa julkaista MCP App."
+  },
+  "page.mcpApps.start.primary": {
+    "message": "Määritä Spring Bootilla\n"
+  },
+  "page.mcpApps.start.secondary": {
+    "message": "Määritä ilman Springiä"
+  },
+  "page.mcpApps.docs.navLabel": {
+    "message": "MCP Apps -dokumentaatio"
+  },
+  "page.mcpApps.meta.title": {
+    "message": "MCP Apps: avaa webforJ-näkymiä tekoälykeskustelussa\n"
+  },
+  "page.mcpApps.meta.description": {
+    "message": "webforJ MCP Apps -sovelluksissa MCP-yhteensopiva tekoälysovellus avaa reititetyn webforJ-näkymän keskustelussaan, ja käyttäjä ja tekoäly työskentelevät saman reaaliaikaisen käyttöliittymän parissa."
+  },
+  "page.modernization.mock.teamSales": {
+    "message": "Myynti"
+  },
+  "page.modernization.mock.teamSupport": {
+    "message": "Tuki"
+  },
+  "page.modernization.mock.teamFinance": {
+    "message": "Talous"
+  },
+  "page.modernization.mock.customerTable": {
+    "message": "Asiakastaulukko"
+  },
+  "page.modernization.mock.file": {
+    "message": "Tiedosto"
+  },
+  "page.modernization.mock.edit": {
+    "message": "Muokkaa"
+  },
+  "page.modernization.mock.view": {
+    "message": "Näytä"
+  },
+  "page.modernization.mock.name": {
+    "message": "Nimi"
+  },
+  "page.modernization.mock.team": {
+    "message": "Tiimi"
+  },
+  "page.modernization.mock.city": {
+    "message": "Kaupunki"
+  },
+  "page.modernization.mock.customers": {
+    "message": "Asiakkaat"
+  },
+  "page.modernization.mock.orders": {
+    "message": "Tilaukset"
+  },
+  "page.modernization.mock.reports": {
+    "message": "Raportit"
+  },
+  "page.modernization.mock.editCustomer": {
+    "message": "Muokkaa asiakasta"
+  },
+  "page.modernization.mock.cancel": {
+    "message": "Peruuta"
+  },
+  "page.modernization.mock.save": {
+    "message": "Tallenna"
+  },
+  "page.modernization.mock.appTab": {
+    "message": "webforJ-sovellus"
+  },
+  "page.modernization.mock.swingStreamed": {
+    "message": "Suoratoistettu Swing-sovellus"
+  },
+  "page.modernization.mock.webDialog": {
+    "message": "webforJ-valintaikkuna"
+  },
+  "page.modernization.mock.laneSwing": {
+    "message": "Swing-sovellus"
+  },
+  "page.modernization.mock.laneWeb": {
+    "message": "webforJ-sovellus"
+  },
+  "page.modernization.phases.p1.label": {
+    "message": "Sovelluksesi verkossa\n"
+  },
+  "page.modernization.phases.p1.title": {
+    "message": "Suorita työpöytäsovellus selaimessa\n"
+  },
+  "page.modernization.phases.p1.text": {
+    "message": "Webswing suorittaa Swing-, JavaFX- tai SWT-sovelluksesi palvelimella ja välittää sen käyttöliittymän selaimeen HTML5-canvasina. Hiiri- ja näppäimistösyötteet välittyvät takaisin varsinaiseen sovellukseen. Lähdekoodia ei tarvitse muuttaa."
+  },
+  "page.modernization.phases.p1.note": {
+    "message": "Upota se webforJ-näkymään WebswingConnectorilla. Yhdistin muodostaa yhteyden Webswing-palvelimeen, kun se lisätään sivulle."
+  },
+  "page.modernization.phases.p2.label": {
+    "message": "Uudet näkymät webforJ:ssä"
+  },
+  "page.modernization.phases.p2.title": {
+    "message": "Luo uusia näkymiä sen ympärille"
+  },
+  "page.modernization.phases.p2.text": {
+    "message": "Uudet näkymät toteutetaan webforJ:llä, ja ne toimivat upotetun sovelluksen rinnalla. Osapuolet välittävät toimintoja toisilleen: Swingissä tehty napsautus voi avata verkkolomakkeen, ja verkossa tehty tallennus päivittää Swing-taulukon. Käyttäjät työskentelevät vanhoissa ja uusissa näkymissä samassa selaimen välilehdessä."
+  },
+  "page.modernization.phases.p2.note": {
+    "message": "Swing lähettää kaksoisnapsautuksesta select-customer-tapahtuman. webforJ avaa oman lomakkeensa ja lähettää tallennuksen yhteydessä update-customer-tapahtuman takaisin."
+  },
+  "page.modernization.phases.p3.label": {
+    "message": "Vaihda kokonaan"
+  },
+  "page.modernization.phases.p3.title": {
+    "message": "Lopeta työpöytäasiakasohjelman käyttö"
+  },
+  "page.modernization.phases.p3.text": {
+    "message": "Korvaa Swing-näkymät yksi kerrallaan liiketoimintasi kannalta tärkeimmässä järjestyksessä. Kun näkymälle löytyy webforJ-vastine, poista sen toiminnot. Kun viimeinenkin näkymä on korvattu, Webswing-kerros ja työpöytäasiakas voidaan poistaa."
+  },
+  "page.modernization.phases.p3.runs.term": {
+    "message": "Mitä suoritetaan?"
+  },
+  "page.modernization.phases.p3.runs.desc": {
+    "message": "Yksi Java-sovellus selaimessa, kaikki näkymät webforJ:llä."
+  },
+  "page.modernization.phases.p3.goes.term": {
+    "message": "Mitä kuuluu?"
+  },
+  "page.modernization.phases.p3.goes.desc": {
+    "message": "Webswing-palvelin, suoratoistettu työpöytäkäyttöliittymä ja asennettu asiakasohjelma."
+  },
+  "page.modernization.phases.p3.stays.term": {
+    "message": "Mikä jää\n"
+  },
+  "page.modernization.phases.p3.stays.desc": {
+    "message": "Uudet näkymät kutsuvat toimialaluokkiasi, palveluitasi ja validointisääntöjäsi Java-metodeina."
+  },
+  "page.modernization.phases.p3.note": {
+    "message": "Voit lopettaa minkä tahansa vaiheen jälkeen ja olet silti saanut siitä hyötyä. Vaihe 2 voi jatkua niin kauan kuin budjetti sallii."
+  },
+  "page.modernization.stays.team.title": {
+    "message": "Tiimi"
+  },
+  "page.modernization.stays.team.text": {
+    "message": "Swing-sovellusta nykyään ylläpitävät kehittäjät rakentavat verkkonäkymät Javalla. Erillistä tiimiä tai opeteltavaa front-end-työkaluketjua ei ole."
+  },
+  "page.modernization.stays.code.title": {
+    "message": "Koodi"
+  },
+  "page.modernization.stays.code.text": {
+    "message": "Webswing ajaa sovellusta sellaisenaan. Sama koodikanta toimii sekä työpöytäsovelluksena että selaimessa, joten ylläpidät yhtä sovellusta kahden sijaan."
+  },
+  "page.modernization.stays.logic.title": {
+    "message": "Logiikka"
+  },
+  "page.modernization.stays.logic.text": {
+    "message": "Domain-luokkia, palveluita ja validointisääntöjä, joilla ei ole mitään tekemistä {code}:n kanssa, kutsutaan suoraan uusista näytöistä. Niistä ei ensin tehdä päätepisteitä."
+  },
+  "page.modernization.stays.toolchain.title": {
+    "message": "Työkaluketju"
+  },
+  "page.modernization.stays.toolchain.text": {
+    "message": "Maven, IDE:si, debuggerisi ja nykyiset testisi ovat edelleen käytössä."
+  },
+  "page.modernization.ai.loop.one.title": {
+    "message": "Anna sille yksi Swing-näyttö"
+  },
+  "page.modernization.ai.loop.one.text": {
+    "message": "Pyydä webforJ-vastinetta, joka kutsuu olemassa olevia palveluitasi."
+  },
+  "page.modernization.ai.loop.two.title": {
+    "message": "Se tarkistaa todellisen API:n."
+  },
+  "page.modernization.ai.loop.two.text": {
+    "message": "MCP-palvelin hakee webforJ-dokumentaatiota ja API-tietoja tarpeen mukaan arvailun sijaan."
+  },
+  "page.modernization.ai.loop.three.title": {
+    "message": "Tarkistat ja testaat\n"
+  },
+  "page.modernization.ai.loop.three.text": {
+    "message": "Vertaa toimintaa Swing-alkuperäiseen versioon ja siirry sitten seuraavaan näyttöön."
+  },
+  "page.modernization.next.overview.title": {
+    "message": "Webswingin yleiskatsaus"
+  },
+  "page.modernization.next.overview.text": {
+    "message": "Mitä Webswing ratkaisee ja miten kolme kerrosta toimivat yhdessä."
+  },
+  "page.modernization.next.setup.title": {
+    "message": "Asennus ja määritys"
+  },
+  "page.modernization.next.setup.text": {
+    "message": "Palvelimen asennus, hallintakonsoli, CORS ja liitinvaihtoehdot."
+  },
+  "page.modernization.next.communication.title": {
+    "message": "Viestintä"
+  },
+  "page.modernization.next.communication.text": {
+    "message": "Kaikki webforJ:n ja Swing-sovelluksen väliset toiminnot ja tapahtumat."
+  },
+  "page.modernization.next.tutorial.title": {
+    "message": "Modernisointiopas"
+  },
+  "page.modernization.next.tutorial.text": {
+    "message": "Upotettu Swing-asiakastaulukko, jossa on webforJ-muokkausdialogi."
+  },
+  "page.modernization.next.plugin.title": {
+    "message": "webforJ AI -laajennus"
+  },
+  "page.modernization.next.plugin.text": {
+    "message": "MCP-palvelin ja Agent Skills koodausavustajallesi."
+  },
+  "page.modernization.next.home.title": {
+    "message": "Dokumentaation etusivu"
+  },
+  "page.modernization.next.home.text": {
+    "message": "Kaikki muu webforJ:ssä ensimmäisestä projektista komponentteihin."
+  },
+  "page.modernization.hero.caption": {
+    "message": "Swing-taulukon kaksoisnapsautus avaa vanhan Swing-valintaikkunan sijaan webforJ-valintaikkunan. Molemmat toimivat samassa selaimen välilehdessä."
+  },
+  "page.modernization.hero.eyebrow": {
+    "message": "Swingin modernisointi"
+  },
+  "page.modernization.hero.title1": {
+    "message": "Swingistä verkkoon,"
+  },
+  "page.modernization.hero.title2": {
+    "message": "Yksi näyttö kerrallaan"
+  },
+  "page.modernization.hero.lead": {
+    "message": "Swing-, JavaFX- tai SWT-sovelluksesi toimii selaimessa ilman lähdekoodin muutoksia. Rakenna sitten uusia näkymiä webforJ:llä ja korvaa vanhat omaan tahtiisi. Java-tiimi ja koodi säilyvät."
+  },
+  "page.modernization.hero.cta": {
+    "message": "Seuraa opasta"
+  },
+  "page.modernization.hero.setup": {
+    "message": "Määritä Webswing"
+  },
+  "page.modernization.hero.fact1": {
+    "message": "Työpöytäkäyttöliittymäkirjastot: Swing, JavaFX ja SWT\n"
+  },
+  "page.modernization.hero.fact2": {
+    "message": "Lähdekoodimuutokset selaimessa suoritettaviksi"
+  },
+  "page.modernization.stays.eyebrow": {
+    "message": "Mikä pysyy samana\n"
+  },
+  "page.modernization.stays.title1": {
+    "message": "Vain näytöt"
+  },
+  "page.modernization.stays.title2": {
+    "message": "Muuta"
+  },
+  "page.modernization.stays.lead": {
+    "message": "webforJ on täyden pinon Java-kehys yritysten verkkosovelluksille: rakennat koko sovelluksen näkymineen Java-kielellä. Swing-sovelluksen siirtäminen tarkoittaa siis sen näkymien siirtämistä, jolloin kaikki niiden alla oleva siirtyy mukana."
+  },
+  "page.modernization.stays.changesLabel": {
+    "message": "Mitä muutoksia"
+  },
+  "page.modernization.stays.changesText": {
+    "message": "Näytöt. Siirrät niitä yksi kerrallaan liiketoimintasi kannalta tärkeässä järjestyksessä, samalla kun muu Swing-sovellus jatkaa toimintaansa samassa selaimen välilehdessä."
+  },
+  "page.modernization.journey.eyebrow": {
+    "message": "Siirto kolmessa vaiheessa"
+  },
+  "page.modernization.journey.title1": {
+    "message": "Etene siirto vaiheittain\n"
+  },
+  "page.modernization.journey.title2": {
+    "message": "Työpöydältä verkkoon\n"
+  },
+  "page.modernization.journey.lead": {
+    "message": "Jokaisessa vaiheessa syntyy jotain käyttäjille näkyvää. Valitse vaihe nähdäksesi sen aikaisen näkymän ja koodin, jolla se toimii."
+  },
+  "page.modernization.journey.tabsLabel": {
+    "message": "Modernisoinnin vaiheet"
+  },
+  "page.modernization.journey.phase": {
+    "message": "Vaihe {number}"
+  },
+  "page.modernization.journey.count": {
+    "message": "Vaihe {number}/{total}"
+  },
+  "page.modernization.journey.prev": {
+    "message": "Edellinen vaihe"
+  },
+  "page.modernization.journey.next": {
+    "message": "Seuraava vaihe"
+  },
+  "page.modernization.talk.eyebrow": {
+    "message": "Kaksisuuntainen viestintä"
+  },
+  "page.modernization.talk.title1": {
+    "message": "Vanhat ja uudet näytöt"
+  },
+  "page.modernization.talk.title2": {
+    "message": "Keskustele keskenään"
+  },
+  "page.modernization.talk.lead": {
+    "message": "Viesti on toiminto: sillä on itse keksimäsi nimi, valinnainen merkkijonosisältö ja valinnainen binäärisisältö. Kummassakin päässä käytetään tavallista Javaa, joten viestinvaihtoa varten ei tarvitse kirjoittaa selainkoodia."
+  },
+  "page.modernization.talk.announce.title": {
+    "message": "Swing ilmoittaa\n"
+  },
+  "page.modernization.talk.announce.text": {
+    "message": "Kaksoisnapsautus lähettää rivin JSON-muodossa toiminnolle {action}. Työpöytäsovelluksessa sama napsautus avaa edelleen Swing-valintaikkunan."
+  },
+  "page.modernization.talk.reply.title": {
+    "message": "webforJ-vastaukset"
+  },
+  "page.modernization.talk.reply.text": {
+    "message": "Tallennettaessa verkkolomake lähettää {action}-arvon takaisin, ja Swing-sovellus päivittää taulukkonsa. Kumpikaan osapuoli ei kutsu toisen sisäisiä toimintoja."
+  },
+  "page.modernization.talk.send.title": {
+    "message": "Lähetä komentoja Swingiin\n"
+  },
+  "page.modernization.talk.send.text": {
+    "message": "performAction() lähettää joko pelkän nimen tai nimen ja dataa. Swing-sovellus päättää, mitä kukin nimi tarkoittaa."
+  },
+  "page.modernization.talk.send.file": {
+    "message": "Toimintojen lähettäminen"
+  },
+  "page.modernization.talk.ready.title": {
+    "message": "Tiedä, milloin Swing on valmis."
+  },
+  "page.modernization.talk.ready.text": {
+    "message": "onInitialize suoritetaan, kun yhteys on valmis. onStart suoritetaan, kun Swing-sovellus on latautunut kokonaan. Lähetä ensimmäinen toimintosi onStartista."
+  },
+  "page.modernization.talk.ready.file": {
+    "message": "Elinkaaritapahtumat"
+  },
+  "page.modernization.ai.eyebrow": {
+    "message": "Siirrä tekoälyavustajan avulla"
+  },
+  "page.modernization.ai.title1": {
+    "message": "Anna avustajan siirtää se,"
+  },
+  "page.modernization.ai.title2": {
+    "message": "Näyttö kerrallaan"
+  },
+  "page.modernization.ai.lead": {
+    "message": "Näytöltä toiselle eteneminen on toistuvaa työtä, joten se sopii tekoälykoodausavustajalle. webforJ AI -laajennus yhdistää sen webforJ MCP -palvelimeen ja Agent Skills -toimintoihin eli jäsenneltyihin työnkulkuihin, jotka kertovat, milloin työkaluja käytetään, missä järjestyksessä ja miten tulos tarkistetaan."
+  },
+  "page.modernization.ai.install": {
+    "message": "Asenna AI-laajennus"
+  },
+  "page.modernization.ai.skills": {
+    "message": "Lue lisää Agent Skillsistä\n"
+  },
+  "page.modernization.start.eyebrow": {
+    "message": "Näin pääset alkuun"
+  },
+  "page.modernization.start.title1": {
+    "message": "JAR-tiedostosta"
+  },
+  "page.modernization.start.title2": {
+    "message": "selaimessa olevalle sivulle"
+  },
+  "page.modernization.start.lead": {
+    "message": "Tarvitset JAR-tiedostoksi pakatun Swing-, JavaFX- tai SWT-sovelluksen, Webswing-palvelimen sekä webforJ-version 25.10 tai uudemman."
+  },
+  "page.modernization.start.step1.title": {
+    "message": "Lataa ja käynnistä Webswing"
+  },
+  "page.modernization.start.step1.text": {
+    "message": "Lataa Webswing, pura arkisto ja käynnistä palvelin alustallesi tarkoitetulla komentosarjalla. Palvelin on käytettävissä osoitteessa {url}."
+  },
+  "page.modernization.start.platform": {
+    "message": "Alusta"
+  },
+  "page.modernization.start.step2.title": {
+    "message": "Rekisteröi sovelluksesi"
+  },
+  "page.modernization.start.step2.text": {
+    "message": "Aseta hallintakonsolissa kohdassa {admin} sovelluksen nimi, pääluokka, luokkapolku, JVM-argumentit ja kotihakemisto. Sovellus on tämän jälkeen käytettävissä osoitteessa {url}."
+  },
+  "page.modernization.start.step2.cors": {
+    "message": "Lisää webforJ-sovelluksesi alkuperä sallittuihin alkuperiin, esim. {url}."
+  },
+  "page.modernization.start.step2.portsTerm": {
+    "message": "Portit"
+  },
+  "page.modernization.start.step2.ports": {
+    "message": "Molemmat käyttävät yleensä porttia 8080. Muuta toista, jotta ne eivät ole ristiriidassa."
+  },
+  "page.modernization.start.step3.title": {
+    "message": "Lisää riippuvuus"
+  },
+  "page.modernization.start.step3.text": {
+    "message": "webforj-webswing-moduuli tarjoaa WebswingConnectorin ja siihen liittyvät luokat."
+  },
+  "page.modernization.start.step4.title": {
+    "message": "Upota ja määritä"
+  },
+  "page.modernization.start.step4.text": {
+    "message": "Lisää WebswingConnector näkymään kuten vaiheessa 1. WebswingOptions muuttaa sen toimintaa, esimerkiksi piilottamalla uloskirjautumispainikkeen, kun webforJ-sovelluksesi hoitaa kirjautumisen."
+  },
+  "page.modernization.next.title1": {
+    "message": "Valitse..."
+  },
+  "page.modernization.next.title2": {
+    "message": "Ensimmäinen näyttö"
+  },
+  "page.modernization.next.lead": {
+    "message": "Aloita yksinkertaisella listalla ja muokkauslomakkeella. Upota sovellus, siirrä yksi näkymä webforJ:hin ja katso, miten se toimii muiden rinnalla."
+  },
+  "page.modernization.meta.title": {
+    "message": "Swingin modernisointi: tuo Java-työpöytäsovelluksesi verkkoon\n"
+  },
+  "page.modernization.meta.description": {
+    "message": "Aja Swing-, JavaFX- tai SWT-sovellustasi selaimessa muuttamatta sen lähdekoodia ja korvaa sitten sen näkymät webforJ:llä yksi kerrallaan. Sama Java-tiimi, sama koodi."
+  },
+  "page.showcase.freightDispatch.platform": {
+    "message": "Työpöytä"
+  },
+  "page.showcase.freightDispatch.useCase": {
+    "message": "Ajojärjestelijät jakavat lähetykset kuljettajille ja seuraavat jokaista tiellä liikkuvaa kuorma-autoa."
+  },
+  "page.showcase.freightDispatch.description": {
+    "message": "Operatiivinen ohjelmisto alueelliselle kuljetusyritykselle. Ajojärjestelijät yhdistävät kuljetukset kuljettajiin ja kuorma-autoihin, seuraavat jokaista kuormaa tien päällä ja hoitavat viivästyksiä koko päivän suurilla näytöillä."
+  },
+  "page.showcase.freightDispatch.features.appLayout.text": {
+    "message": "Sivuvalikko ja yläpalkki pysyvät paikallaan työalueen vaihtuessa."
+  },
+  "page.showcase.freightDispatch.features.drawer.text": {
+    "message": "Lähetyksen tiedot liukuvat sivulta sisään, joten taulu pysyy näkyvissä."
+  },
+  "page.showcase.freightDispatch.features.dialogAndTable.title": {
+    "message": "Valintaikkuna ja taulukko"
+  },
+  "page.showcase.freightDispatch.features.dialogAndTable.text": {
+    "message": "Valitse kuljettaja lajiteltavasta taulukosta poistumatta taululta."
+  },
+  "page.showcase.freightDispatch.features.serverPushedUpdates.title": {
+    "message": "Palvelimen lähettämät päivitykset"
+  },
+  "page.showcase.freightDispatch.features.serverPushedUpdates.text": {
+    "message": "Viivästykset ja uudet saapumisajat välittyvät palvelimelta kaikille avoinna oleville näytöille."
+  },
+  "page.showcase.freightDispatch.screens.dispatchBoard.name": {
+    "message": "Lähetystaulu"
+  },
+  "page.showcase.freightDispatch.screens.dispatchBoard.caption": {
+    "message": "Kaikki lähetykset tilan mukaan kuljettajan odottamisesta toimitukseen, tämän päivän luvut ylimpänä."
+  },
+  "page.showcase.freightDispatch.screens.liveMap.name": {
+    "message": "Reaaliaikainen kartta"
+  },
+  "page.showcase.freightDispatch.screens.liveMap.caption": {
+    "message": "Seuraa kaikkia tiellä liikkuvia rekkoja ja havaitse myöhässä olevat lähetykset yhdellä silmäyksellä."
+  },
+  "page.showcase.freightDispatch.screens.loadDetail.name": {
+    "message": "Lataa tiedot"
+  },
+  "page.showcase.freightDispatch.screens.loadDetail.caption": {
+    "message": "Avaa lähetys sivupaneelissa nähdäksesi asiakkaan, pysähdykset ja asiakirjat."
+  },
+  "page.showcase.freightDispatch.screens.assignDriver.name": {
+    "message": "Määritä kuljettaja"
+  },
+  "page.showcase.freightDispatch.screens.assignDriver.caption": {
+    "message": "Valitse kuljettaja jäljellä olevien tuntien, sijainnin ja perävaunun perusteella. Sovellus kertoo, kuka sopii ja kuka ei."
+  },
+  "page.showcase.freightDispatch.screens.delayHandling.name": {
+    "message": "Viiveen käsittely"
+  },
+  "page.showcase.freightDispatch.screens.delayHandling.caption": {
+    "message": "Aseta uusi saapumisaika, kirjoita asiakkaalle, niin sovellus ilmoittaa siitä hänelle."
+  },
+  "page.showcase.siteInspection.platform": {
+    "message": "Mobiili"
+  },
+  "page.showcase.siteInspection.useCase": {
+    "message": "Rakennustarkastajat käyvät tarkistuslistan läpi ja saavat hyväksynnän – kaikki puhelimella."
+  },
+  "page.showcase.siteInspection.description": {
+    "message": "Rakennusturvallisuustarkastajat kulkevat päivän reitin, käyvät tarkistuslistan läpi huone huoneelta, kuvaavat ongelmat ja pyytävät työmaan johtajaa kuittaamaan tarkastuksen. Tarkastaja lisää sovelluksen puhelimen aloitusnäyttöön."
+  },
+  "page.showcase.siteInspection.features.installableApp.title": {
+    "message": "Asennettava sovellus"
+  },
+  "page.showcase.siteInspection.features.installableApp.text": {
+    "message": "Yksi annotaatio, @AppProfile, lisää sovelluksen aloitusnäyttöön natiivisovelluksen tavoin."
+  },
+  "page.showcase.siteInspection.features.upload.text": {
+    "message": "Kuvat kustakin ongelmasta tallentuvat suoraan tarkastusraporttiin."
+  },
+  "page.showcase.siteInspection.features.serverPushedUpdates.title": {
+    "message": "Palvelimen lähettämät päivitykset"
+  },
+  "page.showcase.siteInspection.features.serverPushedUpdates.text": {
+    "message": "Kun toimisto siirtää tarkastuksen, se näkyy puhelimessa ilman päivitystä."
+  },
+  "page.showcase.siteInspection.features.routing.title": {
+    "message": "Reititys"
+  },
+  "page.showcase.siteInspection.features.routing.text": {
+    "message": "Jokainen vaihe tarkistuslistasta hyväksyntään on oma reittinsä, ja takaisin-painike toimii."
+  },
+  "page.showcase.siteInspection.screens.todaysInspections.name": {
+    "message": "Tämän päivän tarkastukset"
+  },
+  "page.showcase.siteInspection.screens.todaysInspections.caption": {
+    "message": "Katso päivän reitti, mitä on tehty ja mitä seuraavaksi. Toimistosta tehdyt muutokset näkyvät heti."
+  },
+  "page.showcase.siteInspection.screens.checklistForThisBuilding.name": {
+    "message": "Tämän rakennuksen tarkistuslista"
+  },
+  "page.showcase.siteInspection.screens.checklistForThisBuilding.caption": {
+    "message": "Tarkasta rakennus ja merkitse jokainen kohta hyväksytyksi, hylätyksi tai ei sovellettavaksi."
+  },
+  "page.showcase.siteInspection.screens.recordAProblem.name": {
+    "message": "Ilmoita ongelmasta"
+  },
+  "page.showcase.siteInspection.screens.recordAProblem.caption": {
+    "message": "Arvioi vakavuus, lisää kuvia ja tee niihin merkintöjä. Aseta sitten korjauksen määräaika."
+  },
+  "page.showcase.siteInspection.screens.inspectionReport.name": {
+    "message": "Tarkastusraportti"
+  },
+  "page.showcase.siteInspection.screens.inspectionReport.caption": {
+    "message": "Tarkista pistemäärä, löydetyt ongelmat ja muistiinpanot ennen hyväksyntää."
+  },
+  "page.showcase.siteInspection.screens.signOff.name": {
+    "message": "Kuittaus"
+  },
+  "page.showcase.siteInspection.screens.signOff.caption": {
+    "message": "Työmaapäällikkö allekirjoittaa puhelimella, ja raportti lähetetään sähköpostitse."
+  },
+  "page.showcase.clinicFrontDesk.platform": {
+    "message": "Työpöytä"
+  },
+  "page.showcase.clinicFrontDesk.useCase": {
+    "message": "Vastaanoton henkilökunta kirjaa potilaat sisään, varaa vastaanottoaikoja ja päättää päivän."
+  },
+  "page.showcase.clinicFrontDesk.description": {
+    "message": "Vastaanotto usean lääkärin poliklinikalla. Henkilökunta näkee päivän tapahtumat lääkäreittäin, kirjaa potilaat sisään, varaa käyntejä, avaa potilastietoja ja päättää päivän maksut."
+  },
+  "page.showcase.clinicFrontDesk.features.dataBindingWithValidation.title": {
+    "message": "Tietojen sidonta validoinnilla"
+  },
+  "page.showcase.clinicFrontDesk.features.dataBindingWithValidation.text": {
+    "message": "Ilmoittautumiskentät linkittyvät potilastietoihin ja tunnistavat virheellisen jäsennumeron kirjoittaessasi."
+  },
+  "page.showcase.clinicFrontDesk.features.serverPushedUpdates.title": {
+    "message": "Palvelimen lähettämät päivitykset"
+  },
+  "page.showcase.clinicFrontDesk.features.serverPushedUpdates.text": {
+    "message": "Odotushuone päivittyy kaikilla työpisteillä heti, kun potilas ilmoittautuu."
+  },
+  "page.showcase.clinicFrontDesk.features.upload.text": {
+    "message": "Lähetteet ja raportit liitetään potilaskertomukseen."
+  },
+  "page.showcase.clinicFrontDesk.features.dialog.text": {
+    "message": "Työpöydän sulkeminen edellyttää nimenomaista vahvistusta ennen muutoksia."
+  },
+  "page.showcase.clinicFrontDesk.screens.today.name": {
+    "message": "Tänään"
+  },
+  "page.showcase.clinicFrontDesk.screens.today.caption": {
+    "message": "Lääkärikohtainen päiväaikataulu odotushuoneen vieressä, päivittyy potilaiden saapuessa."
+  },
+  "page.showcase.clinicFrontDesk.screens.checkInAPatient.name": {
+    "message": "Kirjaa potilas saapuneeksi\n"
+  },
+  "page.showcase.clinicFrontDesk.screens.checkInAPatient.caption": {
+    "message": "Etsi potilas, vahvista tiedot ja korjaa tarkistuksissa havaitut ongelmat."
+  },
+  "page.showcase.clinicFrontDesk.screens.bookAnAppointment.name": {
+    "message": "Varaa aika"
+  },
+  "page.showcase.clinicFrontDesk.screens.bookAnAppointment.caption": {
+    "message": "Valitse sopiva vapaa aika oikealta terveydenhuollon ammattilaiselta. Sovellus varoittaa päällekkäisistä käynneistä."
+  },
+  "page.showcase.clinicFrontDesk.screens.patientRecord.name": {
+    "message": "Potilaskertomus"
+  },
+  "page.showcase.clinicFrontDesk.screens.patientRecord.caption": {
+    "message": "Käynnit, asiakirjat ja laskutus yhdessä paikassa sekä lähetteiden lataus."
+  },
+  "page.showcase.clinicFrontDesk.screens.endOfDay.name": {
+    "message": "Päivän loppu"
+  },
+  "page.showcase.clinicFrontDesk.screens.endOfDay.caption": {
+    "message": "Tarkista kaikki maksut ja katso, kuinka vilkas päivä oli ennen kassan sulkemista."
+  },
+  "page.showcase.clinicFrontDesk.screens.closeTheDay.name": {
+    "message": "Päätä päivä"
+  },
+  "page.showcase.clinicFrontDesk.screens.closeTheDay.caption": {
+    "message": "Vahvista, mitä avoimille maksuille ja varauksille tapahtuu, kun vastaanotto suljetaan."
+  },
+  "page.showcase.invoiceApproval.platform": {
+    "message": "Työpöytä"
+  },
+  "page.showcase.invoiceApproval.useCase": {
+    "message": "Taloustiimi vertaa laskuja ostotilauksiin ja maksaa ne."
+  },
+  "page.showcase.invoiceApproval.description": {
+    "message": "Toimittajien laskut vastaanotetaan, niitä verrataan ostotilaukseen, ja taloustiimi hyväksyy ja maksaa ne."
+  },
+  "page.showcase.invoiceApproval.features.tableWithSelection.title": {
+    "message": "Valittava taulukko"
+  },
+  "page.showcase.invoiceApproval.features.tableWithSelection.text": {
+    "message": "Suodata avoimet laskut, valitse useita rivejä ja hyväksy ne kerralla."
+  },
+  "page.showcase.invoiceApproval.features.dataBindingWithValidation.title": {
+    "message": "Tietojen sidonta ja validointi"
+  },
+  "page.showcase.invoiceApproval.features.dataBindingWithValidation.text": {
+    "message": "Laskulta luetut kentät liitetään lomakkeeseen, joka merkitsee tilauksen ylittävät summat."
+  },
+  "page.showcase.invoiceApproval.features.dialog.text": {
+    "message": "Hylkäys vaatii syyn ja toimittajalle lähetettävän viestin ennen lähettämistä."
+  },
+  "page.showcase.invoiceApproval.features.upload.text": {
+    "message": "Allekirjoitetut sopimukset ladataan toimittajasivulle."
+  },
+  "page.showcase.invoiceApproval.screens.inbox.name": {
+    "message": "Saapuneet"
+  },
+  "page.showcase.invoiceApproval.screens.inbox.caption": {
+    "message": "Suodata avoimet laskut, valitse tilausta vastaavat laskut ja hyväksy ne yhdessä."
+  },
+  "page.showcase.invoiceApproval.screens.reviewAnInvoice.name": {
+    "message": "Tarkista lasku"
+  },
+  "page.showcase.invoiceApproval.screens.reviewAnInvoice.caption": {
+    "message": "Vertaa laskua ostotilaukseen rivi riviltä ennen päätöksen tekemistä."
+  },
+  "page.showcase.invoiceApproval.screens.approveOrReject.name": {
+    "message": "Hyväksy tai hylkää"
+  },
+  "page.showcase.invoiceApproval.screens.approveOrReject.caption": {
+    "message": "Hylkää ilmoittamalla syy ja lisäämällä huomautus toimittajalle. Hyväksyntäketju näyttää, kenelle ilmoitetaan."
+  },
+  "page.showcase.invoiceApproval.screens.paymentRun.name": {
+    "message": "Maksatusajo"
+  },
+  "page.showcase.invoiceApproval.screens.paymentRun.caption": {
+    "message": "Valitse hyväksytyt laskut perjantain maksatusajoon ja tarkastele summia valuutoittain."
+  },
+  "page.showcase.invoiceApproval.screens.supplierDetail.name": {
+    "message": "Toimittajan tiedot"
+  },
+  "page.showcase.invoiceApproval.screens.supplierDetail.caption": {
+    "message": "Yhden toimittajan laskut, kuukausikulut ja sopimus sekä allekirjoitetun uusimisen lataus."
+  },
+  "page.showcase.sections.overview": {
+    "message": "Yleiskatsaus"
+  },
+  "page.showcase.sections.apps": {
+    "message": "Sovellukset"
+  },
+  "page.showcase.sections.talk": {
+    "message": "Ota yhteyttä"
+  },
+  "page.showcase.sections.start": {
+    "message": "Aloita"
+  },
+  "page.showcase.screenAlt": {
+    "message": "{app}-sovelluksen {screen}-näyttö. {caption}"
+  },
+  "page.showcase.sections.label": {
+    "message": "Tämän sivun osiot"
+  },
+  "page.showcase.hero.eyebrow": {
+    "message": "webforJ-esittely"
+  },
+  "page.showcase.hero.title": {
+    "message": "Mitä voit rakentaa webforJ:llä\n"
+  },
+  "page.showcase.hero.lead": {
+    "message": "Työnjakotaulut, kenttätarkastukset, vastaanottotiskit ja taloushyväksynnät. Tällaiset yrityssovellukset rakennetaan Javalla webforJ-komponenteilla: taulukoilla, lomakkeilla, valintaikkunoilla ja reaaliaikaisilla päivityksillä."
+  },
+  "page.showcase.hero.start": {
+    "message": "Aloita projekti"
+  },
+  "page.showcase.hero.components": {
+    "message": "Tutustu komponentteihin"
+  },
+  "page.showcase.hero.factApps": {
+    "message": "Sovellukset"
+  },
+  "page.showcase.hero.factScreens": {
+    "message": "Läpikäytävät näytöt"
+  },
+  "page.showcase.hero.factPlatforms": {
+    "message": "Alustat, pöytäkoneet ja mobiililaitteet"
+  },
+  "page.showcase.hero.desktopAlt": {
+    "message": "Rahtikuljetussovelluksen reaaliaikainen karttanäkymä, jossa kaikki kuorma-autot näkyvät tiekartalla ja lähetykset on lueteltu saapumisajan mukaan."
+  },
+  "page.showcase.hero.phoneAlt": {
+    "message": "Kohdetarkastussovelluksen tarkistuslista puhelimessa. Jokaiselle tarkistuskohdalle on Hyväksytty-, Hylätty- ja Ei sovellu -painikkeet."
+  },
+  "page.showcase.gallery.title": {
+    "message": "Sovellukset"
+  },
+  "page.showcase.gallery.lead": {
+    "message": "Neljä yrityssovellusta, jokaisessa täydellinen näkymäsarja. Valitse yksi ja käy se läpi."
+  },
+  "page.showcase.gallery.meta": {
+    "message": "{platform} · {count} näyttöä"
+  },
+  "page.showcase.gallery.see": {
+    "message": "Näytä näytöt"
+  },
+  "page.showcase.lightbox.label": {
+    "message": "{name} näytöt, täysikokoisina"
+  },
+  "page.showcase.lightbox.previous": {
+    "message": "Edellinen näyttö"
+  },
+  "page.showcase.lightbox.next": {
+    "message": "Seuraava näyttö"
+  },
+  "page.showcase.lightbox.close": {
+    "message": "Sulje koko näytön näkymä"
+  },
+  "page.showcase.step.previous": {
+    "message": "Edellinen näyttö"
+  },
+  "page.showcase.step.next": {
+    "message": "Seuraava näyttö"
+  },
+  "page.showcase.step.openFull": {
+    "message": "Avaa {name} täysikokoisena"
+  },
+  "page.showcase.step.fullSize": {
+    "message": "Täysi koko"
+  },
+  "page.showcase.chapter.kicker": {
+    "message": "{platform}-sovellus · {count} näyttöä"
+  },
+  "page.showcase.chapter.screensLabel": {
+    "message": "{name}-näytöt"
+  },
+  "page.showcase.chapter.carouselLabel": {
+    "message": "{name}-näytöt"
+  },
+  "page.showcase.chapter.phoneOpen": {
+    "message": "Avaa {name} täysikokoisena"
+  },
+  "page.showcase.chapter.phoneShow": {
+    "message": "Näytä {name}"
+  },
+  "page.showcase.chapter.windowOpen": {
+    "message": "Avaa {name} täysikokoisena\n"
+  },
+  "page.showcase.chapter.shows": {
+    "message": "Mitä se näyttää webforJ:ssä\n"
+  },
+  "page.showcase.business.title": {
+    "message": "Suunnitteletko yrityssovellusta webforJ:llä?"
+  },
+  "page.showcase.business.text": {
+    "message": "Varaa puhelu webforJ:n kehittäjätiimin kanssa. Ota mukaan sovelluksesi, backendisi ja aikataulusi, niin näytämme, miten webforJ sopii tarpeisiisi – ensimmäisestä näkymästä LTS+-tukeen."
+  },
+  "page.showcase.business.book": {
+    "message": "Varaa puhelu"
+  },
+  "page.showcase.business.pricing": {
+    "message": "Katso hinnat"
+  },
+  "page.showcase.business.languages": {
+    "message": "Puhumme {languages}"
+  },
+  "page.showcase.closing.title": {
+    "message": "Luo ensimmäinen näkymäsi startforJ:llä\n"
+  },
+  "page.showcase.closing.text": {
+    "message": "Nimeä sovelluksesi, valitse teemaväri ja arkkityyppi ja lataa projekti, jossa asettelu ja riippuvuudet ovat valmiina. Näiden näkymien taulukko, valintaikkuna, sivupaneeli ja lataus ovat käyttövalmiita."
+  },
+  "page.showcase.closing.open": {
+    "message": "Avaa startforJ"
+  },
+  "page.showcase.closing.read": {
+    "message": "Lue aloitusopas"
+  },
+  "page.showcase.closing.footnote": {
+    "message": "Tämän sivun sovellukset ovat esimerkkejä siitä, mitä voit rakentaa webforJ-komponenteilla."
+  },
+  "page.showcase.meta.title": {
+    "message": "Mitä webforJ:llä voi rakentaa: esimerkkejä Java-liiketoimintasovelluksista"
+  },
+  "page.showcase.meta.description": {
+    "message": "Esimerkkejä webforJ-komponenteilla toteutetuista yrityssovelluksista kuljetustenohjaukseen, kenttätarkastuksiin, klinikan vastaanottoon ja laskujen hyväksyntään. Tutustu jokaiseen näkymään ja sen taustalla oleviin webforJ-ominaisuuksiin."
+  },
+  "page.uiComponents.group.layout.title": {
+    "message": "Asettelu"
+  },
+  "page.uiComponents.group.layout.lead": {
+    "message": "Näytön rakenne: sovelluskehykset, työkalurivit, flex- ja sarakeasettelut, jaetut paneelit ja pinnat."
+  },
+  "page.uiComponents.item.appLayout": {
+    "message": "Jäsennelty asettelu sovelluksen päätason navigoinnille ja sisällölle."
+  },
+  "page.uiComponents.item.flexLayout": {
+    "message": "Järjestää lapsielementit flexbox-sääntöjen avulla responsiivista kohdistusta varten."
+  },
+  "page.uiComponents.item.columnsLayout": {
+    "message": "Järjestää alielementit sarakkeisiin; sopii lomakkeisiin ja ruudukkorakenteisiin."
+  },
+  "page.uiComponents.item.toolbar": {
+    "message": "Vaakasuuntainen säilö toimintopainikkeille, kuvakkeille ja muille ohjauskomponenteille."
+  },
+  "page.uiComponents.item.splitter": {
+    "message": "Jakaa tilan kahden komponentin kesken, joiden kokoa käyttäjät voivat muuttaa vetämällä."
+  },
+  "page.uiComponents.item.accordion": {
+    "message": "Pinottu joukko avattavia ja suljettavia paneeleja, joiden otsakkeita voi napsauttaa."
+  },
+  "page.uiComponents.item.card": {
+    "message": "Pinta, jossa on alueet medialle, otsakkeille, sisällölle ja alatunnisteille."
+  },
+  "page.uiComponents.item.dialog": {
+    "message": "Modaali-ikkuna, joka peittää sisällön ja kehottaa käyttäjää toimimaan."
+  },
+  "page.uiComponents.group.forms.title": {
+    "message": "Lomakkeet ja syötekentät"
+  },
+  "page.uiComponents.group.forms.lead": {
+    "message": "Kaikki käyttäjän kirjoittama, valitsema tai lataama – teksteistä ja numeroista päivämääriin, syöttömaskeihin, listoihin ja tiedostoihin."
+  },
+  "page.uiComponents.item.textField": {
+    "message": "Yksirivinen tekstikenttä tekstin syöttämiseen ja muokkaamiseen."
+  },
+  "page.uiComponents.item.maskedTextField": {
+    "message": "Rajoittaa tekstin tiettyyn muotoon, kuten puhelinnumeroon."
+  },
+  "page.uiComponents.item.numberField": {
+    "message": "Numeerinen kenttä, jonka arvoa voi kasvattaa tai pienentää säätimillä."
+  },
+  "page.uiComponents.item.maskedNumberField": {
+    "message": "Pakottaa numeerisen muotoilun, kuten valuutan tai prosenttiosuuden."
+  },
+  "page.uiComponents.item.passwordField": {
+    "message": "Yksirivinen syötekenttä, joka piilottaa salasanan."
+  },
+  "page.uiComponents.item.dateField": {
+    "message": "Selaimessa toimiva päivämäärävalitsin syöttökentässä."
+  },
+  "page.uiComponents.item.maskedDateField": {
+    "message": "Päivämääräkenttä, joka noudattaa määritettyä päivämäärämuotoa."
+  },
+  "page.uiComponents.item.timeField": {
+    "message": "Selaimessa toimiva ajanvalitsin syöttökentässä."
+  },
+  "page.uiComponents.item.maskedTimeField": {
+    "message": "Aikakenttä, joka edellyttää määritettyä aikamuotoa."
+  },
+  "page.uiComponents.item.dateTimeField": {
+    "message": "Valitsee päivämäärän ja kellonajan yhdessä syöttökentässä."
+  },
+  "page.uiComponents.item.colorField": {
+    "message": "Selaimessa toimiva värivalitsin syöttökentässä."
+  },
+  "page.uiComponents.item.textArea": {
+    "message": "Monirivinen syöttökenttä suuremmille tekstimäärille."
+  },
+  "page.uiComponents.item.checkBox": {
+    "message": "Binäärinen valinta, joka vaihtaa valitun ja valitsemattoman tilan välillä."
+  },
+  "page.uiComponents.item.radioButton": {
+    "message": "Valitsee yhden vaihtoehdon toisensa poissulkevien vaihtoehtojen joukosta."
+  },
+  "page.uiComponents.item.switch": {
+    "message": "Vaihtaa kahden tilan, kuten päällä ja pois päältä, välillä liu’uttamalla."
+  },
+  "page.uiComponents.item.choiceBox": {
+    "message": "Avattava luettelo ennalta määritetyistä vaihtoehdoista."
+  },
+  "page.uiComponents.item.comboBox": {
+    "message": "Pudotusvalikko yhdistettynä muokattavaan tekstikenttään."
+  },
+  "page.uiComponents.item.listBox": {
+    "message": "Vieritettävä luettelo yhden tai useamman kohteen valintaan."
+  },
+  "page.uiComponents.item.slider": {
+    "message": "Valitsee arvon alueelta vetämällä kahvaa liukupalkkia pitkin."
+  },
+  "page.uiComponents.item.upload": {
+    "message": "Upotettu tiedostonvalitsin, jossa on vedä ja pudota -toiminto, suodattimet ja tiedostokohtaiset tapahtumat."
+  },
+  "page.uiComponents.group.data.title": {
+    "message": "Data ja sisältö"
+  },
+  "page.uiComponents.group.data.lead": {
+    "message": "Näytä tietueita, hierarkioita, kaavioita ja suoratoistettua tekstiä sekä lataa lisää vieritettäessä."
+  },
+  "page.uiComponents.item.googleCharts": {
+    "message": "Kaaviot ja visuaaliset dataesitykset Google Chartsilla."
+  },
+  "page.uiComponents.item.tree": {
+    "message": "Hierarkkista tietoa, jota käyttäjät voivat laajentaa, supistaa ja käsitellä."
+  },
+  "page.uiComponents.item.infiniteScroll": {
+    "message": "Lataa lisää kohteita vieritettäessä ja tunnistaa, kun kaikki sisältö on ladattu."
+  },
+  "page.uiComponents.item.refresher": {
+    "message": "Vedä päivittääksesi vieritettävissä säilöissä."
+  },
+  "page.uiComponents.item.markdownViewer": {
+    "message": "Näyttää Markdown-sisällön vaiheittain – sopii erinomaisesti tekoälykeskusteluihin ja suoratoistettavaan tekstiin."
+  },
+  "page.uiComponents.item.terminal": {
+    "message": "Sovelluksen sisäinen komentorivikäyttöliittymä tekstikomennoille."
+  },
+  "page.uiComponents.item.avatar": {
+    "message": "Profiilikuvia tai nimikirjaimia eri kokoisina, muotoisina ja teemoina."
+  },
+  "page.uiComponents.item.badge": {
+    "message": "Pieni tunniste lukumäärille, tiloille tai lyhyille metatiedoille."
+  },
+  "page.uiComponents.group.navigation.title": {
+    "message": "Navigointi ja toiminnot"
+  },
+  "page.uiComponents.group.navigation.lead": {
+    "message": "Siirry näkymien ja osioiden välillä, selaa tietoja sivuittain ja käynnistä seuraavat toiminnot."
+  },
+  "page.uiComponents.item.appNav": {
+    "message": "Navigointivalikko osioiden ja näkymien välillä siirtymiseen."
+  },
+  "page.uiComponents.item.drawer": {
+    "message": "Liukuva paneeli sivunavigointia tai lisäsisältöä varten."
+  },
+  "page.uiComponents.item.tabbedPane": {
+    "message": "Järjestää sisällön välilehtiin, joiden välillä käyttäjät voivat vaihtaa."
+  },
+  "page.uiComponents.item.navigator": {
+    "message": "Sivutus ensimmäinen-, viimeinen-, seuraava- ja edellinen-painikkeilla sekä pikasiirtymällä."
+  },
+  "page.uiComponents.item.button": {
+    "message": "Klikattava komponentti, joka käynnistää toiminnon painettaessa."
+  },
+  "page.uiComponents.item.icon": {
+    "message": "Toimintoa, tilaa tai luokkaa kuvaava graafinen symboli."
+  },
+  "page.uiComponents.group.feedback.title": {
+    "message": "Palaute ja valintaikkunat"
+  },
+  "page.uiComponents.group.feedback.lead": {
+    "message": "Kerro käyttäjille, mitä tapahtuu, pyydä heitä vahvistamaan ja kerää arvo, tiedosto tai kirjautumistiedot."
+  },
+  "page.uiComponents.item.toast": {
+    "message": "Ilmoitus, joka ei estä käyttöä ja katoaa itsestään."
+  },
+  "page.uiComponents.item.alert": {
+    "message": "Tärkeät viestit tai varoitukset näkyvästi."
+  },
+  "page.uiComponents.item.desktopNotification": {
+    "message": "Mukautetut työpöytäilmoitukset selaimen Notification API:n avulla."
+  },
+  "page.uiComponents.item.progressBar": {
+    "message": "Palkki, joka täyttyy tehtävän edetessä."
+  },
+  "page.uiComponents.item.busyIndicator": {
+    "message": "Sovelluksenlaajuinen ilmaisin käynnissä olevasta yleisestä prosessista."
+  },
+  "page.uiComponents.item.loading": {
+    "message": "Yhteen yläkomponenttiin rajattu latausilmaisin."
+  },
+  "page.uiComponents.item.spinner": {
+    "message": "Pyörivä animaatio, joka ilmaisee toiminnon olevan käynnissä."
+  },
+  "page.uiComponents.item.messageDialog": {
+    "message": "Ilmoitus, jonka käyttäjä kuittaa painamalla OK."
+  },
+  "page.uiComponents.item.confirmDialog": {
+    "message": "Pyytää käyttäjää vahvistamaan tai peruuttamaan toiminnon."
+  },
+  "page.uiComponents.item.inputDialog": {
+    "message": "Pyytää käyttäjää antamaan arvon valitsemalla OK tai Peruuta."
+  },
+  "page.uiComponents.item.fileUploadDialog": {
+    "message": "Lataa tiedostoja paikallisesta tiedostojärjestelmästä sovellukseen."
+  },
+  "page.uiComponents.item.login": {
+    "message": "Valmiiksi rakennettu kirjautumisnäkymä käyttäjätunnukselle, salasanalle ja lähetyspainikkeelle."
+  },
+  "page.uiComponents.gallery.layouts": {
+    "message": "Asettelut"
+  },
+  "page.uiComponents.gallery.dataEntry": {
+    "message": "Tietojen syöttö"
+  },
+  "page.uiComponents.gallery.optionDialogs": {
+    "message": "Asetusvalintaikkunat"
+  },
+  "page.uiComponents.gallery.interaction": {
+    "message": "Vuorovaikutus ja näyttö"
+  },
+  "page.uiComponents.beyond.html.label": {
+    "message": "{count} HTML-elementtiä"
+  },
+  "page.uiComponents.beyond.html.title": {
+    "message": "Itse sivu kirjoitettuna\n"
+  },
+  "page.uiComponents.beyond.html.text": {
+    "message": "webforJ tarjoaa tyypitetyllä Java-rajapinnalla komponentteja, jotka vastaavat suoraan HTML:n vakioelementtejä, kuten Div-, Paragraph-, otsikko-, luettelo-, Img- ja Anchor-elementtejä."
+  },
+  "page.uiComponents.beyond.html.link": {
+    "message": "HTML-komponentit"
+  },
+  "page.uiComponents.beyond.web.label": {
+    "message": "Web components"
+  },
+  "page.uiComponents.beyond.web.title": {
+    "message": "Mikä tahansa web-komponentti käärittynä\n"
+  },
+  "page.uiComponents.beyond.web.text": {
+    "message": "ElementComposite kapseloi mukautetun HTML-elementin tai kolmannen osapuolen verkkokomponentin ja tuo sen ominaisuudet, attribuutit ja tapahtumat käytettäviksi Java API:n kautta."
+  },
+  "page.uiComponents.beyond.web.link": {
+    "message": "Yhdistelmäelementti"
+  },
+  "page.uiComponents.beyond.npm.label": {
+    "message": "npm-paketit"
+  },
+  "page.uiComponents.beyond.npm.title": {
+    "message": "npm-rekisteri Javasta käsin"
+  },
+  "page.uiComponents.beyond.npm.text": {
+    "message": "Frontend-bundleri muuntaa luokan annotaatiot käännetyiksi frontend-resursseiksi, joten komponentti voi tuoda mukanaan tarvitsemansa npm-paketin."
+  },
+  "page.uiComponents.beyond.npm.link": {
+    "message": "Frontend-paketointityökalu"
+  },
+  "page.uiComponents.theme.darkSummary": {
+    "message": "Sama kenttä, painikkeet, kytkin, merkki ja edistymispalkki tummassa teemassa."
+  },
+  "page.uiComponents.theme.lightSummary": {
+    "message": "Sama kenttä, painikkeet, kytkin, merkki ja edistymispalkki vaaleassa teemassa."
+  },
+  "page.uiComponents.theme.mock.name": {
+    "message": "Nimi"
+  },
+  "page.uiComponents.theme.mock.save": {
+    "message": "Tallenna"
+  },
+  "page.uiComponents.theme.mock.cancel": {
+    "message": "Peruuta"
+  },
+  "page.uiComponents.theme.mock.new": {
+    "message": "Uusi"
+  },
+  "page.uiComponents.hero.eyebrow": {
+    "message": "Käyttöliittymäkomponentit"
+  },
+  "page.uiComponents.hero.title1": {
+    "message": "Yritysnäytön jokainen osa,"
+  },
+  "page.uiComponents.hero.title2": {
+    "message": "Valmis Javassa."
+  },
+  "page.uiComponents.hero.lead": {
+    "message": "webforJ on full-stack Java-kehys yritysten verkkosovelluksiin: rakennat koko sovelluksen näyttöineen Java-kielellä. Sen komponentit kattavat asettelun, tietojen syöttämisen, valintaikkunat, tietojen näyttämisen ja palautteen. Jokainen komponentti on Java-luokka, jonka luot, määrität ja lisäät asetteluun."
+  },
+  "page.uiComponents.hero.openGallery": {
+    "message": "Avaa komponenttigalleria"
+  },
+  "page.uiComponents.hero.browse": {
+    "message": "Selaa käyttötarkoituksen mukaan"
+  },
+  "page.uiComponents.stats.gallery": {
+    "message": "Komponentit galleriassa"
+  },
+  "page.uiComponents.stats.html": {
+    "message": "Tyypitetyt HTML-elementit"
+  },
+  "page.uiComponents.stats.themes": {
+    "message": "Sisäänrakennetut teemat"
+  },
+  "page.uiComponents.stats.groups": {
+    "message": "Ryhmät tarkoituksen mukaan"
+  },
+  "page.uiComponents.hero.wallLabel": {
+    "message": "Valikoima webforJ-komponentteja"
+  },
+  "page.uiComponents.hero.wallLink": {
+    "message": "{name}-dokumentaatio"
+  },
+  "page.uiComponents.hero.wallAlt": {
+    "message": "{name}-komponentti"
+  },
+  "page.uiComponents.groups.label": {
+    "message": "Tarkoituksen mukaan"
+  },
+  "page.uiComponents.groups.title": {
+    "message": "{total} liiketoimintakomponenttia sekä {html} HTML-elementtiä ja mitä tahansa web-komponenttia."
+  },
+  "page.uiComponents.groups.count.business": {
+    "message": "liiketoimintakomponentit"
+  },
+  "page.uiComponents.groups.count.html": {
+    "message": "HTML-elementit"
+  },
+  "page.uiComponents.groups.count.any": {
+    "message": "Mikä tahansa"
+  },
+  "page.uiComponents.groups.count.web": {
+    "message": "web component"
+  },
+  "page.uiComponents.groups.lead": {
+    "message": "Valitse ryhmä ja sitten komponentti. Jokainen ruutu avaa komponentin oman sivun dokumentaatiossa."
+  },
+  "page.uiComponents.groups.navLabel": {
+    "message": "Komponenttiryhmät"
+  },
+  "page.uiComponents.groups.count": {
+    "message": "{count} komponenttia"
+  },
+  "page.uiComponents.compose.label": {
+    "message": "Koostumus"
+  },
+  "page.uiComponents.compose.title1": {
+    "message": "Omat komponenttisi,"
+  },
+  "page.uiComponents.compose.title2": {
+    "message": "Rakennettu omiemme pohjalta."
+  },
+  "page.uiComponents.compose.lead": {
+    "message": "webforJ käyttää koostamista periytymisen sijaan. Et peri {button}-komponenttia. Kirjoitat luokan, joka laajentaa {composite}-komponenttia, yhdistät siihen komponentteja ja päätät, mitkä metodit muu sovelluksesi voi nähdä."
+  },
+  "page.uiComponents.compose.demo.search": {
+    "message": "Haku"
+  },
+  "page.uiComponents.compose.demo.go": {
+    "message": "Siirry"
+  },
+  "page.uiComponents.compose.point1.title": {
+    "message": "Yksi luokka, yksi yksikkö."
+  },
+  "page.uiComponents.compose.point1.text": {
+    "message": "{composite} kapseloi yhden sidotun komponentin ja sen sisäisen rakenteen, joten hakupalkista, osoitelomakkeesta tai kokonaisesta koontinäyttökortista tulee uudelleenkäytettävä luokka."
+  },
+  "page.uiComponents.compose.point2.title": {
+    "message": "Valitset API:n."
+  },
+  "page.uiComponents.compose.point2.text": {
+    "message": "Kutsujat näkevät vain esiin tuomasi metodit, toisin kuin perinnässä, jossa kaikki on näkyvissä."
+  },
+  "page.uiComponents.compose.point3.title": {
+    "message": "Sisäänrakennetut komponentit säilyvät ennallaan."
+  },
+  "page.uiComponents.compose.point3.text": {
+    "message": "Sisäänrakennetut komponentit ovat final, joten niiden alla oleva verkkokomponentti pysyy yhtenäisenä ja ennakoitavana. Oma logiikkasi sijoittuu niiden ympärille, ei niiden sisään."
+  },
+  "page.uiComponents.compose.link.composing": {
+    "message": "Komponenttien koostaminen"
+  },
+  "page.uiComponents.compose.link.understanding": {
+    "message": "Komponenttien ymmärtäminen"
+  },
+  "page.uiComponents.beyond.label": {
+    "message": "Joukon ulkopuolella"
+  },
+  "page.uiComponents.beyond.title1": {
+    "message": "Eikö kuulu joukkoon?"
+  },
+  "page.uiComponents.beyond.title2": {
+    "message": "Käytä mitä tahansa komponenttia verkossa."
+  },
+  "page.uiComponents.beyond.lead": {
+    "message": "Liiketoimintakomponentit ovat lähtökohta, eivät päätepiste. Jokainen HTML-elementti on Java-luokka, ja mistä tahansa web-komponentista voi tulla sellainen."
+  },
+  "page.uiComponents.own.label": {
+    "message": "Suunnittelujärjestelmäsi"
+  },
+  "page.uiComponents.own.title1": {
+    "message": "Onko sinulla oma suunnittelujärjestelmä?"
+  },
+  "page.uiComponents.own.title2": {
+    "message": "Ota se mukaan."
+  },
+  "page.uiComponents.own.lead": {
+    "message": "webforJ-komponentit ovat vaihtoehto, eivät vaatimus. Jos suunnittelujärjestelmäsi toimitetaan web-komponentteina, teet niille kääreen kerran ja rakennat koko sovelluksen niiden avulla Javalla."
+  },
+  "page.uiComponents.own.step1.title": {
+    "message": "Kääri komponentit\n"
+  },
+  "page.uiComponents.own.step1.text": {
+    "message": "{composite} muuntaa jokaisen mukautetun elementin Java-luokaksi ja tuo sen ominaisuudet, attribuutit ja tapahtumat saataville Java API:n kautta."
+  },
+  "page.uiComponents.own.step2.title": {
+    "message": "Toimita ne yhtenä moduulina."
+  },
+  "page.uiComponents.own.step2.text": {
+    "message": "Frontend-bundleri antaa luokan määrittää tarvitsemansa npm-paketit, joten wrapperit kuljettavat suunnittelujärjestelmänsä mukanaan. Sovelluksen tarvitsee lisätä vain riippuvuus."
+  },
+  "page.uiComponents.own.step3.title": {
+    "message": "Rakenna sovellus tavalliseen tapaan"
+  },
+  "page.uiComponents.own.step3.text": {
+    "message": "Reititys, tietoturva ja tietojen sidonta toimivat samalla tavalla. Kääritty komponentti, joka toteuttaa {valueAware}, sitoutuu malliin kuten mikä tahansa sisäänrakennettu kenttä."
+  },
+  "page.uiComponents.own.panel": {
+    "message": "Näyttösi säilyttävät yrityksesi jo suunnitteleman ilmeen. Taustalla on edelleen webforJ."
+  },
+  "page.uiComponents.own.link.composite": {
+    "message": "Yhdistelmäelementti"
+  },
+  "page.uiComponents.own.link.bundler": {
+    "message": "Frontend-koontityökalu"
+  },
+  "page.uiComponents.java.label": {
+    "message": "Käytetään Javasta"
+  },
+  "page.uiComponents.java.title1": {
+    "message": "Komponentti on olio"
+  },
+  "page.uiComponents.java.title2": {
+    "message": "luot koodilla {code}."
+  },
+  "page.uiComponents.java.lead1": {
+    "message": "Asetat sen tilan tyypitetyillä metodeilla, kuuntelet sen tapahtumia lambdoilla ja lisäät sen konttiin. Näyttö on Java-koodia, eikä synkronoitavaa mallipohjaa ole."
+  },
+  "page.uiComponents.java.usedLabel": {
+    "message": "Tämän koodin komponentit"
+  },
+  "page.uiComponents.java.usingLink": {
+    "message": "Komponenttien käyttäminen"
+  },
+  "page.uiComponents.java.composingLink": {
+    "message": "Komponenttien koostaminen"
+  },
+  "page.uiComponents.java.codeAdd": {
+    "message": "Lisää komponentteja säilöön\n"
+  },
+  "page.uiComponents.java.codeState": {
+    "message": "Muuta tilaa tapahtumien perusteella\n"
+  },
+  "page.uiComponents.theme.label": {
+    "message": "Teeman mukauttaminen"
+  },
+  "page.uiComponents.theme.title1": {
+    "message": "Yksi suunnittelujärjestelmä"
+  },
+  "page.uiComponents.theme.title2": {
+    "message": "jokaisen komponentin takana."
+  },
+  "page.uiComponents.theme.lead": {
+    "message": "webforJ sisältää DWC-nimisen suunnittelujärjestelmän. Sen CSS-muuttujat eli design-tokenit määrittävät värit, typografian, reunukset ja välit, ja kaikki komponentit käyttävät niitä. Kun muutat tokenia, kaikki sitä käyttävät komponentit päivittyvät."
+  },
+  "page.uiComponents.theme.lightCaption": {
+    "message": "Oletus. Vaalea tausta, hienovarainen päävärin sävy."
+  },
+  "page.uiComponents.theme.darkCaption": {
+    "message": "Tumma tausta, hienovarainen päävärisävy."
+  },
+  "page.uiComponents.theme.fact1.title": {
+    "message": "Kolme sisäänrakennettua teemaa"
+  },
+  "page.uiComponents.theme.fact1.text": {
+    "message": "{light}, {dark} ja {darkPure}, joka poistaa pääsävyn ja käyttää puhtaita neutraaleja harmaan sävyjä. Vaihda teemaa ajon aikana komennolla {setTheme} ilman uudelleenkoontia."
+  },
+  "page.uiComponents.theme.fact2.title": {
+    "message": "Käyttöjärjestelmän mukainen"
+  },
+  "page.uiComponents.theme.fact2.text": {
+    "message": "Rekisteröi vaalea ja tumma teema ja välitä {system}. webforJ valitsee käyttäjän asetusta vastaavan teeman ja vaihtaa teemaa, kun asetus muuttuu."
+  },
+  "page.uiComponents.theme.fact3.title": {
+    "message": "Uudista brändi muutamalla tokenilla"
+  },
+  "page.uiComponents.theme.fact3.text": {
+    "message": "Ylikirjoita sisäänrakennettujen teemojen seed-tokenit, niin kaikki komponentit saavat uuden ilmeen. Shadow part -osilla pääset komponentin sisään, kun token ei riitä."
+  },
+  "page.uiComponents.theme.link.themes": {
+    "message": "Teemat"
+  },
+  "page.uiComponents.theme.link.cssVariables": {
+    "message": "CSS-muuttujat"
+  },
+  "page.uiComponents.theme.link.shadowParts": {
+    "message": "Varjo-osat"
+  },
+  "page.uiComponents.theme.link.overview": {
+    "message": "Tyylien yleiskatsaus"
+  },
+  "page.uiComponents.entrance.label": {
+    "message": "Galleria"
+  },
+  "page.uiComponents.entrance.title1": {
+    "message": "Avaa galleria"
+  },
+  "page.uiComponents.entrance.title2": {
+    "message": "ja katso kaikki {total}."
+  },
+  "page.uiComponents.entrance.lead": {
+    "message": "Dokumentaation galleriassa esitellään kaikki komponentit esikatseluineen ja lyhyine kuvauksineen samoissa neljässä osiossa kuin dokumentaatiossa."
+  },
+  "page.uiComponents.entrance.openGallery": {
+    "message": "Avaa komponenttigalleria"
+  },
+  "page.uiComponents.entrance.home": {
+    "message": "Takaisin dokumentaation etusivulle"
+  },
+  "page.uiComponents.entrance.sectionsLabel": {
+    "message": "Gallerian osiot"
+  },
+  "page.uiComponents.meta.title": {
+    "message": "webforJ-käyttöliittymäkomponentit: Java-komponenttikirjasto yrityssovelluksiin"
+  },
+  "page.uiComponents.meta.description": {
+    "message": "Selaa webforJ-komponenttivalikoimaa käyttötarkoituksen mukaan: asettelu, lomakkeet ja syötteet, data, navigointi ja palaute. Jokainen komponentti on Java-luokka, jonka ulkoasun määrittää DWC-suunnittelujärjestelmä vaaleine, tumminen ja puhtaan tumminen teemoineen."
+  },
+  "component.footer.platform.title": {
+    "message": "Alusta"
   }
 }

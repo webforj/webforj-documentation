@@ -88,7 +88,7 @@
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "webforJ-app met ondersteuning voor Spring Boot (vereist webforJ 25.02 of hoger).",
+    "message": "webforJ-app met Spring Boot-ondersteuning.",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
@@ -1736,5 +1736,3816 @@
   },
   "component.blogFilterBar.insights": {
     "message": "Inzichten"
+  },
+  "page.home.meta.title": {
+    "message": "webforJ: het full-stack Java-framework voor zakelijke webapplicaties"
+  },
+  "page.home.meta.description": {
+    "message": "Bouw de volledige webapp in Java, van UI tot data, met elke backend. Klaar voor AI, met een stap-voor-staptraject van Swing naar het web. Documentatie, handleidingen en live demo’s."
+  },
+  "page.home.layers.screens.name": {
+    "message": "Schermen"
+  },
+  "page.home.layers.screens.text": {
+    "message": "Bouw de gebruikersinterface op uit componenten, bepaal de indeling en navigeer tussen pagina’s."
+  },
+  "page.home.layers.screens.link.components": {
+    "message": "Componenten"
+  },
+  "page.home.layers.screens.link.buildingUi": {
+    "message": "UI bouwen"
+  },
+  "page.home.layers.screens.link.routing": {
+    "message": "Routering"
+  },
+  "page.home.layers.screens.link.styling": {
+    "message": "Opmaak"
+  },
+  "page.home.layers.logic.name": {
+    "message": "Logica"
+  },
+  "page.home.layers.logic.text": {
+    "message": "Koppel formulieren aan je modellen, beveilig routes, vertaal en test."
+  },
+  "page.home.layers.logic.link.dataBinding": {
+    "message": "Gegevensbinding"
+  },
+  "page.home.layers.logic.link.security": {
+    "message": "Beveiliging"
+  },
+  "page.home.layers.logic.link.translation": {
+    "message": "Vertaling"
+  },
+  "page.home.layers.logic.link.testing": {
+    "message": "Testen"
+  },
+  "page.home.layers.data.name": {
+    "message": "Gegevens"
+  },
+  "page.home.layers.data.text": {
+    "message": "Vul tabellen vanuit repositories en toon de cijfers in grafieken."
+  },
+  "page.home.layers.data.link.repository": {
+    "message": "Repository"
+  },
+  "page.home.layers.data.link.table": {
+    "message": "Tabel"
+  },
+  "page.home.layers.data.link.charts": {
+    "message": "Grafieken"
+  },
+  "page.home.layers.data.link.managingResources": {
+    "message": "Resources beheren"
+  },
+  "page.home.layers.backend.name": {
+    "message": "Je backend"
+  },
+  "page.home.layers.backend.text": {
+    "message": "Draai het standalone of met Spring Boot, in Java of Kotlin, en zet het live."
+  },
+  "page.home.layers.backend.link.configuration": {
+    "message": "Configuratie"
+  },
+  "page.home.layers.backend.link.upgrading": {
+    "message": "Upgraden"
+  },
+  "page.home.path.understand.step": {
+    "message": "Begrepen"
+  },
+  "page.home.path.understand.title": {
+    "message": "webforJ in 6 schermen"
+  },
+  "page.home.path.understand.text": {
+    "message": "Een korte kennismaking met webforJ."
+  },
+  "page.home.path.create.step": {
+    "message": "Maken"
+  },
+  "page.home.path.create.title": {
+    "message": "Project starten"
+  },
+  "page.home.path.create.text": {
+    "message": "Controleer de vereisten, genereer een project en voer het uit."
+  },
+  "page.home.path.learn.step": {
+    "message": "Leren"
+  },
+  "page.home.path.learn.title": {
+    "message": "Volg de tutorial"
+  },
+  "page.home.path.learn.text": {
+    "message": "Bouw stap voor stap een werkende app."
+  },
+  "page.home.path.build.step": {
+    "message": "Bouwen"
+  },
+  "page.home.path.build.title": {
+    "message": "Gebruik de componenten"
+  },
+  "page.home.path.build.text": {
+    "message": "Elk component met de bijbehorende API en live voorbeelden."
+  },
+  "page.home.ai.loop.write.title": {
+    "message": "Schrijven"
+  },
+  "page.home.ai.loop.write.text": {
+    "message": "Je assistent leest de echte webforJ-API via de MCP-server en volgt Agent Skills voor formulieren, beveiliging en styling."
+  },
+  "page.home.ai.loop.check.title": {
+    "message": "Controleren"
+  },
+  "page.home.ai.loop.check.text": {
+    "message": "Het voert de view uit in een gewone JUnit-test met de TestBed, zonder browser of server, en geeft duidelijk aan of de test slaagt of faalt."
+  },
+  "page.home.ai.loop.review.title": {
+    "message": "Beoordelen"
+  },
+  "page.home.ai.loop.review.text": {
+    "message": "Je beoordeelt een resultaat dat al is geslaagd, in plaats van elke regel van een gok te lezen."
+  },
+  "page.home.places.components.title": {
+    "message": "UI-componenten"
+  },
+  "page.home.places.components.text": {
+    "message": "Tabellen, formulieren, dialoogvensters, lay-outs en meer, allemaal met livevoorbeelden."
+  },
+  "page.home.places.craft.text": {
+    "message": "De visuele editor: bekijk de componentenboom van je draaiende app en pas deze live aan."
+  },
+  "page.home.places.swing.title": {
+    "message": "Swing-modernisering"
+  },
+  "page.home.places.swing.text": {
+    "message": "Voer een desktopapp uit in de browser en navigeer scherm voor scherm."
+  },
+  "page.home.places.ai.title": {
+    "message": "AI-tools"
+  },
+  "page.home.places.ai.text": {
+    "message": "De AI-plugin: de MCP-server en Agent Skills voor je assistent, in één installatie."
+  },
+  "page.home.places.kit.title": {
+    "message": "Figma-ontwerpset"
+  },
+  "page.home.places.kit.text": {
+    "message": "Ontwerpers en ontwikkelaars werken met dezelfde tokens en componenten."
+  },
+  "page.home.places.showcase.title": {
+    "message": "Presentatie"
+  },
+  "page.home.places.showcase.text": {
+    "message": "Vier voorbeeldapps voor bedrijven om scherm voor scherm te doorlopen."
+  },
+  "page.home.help.cookbook.title": {
+    "message": "Kookboek"
+  },
+  "page.home.help.cookbook.text": {
+    "message": "Korte recepten voor veelvoorkomende taken."
+  },
+  "page.home.help.blog.title": {
+    "message": "Blog"
+  },
+  "page.home.help.blog.text": {
+    "message": "Handleidingen, releases en praktische tips."
+  },
+  "page.home.help.javadocs.text": {
+    "message": "De volledige API-referentie."
+  },
+  "page.home.help.issue.title": {
+    "message": "Meld een probleem"
+  },
+  "page.home.help.issue.text": {
+    "message": "Bugs en functieverzoeken."
+  },
+  "page.home.help.team.title": {
+    "message": "Praat met het team"
+  },
+  "page.home.help.team.text": {
+    "message": "Plan een gesprek over je app."
+  },
+  "page.home.stack.caption": {
+    "message": "Een klik op het scherm voert je Java-code uit en geeft een update terug."
+  },
+  "page.home.hero.eyebrow": {
+    "message": "webforJ-documentatie"
+  },
+  "page.home.hero.title1": {
+    "message": "De hele app."
+  },
+  "page.home.hero.title2": {
+    "message": "In Java."
+  },
+  "page.home.hero.lead": {
+    "message": "webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de hele app, inclusief schermen, in Java. Deze documentatie begeleidt je van je eerste project tot productie."
+  },
+  "page.home.hero.tour": {
+    "message": "Volg de rondleiding van 5 minuten"
+  },
+  "page.home.hero.search": {
+    "message": "Zoek of vraag het aan AI"
+  },
+  "page.home.live.title1": {
+    "message": "Schrijf Java."
+  },
+  "page.home.live.title2": {
+    "message": "Scherm ophalen"
+  },
+  "page.home.live.note": {
+    "message": "Een compleet scherm is een Java-klasse met een route. Geen template, geen JavaScript en geen REST-laag tussen het scherm en je code."
+  },
+  "page.home.path.title1": {
+    "message": "Nieuw hier?"
+  },
+  "page.home.path.title2": {
+    "message": "Volg het pad."
+  },
+  "page.home.layers.title1": {
+    "message": "Eén stapel."
+  },
+  "page.home.layers.title2": {
+    "message": "Eén taal."
+  },
+  "page.home.ai.title1": {
+    "message": "AI gereed."
+  },
+  "page.home.ai.title2": {
+    "message": "Vanaf dag één."
+  },
+  "page.home.ai.lead": {
+    "message": "Met één installatie krijgen Claude Code, Copilot, Cursor, Gemini en Codex de webforJ MCP-server en Agent Skills."
+  },
+  "page.home.ai.cta": {
+    "message": "Bekijk de AI-tools"
+  },
+  "page.home.ai.terminal": {
+    "message": "Terminal"
+  },
+  "page.home.ai.terminalComment": {
+    "message": "de assistent leest het bericht en herstelt de weergave"
+  },
+  "page.home.places.title1": {
+    "message": "Locaties"
+  },
+  "page.home.places.title2": {
+    "message": "Een bezoek waard."
+  },
+  "page.home.help.title": {
+    "message": "Nog aan het zoeken?"
+  },
+  "page.home.help.behind": {
+    "message": "webforJ is ontwikkeld door BASIS International. BASIS-software en -tools worden al bijna 40 jaar gebruikt om bedrijfsoplossingen te ontwikkelen voor zowel grote internationale ondernemingen als mkb-bedrijven, met ruim 20 jaar ervaring in het leveren van op Java gebaseerde technologie."
+  },
+  "page.home.talk.title": {
+    "message": "Een bedrijfsapp plannen met webforJ?"
+  },
+  "page.home.talk.text": {
+    "message": "Plan een gesprek met het team dat webforJ bouwt. Neem je app, backend en planning mee, en we laten zien hoe webforJ past, van het eerste scherm tot LTS+-ondersteuning."
+  },
+  "page.home.talk.book": {
+    "message": "Plan een gesprek"
+  },
+  "page.home.talk.pricing": {
+    "message": "Bekijk prijzen"
+  },
+  "page.home.talk.languages": {
+    "message": "We spreken {languages}"
+  },
+  "component.archetype.table.flavor.bbj": {
+    "message": "webforJ-app die via {BBjShipLink} in {BBjServices} draait.",
+    "description": "webforj-bbj flavor description"
+  },
+  "component.megaMenu.resources.readAndWatch.showcase.label": {
+    "message": "Voorbeelden"
+  },
+  "component.megaMenu.resources.readAndWatch.showcase.description": {
+    "message": "Wat je kunt bouwen met webforJ"
+  },
+  "component.previewBadge.hint": {
+    "message": "Deze functie kan in toekomstige versies veranderen."
+  },
+  "component.previewBadge.label": {
+    "message": "Voorbeeld"
+  },
+  "page.ai.terminal.verifyClaude": {
+    "message": "Controleren in Claude Code"
+  },
+  "page.ai.terminal.okInstalled": {
+    "message": "webforj staat onder Geïnstalleerd"
+  },
+  "page.ai.terminal.okServers": {
+    "message": "plugin:webforj:webforj-mcp verschijnt onder verbonden servers"
+  },
+  "page.ai.terminal.copilotVerify": {
+    "message": "Verifiëren"
+  },
+  "page.ai.terminal.geminiVerify": {
+    "message": "Verifiëren"
+  },
+  "page.ai.terminal.codexRun": {
+    "message": "Voer vervolgens /plugins uit in een Codex-sessie, selecteer webforj en druk op de spatiebalk."
+  },
+  "page.ai.terminal.codexSkills": {
+    "message": "Codex-vaardigheden worden expliciet aangeroepen."
+  },
+  "page.ai.breaks.api.failure": {
+    "message": "Het roept een API aan die niet bestaat, of vroeger wel bestond."
+  },
+  "page.ai.breaks.api.piece": {
+    "message": "De echte API"
+  },
+  "page.ai.breaks.api.fix": {
+    "message": "De MCP-server doorzoekt de webforJ-kennisbank, zodat de agent signatures leest in plaats van ze uit het geheugen op te halen."
+  },
+  "page.ai.breaks.workflow.failure": {
+    "message": "Het volgt algemene Java-gewoonten in plaats van de conventies van het framework."
+  },
+  "page.ai.breaks.workflow.piece": {
+    "message": "De juiste workflow"
+  },
+  "page.ai.breaks.workflow.fix": {
+    "message": "Agent Skills vertellen de agent hoe die formulieren, beveiliging, styling, timers en meer moet aanpakken."
+  },
+  "page.ai.breaks.check.failure": {
+    "message": "Het genereert code die compileert, maar niets nuttigs doet wanneer een gebruiker klikt."
+  },
+  "page.ai.breaks.check.piece": {
+    "message": "Geslaagd of gezakt"
+  },
+  "page.ai.breaks.check.fix": {
+    "message": "De TestBed voert een view uit in een gewone JUnit-test, zodat de agent zijn eigen werk kan bewijzen."
+  },
+  "page.ai.stages.write.label": {
+    "message": "Schrijven"
+  },
+  "page.ai.stages.write.short": {
+    "message": "De agent schrijft de weergave"
+  },
+  "page.ai.stages.check.label": {
+    "message": "Controleren"
+  },
+  "page.ai.stages.check.short": {
+    "message": "Het schrijft en voert de test uit."
+  },
+  "page.ai.stages.review.label": {
+    "message": "Beoordelen"
+  },
+  "page.ai.stages.review.short": {
+    "message": "Je beoordeelt een geslaagd resultaat."
+  },
+  "page.ai.plugin.clients.claude": {
+    "message": "Marketplace-opdracht"
+  },
+  "page.ai.plugin.clients.copilot": {
+    "message": "Marketplace-opdracht"
+  },
+  "page.ai.plugin.clients.vscode": {
+    "message": "Chat: Plug-in installeren vanuit broncode"
+  },
+  "page.ai.plugin.clients.gemini": {
+    "message": "Extensie installeren"
+  },
+  "page.ai.plugin.clients.codex": {
+    "message": "Marketplace-opdracht, daarna /plugins"
+  },
+  "page.ai.plugin.clients.others": {
+    "message": "Handmatige configuratie"
+  },
+  "page.ai.plugin.prompts.wrap.prompt": {
+    "message": "Verpak deze Custom Element-bibliotheek als een webforJ-component."
+  },
+  "page.ai.plugin.prompts.wrap.target": {
+    "message": "vaardigheid voor het maken van componenten"
+  },
+  "page.ai.plugin.prompts.style.prompt": {
+    "message": "Stijl deze weergave met de DWC-ontwerptokens."
+  },
+  "page.ai.plugin.prompts.style.target": {
+    "message": "vaardigheid voor styling-apps"
+  },
+  "page.ai.plugin.prompts.scaffold.prompt": {
+    "message": "Genereer een nieuw webforJ-zijmenuproject met de naam CustomerPortal."
+  },
+  "page.ai.plugin.prompts.scaffold.target": {
+    "message": "MCP-projectgenerator"
+  },
+  "page.ai.plugin.prompts.theme.prompt": {
+    "message": "Genereer een thema op basis van merkkleur #6366f1."
+  },
+  "page.ai.plugin.prompts.theme.target": {
+    "message": "MCP-themagenerator"
+  },
+  "page.ai.plugin.prompts.find.prompt": {
+    "message": "Vind de webforJ-documentatie over @Route en routing."
+  },
+  "page.ai.plugin.prompts.find.target": {
+    "message": "Zoeken in MCP-kennis"
+  },
+  "page.ai.mcp.version.title": {
+    "message": "Gebruik de juiste webforJ-versie"
+  },
+  "page.ai.mcp.version.text": {
+    "message": "Leest pom.xml als die beschikbaar is en vraagt het anders aan je. Alle antwoorden daarna zijn afgestemd op jouw versie."
+  },
+  "page.ai.mcp.lookup.title": {
+    "message": "Zoek informatie op in de kennisbank"
+  },
+  "page.ai.mcp.lookup.text": {
+    "message": "Een API-vraag, een gids, een codevoorbeeld of de Kotlin DSL, beantwoord op basis van het echte framework."
+  },
+  "page.ai.mcp.lookup.prompt": {
+    "message": "Hoe stel ik routing in met @Route in webforJ?"
+  },
+  "page.ai.mcp.scaffold.title": {
+    "message": "Nieuw project aanmaken"
+  },
+  "page.ai.mcp.scaffold.text": {
+    "message": "De juiste Maven-archetypeopdracht voor hello-world, blank, tabs of sidemenu, in de webforj- of webforj-spring-variant."
+  },
+  "page.ai.mcp.scaffold.prompt": {
+    "message": "Maak een webforJ-project met de naam CustomerPortal met het sidemenu-archetype."
+  },
+  "page.ai.mcp.theme.title": {
+    "message": "Genereer een DWC-thema"
+  },
+  "page.ai.mcp.theme.text": {
+    "message": "Paletten voor primair, succes, waarschuwing, gevaar, info, standaard en grijs, op basis van één merkkleur, met automatisch tekstcontrast."
+  },
+  "page.ai.mcp.theme.prompt": {
+    "message": "Genereer een webforJ-thema op basis van merkkleur #6366f1\n"
+  },
+  "page.ai.mcp.style.title": {
+    "message": "DWC-componenten correct stylen"
+  },
+  "page.ai.mcp.style.text": {
+    "message": "CSS custom properties, shadow parts, reflected attributes en slots: lees dit voordat je CSS schrijft."
+  },
+  "page.ai.mcp.style.prompt": {
+    "message": "Welke CSS-variabelen en parts biedt dwc-button?"
+  },
+  "page.ai.mcp.tokens.title": {
+    "message": "Design tokens valideren"
+  },
+  "page.ai.mcp.tokens.text": {
+    "message": "Controleert CSS, Java of Markdown aan de hand van de echte --dwc-* catalogus en markeert onbekende namen met suggesties voor correcties."
+  },
+  "page.ai.mcp.tokens.prompt": {
+    "message": "Valideer app.css op onbekende --dwc-* tokens"
+  },
+  "page.ai.skills.servlets.text": {
+    "message": "REST-endpoints, webhooks en aangepaste servlets naast de webforJ-interface."
+  },
+  "page.ai.skills.servlets.prompt": {
+    "message": "Voeg een REST-endpoint toe op /api/orders."
+  },
+  "page.ai.skills.forms.text": {
+    "message": "Binding, Jakarta validation, gemaskeerde invoervelden en responsieve formulierindelingen."
+  },
+  "page.ai.skills.forms.prompt": {
+    "message": "Maak een registratieformulier dat aan mijn User-bean is gekoppeld."
+  },
+  "page.ai.skills.components.text": {
+    "message": "Herbruikbare Java-componenten uit Custom Elements, JavaScript-bibliotheken of composities."
+  },
+  "page.ai.skills.components.prompt": {
+    "message": "Combineer deze webforJ-componenten tot een herbruikbare kaart."
+  },
+  "page.ai.skills.timers.text": {
+    "message": "Interval, Debouncer, Environment.runLater en PendingResult in plaats van directe timers en threads."
+  },
+  "page.ai.skills.timers.prompt": {
+    "message": "Vernieuw dit dashboard elke 30 seconden."
+  },
+  "page.ai.skills.localizing.text": {
+    "message": "Berichtenbundels, taalschakeling tijdens runtime en detectie van de browsertaal."
+  },
+  "page.ai.skills.localizing.prompt": {
+    "message": "Voeg ondersteuning voor meerdere talen toe: Engels en Spaans."
+  },
+  "page.ai.skills.securing.text": {
+    "message": "Inloggen, uitloggen, rolgebaseerde toegang en standaard beveiligde routes."
+  },
+  "page.ai.skills.securing.prompt": {
+    "message": "Beveilig /admin zodat alleen gebruikers met de rol ADMIN deze kunnen zien."
+  },
+  "page.ai.skills.styling.text": {
+    "message": "Thema's, paletten en componentstyling; elk --dwc-*-token is gevalideerd."
+  },
+  "page.ai.skills.styling.prompt": {
+    "message": "Geef deze app een blauw thema."
+  },
+  "page.ai.skills.upgrading.text": {
+    "message": "Grote versie-upgrades met de officiële OpenRewrite-recipe van webforj-rewrite."
+  },
+  "page.ai.skills.upgrading.prompt": {
+    "message": "Upgrade deze app van webforJ 25 naar 26."
+  },
+  "page.ai.compare.livesIn.label": {
+    "message": "Woont in"
+  },
+  "page.ai.compare.livesIn.plugin": {
+    "message": "Je editor"
+  },
+  "page.ai.compare.livesIn.assistant": {
+    "message": "De actieve app"
+  },
+  "page.ai.compare.reads.label": {
+    "message": "Leest"
+  },
+  "page.ai.compare.reads.plugin": {
+    "message": "Je bronbestanden"
+  },
+  "page.ai.compare.reads.assistant": {
+    "message": "Je app, live, met echte waarden"
+  },
+  "page.ai.compare.verifies.label": {
+    "message": "Geverifieerd door"
+  },
+  "page.ai.compare.verifies.plugin": {
+    "message": "Je volgende build"
+  },
+  "page.ai.compare.verifies.assistant": {
+    "message": "Elke wijziging compileren voordat je die ziet\n"
+  },
+  "page.ai.compare.suited.label": {
+    "message": "Geschikt voor"
+  },
+  "page.ai.compare.suited.plugin": {
+    "message": "Iets nieuws vanaf nul bouwen"
+  },
+  "page.ai.compare.suited.assistant": {
+    "message": "De app voor je begrijpen, verbeteren en ermee prototypen"
+  },
+  "page.ai.docs.plugin.title": {
+    "message": "webforJ AI-plugin"
+  },
+  "page.ai.docs.plugin.text": {
+    "message": "Installeren voor elke client"
+  },
+  "page.ai.docs.mcp.title": {
+    "message": "MCP-server"
+  },
+  "page.ai.docs.mcp.text": {
+    "message": "Mogelijkheden en prompts"
+  },
+  "page.ai.docs.skills.title": {
+    "message": "Agentvaardigheden"
+  },
+  "page.ai.docs.skills.text": {
+    "message": "Elke vaardigheid en wanneer die wordt geladen\n"
+  },
+  "page.ai.docs.testbed.title": {
+    "message": "TestBed"
+  },
+  "page.ai.docs.testbed.text": {
+    "message": "Tests zonder browser in gewone JUnit"
+  },
+  "page.ai.docs.craftforj.title": {
+    "message": "craftforJ-assistent"
+  },
+  "page.ai.docs.craftforj.text": {
+    "message": "Een codeeragent in de draaiende app"
+  },
+  "page.ai.terminal.tablistLabel": {
+    "message": "Installeer de webforJ AI-plug-in"
+  },
+  "page.ai.terminal.caption": {
+    "message": "De installatiecommando's uit de documentatie. Met één installatie krijg je de MCP-server en de Agent Skills."
+  },
+  "page.ai.hero.eyebrow": {
+    "message": "AI-tools voor webforJ"
+  },
+  "page.ai.hero.title1": {
+    "message": "Je AI-assistent schrijft de Java."
+  },
+  "page.ai.hero.title2": {
+    "message": "Nu kan het dit controleren."
+  },
+  "page.ai.hero.lead": {
+    "message": "AI-codeertools zijn snel, maar hun output moet nog steeds worden gecontroleerd. webforJ biedt ze een cyclus van schrijven, controleren en beoordelen: de echte API om te raadplegen, de juiste workflow om te volgen en een test die zonder browser slaagt of faalt."
+  },
+  "page.ai.hero.install": {
+    "message": "Installeer de plug-in"
+  },
+  "page.ai.hero.step": {
+    "message": "Doorloop de lus stap voor stap"
+  },
+  "page.ai.hero.clients": {
+    "message": "Voor Claude Code, GitHub Copilot, Cursor, Gemini en Codex."
+  },
+  "page.ai.breaks.eyebrow": {
+    "message": "Waarom een lus"
+  },
+  "page.ai.breaks.title": {
+    "message": "Drie manieren waarop door agents gebouwde Java misgaat, en de controle voor elk geval"
+  },
+  "page.ai.breaks.lead": {
+    "message": "Als een codeeragent geen bronnen heeft om te raadplegen, schrijft hij uit zijn geheugen. Zeggen dat hij voorzichtig moet zijn, lost dit niet op. Elke fout vraagt om een eigen controle, en webforJ dicht elk gat met een stukje tooling."
+  },
+  "page.ai.breaks.without": {
+    "message": "Zonder controle"
+  },
+  "page.ai.breaks.read": {
+    "message": "Lees de documentatie"
+  },
+  "page.ai.stages.promptLabel": {
+    "message": "Je prompt"
+  },
+  "page.ai.stages.write.prompt": {
+    "message": "Voeg op /greeting een begroetingsweergave van webforJ toe. Een naamveld, een knop Begroeten en een alinea met ‘Hallo’ en de naam."
+  },
+  "page.ai.stages.write.title": {
+    "message": "Een view is een Java-klasse met een route"
+  },
+  "page.ai.stages.write.text1": {
+    "message": "Verder is niets nodig: geen template, geen JavaScript en geen REST-laag tussen het scherm en je code."
+  },
+  "page.ai.stages.write.text2": {
+    "message": "Als de MCP-server is verbonden, heeft de agent {composite}, {button} en {route} opgezocht voordat deze ze schrijft."
+  },
+  "page.ai.stages.check.prompt": {
+    "message": "Schrijf een TestBed-test voor GreetingView die een naam invoert, op ‘Begroeten’ klikt en de alinea controleert."
+  },
+  "page.ai.stages.check.title": {
+    "message": "De test volgt de stappen van een gebruiker."
+  },
+  "page.ai.stages.check.locator": {
+    "message": "{code} vindt het veld op basis van het label en de knop op basis van de tekst."
+  },
+  "page.ai.stages.check.interaction": {
+    "message": "{code} typt en klikt, zodat de listener van de knop daadwerkelijk wordt uitgevoerd."
+  },
+  "page.ai.stages.check.verify": {
+    "message": "{code} controleert de tekst die een gebruiker zou lezen."
+  },
+  "page.ai.stages.review.title": {
+    "message": "De agent leest of iets is geslaagd of mislukt."
+  },
+  "page.ai.stages.review.text1": {
+    "message": "De agent voert {code} uit en leest het resultaat. Er wordt geen browser geopend en er wordt geen server gestart."
+  },
+  "page.ai.stages.review.text2": {
+    "message": "Als het mislukt, geeft het bericht aan wat er afwijkt. De agent past het aan en voert het opnieuw uit. Een fout die de agent kan lezen, kan de agent oplossen."
+  },
+  "page.ai.stages.review.strong": {
+    "message": "Je beoordeelt een resultaat dat al is geslaagd, in plaats van een gok."
+  },
+  "page.ai.stages.review.terminal": {
+    "message": "Terminal"
+  },
+  "page.ai.stages.review.passed": {
+    "message": "Geslaagd"
+  },
+  "page.ai.stages.review.failLabel": {
+    "message": "Wanneer een controle mislukt, ziet het bericht er zo uit."
+  },
+  "page.ai.stages.review.failNote": {
+    "message": "Geeft het type van de component, de verwachte waarde en de werkelijke waarde aan."
+  },
+  "page.ai.loop.eyebrow": {
+    "message": "De lus"
+  },
+  "page.ai.loop.title": {
+    "message": "Schrijf, controleer, beoordeel"
+  },
+  "page.ai.loop.lead": {
+    "message": "De agent schrijft de weergave en de test, voert de test uit en leest of deze slaagt of faalt. Doorloop één echt scherm, van de prompt tot de geslaagde test."
+  },
+  "page.ai.loop.railLabel": {
+    "message": "Fasen van de lus"
+  },
+  "page.ai.loop.return": {
+    "message": "Als de test mislukt, terug naar schrijven"
+  },
+  "page.ai.loop.previous": {
+    "message": "Vorige fase"
+  },
+  "page.ai.loop.count": {
+    "message": "Stap {current} van {total}"
+  },
+  "page.ai.loop.next": {
+    "message": "Volgende fase"
+  },
+  "page.ai.pieces.eyebrow": {
+    "message": "De stukken"
+  },
+  "page.ai.pieces.title": {
+    "message": "Drie onderdelen achter de loop"
+  },
+  "page.ai.pieces.plugin": {
+    "message": "AI-plugin"
+  },
+  "page.ai.pieces.bundles": {
+    "message": "bundels"
+  },
+  "page.ai.pieces.mcp": {
+    "message": "MCP server"
+  },
+  "page.ai.pieces.skills": {
+    "message": "Agentvaardigheden"
+  },
+  "page.ai.plugin.name": {
+    "message": "webforJ AI-plug-in"
+  },
+  "page.ai.plugin.title": {
+    "message": "Eén installatie brengt beide onderdelen samen."
+  },
+  "page.ai.plugin.lead1": {
+    "message": "De plug-in bundelt de MCP-server en de Agent Skills. Samen zorgen ze ervoor dat een assistent de webforJ-conventies niet langer hoeft te raden, maar ze volgt."
+  },
+  "page.ai.plugin.lead2": {
+    "message": "Vermeld {name} in je prompts. Dat is het signaal waardoor de assistent de plugin gebruikt in plaats van algemene Java-kennis."
+  },
+  "page.ai.plugin.link": {
+    "message": "Installeer de plug-in"
+  },
+  "page.ai.plugin.where": {
+    "message": "Waar het wordt geïnstalleerd"
+  },
+  "page.ai.plugin.reaches": {
+    "message": "Waar een prompt naar streeft"
+  },
+  "page.ai.mcp.name": {
+    "message": "MCP-server, onderdeel van de AI-plug-in"
+  },
+  "page.ai.mcp.title": {
+    "message": "De assistent raadpleegt de echte API in plaats van die uit het hoofd te kennen."
+  },
+  "page.ai.mcp.lead1": {
+    "message": "Model Context Protocol is een open standaard waarmee AI-assistenten op aanvraag externe tools kunnen aanroepen. De webforJ MCP-server geeft antwoorden op basis van het echte framework: documentatie, designtokens, componentstyling en het opzetten van projecten."
+  },
+  "page.ai.mcp.lead2": {
+    "message": "Validatie spoort typefouten en verzonnen tokens op voordat ze als CSS worden uitgebracht die ongemerkt faalt."
+  },
+  "page.ai.mcp.link": {
+    "message": "Ontdek wat de server kan"
+  },
+  "page.ai.mcp.onlyTitle": {
+    "message": "Alleen de MCP-server in Claude Code"
+  },
+  "page.ai.mcp.onlyCaption": {
+    "message": "De plug-in is de aanbevolen installatiemethode. Met deze opdracht wordt alleen de server verbonden via https://mcp.webforj.com/mcp."
+  },
+  "page.ai.skills.name": {
+    "message": "Agentvaardigheden, onderdeel van de AI-plug-in"
+  },
+  "page.ai.skills.title": {
+    "message": "De juiste workflow voor de taak die voor je ligt"
+  },
+  "page.ai.skills.lead1": {
+    "message": "De MCP-server biedt nauwkeurige informatie. Een skill vertelt de assistent wanneer iets moet worden opgezocht, welke aanpak geschikt is en in welke volgorde dingen moeten gebeuren."
+  },
+  "page.ai.skills.lead2": {
+    "message": "Skills volgen de open Agent Skills-standaard. De assistent laadt er automatisch een wanneer je prompt erbij past."
+  },
+  "page.ai.skills.link": {
+    "message": "Bekijk de vaardigheden"
+  },
+  "page.ai.testbed.title": {
+    "message": "Duidelijk geslaagd of mislukt, zonder browser of server."
+  },
+  "page.ai.testbed.lead1": {
+    "message": "Een view draait in een gewone JUnit-test. Componenten worden gekoppeld, activeren hun events en navigeren precies zoals in een draaiende app."
+  },
+  "page.ai.testbed.lead2": {
+    "message": "Elke interactie is voltooid voordat de volgende regel van de test wordt uitgevoerd, dus niets hoeft te wachten en tests mislukken niet willekeurig. Spring Boot-apps gebruiken de module {module}."
+  },
+  "page.ai.testbed.link": {
+    "message": "Lees de TestBed-gids"
+  },
+  "page.ai.testbed.find.verb": {
+    "message": "Zoeken"
+  },
+  "page.ai.testbed.find.text": {
+    "message": "Beschrijft een component zoals een gebruiker die herkent: aan de hand van het type en wat het weergeeft."
+  },
+  "page.ai.testbed.act.verb": {
+    "message": "Handel"
+  },
+  "page.ai.testbed.act.text": {
+    "message": "Voert alleen handelingen uit die een gebruiker kan uitvoeren. Klikken op een uitgeschakelde knop laat de test mislukken."
+  },
+  "page.ai.testbed.check.verb": {
+    "message": "Controleren"
+  },
+  "page.ai.testbed.check.text": {
+    "message": "Controleert wat de gebruiker ziet; bij een fout worden de component en beide waarden vermeld."
+  },
+  "page.ai.testbed.caption": {
+    "message": "De versie is afkomstig uit de webforJ BOM. Een project dat met een archetype is aangemaakt, importeert deze al."
+  },
+  "page.ai.craftforj.title": {
+    "message": "Een codeeragent in de draaiende app"
+  },
+  "page.ai.craftforj.lead1": {
+    "message": "Het schrijft zelfstandig Java-code, compileert elke wijziging voordat je die ziet en past deze toe op de draaiende app. Een wijziging toepassen herstart de app. Zodra de app weer actief is, pakt de agent zijn plan weer op."
+  },
+  "page.ai.craftforj.lead2": {
+    "message": "Het wordt meegeleverd met webforJ, dus je hoeft niets te installeren. craftforJ heeft geen eigen model: voeg een API-sleutel toe voor een ondersteunde provider of gebruik een model dat lokaal met Ollama draait."
+  },
+  "page.ai.craftforj.link": {
+    "message": "Maak kennis met de assistent"
+  },
+  "page.ai.craftforj.colPlugin": {
+    "message": "AI-plug-in"
+  },
+  "page.ai.craftforj.mobilePlugin": {
+    "message": "AI-plug-in"
+  },
+  "page.ai.craftforj.shotAlt": {
+    "message": "De craftforJ-assistent vraagt toestemming voordat hij handelt, direct in het transcript, met de opties Toepassen, Toestaan voor chat en Negeren."
+  },
+  "page.ai.craftforj.shotCaption": {
+    "message": "De assistent vraagt eerst toestemming voordat deze handelt, direct in het transcript."
+  },
+  "page.ai.craftforj.confCaption": {
+    "message": "craftforJ werkt alleen in de ontwikkelomgeving. Open het met {alt} + {shift} + {d} en schakel over naar het tabblad AI-assistent."
+  },
+  "page.ai.start.eyebrow": {
+    "message": "Aan de slag"
+  },
+  "page.ai.start.title": {
+    "message": "Vraag om één scherm met een test\n"
+  },
+  "page.ai.start.lead": {
+    "message": "Kies een scherm dat je deze week anders zelf zou bouwen. webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de hele app, inclusief schermen, in Java."
+  },
+  "page.ai.start.step1": {
+    "message": "Installeer de plug-in"
+  },
+  "page.ai.start.step2.title": {
+    "message": "Genereer of open een webforJ-project"
+  },
+  "page.ai.start.step2.text": {
+    "message": "Vraag de MCP-server om een project of open een bestaand project."
+  },
+  "page.ai.start.step3.title": {
+    "message": "Vraag in één prompt om de view en de bijbehorende TestBed-test."
+  },
+  "page.ai.start.step3.text": {
+    "message": "Beschrijf het gedrag dat je belangrijk vindt, zodat de test dit controleert."
+  },
+  "page.ai.start.step4": {
+    "message": "Voer {code} uit en lees het resultaat"
+  },
+  "page.ai.start.docsLabel": {
+    "message": "Documentatie voor AI-tools"
+  },
+  "page.ai.start.home": {
+    "message": "Terug naar de startpagina van de documentatie"
+  },
+  "page.ai.meta.title": {
+    "message": "AI-tools voor webforJ: een AI-ontwikkelcyclus voor Java-webapps"
+  },
+  "page.ai.meta.description": {
+    "message": "De webforJ AI-plug-in met zijn MCP-server en Agent Skills, de TestBed en de craftforJ Assistant bieden AI-ontwikkeltools een cyclus van schrijven, controleren en beoordelen voor Java-webapps."
+  },
+  "page.craftforj.panels.inspector.tab": {
+    "message": "Inspecteur"
+  },
+  "page.craftforj.panels.inspector.title": {
+    "message": "De componentenboom die je Java heeft opgebouwd"
+  },
+  "page.craftforj.panels.inspector.text": {
+    "message": "De Inspector toont je componenten, niet de markup die de browser heeft gerenderd. Een Composite wordt weergegeven als de klasse die je hebt geschreven, met de onderliggende componenten in de volgorde waarin webforJ ze bevat."
+  },
+  "page.craftforj.panels.inspector.point1": {
+    "message": "Druk op Alt+Shift+C en klik ergens op de pagina om het in de boomstructuur te selecteren."
+  },
+  "page.craftforj.panels.inspector.point2": {
+    "message": "Wijzig een eigenschap in de zijbalk en de draaiende app wordt direct bijgewerkt."
+  },
+  "page.craftforj.panels.inspector.point3": {
+    "message": "Traceer een component naar de Java-regel die deze heeft aangemaakt."
+  },
+  "page.craftforj.panels.inspector.docLabel": {
+    "message": "Componenten inspecteren"
+  },
+  "page.craftforj.panels.inspector.view1": {
+    "message": "Kies een component"
+  },
+  "page.craftforj.panels.inspector.alt1": {
+    "message": "Video: een component selecteren in de actieve app selecteert deze in de craftforJ-componentenboom"
+  },
+  "page.craftforj.panels.inspector.view2": {
+    "message": "Eigenschap bewerken"
+  },
+  "page.craftforj.panels.inspector.alt2": {
+    "message": "Video: een eigenschap wijzigen in de craftforJ-zijbalk werkt de draaiende app bij"
+  },
+  "page.craftforj.panels.sourceChanges.tab": {
+    "message": "Wijzigingen toepassen"
+  },
+  "page.craftforj.panels.sourceChanges.title": {
+    "message": "Bekijk de diff en schrijf deze daarna in Java\n"
+  },
+  "page.craftforj.panels.sourceChanges.text": {
+    "message": "Elke eigenschap die je wijzigt, wordt vastgelegd als een openstaande wijziging. Druk op Cmd/Ctrl+S om ze per bestand te bekijken, met de oude en nieuwe waarde en de diff van het bestand. Er wordt niets opgeslagen totdat je de wijzigingen toepast."
+  },
+  "page.craftforj.panels.sourceChanges.point1": {
+    "message": "Wijzigingen in behandeling blijven behouden na het vernieuwen van de pagina en bij een routewijziging."
+  },
+  "page.craftforj.panels.sourceChanges.point2": {
+    "message": "Breng de wijziging aan bij het gebruik voor één scherm, of bij de definitie voor alle schermen die deze gebruiken."
+  },
+  "page.craftforj.panels.sourceChanges.point3": {
+    "message": "Cmd/Ctrl+Z maakt een wijziging ongedaan, ook als die al naar je bestanden is geschreven."
+  },
+  "page.craftforj.panels.sourceChanges.docLabel": {
+    "message": "Wijzigingen toepassen"
+  },
+  "page.craftforj.panels.sourceChanges.view1": {
+    "message": "Opslaan in bron"
+  },
+  "page.craftforj.panels.sourceChanges.alt1": {
+    "message": "Video: wijzigingen in craftforJ controleren en opslaan in de Java-broncode"
+  },
+  "page.craftforj.panels.routes.tab": {
+    "message": "Routes"
+  },
+  "page.craftforj.panels.routes.title": {
+    "message": "De routeringstabel, live"
+  },
+  "page.craftforj.panels.routes.text": {
+    "message": "Het tabblad Routes toont de routingtabel in de hiërarchie waarin de router deze bijhoudt, met de actieve route gemarkeerd. Dynamisch geregistreerde routes verschijnen naast geannoteerde routes."
+  },
+  "page.craftforj.panels.routes.point1": {
+    "message": "Navigeer naar een willekeurige route vanuit craftforJ. Je lifecycle observers worden uitgevoerd zoals bij een gebruiker."
+  },
+  "page.craftforj.panels.routes.point2": {
+    "message": "Elke route heeft een badge voor de beveiligingsannotatie die erop is gedeclareerd."
+  },
+  "page.craftforj.panels.routes.point3": {
+    "message": "Wijzig een toegangsregel en craftforJ schrijft de annotatie in de routeklasse."
+  },
+  "page.craftforj.panels.routes.docLabel": {
+    "message": "Routes"
+  },
+  "page.craftforj.panels.routes.view1": {
+    "message": "Ga naar een route"
+  },
+  "page.craftforj.panels.routes.alt1": {
+    "message": "Video: navigeren naar een route vanuit het tabblad Routes van craftforJ"
+  },
+  "page.craftforj.panels.routes.view2": {
+    "message": "Stel een toegangsregel in"
+  },
+  "page.craftforj.panels.routes.alt2": {
+    "message": "Video: een beveiligingsannotatie kiezen voor een route op het tabblad Routes van craftforJ"
+  },
+  "page.craftforj.panels.theme.tab": {
+    "message": "Thema"
+  },
+  "page.craftforj.panels.theme.title": {
+    "message": "Wijzig het thema van de app terwijl deze actief is\n"
+  },
+  "page.craftforj.panels.theme.text": {
+    "message": "Het tabblad Thema werkt met de DWC-ontwerptokens die je app al gebruikt, zodat één wijziging geldt voor elk component dat het token gebruikt. Met de bedieningselementen pas je het kleurenpalet, oppervlakken, randen en hoeken, typografie en tussenruimte aan."
+  },
+  "page.craftforj.panels.theme.point1": {
+    "message": "Pas de lichte modus, donkere modus of beide aan en wissel ertussen in de app."
+  },
+  "page.craftforj.panels.theme.point2": {
+    "message": "Start met een voorinstelling zoals App Default of Portico."
+  },
+  "page.craftforj.panels.theme.point3": {
+    "message": "Opslaan voegt het thema toe aan je stylesheet, zodat het met je app wordt meegeleverd."
+  },
+  "page.craftforj.panels.theme.docLabel": {
+    "message": "Thema"
+  },
+  "page.craftforj.panels.theme.view1": {
+    "message": "Thema-instellingen"
+  },
+  "page.craftforj.panels.theme.alt1": {
+    "message": "Video: het thema van de actieve app wijzigen met de themacontroles van craftforJ"
+  },
+  "page.craftforj.panels.ai.tab": {
+    "message": "AI-assistent"
+  },
+  "page.craftforj.panels.ai.title": {
+    "message": "Een agent die compileert voordat je hem ziet"
+  },
+  "page.craftforj.panels.ai.text": {
+    "message": "De assistent is een codeeragent in je actieve app. Hij schrijft Java, stuurt elke klaargezette wijziging naar een echte Java-compiler en lost fouten zelf op aan de hand van de foutmeldingen, zodat alles wat je beoordeelt al compileert."
+  },
+  "page.craftforj.panels.ai.point1": {
+    "message": "Kies hoeveel het zelfstandig doet: eerst toestemming vragen, wijzigingen automatisch toepassen of autonoom werken."
+  },
+  "page.craftforj.panels.ai.point2": {
+    "message": "Gebruik een API-sleutel voor een ondersteunde provider of een lokaal draaiend model."
+  },
+  "page.craftforj.panels.ai.point3": {
+    "message": "Het communiceert vanuit de browser met je provider, zonder relay of proxy."
+  },
+  "page.craftforj.panels.ai.docLabel": {
+    "message": "AI-assistent"
+  },
+  "page.craftforj.panels.ai.view1": {
+    "message": "Een gesprek"
+  },
+  "page.craftforj.panels.ai.alt1": {
+    "message": "Video: een gesprek met de craftforJ AI-assistent die de actieve app aanpast"
+  },
+  "page.craftforj.panels.appInfo.tab": {
+    "message": "App-info"
+  },
+  "page.craftforj.panels.appInfo.title": {
+    "message": "Waar je app echt op draait"
+  },
+  "page.craftforj.panels.appInfo.text": {
+    "message": "App-info toont de versies waarmee de app draait, die niet altijd overeenkomen met wat je pom.xml vermeldt. Het gaat om webforJ en BBj Services, de Java-runtime, het besturingssysteem en de projectroot."
+  },
+  "page.craftforj.panels.appInfo.point1": {
+    "message": "De projectmap is waar craftforJ je bronbestanden zoekt."
+  },
+  "page.craftforj.panels.appInfo.point2": {
+    "message": "De Java-runtime bepaalt hoe grondig wijzigingen van de assistent worden gevalideerd. Voor volledige validatie is een JDK vereist."
+  },
+  "page.craftforj.panels.appInfo.docLabel": {
+    "message": "App-info"
+  },
+  "page.craftforj.panels.appInfo.view1": {
+    "message": "App-info"
+  },
+  "page.craftforj.panels.appInfo.alt1": {
+    "message": "Het paneel App-info met de webforJ-versie, projectroot, Java-runtime en het besturingssysteem"
+  },
+  "page.craftforj.shortcuts.open": {
+    "message": "Openen of sluiten"
+  },
+  "page.craftforj.shortcuts.pick": {
+    "message": "Kies een component"
+  },
+  "page.craftforj.shortcuts.review": {
+    "message": "Wijzigingen bekijken"
+  },
+  "page.craftforj.shortcuts.undo": {
+    "message": "Wijziging ongedaan maken"
+  },
+  "page.craftforj.loop.open.title": {
+    "message": "Openen"
+  },
+  "page.craftforj.loop.open.text": {
+    "message": "Klik op de triggerknop boven je app of druk ergens in de app op Alt+Shift+D."
+  },
+  "page.craftforj.loop.pick.title": {
+    "message": "Kiezen"
+  },
+  "page.craftforj.loop.pick.text": {
+    "message": "Druk op Alt+Shift+C, beweeg de muisaanwijzer over een component en klik erop. De boomstructuur selecteert het en de zijbalk toont de eigenschappen ervan."
+  },
+  "page.craftforj.loop.change.title": {
+    "message": "Wijzigen"
+  },
+  "page.craftforj.loop.change.text": {
+    "message": "Bewerk een eigenschap. De actieve app wordt direct bijgewerkt, terwijl je bestanden ongewijzigd blijven."
+  },
+  "page.craftforj.loop.keep.title": {
+    "message": "Behouden"
+  },
+  "page.craftforj.loop.keep.text": {
+    "message": "Bekijk de wijziging als diff en pas deze toe op het oorspronkelijke Java-bestand."
+  },
+  "page.craftforj.guards.settings.title": {
+    "message": "Twee instellingen, beide verplicht"
+  },
+  "page.craftforj.guards.settings.text": {
+    "message": "craftforJ vereist webforj.debug en webforj.devtools.craftforj.enabled. Geen van beide doet op zichzelf iets."
+  },
+  "page.craftforj.guards.local.title": {
+    "message": "Standaard lokale toegang"
+  },
+  "page.craftforj.guards.local.text": {
+    "message": "Alleen een browser op de machine waarop de app draait, kan deze bereiken totdat je een andere machine opgeeft in hosts-allowed."
+  },
+  "page.craftforj.guards.http.title": {
+    "message": "Geen extra HTTP-oppervlak"
+  },
+  "page.craftforj.guards.http.text": {
+    "message": "Het voegt geen endpoint, servlet of filter toe. Het werkt via de verbinding die je app al heeft."
+  },
+  "page.craftforj.guards.compiles.title": {
+    "message": "Schrijft alleen code die compileert\n"
+  },
+  "page.craftforj.guards.compiles.text": {
+    "message": "Een verwijdering uit de broncode wordt alleen opgeslagen als het resultaat nog compileert; bestanden worden nooit verwijderd."
+  },
+  "page.craftforj.docs.overview.label": {
+    "message": "Overzicht"
+  },
+  "page.craftforj.docs.overview.text": {
+    "message": "Wat craftforJ is en wat het je biedt"
+  },
+  "page.craftforj.docs.gettingStarted.label": {
+    "message": "Aan de slag"
+  },
+  "page.craftforj.docs.gettingStarted.text": {
+    "message": "De afhankelijkheid, de instellingen en het openen ervan"
+  },
+  "page.craftforj.docs.inspector.label": {
+    "message": "Componenten inspecteren"
+  },
+  "page.craftforj.docs.inspector.text": {
+    "message": "De boom, selectie, eigenschappen en de bronviewer"
+  },
+  "page.craftforj.docs.changes.label": {
+    "message": "Wijzigingen toepassen"
+  },
+  "page.craftforj.docs.changes.text": {
+    "message": "Wijzigingen in behandeling, de beoordeling, ongedaan maken en opnieuw uitvoeren"
+  },
+  "page.craftforj.docs.routes.label": {
+    "message": "Routes"
+  },
+  "page.craftforj.docs.routes.text": {
+    "message": "De routeringstabel, navigatie en toegangsregels"
+  },
+  "page.craftforj.docs.theme.label": {
+    "message": "Thema"
+  },
+  "page.craftforj.docs.theme.text": {
+    "message": "Ontwerptokens, voorinstellingen en opslaan in je stylesheet"
+  },
+  "page.craftforj.docs.ai.label": {
+    "message": "AI-assistent"
+  },
+  "page.craftforj.docs.ai.text": {
+    "message": "De agent, de goedkeuringen en een model kiezen"
+  },
+  "page.craftforj.docs.appInfo.label": {
+    "message": "App-info"
+  },
+  "page.craftforj.docs.appInfo.text": {
+    "message": "Versies, de Java runtime en de project root"
+  },
+  "page.craftforj.docs.configuration.label": {
+    "message": "Configuratie"
+  },
+  "page.craftforj.docs.configuration.text": {
+    "message": "Elke eigenschap, de standaardwaarde en de functievlaggen"
+  },
+  "page.craftforj.docs.security.label": {
+    "message": "Beveiliging"
+  },
+  "page.craftforj.docs.security.text": {
+    "message": "Wat het kan bereiken en hoe je controleert of het uitstaat"
+  },
+  "page.craftforj.hero.eyebrow": {
+    "message": "De visuele editor voor webforJ"
+  },
+  "page.craftforj.hero.title1": {
+    "message": "Bekijk de app die je met Java hebt gebouwd."
+  },
+  "page.craftforj.hero.title2": {
+    "message": "Pas het aan terwijl het actief is."
+  },
+  "page.craftforj.hero.lead": {
+    "message": "craftforJ draait in ontwikkelmodus binnen je app. Het toont de componentenstructuur die je code heeft gemaakt, laat je eigenschappen live aanpassen en schrijft de wijzigingen die je behoudt terug naar het Java-bestand waarin ze zijn gemaakt."
+  },
+  "page.craftforj.hero.cta": {
+    "message": "Aan de slag"
+  },
+  "page.craftforj.hero.docs": {
+    "message": "Lees de documentatie"
+  },
+  "page.craftforj.hero.shortcutsTitle": {
+    "message": "Vier sneltoetsen dekken de lus"
+  },
+  "page.craftforj.hero.shotAlt": {
+    "message": "craftforJ geopend boven een actieve app, met AppNav geselecteerd in de componentenboom en de eigenschappen ervan in de zijbalk\n"
+  },
+  "page.craftforj.loop.eyebrow": {
+    "message": "Hoe het werkt"
+  },
+  "page.craftforj.loop.title1": {
+    "message": "Het leest je app."
+  },
+  "page.craftforj.loop.title2": {
+    "message": "via webforJ zelf"
+  },
+  "page.craftforj.loop.lead": {
+    "message": "Daarom beschrijft het de app in de termen waarin je die hebt geschreven. De boomstructuur toont je componenten, de eigenschappen zijn de eigenschappen die je componenten declareren en de routes zijn de routes die je router heeft geregistreerd, met de toegangsregels waarmee je ze hebt geannoteerd."
+  },
+  "page.craftforj.tour.video": {
+    "message": "Video"
+  },
+  "page.craftforj.tour.screenshot": {
+    "message": "Schermafbeelding"
+  },
+  "page.craftforj.tour.viewsLabel": {
+    "message": "{tab} weergaven"
+  },
+  "page.craftforj.tour.count": {
+    "message": "{count} van {total}"
+  },
+  "page.craftforj.tour.docLink": {
+    "message": "{label}-documentatie"
+  },
+  "page.craftforj.tour.eyebrow": {
+    "message": "Rondleiding door de panelen"
+  },
+  "page.craftforj.tour.title1": {
+    "message": "De panelen,"
+  },
+  "page.craftforj.tour.title2": {
+    "message": "over een echte app"
+  },
+  "page.craftforj.tour.tabsLabel": {
+    "message": "craftforJ-panelen"
+  },
+  "page.craftforj.source.eyebrow": {
+    "message": "Terug naar de bron"
+  },
+  "page.craftforj.source.title1": {
+    "message": "Het bewerkt Java,"
+  },
+  "page.craftforj.source.title2": {
+    "message": "geen kopie ervan"
+  },
+  "page.craftforj.source.lead": {
+    "message": "Neem een formulier met de knoppen Opslaan en Annuleren. Selecteer Opslaan, klik er met de rechtermuisknop op in de boomstructuur en kies Verwijderen uit bron. De declaratie, het thema, de listener, de plek ervan in de add()-aanroep en de ButtonTheme-import die nergens anders wordt gebruikt, verdwijnen. Annuleren blijft staan."
+  },
+  "page.craftforj.source.before": {
+    "message": "Voor"
+  },
+  "page.craftforj.source.after": {
+    "message": "Na verwijdering uit de bron"
+  },
+  "page.craftforj.start.eyebrow": {
+    "message": "Aan de slag"
+  },
+  "page.craftforj.start.title1": {
+    "message": "Schakel in"
+  },
+  "page.craftforj.start.title2": {
+    "message": "in drie stappen"
+  },
+  "page.craftforj.start.lead": {
+    "message": "craftforJ wordt meegeleverd met webforJ, dus je hoeft niets apart te downloaden. Projecten die zijn gemaakt met startforJ of op basis van een webforJ-archetype hebben het al ingeschakeld. Start de app en ga direct naar stap drie."
+  },
+  "page.craftforj.start.step1.title": {
+    "message": "Voeg de afhankelijkheid toe"
+  },
+  "page.craftforj.start.step1.text": {
+    "message": "Voeg webforj-devtools toe aan je project als het er nog niet in staat."
+  },
+  "page.craftforj.start.step2.title": {
+    "message": "Debugmodus inschakelen en craftforJ"
+  },
+  "page.craftforj.start.step2.text": {
+    "message": "Stel beide eigenschappen in webforj.conf in, of in application.properties voor een Spring-project. craftforJ werkt alleen als beide zijn ingeschakeld."
+  },
+  "page.craftforj.start.step3.title": {
+    "message": "Herstarten, opnieuw laden en openen"
+  },
+  "page.craftforj.start.step3.text": {
+    "message": "Open de app op de machine waarop deze draait. Er verschijnt een triggerknop boven je app. Klik erop of druk op {keys}, waar je ook bent in de app. Met dezelfde sneltoets sluit je craftforJ weer."
+  },
+  "page.craftforj.start.dockAlt": {
+    "message": "craftforJ vastgezet aan de rechterrand van een app-pagina"
+  },
+  "page.craftforj.start.dockCaption": {
+    "message": "craftforJ zweeft standaard boven je app. Sleep het naar een rand om het daar vast te zetten, of verplaats het naar een eigen browservenster of -tabblad voor een tweede monitor."
+  },
+  "page.craftforj.next.eyebrow": {
+    "message": "Waar nu heen?"
+  },
+  "page.craftforj.next.title1": {
+    "message": "Elk paneel heeft een eigen pagina"
+  },
+  "page.craftforj.next.title2": {
+    "message": "in de documentatie"
+  },
+  "page.craftforj.next.lead": {
+    "message": "webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de hele app, inclusief schermen, in Java. craftforJ wordt meegeleverd en werkt met de app die je draait."
+  },
+  "page.craftforj.next.assistant": {
+    "message": "De craftforJ-assistent"
+  },
+  "page.craftforj.next.home": {
+    "message": "Terug naar de startpagina van de documentatie"
+  },
+  "page.craftforj.meta.title": {
+    "message": "craftforJ: de visuele editor voor je draaiende webforJ-app"
+  },
+  "page.craftforj.meta.description": {
+    "message": "craftforJ is de visuele editor voor webforJ. Het toont de componentenboom van je actieve webforJ-app, laat je eigenschappen live aanpassen en schrijft de wijzigingen die je behoudt terug naar je Java-broncode."
+  },
+  "page.designKit.palette.primary": {
+    "message": "Je merkkleur"
+  },
+  "page.designKit.palette.default": {
+    "message": "Neutraal, getint met de primaire kleur"
+  },
+  "page.designKit.palette.success": {
+    "message": "Status"
+  },
+  "page.designKit.palette.warning": {
+    "message": "Status"
+  },
+  "page.designKit.palette.danger": {
+    "message": "Status"
+  },
+  "page.designKit.palette.info": {
+    "message": "Secundaire nadruk"
+  },
+  "page.designKit.palette.gray": {
+    "message": "Puur grijs, zonder tint"
+  },
+  "page.designKit.surface.level1": {
+    "message": "Achtergrond van pagina en body"
+  },
+  "page.designKit.surface.level2": {
+    "message": "Werkbalken, menubalken, kaarten"
+  },
+  "page.designKit.surface.level3": {
+    "message": "Vensters, menu's, pop-overs, dialoogvensters"
+  },
+  "page.designKit.collections.color": {
+    "message": "Kleur"
+  },
+  "page.designKit.collections.type": {
+    "message": "Typografie"
+  },
+  "page.designKit.collections.space": {
+    "message": "Tussenruimte en afmetingen"
+  },
+  "page.designKit.collections.radius": {
+    "message": "Straal"
+  },
+  "page.designKit.collections.depth": {
+    "message": "Schaduwen en oppervlakken"
+  },
+  "page.designKit.handoff.color.design": {
+    "message": "Een merkkleur"
+  },
+  "page.designKit.handoff.color.note": {
+    "message": "Alle 19 stappen van het palet worden hiervan gegenereerd."
+  },
+  "page.designKit.handoff.type.design": {
+    "message": "Een typografische schaal"
+  },
+  "page.designKit.handoff.type.note": {
+    "message": "Afmetingen in rem, m is de standaard."
+  },
+  "page.designKit.handoff.space.design": {
+    "message": "Een ritme voor de tussenruimte"
+  },
+  "page.designKit.handoff.space.note": {
+    "message": "Ruimte tussen componenten, in rem."
+  },
+  "page.designKit.handoff.theme.design": {
+    "message": "Licht en donker"
+  },
+  "page.designKit.handoff.theme.note": {
+    "message": "Volgt de OS-voorkeur."
+  },
+  "page.designKit.ai.step1.title": {
+    "message": "Leest het ontwerp"
+  },
+  "page.designKit.ai.step1.text": {
+    "message": "Het geeft je assistent het frame dat je aanwijst: de indeling, componenten en variabelen. De variabelen in de kit gebruiken de DWC-tokennamen, zodat het ontwerp al dezelfde taal spreekt als de code."
+  },
+  "page.designKit.ai.step2.title": {
+    "message": "Toetst het aan webforJ"
+  },
+  "page.designKit.ai.step2.text": {
+    "message": "Het geeft antwoord op basis van het echte framework: welke component je moet gebruiken, welke stylingmogelijkheden er zijn en of elke token in de CSS bestaat."
+  },
+  "page.designKit.ai.step3.who": {
+    "message": "Je assistent"
+  },
+  "page.designKit.ai.step3.title": {
+    "message": "Schrijft het scherm in Java"
+  },
+  "page.designKit.ai.step3.text": {
+    "message": "Als beide zijn verbonden, bouwt het de weergave op met webforJ-componenten en dezelfde tokens als de ontwerper, waarna je het resultaat met het frame vergelijkt."
+  },
+  "page.designKit.next.overview.title": {
+    "message": "Overzicht van de vormgeving"
+  },
+  "page.designKit.next.overview.text": {
+    "message": "Het DWC-designsysteem en de kit."
+  },
+  "page.designKit.next.themes.title": {
+    "message": "Thema's"
+  },
+  "page.designKit.next.themes.text": {
+    "message": "De lichte, donkere en puur donkere thema’s en hoe je ze overschrijft."
+  },
+  "page.designKit.next.colors.title": {
+    "message": "Kleuren"
+  },
+  "page.designKit.next.colors.text": {
+    "message": "Zeven paletten van elk 19 tinten, op basis van één startkleur."
+  },
+  "page.designKit.next.typography.title": {
+    "message": "Typografie"
+  },
+  "page.designKit.next.typography.text": {
+    "message": "Lettertypefamilies, -groottes, -diktes en regelhoogtes."
+  },
+  "page.designKit.next.sizingAndSpacing.title": {
+    "message": "Grootte en tussenruimte"
+  },
+  "page.designKit.next.sizingAndSpacing.text": {
+    "message": "rem schaalt de grootte en ruimte."
+  },
+  "page.designKit.next.borders.title": {
+    "message": "Randen"
+  },
+  "page.designKit.next.borders.text": {
+    "message": "Breedtes, kleuren en een radiusschaal op basis van één uitgangswaarde."
+  },
+  "page.designKit.next.shadows.title": {
+    "message": "Schaduwen"
+  },
+  "page.designKit.next.shadows.text": {
+    "message": "Zes stappen die zich aanpassen aan de lichte en donkere modus."
+  },
+  "page.designKit.next.surfaces.title": {
+    "message": "Oppervlakken"
+  },
+  "page.designKit.next.surfaces.text": {
+    "message": "Drie niveaus voor de UI-hiërarchie."
+  },
+  "page.designKit.next.cssVariables.title": {
+    "message": "CSS-variabelen"
+  },
+  "page.designKit.next.cssVariables.text": {
+    "message": "Hoe tokens worden ingesteld en overschreven."
+  },
+  "page.designKit.carousel.slideAlt": {
+    "message": "{name}-scherm van de app {app}. {caption}"
+  },
+  "page.designKit.carousel.label": {
+    "message": "Appschermen ontworpen met de kit"
+  },
+  "page.designKit.carousel.position": {
+    "message": "{n} van {total}"
+  },
+  "page.designKit.carousel.previous": {
+    "message": "Vorig scherm"
+  },
+  "page.designKit.carousel.count": {
+    "message": "{n} van {total}"
+  },
+  "page.designKit.carousel.next": {
+    "message": "Volgend scherm"
+  },
+  "page.designKit.readout.token": {
+    "message": "Token"
+  },
+  "page.designKit.readout.value": {
+    "message": "Uiteindelijke waarde"
+  },
+  "page.designKit.readout.text": {
+    "message": "Tekst erop"
+  },
+  "page.designKit.color.title": {
+    "message": "Kleur"
+  },
+  "page.designKit.color.text": {
+    "message": "Zeven paletten met 19 stappen, elk gegenereerd op basis van één basiskleur. Stap 5 is altijd het donkerst en stap 95 het lichtst. Selecteer een kleurstaal om deze te bekijken."
+  },
+  "page.designKit.type.sample": {
+    "message": "Wijs chauffeur toe"
+  },
+  "page.designKit.type.title": {
+    "message": "Typografie"
+  },
+  "page.designKit.type.text": {
+    "message": "Een grootteschaal in rem, waarbij m de standaardgrootte is voor de meeste componenten, en een gewichtsschaal van dun tot zwart."
+  },
+  "page.designKit.space.title": {
+    "message": "Ruimte en afmetingen"
+  },
+  "page.designKit.space.text": {
+    "message": "Space bepaalt de ruimte tussen componenten. Size bepaalt de breedte en hoogte van componenten; voor bijna alle componenten is m de standaard. De ruimtebalken worden vier keer zo groot weergegeven."
+  },
+  "page.designKit.radius.title": {
+    "message": "Straal"
+  },
+  "page.designKit.radius.text": {
+    "message": "Elke stap schaalt mee vanaf één seed, --dwc-border-radius-seed. Pas de seed aan en het hele radiussysteem volgt."
+  },
+  "page.designKit.shadow.layer": {
+    "message": "{count} lagen"
+  },
+  "page.designKit.shadow.layers": {
+    "message": "{count} lagen"
+  },
+  "page.designKit.depth.title": {
+    "message": "Schaduwen en oppervlakken"
+  },
+  "page.designKit.depth.text": {
+    "message": "Schaduwen laten zien wat bovenop ligt. Drie vlakken structureren de hiërarchie, van pagina tot dialoogvenster. Beide passen zich aan de lichte en donkere modus aan."
+  },
+  "page.designKit.hero.eyebrow": {
+    "message": "Figma-ontwerpset"
+  },
+  "page.designKit.hero.title1": {
+    "message": "Ontwerp met dezelfde tokens"
+  },
+  "page.designKit.hero.title2": {
+    "message": "Je app draait op\n"
+  },
+  "page.designKit.hero.lead": {
+    "message": "De DWC Design Kit is de officiële Figma-bron voor het ontwerpen van webforJ-apps, zodat ontwerpers en ontwikkelaars dezelfde tokens en componenten gebruiken."
+  },
+  "page.designKit.hero.openKit": {
+    "message": "Open de kit in Figma\n"
+  },
+  "page.designKit.hero.styling": {
+    "message": "Lees de stijlgids"
+  },
+  "page.designKit.facts.components.term": {
+    "message": "Componenten"
+  },
+  "page.designKit.facts.components.text": {
+    "message": "Elke DWC-component, met thema's, uitbreidingen en statussen"
+  },
+  "page.designKit.facts.tokens.term": {
+    "message": "Tokens"
+  },
+  "page.designKit.facts.tokens.text": {
+    "message": "Paletten, typografie, tussenruimte en schaduwen als Figma-variabelen en -stijlen"
+  },
+  "page.designKit.facts.modes.term": {
+    "message": "Modi"
+  },
+  "page.designKit.facts.modes.text": {
+    "message": "Licht en donker, zoals de app ze weergeeft in webforJ 26 en hoger\n"
+  },
+  "page.designKit.tokens.kicker": {
+    "message": "Variabelen"
+  },
+  "page.designKit.tokens.title1": {
+    "message": "De waarden in de kit"
+  },
+  "page.designKit.tokens.title2": {
+    "message": "Staan de waarden in de code?"
+  },
+  "page.designKit.tokens.lead": {
+    "message": "De kit bevat de DWC-tokens als Figma-variabelen. In de app zijn het aangepaste CSS-eigenschappen. Alles hieronder komt uit de {code}-variabelen waarop deze pagina draait, met de waarde die de browser voor elk ervan bepaalt. Schakel de site over naar de donkere modus en ze volgen, net als in de donkere modus van de kit."
+  },
+  "page.designKit.tokens.collectionsLabel": {
+    "message": "Tokenverzamelingen"
+  },
+  "page.designKit.tokens.collections": {
+    "message": "Collecties"
+  },
+  "page.designKit.kitToApp.kicker": {
+    "message": "Van kit naar app"
+  },
+  "page.designKit.kitToApp.title1": {
+    "message": "Ontworpen met de kit,"
+  },
+  "page.designKit.kitToApp.title2": {
+    "message": "Gebouwd met webforJ-componenten"
+  },
+  "page.designKit.kitToApp.lead": {
+    "message": "De schermen bovenaan deze pagina zijn ontworpen met de kit. Een scherm dat met de kit is ontworpen, gebruikt de componenten en tokens die de app weergeeft. Daardoor hoeft de ene visuele taal niet naar de andere te worden vertaald wanneer je van mock-up naar Java-code gaat."
+  },
+  "page.designKit.kitToApp.showcase": {
+    "message": "Doorloop de showcase"
+  },
+  "page.designKit.together.kicker": {
+    "message": "Ontwerper en ontwikkelaar"
+  },
+  "page.designKit.together.title1": {
+    "message": "Eén overdracht,"
+  },
+  "page.designKit.together.title2": {
+    "message": "Eenmalig gekoppeld"
+  },
+  "page.designKit.together.lead": {
+    "message": "Tokens vormen het contract tussen design en code. Een ontwerper draagt een merkkleur en typografische schaal uit de kit over. De ontwikkelaar koppelt die eenmalig aan een seed en een token voor de lettergrootte, waarna elk scherm ze overneemt."
+  },
+  "page.designKit.handoff.inFigma": {
+    "message": "In Figma"
+  },
+  "page.designKit.handoff.inCode": {
+    "message": "In code"
+  },
+  "page.designKit.sides.kit.title": {
+    "message": "In de kit"
+  },
+  "page.designKit.sides.kit.item1": {
+    "message": "Elke DWC-component zoals die eruitziet in webforJ 26 en hoger, met thema's, afmetingen en statussen."
+  },
+  "page.designKit.sides.kit.item2": {
+    "message": "De kleurpaletten, typografie-, afstands- en schaduwtokens als Figma-variabelen en -stijlen."
+  },
+  "page.designKit.sides.kit.item3": {
+    "message": "Lichte en donkere modus voor componenten en tokens."
+  },
+  "page.designKit.sides.kit.item4": {
+    "message": "Nauwkeurige tussenruimte en toegankelijk kleurcontrast voor interfaces met voorspelbaar componentgedrag."
+  },
+  "page.designKit.sides.app.title": {
+    "message": "In de app"
+  },
+  "page.designKit.sides.app.seed": {
+    "message": "Stel het merk één keer in als basis. Knoppen, links en focusranden nemen dit over omdat ze het primaire kleurenpalet gebruiken."
+  },
+  "page.designKit.sides.app.theme": {
+    "message": "Registreer een licht en een donker thema en laat webforJ het besturingssysteem van de gebruiker volgen."
+  },
+  "page.designKit.ai.kicker": {
+    "message": "Bouw met AI"
+  },
+  "page.designKit.ai.title1": {
+    "message": "Vanuit het Figma-frame"
+  },
+  "page.designKit.ai.title2": {
+    "message": "naar het Java-scherm"
+  },
+  "page.designKit.ai.lead": {
+    "message": "Koppel twee MCP-servers aan je codeerassistent: die van Figma en die van webforJ. De ene leest het ontwerp, de andere kent het framework en de assistent vormt de brug ertussen."
+  },
+  "page.designKit.ai.promptLabel": {
+    "message": "Een prompt om mee te starten"
+  },
+  "page.designKit.ai.prompt": {
+    "message": "Bouw dit Figma-frame als een webforJ-weergave. Lees het frame met de Figma MCP-server, kies de componenten met de webforJ MCP-server en valideer elk --dwc-* token voordat je klaar bent."
+  },
+  "page.designKit.ai.install": {
+    "message": "Installeer de AI-plug-in"
+  },
+  "page.designKit.ai.tooling": {
+    "message": "Bekijk de AI-tools"
+  },
+  "page.designKit.getIt.kicker": {
+    "message": "Haal de kit op"
+  },
+  "page.designKit.getIt.title1": {
+    "message": "Start je volgende scherm"
+  },
+  "page.designKit.getIt.title2": {
+    "message": "in Figma"
+  },
+  "page.designKit.getIt.lead": {
+    "message": "De DWC Design Kit staat op Figma Community. webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de hele app, inclusief schermen, in Java."
+  },
+  "page.designKit.getIt.openKit": {
+    "message": "Open de kit in Figma\n"
+  },
+  "page.designKit.getIt.started": {
+    "message": "Lees hoe je aan de slag gaat"
+  },
+  "page.designKit.getIt.step1.title": {
+    "message": "Open de kit"
+  },
+  "page.designKit.getIt.step1.text": {
+    "message": "Vind de DWC Design Kit op Figma Community."
+  },
+  "page.designKit.getIt.step2.title": {
+    "message": "Ontwerp de schermen"
+  },
+  "page.designKit.getIt.step2.text": {
+    "message": "Gebruik de componenten en variabelen ervan en controleer elk scherm in de lichte en donkere modus."
+  },
+  "page.designKit.getIt.step3.title": {
+    "message": "Bouw ze in Java."
+  },
+  "page.designKit.getIt.step3.text": {
+    "message": "Gebruik dezelfde componenten in webforJ en stel je merk in met één seed."
+  },
+  "page.designKit.next.title": {
+    "message": "Lees het designsysteem"
+  },
+  "page.designKit.next.home": {
+    "message": "Terug naar de startpagina van de documentatie"
+  },
+  "page.designKit.meta.title": {
+    "message": "DWC Design Kit voor Figma: ontwerp webforJ-apps"
+  },
+  "page.designKit.meta.description": {
+    "message": "De officiële Figma-kit voor webforJ. Elke DWC-component met thema’s, afmetingen en statussen, plus kleur-, typografie-, afstands- en schaduwtokens als Figma-variabelen in lichte en donkere modus."
+  },
+  "page.intro.screens.one": {
+    "message": "Wat is webforJ?"
+  },
+  "page.intro.screens.two": {
+    "message": "Componenten en thema's"
+  },
+  "page.intro.screens.craft": {
+    "message": "craftforJ"
+  },
+  "page.intro.screens.three": {
+    "message": "Data, formulieren en beveiliging"
+  },
+  "page.intro.screens.four": {
+    "message": "Je bestaande code"
+  },
+  "page.intro.screens.five": {
+    "message": "AI-tools en volgende stops"
+  },
+  "page.intro.four.roadmap.today.phase": {
+    "message": "Vandaag"
+  },
+  "page.intro.four.roadmap.today.title": {
+    "message": "Swing op het bureaublad"
+  },
+  "page.intro.four.roadmap.today.text": {
+    "message": "Jaren aan bedrijfslogica, elke dag in bedrijf."
+  },
+  "page.intro.four.roadmap.one.phase": {
+    "message": "Stap één"
+  },
+  "page.intro.four.roadmap.one.title": {
+    "message": "Dezelfde app, in de browser\n"
+  },
+  "page.intro.four.roadmap.one.text": {
+    "message": "Webswing streamt het naar de browser zonder de bron te wijzigen."
+  },
+  "page.intro.four.roadmap.from.phase": {
+    "message": "Vanaf daar"
+  },
+  "page.intro.four.roadmap.from.title": {
+    "message": "webforJ, scherm voor scherm"
+  },
+  "page.intro.four.roadmap.from.text": {
+    "message": "Vervang Swing-schermen één voor één door webforJ."
+  },
+  "page.intro.five.mcp.version": {
+    "message": "Kies de juiste webforJ-versie\n"
+  },
+  "page.intro.five.mcp.knowledge": {
+    "message": "Zoek dingen op in de kennisbank\n"
+  },
+  "page.intro.five.mcp.scaffold": {
+    "message": "Nieuw webforJ-project aanmaken"
+  },
+  "page.intro.five.mcp.theme": {
+    "message": "Genereer een DWC-thema"
+  },
+  "page.intro.five.mcp.style": {
+    "message": "Geef DWC-componenten de juiste opmaak."
+  },
+  "page.intro.five.mcp.tokens": {
+    "message": "Werk met DWC-design tokens"
+  },
+  "page.intro.next.create.step": {
+    "message": "Aanmaken"
+  },
+  "page.intro.next.create.title": {
+    "message": "Start een project"
+  },
+  "page.intro.next.create.text": {
+    "message": "Genereer een project met startforJ of het Maven-archetype en voer het uit."
+  },
+  "page.intro.next.learn.step": {
+    "message": "Leren"
+  },
+  "page.intro.next.learn.title": {
+    "message": "Volg de tutorial"
+  },
+  "page.intro.next.learn.text": {
+    "message": "Bouw stap voor stap een werkende app, van het eerste scherm tot en met de validatie."
+  },
+  "page.intro.next.build.step": {
+    "message": "Bouwen"
+  },
+  "page.intro.next.build.title": {
+    "message": "Componenten"
+  },
+  "page.intro.next.build.text": {
+    "message": "Elk component met de bijbehorende API en live voorbeelden op de pagina."
+  },
+  "page.intro.next.explore.step": {
+    "message": "Ontdekkeren"
+  },
+  "page.intro.next.explore.title": {
+    "message": "Startpagina documentatie"
+  },
+  "page.intro.next.explore.text": {
+    "message": "Een compleet overzicht van de documentatie, gegroepeerd op basis van wat je wilt doen."
+  },
+  "page.intro.readMore": {
+    "message": "Lees meer: {topic}"
+  },
+  "page.intro.hello.afterClick": {
+    "message": "Na een klik"
+  },
+  "page.intro.hello.description": {
+    "message": "De actieve weergave toont een tekstveld met het label Hoe heet je?, een knop Zeg hallo en na een klik een succesmelding met Welkom, Lauren!"
+  },
+  "page.intro.one.kicker": {
+    "message": "Wat is webforJ?"
+  },
+  "page.intro.one.title1": {
+    "message": "Een scherm is"
+  },
+  "page.intro.one.title2": {
+    "message": "een Java-klasse"
+  },
+  "page.intro.one.codeLabel": {
+    "message": "HelloView in Java of Kotlin"
+  },
+  "page.intro.one.lede": {
+    "message": "webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de hele app, inclusief schermen, in Java."
+  },
+  "page.intro.one.route.title": {
+    "message": "Een route maakt er een pagina van."
+  },
+  "page.intro.one.route.text": {
+    "message": "Voeg {code} toe aan een klasse en deze reageert in de browser op dat adres."
+  },
+  "page.intro.one.fields.title": {
+    "message": "Componenten zijn velden."
+  },
+  "page.intro.one.fields.text": {
+    "message": "Maak ze aan met {code} en reageer op klikken met een lambda."
+  },
+  "page.intro.one.kotlin.title": {
+    "message": "Java of Kotlin."
+  },
+  "page.intro.one.kotlin.text": {
+    "message": "De Kotlin DSL bouwt hetzelfde scherm met dezelfde componenten."
+  },
+  "page.intro.one.readMore": {
+    "message": "Kotlin DSL"
+  },
+  "page.intro.tile.alt": {
+    "message": "De webforJ-component {name}"
+  },
+  "page.intro.two.kicker": {
+    "message": "Componenten en thema's"
+  },
+  "page.intro.two.title1": {
+    "message": "Componenten gebouwd"
+  },
+  "page.intro.two.title2": {
+    "message": "voor zakelijke apps."
+  },
+  "page.intro.two.lede": {
+    "message": "Velden, lijsten, dialogen, uploads, grafieken, bomen en layouts zijn inbegrepen bij webforJ. Elk is een Java-klasse die je op je scherm aanmaakt."
+  },
+  "page.intro.two.body": {
+    "message": "Theming begint met een basiskleur. Stel de primaire basiskleur in en alle 19 tinten van het palet volgen, in elk component."
+  },
+  "page.intro.two.codeLabel": {
+    "message": "Thema-basis"
+  },
+  "page.intro.two.readMore": {
+    "message": "Componenten"
+  },
+  "page.intro.craft.kicker": {
+    "message": "craftforJ"
+  },
+  "page.intro.craft.title1": {
+    "message": "Bekijk de app die je met Java hebt gebouwd."
+  },
+  "page.intro.craft.title2": {
+    "message": "Wijzig het terwijl het draait."
+  },
+  "page.intro.craft.videoLabel": {
+    "message": "craftforJ geopend over een actieve webforJ-app: een component selecteren, eigenschappen wijzigen en de wijzigingen toepassen op de Java-broncode"
+  },
+  "page.intro.craft.lede": {
+    "message": "craftforJ is de visuele editor die in de ontwikkelmodus in je app draait. Je ziet de componentenboom die je Java-code heeft gemaakt, kunt eigenschappen live aanpassen en de wijzigingen die je behoudt terugschrijven naar je Java-broncode."
+  },
+  "page.intro.craft.inspect.title": {
+    "message": "Componenten inspecteren."
+  },
+  "page.intro.craft.inspect.text": {
+    "message": "Blader door de componentenboom, selecteer een component door erop te klikken en wijzig de eigenschappen terwijl de app actief is."
+  },
+  "page.intro.craft.source.title": {
+    "message": "Schrijf wijzigingen naar de bron."
+  },
+  "page.intro.craft.source.text": {
+    "message": "Controleer je live bewerkingen als diff en pas ze toe op het oorspronkelijke Java-bestand."
+  },
+  "page.intro.craft.ai.title": {
+    "message": "De AI-assistent."
+  },
+  "page.intro.craft.ai.text": {
+    "message": "Een codeeragent in de actieve app schrijft Java-code, compileert die en past deze toe na jouw goedkeuring."
+  },
+  "page.intro.three.kicker": {
+    "message": "Data, formulieren en beveiliging"
+  },
+  "page.intro.three.title1": {
+    "message": "Formulieren, regels en toegang,"
+  },
+  "page.intro.three.title2": {
+    "message": "naast je backend."
+  },
+  "page.intro.three.codeLabel": {
+    "message": "Formulier, bean, Spring-weergave en afgeschermde route"
+  },
+  "page.intro.three.tabForm": {
+    "message": "Formulier"
+  },
+  "page.intro.three.tabBean": {
+    "message": "Boon"
+  },
+  "page.intro.three.tabSecurity": {
+    "message": "Beveiliging"
+  },
+  "page.intro.three.binding.title": {
+    "message": "Koppeling"
+  },
+  "page.intro.three.binding.text": {
+    "message": "{code} koppelt de formuliervelden aan een bean en controleert de Jakarta-validatieregels wanneer je het formulier terugschrijft."
+  },
+  "page.intro.three.spring.text": {
+    "message": "Views ontvangen je services, repositories en andere Spring-beans via constructorinjectie."
+  },
+  "page.intro.three.security.title": {
+    "message": "Beveiliging."
+  },
+  "page.intro.three.security.text": {
+    "message": "Annotaties zoals {code} beveiligen een route en de regels worden gehandhaafd voordat er een component wordt gerenderd."
+  },
+  "page.intro.three.readMore": {
+    "message": "Presentatie"
+  },
+  "page.intro.four.kicker": {
+    "message": "Je bestaande code gaat mee."
+  },
+  "page.intro.four.title1": {
+    "message": "Neem de code mee"
+  },
+  "page.intro.four.title2": {
+    "message": "Je hebt het al."
+  },
+  "page.intro.four.roadmapLabel": {
+    "message": "Van Swing naar webforJ"
+  },
+  "page.intro.four.codeLabel": {
+    "message": "Swing-weergave en webcomponent"
+  },
+  "page.intro.four.tabSwing": {
+    "message": "Swing-app"
+  },
+  "page.intro.four.tabComponent": {
+    "message": "Webcomponent"
+  },
+  "page.intro.four.lede": {
+    "message": "Met {code} plaats je een actieve Swing-, JavaFX- of SWT-app in een webforJ-weergave, zodat je die nooit in één keer hoeft te herschrijven."
+  },
+  "page.intro.four.body": {
+    "message": "{code} verpakt een aangepast HTML-element of webcomponent in een Java-klasse, met de eigenschappen, attributen en gebeurtenissen ervan in Java."
+  },
+  "page.intro.five.skillsTitle": {
+    "message": "Agentvaardigheden"
+  },
+  "page.intro.done.stamp": {
+    "message": "Rondleiding voltooid"
+  },
+  "page.intro.done.title1": {
+    "message": "Dat was de hele stack."
+  },
+  "page.intro.done.title2": {
+    "message": "Je bent klaar om te bouwen."
+  },
+  "page.intro.done.text": {
+    "message": "Je mag jezelf onofficieel gecertificeerd noemen: je hebt gezien hoe een webforJ-app wordt opgebouwd, van het eerste scherm tot de AI-tools die je helpen het volgende scherm te maken."
+  },
+  "page.intro.next.title": {
+    "message": "Je volgende halte"
+  },
+  "page.intro.five.kicker": {
+    "message": "AI-tools en wat nu?"
+  },
+  "page.intro.five.title1": {
+    "message": "Je AI-assistent volgt\n"
+  },
+  "page.intro.five.title2": {
+    "message": "webforJ-conventies."
+  },
+  "page.intro.five.codeLabel": {
+    "message": "Installeer de AI-plug-in"
+  },
+  "page.intro.five.tabTerminal": {
+    "message": "Terminal"
+  },
+  "page.intro.five.nameTerminal": {
+    "message": "Terminal"
+  },
+  "page.intro.five.lede": {
+    "message": "Met één installatie van de webforJ AI-plugin krijgt je codeerassistent de webforJ MCP-server en Agent Skills."
+  },
+  "page.intro.five.body": {
+    "message": "De server biedt live tools. De vaardigheden geven aan wanneer je ze moet gebruiken, in welke volgorde en hoe je het resultaat controleert."
+  },
+  "page.intro.five.readMore": {
+    "message": "AI-tools"
+  },
+  "page.intro.dock.label": {
+    "message": "Introschermen"
+  },
+  "page.intro.dock.previous": {
+    "message": "Vorig scherm"
+  },
+  "page.intro.dock.count": {
+    "message": "{current} van {total}"
+  },
+  "page.intro.dock.screen": {
+    "message": "Scherm {number}: {name}"
+  },
+  "page.intro.dock.next": {
+    "message": "Volgend scherm"
+  },
+  "page.intro.meta.title": {
+    "message": "webforJ in 6 schermen: een korte introductie"
+  },
+  "page.intro.meta.description": {
+    "message": "Een rondleiding in zes schermen door webforJ, het full-stack Java-framework voor zakelijke webapps: schermen als Java-klassen, componenten en thema’s, de visuele editor craftforJ, formulieren en beveiliging, Swing- en webcomponenten, en AI-tools."
+  },
+  "page.kotlinDsl.concepts.naming.title": {
+    "message": "Builders vernoemd naar componenten"
+  },
+  "page.kotlinDsl.concepts.naming.text": {
+    "message": "Elk component heeft een functie met de naam van de klasse in camelCase. De meeste accepteren vóór het blok de opties die je het vaakst instelt, zoals een label of placeholder."
+  },
+  "page.kotlinDsl.concepts.nesting.title": {
+    "message": "Geneste blokken"
+  },
+  "page.kotlinDsl.concepts.nesting.text": {
+    "message": "Componenten met onderliggende componenten accepteren geneste DSL-aanroepen binnen hun blok, zodat de code de structuur van het scherm volgt."
+  },
+  "page.kotlinDsl.concepts.events.title": {
+    "message": "Gebeurtenissen als lambda's"
+  },
+  "page.kotlinDsl.concepts.events.text": {
+    "message": "Listeners gebruiken methoden met het voorvoegsel on die een lambda accepteren, zoals onClick en onModify."
+  },
+  "page.kotlinDsl.concepts.scope.title": {
+    "message": "Scopeveiligheid"
+  },
+  "page.kotlinDsl.concepts.scope.text": {
+    "message": "Kind-elementen kunnen alleen worden toegevoegd aan componenten die deze ondersteunen. Per ongeluk toevoegen aan een buitenste scope leidt tot een compileerfout."
+  },
+  "page.kotlinDsl.concepts.styles.title": {
+    "message": "Stijlen en klassennamen"
+  },
+  "page.kotlinDsl.concepts.styles.text": {
+    "message": "De eigenschap styles biedt toegang tot CSS-eigenschappen via blokhaken, net als setStyle() in Java. Klassenamen voeg je toe met +=."
+  },
+  "page.kotlinDsl.concepts.java.title": {
+    "message": "Naast je Java-code"
+  },
+  "page.kotlinDsl.concepts.java.text": {
+    "message": "Kotlin wordt gecompileerd naar JVM-bytecode. Gebruik Kotlin-composities vanuit Java-klassen en nest Java-componenten in DSL-blokken met add()."
+  },
+  "page.kotlinDsl.start.steps.dependency.title": {
+    "message": "Afhankelijkheden toevoegen"
+  },
+  "page.kotlinDsl.start.steps.dependency.text": {
+    "message": "Voeg de webforJ Kotlin DSL-module en de Kotlin-standaardbibliotheek toe aan je pom.xml."
+  },
+  "page.kotlinDsl.start.steps.plugin.title": {
+    "message": "Voeg de Kotlin Maven-plugin toe\n"
+  },
+  "page.kotlinDsl.start.steps.plugin.text": {
+    "message": "Het compileert je Kotlin- en Java-broncode in één build. Een aparte Kotlin-installatie is niet nodig."
+  },
+  "page.kotlinDsl.start.steps.files.title": {
+    "message": "Zet Kotlin naast je Java"
+  },
+  "page.kotlinDsl.start.steps.files.text": {
+    "message": "Kotlin-bestanden kunnen in hun eigen bronmap staan of in dezelfde map als je Java-bestanden."
+  },
+  "page.kotlinDsl.start.steps.view.title": {
+    "message": "Schrijf een view en compileer\n"
+  },
+  "page.kotlinDsl.start.steps.view.text": {
+    "message": "Schrijf een view met de builders. Maven compileert daarna je Kotlin naast je Java-code."
+  },
+  "page.kotlinDsl.hero.eyebrow": {
+    "message": "Kotlin DSL voor webforJ"
+  },
+  "page.kotlinDsl.hero.title1": {
+    "message": "Schrijf het in Kotlin."
+  },
+  "page.kotlinDsl.hero.title2": {
+    "message": "Behoud je Java."
+  },
+  "page.kotlinDsl.hero.lead": {
+    "message": "De Kotlin DSL bouwt webforJ-interfaces met beknopte, typeveilige syntaxis. In plaats van imperatieve aanroepen schrijf je declaratieve code die leest als een beschrijving van het scherm en in hetzelfde project als je Java wordt gecompileerd."
+  },
+  "page.kotlinDsl.hero.add": {
+    "message": "Voeg het toe aan een project\n"
+  },
+  "page.kotlinDsl.hero.using": {
+    "message": "Met de DSL"
+  },
+  "page.kotlinDsl.names.title": {
+    "message": "De klasse die je kent, als builder"
+  },
+  "page.kotlinDsl.names.becomes": {
+    "message": "wordt"
+  },
+  "page.kotlinDsl.names.note": {
+    "message": "Knoppen, velden, lay-outs, dialoogvensters, zijpanelen, lijsten en HTML-elementen hebben elk één, genoemd naar de klasse in camelCase."
+  },
+  "page.kotlinDsl.compare.eyebrow": {
+    "message": "Hetzelfde scherm, twee talen"
+  },
+  "page.kotlinDsl.compare.title1": {
+    "message": "Lees Java."
+  },
+  "page.kotlinDsl.compare.title2": {
+    "message": "Lees daarna de Kotlin."
+  },
+  "page.kotlinDsl.compare.lead": {
+    "message": "Beide kanten bouwen dezelfde componenten met dezelfde webforJ-klassen. Aan de Kotlin-kant vervallen de setters en add()-aanroepen: componenten worden in elkaar genest en configuratie gebeurt in blokken."
+  },
+  "page.kotlinDsl.features.eyebrow": {
+    "message": "Wat de DSL je biedt"
+  },
+  "page.kotlinDsl.features.title1": {
+    "message": "Bouwers, blokken"
+  },
+  "page.kotlinDsl.features.title2": {
+    "message": "en lambda’s"
+  },
+  "page.kotlinDsl.concepts.lead": {
+    "message": "Elke builderfunctie maakt een component, voegt het toe aan de bovenliggende container en voert een configuratieblok uit. De rest van de DSL volgt daaruit."
+  },
+  "page.kotlinDsl.concepts.blocks.title": {
+    "message": "Configuratieblokken"
+  },
+  "page.kotlinDsl.concepts.blocks.text": {
+    "message": "Het blok ontvangt de component als {code}, zodat je de eigenschappen ervan instelt en de methoden rechtstreeks aanroept."
+  },
+  "page.kotlinDsl.extend.eyebrow": {
+    "message": "De DSL uitbreiden"
+  },
+  "page.kotlinDsl.extend.title1": {
+    "message": "Je eigen componenten,"
+  },
+  "page.kotlinDsl.extend.title2": {
+    "message": "ook als bouwers"
+  },
+  "page.kotlinDsl.extend.short": {
+    "message": "Aangepaste componenten en bibliotheken van derden worden via een uitbreidingsfunctie op {hasComponents} aan de DSL toegevoegd. De helper {init} voegt de component toe aan het bovenliggende element, voert het blok uit en retourneert de component. Samengestelde componenten die je met de DSL bouwt, krijgen op dezelfde manier een functie."
+  },
+  "page.kotlinDsl.extend.link": {
+    "message": "De DSL in de documentatie uitbreiden\n"
+  },
+  "page.kotlinDsl.start.eyebrow": {
+    "message": "Aan de slag"
+  },
+  "page.kotlinDsl.start.title1": {
+    "message": "Kotlin toevoegen"
+  },
+  "page.kotlinDsl.start.title2": {
+    "message": "naar een Maven-project"
+  },
+  "page.kotlinDsl.start.shortLead": {
+    "message": "De Kotlin DSL is beschikbaar vanaf webforJ 25.12. Een project dat al met Maven wordt gebouwd, heeft een afhankelijkheid en een plug-in nodig."
+  },
+  "page.kotlinDsl.start.setup": {
+    "message": "Kotlin DSL instellen"
+  },
+  "page.kotlinDsl.start.using": {
+    "message": "De DSL gebruiken"
+  },
+  "page.kotlinDsl.meta.title": {
+    "message": "Kotlin DSL voor webforJ: schrijf je webforJ-schermen in Kotlin\n"
+  },
+  "page.kotlinDsl.meta.description": {
+    "message": "De webforJ Kotlin DSL bouwt dezelfde webforJ-schermen met typeveilige Kotlin-builders, geneste blokken en lambdas, binnen hetzelfde Maven-project als je Java-code."
+  },
+  "page.mcpApps.hero.videoLabel": {
+    "message": "Een gerouteerde webforJ-weergave in een AI-gesprek, waarin de gebruiker en de AI met dezelfde live-interface werken."
+  },
+  "page.mcpApps.flow.step1Who": {
+    "message": "De AI"
+  },
+  "page.mcpApps.flow.step1Text": {
+    "message": "De host roept de tool {tool} aan met invoer zoals een magazijncode."
+  },
+  "page.mcpApps.flow.step2Text": {
+    "message": "webforJ rendert de gerouteerde weergave {route}, die wordt geopend in het gesprek."
+  },
+  "page.mcpApps.flow.step3Who": {
+    "message": "De AI"
+  },
+  "page.mcpApps.flow.step3Text": {
+    "message": "De AI roept acties zoals {tool} aan in de geopende weergave."
+  },
+  "page.mcpApps.flow.step4Who": {
+    "message": "De weergave"
+  },
+  "page.mcpApps.flow.step4Text": {
+    "message": "De weergave stuurt berichten en modelcontext terug naar het gesprek."
+  },
+  "page.mcpApps.host.contextTitle": {
+    "message": "Houd het model op de hoogte."
+  },
+  "page.mcpApps.host.contextText": {
+    "message": "{call} vervangt de context die de weergave aan het model toevoegt. Latere reacties kunnen deze gebruiken; er wordt geen zichtbaar bericht toegevoegd."
+  },
+  "page.mcpApps.host.eventsTitle": {
+    "message": "Volg het gesprek"
+  },
+  "page.mcpApps.host.eventsText": {
+    "message": "Listeners zoals {cancelled} en {changed} zorgen ervoor dat de weergave kan reageren wanneer een toolaanroep wordt geannuleerd of de gesprekscontext verandert."
+  },
+  "page.mcpApps.host.leaveTitle": {
+    "message": "Verlaat het frame\n"
+  },
+  "page.mcpApps.host.leaveText": {
+    "message": "{link} wordt voortgezet op een externe pagina en {mode} vraagt om een andere weergave. De host bepaalt of aan een van beide verzoeken kan worden voldaan."
+  },
+  "page.mcpApps.run.springTitle": {
+    "message": "Spring Boot met Spring AI"
+  },
+  "page.mcpApps.run.springText": {
+    "message": "De belangrijkste manier om een MCP App te publiceren. De integratie ontdekt gemarkeerde routes en voegt deze toe aan de Spring AI MCP-server, die standaard Streamable HTTP aanbiedt op {path}. De integratie publiceert de tool en een UI-resource die de route opent, en configureert de servletfilters en sessie-instellingen die nodig zijn om webforJ in te sluiten."
+  },
+  "page.mcpApps.run.springLink": {
+    "message": "Spring Boot instellen"
+  },
+  "page.mcpApps.run.standardTag": {
+    "message": "Standaardservlet"
+  },
+  "page.mcpApps.run.standardTitle": {
+    "message": "Een servlet-app zonder Spring"
+  },
+  "page.mcpApps.run.standardText": {
+    "message": "Een initializer scant het pakket met gerouteerde weergaven, voegt hun tools en UI-resources toe aan een MCP-server en maakt Streamable HTTP beschikbaar op {path}. Eén aanroep van {install} voegt de benodigde embedondersteuning voor de host toe."
+  },
+  "page.mcpApps.run.standardLink": {
+    "message": "Standaardconfiguratie"
+  },
+  "page.mcpApps.test.baseline1": {
+    "message": "De client maakt verbinding met het MCP-eindpunt."
+  },
+  "page.mcpApps.test.baseline2": {
+    "message": "De {tool}-tool is zichtbaar."
+  },
+  "page.mcpApps.test.baseline3": {
+    "message": "Met {tool} wordt de kop {heading} weergegeven."
+  },
+  "page.mcpApps.test.baseline4": {
+    "message": "De weergegeven interface is interactief."
+  },
+  "page.mcpApps.start.step1Title": {
+    "message": "Voeg de MCP Apps-module toe"
+  },
+  "page.mcpApps.start.step1Text": {
+    "message": "Voeg de module {module} toe aan een webforJ-app. Een Spring Boot-app voegt ook de Spring AI MCP server starter toe."
+  },
+  "page.mcpApps.start.step2Title": {
+    "message": "Een gerouteerde weergave markeren"
+  },
+  "page.mcpApps.start.step2Text": {
+    "message": "Voeg {annotation} toe met een beschrijving die de AI vertelt wanneer de tool nuttig is."
+  },
+  "page.mcpApps.start.step3Title": {
+    "message": "Start de app en maak verbinding met een host\n"
+  },
+  "page.mcpApps.start.step3Text": {
+    "message": "Start de server en voeg het {path}-eindpunt toe aan een MCP Apps-compatibele host."
+  },
+  "page.mcpApps.start.step4Title": {
+    "message": "Vraag de host om het te openen"
+  },
+  "page.mcpApps.start.step4Text": {
+    "message": "Geef de host de prompt ‘Open de inventaris-app.’ en de weergave verschijnt."
+  },
+  "page.mcpApps.docs.overviewLabel": {
+    "message": "Overzicht"
+  },
+  "page.mcpApps.docs.overviewText": {
+    "message": "Wat MCP Apps zijn en hoe je aan de slag gaat"
+  },
+  "page.mcpApps.docs.springLabel": {
+    "message": "Spring Boot-configuratie"
+  },
+  "page.mcpApps.docs.springText": {
+    "message": "Afhankelijkheden, het endpoint en een gerouteerde app"
+  },
+  "page.mcpApps.docs.testingLabel": {
+    "message": "Testen"
+  },
+  "page.mcpApps.docs.testingText": {
+    "message": "Clients op afstand, een lokale inspector en de basislijn"
+  },
+  "page.mcpApps.docs.openingLabel": {
+    "message": "Invoer openen"
+  },
+  "page.mcpApps.docs.openingText": {
+    "message": "Invoerschema's, toolnamen en weergavemodi"
+  },
+  "page.mcpApps.docs.actionsLabel": {
+    "message": "Acties en updates"
+  },
+  "page.mcpApps.docs.actionsText": {
+    "message": "Tools voor de geopende weergave"
+  },
+  "page.mcpApps.docs.hostLabel": {
+    "message": "Interactie met host"
+  },
+  "page.mcpApps.docs.hostText": {
+    "message": "Berichten, modelcontext en hostgebeurtenissen"
+  },
+  "page.mcpApps.docs.configLabel": {
+    "message": "Configuratie"
+  },
+  "page.mcpApps.docs.configText": {
+    "message": "De app-oorsprong, clientoorsprongen en browserdomeinen"
+  },
+  "page.mcpApps.docs.standardLabel": {
+    "message": "Standaardconfiguratie"
+  },
+  "page.mcpApps.docs.standardText": {
+    "message": "Een MCP-server in een servlet-app zonder Spring"
+  },
+  "page.mcpApps.hero.title1": {
+    "message": "Uw Java-weergaven,"
+  },
+  "page.mcpApps.hero.title2": {
+    "message": "In het AI-gesprek"
+  },
+  "page.mcpApps.hero.lead": {
+    "message": "Een AI-app met MCP-ondersteuning, ook wel host genoemd, opent een gerouteerde webforJ-weergave in het gesprek. De gebruiker en de AI werken met dezelfde live UI."
+  },
+  "page.mcpApps.hero.primary": {
+    "message": "Instellen met Spring Boot"
+  },
+  "page.mcpApps.hero.secondary": {
+    "message": "Bekijk hoe het werkt"
+  },
+  "page.mcpApps.hero.videoBar": {
+    "message": "Een voorraadweergave geopend in het gesprek"
+  },
+  "page.mcpApps.flow.hostLane": {
+    "message": "MCP-host"
+  },
+  "page.mcpApps.flow.hostLaneHint": {
+    "message": "het AI-gesprek"
+  },
+  "page.mcpApps.flow.appLane": {
+    "message": "webforJ-app"
+  },
+  "page.mcpApps.flow.appLaneHint": {
+    "message": "Je gerouteerde weergaven"
+  },
+  "page.mcpApps.shared.eyebrow": {
+    "message": "Eén live-UI"
+  },
+  "page.mcpApps.shared.title1": {
+    "message": "De weergave blijft in je app."
+  },
+  "page.mcpApps.shared.title2": {
+    "message": "Ze gebruiken het allebei."
+  },
+  "page.mcpApps.shared.lead": {
+    "message": "De weergave die de host toont, is dezelfde gerouteerde weergave als in een browser, met dezelfde componenten, services, routing en status. De AI werkt ermee via tools, terwijl de gebruiker de gerenderde componenten rechtstreeks blijft gebruiken."
+  },
+  "page.mcpApps.open.eyebrow": {
+    "message": "Open een weergave met invoer"
+  },
+  "page.mcpApps.open.title1": {
+    "message": "Een route wordt een tool."
+  },
+  "page.mcpApps.open.title2": {
+    "message": "De invoer bepaalt het startpunt."
+  },
+  "page.mcpApps.open.lead": {
+    "message": "Voeg {app} toe aan een gerouteerde weergave en deze wordt als tool gepubliceerd. De beschrijving geeft aan wanneer de tool nuttig is voor de AI. Eén objecttype, zoals een record van het type {record}, beschrijft de argumenten. Een methode van het type {input} past deze toe nadat de route is weergegeven."
+  },
+  "page.mcpApps.open.link": {
+    "message": "Lees meer over het openen van invoer"
+  },
+  "page.mcpApps.open.namesTitle": {
+    "message": "Toolnamen uit routes"
+  },
+  "page.mcpApps.open.namesText": {
+    "message": "Zonder {name} leidt webforJ de toolnaam af uit de route: {route} wordt {tool}, {nestedRoute} wordt {nestedTool} en de hoofdroute wordt {rootTool}."
+  },
+  "page.mcpApps.open.modeTitle": {
+    "message": "Een aangevraagde weergavemodus"
+  },
+  "page.mcpApps.open.modeText": {
+    "message": "{mode} vraagt de host hoe de weergave moet worden getoond. De host kan een andere modus kiezen."
+  },
+  "page.mcpApps.change.eyebrow": {
+    "message": "Acties en updates"
+  },
+  "page.mcpApps.change.title1": {
+    "message": "Meer tools,"
+  },
+  "page.mcpApps.change.title2": {
+    "message": "voor de al geopende weergave"
+  },
+  "page.mcpApps.change.lead": {
+    "message": "Deze tools openen de app niet. Een aanroep gaat naar de weergegeven {tool}-weergave in dezelfde MCP-sessie. Als die weergave niet is geopend, retourneert de aanroep een foutmelding die de host instrueert eerst {tool} aan te roepen."
+  },
+  "page.mcpApps.change.link": {
+    "message": "Meer informatie over acties en updates"
+  },
+  "page.mcpApps.change.actionTitle": {
+    "message": "Een actie is een weergavemethode."
+  },
+  "page.mcpApps.change.actionText": {
+    "message": "Voeg {annotation} toe aan een methode en die wordt een tool met eigen invoer. De methodenaam {method} levert {tool} op."
+  },
+  "page.mcpApps.change.updateTitle": {
+    "message": "Eén updatetool met de invoer bij het openen\n"
+  },
+  "page.mcpApps.change.updateText": {
+    "message": "Een view die {observer} implementeert, krijgt één updatetool met hetzelfde invoerschema als {tool}. De callback bepaalt hoe de argumenten worden gebruikt en geeft het toolresultaat terug."
+  },
+  "page.mcpApps.change.updatePoint1": {
+    "message": "webforJ past de waarden niet automatisch toe op componenten."
+  },
+  "page.mcpApps.change.updatePoint2": {
+    "message": "Het aanroepen ervan opent de route niet en rendert geen andere weergave."
+  },
+  "page.mcpApps.change.updatePoint3": {
+    "message": "De updatetool heeft geen metagegevens voor UI-resources."
+  },
+  "page.mcpApps.change.updatePoint4": {
+    "message": "Een weergave kan zowel een actie als de update-tool gebruiken."
+  },
+  "page.mcpApps.host.eyebrow": {
+    "message": "Interactie met host"
+  },
+  "page.mcpApps.host.title1": {
+    "message": "De weergave praat terug."
+  },
+  "page.mcpApps.host.title2": {
+    "message": "naar het gesprek"
+  },
+  "page.mcpApps.host.lead": {
+    "message": "Dezelfde route wordt ook in een normale browser geopend, dus elke hostinteractie begint met controleren of er een host aanwezig is. Hostaanroepen zijn asynchroon en retourneren een {result}."
+  },
+  "page.mcpApps.host.link": {
+    "message": "Lees meer over interactie met de host"
+  },
+  "page.mcpApps.host.messageTitle": {
+    "message": "Ga verder met het gesprek vanuit deze weergave\n"
+  },
+  "page.mcpApps.host.messageText": {
+    "message": "De gebruiker kiest een magazijn en vraagt de AI de voorraad te controleren. De knop verstuurt dat verzoek als volgend gebruikersbericht. {call} wordt alleen uitgevoerd wanneer de weergave met een host is verbonden."
+  },
+  "page.mcpApps.run.eyebrow": {
+    "message": "Spring Boot of een standaard servlet-app\n"
+  },
+  "page.mcpApps.run.title1": {
+    "message": "Publiceren met Spring AI,"
+  },
+  "page.mcpApps.run.title2": {
+    "message": "of stel de server zelf samen"
+  },
+  "page.mcpApps.run.lead": {
+    "message": "De weergave werkt nog steeds op {route} in een browser. Publiceren voegt de MCP-tool, de UI-resource die de route opent en de servletconfiguratie toe die de host nodig heeft om webforJ in te sluiten."
+  },
+  "page.mcpApps.test.eyebrow": {
+    "message": "Testen"
+  },
+  "page.mcpApps.test.title1": {
+    "message": "Verbind een host."
+  },
+  "page.mcpApps.test.title2": {
+    "message": "Controleer de baseline."
+  },
+  "page.mcpApps.test.lead": {
+    "message": "webforJ MCP Apps werken in elke host die MCP Apps ondersteunt. De minimale tool {tool} zonder invoer volstaat om te bevestigen dat een host de tool kan ontdekken en de weergave kan tonen."
+  },
+  "page.mcpApps.test.link": {
+    "message": "Lees de testhandleiding"
+  },
+  "page.mcpApps.test.remoteTag": {
+    "message": "Externe hosts"
+  },
+  "page.mcpApps.test.remoteText": {
+    "message": "Een host die vanaf buiten de ontwikkelmachine verbinding maakt, kan {local} niet bereiken. Maak de app toegankelijk via een tunnel, stel {origin} in op de publieke origin en geef de host die origin met {path} toegevoegd."
+  },
+  "page.mcpApps.test.localTag": {
+    "message": "Lokale inspector"
+  },
+  "page.mcpApps.test.localText": {
+    "message": "Een inspector op dezelfde machine maakt verbinding met het lokale endpoint. Stel de lokale {origin} in en vermeld de browserorigin van de inspector bij {allowed}."
+  },
+  "page.mcpApps.test.baselineTag": {
+    "message": "De basislijn, voor elke host"
+  },
+  "page.mcpApps.start.eyebrow": {
+    "message": "Aan de slag"
+  },
+  "page.mcpApps.start.title1": {
+    "message": "Eén weergave,"
+  },
+  "page.mcpApps.start.title2": {
+    "message": "Openen in een host"
+  },
+  "page.mcpApps.start.lead": {
+    "message": "webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de hele app, inclusief de schermen, in Java. MCP Apps maken er sinds webforJ 26.02 deel van uit en Spring Boot met Spring AI is de belangrijkste manier om er een te publiceren."
+  },
+  "page.mcpApps.start.primary": {
+    "message": "Instellen met Spring Boot"
+  },
+  "page.mcpApps.start.secondary": {
+    "message": "Instellen zonder Spring"
+  },
+  "page.mcpApps.docs.navLabel": {
+    "message": "MCP Apps-documentatie"
+  },
+  "page.mcpApps.meta.title": {
+    "message": "MCP Apps: open webforJ-weergaven in een AI-gesprek"
+  },
+  "page.mcpApps.meta.description": {
+    "message": "Met webforJ MCP Apps opent een MCP-capabele AI-app een via een route gekoppelde webforJ-weergave in het gesprek, en werken de gebruiker en de AI met dezelfde live UI."
+  },
+  "page.modernization.mock.teamSales": {
+    "message": "Verkoop"
+  },
+  "page.modernization.mock.teamSupport": {
+    "message": "Ondersteuning"
+  },
+  "page.modernization.mock.teamFinance": {
+    "message": "Financiën"
+  },
+  "page.modernization.mock.customerTable": {
+    "message": "Klantentabel"
+  },
+  "page.modernization.mock.file": {
+    "message": "Bestand"
+  },
+  "page.modernization.mock.edit": {
+    "message": "Bewerken"
+  },
+  "page.modernization.mock.view": {
+    "message": "Bekijken"
+  },
+  "page.modernization.mock.name": {
+    "message": "Naam"
+  },
+  "page.modernization.mock.team": {
+    "message": "Team"
+  },
+  "page.modernization.mock.city": {
+    "message": "Stad"
+  },
+  "page.modernization.mock.customers": {
+    "message": "Klanten"
+  },
+  "page.modernization.mock.orders": {
+    "message": "Bestellingen"
+  },
+  "page.modernization.mock.reports": {
+    "message": "Rapporten"
+  },
+  "page.modernization.mock.editCustomer": {
+    "message": "Klant bewerken"
+  },
+  "page.modernization.mock.cancel": {
+    "message": "Annuleren"
+  },
+  "page.modernization.mock.save": {
+    "message": "Opslaan"
+  },
+  "page.modernization.mock.appTab": {
+    "message": "webforJ-app"
+  },
+  "page.modernization.mock.swingStreamed": {
+    "message": "Swing-app, gestreamd"
+  },
+  "page.modernization.mock.webDialog": {
+    "message": "webforJ-dialoogvenster"
+  },
+  "page.modernization.mock.laneSwing": {
+    "message": "Swing-app"
+  },
+  "page.modernization.mock.laneWeb": {
+    "message": "webforJ-app"
+  },
+  "page.modernization.phases.p1.label": {
+    "message": "Je app op het web\n"
+  },
+  "page.modernization.phases.p1.title": {
+    "message": "Start de desktopapp in de browser"
+  },
+  "page.modernization.phases.p1.text": {
+    "message": "Webswing voert je Swing-, JavaFX- of SWT-app uit op de server en streamt de interface als HTML5-canvas naar de browser. Muis- en toetsenbordinvoer gaat terug naar de echte app. De broncode blijft ongewijzigd."
+  },
+  "page.modernization.phases.p1.note": {
+    "message": "Neem het op in een webforJ-weergave met WebswingConnector. De connector maakt verbinding met de Webswing-server zodra deze aan de pagina wordt toegevoegd."
+  },
+  "page.modernization.phases.p2.label": {
+    "message": "Nieuwe schermen in webforJ"
+  },
+  "page.modernization.phases.p2.title": {
+    "message": "Bouw er nieuwe schermen omheen\n"
+  },
+  "page.modernization.phases.p2.text": {
+    "message": "Nieuwe schermen zijn geschreven in webforJ en staan naast de ingesloten app. Beide kanten sturen elkaar acties: een klik in Swing kan een webformulier openen en een opslagactie op het web werkt de Swing-tabel bij. Gebruikers werken in oude en nieuwe schermen in hetzelfde browsertabblad."
+  },
+  "page.modernization.phases.p2.note": {
+    "message": "Swing geeft een dubbelklik door als select-customer. webforJ opent een eigen formulier en stuurt bij opslaan update-customer terug."
+  },
+  "page.modernization.phases.p3.label": {
+    "message": "Volledig overschakelen"
+  },
+  "page.modernization.phases.p3.title": {
+    "message": "De desktopclient uitfaseren"
+  },
+  "page.modernization.phases.p3.text": {
+    "message": "Vervang de Swing-schermen één voor één, in de volgorde die voor uw bedrijf belangrijk is. Verwijder de acties van een scherm zodra er een webforJ-equivalent is. Na het laatste scherm verdwijnen de Webswing-laag en de desktopclient."
+  },
+  "page.modernization.phases.p3.runs.term": {
+    "message": "Wat wordt uitgevoerd?"
+  },
+  "page.modernization.phases.p3.runs.desc": {
+    "message": "Eén Java-app in de browser, elk scherm geschreven in webforJ."
+  },
+  "page.modernization.phases.p3.goes.term": {
+    "message": "Wat gaat mee?"
+  },
+  "page.modernization.phases.p3.goes.desc": {
+    "message": "De Webswing-server, de gestreamde desktopinterface en de geïnstalleerde client."
+  },
+  "page.modernization.phases.p3.stays.term": {
+    "message": "Wat blijft er?"
+  },
+  "page.modernization.phases.p3.stays.desc": {
+    "message": "Je domeinklassen, services en validatieregels, aangeroepen vanuit de nieuwe schermen als Java-methoden."
+  },
+  "page.modernization.phases.p3.note": {
+    "message": "Je kunt na elke fase stoppen en toch iets hebben bereikt. Fase 2 kan doorgaan zolang het budget dat toelaat."
+  },
+  "page.modernization.stays.team.title": {
+    "message": "Het team"
+  },
+  "page.modernization.stays.team.text": {
+    "message": "De mensen die de Swing-app nu onderhouden, bouwen de webschermen in Java. Er is geen tweede team en geen front-endtoolchain om te leren."
+  },
+  "page.modernization.stays.code.title": {
+    "message": "De code"
+  },
+  "page.modernization.stays.code.text": {
+    "message": "Webswing voert de app uit zoals die is. Dezelfde codebase werkt als desktopapp en in de browser, zodat je één app onderhoudt in plaats van twee."
+  },
+  "page.modernization.stays.logic.title": {
+    "message": "De logica"
+  },
+  "page.modernization.stays.logic.text": {
+    "message": "Domeinklassen, services en validatieregels die niets met {code} te maken hebben, worden rechtstreeks vanuit de nieuwe schermen aangeroepen. Ze worden niet eerst als endpoints beschikbaar gemaakt."
+  },
+  "page.modernization.stays.toolchain.title": {
+    "message": "De toolchain"
+  },
+  "page.modernization.stays.toolchain.text": {
+    "message": "Maven, je IDE, je debugger en je bestaande tests blijven van toepassing."
+  },
+  "page.modernization.ai.loop.one.title": {
+    "message": "Geef het één Swing-scherm\n"
+  },
+  "page.modernization.ai.loop.one.text": {
+    "message": "Vraag om het webforJ-equivalent dat je bestaande services aanroept."
+  },
+  "page.modernization.ai.loop.two.title": {
+    "message": "Het controleert de echte API."
+  },
+  "page.modernization.ai.loop.two.text": {
+    "message": "De MCP-server zoekt op verzoek documentatie en API-details van webforJ op, in plaats van te gokken."
+  },
+  "page.modernization.ai.loop.three.title": {
+    "message": "Je beoordeelt en test."
+  },
+  "page.modernization.ai.loop.three.text": {
+    "message": "Vergelijk het gedrag met het Swing-origineel en ga door naar het volgende scherm."
+  },
+  "page.modernization.next.overview.title": {
+    "message": "Webswing-overzicht"
+  },
+  "page.modernization.next.overview.text": {
+    "message": "Wat Webswing oplost en hoe de drie lagen samenwerken."
+  },
+  "page.modernization.next.setup.title": {
+    "message": "Installatie en configuratie"
+  },
+  "page.modernization.next.setup.text": {
+    "message": "Serverinstallatie, beheerconsole, CORS en connectoropties."
+  },
+  "page.modernization.next.communication.title": {
+    "message": "Communicatie"
+  },
+  "page.modernization.next.communication.text": {
+    "message": "Elke actie en gebeurtenis tussen webforJ en de Swing-app."
+  },
+  "page.modernization.next.tutorial.title": {
+    "message": "Moderniseringstutorial"
+  },
+  "page.modernization.next.tutorial.text": {
+    "message": "Een Swing-klantentabel, ingebed en voorzien van een webforJ-bewerkingsdialoog."
+  },
+  "page.modernization.next.plugin.title": {
+    "message": "webforJ AI-plug-in"
+  },
+  "page.modernization.next.plugin.text": {
+    "message": "De MCP-server en Agent Skills voor je codeerassistent."
+  },
+  "page.modernization.next.home.title": {
+    "message": "Startpagina van de documentatie"
+  },
+  "page.modernization.next.home.text": {
+    "message": "Al het overige in webforJ, van het eerste project tot de componenten."
+  },
+  "page.modernization.hero.caption": {
+    "message": "Een dubbelklik in de Swing-tabel opent een webforJ-dialoogvenster in plaats van het oude Swing-venster. Beide draaien in hetzelfde browsertabblad."
+  },
+  "page.modernization.hero.eyebrow": {
+    "message": "Modernisering van Swing"
+  },
+  "page.modernization.hero.title1": {
+    "message": "Van Swing naar het web,"
+  },
+  "page.modernization.hero.title2": {
+    "message": "Eén scherm tegelijk"
+  },
+  "page.modernization.hero.lead": {
+    "message": "Je Swing-, JavaFX- of SWT-app draait zonder wijzigingen in de broncode in een webbrowser. Daarna bouw je er in webforJ nieuwe schermen omheen en vervang je de oude in je eigen tempo. Het Java-team en de code blijven."
+  },
+  "page.modernization.hero.cta": {
+    "message": "Volg de tutorial"
+  },
+  "page.modernization.hero.setup": {
+    "message": "Webswing instellen"
+  },
+  "page.modernization.hero.fact1": {
+    "message": "Desktoptoolkits: Swing, JavaFX en SWT"
+  },
+  "page.modernization.hero.fact2": {
+    "message": "Broncodewijzigingen om in een browser uit te voeren"
+  },
+  "page.modernization.stays.eyebrow": {
+    "message": "Wat blijft hetzelfde\n"
+  },
+  "page.modernization.stays.title1": {
+    "message": "Alleen de schermen"
+  },
+  "page.modernization.stays.title2": {
+    "message": "Wijzigen"
+  },
+  "page.modernization.stays.lead": {
+    "message": "webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de hele app, inclusief schermen, in Java. Een Swing-app overzetten betekent dus ook de schermen overzetten, en alles daaronder gaat mee."
+  },
+  "page.modernization.stays.changesLabel": {
+    "message": "Wat verandert er?"
+  },
+  "page.modernization.stays.changesText": {
+    "message": "De schermen. Je verplaatst ze één voor één, in de volgorde die voor je bedrijf belangrijk is, terwijl de rest van de Swing-app in hetzelfde browsertabblad blijft draaien."
+  },
+  "page.modernization.journey.eyebrow": {
+    "message": "De verhuizing in drie fasen\n"
+  },
+  "page.modernization.journey.title1": {
+    "message": "Speel de zet stap voor stap af"
+  },
+  "page.modernization.journey.title2": {
+    "message": "van desktop naar web"
+  },
+  "page.modernization.journey.lead": {
+    "message": "Elke fase levert iets op dat gebruikers kunnen zien. Kies een fase om het scherm en de bijbehorende code op dat punt te bekijken."
+  },
+  "page.modernization.journey.tabsLabel": {
+    "message": "Moderniseringsfasen"
+  },
+  "page.modernization.journey.phase": {
+    "message": "Fase {number}"
+  },
+  "page.modernization.journey.count": {
+    "message": "Fase {number} van {total}"
+  },
+  "page.modernization.journey.prev": {
+    "message": "Vorige fase"
+  },
+  "page.modernization.journey.next": {
+    "message": "Volgende fase"
+  },
+  "page.modernization.talk.eyebrow": {
+    "message": "Tweerichtingscommunicatie"
+  },
+  "page.modernization.talk.title1": {
+    "message": "Oude en nieuwe schermen"
+  },
+  "page.modernization.talk.title2": {
+    "message": "Met elkaar praten"
+  },
+  "page.modernization.talk.lead": {
+    "message": "Een bericht is een actie: een naam, een optionele tekenreeks als payload en een optionele binaire payload. De naam mag je zelf bedenken. Beide kanten zijn gewoon Java, dus niemand hoeft browserscripts te schrijven voor de uitwisseling."
+  },
+  "page.modernization.talk.announce.title": {
+    "message": "Swing kondigt aan"
+  },
+  "page.modernization.talk.announce.text": {
+    "message": "Dubbelklikken verzendt {action} met de rij als JSON. Op desktop opent dezelfde klik nog steeds het Swing-dialoogvenster."
+  },
+  "page.modernization.talk.reply.title": {
+    "message": "webforJ-antwoorden"
+  },
+  "page.modernization.talk.reply.text": {
+    "message": "Bij opslaan stuurt het webformulier {action} terug, waarna de Swing-app de tabel vernieuwt. Geen van beide kanten roept de interne code van de andere aan."
+  },
+  "page.modernization.talk.send.title": {
+    "message": "Opdrachten naar Swing sturen"
+  },
+  "page.modernization.talk.send.text": {
+    "message": "performAction() verstuurt alleen een naam of een naam met gegevens. De Swing-app bepaalt wat elke naam betekent."
+  },
+  "page.modernization.talk.send.file": {
+    "message": "Acties verzenden"
+  },
+  "page.modernization.talk.ready.title": {
+    "message": "Weet wanneer Swing klaar is"
+  },
+  "page.modernization.talk.ready.text": {
+    "message": "onInitialize wordt aangeroepen wanneer de verbinding gereed is. onStart wordt aangeroepen zodra de Swing-app volledig is geladen. Verstuur je eerste actie vanuit onStart."
+  },
+  "page.modernization.talk.ready.file": {
+    "message": "Levenscyclusgebeurtenissen"
+  },
+  "page.modernization.ai.eyebrow": {
+    "message": "Porteren met een AI-assistent"
+  },
+  "page.modernization.ai.title1": {
+    "message": "Laat een assistent het porteren,"
+  },
+  "page.modernization.ai.title2": {
+    "message": "scherm voor scherm"
+  },
+  "page.modernization.ai.lead": {
+    "message": "Scherm voor scherm werken is repetitief werk, en dat is precies waar een AI-codeerassistent goed in is. De webforJ AI-plugin verbindt de assistent met de webforJ MCP-server en Agent Skills: gestructureerde workflows die aangeven wanneer en in welke volgorde de assistent deze tools moet gebruiken en hoe het resultaat moet worden gevalideerd."
+  },
+  "page.modernization.ai.install": {
+    "message": "Installeer de AI-plug-in"
+  },
+  "page.modernization.ai.skills": {
+    "message": "Lees over Agent Skills"
+  },
+  "page.modernization.start.eyebrow": {
+    "message": "Aan de slag"
+  },
+  "page.modernization.start.title1": {
+    "message": "Uit een JAR-bestand"
+  },
+  "page.modernization.start.title2": {
+    "message": "naar een pagina in de browser"
+  },
+  "page.modernization.start.lead": {
+    "message": "Je hebt een Swing-, JavaFX- of SWT-app nodig die als JAR-bestand is verpakt, evenals de Webswing-server en webforJ 25.10 of hoger."
+  },
+  "page.modernization.start.step1.title": {
+    "message": "Download en start Webswing\n"
+  },
+  "page.modernization.start.step1.text": {
+    "message": "Download Webswing, pak het archief uit en start de server met het script voor uw platform. De server is bereikbaar op {url}."
+  },
+  "page.modernization.start.platform": {
+    "message": "Platform"
+  },
+  "page.modernization.start.step2.title": {
+    "message": "Registreer je app"
+  },
+  "page.modernization.start.step2.text": {
+    "message": "Stel in de beheerconsole bij {admin} de applicatienaam, hoofdklasse, classpath, JVM-argumenten en thuismap in. De app is vervolgens beschikbaar op {url}."
+  },
+  "page.modernization.start.step2.cors": {
+    "message": "Voeg de origin van je webforJ-app toe aan Toegestane origins, bijvoorbeeld {url}."
+  },
+  "page.modernization.start.step2.portsTerm": {
+    "message": "Poorten"
+  },
+  "page.modernization.start.step2.ports": {
+    "message": "Beide gebruiken doorgaans 8080. Wijzig een van beide om conflicten te voorkomen."
+  },
+  "page.modernization.start.step3.title": {
+    "message": "Voeg de afhankelijkheid toe"
+  },
+  "page.modernization.start.step3.text": {
+    "message": "De module webforj-webswing biedt WebswingConnector en de bijbehorende klassen."
+  },
+  "page.modernization.start.step4.title": {
+    "message": "Insluiten en configureren"
+  },
+  "page.modernization.start.step4.text": {
+    "message": "Voeg een WebswingConnector toe aan een weergave, net als in fase 1. WebswingOptions verandert het gedrag ervan, bijvoorbeeld door de uitlogknop te verbergen wanneer je webforJ-app het aanmelden afhandelt."
+  },
+  "page.modernization.next.title1": {
+    "message": "Kies je"
+  },
+  "page.modernization.next.title2": {
+    "message": "eerste scherm"
+  },
+  "page.modernization.next.lead": {
+    "message": "Begin met een eenvoudige lijst en een bewerkingsformulier. Integreer de app, verplaats dat ene scherm naar webforJ en kijk hoe het naast de rest werkt."
+  },
+  "page.modernization.meta.title": {
+    "message": "Swing moderniseren: breng je Java-desktopapp naar het web\n"
+  },
+  "page.modernization.meta.description": {
+    "message": "Voer je Swing-, JavaFX- of SWT-app in de browser uit zonder de broncode aan te passen. Vervang daarna scherm voor scherm door webforJ. Hetzelfde Java-team, dezelfde code."
+  },
+  "page.showcase.freightDispatch.platform": {
+    "message": "Bureaublad"
+  },
+  "page.showcase.freightDispatch.useCase": {
+    "message": "Dispatchers wijzen zendingen toe aan chauffeurs en volgen elke vrachtwagen onderweg."
+  },
+  "page.showcase.freightDispatch.description": {
+    "message": "Operationele software voor een regionaal transportbedrijf. Planners koppelen zendingen aan chauffeurs en vrachtwagens, volgen elke lading onderweg en handelen vertragingen af, de hele dag op grote schermen."
+  },
+  "page.showcase.freightDispatch.features.appLayout.text": {
+    "message": "Een zijmenu en bovenbalk die op hun plek blijven terwijl het werkgebied verandert."
+  },
+  "page.showcase.freightDispatch.features.drawer.text": {
+    "message": "Verzendgegevens schuiven vanaf de zijkant in beeld, zodat het bord zichtbaar blijft."
+  },
+  "page.showcase.freightDispatch.features.dialogAndTable.title": {
+    "message": "Dialoog en tabel"
+  },
+  "page.showcase.freightDispatch.features.dialogAndTable.text": {
+    "message": "Kies een chauffeur uit een sorteerbare tabel zonder het bord te verlaten."
+  },
+  "page.showcase.freightDispatch.features.serverPushedUpdates.title": {
+    "message": "Updates verzonden door de server"
+  },
+  "page.showcase.freightDispatch.features.serverPushedUpdates.text": {
+    "message": "Vertragingen en nieuwe aankomsttijden worden vanaf de server naar elk geopend scherm gestuurd."
+  },
+  "page.showcase.freightDispatch.screens.dispatchBoard.name": {
+    "message": "Dispatchoverzicht"
+  },
+  "page.showcase.freightDispatch.screens.dispatchBoard.caption": {
+    "message": "Alle zendingen per status, van wachtend op een chauffeur tot bezorgd, met de aantallen van vandaag bovenaan."
+  },
+  "page.showcase.freightDispatch.screens.liveMap.name": {
+    "message": "Livekaart"
+  },
+  "page.showcase.freightDispatch.screens.liveMap.caption": {
+    "message": "Volg elke vrachtwagen op de weg en zie in één oogopslag welke zendingen te laat zijn."
+  },
+  "page.showcase.freightDispatch.screens.loadDetail.name": {
+    "message": "Details laden"
+  },
+  "page.showcase.freightDispatch.screens.loadDetail.caption": {
+    "message": "Open een zending in een zijpaneel om de klant, de tussenstops en de documenten te bekijken."
+  },
+  "page.showcase.freightDispatch.screens.assignDriver.name": {
+    "message": "Chauffeur toewijzen"
+  },
+  "page.showcase.freightDispatch.screens.assignDriver.caption": {
+    "message": "Kies een chauffeur op basis van de resterende uren, locatie en oplegger. De app licht toe wie geschikt is en wie niet."
+  },
+  "page.showcase.freightDispatch.screens.delayHandling.name": {
+    "message": "Afhandeling van vertragingen"
+  },
+  "page.showcase.freightDispatch.screens.delayHandling.caption": {
+    "message": "Stel een nieuwe aankomsttijd in, stuur de klant een bericht en laat de app het doorgeven."
+  },
+  "page.showcase.siteInspection.platform": {
+    "message": "Mobiel"
+  },
+  "page.showcase.siteInspection.useCase": {
+    "message": "Bouwinspecteurs lopen een checklist door en laten die aftekenen, allemaal op hun telefoon."
+  },
+  "page.showcase.siteInspection.description": {
+    "message": "De bouwveiligheidsinspecteur volgt de route van de dag, doorloopt per ruimte een checklist, maakt foto’s van problemen en laat de locatiemanager aftekenen. De inspecteur zet de app op het startscherm van de telefoon."
+  },
+  "page.showcase.siteInspection.features.installableApp.title": {
+    "message": "Installeerbare app"
+  },
+  "page.showcase.siteInspection.features.installableApp.text": {
+    "message": "Eén annotatie, @AppProfile, plaatst de app op het startscherm als een native app."
+  },
+  "page.showcase.siteInspection.features.upload.text": {
+    "message": "Foto's van elk probleem worden direct aan het inspectierapport toegevoegd."
+  },
+  "page.showcase.siteInspection.features.serverPushedUpdates.title": {
+    "message": "Door de server verzonden updates"
+  },
+  "page.showcase.siteInspection.features.serverPushedUpdates.text": {
+    "message": "Als het kantoor een inspectie verplaatst, verschijnt deze op de telefoon zonder dat je hoeft te vernieuwen."
+  },
+  "page.showcase.siteInspection.features.routing.title": {
+    "message": "Routering"
+  },
+  "page.showcase.siteInspection.features.routing.text": {
+    "message": "Elke stap, van checklist tot goedkeuring, heeft een eigen route met een werkende terugknop."
+  },
+  "page.showcase.siteInspection.screens.todaysInspections.name": {
+    "message": "Inspecties van vandaag"
+  },
+  "page.showcase.siteInspection.screens.todaysInspections.caption": {
+    "message": "Bekijk de route van vandaag, wat al is gedaan en wat er nog komt. Wijzigingen vanuit kantoor worden direct weergegeven."
+  },
+  "page.showcase.siteInspection.screens.checklistForThisBuilding.name": {
+    "message": "Checklist voor dit gebouw"
+  },
+  "page.showcase.siteInspection.screens.checklistForThisBuilding.caption": {
+    "message": "Loop het gebouw door en markeer elke controle als goedgekeurd, afgekeurd of niet van toepassing."
+  },
+  "page.showcase.siteInspection.screens.recordAProblem.name": {
+    "message": "Probleem melden"
+  },
+  "page.showcase.siteInspection.screens.recordAProblem.caption": {
+    "message": "Beoordeel de ernst, voeg foto's toe en annoteer ze, en stel een uiterste hersteldatum in."
+  },
+  "page.showcase.siteInspection.screens.inspectionReport.name": {
+    "message": "Inspectierapport"
+  },
+  "page.showcase.siteInspection.screens.inspectionReport.caption": {
+    "message": "Bekijk de score, de gevonden problemen en de opmerkingen vóór goedkeuring."
+  },
+  "page.showcase.siteInspection.screens.signOff.name": {
+    "message": "Goedkeuring"
+  },
+  "page.showcase.siteInspection.screens.signOff.caption": {
+    "message": "De locatiemanager ondertekent op de telefoon en het rapport wordt per e-mail verzonden."
+  },
+  "page.showcase.clinicFrontDesk.platform": {
+    "message": "Bureaublad"
+  },
+  "page.showcase.clinicFrontDesk.useCase": {
+    "message": "Baliemedewerkers melden patiënten aan, plannen afspraken en sluiten de dag af."
+  },
+  "page.showcase.clinicFrontDesk.description": {
+    "message": "Balie van een polikliniek met meerdere artsen. Medewerkers bekijken het dagoverzicht per zorgverlener, melden patiënten aan, plannen afspraken, openen patiëntendossiers en sluiten de dagbetalingen af."
+  },
+  "page.showcase.clinicFrontDesk.features.dataBindingWithValidation.title": {
+    "message": "Databinding met validatie"
+  },
+  "page.showcase.clinicFrontDesk.features.dataBindingWithValidation.text": {
+    "message": "De check-invelden zijn gekoppeld aan het patiëntendossier en signaleren een ongeldig lidnummer terwijl je typt."
+  },
+  "page.showcase.clinicFrontDesk.features.serverPushedUpdates.title": {
+    "message": "Updates vanuit de server"
+  },
+  "page.showcase.clinicFrontDesk.features.serverPushedUpdates.text": {
+    "message": "De wachtkamer wordt op elke balie bijgewerkt zodra een patiënt zich aanmeldt."
+  },
+  "page.showcase.clinicFrontDesk.features.upload.text": {
+    "message": "Verwijsbrieven en rapporten worden aan het patiëntendossier toegevoegd."
+  },
+  "page.showcase.clinicFrontDesk.features.dialog.text": {
+    "message": "Bij het sluiten van de desk is eerst een duidelijke bevestiging nodig."
+  },
+  "page.showcase.clinicFrontDesk.screens.today.name": {
+    "message": "Vandaag"
+  },
+  "page.showcase.clinicFrontDesk.screens.today.caption": {
+    "message": "Het dagschema per zorgverlener naast een wachtruimte, dat wordt bijgewerkt wanneer patiënten aankomen."
+  },
+  "page.showcase.clinicFrontDesk.screens.checkInAPatient.name": {
+    "message": "Patiënt inchecken"
+  },
+  "page.showcase.clinicFrontDesk.screens.checkInAPatient.caption": {
+    "message": "Zoek de patiënt, bevestig de gegevens en corrigeer alles wat niet aan de controles voldoet."
+  },
+  "page.showcase.clinicFrontDesk.screens.bookAnAppointment.name": {
+    "message": "Boek een afspraak"
+  },
+  "page.showcase.clinicFrontDesk.screens.bookAnAppointment.caption": {
+    "message": "Kies een vrij tijdstip bij de juiste zorgverlener. De app waarschuwt voor conflicten met andere afspraken."
+  },
+  "page.showcase.clinicFrontDesk.screens.patientRecord.name": {
+    "message": "Patiëntendossier"
+  },
+  "page.showcase.clinicFrontDesk.screens.patientRecord.caption": {
+    "message": "Consulten, documenten en facturatie op één plek, met de mogelijkheid om verwijsbrieven te uploaden."
+  },
+  "page.showcase.clinicFrontDesk.screens.endOfDay.name": {
+    "message": "Einde van de dag"
+  },
+  "page.showcase.clinicFrontDesk.screens.endOfDay.caption": {
+    "message": "Controleer elke betaling en bekijk hoe druk het was voordat je de balie afsluit."
+  },
+  "page.showcase.clinicFrontDesk.screens.closeTheDay.name": {
+    "message": "Dag afsluiten"
+  },
+  "page.showcase.clinicFrontDesk.screens.closeTheDay.caption": {
+    "message": "Bevestig wat er met openstaande betalingen en boekingen gebeurt wanneer de balie sluit."
+  },
+  "page.showcase.invoiceApproval.platform": {
+    "message": "Bureaublad"
+  },
+  "page.showcase.invoiceApproval.useCase": {
+    "message": "Het financiële team controleert facturen aan de hand van inkooporders en betaalt ze."
+  },
+  "page.showcase.invoiceApproval.description": {
+    "message": "Leveranciersfacturen komen binnen, worden gecontroleerd aan de hand van de inkooporder en door het financiële team goedgekeurd en betaald."
+  },
+  "page.showcase.invoiceApproval.features.tableWithSelection.title": {
+    "message": "Tabel met selectie"
+  },
+  "page.showcase.invoiceApproval.features.tableWithSelection.text": {
+    "message": "Filter openstaande facturen, selecteer meerdere rijen en keur ze in één stap goed."
+  },
+  "page.showcase.invoiceApproval.features.dataBindingWithValidation.title": {
+    "message": "Gegevensbinding met validatie"
+  },
+  "page.showcase.invoiceApproval.features.dataBindingWithValidation.text": {
+    "message": "De uit de factuur gelezen velden zijn gekoppeld aan een formulier dat totalen boven het bestelbedrag markeert."
+  },
+  "page.showcase.invoiceApproval.features.dialog.text": {
+    "message": "Voor een afwijzing moet je vóór verzending een reden en een bericht aan de leverancier opgeven."
+  },
+  "page.showcase.invoiceApproval.features.upload.text": {
+    "message": "Ondertekende contracten worden geüpload naar de leverancierspagina."
+  },
+  "page.showcase.invoiceApproval.screens.inbox.name": {
+    "message": "Postvak IN"
+  },
+  "page.showcase.invoiceApproval.screens.inbox.caption": {
+    "message": "Filter openstaande facturen, selecteer de facturen die bij hun bestelling passen en keur ze samen goed."
+  },
+  "page.showcase.invoiceApproval.screens.reviewAnInvoice.name": {
+    "message": "Een factuur controleren"
+  },
+  "page.showcase.invoiceApproval.screens.reviewAnInvoice.caption": {
+    "message": "Vergelijk de factuur regel voor regel met de inkooporder voordat je beslist."
+  },
+  "page.showcase.invoiceApproval.screens.approveOrReject.name": {
+    "message": "Goedkeuren of afwijzen"
+  },
+  "page.showcase.invoiceApproval.screens.approveOrReject.caption": {
+    "message": "Wijs af met een reden en een notitie voor de leverancier. De goedkeuringsketen laat zien wie wordt geïnformeerd."
+  },
+  "page.showcase.invoiceApproval.screens.paymentRun.name": {
+    "message": "Betalingsrun"
+  },
+  "page.showcase.invoiceApproval.screens.paymentRun.caption": {
+    "message": "Selecteer goedgekeurde facturen voor de betalingsronde van vrijdag en bekijk de totalen per valuta."
+  },
+  "page.showcase.invoiceApproval.screens.supplierDetail.name": {
+    "message": "Leveranciersgegevens"
+  },
+  "page.showcase.invoiceApproval.screens.supplierDetail.caption": {
+    "message": "Facturen, maandelijkse uitgaven en het contract van één leverancier, met de mogelijkheid om de ondertekende verlenging te uploaden."
+  },
+  "page.showcase.sections.overview": {
+    "message": "Overzicht"
+  },
+  "page.showcase.sections.apps": {
+    "message": "De apps"
+  },
+  "page.showcase.sections.talk": {
+    "message": "Praat met ons"
+  },
+  "page.showcase.sections.start": {
+    "message": "Aan de slag"
+  },
+  "page.showcase.screenAlt": {
+    "message": "{screen}-scherm van de app {app}. {caption}"
+  },
+  "page.showcase.sections.label": {
+    "message": "Secties op deze pagina"
+  },
+  "page.showcase.hero.eyebrow": {
+    "message": "webforJ-demonstratie"
+  },
+  "page.showcase.hero.title": {
+    "message": "Wat je met webforJ kunt bouwen"
+  },
+  "page.showcase.hero.lead": {
+    "message": "Dispatchborden, veldinspecties, balies en financiële goedkeuringen. Zakelijke apps zoals deze worden gebouwd in Java met webforJ-componenten: tabellen, formulieren, dialogen en live-updates."
+  },
+  "page.showcase.hero.start": {
+    "message": "Start een project"
+  },
+  "page.showcase.hero.components": {
+    "message": "Ontdek de componenten"
+  },
+  "page.showcase.hero.factApps": {
+    "message": "Apps"
+  },
+  "page.showcase.hero.factScreens": {
+    "message": "Schermen om te doorlopen"
+  },
+  "page.showcase.hero.factPlatforms": {
+    "message": "Platformen, desktop en mobiel"
+  },
+  "page.showcase.hero.desktopAlt": {
+    "message": "Live kaartweergave van de Freight Dispatch-app, met alle vrachtwagens op een wegenkaart en een lijst met zendingen, gesorteerd op aankomsttijd."
+  },
+  "page.showcase.hero.phoneAlt": {
+    "message": "Checklistscherm van de Site Inspection-app op een telefoon, met bij elke controle de knoppen ‘Voldoet’, ‘Voldoet niet’ en ‘Niet van toepassing’."
+  },
+  "page.showcase.gallery.title": {
+    "message": "De apps"
+  },
+  "page.showcase.gallery.lead": {
+    "message": "Vier zakelijke apps, elk met een complete set schermen. Kies er één en doorloop deze."
+  },
+  "page.showcase.gallery.meta": {
+    "message": "{platform} · {count} schermen"
+  },
+  "page.showcase.gallery.see": {
+    "message": "Bekijk de schermen"
+  },
+  "page.showcase.lightbox.label": {
+    "message": "{name}-schermen, volledig formaat"
+  },
+  "page.showcase.lightbox.previous": {
+    "message": "Vorig scherm"
+  },
+  "page.showcase.lightbox.next": {
+    "message": "Volgend scherm"
+  },
+  "page.showcase.lightbox.close": {
+    "message": "Volledige weergave sluiten"
+  },
+  "page.showcase.step.previous": {
+    "message": "Vorig scherm"
+  },
+  "page.showcase.step.next": {
+    "message": "Volgend scherm"
+  },
+  "page.showcase.step.openFull": {
+    "message": "Open {name} op ware grootte"
+  },
+  "page.showcase.step.fullSize": {
+    "message": "Volledige grootte"
+  },
+  "page.showcase.chapter.kicker": {
+    "message": "{platform}-app · {count} schermen"
+  },
+  "page.showcase.chapter.screensLabel": {
+    "message": "{name}-schermen"
+  },
+  "page.showcase.chapter.carouselLabel": {
+    "message": "{name}-schermen"
+  },
+  "page.showcase.chapter.phoneOpen": {
+    "message": "Open {name} op volledige grootte"
+  },
+  "page.showcase.chapter.phoneShow": {
+    "message": "Toon {name}"
+  },
+  "page.showcase.chapter.windowOpen": {
+    "message": "Open {name} op volledige grootte"
+  },
+  "page.showcase.chapter.shows": {
+    "message": "Wat wordt weergegeven in webforJ\n"
+  },
+  "page.showcase.business.title": {
+    "message": "Een zakelijke app plannen met webforJ?"
+  },
+  "page.showcase.business.text": {
+    "message": "Plan een gesprek met het team dat webforJ bouwt. Neem je app, backend en planning mee, en we laten zien hoe webforJ past, van het eerste scherm tot LTS+-ondersteuning."
+  },
+  "page.showcase.business.book": {
+    "message": "Plan een gesprek"
+  },
+  "page.showcase.business.pricing": {
+    "message": "Bekijk prijzen"
+  },
+  "page.showcase.business.languages": {
+    "message": "We spreken {languages}"
+  },
+  "page.showcase.closing.title": {
+    "message": "Bouw je eerste scherm met startforJ\n"
+  },
+  "page.showcase.closing.text": {
+    "message": "Geef je app een naam, kies een themakleur en een archetype en download vervolgens een project met de lay-out en afhankelijkheden al ingesteld. De Table, Dialog, Drawer en Upload op deze schermen zijn klaar voor gebruik."
+  },
+  "page.showcase.closing.open": {
+    "message": "Open startforJ"
+  },
+  "page.showcase.closing.read": {
+    "message": "Lees 'Aan de slag'"
+  },
+  "page.showcase.closing.footnote": {
+    "message": "De apps op deze pagina laten zien wat je kunt bouwen met webforJ-componenten."
+  },
+  "page.showcase.meta.title": {
+    "message": "Wat je kunt bouwen met webforJ: voorbeelden van zakelijke Java-apps"
+  },
+  "page.showcase.meta.description": {
+    "message": "Voorbeeldapps voor bedrijven voor dispatch, inspecties op locatie, kliniekreceptie en factuurgoedkeuring, gebouwd met webforJ-componenten. Doorloop elk scherm en ontdek de webforJ-functies erachter."
+  },
+  "page.uiComponents.group.layout.title": {
+    "message": "Indeling"
+  },
+  "page.uiComponents.group.layout.lead": {
+    "message": "De structuur van een scherm: app-shells, werkbalken, flex- en kolomindelingen, gesplitste deelvensters en oppervlakken."
+  },
+  "page.uiComponents.item.appLayout": {
+    "message": "Een gestructureerde indeling voor hoofdnavigatie en app-inhoud."
+  },
+  "page.uiComponents.item.flexLayout": {
+    "message": "Rangschikt onderliggende elementen met flexboxregels voor responsieve uitlijning."
+  },
+  "page.uiComponents.item.columnsLayout": {
+    "message": "Zet onderliggende elementen in kolommen, handig voor formulieren en rasterstructuren."
+  },
+  "page.uiComponents.item.toolbar": {
+    "message": "Een horizontale container voor actieknoppen, pictogrammen en andere bedieningselementen."
+  },
+  "page.uiComponents.item.splitter": {
+    "message": "Verdeelt de ruimte tussen twee componenten die gebruikers kunnen aanpassen door te slepen."
+  },
+  "page.uiComponents.item.accordion": {
+    "message": "Een gestapelde reeks inklapbare panelen met aanklikbare koppen."
+  },
+  "page.uiComponents.item.card": {
+    "message": "Een vlak met secties voor media, kopteksten, hoofdinhoud en voetteksten."
+  },
+  "page.uiComponents.item.dialog": {
+    "message": "Een modaal venster dat over de inhoud verschijnt en de gebruiker om invoer vraagt."
+  },
+  "page.uiComponents.group.forms.title": {
+    "message": "Formulieren en invoervelden"
+  },
+  "page.uiComponents.group.forms.lead": {
+    "message": "Alles wat een gebruiker invoert, selecteert of uploadt: van tekst en cijfers tot datums, invoermaskers, lijsten en bestanden."
+  },
+  "page.uiComponents.item.textField": {
+    "message": "Een eenregelig invoerveld om tekst in te voeren en te bewerken."
+  },
+  "page.uiComponents.item.maskedTextField": {
+    "message": "Beperkt tekst tot een patroon, zoals een telefoonnummer."
+  },
+  "page.uiComponents.item.numberField": {
+    "message": "Een numeriek invoerveld met knoppen om de waarde te verhogen of te verlagen."
+  },
+  "page.uiComponents.item.maskedNumberField": {
+    "message": "Dwingt een getalnotatie af, zoals valuta of percentages."
+  },
+  "page.uiComponents.item.passwordField": {
+    "message": "Een invoerveld met één regel dat wachtwoorden maskeert."
+  },
+  "page.uiComponents.item.dateField": {
+    "message": "Een datumkiezer in een invoerveld in de browser."
+  },
+  "page.uiComponents.item.maskedDateField": {
+    "message": "Een datumveld dat een vastgelegd datumformaat afdwingt."
+  },
+  "page.uiComponents.item.timeField": {
+    "message": "Een browsergebaseerde tijdkiezer in een invoerveld."
+  },
+  "page.uiComponents.item.maskedTimeField": {
+    "message": "Een tijdinvoer die een gedefinieerde tijdnotatie afdwingt."
+  },
+  "page.uiComponents.item.dateTimeField": {
+    "message": "Selecteert een datum en tijd in één invoerveld."
+  },
+  "page.uiComponents.item.colorField": {
+    "message": "Een browsergebaseerde kleurkiezer in een invoerveld."
+  },
+  "page.uiComponents.item.textArea": {
+    "message": "Een invoerveld met meerdere regels voor grotere tekstblokken."
+  },
+  "page.uiComponents.item.checkBox": {
+    "message": "Een binaire optie die wisselt tussen aangevinkt en niet aangevinkt."
+  },
+  "page.uiComponents.item.radioButton": {
+    "message": "Selecteert één optie uit een groep elkaar uitsluitende opties."
+  },
+  "page.uiComponents.item.switch": {
+    "message": "Schakelt met een schuifbeweging tussen twee standen, zoals aan en uit."
+  },
+  "page.uiComponents.item.choiceBox": {
+    "message": "Een keuzelijst met vooraf gedefinieerde opties."
+  },
+  "page.uiComponents.item.comboBox": {
+    "message": "Een keuzelijst gecombineerd met een bewerkbaar tekstveld."
+  },
+  "page.uiComponents.item.listBox": {
+    "message": "Een scrollbare lijst om een of meer items te selecteren."
+  },
+  "page.uiComponents.item.slider": {
+    "message": "Selecteert een waarde binnen een bereik door een schuifknop over een spoor te slepen."
+  },
+  "page.uiComponents.item.upload": {
+    "message": "Een inline bestandskiezer met slepen en neerzetten, filters en gebeurtenissen per bestand."
+  },
+  "page.uiComponents.group.data.title": {
+    "message": "Gegevens en inhoud"
+  },
+  "page.uiComponents.group.data.lead": {
+    "message": "Toon records, hiërarchieën, grafieken en gestreamde tekst, en laad meer terwijl de gebruiker scrolt."
+  },
+  "page.uiComponents.item.googleCharts": {
+    "message": "Grafieken en visuele gegevensweergaven via Google Charts."
+  },
+  "page.uiComponents.item.tree": {
+    "message": "Hiërarchische gegevens die gebruikers kunnen uit- en inklappen en waarmee ze kunnen werken."
+  },
+  "page.uiComponents.item.infiniteScroll": {
+    "message": "Laadt meer items bij het scrollen en houdt bij wanneer alle inhoud is opgehaald."
+  },
+  "page.uiComponents.item.refresher": {
+    "message": "Een pull-to-refresh-interactie binnen scrollbare containers."
+  },
+  "page.uiComponents.item.markdownViewer": {
+    "message": "Geeft Markdown geleidelijk weer, ideaal voor AI-chat en tekststreaming."
+  },
+  "page.uiComponents.item.terminal": {
+    "message": "Een opdrachtregelinterface in de app voor tekstcommando's."
+  },
+  "page.uiComponents.item.avatar": {
+    "message": "Profielfoto's of initialen in verschillende formaten, vormen en thema's."
+  },
+  "page.uiComponents.item.badge": {
+    "message": "Een klein label voor aantallen, statussen of korte metadata."
+  },
+  "page.uiComponents.group.navigation.title": {
+    "message": "Navigatie en acties"
+  },
+  "page.uiComponents.group.navigation.lead": {
+    "message": "Navigeer tussen weergaven en secties, blader door gegevens en start de volgende stap."
+  },
+  "page.uiComponents.item.appNav": {
+    "message": "Een navigatiemenu om tussen secties en weergaven te schakelen."
+  },
+  "page.uiComponents.item.drawer": {
+    "message": "Een uitschuifbaar paneel voor zij navigatie of extra inhoud."
+  },
+  "page.uiComponents.item.tabbedPane": {
+    "message": "Organiseert inhoud in tabbladen waartussen gebruikers kunnen schakelen."
+  },
+  "page.uiComponents.item.navigator": {
+    "message": "Paginering met knoppen voor de eerste, laatste, vorige en volgende pagina en snel naar een pagina springen."
+  },
+  "page.uiComponents.item.button": {
+    "message": "Een klikbaar element dat een actie uitvoert wanneer erop wordt geklikt."
+  },
+  "page.uiComponents.item.icon": {
+    "message": "Een grafisch symbool voor een actie, status of categorie."
+  },
+  "page.uiComponents.group.feedback.title": {
+    "message": "Feedback en dialoogvensters"
+  },
+  "page.uiComponents.group.feedback.lead": {
+    "message": "Vertel gebruikers wat er gebeurt, vraag om bevestiging en verzamel een waarde, bestand of inloggegevens."
+  },
+  "page.uiComponents.item.toast": {
+    "message": "Een niet-blokkerende melding die vanzelf verdwijnt."
+  },
+  "page.uiComponents.item.alert": {
+    "message": "Belangrijke berichten of waarschuwingen in een opvallende opmaak."
+  },
+  "page.uiComponents.item.desktopNotification": {
+    "message": "Aangepaste desktopmeldingen via de Notification API van de browser."
+  },
+  "page.uiComponents.item.progressBar": {
+    "message": "Een balk die wordt gevuld naarmate een taak vordert."
+  },
+  "page.uiComponents.item.busyIndicator": {
+    "message": "Een appbrede indicator dat een globaal proces actief is."
+  },
+  "page.uiComponents.item.loading": {
+    "message": "Een laadindicator voor één bovenliggende component."
+  },
+  "page.uiComponents.item.spinner": {
+    "message": "Een draaiende animatie die aangeeft dat een actie wordt uitgevoerd."
+  },
+  "page.uiComponents.item.messageDialog": {
+    "message": "Een informatief bericht dat de gebruiker met OK bevestigt."
+  },
+  "page.uiComponents.item.confirmDialog": {
+    "message": "Vraagt de gebruiker een actie te bevestigen of te annuleren."
+  },
+  "page.uiComponents.item.inputDialog": {
+    "message": "Vraagt de gebruiker om een waarde met OK en Annuleren."
+  },
+  "page.uiComponents.item.fileUploadDialog": {
+    "message": "Uploadt bestanden vanaf het lokale bestandssysteem naar de app."
+  },
+  "page.uiComponents.item.login": {
+    "message": "Een kant-en-klare inloginterface met gebruikersnaam, wachtwoord en verzendknop."
+  },
+  "page.uiComponents.gallery.layouts": {
+    "message": "Indelingen"
+  },
+  "page.uiComponents.gallery.dataEntry": {
+    "message": "Gegevensinvoer"
+  },
+  "page.uiComponents.gallery.optionDialogs": {
+    "message": "Optiedialogen"
+  },
+  "page.uiComponents.gallery.interaction": {
+    "message": "Interactie en weergave"
+  },
+  "page.uiComponents.beyond.html.label": {
+    "message": "{count} HTML-elementen"
+  },
+  "page.uiComponents.beyond.html.title": {
+    "message": "De pagina zelf, getypt"
+  },
+  "page.uiComponents.beyond.html.text": {
+    "message": "webforJ levert componenten die rechtstreeks overeenkomen met standaard HTML-elementen, zoals Div, Paragraph, de koppen, lijsten, Img en Anchor, met een getypeerde Java-API."
+  },
+  "page.uiComponents.beyond.html.link": {
+    "message": "HTML-componenten"
+  },
+  "page.uiComponents.beyond.web.label": {
+    "message": "Webcomponenten"
+  },
+  "page.uiComponents.beyond.web.title": {
+    "message": "Elke webcomponent, verpakt"
+  },
+  "page.uiComponents.beyond.web.text": {
+    "message": "ElementComposite omhult een aangepast HTML-element of een webcomponent van derden en stelt de eigenschappen, attributen en gebeurtenissen beschikbaar via de Java-API."
+  },
+  "page.uiComponents.beyond.web.link": {
+    "message": "Samengesteld element"
+  },
+  "page.uiComponents.beyond.npm.label": {
+    "message": "npm-pakketten"
+  },
+  "page.uiComponents.beyond.npm.title": {
+    "message": "Het npm-register, vanuit Java"
+  },
+  "page.uiComponents.beyond.npm.text": {
+    "message": "De frontendbundler zet annotaties op een klasse om in gecompileerde frontend-assets, zodat een component het npm-pakket kan meeleveren waarvan het afhankelijk is."
+  },
+  "page.uiComponents.beyond.npm.link": {
+    "message": "Frontend-bundler"
+  },
+  "page.uiComponents.theme.darkSummary": {
+    "message": "Hetzelfde veld, dezelfde knoppen, schakelaar, badge en voortgangsbalk in het donkere thema."
+  },
+  "page.uiComponents.theme.lightSummary": {
+    "message": "Hetzelfde veld, dezelfde knoppen, schakelaar, badge en voortgangsbalk in het lichte thema."
+  },
+  "page.uiComponents.theme.mock.name": {
+    "message": "Naam"
+  },
+  "page.uiComponents.theme.mock.save": {
+    "message": "Opslaan"
+  },
+  "page.uiComponents.theme.mock.cancel": {
+    "message": "Annuleren"
+  },
+  "page.uiComponents.theme.mock.new": {
+    "message": "Nieuw"
+  },
+  "page.uiComponents.hero.eyebrow": {
+    "message": "UI-componenten"
+  },
+  "page.uiComponents.hero.title1": {
+    "message": "Elk onderdeel van een bedrijfsscherm,"
+  },
+  "page.uiComponents.hero.title2": {
+    "message": "Klaar in Java."
+  },
+  "page.uiComponents.hero.lead": {
+    "message": "webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de volledige app, inclusief schermen, in Java. De componenten omvatten lay-out, gegevensinvoer, dialogen, gegevensweergave en feedback. Elk onderdeel is een Java-klasse die je maakt, configureert en aan een lay-out toevoegt."
+  },
+  "page.uiComponents.hero.openGallery": {
+    "message": "Open de componentengalerij"
+  },
+  "page.uiComponents.hero.browse": {
+    "message": "Bladeren op doel"
+  },
+  "page.uiComponents.stats.gallery": {
+    "message": "Componenten in de galerij"
+  },
+  "page.uiComponents.stats.html": {
+    "message": "Getypeerde HTML-elementen"
+  },
+  "page.uiComponents.stats.themes": {
+    "message": "Ingebouwde thema's"
+  },
+  "page.uiComponents.stats.groups": {
+    "message": "Groepen per doel"
+  },
+  "page.uiComponents.hero.wallLabel": {
+    "message": "Een selectie webforJ-componenten"
+  },
+  "page.uiComponents.hero.wallLink": {
+    "message": "{name}-documentatie"
+  },
+  "page.uiComponents.hero.wallAlt": {
+    "message": "{name}-component"
+  },
+  "page.uiComponents.groups.label": {
+    "message": "Op doel"
+  },
+  "page.uiComponents.groups.title": {
+    "message": "{total} bedrijfscomponenten, plus {html} HTML-elementen en eventuele webcomponenten."
+  },
+  "page.uiComponents.groups.count.business": {
+    "message": "Bedrijfscomponenten"
+  },
+  "page.uiComponents.groups.count.html": {
+    "message": "HTML-elementen"
+  },
+  "page.uiComponents.groups.count.any": {
+    "message": "Alle"
+  },
+  "page.uiComponents.groups.count.web": {
+    "message": "webcomponent"
+  },
+  "page.uiComponents.groups.lead": {
+    "message": "Kies een groep en daarna een component. Elke tegel opent de eigen pagina van die component in de documentatie."
+  },
+  "page.uiComponents.groups.navLabel": {
+    "message": "Componentgroepen"
+  },
+  "page.uiComponents.groups.count": {
+    "message": "{count} componenten"
+  },
+  "page.uiComponents.compose.label": {
+    "message": "Samenstelling"
+  },
+  "page.uiComponents.compose.title1": {
+    "message": "Je eigen componenten,"
+  },
+  "page.uiComponents.compose.title2": {
+    "message": "gebouwd met die van ons."
+  },
+  "page.uiComponents.compose.lead": {
+    "message": "webforJ gebruikt compositie boven overerving. Je breidt een {button} niet uit. Je schrijft een klasse die {composite} uitbreidt, componenten erin combineert en bepaalt welke methoden de rest van je app kan zien."
+  },
+  "page.uiComponents.compose.demo.search": {
+    "message": "Zoeken"
+  },
+  "page.uiComponents.compose.demo.go": {
+    "message": "Ga"
+  },
+  "page.uiComponents.compose.point1.title": {
+    "message": "Eén klasse, één eenheid."
+  },
+  "page.uiComponents.compose.point1.text": {
+    "message": "Een {composite} omvat één gebonden component en bevat je interne structuur, zodat een zoekbalk, adresformulier of volledige dashboardkaart één herbruikbare klasse wordt."
+  },
+  "page.uiComponents.compose.point2.title": {
+    "message": "Jij kiest de API."
+  },
+  "page.uiComponents.compose.point2.text": {
+    "message": "Aanroepers zien alleen de methoden die u beschikbaar stelt, in tegenstelling tot overerving, waarbij alles zichtbaar is."
+  },
+  "page.uiComponents.compose.point3.title": {
+    "message": "Ingebouwde componenten blijven intact."
+  },
+  "page.uiComponents.compose.point3.text": {
+    "message": "De ingebouwde componenten zijn final, waardoor de onderliggende webcomponent consistent en voorspelbaar blijft. Je gedrag voeg je eromheen toe, niet erin."
+  },
+  "page.uiComponents.compose.link.composing": {
+    "message": "Componenten samenstellen"
+  },
+  "page.uiComponents.compose.link.understanding": {
+    "message": "Componenten begrijpen"
+  },
+  "page.uiComponents.beyond.label": {
+    "message": "Buiten de verzameling"
+  },
+  "page.uiComponents.beyond.title1": {
+    "message": "Niet in de set?"
+  },
+  "page.uiComponents.beyond.title2": {
+    "message": "Gebruik een component naar keuze op het web."
+  },
+  "page.uiComponents.beyond.lead": {
+    "message": "De bedrijfscomponenten zijn het begin, niet het eindpunt. Elk HTML-element is een Java-klasse en elk webcomponent kan dat ook worden."
+  },
+  "page.uiComponents.own.label": {
+    "message": "Je ontwerpsysteem"
+  },
+  "page.uiComponents.own.title1": {
+    "message": "Heb je een eigen designsysteem?"
+  },
+  "page.uiComponents.own.title2": {
+    "message": "Neem het mee."
+  },
+  "page.uiComponents.own.lead": {
+    "message": "De webforJ-componenten zijn optioneel, geen vereiste. Als je designsysteem als webcomponenten wordt geleverd, hoef je er maar één keer een wrapper omheen te bouwen en kun je de hele app ermee bouwen in Java."
+  },
+  "page.uiComponents.own.step1.title": {
+    "message": "Componenten omhullen"
+  },
+  "page.uiComponents.own.step1.text": {
+    "message": "{composite} zet elk aangepast element om in een Java-klasse en stelt de eigenschappen, attributen en gebeurtenissen ervan beschikbaar via de Java-API."
+  },
+  "page.uiComponents.own.step2.title": {
+    "message": "Lever ze als één module"
+  },
+  "page.uiComponents.own.step2.text": {
+    "message": "Met de frontendbundler kan een klasse de benodigde npm-pakketten declareren, zodat wrappers hun designsysteem meenemen. Een app hoeft alleen de dependency toe te voegen."
+  },
+  "page.uiComponents.own.step3.title": {
+    "message": "Bouw de app zoals gebruikelijk"
+  },
+  "page.uiComponents.own.step3.text": {
+    "message": "Routing, beveiliging en databinding werken op dezelfde manier. Een ingepakte component die {valueAware} implementeert, wordt net als elk ingebouwd veld aan je model gekoppeld."
+  },
+  "page.uiComponents.own.panel": {
+    "message": "Je schermen behouden de uitstraling die je bedrijf al heeft ontworpen. Het framework eronder is nog steeds webforJ."
+  },
+  "page.uiComponents.own.link.composite": {
+    "message": "Samengesteld element"
+  },
+  "page.uiComponents.own.link.bundler": {
+    "message": "Frontend-bundler"
+  },
+  "page.uiComponents.java.label": {
+    "message": "Gebruikt vanuit Java"
+  },
+  "page.uiComponents.java.title1": {
+    "message": "Een component is een object"
+  },
+  "page.uiComponents.java.title2": {
+    "message": "je maakt met {code}."
+  },
+  "page.uiComponents.java.lead1": {
+    "message": "Je stelt de status in met getypeerde methoden, luistert met lambda’s naar gebeurtenissen en voegt het toe aan een container. Het scherm bestaat uit Java-code, zonder sjabloon dat synchroon moet blijven."
+  },
+  "page.uiComponents.java.usedLabel": {
+    "message": "Componenten in deze code"
+  },
+  "page.uiComponents.java.usingLink": {
+    "message": "Componenten gebruiken"
+  },
+  "page.uiComponents.java.composingLink": {
+    "message": "Componenten samenstellen"
+  },
+  "page.uiComponents.java.codeAdd": {
+    "message": "Componenten aan een container toevoegen"
+  },
+  "page.uiComponents.java.codeState": {
+    "message": "Status wijzigen via gebeurtenissen"
+  },
+  "page.uiComponents.theme.label": {
+    "message": "Thema's"
+  },
+  "page.uiComponents.theme.title1": {
+    "message": "Eén ontwerpsysteem"
+  },
+  "page.uiComponents.theme.title2": {
+    "message": "achter elk component."
+  },
+  "page.uiComponents.theme.lead": {
+    "message": "webforJ wordt geleverd met een designsysteem genaamd DWC. De CSS-variabelen, de designtokens, bevatten kleuren, typografie, randen en tussenruimte, en elk component leest ze uit. Pas een token aan en elk component dat het gebruikt volgt die wijziging."
+  },
+  "page.uiComponents.theme.lightCaption": {
+    "message": "De standaard. Lichte achtergrond, subtiele tint in de primaire kleur."
+  },
+  "page.uiComponents.theme.darkCaption": {
+    "message": "Donkere achtergrond, subtiele tint van de primaire kleur."
+  },
+  "page.uiComponents.theme.fact1.title": {
+    "message": "Drie ingebouwde thema's"
+  },
+  "page.uiComponents.theme.fact1.text": {
+    "message": "{light}, {dark} en {darkPure}, waarbij de primaire tint wordt weggelaten voor puur neutrale grijstinten. Schakel tijdens runtime met {setTheme}, zonder opnieuw te bouwen."
+  },
+  "page.uiComponents.theme.fact2.title": {
+    "message": "Volgt het besturingssysteem"
+  },
+  "page.uiComponents.theme.fact2.text": {
+    "message": "Registreer een licht en donker thema en geef {system} door. webforJ kiest het thema dat past bij de voorkeur van de gebruiker en schakelt over wanneer die verandert."
+  },
+  "page.uiComponents.theme.fact3.title": {
+    "message": "Geef je merk een nieuwe look met een paar tokens"
+  },
+  "page.uiComponents.theme.fact3.text": {
+    "message": "Overschrijf de seed-tokens van de ingebouwde thema’s, zodat elk component de nieuwe uitstraling krijgt. Shadow parts bieden toegang tot een component wanneer een token niet volstaat."
+  },
+  "page.uiComponents.theme.link.themes": {
+    "message": "Thema's"
+  },
+  "page.uiComponents.theme.link.cssVariables": {
+    "message": "CSS-variabelen"
+  },
+  "page.uiComponents.theme.link.shadowParts": {
+    "message": "Shadow parts"
+  },
+  "page.uiComponents.theme.link.overview": {
+    "message": "Overzicht van de styling"
+  },
+  "page.uiComponents.entrance.label": {
+    "message": "De galerij"
+  },
+  "page.uiComponents.entrance.title1": {
+    "message": "Galerij openen"
+  },
+  "page.uiComponents.entrance.title2": {
+    "message": "en bekijk alle {total}."
+  },
+  "page.uiComponents.entrance.lead": {
+    "message": "De galerij in de documentatie toont elk component met een voorbeeld en een korte beschrijving, in dezelfde vier secties als de documentatie."
+  },
+  "page.uiComponents.entrance.openGallery": {
+    "message": "Open de componentengalerij"
+  },
+  "page.uiComponents.entrance.home": {
+    "message": "Terug naar de startpagina van de documentatie"
+  },
+  "page.uiComponents.entrance.sectionsLabel": {
+    "message": "Galerijsecties"
+  },
+  "page.uiComponents.meta.title": {
+    "message": "webforJ UI-componenten: de Java-componentenset voor zakelijke apps"
+  },
+  "page.uiComponents.meta.description": {
+    "message": "Verken de webforJ-componentenset op basis van wat elke component doet: lay-out, formulieren en invoervelden, gegevens, navigatie en feedback. Elke component is een Java-klasse, vormgegeven met het DWC-designsysteem en de lichte, donkere en dark-pure-thema's."
+  },
+  "component.footer.platform.title": {
+    "message": "Platform"
   }
 }

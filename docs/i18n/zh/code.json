@@ -88,7 +88,7 @@
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "webforJ 应用，支持 Spring Boot（需要 webforJ 25.02 或更高版本）。",
+    "message": "支持 Spring Boot 的 webforJ 应用。",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
@@ -1736,5 +1736,3816 @@
   },
   "component.blogFilterBar.insights": {
     "message": "洞察"
+  },
+  "page.home.meta.title": {
+    "message": "webforJ：面向企业 Web 应用的全栈 Java 框架"
+  },
+  "page.home.meta.description": {
+    "message": "用 Java 构建完整的 Web 应用，从界面到数据，后端任你选择。为 AI 做好准备，并提供从 Swing 迁移到 Web 的逐屏路径。文档、指南和实时演示。"
+  },
+  "page.home.layers.screens.name": {
+    "message": "屏幕"
+  },
+  "page.home.layers.screens.text": {
+    "message": "使用组件构建 UI、进行布局并切换页面。"
+  },
+  "page.home.layers.screens.link.components": {
+    "message": "组件"
+  },
+  "page.home.layers.screens.link.buildingUi": {
+    "message": "构建 UI"
+  },
+  "page.home.layers.screens.link.routing": {
+    "message": "路由"
+  },
+  "page.home.layers.screens.link.styling": {
+    "message": "样式"
+  },
+  "page.home.layers.logic.name": {
+    "message": "逻辑"
+  },
+  "page.home.layers.logic.text": {
+    "message": "将表单绑定到模型、保护路由、进行翻译和测试。"
+  },
+  "page.home.layers.logic.link.dataBinding": {
+    "message": "数据绑定"
+  },
+  "page.home.layers.logic.link.security": {
+    "message": "安全"
+  },
+  "page.home.layers.logic.link.translation": {
+    "message": "翻译"
+  },
+  "page.home.layers.logic.link.testing": {
+    "message": "测试"
+  },
+  "page.home.layers.data.name": {
+    "message": "数据"
+  },
+  "page.home.layers.data.text": {
+    "message": "从存储库填充表格，并在图表中显示数据。"
+  },
+  "page.home.layers.data.link.repository": {
+    "message": "仓库"
+  },
+  "page.home.layers.data.link.table": {
+    "message": "表格"
+  },
+  "page.home.layers.data.link.charts": {
+    "message": "图表"
+  },
+  "page.home.layers.data.link.managingResources": {
+    "message": "资源管理"
+  },
+  "page.home.layers.backend.name": {
+    "message": "您的后端"
+  },
+  "page.home.layers.backend.text": {
+    "message": "可独立运行或与 Spring Boot 配合，支持 Java 或 Kotlin，轻松交付。"
+  },
+  "page.home.layers.backend.link.configuration": {
+    "message": "配置"
+  },
+  "page.home.layers.backend.link.upgrading": {
+    "message": "正在升级\n"
+  },
+  "page.home.path.understand.step": {
+    "message": "了解"
+  },
+  "page.home.path.understand.title": {
+    "message": "webforJ，涵盖 6 个屏幕"
+  },
+  "page.home.path.understand.text": {
+    "message": "快速了解 webforJ\n"
+  },
+  "page.home.path.create.step": {
+    "message": "创建"
+  },
+  "page.home.path.create.title": {
+    "message": "开始项目"
+  },
+  "page.home.path.create.text": {
+    "message": "检查前置条件、生成项目并运行。"
+  },
+  "page.home.path.learn.step": {
+    "message": "学习"
+  },
+  "page.home.path.learn.title": {
+    "message": "按照教程操作"
+  },
+  "page.home.path.learn.text": {
+    "message": "一步步构建可运行的应用。"
+  },
+  "page.home.path.build.step": {
+    "message": "构建"
+  },
+  "page.home.path.build.title": {
+    "message": "使用组件"
+  },
+  "page.home.path.build.text": {
+    "message": "每个组件及其 API 和实时示例。"
+  },
+  "page.home.ai.loop.write.title": {
+    "message": "写入"
+  },
+  "page.home.ai.loop.write.text": {
+    "message": "您的助手通过 MCP 服务器读取真实的 webforJ API，并遵循表单、安全和样式方面的 Agent Skills。"
+  },
+  "page.home.ai.loop.check.title": {
+    "message": "检查"
+  },
+  "page.home.ai.loop.check.text": {
+    "message": "它会在 TestBed 中通过普通 JUnit 测试运行该视图，无需浏览器或服务器，并明确给出通过或失败结果。"
+  },
+  "page.home.ai.loop.review.title": {
+    "message": "审核"
+  },
+  "page.home.ai.loop.review.text": {
+    "message": "您只需审核已通过的结果，无需逐行阅读猜测内容。"
+  },
+  "page.home.places.components.title": {
+    "message": "UI 组件"
+  },
+  "page.home.places.components.text": {
+    "message": "表格、表单、对话框、布局等，均提供实时示例。"
+  },
+  "page.home.places.craft.text": {
+    "message": "可视化编辑器：查看运行中应用的组件树并实时修改。"
+  },
+  "page.home.places.swing.title": {
+    "message": "Swing 现代化"
+  },
+  "page.home.places.swing.text": {
+    "message": "在浏览器中运行桌面应用，并逐屏浏览。"
+  },
+  "page.home.places.ai.title": {
+    "message": "AI 工具"
+  },
+  "page.home.places.ai.text": {
+    "message": "AI 插件：为您的助手提供 MCP 服务器和 Agent Skills，一次安装即可。"
+  },
+  "page.home.places.kit.title": {
+    "message": "Figma 设计套件"
+  },
+  "page.home.places.kit.text": {
+    "message": "设计师和开发者使用相同的设计令牌和组件。"
+  },
+  "page.home.places.showcase.title": {
+    "message": "展示"
+  },
+  "page.home.places.showcase.text": {
+    "message": "四个示例业务应用，可逐屏体验。"
+  },
+  "page.home.help.cookbook.title": {
+    "message": "食谱"
+  },
+  "page.home.help.cookbook.text": {
+    "message": "常见任务的简明指南。"
+  },
+  "page.home.help.blog.title": {
+    "message": "Blog"
+  },
+  "page.home.help.blog.text": {
+    "message": "指南、版本发布与操作教程。"
+  },
+  "page.home.help.javadocs.text": {
+    "message": "完整 API 参考】【。"
+  },
+  "page.home.help.issue.title": {
+    "message": "报告问题"
+  },
+  "page.home.help.issue.text": {
+    "message": "错误和功能请求"
+  },
+  "page.home.help.team.title": {
+    "message": "联系团队"
+  },
+  "page.home.help.team.text": {
+    "message": "预约应用咨询电话"
+  },
+  "page.home.stack.caption": {
+    "message": "点击屏幕即可运行您的 Java 代码并获取更新。"
+  },
+  "page.home.hero.eyebrow": {
+    "message": "webforJ 文档"
+  },
+  "page.home.hero.title1": {
+    "message": "整个应用\n"
+  },
+  "page.home.hero.title2": {
+    "message": "在 Java 中。"
+  },
+  "page.home.hero.lead": {
+    "message": "webforJ 是用于企业 Web 应用的全栈 Java 框架：整个应用（包括界面）都可用 Java 构建。这些文档将带你从创建第一个项目一路走到生产环境。"
+  },
+  "page.home.hero.tour": {
+    "message": "体验 5 分钟导览"
+  },
+  "page.home.hero.search": {
+    "message": "搜索或向 AI 提问"
+  },
+  "page.home.live.title1": {
+    "message": "编写 Java\n"
+  },
+  "page.home.live.title2": {
+    "message": "获取屏幕"
+  },
+  "page.home.live.note": {
+    "message": "完整屏幕就是一个带路由的 Java 类。屏幕与代码之间无需模板、JavaScript 或 REST 层。"
+  },
+  "page.home.path.title1": {
+    "message": "第一次来这里？"
+  },
+  "page.home.path.title2": {
+    "message": "沿着路径前进。"
+  },
+  "page.home.layers.title1": {
+    "message": "一个堆栈。"
+  },
+  "page.home.layers.title2": {
+    "message": "一种语言。"
+  },
+  "page.home.ai.title1": {
+    "message": "AI 已就绪。"
+  },
+  "page.home.ai.title2": {
+    "message": "从第一天起。"
+  },
+  "page.home.ai.lead": {
+    "message": "一次安装，即可为 Claude Code、Copilot、Cursor、Gemini 和 Codex 安装 webforJ MCP server 和 Agent Skills。"
+  },
+  "page.home.ai.cta": {
+    "message": "查看 AI 工具"
+  },
+  "page.home.ai.terminal": {
+    "message": "终端"
+  },
+  "page.home.ai.terminalComment": {
+    "message": "助手读取消息并修复视图"
+  },
+  "page.home.places.title1": {
+    "message": "地点"
+  },
+  "page.home.places.title2": {
+    "message": "值得一游。"
+  },
+  "page.home.help.title": {
+    "message": "还在找吗？"
+  },
+  "page.home.help.behind": {
+    "message": "webforJ由BASIS International打造。近40年来，BASIS软件及软件工具一直用于为大型跨国企业和中小企业开发业务解决方案，并拥有20多年基于Java技术的交付经验。"
+  },
+  "page.home.talk.title": {
+    "message": "正在考虑用 webforJ 开发业务应用？"
+  },
+  "page.home.talk.text": {
+    "message": "预约与 webforJ 开发团队通话。带上你的应用、后端和项目时间表，我们将为你展示 webforJ 如何满足需求，从首个界面到 LTS+ 支持。"
+  },
+  "page.home.talk.book": {
+    "message": "预约通话"
+  },
+  "page.home.talk.pricing": {
+    "message": "查看价格"
+  },
+  "page.home.talk.languages": {
+    "message": "我们会说{languages}"
+  },
+  "component.archetype.table.flavor.bbj": {
+    "message": "通过 {BBjShipLink} 在 {BBjServices} 中运行的 webforJ 应用\n",
+    "description": "webforj-bbj flavor description"
+  },
+  "component.megaMenu.resources.readAndWatch.showcase.label": {
+    "message": "展示案例"
+  },
+  "component.megaMenu.resources.readAndWatch.showcase.description": {
+    "message": "使用 webforJ 可以构建什么"
+  },
+  "component.previewBadge.hint": {
+    "message": "此功能可能会在未来版本中更改。"
+  },
+  "component.previewBadge.label": {
+    "message": "预览"
+  },
+  "page.ai.terminal.verifyClaude": {
+    "message": "在 Claude Code 中验证"
+  },
+  "page.ai.terminal.okInstalled": {
+    "message": "webforj 显示在“已安装”下方\n"
+  },
+  "page.ai.terminal.okServers": {
+    "message": "plugin:webforj:webforj-mcp 显示在已连接的服务器下"
+  },
+  "page.ai.terminal.copilotVerify": {
+    "message": "验证"
+  },
+  "page.ai.terminal.geminiVerify": {
+    "message": "验证"
+  },
+  "page.ai.terminal.codexRun": {
+    "message": "然后在 Codex 会话中运行 /plugins，选择 webforj 并按空格键\n"
+  },
+  "page.ai.terminal.codexSkills": {
+    "message": "Codex 技能需显式调用"
+  },
+  "page.ai.breaks.api.failure": {
+    "message": "它调用了一个不存在或曾经存在过的 API。"
+  },
+  "page.ai.breaks.api.piece": {
+    "message": "真实 API"
+  },
+  "page.ai.breaks.api.fix": {
+    "message": "MCP 服务器会搜索 webforJ 知识库，让智能体读取签名，而非凭记忆回忆。"
+  },
+  "page.ai.breaks.workflow.failure": {
+    "message": "它遵循通用的 Java 习惯，而非框架约定。"
+  },
+  "page.ai.breaks.workflow.piece": {
+    "message": "合适的工作流程"
+  },
+  "page.ai.breaks.workflow.fix": {
+    "message": "智能体技能指导智能体如何处理表单、安全、样式、计时器等。"
+  },
+  "page.ai.breaks.check.failure": {
+    "message": "它生成的代码虽然能编译，但用户点击时却毫无作用。"
+  },
+  "page.ai.breaks.check.piece": {
+    "message": "通过或不通过"
+  },
+  "page.ai.breaks.check.fix": {
+    "message": "TestBed 会在普通的 JUnit 测试中运行视图，让智能体能够验证自己的工作。"
+  },
+  "page.ai.stages.write.label": {
+    "message": "撰写"
+  },
+  "page.ai.stages.write.short": {
+    "message": "代理编写视图"
+  },
+  "page.ai.stages.check.label": {
+    "message": "检查"
+  },
+  "page.ai.stages.check.short": {
+    "message": "它编写并运行测试\n"
+  },
+  "page.ai.stages.review.label": {
+    "message": "审核"
+  },
+  "page.ai.stages.review.short": {
+    "message": "您审核已通过的结果"
+  },
+  "page.ai.plugin.clients.claude": {
+    "message": "市场命令"
+  },
+  "page.ai.plugin.clients.copilot": {
+    "message": "市场命令"
+  },
+  "page.ai.plugin.clients.vscode": {
+    "message": "聊天：从源代码安装插件"
+  },
+  "page.ai.plugin.clients.gemini": {
+    "message": "扩展安装"
+  },
+  "page.ai.plugin.clients.codex": {
+    "message": "市场命令，然后输入 /plugins"
+  },
+  "page.ai.plugin.clients.others": {
+    "message": "手动配置"
+  },
+  "page.ai.plugin.prompts.wrap.prompt": {
+    "message": "将此自定义元素库封装为 webforJ 组件。"
+  },
+  "page.ai.plugin.prompts.wrap.target": {
+    "message": "创建组件技能"
+  },
+  "page.ai.plugin.prompts.style.prompt": {
+    "message": "使用 DWC 设计令牌设置此视图样式。"
+  },
+  "page.ai.plugin.prompts.style.target": {
+    "message": "应用样式技能"
+  },
+  "page.ai.plugin.prompts.scaffold.prompt": {
+    "message": "搭建名为 CustomerPortal 的新 webforJ 侧边栏项目。"
+  },
+  "page.ai.plugin.prompts.scaffold.target": {
+    "message": "MCP 项目脚手架生成器"
+  },
+  "page.ai.plugin.prompts.theme.prompt": {
+    "message": "根据品牌色 #6366f1 生成主题"
+  },
+  "page.ai.plugin.prompts.theme.target": {
+    "message": "MCP 主题生成器"
+  },
+  "page.ai.plugin.prompts.find.prompt": {
+    "message": "查找 webforJ 中有关 @Route 和路由的文档。"
+  },
+  "page.ai.plugin.prompts.find.target": {
+    "message": "MCP 知识搜索"
+  },
+  "page.ai.mcp.version.title": {
+    "message": "指定正确的 webforJ 版本"
+  },
+  "page.ai.mcp.version.text": {
+    "message": "有 pom.xml 时会读取该文件，否则会询问你。此后的回答都会针对你的版本。"
+  },
+  "page.ai.mcp.lookup.title": {
+    "message": "在知识库中查找信息"
+  },
+  "page.ai.mcp.lookup.text": {
+    "message": "关于 API 的问题、指南、代码示例或 Kotlin DSL，答案均来自真实框架。"
+  },
+  "page.ai.mcp.lookup.prompt": {
+    "message": "如何在 webforJ 中使用 @Route 设置路由？"
+  },
+  "page.ai.mcp.scaffold.title": {
+    "message": "生成新项目骨架"
+  },
+  "page.ai.mcp.scaffold.text": {
+    "message": "适用于 hello-world、blank、tabs 或 sidemenu，并采用 webforj 或 webforj-spring 版本的正确 Maven 原型命令。"
+  },
+  "page.ai.mcp.scaffold.prompt": {
+    "message": "使用 sidemenu 原型创建一个名为 CustomerPortal 的 webforJ 项目"
+  },
+  "page.ai.mcp.theme.title": {
+    "message": "生成 DWC 主题"
+  },
+  "page.ai.mcp.theme.text": {
+    "message": "基于单一品牌色生成主色、成功、警告、危险、信息、默认和灰色调色板，并自动确保文本对比度。"
+  },
+  "page.ai.mcp.theme.prompt": {
+    "message": "根据品牌色 #6366f1 生成 webforJ 主题"
+  },
+  "page.ai.mcp.style.title": {
+    "message": "正确设置 DWC 组件样式"
+  },
+  "page.ai.mcp.style.text": {
+    "message": "编写任何 CSS 之前，请先阅读 CSS 自定义属性、Shadow Parts、反射属性和插槽。"
+  },
+  "page.ai.mcp.style.prompt": {
+    "message": "dwc-button 提供哪些 CSS 变量和部件？"
+  },
+  "page.ai.mcp.tokens.title": {
+    "message": "验证设计令牌"
+  },
+  "page.ai.mcp.tokens.text": {
+    "message": "对照真实的 --dwc-* 目录检查 CSS、Java 或 Markdown，并标记未知名称、建议更正。"
+  },
+  "page.ai.mcp.tokens.prompt": {
+    "message": "检查 app.css 中是否存在未知的 --dwc-* 令牌"
+  },
+  "page.ai.skills.servlets.text": {
+    "message": "在 webforJ UI 旁提供 REST endpoints、webhooks 和 custom servlets。"
+  },
+  "page.ai.skills.servlets.prompt": {
+    "message": "添加 REST 端点 /api/orders。"
+  },
+  "page.ai.skills.forms.text": {
+    "message": "数据绑定、Jakarta 验证、掩码输入框和响应式表单布局。"
+  },
+  "page.ai.skills.forms.prompt": {
+    "message": "创建绑定到我的 User bean 的注册表单。"
+  },
+  "page.ai.skills.components.text": {
+    "message": "来自 Custom Elements、JavaScript 库或组合的可复用 Java 组件。"
+  },
+  "page.ai.skills.components.prompt": {
+    "message": "将这些 webforJ 组件组合成可复用的卡片。"
+  },
+  "page.ai.skills.timers.text": {
+    "message": "使用 Interval、Debouncer、Environment.runLater 和 PendingResult，而非原始计时器和线程。"
+  },
+  "page.ai.skills.timers.prompt": {
+    "message": "每 30 秒刷新此仪表板。"
+  },
+  "page.ai.skills.localizing.text": {
+    "message": "消息资源包、运行时语言切换和浏览器区域设置检测。"
+  },
+  "page.ai.skills.localizing.prompt": {
+    "message": "添加英语和西班牙语支持。"
+  },
+  "page.ai.skills.securing.text": {
+    "message": "登录、注销、基于角色的访问控制和默认安全的路由。"
+  },
+  "page.ai.skills.securing.prompt": {
+    "message": "保护 /admin，仅允许具有 ADMIN 角色的用户查看。"
+  },
+  "page.ai.skills.styling.text": {
+    "message": "主题、调色板和组件样式，验证每个 --dwc-* 令牌。"
+  },
+  "page.ai.skills.styling.prompt": {
+    "message": "将此应用设为蓝色主题。"
+  },
+  "page.ai.skills.upgrading.text": {
+    "message": "使用官方 webforj-rewrite OpenRewrite 规则进行主版本升级。"
+  },
+  "page.ai.skills.upgrading.prompt": {
+    "message": "将此应用从 webforJ 25 升级到 26。"
+  },
+  "page.ai.compare.livesIn.label": {
+    "message": "居住于"
+  },
+  "page.ai.compare.livesIn.plugin": {
+    "message": "您的编辑器"
+  },
+  "page.ai.compare.livesIn.assistant": {
+    "message": "正在运行的应用"
+  },
+  "page.ai.compare.reads.label": {
+    "message": "读取"
+  },
+  "page.ai.compare.reads.plugin": {
+    "message": "您的源文件"
+  },
+  "page.ai.compare.reads.assistant": {
+    "message": "让你的应用上线，呈现真实数据\n"
+  },
+  "page.ai.compare.verifies.label": {
+    "message": "由…验证"
+  },
+  "page.ai.compare.verifies.plugin": {
+    "message": "您的下一次构建"
+  },
+  "page.ai.compare.verifies.assistant": {
+    "message": "每次编辑都要编译后才能查看效果"
+  },
+  "page.ai.compare.suited.label": {
+    "message": "适用于"
+  },
+  "page.ai.compare.suited.plugin": {
+    "message": "从零开始构建新内容"
+  },
+  "page.ai.compare.suited.assistant": {
+    "message": "理解、修复并基于当前应用进行原型设计"
+  },
+  "page.ai.docs.plugin.title": {
+    "message": "webforJ AI 插件"
+  },
+  "page.ai.docs.plugin.text": {
+    "message": "为所有客户端安装"
+  },
+  "page.ai.docs.mcp.title": {
+    "message": "MCP 服务器"
+  },
+  "page.ai.docs.mcp.text": {
+    "message": "功能与提示彩在线"
+  },
+  "page.ai.docs.skills.title": {
+    "message": "智能体技能"
+  },
+  "page.ai.docs.skills.text": {
+    "message": "每项技能及其加载时机"
+  },
+  "page.ai.docs.testbed.title": {
+    "message": "测试环境"
+  },
+  "page.ai.docs.testbed.text": {
+    "message": "纯 JUnit 无浏览器测试"
+  },
+  "page.ai.docs.craftforj.title": {
+    "message": "craftforJ 助手"
+  },
+  "page.ai.docs.craftforj.text": {
+    "message": "运行中应用中的编码代理"
+  },
+  "page.ai.terminal.tablistLabel": {
+    "message": "安装 webforJ AI 插件"
+  },
+  "page.ai.terminal.caption": {
+    "message": "文档中的安装命令。一次安装即可获取 MCP 服务器和 Agent Skills。"
+  },
+  "page.ai.hero.eyebrow": {
+    "message": "webforJ 的 AI 工具"
+  },
+  "page.ai.hero.title1": {
+    "message": "您的 AI 助手编写 Java 代码。"
+  },
+  "page.ai.hero.title2": {
+    "message": "现在可以检查了。"
+  },
+  "page.ai.hero.lead": {
+    "message": "AI 编码工具速度很快，但其输出仍需检查。webforJ 为它们提供编写、检查和审查的闭环：可查阅的真实 API、可遵循的正确工作流，以及无需浏览器即可返回通过或失败结果的测试。"
+  },
+  "page.ai.hero.install": {
+    "message": "安装插件"
+  },
+  "page.ai.hero.step": {
+    "message": "单步执行循环"
+  },
+  "page.ai.hero.clients": {
+    "message": "适用于 Claude Code、GitHub Copilot、Cursor、Gemini 和 Codex。"
+  },
+  "page.ai.breaks.eyebrow": {
+    "message": "为什么使用循环"
+  },
+  "page.ai.breaks.title": {
+    "message": "AI 智能体生成的 Java 代码常见的三种问题及对应检查方法"
+  },
+  "page.ai.breaks.lead": {
+    "message": "当编码代理没有可查阅的资料时，只能凭记忆编写。提醒它谨慎并不能解决这些问题。每种失误都需要单独检查，而 webforJ 用相应的工具填补每个漏洞。"
+  },
+  "page.ai.breaks.without": {
+    "message": "无需检查"
+  },
+  "page.ai.breaks.read": {
+    "message": "阅读文档"
+  },
+  "page.ai.stages.promptLabel": {
+    "message": "你的提示词"
+  },
+  "page.ai.stages.write.prompt": {
+    "message": "在 /greeting 添加 webforJ 问候视图，包含姓名字段、“问候”按钮，以及显示“你好”和姓名的段落。"
+  },
+  "page.ai.stages.write.title": {
+    "message": "视图是一个带有路由的 Java 类\n"
+  },
+  "page.ai.stages.write.text1": {
+    "message": "除此之外无需任何内容：屏幕与代码之间不需要模板、JavaScript 或 REST 层。"
+  },
+  "page.ai.stages.write.text2": {
+    "message": "连接 MCP 服务器后，智能体已在写入 {composite}、{button} 和 {route} 前查询过它们。"
+  },
+  "page.ai.stages.check.prompt": {
+    "message": "为 GreetingView 编写一个 TestBed 测试，输入姓名、点击 Greet，并检查段落。"
+  },
+  "page.ai.stages.check.title": {
+    "message": "测试按照用户的步骤进行\n"
+  },
+  "page.ai.stages.check.locator": {
+    "message": "{code} 根据标签查找字段，并根据文本查找按钮。"
+  },
+  "page.ai.stages.check.interaction": {
+    "message": "{code} 输入并点击，从而真正触发按钮监听器。"
+  },
+  "page.ai.stages.check.verify": {
+    "message": "{code} 检查用户会阅读的文本。"
+  },
+  "page.ai.stages.review.title": {
+    "message": "代理读取通过或失败结果\n"
+  },
+  "page.ai.stages.review.text1": {
+    "message": "代理运行 {code} 并读取结果。不打开浏览器，也不启动服务器。"
+  },
+  "page.ai.stages.review.text2": {
+    "message": "如果失败，消息会说明差异，代理会修改并重新运行。能读懂的失败，才能修复。"
+  },
+  "page.ai.stages.review.strong": {
+    "message": "你审核的是已通过的结果，而不是猜测。"
+  },
+  "page.ai.stages.review.terminal": {
+    "message": "终端"
+  },
+  "page.ai.stages.review.passed": {
+    "message": "已通过"
+  },
+  "page.ai.stages.review.failLabel": {
+    "message": "检查失败时，消息会显示为这样\n"
+  },
+  "page.ai.stages.review.failNote": {
+    "message": "它显示组件类型、预期值和实际值。"
+  },
+  "page.ai.loop.eyebrow": {
+    "message": "循环"
+  },
+  "page.ai.loop.title": {
+    "message": "编写、检查、审阅"
+  },
+  "page.ai.loop.lead": {
+    "message": "智能体编写视图和测试、运行测试，并查看通过或失败结果。逐步演示一个真实界面，从提示词到测试通过。"
+  },
+  "page.ai.loop.railLabel": {
+    "message": "循环阶段"
+  },
+  "page.ai.loop.return": {
+    "message": "如果测试失败，请返回修改\n"
+  },
+  "page.ai.loop.previous": {
+    "message": "上一阶段"
+  },
+  "page.ai.loop.count": {
+    "message": "第 {current} 阶段，共 {total} 阶段"
+  },
+  "page.ai.loop.next": {
+    "message": "下一阶段"
+  },
+  "page.ai.pieces.eyebrow": {
+    "message": "这些部件"
+  },
+  "page.ai.pieces.title": {
+    "message": "循环后方的三块物件"
+  },
+  "page.ai.pieces.plugin": {
+    "message": "AI 插件"
+  },
+  "page.ai.pieces.bundles": {
+    "message": "捆绑包"
+  },
+  "page.ai.pieces.mcp": {
+    "message": "MCP 服务器"
+  },
+  "page.ai.pieces.skills": {
+    "message": "智能体技能"
+  },
+  "page.ai.plugin.name": {
+    "message": "webforJ AI 插件"
+  },
+  "page.ai.plugin.title": {
+    "message": "一次安装，兼得两部分\n"
+  },
+  "page.ai.plugin.lead1": {
+    "message": "该插件集成了 MCP 服务器和 Agent Skills。两者协同，让原本靠猜测 webforJ 约定的助手转而遵循这些约定。"
+  },
+  "page.ai.plugin.lead2": {
+    "message": "在提示中提及 {name}，即可引导助手使用插件，而非通用 Java 知识。"
+  },
+  "page.ai.plugin.link": {
+    "message": "安装插件"
+  },
+  "page.ai.plugin.where": {
+    "message": "安装位置"
+  },
+  "page.ai.plugin.reaches": {
+    "message": "提示词所追寻的"
+  },
+  "page.ai.mcp.name": {
+    "message": "MCP 服务器，AI 插件的一部分"
+  },
+  "page.ai.mcp.title": {
+    "message": "助手直接读取真实 API，而非凭记忆调用。"
+  },
+  "page.ai.mcp.lead1": {
+    "message": "Model Context Protocol 是一项开放标准，让 AI 助手按需调用外部工具。webforJ MCP 服务器基于真实框架提供答案，涵盖文档、设计令牌、组件样式和项目脚手架。"
+  },
+  "page.ai.mcp.lead2": {
+    "message": "验证可在发布前捕获拼写错误和虚构令牌，避免 CSS 静默失效。"
+  },
+  "page.ai.mcp.link": {
+    "message": "查看服务器能做什么"
+  },
+  "page.ai.mcp.onlyTitle": {
+    "message": "仅限 Claude Code 中的 MCP 服务器"
+  },
+  "page.ai.mcp.onlyCaption": {
+    "message": "插件是推荐的安装方式。此命令仅连接服务器：https://mcp.webforj.com/mcp。"
+  },
+  "page.ai.skills.name": {
+    "message": "智能体技能，AI 插件的一部分"
+  },
+  "page.ai.skills.title": {
+    "message": "为当前任务选择合适的工作流"
+  },
+  "page.ai.skills.lead1": {
+    "message": "MCP 服务器提供准确信息。技能会告诉助手何时查找信息、采用哪种方法，以及按什么顺序操作。"
+  },
+  "page.ai.skills.lead2": {
+    "message": "技能遵循开放的 Agent Skills 标准。当你的提示与某项技能匹配时，助手会自动加载该技能。"
+  },
+  "page.ai.skills.link": {
+    "message": "浏览技能"
+  },
+  "page.ai.testbed.title": {
+    "message": "无需浏览器或服务器，即可明确判定通过或失败\n"
+  },
+  "page.ai.testbed.lead1": {
+    "message": "视图在普通 JUnit 测试中运行。组件会像在应用中一样挂载、触发事件并导航。"
+  },
+  "page.ai.testbed.lead2": {
+    "message": "每次交互都会在测试执行下一行之前完成，因此无需等待，也不会偶发失败。Spring Boot 应用使用 {module} 模块。"
+  },
+  "page.ai.testbed.link": {
+    "message": "阅读 TestBed 指南"
+  },
+  "page.ai.testbed.find.verb": {
+    "message": "查找"
+  },
+  "page.ai.testbed.find.text": {
+    "message": "根据组件类型及其显示内容，以用户识别它的方式进行描述。"
+  },
+  "page.ai.testbed.act.verb": {
+    "message": "执行"
+  },
+  "page.ai.testbed.act.text": {
+    "message": "仅执行用户能够进行的操作。点击已禁用的按钮会导致测试失败。"
+  },
+  "page.ai.testbed.check.verb": {
+    "message": "检查"
+  },
+  "page.ai.testbed.check.text": {
+    "message": "检查用户会看到的内容；失败时会指出组件名称和两个值。"
+  },
+  "page.ai.testbed.caption": {
+    "message": "版本由 webforJ BOM 提供。通过 archetype 创建的项目已导入该 BOM。"
+  },
+  "page.ai.craftforj.title": {
+    "message": "运行中应用内的编码智能体"
+  },
+  "page.ai.craftforj.lead1": {
+    "message": "它可以自由编写 Java，每次编辑后都会先编译，再应用到运行中的应用。应用更改会重启应用，重启后代理会继续执行计划。"
+  },
+  "page.ai.craftforj.lead2": {
+    "message": "它随 webforJ 一同提供，因此无需安装。craftforJ 不附带自有模型：添加受支持提供商的 API 密钥，或将其连接到通过 Ollama 在本地运行的模型。"
+  },
+  "page.ai.craftforj.link": {
+    "message": "了解助手"
+  },
+  "page.ai.craftforj.colPlugin": {
+    "message": "AI 插件"
+  },
+  "page.ai.craftforj.mobilePlugin": {
+    "message": "AI 插件"
+  },
+  "page.ai.craftforj.shotAlt": {
+    "message": "craftforJ 助手在执行操作前于对话记录中询问，并提供“应用”、“允许本次聊天”和“关闭”选项。"
+  },
+  "page.ai.craftforj.shotCaption": {
+    "message": "助手在执行操作前，会直接在对话记录中询问。"
+  },
+  "page.ai.craftforj.confCaption": {
+    "message": "craftforJ 仅在开发环境中运行。按 {alt} + {shift} + {d} 打开，然后切换到 AI Assistant 标签页。"
+  },
+  "page.ai.start.eyebrow": {
+    "message": "如何开始"
+  },
+  "page.ai.start.title": {
+    "message": "要求提供一个带测试的界面\n"
+  },
+  "page.ai.start.lead": {
+    "message": "选一个你本周原本要手动开发的页面。webforJ 是面向企业 Web 应用的全栈 Java 框架：整个应用，包括页面，都用 Java 构建。"
+  },
+  "page.ai.start.step1": {
+    "message": "安装插件"
+  },
+  "page.ai.start.step2.title": {
+    "message": "生成脚手架或打开 webforJ 项目"
+  },
+  "page.ai.start.step2.text": {
+    "message": "向 MCP 服务器获取项目，或打开现有项目。"
+  },
+  "page.ai.start.step3.title": {
+    "message": "在一个提示中同时请求视图及其 TestBed 测试\n"
+  },
+  "page.ai.start.step3.text": {
+    "message": "描述你关心的行为，让测试验证它。"
+  },
+  "page.ai.start.step4": {
+    "message": "运行 {code} 并查看结果"
+  },
+  "page.ai.start.docsLabel": {
+    "message": "AI 工具文档"
+  },
+  "page.ai.start.home": {
+    "message": "返回文档首页"
+  },
+  "page.ai.meta.title": {
+    "message": "webforJ 的 AI 工具：面向 Java Web 应用的 AI 编码循环"
+  },
+  "page.ai.meta.description": {
+    "message": "webforJ AI 插件及其 MCP 服务器和 Agent Skills、TestBed 与 craftforJ Assistant，为 AI 编码工具提供 Java Web 应用的编写、检查和审查闭环。"
+  },
+  "page.craftforj.panels.inspector.tab": {
+    "message": "检查器"
+  },
+  "page.craftforj.panels.inspector.title": {
+    "message": "由 Java 构建的组件树"
+  },
+  "page.craftforj.panels.inspector.text": {
+    "message": "检查器列出的是你的组件，而不是浏览器渲染的标记。Composite 会显示为你编写的类，并按 webforJ 中的顺序包含其子组件。"
+  },
+  "page.craftforj.panels.inspector.point1": {
+    "message": "按 Alt+Shift+C，然后点击页面中的任意元素，即可在树状结构中选中它。"
+  },
+  "page.craftforj.panels.inspector.point2": {
+    "message": "在侧边栏更改属性，运行中的应用会立即更新。"
+  },
+  "page.craftforj.panels.inspector.point3": {
+    "message": "追踪组件并定位创建它的 Java 代码行。"
+  },
+  "page.craftforj.panels.inspector.docLabel": {
+    "message": "正在检查组件"
+  },
+  "page.craftforj.panels.inspector.view1": {
+    "message": "选择一个组件"
+  },
+  "page.craftforj.panels.inspector.alt1": {
+    "message": "视频：在运行中的应用中选择组件，会在 craftforJ 组件树中选中该组件\n"
+  },
+  "page.craftforj.panels.inspector.view2": {
+    "message": "编辑属性"
+  },
+  "page.craftforj.panels.inspector.alt2": {
+    "message": "视频：在 craftforJ 侧边栏中更改属性会更新正在运行的应用程序"
+  },
+  "page.craftforj.panels.sourceChanges.tab": {
+    "message": "正在应用更改"
+  },
+  "page.craftforj.panels.sourceChanges.title": {
+    "message": "审查差异，然后用 Java 编写"
+  },
+  "page.craftforj.panels.sourceChanges.text": {
+    "message": "你修改的每项属性都会记录为待处理更改。按 Cmd/Ctrl+S 可按文件查看更改，包括每项的旧值、新值及文件差异。应用前不会写入任何内容。"
+  },
+  "page.craftforj.panels.sourceChanges.point1": {
+    "message": "待处理的更改在页面重新加载或切换路由后仍会保留。"
+  },
+  "page.craftforj.panels.sourceChanges.point2": {
+    "message": "在使用处修改（仅针对一个屏幕），或在定义处修改（适用于所有使用它的屏幕）。"
+  },
+  "page.craftforj.panels.sourceChanges.point3": {
+    "message": "Cmd/Ctrl+Z 可撤销更改，包括已写入文件的更改。"
+  },
+  "page.craftforj.panels.sourceChanges.docLabel": {
+    "message": "正在应用更改"
+  },
+  "page.craftforj.panels.sourceChanges.view1": {
+    "message": "保存到源文件"
+  },
+  "page.craftforj.panels.sourceChanges.alt1": {
+    "message": "视频：查看在 craftforJ 中所做的更改并将其保存到 Java 源代码中"
+  },
+  "page.craftforj.panels.routes.tab": {
+    "message": "路由"
+  },
+  "page.craftforj.panels.routes.title": {
+    "message": "实时路由表"
+  },
+  "page.craftforj.panels.routes.text": {
+    "message": "Routes 选项卡会按路由器内部的层级显示路由表，并标记当前活动路由。动态注册的路由会与通过注解配置的路由一同显示。"
+  },
+  "page.craftforj.panels.routes.point1": {
+    "message": "导航到 craftforJ 中的任意路由。生命周期观察器将像用户操作时一样运行。"
+  },
+  "page.craftforj.panels.routes.point2": {
+    "message": "每条路由都带有其声明的安全注解徽标。"
+  },
+  "page.craftforj.panels.routes.point3": {
+    "message": "修改访问规则后，craftforJ 会将注解写入路由类。"
+  },
+  "page.craftforj.panels.routes.docLabel": {
+    "message": "路由"
+  },
+  "page.craftforj.panels.routes.view1": {
+    "message": "导航到路由"
+  },
+  "page.craftforj.panels.routes.alt1": {
+    "message": "视频：从 craftforJ 的路由选项卡导航到某个路由"
+  },
+  "page.craftforj.panels.routes.view2": {
+    "message": "设置访问规则"
+  },
+  "page.craftforj.panels.routes.alt2": {
+    "message": "视频：在 craftforJ 的 Routes 选项卡中为路由选择安全注解"
+  },
+  "page.craftforj.panels.theme.tab": {
+    "message": "主题"
+  },
+  "page.craftforj.panels.theme.title": {
+    "message": "运行时更换应用主题"
+  },
+  "page.craftforj.panels.theme.text": {
+    "message": "主题标签页使用应用现有的 DWC 设计令牌，因此更改一次即可影响所有读取该令牌的组件。控件涵盖配色、表面、边框与圆角、字体排版和间距。"
+  },
+  "page.craftforj.panels.theme.point1": {
+    "message": "编辑浅色模式、深色模式或两者，并切换应用的显示模式。"
+  },
+  "page.craftforj.panels.theme.point2": {
+    "message": "从预设开始，例如 App Default 或 Portico。"
+  },
+  "page.craftforj.panels.theme.point3": {
+    "message": "保存会将主题写入样式表，并随应用一起发布。"
+  },
+  "page.craftforj.panels.theme.docLabel": {
+    "message": "主题"
+  },
+  "page.craftforj.panels.theme.view1": {
+    "message": "主题控件"
+  },
+  "page.craftforj.panels.theme.alt1": {
+    "message": "视频：使用 craftforJ 主题控件更改运行中应用的主题"
+  },
+  "page.craftforj.panels.ai.tab": {
+    "message": "AI 助手"
+  },
+  "page.craftforj.panels.ai.title": {
+    "message": "一个在你看到之前就已编译完成的智能体"
+  },
+  "page.craftforj.panels.ai.text": {
+    "message": "助手是您正在运行的应用中的编码代理。它会编写 Java，将每项暂存的修改发送给真正的 Java 编译器，并根据诊断信息自行修正错误，因此送交您审核的内容都已通过编译。"
+  },
+  "page.craftforj.panels.ai.point1": {
+    "message": "选择自动化程度：执行前询问、自动应用编辑，或完全自主运行。"
+  },
+  "page.craftforj.panels.ai.point2": {
+    "message": "使用受支持提供商的 API 密钥，或使用本地运行的模型。"
+  },
+  "page.craftforj.panels.ai.point3": {
+    "message": "它会从浏览器直接与服务提供商通信，无需中继或代理。"
+  },
+  "page.craftforj.panels.ai.docLabel": {
+    "message": "AI 助手"
+  },
+  "page.craftforj.panels.ai.view1": {
+    "message": "对话"
+  },
+  "page.craftforj.panels.ai.alt1": {
+    "message": "视频：与 craftforJ AI 助手对话，修改正在运行的应用\n"
+  },
+  "page.craftforj.panels.appInfo.tab": {
+    "message": "应用信息"
+  },
+  "page.craftforj.panels.appInfo.title": {
+    "message": "您的应用实际运行所依赖的技术"
+  },
+  "page.craftforj.panels.appInfo.text": {
+    "message": "应用信息会显示应用实际运行所用的版本，这些版本不一定与 pom.xml 中声明的一致。信息涵盖 webforJ、BBj Services、Java 运行时、操作系统和项目根目录。"
+  },
+  "page.craftforj.panels.appInfo.point1": {
+    "message": "项目根目录是 craftforJ 查找源文件的位置。"
+  },
+  "page.craftforj.panels.appInfo.point2": {
+    "message": "助手编辑的验证程度由 Java 运行时决定。完整验证需要 JDK。"
+  },
+  "page.craftforj.panels.appInfo.docLabel": {
+    "message": "应用信息"
+  },
+  "page.craftforj.panels.appInfo.view1": {
+    "message": "应用信息"
+  },
+  "page.craftforj.panels.appInfo.alt1": {
+    "message": "列出 webforJ 版本、项目根目录、Java 运行时和操作系统的应用信息面板"
+  },
+  "page.craftforj.shortcuts.open": {
+    "message": "打开或关闭"
+  },
+  "page.craftforj.shortcuts.pick": {
+    "message": "选择一个组件"
+  },
+  "page.craftforj.shortcuts.review": {
+    "message": "审查更改"
+  },
+  "page.craftforj.shortcuts.undo": {
+    "message": "撤销更改"
+  },
+  "page.craftforj.loop.open.title": {
+    "message": "打开"
+  },
+  "page.craftforj.loop.open.text": {
+    "message": "在应用中点击触发按钮，或在任意位置按 Alt+Shift+D。"
+  },
+  "page.craftforj.loop.pick.title": {
+    "message": "选择"
+  },
+  "page.craftforj.loop.pick.text": {
+    "message": "按 Alt+Shift+C，将鼠标悬停在组件上并点击。树形视图会选中该组件，侧边栏会显示其属性。"
+  },
+  "page.craftforj.loop.change.title": {
+    "message": "更改"
+  },
+  "page.craftforj.loop.change.text": {
+    "message": "编辑属性。运行中的应用会立即更新，文件不会被修改。"
+  },
+  "page.craftforj.loop.keep.title": {
+    "message": "保留"
+  },
+  "page.craftforj.loop.keep.text": {
+    "message": "以 diff 形式审查更改，并将其应用到生成该更改的 Java 文件中。"
+  },
+  "page.craftforj.guards.settings.title": {
+    "message": "两项设置均为必填"
+  },
+  "page.craftforj.guards.settings.text": {
+    "message": "craftforJ 需要 webforj.debug 和 webforj.devtools.craftforj.enabled。两者单独启用均无效。"
+  },
+  "page.craftforj.guards.local.title": {
+    "message": "默认本地访问"
+  },
+  "page.craftforj.guards.local.text": {
+    "message": "在 hosts-allowed 中指定其他机器之前，只有运行该应用的机器上的浏览器可以访问它。"
+  },
+  "page.craftforj.guards.http.title": {
+    "message": "未增加 HTTP 暴露面"
+  },
+  "page.craftforj.guards.http.text": {
+    "message": "它不会添加任何端点、Servlet 或过滤器，而是通过应用已有的连接工作。"
+  },
+  "page.craftforj.guards.compiles.title": {
+    "message": "只写能编译通过的代码"
+  },
+  "page.craftforj.guards.compiles.text": {
+    "message": "只有在结果仍可编译时，才会写入源代码移除记录；文件绝不会被删除。"
+  },
+  "page.craftforj.docs.overview.label": {
+    "message": "概览"
+  },
+  "page.craftforj.docs.overview.text": {
+    "message": "craftforJ 是什么，以及它能为你提供什么"
+  },
+  "page.craftforj.docs.gettingStarted.label": {
+    "message": "入门"
+  },
+  "page.craftforj.docs.gettingStarted.text": {
+    "message": "依赖项、设置及打开方式"
+  },
+  "page.craftforj.docs.inspector.label": {
+    "message": "正在检查组件"
+  },
+  "page.craftforj.docs.inspector.text": {
+    "message": "树、拾取、属性和源代码查看器"
+  },
+  "page.craftforj.docs.changes.label": {
+    "message": "正在应用更改"
+  },
+  "page.craftforj.docs.changes.text": {
+    "message": "待处理更改、审核、撤销和重做"
+  },
+  "page.craftforj.docs.routes.label": {
+    "message": "路由"
+  },
+  "page.craftforj.docs.routes.text": {
+    "message": "路由表、导航和访问规则"
+  },
+  "page.craftforj.docs.theme.label": {
+    "message": "主题"
+  },
+  "page.craftforj.docs.theme.text": {
+    "message": "设计令牌、预设及保存到样式表"
+  },
+  "page.craftforj.docs.ai.label": {
+    "message": "AI 助手"
+  },
+  "page.craftforj.docs.ai.text": {
+    "message": "智能体、其审批和模型选择"
+  },
+  "page.craftforj.docs.appInfo.label": {
+    "message": "应用信息"
+  },
+  "page.craftforj.docs.appInfo.text": {
+    "message": "版本、Java 运行时和项目根目录"
+  },
+  "page.craftforj.docs.configuration.label": {
+    "message": "配置"
+  },
+  "page.craftforj.docs.configuration.text": {
+    "message": "每个属性、默认值和功能标志\n"
+  },
+  "page.craftforj.docs.security.label": {
+    "message": "安全"
+  },
+  "page.craftforj.docs.security.text": {
+    "message": "它可以访问什么，以及如何确认它已关闭\n"
+  },
+  "page.craftforj.hero.eyebrow": {
+    "message": "webforJ 可视化编辑器"
+  },
+  "page.craftforj.hero.title1": {
+    "message": "看看你的 Java 构建出的应用\n"
+  },
+  "page.craftforj.hero.title2": {
+    "message": "运行时更改它。"
+  },
+  "page.craftforj.hero.lead": {
+    "message": "craftforJ 在开发模式下运行于你的应用中。它会显示代码创建的组件树，让你实时修改属性，并将保留的更改写回创建这些组件的 Java 文件。"
+  },
+  "page.craftforj.hero.cta": {
+    "message": "开始使用"
+  },
+  "page.craftforj.hero.docs": {
+    "message": "阅读文档"
+  },
+  "page.craftforj.hero.shortcutsTitle": {
+    "message": "四个快捷键覆盖整个循环"
+  },
+  "page.craftforj.hero.shotAlt": {
+    "message": "在运行中的应用中打开 craftforJ，组件树中已选中 AppNav，侧边栏显示其属性。"
+  },
+  "page.craftforj.loop.eyebrow": {
+    "message": "工作原理"
+  },
+  "page.craftforj.loop.title1": {
+    "message": "它会读取你的应用\n"
+  },
+  "page.craftforj.loop.title2": {
+    "message": "通过 webforJ 本身"
+  },
+  "page.craftforj.loop.lead": {
+    "message": "这就是它按照你编写应用时使用的术语来描述应用的原因。树中列出你的组件，属性是组件声明的属性，路由是路由器注册的路由，并附带你为其标注的访问规则。"
+  },
+  "page.craftforj.tour.video": {
+    "message": "视频"
+  },
+  "page.craftforj.tour.screenshot": {
+    "message": "截图"
+  },
+  "page.craftforj.tour.viewsLabel": {
+    "message": "{tab} 个视图"
+  },
+  "page.craftforj.tour.count": {
+    "message": "{count}/{total}"
+  },
+  "page.craftforj.tour.docLink": {
+    "message": "{label} 文档"
+  },
+  "page.craftforj.tour.eyebrow": {
+    "message": "面板导览"
+  },
+  "page.craftforj.tour.title1": {
+    "message": "这些面板，"
+  },
+  "page.craftforj.tour.title2": {
+    "message": "在真实应用上"
+  },
+  "page.craftforj.tour.tabsLabel": {
+    "message": "craftforJ 面板"
+  },
+  "page.craftforj.source.eyebrow": {
+    "message": "返回来源"
+  },
+  "page.craftforj.source.title1": {
+    "message": "它编辑 Java，"
+  },
+  "page.craftforj.source.title2": {
+    "message": "不是它的副本"
+  },
+  "page.craftforj.source.lead": {
+    "message": "在包含“保存”和“取消”按钮的表单中，选择“保存”，在树中右键单击它，然后选择“从源代码中移除”。其声明、主题、侦听器、add() 调用中的位置，以及其他地方未使用的 ButtonTheme 导入都会被移除。“取消”按钮则会保留。"
+  },
+  "page.craftforj.source.before": {
+    "message": "之前"
+  },
+  "page.craftforj.source.after": {
+    "message": "从源中移除后"
+  },
+  "page.craftforj.start.eyebrow": {
+    "message": "入门"
+  },
+  "page.craftforj.start.title1": {
+    "message": "打开它\n"
+  },
+  "page.craftforj.start.title2": {
+    "message": "分三步"
+  },
+  "page.craftforj.start.lead": {
+    "message": "craftforJ 已随 webforJ 一同提供，无需单独下载。使用 startforJ 或 webforJ 原型创建的项目默认已启用。运行应用，直接进入第三步。"
+  },
+  "page.craftforj.start.step1.title": {
+    "message": "添加依赖项"
+  },
+  "page.craftforj.start.step1.text": {
+    "message": "如果项目中尚未添加，请将 webforj-devtools 添加到项目中。"
+  },
+  "page.craftforj.start.step2.title": {
+    "message": "启用调试模式和 craftforJ"
+  },
+  "page.craftforj.start.step2.text": {
+    "message": "在 webforj.conf 中设置这两个属性；Spring 项目则在 application.properties 中设置。只有同时启用这两个属性，craftforJ 才能正常工作。"
+  },
+  "page.craftforj.start.step3.title": {
+    "message": "重新启动、重新加载并打开它"
+  },
+  "page.craftforj.start.step3.text": {
+    "message": "在运行该应用的机器上打开应用。应用上方会出现一个触发按钮。点击它，或在应用内任意位置按下 {keys}。再次按下相同快捷键即可关闭 craftforJ。"
+  },
+  "page.craftforj.start.dockAlt": {
+    "message": "craftforJ 停靠在应用页面右侧边缘"
+  },
+  "page.craftforj.start.dockCaption": {
+    "message": "craftforJ 默认悬浮在应用上方。将其拖到边缘即可停靠，或将其移至独立的浏览器窗口或标签页，以便在第二台显示器上使用。"
+  },
+  "page.craftforj.next.eyebrow": {
+    "message": "接下来去哪里？"
+  },
+  "page.craftforj.next.title1": {
+    "message": "每个面板都有自己的页面\n"
+  },
+  "page.craftforj.next.title2": {
+    "message": "在文档中"
+  },
+  "page.craftforj.next.lead": {
+    "message": "webforJ 是面向企业 Web 应用的全栈 Java 框架：整个应用（包括界面）都用 Java 构建。craftforJ 随附其中，可直接用于正在运行的应用。"
+  },
+  "page.craftforj.next.assistant": {
+    "message": "craftforJ 助手"
+  },
+  "page.craftforj.next.home": {
+    "message": "返回文档主页"
+  },
+  "page.craftforj.meta.title": {
+    "message": "craftforJ：为运行中的 webforJ 应用提供的可视化编辑器"
+  },
+  "page.craftforj.meta.description": {
+    "message": "craftforJ 是 webforJ 的可视化编辑器。它显示正在运行的 webforJ 应用的组件树，让你实时修改属性，并将保留的更改写回 Java 源代码。"
+  },
+  "page.designKit.palette.primary": {
+    "message": "您的品牌颜色"
+  },
+  "page.designKit.palette.default": {
+    "message": "中性色，带有主色调"
+  },
+  "page.designKit.palette.success": {
+    "message": "状态"
+  },
+  "page.designKit.palette.warning": {
+    "message": "状态"
+  },
+  "page.designKit.palette.danger": {
+    "message": "状态"
+  },
+  "page.designKit.palette.info": {
+    "message": "次要强调"
+  },
+  "page.designKit.palette.gray": {
+    "message": "纯灰色，无色调"
+  },
+  "page.designKit.surface.level1": {
+    "message": "页面和主体背景"
+  },
+  "page.designKit.surface.level2": {
+    "message": "工具栏、菜单栏、卡片"
+  },
+  "page.designKit.surface.level3": {
+    "message": "窗口、菜单、弹出层、对话框"
+  },
+  "page.designKit.collections.color": {
+    "message": "颜色"
+  },
+  "page.designKit.collections.type": {
+    "message": "排版"
+  },
+  "page.designKit.collections.space": {
+    "message": "间距与尺寸"
+  },
+  "page.designKit.collections.radius": {
+    "message": "半径"
+  },
+  "page.designKit.collections.depth": {
+    "message": "阴影与表面"
+  },
+  "page.designKit.handoff.color.design": {
+    "message": "品牌色"
+  },
+  "page.designKit.handoff.color.note": {
+    "message": "调色板的全部 19 个色阶均由此生成。"
+  },
+  "page.designKit.handoff.type.design": {
+    "message": "字号比例"
+  },
+  "page.designKit.handoff.type.note": {
+    "message": "尺寸单位为 rem，m 为默认值。"
+  },
+  "page.designKit.handoff.space.design": {
+    "message": "间距节奏"
+  },
+  "page.designKit.handoff.space.note": {
+    "message": "组件间距（单位：rem）"
+  },
+  "page.designKit.handoff.theme.design": {
+    "message": "浅色和深色"
+  },
+  "page.designKit.handoff.theme.note": {
+    "message": "遵循操作系统偏好设置。"
+  },
+  "page.designKit.ai.step1.title": {
+    "message": "读取设计"
+  },
+  "page.designKit.ai.step1.text": {
+    "message": "它会将你指定的画板交给助手，包括布局、组件和变量。素材库中的变量沿用 DWC 令牌名称，让设计与代码语言相通。"
+  },
+  "page.designKit.ai.step2.title": {
+    "message": "对照 webforJ 检查"
+  },
+  "page.designKit.ai.step2.text": {
+    "message": "它会基于真实框架回答：该使用哪个组件、可自定义哪些样式，以及 CSS 中的每个令牌是否都存在。"
+  },
+  "page.designKit.ai.step3.who": {
+    "message": "您的助手"
+  },
+  "page.designKit.ai.step3.title": {
+    "message": "使用 Java 编写界面"
+  },
+  "page.designKit.ai.step3.text": {
+    "message": "连接两者后，它会使用 webforJ 组件和设计师使用的相同设计令牌构建视图，您可以对照设计稿检查结果。"
+  },
+  "page.designKit.next.overview.title": {
+    "message": "样式概览"
+  },
+  "page.designKit.next.overview.text": {
+    "message": "DWC 设计系统和工具包。"
+  },
+  "page.designKit.next.themes.title": {
+    "message": "主题"
+  },
+  "page.designKit.next.themes.text": {
+    "message": "浅色、深色和纯深色主题，以及如何覆盖它们。"
+  },
+  "page.designKit.next.colors.title": {
+    "message": "颜色"
+  },
+  "page.designKit.next.colors.text": {
+    "message": "以一个种子色生成七种调色板，每种包含 19 个色阶。"
+  },
+  "page.designKit.next.typography.title": {
+    "message": "排版"
+  },
+  "page.designKit.next.typography.text": {
+    "message": "字体系列、字号、字重和行高。"
+  },
+  "page.designKit.next.sizingAndSpacing.title": {
+    "message": "尺寸与间距"
+  },
+  "page.designKit.next.sizingAndSpacing.text": {
+    "message": "rem 用于缩放尺寸和间距。"
+  },
+  "page.designKit.next.borders.title": {
+    "message": "边框"
+  },
+  "page.designKit.next.borders.text": {
+    "message": "宽度、颜色和圆角尺度均由同一个种子生成。"
+  },
+  "page.designKit.next.shadows.title": {
+    "message": "阴影"
+  },
+  "page.designKit.next.shadows.text": {
+    "message": "适配浅色和深色模式的六个步骤。"
+  },
+  "page.designKit.next.surfaces.title": {
+    "message": "表面"
+  },
+  "page.designKit.next.surfaces.text": {
+    "message": "UI 层级分为三级。"
+  },
+  "page.designKit.next.cssVariables.title": {
+    "message": "CSS 变量"
+  },
+  "page.designKit.next.cssVariables.text": {
+    "message": "令牌的设置与覆盖方式"
+  },
+  "page.designKit.carousel.slideAlt": {
+    "message": "{app} 应用的 {name} 页面。{caption}"
+  },
+  "page.designKit.carousel.label": {
+    "message": "使用该套件设计的应用界面"
+  },
+  "page.designKit.carousel.position": {
+    "message": "{n} / {total}"
+  },
+  "page.designKit.carousel.previous": {
+    "message": "上一屏"
+  },
+  "page.designKit.carousel.count": {
+    "message": "{n} / {total}"
+  },
+  "page.designKit.carousel.next": {
+    "message": "下一屏"
+  },
+  "page.designKit.readout.token": {
+    "message": "令牌"
+  },
+  "page.designKit.readout.value": {
+    "message": "已解析值"
+  },
+  "page.designKit.readout.text": {
+    "message": "上面的文字"
+  },
+  "page.designKit.color.title": {
+    "message": "颜色"
+  },
+  "page.designKit.color.text": {
+    "message": "七种色板，每种包含 19 个色阶，均由一个种子色生成。第 5 阶始终最暗，第 95 阶最亮。选择一个色块进行查看。"
+  },
+  "page.designKit.type.sample": {
+    "message": "指派司机"
+  },
+  "page.designKit.type.title": {
+    "message": "排版"
+  },
+  "page.designKit.type.text": {
+    "message": "以 rem 为单位的尺寸比例，其中 m 是大多数组件使用的标准尺寸；字重从纤细到特黑。"
+  },
+  "page.designKit.space.title": {
+    "message": "间距与尺寸"
+  },
+  "page.designKit.space.text": {
+    "message": "间距用于设置组件之间的距离。尺寸用于设置组件的宽度和高度，m 是几乎所有组件的标准尺寸。间距条按其尺寸的四倍绘制。"
+  },
+  "page.designKit.radius.title": {
+    "message": "半径"
+  },
+  "page.designKit.radius.text": {
+    "message": "每个级别都基于同一个种子值缩放：--dwc-border-radius-seed。更改种子值，整个圆角系统都会随之变化。"
+  },
+  "page.designKit.shadow.layer": {
+    "message": "{count} 层"
+  },
+  "page.designKit.shadow.layers": {
+    "message": "{count} 个图层"
+  },
+  "page.designKit.depth.title": {
+    "message": "阴影与表面"
+  },
+  "page.designKit.depth.text": {
+    "message": "阴影显示哪些内容位于上层。三个表面层级构建从页面到对话框的层次结构，并均适配浅色和深色模式。"
+  },
+  "page.designKit.hero.eyebrow": {
+    "message": "Figma 设计套件"
+  },
+  "page.designKit.hero.title1": {
+    "message": "使用相同的设计令牌进行设计"
+  },
+  "page.designKit.hero.title2": {
+    "message": "您的应用运行于\n"
+  },
+  "page.designKit.hero.lead": {
+    "message": "DWC 设计套件是用于设计 webforJ 应用的官方 Figma 资源，帮助设计师和开发者使用相同的设计令牌和组件。"
+  },
+  "page.designKit.hero.openKit": {
+    "message": "在 Figma 中打开套件"
+  },
+  "page.designKit.hero.styling": {
+    "message": "阅读样式指南"
+  },
+  "page.designKit.facts.components.term": {
+    "message": "组件"
+  },
+  "page.designKit.facts.components.text": {
+    "message": "每个 DWC 组件及其主题、范围和状态"
+  },
+  "page.designKit.facts.tokens.term": {
+    "message": "令牌"
+  },
+  "page.designKit.facts.tokens.text": {
+    "message": "色板、排版、间距和阴影，均作为 Figma 变量和样式"
+  },
+  "page.designKit.facts.modes.term": {
+    "message": "模式"
+  },
+  "page.designKit.facts.modes.text": {
+    "message": "浅色和深色模式（webforJ 26 及更高版本中的应用渲染效果）"
+  },
+  "page.designKit.tokens.kicker": {
+    "message": "变量"
+  },
+  "page.designKit.tokens.title1": {
+    "message": "套件中的值"
+  },
+  "page.designKit.tokens.title2": {
+    "message": "这些值在代码中吗？"
+  },
+  "page.designKit.tokens.lead": {
+    "message": "该套件将 DWC 令牌作为 Figma 变量保存。在应用中，它们是 CSS 自定义属性。以下内容均取自此页面所用的 {code} 变量，并显示浏览器解析出的值。将网站切换为深色模式后，它们也会随之变化，就像套件的深色模式一样。"
+  },
+  "page.designKit.tokens.collectionsLabel": {
+    "message": "Token 集合"
+  },
+  "page.designKit.tokens.collections": {
+    "message": "集合"
+  },
+  "page.designKit.kitToApp.kicker": {
+    "message": "从工具包到应用"
+  },
+  "page.designKit.kitToApp.title1": {
+    "message": "使用该套件设计，"
+  },
+  "page.designKit.kitToApp.title2": {
+    "message": "由 webforJ 组件构建"
+  },
+  "page.designKit.kitToApp.lead": {
+    "message": "本页顶部的界面使用该工具包设计。使用该工具包设计的界面会采用应用实际渲染的组件和设计令牌，因此从设计稿到 Java 代码无需将一种视觉语言转换为另一种。"
+  },
+  "page.designKit.kitToApp.showcase": {
+    "message": "逐步浏览展示内容\n"
+  },
+  "page.designKit.together.kicker": {
+    "message": "设计师和开发者"
+  },
+  "page.designKit.together.title1": {
+    "message": "一次交接，"
+  },
+  "page.designKit.together.title2": {
+    "message": "已映射一次"
+  },
+  "page.designKit.together.lead": {
+    "message": "Tokens 是设计与代码之间的契约。设计师从套件中交付品牌色和字号比例。开发者只需将它们映射到 seed 和字号 token，之后每个界面都会继承这些设置。"
+  },
+  "page.designKit.handoff.inFigma": {
+    "message": "在 Figma 中"
+  },
+  "page.designKit.handoff.inCode": {
+    "message": "在代码中"
+  },
+  "page.designKit.sides.kit.title": {
+    "message": "在套件中"
+  },
+  "page.designKit.sides.kit.item1": {
+    "message": "webforJ 26 及更高版本中每个 DWC 组件的外观，包括其主题、尺寸和状态。"
+  },
+  "page.designKit.sides.kit.item2": {
+    "message": "以 Figma 变量和样式提供的配色、字体、间距和阴影设计令牌。"
+  },
+  "page.designKit.sides.kit.item3": {
+    "message": "组件和令牌的浅色与深色模式"
+  },
+  "page.designKit.sides.kit.item4": {
+    "message": "精准的间距与无障碍色彩对比，让界面组件行为更可预测。"
+  },
+  "page.designKit.sides.app.title": {
+    "message": "在应用中"
+  },
+  "page.designKit.sides.app.seed": {
+    "message": "只需设置一次品牌种子色。按钮、链接和焦点环都会沿用它，因为它们使用主色板。"
+  },
+  "page.designKit.sides.app.theme": {
+    "message": "注册浅色和深色主题，并让 webforJ 跟随用户的操作系统设置。"
+  },
+  "page.designKit.ai.kicker": {
+    "message": "使用 AI 构建"
+  },
+  "page.designKit.ai.title1": {
+    "message": "来自 Figma 画板"
+  },
+  "page.designKit.ai.title2": {
+    "message": "前往 Java 界面"
+  },
+  "page.designKit.ai.lead": {
+    "message": "将 Figma 和 webforJ 的两个 MCP 服务器连接到你的编程助手：一个读取设计，另一个了解框架，助手在两者之间协作。"
+  },
+  "page.designKit.ai.promptLabel": {
+    "message": "起始提示词"
+  },
+  "page.designKit.ai.prompt": {
+    "message": "使用 webforJ MCP 服务器读取 Figma 框架，选择组件，并在完成前验证每个 --dwc-* 令牌。"
+  },
+  "page.designKit.ai.install": {
+    "message": "安装 AI 插件"
+  },
+  "page.designKit.ai.tooling": {
+    "message": "查看 AI 工具"
+  },
+  "page.designKit.getIt.kicker": {
+    "message": "获取工具包"
+  },
+  "page.designKit.getIt.title1": {
+    "message": "开始下一屏"
+  },
+  "page.designKit.getIt.title2": {
+    "message": "在 Figma 中"
+  },
+  "page.designKit.getIt.lead": {
+    "message": "DWC Design Kit 已上线 Figma Community。webforJ 是面向企业级 Web 应用的全栈 Java 框架：整个应用，包括界面，都可以用 Java 构建。"
+  },
+  "page.designKit.getIt.openKit": {
+    "message": "在 Figma 中打开套件"
+  },
+  "page.designKit.getIt.started": {
+    "message": "阅读入门指南"
+  },
+  "page.designKit.getIt.step1.title": {
+    "message": "打开套件"
+  },
+  "page.designKit.getIt.step1.text": {
+    "message": "在 Figma Community 中查找 DWC Design Kit。"
+  },
+  "page.designKit.getIt.step2.title": {
+    "message": "设计界面"
+  },
+  "page.designKit.getIt.step2.text": {
+    "message": "使用其组件和变量，并检查浅色和深色模式下的每个屏幕。"
+  },
+  "page.designKit.getIt.step3.title": {
+    "message": "使用 Java 构建它们\n"
+  },
+  "page.designKit.getIt.step3.text": {
+    "message": "在 webforJ 中使用相同的组件，并用一个种子设置品牌。"
+  },
+  "page.designKit.next.title": {
+    "message": "阅读设计系统"
+  },
+  "page.designKit.next.home": {
+    "message": "返回文档首页"
+  },
+  "page.designKit.meta.title": {
+    "message": "DWC 的 Figma 设计套件：设计 webforJ 应用"
+  },
+  "page.designKit.meta.description": {
+    "message": "webforJ 官方 Figma 组件库。包含所有 DWC 组件及其主题、尺寸和状态，以及浅色和深色模式下的颜色、字体、间距和阴影令牌（Figma 变量）。"
+  },
+  "page.intro.screens.one": {
+    "message": "什么是 webforJ\n"
+  },
+  "page.intro.screens.two": {
+    "message": "组件与主题\n"
+  },
+  "page.intro.screens.craft": {
+    "message": "craftforJ"
+  },
+  "page.intro.screens.three": {
+    "message": "数据、表单和安全性"
+  },
+  "page.intro.screens.four": {
+    "message": "您现有的代码"
+  },
+  "page.intro.screens.five": {
+    "message": "AI 工具与下一步"
+  },
+  "page.intro.four.roadmap.today.phase": {
+    "message": "今天"
+  },
+  "page.intro.four.roadmap.today.title": {
+    "message": "桌面端 Swing"
+  },
+  "page.intro.four.roadmap.today.text": {
+    "message": "多年积累的业务逻辑，每天都在运行。"
+  },
+  "page.intro.four.roadmap.one.phase": {
+    "message": "第一步"
+  },
+  "page.intro.four.roadmap.one.title": {
+    "message": "同一应用，在浏览器中"
+  },
+  "page.intro.four.roadmap.one.text": {
+    "message": "Webswing 无需修改源代码，即可将其流式传输到浏览器。"
+  },
+  "page.intro.four.roadmap.from.phase": {
+    "message": "从那里"
+  },
+  "page.intro.four.roadmap.from.title": {
+    "message": "webforJ，逐屏呈现"
+  },
+  "page.intro.four.roadmap.from.text": {
+    "message": "逐个将 Swing 界面替换为 webforJ。"
+  },
+  "page.intro.five.mcp.version": {
+    "message": "针对正确的 webforJ 版本"
+  },
+  "page.intro.five.mcp.knowledge": {
+    "message": "在知识库中查找"
+  },
+  "page.intro.five.mcp.scaffold": {
+    "message": "生成新的 webforJ 项目脚手架"
+  },
+  "page.intro.five.mcp.theme": {
+    "message": "生成 DWC 主题"
+  },
+  "page.intro.five.mcp.style": {
+    "message": "正确设置 DWC 组件样式"
+  },
+  "page.intro.five.mcp.tokens": {
+    "message": "使用 DWC 设计令牌"
+  },
+  "page.intro.next.create.step": {
+    "message": "创建"
+  },
+  "page.intro.next.create.title": {
+    "message": "开始项目"
+  },
+  "page.intro.next.create.text": {
+    "message": "使用 startforJ 或 Maven archetype 生成并运行项目。"
+  },
+  "page.intro.next.learn.step": {
+    "message": "了解"
+  },
+  "page.intro.next.learn.title": {
+    "message": "按照教程操作"
+  },
+  "page.intro.next.learn.text": {
+    "message": "逐步构建可运行的应用，从首个界面到验证。"
+  },
+  "page.intro.next.build.step": {
+    "message": "构建"
+  },
+  "page.intro.next.build.title": {
+    "message": "组件"
+  },
+  "page.intro.next.build.text": {
+    "message": "页面展示每个组件及其 API 和实时示例。"
+  },
+  "page.intro.next.explore.step": {
+    "message": "探索"
+  },
+  "page.intro.next.explore.title": {
+    "message": "文档主页"
+  },
+  "page.intro.next.explore.text": {
+    "message": "按你的目标分类的文档全览。"
+  },
+  "page.intro.readMore": {
+    "message": "了解更多：{topic}"
+  },
+  "page.intro.hello.afterClick": {
+    "message": "点击后"
+  },
+  "page.intro.hello.description": {
+    "message": "运行视图显示一个标注为“你叫什么名字？”的文本框、一个“打招呼”按钮，点击后会显示“欢迎，Lauren！”的成功提示。"
+  },
+  "page.intro.one.kicker": {
+    "message": "什么是 webforJ\n"
+  },
+  "page.intro.one.title1": {
+    "message": "一个屏幕是\n"
+  },
+  "page.intro.one.title2": {
+    "message": "一个 Java 类。"
+  },
+  "page.intro.one.codeLabel": {
+    "message": "Java 或 Kotlin 中的 HelloView"
+  },
+  "page.intro.one.lede": {
+    "message": "webforJ 是面向业务 Web 应用的全栈 Java 框架：整个应用，包括界面，都用 Java 构建。"
+  },
+  "page.intro.one.route.title": {
+    "message": "路由会使其成为一个页面。"
+  },
+  "page.intro.one.route.text": {
+    "message": "在类上添加 {code}，即可在浏览器中通过该地址访问。"
+  },
+  "page.intro.one.fields.title": {
+    "message": "组件是字段。"
+  },
+  "page.intro.one.fields.text": {
+    "message": "使用 {code} 创建它们，并用 lambda 响应点击。"
+  },
+  "page.intro.one.kotlin.title": {
+    "message": "Java 或 Kotlin。"
+  },
+  "page.intro.one.kotlin.text": {
+    "message": "Kotlin DSL 使用相同组件构建相同界面。"
+  },
+  "page.intro.one.readMore": {
+    "message": "Kotlin DSL"
+  },
+  "page.intro.tile.alt": {
+    "message": "webforJ {name} 组件"
+  },
+  "page.intro.two.kicker": {
+    "message": "组件与主题\n"
+  },
+  "page.intro.two.title1": {
+    "message": "已构建的组件"
+  },
+  "page.intro.two.title2": {
+    "message": "适用于企业应用。"
+  },
+  "page.intro.two.lede": {
+    "message": "webforJ 内置字段、列表、对话框、上传组件、图表、树和布局。每一种都是你在屏幕中创建的 Java 类。"
+  },
+  "page.intro.two.body": {
+    "message": "主题从种子色开始。设置主种子色，调色板的全部 19 个色阶便会应用于所有组件。"
+  },
+  "page.intro.two.codeLabel": {
+    "message": "主题种子"
+  },
+  "page.intro.two.readMore": {
+    "message": "组件"
+  },
+  "page.intro.craft.kicker": {
+    "message": "craftforJ"
+  },
+  "page.intro.craft.title1": {
+    "message": "看看你的 Java 构建的应用。"
+  },
+  "page.intro.craft.title2": {
+    "message": "运行时更改它。"
+  },
+  "page.intro.craft.videoLabel": {
+    "message": "craftforJ 覆盖在正在运行的 webforJ 应用上：选择组件、修改属性，并将更改应用到 Java 源码\n"
+  },
+  "page.intro.craft.lede": {
+    "message": "craftforJ 是一款在开发模式下运行于应用内的可视化编辑器。它会显示 Java 代码创建的组件树，让你实时修改属性，并将保留的更改写回 Java 源代码。"
+  },
+  "page.intro.craft.inspect.title": {
+    "message": "检查组件。"
+  },
+  "page.intro.craft.inspect.text": {
+    "message": "浏览组件树，在页面中单击组件以选中它，并在应用运行时更改其属性。"
+  },
+  "page.intro.craft.source.title": {
+    "message": "将更改写入源代码。"
+  },
+  "page.intro.craft.source.text": {
+    "message": "以差异形式查看实时编辑，并将其应用到对应的 Java 文件。"
+  },
+  "page.intro.craft.ai.title": {
+    "message": "AI 助手"
+  },
+  "page.intro.craft.ai.text": {
+    "message": "运行中的应用内，编码代理会编写 Java、编译代码，并在你批准后应用。"
+  },
+  "page.intro.three.kicker": {
+    "message": "数据、表单与安全\n"
+  },
+  "page.intro.three.title1": {
+    "message": "表单、规则和访问权限，"
+  },
+  "page.intro.three.title2": {
+    "message": "就在您的后端旁边。"
+  },
+  "page.intro.three.codeLabel": {
+    "message": "表单、bean、Spring 视图和受保护路由"
+  },
+  "page.intro.three.tabForm": {
+    "message": "表单"
+  },
+  "page.intro.three.tabBean": {
+    "message": "Bean"
+  },
+  "page.intro.three.tabSecurity": {
+    "message": "安全"
+  },
+  "page.intro.three.binding.title": {
+    "message": "绑定"
+  },
+  "page.intro.three.binding.text": {
+    "message": "{code} 会将表单字段与 Bean 绑定，并在写回表单时检查 Jakarta 验证规则。"
+  },
+  "page.intro.three.spring.text": {
+    "message": "视图通过构造函数注入使用您的服务、仓库及其他 Spring Bean。"
+  },
+  "page.intro.three.security.title": {
+    "message": "安全"
+  },
+  "page.intro.three.security.text": {
+    "message": "像 {code} 这样的注解用于保护路由，规则会在渲染任何组件之前执行。"
+  },
+  "page.intro.three.readMore": {
+    "message": "展示"
+  },
+  "page.intro.four.kicker": {
+    "message": "现有代码也能一并迁移\n"
+  },
+  "page.intro.four.title1": {
+    "message": "带上代码"
+  },
+  "page.intro.four.title2": {
+    "message": "你已经有了。"
+  },
+  "page.intro.four.roadmapLabel": {
+    "message": "从 Swing 到 webforJ"
+  },
+  "page.intro.four.codeLabel": {
+    "message": "Swing 视图和 Web 组件"
+  },
+  "page.intro.four.tabSwing": {
+    "message": "Swing 应用"
+  },
+  "page.intro.four.tabComponent": {
+    "message": "Web 组件"
+  },
+  "page.intro.four.lede": {
+    "message": "{code} 可将正在运行的 Swing、JavaFX 或 SWT 应用嵌入 webforJ 视图中，因此无需一次性完成重写。"
+  },
+  "page.intro.four.body": {
+    "message": "{code} 将自定义 HTML 元素或 Web 组件封装在 Java 类中，并在 Java 中定义其属性、HTML 属性和事件。"
+  },
+  "page.intro.five.skillsTitle": {
+    "message": "智能体技能"
+  },
+  "page.intro.done.stamp": {
+    "message": "导览完成"
+  },
+  "page.intro.done.title1": {
+    "message": "这就是完整的技术栈。"
+  },
+  "page.intro.done.title2": {
+    "message": "可以开始构建了。"
+  },
+  "page.intro.done.text": {
+    "message": "你可以自认为已获得非官方认证：你已了解 webforJ 应用的构建方式，从第一个界面到助你编写下一个界面的 AI 工具。"
+  },
+  "page.intro.next.title": {
+    "message": "您的下一站"
+  },
+  "page.intro.five.kicker": {
+    "message": "AI 工具与未来方向"
+  },
+  "page.intro.five.title1": {
+    "message": "您的 AI 助手遵循"
+  },
+  "page.intro.five.title2": {
+    "message": "webforJ 约定"
+  },
+  "page.intro.five.codeLabel": {
+    "message": "安装 AI 插件"
+  },
+  "page.intro.five.tabTerminal": {
+    "message": "终端"
+  },
+  "page.intro.five.nameTerminal": {
+    "message": "终端"
+  },
+  "page.intro.five.lede": {
+    "message": "安装一次 webforJ AI 插件，即可为您的编程助手提供 webforJ MCP 服务器和 Agent Skills。"
+  },
+  "page.intro.five.body": {
+    "message": "服务器为其提供实时工具。技能则说明何时使用这些工具、使用顺序以及如何检查结果。"
+  },
+  "page.intro.five.readMore": {
+    "message": "AI 工具"
+  },
+  "page.intro.dock.label": {
+    "message": "引导页"
+  },
+  "page.intro.dock.previous": {
+    "message": "上一屏"
+  },
+  "page.intro.dock.count": {
+    "message": "第 {current} 项，共 {total} 项"
+  },
+  "page.intro.dock.screen": {
+    "message": "屏幕 {number}：{name}"
+  },
+  "page.intro.dock.next": {
+    "message": "下一屏"
+  },
+  "page.intro.meta.title": {
+    "message": "webforJ：6 屏简要介绍"
+  },
+  "page.intro.meta.description": {
+    "message": "通过六个屏幕了解 webforJ：这款面向商业 Web 应用的全栈 Java 框架，涵盖以 Java 类构建屏幕、组件与主题、craftforJ 可视化编辑器、表单与安全、Swing 与 Web 组件，以及 AI 工具。"
+  },
+  "page.kotlinDsl.concepts.naming.title": {
+    "message": "以组件命名的构建器"
+  },
+  "page.kotlinDsl.concepts.naming.text": {
+    "message": "每个组件都有一个以其类名命名的驼峰式函数。大多数函数会在代码块前接收最常设置的选项，例如标签或占位符。"
+  },
+  "page.kotlinDsl.concepts.nesting.title": {
+    "message": "嵌套块"
+  },
+  "page.kotlinDsl.concepts.nesting.text": {
+    "message": "包含子组件的组件可在其代码块中接受嵌套 DSL 调用，因此代码结构与屏幕布局一致。"
+  },
+  "page.kotlinDsl.concepts.events.title": {
+    "message": "事件作为 lambda 表达式"
+  },
+  "page.kotlinDsl.concepts.events.text": {
+    "message": "监听器使用以 on 为前缀且接受 lambda 的方法，例如 onClick 和 onModify。"
+  },
+  "page.kotlinDsl.concepts.scope.title": {
+    "message": "作用域安全"
+  },
+  "page.kotlinDsl.concepts.scope.text": {
+    "message": "子组件只能放入支持它们的组件中。误加到外层作用域将无法编译。"
+  },
+  "page.kotlinDsl.concepts.styles.title": {
+    "message": "样式和类名"
+  },
+  "page.kotlinDsl.concepts.styles.text": {
+    "message": "styles 属性可通过方括号访问 CSS 属性，与 Java 中的 setStyle() 相同。使用 += 添加类名。"
+  },
+  "page.kotlinDsl.concepts.java.title": {
+    "message": "就在您的 Java 代码旁边"
+  },
+  "page.kotlinDsl.concepts.java.text": {
+    "message": "Kotlin 会编译为 JVM 字节码。可在 Java 类中使用 Kotlin 复合组件，并通过 add() 将 Java 组件嵌套在 DSL 代码块中。"
+  },
+  "page.kotlinDsl.start.steps.dependency.title": {
+    "message": "添加依赖项"
+  },
+  "page.kotlinDsl.start.steps.dependency.text": {
+    "message": "将 webforJ Kotlin DSL 模块和 Kotlin 标准库添加到 pom.xml。"
+  },
+  "page.kotlinDsl.start.steps.plugin.title": {
+    "message": "添加 Kotlin Maven 插件"
+  },
+  "page.kotlinDsl.start.steps.plugin.text": {
+    "message": "它会在一次构建中编译 Kotlin 和 Java 源代码。无需单独安装 Kotlin。"
+  },
+  "page.kotlinDsl.start.steps.files.title": {
+    "message": "让 Kotlin 与 Java 并肩使用"
+  },
+  "page.kotlinDsl.start.steps.files.text": {
+    "message": "Kotlin 文件可以放在独立的源文件夹中，也可以与 Java 文件放在同一文件夹中。"
+  },
+  "page.kotlinDsl.start.steps.view.title": {
+    "message": "编写视图并编译"
+  },
+  "page.kotlinDsl.start.steps.view.text": {
+    "message": "使用构建器编写视图。随后，Maven 会将 Kotlin 与 Java 一起编译。"
+  },
+  "page.kotlinDsl.hero.eyebrow": {
+    "message": "webforJ 的 Kotlin DSL"
+  },
+  "page.kotlinDsl.hero.title1": {
+    "message": "用 Kotlin 编写。"
+  },
+  "page.kotlinDsl.hero.title2": {
+    "message": "继续使用 Java。"
+  },
+  "page.kotlinDsl.hero.lead": {
+    "message": "Kotlin DSL 使用简洁、类型安全的语法构建 webforJ UI。无需编写命令式调用，只需编写描述屏幕内容的声明式代码，并可与 Java 在同一项目中编译。"
+  },
+  "page.kotlinDsl.hero.add": {
+    "message": "添加到项目"
+  },
+  "page.kotlinDsl.hero.using": {
+    "message": "使用 DSL"
+  },
+  "page.kotlinDsl.names.title": {
+    "message": "你熟悉的类，构建器形式呈现"
+  },
+  "page.kotlinDsl.names.becomes": {
+    "message": "变为"
+  },
+  "page.kotlinDsl.names.note": {
+    "message": "按钮、字段、布局、对话框、抽屉、列表和 HTML 元素各有一个，名称采用类名的驼峰命名法。"
+  },
+  "page.kotlinDsl.compare.eyebrow": {
+    "message": "同一屏幕，两种语言"
+  },
+  "page.kotlinDsl.compare.title1": {
+    "message": "阅读 Java"
+  },
+  "page.kotlinDsl.compare.title2": {
+    "message": "然后阅读 Kotlin。"
+  },
+  "page.kotlinDsl.compare.lead": {
+    "message": "两侧都使用相同的 webforJ 类构建相同的组件。Kotlin 侧省去了 setter 和 add() 调用：组件彼此嵌套，并在代码块中配置。"
+  },
+  "page.kotlinDsl.features.eyebrow": {
+    "message": "DSL 能为你带来什么"
+  },
+  "page.kotlinDsl.features.title1": {
+    "message": "构建器、区块"
+  },
+  "page.kotlinDsl.features.title2": {
+    "message": "和 lambda 表达式"
+  },
+  "page.kotlinDsl.concepts.lead": {
+    "message": "每个构建器函数都会创建一个组件，将其添加到父容器中，并运行配置块。DSL 的其余部分由此而来。"
+  },
+  "page.kotlinDsl.concepts.blocks.title": {
+    "message": "配置块"
+  },
+  "page.kotlinDsl.concepts.blocks.text": {
+    "message": "该区块接收组件作为 {code}，因此您可以直接设置其属性并调用其方法。"
+  },
+  "page.kotlinDsl.extend.eyebrow": {
+    "message": "扩展 DSL"
+  },
+  "page.kotlinDsl.extend.title1": {
+    "message": "您自己的组件，"
+  },
+  "page.kotlinDsl.extend.title2": {
+    "message": "也可作为构建器"
+  },
+  "page.kotlinDsl.extend.short": {
+    "message": "自定义组件和第三方库通过 {hasComponents} 上的扩展函数接入 DSL。{init} 辅助函数会将组件添加到其父级、执行代码块并返回该组件。使用 DSL 构建的组合组件也会以相同方式获得一个函数。"
+  },
+  "page.kotlinDsl.extend.link": {
+    "message": "在文档中扩展 DSL"
+  },
+  "page.kotlinDsl.start.eyebrow": {
+    "message": "如何开始"
+  },
+  "page.kotlinDsl.start.title1": {
+    "message": "添加 Kotlin"
+  },
+  "page.kotlinDsl.start.title2": {
+    "message": "转换为 Maven 项目\n"
+  },
+  "page.kotlinDsl.start.shortLead": {
+    "message": "Kotlin DSL 从 webforJ 25.12 起可用。已能使用 Maven 构建的项目需要添加一个依赖项和一个插件。"
+  },
+  "page.kotlinDsl.start.setup": {
+    "message": "设置 Kotlin DSL"
+  },
+  "page.kotlinDsl.start.using": {
+    "message": "使用 DSL"
+  },
+  "page.kotlinDsl.meta.title": {
+    "message": "webforJ 的 Kotlin DSL：用 Kotlin 编写 webforJ 界面"
+  },
+  "page.kotlinDsl.meta.description": {
+    "message": "webforJ Kotlin DSL 可通过类型安全的 Kotlin 构建器、嵌套块和 lambda，在与 Java 代码相同的 Maven 项目中构建相同的 webforJ 界面。"
+  },
+  "page.mcpApps.hero.videoLabel": {
+    "message": "在 AI 对话中打开的 webforJ 路由视图，用户与 AI 通过同一实时界面协作。"
+  },
+  "page.mcpApps.flow.step1Who": {
+    "message": "AI"
+  },
+  "page.mcpApps.flow.step1Text": {
+    "message": "主机调用 {tool} 工具，输入内容例如仓库代码。"
+  },
+  "page.mcpApps.flow.step2Text": {
+    "message": "webforJ 渲染路由视图 {route}，该视图会在对话中打开。"
+  },
+  "page.mcpApps.flow.step3Who": {
+    "message": "AI"
+  },
+  "page.mcpApps.flow.step3Text": {
+    "message": "AI 会在打开的视图上调用 {tool} 等操作。"
+  },
+  "page.mcpApps.flow.step4Who": {
+    "message": "视图"
+  },
+  "page.mcpApps.flow.step4Text": {
+    "message": "视图会将消息和模型上下文发送回对话。"
+  },
+  "page.mcpApps.host.contextTitle": {
+    "message": "让模型及时了解情况"
+  },
+  "page.mcpApps.host.contextText": {
+    "message": "{call} 会替换视图为模型提供的上下文。后续响应可以使用此上下文，且不会添加可见消息。"
+  },
+  "page.mcpApps.host.eventsTitle": {
+    "message": "关注此对话"
+  },
+  "page.mcpApps.host.eventsText": {
+    "message": "诸如 {cancelled} 和 {changed} 的监听器可让视图在工具调用被取消或对话上下文发生变化时作出响应。"
+  },
+  "page.mcpApps.host.leaveTitle": {
+    "message": "离开框架"
+  },
+  "page.mcpApps.host.leaveText": {
+    "message": "{link} 会在外部页面继续，而 {mode} 请求不同的呈现方式。主机决定是否满足这两项请求。"
+  },
+  "page.mcpApps.run.springTitle": {
+    "message": "Spring Boot 搭配 Spring AI"
+  },
+  "page.mcpApps.run.springText": {
+    "message": "发布 MCP App 的主要方式。该集成会发现已标记的路由并将其添加到 Spring AI MCP 服务器，默认通过 {path} 提供 Streamable HTTP。它会发布工具和用于打开该路由的 UI 资源，并安装嵌入 webforJ 所需的 servlet 过滤器和会话设置。"
+  },
+  "page.mcpApps.run.springLink": {
+    "message": "Spring Boot 设置"
+  },
+  "page.mcpApps.run.standardTag": {
+    "message": "标准 Servlet"
+  },
+  "page.mcpApps.run.standardTitle": {
+    "message": "不使用 Spring 的 Servlet 应用"
+  },
+  "page.mcpApps.run.standardText": {
+    "message": "初始化器会扫描路由视图所在的包，将其中的工具和 UI 资源添加到 MCP 服务器，并在 {path} 挂载 Streamable HTTP。一次 {install} 调用即可添加宿主所需的嵌入支持。"
+  },
+  "page.mcpApps.run.standardLink": {
+    "message": "标准设置"
+  },
+  "page.mcpApps.test.baseline1": {
+    "message": "客户端连接到 MCP 端点。"
+  },
+  "page.mcpApps.test.baseline2": {
+    "message": "{tool} 工具已显示。"
+  },
+  "page.mcpApps.test.baseline3": {
+    "message": "调用 {tool} 会渲染 {heading} 标题。"
+  },
+  "page.mcpApps.test.baseline4": {
+    "message": "渲染后的界面可交互。"
+  },
+  "page.mcpApps.start.step1Title": {
+    "message": "添加 MCP Apps 模块"
+  },
+  "page.mcpApps.start.step1Text": {
+    "message": "将 {module} 模块添加到 webforJ 应用中。Spring Boot 应用还会添加 Spring AI MCP server starter。"
+  },
+  "page.mcpApps.start.step2Title": {
+    "message": "标记路由视图"
+  },
+  "page.mcpApps.start.step2Text": {
+    "message": "添加 {annotation}，并填写说明，告知 AI 该工具适用于什么场景。"
+  },
+  "page.mcpApps.start.step3Title": {
+    "message": "启动应用并连接主机"
+  },
+  "page.mcpApps.start.step3Text": {
+    "message": "启动服务器，并将其 {path} 端点添加到支持 MCP Apps 的主机中。"
+  },
+  "page.mcpApps.start.step4Title": {
+    "message": "请主持人打开它\n"
+  },
+  "page.mcpApps.start.step4Text": {
+    "message": "提示主机“打开库存应用”，视图即会显示。"
+  },
+  "page.mcpApps.docs.overviewLabel": {
+    "message": "概览"
+  },
+  "page.mcpApps.docs.overviewText": {
+    "message": "MCP Apps 是什么，以及如何入门"
+  },
+  "page.mcpApps.docs.springLabel": {
+    "message": "Spring Boot 设置"
+  },
+  "page.mcpApps.docs.springText": {
+    "message": "依赖项、端点和路由应用\n"
+  },
+  "page.mcpApps.docs.testingLabel": {
+    "message": "测试"
+  },
+  "page.mcpApps.docs.testingText": {
+    "message": "远程客户端、本地检查器和基线"
+  },
+  "page.mcpApps.docs.openingLabel": {
+    "message": "正在打开输入"
+  },
+  "page.mcpApps.docs.openingText": {
+    "message": "输入架构、工具名称和显示模式"
+  },
+  "page.mcpApps.docs.actionsLabel": {
+    "message": "操作与更新"
+  },
+  "page.mcpApps.docs.actionsText": {
+    "message": "适用于已打开视图的工具"
+  },
+  "page.mcpApps.docs.hostLabel": {
+    "message": "主机交互"
+  },
+  "page.mcpApps.docs.hostText": {
+    "message": "消息、模型上下文和主机事件"
+  },
+  "page.mcpApps.docs.configLabel": {
+    "message": "配置"
+  },
+  "page.mcpApps.docs.configText": {
+    "message": "应用源、客户端源和浏览器域名"
+  },
+  "page.mcpApps.docs.standardLabel": {
+    "message": "标准设置"
+  },
+  "page.mcpApps.docs.standardText": {
+    "message": "不使用 Spring 的 Servlet 应用中的 MCP 服务器"
+  },
+  "page.mcpApps.hero.title1": {
+    "message": "您的 Java 视图，"
+  },
+  "page.mcpApps.hero.title2": {
+    "message": "在 AI 对话中"
+  },
+  "page.mcpApps.hero.lead": {
+    "message": "支持 MCP 的 AI 应用（也称为宿主）会在对话中打开一个路由后的 webforJ 视图。用户和 AI 共用同一个实时界面。"
+  },
+  "page.mcpApps.hero.primary": {
+    "message": "使用 Spring Boot 设置"
+  },
+  "page.mcpApps.hero.secondary": {
+    "message": "了解其工作原理"
+  },
+  "page.mcpApps.hero.videoBar": {
+    "message": "库存视图，在对话中打开"
+  },
+  "page.mcpApps.flow.hostLane": {
+    "message": "MCP 主机"
+  },
+  "page.mcpApps.flow.hostLaneHint": {
+    "message": "AI 对话"
+  },
+  "page.mcpApps.flow.appLane": {
+    "message": "webforJ 应用"
+  },
+  "page.mcpApps.flow.appLaneHint": {
+    "message": "您的路由视图"
+  },
+  "page.mcpApps.shared.eyebrow": {
+    "message": "一个实时 UI"
+  },
+  "page.mcpApps.shared.title1": {
+    "message": "视图将保留在您的应用中。"
+  },
+  "page.mcpApps.shared.title2": {
+    "message": "他们都使用它。"
+  },
+  "page.mcpApps.shared.lead": {
+    "message": "宿主显示的视图与浏览器显示的路由视图相同，使用相同的组件、服务、路由和状态。AI 通过工具与其交互，用户则继续直接使用渲染出的组件。"
+  },
+  "page.mcpApps.open.eyebrow": {
+    "message": "打开带输入的视图"
+  },
+  "page.mcpApps.open.title1": {
+    "message": "路由变成工具。"
+  },
+  "page.mcpApps.open.title2": {
+    "message": "其输入决定起点。"
+  },
+  "page.mcpApps.open.lead": {
+    "message": "将 {app} 添加到路由视图后，它会作为工具发布。描述用于告知 AI 何时适合使用该工具。一种对象类型（例如 {record} 记录）用于描述参数，{input} 方法会在路由渲染后应用这些参数。"
+  },
+  "page.mcpApps.open.link": {
+    "message": "了解如何打开输入\n"
+  },
+  "page.mcpApps.open.namesTitle": {
+    "message": "路由中的工具名称"
+  },
+  "page.mcpApps.open.namesText": {
+    "message": "未提供 {name} 时，webforJ 会根据路由推导工具名称：{route} 对应 {tool}，{nestedRoute} 对应 {nestedTool}，根路由对应 {rootTool}。"
+  },
+  "page.mcpApps.open.modeTitle": {
+    "message": "请求的显示模式"
+  },
+  "page.mcpApps.open.modeText": {
+    "message": "{mode} 会询问宿主如何呈现视图。宿主可以选择其他模式。"
+  },
+  "page.mcpApps.change.eyebrow": {
+    "message": "操作与更新"
+  },
+  "page.mcpApps.change.title1": {
+    "message": "更多工具，"
+  },
+  "page.mcpApps.change.title2": {
+    "message": "适用于已打开的视图"
+  },
+  "page.mcpApps.change.lead": {
+    "message": "这些工具不会打开应用。调用会转到同一 MCP 会话中已渲染的 {tool} 视图。如果该视图未打开，调用会返回错误，提示宿主先调用 {tool}。"
+  },
+  "page.mcpApps.change.link": {
+    "message": "了解操作和更新"
+  },
+  "page.mcpApps.change.actionTitle": {
+    "message": "操作是一种视图方法\n"
+  },
+  "page.mcpApps.change.actionText": {
+    "message": "将 {annotation} 添加到方法上，即可将其变为拥有独立输入的工具。方法名 {method} 会生成 {tool}。"
+  },
+  "page.mcpApps.change.updateTitle": {
+    "message": "一个带有开启输入项的更新工具"
+  },
+  "page.mcpApps.change.updateText": {
+    "message": "实现 {observer} 的视图会获得一个更新工具，其输入模式与 {tool} 相同。回调负责决定如何使用这些参数并返回工具结果。"
+  },
+  "page.mcpApps.change.updatePoint1": {
+    "message": "webforJ 不会自动将这些值应用到组件。"
+  },
+  "page.mcpApps.change.updatePoint2": {
+    "message": "调用它不会打开该路由或渲染其他视图。"
+  },
+  "page.mcpApps.change.updatePoint3": {
+    "message": "更新工具没有 UI 资源元数据。"
+  },
+  "page.mcpApps.change.updatePoint4": {
+    "message": "一个视图可以同时使用操作和更新工具。"
+  },
+  "page.mcpApps.host.eyebrow": {
+    "message": "主机交互"
+  },
+  "page.mcpApps.host.title1": {
+    "message": "视图会回应"
+  },
+  "page.mcpApps.host.title2": {
+    "message": "转到对话"
+  },
+  "page.mcpApps.host.lead": {
+    "message": "同一路由也可在普通浏览器中打开，因此每次与主机交互时，都会先检查主机是否存在。主机调用是异步的，并会返回 {result}。"
+  },
+  "page.mcpApps.host.link": {
+    "message": "了解主机交互"
+  },
+  "page.mcpApps.host.messageTitle": {
+    "message": "从此视图继续对话"
+  },
+  "page.mcpApps.host.messageText": {
+    "message": "用户选择仓库并请求 AI 检查库存。该按钮会将请求作为下一条用户消息发送。{call} 仅在视图连接到主机时运行。"
+  },
+  "page.mcpApps.run.eyebrow": {
+    "message": "Spring Boot 或标准 Servlet 应用"
+  },
+  "page.mcpApps.run.title1": {
+    "message": "使用 Spring AI 发布，"
+  },
+  "page.mcpApps.run.title2": {
+    "message": "或自行组装服务器"
+  },
+  "page.mcpApps.run.lead": {
+    "message": "该视图仍可在浏览器中通过 {route} 访问。发布后会添加 MCP 工具、用于打开该路由的 UI 资源，以及主机嵌入 webforJ 所需的 servlet 配置。"
+  },
+  "page.mcpApps.test.eyebrow": {
+    "message": "测试"
+  },
+  "page.mcpApps.test.title1": {
+    "message": "连接主机"
+  },
+  "page.mcpApps.test.title2": {
+    "message": "检查基线。"
+  },
+  "page.mcpApps.test.lead": {
+    "message": "webforJ MCP Apps 可在任何支持 MCP Apps 的宿主中运行。无需输入的最简 {tool} 工具即可确认宿主能够发现该工具并渲染视图。"
+  },
+  "page.mcpApps.test.link": {
+    "message": "阅读测试指南"
+  },
+  "page.mcpApps.test.remoteTag": {
+    "message": "远程主机"
+  },
+  "page.mcpApps.test.remoteText": {
+    "message": "从开发机器外部连接的主机无法访问 {local}。请通过隧道公开应用，将 {origin} 设置为公共 origin，并向该主机提供追加 {path} 后的 origin。"
+  },
+  "page.mcpApps.test.localTag": {
+    "message": "本地检查器"
+  },
+  "page.mcpApps.test.localText": {
+    "message": "同一台机器上的检查器连接到本地端点。设置本地 {origin}，并在 {allowed} 中列出检查器的浏览器源。"
+  },
+  "page.mcpApps.test.baselineTag": {
+    "message": "每个主机的基线"
+  },
+  "page.mcpApps.start.eyebrow": {
+    "message": "如何开始"
+  },
+  "page.mcpApps.start.title1": {
+    "message": "一个视图，"
+  },
+  "page.mcpApps.start.title2": {
+    "message": "在宿主中打开"
+  },
+  "page.mcpApps.start.lead": {
+    "message": "webforJ 是面向业务 Web 应用的全栈 Java 框架：整个应用（包括界面）都用 Java 构建。自 webforJ 26.02 起，它已包含 MCP Apps，发布 MCP App 的主要方式是使用 Spring Boot 和 Spring AI。"
+  },
+  "page.mcpApps.start.primary": {
+    "message": "使用 Spring Boot 配置"
+  },
+  "page.mcpApps.start.secondary": {
+    "message": "不使用 Spring 进行设置"
+  },
+  "page.mcpApps.docs.navLabel": {
+    "message": "MCP Apps 文档"
+  },
+  "page.mcpApps.meta.title": {
+    "message": "MCP Apps：在 AI 对话中打开 webforJ 视图"
+  },
+  "page.mcpApps.meta.description": {
+    "message": "使用 webforJ MCP Apps，支持 MCP 的 AI 应用可在对话中打开路由式 webforJ 视图，让用户与 AI 共用同一个实时 UI。"
+  },
+  "page.modernization.mock.teamSales": {
+    "message": "销售"
+  },
+  "page.modernization.mock.teamSupport": {
+    "message": "支持"
+  },
+  "page.modernization.mock.teamFinance": {
+    "message": "财务"
+  },
+  "page.modernization.mock.customerTable": {
+    "message": "客户表"
+  },
+  "page.modernization.mock.file": {
+    "message": "文件"
+  },
+  "page.modernization.mock.edit": {
+    "message": "编辑"
+  },
+  "page.modernization.mock.view": {
+    "message": "查看"
+  },
+  "page.modernization.mock.name": {
+    "message": "名称"
+  },
+  "page.modernization.mock.team": {
+    "message": "团队"
+  },
+  "page.modernization.mock.city": {
+    "message": "城市"
+  },
+  "page.modernization.mock.customers": {
+    "message": "客户"
+  },
+  "page.modernization.mock.orders": {
+    "message": "订单"
+  },
+  "page.modernization.mock.reports": {
+    "message": "报告"
+  },
+  "page.modernization.mock.editCustomer": {
+    "message": "编辑客户"
+  },
+  "page.modernization.mock.cancel": {
+    "message": "取消"
+  },
+  "page.modernization.mock.save": {
+    "message": "保存"
+  },
+  "page.modernization.mock.appTab": {
+    "message": "webforJ 应用"
+  },
+  "page.modernization.mock.swingStreamed": {
+    "message": "流式传输的 Swing 应用"
+  },
+  "page.modernization.mock.webDialog": {
+    "message": "webforJ 对话框"
+  },
+  "page.modernization.mock.laneSwing": {
+    "message": "Swing 应用"
+  },
+  "page.modernization.mock.laneWeb": {
+    "message": "webforJ 应用"
+  },
+  "page.modernization.phases.p1.label": {
+    "message": "您的 Web 应用"
+  },
+  "page.modernization.phases.p1.title": {
+    "message": "在浏览器中运行桌面应用\n"
+  },
+  "page.modernization.phases.p1.text": {
+    "message": "Webswing 在服务器上运行您的 Swing、JavaFX 或 SWT 应用，并将界面以 HTML5 canvas 的形式传输到浏览器。鼠标和键盘输入会传回实际应用。无需更改源代码。"
+  },
+  "page.modernization.phases.p1.note": {
+    "message": "将其嵌入到带有 WebswingConnector 的 webforJ 视图中。将连接器添加到页面时，它会连接到 Webswing 服务器。"
+  },
+  "page.modernization.phases.p2.label": {
+    "message": "webforJ 中的新页面"
+  },
+  "page.modernization.phases.p2.title": {
+    "message": "围绕它构建新界面"
+  },
+  "page.modernization.phases.p2.text": {
+    "message": "新界面使用 webforJ 编写，并与嵌入式应用并列运行。两端可以互相传递操作：在 Swing 中点击可打开网页表单，在网页端保存则会更新 Swing 表格。用户可在同一个浏览器标签页中使用新旧界面。"
+  },
+  "page.modernization.phases.p2.note": {
+    "message": "Swing 将双击事件作为 select-customer 发出。webforJ 打开自己的表单，并在保存时发送 update-customer。"
+  },
+  "page.modernization.phases.p3.label": {
+    "message": "完全切换"
+  },
+  "page.modernization.phases.p3.title": {
+    "message": "停用桌面客户端"
+  },
+  "page.modernization.phases.p3.text": {
+    "message": "按业务重要性逐个替换 Swing 界面。当某个界面有对应的 webforJ 版本时，删除其操作。全部完成后，Webswing 层和桌面客户端将被移除。"
+  },
+  "page.modernization.phases.p3.runs.term": {
+    "message": "运行什么？"
+  },
+  "page.modernization.phases.p3.runs.desc": {
+    "message": "一个运行在浏览器中的 Java 应用，所有界面均由 webforJ 构建。"
+  },
+  "page.modernization.phases.p3.goes.term": {
+    "message": "放什么"
+  },
+  "page.modernization.phases.p3.goes.desc": {
+    "message": "Webswing 服务器、流式桌面界面和已安装的客户端。"
+  },
+  "page.modernization.phases.p3.stays.term": {
+    "message": "保留什么\n"
+  },
+  "page.modernization.phases.p3.stays.desc": {
+    "message": "您的领域类、服务和验证规则，可从新界面以 Java 方法的形式调用。"
+  },
+  "page.modernization.phases.p3.note": {
+    "message": "您可以在任意阶段后停止，仍会有所收获。阶段 2 可在预算允许的范围内持续运行。"
+  },
+  "page.modernization.stays.team.title": {
+    "message": "团队"
+  },
+  "page.modernization.stays.team.text": {
+    "message": "如今维护 Swing 应用的人员用 Java 构建 Web 页面，无需组建第二支团队，也不必学习前端工具链。"
+  },
+  "page.modernization.stays.code.title": {
+    "message": "代码"
+  },
+  "page.modernization.stays.code.text": {
+    "message": "Webswing 可直接运行应用。同一代码库既可作为桌面应用运行，也可在浏览器中运行，因此您只需维护一个应用，而不是两个。"
+  },
+  "page.modernization.stays.logic.title": {
+    "message": "逻辑"
+  },
+  "page.modernization.stays.logic.text": {
+    "message": "与 {code} 无关的领域类、服务和验证规则会直接从新界面调用，不会先转换为端点。"
+  },
+  "page.modernization.stays.toolchain.title": {
+    "message": "工具链"
+  },
+  "page.modernization.stays.toolchain.text": {
+    "message": "Maven、你的 IDE、调试器和现有测试仍然适用。"
+  },
+  "page.modernization.ai.loop.one.title": {
+    "message": "给它做一个 Swing 界面\n"
+  },
+  "page.modernization.ai.loop.one.text": {
+    "message": "询问可调用现有服务的 webforJ 等效方案。"
+  },
+  "page.modernization.ai.loop.two.title": {
+    "message": "检查真实 API"
+  },
+  "page.modernization.ai.loop.two.text": {
+    "message": "MCP 服务器会按需查询 webforJ 文档和 API 详情，而不是猜测。"
+  },
+  "page.modernization.ai.loop.three.title": {
+    "message": "您负责审核和测试\n"
+  },
+  "page.modernization.ai.loop.three.text": {
+    "message": "对照 Swing 原版检查行为，然后继续下一个界面。"
+  },
+  "page.modernization.next.overview.title": {
+    "message": "Webswing 概览"
+  },
+  "page.modernization.next.overview.text": {
+    "message": "Webswing 解决的问题及三层如何协同工作。"
+  },
+  "page.modernization.next.setup.title": {
+    "message": "设置与配置"
+  },
+  "page.modernization.next.setup.text": {
+    "message": "服务器安装、管理控制台、CORS 和连接器选项。"
+  },
+  "page.modernization.next.communication.title": {
+    "message": "通信"
+  },
+  "page.modernization.next.communication.text": {
+    "message": "webforJ 与 Swing 应用之间的每个操作和事件。"
+  },
+  "page.modernization.next.tutorial.title": {
+    "message": "现代化改造教程"
+  },
+  "page.modernization.next.tutorial.text": {
+    "message": "嵌入式 Swing 客户表格及 webforJ 编辑对话框\n"
+  },
+  "page.modernization.next.plugin.title": {
+    "message": "webforJ AI 插件"
+  },
+  "page.modernization.next.plugin.text": {
+    "message": "为你的编程助手打造的 MCP 服务器和 Agent Skills。"
+  },
+  "page.modernization.next.home.title": {
+    "message": "文档首页"
+  },
+  "page.modernization.next.home.text": {
+    "message": "webforJ 中的其他所有内容，从第一个项目到各个组件。"
+  },
+  "page.modernization.hero.caption": {
+    "message": "在 Swing 表格中双击会打开 webforJ 对话框，而不是旧版 Swing 对话框。两者都在同一个浏览器标签页中运行。"
+  },
+  "page.modernization.hero.eyebrow": {
+    "message": "Swing 现代化改造"
+  },
+  "page.modernization.hero.title1": {
+    "message": "从 Swing 迁移到 Web，"
+  },
+  "page.modernization.hero.title2": {
+    "message": "每次一个屏幕"
+  },
+  "page.modernization.hero.lead": {
+    "message": "您的 Swing、JavaFX 或 SWT 应用无需修改源代码即可在网页浏览器中运行。然后，您可以围绕它使用 webforJ 构建新界面，并按自己的节奏替换旧界面。Java 团队和代码都保留。"
+  },
+  "page.modernization.hero.cta": {
+    "message": "按照教程操作"
+  },
+  "page.modernization.hero.setup": {
+    "message": "设置 Webswing"
+  },
+  "page.modernization.hero.fact1": {
+    "message": "桌面工具包：Swing、JavaFX 和 SWT"
+  },
+  "page.modernization.hero.fact2": {
+    "message": "修改源代码以在浏览器中运行"
+  },
+  "page.modernization.stays.eyebrow": {
+    "message": "保持不变的内容"
+  },
+  "page.modernization.stays.title1": {
+    "message": "仅限屏幕"
+  },
+  "page.modernization.stays.title2": {
+    "message": "更改"
+  },
+  "page.modernization.stays.lead": {
+    "message": "webforJ 是用于构建企业 Web 应用的全栈 Java 框架：整个应用（包括界面）都用 Java 构建。因此，迁移 Swing 应用时，界面及其底层内容都能一并迁移。"
+  },
+  "page.modernization.stays.changesLabel": {
+    "message": "有哪些变化\n"
+  },
+  "page.modernization.stays.changesText": {
+    "message": "这些屏幕可按业务重要性逐个切换，同时 Swing 应用的其余部分继续在同一个浏览器标签页中运行。"
+  },
+  "page.modernization.journey.eyebrow": {
+    "message": "这项行动分三个阶段"
+  },
+  "page.modernization.journey.title1": {
+    "message": "逐步查看这一步"
+  },
+  "page.modernization.journey.title2": {
+    "message": "从桌面端到 Web"
+  },
+  "page.modernization.journey.lead": {
+    "message": "每个阶段都会交付用户可见的内容。选择一个阶段，查看该阶段的界面及其实现代码。"
+  },
+  "page.modernization.journey.tabsLabel": {
+    "message": "现代化阶段"
+  },
+  "page.modernization.journey.phase": {
+    "message": "阶段 {number}"
+  },
+  "page.modernization.journey.count": {
+    "message": "第 {number} 阶段，共 {total} 个阶段"
+  },
+  "page.modernization.journey.prev": {
+    "message": "上一阶段"
+  },
+  "page.modernization.journey.next": {
+    "message": "下一阶段"
+  },
+  "page.modernization.talk.eyebrow": {
+    "message": "双向通信"
+  },
+  "page.modernization.talk.title1": {
+    "message": "旧版和新版界面"
+  },
+  "page.modernization.talk.title2": {
+    "message": "彼此交流"
+  },
+  "page.modernization.talk.lead": {
+    "message": "消息是一种操作：包含一个名称、可选的字符串载荷和可选的二进制载荷。名称可自行定义。通信双方都使用纯 Java，因此无需编写浏览器脚本来进行交互。"
+  },
+  "page.modernization.talk.announce.title": {
+    "message": "Swing 宣布"
+  },
+  "page.modernization.talk.announce.text": {
+    "message": "双击会发送 {action}，并将该行作为 JSON。在桌面端，同样的点击仍会打开 Swing 对话框。"
+  },
+  "page.modernization.talk.reply.title": {
+    "message": "webforJ 回复"
+  },
+  "page.modernization.talk.reply.text": {
+    "message": "保存时，Web 表单会将 {action} 发回，Swing 应用会刷新其表格。双方都不会调用对方的内部实现。"
+  },
+  "page.modernization.talk.send.title": {
+    "message": "向 Swing 发送命令"
+  },
+  "page.modernization.talk.send.text": {
+    "message": "performAction() 会发送一个名称（可单独发送，也可附带数据）。Swing 应用决定每个名称的含义。"
+  },
+  "page.modernization.talk.send.file": {
+    "message": "正在发送操作"
+  },
+  "page.modernization.talk.ready.title": {
+    "message": "了解 Swing 何时就绪"
+  },
+  "page.modernization.talk.ready.text": {
+    "message": "连接就绪时触发 onInitialize。Swing 应用完全加载后触发 onStart。请在 onStart 中发送第一个操作。"
+  },
+  "page.modernization.talk.ready.file": {
+    "message": "生命周期事件"
+  },
+  "page.modernization.ai.eyebrow": {
+    "message": "使用 AI 助手移植"
+  },
+  "page.modernization.ai.title1": {
+    "message": "让助手移植它"
+  },
+  "page.modernization.ai.title2": {
+    "message": "逐屏"
+  },
+  "page.modernization.ai.lead": {
+    "message": "逐个屏幕操作是重复性工作，正适合交给 AI 编码助手。webforJ AI 插件将其连接到 webforJ MCP server 和 Agent Skills——这些结构化工作流会告诉它何时使用这些工具、按什么顺序使用，以及如何验证结果。"
+  },
+  "page.modernization.ai.install": {
+    "message": "安装 AI 插件"
+  },
+  "page.modernization.ai.skills": {
+    "message": "了解 Agent Skills"
+  },
+  "page.modernization.start.eyebrow": {
+    "message": "如何开始"
+  },
+  "page.modernization.start.title1": {
+    "message": "来自 JAR 文件"
+  },
+  "page.modernization.start.title2": {
+    "message": "转到浏览器中的页面"
+  },
+  "page.modernization.start.lead": {
+    "message": "您需要一个打包为 JAR 文件的 Swing、JavaFX 或 SWT 应用、Webswing 服务器，以及 webforJ 25.10 或更高版本。"
+  },
+  "page.modernization.start.step1.title": {
+    "message": "下载并启动 Webswing"
+  },
+  "page.modernization.start.step1.text": {
+    "message": "下载 Webswing，解压压缩包，然后运行适用于您平台的脚本启动服务器。服务器将在 {url} 上响应。"
+  },
+  "page.modernization.start.platform": {
+    "message": "平台"
+  },
+  "page.modernization.start.step2.title": {
+    "message": "注册您的应用"
+  },
+  "page.modernization.start.step2.text": {
+    "message": "在 {admin} 管理控制台中设置应用名称、主类、classpath、JVM 参数和主目录。随后可通过 {url} 访问该应用。"
+  },
+  "page.modernization.start.step2.cors": {
+    "message": "将您的 webforJ 应用源添加到“允许的源”，例如 {url}。"
+  },
+  "page.modernization.start.step2.portsTerm": {
+    "message": "端口"
+  },
+  "page.modernization.start.step2.ports": {
+    "message": "两者通常都使用 8080。请更改其中一个以避免冲突。"
+  },
+  "page.modernization.start.step3.title": {
+    "message": "添加依赖项"
+  },
+  "page.modernization.start.step3.text": {
+    "message": "webforj-webswing 模块提供 WebswingConnector 及其相关类。"
+  },
+  "page.modernization.start.step4.title": {
+    "message": "嵌入并配置"
+  },
+  "page.modernization.start.step4.text": {
+    "message": "向视图添加 WebswingConnector，与第一阶段相同。WebswingOptions 可更改其行为，例如在 webforJ 应用处理登录时隐藏注销按钮。"
+  },
+  "page.modernization.next.title1": {
+    "message": "选择你的"
+  },
+  "page.modernization.next.title2": {
+    "message": "首屏"
+  },
+  "page.modernization.next.lead": {
+    "message": "从简单的列表和编辑表单开始。嵌入应用，将这个页面迁移到 webforJ，看看它如何与其他部分协同运行。"
+  },
+  "page.modernization.meta.title": {
+    "message": "Swing 现代化：将 Java 桌面应用迁移到 Web\n"
+  },
+  "page.modernization.meta.description": {
+    "message": "无需更改源代码，即可在浏览器中运行 Swing、JavaFX 或 SWT 应用，然后逐个用 webforJ 替换界面。Java 团队不变，代码不变。"
+  },
+  "page.showcase.freightDispatch.platform": {
+    "message": "桌面"
+  },
+  "page.showcase.freightDispatch.useCase": {
+    "message": "调度员将货运任务分配给司机，并跟踪每辆在途卡车。"
+  },
+  "page.showcase.freightDispatch.description": {
+    "message": "面向区域货运公司的运营软件。调度员为每批货物匹配司机和卡车，全程跟踪运输状态并处理延误，全天通过大屏幕工作。"
+  },
+  "page.showcase.freightDispatch.features.appLayout.text": {
+    "message": "工作区切换时，侧边菜单和页头保持固定。"
+  },
+  "page.showcase.freightDispatch.features.drawer.text": {
+    "message": "发货详情从侧边滑入，确保看板始终可见。"
+  },
+  "page.showcase.freightDispatch.features.dialogAndTable.title": {
+    "message": "对话框和表格"
+  },
+  "page.showcase.freightDispatch.features.dialogAndTable.text": {
+    "message": "无需离开看板，即可从可排序表格中选择驾驶员。"
+  },
+  "page.showcase.freightDispatch.features.serverPushedUpdates.title": {
+    "message": "服务器推送的更新"
+  },
+  "page.showcase.freightDispatch.features.serverPushedUpdates.text": {
+    "message": "延误信息和新的到达时间会从服务器发送到所有已打开的屏幕。"
+  },
+  "page.showcase.freightDispatch.screens.dispatchBoard.name": {
+    "message": "调度看板"
+  },
+  "page.showcase.freightDispatch.screens.dispatchBoard.caption": {
+    "message": "按状态查看所有货运，从等待司机到已送达，今日数据置顶。"
+  },
+  "page.showcase.freightDispatch.screens.liveMap.name": {
+    "message": "实时地图"
+  },
+  "page.showcase.freightDispatch.screens.liveMap.caption": {
+    "message": "跟踪路上每辆卡车，一眼发现延误的货件。"
+  },
+  "page.showcase.freightDispatch.screens.loadDetail.name": {
+    "message": "加载详情"
+  },
+  "page.showcase.freightDispatch.screens.loadDetail.caption": {
+    "message": "在侧边栏中打开货运单，查看客户、停靠点和单据。"
+  },
+  "page.showcase.freightDispatch.screens.assignDriver.name": {
+    "message": "指派司机"
+  },
+  "page.showcase.freightDispatch.screens.assignDriver.caption": {
+    "message": "根据剩余工时、位置和拖车选择司机。应用会说明哪些司机符合条件，哪些不符合。"
+  },
+  "page.showcase.freightDispatch.screens.delayHandling.name": {
+    "message": "延迟处理"
+  },
+  "page.showcase.freightDispatch.screens.delayHandling.caption": {
+    "message": "设置新的预计到达时间，给客户发送消息并让应用通知他们。"
+  },
+  "page.showcase.siteInspection.platform": {
+    "message": "移动端"
+  },
+  "page.showcase.siteInspection.useCase": {
+    "message": "建筑检查员通过手机逐项核对清单并完成签字确认。"
+  },
+  "page.showcase.siteInspection.description": {
+    "message": "建筑安全检查员按当天路线巡查，逐个房间核对清单、拍摄问题照片，并请现场经理签字确认。检查员将应用添加到手机主屏幕。"
+  },
+  "page.showcase.siteInspection.features.installableApp.title": {
+    "message": "可安装应用\n"
+  },
+  "page.showcase.siteInspection.features.installableApp.text": {
+    "message": "使用一个注解 @AppProfile，即可像原生应用一样将应用添加到主屏幕。"
+  },
+  "page.showcase.siteInspection.features.upload.text": {
+    "message": "每项问题的照片都会直接添加到检查记录中。"
+  },
+  "page.showcase.siteInspection.features.serverPushedUpdates.title": {
+    "message": "服务器推送更新"
+  },
+  "page.showcase.siteInspection.features.serverPushedUpdates.text": {
+    "message": "办公室调整检查时间后，手机无需刷新即可显示。"
+  },
+  "page.showcase.siteInspection.features.routing.title": {
+    "message": "路由"
+  },
+  "page.showcase.siteInspection.features.routing.text": {
+    "message": "从检查清单到签字确认，每一步都有独立路由，且返回按钮可正常使用。"
+  },
+  "page.showcase.siteInspection.screens.todaysInspections.name": {
+    "message": "今日巡检"
+  },
+  "page.showcase.siteInspection.screens.todaysInspections.caption": {
+    "message": "查看当天路线、已完成事项和接下来的安排。办公室的变更会实时显示。"
+  },
+  "page.showcase.siteInspection.screens.checklistForThisBuilding.name": {
+    "message": "此建筑检查清单"
+  },
+  "page.showcase.siteInspection.screens.checklistForThisBuilding.caption": {
+    "message": "巡查楼宇，并将每项检查标记为通过、不通过或不适用。"
+  },
+  "page.showcase.siteInspection.screens.recordAProblem.name": {
+    "message": "记录问题"
+  },
+  "page.showcase.siteInspection.screens.recordAProblem.caption": {
+    "message": "评估严重程度，添加照片并标注，然后设置整改截止日期。"
+  },
+  "page.showcase.siteInspection.screens.inspectionReport.name": {
+    "message": "检查报告"
+  },
+  "page.showcase.siteInspection.screens.inspectionReport.caption": {
+    "message": "签核前请查看评分、发现的问题和备注。"
+  },
+  "page.showcase.siteInspection.screens.signOff.name": {
+    "message": "签核"
+  },
+  "page.showcase.siteInspection.screens.signOff.caption": {
+    "message": "现场经理在手机上签字，报告通过电子邮件发送。"
+  },
+  "page.showcase.clinicFrontDesk.platform": {
+    "message": "桌面"
+  },
+  "page.showcase.clinicFrontDesk.useCase": {
+    "message": "接待人员为患者办理签到、预约就诊并结束当天工作。"
+  },
+  "page.showcase.clinicFrontDesk.description": {
+    "message": "多位医生的门诊诊所前台。工作人员可按医生查看全天安排、为患者办理签到、预约就诊、打开患者档案并结算当天款项。"
+  },
+  "page.showcase.clinicFrontDesk.features.dataBindingWithValidation.title": {
+    "message": "带验证的数据绑定"
+  },
+  "page.showcase.clinicFrontDesk.features.dataBindingWithValidation.text": {
+    "message": "登记字段与患者记录绑定，并会在输入时标记无效的会员编号。"
+  },
+  "page.showcase.clinicFrontDesk.features.serverPushedUpdates.title": {
+    "message": "服务器推送更新"
+  },
+  "page.showcase.clinicFrontDesk.features.serverPushedUpdates.text": {
+    "message": "患者一签到，候诊室信息就会立即在每个工作站更新。"
+  },
+  "page.showcase.clinicFrontDesk.features.upload.text": {
+    "message": "转诊信和报告会附加到患者记录中。"
+  },
+  "page.showcase.clinicFrontDesk.features.dialog.text": {
+    "message": "关闭桌面前，会要求明确确认，然后才会进行任何更改。"
+  },
+  "page.showcase.clinicFrontDesk.screens.today.name": {
+    "message": "今天"
+  },
+  "page.showcase.clinicFrontDesk.screens.today.caption": {
+    "message": "按医生查看当日排班，旁侧候诊室随患者到达实时更新。"
+  },
+  "page.showcase.clinicFrontDesk.screens.checkInAPatient.name": {
+    "message": "患者入院登记"
+  },
+  "page.showcase.clinicFrontDesk.screens.checkInAPatient.caption": {
+    "message": "查找患者，确认其信息并修正未通过检查的项目。"
+  },
+  "page.showcase.clinicFrontDesk.screens.bookAnAppointment.name": {
+    "message": "预约"
+  },
+  "page.showcase.clinicFrontDesk.screens.bookAnAppointment.caption": {
+    "message": "选择合适医护人员有空的时间。应用会提醒您是否与其他预约冲突。"
+  },
+  "page.showcase.clinicFrontDesk.screens.patientRecord.name": {
+    "message": "患者记录"
+  },
+  "page.showcase.clinicFrontDesk.screens.patientRecord.caption": {
+    "message": "就诊、文档和账单一站式管理，并支持上传转诊信。"
+  },
+  "page.showcase.clinicFrontDesk.screens.endOfDay.name": {
+    "message": "日终"
+  },
+  "page.showcase.clinicFrontDesk.screens.endOfDay.caption": {
+    "message": "结束营业前，核对每笔付款并查看当天的繁忙情况。"
+  },
+  "page.showcase.clinicFrontDesk.screens.closeTheDay.name": {
+    "message": "结束当天"
+  },
+  "page.showcase.clinicFrontDesk.screens.closeTheDay.caption": {
+    "message": "确认前台关闭时未结付款和预订的处理方式。"
+  },
+  "page.showcase.invoiceApproval.platform": {
+    "message": "桌面"
+  },
+  "page.showcase.invoiceApproval.useCase": {
+    "message": "财务团队核对发票与采购订单并付款。"
+  },
+  "page.showcase.invoiceApproval.description": {
+    "message": "供应商发票收到后，由财务团队与采购订单核对、审批并付款。"
+  },
+  "page.showcase.invoiceApproval.features.tableWithSelection.title": {
+    "message": "可选择的表格"
+  },
+  "page.showcase.invoiceApproval.features.tableWithSelection.text": {
+    "message": "筛选未结发票，选择多行并一次性批准。"
+  },
+  "page.showcase.invoiceApproval.features.dataBindingWithValidation.title": {
+    "message": "数据绑定与验证"
+  },
+  "page.showcase.invoiceApproval.features.dataBindingWithValidation.text": {
+    "message": "从发票读取的字段会绑定到表单，用于标记超出订单金额的总额。"
+  },
+  "page.showcase.invoiceApproval.features.dialog.text": {
+    "message": "拒绝前需填写原因并向供应商发送消息。"
+  },
+  "page.showcase.invoiceApproval.features.upload.text": {
+    "message": "已签署的合同已上传至供应商页面。"
+  },
+  "page.showcase.invoiceApproval.screens.inbox.name": {
+    "message": "收件箱"
+  },
+  "page.showcase.invoiceApproval.screens.inbox.caption": {
+    "message": "筛选未结发票，选中与对应订单匹配的发票并批量审批。"
+  },
+  "page.showcase.invoiceApproval.screens.reviewAnInvoice.name": {
+    "message": "审核发票"
+  },
+  "page.showcase.invoiceApproval.screens.reviewAnInvoice.caption": {
+    "message": "决定前，请逐项比较发票与采购订单。"
+  },
+  "page.showcase.invoiceApproval.screens.approveOrReject.name": {
+    "message": "批准或拒绝"
+  },
+  "page.showcase.invoiceApproval.screens.approveOrReject.caption": {
+    "message": "拒绝时请填写原因并备注给供应商。审批链会显示通知对象。"
+  },
+  "page.showcase.invoiceApproval.screens.paymentRun.name": {
+    "message": "付款批次"
+  },
+  "page.showcase.invoiceApproval.screens.paymentRun.caption": {
+    "message": "选择已批准的发票加入周五付款批次，并按币种查看总额。"
+  },
+  "page.showcase.invoiceApproval.screens.supplierDetail.name": {
+    "message": "供应商详情"
+  },
+  "page.showcase.invoiceApproval.screens.supplierDetail.caption": {
+    "message": "某个供应商的发票、月度支出和合同，并可上传已签署的续约文件。"
+  },
+  "page.showcase.sections.overview": {
+    "message": "概览"
+  },
+  "page.showcase.sections.apps": {
+    "message": "应用\n"
+  },
+  "page.showcase.sections.talk": {
+    "message": "联系我们"
+  },
+  "page.showcase.sections.start": {
+    "message": "开始使用"
+  },
+  "page.showcase.screenAlt": {
+    "message": "{app} 应用的 {screen} 界面。{caption}"
+  },
+  "page.showcase.sections.label": {
+    "message": "本页章节"
+  },
+  "page.showcase.hero.eyebrow": {
+    "message": "webforJ 展示"
+  },
+  "page.showcase.hero.title": {
+    "message": "使用 webforJ 可以构建什么"
+  },
+  "page.showcase.hero.lead": {
+    "message": "调度看板、现场巡检、前台接待和财务审批。这类业务应用使用 Java 和 webforJ 组件构建，包括表格、表单、对话框和实时更新。"
+  },
+  "page.showcase.hero.start": {
+    "message": "开始项目"
+  },
+  "page.showcase.hero.components": {
+    "message": "探索组件"
+  },
+  "page.showcase.hero.factApps": {
+    "message": "应用"
+  },
+  "page.showcase.hero.factScreens": {
+    "message": "要逐个浏览的界面"
+  },
+  "page.showcase.hero.factPlatforms": {
+    "message": "平台：桌面端和移动端"
+  },
+  "page.showcase.hero.desktopAlt": {
+    "message": "货运调度应用的实时地图界面，地图上显示所有卡车，并按到达时间排序列出货运单。"
+  },
+  "page.showcase.hero.phoneAlt": {
+    "message": "手机上的现场检查应用清单界面，每项检查均有“通过”“不通过”和“不适用”按钮。"
+  },
+  "page.showcase.gallery.title": {
+    "message": "应用程序"
+  },
+  "page.showcase.gallery.lead": {
+    "message": "四款商务应用，每款都包含完整的一套界面。选择一款并逐步体验。"
+  },
+  "page.showcase.gallery.meta": {
+    "message": "{platform} · {count} 个界面"
+  },
+  "page.showcase.gallery.see": {
+    "message": "查看屏幕"
+  },
+  "page.showcase.lightbox.label": {
+    "message": "{name} 屏幕，全尺寸"
+  },
+  "page.showcase.lightbox.previous": {
+    "message": "上一屏"
+  },
+  "page.showcase.lightbox.next": {
+    "message": "下一屏"
+  },
+  "page.showcase.lightbox.close": {
+    "message": "关闭全尺寸视图"
+  },
+  "page.showcase.step.previous": {
+    "message": "上一屏"
+  },
+  "page.showcase.step.next": {
+    "message": "下一屏"
+  },
+  "page.showcase.step.openFull": {
+    "message": "以全尺寸打开 {name}"
+  },
+  "page.showcase.step.fullSize": {
+    "message": "全尺寸"
+  },
+  "page.showcase.chapter.kicker": {
+    "message": "{platform} 应用 · {count} 个页面"
+  },
+  "page.showcase.chapter.screensLabel": {
+    "message": "{name} 个屏幕"
+  },
+  "page.showcase.chapter.carouselLabel": {
+    "message": "{name} 个页面"
+  },
+  "page.showcase.chapter.phoneOpen": {
+    "message": "以全尺寸打开 {name}"
+  },
+  "page.showcase.chapter.phoneShow": {
+    "message": "显示 {name}"
+  },
+  "page.showcase.chapter.windowOpen": {
+    "message": "以全尺寸打开 {name}"
+  },
+  "page.showcase.chapter.shows": {
+    "message": "它在 webforJ 中显示的内容"
+  },
+  "page.showcase.business.title": {
+    "message": "正在用 webforJ 规划商业应用？"
+  },
+  "page.showcase.business.text": {
+    "message": "预约与 webforJ 开发团队通话。带上您的应用、后端和时间规划，我们将为您展示 webforJ 如何满足需求，从首个界面到 LTS+ 支持。"
+  },
+  "page.showcase.business.book": {
+    "message": "预约通话"
+  },
+  "page.showcase.business.pricing": {
+    "message": "查看定价"
+  },
+  "page.showcase.business.languages": {
+    "message": "我们会说{languages}"
+  },
+  "page.showcase.closing.title": {
+    "message": "使用 startforJ 构建你的第一个界面"
+  },
+  "page.showcase.closing.text": {
+    "message": "为你的应用命名，选择主题颜色和应用类型，然后下载布局和依赖项均已配置好的项目。这些页面中的表格、对话框、抽屉和上传组件均可直接使用。"
+  },
+  "page.showcase.closing.open": {
+    "message": "打开 startforJ"
+  },
+  "page.showcase.closing.read": {
+    "message": "阅读入门指南"
+  },
+  "page.showcase.closing.footnote": {
+    "message": "此页面上的应用展示了你可以使用 webforJ 组件构建的内容。"
+  },
+  "page.showcase.meta.title": {
+    "message": "使用 webforJ 可以构建什么：Java 业务应用示例"
+  },
+  "page.showcase.meta.description": {
+    "message": "基于 webforJ 组件构建的调度、现场检查、诊所接待和发票审批示例业务应用。逐屏体验，了解背后的 webforJ 功能。"
+  },
+  "page.uiComponents.group.layout.title": {
+    "message": "布局"
+  },
+  "page.uiComponents.group.layout.lead": {
+    "message": "屏幕框架：应用外壳、工具栏、弹性布局和列布局、分隔窗格及表面。"
+  },
+  "page.uiComponents.item.appLayout": {
+    "message": "用于应用顶层导航和内容的结构化布局。"
+  },
+  "page.uiComponents.item.flexLayout": {
+    "message": "使用 Flexbox 规则排列子元素，实现响应式对齐。"
+  },
+  "page.uiComponents.item.columnsLayout": {
+    "message": "将子元素排列成列，适用于表单和网格布局。"
+  },
+  "page.uiComponents.item.toolbar": {
+    "message": "用于放置操作按钮、图标和其他控件的水平容器。"
+  },
+  "page.uiComponents.item.splitter": {
+    "message": "在两个可拖动调整大小的组件之间分隔空间。"
+  },
+  "page.uiComponents.item.accordion": {
+    "message": "一组带可点击标题的堆叠式可折叠面板。"
+  },
+  "page.uiComponents.item.card": {
+    "message": "包含媒体、页眉、正文内容和页脚区域的界面。"
+  },
+  "page.uiComponents.item.dialog": {
+    "message": "覆盖内容并提示用户的模态窗口。"
+  },
+  "page.uiComponents.group.forms.title": {
+    "message": "表单和输入框"
+  },
+  "page.uiComponents.group.forms.lead": {
+    "message": "用户输入、选择或上传的所有内容，包括文本、数字、日期、输入掩码、列表和文件。"
+  },
+  "page.uiComponents.item.textField": {
+    "message": "用于输入和编辑文本的单行输入框。"
+  },
+  "page.uiComponents.item.maskedTextField": {
+    "message": "将文本限制为特定格式，例如电话号码。"
+  },
+  "page.uiComponents.item.numberField": {
+    "message": "带有数值增减控件的数字输入框。"
+  },
+  "page.uiComponents.item.maskedNumberField": {
+    "message": "强制采用数字格式，例如货币或百分比。"
+  },
+  "page.uiComponents.item.passwordField": {
+    "message": "用于隐藏密码的单行输入框。"
+  },
+  "page.uiComponents.item.dateField": {
+    "message": "输入框中的浏览器原生日期选择器。"
+  },
+  "page.uiComponents.item.maskedDateField": {
+    "message": "强制使用指定日期格式的日期输入框"
+  },
+  "page.uiComponents.item.timeField": {
+    "message": "输入框中的浏览器端时间选择器\n"
+  },
+  "page.uiComponents.item.maskedTimeField": {
+    "message": "强制使用指定时间格式的时间输入框。"
+  },
+  "page.uiComponents.item.dateTimeField": {
+    "message": "在一个输入框中选择日期和时间。"
+  },
+  "page.uiComponents.item.colorField": {
+    "message": "输入框中的浏览器端颜色选择器\n"
+  },
+  "page.uiComponents.item.textArea": {
+    "message": "用于输入较大文本块的多行输入框。"
+  },
+  "page.uiComponents.item.checkBox": {
+    "message": "可在选中和未选中状态间切换的选项。"
+  },
+  "page.uiComponents.item.radioButton": {
+    "message": "从一组互斥选项中选择一项。"
+  },
+  "page.uiComponents.item.switch": {
+    "message": "通过滑动在两种状态间切换，例如开/关。"
+  },
+  "page.uiComponents.item.choiceBox": {
+    "message": "预设选项的下拉列表。"
+  },
+  "page.uiComponents.item.comboBox": {
+    "message": "与可编辑文本输入框组合的下拉列表"
+  },
+  "page.uiComponents.item.listBox": {
+    "message": "可滚动列表，可选择一个或多个项目。"
+  },
+  "page.uiComponents.item.slider": {
+    "message": "沿轨道拖动滑块以选择范围内的值。"
+  },
+  "page.uiComponents.item.upload": {
+    "message": "支持拖放、筛选和单文件事件的内联文件选择器。"
+  },
+  "page.uiComponents.group.data.title": {
+    "message": "数据和内容"
+  },
+  "page.uiComponents.group.data.lead": {
+    "message": "显示记录、层级结构、图表和流式文本，并在用户滚动时加载更多内容。"
+  },
+  "page.uiComponents.item.googleCharts": {
+    "message": "通过 Google Charts 展示图表和可视化数据。"
+  },
+  "page.uiComponents.item.tree": {
+    "message": "用户可展开、折叠和交互的层级数据。"
+  },
+  "page.uiComponents.item.infiniteScroll": {
+    "message": "滚动时加载更多条目，并跟踪是否已获取全部内容。"
+  },
+  "page.uiComponents.item.refresher": {
+    "message": "可在可滚动容器中下拉刷新。"
+  },
+  "page.uiComponents.item.markdownViewer": {
+    "message": "逐步渲染 Markdown，适用于 AI 聊天和流式文本。"
+  },
+  "page.uiComponents.item.terminal": {
+    "message": "应用内的文本命令行界面"
+  },
+  "page.uiComponents.item.avatar": {
+    "message": "不同尺寸、形状和主题的头像图片或首字母。"
+  },
+  "page.uiComponents.item.badge": {
+    "message": "用于显示数量、状态或简短元数据的小标签。"
+  },
+  "page.uiComponents.group.navigation.title": {
+    "message": "导航和操作"
+  },
+  "page.uiComponents.group.navigation.lead": {
+    "message": "在视图和版块间切换、翻阅数据并触发后续操作。"
+  },
+  "page.uiComponents.item.appNav": {
+    "message": "用于在各个部分和视图之间切换的导航菜单。"
+  },
+  "page.uiComponents.item.drawer": {
+    "message": "用于侧边导航或显示额外内容的滑动面板。"
+  },
+  "page.uiComponents.item.tabbedPane": {
+    "message": "将内容整理为多个选项卡，供用户切换。"
+  },
+  "page.uiComponents.item.navigator": {
+    "message": "分页，含首页、末页、下一页、上一页按钮及快速跳转。"
+  },
+  "page.uiComponents.item.button": {
+    "message": "按下时触发操作的可点击组件。"
+  },
+  "page.uiComponents.item.icon": {
+    "message": "表示操作、状态或类别的图形符号。"
+  },
+  "page.uiComponents.group.feedback.title": {
+    "message": "反馈与对话框"
+  },
+  "page.uiComponents.group.feedback.lead": {
+    "message": "告知用户当前情况，请他们确认，并收集一个值、文件或登录信息。"
+  },
+  "page.uiComponents.item.toast": {
+    "message": "自动消失的非阻塞通知。"
+  },
+  "page.uiComponents.item.alert": {
+    "message": "以醒目格式显示重要消息或警告。"
+  },
+  "page.uiComponents.item.desktopNotification": {
+    "message": "通过浏览器 Notification API 自定义桌面通知。"
+  },
+  "page.uiComponents.item.progressBar": {
+    "message": "随任务进度填充的进度条。"
+  },
+  "page.uiComponents.item.busyIndicator": {
+    "message": "用于指示应用级全局进程正在进行的状态提示。"
+  },
+  "page.uiComponents.item.loading": {
+    "message": "单个父组件范围内的加载指示器"
+  },
+  "page.uiComponents.item.spinner": {
+    "message": "显示操作正在进行的旋转动画。"
+  },
+  "page.uiComponents.item.messageDialog": {
+    "message": "用户点击“确定”确认的信息提示。"
+  },
+  "page.uiComponents.item.confirmDialog": {
+    "message": "提示用户确认或取消操作。"
+  },
+  "page.uiComponents.item.inputDialog": {
+    "message": "提示用户输入一个值，并提供“确定”和“取消”选项。"
+  },
+  "page.uiComponents.item.fileUploadDialog": {
+    "message": "从本地文件系统上传文件到应用。"
+  },
+  "page.uiComponents.item.login": {
+    "message": "预置的登录界面，包含用户名、密码和提交按钮。"
+  },
+  "page.uiComponents.gallery.layouts": {
+    "message": "布局"
+  },
+  "page.uiComponents.gallery.dataEntry": {
+    "message": "数据录入"
+  },
+  "page.uiComponents.gallery.optionDialogs": {
+    "message": "选项对话框"
+  },
+  "page.uiComponents.gallery.interaction": {
+    "message": "交互与显示"
+  },
+  "page.uiComponents.beyond.html.label": {
+    "message": "{count} 个 HTML 元素"
+  },
+  "page.uiComponents.beyond.html.title": {
+    "message": "页面本身（打字内容）"
+  },
+  "page.uiComponents.beyond.html.text": {
+    "message": "webforJ 提供与标准 HTML 元素直接对应的组件，例如 Div、Paragraph、标题、列表、Img 和 Anchor，并配备类型化的 Java API。"
+  },
+  "page.uiComponents.beyond.html.link": {
+    "message": "HTML 组件"
+  },
+  "page.uiComponents.beyond.web.label": {
+    "message": "Web components"
+  },
+  "page.uiComponents.beyond.web.title": {
+    "message": "任意 Web 组件，轻松封装\n"
+  },
+  "page.uiComponents.beyond.web.text": {
+    "message": "ElementComposite 封装自定义 HTML 元素或第三方 Web 组件，并通过 Java API 提供对其属性、特性和事件的访问。"
+  },
+  "page.uiComponents.beyond.web.link": {
+    "message": "元素组合"
+  },
+  "page.uiComponents.beyond.npm.label": {
+    "message": "npm 包"
+  },
+  "page.uiComponents.beyond.npm.title": {
+    "message": "来自 Java 的 npm registry"
+  },
+  "page.uiComponents.beyond.npm.text": {
+    "message": "前端打包器会将类上的注解转换为编译后的前端资源，因此组件可以包含其依赖的 npm 包。"
+  },
+  "page.uiComponents.beyond.npm.link": {
+    "message": "前端打包工具"
+  },
+  "page.uiComponents.theme.darkSummary": {
+    "message": "深色主题下的相同字段、按钮、开关、徽章和进度条。"
+  },
+  "page.uiComponents.theme.lightSummary": {
+    "message": "浅色主题下的相同字段、按钮、开关、徽章和进度条。"
+  },
+  "page.uiComponents.theme.mock.name": {
+    "message": "名称"
+  },
+  "page.uiComponents.theme.mock.save": {
+    "message": "保存"
+  },
+  "page.uiComponents.theme.mock.cancel": {
+    "message": "取消"
+  },
+  "page.uiComponents.theme.mock.new": {
+    "message": "新建"
+  },
+  "page.uiComponents.hero.eyebrow": {
+    "message": "UI 组件"
+  },
+  "page.uiComponents.hero.title1": {
+    "message": "业务界面的每个部分，"
+  },
+  "page.uiComponents.hero.title2": {
+    "message": "Java 中已就绪。"
+  },
+  "page.uiComponents.hero.lead": {
+    "message": "webforJ 是面向企业 Web 应用的全栈 Java 框架：整个应用（包括界面）都用 Java 构建。它的组件涵盖布局、数据录入、对话框、数据展示和反馈，每个组件都是一个 Java 类，可供创建、配置并添加到布局中。"
+  },
+  "page.uiComponents.hero.openGallery": {
+    "message": "打开组件库"
+  },
+  "page.uiComponents.hero.browse": {
+    "message": "按用途浏览"
+  },
+  "page.uiComponents.stats.gallery": {
+    "message": "图库中的组件"
+  },
+  "page.uiComponents.stats.html": {
+    "message": "类型化 HTML 元素"
+  },
+  "page.uiComponents.stats.themes": {
+    "message": "内置主题"
+  },
+  "page.uiComponents.stats.groups": {
+    "message": "按用途分组"
+  },
+  "page.uiComponents.hero.wallLabel": {
+    "message": "精选的 webforJ 组件"
+  },
+  "page.uiComponents.hero.wallLink": {
+    "message": "{name} 文档"
+  },
+  "page.uiComponents.hero.wallAlt": {
+    "message": "{name} 组件"
+  },
+  "page.uiComponents.groups.label": {
+    "message": "按用途"
+  },
+  "page.uiComponents.groups.title": {
+    "message": "{total} 个业务组件，另有 {html} 个 HTML 元素及任意 Web 组件。"
+  },
+  "page.uiComponents.groups.count.business": {
+    "message": "业务组件"
+  },
+  "page.uiComponents.groups.count.html": {
+    "message": "HTML 元素"
+  },
+  "page.uiComponents.groups.count.any": {
+    "message": "任意"
+  },
+  "page.uiComponents.groups.count.web": {
+    "message": "web component"
+  },
+  "page.uiComponents.groups.lead": {
+    "message": "选择一个分组，然后选择一个组件。每个磁贴都会打开文档中该组件的专属页面。"
+  },
+  "page.uiComponents.groups.navLabel": {
+    "message": "组件组"
+  },
+  "page.uiComponents.groups.count": {
+    "message": "{count} 个组件"
+  },
+  "page.uiComponents.compose.label": {
+    "message": "组合"
+  },
+  "page.uiComponents.compose.title1": {
+    "message": "您自己的组件，"
+  },
+  "page.uiComponents.compose.title2": {
+    "message": "基于我们的成果构建而成。"
+  },
+  "page.uiComponents.compose.lead": {
+    "message": "webforJ采用组合而非继承。你无需扩展 {button}，而是编写一个扩展 {composite} 的类，在其中组合组件，并决定应用的其他部分可以访问哪些方法。"
+  },
+  "page.uiComponents.compose.demo.search": {
+    "message": "搜索"
+  },
+  "page.uiComponents.compose.demo.go": {
+    "message": "前往"
+  },
+  "page.uiComponents.compose.point1.title": {
+    "message": "一个类，一个单元。"
+  },
+  "page.uiComponents.compose.point1.text": {
+    "message": "{composite} 封装单个已绑定组件并承载其内部结构，因此搜索栏、地址表单或整个仪表板卡片都可成为可复用的类。"
+  },
+  "page.uiComponents.compose.point2.title": {
+    "message": "API 由您选择。"
+  },
+  "page.uiComponents.compose.point2.text": {
+    "message": "调用方只能看到您公开的方法，而继承会暴露所有内容。"
+  },
+  "page.uiComponents.compose.point3.title": {
+    "message": "内置组件保持完整。"
+  },
+  "page.uiComponents.compose.point3.text": {
+    "message": "内置组件是 final 的，可确保底层 Web Component 保持一致且可预测。你的行为逻辑应围绕它们构建，而不是嵌入其中。"
+  },
+  "page.uiComponents.compose.link.composing": {
+    "message": "组合组件"
+  },
+  "page.uiComponents.compose.link.understanding": {
+    "message": "了解组件"
+  },
+  "page.uiComponents.beyond.label": {
+    "message": "集合之外"
+  },
+  "page.uiComponents.beyond.title1": {
+    "message": "不在集合中？"
+  },
+  "page.uiComponents.beyond.title2": {
+    "message": "在网页上使用任意组件。"
+  },
+  "page.uiComponents.beyond.lead": {
+    "message": "业务组件是起点，而不是终点。每个 HTML 元素都是一个 Java 类，任何 Web 组件都可以成为 Java 类。"
+  },
+  "page.uiComponents.own.label": {
+    "message": "你的设计系统"
+  },
+  "page.uiComponents.own.title1": {
+    "message": "有自己的设计系统吗？"
+  },
+  "page.uiComponents.own.title2": {
+    "message": "把它带上。"
+  },
+  "page.uiComponents.own.lead": {
+    "message": "webforJ 组件是可选方案，并非必需。如果你的设计系统以 web components 形式提供，只需封装一次，就能用 Java 构建整个应用。"
+  },
+  "page.uiComponents.own.step1.title": {
+    "message": "包裹组件"
+  },
+  "page.uiComponents.own.step1.text": {
+    "message": "{composite} 将每个自定义元素转换为 Java 类，并通过 Java API 暴露其属性、特性和事件。"
+  },
+  "page.uiComponents.own.step2.title": {
+    "message": "将它们打包为一个模块"
+  },
+  "page.uiComponents.own.step2.text": {
+    "message": "前端打包器允许类声明所需的 npm 包，因此封装组件会自带其设计系统。应用只需添加依赖项。"
+  },
+  "page.uiComponents.own.step3.title": {
+    "message": "照常构建应用\n"
+  },
+  "page.uiComponents.own.step3.text": {
+    "message": "路由、安全性和数据绑定的工作方式相同。实现 {valueAware} 的包装组件与任何内置字段一样绑定到您的模型。"
+  },
+  "page.uiComponents.own.panel": {
+    "message": "您的页面将沿用公司现有的设计风格，底层框架仍是 webforJ。"
+  },
+  "page.uiComponents.own.link.composite": {
+    "message": "元素组合"
+  },
+  "page.uiComponents.own.link.bundler": {
+    "message": "前端打包工具"
+  },
+  "page.uiComponents.java.label": {
+    "message": "在 Java 中使用"
+  },
+  "page.uiComponents.java.title1": {
+    "message": "组件是一个对象"
+  },
+  "page.uiComponents.java.title2": {
+    "message": "你使用 {code} 创建。"
+  },
+  "page.uiComponents.java.lead1": {
+    "message": "您可以通过类型化方法设置其状态，使用 lambda 监听其事件，并将其添加到容器中。界面由 Java 代码构建，无需维护同步的模板。"
+  },
+  "page.uiComponents.java.usedLabel": {
+    "message": "此代码中的组件"
+  },
+  "page.uiComponents.java.usingLink": {
+    "message": "使用组件"
+  },
+  "page.uiComponents.java.composingLink": {
+    "message": "组件组合"
+  },
+  "page.uiComponents.java.codeAdd": {
+    "message": "将组件添加到容器"
+  },
+  "page.uiComponents.java.codeState": {
+    "message": "通过事件更改状态"
+  },
+  "page.uiComponents.theme.label": {
+    "message": "主题设置"
+  },
+  "page.uiComponents.theme.title1": {
+    "message": "一个设计系统"
+  },
+  "page.uiComponents.theme.title2": {
+    "message": "每个组件背后"
+  },
+  "page.uiComponents.theme.lead": {
+    "message": "webforJ 内置名为 DWC 的设计系统。其 CSS 变量（设计令牌）涵盖颜色、排版、边框和间距，所有组件都会读取这些变量。更改令牌后，所有使用它的组件都会随之更新。"
+  },
+  "page.uiComponents.theme.lightCaption": {
+    "message": "默认样式。浅色背景，带有淡淡的主色调。"
+  },
+  "page.uiComponents.theme.darkCaption": {
+    "message": "深色背景，点缀淡淡的主色调。"
+  },
+  "page.uiComponents.theme.fact1.title": {
+    "message": "内置三种主题"
+  },
+  "page.uiComponents.theme.fact1.text": {
+    "message": "{light}、{dark} 和 {darkPure}（移除主色调，改用纯中性灰）。可通过 {setTheme} 在运行时切换，无需重新构建。"
+  },
+  "page.uiComponents.theme.fact2.title": {
+    "message": "跟随操作系统"
+  },
+  "page.uiComponents.theme.fact2.text": {
+    "message": "注册浅色和深色主题，并传入 {system}。webforJ 会选择符合用户偏好的主题，并在偏好变化时自动切换。"
+  },
+  "page.uiComponents.theme.fact3.title": {
+    "message": "用少量令牌重新塑造品牌"
+  },
+  "page.uiComponents.theme.fact3.text": {
+    "message": "覆盖内置主题的种子令牌，让所有组件焕然一新。令牌不足时，可通过 Shadow Parts 深入组件内部。"
+  },
+  "page.uiComponents.theme.link.themes": {
+    "message": "主题"
+  },
+  "page.uiComponents.theme.link.cssVariables": {
+    "message": "CSS 变量"
+  },
+  "page.uiComponents.theme.link.shadowParts": {
+    "message": "Shadow parts"
+  },
+  "page.uiComponents.theme.link.overview": {
+    "message": "样式概览"
+  },
+  "page.uiComponents.entrance.label": {
+    "message": "图库"
+  },
+  "page.uiComponents.entrance.title1": {
+    "message": "打开图库"
+  },
+  "page.uiComponents.entrance.title2": {
+    "message": "并查看全部 {total}。"
+  },
+  "page.uiComponents.entrance.lead": {
+    "message": "文档中的组件画廊按相同的四个部分列出所有组件，并附有预览和简短描述。"
+  },
+  "page.uiComponents.entrance.openGallery": {
+    "message": "打开组件库"
+  },
+  "page.uiComponents.entrance.home": {
+    "message": "返回文档首页"
+  },
+  "page.uiComponents.entrance.sectionsLabel": {
+    "message": "图库分区"
+  },
+  "page.uiComponents.meta.title": {
+    "message": "webforJ UI 组件：面向业务应用的 Java 组件集"
+  },
+  "page.uiComponents.meta.description": {
+    "message": "按功能浏览 webforJ 组件集：布局、表单与输入、数据、导航和反馈。每个组件都是一个 Java 类，采用 DWC 设计系统及其浅色、深色和纯深色主题进行样式设计。"
+  },
+  "component.footer.platform.title": {
+    "message": "平台"
   }
 }

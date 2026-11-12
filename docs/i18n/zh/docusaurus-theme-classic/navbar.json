@@ -90,5 +90,13 @@
   "item.label.Pricing": {
     "message": "定价",
     "description": "Navbar item with label Pricing"
+  },
+  "item.label.Platform": {
+    "message": "平台",
+    "description": "Navbar item with label Platform"
+  },
+  "item.label.Showcase": {
+    "message": "展示\n",
+    "description": "Navbar item with label Showcase"
   }
 }

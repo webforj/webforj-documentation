@@ -1,33 +1,40 @@
 ---
 sidebar_position: 10
-title: BBj-Steuerelemente und webforJ-Komponenten
+title: Komponentenarchitektur
 description: >-
-  See how webforJ components map one-to-one to BBj controls through the
-  DwcComponent base class and why composition replaces inheritance.
-_i18n_hash: 83f48323774737067ddd9a6bebb0373d
+  See how webforJ components are built on the DwcComponent base class, why
+  component classes are final, and why composition replaces inheritance.
+_i18n_hash: 13c29b780cb00a918fe6e0a98c5e783a
 ---
-Das webforJ-Framework ist darauf ausgelegt, eine Java-API für die DWC-Sprache von BBj bereitzustellen und bietet eine robuste Architektur zum Erstellen und Verwalten von Komponenten.
+webforJ stellt Ihnen eine Java-API für eine Bibliothek mit Webkomponenten bereit und verwaltet jede davon serverseitig. Auf dieser Seite wird erklärt, wie Komponenten aufgebaut sind und wie Sie sie erweitern können.
 
-## Zuordnung von BBj-Steuerelementen zu webforJ-Komponenten {#mapping-bbj-controls-to-webforj-components}
-Eines der grundlegenden Prinzipien von webforJ ist die Bindung von BBj-Steuerelementen an webforJ-Komponenten. In dieser Architektur hat jede webforJ-Komponente, die mit dem Produkt geliefert wird, eine Eins-zu-eins-Zuordnung zu einem zugrunde liegenden BBj-Steuerelement. Diese Zuordnung stellt sicher, dass Java-Komponenten das Verhalten und die Eigenschaften ihrer BBj-Pendants nahtlos widerspiegeln.
+## Aufbau von Komponenten {#how-components-are-structured}
+Jede mit dem Produkt ausgelieferte webforJ-Komponente ist eine Java-Klasse, der genau eine clientseitige Webkomponente aus der DWC-Komponentenbibliothek zugeordnet ist. Die Java-Klasse verwaltet den Zustand und die API der Komponente auf dem Server, und das Framework hält die Webkomponente im Browser mit ihr synchron.
 
-Diese enge Entsprechung zwischen webforJ-Komponenten und BBj-Steuerelementen vereinfacht die Entwicklung und ermöglicht es Java-Entwicklern, mit vertrauten Konzepten zu arbeiten, wenn sie webbasierte Anwendungen erstellen, ohne dass sie Code in BBj schreiben müssen.
+Sie arbeiten ausschließlich mit der Java-Klasse. Eigenschaften, Ereignisse und das Rendering im Browser werden vom Framework übernommen, sodass Sie Web-Apps vollständig in Java erstellen können.
 
-## Die `DwcComponent`-Basis-Klasse {#the-dwccomponent-base-class}
-Im Kern der Komponentenarchitektur von webforJ liegt die DWCComponent-Basis-Klasse. Alle webforJ-Komponenten erben von dieser Klasse. Diese Vererbung gewährt jeder webforJ-Komponente Zugriff auf ihr zugrunde liegendes BBj-Steuerelement und bietet eine direkte Verbindung zwischen der Java-Komponente und dem BBj-Steuerelement, das sie repräsentiert.
+## Die Basisklasse `DwcComponent` {#the-dwccomponent-base-class}
+Das Herzstück der Komponentenarchitektur von webforJ ist die Basisklasse DWCComponent. Alle webforJ-Komponenten erben von dieser Klasse. Sie verwaltet die Verbindung zwischen der Java-Komponente und ihrem clientseitigen Gegenstück, einschließlich Erstellung, Aktualisierung von Eigenschaften und Ereignissen.
 
-Es ist jedoch wichtig zu beachten, dass Entwicklern das Erweitern der DWCComponent-Klasse untersagt ist. Der Versuch, dies zu tun, führt zu einer Laufzeitausnahme, die solche Erweiterungen nicht zulässt. Diese Einschränkung dient dazu, die Integrität des zugrunde liegenden BBj-Steuerelements zu wahren und sicherzustellen, dass Entwickler es nicht unbeabsichtigt auf eine Weise manipulieren, die zu unbeabsichtigten Konsequenzen führen könnte.
+Es ist jedoch wichtig zu beachten, dass Entwickler die DWCComponent-Klasse nicht weiter erweitern dürfen. Ein entsprechender Versuch führt zu einer Laufzeitausnahme, die solche Erweiterungen verhindert. Diese Einschränkung dient dazu, die Integrität dieser Verbindung zu wahren und sicherzustellen, dass Entwickler sie nicht versehentlich auf eine Weise manipulieren, die unbeabsichtigte Folgen haben könnte.
 
-### Endgültige Klassen und Erweiterungseinschränkungen {#final-classes-and-extension-restrictions}
-In webforJ sind die meisten Komponentenklassen, mit Ausnahme der integrierten HTML-Elemente und aller Klassen, die von diesen abgeleitet sind, als `final` deklariert. Dies bedeutet, dass sie nicht zur Erweiterung oder Unterklassenbildung verfügbar sind. Diese Designentscheidung ist absichtlich und dient mehreren Zwecken:
+### Finale Klassen und Einschränkungen beim Erweitern {#final-classes-and-extension-restrictions}
+In webforJ sind die meisten Komponentenklassen als `final` deklariert. Ausgenommen sind die integrierten HTML-Elemente und alle Klassen, die diese erweitern. Das bedeutet, dass diese Komponentenklassen nicht erweitert oder als Unterklassen verwendet werden können. Diese Designentscheidung ist bewusst getroffen und verfolgt mehrere Ziele:
 
-1. **Kontrolle über das zugrunde liegende BBj-Steuerelement**: Wie bereits erwähnt, würde das Erweitern von webforJ-Komponentenklassen Entwicklern Kontrolle über das zugrunde liegende BBj-Steuerelement geben. Um die Konsistenz und Vorhersehbarkeit des Verhaltens von Komponenten zu wahren, ist dieses Maß an Kontrolle eingeschränkt.
+1. **Kontrolle über die clientseitige Verbindung**: Wie bereits erwähnt, würde das Erweitern von webforJ-Komponentenklassen die interne Verbindung zwischen der Java-Komponente und ihrem clientseitigen Gegenstück offenlegen. Um ein konsistentes und vorhersehbares Verhalten der Komponenten sicherzustellen, ist diese Art der Kontrolle eingeschränkt.
 
-2. **Verhinderung unbeabsichtigter Modifikationen**: Die Deklaration der Komponentenklassen als `final` verhindert unbeabsichtigte Modifikationen an Kernkomponenten, wodurch das Risiko verringert wird, unerwartete Verhaltensweisen oder Schwachstellen einzuführen.
+2. **Verhindern unbeabsichtigter Änderungen**: Durch die Deklaration der Komponentenklassen als `final` werden unbeabsichtigte Änderungen an Kernkomponenten verhindert und das Risiko unerwarteter Verhaltensweisen oder Sicherheitslücken verringert.
 
-3. **Förderung der Verwendung von Kompositen**: Um die Funktionalität von Komponenten zu erweitern, ermutigt das webforJ-Framework die Entwickler, einen kompositen Ansatz zu verwenden. Komposite Komponenten sind Java-Klassen, die andere webforJ-Komponenten oder Standard-HTML-Elemente enthalten. Während traditionelle Vererbung nicht empfohlen wird, bieten Komposite Komponenten eine Möglichkeit, neue, maßgeschneiderte Komponenten zu erstellen, die bestehende Komponenten kapseln.
+3. **Förderung der Verwendung von Kompositionen**: Um die Funktionalität von Komponenten zu erweitern, empfiehlt das webforJ-Framework einen auf Komposition basierenden Ansatz. Kompositionskomponenten sind Java-Klassen, die andere webforJ-Komponenten oder standardmäßige HTML-Elemente enthalten. Während von traditioneller Vererbung abgeraten wird, bieten Kompositionskomponenten eine Möglichkeit, neue, angepasste Komponenten zu erstellen, die bestehende Komponenten kapseln.
 
-## Komposite Komponenten: Erweiterung durch Komposition {#composite-components-extending-through-composition}
-Im webforJ-Framework spielt das Konzept der kompositen Komponenten eine entscheidende Rolle bei der Erweiterung der Funktionalität von Komponenten. Komposite Komponenten sind Java-Klassen, die nicht durch das Schlüsselwort final eingeschränkt sind, sodass Entwickler neue Komponenten erstellen können, die das Verhalten einer einzelnen Komponente erweitern oder mehrere Komponenten zu einer einzigen zusammenfassen, indem sie bestehende Komponenten kombinieren. Klassen, die dieses Verhalten ermöglichen, wurden zur Verwendung durch Entwickler erstellt. Siehe die Abschnitte `Composite` und `ElementComposite`, um zu erfahren, wie man komposite Komponenten richtig erstellt.
+<!-- ## Komponenten zum DOM hinzufügen
+TODO: Erläutern, wie webforJ das clientseitige Gegenstück einer Komponente auflöst -->
+
+## Kompositionskomponenten: Erweitern durch Komposition {#composite-components-extending-through-composition}
+Im webforJ-Framework spielen Kompositionskomponenten eine zentrale Rolle bei der Erweiterung der Komponentenfunktionalität. Für Kompositionskomponenten ist das Schlüsselwort final nicht vorgeschrieben. Dadurch können Entwickler neue Komponenten erstellen, die das Verhalten einer einzelnen Komponente erweitern oder mehrere Komponenten zu einer zusammenfassen, indem sie vorhandene Komponenten zusammensetzen. Für Entwickler wurden Klassen erstellt, die dieses Verhalten ermöglichen. In den Abschnitten `Composite` und `ElementComposite` erfahren Sie, wie Sie Kompositionskomponenten korrekt erstellen.
 
 Dieser Ansatz fördert einen modulareren und flexibleren Entwicklungsstil und ermöglicht es Entwicklern, maßgeschneiderte Komponenten zu erstellen, die spezifische Anforderungen erfüllen.
+
+<!--
+## Komponenten-Hierarchie {#component-hierarchy}
+TODO: Grafik erstellen und anzeigen -->
