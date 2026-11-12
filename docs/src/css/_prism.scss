@@ -33,10 +33,11 @@
   --dwc-code-regex:       var(--dwc-color-danger-70);
 }
 
-// Code blocks sit on the page's own surface. Their edge comes from a clear
-// line and 12px corners, not from a fill. The block inside a component demo
-// keeps the demo's own edge.
-#__docusaurus .theme-code-block:not(.codeDemoBlock) {
+// Code blocks in docs and blog content sit on the page's own surface. Their
+// edge comes from a clear line and 12px corners, not from a fill. The block
+// inside a component demo keeps the demo's own edge, and the code panels on
+// the product pages have their own styles, so both are left alone.
+#__docusaurus .markdown .theme-code-block:not(.codeDemoBlock) {
   margin-bottom: 1.5rem;
   border: 1px solid var(--dwc-color-default-dark);
   border-radius: 12px;
@@ -46,7 +47,7 @@
 
 // Filename bar: a small bold label in the code font, on the same surface
 // as the code, with a line under it
-#__docusaurus [class*='codeBlockTitle'] {
+#__docusaurus .markdown [class*='codeBlockTitle'] {
   padding: 0.5rem 1.125rem;
   border-bottom: 1px solid var(--dwc-color-default-dark);
   background-color: var(--dwc-code-bg);
@@ -56,24 +57,29 @@
   font-weight: 600;
 }
 
-// Code body: compact lines, so code reads as one block
+// Code body
 pre.prism-code {
   background-color: var(--dwc-code-bg) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   font-family: 'JetBrains Mono', var(--ifm-font-family-monospace);
+  font-size: 15px;
+}
+
+// compact lines in docs and blog content, so code reads as one block
+.markdown pre.prism-code {
   font-size: 14px;
   line-height: 1.55;
 }
 
-#__docusaurus pre.prism-code code {
+#__docusaurus .markdown pre.prism-code code {
   padding: 1rem 1.125rem;
 }
 
 // Annotations such as @Route and @Bean are tagged as punctuation by the
 // highlighter, which greys them out like comments. They take the code's
 // own text colour instead, a touch heavier, so they read as code.
-pre.prism-code .token.annotation {
+.markdown pre.prism-code .token.annotation {
   color: var(--dwc-code-text) !important;
   font-weight: 500;
 }
