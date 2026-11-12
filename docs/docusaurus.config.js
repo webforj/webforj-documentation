@@ -31,7 +31,7 @@ module.exports = async function createConfig() {
   const webforjPort = process.env.WEBFORJ_PORT || '8080';
 
   return {
-  title: 'webforJ Documentation',
+  title: 'webforJ',
   tagline: 'webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java.',
   url: 'https://docs.webforj.com/',
   baseUrl: '/',
