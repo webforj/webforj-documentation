@@ -3,7 +3,7 @@ title: Kotlin DSL
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-description: Build webforJ UIs declaratively with the experimental Kotlin DSL using type-safe builders, lambdas with receivers, and nested blocks.
+description: Build webforJ UIs declaratively with the Kotlin DSL, a preview feature, using type-safe builders, lambdas with receivers, and nested blocks.
 ---
 
 <Head>

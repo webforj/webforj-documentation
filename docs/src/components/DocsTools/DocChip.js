@@ -7,8 +7,8 @@ import BiotechIcon from '@mui/icons-material/Biotech';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import CodeIcon from '@mui/icons-material/Code';
-import ExperimentIcon from '@mui/icons-material/ScienceOutlined';
 import DescriptionIcon from '@mui/icons-material/Description';
+import { TbBolt } from 'react-icons/tb';
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
@@ -115,17 +115,17 @@ export default function DocChip({ chip, label, href, exclude, tooltipText, color
       break;
     case 'experimental':
       tooltipText = translate({
-        id: 'chip.tooltipText.experimental',
-        message: 'This is an experimental feature and may change in future releases.',
-        description: 'Hover text to explain this feature is experimental and subject to change.'
+        id: 'chip.tooltipText.preview',
+        message: 'This feature is in preview. Its API may still change in future releases.',
+        description: 'Hover text to explain this feature is in preview and its API may change.'
       });
       exclude = 'true';
       label = translate({
-        id: 'chip.label.experimental',
-        message: 'Experimental',
-        description: 'Label to show this component is experimental.'
+        id: 'chip.label.preview',
+        message: 'Preview',
+        description: 'Label to show this feature is in preview.'
       });
-      icon = <ExperimentIcon css={iconStyles} />
+      icon = <TbBolt css={iconStyles} />
       break;
     default:
       console.warn("Uknown chip type:", chip);

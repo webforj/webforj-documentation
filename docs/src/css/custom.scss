@@ -150,6 +150,25 @@ html:root[data-theme="dark"] {
   font-size: 0.95rem;
 }
 
+// Tooltips on badges and buttons: a small flat label in the reverse of the
+// page colours, taken from the DWC theme. No shadow, no blur.
+.MuiTooltip-popper .MuiTooltip-tooltip {
+  max-width: 17rem;
+  padding: 0.4rem 0.625rem;
+  border-radius: 8px;
+  background-color: var(--dwc-color-body-text);
+  color: var(--dwc-surface-3);
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.45;
+  box-shadow: none;
+}
+
+.MuiTooltip-popper .MuiTooltip-arrow {
+  color: var(--dwc-color-body-text);
+}
+
 html {
   visibility: visible;
 }

@@ -2,18 +2,21 @@ import React from 'react';
 import Admonition from '@theme/Admonition';
 import Translate, {translate} from '@docusaurus/Translate';
 
+// A short note at the top of a page about a feature that is still in
+// preview. It is an informational note, not a warning: the feature works,
+// and only its API may still change.
 export default function ExperimentalWarning() {
   return (
     <Admonition
-      type="caution"
+      type="info"
       title={translate({
-        id: 'experimentalWarning.title',
-        message: 'Experimental feature',
+        id: 'previewNote.title',
+        message: 'Preview feature',
       })}
     >
-      <Translate id="experimentalWarning.message">
-        This feature is experimental and may change or be removed in a future
-        release.
+      <Translate id="previewNote.message">
+        This feature is in preview. Its API may still change in future
+        releases.
       </Translate>
     </Admonition>
   );

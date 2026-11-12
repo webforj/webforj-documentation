@@ -13,8 +13,8 @@ You add a compiler for another kind of source by shipping an extension, on the s
 This page builds a **[Svelte](https://svelte.dev/)** extension as a complete example. Svelte is a component framework whose `.svelte` files compile to JavaScript at build time. The bundler doesn't handle that source on its own, so consuming a Svelte component from webforJ means teaching the build to compile it, which is exactly what an extension does. That makes it a fitting example: a new source type, taught to the build by the extension you write, then bound to a class the same way any other entry is.
 
 <!-- Do NOT use <ExperimentalWarning /> on this page. -->
-:::warning Experimental API
-The extension API is experimental and may change between releases while it settles. The mechanism itself is here to stay, the built-in extensions are built on the same contract, but its method signatures may shift, so expect to adjust a custom extension when you upgrade webforJ.
+:::info Preview API
+The extension API is in preview and may change between releases while it settles. The mechanism itself is here to stay, the built-in extensions are built on the same contract, but its method signatures may shift, so expect to adjust a custom extension when you upgrade webforJ.
 :::
 
 ## The build-time dependency {#the-build-time-dependency}

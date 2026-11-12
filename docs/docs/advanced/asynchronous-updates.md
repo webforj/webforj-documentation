@@ -9,7 +9,7 @@ description: Run background work off the UI thread and push updates back to webf
 <DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(com.webforj.Environment,java.lang.Runnable)" top='true'/>
 
-The `Environment.runLater()` API provides a mechanism for safely updating the UI from background threads in webforJ applications. This experimental feature enables asynchronous operations while maintaining thread safety for UI modifications.
+The `Environment.runLater()` API provides a mechanism for safely updating the UI from background threads in webforJ applications. This preview feature enables asynchronous operations while maintaining thread safety for UI modifications.
 
 <ExperimentalWarning />
 
