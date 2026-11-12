@@ -225,16 +225,53 @@
     }
   }
 
+  // Colour mode toggle: the sun sets on one side and the moon rises on the
+  // other, inside the button. Only the icons move, and only when the theme
+  // changes, never on hover, so nothing around the button shifts.
+  [class*="toggleButton"] {
+    position: relative;
+    overflow: hidden;
+  }
+
+  // the resting place of an icon that has set: below the right edge
   [class*="toggleButton"] [class*="toggleIcon"] {
-    transition: transform 0.4s var(--dwc-ease-outQuad);
+    display: block;
+    position: absolute;
+    opacity: 0;
+    transform: translate(110%, 110%) rotate(90deg);
   }
 
-  [class*="toggleButton"]:active [class*="lightToggleIcon"] {
-    transform: scale(0.8);
+  [class*="toggleButton"] [class*="systemToggleIcon"] {
+    display: none;
   }
 
-  [class*="toggleButton"]:active [class*="darkToggleIcon"] {
-    transform: rotate(180deg) scale(0.8);
+  // a warm sun and a pale moon; the bar and the header of the phone menu are
+  // both dark, so the same tones work in each
+  [class*="toggleButton"] [class*="lightToggleIcon"] {
+    color: #ffc83d;
   }
 
+  [class*="toggleButton"] [class*="darkToggleIcon"] {
+    color: #c9d4ff;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    [class*="toggleButton"] [class*="toggleIcon"] {
+      transition: transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1),
+                  opacity 0.35s ease;
+    }
+  }
+}
+
+// the icon in the sky follows the theme, so it is right before React loads
+html[data-theme="light"] #__docusaurus [class*="toggleButton"] [class*="lightToggleIcon"],
+html[data-theme="dark"] #__docusaurus [class*="toggleButton"] [class*="darkToggleIcon"] {
+  opacity: 1;
+  transform: none;
+}
+
+// the sun sets to the left and rises from there again; the moon keeps to the
+// right
+html[data-theme="dark"] #__docusaurus [class*="toggleButton"] [class*="lightToggleIcon"] {
+  transform: translate(-110%, 110%) rotate(-90deg);
 }
