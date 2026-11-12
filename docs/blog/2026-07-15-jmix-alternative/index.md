@@ -103,7 +103,7 @@ If that describes your project, evaluate the platform on its own terms. If it do
 
 ## When plain Java wins {#when-plain-java-wins}
 
-The picture changes when your app has its own character. Custom layouts, unusual workflows, a domain where every screen is different, or a requirement to embed the UI in a larger Spring system all push against a generator's assumptions. In those projects you end up writing code around the platform's structure instead of in it.
+The picture changes when your app has its own character. Custom layouts, unusual workflows, a domain where every screen is different, or a requirement to embed the UI in a larger Spring system all push against a generator's assumptions. In those projects you end up writing code around the platform's structure instead of in it. The same trade-off shows up when you compare [generated screens with hand-written Java views](/blog/openxava-alternative).
 
 The webforJ side of that decision looks like this:
 
@@ -121,7 +121,7 @@ The last row matters most for teams who come to this question from a CUBA platfo
 
 In webforJ the table columns, the form layout, and the binding are plain Java code. A generator hands you those on day one, and today an AI coding agent writes them just as fast. webforJ makes that output reliable: the [Agent Skills](/docs/ai-tooling/agent-skills) give the agent webforJ's own patterns to follow, and the [MCP server](/docs/ai-tooling/mcp) checks every API and design token against the real webforJ docs, so the agent corrects its own mistakes in a validation loop before you review the code. What you get back is that the code is the app. There is no second description of your screens to keep in sync, and a developer who finds a view can read it from top to bottom.
 
-The [Table component](/docs/components/table/overview) covers sorting, selection and custom cell renderers, so the hand-written part is mostly declarative: which columns, which properties, which actions. The work you do not repeat is the plumbing, because Spring Boot already handles the app lifecycle, configuration, dependency injection, and data access.
+The [Table component](/docs/components/table/overview) covers sorting, selection and custom cell renderers, so the hand-written part is mostly declarative: which columns, which properties, which actions. The work you do not repeat is the plumbing, because Spring Boot already handles the app lifecycle, configuration, dependency injection, and data access. Another post shows how to [ship business apps fast in plain Java](/blog/rapid-application-development-java) without low-code.
 
 ## Let an AI assistant do the port {#ai-port}
 

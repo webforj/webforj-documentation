@@ -23,7 +23,7 @@ The [CRUD app](https://github.com/webforj/built-with-webforj/tree/main/webforj-c
 
 ## How to use this checklist {#how-to-use}
 
-An enterprise web framework evaluation fails when every criterion counts the same. A banking team may care most about security and audit. A software vendor with a large installed base may care most about upgrades. So each criterion below carries a starting weight out of 100. Change them to match your risk.
+An enterprise web framework evaluation fails when every criterion counts the same. [A banking team](/blog/java-ui-framework-banking-finance) may care most about security and audit. A software vendor with a large installed base may care most about upgrades. So each criterion below carries a starting weight out of 100. Change them to match your risk.
 
 The starting weights add up to 100:
 

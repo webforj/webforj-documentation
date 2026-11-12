@@ -129,4 +129,4 @@ Extend a paging-capable interface such as `JpaRepository`, and the adapter runs 
 
 ## Build your Spring Data JPA grid {#build-your-grid}
 
-Open the view where the data should appear, inject your repository, and wrap it in `SpringDataRepository`. Add the columns, mark them sortable, and set a property name on every computed one. Then run the app and click a header. The sort comes back from the database.
+Open the view where the data should appear, inject your repository, and wrap it in `SpringDataRepository`. Add the columns, mark them sortable, and set a property name on every computed one. Then run the app and click a header. The sort comes back from the database. To go from the grid to editing rows with validation, [a Java web front end for an existing database](/blog/java-database-web-front-end) covers the rest.

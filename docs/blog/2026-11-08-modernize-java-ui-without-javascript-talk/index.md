@@ -128,7 +128,7 @@ The talk backs the approach with Prodin, one of our customers, and its published
 
 The closing argument is about the next ten years, not the next release. Every framework a team adds is one more thing to maintain long after the people who chose it have moved on.
 
-A single Java stack is the answer webforJ gives. The language, the debugger, the build, the tests, and the people stay the same from the database to the browser. That is what helps a business app stay maintainable at scale.
+A single Java stack is the answer webforJ gives. The language, the debugger, the build, the tests, and the people stay the same from the database to the browser. That is what helps a business app stay maintainable at scale. Another talk builds [an installable Java web app in 15 minutes](/blog/java-installable-web-app-talk), all in Java.
 
 ## A plan for next week {#monday-morning-plan}
 
@@ -140,7 +140,7 @@ The talk ends with a plan you can start next week:
 
 From there, build the next new screen in webforJ instead of in Swing.
 
-The live coding at the end does exactly step two. Stephan creates a project from the SideMenu archetype in his IDE, runs it on Jetty, and opens a working multi-view app in the browser, all in plain Java.
+The live coding at the end does exactly step two. Stephan creates a project from the SideMenu archetype in his IDE, runs it on Jetty, and opens a working multi-view app in the browser, all in plain Java. A webinar covers how to [move a Java app to the web and mobile](/blog/move-java-app-to-web-and-mobile) with the same Webswing-first path.
 
 ## Read the written roadmap {#written-roadmap}
 

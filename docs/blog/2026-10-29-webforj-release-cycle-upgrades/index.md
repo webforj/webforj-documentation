@@ -54,7 +54,7 @@ Design changes get their own treatment. The [26.00 design system guide](/docs/up
 
 ## Can upgrades be automated? {#automated-upgrades}
 
-Yes. webforJ ships OpenRewrite recipes in the `webforj-rewrite` artifact. The [automated upgrades guide](/docs/upgrading/automated-upgrades) describes the flow. You add the OpenRewrite Maven plugin to your `pom.xml` with `webforj-rewrite` as a dependency, choose the recipe for your target version, and preview the result first:
+Yes. webforJ ships [OpenRewrite recipes](/blog/openrewrite-java-framework-upgrade) in the `webforj-rewrite` artifact. The [automated upgrades guide](/docs/upgrading/automated-upgrades) describes the flow. You add the OpenRewrite Maven plugin to your `pom.xml` with `webforj-rewrite` as a dependency, choose the recipe for your target version, and preview the result first:
 
 ```bash
 mvn rewrite:dryRun
@@ -84,7 +84,7 @@ For a new project, [startforJ](https://docs.webforj.com/startforj/) offers the w
 
 ## Is webforJ right for a long-lived app? {#long-lived-app}
 
-webforJ gives you a documented release model to plan a long-lived app around: a yearly major, minors every six to eight weeks, and patches for security. Upgrades come with a written guide per major version, an automated recipe that does most of the edits, a dry run that shows the diff first, and snapshots that let you try the next version early.
+webforJ gives you a documented release model to plan a long-lived app around: a yearly major, minors every six to eight weeks, and patches for security. Upgrades come with a written guide per major version, an automated recipe that does most of the edits, a dry run that shows the diff first, and snapshots that let you try the next version early. The questions a manager or architecture board asks beyond upgrades, such as lock-in, fit, testing and a pilot, are covered in [the business case for a Java UI framework](/blog/business-case-java-ui-framework).
 
 For the wider picture, read our guide to the [full-stack Java framework](/blog/java-full-stack-framework).
 

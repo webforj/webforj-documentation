@@ -110,7 +110,7 @@ Put the layers side by side and the answer to the lock-in question becomes concr
 | Wrapped web components | Only the Java wrapper | Custom element stays, wrapper is rewritten |
 | Views, layouts, routes, events | Yes | Rewritten |
 
-The last row is the honest cost. Views are the part you would redo, and in a well-split app they are the thin part. Whether your app ends up looking like this table is a matter of discipline. The framework gives you the seams. You still have to cut along them.
+The last row is the honest cost. Views are the part you would redo, and in a well-split app they are the thin part. Whether your app ends up looking like this table is a matter of discipline. The framework gives you the seams. You still have to cut along them. The same split answers [what a manager or architecture board will ask](/blog/business-case-java-ui-framework) about lock-in.
 
 ## What does not help {#what-does-not-help}
 

@@ -55,7 +55,7 @@ List<Object> data =
 chart.setData(data);
 ```
 
-Add the chart to any container, such as a `Div` or a `FlexLayout`. Without a size, the chart has no room to draw, so always set one.
+Add the chart to any container, such as a `Div` or a `FlexLayout`. Without a size, the chart has no room to draw, so always set one. The chart is one of the [components that ship with webforJ](/blog/webforj-components), so it combines with layouts, tables, and dialogs.
 
 ## Pick a chart type {#pick-a-chart-type}
 
@@ -125,7 +125,7 @@ chart.addSelectedListener(event -> {
 });
 ```
 
-Use the row index to open a detail view, filter a table, or show a message about the clicked item.
+Use the row index to open a detail view, filter a table, or show a message about the clicked item. A chart also sits well beside KPI cards and a table, as in [a Java admin dashboard](/blog/java-admin-dashboard).
 
 ## Export the chart as an image {#export-as-an-image}
 

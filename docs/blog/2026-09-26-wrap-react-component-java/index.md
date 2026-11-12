@@ -31,7 +31,7 @@ The third layer is the same wrapper you would write for any web component, as sh
 
 The [frontend bundler](/docs/managing-resources/bundler/overview) keeps the frontend next to the Java class that needs it. On the wrapper class, `@BundlePackage` declares `react`, `react-dom` and the custom element library, and `@BundleEntry` names the entry file. The build installs the packages, compiles the entry and loads it when the component is created.
 
-React needs no extra bundler extension, and the [webforJ build plugin](/docs/configuration/build-plugin) manages Bun for you. There is no Node toolchain to install and no separate frontend repository.
+React needs no extra bundler extension, and the [webforJ build plugin](/docs/configuration/build-plugin) manages Bun for you. There is no Node toolchain to install and no separate frontend repository. The same bundler path covers [installing any npm package in a Java web app](/blog/npm-packages-java-web-app).
 
 ## Use it like any component {#use-it}
 
@@ -59,7 +59,7 @@ The click happens in React, the event arrives in the Java listener, and the list
 
 ## Keep the boundary small {#keep-it-small}
 
-This approach suits a self-contained piece of UI.
+This approach suits a self-contained piece of UI. The wider options for [using JavaScript libraries from webforJ](/blog/webforj-javascript-integration) go beyond wrapping one tag.
 
 - **One component per tag.** A React app that owns its own routing and state belongs in a separate frontend.
 - **Pass small values.** Numbers, strings and small JSON objects cross the boundary well. Keep heavy logic in Java.

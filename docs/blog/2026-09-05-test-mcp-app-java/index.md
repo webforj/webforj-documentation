@@ -19,7 +19,7 @@ You can test a Java MCP App without an AI host, and skip that loop entirely. A w
 
 ## What a webforJ MCP App is {#what-an-mcp-app-is}
 
-A typical MCP tool hands back text or JSON for the model to read. An MCP App hands back something the user can see and use: a view that opens inside the AI app's own conversation. The official MCP Apps starter templates cover JavaScript frameworks such as React, Vue and Svelte. webforJ brings MCP Apps to Java as a feature of the framework itself: the view is an ordinary routed view with one extra annotation, `@McpApp`, not a separate frontend project. It stays part of your Java app and uses the same components, services, routing and state it uses in a browser, so you don't build a second UI for the AI app.
+A typical MCP tool hands back text or JSON for the model to read. An MCP App hands back something the user can see and use: a view that opens inside the AI app's own conversation. The official MCP Apps starter templates cover JavaScript frameworks such as React, Vue and Svelte. webforJ brings MCP Apps to Java as a feature of the framework itself: the view is an ordinary routed view with one extra annotation, `@McpApp`, not a separate frontend project. It stays part of your Java app and uses the same components, services, routing and state it uses in a browser, so you don't build a second UI for the AI app. A fuller build of the same idea is a [Spring Boot MCP server with tools and a live UI](/blog/spring-boot-mcp-server-ui).
 
 <div class="videos-container">
   <video controls muted preload="metadata">
@@ -105,7 +105,7 @@ Use Permissive mode only with code you trust.
 
 ## Test a tool with input {#test-a-tool-with-input}
 
-A view can accept structured input when the client opens it. Declare the input as a record. Jackson annotations add the field's required flag and description to the tool's schema.
+A view can [accept structured input when the client opens it](/blog/mcp-tool-update-ui). Declare the input as a record. Jackson annotations add the field's required flag and description to the tool's schema.
 
 ```java
 record InventoryInput(

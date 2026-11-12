@@ -52,7 +52,7 @@ This is [composition](/docs/building-ui/composing-components) in practice. Your 
 
 ## A Java web app without JavaScript? {#java-web-without-javascript}
 
-For the code you write, yes. You don't author JavaScript, TypeScript or CSS-in-JS to get a working screen. webforJ ships the client side for you, and the [client/server architecture](/docs/architecture/client-server) is designed so you rarely think about it.
+For the code you write, yes. You don't author JavaScript, TypeScript or CSS-in-JS to get a working screen. webforJ ships the client side for you, and the [client/server architecture](/docs/architecture/client-server) is designed so you rarely think about it. A decision guide on [Java for front end development](/blog/java-front-end-development) goes deeper on when this approach fits.
 
 Calls that go from the server to the browser, such as `setText()`, are sent without waiting for a response, and the framework batches them. Events such as a button click travel from the browser to the server and carry their payload with them. The app loads a tiny bootstrap script of about 2.5 kB gzip, then fetches the JavaScript for each component only when the app first uses it.
 
@@ -85,7 +85,7 @@ Because the logic runs on the server, sensitive code such as pricing rules and p
 
 The biggest shift is how a feature gets built. A new field starts as a component in a view. You bind it to your model, add a listener, and the screen works. There is no endpoint to design first, no DTO to map, and no second pull request in another repository.
 
-Onboarding gets shorter too. A new Java hire doesn't need a framework tour of a separate frontend ecosystem before touching the UI. They read a `Composite`, follow the `@Route` annotation to the URL, and find the handler in the same file.
+Onboarding gets shorter too. A new Java hire doesn't need a framework tour of a separate frontend ecosystem before touching the UI. They read a `Composite`, follow the `@Route` annotation to the URL, and find the handler in the same file. The [learning curve for a Java team](/blog/webforj-learning-curve) covers what a new hire already knows and what is new.
 
 ## Is this a fit for your team? {#is-this-a-fit}
 

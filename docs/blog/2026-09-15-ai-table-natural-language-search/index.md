@@ -66,7 +66,7 @@ Keep this small. Each field is a promise that your filter code handles it, and e
 
 ## Turn a sentence into a typed filter {#sentence-to-filter}
 
-Spring AI's `ChatClient` can convert a reply into a Java type with `.entity(...)`. The [structured output documentation](https://docs.spring.io/spring-ai/reference/api/structured-output-converter.html) describes the mechanism: it adds format instructions derived from your class to the prompt and converts the model's reply into that class.
+Spring AI's `ChatClient` can convert a reply into a Java type with `.entity(...)`. The [structured output documentation](https://docs.spring.io/spring-ai/reference/api/structured-output-converter.html) describes the mechanism: it adds format instructions derived from your class to the prompt and converts the model's reply into that class. The same mechanism can [fill a form from pasted text](/blog/ai-form-filling-java) as a typed bean.
 
 ```java
 @Service

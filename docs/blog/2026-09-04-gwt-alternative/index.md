@@ -140,7 +140,7 @@ Treat the move as a screen-by-screen rewrite of the UI layer, while the service 
 4. **Fold the template into the class.** Convert the `ui.xml` structure into component construction, and the `@UiHandler` methods into listeners.
 5. **Move users over.** Run both apps during the transition and link between them by URL until the last screen is done.
 
-Services that already sit behind RPC are the easy part. Their implementation classes are plain Java, and in webforJ you inject them instead of exposing them through a servlet.
+Services that already sit behind RPC are the easy part. Their implementation classes are plain Java, and in webforJ you inject them instead of exposing them through a servlet. The same screen-by-screen approach applies to [moving SWT screens off Eclipse RAP](/blog/eclipse-rap-alternative).
 
 :::tip Let an AI assistant port the screens
 Install the [webforJ AI plugin](/docs/ai-tooling) in Claude Code, GitHub Copilot, Cursor, Gemini CLI or Codex. The [MCP server](/docs/ai-tooling/mcp) gives the assistant the current webforJ documentation and API, so it writes against the real framework instead of guessing, and the [Agent Skills](/docs/ai-tooling/agent-skills) guide it through tasks such as building forms and creating components. Hand it a `ui.xml` file with its view class, ask for the webforJ screen that calls the same services, and review the result before you merge it.

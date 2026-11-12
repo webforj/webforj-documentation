@@ -160,7 +160,7 @@ If you want a Java web app example beyond hello world, these apps from [built-wi
 - [Howdy](https://github.com/webforj/built-with-webforj/tree/main/webforj-howdy): several routed views with tab navigation, a table and a chart.
 - [CRUD](https://github.com/webforj/built-with-webforj/tree/main/webforj-crud): a table with search, an edit dialog with validation and data binding, stored through Spring Data.
 
-The other archetypes are worth a look too: the catalog has a side menu layout, a tabs layout, and a blank project. The step-by-step tutorial in the docs builds a customer app with a table, a form and data binding on top of the project you just generated.
+The other archetypes are worth a look too: the catalog has a side menu layout, a tabs layout, and a blank project. The step-by-step tutorial in the docs builds a customer app with a table, a form and data binding on top of the project you just generated. A [beginner tutorial for a first Java web app](/blog/java-web-app-tutorial-beginners) goes deeper on the first view and the button click.
 
 Ready to build? Generate a project with [startforJ](https://docs.webforj.com/startforj) and follow [Getting Started](/docs/introduction/getting-started). Run `mvn`, change the greeting text in the view class, and save the file.
 

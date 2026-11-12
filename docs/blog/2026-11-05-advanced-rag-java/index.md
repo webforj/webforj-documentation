@@ -27,7 +27,7 @@ The complete project, [Advanced RAG](https://github.com/webforj/built-with-webfo
 
 ## Why basic RAG returns the wrong chunks {#why-basic-rag-fails}
 
-A basic RAG setup embeds the user's question, asks the vector store for the top few chunks, and pastes them into the prompt. That works in a demo where the question resembles the document text. Real users break it in predictable ways.
+[A basic RAG setup](/blog/spring-ai-rag) embeds the user's question, asks the vector store for the top few chunks, and pastes them into the prompt. That works in a demo where the question resembles the document text. Real users break it in predictable ways.
 
 - **Chatty questions.** *And what about the second one?* has no searchable content on its own.
 - **Vocabulary mismatch.** The user writes *cancel* and the manual says *revoke*. Embeddings often bridge that gap, but not every time.

@@ -23,7 +23,7 @@ Install the [webforJ AI plugin](/docs/ai-tooling) in Claude Code, GitHub Copilot
 
 ## Why a Swing to web migration fails as a full rewrite {#why-rewrites-fail}
 
-Java desktop to web projects stall on the same problem. A Swing app that has run for ten years holds business rules that nobody fully remembers. Rewriting it in another language means rediscovering those rules the hard way. Rewriting only the screens in Java means you keep them. Our post on [Swing vs JavaFX vs web](/blog/java-gui-frameworks-compared) compares the options for the screens.
+Java desktop to web projects stall on the same problem. A Swing app that has run for ten years holds business rules that nobody fully remembers. Rewriting it in another language means rediscovering those rules the hard way. Rewriting only the screens in Java means you keep them. Our post on [Swing vs JavaFX vs web](/blog/java-gui-frameworks-compared) compares the options for the screens. A JavaFX desktop UI follows a similar path, as [moving a JavaFX UI to the browser](/blog/javafx-to-web) shows.
 
 Event handlers in Swing mix presentation with calls into services, and table models mix display logic with data access. Migration is mostly the work of separating those concerns, then moving the presentation half to the browser.
 

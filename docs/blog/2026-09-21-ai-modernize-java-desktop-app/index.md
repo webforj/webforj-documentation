@@ -83,7 +83,7 @@ For each screen, give the assistant a narrow brief:
 
 Then review the result like any pull request. Because the output is plain Java in the same language as your services, your existing code review, static analysis, and unit tests apply unchanged.
 
-The webforJ AI plugin also installs in Claude Code and several other assistants. The [MCP server page](/docs/ai-tooling/mcp) lists the clients and the exact commands.
+The webforJ AI plugin also installs in Claude Code and several other assistants. The [MCP server page](/docs/ai-tooling/mcp) lists the clients and the exact commands. The guide to [AI tools for Java migration](/blog/ai-tools-java-migration) compares tools by the job they do.
 
 ## Keep the logic, swap the shell {#keep-the-logic}
 
@@ -100,7 +100,7 @@ Use this order of questions for every screen in the app.
 3. Do users open it once a quarter? Embed it and leave it.
 4. Does it block the first web release? Embed it, so the release ships.
 
-The embed-then-rebuild order keeps the app releasable the whole way through. Each rebuilt screen replaces one embedded route, and the Webswing server shrinks until you can turn it off.
+The embed-then-rebuild order keeps the app releasable the whole way through. Each rebuilt screen replaces one embedded route, and the Webswing server shrinks until you can turn it off. If your desktop UI is JavaFX rather than Swing, the guide on [moving JavaFX to the web](/blog/javafx-to-web) maps stages, scenes and controls to webforJ.
 
 ## Keeping the upgrade path clean {#upgrade-path}
 

@@ -142,7 +142,7 @@ Spring AI serves the MCP endpoint at `/mcp` by default, and webforJ leaves that 
 
 ## Can you use MCP Apps without Spring? {#without-spring}
 
-Yes. A servlet-based webforJ app can assemble the MCP server itself. Add `webforj-mcp-apps` and the Jakarta Servlet API with `provided` scope, then write a `ServletContainerInitializer`. It calls `McpAppContribution.ofPackages(...)` with the package that holds your routed views, builds a Streamable HTTP server mounted at `/mcp` from `getToolSpecifications()` and `getResourceSpecifications()`, and finishes with `contribution.install(context, options)`.
+Yes. A servlet-based webforJ app can assemble the MCP server itself. Add `webforj-mcp-apps` and the Jakarta Servlet API with `provided` scope, then write a `ServletContainerInitializer`. It calls `McpAppContribution.ofPackages(...)` with the package that holds your routed views, builds a Streamable HTTP server mounted at `/mcp` from `getToolSpecifications()` and `getResourceSpecifications()`, and finishes with `contribution.install(context, options)`. A [plain Java MCP app with no Spring Boot](/blog/mcp-app-without-spring) covers the full setup.
 
 Register the tools and their resources together, because a tool without its `ui://` resource gives the host something it can't display. Settings live in `webforj.conf` instead of `application.properties`. The full initializer is on the [standard setup page](/docs/integrations/mcp-apps/without-spring).
 
@@ -158,7 +158,7 @@ cloudflared tunnel --url http://localhost:8080
 
 Set the printed origin as `webforj.origin`, start the app, and add `https://<your-tunnel>/mcp` as a custom connector in Claude Desktop or as an MCP server under Plugins in the Codex app. Then ask the host to open the inventory app.
 
-For a fully local loop, run MCPJam with `npx @mcpjam/inspector@latest`, add `http://localhost:8080/mcp` over HTTP, and allow the inspector's origin with `webforj.mcp.allowed-origins`. Set its Content Security Policy mode to Permissive before you run the tool. The [testing guide](/docs/integrations/mcp-apps/testing) lists the steps and a troubleshooting table.
+For a [fully local loop](/blog/test-mcp-app-java), run MCPJam with `npx @mcpjam/inspector@latest`, add `http://localhost:8080/mcp` over HTTP, and allow the inspector's origin with `webforj.mcp.allowed-origins`. Set its Content Security Policy mode to Permissive before you run the tool. The [testing guide](/docs/integrations/mcp-apps/testing) lists the steps and a troubleshooting table.
 
 Host support varies, because hosts adopt revisions of the MCP Apps extension at their own pace. The opening tool always returns text, and the route stays available in a browser. Check each host you target.
 

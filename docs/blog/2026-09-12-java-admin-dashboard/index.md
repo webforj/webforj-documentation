@@ -67,7 +67,7 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-`AppNavItem` accepts a view class, so the menu stays in sync with your routes and a renamed path never leaves a dead link. On narrow screens the drawer switches to a popover at a breakpoint you can change with `setDrawerBreakpoint`, which is how the same dashboard works on a phone.
+`AppNavItem` accepts a view class, so the menu stays in sync with your routes and a renamed path never leaves a dead link. On narrow screens the drawer switches to a popover at a breakpoint you can change with `setDrawerBreakpoint`, which is how the same dashboard works on a phone. The post on a [responsive Java web app layout](/blog/java-responsive-layout) goes deeper on the side navigation drawer.
 
 ## Add routed views inside the layout {#add-routed-views}
 
@@ -85,7 +85,7 @@ Each view is a plain class with its own URL. You can deep-link to `/orders`, use
 
 ## Add KPI cards, a table, and a chart {#add-kpi-cards-table-chart}
 
-The overview page combines three widgets. A KPI tile is a `Card` with the number in the body and the label in the title slot. The data grid is a `Table` bound to a list. The chart is a `GoogleChart` that takes rows as a Java list.
+The overview page combines three widgets. A KPI tile is a `Card` with the number in the body and the label in the title slot. The data grid is a `Table` bound to a list. The chart is a `GoogleChart` that takes rows as a Java list. A separate guide covers how to [add a Google Chart to a Java app](/blog/google-charts-java), including updates and click events.
 
 ```java
 public class OverviewView extends Composite<FlexLayout> {

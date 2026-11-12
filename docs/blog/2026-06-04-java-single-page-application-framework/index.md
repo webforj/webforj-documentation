@@ -91,7 +91,7 @@ Use this guide to decide.
 
 If the first three rows describe your project, you can skip the JavaScript front end and its separate build.
 
-The trade-off is plain. webforJ keeps the view logic on the server, so the Java code you write for a route runs there and the browser renders the result. A team that wants every screen to live in client-side JavaScript has a different architecture in mind. A team that wants to ship routed screens, forms and tables from Java does not need to carry two stacks.
+The trade-off is plain. webforJ keeps the view logic on the server, so the Java code you write for a route runs there and the browser renders the result. A team that wants every screen to live in client-side JavaScript has a different architecture in mind. A team that wants to ship routed screens, forms and tables from Java does not need to carry two stacks. Teams coming from React can see how [components, state and routing](/blog/java-framework-like-react) carry over to webforJ.
 
 ## Next step {#next-step}
 

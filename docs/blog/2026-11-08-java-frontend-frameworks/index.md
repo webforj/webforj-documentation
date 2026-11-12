@@ -93,7 +93,7 @@ We want webforJ to win on merit, so here is where it does not.
 - **An existing Faces app that works.** Rewriting a stable app for its own sake rarely pays. Move new screens when the business asks for them.
 - **Offline-first or heavily client-side apps.** When most logic must run in the browser without a server connection, a JavaScript framework or a compiler approach is the natural tool.
 
-For the rest, which is internal tools, admin consoles, customer portals, line-of-business forms and data-heavy screens built by Java developers, one language and one project is hard to beat.
+For the rest, which is internal tools, admin consoles, customer portals, line-of-business forms and data-heavy screens built by Java developers, one language and one project is hard to beat. A [decision guide to Java for front end development](/blog/java-front-end-development) goes further.
 
 Our neighboring comparisons cover these angles in more depth. The [best Java UI framework for business apps](/blog/best-java-ui-frameworks) post goes through Spring MVC, Faces and SPAs with their own trade-offs, and [the best Java web framework by job](/blog/java-web-frameworks-2026) separates the backend choice from the screen choice. If a compiler approach is what you are weighing, see the [Java to JavaScript compiler alternative](/blog/java-to-javascript-compiler-alternative).
 

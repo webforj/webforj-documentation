@@ -145,7 +145,7 @@ I didn't need any of that for a simple demo, but it's there if you're building s
 
 ## Trying it out {#trying-it-out}
 
-If you want to see an installable webforJ app in action before building your own, check out [Focus Tracker](https://github.com/webforj/built-with-webforj/tree/main/webforj-focustracker) in the built-with-webforj repository. It's a Pomodoro timer that uses `@AppProfile` along with some other PWA features like notifications and badge updates.
+If you want to see an installable webforJ app in action before building your own, check out [Focus Tracker](https://github.com/webforj/built-with-webforj/tree/main/webforj-focustracker) in the built-with-webforj repository. It's a Pomodoro timer that uses `@AppProfile` along with some other [PWA features](/blog/java-progressive-web-app) like notifications and badge updates.
 
 Clone it, run `mvn spring-boot:run`, and try installing it. It's a good way to see the full flow without starting from scratch.
 

@@ -22,7 +22,7 @@ In this article, I will give a quick overview on how to achieve that with webfor
 
 ## What is Routing? And what is an SPA? {#what-is-routing-and-what-is-an-spa}
 
-Lets start off with the most important things first: what are we even talking about here? A Java SPA is using a single HTML page to dynamically update its content. This results in a faster and smoother user experience whilst posing the challenge of navigating these content updates.
+Lets start off with the most important things first: what are we even talking about here? A [Java SPA](/blog/java-single-page-application-framework) is using a single HTML page to dynamically update its content. This results in a faster and smoother user experience whilst posing the challenge of navigating these content updates.
 
 That's where routing comes into play. To put it simple, we only replace the actual content of the page without reloading it, thus cutting out loading times for the user, making navigation seamless and overall keeping full control over our state.
 

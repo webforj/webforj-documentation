@@ -123,7 +123,7 @@ A few honest points before you plan:
 
 ## Which choice fits your team? {#which-choice-fits-your-team}
 
-Keep React or Angular if your front end team is large, your UI is the product, and it must work offline as a standalone client. Move to webforJ if your team is mostly Java, your screens are forms, lists, dashboards and workflows over a Spring backend, and the REST layer exists only to feed your own UI. For that second team, webforJ removes the duplicated work and keeps everything in the language you already staff for.
+Keep React or Angular if your front end team is large, your UI is the product, and it must work offline as a standalone client. Move to webforJ if your team is mostly Java, your screens are forms, lists, dashboards and workflows over a Spring backend, and the REST layer exists only to feed your own UI. For that second team, webforJ removes the duplicated work and keeps everything in the language you already staff for. Another post covers [when Angular still wins](/blog/angular-alternatives-java) for Java teams.
 
 For a worked example of a full app on this stack, see the [webforJ bookstore demo](/blog/webforj-bookstore).
 

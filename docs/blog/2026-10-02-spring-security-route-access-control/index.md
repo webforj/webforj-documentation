@@ -79,7 +79,7 @@ For production apps, webforJ exposes a configuration flag that strengthens this 
 
 ## Server-side authorization for actions {#server-side-authorization-for-actions}
 
-Route annotations handle navigation security. Actions inside a view are a separate concern. When a button triggers a destructive operation (a delete, a publish, a role assignment), the view is already open and no route is evaluated when the button fires.
+Route annotations handle navigation security. [Actions inside a view are a separate concern](/blog/route-security). When a button triggers a destructive operation (a delete, a publish, a role assignment), the view is already open and no route is evaluated when the button fires.
 
 In those cases, the server-side handler needs its own check:
 

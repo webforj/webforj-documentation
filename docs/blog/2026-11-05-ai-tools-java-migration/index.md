@@ -37,7 +37,7 @@ What grounds it here is your own code and your database schema. There is no fram
 
 Version upgrades are mostly mechanical, and mechanical work is better done by a recipe than by a model improvising. [OpenRewrite](https://docs.openrewrite.org/) is an automated refactoring project for Java. Its recipes rename types, change dependencies and rewrite deprecated calls the same way every time, and a dry run shows you the diff before anything changes.
 
-The assistant's role is to drive the recipe and handle what is left. For projects already on webforJ, we publish upgrade recipes between webforJ versions. You add the OpenRewrite Maven plugin with the `webforj-rewrite` dependency, then run `mvn rewrite:dryRun` to preview the patch and `mvn rewrite:run` to apply it:
+The assistant's role is to drive the recipe and handle what is left. For projects already on webforJ, we publish [upgrade recipes between webforJ versions](/blog/openrewrite-java-framework-upgrade). You add the OpenRewrite Maven plugin with the `webforj-rewrite` dependency, then run `mvn rewrite:dryRun` to preview the patch and `mvn rewrite:run` to apply it:
 
 ```xml
 <plugin>

@@ -55,7 +55,7 @@ For large data sets, the [data guide](/docs/components/table/data) covers virtua
 
 ## Does webforJ have charts? {#charts}
 
-Yes. The GoogleChart component integrates the Google Charts library, with chart types such as bar, line, pie, and geo. You configure a chart in Java with a type, a data set and an options map, and add the `webforj-googlecharts` dependency to your project. It has been part of webforJ since version 23.06.
+Yes. The GoogleChart component integrates the Google Charts library, with chart types such as bar, line, pie, and geo. You [configure a chart in Java](/blog/google-charts-java) with a type, a data set and an options map, and add the `webforj-googlecharts` dependency to your project. It has been part of webforJ since version 23.06.
 
 ## One design system, themes included {#design-system}
 

@@ -44,7 +44,7 @@ Choose it only if your organization has already decided on a JavaScript front en
 
 If you need to **run a Swing app in the browser** this quarter, Webswing is the direct answer. [Webswing](/docs/integrations/webswing/overview) is a web server technology that runs Java desktop apps (Swing, JavaFX, SWT) in a browser without changes to the original source code. The desktop app renders on the server and the interface streams to the browser using HTML5 canvas, with user input handled transparently.
 
-Because the source stays untouched, it is the lowest-change first step. It also has a limit worth being honest about: you still have a Swing UI, rendered on the server and streamed to the browser as canvas output. Webswing gets you onto the web. It does not get you off Swing.
+Because the source stays untouched, it is the lowest-change first step. It also has a limit worth being honest about: you still have a Swing UI, rendered on the server and streamed to the browser as canvas output. Webswing gets you onto the web. It does not get you off Swing. A separate post shows how to [run a Swing app in the browser without changing its source](/blog/run-java-swing-app-in-browser).
 
 Choose it when the deadline is "users in a browser soon" and the UI itself is not what you are trying to fix.
 
@@ -108,7 +108,7 @@ A few practical consequences follow from that.
 
 ## Let an AI assistant do the port {#ai-port}
 
-Moving screen by screen is repetitive work, which suits an AI coding assistant. Give it one Swing screen and ask for the webforJ equivalent that calls your existing services, then review the result and move on to the next.
+Moving screen by screen is repetitive work, which suits an AI coding assistant. Give it one Swing screen and ask for the webforJ equivalent that calls your existing services, then review the result and move on to the next. A decision guide on [using AI to migrate a Java desktop app](/blog/ai-modernize-java-desktop-app) covers when to rebuild screens and when to embed the Swing app.
 
 The assistant needs to know the real webforJ API instead of guessing at it. The [webforJ AI plugin](/docs/ai-tooling) connects your assistant to the [MCP server](/docs/ai-tooling/mcp), which looks up webforJ documentation and API details on demand, and to [Agent Skills](/docs/ai-tooling/agent-skills) that tell it how to use them in the right order. It works with Claude Code, Copilot, Cursor, Gemini, and Codex. AI can still produce incorrect code in complex scenarios, so review and test every screen before it ships. The usual review for a ported screen is the one you already do: compare behavior against the Swing original.
 

@@ -29,7 +29,7 @@ webforJ is built by BASIS International. [BASIS](https://webforj.com/company) so
 
 Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
 
-For a procurement conversation, these sentences answer "is there a company behind it."
+For a procurement conversation, these sentences answer "is there a company behind it." The wider case is made in [what sets webforJ apart and why we built it](/blog/why-webforj).
 
 ## Myth: a new framework has no lineage {#myth-lineage}
 

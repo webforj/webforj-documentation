@@ -41,7 +41,7 @@ You can also run it in a secure-by-default posture, where a route without an ann
 
 Teams that already use Spring Security connect it through the [Spring Security integration](/docs/security/getting-started), so users, roles and sessions come from the identity setup you already operate. For production hardening, see [production hardening](/docs/security/application-security/production-hardening): encrypted connections, locked-down views, external secrets, and dependency upkeep.
 
-To be clear about scope: these are framework capabilities. They help you build a secure app, and they are not a certification or a compliance statement. Your own controls, testing, and audits decide that.
+To be clear about scope: these are framework capabilities. They help you build a secure app, and they are not a certification or a compliance statement. Your own controls, testing, and audits decide that. How the attack surface shrinks, and [which duties stay with your own team](/blog/secure-java-web-framework-enterprise), is covered in a separate post.
 
 ## Java your reviewers can audit {#auditable-java-code}
 
@@ -65,7 +65,7 @@ A common worry from architecture boards is vendor stability. [BASIS](https://web
 
 ## Decision table {#decision-table}
 
-Use this table in your evaluation. The middle column is the question to ask of any candidate. The right column is the webforJ answer.
+Use this table in your evaluation. The middle column is the question to ask of any candidate. The right column is the webforJ answer. A longer version with weighted criteria is in [choosing a web framework for enterprise applications](/blog/choosing-enterprise-web-framework).
 
 | Requirement | Question to ask | webforJ |
 | --- | --- | --- |

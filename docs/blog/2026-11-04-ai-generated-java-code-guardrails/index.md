@@ -29,7 +29,7 @@ Guardrails move the checking from the reviewer's eyes to the toolchain. There ar
 | While it is written | Does it follow the right workflow? | [Agent Skills](/docs/ai-tooling/agent-skills) |
 | After it is written | Does the view do what a user expects? | [TestBed](/docs/testing/testbed/overview) |
 
-The first two shape what the assistant produces. The third judges it, and that is the one that never depends on trusting the model.
+The first two shape what the assistant produces. The third judges it, and that is the one that never depends on trusting the model. The wider picture, from an assistant in your running app to agents that use your UI, is covered in [how webforJ is built for AI work](/blog/ai-java-web-framework).
 
 ## How do you stop invented APIs? {#invented-apis}
 
@@ -58,7 +58,7 @@ The server answers questions. It doesn't tell the assistant when to ask or in wh
 - `webforj-styling-apps` for theming with DWC tokens
 - `webforj-upgrading-versions` for major upgrades with OpenRewrite
 
-Two of these show what a guardrail looks like in practice. The async skill steers the assistant away from raw `java.util.Timer` and plain threads, which throw `IllegalStateException` the moment they reach a UI component. The styling skill validates every `--dwc-*` reference against the real catalog before anything lands in your CSS, so a theme doesn't silently break dark mode.
+Two of these show what a guardrail looks like in practice. The async skill steers the assistant away from raw `java.util.Timer` and plain threads, which throw `IllegalStateException` the moment they reach a UI component. The styling skill validates every `--dwc-*` reference against the real catalog before anything lands in your CSS, so a theme doesn't silently break dark mode. Installing and using these skills is covered in [agent skills for Claude Code](/blog/ai-agent-skills-java).
 
 Skills follow the open [Agent Skills](https://agentskills.io/specification) standard, so the same folders work across assistants.
 

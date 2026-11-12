@@ -38,7 +38,7 @@ Event handling follows the same shape you know. A button gets a click listener, 
 
 ## Where the MVVM habit goes {#mvvm}
 
-If your ZK code follows MVVM, you keep the pattern and lose the markup. A plain bean is the model, and `BindingContext` binds a form to it. `read` fills the form from the bean, `write` pushes it back, and the result says whether validation passed.
+If your ZK code follows MVVM, you keep the pattern and lose the markup. A plain bean is the model, and `BindingContext` binds a form to it. `read` fills the form from the bean, `write` pushes it back, and the result says whether validation passed. The post on [keeping a screen in sync without reactive streams](/blog/java-reactive-ui-framework) covers this in more depth.
 
 ```java
 BindingContext<Hero> context = BindingContext.of(this, Hero.class, true);

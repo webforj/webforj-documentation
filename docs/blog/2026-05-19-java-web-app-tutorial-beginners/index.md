@@ -146,11 +146,11 @@ Generate your own project at [startforJ](https://docs.webforj.com/startforj), ru
 
 ### Do I need to learn JavaScript to build a Java web app? {#faq-javascript}
 
-No. In webforJ you write the UI, the layout and the event handling in Java. The browser side is handled by the framework, so a beginner can stay in one language from the first view to a finished app.
+No. In webforJ you write the UI, the layout and the event handling in Java. The browser side is handled by the framework, so a beginner can [stay in one language](/blog/java-web-app-without-javascript) from the first view to a finished app.
 
 ### What is the simplest way to make a website with Java? {#faq-simplest-way}
 
-Generate a project with startforJ, run `mvn` and edit the starter view. That gives you a running page in minutes, with routing and components already in place, and you grow it one view at a time.
+Generate a project with startforJ, run `mvn` and edit the starter view. That gives you a running page in minutes, with routing and components already in place, and you grow it one view at a time. If you are still comparing options, [eight checks for an easy Java web framework](/blog/easiest-java-web-framework) show what to look for.
 
 ### Which Java version and build tool does a first Java web app need? {#faq-requirements}
 

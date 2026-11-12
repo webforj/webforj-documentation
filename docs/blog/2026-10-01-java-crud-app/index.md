@@ -56,7 +56,7 @@ public class Customer {
 }
 ```
 
-The messages you write here are what the user sees next to a field that fails. You can change them without touching the view. The [Jakarta validation page](/docs/data-binding/validation/jakarta-validation) lists the constraints webforJ recognizes on bean properties.
+The messages you write here are what the user sees next to a field that fails. You can change them without touching the view. The [Jakarta validation page](/docs/data-binding/validation/jakarta-validation) lists the constraints webforJ recognizes on bean properties. If the table already exists, you can [map it and leave the schema alone](/blog/java-database-web-front-end).
 
 ## Create the repository {#create-the-repository}
 
@@ -71,7 +71,7 @@ public interface CustomerRepository
 
 ## Show the data in a Table {#table-paging-sorting-filtering}
 
-Wrap the repository in a `SpringDataRepository` and hand it to the `Table`. Because the repository implements the Spring Data paging interfaces, the adapter runs paginated queries against the database.
+Wrap the repository in a `SpringDataRepository` and hand it to the `Table`. Because the repository implements the Spring Data paging interfaces, the adapter runs paginated queries against the database. The `Table` also supports selection, renderers and lazy loading, which a guide to the [Java data grid](/blog/java-data-grid) covers.
 
 Three settings matter for CRUD:
 

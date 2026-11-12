@@ -84,13 +84,13 @@ public class TicketExtractor {
 }
 ```
 
-`.entity(...)` appends format instructions to the prompt, then converts the reply into the target class. The system prompt tells the model what to do when information is missing, which keeps it from inventing a priority or an email address.
+`.entity(...)` appends format instructions to the prompt, then converts the reply into the target class. The system prompt tells the model what to do when information is missing, which keeps it from inventing a priority or an email address. The same structured output can turn a typed sentence into a filter for a `Table`, as in [natural language search for a Java table](/blog/ai-table-natural-language-search).
 
 The call is blocking and can take seconds. `@Async` moves it off the request thread, so enable it once with `@EnableAsync` on your Spring Boot app class. The [background jobs guide](/docs/integrations/spring/background-jobs) shows the same pattern for any long-running service.
 
 ## How do you fill the form? {#binding}
 
-Create the `BindingContext` with `BindingContext.of(this, SupportTicket.class, true)`. It matches the view's fields to bean properties by name, and the `true` turns on Jakarta validation. Buttons are skipped, but every other input field must match a property. Mark the paste box and the upload with `@BindingExclude` because they are not part of the ticket.
+Create the `BindingContext` with `BindingContext.of(this, SupportTicket.class, true)`. It matches the view's fields to bean properties by name, and the `true` turns on Jakarta validation. Buttons are skipped, but every other input field must match a property. Mark the paste box and the upload with `@BindingExclude` because they are not part of the ticket. The post on [binding a Java bean to form fields automatically](/blog/bind-java-bean-to-form) walks through `UseProperty` and `BindingExclude`.
 
 After the model replies, call `context.read(ticket)` to put the values into the fields, then `context.validate()` to show any violations right away.
 

@@ -27,7 +27,7 @@ The complete project, [Invoice Reader](https://github.com/webforj/built-with-web
 
 ## Upload images in a Java web app {#upload-images-in-a-java-web-app}
 
-Start with the file picker. The `Upload` component is an inline file picker that ships with webforJ 26.01. It handles picking, dropping, and sending the file to the server. You do not need a modal dialog for this.
+Start with the file picker. The `Upload` component is an [inline file picker](/blog/java-file-upload) that ships with webforJ 26.01. It handles picking, dropping, and sending the file to the server. You do not need a modal dialog for this.
 
 1. Limit the picker to image types with `addFilter`.
 2. Allow one file with `SelectionMode.SINGLE`.
@@ -137,7 +137,7 @@ Treat every field as optional. The prompt asks for `null` when a value is unread
 
 A model call takes far longer than a button click. If you make the call inside the `onUpload` listener, the session waits until the answer returns. The task executor in `extract` avoids that wait. The executor is one pool for the whole app, so a pool thread cannot know which session it works for. That is why `extract` reads `Environment.getCurrent()` on the UI thread and passes it to every `Environment.runLater` call, and the page of the user who uploaded is the one that updates.
 
-The code in the earlier sections attaches no chat memory. Each call sends one image and one prompt, so no conversation builds up between uploads.
+The code in the earlier sections attaches no chat memory. Each call sends one image and one prompt, so no conversation builds up between uploads. A similar view can [summarize an uploaded PDF](/blog/summarize-documents-spring-ai) with Spring AI.
 
 ## Checklist {#checklist}
 

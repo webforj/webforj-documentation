@@ -30,7 +30,7 @@ Swapping tools does not fix that. Every assistant is trained on a snapshot of pu
 Four questions separate the tools that help from the ones that generate cleanup work.
 
 1. **Does it read your project?** A tool that sees `pom.xml`, your packages and your existing views will match your conventions. One that sees a single pasted file will not.
-2. **Does it speak MCP?** The Model Context Protocol is an open standard that lets an assistant call external tools. It is how a framework can hand an assistant live answers instead of hoping the training data was right.
+2. **Does it speak MCP?** The Model Context Protocol is an open standard that lets an assistant call external tools. It is how a framework can [hand an assistant live answers](/blog/mcp-server-java-framework-docs) instead of hoping the training data was right.
 3. **Does it load Agent Skills?** Skills are task playbooks that tell the assistant what order to work in and how to check the result. They follow an open [Agent Skills specification](https://agentskills.io/specification), so they are not tied to one vendor.
 4. **Can you run it in the terminal and the editor?** Java teams mix IDE habits. A tool you can drive from a shell and from a chat panel fits more of them.
 
@@ -38,7 +38,7 @@ If a tool answers yes to the second and third question, the framework can do the
 
 ## Terminal agents and AI editors {#terminal-vs-editor}
 
-The question "Cursor vs Claude Code for Java" comes up constantly, so here is a straight answer. They are two shapes of the same idea. Claude Code runs in your terminal and works across your whole repository through commands and file edits. Cursor is an editor with the assistant built into the buffer you are already typing in. Gemini CLI and Codex sit on the terminal side too.
+The question "Cursor vs Claude Code for Java" comes up constantly, so here is a straight answer. They are two shapes of the same idea. Claude Code runs in your terminal and works across your whole repository through commands and file edits. Cursor is an editor with the assistant built into the buffer you are already typing in. Gemini CLI and Codex sit on the terminal side too. A walkthrough of [letting Cursor write Spring Boot screens in Java](/blog/cursor-spring-boot-ui) shows the editor side in practice.
 
 Pick the shape that matches how you already work. A developer who lives in a terminal and runs Maven from a shell will feel at home with an agent. A developer who wants inline suggestions while reading code will prefer an editor. Neither choice locks you out of webforJ, because the [webforJ AI plugin](/docs/ai-tooling) installs into Claude Code, Gemini CLI and Codex with a marketplace or extension command. Cursor and other Agent Skills compatible clients take a manual configuration instead, which the [per-client install guide](https://github.com/webforj/webforj-ai#clients) walks through.
 

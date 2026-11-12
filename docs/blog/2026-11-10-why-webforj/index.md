@@ -66,7 +66,7 @@ You can run webforJ standalone, or add [Spring Boot](/docs/integrations/spring/s
 
 Data follows the same freedom. [Spring Data JPA](/docs/integrations/spring/spring-data-jpa) repositories connect to tables through `SpringDataRepository`. Data that lives elsewhere, such as a REST API or an external service, connects through a [custom data source](/docs/advanced/repository/delegating-repository) with `DelegatingRepository`, where you supply the find, count and key-lookup functions.
 
-Nothing here ties you to one persistence layer or one service style.
+Nothing here ties you to one persistence layer or one service style. The wider picture, from built-in components to npm packages and the Java ecosystem, is covered in [how big the webforJ ecosystem is](/blog/webforj-ecosystem).
 
 ## Can I use my own components? {#own-components}
 
@@ -129,4 +129,4 @@ Yes. The webforJ AI plugin gives assistants the MCP server and Agent Skills, and
 
 The quickest way to judge these answers is to build something. Generate a project with [startforJ](https://docs.webforj.com/startforj), follow the [getting started guide](/docs/introduction/getting-started), and build one real screen of your own app in Java.
 
-If you are still comparing options, [Java framework for web applications](/blog/java-framework-for-web-applications) lists what to require from any of them.
+If you are still comparing options, [Java framework for web applications](/blog/java-framework-for-web-applications) lists what to require from any of them. The decisions a team settles first are laid out in [starting a new Java project](/blog/starting-new-java-project).

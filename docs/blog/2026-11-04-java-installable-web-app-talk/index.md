@@ -101,7 +101,7 @@ This is what turns a form into a shared, live app: anyone with the app open sees
 
 ## Making it installable {#installable}
 
-A webforJ app already runs in any modern browser, including on phones. To let users install it like a native app, webforJ provides the [`@AppProfile` annotation](/docs/configuration/installable-apps) on the app class. Once installed, the app appears on the home screen or app menu, similar to native apps. There is no separate mobile codebase, and no JavaScript build to maintain.
+A webforJ app already runs in any modern browser, including on phones. To let users install it like a native app, webforJ provides the [`@AppProfile` annotation](/docs/configuration/installable-apps) on the app class. Once installed, the app appears on the home screen or app menu, similar to native apps. There is no separate mobile codebase, and no JavaScript build to maintain. If you start from an existing desktop app instead, a webinar on [moving a Java app to the web and mobile](/blog/move-java-app-to-web-and-mobile) shows the staged path.
 
 ## The same app on a split stack {#split-stack}
 

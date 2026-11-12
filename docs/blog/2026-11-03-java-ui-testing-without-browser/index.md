@@ -189,9 +189,9 @@ Secured routes work too. When a test launches the app with `@WebforjTest(app = .
 
 ## Why fast tests matter for AI-written code {#fast-tests-and-ai}
 
-An AI assistant that writes a view can also write its tests, but a test only helps if the assistant can run it after every change. A browser test that takes a server start and a page load per run makes that loop slow, and a flaky one sends the assistant chasing failures that are not real.
+An AI assistant that writes a view can also write its tests, but a test only helps if the assistant can run it after every change. A browser test that takes a server start and a page load per run makes that loop slow, and a flaky one sends the assistant chasing failures that are not real. A separate post covers how to [review AI-generated UI code with confidence](/blog/ai-generated-java-code-guardrails) using these tests.
 
-TestBed tests run in the same JVM as the code, finish each interaction before the next line, and fail with a message that names the component and the page tree. That gives a person or an assistant a short, deterministic loop: change the view, run the test, read the diff. A snapshot adds a second guard, because any unintended change to what the page shows appears as a text diff. For more on working with assistants in a webforJ project, read [AI coding assistant for Java](/blog/ai-coding-assistant-java).
+TestBed tests run in the same JVM as the code, finish each interaction before the next line, and fail with a message that names the component and the page tree. That gives a person or an assistant a short, deterministic loop: change the view, run the test, read the diff. A snapshot adds a second guard, because any unintended change to what the page shows appears as a text diff. For more on working with assistants in a webforJ project, read [AI coding assistant for Java](/blog/ai-coding-assistant-java). Another post builds [a whole Java web app with Claude Code](/blog/claude-code-java-web-app), screens included, and tests that pass or fail without a browser.
 
 ## Where TestBed fits next to browser tests {#testbed-and-browser-tests}
 

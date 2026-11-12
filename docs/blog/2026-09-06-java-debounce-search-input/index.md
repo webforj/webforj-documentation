@@ -108,4 +108,4 @@ Yes. The `Debouncer` runs on the UI thread through webforJ's [Interval](/docs/ad
 
 ### Is there a Java UI debouncer in webforJ? {#is-there-a-java-ui-debouncer-in-webforj}
 
-Yes. `Debouncer` is in the `com.webforj` package and has been available since webforJ 25.11. It works with any action in a webforJ view, and the search in this post is one example.
+Yes. `Debouncer` is in the `com.webforj` package and has been available since webforJ 25.11. It works with any action in a webforJ view, and the search in this post is one example. Timers that refresh numbers on an interval or push job progress are covered in [real-time UI updates in Java](/blog/java-real-time-ui-updates).

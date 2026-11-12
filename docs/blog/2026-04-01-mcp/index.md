@@ -133,7 +133,7 @@ And, sure enough, it was able to get the theme loading correctly:
 
 ![Claude: custom theme applied](https://cdn.webforj.com/webforj-documentation/blogs/2026-03-31-mcp/mcp-claude-custom-theme.png)
 
-This little exercise in problem solving was a great test of using AI tools to not just write code, but debug it as well.
+This little exercise in problem solving was a great test of using AI tools to not just write code, but debug it as well. Another post looks at how [AI-assisted code stays human-owned](/blog/webforj-human-owned) in webforJ.
 
 ## Knowledge Search {#knowledge-search}
 

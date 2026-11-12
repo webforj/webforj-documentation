@@ -119,7 +119,7 @@ Writing Java makes the app rebuild and restart. craftforJ waits for the restart 
 
 When a component is built inside a reusable class, craftforJ lets you choose where the change goes. Writing to the usage changes only the screen in front of you, which is the default. Writing to the definition changes every screen that uses the component. Each pending change shows which applies.
 
-Because craftforJ writes to your project, keep your work in version control and read the diff before you apply it. The full flow is on the [applying changes page](/docs/craftforj/source-changes).
+Because craftforJ writes to your project, keep your work in version control and read the diff before you apply it. This is what makes [visual editing with no lock-in](/blog/low-code-to-pro-code-java) possible, since every change is plain Java. The full flow is on the [applying changes page](/docs/craftforj/source-changes).
 
 ## See and navigate your routes {#routes-view}
 
@@ -139,7 +139,7 @@ A theme you are working on is applied to the app but is not part of your project
 
 ## Let the AI assistant write the Java {#ai-assistant}
 
-Property edits cover what the component already exposes. For everything else there is the assistant, a coding agent that works inside the running app. You give it a goal, and it plans, inspects the live tree and your source, acts, checks the result, and corrects itself across many steps. Each step shows in the transcript, and you can expand any of them to see what it called and what came back.
+Property edits cover what the component already exposes. For everything else there is the assistant, a coding agent that works inside the running app. You give it a goal, and it plans, inspects the live tree and your source, acts, checks the result, and corrects itself across many steps. Each step shows in the transcript, and you can expand any of them to see what it called and what came back. A longer walkthrough shows how to [edit a running app with the AI assistant](/blog/ai-visual-editor-java).
 
 The part that matters is the compile gate. Every edit the assistant writes is staged rather than written to disk, sent to a real Java compiler, and corrected against the diagnostics that come back. What reaches your review has already compiled against your running app.
 

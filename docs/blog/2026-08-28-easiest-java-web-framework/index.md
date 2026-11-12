@@ -51,7 +51,7 @@ The table is the short version. The sections after it explain each row and say w
 
 A framework is easier when the same person can finish a feature alone, in the language they already use. Java developers who add a JavaScript framework also take on a package manager, a second component model, and a second set of tests.
 
-In webforJ the screen, the event handler and the call to your service are all Java, in one project. Your validation rules live in one place, and a field you add on the bean does not need a matching change in a second codebase. That is the single biggest cut in effort, and the rest of the list builds on it.
+In webforJ the screen, the event handler and the call to your service are all Java, in one project. Your validation rules live in one place, and a field you add on the bean does not need a matching change in a second codebase. That is the single [biggest cut in effort](/blog/java-developer-productivity-web-ui), and the rest of the list builds on it.
 
 ## Check 2: no separate front-end build {#no-frontend-build}
 
@@ -149,7 +149,7 @@ Generate a project with [startforJ](https://docs.webforj.com/startforj), run `mv
 
 ### What is the easiest Java web framework for beginners? {#faq-beginners}
 
-Pick the one that keeps you in Java and needs the least setup. With webforJ you generate a project, run `mvn`, and edit a Java class, so a beginner learns one language and one build tool.
+Pick the one that keeps you in Java and needs the least setup. With webforJ you [generate a project, run `mvn`](/blog/java-web-app-tutorial-beginners), and edit a Java class, so a beginner learns one language and one build tool.
 
 ### What is the simplest Java framework for web apps with a database? {#faq-database}
 

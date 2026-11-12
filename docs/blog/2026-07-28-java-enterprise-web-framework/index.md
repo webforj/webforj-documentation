@@ -25,7 +25,7 @@ Want to see these answers in running code? The [Bookstore app](https://github.co
 
 Feature demos rarely decide whether an enterprise project goes well. The problems show up later, when a reviewer asks who can open the invoices page, when a new developer needs a week to find where validation lives, or when a major version lands and nobody wants to change the code.
 
-So treat the framework choice like a procurement review for your engineering team. Each item below is a question you can put to any enterprise Java web framework. Each answer for webforJ points to documentation you can read before you commit.
+So treat the framework choice like a [procurement review](/blog/choosing-enterprise-web-framework) for your engineering team. Each item below is a question you can put to any enterprise Java web framework. Each answer for webforJ points to documentation you can read before you commit.
 
 ## Does it control access by route? {#security-and-route-access}
 
@@ -124,7 +124,7 @@ The [testing overview](/docs/testing/overview) explains where each layer fits.
 
 The upgrade path is the item teams check last and regret first. A framework with a major release every year needs a plan for the code you already have.
 
-webforJ follows a published release model. Major releases arrive annually, minor releases roughly every six to eight weeks, and patches ship when needed. For the move between versions, the project provides [OpenRewrite recipes](/docs/upgrading/automated-upgrades) that rename APIs, change types, update dependencies, and adjust return types. Where a one-to-one replacement does not exist, the recipe leaves a `TODO` comment with specific instructions.
+webforJ follows a [published release model](/blog/webforj-release-cycle-upgrades). Major releases arrive annually, minor releases roughly every six to eight weeks, and patches ship when needed. For the move between versions, the project provides [OpenRewrite recipes](/docs/upgrading/automated-upgrades) that rename APIs, change types, update dependencies, and adjust return types. Where a one-to-one replacement does not exist, the recipe leaves a `TODO` comment with specific instructions.
 
 You can preview a run with `mvn rewrite:dryRun`, which writes a diff to `target/rewrite/rewrite.patch` without touching your files, then apply it with `mvn rewrite:run`. Recipes exist for standard projects and for Spring Boot projects. Because the recipe also works for deprecations in minor releases, you can retire deprecated calls before a later version removes them.
 

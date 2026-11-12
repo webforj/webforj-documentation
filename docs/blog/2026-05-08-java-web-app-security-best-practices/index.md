@@ -22,7 +22,7 @@ Because a webforJ app executes in Java on the server (see [Client/Server Interac
 - **Cross-site scripting (XSS).** When you set a component's text, the value shows as literal characters. A string like `<b>hi</b>` appears as typed and never runs. Markup renders only when you opt in with `setHtml`.
 - **Cross-site request forgery (CSRF).** The framework only trusts requests that belong to the current user's session, so a page on another origin can't drive your app for the user.
 
-That covers the attacks that usually need the most framework plumbing. The rest of this post is about the parts that are still yours, which is where most real incidents come from.
+That covers the attacks that usually need the most framework plumbing. The rest of this post is about [the parts that are still yours](/blog/secure-java-web-framework-enterprise), which is where most real incidents come from.
 
 ## How do I secure a Java web app UI? {#secure-java-web-ui}
 

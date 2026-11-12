@@ -48,7 +48,7 @@ The limits show up when screens become interactive. A sortable grid, an inline e
 
 [Jakarta Faces](https://jakarta.ee/specifications/faces/) (formerly JavaServer Faces) is a standard, component-based UI framework for Java. Views are declared in Facelets XHTML, state lives in backing beans, and the specification covers the component model, validation, and navigation. It is stable and widely deployed, which is the main reason to keep it when an app already runs on it.
 
-For new work the friction is the split between XHTML and Java, and the view lifecycle you have to keep in your head.
+For new work the friction is the split between XHTML and Java, and the view lifecycle you have to keep in your head. The [migration of Faces views to webforJ](/blog/jsf-alternative) shows how Facelets, backing beans, and validators map over.
 
 ## A Java backend with a React or Angular front end {#java-backend-spa}
 
@@ -106,7 +106,7 @@ public class OrdersView extends Composite<FlexLayout> {
 
 ### Components, routing, and Spring in one model {#components-routing-spring}
 
-The view shown earlier is the whole story for a screen. Routes are declared with annotations and rendered client-side, so navigation updates the UI without a full page reload, and deep links and the back button still work. Route parameters, nested layouts, and navigation guards are part of the [routing system](/docs/routing/overview), so you do not add a router library or write glue code.
+The view shown earlier is the whole story for a screen. Routes are declared with annotations and rendered client-side, so [navigation updates the UI without a full page reload](/blog/java-framework-like-react), and deep links and the back button still work. Route parameters, nested layouts, and navigation guards are part of the [routing system](/docs/routing/overview), so you do not add a router library or write glue code.
 
 ### Data binding with Jakarta validation {#data-binding}
 

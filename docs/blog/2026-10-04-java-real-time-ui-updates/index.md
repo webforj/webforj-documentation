@@ -131,7 +131,7 @@ Debouncer debounce = new Debouncer(0.3f);
 search.onModify(e -> debounce.run(() -> find(search.getText())));
 ```
 
-The action runs on the UI thread, using `Interval` underneath, so you don't wrap it in `runLater()`. As with intervals, call `debounce.cancel()` when the component is destroyed. When you need a pending action to run immediately, for example before a form submit, `flush()` does that.
+The action runs on the UI thread, using `Interval` underneath, so you don't wrap it in `runLater()`. As with intervals, call `debounce.cancel()` when the component is destroyed. When you need a pending action to run immediately, for example before a form submit, `flush()` does that. The post on how to [debounce input in Java](/blog/java-debounce-search-input) goes through search as you type, cancel, and flush.
 
 If you only want to delay an element event and need no cancel or flush, `ElementEventOptions.setDebounce()` does it in the browser instead, in milliseconds.
 
@@ -162,7 +162,7 @@ Add `@EnableAsync` to your app class, because without it `@Async` methods run sy
 | Wait for typing to pause | `Debouncer` |
 | Run a Spring service off the UI thread | `@Async` plus `runLater()` in callbacks |
 
-All four stay in Java and in the same threading model. The point of webforJ here is that the server decides what the user sees and the framework handles delivery, which removes the message formats, reconnect logic and client listeners you would otherwise own.
+All four stay in Java and in the same threading model. The point of webforJ here is that the server decides what the user sees and the framework handles delivery, which removes the message formats, reconnect logic and client listeners you would otherwise own. For the data side, [how a webforJ UI reacts to data changes](/blog/java-reactive-ui-framework) covers events, binding, and repository commits.
 
 To try the patterns, generate a project with [startforJ](https://docs.webforj.com/startforj) and start from the [asynchronous updates guide](/docs/advanced/asynchronous-updates).
 

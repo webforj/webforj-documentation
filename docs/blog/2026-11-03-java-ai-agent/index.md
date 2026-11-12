@@ -134,7 +134,7 @@ The observer is the panel. It shows the plan as a checklist, and each tool repor
 
 ## Wire the conversation {#wire-the-conversation}
 
-Build one `ChatClient` per browser session, with the system prompt, a chat memory so follow-up requests keep their context, and that session's tools:
+Build one `ChatClient` per browser session, with the system prompt, [a chat memory](/blog/spring-ai-chat-memory) so follow-up requests keep their context, and that session's tools:
 
 ```java
 ChatMemory memory = MessageWindowChatMemory.builder().build();
@@ -180,7 +180,7 @@ The same reasoning covers destructive actions. If your view asks the user to con
 
 ## Which model to use {#which-model}
 
-Any chat model that Spring AI supports and that can call tools. The preceding code depends on `ChatModel` and `ChatClient`, so the provider is a starter dependency and a few properties, and switching providers doesn't change a tool. An agent that plans across many steps benefits from a capable hosted model, and a model running locally keeps your data on your own hardware.
+Any chat model that Spring AI supports and that can call tools. The preceding code depends on `ChatModel` and `ChatClient`, so the provider is a starter dependency and a few properties, and switching providers doesn't change a tool. An agent that plans across many steps benefits from a capable hosted model, and [a model running locally](/blog/ollama-java-web-app) keeps your data on your own hardware.
 
 ## Build your own {#next-step}
 

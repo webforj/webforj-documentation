@@ -28,7 +28,7 @@ The failures fall into four groups, and each one needs a different check:
 - The code does not compile, and you find out when you build.
 - The code compiles and still does the wrong thing, and you find out in production.
 
-Reviewing all four by hand is the cost people complain about when they say AI code is not worth the trouble. A single check cannot remove it. A loop of checks can, because each step catches what the step before it let through. The rest of this post walks the loop in order.
+Reviewing all four by hand is the cost people complain about when they say AI code is not worth the trouble. A single check cannot remove it. A loop of checks can, because each step catches what the step before it let through. The rest of this post walks the loop in order. A separate post covers [quality control for AI-generated Java code](/blog/ai-generated-java-code-guardrails) with the same pieces.
 
 ## Step 1: skills write the code {#skills}
 
@@ -112,7 +112,7 @@ claude plugin install webforj@webforj-ai
 
 ## Why this is a loop, not a toolbox {#why-a-loop}
 
-Each tool alone is useful. Together they cover the failure modes in order. Skills reduce wrong approaches, the MCP server reduces wrong facts, the compiler removes wrong code, and the tests remove wrong behavior. By the time something reaches your review, the mistakes each layer targets are already filtered out.
+Each tool alone is useful. Together they cover the failure modes in order. Skills reduce wrong approaches, the MCP server reduces wrong facts, the compiler removes wrong code, and the tests remove wrong behavior. By the time something reaches your review, the mistakes each layer targets are already filtered out. A wider look at [how webforJ is built for AI work](/blog/ai-java-web-framework) adds an agent in your running app and agents that use your UI.
 
 This works because the whole app is Java. There is no template language or separate front end for the agent to get out of sync with, so the compiler and a JUnit test can see everything the agent changed. For the framework-level argument, see [why webforJ fits AI coding](/blog/java-framework-for-ai-coding).
 

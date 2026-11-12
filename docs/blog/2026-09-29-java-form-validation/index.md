@@ -76,7 +76,7 @@ A side effect worth knowing: constraints such as `@NotBlank` and `@NotNull` also
 
 ## Bind the form automatically {#automatic-binding}
 
-Declare the fields in your view with names that match the bean properties, then call `BindingContext.of`. The third argument turns on Jakarta validation for the whole context.
+Declare the fields in your view with names that match the bean properties, then call `BindingContext.of`. The third argument turns on Jakarta validation for the whole context. The post on [binding a Java bean to form fields](/blog/bind-java-bean-to-form) goes deeper on `UseProperty` and `BindingExclude`.
 
 ```java
 public class SignupForm extends Composite<Div> {

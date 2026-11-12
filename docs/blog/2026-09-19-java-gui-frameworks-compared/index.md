@@ -115,7 +115,7 @@ The same pattern applies to server-rendered legacy pages. The [JSP modernization
 
 ## Which Java GUI framework should you choose? {#choosing}
 
-Choose Swing or JavaFX when the program must run offline or drive local hardware. Being installed is not a reason on its own, since a webforJ app can be installed from the browser as well. Choose webforJ when users are on different devices, when you want one deployment instead of many installs, or when your app is a business system that people reach from a browser. You keep the language, your build tool, and your Spring services, and you add delivery to every device that has a browser.
+Choose Swing or JavaFX when the program must run offline or drive local hardware. Being installed is not a reason on its own, since [a webforJ app can be installed](/blog/web-app-vs-native-app-java) from the browser as well. Choose webforJ when users are on different devices, when you want one deployment instead of many installs, or when your app is a business system that people reach from a browser. You keep the language, your build tool, and your Spring services, and you add delivery to every device that has a browser.
 
 To try it, generate a project with [startforJ](https://docs.webforj.com/startforj) or follow the [getting started guide](/docs/introduction/getting-started).
 

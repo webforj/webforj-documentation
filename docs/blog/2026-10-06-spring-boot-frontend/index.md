@@ -44,7 +44,7 @@ The next sections go through the rows that decide projects.
 
 A Thymeleaf app is a single Maven or Gradle project. That is its strength.
 
-An SPA adds a second project with its own package manager, bundler, test runner, and deployment target. You either serve the compiled assets from Spring Boot or deploy them separately, and in the second case you also configure cross-origin access between the two. Every release has two artifacts to keep compatible.
+[An SPA adds a second project](/blog/react-with-java-backend) with its own package manager, bundler, test runner, and deployment target. You either serve the compiled assets from Spring Boot or deploy them separately, and in the second case you also configure cross-origin access between the two. Every release has two artifacts to keep compatible.
 
 webforJ stays at one project. The Spring Boot starter and the build plugin are the only additions, and `mvn` on a generated project compiles and runs the app. You can still bring in JavaScript when you need a specific library, but it is optional, not the foundation.
 
@@ -142,7 +142,7 @@ None of these is impossible. The difference is how many layers a single change c
 
 ## When another option is the better choice {#when-others-win}
 
-Pick Thymeleaf when the app is mostly content pages and forms and you have no need for live updates. Pick an SPA when you have dedicated frontend developers, when the same API must serve a mobile app or partners, or when you need a specific JavaScript ecosystem library as the core of the product. In that case the REST contract earns its cost.
+Pick Thymeleaf when the app is mostly content pages and forms and you have no need for live updates. Pick an SPA when you have dedicated frontend developers, when the same API must serve a mobile app or partners, or when you need a specific JavaScript ecosystem library as the core of the product. In that case the REST contract earns its cost. For screens that outgrow server-rendered templates, [tables, dialogs and forms as Java components](/blog/thymeleaf-alternative-spring-boot) replace the template and JavaScript mix.
 
 For an internal tool, an admin console, a dashboard, or any business app built by Java developers, webforJ removes the most work. Start from the [Spring Boot guide](/docs/integrations/spring/spring-boot).
 

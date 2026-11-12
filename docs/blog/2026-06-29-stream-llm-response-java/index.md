@@ -27,7 +27,7 @@ The [MarkdownViewer documentation](/docs/components/markdownviewer) has live, in
 
 Models answer in Markdown. A chunk can end in the middle of a bold marker, an open code fence, or a list item. Write those chunks into a plain text component and the page shows raw asterisks and backticks. Rebuild the whole page on every chunk and the layout jumps.
 
-The view needs to render Markdown on every update, and the user needs a way to stop the answer halfway through.
+The view needs to render Markdown on every update, and the user needs a way to stop the answer halfway through. The `MarkdownViewer` also works without streaming, as shown in [rendering markdown in a Java web app](/blog/render-markdown-java).
 
 ## Stream a ChatGPT response in Java {#stream-from-spring-ai}
 

@@ -98,7 +98,7 @@ The honest comparison is not language against language. It is architecture again
 | Offline use | Needs a connection | Possible |
 | Team shape | Java developers own the full screen | Front-end and back-end roles |
 
-If the right-hand column describes constraints you actually have, use it. If it describes overhead you inherited, the left-hand column removes it.
+If the right-hand column describes constraints you actually have, use it. If it describes overhead you inherited, the left-hand column removes it. For teams already running Angular, [alternatives to Angular when your backend is Java](/blog/angular-alternatives-java) lay out when each fits.
 
 ## Try it {#try-it}
 

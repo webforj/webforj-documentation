@@ -69,7 +69,7 @@ See [Styling](/docs/styling/overview) and [CSS variables](/docs/styling/css-vari
 
 ## Internationalization {#i18n}
 
-Translation is part of the framework. A `BundleTranslationResolver` reads standard Java `ResourceBundle` files, the `t()` method looks up a key in the user's locale, and the browser locale is detected automatically. A custom resolver can load strings from a database instead. Components can react to locale changes at runtime.
+Translation is part of the framework. A `BundleTranslationResolver` reads standard Java `ResourceBundle` files, the `t()` method looks up a key in the user's locale, and the browser locale is detected automatically. A custom resolver can load strings from a database instead. Components can react to locale changes at runtime. A separate guide shows how to [internationalize a Java web app](/blog/java-i18n) with message bundles and a language switcher.
 
 See [Translation](/docs/advanced/i18n-localization) and [Locale management](/docs/advanced/locale-management).
 

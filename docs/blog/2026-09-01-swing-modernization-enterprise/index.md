@@ -58,7 +58,7 @@ Pick screens by business value: the ones customers use, the ones with the most s
 
 When the last screen is rebuilt, the Webswing layer and the desktop client go away. The end state is one Java app that runs in the browser, with no streaming layer to maintain.
 
-The point of the phasing is that you can stop after any phase and still have gained something. Phase 1 gives browser access. Phase 2 can run for as long as the budget allows.
+The point of the phasing is that you can stop after any phase and still have gained something. Phase 1 gives browser access. Phase 2 can run for as long as the budget allows. For a portfolio with more than one app, [a modernization strategy that triages by value and risk](/blog/legacy-java-modernization-strategy) helps decide the order.
 
 ## Where AI agents cut the cost {#ai-agents}
 

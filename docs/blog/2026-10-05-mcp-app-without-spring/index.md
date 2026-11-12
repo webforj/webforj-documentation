@@ -23,7 +23,7 @@ Most MCP tutorials assume Spring Boot, so a lot of teams with a plain servlet ap
 
 No. webforJ ships two ways to publish an MCP app. With Spring Boot, the integration discovers marked routes and adds them to the Spring AI MCP server for you. Without Spring, you assemble the server yourself with the MCP Java SDK and let webforJ contribute the tools and UI resources.
 
-I'd pick the Spring path when Spring Boot is already in the app, because it removes the assembly code. I'd pick the servlet path when the app is a plain webforJ deployment in a servlet container and adding a framework only for MCP would be the largest change in the project.
+I'd pick [the Spring path](/blog/spring-boot-mcp-server-ui) when Spring Boot is already in the app, because it removes the assembly code. I'd pick the servlet path when the app is a plain webforJ deployment in a servlet container and adding a framework only for MCP would be the largest change in the project.
 
 One limit to know up front: MCP apps need control of the servlet context to install the cross-origin filter and cookie settings, plus OAuth 2.0 discovery handling. Deploy to a servlet container your app controls.
 
@@ -216,7 +216,7 @@ Host support varies, because MCP Apps is an evolving extension of the MCP specif
 
 ## Can I embed a Java UI in AI chat? {#embed-without-a-rewrite}
 
-That is the point of doing it this way. The view you embed is the same class that serves the browser. It keeps its components and state. There is no second frontend for the assistant and no REST layer for a separate UI to call. Existing servlet apps get the integration with one initializer and one service file, plus a few lines of configuration.
+That is the point of doing it this way. The view you embed is the same class that serves the browser. It keeps its components and state. There is no second frontend for the assistant and no REST layer for a separate UI to call. Existing servlet apps get the integration with one initializer and one service file, plus a few lines of configuration. Starting from the `@McpApp` annotation alone, the post on [showing a webforJ UI inside AI chat](/blog/mcp-apps-java) walks through the same idea.
 
 ## Next step {#next-step}
 

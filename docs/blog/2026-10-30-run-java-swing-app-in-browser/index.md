@@ -37,7 +37,7 @@ The [setup guide](/docs/integrations/webswing/setup) walks through each setting.
 
 ## Why go further than a browser tab? {#why-further}
 
-Webswing on its own gives you the old app at a web address. Most teams want new screens built for the web, while the parts that still work keep running.
+Webswing on its own gives you the old app at a web address. Most teams want new screens built for the web, while the parts that still work keep running. If you are still weighing options, one post explains [what the alternatives to Swing mean](/blog/java-swing-alternatives) for your team and your Swing code.
 
 That's the job of webforJ's `WebswingConnector` component. It embeds a Webswing-hosted app directly inside a webforJ app, so the old app becomes one part of a new web app instead of the whole thing.
 
@@ -55,7 +55,7 @@ The two sides talk through the connector, as the [communication guide](/docs/int
 
 That channel lets web screens take over one at a time. In the [modernization tutorial](/docs/integrations/webswing/tutorial), a Swing customer table stays in place, but double-clicking a row opens a webforJ form instead of the old Swing dialog. When the user saves, webforJ sends the updated customer back and the Swing table refreshes. Next come webforJ navigation and menus around the embedded app, then a webforJ table in place of the Swing one, until no Swing components are left.
 
-The original Swing app stays functional the whole time, so you can fall back to desktop deployment and move users over gradually.
+The original Swing app stays functional the whole time, so you can fall back to desktop deployment and move users over gradually. The same path applies to a [legacy enterprise user interface](/blog/modernize-erp-ui-java), replaced one screen at a time with Java web views.
 
 For the full migration, the [Swing to web migration guide](/blog/swing-to-web-migration) maps Swing concepts to webforJ screen by screen, and the [strangler fig pattern for Swing](/blog/strangler-fig-pattern-java-swing) shows how the new app grows around the old one until it can be retired.
 

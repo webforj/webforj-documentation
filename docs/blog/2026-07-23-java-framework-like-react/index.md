@@ -87,7 +87,7 @@ Navigating to `/user/123` renders `UserView`. That gives you deep links, bookmar
 
 ## A Java single page app {#single-page-application}
 
-Behaviorally, yes. The browser loads the app once, then the router changes the visible view in place. The URL changes with each view, and the app does not reload. If you searched for a Java single page app framework, this is what you get, minus the second codebase that a typical JavaScript front end brings.
+Behaviorally, yes. The browser loads the app once, then the router changes the visible view in place. The URL changes with each view, and the app does not reload. If you searched for a [Java single page app framework](/blog/java-single-page-application-framework), this is what you get, minus the second codebase that a typical JavaScript front end brings.
 
 The part that stays on the server is your logic. Views, handlers and service calls are Java. The browser receives the rendered interface and sends user actions back. Because there is no separate client app talking to a REST API for the UI, you skip the API layer whose only job is to feed your own screens.
 

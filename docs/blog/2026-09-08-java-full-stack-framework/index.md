@@ -33,7 +33,7 @@ A full stack framework should let one team own every layer of a feature without 
 | Data | Spring Data repositories adapted to a `Table` with `SpringDataRepository` |
 | Delivery | One Spring Boot JAR, or a WAR for a servlet container |
 
-Everything in that table is Java, compiled by one toolchain, and tested with the tools you already use for the rest of your backend.
+Everything in that table is Java, compiled by one toolchain, and tested with the tools you already use for the rest of your backend. A longer list of [what a complete platform includes](/blog/complete-java-web-platform) adds themes, translations, and installable apps.
 
 ## The full stack checklist {#full-stack-checklist}
 
@@ -59,7 +59,7 @@ The split architecture is common and it works. It is the right call when several
 - **Duplicated validation.** The server must validate because it can't trust the client. The form validates too, so users get feedback before they submit. Those two rule sets drift apart.
 - **Two skill sets.** Someone has to own the frontend toolchain and the component framework on top of it, and a Java developer can't pick up that work without learning it.
 
-None of this is a flaw in the approach. It is overhead you only want to pay when a second consumer makes the contract worth having.
+None of this is a flaw in the approach. It is overhead you only want to pay when a second consumer makes the contract worth having. A closer look at [React on a Java backend](/blog/react-with-java-backend) shows when the split pays off.
 
 ## Start from Spring Boot {#start-from-spring-boot}
 

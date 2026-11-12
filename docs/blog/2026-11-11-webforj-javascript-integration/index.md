@@ -58,7 +58,7 @@ The [frontend bundler](/docs/managing-resources/bundler/overview), available sin
 
 The bundler runs as part of the [webforJ build plugin](/docs/configuration/build-plugin) for Maven or Gradle. It also handles SCSS, Less and Tailwind through [extensions](/docs/managing-resources/bundler/extensions/overview), and it can run frontend tests as part of the build. Because the annotations sit on the class, the frontend a view needs travels with the view.
 
-It's opt in. A project that already uses the asset annotations keeps them unchanged and adds the bundler only where a package, a compiled source, or a test calls for it. The [packages and assets page](/docs/managing-resources/bundler/npm-and-assets) explains how packages and entries work.
+It's opt in. A project that already uses the asset annotations keeps them unchanged and adds the bundler only where a package, a compiled source, or a test calls for it. A step-by-step example of [installing an npm package in a Java app](/blog/npm-packages-java-web-app) shows it end to end. The [packages and assets page](/docs/managing-resources/bundler/npm-and-assets) explains how packages and entries work.
 
 ## Ready-made integrations {#ready-made}
 
@@ -82,7 +82,7 @@ Yes. Declare the package and version with `@BundlePackage`, point `@BundleEntry`
 
 ## Can I use a React component in webforJ? {#faq-react}
 
-Yes. The bundler lets you write components in React, Svelte or Lit and consume them from Java, with the compiled output loaded when a component of that class is created. The entry registers a custom element, and the Java side consumes it with `Element` and listens to its events.
+Yes. The bundler lets you write components in React, Svelte or Lit and consume them from Java, with the compiled output loaded when a component of that class is created. The entry registers a custom element, and the Java side consumes it with `Element` and listens to its events. A worked example shows how to [wrap a React component in Java](/blog/wrap-react-component-java).
 
 ## Do I have to write JavaScript to use webforJ? {#faq-no-js}
 

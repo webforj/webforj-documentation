@@ -19,7 +19,7 @@ This guide is for Java teams deciding how to build a browser UI. It covers what 
 
 ## Can Java do frontend? {#can-java-do-frontend}
 
-Yes. Modern browsers run JavaScript, not Java, so the real question is where your UI code lives. There are three honest answers.
+Yes. Modern browsers run JavaScript, not Java, so the real question is where your UI code lives. The wider question of [whether Java is good for web development](/blog/is-java-good-for-web-development) comes down to four common beliefs, checked one by one. There are three honest answers.
 
 1. **Your UI code runs in the browser as JavaScript or TypeScript.** Java stays on the server as a data API.
 2. **Your UI code is Java, compiled or translated to something the browser runs.** This was the path of toolkits like [GWT](https://www.gwtproject.org/).

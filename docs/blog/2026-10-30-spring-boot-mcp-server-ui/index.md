@@ -37,7 +37,7 @@ I'd skip that. The services already exist in the Spring app and the UI can live 
 
 ## Set up the Spring Boot MCP server {#set-up-the-server}
 
-The app imports the webforJ bill of materials and adds three dependencies: the webforJ Spring Boot starter, the MCP Apps module, and Spring AI's WebMVC MCP server starter.
+The app imports the webforJ bill of materials and adds three dependencies: the webforJ Spring Boot starter, the MCP Apps module, and Spring AI's WebMVC MCP server starter. Without Spring, you can build an [MCP app in plain Java](/blog/mcp-app-without-spring) with one servlet initializer.
 
 ```xml
 <dependency>
@@ -160,7 +160,7 @@ private Map<String, Object> createResultContext() {
 }
 ```
 
-So after the user asks for only the overdue ones, the model doesn't have to guess what the user sees. It gets the count, the outstanding total and the invoice list back from the call. Notice also what `prepareReminders` does not do: it opens the reminder dialog for review, and the user presses Send. The model prepares, the person decides.
+So after the user asks for only the overdue ones, the model doesn't have to guess what the user sees. It gets the count, the outstanding total and the invoice list back from the call. Notice also what `prepareReminders` does not do: it opens the reminder dialog for review, and the user presses Send. The model prepares, the person decides. A separate post goes deeper on how an AI can [open a view and then update it with actions](/blog/mcp-tool-update-ui).
 
 The [actions and updates page](/docs/integrations/mcp-apps/actions-updates) covers actions in detail, along with the single-update alternative.
 

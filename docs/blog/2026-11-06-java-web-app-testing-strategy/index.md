@@ -164,7 +164,7 @@ class CheckoutJourneyTest {
 }
 ```
 
-The app has to be running for this test to pass, so start it with `mvn jetty:run`, then run `mvn test`. That setup cost is why this layer stays small.
+The app has to be running for this test to pass, so start it with `mvn jetty:run`, then run `mvn test`. That setup cost is why this layer stays small. The post on [choosing between Selenium and Playwright](/blog/selenium-vs-playwright-java) for a webforJ suite covers the trade-offs.
 
 ## Which test goes where {#which-test-goes-where}
 

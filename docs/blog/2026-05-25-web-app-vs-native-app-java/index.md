@@ -59,7 +59,7 @@ Offline-first work, such as a tool that must run with no connection for hours, i
 
 ## Progressive web app or native? {#pwa-vs-native-java}
 
-A progressive web app (PWA) is a web app the browser can install. The PWA vs native Java question comes down to what the installed app can do, and for business screens the answer is almost everything. It gets its own icon, opens in its own window, and it uses a manifest that names it, sets its colors, and lists its icons.
+A [progressive web app](/blog/java-progressive-web-app) (PWA) is a web app the browser can install. The PWA vs native Java question comes down to what the installed app can do, and for business screens the answer is almost everything. It gets its own icon, opens in its own window, and it uses a manifest that names it, sets its colors, and lists its icons.
 
 In a typical Java stack, producing that manifest by hand means writing JSON, wiring meta tags, and serving icons yourself. In webforJ you annotate the main app class:
 

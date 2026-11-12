@@ -102,7 +102,7 @@ Pick the list component that matches the input you need.
 | [ChoiceBox](/docs/components/lists/choicebox) | Not allowed | One item from a fixed list |
 | [ListBox](/docs/components/lists/listbox) | Not allowed | All items visible at once, with multiple selection available |
 
-Use a ComboBox when the answer is usually one of your suggestions but the user may need something else. Use a ChoiceBox when the answer must come from your list. Use a ListBox when the user should see every option and may pick several.
+Use a ComboBox when the answer is usually one of your suggestions but the user may need something else. Use a ChoiceBox when the answer must come from your list. Use a ListBox when the user should see every option and may [pick several](/blog/multi-select-java-ui).
 
 ## Next steps {#next-steps}
 

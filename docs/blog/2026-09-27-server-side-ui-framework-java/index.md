@@ -73,7 +73,7 @@ The `Environment` is read in the handler, where it belongs to the user who click
 
 ## Where state lives {#where-state-lives}
 
-State lives on the server, in the objects you create. A text field's value, the rows in a table and your own fields in a view class are plain Java state. There is no second copy in a client store to keep in sync.
+State lives on the server, in the objects you create. A text field's value, the rows in a table and your own fields in a view class are plain Java state. There is no second copy in a client store to keep in sync. For example, an AI chat feature can [keep chat history per user](/blog/spring-ai-chat-memory) on the server.
 
 webforJ gives you scopes when you want that state to outlive a single view. With Spring, `@WebforjSessionScope` creates a bean shared across the browser tabs of one user session, and `@EnvironmentScope` creates one per tab or window. Session-scoped beans are stored as HTTP session attributes, so they must implement `Serializable`:
 
@@ -102,7 +102,7 @@ Route classes are different. Each navigation to a route gets a fresh instance of
 
 ### Network round trips {#network-round-trips}
 
-Every event travels to the server, so latency matters more than in an app that handles clicks locally. webforJ reduces the cost in three ways. Server-to-client calls are batched, events carry their data, and round-trip getters are the exception you avoid. For fast input such as typing, the `Debouncer` class runs an action only after activity settles:
+Every event travels to the server, so [latency matters more](/blog/full-stack-java-objections) than in an app that handles clicks locally. webforJ reduces the cost in three ways. Server-to-client calls are batched, events carry their data, and round-trip getters are the exception you avoid. For fast input such as typing, the `Debouncer` class runs an action only after activity settles:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);

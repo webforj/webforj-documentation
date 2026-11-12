@@ -243,7 +243,7 @@ logoutBtn.addClickListener(e ->
 
 ## Wrapping up {#wrapping-up}
 
-Overall I have to say, even after working with webforJ for some time now, I am still impressed how easy it is to connect multiple concepts and technologies together with it. Everything we built here works together cleanly just using the default configs, but we could build any necessary custom components and they would fit just as well.
+Overall I have to say, even after working with webforJ for some time now, I am still impressed how easy it is to connect multiple concepts and technologies together with it. Everything we built here works together cleanly just using the default configs, but we could build any necessary custom components and they would fit just as well. The same pieces cover most [internal tools built in Java](/blog/java-internal-tools), such as admin panels with tables, forms, and access control.
 
 If you want to see how it all fits together, the source is below.
 

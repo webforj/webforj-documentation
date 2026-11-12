@@ -91,7 +91,7 @@ Three features matter on a database screen, and each one maps to a database oper
 
 **Sorting.** `setSortable(true)` on a column lets users click the header. The adapter turns the click into an `ORDER BY`. For a column that shows a computed value, call `setPropertyName()` and name the real JPA property. Without it, sorting a computed column does not work. If users need to sort by more than one column, enable `setMultiSorting(true)`, as the [sorting docs](/docs/components/table/sorting) describe. Multi-column sorting is off by default.
 
-**Filtering.** `SpringDataRepository` accepts a JPA `Specification`. Call `repository.setFilter(spec)` and the filter applies to both the row query and the count query. Pass `null` to clear it. A search field typically builds a `Specification` from its text and sets it on the repository. The docs page shows a single-condition filter and a combined one with `cb.and(...)`.
+**Filtering.** `SpringDataRepository` accepts a JPA `Specification`. Call `repository.setFilter(spec)` and the filter applies to both the row query and the count query. Pass `null` to clear it. A search field typically builds a `Specification` from its text and sets it on the repository. The docs page shows a single-condition filter and a combined one with `cb.and(...)`. A smaller example shows how the [database sorts, filters, and pages the rows](/blog/spring-data-jpa-grid) for a grid.
 
 **Paging.** A repository that implements `PagingAndSortingRepository`, which `JpaRepository` does, gives the adapter paginated queries. The table requests a slice, the database returns that slice, and the count query reports the total. The [querying data guide](/docs/advanced/repository/querying-data) shows how offset and limit travel through the repository criteria if you want to see what the adapter sends.
 
@@ -108,7 +108,7 @@ Resist adding a filter for every column on day one. Check what users ask for fir
 
 Reading is half the job. For editing, build a form with one field per column the user may change, then bind the form to the entity.
 
-The [data binding](/docs/data-binding/overview) feature connects form fields to bean properties. `BindingContext.of(this, Person.class, true)` matches the fields declared in your form to the entity properties by name. `context.read(bean)` fills the form from the selected row. `context.write(bean)` copies the form values back and returns a result you check with `isValid()`.
+The [data binding](/docs/data-binding/overview) feature connects form fields to bean properties. `BindingContext.of(this, Person.class, true)` matches the fields declared in your form to the entity properties by name. `context.read(bean)` fills the form from the selected row. `context.write(bean)` copies the form values back and returns a result you check with `isValid()`. The same pieces, plus a confirm dialog for deletes, are built in a [step-by-step CRUD app](/blog/java-crud-app).
 
 The third argument, `true`, turns on Jakarta Bean Validation. Put the constraints on the entity and the form reports them. This is the pattern from the [Jakarta validation page](/docs/data-binding/validation/jakarta-validation):
 

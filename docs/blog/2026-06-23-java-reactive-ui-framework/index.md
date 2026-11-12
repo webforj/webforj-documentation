@@ -85,7 +85,7 @@ Sometimes the change does not come from the user. A job finishes, a message arri
 
 For recurring refreshes, `Interval` fires an elapsed event at a fixed delay. You attach a listener, start it, and refresh the data in the handler. The [Interval guide](/docs/advanced/interval) lists live data and inactivity checks as typical uses.
 
-Combine the pieces and you get the full loop. Background work calls `runLater`, the update changes a bean or the repository, and the binding or the commit carries that change into the components. You did not write the layer that ships the change to the browser.
+Combine the pieces and you get the full loop. Background work calls `runLater`, the update changes a bean or the repository, and the binding or the commit carries that change into the components. You did not write the layer that ships the change to the browser. The post on [real-time UI updates from the server](/blog/java-real-time-ui-updates) shows these pieces with job progress and live numbers.
 
 If your server code already produces results through a streams library or any other async source, treat its callback as one more background thread. Capture the `Environment` first, then call `runLater` from the callback.
 

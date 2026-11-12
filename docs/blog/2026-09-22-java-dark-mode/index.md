@@ -108,7 +108,7 @@ If nothing is stored, the annotation defaults apply, so new visitors still get t
 
 ## How do you make custom colors work in both modes? {#custom-colors}
 
-Dark mode breaks when CSS hardcodes colors. A white card with `#ffffff` stays white on a dark page. The fix is to reference the design tokens webforJ already switches for you.
+Dark mode breaks when CSS hardcodes colors. A white card with `#ffffff` stays white on a dark page. The fix is to reference the [design tokens webforJ already switches for you](/blog/java-design-system).
 
 ```css
 .status-card {

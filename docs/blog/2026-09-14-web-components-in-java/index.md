@@ -21,7 +21,7 @@ webforJ's own components are built on web components, so this is the same mechan
 
 You could drop an `Element` into a view and set properties by string. That works for one-off DOM work. A wrapper is better when the element appears in more than one place, because the compiler then checks names and types and your IDE completes them.
 
-If a built-in component such as `TextField` or `Button` already covers the need, use that. Reach for `ElementComposite` when the component you want isn't in webforJ. The [Element Composite guide](/docs/building-ui/element-composite) is the reference for everything below.
+If a built-in component such as `TextField` or `Button` already covers the need, use that. Reach for `ElementComposite` when the component you want isn't in webforJ. The [Element Composite guide](/docs/building-ui/element-composite) is the reference for everything below. The same wrapper approach works for [a React component turned into a custom element](/blog/wrap-react-component-java).
 
 ## Which custom element are we wrapping? {#the-element}
 

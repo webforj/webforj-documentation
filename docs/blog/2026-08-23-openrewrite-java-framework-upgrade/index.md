@@ -19,7 +19,7 @@ In this tutorial you will upgrade a webforJ app with OpenRewrite. A Java framewo
 
 OpenRewrite is an open source project for automated source code refactoring. A webforJ recipe is a named set of rewrite rules for one target release. Point the Maven plugin at that recipe and one run updates the code that uses the changed APIs, so you don't have to find each call by hand.
 
-The recipe handles the mechanical work. It updates dependencies, renames methods, changes types, and adjusts return types. Where a one-to-one replacement doesn't exist, it leaves a `TODO` comment with instructions. Your part is to read the changes, resolve those comments, and confirm the app still runs. You can also run a recipe to move off newly deprecated APIs before a later release removes them, not only on major versions.
+The recipe handles the mechanical work. It updates dependencies, renames methods, changes types, and adjusts return types. Where a one-to-one replacement doesn't exist, it leaves a `TODO` comment with instructions. Your part is to read the changes, resolve those comments, and confirm the app still runs. You can also run a recipe to move off newly deprecated APIs before a later release removes them, not only on major versions. How often each kind of version ships is covered in [the webforJ release cycle](/blog/webforj-release-cycle-upgrades).
 
 ## Before you start {#before-you-start}
 

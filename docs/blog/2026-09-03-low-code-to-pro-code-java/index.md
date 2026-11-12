@@ -33,7 +33,7 @@ The question to ask any tool is where the truth lives after you click. If the an
 
 craftforJ starts from the other end. It does not own a model of your screen. It reads the app webforJ is already running, so the component tree it shows is the one your code built. A `Composite` appears as the class you wrote, with its children in the order webforJ holds them. The [craftforJ overview](/docs/craftforj) covers the full set of tools.
 
-Open any route in development, select a component on the page and change a property. The running app updates straight away. Nothing in your files has changed yet, and that is deliberate. A live edit affects only the app in front of you.
+Open any route in development, select a component on the page and change a property. The running app updates straight away. Nothing in your files has changed yet, and that is deliberate. A live edit affects only the app in front of you. The [visual UI designer for Java](/blog/java-visual-ui-designer) post covers inspecting the live component tree in more detail.
 
 <div class="videos-container">
 <video controls preload="metadata">
@@ -70,7 +70,7 @@ The same rule applies to the other things you tune visually:
 
 - **Routes.** craftforJ shows the routing table of the running app and can change the access rule on a route. It writes the [security annotation](/docs/security/annotations) into the route's class, such as `@RolesAllowed`, and the change goes through the same review.
 - **Themes.** You adjust the design tokens your app is built from, and saving writes the theme into your app's stylesheet, where it appears in your diff and ships with the app.
-- **The AI assistant.** It writes Java, compiles it before offering it to you, and applies it with the approval level you set, so what it produces is ordinary code too.
+- **The AI assistant.** It writes Java, compiles it before offering it to you, and applies it with the approval level you set, so what it produces is ordinary code too. The post on [editing a running app with AI](/blog/ai-visual-editor-java) shows it in use.
 
 <div class="videos-container">
 <video controls preload="metadata">

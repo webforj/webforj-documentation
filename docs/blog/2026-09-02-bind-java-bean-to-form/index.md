@@ -114,7 +114,7 @@ The call to `BindingContext.of(this, Hero.class)` creates the bindings. It pairs
 
 ## Load the bean and save changes {#load-the-bean-and-save-changes}
 
-The `observe` call does two things. It copies the bean values into the fields once. After that, each edit the user makes that passes validation is written back to the bean.
+The `observe` call does two things. It copies the bean values into the fields once. After that, each edit the user makes that passes validation is written back to the bean. The bean can come from anywhere, for example [text that an AI model turned into a bean](/blog/ai-form-filling-java).
 
 The `onValidate` listener runs whenever the context validates. Here it turns the Save button on or off, so the user cannot submit an invalid form. The click handler validates again with `validate()` and checks the result before it reads the bean.
 

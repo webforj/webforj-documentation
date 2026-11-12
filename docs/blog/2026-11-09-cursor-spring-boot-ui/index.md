@@ -22,7 +22,7 @@ An assistant that guesses at a framework invents method names. Two pieces from t
 - The [MCP server](/docs/ai-tooling/mcp) lets the assistant look things up in the webforJ docs, scaffold projects, and validate design tokens instead of recalling them from memory.
 - The [Agent Skills](/docs/ai-tooling/agent-skills) tell the assistant when to use those tools and in what order. There are skills for building forms, adding servlets, styling apps, and creating components.
 
-Your screens are plain Java classes in the same project as your services. There is no second codebase to hand the assistant.
+Your screens are plain Java classes in the same project as your services. There is no second codebase to hand the assistant. If you use Claude Code instead, the same plugin lets you [build a Java web app with Claude Code](/blog/claude-code-java-web-app) end to end.
 
 ## Cursor AI and Spring Boot, step by step {#cursor-ai-spring-boot}
 

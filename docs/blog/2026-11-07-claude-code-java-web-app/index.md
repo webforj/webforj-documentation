@@ -151,7 +151,7 @@ Now the loop closes. The agent writes the view, writes the test, runs it, and re
 
 If your backend is Spring Boot, nothing about the loop changes. Ask for the `webforj-spring` flavor when you scaffold, and the screens stay Java classes next to your beans and services. For tests, Spring Boot apps use the `webforj-spring-testbed` module, which works with `@SpringBootTest` and `@WebforjTest`, with injected beans and Spring Security on routes. The details are on the [Spring testing](/docs/integrations/spring/testing) page.
 
-So a Claude Code Spring Boot UI gets the same three checks as a standalone one. Standalone and Spring Boot are both supported, and your data can come from Spring Data or any other source.
+So a Claude Code Spring Boot UI gets the same three checks as a standalone one. Standalone and Spring Boot are both supported, and your data can come from Spring Data or any other source. Using Cursor instead of Claude Code, [building a Spring Boot UI with Cursor](/blog/cursor-spring-boot-ui) follows the same path.
 
 ## What the loop still misses {#limits}
 
@@ -161,7 +161,7 @@ Be clear about the limits before you trust it.
 - **A browserless test is not a browser test.** The TestBed checks what the view shows and how it reacts. If you need to see how a page renders in an actual browser, you still want an end-to-end test for that.
 - **A test checks what you ask it to check.** If the prompt does not describe a behavior, nothing asserts it. Describe the behavior you care about.
 
-Within those limits, the loop does what it should. The agent works from the real API, follows the framework's conventions, and cannot hand back a screen that fails its own test.
+Within those limits, the loop does what it should. The agent works from the real API, follows the framework's conventions, and cannot hand back a screen that fails its own test. The same limits shape [vibe coding without losing control](/blog/vibe-coding-java-web-app) in a Java web app.
 
 ## Ask for one screen with a test {#one-screen}
 

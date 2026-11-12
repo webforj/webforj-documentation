@@ -99,7 +99,7 @@ What the installed app can do without being open is receive notifications:
 - **Push notifications.** The `webforj-push` module lets a view call `Push.getCurrent().subscribe()` to ask for permission, and your server then sends messages through `PushSender`. The browser shows the notification whether or not the app is open. It needs HTTPS and a servlet deployment, and you generate a key pair with `mvn webforj:push-keys`. See the [push notifications page](/docs/advanced/push-notifications).
 - **App badges.** `App.setBadge(3)` paints a count on the app icon in the dock, taskbar, or home screen, and `App.setBadge(null)` clears it. It works only after the app is installed and in browsers that support it, which excludes Firefox. See the [app badges page](/docs/advanced/app-badges).
 
-Together these give an installed webforJ app a presence outside the browser: an icon, a window, a badge, and notifications.
+Together these give an installed webforJ app a presence outside the browser: an icon, a window, a badge, and notifications. Another post compares [a web app and a native app](/blog/web-app-vs-native-app-java) for Java business teams.
 
 ## Deploy and verify {#deploy-and-verify}
 

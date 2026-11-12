@@ -31,7 +31,7 @@ Our [comparison of Java web frameworks by job](/blog/java-web-frameworks-2026) c
 
 ## What the framework must provide {#requirements}
 
-Nine capabilities decide whether a framework carries a business app or leaves you assembling one. Here is what each means and how webforJ answers it.
+Nine capabilities decide whether a framework carries a business app or leaves you assembling one. Here is what each means and how webforJ answers it. The decisions a team settles first on a new app are covered in [starting a new Java project](/blog/starting-new-java-project).
 
 ### Routing and navigation {#req-routing}
 
@@ -105,7 +105,7 @@ For internal tools, back-office systems, admin consoles, ERP screens and the lon
 
 ## Why this is the stronger choice {#why-webforj}
 
-Pick a framework by counting the seams. Every seam between languages, build chains, teams or API contracts is a place where work is duplicated and bugs hide. With a backend framework plus a frontend, the seams sit at the API, the build, the type definitions and the validation rules, which you write once in Java and again in TypeScript.
+Pick a framework by counting the seams. Every seam between languages, build chains, teams or API contracts is a place where work is duplicated and bugs hide. With a backend framework plus a frontend, the seams sit at the API, the build, the type definitions and the validation rules, which you write once in Java and again in TypeScript. [Keeping business logic outside the views](/blog/avoid-ui-framework-lock-in) also keeps the cost of a later framework change small.
 
 With webforJ, the full-stack Java framework, validation lives on the model, security lives on the route, tests run in the same JUnit build and the deployable is one artifact. A developer who reads Java can read the whole app, and an AI assistant works against one codebase and one set of checked APIs instead of two. That is the case for it, and it holds for the class of apps that most Java teams build. [Simple Java web development](/blog/simple-java-web-development) describes what changes day to day.
 

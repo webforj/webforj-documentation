@@ -29,11 +29,11 @@ There are three common places for the UI to live. A separate JavaScript front en
 
 webforJ takes the third route. You compose screens from [components](/docs/building-ui/overview) in Java and define pages with routes, so the team that owns the backend owns the screens too. Our guide to the [full-stack Java framework](/blog/java-full-stack-framework) covers the whole picture.
 
-The JavaScript ecosystem stays within reach. The [frontend bundler](/docs/managing-resources/bundler/overview) lets a Java project draw on npm packages and write components in React, Svelte or Lit, with no Node toolchain to install.
+[The JavaScript ecosystem stays within reach](/blog/webforj-ecosystem). The [frontend bundler](/docs/managing-resources/bundler/overview) lets a Java project draw on npm packages and write components in React, Svelte or Lit, with no Node toolchain to install.
 
 ## Is a separate front end ever better? {#when-separate}
 
-When the product is a public site or a consumer experience where the browser does the heavy lifting. A public content site that lives on search traffic, an offline-first app, and a game or animation-heavy consumer product are better served by tools built for those jobs, because webforJ keeps the app logic on the server. Business apps are the other shape: forms, tables, roles and workflows that a Java team maintains for years.
+When the product is a public site or a consumer experience where the browser does the heavy lifting. A public content site that lives on search traffic, an offline-first app, and a game or animation-heavy consumer product are better served by tools built for those jobs, because webforJ keeps the app logic on the server. Business apps are the other shape: forms, tables, roles and workflows that a Java team maintains for years. The [fit guide for business web apps](/blog/when-to-use-webforj) lists the project types webforJ suits and the three it doesn't.
 
 ## Should I use Spring Boot? {#spring-boot}
 

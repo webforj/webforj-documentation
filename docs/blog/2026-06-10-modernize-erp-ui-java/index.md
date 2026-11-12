@@ -79,7 +79,7 @@ A practical order for an internal tool:
 - Move simple data-entry forms next.
 - Leave the specialized editors and visualizations in Swing the longest. In this hybrid case, use webforJ for user-facing interfaces, dashboards and reports, and keep Swing for complex visualizations or specialized editors.
 
-The [earlier roadmap post on Webswing and webforJ](/blog/webswing-and-webforj) goes further into planning that sequence.
+The [earlier roadmap post on Webswing and webforJ](/blog/webswing-and-webforj) goes further into planning that sequence. For teams still weighing where else a Swing app can go, [Swing alternatives for business apps](/blog/java-swing-alternatives) compares the options.
 
 ## Let an AI assistant move the screens {#ai-assistant}
 
@@ -102,7 +102,7 @@ One setup detail to plan for: Webswing and webforJ must run on different ports, 
 
 ## Beyond ERP: any internal tool {#internal-tools}
 
-The same approach fits any business system. A claims platform, a warehouse console and a back-office admin panel share the shape: years of working rules, users who know the old screens by heart, and a team that can't pause feature work for a year. The business logic your Swing app calls today stays in Java, and new views reach it directly.
+The same approach fits any business system. A claims platform, a warehouse console and a back-office admin panel share the shape: years of working rules, users who know the old screens by heart, and a team that can't pause feature work for a year. The business logic your Swing app calls today stays in Java, and new views reach it directly. Leaders who need the business case first can read [a decision guide to Swing modernization](/blog/swing-modernization-enterprise).
 
 ## Decisions at a glance {#decide}
 

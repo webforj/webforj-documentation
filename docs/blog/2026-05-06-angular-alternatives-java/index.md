@@ -21,7 +21,7 @@ That is why many teams look for Angular alternatives that stay in Java. With web
 The [webforJ Bookstore](https://github.com/webforj/built-with-webforj/tree/main/webforj-bookstore) app on GitHub is a complete Spring Boot app built this way: a sortable book table, a bound and validated edit form, search, and role-based pages, all in Java. You only need Java and Maven to run it.
 :::
 
-Angular is a capable framework, and plenty of teams use it well. The question this post answers is narrower: if your developers, your domain logic and your security model already live in Java, what does a second front-end stack cost you, and what do you get by removing it? Most of what teams believe about that choice turns out to be a myth. Here are the common ones, with the facts.
+Angular is a capable framework, and plenty of teams use it well. The question this post answers is narrower: if your developers, your domain logic and your security model already live in Java, what does a second front-end stack cost you, and what do you get by removing it? Most of what teams believe about that choice turns out to be a myth. Here are the common ones, with the facts. The post on [whether Java is good for web development](/blog/is-java-good-for-web-development) checks four more common beliefs about Java on the web.
 
 ## Angular alternatives for Java teams {#angular-alternatives-for-java-teams}
 
@@ -99,7 +99,7 @@ The initial load is small too. The bootstrap script is about 2.5 kB gzipped, and
 
 Moving existing Angular screens is a good job for an AI coding assistant, one screen at a time. The [webforJ AI plugin](/docs/ai-tooling) connects the assistant to the [webforJ MCP server](/docs/ai-tooling/mcp), so it uses real webforJ APIs instead of guessing, and its [Agent Skills](/docs/ai-tooling/agent-skills) guide it through tasks such as forms and styling. You review each ported screen, and the repetitive rewrite goes much faster.
 
-The people migrating also matter. Your Java developers already know the language, the build tool, the IDE, and the debugger. They do not need to learn a new component model, a change detection model and a new package ecosystem before they ship a screen.
+The people migrating also matter. Your Java developers already know the language, the build tool, the IDE, and the debugger. They do not need to learn a new component model, a change detection model and a new package ecosystem before they ship a screen. The walkthrough on [moving a React or Angular front end to Java](/blog/migrate-angular-react-to-java) maps views, routes and Spring services one by one.
 
 ## When Angular is still the right call {#when-angular-fits}
 

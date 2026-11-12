@@ -96,7 +96,7 @@ delete.onClick(e -> {
 });
 ```
 
-Keep the `if (isAdmin)` around the button too, since hiding a control nobody can use is still good design. It just isn't what stops anyone.
+Keep the `if (isAdmin)` around the button too, since hiding a control nobody can use is still good design. It just isn't what stops anyone. Another post covers [why protecting routes beats hiding elements](/blog/spring-security-route-access-control) with Spring Security.
 
 None of this is particular to webforJ. Route guards guard routes, and the division that's worked for me is that the annotation decides who gets into the room and the handler decides what they can do once they're in it. What webforJ does is make the first half disappear as a thing you think about, which is most of the value, because that's the half you'd otherwise be hand-writing in every view and eventually forgetting in one.
 

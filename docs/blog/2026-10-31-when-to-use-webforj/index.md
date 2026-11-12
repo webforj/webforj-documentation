@@ -21,7 +21,7 @@ When to use webforJ comes down to one sentence. webforJ is the full-stack Java f
 
 webforJ is best for business web apps: software where employees or business partners log in, look at records, change them, and act on them. That covers ERP and CRM systems, back-office tools, data entry screens, dashboards, admin portals, and desktop apps that need a browser version.
 
-These apps share a shape. They have many forms, large tables, roles, rules about who sees what, and a Java team that has to maintain them for years. webforJ ships the parts that shape needs: components, layouts, routing, forms with data binding and validation, tables backed by repositories, route security, and translation. All of it is Java, so one team can own the whole app.
+These apps share a shape. They have many forms, large tables, roles, rules about who sees what, and a Java team that has to maintain them for years. webforJ ships the parts that shape needs: components, layouts, routing, forms with data binding and validation, tables backed by repositories, route security, and translation. All of it is Java, so one team can own the whole app. What ships in the box is listed in [the components that ship with webforJ](/blog/webforj-components).
 
 <!-- vale Google.Headings = NO -->
 ## Does webforJ fit ERP and CRM apps? {#erp-crm}
@@ -37,7 +37,7 @@ Business users also work across countries. The [translation system](/docs/advanc
 
 ## Internal tools and admin portals? {#internal-tools}
 
-Yes. Internal tools and admin portals need three things quickly: a shell, access control, and fast forms.
+Yes. Internal tools and admin portals need three things quickly: a shell, access control, and fast forms. The guide to [building internal tools in Java](/blog/java-internal-tools) covers what admin panels and back office apps need.
 
 The `AppLayout` component gives you the shell. Its [docs page](/docs/components/app-layout) describes a fixed header and footer, a sliding drawer and a scrollable content area, built for dashboards and admin panels.
 

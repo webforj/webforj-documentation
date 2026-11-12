@@ -19,7 +19,7 @@ You install an npm package in a webforJ app by declaring it on the view class. `
 
 A common way to add a browser library to a Java app is to copy its files into the project. You download a script, drop it into a resources folder, and load it by hand. The versions drift over time. An upgrade means copying files again, and nothing in the project shows which version runs.
 
-Declaring the package on the view fixes this. The dependency sits next to the code that uses it, and the build handles the install.
+Declaring the package on the view fixes this. The dependency sits next to the code that uses it, and the build handles the install. Declaring packages is one of several ways to [use JavaScript libraries from Java](/blog/webforj-javascript-integration).
 
 The same idea covers stylesheets and compiled sources. Each view declares what it needs, and the declaration travels with the class. When you open a view, you see which packages and modules it loads, without searching the resources folder, or a separate build file.
 
@@ -77,7 +77,7 @@ Some packages compile your sources and never reach the browser. A TypeScript com
 
 ## Load a module only in debug mode {#debug-only-entries}
 
-Add `debug = true` to `@BundleEntry` when a module should load only during development. The entry then runs only when the app starts in debug mode. Use it for a diagnostic panel or a test helper that has no place in production.
+Add `debug = true` to `@BundleEntry` when a module should load only during development. The entry then runs only when the app starts in debug mode. Use it for a diagnostic panel or a test helper that has no place in production. The [production build](/blog/production-build-java-web-app) post covers how the bundled files get hashed and minified.
 
 ## Stylesheets without a script {#stylesheets-without-a-script}
 

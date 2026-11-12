@@ -52,7 +52,7 @@ upload.setMaxFileSize(10d * 1024 * 1024); // 10 MB
 upload.onReject(e -> Toast.show(e.getMessage()));
 ```
 
-Treat these limits as guidance for the user. A browser can be bypassed, so the server has to enforce its own. Set `webforj.fileUpload.maxSize` in your [configuration](/docs/configuration/properties) as a hard ceiling in bytes, and `webforj.fileUpload.accept` to restrict allowed types. With Spring, both go in `application.properties`. Then re-check the name or type of every file in your own code before you store it, as the service below does.
+Treat these limits as guidance for the user. A browser can be bypassed, so [the server has to enforce its own](/blog/java-web-app-security-best-practices). Set `webforj.fileUpload.maxSize` in your [configuration](/docs/configuration/properties) as a hard ceiling in bytes, and `webforj.fileUpload.accept` to restrict allowed types. With Spring, both go in `application.properties`. Then re-check the name or type of every file in your own code before you store it, as the service below does.
 
 ## How does drag and drop work? {#drag-and-drop}
 
@@ -93,7 +93,7 @@ The other events cover the rest of the life cycle:
 
 `UploadEvent` gives you `getFiles()`, a list of `UploadedFile` objects. Each one exposes `getSanitizedClientName()`, `size()`, `exists()`, `move(String path)` and `delete()`.
 
-webforJ first stores the file in a temporary folder that gets cleaned regularly, so a file you don't move is eventually lost. `move()` moves it to the path you give and returns a `java.io.File`. Use `getSanitizedClientName()` for the filename, never the raw client name, because the sanitized version guards against directory traversal and invalid characters. If you reject a file, call `delete()` on it.
+webforJ first stores the file in a temporary folder that gets cleaned regularly, so a file you don't move is eventually lost. `move()` moves it to the path you give and returns a `java.io.File`. Use `getSanitizedClientName()` for the filename, never the raw client name, because the sanitized version guards against directory traversal and invalid characters. If you reject a file, call `delete()` on it. From there you can also hand an uploaded image to an AI model, as [extracting data from an image in Java](/blog/ai-image-data-extraction-java) shows.
 
 ## How do you save files with Spring? {#spring-service}
 

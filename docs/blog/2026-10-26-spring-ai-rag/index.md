@@ -111,7 +111,7 @@ public class KnowledgeBase {
 
 `add` is the whole indexing pipeline. `TikaDocumentReader` extracts text from a PDF, Word, Markdown, or text file. The `source` metadata records the name to show next to an answer. `TokenTextSplitter` cuts the text into chunks that fit an embedding request, and `store.add` embeds each chunk and keeps the vector next to its text and metadata.
 
-`add` takes a Spring `Resource`, so an uploaded file (`FileSystemResource`) and a document bundled with the app (`ClassPathResource`) go through the same code.
+`add` takes a Spring `Resource`, so an uploaded file (`FileSystemResource`) and a document bundled with the app (`ClassPathResource`) go through the same code. If you only need a summary of one file, [summarizing PDFs with Spring AI](/blog/summarize-documents-spring-ai) uses the same upload and text extraction.
 
 `ask` asks for `chatClientResponse()` instead of plain `content()`. That keeps the advisor context attached to every streamed item, which is how the view finds out which documents were retrieved.
 
@@ -242,7 +242,7 @@ The `Set` in `ask()` removes duplicates, since several chunks often come from on
 
 ## Tune what counts as relevant {#empty-results}
 
-`similarityThreshold(0.5)` drops chunks that are not close enough to the question, and `topK(4)` caps how many reach the model. Tune both against your own documents. A higher threshold gives fewer but more relevant chunks, and the system prompt keeps the model from answering beyond the context it is given.
+`similarityThreshold(0.5)` drops chunks that are not close enough to the question, and `topK(4)` caps how many reach the model. Tune both against your own documents. A higher threshold gives fewer but more relevant chunks, and the system prompt keeps the model from answering beyond the context it is given. To go further, the post on [advanced RAG with Spring AI](/blog/advanced-rag-java) measures retrieval before adding query rewriting, hybrid search, and reranking.
 
 ## Production concerns {#production}
 

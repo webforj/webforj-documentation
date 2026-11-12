@@ -43,7 +43,7 @@ The assistant only calls the server when it decides the question needs it, so na
 
 Behind that prompt, the assistant calls `search_knowledge_base` with a query such as "Button click listener" and reads the matching signature or example. Before it writes imports, it can call `fqcn_validate`, which checks each `com.webforj` import against the catalog for the version you target. If the assistant doesn't know your version, it calls `get_versions` first. The assistant reads `pom.xml` when it's available, so keep that file in the project root.
 
-The result is code that uses the names the docs use, not names that sound plausible. You still review it, but you spend your time on the design instead of on finding out which method exists.
+The result is code that uses the names the docs use, not names that sound plausible. You still review it, but you spend your time on the design instead of on finding out which method exists. If you are still choosing a tool, the guide to [picking an AI coding tool for a Java team](/blog/best-ai-coding-tools-java) compares the options.
 
 ## Prompts for the other jobs {#prompts-for-the-other-jobs}
 

@@ -197,7 +197,7 @@ The `<[0-9]+>` constraint in the pattern means non-numeric ids never reach the v
 
 ## Replacing component libraries {#replacing-primefaces}
 
-Component libraries for JSF exist because the base tag set is small. webforJ ships a larger built-in set, including `Table` for data grids, dialogs, drawers, tabbed panes, and an app layout. The [Table docs](/docs/components/table/overview) show columns, sorting, filtering, and renderers. For a widget the set lacks, `ElementComposite` wraps any web component in a typed Java class.
+Component libraries for JSF exist because the base tag set is small. webforJ ships a larger built-in set, including `Table` for data grids, dialogs, drawers, tabbed panes, and an app layout. The [Table docs](/docs/components/table/overview) show columns, sorting, filtering, and renderers. For a widget the set lacks, `ElementComposite` wraps any web component in a typed Java class. If you are coming from PrimeFaces specifically, the [PrimeFaces alternative](/blog/primefaces-alternative) post covers the rich component set and data binding.
 
 ## Migration order from JSF to Spring Boot {#migration-order}
 

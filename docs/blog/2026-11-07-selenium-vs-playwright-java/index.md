@@ -130,7 +130,7 @@ The row that matters most for webforJ is the third one. A toast, a dialog or a t
 
 ## Best e2e framework for Java: a simple rule {#best-e2e-framework-java}
 
-Start new webforJ projects with Playwright. Keep Selenium where it already runs. Whichever you use, put most of your confidence in fast JUnit and TestBed tests, and save the browser for the handful of journeys that must never break: sign in, create a record, submit a form.
+Start new webforJ projects with Playwright. Keep Selenium where it already runs. Whichever you use, put most of your confidence in [fast JUnit and TestBed tests](/blog/java-web-app-testing-strategy), and save the browser for the handful of journeys that must never break: sign in, create a record, submit a form.
 
 ## Write your first browser test {#first-browser-test}
 

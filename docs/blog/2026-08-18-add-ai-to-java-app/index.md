@@ -94,7 +94,7 @@ McpToolNamePrefixGenerator mcpToolNames() {
 
 <video src="https://cdn.webforj.com/webforj-documentation/blogs/webforj-v25.11/ghsot-ai.mov" autoPlay muted loop playsInline style={{width: '100%', borderRadius: '8px', marginBottom: '1rem'}}></video>
 
-Streaming raw tokens into a Java UI is where features usually go wrong. ghost:ai uses webforJ's `MarkdownViewer`, which renders markdown progressively as text is appended. Two flags matter: `setAutoScroll(true)` keeps the newest text in view as the response grows, and `setProgressiveRender(true)` renders markdown as it streams in, so code fences and lists appear formatted rather than raw text.
+[Streaming raw tokens into a Java UI](/blog/stream-llm-response-java) is where features usually go wrong. ghost:ai uses webforJ's `MarkdownViewer`, which renders markdown progressively as text is appended. Two flags matter: `setAutoScroll(true)` keeps the newest text in view as the response grows, and `setProgressiveRender(true)` renders markdown as it streams in, so code fences and lists appear formatted rather than raw text.
 
 When the user hits send, the view starts the stream and shows a thinking indicator until the first chunk arrives:
 
@@ -214,6 +214,6 @@ The permission story matters here. Because the chat service is just another Spri
 
 **[View webforj-ghostai on GitHub](https://github.com/webforj/built-with-webforj/tree/main/webforj-ghostai)**
 
-You'll need Java 21, Maven 3.9+, and a Gemini API key exported as `SPRING_AI_GOOGLE_GENAI_API_KEY`. `mvn` starts the app on `http://localhost:8080`. Swap the Spring AI starter in `pom.xml` and the model property in `application.properties` for OpenAI, Anthropic, or a local Ollama if you'd prefer.
+You'll need Java 21, Maven 3.9+, and a Gemini API key exported as `SPRING_AI_GOOGLE_GENAI_API_KEY`. `mvn` starts the app on `http://localhost:8080`. Swap the Spring AI starter in `pom.xml` and the model property in `application.properties` for OpenAI, Anthropic, or [a local Ollama](/blog/ollama-java-web-app) model if you'd prefer.
 
 For deeper reading, see the [`MarkdownViewer` docs](/docs/components/markdownviewer), the [`TextArea` predicted-text guide](/docs/components/textarea#predicted-text), and [Spring AI's tool-calling reference](https://docs.spring.io/spring-ai/reference/api/tools.html).

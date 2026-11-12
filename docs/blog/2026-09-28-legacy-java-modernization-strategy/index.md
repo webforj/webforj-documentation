@@ -35,7 +35,7 @@ That split shapes the strategy:
 - Screens move. This is where users feel the difference and where hiring pain shows up.
 - The boundary between them is the main design decision. A clean service boundary makes the move cheap. A tangled one needs refactoring first, and that is worth knowing before you commit a budget.
 
-A view in webforJ is a Java class that calls your existing services directly. There is no separate REST contract to design for the move and no second codebase in another language.
+A view in webforJ is a Java class that calls your existing services directly. There is no separate REST contract to design for the move and no second codebase in another language. A worksheet on [what separate frontend and backend teams cost](/blog/cost-separate-frontend-backend-teams) lets you fill in your own figures.
 
 ## Triage with a value and risk matrix {#triage-matrix}
 
@@ -57,7 +57,7 @@ Keep the scoring honest and short. A one-page score per app, agreed by the busin
 
 ## The matching path per legacy technology {#path-per-technology}
 
-The target is the same. The first step depends on where you start.
+The target is the same. The first step depends on where you start. For Swing estates, a [decision guide to Swing modernization](/blog/swing-modernization-enterprise) lays out three options and a phased roadmap.
 
 | Legacy technology | First step | Then |
 |---|---|---|

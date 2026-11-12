@@ -23,7 +23,7 @@ The [webforj-crud](https://github.com/webforj/built-with-webforj/tree/main/webfo
 
 Speed in business apps comes from five places. You skip the setup. You don't hand-build common screens. You don't write plumbing between the form and the data. You see changes quickly. You don't switch languages halfway through a feature.
 
-Low-code tools promise all five and often deliver them, until the app needs custom logic, a specific integration or a version-control workflow. Then the speed you gained is paid back as workarounds. A Java RAD framework should give you the same speed while keeping the escape hatch open by default, because there is no hatch. It's all code.
+Low-code tools promise all five and often deliver them, until the app needs custom logic, a specific integration or a version-control workflow. Then the speed you gained is paid back as workarounds. A Java RAD framework should give you the same speed while keeping the escape hatch open by default, because there is no hatch. It's all code. For teams leaving a platform like that, [plain Java and Spring Boot as the alternative](/blog/jmix-alternative) shows how the views plug into your own stack.
 
 Use this checklist to judge any option, including ours.
 
@@ -75,7 +75,7 @@ Table<Person> table = new Table<>();
 table.setRepository(adapter);
 ```
 
-That is the part a java crud generator web tool would usually hide behind a wizard. Here you can read it, test it, and change it. The [Spring Data JPA guide](/docs/integrations/spring/spring-data-jpa) covers pagination, sorting, and specifications in detail.
+That is the part [a java crud generator web tool](/blog/openxava-alternative) would usually hide behind a wizard. Here you can read it, test it, and change it. The [Spring Data JPA guide](/docs/integrations/spring/spring-data-jpa) covers pagination, sorting, and specifications in detail.
 
 ### Get fast feedback {#fast-feedback}
 

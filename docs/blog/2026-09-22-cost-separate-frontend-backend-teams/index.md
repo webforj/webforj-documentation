@@ -53,7 +53,7 @@ webforJ [data binding](/docs/data-binding/overview) connects form fields directl
 
 ## Driver 4: fewer handoffs {#handoffs}
 
-With one team, a change to a field is one ticket, one pull request, and one review. Nobody waits for another backlog, and nobody has to agree on a contract before work starts.
+With one team, a change to a field is one ticket, one pull request, and one review. Nobody waits for another backlog, and nobody has to agree on a contract before work starts. Removing hand-offs is also where [developer productivity gains for web UIs](/blog/java-developer-productivity-web-ui) come from, and that post shows how to measure them in your own team.
 
 Access control follows the same pattern. [Route security](/docs/security/overview) is declared with annotations on the route, and it integrates with Spring Security, so the people who write the screen and the people who own the access rules work in the same code and the same review.
 

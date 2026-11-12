@@ -53,7 +53,7 @@ When Spring Boot is on the classpath, the [Spring Security integration](/docs/se
 
 Because the app is Java, the controls you already pay for apply directly. Code review, static analysis, dependency scanning and your build pipeline all apply to a Maven project the way they do to any Java service. Your security team can review a webforJ screen with the Java skills it already has.
 
-This matters for staffing as well. The people who maintain the service layer can maintain the screens, and the review checklist is the one you already have.
+This matters for staffing as well. The people who maintain the service layer can maintain the screens, and the review checklist is the one you already have. Banks and other financial firms get the same points applied in [a Java UI framework for banking and financial services](/blog/java-ui-framework-banking-finance).
 
 ## Decision table {#decision-table}
 
@@ -67,7 +67,7 @@ This matters for staffing as well. The people who maintain the service layer can
 | Languages and toolchains to scan | Java plus JavaScript and its package tree | Java |
 | Authentication | Chosen and wired per project | Spring Security integration or a custom implementation |
 
-The table describes the architecture, not a promise. Both columns can be run badly.
+The table describes the architecture, not a promise. Both columns can be run badly. A [security checklist for webforJ apps](/blog/java-web-app-security-best-practices) shows what to harden.
 
 ## What stays your responsibility {#your-responsibility}
 

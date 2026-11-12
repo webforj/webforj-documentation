@@ -31,7 +31,7 @@ The attributes are small and readable. On the htmx documentation, `hx-trigger` c
 
 ## The pattern it implies on Spring Boot {#the-pattern}
 
-On Spring Boot, htmx usually sits next to a template engine. A page is a template. Each interaction points at a controller method that returns a piece of that template, a fragment, and the attribute decides where the fragment lands.
+On Spring Boot, htmx usually sits next to a template engine. A page is a template. Each interaction points at a controller method that returns a piece of that template, a fragment, and the attribute decides where the fragment lands. Teams on Thymeleaf face the same trade, covered in [a Thymeleaf alternative for Spring Boot screens](/blog/thymeleaf-alternative-spring-boot).
 
 For one interaction, you maintain three things:
 

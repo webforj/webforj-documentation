@@ -114,7 +114,7 @@ Recap: a `ListBox` shows its items all the time and can hold many selections. A 
 | The user picks one value from a dropdown | `ChoiceBox` |
 | The user types a value that may not be in the list | `ComboBox` |
 
-Choose the `ListBox` when all options should stay visible on the page, such as a role assignment screen. Choose the `ChoiceBox` for a compact single-value field in a form. If you are unsure, count the answers the user can give. One answer points to a `ChoiceBox`, and several answers point to a `ListBox`.
+Choose the `ListBox` when all options should stay visible on the page, such as a role assignment screen. Choose the `ChoiceBox` for a compact single-value field in a form. If you are unsure, count the answers the user can give. One answer points to a `ChoiceBox`, and several answers point to a `ListBox`. For a field where the user types a value that may not be in the list, the [ComboBox with preset items and custom values](/blog/combobox-java-web) fits.
 
 Ready to try this? Start with the [getting started guide](/docs/introduction/getting-started), then read the [ListBox docs](/docs/components/lists/listbox) for the full set of selection methods and the [ChoiceBox docs](/docs/components/lists/choicebox) for dropdown settings.
 

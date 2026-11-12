@@ -62,7 +62,7 @@ The compile gate catches code that does not compile. It does not decide whether 
 
 ## When does a change reach your files? {#when-a-change-reaches-your-files}
 
-Changing a property touches only the running app. Writing to source is a separate step. Press <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> to open the review. Changes are grouped by the file they land in, and each one expands into its diff. Nothing is written until you apply.
+Changing a property touches only the running app. Writing to source is a separate step. Press <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> to open the review. Changes are grouped by the file they land in, and each one expands into its diff. Nothing is written until you apply. What lands in your files is plain Java, which is why [visual editing here does not lock you in](/blog/low-code-to-pro-code-java).
 
 <div class="videos-container">
   <video controls preload="metadata">

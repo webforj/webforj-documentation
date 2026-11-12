@@ -161,7 +161,7 @@ craftforJ is available from webforJ 26.02.
 
 ## Check the packaged app {#packaged-app}
 
-`mvn package` and `./gradlew bootJar` produce an app without development tools, with no exclusion, profile, or property required. The `webforj.devtools.livereload.enabled` property has no effect in a packaged app, so you can leave it in your configuration.
+`mvn package` and `./gradlew bootJar` produce an app without development tools, with no exclusion, profile, or property required. The `webforj.devtools.livereload.enabled` property has no effect in a packaged app, so you can leave it in your configuration. The [production build](/blog/production-build-java-web-app) post covers how packaging hashes and minifies the frontend files.
 
 ## Frequently asked questions {#faq}
 

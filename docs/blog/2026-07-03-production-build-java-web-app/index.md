@@ -19,7 +19,7 @@ A production build for a Java web app only comes into play once you add your own
 
 ## Why development output slows pages {#why-development-output-slows-pages}
 
-The development build is made for you while you work. It keeps filenames stable so the watch can swap a file in place. It also keeps whitespace and comments, so you can read what loads.
+The development build is made for you while you work. It keeps filenames stable so the watch can [swap a file in place](/blog/spring-boot-live-reload-ui). It also keeps whitespace and comments, so you can read what loads.
 
 Those choices cost time in production. A stable name gives the browser no clue about whether the content changed, so it can't safely keep an old copy. Unminified text is also larger than it needs to be, and every byte travels to the user.
 

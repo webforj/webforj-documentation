@@ -120,7 +120,7 @@ UserInteraction.click(export);
 
 The agent acts through the UI, so it is bound by the same rules as the user it works for. A disabled button stays disabled, and clicking it fails instead of running its listener. It sees only what the user sees and can't reach anything the user's permissions keep them from. There is no back door to secure separately.
 
-You own the loop: the model, the prompt, and when the agent runs. The automation layer supplies the tools. It is the same API TestBed uses, so code that tests a view and an agent that uses it speak the same language.
+You own the loop: the model, the prompt, and when the agent runs. The automation layer supplies the tools. It is the same API TestBed uses, so code that tests a view and an agent that uses it speak the same language. A full example builds an [AI agent that clicks, types and fills forms](/blog/java-ai-agent) in your running app with Spring AI.
 
 ## AI features in your own app {#ai-features-in-your-app}
 
@@ -147,7 +147,7 @@ The model's callbacks arrive on other threads, and `Environment.runLater()` hand
 
 **Everything is Java.** A view, its handlers, its validation and its service calls live in one language, so an assistant finishes a feature without coordinating a template, a script, and a separate frontend project.
 
-**The compiler checks the output.** Components are typed classes. A guessed method fails the build with an exact error, and craftforJ runs that check before it shows you a change.
+**The compiler checks the output.** Components are typed classes. A guessed method fails the build with an exact error, and craftforJ runs that check before it shows you a change. That check is what keeps [vibe coding a Java web app](/blog/vibe-coding-java-web-app) under control.
 
 **The UI lives on the server.** The component tree your Java builds is the tree an agent sees, a test inspects and an MCP host opens. No API layer sits between your data and the screen, and no second codebase has to stay in sync.
 

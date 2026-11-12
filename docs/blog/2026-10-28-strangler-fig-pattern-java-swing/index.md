@@ -36,11 +36,11 @@ You put the Swing app inside a web app and replace its screens one at a time. In
 3. Gradually replace Swing screens with webforJ equivalents.
 4. Phase out the legacy app entirely.
 
-Your Java team and your domain code stay in place the whole time. The sections below take the stages in order.
+Your Java team and your domain code stay in place the whole time. The sections below take the stages in order. The same path applied to an ERP is described in [modernizing an ERP UI one screen at a time](/blog/modernize-erp-ui-java).
 
 ## Step 1: run Swing in the browser {#step-one}
 
-[Webswing](/docs/integrations/webswing/overview) is a web server technology that lets Java desktop applications (Swing, JavaFX, SWT) run in a browser without any modification to the source code. It renders the app on the server and streams the interface to the browser, and it forwards mouse and keyboard input back to the real app.
+[Webswing](/docs/integrations/webswing/overview) is a web server technology that lets Java desktop applications (Swing, JavaFX, SWT) run in a browser without any modification to the source code. It renders the app on the server and streams the interface to the browser, and it forwards mouse and keyboard input back to the real app. The post on [running a Swing app in a browser tab without a rewrite](/blog/run-java-swing-app-in-browser) covers that step on its own.
 
 This is the host tree of the pattern. Right away your users get a web address for the app they already use, and you have not touched a line of its code. The [setup guide](/docs/integrations/webswing/setup) covers installing the Webswing server, registering your app in the admin console and allowing your webforJ app's origin through CORS.
 

@@ -85,7 +85,7 @@ A few details in this class matter:
 
 - The constructor sets the system prompt once with `defaultSystem`. Each call only sends the document text and the instruction to summarize it.
 - `TikaDocumentReader` returns a list of `Document` objects. The method joins their text into one string before it trims the result.
-- `MAX_CHARS` is a plain cap that this post chose. It does not come from the model. Text past the cap is never sent, so the summary covers only the start of a long document.
+- `MAX_CHARS` is a plain cap that this post chose. It does not come from the model. Text past the cap is never sent, so the summary covers only the start of a long document. To [chat with your documents in a RAG web UI](/blog/spring-ai-rag) instead, index them in a vector store.
 - The `finally` block deletes the uploaded file. The summary no longer needs it once the method returns.
 - A failure becomes a failed `CompletableFuture`, so the view can show the error to the user instead of leaving the page in the "Summarizing" state.
 
@@ -183,7 +183,7 @@ This example is a starting point, so check these before you ship it:
 
 - Filters only guide the picker. The example does not check the file type on the server. Add that check before you accept files from users you do not know.
 - The server-side `webforj.fileUpload.maxSize` property applies as a hard ceiling on top of any client-side limit. Set it to the largest file your app should accept.
-- The reader extracts the text layer of a document. This post does not add OCR, so a scanned page with no text will produce little or no summary.
+- The reader extracts the text layer of a document. This post does not add OCR, so a scanned page with no text will produce little or no summary. For photos and scans, you can [extract data from an image with a vision model](/blog/ai-image-data-extraction-java).
 - Each summary is one model call. The cost and the wait grow with the number of documents, so plan the rate of uploads for your provider.
 
 ## Next step {#next-step}

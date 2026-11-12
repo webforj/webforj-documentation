@@ -119,7 +119,7 @@ This is why I think of tokens as the contract between design and code. A designe
 
 Assembling your own design system means picking a CSS framework, mapping it to component internals, and then maintaining that mapping yourself. With webforJ the tokens, themes, palettes and parts come with the framework, and each component page documents its themes and parts. You end up with one place to change a brand color, one annotation to switch a theme, and one cascade to reason about.
 
-The other tokens follow the same pattern. Typography has a font family property and a size scale in `rem`, spacing and sizing are `rem` scales too, and three surface tokens build the page hierarchy: `--dwc-surface-1` for the page, `--dwc-surface-2` for toolbars and cards, and `--dwc-surface-3` for dialogs and popovers. All palette colors are tested for contrast against those surfaces, so a brand change doesn't quietly break readability.
+The other tokens follow the same pattern. Typography has a font family property and a size scale in `rem`, spacing and sizing are `rem` scales too, and three surface tokens build the page hierarchy: `--dwc-surface-1` for the page, `--dwc-surface-2` for toolbars and cards, and `--dwc-surface-3` for dialogs and popovers. All palette colors are tested for contrast against those surfaces, so a brand change doesn't quietly break readability. A developer's walk through [`@StyleSheet`, `@InlineStyleSheet` and responsive layouts](/blog/building-better-css) shows these tokens in larger demos.
 
 ## Next step {#next-step}
 

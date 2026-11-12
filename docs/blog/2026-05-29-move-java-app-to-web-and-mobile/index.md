@@ -98,11 +98,11 @@ The live demo is the heart of the webinar. It starts with a Swing app running in
 3. **A modern chart joins.** A new chart appears in the corner, still driven by the old table.
 4. **The table is replaced.** With the last Swing piece gone, the app is fully modern.
 
-At no stage did the app stop working. That is the strongest argument in the session: you never have to bet the business on a big-bang rewrite.
+At no stage did the app stop working. That is the strongest argument in the session: you never have to bet the business on a big-bang rewrite. The JavaOne talk on how to [modernize a Swing app without JavaScript](/blog/modernize-java-ui-without-javascript-talk) walks through the same Webswing-then-webforJ path.
 
 ## Web and mobile from one codebase {#web-and-mobile}
 
-Once the screens are webforJ, the app runs in any modern browser, on desktops, phones, and tablets. The recap names it directly: responsive design, theming, and modern web components, all without a total overhaul of the business logic. webforJ apps can also be [installable](/docs/configuration/installable-apps), so users can add the app to their home screen and launch it like a native app. There is no separate mobile codebase to build or staff.
+Once the screens are webforJ, the app runs in any modern browser, on desktops, phones, and tablets. The recap names it directly: responsive design, theming, and modern web components, all without a total overhaul of the business logic. webforJ apps can also be [installable](/docs/configuration/installable-apps), so users can add the app to their home screen and launch it like a native app. There is no separate mobile codebase to build or staff. A short talk shows how to go [from Java to an installable web app in 15 minutes](/blog/java-installable-web-app-talk).
 
 ## AI for Java teams {#ai}
 

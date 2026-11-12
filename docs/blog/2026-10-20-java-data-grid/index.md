@@ -95,7 +95,7 @@ Renderers run in the browser, so the server sends raw values and the client hand
 
 ## Filter and edit rows {#filter-and-edit-rows}
 
-Filtering belongs to the repository, not the table. Set a base filter predicate, then call `commit()` so connected components refresh.
+Filtering belongs to the repository, not the table. Set a base filter predicate, then call `commit()` so connected components refresh. A post on [natural language search for a Java table](/blog/ai-table-natural-language-search) shows how to turn a typed sentence into a filter the table applies.
 
 ```java
 TextField searchField = new TextField(TextField.Type.SEARCH, "Search customers");
@@ -184,7 +184,7 @@ Specification<OrderEntity> pending = (root, query, cb) -> cb.equal(root.get("sta
 repository.setBaseFilter(pending);
 ```
 
-For the best results, make your repository extend both `JpaRepository` and `JpaSpecificationExecutor`. Header sorting then reaches the database as an `ORDER BY`, and specifications handle filtering. The [Spring Data JPA integration page](/docs/integrations/spring/spring-data-jpa) shows the setup.
+For the best results, make your repository extend both `JpaRepository` and `JpaSpecificationExecutor`. Header sorting then reaches the database as an `ORDER BY`, and specifications handle filtering. The [Spring Data JPA integration page](/docs/integrations/spring/spring-data-jpa) shows the setup. A full walkthrough shows how to [sort, filter, and page a Spring Data JPA grid](/blog/spring-data-jpa-grid).
 
 ## Which repository should you pick? {#which-repository}
 

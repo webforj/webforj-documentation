@@ -88,7 +88,7 @@ The [Claude Code walkthrough](/blog/mcp) covers that route step by step. The plu
 
 ## What the MCP server can do {#what-the-mcp-server-can-do}
 
-When the server is connected, the assistant gains these abilities, each triggered by plain language.
+When the server is connected, the assistant gains these abilities, each triggered by plain language. Connecting Claude Code or VS Code to it is covered in [the webforJ MCP server setup guide](/blog/mcp-server-java-framework-docs).
 
 - **Target the right version.** For anything version-sensitive, the assistant reads your `pom.xml` for the webforJ version, or asks you, and scopes every later answer to it. This is the direct answer to stale training data.
 - **Search the knowledge base.** Queries return docs, API signatures and code samples, and can be narrowed to Java, samples, docs or the Kotlin DSL.
@@ -112,7 +112,7 @@ Skills are loaded by the assistant when your prompt matches the task. The plugin
 - `webforj-styling-apps` for themes and design tokens
 - `webforj-upgrading-versions` for major version upgrades with OpenRewrite
 
-The timers skill is a good example of why a playbook matters. A raw `java.util.Timer` or a thread created outside the webforJ environment throws `IllegalStateException` the moment it touches a UI component. The skill steers the assistant to `Interval`, `Debouncer` or `Environment.runLater` before the mistake happens.
+The timers skill is a good example of why a playbook matters. A raw `java.util.Timer` or a thread created outside the webforJ environment throws `IllegalStateException` the moment it touches a UI component. The skill steers the assistant to `Interval`, `Debouncer` or `Environment.runLater` before the mistake happens. How the skills teach Claude Code to write forms, timers, route security and styling is covered in [installing the skills for Claude Code](/blog/ai-agent-skills-java).
 
 ## Prompts that work {#prompts-that-work}
 
