@@ -1,0 +1,16 @@
+/*
+ * Loaded once for every demo, from the Application class.
+ *
+ * Chrome drops the hue of the gray seed of the DWC theme because it is almost gray, and every
+ * default gray (fields, default buttons, borders, surfaces) then leans red. Mixing the seed at
+ * 100% with the same hue fully saturated at 0% keeps its lightness and chroma and fills in the
+ * hue. DWC ships this form itself after 26.03, so remove this rule when the demos move to that
+ * version.
+ */
+:root {
+  --dwc-color-default-seed: color-mix(
+    in oklch,
+    hsl(var(--dwc-color-default-h), var(--dwc-color-default-s), 50%) 100%,
+    hsl(var(--dwc-color-default-h), 100%, 50%) 0%
+  );
+}
